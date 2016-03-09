@@ -23244,8 +23244,10 @@
 	    }
 	  }, {
 	    key: "handleClick",
-	    value: function handleClick() {
-	      if (this.props.onClick) this.props.onClick();
+	    value: function handleClick(event) {
+	      // Note that you can't read properties directly from the Synthetic event but you can read them by calling the specific property (ie. event.target, event.type, etc).
+	      // http://stackoverflow.com/questions/22123055/react-keyboard-event-handlers-all-null
+	      if (this.props.onClick) this.props.onClick(event);
 	      this.setState({ active: !this.state.active });
 	    }
 	  }, {
@@ -23304,7 +23306,7 @@
 
 	      return _react2.default.createElement(
 	        "button",
-	        _extends({ className: this.getClassName(), onClick: this.handleClick.bind(this) }, props),
+	        _extends({ className: this.getClassName() }, props, { onClick: this.handleClick.bind(this) }),
 	        this.props.iconPosition === "right" ? this.renderLabel() : null,
 	        this.renderIcon(this.props.iconName),
 	        this.renderIconMore(),
@@ -24449,13 +24451,38 @@
 	      }, delay);
 	    }
 	  }, {
+	    key: "getMouseEventTarget",
+	    value: function getMouseEventTarget() {
+	      return this.props.disabled ? _react2.default.createElement("a", {
+	        key: "MouseEventTarget",
+	        href: "javascript:void(0)",
+	        style: {
+	          backgroundColor: 'transparent',
+	          width: '100%',
+	          height: '100%',
+	          position: 'absolute',
+	          left: '0',
+	          top: '0'
+	        },
+	        onMouseOver: this.handleTooltipMouseEnter.bind(this),
+	        onFocus: this.handleTooltipMouseEnter.bind(this),
+	        onMouseOut: this.handleTooltipMouseLeave.bind(this),
+	        onBlur: this.handleTooltipMouseLeave.bind(this)
+	      }) : null;
+	    }
+	  }, {
 	    key: "getTooltip",
 	    value: function getTooltip() {
-	      if (this.props.tooltip && this.state.isTooltipOpen && this.state.tooltipTarget) {
-	        return _react2.default.cloneElement(this.props.tooltip, {
-	          target: this.state.tooltipTarget,
-	          openByDefault: true
-	        });
+	      if (this.props.tooltip) {
+	        if (this.state.isTooltipOpen && this.state.tooltipTarget) {
+	          return [this.getMouseEventTarget(), _react2.default.cloneElement(this.props.tooltip, {
+	            key: 'tooltip',
+	            target: this.state.tooltipTarget,
+	            openByDefault: true
+	          })];
+	        } else {
+	          return this.getMouseEventTarget();
+	        }
 	      }
 	    }
 	  }, {
@@ -26613,7 +26640,7 @@
 	      isOpen: false,
 	      listLength: _this.props.options.length,
 	      searchTerm: _this.normalizeSearchTerm(_this.props.searchTerm),
-	      selectedIndex: _this.props.selectedItem || null
+	      selectedIndex: _this.props.selectedItem
 	    };
 	    return _this;
 	  }
@@ -26655,7 +26682,6 @@
 	          data: item
 	        };
 	      });
-
 	      this.setState({ items: items });
 	    }
 
@@ -26877,7 +26903,7 @@
 	  }, {
 	    key: "normalizeSearchTerm",
 	    value: function normalizeSearchTerm(string) {
-	      return (string || '').toString().replace(/^\s+/, '').replace(/\s+$/, '');
+	      return (string || '').toString().replace(/^\s+/, '');
 	    }
 
 	    //=================================================
@@ -26976,10 +27002,15 @@
 	      this.refs[this.inputRefName()].focus();
 	    }
 	  }, {
+	    key: "isSelected",
+	    value: function isSelected() {
+	      return this.state.selectedIndex ? true : false;
+	    }
+	  }, {
 	    key: "getClassName",
 	    value: function getClassName() {
 	      return (0, _classnames2.default)(this.props.className, "slds-lookup", {
-	        "slds-has-selection": this.state.selectedIndex !== null
+	        "slds-has-selection": this.isSelected()
 	      });
 	    }
 	  }, {
@@ -26987,14 +27018,14 @@
 	    value: function render() {
 	      var inputClasses = {
 	        "slds-input": true,
-	        "slds-show": this.state.selectedIndex === null,
-	        "slds-hide": this.state.selectedIndex !== null
+	        "slds-show": !this.isSelected(),
+	        "slds-hide": this.isSelected()
 	      };
 
 	      var pillContainerClasses = {
 	        "slds-pill__container": true,
-	        "slds-show": this.state.selectedIndex !== null,
-	        "slds-hide": this.state.selectedIndex === null
+	        "slds-show": this.isSelected(),
+	        "slds-hide": !this.isSelected()
 	      };
 
 	      var required = this.props.required ? _react2.default.createElement(
@@ -27022,7 +27053,7 @@
 	            _react2.default.createElement(
 	              "div",
 	              { className: (0, _classnames2.default)(pillContainerClasses) },
-	              this.state.selectedIndex !== null ? this.renderSelectedItem() : null
+	              this.isSelected() ? this.renderSelectedItem() : null
 	            ),
 	            _react2.default.createElement(_InputIcon2.default, { name: "search", onClick: this.focusInput.bind(this) }),
 	            _react2.default.createElement("input", {
@@ -49503,7 +49534,7 @@
 	"use strict";
 
 	var Samples = {
-	  Buttons1: "<div className=\"slds-x-small-buttons--horizontal\">\n  <SLDSButton\n    label=\"Base\"\n    onClick={function(){alert(\"Base Button Clicked\")}}\n    variant=\"base\" />\n\n  <SLDSButton\n    label=\"Neutral\" />\n\n  <SLDSButton\n    iconName=\"download\"\n    iconPosition=\"left\"\n    label=\"Neutral Icon\" />\n\n  <SLDSButton\n    label=\"Responsive\"\n    responsive={true} />\n</div>\n",
+	  Buttons1: "<div className=\"slds-x-small-buttons--horizontal\">\n  <SLDSButton\n    label=\"Base\"\n    onClick={function(e){console.log(\"Base Button e.target:\", e.target)}}\n    variant=\"base\" />\n\n  <SLDSButton\n    label=\"Neutral\" />\n\n  <SLDSButton\n    iconName=\"download\"\n    iconPosition=\"left\"\n    label=\"Neutral Icon\" />\n\n  <SLDSButton\n    label=\"Responsive\"\n    responsive={true} />\n</div>\n",
 	  Buttons2: "<div className=\"slds-x-small-buttons--horizontal\">\n  <SLDSButton\n    label=\"Brand\"\n    variant=\"brand\" />\n\n  <SLDSButton\n    disabled={true}\n    label=\"Disabled\"\n    onClick={function(){alert(\"Disabled Button Clicked\")}}\n    variant=\"brand\" />\n\n  <SLDSButton\n    label=\"Destructive\"\n    variant=\"destructive\" />\n\n  <div style={{backgroundColor: \"#16325c\", padding: \"10px\", display: \"inline-block\"}} className=\"slds-m-horizontal--small\">\n    <SLDSButton\n      label=\"Inverse\"\n      variant=\"inverse\"/>\n  </div>\n</div>\n",
 	  ButtonGroups1: "<SLDSButtonGroup>\n  <SLDSButton label=\"Refresh\" />\n\n  <SLDSButton label=\"Edit\" />\n\n  <SLDSButton label=\"Save\" />\n\n  <SLDSMenuDropdown\n    assistiveText=\"More Options\"\n    buttonVariant=\"icon\"\n    iconName=\"down\"\n    iconVariant=\"border-filled\"\n    onSelect={function(item){console.log(item.label, \"selected\")}}\n    openOn=\"click\"\n    options={[\n      {label: \"undo\", value: \"A0\"},\n      {label: \"redo\", value: \"B0\"},\n      {label: \"activate\", value: \"C0\"},\n    ]} />\n</SLDSButtonGroup>\n",
 	  ButtonGroups2: "<SLDSButtonGroup>\n  <SLDSButtonStateful\n    assistiveText=\"Show Chart\"\n    buttonVariant=\"icon\"\n    iconName=\"chart\"\n    iconVariant=\"border\"\n    variant=\"icon\" />\n\n  <SLDSButtonStateful\n    assistiveText=\"Filter\"\n    iconName=\"filter\"\n    iconVariant=\"border\"\n    variant=\"icon\" />\n\n    <SLDSMenuDropdown\n      assistiveText=\"Sort\"\n      checkmark={true}\n      iconName=\"sort\"\n      iconVariant=\"more\"\n      onSelect={function(item){console.log(item.label, \"selected\")}}\n      openOn=\"click\"\n      modal={true}\n      options={[\n        {label: \"Sort ascending\", value: \"A0\"},\n        {label: \"Sort descending\", value: \"B0\"},\n      ]}\n      value=\"A0\"\n      variant=\"icon\" />\n</SLDSButtonGroup>\n",
