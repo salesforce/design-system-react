@@ -10,3 +10,51 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 console.log('Publishing to git');
+
+import './helpers/setup';
+import async from 'async';
+import path from 'path';
+
+import { version } from '../package.json';
+
+const exec = ([command, dir = '.'], callback) => {
+	require('child_process').exec(command, {
+		cwd: path.resolve(__PATHS__.root, dir),
+		stdio: [0, 1, 2]
+	}, callback);
+};
+
+///////////////////////////////////////////////////////////////
+// Tasks
+///////////////////////////////////////////////////////////////
+
+const publish = (done, type) => {
+	const npmDir = '.npm';
+	const tmpDir = `.tmp-npm-${type}`;
+	const gitDir = `.git`;
+	
+	async.eachSeries([
+		[`cp -r ${npmDir} ${tmpDir}`],
+		[`rm -r ${tmpDir}/es`],
+		[`rm -r ${tmpDir}/umd`],
+		[`cp -r ${npmDir}/${type}/* ${tmpDir}`],
+		['git init', `${tmpDir}`],
+		[`cp ${gitDir}/config ${tmpDir}/.git`],
+		['git add -A', `${tmpDir}`],
+		[`git commit -m "Release ${version}-${type}"`, `${tmpDir}`],
+		[`git tag v${version}-${type}`, `${tmpDir}`],
+		[`git push origin --tags v${version}-${type}`, `${tmpDir}`],
+		[`rm -r ${tmpDir}`]
+	], exec, (err) => {
+		if (err) throw err;
+		done();
+	});
+};
+
+async.series([
+	(done) => publish(done, 'es'),
+	
+	(done) => publish(done, 'umd')
+], err => {
+	if (err) throw err;
+});
