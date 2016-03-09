@@ -428,7 +428,8 @@ class SLDSLookup extends React.Component {
   }
 
   isSelected() {
-    return this.state.selectedIndex ? true : false;
+    const notSelected = this.state.selectedIndex === undefined || this.state.selectedIndex === null || this.state.selectedIndex < 0;
+    return notSelected ? false : true;
   }
 
   getClassName(){
