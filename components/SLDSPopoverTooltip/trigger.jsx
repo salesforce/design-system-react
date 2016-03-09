@@ -88,6 +88,8 @@ class Trigger extends React.Component {
     return this.props.disabled?<a 
       key='MouseEventTarget'
       href="javascript:void(0)"
+      ariaHidden={true}
+      tabIndex={-1}
       style={{
         backgroundColor:'transparent',
         width:'100%',
