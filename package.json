@@ -2,7 +2,7 @@
   "name": "slds-for-react",
   "humanReadableName": "SLDS for React",
   "description": "Interactive, accessible implementations of the SLDS components for React",
-  "version": "0.0.15",
+  "version": "0.0.15-alpha.1",
   "contributors": [],
   "license": "BSD-3-Clause",
   "repository": {
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@salesforce-ux/design-system": "1.0.0",
-    "design-system-facades": "git+https://github.com/salesforce-ux/design-system-facades.git",
+    "design-system-facades": "git+ssh://git@github.com/salesforce-ux/design-system-facades.git",
     "classnames": "2.2.3",
     "lodash": "3.10.1",
     "lodash.assign": "3.2.0",
