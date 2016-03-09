@@ -112,7 +112,7 @@ class SLDSLookup extends React.Component {
       isOpen: false,
       listLength: this.props.options.length,
       searchTerm: this.normalizeSearchTerm(this.props.searchTerm),
-      selectedIndex: this.getSelectedIndex(),
+      selectedIndex: this.props.selectedItem,
     };
   }
 
@@ -347,10 +347,6 @@ class SLDSLookup extends React.Component {
     return (string || '').toString().replace(/^\s+/, '');
   }
 
-  getSelectedIndex() {
-    return this.props.selectedItem === undefined || false ? null : this.props.selectedItem;
-  }
-
   //=================================================
   // Rendering Things
   renderMenuContent() {
@@ -431,23 +427,27 @@ class SLDSLookup extends React.Component {
     this.refs[this.inputRefName()].focus();
   }
 
+  isSelected() {
+    return this.state.selectedIndex ? true : false;
+  }
+
   getClassName(){
     return cx(this.props.className, "slds-lookup", {
-      "slds-has-selection": this.state.selectedIndex !== null,
+      "slds-has-selection": this.isSelected(),
     });
   }
 
   render() {
     const inputClasses = {
       "slds-input": true,
-      "slds-show": this.state.selectedIndex === null,
-      "slds-hide": this.state.selectedIndex !== null,
+      "slds-show": !this.isSelected(),
+      "slds-hide": this.isSelected(),
     };
 
     const pillContainerClasses = {
       "slds-pill__container": true,
-      "slds-show": this.state.selectedIndex !== null,
-      "slds-hide": this.state.selectedIndex === null,
+      "slds-show": this.isSelected(),
+      "slds-hide": !this.isSelected(),
     };
 
     const required = this.props.required ? <span style={{color:"red"}}>* </span>:null;
@@ -459,7 +459,7 @@ class SLDSLookup extends React.Component {
           {inputLabel}
           <div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
             <div className={cx(pillContainerClasses)}>
-            { this.state.selectedIndex !== null ? this.renderSelectedItem() : null }
+            { this.isSelected() ? this.renderSelectedItem() : null }
             </div>
             <InputIcon name="search" onClick={this.focusInput.bind(this)} />
             <input
