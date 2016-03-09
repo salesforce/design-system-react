@@ -11,11 +11,6 @@
 
 set -e
 
-export GIT_VERSION=`node scripts/helpers/version.js`
-echo "DSF version: <$GIT_VERSION>"
+./scripts/shell/build-dist-for-npm.sh
 
-
-./node_modules/.bin/webpack --config webpack.config.dist.js
-./node_modules/.bin/webpack --config webpack.config.dist.min.js
-
-./node_modules/.bin/babel-node scripts/build-dist.js --npm
+./node_modules/.bin/babel-node scripts/publish-to-git.js

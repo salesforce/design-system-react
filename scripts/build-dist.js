@@ -81,6 +81,7 @@ async.series([
    */
   (done) => {
     let packageJSON = JSON.parse(fs.readFileSync(distPath('package.json')).toString());
+    if (isNpm) packageJSON.main = 'index.js';
     delete packageJSON.scripts;
     delete packageJSON.devDependencies;
     fs.writeFile(
