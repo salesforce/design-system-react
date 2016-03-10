@@ -298,4 +298,3 @@ SLDSMenuPicklist.defaultProps = defaultProps;
 
 module.exports = SLDSMenuPicklist;
 module.exports.ListItemLabel = ListItemLabel;
-
