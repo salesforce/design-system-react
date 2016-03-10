@@ -121,23 +121,24 @@ export const TreeDefinition = {
 
 	// ### Prop Types
 	propTypes: {
-		autoOpen      : React.PropTypes.bool,
-		autoOpenLimit : React.PropTypes.number,
 		/* > @todo Type of collection unknown until parsed by Data Adapter */
-		collection    : React.PropTypes.oneOfType([
+		collection: React.PropTypes.oneOfType([
 			React.PropTypes.array,
 			React.PropTypes.object
 		]).isRequired,
-		heading       : React.PropTypes.string,
-		id            : React.PropTypes.string,
-		disabled      : React.PropTypes.bool,
-		folderSelect  : React.PropTypes.bool,
-		multiSelect   : React.PropTypes.bool,
-		onChanged     : React.PropTypes.func,
-		onClosed      : React.PropTypes.func,
-		onOpened      : React.PropTypes.func,
-		open          : React.PropTypes.any,
-		selection     : React.PropTypes.any
+		
+		autoOpen     : React.PropTypes.bool,
+		autoOpenLimit: React.PropTypes.number,
+		heading      : React.PropTypes.string,
+		id           : React.PropTypes.string,
+		disabled     : React.PropTypes.bool,
+		folderSelect : React.PropTypes.bool,
+		multiSelect  : React.PropTypes.bool,
+		onChanged    : React.PropTypes.func,
+		onClosed     : React.PropTypes.func,
+		onOpened     : React.PropTypes.func,
+		open         : React.PropTypes.any,
+		selection    : React.PropTypes.any
 	},
 
 	// ### Component Will Mount
@@ -245,7 +246,7 @@ export const TreeDefinition = {
 
 let Tree = Lib.merge(
 	{},
-	TreeCore, 
+	TreeCore,
 	TreeDefinition
 );
 
