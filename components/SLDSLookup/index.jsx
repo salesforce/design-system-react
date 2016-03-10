@@ -424,7 +424,7 @@ class SLDSLookup extends React.Component {
   }
 
   focusInput() {
-    this.refs[this.inputRefName()].focus();
+    ReactDOM.findDOMNode(this.refs[this.inputRefName()]).focus();
   }
 
   isSelected() {
