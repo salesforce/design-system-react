@@ -18,9 +18,9 @@ config.externals = {};
 
 config.resolve.extensions.push('.scss');
 config.resolve.alias['design-system-react'] = path.join(__dirname, 'src/dist.js');
-config.resolve.alias['design-system-utilities'] = path.join(__dirname, 'node_modules/design-system-facades/utilities/main.js');
-config.resolve.alias['utilities'] = path.join(__dirname, 'node_modules/design-system-facades/utilities/main.js');
-config.resolve.alias['design-system-utilities-react'] = path.join(__dirname, 'node_modules/design-system-facades/utilities/main.js');
+config.resolve.alias['design-system-utilities'] = path.join(__dirname, 'node_modules/slds-for-js/utilities/main.js');
+config.resolve.alias['utilities'] = path.join(__dirname, 'node_modules/slds-for-js/utilities/main.js');
+config.resolve.alias['design-system-utilities-react'] = path.join(__dirname, 'node_modules/slds-for-js/utilities/main.js');
 
 config.devtool = 'inline-source-map';
 

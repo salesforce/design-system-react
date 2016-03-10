@@ -15,11 +15,11 @@ export default {
 	displayName: 'SLDS for JavaScript',
 	filenamePrefix: 'slds',
 	analyticsHostWhitelist: [
-		'design-system-facades.herokuapp.com',
+		'slds-for-js.herokuapp.com',
 		'salesforce.com',
 		'www.salesforce.com'
 	],
-	moduleName: 'design-system-facades',
+	moduleName: 'slds-for-js',
 	resetWrappingClass: '.slds',
 	zipName: function (version) {
 		return this.moduleName + '-' + version + '.zip';
