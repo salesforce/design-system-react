@@ -1,5 +1,4 @@
 var webpackConfig = require('./webpack.config.test');
-webpackConfig.devtool = 'inline-source-map';
 
 // Karma configuration
 module.exports = function (config) {
@@ -43,7 +42,7 @@ module.exports = function (config) {
 		// test results reporter to use
 		// possible values: 'dots', 'progress'
 		// available reporters: https://npmjs.org/browse/keyword/karma-reporter
-		reporters: ['spec'],
+		reporters: ['progress', 'spec'],
 
 		plugins: [
 			require('karma-webpack'),
