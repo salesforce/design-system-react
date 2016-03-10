@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@salesforce-ux/design-system": "1.0.0",
-    "design-system-facades": "git+ssh://git@github.com/salesforce-ux/design-system-facades.git",
+    "slds-for-js-core": "git+ssh://git@github.com/salesforce-ux/slds-for-js-core.git",
     "classnames": "2.2.3",
     "lodash": "3.10.1",
     "lodash.assign": "3.2.0",
@@ -47,7 +47,7 @@
     "css-loader": "0.23.1",
     "docco-multidir": "git+https://github.com/tweettypography/docco.git",
     "eslint": "1.10.3",
-    "eslint-config-slds": "salesforce-ux/eslint-config-slds",
+    "eslint-config-slds": "git+ssh://git@github.com/salesforce-ux/eslint-config-slds.git",
     "eslint-loader": "1.2.1",
     "eslint-plugin-react": "3.16.1",
     "express": "4.13.4",
