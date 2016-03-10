@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import chai from 'chai';
 import { expect } from 'chai';
-import assign from 'lodash.assign';
-import { Tooltip } from '../../src/dist';
+import assign from 'lodash/object/assign';
+import { Tooltip } from '../../src';
 
 const { Simulate,
         scryRenderedDOMComponentsWithClass,

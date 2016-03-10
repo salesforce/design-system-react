@@ -24,7 +24,6 @@
     "slds-for-js-core": "git+ssh://git@github.com/salesforce-ux/slds-for-js-core.git",
     "classnames": "2.2.3",
     "lodash": "3.10.1",
-    "lodash.assign": "3.2.0",
     "react": "0.14.7",
     "react-dom": "0.14.7"
   },

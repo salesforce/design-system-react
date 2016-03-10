@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import chai from 'chai';
 import { expect } from 'chai';
-import assign from 'lodash.assign';
-import { Notification } from '../../src/dist';
+import assign from 'lodash/object/assign';
+import { Notification } from '../../src';
 
 const { Simulate,
         scryRenderedDOMComponentsWithClass,
