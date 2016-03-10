@@ -31,6 +31,7 @@ const customStyles = {
     padding                 : "default"
   },
   overlay : {
+    position: "static",
     backgroundColor: "default"
   }
 };
