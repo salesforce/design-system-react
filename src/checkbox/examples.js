@@ -1,6 +1,6 @@
 import React from 'react';
 import Checkbox from './index';
-import { ExampleEvents } from 'slds-for-js-core/utilities';
+import { ExampleEvents } from 'slds-for-js-core/utilities/main';
 
 // SAMPLE CONTROL CODE -->
 

@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@salesforce-ux/design-system": "1.0.0",
-    "slds-for-js-core": "git+ssh://git@github.com/salesforce-ux/slds-for-js-core.git",
+    "slds-for-js-core": "git+ssh://git@github.com/salesforce-ux/slds-for-js-core.git#v0.0.15-alpha.1-es",
     "classnames": "2.2.3",
     "lodash": "3.10.1",
     "react": "0.14.7",

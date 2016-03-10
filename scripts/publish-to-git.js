@@ -13,9 +13,14 @@ console.log('Publishing to git');
 
 import './helpers/setup';
 import async from 'async';
+import fs from 'fs';
 import path from 'path';
 
 import { version } from '../package.json';
+
+const distPath = path.resolve.bind(path, __PATHS__.npm);
+const npmDir = distPath();
+const gitDir = `.git`;
 
 const exec = ([command, dir = '.'], callback) => {
 	require('child_process').exec(command, {
@@ -28,16 +33,42 @@ const exec = ([command, dir = '.'], callback) => {
 // Tasks
 ///////////////////////////////////////////////////////////////
 
-const publish = (done, type) => {
-	const npmDir = '.npm';
+const createTempDir = (done, type) => {
 	const tmpDir = `.tmp-npm-${type}`;
-	const gitDir = `.git`;
 	
 	async.eachSeries([
 		[`cp -r ${npmDir} ${tmpDir}`],
 		[`rm -r ${tmpDir}/es`],
 		[`rm -r ${tmpDir}/umd`],
-		[`cp -r ${npmDir}/${type}/* ${tmpDir}`],
+		[`cp -r ${npmDir}/${type}/* ${tmpDir}`]
+	], exec, (err) => {
+		if (err) throw err;
+		done();
+	});
+};
+
+const cleanPackageJson = (done, type) => {
+	const tmpPath = path.resolve.bind(path, path.resolve(__PATHS__.root, `.tmp-npm-${type}`));
+	
+	const packageJSON = JSON.parse(fs.readFileSync(tmpPath('package.json')).toString());
+	
+	if (type === 'es') {
+		packageJSON['jsnext:main'] = packageJSON.main;
+	} else {
+		packageJSON.dependencies['slds-for-js-core'] = packageJSON.dependencies['slds-for-js-core'].replace('-es', `-${type}`);
+	}
+	
+	fs.writeFile(
+		tmpPath('package.json'),
+		JSON.stringify(packageJSON, null, 2),
+		done
+	);
+};
+
+const publish = (done, type) => {
+	const tmpDir = `.tmp-npm-${type}`;
+	
+	async.eachSeries([
 		['git init', `${tmpDir}`],
 		[`cp ${gitDir}/config ${tmpDir}/.git`],
 		['git add -A', `${tmpDir}`],
@@ -52,9 +83,13 @@ const publish = (done, type) => {
 };
 
 async.series([
+	(done) => createTempDir(done, 'es'),
+	(done) => cleanPackageJson(done, 'es'),
 	(done) => publish(done, 'es'),
 	
-	(done) => publish(done, 'umd')
+	(done) => createTempDir(done, 'umd'),
+	(done) => cleanPackageJson(done, 'umd'),
+	(done) => publish(done, 'umd'),
 ], err => {
 	if (err) throw err;
 });
