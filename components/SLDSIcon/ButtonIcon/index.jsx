@@ -24,7 +24,7 @@ const propTypes = {
 };
 const defaultProps = {
   category: 'utility',
-  iconSize: 'medium',
+  size: 'medium',
 };
 
 class ButtonIcon extends React.Component {
