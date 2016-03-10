@@ -1,6 +1,6 @@
 /* `webpack.config.dist` should be used to statically build the distributed library files. */
 
-const coreConfig = require('design-system-facades/webpack.config.dist')
+const coreConfig = require('design-system-facades/webpack.config.dist');
 
 const fs = require('fs');
 const path = require('path');
