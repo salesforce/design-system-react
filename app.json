@@ -5,7 +5,7 @@
     "salesforce",
   ],
   "website": "http://slds-for-js.herokuapp.com/",
-  "repository": "https://github.com/salesforce-ux/design-system-facades",
+  "repository": "https://github.com/salesforce-ux/slds-for-js-core",
   "env": {
     "NODE_MODULES_CACHE": true,
     "NPM_CONFIG_PRODUCTION": false,

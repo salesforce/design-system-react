@@ -19,7 +19,7 @@ export default {
 		'salesforce.com',
 		'www.salesforce.com'
 	],
-	moduleName: 'slds-for-js',
+	moduleName: 'slds-for-react',
 	resetWrappingClass: '.slds',
 	zipName: function (version) {
 		return this.moduleName + '-' + version + '.zip';

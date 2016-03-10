@@ -1,13 +1,13 @@
 /* `webpack.config.dist` should be used to statically build the distributed library files. */
 
-const coreConfig = require('slds-for-js/webpack.config.dist');
+const coreConfig = require('slds-for-js-core/webpack.config.dist');
 
 const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 
 // `fs.realpathSync` is present to allow symlinked folders to work (such as when using `npm link`) 
-const coreRealPath = fs.realpathSync(path.join(__dirname, 'node_modules/slds-for-js'));
+const coreRealPath = fs.realpathSync(path.join(__dirname, 'node_modules/slds-for-js-core'));
 
 // Build on top of core webpack config
 const config = coreConfig;
@@ -16,7 +16,7 @@ config.entry = {
 	'slds.bundle': ['./src/dist.js']
 };
 
-// Temporary aliases needed until slds-for-js is renamed
+// Temporary aliases needed until slds-for-js-core files are renamed
 config.resolve.alias = {
 	'slds-for-js-core/components': coreRealPath + '/src/core',
 	'slds-for-js-core/utilities': coreRealPath + '/utilities/main',
