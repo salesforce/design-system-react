@@ -5,7 +5,7 @@ import TestUtils from 'react-addons-test-utils';
 import chai from 'chai';
 import { expect } from 'chai';
 import assign from 'lodash.assign';
-import { Picklist } from '../../src/react/dist';
+import { Picklist } from '../../src/dist';
 
 const { Simulate,
 				scryRenderedDOMComponentsWithClass,

@@ -5,8 +5,8 @@ import TestUtils from 'react-addons-test-utils';
 import chai from 'chai';
 import { expect } from 'chai';
 
-import { ButtonGroup } from '../../src/react/dist';
-import { Button } from '../../src/react/dist';
+import { ButtonGroup } from '../../src/dist';
+import { Button } from '../../src/dist';
 
 chai.should();
 

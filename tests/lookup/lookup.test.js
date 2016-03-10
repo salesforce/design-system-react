@@ -5,7 +5,7 @@ import TestUtils from 'react-addons-test-utils';
 import chai from 'chai';
 import { expect } from 'chai';
 import assign from 'lodash.assign';
-import { Lookup } from '../../src/react/dist';
+import { Lookup } from '../../src/dist';
 
 const { Simulate,
 				scryRenderedDOMComponentsWithClass,

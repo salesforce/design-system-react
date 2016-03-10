@@ -5,7 +5,7 @@ import TestUtils from 'react-addons-test-utils';
 import chai from 'chai';
 import { expect } from 'chai';
 import assign from 'lodash.assign';
-import { Modal } from '../../src/react/dist';
+import { Modal } from '../../src/dist';
 
 const { Simulate,
 				scryRenderedDOMComponentsWithClass,
