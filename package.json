@@ -47,7 +47,7 @@
     "css-loader": "0.23.1",
     "docco-multidir": "git+https://github.com/tweettypography/docco.git",
     "eslint": "1.10.3",
-    "eslint-config-slds": "salesforce-ux/eslint-config-slds",
+    "eslint-config-slds": "git+ssh://git@github.com/salesforce-ux/eslint-config-slds.git",
     "eslint-loader": "1.2.1",
     "eslint-plugin-react": "3.16.1",
     "express": "4.13.4",
