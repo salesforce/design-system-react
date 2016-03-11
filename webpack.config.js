@@ -16,7 +16,7 @@ const coreRealPath = fs.realpathSync(path.join(__dirname, 'node_modules/slds-for
 
 config.entry = {
 	'dev-examples-styles': ['./public/assets/scripts/styles.js', hotMiddlewareScript],
-	'dev-examples': ['./src/dev-examples', hotMiddlewareScript]
+	'dev-examples'       : ['./src/dev-examples', hotMiddlewareScript]
 };
 
 config.externals = {};
@@ -34,26 +34,26 @@ config.devtool = 'inline-source-map';
 
 config.output = {
 	libraryTarget: 'umd',
-	path: __dirname + '/dev-build/',
-	publicPath: '/dev-build/',
-	filename: '[name].bundle.js'
+	path         : __dirname + '/dev-build/',
+	publicPath   : '/dev-build/',
+	filename     : '[name].bundle.js'
 };
 
 // Additional loaders
 config.module.loaders.push({
-	test: /\.css$/,
+	test  : /\.css$/,
 	loader: ExtractTextPlugin.extract('style-loader', 'css-loader?outputStyle=expanded&sourceMap=true&sourceMapContents=true')
 });
 config.module.loaders.push({
-	test: /\.scss$/,
+	test  : /\.scss$/,
 	loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!sass-loader?outputStyle=expanded&sourceMap=true&sourceMapContents=true')
 });
 config.module.loaders.push({
-	test: /\.(png)$/,
+	test  : /\.(png)$/,
 	loader: ExtractTextPlugin.extract('url-loader?limit=30000000&mimetype=image/png&name=../public/assets/facades/images/[name].[ext]')
 });
 config.module.loaders.push({
-	test: /\.(eot|woff|woff2|ttf)$/,
+	test  : /\.(eot|woff|woff2|ttf)$/,
 	loader: ExtractTextPlugin.extract('url-loader?limit=30&name=/examples/[path][name].[ext]')
 });
 
