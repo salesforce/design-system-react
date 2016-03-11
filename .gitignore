@@ -9,6 +9,7 @@ test/tests-compiled.js
 test/tests-api.js
 test/tests.js
 build/
+dev-build/
 public/docs/src/
 public/documentation/src/
 

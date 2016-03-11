@@ -13,28 +13,18 @@ import './helpers/setup';
 
 import fs from 'fs';
 import path from 'path';
-import _ from 'lodash';
 import async from 'async';
 import globals from '../app_modules/global';
 import gulp from 'gulp';
-import gutil from 'gulp-util';
-import gulpif from 'gulp-if';
 import gulpinsert from 'gulp-insert';
 import gulpzip from 'gulp-zip';
 import gulprename from 'gulp-rename';
 import minimist from 'minimist';
 import rimraf from 'rimraf';
-import sass from 'node-sass';
-import through from 'through2';
 import babel from 'gulp-babel';
 
 const argv = minimist(process.argv.slice(2));
 const isNpm = argv.npm === true;
-
-const MODULE_NAME = globals.moduleName;
-const PRESERVE_COMMENTS_CONTAINING = /(normalize|http|https|license|flag)/ig;
-
-const now = new Date();
 const gitversion = process.env.GIT_VERSION;
 
 ///////////////////////////////////////////////////////////////
@@ -43,7 +33,7 @@ const gitversion = process.env.GIT_VERSION;
 
 const distPath = path.resolve.bind(path, isNpm ? __PATHS__.npm : __PATHS__.dist);
 
-function copy(src, dest, options, done) {
+function copy (src, dest, options, done) {
 	gulp.src(src, options)
 		.pipe(gulp.dest(dest))
 		.on('error', done)
@@ -70,9 +60,7 @@ async.series([
 			'.npmignore',
 			'package.json',
 			'LICENSE'
-		].map(function(file) {
-			return path.resolve(__PATHS__.root, file);
-		});
+		].map((file) => path.resolve(__PATHS__.root, file));
 		copy(src, distPath(), {}, done);
 	},
 
@@ -80,7 +68,7 @@ async.series([
 	 * Cleanup the package.json
 	 */
 	(done) => {
-		let packageJSON = JSON.parse(fs.readFileSync(distPath('package.json')).toString());
+		const packageJSON = JSON.parse(fs.readFileSync(distPath('package.json')).toString());
 		if (isNpm) packageJSON.main = 'index.js';
 		delete packageJSON.scripts;
 		delete packageJSON.devDependencies;
@@ -100,26 +88,28 @@ async.series([
 	 */
 	(done) => {
 		if (!isNpm) return done();
-		gulp.src([
+
+		return gulp.src([
 			path.resolve(__PATHS__.source_files, '**/*.js')
 		], { base: __PATHS__.source_files })
 			.pipe(gulp.dest(distPath('es')))
 			.on('error', done)
 			.on('finish', done);
 	},
-	
+
 	/**
 	 * Get rid of extra files that are in src
 	 */
 	(done) => rimraf(distPath('es', 'dev-examples.js'), done),
 	(done) => rimraf(distPath('es', 'dist.js'), done),
-	
+
 	/**
 	 * Create umd versions
 	 */
 	(done) => {
 		if (!isNpm) return done();
-		gulp.src(distPath('es', '**/*.js'))
+
+		return gulp.src(distPath('es', '**/*.js'))
 			.pipe(babel({
 				plugins: ['transform-es2015-modules-umd']
 			}))
@@ -136,14 +126,11 @@ async.series([
 			path.resolve(__PATHS__.tmp, '**/*.js'),
 			path.resolve(__PATHS__.tmp, '**/*.map')
 		], { base: __PATHS__.tmp })
-			// Not sure that we need the version number in each file.
-			// Makes diffing versions kind of tedious
-			//.pipe(gulpif(isNotVendorFile, gulpinsert.prepend(`/* ${globals.displayName} ${gitversion} */\n`)))
 			.pipe(gulp.dest(distPath()))
 			.on('error', done)
 			.on('finish', done);
 	},
-	
+
 	/**
 	 * Clean the .tmp folder
 	 */
@@ -182,11 +169,13 @@ async.series([
 	 */
 	(done) => {
 		if (isNpm) return done();
+
 		const src = [
 			'.npmignore',
 			'package.json'
 		].map(file => distPath(file));
-		async.each(src, rimraf, done)
+
+		return async.each(src, rimraf, done);
 	},
 
 	/**
@@ -194,6 +183,7 @@ async.series([
 	 */
 	(done) => {
 		if (isNpm) return done();
+
 		return gulp.src(distPath('**/*'))
 			.pipe(gulpzip(globals.zipName(gitversion)))
 			.on('error', done)

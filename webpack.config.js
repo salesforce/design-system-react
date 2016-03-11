@@ -1,22 +1,34 @@
 /* `webpack.config` is the default webpack configuration and should be used for development and contributing. */
 
 const baseConfig = require('./webpack.config.dist');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const fs = require('fs');
 const path = require('path');
+
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StringReplacePlugin = require('string-replace-webpack-plugin');
 const webpack = require('webpack');
 
 const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 const config = baseConfig;
 
+// `fs.realpathSync` is present to allow symlinked folders to work (such as when using `npm link`)
+const coreRealPath = fs.realpathSync(path.join(__dirname, 'node_modules/slds-for-js-core'));
+
 config.entry = {
-	'slds-for-react-dev-examples-styles': ['./public/assets/scripts/styles.js', hotMiddlewareScript],
-	'slds-for-react-dev-examples': ['./src/dev-examples', hotMiddlewareScript]
+	'dev-examples-styles': ['./public/assets/scripts/styles.js', hotMiddlewareScript],
+	'dev-examples': ['./src/dev-examples', hotMiddlewareScript]
 };
 
 config.externals = {};
 
 config.resolve.extensions.push('.scss');
+
+// Add alias to allow actual repository and not "tagged dist folder" to be used (such as when using `npm link`). The folder structure differs between them
+if (coreRealPath !== path.join(__dirname, 'node_modules/slds-for-js-core')) {
+	config.resolve.alias = {
+		'slds-for-js-core': coreRealPath + '/src'
+	};
+}
 
 config.devtool = 'inline-source-map';
 

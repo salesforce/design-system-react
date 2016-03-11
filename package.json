@@ -3,7 +3,20 @@
   "humanReadableName": "SLDS for React",
   "description": "Interactive, accessible implementations of the SLDS components for React",
   "version": "0.0.15-alpha.1",
-  "contributors": [],
+  "contributors": [
+    {
+      "name": "Chris Corwin",
+      "email": "ccorwin@salesforce.com"
+    },
+    {
+      "name": "David Brainer-Banker",
+      "email": "dbrainer-banker@salesforce.com"
+    },
+    {
+      "name": "Stephen James",
+      "email": "sjames@salesforce.com"
+    }
+  ],
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
@@ -14,8 +27,8 @@
     "build-dev": "./scripts/shell/build-dev.sh",
     "build-dist": "./scripts/shell/build-dist.sh",
     "build-dist-for-npm": "./scripts/shell/build-dist-for-npm.sh",
+    "clean-build-folder": "node ./scripts/clean-directory ./build",
     "publish-to-git": "./scripts/shell/publish-to-git.sh",
-    "menu": "./scripts/shell/menu.sh",
     "start": "node  --harmony app.js",
     "test": "scripts/test --single-run"
   },
