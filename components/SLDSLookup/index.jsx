@@ -61,6 +61,14 @@ const propTypes = {
    * If true, component renders specifically to work inside Modal.
    */
   modal: React.PropTypes.bool,
+  /**
+   * If true, constrains the menu to the scroll parent. Has no effect if modal is false.
+   */
+  constrainToScrollParent: React.PropTypes.bool,
+  /**
+   * If true, the menu is constrained to the window and may be flipped up. Has no effect if modal is false.
+   */
+  flippable: React.PropTypes.bool,
   onBlur: React.PropTypes.func,
   onChange: React.PropTypes.func,
   onSelect: React.PropTypes.func,
@@ -96,6 +104,8 @@ const defaultProps = {
   modal: false,
   required: false,
   searchTerm: "",
+  constrainToScrollParent: true,
+  flippable: false,
 };
 
 
@@ -388,8 +398,8 @@ class SLDSLookup extends React.Component {
       inheritTargetWidth={true}
       closeOnTabKey={true}
       onClose={this.handleCancel.bind(this)}
-      flippable={false}
-      constrainToScrollParent={true}
+      flippable={this.props.flippable}
+      constrainToScrollParent={this.props.constrainToScrollParent}
       targetElement={targetElem}>
       {this.renderMenuContent()}
       </SLDSPopover>;
