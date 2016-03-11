@@ -22,4 +22,3 @@ config.module.loaders[0].include = [
 ];
 
 module.exports = config;
-
