@@ -69,21 +69,19 @@ export const DropdownDefinition = {
 
 	// ### Prop Types
 	propTypes: {
-		align: React.PropTypes.oneOf(['left', 'right']),
+		align      : React.PropTypes.oneOf(['left', 'right']),
+		/**
+		 * If true, renders checkmark icon on the selected Menu Item.
+		 */
+		checkmark  : React.PropTypes.bool,
 		// > @todo Type of collection unknown until parsed by Data Adapter
-		collection  : React.PropTypes.oneOfType([
-			React.PropTypes.array,
-			React.PropTypes.object
-		]).isRequired,
-		disabled    : React.PropTypes.bool,
-		icon        : isIcon,
-		id          : React.PropTypes.string,
-		renderArrow : React.PropTypes.bool,
-		selection   : React.PropTypes.oneOfType([
-			React.PropTypes.string,
-			React.PropTypes.object
-		]),
-		swapIcon    : React.PropTypes.bool
+		collection : React.PropTypes.oneOfType([React.PropTypes.array, React.PropTypes.object]).isRequired,
+		disabled   : React.PropTypes.bool,
+		icon       : isIcon,
+		id         : React.PropTypes.string,
+		renderArrow: React.PropTypes.bool,
+		selection  : React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
+		swapIcon   : React.PropTypes.bool
 	},
 
 	// ### Get Icon
@@ -109,10 +107,11 @@ export const DropdownDefinition = {
 
 		return (
 			<div className={"slds-dropdown-trigger slds-dropdown-trigger--click"}
-					id={this.state.id}
-					aria-expanded={isOpen}
-					onKeyDown={this._handleKeyPressed}
-					onKeyPress={this._handleKeyPressed}>
+				id={this.state.id}
+				aria-expanded={isOpen}
+				onKeyDown={this._handleKeyPressed}
+				onKeyPress={this._handleKeyPressed}
+			>
 				<Button
 					className=""
 					id={triggerId}
@@ -120,16 +119,19 @@ export const DropdownDefinition = {
 					iconStyle={this._getStyle()}
 					disabled={this.props.disabled}
 					onClick={this._handleClicked}
-					aria-haspopup="true" />
+					aria-haspopup="true"
+				/>
 				<PicklistItems
 					align={this.props.align}
+					checkmark={this.props.checkmark}
 					id={this._getMenuId()}
 					labelledBy={triggerId}
 					getMenuItemId={this._getMenuItemId}
 					collection={this._collection}
 					selection={this._getSelection()._item}
 					show={ isOpen && !this.props.disabled}
-					onSelected={this._handleMenuItemSelected}/>
+					onSelected={this._handleMenuItemSelected}
+				/>
 			</div>
 		);
 	}

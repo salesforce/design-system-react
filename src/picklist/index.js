@@ -118,12 +118,16 @@ export const PicklistDefinition = {
 
 	// ### Prop Types
 	propTypes: {
-		disabled   : React.PropTypes.bool,
-		id         : React.PropTypes.string,
-		modalMenu  : React.PropTypes.bool,
-		selection  : React.PropTypes.object,
+		/**
+		 * If true, renders checkmark icon on the selected Menu Item.
+		 */
+		checkmark : React.PropTypes.bool,
+		disabled  : React.PropTypes.bool,
+		id        : React.PropTypes.string,
+		modalMenu : React.PropTypes.bool,
+		selection : React.PropTypes.object,
 		// > @todo Type of collection unknown until parsed by Data Adapter
-		collection : React.PropTypes.oneOfType([
+		collection: React.PropTypes.oneOfType([
 			React.PropTypes.array,
 			React.PropTypes.object
 		]).isRequired
@@ -131,7 +135,7 @@ export const PicklistDefinition = {
 
 	// ### Component Will Mount
 	componentWillMount () {
-		Positionable.setElement(this, Positionable.attachPositionedElementToBody({classes: 'slds-picklist'}));
+		Positionable.setElement(this, Positionable.attachPositionedElementToBody({ classes: 'slds-picklist' }));
 
 		Eventable.on(this, 'select', this._onSelect);
 		Eventable.on(this, 'deselect', this._onDeselect);
@@ -202,6 +206,7 @@ export const PicklistDefinition = {
 
 		const menu = (
 			<PicklistItems
+				checkmark     = {this.props.checkmark}
 				id            = {this._getMenuId()}
 				labelledBy    = {triggerId}
 				getMenuItemId = {this._getMenuItemId}

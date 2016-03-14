@@ -5,6 +5,8 @@ import Picklist from './index';
 // SAMPLE CONTROL CODE -->
 
 const PicklistExample = React.createClass({
+	displayName: 'PicklistExample',
+
 	propTypes: {
 		modal: React.PropTypes.bool
 	},
@@ -16,38 +18,63 @@ const PicklistExample = React.createClass({
 		};
 		const collection = [
 			{
-				_itemType: 'header', text: 'One thing'
+				_itemType: 'header',
+				text     : 'One thing'
 			}, {
-				id: 0, text: 'One', value: '1', icon: 'utility.apps'
+				id   : 0,
+				text : 'One',
+				value: '1',
+				icon : 'utility.apps'
 			}, {
 				_itemType: 'divider'
 			}, {
-				_itemType: 'header', text: 'All the things'
+				_itemType: 'header',
+				text     : 'All the things'
 			}, {
-				id: 1, text: 'Two', value: '2', icon: 'utility.email'
+				id   : 1,
+				text : 'Two',
+				value: '2',
+				icon : 'utility.email'
 			}, {
-				id: 2, text: 'Three', value: '3'
+				id   : 2,
+				text : 'Three',
+				value: '3'
 			}, {
-				id: 3, text: 'Buzz', value: '4'
+				id   : 3,
+				text : 'Buzz',
+				value: '4'
 			}, {
-				id: 4, text: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar'
+				id   : 4,
+				text : 'Item Five',
+				value: 'Item Five',
+				fizz : 'buzz',
+				foo  : 'bar'
 			}, {
-				id: 5, text: 'A Disabled Item', disabled: true, value: 'disabled'
+				id      : 5,
+				text    : 'A Disabled Item',
+				disabled: true,
+				value   : 'disabled'
 			}
 		];
 
 		const picklistSampleData = {
-			collection: collection,
-			resize: resize,
-			selection: selection
+			collection,
+			resize,
+			selection
 		};
 
 		return {
 			models: [
 				{
 					collection: picklistSampleData.collection,
-					disabled: false,
-					selection: picklistSampleData.collection[1]
+					disabled  : false,
+					selection : picklistSampleData.collection[1]
+				},
+				{
+					checkmark : true,
+					collection: picklistSampleData.collection,
+					disabled  : false,
+					selection : picklistSampleData.collection[1]
 				}
 			]
 		};
@@ -61,7 +88,8 @@ const PicklistExample = React.createClass({
 						<Picklist
 							{...model}
 							modalMenu={this.props.modal}
-							onChange={this._handleModelChange.bind(this, index)} />
+							onChange={this._handleModelChange.bind(this, index)}
+						/>
 					</div>
 					<div className="slds-col demo-controls">
 						<div className="slds-button-group" role="group">
@@ -86,7 +114,7 @@ const PicklistExample = React.createClass({
 	_handleModelChange (index, selection) {
 		const models = this.state.models;
 		models[index].selection = selection;
-		this.setState({models});
+		this.setState({ models });
 	},
 
 	toggleSelectlistsEnabled () {
@@ -105,19 +133,19 @@ const PicklistExample = React.createClass({
 	setSelection (index) {
 		const models = this.state.models;
 		models[index].selection = this.state.models.collection[5];
-		this.setState({models});
+		this.setState({ models });
 	},
 
 	enable (index) {
 		const models = this.state.models;
 		models[index].disabled = false;
-		this.setState({models});
+		this.setState({ models });
 	},
 
 	disable (index) {
 		const models = this.state.models;
 		models[index].disabled = true;
-		this.setState({models});
+		this.setState({ models });
 	}
 });
 
