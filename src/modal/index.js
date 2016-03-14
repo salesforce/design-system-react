@@ -92,15 +92,15 @@ export const ModalDefinition = {
 
 	// ### Prop Types
 	propTypes: {
-		headerTagline       : React.PropTypes.any,
-		headerTitle         : React.PropTypes.any,
-		isOpen              : React.PropTypes.bool,
-		onCancel            : React.PropTypes.func,
-		onClose             : React.PropTypes.func,
-		onPrimary           : React.PropTypes.func,
-		primaryButtonText   : React.PropTypes.string,
-		secondaryButtonText : React.PropTypes.string,
-		triggerNode         : React.PropTypes.object
+		headerTagline: React.PropTypes.any,
+		headerTitle: React.PropTypes.any,
+		isOpen: React.PropTypes.bool,
+		onCancel: React.PropTypes.func,
+		onClose: React.PropTypes.func,
+		onPrimary: React.PropTypes.func,
+		primaryButtonText: React.PropTypes.string,
+		secondaryButtonText: React.PropTypes.string,
+		triggerNode: React.PropTypes.object
 	},
 
 	// ### Get Default Props
@@ -119,9 +119,9 @@ export const ModalDefinition = {
 					<div className={this.cssClasses.MODALCONTAINER} ref={this._setModalRef}>
 						<div className="slds-modal__header">
 							{this.props.renderHeader ({
-								onCloseClick        : this._onClose,
-								headerTitle         : this.props.headerTitle,
-								headerTagline       : this.props.headerTagline
+								onCloseClick: this._onClose,
+								headerTitle: this.props.headerTitle,
+								headerTagline: this.props.headerTagline
 			})}
 						</div>
 						<div className="slds-modal__content | slds-p-around--medium">
@@ -129,10 +129,10 @@ export const ModalDefinition = {
 						</div>
 						<div className="slds-modal__footer">
 							{this.props.renderFooter ({
-								onPrimaryClick      : this._onPrimaryClick,
-								onSecondaryClick    : this._onSecondaryClick,
-								secondaryButtonText : this.props.secondaryButtonText,
-								primaryButtonText   : this.props.primaryButtonText
+								onPrimaryClick: this._onPrimaryClick,
+								onSecondaryClick: this._onSecondaryClick,
+								secondaryButtonText: this.props.secondaryButtonText,
+								primaryButtonText: this.props.primaryButtonText
 			})}
 						</div>
 					</div>
@@ -191,7 +191,7 @@ export const ModalDefinition = {
 
 // SLDS for React **extends objects** by merging them together, rather than
 // via the prototype chain or imitation of object-oriented inheritance.
-// The important thing to remember is that _some methods will be available 
+// The important thing to remember is that _some methods will be available
 // to the component which are not declared in this file_.
 
 // These are not magic methods, they're not black box methods, but you do need

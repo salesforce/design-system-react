@@ -65,18 +65,18 @@ export const ComboboxDefinition = {
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
 	// display name.
-	displayName : CONTROL,
+	displayName: CONTROL,
 
 	// ### Prop Types
-	propTypes   : {
-		collection  : React.PropTypes.oneOfType([
+	propTypes: {
+		collection: React.PropTypes.oneOfType([
 				React.PropTypes.array,
 				React.PropTypes.object
 			]).isRequired,
-		disabled    : React.PropTypes.bool,
-		id          : React.PropTypes.string,
-		onChanged   : React.PropTypes.func,
-		selection   : React.PropTypes.oneOfType([
+		disabled: React.PropTypes.bool,
+		id: React.PropTypes.string,
+		onChanged: React.PropTypes.func,
+		selection: React.PropTypes.oneOfType([
 				React.PropTypes.string,
 				React.PropTypes.object
 			])

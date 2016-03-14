@@ -54,14 +54,14 @@ export const RadioDefinition = {
 
 	// ### Prop Types
 	propTypes: {
-		checked    : React.PropTypes.bool,
-		disabled   : React.PropTypes.bool,
-		labelText  : React.PropTypes.string,
-		name       : React.PropTypes.string.isRequired,
-		onChanged  : React.PropTypes.func,
-		onDisabled : React.PropTypes.func,
-		onEnabled  : React.PropTypes.func,
-		value      : React.PropTypes.string
+		checked: React.PropTypes.bool,
+		disabled: React.PropTypes.bool,
+		labelText: React.PropTypes.string,
+		name: React.PropTypes.string.isRequired,
+		onChanged: React.PropTypes.func,
+		onDisabled: React.PropTypes.func,
+		onEnabled: React.PropTypes.func,
+		value: React.PropTypes.string
 	},
 
 	_renderInput () {

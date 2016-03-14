@@ -82,8 +82,8 @@ export const NotificationDefinition = {
 
 	// ### Prop Types
 	propTypes: {
-		children : React.PropTypes.string.isRequired,
-		theme    : React.PropTypes.oneOf(Object.keys(NotificationCore.themes))
+		children: React.PropTypes.string.isRequired,
+		theme: React.PropTypes.oneOf(Object.keys(NotificationCore.themes))
 	},
 
 	// ### Render

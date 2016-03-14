@@ -136,29 +136,29 @@ export const LookupDefinition = {
 
 	// ### Prop Types
 	propTypes: {
-		collection         : React.PropTypes.oneOfType([
+		collection: React.PropTypes.oneOfType([
 			React.PropTypes.array,
 			React.PropTypes.object
 		]).isRequired,
-		id                 : React.PropTypes.string,
-		label              : React.PropTypes.string.isRequired,
-		labelPlural        : React.PropTypes.string,
-		menuFooterRenderer : React.PropTypes.oneOfType([
+		id: React.PropTypes.string,
+		label: React.PropTypes.string.isRequired,
+		labelPlural: React.PropTypes.string,
+		menuFooterRenderer: React.PropTypes.oneOfType([
 			React.PropTypes.func,
 			React.PropTypes.bool
 		]),
-		menuHeaderRenderer : React.PropTypes.oneOfType([
+		menuHeaderRenderer: React.PropTypes.oneOfType([
 			React.PropTypes.func,
 			React.PropTypes.bool
 		]),
-		menuItemRenderer   : React.PropTypes.func,
-		modalMenu          : React.PropTypes.bool,
-		onAddClick         : React.PropTypes.func,
-		onChanged          : React.PropTypes.func,
-		onFilter           : React.PropTypes.func,
-		pillRenderer       : React.PropTypes.func,
-		searchIcon         : React.PropTypes.string,
-		selection          : React.PropTypes.oneOfType([
+		menuItemRenderer: React.PropTypes.func,
+		modalMenu: React.PropTypes.bool,
+		onAddClick: React.PropTypes.func,
+		onChanged: React.PropTypes.func,
+		onFilter: React.PropTypes.func,
+		pillRenderer: React.PropTypes.func,
+		searchIcon: React.PropTypes.string,
+		selection: React.PropTypes.oneOfType([
 			React.PropTypes.array,
 			React.PropTypes.object
 		])
@@ -294,7 +294,7 @@ export const LookupDefinition = {
 						<input id={inputId} className={classNames('slds-input', { 'slds-hidden': hasSelection })} type="text" tabIndex={this.props.tabIndex} aria-autocomplete="list" aria-owns={this._getMenuId()} role="combobox" aria-expanded={isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed} ref={this._setInputRef} />
 					</div>
 				</div>
-				{this.props.modalMenu ? null : this._renderMenu()}
+				{this.props.modalMenu ? null: this._renderMenu()}
 			</div>
 		);
 	},

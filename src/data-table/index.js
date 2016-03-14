@@ -92,22 +92,22 @@ export const DataTableDefinition = {
 
 	// ### Prop Types
 	propTypes: {
-		bordered          : React.PropTypes.bool,
-		collection        : React.PropTypes.array.isRequired,
-		columns           : React.PropTypes.arrayOf(
+		bordered: React.PropTypes.bool,
+		collection: React.PropTypes.array.isRequired,
+		columns: React.PropTypes.arrayOf(
 			React.PropTypes.shape({
-				propertyName : React.PropTypes.string,
-				displayName  : React.PropTypes.string,
-				sortable     : React.PropTypes.bool,
-				hintParent   : React.PropTypes.bool
+				propertyName: React.PropTypes.string,
+				displayName: React.PropTypes.string,
+				sortable: React.PropTypes.bool,
+				hintParent: React.PropTypes.bool
 			})
 		).isRequired,
 		// TODO: Needs to be more specific, once selection feature is fleshed out.
-		selection         : React.PropTypes.any,
-		sortable          : React.PropTypes.bool,
-		stacked           : React.PropTypes.bool,
-		stackedHorizontal : React.PropTypes.bool,
-		striped           : React.PropTypes.bool
+		selection: React.PropTypes.any,
+		sortable: React.PropTypes.bool,
+		stacked: React.PropTypes.bool,
+		stackedHorizontal: React.PropTypes.bool,
+		striped: React.PropTypes.bool
 	},
 
 	// ### Component Will Mount
@@ -124,21 +124,21 @@ export const DataTableDefinition = {
 
 		if (isRowSelect && !(columns[0].propertyName === 'select')) {
 			columns.splice(0, 0, {
-				propertyName : 'select',
-				displayName  : '',
-				sortable     : false,
-				hintParent   : false
+				propertyName: 'select',
+				displayName: '',
+				sortable: false,
+				hintParent: false
 			});
 		}
 
 		// TODO: this should probably be a seperate view
 		return columns.map((column, index) => {
-			const select = isRowSelect && index === 0 ? self._getSelectCheckbox() : false;
+			const select = isRowSelect && index === 0 ? self._getSelectCheckbox(): false;
 			let sort;
 			let dir;
 
 			if (column.sortDirection) {
-				dir = column.sortDirection === 'desc' ? '/examples/symbols.svg#arrowdown' : '/examples/symbols.svg#arrowup';
+				dir = column.sortDirection === 'desc' ? '/examples/symbols.svg#arrowdown': '/examples/symbols.svg#arrowup';
 				sort = (
 					<button className="slds-button slds-button--icon-bare">
 						<svg aria-hidden="true"
@@ -158,7 +158,7 @@ export const DataTableDefinition = {
 						sortable: column.sortable,
 						hintParent: column.hintParent
 					})}
-					onClick={column.sortable ? this._handleSort.bind(this, column) : false}
+					onClick={column.sortable ? this._handleSort.bind(this, column): false}
 				>
 					{select}
 					<span className="slds-truncate" data-prop={column.propertyName}>{column.displayName}</span>
@@ -213,10 +213,10 @@ export const DataTableDefinition = {
 			<table
 				className={this._getClassNames(
 					{
-						bordered          : this.props.bordered,
-						stacked           : this.props.stacked,
-						stackedHorizontal : this.props.stackedHorizontal,
-						striped           : this.props.striped
+						bordered: this.props.bordered,
+						stacked: this.props.stacked,
+						stackedHorizontal: this.props.stackedHorizontal,
+						striped: this.props.striped
 					}
 			)}>
 				<thead>

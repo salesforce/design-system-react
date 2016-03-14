@@ -58,7 +58,7 @@ class Icon extends React.Component {
   }
 
   getContainerClassName() {
-    const name = this.props.name ? this.props.name.replace(/_/g,'-') : '';
+    const name = this.props.name ? this.props.name.replace(/_/g,'-'): '';
     const renderName = (this.props.category === 'action');
 
     return classNames({
@@ -68,7 +68,7 @@ class Icon extends React.Component {
   }
 
   getClassName() {
-    const name = this.props.name ? this.props.name.replace(/_/g,'-') : '';
+    const name = this.props.name ? this.props.name.replace(/_/g,'-'): '';
     const customName = this.props.name ? this.props.name.replace('custom', 'custom-'): null;
 
     return classNames(this.props.className, 'slds-icon', {

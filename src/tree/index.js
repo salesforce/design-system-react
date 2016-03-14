@@ -127,18 +127,18 @@ export const TreeDefinition = {
 			React.PropTypes.object
 		]).isRequired,
 		
-		autoOpen     : React.PropTypes.bool,
+		autoOpen: React.PropTypes.bool,
 		autoOpenLimit: React.PropTypes.number,
-		heading      : React.PropTypes.string,
-		id           : React.PropTypes.string,
-		disabled     : React.PropTypes.bool,
-		folderSelect : React.PropTypes.bool,
-		multiSelect  : React.PropTypes.bool,
-		onChanged    : React.PropTypes.func,
-		onClosed     : React.PropTypes.func,
-		onOpened     : React.PropTypes.func,
-		open         : React.PropTypes.any,
-		selection    : React.PropTypes.any
+		heading: React.PropTypes.string,
+		id: React.PropTypes.string,
+		disabled: React.PropTypes.bool,
+		folderSelect: React.PropTypes.bool,
+		multiSelect: React.PropTypes.bool,
+		onChanged: React.PropTypes.func,
+		onClosed: React.PropTypes.func,
+		onOpened: React.PropTypes.func,
+		open: React.PropTypes.any,
+		selection: React.PropTypes.any
 	},
 
 	// ### Component Will Mount
@@ -174,7 +174,7 @@ export const TreeDefinition = {
 						selectable              = {selectable}
 						strings                 = {this.state.strings}
 						autoOpenLevel           = {1}
-						autoOpenLimit           = {this.props.autoOpen ? this.props.autoOpenLimit : 0}
+						autoOpenLimit           = {this.props.autoOpen ? this.props.autoOpenLimit: 0}
 						onItemClick             = {this._handleItemClick}
 						onExpandClick           = {this._handleExpandClick}
 						_isFolderOpen           = {this._isFolderOpen}

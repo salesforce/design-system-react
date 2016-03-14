@@ -110,11 +110,11 @@ export const PillsDefinition = {
 
 	// ### Prop Types
 	propTypes: {
-		autoFocusOnNewItems : React.PropTypes.bool,
-		bare                : React.PropTypes.bool,
-		onDeselect          : React.PropTypes.func,
-		renderer            : React.PropTypes.func,
-		selection           : React.PropTypes.any.isRequired
+		autoFocusOnNewItems: React.PropTypes.bool,
+		bare: React.PropTypes.bool,
+		onDeselect: React.PropTypes.func,
+		renderer: React.PropTypes.func,
+		selection: React.PropTypes.any.isRequired
 	},
 
 	// ### Get Default Props

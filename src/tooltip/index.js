@@ -103,11 +103,11 @@ export const TooltipDefinition = {
 
 	// ### Prop Types
 	propTypes: {
-		alignmentTarget                    : mountable,
-		container                          : mountable,
-		isOpen                             : React.PropTypes.bool,
-		modal                              : React.PropTypes.bool,
-		positionedTargetVerticalAttachment : React.PropTypes.oneOf(Object.keys(Positionable.attatchmentOptions))
+		alignmentTarget: mountable,
+		container: mountable,
+		isOpen: React.PropTypes.bool,
+		modal: React.PropTypes.bool,
+		positionedTargetVerticalAttachment: React.PropTypes.oneOf(Object.keys(Positionable.attatchmentOptions))
 	},
 
 	// ### Component Will Mount

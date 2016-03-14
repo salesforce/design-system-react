@@ -31,7 +31,7 @@ const gitversion = process.env.GIT_VERSION;
 // Helpers
 ///////////////////////////////////////////////////////////////
 
-const distPath = path.resolve.bind(path, isNpm ? __PATHS__.npm : __PATHS__.dist);
+const distPath = path.resolve.bind(path, isNpm ? __PATHS__.npm: __PATHS__.dist);
 
 function copy (src, dest, options, done) {
 	gulp.src(src, options)

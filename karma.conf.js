@@ -11,7 +11,7 @@ module.exports = function (config) {
 		// Using Chrome for the time being, until we can get promises in phantomjs working
 
 		// For use with TravisCI
-		browsers: [process.env.CONTINUOUS_INTEGRATION ? 'Firefox' : 'Chrome'],
+		browsers: [process.env.CONTINUOUS_INTEGRATION ? 'Firefox': 'Chrome'],
 
 		// enable / disable colors in the output (reporters and logs)
 		colors: true,

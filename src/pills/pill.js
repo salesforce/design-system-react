@@ -51,12 +51,12 @@ const Pill = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
-		autoFocus  : React.PropTypes.bool,
-		bare       : React.PropTypes.bool,
-		item       : React.PropTypes.object.isRequired,
-		onDeselect : React.PropTypes.func.isRequired,
-		renderer   : React.PropTypes.func.isRequired,
-		strings    : React.PropTypes.object.isRequired
+		autoFocus: React.PropTypes.bool,
+		bare: React.PropTypes.bool,
+		item: React.PropTypes.object.isRequired,
+		onDeselect: React.PropTypes.func.isRequired,
+		renderer: React.PropTypes.func.isRequired,
+		strings: React.PropTypes.object.isRequired
 	},
 
 	// ### Get Default Props

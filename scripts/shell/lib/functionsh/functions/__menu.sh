@@ -123,7 +123,7 @@ function __menu {
         shift
     fi
 
-    egrep -q ' -k :' <<< "$@" && k=true
+    egrep -q ' -k:' <<< "$@" && k=true
     if [ $k ]; then
         until [ "$1" == "-k" ]; do
             items[${#items[@]}]="$1"

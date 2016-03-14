@@ -117,8 +117,8 @@ export const DatepickerDefinition = {
 
 	// ### Prop Types
 	propTypes: {
-		inputLabel    : React.PropTypes.string,
-		modalCalendar : React.PropTypes.bool
+		inputLabel: React.PropTypes.string,
+		modalCalendar: React.PropTypes.bool
 	},
 
 	// ### Component Will Mount
@@ -147,7 +147,7 @@ export const DatepickerDefinition = {
 					strings      = {this.state.strings}
 					onChange     = {this._manualDateInput}
 				/>
-					{this.props.modalCalendar ? null : this._renderCalendar()}
+					{this.props.modalCalendar ? null: this._renderCalendar()}
 			</div>
 		);
 	},

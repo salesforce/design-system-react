@@ -120,8 +120,8 @@ const TreeBranch = React.createClass({
 		});
 
 		return (
-			<li id={this.props.id} role="treeitem" aria-expanded={isOpen ? 'true' : 'false'} aria-level={this.props.autoOpenLevel}>
-				<div className={classNames('slds-tree__item', {'slds-is-selected': isSelected})} aria-selected={isSelected ? 'true' : 'false'} >
+			<li id={this.props.id} role="treeitem" aria-expanded={isOpen ? 'true': 'false'} aria-level={this.props.autoOpenLevel}>
+				<div className={classNames('slds-tree__item', {'slds-is-selected': isSelected})} aria-selected={isSelected ? 'true': 'false'} >
 					<Button
 						id={togglerId}
 						aria-controls={this.props.id}
@@ -136,7 +136,7 @@ const TreeBranch = React.createClass({
 						</a>
 				</div>
 				<ul className={classNames({'slds-is-expanded': isOpen}, {'slds-is-collapsed': !isOpen}, )} role="group" aria-labelledby={labelId} aria-aria-controlledby={togglerId}>
-					{isOpen ? children : undefined}
+					{isOpen ? children: undefined}
 				</ul>
 				<div className={classNames('slds-spinner', 'slds-spinner--small', {'slds-hide': !this.state.loading || !isOpen})} role="alert">Loading</div>
 			</li>

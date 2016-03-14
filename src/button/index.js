@@ -102,16 +102,16 @@ export const ButtonDefinition = {
 
 	// ### Prop Types
 	propTypes: {
-		assistiveText : React.PropTypes.string,
-		icon          : isIcon,
-		iconPosition  : React.PropTypes.oneOf(Object.keys(ButtonViewCore.iconPositions)),
-		iconSize      : React.PropTypes.oneOf(Object.keys(ButtonViewCore.buttonIconSizes)),
-		iconStyle     : React.PropTypes.oneOf(Object.keys(ButtonCore.iconButtonStyles)),
-		selected      : React.PropTypes.bool,
-		selectable    : React.PropTypes.bool,
-		size          : React.PropTypes.oneOf(Object.keys(ButtonCore.sizes)),
-		text          : React.PropTypes.string,
-		theme         : React.PropTypes.oneOf(Object.keys(ButtonCore.themes))
+		assistiveText: React.PropTypes.string,
+		icon: isIcon,
+		iconPosition: React.PropTypes.oneOf(Object.keys(ButtonViewCore.iconPositions)),
+		iconSize: React.PropTypes.oneOf(Object.keys(ButtonViewCore.buttonIconSizes)),
+		iconStyle: React.PropTypes.oneOf(Object.keys(ButtonCore.iconButtonStyles)),
+		selected: React.PropTypes.bool,
+		selectable: React.PropTypes.bool,
+		size: React.PropTypes.oneOf(Object.keys(ButtonCore.sizes)),
+		text: React.PropTypes.string,
+		theme: React.PropTypes.oneOf(Object.keys(ButtonCore.themes))
 		// > @todo Decide if this valid. Picklist needs spans and SVG as children.
 		/*
 		children: function (props, propName, componentName) {
@@ -169,8 +169,8 @@ export const ButtonDefinition = {
 		// If there are existing children (typically of type [`ButtonView`](./button-view.html).), we need to clone them and pass them all the same `iconPosition` that is used by the button.
 		const views = React.Children.map(this.props.children, (child, index) => {
 			return React.cloneElement(child, {
-				iconPosition : this.props.iconPosition,
-				key          : index
+				iconPosition: this.props.iconPosition,
+				key: index
 			});
 		}) || [];
 
@@ -181,7 +181,7 @@ export const ButtonDefinition = {
 		// If there are no children, the Button does not need a view type.
 
 		// However, if there are, we give it a view type of `notSelected`, to represent its ARIA role.
-		const defaultView = views.length > 0 ? 'notSelected' : null;
+		const defaultView = views.length > 0 ? 'notSelected': null;
 
 		views.push(
 			<ButtonView

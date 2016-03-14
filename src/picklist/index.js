@@ -121,11 +121,11 @@ export const PicklistDefinition = {
 		/**
 		 * If true, renders checkmark icon on the selected Menu Item.
 		 */
-		checkmark : React.PropTypes.bool,
-		disabled  : React.PropTypes.bool,
-		id        : React.PropTypes.string,
-		modalMenu : React.PropTypes.bool,
-		selection : React.PropTypes.object,
+		checkmark: React.PropTypes.bool,
+		disabled: React.PropTypes.bool,
+		id: React.PropTypes.string,
+		modalMenu: React.PropTypes.bool,
+		selection: React.PropTypes.object,
 		// > @todo Type of collection unknown until parsed by Data Adapter
 		collection: React.PropTypes.oneOfType([
 			React.PropTypes.array,
@@ -194,7 +194,7 @@ export const PicklistDefinition = {
 					<span className="slds-truncate">{selectionName}</span>
 					<Svg className="slds-icon" icon="utility.down" />
 				</Button>
-				{this.props.modalMenu ? null : this._renderMenu()}
+				{this.props.modalMenu ? null: this._renderMenu()}
 			</div>
 		);
 	},

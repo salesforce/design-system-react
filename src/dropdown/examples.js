@@ -19,20 +19,20 @@ const DropdownExample = React.createClass({
 
 		const collection = [
 			{
-				id   : 0,
-				text : 'Menu Item One',
+				id: 0,
+				text: 'Menu Item One',
 				value: '1',
-				icon : 'utility.table'
+				icon: 'utility.table'
 			}, {
-				id   : 1,
-				text : 'Menu Item Two',
+				id: 1,
+				text: 'Menu Item Two',
 				value: '2',
-				icon : 'utility.kanban'
+				icon: 'utility.kanban'
 			}, {
-				id   : 2,
-				text : 'Menu Item Three',
+				id: 2,
+				text: 'Menu Item Three',
 				value: '3',
-				icon : 'utility.side_list'
+				icon: 'utility.side_list'
 			}
 		];
 
@@ -44,15 +44,15 @@ const DropdownExample = React.createClass({
 		return {
 			models: [
 				{
-					checkmark : true,
+					checkmark: true,
 					collection: dropdownSampleData.collection,
-					disabled  : false,
-					selection : dropdownSampleData.collection[dropdownSampleData.selection.value]
+					disabled: false,
+					selection: dropdownSampleData.collection[dropdownSampleData.selection.value]
 				},
 				{
 					collection: dropdownSampleData.collection,
-					disabled  : false,
-					selection : dropdownSampleData.collection[dropdownSampleData.selection.value]
+					disabled: false,
+					selection: dropdownSampleData.collection[dropdownSampleData.selection.value]
 				}
 			]
 		};

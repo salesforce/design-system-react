@@ -46,7 +46,7 @@ const TreeItem = React.createClass({
 
 		return (
 			<li id={this.props.id} onClick={this._handleItemClick.bind(this, this.props.item)} data-template="treeitem" role="treeitem" aria-level={this.props.autoOpenLevel}>
-				<div className={classNames('slds-tree__item', {'slds-is-selected': isSelected})} aria-selected={isSelected ? 'true' : 'false'} >
+				<div className={classNames('slds-tree__item', {'slds-is-selected': isSelected})} aria-selected={isSelected ? 'true': 'false'} >
 					<a id={labelId} dataItemId={this.getId} tabIndex="-1" role="presentation" className={classNames('slds-truncate', 'slds-size--1-of-1')}>
 						{this.props.item.getText()}
 					</a>

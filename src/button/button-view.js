@@ -57,12 +57,12 @@ export const ButtonViewObject = {
 
 	// ### Prop Types
 	propTypes: {
-		assistiveText : React.PropTypes.string,
-		icon          : isIcon,
-		iconPosition  : React.PropTypes.oneOf(Object.keys(ButtonViewCore.iconPositions)),
-		iconSize      : React.PropTypes.oneOf(Object.keys(ButtonViewCore.buttonIconSizes)),
-		text          : React.PropTypes.string,
-		view          : React.PropTypes.oneOf(Object.keys(ButtonViewCore.buttonStatefulViewStyles))
+		assistiveText: React.PropTypes.string,
+		icon: isIcon,
+		iconPosition: React.PropTypes.oneOf(Object.keys(ButtonViewCore.iconPositions)),
+		iconSize: React.PropTypes.oneOf(Object.keys(ButtonViewCore.buttonIconSizes)),
+		text: React.PropTypes.string,
+		view: React.PropTypes.oneOf(Object.keys(ButtonViewCore.buttonStatefulViewStyles))
 	},
 
 	// ### Render Assistive Text

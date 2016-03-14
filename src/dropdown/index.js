@@ -69,19 +69,19 @@ export const DropdownDefinition = {
 
 	// ### Prop Types
 	propTypes: {
-		align      : React.PropTypes.oneOf(['left', 'right']),
+		align: React.PropTypes.oneOf(['left', 'right']),
 		/**
 		 * If true, renders checkmark icon on the selected Menu Item.
 		 */
-		checkmark  : React.PropTypes.bool,
+		checkmark: React.PropTypes.bool,
 		// > @todo Type of collection unknown until parsed by Data Adapter
-		collection : React.PropTypes.oneOfType([React.PropTypes.array, React.PropTypes.object]).isRequired,
-		disabled   : React.PropTypes.bool,
-		icon       : isIcon,
-		id         : React.PropTypes.string,
+		collection: React.PropTypes.oneOfType([React.PropTypes.array, React.PropTypes.object]).isRequired,
+		disabled: React.PropTypes.bool,
+		icon: isIcon,
+		id: React.PropTypes.string,
 		renderArrow: React.PropTypes.bool,
-		selection  : React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
-		swapIcon   : React.PropTypes.bool
+		selection: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
+		swapIcon: React.PropTypes.bool
 	},
 
 	// ### Get Icon
@@ -97,7 +97,7 @@ export const DropdownDefinition = {
 
 	// ### Get Style
 	_getStyle () {
-		return this.props.renderArrow ? 'icon-more' : 'icon-container';
+		return this.props.renderArrow ? 'icon-more': 'icon-container';
 	},
 
 	// ### Render

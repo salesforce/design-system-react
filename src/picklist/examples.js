@@ -19,41 +19,41 @@ const PicklistExample = React.createClass({
 		const collection = [
 			{
 				_itemType: 'header',
-				text     : 'One thing'
+				text: 'One thing'
 			}, {
-				id   : 0,
-				text : 'One',
+				id: 0,
+				text: 'One',
 				value: '1',
-				icon : 'utility.apps'
+				icon: 'utility.apps'
 			}, {
 				_itemType: 'divider'
 			}, {
 				_itemType: 'header',
-				text     : 'All the things'
+				text: 'All the things'
 			}, {
-				id   : 1,
-				text : 'Two',
+				id: 1,
+				text: 'Two',
 				value: '2',
-				icon : 'utility.email'
+				icon: 'utility.email'
 			}, {
-				id   : 2,
-				text : 'Three',
+				id: 2,
+				text: 'Three',
 				value: '3'
 			}, {
-				id   : 3,
-				text : 'Buzz',
+				id: 3,
+				text: 'Buzz',
 				value: '4'
 			}, {
-				id   : 4,
-				text : 'Item Five',
+				id: 4,
+				text: 'Item Five',
 				value: 'Item Five',
-				fizz : 'buzz',
-				foo  : 'bar'
+				fizz: 'buzz',
+				foo: 'bar'
 			}, {
-				id      : 5,
-				text    : 'A Disabled Item',
+				id: 5,
+				text: 'A Disabled Item',
 				disabled: true,
-				value   : 'disabled'
+				value: 'disabled'
 			}
 		];
 
@@ -67,14 +67,14 @@ const PicklistExample = React.createClass({
 			models: [
 				{
 					collection: picklistSampleData.collection,
-					disabled  : false,
-					selection : picklistSampleData.collection[1]
+					disabled: false,
+					selection: picklistSampleData.collection[1]
 				},
 				{
-					checkmark : true,
+					checkmark: true,
 					collection: picklistSampleData.collection,
-					disabled  : false,
-					selection : picklistSampleData.collection[1]
+					disabled: false,
+					selection: picklistSampleData.collection[1]
 				}
 			]
 		};

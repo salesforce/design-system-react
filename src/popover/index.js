@@ -91,11 +91,11 @@ export const PopoverDefinition = {
 
 	// ### Prop Types
 	propTypes: {
-		alignmentTarget                    : mountable,
-		autoFlip                           : React.PropTypes.bool,
-		container                          : mountable,
-		modal                              : React.PropTypes.bool,
-		positionedTargetVerticalAttachment : React.PropTypes.oneOf(Object.keys(Positionable.attatchmentOptions))
+		alignmentTarget: mountable,
+		autoFlip: React.PropTypes.bool,
+		container: mountable,
+		modal: React.PropTypes.bool,
+		positionedTargetVerticalAttachment: React.PropTypes.oneOf(Object.keys(Positionable.attatchmentOptions))
 	},
 
 	// ### Render Popover Content
