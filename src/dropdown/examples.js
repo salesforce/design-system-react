@@ -6,6 +6,8 @@ import Dropdown from './index';
 
 
 const DropdownExample = React.createClass({
+	displayName: 'DropdownExample',
+
 	propTypes: {
 		models: React.PropTypes.arrayOf(React.PropTypes.object)
 	},
@@ -17,25 +19,40 @@ const DropdownExample = React.createClass({
 
 		const collection = [
 			{
-				id: 0, text: 'Menu Item One', value: '1', icon: 'utility.table'
+				id   : 0,
+				text : 'Menu Item One',
+				value: '1',
+				icon : 'utility.table'
 			}, {
-				id: 1, text: 'Menu Item Two', value: '2', icon: 'utility.kanban'
+				id   : 1,
+				text : 'Menu Item Two',
+				value: '2',
+				icon : 'utility.kanban'
 			}, {
-				id: 2, text: 'Menu Item Three', value: '3', icon: 'utility.side_list'
+				id   : 2,
+				text : 'Menu Item Three',
+				value: '3',
+				icon : 'utility.side_list'
 			}
 		];
 
 		const dropdownSampleData = {
-			selection: selection,
-			collection: collection
+			selection,
+			collection
 		};
 
 		return {
 			models: [
 				{
+					checkmark : true,
 					collection: dropdownSampleData.collection,
-					disabled: false,
-					selection: dropdownSampleData.collection[dropdownSampleData.selection.value]
+					disabled  : false,
+					selection : dropdownSampleData.collection[dropdownSampleData.selection.value]
+				},
+				{
+					collection: dropdownSampleData.collection,
+					disabled  : false,
+					selection : dropdownSampleData.collection[dropdownSampleData.selection.value]
 				}
 			]
 		};
@@ -71,7 +88,7 @@ const DropdownExample = React.createClass({
 	_handleModelChange (index, selection) {
 		const models = this.state.models;
 		models[index].selection = selection;
-		this.setState({models});
+		this.setState({ models });
 	},
 
 	toggleSelectlistsEnabled () {
@@ -90,19 +107,19 @@ const DropdownExample = React.createClass({
 	setSelection (index) {
 		const models = this.state.models;
 		models[index].selection = models.collection.Array[3];
-		this.setState({models});
+		this.setState({ models });
 	},
 
 	enable (index) {
 		const models = this.state.models;
 		models[index].disabled = false;
-		this.setState({models});
+		this.setState({ models });
 	},
 
 	disable (index) {
 		const models = this.state.models;
 		models[index].disabled = true;
-		this.setState({models});
+		this.setState({ models });
 	}
 });
 

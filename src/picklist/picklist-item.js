@@ -27,28 +27,33 @@ const PicklistItem = React.createClass({
 	displayName: CONTROL,
 
 	cssClasses: {
-		ITEMHEADER: 'slds-dropdown__header',
+		ITEMHEADER    : 'slds-dropdown__header',
 		ITEMHEADERTEXT: 'slds-text-heading--label',
-		ITEMDIVIDER: 'slds-has-divider'
+		ITEMDIVIDER   : 'slds-has-divider'
 	},
 
 	propTypes: {
-		id: React.PropTypes.string,
+		id       : React.PropTypes.string,
+		checkmark: React.PropTypes.bool,
 		// TODO: explore if item PropTypes can be done better
-		item: React.PropTypes.shape({
-			getType: React.PropTypes.func.isRequired,
+		item     : React.PropTypes.shape({
+			getType    : React.PropTypes.func.isRequired,
 			getDisabled: React.PropTypes.func.isRequired,
 			// getId: React.PropTypes.func.isRequired,
-			getText: React.PropTypes.func.isRequired,
+			getText    : React.PropTypes.func.isRequired,
 			// getValue: React.PropTypes.func.isRequired,
-			getIcon: React.PropTypes.func.isRequired
+			getIcon    : React.PropTypes.func.isRequired
 		}).isRequired,
 		onSelected: React.PropTypes.func.isRequired,
-		selected: React.PropTypes.bool
+		selected  : React.PropTypes.bool
 	},
 	
 	_renderCheckmark () {
-		return <Svg className="slds-icon slds-icon--selected slds-icon--x-small slds-icon-text-default slds-m-right--small" icon="utility.check" />;
+		if (this.props.checkmark) {
+			return (<Svg className="slds-icon slds-icon--selected slds-icon--x-small slds-icon-text-default slds-m-right--small" icon="utility.check" />
+				);
+		}
+		return false;
 	},
 
 	_renderIcon () {
@@ -57,6 +62,7 @@ const PicklistItem = React.createClass({
 		if (isString(icon)) {
 			return <Svg className="slds-icon slds-icon--x-small slds-icon-text-default slds-m-left--small slds-shrink-none" icon={icon} />;
 		}
+		return false;
 	},
 
 	render () {
@@ -73,7 +79,7 @@ const PicklistItem = React.createClass({
 				const disabled = this.props.item.getDisabled();
 
 				html = (
-					<li className={classNames('slds-dropdown__item', {'slds-is-selected': this.props.selected})} disabled={disabled} id={this.props.id}>
+					<li className={classNames('slds-dropdown__item', { 'slds-is-selected': this.props.selected })} disabled={disabled} id={this.props.id}>
 					<a href="#" onClick={this.handleClicked} aria-disabled={disabled}>
 						<p className="slds-truncate">
 							{this._renderCheckmark()}
