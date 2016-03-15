@@ -81,7 +81,12 @@ export const DropdownDefinition = {
 		id: React.PropTypes.string,
 		renderArrow: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
-		swapIcon: React.PropTypes.bool
+		swapIcon: React.PropTypes.bool,
+		el: React.PropTypes.oneOfType([React.DOM.div, React.DOM.li])
+	},
+
+	defaultProps: {
+		el: React.DOM.div
 	},
 
 	// ### Get Icon
@@ -104,9 +109,10 @@ export const DropdownDefinition = {
 	render () {
 		const isOpen = Openable.isOpen(this);
 		const triggerId = this._getTriggerId();
+		const el = this.props.el;
 
 		return (
-			<div className={"slds-dropdown-trigger slds-dropdown-trigger--click"}
+			<el className={"slds-dropdown-trigger slds-dropdown-trigger--click"}
 				id={this.state.id}
 				aria-expanded={isOpen}
 				onKeyDown={this._handleKeyPressed}
@@ -132,7 +138,7 @@ export const DropdownDefinition = {
 					show={ isOpen && !this.props.disabled}
 					onSelected={this._handleMenuItemSelected}
 				/>
-			</div>
+			</el>
 		);
 	}
 };
@@ -141,7 +147,7 @@ export const DropdownDefinition = {
 
 // SLDS for React **extends objects** by merging them together, rather than
 // via the prototype chain or imitation of object-oriented inheritance.
-// The important thing to remember is that _some methods will be available 
+// The important thing to remember is that _some methods will be available
 // to the component which are not declared in this file_.
 
 // These are not magic methods, they're not black box methods, but you do need
