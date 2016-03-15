@@ -70,7 +70,7 @@ import ButtonView from './button-view';
 
 // SLDS for React **extends objects** by merging them together, rather than
 // via the prototype chain or imitation of object-oriented inheritance.
-// The important thing to remember is that _some methods will be available 
+// The important thing to remember is that _some methods will be available
 // to the component which are not declared in this file_.
 
 // These are not magic methods, they're not black box methods, but you do need
@@ -167,12 +167,10 @@ export const ButtonDefinition = {
 		const isStateful = React.Children.count(this.props.children) || this.props.selectable;
 
 		// If there are existing children (typically of type [`ButtonView`](./button-view.html).), we need to clone them and pass them all the same `iconPosition` that is used by the button.
-		const views = React.Children.map(this.props.children, (child, index) => {
-			return React.cloneElement(child, {
-				iconPosition: this.props.iconPosition,
-				key: index
-			});
-		}) || [];
+		const views = React.Children.map(this.props.children, (child, index) => React.cloneElement(child, {
+			iconPosition: this.props.iconPosition,
+			key: index
+		})) || [];
 
 		// ### Default View
 
@@ -181,7 +179,7 @@ export const ButtonDefinition = {
 		// If there are no children, the Button does not need a view type.
 
 		// However, if there are, we give it a view type of `notSelected`, to represent its ARIA role.
-		const defaultView = views.length > 0 ? 'notSelected': null;
+		const defaultView = views.length > 0 ? 'notSelected' : null;
 
 		views.push(
 			<ButtonView

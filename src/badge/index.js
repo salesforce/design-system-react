@@ -83,7 +83,7 @@ export const BadgeDefinition = {
 	   */
 		children: React.PropTypes.any.isRequired,
 			/**
-		   * Please choose a theme from the following: 
+		   * Please choose a theme from the following:
 		   <code>base, default, shade, inverse,</code>
 		   <code>alt-inverse, info, success, warning,</code>
 		   <code>error, offline, shade-alert-texture</code>.
