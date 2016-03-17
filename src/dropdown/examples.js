@@ -47,7 +47,8 @@ const DropdownExample = React.createClass({
 					checkmark: true,
 					collection: dropdownSampleData.collection,
 					disabled: false,
-					selection: dropdownSampleData.collection[dropdownSampleData.selection.value]
+					selection: dropdownSampleData.collection[dropdownSampleData.selection.value],
+					el: "li"
 				},
 				{
 					collection: dropdownSampleData.collection,
