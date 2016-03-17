@@ -82,11 +82,13 @@ export const DropdownDefinition = {
 		renderArrow: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
 		swapIcon: React.PropTypes.bool,
-		el: React.PropTypes.oneOfType([React.DOM.div, React.DOM.li])
+		el: React.PropTypes.oneOf(['div', 'li'])
 	},
 
-	defaultProps: {
-		el: React.DOM.div
+	getDefaultProps () {
+		return {
+			el: 'div'
+		};
 	},
 
 	// ### Get Icon
@@ -109,10 +111,10 @@ export const DropdownDefinition = {
 	render () {
 		const isOpen = Openable.isOpen(this);
 		const triggerId = this._getTriggerId();
-		const el = this.props.el;
+		const El = this.props.el;
 
 		return (
-			<el className={"slds-dropdown-trigger slds-dropdown-trigger--click"}
+			<El className={"slds-dropdown-trigger slds-dropdown-trigger--click"}
 				id={this.state.id}
 				aria-expanded={isOpen}
 				onKeyDown={this._handleKeyPressed}
@@ -138,7 +140,7 @@ export const DropdownDefinition = {
 					show={ isOpen && !this.props.disabled}
 					onSelected={this._handleMenuItemSelected}
 				/>
-			</el>
+			</El>
 		);
 	}
 };
