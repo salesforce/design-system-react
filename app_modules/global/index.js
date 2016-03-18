@@ -10,9 +10,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 export default {
-	abbreviatedName: 'DSF',
+	abbreviatedName: 'slds-for-react',
 	cssPrefix: 'slds-',
-	displayName: 'SLDS for JavaScript',
+	displayName: 'SLDS for React',
 	filenamePrefix: 'slds',
 	analyticsHostWhitelist: [
 		'slds-for-js.herokuapp.com',
@@ -21,10 +21,10 @@ export default {
 	],
 	moduleName: 'slds-for-react',
 	resetWrappingClass: '.slds',
-	zipName: function (version) {
-		return this.moduleName + '-' + version + '.zip';
+	zipName (version) {
+		return `${this.moduleName}-${version}.zip`;
 	},
-	downloadPath: function (version) {
-		return '/assets/downloads/' + this.zipName(version);
+	downloadPath (version) {
+		return `/dist/${this.zipName(version)}`;
 	}
 };
