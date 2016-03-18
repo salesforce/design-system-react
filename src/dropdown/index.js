@@ -40,6 +40,14 @@ import Openable from 'slds-for-js-core/traits/openable';
 // React is an external dependency of the project.
 import React from 'react';
 
+// #### classNames
+// [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
+// Façades uses `classnames`, "a simple javascript utility for conditionally
+// joining classNames together." Because of the small size of the library, the
+// default build includes the entire library rather than requiring it as an
+// external dependency.
+import classNames from 'classnames';
+
 // ### Mixins
 
 // These are mixins that appear in all of SLDS for Javascript,
@@ -76,6 +84,10 @@ export const DropdownDefinition = {
 		checkmark: React.PropTypes.bool,
 		// > @todo Type of collection unknown until parsed by Data Adapter
 		collection: React.PropTypes.oneOfType([React.PropTypes.array, React.PropTypes.object]).isRequired,
+		/**
+		 * Class name assigned to the container element (this element also has `slds-dropdown-trigger slds-dropdown-trigger--click` classes)
+		 */
+		className: React.PropTypes.oneOfType([React.PropTypes.array, React.PropTypes.object, React.PropTypes.string]),
 		disabled: React.PropTypes.bool,
 		icon: isIcon,
 		id: React.PropTypes.string,
@@ -113,8 +125,10 @@ export const DropdownDefinition = {
 		const triggerId = this._getTriggerId();
 		const El = this.props.el;
 
+		console.log(this.props.el);
+
 		return (
-			<El className={"slds-dropdown-trigger slds-dropdown-trigger--click"}
+			<El className={classNames("slds-dropdown-trigger slds-dropdown-trigger--click", this.props.className)}
 				id={this.state.id}
 				aria-expanded={isOpen}
 				onKeyDown={this._handleKeyPressed}
