@@ -4,6 +4,24 @@ import Dropdown from './index';
 
 // SAMPLE CONTROL CODE -->
 
+const dropdownSampleData = [
+	{
+		id: 0,
+		text: 'Menu Item One',
+		value: '1',
+		icon: 'utility.table'
+	}, {
+		id: 1,
+		text: 'Menu Item Two',
+		value: '2',
+		icon: 'utility.kanban'
+	}, {
+		id: 2,
+		text: 'Menu Item Three',
+		value: '3',
+		icon: 'utility.side_list'
+	}
+];
 
 const DropdownExample = React.createClass({
 	displayName: 'DropdownExample',
@@ -13,114 +31,38 @@ const DropdownExample = React.createClass({
 	},
 
 	getInitialState () {
-		const selection = {
-			value: 1
-		};
-
-		const collection = [
-			{
-				id: 0,
-				text: 'Menu Item One',
-				value: '1',
-				icon: 'utility.table'
-			}, {
-				id: 1,
-				text: 'Menu Item Two',
-				value: '2',
-				icon: 'utility.kanban'
-			}, {
-				id: 2,
-				text: 'Menu Item Three',
-				value: '3',
-				icon: 'utility.side_list'
-			}
-		];
-
-		const dropdownSampleData = {
-			selection,
-			collection
-		};
-
 		return {
-			models: [
-				{
-					checkmark: true,
-					collection: dropdownSampleData.collection,
-					disabled: false,
-					selection: dropdownSampleData.collection[dropdownSampleData.selection.value],
-					el: "li"
-				},
-				{
-					collection: dropdownSampleData.collection,
-					disabled: false,
-					selection: dropdownSampleData.collection[dropdownSampleData.selection.value]
-				}
-			]
+			selectionOne: dropdownSampleData[0]
 		};
 	},
 
 	render () {
-		const dropdowns = this.state.models.map((model, index) => {
-			return (
-				<div key={index}>
-					<div className="slds-col example">
-						<Dropdown {...model} onChange={this._handleModelChange.bind(this, index)} />
-					</div>
-					<div className="slds-col demo-controls">
-						<div className="slds-button-group" role="group">
-							<button type="button" className="slds-button slds-button--neutral slds-button--small" onClick={this.logSelectedItem.bind(this, index)}>Log selected item</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--small" disabled>Set by index</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--small" onClick={this.setSelection.bind(this, index)}>Set by object</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--small" onClick={this.enable.bind(this, index)}>Enable</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--small" onClick={this.disable.bind(this, index)}>Disable</button>
-						</div>
-					</div>
-				</div>
-			);
-		});
-
 		return (
 			<div>
-				{dropdowns}
+				<Dropdown
+					checkmark
+					collection={dropdownSampleData}
+					selection={this.state.selectionOne}
+					el="li"
+					onChange={this.handleOneChange}
+				/>
+				<Dropdown
+					checkmark
+					collection={dropdownSampleData}
+					selection={this.state.selectionTwo}
+					el="li"
+					onChange={this.handleTwoChange}
+				/>
 			</div>
 		);
 	},
 
-	_handleModelChange (index, selection) {
-		const models = this.state.models;
-		models[index].selection = selection;
-		this.setState({ models });
+	handleOneChange (selectionOne) {
+		this.setState({ selectionOne });
 	},
 
-	toggleSelectlistsEnabled () {
-		this.setState({
-			models: this.state.models.map(model => {
-				model.disabled = !model.disabled;
-				return model;
-			})
-		});
-	},
-
-	logSelectedItem (index) {
-		Lib.log(this.state.models[index].selection);
-	},
-
-	setSelection (index) {
-		const models = this.state.models;
-		models[index].selection = models.collection.Array[3];
-		this.setState({ models });
-	},
-
-	enable (index) {
-		const models = this.state.models;
-		models[index].disabled = false;
-		this.setState({ models });
-	},
-
-	disable (index) {
-		const models = this.state.models;
-		models[index].disabled = true;
-		this.setState({ models });
+	handleTwoChange (selectionTwo) {
+		this.setState({ selectionTwo });
 	}
 });
 
