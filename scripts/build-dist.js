@@ -101,6 +101,7 @@ async.series([
 	 * Get rid of extra files that are in src
 	 */
 	(done) => rimraf(distPath('es', 'dev-examples.js'), done),
+	(done) => rimraf(distPath('es', 'dev-example.js'), done),
 	(done) => rimraf(distPath('es', 'dist.js'), done),
 
 	/**
