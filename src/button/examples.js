@@ -18,8 +18,8 @@ const ButtonExample = React.createClass({
 			<div className="slds-grid slds-grid--vertical">
 
 				<div className="slds-col | slds-m-bottom--small">
-					<Button text="Base"/>
-					<Button text="Disabled" disabled/>
+					<Button text="Base" />
+					<Button text="Disabled" disabled />
 				</div>
 
 				<div className="slds-col | slds-m-bottom--small">
@@ -51,8 +51,8 @@ const ButtonExample = React.createClass({
 				<div className="slds-col | slds-m-bottom--small">
 					<div className="slds-button-stateful" role="group">
 						<Button theme="neutral" icon="utility.add" text="Follow" selected={this.state.buttonStatefulSelected} onClick={this.handleClickButtonStateful}>
-							<ButtonView text="Following" view="selected" icon="utility.check"/>
-							<ButtonView text="Unfollow" view="selectedHover" icon="utility.close"/>
+							<ButtonView text="Following" view="selected" icon="utility.check" />
+							<ButtonView text="Unfollow" view="selectedHover" icon="utility.close" />
 						</Button>
 					</div>
 				</div>
@@ -60,8 +60,8 @@ const ButtonExample = React.createClass({
 					<div className="slds-box slds-box--x-small | slds-theme--inverse">
 						<div className="slds-button-stateful" role="group">
 							<Button theme="inverse" icon="utility.add" text="Follow" selected={this.state.buttonStatefulInverseSelected} onClick={this.handleClickButtonStatefulInverse}>
-								<ButtonView text="Following" view="selected" icon="utility.check"/>
-								<ButtonView text="Unfollow" view="selectedHover" icon="utility.close"/>
+								<ButtonView text="Following" view="selected" icon="utility.check" />
+								<ButtonView text="Unfollow" view="selectedHover" icon="utility.close" />
 							</Button>
 						</div>
 					</div>
@@ -79,17 +79,17 @@ const ButtonExample = React.createClass({
 					<Button icon="utility.close" assistiveText="Icon: Large" iconStyle="icon-bare" iconSize="large" disabled />
 				</div>
 				<div className="slds-col | slds-m-bottom--small">
-					<Button icon="utility.table" assistiveText="Icon: Container" iconStyle="icon-container"/>
-					<Button icon="utility.table" assistiveText="Icon: Container (disabled)" iconStyle="icon-container" disabled/>
+					<Button icon="utility.table" assistiveText="Icon: Container" iconStyle="icon-container" />
+					<Button icon="utility.table" assistiveText="Icon: Container (disabled)" iconStyle="icon-container" disabled />
 				</div>
 				<div className="slds-col | slds-m-bottom--small">
-					<Button icon="utility.table" assistiveText="Icon: Border" iconStyle="icon-border"/>
-					<Button icon="utility.table" assistiveText="Icon: Border (disabled)" iconStyle="icon-border" disabled/>
+					<Button icon="utility.table" assistiveText="Icon: Border" iconStyle="icon-border" />
+					<Button icon="utility.table" assistiveText="Icon: Border (disabled)" iconStyle="icon-border" disabled />
 				</div>
 				<div className="slds-col | slds-m-bottom--small">
 					<div className="slds-box slds-box--x-small | slds-theme--success">
-						<Button icon="utility.table" assistiveText="Icon: Border Filled" iconStyle="icon-border-filled"/>
-						<Button icon="utility.table" assistiveText="Icon: Border Filled (disabled)" iconStyle="icon-border-filled" disabled/>
+						<Button icon="utility.table" assistiveText="Icon: Border Filled" iconStyle="icon-border-filled" />
+						<Button icon="utility.table" assistiveText="Icon: Border Filled (disabled)" iconStyle="icon-border-filled" disabled />
 					</div>
 				</div>
 				<div className="slds-col | slds-m-bottom--small">
@@ -100,7 +100,7 @@ const ButtonExample = React.createClass({
 				</div>
 				<div className="slds-col | slds-m-bottom--small">
 					<div className="slds-button-icon-stateful" role="group">
-						<Button selectable icon="utility.like" iconStyle="icon-border" assistiveText="Like" selected={this.state.buttonIconStateful} onClick={this.handleClickIconStateful}/>
+						<Button selectable icon="utility.like" iconStyle="icon-border" assistiveText="Like" selected={this.state.buttonIconStateful} onClick={this.handleClickIconStateful} />
 					</div>
 				</div>
 				<div className="slds-col | slds-m-bottom--small">
@@ -122,15 +122,15 @@ const ButtonExample = React.createClass({
 	},
 
 	handleClickButtonStateful () {
-		this.setState({buttonStatefulSelected: !this.state.buttonStatefulSelected});
+		this.setState({ buttonStatefulSelected: !this.state.buttonStatefulSelected });
 	},
 
 	handleClickButtonStatefulInverse () {
-		this.setState({buttonStatefulInverseSelected: !this.state.buttonStatefulInverseSelected});
+		this.setState({ buttonStatefulInverseSelected: !this.state.buttonStatefulInverseSelected });
 	},
 
 	handleClickIconStateful () {
-		this.setState({buttonIconStateful: !this.state.buttonIconStateful});
+		this.setState({ buttonIconStateful: !this.state.buttonIconStateful });
 	}
 });
 
