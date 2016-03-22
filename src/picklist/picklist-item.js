@@ -40,6 +40,7 @@ const PicklistItem = React.createClass({
 			getType: React.PropTypes.func.isRequired,
 			getDisabled: React.PropTypes.func.isRequired,
 			// getId: React.PropTypes.func.isRequired,
+			getHref: React.PropTypes.func,
 			getText: React.PropTypes.func.isRequired,
 			// getValue: React.PropTypes.func.isRequired,
 			getIcon: React.PropTypes.func.isRequired
@@ -67,7 +68,6 @@ const PicklistItem = React.createClass({
 
 	render () {
 		let html;
-
 		switch (this.props.item.getType()) {
 			case 'header':
 				html = <li className={this.cssClasses.ITEMHEADER} id={this.props.id}><span className={this.cssClasses.ITEMHEADERTEXT}>{this.props.item.getText()}</span></li>;
@@ -77,10 +77,11 @@ const PicklistItem = React.createClass({
 				break;
 			default:
 				const disabled = this.props.item.getDisabled();
+				const href = this.props.item.getHref() || '#';
 
 				html = (
 					<li className={classNames('slds-dropdown__item', { 'slds-is-selected': this.props.selected })} disabled={disabled} id={this.props.id}>
-					<a href="#" onClick={this.handleClicked} aria-disabled={disabled}>
+					<a href={href} onClick={this.handleClicked} aria-disabled={disabled}>
 						<p className="slds-truncate">
 							{this._renderCheckmark()}
 							{this.props.item.getText()}
@@ -95,7 +96,9 @@ const PicklistItem = React.createClass({
 	},
 
 	handleClicked (e) {
-		e.preventDefault();
+		if (!this.props.item.getHref()) {
+			e.preventDefault();
+		}
 		this.props.onSelected(this.props.item);
 	}
 });
