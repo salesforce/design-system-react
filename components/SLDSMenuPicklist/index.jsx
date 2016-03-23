@@ -246,7 +246,8 @@ class SLDSMenuPicklist extends React.Component {
           dropClass="slds-picklist"
           flippable={true}
           onClose={this.handleCancel.bind(this)}
-          targetElement={this.refs.triggerbutton}>
+          targetElement={this.refs.triggerbutton}
+          inheritTargetWidth={true}>
           {this.getPopoverContent()}
         </SLDSPopover>:null
     );
