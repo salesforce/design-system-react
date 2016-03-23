@@ -24,7 +24,7 @@ const defaultProps = {
 };
 
 /**
- * The Trigger component 
+ * The Trigger component
 **/
 class Trigger extends React.Component {
 
@@ -85,7 +85,8 @@ class Trigger extends React.Component {
   }
 
   getMouseEventTarget(){
-    return this.props.disabled?<a 
+    let tooltipTriggerLabel = (this.props.label || this.props.assistiveText) + " tooltip trgiger";
+    return this.props.disabled?<a
       key='MouseEventTarget'
       href="javascript:void(0)"
       ariaHidden={true}
@@ -102,7 +103,7 @@ class Trigger extends React.Component {
       onFocus={this.handleTooltipMouseEnter.bind(this)}
       onMouseOut={this.handleTooltipMouseLeave.bind(this)}
       onBlur={this.handleTooltipMouseLeave.bind(this)}
-    ></a>:null;
+    ><span className="slds-assistive-text">{tooltipTriggerLabel}</span></a>:null;
   }
 
   getTooltip(){

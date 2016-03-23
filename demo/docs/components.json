@@ -597,6 +597,28 @@
                     "computed": false
                 }
             },
+            "constrainToScrollParent": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, constrains the menu to the scroll parent. Has no effect if modal is false.",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
+            },
+            "flippable": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, the menu is constrained to the window and may be flipped up. Has no effect if modal is false.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
             "onBlur": {
                 "type": {
                     "name": "func"
