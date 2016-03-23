@@ -10,6 +10,14 @@ Welcome to SLDS for React (formerly Design System Facades), the home of interact
 ### Running
 * Run `npm start` to start an Express server on port 8080. You can navigate to `http://localhost:8080/` to see a simple playground where you can test out various components. This is will enable "hot module replacement" since ES6 modules are in used in the source.
 
+### Making Dev Changes Available for NPM
+* Change `package.json` `"version"` to the next appropriate version with a unique suffix ending in `-dev` (eg `0.0.16-context-bar-dev` _This will be your tag_).
+* `npm run publish-to-git`
+* Update the `package.json` dependency in your consuming project to point at the tag you just created --prepended with the letter `v`, and appended with `-es`:
+
+    `"slds-for-js-core": "git+ssh://git@github.com/salesforce-ux/slds-for-js-core.git#v0.0.16-context-bar-dev-es"`
+
+
 ### Testing (currently disabled)
 * Run `npm test` to build the tests and see the results in the console. You can also run the tests in the browser by navigating to `http://localhost:8080/test/` after executing `npm start`.
 
