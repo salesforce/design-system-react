@@ -48,7 +48,9 @@ const propTypes = {
   value: React.PropTypes.node,
 };
 const defaultProps = {
+	constrainToScrollParent: false,
   disabled: false,
+  inheritTargetWidth: true,
   modal: true,
   required: false,
   placeholder: "Select an Option",
@@ -242,12 +244,12 @@ class SLDSMenuPicklist extends React.Component {
         <SLDSPopover
           className="slds-dropdown slds-dropdown--left "
           closeOnTabKey={true}
-          constrainToScrollParent={true}
+          constrainToScrollParent={this.props.constrainToScrollParent}
           dropClass="slds-picklist"
           flippable={true}
           onClose={this.handleCancel.bind(this)}
           targetElement={this.refs.triggerbutton}
-          inheritTargetWidth={true}>
+          inheritTargetWidth={this.props.inheritTargetWidth}>
           {this.getPopoverContent()}
         </SLDSPopover>:null
     );
