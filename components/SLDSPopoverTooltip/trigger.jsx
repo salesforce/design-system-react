@@ -85,11 +85,10 @@ class Trigger extends React.Component {
   }
 
   getMouseEventTarget(){
-    let tooltipTriggerLabel = (this.props.label || this.props.assistiveText) + " tooltip trgiger";
     return this.props.disabled?<a
       key='MouseEventTarget'
       href="javascript:void(0)"
-      ariaHidden={true}
+      aria-hidden={true}
       tabIndex={-1}
       style={{
         backgroundColor:'transparent',
@@ -103,7 +102,7 @@ class Trigger extends React.Component {
       onFocus={this.handleTooltipMouseEnter.bind(this)}
       onMouseOut={this.handleTooltipMouseLeave.bind(this)}
       onBlur={this.handleTooltipMouseLeave.bind(this)}
-    ><span className="slds-assistive-text">{tooltipTriggerLabel}</span></a>:null;
+    ><span className="slds-assistive-text">&nbsp;</span>&nbsp;</a>:null;
   }
 
   getTooltip(){
