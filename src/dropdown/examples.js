@@ -1,68 +1,114 @@
 import React from 'react';
-import * as Lib from 'slds-for-js-core/lib';
+import { cloneDeep } from 'lodash';
 import Dropdown from './index';
+import Button from '../button';
+import ButtonTrigger from './button-trigger';
+import CustomTrigger from './custom-trigger';
 
 // SAMPLE CONTROL CODE -->
 
-const dropdownSampleData = [
+const sampleData = [
 	{
 		id: 0,
 		text: 'Menu Item One',
-		value: '1',
-		icon: 'utility.table'
+		value: '1'
 	}, {
 		id: 1,
 		text: 'Menu Item Two',
-		value: '2',
-		icon: 'utility.kanban'
+		value: '2'
 	}, {
 		id: 2,
 		text: 'Menu Item Three',
 		value: '3',
-		icon: 'utility.side_list'
+		href: 'http://google.com'
 	}
 ];
+
+const sampleDataWithIcons = cloneDeep(sampleData);
+sampleDataWithIcons[0].icon = 'utility.table';
+sampleDataWithIcons[1].icon = 'utility.kanban';
+sampleDataWithIcons[2].icon = 'utility.side_list';
 
 const DropdownExample = React.createClass({
 	displayName: 'DropdownExample',
 
-	propTypes: {
-		models: React.PropTypes.arrayOf(React.PropTypes.object)
-	},
-
 	getInitialState () {
 		return {
-			selectionOne: dropdownSampleData[0]
+			selectionDefault: sampleData[0],
+			selectionCheckmarkSwapIcon: sampleDataWithIcons[0],
+			selectionButtonTrigger: sampleData[0],
+			selectionCustomTrigger: sampleData[0]
 		};
 	},
 
 	render () {
 		return (
-			<div>
-				<Dropdown
-					checkmark
-					collection={dropdownSampleData}
-					selection={this.state.selectionOne}
-					el="li"
-					onChange={this.handleOneChange}
-				/>
-				<Dropdown
-					checkmark
-					collection={dropdownSampleData}
-					selection={this.state.selectionTwo}
-					el="li"
-					onChange={this.handleTwoChange}
-				/>
+			<div className="slds-grid slds-grid--vertical">
+				<div className="slds-col | slds-m-bottom--small">
+					<Dropdown
+						collection={sampleData}
+						id="default-example"
+						onChange={this.handleChangeDefault}
+						selection={this.state.selectionDefault}
+					/>
+				</div>
+
+				<div className="slds-col | slds-m-bottom--small">
+					<Dropdown
+						checkmark
+						collection={sampleDataWithIcons}
+						id="default-example"
+						onChange={this.handleChangeCheckmarkSwapIcon}
+						selection={this.state.selectionCheckmarkSwapIcon}
+						swapIcon
+					/>
+				</div>
+
+				<div className="slds-col | slds-m-bottom--small">
+					<Dropdown
+						collection={sampleData}
+						checkmark
+						id="button-trigger-example"
+						onChange={this.handleChangeButtonTrigger}
+						selection={this.state.selectionButtonTrigger}
+					>
+						<ButtonTrigger>
+							<Button theme="brand" text="Default Trigger, Custom Button" />
+						</ButtonTrigger>
+					</Dropdown>
+				</div>
+
+				<div className="slds-col | slds-m-bottom--small">
+					<ul style={{ backgroundColor: 'rgb(255, 181, 94)' }}>
+						<Dropdown
+							checkmark
+							collection={sampleData}
+							id="custom-trigger-example"
+							onChange={this.handleCustomTrigger}
+							selection={this.state.selectionCustomTrigger}
+						>
+							<CustomTrigger />
+						</Dropdown>
+					</ul>
+				</div>
 			</div>
 		);
 	},
 
-	handleOneChange (selectionOne) {
-		this.setState({ selectionOne });
+	handleChangeDefault (selection) {
+		this.setState({ selectionDefault: selection });
 	},
 
-	handleTwoChange (selectionTwo) {
-		this.setState({ selectionTwo });
+	handleChangeCheckmarkSwapIcon (selection) {
+		this.setState({ selectionCheckmarkSwapIcon: selection });
+	},
+
+	handleChangeButtonTrigger (selection) {
+		this.setState({ selectionButtonTrigger: selection });
+	},
+
+	handleChangeCustomTrigger (selection) {
+		this.setState({ selectionCustomTrigger: selection });
 	}
 });
 
