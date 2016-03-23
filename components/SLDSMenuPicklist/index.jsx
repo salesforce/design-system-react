@@ -105,7 +105,7 @@ class SLDSMenuPicklist extends React.Component {
         !isEqual(this.props.options, prevProps.options)){
       var newSelectedIndex = this.getIndexByValue(this.props.value);
       if (newSelectedIndex !== this.state.selectedIndex) {
-        this.handleSelect(newSelectedIndex);
+        this.handleValueUpdate(newSelectedIndex);
       }
     }
   }
@@ -137,6 +137,10 @@ class SLDSMenuPicklist extends React.Component {
     if(this.props.onSelect){
       this.props.onSelect(this.getValueByIndex(index));
     }
+  }
+
+  handleValueUpdate(index) {
+    this.setState({selectedIndex: index})
   }
 
   handleClose() {
