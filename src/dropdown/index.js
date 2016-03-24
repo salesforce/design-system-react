@@ -24,7 +24,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ## Dependencies
 
 // Bring in the [shared library functions](../../lib/lib.html).
-import { merge, runHelpers, deprecatedPropertyWarning } from 'slds-for-js-core/lib';
+import merge from 'slds-for-js-core/lib/merge';
+import runHelpers from 'slds-for-js-core/lib/runHelpers';
+import deprecatedPropertyWarning from 'slds-for-js-core/lib/deprecatedPropertyWarning';
+import sunsetPropertyWarning from 'slds-for-js-core/lib/sunsetPropertyWarning';
 
 // Use the [shared core](../../core/dropdown.html), which contains logic that
 // is shared across SLDS for JavaScript.
@@ -32,13 +35,22 @@ import DropdownCore, { CONTROL } from 'slds-for-js-core/components/dropdown';
 
 // ### Traits
 
+// #### Eventable
+// [../../traits/eventable](../../traits/eventable.html)
+import Eventable from 'slds-for-js-core/traits/eventable';
+
 // #### Openable
 // * [../../traits/openable](../../traits/openable.html)
 import Openable from 'slds-for-js-core/traits/openable';
 
+// #### Positionable
+// [../../traits/positionable](../../traits/positionable.html)
+import Positionable from 'slds-for-js-core/traits/positionable';
+
 // ### React
 // React is an external dependency of the project.
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 // #### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -62,8 +74,8 @@ import isIcon from '../mixins/custom-prop-types/icon.js';
 // [PicklistItems](../picklist-items.html)
 import PicklistItems from '../picklist/picklist-items';
 
-// [Button](../button.html)
-import Button from '../button';
+// [Trigger](./button-trigger.html)
+import ButtonTrigger from './button-trigger';
 
 // [PicklistObject](../picklist.html)
 import { PicklistDefinition } from '../picklist';
@@ -91,10 +103,46 @@ export const DropdownDefinition = {
 		disabled: React.PropTypes.bool,
 		icon: isIcon,
 		id: React.PropTypes.string,
-		renderArrow: React.PropTypes.bool,
-		selection: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
-		swapIcon: React.PropTypes.bool,
-		el: React.PropTypes.oneOf(['div', 'li'])
+		onChange: React.PropTypes.func,
+		selection: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object])
+	},
+
+	_checkDeprecations () {
+		deprecatedPropertyWarning(CONTROL, this.props.theme, 'theme', 'variant');
+		sunsetPropertyWarning(CONTROL, this.props.swapIcon, 'swapIcon');
+		sunsetPropertyWarning(CONTROL, this.props.swapIcon, 'renderArrow');
+	},
+
+	componentWillMount () {
+		this._checkDeprecations();
+		Positionable.setElement(this, Positionable.attachPositionedElementToBody({ classes: 'slds-dropdown' }));
+		Eventable.on(this, 'select', this._onSelect);
+		Eventable.on(this, 'deselect', this._onDeselect);
+	},
+
+	_onMenuRendered (element) {
+		this.elements.menu = ReactDOM.findDOMNode(element);
+		Positionable.setElement(this, ReactDOM.findDOMNode(element));
+	},
+
+	_renderMenu () {
+		const isOpen = Openable.isOpen(this);
+		const triggerId = this._getTriggerId();
+
+		return (
+			<PicklistItems
+				ref= {this._onMenuRendered}
+				align={this.props.align}
+				checkmark={this.props.checkmark}
+				id={this._getMenuId()}
+				labelledBy={triggerId}
+				getMenuItemId={this._getMenuItemId}
+				collection={this._collection}
+				selection={this._getSelection()._item}
+				show={isOpen || false}
+				onSelected={this._handleMenuItemSelected}
+			/>
+		);
 	},
 
 	// ### Get Icon
@@ -119,37 +167,39 @@ export const DropdownDefinition = {
 
 	// ### Render
 	render () {
-		const isOpen = Openable.isOpen(this);
+		// Trigger manipulation
+		let Trigger = ButtonTrigger;
+		let CustomTriggerChildProps = {};
+
+		// Dropdown can take a Trigger component as a child and then return it as the parent DOM element.
+		React.Children.map(this.props.children, (child) => {
+			if (child.type.displayName === 'Trigger') {
+				const CustomTriggerChild = React.cloneElement(child, {});
+				CustomTriggerChildProps = CustomTriggerChild.props;
+				Trigger = CustomTriggerChild.type;
+			}
+		});
+
+		// Property manipulation
+		const menu = this._renderMenu();
 		const triggerId = this._getTriggerId();
+		const isOpen = Openable.isOpen(this);
 
 		return (
-			<div className={classNames('slds-dropdown-trigger', 'slds-dropdown-trigger--click', this.props.className)}
-				id={this.state.id}
-				aria-expanded={isOpen}
+			<Trigger
+				ariaHaspopup
+				ariaExpanded={isOpen}
+				className={classNames('slds-dropdown-trigger', 'slds-dropdown-trigger--click', { 'slds-is-open': this.props.isOpen })}
+				id={this.props.id}
+				menu={menu}
 				onKeyDown={this._handleKeyPressed}
 				onKeyPress={this._handleKeyPressed}
-			>
-				<Button
-					className=""
-					id={triggerId}
-					icon={this._getIcon()}
-					iconStyle={this._getStyle()}
-					disabled={this.props.disabled}
-					onClick={this._handleClicked}
-					aria-haspopup="true"
-				/>
-				<PicklistItems
-					align={this.props.align}
-					checkmark={this.props.checkmark}
-					id={this._getMenuId()}
-					labelledBy={triggerId}
-					getMenuItemId={this._getMenuItemId}
-					collection={this._collection}
-					selection={this._getSelection()._item}
-					show={ isOpen && !this.props.disabled}
-					onSelected={this._handleMenuItemSelected}
-				/>
-			</div>
+				onClick={this._handleClicked}
+				renderArrow={this.props.renderArrow}
+				swapIcon={this.props.swapIcon}
+				triggerId={triggerId}
+				{...CustomTriggerChildProps}
+			/>
 		);
 	}
 };

@@ -60,8 +60,7 @@ export const 	TriggerDefinition = {
 			ariaHaspopup: true,
 			icon: 'utility.down',
 			iconPosition: 'right',
-			text: 'Default Trigger',
-			theme: 'neutral',
+			iconStyle: 'icon-border-filled',
 			buttonClassName: null
 		};
 	},
@@ -69,6 +68,8 @@ export const 	TriggerDefinition = {
 	_renderDefaultButton () {
 		const {
 			ariaHaspopup,
+			className,
+			children,
 			onClick,
 			onKeyDown,
 			onKeyPress,
@@ -90,13 +91,13 @@ export const 	TriggerDefinition = {
 
 		return (
 			<Button
+				{...props}
 				className={this.props.buttonClassName}
 				id={triggerId}
 				onClick={onClick}
 				onKeyDown={onKeyDown}
 				onKeyPress={onKeyPress}
 				ariaHaspopup={ariaHaspopup}
-				{...props}
 			/>
 			);
 	},
@@ -104,14 +105,6 @@ export const 	TriggerDefinition = {
 	_renderButton () {
 		// Trigger manipulation
 		let ChildButton = this._renderDefaultButton();
-
-		if (renderArrow) {
-			// set Button props to render arrow
-		}
-
-		if (swapIcon) {
-			// set Button props to swap icon
-		}
 
 		const {
 			ariaHaspopup,
@@ -124,6 +117,14 @@ export const 	TriggerDefinition = {
 			// ### Additional properties
 			// We allow allowing additional cleanly with [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx).
 		} = this.props;
+
+		if (renderArrow) {
+			// set Button props to render arrow
+		}
+
+		if (swapIcon) {
+			// set Button props to swap icon
+		}
 
 		// Button Trigger can take a Button child
 		React.Children.map(this.props.children, (child) => {
@@ -181,7 +182,7 @@ let ButtonTrigger = merge(
 //
 // Nothing in the component itself should ever depend on the presence
 // of helpers, as they are completely optional.
-ButtonTrigger = runHelpers('react', 'Trigger', ButtonTrigger);
+ButtonTrigger = runHelpers('react', 'ButtonTrigger', ButtonTrigger);
 
 // Once everything has been merged together and all registered helpers have
 // been run we can create the React class and export the result for

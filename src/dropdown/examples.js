@@ -35,7 +35,7 @@ const DropdownExample = React.createClass({
 	getInitialState () {
 		return {
 			selectionDefault: sampleData[0],
-			selectionCheckmarkSwapIcon: sampleDataWithIcons[0],
+			selectionCheckmark: sampleDataWithIcons[0],
 			selectionButtonTrigger: sampleData[0],
 			selectionCustomTrigger: sampleData[0]
 		};
@@ -57,9 +57,9 @@ const DropdownExample = React.createClass({
 					<Dropdown
 						checkmark
 						collection={sampleDataWithIcons}
-						id="default-example"
-						onChange={this.handleChangeCheckmarkSwapIcon}
-						selection={this.state.selectionCheckmarkSwapIcon}
+						id="checkmark-example"
+						onChange={this.handleChangeCheckmark}
+						selection={this.state.selectionCheckmark}
 						swapIcon
 					/>
 				</div>
@@ -84,7 +84,7 @@ const DropdownExample = React.createClass({
 							checkmark
 							collection={sampleData}
 							id="custom-trigger-example"
-							onChange={this.handleCustomTrigger}
+							onChange={this.handleChangeCustomTrigger}
 							selection={this.state.selectionCustomTrigger}
 						>
 							<CustomTrigger />
@@ -99,8 +99,8 @@ const DropdownExample = React.createClass({
 		this.setState({ selectionDefault: selection });
 	},
 
-	handleChangeCheckmarkSwapIcon (selection) {
-		this.setState({ selectionCheckmarkSwapIcon: selection });
+	handleChangeCheckmark (selection) {
+		this.setState({ selectionCheckmark: selection });
 	},
 
 	handleChangeButtonTrigger (selection) {
