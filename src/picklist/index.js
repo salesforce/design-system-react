@@ -93,6 +93,9 @@ import Button from '../button';
 // strings in the format `sprite file`.`icon name` into full paths.
 import Svg from '../svg';
 
+const { PropTypes } = React;
+
+
 // ## Picklist Object
 export const PicklistDefinition = {
 	// ### Mixins
@@ -121,15 +124,16 @@ export const PicklistDefinition = {
 		/**
 		 * If true, renders checkmark icon on the selected Menu Item.
 		 */
-		checkmark: React.PropTypes.bool,
-		disabled: React.PropTypes.bool,
-		id: React.PropTypes.string,
-		modalMenu: React.PropTypes.bool,
-		selection: React.PropTypes.object,
+		checkmark: PropTypes.bool,
+		disabled: PropTypes.bool,
+		id: PropTypes.string,
+		menuItemRenderer: PropTypes.func,
+		modalMenu: PropTypes.bool,
+		selection: PropTypes.object,
 		// > @todo Type of collection unknown until parsed by Data Adapter
-		collection: React.PropTypes.oneOfType([
-			React.PropTypes.array,
-			React.PropTypes.object
+		collection: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object
 		]).isRequired
 	},
 
@@ -194,7 +198,7 @@ export const PicklistDefinition = {
 					<span className="slds-truncate">{selectionName}</span>
 					<Svg className="slds-icon" icon="utility.down" />
 				</Button>
-				{this.props.modalMenu ? null: this._renderMenu()}
+				{this.props.modalMenu ? null : this._renderMenu()}
 			</div>
 		);
 	},
@@ -206,14 +210,15 @@ export const PicklistDefinition = {
 
 		const menu = (
 			<PicklistItems
-				checkmark     = {this.props.checkmark}
-				id            = {this._getMenuId()}
-				labelledBy    = {triggerId}
-				getMenuItemId = {this._getMenuItemId}
-				collection    = {this._collection}
-				selection     = {this.props.selection}
-				show          = {isOpen}
-				onSelected    = {this._handleMenuItemSelected}
+				checkmark        = {this.props.checkmark}
+				id               = {this._getMenuId()}
+				menuItemRenderer = {this.props.menuItemRenderer}
+				labelledBy       = {triggerId}
+				getMenuItemId    = {this._getMenuItemId}
+				collection       = {this._collection}
+				selection        = {this.props.selection}
+				show             = {isOpen}
+				onSelected       = {this._handleMenuItemSelected}
 			/>
 		);
 
@@ -314,7 +319,7 @@ export const PicklistDefinition = {
 
 // SLDS for React **extends objects** by merging them together, rather than
 // via the prototype chain or imitation of object-oriented inheritance.
-// The important thing to remember is that _some methods will be available 
+// The important thing to remember is that _some methods will be available
 // to the component which are not declared in this file_.
 
 // These are not magic methods, they're not black box methods, but you do need

@@ -18,27 +18,29 @@ import React from 'react';
 import classNames from 'classnames';
 
 // Children
-import PicklistItem from './picklist-item';
+import DefaultPicklistItem from './picklist-item';
 
 export const CONTROL = 'picklist-items';
+const { PropTypes } = React;
 
 const PicklistItems = React.createClass({
 	displayName: CONTROL,
 
 	propTypes: {
-		align: React.PropTypes.oneOf(['left', 'right']),
+		align: PropTypes.oneOf(['left', 'right']),
 		/**
 		 * If true, renders checkmark icon on the selected Menu Item.
 		 */
-		checkmark: React.PropTypes.bool,
+		checkmark: PropTypes.bool,
 		// TODO: Type of collection unknown until parsed by Data Adapter
-		collection: React.PropTypes.oneOfType([React.PropTypes.array, React.PropTypes.object]).isRequired,
-		id: React.PropTypes.string,
-		getMenuItemId: React.PropTypes.func.isRequired,
-		labelledBy: React.PropTypes.string,
-		onSelected: React.PropTypes.func.isRequired,
-		selection: React.PropTypes.oneOfType([React.PropTypes.object]),
-		show: React.PropTypes.bool.isRequired
+		collection: PropTypes.oneOfType([React.PropTypes.array, React.PropTypes.object]).isRequired,
+		id: PropTypes.string,
+		getMenuItemId: PropTypes.func.isRequired,
+		labelledBy: PropTypes.string,
+		onSelected: PropTypes.func.isRequired,
+		selection: PropTypes.oneOfType([React.PropTypes.object]),
+		show: PropTypes.bool.isRequired,
+		menuItemRenderer: PropTypes.func
 	},
 
 	getDefaultProps () {
@@ -48,6 +50,14 @@ const PicklistItems = React.createClass({
 	},
 
 	_menuItems () {
+		// If `menuItemRenderer` exists, use it instead of the default element.
+		let PicklistItem = null;
+		if (this.props.menuItemRenderer) {
+			PicklistItem = this.props.menuItemRenderer();
+		} else {
+			PicklistItem = DefaultPicklistItem;
+		}
+
 		return this.props.collection.map((item, index) => {
 			return (
 				<PicklistItem

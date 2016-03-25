@@ -52,7 +52,8 @@ export const 	TriggerDefinition = {
 		/**
 		 * A Button is required
 		 */
-		children: PropTypes.element
+		children: PropTypes.element,
+		triggerIcon: PropTypes.string
 	},
 
 	getDefaultProps () {
@@ -65,6 +66,13 @@ export const 	TriggerDefinition = {
 		};
 	},
 
+	_handleButtonClicked (e) {
+		this.props.onClick(e);
+		if (this.props.triggerClicked) {
+			this.props.triggerClicked();
+		}
+	},
+
 	_renderDefaultButton () {
 		const {
 			ariaHaspopup,
@@ -73,31 +81,34 @@ export const 	TriggerDefinition = {
 			onClick,
 			onKeyDown,
 			onKeyPress,
-			renderArrow,
-			swapIcon,
 			triggerId,
+
+			/* Deprecated */
+			buttonClassName,
+			buttonVariant,
+			triggerClicked,
+
 			// ### Additional properties
 			// We allow allowing additional cleanly with [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx).
 			...props
 		} = this.props;
 
-		if (renderArrow) {
-			// set Button props to render arrow
-		}
-
-		if (swapIcon) {
-			// set Button props to swap icon
+		let iconStyle = this.props.iconStyle;
+		if (this.props.buttonVariant) {
+			iconStyle = null;
 		}
 
 		return (
 			<Button
 				{...props}
+				ariaHaspopup={ariaHaspopup}
 				className={this.props.buttonClassName}
 				id={triggerId}
-				onClick={onClick}
+				iconStyle={iconStyle}
+				onClick={this._handleButtonClicked}
 				onKeyDown={onKeyDown}
 				onKeyPress={onKeyPress}
-				ariaHaspopup={ariaHaspopup}
+				theme={this.props.buttonVariant}
 			/>
 			);
 	},
@@ -112,29 +123,22 @@ export const 	TriggerDefinition = {
 			onKeyDown,
 			onKeyPress,
 			renderArrow,
-			swapIcon,
+			triggerIcon,
 			triggerId
 			// ### Additional properties
 			// We allow allowing additional cleanly with [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx).
 		} = this.props;
-
-		if (renderArrow) {
-			// set Button props to render arrow
-		}
-
-		if (swapIcon) {
-			// set Button props to swap icon
-		}
 
 		// Button Trigger can take a Button child
 		React.Children.map(this.props.children, (child) => {
 			if (child.type.displayName === 'Button') {
 				ChildButton = React.cloneElement(child, {
 					ariaHaspopup,
+					icon: child.props.icon || triggerIcon,
 					id: triggerId,
 					onClick,
 					onKeyDown,
-					onKeyPress
+					onKeyPress,
 				});
 			}
 		});

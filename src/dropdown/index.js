@@ -74,11 +74,15 @@ import isIcon from '../mixins/custom-prop-types/icon.js';
 // [PicklistItems](../picklist-items.html)
 import PicklistItems from '../picklist/picklist-items';
 
-// [Trigger](./button-trigger.html)
-import ButtonTrigger from './button-trigger';
+// [DropdownTrigger](./button-trigger.html)
+// This is the the default Dropdown Trigger. It expects one button as a child.
+import DropdownTrigger from './button-trigger';
 
 // [PicklistObject](../picklist.html)
 import { PicklistDefinition } from '../picklist';
+
+// Remove the need for `React.PropTypes`
+const { PropTypes } = React;
 
 // ## DropdownObject
 export const DropdownDefinition = {
@@ -89,28 +93,113 @@ export const DropdownDefinition = {
 
 	// ### Prop Types
 	propTypes: {
-		align: React.PropTypes.oneOf(['left', 'right']),
+		/**
+		 * Aligns the right or left side of the menu with the respective side of the trigger.
+		 */
+		align: PropTypes.oneOf(['left', 'right']),
+		/**
+		 * Deprecated. Please set the `assistiveText` with a child of `DropdownTrigger`: `<Dropdown><DropdownTrigger><Button assistiveText="Change settings" /></DropdownTrigger></Dropdown>``
+		 */
+		assistiveText: React.PropTypes.string,
+		/**
+		 * Deprecated. Please set the `className` with a child of `DropdownTrigger`: `<Dropdown><DropdownTrigger><Button className="slds-is-cool" /></DropdownTrigger></Dropdown>``
+		 */
+		buttonClassName: PropTypes.string,
+		/**
+		 * Deprecated. Please set the `variant` with a child of `DropdownTrigger`: `<Dropdown><DropdownTrigger><Button variant="brand" /></DropdownTrigger></Dropdown>``
+		 */
+		buttonVariant: PropTypes.string,
 		/**
 		 * If true, renders checkmark icon on the selected Menu Item.
 		 */
-		checkmark: React.PropTypes.bool,
+		checkmark: PropTypes.bool,
+		/**
+		 * If no `children` are present, a default button will be rendered. Import the module `slds-for-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. `<Dropdown><DropdownTrigger><Button icon="utility.settings" /></DropdownTrigger></Dropdown>`. Any `props` specified on that `Button` will be assigned to the trigger button.`
+		 */
+		children: PropTypes.element,
 		// > @todo Type of collection unknown until parsed by Data Adapter
-		collection: React.PropTypes.oneOfType([React.PropTypes.array, React.PropTypes.object]).isRequired,
+		collection: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
 		/**
 		 * Class name assigned to the container element (this element also has `slds-dropdown-trigger slds-dropdown-trigger--click` classes)
 		 */
-		className: React.PropTypes.oneOfType([React.PropTypes.array, React.PropTypes.object, React.PropTypes.string]),
-		disabled: React.PropTypes.bool,
+		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		/**
+		 * Disables the trigger button and prevents the dropdown menu from opening.
+		 */
+		disabled: PropTypes.bool,
+		/**
+		 * Deprecated. Please set the `icon` with a child of `DropdownTrigger`: `<Dropdown><DropdownTrigger><Button icon="utility.settings" /></DropdownTrigger></Dropdown>``
+		 */
 		icon: isIcon,
-		id: React.PropTypes.string,
-		onChange: React.PropTypes.func,
-		selection: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object])
+		/**
+		 * Deprecated. Please update your API to use `statefulIcon`.
+		 */
+		iconSwap: React.PropTypes.bool,
+		/**
+		 * Every dropdown must have a unique ID in order to support keyboard navigation and ARIA support.
+		 */
+		id: PropTypes.string.isRequired,
+		/**
+		 * Function to be used to render an item in the menu. This is optional. Most use cases will not need a custom renderer.
+		 */
+		menuItemRenderer: PropTypes.element,
+		/**
+		 * Deprecated. Please use `menuItemRenderer` and pass in a function.
+		 */
+		listItemRenderer: PropTypes.func,
+		/**
+		 * Deprecated. Please pass in label to <Button> as a child.
+		 */
+		label: React.PropTypes.string,
+		/**
+		 * This function fires when the selection changes.
+		 */
+		onChange: PropTypes.func,
+		/**
+		 * Deprecated. This function fires when the dropdown trigger is clicked.
+		 */
+		onClick: PropTypes.func,
+		/**
+		 * Deprecated. This function fires when the selection is selected.
+		 */
+		onSelect: PropTypes.func,
+		/**
+		 * Deprecated. This is an array of menu items.
+		 */
+		options: PropTypes.array,
+		/**
+		 * Deprecated. Determines if dropdown opens on mouse hover or mouse click
+		 */
+		openOn: React.PropTypes.oneOf(['hover', 'click']),
+		/**
+		 * The selected item from the dropdown menu.
+		 */
+		selection: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+		/**
+		 * The Button within DropdownTrigger is updated with the icon of the selected item.
+		 */
+		statefulIcon: PropTypes.bool
 	},
 
 	_checkDeprecations () {
-		deprecatedPropertyWarning(CONTROL, this.props.theme, 'theme', 'variant');
-		sunsetPropertyWarning(CONTROL, this.props.swapIcon, 'swapIcon');
-		sunsetPropertyWarning(CONTROL, this.props.swapIcon, 'renderArrow');
+		deprecatedPropertyWarning(CONTROL, this.props.swapIcon, 'swapIcon', 'statefulIcon');
+		deprecatedPropertyWarning(CONTROL, this.props.listItemRenderer, 'listItemRenderer', 'menuItemRenderer');
+		deprecatedPropertyWarning(CONTROL, this.props.onSelect, 'onSelect', 'onChange');
+		deprecatedPropertyWarning(CONTROL, this.props.options, 'options', 'collection');
+		deprecatedPropertyWarning(CONTROL, this.props.options, 'value', 'selection');
+
+		sunsetPropertyWarning(CONTROL, this.props.openOn, 'openOn', 'The slds-dropdown-trigger class which allowed showing the dropdown menu on mouse hover was deprecated in SLDS v1.0.');
+		sunsetPropertyWarning(CONTROL, this.props.hoverCloseDelay, 'hoverCloseDelay', 'The slds-dropdown-trigger class which allowed showing the dropdown menu on mouse hover was deprecated in SLDS v1.0.');
+		sunsetPropertyWarning(CONTROL, this.props.renderArrow, 'renderArrow', 'All Dropdown Triggers should have an indicator of the presence of a dropdown, unless it is an icon-more or icon-bare button style.');
+
+		// API has been moved to DropdownTrigger child
+		sunsetPropertyWarning(CONTROL, this.props.onClick, 'onClick', 'Please set onClick with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button onClick={myCoolCallback} /></DropdownTrigger></Dropdown>');
+		sunsetPropertyWarning(CONTROL, this.props.assistiveText, 'assistiveText', 'Please set assistiveText with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button assistiveText="Change settings" /></DropdownTrigger></Dropdown>');
+		sunsetPropertyWarning(CONTROL, this.props.buttonClass, 'buttonClassName', 'Please set the className with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button className="slds-is-cool" /></DropdownTrigger></Dropdown>');
+		sunsetPropertyWarning(CONTROL, this.props.icon, 'icon', 'Please set icon with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button icon="utility.settings" /></DropdownTrigger></Dropdown>');
+		sunsetPropertyWarning(CONTROL, this.props.buttonVariant, 'buttonVariant', 'Please set `variant` with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button variant="brand" /></DropdownTrigger></Dropdown>');
+		sunsetPropertyWarning(CONTROL, this.props.label, 'label', 'Please set the label with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button label="Noice!" /></DropdownTrigger></Dropdown>');
+		sunsetPropertyWarning(CONTROL, this.props.tooltip, 'tooltip', 'Please set the label with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button label="Noice!" /></DropdownTrigger></Dropdown>');
 	},
 
 	componentWillMount () {
@@ -128,19 +217,21 @@ export const DropdownDefinition = {
 	_renderMenu () {
 		const isOpen = Openable.isOpen(this);
 		const triggerId = this._getTriggerId();
+		const menuItemRenderer = this.props.listItemRenderer || this.props.menuItemRenderer;
 
 		return (
 			<PicklistItems
-				ref= {this._onMenuRendered}
 				align={this.props.align}
 				checkmark={this.props.checkmark}
-				id={this._getMenuId()}
-				labelledBy={triggerId}
-				getMenuItemId={this._getMenuItemId}
 				collection={this._collection}
+				id={this._getMenuId()}
+				getMenuItemId={this._getMenuItemId}
+				labelledBy={triggerId}
+				menuItemRenderer={menuItemRenderer}
+				onSelected={this._handleMenuItemSelected}
+				ref= {this._onMenuRendered}
 				selection={this._getSelection()._item}
 				show={isOpen || false}
-				onSelected={this._handleMenuItemSelected}
 			/>
 		);
 	},
@@ -149,32 +240,24 @@ export const DropdownDefinition = {
 	_getIcon () {
 		let icon;
 
-		if (this.props.swapIcon && this.props.selection) {
+		if ((this.props.swapIcon || this.props.statefulIcon) && this.props.selection && this.props.selection.icon) {
 			icon = this.props.selection.icon;
 		}
 
-		return icon || this.props.icon;
-	},
-
-	// ### Get Style
-	_getStyle () {
-		let style = 'icon-border';
-		if (this.props.swapIcon && this.props.renderArrow) {
-			style = 'icon-more';
-		}
-		return style;
+		return icon;
 	},
 
 	// ### Render
 	render () {
 		// Trigger manipulation
-		let Trigger = ButtonTrigger;
+		let Trigger = DropdownTrigger;
 		let CustomTriggerChildProps = {};
 
 		// Dropdown can take a Trigger component as a child and then return it as the parent DOM element.
 		React.Children.map(this.props.children, (child) => {
 			if (child.type.displayName === 'Trigger') {
 				const CustomTriggerChild = React.cloneElement(child, {});
+				// `CustomTriggerChildProps` is not used by the default Button Trigger, but by other triggers
 				CustomTriggerChildProps = CustomTriggerChild.props;
 				Trigger = CustomTriggerChild.type;
 			}
@@ -184,21 +267,26 @@ export const DropdownDefinition = {
 		const menu = this._renderMenu();
 		const triggerId = this._getTriggerId();
 		const isOpen = Openable.isOpen(this);
+		const className = classNames('slds-dropdown-trigger--click', { 'slds-is-open': this.props.isOpen });
 
 		return (
 			<Trigger
 				ariaHaspopup
 				ariaExpanded={isOpen}
-				className={classNames('slds-dropdown-trigger', 'slds-dropdown-trigger--click', { 'slds-is-open': this.props.isOpen })}
+				className={className}
 				id={this.props.id}
 				menu={menu}
 				onKeyDown={this._handleKeyPressed}
 				onKeyPress={this._handleKeyPressed}
 				onClick={this._handleClicked}
 				renderArrow={this.props.renderArrow}
-				swapIcon={this.props.swapIcon}
+				triggerIcon={this._getIcon()}
 				triggerId={triggerId}
 				{...CustomTriggerChildProps}
+				/* deprecated */
+				buttonClassName={this.props.buttonClassName}
+				buttonVariant={this.props.buttonVariant}
+				triggerClicked={this.props.onClick}
 			/>
 		);
 	}

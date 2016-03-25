@@ -2,7 +2,7 @@ import React from 'react';
 import { cloneDeep } from 'lodash';
 import Dropdown from './index';
 import Button from '../button';
-import ButtonTrigger from './button-trigger';
+import DropdownTrigger from './button-trigger';
 import CustomTrigger from './custom-trigger';
 
 // SAMPLE CONTROL CODE -->
@@ -36,14 +36,16 @@ const DropdownExample = React.createClass({
 		return {
 			selectionDefault: sampleData[0],
 			selectionCheckmark: sampleDataWithIcons[0],
-			selectionButtonTrigger: sampleData[0],
-			selectionCustomTrigger: sampleData[0]
+			selectionDropdownTrigger: sampleData[0],
+			selectionCustomTrigger: sampleData[0],
+			selectionStatefulIconTrigger: sampleDataWithIcons[0]
 		};
 	},
 
 	render () {
 		return (
 			<div className="slds-grid slds-grid--vertical">
+
 				<div className="slds-col | slds-m-bottom--small">
 					<Dropdown
 						collection={sampleData}
@@ -60,21 +62,36 @@ const DropdownExample = React.createClass({
 						id="checkmark-example"
 						onChange={this.handleChangeCheckmark}
 						selection={this.state.selectionCheckmark}
-						swapIcon
+						statefulIcon
 					/>
 				</div>
 
 				<div className="slds-col | slds-m-bottom--small">
 					<Dropdown
 						collection={sampleData}
+						id="nubbin-example"
+						onChange={this.handleChangeNubbin}
+						selection={this.state.selectionNubbin}
+						statefulIcon
+					>
+						<DropdownTrigger>
+							<Button icon="utility.settings" iconStyle="icon-bare" assistiveText="Settings" />
+						</DropdownTrigger>
+					</Dropdown>
+				</div>
+
+				<div className="slds-col | slds-m-bottom--small">
+					<Dropdown
+						collection={sampleDataWithIcons}
 						checkmark
 						id="button-trigger-example"
-						onChange={this.handleChangeButtonTrigger}
-						selection={this.state.selectionButtonTrigger}
+						onChange={this.handleChangeStatefulIconTrigger}
+						selection={this.state.selectionStatefulIconTrigger}
+						statefulIcon
 					>
-						<ButtonTrigger>
-							<Button theme="brand" text="Default Trigger, Custom Button" />
-						</ButtonTrigger>
+						<DropdownTrigger>
+							<Button iconStyle="icon-more" assistiveText="Custom Button" />
+						</DropdownTrigger>
 					</Dropdown>
 				</div>
 
@@ -91,6 +108,7 @@ const DropdownExample = React.createClass({
 						</Dropdown>
 					</ul>
 				</div>
+
 			</div>
 		);
 	},
@@ -103,12 +121,20 @@ const DropdownExample = React.createClass({
 		this.setState({ selectionCheckmark: selection });
 	},
 
-	handleChangeButtonTrigger (selection) {
-		this.setState({ selectionButtonTrigger: selection });
+	handleChangeNubbin (selection) {
+		this.setState({ selectionNubbin: selection });
+	},
+
+	handleChangeDropdownTrigger (selection) {
+		this.setState({ selectionDropdownTrigger: selection });
 	},
 
 	handleChangeCustomTrigger (selection) {
 		this.setState({ selectionCustomTrigger: selection });
+	},
+
+	handleChangeStatefulIconTrigger (selection) {
+		this.setState({ selectionStatefulIconTrigger: selection });
 	}
 });
 
