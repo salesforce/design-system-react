@@ -75,7 +75,7 @@ const DropdownExample = React.createClass({
 						statefulIcon
 					>
 						<DropdownTrigger>
-							<Button icon="utility.settings" iconStyle="icon-bare" assistiveText="Settings" />
+							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
 						</DropdownTrigger>
 					</Dropdown>
 				</div>
@@ -107,6 +107,90 @@ const DropdownExample = React.createClass({
 							<CustomTrigger />
 						</Dropdown>
 					</ul>
+				</div>
+
+				<div className="slds-col | slds-m-bottom--small">
+					<Dropdown
+						collection={sampleData}
+						id="top-left-example"
+						onChange={this.handleChangeDefault}
+						selection={this.state.selectionDefault}
+						position="top left"
+					>
+						<DropdownTrigger>
+							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
+						</DropdownTrigger>
+					</Dropdown>
+				</div>
+
+				<div className="slds-col | slds-m-bottom--small">
+					<Dropdown
+						collection={sampleData}
+						id="top-example"
+						onChange={this.handleChangeDefault}
+						selection={this.state.selectionDefault}
+						position="top"
+					>
+						<DropdownTrigger>
+							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
+						</DropdownTrigger>
+					</Dropdown>
+				</div>
+
+				<div className="slds-col | slds-m-bottom--small">
+					<Dropdown
+						collection={sampleData}
+						id="top-right-example"
+						onChange={this.handleChangeDefault}
+						selection={this.state.selectionDefault}
+						position="top right"
+					>
+						<DropdownTrigger>
+							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
+						</DropdownTrigger>
+					</Dropdown>
+				</div>
+
+				<div className="slds-col | slds-m-bottom--small">
+					<Dropdown
+						collection={sampleData}
+						id="bottom-left-example"
+						onChange={this.handleChangeDefault}
+						selection={this.state.selectionDefault}
+						position="bottom left"
+					>
+						<DropdownTrigger>
+							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
+						</DropdownTrigger>
+					</Dropdown>
+				</div>
+
+				<div className="slds-col | slds-m-bottom--small">
+					<Dropdown
+						collection={sampleData}
+						id="bottom-example"
+						onChange={this.handleChangeDefault}
+						selection={this.state.selectionDefault}
+						position="bottom"
+					>
+						<DropdownTrigger>
+							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
+						</DropdownTrigger>
+					</Dropdown>
+				</div>
+
+				<div className="slds-col | slds-m-bottom--small">
+					<Dropdown
+						collection={sampleData}
+						id="bottom-right-example"
+						onChange={this.handleChangeDefault}
+						selection={this.state.selectionDefault}
+						position="bottom right"
+					>
+						<DropdownTrigger>
+							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
+						</DropdownTrigger>
+					</Dropdown>
 				</div>
 
 			</div>

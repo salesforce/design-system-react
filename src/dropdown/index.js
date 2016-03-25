@@ -172,6 +172,17 @@ export const DropdownDefinition = {
 		 */
 		openOn: React.PropTypes.oneOf(['hover', 'click']),
 		/**
+		 * Positions dropdown menu with a nubbin
+		 */
+		position: React.PropTypes.oneOf([
+			'top left',
+			'top',
+			'top right',
+			'bottom left',
+			'bottom',
+			'bottom right'
+		]),
+		/**
 		 * The selected item from the dropdown menu.
 		 */
 		selection: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
@@ -229,6 +240,7 @@ export const DropdownDefinition = {
 				labelledBy={triggerId}
 				menuItemRenderer={menuItemRenderer}
 				onSelected={this._handleMenuItemSelected}
+				position={this.props.position}
 				ref= {this._onMenuRendered}
 				selection={this._getSelection()._item}
 				show={isOpen || false}
@@ -267,7 +279,7 @@ export const DropdownDefinition = {
 		const menu = this._renderMenu();
 		const triggerId = this._getTriggerId();
 		const isOpen = Openable.isOpen(this);
-		const className = classNames('slds-dropdown-trigger--click', { 'slds-is-open': this.props.isOpen });
+		const className = classNames('slds-dropdown-trigger', 'slds-dropdown-trigger--click', { 'slds-is-open': this.props.isOpen });
 
 		return (
 			<Trigger

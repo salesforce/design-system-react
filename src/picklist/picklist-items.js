@@ -40,7 +40,18 @@ const PicklistItems = React.createClass({
 		onSelected: PropTypes.func.isRequired,
 		selection: PropTypes.oneOfType([React.PropTypes.object]),
 		show: PropTypes.bool.isRequired,
-		menuItemRenderer: PropTypes.func
+		menuItemRenderer: PropTypes.func,
+		/**
+		 * Positions dropdown menu with a nubbin
+		 */
+		position: React.PropTypes.oneOf([
+			'top left',
+			'top',
+			'top right',
+			'bottom left',
+			'bottom',
+			'bottom right'
+		])
 	},
 
 	getDefaultProps () {
@@ -72,9 +83,45 @@ const PicklistItems = React.createClass({
 		});
 	},
 
+	_getPositionClassName () {
+		let positionClassName;
+		switch (this.props.position) {
+			case 'top left':
+				positionClassName = 'slds-dropdown--left slds-nubbin--top-left';
+				break;
+			case 'top':
+				positionClassName = 'slds-nubbin--top';
+				break;
+			case 'top right':
+				positionClassName = 'slds-dropdown--right slds-nubbin--top-right';
+				break;
+			case 'bottom left':
+				positionClassName = ' slds-dropdown--bottom slds-dropdown--left slds-nubbin--bottom-left';
+				break;
+			case 'bottom':
+				positionClassName = ' slds-dropdown--bottom slds-nubbin--bottom';
+				break;
+			case 'bottom right':
+				positionClassName = ' slds-dropdown--bottom slds-dropdown--right slds-nubbin--bottom-right';
+				break;
+			default:
+				positionClassName = `slds-dropdown--${this.props.align}`;
+		}
+
+		return positionClassName;
+	},
+
 	render () {
 		return (
-			<div className={classNames('slds-dropdown', 'slds-dropdown--' + this.props.align, 'slds-dropdown--menu', {'slds-hide': !this.props.show})} id={this.props.id}>
+			<div
+				className={classNames(
+					'slds-dropdown',
+					this._getPositionClassName(),
+					'slds-dropdown--menu',
+					{ 'slds-hide': !this.props.show }
+				)}
+				id={this.props.id}
+			>
 				<ul className="slds-dropdown__list" role="menu" aria-labelledby={this.props.labelledBy}>
 				{this._menuItems()}
 				</ul>
