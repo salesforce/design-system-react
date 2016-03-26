@@ -12,6 +12,7 @@ var componentNames = [
   'SLDSMenuPicklist',
   'SLDSModal',
   'SLDSNotification',
+  'SLDSPageHeader',
   'SLDSPopoverTooltip',
   'SLDSDatepickerSingleSelect',
   'SLDSTimepicker',

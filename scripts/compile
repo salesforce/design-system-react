@@ -3,7 +3,7 @@ mkdir -p dist/
 rm -rf lib/
 mkdir -p lib/
 
-BABEL="babel -d lib/ components/"
+BABEL="babel -d lib/ components/ --presets react --presets es2015 --presets stage-0"
 BUILD="webpack --devtool source-map --config webpack.config.build.js"
 
 eval $BABEL
