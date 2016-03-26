@@ -35,7 +35,7 @@ const DropdownExample = React.createClass({
 	getInitialState () {
 		return {
 			selectionDefault: sampleData[0],
-			selectionCheckmark: sampleDataWithIcons[0],
+			selectionCheckmark: null,
 			selectionDropdownTrigger: sampleData[0],
 			selectionCustomTrigger: sampleData[0],
 			selectionStatefulIconTrigger: sampleDataWithIcons[0]
