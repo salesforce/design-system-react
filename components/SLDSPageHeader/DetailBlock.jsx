@@ -14,6 +14,9 @@ import classnames from 'classnames';
 
 const displayName = 'SLDSPageHeaderDetailRow';
 const propTypes = {
+  /**
+   * Optional class name
+   */
   className: React.PropTypes.string,
 };
 const defaultProps = {};
