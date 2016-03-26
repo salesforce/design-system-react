@@ -172,6 +172,10 @@ export const DropdownDefinition = {
 		 */
 		openOn: React.PropTypes.oneOf(['hover', 'click']),
 		/**
+		 * Deprecated. Please use Picklist if you need the to update the label of the button.
+		 */
+		placeholder: PropTypes.string,
+		/**
 		 * Positions dropdown menu with a nubbin
 		 */
 		position: React.PropTypes.oneOf([
@@ -211,6 +215,7 @@ export const DropdownDefinition = {
 		sunsetPropertyWarning(CONTROL, this.props.buttonVariant, 'buttonVariant', 'Please set `variant` with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button variant="brand" /></DropdownTrigger></Dropdown>');
 		sunsetPropertyWarning(CONTROL, this.props.label, 'label', 'Please set the label with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button label="Noice!" /></DropdownTrigger></Dropdown>');
 		sunsetPropertyWarning(CONTROL, this.props.tooltip, 'tooltip', 'Please set the label with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button label="Noice!" /></DropdownTrigger></Dropdown>');
+		sunsetPropertyWarning(CONTROL, this.props.placeholder, 'placeholder', 'If a placeholder is needed and the text of the button will be updated. Please use a picklist.');
 	},
 
 	componentWillMount () {
