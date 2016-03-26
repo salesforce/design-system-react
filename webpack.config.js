@@ -33,7 +33,7 @@ module.exports = function () {
       loaders: [
         {
           test: /\.jsx?$/,
-          loaders: ['babel'],
+          loaders: ['babel-loader?cacheDirectory&presets[]=react&presets[]=es2015&presets[]=stage-0'],
           include: [
             path.join(__dirname, 'demo'),
             path.join(__dirname, 'components')
