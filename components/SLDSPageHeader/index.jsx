@@ -10,24 +10,40 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React, { Component } from 'react';
+import classnames from 'classnames';
 import Info from './Info';
 import Title from './Title';
 import DetailRow from './DetailRow';
 import DetailBlock from './DetailBlock';
 
 const displayName = 'SLDSPageHeader';
-const propTypes = {};
-const defaultProps = {};
+const propTypes = {
+  /**
+   * Optional class name
+   */
+  className: React.PropTypes.string,
+};
+const defaultProps = {
+  className: '',
+};
 
+/**
+ * The SLDSPageHeader component adds SLDSPageHeader, SLDSPageHeader.Info, SLDSPageHeader.Title, SLDSPageHeader.DetailRow, and SLDSPageHeader.DetailBlock.
+ */
 class PageHeader extends Component {
   render() {
-    const { children, ...attr } = this.props;
+    const { children, className, ...attr } = this.props;
+    const classes = this._getClassNames(className);
 
     return (
-      <div className="slds-page-header" role="banner" {...attr}>
+      <div className={classes} role="banner" {...attr}>
         {children}
       </div>
     );
+  }
+
+  _getClassNames(className) {
+    return classnames('slds-page-header', className);
   }
 }
 
