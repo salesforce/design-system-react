@@ -28,6 +28,10 @@ const propTypes = {
   assistiveText: React.PropTypes.string,
   category: React.PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']).isRequired,
   /**
+   * If true, icon background is circular (if category is "action" as dictated by styles).
+   */
+  circle: React.PropTypes.bool,
+  /**
    * CSS classes that are applied to the SVG
    */
   className: React.PropTypes.string,
@@ -43,8 +47,9 @@ const propTypes = {
 };
 const defaultProps = {
   category: 'standard',
+  circle: false,
   inverse: true,
-  size: 'medium',
+  size: 'medium'
 };
 
 /**
@@ -64,6 +69,7 @@ class Icon extends React.Component {
     return classNames({
       ['slds-icon__container']: this.props.category !== 'utility',
       [`slds-icon-${this.props.category}-${name}`]: renderName,
+      ['slds-icon_container--circle']: this.props.circle
     })
   }
 
