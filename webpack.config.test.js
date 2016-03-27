@@ -1,14 +1,14 @@
 /* `webpack.config.test` should be used to run unit tests. */
 
 const devConfig = require('./webpack.config');
-
-var path = require('path');
+const path = require('path');
 
 // Build on top of core webpack config
 const config = devConfig;
 
-config.devtool = 'inline-source-map';
+// remove tests from entries to prevent including twice
+delete config.entry.tests;
 
-config.module.loaders[0].include.push( path.join(__dirname, 'test') );
+config.module.loaders[0].include.push(path.join(__dirname, 'test'));
 
 module.exports = config;

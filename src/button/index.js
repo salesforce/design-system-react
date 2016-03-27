@@ -199,9 +199,9 @@ export const ButtonDefinition = {
 		// core](../../core/button.html).
 		return (
 			<button
+				{...props}
 				type      = "button"
 				className = {this._getClassNames(this.props.className, isStateful)}
-				{...props}
 			>{views}</button>
 		);
 	}

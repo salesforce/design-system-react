@@ -75,7 +75,6 @@ export const 	TriggerDefinition = {
 
 	_renderDefaultButton () {
 		const {
-			ariaHaspopup,
 			className,
 			children,
 			onClick,
@@ -87,6 +86,7 @@ export const 	TriggerDefinition = {
 			buttonClassName,
 			buttonVariant,
 			triggerClicked,
+			label,
 
 			// ### Additional properties
 			// We allow allowing additional cleanly with [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx).
@@ -94,21 +94,35 @@ export const 	TriggerDefinition = {
 		} = this.props;
 
 		let iconStyle = this.props.iconStyle;
+		let theme = this.props.buttonVariant;
 		if (this.props.buttonVariant) {
 			iconStyle = null;
+		}
+
+		let iconPosition = 'left';
+		if (this.props.label) {
+			iconPosition = 'right';
+			iconStyle = null;
+
+			if (!this.props.buttonVariant) {
+				theme = 'neutral';
+			}
 		}
 
 		return (
 			<Button
 				{...props}
-				ariaHaspopup={ariaHaspopup}
-				className={this.props.buttonClassName}
-				id={triggerId}
-				iconStyle={iconStyle}
-				onClick={this._handleButtonClicked}
-				onKeyDown={onKeyDown}
-				onKeyPress={onKeyPress}
-				theme={this.props.buttonVariant}
+				aria-haspopup = "true"
+				className     = {this.props.buttonClassName}
+				id            = {triggerId}
+				iconStyle     = {iconStyle}
+				onClick       = {this._handleButtonClicked}
+				onKeyDown     = {onKeyDown}
+				onKeyPress    = {onKeyPress}
+				/* deprecated */
+				theme         = {theme}
+				text          = {this.props.label}
+				iconPosition  = {iconPosition}
 			/>
 			);
 	},
@@ -118,7 +132,6 @@ export const 	TriggerDefinition = {
 		let ChildButton = this._renderDefaultButton();
 
 		const {
-			ariaHaspopup,
 			onClick,
 			onKeyDown,
 			onKeyPress,
@@ -133,12 +146,12 @@ export const 	TriggerDefinition = {
 		React.Children.map(this.props.children, (child) => {
 			if (child.type.displayName === 'Button') {
 				ChildButton = React.cloneElement(child, {
-					ariaHaspopup,
+					'aria-haspopup': 'true',
 					icon: child.props.icon || triggerIcon,
 					id: triggerId,
 					onClick,
 					onKeyDown,
-					onKeyPress,
+					onKeyPress
 				});
 			}
 		});

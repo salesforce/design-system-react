@@ -13,15 +13,14 @@ const { Simulate,
 				findRenderedDOMComponentWithClass } = TestUtils;
 chai.should();
 
-
+// Add CSS for CLI based testing
 const link = document.createElement('link');
 link.type = 'text/css';
 link.rel = 'stylesheet';
 link.href = '/base/node_modules/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.css';
 document.head.appendChild(link);
 
-describe('Dropdown: ', function () {
-
+describe('Dropdown: ', () => {
 	let body;
 	const options = [
 		{
@@ -53,59 +52,60 @@ describe('Dropdown: ', function () {
 
 	const getMenu = dom => dom.querySelector('.slds-dropdown--menu');
 
-	debugger;
+	// Hover is deprecated for menus.
+	
+	// describe('Hoverable', () => {
+	// 	let cmp, btn;
 
-	describe('Hoverable', () => {
-		let cmp, btn;
+	// 	beforeEach(() => {
+	// 		cmp = dropItDown({buttonClassName: 'dijkstrafied', openOn: 'hover'});
+	// 		btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+	// 		console.log(btn);
+	// 	})
 
-		beforeEach(() => {
-			cmp = dropItDown({buttonClassName: 'dijkstrafied', openOn: 'hover'});
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
-		})
+	// 	it('gives the button correct aria properties', () => {
+	// 		expect(btn.props['aria-haspopup']).to.equal("true");
+	// 	})
 
-		it('gives the button correct aria properties', () => {
-			expect(btn.props['aria-haspopup']).to.equal("true");
-		})
+	// 	it('sets the label', () => {
+	// 		expect(btn.innerText).to.equal("Contacts");
+	// 	})
 
-		it('sets the label', () => {
-			expect(btn.innerText).to.equal("Contacts");
-		})
+	// 	it('preseves the className', () => {
+	// 		expect(btn.className).to.include("dijkstrafied");
+	// 	})
 
-		it('preseves the className', () => {
-			expect(btn.className).to.include("dijkstrafied");
-		})
+	// 	it('expands the dropdown on hover', () => {
+	// 		expect(getMenu(body)).to.equal(null);
+	// 		Simulate.mouseEnter(btn, {});
+	// 		expect(getMenu(body).className).to.include('slds-dropdown');
+	// 		Simulate.mouseLeave(btn, {});
+	// 	})
 
-		it('expands the dropdown on hover', () => {
-			expect(getMenu(body)).to.equal(null);
-			Simulate.mouseEnter(btn, {});
-			expect(getMenu(body).className).to.include('slds-dropdown');
-			Simulate.mouseLeave(btn, {});
-		})
+	// 	it('closes on blur based on timeout delay', (done) => {
+	// 		expect(getMenu(body)).to.equal(null);
+	// 		Simulate.mouseEnter(btn, {});
+	// 		Simulate.mouseLeave(btn);
+	// 		expect(getMenu(body)).to.not.equal(null);
+	// 		setTimeout(() => {
+	// 			expect(getMenu(body)).to.equal(null);
+	// 			done();
+	// 		}, 600);
+	// 	})
 
-		it('closes on blur based on timeout delay', (done) => {
-			expect(getMenu(body)).to.equal(null);
-			Simulate.mouseEnter(btn, {});
-			Simulate.mouseLeave(btn);
-			expect(getMenu(body)).to.not.equal(null);
-			setTimeout(() => {
-				expect(getMenu(body)).to.equal(null);
-				done();
-			}, 600);
-		})
-
-		it('doesn\'t close on quick hover outside', (done) => {
-			expect(getMenu(body)).to.equal(null);
-			Simulate.mouseEnter(btn, {});
-			Simulate.mouseLeave(btn);
-			setTimeout(() => {
-				expect(getMenu(body)).to.not.equal(null);
-				setTimeout(() => {
-					expect(getMenu(body)).to.equal(null);
-					done()
-				}, 600)
-			}, 100)
-		})
-	});
+	// 	it('doesn\'t close on quick hover outside', (done) => {
+	// 		expect(getMenu(body)).to.equal(null);
+	// 		Simulate.mouseEnter(btn, {});
+	// 		Simulate.mouseLeave(btn);
+	// 		setTimeout(() => {
+	// 			expect(getMenu(body)).to.not.equal(null);
+	// 			setTimeout(() => {
+	// 				expect(getMenu(body)).to.equal(null);
+	// 				done()
+	// 			}, 600)
+	// 		}, 100)
+	// 	})
+	// });
 
 	describe('Clickable', () => {
 		let cmp, btn, clicked;
@@ -117,17 +117,17 @@ describe('Dropdown: ', function () {
 		});
 
 		it('doesnt expand on hover', () => {
-			expect(getMenu(body)).to.equal(null);
+			expect(getMenu(body).className).to.include('slds-hide');
 			Simulate.mouseEnter(btn, {});
-			expect(getMenu(body)).to.equal(null);
+			expect(getMenu(body).className).to.include('slds-hide');
 		});
 
 		it('expands/contracts on click', () => {
-			expect(getMenu(body)).to.equal(null);
+			expect(getMenu(body).className).to.include('slds-hide');
 			Simulate.click(btn, {});
-			expect(getMenu(body).className).to.include('slds-dropdown');
+			expect(getMenu(body).className).to.not.include('slds-hide');
 			Simulate.click(btn, {});
-			expect(getMenu(body)).to.equal(null);
+			expect(getMenu(body).className).to.include('slds-hide');
 		});
 
 		it('preserves click behavior', (done) => {
@@ -138,6 +138,7 @@ describe('Dropdown: ', function () {
 			setTimeout(() => done(), 600);
 		});
 	});
+	
 	describe('Expanded', () => {
 		let cmp, btn, selected;
 
@@ -154,7 +155,5 @@ describe('Dropdown: ', function () {
 			Simulate.click(items[1].querySelector('a'), {});
 			expect(selected.value).to.equal('B');
 		});
-
 	});
-
 });

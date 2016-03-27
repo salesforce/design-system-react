@@ -288,7 +288,7 @@ export const DropdownDefinition = {
 
 		return (
 			<Trigger
-				ariaHaspopup
+				{...CustomTriggerChildProps}
 				ariaExpanded={isOpen}
 				className={className}
 				id={this.props.id}
@@ -299,8 +299,8 @@ export const DropdownDefinition = {
 				renderArrow={this.props.renderArrow}
 				triggerIcon={this._getIcon()}
 				triggerId={triggerId}
-				{...CustomTriggerChildProps}
 				/* deprecated */
+				label={this.props.label}
 				buttonClassName={this.props.buttonClassName}
 				buttonVariant={this.props.buttonVariant}
 				triggerClicked={this.props.onClick}
