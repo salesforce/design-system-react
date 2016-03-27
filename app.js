@@ -24,11 +24,16 @@ app.use(webpackHotMiddleware(compiler, {
 // Design system static directory
 app.use('/assets', express.static(__dirname + '/node_modules/@salesforce-ux/design-system/assets'));
 
-
-app.use(express.static('public'));
+// Design system static directory
+app.use('/node_modules', express.static(__dirname + '/node_modules'));
 
 // Serve up the built files
 app.use('/dev-build', express.static(__dirname + '/dev-build'));
+
+app.use('/test', express.static(__dirname + '/tests'));
+app.use('/base/node_modules', express.static(__dirname + '/node_modules'));
+
+app.use(express.static('public'));
 
 // Listen
 var server = app.listen(port, function() {
