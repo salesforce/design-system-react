@@ -50,9 +50,16 @@ export const 	TriggerDefinition = {
 	// ### Prop Types
 	propTypes: {
 		/**
-		 * A Button is required
+		 * Takes a Button component as a child.
 		 */
 		children: PropTypes.element,
+		/**
+		 * Class names added to trigger wrapping tag.
+		 */
+		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		/**
+		 * For internal component use, so that the dropdown menu can pass icons to the trigger button through the dropdown parent component.
+		 */
 		triggerIcon: PropTypes.string
 	},
 
@@ -162,11 +169,12 @@ export const 	TriggerDefinition = {
 	// ### Render
 	render () {
 		return (
-			<div className={this.props.className}
-				id={this.props.id}
-				aria-expanded={this.props.ariaExpanded}
-				onKeyDown={this.props.onKeyDown}
-				onKeyPress={this.props.onKeyPress}
+			<div
+				aria-expanded = {this.props.ariaExpanded}
+				className     = {classNames(this.props.triggerClassName, this.props.className)}
+				id            = {this.props.id}
+				onKeyDown     = {this.props.onKeyDown}
+				onKeyPress    = {this.props.onKeyPress}
 			>
 				{this._renderButton()}
 				{this.props.menu}

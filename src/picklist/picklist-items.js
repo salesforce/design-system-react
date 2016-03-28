@@ -32,6 +32,10 @@ const PicklistItems = React.createClass({
 		 * If true, renders checkmark icon on the selected Menu Item.
 		 */
 		checkmark: PropTypes.bool,
+		/**
+		 * Class names added to dropdown menu, that is the element with the class `slds-dropdown`.
+		 */
+		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		// TODO: Type of collection unknown until parsed by Data Adapter
 		collection: PropTypes.oneOfType([React.PropTypes.array, React.PropTypes.object]).isRequired,
 		id: PropTypes.string,
@@ -118,7 +122,8 @@ const PicklistItems = React.createClass({
 					'slds-dropdown',
 					this._getPositionClassName(),
 					'slds-dropdown--menu',
-					{ 'slds-hide': !this.props.show }
+					{ 'slds-hide': !this.props.show },
+					this.props.className
 				)}
 				id={this.props.id}
 			>

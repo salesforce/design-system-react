@@ -120,7 +120,7 @@ export const DropdownDefinition = {
 		// > @todo Type of collection unknown until parsed by Data Adapter
 		collection: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
 		/**
-		 * Class name assigned to the container element (this element also has `slds-dropdown-trigger slds-dropdown-trigger--click` classes)
+		 * Class names added to dropdown menu, that is the element with the class `slds-dropdown`. To add additional CSS classes to the trigger wrapping tag or the trigger button, please reference the `children` prop.
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
@@ -239,6 +239,7 @@ export const DropdownDefinition = {
 			<PicklistItems
 				align={this.props.align}
 				checkmark={this.props.checkmark}
+				className={this.props.className}
 				collection={this._collection}
 				id={this._getMenuId()}
 				getMenuItemId={this._getMenuItemId}
@@ -284,26 +285,27 @@ export const DropdownDefinition = {
 		const menu = this._renderMenu();
 		const triggerId = this._getTriggerId();
 		const isOpen = Openable.isOpen(this);
-		const className = classNames('slds-dropdown-trigger', 'slds-dropdown-trigger--click', { 'slds-is-open': this.props.isOpen });
+		const triggerClassName = classNames('slds-dropdown-trigger', 'slds-dropdown-trigger--click', { 'slds-is-open': this.props.isOpen });
 
 		return (
 			<Trigger
 				{...CustomTriggerChildProps}
-				ariaExpanded={isOpen}
-				className={className}
-				id={this.props.id}
-				menu={menu}
-				onKeyDown={this._handleKeyPressed}
-				onKeyPress={this._handleKeyPressed}
-				onClick={this._handleClicked}
-				renderArrow={this.props.renderArrow}
-				triggerIcon={this._getIcon()}
-				triggerId={triggerId}
+				ariaExpanded      = {isOpen}
+				dropdownClassName = {this.props.className}
+				id                = {this.props.id}
+				menu              = {menu}
+				onKeyDown         = {this._handleKeyPressed}
+				onKeyPress        = {this._handleKeyPressed}
+				onClick           = {this._handleClicked}
+				renderArrow       = {this.props.renderArrow}
+				triggerClassName  = {triggerClassName}
+				triggerIcon       = {this._getIcon()}
+				triggerId         = {triggerId}
 				/* deprecated */
-				label={this.props.label}
-				buttonClassName={this.props.buttonClassName}
-				buttonVariant={this.props.buttonVariant}
-				triggerClicked={this.props.onClick}
+				label             = {this.props.label}
+				buttonClassName   = {this.props.buttonClassName}
+				buttonVariant     = {this.props.buttonVariant}
+				triggerClicked    = {this.props.onClick}
 			/>
 		);
 	}
