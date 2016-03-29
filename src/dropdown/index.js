@@ -98,15 +98,36 @@ export const DropdownDefinition = {
 		 */
 		align: PropTypes.oneOf(['left', 'right']),
 		/**
-		 * Deprecated. Please set the `assistiveText` with a child of `DropdownTrigger`: `<Dropdown><DropdownTrigger><Button assistiveText="Change settings" /></DropdownTrigger></Dropdown>``
+		 * Deprecated. Please set the `assistiveText` with a child of `DropdownTrigger`:
+		 * ```
+		 * <Dropdown>
+		 *   <DropdownTrigger>
+		 *     <Button assistiveText="Change settings" />
+		 *   </DropdownTrigger>
+		 * </Dropdown>
+		 * ```
 		 */
 		assistiveText: React.PropTypes.string,
 		/**
-		 * Deprecated. Please set the `className` with a child of `DropdownTrigger`: `<Dropdown><DropdownTrigger><Button className="slds-is-cool" /></DropdownTrigger></Dropdown>``
+		 * Deprecated. Please set the `className` with a child of `DropdownTrigger`:
+		 * ```
+		 * <Dropdown>
+		 *   <DropdownTrigger>
+		 *     <Button className="slds-is-cool" />
+		 *   </DropdownTrigger>
+		 * </Dropdown>
+		 * ```
 		 */
 		buttonClassName: PropTypes.string,
 		/**
-		 * Deprecated. Please set the `variant` with a child of `DropdownTrigger`: `<Dropdown><DropdownTrigger><Button variant="brand" /></DropdownTrigger></Dropdown>``
+		 * Deprecated. Please set the `variant` with a child of `DropdownTrigger`:
+		 * ```
+		 * <Dropdown>
+		 *   <DropdownTrigger>
+		 *     <Button variant="brand" />
+		 *   </DropdownTrigger>
+		 * </Dropdown>
+		 * ```
 		 */
 		buttonVariant: PropTypes.string,
 		/**
@@ -114,7 +135,14 @@ export const DropdownDefinition = {
 		 */
 		checkmark: PropTypes.bool,
 		/**
-		 * If no `children` are present, a default button will be rendered. Import the module `slds-for-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. `<Dropdown><DropdownTrigger><Button icon="utility.settings" /></DropdownTrigger></Dropdown>`. Any `props` specified on that `Button` will be assigned to the trigger button.`
+		 * If no `children` are present, a default button will be rendered. Import the module `slds-for-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button:
+		 * ```
+		 * <Dropdown>
+		 *   <DropdownTrigger>
+		 *     <Button icon="utility.settings" />
+		 *   </DropdownTrigger>
+		 * </Dropdown>
+		 * ```
 		 */
 		children: PropTypes.element,
 		// > @todo Type of collection unknown until parsed by Data Adapter
@@ -128,7 +156,14 @@ export const DropdownDefinition = {
 		 */
 		disabled: PropTypes.bool,
 		/**
-		 * Deprecated. Please set the `icon` with a child of `DropdownTrigger`: `<Dropdown><DropdownTrigger><Button icon="utility.settings" /></DropdownTrigger></Dropdown>``
+		 * Deprecated. Please set the `icon` with a child of `DropdownTrigger`:
+		 * ```
+		 * <Dropdown>
+		 *   <DropdownTrigger>
+		 *     <Button icon="utility.settings" />
+		 *   </DropdownTrigger>
+		 * </Dropdown>
+		 * ```
 		 */
 		icon: isIcon,
 		/**
@@ -148,7 +183,7 @@ export const DropdownDefinition = {
 		 */
 		listItemRenderer: PropTypes.func,
 		/**
-		 * Deprecated. Please pass in label to <Button> as a child.
+		 * Deprecated. Please pass in `text` to `<Button>` as a child. See `children` prop.
 		 */
 		label: React.PropTypes.string,
 		/**
