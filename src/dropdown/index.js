@@ -26,12 +26,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // Bring in the [shared library functions](../../lib/lib.html).
 import merge from 'slds-for-js-core/lib/merge';
 import runHelpers from 'slds-for-js-core/lib/runHelpers';
-import deprecatedPropertyWarning from 'slds-for-js-core/lib/warning/deprecatedProperty';
-import sunsetPropertyWarning from 'slds-for-js-core/lib/warning/sunsetProperty';
 
 // Use the [shared core](../../core/dropdown.html), which contains logic that
 // is shared across SLDS for JavaScript.
 import DropdownCore, { CONTROL } from 'slds-for-js-core/components/dropdown';
+
+// `checkProps` issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
 
 // ### Traits
 
@@ -74,9 +75,9 @@ import isIcon from '../mixins/custom-prop-types/icon.js';
 // [PicklistItems](../picklist-items.html)
 import PicklistItems from '../picklist/picklist-items';
 
-// [DropdownTrigger](./button-trigger.html)
+// [Trigger](./button-trigger.html)
 // This is the the default Dropdown Trigger. It expects one button as a child.
-import DropdownTrigger from './button-trigger';
+import DefaultTrigger from './button-trigger';
 
 // [PicklistObject](../picklist.html)
 import { PicklistDefinition } from '../picklist';
@@ -94,53 +95,53 @@ export const DropdownDefinition = {
 	// ### Prop Types
 	propTypes: {
 		/**
-		 * Aligns the right or left side of the menu with the respective side of the trigger.
+		 * Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.
 		 */
 		align: PropTypes.oneOf(['left', 'right']),
 		/**
-		 * Deprecated. Please set the `assistiveText` with a child of `DropdownTrigger`:
+		 * Deprecated. Please set the `Button` property, `assistiveText`, as a child of `Trigger`:
 		 * ```
 		 * <Dropdown>
-		 *   <DropdownTrigger>
+		 *   <Trigger>
 		 *     <Button assistiveText="Change settings" />
-		 *   </DropdownTrigger>
+		 *   </Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
 		assistiveText: React.PropTypes.string,
 		/**
-		 * Deprecated. Please set the `className` with a child of `DropdownTrigger`:
+		 * End of Life. Please set the `Button` property, `className`, as a child of `Trigger`:
 		 * ```
 		 * <Dropdown>
-		 *   <DropdownTrigger>
+		 *   <Trigger>
 		 *     <Button className="slds-is-cool" />
-		 *   </DropdownTrigger>
+		 *   </Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
 		buttonClassName: PropTypes.string,
 		/**
-		 * Deprecated. Please set the `variant` with a child of `DropdownTrigger`:
+		 * End of Life. Please set the `Button` property, `variant`, as a child of `Trigger`:
 		 * ```
 		 * <Dropdown>
-		 *   <DropdownTrigger>
+		 *   <Trigger>
 		 *     <Button variant="brand" />
-		 *   </DropdownTrigger>
+		 *   </Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
 		buttonVariant: PropTypes.string,
 		/**
-		 * If true, renders checkmark icon on the selected Menu Item.
+		 * If true, renders checkmark icon on the selected menu item.
 		 */
 		checkmark: PropTypes.bool,
 		/**
-		 * If no `children` are present, a default button will be rendered. Import the module `slds-for-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button:
+		 * If no `children` are present, a default button will be rendered with an arrow. Import the module `slds-for-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button:
 		 * ```
 		 * <Dropdown>
-		 *   <DropdownTrigger>
+		 *   <Trigger>
 		 *     <Button icon="utility.settings" />
-		 *   </DropdownTrigger>
+		 *   </Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -148,7 +149,7 @@ export const DropdownDefinition = {
 		// > @todo Type of collection unknown until parsed by Data Adapter
 		collection: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
 		/**
-		 * Class names added to dropdown menu, that is the element with the class `slds-dropdown`. To add additional CSS classes to the trigger wrapping tag or the trigger button, please reference the `children` prop.
+		 * Class names to be added to the dropdown menu, that is the element with the class `slds-dropdown`. To add additional CSS classes to the trigger wrapping tag or the trigger button, please reference the `children` prop, and pass use the `className` of respective React element.
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
@@ -156,18 +157,22 @@ export const DropdownDefinition = {
 		 */
 		disabled: PropTypes.bool,
 		/**
-		 * Deprecated. Please set the `icon` with a child of `DropdownTrigger`:
+		 * End Of Life. Delay on menu closing. See `openOn`.
+		 */
+		hoverCloseDelay: PropTypes.number,
+		/**
+		 * End of Life. Please set the `icon` with a child of `Trigger`:
 		 * ```
 		 * <Dropdown>
-		 *   <DropdownTrigger>
+		 *   <Trigger>
 		 *     <Button icon="utility.settings" />
-		 *   </DropdownTrigger>
+		 *   </Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
 		icon: isIcon,
 		/**
-		 * Deprecated. Please update your API to use `statefulIcon`.
+		 * Deprecated. Swapping icons feature of dropdown will be removed soon. Please use a `Picklist` instead.
 		 */
 		iconSwap: React.PropTypes.bool,
 		/**
@@ -183,7 +188,14 @@ export const DropdownDefinition = {
 		 */
 		listItemRenderer: PropTypes.func,
 		/**
-		 * Deprecated. Please pass in `text` to `<Button>` as a child. See `children` prop.
+		 * End of Life. Please set the `text` with a child of `Trigger`:
+		 * ```
+		 * <Dropdown>
+		 *   <Trigger>
+		 *     <Button text="Noice!" />
+		 *   </Trigger>
+		 * </Dropdown>
+		 * ```
 		 */
 		label: React.PropTypes.string,
 		/**
@@ -191,29 +203,29 @@ export const DropdownDefinition = {
 		 */
 		onChange: PropTypes.func,
 		/**
-		 * Deprecated. This function fires when the dropdown trigger is clicked.
+		 * End of Life. This function fires when the dropdown trigger is clicked.
 		 */
 		onClick: PropTypes.func,
 		/**
-		 * Deprecated. This function fires when the selection is selected.
+		 * End of Life. This function fires when the selection is selected.
 		 */
 		onSelect: PropTypes.func,
 		/**
-		 * Deprecated. This is an array of menu items.
+		 * End of Life. This is an array of menu items. Please use `collection` instead.
 		 */
 		options: PropTypes.array,
 		/**
-		 * Deprecated. Determines if dropdown opens on mouse hover or mouse click
+		 * End of Life. Determines if dropdown opens on mouse hover or mouse click. All Dropdowns trigger on click.
 		 */
 		openOn: React.PropTypes.oneOf(['hover', 'click']),
 		/**
-		 * Deprecated. Please use Picklist if you need the to update the label of the button.
+		 * End of Life. Please use Picklist if you need the to update the label of the button.
 		 */
 		placeholder: PropTypes.string,
 		/**
-		 * Positions dropdown menu with a nubbin
+		 * Positions dropdown menu with a nubbin--that is the arrow notch. The placement options correspond to the placement of the nubbin. This is implemeted with CSS classes and is best used with a `Button` with "icon container" styling.
 		 */
-		position: React.PropTypes.oneOf([
+		nubbinPosition: React.PropTypes.oneOf([
 			'top left',
 			'top',
 			'top right',
@@ -222,41 +234,29 @@ export const DropdownDefinition = {
 			'bottom right'
 		]),
 		/**
+		 * End of Life. All Dropdown Triggers should have an indicator of the presence of a dropdown, unless it is an icon-more or icon-bare button style.
+		 */
+		renderArrow: PropTypes.bool,
+		/**
 		 * The selected item from the dropdown menu.
 		 */
 		selection: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 		/**
-		 * The Button within DropdownTrigger is updated with the icon of the selected item.
+		 * End of Life. Please set the tooltip with a child of Trigger:
+		 * ```
+		 * <Dropdown>
+		 *   <Trigger>
+		 *     <Button tooltip=NoiceElement />
+		 *   </Trigger>
+		 * </Dropdown>
+		 * ```
 		 */
-		statefulIcon: PropTypes.bool
-	},
-
-	_checkDeprecations () {
-		if (process.env.NODE_ENV !== 'production') {
-			deprecatedPropertyWarning(CONTROL, this.props.swapIcon, 'swapIcon', 'statefulIcon');
-			deprecatedPropertyWarning(CONTROL, this.props.listItemRenderer, 'listItemRenderer', 'menuItemRenderer');
-			deprecatedPropertyWarning(CONTROL, this.props.onSelect, 'onSelect', 'onChange');
-			deprecatedPropertyWarning(CONTROL, this.props.options, 'options', 'collection');
-			deprecatedPropertyWarning(CONTROL, this.props.options, 'value', 'selection');
-
-			sunsetPropertyWarning(CONTROL, this.props.openOn, 'openOn', 'The slds-dropdown-trigger class which allowed showing the dropdown menu on mouse hover was deprecated in SLDS v1.0.');
-			sunsetPropertyWarning(CONTROL, this.props.hoverCloseDelay, 'hoverCloseDelay', 'The slds-dropdown-trigger class which allowed showing the dropdown menu on mouse hover was deprecated in SLDS v1.0.');
-			sunsetPropertyWarning(CONTROL, this.props.renderArrow, 'renderArrow', 'All Dropdown Triggers should have an indicator of the presence of a dropdown, unless it is an icon-more or icon-bare button style.');
-
-			// API has been moved to DropdownTrigger child
-			sunsetPropertyWarning(CONTROL, this.props.onClick, 'onClick', 'Please set onClick with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button onClick={myCoolCallback} /></DropdownTrigger></Dropdown>');
-			sunsetPropertyWarning(CONTROL, this.props.assistiveText, 'assistiveText', 'Please set assistiveText with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button assistiveText="Change settings" /></DropdownTrigger></Dropdown>');
-			sunsetPropertyWarning(CONTROL, this.props.buttonClass, 'buttonClassName', 'Please set the className with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button className="slds-is-cool" /></DropdownTrigger></Dropdown>');
-			sunsetPropertyWarning(CONTROL, this.props.icon, 'icon', 'Please set icon with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button icon="utility.settings" /></DropdownTrigger></Dropdown>');
-			sunsetPropertyWarning(CONTROL, this.props.buttonVariant, 'buttonVariant', 'Please set `variant` with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button variant="brand" /></DropdownTrigger></Dropdown>');
-			sunsetPropertyWarning(CONTROL, this.props.label, 'label', 'Please set the label with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button label="Noice!" /></DropdownTrigger></Dropdown>');
-			sunsetPropertyWarning(CONTROL, this.props.tooltip, 'tooltip', 'Please set the label with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button label="Noice!" /></DropdownTrigger></Dropdown>');
-			sunsetPropertyWarning(CONTROL, this.props.placeholder, 'placeholder', 'If a placeholder is needed and the text of the button will be updated. Please use a picklist.');
-		}
+		tooltip: React.element
 	},
 
 	componentWillMount () {
-		this._checkDeprecations();
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(CONTROL, this.props);
 		Positionable.setElement(this, Positionable.attachPositionedElementToBody({ classes: 'slds-dropdown' }));
 		Eventable.on(this, 'select', this._onSelect);
 		Eventable.on(this, 'deselect', this._onDeselect);
@@ -295,7 +295,7 @@ export const DropdownDefinition = {
 	_getIcon () {
 		let icon;
 
-		if ((this.props.swapIcon || this.props.statefulIcon) && this.props.selection && this.props.selection.icon) {
+		if ((this.props.swapIcon) && this.props.selection && this.props.selection.icon) {
 			icon = this.props.selection.icon;
 		}
 
@@ -305,16 +305,16 @@ export const DropdownDefinition = {
 	// ### Render
 	render () {
 		// Trigger manipulation
-		let Trigger = DropdownTrigger;
+		let CurrentTrigger = DefaultTrigger;
 		let CustomTriggerChildProps = {};
 
 		// Dropdown can take a Trigger component as a child and then return it as the parent DOM element.
 		React.Children.map(this.props.children, (child) => {
 			if (child.type.displayName === 'Trigger') {
 				const CustomTriggerChild = React.cloneElement(child, {});
-				// `CustomTriggerChildProps` is not used by the default Button Trigger, but by other triggers
+				// `CustomTriggerChildProps` is not used by the default button Trigger, but by other triggers
 				CustomTriggerChildProps = CustomTriggerChild.props;
-				Trigger = CustomTriggerChild.type;
+				CurrentTrigger = CustomTriggerChild.type;
 			}
 		});
 
@@ -325,7 +325,7 @@ export const DropdownDefinition = {
 		const triggerClassName = classNames('slds-dropdown-trigger', 'slds-dropdown-trigger--click', { 'slds-is-open': this.props.isOpen });
 
 		return (
-			<Trigger
+			<CurrentTrigger
 				{...CustomTriggerChildProps}
 				ariaExpanded      = {isOpen}
 				dropdownClassName = {this.props.className}
@@ -339,9 +339,12 @@ export const DropdownDefinition = {
 				triggerIcon       = {this._getIcon()}
 				triggerId         = {triggerId}
 				/* deprecated */
-				label             = {this.props.label}
+				assistiveText     = {this.props.assistiveText}
 				buttonClassName   = {this.props.buttonClassName}
 				buttonVariant     = {this.props.buttonVariant}
+				icon              = {this.props.icon}
+				iconSwap          = {this.props.iconSwap}
+				label             = {this.props.label}
 				triggerClicked    = {this.props.onClick}
 			/>
 		);
@@ -367,19 +370,11 @@ let Dropdown = merge(
 	DropdownDefinition
 );
 
-// `Helpers` are a feature of SLDS for React that allows anyone to register code that
-// can manipulate the component before it is encapsulated in a React class.
-//
-// This allows flexibility for adding custom behavior without modifying the
-// original source, or for adding optional behavior.
-//
-// Nothing in the component itself should ever depend on the presence
-// of helpers, as they are completely optional.
-Dropdown = runHelpers('react', CONTROL, Dropdown);
-
 // Once everything has been merged together and all registered helpers have
 // been run we can create the React class and export the result for
 // consumption by our apps.
 Dropdown = React.createClass(Dropdown);
+
+export { DefaultTrigger as Trigger };
 
 export default Dropdown;

@@ -74,7 +74,7 @@ export Datepicker from './datepicker';
 // * [Live Example](/react/dropdown)
 // * [<img src="/assets/demo-site/images/component-examples/dropdown.png" style="max-height: 200px;" alt="Dropdown Screenshot">](/react/dropdown)
 export Dropdown from './dropdown';
-export DropdownTrigger from './dropdown/button-trigger';
+export { Trigger as DropdownTrigger } from './dropdown';
 // _______________________________________________________________________________________________________
 
 // ## Icons

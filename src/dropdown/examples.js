@@ -87,7 +87,6 @@ const DropdownExample = React.createClass({
 						id="button-trigger-example"
 						onChange={this.handleChangeStatefulIconTrigger}
 						selection={this.state.selectionStatefulIconTrigger}
-						statefulIcon
 					>
 						<Trigger>
 							<Button iconStyle="icon-more" assistiveText="Custom Button" />
