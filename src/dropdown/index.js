@@ -26,8 +26,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // Bring in the [shared library functions](../../lib/lib.html).
 import merge from 'slds-for-js-core/lib/merge';
 import runHelpers from 'slds-for-js-core/lib/runHelpers';
-import deprecatedPropertyWarning from 'slds-for-js-core/lib/deprecatedPropertyWarning';
-import sunsetPropertyWarning from 'slds-for-js-core/lib/sunsetPropertyWarning';
+import deprecatedPropertyWarning from 'slds-for-js-core/lib/warning/deprecatedProperty';
+import sunsetPropertyWarning from 'slds-for-js-core/lib/warning/sunsetProperty';
 
 // Use the [shared core](../../core/dropdown.html), which contains logic that
 // is shared across SLDS for JavaScript.
@@ -232,25 +232,27 @@ export const DropdownDefinition = {
 	},
 
 	_checkDeprecations () {
-		deprecatedPropertyWarning(CONTROL, this.props.swapIcon, 'swapIcon', 'statefulIcon');
-		deprecatedPropertyWarning(CONTROL, this.props.listItemRenderer, 'listItemRenderer', 'menuItemRenderer');
-		deprecatedPropertyWarning(CONTROL, this.props.onSelect, 'onSelect', 'onChange');
-		deprecatedPropertyWarning(CONTROL, this.props.options, 'options', 'collection');
-		deprecatedPropertyWarning(CONTROL, this.props.options, 'value', 'selection');
+		if (process.env.NODE_ENV !== 'production') {
+			deprecatedPropertyWarning(CONTROL, this.props.swapIcon, 'swapIcon', 'statefulIcon');
+			deprecatedPropertyWarning(CONTROL, this.props.listItemRenderer, 'listItemRenderer', 'menuItemRenderer');
+			deprecatedPropertyWarning(CONTROL, this.props.onSelect, 'onSelect', 'onChange');
+			deprecatedPropertyWarning(CONTROL, this.props.options, 'options', 'collection');
+			deprecatedPropertyWarning(CONTROL, this.props.options, 'value', 'selection');
 
-		sunsetPropertyWarning(CONTROL, this.props.openOn, 'openOn', 'The slds-dropdown-trigger class which allowed showing the dropdown menu on mouse hover was deprecated in SLDS v1.0.');
-		sunsetPropertyWarning(CONTROL, this.props.hoverCloseDelay, 'hoverCloseDelay', 'The slds-dropdown-trigger class which allowed showing the dropdown menu on mouse hover was deprecated in SLDS v1.0.');
-		sunsetPropertyWarning(CONTROL, this.props.renderArrow, 'renderArrow', 'All Dropdown Triggers should have an indicator of the presence of a dropdown, unless it is an icon-more or icon-bare button style.');
+			sunsetPropertyWarning(CONTROL, this.props.openOn, 'openOn', 'The slds-dropdown-trigger class which allowed showing the dropdown menu on mouse hover was deprecated in SLDS v1.0.');
+			sunsetPropertyWarning(CONTROL, this.props.hoverCloseDelay, 'hoverCloseDelay', 'The slds-dropdown-trigger class which allowed showing the dropdown menu on mouse hover was deprecated in SLDS v1.0.');
+			sunsetPropertyWarning(CONTROL, this.props.renderArrow, 'renderArrow', 'All Dropdown Triggers should have an indicator of the presence of a dropdown, unless it is an icon-more or icon-bare button style.');
 
-		// API has been moved to DropdownTrigger child
-		sunsetPropertyWarning(CONTROL, this.props.onClick, 'onClick', 'Please set onClick with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button onClick={myCoolCallback} /></DropdownTrigger></Dropdown>');
-		sunsetPropertyWarning(CONTROL, this.props.assistiveText, 'assistiveText', 'Please set assistiveText with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button assistiveText="Change settings" /></DropdownTrigger></Dropdown>');
-		sunsetPropertyWarning(CONTROL, this.props.buttonClass, 'buttonClassName', 'Please set the className with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button className="slds-is-cool" /></DropdownTrigger></Dropdown>');
-		sunsetPropertyWarning(CONTROL, this.props.icon, 'icon', 'Please set icon with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button icon="utility.settings" /></DropdownTrigger></Dropdown>');
-		sunsetPropertyWarning(CONTROL, this.props.buttonVariant, 'buttonVariant', 'Please set `variant` with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button variant="brand" /></DropdownTrigger></Dropdown>');
-		sunsetPropertyWarning(CONTROL, this.props.label, 'label', 'Please set the label with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button label="Noice!" /></DropdownTrigger></Dropdown>');
-		sunsetPropertyWarning(CONTROL, this.props.tooltip, 'tooltip', 'Please set the label with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button label="Noice!" /></DropdownTrigger></Dropdown>');
-		sunsetPropertyWarning(CONTROL, this.props.placeholder, 'placeholder', 'If a placeholder is needed and the text of the button will be updated. Please use a picklist.');
+			// API has been moved to DropdownTrigger child
+			sunsetPropertyWarning(CONTROL, this.props.onClick, 'onClick', 'Please set onClick with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button onClick={myCoolCallback} /></DropdownTrigger></Dropdown>');
+			sunsetPropertyWarning(CONTROL, this.props.assistiveText, 'assistiveText', 'Please set assistiveText with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button assistiveText="Change settings" /></DropdownTrigger></Dropdown>');
+			sunsetPropertyWarning(CONTROL, this.props.buttonClass, 'buttonClassName', 'Please set the className with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button className="slds-is-cool" /></DropdownTrigger></Dropdown>');
+			sunsetPropertyWarning(CONTROL, this.props.icon, 'icon', 'Please set icon with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button icon="utility.settings" /></DropdownTrigger></Dropdown>');
+			sunsetPropertyWarning(CONTROL, this.props.buttonVariant, 'buttonVariant', 'Please set `variant` with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button variant="brand" /></DropdownTrigger></Dropdown>');
+			sunsetPropertyWarning(CONTROL, this.props.label, 'label', 'Please set the label with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button label="Noice!" /></DropdownTrigger></Dropdown>');
+			sunsetPropertyWarning(CONTROL, this.props.tooltip, 'tooltip', 'Please set the label with a child of DropdownTrigger: <Dropdown><DropdownTrigger><Button label="Noice!" /></DropdownTrigger></Dropdown>');
+			sunsetPropertyWarning(CONTROL, this.props.placeholder, 'placeholder', 'If a placeholder is needed and the text of the button will be updated. Please use a picklist.');
+		}
 	},
 
 	componentWillMount () {
