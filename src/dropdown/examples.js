@@ -37,8 +37,7 @@ const DropdownExample = React.createClass({
 			selectionDefault: sampleData[0],
 			selectionCheckmark: null,
 			selectionDropdownTrigger: sampleData[0],
-			selectionCustomTrigger: sampleData[0],
-			selectionStatefulIconTrigger: sampleDataWithIcons[0]
+			selectionCustomTrigger: sampleData[0]
 		};
 	},
 
@@ -76,20 +75,6 @@ const DropdownExample = React.createClass({
 					>
 						<Trigger>
 							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
-						</Trigger>
-					</Dropdown>
-				</div>
-
-				<div className="slds-col | slds-m-bottom--small">
-					<Dropdown
-						collection={sampleDataWithIcons}
-						checkmark
-						id="button-trigger-example"
-						onChange={this.handleChangeStatefulIconTrigger}
-						selection={this.state.selectionStatefulIconTrigger}
-					>
-						<Trigger>
-							<Button iconStyle="icon-more" assistiveText="Custom Button" />
 						</Trigger>
 					</Dropdown>
 				</div>
@@ -214,10 +199,6 @@ const DropdownExample = React.createClass({
 
 	handleChangeCustomTrigger (selection) {
 		this.setState({ selectionCustomTrigger: selection });
-	},
-
-	handleChangeStatefulIconTrigger (selection) {
-		this.setState({ selectionStatefulIconTrigger: selection });
 	}
 });
 
