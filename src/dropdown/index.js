@@ -25,13 +25,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Bring in the [shared library functions](../../lib/lib.html).
 import merge from 'slds-for-js-core/lib/merge';
-import runHelpers from 'slds-for-js-core/lib/runHelpers';
+import isFunction from 'slds-for-js-core/lib/is-function';
 
-// Use the [shared core](../../core/dropdown.html), which contains logic that
+// Use the [shared core](../../core/picklist.html), which contains logic that
 // is shared across SLDS for JavaScript.
-import DropdownCore, { CONTROL } from 'slds-for-js-core/components/dropdown';
+import PicklistCore from 'slds-for-js-core/components/picklist';
 
-// `checkProps` issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 
 // ### Traits
@@ -84,6 +84,8 @@ import { PicklistDefinition } from '../picklist';
 
 // Remove the need for `React.PropTypes`
 const { PropTypes } = React;
+
+export const CONTROL = 'Dropdown';
 
 // ## DropdownObject
 export const DropdownDefinition = {
@@ -254,6 +256,15 @@ export const DropdownDefinition = {
 		tooltip: React.element
 	},
 
+	resize () {
+		if (this.elements.wrapper) {
+			const width = this.elements.wrapper.outerWidth();
+
+			this.setState({ width });
+			if (isFunction(this.resetWidth)) this.resetWidth(width);
+		}
+	},
+
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(CONTROL, this.props);
@@ -293,7 +304,11 @@ export const DropdownDefinition = {
 
 	// ### Get Icon
 	_getIcon () {
-		let icon;
+		let icon = 'utility.down';
+
+		if (this.props.icon) {
+			icon = this.props.icon;
+		}
 
 		if ((this.props.swapIcon) && this.props.selection && this.props.selection.icon) {
 			icon = this.props.selection.icon;
@@ -365,7 +380,7 @@ export const DropdownDefinition = {
 
 let Dropdown = merge(
 	{},
-	DropdownCore,
+	PicklistCore,
 	PicklistDefinition,
 	DropdownDefinition
 );

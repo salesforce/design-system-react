@@ -87,6 +87,7 @@ export const 	TriggerDefinition = {
 			onClick,
 			onKeyDown,
 			onKeyPress,
+			triggerIcon,
 			triggerId,
 
 			/* Deprecated */
@@ -123,6 +124,7 @@ export const 	TriggerDefinition = {
 				className     = {this.props.buttonClassName}
 				id            = {triggerId}
 				iconStyle     = {iconStyle}
+				icon          = {triggerIcon}
 				onClick       = {this._handleButtonClicked}
 				onKeyDown     = {onKeyDown}
 				onKeyPress    = {onKeyPress}
