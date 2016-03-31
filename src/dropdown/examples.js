@@ -2,7 +2,7 @@ import React from 'react';
 import { cloneDeep } from 'lodash';
 import Dropdown from './index';
 import Button from '../button';
-import DropdownTrigger from './button-trigger';
+import Trigger from './button-trigger';
 import CustomTrigger from './custom-trigger';
 
 // SAMPLE CONTROL CODE -->
@@ -74,9 +74,9 @@ const DropdownExample = React.createClass({
 						selection={this.state.selectionNubbin}
 						statefulIcon
 					>
-						<DropdownTrigger>
+						<Trigger>
 							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
-						</DropdownTrigger>
+						</Trigger>
 					</Dropdown>
 				</div>
 
@@ -89,9 +89,9 @@ const DropdownExample = React.createClass({
 						selection={this.state.selectionStatefulIconTrigger}
 						statefulIcon
 					>
-						<DropdownTrigger>
+						<Trigger>
 							<Button iconStyle="icon-more" assistiveText="Custom Button" />
-						</DropdownTrigger>
+						</Trigger>
 					</Dropdown>
 				</div>
 
@@ -117,9 +117,9 @@ const DropdownExample = React.createClass({
 						selection={this.state.selectionDefault}
 						position="top left"
 					>
-						<DropdownTrigger>
+						<Trigger>
 							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
-						</DropdownTrigger>
+						</Trigger>
 					</Dropdown>
 				</div>
 
@@ -131,9 +131,9 @@ const DropdownExample = React.createClass({
 						selection={this.state.selectionDefault}
 						position="top"
 					>
-						<DropdownTrigger>
+						<Trigger>
 							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
-						</DropdownTrigger>
+						</Trigger>
 					</Dropdown>
 				</div>
 
@@ -145,9 +145,9 @@ const DropdownExample = React.createClass({
 						selection={this.state.selectionDefault}
 						position="top right"
 					>
-						<DropdownTrigger>
+						<Trigger>
 							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
-						</DropdownTrigger>
+						</Trigger>
 					</Dropdown>
 				</div>
 
@@ -159,9 +159,9 @@ const DropdownExample = React.createClass({
 						selection={this.state.selectionDefault}
 						position="bottom left"
 					>
-						<DropdownTrigger>
+						<Trigger>
 							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
-						</DropdownTrigger>
+						</Trigger>
 					</Dropdown>
 				</div>
 
@@ -173,9 +173,9 @@ const DropdownExample = React.createClass({
 						selection={this.state.selectionDefault}
 						position="bottom"
 					>
-						<DropdownTrigger>
+						<Trigger>
 							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
-						</DropdownTrigger>
+						</Trigger>
 					</Dropdown>
 				</div>
 
@@ -187,9 +187,9 @@ const DropdownExample = React.createClass({
 						selection={this.state.selectionDefault}
 						position="bottom right"
 					>
-						<DropdownTrigger>
+						<Trigger>
 							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
-						</DropdownTrigger>
+						</Trigger>
 					</Dropdown>
 				</div>
 
