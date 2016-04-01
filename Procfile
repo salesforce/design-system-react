@@ -1,1 +1,1 @@
-web: npm start
+worker: npm run publish-to-edge
