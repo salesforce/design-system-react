@@ -41,7 +41,7 @@ import Button from '../button';
 const { PropTypes } = React;
 
 // ## DropdownObject
-export const 	TriggerDefinition = {
+export const TriggerDefinition = {
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
 	// display name.
@@ -138,9 +138,6 @@ export const 	TriggerDefinition = {
 	},
 
 	_renderButton () {
-		// Trigger manipulation
-		let ChildButton = this._renderDefaultButton();
-
 		const {
 			onClick,
 			onKeyDown,
@@ -152,19 +149,25 @@ export const 	TriggerDefinition = {
 			// We allow allowing additional cleanly with [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx).
 		} = this.props;
 
-		// Button Trigger can take a Button child
-		React.Children.map(this.props.children, (child) => {
-			if (child.type.displayName === 'Button') {
-				ChildButton = React.cloneElement(child, {
-					'aria-haspopup': 'true',
-					icon: child.props.icon || triggerIcon,
-					id: triggerId,
-					onClick,
-					onKeyDown,
-					onKeyPress
-				});
-			}
-		});
+		// Trigger manipulation
+		let ChildButton = null;
+		if (React.Children.count(this.props.children) === 0) {
+			ChildButton = this._renderDefaultButton();
+		} else {
+			// Button Trigger can take a Button child
+			React.Children.map(this.props.children, (child) => {
+				if (child.type.displayName === Button.displayName) {
+					ChildButton = React.cloneElement(child, {
+						'aria-haspopup': 'true',
+						icon: child.props.icon || triggerIcon,
+						id: triggerId,
+						onClick,
+						onKeyDown,
+						onKeyPress
+					});
+				}
+			});
+		}
 
 		return ChildButton;
 	},
@@ -186,35 +189,9 @@ export const 	TriggerDefinition = {
 	}
 };
 
-// ## Trigger
-
-// SLDS for React **extends objects** by merging them together, rather than
-// via the prototype chain or imitation of object-oriented inheritance.
-// The important thing to remember is that _some methods will be available
-// to the component which are not declared in this file_.
-
-// These are not magic methods, they're not black box methods, but you do need
-// to trace the dependencies of the component to see where they are coming
-// from.
-
-let ButtonTrigger = merge(
-	{},
-	TriggerDefinition
-);
-
-// `Helpers` are a feature of SLDS for React that allows anyone to register code that
-// can manipulate the component before it is encapsulated in a React class.
-//
-// This allows flexibility for adding custom behavior without modifying the
-// original source, or for adding optional behavior.
-//
-// Nothing in the component itself should ever depend on the presence
-// of helpers, as they are completely optional.
-ButtonTrigger = runHelpers('react', 'ButtonTrigger', ButtonTrigger);
-
 // Once everything has been merged together and all registered helpers have
 // been run we can create the React class and export the result for
 // consumption by our apps.
-ButtonTrigger = React.createClass(ButtonTrigger);
+const Trigger = React.createClass(TriggerDefinition);
 
-export default ButtonTrigger;
+export default Trigger;
