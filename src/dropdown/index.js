@@ -25,7 +25,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Bring in the [shared library functions](../../lib/lib.html).
 import merge from 'slds-for-js-core/lib/merge';
-import isFunction from 'slds-for-js-core/lib/is-function';
+import isFunction from 'lodash/lang/isFunction';
 
 // Use the [shared core](../../core/picklist.html), which contains logic that
 // is shared across SLDS for JavaScript.
