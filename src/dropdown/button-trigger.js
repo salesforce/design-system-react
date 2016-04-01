@@ -75,6 +75,7 @@ export const 	TriggerDefinition = {
 
 	_handleButtonClicked (e) {
 		this.props.onClick(e);
+		// TriggerClicked is present to pass on the `onClick` prop from the Dropdown parent for backwards compatibility. Future implementations should just add `onClick` to the Trigger child.
 		if (this.props.triggerClicked) {
 			this.props.triggerClicked();
 		}
