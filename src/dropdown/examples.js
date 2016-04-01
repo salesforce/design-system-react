@@ -1,5 +1,5 @@
 import React from 'react';
-import { cloneDeep } from 'lodash/lang/cloneDeep';
+import cloneDeep from 'lodash/lang/cloneDeep';
 import Dropdown from './index';
 import Button from '../button';
 import Trigger from './button-trigger';
