@@ -110,7 +110,7 @@ export const DropdownDefinition = {
 		 * </Dropdown>
 		 * ```
 		 */
-		assistiveText: React.PropTypes.string,
+		assistiveText: PropTypes.string,
 		/**
 		 * End of Life. Please set the `Button` property, `className`, as a child of `Trigger`:
 		 * ```
@@ -176,7 +176,7 @@ export const DropdownDefinition = {
 		/**
 		 * Deprecated. Swapping icons feature of dropdown will be removed soon. Please use a `Picklist` instead.
 		 */
-		iconSwap: React.PropTypes.bool,
+		iconSwap: PropTypes.bool,
 		/**
 		 * Every dropdown must have a unique ID in order to support keyboard navigation and ARIA support.
 		 */

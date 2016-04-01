@@ -37,18 +37,18 @@ const PicklistItems = React.createClass({
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		// TODO: Type of collection unknown until parsed by Data Adapter
-		collection: PropTypes.oneOfType([React.PropTypes.array, React.PropTypes.object]).isRequired,
+		collection: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
 		id: PropTypes.string,
 		getMenuItemId: PropTypes.func.isRequired,
 		labelledBy: PropTypes.string,
 		onSelected: PropTypes.func.isRequired,
-		selection: PropTypes.oneOfType([React.PropTypes.object]),
+		selection: PropTypes.oneOfType([PropTypes.object]),
 		show: PropTypes.bool.isRequired,
 		menuItemRenderer: PropTypes.func,
 		/**
 		 * Positions dropdown menu with a nubbin
 		 */
-		position: React.PropTypes.oneOf([
+		position: PropTypes.oneOf([
 			'top left',
 			'top',
 			'top right',
