@@ -68,9 +68,7 @@ const cleanPackageJson = (done, type) => {
 
 const publish = (done, type) => {
 	const tmpDir = `.tmp-npm-${type}`;
-	const isEdge = false;
-
-	let tasks;
+	
 	if (argv.tag) {
 		async.eachSeries([
 			['git init', `${tmpDir}`],
