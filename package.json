@@ -29,6 +29,7 @@
     "build-dist-for-npm": "./scripts/shell/build-dist-for-npm.sh",
     "clean-build-folder": "node ./scripts/clean-directory ./build",
     "publish-to-git": "./scripts/shell/publish-to-git.sh",
+    "publish-to-edge": "./scripts/shell/publish-to-edge.sh",
     "start": "node  --harmony app.js",
     "test": "scripts/test --single-run"
   },

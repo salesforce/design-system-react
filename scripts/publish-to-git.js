@@ -15,12 +15,13 @@ import './helpers/setup';
 import async from 'async';
 import fs from 'fs';
 import path from 'path';
-
+import minimist from 'minimist';
 import { version } from '../package.json';
 
+const argv = minimist(process.argv.slice(2));
 const distPath = path.resolve.bind(path, __PATHS__.npm);
 const npmDir = distPath();
-const gitDir = `.git`;
+const gitDir = '.git';
 
 const exec = ([command, dir = '.'], callback) => {
 	require('child_process').exec(command, {
@@ -35,7 +36,7 @@ const exec = ([command, dir = '.'], callback) => {
 
 const createTempDir = (done, type) => {
 	const tmpDir = `.tmp-npm-${type}`;
-	
+
 	async.eachSeries([
 		[`cp -r ${npmDir} ${tmpDir}`],
 		[`rm -r ${tmpDir}/es`],
@@ -49,15 +50,15 @@ const createTempDir = (done, type) => {
 
 const cleanPackageJson = (done, type) => {
 	const tmpPath = path.resolve.bind(path, path.resolve(__PATHS__.root, `.tmp-npm-${type}`));
-	
+
 	const packageJSON = JSON.parse(fs.readFileSync(tmpPath('package.json')).toString());
-	
+
 	if (type === 'es') {
 		packageJSON['jsnext:main'] = packageJSON.main;
 	} else {
 		packageJSON.dependencies['slds-for-js-core'] = packageJSON.dependencies['slds-for-js-core'].replace('-es', `-${type}`);
 	}
-	
+
 	fs.writeFile(
 		tmpPath('package.json'),
 		JSON.stringify(packageJSON, null, 2),
@@ -67,29 +68,47 @@ const cleanPackageJson = (done, type) => {
 
 const publish = (done, type) => {
 	const tmpDir = `.tmp-npm-${type}`;
-	
-	async.eachSeries([
-		['git init', `${tmpDir}`],
-		[`cp ${gitDir}/config ${tmpDir}/.git`],
-		['git add -A', `${tmpDir}`],
-		[`git commit -m "Release ${version}-${type}"`, `${tmpDir}`],
-		[`git tag v${version}-${type}`, `${tmpDir}`],
-		[`git push origin --tags v${version}-${type}`, `${tmpDir}`],
-		[`rm -r ${tmpDir}`]
-	], exec, (err) => {
-		if (err) throw err;
-		done();
-	});
+	const isEdge = false;
+
+	let tasks;
+	if (argv.tag) {
+		async.eachSeries([
+			['git init', `${tmpDir}`],
+			[`cp ${gitDir}/config ${tmpDir}/.git`],
+			['git add -A', `${tmpDir}`],
+			[`git commit -m "Release commit for ${argv.tag}"`, `${tmpDir}`],
+			[`git tag ${argv.tag}-${type}`, `${tmpDir}`],
+			[`git push origin -f --tags ${argv.tag}-${type}`, `${tmpDir}`],
+			[`rm -r ${tmpDir}`]
+		], exec, (err) => {
+			// Quick and dirty hack because the tag will often exist for this scenario
+			if (err) console.log(err);
+			done();
+		});
+	} else {
+		async.eachSeries([
+			['git init', `${tmpDir}`],
+			[`cp ${gitDir}/config ${tmpDir}/.git`],
+			['git add -A', `${tmpDir}`],
+			[`git commit -m "Release ${version}-${type}"`, `${tmpDir}`],
+			[`git tag v${version}-${type}`, `${tmpDir}`],
+			[`git push origin --tags v${version}-${type}`, `${tmpDir}`],
+			[`rm -r ${tmpDir}`]
+		], exec, (err) => {
+			if (err) throw err;
+			done();
+		});
+	}
 };
 
 async.series([
 	(done) => createTempDir(done, 'es'),
 	(done) => cleanPackageJson(done, 'es'),
 	(done) => publish(done, 'es'),
-	
+
 	(done) => createTempDir(done, 'umd'),
 	(done) => cleanPackageJson(done, 'umd'),
-	(done) => publish(done, 'umd'),
+	(done) => publish(done, 'umd')
 ], err => {
 	if (err) throw err;
 });
