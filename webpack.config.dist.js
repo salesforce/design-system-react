@@ -12,7 +12,8 @@ const coreRealPath = fs.realpathSync(path.join(__dirname, 'node_modules/slds-for
 const config = coreConfig;
 
 config.entry = {
-	'slds.bundle': ['./src/dist.js']
+	'slds.bundle': ['./src/dist.js'],
+	'slds.utilities': ['./node_modules/slds-for-js-core/utilities/main.js']
 };
 
 // Folders to check for ES6 modules
