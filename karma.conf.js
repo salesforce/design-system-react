@@ -11,7 +11,7 @@ module.exports = function (config) {
 		// Using Chrome for the time being, until we can get promises in phantomjs working
 
 		// For use with TravisCI
-		browsers: [process.env.CONTINUOUS_INTEGRATION ? 'Firefox': 'Chrome'],
+		browsers: [process.env.CONTINUOUS_INTEGRATION ? 'Firefox' : 'Chrome'],
 
 		// enable / disable colors in the output (reporters and logs)
 		colors: true,
@@ -21,6 +21,13 @@ module.exports = function (config) {
 
 		// list of files / patterns to load in the browser
 		files: [
+			{
+				pattern: 'node_modules/@salesforce-ux/design-system/assets/**/*',
+				watched: false,
+				included: false,
+				served: true,
+				nocache: true
+			},
 			'tests/fixtures/phantomjs-shims.js',
 			'tests/tests_bundle.js'
 		],

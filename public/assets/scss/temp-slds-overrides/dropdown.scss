@@ -1,26 +1,90 @@
 .#{$css-prefix}dropdown-trigger--click {
-    position: relative;
+	position: relative;
 
-    .#{$css-prefix}dropdown {
-        visibility: hidden;
-        opacity: 0;
-    }
+	.#{$css-prefix}dropdown {
+		visibility: hidden;
+		opacity: 0;
+	}
 
-    &.#{$css-prefix}is-open .#{$css-prefix}dropdown {
-        display: block;
+	&.#{$css-prefix}is-open .#{$css-prefix}dropdown {
+		display: block;
 
-        /* <-- edit */
-        visibility: visible;
-        opacity: 1;
-    }
+		/* <-- edit */
+		visibility: visible;
+		opacity: 1;
+	}
 }
 
 .#{$css-prefix}dropdown-trigger > [class*="slds-button--icon"] ~ {
-    .#{$css-prefix}dropdown--left[class*="slds-nubbin"] {
-        left: -1rem;
-    }
+	.#{$css-prefix}dropdown--left[class*="slds-nubbin"] {
+		left: -1rem;
+	}
 
-    .#{$css-prefix}dropdown--right[class*="slds-nubbin"] {
-        right: -1rem;
-    }
+	.#{$css-prefix}dropdown--right[class*="slds-nubbin"] {
+		right: -1rem;
+	}
+}
+
+
+.slds-context-bar {
+	background-color: #16325c;
+	color: #fff;
+	height: 2.25rem;
+}
+.slds-context-bar__primary, .slds-context-bar__secondary {
+	flex: 0 0 auto;
+}
+.slds-context-bar__shadow {
+	background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0px, transparent 100%) repeat scroll 0 0;
+	height: 0.25rem;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 100%;
+}
+.slds-context-bar__vertical-divider {
+	border-left: 1px solid rgba(255, 255, 255, 0.2);
+	overflow: hidden;
+	width: 0;
+}
+.slds-context-bar-action {
+	position: relative;
+}
+.slds-context-bar-action.slds-context-bar-action {
+	display: flex;
+}
+.slds-context-bar-action:hover::before {
+	content: "";
+	height: 0.7rem;
+	position: absolute;
+	top: 100%;
+	width: 100%;
+}
+.slds-context-bar-action__label, .slds-context-bar-action__trigger {
+	transition: background-color 50ms linear 0s;
+}
+.slds-context-bar-action__label:focus, .slds-context-bar-action__label:hover, .slds-context-bar-action__trigger:focus, .slds-context-bar-action__trigger:hover {
+	background-color: rgba(255, 255, 255, 0.2);
+	outline: 0 none;
+}
+.slds-context-bar-action__label {
+	padding-left: 0.75rem;
+	padding-right: 0.75rem;
+}
+.slds-context-bar-action__label--expand {
+	padding-right: 1.5rem;
+}
+.slds-context-bar-action__trigger {
+	bottom: 0;
+	pointer-events: none;
+	position: absolute;
+	right: 0.5rem;
+	top: 0;
+}
+.slds-context-bar-action__trigger, .slds-context-bar-action__trigger:focus {
+	color: rgba(255, 255, 255, 0.4);
+}
+.slds-context-bar-action__trigger-icon {
+	fill: currentcolor;
+	height: 100%;
 }

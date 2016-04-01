@@ -24,21 +24,34 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ## Dependencies
 
 // Bring in the [shared library functions](../../lib/lib.html).
-import * as Lib from 'slds-for-js-core/lib';
+import merge from 'slds-for-js-core/lib/merge';
+import isFunction from 'lodash/lang/isFunction';
 
-// Use the [shared core](../../core/dropdown.html), which contains logic that
+// Use the [shared core](../../core/picklist.html), which contains logic that
 // is shared across SLDS for JavaScript.
-import DropdownCore, { CONTROL } from 'slds-for-js-core/components/dropdown';
+import PicklistCore from 'slds-for-js-core/components/picklist';
+
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
 
 // ### Traits
+
+// #### Eventable
+// [../../traits/eventable](../../traits/eventable.html)
+import Eventable from 'slds-for-js-core/traits/eventable';
 
 // #### Openable
 // * [../../traits/openable](../../traits/openable.html)
 import Openable from 'slds-for-js-core/traits/openable';
 
+// #### Positionable
+// [../../traits/positionable](../../traits/positionable.html)
+import Positionable from 'slds-for-js-core/traits/positionable';
+
 // ### React
 // React is an external dependency of the project.
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 // #### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -62,11 +75,17 @@ import isIcon from '../mixins/custom-prop-types/icon.js';
 // [PicklistItems](../picklist-items.html)
 import PicklistItems from '../picklist/picklist-items';
 
-// [Button](../button.html)
-import Button from '../button';
+// [Trigger](./button-trigger.html)
+// This is the the default Dropdown Trigger. It expects one button as a child.
+import DefaultTrigger from './button-trigger';
 
 // [PicklistObject](../picklist.html)
 import { PicklistDefinition } from '../picklist';
+
+// Remove the need for `React.PropTypes`
+const { PropTypes } = React;
+
+export const CONTROL = 'Dropdown';
 
 // ## DropdownObject
 export const DropdownDefinition = {
@@ -77,84 +96,272 @@ export const DropdownDefinition = {
 
 	// ### Prop Types
 	propTypes: {
-		align: React.PropTypes.oneOf(['left', 'right']),
 		/**
-		 * If true, renders checkmark icon on the selected Menu Item.
+		 * Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.
 		 */
-		checkmark: React.PropTypes.bool,
+		align: PropTypes.oneOf(['left', 'right']),
+		/**
+		 * Deprecated. Please set the `Button` property, `assistiveText`, as a child of `Trigger`:
+		 * ```
+		 * <Dropdown>
+		 *   <Trigger>
+		 *     <Button assistiveText="Change settings" />
+		 *   </Trigger>
+		 * </Dropdown>
+		 * ```
+		 */
+		assistiveText: PropTypes.string,
+		/**
+		 * End of Life. Please set the `Button` property, `className`, as a child of `Trigger`:
+		 * ```
+		 * <Dropdown>
+		 *   <Trigger>
+		 *     <Button className="slds-is-cool" />
+		 *   </Trigger>
+		 * </Dropdown>
+		 * ```
+		 */
+		buttonClassName: PropTypes.string,
+		/**
+		 * End of Life. Please set the `Button` property, `variant`, as a child of `Trigger`:
+		 * ```
+		 * <Dropdown>
+		 *   <Trigger>
+		 *     <Button variant="brand" />
+		 *   </Trigger>
+		 * </Dropdown>
+		 * ```
+		 */
+		buttonVariant: PropTypes.string,
+		/**
+		 * If true, renders checkmark icon on the selected menu item.
+		 */
+		checkmark: PropTypes.bool,
+		/**
+		 * If no `children` are present, a default button will be rendered with an arrow. Import the module `slds-for-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button:
+		 * ```
+		 * <Dropdown>
+		 *   <Trigger>
+		 *     <Button icon="utility.settings" />
+		 *   </Trigger>
+		 * </Dropdown>
+		 * ```
+		 */
+		children: PropTypes.element,
 		// > @todo Type of collection unknown until parsed by Data Adapter
-		collection: React.PropTypes.oneOfType([React.PropTypes.array, React.PropTypes.object]).isRequired,
+		collection: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
 		/**
-		 * Class name assigned to the container element (this element also has `slds-dropdown-trigger slds-dropdown-trigger--click` classes)
+		 * Class names to be added to the dropdown menu, that is the element with the class `slds-dropdown`. To add additional CSS classes to the trigger wrapping tag or the trigger button, please reference the `children` prop, and pass use the `className` of respective React element.
 		 */
-		className: React.PropTypes.oneOfType([React.PropTypes.array, React.PropTypes.object, React.PropTypes.string]),
-		disabled: React.PropTypes.bool,
+		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		/**
+		 * Disables the trigger button and prevents the dropdown menu from opening.
+		 */
+		disabled: PropTypes.bool,
+		/**
+		 * End Of Life. Delay on menu closing. See `openOn`.
+		 */
+		hoverCloseDelay: PropTypes.number,
+		/**
+		 * End of Life. Please set the `icon` with a child of `Trigger`:
+		 * ```
+		 * <Dropdown>
+		 *   <Trigger>
+		 *     <Button icon="utility.settings" />
+		 *   </Trigger>
+		 * </Dropdown>
+		 * ```
+		 */
 		icon: isIcon,
-		id: React.PropTypes.string,
-		renderArrow: React.PropTypes.bool,
-		selection: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
-		swapIcon: React.PropTypes.bool,
-		el: React.PropTypes.oneOf(['div', 'li'])
+		/**
+		 * Deprecated. Swapping icons feature of dropdown will be removed soon. Please use a `Picklist` instead.
+		 */
+		iconSwap: PropTypes.bool,
+		/**
+		 * Every dropdown must have a unique ID in order to support keyboard navigation and ARIA support.
+		 */
+		id: PropTypes.string.isRequired,
+		/**
+		 * Function to be used to render an item in the menu. This is optional. Most use cases will not need a custom renderer.
+		 */
+		menuItemRenderer: PropTypes.element,
+		/**
+		 * Deprecated. Please use `menuItemRenderer` and pass in a function.
+		 */
+		listItemRenderer: PropTypes.func,
+		/**
+		 * End of Life. Please set the `text` with a child of `Trigger`:
+		 * ```
+		 * <Dropdown>
+		 *   <Trigger>
+		 *     <Button text="Noice!" />
+		 *   </Trigger>
+		 * </Dropdown>
+		 * ```
+		 */
+		label: React.PropTypes.string,
+		/**
+		 * This function fires when the selection changes.
+		 */
+		onChange: PropTypes.func,
+		/**
+		 * End of Life. This function fires when the dropdown trigger is clicked.
+		 */
+		onClick: PropTypes.func,
+		/**
+		 * End of Life. This function fires when the selection is selected.
+		 */
+		onSelect: PropTypes.func,
+		/**
+		 * End of Life. This is an array of menu items. Please use `collection` instead.
+		 */
+		options: PropTypes.array,
+		/**
+		 * End of Life. Determines if dropdown opens on mouse hover or mouse click. All Dropdowns trigger on click.
+		 */
+		openOn: React.PropTypes.oneOf(['hover', 'click']),
+		/**
+		 * End of Life. Please use Picklist if you need the to update the label of the button.
+		 */
+		placeholder: PropTypes.string,
+		/**
+		 * Positions dropdown menu with a nubbin--that is the arrow notch. The placement options correspond to the placement of the nubbin. This is implemeted with CSS classes and is best used with a `Button` with "icon container" styling.
+		 */
+		nubbinPosition: React.PropTypes.oneOf([
+			'top left',
+			'top',
+			'top right',
+			'bottom left',
+			'bottom',
+			'bottom right'
+		]),
+		/**
+		 * End of Life. All Dropdown Triggers should have an indicator of the presence of a dropdown, unless it is an icon-more or icon-bare button style.
+		 */
+		renderArrow: PropTypes.bool,
+		/**
+		 * The selected item from the dropdown menu.
+		 */
+		selection: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+		/**
+		 * End of Life. Please set the tooltip with a child of Trigger:
+		 * ```
+		 * <Dropdown>
+		 *   <Trigger>
+		 *     <Button tooltip=NoiceElement />
+		 *   </Trigger>
+		 * </Dropdown>
+		 * ```
+		 */
+		tooltip: React.element
 	},
 
-	getDefaultProps () {
-		return {
-			el: 'div'
-		};
+	resize () {
+		if (this.elements.wrapper) {
+			const width = this.elements.wrapper.outerWidth();
+
+			this.setState({ width });
+			if (isFunction(this.resetWidth)) this.resetWidth(width);
+		}
+	},
+
+	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(CONTROL, this.props);
+		Positionable.setElement(this, Positionable.attachPositionedElementToBody({ classes: 'slds-dropdown' }));
+		Eventable.on(this, 'select', this._onSelect);
+		Eventable.on(this, 'deselect', this._onDeselect);
+	},
+
+	_onMenuRendered (element) {
+		this.elements.menu = ReactDOM.findDOMNode(element);
+		Positionable.setElement(this, ReactDOM.findDOMNode(element));
+	},
+
+	_renderMenu () {
+		const isOpen = Openable.isOpen(this);
+		const triggerId = this._getTriggerId();
+		const menuItemRenderer = this.props.listItemRenderer || this.props.menuItemRenderer;
+
+		return (
+			<PicklistItems
+				align={this.props.align}
+				checkmark={this.props.checkmark}
+				className={this.props.className}
+				collection={this._collection}
+				id={this._getMenuId()}
+				getMenuItemId={this._getMenuItemId}
+				labelledBy={triggerId}
+				menuItemRenderer={menuItemRenderer}
+				onSelected={this._handleMenuItemSelected}
+				position={this.props.position}
+				ref= {this._onMenuRendered}
+				selection={this._getSelection()._item}
+				show={isOpen || false}
+			/>
+		);
 	},
 
 	// ### Get Icon
 	_getIcon () {
-		let icon;
+		let icon = 'utility.down';
 
-		if (this.props.swapIcon && this.props.selection) {
+		if (this.props.icon) {
+			icon = this.props.icon;
+		}
+
+		if ((this.props.swapIcon) && this.props.selection && this.props.selection.icon) {
 			icon = this.props.selection.icon;
 		}
 
-		return icon || this.props.icon;
-	},
-
-	// ### Get Style
-	_getStyle () {
-		return this.props.renderArrow ? 'icon-more': 'icon-container';
+		return icon;
 	},
 
 	// ### Render
 	render () {
-		const isOpen = Openable.isOpen(this);
-		const triggerId = this._getTriggerId();
-		const El = this.props.el;
+		// Trigger manipulation
+		let CurrentTrigger = DefaultTrigger;
+		let CustomTriggerChildProps = {};
 
-		console.log(this.props.el);
+		// Dropdown can take a Trigger component as a child and then return it as the parent DOM element.
+		React.Children.map(this.props.children, (child) => {
+			if (child.type.displayName === 'Trigger') {
+				const CustomTriggerChild = React.cloneElement(child, {});
+				// `CustomTriggerChildProps` is not used by the default button Trigger, but by other triggers
+				CustomTriggerChildProps = CustomTriggerChild.props;
+				CurrentTrigger = CustomTriggerChild.type;
+			}
+		});
+
+		// Property manipulation
+		const menu = this._renderMenu();
+		const triggerId = this._getTriggerId();
+		const isOpen = Openable.isOpen(this);
+		const triggerClassName = classNames('slds-dropdown-trigger', 'slds-dropdown-trigger--click', { 'slds-is-open': this.props.isOpen });
 
 		return (
-			<El className={classNames("slds-dropdown-trigger slds-dropdown-trigger--click", this.props.className)}
-				id={this.state.id}
-				aria-expanded={isOpen}
-				onKeyDown={this._handleKeyPressed}
-				onKeyPress={this._handleKeyPressed}
-			>
-				<Button
-					className=""
-					id={triggerId}
-					icon={this._getIcon()}
-					iconStyle={this._getStyle()}
-					disabled={this.props.disabled}
-					onClick={this._handleClicked}
-					aria-haspopup="true"
-				/>
-				<PicklistItems
-					align={this.props.align}
-					checkmark={this.props.checkmark}
-					id={this._getMenuId()}
-					labelledBy={triggerId}
-					getMenuItemId={this._getMenuItemId}
-					collection={this._collection}
-					selection={this._getSelection()._item}
-					show={ isOpen && !this.props.disabled}
-					onSelected={this._handleMenuItemSelected}
-				/>
-			</El>
+			<CurrentTrigger
+				{...CustomTriggerChildProps}
+				ariaExpanded      = {isOpen}
+				dropdownClassName = {this.props.className}
+				id                = {this.props.id}
+				menu              = {menu}
+				onKeyDown         = {this._handleKeyPressed}
+				onKeyPress        = {this._handleKeyPressed}
+				onClick           = {this._handleClicked}
+				renderArrow       = {this.props.renderArrow}
+				triggerClassName  = {triggerClassName}
+				triggerIcon       = {this._getIcon()}
+				triggerId         = {triggerId}
+				/* deprecated */
+				assistiveText     = {this.props.assistiveText}
+				buttonClassName   = {this.props.buttonClassName}
+				buttonVariant     = {this.props.buttonVariant}
+				icon              = {this.props.icon}
+				iconSwap          = {this.props.iconSwap}
+				label             = {this.props.label}
+				triggerClicked    = {this.props.onClick}
+			/>
 		);
 	}
 };
@@ -171,26 +378,18 @@ export const DropdownDefinition = {
 // from. In particular, Dropdown extends its [core](../../core/dropdown.html),
 // which in turn extends the base component.
 
-let Dropdown = Lib.merge(
+let Dropdown = merge(
 	{},
-	DropdownCore,
+	PicklistCore,
 	PicklistDefinition,
 	DropdownDefinition
 );
-
-// `Helpers` are a feature of SLDS for React that allows anyone to register code that
-// can manipulate the component before it is encapsulated in a React class.
-//
-// This allows flexibility for adding custom behavior without modifying the
-// original source, or for adding optional behavior.
-//
-// Nothing in the component itself should ever depend on the presence
-// of helpers, as they are completely optional.
-Dropdown = Lib.runHelpers('react', CONTROL, Dropdown);
 
 // Once everything has been merged together and all registered helpers have
 // been run we can create the React class and export the result for
 // consumption by our apps.
 Dropdown = React.createClass(Dropdown);
+
+export { DefaultTrigger as Trigger };
 
 export default Dropdown;

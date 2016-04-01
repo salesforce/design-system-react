@@ -18,27 +18,44 @@ import React from 'react';
 import classNames from 'classnames';
 
 // Children
-import PicklistItem from './picklist-item';
+import DefaultPicklistItem from './picklist-item';
 
 export const CONTROL = 'picklist-items';
+const { PropTypes } = React;
 
 const PicklistItems = React.createClass({
 	displayName: CONTROL,
 
 	propTypes: {
-		align: React.PropTypes.oneOf(['left', 'right']),
+		align: PropTypes.oneOf(['left', 'right']),
 		/**
 		 * If true, renders checkmark icon on the selected Menu Item.
 		 */
-		checkmark: React.PropTypes.bool,
+		checkmark: PropTypes.bool,
+		/**
+		 * Class names added to dropdown menu, that is the element with the class `slds-dropdown`.
+		 */
+		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		// TODO: Type of collection unknown until parsed by Data Adapter
-		collection: React.PropTypes.oneOfType([React.PropTypes.array, React.PropTypes.object]).isRequired,
-		id: React.PropTypes.string,
-		getMenuItemId: React.PropTypes.func.isRequired,
-		labelledBy: React.PropTypes.string,
-		onSelected: React.PropTypes.func.isRequired,
-		selection: React.PropTypes.oneOfType([React.PropTypes.object]),
-		show: React.PropTypes.bool.isRequired
+		collection: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+		id: PropTypes.string,
+		getMenuItemId: PropTypes.func.isRequired,
+		labelledBy: PropTypes.string,
+		onSelected: PropTypes.func.isRequired,
+		selection: PropTypes.oneOfType([PropTypes.object]),
+		show: PropTypes.bool.isRequired,
+		menuItemRenderer: PropTypes.func,
+		/**
+		 * Positions dropdown menu with a nubbin
+		 */
+		position: PropTypes.oneOf([
+			'top left',
+			'top',
+			'top right',
+			'bottom left',
+			'bottom',
+			'bottom right'
+		])
 	},
 
 	getDefaultProps () {
@@ -48,6 +65,14 @@ const PicklistItems = React.createClass({
 	},
 
 	_menuItems () {
+		// If `menuItemRenderer` exists, use it instead of the default element.
+		let PicklistItem = null;
+		if (this.props.menuItemRenderer) {
+			PicklistItem = this.props.menuItemRenderer();
+		} else {
+			PicklistItem = DefaultPicklistItem;
+		}
+
 		return this.props.collection.map((item, index) => {
 			return (
 				<PicklistItem
@@ -62,9 +87,46 @@ const PicklistItems = React.createClass({
 		});
 	},
 
+	_getPositionClassName () {
+		let positionClassName;
+		switch (this.props.position) {
+			case 'top left':
+				positionClassName = 'slds-dropdown--left slds-nubbin--top-left';
+				break;
+			case 'top':
+				positionClassName = 'slds-nubbin--top';
+				break;
+			case 'top right':
+				positionClassName = 'slds-dropdown--right slds-nubbin--top-right';
+				break;
+			case 'bottom left':
+				positionClassName = ' slds-dropdown--bottom slds-dropdown--left slds-nubbin--bottom-left';
+				break;
+			case 'bottom':
+				positionClassName = ' slds-dropdown--bottom slds-nubbin--bottom';
+				break;
+			case 'bottom right':
+				positionClassName = ' slds-dropdown--bottom slds-dropdown--right slds-nubbin--bottom-right';
+				break;
+			default:
+				positionClassName = `slds-dropdown--${this.props.align}`;
+		}
+
+		return positionClassName;
+	},
+
 	render () {
 		return (
-			<div className={classNames('slds-dropdown', 'slds-dropdown--' + this.props.align, 'slds-dropdown--menu', {'slds-hide': !this.props.show})} id={this.props.id}>
+			<div
+				className={classNames(
+					'slds-dropdown',
+					this._getPositionClassName(),
+					'slds-dropdown--menu',
+					{ 'slds-hide': !this.props.show },
+					this.props.className
+				)}
+				id={this.props.id}
+			>
 				<ul className="slds-dropdown__list" role="menu" aria-labelledby={this.props.labelledBy}>
 				{this._menuItems()}
 				</ul>

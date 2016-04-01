@@ -17,7 +17,8 @@ const coreRealPath = fs.realpathSync(path.join(__dirname, 'node_modules/slds-for
 config.entry = {
 	'dev-examples-styles': ['./public/assets/scripts/styles.js', hotMiddlewareScript],
 	'dev-examples': ['./src/dev-examples', hotMiddlewareScript],
-	'dev-example': ['./src/dev-example', hotMiddlewareScript]
+	'dev-example': ['./src/dev-example', hotMiddlewareScript],
+	tests: ['./tests/dropdown/dropdown.test.js', hotMiddlewareScript]
 };
 
 config.externals = {};
@@ -39,6 +40,8 @@ config.output = {
 	publicPath: '/dev-build/',
 	filename: '[name].bundle.js'
 };
+
+config.module.loaders[0].include.push(path.join(__dirname, 'test'));
 
 // Additional loaders
 config.module.loaders.push({

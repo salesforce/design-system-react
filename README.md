@@ -21,7 +21,7 @@ For example:
     "slds-for-react": "git+ssh://git@github.com/salesforce-ux/slds-for-react.git#v0.0.16-context-bar-dev-es"
 
 
-### Testing (currently disabled)
+### Testing
 * Run `npm test` to build the tests and see the results in the console. You can also run the tests in the browser by navigating to `http://localhost:8080/test/` after executing `npm start`.
 
 ### Scripts
