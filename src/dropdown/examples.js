@@ -60,20 +60,6 @@ const DropdownExample = React.createClass({
 						id="nubbin-example"
 						onChange={this.handleChangeNubbin}
 						selection={this.state.selectionNubbin}
-						statefulIcon
-					>
-						<Trigger>
-							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
-						</Trigger>
-					</Dropdown>
-				</div>
-
-				<div className="slds-col | slds-m-bottom--small">
-					<Dropdown
-						collection={sampleData}
-						id="top-left-example"
-						onChange={this.handleChangeDefault}
-						selection={this.state.selectionDefault}
 						position="top left"
 					>
 						<Trigger>
@@ -90,20 +76,8 @@ const DropdownExample = React.createClass({
 		this.setState({ selectionDefault: selection });
 	},
 
-	handleChangeCheckmark (selection) {
-		this.setState({ selectionCheckmark: selection });
-	},
-
 	handleChangeNubbin (selection) {
 		this.setState({ selectionNubbin: selection });
-	},
-
-	handleChangeDropdownTrigger (selection) {
-		this.setState({ selectionDropdownTrigger: selection });
-	},
-
-	handleChangeCustomTrigger (selection) {
-		this.setState({ selectionCustomTrigger: selection });
 	}
 });
 
@@ -124,40 +98,6 @@ const DropdownDevExample = React.createClass({
 	render () {
 		return (
 			<div className="slds-grid slds-grid--vertical">
-
-				<div className="slds-col | slds-m-bottom--small">
-					<Dropdown
-						collection={sampleData}
-						id="default-example"
-						onChange={this.handleChangeDefault}
-						selection={this.state.selectionDefault}
-					/>
-				</div>
-
-				<div className="slds-col | slds-m-bottom--small">
-					<Dropdown
-						checkmark
-						collection={sampleDataWithIcons}
-						id="checkmark-example"
-						onChange={this.handleChangeCheckmark}
-						selection={this.state.selectionCheckmark}
-						statefulIcon
-					/>
-				</div>
-
-				<div className="slds-col | slds-m-bottom--small">
-					<Dropdown
-						collection={sampleData}
-						id="nubbin-example"
-						onChange={this.handleChangeNubbin}
-						selection={this.state.selectionNubbin}
-						statefulIcon
-					>
-						<Trigger>
-							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
-						</Trigger>
-					</Dropdown>
-				</div>
 
 				<div className="slds-col | slds-m-bottom--small">
 					<Dropdown
