@@ -37,8 +37,8 @@
     "slds-for-js-core": "git+ssh://git@github.com/salesforce-ux/slds-for-js-core.git#v0.0.15-es",
     "classnames": "~2.2.3",
     "lodash": "~3.10.1",
-    "react": "~0.14.7",
-    "react-dom": "~0.14.7"
+    "react": "~0.14.x",
+    "react-dom": "~0.14.x"
   },
   "devDependencies": {
     "app-module-path": "~1.0.5",
@@ -109,8 +109,8 @@
     "webpack-hot-middleware": "~2.7.1"
   },
   "peerDependencies": {
-    "react": "~0.14.7",
-    "react-dom": "~0.14.7"
+    "react": "~0.14.x",
+    "react-dom": "~0.14.x"
   },
   "components": [
     "badge",
