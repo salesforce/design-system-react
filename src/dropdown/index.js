@@ -295,7 +295,7 @@ export const DropdownDefinition = {
 				menuItemRenderer={menuItemRenderer}
 				onSelected={this._handleMenuItemSelected}
 				position={this.props.position}
-				ref= {this._onMenuRendered}
+				ref={this._onMenuRendered}
 				selection={this._getSelection()._item}
 				show={isOpen || false}
 			/>
@@ -353,7 +353,7 @@ export const DropdownDefinition = {
 				triggerClassName  = {triggerClassName}
 				triggerIcon       = {this._getIcon()}
 				triggerId         = {triggerId}
-				/* deprecated */
+				/* Deprecated */
 				assistiveText     = {this.props.assistiveText}
 				buttonClassName   = {this.props.buttonClassName}
 				buttonVariant     = {this.props.buttonVariant}

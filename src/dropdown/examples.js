@@ -17,7 +17,7 @@ const sampleData = [
 		value: '2'
 	}, {
 		id: 2,
-		text: 'Menu Item Three',
+		text: 'Navigate to Google',
 		value: '3',
 		href: 'http://google.com'
 	}

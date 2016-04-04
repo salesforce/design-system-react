@@ -19,9 +19,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // ## Dependencies
 
-// Bring in the [shared library functions](../../lib/lib.html).
-import { merge, runHelpers } from 'slds-for-js-core/lib';
-
 // ### React
 // React is an external dependency of the project.
 import React from 'react';
@@ -82,10 +79,17 @@ export const TriggerDefinition = {
 	},
 
 	_renderDefaultButton () {
+		/* eslint-disable no-unused-vars */
 		const {
+			/* Used by Dropdown */
 			className,
+
+			/* Used internally, but not passed on directly */
+			ariaExpanded,
 			children,
 			onClick,
+
+			/* Explicitly used and/or renamed */
 			onKeyDown,
 			onKeyPress,
 			triggerIcon,
@@ -101,19 +105,20 @@ export const TriggerDefinition = {
 			// We allow allowing additional cleanly with [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx).
 			...props
 		} = this.props;
+		/* eslint-enable no-unused-vars */
 
 		let iconStyle = this.props.iconStyle;
-		let theme = this.props.buttonVariant;
-		if (this.props.buttonVariant) {
+		let theme = buttonVariant;
+		if (buttonVariant) {
 			iconStyle = null;
 		}
 
 		let iconPosition = 'left';
-		if (this.props.label) {
+		if (label) {
 			iconPosition = 'right';
 			iconStyle = null;
 
-			if (!this.props.buttonVariant) {
+			if (!buttonVariant) {
 				theme = 'neutral';
 			}
 		}
@@ -122,16 +127,14 @@ export const TriggerDefinition = {
 			<Button
 				{...props}
 				aria-haspopup = "true"
-				className     = {this.props.buttonClassName}
+				className     = {buttonClassName}
 				id            = {triggerId}
 				iconStyle     = {iconStyle}
 				icon          = {triggerIcon}
 				onClick       = {this._handleButtonClicked}
-				onKeyDown     = {onKeyDown}
-				onKeyPress    = {onKeyPress}
-				/* deprecated */
+				/* Deprecated */
 				theme         = {theme}
-				text          = {this.props.label}
+				text          = {label}
 				iconPosition  = {iconPosition}
 			/>
 			);
@@ -139,31 +142,25 @@ export const TriggerDefinition = {
 
 	_renderButton () {
 		const {
+			children,
 			onClick,
-			onKeyDown,
-			onKeyPress,
-			renderArrow,
 			triggerIcon,
 			triggerId
-			// ### Additional properties
-			// We allow allowing additional cleanly with [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx).
 		} = this.props;
 
 		// Trigger manipulation
 		let ChildButton = null;
-		if (React.Children.count(this.props.children) === 0) {
+		if (React.Children.count(children) === 0) {
 			ChildButton = this._renderDefaultButton();
 		} else {
 			// Button Trigger can take a Button child
-			React.Children.map(this.props.children, (child) => {
+			React.Children.map(children, (child) => {
 				if (child.type.displayName === Button.displayName) {
 					ChildButton = React.cloneElement(child, {
 						'aria-haspopup': 'true',
 						icon: child.props.icon || triggerIcon,
 						id: triggerId,
-						onClick,
-						onKeyDown,
-						onKeyPress
+						onClick
 					});
 				}
 			});
