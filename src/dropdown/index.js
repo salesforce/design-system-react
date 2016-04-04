@@ -275,7 +275,7 @@ export const DropdownDefinition = {
 
 	_onMenuRendered (element) {
 		this.elements.menu = ReactDOM.findDOMNode(element);
-		Positionable.setElement(this, ReactDOM.findDOMNode(element));
+		Positionable.setElement(this, this.elements.menu);
 	},
 
 	_renderMenu () {
