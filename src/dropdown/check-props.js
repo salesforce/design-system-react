@@ -12,11 +12,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import deprecatedProperty from 'slds-for-js-core/lib/warning/deprecated-property';
 import sunsetProperty from 'slds-for-js-core/lib/warning/sunset-property';
 
-const __DEV__ = process.env.NODE_ENV !== 'production';
-
 let checkProps = function () {};
 
-if (__DEV__) {
+if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (CONTROL, props) {
 		/* eslint-disable max-len */
 		// Deprecated and changed to another property
