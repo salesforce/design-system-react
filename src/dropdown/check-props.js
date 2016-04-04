@@ -8,11 +8,17 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 import deprecatedProperty from 'slds-for-js-core/lib/warning/deprecated-property';
 import sunsetProperty from 'slds-for-js-core/lib/warning/sunset-property';
 
-export default function checkProps (CONTROL, props) {
-	if (process.env.NODE_ENV !== 'production') {
+const __DEV__ = process.env.NODE_ENV !== 'production';
+
+let checkProps = function () {};
+
+if (__DEV__) {
+	checkProps = function (CONTROL, props) {
+		/* eslint-disable max-len */
 		// Deprecated and changed to another property
 		deprecatedProperty(CONTROL, props.listItemRenderer, 'listItemRenderer', 'menuItemRenderer');
 		deprecatedProperty(CONTROL, props.onSelect, 'onSelect', 'onChange');
@@ -34,5 +40,8 @@ export default function checkProps (CONTROL, props) {
 		sunsetProperty(CONTROL, props.label, 'label', 'Please set the label with a child of Trigger: <Dropdown><Trigger><Button text="Noice!" /></Trigger></Dropdown>');
 		sunsetProperty(CONTROL, props.onClick, 'onClick', 'Please set onClick with a child of Trigger: <Dropdown><Trigger><Button onClick={myCoolCallback} /></Trigger></Dropdown>');
 		sunsetProperty(CONTROL, props.tooltip, 'tooltip', 'Please set the label with a child of Trigger: <Dropdown><Trigger><Button tooltip=NoiceElement /></Trigger></Dropdown>');
-	}
+		/* eslint-enable max-len */
+	};
 }
+
+export default checkProps;
