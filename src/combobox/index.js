@@ -69,6 +69,7 @@ export const ComboboxDefinition = {
 
 	// ### Prop Types
 	propTypes: {
+		assistiveText: React.PropTypes.string,
 		collection: React.PropTypes.oneOfType([
 				React.PropTypes.array,
 				React.PropTypes.object
@@ -82,23 +83,55 @@ export const ComboboxDefinition = {
 			])
 	},
 
+	// ### Render Assistive Text
+	_renderAssistiveText () {
+			return <span className={this.cssClasses.ASSISTIVE_TEXT}>{this.props.assistiveText}</span>;
+	},
+
 	// ### Render
 	render () {
 		const item          = this._getSelection();
 		const selectionName = item.getText();
 		const isOpen        = Openable.isOpen(this);
+		const triggerId     = this._getTriggerId();
 
 		/* TODO: Icon is currently absolute positioned due to picklist wrapper picklist, but needs centering.
 					Also, does not use Button component, because Button only supports ButtonViews as children right now. */
 		return (
-			<div aria-haspopup="true" aria-expanded={isOpen} className="slds-combobox slds-picklist" id={this.state.id} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
-				<button className="slds-button slds-button--neutral slds-picklist__label" aria-haspopup="true" style={{paddingLeft: 0}} disabled={this.props.disabled} aria-expanded={isOpen} onClick={this._handleClicked}>
+			<div
+				aria-haspopup = "true"
+				aria-expanded = {isOpen}
+				className     = "slds-combobox slds-picklist"
+				id            = {this.state.id}
+				onKeyDown     = {this._handleKeyPressed}
+				onKeyPress    = {this._handleKeyPressed}
+			>
+				<button
+					id            = {triggerId}
+					className     = "slds-button slds-button--neutral slds-picklist__label"
+					aria-haspopup = "true" style={{ paddingLeft: 0 }}
+					disabled      = {this.props.disabled}
+					aria-expanded = {isOpen} onClick={this._handleClicked}
+				>
+					{this.props.assistiveText && this._renderAssistiveText()}
 					<div className="slds-form-element__control">
 						<input name={this.props.name} type="text" value={selectionName} disabled={this.props.disabled} onChange={this._handleChanged} className="slds-input" ref={this._setInputRef} />
 					</div>
-					<Svg className="slds-icon" style={{right: '.6rem'}} icon="utility.down" />
+					<Svg
+						className="slds-icon"
+						style={{right: '.6rem'}}
+						icon="utility.down"
+					/>
 				</button>
-				<PicklistItems id={this._getMenuId()} getMenuItemId={this._getMenuItemId} collection={this._collection} selection={item._item} show={isOpen} onSelected={this._handleMenuItemSelected} />
+				<PicklistItems
+					id            = {this._getMenuId()}
+					labelledBy    = {triggerId}
+					getMenuItemId = {this._getMenuItemId}
+					collection    = {this._collection}
+					selection     = {item._item}
+					show          = {isOpen}
+					onSelected    = {this._handleMenuItemSelected}
+				/>
 			</div>
 		);
 	},

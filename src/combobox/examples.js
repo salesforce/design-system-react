@@ -63,6 +63,8 @@ const ComboboxExample = React.createClass({
 			<div>
 				<Combobox
 					{...this.state.model}
+					assistiveText="Select an Item"
+					id="default-combobox-example"
 					modalMenu={this.props.modal}
 					onChange={this._handleModelChange}/>
 			</div>

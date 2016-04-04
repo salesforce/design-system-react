@@ -68,6 +68,8 @@ const PicklistItem = React.createClass({
 
 	render () {
 		let html;
+		const ariaSelected = this.props.selected ? 'true' : null;
+
 		switch (this.props.item.getType()) {
 			case 'header':
 				html = <li className={this.cssClasses.ITEMHEADER} id={this.props.id}><span className={this.cssClasses.ITEMHEADERTEXT}>{this.props.item.getText()}</span></li>;
@@ -80,7 +82,12 @@ const PicklistItem = React.createClass({
 				const href = this.props.item.getHref() || '#';
 
 				html = (
-					<li className={classNames('slds-dropdown__item', { 'slds-is-selected': this.props.selected })} disabled={disabled} id={this.props.id}>
+					<li
+						aria-selected = {ariaSelected}
+						className     = {classNames('slds-dropdown__item', { 'slds-is-selected': this.props.selected })}
+						disabled      = {disabled}
+						id            = {this.props.id}
+					>
 					<a href={href} onClick={this.handleClicked} aria-disabled={disabled}>
 						<p className="slds-truncate">
 							{this._renderCheckmark()}
