@@ -125,6 +125,10 @@ export const PicklistDefinition = {
 		 * If true, renders checkmark icon on the selected Menu Item.
 		 */
 		checkmark: PropTypes.bool,
+		iconPosition: React.PropTypes.oneOf([
+			'left',
+			'right'
+		]),
 		disabled: PropTypes.bool,
 		id: PropTypes.string,
 		menuItemRenderer: PropTypes.func,
@@ -211,6 +215,7 @@ export const PicklistDefinition = {
 		const menu = (
 			<PicklistItems
 				checkmark        = {this.props.checkmark}
+				iconPosition     = {this.props.iconPosition}
 				id               = {this._getMenuId()}
 				menuItemRenderer = {this.props.menuItemRenderer}
 				labelledBy       = {triggerId}

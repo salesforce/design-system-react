@@ -11,7 +11,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // PICKLIST ITEM - REACT FACADE
 
-import * as Lib from 'slds-for-js-core/lib';
 import isString from 'lodash/lang/isString';
 
 // Framework specific
@@ -35,6 +34,10 @@ const PicklistItem = React.createClass({
 	propTypes: {
 		id: React.PropTypes.string,
 		checkmark: React.PropTypes.bool,
+		iconPosition: React.PropTypes.oneOf([
+			'left',
+			'right'
+		]).isRequired,
 		// TODO: explore if item PropTypes can be done better
 		item: React.PropTypes.shape({
 			getType: React.PropTypes.func.isRequired,
@@ -48,21 +51,31 @@ const PicklistItem = React.createClass({
 		onSelected: React.PropTypes.func.isRequired,
 		selected: React.PropTypes.bool
 	},
-	
-	_renderCheckmark () {
-		if (this.props.checkmark) {
-			return (<Svg className="slds-icon slds-icon--selected slds-icon--x-small slds-icon-text-default slds-m-right--small" icon="utility.check" />
+
+	_renderIcon (position) {
+		const invertedPosition = position === 'right' ? 'left' : 'right';
+		const iconClasses = `slds-icon slds-icon--x-small slds-icon-text-default slds-m-${invertedPosition}--small`;
+
+		if (position === this.props.iconPosition) {
+			const icon = this.props.item.getIcon();
+
+			if (isString(icon)) {
+				return (
+					<Svg
+						className={classNames(iconClasses, 'slds-shrink-none')}
+						icon={icon}
+					/>
 				);
+			}
+		} else if (this.props.checkmark) {
+			return (
+				<Svg
+					className={classNames(iconClasses, 'slds-icon--selected')}
+					icon="utility.check"
+				/>
+			);
 		}
-		return false;
-	},
 
-	_renderIcon () {
-		const icon = this.props.item.getIcon();
-
-		if (isString(icon)) {
-			return <Svg className="slds-icon slds-icon--x-small slds-icon-text-default slds-m-left--small slds-shrink-none" icon={icon} />;
-		}
 		return false;
 	},
 
@@ -71,13 +84,15 @@ const PicklistItem = React.createClass({
 		const ariaSelected = this.props.selected ? 'true' : null;
 
 		switch (this.props.item.getType()) {
-			case 'header':
+			case 'header': {
 				html = <li className={this.cssClasses.ITEMHEADER} id={this.props.id}><span className={this.cssClasses.ITEMHEADERTEXT}>{this.props.item.getText()}</span></li>;
 				break;
-			case 'divider':
+			}
+			case 'divider': {
 				html = <li className={this.cssClasses.ITEMDIVIDER} id={this.props.id}></li>;
 				break;
-			default:
+			}
+			default: {
 				const disabled = this.props.item.getDisabled();
 				const href = this.props.item.getHref() || '#';
 
@@ -90,13 +105,14 @@ const PicklistItem = React.createClass({
 					>
 					<a href={href} onClick={this.handleClicked} aria-disabled={disabled}>
 						<p className="slds-truncate">
-							{this._renderCheckmark()}
+							{this._renderIcon('left')}
 							{this.props.item.getText()}
 						</p>
-						{this._renderIcon()}
+						{this._renderIcon('right')}
 					</a>
 					</li>
 				);
+			}
 		}
 
 		return html;

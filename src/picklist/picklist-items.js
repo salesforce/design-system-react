@@ -33,6 +33,13 @@ const PicklistItems = React.createClass({
 		 */
 		checkmark: PropTypes.bool,
 		/**
+		 * Determines whether a menu item with an icon will display that icon on the left or the right.
+		 */
+		iconPosition: React.PropTypes.oneOf([
+			'left',
+			'right'
+		]),
+		/**
 		 * Class names added to dropdown menu, that is the element with the class `slds-dropdown`.
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
@@ -60,7 +67,8 @@ const PicklistItems = React.createClass({
 
 	getDefaultProps () {
 		return {
-			align: 'left'
+			align: 'left',
+			iconPosition: 'right'
 		};
 	},
 
@@ -77,6 +85,7 @@ const PicklistItems = React.createClass({
 			return (
 				<PicklistItem
 					checkmark={this.props.checkmark}
+					iconPosition={this.props.iconPosition}
 					id={this.props.getMenuItemId(index)}
 					key={index}
 					selected={item._item === this.props.selection}
