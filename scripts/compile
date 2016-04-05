@@ -4,8 +4,5 @@ rm -rf lib/
 mkdir -p lib/
 
 BABEL="babel -d lib/ components/"
-BUILD="webpack --devtool source-map --config webpack.config.build.js"
 
 eval $BABEL
-#eval $BUILD
-#eval "MINIFY=1 $BUILD"
