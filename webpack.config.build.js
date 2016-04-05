@@ -25,6 +25,7 @@ module.exports = {
   },
   externals: {
     'react': 'React',
+    'react-dom': 'ReactDOM',
     'react/addons': 'React'
   },
   resolve: {
