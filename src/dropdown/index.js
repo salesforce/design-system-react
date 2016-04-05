@@ -174,6 +174,13 @@ export const DropdownDefinition = {
 		 */
 		icon: isIcon,
 		/**
+		 * Determines whether a menu item with an icon will display that icon on the left or the right.
+		 */
+		iconPosition: React.PropTypes.oneOf([
+			'left',
+			'right'
+		]),
+		/**
 		 * Deprecated. Swapping icons feature of dropdown will be removed soon. Please use a `Picklist` instead.
 		 */
 		iconSwap: PropTypes.bool,
@@ -287,6 +294,7 @@ export const DropdownDefinition = {
 			<PicklistItems
 				align={this.props.align}
 				checkmark={this.props.checkmark}
+				iconPosition={this.props.iconPosition}
 				className={this.props.className}
 				collection={this._collection}
 				id={this._getMenuId()}
