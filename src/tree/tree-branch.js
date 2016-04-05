@@ -91,37 +91,41 @@ const TreeBranch = React.createClass({
 			const domId = this.props.getControlNodeId(modelId);
 
 			if (model.getType() === 'folder') {
-				children.push(<TreeBranch
-								key={modelId}
-								item={model}
-								id={domId}
-								selectable={this.props.selectable}
-								strings={this.props.strings}
-								autoOpenLevel={this.props.autoOpenLevel + 1}
-								autoOpenLimit={this.props.autoOpenLimit}
-								onItemClick={this._handleItemClick}
-								onExpandClick={this._handleExpandClick}
-								getControlNodeId={this.props.getControlNodeId}
-								getControlNodeLabelId={this.props.getControlNodeLabelId}
-								getControlNodeTogglerId={this.props.getControlNodeTogglerId}
-								_isFolderOpen={this.props._isFolderOpen}
-								_isItemSelected={this.props._isItemSelected}/>);
+				children.push(
+					<TreeBranch
+						key={modelId}
+						item={model}
+						id={domId}
+						selectable={this.props.selectable}
+						strings={this.props.strings}
+						autoOpenLevel={this.props.autoOpenLevel + 1}
+						autoOpenLimit={this.props.autoOpenLimit}
+						onItemClick={this._handleItemClick}
+						onExpandClick={this._handleExpandClick}
+						getControlNodeId={this.props.getControlNodeId}
+						getControlNodeLabelId={this.props.getControlNodeLabelId}
+						getControlNodeTogglerId={this.props.getControlNodeTogglerId}
+						_isFolderOpen={this.props._isFolderOpen}
+						_isItemSelected={this.props._isItemSelected}
+					/>);
 			} else {
-				children.push(<TreeItem
-								key={modelId}
-								item={model}
-								id={domId}
-								getControlNodeId={this.props.getControlNodeId}
-								getControlNodeLabelId={this.props.getControlNodeLabelId}
-								autoOpenLevel={this.props.autoOpenLevel + 1}
-								onClick={this._handleItemClick.bind(this, model)}
-								_isItemSelected={this.props._isItemSelected}/>);
+				children.push(
+					<TreeItem
+						key={modelId}
+						item={model}
+						id={domId}
+						getControlNodeId={this.props.getControlNodeId}
+						getControlNodeLabelId={this.props.getControlNodeLabelId}
+						autoOpenLevel={this.props.autoOpenLevel + 1}
+						onClick={this._handleItemClick.bind(this, model)}
+						_isItemSelected={this.props._isItemSelected}
+					/>);
 			}
 		});
 
 		return (
-			<li id={this.props.id} role="treeitem" aria-expanded={isOpen ? 'true': 'false'} aria-level={this.props.autoOpenLevel}>
-				<div className={classNames('slds-tree__item', {'slds-is-selected': isSelected})} aria-selected={isSelected ? 'true': 'false'} >
+			<li id={this.props.id} role="treeitem" aria-expanded={isOpen ? 'true' : 'false'} aria-level={this.props.autoOpenLevel}>
+				<div className={classNames('slds-tree__item', { 'slds-is-selected': isSelected })} aria-selected={isSelected ? 'true' : 'false'} >
 					<Button
 						id={togglerId}
 						aria-controls={this.props.id}
@@ -130,15 +134,16 @@ const TreeBranch = React.createClass({
 						iconSize="small"
 						assistiveText={this.props.strings.TOGGLE_TREE_BRANCH}
 						iconStyle="icon-bare"
-						onClick={this._handleExpandClick.bind(this, this.props.item)} />
+						onClick={this._handleExpandClick.bind(this, this.props.item)}
+					/>
 						<a id={labelId} aria-controls={this.props.id} tabIndex="-1" role="presentation" className={classNames('slds-truncate', 'slds-size--1-of-1')} onClick={this._handleItemClick.bind(this, this.props.item)}>
 							{this.props.item.getText()}
 						</a>
 				</div>
-				<ul className={classNames({'slds-is-expanded': isOpen}, {'slds-is-collapsed': !isOpen}, )} role="group" aria-labelledby={labelId} aria-aria-controlledby={togglerId}>
-					{isOpen ? children: undefined}
+				<ul className={classNames({ 'slds-is-expanded': isOpen }, { 'slds-is-collapsed': !isOpen })} role="group" aria-labelledby={labelId} aria-aria-controlledby={togglerId}>
+					{isOpen ? children : undefined}
 				</ul>
-				<div className={classNames('slds-spinner', 'slds-spinner--small', {'slds-hide': !this.state.loading || !isOpen})} role="alert">Loading</div>
+				<div className={classNames('slds-spinner', 'slds-spinner--small', { 'slds-hide': !this.state.loading || !isOpen })} role="alert">Loading</div>
 			</li>
 		);
 	},
