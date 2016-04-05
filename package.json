@@ -23,6 +23,9 @@
     "url": "git@github.com:salesforce-ux/slds-for-react.git"
   },
   "private": true,
+  "engines": {
+    "node" : ">=4.4.0"
+  },
   "scripts": {
     "build-dev": "./scripts/shell/build-dev.sh",
     "build-dist": "./scripts/shell/build-dist.sh",
