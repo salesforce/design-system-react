@@ -12,30 +12,70 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // SVG COMPONENT - REACT FACADE
 
 import React from 'react';
-import isIcon from '../mixins/custom-prop-types/icon.js';
 import IconUtility from '../icon-utility';
+import isIcon from '../mixins/custom-prop-types/icon.js';
+import sunsetProperty from 'slds-for-js-core/lib/warning/sunset-property';
 
 export const CONTROL = 'Svg';
+
+let checkProps = function () {};
+
+if (process.env.NODE_ENV !== 'production') {
+	checkProps = function (props) {
+		/* eslint-disable max-len */
+		// End-of-life properties
+		sunsetProperty(CONTROL, props.icon, 'icon', 'Icons should now be specified with distinct name and category properties.');
+		/* eslint-enable max-len */
+	};
+}
 
 export const SvgDefinition = {
 	displayName: CONTROL,
 
 	propTypes: {
-		icon: isIcon
+		/**
+		 * End of Life. Please use category and name instead.
+		 */
+		icon: isIcon,
+		/**
+		 * Category of the icon.
+		 */
+		category: React.PropTypes.oneOf([
+			'action',
+			'custom',
+			'doctype',
+			'standard',
+			'utility'
+		]),
+		/**
+		 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
+		 */
+		name: React.PropTypes.string
 	},
 
 	render () {
+		checkProps(this.props);
+
 		const {
 			icon,
 			...props
 		} = this.props;
 
-		const [
-			category,
-			name
-		] = icon.split('.');
+		if (icon) {
+			const [
+				category,
+				name
+			] = icon.split('.');
 
-		return <IconUtility category={category} name={name} {...props} />;
+			props.category = category;
+			props.name = name;
+		}
+
+		if (props.name) {
+			return <IconUtility {...props} />;
+		}
+
+		return false;
 	}
 };
 

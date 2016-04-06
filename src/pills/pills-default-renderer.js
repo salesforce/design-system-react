@@ -25,27 +25,49 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 
 // The [Svg helper](../svg.html) for React provides a simple wrapper
-// around the markup required for SVGs, and uses `Lib.getSVGPath` to convert
-// strings in the format `sprite file`.`icon name` into full paths.
+// around the markup required for SVGs.
 import Svg from '../svg';
 
-// ## Get Icon
-function getIcon (icon) {
-	if (icon) {
-		return (
-			<Svg className="slds-icon slds-icon-standard-account | slds-pill__icon" icon={icon} />
-		);
-	}
-}
+// ## Renderer
+const renderer = (props) => (
+	<span>
+		<Svg
+			className="slds-icon slds-icon-standard-account | slds-pill__icon"
+			icon={props.icon}
+			icon={props.iconCategory}
+			icon={props.iconName}
+		/>
+		<span className="slds-pill__label">{props.text}</span>
+	</span>
+);
+
+renderer.displayName = 'PillsDefaultRenderer';
+
+renderer.propTypes = {
+	/**
+	 * End of Life. Please use iconCategory and iconName instead.
+	 */
+	icon: React.PropTypes.string,
+	/**
+	 * Category of the icon.
+	 */
+	iconCategory: React.PropTypes.oneOf([
+		'action',
+		'custom',
+		'doctype',
+		'standard',
+		'utility'
+	]),
+	/**
+	 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
+	 */
+	iconName: React.PropTypes.string,
+	/**
+	 * The text content of the pill.
+	 */
+	text: React.PropTypes.string
+};
 
 module.exports = {
-	// ## Renderer
-	renderer (options) {
-		return (
-			<span>
-				{getIcon(options.icon)}
-				<span className="slds-pill__label">{options.text}</span>
-			</span>
-		);
-	}
+	renderer
 };
