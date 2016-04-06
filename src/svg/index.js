@@ -11,14 +11,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // SVG COMPONENT - REACT FACADE
 
-// Core
-import * as Lib from 'slds-for-js-core/lib';
-
-// Framework specific
 import React from 'react';
 import isIcon from '../mixins/custom-prop-types/icon.js';
+import IconUtility from '../icon-utility';
 
-export const CONTROL = 'svg';
+export const CONTROL = 'Svg';
 
 export const SvgDefinition = {
 	displayName: CONTROL,
@@ -26,11 +23,19 @@ export const SvgDefinition = {
 	propTypes: {
 		icon: isIcon
 	},
-	
+
 	render () {
-		const { icon, ...other } = this.props;
-		
-		return <svg ariaHidden="true" {...other}><use xlinkHref={Lib.getSVGPath(this.props.icon)}></use></svg>;
+		const {
+			icon,
+			...props
+		} = this.props;
+
+		const [
+			category,
+			name
+		] = icon.split('.');
+
+		return <IconUtility category={category} name={name} {...props} />;
 	}
 };
 
