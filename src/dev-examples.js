@@ -22,6 +22,7 @@ import datepicker from './datepicker/examples';
 import dropdown from './dropdown/examples';
 import { DropdownDevExample } from './dropdown/examples';
 import icon from './icon/examples';
+import input from './input/examples';
 import lookup from './lookup/examples';
 import modal from './modal/examples';
 import notification from './notification/examples';
@@ -43,6 +44,7 @@ ReactDOM.render(React.createElement(datepicker), document.querySelector('#datepi
 ReactDOM.render(React.createElement(dropdown), document.querySelector('#dropdown-react-control'));
 ReactDOM.render(React.createElement(DropdownDevExample), document.querySelector('#dropdown-dev-react-control'));
 ReactDOM.render(React.createElement(icon), document.querySelector('#icon-react-control'));
+ReactDOM.render(React.createElement(input), document.querySelector('#input-react-control'));
 ReactDOM.render(React.createElement(lookup), document.querySelector('#lookup-react-control'));
 ReactDOM.render(React.createElement(modal), document.querySelector('#modal-react-control'));
 ReactDOM.render(React.createElement(notification), document.querySelector('#notification-react-control'));

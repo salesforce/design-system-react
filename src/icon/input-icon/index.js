@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from 'react';
-import IconUtility from '../icon-utility';
+import IconUtility from '../../icon-utility';
 
 const displayName = "InputIcon";
 const propTypes = {
@@ -47,4 +47,3 @@ InputIcon.propTypes = propTypes;
 InputIcon.defaultProps = defaultProps;
 
 module.exports = InputIcon;
-

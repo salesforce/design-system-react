@@ -102,7 +102,7 @@ export const TriggerDefinition = {
 			label,
 
 			// ### Additional properties
-			// We allow allowing additional cleanly with [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx).
+			// Using [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx) to pass on any properties which are not explicitly defined.
 			...props
 		} = this.props;
 		/* eslint-enable no-unused-vars */

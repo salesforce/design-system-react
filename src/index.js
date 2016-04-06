@@ -84,6 +84,13 @@ export { Trigger as DropdownTrigger } from './dropdown';
 export Icon from './icon';
 // _______________________________________________________________________________________________________
 
+// ## Inputs
+// * [Documentation](./input/input.html)
+// * [Live Example](/react/input)
+// * [<img src="/assets/demo-site/images/component-examples/input.png" style="max-height: 200px;" alt="Input Screenshot">](/react/input)
+export Input from './input';
+// _______________________________________________________________________________________________________
+
 // ## Lookups
 // * [Documentation](./lookup/lookup.html)
 // * [Live Example](/react/lookup)
@@ -159,4 +166,3 @@ export Tooltip from './tooltip';
 // * [Live Example](/react/tree)
 // * [<img src="/assets/demo-site/images/component-examples/tree.png" style="max-height: 200px;" alt="Tree Screenshot">](/react/tree)
 export Tree from './tree';
-
