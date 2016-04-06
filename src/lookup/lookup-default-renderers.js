@@ -23,7 +23,7 @@ module.exports = {
 	},
 	menuHeaderRenderer (options) {
 		let output;
-		
+
 		if (options.numResults <= 0) {
 			// TODO: Internationalize
 			output = (
@@ -33,18 +33,18 @@ module.exports = {
 			// TODO: Make string replacement a template function so that it can be configured
 			output = (
 				<span>
-					<Svg className="slds-icon slds-icon-text-default slds-icon--small" icon="utility.search" />
+					<Svg className="slds-icon slds-icon-text-default slds-icon--small" category="utility" name="search" />
 					{options.strings.THIS_IN_THAT && options.strings.THIS_IN_THAT.replace('%this%', options.searchString).replace('%that%', options.label)}
 				</span>
 			);
 		}
-		
+
 		return output;
 	},
 	menuFooterRenderer (options) {
 		return (
 			<span>
-				<Svg className="slds-icon slds-icon-text-default slds-icon--small" icon="utility.add" />
+				<Svg className="slds-icon slds-icon-text-default slds-icon--small" category="utility" name="add" />
 				{options.strings.ADD}
 			</span>
 		);

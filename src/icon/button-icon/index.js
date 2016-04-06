@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from 'react';
-import IconUtility from '../icon-utility';
+import IconUtility from '../../icon-utility';
 const classNames = require("classnames");
 
 const displayName = "ButtonIcon";
@@ -66,4 +66,3 @@ ButtonIcon.propTypes = propTypes;
 ButtonIcon.defaultProps = defaultProps;
 
 module.exports = ButtonIcon;
-

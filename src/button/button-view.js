@@ -58,7 +58,24 @@ export const ButtonViewObject = {
 	// ### Prop Types
 	propTypes: {
 		assistiveText: React.PropTypes.string,
+		/**
+		 * End of Life. Please use category and name instead.
+		 */
 		icon: isIcon,
+		/**
+		 * Category of the icon.
+		 */
+		iconCategory: React.PropTypes.oneOf([
+			'action',
+			'custom',
+			'doctype',
+			'standard',
+			'utility'
+		]),
+		/**
+		 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
+		 */
+		iconName: React.PropTypes.string,
 		iconPosition: React.PropTypes.oneOf(Object.keys(ButtonViewCore.iconPositions)),
 		iconSize: React.PropTypes.oneOf(Object.keys(ButtonViewCore.buttonIconSizes)),
 		text: React.PropTypes.string,
@@ -80,13 +97,13 @@ export const ButtonViewObject = {
 			buttonIconSize = this.buttonIconSizes[this.props.iconSize];
 		}
 
-		if (this.props.icon && this.props.iconPosition === position) {
-			return (<Svg className={this._getIconClassNames(buttonIconSize)} icon={this.props.icon} />);
+		if ((this.props.icon || this.props.iconName) && this.props.iconPosition === position) {
+			return (<Svg className={this._getIconClassNames(buttonIconSize)} icon={this.props.icon} category={this.props.iconCategory} name={this.props.iconName} />);
 		}
 
 		if (position === 'right' && this.props.iconStyle === 'icon-more') {
 			buttonIconSize = this.buttonIconSizes['x-small'];
-			return (<Svg className={this._getIconClassNames(buttonIconSize)} icon={this.moreIcon} />);
+			return (<Svg className={this._getIconClassNames(buttonIconSize)} category="utility" name="down" />);
 		}
 	},
 

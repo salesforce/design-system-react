@@ -200,7 +200,7 @@ export const PicklistDefinition = {
 					aria-haspopup = "true"
 				>
 					<span className="slds-truncate">{selectionName}</span>
-					<Svg className="slds-icon" icon="utility.down" />
+					<Svg className="slds-icon" category="utility" name="down" />
 				</Button>
 				{this.props.modalMenu ? null : this._renderMenu()}
 			</div>

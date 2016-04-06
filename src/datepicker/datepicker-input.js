@@ -26,13 +26,13 @@ const DateInput = React.createClass({
 		ariaLabel: React.PropTypes.string,
 		onChange: React.PropTypes.func.isRequired
 	},
-	
+
 	componentWillMount () {
 		this.setState({
 			selectedDate: this.props.selectedDate
 		});
 	},
-	
+
 	componentWillReceiveProps (nextProps) {
 		if (nextProps.selectedDate) {
 			this.setState({
@@ -46,7 +46,7 @@ const DateInput = React.createClass({
 			<div className="slds-form-element">
 				<div className="slds-form-element__control">
 					<div className="slds-input-has-icon slds-input-has-icon--right">
-						<Svg className="slds-input__icon slds-icon-text-default" icon="utility.event" />
+						<Svg className="slds-input__icon slds-icon-text-default" category="utility" name="event" />
 						<input
 							className="slds-input"
 							type="text"
@@ -62,19 +62,19 @@ const DateInput = React.createClass({
 			</div>
 		);
 	},
-	
+
 	handleChange (event) {
 		this.setState({
 			selectedDate: event.target.value
 		});
 	},
-	
+
 	handleKeyPress (e) {
 		if (e.key === 'Enter') {
 			this.callOnChange();
 		}
 	},
-	
+
 	callOnChange () {
 		if (this.state.selectedDate !== this.props.selectedDate) {
 			this.props.onChange(this.state.selectedDate);
