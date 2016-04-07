@@ -94,11 +94,12 @@ export const NotificationDefinition = {
 			<div className={classNames} role="alert">
 				<span className="slds-assistive-text">Info</span>
 				<Button
-					className     = "slds-notify__close"
-					icon          = "action.close"
+					className = "slds-notify__close"
+					iconCategory = "action"
+					iconName = "close"
 					assistiveText = "Close"
-					iconStyle     = "icon-inverse"
-					onClick       = {this.hide}
+					iconStyle = "icon-inverse"
+					onClick = {this.hide}
 				/>
 				<h2>{this.props.children}</h2>
 			</div>
@@ -118,7 +119,7 @@ export const NotificationDefinition = {
 
 // SLDS for React **extends objects** by merging them together, rather than
 // via the prototype chain or imitation of object-oriented inheritance.
-// The important thing to remember is that _some methods will be available 
+// The important thing to remember is that _some methods will be available
 // to the component which are not declared in this file_.
 
 // These are not magic methods, they're not black box methods, but you do need
@@ -127,8 +128,8 @@ export const NotificationDefinition = {
 // which in turn extends the base component.
 
 let Notification = Lib.merge(
-	{}, 
-	NotificationCore, 
+	{},
+	NotificationCore,
 	NotificationDefinition
 );
 

@@ -71,7 +71,8 @@ export const TriggerDefinition = {
 	getDefaultProps () {
 		return {
 			ariaHaspopup: true,
-			icon: 'utility.down',
+			iconCategory: 'utility',
+			iconName: 'down',
 			iconPosition: 'right',
 			iconStyle: 'icon-border-filled',
 			buttonClassName: null

@@ -53,7 +53,8 @@ const TreeItem = React.createClass({
 					<Button
 						disabled
 						className="slds-m-right--x-small slds-is-disabled"
-						icon="utility.chevronright"
+						iconCategory="utility"
+						iconName="chevronright"
 						iconSize="small"
 						iconStyle="icon-bare"
 					/>

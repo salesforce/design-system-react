@@ -79,7 +79,7 @@ const Pill = React.createClass({
 					item: this.props.item._item,
 					strings: this.props.strings
 				})}
-				<Button className={classNames('slds-pill__remove')} iconStyle="icon-bare" icon="utility.close" assistiveText={this.props.strings.REMOVE} onClick={this._handleCloseClick}/>
+				<Button className={classNames('slds-pill__remove')} iconStyle="icon-bare" iconCategory="utility" iconName="close" assistiveText={this.props.strings.REMOVE} onClick={this._handleCloseClick}/>
 			</a>
 		);
 	},
