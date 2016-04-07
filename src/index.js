@@ -147,7 +147,7 @@ export Radio from './radio';
 export Spinner from './spinner';
 // _______________________________________________________________________________________________________
 
-// ## Svgs
+// ## Svgs (Deprecated)
 // * [Documentation](./svg.html)
 // * [Live Example](/react/svg)
 // * [<img src="/assets/demo-site/images/component-examples/svg.png" style="max-height: 200px;" alt="Svg Screenshot">](/react/svg)

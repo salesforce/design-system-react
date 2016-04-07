@@ -24,8 +24,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // React is an external dependency of the project.
 import React from 'react';
 
-// The [Svg helper](../svg.html) for React provides a simple wrapper
-// around the markup required for SVGs.
+// The [Svg helper](../svg/index.html) for React provides a simple wrapper
+// around the markup required to support the old and new `Icon` APIs.
 import Svg from '../svg';
 
 // ## Renderer

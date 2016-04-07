@@ -16,7 +16,7 @@ module.exports = {
 	menuItemRenderer (options) {
 		return (
 			<span>
-				<Svg className="slds-icon slds-icon-standard-account slds-icon--small" icon={options.icon} />
+				<Svg className="slds-icon slds-icon-standard-account slds-icon--small" icon={options.icon} iconCategory={options.iconCategory} iconName={options.iconName} />
 				{options.text}
 			</span>
 		);

@@ -16,7 +16,7 @@ import IconUtility from '../icon-utility';
 import isIcon from '../mixins/custom-prop-types/icon.js';
 import sunsetProperty from 'slds-for-js-core/lib/warning/sunset-property';
 
-export const CONTROL = 'Svg';
+export const CONTROL = 'SVG';
 
 let checkProps = function () {};
 

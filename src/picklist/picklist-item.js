@@ -15,6 +15,9 @@ import isString from 'lodash/lang/isString';
 
 // Framework specific
 import React from 'react';
+
+// The [Svg helper](../svg/index.html) for React provides a simple wrapper
+// around the markup required to support the old and new `Icon` APIs.
 import Svg from '../svg';
 
 // Third party

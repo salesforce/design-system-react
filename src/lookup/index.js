@@ -95,9 +95,8 @@ import Pills from '../pills';
 // footer.
 import DefaultRenderers from './lookup-default-renderers';
 
-// The [Svg helper](../svg.html) for React provides a simple wrapper
-// around the markup required for SVGs, and uses `Lib.getSVGPath` to convert
-// strings in the format `sprite file`.`icon name` into full paths.
+// The [Svg helper](../svg/index.html) for React provides a simple wrapper
+// around the markup required to support the old and new `Icon` APIs.
 import Svg from '../svg';
 
 // ## Lookup
