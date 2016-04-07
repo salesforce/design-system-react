@@ -64,11 +64,11 @@ const PicklistItem = React.createClass({
 		if (position === this.props.iconPosition) {
 			const icons = {
 				icon: this.props.item.getIcon && this.props.item.getIcon(),
-				iconCategory: this.props.item.getIconCategory(),
-				iconName: this.props.item.getIconName()
+				category: this.props.item.getIconCategory(),
+				name: this.props.item.getIconName()
 			};
 
-			if (isString(icons.icon) || isString(icons.iconName)) {
+			if (isString(icons.icon) || isString(icons.name)) {
 				return (
 					<Svg
 						className={classNames(iconClasses, 'slds-shrink-none')}
@@ -80,8 +80,8 @@ const PicklistItem = React.createClass({
 			return (
 				<Svg
 					className={classNames(iconClasses, 'slds-icon--selected')}
-					iconCategory="utility"
-					iconName="check"
+					category="utility"
+					name="check"
 				/>
 			);
 		}
