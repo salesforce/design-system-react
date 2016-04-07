@@ -104,9 +104,9 @@ export const DropdownDefinition = {
 		 * Deprecated. Please set the `Button` property, `assistiveText`, as a child of `Trigger`:
 		 * ```
 		 * <Dropdown>
-		 *   <Trigger>
-		 *     <Button assistiveText="Change settings" />
-		 *   </Trigger>
+		 * <Trigger>
+		 * <Button assistiveText="Change settings" />
+		 * </Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -115,9 +115,9 @@ export const DropdownDefinition = {
 		 * End of Life. Please set the `Button` property, `className`, as a child of `Trigger`:
 		 * ```
 		 * <Dropdown>
-		 *   <Trigger>
-		 *     <Button className="slds-is-cool" />
-		 *   </Trigger>
+		 * <Trigger>
+		 * <Button className="slds-is-cool" />
+		 * </Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -126,9 +126,9 @@ export const DropdownDefinition = {
 		 * End of Life. Please set the `Button` property, `variant`, as a child of `Trigger`:
 		 * ```
 		 * <Dropdown>
-		 *   <Trigger>
-		 *     <Button variant="brand" />
-		 *   </Trigger>
+		 * <Trigger>
+		 * <Button variant="brand" />
+		 * </Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -141,9 +141,9 @@ export const DropdownDefinition = {
 		 * If no `children` are present, a default button will be rendered with an arrow. Import the module `slds-for-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button:
 		 * ```
 		 * <Dropdown>
-		 *   <Trigger>
-		 *     <Button icon="utility.settings" />
-		 *   </Trigger>
+		 * <Trigger>
+		 * <Button icon="utility.settings" />
+		 * </Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -166,9 +166,9 @@ export const DropdownDefinition = {
 		 * End of Life. Please set the `icon` with a child of `Trigger`:
 		 * ```
 		 * <Dropdown>
-		 *   <Trigger>
-		 *     <Button icon="utility.settings" />
-		 *   </Trigger>
+		 * <Trigger>
+		 * <Button iconCategory="utility" iconName="settings" />
+		 * </Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -200,9 +200,9 @@ export const DropdownDefinition = {
 		 * End of Life. Please set the `text` with a child of `Trigger`:
 		 * ```
 		 * <Dropdown>
-		 *   <Trigger>
-		 *     <Button text="Noice!" />
-		 *   </Trigger>
+		 * <Trigger>
+		 * <Button text="Noice!" />
+		 * </Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -254,9 +254,9 @@ export const DropdownDefinition = {
 		 * End of Life. Please set the tooltip with a child of Trigger:
 		 * ```
 		 * <Dropdown>
-		 *   <Trigger>
-		 *     <Button tooltip=NoiceElement />
-		 *   </Trigger>
+		 * <Trigger>
+		 * <Button tooltip=NoiceElement />
+		 * </Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -312,17 +312,36 @@ export const DropdownDefinition = {
 
 	// ### Get Icon
 	_getIcon () {
-		let icon = 'utility.down';
+		const icons = {
+			triggerIconCategory: 'utility',
+			triggerIconName: 'down'
+		};
 
+		let icon;
 		if (this.props.icon) {
 			icon = this.props.icon;
 		}
 
-		if ((this.props.swapIcon) && this.props.selection && this.props.selection.icon) {
-			icon = this.props.selection.icon;
+		if (this.props.swapIcon) {
+			if (this.props.selection && this.props.selection.icon) {
+				icon = this.props.selection.icon;
+			} else if (this.props.selection && this.props.selection.iconCategory && this.props.selection.iconName) {
+				icons.triggerIconCategory = this.props.selection.iconCategory;
+				icons.triggerIconName = this.props.selection.iconName;
+			}
 		}
 
-		return icon;
+		if (icon) {
+			const [
+				category,
+				name
+			] = icon.split('.');
+
+			icons.triggerIconCategory = category;
+			icons.triggerIconName = name;
+		}
+
+		return icons;
 	},
 
 	// ### Render
@@ -346,29 +365,34 @@ export const DropdownDefinition = {
 		const triggerId = this._getTriggerId();
 		const isOpen = Openable.isOpen(this);
 		const triggerClassName = classNames('slds-dropdown-trigger', 'slds-dropdown-trigger--click', { 'slds-is-open': this.props.isOpen });
+		const {
+			triggerIconCategory,
+			triggerIconName
+		} = this._getIcon();
 
 		return (
 			<CurrentTrigger
 				{...CustomTriggerChildProps}
-				ariaExpanded      = {isOpen}
+				ariaExpanded = {isOpen}
 				dropdownClassName = {this.props.className}
-				id                = {this.props.id}
-				menu              = {menu}
-				onKeyDown         = {this._handleKeyPressed}
-				onKeyPress        = {this._handleKeyPressed}
-				onClick           = {this._handleClicked}
-				renderArrow       = {this.props.renderArrow}
-				triggerClassName  = {triggerClassName}
-				triggerIcon       = {this._getIcon()}
-				triggerId         = {triggerId}
+				id = {this.props.id}
+				menu = {menu}
+				onKeyDown = {this._handleKeyPressed}
+				onKeyPress = {this._handleKeyPressed}
+				onClick = {this._handleClicked}
+				renderArrow = {this.props.renderArrow}
+				triggerClassName = {triggerClassName}
+				triggerIconCategory = {triggerIconCategory}
+				triggerIconName = {triggerIconName}
+				triggerId = {triggerId}
 				/* Deprecated */
-				assistiveText     = {this.props.assistiveText}
-				buttonClassName   = {this.props.buttonClassName}
-				buttonVariant     = {this.props.buttonVariant}
-				icon              = {this.props.icon}
-				iconSwap          = {this.props.iconSwap}
-				label             = {this.props.label}
-				triggerClicked    = {this.props.onClick}
+				assistiveText = {this.props.assistiveText}
+				buttonClassName = {this.props.buttonClassName}
+				buttonVariant = {this.props.buttonVariant}
+				icon = {this.props.icon}
+				iconSwap = {this.props.iconSwap}
+				label = {this.props.label}
+				triggerClicked = {this.props.onClick}
 			/>
 		);
 	}

@@ -31,11 +31,11 @@ const DateMonth = React.createClass({
 		return (
 			<div className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-size--3-of-4">
 				<div className="slds-align-middle">
-					<Button icon="utility.left" assistiveText={this.props.strings.PREVIOUS_MONTH} iconStyle="icon-container" onClick={this.props.jumpToPreviousMonth}/>
+					<Button iconCategory="utility" iconName="left" assistiveText={this.props.strings.PREVIOUS_MONTH} iconStyle="icon-container" onClick={this.props.jumpToPreviousMonth}/>
 				</div>
 				<h2 id="month" className="slds-align-middle" aria-live="assertive" aria-atomic="true">{this.props.monthName}</h2>
 				<div className="slds-align-middle">
-					<Button icon="utility.right" assistiveText={this.props.strings.NEXT_MONTH} iconStyle="icon-container" onClick={this.props.jumpToNextMonth}/>
+					<Button iconCategory="utility" iconName="right" assistiveText={this.props.strings.NEXT_MONTH} iconStyle="icon-container" onClick={this.props.jumpToNextMonth}/>
 				</div>
 			</div>
 		);

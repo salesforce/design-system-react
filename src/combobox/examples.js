@@ -24,13 +24,13 @@ const ComboboxExample = React.createClass({
 			{
 				_itemType: 'header', text: 'One thing'
 			}, {
-				id: 0, text: 'One', value: '1', icon: 'utility.apps'
+				id: 0, text: 'One', value: '1', iconCategory: 'utility', iconName: 'apps'
 			}, {
 				_itemType: 'divider'
 			}, {
 				_itemType: 'header', text: 'All the things'
 			}, {
-				id: 1, text: 'Two', value: '2', icon: 'utility.email'
+				id: 1, text: 'Two', value: '2', iconCategory: 'utility', iconName: 'email'
 			}, {
 				id: 2, text: 'Three', value: '3'
 			}, {

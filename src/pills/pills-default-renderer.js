@@ -34,8 +34,8 @@ const renderer = (props) => (
 		<Svg
 			className="slds-icon slds-icon-standard-account | slds-pill__icon"
 			icon={props.icon}
-			icon={props.iconCategory}
-			icon={props.iconName}
+			category={props.iconCategory}
+			name={props.iconName}
 		/>
 		<span className="slds-pill__label">{props.text}</span>
 	</span>

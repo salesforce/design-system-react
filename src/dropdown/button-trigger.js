@@ -57,13 +57,22 @@ export const TriggerDefinition = {
 		/**
 		 * For internal component use, so that the dropdown menu can pass icons to the trigger button through the dropdown parent component.
 		 */
-		triggerIcon: PropTypes.string
+		triggerIcon: PropTypes.string,
+		/**
+		 * For internal component use, so that the dropdown menu can pass icons to the trigger button through the dropdown parent component.
+		 */
+		triggerIconCategory: PropTypes.string,
+		/**
+		 * For internal component use, so that the dropdown menu can pass icons to the trigger button through the dropdown parent component.
+		 */
+		triggerIconName: PropTypes.string
 	},
 
 	getDefaultProps () {
 		return {
 			ariaHaspopup: true,
-			icon: 'utility.down',
+			iconCategory: 'utility',
+			iconName: 'down',
 			iconPosition: 'right',
 			iconStyle: 'icon-border-filled',
 			buttonClassName: null
@@ -93,6 +102,8 @@ export const TriggerDefinition = {
 			onKeyDown,
 			onKeyPress,
 			triggerIcon,
+			triggerIconCategory,
+			triggerIconName,
 			triggerId,
 
 			/* Deprecated */
@@ -127,15 +138,17 @@ export const TriggerDefinition = {
 			<Button
 				{...props}
 				aria-haspopup = "true"
-				className     = {buttonClassName}
-				id            = {triggerId}
-				iconStyle     = {iconStyle}
-				icon          = {triggerIcon}
-				onClick       = {this._handleButtonClicked}
+				className = {buttonClassName}
+				id = {triggerId}
+				iconStyle = {iconStyle}
+				iconCategory = {triggerIconCategory}
+				iconName = {triggerIconName}
+				onClick = {this._handleButtonClicked}
 				/* Deprecated */
-				theme         = {theme}
-				text          = {label}
-				iconPosition  = {iconPosition}
+				icon = {triggerIcon}
+				theme = {theme}
+				text = {label}
+				iconPosition = {iconPosition}
 			/>
 			);
 	},
@@ -145,6 +158,8 @@ export const TriggerDefinition = {
 			children,
 			onClick,
 			triggerIcon,
+			triggerIconCategory,
+			triggerIconName,
 			triggerId
 		} = this.props;
 
@@ -159,6 +174,8 @@ export const TriggerDefinition = {
 					ChildButton = React.cloneElement(child, {
 						'aria-haspopup': 'true',
 						icon: child.props.icon || triggerIcon,
+						iconCategory: child.props.iconCategory || triggerIconCategory,
+						iconName: child.props.iconName || triggerIconName,
 						id: triggerId,
 						onClick
 					});
@@ -174,10 +191,10 @@ export const TriggerDefinition = {
 		return (
 			<div
 				aria-expanded = {this.props.ariaExpanded}
-				className     = {classNames(this.props.triggerClassName, this.props.className)}
-				id            = {this.props.id}
-				onKeyDown     = {this.props.onKeyDown}
-				onKeyPress    = {this.props.onKeyPress}
+				className = {classNames(this.props.triggerClassName, this.props.className)}
+				id = {this.props.id}
+				onKeyDown = {this.props.onKeyDown}
+				onKeyPress = {this.props.onKeyPress}
 			>
 				{this._renderButton()}
 				{this.props.menu}

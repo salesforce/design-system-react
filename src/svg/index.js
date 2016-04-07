@@ -24,7 +24,7 @@ if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (props) {
 		/* eslint-disable max-len */
 		// End-of-life properties
-		sunsetProperty(CONTROL, props.icon, 'icon', 'Icons should now be specified with distinct name and category properties.');
+		sunsetProperty(CONTROL, props.icon, 'icon', `Icons should no longer take the format "${props.icon}" and should now be specified with distinct name and category properties.`);
 		/* eslint-enable max-len */
 	};
 }

@@ -24,9 +24,12 @@ const sampleData = [
 ];
 
 const sampleDataWithIcons = cloneDeep(sampleData);
-sampleDataWithIcons[0].icon = 'utility.table';
-sampleDataWithIcons[1].icon = 'utility.kanban';
-sampleDataWithIcons[2].icon = 'utility.side_list';
+sampleDataWithIcons[0].iconCategory = 'utility';
+sampleDataWithIcons[0].iconName = 'table';
+sampleDataWithIcons[1].iconCategory = 'utility';
+sampleDataWithIcons[1].iconName = 'kanban';
+sampleDataWithIcons[2].iconCategory = 'utility';
+sampleDataWithIcons[2].iconName = 'side_list';
 
 const DropdownExample = React.createClass({
 	displayName: 'DropdownExample',
@@ -63,7 +66,7 @@ const DropdownExample = React.createClass({
 						position="top left"
 					>
 						<Trigger>
-							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
+							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
 						</Trigger>
 					</Dropdown>
 				</div>
@@ -108,7 +111,7 @@ const DropdownDevExample = React.createClass({
 						position="top left"
 					>
 						<Trigger>
-							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
+							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
 						</Trigger>
 					</Dropdown>
 				</div>
@@ -122,7 +125,7 @@ const DropdownDevExample = React.createClass({
 						position="top"
 					>
 						<Trigger>
-							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
+							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
 						</Trigger>
 					</Dropdown>
 				</div>
@@ -136,7 +139,7 @@ const DropdownDevExample = React.createClass({
 						position="top right"
 					>
 						<Trigger>
-							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
+							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
 						</Trigger>
 					</Dropdown>
 				</div>
@@ -150,7 +153,7 @@ const DropdownDevExample = React.createClass({
 						position="bottom left"
 					>
 						<Trigger>
-							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
+							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
 						</Trigger>
 					</Dropdown>
 				</div>
@@ -164,7 +167,7 @@ const DropdownDevExample = React.createClass({
 						position="bottom"
 					>
 						<Trigger>
-							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
+							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
 						</Trigger>
 					</Dropdown>
 				</div>
@@ -178,7 +181,7 @@ const DropdownDevExample = React.createClass({
 						position="bottom right"
 					>
 						<Trigger>
-							<Button icon="utility.settings" iconStyle="icon-container" assistiveText="Settings" />
+							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
 						</Trigger>
 					</Dropdown>
 				</div>

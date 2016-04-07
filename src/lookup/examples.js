@@ -12,17 +12,17 @@ const LookupExample = React.createClass({
 	getInitialState () {
 		const lookupSampleData = {
 			collection: [
-				{ text: 'Paddy\'s Pub', icon: 'standard.account' },
-				{ text: 'Tyrell Corporation', icon: 'standard.account' },
-				{ text: 'Paper St. Soap Company', icon: 'standard.account' },
-				{ text: 'Nakatomi Investments', icon: 'standard.account' },
-				{ text: 'Acme Landscaping', icon: 'standard.account' },
-				{ text: 'ACME Construction', icon: 'standard.account' }
+				{ text: 'Paddy\'s Pub', iconCategory: 'standard', iconName: 'account' },
+				{ text: 'Tyrell Corporation', iconCategory: 'standard', iconName: 'account' },
+				{ text: 'Paper St. Soap Company', iconCategory: 'standard', iconName: 'account' },
+				{ text: 'Nakatomi Investments', iconCategory: 'standard', iconName: 'account' },
+				{ text: 'Acme Landscaping', iconCategory: 'standard', iconName: 'account' },
+				{ text: 'ACME Construction', iconCategory: 'standard', iconName: 'account' }
 			],
 			additionalItems: [
-				{ text: 'Standard Oil', icon: 'standard.account' },
-				{ text: 'Eli Rose', icon: 'standard.account' },
-				{ text: 'Paper St. Paper Company', icon: 'standard.account' }
+				{ text: 'Standard Oil', iconCategory: 'standard', iconName: 'account' },
+				{ text: 'Eli Rose', iconCategory: 'standard', iconName: 'account' },
+				{ text: 'Paper St. Paper Company', iconCategory: 'standard', iconName: 'account' }
 			]
 		};
 

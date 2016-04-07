@@ -23,7 +23,8 @@ module.exports = {
 				<Button
 					assistiveText="Close"
 					className="slds-modal__close"
-					icon="utility.close"
+					iconCategory="utility"
+					iconName="close"
 					iconSize="large"
 					iconStyle="icon-inverse"
 					onClick={options.onCloseClick}/>

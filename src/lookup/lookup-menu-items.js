@@ -34,12 +34,14 @@ const LookupMenuItems = React.createClass({
 					const id = this.props.getMenuItemId(index);
 					const isHighlighted = this.props.activeDescendantId === id;
 					const renderer = item.getRenderer();
-					
+
 					return (
 						<li id={id} key={index} className={classNames('slds-lookup__item', {'slds-theme--shade': isHighlighted})}>
 							<a href="#" role="option" onClick={this._handleClicked.bind(this, item)} tabIndex="-1">
 								{renderer({
-									icon: item.getIcon(),
+									icon: item.getIcon && item.getIcon(),
+									iconCategory: item.getIconCategory(),
+									iconName: item.getIconName(),
 									text: item.getText(),
 									item: item._item,
 									strings: this.props.strings

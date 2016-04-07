@@ -49,7 +49,9 @@ const PicklistItem = React.createClass({
 			getHref: React.PropTypes.func,
 			getText: React.PropTypes.func.isRequired,
 			// getValue: React.PropTypes.func.isRequired,
-			getIcon: React.PropTypes.func.isRequired
+			getIcon: React.PropTypes.func,
+			getIconCategory: React.PropTypes.func.isRequired,
+			getIconName: React.PropTypes.func.isRequired
 		}).isRequired,
 		onSelected: React.PropTypes.func.isRequired,
 		selected: React.PropTypes.bool
@@ -60,13 +62,17 @@ const PicklistItem = React.createClass({
 		const iconClasses = `slds-icon slds-icon--x-small slds-icon-text-default slds-m-${invertedPosition}--small`;
 
 		if (position === this.props.iconPosition) {
-			const icon = this.props.item.getIcon();
+			const icons = {
+				icon: this.props.item.getIcon && this.props.item.getIcon(),
+				category: this.props.item.getIconCategory(),
+				name: this.props.item.getIconName()
+			};
 
-			if (isString(icon)) {
+			if (isString(icons.icon) || isString(icons.name)) {
 				return (
 					<Svg
 						className={classNames(iconClasses, 'slds-shrink-none')}
-						icon={icon}
+						{...icons}
 					/>
 				);
 			}
@@ -74,7 +80,8 @@ const PicklistItem = React.createClass({
 			return (
 				<Svg
 					className={classNames(iconClasses, 'slds-icon--selected')}
-					icon="utility.check"
+					category="utility"
+					name="check"
 				/>
 			);
 		}
