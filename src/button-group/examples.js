@@ -52,7 +52,7 @@ const ButtonGroupExample = React.createClass({
 						<Button iconCategory="utility" iconName="filterList" iconStyle="icon-border" assistiveText="Filter" selectable selected={this.state.filterSelected} onClick={this.handleClick.bind(this, 'filter')} key="filter" />
 						<Dropdown collection={sampleData} id="button-group-dropdown-example-2">
 							<Trigger className="slds-button--last">
-								<Button iconCategory="utility" iconName="sort" iconStyle="icon-more" assistiveText="More Actions" key="more" />
+								<Button iconCategory="utility" iconName="sort" iconStyle="icon-more" assistiveText="More Actions" />
 							</Trigger>
 						</Dropdown>
 					</ButtonGroup>
