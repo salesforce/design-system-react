@@ -88,13 +88,12 @@ import PicklistItems from './picklist-items';
 // [../button](../button.html)
 import Button from '../button';
 
-// The [Svg helper](../svg.html) for React provides a simple wrapper
-// around the markup required for SVGs, and uses `Lib.getSVGPath` to convert
-// strings in the format `sprite file`.`icon name` into full paths.
+// #### Svg
+// The [Svg helper](../svg/index.html) for React provides a simple wrapper
+// around the markup required to support the old and new `Icon` APIs.
 import Svg from '../svg';
 
 const { PropTypes } = React;
-
 
 // ## Picklist Object
 export const PicklistDefinition = {
@@ -200,7 +199,7 @@ export const PicklistDefinition = {
 					aria-haspopup = "true"
 				>
 					<span className="slds-truncate">{selectionName}</span>
-					<Svg className="slds-icon" icon="utility.down" />
+					<Svg className="slds-icon" category="utility" name="down" />
 				</Button>
 				{this.props.modalMenu ? null : this._renderMenu()}
 			</div>

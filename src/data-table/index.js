@@ -67,6 +67,10 @@ import State from '../mixins/state';
 // [./data-table-item](./data-table-item.html)
 import DataTableItem from './data-table-item';
 
+// #### Icon
+// [../icon/button-icon](../icon/button-icon/index.html)
+import ButtonIcon from '../icon/button-icon';
+
 // ## Data Table Object
 export const DataTableDefinition = {
 	// ### Mixins
@@ -112,8 +116,8 @@ export const DataTableDefinition = {
 
 	// ### Component Will Mount
 	componentWillMount () {
-		Eventable.on(this , 'select'   , this._onSelect);
-		Eventable.on(this , 'deselect' , this._onDeselect);
+		Eventable.on(this, 'select', this._onSelect);
+		Eventable.on(this, 'deselect', this._onDeselect);
 	},
 
 	// ### Table Headers
@@ -133,19 +137,14 @@ export const DataTableDefinition = {
 
 		// TODO: this should probably be a seperate view
 		return columns.map((column, index) => {
-			const select = isRowSelect && index === 0 ? self._getSelectCheckbox(): false;
+			const select = isRowSelect && index === 0 ? self._getSelectCheckbox() : false;
 			let sort;
-			let dir;
 
 			if (column.sortDirection) {
-				dir = column.sortDirection === 'desc' ? '/examples/symbols.svg#arrowdown': '/examples/symbols.svg#arrowup';
+				const iconName = column.sortDirection === 'desc' ? 'arrowdown' : 'arrowup';
 				sort = (
 					<button className="slds-button slds-button--icon-bare">
-						<svg aria-hidden="true"
-							className="slds-button__icon slds-button__icon--small"
-							dangerouslySetInnerHTML={{__html: '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="' + dir + '"></use>'}}>
-						</svg>
-						<span className="slds-assistive-text">Sort</span>
+						<ButtonIcon size="small" category="utility" name={iconName} assistiveText="Sort" />
 					</button>
 				);
 			}
@@ -258,7 +257,7 @@ export const DataTableDefinition = {
 
 // SLDS for React **extends objects** by merging them together, rather than
 // via the prototype chain or imitation of object-oriented inheritance.
-// The important thing to remember is that _some methods will be available 
+// The important thing to remember is that _some methods will be available
 // to the component which are not declared in this file_.
 
 // These are not magic methods, they're not black box methods, but you do need
@@ -267,8 +266,8 @@ export const DataTableDefinition = {
 // which in turn extends the base component.
 
 let DataTable = Lib.merge(
-	{}, 
-	DataTableCore, 
+	{},
+	DataTableCore,
 	DataTableDefinition
 );
 

@@ -54,9 +54,8 @@ import ReactDOM from 'react-dom';
 import { PicklistDefinition } from '../picklist';
 import PicklistItems from '../picklist/picklist-items';
 
-// The [Svg helper](../svg.html) for React provides a simple wrapper
-// around the markup required for SVGs, and uses `Lib.getSVGPath` to convert
-// strings in the format `sprite file`.`icon name` into full paths.
+// The [Svg helper](../svg/index.html) for React provides a simple wrapper
+// around the markup required to support the old and new `Icon` APIs.
 import Svg from '../svg';
 
 // ## Combobox Object
@@ -120,7 +119,8 @@ export const ComboboxDefinition = {
 					<Svg
 						className="slds-icon"
 						style={{right: '.6rem'}}
-						icon="utility.down"
+						category="utility"
+						name="down"
 					/>
 				</button>
 				<PicklistItems
@@ -166,7 +166,7 @@ export const ComboboxDefinition = {
 
 // SLDS for React **extends objects** by merging them together, rather than
 // via the prototype chain or imitation of object-oriented inheritance.
-// The important thing to remember is that _some methods will be available 
+// The important thing to remember is that _some methods will be available
 // to the component which are not declared in this file_.
 
 // These are not magic methods, they're not black box methods, but you do need

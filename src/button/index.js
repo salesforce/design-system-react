@@ -103,7 +103,24 @@ export const ButtonDefinition = {
 	// ### Prop Types
 	propTypes: {
 		assistiveText: React.PropTypes.string,
+		/**
+		 * End of Life. Please use category and name instead.
+		 */
 		icon: isIcon,
+		/**
+		 * Category of the icon.
+		 */
+		iconCategory: React.PropTypes.oneOf([
+			'action',
+			'custom',
+			'doctype',
+			'standard',
+			'utility'
+		]),
+		/**
+		 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
+		 */
+		iconName: React.PropTypes.string,
 		iconPosition: React.PropTypes.oneOf(Object.keys(ButtonViewCore.iconPositions)),
 		iconSize: React.PropTypes.oneOf(Object.keys(ButtonViewCore.buttonIconSizes)),
 		iconStyle: React.PropTypes.oneOf(Object.keys(ButtonCore.iconButtonStyles)),
@@ -148,6 +165,8 @@ export const ButtonDefinition = {
 			assistiveText,
 			className,
 			icon,
+			iconCategory,
+			iconName,
 			iconPosition,
 			iconSize,
 			iconStyle,
@@ -185,6 +204,8 @@ export const ButtonDefinition = {
 			<ButtonView
 				assistiveText = {this.props.assistiveText}
 				icon          = {this.props.icon}
+				iconCategory  = {this.props.iconCategory}
+				iconName      = {this.props.iconName}
 				iconSize      = {this.props.iconSize}
 				iconStyle     = {this.props.iconStyle}
 				text          = {this.props.text}

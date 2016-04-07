@@ -95,16 +95,15 @@ import Pills from '../pills';
 // footer.
 import DefaultRenderers from './lookup-default-renderers';
 
-// The [Svg helper](../svg.html) for React provides a simple wrapper
-// around the markup required for SVGs, and uses `Lib.getSVGPath` to convert
-// strings in the format `sprite file`.`icon name` into full paths.
+// The [Svg helper](../svg/index.html) for React provides a simple wrapper
+// around the markup required to support the old and new `Icon` APIs.
 import Svg from '../svg';
 
 // ## Lookup
 
 // SLDS for React **extends objects** by merging them together, rather than
 // via the prototype chain or imitation of object-oriented inheritance.
-// The important thing to remember is that _some methods will be available 
+// The important thing to remember is that _some methods will be available
 // to the component which are not declared in this file_.
 
 // These are not magic methods, they're not black box methods, but you do need
@@ -157,7 +156,24 @@ export const LookupDefinition = {
 		onChanged: React.PropTypes.func,
 		onFilter: React.PropTypes.func,
 		pillRenderer: React.PropTypes.func,
+		/**
+		 * End of Life. Please use category and name instead.
+		 */
 		searchIcon: React.PropTypes.string,
+		/**
+		 * Category of the icon.
+		 */
+		searchIconCategory: React.PropTypes.oneOf([
+			'action',
+			'custom',
+			'doctype',
+			'standard',
+			'utility'
+		]),
+		/**
+		 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
+		 */
+		searchIconName: React.PropTypes.string,
 		selection: React.PropTypes.oneOfType([
 			React.PropTypes.array,
 			React.PropTypes.object
@@ -289,7 +305,7 @@ export const LookupDefinition = {
 				<div className="slds-form-element">
 					<label className="slds-form-element__label" htmlFor={inputId}>{this.props.label}</label>
 					<div className="slds-form-element__component slds-input-has-icon slds-input-has-icon--right" onClick={!hasSelection && this._handleClicked}>
-						<Svg icon={this.props.searchIcon} className="slds-input__icon" />
+						<Svg icon={this.props.searchIcon} category={this.props.searchIconCategory} name={this.props.searchIconName} className="slds-input__icon" />
 						{pills}
 						<input id={inputId} className={classNames('slds-input', { 'slds-hidden': hasSelection })} type="text" tabIndex={this.props.tabIndex} aria-autocomplete="list" aria-owns={this._getMenuId()} role="combobox" aria-expanded={isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed} ref={this._setInputRef} />
 					</div>

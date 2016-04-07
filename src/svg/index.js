@@ -11,26 +11,71 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // SVG COMPONENT - REACT FACADE
 
-// Core
-import * as Lib from 'slds-for-js-core/lib';
-
-// Framework specific
 import React from 'react';
+import IconUtility from '../icon-utility';
 import isIcon from '../mixins/custom-prop-types/icon.js';
+import sunsetProperty from 'slds-for-js-core/lib/warning/sunset-property';
 
-export const CONTROL = 'svg';
+export const CONTROL = 'SVG';
+
+let checkProps = function () {};
+
+if (process.env.NODE_ENV !== 'production') {
+	checkProps = function (props) {
+		/* eslint-disable max-len */
+		// End-of-life properties
+		sunsetProperty(CONTROL, props.icon, 'icon', 'Icons should now be specified with distinct name and category properties.');
+		/* eslint-enable max-len */
+	};
+}
 
 export const SvgDefinition = {
 	displayName: CONTROL,
 
 	propTypes: {
-		icon: isIcon
+		/**
+		 * End of Life. Please use category and name instead.
+		 */
+		icon: isIcon,
+		/**
+		 * Category of the icon.
+		 */
+		category: React.PropTypes.oneOf([
+			'action',
+			'custom',
+			'doctype',
+			'standard',
+			'utility'
+		]),
+		/**
+		 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
+		 */
+		name: React.PropTypes.string
 	},
-	
+
 	render () {
-		const { icon, ...other } = this.props;
-		
-		return <svg ariaHidden="true" {...other}><use xlinkHref={Lib.getSVGPath(this.props.icon)}></use></svg>;
+		checkProps(this.props);
+
+		const {
+			icon,
+			...props
+		} = this.props;
+
+		if (icon) {
+			const [
+				category,
+				name
+			] = icon.split('.');
+
+			props.category = category;
+			props.name = name;
+		}
+
+		if (props.name) {
+			return <IconUtility {...props} />;
+		}
+
+		return false;
 	}
 };
 

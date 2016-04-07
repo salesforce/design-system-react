@@ -24,7 +24,8 @@ const PicklistExample = React.createClass({
 				id: 0,
 				text: 'One',
 				value: '1',
-				icon: 'utility.apps'
+				iconCategory: 'utility',
+				iconName: 'apps'
 			}, {
 				_itemType: 'divider'
 			}, {
@@ -34,7 +35,8 @@ const PicklistExample = React.createClass({
 				id: 1,
 				text: 'Two',
 				value: '2',
-				icon: 'utility.email'
+				iconCategory: 'utility',
+				iconName: 'email'
 			}, {
 				id: 2,
 				text: 'Three',
