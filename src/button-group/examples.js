@@ -1,8 +1,27 @@
 import React from 'react';
 import Button from '../button';
 import ButtonGroup from './index';
+import Dropdown from '../dropdown';
+import Trigger from '../dropdown/button-trigger';
 
 // SAMPLE CONTROL CODE -->
+
+const sampleData = [
+	{
+		id: 0,
+		text: 'Menu Item One',
+		value: '1'
+	}, {
+		id: 1,
+		text: 'Menu Item Two',
+		value: '2'
+	}, {
+		id: 2,
+		text: 'Navigate to Google',
+		value: '3',
+		href: 'http://google.com'
+	}
+];
 
 const ButtonGroupExample = React.createClass({
 	getInitialState () {
@@ -17,19 +36,23 @@ const ButtonGroupExample = React.createClass({
 		return (
 			<div>
 				<ButtonGroup>
-					<Button text="Refresh" theme="neutral"/>
-					<Button text="Edit" theme="neutral"/>
-					<Button text="Save" theme="neutral"/>
-					<Button iconCategory="utility" iconName="down" assistiveText="More Actions" iconStyle="icon-border"/>
-				</ButtonGroup>
-				<ButtonGroup>
-					<Button text="New Lead" theme="neutral"/>
-					<Button iconCategory="utility" iconName="down" assistiveText="More Actions" iconStyle="icon-border"/>
+					<Button text="Refresh" theme="neutral" />
+					<Button text="Edit" theme="neutral" />
+					<Button text="Save" theme="neutral" />
+					<Dropdown collection={sampleData} id="button-group-dropdown-example-1">
+						<Trigger className="slds-button--last">
+							<Button assistiveText="More Actions" iconStyle="icon-border" />
+						</Trigger>
+					</Dropdown>
 				</ButtonGroup>
 				<ButtonGroup>
 					<Button iconCategory="utility" iconName="chart" iconStyle="icon-border" assistiveText="Chart" selectable selected={this.state.chartSelected} onClick={this.handleClick.bind(this, 'chart')} key="chart" />
-					<Button iconCategory="utility" iconName="filterList" iconStyle="icon-border" assistiveText="Filter" selectable selected={this.state.filterSelected} onClick={this.handleClick.bind(this, 'filter')} key="filter"/>
-					<Button iconCategory="utility" iconName="sort" iconStyle="icon-more" assistiveText="More" onClick={this.handleClick.bind(this, 'more')} key="more"/>
+					<Button iconCategory="utility" iconName="filterList" iconStyle="icon-border" assistiveText="Filter" selectable selected={this.state.filterSelected} onClick={this.handleClick.bind(this, 'filter')} key="filter" />
+					<Dropdown collection={sampleData} id="button-group-dropdown-example-1">
+						<Trigger className="slds-button--last">
+							<Button iconCategory="utility" iconName="sort" iconStyle="icon-more" assistiveText="More" onClick={this.handleClick.bind(this, 'more')} key="more" />
+						</Trigger>
+					</Dropdown>
 				</ButtonGroup>
 			</div>
 		);
