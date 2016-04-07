@@ -72,7 +72,9 @@ const Pill = React.createClass({
 		return (
 			<a className={classNames('slds-pill', { 'slds-pill--bare': this.props.bare })} href="#" tabIndex="0" onClick={this._handlePillClick} onKeyPress={this._handleKeyPressed} onKeyDown={this._handleKeyPressed}>
 				{this.props.renderer({
-					icon: this.props.item.getIcon(),
+					icon: this.props.item.getIcon && this.props.item.getIcon(),
+					iconCategory: this.props.item.getIconCategory(),
+					iconName: this.props.item.getIconName(),
 					text: this.props.item.getText(),
 					item: this.props.item._item,
 					strings: this.props.strings
