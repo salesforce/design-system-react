@@ -8,6 +8,7 @@
     "lint": "eslint --config=./.eslintrc components",
     "pages": "webpack --config webpack.config.github.js",
     "compile": "scripts/compile",
+    "dist": "scripts/dist",
     "test": "scripts/test --single-run",
     "postinstall": "node scripts/postinstall",
     "icons": "node scripts/inline-icons.js",
