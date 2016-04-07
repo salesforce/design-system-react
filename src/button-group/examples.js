@@ -27,33 +27,36 @@ const ButtonGroupExample = React.createClass({
 	getInitialState () {
 		return {
 			chartSelected: false,
-			filterSelected: false,
-			moreSelected: false
+			filterSelected: false
 		};
 	},
 
 	render () {
 		return (
 			<div>
-				<ButtonGroup>
-					<Button text="Refresh" theme="neutral" />
-					<Button text="Edit" theme="neutral" />
-					<Button text="Save" theme="neutral" />
-					<Dropdown collection={sampleData} id="button-group-dropdown-example-1">
-						<Trigger className="slds-button--last">
-							<Button assistiveText="More Actions" iconStyle="icon-border" />
-						</Trigger>
-					</Dropdown>
-				</ButtonGroup>
-				<ButtonGroup>
-					<Button iconCategory="utility" iconName="chart" iconStyle="icon-border" assistiveText="Chart" selectable selected={this.state.chartSelected} onClick={this.handleClick.bind(this, 'chart')} key="chart" />
-					<Button iconCategory="utility" iconName="filterList" iconStyle="icon-border" assistiveText="Filter" selectable selected={this.state.filterSelected} onClick={this.handleClick.bind(this, 'filter')} key="filter" />
-					<Dropdown collection={sampleData} id="button-group-dropdown-example-1">
-						<Trigger className="slds-button--last">
-							<Button iconCategory="utility" iconName="sort" iconStyle="icon-more" assistiveText="More" onClick={this.handleClick.bind(this, 'more')} key="more" />
-						</Trigger>
-					</Dropdown>
-				</ButtonGroup>
+				<div className="slds-col | slds-m-bottom--medium">
+					<ButtonGroup>
+						<Button text="Refresh" theme="neutral" />
+						<Button text="Edit" theme="neutral" />
+						<Button text="Save" theme="neutral" />
+						<Dropdown collection={sampleData} id="button-group-dropdown-example-1">
+							<Trigger className="slds-button--last">
+								<Button assistiveText="More Actions" iconStyle="icon-border" />
+							</Trigger>
+						</Dropdown>
+					</ButtonGroup>
+				</div>
+				<div className="slds-col | slds-m-bottom--medium">
+					<ButtonGroup>
+						<Button iconCategory="utility" iconName="chart" iconStyle="icon-border" assistiveText="Chart" selectable selected={this.state.chartSelected} onClick={this.handleClick.bind(this, 'chart')} key="chart" />
+						<Button iconCategory="utility" iconName="filterList" iconStyle="icon-border" assistiveText="Filter" selectable selected={this.state.filterSelected} onClick={this.handleClick.bind(this, 'filter')} key="filter" />
+						<Dropdown collection={sampleData} id="button-group-dropdown-example-2">
+							<Trigger className="slds-button--last">
+								<Button iconCategory="utility" iconName="sort" iconStyle="icon-more" assistiveText="More Actions" key="more" />
+							</Trigger>
+						</Dropdown>
+					</ButtonGroup>
+				</div>
 			</div>
 		);
 	},
