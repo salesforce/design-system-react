@@ -5,6 +5,8 @@ import ButtonView from './button-view';
 // SAMPLE CONTROL CODE -->
 
 const ButtonExample = React.createClass({
+	displayName: 'ButtonExample',
+
 	getInitialState () {
 		return {
 			buttonStatefulSelected: false,
@@ -14,6 +16,7 @@ const ButtonExample = React.createClass({
 	},
 
 	render () {
+		/* eslint-disable max-len */
 		return (
 			<div className="slds-grid slds-grid--vertical">
 
@@ -119,6 +122,7 @@ const ButtonExample = React.createClass({
 				</div>
 			</div>
 		);
+		/* eslint-enable max-len */
 	},
 
 	handleClickButtonStateful () {

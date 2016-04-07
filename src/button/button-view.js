@@ -89,6 +89,8 @@ export const ButtonViewObject = {
 		if (this.props.assistiveText) {
 			return <span className={this.cssClasses.ASSISTIVE_TEXT}>{this.props.assistiveText}</span>;
 		}
+
+		return null;
 	},
 
 	// ### Render Icon
@@ -100,20 +102,29 @@ export const ButtonViewObject = {
 		}
 
 		if ((this.props.icon || this.props.iconName) && this.props.iconPosition === position) {
-			return (<Svg className={this._getIconClassNames(buttonIconSize)} icon={this.props.icon} category={this.props.iconCategory} name={this.props.iconName} />);
+			return (
+				<Svg
+					className={this._getIconClassNames(buttonIconSize)}
+					icon={this.props.icon}
+					category={this.props.iconCategory}
+					name={this.props.iconName}
+				/>
+			);
 		}
 
 		if (position === 'right' && this.props.iconStyle === 'icon-more') {
 			buttonIconSize = this.buttonIconSizes['x-small'];
 			return (<Svg className={this._getIconClassNames(buttonIconSize)} category="utility" name="down" />);
 		}
+
+		return null;
 	},
 
 	// ### Render
 	render () {
-		return (
-			<span className={this.buttonStatefulViewStyles[this.props.view]}>{this._renderIcon('left')}{this.props.text}{this._renderAssistiveText()}{this._renderIcon('right')}</span>
-		);
+		/* eslint-disable max-len */
+		return <span className={this.buttonStatefulViewStyles[this.props.view]}>{this._renderIcon('left')}{this.props.text}{this._renderAssistiveText()}{this._renderIcon('right')}</span>;
+		/* eslint-enable max-len */
 	}
 };
 

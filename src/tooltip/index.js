@@ -71,7 +71,7 @@ import { PopoverDefinition } from '../popover';
 
 // SLDS for React **extends objects** by merging them together, rather than
 // via the prototype chain or imitation of object-oriented inheritance.
-// The important thing to remember is that _some methods will be available 
+// The important thing to remember is that _some methods will be available
 // to the component which are not declared in this file_.
 
 // These are not magic methods, they're not black box methods, but you do need
@@ -116,18 +116,18 @@ export const TooltipDefinition = {
 			isOpen: this.props.isOpen
 		});
 
-		Positionable.setElement(this, Positionable.attachPositionedElementToBody({attributes: [['role', 'tooltip']]}));
+		Positionable.setElement(this, Positionable.attachPositionedElementToBody({ attributes: [['role', 'tooltip']] }));
 	},
 
 	// ### Render
 	render () {
-		return false;
+		return null;
 	}
 };
 
 let Tooltip = Lib.merge(
 	{},
-	TooltipCore, 
+	TooltipCore,
 	PopoverDefinition,
 	TooltipDefinition
 );

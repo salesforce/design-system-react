@@ -24,6 +24,8 @@ const sampleData = [
 ];
 
 const ButtonGroupExample = React.createClass({
+	displayName: 'ButtonGroupExample',
+
 	getInitialState () {
 		return {
 			chartSelected: false,
@@ -33,7 +35,7 @@ const ButtonGroupExample = React.createClass({
 
 	render () {
 		return (
-			<div>
+			<div className="slds-grid slds-grid--vertical">
 				<div className="slds-col | slds-m-bottom--medium">
 					<ButtonGroup>
 						<Button text="Refresh" theme="neutral" />
@@ -48,8 +50,24 @@ const ButtonGroupExample = React.createClass({
 				</div>
 				<div className="slds-col | slds-m-bottom--medium">
 					<ButtonGroup>
-						<Button iconCategory="utility" iconName="chart" iconStyle="icon-border" assistiveText="Chart" selectable selected={this.state.chartSelected} onClick={this.handleClick.bind(this, 'chart')} key="chart" />
-						<Button iconCategory="utility" iconName="filterList" iconStyle="icon-border" assistiveText="Filter" selectable selected={this.state.filterSelected} onClick={this.handleClick.bind(this, 'filter')} key="filter" />
+						<Button
+							iconCategory="utility"
+							iconName="chart"
+							iconStyle="icon-border"
+							assistiveText="Chart"
+							selectable
+							selected={this.state.chartSelected}
+							onClick={this.handleChartClick}
+						/>
+						<Button
+							iconCategory="utility"
+							iconName="filterList"
+							iconStyle="icon-border"
+							assistiveText="Filter"
+							selectable
+							selected={this.state.filterSelected}
+							onClick={this.handleFilterClick}
+						/>
 						<Dropdown collection={sampleData} id="button-group-dropdown-example-2">
 							<Trigger className="slds-button--last">
 								<Button iconCategory="utility" iconName="sort" iconStyle="icon-more" assistiveText="More Actions" />
@@ -61,10 +79,16 @@ const ButtonGroupExample = React.createClass({
 		);
 	},
 
-	handleClick (key) {
-		const selected = {};
-		selected[key + 'Selected'] = !this.state[key + 'Selected'];
-		this.setState(selected);
+	handleChartClick () {
+		this.setState({
+			chartSelected: !this.state.chartSelected
+		});
+	},
+
+	handleFilterClick () {
+		this.setState({
+			filterSelected: !this.state.filterSelected
+		});
 	}
 });
 

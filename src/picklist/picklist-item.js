@@ -86,7 +86,7 @@ const PicklistItem = React.createClass({
 			);
 		}
 
-		return false;
+		return null;
 	},
 
 	render () {

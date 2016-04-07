@@ -75,7 +75,7 @@ export const SvgDefinition = {
 			return <IconUtility {...props} />;
 		}
 
-		return false;
+		return null;
 	}
 };
 

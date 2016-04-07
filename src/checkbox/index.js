@@ -123,6 +123,8 @@ export const CheckboxDefinition = {
 		if (this.props.labelText) {
 			return <span className={classNames(this.cssClasses.LABEL)}>{this.props.labelText}</span>;
 		}
+
+		return null;
 	}
 };
 

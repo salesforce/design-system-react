@@ -87,21 +87,20 @@ export const ButtonGroupDefinition = {
 
 	// ### Prop Types
 	propTypes: {
-		children: function (props, propName, componentName) {
+		children (props, propName, componentName) {
 			const prop = props[propName];
 			let error;
 			React.Children.forEach(prop, child => {
-				if (!error && ( child.type !== Button && child.type !== Dropdown ) ) {
-					error = new Error(
-						'`' + componentName + '` ' +
-						'should only contain children of the type `Button` or `Dropdown`.'
-					);
+				if (!error && (child.type !== Button && child.type !== Dropdown)) {
+					error = new Error(`\`${componentName}\` should only contain children of the type \`Button\` or \`Dropdown\`.`);
 				}
 			});
 
 			if (error) {
 				return error;
 			}
+
+			return null;
 		}
 	},
 
@@ -117,7 +116,7 @@ export const ButtonGroupDefinition = {
 
 // SLDS for React **extends objects** by merging them together, rather than
 // via the prototype chain or imitation of object-oriented inheritance.
-// The important thing to remember is that _some methods will be available 
+// The important thing to remember is that _some methods will be available
 // to the component which are not declared in this file_.
 
 // These are not magic methods, they're not black box methods, but you do need

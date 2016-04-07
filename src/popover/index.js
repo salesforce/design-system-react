@@ -133,7 +133,7 @@ export const PopoverDefinition = {
 	// ### Render
 	render () {
 		// The real render occurs within `_renderModalPopover`.
-		return false;
+		return null;
 	},
 
 	// ### On Opened
@@ -152,7 +152,7 @@ export const PopoverDefinition = {
 			isOpen: this.props.isOpen
 		});
 
-		Positionable.setElement(this, Positionable.attachPositionedElementToBody({attributes: [['role', 'dialog']]}));
+		Positionable.setElement(this, Positionable.attachPositionedElementToBody({ attributes: [['role', 'dialog']] }));
 	},
 
 	// ### Component Will Unmount
@@ -179,7 +179,7 @@ export const PopoverDefinition = {
 
 // SLDS for React **extends objects** by merging them together, rather than
 // via the prototype chain or imitation of object-oriented inheritance.
-// The important thing to remember is that _some methods will be available 
+// The important thing to remember is that _some methods will be available
 // to the component which are not declared in this file_.
 
 // These are not magic methods, they're not black box methods, but you do need

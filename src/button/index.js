@@ -161,6 +161,7 @@ export const ButtonDefinition = {
 		// The following props have special meaning to us, but we want to
 		// allow any props not listed (such as `onClick`) to be added to the
 		// `<Button/>`.
+		/* eslint-disable no-unused-vars */
 		const {
 			assistiveText,
 			className,
@@ -170,24 +171,28 @@ export const ButtonDefinition = {
 			iconPosition,
 			iconSize,
 			iconStyle,
-			selected,
 			selectable,
-			size,
 			text,
+
+			/* Used by Button */
+			selected,
+			size,
 			theme,
+
 			// ### Additional properties
 			// We allow allowing additional cleanly with [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx).
 			...props
 		} = this.props;
+		/* eslint-enable no-unused-vars */
 
 		// ### Stateful Buttons
 
 		// This button is a stateful button if it has any children or if we have specifically flagged it as selectable.
-		const isStateful = React.Children.count(this.props.children) || this.props.selectable;
+		const isStateful = React.Children.count(this.props.children) || selectable;
 
 		// If there are existing children (typically of type [`ButtonView`](./button-view.html).), we need to clone them and pass them all the same `iconPosition` that is used by the button.
 		const views = React.Children.map(this.props.children, (child, index) => React.cloneElement(child, {
-			iconPosition: this.props.iconPosition,
+			iconPosition,
 			key: index
 		})) || [];
 
@@ -202,16 +207,16 @@ export const ButtonDefinition = {
 
 		views.push(
 			<ButtonView
-				assistiveText = {this.props.assistiveText}
-				icon          = {this.props.icon}
-				iconCategory  = {this.props.iconCategory}
-				iconName      = {this.props.iconName}
-				iconSize      = {this.props.iconSize}
-				iconStyle     = {this.props.iconStyle}
-				text          = {this.props.text}
-				view          = {defaultView}
-				iconPosition  = {this.props.iconPosition}
-				key           = "default"
+				assistiveText = {assistiveText}
+				icon = {icon}
+				iconCategory = {iconCategory}
+				iconName = {iconName}
+				iconSize = {iconSize}
+				iconStyle = {iconStyle}
+				text = {text}
+				view = {defaultView}
+				iconPosition = {iconPosition}
+				key = "default"
 			/>
 		);
 
@@ -221,8 +226,8 @@ export const ButtonDefinition = {
 		return (
 			<button
 				{...props}
-				type      = "button"
-				className = {this._getClassNames(this.props.className, isStateful)}
+				type = "button"
+				className = {this._getClassNames(className, isStateful)}
 			>{views}</button>
 		);
 	}
