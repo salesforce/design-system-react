@@ -32,7 +32,7 @@ if (coreRealPath !== path.join(__dirname, 'node_modules/slds-for-js-core')) {
 	};
 }
 
-config.devtool = 'inline-source-map';
+config.devtool = 'eval-cheap-module-source-map';
 
 config.output = {
 	libraryTarget: 'umd',

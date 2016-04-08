@@ -12,8 +12,7 @@ var compiler = webpack(webpackConfig);
 // Use the webpack dev middleware for development
 app.use(webpackDevMiddleware(compiler, {
 	contentBase: path.join(__dirname, 'public/'),
-	quiet: false,
-	noInfo: false,
+	noInfo: true,
 	filename: 'bundle.js',
 	publicPath: webpackConfig.output.publicPath
 }));

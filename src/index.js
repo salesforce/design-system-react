@@ -48,13 +48,6 @@ export ButtonGroup from './button-group';
 export Checkbox from './checkbox';
 // _______________________________________________________________________________________________________
 
-// ## Combobox
-// * [Documentation](./combobox/combobox.html)
-// * [Live Example](/react/combobox)
-// * [<img src="/assets/demo-site/images/component-examples/combobox.png" style="max-height: 200px;" alt="Combobox Screenshot">](/react/combobox)
-export Combobox from './combobox';
-// _______________________________________________________________________________________________________
-
 // ## Data Tables
 // * [Documentation](./data-table/data-table.html)
 // * [Live Example](/react/data-table)

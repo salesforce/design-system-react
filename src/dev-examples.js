@@ -16,7 +16,6 @@ import badge from './badge/examples';
 import button from './button/examples';
 import buttonGroup from './button-group/examples';
 import checkbox from './checkbox/examples';
-import combobox from './combobox/examples';
 import dataTable from './data-table/examples';
 import datepicker from './datepicker/examples';
 import dropdown from './dropdown/examples';
@@ -38,7 +37,6 @@ ReactDOM.render(React.createElement(badge), document.querySelector('#badge-react
 ReactDOM.render(React.createElement(button), document.querySelector('#button-react-control'));
 ReactDOM.render(React.createElement(buttonGroup), document.querySelector('#button-group-react-control'));
 ReactDOM.render(React.createElement(checkbox), document.querySelector('#checkbox-react-control'));
-ReactDOM.render(React.createElement(combobox), document.querySelector('#combobox-react-control'));
 ReactDOM.render(React.createElement(dataTable), document.querySelector('#data-table-react-control'));
 ReactDOM.render(React.createElement(datepicker), document.querySelector('#datepicker-react-control'));
 ReactDOM.render(React.createElement(dropdown), document.querySelector('#dropdown-react-control'));
