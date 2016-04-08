@@ -123,8 +123,8 @@ export const DataTableDefinition = {
 	// ### Table Headers
 	_tableHeaders () {
 		const isRowSelect = this.props.selectRows;
-		const columns     = this.props.columns;
-		const self        = this;
+		const columns = this.props.columns;
+		const self = this;
 
 		if (isRowSelect && !(columns[0].propertyName === 'select')) {
 			columns.splice(0, 0, {
@@ -157,7 +157,7 @@ export const DataTableDefinition = {
 						sortable: column.sortable,
 						hintParent: column.hintParent
 					})}
-					onClick={column.sortable ? this._handleSort.bind(this, column): false}
+					onClick={column.sortable ? this._handleSort.bind(this, column) : false}
 				>
 					{select}
 					<span className="slds-truncate" data-prop={column.propertyName}>{column.displayName}</span>
@@ -193,13 +193,13 @@ export const DataTableDefinition = {
 
 			return (
 				<DataTableItem
-					key        = {index}
-					hintParent = {true}
-					bordered   = {true}
-					headers    = {this.props.columns}
-					item       = {item}
-					onSelect   = {this._toggleDataItem}
-					selected   = {isSelected}
+					key = {index}
+					hintParent
+					bordered
+					headers = {this.props.columns}
+					item = {item}
+					onSelect = {this._toggleDataItem}
+					selected = {isSelected}
 					selectRows = {isRowSelect}
 				/>
 			);
@@ -217,7 +217,8 @@ export const DataTableDefinition = {
 						stackedHorizontal: this.props.stackedHorizontal,
 						striped: this.props.striped
 					}
-			)}>
+			)}
+			>
 				<thead>
 					<tr className="slds-text-heading--label">
 						{this._tableHeaders()}

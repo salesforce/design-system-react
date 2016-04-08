@@ -39,13 +39,11 @@ const DataTableItem = React.createClass({
 
 		return (
 			<tr className=".slds-hint-parent" onClick={this._handleItemClick}>
-				{this.props.headers.map((header, index) => {
-					return (
-						<td key={index} data-label={header.propertyName}>
-							{self._renderContent(header, index)}
-						</td>
-					);
-				})}
+				{this.props.headers.map((header, index) => (
+					<td key={index} data-label={header.propertyName}>
+						{self._renderContent(header, index)}
+					</td>
+				))}
 			</tr>
 		);
 	},
