@@ -60,7 +60,7 @@ const Menu = React.createClass({
 		if (this.props.nubbinPosition) {
 			const positions = this.props.nubbinPosition.split(' ');
 			positionClassName = classNames(
-				`slds-nubbin--${this.props.nubbinPosition}`,
+				`slds-nubbin--${positions.join('-')}`,
 				positions.map((position) => `slds-dropdown--${position}`)
 			);
 		} else if (this.props.align) {

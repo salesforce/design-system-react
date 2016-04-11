@@ -64,12 +64,11 @@ const DropdownExample = React.createClass({
 						id="nubbin-example"
 						onChange={this.handleChangeNubbin}
 						selection={this.state.selectionNubbin}
-						position="top left"
 					>
 						<Trigger>
 							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
 						</Trigger>
-						<Menu>
+						<Menu nubbinPosition="top left">
 							<MenuItems checkmark />
 						</Menu>
 					</Dropdown>
@@ -112,7 +111,7 @@ const DropdownDevExample = React.createClass({
 						id="top-left-example"
 						onChange={this.handleChangeDefault}
 						selection={this.state.selectionDefault}
-						position="top left"
+						nubbinPosition="top left"
 					>
 						<Trigger>
 							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
@@ -126,7 +125,7 @@ const DropdownDevExample = React.createClass({
 						id="top-example"
 						onChange={this.handleChangeDefault}
 						selection={this.state.selectionDefault}
-						position="top"
+						nubbinPosition="top"
 					>
 						<Trigger>
 							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
@@ -140,7 +139,7 @@ const DropdownDevExample = React.createClass({
 						id="top-right-example"
 						onChange={this.handleChangeDefault}
 						selection={this.state.selectionDefault}
-						position="top right"
+						nubbinPosition="top right"
 					>
 						<Trigger>
 							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
@@ -154,7 +153,7 @@ const DropdownDevExample = React.createClass({
 						id="bottom-left-example"
 						onChange={this.handleChangeDefault}
 						selection={this.state.selectionDefault}
-						position="bottom left"
+						nubbinPosition="bottom left"
 					>
 						<Trigger>
 							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
@@ -168,7 +167,7 @@ const DropdownDevExample = React.createClass({
 						id="bottom-example"
 						onChange={this.handleChangeDefault}
 						selection={this.state.selectionDefault}
-						position="bottom"
+						nubbinPosition="bottom"
 					>
 						<Trigger>
 							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
@@ -182,7 +181,7 @@ const DropdownDevExample = React.createClass({
 						id="bottom-right-example"
 						onChange={this.handleChangeDefault}
 						selection={this.state.selectionDefault}
-						position="bottom right"
+						nubbinPosition="bottom right"
 					>
 						<Trigger>
 							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
