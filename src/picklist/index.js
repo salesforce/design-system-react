@@ -257,7 +257,7 @@ export const PicklistDefinition = {
 								collection = {this._collection}
 								getMenuItemId = {this._getMenuItemId}
 								labelledBy = {triggerId}
-								onSelected = {this._handleMenuItemSelected}
+								onClick = {this._handleMenuItemClick}
 								selection = {this.props.selection}
 							/>
 						);
@@ -279,7 +279,7 @@ export const PicklistDefinition = {
 	},
 
 	// ## Handle Menu Item Selected
-	_handleMenuItemSelected (selection) {
+	_handleMenuItemClick (selection) {
 		Multiselectable.selectItem(this, selection);
 		Openable.close(this);
 	},

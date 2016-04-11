@@ -40,11 +40,16 @@ const MenuItem = React.createClass({
 			'right'
 		]).isRequired,
 		id: React.PropTypes.string.isRequired,
-		item: React.PropTypes.any,
-		onSelected: React.PropTypes.func.isRequired,
+		item: React.PropTypes.object.isRequired,
+		onClick: React.PropTypes.func.isRequired,
 		selected: React.PropTypes.bool,
-		text: React.PropTypes.any,
-		type: React.PropTypes.string
+		contents: React.PropTypes.node,
+		type: React.PropTypes.oneOf([
+			'divider',
+			'header',
+			'item',
+			'link'
+		])
 	},
 
 	getDefaultProps () {
@@ -97,7 +102,7 @@ const MenuItem = React.createClass({
 						className="slds-dropdown__header"
 						id={this.props.id}
 					>
-						<span className="slds-text-heading--label">{this.props.text}</span>
+						<span className="slds-text-heading--label">{this.props.contents}</span>
 					</li>
 				);
 				break;
@@ -106,21 +111,23 @@ const MenuItem = React.createClass({
 				html = <li className="slds-has-divider" id={this.props.id}></li>;
 				break;
 			}
+			case 'link':
+			case 'item':
 			default: {
 				html = (
 					<li
-						aria-selected = {ariaSelected}
-						className = {classNames('slds-dropdown__item', { 'slds-is-selected': this.props.selected })}
-						disabled = {this.props.disabled}
-						id = {this.props.id}
+						aria-selected={ariaSelected}
+						className={classNames('slds-dropdown__item', { 'slds-is-selected': this.props.selected })}
+						disabled={this.props.disabled}
+						id={this.props.id}
 					>
-					<a href={this.props.href} onClick={this.handleClicked} aria-disabled={this.props.disabled}>
-						<p className="slds-truncate">
-							{this._renderIcon('left')}
-							{this.props.text}
-						</p>
-						{this._renderIcon('right')}
-					</a>
+						<a href={this.props.href} onClick={this.handleClicked} aria-disabled={this.props.disabled}>
+							<p className="slds-truncate">
+								{this._renderIcon('left')}
+								{this.props.contents}
+							</p>
+							{this._renderIcon('right')}
+						</a>
 					</li>
 				);
 			}
@@ -130,9 +137,9 @@ const MenuItem = React.createClass({
 	},
 
 	handleClicked (e) {
-		if (this.props.href === '#') {
+		if (!this.props.type === 'link' || this.props.href === '#') {
 			e.preventDefault();
-			this.props.onSelected(this.props.item);
+			this.props.onClick(this.props.item);
 		}
 	}
 });

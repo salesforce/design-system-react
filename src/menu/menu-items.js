@@ -46,7 +46,7 @@ const MenuItems = React.createClass({
 			'right'
 		]),
 		labelledBy: PropTypes.string,
-		onSelected: PropTypes.func.isRequired,
+		onClick: PropTypes.func.isRequired,
 		selection: PropTypes.oneOfType([PropTypes.object])
 	},
 
@@ -97,9 +97,9 @@ const MenuItems = React.createClass({
 							id={this.props.getMenuItemId(index)}
 							item={item._item}
 							key={index}
-							onSelected={this.props.onSelected}
+							onClick={this.props.onClick}
 							selected={item._item === this.props.selection}
-							text={item.getText()}
+							contents={item.getText()}
 							type={type}
 						/>
 					);
