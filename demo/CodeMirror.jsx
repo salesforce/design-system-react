@@ -19,6 +19,7 @@ const SLDSMenuDropdown =  require('../components/SLDSMenuDropdown');
 const SLDSMenuPicklist =  require('../components/SLDSMenuPicklist');
 const SLDSModal =  require('../components/SLDSModal');
 const SLDSNotification =  require('../components/SLDSNotification');
+const SLDSPageHeader = require('../components/SLDSPageHeader');
 const SLDSPopoverTooltip =  require('../components/SLDSPopoverTooltip');
 const SLDSDatepickerSingleSelect =  require('../components/SLDSDatepickerSingleSelect');
 const SLDSTimepicker =  require('../components/SLDSTimepicker');
@@ -226,4 +227,3 @@ CodeMirror.propTypes = propTypes;
 CodeMirror.defaultProps = defaultProps;
 
 module.exports = CodeMirror;
-

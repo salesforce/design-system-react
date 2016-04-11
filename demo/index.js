@@ -24,6 +24,7 @@ import IconSection from './pages/IconSection';
 import LookupSection from './pages/LookupSection';
 import ModalSection from './pages/ModalSection';
 import NotificationSection from './pages/NotificationSection';
+import PageHeaderSection from './pages/PageHeaderSection';
 import PicklistSection from './pages/PicklistSection';
 import TooltipSection from './pages/TooltipSection';
 
@@ -46,6 +47,7 @@ const routes = (
       <Route name="lookup" path="lookup" handler={LookupSection}/>
       <Route name="modal" path="modal" handler={ModalSection}/>
       <Route name="notification" path="notification" handler={NotificationSection}/>
+      <Route name="page-header" path="page-header" handler={PageHeaderSection}/>
       <Route name="picklist" path="picklist" handler={PicklistSection}/>
       <Route name="tooltip" path="tooltip" handler={TooltipSection}/>
       <Route name="faq" path="faq" handler={FAQ} />

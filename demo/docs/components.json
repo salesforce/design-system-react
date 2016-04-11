@@ -1245,6 +1245,257 @@
             }
         }
     },
+    "SLDSPageHeader": {
+        "description": "The SLDSPageHeader component adds SLDSPageHeader, SLDSPageHeader.Info, SLDSPageHeader.Title, SLDSPageHeader.DetailRow, and SLDSPageHeader.DetailBlock.",
+        "displayName": "SLDSPageHeader",
+        "props": {
+            "className": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Optional class name",
+                "defaultValue": {
+                    "value": "''",
+                    "computed": false
+                }
+            },
+            "variant": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The type of component",
+                "defaultValue": {
+                    "value": "'base'",
+                    "computed": false
+                }
+            },
+            "label": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "element"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "The info property can be a string or a React element"
+            },
+            "title": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "element"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "The title property can be a string or a React element"
+            },
+            "info": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "element"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "The info property can be a string or a React element"
+            },
+            "icon": {
+                "type": {
+                    "name": "element"
+                },
+                "required": false,
+                "description": "The page header icon"
+            },
+            "iconName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon names."
+            },
+            "iconCategory": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'action'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'custom'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'doctype'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'standard'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'utility'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "The icons category"
+            },
+            "iconPosition": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'left'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'right'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "If omitted, icon position is centered."
+            },
+            "iconSize": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
+            },
+            "iconVariant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'bare'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'container'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'border'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'border-filled'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'more'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "For icon variants, please reference <a href='http://www.lightningdesignsystem.com/components/buttons/#icon'>Lightning Design System Icons</a>."
+            },
+            "contentRight": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "element"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Content to appear on the right hand side of the page header",
+                "defaultValue": {
+                    "value": "''",
+                    "computed": false
+                }
+            },
+            "details": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "An array of buttons which appear on the component's right hand side.",
+                "defaultValue": {
+                    "value": "[]",
+                    "computed": false
+                }
+            },
+            "navRight": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "element"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Nav content which appears in the upper right hand corner.",
+                "defaultValue": {
+                    "value": "''",
+                    "computed": false
+                }
+            },
+            "trail": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "An array of react elements presumably anchor <a> elements.",
+                "defaultValue": {
+                    "value": "[]",
+                    "computed": false
+                }
+            }
+        }
+    },
     "SLDSPopoverTooltip": {
         "description": "The SLDSPopoverTooltip component is variant of the Lightning Design System Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or anchor) so that keyboard users can navigate to it.",
         "displayName": "SLDSPopoverTooltip",
