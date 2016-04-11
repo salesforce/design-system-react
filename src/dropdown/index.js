@@ -352,10 +352,9 @@ export const DropdownDefinition = {
 		// Dropdown can take a Trigger component as a child and then return it as the parent DOM element.
 		React.Children.map(this.props.children, (child) => {
 			if (child.type.displayName === 'Trigger') {
-				const CustomTriggerChild = React.cloneElement(child, {});
 				// `CustomTriggerChildProps` is not used by the default button Trigger, but by other triggers
-				CustomTriggerChildProps = CustomTriggerChild.props;
-				CurrentTrigger = CustomTriggerChild.type;
+				CustomTriggerChildProps = child.props;
+				CurrentTrigger = child.type;
 			}
 		});
 

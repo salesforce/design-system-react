@@ -57,34 +57,53 @@ const MenuItems = React.createClass({
 	},
 
 	render () {
-		let MenuItem;
+		// Custom menu items
+		const menuItemTypes = {
+			item: {
+				MenuItem: DefaultMenuItem,
+				props: {}
+			}
+		};
 
-		if (this.props.children) {
-			MenuItem = this.props.children;
-		} else {
-			MenuItem = DefaultMenuItem;
-		}
+		React.Children.map(this.props.children, (child) => {
+			const MenuItem = child.type;
+
+			if (MenuItem.displayName === 'MenuItem') {
+				const menuItemType = MenuItem.menuItemType || 'item';
+				menuItemTypes[menuItemType] = {
+					MenuItem,
+					props: child.props
+				};
+			}
+		});
 
 		return (
 			<ul className={classNames('slds-dropdown__list', this.props.className)} role="menu" aria-labelledby={this.props.labelledBy}>
-				{this.props.collection.map((item, index) => (
-					<MenuItem
-						checkmark={this.props.checkmark}
-						disabled={item.getDisabled()}
-						href={item.getHref()}
-						icon={item.getIcon && item.getIcon()}
-						iconCategory={item.getIconCategory()}
-						iconName={item.getIconName()}
-						iconPosition={this.props.iconPosition}
-						id={this.props.getMenuItemId(index)}
-						item={item._item}
-						key={index}
-						onSelected={this.props.onSelected}
-						selected={item._item === this.props.selection}
-						text={item.getText()}
-						type={item.getType()}
-					/>
-				))}
+				{this.props.collection.map((item, index) => {
+					const type = item.getType();
+					const menuItemType = menuItemTypes[type] || menuItemTypes.item;
+					const MenuItem = menuItemType.MenuItem;
+
+					return (
+						<MenuItem
+							{...menuItemType.props}
+							checkmark={this.props.checkmark}
+							disabled={item.getDisabled()}
+							href={item.getHref()}
+							icon={item.getIcon && item.getIcon()}
+							iconCategory={item.getIconCategory()}
+							iconName={item.getIconName()}
+							iconPosition={this.props.iconPosition}
+							id={this.props.getMenuItemId(index)}
+							item={item._item}
+							key={index}
+							onSelected={this.props.onSelected}
+							selected={item._item === this.props.selection}
+							text={item.getText()}
+							type={type}
+						/>
+					);
+				})}
 			</ul>
 		);
 	}
