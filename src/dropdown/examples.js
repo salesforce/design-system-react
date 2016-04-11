@@ -1,6 +1,8 @@
 import React from 'react';
 import cloneDeep from 'lodash/lang/cloneDeep';
 import Dropdown from './index';
+import Menu from '../menu';
+import MenuItems from '../menu/menu-items';
 import Button from '../button';
 import Trigger from './button-trigger';
 
@@ -58,7 +60,6 @@ const DropdownExample = React.createClass({
 
 				<div className="slds-col | slds-m-bottom--small">
 					<Dropdown
-						checkmark
 						collection={sampleDataWithIcons}
 						id="nubbin-example"
 						onChange={this.handleChangeNubbin}
@@ -68,6 +69,9 @@ const DropdownExample = React.createClass({
 						<Trigger>
 							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
 						</Trigger>
+						<Menu>
+							<MenuItems checkmark />
+						</Menu>
 					</Dropdown>
 				</div>
 
