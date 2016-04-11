@@ -142,13 +142,12 @@ export const DropdownDefinition = {
 		 * ```
 		 * <Dropdown>
 		 * <Trigger>
-		 * <Button icon="utility.settings" />
+		 * <Button iconCategory="utility" iconName="settings" />
 		 * </Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
 		children: PropTypes.element,
-		// > @todo Type of collection unknown until parsed by Data Adapter
 		collection: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
 		/**
 		 * Class names to be added to the dropdown menu, that is the element with the class `slds-dropdown`. To add additional CSS classes to the trigger wrapping tag or the trigger button, please reference the `children` prop, and pass use the `className` of respective React element.

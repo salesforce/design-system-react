@@ -80,9 +80,13 @@ import State from '../mixins/state';
 
 // Split out some rendering logic, just to make things easier to read.
 
-// #### Picklist Items
-// [./picklist-items](./picklist-items.html)
-import PicklistItems from './picklist-items';
+// #### Menu
+// [../menu](../menu.html)
+import Menu from '../menu';
+
+// #### MenuItems
+// [../menu/menu-items](../menu/menu-items.html)
+import MenuItems from '../menu/menu-items';
 
 // #### Button
 // [../button](../button.html)
@@ -182,20 +186,20 @@ export const PicklistDefinition = {
 
 		return (
 			<div
-				className     = "slds-picklist"
-				id            = {this.state.id}
+				className = "slds-picklist"
+				id = {this.state.id}
 				aria-expanded = {isOpen}
-				onKeyDown     = {this._handleKeyPressed}
-				onKeyPress    = {this._handleKeyPressed}
+				onKeyDown = {this._handleKeyPressed}
+				onKeyPress = {this._handleKeyPressed}
 			>
 				<Button
-					id            = {triggerId}
-					className     = "slds-picklist__label"
-					disabled      = {this.props.disabled}
-					onClick       = {this._handleClicked}
-					ref           = {this._onButtonRendered}
-					style         = {styles}
-					theme         = "neutral"
+					id = {triggerId}
+					className = "slds-picklist__label"
+					disabled = {this.props.disabled}
+					onClick = {this._handleClicked}
+					ref = {this._onButtonRendered}
+					style = {styles}
+					theme = "neutral"
 					aria-haspopup = "true"
 				>
 					<span className="slds-truncate">{selectionName}</span>
@@ -212,18 +216,20 @@ export const PicklistDefinition = {
 		const triggerId = this._getTriggerId();
 
 		const menu = (
-			<PicklistItems
-				checkmark        = {this.props.checkmark}
-				iconPosition     = {this.props.iconPosition}
-				id               = {this._getMenuId()}
-				menuItemRenderer = {this.props.menuItemRenderer}
-				labelledBy       = {triggerId}
-				getMenuItemId    = {this._getMenuItemId}
-				collection       = {this._collection}
-				selection        = {this.props.selection}
-				show             = {isOpen}
-				onSelected       = {this._handleMenuItemSelected}
-			/>
+			<Menu
+				id = {this._getMenuId()}
+				show = {isOpen}
+			>
+				<MenuItems
+					checkmark = {this.props.checkmark}
+					collection = {this._collection}
+					getMenuItemId = {this._getMenuItemId}
+					iconPosition = {this.props.iconPosition}
+					labelledBy = {triggerId}
+					onSelected = {this._handleMenuItemSelected}
+					selection = {this.props.selection}
+				/>
+			</Menu>
 		);
 
 		return menu;
@@ -240,7 +246,7 @@ export const PicklistDefinition = {
 
 	// ## Handle Menu Item Selected
 	_handleMenuItemSelected (selection) {
-		Multiselectable.selectItem(this, selection._item);
+		Multiselectable.selectItem(this, selection);
 		Openable.close(this);
 	},
 
