@@ -134,7 +134,6 @@ export const PicklistDefinition = {
 		]),
 		disabled: PropTypes.bool,
 		id: PropTypes.string,
-		menuItemRenderer: PropTypes.func,
 		modalMenu: PropTypes.bool,
 		selection: PropTypes.object,
 		// > @todo Type of collection unknown until parsed by Data Adapter
@@ -240,9 +239,12 @@ export const PicklistDefinition = {
 
 		return (
 			<Menu
+				align={this.props.align}
+				className={this.props.className}
+				nubbinPosition={this.props.nubbinPosition}
 				{...menuProps}
-				id = {this._getMenuId()}
-				show = {isOpen}
+				id={this._getMenuId()}
+				show={isOpen}
 			>
 				{React.Children.map(menuChildren, (child) => {
 					if (child.type.displayName === 'MenuItems') {
@@ -251,14 +253,15 @@ export const PicklistDefinition = {
 
 						return (
 							<MenuItems
-								checkmark = {this.props.checkmark}
-								iconPosition = {this.props.iconPosition}
+								checkmark={this.props.checkmark}
+								iconPosition={this.props.iconPosition}
 								{...menuItemsProps}
-								collection = {this._collection}
-								getMenuItemId = {this._getMenuItemId}
-								labelledBy = {triggerId}
-								onClick = {this._handleMenuItemClick}
-								selection = {this.props.selection}
+								collection={this._collection}
+								getMenuItemId={this._getMenuItemId}
+								labelledBy={triggerId}
+								menuItemRenderer={this.props.listItemRenderer || this.props.menuItemRenderer}
+								onClick={this._handleMenuItemClick}
+								selection={this._getSelection()._item}
 							/>
 						);
 					}

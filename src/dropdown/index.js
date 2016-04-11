@@ -25,7 +25,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Bring in the [shared library functions](../../lib/lib.html).
 import merge from 'slds-for-js-core/lib/merge';
-import isFunction from 'lodash/lang/isFunction';
 
 // Use the [shared core](../../core/picklist.html), which contains logic that
 // is shared across SLDS for JavaScript.
@@ -51,7 +50,6 @@ import Positionable from 'slds-for-js-core/traits/positionable';
 // ### React
 // React is an external dependency of the project.
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 // #### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -70,10 +68,6 @@ import classNames from 'classnames';
 // The [isIcon mixin](../mixins/custom-prop-types/icon.html) for React to
 // checks whether a prop provides an icon format
 import isIcon from '../mixins/custom-prop-types/icon.js';
-
-// ### Children
-// [PicklistItems](../picklist-items.html)
-import PicklistItems from '../picklist/picklist-items';
 
 // [Trigger](./button-trigger.html)
 // This is the the default Dropdown Trigger. It expects one button as a child.
@@ -262,51 +256,12 @@ export const DropdownDefinition = {
 		tooltip: React.element
 	},
 
-	resize () {
-		if (this.elements.wrapper) {
-			const width = this.elements.wrapper.outerWidth();
-
-			this.setState({ width });
-			if (isFunction(this.resetWidth)) this.resetWidth(width);
-		}
-	},
-
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(CONTROL, this.props);
 		Positionable.setElement(this, Positionable.attachPositionedElementToBody({ classes: 'slds-dropdown' }));
 		Eventable.on(this, 'select', this._onSelect);
 		Eventable.on(this, 'deselect', this._onDeselect);
-	},
-
-	_onMenuRendered (element) {
-		this.elements.menu = ReactDOM.findDOMNode(element);
-		Positionable.setElement(this, this.elements.menu);
-	},
-
-	_renderMenu () {
-		const isOpen = Openable.isOpen(this);
-		const triggerId = this._getTriggerId();
-		const menuItemRenderer = this.props.listItemRenderer || this.props.menuItemRenderer;
-
-		return (
-			<PicklistItems
-				align={this.props.align}
-				checkmark={this.props.checkmark}
-				iconPosition={this.props.iconPosition}
-				className={this.props.className}
-				collection={this._collection}
-				id={this._getMenuId()}
-				getMenuItemId={this._getMenuItemId}
-				labelledBy={triggerId}
-				menuItemRenderer={menuItemRenderer}
-				onSelected={this._handleMenuItemSelected}
-				position={this.props.position}
-				ref={this._onMenuRendered}
-				selection={this._getSelection()._item}
-				show={isOpen || false}
-			/>
-		);
 	},
 
 	// ### Get Icon

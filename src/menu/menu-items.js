@@ -16,6 +16,7 @@ import React from 'react';
 
 // Third party
 import classNames from 'classnames';
+import isFunction from 'lodash/lang/isFunction';
 
 // Children
 import DefaultMenuItem from './menu-item';
@@ -91,7 +92,7 @@ const MenuItems = React.createClass({
 							checkmark={this.props.checkmark}
 							disabled={item.getDisabled()}
 							href={item.getHref()}
-							icon={item.getIcon && item.getIcon()}
+							icon={isFunction(item.getIcon) && item.getIcon()}
 							iconCategory={item.getIconCategory()}
 							iconName={item.getIconName()}
 							id={this.props.getMenuItemId(index)}
