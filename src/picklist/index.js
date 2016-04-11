@@ -82,11 +82,11 @@ import State from '../mixins/state';
 
 // #### Menu
 // [../menu](../menu.html)
-import Menu from '../menu';
+import DefaultMenu from '../menu';
 
 // #### MenuItems
 // [../menu/menu-items](../menu/menu-items.html)
-import MenuItems from '../menu/menu-items';
+import DefaultMenuItems from '../menu/menu-items';
 
 // #### Button
 // [../button](../button.html)
@@ -212,27 +212,61 @@ export const PicklistDefinition = {
 
 	// ### Render Menu
 	_renderMenu () {
+		let Menu = DefaultMenu;
+		let menuProps = {};
+		let menuChildren = null;
+
+		React.Children.map(this.props.children, (child) => {
+			if (child.type.displayName === 'Menu') {
+				Menu = child.type;
+				menuProps = child.props;
+
+				const {
+					children,
+					...other
+				} = menuProps;
+
+				menuChildren = children;
+				menuProps = other;
+			}
+		});
+
+		if (!menuChildren) {
+			menuChildren = <DefaultMenuItems />;
+		}
+
 		const isOpen = Openable.isOpen(this);
 		const triggerId = this._getTriggerId();
 
-		const menu = (
+		return (
 			<Menu
+				{...menuProps}
 				id = {this._getMenuId()}
 				show = {isOpen}
 			>
-				<MenuItems
-					checkmark = {this.props.checkmark}
-					collection = {this._collection}
-					getMenuItemId = {this._getMenuItemId}
-					iconPosition = {this.props.iconPosition}
-					labelledBy = {triggerId}
-					onSelected = {this._handleMenuItemSelected}
-					selection = {this.props.selection}
-				/>
+				{React.Children.map(menuChildren, (child) => {
+					if (child.type.displayName === 'MenuItems') {
+						const MenuItems = child.type;
+						const menuItemsProps = child.props;
+
+						return (
+							<MenuItems
+								checkmark = {this.props.checkmark}
+								iconPosition = {this.props.iconPosition}
+								{...menuItemsProps}
+								collection = {this._collection}
+								getMenuItemId = {this._getMenuItemId}
+								labelledBy = {triggerId}
+								onSelected = {this._handleMenuItemSelected}
+								selection = {this.props.selection}
+							/>
+						);
+					}
+
+					return child;
+				})}
 			</Menu>
 		);
-
-		return menu;
 	},
 
 	// ## Render Modal Menu

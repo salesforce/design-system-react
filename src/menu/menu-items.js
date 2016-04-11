@@ -86,6 +86,7 @@ const MenuItems = React.createClass({
 
 					return (
 						<MenuItem
+							iconPosition={this.props.iconPosition}
 							{...menuItemType.props}
 							checkmark={this.props.checkmark}
 							disabled={item.getDisabled()}
@@ -93,7 +94,6 @@ const MenuItems = React.createClass({
 							icon={item.getIcon && item.getIcon()}
 							iconCategory={item.getIconCategory()}
 							iconName={item.getIconName()}
-							iconPosition={this.props.iconPosition}
 							id={this.props.getMenuItemId(index)}
 							item={item._item}
 							key={index}
