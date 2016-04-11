@@ -69,7 +69,7 @@ const MenuItems = React.createClass({
 			const MenuItem = child.type;
 
 			if (MenuItem.displayName === 'MenuItem') {
-				const menuItemType = MenuItem.menuItemType || 'item';
+				const menuItemType = MenuItem.prototype.menuItemType || 'item';
 				menuItemTypes[menuItemType] = {
 					MenuItem,
 					props: child.props

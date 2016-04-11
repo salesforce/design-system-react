@@ -85,9 +85,7 @@ const PicklistExample = React.createClass({
 						selection={this.state.selectionCustom}
 					>
 						<Menu>
-							<MenuItems
-								checkmark
-							/>
+							<MenuItems checkmark />
 						</Menu>
 					</Picklist>
 				</div>
