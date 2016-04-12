@@ -1,6 +1,16 @@
 # [SLDS for React](http://slds-for-js.herokuapp.com/react)
 Welcome to SLDS for React (formerly Design System Facades), the home of interactive, accessible implementations of [Lightning Design System](https://www.lightningdesignsystem.com/) components for React. We've put together a [Getting Started Guide](http://slds-for-js.herokuapp.com/react) to help you get started using these components in your projects. Additionally, the [SLDS for React App Boilerplate](https://github.com/salesforce-ux/slds-for-react-app-boilerplate) includes a fully functional example of consuming SLDS for React.
 
+The documentation site for SLDS for JavaScript is protected. To view it, use these credentials:
+
+**Username**
+
+preview
+
+**Password**
+
+userexperience1!
+
 ### Setup (for contributors)
 * Fork the repo!
 * Clone your fork.
@@ -17,7 +27,7 @@ Welcome to SLDS for React (formerly Design System Facades), the home of interact
 * Update the `package.json` dependency in your _consuming_ project to point to the tag you just created --prepend it with the letter `v`, and append it with `-es`:
 
 For example:
-    
+
     "slds-for-react": "git+ssh://git@github.com/salesforce-ux/slds-for-react.git#v0.0.16-context-bar-dev-es"
 
 
