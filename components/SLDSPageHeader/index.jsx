@@ -20,7 +20,7 @@ import Base from './Base';
 import RecordHome from './RecordHome';
 import ObjectHome from './ObjectHome';
 import SLDSIcon from '../SLDSIcon';
-import SLDSBreadCrumb from './BreadCrumb';
+import SLDSBreadCrumb from '../SLDSBreadCrumb';
 
 const displayName = 'SLDSPageHeader';
 const propTypes = {

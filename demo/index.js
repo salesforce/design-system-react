@@ -12,6 +12,7 @@ import Welcome from './pages/Welcome';
 import GettingStarted from './pages/GettingStarted';
 import FAQ from './pages/FAQ';
 
+import BreadCrumbSection from './pages/BreadCrumbSection';
 import ButtonSection from './pages/ButtonSection';
 import ButtonStatefulSection from './pages/ButtonStatefulSection';
 import ButtonGroupSection from './pages/ButtonGroupSection';
@@ -28,13 +29,13 @@ import PageHeaderSection from './pages/PageHeaderSection';
 import PicklistSection from './pages/PicklistSection';
 import TooltipSection from './pages/TooltipSection';
 
-
 const routes = (
     <Route name="home" path="/" handler={HomePage}>
       <DefaultRoute handler={Welcome} />
 
       <Route name="welcome" path="welcome" handler={Welcome} />
       <Route name="getting-started" path="getting-started" handler={GettingStarted} />
+      <Route name="breadcrumb" path="breadcrumb" handler={BreadCrumbSection}/>
       <Route name="button" path="button" handler={ButtonSection}/>
       <Route name="button-stateful" path="button-stateful" handler={ButtonStatefulSection}/>
       <Route name="button-group" path="button-group" handler={ButtonGroupSection}/>

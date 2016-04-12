@@ -1,4 +1,5 @@
 const Samples =  {
+  BreadCrumbs1: require('fs').readFileSync('demo/code-snippets/BreadCrumbExamples1.js', 'utf8'),
   Buttons1: require('fs').readFileSync('demo/code-snippets/ButtonExamples1.js', 'utf8'),
   Buttons2: require('fs').readFileSync('demo/code-snippets/ButtonExamples2.js', 'utf8'),
   ButtonGroups1: require('fs').readFileSync('demo/code-snippets/ButtonGroupExamples1.js', 'utf8'),
