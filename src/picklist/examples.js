@@ -1,8 +1,52 @@
 import React from 'react';
-import * as Lib from 'slds-for-js-core/lib';
 import Picklist from './index';
+import Menu from '../menu';
+import MenuItems from '../menu/menu-items';
 
 // SAMPLE CONTROL CODE -->
+
+const sampleData = [
+	{
+		type: 'header',
+		text: 'One thing'
+	}, {
+		id: 0,
+		text: 'One',
+		value: '1',
+		iconCategory: 'utility',
+		iconName: 'apps'
+	}, {
+		type: 'divider'
+	}, {
+		type: 'header',
+		text: 'All the things'
+	}, {
+		id: 1,
+		text: 'Two',
+		value: '2',
+		iconCategory: 'utility',
+		iconName: 'email'
+	}, {
+		id: 2,
+		text: 'Three',
+		value: '3'
+	}, {
+		id: 3,
+		text: 'Buzz',
+		value: '4'
+	}, {
+		id: 4,
+		text: 'Item Five',
+		value: 'Item Five',
+		fizz: 'buzz',
+		foo: 'bar'
+	}, {
+		id: 5,
+		text: 'A Disabled Item',
+		disabled: true,
+		value: 'disabled'
+	}
+];
 
 const PicklistExample = React.createClass({
 	displayName: 'PicklistExample',
@@ -12,142 +56,50 @@ const PicklistExample = React.createClass({
 	},
 
 	getInitialState () {
-		const resize = 'auto';
-		const selection = {
-			value: 1
-		};
-		const collection = [
-			{
-				_itemType: 'header',
-				text: 'One thing'
-			}, {
-				id: 0,
-				text: 'One',
-				value: '1',
-				iconCategory: 'utility',
-				iconName: 'apps'
-			}, {
-				_itemType: 'divider'
-			}, {
-				_itemType: 'header',
-				text: 'All the things'
-			}, {
-				id: 1,
-				text: 'Two',
-				value: '2',
-				iconCategory: 'utility',
-				iconName: 'email'
-			}, {
-				id: 2,
-				text: 'Three',
-				value: '3'
-			}, {
-				id: 3,
-				text: 'Buzz',
-				value: '4'
-			}, {
-				id: 4,
-				text: 'Item Five',
-				value: 'Item Five',
-				fizz: 'buzz',
-				foo: 'bar'
-			}, {
-				id: 5,
-				text: 'A Disabled Item',
-				disabled: true,
-				value: 'disabled'
-			}
-		];
-
-		const picklistSampleData = {
-			collection,
-			resize,
-			selection
-		};
-
 		return {
-			models: [
-				{
-					collection: picklistSampleData.collection,
-					disabled: false,
-					selection: picklistSampleData.collection[1]
-				},
-				{
-					checkmark: true,
-					collection: picklistSampleData.collection,
-					disabled: false,
-					selection: picklistSampleData.collection[1]
-				}
-			]
+			selectionDefault: sampleData[1],
+			selectionCustom: sampleData[1]
 		};
 	},
 
 	render () {
-		const picklists = this.state.models.map((model, index) => {
-			return (
-				<div key={index}>
-					<div className="slds-col example">
-						<Picklist
-							{...model}
-							modalMenu={this.props.modal}
-							onChange={this._handleModelChange.bind(this, index)}
-						/>
-					</div>
-					<div className="slds-col demo-controls">
-						<div className="slds-button-group" role="group">
-							<button type="button" className="slds-button slds-button--neutral slds-button--small" onClick={this.logSelectedItem.bind(this, index)}>Log selected item</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--small" disabled>Set by index</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--small" onClick={this.setSelection.bind(this, index)}>Set by object</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--small" onClick={this.enable.bind(this, index)}>Enable</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--small" onClick={this.disable.bind(this, index)}>Disable</button>
-						</div>
-					</div>
-				</div>
-			);
-		});
-
 		return (
-			<div>
-				{picklists}
+			<div className="slds-grid slds-grid--vertical">
+
+				<div className="slds-col | slds-m-bottom--small">
+					<Picklist
+						collection={sampleData}
+						id="default-picklist-example"
+						modalMenu={this.props.modal}
+						onChange={this.handleChangeDefault}
+						selection={this.state.selectionDefault}
+					/>
+				</div>
+
+				<div className="slds-col | slds-m-bottom--small">
+					<Picklist
+						collection={sampleData}
+						id="default-picklist-example"
+						modalMenu={this.props.modal}
+						onChange={this.handleChangeCustom}
+						selection={this.state.selectionCustom}
+					>
+						<Menu>
+							<MenuItems checkmark />
+						</Menu>
+					</Picklist>
+				</div>
+
 			</div>
 		);
 	},
 
-	_handleModelChange (index, selection) {
-		const models = this.state.models;
-		models[index].selection = selection;
-		this.setState({ models });
+	handleChangeDefault (selection) {
+		this.setState({ selectionDefault: selection });
 	},
 
-	toggleSelectlistsEnabled () {
-		this.setState({
-			models: this.state.models.map(model => {
-				model.disabled = !model.disabled;
-				return model;
-			})
-		});
-	},
-
-	logSelectedItem (index) {
-		Lib.log(this.state.models[index].selection);
-	},
-
-	setSelection (index) {
-		const models = this.state.models;
-		models[index].selection = this.state.models.collection[5];
-		this.setState({ models });
-	},
-
-	enable (index) {
-		const models = this.state.models;
-		models[index].disabled = false;
-		this.setState({ models });
-	},
-
-	disable (index) {
-		const models = this.state.models;
-		models[index].disabled = true;
-		this.setState({ models });
+	handleChangeCustom (selection) {
+		this.setState({ selectionCustom: selection });
 	}
 });
 

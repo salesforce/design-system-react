@@ -1,6 +1,8 @@
 import React from 'react';
 import cloneDeep from 'lodash/lang/cloneDeep';
 import Dropdown from './index';
+import Menu from '../menu';
+import MenuItems from '../menu/menu-items';
 import Button from '../button';
 import Trigger from './button-trigger';
 
@@ -19,7 +21,8 @@ const sampleData = [
 		id: 2,
 		text: 'Navigate to Google',
 		value: '3',
-		href: 'http://google.com'
+		href: 'http://google.com',
+		type: 'link'
 	}
 ];
 
@@ -30,6 +33,16 @@ sampleDataWithIcons[1].iconCategory = 'utility';
 sampleDataWithIcons[1].iconName = 'kanban';
 sampleDataWithIcons[2].iconCategory = 'utility';
 sampleDataWithIcons[2].iconName = 'side_list';
+
+const StaticMenuItem = React.createClass({
+	displayName: 'MenuItem',
+	menuItemType: 'static',
+	render () {
+		return (
+			<li className="slds-dropdown__item"></li>
+		);
+	}
+});
 
 const DropdownExample = React.createClass({
 	displayName: 'DropdownExample',
@@ -58,16 +71,19 @@ const DropdownExample = React.createClass({
 
 				<div className="slds-col | slds-m-bottom--small">
 					<Dropdown
-						checkmark
 						collection={sampleDataWithIcons}
 						id="nubbin-example"
 						onChange={this.handleChangeNubbin}
 						selection={this.state.selectionNubbin}
-						position="top left"
 					>
 						<Trigger>
 							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
 						</Trigger>
+						<Menu nubbinPosition="top left">
+							<MenuItems checkmark>
+								<StaticMenuItem />
+							</MenuItems>
+						</Menu>
 					</Dropdown>
 				</div>
 
@@ -108,7 +124,7 @@ const DropdownDevExample = React.createClass({
 						id="top-left-example"
 						onChange={this.handleChangeDefault}
 						selection={this.state.selectionDefault}
-						position="top left"
+						nubbinPosition="top left"
 					>
 						<Trigger>
 							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
@@ -122,7 +138,7 @@ const DropdownDevExample = React.createClass({
 						id="top-example"
 						onChange={this.handleChangeDefault}
 						selection={this.state.selectionDefault}
-						position="top"
+						nubbinPosition="top"
 					>
 						<Trigger>
 							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
@@ -136,7 +152,7 @@ const DropdownDevExample = React.createClass({
 						id="top-right-example"
 						onChange={this.handleChangeDefault}
 						selection={this.state.selectionDefault}
-						position="top right"
+						nubbinPosition="top right"
 					>
 						<Trigger>
 							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
@@ -150,7 +166,7 @@ const DropdownDevExample = React.createClass({
 						id="bottom-left-example"
 						onChange={this.handleChangeDefault}
 						selection={this.state.selectionDefault}
-						position="bottom left"
+						nubbinPosition="bottom left"
 					>
 						<Trigger>
 							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
@@ -164,7 +180,7 @@ const DropdownDevExample = React.createClass({
 						id="bottom-example"
 						onChange={this.handleChangeDefault}
 						selection={this.state.selectionDefault}
-						position="bottom"
+						nubbinPosition="bottom"
 					>
 						<Trigger>
 							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
@@ -178,7 +194,7 @@ const DropdownDevExample = React.createClass({
 						id="bottom-right-example"
 						onChange={this.handleChangeDefault}
 						selection={this.state.selectionDefault}
-						position="bottom right"
+						nubbinPosition="bottom right"
 					>
 						<Trigger>
 							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />

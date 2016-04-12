@@ -9,7 +9,7 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// PICKLIST ITEM - REACT FACADE
+// MENU ITEM - REACT FACADE
 
 import isString from 'lodash/lang/isString';
 
@@ -23,38 +23,40 @@ import Svg from '../svg';
 // Third party
 import classNames from 'classnames';
 
-export const CONTROL = 'picklist-item';
+export const CONTROL = 'MenuItem';
 
-const PicklistItem = React.createClass({
+const MenuItem = React.createClass({
 	displayName: CONTROL,
 
-	cssClasses: {
-		ITEMHEADER: 'slds-dropdown__header',
-		ITEMHEADERTEXT: 'slds-text-heading--label',
-		ITEMDIVIDER: 'slds-has-divider'
-	},
-
 	propTypes: {
-		id: React.PropTypes.string,
 		checkmark: React.PropTypes.bool,
+		disabled: React.PropTypes.bool,
+		href: React.PropTypes.string,
+		icon: React.PropTypes.string,
+		iconCategory: React.PropTypes.string,
+		iconName: React.PropTypes.string,
 		iconPosition: React.PropTypes.oneOf([
 			'left',
 			'right'
 		]).isRequired,
-		// TODO: explore if item PropTypes can be done better
-		item: React.PropTypes.shape({
-			getType: React.PropTypes.func.isRequired,
-			getDisabled: React.PropTypes.func.isRequired,
-			// getId: React.PropTypes.func.isRequired,
-			getHref: React.PropTypes.func,
-			getText: React.PropTypes.func.isRequired,
-			// getValue: React.PropTypes.func.isRequired,
-			getIcon: React.PropTypes.func,
-			getIconCategory: React.PropTypes.func.isRequired,
-			getIconName: React.PropTypes.func.isRequired
-		}).isRequired,
-		onSelected: React.PropTypes.func.isRequired,
-		selected: React.PropTypes.bool
+		id: React.PropTypes.string.isRequired,
+		item: React.PropTypes.object.isRequired,
+		onClick: React.PropTypes.func.isRequired,
+		selected: React.PropTypes.bool,
+		contents: React.PropTypes.node,
+		type: React.PropTypes.oneOf([
+			'divider',
+			'header',
+			'item',
+			'link'
+		])
+	},
+
+	getDefaultProps () {
+		return {
+			href: '#',
+			type: 'item'
+		};
 	},
 
 	_renderIcon (position) {
@@ -63,9 +65,9 @@ const PicklistItem = React.createClass({
 
 		if (position === this.props.iconPosition) {
 			const icons = {
-				icon: this.props.item.getIcon && this.props.item.getIcon(),
-				category: this.props.item.getIconCategory(),
-				name: this.props.item.getIconName()
+				icon: this.props.icon,
+				category: this.props.iconCategory,
+				name: this.props.iconName
 			};
 
 			if (isString(icons.icon) || isString(icons.name)) {
@@ -93,33 +95,39 @@ const PicklistItem = React.createClass({
 		let html;
 		const ariaSelected = this.props.selected ? 'true' : null;
 
-		switch (this.props.item.getType()) {
+		switch (this.props.type) {
 			case 'header': {
-				html = <li className={this.cssClasses.ITEMHEADER} id={this.props.id}><span className={this.cssClasses.ITEMHEADERTEXT}>{this.props.item.getText()}</span></li>;
+				html = (
+					<li
+						className="slds-dropdown__header"
+						id={this.props.id}
+					>
+						<span className="slds-text-heading--label">{this.props.contents}</span>
+					</li>
+				);
 				break;
 			}
 			case 'divider': {
-				html = <li className={this.cssClasses.ITEMDIVIDER} id={this.props.id}></li>;
+				html = <li className="slds-has-divider" id={this.props.id}></li>;
 				break;
 			}
+			case 'link':
+			case 'item':
 			default: {
-				const disabled = this.props.item.getDisabled();
-				const href = this.props.item.getHref() || '#';
-
 				html = (
 					<li
-						aria-selected = {ariaSelected}
-						className     = {classNames('slds-dropdown__item', { 'slds-is-selected': this.props.selected })}
-						disabled      = {disabled}
-						id            = {this.props.id}
+						aria-selected={ariaSelected}
+						className={classNames('slds-dropdown__item', { 'slds-is-selected': this.props.selected })}
+						disabled={this.props.disabled}
+						id={this.props.id}
 					>
-					<a href={href} onClick={this.handleClicked} aria-disabled={disabled}>
-						<p className="slds-truncate">
-							{this._renderIcon('left')}
-							{this.props.item.getText()}
-						</p>
-						{this._renderIcon('right')}
-					</a>
+						<a href={this.props.href} onClick={this.handleClicked} aria-disabled={this.props.disabled}>
+							<p className="slds-truncate">
+								{this._renderIcon('left')}
+								{this.props.contents}
+							</p>
+							{this._renderIcon('right')}
+						</a>
 					</li>
 				);
 			}
@@ -129,11 +137,11 @@ const PicklistItem = React.createClass({
 	},
 
 	handleClicked (e) {
-		if (!this.props.item.getHref()) {
+		if (!this.props.type === 'link' || this.props.href === '#') {
 			e.preventDefault();
+			this.props.onClick(this.props.item);
 		}
-		this.props.onSelected(this.props.item);
 	}
 });
 
-export default PicklistItem;
+export default MenuItem;

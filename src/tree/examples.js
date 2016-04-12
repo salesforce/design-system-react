@@ -11,70 +11,70 @@ const TreeExample = React.createClass({
 			open: [],
 			collection: [
 				{
-					text: 'Grains', _itemType: 'item', id: 1
+					text: 'Grains', type: 'item', id: 1
 				}, {
-					text: 'Fruits', _itemType: 'folder', _isExpandable: true, id: 2, children: [{
-						text: 'Ground Fruits', _itemType: 'folder', id: 4, children: [{
-							text: 'Watermelon', _itemType: 'item', id: 12
+					text: 'Fruits', type: 'folder', _isExpandable: true, id: 2, children: [{
+						text: 'Ground Fruits', type: 'folder', id: 4, children: [{
+							text: 'Watermelon', type: 'item', id: 12
 						}, {
-							text: 'Canteloupe', _itemType: 'item', _iconClass: 'glyphicon-file', id: 13
+							text: 'Canteloupe', type: 'item', _iconClass: 'glyphicon-file', id: 13
 						}, {
-							text: 'Strawberries', _itemType: 'item', id: 14
+							text: 'Strawberries', type: 'item', id: 14
 						}]
 					}, {
-						text: 'Tree Fruits', _itemType: 'folder', _isExpandable: true, id: 5, children: [{
-							text: 'Peaches', _itemType: 'item', id: 15
+						text: 'Tree Fruits', type: 'folder', _isExpandable: true, id: 5, children: [{
+							text: 'Peaches', type: 'item', id: 15
 						}, {
-							text: 'Pears', _itemType: 'item', _iconClass: 'glyphicon-file', id: 16
+							text: 'Pears', type: 'item', _iconClass: 'glyphicon-file', id: 16
 						}, {
-							text: 'Citrus', _itemType: 'folder', _isExpandable: true, id: 17, children: [{
-								text: 'Orange', _itemType: 'item', id: 20
+							text: 'Citrus', type: 'folder', _isExpandable: true, id: 17, children: [{
+								text: 'Orange', type: 'item', id: 20
 							}, {
-								text: 'Grapefruit', _itemType: 'item', id: 21
+								text: 'Grapefruit', type: 'item', id: 21
 							}, {
-								text: 'Lemon', _itemType: 'item', id: 22
+								text: 'Lemon', type: 'item', id: 22
 							}, {
-								text: 'Lime', _itemType: 'item', id: 23
+								text: 'Lime', type: 'item', id: 23
 							}]
 						}, {
-							text: 'Apples', _itemType: 'folder', _isExpandable: true, id: 18, children: [{
-								text: 'Granny Smith', _itemType: 'item', id: 24
+							text: 'Apples', type: 'folder', _isExpandable: true, id: 18, children: [{
+								text: 'Granny Smith', type: 'item', id: 24
 							}, {
-								text: 'Pinklady', _itemType: 'item', _iconClass: 'glyphicon-file', id: 25
+								text: 'Pinklady', type: 'item', _iconClass: 'glyphicon-file', id: 25
 							}, {
-								text: 'Rotten', _itemType: 'item', id: 26
+								text: 'Rotten', type: 'item', id: 26
 							}, {
-								text: 'Jonathan', _itemType: 'item', id: 27
+								text: 'Jonathan', type: 'item', id: 27
 							}]
 						}, {
-							text: 'Cherries', _itemType: 'folder', id: 19, children: [{
-								text: 'Balaton', _itemType: 'item', id: 28
+							text: 'Cherries', type: 'folder', id: 19, children: [{
+								text: 'Balaton', type: 'item', id: 28
 							}, {
-								text: 'Erdi Botermo', _itemType: 'item', id: 29
+								text: 'Erdi Botermo', type: 'item', id: 29
 							}, {
-								text: 'Montmorency', _itemType: 'item', id: 30
+								text: 'Montmorency', type: 'item', id: 30
 							}, {
-								text: 'Queen Ann', _itemType: 'item', id: 31
+								text: 'Queen Ann', type: 'item', id: 31
 							}, {
-								text: 'Ulster', _itemType: 'item', id: 32
+								text: 'Ulster', type: 'item', id: 32
 							}, {
-								text: 'Viva', _itemType: 'item', id: 33
+								text: 'Viva', type: 'item', id: 33
 							}]
 						}, {
-							text: 'Raspberries', _itemType: 'item', id: 6
+							text: 'Raspberries', type: 'item', id: 6
 						}, {
-							text: 'Empty folder', _itemType: 'folder', _isExpandable: false, id: 7
+							text: 'Empty folder', type: 'folder', _isExpandable: false, id: 7
 						}]
 					}]
 				}, {
-					text: 'Nuts', _itemType: 'folder', _iconClass: 'glyphicon-file', id: 3, children: [{
-						text: 'Almonds', _itemType: 'item', id: 8
+					text: 'Nuts', type: 'folder', _iconClass: 'glyphicon-file', id: 3, children: [{
+						text: 'Almonds', type: 'item', id: 8
 					}, {
-						text: 'Cashews', _itemType: 'item', id: 9
+						text: 'Cashews', type: 'item', id: 9
 					}, {
-						text: 'Pecans', _itemType: 'item', id: 10
+						text: 'Pecans', type: 'item', id: 10
 					}, {
-						text: 'Walnuts', _itemType: 'item', id: 11
+						text: 'Walnuts', type: 'item', id: 11
 					}]
 				}
 			]
