@@ -7,7 +7,7 @@ import MenuItems from '../menu/menu-items';
 
 const sampleData = [
 	{
-		_itemType: 'header',
+		type: 'header',
 		text: 'One thing'
 	}, {
 		id: 0,
@@ -16,9 +16,9 @@ const sampleData = [
 		iconCategory: 'utility',
 		iconName: 'apps'
 	}, {
-		_itemType: 'divider'
+		type: 'divider'
 	}, {
-		_itemType: 'header',
+		type: 'header',
 		text: 'All the things'
 	}, {
 		id: 1,

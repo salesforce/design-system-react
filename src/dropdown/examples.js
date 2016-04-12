@@ -21,7 +21,8 @@ const sampleData = [
 		id: 2,
 		text: 'Navigate to Google',
 		value: '3',
-		href: 'http://google.com'
+		href: 'http://google.com',
+		type: 'link'
 	}
 ];
 
@@ -32,6 +33,16 @@ sampleDataWithIcons[1].iconCategory = 'utility';
 sampleDataWithIcons[1].iconName = 'kanban';
 sampleDataWithIcons[2].iconCategory = 'utility';
 sampleDataWithIcons[2].iconName = 'side_list';
+
+const StaticMenuItem = React.createClass({
+	displayName: 'MenuItem',
+	menuItemType: 'static',
+	render () {
+		return (
+			<li className="slds-dropdown__item"></li>
+		);
+	}
+});
 
 const DropdownExample = React.createClass({
 	displayName: 'DropdownExample',
@@ -69,7 +80,9 @@ const DropdownExample = React.createClass({
 							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
 						</Trigger>
 						<Menu nubbinPosition="top left">
-							<MenuItems checkmark />
+							<MenuItems checkmark>
+								<StaticMenuItem />
+							</MenuItems>
 						</Menu>
 					</Dropdown>
 				</div>
