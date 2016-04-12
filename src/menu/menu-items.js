@@ -32,13 +32,22 @@ const MenuItems = React.createClass({
 		 * If true, renders checkmark icon on the selected Menu Item.
 		 */
 		checkmark: PropTypes.bool,
+		/**
+		 * Add children with a `displayName` of MenuItem and an optional `menuItemType` which matches the type of item you want them to handle.
+		 */
 		children: PropTypes.element,
 		/**
 		 * Class names added to the list of menu items.
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-		collection: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
-		getMenuItemId: PropTypes.func.isRequired,
+		/**
+		 * For internal component use, the items to render.
+		 */
+		collection: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+		/**
+		 * For internal component use, a function to generate IDs for each menu item.
+		 */
+		getMenuItemId: PropTypes.func,
 		/**
 		 * Determines whether a menu item with an icon will display that icon on the left or the right.
 		 */
@@ -47,7 +56,26 @@ const MenuItems = React.createClass({
 			'right'
 		]),
 		labelledBy: PropTypes.string,
-		onClick: PropTypes.func.isRequired,
+		/**
+		 * Deprecated. Please use a `MenuItem` child.
+		 * ```
+		 * <Dropdown>
+		 * <Menu>
+		 * <MenuItems>
+		 * <MenuItem />
+		 * </MenuItems>
+		 * </Menu>
+		 * </Dropdown>
+		 * ```
+		 */
+		menuItemRenderer: PropTypes.func,
+		/**
+		 * For internal component use, this function fires when the menu item is clicked.
+		 */
+		onClick: PropTypes.func,
+		/**
+		 * For internal component use, the selected item.
+		 */
 		selection: PropTypes.oneOfType([PropTypes.object])
 	},
 

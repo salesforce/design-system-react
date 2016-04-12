@@ -28,7 +28,10 @@ const Menu = React.createClass({
 		 * Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.
 		 */
 		align: PropTypes.oneOf(['left', 'right']),
-		children: PropTypes.element,
+		/**
+		 * Add any children you want to render in the menu. The most common one, typically added as a default by components which consume `Menu`, is `MenuItems`.
+		 */
+		children: PropTypes.node,
 		/**
 		 * Class names added to the menu.
 		 */
@@ -45,7 +48,10 @@ const Menu = React.createClass({
 			'bottom',
 			'bottom right'
 		]),
-		show: PropTypes.bool.isRequired
+		/**
+		 * Usually set internally by the enclosing component, shows or hides the menu.
+		 */
+		show: PropTypes.bool
 	},
 
 	getDefaultProps () {

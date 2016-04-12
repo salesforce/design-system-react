@@ -141,7 +141,7 @@ export const DropdownDefinition = {
 		 * </Dropdown>
 		 * ```
 		 */
-		children: PropTypes.element,
+		children: PropTypes.node,
 		collection: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
 		/**
 		 * Class names to be added to the dropdown menu, that is the element with the class `slds-dropdown`. To add additional CSS classes to the trigger wrapping tag or the trigger button, please reference the `children` prop, and pass use the `className` of respective React element.
@@ -182,11 +182,29 @@ export const DropdownDefinition = {
 		 */
 		id: PropTypes.string.isRequired,
 		/**
-		 * Function to be used to render an item in the menu. This is optional. Most use cases will not need a custom renderer.
+		 * Deprecated. Please use a `MenuItem` child.
+		 * ```
+		 * <Dropdown>
+		 * <Menu>
+		 * <MenuItems>
+		 * <MenuItem />
+		 * </MenuItems>
+		 * </Menu>
+		 * </Dropdown>
+		 * ```
 		 */
-		menuItemRenderer: PropTypes.element,
+		menuItemRenderer: PropTypes.func,
 		/**
-		 * Deprecated. Please use `menuItemRenderer` and pass in a function.
+		 * Deprecated. Please use a `MenuItem` child.
+		 * ```
+		 * <Dropdown>
+		 * <Menu>
+		 * <MenuItems>
+		 * <MenuItem />
+		 * </MenuItems>
+		 * </Menu>
+		 * </Dropdown>
+		 * ```
 		 */
 		listItemRenderer: PropTypes.func,
 		/**

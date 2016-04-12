@@ -18,7 +18,6 @@ if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (CONTROL, props) {
 		/* eslint-disable max-len */
 		// Deprecated and changed to another property
-		deprecatedProperty(CONTROL, props.listItemRenderer, 'listItemRenderer', 'menuItemRenderer');
 		deprecatedProperty(CONTROL, props.onSelect, 'onSelect', 'onChange');
 		deprecatedProperty(CONTROL, props.options, 'options', 'collection');
 		deprecatedProperty(CONTROL, props.options, 'value', 'selection');
@@ -38,6 +37,10 @@ if (process.env.NODE_ENV !== 'production') {
 		sunsetProperty(CONTROL, props.label, 'label', 'Please set the label with a child of Trigger: <Dropdown><Trigger><Button text="Noice!" /></Trigger></Dropdown>');
 		sunsetProperty(CONTROL, props.onClick, 'onClick', 'Please set onClick with a child of Trigger: <Dropdown><Trigger><Button onClick={myCoolCallback} /></Trigger></Dropdown>');
 		sunsetProperty(CONTROL, props.tooltip, 'tooltip', 'Please set the label with a child of Trigger: <Dropdown><Trigger><Button tooltip=NoiceElement /></Trigger></Dropdown>');
+
+		// API has been moved to the Menu child
+		sunsetProperty(CONTROL, props.listItemRenderer, 'listItemRenderer', 'Please use a child of Menu instead: <Dropdown><Menu><MenuItems><MenuItem /></MenuItems></Menu></Dropdown>');
+		sunsetProperty(CONTROL, props.menuItemRenderer, 'menuItemRenderer', 'Please use a child of Menu instead: <Dropdown><Menu><MenuItems><MenuItem /></MenuItems></Menu></Dropdown>');
 		/* eslint-enable max-len */
 	};
 }
