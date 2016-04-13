@@ -23,10 +23,11 @@ const distPath = path.resolve.bind(path, __PATHS__.npm);
 const npmDir = distPath();
 const gitDir = '.git';
 
-const exec = ([command, dir = '.'], callback) => {
+const exec = ([command, dir = '.', silent], callback) => {
 	require('child_process').exec(command, {
 		cwd: path.resolve(__PATHS__.root, dir),
-		stdio: [0, 1, 2]
+		stdio: [0, 1, 2],
+		silent
 	}, callback);
 };
 
@@ -38,6 +39,7 @@ const createTempDir = (done, type) => {
 	const tmpDir = `.tmp-npm-${type}`;
 
 	async.eachSeries([
+		[`rm -r -f ${tmpDir}`],
 		[`cp -r ${npmDir} ${tmpDir}`],
 		[`rm -r ${tmpDir}/es`],
 		[`rm -r ${tmpDir}/umd`],
@@ -68,35 +70,40 @@ const cleanPackageJson = (done, type) => {
 
 const publish = (done, type) => {
 	const tmpDir = `.tmp-npm-${type}`;
-	
+
+	let actions = [
+		['git init', `${tmpDir}`],
+		[`cp ${gitDir}/config ${tmpDir}/.git`],
+		['git add -A', `${tmpDir}`]
+	];
+
 	if (argv.tag) {
-		async.eachSeries([
-			['git init', `${tmpDir}`],
-			[`cp ${gitDir}/config ${tmpDir}/.git`],
-			['git add -A', `${tmpDir}`],
+		actions = [
+			...actions,
 			[`git commit -m "Release commit for ${argv.tag}"`, `${tmpDir}`],
-			[`git tag ${argv.tag}-${type}`, `${tmpDir}`],
-			[`git push origin -f --tags ${argv.tag}-${type}`, `${tmpDir}`],
-			[`rm -r ${tmpDir}`]
-		], exec, (err) => {
-			// Quick and dirty hack because the tag will often exist for this scenario
-			if (err) console.log(err);
-			done();
-		});
+			[`git tag ${argv.tag}-${type}`, `${tmpDir}`, true],
+			[`git push origin -f --tags ${argv.tag}-${type}`, `${tmpDir}`]
+		];
 	} else {
-		async.eachSeries([
-			['git init', `${tmpDir}`],
-			[`cp ${gitDir}/config ${tmpDir}/.git`],
-			['git add -A', `${tmpDir}`],
+		actions = [
+			...actions,
 			[`git commit -m "Release ${version}-${type}"`, `${tmpDir}`],
 			[`git tag v${version}-${type}`, `${tmpDir}`],
-			[`git push origin --tags v${version}-${type}`, `${tmpDir}`],
-			[`rm -r ${tmpDir}`]
-		], exec, (err) => {
-			if (err) throw err;
-			done();
-		});
+			[`git push origin --tags v${version}-${type}`, `${tmpDir}`]
+		];
 	}
+
+	actions = [
+		...actions,
+		[`rm -r ${tmpDir}`]
+	];
+
+	async.eachSeries(actions, exec, (err) => {
+		if (err) throw err;
+		done();
+	});
+
+	console.log(`Successfully published ${type} to git`);
 };
 
 async.series([
