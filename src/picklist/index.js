@@ -145,17 +145,13 @@ export const PicklistDefinition = {
 
 	// ### Component Will Mount
 	componentWillMount () {
-		Positionable.setElement(this, Positionable.attachPositionedElementToBody({ classes: 'slds-picklist' }));
-
 		Eventable.on(this, 'select', this._onSelect);
 		Eventable.on(this, 'deselect', this._onDeselect);
 	},
 
 	// ### Component Will Unmount
 	componentWillUnmount () {
-		if (this.props.modalMenu) {
-			Positionable.removeEventListeners(this);
-		}
+		Positionable.removeEventListeners(this);
 	},
 
 	// ### Component Did Update
@@ -168,7 +164,7 @@ export const PicklistDefinition = {
 
 		if (this.props.modalMenu && isOpen) {
 			Positionable.addEventListeners(this);
-		} else if (this.props.modalMenu && !isOpen) {
+		} else if (!isOpen) {
 			Positionable.removeEventListeners(this);
 		}
 	},
@@ -276,10 +272,17 @@ export const PicklistDefinition = {
 	_renderModalMenu () {
 		// Modal dropdown menus' parent is `body` and are absolutely positioned in order to visually attach the dropdown to the input.
 		const menu = this._renderMenu();
+
+		if (!Positionable.getWrappedElement(this)) {
+			Positionable.setElement(this, Positionable.attachPositionedElementToBody({ classes: this._positionableClasses }));
+		}
+
 		ReactDOM.render(menu, Positionable.getElement(this));
 		Positionable.setContainer(this, document.querySelector('body'));
 		Positionable.position(this);
 	},
+
+	_positionableClasses: 'slds-dropdown',
 
 	// ## Handle Menu Item Selected
 	_handleMenuItemClick (selection) {
@@ -317,7 +320,7 @@ export const PicklistDefinition = {
 	// ## On Opened
 	_onOpened () {
 		this.elements.control.addClass('slds-is-open');
-		Positionable.show(this);
+		if (this.props.modalMenu) Positionable.show(this);
 	},
 
 	// ## On Closed

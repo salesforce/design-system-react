@@ -43,10 +43,6 @@ import Eventable from 'slds-for-js-core/traits/eventable';
 // * [../../traits/openable](../../traits/openable.html)
 import Openable from 'slds-for-js-core/traits/openable';
 
-// #### Positionable
-// [../../traits/positionable](../../traits/positionable.html)
-import Positionable from 'slds-for-js-core/traits/positionable';
-
 // ### React
 // React is an external dependency of the project.
 import React from 'react';
@@ -277,43 +273,9 @@ export const DropdownDefinition = {
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(CONTROL, this.props);
-		Positionable.setElement(this, Positionable.attachPositionedElementToBody({ classes: 'slds-dropdown' }));
+
 		Eventable.on(this, 'select', this._onSelect);
 		Eventable.on(this, 'deselect', this._onDeselect);
-	},
-
-	// ### Get Icon
-	_getIcon () {
-		const icons = {
-			triggerIconCategory: 'utility',
-			triggerIconName: 'down'
-		};
-
-		let icon;
-		if (this.props.icon) {
-			icon = this.props.icon;
-		}
-
-		if (this.props.swapIcon) {
-			if (this.props.selection && this.props.selection.icon) {
-				icon = this.props.selection.icon;
-			} else if (this.props.selection && this.props.selection.iconCategory && this.props.selection.iconName) {
-				icons.triggerIconCategory = this.props.selection.iconCategory;
-				icons.triggerIconName = this.props.selection.iconName;
-			}
-		}
-
-		if (icon) {
-			const [
-				category,
-				name
-			] = icon.split('.');
-
-			icons.triggerIconCategory = category;
-			icons.triggerIconName = name;
-		}
-
-		return icons;
 	},
 
 	// ### Render
@@ -366,6 +328,42 @@ export const DropdownDefinition = {
 				triggerClicked = {this.props.onClick}
 			/>
 		);
+	},
+
+	_positionableClasses: 'slds-dropdown',
+
+	// ### Get Icon
+	_getIcon () {
+		const icons = {
+			triggerIconCategory: 'utility',
+			triggerIconName: 'down'
+		};
+
+		let icon;
+		if (this.props.icon) {
+			icon = this.props.icon;
+		}
+
+		if (this.props.swapIcon) {
+			if (this.props.selection && this.props.selection.icon) {
+				icon = this.props.selection.icon;
+			} else if (this.props.selection && this.props.selection.iconCategory && this.props.selection.iconName) {
+				icons.triggerIconCategory = this.props.selection.iconCategory;
+				icons.triggerIconName = this.props.selection.iconName;
+			}
+		}
+
+		if (icon) {
+			const [
+				category,
+				name
+			] = icon.split('.');
+
+			icons.triggerIconCategory = category;
+			icons.triggerIconName = name;
+		}
+
+		return icons;
 	}
 };
 
