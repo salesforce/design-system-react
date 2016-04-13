@@ -2,7 +2,7 @@ import React from 'react';
 import cloneDeep from 'lodash/lang/cloneDeep';
 import Dropdown from './index';
 import Menu from '../menu';
-import MenuItems from '../menu/menu-items';
+import MenuItems from '../menu/items';
 import Button from '../button';
 import Trigger from './button-trigger';
 

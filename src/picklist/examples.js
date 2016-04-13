@@ -1,7 +1,7 @@
 import React from 'react';
 import Picklist from './index';
 import Menu from '../menu';
-import MenuItems from '../menu/menu-items';
+import MenuItems from '../menu/items';
 
 // SAMPLE CONTROL CODE -->
 

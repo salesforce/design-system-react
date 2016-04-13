@@ -391,6 +391,4 @@ let Dropdown = merge(
 // consumption by our apps.
 Dropdown = React.createClass(Dropdown);
 
-export { DefaultTrigger as Trigger };
-
 export default Dropdown;

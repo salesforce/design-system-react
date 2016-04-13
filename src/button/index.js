@@ -15,7 +15,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Buttons are used within many other components in this library. There are many variations, as well as stateful buttons.
 
-// Buttons are made of one or more [`ButtonViews`](./button-view.html).
+// Buttons are made of one or more [`ButtonView`s](./view.html).
 
 // Stateful buttons have three views, but most buttons only have one.
 
@@ -63,8 +63,8 @@ import isIcon from '../mixins/custom-prop-types/icon.js';
 // ### Children
 
 // #### Button View
-// [./button-view](./button-view.html)
-import ButtonView from './button-view';
+// [./view](./view.html)
+import ButtonView from './view';
 
 // ## Button
 
@@ -190,7 +190,7 @@ export const ButtonDefinition = {
 		// This button is a stateful button if it has any children or if we have specifically flagged it as selectable.
 		const isStateful = React.Children.count(this.props.children) || selectable;
 
-		// If there are existing children (typically of type [`ButtonView`](./button-view.html).), we need to clone them and pass them all the same `iconPosition` that is used by the button.
+		// If there are existing children (typically of type [`ButtonView`](./view.html).), we need to clone them and pass them all the same `iconPosition` that is used by the button.
 		const views = React.Children.map(this.props.children, (child, index) => React.cloneElement(child, {
 			iconPosition,
 			key: index
@@ -198,7 +198,7 @@ export const ButtonDefinition = {
 
 		// ### Default View
 
-		// > At least one [`ButtonView`](./button-view.html). is always needed, regardless of whether there children of this button or not.
+		// > At least one [`ButtonView`](./view.html). is always needed, regardless of whether there children of this button or not.
 
 		// If there are no children, the Button does not need a view type.
 

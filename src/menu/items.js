@@ -19,7 +19,7 @@ import classNames from 'classnames';
 import isFunction from 'lodash/lang/isFunction';
 
 // Children
-import DefaultMenuItem from './menu-item';
+import DefaultMenuItem from './item';
 
 export const CONTROL = 'MenuItems';
 const { PropTypes } = React;

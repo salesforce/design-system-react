@@ -30,8 +30,8 @@ export Button from './button';
 // _______________________________________________________________________________________________________
 
 // ## Button Views
-// * [Documentation](./button-view/button-view.html)
-export ButtonView from './button/button-view';
+// * [Documentation](./button/view.html)
+export ButtonView from './button/view';
 // _______________________________________________________________________________________________________
 
 // ## Button Groups
@@ -67,7 +67,7 @@ export Datepicker from './datepicker';
 // * [Live Example](/react/dropdown)
 // * [<img src="/assets/demo-site/images/component-examples/dropdown.png" style="max-height: 200px;" alt="Dropdown Screenshot">](/react/dropdown)
 export Dropdown from './dropdown';
-export { Trigger as DropdownTrigger } from './dropdown';
+export DropdownButtonTrigger from './dropdown/button-trigger';
 // _______________________________________________________________________________________________________
 
 // ## Icons
@@ -89,6 +89,13 @@ export Input from './input';
 // * [Live Example](/react/lookup)
 // * [<img src="/assets/demo-site/images/component-examples/lookup.png" style="max-height: 200px;" alt="Lookup Screenshot">](/react/lookup)
 export Lookup from './lookup';
+// _______________________________________________________________________________________________________
+
+// ## Menu
+// * Supports menu-based components, including Dropdown and Picklist
+export Menu from './menu';
+export MenuItems from './menu/items';
+export MenuItem from './menu/item';
 // _______________________________________________________________________________________________________
 
 // ## Modals

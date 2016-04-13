@@ -86,7 +86,7 @@ import DefaultMenu from '../menu';
 
 // #### MenuItems
 // [../menu/menu-items](../menu/menu-items.html)
-import DefaultMenuItems from '../menu/menu-items';
+import DefaultMenuItems from '../menu/items';
 
 // #### Button
 // [../button](../button.html)

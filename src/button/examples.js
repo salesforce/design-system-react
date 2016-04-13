@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from './index';
-import ButtonView from './button-view';
+import ButtonView from './view';
 
 // SAMPLE CONTROL CODE -->
 
