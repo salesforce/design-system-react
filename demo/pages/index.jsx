@@ -56,6 +56,7 @@ module.exports = React.createClass( {
             */}
             <p className="slds-text-heading--small slds-p-horizontal--large slds-p-vertical--small">Components</p>
             <ul className="slds-p-bottom--small">
+              <li><Link to="breadcrumb" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">BreadCrumb</Link></li>
               <li><Link to="button" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Button</Link></li>
               <li><Link to="button-group" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">ButtonGroup</Link></li>
               <li><Link to="button-stateful" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">ButtonStateful</Link></li>

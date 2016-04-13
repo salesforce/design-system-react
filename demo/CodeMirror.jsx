@@ -9,6 +9,7 @@ const ReactDOM = require('react-dom');
 const classNames = require('classnames');
 const trim = require('lodash.trim');
 
+const SLDSBreadCrumb = require('../components/SLDSBreadCrumb');
 const SLDSButton =  require('../components/SLDSButton');
 const SLDSButtonStateful =  require('../components/SLDSButtonStateful');
 const SLDSButtonGroup =  require('../components/SLDSButtonGroup');

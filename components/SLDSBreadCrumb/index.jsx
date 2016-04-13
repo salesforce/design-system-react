@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import randomId from '../randomId';
 
 const displayName = 'SLDSBreadCrumb';
 const propTypes = {
@@ -20,12 +19,11 @@ class SLDSBreadCrumb extends Component {
       assistiveText,
       trail,
     } = this.props;
-    const id = `SLDSBreadCrumb.${randomId()}`;
     let trailElement;
 
     const renderTrail = () => {
       const breadCrumbTrail = trail.map((crumb, i) => {
-        const crumbId = `${id}.${i}`;
+        const crumbId = `SLDSBreadCrumb.${i}`;
 
         return (
           <li
@@ -36,7 +34,7 @@ class SLDSBreadCrumb extends Component {
       });
 
       return (
-        <ol className="slds-breadcrumb slds-list--horizontal" aria-labelledby={id}>
+        <ol className="slds-breadcrumb slds-list--horizontal" aria-labelledby="bread-crumb-label">
           {breadCrumbTrail}
         </ol>
       );
@@ -46,7 +44,7 @@ class SLDSBreadCrumb extends Component {
 
     return (
       <nav role="navigation">
-        <p id={id} className="slds-assistive-text">{assistiveText}</p>
+        <p id="bread-crumb-label" className="slds-assistive-text">{assistiveText}</p>
         {trailElement}
       </nav>
     );
@@ -57,4 +55,4 @@ SLDSBreadCrumb.displayName = displayName;
 SLDSBreadCrumb.propTypes = propTypes;
 SLDSBreadCrumb.defaultProps = defaultProps;
 
-export default SLDSBreadCrumb;
+module.exports = SLDSBreadCrumb;
