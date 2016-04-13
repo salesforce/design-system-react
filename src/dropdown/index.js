@@ -94,9 +94,9 @@ export const DropdownDefinition = {
 		 * Deprecated. Please set the `Button` property, `assistiveText`, as a child of `Trigger`:
 		 * ```
 		 * <Dropdown>
-		 * <Trigger>
-		 * <Button assistiveText="Change settings" />
-		 * </Trigger>
+		 *   <Trigger>
+		 *     <Button assistiveText="Change settings" />
+		 *   </Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -105,9 +105,9 @@ export const DropdownDefinition = {
 		 * End of Life. Please set the `Button` property, `className`, as a child of `Trigger`:
 		 * ```
 		 * <Dropdown>
-		 * <Trigger>
-		 * <Button className="slds-is-cool" />
-		 * </Trigger>
+		 *   <Trigger>
+		 *     <Button className="slds-is-cool" />
+		 *   </Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -116,9 +116,9 @@ export const DropdownDefinition = {
 		 * End of Life. Please set the `Button` property, `variant`, as a child of `Trigger`:
 		 * ```
 		 * <Dropdown>
-		 * <Trigger>
-		 * <Button variant="brand" />
-		 * </Trigger>
+		 *   <Trigger>
+		 *     <Button variant="brand" />
+		 *   </Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -131,9 +131,9 @@ export const DropdownDefinition = {
 		 * If no `children` are present, a default button will be rendered with an arrow. Import the module `slds-for-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button:
 		 * ```
 		 * <Dropdown>
-		 * <Trigger>
-		 * <Button iconCategory="utility" iconName="settings" />
-		 * </Trigger>
+		 *   <Trigger>
+		 *     <Button iconCategory="utility" iconName="settings" />
+		 *   </Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -155,9 +155,9 @@ export const DropdownDefinition = {
 		 * End of Life. Please set the `icon` with a child of `Trigger`:
 		 * ```
 		 * <Dropdown>
-		 * <Trigger>
-		 * <Button iconCategory="utility" iconName="settings" />
-		 * </Trigger>
+		 *   <Trigger>
+		 *     <Button iconCategory="utility" iconName="settings" />
+		 *   </Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -181,11 +181,11 @@ export const DropdownDefinition = {
 		 * Deprecated. Please use a `MenuItem` child.
 		 * ```
 		 * <Dropdown>
-		 * <Menu>
-		 * <MenuItems>
-		 * <MenuItem />
-		 * </MenuItems>
-		 * </Menu>
+		 *   <Menu>
+		 *     <MenuItems>
+		 *       <MenuItem />
+		 *     </MenuItems>
+		 *   </Menu>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -194,11 +194,11 @@ export const DropdownDefinition = {
 		 * Deprecated. Please use a `MenuItem` child.
 		 * ```
 		 * <Dropdown>
-		 * <Menu>
-		 * <MenuItems>
-		 * <MenuItem />
-		 * </MenuItems>
-		 * </Menu>
+		 *   <Menu>
+		 *     <MenuItems>
+		 *       <MenuItem />
+		 *     </MenuItems>
+		 *   </Menu>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -207,9 +207,9 @@ export const DropdownDefinition = {
 		 * Passed on to the default trigger, if using a custom trigger it's likely better to set there:
 		 * ```
 		 * <Dropdown>
-		 * <Trigger>
-		 * <Button text="Noice!" />
-		 * </Trigger>
+		 *   <Trigger>
+		 *     <Button text="Noice!" />
+		 *   </Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -261,9 +261,9 @@ export const DropdownDefinition = {
 		 * End of Life. Please set the tooltip with a child of Trigger:
 		 * ```
 		 * <Dropdown>
-		 * <Trigger>
-		 * <Button tooltip=NoiceElement />
-		 * </Trigger>
+		 *   <Trigger>
+		 *     <Button tooltip=NoiceElement />
+		 *   </Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
