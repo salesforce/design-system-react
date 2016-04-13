@@ -99,6 +99,7 @@ export const TriggerDefinition = {
 			onClick,
 
 			/* Explicitly used and/or renamed */
+			label,
 			onKeyDown,
 			onKeyPress,
 			triggerIcon,
@@ -110,7 +111,6 @@ export const TriggerDefinition = {
 			buttonClassName,
 			buttonVariant,
 			triggerClicked,
-			label,
 
 			// ### Additional properties
 			// Using [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx) to pass on any properties which are not explicitly defined.
@@ -169,8 +169,8 @@ export const TriggerDefinition = {
 			ChildButton = this._renderDefaultButton();
 		} else {
 			// Button Trigger can take a Button child
-			React.Children.map(children, (child) => {
-				if (child.type.displayName === Button.displayName) {
+			React.Children.forEach(children, (child) => {
+				if (child && child.type.displayName === Button.displayName) {
 					ChildButton = React.cloneElement(child, {
 						'aria-haspopup': 'true',
 						icon: child.props.icon || triggerIcon,

@@ -22,8 +22,9 @@ userexperience1!
 
 ### Make pre-release (dev) commits available for consuming with NPM
 * Change `version` in `package.json` to the next appropriate version with a unique suffix ending in `-dev` (eg `0.0.16-context-bar-dev` _This will be your tag_).
-* Unless you are publishing an offical release tag, please make sure that the `origin` git remote is pointed at your own forked repository.
+* Unless you are publishing an official release tag, please make sure that the `origin` git remote is pointed at your own forked repository.
 * Run `npm run publish-to-git`.
+    * If publish-to-git fails, make sure hidden folders, such as `.npm`, are not present.
 * Update the `package.json` dependency in your _consuming_ project to point to the tag you just created --prepend it with the letter `v`, and append it with `-es`:
 
 For example:

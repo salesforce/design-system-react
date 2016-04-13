@@ -94,15 +94,17 @@ const MenuItems = React.createClass({
 			}
 		};
 
-		React.Children.map(this.props.children, (child) => {
-			const MenuItem = child.type;
+		React.Children.forEach(this.props.children, (child) => {
+			if (child) {
+				const MenuItem = child.type;
 
-			if (MenuItem.displayName === 'MenuItem') {
-				const menuItemType = MenuItem.prototype.menuItemType || 'item';
-				menuItemTypes[menuItemType] = {
-					MenuItem,
-					props: child.props
-				};
+				if (MenuItem.displayName === 'MenuItem') {
+					const menuItemType = MenuItem.prototype.menuItemType || 'item';
+					menuItemTypes[menuItemType] = {
+						MenuItem,
+						props: child.props
+					};
+				}
 			}
 		});
 

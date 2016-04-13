@@ -161,13 +161,13 @@ const DropdownDevExample = React.createClass({
 				</div>
 
 				<div className="slds-col | slds-m-bottom--small">
-					<Dropdown
-						collection={sampleData}
-						id="bottom-left-example"
-						onChange={this.handleChangeDefault}
-						selection={this.state.selectionDefault}
-						nubbinPosition="bottom left"
-					>
+				<Dropdown
+					collection={sampleData}
+					id="bottom-left-example"
+					onChange={this.handleChangeDefault}
+					selection={this.state.selectionDefault}
+					nubbinPosition="bottom left"
+				>
 						<Trigger>
 							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
 						</Trigger>
@@ -175,17 +175,17 @@ const DropdownDevExample = React.createClass({
 				</div>
 
 				<div className="slds-col | slds-m-bottom--small">
-					<Dropdown
-						collection={sampleData}
-						id="bottom-example"
-						onChange={this.handleChangeDefault}
-						selection={this.state.selectionDefault}
-						nubbinPosition="bottom"
-					>
+				<Dropdown
+					collection={sampleData}
+					id="bottom-example"
+					onChange={this.handleChangeDefault}
+					selection={this.state.selectionDefault}
+					nubbinPosition="bottom"
+				>
 						<Trigger>
 							<Button iconCategory="utility" iconName="settings" iconStyle="icon-container" assistiveText="Settings" />
 						</Trigger>
-					</Dropdown>
+				</Dropdown>
 				</div>
 
 				<div className="slds-col | slds-m-bottom--small">
@@ -226,6 +226,6 @@ const DropdownDevExample = React.createClass({
 		this.setState({ selectionCustomTrigger: selection });
 	}
 });
-
 export { DropdownDevExample };
+
 export default DropdownExample;

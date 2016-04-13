@@ -208,7 +208,7 @@ export const DropdownDefinition = {
 		 */
 		listItemRenderer: PropTypes.func,
 		/**
-		 * End of Life. Please set the `text` with a child of `Trigger`:
+		 * Passed on to the default trigger, if using a custom trigger it's likely better to set there:
 		 * ```
 		 * <Dropdown>
 		 * <Trigger>
@@ -323,8 +323,8 @@ export const DropdownDefinition = {
 		let CustomTriggerChildProps = {};
 
 		// Dropdown can take a Trigger component as a child and then return it as the parent DOM element.
-		React.Children.map(this.props.children, (child) => {
-			if (child.type.displayName === 'Trigger') {
+		React.Children.forEach(this.props.children, (child) => {
+			if (child && child.type.displayName === 'Trigger') {
 				// `CustomTriggerChildProps` is not used by the default button Trigger, but by other triggers
 				CustomTriggerChildProps = child.props;
 				CurrentTrigger = child.type;

@@ -215,8 +215,8 @@ export const PicklistDefinition = {
 		let menuProps = {};
 		let menuChildren = null;
 
-		React.Children.map(this.props.children, (child) => {
-			if (child.type.displayName === 'Menu') {
+		React.Children.forEach(this.props.children, (child) => {
+			if (child && child.type.displayName === 'Menu') {
 				Menu = child.type;
 				menuProps = child.props;
 
@@ -247,7 +247,7 @@ export const PicklistDefinition = {
 				show={isOpen}
 			>
 				{React.Children.map(menuChildren, (child) => {
-					if (child.type.displayName === 'MenuItems') {
+					if (child && child.type.displayName === 'MenuItems') {
 						const MenuItems = child.type;
 						const menuItemsProps = child.props;
 

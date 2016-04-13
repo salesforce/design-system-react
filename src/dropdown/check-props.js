@@ -34,7 +34,6 @@ if (process.env.NODE_ENV !== 'production') {
 		sunsetProperty(CONTROL, props.buttonClass, 'buttonClassName', 'Please set the className with a child of Trigger: <Dropdown><Trigger><Button className="slds-is-cool" /></Trigger></Dropdown>');
 		sunsetProperty(CONTROL, props.buttonVariant, 'buttonVariant', 'Please set `variant` with a child of Trigger: <Dropdown><Trigger><Button variant="brand" /></Trigger></Dropdown>');
 		sunsetProperty(CONTROL, props.icon, 'icon', 'Please set icon with a child of Trigger: <Dropdown><Trigger><Button iconCategory="utility" iconName="settings" /></Trigger></Dropdown>');
-		sunsetProperty(CONTROL, props.label, 'label', 'Please set the label with a child of Trigger: <Dropdown><Trigger><Button text="Noice!" /></Trigger></Dropdown>');
 		sunsetProperty(CONTROL, props.onClick, 'onClick', 'Please set onClick with a child of Trigger: <Dropdown><Trigger><Button onClick={myCoolCallback} /></Trigger></Dropdown>');
 		sunsetProperty(CONTROL, props.tooltip, 'tooltip', 'Please set the label with a child of Trigger: <Dropdown><Trigger><Button tooltip=NoiceElement /></Trigger></Dropdown>');
 

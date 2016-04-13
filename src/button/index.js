@@ -180,7 +180,7 @@ export const ButtonDefinition = {
 			theme,
 
 			// ### Additional properties
-			// We allow allowing additional cleanly with [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx).
+			// Sometimes it's fragile and tedious to pass every property along. In that case you can use [destructuring assignment](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx) with rest properties to extract a set of unknown properties.
 			...props
 		} = this.props;
 		/* eslint-enable no-unused-vars */
