@@ -17,12 +17,17 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // > See a [live example](/react/dropdown) of the Dropdown component in action
 
+// ## API
+
+/* @todo Add a full API description of the control here. */
+
 // ## Dependencies
 
-// Special [merge](../../lib/merge.html) function that handles lifecycle events.
+// Bring in the [shared library functions](../../lib/lib.html).
 import merge from 'slds-for-js-core/lib/merge';
 
-// Use the [shared core](../../core/picklist.html), which contains logic that is shared across SLDS for JavaScript.
+// Use the [shared core](../../core/picklist.html), which contains logic that
+// is shared across SLDS for JavaScript.
 import PicklistCore from 'slds-for-js-core/components/picklist';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
@@ -44,7 +49,7 @@ import React from 'react';
 
 // #### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
-// SLDS for React uses `classnames`, "a simple javascript utility for conditionally
+// Façades uses `classnames`, "a simple javascript utility for conditionally
 // joining classNames together." Because of the small size of the library, the
 // default build includes the entire library rather than requiring it as an
 // external dependency.
@@ -52,37 +57,31 @@ import classNames from 'classnames';
 
 // ### Mixins
 
-// These are mixins that appear in all of SLDS for JavaScript,
+// These are mixins that appear in all of SLDS for Javascript,
 // bringing consistency to instantiation, events, and state.
 
+// #### Is Icon
 // The [isIcon mixin](../mixins/custom-prop-types/icon.html) for React to
-// checks whether a prop provides an icon format. This type of prop is Deprecated
-// now but has not yet been removed from the library.
+// checks whether a prop provides an icon format
 import isIcon from '../mixins/custom-prop-types/icon.js';
 
-// This is the the default [Dropdown Trigger](./button-trigger.html), which
-// expects one button as a child.
+// [Trigger](./button-trigger.html)
+// This is the the default Dropdown Trigger. It expects one button as a child.
 import DefaultTrigger from './button-trigger';
 
-// Dropdown shares code with [Picklist](../picklist.html), so the definition of
-// that component needs to be brought in as well.
+// [PicklistObject](../picklist.html)
 import { PicklistDefinition } from '../picklist';
 
-// Removes the need for `React.PropTypes`.
+// Remove the need for `React.PropTypes`
 const { PropTypes } = React;
 
-// The component name will be used as the `DisplayName` and exported along with
-// the component itself.
 export const CONTROL = 'Dropdown';
 
-/**
- * A Dropdown is a specific implementation of the Lightning Design System Menu component. It offers a list of actions or functions that a user can access. You can find documentation on the design pattern on the <a href=\"https://www.lightningdesignsystem.com/components/menus/#dropdown\">Lightning Design System website</a>.
- *
- * Implementing a basic Dropdown can be as simple as providing an id and a collection of items to this component, as illustrated in the examples below. If you need deeper customization, you can provide a `<Trigger>` and/or `<Menu>` component as a child to override and customize nearly every aspect of the component's appearance and to implement additional features.
- */
+// ## DropdownObject
 export const DropdownDefinition = {
 	// ### Display Name
-	// Always use the canonical component name as the React display name.
+	// Always use the canonical component name (set in the core) as the React
+	// display name.
 	displayName: CONTROL,
 
 	// ### Prop Types
@@ -95,9 +94,9 @@ export const DropdownDefinition = {
 		 * Deprecated. Please set the `Button` property, `assistiveText`, as a child of `Trigger`:
 		 * ```
 		 * <Dropdown>
-		 *   <Trigger>
-		 *     <Button assistiveText="Change settings" />
-		 *   </Trigger>
+		 * 	<Trigger>
+		 * 		<Button assistiveText="Change settings" />
+		 * 	</Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -106,9 +105,9 @@ export const DropdownDefinition = {
 		 * End of Life. Please set the `Button` property, `className`, as a child of `Trigger`:
 		 * ```
 		 * <Dropdown>
-		 *   <Trigger>
-		 *     <Button className="slds-is-cool" />
-		 *   </Trigger>
+		 * 	<Trigger>
+		 * 		<Button className="slds-is-cool" />
+		 * 	</Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -117,9 +116,9 @@ export const DropdownDefinition = {
 		 * End of Life. Please set the `Button` property, `variant`, as a child of `Trigger`:
 		 * ```
 		 * <Dropdown>
-		 *   <Trigger>
-		 *     <Button variant="brand" />
-		 *   </Trigger>
+		 * 	<Trigger>
+		 * 		<Button variant="brand" />
+		 * 	</Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -132,9 +131,9 @@ export const DropdownDefinition = {
 		 * If no `children` are present, a default button will be rendered with an arrow. Import the module `slds-for-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button:
 		 * ```
 		 * <Dropdown>
-		 *   <Trigger>
-		 *     <Button iconCategory="utility" iconName="settings" />
-		 *   </Trigger>
+		 * 	<Trigger>
+		 * 		<Button iconCategory="utility" iconName="settings" />
+		 * 	</Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -156,9 +155,9 @@ export const DropdownDefinition = {
 		 * End of Life. Please set the `icon` with a child of `Trigger`:
 		 * ```
 		 * <Dropdown>
-		 *   <Trigger>
-		 *     <Button iconCategory="utility" iconName="settings" />
-		 *   </Trigger>
+		 * 	<Trigger>
+		 * 		<Button iconCategory="utility" iconName="settings" />
+		 * 	</Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -182,11 +181,11 @@ export const DropdownDefinition = {
 		 * Deprecated. Please use a `MenuItem` child.
 		 * ```
 		 * <Dropdown>
-		 *   <Menu>
-		 *     <MenuItems>
-		 *       <MenuItem />
-		 *     </MenuItems>
-		 *   </Menu>
+		 * 	<Menu>
+		 * 		<MenuItems>
+		 * 			<MenuItem />
+		 * 		</MenuItems>
+		 * 	</Menu>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -195,11 +194,11 @@ export const DropdownDefinition = {
 		 * Deprecated. Please use a `MenuItem` child.
 		 * ```
 		 * <Dropdown>
-		 *   <Menu>
-		 *     <MenuItems>
-		 *       <MenuItem />
-		 *     </MenuItems>
-		 *   </Menu>
+		 * 	<Menu>
+		 * 		<MenuItems>
+		 * 			<MenuItem />
+		 * 		</MenuItems>
+		 * 	</Menu>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -208,9 +207,9 @@ export const DropdownDefinition = {
 		 * Passed on to the default trigger, if using a custom trigger it's likely better to set there:
 		 * ```
 		 * <Dropdown>
-		 *   <Trigger>
-		 *     <Button text="Noice!" />
-		 *   </Trigger>
+		 * 	<Trigger>
+		 * 		<Button text="Noice!" />
+		 * 	</Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -262,9 +261,9 @@ export const DropdownDefinition = {
 		 * End of Life. Please set the tooltip with a child of Trigger:
 		 * ```
 		 * <Dropdown>
-		 *   <Trigger>
-		 *     <Button tooltip=NoiceElement />
-		 *   </Trigger>
+		 * 	<Trigger>
+		 * 		<Button tooltip=NoiceElement />
+		 * 	</Trigger>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -375,6 +374,11 @@ export const DropdownDefinition = {
 // The important thing to remember is that _some methods will be available
 // to the component which are not declared in this file_.
 
+// These are not magic methods, they're not black box methods, but you do need
+// to trace the dependencies of the component to see where they are coming
+// from. In particular, Dropdown extends its [core](../../core/dropdown.html),
+// which in turn extends the base component.
+
 let Dropdown = merge(
 	{},
 	PicklistCore,
@@ -382,8 +386,11 @@ let Dropdown = merge(
 	DropdownDefinition
 );
 
-// Once everything has been merged together we can create the React class and
-// export the result for consumption by our apps.
+// Once everything has been merged together and all registered helpers have
+// been run we can create the React class and export the result for
+// consumption by our apps.
 Dropdown = React.createClass(Dropdown);
+
+export { DefaultTrigger as Trigger };
 
 export default Dropdown;
