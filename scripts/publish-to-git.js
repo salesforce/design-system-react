@@ -39,10 +39,10 @@ const createTempDir = (done, type) => {
 	const tmpDir = `.tmp-npm-${type}`;
 
 	async.eachSeries([
-		[`rm -r -f ${tmpDir}`],
+		[`rm -rf ${tmpDir}`],
 		[`cp -r ${npmDir} ${tmpDir}`],
-		[`rm -r ${tmpDir}/es`],
-		[`rm -r ${tmpDir}/umd`],
+		['rm -r es', tmpDir],
+		['rm -r umd', tmpDir],
 		[`cp -r ${npmDir}/${type}/* ${tmpDir}`]
 	], exec, (err) => {
 		if (err) throw err;
@@ -72,24 +72,24 @@ const publish = (done, type) => {
 	const tmpDir = `.tmp-npm-${type}`;
 
 	let actions = [
-		['git init', `${tmpDir}`],
+		['git init', tmpDir],
 		[`cp ${gitDir}/config ${tmpDir}/.git`],
-		['git add -A', `${tmpDir}`]
+		['git add -A', tmpDir]
 	];
 
 	if (argv.tag) {
 		actions = [
 			...actions,
-			[`git commit -m "Release commit for ${argv.tag}"`, `${tmpDir}`],
-			[`git tag ${argv.tag}-${type}`, `${tmpDir}`, true],
-			[`git push origin -f --tags ${argv.tag}-${type}`, `${tmpDir}`]
+			[`git commit -m "Release commit for ${argv.tag}"`, tmpDir],
+			[`git tag ${argv.tag}-${type}`, tmpDir, true],
+			[`git push origin -f --tags ${argv.tag}-${type}`, tmpDir]
 		];
 	} else {
 		actions = [
 			...actions,
-			[`git commit -m "Release ${version}-${type}"`, `${tmpDir}`],
-			[`git tag v${version}-${type}`, `${tmpDir}`],
-			[`git push origin --tags v${version}-${type}`, `${tmpDir}`]
+			[`git commit -m "Release ${version}-${type}"`, tmpDir],
+			[`git tag v${version}-${type}`, tmpDir],
+			[`git push origin --tags v${version}-${type}`, tmpDir]
 		];
 	}
 
