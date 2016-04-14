@@ -17,17 +17,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // > See a [live example](/react/dropdown) of the Dropdown component in action
 
-// ## API
-
-/* @todo Add a full API description of the control here. */
-
 // ## Dependencies
 
-// Bring in the [shared library functions](../../lib/lib.html).
+// Special [merge](../../lib/merge.html) function that handles lifecycle events.
 import merge from 'slds-for-js-core/lib/merge';
 
-// Use the [shared core](../../core/picklist.html), which contains logic that
-// is shared across SLDS for JavaScript.
+// Use the [shared core](../../core/picklist.html), which contains logic that is shared across SLDS for JavaScript.
 import PicklistCore from 'slds-for-js-core/components/picklist';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
@@ -49,7 +44,7 @@ import React from 'react';
 
 // #### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
-// Façades uses `classnames`, "a simple javascript utility for conditionally
+// SLDS for React uses `classnames`, "a simple javascript utility for conditionally
 // joining classNames together." Because of the small size of the library, the
 // default build includes the entire library rather than requiring it as an
 // external dependency.
@@ -57,31 +52,37 @@ import classNames from 'classnames';
 
 // ### Mixins
 
-// These are mixins that appear in all of SLDS for Javascript,
+// These are mixins that appear in all of SLDS for JavaScript,
 // bringing consistency to instantiation, events, and state.
 
-// #### Is Icon
 // The [isIcon mixin](../mixins/custom-prop-types/icon.html) for React to
-// checks whether a prop provides an icon format
+// checks whether a prop provides an icon format. This type of prop is Deprecated
+// now but has not yet been removed from the library.
 import isIcon from '../mixins/custom-prop-types/icon.js';
 
-// [Trigger](./button-trigger.html)
-// This is the the default Dropdown Trigger. It expects one button as a child.
+// This is the the default [Dropdown Trigger](./button-trigger.html), which
+// expects one button as a child.
 import DefaultTrigger from './button-trigger';
 
-// [PicklistObject](../picklist.html)
+// Dropdown shares code with [Picklist](../picklist.html), so the definition of
+// that component needs to be brought in as well.
 import { PicklistDefinition } from '../picklist';
 
-// Remove the need for `React.PropTypes`
+// Removes the need for `React.PropTypes`.
 const { PropTypes } = React;
 
+// The component name will be used as the `DisplayName` and exported along with
+// the component itself.
 export const CONTROL = 'Dropdown';
 
-// ## DropdownObject
+/**
+ * A Dropdown is a specific implementation of the Lightning Design System Menu component. It offers a list of actions or functions that a user can access. You can find documentation on the design pattern on the <a href=\"https://www.lightningdesignsystem.com/components/menus/#dropdown\">Lightning Design System website</a>.
+ *
+ * Implementing a basic Dropdown can be as simple as providing an id and a collection of items to this component, as illustrated in the examples below. If you need deeper customization, you can provide a `<Trigger>` and/or `<Menu>` component as a child to override and customize nearly every aspect of the component's appearance and to implement additional features.
+ */
 export const DropdownDefinition = {
 	// ### Display Name
-	// Always use the canonical component name (set in the core) as the React
-	// display name.
+	// Always use the canonical component name as the React display name.
 	displayName: CONTROL,
 
 	// ### Prop Types
@@ -374,11 +375,6 @@ export const DropdownDefinition = {
 // The important thing to remember is that _some methods will be available
 // to the component which are not declared in this file_.
 
-// These are not magic methods, they're not black box methods, but you do need
-// to trace the dependencies of the component to see where they are coming
-// from. In particular, Dropdown extends its [core](../../core/dropdown.html),
-// which in turn extends the base component.
-
 let Dropdown = merge(
 	{},
 	PicklistCore,
@@ -386,9 +382,8 @@ let Dropdown = merge(
 	DropdownDefinition
 );
 
-// Once everything has been merged together and all registered helpers have
-// been run we can create the React class and export the result for
-// consumption by our apps.
+// Once everything has been merged together we can create the React class and
+// export the result for consumption by our apps.
 Dropdown = React.createClass(Dropdown);
 
 export default Dropdown;
