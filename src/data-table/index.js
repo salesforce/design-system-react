@@ -84,6 +84,16 @@ export const DataTableDefinition = {
 		striped: PropTypes.bool
 	},
 
+	getDefaultProps () {
+		return {
+			bordered: false,
+			selectRows: false,
+			stacked: false,
+			stackedHorizontal: false,
+			striped: false
+		};
+	},
+
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(COMPONENT, this.props);

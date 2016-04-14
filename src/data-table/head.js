@@ -21,6 +21,14 @@ import React from 'react';
 // external dependency.
 import classNames from 'classnames';
 
+// ## Children
+
+// ### Button
+import Button from '../button';
+
+// ### Checkbox
+import Checkbox from '../checkbox';
+
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
 
@@ -38,7 +46,10 @@ export const DataTableHeadDefinition = {
 
 	// ### Prop Types
 	propTypes: {
-		selectRows: PropTypes.bool
+		allSelected: PropTypes.bool.isRequired,
+		onSelectAll: PropTypes.func.isRequired,
+		onSort: PropTypes.func.isRequired,
+		canSelectRows: PropTypes.bool.isRequired
 	},
 
 	// ### Render
@@ -46,10 +57,58 @@ export const DataTableHeadDefinition = {
 		return (
 			<thead>
 				<tr className="slds-text-heading--label">
-					Column headers
+					{this.props.canSelectRows && (
+						<th scope="col">
+							<Checkbox
+								checked={this.props.allSelected}
+								name="Select All"
+								onChanged={this.props.onSelectAll}
+							/>
+						</th>
+					)}
+					{React.Children.map(this.props.children, (column, index) => {
+						const {
+							displayName,
+							hintParent,
+							propertyName,
+							sortable,
+							sortDirection
+						} = column.props;
+
+						return (
+							<th
+								scope="col"
+								key={propertyName}
+								className={classNames({
+									'slds-hint-parent': hintParent,
+									'slds-is-sortable': sortable
+								})}
+								onClick={this._getSortHandler(sortable, column.props, index)}
+							>
+								<span className="slds-truncate" data-prop={propertyName}>{displayName}</span>
+								{sortable && (
+									<Button
+										assistiveText="Sort"
+										iconCategory="utility"
+										iconName={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
+										iconSize="small"
+										iconStyle="icon-bare"
+									/>
+								)}
+							</th>
+						);
+					})}
 				</tr>
 			</thead>
 		);
+	},
+
+	_getSortHandler (sortable, props, index) {
+		if (sortable) {
+			return () => this.props.onSort(props, index);
+		}
+
+		return null;
 	}
 };
 
