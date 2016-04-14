@@ -4,7 +4,7 @@ import ButtonGroup from './index';
 import Dropdown from '../dropdown';
 import Trigger from '../dropdown/button-trigger';
 
-// SAMPLE CONTROL CODE -->
+// SAMPLE COMPONENT CODE -->
 
 const sampleData = [
 	{
@@ -92,6 +92,6 @@ const ButtonGroupExample = React.createClass({
 	}
 });
 
-// <-- SAMPLE CONTROL CODE
+// <-- SAMPLE COMPONENT CODE
 
 export default ButtonGroupExample;

@@ -2,7 +2,7 @@ import React from 'react';
 import Button from './index';
 import ButtonView from './view';
 
-// SAMPLE CONTROL CODE -->
+// SAMPLE COMPONENT CODE -->
 
 const ButtonExample = React.createClass({
 	displayName: 'ButtonExample',
@@ -138,6 +138,6 @@ const ButtonExample = React.createClass({
 	}
 });
 
-// <-- SAMPLE CONTROL CODE
+// <-- SAMPLE COMPONENT CODE
 
 export default ButtonExample;

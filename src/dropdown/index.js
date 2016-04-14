@@ -73,7 +73,7 @@ const { PropTypes } = React;
 
 // The component name will be used as the `DisplayName` and exported along with
 // the component itself.
-export const CONTROL = 'Dropdown';
+export const COMPONENT = 'Dropdown';
 
 /**
  * A Dropdown is a specific implementation of the Lightning Design System Menu component. It offers a list of actions or functions that a user can access. You can find documentation on the design pattern on the <a href=\"https://www.lightningdesignsystem.com/components/menus/#dropdown\">Lightning Design System website</a>.
@@ -83,7 +83,7 @@ export const CONTROL = 'Dropdown';
 export const DropdownDefinition = {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	// ### Prop Types
 	propTypes: {
@@ -273,7 +273,7 @@ export const DropdownDefinition = {
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(CONTROL, this.props);
+		checkProps(COMPONENT, this.props);
 
 		Eventable.on(this, 'select', this._onSelect);
 		Eventable.on(this, 'deselect', this._onDeselect);

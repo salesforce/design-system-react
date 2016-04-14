@@ -1,7 +1,7 @@
 import React from 'react';
 import Checkbox from './index';
 
-// SAMPLE CONTROL CODE -->
+// SAMPLE COMPONENT CODE -->
 
 const CheckboxExample = React.createClass({
 	displayName: 'CheckboxExample',
@@ -46,6 +46,6 @@ const CheckboxExample = React.createClass({
 	}
 });
 
-// <-- SAMPLE CONTROL CODE
+// <-- SAMPLE COMPONENT CODE
 
 export default CheckboxExample;

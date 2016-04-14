@@ -1,7 +1,7 @@
 import React from 'react';
 import Badge from './index';
 
-// SAMPLE CONTROL CODE -->
+// SAMPLE COMPONENT CODE -->
 
 const BadgeExample = () => (
 	<div className="slds-grid slds-grid--vertical">
@@ -27,6 +27,6 @@ const BadgeExample = () => (
 
 BadgeExample.displayName = 'BadgeExample';
 
-// <-- SAMPLE CONTROL CODE
+// <-- SAMPLE COMPONENT CODE
 
 export default BadgeExample;

@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from './index';
 
-// SAMPLE CONTROL CODE -->
+// SAMPLE COMPONENT CODE -->
 
 const ModalExample = React.createClass({
 	getInitialState () {
@@ -59,6 +59,6 @@ const ModalExample = React.createClass({
 	}
 });
 
-// <-- SAMPLE CONTROL CODE
+// <-- SAMPLE COMPONENT CODE
 
 export default ModalExample;

@@ -28,7 +28,7 @@ import * as Lib from 'slds-for-js-core/lib';
 
 // Use the [shared core](../../core/notification.html), which contains logic that is
 // shared across SLDS for JavaScript.
-import NotificationCore, { CONTROL } from 'slds-for-js-core/components/notification';
+import NotificationCore, { COMPONENT } from 'slds-for-js-core/components/notification';
 
 // ### React
 // React is an external dependencu of the project.
@@ -78,7 +78,7 @@ export const NotificationDefinition = {
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
 	// display name.
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	// ### Prop Types
 	propTypes: {
@@ -143,7 +143,7 @@ let Notification = Lib.merge(
 //
 // Nothing in the component itself should ever depend on the presence
 // of helpers, as they are completely optional.
-Notification = Lib.runHelpers('react', CONTROL, Notification);
+Notification = Lib.runHelpers('react', COMPONENT, Notification);
 
 // Once everything has been merged together and all registered helpers have
 // been run we can create the React class and export the result for

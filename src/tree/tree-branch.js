@@ -24,10 +24,10 @@ import classNames from 'classnames';
 import TreeItem from './tree-item';
 import Button from '../button';
 
-export const CONTROL = 'tree-branch';
+export const COMPONENT = 'tree-branch';
 
 const TreeBranch = React.createClass({
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	propTypes: {
 		autoOpenLevel: React.PropTypes.number.isRequired,

@@ -58,9 +58,9 @@ import Button from '../button';
 import Dropdown from '../dropdown';
 
 // Since Button Groups are just a collection of `<Button>` in a wrapper, there is
-// no need for a common core in SLDS for JavaScript. Therefore we must set `CONTROL`
+// no need for a common core in SLDS for JavaScript. Therefore we must set `COMPONENT`
 // manually here.
-export const CONTROL = 'slds-button-group';
+export const COMPONENT = 'slds-button-group';
 
 // ## Button Group Object
 export const ButtonGroupDefinition = {
@@ -83,7 +83,7 @@ export const ButtonGroupDefinition = {
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
 	// display name.
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	// ### Prop Types
 	propTypes: {

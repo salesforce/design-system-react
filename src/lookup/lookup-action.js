@@ -14,10 +14,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import classNames from 'classnames';
 
-export const CONTROL = 'lookup-action';
+export const COMPONENT = 'lookup-action';
 
 const LookupAction = React.createClass({
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	propTypes: {
 		activeDescendantId: React.PropTypes.string,

@@ -1,7 +1,7 @@
 import React from 'react';
 import Pills from './index';
 
-// SAMPLE CONTROL CODE -->
+// SAMPLE COMPONENT CODE -->
 
 const PillsExample = React.createClass({
 	getInitialState () {
@@ -34,6 +34,6 @@ const PillsExample = React.createClass({
 });
 
 
-// <-- SAMPLE CONTROL CODE
+// <-- SAMPLE COMPONENT CODE
 
 export default PillsExample;

@@ -6,7 +6,7 @@ import MenuItems from '../menu/items';
 import Button from '../button';
 import Trigger from './button-trigger';
 
-// SAMPLE CONTROL CODE -->
+// SAMPLE COMPONENT CODE -->
 
 const sampleData = [
 	{
@@ -100,7 +100,7 @@ const DropdownExample = React.createClass({
 	}
 });
 
-// <-- SAMPLE CONTROL CODE
+// <-- SAMPLE COMPONENT CODE
 
 const DropdownDevExample = React.createClass({
 	displayName: 'DropdownDevExample',

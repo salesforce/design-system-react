@@ -28,7 +28,7 @@ import * as Lib from 'slds-for-js-core/lib';
 
 // Use the [shared core](../../core/popover.html), which contains logic that is
 // shared across SLDS for JavaScript.
-import PopoverCore, { CONTROL } from 'slds-for-js-core/components/popover';
+import PopoverCore, { COMPONENT } from 'slds-for-js-core/components/popover';
 
 // ### Traits
 
@@ -87,7 +87,7 @@ export const PopoverDefinition = {
 	// ### Display Name
 	// > Always use the canonical component name (set in the core) as the
 	// > React display name.
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	// ### Prop Types
 	propTypes: {
@@ -203,7 +203,7 @@ let Popover = Lib.merge(
 //
 // Nothing in the component itself should ever depend on the presence
 // of helpers, as they are completely optional.
-Popover = Lib.runHelpers('react', CONTROL, Popover);
+Popover = Lib.runHelpers('react', COMPONENT, Popover);
 
 // Once everything has been merged together and all registered helpers have
 // been run we can create the React class and export the result for

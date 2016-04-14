@@ -29,7 +29,7 @@ import isFunction from 'lodash/lang/isFunction';
 
 // Use the [shared core](../../core/pills.html), which contains logic that is
 // shared across SLDS for JavaScript.
-import PillsCore, { CONTROL } from 'slds-for-js-core/components/pills';
+import PillsCore, { COMPONENT } from 'slds-for-js-core/components/pills';
 
 // ### Traits
 
@@ -106,7 +106,7 @@ export const PillsDefinition = {
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
 	// display name.
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	// ### Prop Types
 	propTypes: {
@@ -193,7 +193,7 @@ let Pills = Lib.merge(
 //
 // Nothing in the component itself should ever depend on the presence
 // of helpers, as they are completely optional.
-Pills = Lib.runHelpers('react', CONTROL, Pills);
+Pills = Lib.runHelpers('react', COMPONENT, Pills);
 
 // Once everything has been merged together and all registered helpers have
 // been run we can create the React class and export the result for

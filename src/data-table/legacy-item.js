@@ -14,10 +14,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // Framework specific
 import React from 'react';
 
-export const CONTROL = 'data-table-item';
+export const COMPONENT = 'data-table-item';
 
 const DataTableItem = React.createClass({
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	// TODO: Break TD cell out into it's own child component, so that the shape of the headers object can be tested
 	propTypes: {

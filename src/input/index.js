@@ -34,13 +34,13 @@ import InputIcon from '../icon/input-icon';
 // Remove the need for `React.PropTypes`
 const { PropTypes } = React;
 
-export const CONTROL = 'Input';
+export const COMPONENT = 'Input';
 
 // ## InputDefinition
 export const InputDefinition = {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	// ### Prop Types
 	propTypes: {

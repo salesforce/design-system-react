@@ -3,7 +3,7 @@ import Picklist from './index';
 import Menu from '../menu';
 import MenuItems from '../menu/items';
 
-// SAMPLE CONTROL CODE -->
+// SAMPLE COMPONENT CODE -->
 
 const sampleData = [
 	{
@@ -103,6 +103,6 @@ const PicklistExample = React.createClass({
 	}
 });
 
-// <-- SAMPLE CONTROL CODE
+// <-- SAMPLE COMPONENT CODE
 
 export default PicklistExample;

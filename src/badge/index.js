@@ -28,7 +28,7 @@ import * as Lib from 'slds-for-js-core/lib';
 
 // Use the [shared core](../../core/badge.html), which contains logic that is
 // shared across SLDS for JavaScript.
-import BadgeCore, { CONTROL } from 'slds-for-js-core/components/badge';
+import BadgeCore, { COMPONENT } from 'slds-for-js-core/components/badge';
 
 // ### React
 // React is an external dependency of the project.
@@ -74,7 +74,7 @@ export const BadgeDefinition = {
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
 	// display name.
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	// ### Prop Types
 	propTypes: {

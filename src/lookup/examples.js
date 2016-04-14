@@ -1,7 +1,7 @@
 import React from 'react';
 import Lookup from './index';
 
-// SAMPLE CONTROL CODE -->
+// SAMPLE COMPONENT CODE -->
 
 const LookupExample = React.createClass({
 	propTypes: {
@@ -67,6 +67,6 @@ const LookupExample = React.createClass({
 	}
 });
 
-// <-- SAMPLE CONTROL CODE
+// <-- SAMPLE COMPONENT CODE
 
 export default LookupExample;

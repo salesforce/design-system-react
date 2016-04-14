@@ -29,7 +29,7 @@ import isFunction from 'lodash/lang/isFunction';
 
 // Use the [shared core](../../core/lookup.html), which contains logic that is
 // shared across SLDS for JavaScript.
-import LookupCore, { CONTROL } from 'slds-for-js-core/components/lookup';
+import LookupCore, { COMPONENT } from 'slds-for-js-core/components/lookup';
 
 // ### Traits
 
@@ -131,7 +131,7 @@ export const LookupDefinition = {
 	// ### Display Name
 	// > Always use the canonical component name (set in the core) as the
 	// > React display name.
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	// ### Prop Types
 	propTypes: {
@@ -526,7 +526,7 @@ let Lookup = Lib.merge(
 //
 // Nothing in the component itself should ever depend on the presence
 // of helpers, as they are completely optional.
-Lookup = Lib.runHelpers('react', CONTROL, Lookup);
+Lookup = Lib.runHelpers('react', COMPONENT, Lookup);
 
 // Once everything has been merged together and all registered helpers have
 // been run we can create the React class and export the result for

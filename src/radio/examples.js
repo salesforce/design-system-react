@@ -1,7 +1,7 @@
 import React from 'react';
 import Radio from './index';
 
-// SAMPLE CONTROL CODE -->
+// SAMPLE COMPONENT CODE -->
 
 // https://www.lightningdesignsystem.com/components/forms#radio
 
@@ -159,6 +159,6 @@ const RadioExample = React.createClass({
 	}
 });
 
-// <-- SAMPLE CONTROL CODE
+// <-- SAMPLE COMPONENT CODE
 
 export default RadioExample;

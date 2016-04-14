@@ -1,7 +1,7 @@
 import React from 'react';
 import Tooltip from './index';
 
-// SAMPLE CONTROL CODE -->
+// SAMPLE COMPONENT CODE -->
 
 const TooltipExample = React.createClass({
 	propTypes: {
@@ -116,6 +116,6 @@ const TooltipExample = React.createClass({
 	}
 });
 
-// <-- SAMPLE CONTROL CODE
+// <-- SAMPLE COMPONENT CODE
 
 export default TooltipExample;

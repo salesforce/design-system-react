@@ -16,7 +16,7 @@ import IconUtility from '../icon-utility';
 import isIcon from '../mixins/custom-prop-types/icon.js';
 import sunsetProperty from 'slds-for-js-core/lib/warning/sunset-property';
 
-export const CONTROL = 'SVG';
+export const COMPONENT = 'SVG';
 
 let checkProps = function () {};
 
@@ -24,13 +24,13 @@ if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (props) {
 		/* eslint-disable max-len */
 		// End-of-life properties
-		sunsetProperty(CONTROL, props.icon, 'icon', `Icons should no longer take the format "${props.icon}" and should now be specified with distinct name and category properties.`);
+		sunsetProperty(COMPONENT, props.icon, 'icon', `Icons should no longer take the format "${props.icon}" and should now be specified with distinct name and category properties.`);
 		/* eslint-enable max-len */
 	};
 }
 
 export const SvgDefinition = {
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	propTypes: {
 		/**

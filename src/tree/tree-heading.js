@@ -14,10 +14,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // Framework specific
 import React from 'react';
 
-export const CONTROL = 'tree-heading';
+export const COMPONENT = 'tree-heading';
 
 const TreeHeading = React.createClass({
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	propTypes: {
 		heading: React.PropTypes.string

@@ -1,7 +1,7 @@
 import React from 'react';
 import Datepicker from './index';
 
-// SAMPLE CONTROL CODE -->
+// SAMPLE COMPONENT CODE -->
 
 const DatepickerExample = React.createClass({
 	propTypes: {
@@ -33,6 +33,6 @@ const DatepickerExample = React.createClass({
 	}
 });
 
-// <-- SAMPLE CONTROL CODE
+// <-- SAMPLE COMPONENT CODE
 
 export default DatepickerExample;

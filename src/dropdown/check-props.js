@@ -15,31 +15,31 @@ import sunsetProperty from 'slds-for-js-core/lib/warning/sunset-property';
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (CONTROL, props) {
+	checkProps = function (COMPONENT, props) {
 		/* eslint-disable max-len */
 		// Deprecated and changed to another property
-		deprecatedProperty(CONTROL, props.onSelect, 'onSelect', 'onChange');
-		deprecatedProperty(CONTROL, props.options, 'options', 'collection');
-		deprecatedProperty(CONTROL, props.options, 'value', 'selection');
+		deprecatedProperty(COMPONENT, props.onSelect, 'onSelect', 'onChange');
+		deprecatedProperty(COMPONENT, props.options, 'options', 'collection');
+		deprecatedProperty(COMPONENT, props.options, 'value', 'selection');
 
 		// End-of-life properties
-		sunsetProperty(CONTROL, props.hoverCloseDelay, 'hoverCloseDelay', 'The slds-dropdown-trigger class which allowed showing the dropdown menu on mouse hover was deprecated in SLDS v1.0.');
-		sunsetProperty(CONTROL, props.openOn, 'openOn', 'The slds-dropdown-trigger class, which allowed showing the dropdown menu on mouse hover, was deprecated in SLDS v1.0.');
-		sunsetProperty(CONTROL, props.placeholder, 'placeholder', 'If a placeholder is needed and the text of the button will be updated. Please use a picklist.');
-		sunsetProperty(CONTROL, props.renderArrow, 'renderArrow', 'All Dropdown Triggers should have an indicator of the presence of a dropdown, unless it is an icon-more or icon-bare button style.');
-		sunsetProperty(CONTROL, props.swapIcon, 'swapIcon', 'Please use a Picklist without a text label instead.');
+		sunsetProperty(COMPONENT, props.hoverCloseDelay, 'hoverCloseDelay', 'The slds-dropdown-trigger class which allowed showing the dropdown menu on mouse hover was deprecated in SLDS v1.0.');
+		sunsetProperty(COMPONENT, props.openOn, 'openOn', 'The slds-dropdown-trigger class, which allowed showing the dropdown menu on mouse hover, was deprecated in SLDS v1.0.');
+		sunsetProperty(COMPONENT, props.placeholder, 'placeholder', 'If a placeholder is needed and the text of the button will be updated. Please use a picklist.');
+		sunsetProperty(COMPONENT, props.renderArrow, 'renderArrow', 'All Dropdown Triggers should have an indicator of the presence of a dropdown, unless it is an icon-more or icon-bare button style.');
+		sunsetProperty(COMPONENT, props.swapIcon, 'swapIcon', 'Please use a Picklist without a text label instead.');
 
 		// API has been moved to Trigger child
-		sunsetProperty(CONTROL, props.assistiveText, 'assistiveText', 'Please set assistiveText with a child of Trigger: <Dropdown><Trigger><Button assistiveText="Change settings" /></Trigger></Dropdown>');
-		sunsetProperty(CONTROL, props.buttonClass, 'buttonClassName', 'Please set the className with a child of Trigger: <Dropdown><Trigger><Button className="slds-is-cool" /></Trigger></Dropdown>');
-		sunsetProperty(CONTROL, props.buttonVariant, 'buttonVariant', 'Please set `variant` with a child of Trigger: <Dropdown><Trigger><Button variant="brand" /></Trigger></Dropdown>');
-		sunsetProperty(CONTROL, props.icon, 'icon', 'Please set icon with a child of Trigger: <Dropdown><Trigger><Button iconCategory="utility" iconName="settings" /></Trigger></Dropdown>');
-		sunsetProperty(CONTROL, props.onClick, 'onClick', 'Please set onClick with a child of Trigger: <Dropdown><Trigger><Button onClick={myCoolCallback} /></Trigger></Dropdown>');
-		sunsetProperty(CONTROL, props.tooltip, 'tooltip', 'Please set the label with a child of Trigger: <Dropdown><Trigger><Button tooltip=NoiceElement /></Trigger></Dropdown>');
+		sunsetProperty(COMPONENT, props.assistiveText, 'assistiveText', 'Please set assistiveText with a child of Trigger: <Dropdown><Trigger><Button assistiveText="Change settings" /></Trigger></Dropdown>');
+		sunsetProperty(COMPONENT, props.buttonClass, 'buttonClassName', 'Please set the className with a child of Trigger: <Dropdown><Trigger><Button className="slds-is-cool" /></Trigger></Dropdown>');
+		sunsetProperty(COMPONENT, props.buttonVariant, 'buttonVariant', 'Please set `variant` with a child of Trigger: <Dropdown><Trigger><Button variant="brand" /></Trigger></Dropdown>');
+		sunsetProperty(COMPONENT, props.icon, 'icon', 'Please set icon with a child of Trigger: <Dropdown><Trigger><Button iconCategory="utility" iconName="settings" /></Trigger></Dropdown>');
+		sunsetProperty(COMPONENT, props.onClick, 'onClick', 'Please set onClick with a child of Trigger: <Dropdown><Trigger><Button onClick={myCoolCallback} /></Trigger></Dropdown>');
+		sunsetProperty(COMPONENT, props.tooltip, 'tooltip', 'Please set the label with a child of Trigger: <Dropdown><Trigger><Button tooltip=NoiceElement /></Trigger></Dropdown>');
 
 		// API has been moved to the Menu child
-		sunsetProperty(CONTROL, props.listItemRenderer, 'listItemRenderer', 'Please use a child of Menu instead: <Dropdown><Menu><MenuItems><MenuItem /></MenuItems></Menu></Dropdown>');
-		sunsetProperty(CONTROL, props.menuItemRenderer, 'menuItemRenderer', 'Please use a child of Menu instead: <Dropdown><Menu><MenuItems><MenuItem /></MenuItems></Menu></Dropdown>');
+		sunsetProperty(COMPONENT, props.listItemRenderer, 'listItemRenderer', 'Please use a child of Menu instead: <Dropdown><Menu><MenuItems><MenuItem /></MenuItems></Menu></Dropdown>');
+		sunsetProperty(COMPONENT, props.menuItemRenderer, 'menuItemRenderer', 'Please use a child of Menu instead: <Dropdown><Menu><MenuItems><MenuItem /></MenuItems></Menu></Dropdown>');
 		/* eslint-enable max-len */
 	};
 }

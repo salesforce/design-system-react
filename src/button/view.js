@@ -26,7 +26,7 @@ import * as Lib from 'slds-for-js-core/lib';
 
 // Use the [shared core](../../core/button-view.html), which contains logic
 // that is shared across SLDS for JavaScript.
-import ButtonViewCore, { CONTROL } from 'slds-for-js-core/components/button-view';
+import ButtonViewCore, { COMPONENT } from 'slds-for-js-core/components/button-view';
 
 // ### React
 // React is an external dependency of the project.
@@ -55,7 +55,7 @@ export const ButtonViewObject = {
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
 	// display name.
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	// ### Prop Types
 	propTypes: {

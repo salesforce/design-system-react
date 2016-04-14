@@ -28,7 +28,7 @@ import * as Lib from 'slds-for-js-core/lib';
 
 // Use the [shared core](../../core/modal.html), which contains logic that is
 // shared across SLDS for JavaScript.
-import ModalCore, { CONTROL } from 'slds-for-js-core/components/modal';
+import ModalCore, { COMPONENT } from 'slds-for-js-core/components/modal';
 
 // ### React and ReactDOM
 // React and ReactDOM are external dependencies of the project.
@@ -88,7 +88,7 @@ export const ModalDefinition = {
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
 	// display name.
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	// ### Prop Types
 	propTypes: {
@@ -215,7 +215,7 @@ let Modal = Lib.merge(
 //
 // Nothing in the component itself should ever depend on the presence
 // of helpers, as they are completely optional.
-Modal = Lib.runHelpers('react', CONTROL, Modal);
+Modal = Lib.runHelpers('react', COMPONENT, Modal);
 
 // Once everything has been merged together and all registered helpers have
 // been run we can create the React class and export the result for

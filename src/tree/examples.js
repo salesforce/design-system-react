@@ -1,7 +1,7 @@
 import React from 'react';
 import Tree from './index';
 
-// SAMPLE CONTROL CODE -->
+// SAMPLE COMPONENT CODE -->
 
 const TreeExample = React.createClass({
 	getInitialState () {
@@ -108,6 +108,6 @@ const TreeExample = React.createClass({
 	}
 });
 
-// <-- SAMPLE CONTROL CODE
+// <-- SAMPLE COMPONENT CODE
 
 export default TreeExample;

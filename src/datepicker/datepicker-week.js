@@ -16,10 +16,10 @@ import React from 'react';
 
 import DateDay from './datepicker-day';
 
-export const CONTROL = 'datepicker-week';
+export const COMPONENT = 'datepicker-week';
 
 const DateInput = React.createClass({
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	propTypes: {
 		week: React.PropTypes.array

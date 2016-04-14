@@ -33,7 +33,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import * as Lib from 'slds-for-js-core/lib';
 
 // Use the [shared core](../../core/button.html), which contains logic that is shared across SLDS for JavaScript.
-import ButtonCore, { CONTROL } from 'slds-for-js-core/components/button';
+import ButtonCore, { COMPONENT } from 'slds-for-js-core/components/button';
 
 // ### React
 // React is an external dependency of the project.
@@ -98,7 +98,7 @@ export const ButtonDefinition = {
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
 	// display name.
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	// ### Prop Types
 	propTypes: {
@@ -249,7 +249,7 @@ let Button = Lib.merge(
 //
 // Nothing in the component itself should ever depend on the presence
 // of helpers, as they are completely optional.
-Button = Lib.runHelpers('react', CONTROL, Button);
+Button = Lib.runHelpers('react', COMPONENT, Button);
 
 // Once everything has been merged together and all registered helpers have
 // been run we can create the React class and export the result for

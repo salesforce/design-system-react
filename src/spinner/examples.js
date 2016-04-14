@@ -1,7 +1,7 @@
 import React from 'react';
 import Spinner from './index';
 
-// SAMPLE CONTROL CODE -->
+// SAMPLE COMPONENT CODE -->
 
 const SpinnerExample = React.createClass({
 	render () {
@@ -50,6 +50,6 @@ const SpinnerExample = React.createClass({
 	}
 });
 
-// <-- SAMPLE CONTROL CODE
+// <-- SAMPLE COMPONENT CODE
 
 export default SpinnerExample;

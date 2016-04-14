@@ -1,7 +1,7 @@
 import React from 'react';
-import DataTable from './index';
+import LegacyDataTable from './legacy';
 
-// SAMPLE CONTROL CODE -->
+// SAMPLE COMPONENT CODE -->
 import sortBy from 'lodash/collection/sortBy';
 
 const collection = [
@@ -50,7 +50,7 @@ const DataTableExample = React.createClass({
 
 	render () {
 		return (
-			<DataTable
+			<LegacyDataTable
 				collection={this.state.collection}
 				selection={this.state.selection}
 				columns={this.state.columns}
@@ -82,6 +82,6 @@ const DataTableExample = React.createClass({
 		});
 	}
 });
-// <-- SAMPLE CONTROL CODE
+// <-- SAMPLE COMPONENT CODE
 
 export default DataTableExample;

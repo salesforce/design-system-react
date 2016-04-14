@@ -21,11 +21,11 @@ import isFunction from 'lodash/lang/isFunction';
 // Children
 import DefaultMenuItem from './item';
 
-export const CONTROL = 'MenuItems';
+export const COMPONENT = 'MenuItems';
 const { PropTypes } = React;
 
 const MenuItems = React.createClass({
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	propTypes: {
 		/**

@@ -20,10 +20,10 @@ import classNames from 'classnames';
 // Children
 import Button from '../button';
 
-export const CONTROL = 'tree-item';
+export const COMPONENT = 'tree-item';
 
 const TreeItem = React.createClass({
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	propTypes: {
 		// TODO: Modify when tree data adapter gets set up

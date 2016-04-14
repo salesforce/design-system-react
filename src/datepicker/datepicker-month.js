@@ -15,10 +15,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import Button from '../button';
 
-export const CONTROL = 'datepicker-year';
+export const COMPONENT = 'datepicker-year';
 
 const DateMonth = React.createClass({
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	propTypes: {
 		monthName: React.PropTypes.string,

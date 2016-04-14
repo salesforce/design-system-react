@@ -38,16 +38,16 @@ import classNames from 'classnames';
 import Button from '../button';
 
 // Since the Pills Component is simpply collection zero or more individual items `<Pill>` in a wrapper, there is
-// no need for a common core of the `<Pill>` in SLDS for JavaScript. Therefore we must set `CONTROL`
+// no need for a common core of the `<Pill>` in SLDS for JavaScript. Therefore we must set `COMPONENT`
 // manually here.
-export const CONTROL = 'lookup-pill';
+export const COMPONENT = 'lookup-pill';
 
 // ## Pill
 const Pill = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name (set manually above) as the
 	// React display name.
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	// ### Prop Types
 	propTypes: {

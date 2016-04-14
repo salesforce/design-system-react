@@ -1,7 +1,7 @@
 import React from 'react';
 import Input from './index';
 
-// SAMPLE CONTROL CODE -->
+// SAMPLE COMPONENT CODE -->
 
 const InputExample = function () {
 	return (
@@ -13,6 +13,6 @@ const InputExample = function () {
 	);
 };
 
-// <-- SAMPLE CONTROL CODE
+// <-- SAMPLE COMPONENT CODE
 
 export default InputExample;

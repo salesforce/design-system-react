@@ -17,10 +17,10 @@ import React from 'react';
 // Third party
 import classNames from 'classnames';
 
-export const CONTROL = 'datepicker-day';
+export const COMPONENT = 'datepicker-day';
 
 const DateDay = React.createClass({
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	propTypes: {
 		day: React.PropTypes.object,

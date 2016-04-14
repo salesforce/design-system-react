@@ -1,7 +1,7 @@
 import React from 'react';
 import Icon from './index';
 
-// SAMPLE CONTROL CODE -->
+// SAMPLE COMPONENT CODE -->
 
 const IconExample = React.createClass({
 	render () {
@@ -19,6 +19,6 @@ const IconExample = React.createClass({
 	}
 });
 
-// <-- SAMPLE CONTROL CODE
+// <-- SAMPLE COMPONENT CODE
 
 export default IconExample;

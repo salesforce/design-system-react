@@ -17,11 +17,11 @@ import React from 'react';
 // Third party
 import classNames from 'classnames';
 
-export const CONTROL = 'Menu';
+export const COMPONENT = 'Menu';
 const { PropTypes } = React;
 
 const Menu = React.createClass({
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	propTypes: {
 		/**

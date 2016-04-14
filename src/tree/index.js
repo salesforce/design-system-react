@@ -30,7 +30,7 @@ import partialRight from 'lodash/function/partialRight';
 
 // Use the [shared core](../../core/tree.html), which contains logic that is
 // shared across SLDS for JavaScript.
-import TreeCore, { CONTROL } from 'slds-for-js-core/components/tree';
+import TreeCore, { COMPONENT } from 'slds-for-js-core/components/tree';
 
 // ### Traits
 
@@ -117,7 +117,7 @@ export const TreeDefinition = {
 	// ### Display Name
 	// > Always use the canonical component name (set in the core) as the
 	// > React display name.
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	// ### Prop Types
 	propTypes: {
@@ -200,7 +200,7 @@ export const TreeDefinition = {
 		return (
 			<div id={this._getControlContainerId()} className={this.cssClasses.CONTAINER} role="application">
 				{heading}
-				<ul id={this._getControlId()} className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP)} role="tree">
+				<ul id={this._getControlId()} className={classNames(this.cssClasses.COMPONENT, this.cssClasses.BTN_GROUP)} role="tree">
 					{children}
 				</ul>
 			</div>
@@ -260,7 +260,7 @@ let Tree = Lib.merge(
 //
 // Nothing in the component itself should ever depend on the presence
 // of helpers, as they are completely optional.
-Tree = Lib.runHelpers('react', CONTROL, Tree);
+Tree = Lib.runHelpers('react', COMPONENT, Tree);
 
 // Once everything has been merged together and all registered helpers have
 // been run we can create the React class and export the result for

@@ -1,7 +1,7 @@
 import React from 'react';
 import Notification from './index';
 
-// SAMPLE CONTROL CODE -->
+// SAMPLE COMPONENT CODE -->
 
 const NotificationExample = React.createClass({
 	getInitialState () {
@@ -44,6 +44,6 @@ const NotificationExample = React.createClass({
 	}
 });
 
-// <-- SAMPLE CONTROL CODE
+// <-- SAMPLE COMPONENT CODE
 
 export default NotificationExample;

@@ -15,10 +15,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import Svg from '../svg';
 
-export const CONTROL = 'datepicker-input';
+export const COMPONENT = 'datepicker-input';
 
 const DateInput = React.createClass({
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	propTypes: {
 		selectedDate: React.PropTypes.any,

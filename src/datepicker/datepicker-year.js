@@ -17,10 +17,10 @@ import React from 'react';
 // Children
 import Picklist from '../picklist';
 
-export const CONTROL = 'datepicker-year';
+export const COMPONENT = 'datepicker-year';
 
 const DateMonth = React.createClass({
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	propTypes: {
 		getYearRange: React.PropTypes.func,

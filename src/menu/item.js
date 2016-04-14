@@ -23,10 +23,10 @@ import Svg from '../svg';
 // Third party
 import classNames from 'classnames';
 
-export const CONTROL = 'MenuItem';
+export const COMPONENT = 'MenuItem';
 
 const MenuItem = React.createClass({
-	displayName: CONTROL,
+	displayName: COMPONENT,
 
 	propTypes: {
 		checkmark: React.PropTypes.bool,

@@ -1,7 +1,7 @@
 import React from 'react';
 import Popover from './index';
 
-// SAMPLE CONTROL CODE -->
+// SAMPLE COMPONENT CODE -->
 
 const PopoverExample = React.createClass({
 	propTypes: {
@@ -46,6 +46,6 @@ const PopoverExample = React.createClass({
 
 });
 
-// <-- SAMPLE CONTROL CODE
+// <-- SAMPLE COMPONENT CODE
 
 export default PopoverExample;
