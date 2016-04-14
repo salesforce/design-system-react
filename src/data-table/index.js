@@ -34,7 +34,7 @@ import React from 'react';
 // external dependency.
 import classNames from 'classnames';
 
-// Removes the need for `React.PropTypes`.
+// Removes the need for `PropTypes`.
 const { PropTypes } = React;
 
 // The component name will be used as the `DisplayName` and exported along with
@@ -51,6 +51,32 @@ export const DataTableDefinition = {
 
 	// ### Prop Types
 	propTypes: {
+		bordered: PropTypes.bool,
+		collection: PropTypes.array.isRequired,
+		/**
+		 * End of Life. Please provide one or more children of the type `<Column />` instead:
+		 * ```
+		 * <DataTable>
+		 *   <Column />
+		 * </DataTable>
+		 * ```
+		 */
+		columns: PropTypes.arrayOf(
+			PropTypes.shape({
+				propertyName: PropTypes.string,
+				displayName: PropTypes.string,
+				sortable: PropTypes.bool,
+				hintParent: PropTypes.bool
+			})
+		),
+		selection: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object
+		]),
+		sortable: PropTypes.bool,
+		stacked: PropTypes.bool,
+		stackedHorizontal: PropTypes.bool,
+		striped: PropTypes.bool
 	},
 
 	componentWillMount () {
