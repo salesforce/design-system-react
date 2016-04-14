@@ -82,13 +82,22 @@ export const BadgeDefinition = {
 	   * These are standard React children and can be of any type.
 	   */
 		children: React.PropTypes.any.isRequired,
-			/**
-		   * Please choose a theme from the following:
-		   <code>base, default, shade, inverse,</code>
-		   <code>alt-inverse, info, success, warning,</code>
-		   <code>error, offline, shade-alert-texture</code>.
-		   */
-		theme: React.PropTypes.oneOf(Object.keys(BadgeCore.themes))
+		/**
+		 * Apply a theme to the Badge. Themes come from [SLDS Theme](https://www.lightningdesignsystem.com/components/utilities/themes/#color)
+		 */
+		theme: React.PropTypes.oneOf([
+			'base',
+			'default',
+			'shade',
+			'inverse',
+			'alt-inverse',
+			'info',
+			'success',
+			'warning',
+			'error',
+			'offline',
+			'shade-alert-texture'
+		])
 	},
 
 	// ### Render
