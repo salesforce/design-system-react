@@ -16,7 +16,8 @@ let checkProps = function () {};
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
 		/* eslint-disable max-len */
-		sunsetProperty(COMPONENT, props.tooltip, 'tooltip', 'Please provide one or more children of the type <Column /> instead.');
+		sunsetProperty(COMPONENT, props.columns, 'columns', 'Please provide one or more children of the type <Column /> instead.');
+		sunsetProperty(COMPONENT, props.sortable, 'sortable', 'The table is sortable if one or more of its columns are sortable.');
 		/* eslint-enable max-len */
 	};
 }

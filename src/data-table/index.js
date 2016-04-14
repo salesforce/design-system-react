@@ -73,7 +73,6 @@ export const DataTableDefinition = {
 			PropTypes.array,
 			PropTypes.object
 		]),
-		sortable: PropTypes.bool,
 		stacked: PropTypes.bool,
 		stackedHorizontal: PropTypes.bool,
 		striped: PropTypes.bool
@@ -86,7 +85,25 @@ export const DataTableDefinition = {
 
 	// ### Render
 	render () {
-		return null;
+		return (
+			<table
+				className={classNames({
+					'slds-table--bordered': this.props.bordered,
+					'slds-max-medium-table--stacked': this.props.stacked,
+					'slds-max-medium-table--stacked-horizontalviewports': this.props.stackedHorizontal,
+					'slds-table--striped': this.props.striped
+				})}
+			>
+				<thead>
+					<tr className="slds-text-heading--label">
+						Column headers
+					</tr>
+				</thead>
+				<tbody>
+					Rows
+				</tbody>
+			</table>
+		);
 	}
 };
 
