@@ -13,7 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Implements the [Checkbox design pattern](https://www.lightningdesignsystem.com/components/forms#checkbox) in React.
 
-// [![Checkbox component example screenshot](/assets/demo-site/images/component-examples/checkbox.png "See a live example of the Checkbox component in action")](/react/checkbox)
+// [![Checkbox component example screenshot](/assets/images/component-examples/checkbox.png "See a live example of the Checkbox component in action")](/react/checkbox)
 
 // > See a [live example](/react/checkbox) of the Checkbox component in action
 

@@ -13,7 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Implements the [Data Table design pattern](https://www.lightningdesignsystem.com/components/data-tables) in React.
 
-// [![Data Table component example screenshot](/assets/demo-site/images/component-examples/data-table.png "Data Table component example screenshot")](/react/data-table)
+// [![Data Table component example screenshot](/assets/images/component-examples/data-table.png "Data Table component example screenshot")](/react/data-table)
 
 // > See a [live example](/react/data-table) of the Data Table component in action
 

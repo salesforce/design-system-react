@@ -13,7 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Implements the [Popover design pattern](https://www.lightningdesignsystem.com/components/popovers#base) in React. This is similar to both the Picklist and the Pills, but currently there is no inheritance from either component.
 
-// [![Popover component example screenshot](/assets/demo-site/images/component-examples/popover.png "Popover component example screenshot")](/react/popover)
+// [![Popover component example screenshot](/assets/images/component-examples/popover.png "Popover component example screenshot")](/react/popover)
 
 // > See a [live example](/react/popover) of the Popover component in action
 

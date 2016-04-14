@@ -13,7 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Implements the [Picklist design pattern](https://www.lightningdesignsystem.com/components/menus#picklist) in React.
 
-// [![Picklist component example screenshot](/assets/demo-site/images/component-examples/picklist.png "Picklist component example screenshot")](/react/picklist)
+// [![Picklist component example screenshot](/assets/images/component-examples/picklist.png "Picklist component example screenshot")](/react/picklist)
 
 // > See a [live example](/react/picklist) of the Picklist component in action
 

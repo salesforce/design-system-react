@@ -13,7 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Implements the [Datepicker design pattern](https://www.lightningdesignsystem.com/components/datepickers) in React. Provides a text input form element with a calendar. You can select a single date or date range from a popup or inline calendar.
 
-// [![Datepicker component example screenshot](/assets/demo-site/images/component-examples/datepicker.png "Datepicker component example screenshot")](/react/datepicker)
+// [![Datepicker component example screenshot](/assets/images/component-examples/datepicker.png "Datepicker component example screenshot")](/react/datepicker)
 
 // > See a [live example](/react/datepicker) of the Datepicker component in action
 
@@ -278,7 +278,7 @@ export const DatepickerDefinition = {
 
 // SLDS for React **extends objects** by merging them together, rather than
 // via the prototype chain or imitation of object-oriented inheritance.
-// The important thing to remember is that _some methods will be available 
+// The important thing to remember is that _some methods will be available
 // to the component which are not declared in this file_.
 
 // These are not magic methods, they're not black box methods, but you do need

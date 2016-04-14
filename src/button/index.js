@@ -19,7 +19,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Stateful buttons have three views, but most buttons only have one.
 
-// [![Button component example screenshot](/assets/demo-site/images/component-examples/button.png "See a live example of the Button component in action")](/react/button)
+// [![Button component example screenshot](/assets/images/component-examples/button.png "See a live example of the Button component in action")](/react/button)
 
 // > See a [live example](/react/button) of the Button component in action
 

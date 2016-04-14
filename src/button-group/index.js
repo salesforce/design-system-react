@@ -15,7 +15,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Button Groups collect one or more [`Button`](../button.html) into a group.
 
-// [![Button Groups component example screenshot](/assets/demo-site/images/component-examples/button-group.png "See a live example of the Button Groups component in action")](/react/button-group)
+// [![Button Groups component example screenshot](/assets/images/component-examples/button-group.png "See a live example of the Button Groups component in action")](/react/button-group)
 
 // > See a [live example](/react/button-group) of the Button Group component in action
 

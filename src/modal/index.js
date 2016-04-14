@@ -13,7 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Implements the [Modal design pattern](https://www.lightningdesignsystem.com/components/modals) in React.
 
-// [![Modal component example screenshot](/assets/demo-site/images/component-examples/modal.png "See a live example of the Modal component in action")](/react/modal)
+// [![Modal component example screenshot](/assets/images/component-examples/modal.png "See a live example of the Modal component in action")](/react/modal)
 
 // > See a [live example](/react/modal) of the Modal component in action
 

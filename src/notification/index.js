@@ -13,7 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Implements the [Notification design pattern](https://www.lightningdesignsystem.com/components/notifications) in React.
 
-// [![Notification component example screenshot](/assets/demo-site/images/component-examples/notification.png "See a live example of the Notification component in action")](/react/notification)
+// [![Notification component example screenshot](/assets/images/component-examples/notification.png "See a live example of the Notification component in action")](/react/notification)
 
 // > See a [live example](/react/notification) of the Notification component in action
 

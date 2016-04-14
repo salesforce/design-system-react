@@ -13,7 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Implements the [Dropdown design pattern](https://www.lightningdesignsystem.com/components/menus#dropdown) in React.
 
-// [![Dropdown component example screenshot](/assets/demo-site/images/component-examples/dropdown.png "Dropdown component example screenshot")](/react/dropdown)
+// [![Dropdown component example screenshot](/assets/images/component-examples/dropdown.png "Dropdown component example screenshot")](/react/dropdown)
 
 // > See a [live example](/react/dropdown) of the Dropdown component in action
 

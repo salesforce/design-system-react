@@ -13,7 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Implements the [Input design pattern](https://www.lightningdesignsystem.com/components/forms/#input) in React.
 
-// [![Input component example screenshot](/assets/demo-site/images/component-examples/input.png "Input component example screenshot")](/react/input)
+// [![Input component example screenshot](/assets/images/component-examples/input.png "Input component example screenshot")](/react/input)
 
 // > See a [live example](/react/input) of the Input component in action
 

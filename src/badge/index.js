@@ -13,7 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Implements the [Badge design pattern](https://www.lightningdesignsystem.com/components/badges) in React.
 
-// [![Badge component example screenshot](/assets/demo-site/images/component-examples/badge.png "See a live example of the Badge component in action")](/react/badge)
+// [![Badge component example screenshot](/assets/images/component-examples/badge.png "See a live example of the Badge component in action")](/react/badge)
 
 // > See a [live example](/react/badge) of the Badge component in action
 

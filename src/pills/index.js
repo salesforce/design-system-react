@@ -13,7 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Implements the [Pills design pattern](https://www.lightningdesignsystem.com/components/pills) in React.
 
-// [![Pills component example screenshot](/assets/demo-site/images/component-examples/pills.png "Pills component example screenshot")](/react/pills)
+// [![Pills component example screenshot](/assets/images/component-examples/pills.png "Pills component example screenshot")](/react/pills)
 
 // > See a [live example](/react/pills) of the Pills component in action
 
@@ -78,7 +78,7 @@ import Pill from './pill';
 
 // SLDS for React **extends objects** by merging them together, rather than
 // via the prototype chain or imitation of object-oriented inheritance.
-// The important thing to remember is that _some methods will be available 
+// The important thing to remember is that _some methods will be available
 // to the component which are not declared in this file_.
 
 // These are not magic methods, they're not black box methods, but you do need

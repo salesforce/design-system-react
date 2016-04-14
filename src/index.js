@@ -18,14 +18,14 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ## Badges
 // * [Documentation](./badge/badge.html)
 // * [Live Example](/react/badge)
-// * [<img src="/assets/demo-site/images/component-examples/badge.png" style="max-height: 200px;" alt="Badge Screenshot">](/react/badge)
+// * [<img src="/assets/images/component-examples/badge.png" style="max-height: 200px;" alt="Badge Screenshot">](/react/badge)
 export Badge from './badge';
 // _______________________________________________________________________________________________________
 
 // ## Buttons
 // * [Documentation](./button.html)
 // * [Live Example](/react/button)
-// * [<img src="/assets/demo-site/images/component-examples/button.png" style="max-height: 200px;" alt="Button Screenshot">](/react/button)
+// * [<img src="/assets/images/component-examples/button.png" style="max-height: 200px;" alt="Button Screenshot">](/react/button)
 export Button from './button';
 // _______________________________________________________________________________________________________
 
@@ -37,35 +37,35 @@ export ButtonView from './button/view';
 // ## Button Groups
 // * [Documentation](./button-group/button-group.html)
 // * [Live Example](/react/button-group)
-// * [<img src="/assets/demo-site/images/component-examples/button-group.png" style="max-height: 200px;" alt="ButtonGroup Screenshot">](/react/button-group)
+// * [<img src="/assets/images/component-examples/button-group.png" style="max-height: 200px;" alt="ButtonGroup Screenshot">](/react/button-group)
 export ButtonGroup from './button-group';
 // _______________________________________________________________________________________________________
 
 // ## Checkbox
 // * [Documentation](./checkbox/checkbox.html)
 // * [Live Example](/react/checkbox)
-// * [<img src="/assets/demo-site/images/component-examples/checkbox.png" style="max-height: 200px;" alt="Checkbox Screenshot">](/react/checkbox)
+// * [<img src="/assets/images/component-examples/checkbox.png" style="max-height: 200px;" alt="Checkbox Screenshot">](/react/checkbox)
 export Checkbox from './checkbox';
 // _______________________________________________________________________________________________________
 
 // ## Data Tables
 // * [Documentation](./data-table/data-table.html)
 // * [Live Example](/react/data-table)
-// * [<img src="/assets/demo-site/images/component-examples/data-table.png" style="max-height: 200px;" alt="DataTable Screenshot">](/react/data-table)
+// * [<img src="/assets/images/component-examples/data-table.png" style="max-height: 200px;" alt="DataTable Screenshot">](/react/data-table)
 export DataTable from './data-table';
 // _______________________________________________________________________________________________________
 
 // ## Datepickers
 // * [Documentation](./datepicker/datepicker.html)
 // * [Live Example](/react/datepicker)
-// * [<img src="/assets/demo-site/images/component-examples/datepicker.png" style="max-height: 200px;" alt="Datepicker Screenshot">](/react/datepicker)
+// * [<img src="/assets/images/component-examples/datepicker.png" style="max-height: 200px;" alt="Datepicker Screenshot">](/react/datepicker)
 export Datepicker from './datepicker';
 // _______________________________________________________________________________________________________
 
 // ## Dropdowns
 // * [Documentation](./dropdown/dropdown.html)
 // * [Live Example](/react/dropdown)
-// * [<img src="/assets/demo-site/images/component-examples/dropdown.png" style="max-height: 200px;" alt="Dropdown Screenshot">](/react/dropdown)
+// * [<img src="/assets/images/component-examples/dropdown.png" style="max-height: 200px;" alt="Dropdown Screenshot">](/react/dropdown)
 export Dropdown from './dropdown';
 export DropdownButtonTrigger from './dropdown/button-trigger';
 // _______________________________________________________________________________________________________
@@ -73,21 +73,21 @@ export DropdownButtonTrigger from './dropdown/button-trigger';
 // ## Icons
 // * [Documentation](./icon/icon.html)
 // * [Live Example](/react/icon)
-// * [<img src="/assets/demo-site/images/component-examples/icon.png" style="max-height: 200px;" alt="Icon Screenshot">](/react/icon)
+// * [<img src="/assets/images/component-examples/icon.png" style="max-height: 200px;" alt="Icon Screenshot">](/react/icon)
 export Icon from './icon';
 // _______________________________________________________________________________________________________
 
 // ## Inputs
 // * [Documentation](./input/input.html)
 // * [Live Example](/react/input)
-// * [<img src="/assets/demo-site/images/component-examples/input.png" style="max-height: 200px;" alt="Input Screenshot">](/react/input)
+// * [<img src="/assets/images/component-examples/input.png" style="max-height: 200px;" alt="Input Screenshot">](/react/input)
 export Input from './input';
 // _______________________________________________________________________________________________________
 
 // ## Lookups
 // * [Documentation](./lookup/lookup.html)
 // * [Live Example](/react/lookup)
-// * [<img src="/assets/demo-site/images/component-examples/lookup.png" style="max-height: 200px;" alt="Lookup Screenshot">](/react/lookup)
+// * [<img src="/assets/images/component-examples/lookup.png" style="max-height: 200px;" alt="Lookup Screenshot">](/react/lookup)
 export Lookup from './lookup';
 // _______________________________________________________________________________________________________
 
@@ -101,68 +101,68 @@ export MenuItem from './menu/item';
 // ## Modals
 // * [Documentation](./modal/modal.html)
 // * [Live Example](/react/modal)
-// * [<img src="/assets/demo-site/images/component-examples/modal.png" style="max-height: 200px;" alt="Modal Screenshot">](/react/modal)
+// * [<img src="/assets/images/component-examples/modal.png" style="max-height: 200px;" alt="Modal Screenshot">](/react/modal)
 export Modal from './modal';
 // _______________________________________________________________________________________________________
 
 // ## Notifications
 // * [Documentation](./notification/notification.html)
 // * [Live Example](/react/notification)
-// * [<img src="/assets/demo-site/images/component-examples/notification.png" style="max-height: 200px;" alt="Notification Screenshot">](/react/notification)
+// * [<img src="/assets/images/component-examples/notification.png" style="max-height: 200px;" alt="Notification Screenshot">](/react/notification)
 export Notification from './notification';
 // _______________________________________________________________________________________________________
 
 // ## Picklists
 // * [Documentation](./picklist.html)
 // * [Live Example](/react/picklist)
-// * [<img src="/assets/demo-site/images/component-examples/picklist.png" style="max-height: 200px;" alt="Picklist Screenshot">](/react/picklist)
+// * [<img src="/assets/images/component-examples/picklist.png" style="max-height: 200px;" alt="Picklist Screenshot">](/react/picklist)
 export Picklist from './picklist';
 // _______________________________________________________________________________________________________
 
 // ## Pillss
 // * [Documentation](./pills/pills.html)
 // * [Live Example](/react/pills)
-// * [<img src="/assets/demo-site/images/component-examples/pills.png" style="max-height: 200px;" alt="Pills Screenshot">](/react/pills)
+// * [<img src="/assets/images/component-examples/pills.png" style="max-height: 200px;" alt="Pills Screenshot">](/react/pills)
 export Pills from './pills';
 // _______________________________________________________________________________________________________
 
 // ## Popovers
 // * [Documentation](./popover/popover.html)
 // * [Live Example](/react/popover)
-// * [<img src="/assets/demo-site/images/component-examples/popover.png" style="max-height: 200px;" alt="Popover Screenshot">](/react/popover)
+// * [<img src="/assets/images/component-examples/popover.png" style="max-height: 200px;" alt="Popover Screenshot">](/react/popover)
 export Popover from './popover';
 // _______________________________________________________________________________________________________
 
 // ## Radio
 // * [Documentation](./radio/radio.html)
 // * [Live Example](/react/radio)
-// * [<img src="/assets/demo-site/images/component-examples/radio.png" style="max-height: 200px;" alt="Radio Screenshot">](/react/radio)
+// * [<img src="/assets/images/component-examples/radio.png" style="max-height: 200px;" alt="Radio Screenshot">](/react/radio)
 export Radio from './radio';
 // _______________________________________________________________________________________________________
 
 // ## Spinners
 // * [Documentation](./spinner/spinner.html)
 // * [Live Example](/react/spinner)
-// * [<img src="/assets/demo-site/images/component-examples/spinner.png" style="max-height: 200px;" alt="Spinner Screenshot">](/react/spinner)
+// * [<img src="/assets/images/component-examples/spinner.png" style="max-height: 200px;" alt="Spinner Screenshot">](/react/spinner)
 export Spinner from './spinner';
 // _______________________________________________________________________________________________________
 
 // ## Svgs (Deprecated)
 // * [Documentation](./svg.html)
 // * [Live Example](/react/svg)
-// * [<img src="/assets/demo-site/images/component-examples/svg.png" style="max-height: 200px;" alt="Svg Screenshot">](/react/svg)
+// * [<img src="/assets/images/component-examples/svg.png" style="max-height: 200px;" alt="Svg Screenshot">](/react/svg)
 export Svg from './svg';
 // _______________________________________________________________________________________________________
 
 // ## Tooltips
 // * [Documentation](./tooltip/tooltip.html)
 // * [Live Example](/react/tooltip)
-// * [<img src="/assets/demo-site/images/component-examples/tooltip.png" style="max-height: 200px;" alt="Tooltip Screenshot">](/react/tooltip)
+// * [<img src="/assets/images/component-examples/tooltip.png" style="max-height: 200px;" alt="Tooltip Screenshot">](/react/tooltip)
 export Tooltip from './tooltip';
 // _______________________________________________________________________________________________________
 
 // ## Trees
 // * [Documentation](./tree/tree.html)
 // * [Live Example](/react/tree)
-// * [<img src="/assets/demo-site/images/component-examples/tree.png" style="max-height: 200px;" alt="Tree Screenshot">](/react/tree)
+// * [<img src="/assets/images/component-examples/tree.png" style="max-height: 200px;" alt="Tree Screenshot">](/react/tree)
 export Tree from './tree';

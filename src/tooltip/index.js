@@ -13,7 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Implements the [Tooltip design pattern](http://www.lightningdesignsystem.com/components/popovers/#tooltips) in React.
 
-// [![Tooltip component example screenshot](/assets/demo-site/images/component-examples/tooltip.png "Tooltip component example screenshot")](/react/tooltip)
+// [![Tooltip component example screenshot](/assets/images/component-examples/tooltip.png "Tooltip component example screenshot")](/react/tooltip)
 
 // > See a [live example](/react/tooltip) of the Tooltip component in action
 

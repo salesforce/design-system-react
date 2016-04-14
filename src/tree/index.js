@@ -13,7 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Implements the [Tree design pattern](https://www.lightningdesignsystem.com/components/trees) in React. This is similar to both the Picklist and the Pills, but currently there is no inheritance from either component.
 
-// [![Tree component example screenshot](/assets/demo-site/images/component-examples/tree.png "Tree component example screenshot")](/react/tree)
+// [![Tree component example screenshot](/assets/images/component-examples/tree.png "Tree component example screenshot")](/react/tree)
 
 // > See a [live example](/react/tree) of the Tree component in action
 
@@ -126,7 +126,7 @@ export const TreeDefinition = {
 			React.PropTypes.array,
 			React.PropTypes.object
 		]).isRequired,
-		
+
 		autoOpen: React.PropTypes.bool,
 		autoOpenLimit: React.PropTypes.number,
 		heading: React.PropTypes.string,
