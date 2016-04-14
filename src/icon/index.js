@@ -13,43 +13,43 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND 
 // React is an external dependency of the project.
 import React from 'react';
 
-// Facades uses [classNames](https://github.com/JedWatson/classnames), "a simple javascript utility for conditionally joining classNames together." Because of the small size of the library, the default build includes the entire library rather than requiring it as an external dependency.
+// SLDS for JavaScript uses [classNames](https://github.com/JedWatson/classnames), "a simple javascript utility for conditionally joining classNames together." Because of the small size of the library, the default build includes the entire library rather than requiring it as an external dependency.
 import classNames from 'classnames';
 
 import IconUtility from '../icon-utility';
 
 const displayName = 'Icon';
 const propTypes = {
-  /**
-   * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
-   * Naked icons must have assistive text, however, if you also have visible descriptive text with the icon,
-   * declare this prop as <code>assistiveText=''</code>.
-   */
-  assistiveText: React.PropTypes.string,
-  category: React.PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']).isRequired,
-  /**
-   * If true, icon background is circular (if category is "action" as dictated by styles).
-   */
-  circle: React.PropTypes.bool,
-  /**
-   * CSS classes that are applied to the SVG
-   */
-  className: React.PropTypes.string,
-  /**
-   * If true, icon color is white. If false, icon color is the default text color.
-   */
-  inverse: React.PropTypes.bool,
-  /**
-   * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
-   */
-  name: React.PropTypes.string.isRequired,
-  size: React.PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
+	/**
+	 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+	 * Naked icons must have assistive text, however, if you also have visible descriptive text with the icon,
+	 * declare this prop as <code>assistiveText=''</code>.
+	 */
+	assistiveText: React.PropTypes.string,
+	category: React.PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']).isRequired,
+	/**
+	 * If true, icon background is circular (if category is "action" as dictated by styles).
+	 */
+	circle: React.PropTypes.bool,
+	/**
+	 * CSS classes that are applied to the SVG
+	 */
+	className: React.PropTypes.string,
+	/**
+	 * If true, icon color is white. If false, icon color is the default text color.
+	 */
+	inverse: React.PropTypes.bool,
+	/**
+	 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
+	 */
+	name: React.PropTypes.string.isRequired,
+	size: React.PropTypes.oneOf(['x-small', 'small', 'medium', 'large'])
 };
 const defaultProps = {
-  category: 'standard',
-  circle: false,
-  inverse: true,
-  size: 'medium'
+	category: 'standard',
+	circle: false,
+	inverse: true,
+	size: 'medium'
 };
 
 /**
@@ -57,52 +57,52 @@ const defaultProps = {
  */
 class Icon extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+	constructor (props) {
+		super(props);
+		this.state = {};
+	}
 
-  getContainerClassName() {
-    const name = this.props.name ? this.props.name.replace(/_/g,'-'): '';
-    const renderName = (this.props.category === 'action');
+	getContainerClassName () {
+		const name = this.props.name ? this.props.name.replace(/_/g, '-') : '';
+		const renderName = (this.props.category === 'action');
 
-    return classNames({
-      ['slds-icon__container']: this.props.category !== 'utility',
-      [`slds-icon-${this.props.category}-${name}`]: renderName,
-      ['slds-icon_container--circle']: this.props.circle
-    })
-  }
+		return classNames({
+			['slds-icon__container']: this.props.category !== 'utility',
+			[`slds-icon-${this.props.category}-${name}`]: renderName,
+			['slds-icon_container--circle']: this.props.circle
+		});
+	}
 
-  getClassName() {
-    const name = this.props.name ? this.props.name.replace(/_/g,'-'): '';
-    const customName = this.props.name ? this.props.name.replace('custom', 'custom-'): null;
+	getClassName () {
+		const name = this.props.name ? this.props.name.replace(/_/g, '-') : '';
+		const customName = this.props.name ? this.props.name.replace('custom', 'custom-') : null;
 
-    return classNames(this.props.className, 'slds-icon', {
-      [`slds-icon--${this.props.size}`]: this.props.size !== 'medium',
-      [`slds-icon-${customName}`]: this.props.category === 'custom',
-      [`slds-icon-${this.props.category}-${name}`]: this.props.category === 'standard',
-      [`slds-icon-text-default`]: !this.props.inverse,
-    });
-  }
+		return classNames(this.props.className, 'slds-icon', {
+			[`slds-icon--${this.props.size}`]: this.props.size !== 'medium',
+			[`slds-icon-${customName}`]: this.props.category === 'custom',
+			[`slds-icon-${this.props.category}-${name}`]: this.props.category === 'standard',
+			['slds-icon-text-default']: !this.props.inverse
+		});
+	}
 
-  render() {
-    let label = null;
+	render () {
+		let label = null;
 
-    if(this.props.assistiveText) {
-      label = <span className='slds-assistive-text'>{this.props.assistiveText}</span>;
-    }
-    return (
-      <span className={this.getContainerClassName()}>
-      {label}
-      <IconUtility
-        aria-hidden='true'
-        category={this.props.category}
-        className={this.getClassName()}
-        name={this.props.name}
-        />
-      </span>
-    )
-  }
+		if (this.props.assistiveText) {
+			label = <span className="slds-assistive-text">{this.props.assistiveText}</span>;
+		}
+		return (
+			<span className={this.getContainerClassName()}>
+			{label}
+			<IconUtility
+				aria-hidden="true"
+				category={this.props.category}
+				className={this.getClassName()}
+				name={this.props.name}
+			/>
+			</span>
+		);
+	}
 }
 
 Icon.displayName = displayName;

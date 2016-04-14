@@ -43,7 +43,7 @@ import classNames from 'classnames';
 
 // ### Mixins
 
-// These are mixins that appear in all of SLDS for Javascript,
+// These are mixins that appear in all of SLDS for JavaScript,
 // bringing consistency to instantiation, events, and state.
 
 // #### Events
