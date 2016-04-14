@@ -78,7 +78,7 @@ export const COMPONENT = 'Dropdown';
 /**
  * A Dropdown is a specific implementation of the Lightning Design System Menu component. It offers a list of actions or functions that a user can access. You can find documentation on the design pattern on the <a href=\"https://www.lightningdesignsystem.com/components/menus/#dropdown\">Lightning Design System website</a>.
  *
- * Implementing a basic Dropdown can be as simple as providing an id and a collection of items to this component, as illustrated in the examples below. If you need deeper customization, you can provide a `<Trigger>` and/or `<Menu>` component as a child to override and customize nearly every aspect of the component's appearance and to implement additional features.
+ * Implementing a basic Dropdown can be as simple as providing an id and a collection of items to this component, as illustrated in the examples below. If you need deeper customization, you can provide a Trigger and/or Menu component as a child to override and customize nearly every aspect of the component's appearance and to implement additional features.
  */
 export const DropdownDefinition = {
 	// ### Display Name
