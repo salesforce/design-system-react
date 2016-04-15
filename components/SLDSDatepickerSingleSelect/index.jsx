@@ -20,35 +20,28 @@ import {KEYS,EventUtil} from '../utils';
 const displayName = 'SLDSDatepickerSingleSelect';
 const propTypes = {
   abbrWeekDayLabels: React.PropTypes.array,
-
   /**
    * Date formatting function
    */
   formatter: React.PropTypes.func,
-
   monthLabels: React.PropTypes.array,
-
   /**
    * Parsing date string into Date
    */
   parser: React.PropTypes.func,
-
   relativeYearFrom: React.PropTypes.number,
-
   relativeYearTo: React.PropTypes.number,
-
+  /**
+   * If true, adds asterisk next to input label to indicate it is a required field.
+   */
+  required: React.PropTypes.bool,
+  strValue: React.PropTypes.string,
   todayLabel: React.PropTypes.string,
-
   /**
    * Date
    */
   value: React.PropTypes.instanceOf(Date),
-
-  strValue: React.PropTypes.string,
-
   weekDayLabels: React.PropTypes.array,
-
-
 };
 const defaultProps = {
   abbrWeekDayLabels: ['S','M','T','W','T','F','S'],
@@ -74,6 +67,7 @@ const defaultProps = {
   placeholder: 'Pick a Date',
   relativeYearFrom: -5,
   relativeYearTo: 5,
+  required: false,
   todayLabel: 'Today',
   value: null,
   weekDayLabels: [
@@ -196,16 +190,22 @@ module.exports = React.createClass({
     return <InputIcon name='event' style={{pointerEvents: 'none'}} />;
   },
 
+  inputRefName() {
+    return `${this.props.label}Datepicker`;
+  },
+
   render() {
+    const required = this.props.required ? <span style={{color:"red"}}>* </span>:null;
+    const inputLabel = this.props.label?<label className="slds-form-element__label" htmlFor={this.inputRefName()} style={{width: "100%"}}>{required}{this.props.label}</label>:null;
     return (
       <div className='slds-form-element'>
-        <label className='slds-form-element__label' htmlFor='date'>{this.props.label}</label>
+        {inputLabel}
         <div className='slds-form-element__control'>
           <div className='slds-input-has-icon slds-input-has-icon--right'>
 
             { this.getInputIcon() }
             <input
-              name='date'
+              id={this.inputRefName()}
               ref='date'
               className='slds-input'
               type='text'
