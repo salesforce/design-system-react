@@ -36,14 +36,14 @@ const DataTableExample = React.createClass({
 	render () {
 		return (
 			<DataTable
-				collection={this.state.collection}
-				selection={this.state.selection}
-				columns={this.state.columns}
 				bordered
-				striped
+				collection={this.state.collection}
+				columns={this.state.columns}
 				onChange={this.handleChanged}
 				onSort={this.sort}
+				selection={this.state.selection}
 				selectRows
+				striped
 			>
 				<DataTableColumn
 					label="Campaign Name"
