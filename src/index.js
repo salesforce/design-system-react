@@ -53,6 +53,7 @@ export Checkbox from './checkbox';
 // * [Live Example](/react/data-table)
 // * [<img src="/assets/images/component-examples/data-table.png" style="max-height: 200px;" alt="DataTable Screenshot">](/react/data-table)
 export DataTable from './data-table';
+export DataTableColumn from './data-table/column';
 // _______________________________________________________________________________________________________
 
 // ## Datepickers
