@@ -49,7 +49,7 @@ export const DataTableRowDefinition = {
 		canSelectRows: PropTypes.bool.isRequired,
 		columns: PropTypes.arrayOf(
 			PropTypes.shape({
-				Cell: PropTypes.element,
+				Cell: PropTypes.func,
 				props: PropTypes.object
 			})
 		),
@@ -79,11 +79,10 @@ export const DataTableRowDefinition = {
 					const Cell = column.Cell;
 
 					return (
-						<td className="slds-truncate" data-label={column.props.label}>
+						<td className="slds-truncate" data-label={column.props.label} key={column.props.property}>
 							<Cell
 								{...column.props}
 								item={this.props.item}
-								key={column.props.property}
 							/>
 						</td>
 					);

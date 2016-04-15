@@ -150,9 +150,11 @@ export const DataTableDefinition = {
 					...props
 				} = child.props;
 
-				let Cell = DataTableCell;
+				let Cell;
 				if (children && children.type.displayName === 'DataTableCell') {
-					Cell = children;
+					Cell = children.type;
+				} else {
+					Cell = DataTableCell;
 				}
 
 				columns.push({
@@ -164,7 +166,7 @@ export const DataTableDefinition = {
 
 		return (
 			<table
-				className={classNames({
+				className={classNames('slds-table', {
 					'slds-table--bordered': this.props.bordered,
 					'slds-max-medium-table--stacked': this.props.stacked,
 					'slds-max-medium-table--stacked-horizontalviewports': this.props.stackedHorizontal,
@@ -177,6 +179,7 @@ export const DataTableDefinition = {
 					columns={columns}
 					onToggleAll={this.handleToggleAll}
 					onSort={this.handleSort}
+					showRowActions={false}
 				/>
 				<tbody>
 					{numRows &&
@@ -188,6 +191,7 @@ export const DataTableDefinition = {
 								key={index}
 								onToggle={this.handleRowToggle}
 								selection={this.props.selection}
+								showRowActions={false}
 							/>
 						))
 					}
@@ -209,11 +213,11 @@ export const DataTableDefinition = {
 			let selection;
 
 			if (selected) {
-				selection = without(this.props.selection, item);
-			} else {
 				selection = [...this.props.selection, item];
+			} else {
+				selection = without(this.props.selection, item);
 			}
-
+			
 			this.props.onChange(selection);
 		}
 	},

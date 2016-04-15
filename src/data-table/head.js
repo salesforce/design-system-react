@@ -50,7 +50,7 @@ export const DataTableHeadDefinition = {
 		canSelectRows: PropTypes.bool.isRequired,
 		columns: PropTypes.arrayOf(
 			PropTypes.shape({
-				Cell: PropTypes.element,
+				Cell: PropTypes.func,
 				props: PropTypes.object
 			})
 		),

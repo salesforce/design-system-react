@@ -36,7 +36,7 @@ export const DataTableCellDefinition = {
 
 	// ### Render
 	render () {
-		return this.props.item[this.props.property];
+		return <span>{this.props.item[this.props.property]}</span>;
 	}
 };
 
