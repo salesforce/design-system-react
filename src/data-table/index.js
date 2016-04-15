@@ -39,6 +39,12 @@ import isArray from 'lodash/lang/isArray';
 
 // ## Children
 
+// ### Cell
+import DataTableCell from './cell';
+
+// ### Column
+import DataTableColumn from './column';
+
 // ### Head
 import DataTableHead from './head';
 
@@ -66,6 +72,7 @@ export const DataTableDefinition = {
 	// ### Prop Types
 	propTypes: {
 		bordered: PropTypes.bool,
+		children: PropTypes.node,
 		collection: PropTypes.array.isRequired,
 		/**
 		 * End of Life. Please provide one or more children of the type `<Column />` instead:
@@ -79,8 +86,7 @@ export const DataTableDefinition = {
 			PropTypes.shape({
 				propertyName: PropTypes.string,
 				displayName: PropTypes.string,
-				sortable: PropTypes.bool,
-				hintParent: PropTypes.bool
+				sortable: PropTypes.bool
 			})
 		),
 		selection: PropTypes.array,
@@ -112,7 +118,40 @@ export const DataTableDefinition = {
 		const numSelected = count(this.props.selection);
 		const canSelectRows = this.props.selectRows && numRows > 0;
 		const allSelected = canSelectRows && numRows === numSelected;
-		const columns = this.props.children;
+		const columns = [];
+
+		// Legacy Support
+		if (isArray(this.props.columns)) {
+			this.props.columns.forEach((column) => {
+				columns.push({
+					Cell: DataTableCell,
+					props: {
+						label: column.displayName,
+						property: column.propertyName,
+						sortable: column.sortable
+					}
+				});
+			});
+		}
+
+		React.Children.forEach(this.props.children, (child) => {
+			if (child && child.type === DataTableColumn) {
+				const {
+					children,
+					...props
+				} = child.props;
+
+				let Cell = DataTableCell;
+				if (children && children.type.displayName === 'DataTableCell') {
+					Cell = children;
+				}
+
+				columns.push({
+					Cell,
+					props
+				});
+			}
+		});
 
 		return (
 			<table
@@ -126,23 +165,21 @@ export const DataTableDefinition = {
 				<DataTableHead
 					allSelected={allSelected}
 					canSelectRows={canSelectRows}
+					columns={columns}
 					onSelectAll={this.handleSelectAll}
 					onSort={this.handleSort}
-				>
-					{columns}
-				</DataTableHead>
+				/>
 				<tbody>
 					{numRows &&
 						this.props.collection.map((item, index) => (
 							<DataTableRow
 								canSelectRows={canSelectRows}
+								columns={columns}
 								item={item}
 								key={index}
 								onToggle={this.handleRowToggle}
 								selection={this.props.selection}
-							>
-								{columns}
-							</DataTableRow>
+							/>
 						))
 					}
 				</tbody>

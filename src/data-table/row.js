@@ -26,9 +26,6 @@ import includes from 'lodash/collection/includes';
 
 // ## Children
 
-// ### Cell
-import DataTableCell from './cell';
-
 // ### Checkbox
 import Checkbox from '../checkbox';
 
@@ -50,6 +47,12 @@ export const DataTableRowDefinition = {
 	// ### Prop Types
 	propTypes: {
 		canSelectRows: PropTypes.bool.isRequired,
+		columns: PropTypes.arrayOf(
+			PropTypes.shape({
+				Cell: PropTypes.element,
+				props: PropTypes.object
+			})
+		),
 		item: React.PropTypes.object.isRequired,
 		onToggle: PropTypes.func.isRequired,
 		showRowActions: PropTypes.bool.isRequired,
@@ -72,14 +75,8 @@ export const DataTableRowDefinition = {
 						/>
 					</td>
 				)}
-				{React.Children.map(this.props.children, (column) => {
-					let Cell = DataTableCell;
-
-					React.Children.forEach(column.children, (child) => {
-						if (child.displayName === 'DataTableCell') {
-							Cell = child;
-						}
-					});
+				{this.props.columns.map((column) => {
+					const Cell = column.Cell;
 
 					return (
 						<td className="slds-truncate" data-label={column.props.label}>

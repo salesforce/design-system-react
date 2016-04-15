@@ -48,6 +48,12 @@ export const DataTableHeadDefinition = {
 	propTypes: {
 		allSelected: PropTypes.bool.isRequired,
 		canSelectRows: PropTypes.bool.isRequired,
+		columns: PropTypes.arrayOf(
+			PropTypes.shape({
+				Cell: PropTypes.element,
+				props: PropTypes.object
+			})
+		),
 		onSelectAll: PropTypes.func.isRequired,
 		onSort: PropTypes.func.isRequired,
 		showRowActions: PropTypes.bool.isRequired
@@ -68,7 +74,7 @@ export const DataTableHeadDefinition = {
 							/>
 						</th>
 					)}
-					{React.Children.map(this.props.children, (column, index) => {
+					{this.props.columns.map((column, index) => {
 						const {
 							label,
 							property,
