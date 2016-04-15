@@ -72,15 +72,25 @@ export const DataTableRowDefinition = {
 						/>
 					</td>
 				)}
-				{React.Children.map(this.props.children, (column) => (
-					<td className="slds-truncate" data-label={column.props.label}>
-						<DataTableCell
-							{...column.props}
-							item={this.props.item}
-							key={column.props.property}
-						/>
-					</td>
-				))}
+				{React.Children.map(this.props.children, (column) => {
+					let Cell = DataTableCell;
+
+					React.Children.forEach(column.children, (child) => {
+						if (child.displayName === 'DataTableCell') {
+							Cell = child;
+						}
+					});
+
+					return (
+						<td className="slds-truncate" data-label={column.props.label}>
+							<Cell
+								{...column.props}
+								item={this.props.item}
+								key={column.props.property}
+							/>
+						</td>
+					);
+				})}
 				{this.props.showRowActions && <th className="slds-cell-shrink"></th>}
 			</tr>
 		);
