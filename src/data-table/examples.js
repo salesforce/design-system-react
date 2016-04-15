@@ -1,6 +1,6 @@
 import React from 'react';
-import LegacyDataTable from './legacy';
 import DataTable from './index';
+import DataTableColumn from './column';
 
 // SAMPLE COMPONENT CODE -->
 import sortBy from 'lodash/collection/sortBy';
@@ -19,20 +19,6 @@ const collection = [
 	}
 ];
 
-const columns = [
-	{
-		propertyName: 'name', displayName: 'Campaign Name', sortable: false, hintParent: false
-	}, {
-		propertyName: 'count', displayName: 'Count', sortable: true, hintParent: false
-	}, {
-		propertyName: 'lastModified', displayName: 'Last Modified', sortable: true, hintParent: false
-	}
-];
-
-const styles = {
-	bordered: true, striped: true
-};
-
 const DataTableExample = React.createClass({
 	displayName: 'DataTableExample',
 
@@ -43,9 +29,7 @@ const DataTableExample = React.createClass({
 	getInitialState () {
 		return {
 			collection,
-			columns,
-			selection: [],
-			styles
+			selection: []
 		};
 	},
 
@@ -55,12 +39,27 @@ const DataTableExample = React.createClass({
 				collection={this.state.collection}
 				selection={this.state.selection}
 				columns={this.state.columns}
-				bordered={this.state.styles.bordered}
-				striped={this.state.styles.striped}
+				bordered
+				striped
 				onChange={this.handleChanged}
 				onSort={this.sort}
 				selectRows
-			/>
+			>
+				<DataTableColumn
+					label="Campaign Name"
+					property="name"
+				/>
+				<DataTableColumn
+					label="Count"
+					property="count"
+					sortable
+				/>
+				<DataTableColumn
+					label="Last Modified"
+					property="lastModified"
+					sortable
+				/>
+			</DataTable>
 		);
 	},
 

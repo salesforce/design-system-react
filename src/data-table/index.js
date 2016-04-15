@@ -217,7 +217,7 @@ export const DataTableDefinition = {
 			} else {
 				selection = without(this.props.selection, item);
 			}
-			
+
 			this.props.onChange(selection);
 		}
 	},
