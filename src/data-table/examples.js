@@ -67,16 +67,16 @@ const DataTableExample = React.createClass({
 		this.setState({ selection });
 	},
 
-	sort (colData) {
+	sort (sortColumn, sortDirection) {
 		let rowData = this.state.collection;
 
-		if (colData.sortColumn.propertyName === 'count') {
+		if (sortColumn.property === 'count') {
 			rowData = sortBy(rowData, 'count');
-		} else if (colData.sortColumn.propertyName === 'lastModified') {
+		} else if (sortColumn.property === 'lastModified') {
 			rowData = sortBy(rowData, 'lastModified');
 		}
 
-		if (colData.sortDirection === 'desc') rowData.reverse();
+		if (sortDirection === 'desc') rowData.reverse();
 
 		this.setState({
 			collection: rowData

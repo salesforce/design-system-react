@@ -222,12 +222,9 @@ export const DataTableDefinition = {
 		}
 	},
 
-	handleSort (columnProps) {
+	handleSort (sortColumn) {
 		if (isFunction(this.props.onSort)) {
-			this.props.onSort({
-				sortColumn: columnProps,
-				sortDirection: columnProps.sortDirection === 'asc' ? 'desc' : 'asc'
-			});
+			this.props.onSort(sortColumn, sortColumn.sortDirection === 'asc' ? 'desc' : 'asc');
 		}
 	}
 };
