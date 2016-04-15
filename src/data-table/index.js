@@ -46,7 +46,7 @@ import without from 'lodash/array/without';
 // ## Children
 
 // ### Cell
-import DataTableCell from './cell';
+import DataTableCell, { COMPONENT as DataTableCellComponent } from './cell';
 
 // ### Column
 import DataTableColumn from './column';
@@ -56,6 +56,9 @@ import DataTableHead from './head';
 
 // ### Row
 import DataTableRow from './row';
+
+// ### Actions
+import DataTableRowActions from './row-actions';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
@@ -79,6 +82,7 @@ export const DataTableDefinition = {
 	propTypes: {
 		bordered: PropTypes.bool,
 		children: PropTypes.node,
+		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		collection: PropTypes.array.isRequired,
 		/**
 		 * End of Life. Please provide one or more children of the type `<Column />` instead:
@@ -96,6 +100,7 @@ export const DataTableDefinition = {
 				sortDirection: PropTypes.oneOf(['desc', 'asc'])
 			})
 		),
+		id: PropTypes.string.isRequired,
 		onChange: PropTypes.func,
 		onSort: PropTypes.func,
 		selection: PropTypes.array,
@@ -128,6 +133,7 @@ export const DataTableDefinition = {
 		const canSelectRows = this.props.selectRows && numRows > 0;
 		const allSelected = canSelectRows && numRows === numSelected;
 		const columns = [];
+		let RowActions = null;
 
 		// Legacy Support
 		if (isArray(this.props.columns)) {
@@ -151,7 +157,7 @@ export const DataTableDefinition = {
 				} = child.props;
 
 				let Cell;
-				if (children && children.type.displayName === 'DataTableCell') {
+				if (children && children.type.displayName === DataTableCellComponent) {
 					Cell = children.type;
 				} else {
 					Cell = DataTableCell;
@@ -161,6 +167,8 @@ export const DataTableDefinition = {
 					Cell,
 					props
 				});
+			} else if (child && child.type === DataTableRowActions) {
+				RowActions = child;
 			}
 		});
 
@@ -171,7 +179,7 @@ export const DataTableDefinition = {
 					'slds-max-medium-table--stacked': this.props.stacked,
 					'slds-max-medium-table--stacked-horizontalviewports': this.props.stackedHorizontal,
 					'slds-table--striped': this.props.striped
-				})}
+				}, this.props.className)}
 			>
 				<DataTableHead
 					allSelected={allSelected}
@@ -179,7 +187,7 @@ export const DataTableDefinition = {
 					columns={columns}
 					onToggleAll={this.handleToggleAll}
 					onSort={this.handleSort}
-					showRowActions={false}
+					showRowActions={!!RowActions}
 				/>
 				<tbody>
 					{numRows &&
@@ -187,11 +195,12 @@ export const DataTableDefinition = {
 							<DataTableRow
 								canSelectRows={canSelectRows}
 								columns={columns}
+								id={`${this.props.id}-${index}`}
 								item={item}
 								key={index}
 								onToggle={this.handleRowToggle}
 								selection={this.props.selection}
-								showRowActions={false}
+								rowActions={RowActions}
 							/>
 						))
 					}

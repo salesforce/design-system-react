@@ -53,9 +53,10 @@ export const DataTableRowDefinition = {
 				props: PropTypes.object
 			})
 		),
+		id: PropTypes.string.isRequired,
 		item: React.PropTypes.object.isRequired,
 		onToggle: PropTypes.func.isRequired,
-		showRowActions: PropTypes.bool.isRequired,
+		rowActions: PropTypes.element,
 		selection: PropTypes.array.isRequired
 	},
 
@@ -87,7 +88,12 @@ export const DataTableRowDefinition = {
 						</td>
 					);
 				})}
-				{this.props.showRowActions && <th className="slds-cell-shrink"></th>}
+				{this.props.rowActions &&
+					React.cloneElement(this.props.rowActions, {
+						id: `${this.props.id}-DataTableRowActions`,
+						item: this.props.item
+					})
+				}
 			</tr>
 		);
 	},
