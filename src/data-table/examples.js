@@ -40,7 +40,7 @@ const DataTableExample = React.createClass({
 				collection={this.state.collection}
 				columns={this.state.columns}
 				onChange={this.handleChanged}
-				onSort={this.sort}
+				onSort={this.handleSort}
 				selection={this.state.selection}
 				selectRows
 				striped
@@ -69,7 +69,7 @@ const DataTableExample = React.createClass({
 		this.setState({ selection });
 	},
 
-	sort (sortColumn, sortDirection) {
+	handleSort (sortColumn, sortDirection) {
 		let rowData = this.state.collection;
 		let countSortDirection;
 		let lastModifiedSortDirection;
