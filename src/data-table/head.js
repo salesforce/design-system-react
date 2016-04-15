@@ -47,9 +47,10 @@ export const DataTableHeadDefinition = {
 	// ### Prop Types
 	propTypes: {
 		allSelected: PropTypes.bool.isRequired,
+		canSelectRows: PropTypes.bool.isRequired,
 		onSelectAll: PropTypes.func.isRequired,
 		onSort: PropTypes.func.isRequired,
-		canSelectRows: PropTypes.bool.isRequired
+		showRowActions: PropTypes.bool.isRequired
 	},
 
 	// ### Render
@@ -58,19 +59,19 @@ export const DataTableHeadDefinition = {
 			<thead>
 				<tr className="slds-text-heading--label">
 					{this.props.canSelectRows && (
-						<th scope="col">
+						<th className="slds-cell-shrink" scope="col">
 							<Checkbox
+								assistiveText="Select All"
 								checked={this.props.allSelected}
-								name="Select All"
+								name="SelectAll"
 								onChanged={this.props.onSelectAll}
 							/>
 						</th>
 					)}
 					{React.Children.map(this.props.children, (column, index) => {
 						const {
-							displayName,
-							hintParent,
-							propertyName,
+							label,
+							property,
 							sortable,
 							sortDirection
 						} = column.props;
@@ -78,26 +79,27 @@ export const DataTableHeadDefinition = {
 						return (
 							<th
 								scope="col"
-								key={propertyName}
+								key={property}
 								className={classNames({
-									'slds-hint-parent': hintParent,
 									'slds-is-sortable': sortable
 								})}
 								onClick={this._getSortHandler(sortable, column.props, index)}
 							>
-								<span className="slds-truncate" data-prop={propertyName}>{displayName}</span>
-								{sortable && (
-									<Button
-										assistiveText="Sort"
-										iconCategory="utility"
-										iconName={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
-										iconSize="small"
-										iconStyle="icon-bare"
-									/>
-								)}
+								<div className="slds-truncate">{label}
+									{sortable && (
+										<Button
+											assistiveText="Sort"
+											iconCategory="utility"
+											iconName={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
+											iconSize="small"
+											iconStyle="icon-bare"
+										/>
+									)}
+								</div>
 							</th>
 						);
 					})}
+					{this.props.showRowActions && <th className="slds-cell-shrink"></th>}
 				</tr>
 			</thead>
 		);

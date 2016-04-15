@@ -34,13 +34,22 @@ import React from 'react';
 // external dependency.
 import classNames from 'classnames';
 
+// ### isArray
+import isArray from 'lodash/lang/isArray';
+
 // ## Children
 
 // ### Head
 import DataTableHead from './head';
 
+// ### Row
+import DataTableRow from './row';
+
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
+
+// Safely get the length of an array, returning 0 for invalid input.
+const count = (array) => isArray(array) ? array.length : 0;
 
 // The component name will be used as the `DisplayName` and exported along with
 // the component itself.
@@ -74,11 +83,8 @@ export const DataTableDefinition = {
 				hintParent: PropTypes.bool
 			})
 		),
+		selection: PropTypes.array,
 		selectRows: PropTypes.bool,
-		selection: PropTypes.oneOfType([
-			PropTypes.array,
-			PropTypes.object
-		]),
 		stacked: PropTypes.bool,
 		stackedHorizontal: PropTypes.bool,
 		striped: PropTypes.bool
@@ -87,6 +93,7 @@ export const DataTableDefinition = {
 	getDefaultProps () {
 		return {
 			bordered: false,
+			selection: [],
 			selectRows: false,
 			stacked: false,
 			stackedHorizontal: false,
@@ -101,6 +108,12 @@ export const DataTableDefinition = {
 
 	// ### Render
 	render () {
+		const numRows = count(this.props.collection);
+		const numSelected = count(this.props.selection);
+		const canSelectRows = this.props.selectRows && numRows > 0;
+		const allSelected = canSelectRows && numRows === numSelected;
+		const columns = this.props.children;
+
 		return (
 			<table
 				className={classNames({
@@ -110,11 +123,28 @@ export const DataTableDefinition = {
 					'slds-table--striped': this.props.striped
 				})}
 			>
-				<DataTableHead>
-					{this.props.children}
+				<DataTableHead
+					allSelected={allSelected}
+					canSelectRows={canSelectRows}
+					onSelectAll={this.handleSelectAll}
+					onSort={this.handleSort}
+				>
+					{columns}
 				</DataTableHead>
 				<tbody>
-					Rows
+					{numRows &&
+						this.props.collection.map((item, index) => (
+							<DataTableRow
+								canSelectRows={canSelectRows}
+								item={item}
+								key={index}
+								onToggle={this.handleRowToggle}
+								selection={this.props.selection}
+							>
+								{columns}
+							</DataTableRow>
+						))
+					}
 				</tbody>
 			</table>
 		);
