@@ -54,7 +54,7 @@ export const DataTableHeadDefinition = {
 				props: PropTypes.object
 			})
 		),
-		onSelectAll: PropTypes.func.isRequired,
+		onToggleAll: PropTypes.func.isRequired,
 		onSort: PropTypes.func.isRequired,
 		showRowActions: PropTypes.bool.isRequired
 	},
@@ -70,7 +70,7 @@ export const DataTableHeadDefinition = {
 								assistiveText="Select All"
 								checked={this.props.allSelected}
 								name="SelectAll"
-								onChanged={this.props.onSelectAll}
+								onChanged={this.handleChanged}
 							/>
 						</th>
 					)}
@@ -89,7 +89,7 @@ export const DataTableHeadDefinition = {
 								className={classNames({
 									'slds-is-sortable': sortable
 								})}
-								onClick={this._getSortHandler(sortable, column.props, index)}
+								onClick={this.getSortHandler(sortable, column.props, index)}
 							>
 								<div className="slds-truncate">{label}
 									{sortable && (
@@ -111,7 +111,11 @@ export const DataTableHeadDefinition = {
 		);
 	},
 
-	_getSortHandler (sortable, props, index) {
+	handleChanged () {
+		this.props.onToggleAll(!this.props.allSelected);
+	},
+
+	getSortHandler (sortable, props, index) {
 		if (sortable) {
 			return () => this.props.onSort(props, index);
 		}

@@ -37,6 +37,12 @@ import classNames from 'classnames';
 // ### isArray
 import isArray from 'lodash/lang/isArray';
 
+// ### isFunction
+import isFunction from 'lodash/lang/isFunction';
+
+// ### without
+import without from 'lodash/array/without';
+
 // ## Children
 
 // ### Cell
@@ -86,9 +92,12 @@ export const DataTableDefinition = {
 			PropTypes.shape({
 				propertyName: PropTypes.string,
 				displayName: PropTypes.string,
-				sortable: PropTypes.bool
+				sortable: PropTypes.bool,
+				sortDirection: PropTypes.oneOf(['desc', 'asc'])
 			})
 		),
+		onChange: PropTypes.func,
+		onSort: PropTypes.func,
 		selection: PropTypes.array,
 		selectRows: PropTypes.bool,
 		stacked: PropTypes.bool,
@@ -166,7 +175,7 @@ export const DataTableDefinition = {
 					allSelected={allSelected}
 					canSelectRows={canSelectRows}
 					columns={columns}
-					onSelectAll={this.handleSelectAll}
+					onToggleAll={this.handleToggleAll}
 					onSort={this.handleSort}
 				/>
 				<tbody>
@@ -185,6 +194,37 @@ export const DataTableDefinition = {
 				</tbody>
 			</table>
 		);
+	},
+
+	handleToggleAll (selected) {
+		if (isFunction(this.props.onChange)) {
+			const selection = selected ? [...this.props.collection] : [];
+
+			this.props.onChange(selection);
+		}
+	},
+
+	handleRowToggle (item, selected) {
+		if (isFunction(this.props.onChange)) {
+			let selection;
+
+			if (selected) {
+				selection = without(this.props.selection, item);
+			} else {
+				selection = [...this.props.selection, item];
+			}
+
+			this.props.onChange(selection);
+		}
+	},
+
+	handleSort (columnProps) {
+		if (isFunction(this.props.onSort)) {
+			this.props.onSort({
+				sortColumn: columnProps,
+				sortDirection: columnProps.sortDirection === 'asc' ? 'desc' : 'asc'
+			});
+		}
 	}
 };
 
