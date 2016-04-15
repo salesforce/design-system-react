@@ -53,11 +53,13 @@ const DataTableExample = React.createClass({
 					label="Count"
 					property="count"
 					sortable
+					sortDirection={this.state.countSortDirection}
 				/>
 				<DataTableColumn
 					label="Last Modified"
 					property="lastModified"
 					sortable
+					sortDirection={this.state.lastModifiedSortDirection}
 				/>
 			</DataTable>
 		);
@@ -69,17 +71,23 @@ const DataTableExample = React.createClass({
 
 	sort (sortColumn, sortDirection) {
 		let rowData = this.state.collection;
+		let countSortDirection;
+		let lastModifiedSortDirection;
 
 		if (sortColumn.property === 'count') {
 			rowData = sortBy(rowData, 'count');
+			countSortDirection = sortDirection;
 		} else if (sortColumn.property === 'lastModified') {
 			rowData = sortBy(rowData, 'lastModified');
+			lastModifiedSortDirection = sortDirection;
 		}
 
 		if (sortDirection === 'desc') rowData.reverse();
 
 		this.setState({
-			collection: rowData
+			collection: rowData,
+			countSortDirection,
+			lastModifiedSortDirection
 		});
 	}
 });
