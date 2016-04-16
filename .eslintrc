@@ -1,0 +1,5 @@
+{
+    "extends": "eslint-config-slds",
+    "parser": "babel-eslint",
+    "rules": {}
+}

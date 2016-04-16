@@ -1,6 +1,34 @@
-node_modules
-npm-debug.log
+# filesystem
 .DS_Store
-server/node_modules
-server/public/assets/bundle
+
+# dependencies
+node_modules
+bower_components
+
+test/tests-compiled.js
+test/tests-api.js
+test/tests.js
+build/
+dev-build/
+public/docs/src/
+public/documentation/src/
+
+# gh-pages
+_site/*
+
+# Editors / IDEs
+.idea
+*.sublime-project
+*.sublime-workspace
+
+# node_module cache for TravisCI, etc.
+node_modules.tar.gz
+
+npm-debug.log
+.esformatter
+.tmp*
+.npm/
+.dist/
+dist/
+
 scripts/pre-commit.sh

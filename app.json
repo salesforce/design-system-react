@@ -1,0 +1,24 @@
+{
+  "name": "SLDS for React",
+  "description": "A whole new way to build apps using Lightning Design System with your application famework of choice. Our facades currently support the JavaScript frameworks below.",
+  "keywords": [
+    "salesforce",
+  ],
+  "website": "http://slds-for-js.herokuapp.com/",
+  "repository": "https://github.com/salesforce-ux/slds-for-js-core",
+  "env": {
+    "NODE_MODULES_CACHE": true,
+    "NPM_CONFIG_PRODUCTION": false,
+    "NODE_ENV": "production",
+    "TZ": "America/New_York"
+  },
+  "image": "heroku/nodejs",
+  "buildpacks": [
+      {
+        "url": "https://github.com/heroku/heroku-buildpack-nodejs.git"
+      },
+      {
+        "url": "https://github.com/tweettypography/heroku-buildpack-webpack.git"
+      }
+    ]
+}
