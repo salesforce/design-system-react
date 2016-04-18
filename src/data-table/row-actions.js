@@ -35,7 +35,7 @@ const { PropTypes } = React;
 export const COMPONENT = 'DataTableRowActions';
 
 /**
- * Description
+ * RowActions provide a mechanism for defining a menu to display alongside each row in the DataTable.
  */
 export const DataTableRowActionsDefinition = {
 	// ### Display Name

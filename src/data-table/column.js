@@ -21,7 +21,7 @@ const { PropTypes } = React;
 export const COMPONENT = 'DataTableColumn';
 
 /**
- * Description
+ * Columns define the structure of the data displayed in the DataTable.
  */
 export const DataTableColumnDefinition = {
 	// ### Display Name

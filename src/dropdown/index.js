@@ -129,7 +129,7 @@ export const DropdownDefinition = {
 		 */
 		checkmark: PropTypes.bool,
 		/**
-		 * If no `children` are present, a default button will be rendered with an arrow. Import the module `slds-for-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button:
+		 * If no children are present, a default button will be rendered with an arrow. Import the module `slds-for-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button:
 		 * ```
 		 * <Dropdown>
 		 *   <Trigger>

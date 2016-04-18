@@ -37,7 +37,7 @@ const { PropTypes } = React;
 export const COMPONENT = 'DataTableRow';
 
 /**
- * Description
+ * Used internally, provides row rendering to the DataTable.
  */
 export const DataTableRowDefinition = {
 	// ### Display Name
