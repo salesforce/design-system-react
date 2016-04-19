@@ -1,7 +1,7 @@
-import React from 'react';
-import Datepicker from './index';
-
 // SAMPLE COMPONENT CODE -->
+import React from 'react';
+
+import Datepicker from 'slds-for-react/datepicker';
 
 const DatepickerExample = React.createClass({
 	propTypes: {

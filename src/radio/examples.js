@@ -1,9 +1,7 @@
-import React from 'react';
-import Radio from './index';
-
 // SAMPLE COMPONENT CODE -->
+import React from 'react';
 
-// https://www.lightningdesignsystem.com/components/forms#radio
+import Radio from 'slds-for-react/radio';
 
 const RadioExample = React.createClass({
 	getInitialState () {

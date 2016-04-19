@@ -1,7 +1,7 @@
-import React from 'react';
-import Badge from './index';
-
 // SAMPLE COMPONENT CODE -->
+import React from 'react';
+
+import Badge from 'slds-for-react/badge';
 
 const BadgeExample = () => (
 	<div className="slds-grid slds-grid--vertical">

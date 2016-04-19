@@ -1,7 +1,7 @@
-import React from 'react';
-import Checkbox from './index';
-
 // SAMPLE COMPONENT CODE -->
+import React from 'react';
+
+import Checkbox from 'slds-for-react/checkbox';
 
 const CheckboxExample = React.createClass({
 	displayName: 'CheckboxExample',

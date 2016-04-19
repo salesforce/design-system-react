@@ -73,7 +73,7 @@ export const COMPONENT = 'DataTable';
 /**
  * DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the collection to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
  */
-export const DataTableDefinition = {
+const DataTable = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: COMPONENT,
@@ -257,8 +257,6 @@ export const DataTableDefinition = {
 			this.props.onSort(sortColumn, sortColumn.sortDirection === 'asc' ? 'desc' : 'asc');
 		}
 	}
-};
-
-const DataTable = React.createClass(DataTableDefinition);
+});
 
 export default DataTable;

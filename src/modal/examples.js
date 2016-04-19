@@ -1,7 +1,7 @@
-import React from 'react';
-import Modal from './index';
-
 // SAMPLE COMPONENT CODE -->
+import React from 'react';
+
+import Modal from 'slds-for-react/modal';
 
 const ModalExample = React.createClass({
 	getInitialState () {

@@ -39,7 +39,7 @@ export const COMPONENT = 'DataTableHead';
 /**
  * Used internally, provides header row rendering to the DataTable.
  */
-export const DataTableHeadDefinition = {
+const DataTableHead = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: COMPONENT,
@@ -122,8 +122,6 @@ export const DataTableHeadDefinition = {
 
 		return null;
 	}
-};
-
-const DataTableHead = React.createClass(DataTableHeadDefinition);
+});
 
 export default DataTableHead;

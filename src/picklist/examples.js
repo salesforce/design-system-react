@@ -1,9 +1,9 @@
-import React from 'react';
-import Picklist from './index';
-import Menu from '../menu';
-import MenuItems from '../menu/items';
-
 // SAMPLE COMPONENT CODE -->
+import React from 'react';
+
+import Picklist from 'slds-for-react/picklist';
+import Menu from 'slds-for-react/menu';
+import MenuItems from 'slds-for-react/menu/items';
 
 const sampleData = [
 	{

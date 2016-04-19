@@ -23,7 +23,7 @@ export const COMPONENT = 'DataTableColumn';
 /**
  * Columns define the structure of the data displayed in the DataTable.
  */
-export const DataTableColumnDefinition = {
+const DataTableColumn = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: COMPONENT,
@@ -41,8 +41,6 @@ export const DataTableColumnDefinition = {
 	render () {
 		return null;
 	}
-};
-
-const DataTableColumn = React.createClass(DataTableColumnDefinition);
+});
 
 export default DataTableColumn;

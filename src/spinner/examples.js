@@ -1,7 +1,7 @@
-import React from 'react';
-import Spinner from './index';
-
 // SAMPLE COMPONENT CODE -->
+import React from 'react';
+
+import Spinner from 'slds-for-react/spinner';
 
 const SpinnerExample = React.createClass({
 	render () {
