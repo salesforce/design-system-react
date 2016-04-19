@@ -57,6 +57,7 @@ const DataTableRowActions = React.createClass({
 		return (
 			<td className="slds-cell-shrink" data-label="Actions">
 				<Dropdown
+					align="right"
 					className={this.props.className}
 					collection={this.props.collection}
 					id={this.props.id}
