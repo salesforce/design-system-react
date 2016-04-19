@@ -94,7 +94,7 @@ const DataTable = React.createClass({
 		 * End of Life. Please provide one or more children of the type `<DataTableColumn />` instead:
 		 * ```
 		 * <DataTable>
-		 *   <Column />
+		 *   <DataTableColumn />
 		 * </DataTable>
 		 * ```
 		 */
