@@ -100,10 +100,11 @@ const publish = (done, type) => {
 
 	async.eachSeries(actions, exec, (err) => {
 		if (err) throw err;
+
+		console.log(`Successfully published ${type} to git`);
+
 		done();
 	});
-
-	console.log(`Successfully published ${type} to git`);
 };
 
 async.series([
