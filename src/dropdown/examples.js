@@ -1,12 +1,12 @@
+// SAMPLE COMPONENT CODE -->
 import React from 'react';
 import cloneDeep from 'lodash/lang/cloneDeep';
-import Dropdown from './index';
-import Menu from '../menu';
-import MenuItems from '../menu/items';
-import Button from '../button';
-import Trigger from './button-trigger';
 
-// SAMPLE COMPONENT CODE -->
+import Dropdown from 'slds-for-react/dropdown';
+import Trigger from 'slds-for-react/dropdown/button-trigger';
+import Button from 'slds-for-react/button';
+import Menu from 'slds-for-react/menu';
+import MenuItems from 'slds-for-react/menu/items';
 
 const sampleData = [
 	{

@@ -1,7 +1,7 @@
-import React from 'react';
-import Tooltip from './index';
-
 // SAMPLE COMPONENT CODE -->
+import React from 'react';
+
+import Tooltip from 'slds-for-react/tooltip';
 
 const TooltipExample = React.createClass({
 	propTypes: {

@@ -26,7 +26,7 @@
   },
   "private": true,
   "engines": {
-    "node" : ">=4.4.0"
+    "node": ">=4.4.0"
   },
   "scripts": {
     "lint": "eslint --config=./.eslintrc components",
@@ -59,7 +59,7 @@
     "babel-core": "~6.5.2",
     "babel-eslint": "~6.0.0-beta.5",
     "babel-loader": "~6.2.2",
-    "babel-plugin-transform-es2015-modules-umd": "~6.6.5",
+    "babel-plugin-transform-es2015-modules-commonjs": "~6.7.4",
     "babel-preset-es2015": "~6.5.0",
     "babel-preset-react": "~6.5.0",
     "babel-preset-stage-1": "~6.5.0",

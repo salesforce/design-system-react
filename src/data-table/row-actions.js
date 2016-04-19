@@ -35,9 +35,9 @@ const { PropTypes } = React;
 export const COMPONENT = 'DataTableRowActions';
 
 /**
- * Description
+ * RowActions provide a mechanism for defining a menu to display alongside each row in the DataTable.
  */
-export const DataTableRowActionsDefinition = {
+const DataTableRowActions = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: COMPONENT,
@@ -57,6 +57,7 @@ export const DataTableRowActionsDefinition = {
 		return (
 			<td className="slds-cell-shrink" data-label="Actions">
 				<Dropdown
+					align="right"
 					className={this.props.className}
 					collection={this.props.collection}
 					id={this.props.id}
@@ -80,8 +81,6 @@ export const DataTableRowActionsDefinition = {
 			this.props.onAction(this.props.item, selection);
 		}
 	}
-};
-
-const DataTableRowActions = React.createClass(DataTableRowActionsDefinition);
+});
 
 export default DataTableRowActions;

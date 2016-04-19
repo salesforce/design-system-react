@@ -71,9 +71,9 @@ const count = (array) => isArray(array) ? array.length : 0;
 export const COMPONENT = 'DataTable';
 
 /**
- * Description
+ * DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the collection to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
  */
-export const DataTableDefinition = {
+const DataTable = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: COMPONENT,
@@ -81,14 +81,20 @@ export const DataTableDefinition = {
 	// ### Prop Types
 	propTypes: {
 		bordered: PropTypes.bool,
+		/**
+		 * Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid.
+		 */
 		children: PropTypes.node,
+		/**
+		 * Class names to be added to the table.
+		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		collection: PropTypes.array.isRequired,
 		/**
-		 * End of Life. Please provide one or more children of the type `<Column />` instead:
+		 * End of Life. Please provide one or more children of the type `<DataTableColumn />` instead:
 		 * ```
 		 * <DataTable>
-		 *   <Column />
+		 *   <DataTableColumn />
 		 * </DataTable>
 		 * ```
 		 */
@@ -100,10 +106,25 @@ export const DataTableDefinition = {
 				sortDirection: PropTypes.oneOf(['desc', 'asc'])
 			})
 		),
+		/**
+		 * Every table must have a unique ID in order to support keyboard navigation and ARIA support.
+		 */
 		id: PropTypes.string.isRequired,
+		/**
+		 * This function fires when the selection of rows changes.
+		 */
 		onChange: PropTypes.func,
+		/**
+		 * This function fires when the table should be sorted.
+		 */
 		onSort: PropTypes.func,
+		/**
+		 * The selected rows.
+		 */
 		selection: PropTypes.array,
+		/**
+		 * True if rows should be selectable.
+		 */
 		selectRows: PropTypes.bool,
 		stacked: PropTypes.bool,
 		stackedHorizontal: PropTypes.bool,
@@ -236,8 +257,6 @@ export const DataTableDefinition = {
 			this.props.onSort(sortColumn, sortColumn.sortDirection === 'asc' ? 'desc' : 'asc');
 		}
 	}
-};
-
-const DataTable = React.createClass(DataTableDefinition);
+});
 
 export default DataTable;

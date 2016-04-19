@@ -1,16 +1,17 @@
-import React from 'react';
-import Lookup from './index';
-
 // SAMPLE COMPONENT CODE -->
+import React from 'react';
+
+import Lookup from 'slds-for-react/lookup';
 
 const LookupExample = React.createClass({
+	displayName: 'LookupExample',
+
 	propTypes: {
-		modal: React.PropTypes.bool,
-		models: React.PropTypes.arrayOf(React.PropTypes.object)
+		modal: React.PropTypes.bool
 	},
 
 	getInitialState () {
-		const lookupSampleData = {
+		return {
 			collection: [
 				{ text: 'Paddy\'s Pub', iconCategory: 'standard', iconName: 'account' },
 				{ text: 'Tyrell Corporation', iconCategory: 'standard', iconName: 'account' },
@@ -25,8 +26,6 @@ const LookupExample = React.createClass({
 				{ text: 'Paper St. Paper Company', iconCategory: 'standard', iconName: 'account' }
 			]
 		};
-
-		return lookupSampleData;
 	},
 
 	render () {
@@ -38,7 +37,8 @@ const LookupExample = React.createClass({
 				filterPredicate={this._filterPredicate}
 				modalMenu={this.props.modal}
 				onAddClick={this._handleAdd}
-				isOpen={this.state.isOpen} />
+				isOpen={this.state.isOpen}
+			/>
 		);
 	},
 
@@ -60,10 +60,6 @@ const LookupExample = React.createClass({
 
 	_handleModelChange (selection) {
 		this.setState({ selection });
-	},
-
-	_handleAdd () {
-		console.log('Add an item!');
 	}
 });
 

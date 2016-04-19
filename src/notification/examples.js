@@ -1,7 +1,7 @@
-import React from 'react';
-import Notification from './index';
-
 // SAMPLE COMPONENT CODE -->
+import React from 'react';
+
+import Notification from 'slds-for-react/notification';
 
 const NotificationExample = React.createClass({
 	getInitialState () {

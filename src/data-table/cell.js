@@ -21,9 +21,9 @@ const { PropTypes } = React;
 export const COMPONENT = 'DataTableCell';
 
 /**
- * Description
+ * The default Cell renderer for the DataTable. Pass in any React component with the same `displayName` which takes the same props to provide custom rendering.
  */
-export const DataTableCellDefinition = {
+const DataTableCell = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: COMPONENT,
@@ -38,8 +38,6 @@ export const DataTableCellDefinition = {
 	render () {
 		return <span>{this.props.item[this.props.property]}</span>;
 	}
-};
-
-const DataTableCell = React.createClass(DataTableCellDefinition);
+});
 
 export default DataTableCell;

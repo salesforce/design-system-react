@@ -1,7 +1,7 @@
-import React from 'react';
-import Popover from './index';
-
 // SAMPLE COMPONENT CODE -->
+import React from 'react';
+
+import Popover from 'slds-for-react/popover';
 
 const PopoverExample = React.createClass({
 	propTypes: {

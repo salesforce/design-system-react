@@ -1,7 +1,7 @@
-import React from 'react';
-import Pills from './index';
-
 // SAMPLE COMPONENT CODE -->
+import React from 'react';
+
+import Pills from 'slds-for-react/pills';
 
 const PillsExample = React.createClass({
 	getInitialState () {
@@ -23,7 +23,7 @@ const PillsExample = React.createClass({
 	render () {
 		return (
 			<div>
-				<Pills selection={this.state.selection} onChange={this.handleChanged}/>
+				<Pills selection={this.state.selection} onChange={this.handleChanged} />
 			</div>
 		);
 	},

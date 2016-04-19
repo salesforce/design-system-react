@@ -42,7 +42,7 @@ const createTempDir = (done, type) => {
 		[`rm -rf ${tmpDir}`],
 		[`cp -r ${npmDir} ${tmpDir}`],
 		['rm -r es', tmpDir],
-		['rm -r umd', tmpDir],
+		['rm -r commonjs', tmpDir],
 		[`cp -r ${npmDir}/${type}/* ${tmpDir}`]
 	], exec, (err) => {
 		if (err) throw err;
@@ -100,10 +100,11 @@ const publish = (done, type) => {
 
 	async.eachSeries(actions, exec, (err) => {
 		if (err) throw err;
+
+		console.log(`Successfully published ${type} to git`);
+
 		done();
 	});
-
-	console.log(`Successfully published ${type} to git`);
 };
 
 async.series([
@@ -111,9 +112,9 @@ async.series([
 	(done) => cleanPackageJson(done, 'es'),
 	(done) => publish(done, 'es'),
 
-	(done) => createTempDir(done, 'umd'),
-	(done) => cleanPackageJson(done, 'umd'),
-	(done) => publish(done, 'umd')
+	(done) => createTempDir(done, 'commonjs'),
+	(done) => cleanPackageJson(done, 'commonjs'),
+	(done) => publish(done, 'commonjs')
 ], err => {
 	if (err) throw err;
 });

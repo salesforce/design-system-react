@@ -1,67 +1,43 @@
-import React from 'react';
-import DataTable from './index';
-import DataTableColumn from './column';
-import DataTableRowActions from './row-actions';
-
 // SAMPLE COMPONENT CODE -->
+import React from 'react';
 import sortBy from 'lodash/collection/sortBy';
 
-const sampleData = [
-	{
-		id: '8IKZHZZV80',
-		name: 'Item One',
-		count: 100976,
-		lastModified: 'Yesterday',
-		modifiedBy: 'Ashley McDougal'
-	}, {
-		id: '5GJOOOPWU7',
-		name: 'Item Two',
-		count: 54976,
-		lastModified: 'Today',
-		modifiedBy: 'Ashley McDougal'
-	}, {
-		id: 'Q8Z71ZUCEZ',
-		name: 'Item Three',
-		count: 10128,
-		lastModified: 'Today',
-		modifiedBy: 'Ashley McDougal'
-	}, {
-		id: 'WA0Q0XARAR',
-		name: 'Item Four',
-		count: 63616,
-		lastModified: 'Yesterday',
-		modifiedBy: 'Ashley McDougal'
-	}, {
-		id: 'N8M7CMNU39',
-		name: 'Item Five',
-		count: 25615,
-		lastModified: 'Yesterday',
-		modifiedBy: 'Steve Daniels'
-	}
-];
-
-const sampleRowActions = [
-	{
-		id: 0,
-		text: 'Add to Group',
-		value: '1'
-	}, {
-		id: 1,
-		text: 'Publish',
-		value: '2'
-	}
-];
+import DataTable from 'slds-for-react/data-table';
+import DataTableColumn from 'slds-for-react/data-table/column';
+import DataTableRowActions from 'slds-for-react/data-table/row-actions';
 
 const DataTableExample = React.createClass({
 	displayName: 'DataTableExample',
 
-	propTypes: {
-		models: React.PropTypes.arrayOf(React.PropTypes.object)
-	},
-
 	getInitialState () {
 		return {
-			collection: sampleData,
+			collection: [
+				{
+					id: '8IKZHZZV80',
+					name: 'Item One',
+					count: 100976,
+					lastModified: 'Yesterday',
+					modifiedBy: 'Ashley McDougal'
+				}, {
+					id: '5GJOOOPWU7',
+					name: 'Item Two',
+					count: 54976,
+					lastModified: 'Today',
+					modifiedBy: 'Ashley McDougal'
+				}, {
+					id: 'Q8Z71ZUCEZ',
+					name: 'Item Three',
+					count: 10128,
+					lastModified: 'Today',
+					modifiedBy: 'Ashley McDougal'
+				}, {
+					id: 'WA0Q0XARAR',
+					name: 'Item Four',
+					count: 63616,
+					lastModified: 'Yesterday',
+					modifiedBy: 'Ashley McDougal'
+				}
+			],
 			selection: []
 		};
 	},
@@ -96,7 +72,17 @@ const DataTableExample = React.createClass({
 					sortDirection={this.state.lastModifiedSortDirection}
 				/>
 				<DataTableRowActions
-					collection={sampleRowActions}
+					collection={[
+						{
+							id: 0,
+							text: 'Add to Group',
+							value: '1'
+						}, {
+							id: 1,
+							text: 'Publish',
+							value: '2'
+						}
+					]}
 					onAction={this.handleRowAction}
 				/>
 			</DataTable>

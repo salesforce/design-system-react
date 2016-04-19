@@ -1,8 +1,8 @@
-import React from 'react';
-import Button from './index';
-import ButtonView from './view';
-
 // SAMPLE COMPONENT CODE -->
+import React from 'react';
+
+import Button from 'slds-for-react/button';
+import ButtonView from 'slds-for-react/button/view';
 
 const ButtonExample = React.createClass({
 	displayName: 'ButtonExample',

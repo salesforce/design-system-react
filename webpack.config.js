@@ -25,18 +25,20 @@ config.externals = {};
 
 config.resolve.extensions.push('.scss');
 
+config.resolve.alias = {
+	'slds-for-react': path.join(__dirname, 'src')
+};
+
 // Add alias to allow actual repository and not "tagged dist folder" to be used (such as when using `npm link`). The folder structure differs between them
 if (coreRealPath !== path.join(__dirname, 'node_modules/slds-for-js-core')) {
-	config.resolve.alias = {
-		'slds-for-js-core': coreRealPath + '/src'
-	};
+	config.resolve.alias['slds-for-js-core'] = `${coreRealPath}/src`;
 }
 
 config.devtool = 'eval-cheap-module-source-map';
 
 config.output = {
 	libraryTarget: 'umd',
-	path: __dirname + '/dev-build/',
+	path: `${__dirname}/dev-build/`,
 	publicPath: '/dev-build/',
 	filename: '[name].bundle.js'
 };
@@ -46,11 +48,17 @@ config.module.loaders[0].include.push(path.join(__dirname, 'test'));
 // Additional loaders
 config.module.loaders.push({
 	test: /\.css$/,
-	loader: ExtractTextPlugin.extract('style-loader', 'css-loader?outputStyle=expanded&sourceMap=true&sourceMapContents=true')
+	loader: ExtractTextPlugin.extract(
+		'style-loader',
+		'css-loader?outputStyle=expanded&sourceMap=true&sourceMapContents=true'
+	)
 });
 config.module.loaders.push({
 	test: /\.scss$/,
-	loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!sass-loader?outputStyle=expanded&sourceMap=true&sourceMapContents=true')
+	loader: ExtractTextPlugin.extract(
+		'style-loader',
+		'css-loader?sourceMap!sass-loader?outputStyle=expanded&sourceMap=true&sourceMapContents=true'
+	)
 });
 config.module.loaders.push({
 	test: /\.(png)$/,

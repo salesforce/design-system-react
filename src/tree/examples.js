@@ -1,7 +1,7 @@
-import React from 'react';
-import Tree from './index';
-
 // SAMPLE COMPONENT CODE -->
+import React from 'react';
+
+import Tree from 'slds-for-react/tree';
 
 const TreeExample = React.createClass({
 	getInitialState () {

@@ -105,16 +105,16 @@ async.series([
 	(done) => rimraf(distPath('es', 'dist.js'), done),
 
 	/**
-	 * Create umd versions
+	 * Create commonjs versions
 	 */
 	(done) => {
 		if (!isNpm) return done();
 
 		return gulp.src(distPath('es', '**/*.js'))
 			.pipe(babel({
-				plugins: ['transform-es2015-modules-umd']
+				plugins: ['transform-es2015-modules-commonjs']
 			}))
-			.pipe(gulp.dest(distPath('umd')))
+			.pipe(gulp.dest(distPath('commonjs')))
 			.on('error', done)
 			.on('finish', done);
 	},

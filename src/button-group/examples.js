@@ -1,10 +1,10 @@
-import React from 'react';
-import Button from '../button';
-import ButtonGroup from './index';
-import Dropdown from '../dropdown';
-import Trigger from '../dropdown/button-trigger';
-
 // SAMPLE COMPONENT CODE -->
+import React from 'react';
+
+import ButtonGroup from 'slds-for-react/button-group';
+import Button from 'slds-for-react/button';
+import Dropdown from 'slds-for-react/dropdown';
+import Trigger from 'slds-for-react/dropdown/button-trigger';
 
 const sampleData = [
 	{

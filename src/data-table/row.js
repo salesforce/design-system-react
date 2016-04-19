@@ -37,9 +37,9 @@ const { PropTypes } = React;
 export const COMPONENT = 'DataTableRow';
 
 /**
- * Description
+ * Used internally, provides row rendering to the DataTable.
  */
-export const DataTableRowDefinition = {
+const DataTableRow = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: COMPONENT,
@@ -105,8 +105,6 @@ export const DataTableRowDefinition = {
 	handleToggle (selected) {
 		return this.props.onToggle(this.props.item, selected);
 	}
-};
-
-const DataTableRow = React.createClass(DataTableRowDefinition);
+});
 
 export default DataTableRow;
