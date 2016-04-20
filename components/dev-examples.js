@@ -14,6 +14,7 @@ import ReactDOM from 'react-dom';
 
 import badge from './badge/examples';
 import button from './button/examples';
+import SLDSButton from './SLDSButton/examples';
 import buttonGroup from './button-group/examples';
 import checkbox from './checkbox/examples';
 import dataTable from './data-table/examples';
@@ -35,6 +36,7 @@ import tree from './tree/examples';
 
 ReactDOM.render(React.createElement(badge), document.querySelector('#badge-react-control'));
 ReactDOM.render(React.createElement(button), document.querySelector('#button-react-control'));
+ReactDOM.render(React.createElement(SLDSButton), document.querySelector('#SLDSButton-react-control'));
 ReactDOM.render(React.createElement(buttonGroup), document.querySelector('#button-group-react-control'));
 ReactDOM.render(React.createElement(checkbox), document.querySelector('#checkbox-react-control'));
 ReactDOM.render(React.createElement(dataTable), document.querySelector('#data-table-react-control'));
