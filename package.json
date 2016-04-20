@@ -102,10 +102,5 @@
     "react-onclickoutside": "^4.5.0",
     "tether": "1.1.0",
     "tether-drop": "1.2.2"
-  },
-  "pre-commit": [
-    "lint",
-    "validate",
-    "test"
-  ]
+  }
 }
