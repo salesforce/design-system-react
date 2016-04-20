@@ -58,6 +58,7 @@ const DataTableExample = React.createClass({
 				<DataTableColumn
 					label="Campaign Name"
 					property="name"
+					truncate
 				/>
 				<DataTableColumn
 					label="Count"
@@ -70,6 +71,7 @@ const DataTableExample = React.createClass({
 					property="lastModified"
 					sortable
 					sortDirection={this.state.lastModifiedSortDirection}
+					truncate
 				/>
 				<DataTableRowActions
 					collection={[

@@ -82,7 +82,7 @@ const DataTableRow = React.createClass({
 					return (
 						<Cell
 							{...column.props}
-							className="slds-truncate"
+							className={column.props.truncate ? 'slds-truncate' : null}
 							item={this.props.item}
 							key={column.props.property}
 						/>

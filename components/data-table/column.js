@@ -34,7 +34,8 @@ const DataTableColumn = React.createClass({
 		label: PropTypes.node,
 		property: PropTypes.string.isRequired,
 		sortable: PropTypes.bool,
-		sortDirection: PropTypes.oneOf(['desc', 'asc'])
+		sortDirection: PropTypes.oneOf(['desc', 'asc']),
+		truncate: PropTypes.bool
 	},
 
 	// ### Render
