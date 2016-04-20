@@ -211,8 +211,8 @@ const DataTable = React.createClass({
 					showRowActions={!!RowActions}
 				/>
 				<tbody>
-					{numRows &&
-						this.props.collection.map((item, index) => (
+					{numRows > 0
+						? this.props.collection.map((item, index) => (
 							<DataTableRow
 								canSelectRows={canSelectRows}
 								columns={columns}
@@ -224,6 +224,8 @@ const DataTable = React.createClass({
 								rowActions={RowActions}
 							/>
 						))
+						// Someday this should be an element to render when the table is empty
+						: null
 					}
 				</tbody>
 			</table>

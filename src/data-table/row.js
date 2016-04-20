@@ -65,8 +65,8 @@ const DataTableRow = React.createClass({
 		const isSelected = this.isSelected();
 
 		return (
-			<tr className={classNames('slds-hint-parent', { 'slds-is-selected': isSelected })}>
-				{this.props.canSelectRows && (
+			<tr className={classNames({ 'slds-hint-parent': this.props.rowActions, 'slds-is-selected': isSelected })}>
+				{this.props.canSelectRows ? (
 					<td className="slds-cell-shrink" data-label="Select Row">
 						<Checkbox
 							assistiveText="Select Row"
@@ -75,24 +75,24 @@ const DataTableRow = React.createClass({
 							onChanged={this.handleToggle}
 						/>
 					</td>
-				)}
+				) : null}
 				{this.props.columns.map((column) => {
 					const Cell = column.Cell;
 
 					return (
-						<td className="slds-truncate" data-label={column.props.label} key={column.props.property}>
-							<Cell
-								{...column.props}
-								item={this.props.item}
-							/>
-						</td>
+						<Cell
+							{...column.props}
+							className="slds-truncate"
+							item={this.props.item}
+							key={column.props.property}
+						/>
 					);
 				})}
-				{this.props.rowActions &&
+				{this.props.rowActions ?
 					React.cloneElement(this.props.rowActions, {
 						id: `${this.props.id}-DataTableRowActions`,
 						item: this.props.item
-					})
+					}) : null
 				}
 			</tr>
 		);

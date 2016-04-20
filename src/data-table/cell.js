@@ -30,13 +30,32 @@ const DataTableCell = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
-		item: PropTypes.object.isRequired,
-		property: PropTypes.string.isRequired
+		/**
+		 * Class names to be added to the cell.
+		 */
+		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		/**
+		 * The item from the collection which represents this row.
+		 */
+		item: PropTypes.object,
+		/**
+		 * The column label.
+		 */
+		label: PropTypes.string,
+		/**
+		 * The property of this item to display.
+		 */
+		property: PropTypes.string
 	},
 
 	// ### Render
+	// Should return a `<td></td>`.
 	render () {
-		return <span>{this.props.item[this.props.property]}</span>;
+		return (
+			<td className={this.props.className} data-label={this.props.label}>
+				{this.props.item[this.props.property]}
+			</td>
+		);
 	}
 });
 

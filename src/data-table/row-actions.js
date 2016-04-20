@@ -68,7 +68,7 @@ const DataTableRowActions = React.createClass({
 							assistiveText={this.props.assistiveText}
 							className="slds-button--icon-x-small"
 							iconSize="small"
-							iconStyle="icon-border-filled"
+							iconStyle="icon-border-filled-hint"
 						/>
 					</Trigger>
 				</Dropdown>
