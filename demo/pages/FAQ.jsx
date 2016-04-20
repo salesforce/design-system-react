@@ -71,7 +71,7 @@ class FAQSection extends React.Component {
             Which version of React and Lightning Design System do you support?
           </p>
           <p>
-           Design System React is optimized for react0.14.x and uses Lightning Design System 0.12.1.
+           Design System React is optimized for react0.14.x and uses Lightning Design System 1.0.0.
           </p>
         </section>
 

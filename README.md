@@ -51,7 +51,7 @@ npm run pages
 
 ## Getting Started
 
-Note: design-system-react is optimized for react0.14.x and uses Lightning Design System 0.12.1.
+Note: design-system-react is optimized for react0.14.x and uses Lightning Design System 1.0.0.
 
 ### NPM
 
@@ -100,7 +100,7 @@ Note: the SLDSPopoverTooltip requires a focusable element as a child (ie. either
 
 4.  **Which version of React and Lightning Design System do you support?**
 
-    Design System React is optimized for react0.14.x and uses Lightning Design System 0.12.1.
+    Design System React is optimized for react0.14.x and uses Lightning Design System 1.0.0.
 
 5.  **Which browsers are supported?**
 
@@ -128,4 +128,3 @@ Please read the <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> first.
 ## Got feedback?
 
 Please create a <a href="https://github.com/salesforce-ux/design-system-react/issues">GitHub Issue</a>
-
