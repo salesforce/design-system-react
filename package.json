@@ -43,6 +43,7 @@
     "@salesforce-ux/design-system": "~1.0.0",
     "classnames": "~2.2.3",
     "lodash": "~3.10.1",
+    "lodash.omit": "^4.2.1",
     "react": "~0.14.x",
     "react-dom": "~0.14.x",
     "react-modal": "~0.6.1",

@@ -16,17 +16,18 @@ const coreRealPath = fs.realpathSync(path.join(__dirname, 'node_modules/slds-for
 
 config.entry = {
 	'dev-examples-styles': ['./public/assets/scripts/styles.js', hotMiddlewareScript],
-	'dev-examples': ['./src/dev-examples', hotMiddlewareScript],
-	'dev-example': ['./src/dev-example', hotMiddlewareScript],
+	'dev-examples': ['./components/dev-examples', hotMiddlewareScript],
+	'dev-example': ['./components/dev-example', hotMiddlewareScript],
 	tests: ['./tests/dropdown/dropdown.test.js', hotMiddlewareScript]
 };
 
 config.externals = {};
 
 config.resolve.extensions.push('.scss');
+config.resolve.extensions.push('.jsx');
 
 config.resolve.alias = {
-	'slds-for-react': path.join(__dirname, 'src')
+	'slds-for-react': path.join(__dirname, 'components')
 };
 
 // Add alias to allow actual repository and not "tagged dist folder" to be used (such as when using `npm link`). The folder structure differs between them

@@ -5,7 +5,7 @@ import TestUtils from 'react-addons-test-utils';
 import chai from 'chai';
 import { expect } from 'chai';
 import assign from 'lodash/object/assign';
-import { Dropdown } from '../../src';
+import { Dropdown } from 'slds-for-react';
 
 const { Simulate,
 				scryRenderedDOMComponentsWithClass,
