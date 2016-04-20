@@ -17,8 +17,7 @@ const coreRealPath = fs.realpathSync(path.join(__dirname, 'node_modules/slds-for
 config.entry = {
 	'dev-examples-styles': ['./public/assets/scripts/styles.js', hotMiddlewareScript],
 	'dev-examples': ['./components/dev-examples', hotMiddlewareScript],
-	'dev-example': ['./components/dev-example', hotMiddlewareScript],
-	tests: ['./tests/dropdown/dropdown.test.js', hotMiddlewareScript]
+	'dev-example': ['./components/dev-example', hotMiddlewareScript]
 };
 
 config.externals = {};
