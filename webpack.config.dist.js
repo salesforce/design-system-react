@@ -17,7 +17,7 @@ const config = {
 			'.js',
 			'.jsx'
 		],
-		alias: {},
+		alias: {}
 	},
 	devtool: 'source-map',
 	externals: {
