@@ -24,7 +24,6 @@ config.entry = {
 config.externals = {};
 
 config.resolve.extensions.push('.scss');
-config.resolve.extensions.push('.jsx');
 
 config.resolve.alias = {
 	'slds-for-react': path.join(__dirname, 'components')
