@@ -75,7 +75,7 @@ const defaultProps = {
 };
 
 /**
- * The SLDSMenuDropdown component is a variant of the Ligtning Design System Menu component.
+ * The SLDSMenuDropdown component is a variant of the Lightning Design System Menu component.
  */
 class SLDSMenuDropdown extends React.Component {
 
@@ -343,4 +343,3 @@ SLDSMenuDropdown.defaultProps = defaultProps;
 module.exports = SLDSMenuDropdown;
 module.exports.ListItem = ListItem;
 module.exports.ListItemLabel = ListItemLabel;
-
