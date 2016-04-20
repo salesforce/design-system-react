@@ -80,12 +80,12 @@ const DataTableRow = React.createClass({
 					const Cell = column.Cell;
 
 					return (
-						<td className="slds-truncate" data-label={column.props.label} key={column.props.property}>
-							<Cell
-								{...column.props}
-								item={this.props.item}
-							/>
-						</td>
+						<Cell
+							{...column.props}
+							className="slds-truncate"
+							item={this.props.item}
+							key={column.props.property}
+						/>
 					);
 				})}
 				{this.props.rowActions &&
