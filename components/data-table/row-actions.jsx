@@ -40,7 +40,7 @@ const DataTableRowActions = React.createClass({
 	propTypes: {
 		assistiveText: PropTypes.string,
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-		collection: PropTypes.array.isRequired,
+		items: PropTypes.array.isRequired,
 		id: PropTypes.string,
 		item: PropTypes.object,
 		onAction: PropTypes.func
@@ -54,7 +54,7 @@ const DataTableRowActions = React.createClass({
 					align="right"
 					assistiveText={this.props.assistiveText}
 					buttonVariant="icon"
-					options={this.props.collection}
+					options={this.props.items}
 					hint
 					iconSize="small"
 					iconVariant="border-filled"

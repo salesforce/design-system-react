@@ -35,7 +35,7 @@ const DataTableCell = React.createClass({
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
-		 * The item from the collection which represents this row.
+		 * The item from the items which represents this row.
 		 */
 		item: PropTypes.object,
 		/**

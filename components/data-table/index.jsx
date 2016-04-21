@@ -62,7 +62,7 @@ const count = (array) => isArray(array) ? array.length : 0;
 export const COMPONENT = 'DataTable';
 
 /**
- * DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the collection to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
+ * DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
  */
 const DataTable = React.createClass({
 	// ### Display Name
@@ -80,7 +80,6 @@ const DataTable = React.createClass({
 		 * Class names to be added to the table.
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-		collection: PropTypes.array.isRequired,
 		/**
 		 * End of Life. Please provide one or more children of the type `<DataTableColumn />` instead:
 		 * ```
@@ -101,7 +100,11 @@ const DataTable = React.createClass({
 		 * Every table must have a unique ID in order to support keyboard navigation and ARIA support.
 		 */
 		id: PropTypes.string.isRequired,
-		/**
+    /**
+ 		 * The collection of items to render in the table.
+ 		 */
+    items: PropTypes.array.isRequired,
+    /**
 		 * This function fires when the selection of rows changes.
 		 */
 		onChange: PropTypes.func,
@@ -140,7 +143,7 @@ const DataTable = React.createClass({
 
 	// ### Render
 	render () {
-		const numRows = count(this.props.collection);
+		const numRows = count(this.props.items);
 		const numSelected = count(this.props.selection);
 		const canSelectRows = this.props.selectRows && numRows > 0;
 		const allSelected = canSelectRows && numRows === numSelected;
@@ -203,7 +206,7 @@ const DataTable = React.createClass({
 				/>
 				<tbody>
 					{numRows > 0
-						? this.props.collection.map((item, index) => (
+						? this.props.items.map((item, index) => (
 							<DataTableRow
 								canSelectRows={canSelectRows}
 								columns={columns}
@@ -225,7 +228,7 @@ const DataTable = React.createClass({
 
 	handleToggleAll (selected) {
 		if (isFunction(this.props.onChange)) {
-			const selection = selected ? [...this.props.collection] : [];
+			const selection = selected ? [...this.props.items] : [];
 
 			this.props.onChange(selection);
 		}

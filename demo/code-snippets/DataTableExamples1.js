@@ -3,31 +3,22 @@ const SLDSDataTableExample = React.createClass({
 
   getInitialState () {
     return {
-      collection: [
+      items: [
         {
           id: '8IKZHZZV80',
-          name: 'Item One',
+          name: 'Cloudhub',
           count: 100976,
-          lastModified: 'Yesterday',
-          modifiedBy: 'Ashley McDougal'
+          lastModified: 'Yesterday'
         }, {
           id: '5GJOOOPWU7',
-          name: 'Item Two',
+          name: 'Cloudhub + Anypoint Connectors',
           count: 54976,
-          lastModified: 'Today',
-          modifiedBy: 'Ashley McDougal'
+          lastModified: 'Today'
         }, {
           id: 'Q8Z71ZUCEZ',
-          name: 'Item Three',
-          count: 10128,
-          lastModified: 'Today',
-          modifiedBy: 'Ashley McDougal'
-        }, {
-          id: 'WA0Q0XARAR',
-          name: 'Item Four',
-          count: 63616,
-          lastModified: 'Yesterday',
-          modifiedBy: 'Ashley McDougal'
+          name: 'Cloud City',
+          count: 101280,
+          lastModified: 'Today'
         }
       ],
       selection: []
@@ -38,8 +29,7 @@ const SLDSDataTableExample = React.createClass({
     return (
       <SLDSDataTable
         bordered
-        collection={this.state.collection}
-        columns={this.state.columns}
+        items={this.state.items}
         id="SLDSDataTableExample-1"
         onChange={this.handleChanged}
         onSort={this.handleSort}
@@ -48,7 +38,7 @@ const SLDSDataTableExample = React.createClass({
         striped
       >
         <SLDSDataTableColumn
-          label="Campaign Name"
+          label="Opportunity Name"
           property="name"
           truncate
         />
@@ -80,10 +70,10 @@ const SLDSDataTableExample = React.createClass({
   handleSort (sortColumn, sortDirection) {
     const sortProperty = sortColumn.property;
     const newState = {
-      collection: [...this.state.collection]
+      items: [...this.state.items]
     };
 
-    newState.collection = newState.collection.sort((a, b) => {
+    newState.items = newState.items.sort((a, b) => {
       let val = 0;
 
       if (a[sortProperty] > b[sortProperty]) {
