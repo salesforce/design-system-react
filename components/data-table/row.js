@@ -67,7 +67,7 @@ const DataTableRow = React.createClass({
 							assistiveText="Select Row"
 							checked={isSelected}
 							name="SelectRow"
-							onChanged={this.handleToggle}
+							onChange={this.handleToggle}
 						/>
 					</td>
 				) : null}

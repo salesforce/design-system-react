@@ -17,6 +17,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React from 'react';
 
+// ### isFunction
+import isFunction from 'lodash.isfunction';
+
 // ### classNames
 import classNames from 'classnames';
 
@@ -110,7 +113,7 @@ const Checkbox = React.createClass({
 							checked={checked}
 							disabled={disabled}
 							id={id}
-							onChange={onChange}
+							onChange={this.handleChange}
 							type="checkbox"
 						/>
 						<span className="slds-checkbox--faux"></span>
@@ -129,6 +132,12 @@ const Checkbox = React.createClass({
 				{errorText ? <div className="slds-form-element__help">{errorText}</div> : null}
 			</div>
 		);
+	},
+
+	handleChange () {
+		if (isFunction(this.props.onChange)) {
+			this.props.onChange(!this.props.checked);
+		}
 	}
 });
 

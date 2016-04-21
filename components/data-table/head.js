@@ -65,7 +65,7 @@ const DataTableHead = React.createClass({
 								assistiveText="Select All"
 								checked={this.props.allSelected}
 								name="SelectAll"
-								onChanged={this.handleChanged}
+								onChange={this.handleChange}
 							/>
 						</th>
 					)}
@@ -107,7 +107,7 @@ const DataTableHead = React.createClass({
 		);
 	},
 
-	handleChanged () {
+	handleChange () {
 		this.props.onToggleAll(!this.props.allSelected);
 	},
 
