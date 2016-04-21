@@ -17,7 +17,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 // ### includes
-import includes from 'lodash.includes';
+import find from 'lodash.find';
 
 // ## Children
 
@@ -94,7 +94,7 @@ const DataTableRow = React.createClass({
 	},
 
 	isSelected () {
-		return includes(this.props.selection, this.props.item);
+		return !!find(this.props.selection, this.props.item);
 	},
 
 	handleToggle (selected) {

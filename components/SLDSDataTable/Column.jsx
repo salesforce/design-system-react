@@ -1,1 +1,2 @@
-export SLDSDataTableColumn from '../data-table/column';
+import SLDSDataTableColumn from '../data-table/column';
+module.exports = SLDSDataTableColumn;

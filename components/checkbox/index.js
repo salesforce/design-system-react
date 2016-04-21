@@ -64,10 +64,6 @@ const Checkbox = React.createClass({
 		 */
 		errorText: React.PropTypes.string,
 		/**
-		 * Every Checkbox must have a unique ID in order to support keyboard navigation and ARIA support.
-		 */
-		id: PropTypes.string.isRequired,
-		/**
 		 * An optional label for the Checkbox.
 		 */
 		label: React.PropTypes.string,
@@ -84,11 +80,11 @@ const Checkbox = React.createClass({
 	// ### Render
 	render () {
 		const {
+			assistiveText,
 			checked,
 			className,
 			disabled,
 			errorText,
-			id,
 			label,
 			onChange,
 			required,
@@ -112,7 +108,6 @@ const Checkbox = React.createClass({
 							{...props}
 							checked={checked}
 							disabled={disabled}
-							id={id}
 							onChange={this.handleChange}
 							type="checkbox"
 						/>

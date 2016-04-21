@@ -1,1 +1,2 @@
-export SLDSDataTableRowActions from '../data-table/row-actions';
+import SLDSDataTableRowActions from '../data-table/row-actions';
+module.exports = SLDSDataTableRowActions;

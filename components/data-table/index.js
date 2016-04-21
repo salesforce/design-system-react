@@ -29,7 +29,7 @@ import isArray from 'lodash.isarray';
 import isFunction from 'lodash.isfunction';
 
 // ### without
-import without from 'lodash.without';
+import reject from 'lodash.reject';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
@@ -238,7 +238,7 @@ const DataTable = React.createClass({
 			if (selected) {
 				selection = [...this.props.selection, item];
 			} else {
-				selection = without(this.props.selection, item);
+				selection = reject(this.props.selection, item);
 			}
 
 			this.props.onChange(selection);
