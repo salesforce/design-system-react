@@ -16,6 +16,7 @@ This project is in beta and very experimental. Please visit [Design System React
 * <a href="https://design-system-react.herokuapp.com/#/button">Button</a>
 * <a href="https://design-system-react.herokuapp.com/#/button-group">ButtonGroup</a>
 * <a href="https://design-system-react.herokuapp.com/#/button-stateful">ButtonStateful</a>
+* <a href="https://design-system-react.herokuapp.com/#/data-table">DataTable</a>
 * <a href="https://design-system-react.herokuapp.com/#/dateinput">DatePickerSingleSelect</a>
 * <a href="https://design-system-react.herokuapp.com/#/icon">Icon</a>
 * <a href="https://design-system-react.herokuapp.com/#/lookup">Lookup</a>
