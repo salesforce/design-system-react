@@ -62,18 +62,23 @@ class Item extends React.Component {
   }
 
   getLabel(){
+    let icon;
     if(this.props.listItemLabelRenderer){
       const ListItemLabel = this.props.listItemLabelRenderer;
       return <ListItemLabel {... this.props} />;
     }
+    if(this.props.iconName){
+      icon = <SLDSIcon category={this.props.iconCategory} inverse={this.props.iconInverse} key={this.props.iconName} name={this.props.iconName} size="small" />;
+    }
     return [
-      <SLDSIcon category={this.props.iconCategory} inverse={this.props.iconInverse} key={this.props.iconName} name={this.props.iconName} size="small" />,
+      icon,
       this.boldSearchText(this.props.children.label)
     ]
   }
 
   render(){
     let className = 'slds-lookup__item';
+    let labelClassName = this.props.iconName ? '' : 'slds-m-left--x-small';
     let id = this.props.id;
     if(this.props.isActive) className += ' slds-theme--shade';
 
@@ -89,7 +94,9 @@ class Item extends React.Component {
           ref={id}
           role="option"
           tabIndex="-1">
+            <span className={labelClassName}>
             { this.getLabel() }
+            </span>
         </a>
       </li>
     )

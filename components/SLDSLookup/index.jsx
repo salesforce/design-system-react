@@ -408,13 +408,13 @@ class SLDSLookup extends React.Component {
 
   renderSelectedItem() {
     let selectedItem = this.props.options[this.state.selectedIndex].label;
+    const renderIcon = this.props.iconName ? <SLDSIcon category={this.props.iconCategory} className="slds-icon slds-pill__icon" inverse={this.props.iconInverse} name={this.props.iconName} /> : null;
+    let labelClassName = this.props.iconName ? 'slds-pill__label' : 'slds-pill__label slds-m-left--x-small';
     return (
       <a href="javascript:void(0)" className="slds-pill" ref={"pill-" + this.state.selectedIndex} onKeyDown={this.handlePillKeyDown.bind(this)}>
-        <span className="slds-pill__label">
-          <SLDSIcon category={this.props.iconCategory} className="slds-icon slds-pill__icon" inverse={this.props.iconInverse} name={this.props.iconName} />
-          <span className="slds-pill__label">
-            {selectedItem}
-          </span>
+        {renderIcon}
+        <span className={labelClassName}>
+          {selectedItem}
         </span>
         <SLDSButton
           assistiveText="Press delete to remove"

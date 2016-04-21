@@ -10,6 +10,7 @@ const Samples =  {
   IconButtons: require('fs').readFileSync('demo/code-snippets/ButtonIconExamples.js', 'utf8'),
   Lookups1: require('fs').readFileSync('demo/code-snippets/LookupExamples1.js', 'utf8'),
   Lookups2: require('fs').readFileSync('demo/code-snippets/LookupExamples2.js', 'utf8'),
+  Lookups3: require('fs').readFileSync('demo/code-snippets/LookupExamples3.js', 'utf8'),
   Modals1: require('fs').readFileSync('demo/code-snippets/ModalExamples1.js', 'utf8'),
   Modals2: require('fs').readFileSync('demo/code-snippets/ModalExamples2.js', 'utf8'),
   Modals3: require('fs').readFileSync('demo/code-snippets/ModalExamples3.js', 'utf8'),
