@@ -11,16 +11,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 /* eslint-disable indent */
 
 // ### React
-// React is an external dependency of the project.
 import React from 'react';
 
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
 // ## Children
-
-// ### Button
-import Button from '../button';
 
 // ### Dropdown
 import Dropdown from '../SLDSMenuDropdown';

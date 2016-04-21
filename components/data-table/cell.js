@@ -11,7 +11,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 /* eslint-disable indent */
 
 // ### React
-// React is an external dependency of the project.
 import React from 'react';
 
 // Removes the need for `PropTypes`.

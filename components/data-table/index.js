@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 /* eslint-disable indent */
 
-// # Data Table Component --- SLDS for React
+// # Data Table Component
 
 // Implements the [Data Table design pattern](https://www.lightningdesignsystem.com/components/data-tables) in React.
 
@@ -20,19 +20,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // ## Dependencies
 
-// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
-import checkProps from './check-props';
-
 // ### React
-// React is an external dependency of the project.
 import React from 'react';
 
 // ### classNames
-// [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
-// SLDS for React uses `classnames`, "a simple javascript utility for conditionally
-// joining classNames together." Because of the small size of the library, the
-// default build includes the entire library rather than requiring it as an
-// external dependency.
 import classNames from 'classnames';
 
 // ### isArray
@@ -43,6 +34,9 @@ import isFunction from 'lodash.isfunction';
 
 // ### without
 import without from 'lodash.without';
+
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
 
 // ## Children
 

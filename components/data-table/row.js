@@ -11,15 +11,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 /* eslint-disable indent */
 
 // ### React
-// React is an external dependency of the project.
 import React from 'react';
 
 // ### classNames
-// [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
-// SLDS for React uses `classnames`, "a simple javascript utility for conditionally
-// joining classNames together." Because of the small size of the library, the
-// default build includes the entire library rather than requiring it as an
-// external dependency.
 import classNames from 'classnames';
 
 // ### includes
