@@ -23,7 +23,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 // ### includes
-import includes from 'lodash/collection/includes';
+import includes from 'lodash.includes';
 
 // ## Children
 

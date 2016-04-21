@@ -36,13 +36,13 @@ import React from 'react';
 import classNames from 'classnames';
 
 // ### isArray
-import isArray from 'lodash/lang/isArray';
+import isArray from 'lodash.isarray';
 
 // ### isFunction
-import isFunction from 'lodash/lang/isFunction';
+import isFunction from 'lodash.isfunction';
 
 // ### without
-import without from 'lodash/array/without';
+import without from 'lodash.without';
 
 // ## Children
 

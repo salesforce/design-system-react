@@ -45,8 +45,7 @@ app.get('/assets/bundle/*', function (req, res, next) {
 app.post('/api/transform/js', function (req, res) {
   try {
     var result = babel.transform(req.body.js, {
-      presets: ['react', 'es2015'],
-      plugins: ['transform-class-properties']
+      presets: ['react', 'es2015', 'stage-1']
     })
     res.json({ response: result.code })
   } catch (err) {

@@ -15,7 +15,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 
 // ### isFunction
-import isFunction from 'lodash/lang/isFunction';
+import isFunction from 'lodash.isfunction';
 
 // ## Children
 
@@ -23,10 +23,7 @@ import isFunction from 'lodash/lang/isFunction';
 import Button from '../button';
 
 // ### Dropdown
-import Dropdown from '../dropdown';
-
-// ### Dropdown
-import Trigger from '../dropdown/button-trigger';
+import Dropdown from '../SLDSMenuDropdown';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
@@ -59,25 +56,20 @@ const DataTableRowActions = React.createClass({
 			<td className="slds-cell-shrink" data-label="Actions">
 				<Dropdown
 					align="right"
-					className={this.props.className}
-					collection={this.props.collection}
+					assistiveText={this.props.assistiveText}
+					buttonVariant="icon"
+					options={this.props.collection}
+					hint
+					iconSize="small"
+					iconVariant="border-filled"
 					id={this.props.id}
-					onChange={this.handleChange}
-				>
-					<Trigger>
-						<Button
-							assistiveText={this.props.assistiveText}
-							className="slds-button--icon-x-small"
-							iconSize="small"
-							iconStyle="icon-border-filled-hint"
-						/>
-					</Trigger>
-				</Dropdown>
+					onSelect={this.handleSelect}
+				/>
 			</td>
 		);
 	},
 
-	handleChange (selection) {
+	handleSelect (selection) {
 		if (isFunction(this.props.onAction)) {
 			this.props.onAction(this.props.item, selection);
 		}

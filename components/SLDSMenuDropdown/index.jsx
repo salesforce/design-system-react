@@ -313,6 +313,7 @@ class SLDSMenuDropdown extends React.Component {
         aria-haspopup="true"
         assistiveText={this.props.assistiveText}
         disabled={this.props.disabled}
+        hint={this.props.hint}
         iconName={this.props.iconName}
         iconVariant={this.props.iconVariant}
         id={this.state.triggerId}
@@ -343,4 +344,3 @@ SLDSMenuDropdown.defaultProps = defaultProps;
 module.exports = SLDSMenuDropdown;
 module.exports.ListItem = ListItem;
 module.exports.ListItemLabel = ListItemLabel;
-

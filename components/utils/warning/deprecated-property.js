@@ -10,23 +10,24 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 /* eslint-disable indent */
 
-import deprecatedProperty from '../utils/warning/deprecated-property';
-import sunsetProperty from '../utils/warning/sunset-property';
+// This function will deliver an error message to the browser console about the removal of a property.
+import warning from 'warning';
 
-let checkProps = function () {};
+let deprecated = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, props) {
-		/* eslint-disable max-len */
-		// Deprecated and changed to another property
-		deprecatedProperty(COMPONENT, props.onSelect, 'onSelect', 'onChange');
-		deprecatedProperty(COMPONENT, props.onSelect, 'onDeselect', 'onChange');
-		sunsetProperty(COMPONENT, props.sortable, 'sortable', 'The table is sortable if one or more of its columns are sortable.');
+	const hasWarned = {};
 
-		// Deprecated and moved to a child
-		sunsetProperty(COMPONENT, props.columns, 'columns', 'Please provide one or more children of the type <Column /> instead.');
-		/* eslint-enable max-len */
+	deprecated = function (control, propValue, oldProp, newProp, comment) {
+		const additionalComment = comment ? ` ${comment}` : '';
+		const newProperty = newProp ? `Use \`${newProp}\`` : '';
+		if (!hasWarned[control + oldProp]) {
+			/* eslint-disable max-len */
+			warning(!propValue, `[Design System React] \`${oldProp}\` will be deprecated in the next major version of ${control}. ${newProperty} instead.${additionalComment}`);
+			/* eslint-enable max-len */
+			hasWarned[control + oldProp] = !!propValue;
+		}
 	};
 }
 
-export default checkProps;
+export default deprecated;
