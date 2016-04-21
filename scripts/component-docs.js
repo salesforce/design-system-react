@@ -3,6 +3,7 @@ var fs = require('fs');
 var path = require('path');
 
 var componentNames = [
+  'data-table',
   'SLDSBreadCrumb',
   'SLDSButton',
   'SLDSButtonStateful',
