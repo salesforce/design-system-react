@@ -40,6 +40,9 @@ class LookupSection extends React.Component {
         </div>
 
         <section className="slds-p-vertical--large">
+          <CodeMirror codeText={Samples.Lookups3} />
+        </section>
+        <section className="slds-p-vertical--large">
           <CodeMirror codeText={Samples.Lookups1} />
         </section>
         <section className="slds-p-vertical--large">
