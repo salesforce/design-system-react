@@ -9,38 +9,23 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import SLDSBreadCrumb from './SLDSBreadCrumb';
-import SLDSButton from './SLDSButton';
-import SLDSButtonStateful from './SLDSButtonStateful';
-import SLDSButtonGroup from './SLDSButtonGroup';
-import SLDSIcon from './SLDSIcon';
-import SLDSLookup from './SLDSLookup';
-import SLDSMenuDropdown from './SLDSMenuDropdown';
-import SLDSMenuPicklist from './SLDSMenuPicklist';
-import SLDSModal from './SLDSModal';
-import SLDSModalTrigger from './SLDSModal/trigger';
-import SLDSNotification from './SLDSNotification';
-import SLDSPopoverTooltip from './SLDSPopoverTooltip';
-import SLDSDatepickerSingleSelect from './SLDSDatepickerSingleSelect';
-import SLDSTimepicker from './SLDSTimepicker';
-import SLDSSettings from './SLDSSettings';
-import SLDSUtilityIcon from './SLDSUtilityIcon';
-
-module.exports = {
-  SLDSBreadCrumb: SLDSBreadCrumb,
-  SLDSButton: SLDSButton,
-  SLDSButtonStateful: SLDSButtonStateful,
-  SLDSButtonGroup: SLDSButtonGroup,
-  SLDSDatepickerSingleSelect: SLDSDatepickerSingleSelect,
-  SLDSIcon: SLDSIcon,
-  SLDSLookup: SLDSLookup,
-  SLDSMenuDropdown: SLDSMenuDropdown,
-  SLDSMenuPicklist: SLDSMenuPicklist,
-  SLDSModal: SLDSModal,
-  SLDSModalTrigger: SLDSModalTrigger,
-  SLDSNotification: SLDSNotification,
-  SLDSPopoverTooltip: SLDSPopoverTooltip,
-  SLDSTimepicker: SLDSTimepicker,
-  SLDSSettings: SLDSSettings,
-  SLDSUtilityIcon: SLDSUtilityIcon,
-};
+export SLDSBreadCrumb from './SLDSBreadCrumb';
+export SLDSButton from './SLDSButton';
+export SLDSButtonGroup from './SLDSButtonGroup';
+export SLDSButtonStateful from './SLDSButtonStateful';
+export SLDSDataTable from './SLDSDataTable';
+export SLDSDataTableCell from './SLDSDataTable/Cell';
+export SLDSDataTableColumn from './SLDSDataTable/Column';
+export SLDSDataTableRowActions from './SLDSDataTable/RowActions';
+export SLDSDatepickerSingleSelect from './SLDSDatepickerSingleSelect';
+export SLDSIcon from './SLDSIcon';
+export SLDSLookup from './SLDSLookup';
+export SLDSMenuDropdown from './SLDSMenuDropdown';
+export SLDSMenuPicklist from './SLDSMenuPicklist';
+export SLDSModal from './SLDSModal';
+export SLDSModalTrigger from './SLDSModal/trigger';
+export SLDSNotification from './SLDSNotification';
+export SLDSPopoverTooltip from './SLDSPopoverTooltip';
+export SLDSSettings from './SLDSSettings';
+export SLDSTimepicker from './SLDSTimepicker';
+export SLDSUtilityIcon from './SLDSUtilityIcon';
