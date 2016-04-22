@@ -19,6 +19,7 @@ if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
 		/* eslint-disable max-len */
 		// Deprecated and changed to another property
+		deprecatedProperty(COMPONENT, props.onSelect, 'collection', 'items');
 		deprecatedProperty(COMPONENT, props.onSelect, 'onSelect', 'onChange');
 		deprecatedProperty(COMPONENT, props.onSelect, 'onDeselect', 'onChange');
 		sunsetProperty(COMPONENT, props.sortable, 'sortable', 'The table is sortable if one or more of its columns are sortable.');
