@@ -65,6 +65,7 @@ const DataTableRowActions = React.createClass({
 				<Dropdown
 					align="right"
 					assistiveText={this.props.assistiveText}
+					buttonClassName="slds-button--icon-x-small"
 					buttonVariant="icon"
 					className={this.props.className}
 					options={this.props.options}
