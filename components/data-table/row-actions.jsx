@@ -38,12 +38,24 @@ const DataTableRowActions = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
+		/**
+		 * Description of the menu for screenreaders.
+		 */
 		assistiveText: PropTypes.string,
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-		items: PropTypes.array.isRequired,
+		/**
+		 * Class names to be added to the actions menu.
+		 */
+		className: PropTypes.string,
 		id: PropTypes.string,
 		item: PropTypes.object,
-		onAction: PropTypes.func
+		onAction: PropTypes.func,
+		options: PropTypes.array.isRequired
+	},
+
+	getDefaultProps () {
+		return {
+			assistiveText: 'Actions'
+		};
 	},
 
 	// ### Render
@@ -54,7 +66,8 @@ const DataTableRowActions = React.createClass({
 					align="right"
 					assistiveText={this.props.assistiveText}
 					buttonVariant="icon"
-					options={this.props.items}
+					className={this.props.className}
+					options={this.props.options}
 					hint
 					iconSize="small"
 					iconVariant="border-filled"

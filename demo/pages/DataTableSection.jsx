@@ -41,6 +41,10 @@ class DataTableSection extends React.Component {
           <h4 className="slds-text-heading--small">Base</h4>
           <CodeMirror codeText={Samples.DataTables1} />
         </section>
+        <section className="slds-p-vertical--large">
+          <h4 className="slds-text-heading--small">Base</h4>
+          <CodeMirror codeText={Samples.DataTables2} />
+        </section>
         <PropTable component="data-table" />
       </div>
     );

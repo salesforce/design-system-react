@@ -63,10 +63,6 @@ const SLDSDataTableExample = React.createClass({
     this.setState({ selection });
   },
 
-  handleRowAction (item, action) {
-    console.log(item, action);
-  },
-
   handleSort (sortColumn, sortDirection) {
     const sortProperty = sortColumn.property;
     const newState = {
