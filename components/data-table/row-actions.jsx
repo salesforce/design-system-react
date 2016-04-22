@@ -61,7 +61,10 @@ const DataTableRowActions = React.createClass({
 	// ### Render
 	render () {
 		return (
-			<td className="slds-cell-shrink" data-label="Actions">
+			<td
+				className="slds-cell-shrink" data-label="Actions"
+				onClick={this.handleClick}
+			>
 				<Dropdown
 					align="right"
 					assistiveText={this.props.assistiveText}
@@ -78,6 +81,10 @@ const DataTableRowActions = React.createClass({
 				/>
 			</td>
 		);
+	},
+
+	handleClick (e) {
+		e.stopPropagation();
 	},
 
 	handleSelect (selection) {

@@ -129,9 +129,9 @@ const Checkbox = React.createClass({
 		);
 	},
 
-	handleChange () {
+	handleChange (e) {
 		if (isFunction(this.props.onChange)) {
-			this.props.onChange(!this.props.checked);
+			this.props.onChange(!this.props.checked, e);
 		}
 	}
 });

@@ -16,8 +16,11 @@ import React from 'react';
 // ### classNames
 import classNames from 'classnames';
 
-// ### includes
+// ### find
 import find from 'lodash.find';
+
+// ### partial
+import partial from 'lodash.partial';
 
 // ## Children
 
@@ -60,7 +63,10 @@ const DataTableRow = React.createClass({
 		const isSelected = this.isSelected();
 
 		return (
-			<tr className={classNames({ 'slds-hint-parent': this.props.rowActions, 'slds-is-selected': isSelected })}>
+			<tr
+				className={classNames({ 'slds-hint-parent': this.props.rowActions, 'slds-is-selected': isSelected })}
+				onClick={this.props.canSelectRows ? partial(this.handleToggle, !isSelected) : null}
+			>
 				{this.props.canSelectRows ? (
 					<td className="slds-cell-shrink" data-label="Select Row">
 						<Checkbox
@@ -97,7 +103,9 @@ const DataTableRow = React.createClass({
 		return !!find(this.props.selection, this.props.item);
 	},
 
-	handleToggle (selected) {
+	handleToggle (selected, e) {
+		e.preventDefault();
+
 		return this.props.onToggle(this.props.item, selected);
 	}
 });
