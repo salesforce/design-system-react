@@ -71,31 +71,27 @@ const DataTable = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
+		/**
+		 * A variant which adds borders to the table.
+		 */
 		bordered: PropTypes.bool,
 		/**
-		 * Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid.
+		 * Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Custom `<DataTableCell />` implementations may also be passed in to override cell rendering.
+		 * ```
+		 * <DataTable>
+		 *   <DataTableColumn />
+		 *   <DataTableColumn>
+		 *     <DataTableCustomCell />
+		 *   </DataTableColumn>
+		 *   <DataTableRowActions />
+		 * </DataTable>
+		 * ```
 		 */
 		children: PropTypes.node,
 		/**
 		 * Class names to be added to the table.
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-		/**
-		 * End of Life. Please provide one or more children of the type `<DataTableColumn />` instead:
-		 * ```
-		 * <DataTable>
-		 *   <DataTableColumn />
-		 * </DataTable>
-		 * ```
-		 */
-		columns: PropTypes.arrayOf(
-			PropTypes.shape({
-				propertyName: PropTypes.string,
-				displayName: PropTypes.string,
-				sortable: PropTypes.bool,
-				sortDirection: PropTypes.oneOf(['desc', 'asc'])
-			})
-		),
 		/**
 		 * Every table must have a unique ID in order to support keyboard navigation and ARIA support.
 		 */
@@ -120,8 +116,17 @@ const DataTable = React.createClass({
 		 * True if rows should be selectable.
 		 */
 		selectRows: PropTypes.bool,
+		/**
+		 * A variant which modifies table layout by stacking cells to accommodate smaller viewports. Should not be used at the same time as `stackedHorizontal`.
+		 */
 		stacked: PropTypes.bool,
+		/**
+		 * A variant which modifies table layout by displaying the header and row data side by side for smaller viewports. Should not be used at the same time as `stacked`.
+		 */
 		stackedHorizontal: PropTypes.bool,
+		/**
+		 * A variant which adds stripes to alternating rows.
+		 */
 		striped: PropTypes.bool
 	},
 

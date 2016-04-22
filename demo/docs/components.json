@@ -50,7 +50,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "",
+                "description": "A variant which adds borders to the table.",
                 "defaultValue": {
                     "value": "false",
                     "computed": false
@@ -61,7 +61,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid."
+                "description": "Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Custom `<DataTableCell />` implementations may also be passed in to override cell rendering.\n```\n<DataTable>\n  <DataTableColumn />\n  <DataTableColumn>\n    <DataTableCustomCell />\n  </DataTableColumn>\n  <DataTableRowActions />\n</DataTable>\n```"
             },
             "className": {
                 "type": {
@@ -80,44 +80,6 @@
                 },
                 "required": false,
                 "description": "Class names to be added to the table."
-            },
-            "columns": {
-                "type": {
-                    "name": "arrayOf",
-                    "value": {
-                        "name": "shape",
-                        "value": {
-                            "propertyName": {
-                                "name": "string",
-                                "required": false
-                            },
-                            "displayName": {
-                                "name": "string",
-                                "required": false
-                            },
-                            "sortable": {
-                                "name": "bool",
-                                "required": false
-                            },
-                            "sortDirection": {
-                                "name": "enum",
-                                "value": [
-                                    {
-                                        "value": "'desc'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'asc'",
-                                        "computed": false
-                                    }
-                                ],
-                                "required": false
-                            }
-                        }
-                    }
-                },
-                "required": false,
-                "description": "End of Life. Please provide one or more children of the type `<DataTableColumn />` instead:\n```\n<DataTable>\n  <DataTableColumn />\n</DataTable>\n```"
             },
             "id": {
                 "type": {
@@ -174,7 +136,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "",
+                "description": "A variant which modifies table layout by stacking cells to accommodate smaller viewports. Should not be used at the same time as `stackedHorizontal`.",
                 "defaultValue": {
                     "value": "false",
                     "computed": false
@@ -185,7 +147,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "",
+                "description": "A variant which modifies table layout by displaying the header and row data side by side for smaller viewports. Should not be used at the same time as `stacked`.",
                 "defaultValue": {
                     "value": "false",
                     "computed": false
@@ -196,7 +158,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "",
+                "description": "A variant which adds stripes to alternating rows.",
                 "defaultValue": {
                     "value": "false",
                     "computed": false
