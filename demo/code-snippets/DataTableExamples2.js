@@ -49,11 +49,11 @@ const SLDSDataTableExample = React.createClass({
 					options={[
 						{
 							id: 0,
-							text: 'Add to Group',
+							label: 'Add to Group',
 							value: '1'
 						}, {
 							id: 1,
-							text: 'Publish',
+							label: 'Publish',
 							value: '2'
 						}
 					]}
