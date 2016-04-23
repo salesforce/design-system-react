@@ -21,6 +21,9 @@ import isFunction from 'lodash.isfunction';
 // ### Dropdown
 import Dropdown from '../SLDSMenuDropdown';
 
+// ### Event Helpers
+import { EventUtil } from "../utils";
+
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
 
@@ -84,7 +87,7 @@ const DataTableRowActions = React.createClass({
 	},
 
 	handleClick (e) {
-		e.stopPropagation();
+		EventUtil.trap(e);
 	},
 
 	handleSelect (selection) {

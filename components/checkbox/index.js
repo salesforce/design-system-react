@@ -20,6 +20,9 @@ import React from 'react';
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
+// ### Event Helpers
+import { KEYS, EventUtil } from "../utils";
+
 // ### classNames
 import classNames from 'classnames';
 
@@ -100,6 +103,7 @@ const Checkbox = React.createClass({
 				'slds-has-error': errorText
 			},
 			className)}
+				onKeyDown={this.handleKeyDown}
 			>
 				<div className="slds-form-element__control">
 					<label className="slds-checkbox">
@@ -133,7 +137,17 @@ const Checkbox = React.createClass({
 		if (isFunction(this.props.onChange)) {
 			this.props.onChange(!this.props.checked, e);
 		}
-	}
+	},
+
+	handleKeyDown (e){
+    if (e.keyCode) {
+      if (e.keyCode === KEYS.ENTER ||
+         e.keyCode === KEYS.SPACE) {
+          EventUtil.trap(e);
+          this.handleChange(e);
+      }
+    }
+  }
 });
 
 export default Checkbox;

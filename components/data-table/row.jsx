@@ -27,6 +27,9 @@ import partial from 'lodash.partial';
 // ### Checkbox
 import Checkbox from '../checkbox';
 
+// ### Event Helpers
+import { EventUtil } from "../utils";
+
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
 
@@ -104,7 +107,7 @@ const DataTableRow = React.createClass({
 	},
 
 	handleToggle (selected, e) {
-		e.preventDefault();
+		EventUtil.trap(e);
 
 		return this.props.onToggle(this.props.item, selected);
 	}

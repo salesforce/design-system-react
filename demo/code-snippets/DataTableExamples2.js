@@ -29,7 +29,6 @@ const SLDSDataTableExample = React.createClass({
         onChange={this.handleChanged}
         selection={this.state.selection}
         selectRows
-        striped
       >
         <SLDSDataTableColumn
           label="Opportunity Name"
