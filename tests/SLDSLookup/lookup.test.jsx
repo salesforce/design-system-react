@@ -137,7 +137,7 @@ describe('SLDSLookup: ',  function(){
       TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
       TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
       TestUtils.Simulate.keyDown(input, {key: "Enter", keyCode: 13, which: 13});
-      let selected = lookup.getElementsByTagName("a")[0].getElementsByTagName('span')[0].innerText;
+      let selected = lookup.getElementsByTagName("a")[0].getElementsByClassName('slds-pill__label')[0].innerText;
       expect(selected).to.equal('Paper St. Soap Company');
     });
 
@@ -149,7 +149,7 @@ describe('SLDSLookup: ',  function(){
       TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
       TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
       TestUtils.Simulate.keyDown(input, {key: "Enter", keyCode: 13, which: 13});
-      let selected = lookup.getElementsByTagName("a")[0].getElementsByTagName('span')[0].innerText;
+      let selected = lookup.getElementsByTagName("a")[0].getElementsByClassName('slds-pill__label')[0].innerText;
       expect(selected).to.equal('Tyrell Corp');
     });
 
