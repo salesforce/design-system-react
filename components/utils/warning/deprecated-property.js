@@ -8,24 +8,26 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+/* eslint-disable indent */
 
-export SLDSBreadCrumb from './SLDSBreadCrumb';
-export SLDSButton from './SLDSButton';
-export SLDSButtonGroup from './SLDSButtonGroup';
-export SLDSButtonStateful from './SLDSButtonStateful';
-export SLDSDataTable from './SLDSDataTable';
-export SLDSDataTableCell from './SLDSDataTable/Cell';
-export SLDSDataTableColumn from './SLDSDataTable/Column';
-export SLDSDataTableRowActions from './SLDSDataTable/RowActions';
-export SLDSDatepickerSingleSelect from './SLDSDatepickerSingleSelect';
-export SLDSIcon from './SLDSIcon';
-export SLDSLookup from './SLDSLookup';
-export SLDSMenuDropdown from './SLDSMenuDropdown';
-export SLDSMenuPicklist from './SLDSMenuPicklist';
-export SLDSModal from './SLDSModal';
-export SLDSModalTrigger from './SLDSModal/trigger';
-export SLDSNotification from './SLDSNotification';
-export SLDSPopoverTooltip from './SLDSPopoverTooltip';
-export SLDSSettings from './SLDSSettings';
-export SLDSTimepicker from './SLDSTimepicker';
-export SLDSUtilityIcon from './SLDSUtilityIcon';
+// This function will deliver an error message to the browser console about the removal of a property.
+import warning from 'warning';
+
+let deprecated = function () {};
+
+if (process.env.NODE_ENV !== 'production') {
+	const hasWarned = {};
+
+	deprecated = function (control, propValue, oldProp, newProp, comment) {
+		const additionalComment = comment ? ` ${comment}` : '';
+		const newProperty = newProp ? `Use \`${newProp}\`` : '';
+		if (!hasWarned[control + oldProp]) {
+			/* eslint-disable max-len */
+			warning(!propValue, `[Design System React] \`${oldProp}\` will be deprecated in the next major version of ${control}. ${newProperty} instead.${additionalComment}`);
+			/* eslint-enable max-len */
+			hasWarned[control + oldProp] = !!propValue;
+		}
+	};
+}
+
+export default deprecated;

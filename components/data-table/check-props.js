@@ -8,24 +8,26 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+/* eslint-disable indent */
 
-export SLDSBreadCrumb from './SLDSBreadCrumb';
-export SLDSButton from './SLDSButton';
-export SLDSButtonGroup from './SLDSButtonGroup';
-export SLDSButtonStateful from './SLDSButtonStateful';
-export SLDSDataTable from './SLDSDataTable';
-export SLDSDataTableCell from './SLDSDataTable/Cell';
-export SLDSDataTableColumn from './SLDSDataTable/Column';
-export SLDSDataTableRowActions from './SLDSDataTable/RowActions';
-export SLDSDatepickerSingleSelect from './SLDSDatepickerSingleSelect';
-export SLDSIcon from './SLDSIcon';
-export SLDSLookup from './SLDSLookup';
-export SLDSMenuDropdown from './SLDSMenuDropdown';
-export SLDSMenuPicklist from './SLDSMenuPicklist';
-export SLDSModal from './SLDSModal';
-export SLDSModalTrigger from './SLDSModal/trigger';
-export SLDSNotification from './SLDSNotification';
-export SLDSPopoverTooltip from './SLDSPopoverTooltip';
-export SLDSSettings from './SLDSSettings';
-export SLDSTimepicker from './SLDSTimepicker';
-export SLDSUtilityIcon from './SLDSUtilityIcon';
+import deprecatedProperty from '../utils/warning/deprecated-property';
+import sunsetProperty from '../utils/warning/sunset-property';
+
+let checkProps = function () {};
+
+if (process.env.NODE_ENV !== 'production') {
+	checkProps = function (COMPONENT, props) {
+		/* eslint-disable max-len */
+		// Deprecated and changed to another property
+		deprecatedProperty(COMPONENT, props.onSelect, 'collection', 'items');
+		deprecatedProperty(COMPONENT, props.onSelect, 'onSelect', 'onChange');
+		deprecatedProperty(COMPONENT, props.onSelect, 'onDeselect', 'onChange');
+		sunsetProperty(COMPONENT, props.sortable, 'sortable', 'The table is sortable if one or more of its columns are sortable.');
+
+		// Deprecated and moved to a child
+		sunsetProperty(COMPONENT, props.columns, 'columns', 'Please provide one or more children of the type <Column /> instead.');
+		/* eslint-enable max-len */
+	};
+}
+
+export default checkProps;
