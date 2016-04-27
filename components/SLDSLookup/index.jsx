@@ -166,9 +166,6 @@ class SLDSLookup extends React.Component {
   // Using down/up keys, set Focus on list item and assign it to aria-activedescendant attribute in input.
   // Need to keep track of filtered list length to be able to increment/decrement the focus index so it's contained to the number of available list items.
   increaseIndex() {
-    if(filteredItem && filteredItem.data.type === 'section'){
-      this.state.focusIndex++;
-    }
     let numFocusable = this.getNumFocusableItems();
     let nextFocusIndex = this.state.focusIndex < numFocusable ? this.state.focusIndex + 1 : 0;
     const filteredItem = this.refs.menu.getFilteredItemForIndex(nextFocusIndex);
@@ -180,7 +177,12 @@ class SLDSLookup extends React.Component {
 
   decreaseIndex() {
     let numFocusable = this.getNumFocusableItems();
-    this.setState({ focusIndex: this.state.focusIndex > 0 ? this.state.focusIndex - 1 : numFocusable});
+    let prevFocusIndex = this.state.focusIndex > 0 ? this.state.focusIndex - 1 : numFocusable;
+    const filteredItem = this.refs.menu.getFilteredItemForIndex(prevFocusIndex);
+    if(filteredItem && filteredItem.data.type === 'section'){
+      prevFocusIndex--;
+    }
+    this.setState({ focusIndex: prevFocusIndex});
   }
 
   setFocus(id) {
