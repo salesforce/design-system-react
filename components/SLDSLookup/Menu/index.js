@@ -70,7 +70,7 @@ class Menu extends React.Component {
   }
 
   getFilteredItemForIndex(i){
-    if(i && this.state.filteredItems && i< this.state.filteredItems.length){
+    if(i>-1 && this.state.filteredItems && i< this.state.filteredItems.length){
       return this.state.filteredItems[i];
     }
   }

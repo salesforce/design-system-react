@@ -162,6 +162,18 @@ class SLDSLookup extends React.Component {
     this.setState({items: items});
   }
 
+  setFirstIndex(){
+    let numFocusable = this.getNumFocusableItems();
+    let nextFocusIndex = 0;
+    let filteredItem = this.state.items[0];
+    if(this.refs.menu && this.refs.menu.getFilteredItemForIndex){
+      filteredItem = this.refs.menu.getFilteredItemForIndex(nextFocusIndex);
+    }
+    if(filteredItem && filteredItem.data.type === 'section'){
+      nextFocusIndex++;
+    }
+    this.setState({ focusIndex: nextFocusIndex });
+  }
   //=================================================
   // Using down/up keys, set Focus on list item and assign it to aria-activedescendant attribute in input.
   // Need to keep track of filtered list length to be able to increment/decrement the focus index so it's contained to the number of available list items.
@@ -295,7 +307,7 @@ class SLDSLookup extends React.Component {
       //If user hits down key, advance aria activedescendant to next item
       if(event.keyCode === KEYS.DOWN){
         EventUtil.trapImmediate(event);
-        this.state.focusIndex === null ? this.setState({ focusIndex: 0 }) : this.increaseIndex();
+        this.state.focusIndex === null ? this.setFirstIndex() : this.increaseIndex();
       }
       //If user hits up key, advance aria activedescendant to previous item
       else if(event.keyCode === KEYS.UP){
