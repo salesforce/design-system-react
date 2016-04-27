@@ -59,7 +59,25 @@ class Menu extends React.Component {
   }
 
   filteredItems() {
-    return this.props.items.filter(this.filter, this)
+    return this.filterEmptySections(this.props.items.filter(this.filter, this));
+  }
+
+  filterEmptySections(items){
+    const result = [];
+    items.forEach((item,index)=>{
+      if(item && item.data && item.data.type === 'section'){
+        if(index+1<items.length){
+          const nextItem = items[index+1];
+          if(nextItem.data && nextItem.data.type !== 'section'){
+            result.push(item);
+          }
+        }
+      }
+      else{
+        result.push(item);
+      }
+    });
+    return result;
   }
 
   //Scroll menu up/down when using mouse keys

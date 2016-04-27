@@ -39,11 +39,15 @@ class DefaultSectionHeader extends React.Component {
 
   render(){
     return (
-      <div className="slds-lookup__item"
+      <li className="slds-lookup__item"
         tabIndex="-1"
       >
-        @@@ Section
-      </div>
+        <a href="javascript:void()" tabIndex="-1">
+          <span className="slds-m-left--x-small">
+            <strong>{this.props.data.label}</strong>
+          </span>
+        </a>
+      </li>
     )
   }
 }

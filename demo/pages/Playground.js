@@ -20,14 +20,14 @@ module.exports = React.createClass({
           onChange={function(newValue){console.log("New search term: ", newValue)}}
           onSelect={function(item){console.log(item , " Selected")}}
           options={[
-            {type:'section', label:'Section 1'},
+            {type:'section', label:'SECTION 1'},
             {label: "Paddy\"s Pub"},
             {label: "Tyrell Corp"},
-            {type:'section', label:'Section 2'},
+            {type:'section', label:'SECTION 2'},
             {label: "Paper St. Soap Company"},
             {label: "Nakatomi Investments"},
             {label: "Acme Landscaping"},
-            {type:'section', label:'Section 3'},
+            {type:'section', label:'SECTION 3'},
             {label: "Acme Construction"}
           ]}
         />
