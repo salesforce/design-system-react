@@ -17,6 +17,7 @@ import ButtonSection from './pages/ButtonSection';
 import ButtonStatefulSection from './pages/ButtonStatefulSection';
 import ButtonGroupSection from './pages/ButtonGroupSection';
 import ContextBarSection from './pages/ContextBarSection';
+import DataTableSection from './pages/DataTableSection';
 import DateInputSection from './pages/DateInputSection';
 import DatePickerSingleSelectSection from './pages/DatePickerSingleSelectSection';
 import TimePickerSection from './pages/TimePickerSection';
@@ -40,6 +41,7 @@ const routes = (
       <Route name="button-stateful" path="button-stateful" handler={ButtonStatefulSection}/>
       <Route name="button-group" path="button-group" handler={ButtonGroupSection}/>
       <Route name="context-bar" path="context-bar" handler={ContextBarSection}/>
+      <Route name="data-table" path="data-table" handler={DataTableSection}/>
       <Route name="dateinput" path="dateinput" handler={DateInputSection}/>
       <Route name="timepicker" path="timepicker" handler={TimePickerSection}/>
       <Route name="datepicker" path="datepicker" handler={DatePickerSingleSelectSection}/>
