@@ -12,6 +12,8 @@ import ReactDOM from 'react-dom';
 
 import Item from './Item';
 
+import DefaultSectionHeader from './DefaultSectionHeader';
+
 const displayName = 'SLDSLookup-Menu';
 const propTypes = {
   boldRegex: React.PropTypes.instanceOf(RegExp),
@@ -32,15 +34,24 @@ const defaultProps = {
 class Menu extends React.Component {
   constructor(props){
     super(props);
-    this.state = {};
+    this.state = {filteredItems:this.filteredItems()};
   }
 
   //Set filtered list length in parent to determine active indexes for aria-activedescendent
-  componentDidUpdate(){
+  componentDidUpdate(prevProps){
     // make an array of the children of the list but only count the actual items
     let list = [].slice.call(ReactDOM.findDOMNode(this.refs.list).children)
       .filter((child) => child.className.indexOf("slds-lookup__item") > -1).length;
     this.props.getListLength(list);
+    if(
+        prevProps.items !== this.props.items ||
+        prevProps.filter !== this.props.filter ||
+        prevProps.searchTerm !== this.props.searchTerm
+      ){
+      this.setState({
+        filteredItems:this.filteredItems()
+      });
+    }
   }
 
   filter(item){
@@ -58,6 +69,12 @@ class Menu extends React.Component {
     }
   }
 
+  getFilteredItemForIndex(i){
+    if(i && this.state.filteredItems && i< this.state.filteredItems.length){
+      return this.state.filteredItems[i];
+    }
+  }
+
   renderHeader(){
     return this.props.header;
   }
@@ -67,14 +84,19 @@ class Menu extends React.Component {
   }
 
   renderItems(){
-    return this.filteredItems().map((c, i) => {
+    let focusIndex = this.props.focusIndex;
+    return this.state.filteredItems.map((c, i) => {
       //isActive means it is aria-activedescendant
       const id = c.id;
       let isActive = false;
       if (this.props.header) {
-        isActive = this.props.focusIndex === i + 1 ? true : false;
+        isActive = focusIndex === i + 1 ? true : false;
       }else{
-        isActive = this.props.focusIndex === i  ? true : false;
+        isActive = focusIndex === i  ? true : false;
+      }
+      if(c.data.type==='section'){
+//        focusIndex++;
+        return <DefaultSectionHeader data={c.data} key={'section_header_'+i}/>;
       }
       return <Item
         boldRegex={this.props.boldRegex}
@@ -98,7 +120,7 @@ class Menu extends React.Component {
   }
 
   renderContent(){
-    if (this.filteredItems().length === 0)
+    if (this.state.filteredItems.length === 0)
       return (
         <li className="slds-lookup__message" aria-live="polite">
           <span className="slds-m-left--x-large slds-p-vertical--medium">{this.props.emptyMessage}</span>
