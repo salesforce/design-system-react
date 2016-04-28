@@ -64,7 +64,7 @@ class Menu extends React.Component {
 
   filterEmptySections(items){
     const result = [];
-    items.forEach((item,index)=>{
+    items.forEach((item,index) => {
       if(item && item.data && item.data.type === 'section'){
         if(index+1<items.length){
           const nextItem = items[index+1];
@@ -113,7 +113,6 @@ class Menu extends React.Component {
         isActive = focusIndex === i  ? true : false;
       }
       if(c.data.type==='section'){
-//        focusIndex++;
         return <DefaultSectionHeader data={c.data} key={'section_header_'+i}/>;
       }
       return <Item

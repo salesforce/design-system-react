@@ -191,8 +191,9 @@ class SLDSLookup extends React.Component {
     let numFocusable = this.getNumFocusableItems();
     let prevFocusIndex = this.state.focusIndex > 0 ? this.state.focusIndex - 1 : numFocusable;
     const filteredItem = this.refs.menu.getFilteredItemForIndex(prevFocusIndex);
+    console.log('filteredItem', filteredItem);
     if(filteredItem && filteredItem.data.type === 'section'){
-      prevFocusIndex--;
+      prevFocusIndex === 0 ? prevFocusIndex = numFocusable : prevFocusIndex--;
     }
     this.setState({ focusIndex: prevFocusIndex});
   }

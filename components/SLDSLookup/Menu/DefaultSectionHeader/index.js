@@ -8,29 +8,18 @@
    */
 
 import React from 'react';
-import SLDSIcon from "../../../SLDSIcon";
 import { EventUtil } from '../../../utils';
 
 const displayName = "LookupDefaultSectionHeader";
-const propTypes = {};
-const defaultProps = {};
+const propTypes = {
+  data: React.PropTypes.object,
+  key: React.PropTypes.string
+
+};
 
 class DefaultSectionHeader extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  componentWillReceiveProps(nextProps){
-    if(nextProps.isActive !== this.props.isActive && nextProps.isActive === true) {
-      this.props.setFocus('searchRecords');
-    }
-  }
-
-  handleClick(){
-    console.log('=====> Lookup Header Clicked');
-    if(this.props.onClose){
-      this.props.onClose();
-    }
   }
 
   handleMouseDown(event) {
@@ -39,14 +28,12 @@ class DefaultSectionHeader extends React.Component {
 
   render(){
     return (
-      <li className="slds-lookup__item"
+      <li className="slds-p-around--x-small"
         tabIndex="-1"
       >
-        <a href="javascript:void()" tabIndex="-1">
           <span className="slds-m-left--x-small">
             <strong>{this.props.data.label}</strong>
           </span>
-        </a>
       </li>
     )
   }
@@ -54,6 +41,5 @@ class DefaultSectionHeader extends React.Component {
 
 DefaultSectionHeader.displayName = displayName;
 DefaultSectionHeader.propTypes = propTypes;
-DefaultSectionHeader.defaultProps = defaultProps;
 
 module.exports = DefaultSectionHeader;
