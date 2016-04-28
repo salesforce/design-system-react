@@ -15,5 +15,6 @@
     {type:'section', label:'SECTION 3'},
     {label: "Acme Construction"}
   ]}
+  sectionDividerRenderer={SLDSLookup.DefaultSectionDivider}
 />
 
