@@ -10,14 +10,12 @@
 import React from 'react';
 import { EventUtil } from '../../../utils';
 
-const displayName = "LookupDefaultSectionHeader";
+const displayName = "LookupDefaultSectionDivider";
 const propTypes = {
-  data: React.PropTypes.object,
-  key: React.PropTypes.string
-
+  data: React.PropTypes.object
 };
 
-class DefaultSectionHeader extends React.Component {
+class DefaultSectionDivider extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -28,18 +26,17 @@ class DefaultSectionHeader extends React.Component {
 
   render(){
     return (
-      <li className="slds-p-around--x-small"
-        tabIndex="-1"
-      >
-          <span className="slds-m-left--x-small">
-            <strong>{this.props.data.label}</strong>
-          </span>
+      <li className="slds-p-around--x-small slds-lookup__divider" tabIndex="-1">
+        <span className="slds-m-left--x-small">
+          <strong>{this.props.data.label}</strong>
+        </span>
       </li>
     )
   }
 }
 
-DefaultSectionHeader.displayName = displayName;
-DefaultSectionHeader.propTypes = propTypes;
+DefaultSectionDivider.displayName = displayName;
+DefaultSectionDivider.propTypes = propTypes;
 
-module.exports = DefaultSectionHeader;
+module.exports = DefaultSectionDivider;
+

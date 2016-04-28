@@ -20,6 +20,7 @@ import {KEYS,EventUtil} from "../utils";
 import Menu from "./Menu";
 import DefaultFooter from "./Menu/DefaultFooter";
 import DefaultHeader from "./Menu/DefaultHeader";
+import DefaultSectionDivider from "./Menu/DefaultSectionDivider";
 import cx from "classnames";
 
 const displayName = "SLDSLookup";
@@ -191,7 +192,6 @@ class SLDSLookup extends React.Component {
     let numFocusable = this.getNumFocusableItems();
     let prevFocusIndex = this.state.focusIndex > 0 ? this.state.focusIndex - 1 : numFocusable;
     const filteredItem = this.refs.menu.getFilteredItemForIndex(prevFocusIndex);
-    console.log('filteredItem', filteredItem);
     if(filteredItem && filteredItem.data.type === 'section'){
       prevFocusIndex === 0 ? prevFocusIndex = numFocusable : prevFocusIndex--;
     }
@@ -376,6 +376,15 @@ class SLDSLookup extends React.Component {
     }
   }
 
+  /*
+  getSectionDivider(){
+    if(this.props.sectionDividerRenderer){
+      const SectionDivider = this.props.sectionDividerRenderer;
+      return <SectionDivider {... this.props} />;
+    }
+  }
+ */
+
   normalizeSearchTerm(string) {
     return (string || '').toString().replace(/^\s+/, '');
   }
@@ -401,6 +410,7 @@ class SLDSLookup extends React.Component {
         listLength={this.state.listLength}
         onSelect={this.selectItem.bind(this)}
         searchTerm={this.state.searchTerm}
+        sectionDividerRenderer={this.props.sectionDividerRenderer}
         setFocus={this.setFocus.bind(this)}
       />;
     }
@@ -528,5 +538,6 @@ SLDSLookup.defaultProps = defaultProps;
 
 module.exports = SLDSLookup;
 module.exports.DefaultHeader = DefaultHeader;
+module.exports.DefaultSectionDivider = DefaultSectionDivider;
 module.exports.DefaultFooter = DefaultFooter;
 

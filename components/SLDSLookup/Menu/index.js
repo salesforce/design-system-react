@@ -9,10 +9,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import Item from './Item';
-
-import DefaultSectionHeader from './DefaultSectionHeader';
 
 const displayName = 'SLDSLookup-Menu';
 const propTypes = {
@@ -39,9 +36,10 @@ class Menu extends React.Component {
 
   //Set filtered list length in parent to determine active indexes for aria-activedescendent
   componentDidUpdate(prevProps){
-    // make an array of the children of the list but only count the actual items
+    // make an array of the children of the list but only count the actual items (but include section dividers)
     let list = [].slice.call(ReactDOM.findDOMNode(this.refs.list).children)
-      .filter((child) => child.className.indexOf("slds-lookup__item") > -1).length;
+      .filter((child) => (child.className.indexOf("slds-lookup__item") > -1 || child.className.indexOf("slds-lookup__divider") > -1 ))
+      .length;
     this.props.getListLength(list);
     if(
         prevProps.items !== this.props.items ||
@@ -101,6 +99,10 @@ class Menu extends React.Component {
     return this.props.footer;
   }
 
+  renderSectionDivider(){
+    return this.props.sectionDivider;
+  }
+
   renderItems(){
     let focusIndex = this.props.focusIndex;
     return this.state.filteredItems.map((c, i) => {
@@ -113,7 +115,13 @@ class Menu extends React.Component {
         isActive = focusIndex === i  ? true : false;
       }
       if(c.data.type==='section'){
-        return <DefaultSectionHeader data={c.data} key={'section_header_'+i}/>;
+        if(this.props.sectionDividerRenderer){
+          const SectionDivider = this.props.sectionDividerRenderer;
+          return <SectionDivider
+                  data={c.data}
+                  key={'section_header_'+i}
+                  {... this.props} />;
+        }
       }
       return <Item
         boldRegex={this.props.boldRegex}
