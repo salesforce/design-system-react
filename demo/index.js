@@ -30,9 +30,14 @@ import PageHeaderSection from './pages/PageHeaderSection';
 import PicklistSection from './pages/PicklistSection';
 import TooltipSection from './pages/TooltipSection';
 
+import Playground from './pages/Playground';
+
 const routes = (
     <Route name="home" path="/" handler={HomePage}>
       <DefaultRoute handler={Welcome} />
+
+      <Route name="playground" path="playground" handler={Playground} />
+
 
       <Route name="welcome" path="welcome" handler={Welcome} />
       <Route name="getting-started" path="getting-started" handler={GettingStarted} />

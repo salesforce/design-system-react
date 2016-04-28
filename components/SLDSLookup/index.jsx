@@ -95,7 +95,7 @@ const propTypes = {
  */
 const defaultFilter = (term, item) => {
   if(!term) return true;
-  return item.label.match(new RegExp(escapeRegExp(term), "ig"));
+  return (item.data && item.data.type === 'section') || item.label.match(new RegExp(escapeRegExp(term), "ig"));
 };
 
 
@@ -162,17 +162,40 @@ class SLDSLookup extends React.Component {
     this.setState({items: items});
   }
 
+  setFirstIndex(){
+    let numFocusable = this.getNumFocusableItems();
+    let nextFocusIndex = 0;
+    let filteredItem = this.state.items[0];
+    if(this.refs.menu && this.refs.menu.getFilteredItemForIndex){
+      filteredItem = this.refs.menu.getFilteredItemForIndex(nextFocusIndex);
+    }
+    if(filteredItem && filteredItem.data.type === 'section'){
+      nextFocusIndex++;
+    }
+    this.setState({ focusIndex: nextFocusIndex });
+  }
   //=================================================
   // Using down/up keys, set Focus on list item and assign it to aria-activedescendant attribute in input.
   // Need to keep track of filtered list length to be able to increment/decrement the focus index so it's contained to the number of available list items.
   increaseIndex() {
     let numFocusable = this.getNumFocusableItems();
-    this.setState({ focusIndex: this.state.focusIndex < numFocusable ? this.state.focusIndex + 1 : 0 });
+    let nextFocusIndex = this.state.focusIndex < numFocusable ? this.state.focusIndex + 1 : 0;
+    const filteredItem = this.refs.menu.getFilteredItemForIndex(nextFocusIndex);
+    if(filteredItem && filteredItem.data.type === 'section'){
+      nextFocusIndex++;
+    }
+    this.setState({ focusIndex: nextFocusIndex });
   }
 
   decreaseIndex() {
     let numFocusable = this.getNumFocusableItems();
-    this.setState({ focusIndex: this.state.focusIndex > 0 ? this.state.focusIndex - 1 : numFocusable});
+    let prevFocusIndex = this.state.focusIndex > 0 ? this.state.focusIndex - 1 : numFocusable;
+    const filteredItem = this.refs.menu.getFilteredItemForIndex(prevFocusIndex);
+    console.log('filteredItem', filteredItem);
+    if(filteredItem && filteredItem.data.type === 'section'){
+      prevFocusIndex === 0 ? prevFocusIndex = numFocusable : prevFocusIndex--;
+    }
+    this.setState({ focusIndex: prevFocusIndex});
   }
 
   setFocus(id) {
@@ -285,7 +308,7 @@ class SLDSLookup extends React.Component {
       //If user hits down key, advance aria activedescendant to next item
       if(event.keyCode === KEYS.DOWN){
         EventUtil.trapImmediate(event);
-        this.state.focusIndex === null ? this.setState({ focusIndex: 0 }) : this.increaseIndex();
+        this.state.focusIndex === null ? this.setFirstIndex() : this.increaseIndex();
       }
       //If user hits up key, advance aria activedescendant to previous item
       else if(event.keyCode === KEYS.UP){
@@ -362,6 +385,7 @@ class SLDSLookup extends React.Component {
   renderMenuContent() {
     if(this.state.isOpen){
       return <Menu
+        ref="menu"
         emptyMessage={this.props.emptyMessage}
         filterWith={this.props.filterWith}
         focusIndex={this.state.focusIndex}
