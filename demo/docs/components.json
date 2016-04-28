@@ -1,4 +1,129 @@
 {
+    "data-table": {
+        "description": "DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.",
+        "displayName": "DataTable",
+        "props": {
+            "bordered": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "A variant which adds borders to the table.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Custom `<DataTableCell />` implementations may also be passed in to override cell rendering.\n```\n<DataTable>\n  <DataTableColumn />\n  <DataTableColumn>\n    <DataTableCustomCell />\n  </DataTableColumn>\n  <DataTableRowActions />\n</DataTable>\n```"
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Class names to be added to the table."
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": "Every table must have a unique ID in order to support keyboard navigation and ARIA support."
+            },
+            "items": {
+                "type": {
+                    "name": "array"
+                },
+                "required": true,
+                "description": "The collection of items to render in the table."
+            },
+            "onChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This function fires when the selection of rows changes."
+            },
+            "onSort": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This function fires when the table should be sorted."
+            },
+            "selection": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "The selected rows.",
+                "defaultValue": {
+                    "value": "[]",
+                    "computed": false
+                }
+            },
+            "selectRows": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "True if rows should be selectable.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "stacked": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "A variant which modifies table layout by stacking cells to accommodate smaller viewports. Should not be used at the same time as `stackedHorizontal`.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "stackedHorizontal": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "A variant which modifies table layout by displaying the header and row data side by side for smaller viewports. Should not be used at the same time as `stacked`.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "striped": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "A variant which adds stripes to alternating rows.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            }
+        }
+    },
     "SLDSBreadCrumb": {
         "description": "",
         "displayName": "SLDSBreadCrumb",
@@ -553,7 +678,7 @@
                 "required": false,
                 "description": "Custom function to filter the Lookup items when typing into input field. The default function is case-insensitive and uses the searchTerm to filter Lookup items on their labels.",
                 "defaultValue": {
-                    "value": "(term, item) => {\n  if(!term) return true;\n  return item.label.match(new RegExp(escapeRegExp(term), \"ig\"));\n}",
+                    "value": "(term, item) => {\n  if(!term) return true;\n  return (item.data && item.data.type === 'section') || item.label.match(new RegExp(escapeRegExp(term), \"ig\"));\n}",
                     "computed": false
                 }
             },

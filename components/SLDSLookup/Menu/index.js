@@ -9,7 +9,6 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import Item from './Item';
 
 const displayName = 'SLDSLookup-Menu';
@@ -32,15 +31,25 @@ const defaultProps = {
 class Menu extends React.Component {
   constructor(props){
     super(props);
-    this.state = {};
+    this.state = {filteredItems:this.filteredItems()};
   }
 
   //Set filtered list length in parent to determine active indexes for aria-activedescendent
-  componentDidUpdate(){
-    // make an array of the children of the list but only count the actual items
+  componentDidUpdate(prevProps){
+    // make an array of the children of the list but only count the actual items (but include section dividers)
     let list = [].slice.call(ReactDOM.findDOMNode(this.refs.list).children)
-      .filter((child) => child.className.indexOf("slds-lookup__item") > -1).length;
+      .filter((child) => (child.className.indexOf("slds-lookup__item") > -1 || child.className.indexOf("slds-lookup__divider") > -1 ))
+      .length;
     this.props.getListLength(list);
+    if(
+        prevProps.items !== this.props.items ||
+        prevProps.filter !== this.props.filter ||
+        prevProps.searchTerm !== this.props.searchTerm
+      ){
+      this.setState({
+        filteredItems:this.filteredItems()
+      });
+    }
   }
 
   filter(item){
@@ -48,13 +57,37 @@ class Menu extends React.Component {
   }
 
   filteredItems() {
-    return this.props.items.filter(this.filter, this)
+    return this.filterEmptySections(this.props.items.filter(this.filter, this));
+  }
+
+  filterEmptySections(items){
+    const result = [];
+    items.forEach((item,index) => {
+      if(item && item.data && item.data.type === 'section'){
+        if(index+1<items.length){
+          const nextItem = items[index+1];
+          if(nextItem.data && nextItem.data.type !== 'section'){
+            result.push(item);
+          }
+        }
+      }
+      else{
+        result.push(item);
+      }
+    });
+    return result;
   }
 
   //Scroll menu up/down when using mouse keys
   handleItemFocus(itemIndex, itemHeight){
     if (this.refs.list) {
       ReactDOM.findDOMNode(this.refs.list).scrollTop = itemIndex * itemHeight;
+    }
+  }
+
+  getFilteredItemForIndex(i){
+    if(i>-1 && this.state.filteredItems && i< this.state.filteredItems.length){
+      return this.state.filteredItems[i];
     }
   }
 
@@ -66,15 +99,29 @@ class Menu extends React.Component {
     return this.props.footer;
   }
 
+  renderSectionDivider(){
+    return this.props.sectionDivider;
+  }
+
   renderItems(){
-    return this.filteredItems().map((c, i) => {
+    let focusIndex = this.props.focusIndex;
+    return this.state.filteredItems.map((c, i) => {
       //isActive means it is aria-activedescendant
       const id = c.id;
       let isActive = false;
       if (this.props.header) {
-        isActive = this.props.focusIndex === i + 1 ? true : false;
+        isActive = focusIndex === i + 1 ? true : false;
       }else{
-        isActive = this.props.focusIndex === i  ? true : false;
+        isActive = focusIndex === i  ? true : false;
+      }
+      if(c.data.type==='section'){
+        if(this.props.sectionDividerRenderer){
+          const SectionDivider = this.props.sectionDividerRenderer;
+          return <SectionDivider
+                  data={c.data}
+                  key={'section_header_'+i}
+                  {... this.props} />;
+        }
       }
       return <Item
         boldRegex={this.props.boldRegex}
@@ -98,7 +145,7 @@ class Menu extends React.Component {
   }
 
   renderContent(){
-    if (this.filteredItems().length === 0)
+    if (this.state.filteredItems.length === 0)
       return (
         <li className="slds-lookup__message" aria-live="polite">
           <span className="slds-m-left--x-large slds-p-vertical--medium">{this.props.emptyMessage}</span>

@@ -7,19 +7,20 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
 import React from 'react';
+import marked from 'marked';
 import DOCS from './docs';
 import SLDSIcon from 'components/SLDSIcon';
 
 const displayName = "PropTable";
+
 const propTypes = {
 };
+
 const defaultProps = {
 };
 
 class PropTable extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {};
@@ -53,7 +54,7 @@ class PropTable extends React.Component {
   }
 
   getMarkup(docString) {
-    return {__html: docString };
+    return {__html: marked(docString) };
   }
 
   renderPropInfo() {
@@ -119,4 +120,3 @@ PropTable.propTypes = propTypes;
 PropTable.defaultProps = defaultProps;
 
 module.exports = PropTable;
-
