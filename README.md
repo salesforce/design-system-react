@@ -9,7 +9,7 @@ For example, <code>SLDSMenuDropdown</code> represents <a href="http://www.lightn
 and <code>SLDSLookup</code> represents <a href="http://www.lightningdesignsystem.com/components/lookups/#base">Lightning Design System Lookup > Base</a>.
 
 
-This project is in beta and very experimental. Please visit [Design System React](http://salesforce-ux.github.io/design-system-react) for documentation and examples of using the Design System React Components.
+This project is in beta and very experimental. Please visit [Design System React](http://salesforce-ux.github.io/design-system-react) for documentation and examples of using the Design System React Components. If you are using the ECMAScript 6 source files in `./components/`, you will need to enable your ES5 transpiler to allow stage-1 proposed features. If you are using Babel, it may be helpful to install the NPM module, `babel-preset-stage-1`, into your project and review the `.babelrc` file in this project.
 
 ## Components
 
