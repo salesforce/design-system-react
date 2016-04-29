@@ -1,6 +1,7 @@
 import React from 'react';
 import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
+import { expect } from 'chai';
 
 import {SLDSLookup} from '../../components';
 const Header = SLDSLookup.DefaultHeader;

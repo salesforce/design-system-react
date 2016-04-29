@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { expect } from 'chai';
 import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
 
@@ -8,18 +9,25 @@ const { Simulate,
         scryRenderedDOMComponentsWithClass,
         findRenderedDOMComponentWithTag,
         findRenderedDOMComponentWithClass } = TestUtils
-const handleClick = x => console.log(x, ' was clicked.');
+const handleClick = (x) => console.log(x, ' was clicked.');
 
 describe('SLDSIcon: ',  function(){
   const defaultProps = {};
+  let body;
 
   const renderIcon = inst => {
     body = document.createElement('div');
-    document.body.appendChild(body)
-    return ReactDOM.render(inst, body)
+    document.body.appendChild(body);
+    return ReactDOM.render(inst, body);
   }
-  const createIcon = props => React.createElement(SLDSIcon, assign({}, defaultProps, props));
-  const getIcon = ps => renderIcon(createIcon(ps));
+
+  function removeIcon () {
+    ReactDOM.unmountComponentAtNode(body);
+    document.body.removeChild(body);
+  }
+
+  const createIcon = (props) => React.createElement(SLDSIcon, assign({}, defaultProps, props));
+  const getIcon = (ps) => renderIcon(createIcon(ps));
 
   describe('Standard Icon Props Render', () => {
     let cmp, svg, asstText;
@@ -28,6 +36,10 @@ describe('SLDSIcon: ',  function(){
       cmp = getIcon({assistiveText: "Accounts", category: "standard", name: "account", size: "large"});
       svg = findRenderedDOMComponentWithTag(cmp, 'svg');
       asstText = findRenderedDOMComponentWithClass(cmp, 'slds-assistive-text');
+    })
+
+    afterEach(() => {
+      removeIcon();
     })
 
     it('renders assistive text', () => {
@@ -50,6 +62,10 @@ describe('SLDSIcon: ',  function(){
       cmp = getIcon({assistiveText: "Heart", category: "custom", name: "custom1", size: "small"});
       svg = findRenderedDOMComponentWithTag(cmp, 'svg');
       asstText = findRenderedDOMComponentWithClass(cmp, 'slds-assistive-text');
+    })
+
+    afterEach(() => {
+      removeIcon();
     })
 
     it('renders assistive text', () => {
@@ -76,6 +92,10 @@ describe('SLDSIcon: ',  function(){
       asstText = findRenderedDOMComponentWithClass(cmp, 'slds-assistive-text');
     })
 
+    afterEach(() => {
+      removeIcon();
+    })
+
     it('renders assistive text', () => {
       expect(asstText.innerText).to.equal("Announcements");
     })
@@ -92,6 +112,10 @@ describe('SLDSIcon: ',  function(){
 
   describe('Utility Icon Props Render', () => {
     let cmp, icon;
+
+    afterEach(() => {
+      removeIcon();
+    })
 
     beforeEach(() => {
       cmp = getIcon({assistiveText: "", category: "utility", inverse: false, name: "open_folder"});

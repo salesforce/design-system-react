@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
+import { expect } from 'chai';
 
 import {SLDSModal} from '../../components'
 const { Simulate,

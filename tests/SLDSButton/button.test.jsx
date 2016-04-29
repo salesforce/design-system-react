@@ -1,58 +1,90 @@
+/* global describe, it, before, after, beforeEach, afterEach */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
+import { expect } from 'chai';
+import assign from 'lodash/object/assign';
 
 const { Simulate,
         scryRenderedDOMComponentsWithClass,
         findRenderedDOMComponentWithTag,
         findRenderedDOMComponentWithClass } = TestUtils
-import {SLDSButton} from '../../components';
-const handleClick = x => console.log(x, ' was clicked.');
 
-describe('SLDSButton: ',  function(){
+import {SLDSButton} from '../../components';
+
+const handleClick = itemClicked => console.log(itemClicked, ' was clicked.');
+
+describe('SLDSButton: ', () => {
+  let body;
 
   const defaultProps = {
-    label: "Neutral",
+    label: 'Neutral',
     onClick: handleClick,
-    variant: "neutral",
+    variant: 'neutral'
   };
 
   const renderButton = inst => {
     body = document.createElement('div');
-    document.body.appendChild(body)
-    return ReactDOM.render(inst, body)
+    document.body.appendChild(body);
+    return ReactDOM.render(inst, body);
+  };
+
+  function removeButton () {
+    ReactDOM.unmountComponentAtNode(body);
+    document.body.removeChild(body);
   }
-  const createButton = props => React.createElement(SLDSButton, assign({}, defaultProps, props));
-  const getButton = ps => renderButton(createButton(ps));
+
+  const createButton = (props) => React.createElement(SLDSButton, assign({}, defaultProps, props));
+  const getButton = (ps) => renderButton(createButton(ps));
 
   describe('Basic Button Props Render', () => {
-    let cmp, btn, clicked;
+    let cmp;
+    let btn;
+    let clicked;
 
     beforeEach(() => {
       clicked = false;
-      cmp = getButton({label: "Brand", variant: "brand", onClick: () => clicked = true })
-      btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
-    })
+      cmp = getButton({
+        text: 'Brand',
+        theme: 'brand',
+        onClick: () => clicked = true });
+      btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+    });
 
-    it('renders label', () => {
-      expect(btn.innerText).to.equal("Brand");
-    })
+    afterEach(() => {
+      removeButton(btn);
+    });
 
-    it('renders variant styles', () => {
-      expect(btn.className).to.include("slds-button--brand");
-    })
+    it('renders correct label', () => {
+      expect(btn.innerText).to.equal('Neutral');
+    });
 
+    it('renders correct variant styles', () => {
+      expect(btn.className).to.include('slds-button--neutral');
+    });
   });
 
   describe('Icon with Label Button Props Render', () => {
-    let cmp, btn, clicked;
+    let cmp;
+    let btn;
+    let clicked;
+    let svg;
 
     beforeEach(() => {
       clicked = false;
-      cmp = getButton({label: "Neutral with Icon", iconName:"download", iconPosition:"right", variant: "neutral", onClick: () => clicked = true })
-      btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
+      cmp = getButton({
+        label: 'Neutral with Icon', 
+        iconName: 'download',
+        iconCategory: 'action',
+        iconPosition: 'right',
+        variant: 'neutral',
+        onClick: () => clicked = true });
+      btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
       svg = findRenderedDOMComponentWithClass(cmp, 'slds-button__icon');
+    })
+
+    afterEach(() => {
+      removeButton(btn);
     })
 
     it('renders label', () => {
@@ -81,6 +113,10 @@ describe('SLDSButton: ',  function(){
       svg = findRenderedDOMComponentWithTag(cmp, 'svg');
     })
 
+    afterEach(() => {
+      removeButton(btn);
+    })
+
     it('renders label', () => {
       expect(asstText.innerText).to.equal("my settings");
     })
@@ -96,14 +132,18 @@ describe('SLDSButton: ',  function(){
 
     beforeEach(() => {
       clicked = false;
-      cmp = getButton({label: "Neutral", variant: "neutral", onClick: () => clicked = true })
-      btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
+      cmp = getButton({label: "Neutral", variant: "neutral", onClick: () => clicked = true });
+      btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+    })
+
+    afterEach(() => {
+      removeButton(btn);
     })
 
     it('can be clicked', () => {
-      expect(clicked).to.be.false
-      Simulate.click(btn, {})
-      expect(clicked).to.be.true
+      expect(clicked).to.be.false;
+      Simulate.click(btn, {});
+      expect(clicked).to.be.true;
     })
 
   });

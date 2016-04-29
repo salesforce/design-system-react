@@ -1,5 +1,6 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
+import { expect } from 'chai';
 
 import {SLDSButtonGroup} from '../../components';
 import {SLDSButton} from '../../components';

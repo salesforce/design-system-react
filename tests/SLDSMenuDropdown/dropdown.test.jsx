@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
+import { expect } from 'chai';
 
 import {SLDSMenuDropdown} from '../../components'
 const { Simulate,
@@ -24,6 +25,11 @@ describe('SLDSMenuDropdown: ', function(){
     return ReactDOM.render(inst, body)
   }
 
+  function removeDropdownTrigger () {
+    ReactDOM.unmountComponentAtNode(body);
+    document.body.removeChild(body);
+  }
+
   const defaultProps = {label: 'Contacts',
                         openOn: 'click',
                         modal: false,
@@ -33,7 +39,7 @@ describe('SLDSMenuDropdown: ', function(){
 
   const iconOnlyProps = {assistiveText: 'more options',
                         buttonVariant: 'icon',
-                        checkmark: {true},
+                        checkmark: true,
                         iconName: 'down',
                         iconVariant: 'border-filled',
                         openOn: 'click',
@@ -56,6 +62,10 @@ describe('SLDSMenuDropdown: ', function(){
     beforeEach(() => {
       cmp = dropItDown({buttonClassName: 'dijkstrafied', openOn: 'hover'})
       btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
+    })
+
+    afterEach(() => {
+      removeDropdownTrigger(btn);
     })
 
     it('gives the button correct aria properties', () => {
@@ -107,6 +117,10 @@ describe('SLDSMenuDropdown: ', function(){
       btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
     })
 
+    afterEach(() => {
+      removeDropdownTrigger(btn);
+    })
+
     it('doesnt expand on hover', () => {
       expect(getMenu(body)).to.equal(null)
       Simulate.mouseEnter(btn, {})
@@ -139,6 +153,10 @@ describe('SLDSMenuDropdown: ', function(){
       btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
     })
 
+    afterEach(() => {
+      removeDropdownTrigger(btn);
+    })
+
     it('selects an item on click', () => {
       Simulate.click(btn, {})
       expect(selected).to.be.false
@@ -150,10 +168,17 @@ describe('SLDSMenuDropdown: ', function(){
   })
 
   describe('accessible markup for label Dropdowns', () => {
+    let cmp, btn;
     beforeEach(() => {
-      selected = false;
-      cmp = dropItDown({ onSelect: i => selected = i })
-      btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
+      let selected = false;
+      cmp = dropItDown({ onSelect: (i) => { 
+        selected = i; 
+      } })
+      btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+    })
+
+    afterEach(() => {
+      removeDropdownTrigger(btn);
     })
 
     it('<ul> has role menu & aria-labelledby', () => {
@@ -174,10 +199,17 @@ describe('SLDSMenuDropdown: ', function(){
   })
 
   describe('accessible markup for Icon Only Dropdowns', () => {
+    let cmp, btn;
     beforeEach(() => {
-      selected = false;
-      cmp = dropItDown_iconOnly({ onSelect: i => selected = i })
-      btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
+      let selected = false;
+      cmp = dropItDown_iconOnly({ onSelect: (i) => {
+        selected = i; 
+      }});
+      btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+    })
+
+    afterEach(() => {
+      removeDropdownTrigger(btn);
     })
 
     it('<ul> has role menu & aria-labelledby', () => {
@@ -198,10 +230,19 @@ describe('SLDSMenuDropdown: ', function(){
   })
 
   describe('Keyboard behavior', () => {
+    let cmp, btn;
+    let selected = false;
     beforeEach(() => {
-      selected = false;
-      cmp = dropItDown({openOn: 'click', onSelect: i => selected = i })
-      btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
+      cmp = dropItDown({
+        openOn: 'click', 
+        onSelect: (i) => { 
+          selected = i;
+        }})
+      btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+    })
+
+    afterEach(() => {
+      removeDropdownTrigger(btn);
     })
 
     it('opens menu with enter', () => {
@@ -225,12 +266,12 @@ describe('SLDSMenuDropdown: ', function(){
     })
 
     it('closes Menu on esc', () => {
-      expect(getMenu(body)).to.equal(null)
-      Simulate.click(btn, {})
-      expect(getMenu(body)).to.not.equal(null)
-      let menuItems = getMenu(body).querySelectorAll('.slds-dropdown__item')
-      Simulate.keyDown(menuItems[1].querySelector('a'), {key: "Esc", keyCode: 27, which: 27})
-      expect(getMenu(body)).to.equal(null)
+      expect(getMenu(body)).to.equal(null);
+      Simulate.click(btn, {});
+      expect(getMenu(body)).to.not.equal(null);
+      let menuItems = getMenu(body).querySelectorAll('.slds-dropdown__item');
+      Simulate.keyDown(menuItems[1].querySelector('a'), {key: "Esc", keyCode: 27, which: 27});
+      expect(getMenu(body)).to.equal(null);
     })
 
   })

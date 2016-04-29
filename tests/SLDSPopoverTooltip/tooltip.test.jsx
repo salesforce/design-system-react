@@ -1,53 +1,61 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import assign from 'lodash.assign';
+import { expect } from 'chai';
 import TestUtils from 'react-addons-test-utils';
+
 
 import {SLDSPopoverTooltip} from '../../components';
 const { Simulate,
         scryRenderedDOMComponentsWithClass,
-        findRenderedDOMComponentWithClass } = TestUtils
+        findRenderedDOMComponentWithClass } = TestUtils;
 
 describe('SLDSPopoverTooltip: ',  function(){
-  let body;
+  let body, target;
 
   afterEach(() => {
     try {
-      Array.prototype.forEach.call(document.body.querySelectorAll('.drop'), c => document.body.removeChild(c))
-    if(body) document.body.removeChild(body)
+      Array.prototype.forEach.call(document.body.querySelectorAll('.drop'), c => document.body.removeChild(c));
+      if(body) document.body.removeChild(body);
     } catch(e){}
   })
 
   const renderTooltip = inst => {
-    target = document.createElement('h1')
-    body = document.createElement('div')
-    body.appendChild(target)
-    document.body.appendChild(body)
-    return ReactDOM.render(inst, body)
+    target = document.createElement('h1');
+    body = document.createElement('div');
+    body.appendChild(target);
+    document.body.appendChild(body);
+    return ReactDOM.render(inst, body);
   }
 
-  const createTooltip = (props, kids) => React.createElement(SLDSPopoverTooltip, props, kids)
+  const createTooltip = (props, kids) => React.createElement(SLDSPopoverTooltip, props, kids);
 
-  const generateTooltip = (ps, kids) => renderTooltip(createTooltip(ps, kids))
+  const generateTooltip = (props, kids) => renderTooltip(createTooltip(props, kids));
 
-  const getTip = dom => dom.querySelector('.slds-popover--tooltip')
+  const getTip = (dom) => dom.querySelector('.slds-popover--tooltip');
 
   describe('component basic props render', () => {
     let cmp, trigger;
 
     beforeEach(() => {
-      const content = <span style={{width: 30}}>'This is more info. blah blah.'</span>
-      cmp = generateTooltip({align:'bottom', content:content}, <button>'Hover me for tooltip'</button>)
-      trigger = document.body.querySelector('[role=tooltip]').firstChild
+      const content = React.createElement('span', {
+        style: { width: '30px' }, 
+        dangerouslySetInnerHTML: { __html: 'This is more info. blah blah.' }
+      });
+      cmp = generateTooltip({
+        align: 'bottom', 
+        content: content
+      }, React.createElement('button', {}), ['Hover me for tooltip']);
+      trigger = document.body.querySelector('[role=tooltip]').firstChild;
+
     })
 
     it('renders the content as assistive text', () => {
-      const span = findRenderedDOMComponentWithClass(cmp, 'slds-assistive-text')
-      expect(span.innerText).to.equal("'This is more info. blah blah.'")
+      const span = findRenderedDOMComponentWithClass(cmp, 'slds-assistive-text');
+      expect(span.innerText).to.equal('This is more info. blah blah.');
     })
 
     it('is not open', () => {
-      expect(getTip(document.body)).to.equal(null)
+      expect(getTip(document.body)).to.equal(null);
     })
 
     describe('expanded', () => {
@@ -93,9 +101,16 @@ describe('SLDSPopoverTooltip: ',  function(){
     let cmp, trigger;
 
     beforeEach(() => {
-      const content = <span style={{width: 30}}>'This is more info. blah blah.'</span>
-      cmp = generateTooltip({align:'bottom', content:content, target: target}, <button>'Hover me for tooltip'</button>)
-      trigger = document.body.querySelector('[role=tooltip]').firstChild
+      const content = React.createElement('span', {
+        style: { width: '30px' }, 
+        dangerouslySetInnerHTML: { __html: 'This is more info. blah blah.' }
+      });
+      cmp = generateTooltip({
+        align:'bottom', 
+        content: content, 
+        target: target
+      }, React.createElement('button', {}), ['Hover me for tooltip']);
+      trigger = document.body.querySelector('[role=tooltip]').firstChild;
     })
 
     describe('expanded', () => {
