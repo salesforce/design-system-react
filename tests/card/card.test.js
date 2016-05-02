@@ -177,11 +177,6 @@ describe('Card: ', function () {
 			(typeof footer).should.equal('undefined');
 		});
 
-		it('does NOT have header actions', function () {
-			const headerActions = getHeaderActions(this.dom);
-			(typeof headerActions).should.equal('undefined');
-		});
-
 		it('has body heading based on heading of Card', function () {
 			const emptyBodyheading = getEmptyBodyHeading(this.dom);
 			emptyBodyheading.should.not.be.undefined;
