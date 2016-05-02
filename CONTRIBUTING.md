@@ -17,18 +17,22 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 ## Code Guidelines
 
-1. Use es6 syntax
+1. We use es6 and generally follow (Airbnb's Code guidelines)[https://github.com/airbnb/javascript]. You can refer to our (.eslintrc)[https://github.com/salesforce-ux/design-system-react/blob/master/.eslintrc].
 
 2. `propTypes`, `defaultProps`, and declaration of props on components should be in alphabetical order.
 
-3. Components' lifecyle methods should be near the top (`componentDidMount`,`componentWillUnmount`, etc.), and the `render()` function should be the last function in the component so that users can easily find them.
+3. Components' lifecyle methods should be near the top (`componentDidMount`,`componentWillUnmount`, etc.), and the `render()` function should be the last function in the component so that developers know where to look for them and don't create duplicate methods.
 
 4. Below is a react component template. Note that `displayName`, `propTypes`, and `defaultProps` are required.
 
 ```
 const displayName = "MyComponent";
-const propTypes = {};
-const defaultProps = {};
+const propTypes = {
+  ...
+};
+const defaultProps = {
+  ...
+};
 
 class MyComponent extends React.Component {
 
@@ -36,6 +40,8 @@ class MyComponent extends React.Component {
     super(props);
     this.state = {};
   }
+
+  ...
 
   render() {
     return (
@@ -48,6 +54,16 @@ MyComponent.displayName = displayName;
 MyComponent.propTypes = propTypes;
 MyComponent.defaultProps = defaultProps;
 
-module.exports = MyComponent;
+export default MyComponent;
 
 ```
+## Finalize new component/features
+
+1. Write tests for your new component/feature.
+2. Run `npm test`.
+3. Run `npm docs` to build the documentation from comments in the code.
+3. After your PR is merged, make sure it appears here: (https://design-system-react-stage.herokuapp.com/#/)[https://design-system-react-stage.herokuapp.com/#/]. If it doesn't, reach out to (Ivan Bogdanov)[https://github.com/madpotato] or (Donielle Berg)[https://github.com/donnieberg].
+4. Get your component/feature approved by the UX Accessibility Team (refer to the link above).
+5. Once all tests pass and the Accessibility Team approves, run `npm compile`. Because this project is not open-sourced, we cannot publish it to npm. Therefore we have a build script that compiles `src/` to es5 and outputs it to `lib/` where outside projects pull from.
+
+
