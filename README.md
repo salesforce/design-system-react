@@ -45,8 +45,8 @@ npm test
 
 ```
 npm install
+npm run docs
 npm run compile
-npm run pages
 ```
 
 
@@ -56,10 +56,12 @@ Note: design-system-react is optimized for react0.14.x and uses Lightning Design
 
 ### NPM
 
-First, install the npm module:
+Because this project is not open-sourced, we cannot publish it to npm. Therefore we have a build script that compiles `src/` to es5 and outputs it to `lib/` where outside projects pull from. Add the following line to your `package.json` devDependencies and run `npm install`.
 
 ```
-npm install --save design-system-react
+# package.json
+
+"design-system-react": "git+ssh://git@github.com:salesforce-ux/design-system-react.git#master",
 ```
 
 Then, in your React code, refer to each Lightning Design System component using the "SLDS" prefix, e.g. SLDSPopoverTooltip.
@@ -111,13 +113,6 @@ Note: the SLDSPopoverTooltip requires a focusable element as a child (ie. either
 ## Contributing to the code base
 
 Please read the <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> first.
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
-
 
 ## Licenses
 
