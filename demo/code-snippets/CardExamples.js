@@ -8,7 +8,8 @@ const CardExample = React.createClass({
 
   getInitialState () {
     return {
-      items: sampleItems
+      items: sampleItems,
+      isFiltering: false
     };
   },
 
@@ -21,7 +22,7 @@ const CardExample = React.createClass({
         <SLDSCard
           id="ExampleCard"
           filter={
-            !isEmpty && <SLDSCardFilter onChange={this.handleFilterChange} />
+            (!isEmpty || this.state.isFiltering) && <SLDSCardFilter onChange={this.handleFilterChange} />
           }
           headerActions={
             !isEmpty && <SLDSButton label="Delete All Items" onClick={this.handleDeleteAllItems} />
@@ -45,12 +46,13 @@ const CardExample = React.createClass({
     );
   },
 
-  handleFilterChange () {
-    console.log('Update Collection');
+  handleFilterChange (event) {
+    const filteredItems = sampleItems.filter( (item) => RegExp(event.target.value, 'i').test(item.name));
+    this.setState({isFiltering: true, items: filteredItems});
   },
 
   handleDeleteAllItems () {
-    this.setState({items: []});
+    this.setState({isFiltering: false, items: []});
   },
 
   handleAddItem () {
