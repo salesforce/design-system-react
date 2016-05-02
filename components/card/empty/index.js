@@ -58,7 +58,7 @@ const SLDSCardEmpty = React.createClass({
 		const id = this.props.id ? (this.props.id + idSuffixes.heading) : null;
 		return ( 
 			<div className="slds-p-horizontal--small">
-				<div className="slds-text-align--center">
+				<div className="slds-text-align--center slds-m-bottom--x-large">
 				<h3 id={id} className="slds-text-heading--small slds-p-top--large slds-p-bottom--large">{this.props.heading}</h3>
 					{this.props.children}
 				</div>
