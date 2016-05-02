@@ -69,15 +69,6 @@ const CardHeader = React.createClass({
 		id: PropTypes.string.isRequired
 	},
 
-	_renderHeaderActions () {
-		const hasFilter = this.props.filter ? true : null;
-		return (
-			<div id={this.props.id + idSuffixes.headerActions} className={classnames('slds-no-flex', {'slds-size--1-of-3': hasFilter, 'slds-text-align--right': hasFilter})}>
-				{this.props.headerActions}
-			</div>
-		);
-	},
-
 	_renderFilter () {
 		const filter = React.cloneElement(this.props.filter, {
 			id: this.props.id + idSuffixes.filter
@@ -96,12 +87,8 @@ const CardHeader = React.createClass({
 	},
 
 	render () {
-		let headerActions = null;
 		let filter = null;
-
-		if (this.props.headerActions) {
-			headerActions = this._renderHeaderActions();
-		}
+		const hasFilter = this.props.filter ? true : null;
 
 		if (this.props.filter) {
 			filter = this._renderFilter();
@@ -116,7 +103,9 @@ const CardHeader = React.createClass({
 					canTruncate
 				/>
 				{filter}
-				{headerActions}
+				<div id={this.props.id + idSuffixes.headerActions} className={classnames('slds-no-flex', {'slds-size--1-of-3': hasFilter, 'slds-text-align--right': hasFilter})}>
+					{this.props.headerActions}
+				</div>
 			</div>
 		)
 	}

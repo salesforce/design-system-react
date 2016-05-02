@@ -130,7 +130,7 @@ const SLDSCard = React.createClass({
 				<Header 
 					icon={empty ? null : this.props.icon}
 					id={this.props.id}
-					filter={empty ? null : this.props.filter}
+					filter={this.props.filter}
 					heading={this.props.heading}
 					headerActions={empty ? null : this.props.headerActions} />
 				{!empty ? this._renderBody(this.props.children) : this._renderBody(empty)}
