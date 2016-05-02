@@ -230,13 +230,16 @@ class SLDSLookup extends React.Component {
 
   selectItemByIndex(index){
     if(index >= 0 && index < this.state.items.length){
-      this.setState({
-        selectedIndex: index,
-        searchTerm: ""
-      });
+      let canSelect = true
       const data = this.state.items[index].data;
       if(this.props.onSelect){
-        this.props.onSelect(data);
+        canSelect = this.props.onSelect(data);
+      }
+      if(canSelect !== false){
+        this.setState({
+          selectedIndex: index,
+          searchTerm: ""
+        });
       }
     }
   }
