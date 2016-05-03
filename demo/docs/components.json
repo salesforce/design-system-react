@@ -560,6 +560,126 @@
             }
         }
     },
+    "card": {
+        "description": "Cards are used to apply a container around a related grouping of information. It has a header, a body, and an optional footer. It often contains a DataTable or Tile (coming soon). Actions associated with selected items or with all items are included within the header actions. Footer often contains pagination.",
+        "displayName": "SLDSCard",
+        "methods": [
+            {
+                "name": "_renderFooter",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "_renderBody",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "body",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "_renderDefaultEmpty",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "The main section of the card. It often contains a `DataTable` or `Tile`."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to the card."
+            },
+            "empty": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "bool"
+                        },
+                        {
+                            "name": "node"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Replaces the body (that is the children) with the specified empty state, this will also remove header actions, the filter, and the icon. If the default empty state is wanted, set to `true`."
+            },
+            "filter": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Adds a filter input to the card header."
+            },
+            "footer": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Footer often contains pagination."
+            },
+            "heading": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": "The heading is the name of the related item group.",
+                "defaultValue": {
+                    "value": "'Related Items'",
+                    "computed": false
+                }
+            },
+            "headerActions": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Actions to perform on selected items or actions that are not specific to one item such as adding an item. If no group actions are needed, then the number of selected items is often present."
+            },
+            "icon": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Icon associated with the items within the `body`."
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": "Set the HTML `id` of the card. This also sets the `id` of the filter and the header actions."
+            }
+        }
+    },
     "SLDSIcon": {
         "description": "The SLDSIcon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href=\"#/button\">SLDSButton component</a> component with <code>variant=\"icon\"</code>.",
         "displayName": "SLDSIcon",

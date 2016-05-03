@@ -16,6 +16,7 @@ import BreadCrumbSection from './pages/BreadCrumbSection';
 import ButtonSection from './pages/ButtonSection';
 import ButtonStatefulSection from './pages/ButtonStatefulSection';
 import ButtonGroupSection from './pages/ButtonGroupSection';
+import CardSection from './pages/CardSection';
 import ContextBarSection from './pages/ContextBarSection';
 import DataTableSection from './pages/DataTableSection';
 import DateInputSection from './pages/DateInputSection';
@@ -45,6 +46,7 @@ const routes = (
       <Route name="button" path="button" handler={ButtonSection}/>
       <Route name="button-stateful" path="button-stateful" handler={ButtonStatefulSection}/>
       <Route name="button-group" path="button-group" handler={ButtonGroupSection}/>
+      <Route name="card" path="card" handler={CardSection}/>
       <Route name="context-bar" path="context-bar" handler={ContextBarSection}/>
       <Route name="data-table" path="data-table" handler={DataTableSection}/>
       <Route name="dateinput" path="dateinput" handler={DateInputSection}/>

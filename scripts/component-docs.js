@@ -8,6 +8,7 @@ var componentNames = [
   'SLDSButton',
   'SLDSButtonStateful',
   'SLDSButtonGroup',
+  'card',
   'SLDSIcon',
   'SLDSLookup',
   'SLDSMenuDropdown',
