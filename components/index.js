@@ -13,10 +13,12 @@ export SLDSBreadCrumb from './SLDSBreadCrumb';
 export SLDSButton from './SLDSButton';
 export SLDSButtonGroup from './SLDSButtonGroup';
 export SLDSButtonStateful from './SLDSButtonStateful';
-export SLDSDataTable from './SLDSDataTable';
-export SLDSDataTableCell from './SLDSDataTable/Cell';
-export SLDSDataTableColumn from './SLDSDataTable/Column';
-export SLDSDataTableRowActions from './SLDSDataTable/RowActions';
+
+export SLDSDataTable from './data-table';
+export SLDSDataTableCell from './data-table/cell';
+export SLDSDataTableColumn from './data-table/column';
+export SLDSDataTableRowActions from './data-table/row-actions';
+
 export SLDSDatepickerSingleSelect from './SLDSDatepickerSingleSelect';
 export SLDSIcon from './SLDSIcon';
 export SLDSLookup from './SLDSLookup';

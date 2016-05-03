@@ -16,10 +16,12 @@ const SLDSButtonGroup = require('../components/SLDSButtonGroup');
 const SLDSCard =  require('../components/SLDSCard');
 const SLDSCardEmpty =  require('../components/SLDSCard/Empty');
 const SLDSCardFilter =  require('../components/SLDSCard/Filter');
-const SLDSDataTable = require('../components/SLDSDataTable');
-const SLDSDataTableCell = require('../components/SLDSDataTable/Cell');
-const SLDSDataTableColumn = require('../components/SLDSDataTable/Column');
-const SLDSDataTableRowActions = require('../components/SLDSDataTable/RowActions');
+
+const SLDSDataTable = require('../components/data-table');
+const SLDSDataTableCell = require('../components/data-table/cell');
+const SLDSDataTableColumn = require('../components/data-table/column');
+const SLDSDataTableRowActions = require('../components/data-table/row-actions');
+
 const SLDSIcon = require('../components/SLDSIcon');
 const SLDSButtonIcon = require('../components/SLDSIcon/ButtonIcon');
 const SLDSLookup = require('../components/SLDSLookup');

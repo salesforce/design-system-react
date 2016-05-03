@@ -29,12 +29,12 @@ const { PropTypes } = React;
 
 // The component name will be used as the `DisplayName` and exported along with
 // the component itself.
-export const COMPONENT = 'DataTableRowActions';
+export const COMPONENT = 'SLDSDataTableRowActions';
 
 /**
  * RowActions provide a mechanism for defining a menu to display alongside each row in the DataTable.
  */
-const DataTableRowActions = React.createClass({
+const SLDSDataTableRowActions = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: COMPONENT,
@@ -97,4 +97,4 @@ const DataTableRowActions = React.createClass({
 	}
 });
 
-export default DataTableRowActions;
+module.exports = SLDSDataTableRowActions;

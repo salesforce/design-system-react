@@ -1,7 +1,7 @@
 {
     "data-table": {
-        "description": "DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.",
-        "displayName": "DataTable",
+        "description": "SLDSDataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.",
+        "displayName": "SLDSDataTable",
         "props": {
             "bordered": {
                 "type": {
@@ -563,34 +563,6 @@
     "card": {
         "description": "Cards are used to apply a container around a related grouping of information. It has a header, a body, and an optional footer. It often contains a DataTable or Tile (coming soon). Actions associated with selected items or with all items are included within the header actions. Footer often contains pagination.",
         "displayName": "SLDSCard",
-        "methods": [
-            {
-                "name": "_renderFooter",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "_renderBody",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "body",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "_renderDefaultEmpty",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
         "props": {
             "children": {
                 "type": {

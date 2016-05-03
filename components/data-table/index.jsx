@@ -59,12 +59,12 @@ const count = (array) => isArray(array) ? array.length : 0;
 
 // The component name will be used as the `DisplayName` and exported along with
 // the component itself.
-export const COMPONENT = 'DataTable';
+export const COMPONENT = 'SLDSDataTable';
 
 /**
- * DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
+ * SLDSDataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
  */
-const DataTable = React.createClass({
+const SLDSDataTable = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: COMPONENT,
@@ -260,4 +260,4 @@ const DataTable = React.createClass({
 	}
 });
 
-export default DataTable;
+module.exports = SLDSDataTable;

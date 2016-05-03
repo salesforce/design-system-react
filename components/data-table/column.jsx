@@ -18,12 +18,12 @@ const { PropTypes } = React;
 
 // The component name will be used as the `DisplayName` and exported along with
 // the component itself.
-export const COMPONENT = 'DataTableColumn';
+export const COMPONENT = 'SLDSDataTableColumn';
 
 /**
  * Columns define the structure of the data displayed in the DataTable.
  */
-const DataTableColumn = React.createClass({
+const SLDSDataTableColumn = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: COMPONENT,
@@ -44,4 +44,4 @@ const DataTableColumn = React.createClass({
 	}
 });
 
-export default DataTableColumn;
+module.exports = SLDSDataTableColumn;

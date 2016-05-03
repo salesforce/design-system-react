@@ -18,12 +18,12 @@ const { PropTypes } = React;
 
 // The component name will be used as the `DisplayName` and exported along with
 // the component itself.
-export const COMPONENT = 'DataTableCell';
+export const COMPONENT = 'SLDSDataTableCell';
 
 /**
  * The default Cell renderer for the DataTable. Pass in any React component with the same `displayName` which takes the same props to provide custom rendering.
  */
-const DataTableCell = React.createClass({
+const SLDSDataTableCell = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: COMPONENT,
@@ -59,4 +59,4 @@ const DataTableCell = React.createClass({
 	}
 });
 
-export default DataTableCell;
+export default SLDSDataTableCell;
