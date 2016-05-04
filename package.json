@@ -4,15 +4,16 @@
   "description": "Salesforce Lightning Design System React components",
   "license": "SEE LICENSE IN README.md",
   "scripts": {
-    "start": "node server/index.js & node scripts/start.js",
-    "lint": "eslint --config=./.eslintrc components",
-    "pages": "webpack --config webpack.config.github.js",
     "compile": "scripts/compile",
     "dist": "scripts/dist",
-    "test": "scripts/test --single-run",
-    "postinstall": "node scripts/postinstall",
-    "icons": "node scripts/inline-icons.js",
     "docs": "node scripts/component-docs.js",
+    "icons": "node scripts/inline-icons.js",
+    "lint": "eslint --config=./.eslintrc components",
+    "pages": "webpack --config webpack.config.github.js",
+    "postinstall": "node scripts/postinstall",
+    "start": "node server/index.js & node scripts/start.js",
+    "storybook": "start-storybook -p 9001",
+    "test": "scripts/test --single-run",
     "validate": "npm ls"
   },
   "repository": {
