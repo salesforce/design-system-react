@@ -39,6 +39,7 @@
   "main": "lib/index.js",
   "homepage": "https://github.com/salesforce-ux/design-system-react",
   "devDependencies": {
+    "@kadira/storybook": "^1.19.0",
     "@salesforce-ux/design-system": "1.0.0",
     "@salesforce-ux/icons": "3.4.0",
     "babel": "^6.3.26",
