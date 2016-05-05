@@ -56,7 +56,7 @@ describe('SLDSButton: ', () => {
     });
 
     it('renders correct label', () => {
-      expect(btn.innerText).to.equal('Neutral');
+      expect(btn.textContent).to.equal('Neutral');
     });
 
     it('renders correct variant styles', () => {
@@ -88,7 +88,7 @@ describe('SLDSButton: ', () => {
     })
 
     it('renders label', () => {
-      expect(btn.innerText).to.equal("Neutral with Icon");
+      expect(btn.textContent).to.equal("Neutral with Icon");
     })
 
     it('renders icon', () => {
@@ -118,7 +118,7 @@ describe('SLDSButton: ', () => {
     })
 
     it('renders label', () => {
-      expect(asstText.innerText).to.equal("my settings");
+      expect(asstText.textContent).to.equal("my settings");
     })
 
     it('renders icon styles', () => {

@@ -95,7 +95,7 @@ describe('SLDSMenuPicklist: ',  function(){
     })
 
     it('sets the placeholder', () => {
-      expect(btn.innerText).to.equal("Select a contact");
+      expect(btn.textContent).to.equal('Select a contact');
     })
 
     it('expands/contracts the dropdown on click', () => {

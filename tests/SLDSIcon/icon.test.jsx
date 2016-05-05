@@ -43,7 +43,7 @@ describe('SLDSIcon: ',  function(){
     })
 
     it('renders assistive text', () => {
-      expect(asstText.innerText).to.equal("Accounts");
+      expect(asstText.textContent).to.equal("Accounts");
     })
 
     it('renders icon name class', () => {
@@ -69,7 +69,7 @@ describe('SLDSIcon: ',  function(){
     })
 
     it('renders assistive text', () => {
-      expect(asstText.innerText).to.equal("Heart");
+      expect(asstText.textContent).to.equal("Heart");
     })
 
     it('renders icon name class', () => {
@@ -97,7 +97,7 @@ describe('SLDSIcon: ',  function(){
     })
 
     it('renders assistive text', () => {
-      expect(asstText.innerText).to.equal("Announcements");
+      expect(asstText.textContent).to.equal("Announcements");
     })
 
     it('renders name class on container', () => {

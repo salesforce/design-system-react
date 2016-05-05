@@ -73,7 +73,7 @@ describe('SLDSMenuDropdown: ', function(){
     })
 
     it('sets the label', () => {
-      expect(btn.innerText).to.equal("Contacts")
+      expect(btn.textContent).to.equal('Contacts')
     })
 
     it('expands the dropdown on hover', () => {
