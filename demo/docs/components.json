@@ -2,48 +2,6 @@
     "data-table": {
         "description": "DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.",
         "displayName": "DataTable",
-        "methods": [
-            {
-                "name": "handleToggleAll",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "selected",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleRowToggle",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "item",
-                        "type": null
-                    },
-                    {
-                        "name": "selected",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleSort",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "sortColumn",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            }
-        ],
         "props": {
             "bordered": {
                 "type": {
@@ -169,7 +127,6 @@
     "SLDSBreadCrumb": {
         "description": "",
         "displayName": "SLDSBreadCrumb",
-        "methods": [],
         "props": {
             "assistiveText": {
                 "type": {
@@ -190,53 +147,6 @@
     "SLDSButton": {
         "description": "The SLDSButton component is the Lightning Design System Button component. The SLDSButton should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.\nFor buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">SLDSButtonStateful</a> component.",
         "displayName": "SLDSButton",
-        "methods": [
-            {
-                "name": "handleClick",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "getClassName",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "renderIcon",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "name",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "renderIconMore",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "renderLabel",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
         "props": {
             "assistiveText": {
                 "type": {
@@ -471,22 +381,6 @@
     "SLDSButtonStateful": {
         "description": "The SLDSButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nFor icon buttons, use <code>variant=\"icon\"</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: \"add\", label: \"Join\"}}</code>).",
         "displayName": "SLDSButtonStateful",
-        "methods": [
-            {
-                "name": "handleClick",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getClassName",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
         "props": {
             "assistiveText": {
                 "type": {
@@ -649,7 +543,6 @@
     "SLDSButtonGroup": {
         "description": "The SLDSButtonGroup component wraps other SLDS components (ie. SLDSButton, SLDSMenuDropdown, SLDSPopoverTooltip, etc).",
         "displayName": "SLDSButtonGroup",
-        "methods": [],
         "props": {
             "children": {
                 "type": {
@@ -667,25 +560,129 @@
             }
         }
     },
-    "SLDSIcon": {
-        "description": "The SLDSIcon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href=\"#/button\">SLDSButton component</a> component with <code>variant=\"icon\"</code>.",
-        "displayName": "SLDSIcon",
+    "card": {
+        "description": "Cards are used to apply a container around a related grouping of information. It has a header, a body, and an optional footer. It often contains a DataTable or Tile (coming soon). Actions associated with selected items or with all items are included within the header actions. Footer often contains pagination.",
+        "displayName": "SLDSCard",
         "methods": [
             {
-                "name": "getContainerClassName",
+                "name": "_renderFooter",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
                 "returns": null
             },
             {
-                "name": "getClassName",
+                "name": "_renderBody",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "body",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "_renderDefaultEmpty",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
                 "returns": null
             }
         ],
+        "props": {
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "The main section of the card. It often contains a `DataTable` or `Tile`."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to the card."
+            },
+            "empty": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "bool"
+                        },
+                        {
+                            "name": "node"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Replaces the body (that is the children) with the specified empty state, this will also remove header actions, the filter, and the icon. If the default empty state is wanted, set to `true`."
+            },
+            "filter": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Adds a filter input to the card header."
+            },
+            "footer": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Footer often contains pagination."
+            },
+            "heading": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": "The heading is the name of the related item group.",
+                "defaultValue": {
+                    "value": "'Related Items'",
+                    "computed": false
+                }
+            },
+            "headerActions": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Actions to perform on selected items or actions that are not specific to one item such as adding an item. If no group actions are needed, then the number of selected items is often present."
+            },
+            "icon": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Icon associated with the items within the `body`."
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": "Set the HTML `id` of the card. This also sets the `id` of the filter and the header actions."
+            }
+        }
+    },
+    "SLDSIcon": {
+        "description": "The SLDSIcon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href=\"#/button\">SLDSButton component</a> component with <code>variant=\"icon\"</code>.",
+        "displayName": "SLDSIcon",
         "props": {
             "assistiveText": {
                 "type": {
@@ -786,266 +783,6 @@
     "SLDSLookup": {
         "description": "The SLDSLookup is the Lightning Design System Lookup base component.",
         "displayName": "SLDSLookup",
-        "methods": [
-            {
-                "name": "modifyItems",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "itemsToModify",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "increaseIndex",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "decreaseIndex",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "setFocus",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "id",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "getListLength",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "qty",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "getNumFocusableItems",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "selectItem",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "itemId",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "selectItemByIndex",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "index",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleDeleteSelected",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleClose",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleEscape",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleCancel",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleClick",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleBlur",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleFocus",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleChange",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleKeyDown",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handlePillKeyDown",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "getHeader",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getFooter",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "normalizeSearchTerm",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "string",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "renderMenuContent",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "renderSimpleMenu",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "renderModalMenu",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "renderSelectedItem",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "inputRefName",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "focusInput",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "isSelected",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getClassName",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
         "props": {
             "emptyMessage": {
                 "type": {
@@ -1061,7 +798,7 @@
                 "required": false,
                 "description": "Custom function to filter the Lookup items when typing into input field. The default function is case-insensitive and uses the searchTerm to filter Lookup items on their labels.",
                 "defaultValue": {
-                    "value": "(term, item) => {\n  if(!term) return true;\n  return item.label.match(new RegExp(escapeRegExp(term), \"ig\"));\n}",
+                    "value": "(term, item) => {\n  if(!term) return true;\n  return (item.data && item.data.type === 'section') || item.label.match(new RegExp(escapeRegExp(term), \"ig\"));\n}",
                     "computed": false
                 }
             },
@@ -1216,199 +953,6 @@
     "SLDSMenuDropdown": {
         "description": "The SLDSMenuDropdown component is a variant of the Ligtning Design System Menu component.",
         "displayName": "SLDSMenuDropdown",
-        "methods": [
-            {
-                "name": "getIndexByValue",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "value",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "getValueByIndex",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "index",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "getListItemRenderer",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleSelect",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "index",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleClose",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleMouseEnter",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleMouseLeave",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleClick",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleMouseDown",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleBlur",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "e",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleFocus",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "setFocus",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getButtonNode",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleKeyDown",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleUpdateHighlighted",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "nextIndex",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleListBlur",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleListItemBlur",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "index",
-                        "type": null
-                    },
-                    {
-                        "name": "relatedTarget",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleCancel",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getPopoverContent",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getSimplePopover",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getModalPopover",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
         "props": {
             "align": {
                 "type": {
@@ -1605,197 +1149,6 @@
     "SLDSMenuPicklist": {
         "description": "The SLDSMenuPicklist component is a variant of the Ligtning Design System Menu component.",
         "displayName": "SLDSMenuPicklist",
-        "methods": [
-            {
-                "name": "getIndexByValue",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "value",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "getValueByIndex",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "index",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleSelect",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "index",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleValueUpdate",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "index",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleClose",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleClick",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleMouseDown",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleBlur",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "e",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleFocus",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "setFocus",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleKeyDown",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleUpdateHighlighted",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "nextIndex",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleListBlur",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleCancel",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getListItemRenderer",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getPopoverContent",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getSimplePopover",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getModalPopover",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getPlaceholder",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleListItemBlur",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "index",
-                        "type": null
-                    },
-                    {
-                        "name": "relatedTarget",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            }
-        ],
         "props": {
             "className": {
                 "type": {
@@ -1906,76 +1259,6 @@
     "SLDSModal": {
         "description": "The SLDSModal component is used for the Lightning Design System Modal and Notification > Prompt components. The Modal opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).\nFor more details on the Prompt markup, please review the <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">Notifications > Prompt</a>.",
         "displayName": "SLDSModal",
-        "methods": [
-            {
-                "name": "closeModal",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleSubmitModal",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "updateBodyScroll",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "clearBodyScroll",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleModalClick",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "isPrompt",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "footerComponent",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "headerComponent",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getModal",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
         "props": {
             "align": {
                 "type": {
@@ -2114,64 +1397,6 @@
     "SLDSNotification": {
         "description": "The SLDSNotification component is the Alert and Toast variants of the Lightning Design System Notification component. For prompt notifications, use the <a href=\"#/modal\">SLDSModal</a> component with <code>prompt={true}</code>.\nThe Notification opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).",
         "displayName": "SLDSNotification",
-        "methods": [
-            {
-                "name": "renderIcon",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "renderClose",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "onDismiss",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "renderAlertContent",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "renderToastContent",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getClassName",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "renderContent",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "blankContent",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
         "props": {
             "className": {
                 "type": {
@@ -2288,20 +1513,6 @@
     "SLDSPageHeader": {
         "description": "The SLDSPageHeader component adds SLDSPageHeader, SLDSPageHeader.Info, SLDSPageHeader.Title, SLDSPageHeader.DetailRow, and SLDSPageHeader.DetailBlock.",
         "displayName": "SLDSPageHeader",
-        "methods": [
-            {
-                "name": "_getClassNames",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "className",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            }
-        ],
         "props": {
             "className": {
                 "type": {
@@ -2553,95 +1764,6 @@
     "SLDSPopoverTooltip": {
         "description": "The SLDSPopoverTooltip component is variant of the Lightning Design System Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or anchor) so that keyboard users can navigate to it.",
         "displayName": "SLDSPopoverTooltip",
-        "methods": [
-            {
-                "name": "getTooltipTarget",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getTriggerId",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleMouseEnter",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleMouseLeave",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getTooltipContent",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleCancel",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getTooltip",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "renderAssistantText",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "decorateGrandKidsWithKeyToSilenceWarning",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "grandKids",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "grandKidsWithAsstText",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "child",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "getContent",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
         "props": {
             "align": {
                 "type": {
@@ -2749,107 +1871,6 @@
     "SLDSDatepickerSingleSelect": {
         "description": "",
         "displayName": "SLDSDatepickerSingleSelect",
-        "methods": [
-            {
-                "name": "handleChange",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "date",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleClose",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleClick",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleFocus",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleBlur",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "setFocus",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "parseDate",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "strValue",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "popover",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleInputChange",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleKeyDown",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "getInputIcon",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "inputRefName",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
         "props": {
             "abbrWeekDayLabels": {
                 "type": {
@@ -2986,163 +2007,6 @@
     "SLDSTimepicker": {
         "description": "",
         "displayName": "SLDSTimepicker",
-        "methods": [
-            {
-                "name": "handleChange",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "date",
-                        "type": null
-                    },
-                    {
-                        "name": "strValue",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleClose",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleClick",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleFocus",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleBlur",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "setFocus",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "parseDate",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "strValue",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "getOptions",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getListItemRenderer",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getValueByIndex",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "index",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleSelect",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "index",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleCancel",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getPopoverContent",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getSimplePopover",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getModalPopover",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleInputChange",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleKeyDown",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "getInputIcon",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
         "props": {
             "formatter": {
                 "type": {

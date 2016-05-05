@@ -4,6 +4,7 @@ const Samples =  {
   Buttons2: require('fs').readFileSync('demo/code-snippets/ButtonExamples2.js', 'utf8'),
   ButtonGroups1: require('fs').readFileSync('demo/code-snippets/ButtonGroupExamples1.js', 'utf8'),
   ButtonGroups2: require('fs').readFileSync('demo/code-snippets/ButtonGroupExamples2.js', 'utf8'),
+  Card1: require('fs').readFileSync('demo/code-snippets/CardExamples.js', 'utf8'),
   DataTables1: require('fs').readFileSync('demo/code-snippets/DataTableExamples1.js', 'utf8'),
   DataTables2: require('fs').readFileSync('demo/code-snippets/DataTableExamples2.js', 'utf8'),
   Dropdowns1: require('fs').readFileSync('demo/code-snippets/DropdownExamples1.js', 'utf8'),
