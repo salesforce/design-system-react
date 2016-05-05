@@ -9,7 +9,7 @@ const { Simulate,
         scryRenderedDOMComponentsWithClass,
         findRenderedDOMComponentWithTag,
         findRenderedDOMComponentWithClass } = TestUtils
-const handleClick = (x) => console.log(x, ' was clicked.');
+const handleClick = (itemClicked) => console.log(itemClicked, ' was clicked.');
 
 describe('SLDSIcon: ',  function(){
   const defaultProps = {};
