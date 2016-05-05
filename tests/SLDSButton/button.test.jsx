@@ -12,7 +12,7 @@ const { Simulate,
 
 import {SLDSButton} from '../../components';
 
-const handleClick = itemClicked => console.log(itemClicked, ' was clicked.');
+const handleClick = (itemClicked) => console.log(itemClicked, ' was clicked.');
 
 describe('SLDSButton: ', () => {
   let body;

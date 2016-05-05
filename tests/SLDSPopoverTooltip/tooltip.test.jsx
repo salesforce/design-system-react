@@ -43,10 +43,7 @@ describe('SLDSPopoverTooltip: ',  function(){
     let cmp, trigger;
 
     beforeEach(() => {
-      const content = React.createElement('span', {
-        style: { width: '30px' }, 
-        dangerouslySetInnerHTML: { __html: 'This is more info. blah blah.' }
-      });
+      const content = (<span style={{width: 30}}>This is more info. blah blah.</span>);
       createBody();
       cmp = generateTooltip({
         align: 'bottom', 
@@ -110,16 +107,13 @@ describe('SLDSPopoverTooltip: ',  function(){
     let cmp, trigger;
 
     beforeEach(() => {
-      const content = React.createElement('span', {
-        style: { width: '30px' }, 
-        dangerouslySetInnerHTML: { __html: 'This is more info. blah blah.' }
-      });
+      const content = (<span style={{width: 30}}>This is more info. blah blah.</span>);
       createBody();
       cmp = generateTooltip({
         align: 'bottom', 
         content: content, 
         target: body.firstChild
-      }, React.createElement('button', {}), ['Hover me for tooltip']);
+      }, React.createElement(SLDSButton, {}), ['Hover me for tooltip']);
       trigger = document.body.querySelector('[role=tooltip]').firstChild;
     })
 
