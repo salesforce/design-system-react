@@ -25,7 +25,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 // ## Children
-import InputIcon from '../SLDSIcon/InputIcon';
+import InputIcon from '../../SLDSIcon/InputIcon';
 
 // Remove the need for `React.PropTypes`
 const { PropTypes } = React;

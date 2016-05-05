@@ -23,9 +23,7 @@ import find from 'lodash.find';
 import partial from 'lodash.partial';
 
 // ## Children
-
-// ### Checkbox
-import Checkbox from '../checkbox';
+import Checkbox from '../forms/checkbox';
 
 // ### Event Helpers
 import { EventUtil } from "../utils";

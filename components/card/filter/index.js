@@ -13,7 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // React is an external dependency of the project.
 import React from 'react';
 
-import Input from '../../input';
+import Input from '../../forms/input';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
@@ -23,7 +23,7 @@ const { PropTypes } = React;
 export const COMPONENT = 'Filter';
 
 /**
- * A default filter or search input for Cards that contain items. 
+ * A default filter or search input for Cards that contain items.
  */
 const Filter = React.createClass({
 	// ### Display Name
@@ -56,8 +56,8 @@ const Filter = React.createClass({
 		const { id, placeholder, onChange, ...props } = this.props;
 
 		return (
-			<Input 
-				{...props} 
+			<Input
+				{...props}
 				onChange={onChange}
 				id={id}
 				placeholder={placeholder}

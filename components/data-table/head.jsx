@@ -17,12 +17,8 @@ import React from 'react';
 import classNames from 'classnames';
 
 // ## Children
-
-// ### Button
 import Button from '../SLDSButton';
-
-// ### Checkbox
-import Checkbox from '../checkbox';
+import Checkbox from '../forms/checkbox';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;

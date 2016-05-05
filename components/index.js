@@ -10,19 +10,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 export SLDSBreadCrumb from './SLDSBreadCrumb';
-export SLDSButton from './SLDSButton';
 export SLDSButtonGroup from './SLDSButtonGroup';
 export SLDSButtonStateful from './SLDSButtonStateful';
-
-export SLDSDataTable from './data-table';
-export SLDSDataTableCell from './data-table/cell';
-export SLDSDataTableColumn from './data-table/column';
-export SLDSDataTableRowActions from './data-table/row-actions';
-
 export SLDSDatepickerSingleSelect from './SLDSDatepickerSingleSelect';
 export SLDSIcon from './SLDSIcon';
 export SLDSLookup from './SLDSLookup';
-export SLDSMenuDropdown from './SLDSMenuDropdown';
 export SLDSMenuPicklist from './SLDSMenuPicklist';
 export SLDSModal from './SLDSModal';
 export SLDSModalTrigger from './SLDSModal/trigger';
@@ -31,3 +23,29 @@ export SLDSPopoverTooltip from './SLDSPopoverTooltip';
 export SLDSSettings from './SLDSSettings';
 export SLDSTimepicker from './SLDSTimepicker';
 export SLDSUtilityIcon from './SLDSUtilityIcon';
+
+export SLDSButton from './SLDSButton';
+export Button from './SLDSButton';
+
+export SLDSCheckbox from "./forms/checkbox";
+export Checkbox from "./forms/checkbox";
+
+export SLDSDataTable from './data-table';
+export DataTable from './data-table';
+
+export SLDSDataTableCell from './data-table/cell';
+export DataTableCell from './data-table/cell';
+
+export SLDSDataTableColumn from './data-table/column';
+export DataTableColumn from './data-table/column';
+
+export SLDSDataTableRowActions from './data-table/row-actions';
+export DataTableRowActions from './data-table/row-actions';
+
+export SLDSInput from "./forms/input";
+export Input from "./forms/input";
+
+export SLDSMenuDropdown from './SLDSMenuDropdown';
+export Dropdown from './SLDSMenuDropdown';
+
+
