@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
-import assign from 'lodash/object/assign';
+import assign from 'lodash.assign';
 
 const { Simulate,
         scryRenderedDOMComponentsWithClass,
@@ -35,7 +35,7 @@ describe('SLDSButton: ', () => {
   }
 
   const createButton = (props) => React.createElement(SLDSButton, assign({}, defaultProps, props));
-  const getButton = (ps) => renderButton(createButton(ps));
+  const getButton = (props) => renderButton(createButton(props));
 
   describe('Basic Button Props Render', () => {
     let cmp;

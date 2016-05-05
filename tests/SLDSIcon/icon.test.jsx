@@ -27,7 +27,7 @@ describe('SLDSIcon: ',  function(){
   }
 
   const createIcon = (props) => React.createElement(SLDSIcon, assign({}, defaultProps, props));
-  const getIcon = (ps) => renderIcon(createIcon(ps));
+  const getIcon = (props) => renderIcon(createIcon(props));
 
   describe('Standard Icon Props Render', () => {
     let cmp, svg, asstText;

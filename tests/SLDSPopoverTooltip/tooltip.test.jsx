@@ -84,11 +84,11 @@ describe('SLDSPopoverTooltip: ',  function(){
       })
 
       it('places bottom aligned tooltip at the trigger if no target', (done) => {
-        // "Magic Number" in pixels
-        const nubbinHeight = 40;
+        // "Magic Number" in pixels, based on size of trigger and CSS
+        const tooltipOffset = 40;
         const tipBounds = tip.getBoundingClientRect();
         const triggerBounds = trigger.getBoundingClientRect();
-        expect(tipBounds.bottom).to.be.within(triggerBounds.bottom, triggerBounds.bottom + nubbinHeight);
+        expect(tipBounds.bottom).to.be.within(triggerBounds.bottom, triggerBounds.bottom + tooltipOffset);
         done();
       })
 
@@ -141,13 +141,13 @@ describe('SLDSPopoverTooltip: ',  function(){
     //   });
 
     //   it('sets the tooltip close to the target, not the trigger', () => {
-    //     // "Magic Number" in pixels
-    //     const nubbinHeight = 40;
+    //     // "Magic Number" in pixels, based on size of trigger and CSS
+    //     const tooltipOffset = 40;
     //     const tipBounds = tip.getBoundingClientRect();
     //     const targetBounds = body.firstChild.getBoundingClientRect();
     //     console.log(tipBounds);
     //     console.log(targetBounds);
-    //     expect(tipBounds.bottom).to.be.within(targetBounds.bottom, targetBounds.bottom + nubbinHeight);
+    //     expect(tipBounds.bottom).to.be.within(targetBounds.bottom, targetBounds.bottom + tooltipOffset);
     //   })
     // })
   })

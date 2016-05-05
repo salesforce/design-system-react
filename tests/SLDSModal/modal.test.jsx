@@ -31,9 +31,9 @@ describe('SLDSModal: ', function(){
 
   const createModal = (props) => React.createElement(SLDSModal, assign({}, defaultProps, props));
 
-  const getModal = props => renderModal(createModal(props));
+  const getModal = (props) => renderModal(createModal(props));
 
-  const getModalNode = dom => dom.querySelector('.slds-modal');
+  const getModalNode = (dom) => dom.querySelector('.slds-modal');
 
   describe('Closed modal', () => {
     let cmp;

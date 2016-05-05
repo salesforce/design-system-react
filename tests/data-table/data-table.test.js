@@ -108,9 +108,9 @@ describe('DataTable: ', function () {
 
 		it('renders the correct contents in each cell', function () {
 			const firstName = getCell(this.dom, 1, 1);
-			// firstName.innerHTML.should.equal('Cloudhub');
+			firstName.innerHTML.should.equal('Cloudhub');
 			const secondCount = getCell(this.dom, 2, 2);
-			// secondCount.innerHTML.should.equal('54976');
+			secondCount.innerHTML.should.equal('54976');
 		});
 
 		it('has checkboxes only when selectRows is true', function () {
