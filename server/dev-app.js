@@ -20,18 +20,20 @@ app.use(webpackHotMiddleware(compiler, {
 	log: console.log, path: '/__webpack_hmr', heartbeat: 10 * 1000
 }));
 
-// Design system static directory
+// Allow access to Design System
 app.use('/assets', express.static(path.join(__dirname, '../node_modules/@salesforce-ux/design-system/assets')));
 
-// Design system static directory
+// Provide access to node_modules for JS libraries
 app.use('/node_modules', express.static(path.join(__dirname, '../node_modules')));
 
 // Serve up the built files
 app.use('/dev-build', express.static(path.join(__dirname, '../dev-build')));
 
+// Needed for in browser testing
 app.use('/test', express.static(path.join(__dirname, '../tests')));
 app.use('/base/node_modules', express.static(__dirname + '/node_modules'));
 
+// index page
 app.use(express.static(path.join(__dirname, 'public-dev/')));
 
 // Listen
