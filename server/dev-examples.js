@@ -12,6 +12,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// Sample import for a component
 // import Card from '../components/card/examples';
 
-// ReactDOM.render(React.createElement(Card), document.querySelector('#card-react-control'));
+// Sample render for a component
+// ReactDOM.render(React.createElement(Card), document.querySelector('#playground-react-mount'));

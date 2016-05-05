@@ -3,14 +3,12 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>SLDS for React</title>
+		<title>Design System React Development Sandbox</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link href="/assets/demo-site/images/favicon.png" sizes="16x16" rel="icon" type="image/png">
 		<link href="/assets/styles/salesforce-lightning-design-system.css" rel="stylesheet" type="text/css">
 
 	</head>
-	<body class="facades-demo | slds">
-
+	<body class="slds">
 		<header class="slds-page-header">
 			<div class="slds-grid">
 				<div class="slds-has-flexi-truncate slds-col">
@@ -24,7 +22,7 @@
 						</div>
 						<div class="slds-media__body">
 							<p class="slds-text-heading--label">Salesforce Lightning Design System</p>
-							<div class="slds-grid"><h1 class="slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle" title="Component Facades">SLDS for React Development Sandbox</h1>
+							<div class="slds-grid"><h1 class="slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle" title="Component Facades">React Development Sandbox</h1>
 							</div>
 						</div>
 					</div>
@@ -32,560 +30,39 @@
 			</div>
 		</header>
 		<section class="slds-grid">
-			<div class="slds-col | slds-size--1-of-12 slds-medium-size--1-of-12 slds-large-size--1-of-12">
-
-			</div>
+			<div class="slds-col | slds-size--1-of-12 slds-medium-size--1-of-12 slds-large-size--1-of-12"></div>
 
 			<div class="slds-col | slds-size--10-of-12 slds-medium-size--10-of-12 slds-large-size--10-of-12">
 				<div id="component-list" class="slds-grid slds-grid--vertical">
-
-<!-- badge -->
-						<div class="slds-col | slds-m-top--large | component-wrapper" id="badge">
-							<div class="slds-grid slds-grid--vertical | component">
-								<div class="slds-col | header">
-									<div class="slds-section-title | slds-m-top--medium">
-										<div class="slds-grid">
-											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-												<span>Badge</span>
-											</h2>
-										</div>
-									</div>
-								</div>
-								<div class="slds-col | body">
-									<div class="slds-grid | slds-wrap">
-										<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type example-type--react">
-											<div class="slds-grid slds-grid--vertical | example-wrapper">
-												<div class="slds-col | slds-m-bottom--medium"></div>
-												<div id="badge-react-control" class="slds-col | example">
-												</div>
-											</div>
-										</div>
+					<div class="slds-col | slds-m-top--large | component-wrapper" id="badge">
+						<div class="slds-grid slds-grid--vertical | component">
+							<div class="slds-col | header">
+								<div class="slds-section-title | slds-m-top--medium">
+									<div class="slds-grid">
+										<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
+											<span>Playground</span>
+										</h2>
 									</div>
 								</div>
 							</div>
-						</div>
+							<div class="slds-col | body">
+								<div class="slds-grid | slds-wrap">
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type example-type--react">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | slds-m-bottom--medium"></div>
 
-<!-- button -->
-						<div class="slds-col | slds-m-top--large | component-wrapper" id="button">
-							<div class="slds-grid slds-grid--vertical | component">
-								<div class="slds-col | header">
-									<div class="slds-section-title | slds-m-top--medium">
-										<div class="slds-grid">
-											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-												<span>Button</span>
-											</h2>
-										</div>
-									</div>
-								</div>
-								<div class="slds-col | body">
-									<div class="slds-grid | slds-wrap">
-										<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type example-type--react">
-											<div class="slds-grid slds-grid--vertical | example-wrapper">
-												<div class="slds-col | slds-m-bottom--medium"></div>
-												<div id="button-react-control" class="slds-col | example">
-												</div>
+											<div id="playground-react-mount" class="slds-col | example">
+
 											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
-<!-- SLDSButton -->
-						<div class="slds-col | slds-m-top--large | component-wrapper" id="button">
-							<div class="slds-grid slds-grid--vertical | component">
-								<div class="slds-col | header">
-									<div class="slds-section-title | slds-m-top--medium">
-										<div class="slds-grid">
-											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-												<span>SLDSButton</span>
-											</h2>
-										</div>
-									</div>
-								</div>
-								<div class="slds-col | body">
-									<div class="slds-grid | slds-wrap">
-										<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type example-type--react">
-											<div class="slds-grid slds-grid--vertical | example-wrapper">
-												<div class="slds-col | slds-m-bottom--medium"></div>
-												<div id="SLDSButton-react-control" class="slds-col | example">
-												</div>
-											</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-<!-- button-group -->
-						<div class="slds-col | slds-m-top--large | component-wrapper" id="button-group">
-							<div class="slds-grid slds-grid--vertical | component">
-								<div class="slds-col | header">
-									<div class="slds-section-title | slds-m-top--medium">
-										<div class="slds-grid">
-											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-												<span>Button Group</span>
-											</h2>
-										</div>
-									</div>
-								</div>
-								<div class="slds-col | body">
-									<div class="slds-grid | slds-wrap">
-										<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type example-type--react">
-											<div class="slds-grid slds-grid--vertical | example-wrapper">
-												<div class="slds-col | slds-m-bottom--medium"></div>
-												<div id="button-group-react-control" class="slds-col | example">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-<!-- checkbox -->
-						<div class="slds-col | slds-m-top--large | component-wrapper" id="checkbox">
-							<div class="slds-grid slds-grid--vertical | component">
-								<div class="slds-col | header">
-									<div class="slds-section-title | slds-m-top--medium">
-										<div class="slds-grid">
-											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-												<span>Checkbox</span>
-											</h2>
-										</div>
-									</div>
-								</div>
-								<div class="slds-col | body">
-									<div class="slds-grid | slds-wrap">
-										<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type example-type--react">
-											<div class="slds-grid slds-grid--vertical | example-wrapper">
-												<div class="slds-col | slds-m-bottom--medium"></div>
-												<div id="checkbox-react-control" class="slds-col | example">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-<!-- card -->
-						<div class="slds-col | slds-m-top--large | component-wrapper" id="data-table">
-							<div class="slds-grid slds-grid--vertical | component">
-								<div class="slds-col | header">
-									<div class="slds-section-title | slds-m-top--medium">
-										<div class="slds-grid">
-											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-												<span>Card</span>
-											</h2>
-										</div>
-									</div>
-								</div>
-								<div class="slds-col | body">
-									<div class="slds-grid | slds-wrap">
-										<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type example-type--react">
-											<div class="slds-grid slds-grid--vertical | example-wrapper">
-												<div class="slds-col | slds-m-bottom--medium"></div>
-												<div id="card-react-control" class="slds-col | example">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-<!-- data-table -->
-						<div class="slds-col | slds-m-top--large | component-wrapper" id="data-table">
-							<div class="slds-grid slds-grid--vertical | component">
-								<div class="slds-col | header">
-									<div class="slds-section-title | slds-m-top--medium">
-										<div class="slds-grid">
-											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-												<span>Data Table</span>
-											</h2>
-										</div>
-									</div>
-								</div>
-								<div class="slds-col | body">
-									<div class="slds-grid | slds-wrap">
-										<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type example-type--react">
-											<div class="slds-grid slds-grid--vertical | example-wrapper">
-												<div class="slds-col | slds-m-bottom--medium"></div>
-												<div id="data-table-react-control" class="slds-col | example">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-<!-- datepicker -->
-						<div class="slds-col | slds-m-top--large | component-wrapper" id="datepicker">
-							<div class="slds-grid slds-grid--vertical | component">
-								<div class="slds-col | header">
-									<div class="slds-section-title | slds-m-top--medium">
-										<div class="slds-grid">
-											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-												<span>Datepicker</span>
-											</h2>
-										</div>
-									</div>
-								</div>
-								<div class="slds-col | body">
-									<div class="slds-grid | slds-wrap">
-										<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type example-type--react">
-											<div class="slds-grid slds-grid--vertical | example-wrapper">
-												<div class="slds-col | slds-m-bottom--medium"></div>
-												<div id="datepicker-react-control" class="slds-col | example">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-<!-- dropdown -->
-						<div class="slds-col | slds-m-top--large | component-wrapper" id="dropdown">
-							<div class="slds-grid slds-grid--vertical | component">
-								<div class="slds-col | header">
-									<div class="slds-section-title | slds-m-top--medium">
-										<div class="slds-grid">
-											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-												<span>Dropdown</span>
-											</h2>
-										</div>
-									</div>
-								</div>
-								<div class="slds-col | body">
-										<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type example-type--react">
-											<div class="slds-grid slds-grid--vertical | example-wrapper">
-												<div class="slds-col | slds-m-bottom--medium"></div>
-												<div id="dropdown-react-control" class="slds-col | example"></div>
-												<h3 class="slds-col | slds-has-flexi-truncate | slds-text-heading--small | slds-m-bottom--medium">
-													<span>Development-only</span>
-												</h2>
-												<div id="dropdown-dev-react-control" class="slds-col | example"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-<!-- icon -->
-						<div class="slds-col | slds-m-top--large | component-wrapper" id="dropdown">
-							<div class="slds-grid slds-grid--vertical | component">
-								<div class="slds-col | header">
-									<div class="slds-section-title | slds-m-top--medium">
-										<div class="slds-grid">
-											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-												<span>Icon</span>
-
-											</h2>
-										</div>
-									</div>
-								</div>
-								<div class="slds-col | body">
-										<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type example-type--react">
-											<div class="slds-grid slds-grid--vertical | example-wrapper">
-												<div class="slds-col | slds-m-bottom--medium"></div>
-												<div id="icon-react-control" class="slds-col | example">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-<!-- input -->
-						<div class="slds-col | slds-m-top--large | component-wrapper" id="dropdown">
-							<div class="slds-grid slds-grid--vertical | component">
-								<div class="slds-col | header">
-									<div class="slds-section-title | slds-m-top--medium">
-										<div class="slds-grid">
-											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-												<span>Input</span>
-											</h2>
-										</div>
-									</div>
-								</div>
-								<div class="slds-col | body">
-										<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type example-type--react">
-											<div class="slds-grid slds-grid--vertical | example-wrapper">
-												<div class="slds-col | slds-m-bottom--medium"></div>
-												<div id="input-react-control" class="slds-col | example">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-<!-- lookup -->
-						<div class="slds-col | slds-m-top--large | component-wrapper" id="lookup">
-							<div class="slds-grid slds-grid--vertical | component">
-								<div class="slds-col | header">
-									<div class="slds-section-title | slds-m-top--medium">
-										<div class="slds-grid">
-											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-												<span>Lookup</span>
-											</h2>
-										</div>
-									</div>
-								</div>
-								<div class="slds-col | body">
-									<div class="slds-grid | slds-wrap">
-										<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type example-type--react">
-											<div class="slds-grid slds-grid--vertical | example-wrapper">
-												<div class="slds-col | slds-m-bottom--medium"></div>
-												<div id="lookup-react-control" class="slds-col | example">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-<!-- modal -->
-						<div class="slds-col | slds-m-top--large | component-wrapper" id="modal">
-							<div class="slds-grid slds-grid--vertical | component">
-								<div class="slds-col | header">
-									<div class="slds-section-title | slds-m-top--medium">
-										<div class="slds-grid">
-											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-												<span>Modal</span>
-											</h2>
-										</div>
-									</div>
-								</div>
-								<div class="slds-col | body">
-									<div class="slds-grid | slds-wrap">
-										<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type example-type--react">
-											<div class="slds-grid slds-grid--vertical | example-wrapper">
-												<div class="slds-col | slds-m-bottom--medium"></div>
-												<div id="modal-react-control" class="slds-col | example">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-<!-- notification -->
-						<div class="slds-col | slds-m-top--large | component-wrapper" id="notification">
-							<div class="slds-grid slds-grid--vertical | component">
-								<div class="slds-col | header">
-									<div class="slds-section-title | slds-m-top--medium">
-										<div class="slds-grid">
-											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-												<span>Notification</span>
-											</h2>
-										</div>
-									</div>
-								</div>
-								<div class="slds-col | body">
-									<div class="slds-grid | slds-wrap">
-										<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type example-type--react">
-											<div class="slds-grid slds-grid--vertical | example-wrapper">
-												<div class="slds-col | slds-m-bottom--medium"></div>
-												<div id="notification-react-control" class="slds-col | example">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-<!-- picklist -->
-						<div class="slds-col | slds-m-top--large | component-wrapper" id="picklist">
-							<div class="slds-grid slds-grid--vertical | component">
-								<div class="slds-col | header">
-									<div class="slds-section-title | slds-m-top--medium">
-										<div class="slds-grid">
-											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-												<span>Picklist</span>
-											</h2>
-										</div>
-									</div>
-								</div>
-								<div class="slds-col | body">
-									<div class="slds-grid | slds-wrap">
-										<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type example-type--react">
-											<div class="slds-grid slds-grid--vertical | example-wrapper">
-												<div class="slds-col | slds-m-bottom--medium"></div>
-												<div id="picklist-react-control" class="slds-col | example">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-<!-- pills -->
-						<div class="slds-col | slds-m-top--large | component-wrapper" id="pills">
-							<div class="slds-grid slds-grid--vertical | component">
-								<div class="slds-col | header">
-									<div class="slds-section-title | slds-m-top--medium">
-										<div class="slds-grid">
-											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-												<span>Pills</span>
-											</h2>
-										</div>
-									</div>
-								</div>
-								<div class="slds-col | body">
-									<div class="slds-grid | slds-wrap">
-										<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type example-type--react">
-											<div class="slds-grid slds-grid--vertical | example-wrapper">
-												<div class="slds-col | slds-m-bottom--medium"></div>
-												<div id="pills-react-control" class="slds-col | example">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-<!-- popover -->
-						<div class="slds-col | slds-m-top--large | component-wrapper" id="popover">
-							<div class="slds-grid slds-grid--vertical | component">
-								<div class="slds-col | header">
-									<div class="slds-section-title | slds-m-top--medium">
-										<div class="slds-grid">
-											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-												<span>Popover</span>
-											</h2>
-										</div>
-									</div>
-								</div>
-								<div class="slds-col | body">
-									<div class="slds-grid | slds-wrap">
-										<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type example-type--react">
-											<div class="slds-grid slds-grid--vertical | example-wrapper">
-												<div class="slds-col | slds-m-bottom--medium"></div>
-												<div id="popover-react-control" class="slds-col | example">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-<!-- radio -->
-						<div class="slds-col | slds-m-top--large | component-wrapper" id="radio">
-							<div class="slds-grid slds-grid--vertical | component">
-								<div class="slds-col | header">
-									<div class="slds-section-title | slds-m-top--medium">
-										<div class="slds-grid">
-											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-												<span>Radios</span>
-											</h2>
-										</div>
-									</div>
-								</div>
-								<div class="slds-col | body">
-									<div class="slds-grid | slds-wrap">
-										<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type example-type--react">
-											<div class="slds-grid slds-grid--vertical | example-wrapper">
-												<div class="slds-col | slds-m-bottom--medium"></div>
-												<div id="radio-react-control" class="slds-col | example">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-<!-- spinner -->
-						<div class="slds-col | slds-m-top--large | component-wrapper" id="spinner">
-							<div class="slds-grid slds-grid--vertical | component">
-								<div class="slds-col | header">
-									<div class="slds-section-title | slds-m-top--medium">
-										<div class="slds-grid">
-											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-												<span>Spinner</span>
-											</h2>
-										</div>
-									</div>
-								</div>
-								<div class="slds-col | body">
-									<div class="slds-grid | slds-wrap">
-										<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type example-type--react">
-											<div class="slds-grid slds-grid--vertical | example-wrapper">
-												<div class="slds-col | slds-m-bottom--medium"></div>
-												<div id="spinner-react-control" class="slds-col | example">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-<!-- tooltip -->
-						<div class="slds-col | slds-m-top--large | component-wrapper" id="tooltip">
-							<div class="slds-grid slds-grid--vertical | component">
-								<div class="slds-col | header">
-									<div class="slds-section-title | slds-m-top--medium">
-										<div class="slds-grid">
-											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-												<span>Tooltip</span>
-											</h2>
-										</div>
-									</div>
-								</div>
-								<div class="slds-col | body">
-									<div class="slds-grid | slds-wrap">
-										<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type example-type--react">
-											<div class="slds-grid slds-grid--vertical | example-wrapper">
-												<div class="slds-col | slds-m-bottom--medium"></div>
-												<div id="tooltip-react-control" class="slds-col | example">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-<!-- tree -->
-						<div class="slds-col | slds-m-top--large | component-wrapper" id="tree">
-							<div class="slds-grid slds-grid--vertical | component">
-								<div class="slds-col | header">
-									<div class="slds-section-title | slds-m-top--medium">
-										<div class="slds-grid">
-											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-												<span>Tree</span>
-											</h2>
-										</div>
-									</div>
-								</div>
-								<div class="slds-col | body">
-									<div class="slds-grid | slds-wrap">
-										<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type example-type--react">
-											<div class="slds-grid slds-grid--vertical | example-wrapper">
-												<div class="slds-col | slds-m-bottom--medium"></div>
-												<div id="tree-react-control" class="slds-col | example">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
 				</div>
 			</div>
-			<div class="slds-col | slds-size--1-of-12 slds-medium-size--1-of-12 slds-large-size--1-of-12">
-			</div>
+			<div class="slds-col | slds-size--1-of-12 slds-medium-size--1-of-12 slds-large-size--1-of-12"></div>
 		</section>
 		<script src="/dev-build/dev-examples.bundle.js"></script>
 	</body>
