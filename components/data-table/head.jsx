@@ -17,12 +17,8 @@ import React from 'react';
 import classNames from 'classnames';
 
 // ## Children
-
-// ### Button
 import Button from '../SLDSButton';
-
-// ### Checkbox
-import Checkbox from '../checkbox';
+import Checkbox from '../forms/checkbox';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
@@ -65,7 +61,7 @@ const DataTableHead = React.createClass({
 								assistiveText="Select All"
 								checked={this.props.allSelected}
 								name="SelectAll"
-								onChange={this.handleChange}
+								onChange={this.props.onToggleAll}
 							/>
 						</th>
 					)}
@@ -105,10 +101,6 @@ const DataTableHead = React.createClass({
 				</tr>
 			</thead>
 		);
-	},
-
-	handleChange () {
-		this.props.onToggleAll(!this.props.allSelected);
 	},
 
 	getSortHandler (sortable, props, index) {

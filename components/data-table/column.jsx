@@ -44,4 +44,4 @@ const DataTableColumn = React.createClass({
 	}
 });
 
-export default DataTableColumn;
+module.exports = DataTableColumn;

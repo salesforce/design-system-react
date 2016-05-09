@@ -231,15 +231,15 @@ const DataTable = React.createClass({
 		);
 	},
 
-	handleToggleAll (selected) {
+	handleToggleAll (selected, e) {
 		if (isFunction(this.props.onChange)) {
 			const selection = selected ? [...this.props.items] : [];
 
-			this.props.onChange(selection);
+			this.props.onChange(selection, e);
 		}
 	},
 
-	handleRowToggle (item, selected) {
+	handleRowToggle (item, selected, e) {
 		if (isFunction(this.props.onChange)) {
 			let selection;
 
@@ -249,7 +249,7 @@ const DataTable = React.createClass({
 				selection = reject(this.props.selection, item);
 			}
 
-			this.props.onChange(selection);
+			this.props.onChange(selection, e);
 		}
 	},
 
@@ -260,4 +260,4 @@ const DataTable = React.createClass({
 	}
 });
 
-export default DataTable;
+module.exports = DataTable;

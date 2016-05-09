@@ -26,7 +26,7 @@ export const idSuffixes = {
 	heading: '__empty-heading'
 }
 
-const SLDSCardEmpty = React.createClass({
+const CardEmpty = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: COMPONENT,
@@ -56,7 +56,7 @@ const SLDSCardEmpty = React.createClass({
 	// ### Render
 	render () {
 		const id = this.props.id ? (this.props.id + idSuffixes.heading) : null;
-		return ( 
+		return (
 			<div className="slds-p-horizontal--small">
 				<div className="slds-text-align--center slds-m-bottom--x-large">
 				<h3 id={id} className="slds-text-heading--small slds-p-top--large slds-p-bottom--large">{this.props.heading}</h3>
@@ -67,4 +67,5 @@ const SLDSCardEmpty = React.createClass({
 	}
 });
 
-export default SLDSCardEmpty;
+export default CardEmpty;
+

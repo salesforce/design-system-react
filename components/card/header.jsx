@@ -94,9 +94,9 @@ const CardHeader = React.createClass({
 			filter = this._renderFilter();
 		}
 
-		return ( 
+		return (
 			<div className={cssClasses.base + " slds-grid"}>
-				<MediaObject 
+				<MediaObject
 					figure={this.props.icon}
 					body={this._renderMediaObjectBody()}
 					verticalCenter

@@ -97,4 +97,4 @@ const DataTableRowActions = React.createClass({
 	}
 });
 
-export default DataTableRowActions;
+module.exports = DataTableRowActions;

@@ -23,9 +23,7 @@ import find from 'lodash.find';
 import partial from 'lodash.partial';
 
 // ## Children
-
-// ### Checkbox
-import Checkbox from '../checkbox';
+import Checkbox from '../forms/checkbox';
 
 // ### Event Helpers
 import { EventUtil } from "../utils";
@@ -77,6 +75,7 @@ const DataTableRow = React.createClass({
 							checked={isSelected}
 							name="SelectRow"
 							onChange={this.handleToggle}
+							onClick={EventUtil.trap}
 						/>
 					</td>
 				) : null}
@@ -109,7 +108,7 @@ const DataTableRow = React.createClass({
 	handleToggle (selected, e) {
 		EventUtil.trap(e);
 
-		return this.props.onToggle(this.props.item, selected);
+		return this.props.onToggle(this.props.item, selected, e);
 	}
 });
 
