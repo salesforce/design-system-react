@@ -110,7 +110,7 @@
     "tether-drop": "1.2.2",
     "warning": "^2.1.0"
   },
-  "pre-commit": [
+  "pre-push": [
     "lint",
     "validate",
     "test"
