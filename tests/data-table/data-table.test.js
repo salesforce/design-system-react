@@ -4,9 +4,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
+import chai from 'chai';
+
 import DataTable from '../../components/data-table';
 import DataTableColumn from '../../components/data-table/column';
 import DataTableRowActions from '../../components/data-table/row-actions';
+
+chai.should();
 
 const { Simulate,
  				scryRenderedComponentsWithType,
@@ -69,7 +73,7 @@ describe('DataTable: ', function () {
 
 	const getRow = (dom, row) => {
 		const tbody = getTable(dom).querySelectorAll('tbody')[0];
-		return tr = tbody.querySelectorAll('tr')[row-1];
+		return tbody.querySelectorAll('tr')[row-1];
 	};
 
 	const getCell = (dom, row, column) => {
