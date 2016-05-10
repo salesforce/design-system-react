@@ -15,7 +15,7 @@ import PropTable from 'demo/PropTable';
 import DOCS from 'docs';
 import ComponentHeader from 'demo/pages/components/componentHeader';
 
-import SLDSContextBar from '../../components/SLDSContextBar';
+import ContextBar from '../../components/context-bar';
 
 const displayName = "ContextBarSection";
 const propTypes = {};
@@ -29,7 +29,7 @@ class ContextBarSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["SLDSContextBar"].description;
+    const desc = DOCS["context-bar"].description;
     return {__html: desc };
   }
 
@@ -38,7 +38,7 @@ class ContextBarSection extends React.Component {
   }
 
   render(){
-    const docs = DOCS["SLDSContextBar"] ? true : false;
+    const docs = DOCS["context-bar"] ? true : false;
 
     const contextBarMenuItems = [
       {
@@ -58,17 +58,17 @@ class ContextBarSection extends React.Component {
 
     return (
       <div className='slds-p-around--medium'>
-        <ComponentHeader cmpName="SLDSContextBar" cmpUrl="http://www.lightningdesignsystem.com/components/buttons" />
+        <ComponentHeader cmpName="Context Bar" cmpUrl="http://www.lightningdesignsystem.com/components/buttons" />
 
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small mw-readability" /> : null}
         </div>
 
         <section className="slds-p-vertical--large">
-          <SLDSContextBar title="My App" menuItems={contextBarMenuItems} onSelect={this.handleSelectItem.bind(this)}>
-            <SLDSContextBar.Title>App Name</SLDSContextBar.Title>
-            <SLDSContextBar.Nav>
-              <SLDSContextBar.NavMenu
+          <ContextBar title="My App" menuItems={contextBarMenuItems} onSelect={this.handleSelectItem.bind(this)}>
+            <ContextBar.Title>App Name</ContextBar.Title>
+            <ContextBar.Nav>
+              <ContextBar.NavMenu
                 assistiveText="More Options"
                 buttonVariant="icon-inverse"
                 checkmark={true}
@@ -90,11 +90,11 @@ class ContextBarSection extends React.Component {
                 ]}
                 value="C0"
               >
-                <SLDSContextBar.NavMenuLink
+                <ContextBar.NavMenuLink
                   onClick={()=>{alert('click')}}
-                >Menu 1</SLDSContextBar.NavMenuLink>
-              </SLDSContextBar.NavMenu>
-              <SLDSContextBar.NavMenu
+                >Menu 1</ContextBar.NavMenuLink>
+              </ContextBar.NavMenu>
+              <ContextBar.NavMenu
                 assistiveText="More Options"
                 buttonVariant="icon-inverse"
                 checkmark={true}
@@ -117,13 +117,13 @@ class ContextBarSection extends React.Component {
                   {label: "E2 Option Super Super Long", value: "E1"},
                 ]}
                 value="C0"
-              ><SLDSContextBar.NavMenuLink
+              ><ContextBar.NavMenuLink
                 onClick={()=>{alert('click')}}
-              >Menu 2</SLDSContextBar.NavMenuLink></SLDSContextBar.NavMenu>
-            </SLDSContextBar.Nav>
-          </SLDSContextBar>
+              >Menu 2</ContextBar.NavMenuLink></ContextBar.NavMenu>
+            </ContextBar.Nav>
+          </ContextBar>
         </section>
-        <PropTable component="SLDSContextBar" />
+        <PropTable component="ContextBar" />
       </div>
     );
   }

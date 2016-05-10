@@ -26,7 +26,7 @@ import partial from 'lodash.partial';
 import Checkbox from '../forms/checkbox';
 
 // ### Event Helpers
-import { EventUtil } from "../utils";
+import { EventUtil } from "../../utilities";
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;

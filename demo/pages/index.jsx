@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import Router from 'react-router';
 const { Route, DefaultRoute, RouteHandler, Link } = Router;
-import SLDSGrid from '../../components/SLDSGrid';
+import SLDSGrid from '../../components/grid';
 
 module.exports = React.createClass( {
   getDefaultProps () {
@@ -56,23 +56,23 @@ module.exports = React.createClass( {
             */}
             <p className="slds-text-heading--small slds-p-horizontal--large slds-p-vertical--small">Components</p>
             <ul className="slds-p-bottom--small">
-              <li><Link to="breadcrumb" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">BreadCrumb</Link></li>
+              <li><Link to="breadcrumb" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Bread Crumb</Link></li>
               <li><Link to="button" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Button</Link></li>
-              <li><Link to="button-group" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">ButtonGroup</Link></li>
-              <li><Link to="button-stateful" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">ButtonStateful</Link></li>
+              <li><Link to="button-group" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Button Group</Link></li>
+              <li><Link to="button-stateful" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Button Stateful</Link></li>
               <li><Link to="card" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Card</Link></li>
-              <li><Link to="context-bar" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">ContextBar</Link></li>
-              <li><Link to="data-table" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">DataTable</Link></li>
-              <li><Link to="dateinput" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">DatepickerSingleSelect</Link></li>
+              <li><Link to="context-bar" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Context Bar</Link></li>
+              <li><Link to="data-table" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Data Table</Link></li>
+              <li><Link to="dateinput" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Datepicker</Link></li>
               <li><Link to="icon" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Icon</Link></li>
               <li><Link to="lookup" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Lookup</Link></li>
-              <li><Link to="dropdown" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">MenuDropdown</Link></li>
-              <li><Link to="picklist" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">MenuPicklist</Link></li>
+              <li><Link to="menu-dropdown" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Menu Dropdown</Link></li>
+              <li><Link to="menu-picklist" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Menu Picklist</Link></li>
               <li><Link to="modal" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Modal</Link></li>
               <li><Link to="notification" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Notification</Link></li>
-              <li><Link to="page-header" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">PageHeader</Link></li>
-              <li><Link to="tooltip" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">PopoverTooltip</Link></li>
-              <li><Link to="timepicker" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">TimePicker</Link></li>
+              <li><Link to="page-header" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Page Header</Link></li>
+              <li><Link to="popover-tooltip" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Popover Tooltip</Link></li>
+              <li><Link to="timepicker" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Time Picker</Link></li>
 
             </ul>
           </aside>

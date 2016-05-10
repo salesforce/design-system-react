@@ -26,15 +26,15 @@ class PageHeaderSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS.SLDSPageHeader.description;
+    const desc = DOCS["page-header"].description;
     return { __html: desc };
   }
 
   render() {
-    const docs = DOCS.SLDSPageHeader ? true : false;
+    const docs = DOCS["page-header"] ? true : false;
     return (
       <div className="slds-p-around--medium">
-        <ComponentHeader cmpName="SLDSPageHeader" cmpUrl="http://www.lightningdesignsystem.com/components/page-headers" />
+        <ComponentHeader cmpName="Page Header" cmpUrl="http://www.lightningdesignsystem.com/components/page-headers" />
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ maxWidth: '800px' }}  /> : null}
         </div>
@@ -54,7 +54,7 @@ class PageHeaderSection extends React.Component {
           <h4 className="slds-text-heading--small">Related List</h4>
           <CodeMirror codeText={Samples.PageHeaders4} />
         </section>
-        <PropTable component="SLDSPageHeader" />
+        <PropTable component="page-header" />
       </div>
     );
   }

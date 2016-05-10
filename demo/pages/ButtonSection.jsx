@@ -27,15 +27,15 @@ class ButtonSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["SLDSButton"].description;
+    const desc = DOCS["button"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["SLDSButton"] ? true : false;
+    const docs = DOCS["button"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <ComponentHeader cmpName="SLDSButton" cmpUrl="http://www.lightningdesignsystem.com/components/buttons" />
+        <ComponentHeader cmpName="Button" cmpUrl="http://www.lightningdesignsystem.com/components/buttons" />
 
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small mw-readability" /> : null}
@@ -53,7 +53,7 @@ class ButtonSection extends React.Component {
           <h4 className="slds-text-heading--small">Icon Buttons</h4>
           <CodeMirror codeText={Samples.IconButtons} />
         </section>
-        <PropTable component="SLDSButton" />
+        <PropTable component="button" />
       </div>
     );
   }

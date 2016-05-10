@@ -17,7 +17,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 // ## Children
-import Button from '../SLDSButton';
+import Button from '../button';
 import Checkbox from '../forms/checkbox';
 
 // Removes the need for `PropTypes`.
