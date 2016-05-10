@@ -151,9 +151,9 @@ class SLDSModal extends React.Component {
   }
 
   clearBodyScroll() {
-      if (window && document && document.body) {
-        document.body.style.overflow = "inherit";
-      }
+		if (window && document && document.body) {
+		  document.body.style.overflow = "inherit";
+		}
   }
 
   handleModalClick(event) {
