@@ -20,7 +20,7 @@ import Base from './Base';
 import RecordHome from './RecordHome';
 import ObjectHome from './ObjectHome';
 import SLDSIcon from '../SLDSIcon';
-import SLDSBreadCrumb from '../SLDSBreadCrumb';
+import BreadCrumb from '../bread-crumb';
 
 const displayName = 'SLDSPageHeader';
 const propTypes = {
@@ -193,7 +193,7 @@ class PageHeader extends Component {
       if (trail.length > 0) {
         return (
           <nav className="slds-m-bottom--xx-small" role="navigation">
-            <SLDSBreadCrumb trail={trail} />
+            <BreadCrumb trail={trail} />
           </nav>
         );
       } else {

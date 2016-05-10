@@ -124,9 +124,9 @@
             }
         }
     },
-    "SLDSBreadCrumb": {
+    "bread-crumb": {
         "description": "",
-        "displayName": "SLDSBreadCrumb",
+        "displayName": "BreadCrumb",
         "props": {
             "assistiveText": {
                 "type": {
@@ -1225,6 +1225,18 @@
                 },
                 "required": false,
                 "description": "Current selected item."
+            },
+            "constrainToScrollParent": {
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "inheritTargetWidth": {
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
             }
         }
     },

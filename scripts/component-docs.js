@@ -4,7 +4,7 @@ var path = require('path');
 
 var componentNames = [
   'data-table',
-  'SLDSBreadCrumb',
+  'bread-crumb',
   'SLDSButton',
   'SLDSButtonStateful',
   'SLDSButtonGroup',

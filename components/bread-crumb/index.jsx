@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const displayName = 'SLDSBreadCrumb';
+const displayName = 'BreadCrumb';
 const propTypes = {
   /**
    * The assistive text for the breadcrumb trail
@@ -13,7 +13,7 @@ const propTypes = {
 };
 const defaultProps = {};
 
-class SLDSBreadCrumb extends Component {
+class BreadCrumb extends Component {
   render() {
     const {
       assistiveText,
@@ -23,7 +23,7 @@ class SLDSBreadCrumb extends Component {
 
     const renderTrail = () => {
       const breadCrumbTrail = trail.map((crumb, i) => {
-        const crumbId = `SLDSBreadCrumb.${i}`;
+        const crumbId = `BreadCrumb.${i}`;
 
         return (
           <li
@@ -51,8 +51,8 @@ class SLDSBreadCrumb extends Component {
   }
 }
 
-SLDSBreadCrumb.displayName = displayName;
-SLDSBreadCrumb.propTypes = propTypes;
-SLDSBreadCrumb.defaultProps = defaultProps;
+BreadCrumb.displayName = displayName;
+BreadCrumb.propTypes = propTypes;
+BreadCrumb.defaultProps = defaultProps;
 
-module.exports = SLDSBreadCrumb;
+module.exports = BreadCrumb;
