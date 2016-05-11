@@ -21,7 +21,7 @@ import React from 'react';
 import isFunction from 'lodash.isfunction';
 
 // ### Event Helpers
-import { KEYS, EventUtil } from "components/utils";
+import { KEYS, EventUtil } from "../../utils";
 
 // ### classNames
 import classNames from 'classnames';
