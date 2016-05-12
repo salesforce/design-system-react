@@ -9,7 +9,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Item from './Item';
+import Item from './item';
 
 const displayName = 'Lookup-Menu';
 const propTypes = {
