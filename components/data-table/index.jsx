@@ -206,7 +206,7 @@ const DataTable = React.createClass({
 					canSelectRows={canSelectRows}
 					columns={columns}
 					onToggleAll={this.handleToggleAll}
-					onSort={this.handleSort}
+					onSort={this.props.onSort}
 					showRowActions={!!RowActions}
 				/>
 				<tbody>
@@ -250,12 +250,6 @@ const DataTable = React.createClass({
 			}
 
 			this.props.onChange(selection, e);
-		}
-	},
-
-	handleSort (sortColumn) {
-		if (isFunction(this.props.onSort)) {
-			this.props.onSort(sortColumn, sortColumn.sortDirection === 'asc' ? 'desc' : 'asc');
 		}
 	}
 });

@@ -13,28 +13,42 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React from 'react';
 
+// ### classNames
+import classNames from 'classnames';
+
+// ### isFunction
+import isFunction from 'lodash/lang/isFunction';
+
+// ## Children
+
+// ### Button
+import Button from '../SLDSButton';
+
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
 
 // The component name will be used as the `DisplayName` and exported along with
 // the component itself.
-export const COMPONENT = 'DataTableColumn';
+export const COMPONENT = 'DataTableHeaderCell';
 
 /**
- * Columns define the structure of the data displayed in the DataTable.
+ * Used internally, renders each individual column heading.
  */
-const DataTableColumn = React.createClass({
+const DataTableHeaderCell = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: COMPONENT,
 
 	// ### Prop Types
 	propTypes: {
-		children: React.PropTypes.element,
 		/**
 		 * The column label.
 		 */
 		label: PropTypes.string,
+		/**
+		 * The function to execute on sort.
+		 */
+		onSort: PropTypes.func,
 		/**
 		 * The property which corresponds to this column.
 		 */
@@ -44,16 +58,70 @@ const DataTableColumn = React.createClass({
 		 */
 		sortable: PropTypes.bool,
 		/**
-		 * The current sort direction. If left out the component will track this internally.
+		 * The current sort direction.
 		 */
-		sortDirection: PropTypes.oneOf(['desc', 'asc']),
-		truncate: PropTypes.bool
+		sortDirection: PropTypes.oneOf(['desc', 'asc'])
+	},
+
+	getInitialState () {
+		return {
+			sortDirection: 'asc'
+		};
 	},
 
 	// ### Render
+	// Should return a `<th></th>`.
 	render () {
-		return null;
+		const {
+			label,
+			property,
+			sortable
+		} = this.props;
+
+		const sortDirection = this.props.sortDirection || this.state.sortDirection;
+
+		return (
+			<th
+				scope="col"
+				key={property}
+				className={classNames({
+					'slds-is-sortable': sortable
+				})}
+				onClick={sortable && this.handleSort}
+			>
+				<div className="slds-truncate">{label}
+					{sortable
+						? <Button
+							assistiveText="Sort"
+							iconCategory="utility"
+							iconName={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
+							iconSize="small"
+							iconVariant="bare"
+							variant="icon"
+						/>
+						: null
+					}
+				</div>
+			</th>
+		);
+	},
+
+	handleSort (e) {
+		const oldSortDirection = this.props.sortDirection || this.state.sortDirection;
+		const sortDirection = oldSortDirection === 'asc' ? 'desc' : 'asc';
+		const data = {
+			property: this.props.property,
+			sortDirection
+		};
+
+		this.setState({
+			sortDirection
+		});
+
+		if (isFunction(this.props.onSort)) {
+			this.props.onSort(data, e);
+		}
 	}
 });
 
-module.exports = DataTableColumn;
+export default DataTableHeaderCell;
