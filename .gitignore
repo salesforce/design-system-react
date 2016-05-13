@@ -4,3 +4,4 @@ npm-debug.log
 server/node_modules
 server/public/assets/bundle
 scripts/pre-commit.sh
+coverage/
