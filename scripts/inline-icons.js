@@ -36,8 +36,7 @@ var inlineIcons = function(striteType){
   content.push('};');
   content.push("module.exports.viewBox = '"+viewBox+"';");
 
-
-  var outputPath = path.join(__dirname,'..','components','SLDSUtilityIcon','SVG','slds-icons-'+striteType+'.jsx');
+  var outputPath = path.join(__dirname,'..','components','utilities', 'utility-icon', 'SVG','slds-icons-'+striteType+'.jsx');
 
   fs.writeFile(outputPath, content.join('\n'), function (err) {
     if (err) return console.log(err);

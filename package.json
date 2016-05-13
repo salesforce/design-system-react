@@ -121,5 +121,10 @@
     "lint",
     "validate",
     "test"
+  ],
+  "pre-commit": [
+    "lint",
+    "validate",
+    "test"
   ]
 }
