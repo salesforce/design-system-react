@@ -26,15 +26,15 @@ class NotificationSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["SLDSNotification"].description;
+    const desc = DOCS["notification"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["SLDSNotification"] ? true : false;
+    const docs = DOCS["notification"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <ComponentHeader cmpName="SLDSNotification" cmpUrl="http://www.lightningdesignsystem.com/components/notifications" />
+        <ComponentHeader cmpName="Notification" cmpUrl="http://www.lightningdesignsystem.com/components/notifications" />
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
         </div>
@@ -50,7 +50,7 @@ class NotificationSection extends React.Component {
           <h4 className="slds-text-heading--small">Toast Notification inside Modal</h4>
           <CodeMirror codeText={Samples.Notifications3} />
         </section>
-        <PropTable component="SLDSNotification" />
+        <PropTable component="notification" />
       </div>
     );
   }

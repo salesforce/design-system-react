@@ -33,7 +33,7 @@ class DataTableSection extends React.Component {
     const docs = DOCS['data-table'] ? true : false;
     return (
       <div className="slds-p-around--medium">
-        <ComponentHeader cmpName="SLDSDataTable" cmpUrl="http://www.lightningdesignsystem.com/components/data-tables" />
+        <ComponentHeader cmpName="Data Table" cmpUrl="http://www.lightningdesignsystem.com/components/data-tables" />
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ maxWidth: '800px' }}  /> : null}
         </div>

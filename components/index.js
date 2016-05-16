@@ -9,23 +9,28 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-export SLDSBreadCrumb from './SLDSBreadCrumb';
-export SLDSButtonGroup from './SLDSButtonGroup';
-export SLDSButtonStateful from './SLDSButtonStateful';
-export SLDSDatepickerSingleSelect from './SLDSDatepickerSingleSelect';
-export SLDSIcon from './SLDSIcon';
-export SLDSLookup from './SLDSLookup';
-export SLDSMenuPicklist from './SLDSMenuPicklist';
-export SLDSModal from './SLDSModal';
-export SLDSModalTrigger from './SLDSModal/trigger';
-export SLDSNotification from './SLDSNotification';
-export SLDSPopoverTooltip from './SLDSPopoverTooltip';
 export SLDSSettings from './SLDSSettings';
-export SLDSTimepicker from './SLDSTimepicker';
-export SLDSUtilityIcon from './SLDSUtilityIcon';
 
-export SLDSButton from './SLDSButton';
-export Button from './SLDSButton';
+export SLDSButton from './button';
+export Button from './button';
+
+export SLDSButtonGroup from './button-group';
+export ButtonGroup from './button-group';
+
+export SLDSButtonStateful from './button-stateful';
+export ButtonStateful from './button-stateful';
+
+export SLDSBreadCrumb from './bread-crumb';
+export BreadCrumb from './bread-crumb';
+
+export SLDSCard from "./card";
+export Card from "./card";
+
+export SLDSCardEmpty from "./card/empty";
+export CardEmpty from "./card/empty";
+
+export SLDSCardFilter from "./card/filter";
+export CardFilter from "./card/filter";
 
 export SLDSCheckbox from "./forms/checkbox";
 export Checkbox from "./forms/checkbox";
@@ -42,10 +47,38 @@ export DataTableColumn from './data-table/column';
 export SLDSDataTableRowActions from './data-table/row-actions';
 export DataTableRowActions from './data-table/row-actions';
 
+export SLDSDatepicker from './date-picker';
+export Datepicker from './date-picker';
+
+export SLDSIcon from './icon';
+export Icon from './icon';
+
 export SLDSInput from "./forms/input";
 export Input from "./forms/input";
 
-export SLDSMenuDropdown from './SLDSMenuDropdown';
-export Dropdown from './SLDSMenuDropdown';
+export SLDSLookup from './lookup';
+export Lookup from './lookup';
 
+export SLDSMenuDropdown from './menu-dropdown';
+export Dropdown from './menu-dropdown';
 
+export SLDSMenuPicklist from './menu-picklist';
+export SLDSMenuPicklist from './menu-picklist';
+
+export SLDSModal from './modal';
+export Modal from './modal';
+
+export SLDSModalTrigger from './modal/trigger';
+export ModalTrigger from './modal/trigger';
+
+export SLDSNotification from './notification';
+export Notification from './notification';
+
+export SLDSPopoverTooltip from './popover-tooltip';
+export PopoverTooltip from './popover-tooltip';
+
+export SLDSTimepicker from './time-picker';
+export Timepicker from './time-picker';
+
+export SLDSUtilityIcon from './utilities/utility-icon';
+export UtilityIcon from './utilities/utility-icon';

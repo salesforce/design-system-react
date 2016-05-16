@@ -13,7 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // React is an external dependency of the project.
 import React from 'react';
 
-export const cssClasses = {
+const cssClasses = {
 	base: 'slds-card__body'
 }
 
@@ -23,4 +23,5 @@ const CardBody = (props) => (
 		</div>
 );
 
-export default CardBody;
+module.exports = CardBody;
+module.exports.cssClasses = cssClasses;

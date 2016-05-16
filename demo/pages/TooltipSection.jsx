@@ -26,15 +26,15 @@ class TooltipSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["SLDSPopoverTooltip"].description;
+    const desc = DOCS["popover-tooltip"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["SLDSPopoverTooltip"] ? true : false;
+    const docs = DOCS["popover-tooltip"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <ComponentHeader cmpName="SLDSPopoverTooltip" cmpUrl="http://www.lightningdesignsystem.com/components/popovers#tooltips" />
+        <ComponentHeader cmpName="Popover Tooltip" cmpUrl="http://www.lightningdesignsystem.com/components/popovers#tooltips" />
 
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
@@ -51,7 +51,7 @@ class TooltipSection extends React.Component {
           <h4 className="slds-text-heading--small">Tooltip on Button Group</h4>
           <CodeMirror codeText={Samples.Tooltips3} />
         </section>
-        <PropTable component="SLDSPopoverTooltip" />
+        <PropTable component="popover-tooltip" />
       </div>
     );
   }

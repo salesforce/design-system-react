@@ -26,15 +26,15 @@ class DatepickerSingleSelectSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["DatepickerSingleSelect"].description;
+    const desc = DOCS["time-picker"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["Timepicker"] ? true : false;
+    const docs = DOCS["time-picker"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <ComponentHeader cmpName="SLDSTimepicker" cmpUrl="http://www.lightningdesignsystem.com/components/datepickers#timepicker" />
+        <ComponentHeader cmpName="Time Picker" cmpUrl="http://www.lightningdesignsystem.com/components/datepickers#timepicker" />
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
         </div>
@@ -42,7 +42,7 @@ class DatepickerSingleSelectSection extends React.Component {
         <section className="slds-p-vertical--large">
           <CodeMirror codeText={Samples.Timepicker} />
         </section>
-        <PropTable component="SLDSTimepicker" />
+        <PropTable component="time-picker" />
       </div>
     );
   }
