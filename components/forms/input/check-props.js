@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 /* eslint-disable indent */
 
-import oneOfRequiredProperty from '../../utils/warning/one-of-required-property';
+import oneOfRequiredProperty from '../../../utilities/warning/one-of-required-property';
 
 let checkProps = function () {};
 

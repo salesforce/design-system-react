@@ -18,7 +18,7 @@ const cssClasses = {
 	base: 'slds-card__body'
 }
 
-var idSuffixes = exports.idSuffixes = {
+const idSuffixes = {
 	base: '__body'
 };
 
@@ -35,3 +35,4 @@ const CardBody = (props) => (
 
 module.exports = CardBody;
 module.exports.cssClasses = cssClasses;
+module.exports.idSuffixes = idSuffixes;
