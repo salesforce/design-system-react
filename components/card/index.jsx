@@ -106,7 +106,7 @@ const Card = React.createClass({
 
 	_renderBody (body) {
 		return (
-			<Body>
+			<Body id={this.props.id}>
 				{body}
 			</Body>
 		);

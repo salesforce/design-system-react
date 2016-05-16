@@ -14,6 +14,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 
 import Input from '../../forms/input';
+import { idSuffixes as bodyIdSuffixes } from '../body';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
@@ -21,6 +22,10 @@ const { PropTypes } = React;
 // The component name will be used as the `DisplayName` and exported along with
 // the component itself.
 const COMPONENT = 'Filter';
+
+export const idSuffixes = {
+	base: '__filter-input'
+}
 
 /**
  * A default filter or search input for Cards that contain items.
@@ -41,9 +46,9 @@ const Filter = React.createClass({
 		 */
 		onChange: PropTypes.func,
 		/**
-		 * Text present in input until the user enters text
+		 * Text present in input until the user enters text. This text will also be used for a visually hidden label on the filter `input` element for accessibility.
 		 */
-		placeholder: PropTypes.string
+		placeholder: PropTypes.string.isRequired
 	},
 
 	getDefaultProps () {
@@ -58,11 +63,13 @@ const Filter = React.createClass({
 		return (
 			<Input
 				{...props}
-				onChange={onChange}
-				id={id}
-				placeholder={placeholder}
+				ariaControls={id + bodyIdSuffixes.base}
+				assistiveText={placeholder}
 				iconCategory="utility"
 				iconName="search"
+				id={id + idSuffixes.base}
+				onChange={onChange}
+				placeholder={placeholder}
 			/>
 		)
 	}

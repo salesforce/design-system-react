@@ -26,20 +26,33 @@ import classNames from 'classnames';
 
 // ## Children
 import InputIcon from '../../icon/input-icon';
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
 
 // Remove the need for `React.PropTypes`
 const { PropTypes } = React;
 
-export const COMPONENT = 'Input';
+const COMPONENT = 'Input';
 
 // ## InputDefinition
 const Input = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: COMPONENT,
-
 	// ### Prop Types
 	propTypes: {
+		/**
+		 * An HTML ID that is shared with ARIA-supported devices with the 
+		 * `aria-controls` attribute in order to relate the input with 
+		 * another region of the page. An example would be a search field 
+		 * linked to the results of the search.
+		 */
+		ariaControls: PropTypes.string,
+		/**
+		 * If present, the label associated with this `input` is overwritten 
+		 * by this text and is visually not shown.
+		 */
+		assistiveText: PropTypes.string,
 		/**
 		 * Class names to be added to the outer container of the input.
 		 */
@@ -55,11 +68,11 @@ const Input = React.createClass({
 		/**
 		 * Message to display when the input is in an error state. When this is present, also visually highlights the component as in error.
 		 */
-		errorText: React.PropTypes.string,
+		errorText: PropTypes.string,
 		/**
 		 * Category of the icon.
 		 */
-		iconCategory: React.PropTypes.oneOf([
+		iconCategory: PropTypes.oneOf([
 			'action',
 			'custom',
 			'doctype',
@@ -69,11 +82,11 @@ const Input = React.createClass({
 		/**
 		 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
 		 */
-		iconName: React.PropTypes.string,
+		iconName: PropTypes.string,
 		/**
 		 * Determines whether the input's icon will display that icon on the left or the right.
 		 */
-		iconPosition: React.PropTypes.oneOf([
+		iconPosition: PropTypes.oneOf([
 			'left',
 			'right'
 		]),
@@ -82,9 +95,9 @@ const Input = React.createClass({
 		 */
 		id: PropTypes.string.isRequired,
 		/**
-		 * An optional label appearing above the input.
+		 * This label appears above the input.
 		 */
-		label: React.PropTypes.string,
+		label: PropTypes.string,
 		/**
 		 * This event fires when the input changes.
 		 */
@@ -108,7 +121,7 @@ const Input = React.createClass({
 		/**
 		 * The `<Input>` element includes support for all HTML5 types.
 		 */
-		type: React.PropTypes.oneOf([
+		type: PropTypes.oneOf([
 			'text',
 			'password',
 			'datetime',
@@ -127,7 +140,12 @@ const Input = React.createClass({
 		/**
 		 * The input is a controlled component, and will always display this value.
 		 */
-		value: React.PropTypes.string
+		value: PropTypes.string
+	},
+
+	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(COMPONENT, this.props);
 	},
 
 	getDefaultProps () {
@@ -140,6 +158,8 @@ const Input = React.createClass({
 	// ### Render
 	render () {
 		const {
+			ariaControls,
+			assistiveText,
 			className,
 			disabled,
 			errorText,
@@ -163,6 +183,9 @@ const Input = React.createClass({
 
 		const hasIcon = iconCategory && iconName;
 
+		// One of these is required to pass accessibility tests
+		const labelText = assistiveText || label;
+
 		return (
 			<div className={classNames('slds-form-element', {
 				'is-required': required,
@@ -170,12 +193,12 @@ const Input = React.createClass({
 			},
 			className)}
 			>
-				{label && !readOnly && <label className="slds-form-element__label" htmlFor={id}>
+				{labelText && !readOnly && <label className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText})} htmlFor={id}>
 					{required && <abbr className="slds-required" title="required">*</abbr>}
-					{label}
+					{labelText}
 				</label>}
-				{label && readOnly && <span className="slds-form-element__label">
-					{label}
+				{labelText && readOnly && <span className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText})}>
+					{labelText}
 				</span>}
 				<div className={classNames('slds-form-element__control', hasIcon && [
 					'slds-input-has-icon',
@@ -191,6 +214,7 @@ const Input = React.createClass({
 					/>}
 					{!readOnly && <input
 						{...props}
+						aria-controls={ariaControls}
 						className="slds-input"
 						disabled={disabled}
 						id={id}
@@ -210,4 +234,5 @@ const Input = React.createClass({
 	}
 });
 
-export default Input;
+module.exports = Input;
+module.exports.COMPONENT = COMPONENT;
