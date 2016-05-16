@@ -4,29 +4,29 @@
    Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
    Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
    Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    */
 
-import React from "react";
-import ReactDOM from "react-dom";
-import escapeRegExp from "lodash.escaperegexp";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import escapeRegExp from 'lodash.escaperegexp';
 
-import Popover from "../popover";
-import Button from "../button";
-import Icon from "../icon";
-import InputIcon from "../icon/input-icon";
-import {KEYS,EventUtil} from "../../utilities";
+import Popover from '../popover';
+import Button from '../button';
+import Icon from '../icon';
+import InputIcon from '../icon/input-icon';
+import {KEYS,EventUtil} from '../../utilities';
 
-import Menu from "./menu";
-import DefaultFooter from "./menu/default-footer";
-import DefaultHeader from "./menu/default-header";
-import DefaultSectionDivider from "./menu/default-section-divider";
-import cx from "classnames";
+import Menu from './menu';
+import DefaultFooter from './menu/default-footer';
+import DefaultHeader from './menu/default-header';
+import DefaultSectionDivider from './menu/default-section-divider';
+import cx from 'classnames';
 
-const displayName = "Lookup";
+const displayName = 'Lookup';
 const propTypes = {
   /**
-   * Custom message that renders when no matches found. The default empty state is just text that says, "No matches found.".
+   * Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.
    */
   emptyMessage: React.PropTypes.string,
   /**
@@ -34,15 +34,15 @@ const propTypes = {
    */
   filterWith: React.PropTypes.func,
   /**
-   * Custom component for Lookup footer. The default footer allows user to add new item - see <a href="http://www.lightningdesignsystem.com/components/lookups/#base">Lightning Design System Lookup > Base</a>. To use the default footer, pass in <code>Lookup.DefaultFooter</code>.
+   * Custom component for Lookup footer. The default footer allows user to add new item - see <a href='http://www.lightningdesignsystem.com/components/lookups/#base'>Lightning Design System Lookup > Base</a>. To use the default footer, pass in <code>Lookup.DefaultFooter</code>.
    */
   footerRenderer: React.PropTypes.func,
   /**
-   * Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href="http://www.lightningdesignsystem.com/components/lookups/#base">Lightning Design System Lookup > Base</a>. To use the default header, pass in <code>Lookup.DefaultHeader</code>.
+   * Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href='http://www.lightningdesignsystem.com/components/lookups/#base'>Lightning Design System Lookup > Base</a>. To use the default header, pass in <code>Lookup.DefaultHeader</code>.
    */
   headerRenderer: React.PropTypes.func,
   /**
-   * Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to view categories.
+   * Please refer to <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to view categories.
    */
   iconCategory: React.PropTypes.string,
   /**
@@ -50,7 +50,7 @@ const propTypes = {
    */
   iconInverse: React.PropTypes.bool,
   /**
-   * Name of icon. Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to view icon names.
+   * Name of icon. Please refer to <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to view icon names.
    */
   iconName: React.PropTypes.string,
   label: React.PropTypes.string,
@@ -96,7 +96,7 @@ const propTypes = {
  */
 const defaultFilter = (term, item) => {
   if(!term) return true;
-  return (item.data && item.data.type === 'section') || item.label.match(new RegExp(escapeRegExp(term), "ig"));
+  return (item.data && item.data.type === 'section') || item.label.match(new RegExp(escapeRegExp(term), 'ig'));
 };
 
 
@@ -104,7 +104,7 @@ const defaultProps = {
   filterWith: defaultFilter,
   modal: false,
   required: false,
-  searchTerm: "",
+  searchTerm: '',
   constrainToScrollParent: true,
   flippable: false,
 };
@@ -135,7 +135,7 @@ class Lookup extends React.Component {
       }
     }
     else if(isNaN(parseInt(prevState.selectedIndex)) && !isNaN(parseInt(this.state.selectedIndex))){
-      let selectedItem = "pill-" + this.state.selectedIndex;
+      let selectedItem = 'pill-' + this.state.selectedIndex;
       if(this.refs[selectedItem]){
         ReactDOM.findDOMNode(this.refs[selectedItem]).focus();
       }
@@ -155,7 +155,7 @@ class Lookup extends React.Component {
   modifyItems(itemsToModify) {
     const items = itemsToModify.map((item, index) => {
       return {
-        id: "item-" + index,
+        id: 'item-' + index,
         label: item.label,
         data: item
       }
@@ -223,7 +223,7 @@ class Lookup extends React.Component {
   // Select menu item (onClick or on key enter/space)
   selectItem(itemId) {
     if(itemId){
-      const index = itemId.replace("item-", "");
+      const index = itemId.replace('item-', '');
       this.selectItemByIndex(index);
     }
   }
@@ -232,7 +232,7 @@ class Lookup extends React.Component {
     if(index >= 0 && index < this.state.items.length){
       this.setState({
         selectedIndex: index,
-        searchTerm: ""
+        searchTerm: ''
       });
       const data = this.state.items[index].data;
       if(this.props.onSelect){
@@ -350,7 +350,7 @@ class Lookup extends React.Component {
       let headerActive = false;
       this.state.focusIndex === 0 ? headerActive = true : headerActive = false;
 
-      return <Header ref="header" {...this.props}
+      return <Header ref='header' {...this.props}
           focusIndex={this.state.focusIndex}
           isActive={headerActive}
           onClose={this.handleClose.bind(this)}
@@ -367,7 +367,7 @@ class Lookup extends React.Component {
       let numFocusable = this.getNumFocusableItems();
       this.state.focusIndex === numFocusable ? footerActive = true : footerActive = false;
 
-      return <Footer ref="footer" {... this.props}
+      return <Footer ref='footer' {... this.props}
         focusIndex={this.state.focusIndex}
         isActive={footerActive}
         onClose={this.handleClose.bind(this)}
@@ -394,7 +394,7 @@ class Lookup extends React.Component {
   renderMenuContent() {
     if(this.state.isOpen){
       return <Menu
-        ref="menu"
+        ref='menu'
         emptyMessage={this.props.emptyMessage}
         filterWith={this.props.filterWith}
         focusIndex={this.state.focusIndex}
@@ -418,7 +418,7 @@ class Lookup extends React.Component {
 
   renderSimpleMenu() {
     if(this.state.isOpen){
-      return <div className="ignore-react-onclickoutside slds-lookup__menu" role="listbox" ref="scroll">
+      return <div className='ignore-react-onclickoutside slds-lookup__menu' role='listbox' ref='scroll'>
         {this.renderMenuContent()}
       </div>;
     }
@@ -428,7 +428,7 @@ class Lookup extends React.Component {
     let targetElem = this.refs[this.inputRefName()];
     if(this.state.isOpen){
       return <Popover
-      className="slds-lookup__menu"
+      className='slds-lookup__menu'
       inheritTargetWidth={true}
       closeOnTabKey={true}
       onClose={this.handleCancel.bind(this)}
@@ -442,22 +442,22 @@ class Lookup extends React.Component {
 
   renderSelectedItem() {
     let selectedItem = this.props.options[this.state.selectedIndex].label;
-    const renderIcon = this.props.iconName ? <Icon category={this.props.iconCategory} className="slds-icon slds-pill__icon" inverse={this.props.iconInverse} name={this.props.iconName} /> : null;
+    const renderIcon = this.props.iconName ? <Icon category={this.props.iconCategory} className='slds-icon slds-pill__icon' inverse={this.props.iconInverse} name={this.props.iconName} /> : null;
     let labelClassName = this.props.iconName ? 'slds-pill__label' : 'slds-pill__label slds-m-left--x-small';
     return (
-      <a href="javascript:void(0)" className="slds-pill" ref={"pill-" + this.state.selectedIndex} onKeyDown={this.handlePillKeyDown.bind(this)}>
+      <a href='javascript:void(0)' className='slds-pill' ref={'pill-' + this.state.selectedIndex} onKeyDown={this.handlePillKeyDown.bind(this)}>
         {renderIcon}
         <span className={labelClassName}>
           {selectedItem}
         </span>
         <Button
-          assistiveText="Press delete to remove"
-          className="slds-pill__remove slds-button--icon-bare"
-          iconName="close"
+          assistiveText='Press delete to remove'
+          className='slds-pill__remove slds-button--icon-bare'
+          iconName='close'
           onClick={this.handleDeleteSelected.bind(this)}
-          ref="clearSelectedItemButton"
-          tabIndex="-1"
-          variant="icon"
+          ref='clearSelectedItemButton'
+          tabIndex='-1'
+          variant='icon'
           />
       </a>
     )
@@ -477,41 +477,41 @@ class Lookup extends React.Component {
   }
 
   getClassName(){
-    return cx(this.props.className, "slds-lookup", {
-      "slds-has-selection": this.isSelected(),
+    return cx(this.props.className, 'slds-lookup', {
+      'slds-has-selection': this.isSelected(),
     });
   }
 
   render() {
     const inputClasses = {
-      "slds-input": true,
-      "slds-show": !this.isSelected(),
-      "slds-hide": this.isSelected(),
+      'slds-input': true,
+      'slds-show': !this.isSelected(),
+      'slds-hide': this.isSelected(),
     };
 
     const pillContainerClasses = {
-      "slds-pill__container": true,
-      "slds-show": this.isSelected(),
-      "slds-hide": !this.isSelected(),
+      'slds-pill__container': true,
+      'slds-show': this.isSelected(),
+      'slds-hide': !this.isSelected(),
     };
 
-    const required = this.props.required ? <span style={{color:"red"}}>* </span>:null;
-    const inputLabel = this.props.label?<label className="slds-form-element__label" htmlFor={this.inputRefName()} style={{width: "100%"}}>{required}{this.props.label}</label>:null;
+    const required = this.props.required ? <span style={{color:'red'}}>* </span>:null;
+    const inputLabel = this.props.label?<label className='slds-form-element__label' htmlFor={this.inputRefName()} style={{width: '100%'}}>{required}{this.props.label}</label>:null;
 
     return (
-      <div className={this.getClassName()} data-select="single" data-scope="single" data-typeahead="true">
-        <section className="slds-form-element">
+      <div className={this.getClassName()} data-select='single' data-scope='single' data-typeahead='true'>
+        <section className='slds-form-element'>
           {inputLabel}
-          <div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+          <div className='slds-form-element__control slds-input-has-icon slds-input-has-icon--right'>
             <div className={cx(pillContainerClasses)}>
             { this.isSelected() ? this.renderSelectedItem() : null }
             </div>
-            <InputIcon name="search" onClick={this.focusInput.bind(this)} />
+            <InputIcon name='search' onClick={this.focusInput.bind(this)} />
             <input
-              aria-activedescendant={this.state.currentFocus ? this.state.currentFocus:""}
-              aria-autocomplete="list"
+              aria-activedescendant={this.state.currentFocus ? this.state.currentFocus:''}
+              aria-autocomplete='list'
               aria-expanded={this.state.isOpen}
-              aria-haspopup="true"
+              aria-haspopup='true'
               className={cx(inputClasses)}
               id={this.inputRefName()}
               onBlur={this.handleBlur.bind(this)}
@@ -520,8 +520,8 @@ class Lookup extends React.Component {
               onFocus={this.handleFocus.bind(this)}
               onKeyDown={this.handleKeyDown.bind(this)}
               ref={this.inputRefName()}
-              role="combobox"
-              type="text"
+              role='combobox'
+              type='text'
               value={this.state.searchTerm}
             />
           </div>
@@ -540,4 +540,3 @@ module.exports = Lookup;
 module.exports.DefaultHeader = DefaultHeader;
 module.exports.DefaultSectionDivider = DefaultSectionDivider;
 module.exports.DefaultFooter = DefaultFooter;
-
