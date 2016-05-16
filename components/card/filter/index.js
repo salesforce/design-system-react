@@ -68,4 +68,4 @@ const Filter = React.createClass({
 	}
 });
 
-export default Filter;
+module.exports = Filter;

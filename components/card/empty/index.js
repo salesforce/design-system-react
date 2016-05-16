@@ -67,5 +67,4 @@ const CardEmpty = React.createClass({
 	}
 });
 
-export default CardEmpty;
-
+module.exports = CardEmpty;

@@ -111,4 +111,4 @@ const CardHeader = React.createClass({
 	}
 });
 
-export default CardHeader;
+module.exports = CardHeader;

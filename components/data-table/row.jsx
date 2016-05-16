@@ -112,4 +112,4 @@ const DataTableRow = React.createClass({
 	}
 });
 
-export default DataTableRow;
+module.exports = DataTableRow;

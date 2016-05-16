@@ -23,4 +23,4 @@ const CardBody = (props) => (
 		</div>
 );
 
-export default CardBody;
+module.exports = CardBody;

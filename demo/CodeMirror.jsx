@@ -14,6 +14,9 @@ const SLDSButton = require('../components/button');
 const SLDSButtonGroup = require('../components/button-group');
 const SLDSButtonIcon = require('../components/icon/button-icon');
 const SLDSButtonStateful = require('../components/button-stateful');
+const SLDSCard =  require('../components/card');
+const SLDSCardEmpty = require('../components/card/empty');
+const SLDSCardFilter = require('../components/card/filter');
 const SLDSDataTable = require('../components/data-table');
 const SLDSDataTableCell = require('../components/data-table/cell');
 const SLDSDataTableColumn = require('../components/data-table/column');
@@ -28,10 +31,6 @@ const SLDSNotification = require('../components/notification');
 const SLDSPageHeader = require('../components/page-header');
 const SLDSPopoverTooltip = require('../components/popover-tooltip');
 const SLDSTimepicker = require('../components/time-picker');
-
-const SLDSCard =  require('../components/SLDSCard');
-const SLDSCardEmpty =  require('../components/SLDSCard/Empty');
-const SLDSCardFilter =  require('../components/SLDSCard/Filter');
 
 const displayName = 'CodeMirror';
 const propTypes = {

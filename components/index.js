@@ -23,6 +23,15 @@ export ButtonStateful from './button-stateful';
 export SLDSBreadCrumb from './bread-crumb';
 export BreadCrumb from './bread-crumb';
 
+export SLDSCard from "./card";
+export Card from "./card";
+
+export SLDSCardEmpty from "./card/empty";
+export CardEmpty from "./card/empty";
+
+export SLDSCardFilter from "./card/filter";
+export CardFilter from "./card/filter";
+
 export SLDSCheckbox from "./forms/checkbox";
 export Checkbox from "./forms/checkbox";
 
@@ -73,5 +82,3 @@ export Timepicker from './time-picker';
 
 export SLDSUtilityIcon from './utilities/utility-icon';
 export UtilityIcon from './utilities/utility-icon';
-
-

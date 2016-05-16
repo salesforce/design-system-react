@@ -24,4 +24,4 @@ const CardFooter = (props) => (
 		</div>
 );
 
-export default CardFooter;
+module.exports = CardFooter;
