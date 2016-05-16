@@ -19,10 +19,10 @@ const { PropTypes } = React;
 
 // The component name will be used as the `DisplayName` and exported along with
 // the component itself.
-export const COMPONENT = 'CardEmpty';
+const COMPONENT = 'CardEmpty';
 
 // Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
-export const idSuffixes = {
+const idSuffixes = {
 	heading: '__empty-heading'
 }
 
@@ -68,3 +68,5 @@ const CardEmpty = React.createClass({
 });
 
 module.exports = CardEmpty;
+module.exports.COMPONENT = COMPONENT;
+module.exports.idSuffixes = idSuffixes;

@@ -28,13 +28,13 @@ const { PropTypes } = React;
 
 // The component name will be used as the `DisplayName` and exported along with
 // the component itself.
-export const COMPONENT = 'CardHeader';
+const COMPONENT = 'CardHeader';
 
 // Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
-export const cssClasses = {
+const cssClasses = {
 	base: 'slds-card__header',
 }
-export const idSuffixes = {
+const idSuffixes = {
 	headerActions: '__header-actions',
 	filter: '__filter-input',
 	heading: '__heading'
@@ -112,3 +112,6 @@ const CardHeader = React.createClass({
 });
 
 module.exports = CardHeader;
+module.exports.COMPONENT = COMPONENT;
+module.exports.cssClasses = cssClasses;
+module.exports.idSuffixes = idSuffixes;

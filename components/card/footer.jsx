@@ -14,7 +14,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 
 // Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
-export const cssClasses = {
+const cssClasses = {
 	base: 'slds-card__footer'
 }
 
@@ -25,3 +25,4 @@ const CardFooter = (props) => (
 );
 
 module.exports = CardFooter;
+module.exports.cssClasses = cssClasses;
