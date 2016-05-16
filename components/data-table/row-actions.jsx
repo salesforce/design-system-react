@@ -19,10 +19,10 @@ import isFunction from 'lodash.isfunction';
 // ## Children
 
 // ### Dropdown
-import Dropdown from '../SLDSMenuDropdown';
+import Dropdown from '../menu-dropdown';
 
 // ### Event Helpers
-import { EventUtil } from "../utils";
+import { EventUtil } from "../../utilities";
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;

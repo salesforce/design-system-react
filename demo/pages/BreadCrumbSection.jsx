@@ -26,15 +26,15 @@ class BreadCrumbSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS.SLDSBreadCrumb.description;
+    const desc = DOCS['bread-crumb'].description;
     return { __html: desc };
   }
 
   render() {
-    const docs = DOCS.SLDSBreadCrumb ? true : false;
+    const docs = DOCS['bread-crumb'] ? true : false;
     return (
       <div className="slds-p-around--medium">
-        <ComponentHeader cmpName="SLDSBreadCrumb" cmpUrl="http://www.lightningdesignsystem.com/components/breadcrumbs" />
+        <ComponentHeader cmpName="Bread Crumb" cmpUrl="http://www.lightningdesignsystem.com/components/breadcrumbs" />
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ maxWidth: '800px' }}  /> : null}
         </div>
@@ -42,7 +42,7 @@ class BreadCrumbSection extends React.Component {
           <h4 className="slds-text-heading--small">Base</h4>
           <CodeMirror codeText={Samples.BreadCrumbs1} />
         </section>
-        <PropTable component="SLDSBreadCrumb" />
+        <PropTable component="bread-crumb" />
       </div>
     );
   }

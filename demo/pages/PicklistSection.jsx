@@ -26,15 +26,15 @@ class PicklistSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["SLDSMenuPicklist"].description;
+    const desc = DOCS["menu-picklist"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["SLDSMenuPicklist"] ? true : false;
+    const docs = DOCS["menu-picklist"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <ComponentHeader cmpName="SLDSMenuPicklist" cmpUrl="http://www.lightningdesignsystem.com/components/menus#picklist" />
+        <ComponentHeader cmpName="Menu Picklist" cmpUrl="http://www.lightningdesignsystem.com/components/menus#picklist" />
 
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
@@ -53,7 +53,7 @@ class PicklistSection extends React.Component {
         <section className="slds-p-vertical--large">
           <CodeMirror codeText={Samples.Picklists1} />
         </section>
-        <PropTable component="SLDSMenuPicklist" />
+        <PropTable component="menu-picklist" />
       </div>
     );
   }

@@ -10,8 +10,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 /* eslint-disable indent */
 
-import deprecatedProperty from '../utils/warning/deprecated-property';
-import sunsetProperty from '../utils/warning/sunset-property';
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
+import sunsetProperty from '../../utilities/warning/sunset-property';
 
 let checkProps = function () {};
 

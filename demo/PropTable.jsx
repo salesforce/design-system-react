@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import marked from 'marked';
 import DOCS from './docs';
-import SLDSIcon from 'components/SLDSIcon';
+import Icon from 'components/icon';
 
 const displayName = "PropTable";
 
@@ -71,7 +71,7 @@ class PropTable extends React.Component {
       }
       let type = propType && propType.name === 'enum' ? this.renderEnum(propType) : p.type;
       let defaultProp = docs[prop].defaultValue ? docs[prop].defaultValue.value.replace(/'|"/g, "") : "";
-      let required = docs[prop].required ? <SLDSIcon name='check' category='utility' size="x-small" className="slds-icon-text-default" /> : "";
+      let required = docs[prop].required ? <Icon name='check' category='utility' size="x-small" className="slds-icon-text-default" /> : "";
 
       let row = (
         <tr key={prop}>

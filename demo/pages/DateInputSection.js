@@ -14,11 +14,11 @@ import PropTable from 'demo/PropTable';
 import DOCS from 'docs';
 import ComponentHeader from 'demo/pages/components/componentHeader';
 
-const displayName = "DatepickerSingleSelectSection";
+const displayName = "Datepicker";
 const propTypes = {};
 const defaultProps = {};
 
-class DatepickerSingleSelectSection extends React.Component {
+class DatepickerSection extends React.Component {
 
   constructor(props) {
     super(props);
@@ -26,32 +26,32 @@ class DatepickerSingleSelectSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["DatepickerSingleSelect"].description;
+    const desc = DOCS["date-picker"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["DatepickerSingleSelect"] ? true : false;
+    const docs = DOCS["date-picker"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <ComponentHeader cmpName="SLDSDatepickerSingleSelect" cmpUrl="http://www.lightningdesignsystem.com/components/datepickers#single-select" />
+        <ComponentHeader cmpName="Date Picker" cmpUrl="http://www.lightningdesignsystem.com/components/datepickers#single-select" />
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
         </div>
 
         <section className="slds-p-vertical--large">
-          <CodeMirror codeText={Samples.DatepickerSingleSelect} />
+          <CodeMirror codeText={Samples.Datepicker} />
         </section>
-        <PropTable component="SLDSDatepickerSingleSelect" />
+        <PropTable component="date-picker" />
       </div>
     );
   }
 
 }
 
-DatepickerSingleSelectSection.displayName = displayName;
-DatepickerSingleSelectSection.propTypes = propTypes;
-DatepickerSingleSelectSection.defaultProps = defaultProps;
+DatepickerSection.displayName = displayName;
+DatepickerSection.propTypes = propTypes;
+DatepickerSection.defaultProps = defaultProps;
 
-module.exports = DatepickerSingleSelectSection;
+module.exports = DatepickerSection;
 

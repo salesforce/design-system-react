@@ -26,15 +26,15 @@ class ModalSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["SLDSModal"].description;
+    const desc = DOCS["modal"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["SLDSModal"] ? true : false;
+    const docs = DOCS["modal"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <ComponentHeader cmpName="SLDSModal" cmpUrl="https://www.lightningdesignsystem.com/components/modals" />
+        <ComponentHeader cmpName="Modal" cmpUrl="https://www.lightningdesignsystem.com/components/modals" />
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
         </div>
@@ -50,7 +50,7 @@ class ModalSection extends React.Component {
           <h4 className="slds-text-heading--small">Prompt Notification Modal</h4>
           <CodeMirror codeText={Samples.Modals3} />
         </section>
-        <PropTable component="SLDSModal" />
+        <PropTable component="modal" />
       </div>
     );
   }

@@ -59,4 +59,4 @@ const DataTableCell = React.createClass({
 	}
 });
 
-export default DataTableCell;
+module.exports = DataTableCell;

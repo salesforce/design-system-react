@@ -33,7 +33,7 @@ class CardSection extends React.Component {
     const docs = DOCS['card'] ? true : false;
     return (
       <div className="slds-p-around--medium">
-        <ComponentHeader cmpName="SLDSCard" cmpUrl="http://www.lightningdesignsystem.com/components/cards" />
+        <ComponentHeader cmpName="Card" cmpUrl="http://www.lightningdesignsystem.com/components/cards" />
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ maxWidth: '800px' }}  /> : null}
         </div>
