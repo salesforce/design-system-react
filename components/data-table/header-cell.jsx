@@ -92,7 +92,7 @@ const DataTableHeaderCell = React.createClass({
 				<div className="slds-truncate">{label}
 					{sortable
 						? <Button
-							assistiveText="Sort"
+							assistiveText={sortDirection === 'desc' ? 'Sort Ascending' : 'Sort Descending'}
 							iconCategory="utility"
 							iconName={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
 							iconSize="small"
