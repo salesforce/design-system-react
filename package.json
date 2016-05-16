@@ -121,10 +121,5 @@
     "lint",
     "validate",
     "test"
-  ],
-  "pre-push": [
-    "lint",
-    "validate",
-    "test"
   ]
 }
