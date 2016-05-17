@@ -63,7 +63,6 @@ const Filter = React.createClass({
 		return (
 			<Input
 				{...props}
-				ariaControls={id + bodyIdSuffixes.base}
 				assistiveText={placeholder}
 				iconCategory="utility"
 				iconName="search"
