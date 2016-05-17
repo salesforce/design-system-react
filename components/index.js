@@ -6,7 +6,7 @@ Redistributions of source code must retain the above copyright notice, this list
 Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 export SLDSSettings from './SLDSSettings';
@@ -23,17 +23,17 @@ export ButtonStateful from './button-stateful';
 export SLDSBreadCrumb from './bread-crumb';
 export BreadCrumb from './bread-crumb';
 
-export SLDSCard from "./card";
-export Card from "./card";
+export SLDSCard from './card';
+export Card from './card';
 
-export SLDSCardEmpty from "./card/empty";
-export CardEmpty from "./card/empty";
+export SLDSCardEmpty from './card/empty';
+export CardEmpty from './card/empty';
 
-export SLDSCardFilter from "./card/filter";
-export CardFilter from "./card/filter";
+export SLDSCardFilter from './card/filter';
+export CardFilter from './card/filter';
 
-export SLDSCheckbox from "./forms/checkbox";
-export Checkbox from "./forms/checkbox";
+export SLDSCheckbox from './forms/checkbox';
+export Checkbox from './forms/checkbox';
 
 export SLDSDataTable from './data-table';
 export DataTable from './data-table';
@@ -53,8 +53,8 @@ export Datepicker from './date-picker';
 export SLDSIcon from './icon';
 export Icon from './icon';
 
-export SLDSInput from "./forms/input";
-export Input from "./forms/input";
+export SLDSInput from './forms/input';
+export Input from './forms/input';
 
 export SLDSLookup from './lookup';
 export Lookup from './lookup';
