@@ -31,4 +31,9 @@ cp README-dist.md .tmp/README.md
 cp -r components .tmp/components
 cp -r utilities .tmp/utilities
 
+echo "## Transpiling with Babel"
+
+./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp/components -d .tmp/cjs-components
+./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp/utilities -d .tmp/cjs-utilities
+
 ./node_modules/.bin/babel-node scripts/dist.js
