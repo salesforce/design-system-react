@@ -35,10 +35,10 @@ const { PropTypes } = React;
 
 // The component name will be used as the `DisplayName` and exported along with
 // the component itself.
-export const COMPONENT = 'Card';
+const COMPONENT = 'Card';
 
 // Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
-export const cssClasses = {
+const cssClasses = {
 	base: 'slds-card'
 }
 
@@ -141,4 +141,6 @@ const Card = React.createClass({
 
 });
 
-export default Card;
+module.exports = Card;
+module.exports.COMPONENT = COMPONENT;
+module.exports.cssClasses = cssClasses;

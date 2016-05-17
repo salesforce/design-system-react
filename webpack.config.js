@@ -43,7 +43,8 @@ module.exports = function () {
           test: /\.(js|jsx)?$/,
           loaders: ['babel'],
           include: [
-            path.join(__dirname, 'tests')
+            path.join(__dirname, 'tests'),
+            path.join(__dirname, 'utilities')
           ]
         },
         {

@@ -14,7 +14,7 @@ import {idSuffixes as emptyIdSuffixes} from '../../components/card/empty';
 import {cssClasses as mediaObjectCssClasses} from '../../components/media-object';
 import {idSuffixes, cssClasses as headerCssClasses} from '../../components/card/header';
 
-import Icon from '../../components/SLDSIcon';
+import Icon from '../../components/icon';
 
 chai.should();
 

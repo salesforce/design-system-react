@@ -26,15 +26,15 @@ class IconSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["SLDSIcon"].description;
+    const desc = DOCS["icon"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["SLDSIcon"] ? true : false;
+    const docs = DOCS["icon"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <ComponentHeader cmpName="SLDSIcon" cmpUrl="http://www.lightningdesignsystem.com/components/icons" />
+        <ComponentHeader cmpName="Icon" cmpUrl="http://www.lightningdesignsystem.com/components/icons" />
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
         </div>
@@ -42,7 +42,7 @@ class IconSection extends React.Component {
         <section className="demo-only slds-p-vertical--large">
           <CodeMirror codeText={Samples.Icons} />
         </section>
-        <PropTable component="SLDSIcon" />
+        <PropTable component="icon" />
       </div>
     );
   }

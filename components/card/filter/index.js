@@ -20,7 +20,7 @@ const { PropTypes } = React;
 
 // The component name will be used as the `DisplayName` and exported along with
 // the component itself.
-export const COMPONENT = 'Filter';
+const COMPONENT = 'Filter';
 
 /**
  * A default filter or search input for Cards that contain items.
@@ -68,4 +68,5 @@ const Filter = React.createClass({
 	}
 });
 
-export default Filter;
+module.exports = Filter;
+module.exports.COMPONENT = COMPONENT;

@@ -124,9 +124,9 @@
             }
         }
     },
-    "SLDSBreadCrumb": {
+    "bread-crumb": {
         "description": "",
-        "displayName": "SLDSBreadCrumb",
+        "displayName": "BreadCrumb",
         "props": {
             "assistiveText": {
                 "type": {
@@ -144,9 +144,9 @@
             }
         }
     },
-    "SLDSButton": {
-        "description": "The SLDSButton component is the Lightning Design System Button component. The SLDSButton should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.\nFor buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">SLDSButtonStateful</a> component.",
-        "displayName": "SLDSButton",
+    "button": {
+        "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.\nFor buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.",
+        "displayName": "Button",
         "props": {
             "assistiveText": {
                 "type": {
@@ -378,9 +378,9 @@
             }
         }
     },
-    "SLDSButtonStateful": {
-        "description": "The SLDSButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nFor icon buttons, use <code>variant=\"icon\"</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: \"add\", label: \"Join\"}}</code>).",
-        "displayName": "SLDSButtonStateful",
+    "button-stateful": {
+        "description": "The ButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nFor icon buttons, use <code>variant=\"icon\"</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: \"add\", label: \"Join\"}}</code>).",
+        "displayName": "ButtonStateful",
         "props": {
             "assistiveText": {
                 "type": {
@@ -540,16 +540,16 @@
             }
         }
     },
-    "SLDSButtonGroup": {
-        "description": "The SLDSButtonGroup component wraps other SLDS components (ie. SLDSButton, SLDSMenuDropdown, SLDSPopoverTooltip, etc).",
-        "displayName": "SLDSButtonGroup",
+    "button-group": {
+        "description": "The ButtonGroup component wraps other  components (ie. Button, MenuDropdown, PopoverTooltip, etc).",
+        "displayName": "ButtonGroup",
         "props": {
             "children": {
                 "type": {
                     "name": "node"
                 },
                 "required": true,
-                "description": "Children are expected to be components. If last button triggers a dropdown menu, use SLDSDropdown instead of SLDSButton."
+                "description": "Children are expected to be components. If last button triggers a dropdown menu, use Dropdown instead of Button."
             },
             "className": {
                 "type": {
@@ -652,9 +652,145 @@
             }
         }
     },
-    "SLDSIcon": {
-        "description": "The SLDSIcon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href=\"#/button\">SLDSButton component</a> component with <code>variant=\"icon\"</code>.",
-        "displayName": "SLDSIcon",
+    "date-picker": {
+        "description": "",
+        "displayName": "Datepicker",
+        "props": {
+            "abbrWeekDayLabels": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "['S','M','T','W','T','F','S']",
+                    "computed": false
+                }
+            },
+            "formatter": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Date formatting function",
+                "defaultValue": {
+                    "value": "function(date) {\n  if(date){\n    return (date.getMonth()+1) +\n      '/'+date.getDate() +\n      '/'+date.getFullYear();\n  }\n}",
+                    "computed": false
+                }
+            },
+            "monthLabels": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "[\n  'January','February','March',\n  'April','May','June','July',\n  'August','September','October',\n  'November','December'\n]",
+                    "computed": false
+                }
+            },
+            "parser": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Parsing date string into Date",
+                "defaultValue": {
+                    "value": "function(str) {\n  return new Date(str);\n}",
+                    "computed": false
+                }
+            },
+            "relativeYearFrom": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "-5",
+                    "computed": false
+                }
+            },
+            "relativeYearTo": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "5",
+                    "computed": false
+                }
+            },
+            "required": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, adds asterisk next to input label to indicate it is a required field.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "strValue": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "todayLabel": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "'Today'",
+                    "computed": false
+                }
+            },
+            "value": {
+                "type": {
+                    "name": "instanceOf",
+                    "value": "Date"
+                },
+                "required": false,
+                "description": "Date",
+                "defaultValue": {
+                    "value": "null",
+                    "computed": false
+                }
+            },
+            "weekDayLabels": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "[\n  'Sunday','Monday','Tuesday',\n  'Wednesday','Thursday','Friday',\n  'Saturday'\n]",
+                    "computed": false
+                }
+            },
+            "onDateChange": {
+                "defaultValue": {
+                    "value": "function(date, strValue) {\n  console.log('onDateChange should be defined');\n}",
+                    "computed": false
+                }
+            },
+            "placeholder": {
+                "defaultValue": {
+                    "value": "'Pick a Date'",
+                    "computed": false
+                }
+            }
+        }
+    },
+    "icon": {
+        "description": "The Icon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href=\"#/button\">Button component</a> component with <code>variant=\"icon\"</code>.",
+        "displayName": "Icon",
         "props": {
             "assistiveText": {
                 "type": {
@@ -752,9 +888,9 @@
             }
         }
     },
-    "SLDSLookup": {
-        "description": "The SLDSLookup is the Lightning Design System Lookup base component.",
-        "displayName": "SLDSLookup",
+    "lookup": {
+        "description": "The Lookup is the Lightning Design System Lookup base component.",
+        "displayName": "Lookup",
         "props": {
             "emptyMessage": {
                 "type": {
@@ -779,14 +915,14 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Custom component for Lookup footer. The default footer allows user to add new item - see <a href=\"http://www.lightningdesignsystem.com/components/lookups/#base\">Lightning Design System Lookup > Base</a>. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>."
+                "description": "Custom component for Lookup footer. The default footer allows user to add new item - see <a href=\"http://www.lightningdesignsystem.com/components/lookups/#base\">Lightning Design System Lookup > Base</a>. To use the default footer, pass in <code>Lookup.DefaultFooter</code>."
             },
             "headerRenderer": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href=\"http://www.lightningdesignsystem.com/components/lookups/#base\">Lightning Design System Lookup > Base</a>. To use the default header, pass in <code>SLDSLookup.DefaultHeader</code>."
+                "description": "Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href=\"http://www.lightningdesignsystem.com/components/lookups/#base\">Lightning Design System Lookup > Base</a>. To use the default header, pass in <code>Lookup.DefaultHeader</code>."
             },
             "iconCategory": {
                 "type": {
@@ -922,9 +1058,9 @@
             }
         }
     },
-    "SLDSMenuDropdown": {
-        "description": "The SLDSMenuDropdown component is a variant of the Ligtning Design System Menu component.",
-        "displayName": "SLDSMenuDropdown",
+    "menu-dropdown": {
+        "description": "The MenuDropdown component is a variant of the Ligtning Design System Menu component.",
+        "displayName": "MenuDropdown",
         "props": {
             "align": {
                 "type": {
@@ -1118,9 +1254,9 @@
             }
         }
     },
-    "SLDSMenuPicklist": {
-        "description": "The SLDSMenuPicklist component is a variant of the Ligtning Design System Menu component.",
-        "displayName": "SLDSMenuPicklist",
+    "menu-picklist": {
+        "description": "The MenuPicklist component is a variant of the Ligtning Design System Menu component.",
+        "displayName": "MenuPicklist",
         "props": {
             "className": {
                 "type": {
@@ -1225,12 +1361,24 @@
                 },
                 "required": false,
                 "description": "Current selected item."
+            },
+            "constrainToScrollParent": {
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "inheritTargetWidth": {
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
             }
         }
     },
-    "SLDSModal": {
-        "description": "The SLDSModal component is used for the Lightning Design System Modal and Notification > Prompt components. The Modal opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).\nFor more details on the Prompt markup, please review the <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">Notifications > Prompt</a>.",
-        "displayName": "SLDSModal",
+    "modal": {
+        "description": "The Modal component is used for the Lightning Design System Modal and Notification > Prompt components. The Modal opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).\nFor more details on the Prompt markup, please review the <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">Notifications > Prompt</a>.",
+        "displayName": "Modal",
         "props": {
             "align": {
                 "type": {
@@ -1366,9 +1514,9 @@
             }
         }
     },
-    "SLDSNotification": {
-        "description": "The SLDSNotification component is the Alert and Toast variants of the Lightning Design System Notification component. For prompt notifications, use the <a href=\"#/modal\">SLDSModal</a> component with <code>prompt={true}</code>.\nThe Notification opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).",
-        "displayName": "SLDSNotification",
+    "notification": {
+        "description": "The Notification component is the Alert and Toast variants of the Lightning Design System Notification component. For prompt notifications, use the <a href=\"#/modal\">Modal</a> component with <code>prompt={true}</code>.\nThe Notification opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).",
+        "displayName": "Notification",
         "props": {
             "className": {
                 "type": {
@@ -1482,9 +1630,9 @@
             }
         }
     },
-    "SLDSPageHeader": {
-        "description": "The SLDSPageHeader component adds SLDSPageHeader, SLDSPageHeader.Info, SLDSPageHeader.Title, SLDSPageHeader.DetailRow, and SLDSPageHeader.DetailBlock.",
-        "displayName": "SLDSPageHeader",
+    "page-header": {
+        "description": "The PageHeader component adds PageHeader, PageHeader.Info, PageHeader.Title, PageHeader.DetailRow, and PageHeader.DetailBlock.",
+        "displayName": "PageHeader",
         "props": {
             "className": {
                 "type": {
@@ -1733,9 +1881,9 @@
             }
         }
     },
-    "SLDSPopoverTooltip": {
-        "description": "The SLDSPopoverTooltip component is variant of the Lightning Design System Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or anchor) so that keyboard users can navigate to it.",
-        "displayName": "SLDSPopoverTooltip",
+    "popover-tooltip": {
+        "description": "The PopoverTooltip component is variant of the Lightning Design System Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or anchor) so that keyboard users can navigate to it.",
+        "displayName": "PopoverTooltip",
         "props": {
             "align": {
                 "type": {
@@ -1840,145 +1988,9 @@
             }
         }
     },
-    "SLDSDatepickerSingleSelect": {
+    "time-picker": {
         "description": "",
-        "displayName": "SLDSDatepickerSingleSelect",
-        "props": {
-            "abbrWeekDayLabels": {
-                "type": {
-                    "name": "array"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "['S','M','T','W','T','F','S']",
-                    "computed": false
-                }
-            },
-            "formatter": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Date formatting function",
-                "defaultValue": {
-                    "value": "function(date) {\n  if(date){\n    return (date.getMonth()+1) +\n      '/'+date.getDate() +\n      '/'+date.getFullYear();\n  }\n}",
-                    "computed": false
-                }
-            },
-            "monthLabels": {
-                "type": {
-                    "name": "array"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "[\n  'January','February','March',\n  'April','May','June','July',\n  'August','September','October',\n  'November','December'\n]",
-                    "computed": false
-                }
-            },
-            "parser": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Parsing date string into Date",
-                "defaultValue": {
-                    "value": "function(str) {\n  return new Date(str);\n}",
-                    "computed": false
-                }
-            },
-            "relativeYearFrom": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "-5",
-                    "computed": false
-                }
-            },
-            "relativeYearTo": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "5",
-                    "computed": false
-                }
-            },
-            "required": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "If true, adds asterisk next to input label to indicate it is a required field.",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "strValue": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": ""
-            },
-            "todayLabel": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "'Today'",
-                    "computed": false
-                }
-            },
-            "value": {
-                "type": {
-                    "name": "instanceOf",
-                    "value": "Date"
-                },
-                "required": false,
-                "description": "Date",
-                "defaultValue": {
-                    "value": "null",
-                    "computed": false
-                }
-            },
-            "weekDayLabels": {
-                "type": {
-                    "name": "array"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "[\n  'Sunday','Monday','Tuesday',\n  'Wednesday','Thursday','Friday',\n  'Saturday'\n]",
-                    "computed": false
-                }
-            },
-            "onDateChange": {
-                "defaultValue": {
-                    "value": "function(date, strValue) {\n  console.log('onDateChange should be defined');\n}",
-                    "computed": false
-                }
-            },
-            "placeholder": {
-                "defaultValue": {
-                    "value": "'Pick a Date'",
-                    "computed": false
-                }
-            }
-        }
-    },
-    "SLDSTimepicker": {
-        "description": "",
-        "displayName": "SLDSTimepicker",
+        "displayName": "Timepicker",
         "props": {
             "formatter": {
                 "type": {

@@ -3,10 +3,9 @@ var path = require('path');
 var parser = require('xml2json');
 var omit = require('lodash.omit');
 
-
 console.log('SVG ICONS INLINE BUILD');
-var inlineIcons = function(striteType){
-  var inputPath = path.join(__dirname,'..','node_modules','@salesforce-ux','icons','dist','salesforce-lightning-design-system-icons',striteType+'-sprite','svg','symbols.svg');
+var inlineIcons = function(spriteType){
+  var inputPath = path.join(__dirname,'..','node_modules','@salesforce-ux','icons','dist','salesforce-lightning-design-system-icons',spriteType+'-sprite','svg','symbols.svg');
 
   var text = fs.readFileSync(inputPath,'utf8');
 
@@ -36,8 +35,7 @@ var inlineIcons = function(striteType){
   content.push('};');
   content.push("module.exports.viewBox = '"+viewBox+"';");
 
-
-  var outputPath = path.join(__dirname,'..','components','SLDSUtilityIcon','SVG','slds-icons-'+striteType+'.jsx');
+  var outputPath = path.join(__dirname,'..','components','utilities', 'utility-icon', 'SVG','slds-icons-'+spriteType+'.jsx');
 
   fs.writeFile(outputPath, content.join('\n'), function (err) {
     if (err) return console.log(err);

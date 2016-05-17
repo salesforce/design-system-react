@@ -26,15 +26,15 @@ class ButtonStatefulSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["SLDSButtonStateful"].description;
+    const desc = DOCS["button-stateful"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["SLDSButtonStateful"] ? true : false;
+    const docs = DOCS["button-stateful"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <ComponentHeader cmpName="SLDSButtonStateful" cmpUrl="http://www.lightningdesignsystem.com/components/buttons#stateful" />
+        <ComponentHeader cmpName="Button Stateful" cmpUrl="http://www.lightningdesignsystem.com/components/buttons#stateful" />
 
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}} /> : null}
@@ -49,7 +49,7 @@ class ButtonStatefulSection extends React.Component {
           <p className="slds-p-vertical--x-small">* Follow is the default label.</p>
           <CodeMirror codeText={Samples.StatefulButtons2} />
         </section>
-        <PropTable component="SLDSButtonStateful" />
+        <PropTable component="button-stateful" />
       </div>
     );
   }

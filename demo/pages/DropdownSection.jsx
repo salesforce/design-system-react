@@ -26,15 +26,15 @@ class DropdownSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["SLDSMenuDropdown"].description;
+    const desc = DOCS["menu-dropdown"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["SLDSMenuDropdown"] ? true : false;
+    const docs = DOCS["menu-dropdown"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <ComponentHeader cmpName="SLDSMenuDropdown" cmpUrl="http://www.lightningdesignsystem.com/components/menus#dropdown" />
+        <ComponentHeader cmpName="Menu Dropdown" cmpUrl="http://www.lightningdesignsystem.com/components/menus#dropdown" />
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}} /> : null}
         </div>
@@ -47,7 +47,7 @@ class DropdownSection extends React.Component {
           <h4 className="slds-text-heading--small">Dropdown Open on Hover</h4>
           <CodeMirror codeText={Samples.Dropdowns2} />
         </section>
-        <PropTable component="SLDSMenuDropdown" />
+        <PropTable component="menu-dropdown" />
       </div>
     );
   }

@@ -26,15 +26,15 @@ class LookupSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["SLDSLookup"].description;
+    const desc = DOCS["lookup"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["SLDSLookup"] ? true : false;
+    const docs = DOCS["lookup"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <ComponentHeader cmpName="SLDSLookup" cmpUrl="http://www.lightningdesignsystem.com/components/lookups/#base" />
+        <ComponentHeader cmpName="Lookup" cmpUrl="http://www.lightningdesignsystem.com/components/lookups/#base" />
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
         </div>
@@ -49,7 +49,7 @@ class LookupSection extends React.Component {
           <CodeMirror codeText={Samples.Lookups2} />
         </section>
 
-        <PropTable component="SLDSLookup" />
+        <PropTable component="lookup" />
       </div>
     );
   }
