@@ -29,7 +29,7 @@ async.series([
 	 * Clean up the package.json
 	 */
 	(done) => {
-		console.log('## Cleaning up the package.json');
+		console.log('### Cleaning up the package.json');
 
 		const packageJSON = JSON.parse(fs.readFileSync(distPath('package.json')).toString());
 		delete packageJSON.scripts;

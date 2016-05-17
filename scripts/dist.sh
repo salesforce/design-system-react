@@ -13,6 +13,7 @@ echo "# Building design-system-react"
 echo "## Preparing the .tmp directory"
 
 rm -rf .tmp/
+rm -rf .tmp-es/
 mkdir -p .tmp/
 
 echo "## Running webpack"
@@ -28,12 +29,18 @@ cp .gitignore .tmp/.gitignore
 cp LICENSE .tmp/LICENSE
 cp package.json .tmp/package.json
 cp README-dist.md .tmp/README.md
-cp -r components .tmp/components
-cp -r utilities .tmp/utilities
+
+echo "## Running js steps"
+
+./node_modules/.bin/babel-node scripts/dist.js
+
+echo "## Copying the components"
+
+cp -r .tmp .tmp-es
+cp -r components .tmp-es/components
+cp -r utilities .tmp-es/utilities
 
 echo "## Transpiling with Babel"
 
-./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp/components -d .tmp/cjs-components
-./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp/utilities -d .tmp/cjs-utilities
-
-./node_modules/.bin/babel-node scripts/dist.js
+./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp-es/components -d .tmp/components
+./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp-es/utilities -d .tmp/utilities
