@@ -13,7 +13,8 @@
     "pages": "webpack --config webpack.config.github.js",
     "postinstall": "node scripts/postinstall",
     "publish-to-git": "./node_modules/.bin/babel-node scripts/publish-to-git.js",
-    "publish-to-edge": "./node_modules/.bin/babel-node scripts/publish-to-git.js  --tag=edge",
+    "publish-to-edge": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge",
+    "publish-to-upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge --remote=upstream && ./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
     "start": "node server/index.js & node scripts/start.js",
     "test": "scripts/test --single-run",
     "validate": "npm ls"
