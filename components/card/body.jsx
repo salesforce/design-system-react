@@ -12,7 +12,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 // React is an external dependency of the project.
 import React from 'react';
-import { idSuffixes as headerIdSuffixes } from './header';
 
 const cssClasses = {
 	base: 'slds-card__body'
@@ -24,11 +23,8 @@ const idSuffixes = {
 
 const CardBody = (props) => (
 		<div
-			aria-labelledby={props.id + headerIdSuffixes.heading}
-			aria-live="polite"
 			className={cssClasses.base}
-			id={props.id + idSuffixes.base}
-			role="region">
+			id={props.id + idSuffixes.base}>
 			{props.children}
 		</div>
 );

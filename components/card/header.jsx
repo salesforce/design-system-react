@@ -66,7 +66,11 @@ const CardHeader = React.createClass({
 		/**
 		 * Set the HTML `id` of the card filter and header actions.
 		 */
-		id: PropTypes.string.isRequired
+		id: PropTypes.string.isRequired,
+		/**
+		 * Number of items displayed. This number will be displayed in the heading and will be read by screen readers. 
+		 */
+		totalItems: PropTypes.string.isRequired,
 	},
 
 	_renderFilter () {
@@ -81,8 +85,15 @@ const CardHeader = React.createClass({
 	},
 
 	_renderMediaObjectBody () {
+		const heading = this.props.heading + (this.props.totalItems ? ` (${this.props.totalItems})` : '');
 		return (
-			<h2 id={this.props.id + idSuffixes.heading} className="slds-text-heading--small slds-truncate" title={this.props.heading}>{this.props.heading}</h2>
+			<h2 
+				aria-live="polite"
+				id={this.props.id + idSuffixes.heading}
+				className="slds-text-heading--small slds-truncate"
+				title={heading}>
+				{heading}
+			</h2>
 		);
 	},
 

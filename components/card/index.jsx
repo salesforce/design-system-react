@@ -87,7 +87,11 @@ const Card = React.createClass({
 		/**
 		 * Set the HTML `id` of the card. This also sets the `id` of the filter and the header actions.
 		 */
-		id: PropTypes.string.isRequired
+		id: PropTypes.string.isRequired,
+		/**
+		 * Number of items displayed. This number will be displayed in the heading and will be read by screen readers when it changes.
+		 */
+		totalItems: PropTypes.string.isRequired
 	},
 
 	getDefaultProps () {
@@ -132,7 +136,8 @@ const Card = React.createClass({
 					id={this.props.id}
 					filter={this.props.filter}
 					heading={this.props.heading}
-					headerActions={empty ? null : this.props.headerActions} />
+					headerActions={empty ? null : this.props.headerActions}
+					totalItems={this.props.totalItems} />
 				{!empty ? this._renderBody(this.props.children) : this._renderBody(empty)}
 				{this.props.footer && !empty ? this._renderFooter() : null}
 			</div>
