@@ -63,6 +63,7 @@ const DataTableRow = React.createClass({
 	render () {
 		const isSelected = this.isSelected();
 
+		// i18n
 		return (
 			<tr
 				className={classNames({ 'slds-hint-parent': this.props.rowActions, 'slds-is-selected': isSelected })}

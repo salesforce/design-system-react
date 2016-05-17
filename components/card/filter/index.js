@@ -47,6 +47,7 @@ const Filter = React.createClass({
 		placeholder: PropTypes.string
 	},
 
+	// i18n
 	getDefaultProps () {
 		return {
 			placeholder: 'Find in List'

@@ -47,6 +47,7 @@ const CardEmpty = React.createClass({
 		id: PropTypes.string
 	},
 
+	// i18n
 	getDefaultProps () {
 		return {
 			heading: "No Related Items"

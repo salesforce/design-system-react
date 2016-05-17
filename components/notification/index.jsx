@@ -117,6 +117,7 @@ class Notification extends React.Component {
       let size = null;
       if(this.props.variant === "toast") size = "large";
 
+      // i18n
       return <Button
             assistiveText="Dismiss Notification"
             variant="icon-inverse"

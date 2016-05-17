@@ -80,6 +80,7 @@ const DataTableHeaderCell = React.createClass({
 
 		const sortDirection = this.props.sortDirection || this.state.sortDirection;
 
+		// i18n
 		return (
 			<th
 				scope="col"

@@ -89,8 +89,6 @@ const propTypes = {
   selectedItem: React.PropTypes.number,
 };
 
-
-
 /**
  * A function that takes a term string and an item and returns a truthy value if the item should be kept.
  */
@@ -98,7 +96,6 @@ const defaultFilter = (term, item) => {
   if(!term) return true;
   return (item.data && item.data.type === 'section') || item.label.match(new RegExp(escapeRegExp(term), 'ig'));
 };
-
 
 const defaultProps = {
   filterWith: defaultFilter,
@@ -108,7 +105,6 @@ const defaultProps = {
   constrainToScrollParent: true,
   flippable: false,
 };
-
 
 /**
  * The Lookup is the Lightning Design System Lookup base component.
@@ -175,6 +171,7 @@ class Lookup extends React.Component {
     }
     this.setState({ focusIndex: nextFocusIndex });
   }
+
   //=================================================
   // Using down/up keys, set Focus on list item and assign it to aria-activedescendant attribute in input.
   // Need to keep track of filtered list length to be able to increment/decrement the focus index so it's contained to the number of available list items.
@@ -444,6 +441,8 @@ class Lookup extends React.Component {
     let selectedItem = this.props.options[this.state.selectedIndex].label;
     const renderIcon = this.props.iconName ? <Icon category={this.props.iconCategory} className='slds-icon slds-pill__icon' inverse={this.props.iconInverse} name={this.props.iconName} /> : null;
     let labelClassName = this.props.iconName ? 'slds-pill__label' : 'slds-pill__label slds-m-left--x-small';
+
+    // i18n
     return (
       <a href='javascript:void(0)' className='slds-pill' ref={'pill-' + this.state.selectedIndex} onKeyDown={this.handlePillKeyDown.bind(this)}>
         {renderIcon}

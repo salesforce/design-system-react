@@ -63,6 +63,7 @@ const DataTableRowActions = React.createClass({
 
 	// ### Render
 	render () {
+		// i18n
 		return (
 			<td
 				className="slds-cell-shrink" data-label="Actions"
