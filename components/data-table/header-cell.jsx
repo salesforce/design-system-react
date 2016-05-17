@@ -11,27 +11,30 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 /* eslint-disable indent */
 
 // ### React
-// React is an external dependency of the project.
 import React from 'react';
 
-import Input from '../../forms/input';
-import { idSuffixes as bodyIdSuffixes } from '../body';
+// ### classNames
+import classNames from 'classnames';
+
+// ### isFunction
+import isFunction from 'lodash.isfunction';
+
+// ## Children
+
+// ### Button
+import Button from '../button';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
 
 // The component name will be used as the `DisplayName` and exported along with
 // the component itself.
-const COMPONENT = 'Filter';
-
-export const idSuffixes = {
-	base: '__filter-input'
-}
+export const COMPONENT = 'DataTableHeaderCell';
 
 /**
- * A default filter or search input for Cards that contain items.
+ * Used internally, renders each individual column heading.
  */
-const Filter = React.createClass({
+const DataTableHeaderCell = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: COMPONENT,
@@ -39,42 +42,87 @@ const Filter = React.createClass({
 	// ### Prop Types
 	propTypes: {
 		/**
-		 * The HTML `id` from the card.
+		 * The column label.
 		 */
-		id: PropTypes.string,
+		label: PropTypes.string,
 		/**
-		 * This callback fires when the input changes.
+		 * The function to execute on sort.
 		 */
-		onChange: PropTypes.func,
+		onSort: PropTypes.func,
 		/**
-		 * Text present in input until the user enters text. This text will also be used for a visually hidden label on the filter `input` element for accessibility.
+		 * The property which corresponds to this column.
 		 */
-		placeholder: PropTypes.string.isRequired
+		property: PropTypes.string,
+		/**
+		 * Whether or not the column is sortable.
+		 */
+		sortable: PropTypes.bool,
+		/**
+		 * The current sort direction.
+		 */
+		sortDirection: PropTypes.oneOf(['desc', 'asc'])
 	},
 
-	// i18n
-	getDefaultProps () {
+	getInitialState () {
 		return {
-			placeholder: 'Find in List'
+			sortDirection: 'asc'
 		};
 	},
 
+	// ### Render
+	// Should return a `<th></th>`.
 	render () {
-		const { id, placeholder, onChange, ...props } = this.props;
+		const {
+			label,
+			property,
+			sortable
+		} = this.props;
 
+		const sortDirection = this.props.sortDirection || this.state.sortDirection;
+
+		// i18n
 		return (
-			<Input
-				{...props}
-				assistiveText={placeholder}
-				iconCategory="utility"
-				iconName="search"
-				id={id + idSuffixes.base}
-				onChange={onChange}
-				placeholder={placeholder}
-			/>
-		)
+			<th
+				scope="col"
+				key={property}
+				className={classNames({
+					'slds-is-sortable': sortable
+				})}
+				onClick={sortable && this.handleSort}
+			>
+				<div className="slds-truncate">{label}
+					{sortable
+						? <Button
+							assistiveText={sortDirection === 'desc' ? 'Sort Ascending' : 'Sort Descending'}
+							iconCategory="utility"
+							iconName={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
+							iconSize="small"
+							iconVariant="bare"
+							variant="icon"
+						/>
+						: null
+					}
+				</div>
+			</th>
+		);
+	},
+
+	handleSort (e) {
+		const oldSortDirection = this.props.sortDirection || this.state.sortDirection;
+		const sortDirection = oldSortDirection === 'asc' ? 'desc' : 'asc';
+		const data = {
+			property: this.props.property,
+			sortDirection
+		};
+
+		this.setState({
+			sortDirection
+		});
+
+		if (isFunction(this.props.onSort)) {
+			this.props.onSort(data, e);
+		}
 	}
 });
 
-module.exports = Filter;
-module.exports.COMPONENT = COMPONENT;
+export default DataTableHeaderCell;

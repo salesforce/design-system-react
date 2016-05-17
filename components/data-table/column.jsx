@@ -31,9 +31,21 @@ const DataTableColumn = React.createClass({
 	// ### Prop Types
 	propTypes: {
 		children: React.PropTypes.element,
-		label: PropTypes.node,
-		property: PropTypes.string.isRequired,
+		/**
+		 * The column label.
+		 */
+		label: PropTypes.string,
+		/**
+		 * The property which corresponds to this column.
+		 */
+		property: PropTypes.string,
+		/**
+		 * Whether or not the column is sortable.
+		 */
 		sortable: PropTypes.bool,
+		/**
+		 * The current sort direction. If left out the component will track this internally.
+		 */
 		sortDirection: PropTypes.oneOf(['desc', 'asc']),
 		truncate: PropTypes.bool
 	},

@@ -46,13 +46,11 @@ const SLDSDataTableExample = React.createClass({
           label="Count"
           property="count"
           sortable
-          sortDirection={this.state.countSortDirection}
         />
         <SLDSDataTableColumn
           label="Last Modified"
           property="lastModified"
           sortable
-          sortDirection={this.state.lastModifiedSortDirection}
           truncate
         />
       </SLDSDataTable>
@@ -63,8 +61,9 @@ const SLDSDataTableExample = React.createClass({
     this.setState({ selection });
   },
 
-  handleSort (sortColumn, sortDirection) {
+  handleSort (sortColumn) {
     const sortProperty = sortColumn.property;
+    const sortDirection = sortColumn.sortDirection;
     const newState = {
       items: [...this.state.items]
     };
@@ -83,12 +82,6 @@ const SLDSDataTableExample = React.createClass({
 
       return val;
     });
-
-    if (sortColumn.property === 'count') {
-      newState.countSortDirection = sortDirection;
-    } else if (sortColumn.property === 'lastModified') {
-      newState.lastModifiedSortDirection = sortDirection;
-    }
 
     this.setState(newState);
   }
