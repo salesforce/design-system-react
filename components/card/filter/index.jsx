@@ -24,7 +24,7 @@ const { PropTypes } = React;
 // the component itself.
 const COMPONENT = 'Filter';
 
-export const idSuffixes = {
+const idSuffixes = {
 	base: '__filter-input'
 }
 
@@ -78,3 +78,4 @@ const Filter = React.createClass({
 
 module.exports = Filter;
 module.exports.COMPONENT = COMPONENT;
+module.exports.idSuffixes = idSuffixes;

@@ -28,12 +28,11 @@ const CardExample = React.createClass({
           headerActions={
             !isEmpty && <SLDSButton label="Delete All Items" onClick={this.handleDeleteAllItems} />
           }
-          heading="Related Items"
+          heading={`Related Items${itemsShowing}`}
           icon={<SLDSIcon category="standard" name="default" size="small" />}
           empty={isEmpty ? <SLDSCardEmpty heading="No Related Items">
               <SLDSButton label="Add Item" onClick={this.handleAddItem} />
             </SLDSCardEmpty> : null}
-          totalItems={this.state.totalItems !== 0 ? `${this.state.totalItems}` : ''}
         >
           <SLDSDataTable items={this.state.items} id="SLDSDataTableExample-1" bordered>
             <SLDSDataTableColumn
