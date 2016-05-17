@@ -22,7 +22,7 @@ import isFunction from 'lodash.isfunction';
 // ## Children
 
 // ### Button
-import Button from '../SLDSButton';
+import Button from '../button';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
