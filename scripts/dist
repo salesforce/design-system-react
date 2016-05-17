@@ -5,3 +5,10 @@ BUILD="webpack --config webpack.config.dist.js"
 
 eval $BUILD
 eval "MINIFY=1 $BUILD"
+
+cp .gitignore .tmp/.gitignore
+cp LICENSE .tmp/LICENSE
+cp package.json .tmp/package.json
+cp README-dist.md .tmp/README.md
+cp -r components .tmp/components
+cp -r utilities .tmp/utilities
