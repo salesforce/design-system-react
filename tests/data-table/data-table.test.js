@@ -252,9 +252,9 @@ describe('DataTable: ', function () {
 		afterEach(removeTable);
 
 		it('calls onSort when a sortable column is clicked', function (done) {
-			this.onSort = (sortColumn, sortDirection) => {
-				sortColumn.property.should.equal('count');
-				sortDirection.should.equal('asc');
+			this.onSort = (data) => {
+				data.property.should.equal('count');
+				data.sortDirection.should.equal('desc');
 				done();
 			};
 
@@ -356,7 +356,7 @@ describe('DataTable: ', function () {
 			const rowActionMenu = scryRenderedComponentsWithType(this.component, DataTableRowActions)[0];
 			const trigger = findRenderedDOMComponentWithClass(rowActionMenu, 'slds-button');
 			Simulate.click(trigger, {});
-			
+
 			setTimeout(() => {
 				const menu = getMenu(document.body);
 				const firstAction = menu.querySelectorAll('.slds-dropdown__item')[0];

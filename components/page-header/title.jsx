@@ -41,8 +41,7 @@ const defaultProps = {
 
 class Title extends Component {
   render() {
-    const { children, title, truncate, align, className } = this.props;
-    const attr = omit(['children', 'title', 'truncate', 'align', 'className'], this.props);
+    const { children, title, truncate, align, className, ...attr } = this.props;
     const classes = this._getClassNames(truncate, align, className);
 
     return (
