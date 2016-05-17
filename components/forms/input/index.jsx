@@ -44,10 +44,17 @@ const Input = React.createClass({
 		/**
 		 * An HTML ID that is shared with ARIA-supported devices with the 
 		 * `aria-controls` attribute in order to relate the input with 
-		 * another region of the page. An example would be a search field 
-		 * linked to the results of the search.
+		 * another region of the page. An example would be a select box  
+		 * that shows or hides a panel.
 		 */
 		ariaControls: PropTypes.string,
+		/**
+		 * An HTML ID that is shared with ARIA-supported devices with the 
+		 * `aria-controls` attribute in order to relate the input with 
+		 * another region of the page. An example would be a search field  
+		 * that shows search results.
+		 */
+		ariaOwns: PropTypes.string,
 		/**
 		 * If present, the label associated with this `input` is overwritten 
 		 * by this text and is visually not shown.
@@ -159,6 +166,7 @@ const Input = React.createClass({
 	render () {
 		const {
 			ariaControls,
+			ariaOwns,
 			assistiveText,
 			className,
 			disabled,
@@ -215,6 +223,7 @@ const Input = React.createClass({
 					{!readOnly && <input
 						{...props}
 						aria-controls={ariaControls}
+						aria-owns={ariaOwns}
 						className="slds-input"
 						disabled={disabled}
 						id={id}
