@@ -51,12 +51,12 @@ const inlineIcons = (spriteType, done) => {
   fs.writeFile(outputPath, content.join('\n'), done);
 };
 
-async.parallel([
-  done => inlineIcons('utility', done),
-  done => inlineIcons('action', done),
-  done => inlineIcons('custom', done),
-  done => inlineIcons('doctype', done),
-  done => inlineIcons('standard', done)
-], err => {
+async.each([
+  'utility',
+  'action',
+  'custom',
+  'doctype',
+  'standard'
+], inlineIcons, err => {
   if (err) console.log(err)
 });

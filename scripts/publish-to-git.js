@@ -26,12 +26,14 @@ const distPaths = {
 };
 const gitDir = '.git';
 
-const exec = ([command, dir = '.', silent], callback) => {
-	require('child_process').exec(command, {
-		cwd: path.resolve(rootPath, dir),
-		stdio: [0, 1, 2],
-		silent
-	}, callback);
+const exec = ([command, dir = '.'], callback) => {
+	const child = require('child_process').exec(command, {
+		cwd: path.resolve(rootPath, dir)
+	}, (err) => {
+		callback(err);
+	});
+
+	child.stdout.on('data', data => process.stdout.write(data.toString()));
 };
 
 ///////////////////////////////////////////////////////////////
@@ -91,9 +93,8 @@ const publish = (done, type) => {
 		[`rm -r ${tmpDir}`]
 	];
 
-	async.eachSeries(actions, exec, (err, stdout) => {
+	async.eachSeries(actions, exec, err => {
 		if (err) throw err;
-		if (stdout) console.log(stdout);
 
 		console.log(`## Successfully published ${type} to git`);
 
