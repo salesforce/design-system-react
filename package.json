@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node --harmony server/dev-app.js",
     "dist": "scripts/dist.sh",
-    "docs": "node scripts/component-docs.js",
+    "docs": "./node_modules/.bin/babel-node scripts/component-docs.js",
     "icons": "./node_modules/.bin/babel-node scripts/inline-icons.js",
     "lint": "eslint --config=./.eslintrc components",
     "pages": "webpack --config webpack.config.github.js",
@@ -128,5 +128,23 @@
     "lint",
     "validate",
     "test"
+  ],
+  "components": [
+    "data-table",
+    "bread-crumb",
+    "button",
+    "button-stateful",
+    "button-group",
+    "card",
+    "date-picker",
+    "icon",
+    "lookup",
+    "menu-dropdown",
+    "menu-picklist",
+    "modal",
+    "notification",
+    "page-header",
+    "popover-tooltip",
+    "time-picker"
   ]
 }
