@@ -53,6 +53,9 @@ export Datepicker from './date-picker';
 export SLDSIcon from './icon';
 export Icon from './icon';
 
+export SLDSButtonIcon from './icon/button-icon';
+export ButtonIcon from './icon';
+
 export SLDSInput from './forms/input';
 export Input from './forms/input';
 
@@ -73,6 +76,9 @@ export ModalTrigger from './modal/trigger';
 
 export SLDSNotification from './notification';
 export Notification from './notification';
+
+export SLDSPageHeader from './page-header';
+export PageHeader from './page-header';
 
 export SLDSPopoverTooltip from './popover-tooltip';
 export PopoverTooltip from './popover-tooltip';
