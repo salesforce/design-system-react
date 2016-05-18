@@ -102,13 +102,13 @@ const publish = (done, type) => {
 };
 
 async.series([
-	(done) => exec(['npm run dist'], done),
+	done => exec(['npm run dist'], done),
 
-	(done) => cleanPackageJson(done, 'es'),
-	(done) => publish(done, 'es'),
+	done => cleanPackageJson(done, 'es'),
+	done => publish(done, 'es'),
 
-	(done) => cleanPackageJson(done, 'commonjs'),
-	(done) => publish(done, 'commonjs')
+	done => cleanPackageJson(done, 'commonjs'),
+	done => publish(done, 'commonjs')
 ], err => {
 	if (err) throw err;
 });
