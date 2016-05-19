@@ -1,7 +1,0 @@
-rm -rf dist/
-mkdir -p dist/
-
-BUILD="webpack --devtool source-map --config webpack.config.build.js"
-
-eval $BUILD
-eval "MINIFY=1 $BUILD"

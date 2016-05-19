@@ -46,7 +46,7 @@ npm test
 ```
 npm install
 npm run docs
-npm run compile
+npm run dist
 ```
 
 
@@ -56,12 +56,12 @@ Note: design-system-react is optimized for react0.14.x and uses Lightning Design
 
 ### NPM
 
-Because this project is not open-sourced, we cannot publish it to npm. Therefore we have a build script that compiles `src/` to es5 and outputs it to `lib/` where outside projects pull from. Add the following line to your `package.json` devDependencies and run `npm install`.
+Because this project is not open-sourced, we cannot publish it to npm. Therefore we have a build script that compiles `src/` to es5 and outputs it to a tagged git release where outside projects pull from. Add the following line to your `package.json` devDependencies and run `npm install`.
 
 ```
 # package.json
 
-"design-system-react": "git+ssh://git@github.com:salesforce-ux/design-system-react.git#master",
+"design-system-react": "git+ssh://git@github.com:salesforce-ux/design-system-react.git#v0.0.28",
 ```
 
 Then, in your React code, refer to each Lightning Design System component using the "SLDS" prefix, e.g. SLDSPopoverTooltip.
