@@ -1,0 +1,25 @@
+# filesystem
+.DS_Store
+
+# dependencies
+node_modules
+
+# gh-pages
+_site/*
+
+# Editors / IDEs
+.idea
+*.sublime-project
+*.sublime-workspace
+
+# node_module cache for TravisCI, etc.
+node_modules.tar.gz
+
+npm-debug.log
+.esformatter
+.npm
+.tmp*
+server/node_modules
+server/public/assets/bundle
+scripts/pre-commit.sh
+coverage/
