@@ -75,14 +75,14 @@ const publish = (done, type) => {
 	if (argv.tag) {
 		actions = [
 			...actions,
-			[`git commit -m "Release commit for ${argv.tag}-${type}"`, tmpDir],
+			[`git commit -m "Release commit for ${argv.tag}-${type} [ci skip]"`, tmpDir],
 			[`git tag ${argv.tag}${typeSuffix}`, tmpDir, true],
 			[`git push ${remote} -f --tags ${argv.tag}${typeSuffix}`, tmpDir]
 		];
 	} else {
 		actions = [
 			...actions,
-			[`git commit -m "Release commit for ${version}-${type}"`, tmpDir],
+			[`git commit -m "Release commit for ${version}-${type} [ci skip]"`, tmpDir],
 			[`git tag v${version}${typeSuffix}`, tmpDir],
 			[`git push ${remote} --tags v${version}${typeSuffix}`, tmpDir]
 		];
