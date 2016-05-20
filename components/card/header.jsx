@@ -34,9 +34,9 @@ const COMPONENT = 'CardHeader';
 const cssClasses = {
 	base: 'slds-card__header',
 }
+
 const idSuffixes = {
 	headerActions: '__header-actions',
-	filter: '__filter-input',
 	heading: '__heading'
 }
 
@@ -71,7 +71,7 @@ const CardHeader = React.createClass({
 
 	_renderFilter () {
 		const filter = React.cloneElement(this.props.filter, {
-			id: this.props.id + idSuffixes.filter
+			id: this.props.id
 		})
 		return (
 			<div className="slds-input-has-icon slds-input-has-icon--left slds-size--1-of-3">
@@ -82,7 +82,12 @@ const CardHeader = React.createClass({
 
 	_renderMediaObjectBody () {
 		return (
-			<h2 id={this.props.id + idSuffixes.heading} className="slds-text-heading--small slds-truncate" title={this.props.heading}>{this.props.heading}</h2>
+			<h2 
+				id={this.props.id + idSuffixes.heading}
+				className="slds-text-heading--small slds-truncate"
+				title={this.props.heading}>
+				{this.props.heading}
+			</h2>
 		);
 	},
 

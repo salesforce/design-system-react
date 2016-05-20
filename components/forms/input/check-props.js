@@ -10,26 +10,19 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 /* eslint-disable indent */
 
-// ### React
-// React is an external dependency of the project.
-import React from 'react';
+import oneOfRequiredProperty from '../../../utilities/warning/one-of-required-property';
 
-const cssClasses = {
-	base: 'slds-card__body'
+let checkProps = function () {};
+
+if (process.env.NODE_ENV !== 'production') {
+	checkProps = function (COMPONENT, props) {
+		/* eslint-disable max-len */
+		oneOfRequiredProperty(COMPONENT, {
+			assistiveText: props.assistiveText, 
+			label: props.label
+		});
+		/* eslint-enable max-len */
+	};
 }
 
-const idSuffixes = {
-	base: '__body'
-};
-
-const CardBody = (props) => (
-		<div
-			className={cssClasses.base}
-			id={props.id + idSuffixes.base}>
-			{props.children}
-		</div>
-);
-
-module.exports = CardBody;
-module.exports.cssClasses = cssClasses;
-module.exports.idSuffixes = idSuffixes;
+export default checkProps;

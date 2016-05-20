@@ -38,7 +38,8 @@ const config = {
 				include: [
 					path.join(__dirname, 'components'),
 					path.join(__dirname, 'server/dev-examples'),
-					path.join(__dirname, 'test')
+					path.join(__dirname, 'test'),
+					path.join(__dirname, 'utilities')
 				]
 			}
 		]

@@ -10,26 +10,31 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 /* eslint-disable indent */
 
-// ### React
-// React is an external dependency of the project.
-import React from 'react';
+// This function will deliver an error message to the browser console when all of the props passed in are undefined (falsey).
+import warning from 'warning';
 
-const cssClasses = {
-	base: 'slds-card__body'
+let oneOfRequired = function () {};
+
+if (process.env.NODE_ENV !== 'production') {
+	const hasWarned = {};
+
+	oneOfRequired = function (control, selectedProps, comment) {
+		const additionalComment = comment ? ` ${comment}` : '';
+		let atLeastOnePropIsSet = false;
+		let keys = Object.keys(selectedProps)
+		keys.forEach( (key) => {
+			if(selectedProps[key]) {
+				atLeastOnePropIsSet = true;
+			}
+		});
+
+		if (!hasWarned[control]) {
+			/* eslint-disable max-len */
+			warning(atLeastOnePropIsSet, `[Design System React] One of the following props are required by ${control}: [${keys.join()}].${additionalComment}`);
+			/* eslint-enable max-len */
+			hasWarned[control] = !!selectedProps;
+		}
+	};
 }
 
-const idSuffixes = {
-	base: '__body'
-};
-
-const CardBody = (props) => (
-		<div
-			className={cssClasses.base}
-			id={props.id + idSuffixes.base}>
-			{props.children}
-		</div>
-);
-
-module.exports = CardBody;
-module.exports.cssClasses = cssClasses;
-module.exports.idSuffixes = idSuffixes;
+export default oneOfRequired;
