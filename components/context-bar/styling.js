@@ -127,12 +127,11 @@ const fixedSass = `
 }
 `;
 
-
 const getComponentStyles = () => {
   function replacer(match, p1) {
     return SASS_VARIABLES[p1] || p1;
   }
-  
+
   return (mainSass + fixedSass).replace(/(\$[a-zA-Z0-9\-]+)/g, replacer);
 }
 

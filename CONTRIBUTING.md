@@ -64,7 +64,4 @@ export default MyComponent;
 3. Run `npm docs` to build the documentation from comments in the code.
 3. After your PR is merged, make sure it appears here: [https://design-system-react-stage.herokuapp.com/#/](https://design-system-react-stage.herokuapp.com/#/). If it doesn't, reach out to [Ivan Bogdanov](https://github.com/madpotato) or [Donielle Berg](https://github.com/donnieberg).
 4. Get your component/feature approved by the UX Accessibility Team (refer to the link above).
-5. Once all tests pass and the Accessibility Team approves, run `npm compile`. Because this project is not open-sourced, we cannot publish it to npm. Therefore we have a build script that compiles `src/` to es5 and outputs it to `lib/` where outside projects pull from.
-6. If you're creating a new component, please add it to the [README.md](https://github.com/salesforce-ux/design-system-react/blob/master/README.md)
-
-
+5. If you're creating a new component, please add it to the [README.md](https://github.com/salesforce-ux/design-system-react/blob/master/README.md)
