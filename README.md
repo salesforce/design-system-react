@@ -52,7 +52,7 @@ npm run dist
 
 ## Getting Started
 
-Note: design-system-react is optimized for react0.14.x and uses Lightning Design System 1.0.0.
+Note: design-system-react is optimized for React 0.14.x and uses Lightning Design System 1.0.3.
 
 ### NPM
 
@@ -61,7 +61,7 @@ Because this project is not open-sourced, we cannot publish it to npm. Therefore
 ```
 # package.json
 
-"design-system-react": "git+ssh://git@github.com:salesforce-ux/design-system-react.git#v0.0.28",
+"design-system-react": "git+ssh://git@github.com:salesforce-ux/design-system-react.git#v0.0.29",
 ```
 
 Then, in your React code, refer to each Lightning Design System component using the "SLDS" prefix, e.g. SLDSPopoverTooltip.
@@ -103,7 +103,7 @@ Note: the SLDSPopoverTooltip requires a focusable element as a child (ie. either
 
 4.  **Which version of React and Lightning Design System do you support?**
 
-    Design System React is optimized for react0.14.x and uses Lightning Design System 1.0.0.
+    Design System React is optimized for React 0.14.x and uses Lightning Design System 1.0.3.
 
 5.  **Which browsers are supported?**
 
