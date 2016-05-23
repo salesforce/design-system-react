@@ -3,7 +3,7 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 
-import '@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system-scoped.min.css';
+import '@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.css';
 
 import { COMPONENT } from '../../components/data-table';
 import DataTable from '../../components/data-table';
