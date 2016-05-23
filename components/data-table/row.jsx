@@ -28,12 +28,11 @@ import Checkbox from '../forms/checkbox';
 // ### Event Helpers
 import { EventUtil } from "../../utilities";
 
+// ## Constants
+import { DATA_TABLE_ROW } from './constants';
+
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
-
-// The component name will be used as the `DisplayName` and exported along with
-// the component itself.
-export const COMPONENT = 'DataTableRow';
 
 /**
  * Used internally, provides row rendering to the DataTable.
@@ -41,7 +40,7 @@ export const COMPONENT = 'DataTableRow';
 const DataTableRow = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: COMPONENT,
+	displayName: DATA_TABLE_ROW,
 
 	// ### Prop Types
 	propTypes: {

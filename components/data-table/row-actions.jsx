@@ -17,19 +17,16 @@ import React from 'react';
 import isFunction from 'lodash.isfunction';
 
 // ## Children
-
-// ### Dropdown
 import Dropdown from '../menu-dropdown';
 
 // ### Event Helpers
 import { EventUtil } from "../../utilities";
 
+// ## Constants
+import { DATA_TABLE_ROW_ACTIONS } from './constants';
+
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
-
-// The component name will be used as the `DisplayName` and exported along with
-// the component itself.
-export const COMPONENT = 'DataTableRowActions';
 
 /**
  * RowActions provide a mechanism for defining a menu to display alongside each row in the DataTable.
@@ -37,7 +34,7 @@ export const COMPONENT = 'DataTableRowActions';
 const DataTableRowActions = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: COMPONENT,
+	displayName: DATA_TABLE_ROW_ACTIONS,
 
 	// ### Prop Types
 	propTypes: {

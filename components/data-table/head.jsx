@@ -21,12 +21,11 @@ import Button from '../button';
 import Checkbox from '../forms/checkbox';
 import HeaderCell from './header-cell';
 
+// ## Constants
+import { DATA_TABLE_HEAD } from './constants';
+
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
-
-// The component name will be used as the `DisplayName` and exported along with
-// the component itself.
-export const COMPONENT = 'DataTableHead';
 
 /**
  * Used internally, provides header row rendering to the DataTable.
@@ -34,7 +33,7 @@ export const COMPONENT = 'DataTableHead';
 const DataTableHead = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: COMPONENT,
+	displayName: DATA_TABLE_HEAD,
 
 	// ### Prop Types
 	propTypes: {

@@ -13,12 +13,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React from 'react';
 
+// ## Constants
+import { DATA_TABLE_COLUMN } from './constants';
+
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
-
-// The component name will be used as the `DisplayName` and exported along with
-// the component itself.
-export const COMPONENT = 'DataTableColumn';
 
 /**
  * Columns define the structure of the data displayed in the DataTable.
@@ -26,7 +25,7 @@ export const COMPONENT = 'DataTableColumn';
 const DataTableColumn = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: COMPONENT,
+	displayName: DATA_TABLE_COLUMN,
 
 	// ### Prop Types
 	propTypes: {
