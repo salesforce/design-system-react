@@ -9,21 +9,12 @@ import { DATA_TABLE } from '../../components/data-table/constants';
 import DataTable from '../../components/data-table';
 import Column from '../../components/data-table/column';
 
-storiesOf(DATA_TABLE, module)
-	.add('striped', () => getDataTable({
-		striped: true
-	}))
-	.add('bordered', () => getDataTable({
-		bordered: true
-	}))
-	.add('selectable', () => getDataTable({
-		selectRows: true
-	}));
+const DemoDataTable = React.createClass({
+	displayName: 'DemoDataTable',
 
-function getDataTable(props) {
-	return (
-		<DataTable
-			items={[
+	getInitialState () {
+		return {
+			items: [
 				{
 					id: '8IKZHZZV80',
 					name: 'Cloudhub',
@@ -40,25 +31,76 @@ function getDataTable(props) {
 					count: 101280,
 					lastModified: 'Today'
 				}
-			]}
-			onChange={action('change')}
-			onSort={action('sort')}
-			{...props}
-		>
-			<Column
-				label="Opportunity Name"
-				property="name"
-				truncate
-			/>
-			<Column
-				label="Count"
-				property="count"
-			/>
-			<Column
-				label="Last Modified"
-				property="lastModified"
-				truncate
-			/>
-		</DataTable>
-	);
-}
+			],
+			selection: []
+		};
+	},
+
+	render () {
+		return (
+			<DataTable
+				id="DemoDataTable"
+				items={this.state.items}
+				onChange={this.handleChange}
+				onSort={this.handleSort}
+				selection={this.state.selection}
+				{...this.props}
+			>
+				<Column
+					label="Opportunity Name"
+					property="name"
+					truncate
+				/>
+				<Column
+					label="Count"
+					property="count"
+					sortable
+				/>
+				<Column
+					label="Last Modified"
+					property="lastModified"
+					sortable
+					truncate
+				/>
+			</DataTable>
+		);
+	},
+
+	handleChange (selection) {
+		action('change')(...arguments);
+
+		this.setState({ selection });
+	},
+
+	handleSort (sortColumn) {
+		action('sort')(...arguments);
+
+		const sortProperty = sortColumn.property;
+		const sortDirection = sortColumn.sortDirection;
+		const newState = {
+			items: [...this.state.items]
+		};
+
+		newState.items = newState.items.sort((a, b) => {
+			let val = 0;
+
+			if (a[sortProperty] > b[sortProperty]) {
+				val = 1;
+			}
+			if (a[sortProperty] < b[sortProperty]) {
+				val = -1;
+			}
+
+			if (sortDirection === 'desc') val = val * -1;
+
+			return val;
+		});
+
+		this.setState(newState);
+	}
+});
+
+storiesOf(DATA_TABLE, module)
+	.add('striped', () => <DemoDataTable striped={true} />)
+	.add('bordered', () => <DemoDataTable bordered={true} />)
+	.add('selectable', () => <DemoDataTable selectRows={true} />);
