@@ -2,20 +2,15 @@
   "name": "design-system-react",
   "version": "0.0.29",
   "description": "Salesforce Lightning Design System React components",
-  "license": "SEE LICENSE IN README.md",
+  "license": "BSD-3-Clause",
   "scripts": {
-    "dev": "node --harmony server/dev-app.js",
     "dist": "scripts/dist.sh",
-    "docs": "./node_modules/.bin/babel-node scripts/component-docs.js",
     "icons": "./node_modules/.bin/babel-node scripts/inline-icons.js",
     "lint": "eslint --config=./.eslintrc components",
-    "pages": "webpack --config webpack.config.github.js",
-    "postinstall": "node scripts/postinstall",
     "publish-to-git": "./node_modules/.bin/babel-node scripts/publish-to-git.js",
     "publish-to-edge": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge",
     "publish-to-upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge --remote=upstream && ./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
-    "start": "node server/index.js & node scripts/start.js",
-    "storybook": "start-storybook -p 9001",
+    "start": "start-storybook -p 9001",
     "test": "scripts/test.sh --single-run",
     "validate": "npm ls"
   },
@@ -40,7 +35,7 @@
     "url": "https://github.com/salesforce-ux/design-system-react/issues"
   },
   "main": "components/index.js",
-  "homepage": "https://design-system-react.herokuapp.com",
+  "homepage": "https://react.lightningdesignsystem.com",
   "dependencies": {
     "classnames": "^2.1.3",
     "babel-preset-stage-1": "^6.5.0",
@@ -62,7 +57,7 @@
     "warning": "^2.1.0"
   },
   "devDependencies": {
-    "@kadira/storybook": "^1.19.0",
+    "@kadira/storybook": "^1.27.0",
     "@salesforce-ux/design-system": "1.0.3",
     "@salesforce-ux/icons": "4.0.0",
     "async": "^2.0.0-rc.5",
