@@ -1,67 +1,64 @@
-var path = require('path');
-var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+/* eslint-disable indent */
+'use strict';
 
-module.exports = function () {
-  return {
-    entry: {
-      demo: [
-        './demo/index.js'
-      ]
-    },
-    output: {
-      path: path.join(__dirname, 'dist'),
-      filename: '[name].js',
-      publicPath: 'http://localhost:3001/assets/bundle'
-    },
-    plugins: [
-      new webpack.NoErrorsPlugin(),
-      new ExtractTextPlugin('[name].css', {
-        allChunks: true
-      })
-    ],
-    resolve: {
-      extensions: ['', '.js', '.jsx'],
-      alias: {
-        'design-system-react': __dirname + '/components',
-        'components': __dirname + '/components',
-        'demo': __dirname + '/demo',
-        'docs': __dirname + '/demo/docs'
-      }
-    },
-    module: {
-      loaders: [
-        {
-          test: /\.jsx?$/,
-          loaders: ['babel'],
-          include: [
-            path.join(__dirname, 'demo'),
-            path.join(__dirname, 'components')
-          ]
-        },
-        {
-          test: /\.(js|jsx)?$/,
-          loaders: ['babel'],
-          include: [
-            path.join(__dirname, 'tests'),
-            path.join(__dirname, 'utilities')
-          ]
-        },
-        {
-          test: /\.css$/,
-          loader: ExtractTextPlugin.extract('style-loader', 'raw-loader')
-        },
-        {
-          test: /\.(woff|woff2|svg)$/,
-          loader: 'url-loader?limit=100000'
-        },
-        {
-          test: /Samples.js/,
-          //for using fs to compile component example files into strings for codemirror demos
-          loader: 'transform?brfs'
-        }
-      ]
-    },
-    node: { fs: 'empty' }
-  }
+const path = require('path');
+const StringReplacePlugin = require('string-replace-webpack-plugin');
+
+module.exports = {
+  entry: {
+		'design-system-react': ['./components']
+	},
+	resolve: {
+		extensions: [
+			'',
+			'.js',
+			'.jsx'
+		]
+	},
+	devtool: 'source-map',
+	output: {
+		path: path.join(__dirname, '.tmp'),
+		filename: '[name].js',
+		publicPath: '/'
+	},
+	module: {
+		loaders: [
+			{
+				test: /\.jsx?$/,
+				loaders: ['babel', StringReplacePlugin.replace({
+					replacements: [{
+						pattern: /__VERSION__/g,
+						replacement: () => packageJson.version
+					}]
+        })],
+				include: [
+					path.join(__dirname, 'components'),
+          path.join(__dirname, 'utilities')
+				]
+			},
+			{
+				test: /\.json$/,
+				loader: 'json-loader'
+			},
+			{
+				test: /\.css$/,
+				loaders: ["style", "css?sourceMap"]
+			},
+			{
+				test: /\.scss$/,
+				loaders: ["style", "css?sourceMap", "sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true"]
+			},
+			{
+				test: /\.(svg|gif|jpe?g|png)$/,
+				loader: 'url-loader?limit=10000'
+			},
+			{
+				test: /\.(eot|woff|woff2|ttf)$/,
+				loader: 'url-loader?limit=30&name=assets/fonts/webfonts/[name].[ext]'
+			}
+		]
+	},
+	plugins: [
+    new StringReplacePlugin()
+	]
 };

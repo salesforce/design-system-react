@@ -1,26 +1,26 @@
 /* eslint-disable indent */
-"use strict";
+'use strict';
 
 const fs = require('fs');
-const path = require('path');
 const webpack = require('webpack');
-const StringReplacePlugin = require('string-replace-webpack-plugin');
 
 const packageJson = require('./package.json');
 const header = packageJson.name + '\n' + 'v' + packageJson.version + '\n';
 const license = fs.readFileSync('./LICENSE', 'utf8');
 
-const plugins = [
-	new StringReplacePlugin(),
-	new webpack.BannerPlugin(header + license),
-	new webpack.DefinePlugin({
-		'process.env': { NODE_ENV: JSON.stringify('production') }
-	})
-];
+const baseConfig = require('./webpack.config');
+
+const config = Object.assign({}, baseConfig, {
+	externals: {
+		react: { amd: 'react', commonjs: 'react', commonjs2: 'react', root: 'React' },
+		'react/addons': { amd: 'react', commonjs: 'react', commonjs2: 'react', root: 'React' },
+		'react-dom': { amd: 'react-dom', commonjs: 'react-dom', commonjs2: 'react-dom', root: 'ReactDOM' }
+	}
+});
 
 let FILENAME = '[name].js';
 if (process.env.MINIFY) {
-  plugins.push(
+  config.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
 			mangle: {
 				except: ['$', 'exports', 'require']
@@ -30,50 +30,13 @@ if (process.env.MINIFY) {
   FILENAME = '[name].min.js';
 }
 
-const config = {
-	entry: {
-		'design-system-react': ['./components']
-	},
-	resolve: {
-		extensions: [
-			'',
-			'.js',
-			'.jsx'
-		],
-		alias: {},
-	},
-	devtool: 'source-map',
-	externals: {
-		react: { amd: 'react', commonjs: 'react', commonjs2: 'react', root: 'React' },
-		'react/addons': { amd: 'react', commonjs: 'react', commonjs2: 'react', root: 'React' },
-		'react-dom': { amd: 'react-dom', commonjs: 'react-dom', commonjs2: 'react-dom', root: 'ReactDOM' }
-	},
-	output: {
-		filename: FILENAME,
-		library: '[name]',
-		libraryTarget: 'umd',
-		path: './.tmp/',
-		publicPath: '/.tmp/'
-	},
-	module: {
-		loaders: [
-			{
-				test: /\.jsx?$/,
-				include: [
-					path.join(__dirname, 'components'),
-					path.join(__dirname, 'utilities')
-				],
-				loaders: ['babel', StringReplacePlugin.replace({
-					replacements: [{
-						pattern: /__VERSION__/g,
-						replacement: () => packageJson.version
-					}]
-				})]
-			}
-		],
-		preLoaders: []
-	},
-	plugins
-};
+config.output.filename = FILENAME;
+config.output.library = '[name]';
+config.output.libraryTarget = 'umd';
+
+config.plugins.push(new webpack.BannerPlugin(header + license));
+config.plugins.push(new webpack.DefinePlugin({
+	'process.env': { NODE_ENV: JSON.stringify('production') }
+}));
 
 module.exports = config;
