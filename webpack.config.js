@@ -42,19 +42,15 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				loaders: ["style", "css?sourceMap"]
-			},
-			{
-				test: /\.scss$/,
-				loaders: ["style", "css?sourceMap", "sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true"]
+				loaders: ['style', 'css']
 			},
 			{
 				test: /\.(svg|gif|jpe?g|png)$/,
-				loader: 'url-loader?limit=10000'
+				loader: 'file?limit=10000'
 			},
 			{
 				test: /\.(eot|woff|woff2|ttf)$/,
-				loader: 'url-loader?limit=30&name=assets/fonts/webfonts/[name].[ext]'
+				loader: 'file?limit=30&name=fonts/webfonts/[name].[ext]'
 			}
 		]
 	},
