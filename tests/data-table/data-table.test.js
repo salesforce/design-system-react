@@ -4,9 +4,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
+import chai from 'chai';
+
 import DataTable from '../../components/data-table';
 import DataTableColumn from '../../components/data-table/column';
 import DataTableRowActions from '../../components/data-table/row-actions';
+
+chai.should();
 
 const { Simulate,
  				scryRenderedComponentsWithType,
@@ -69,7 +73,7 @@ describe('DataTable: ', function () {
 
 	const getRow = (dom, row) => {
 		const tbody = getTable(dom).querySelectorAll('tbody')[0];
-		return tr = tbody.querySelectorAll('tr')[row-1];
+		return tbody.querySelectorAll('tr')[row-1];
 	};
 
 	const getCell = (dom, row, column) => {
@@ -248,9 +252,9 @@ describe('DataTable: ', function () {
 		afterEach(removeTable);
 
 		it('calls onSort when a sortable column is clicked', function (done) {
-			this.onSort = (sortColumn, sortDirection) => {
-				sortColumn.property.should.equal('count');
-				sortDirection.should.equal('asc');
+			this.onSort = (data) => {
+				data.property.should.equal('count');
+				data.sortDirection.should.equal('desc');
 				done();
 			};
 
@@ -352,7 +356,7 @@ describe('DataTable: ', function () {
 			const rowActionMenu = scryRenderedComponentsWithType(this.component, DataTableRowActions)[0];
 			const trigger = findRenderedDOMComponentWithClass(rowActionMenu, 'slds-button');
 			Simulate.click(trigger, {});
-			
+
 			setTimeout(() => {
 				const menu = getMenu(document.body);
 				const firstAction = menu.querySelectorAll('.slds-dropdown__item')[0];

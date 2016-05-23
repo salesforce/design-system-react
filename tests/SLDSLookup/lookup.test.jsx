@@ -1,6 +1,7 @@
 import React from 'react';
 import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
+import { expect } from 'chai';
 
 import {SLDSLookup} from '../../components';
 const Header = SLDSLookup.DefaultHeader;
@@ -50,12 +51,12 @@ describe('SLDSLookup: ',  function(){
     it('renders label', function() {
       let lookup = generateLookup(getLookup());
       let label = lookup.getElementsByTagName("label")[0];
-      expect(label.innerText).to.equal('Account');
+      expect(label.textContent).to.equal('Account');
     });
     it('LookupWithSelection - renders label', function() {
       let lookup = generateLookup(getLookupWithSelection());
       let label = lookup.getElementsByTagName("label")[0];
-      expect(label.innerText).to.equal('Account');
+      expect(label.textContent).to.equal('Account');
     });
   });
 
@@ -137,7 +138,7 @@ describe('SLDSLookup: ',  function(){
       TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
       TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
       TestUtils.Simulate.keyDown(input, {key: "Enter", keyCode: 13, which: 13});
-      let selected = lookup.getElementsByTagName("a")[0].getElementsByClassName('slds-pill__label')[0].innerText;
+      let selected = lookup.getElementsByTagName("a")[0].getElementsByClassName('slds-pill__label')[0].textContent;
       expect(selected).to.equal('Paper St. Soap Company');
     });
 
@@ -149,7 +150,7 @@ describe('SLDSLookup: ',  function(){
       TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
       TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
       TestUtils.Simulate.keyDown(input, {key: "Enter", keyCode: 13, which: 13});
-      let selected = lookup.getElementsByTagName("a")[0].getElementsByClassName('slds-pill__label')[0].innerText;
+      let selected = lookup.getElementsByTagName("a")[0].getElementsByClassName('slds-pill__label')[0].textContent;
       expect(selected).to.equal('Tyrell Corp');
     });
 

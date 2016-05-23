@@ -206,7 +206,7 @@ const DataTable = React.createClass({
 					canSelectRows={canSelectRows}
 					columns={columns}
 					onToggleAll={this.handleToggleAll}
-					onSort={this.handleSort}
+					onSort={this.props.onSort}
 					showRowActions={!!RowActions}
 				/>
 				<tbody>
@@ -231,15 +231,15 @@ const DataTable = React.createClass({
 		);
 	},
 
-	handleToggleAll (selected) {
+	handleToggleAll (selected, e) {
 		if (isFunction(this.props.onChange)) {
 			const selection = selected ? [...this.props.items] : [];
 
-			this.props.onChange(selection);
+			this.props.onChange(selection, e);
 		}
 	},
 
-	handleRowToggle (item, selected) {
+	handleRowToggle (item, selected, e) {
 		if (isFunction(this.props.onChange)) {
 			let selection;
 
@@ -249,15 +249,9 @@ const DataTable = React.createClass({
 				selection = reject(this.props.selection, item);
 			}
 
-			this.props.onChange(selection);
-		}
-	},
-
-	handleSort (sortColumn) {
-		if (isFunction(this.props.onSort)) {
-			this.props.onSort(sortColumn, sortColumn.sortDirection === 'asc' ? 'desc' : 'asc');
+			this.props.onChange(selection, e);
 		}
 	}
 });
 
-export default DataTable;
+module.exports = DataTable;

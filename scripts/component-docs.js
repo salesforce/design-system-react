@@ -1,39 +1,20 @@
-var reactDocs = require('react-docgen');
-var fs = require('fs');
-var path = require('path');
+import { parse } from 'react-docgen';
+import fs from 'fs';
+import path from 'path';
+import { components } from '../package.json';
 
-var componentNames = [
-  'data-table',
-  'SLDSBreadCrumb',
-  'SLDSButton',
-  'SLDSButtonStateful',
-  'SLDSButtonGroup',
-  'card',
-  'SLDSIcon',
-  'SLDSLookup',
-  'SLDSMenuDropdown',
-  'SLDSMenuPicklist',
-  'SLDSModal',
-  'SLDSNotification',
-  'SLDSPageHeader',
-  'SLDSPopoverTooltip',
-  'SLDSDatepickerSingleSelect',
-  'SLDSTimepicker',
-  //'SLDSGrid',
-  //'SLDSUtilityIcon',
-];
+const output = {};
 
-var output = {};
+components.forEach(componentName => {
+  const inputPath = path.join(__dirname, '../components', componentName, 'index.jsx');
+  const src = fs.readFileSync(inputPath, 'utf8');
+  const doc = parse(src);
 
-componentNames.forEach(function(componentName){
-  var inputPath = path.join(__dirname,'..','components',componentName,'index.jsx');
-  var src = fs.readFileSync(inputPath,'utf8');
-  var doc = reactDocs.parse(src);
   output[componentName] = doc;
 });
 
-var outputPath = path.join(__dirname,'..','demo','docs','components.json');
+const outputPath = path.join(__dirname, '../demo/docs/components.json');
 
-fs.writeFile(outputPath, JSON.stringify(output,null, 4), function (err) {
+fs.writeFile(outputPath, JSON.stringify(output, null, 4), err => {
   if (err) return console.log(err);
 });

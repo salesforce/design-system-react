@@ -20,7 +20,7 @@ import CardSection from './pages/CardSection';
 import ContextBarSection from './pages/ContextBarSection';
 import DataTableSection from './pages/DataTableSection';
 import DateInputSection from './pages/DateInputSection';
-import DatePickerSingleSelectSection from './pages/DatePickerSingleSelectSection';
+import DatePickerSection from './pages/DatePickerSection';
 import TimePickerSection from './pages/TimePickerSection';
 import DropdownBaseSection from './pages/DropdownSection';
 import IconSection from './pages/IconSection';
@@ -51,15 +51,15 @@ const routes = (
       <Route name="data-table" path="data-table" handler={DataTableSection}/>
       <Route name="dateinput" path="dateinput" handler={DateInputSection}/>
       <Route name="timepicker" path="timepicker" handler={TimePickerSection}/>
-      <Route name="datepicker" path="datepicker" handler={DatePickerSingleSelectSection}/>
-      <Route name="dropdown" path="dropdown" handler={DropdownBaseSection}/>
+      <Route name="datepicker" path="datepicker" handler={DatePickerSection}/>
+      <Route name="menu-dropdown" path="dropdown" handler={DropdownBaseSection}/>
+      <Route name="menu-picklist" path="picklist" handler={PicklistSection}/>
       <Route name="icon" path="icon" handler={IconSection}/>
       <Route name="lookup" path="lookup" handler={LookupSection}/>
       <Route name="modal" path="modal" handler={ModalSection}/>
       <Route name="notification" path="notification" handler={NotificationSection}/>
       <Route name="page-header" path="page-header" handler={PageHeaderSection}/>
-      <Route name="picklist" path="picklist" handler={PicklistSection}/>
-      <Route name="tooltip" path="tooltip" handler={TooltipSection}/>
+      <Route name="popover-tooltip" path="tooltip" handler={TooltipSection}/>
       <Route name="faq" path="faq" handler={FAQ} />
     </Route>
 );

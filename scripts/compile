@@ -1,8 +1,0 @@
-rm -rf dist/
-mkdir -p dist/
-rm -rf lib/
-mkdir -p lib/
-
-BABEL="babel -d lib/ components/"
-
-eval $BABEL

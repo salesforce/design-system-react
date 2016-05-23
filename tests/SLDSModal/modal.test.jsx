@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
+import { expect } from 'chai';
 
 import {SLDSModal} from '../../components'
 const { Simulate,
@@ -10,41 +11,43 @@ const { Simulate,
         findRenderedDOMComponentWithClass } = TestUtils
 
 describe('SLDSModal: ', function(){
-  let body, opener;
+  let container, renderedNode;
 
   afterEach(() => {
-    document.body.removeChild(body)
-    Array.prototype.forEach.call(document.body.querySelectorAll('.ReactModalPortal'), c => document.body.removeChild(c))
+   ReactDOM.unmountComponentAtNode(container);
+   document.body.removeChild(container)
+   container = null;
   })
 
   const defaultProps = {align: "top", isOpen: false, children: <div>hello</div>}
 
-  const renderModal = inst => {
-    body = document.createElement('div');
-    opener = <button>{inst}</button>
-    document.body.appendChild(body)
-    return ReactDOM.render(opener, body)
+  const renderModal = (modalInstance) => {
+    container = document.createElement('div');
+    const opener = <button>{modalInstance}</button>;
+    document.body.appendChild(container);
+    renderedNode = ReactDOM.render(opener, container);
+    return renderedNode;
   }
 
-  const createModal = props => React.createElement(SLDSModal, assign({}, defaultProps, props))
+  const createModal = (props) => React.createElement(SLDSModal, assign({}, defaultProps, props));
 
-  const getModal = ps => renderModal(createModal(ps))
+  const getModal = (props) => renderModal(createModal(props));
 
-  const getModalNode = dom => dom.querySelector('.slds-modal')
+  const getModalNode = (dom) => dom.querySelector('.slds-modal');
 
   describe('Closed modal', () => {
     let cmp;
 
     beforeEach(() => {
-      cmp = getModal({isOpen: false})
+      cmp = getModal({isOpen: false});
     })
 
     it('updates the overflow', () => {
-      expect(document.body.style.overflow).to.equal('inherit')
+      expect(document.body.style.overflow).to.equal('inherit');
     })
 
     it('does not render to the body', () => {
-      expect(getModalNode(document.body)).to.be.null
+      expect(getModalNode(document.body)).to.be.null;
     })
   })
 
@@ -53,24 +56,24 @@ describe('SLDSModal: ', function(){
 
     beforeEach(() => {
       closed = false;
-      cmp = getModal({isOpen: true, size: 'large', onRequestClose: () => closed = true})
-      modal = getModalNode(document.body)
+      cmp = getModal({isOpen: true, size: 'large', onRequestClose: () => closed = true});
+      modal = getModalNode(document.body);
     })
 
     it('renders a noscript', () => {
-      const renderedNode = React.findDOMNode(cmp)
-      expect(renderedNode.firstChild.tagName).to.equal('NOSCRIPT')
+      const renderedNode = React.findDOMNode(cmp);
+      expect(renderedNode.firstChild.tagName).to.equal('NOSCRIPT');
     })
 
     it('adds the large class', () => {
-      expect(modal.className).to.include('slds-modal--large')
+      expect(modal.className).to.include('slds-modal--large');
     })
 
     it('calls onRequestClose', () => {
-      const close_btn = modal.querySelector('.slds-modal__close')
-      expect(closed).to.be.false
-      Simulate.click(close_btn, {})
-      expect(closed).to.be.true
+      const close_btn = modal.querySelector('.slds-modal__close');
+      expect(closed).to.be.false;
+      Simulate.click(close_btn, {});
+      expect(closed).to.be.true;
     })
   })
 
@@ -80,7 +83,7 @@ describe('SLDSModal: ', function(){
 
     beforeEach(() => {
       const feet = [<div className="toes">Toes</div>]
-      cmp = getModal({isOpen: true, prompt: 'warning', footer:feet })
+      cmp = getModal({isOpen: true, prompt: 'warning', footer: feet })
       modal = getModalNode(document.body)
     })
 
@@ -126,9 +129,14 @@ describe('SLDSModal: ', function(){
       modal = getModalNode(document.body)
     })
 
-    it('first tab focuses close button', () => {
-      Simulate.keyDown(modal, {key: "Tab", keyCode: 9, which: 9})
-      expect(document.activeElement.className).to.include('slds-modal__close');
+    it('first tab focuses close button', (done) => {
+      setTimeout(() => {
+        Simulate.keyDown(modal, {key: 'Tab', keyCode: 9, which: 9})
+        setTimeout(() => {
+          expect(document.activeElement.className).to.include('slds-modal__close');
+          done();
+        }, 200);
+      }, 200);
     })
 
     it('enter on close button works', () => {

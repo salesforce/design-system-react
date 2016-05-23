@@ -17,12 +17,9 @@ import React from 'react';
 import classNames from 'classnames';
 
 // ## Children
-
-// ### Button
-import Button from '../SLDSButton';
-
-// ### Checkbox
-import Checkbox from '../checkbox';
+import Button from '../button';
+import Checkbox from '../forms/checkbox';
+import HeaderCell from './header-cell';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
@@ -50,7 +47,7 @@ const DataTableHead = React.createClass({
 			})
 		),
 		onToggleAll: PropTypes.func.isRequired,
-		onSort: PropTypes.func.isRequired,
+		onSort: PropTypes.func,
 		showRowActions: PropTypes.bool.isRequired
 	},
 
@@ -59,65 +56,26 @@ const DataTableHead = React.createClass({
 		return (
 			<thead>
 				<tr className="slds-text-heading--label">
-					{this.props.canSelectRows && (
-						<th className="slds-cell-shrink" scope="col">
+					{this.props.canSelectRows
+						? <th className="slds-cell-shrink" scope="col">
 							<Checkbox
 								assistiveText="Select All"
 								checked={this.props.allSelected}
 								name="SelectAll"
-								onChange={this.handleChange}
+								onChange={this.props.onToggleAll}
 							/>
 						</th>
-					)}
-					{this.props.columns.map((column, index) => {
-						const {
-							label,
-							property,
-							sortable,
-							sortDirection
-						} = column.props;
-
-						return (
-							<th
-								scope="col"
-								key={property}
-								className={classNames({
-									'slds-is-sortable': sortable
-								})}
-								onClick={this.getSortHandler(sortable, column.props, index)}
-							>
-								<div className="slds-truncate">{label}
-									{sortable && (
-										<Button
-											assistiveText="Sort"
-											iconCategory="utility"
-											iconName={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
-											iconSize="small"
-											iconVariant="bare"
-											variant="base"
-										/>
-									)}
-								</div>
-							</th>
-						);
-					})}
-					{this.props.showRowActions && <th className="slds-cell-shrink"></th>}
+						: null
+					}
+					{this.props.columns.map((column, index) => <HeaderCell key={index} onSort={this.props.onSort} {...column.props} />)}
+					{this.props.showRowActions
+						? <th className="slds-cell-shrink"></th>
+						: null
+					}
 				</tr>
 			</thead>
 		);
-	},
-
-	handleChange () {
-		this.props.onToggleAll(!this.props.allSelected);
-	},
-
-	getSortHandler (sortable, props, index) {
-		if (sortable) {
-			return () => this.props.onSort(props, index);
-		}
-
-		return null;
 	}
 });
 
-export default DataTableHead;
+module.exports = DataTableHead;

@@ -10,9 +10,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 /* eslint-disable indent */
 
-// # SLDSCard Component
+// # Card Component
 
-// Implements the [SLDSCard design pattern](https://www.lightningdesignsystem.com/components/cards/) in React.
+// Implements the [Card design pattern](https://www.lightningdesignsystem.com/components/cards/) in React.
 
 // ### React
 // React is an external dependency of the project.
@@ -35,17 +35,17 @@ const { PropTypes } = React;
 
 // The component name will be used as the `DisplayName` and exported along with
 // the component itself.
-export const COMPONENT = 'SLDSCard';
+const COMPONENT = 'Card';
 
 // Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
-export const cssClasses = {
+const cssClasses = {
 	base: 'slds-card'
 }
 
 /**
  * Cards are used to apply a container around a related grouping of information. It has a header, a body, and an optional footer. It often contains a DataTable or Tile (coming soon). Actions associated with selected items or with all items are included within the header actions. Footer often contains pagination.
  */
-const SLDSCard = React.createClass({
+const Card = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: COMPONENT,
@@ -61,7 +61,7 @@ const SLDSCard = React.createClass({
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
-		 * Replaces the body (that is the children) with the specified empty state, this will also remove header actions, the filter, and the icon. If the default empty state is wanted, set to `true`. 
+		 * Replaces the body (that is the children) with the specified empty state, this will also remove header actions, the filter, and the icon. If the default empty state is wanted, set to `true`.
 		 */
 		empty: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
 		/**
@@ -106,7 +106,7 @@ const SLDSCard = React.createClass({
 
 	_renderBody (body) {
 		return (
-			<Body>
+			<Body id={this.props.id}>
 				{body}
 			</Body>
 		);
@@ -127,7 +127,7 @@ const SLDSCard = React.createClass({
 		}
 		return (
 			<div id={this.props.id} className={classnames(cssClasses.base, this.props.className)}>
-				<Header 
+				<Header
 					icon={empty ? null : this.props.icon}
 					id={this.props.id}
 					filter={this.props.filter}
@@ -141,4 +141,6 @@ const SLDSCard = React.createClass({
 
 });
 
-export default SLDSCard;
+module.exports = Card;
+module.exports.COMPONENT = COMPONENT;
+module.exports.cssClasses = cssClasses;

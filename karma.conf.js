@@ -1,6 +1,34 @@
 var webpack = require('webpack');
 var webpackConfig = require('./webpack.config.dev');
+var path = require('path');
 webpackConfig.devtool = 'inline-source-map';
+
+webpackConfig.module.preLoaders = webpackConfig.module.preLoaders || [];
+ispartaPreLoaderWebpackConfig = [
+// transpile all files except testing sources with babel as usual
+{
+  test: /\.js$/,
+  exclude: [
+      path.resolve('components/'),
+      path.resolve('node_modules/')
+  ],
+  loader: 'babel'
+},
+// Transpile and instrument only testing sources with Isparta instrumenting.
+// Exclude files here if you'd like isparta to ignore them.
+{
+  test: /\.(js|jsx)$/,
+  include: path.resolve('components/'),
+  loader: 'isparta'
+}];
+
+webpackConfig.module.preLoaders = webpackConfig.module.preLoaders.concat(ispartaPreLoaderWebpackConfig);
+
+// istanbul settings
+webpackConfig.isparta = {
+  embedSource: true,
+  noAutoWrap: true
+};
 
 // Karma configuration
 // Generated on Thu Oct 01 2015 08:45:20 GMT-0700 (PDT)
@@ -39,8 +67,14 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['spec'],
+    reporters: ['spec', 'coverage'],
 
+    coverageReporter: {
+      reporters:[
+        {type: 'html', dir: 'coverage/'},
+        {type: 'text'}
+      ],
+    },
 
     // web server port
     port: 9876,
@@ -78,7 +112,8 @@ module.exports = function(config) {
       require('karma-sourcemap-loader'),
       require('karma-phantomjs-launcher'),
       require('karma-chrome-launcher'),
-      require('karma-spec-reporter')
+      require('karma-spec-reporter'),
+      require('karma-coverage')
     ]
   })
 }

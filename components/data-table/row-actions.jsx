@@ -19,10 +19,10 @@ import isFunction from 'lodash.isfunction';
 // ## Children
 
 // ### Dropdown
-import Dropdown from '../SLDSMenuDropdown';
+import Dropdown from '../menu-dropdown';
 
 // ### Event Helpers
-import { EventUtil } from "../utils";
+import { EventUtil } from "../../utilities";
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
@@ -63,6 +63,7 @@ const DataTableRowActions = React.createClass({
 
 	// ### Render
 	render () {
+		// i18n
 		return (
 			<td
 				className="slds-cell-shrink" data-label="Actions"
@@ -97,4 +98,4 @@ const DataTableRowActions = React.createClass({
 	}
 });
 
-export default DataTableRowActions;
+module.exports = DataTableRowActions;

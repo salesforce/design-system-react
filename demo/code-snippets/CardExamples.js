@@ -9,7 +9,8 @@ const CardExample = React.createClass({
   getInitialState () {
     return {
       items: sampleItems,
-      isFiltering: false
+      isFiltering: false,
+      totalItems: sampleItems.length
     };
   },
 
@@ -27,7 +28,7 @@ const CardExample = React.createClass({
           headerActions={
             !isEmpty && <SLDSButton label="Delete All Items" onClick={this.handleDeleteAllItems} />
           }
-          heading="Releated Items"
+          heading={`Related Items${itemsShowing}`}
           icon={<SLDSIcon category="standard" name="default" size="small" />}
           empty={isEmpty ? <SLDSCardEmpty heading="No Related Items">
               <SLDSButton label="Add Item" onClick={this.handleAddItem} />
@@ -48,16 +49,16 @@ const CardExample = React.createClass({
 
   handleFilterChange (event) {
     const filteredItems = sampleItems.filter( (item) => RegExp(event.target.value, 'i').test(item.name));
-    this.setState({isFiltering: true, items: filteredItems});
+    this.setState({isFiltering: true, items: filteredItems, totalItems: filteredItems.length});
   },
 
   handleDeleteAllItems () {
-    this.setState({isFiltering: false, items: []});
+    this.setState({isFiltering: false, items: [], totalItems: 0});
   },
 
   handleAddItem () {
-    this.setState({items: sampleItems});
-  },
+    this.setState({items: sampleItems, totalItems: sampleItems.length});
+  }
 });
 
 ReactDOM.render(<CardExample />, mountNode);

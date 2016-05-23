@@ -26,15 +26,15 @@ class ButtonGroupSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["SLDSButtonGroup"].description;
+    const desc = DOCS["button-group"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["SLDSButtonGroup"] ? true : false;
+    const docs = DOCS["button-group"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <ComponentHeader cmpName="SLDSButtonGroup" cmpUrl="http://www.lightningdesignsystem.com/components/button-groups" />
+        <ComponentHeader cmpName="Button Group" cmpUrl="http://www.lightningdesignsystem.com/components/button-groups" />
 
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small"  style={{ "maxWidth": "800px"}}/> : null}
@@ -47,7 +47,7 @@ class ButtonGroupSection extends React.Component {
           <h4 className="slds-text-heading--small">Button Group with Stateful Buttons</h4>
           <CodeMirror codeText={Samples.ButtonGroups2} />
         </section>
-        <PropTable component="SLDSButtonGroup" />
+        <PropTable component="button-group" />
 
       </div>
     );
