@@ -3,8 +3,6 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 
-import '@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.css';
-
 import { DATA_TABLE } from '../../components/data-table/constants';
 import DataTable from '../../components/data-table';
 import Column from '../../components/data-table/column';
