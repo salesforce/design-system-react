@@ -33,6 +33,7 @@ module.exports = {
         })],
 				include: [
 					path.join(__dirname, 'components'),
+          path.join(__dirname, 'tests'),
           path.join(__dirname, 'utilities')
 				]
 			},
