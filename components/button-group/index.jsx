@@ -11,7 +11,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from "react";
 
-const displayName = "ButtonGroup";
+import { BUTTON_GROUP } from '../utilities/constants';
+
+const displayName = BUTTON_GROUP;
 const propTypes = {
   /**
    * Children are expected to be components. If last button triggers a dropdown menu, use Dropdown instead of Button.
@@ -44,4 +46,3 @@ ButtonGroup.propTypes = propTypes;
 ButtonGroup.defaultProps = defaultProps;
 
 module.exports = ButtonGroup;
-

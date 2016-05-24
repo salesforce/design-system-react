@@ -15,7 +15,9 @@ import ButtonIcon from "../icon/button-icon";
 import TooltipTrigger from "../popover-tooltip/trigger"
 import omit from "lodash.omit";
 
-const displayName = 'Button';
+import { BUTTON } from '../utilities/constants';
+
+const displayName = BUTTON;
 const propTypes = {
   /**
    * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.

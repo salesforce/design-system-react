@@ -29,7 +29,7 @@ import classNames from 'classnames';
 // Remove the need for `React.PropTypes`
 const { PropTypes } = React;
 
-export const COMPONENT = 'Checkbox';
+import { FORMS_CHECKBOX } from '../../utilities/constants';
 
 /**
  * The ability to style checkboxes with CSS varies across browsers. Using this component ensures checkboxes look the same everywhere.
@@ -37,7 +37,7 @@ export const COMPONENT = 'Checkbox';
 const Checkbox = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: COMPONENT,
+	displayName: FORMS_CHECKBOX,
 
 	// ### Prop Types
 	propTypes: {

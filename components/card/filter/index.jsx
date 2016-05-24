@@ -20,9 +20,7 @@ import { idSuffixes as bodyIdSuffixes } from '../body';
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
 
-// The component name will be used as the `DisplayName` and exported along with
-// the component itself.
-const COMPONENT = 'Filter';
+import { CARD_FILTER } from '../../utilities/constants';
 
 const idSuffixes = {
 	base: '__filter-input'
@@ -34,7 +32,7 @@ const idSuffixes = {
 const Filter = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: COMPONENT,
+	displayName: CARD_FILTER,
 
 	// ### Prop Types
 	propTypes: {
@@ -77,5 +75,4 @@ const Filter = React.createClass({
 });
 
 module.exports = Filter;
-module.exports.COMPONENT = COMPONENT;
 module.exports.idSuffixes = idSuffixes;

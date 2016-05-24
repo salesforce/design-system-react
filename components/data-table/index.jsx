@@ -42,7 +42,7 @@ import DataTableRow from './row';
 import DataTableRowActions from './row-actions';
 
 // ## Constants
-import { DATA_TABLE, DATA_TABLE_CELL } from './constants';
+import { DATA_TABLE, DATA_TABLE_CELL } from '../utilities/constants';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;

@@ -3,7 +3,7 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 
-import { DATA_TABLE } from '../../components/data-table/constants';
+import { DATA_TABLE } from '../../utilities/constants';
 import DataTable from '../../components/data-table';
 import Column from '../../components/data-table/column';
 

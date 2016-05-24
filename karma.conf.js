@@ -1,4 +1,3 @@
-var webpack = require('webpack');
 var webpackConfig = require('./webpack.config');
 var path = require('path');
 webpackConfig.devtool = 'inline-source-map';
@@ -6,7 +5,6 @@ webpackConfig.devtool = 'inline-source-map';
 webpackConfig.module.preLoaders = webpackConfig.module.preLoaders || [];
 ispartaPreLoaderWebpackConfig = [
   // Transpile and instrument only testing sources with Isparta instrumenting.
-  // Exclude files here if you'd like isparta to ignore them.
   {
     test: /\.jsx?$/,
     include: [

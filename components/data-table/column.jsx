@@ -14,7 +14,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 
 // ## Constants
-import { DATA_TABLE_COLUMN } from './constants';
+import { DATA_TABLE_COLUMN } from '../utilities/constants';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;

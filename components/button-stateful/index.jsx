@@ -15,9 +15,11 @@ import TooltipTrigger from "../popover-tooltip/trigger"
 const classNames = require("classnames");
 import omit from "lodash.omit";
 
+import { BUTTON_STATEFUL } from '../utilities/constants';
+
 const blurElement = e => e.currentTarget.blur()
 
-const displayName = "ButtonStateful";
+const displayName = BUTTON_STATEFUL;
 const propTypes = {
   /**
    * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
