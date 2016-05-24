@@ -35,7 +35,7 @@ class Welcome extends React.Component {
         </div>
 
         <p className="slds-p-vertical--small">
-        Design System React is the ReactJS implementation of <a href="http://www.lightningdesignsystem.com/">Ligtning Design System</a>, a collection of design patterns, components, and guidelines for creating unified UI in the Salesforce ecosystem.
+        Design System React is the ReactJS implementation of <a href="http://www.lightningdesignsystem.com/">Lightning Design System</a>, a collection of design patterns, components, and guidelines for creating unified UI in the Salesforce ecosystem.
         </p>
 
         <p className="slds-p-vertical--small">

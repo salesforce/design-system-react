@@ -1574,7 +1574,7 @@
         }
     },
     "menu-dropdown": {
-        "description": "The MenuDropdown component is a variant of the Ligtning Design System Menu component.",
+        "description": "The MenuDropdown component is a variant of the Lightning Design System Menu component.",
         "displayName": "MenuDropdown",
         "methods": [
             {
@@ -1963,7 +1963,7 @@
         }
     },
     "menu-picklist": {
-        "description": "The MenuPicklist component is a variant of the Ligtning Design System Menu component.",
+        "description": "The MenuPicklist component is a variant of the Lightning Design System Menu component.",
         "displayName": "MenuPicklist",
         "methods": [
             {
