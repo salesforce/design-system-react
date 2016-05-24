@@ -14,7 +14,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // React is an external dependency of the project.
 import React from 'react';
 
-import { CARD_BODY } from '../utilities/constants';
+import { CARD_BODY } from '../../utilities/constants';
 
 const cssClasses = {
 	base: 'slds-card__body'

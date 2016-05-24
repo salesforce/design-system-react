@@ -29,7 +29,7 @@ import classNames from 'classnames';
 // Remove the need for `React.PropTypes`
 const { PropTypes } = React;
 
-import { FORMS_CHECKBOX } from '../../utilities/constants';
+import { FORMS_CHECKBOX } from '../../../utilities/constants';
 
 /**
  * The ability to style checkboxes with CSS varies across browsers. Using this component ensures checkboxes look the same everywhere.

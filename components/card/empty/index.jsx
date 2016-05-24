@@ -17,7 +17,7 @@ import React from 'react';
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
 
-import { CARD_EMPTY } from '../../utilities/constants';
+import { CARD_EMPTY } from '../../../utilities/constants';
 
 // Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
 const idSuffixes = {

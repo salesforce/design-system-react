@@ -23,7 +23,7 @@ import isFunction from 'lodash.isfunction';
 import Button from '../button';
 
 // ## Constants
-import { DATA_TABLE_HEADER_CELL } from '../utilities/constants';
+import { DATA_TABLE_HEADER_CELL } from '../../utilities/constants';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;

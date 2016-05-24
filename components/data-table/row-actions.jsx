@@ -23,7 +23,7 @@ import Dropdown from '../menu-dropdown';
 import { EventUtil } from "../../utilities";
 
 // ## Constants
-import { DATA_TABLE_ROW_ACTIONS } from '../utilities/constants';
+import { DATA_TABLE_ROW_ACTIONS } from '../../utilities/constants';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;

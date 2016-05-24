@@ -26,7 +26,7 @@ import MediaObject from '../media-object';
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
 
-import { CARD_HEADER } from '../utilities/constants';
+import { CARD_HEADER } from '../../utilities/constants';
 
 // Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
 const cssClasses = {

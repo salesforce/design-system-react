@@ -20,7 +20,7 @@ import { idSuffixes as bodyIdSuffixes } from '../body';
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
 
-import { CARD_FILTER } from '../../utilities/constants';
+import { CARD_FILTER } from '../../../utilities/constants';
 
 const idSuffixes = {
 	base: '__filter-input'

@@ -22,7 +22,7 @@ import Checkbox from '../forms/checkbox';
 import HeaderCell from './header-cell';
 
 // ## Constants
-import { DATA_TABLE_HEAD } from '../utilities/constants';
+import { DATA_TABLE_HEAD } from '../../utilities/constants';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;

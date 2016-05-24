@@ -29,7 +29,7 @@ import Checkbox from '../forms/checkbox';
 import { EventUtil } from "../../utilities";
 
 // ## Constants
-import { DATA_TABLE_ROW } from '../utilities/constants';
+import { DATA_TABLE_ROW } from '../../utilities/constants';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;

@@ -15,7 +15,7 @@ import TooltipTrigger from "../popover-tooltip/trigger"
 const classNames = require("classnames");
 import omit from "lodash.omit";
 
-import { BUTTON_STATEFUL } from '../utilities/constants';
+import { BUTTON_STATEFUL } from '../../utilities/constants';
 
 const blurElement = e => e.currentTarget.blur()
 

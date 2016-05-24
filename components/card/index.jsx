@@ -33,7 +33,7 @@ import Empty from './empty';
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
 
-import { CARD } from '../utilities/constants';
+import { CARD } from '../../utilities/constants';
 
 // Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
 const cssClasses = {

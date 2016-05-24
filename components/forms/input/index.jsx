@@ -32,7 +32,7 @@ import checkProps from './check-props';
 // Remove the need for `React.PropTypes`
 const { PropTypes } = React;
 
-import { FORMS_INPUT } from '../../utilities/constants';
+import { FORMS_INPUT } from '../../../utilities/constants';
 
 // ## InputDefinition
 const Input = React.createClass({

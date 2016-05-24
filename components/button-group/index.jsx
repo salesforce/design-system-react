@@ -11,7 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from "react";
 
-import { BUTTON_GROUP } from '../utilities/constants';
+import { BUTTON_GROUP } from '../../utilities/constants';
 
 const displayName = BUTTON_GROUP;
 const propTypes = {

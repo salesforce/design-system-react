@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { BREAD_CRUMB } from '../utilities/constants';
+import { BREAD_CRUMB } from '../../utilities/constants';
 
 const displayName = BREAD_CRUMB;
 const propTypes = {

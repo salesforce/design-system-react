@@ -15,7 +15,7 @@ import ButtonIcon from "../icon/button-icon";
 import TooltipTrigger from "../popover-tooltip/trigger"
 import omit from "lodash.omit";
 
-import { BUTTON } from '../utilities/constants';
+import { BUTTON } from '../../utilities/constants';
 
 const displayName = BUTTON;
 const propTypes = {

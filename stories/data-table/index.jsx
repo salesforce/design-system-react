@@ -99,6 +99,7 @@ const DemoDataTable = React.createClass({
 });
 
 storiesOf(DATA_TABLE, module)
+	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('striped', () => <DemoDataTable striped={true} />)
 	.add('bordered', () => <DemoDataTable bordered={true} />)
 	.add('selectable', () => <DemoDataTable selectRows={true} />);

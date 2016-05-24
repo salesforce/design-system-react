@@ -23,7 +23,7 @@ import classnames from 'classnames';
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
 
-import { MEDIA_OBJECT } from '../utilities/constants';
+import { MEDIA_OBJECT } from '../../utilities/constants';
 
 // Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
 export const cssClasses = {
