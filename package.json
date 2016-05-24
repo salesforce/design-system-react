@@ -6,7 +6,6 @@
   "scripts": {
     "build-storybook": "build-storybook -o ./storybook",
     "dist": "scripts/dist.sh",
-    "heroku-prebuild": "./scripts/heroku-prebuild.sh",
     "heroku-postbuild": "./scripts/heroku-postbuild.sh",
     "icons": "./node_modules/.bin/babel-node scripts/inline-icons.js",
     "lint": "eslint --config=./.eslintrc components",
@@ -64,6 +63,7 @@
     "@salesforce-ux/design-system": "1.0.3",
     "@salesforce-ux/icons": "4.0.0",
     "async": "^2.0.0-rc.5",
+    "auth-static": "^1.0.2",
     "babel": "^6.5.2",
     "babel-cli": "^6.9.0",
     "babel-core": "^6.9.0",
@@ -81,7 +81,6 @@
     "eslint-plugin-jsx-a11y": "^1.2.0",
     "eslint-plugin-react": "^5.1.1",
     "file-loader": "^0.8.4",
-    "http-server": "^0.9.0",
     "isparta-loader": "^2.0.0",
     "istanbul": "^1.0.0-alpha.2",
     "json-loader": "^0.5.3",

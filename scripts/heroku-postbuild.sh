@@ -12,3 +12,7 @@
 echo "# Building for Heroku"
 
 npm run build-storybook
+
+echo "## Add meta tag"
+
+sed -i '' 's|<head>|<head><meta charset="UTF-8">|' storybook/*.html
