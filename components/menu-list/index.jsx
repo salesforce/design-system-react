@@ -42,7 +42,7 @@ const defaultProps = {
 };
 
 /**
- * The MenuPicklist component is a variant of the Ligtning Design System Menu component.
+ * The MenuPicklist component is a variant of the Lightning Design System Menu component.
  */
 class MenuPicklist extends React.Component {
   constructor(props) {

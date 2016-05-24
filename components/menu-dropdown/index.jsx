@@ -73,7 +73,7 @@ const defaultProps = {
 };
 
 /**
- * The MenuDropdown component is a variant of the Ligtning Design System Menu component.
+ * The MenuDropdown component is a variant of the Lightning Design System Menu component.
  */
 class MenuDropdown extends React.Component {
 
