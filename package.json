@@ -6,6 +6,8 @@
   "scripts": {
     "build-storybook": "build-storybook -o ./storybook",
     "dist": "scripts/dist.sh",
+    "heroku-prebuild": "./scripts/heroku-prebuild.sh",
+    "heroku-postbuild": "./scripts/heroku-postbuild.sh",
     "icons": "./node_modules/.bin/babel-node scripts/inline-icons.js",
     "lint": "eslint --config=./.eslintrc components",
     "publish-to-git": "./node_modules/.bin/babel-node scripts/publish-to-git.js",
