@@ -19,14 +19,8 @@ import classNames from 'classnames';
 // ### find
 import find from 'lodash.find';
 
-// ### partial
-import partial from 'lodash.partial';
-
 // ## Children
 import Checkbox from '../forms/checkbox';
-
-// ### Event Helpers
-import { EventUtil } from "../../utilities";
 
 // ## Constants
 import { DATA_TABLE_ROW, DATA_TABLE_ROW_ACTIONS, DATA_TABLE_CELL } from '../../utilities/constants';
@@ -106,8 +100,6 @@ const DataTableRow = React.createClass({
 	},
 
 	handleToggle (selected, e) {
-		EventUtil.trap(e);
-
 		return this.props.onToggle(this.props.item, selected, e);
 	}
 });
