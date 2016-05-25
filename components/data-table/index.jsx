@@ -35,21 +35,14 @@ import reject from 'lodash.reject';
 import checkProps from './check-props';
 
 // ## Children
-
-// ### Cell
-import DataTableCell, { COMPONENT as DataTableCellComponent } from './cell';
-
-// ### Column
+import DataTableCell from './cell';
 import DataTableColumn from './column';
-
-// ### Head
 import DataTableHead from './head';
-
-// ### Row
 import DataTableRow from './row';
-
-// ### Actions
 import DataTableRowActions from './row-actions';
+
+// ## Constants
+import { DATA_TABLE, DATA_TABLE_CELL } from '../../utilities/constants';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
@@ -57,17 +50,13 @@ const { PropTypes } = React;
 // Safely get the length of an array, returning 0 for invalid input.
 const count = (array) => isArray(array) ? array.length : 0;
 
-// The component name will be used as the `DisplayName` and exported along with
-// the component itself.
-export const COMPONENT = 'DataTable';
-
 /**
  * DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
  */
 const DataTable = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: COMPONENT,
+	displayName: DATA_TABLE,
 
 	// ### Prop Types
 	propTypes: {
@@ -143,7 +132,7 @@ const DataTable = React.createClass({
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(COMPONENT, this.props);
+		checkProps(DATA_TABLE, this.props);
 	},
 
 	// ### Render
@@ -177,7 +166,7 @@ const DataTable = React.createClass({
 				} = child.props;
 
 				let Cell;
-				if (children && children.type.displayName === DataTableCellComponent) {
+				if (children && children.type.displayName === DATA_TABLE_CELL) {
 					Cell = children.type;
 				} else {
 					Cell = DataTableCell;

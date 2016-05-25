@@ -32,31 +32,31 @@ import checkProps from './check-props';
 // Remove the need for `React.PropTypes`
 const { PropTypes } = React;
 
-const COMPONENT = 'Input';
+import { FORMS_INPUT } from '../../../utilities/constants';
 
 // ## InputDefinition
 const Input = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: COMPONENT,
+	displayName: FORMS_INPUT,
 	// ### Prop Types
 	propTypes: {
 		/**
-		 * An HTML ID that is shared with ARIA-supported devices with the 
-		 * `aria-controls` attribute in order to relate the input with 
-		 * another region of the page. An example would be a select box  
+		 * An HTML ID that is shared with ARIA-supported devices with the
+		 * `aria-controls` attribute in order to relate the input with
+		 * another region of the page. An example would be a select box
 		 * that shows or hides a panel.
 		 */
 		ariaControls: PropTypes.string,
 		/**
-		 * An HTML ID that is shared with ARIA-supported devices with the 
-		 * `aria-controls` attribute in order to relate the input with 
-		 * another region of the page. An example would be a search field  
+		 * An HTML ID that is shared with ARIA-supported devices with the
+		 * `aria-controls` attribute in order to relate the input with
+		 * another region of the page. An example would be a search field
 		 * that shows search results.
 		 */
 		ariaOwns: PropTypes.string,
 		/**
-		 * If present, the label associated with this `input` is overwritten 
+		 * If present, the label associated with this `input` is overwritten
 		 * by this text and is visually not shown.
 		 */
 		assistiveText: PropTypes.string,
@@ -152,7 +152,7 @@ const Input = React.createClass({
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(COMPONENT, this.props);
+		checkProps(FORMS_INPUT, this.props);
 	},
 
 	getDefaultProps () {
@@ -244,4 +244,3 @@ const Input = React.createClass({
 });
 
 module.exports = Input;
-module.exports.COMPONENT = COMPONENT;

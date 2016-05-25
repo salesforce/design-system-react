@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
-const displayName = 'BreadCrumb';
+import { BREAD_CRUMB } from '../../utilities/constants';
+
+const displayName = BREAD_CRUMB;
 const propTypes = {
   /**
    * The assistive text for the breadcrumb trail

@@ -30,9 +30,12 @@ import omit from 'lodash.omit';
 import ButtonIcon from '../icon/button-icon';
 import TooltipTrigger from '../popover-tooltip/trigger'
 
+import { BUTTON_STATEFUL } from '../../utilities/constants';
+
 const blurElement = e => e.currentTarget.blur()
 
-const displayName = 'ButtonStateful';
+const displayName = BUTTON_STATEFUL;
+
 const propTypes = {
   /**
    * Specifies the current state of the button. If set, the button will act as a ['controlled' component](https://facebook.github.io/react/docs/forms.html#controlled-components).
@@ -132,8 +135,7 @@ class ButtonStateful extends TooltipTrigger {
           { this.getTooltip() }
         </button>
       )
-    }
-    else {
+    } else {
       return (
         <button onMouseLeave={blurElement} className={this.getClassName(active)} aria-live='assertive' onClick={this.handleClick.bind(this)} {...props}>
           <span className='slds-text-not-selected'>

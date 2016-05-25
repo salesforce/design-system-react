@@ -13,12 +13,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React from 'react';
 
+// ## Constants
+import { DATA_TABLE_CELL } from '../../utilities/constants';
+
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
-
-// The component name will be used as the `DisplayName` and exported along with
-// the component itself.
-export const COMPONENT = 'DataTableCell';
 
 /**
  * The default Cell renderer for the DataTable. Pass in any React component with the same `displayName` which takes the same props to provide custom rendering.
@@ -26,7 +25,7 @@ export const COMPONENT = 'DataTableCell';
 const DataTableCell = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: COMPONENT,
+	displayName: DATA_TABLE_CELL,
 
 	// ### Prop Types
 	propTypes: {

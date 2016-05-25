@@ -1,0 +1,32 @@
+{
+  "name": "design-system-react",
+  "scripts": {
+  },
+  "env": {
+    "AUTH_PASSWORD": {
+      "required": true
+    },
+    "AUTH_USERNAME": {
+      "required": true
+    },
+    "GIT_SSH_KEY": {
+      "required": true
+    },
+    "NPM_CONFIG_PRODUCTION": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}

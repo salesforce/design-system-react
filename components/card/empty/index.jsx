@@ -17,9 +17,7 @@ import React from 'react';
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
 
-// The component name will be used as the `DisplayName` and exported along with
-// the component itself.
-const COMPONENT = 'CardEmpty';
+import { CARD_EMPTY } from '../../../utilities/constants';
 
 // Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
 const idSuffixes = {
@@ -29,7 +27,7 @@ const idSuffixes = {
 const CardEmpty = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: COMPONENT,
+	displayName: CARD_EMPTY,
 
 	// ### Prop Types
 	propTypes: {
@@ -69,5 +67,4 @@ const CardEmpty = React.createClass({
 });
 
 module.exports = CardEmpty;
-module.exports.COMPONENT = COMPONENT;
 module.exports.idSuffixes = idSuffixes;

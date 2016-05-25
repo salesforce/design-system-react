@@ -20,16 +20,13 @@ import classNames from 'classnames';
 import isFunction from 'lodash.isfunction';
 
 // ## Children
-
-// ### Button
 import Button from '../button';
+
+// ## Constants
+import { DATA_TABLE_HEADER_CELL } from '../../utilities/constants';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
-
-// The component name will be used as the `DisplayName` and exported along with
-// the component itself.
-export const COMPONENT = 'DataTableHeaderCell';
 
 /**
  * Used internally, renders each individual column heading.
@@ -37,7 +34,7 @@ export const COMPONENT = 'DataTableHeaderCell';
 const DataTableHeaderCell = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: COMPONENT,
+	displayName: DATA_TABLE_HEADER_CELL,
 
 	// ### Prop Types
 	propTypes: {

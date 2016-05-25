@@ -23,9 +23,7 @@ import classnames from 'classnames';
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
 
-// The component name will be used as the `DisplayName` and exported along with
-// the component itself.
-export const COMPONENT = 'MediaObject';
+import { MEDIA_OBJECT } from '../../utilities/constants';
 
 // Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
 export const cssClasses = {
@@ -40,7 +38,7 @@ export const cssClasses = {
 const MediaObject = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: COMPONENT,
+	displayName: MEDIA_OBJECT,
 	// ### Prop Types
 	propTypes: {
 		/**
@@ -80,10 +78,10 @@ const MediaObject = React.createClass({
 			mediaFigure = this._renderMediaFigure();
 		}
 
-		return ( 
+		return (
 			<div className={
 					classnames(
-						cssClasses.base, 
+						cssClasses.base,
 						{
 							'slds-media--center': this.props.verticalCenter,
 							'slds-has-flexi-truncate': this.props.canTruncate

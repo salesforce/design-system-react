@@ -26,9 +26,7 @@ import MediaObject from '../media-object';
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
 
-// The component name will be used as the `DisplayName` and exported along with
-// the component itself.
-const COMPONENT = 'CardHeader';
+import { CARD_HEADER } from '../../utilities/constants';
 
 // Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
 const cssClasses = {
@@ -44,7 +42,7 @@ const idSuffixes = {
 const CardHeader = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: COMPONENT,
+	displayName: CARD_HEADER,
 	// ### Prop Types
 	propTypes: {
 		/**
@@ -82,7 +80,7 @@ const CardHeader = React.createClass({
 
 	_renderMediaObjectBody () {
 		return (
-			<h2 
+			<h2
 				id={this.props.id + idSuffixes.heading}
 				className="slds-text-heading--small slds-truncate"
 				title={this.props.heading}>
@@ -117,6 +115,5 @@ const CardHeader = React.createClass({
 });
 
 module.exports = CardHeader;
-module.exports.COMPONENT = COMPONENT;
 module.exports.cssClasses = cssClasses;
 module.exports.idSuffixes = idSuffixes;
