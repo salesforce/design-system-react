@@ -16,7 +16,12 @@ import List from "../menu-list/list";
 import ListItem from "../menu-list/list-item";
 import ListItemLabel from "../menu-list/list-item-label";
 
-const displayName = "MenuDropdown";
+import { MENU_DROPDOWN } from '../../../utilities/constants';
+
+// ### uniqueId
+import uniqueId from 'lodash.uniqueid';
+
+const displayName = MENU_DROPDOWN;
 const propTypes = {
   align: React.PropTypes.oneOf(["left", "right"]),
   /**
@@ -38,6 +43,7 @@ const propTypes = {
    * Delay on menu closing.
    */
   hoverCloseDelay: React.PropTypes.number,
+  id: PropTypes.string,
   label: React.PropTypes.string,
   /**
    * Custom element that overrides the default Menu Item component.
@@ -68,6 +74,7 @@ const defaultProps = {
   checkmark: false,
   disabled: false,
   hoverCloseDelay: 300,
+  id: uniqueId(`${MENU_DROPDOWN}-`),
   openOn: "click",
   modal: true,
 };
@@ -87,10 +94,7 @@ class MenuDropdown extends React.Component {
       isOpen: false,
       lastBlurredIndex: -1,
       lastBlurredTimeStamp: -1,
-      selectedIndex: this.getIndexByValue(this.props.value),
-      /* triggerId is the id of the element that triggers the Menu to open.
-      * Need this for aria-labelledby on <ul> in Menu for accessibility. */
-      triggerId: this.props.label ? this.props.label.replace(/\s+/g, '') + '_Button': this.props.assistiveText.replace(/\s+/g, '') + '_Button',
+      selectedIndex: this.getIndexByValue(this.props.value)
     };
   }
 
@@ -270,7 +274,7 @@ class MenuDropdown extends React.Component {
             options={this.props.options}
             ref="list"
             selectedIndex={this.state.selectedIndex}
-            triggerId={this.state.triggerId}
+            triggerId={this.props.id}
             />;
   }
 
@@ -315,7 +319,7 @@ class MenuDropdown extends React.Component {
         hint={this.props.hint}
         iconName={this.props.iconName}
         iconVariant={this.props.iconVariant}
-        id={this.state.triggerId}
+        id={this.props.id}
         label={this.props.label}
         onBlur={this.props.openOn === "hover" ? this.handleBlur.bind(this):null}
         onClick={this.props.openOn === "click" ? this.handleClick.bind(this):null}

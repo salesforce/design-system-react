@@ -22,7 +22,7 @@ import Checkbox from '../forms/checkbox';
 import HeaderCell from './header-cell';
 
 // ## Constants
-import { DATA_TABLE_HEAD } from '../../utilities/constants';
+import { DATA_TABLE_HEAD, DATA_TABLE_HEADER_CELL } from '../../utilities/constants';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
@@ -45,6 +45,7 @@ const DataTableHead = React.createClass({
 				props: PropTypes.object
 			})
 		),
+		id: PropTypes.string.isRequired,
 		onToggleAll: PropTypes.func.isRequired,
 		onSort: PropTypes.func,
 		showRowActions: PropTypes.bool.isRequired
@@ -60,13 +61,14 @@ const DataTableHead = React.createClass({
 							<Checkbox
 								assistiveText="Select All"
 								checked={this.props.allSelected}
+								id={`${this.props.id}-SelectAll`}
 								name="SelectAll"
 								onChange={this.props.onToggleAll}
 							/>
 						</th>
 						: null
 					}
-					{this.props.columns.map((column, index) => <HeaderCell key={index} onSort={this.props.onSort} {...column.props} />)}
+					{this.props.columns.map((column, index) => <HeaderCell id={`${this.props.id}-${DATA_TABLE_HEADER_CELL}-${index}`} key={index} onSort={this.props.onSort} {...column.props} />)}
 					{this.props.showRowActions
 						? <th className="slds-cell-shrink"></th>
 						: null

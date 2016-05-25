@@ -29,7 +29,7 @@ import Checkbox from '../forms/checkbox';
 import { EventUtil } from "../../utilities";
 
 // ## Constants
-import { DATA_TABLE_ROW } from '../../utilities/constants';
+import { DATA_TABLE_ROW, DATA_TABLE_ROW_ACTIONS, DATA_TABLE_CELL } from '../../utilities/constants';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
@@ -66,26 +66,26 @@ const DataTableRow = React.createClass({
 		return (
 			<tr
 				className={classNames({ 'slds-hint-parent': this.props.rowActions, 'slds-is-selected': isSelected })}
-				onClick={this.props.canSelectRows ? partial(this.handleToggle, !isSelected) : null}
 			>
 				{this.props.canSelectRows ? (
 					<td className="slds-cell-shrink" data-label="Select Row">
 						<Checkbox
 							assistiveText="Select Row"
 							checked={isSelected}
+							id={`${this.props.id}-SelectRow`}
 							name="SelectRow"
 							onChange={this.handleToggle}
-							onClick={EventUtil.trap}
 						/>
 					</td>
 				) : null}
-				{this.props.columns.map((column) => {
+				{this.props.columns.map((column, index) => {
 					const Cell = column.Cell;
 
 					return (
 						<Cell
 							{...column.props}
 							className={column.props.truncate ? 'slds-truncate' : null}
+							id={`${this.props.id}-${DATA_TABLE_CELL}-${index}`}
 							item={this.props.item}
 							key={column.props.property}
 						/>
@@ -93,7 +93,7 @@ const DataTableRow = React.createClass({
 				})}
 				{this.props.rowActions ?
 					React.cloneElement(this.props.rowActions, {
-						id: `${this.props.id}-DataTableRowActions`,
+						id: `${this.props.id}-${DATA_TABLE_ROW_ACTIONS}`,
 						item: this.props.item
 					}) : null
 				}

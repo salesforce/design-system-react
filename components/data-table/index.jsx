@@ -28,8 +28,11 @@ import isArray from 'lodash.isarray';
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
-// ### without
+// ### reject
 import reject from 'lodash.reject';
+
+// ### uniqueId
+import uniqueId from 'lodash.uniqueid';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
@@ -42,7 +45,7 @@ import DataTableRow from './row';
 import DataTableRowActions from './row-actions';
 
 // ## Constants
-import { DATA_TABLE, DATA_TABLE_CELL } from '../../utilities/constants';
+import { DATA_TABLE, DATA_TABLE_CELL, DATA_TABLE_HEAD, DATA_TABLE_ROW } from '../../utilities/constants';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
@@ -81,10 +84,7 @@ const DataTable = React.createClass({
 		 * Class names to be added to the table.
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-		/**
-		 * Every table must have a unique ID in order to support keyboard navigation and ARIA support.
-		 */
-		id: PropTypes.string.isRequired,
+		id: PropTypes.string,
     /**
  		 * The collection of items to render in the table.
  		 */
@@ -122,6 +122,7 @@ const DataTable = React.createClass({
 	getDefaultProps () {
 		return {
 			bordered: false,
+			id: uniqueId(`${DATA_TABLE}-`),
 			selection: [],
 			selectRows: false,
 			stacked: false,
@@ -189,11 +190,13 @@ const DataTable = React.createClass({
 					'slds-max-medium-table--stacked-horizontalviewports': this.props.stackedHorizontal,
 					'slds-table--striped': this.props.striped
 				}, this.props.className)}
+				id={this.props.id}
 			>
 				<DataTableHead
 					allSelected={allSelected}
 					canSelectRows={canSelectRows}
 					columns={columns}
+					id={`${this.props.id}_${DATA_TABLE_HEAD}`}
 					onToggleAll={this.handleToggleAll}
 					onSort={this.props.onSort}
 					showRowActions={!!RowActions}
@@ -204,7 +207,7 @@ const DataTable = React.createClass({
 							<DataTableRow
 								canSelectRows={canSelectRows}
 								columns={columns}
-								id={`${this.props.id}-${index}`}
+								id={`${this.props.id}-${DATA_TABLE_ROW}-${index}`}
 								item={item}
 								key={index}
 								onToggle={this.handleRowToggle}
