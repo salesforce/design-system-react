@@ -12,7 +12,7 @@
     "publish-to-git": "./node_modules/.bin/babel-node scripts/publish-to-git.js",
     "publish-to-edge": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge",
     "publish-to-upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge --remote=upstream && ./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
-    "start": "start-storybook -p 9001",
+    "start": "start-storybook -p 9001 & node tests/app",
     "test": "scripts/test.sh --single-run",
     "validate": "npm ls"
   },
