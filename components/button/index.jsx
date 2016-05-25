@@ -44,7 +44,7 @@ const propTypes = {
    * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
    */
   iconVariant: React.PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
-  id: PropTypes.string,
+  id: React.PropTypes.string,
   /**
    * Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText</code> prop.
    */

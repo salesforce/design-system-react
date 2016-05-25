@@ -16,7 +16,7 @@ import List from "../menu-list/list";
 import ListItem from "../menu-list/list-item";
 import ListItemLabel from "../menu-list/list-item-label";
 
-import { MENU_DROPDOWN } from '../../../utilities/constants';
+import { MENU_DROPDOWN } from '../../utilities/constants';
 
 // ### uniqueId
 import uniqueId from 'lodash.uniqueid';
@@ -43,7 +43,7 @@ const propTypes = {
    * Delay on menu closing.
    */
   hoverCloseDelay: React.PropTypes.number,
-  id: PropTypes.string,
+  id: React.PropTypes.string,
   label: React.PropTypes.string,
   /**
    * Custom element that overrides the default Menu Item component.

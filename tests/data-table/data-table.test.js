@@ -178,8 +178,9 @@ describe('DataTable: ', function () {
 
 			const tbody = getTable(this.dom).querySelectorAll('tbody')[0];
 			const selectedRow = tbody.querySelectorAll('tr.slds-is-selected')[0];
+			const checkbox = selectedRow.querySelectorAll('.slds-checkbox input')[0];
 
-			Simulate.click(selectedRow, {});
+			Simulate.change(checkbox, {});
 		});
 
 		it('can select a row', function (done) {
@@ -200,8 +201,9 @@ describe('DataTable: ', function () {
 			).call(this);
 
 			const secondRow = getRow(this.dom, 2);
+			const checkbox = secondRow.querySelectorAll('.slds-checkbox input')[0];
 
-			Simulate.click(secondRow, {});
+			Simulate.change(checkbox, {});
 		});
 
 		it('can select all rows', function (done) {
