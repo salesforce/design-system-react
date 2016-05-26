@@ -36,7 +36,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'tests/fixtures/phantomjs-shims.js',
-      'tests/tests_bundle.js'
+      'tests/tests-bundle.js'
     ],
 
     // list of files to exclude
@@ -46,7 +46,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'tests/tests_bundle.js': ['webpack','sourcemap']
+      'tests/tests-bundle.js': ['webpack','sourcemap']
     },
 
     // test results reporter to use
