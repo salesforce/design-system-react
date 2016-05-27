@@ -20,6 +20,9 @@ import React from 'react';
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
+// ### uniqueId
+import uniqueId from 'lodash.uniqueid';
+
 // ### Event Helpers
 import { KEYS, EventUtil } from "../../../utilities";
 
@@ -66,6 +69,7 @@ const Checkbox = React.createClass({
 		 * Message to display when the Checkbox is in an error state. When this is present, also visually highlights the component as in error.
 		 */
 		errorText: React.PropTypes.string,
+		id: PropTypes.string,
 		/**
 		 * An optional label for the Checkbox.
 		 */
@@ -78,6 +82,12 @@ const Checkbox = React.createClass({
 		 * Highlights the Checkbox as a required field (does not perform any validation).
 		 */
 		required: PropTypes.bool
+	},
+
+	getDefaultProps () {
+		return {
+			id: uniqueId(`${FORMS_CHECKBOX}-`)
+		};
 	},
 
 	// ### Render
@@ -143,7 +153,7 @@ const Checkbox = React.createClass({
     if (e.keyCode) {
       if (e.keyCode === KEYS.ENTER ||
          e.keyCode === KEYS.SPACE) {
-          EventUtil.trap(e);
+          EventUtil.trapImmediate(e);
           this.handleChange(e);
       }
     }

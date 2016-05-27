@@ -44,6 +44,7 @@ const propTypes = {
    * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
    */
   iconVariant: React.PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
+  id: React.PropTypes.string,
   /**
    * Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText</code> prop.
    */
@@ -143,7 +144,6 @@ class Button extends TooltipTrigger {
 
   render() {
     const props = omit(this.props, ["className", "label", "onClick"]);
-    if (this.props.disabled) props["disabled"] = "disabled";
 
     return (
       <button className={this.getClassName()} {...props} onClick={this.handleClick.bind(this)}>
@@ -154,9 +154,7 @@ class Button extends TooltipTrigger {
 
         {(this.props.iconPosition !== "right")? this.renderLabel(): null}
         {this.props.children}
-        {
-          this.getTooltip()
-        }
+        {this.getTooltip()}
       </button>
     )
   }

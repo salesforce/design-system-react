@@ -175,8 +175,8 @@ describe('SLDSMenuDropdown: ', function(){
     let cmp, btn;
     beforeEach(() => {
       let selected = false;
-      cmp = dropItDown({ onSelect: (i) => { 
-        selected = i; 
+      cmp = dropItDown({ onSelect: (i) => {
+        selected = i;
       } })
       btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
     })
@@ -190,7 +190,7 @@ describe('SLDSMenuDropdown: ', function(){
       let ulRole = getMenu(body).querySelector('ul').getAttribute('role');
       let ulAria = getMenu(body).querySelector('ul').getAttribute('aria-labelledby');
       expect(ulRole).to.equal('menu');
-      expect(ulAria).to.equal('Contacts_Button');
+      expect(ulAria).to.equal(btn.getAttribute('id'));
     })
 
     it('<a> inside <li> has role menuitem', () => {
@@ -207,7 +207,7 @@ describe('SLDSMenuDropdown: ', function(){
     beforeEach(() => {
       let selected = false;
       cmp = dropItDown_iconOnly({ onSelect: (i) => {
-        selected = i; 
+        selected = i;
       }});
       btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
     });
@@ -221,7 +221,7 @@ describe('SLDSMenuDropdown: ', function(){
       let ulRole = getMenu(body).querySelector('ul').getAttribute('role');
       let ulAria = getMenu(body).querySelector('ul').getAttribute('aria-labelledby');
       expect(ulRole).to.equal('menu');
-      expect(ulAria).to.equal('moreoptions_Button');
+      expect(ulAria).to.equal(btn.getAttribute('id'));
     });
 
     it('<a> inside <li> has role menuitem', () => {
@@ -238,8 +238,8 @@ describe('SLDSMenuDropdown: ', function(){
     let selected = false;
     beforeEach(() => {
       cmp = dropItDown({
-        openOn: 'click', 
-        onSelect: (i) => { 
+        openOn: 'click',
+        onSelect: (i) => {
           selected = i;
         }})
       btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');

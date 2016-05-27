@@ -37,7 +37,6 @@ const DemoDataTable = React.createClass({
 	render () {
 		return (
 			<DataTable
-				id="DemoDataTable"
 				items={this.state.items}
 				onChange={this.handleChange}
 				onSort={this.handleSort}

@@ -38,6 +38,7 @@ const DataTableHeaderCell = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
+		id: PropTypes.string.isRequired,
 		/**
 		 * The column label.
 		 */
@@ -95,6 +96,7 @@ const DataTableHeaderCell = React.createClass({
 							iconName={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
 							iconSize="small"
 							iconVariant="bare"
+							id={`${this.props.id}-Sort`}
 							variant="icon"
 						/>
 						: null
