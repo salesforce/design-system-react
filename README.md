@@ -3,36 +3,20 @@
 [![Build Status](https://travis-ci.com/salesforce-ux/design-system-react.svg?token=BMXxPFKR5GZuYsqAFsEf&branch=master)](https://travis-ci.com/salesforce-ux/design-system-react)
 
 ## Overview
-The Design System React library is the Reactjs implementation of the <a href="http://www.lightningdesignsystem.com/">Lightning Design System</a>.
+The Design System React library is the Reactjs implementation of the [Lightning Design System](https://www.lightningdesignsystem.com/).
 Each Design System React component is a specific variant of a component from Lightning Design System.
-For example, <code>SLDSMenuDropdown</code> represents <a href="http://www.lightningdesignsystem.com/components/menus/#dropdown">Lightning Design System Menu > Dropdown</a>,
-and <code>SLDSLookup</code> represents <a href="http://www.lightningdesignsystem.com/components/lookups/#base">Lightning Design System Lookup > Base</a>.
+For example, `SLDSMenuDropdown` represents [Lightning Design System Menu > Dropdown](http://www.lightningdesignsystem.com/components/menus/#dropdown),
+and `SLDSLookup` represents [Lightning Design System Lookup > Base](http://www.lightningdesignsystem.com/components/lookups/#base).
 
 
-This project is in beta and very experimental. Please visit [Design System React](http://salesforce-ux.github.io/design-system-react) for documentation and examples of using the Design System React Components. If you are using the ECMAScript 6 source files in `./components/`, you will need to enable your ES5 transpiler to allow stage-1 proposed features. If you are using Babel, it may be helpful to install the NPM module, `babel-preset-stage-1`, into your project and review the `.babelrc` file in this project.
-
-## Components
-
-* <a href="https://design-system-react.herokuapp.com/#/button">Button</a>
-* <a href="https://design-system-react.herokuapp.com/#/button-group">ButtonGroup</a>
-* <a href="https://design-system-react.herokuapp.com/#/button-stateful">ButtonStateful</a>
-* <a href="https://design-system-react.herokuapp.com/#/data-table">DataTable</a>
-* <a href="https://design-system-react.herokuapp.com/#/dateinput">DatePickerSingleSelect</a>
-* <a href="https://design-system-react.herokuapp.com/#/icon">Icon</a>
-* <a href="https://design-system-react.herokuapp.com/#/lookup">Lookup</a>
-* <a href="https://design-system-react.herokuapp.com/#/dropdown">MenuDropdown</a>
-* <a href="https://design-system-react.herokuapp.com/#/picklist">MenuPicklist</a>
-* <a href="https://design-system-react.herokuapp.com/#/modal">Modal</a>
-* <a href="https://design-system-react.herokuapp.com/#/notification">Notification</a>
-* <a href="https://design-system-react.herokuapp.com/#/tooltip">PopoverTooltip</a>
-* <a href="https://design-system-react.herokuapp.com/#/timepicker">Timepicker</a>
+This project is in beta and very experimental. Please visit [Design System React](https://react.lightningdesignsystem.com/) for documentation and examples of using the Design System React Components. If you are using the ECMAScript 6 source files in `./components/`, you will need to enable your ES5 transpiler to allow stage-1 proposed features. If you are using Babel, it may be helpful to install the NPM module, `babel-preset-stage-1`, into your project and review the `.babelrc` file in this project.
 
 ### Run local server
 
 ```
 npm install
 npm start
-open http://localhost:3000
+open http://localhost:9001
 ```
 
 ### Run tests
@@ -44,32 +28,30 @@ npm test
 ### Run Build
 
 ```
-npm install
-npm run docs
 npm run dist
 ```
 
-
 ## Getting Started
 
-Note: design-system-react is optimized for React 0.14.x and uses Lightning Design System 1.0.3.
+Note: `design-system-react` is optimized for React 0.14.x and uses Lightning Design System 1.0.3.
 
 ### NPM
 
-Because this project is not open-sourced, we cannot publish it to npm. Therefore we have a build script that compiles `src/` to es5 and outputs it to a tagged git release where outside projects pull from. Add the following line to your `package.json` devDependencies and run `npm install`.
+Because this project is not open-sourced, we cannot publish it to npm. Therefore we have a build script that compiles `components/` to es5 and outputs it to a tagged git release where outside projects pull from. Add the following line to your `package.json` devDependencies and run `npm install`.
 
 ```
 # package.json
 
-"design-system-react": "git+ssh://git@github.com:salesforce-ux/design-system-react.git#v0.0.29",
+"design-system-react": "git+ssh://git@github.com:salesforce-ux/design-system-react.git#v0.0.30",
 ```
 
-Then, in your React code, refer to each Lightning Design System component using the "SLDS" prefix, e.g. SLDSPopoverTooltip.
+Then, in your React code, import each Lightning Design System component you need.
 
 For example to import the Tooltip and Icon components:
 
 ```
-import {SLDSPopoverTooltip, SLDSIcon} from 'design-system-react';
+import SLDSPopoverTooltip from 'design-system-react/components/popover-tooltip';
+import SLDSIcon from 'design-system-react/components/icon';
 ```
 
 You can then use the components in your JSX markup, e.g. SLDSPopoverTooltip, or SLDSIcon.
@@ -89,7 +71,7 @@ Note: the SLDSPopoverTooltip requires a focusable element as a child (ie. either
 ```
 
 ## FAQ
-1.  **What is the <a href="http://www.lightningdesignsystem.com/">Lightning Design System</a>?**
+1.  **What is the [Lightning Design System](http://www.lightningdesignsystem.com/)?**
 
     It is collection of design patterns, components, and guidelines for creating unified UI in the Salesforce ecosystem.
 
@@ -99,7 +81,7 @@ Note: the SLDSPopoverTooltip requires a focusable element as a child (ie. either
 
 3.  **Are the Design System React components accessible?**
 
-    We strive to make all components accessible for keyboard users and screen readers. If you find any accessibility bugs, please submit a <a href="https://github.com/salesforce-ux/design-system-react/issues">Github Issue</a>.
+    We strive to make all components accessible for keyboard users and screen readers. If you find any accessibility bugs, please submit a [Github Issue](https://github.com/salesforce-ux/design-system-react/issues).
 
 4.  **Which version of React and Lightning Design System do you support?**
 
@@ -107,12 +89,11 @@ Note: the SLDSPopoverTooltip requires a focusable element as a child (ie. either
 
 5.  **Which browsers are supported?**
 
-    We support the same browsers as the Lightning Design System. Please visit <a href="http://www.lightningdesignsystem.com/faq/#what-browsers-are-supported">Lightning Design System - FAQ</a> for details.
-
+    We support the same browsers as the Lightning Design System. Please visit [Lightning Design System - FAQ](http://www.lightningdesignsystem.com/faq/#what-browsers-are-supported) for details.
 
 ## Contributing to the code base
 
-Please read the <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> first.
+Please read the [CONTRIBUTING.md](CONTRIBUTING.md) first.
 
 ## Licenses
 
@@ -120,7 +101,6 @@ Please read the <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> first.
 * All icons and images are licensed under [Creative Commons Attribution-NoDerivatives 4.0](http://creativecommons.org/licenses/by-nd/4.0/)
 * The font is licensed under our [font license](https://www.lightningdesignsystem.com/assets/licenses/License-for-font.txt)
 
-
 ## Got feedback?
 
-Please create a <a href="https://github.com/salesforce-ux/design-system-react/issues">GitHub Issue</a>
+Please create a [GitHub Issue](https://github.com/salesforce-ux/design-system-react/issues)
