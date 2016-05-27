@@ -8,7 +8,6 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-/* eslint-disable indent */
 
 // # Data Table Component
 
@@ -51,7 +50,7 @@ import { DATA_TABLE, DATA_TABLE_CELL, DATA_TABLE_HEAD, DATA_TABLE_ROW } from '..
 const { PropTypes } = React;
 
 // Safely get the length of an array, returning 0 for invalid input.
-const count = (array) => isArray(array) ? array.length : 0;
+const count = (array) => (isArray(array) ? array.length : 0);
 
 /**
  * DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
@@ -88,7 +87,7 @@ const DataTable = React.createClass({
     /**
  		 * The collection of items to render in the table.
  		 */
-    items: PropTypes.array.isRequired,
+		items: PropTypes.array.isRequired,
     /**
 		 * This function fires when the selection of rows changes.
 		 */
