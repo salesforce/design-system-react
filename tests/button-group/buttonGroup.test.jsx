@@ -8,8 +8,8 @@ import {SLDSButton} from '../../components';
 describe('SLDSButtonGroup: ',  function(){
 
   let generateButtonGroup = function(buttonGroupInstance) {
-    let reactCmp = TestUtils.renderIntoDocument(buttonGroupInstance);
-    return React.findDOMNode(reactCmp);
+    let reactCmp = TestUtils.renderIntoDocument(<div>{buttonGroupInstance}</div>);
+    return React.findDOMNode(reactCmp).children[0];
   };
 
   describe('component renders', function() {
