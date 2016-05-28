@@ -28,66 +28,64 @@ import omit from 'lodash.omit';
 
 // ## Children
 import ButtonIcon from '../icon/button-icon';
-import TooltipTrigger from '../popover-tooltip/trigger'
+import TooltipTrigger from '../popover-tooltip/trigger';
 
 import { BUTTON_STATEFUL } from '../../utilities/constants';
 
-const blurElement = e => e.currentTarget.blur()
-
-const displayName = BUTTON_STATEFUL;
+const blurElement = e => e.currentTarget.blur();
 
 const propTypes = {
-  /**
-   * Specifies the current state of the button. If set, the button will act as a ['controlled' component](https://facebook.github.io/react/docs/forms.html#controlled-components).
-   */
-  active: React.PropTypes.bool,
-  /**
-   * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
-   * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
-   */
-  assistiveText: React.PropTypes.string,
-  disabled: React.PropTypes.bool,
-  /**
-   * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
-   */
-  iconName: React.PropTypes.string,
-  iconSize: React.PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
-  onClick: React.PropTypes.func,
-  /**
-   * If true, button scales to 100% width on small form factors.
-   */
-  responsive: React.PropTypes.bool,
-  /**
-   * Write <code>'-1'</code> if you don't want the user to tab to the button.
-   */
-  tabIndex: React.PropTypes.string,
-  /**
-   * Initial label and icon (optional) of button.
-   */
-  stateOne: React.PropTypes.object,
-  /**
-   * Selected label and icon (optional) of button.
-   */
-  stateTwo: React.PropTypes.object,
-  /**
-   *  Deselect label and icon (optional) of button.
-   */
-  stateThree: React.PropTypes.object,
-  tooltip: React.PropTypes.node,
-  /**
-   * Use <code>icon-inverse</code> for white icons.
-   */
-  variant: React.PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon', 'inverse', 'icon-inverse']),
+	/**
+	 * Specifies the current state of the button. If set, the button will act as a ['controlled' component](https://facebook.github.io/react/docs/forms.html#controlled-components).
+	 */
+	active: React.PropTypes.bool,
+	/**
+	 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+	 * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
+	 */
+	assistiveText: React.PropTypes.string,
+	disabled: React.PropTypes.bool,
+	/**
+	 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
+	 */
+	iconName: React.PropTypes.string,
+	iconSize: React.PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
+	onClick: React.PropTypes.func,
+	/**
+	 * If true, button scales to 100% width on small form factors.
+	 */
+	responsive: React.PropTypes.bool,
+	/**
+	 * Write <code>'-1'</code> if you don't want the user to tab to the button.
+	 */
+	tabIndex: React.PropTypes.string,
+	/**
+	 * Initial label and icon (optional) of button.
+	 */
+	stateOne: React.PropTypes.object,
+	/**
+	 * Selected label and icon (optional) of button.
+	 */
+	stateTwo: React.PropTypes.object,
+	/**
+	 *	Deselect label and icon (optional) of button.
+	 */
+	stateThree: React.PropTypes.object,
+	tooltip: React.PropTypes.node,
+	/**
+	 * Use <code>icon-inverse</code> for white icons.
+	 */
+	variant: React.PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon', 'inverse', 'icon-inverse'])
 };
 
 // i18n
 const defaultProps = {
-  disabled: false,
-  iconSize: 'medium',
-  responsive: false,
-  stateOne: { iconName: 'add', label: 'Follow' },
-  stateTwo: { iconName: 'check', label: 'Following' },
-  stateThree: { iconName: 'close', label: 'Unfollow' },
+	disabled: false,
+	iconSize: 'medium',
+	responsive: false,
+	stateOne: { iconName: 'add', label: 'Follow' },
+	stateTwo: { iconName: 'check', label: 'Following' },
+	stateThree: { iconName: 'close', label: 'Unfollow' }
 };
 
 /**
@@ -95,69 +93,104 @@ const defaultProps = {
  * For icon buttons, use <code>variant='icon'</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: 'add', label: 'Join'}}</code>).
  */
 class ButtonStateful extends TooltipTrigger {
-  constructor(props) {
-    super(props);
-    this.state = { active: false };
-  }
+	constructor (props) {
+		super(props);
+		this.state = { active: false };
+	}
 
-  componentDidMount() {
-    super.componentDidMount()
-  }
+	componentDidMount () {
+		super.componentDidMount();
+	}
 
-  componentWillUnmount() {
-    super.componentWillUnmount()
-  }
+	componentWillUnmount () {
+		super.componentWillUnmount();
+	}
 
-  handleClick(e) {
-    if (isFunction(this.props.onClick)) this.props.onClick(e);
-    if (!isBoolean(this.props.active)) this.setState({ active: !this.state.active });
-  }
+	handleClick (e) {
+		if (isFunction(this.props.onClick)) this.props.onClick(e);
+		if (!isBoolean(this.props.active)) this.setState({ active: !this.state.active });
+	}
 
-  getClassName(active) {
-    return classNames(this.props.className, 'slds-button', {
-      ['slds-button--neutral']: this.props.variant !== 'icon',
-      ['slds-button--inverse']: this.props.variant === 'inverse',
-      ['slds-not-selected']: !active,
-      ['slds-is-selected']: active,
-      ['slds-max-small-button--stretch']: this.props.responsive,
-      ['slds-button--icon-border']: this.props.variant === 'icon',
-    });
-  }
+	getClassName (active) {
+		return classNames(this.props.className, 'slds-button', {
+			'slds-button--neutral': this.props.variant !== 'icon',
+			'slds-button--inverse': this.props.variant === 'inverse',
+			'slds-not-selected': !active,
+			'slds-is-selected': active,
+			'slds-max-small-button--stretch': this.props.responsive,
+			'slds-button--icon-border': this.props.variant === 'icon'
+		});
+	}
 
-  render() {
-    const props = omit(this.props, ['className', 'label', 'onClick', 'type', 'active']);
-    const active = isBoolean(this.props.active) ? this.props.active : this.state.active;
+	render () {
+		const props = omit(this.props, ['className', 'label', 'onClick', 'type', 'active']);
+		const active = isBoolean(this.props.active) ? this.props.active : this.state.active;
 
-    if(this.props.variant === 'icon') {
-      return (
-        <button onMouseLeave={blurElement} className={this.getClassName(active)} onClick={this.handleClick.bind(this)} {...props} aria-live='polite'>
-          <ButtonIcon assistiveText={active ?  this.props.assistiveText + ' selected' : this.props.assistiveText} disabled={this.props.disabled} name={this.props.iconName} size={this.props.iconSize}  className='slds-button__icon--stateful'  />
-          { this.getTooltip() }
-        </button>
-      )
-    } else {
-      return (
-        <button onMouseLeave={blurElement} className={this.getClassName(active)} aria-live='assertive' onClick={this.handleClick.bind(this)} {...props}>
-          <span className='slds-text-not-selected'>
-            <ButtonIcon disabled={this.props.disabled} name={this.props.stateOne.iconName} size='small' position='left' className='slds-button__icon--stateful' />
-            {this.props.stateOne.label}
-          </span>
-          <span className='slds-text-selected'>
-            <ButtonIcon disabled={this.props.disabled} name={this.props.stateTwo.iconName} size='small' position='left' className='slds-button__icon--stateful'  />
-            {this.props.stateTwo.label}
-          </span>
-          <span className='slds-text-selected-focus'>
-            <ButtonIcon disabled={this.props.disabled} name={this.props.stateThree.iconName} size='small' position='left' className='slds-button__icon--stateful'  />
-            {this.props.stateThree.label}
-          </span>
-          { this.getTooltip() }
-        </button>
-      )
-    }
-  }
+		if (this.props.variant === 'icon') {
+			return (
+				<button
+					onMouseLeave={blurElement}
+					className={this.getClassName(active)}
+					onClick={this.handleClick.bind(this)}
+					{...props}
+					aria-live="polite"
+				>
+					<ButtonIcon
+						assistiveText={active ?	`${this.props.assistiveText} selected` : this.props.assistiveText}
+						disabled={this.props.disabled}
+						name={this.props.iconName}
+						size={this.props.iconSize}
+						className="slds-button__icon--stateful"
+					/>
+					{this.getTooltip()}
+				</button>
+			);
+		} else {
+			return (
+				<button
+					onMouseLeave={blurElement}
+					className={this.getClassName(active)}
+					aria-live="assertive"
+					onClick={this.handleClick.bind(this)}
+					{...props}
+				>
+					<span className="slds-text-not-selected">
+						<ButtonIcon
+							disabled={this.props.disabled}
+							name={this.props.stateOne.iconName}
+							size="small"
+							position="left"
+							className="slds-button__icon--stateful"
+						/>
+						{this.props.stateOne.label}
+					</span>
+					<span className="slds-text-selected">
+						<ButtonIcon
+							disabled={this.props.disabled}
+							name={this.props.stateTwo.iconName}
+							size="small" position="left"
+							className="slds-button__icon--stateful"
+						/>
+						{this.props.stateTwo.label}
+					</span>
+					<span className="slds-text-selected-focus">
+						<ButtonIcon
+							disabled={this.props.disabled}
+							name={this.props.stateThree.iconName}
+							size="small"
+							position="left"
+							className="slds-button__icon--stateful"
+						/>
+						{this.props.stateThree.label}
+					</span>
+					{this.getTooltip()}
+				</button>
+			);
+		}
+	}
 }
 
-ButtonStateful.displayName = displayName;
+ButtonStateful.displayName = BUTTON_STATEFUL;
 ButtonStateful.propTypes = propTypes;
 ButtonStateful.defaultProps = defaultProps;
 
