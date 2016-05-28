@@ -30,13 +30,13 @@ import { CARD_HEADER } from '../../utilities/constants';
 
 // Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
 const cssClasses = {
-	base: 'slds-card__header',
-}
+	base: 'slds-card__header'
+};
 
 const idSuffixes = {
 	headerActions: '__header-actions',
 	heading: '__heading'
-}
+};
 
 // ## CardHeaderDefinition
 const CardHeader = React.createClass({
@@ -67,10 +67,11 @@ const CardHeader = React.createClass({
 		id: PropTypes.string.isRequired
 	},
 
-	_renderFilter () {
+	renderFilter () {
 		const filter = React.cloneElement(this.props.filter, {
 			id: this.props.id
-		})
+		});
+
 		return (
 			<div className="slds-input-has-icon slds-input-has-icon--left slds-size--1-of-3">
 				{filter}
@@ -78,12 +79,13 @@ const CardHeader = React.createClass({
 		);
 	},
 
-	_renderMediaObjectBody () {
+	renderMediaObjectBody () {
 		return (
 			<h2
 				id={this.props.id + idSuffixes.heading}
 				className="slds-text-heading--small slds-truncate"
-				title={this.props.heading}>
+				title={this.props.heading}
+			>
 				{this.props.heading}
 			</h2>
 		);
@@ -94,23 +96,26 @@ const CardHeader = React.createClass({
 		const hasFilter = this.props.filter ? true : null;
 
 		if (this.props.filter) {
-			filter = this._renderFilter();
+			filter = this.renderFilter();
 		}
 
 		return (
-			<div className={cssClasses.base + " slds-grid"}>
+			<div className={classnames(cssClasses.base, 'slds-grid')}>
 				<MediaObject
 					figure={this.props.icon}
-					body={this._renderMediaObjectBody()}
+					body={this.renderMediaObjectBody()}
 					verticalCenter
 					canTruncate
 				/>
 				{filter}
-				<div id={this.props.id + idSuffixes.headerActions} className={classnames('slds-no-flex', {'slds-size--1-of-3': hasFilter, 'slds-text-align--right': hasFilter})}>
+				<div
+					id={this.props.id + idSuffixes.headerActions}
+					className={classnames('slds-no-flex', { 'slds-size--1-of-3': hasFilter, 'slds-text-align--right': hasFilter })}
+				>
 					{this.props.headerActions}
 				</div>
 			</div>
-		)
+		);
 	}
 });
 

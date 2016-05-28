@@ -22,7 +22,7 @@ import { CARD_EMPTY } from '../../../utilities/constants';
 // Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
 const idSuffixes = {
 	heading: '__empty-heading'
-}
+};
 
 const CardEmpty = React.createClass({
 	// ### Display Name
@@ -48,7 +48,7 @@ const CardEmpty = React.createClass({
 	// i18n
 	getDefaultProps () {
 		return {
-			heading: "No Related Items"
+			heading: 'No Related Items'
 		};
 	},
 
@@ -58,7 +58,7 @@ const CardEmpty = React.createClass({
 		return (
 			<div className="slds-p-horizontal--small">
 				<div className="slds-text-align--center slds-m-bottom--x-large">
-				<h3 id={id} className="slds-text-heading--small slds-p-top--large slds-p-bottom--large">{this.props.heading}</h3>
+					<h3 id={id} className="slds-text-heading--small slds-p-top--large slds-p-bottom--large">{this.props.heading}</h3>
 					{this.props.children}
 				</div>
 			</div>

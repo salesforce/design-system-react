@@ -15,7 +15,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 
 import Input from '../../forms/input';
-import { idSuffixes as bodyIdSuffixes } from '../body';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
@@ -24,7 +23,7 @@ import { CARD_FILTER } from '../../../utilities/constants';
 
 const idSuffixes = {
 	base: '__filter-input'
-}
+};
 
 /**
  * A default filter or search input for Cards that contain items.
@@ -70,7 +69,7 @@ const Filter = React.createClass({
 				onChange={onChange}
 				placeholder={placeholder}
 			/>
-		)
+		);
 	}
 });
 

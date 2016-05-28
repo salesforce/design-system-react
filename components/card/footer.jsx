@@ -19,12 +19,12 @@ import { CARD_FOOTER } from '../../utilities/constants';
 // Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
 const cssClasses = {
 	base: 'slds-card__footer'
-}
+};
 
 const CardFooter = (props) => (
-		<div className={cssClasses.base}>
-			{props.children}
-		</div>
+	<div className={cssClasses.base}>
+		{props.children}
+	</div>
 );
 
 CardFooter.displayName = CARD_FOOTER;

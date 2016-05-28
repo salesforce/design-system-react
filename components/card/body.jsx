@@ -18,18 +18,19 @@ import { CARD_BODY } from '../../utilities/constants';
 
 const cssClasses = {
 	base: 'slds-card__body'
-}
+};
 
 const idSuffixes = {
 	base: '__body'
 };
 
 const CardBody = (props) => (
-		<div
-			className={cssClasses.base}
-			id={props.id + idSuffixes.base}>
-			{props.children}
-		</div>
+	<div
+		className={cssClasses.base}
+		id={props.id + idSuffixes.base}
+	>
+		{props.children}
+	</div>
 );
 
 CardBody.displayName = CARD_BODY;

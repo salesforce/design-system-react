@@ -38,7 +38,7 @@ import { CARD } from '../../utilities/constants';
 // Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
 const cssClasses = {
 	base: 'slds-card'
-}
+};
 
 /**
  * Cards are used to apply a container around a related grouping of information. It has a header, a body, and an optional footer. It often contains a DataTable or Tile (coming soon). Actions associated with selected items or with all items are included within the header actions. Footer often contains pagination.
@@ -94,7 +94,7 @@ const Card = React.createClass({
 		};
 	},
 
-	_renderFooter () {
+	renderFooter () {
 		return (
 			<Footer>
 				{this.props.footer}
@@ -102,7 +102,7 @@ const Card = React.createClass({
 		);
 	},
 
-	_renderBody (body) {
+	renderBody (body) {
 		return (
 			<Body id={this.props.id}>
 				{body}
@@ -111,7 +111,7 @@ const Card = React.createClass({
 	},
 
 	// Can be overridden by passing in a node to the empty prop
-	_renderDefaultEmpty () {
+	renderDefaultEmpty () {
 		return (
 			<Empty id={this.props.id} heading={this.props.heading} />
 		);
@@ -121,7 +121,7 @@ const Card = React.createClass({
 	render () {
 		let { empty } = this.props;
 		if (empty === true) {
-			empty = this._renderDefaultEmpty();
+			empty = this.renderDefaultEmpty();
 		}
 		return (
 			<div id={this.props.id} className={classnames(cssClasses.base, this.props.className)}>
@@ -130,13 +130,13 @@ const Card = React.createClass({
 					id={this.props.id}
 					filter={this.props.filter}
 					heading={this.props.heading}
-					headerActions={empty ? null : this.props.headerActions} />
-				{!empty ? this._renderBody(this.props.children) : this._renderBody(empty)}
-				{this.props.footer && !empty ? this._renderFooter() : null}
+					headerActions={empty ? null : this.props.headerActions}
+				/>
+				{!empty ? this.renderBody(this.props.children) : this.renderBody(empty)}
+				{this.props.footer && !empty ? this.renderFooter() : null}
 			</div>
 		);
-	},
-
+	}
 });
 
 module.exports = Card;
