@@ -6,43 +6,32 @@ Redistributions of source code must retain the above copyright notice, this list
 Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import React from "react";
+import React from 'react';
+const classNames = require('classnames');
 
 import { BUTTON_GROUP } from '../../utilities/constants';
 
-const displayName = BUTTON_GROUP;
 const propTypes = {
-  /**
-   * Children are expected to be components. If last button triggers a dropdown menu, use Dropdown instead of Button.
-   */
-  children: React.PropTypes.node.isRequired,
-  className: React.PropTypes.string,
+	/**
+	 * Children are expected to be components. If last button triggers a dropdown menu, use Dropdown instead of Button.
+	 */
+	children: React.PropTypes.node.isRequired,
+	className: React.PropTypes.string
 };
-const defaultProps = {};
 
 /**
- * The ButtonGroup component wraps other  components (ie. Button, MenuDropdown, PopoverTooltip, etc).
+ * The ButtonGroup component wraps other components (ie. Button, MenuDropdown, PopoverTooltip, etc).
  */
-class ButtonGroup extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+const ButtonGroup = (props) => (
+	<div className={classNames('slds-button-group', props.className)} role="group">
+		{props.children}
+	</div>
+);
 
-  render() {
-    return (
-      <div className={"slds-button-group" + " " + this.props.className} role="group">
-        {this.props.children}
-      </div>
-    )
-  }
-}
-
-ButtonGroup.displayName = displayName;
+ButtonGroup.displayName = BUTTON_GROUP;
 ButtonGroup.propTypes = propTypes;
-ButtonGroup.defaultProps = defaultProps;
 
 module.exports = ButtonGroup;
