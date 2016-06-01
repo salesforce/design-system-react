@@ -8,57 +8,55 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-/* eslint-disable indent */
 
 // ## Dependencies
 
 // ### React
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 // ### classNames
 import classNames from 'classnames';
 
-// ## Constants
-import { CONTEXT_BAR_NAV_GROUP } from './constants';
-
-// Removes the need for `PropTypes`.
-const { PropTypes } = React;
+import { CONTEXT_BAR_LINK } from '../../utilities/constants';
 
 /**
  * Component description.
  */
-const ContextBarNavGroup = (props) => {
-	let alignmentClass;
-	if (props.alignment === 'right') {
-		alignmentClass = 'slds-col--bump-left';
-	}
+const ContextBarLink = (props) => {
+	const {
+		className,
+		label,
+		...other
+	} = props;
 
 	return (
-		<nav className={classNames('slds-context-bar__secondary slds-grid', alignmentClass, props.className)} role="navigation">
-			<div className="slds-context-bar__vertical-divider"></div>
-			<ul className="slds-grid slds-grid--vertical-stretch">
-				{props.children}
-			</ul>
-		</nav>
+		<li className="slds-context-bar__item">
+			<a
+				className={classNames('slds-context-bar__label-action', className)}
+				{...other}
+			>
+				<span className="slds-truncate">{label}</span>
+			</a>
+		</li>
 	);
 };
 
-ContextBarNavGroup.displayName = CONTEXT_BAR_NAV_GROUP;
+ContextBarLink.displayName = CONTEXT_BAR_LINK;
 
 // ### Prop Types
-ContextBarNavGroup.propTypes = {
+ContextBarLink.propTypes = {
 	/**
-	 * Class name assigned to the container element (this element also has `slds-context-bar slds-grid` classes).
+	 * Class names to be added to the anchor element
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
-	 * Alignment for item. Defaults to "left".
+	 * The href of the link.
 	 */
-	alignment: PropTypes.oneOfType(['right', 'left']),
+	href: PropTypes.string,
 	/**
-	 * The items to display in this navigation section.
+	 * Text to show for link item.
 	 */
-	children: PropTypes.node
+	label: PropTypes.string
 };
 
-export default ContextBarNavGroup;
+module.exports = ContextBarLink;

@@ -8,7 +8,6 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-/* eslint-disable indent */
 
 // # ContextBar Component
 
@@ -17,16 +16,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ## Dependencies
 
 // ### React
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 // ### classNames
 import classNames from 'classnames';
 
-// ## Constants
-import { CONTEXT_BAR, CONTEXT_BAR_TITLE } from './constants';
-
-// Removes the need for `PropTypes`.
-const { PropTypes } = React;
+import { CONTEXT_BAR } from '../../utilities/constants';
 
 /**
  * Component description.
@@ -45,31 +40,34 @@ const ContextBar = React.createClass({
 		/**
 		 * Class names to be added to the container element (this element also has `slds-context-bar slds-grid` classes).
 		 */
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string])
+		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		/**
+		 * Typically the cloud name (e.g.- "sales" or "marketing"). This primarily changes the background color.
+		 */
+		cloud: PropTypes.string,
+		/**
+		 * Transforms text and interactions (such as hover) to be more accessible.
+		 */
+		theme: PropTypes.oneOf(['light', 'dark'])
+	},
+
+	getDefaultProps () {
+		return {
+			cloud: 'default',
+			theme: 'dark'
+		};
 	},
 
 	// ### Render
 	render () {
-		let title;
-
-		const children = React.Children.map(this.props.children, (child) => {
-			if (child && child.type.displayName === CONTEXT_BAR_TITLE) {
-				title = child;
-			} else {
-				return child;
-			}
-		});
-
+		const cloudClass = `slds-context-bar--theme-${this.props.cloud}`;
+		const themeClass = `slds-context-bar--theme-${this.props.theme}`;
 		return (
-			<div className={classNames('slds-context-bar slds-grid', this.props.className)}>
-				<div className="slds-context-bar__shadow"></div>
-				{title}
-				<div className="slds-grid slds-size--1-of-1">
-					{children}
-				</div>
+			<div className={classNames('slds-context-bar', cloudClass, themeClass, this.props.className)}>
+					{this.props.children}
 			</div>
 		);
 	}
 });
 
-export default ContextBar;
+module.exports = ContextBar;

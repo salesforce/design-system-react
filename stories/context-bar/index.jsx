@@ -1,16 +1,21 @@
-/* eslint-disable indent */
-
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf } from '@kadira/storybook';
 
 import { CONTEXT_BAR } from '../../utilities/constants';
 
 import ContextBar from '../../components/context-bar';
+import ContextBarRegion from '../../components/context-bar/region';
 import ContextBarDropdown from '../../components/context-bar/dropdown';
 import ContextBarLink from '../../components/context-bar/link';
-import ContextBarNavGroup from '../../components/context-bar/nav-group';
-import ContextBarTitle from '../../components/context-bar/title';
 import Icon from '../../components/icon';
+
+const AppSwitcher = () => (
+	<div className="slds-context-bar__icon-action">
+		<a href="#" aria-haspopup="true" className="slds-button slds-button--icon slds-context-bar__button">
+			<Icon category="utility" name="apps" inverse className="slds-icon--small" />
+		</a>
+	</div>
+);
 
 const sampleCollection = [{
 	label: 'Menu Item One',
@@ -32,28 +37,27 @@ const sampleCollection = [{
 	href: 'http://www.google.com'
 }];
 
+
 const getContextBar = (props) => (
-	<ContextBar
-	className="mctheme"
-	>
-		<ContextBarTitle>
-		Marketing Cloud&nbsp;&nbsp;&nbsp;
-			<Icon category="utility" name="email" inverse className="slds-icon--x-small" />
-		&nbsp;&nbsp;&nbsp;Email Studio
-		</ContextBarTitle>
-		<ContextBarNavGroup>
-			<ContextBarLink label="Top Level Link 1" href="http://www.salesforce.com" />
-			<ContextBarDropdown id="primaryDropdown" label="Dropdown menu" options={sampleCollection} />
-			<ContextBarLink label="Top Level Link 2" href="http://www.salesforce.com" />
-		</ContextBarNavGroup>
-		<ContextBarNavGroup alignment="right">
-			<ContextBarLink label="Shortcut 1" href="http://www.salesforce.com" />
-			<ContextBarDropdown id="tasks" label="Tasks" options={sampleCollection} />
-			<ContextBarLink label="Shortcut 2" href="http://www.salesforce.com" />
-		</ContextBarNavGroup>
-	</ContextBar>
+	<div>
+
+		<ContextBar {...props}>
+			<ContextBarRegion region="primary" applicationSwitcher={<AppSwitcher />} applicationName="App Name" />
+			<ContextBarRegion region="secondary" navigation>
+				<ContextBarLink label="Home" href="http://www.salesforce.com" />
+				<ContextBarDropdown id="primaryDropdown" label="Context Menu Item 1" options={sampleCollection} />
+				<ContextBarLink label="Context Menu Item 2" href="http://www.salesforce.com" />
+			</ContextBarRegion>
+			<ContextBarRegion region="tertiary">
+				<ContextBarLink label="Actions" href="http://www.salesforce.com" />
+			</ContextBarRegion>
+		</ContextBar>
+
+	</div>
 );
 
 storiesOf(CONTEXT_BAR, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('Base', () => getContextBar({ label: 'Base', variant: 'base' }));
+	.add('Base', () => getContextBar())
+	.add('Marketing Cloud', () => getContextBar({ cloud: 'marketing' }))
+	.add('Light Theme', () => getContextBar({ theme: 'light' }));
