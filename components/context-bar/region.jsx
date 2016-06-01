@@ -61,22 +61,38 @@ const regions = [
 		/**
 		 * Region wrap children in styling specific to that region.
 		 */
-		region: PropTypes.oneOf(regions)
+		region: PropTypes.oneOf(regions),
+		/**
+		 * Overrides truncation of `primary` region and `applicationName` to allow longer names
+		 */
+		truncate: PropTypes.bool
 	},
 
 	getDefaultProps () {
 		return {
-			navigation: false
+			navigation: false,
+			truncate: true
 		};
 	},
 
 	renderPrimary () {
+		const truncate = this.props.truncate;
+		const appName = (
+			<span className="slds-context-bar__label-action slds-context-bar__app-name">
+				<span className={classNames({ 'slds-truncate': truncate })}>{this.props.applicationName}</span>
+			</span>
+		);
+
+		// This is a hack to allow longer application names and should be removed in the future by adding a reset class.
+		let style = null;
+		if (!truncate) {
+			style = { maxWidth: 'none' };
+		}
+
 		return (
-			<div className={classNames('slds-context-bar__item', this.props.className)} onClick={this.props.onClick}>
+			<div className={classNames('slds-context-bar__item', this.props.className)} onClick={this.props.onClick} style={style}>
 				{this.props.applicationSwitcher}
-				<span className="slds-context-bar__label-action slds-context-bar__app-name">
-					<span className="slds-truncate">{this.props.applicationName}</span>
-				</span>
+				{this.props.applicationName ? appName : null}
 				{this.props.children}
 			</div>
 		);

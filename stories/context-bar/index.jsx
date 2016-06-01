@@ -38,11 +38,11 @@ const sampleCollection = [{
 }];
 
 
-const getContextBar = (props) => (
+const getContextBar = (props, primaryProps) => (
 	<div>
 
 		<ContextBar {...props}>
-			<ContextBarRegion region="primary" applicationSwitcher={<AppSwitcher />} applicationName="App Name" />
+			<ContextBarRegion region="primary" {...primaryProps} />
 			<ContextBarRegion region="secondary" navigation>
 				<ContextBarLink label="Home" href="http://www.salesforce.com" />
 				<ContextBarDropdown id="primaryDropdown" label="Context Menu Item 1" options={sampleCollection} />
@@ -58,6 +58,28 @@ const getContextBar = (props) => (
 
 storiesOf(CONTEXT_BAR, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('Base', () => getContextBar())
-	.add('Marketing Cloud', () => getContextBar({ cloud: 'marketing' }))
-	.add('Light Theme', () => getContextBar({ theme: 'light' }));
+	.add('Base', () => getContextBar(
+		{},
+		{
+			applicationSwitcher: <AppSwitcher />,
+			applicationName: 'App Name'
+		}))
+	.add('Marketing Cloud', () => getContextBar(
+		{ cloud: 'marketing' },
+		{
+			applicationSwitcher: <AppSwitcher />,
+			truncate: false,
+			applicationName: <span>Marketing Cloud<Icon
+				category="utility"
+				className="slds-m-left--small slds-m-right--small"
+				name="email"
+				inverse
+				size="small"
+			/>Email Studio</span>
+		}))
+	.add('Light Theme', () => getContextBar(
+		{ theme: 'light' },
+		{
+			applicationSwitcher: <AppSwitcher />,
+			applicationName: 'App Name'
+		}));
