@@ -63,7 +63,7 @@
   },
   "devDependencies": {
     "@kadira/storybook": "^1.27.0",
-    "@salesforce-ux/design-system": "1.0.3",
+    "@salesforce-ux/design-system": "git+ssh://git@github.com/ExactTarget/design-system-internal.git#v2.0.0-rc.2-BUILT",
     "@salesforce-ux/icons": "4.0.0",
     "async": "^2.0.0-rc.5",
     "babel": "^6.5.2",
@@ -128,6 +128,7 @@
     "button-stateful",
     "button-group",
     "card",
+    "context-bar",
     "date-picker",
     "icon",
     "lookup",

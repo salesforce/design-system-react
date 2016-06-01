@@ -8,40 +8,57 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+/* eslint-disable indent */
 
-import React from "react";
+// ## Dependencies
 
-import styling from "./styling";
+// ### React
+import React from 'react';
 
-const pf = styling.pf;
+// ### classNames
+import classNames from 'classnames';
 
-//import Icon from "../icon";
+// ## Constants
+import { CONTEXT_BAR_NAV_GROUP } from './constants';
 
-
-import MenuDropdown from "../menu-dropdown";
-
-const displayName = 'ContextBarNavMenu';
-
+// Removes the need for `PropTypes`.
+const { PropTypes } = React;
 
 /**
- * The ContextBarTitle component is the Lightning Design System Context Bar component. The ContextBar is a container with dropdown menus.
+ * Component description.
  */
-class NavMenu extends React.Component {
+const ContextBarNavGroup = (props) => {
+	let alignmentClass;
+	if (props.alignment === 'right') {
+		alignmentClass = 'slds-col--bump-left';
+	}
 
-  constructor(props) {
-    super(props);
-  }
+	return (
+		<nav className={classNames('slds-context-bar__secondary slds-grid', alignmentClass, props.className)} role="navigation">
+			<div className="slds-context-bar__vertical-divider"></div>
+			<ul className="slds-grid slds-grid--vertical-stretch">
+				{props.children}
+			</ul>
+		</nav>
+	);
+};
 
-  render() {
-    return (
-      <li className={pf('context-bar-action grid dropdown-trigger')}>
-        { this.props.children }
-        <MenuDropdown {... this.props} />
-      </li>
-    );
-  }
-}
+ContextBarNavGroup.displayName = CONTEXT_BAR_NAV_GROUP;
 
-NavMenu.displayName = displayName;
+// ### Prop Types
+ContextBarNavGroup.propTypes = {
+	/**
+	 * Class name assigned to the container element (this element also has `slds-context-bar slds-grid` classes).
+	 */
+	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	/**
+	 * Alignment for item. Defaults to "left".
+	 */
+	alignment: PropTypes.oneOfType(['right', 'left']),
+	/**
+	 * The items to display in this navigation section.
+	 */
+	children: PropTypes.node
+};
 
-module.exports = NavMenu;
+export default ContextBarNavGroup;
