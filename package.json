@@ -9,7 +9,7 @@
     "heroku-prebuild": "./scripts/heroku-prebuild.sh",
     "heroku-postbuild": "./scripts/heroku-postbuild.sh",
     "icons": "./node_modules/.bin/babel-node scripts/inline-icons.js",
-    "lint": "eslint --config=./.eslintrc \"components/**/**\"",
+    "lint": "eslint --config=./.eslintrc \"**/**\"",
     "publish-to-git": "./node_modules/.bin/babel-node scripts/publish-to-git.js",
     "publish-to-edge": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge",
     "publish-to-upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge --remote=upstream && ./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
