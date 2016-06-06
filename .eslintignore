@@ -1,1 +1,8 @@
+.git/
+.storybook/
+coverage/
+node_modules/
+storybook/
+
 components/SLDSDateInput
+components/utilities/utility-icon/SVG
