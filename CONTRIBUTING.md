@@ -6,7 +6,7 @@
 4. Edit the code in your fork.
 5. Send us a well documented pull request when you are done.
 
-The **GitHub pull requests** should meet the following criteria:
+**GitHub pull requests** should meet the following criteria:
 
   - descriptive title
   - brief summary
@@ -17,51 +17,42 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 ## Code Guidelines
 
-1. We use es6 and generally follow [Airbnb's Code guidelines](https://github.com/airbnb/javascript). You can refer to our [.eslintrc](https://github.com/salesforce-ux/design-system-react/blob/master/.eslintrc).
+1. We use es6 and make use of a [shared eslint repository](https://github.com/salesforce-ux/eslint-config-slds) based on [Airbnb's Code guidelines](https://github.com/airbnb/javascript). You can refer to our [.eslintrc](https://github.com/salesforce-ux/design-system-react/blob/master/.eslintrc).
 
-2. `propTypes`, `defaultProps`, and declaration of props on components should be in alphabetical order.
+2. `displayName`, `propTypes`, and `defaultProps` should be in that order.
 
-3. Components' lifecyle methods should be near the top (`componentDidMount`,`componentWillUnmount`, etc.), and the `render()` function should be the last function in the component so that developers know where to look for them and don't create duplicate methods.
+3. Component lifecyle methods (`componentDidMount`, `componentWillUnmount`, etc.) should be near the top so that developers know where to look for them and don't create duplicate methods.
 
 4. Below is a react component template. Note that `displayName`, `propTypes`, and `defaultProps` are required.
 
-```
-const displayName = "MyComponent";
-const propTypes = {
-  ...
-};
-const defaultProps = {
-  ...
-};
+```jsx
+const MyComponent = React.createClass({
+  displayName: 'MyComponent',
 
-class MyComponent extends React.Component {
+  propTypes: {
+    ...
+  },
 
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  defaultProps: {
+    ...
+  },
 
-  ...
-
-  render() {
+  render () {
     return (
       <div>My Component here</div>
-    )
+    );
   }
-}
-
-MyComponent.displayName = displayName;
-MyComponent.propTypes = propTypes;
-MyComponent.defaultProps = defaultProps;
+});
 
 export default MyComponent;
-
 ```
+
 ## Finalize new component/features
 
 1. Write tests for your new component/feature.
 2. Run `npm test`.
-3. Run `npm docs` to build the documentation from comments in the code.
-3. After your PR is merged, make sure it appears here: [https://design-system-react-stage.herokuapp.com/#/](https://design-system-react-stage.herokuapp.com/#/). If it doesn't, reach out to [Ivan Bogdanov](https://github.com/madpotato) or [Donielle Berg](https://github.com/donnieberg).
+3. After your PR is merged, make sure it appears here: [https://design-system-react-components.herokuapp.com](https://preview:8f2924b3d2232a37f63c32f70d9b3aba@design-system-react-components.herokuapp.com/). If it doesn't, reach out to one of the following people:
+  * [Donielle Berg](https://github.com/donnieberg)
+  * [Ivan Bogdanov](https://github.com/madpotato)
+  * [David Brainer](https://github.com/tweettypography)
 4. Get your component/feature approved by the UX Accessibility Team (refer to the link above).
-5. If you're creating a new component, please add it to the [README.md](https://github.com/salesforce-ux/design-system-react/blob/master/README.md)
