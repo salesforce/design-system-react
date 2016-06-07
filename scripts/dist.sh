@@ -29,6 +29,7 @@ echo "## Cloning additional files"
 
 cp .gitignore .tmp/.gitignore
 cp LICENSE .tmp/LICENSE
+cp CONTRIBUTING.md .tmp/CONTRIBUTING.md
 cp package.json .tmp/package.json
 cp README-dist.md .tmp/README.md
 
