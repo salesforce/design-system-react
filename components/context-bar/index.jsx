@@ -23,6 +23,12 @@ import classNames from 'classnames';
 
 import { CONTEXT_BAR } from '../../utilities/constants';
 
+// Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
+const cssClasses = {
+	base: 'slds-context-bar',
+	themePrefix: 'slds-context-bar--theme-'
+};
+
 /**
  * Component description.
  */
@@ -60,10 +66,10 @@ const ContextBar = React.createClass({
 
 	// ### Render
 	render () {
-		const cloudClass = `slds-context-bar--theme-${this.props.cloud}`;
-		const themeClass = `slds-context-bar--theme-${this.props.theme}`;
+		const cloudClass = `${cssClasses.themePrefix}${this.props.cloud}`;
+		const themeClass = `${cssClasses.themePrefix}${this.props.theme}`;
 		return (
-			<div className={classNames('slds-context-bar', cloudClass, themeClass, this.props.className)}>
+			<div className={classNames(cssClasses.base, cloudClass, themeClass, this.props.className)}>
 					{this.props.children}
 			</div>
 		);
@@ -71,3 +77,4 @@ const ContextBar = React.createClass({
 });
 
 module.exports = ContextBar;
+module.exports.cssClasses = cssClasses;

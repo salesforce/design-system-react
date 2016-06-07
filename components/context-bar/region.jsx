@@ -19,6 +19,13 @@ import classNames from 'classnames';
 
 import { CONTEXT_BAR_REGION } from '../../utilities/constants';
 
+const cssClasses = {
+	primary: 'slds-context-bar__primary',
+	secondary: 'slds-context-bar__secondary',
+	tertiary: 'slds-context-bar__tertiary',
+	appName: 'slds-context-bar__app-name'
+};
+
 // List regions for export
 const regions = [
 	'primary',
@@ -55,7 +62,7 @@ const regions = [
 		 */
 		navigation: PropTypes.bool,
 		/**
-		 * Fire on click of entire region. (Only works for `primary` region for opening an Application Switcher or Launcher)
+		 * Triggered by click of application name or switcher icon in the `primary` region. Will be ignored in other regions.
 		 */
 		onClick: PropTypes.func,
 		/**
@@ -76,23 +83,31 @@ const regions = [
 	},
 
 	renderPrimary () {
+		const props = this.props;
 		const truncate = this.props.truncate;
 		const appName = (
-			<span className="slds-context-bar__label-action slds-context-bar__app-name">
-				<span className={classNames({ 'slds-truncate': truncate })}>{this.props.applicationName}</span>
+			<span className={classNames('slds-context-bar__label-action', cssClasses.appName)}>
+				<span className={classNames({ 'slds-truncate': truncate })}>{props.applicationName}</span>
 			</span>
 		);
 
-		// This is a hack to allow longer application names and should be removed in the future by adding a reset class.
+		// Group these, since they have the same hover and onClick
+		const primaryItem = (
+			<div className="slds-context-bar__item" onClick={props.applicationNameOnClick}>
+				{props.applicationSwitcher}
+				{props.applicationName ? appName : null}
+			</div>
+		);
+
+		// This is a hack to allow longer application names without truncating them, and should be removed in the future by adding a reset class.
 		let style = null;
 		if (!truncate) {
 			style = { maxWidth: 'none' };
 		}
 
 		return (
-			<div className={classNames('slds-context-bar__item', this.props.className)} onClick={this.props.onClick} style={style}>
-				{this.props.applicationSwitcher}
-				{this.props.applicationName ? appName : null}
+			<div className={classNames(cssClasses.primary, this.props.className)} style={style}>
+				{props.applicationSwitcher || props.applicationName ? primaryItem : null}
 				{this.props.children}
 			</div>
 		);
@@ -100,7 +115,7 @@ const regions = [
 
 	renderSecondary () {
 		const nav = (
-			<nav className={classNames('slds-context-bar__secondary', this.props.className)} role="navigation">
+			<nav className={classNames(cssClasses.secondary, this.props.className)} role="navigation">
 				<div className="slds-context-bar__vertical-divider" />
 				<ul className="slds-grid">
 					{this.props.children}
@@ -109,7 +124,7 @@ const regions = [
 		);
 
 		const div = (
-			<div className={classNames('slds-context-bar__secondary', this.props.className)}>
+			<div className={classNames(cssClasses.secondary, this.props.className)}>
 				<div className="slds-context-bar__vertical-divider" />
 				<ul className="slds-grid">
 					{this.props.children}
@@ -122,7 +137,7 @@ const regions = [
 
 	renderTertiary () {
 		return (
-			<div className={classNames('slds-context-bar__tertiary', 'slds-col--bump-left', this.props.className)}>
+			<div className={classNames(cssClasses.tertiary, 'slds-col--bump-left', this.props.className)}>
 				<ul className="slds-grid">
 					{this.props.children}
 				</ul>
@@ -155,3 +170,4 @@ const regions = [
 
 module.exports = Region;
 module.exports.regions = regions;
+module.exports.cssClasses = cssClasses;

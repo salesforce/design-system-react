@@ -14,14 +14,18 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React from 'react';
 
+import assign from 'lodash.assign';
+
 // ### classNames
 import classNames from 'classnames';
 
 // ### Dropdown
-import Dropdown from '../menu-dropdown';
+import Dropdown, { defaultProps as dropdownDefaultProps } from '../menu-dropdown';
 import SLDSButton from '../button';
 
 import { CONTEXT_BAR_DROPDOWN } from '../../utilities/constants';
+
+const defaultProps = assign({}, dropdownDefaultProps, { align: 'right' });
 
 /**
  * This component extends `MenuDropdown` and modifies the `render` function to allow the markup to work within `ContextBar`. See the complete `MenuDropdown` for context.
@@ -77,6 +81,7 @@ class ContextBarDropdown extends Dropdown {
 	}
 }
 
+ContextBarDropdown.defaultProps = defaultProps;
 ContextBarDropdown.displayName = CONTEXT_BAR_DROPDOWN;
 
 export default ContextBarDropdown;
