@@ -1,6 +1,5 @@
 /* eslint-disable indent */
 /* `webpack.config.test` can be used for contributing/developing and testing. */
-const path = require('path');
 const webpack = require('webpack');
 const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 const StringReplacePlugin = require('string-replace-webpack-plugin');
@@ -27,8 +26,6 @@ config.output = {
 	// [name] is config.entry object keys
 	filename: '[name].bundle.js'
 };
-
-// config.module.loaders[0].include.push(path.join(__dirname, 'stories'));
 
 config.plugins = [
 	new webpack.DefinePlugin({

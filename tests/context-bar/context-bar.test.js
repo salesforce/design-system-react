@@ -19,13 +19,6 @@ import ContextBarRegion, { cssClasses as regionCssClasses } from '../../componen
 import ContextBarDropdown from '../../components/context-bar/dropdown';
 import ContextBarLink from '../../components/context-bar/link';
 
-
-import { idSuffixes as bodyIdSuffixes } from '../../components/card/body';
-import { cssClasses as footerCssClasses } from '../../components/card/footer';
-import { idSuffixes as emptyIdSuffixes } from '../../components/card/empty';
-import { cssClasses as mediaObjectCssClasses } from '../../components/media-object';
-import { idSuffixes as headerIdSuffixes, cssClasses as headerCssClasses } from '../../components/card/header';
-
 chai.use(chaiEnzyme());
 
 describe('Context Bar: ', () => {
@@ -77,7 +70,8 @@ describe('Context Bar: ', () => {
 			<ContextBar {...props}>
 				<ContextBarRegion
 					region="primary"
-					applicationNameOnClick={applicationNameClicked('Application name clicked (Open Application Switcher).')} {...primaryRegionProps}
+					applicationNameOnClick={applicationNameClicked('Application name clicked (Open Application Switcher).')}
+					{...primaryRegionProps}
 				/>
 				<ContextBarRegion region="secondary" navigation>
 					<ContextBarLink
@@ -171,9 +165,8 @@ describe('Context Bar: ', () => {
 		afterEach(unmountComponent);
 
 		it('Empty region returns null', function () {
-			console.log(this.wrapper);
-			const nav = this.wrapper;
-			expect(nav.type()).to.equal('div');
+			const region = this.wrapper;
+			expect(region.html()).to.equal(null);
 		});
 	});
 
