@@ -35,6 +35,18 @@ export CardFilter from './card/filter';
 export SLDSCheckbox from './forms/checkbox';
 export Checkbox from './forms/checkbox';
 
+export SLDSContextBar from './context-bar';
+export ContextBar from './context-bar';
+
+export SLDSContextBarRegion from './context-bar/region';
+export ContextBarRegion from './context-bar/region';
+
+export SLDSContextBarLink from './context-bar/link';
+export ContextBarLink from './context-bar/link';
+
+export SLDSContextBarDropdown from './context-bar/dropdown';
+export ContextBarDropdown from './context-bar/dropdown';
+
 export SLDSDataTable from './data-table';
 export DataTable from './data-table';
 

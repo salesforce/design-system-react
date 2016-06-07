@@ -8,37 +8,39 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+/* eslint-disable indent */
 
-import React from "react";
+// ## Dependencies
 
-import styling from "./styling";
+// ### React
+import React from 'react';
 
-const pf = styling.pf;
+// ## Constants
+import { CONTEXT_BAR_TITLE } from './constants';
 
-
-const displayName = 'ContextBarTitle';
-
+// Removes the need for `PropTypes`.
+const { PropTypes } = React;
 
 /**
- * The ContextBarTitle component is the Lightning Design System Context Bar component. The ContextBar is a container with dropdown menus.
+ * Component description.
  */
-class Title extends React.Component {
+const ContextBarTitle = (props) => (
+	<div className="slds-context-bar__primary slds-context-bar-action slds-grid grid--vertical-align-stretch">
+		<a
+			href="#void"
+			className="slds-context-bar-action__label slds-grid slds-grid--vertical-align-center slds-text-link--reset slds-p-horizontal--large slds-text-heading--small"
+		>{props.children}</a>
+	</div>
+);
 
-  constructor(props) {
-    super(props);
-  }
+ContextBarTitle.displayName = CONTEXT_BAR_TITLE;
 
-  render() {
-    return (
-      <div className={pf('context-bar__primary context-bar-action grid grid--vertical-align-stretch')}>
-        <a href="#void" className={pf('context-bar-action__label grid grid--vertical-align-center text-link--reset p-horizontal--large text-heading--small FIX-context-bar-a')}>
-          {this.props.children}
-        </a>
-      </div>
-    );
-  }
-}
+// ### Prop Types
+ContextBarTitle.propTypes = {
+	/**
+	 * What to display in title area (text, text + icon, etc).
+	 */
+	children: PropTypes.node
+};
 
-Title.displayName = displayName;
-
-module.exports = Title;
+export default ContextBarTitle;
