@@ -9,6 +9,15 @@ const config = require('./webpack.config');
 config.entry = {
 	tests: ['./tests/tests-bundle.js', hotMiddlewareScript]
 };
+
+// used by enzyme
+config.externals = {
+	'react/lib/ReactContext': true,
+	'react/lib/ExecutionEnvironment': true,
+	'react/addons': true,
+	cheerio: 'window'
+};
+
 config.devtool = 'eval-cheap-module-source-map';
 
 config.output = {
@@ -18,6 +27,8 @@ config.output = {
 	// [name] is config.entry object keys
 	filename: '[name].bundle.js'
 };
+
+// config.module.loaders[0].include.push(path.join(__dirname, 'stories'));
 
 config.plugins = [
 	new webpack.DefinePlugin({
