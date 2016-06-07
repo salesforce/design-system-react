@@ -21,6 +21,7 @@ import React, { PropTypes } from 'react';
 // ### classNames
 import classNames from 'classnames';
 
+// ## Constants
 import { CONTEXT_BAR } from '../../utilities/constants';
 
 // Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
@@ -30,7 +31,7 @@ const cssClasses = {
 };
 
 /**
- * Component description.
+ * ContextBar represents a list of links that either take the user to another page or parts of the page the user is in.
  */
 const ContextBar = React.createClass({
 	// ### Display Name
