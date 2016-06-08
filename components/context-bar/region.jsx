@@ -94,22 +94,22 @@ const regions = [
 			</span>
 		);
 
-		// Group these, since they have the same hover and onClick
-		const primaryItem = (
-			<div className="slds-context-bar__item" onClick={props.applicationNameOnClick}>
-				{props.applicationSwitcher}
-				{props.applicationName ? appName : null}
-			</div>
-		);
-
 		// This is a hack to allow longer application names without truncating them, and should be removed in the future by adding a reset class.
 		let style = null;
 		if (!truncate) {
 			style = { maxWidth: 'none' };
 		}
 
+		// Group these, since they have the same hover and onClick
+		const primaryItem = (
+			<div className="slds-context-bar__item" onClick={props.applicationNameOnClick} style={style}>
+				{props.applicationSwitcher}
+				{props.applicationName ? appName : null}
+			</div>
+		);
+
 		return (
-			<div className={classNames(cssClasses.primary, this.props.className)} style={style}>
+			<div className={classNames(cssClasses.primary, this.props.className)}>
 				{props.applicationSwitcher || props.applicationName ? primaryItem : null}
 				{this.props.children}
 			</div>
