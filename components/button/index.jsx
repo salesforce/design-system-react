@@ -24,6 +24,13 @@ const propTypes = {
 	 * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
 	 */
 	assistiveText: React.PropTypes.string,
+	/**
+	 * Class names to be added to the container element.
+	 */
+	className: React.PropTypes.oneOfType([
+		React.PropTypes.array,
+		React.PropTypes.object,
+		React.PropTypes.string]),
 	disabled: React.PropTypes.bool,
 	/**
 	 * Please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#hint">Lightning Design System Buttons > Hint</a>.
@@ -104,11 +111,12 @@ class Button extends TooltipTrigger {
 		const iconOnly = this.props.variant === 'icon';
 		const base = this.props.variant === 'base';
 
-		return classNames(this.props.className, 'slds-button', {
+		return classNames('slds-button', {
 			[`slds-button--${this.props.variant}`]: !base && !iconOnly,
 			[`slds-button--icon-${this.props.iconVariant}`]: this.props.iconVariant,
-			'slds-max-small-button--stretch': this.props.responsive
-		});
+			'slds-max-small-button--stretch': this.props.responsive,
+			'slds-is-disabled': this.props.disabled
+		}, this.props.className);
 	}
 
 	renderIcon (name) {
