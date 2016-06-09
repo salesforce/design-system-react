@@ -25,6 +25,7 @@ const getContextBar = (props, primaryRegionProps) => (
 		/>
 		<ContextBarRegion region="secondary" navigation>
 			<ContextBarLink
+				href="#"
 				label="Home"
 				id="home-link"
 				onClick={linkClicked('Home link clicked')}
@@ -35,10 +36,18 @@ const getContextBar = (props, primaryRegionProps) => (
 				onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
 				options={dropdownCollection}
 			/>
-			<ContextBarLink label="Context Menu Item 2" />
+			<ContextBarLink
+				href="#"
+				label="Context Menu Item 2"
+				onClick={linkClicked('Link clicked')}
+			/>
 		</ContextBarRegion>
 		<ContextBarRegion region="tertiary">
-			<ContextBarLink label="Actions" />
+			<ContextBarLink
+				href="#"
+				label="Actions"
+				onClick={linkClicked('Link clicked')}
+			/>
 		</ContextBarRegion>
 	</ContextBar>
 );

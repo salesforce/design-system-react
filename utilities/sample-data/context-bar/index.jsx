@@ -4,7 +4,7 @@ import Icon from '../../../components/icon';
 const AppSwitcher = () => (
 	<div id="app-switcher" className="slds-context-bar__icon-action">
 		<a href="#" aria-haspopup="true" className="slds-button slds-button--icon slds-context-bar__button">
-			<Icon category="utility" name="apps" inverse className="slds-icon--small" />
+			<Icon category="utility" name="apps" inverse className="slds-icon--small" assistiveText="Open App Switcher" />
 		</a>
 	</div>
 );

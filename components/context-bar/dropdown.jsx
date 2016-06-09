@@ -24,6 +24,7 @@ import assign from 'lodash.assign';
 
 // ### Dropdown
 import Dropdown, { defaultProps as dropdownDefaultProps } from '../menu-dropdown';
+import Popover from '../popover';
 
 // ## Children
 import SLDSButton from '../button';
@@ -37,6 +38,29 @@ const defaultProps = assign({}, dropdownDefaultProps, { align: 'right' });
  * This component extends `MenuDropdown` and modifies the `render` function to allow the markup to work within `ContextBar`. See the complete `MenuDropdown` for context.
  */
 class ContextBarDropdown extends Dropdown {
+	getModalPopover () {
+		return (
+			!this.props.disabled && this.state.isOpen ?
+				<Popover
+					className={classNames('slds-dropdown',
+						'slds-dropdown--menu',
+						`slds-dropdown--${this.props.align}`,
+						this.props.className
+					)}
+					closeOnTabKey
+					dropClass="slds-picklist" // TODO: in next SLDS release, remove slds-picklist class because slds-dropdown--length-5 will be active.
+					horizontalAlign={this.props.align}
+					flippable
+					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter.bind(this) : null}
+					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave.bind(this) : null}
+					onClose={() => this.handleCancel()}
+					targetElement={this.refs.trigger}
+				>
+					{this.getPopoverContent()}
+				</Popover> : null
+		);
+	}
+
 	render () {
 		const {
 			className,
@@ -55,11 +79,10 @@ class ContextBarDropdown extends Dropdown {
 				onFocus={this.props.openOn === 'hover' ? this.handleFocus.bind(this) : null}
 				/* TODO: Fix this when dropdown is updated to not use bind. */
 				/* eslint-disable react/jsx-no-bind */
-				onKeyDown={this.handleKeyDown.bind(this)}
 				onMouseDown={this.props.openOn === 'click' ? this.handleMouseDown.bind(this) : null}
 				onMouseEnter={this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this) : null}
 				onMouseLeave={this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this) : null}
-				ref="button"
+				ref="trigger"
 			>
 				<a className="slds-context-bar__label-action">{label}</a>
 				<div className="slds-context-bar__icon-action slds-p-left--none">
@@ -74,6 +97,8 @@ class ContextBarDropdown extends Dropdown {
 						iconVariant="bare"
 						iconSize="x-small"
 						id={this.state.triggerId}
+						onKeyDown={this.handleKeyDown.bind(this)}
+						ref="button"
 						style={this.props.style}
 						tabIndex={this.state.isOpen ? '-1' : '0'}
 						variant="icon"

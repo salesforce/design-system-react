@@ -19,6 +19,12 @@ import React, { PropTypes } from 'react';
 // ### classNames
 import classNames from 'classnames';
 
+// ### isFunction
+import isFunction from 'lodash.isfunction';
+
+// ### Event Helpers
+import { EventUtil } from '../../utilities';
+
 // ## Constants
 import { CONTEXT_BAR_LINK } from '../../utilities/constants';
 
@@ -26,16 +32,26 @@ import { CONTEXT_BAR_LINK } from '../../utilities/constants';
  * Wraps a link in the proper markup to support use in the ContextBar.
  */
 const ContextBarLink = (props) => {
+	/* eslint-disable react/prop-types */
 	const {
 		className,
 		label,
+		onClick,
 		...other
 	} = props;
+
+	function handleClick (e) {
+		if (onClick && isFunction(onClick)) {
+			EventUtil.trap(e);
+			onClick(e);
+		}
+	}
 
 	return (
 		<li className="slds-context-bar__item">
 			<a
 				className={classNames('slds-context-bar__label-action', className)}
+				onClick={handleClick}
 				{...other}
 			>
 				<span className="slds-truncate">{label}</span>
