@@ -200,7 +200,8 @@ module.exports = React.createClass({
         <Popover
           className="slds-dropdown slds-dropdown--left "
           closeOnTabKey={true}
-          constrainToScrollParent={true}
+          constrainToScrollParent={this.props.constrainToScrollParent}
+          inheritTargetWidth={this.props.inheritTargetWidth}
           dropClass="slds-picklist"
           flippable={true}
           onClose={this.handleCancel.bind(this)}

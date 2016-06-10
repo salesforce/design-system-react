@@ -59,6 +59,10 @@ const propTypes = {
    */
   footer: React.PropTypes.array,
   isOpen: React.PropTypes.bool.isRequired,
+  /**
+   * Custom css classes for modal container.
+   */
+  modalClassname: React.PropTypes.string,
   prompt: React.PropTypes.oneOf(["success", "warning", "error", "wrench", "offline", "info"]),
   size: React.PropTypes.oneOf(["medium", "large"]),
   /**
@@ -213,18 +217,19 @@ class Modal extends React.Component {
   }
 
   getModal() {
-    const modalClass = {
+    const componentClassname = {
       "slds-modal": true,
       "slds-fade-in-open": this.state.revealed,
       "slds-modal--large": this.props.size === "large",
       "slds-modal--prompt": this.isPrompt(),
     };
+
     const modalStyle = this.props.align === "top" ? {"justifyContent": "flex-start"} : null;
     const contentStyle = this.props.title ? null: {"borderRadius": ".25rem"};
     return (
       <div>
-        <div aria-hidden="false" role="dialog" className={classNames(modalClass)} onClick={this.closeModal.bind(this)}>
-          <div className="slds-modal__container" style={modalStyle}>
+        <div aria-hidden="false" role="dialog" className={classNames(componentClassname)} onClick={this.closeModal.bind(this)}>
+          <div className={classNames(this.props.modalClassname, "slds-modal__container")} style={modalStyle}>
            {this.headerComponent()}
            <div className="slds-modal__content" style={contentStyle} onClick={this.handleModalClick.bind(this)}>
              {this.props.children}
