@@ -7,11 +7,12 @@ import { dropdownCollection, propSets } from '../../utilities/sample-data/contex
 
 import ContextBar from '../../components/context-bar';
 import ContextBarRegion from '../../components/context-bar/region';
+import ContextBarAppLauncher from '../../components/context-bar/app-launcher';
 import ContextBarDropdown from '../../components/context-bar/dropdown';
 import ContextBarLink from '../../components/context-bar/link';
 
-// abstracted to allow copy and paste from component tests
-const applicationNameClicked = action;
+// aliased to allow copy and paste from component tests
+const appLauncherClicked = action;
 const linkClicked = action;
 const dropdownItemClicked = action;
 
@@ -20,9 +21,14 @@ const getContextBar = (props, primaryRegionProps) => (
 	<ContextBar {...props}>
 		<ContextBarRegion
 			region="primary"
-			applicationNameOnClick={applicationNameClicked('Application name clicked (Open Application Switcher).')}
-			{...primaryRegionProps}
-		/>
+		>
+			<ContextBarAppLauncher
+				onClick={appLauncherClicked('Application name clicked (Open Application Switcher).')}
+				{...primaryRegionProps.appLauncher}
+			>
+				{primaryRegionProps.appLauncher.customChild ? primaryRegionProps.appLauncher.customChild() : null}
+			</ContextBarAppLauncher>
+		</ContextBarRegion>
 		<ContextBarRegion region="secondary" navigation>
 			<ContextBarLink
 				href="#"

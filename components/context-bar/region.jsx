@@ -45,15 +45,7 @@ const regions = [
 	// ### Prop Types
 	propTypes: {
 		/**
-		 * This is typically the name of the cloud
-		 */
-		applicationName: PropTypes.node,
-		/**
-		 * Pass in the app icon with a context menu to allow switching applications
-		 */
-		applicationSwitcher: PropTypes.node,
-		/**
-		 * Contents of region. Expects `ContextBarLink` or `ContextBarDropdown`. This is optional when using `region:primary` in combination with other properties. This is also the place to pass in an Object Switcher until that is supported.
+		 * Contents of region. Expects `ContextBarLink`, `ContextBarDropdown`, `ContextBarApplicationName`, `AppSwitcher`, but could be any component. This is the place to pass in an Object Switcher until that is supported.
 		 */
 		children: PropTypes.node,
 		/**
@@ -71,46 +63,12 @@ const regions = [
 		/**
 		 * Region wrap children in styling specific to that region.
 		 */
-		region: PropTypes.oneOf(regions),
-		/**
-		 * Overrides truncation of `primary` region and `applicationName` to allow longer names
-		 */
-		truncate: PropTypes.bool
-	},
-
-	getDefaultProps () {
-		return {
-			navigation: false,
-			truncate: true
-		};
+		region: PropTypes.oneOf(regions)
 	},
 
 	renderPrimary () {
-		const props = this.props;
-		const truncate = this.props.truncate;
-		const appName = (
-			<span className={classNames('slds-context-bar__label-action', cssClasses.appName)}>
-				<span className={classNames({ 'slds-truncate': truncate })}>{props.applicationName}</span>
-			</span>
-		);
-
-		// This is a hack to allow longer application names without truncating them, and should be removed in the future by adding a reset class.
-		let style = null;
-		if (!truncate) {
-			style = { maxWidth: 'none' };
-		}
-
-		// Group these, since they have the same hover and onClick
-		const primaryItem = (
-			<div className="slds-context-bar__item" onClick={props.applicationNameOnClick} style={style}>
-				{props.applicationSwitcher}
-				{props.applicationName ? appName : null}
-			</div>
-		);
-
 		return (
-			<div className={classNames(cssClasses.primary, this.props.className)}>
-				{props.applicationSwitcher || props.applicationName ? primaryItem : null}
+			<div className={classNames('slds-context-bar__primary', this.props.className)}>
 				{this.props.children}
 			</div>
 		);
@@ -150,10 +108,9 @@ const regions = [
 
 	// ### Render
 	render () {
-		const props = this.props;
 		let region;
 
-		switch (props.region) {
+		switch (this.props.region) {
 			case 'primary':
 				region = this.renderPrimary();
 				break;

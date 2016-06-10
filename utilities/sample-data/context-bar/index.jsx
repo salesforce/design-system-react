@@ -1,14 +1,7 @@
+/* eslint-disable react/prop-types */
+
 import React from 'react';
 import Icon from '../../../components/icon';
-
-const AppSwitcher = () => (
-	<div id="app-switcher" className="slds-context-bar__icon-action">
-		<a href="#" aria-haspopup="true" className="slds-button slds-button--icon slds-context-bar__button">
-			<Icon category="utility" name="apps" inverse className="slds-icon--small" assistiveText="Open App Switcher" />
-		</a>
-	</div>
-);
-AppSwitcher.displayName = 'AppSwitcher';
 
 const dropdownCollection = [{
 	label: 'Menu Item One',
@@ -34,8 +27,10 @@ const propSets = {
 	base: {
 		props: {},
 		primaryRegionProps: {
-			applicationSwitcher: <AppSwitcher />,
-			applicationName: 'App Name'
+			appLauncher: {
+				assistiveText: 'Open App Launcher',
+				name: 'App Name'
+			}
 		}
 	},
 	customCloud: {
@@ -43,15 +38,20 @@ const propSets = {
 			cloud: 'marketing'
 		},
 		primaryRegionProps: {
-			applicationSwitcher: <AppSwitcher />,
 			truncate: false,
-			applicationName: <span>Marketing Cloud<Icon
-				category="utility"
-				className="slds-m-left--small slds-m-right--small"
-				name="email"
-				inverse
-				size="small"
-			/>Email Studio</span>
+			appLauncher: {
+				assistiveText: 'Open App Launcher',
+				noTruncate: true,
+				customChild: () => (
+					<span>Marketing Cloud<Icon
+						category="utility"
+						className="slds-m-left--small slds-m-right--small"
+						name="email"
+						inverse
+						size="small"
+					/>Email Studio</span>
+				)
+			}
 		}
 	},
 	lightTheme: {
@@ -59,8 +59,10 @@ const propSets = {
 			theme: 'light'
 		},
 		primaryRegionProps: {
-			applicationSwitcher: <AppSwitcher />,
-			applicationName: 'App Name'
+			appLauncher: {
+				assistiveText: 'Open App Launcher',
+				name: 'App Name'
+			}
 		}
 	}
 };
