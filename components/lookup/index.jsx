@@ -87,6 +87,10 @@ const propTypes = {
    * Index of current selected item.
    */
   selectedItem: React.PropTypes.number,
+  /**
+   * ID for aria-describedby (e.g. for an error message or a description)
+   */
+  describedById: React.PropTypes.string,
 };
 
 /**
@@ -494,7 +498,7 @@ class Lookup extends React.Component {
       'slds-hide': !this.isSelected(),
     };
 
-    const required = this.props.required ? <span style={{color:'red'}}>* </span>:null;
+    const required = this.props.required ? <span className="slds-required">*</span>:null;
     const inputLabel = this.props.label?<label className='slds-form-element__label' htmlFor={this.inputRefName()} style={{width: '100%'}}>{required}{this.props.label}</label>:null;
 
     return (
@@ -511,6 +515,7 @@ class Lookup extends React.Component {
               aria-autocomplete='list'
               aria-expanded={this.state.isOpen}
               aria-haspopup='true'
+              aria-describedby={this.props.describedById}
               className={cx(inputClasses)}
               id={this.inputRefName()}
               onBlur={this.handleBlur.bind(this)}
