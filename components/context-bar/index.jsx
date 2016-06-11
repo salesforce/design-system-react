@@ -39,7 +39,7 @@ const ContextBar = React.createClass({
 		 */
 		children: PropTypes.node,
 		/**
-		 * Class names to be added to the container element (this element also has `slds-context-bar slds-grid` classes).
+		 * CSS class names to be added to the container element.
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
@@ -47,7 +47,7 @@ const ContextBar = React.createClass({
 		 */
 		cloud: PropTypes.string,
 		/**
-		 * Transforms text and interactions (such as hover) to be more accessible.
+		 * Transforms text and interactions (such as hover) to be more visually accessible.
 		 */
 		theme: PropTypes.oneOf(['light', 'dark'])
 	},

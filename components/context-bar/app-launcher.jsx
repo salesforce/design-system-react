@@ -60,10 +60,10 @@ const AppLauncher = React.createClass({
 		 */
 		noTruncate: PropTypes.bool
 	},
-
+	
 	handleClick (event) {
-		EventUtil.trap(event);
 		if (isFunction(this.props.onClick)) {
+			EventUtil.trap(event);
 			this.props.onClick(event);
 		}
 	},

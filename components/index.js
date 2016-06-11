@@ -38,6 +38,9 @@ export Checkbox from './forms/checkbox';
 export SLDSContextBar from './context-bar';
 export ContextBar from './context-bar';
 
+export SLDSContextBarAppLauncher from './context-bar/app-launcher';
+export ContextBarAppLauncher from './context-bar/app-launcher';
+
 export SLDSContextBarRegion from './context-bar/region';
 export ContextBarRegion from './context-bar/region';
 
