@@ -10,16 +10,32 @@ import { mount } from 'enzyme';
 
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
+
 // `this.wrapper` and `this.dom` is set in the helpers file
 import { mountComponent, unmountComponent } from '../enzyme-helpers';
+
+// sample props and children
 import { dropdownCollection, propSets } from '../../utilities/sample-data/context-bar';
 
-import ContextBar, { cssClasses as componentCssClasses } from '../../components/context-bar';
-import ContextBarRegion, { cssClasses as regionCssClasses } from '../../components/context-bar/region';
+import ContextBar from '../../components/context-bar';
+import ContextBarRegion from '../../components/context-bar/region';
+import ContextBarAppLauncher from '../../components/context-bar/app-launcher';
 import ContextBarDropdown from '../../components/context-bar/dropdown';
 import ContextBarLink from '../../components/context-bar/link';
 
 chai.use(chaiEnzyme());
+
+const COMPONENT_CSS_CLASSES = {
+	base: 'slds-context-bar',
+	themePrefix: 'slds-context-bar--theme-'
+};
+
+const REGION_CSS_CLASSES = {
+	primary: 'slds-context-bar__primary',
+	secondary: 'slds-context-bar__secondary',
+	tertiary: 'slds-context-bar__tertiary',
+	appName: 'slds-context-bar__app-name'
+};
 
 describe('Context Bar: ', () => {
 	// Base defaults
@@ -36,7 +52,7 @@ describe('Context Bar: ', () => {
 		afterEach(unmountComponent);
 
 		it('has wrapping div', function () {
-			const component = this.wrapper.find(`.${componentCssClasses.base}`);
+			const component = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
 			expect(component).to.have.length(1);
 		});
 	});
@@ -52,9 +68,9 @@ describe('Context Bar: ', () => {
 		afterEach(unmountComponent);
 
 		it('has custom cloud and theme CSS', function () {
-			const component = this.wrapper.find(`.${componentCssClasses.base}`);
-			expect(component.hasClass(`${componentCssClasses.themePrefix}${customCloudProps.cloud}`)).to.be.true;
-			expect(component.hasClass(`${componentCssClasses.themePrefix}${customThemeProps.theme}`)).to.be.true;
+			const component = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
+			expect(component.hasClass(`${COMPONENT_CSS_CLASSES.themePrefix}${customCloudProps.cloud}`)).to.be.true;
+			expect(component.hasClass(`${COMPONENT_CSS_CLASSES.themePrefix}${customThemeProps.theme}`)).to.be.true;
 		});
 	});
 
@@ -62,7 +78,7 @@ describe('Context Bar: ', () => {
 		const props = propSets.base.props;
 		const primaryRegionProps = propSets.base.primaryRegionProps;
 
-		const applicationNameClicked = () => {};
+		const appLauncherClicked = () => {};
 		const linkClicked = () => {};
 		const dropdownItemClicked = () => {};
 		
@@ -70,9 +86,14 @@ describe('Context Bar: ', () => {
 			<ContextBar {...props}>
 				<ContextBarRegion
 					region="primary"
-					applicationNameOnClick={applicationNameClicked('Application name clicked (Open Application Switcher).')}
-					{...primaryRegionProps}
-				/>
+				>
+					<ContextBarAppLauncher
+						{...primaryRegionProps.appLauncher}
+						onClick={appLauncherClicked('Application name clicked (Open App Launcher).')}
+					>
+						{primaryRegionProps.appLauncher.customChild ? primaryRegionProps.appLauncher.customChild() : null}
+					</ContextBarAppLauncher>
+				</ContextBarRegion>
 				<ContextBarRegion region="secondary" navigation>
 					<ContextBarLink
 						href="#"
@@ -105,48 +126,50 @@ describe('Context Bar: ', () => {
 		afterEach(unmountComponent);
 
 		it('has a primary, secondary, and tertiary region', function () {
-			const primary = this.wrapper.find(`.${regionCssClasses.primary}`);
+			const primary = this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`);
 			expect(primary).to.have.length(1);
 
-			const secondary = this.wrapper.find(`.${regionCssClasses.secondary}`);
+			const secondary = this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`);
 			expect(secondary).to.have.length(1);
 
-			const tertiary = this.wrapper.find(`.${regionCssClasses.tertiary}`);
+			const tertiary = this.wrapper.find(`.${REGION_CSS_CLASSES.tertiary}`);
 			expect(tertiary).to.have.length(1);
 		});
 
 		it('Secondary region application is a nav HTML element', function () {
-			const nav = this.wrapper.find(`.${regionCssClasses.secondary}`);
+			const nav = this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`);
 			expect(nav.type()).to.equal('nav');
 		});
 
-		it('primary has an application switcher and correct application name', function () {
-			const appSwitcher = this.wrapper.find('#app-switcher');
-			expect(appSwitcher).to.have.length(1);
-
-			const appName = this.wrapper.find(`.${regionCssClasses.appName}`);
-			expect(appName.text()).to.equal(primaryRegionProps.applicationName);
+		it('primary has correct application name', function () {
+			const appName = this.wrapper.find(`.${REGION_CSS_CLASSES.appName}`);
+			expect(appName.text()).to.equal(primaryRegionProps.appLauncher.name);
 		});
 	});
 
-	// TODO `truncate` prop is a style hack right now and should be revisited
+	// TODO `noTruncate` prop is a style hack right now and should be revisited
 
-	describe('Primary Region', () => {
-		it('Primary region application name onClick runs callback', function () {
+	describe('AppLauncher Region', () => {
+		it('AppLauncher has correct text on icon and onClick runs callback', function () {
 			const primaryRegionProps = propSets.base.primaryRegionProps;
 
-			const applicationNameClicked = sinon.spy();
+			const appLauncherClicked = sinon.spy();
 			const instance = (
 				<ContextBarRegion
 					region="primary"
-					applicationNameOnClick={applicationNameClicked('Application name clicked (Open Application Switcher).')}
-					{...primaryRegionProps}
-				/>
+				>
+					<ContextBarAppLauncher
+						onClick={appLauncherClicked('Application name clicked (Open App Launcher).')}
+						{...primaryRegionProps.appLauncher}
+					/>
+				</ContextBarRegion>
 			);
+
 			this.wrapper = mount(instance, { attachTo: document.body.appendChild(document.createElement('div')) });
-			const appName = this.wrapper.find(`.${regionCssClasses.appName}`);
-			appName.simulate('click');
-			expect(applicationNameClicked.calledOnce).to.be.true;
+			const appLauncherIcon = this.wrapper.find(`#${primaryRegionProps.appLauncher.id}`);
+			expect(appLauncherIcon.text()).to.equal(primaryRegionProps.appLauncher.assistiveText);
+			appLauncherIcon.simulate('click');
+			expect(appLauncherClicked.calledOnce).to.be.true;
 
 			this.wrapper.unmount();
 		});
@@ -160,7 +183,7 @@ describe('Context Bar: ', () => {
 		afterEach(unmountComponent);
 
 		it('Secondary region application is div and not a nav', function () {
-			const nav = this.wrapper.find(`.${regionCssClasses.secondary}`);
+			const nav = this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`);
 			expect(nav.type()).to.equal('div');
 		});
 	});
@@ -179,7 +202,7 @@ describe('Context Bar: ', () => {
 		});
 	});
 
-	// TODO still need Dropdown covered. Should be added to Dropdown tests, once special context bar dropdown features are merged into Dropdown
+	// // TODO still need Dropdown covered. Should be added to Dropdown tests, once special context bar dropdown features are merged into Dropdown
 
 	describe('ContextLink child component', () => {
 		it('ContextBarLink has attributes and onClick runs callback', function () {

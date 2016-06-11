@@ -22,13 +22,6 @@ import classNames from 'classnames';
 // ## Constants
 import { CONTEXT_BAR_REGION } from '../../utilities/constants';
 
-const cssClasses = {
-	primary: 'slds-context-bar__primary',
-	secondary: 'slds-context-bar__secondary',
-	tertiary: 'slds-context-bar__tertiary',
-	appName: 'slds-context-bar__app-name'
-};
-
 // List regions for export
 const regions = [
 	'primary',
@@ -57,10 +50,6 @@ const regions = [
 		 */
 		navigation: PropTypes.bool,
 		/**
-		 * Triggered by click of application name or switcher icon in the `primary` region. Will be ignored in other regions.
-		 */
-		onClick: PropTypes.func,
-		/**
 		 * Region wrap children in styling specific to that region.
 		 */
 		region: PropTypes.oneOf(regions)
@@ -75,30 +64,32 @@ const regions = [
 	},
 
 	renderSecondary () {
-		const nav = (
-			<nav className={classNames(cssClasses.secondary, this.props.className)} role="navigation">
-				<div className="slds-context-bar__vertical-divider" />
-				<ul className="slds-grid">
-					{this.props.children}
-				</ul>
-			</nav>
-		);
-
-		const div = (
-			<div className={classNames(cssClasses.secondary, this.props.className)}>
-				<div className="slds-context-bar__vertical-divider" />
-				<ul className="slds-grid">
-					{this.props.children}
-				</ul>
-			</div>
-		);
-
-		return this.props.navigation ? nav : div;
+		let region = null;
+		if (this.props.navigation) {
+			region = (
+				<nav className={classNames('slds-context-bar__secondary', this.props.className)} role="navigation">
+					<div className="slds-context-bar__vertical-divider" />
+					<ul className="slds-grid">
+						{this.props.children}
+					</ul>
+				</nav>
+			);
+		} else {
+			region = (
+				<div className={classNames('slds-context-bar__secondary', this.props.className)}>
+					<div className="slds-context-bar__vertical-divider" />
+					<ul className="slds-grid">
+						{this.props.children}
+					</ul>
+				</div>
+			);
+		}
+		return region;
 	},
 
 	renderTertiary () {
 		return (
-			<div className={classNames(cssClasses.tertiary, 'slds-col--bump-left', this.props.className)}>
+			<div className={classNames('slds-context-bar__tertiary', 'slds-col--bump-left', this.props.className)}>
 				<ul className="slds-grid">
 					{this.props.children}
 				</ul>
@@ -130,4 +121,3 @@ const regions = [
 
 module.exports = Region;
 module.exports.regions = regions;
-module.exports.cssClasses = cssClasses;

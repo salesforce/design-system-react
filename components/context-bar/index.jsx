@@ -9,9 +9,9 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # ContextBar Component
+// # Context Bar Component
 
-// Implements the [ContextBar design pattern](https://www.lightningdesignsystem.com/components/context-bar/) in React.
+// Implements the [Context Bar design pattern](https://www.lightningdesignsystem.com/components/context-bar/) in React.
 
 // ## Dependencies
 
@@ -24,14 +24,8 @@ import classNames from 'classnames';
 // ## Constants
 import { CONTEXT_BAR } from '../../utilities/constants';
 
-// Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
-const cssClasses = {
-	base: 'slds-context-bar',
-	themePrefix: 'slds-context-bar--theme-'
-};
-
 /**
- * ContextBar represents a list of links that either take the user to another page or parts of the page the user is in.
+ * Context Bar represents a list of links that either take the user to another page or parts of the page the user is in.
  */
 const ContextBar = React.createClass({
 	// ### Display Name
@@ -67,10 +61,10 @@ const ContextBar = React.createClass({
 
 	// ### Render
 	render () {
-		const cloudClass = `${cssClasses.themePrefix}${this.props.cloud}`;
-		const themeClass = `${cssClasses.themePrefix}${this.props.theme}`;
+		const cloudClass = `slds-context-bar--theme-${this.props.cloud}`;
+		const themeClass = `slds-context-bar--theme-${this.props.theme}`;
 		return (
-			<div className={classNames(cssClasses.base, cloudClass, themeClass, this.props.className)}>
+			<div className={classNames('slds-context-bar', cloudClass, themeClass, this.props.className)}>
 					{this.props.children}
 			</div>
 		);
@@ -78,4 +72,3 @@ const ContextBar = React.createClass({
 });
 
 module.exports = ContextBar;
-module.exports.cssClasses = cssClasses;

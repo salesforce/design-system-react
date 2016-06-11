@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+/* eslint-disable react/display-name */
 
 import React from 'react';
 import Icon from '../../../components/icon';
@@ -29,6 +30,7 @@ const propSets = {
 		primaryRegionProps: {
 			appLauncher: {
 				assistiveText: 'Open App Launcher',
+				id: 'app-launcher-trigger',
 				name: 'App Name'
 			}
 		}
@@ -41,6 +43,7 @@ const propSets = {
 			truncate: false,
 			appLauncher: {
 				assistiveText: 'Open App Launcher',
+				id: 'app-launcher-trigger',
 				noTruncate: true,
 				customChild: () => (
 					<span>Marketing Cloud<Icon
@@ -61,6 +64,7 @@ const propSets = {
 		primaryRegionProps: {
 			appLauncher: {
 				assistiveText: 'Open App Launcher',
+				id: 'app-launcher-trigger',
 				name: 'App Name'
 			}
 		}

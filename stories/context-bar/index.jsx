@@ -23,7 +23,7 @@ const getContextBar = (props, primaryRegionProps) => (
 			region="primary"
 		>
 			<ContextBarAppLauncher
-				onClick={appLauncherClicked('Application name clicked (Open Application Switcher).')}
+				onClick={appLauncherClicked('Application name clicked (Open App Launcher).')}
 				{...primaryRegionProps.appLauncher}
 			>
 				{primaryRegionProps.appLauncher.customChild ? primaryRegionProps.appLauncher.customChild() : null}

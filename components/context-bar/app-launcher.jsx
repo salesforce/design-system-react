@@ -16,11 +16,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React, { PropTypes } from 'react';
 
+import isFunction from 'lodash.isfunction';
+
 // ### Child Components
 import Icon from '../icon';
-
-// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
-import checkProps from './check-props';
 
 // ### classNames
 import classNames from 'classnames';
@@ -47,34 +46,33 @@ const AppLauncher = React.createClass({
 		/**
 		 * HTML `id` that will be added to the "app icon" link. Helpful for assistive technology if `onClick` triggers a dropdown menu.
 		 */
-		id: PropTypes.string,
+		id: PropTypes.string.isRequired,
 		/**
-		 * This is typically the name of the cloud or application. `name` and `children` should not be passed in.
+		 * This is typically the name of the cloud or application. `name` and `children` should not both be passed in.
 		 */
 		name: PropTypes.string,
 		/**
 		 * Function triggered when "app" icon or application name is clicked.
 		 */
-		onClick: PropTypes.func.isRequired,
+		onClick: PropTypes.func,
 		/**
 		 * Allows longer application names without truncating them.
 		 */
 		noTruncate: PropTypes.bool
 	},
 
-	componentWillMount () {
-		checkProps(CONTEXT_BAR_APPLICATION_NAME, this.props);
-	},
-
-	handleClick (e) {
-		EventUtil.trap(e);
-		this.props.onClick(e);
+	handleClick (event) {
+		EventUtil.trap(event);
+		if (isFunction(this.props.onClick)) {
+			this.props.onClick(event);
+		}
 	},
 
 	render () {
 		const {
 			assistiveText,
 			children,
+			id,
 			name,
 			noTruncate
 		} = this.props;
@@ -85,7 +83,7 @@ const AppLauncher = React.createClass({
 		return (
 			<div className="slds-context-bar__item" style={style} onClick={this.handleClick}>
 				<div className="slds-context-bar__icon-action">
-					<a href="#" aria-haspopup="true" className="slds-button slds-button--icon slds-context-bar__button">
+					<a id={id} href="#" aria-haspopup="true" className="slds-button slds-button--icon slds-context-bar__button">
 						<Icon
 							category="utility"
 							name="apps"
@@ -96,9 +94,8 @@ const AppLauncher = React.createClass({
 					</a>
 				</div>
 				<span className="slds-context-bar__label-action slds-context-bar__app-name">
-					{name ?
-						<span className={classNames({ 'slds-truncate': !noTruncate })}>{name}</span> :
-						children}
+					{name ? <span className={classNames({ 'slds-truncate': !noTruncate })}>{name}</span> : null}
+					{children}
 				</span>
 			</div>
 		);
