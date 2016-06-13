@@ -20,11 +20,13 @@ import {KEYS,EventUtil} from '../../utilities';
 
 const displayName = 'Timepicker';
 const propTypes = {
+  constrainToScrollParent: React.PropTypes.bool,
 
   /**
    * Time formatting function
    */
   formatter: React.PropTypes.func,
+  inheritTargetWidth: React.PropTypes.bool,
 
   /**
    * Parsing date string into Date

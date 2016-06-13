@@ -62,7 +62,7 @@ const propTypes = {
   /**
    * Custom css classes for modal container.
    */
-  modalClassname: React.PropTypes.string,
+  containerClassName: React.PropTypes.string,
   prompt: React.PropTypes.oneOf(["success", "warning", "error", "wrench", "offline", "info"]),
   size: React.PropTypes.oneOf(["medium", "large"]),
   /**
@@ -229,7 +229,7 @@ class Modal extends React.Component {
     return (
       <div>
         <div aria-hidden="false" role="dialog" className={classNames(componentClassname)} onClick={this.closeModal.bind(this)}>
-          <div className={classNames(this.props.modalClassname, "slds-modal__container")} style={modalStyle}>
+          <div className={classNames(this.props.containerClassName, "slds-modal__container")} style={modalStyle}>
            {this.headerComponent()}
            <div className="slds-modal__content" style={contentStyle} onClick={this.handleModalClick.bind(this)}>
              {this.props.children}
