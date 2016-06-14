@@ -29,7 +29,7 @@ const { PropTypes } = React;
  */
 const DataTableHighlightCell = (props) => (
 	<DataTableCell {...props}>
-		<Highlighter search={props.search}>{props.children}</Highlighter>
+		<Highlighter matchClass="slds-theme--warning" matchElement="span" search={props.search}>{props.children}</Highlighter>
 	</DataTableCell>
 );
 
