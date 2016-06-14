@@ -1,6 +1,13 @@
 var webpackConfig = require('./webpack.config');
 var path = require('path');
 webpackConfig.devtool = 'inline-source-map';
+webpackConfig.externals = {
+  'react/lib/ReactContext': true,
+  'react/lib/ExecutionEnvironment': true,
+  'react/addons': true,
+  cheerio: 'window'
+};
+
 
 webpackConfig.module.preLoaders = webpackConfig.module.preLoaders || [];
 ispartaPreLoaderWebpackConfig = [
