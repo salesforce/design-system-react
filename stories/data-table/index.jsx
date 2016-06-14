@@ -63,14 +63,14 @@ const DemoDataTable = React.createClass({
 		);
 	},
 
-	handleChange (selection) {
-		action('change')(...arguments);
+	handleChange (selection, ...rest) {
+		action('change')(selection, ...rest);
 
 		this.setState({ selection });
 	},
 
-	handleSort (sortColumn) {
-		action('sort')(...arguments);
+	handleSort (sortColumn, ...rest) {
+		action('sort')(sortColumn, ...rest);
 
 		const sortProperty = sortColumn.property;
 		const sortDirection = sortColumn.sortDirection;
@@ -99,6 +99,6 @@ const DemoDataTable = React.createClass({
 
 storiesOf(DATA_TABLE, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('striped', () => <DemoDataTable striped={true} />)
-	.add('bordered', () => <DemoDataTable bordered={true} />)
-	.add('selectable', () => <DemoDataTable selectRows={true} />);
+	.add('striped', () => <DemoDataTable striped />)
+	.add('bordered', () => <DemoDataTable bordered />)
+	.add('selectable', () => <DemoDataTable selectRows />);

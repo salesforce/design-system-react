@@ -12,6 +12,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React from 'react';
 
+// ## Children
+import Highlighter from 'react-highlighter';
+
 // ## Constants
 import { DATA_TABLE_CELL } from '../../utilities/constants';
 
@@ -19,20 +22,20 @@ import { DATA_TABLE_CELL } from '../../utilities/constants';
 const { PropTypes } = React;
 
 /**
- * The default Cell renderer for the DataTable. Pass in any React component with the same `displayName` which takes the same props to provide custom rendering.
+ * A Cell renderer for the DataTable that automatically highlights search text.
  */
-const DataTableCell = (props) => (
+const DataTableHighlightCell = (props) => (
 	<td className={props.className} data-label={props.label}>
-		{props.item[props.property]}
+		<Highlighter search={props.search}>{props.item[props.property]}</Highlighter>
 	</td>
 );
 
 // ### Display Name
-// Always use the canonical component name as the React display name.
-DataTableCell.displayName = DATA_TABLE_CELL;
+// The DataTable looks for components with this name to determine what it should use to render a given column's cells.
+DataTableHighlightCell.displayName = DATA_TABLE_CELL;
 
 	// ### Prop Types
-DataTableCell.propTypes = {
+DataTableHighlightCell.propTypes = {
 	/**
 	 * Class names to be added to the cell.
 	 */
@@ -48,7 +51,11 @@ DataTableCell.propTypes = {
 	/**
 	 * The property of this item to display.
 	 */
-	property: PropTypes.string
+	property: PropTypes.string,
+	/**
+	 * The string of text (or Regular Expression) to highlight.
+	 */
+	search: PropTypes.any
 };
 
-module.exports = DataTableCell;
+module.exports = DataTableHighlightCell;
