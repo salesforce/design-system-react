@@ -9,39 +9,77 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import React from "react";
+// # ContextBar Link Component
 
-import styling from "./styling";
+// ## Dependencies
 
-const pf = styling.pf;
+// ### React
+import React, { PropTypes } from 'react';
 
-//import Icon from "../icon";
+// ### classNames
+import classNames from 'classnames';
 
+// ### isFunction
+import isFunction from 'lodash.isfunction';
 
-import MenuDropdown from "../menu-dropdown";
+// ### Event Helpers
+import { EventUtil } from '../../utilities';
 
-const displayName = 'ContextBarNavMenu';
-
+// ## Constants
+import { CONTEXT_BAR_LINK } from '../../utilities/constants';
 
 /**
- * The ContextBarTitle component is the Lightning Design System Context Bar component. The ContextBar is a container with dropdown menus.
+ * Wraps a link in the proper markup to support use in the ContextBar.
  */
-class NavMenu extends React.Component {
+const ContextBarLink = (props) => {
+	/* eslint-disable react/prop-types */
+	const {
+		className,
+		label,
+		onClick,
+		...other
+	} = props;
 
-  constructor(props) {
-    super(props);
-  }
+	function handleClick (event) {
+		if (isFunction(onClick)) {
+			EventUtil.trap(event);
+			onClick(event);
+		}
+	}
 
-  render() {
-    return (
-      <li className={pf('context-bar-action grid dropdown-trigger')}>
-        { this.props.children }
-        <MenuDropdown {... this.props} />
-      </li>
-    );
-  }
-}
+	return (
+		<li className="slds-context-bar__item">
+			<a
+				className={classNames('slds-context-bar__label-action', className)}
+				onClick={handleClick}
+				{...other}
+			>
+				<span className="slds-truncate">{label}</span>
+			</a>
+		</li>
+	);
+};
 
-NavMenu.displayName = displayName;
+ContextBarLink.displayName = CONTEXT_BAR_LINK;
 
-module.exports = NavMenu;
+// ### Prop Types
+ContextBarLink.propTypes = {
+	/**
+	 * Class names to be added to the anchor element
+	 */
+	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	/**
+	 * The href of the link.
+	 */
+	href: PropTypes.string,
+	/**
+	 * Text to show for link item.
+	 */
+	label: PropTypes.string,
+	/**
+	 * Function triggered when link is clicked. If set, `href` will be ignored.
+	 */
+	onClick: PropTypes.string
+};
+
+module.exports = ContextBarLink;

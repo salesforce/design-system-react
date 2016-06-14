@@ -2,5 +2,6 @@ import '@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-s
 
 export default from './bread-crumb';
 export default from './button';
+export default from './context-bar';
 export default from './data-table';
 export default from './icon';
