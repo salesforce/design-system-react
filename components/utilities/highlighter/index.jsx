@@ -12,33 +12,37 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React from 'react';
 
-// ## Children
-import DataTableCell from './cell';
-import Highlighter from '../utilities/highlighter';
+// ### ReactHighlighter
+import ReactHighlighter from 'react-highlighter';
 
 // ## Constants
-import { DATA_TABLE_CELL } from '../../utilities/constants';
+import { HIGHLIGHTER } from '../../../utilities/constants';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
 
 /**
- * A Cell renderer for the DataTable that automatically highlights search text.
+ * A utility component that highlights occurrences of a particular pattern in its contents.
  */
-const DataTableHighlightCell = (props) => (
-	<DataTableCell {...props}>
-		<Highlighter search={props.search}>{props.children}</Highlighter>
-	</DataTableCell>
-);
+const Highlighter = (props) => {
+	if (props.search) {
+		return (
+			<ReactHighlighter matchClass="slds-theme--warning" matchElement="span" search={props.search}>
+				{props.children}
+			</ReactHighlighter>
+		);
+	}
+
+	return <span>{props.children}</span>;
+};
 
 // ### Display Name
-// The DataTable looks for components with this name to determine what it should use to render a given column's cells.
-DataTableHighlightCell.displayName = DATA_TABLE_CELL;
+Highlighter.displayName = HIGHLIGHTER;
 
 // ### Prop Types
-DataTableHighlightCell.propTypes = {
+Highlighter.propTypes = {
 	/**
-	 * The contents of the cell. Equivalent to `props.item[props.property]`
+	 * The full string to display.
 	 */
 	children: PropTypes.oneOfType([
 		React.PropTypes.string,
@@ -51,4 +55,4 @@ DataTableHighlightCell.propTypes = {
 	search: PropTypes.any
 };
 
-module.exports = DataTableHighlightCell;
+module.exports = Highlighter;
