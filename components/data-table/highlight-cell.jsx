@@ -12,8 +12,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React from 'react';
 
-// ## Children
+// ### ReactHighlighter
 import Highlighter from 'react-highlighter';
+
+// ## Children
+import DataTableCell from './cell';
 
 // ## Constants
 import { DATA_TABLE_CELL } from '../../utilities/constants';
@@ -25,9 +28,9 @@ const { PropTypes } = React;
  * A Cell renderer for the DataTable that automatically highlights search text.
  */
 const DataTableHighlightCell = (props) => (
-	<td className={props.className} data-label={props.label}>
-		<Highlighter search={props.search}>{props.item[props.property]}</Highlighter>
-	</td>
+	<DataTableCell {...props}>
+		<Highlighter search={props.search}>{props.children}</Highlighter>
+	</DataTableCell>
 );
 
 // ### Display Name
@@ -37,21 +40,13 @@ DataTableHighlightCell.displayName = DATA_TABLE_CELL;
 	// ### Prop Types
 DataTableHighlightCell.propTypes = {
 	/**
-	 * Class names to be added to the cell.
+	 * The contents of the cell. Equivalent to `props.item[props.property]`
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-	/**
-	 * The item from the items which represents this row.
-	 */
-	item: PropTypes.object,
-	/**
-	 * The column label.
-	 */
-	label: PropTypes.string,
-	/**
-	 * The property of this item to display.
-	 */
-	property: PropTypes.string,
+	children: PropTypes.oneOfType([
+		React.PropTypes.string,
+		React.PropTypes.number,
+		React.PropTypes.bool
+	]),
 	/**
 	 * The string of text (or Regular Expression) to highlight.
 	 */

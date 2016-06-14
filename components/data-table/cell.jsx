@@ -23,7 +23,7 @@ const { PropTypes } = React;
  */
 const DataTableCell = (props) => (
 	<td className={props.className} data-label={props.label}>
-		{props.item[props.property]}
+		{props.children}
 	</td>
 );
 
@@ -33,6 +33,10 @@ DataTableCell.displayName = DATA_TABLE_CELL;
 
 	// ### Prop Types
 DataTableCell.propTypes = {
+	/**
+	 * The contents of the cell. Equivalent to `props.item[props.property]`
+	 */
+	children: PropTypes.node,
 	/**
 	 * Class names to be added to the cell.
 	 */
