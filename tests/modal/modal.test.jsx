@@ -56,17 +56,21 @@ describe('SLDSModal: ', function(){
 
     beforeEach(() => {
       closed = false;
-      cmp = getModal({isOpen: true, size: 'large', onRequestClose: () => closed = true});
+      cmp = getModal({isOpen: true, size: 'large', containerClassName: 'my-custom-class', onRequestClose: () => closed = true});
       modal = getModalNode(document.body);
     })
 
     it('renders a noscript', () => {
-      const renderedNode = React.findDOMNode(cmp);
+      const renderedNode = ReactDOM.findDOMNode(cmp);
       expect(renderedNode.firstChild.tagName).to.equal('NOSCRIPT');
     })
 
     it('adds the large class', () => {
       expect(modal.className).to.include('slds-modal--large');
+    })
+
+    it('adds custom classname from modal container prop', () => {
+      expect(modal.firstChild.className).to.include('my-custom-class');
     })
 
     it('calls onRequestClose', () => {
