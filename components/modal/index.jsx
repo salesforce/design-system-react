@@ -92,7 +92,6 @@ class Modal extends React.Component {
     this.state = {
       isClosing: false,
       revealed: false,
-      dismissOnClickOutside: isBoolean(this.props.dismissOnClickOutside) ? this.props.dismissOnClickOutside : this.props.dismissible,
     };
   }
 
@@ -132,7 +131,9 @@ class Modal extends React.Component {
   }
 
   dismissModalOnClickOutside () {
-    if(this.state.dismissOnClickOutside){
+    // if dismissOnClickOutside is not set, default its value to dismissible
+    const dismissOnClickOutside = isBoolean(this.props.dismissOnClickOutside) ? this.props.dismissOnClickOutside : this.props.dismissible;
+    if(dismissOnClickOutside){
       this.dismissModal();
     }
   }
