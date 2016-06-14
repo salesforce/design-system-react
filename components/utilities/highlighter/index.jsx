@@ -27,7 +27,7 @@ const { PropTypes } = React;
 const Highlighter = (props) => {
 	if (props.search) {
 		return (
-			<ReactHighlighter matchClass="slds-theme--warning" matchElement="span" search={props.search}>
+			<ReactHighlighter matchClass={null} matchElement="mark" search={props.search}>
 				{props.children}
 			</ReactHighlighter>
 		);
