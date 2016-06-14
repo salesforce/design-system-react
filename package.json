@@ -123,23 +123,25 @@
     "validate",
     "test"
   ],
-  "components": [
-    "data-table",
-    "bread-crumb",
-    "button",
-    "button-stateful",
-    "button-group",
-    "card",
-    "context-bar",
-    "date-picker",
-    "icon",
-    "lookup",
-    "menu-dropdown",
-    "menu-picklist",
-    "modal",
-    "notification",
-    "page-header",
-    "popover-tooltip",
-    "time-picker"
-  ]
+  "components": {
+    "bread-crumb": "Breadcrumbs",
+    "button": "Buttons",
+    "button-stateful": "Stateful Buttons",
+    "button-group": "Button Groups",
+    "card": "Cards",
+    "forms/checkbox": "Checkbox",
+    "context-bar": "ContextBar",
+    "data-table": "Data Tables",
+    "date-picker": "DatePickers",
+    "icon": "Icons",
+    "forms/input": "Input",
+    "lookup": "Lookups",
+    "menu-dropdown": "Dropdown Menus",
+    "menu-picklist": "Picklist Menus",
+    "modal": "Modals",
+    "notification": "Notifications",
+    "page-header": "Page Headers",
+    "popover-tooltip": "Popover Tooltips",
+    "time-picker": "Timepickers"
+  }
 }
