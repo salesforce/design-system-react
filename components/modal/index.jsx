@@ -15,6 +15,9 @@ import Button from "../button";
 import classNames from "classnames";
 import ReactModal from "react-modal";
 
+// ### isBoolean
+import isBoolean from 'lodash.isboolean';
+
 const customStyles = {
   content : {
     position                : "default",
@@ -51,9 +54,13 @@ const propTypes = {
    */
   directional: React.PropTypes.bool,
   /**
-   * If true, prompt Modals can be dismissed by clicking outside of modal or pressing esc key.
+   * If true, Modals can be dismissed by clicking on the close icon or pressing esc key.
    */
   dismissible: React.PropTypes.bool,
+  /**
+   * If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to dismissible.
+   */
+  dismissOnClickOutside: React.PropTypes.bool,
   /**
    * Array of buttons to be placed in the footer. They render on the right side by default but are floated left and right if <code>directional</code> is true.
    */
@@ -127,15 +134,27 @@ class Modal extends React.Component {
     this.clearBodyScroll();
   }
 
+  dismissModalOnClickOutside () {
+    // if dismissOnClickOutside is not set, default its value to dismissible
+    const dismissOnClickOutside = isBoolean(this.props.dismissOnClickOutside) ? this.props.dismissOnClickOutside : this.props.dismissible;
+    if(dismissOnClickOutside){
+      this.dismissModal();
+    }
+  }
+
   closeModal () {
     if(this.props.dismissible){
-      this.setState({isClosing: true});
-      if(this.state.returnFocusTo && this.state.returnFocusTo.focus){
-        this.state.returnFocusTo.focus();
-      }
-      if(this.props.onRequestClose){
-        this.props.onRequestClose();
-      }
+      this.dismissModal();
+    }
+  }
+
+  dismissModal () {
+    this.setState({isClosing: true});
+    if(this.state.returnFocusTo && this.state.returnFocusTo.focus){
+      this.state.returnFocusTo.focus();
+    }
+    if(this.props.onRequestClose){
+      this.props.onRequestClose();
     }
   }
 
@@ -228,7 +247,7 @@ class Modal extends React.Component {
     const contentStyle = this.props.title ? null: {"borderRadius": ".25rem"};
     return (
       <div>
-        <div aria-hidden="false" role="dialog" className={classNames(componentClassname)} onClick={this.closeModal.bind(this)}>
+        <div aria-hidden="false" role="dialog" className={classNames(componentClassname)} onClick={this.dismissModalOnClickOutside.bind(this)}>
           <div className={classNames(this.props.containerClassName, "slds-modal__container")} style={modalStyle}>
            {this.headerComponent()}
            <div className="slds-modal__content" style={contentStyle} onClick={this.handleModalClick.bind(this)}>
