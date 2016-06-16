@@ -102,7 +102,9 @@ class Trigger extends React.Component {
       onFocus={this.handleTooltipMouseEnter.bind(this)}
       onMouseOut={this.handleTooltipMouseLeave.bind(this)}
       onBlur={this.handleTooltipMouseLeave.bind(this)}
-    ><span className="slds-assistive-text">{this.props.label || this.props.assistiveText}</span></a>:null;
+    ><span className="slds-assistive-text">
+      {this.props.tooltip.props.assistiveText || this.props.label || this.props.assistiveText}
+    </span></a>:null;
   }
 
   getTooltip(){
