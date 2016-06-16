@@ -30,6 +30,10 @@ const propTypes = {
    */
   content: React.PropTypes.node.isRequired,
   /**
+   * Assistive Text for tooltip trigger.
+   */
+  assistiveText: React.PropTypes.string,
+  /**
    * Delay on Tooltip closing.
    */
   hoverCloseDelay: React.PropTypes.number,
