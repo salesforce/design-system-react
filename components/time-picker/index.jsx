@@ -20,11 +20,13 @@ import {KEYS,EventUtil} from '../../utilities';
 
 const displayName = 'Timepicker';
 const propTypes = {
+  constrainToScrollParent: React.PropTypes.bool,
 
   /**
    * Time formatting function
    */
   formatter: React.PropTypes.func,
+  inheritTargetWidth: React.PropTypes.bool,
 
   /**
    * Parsing date string into Date
@@ -200,7 +202,8 @@ module.exports = React.createClass({
         <Popover
           className="slds-dropdown slds-dropdown--left "
           closeOnTabKey={true}
-          constrainToScrollParent={true}
+          constrainToScrollParent={this.props.constrainToScrollParent}
+          inheritTargetWidth={this.props.inheritTargetWidth}
           dropClass="slds-picklist"
           flippable={true}
           onClose={this.handleCancel.bind(this)}
