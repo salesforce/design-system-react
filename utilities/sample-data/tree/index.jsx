@@ -1,0 +1,136 @@
+import React, { PropTypes } from 'react';
+import Tree from '../../../components/tree';
+
+const treeNodes = [
+	{
+		label: 'Grains',
+		type: 'item',
+		id: 1
+	},
+	{
+		label: 'Fruits',
+		type: 'folder',
+		id: 2,
+		nodes: [
+			{
+				label: 'Ground Fruits',
+				type: 'folder',
+				id: 4,
+				nodes: [
+					{
+						label: 'Watermelon', type: 'item', id: 12
+					},
+					{
+						label: 'Canteloupe', type: 'item', _iconClass: 'glyphicon-file', id: 13
+					},
+					{
+						label: 'Strawberries', type: 'item', id: 14
+					}
+				]
+			},
+			{
+				label: 'Tree Fruits',
+				type: 'folder',
+				id: 5,
+				nodes: [
+					{
+						label: 'Peaches',
+						type: 'item',
+						id: 15
+					},
+					{
+						label: 'Pears',
+						type: 'item',
+						_iconClass: 'glyphicon-file',
+						id: 16
+					},
+					{
+						label: 'Citrus',
+						type: 'folder',
+						id: 17,
+						nodes: [{
+							label: 'Orange', type: 'item', id: 20
+						}, {
+							label: 'Grapefruit', type: 'item', id: 21
+						}, {
+							label: 'Lemon', type: 'item', id: 22
+						}, {
+							label: 'Lime', type: 'item', id: 23
+						}
+					]
+					},
+					{
+						label: 'Apples',
+						type: 'folder',
+						id: 18,
+						nodes: [
+							{
+								label: 'Granny Smith', type: 'item', id: 24
+							}, {
+								label: 'Pinklady', type: 'item', _iconClass: 'glyphicon-file', id: 25
+							}, {
+								label: 'Rotten', type: 'item', id: 26
+							}, {
+								label: 'Jonathan', type: 'item', id: 27
+							}
+						]
+					},
+					{
+						label: 'Cherries',
+						type: 'folder',
+						id: 19,
+						nodes: [
+							{
+								label: 'Balaton', type: 'item', id: 28
+							}, {
+								label: 'Erdi Botermo', type: 'item', id: 29
+							}, {
+								label: 'Montmorency', type: 'item', id: 30
+							}, {
+								label: 'Queen Ann', type: 'item', id: 31
+							}, {
+								label: 'Ulster', type: 'item', id: 32
+							}, {
+								label: 'Viva', type: 'item', id: 33
+							}
+						]
+					},
+					{
+						label: 'Raspberries',
+						type: 'item',
+						id: 6
+					}
+				]
+			}
+		]
+	},
+	{
+		label: 'Nuts',
+		type: 'folder',
+		_iconClass: 'glyphicon-file',
+		id: 3,
+		nodes: [
+			{
+				label: 'Almonds', type: 'item', id: 8
+			}, {
+				label: 'Cashews', type: 'item', id: 9
+			}, {
+				label: 'Pecans', type: 'item', id: 10
+			}, {
+				label: 'Walnuts', type: 'item', id: 11
+			}
+		]
+	},
+	{
+		label: 'Empty folder',
+		type: 'folder',
+		id: 7
+	}
+];
+
+const initialExpanded = [treeNodes[1], treeNodes[1].nodes[1], treeNodes[1].nodes[1].nodes[2], treeNodes[1].nodes[1].nodes[3], treeNodes[3]];
+const initialSelection = [treeNodes[1].nodes[1].nodes[0]];
+
+module.exports.treeNodes = treeNodes;
+module.exports.initialExpanded = initialExpanded;
+module.exports.initialSelection = initialSelection;
