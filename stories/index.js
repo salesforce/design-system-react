@@ -5,3 +5,4 @@ export default from './button';
 export default from './context-bar';
 export default from './data-table';
 export default from './icon';
+export default from './input';
