@@ -23,6 +23,9 @@ import ReactDOM from 'react-dom';
 import Button from '../../button';
 import Input from './index';
 
+// ### Event Helpers
+import { KEYS } from '../../../utilities';
+
 // ## Constants
 import { FORMS_INLINE_EDIT } from '../../../utilities/constants';
 
@@ -112,6 +115,7 @@ const InlineEdit = React.createClass({
 				assistiveText="Edit"
 				disabled={disabled}
 				iconName="edit"
+				iconPosition="right"
 				variant="icon"
 			/>
 		);
@@ -123,6 +127,7 @@ const InlineEdit = React.createClass({
 				inlineEditTrigger={inlineEditTrigger}
 				onBlur={this.endEditMode}
 				onClick={this.triggerEditMode}
+				onKeyDown={this.handleKeyDown}
 				readOnly={!this.state.isEditing}
 				value={value}
 			/>
@@ -151,6 +156,14 @@ const InlineEdit = React.createClass({
 
 	endEditMode () {
 		this.setState({ isEditing: false });
+	},
+
+	handleKeyDown (event) {
+		if (event.keyCode) {
+			if (event.keyCode === KEYS.ESCAPE) {
+				this.endEditMode();
+			}
+		}
 	}
 });
 
