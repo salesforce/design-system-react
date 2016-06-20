@@ -15,6 +15,13 @@ storiesOf(FORMS_INPUT, module)
 			placeholder="Placeholder Text"
 		/>
 	))
+	.add('Assistive Text, No Label', () => (
+		<Input
+			id="unique-id-1"
+			assistiveText="Assistive Text"
+			placeholder="Placeholder Text"
+		/>
+	))
 	.add('Input with Clickable Icon', () => (
 		<Input
 			id="unique-id-2"
