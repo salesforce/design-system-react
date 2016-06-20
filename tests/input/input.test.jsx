@@ -12,7 +12,7 @@ const {
 	findRenderedDOMComponentWithClass
 } = TestUtils;
 
-describe.only('SLDS INPUT **************************************************', () => {
+describe('SLDS INPUT **************************************************', () => {
 	const defaultProps = {
 		id: 'unique-id-2',
 		placeholder: 'Placeholder Text'
