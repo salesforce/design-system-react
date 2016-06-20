@@ -17,10 +17,12 @@ let checkProps = function () {};
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
 		/* eslint-disable max-len */
-		oneOfRequiredProperty(COMPONENT, {
-			assistiveText: props.assistiveText,
-			label: props.label
-		});
+		if (!props.inlineEditTrigger) {
+			oneOfRequiredProperty(COMPONENT, {
+				assistiveText: props.assistiveText,
+				label: props.label
+			});
+		}
 		/* eslint-enable max-len */
 	};
 }

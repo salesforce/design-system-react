@@ -109,6 +109,10 @@ const Input = React.createClass({
 		 */
 		onChange: PropTypes.func,
 		/**
+		 * This event fires when the input is clicked.
+		 */
+		onClick: PropTypes.func,
+		/**
 		 * This event fires when the icon is clicked.
 		 */
 		onIconClick: PropTypes.func,
@@ -174,8 +178,10 @@ const Input = React.createClass({
 			iconName,
 			iconPosition,
 			id,
+			inlineEditTrigger, // eslint-disable-line react/prop-types
 			label,
 			onChange,
+			onClick,
 			onIconClick,
 			placeholder,
 			readOnly,
@@ -200,6 +206,7 @@ const Input = React.createClass({
 					'slds-has-error': errorText
 				},
 				className)}
+				onClick={onClick}
 			>
 				{labelText && (!readOnly
 					? <label className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText })} htmlFor={id}>
@@ -214,7 +221,7 @@ const Input = React.createClass({
 						'slds-input-has-icon',
 						`slds-input-has-icon--${iconPosition}`
 					], {
-						'slds-has-divider--bottom': readOnly
+						'slds-has-divider--bottom': readOnly && !inlineEditTrigger
 					})}
 				>
 					{hasIcon && <InputIcon
@@ -237,6 +244,7 @@ const Input = React.createClass({
 					/>}
 					{readOnly && <span className="slds-form-element__static">
 						{value}
+						{inlineEditTrigger}
 					</span>}
 				</div>
 				{errorText && <div className="slds-form-element__help">{errorText}</div>}

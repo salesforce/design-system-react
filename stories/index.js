@@ -4,4 +4,5 @@ export default from './bread-crumb';
 export default from './button';
 export default from './context-bar';
 export default from './data-table';
+export default from './forms/input/inline';
 export default from './icon';
