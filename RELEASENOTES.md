@@ -2,6 +2,9 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.0.31
+- Added new Spinner component
+
 ## Release 0.0.29
 
 **MAJOR CHANGES**
