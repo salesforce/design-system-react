@@ -168,7 +168,9 @@ const InlineEdit = React.createClass({
 
 	saveEdits () {
 		if (this.state.value && isFunction(this.props.onChange)) {
-			this.props.onChange(this.state.value);
+			this.props.onChange({
+				value: this.state.value
+			});
 		}
 
 		this.endEditMode();

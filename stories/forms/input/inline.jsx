@@ -25,10 +25,10 @@ const DemoInlineEdit = React.createClass({
 		);
 	},
 
-	handleChange (value) {
+	handleChange (eventProps) {
 		action('change')(...arguments);
 
-		this.setState({ value });
+		this.setState({ value: eventProps.value });
 	}
 });
 
