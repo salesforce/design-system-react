@@ -206,7 +206,6 @@ const Input = React.createClass({
 					'slds-has-error': errorText
 				},
 				className)}
-				onClick={onClick}
 			>
 				{labelText && (readOnly
 					? <span
@@ -242,12 +241,13 @@ const Input = React.createClass({
 						disabled={disabled}
 						id={id}
 						onChange={onChange}
+						onClick={onClick}
 						placeholder={placeholder}
 						required={required}
 						type={type}
 						value={value}
 					/>}
-					{readOnly && <span className="slds-form-element__static">
+					{readOnly && <span className="slds-form-element__static" onClick={onClick}>
 						{value}
 						{inlineEditTrigger}
 					</span>}

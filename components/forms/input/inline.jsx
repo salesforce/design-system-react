@@ -19,6 +19,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// ### isFunction
+import isFunction from 'lodash.isfunction';
+
 // ## Children
 import Button from '../../button';
 import Input from './index';
@@ -95,7 +98,8 @@ const InlineEdit = React.createClass({
 
 	getInitialState () {
 		return {
-			isEditing: false
+			isEditing: false,
+			value: null
 		};
 	},
 
@@ -132,11 +136,12 @@ const InlineEdit = React.createClass({
 				{...props}
 				disabled={disabled}
 				inlineEditTrigger={inlineEditTrigger}
-				onBlur={this.endEditMode}
+				onBlur={this.saveEdits}
+				onChange={this.handleChange}
 				onClick={this.triggerEditMode}
 				onKeyDown={this.handleKeyDown}
 				readOnly={!this.state.isEditing}
-				value={value}
+				value={this.state.value || value}
 			/>
 		);
 	},
@@ -161,14 +166,33 @@ const InlineEdit = React.createClass({
 		}
 	},
 
+	saveEdits () {
+		if (this.state.value && isFunction(this.props.onChange)) {
+			this.props.onChange(this.state.value);
+		}
+
+		this.endEditMode();
+	},
+
 	endEditMode () {
-		this.setState({ isEditing: false });
+		this.setState({
+			isEditing: false,
+			value: null
+		});
+	},
+
+	handleChange (event) {
+		this.setState({
+			value: event.target.value
+		});
 	},
 
 	handleKeyDown (event) {
 		if (event.keyCode) {
 			if (event.keyCode === KEYS.ESCAPE) {
 				this.endEditMode();
+			} else if (event.keyCode === KEYS.ENTER) {
+				this.saveEdits();
 			}
 		}
 	}
