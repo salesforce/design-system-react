@@ -12,6 +12,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React from 'react';
 
+// ## Children
+import DataTableCell from './cell';
+import Highlighter from '../utilities/highlighter';
+
 // ## Constants
 import { DATA_TABLE_CELL } from '../../utilities/constants';
 
@@ -19,40 +23,32 @@ import { DATA_TABLE_CELL } from '../../utilities/constants';
 const { PropTypes } = React;
 
 /**
- * The default Cell renderer for the DataTable. Pass in any React component with the same `displayName` which takes the same props to provide custom rendering.
+ * A Cell renderer for the DataTable that automatically highlights search text.
  */
-const DataTableCell = (props) => (
-	<td className={props.className} data-label={props.label}>
-		{props.children}
-	</td>
+const DataTableHighlightCell = (props) => (
+	<DataTableCell {...props}>
+		<Highlighter search={props.search}>{props.children}</Highlighter>
+	</DataTableCell>
 );
 
 // ### Display Name
-// Always use the canonical component name as the React display name.
-DataTableCell.displayName = DATA_TABLE_CELL;
+// The DataTable looks for components with this name to determine what it should use to render a given column's cells.
+DataTableHighlightCell.displayName = DATA_TABLE_CELL;
 
-	// ### Prop Types
-DataTableCell.propTypes = {
+// ### Prop Types
+DataTableHighlightCell.propTypes = {
 	/**
 	 * The contents of the cell. Equivalent to `props.item[props.property]`
 	 */
-	children: PropTypes.node,
+	children: PropTypes.oneOfType([
+		React.PropTypes.string,
+		React.PropTypes.number,
+		React.PropTypes.bool
+	]),
 	/**
-	 * Class names to be added to the cell.
+	 * The string of text (or Regular Expression) to highlight.
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-	/**
-	 * The item from the items which represents this row.
-	 */
-	item: PropTypes.object,
-	/**
-	 * The column label.
-	 */
-	label: PropTypes.string,
-	/**
-	 * The property of this item to display.
-	 */
-	property: PropTypes.string
+	search: PropTypes.any
 };
 
-module.exports = DataTableCell;
+module.exports = DataTableHighlightCell;

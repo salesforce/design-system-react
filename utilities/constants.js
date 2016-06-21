@@ -25,6 +25,7 @@ export const DATE_PICKER = 'SLDSDatePicker';
 export const FORMS_CHECKBOX = 'SLDSCheckbox';
 export const FORMS_INPUT = 'SLDSInput';
 export const GRID = 'SLDSGrid';
+export const HIGHLIGHTER = 'SLDSHighlighter';
 export const ICON = 'SLDSIcon';
 export const ICON_BUTTON = 'SLDSIconButton';
 export const ICON_INPUT = 'SLDSIconInput';
