@@ -23,6 +23,7 @@ if (process.env.NODE_ENV !== 'production') {
 				label: props.label
 			});
 		}
+		
 		onlyOneOfProperties(COMPONENT, {
 			assistiveText: props.assistiveText,
 			label: props.label

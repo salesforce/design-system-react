@@ -129,6 +129,8 @@ const InlineEdit = React.createClass({
 			props.iconName = 'close';
 			props.iconPosition = 'right';
 			props.onIconClick = this.endEditMode;
+		} else {
+			props.onClick = this.triggerEditMode;
 		}
 
 		return (
@@ -138,10 +140,9 @@ const InlineEdit = React.createClass({
 				inlineEditTrigger={inlineEditTrigger}
 				onBlur={this.saveEdits}
 				onChange={this.handleChange}
-				onClick={this.triggerEditMode}
 				onKeyDown={this.handleKeyDown}
 				readOnly={!this.state.isEditing}
-				value={this.state.value || value}
+				value={this.state.isEditing ? this.state.value : value}
 			/>
 		);
 	},
@@ -162,12 +163,15 @@ const InlineEdit = React.createClass({
 	triggerEditMode () {
 		if (!this.props.disabled) {
 			this.autoFocus = true;
-			this.setState({ isEditing: true });
+			this.setState({
+				isEditing: true,
+				value: this.props.value
+			});
 		}
 	},
 
 	saveEdits () {
-		if (this.state.value && isFunction(this.props.onChange)) {
+		if (isFunction(this.props.onChange)) {
 			this.props.onChange({
 				value: this.state.value
 			});
