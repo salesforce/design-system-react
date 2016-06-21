@@ -8,26 +8,28 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-/* eslint-disable import/no-mutable-exports */
+/* eslint-disable indent, import/no-mutable-exports */
 
-import oneOfRequiredProperty from '../../../utilities/warning/one-of-required-property';
-import onlyOneOfProperties from '../../../utilities/warning/only-one-of-properties';
+// This function will deliver an warning message to the browser console if extraneous properties are defined (falsey).
+import warning from 'warning';
 
-let checkProps = function () {};
+let onlyOneOf = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, props) {
-		/* eslint-disable max-len */
-		oneOfRequiredProperty(COMPONENT, {
-			assistiveText: props.assistiveText,
-			label: props.label
-		});
-		onlyOneOfProperties(COMPONENT, {
-			assistiveText: props.assistiveText,
-			label: props.label
-		});
-		/* eslint-enable max-len */
+	const hasWarned = {};
+
+	onlyOneOf = function (control, selectedProps, comment) {
+		const additionalComment = comment ? ` ${comment}` : '';
+		let keys = Object.keys(selectedProps);
+		keys = keys.filter((key) => selectedProps[key]);
+
+		if (!hasWarned[control]) {
+			/* eslint-disable max-len */
+			warning((keys.length === 1), `[Design System React] Only one of the following props is needed by ${control}: [${keys.join()}].${additionalComment}`);
+			/* eslint-enable max-len */
+			hasWarned[control] = !!selectedProps;
+		}
 	};
 }
 
-export default checkProps;
+export default onlyOneOf;

@@ -191,7 +191,7 @@ const Input = React.createClass({
 		const hasIcon = iconCategory && iconName;
 
 		// One of these is required to pass accessibility tests
-		const labelText = assistiveText || label;
+		const labelText = label || assistiveText;
 
 		return (
 			<div
@@ -201,14 +201,19 @@ const Input = React.createClass({
 				},
 				className)}
 			>
-				{labelText && (!readOnly
-					? <label className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText })} htmlFor={id}>
+				{labelText && (readOnly
+					? <span
+						className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText && !label })}
+					>
+						{labelText}
+					</span>
+					: <label
+						className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText && !label })} htmlFor={id}
+					>
 						{required && <abbr className="slds-required" title="required">*</abbr>}
 						{labelText}
 					</label>
-					: <span className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText })}>
-						{labelText}
-					</span>)}
+				)}
 				<div
 					className={classNames('slds-form-element__control', hasIcon && [
 						'slds-input-has-icon',
