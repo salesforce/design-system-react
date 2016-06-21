@@ -58,6 +58,7 @@
     "react-highlighter": "^0.3.2",
     "react-modal": "^0.6.1",
     "react-onclickoutside": "^4.5.0",
+    "shortid": "^2.2.6",
     "tether": "1.1.0",
     "tether-drop": "1.2.2",
     "warning": "^2.1.0"

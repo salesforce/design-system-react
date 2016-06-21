@@ -14,7 +14,6 @@ const {
 
 describe('SLDS INPUT **************************************************', () => {
 	const defaultProps = {
-		id: 'unique-id-2',
 		placeholder: 'Placeholder Text'
 	};
 
