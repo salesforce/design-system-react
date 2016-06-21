@@ -12,47 +12,47 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React from 'react';
 
+// ### ReactHighlighter
+import ReactHighlighter from 'react-highlighter';
+
 // ## Constants
-import { DATA_TABLE_CELL } from '../../utilities/constants';
+import { HIGHLIGHTER } from '../../../utilities/constants';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
 
 /**
- * The default Cell renderer for the DataTable. Pass in any React component with the same `displayName` which takes the same props to provide custom rendering.
+ * A utility component that highlights occurrences of a particular pattern in its contents.
  */
-const DataTableCell = (props) => (
-	<td className={props.className} data-label={props.label}>
-		{props.children}
-	</td>
-);
+const Highlighter = (props) => {
+	if (props.search) {
+		return (
+			<ReactHighlighter matchClass={null} matchElement="mark" search={props.search}>
+				{props.children}
+			</ReactHighlighter>
+		);
+	}
 
-// ### Display Name
-// Always use the canonical component name as the React display name.
-DataTableCell.displayName = DATA_TABLE_CELL;
-
-	// ### Prop Types
-DataTableCell.propTypes = {
-	/**
-	 * The contents of the cell. Equivalent to `props.item[props.property]`
-	 */
-	children: PropTypes.node,
-	/**
-	 * Class names to be added to the cell.
-	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-	/**
-	 * The item from the items which represents this row.
-	 */
-	item: PropTypes.object,
-	/**
-	 * The column label.
-	 */
-	label: PropTypes.string,
-	/**
-	 * The property of this item to display.
-	 */
-	property: PropTypes.string
+	return <span>{props.children}</span>;
 };
 
-module.exports = DataTableCell;
+// ### Display Name
+Highlighter.displayName = HIGHLIGHTER;
+
+// ### Prop Types
+Highlighter.propTypes = {
+	/**
+	 * The full string to display.
+	 */
+	children: PropTypes.oneOfType([
+		React.PropTypes.string,
+		React.PropTypes.number,
+		React.PropTypes.bool
+	]),
+	/**
+	 * The string of text (or Regular Expression) to highlight.
+	 */
+	search: PropTypes.any
+};
+
+module.exports = Highlighter;

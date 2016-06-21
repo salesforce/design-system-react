@@ -1,4 +1,5 @@
-/* eslint-disable indent */
+/* eslint-env mocha */
+/* eslint-disable prefer-arrow-callback */
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -9,11 +10,12 @@ import chai from 'chai';
 import DataTable from '../../components/data-table';
 import DataTableColumn from '../../components/data-table/column';
 import DataTableRowActions from '../../components/data-table/row-actions';
+import DataTableHighlightCell from '../../components/data-table/highlight-cell';
 
 chai.should();
 
 const { Simulate,
- 				scryRenderedComponentsWithType,
+				scryRenderedComponentsWithType,
 				findRenderedDOMComponentWithClass
 			} = TestUtils;
 
@@ -56,12 +58,10 @@ describe('DataTable: ', function () {
 		selectRows: true
 	};
 
-	const renderTable = (instance) => {
-		return function () {
-			this.dom = document.createElement('div');
-			document.body.appendChild(this.dom);
-			this.component = ReactDOM.render(instance, this.dom);
-		};
+	const renderTable = (instance) => function () {
+		this.dom = document.createElement('div');
+		document.body.appendChild(this.dom);
+		this.component = ReactDOM.render(instance, this.dom);
 	};
 
 	function removeTable () {
@@ -73,7 +73,7 @@ describe('DataTable: ', function () {
 
 	const getRow = (dom, row) => {
 		const tbody = getTable(dom).querySelectorAll('tbody')[0];
-		return tbody.querySelectorAll('tr')[row-1];
+		return tbody.querySelectorAll('tr')[row - 1];
 	};
 
 	const getCell = (dom, row, column) => {
@@ -364,6 +364,29 @@ describe('DataTable: ', function () {
 				const firstAction = menu.querySelectorAll('.slds-dropdown__item')[0];
 				Simulate.click(firstAction.querySelector('a'), {});
 			}, 100);
+		});
+	});
+
+	describe('w/ HighlightCell', function () {
+		afterEach(removeTable);
+
+		it('marks the appropriate text in a cell', function () {
+			renderTable(
+				<DataTable
+					{...defaultProps}
+					search="Cloud"
+				>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property}>
+							<DataTableHighlightCell />
+						</DataTableColumn>
+					))}
+				</DataTable>
+			).call(this);
+
+			const secondRow = getRow(this.dom, 2);
+			const markedText = secondRow.querySelectorAll('mark')[0];
+			markedText.innerHTML.should.equal('Cloud');
 		});
 	});
 });

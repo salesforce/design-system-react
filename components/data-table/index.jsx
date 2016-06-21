@@ -21,6 +21,9 @@ import React from 'react';
 // ### classNames
 import classNames from 'classnames';
 
+// ### assign
+import assign from 'lodash.assign';
+
 // ### isArray
 import isArray from 'lodash.isarray';
 
@@ -162,19 +165,25 @@ const DataTable = React.createClass({
 			if (child && child.type === DataTableColumn) {
 				const {
 					children,
-					...props
+					...columnProps
 				} = child.props;
+
+				const props = assign({}, this.props);
+				delete props.children;
+				assign(props, columnProps);
 
 				let Cell;
 				if (children && children.type.displayName === DATA_TABLE_CELL) {
 					Cell = children.type;
+					assign(props, children.props);
 				} else {
 					Cell = DataTableCell;
 				}
 
 				columns.push({
 					Cell,
-					props
+					props,
+					dataTableProps: this.props
 				});
 			} else if (child && child.type === DataTableRowActions) {
 				RowActions = child;
