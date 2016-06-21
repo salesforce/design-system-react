@@ -120,6 +120,13 @@ const InlineEdit = React.createClass({
 			/>
 		);
 
+		if (this.state.isEditing) {
+			props.iconCategory = 'utility';
+			props.iconName = 'close';
+			props.iconPosition = 'right';
+			props.onIconClick = this.endEditMode;
+		}
+
 		return (
 			<Input
 				{...props}
