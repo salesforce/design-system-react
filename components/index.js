@@ -71,6 +71,9 @@ export Icon from './icon';
 export SLDSButtonIcon from './icon/button-icon';
 export ButtonIcon from './icon';
 
+export SLDSInlineEdit from './forms/input/inline';
+export InlineEdit from './forms/input/inline';
+
 export SLDSInput from './forms/input';
 export Input from './forms/input';
 
