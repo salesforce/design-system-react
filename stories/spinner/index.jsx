@@ -24,7 +24,7 @@ storiesOf(SPINNER, module)
 	.add('Large', () => getSpinner({ size: 'large', variant: 'base' }))
 	.add('Brand Small', () => getSpinner({ size: 'small', variant: 'brand' }))
 	.add('Brand Medium', () => getSpinner({ size: 'medium', variant: 'brand' }))
-	.add('Brand Large', () => getSpinner({ size: 'large', variant: 'brand' }))
+	.add('Brand Large', () => getSpinner({ size: 'large', variant: 'brand', containerClassName: 'my-custom-classname' }))
 
 	.addDecorator(getStory => <div className="slds-p-around--medium" style={inverseContainer}>{getStory()}</div>)
 	.add('Inverse Small', () => getSpinner({ size: 'small', variant: 'inverse' }))

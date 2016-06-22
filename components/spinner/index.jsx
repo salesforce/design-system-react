@@ -25,13 +25,17 @@ const { PropTypes } = React;
 
 // ### Prop Types
 const PROP_TYPES = {
-	/**
-	 * Determines the size of the spinner
-	 */
+  /**
+   * Custom css classes applied to Spinner container
+   */
+  containerClassName: PropTypes.string,
+  /**
+   * Determines the size of the spinner
+   */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
-	/**
-	 * Determines the color of the spinner: `base` is gray, `brand` is blue, and `inverse` is white.
-	 */
+  /**
+   * Determines the color of the spinner: `base` is gray, `brand` is blue, and `inverse` is white.
+   */
   variant: PropTypes.oneOf(['base', 'brand', 'inverse'])
 };
 
@@ -43,6 +47,7 @@ const DEFAULT_PROPS = {
 // ## Spinner
 const Spinner = (props) => {
 	const {
+		containerClassName,
 		variant,
 		size
 	} = props;
@@ -54,7 +59,7 @@ const Spinner = (props) => {
   };
 
 	return (
-			<div className='slds-spinner_container'>
+			<div className={classNames(props.containerClassName, 'slds-spinner_container')}>
 				<div
 					className={classNames('slds-spinner', sizeClass, variants[props.variant])}
 					aria-hidden='false'
