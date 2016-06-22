@@ -3,7 +3,16 @@
 # Release notes
 
 ## Release 0.0.31
+
+**MAJOR CHANGES**
 - Added new Spinner component
+- Updated the ContextBar component
+- Added a highlighting utility
+- Added a custom cell type to DataTable using the highlighter
+
+**OTHER**
+- Remove isRequired for iconCategory in ButtonGroup
+- Additional bug fixes and code cleanup
 
 ## Release 0.0.29
 
