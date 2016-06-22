@@ -34,7 +34,7 @@ const propTypes = {
 	 */
 	iconName: React.PropTypes.string,
 
-	iconCategory: React.PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']).isRequired,
+	iconCategory: React.PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
 	/**
 	 * If omitted, icon position is centered.
 	 */
