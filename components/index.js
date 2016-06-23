@@ -69,7 +69,7 @@ export SLDSIcon from './icon';
 export Icon from './icon';
 
 export SLDSButtonIcon from './icon/button-icon';
-export ButtonIcon from './icon';
+export ButtonIcon from './icon/button-icon';
 
 export SLDSInput from './forms/input';
 export Input from './forms/input';
