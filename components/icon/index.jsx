@@ -11,7 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND 
 
 import React from 'react';
 import SLDSUtilityIcon from '../utilities/utility-icon';
-const classNames = require('classnames');
+import classNames from 'classnames';
 
 const displayName = 'Icon';
 
