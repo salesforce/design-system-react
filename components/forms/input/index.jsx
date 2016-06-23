@@ -222,7 +222,7 @@ const Input = React.createClass({
 						'slds-has-divider--bottom': readOnly
 					})}
 				>
-					{hasIcon && <InputIcon
+					{hasIcon && iconPosition === 'left' && <InputIcon
 						name={iconName}
 						category={iconCategory}
 						onClick={onIconClick}
@@ -239,6 +239,11 @@ const Input = React.createClass({
 						required={required}
 						type={type}
 						value={value}
+					/>}
+					{hasIcon && iconPosition === 'right' && <InputIcon
+						name={iconName}
+						category={iconCategory}
+						onClick={onIconClick}
 					/>}
 					{readOnly && <span className="slds-form-element__static">
 						{value}
