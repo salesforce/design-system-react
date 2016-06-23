@@ -2,6 +2,9 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.0.32
+- Added containerClassName prop to Spinner
+
 ## Release 0.0.31
 
 **MAJOR CHANGES**
