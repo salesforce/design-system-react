@@ -6,7 +6,7 @@ import TestUtils from 'react-addons-test-utils';
 
 import { SLDSInput } from '../../components';
 const {
-	// Simulate,
+	Simulate,
 	findRenderedDOMComponentWithTag,
 	scryRenderedDOMComponentsWithTag,
 	findRenderedDOMComponentWithClass
@@ -146,27 +146,87 @@ describe('SLDS INPUT **************************************************', () => 
 		});
 	});
 
+	describe('Input with Left Clickable Icon', () => {
+		let component;
+		let elementControl;
+		let leftButton;
 
-	// describe('Input with Clickable Icon', () => {
-	// 	let component;
-	// 	let input;
-	// 	let label;
-	// 	let icon;
+		const clickCallback = sinon.spy();
 
-	// 	beforeEach(() => {
-	// 		component = getInput({ label: 'Input Label' });
-	// 		input = findRenderedDOMComponentWithTag(component, 'input');
-	// 		inputWrapper = findRenderedDOMComponentWithClass(component, 'slds-form-element__control');
-	// 		label = findRenderedDOMComponentWithClass(component, 'slds-form-element__label');
-	// 		icon = findRenderedDOMComponentWithTag(component, 'svg');
-	// 	});
+		beforeEach(() => {
+			component = getInput({ iconName: 'search', iconCategory: 'utility', iconPosition: 'left', onIconClick: clickCallback });
+			leftButton = findRenderedDOMComponentWithTag(component, 'button');
+			elementControl = findRenderedDOMComponentWithClass(component, 'slds-form-element__control');
+		});
 
-	// 	afterEach(() => {
-	// 		removeInput();
-	// 	});
+		afterEach(() => {
+			removeInput();
+		});
 
-	// 	// input wrapper has class "slds-input-has-icon"
-	// 	// icon has class "slds-input__icon"
-	// 	// icon can be clicked (Simulate)
-	// });
+		it('element control has class "slds-input-has-icon"', () => {
+			expect(elementControl.className).to.include('slds-input-has-icon');
+		});
+
+		it('icon renders button BEFORE input in DOM', () => {
+			const render = elementControl.innerHTML;
+			expect(render.indexOf('<button')).to.be.below(render.indexOf('<input'));
+		});
+
+		it('icon can be clicked', () => {
+			TestUtils.Simulate.click(leftButton);
+
+			expect(clickCallback.calledOnce).to.be.true;
+		});
+	});
+
+	describe('Input with Right Clickable Icon', () => {
+		let component;
+		let elementControl;
+		let leftButton;
+
+		const clickCallback = sinon.spy();
+
+		beforeEach(() => {
+			component = getInput({ iconName: 'search', iconCategory: 'utility', iconPosition: 'right', onIconClick: clickCallback });
+			leftButton = findRenderedDOMComponentWithTag(component, 'button');
+			elementControl = findRenderedDOMComponentWithClass(component, 'slds-form-element__control');
+		});
+
+		afterEach(() => {
+			removeInput();
+		});
+
+		it('element control has class "slds-input-has-icon"', () => {
+			expect(elementControl.className).to.include('slds-input-has-icon');
+		});
+
+		it('icon renders button AFTER input in DOM', () => {
+			const render = elementControl.innerHTML;
+			expect(render.indexOf('<button')).to.be.above(render.indexOf('<input'));
+		});
+
+		it('icon can be clicked', () => {
+			TestUtils.Simulate.click(leftButton);
+
+			expect(clickCallback.calledOnce).to.be.true;
+		});
+	});
+
+	describe('Input with Non-Clickable Icon', () => {
+		let component;
+		let elementControl;
+
+		beforeEach(() => {
+			component = getInput({ iconName: 'search', iconCategory: 'utility', iconPosition: 'right' });
+			elementControl = findRenderedDOMComponentWithClass(component, 'slds-form-element__control');
+		});
+
+		afterEach(() => {
+			removeInput();
+		});
+
+		it('button tag does not exist', () => {
+			expect(elementControl.getElementsByTagName('button')[0]).to.not.be.ok;
+		});
+	});
 });
