@@ -129,7 +129,6 @@ const InlineEdit = React.createClass({
 			props.iconName = 'close';
 			props.iconPosition = 'right';
 			props.onIconClick = this.endEditMode;
-			props.onIconMouseDown = this.handleIconMouseDown;
 		} else {
 			props.onClick = this.triggerEditMode;
 		}
