@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from "react";
 import ReactDOM from "react-dom";
 
-const classNames = require("classnames");
+import classNames from 'classnames';
 
 import omit from "lodash.omit";
 

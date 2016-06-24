@@ -1,6 +1,6 @@
 {
   "name": "design-system-react",
-  "version": "0.0.30",
+  "version": "0.0.32",
   "description": "Salesforce Lightning Design System React components",
   "license": "BSD-3-Clause",
   "scripts": {
@@ -125,25 +125,101 @@
     "validate",
     "test"
   ],
-  "components": {
-    "bread-crumb": "Breadcrumbs",
-    "button": "Buttons",
-    "button-stateful": "Stateful Buttons",
-    "button-group": "Button Groups",
-    "card": "Cards",
-    "forms/checkbox": "Checkbox",
-    "context-bar": "ContextBar",
-    "data-table": "Data Tables",
-    "date-picker": "DatePickers",
-    "icon": "Icons",
-    "forms/input": "Input",
-    "lookup": "Lookups",
-    "menu-dropdown": "Dropdown Menus",
-    "menu-picklist": "Picklist Menus",
-    "modal": "Modals",
-    "notification": "Notifications",
-    "page-header": "Page Headers",
-    "popover-tooltip": "Popover Tooltips",
-    "time-picker": "Timepickers"
-  }
+  "components": [
+    {
+      "component": "bread-crumb",
+      "display-name": "Breadcrumbs",
+      "SLDS-component-path": "/components/breadcrumbs"
+    },
+    {
+      "component": "button",
+      "display-name": "Buttons",
+      "SLDS-component-path": "/components/buttons"
+    },
+    {
+      "component": "button-stateful",
+      "display-name": "Stateful Buttons",
+      "SLDS-component-path": "/components/buttons/#flavor-stateful"
+    },
+    {
+      "component": "button-group",
+      "display-name": "Button Groups",
+      "SLDS-component-path": "/components/button-groups"
+    },
+    {
+      "component": "card",
+      "display-name": "Cards",
+      "SLDS-component-path": "/components/cards"
+    },
+    {
+      "component": "forms/checkbox",
+      "display-name": "Checkboxes",
+      "SLDS-component-path": "/components/forms/#flavor-checkbox"
+    },
+    {
+      "component": "data-table",
+      "display-name": "Data Tables",
+      "SLDS-component-path": "/components/data-tables"
+    },
+    {
+      "component": "date-picker",
+      "display-name": "Datepickers",
+      "SLDS-component-path": "/components/datepickers"
+    },
+    {
+      "component": "icon",
+      "display-name": "Icons",
+      "SLDS-component-path": "/components/icons"
+    },
+    {
+      "component": "forms/input",
+      "display-name": "Inputs",
+      "SLDS-component-path": "/components/forms#flavor-input"
+    },
+    {
+      "component": "context-bar",
+      "display-name": "Global Navigation Bar",
+      "SLDS-component-path": "/components/global-navigation#flavor-navigation-bar"
+    },
+    {
+      "component": "lookup",
+      "display-name": "Lookups",
+      "SLDS-component-path": "/components/lookups"
+    },
+    {
+      "component": "menu-dropdown",
+      "display-name": "Dropdown Menus",
+      "SLDS-component-path": "/components/menus#flavor-dropdown"
+    },
+    {
+      "component": "menu-picklist",
+      "display-name": "Picklist Menus",
+      "SLDS-component-path": "/components/menus#flavor-picklist"
+    },
+    {
+      "component": "modal",
+      "display-name": "Modals",
+      "SLDS-component-path": "/components/modals"
+    },
+    {
+      "component": "notification",
+      "display-name": "Notifications",
+      "SLDS-component-path": "/components/notifications"
+    },
+    {
+      "component": "page-header",
+      "display-name": "Page Headers",
+      "SLDS-component-path": "/components/page-headers"
+    },
+    {
+      "component": "popover-tooltip",
+        "display-name": "Popover Tooltips",
+        "SLDS-component-path": "/components/popovers#flavor-tooltips"
+    },
+    {
+      "component": "time-picker",
+      "display-name": "Timepickers",
+      "SLDS-component-path": "/components/datepickers"
+    }
+  ]
 }

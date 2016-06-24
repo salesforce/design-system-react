@@ -69,7 +69,7 @@ export SLDSIcon from './icon';
 export Icon from './icon';
 
 export SLDSButtonIcon from './icon/button-icon';
-export ButtonIcon from './icon';
+export ButtonIcon from './icon/button-icon';
 
 export SLDSInput from './forms/input';
 export Input from './forms/input';
@@ -97,6 +97,9 @@ export PageHeader from './page-header';
 
 export SLDSPopoverTooltip from './popover-tooltip';
 export PopoverTooltip from './popover-tooltip';
+
+export SLDSSpinner from './spinner';
+export Spinner from './spinner';
 
 export SLDSTimepicker from './time-picker';
 export Timepicker from './time-picker';
