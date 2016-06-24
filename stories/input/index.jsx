@@ -44,6 +44,16 @@ storiesOf(FORMS_INPUT, module)
 			placeholder="Placeholder Text"
 		/>
 	))
+	.add('Input with Non-Clickable Icon', () => (
+		<Input
+			id="unique-id-123"
+			label="Input Label"
+			iconName="search"
+			iconCategory="utility"
+			iconPosition="left"
+			placeholder="Placeholder Text"
+		/>
+	))
 	.add('Read Only Input', () => (
 		<Input
 			id="unique-id-3"
