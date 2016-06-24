@@ -17,6 +17,11 @@ import omit from 'lodash.omit';
 
 import { BUTTON } from '../../utilities/constants';
 
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
+
 const displayName = BUTTON;
 const propTypes = {
 	/**
@@ -65,6 +70,7 @@ const propTypes = {
 	variant: React.PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon', 'inverse', 'icon-inverse'])
 };
 const defaultProps = {
+	id: shortid.generate(),
 	disabled: false,
 	hint: false,
 	iconSize: 'medium',
