@@ -10,66 +10,41 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND 
 */
 
 import React from 'react';
-
 import SLDSUtilityIcon from '../../utilities/utility-icon';
 
-import { ICON_INPUT } from '../../../utilities/constants';
+const displayName = 'InputIcon';
 
-// Remove the need for `React.PropTypes`
-const { PropTypes } = React;
+const propTypes = {
+  category: React.PropTypes.string,
+  name: React.PropTypes.string,
+  onClick: React.PropTypes.func,
+};
+const defaultProps = {
+  category: 'utility',
+};
 
-// ### isFunction
-import isFunction from 'lodash.isfunction';
+class InputIcon extends React.Component {
 
-const InputIcon = React.createClass({
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-	displayName: ICON_INPUT,
+  render() {
+    const className = 'slds-input__icon slds-icon-text-default';
+    return <SLDSUtilityIcon
+              style={this.props.style}
+              aria-hidden='true'
+              category={this.props.category}
+              className={className}
+              name={this.props.name}
+              onClick={this.props.onClick}
+              />;
+  }
+}
 
-	propTypes: {
-		category: PropTypes.string,
-		name: PropTypes.string,
-		style: PropTypes.string,
-		/**
-		 * This event fires when the icon is clicked.
-		 */
-		onClick: PropTypes.func
-	},
-
-	getDefaultProps () {
-		return {
-			category: 'utility'
-		};
-	},
-
-	render () {
-		const onClickIsFunction = isFunction(this.props.onClick);
-
-		return (
-			<div>
-				{onClickIsFunction ?
-					<button
-						className="slds-input__icon slds-button slds-button--icon"
-						onClick={this.props.onClick}
-					>
-						<SLDSUtilityIcon
-							style={this.props.style}
-							aria-hidden
-							category={this.props.category}
-							className="slds-button__icon slds-icon-text-default"
-							name={this.props.name}
-						/>
-					</button>
-					: <SLDSUtilityIcon
-						style={this.props.style}
-						aria-hidden
-						category={this.props.category}
-						className="slds-input__icon slds-icon-text-default"
-						name={this.props.name}
-					/>
-				}
-			</div>
-		);
-	}
-});
+InputIcon.displayName = displayName;
+InputIcon.propTypes = propTypes;
+InputIcon.defaultProps = defaultProps;
 
 module.exports = InputIcon;
