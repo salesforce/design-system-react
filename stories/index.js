@@ -5,6 +5,7 @@ export default from './button';
 export default from './card';
 export default from './context-bar';
 export default from './data-table';
+export default from './forms/input';
+export default from './forms/input/inline';
 export default from './icon';
-export default from './input';
 export default from './spinner';
