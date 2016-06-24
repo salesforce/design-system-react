@@ -8,3 +8,4 @@ export default from './data-table';
 export default from './forms/input';
 export default from './forms/input/inline';
 export default from './icon';
+export default from './spinner';
