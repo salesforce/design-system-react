@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 
-import { FORMS_INPUT } from '../../utilities/constants';
-import Input from '../../components/forms/input';
+import { FORMS_INPUT } from '../../../utilities/constants';
+import Input from '../../../components/forms/input';
 
 const iconClicked = action;
 
@@ -45,4 +45,3 @@ storiesOf(FORMS_INPUT, module)
 			placeholder="Placeholder Text"
 		/>
 	));
-

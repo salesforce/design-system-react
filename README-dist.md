@@ -1,5 +1,5 @@
 
-Welcome to [Design System React](https://design-system-react.herokuapp.com).
+Welcome to [Design System React](https://react.lightningdesignsystem.com/).
 
 Presented here are Javascript components based on [Lightning Design System](https://www.lightningdesignsystem.com/) and designed for React.
 
@@ -8,6 +8,6 @@ Presented here are Javascript components based on [Lightning Design System](http
 
 ## Documentation
 
-[Design System React website](https://design-system-react.herokuapp.com)
+[Design System React website](https://react.lightningdesignsystem.com/)
 
-[Salesforce Lightning Design System website](https://www.lightningdesignsystem.com)
+[Salesforce Lightning Design System website](https://www.lightningdesignsystem.com/)
