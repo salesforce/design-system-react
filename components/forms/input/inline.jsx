@@ -194,7 +194,7 @@ const InlineEdit = React.createClass({
 
 	handleBlur () {
 		if (!this.willSave) {
-			this.willSave = setTimeout(this.saveEdits, 100);
+			this.willSave = setTimeout(this.saveEdits, 200);
 		}
 	},
 
