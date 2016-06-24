@@ -18,8 +18,10 @@ import ListItemLabel from "../menu-list/list-item-label";
 
 import { MENU_DROPDOWN } from '../../utilities/constants';
 
-// ### uniqueId
-import uniqueId from 'lodash.uniqueid';
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
 
 const displayName = MENU_DROPDOWN;
 const propTypes = {
@@ -43,6 +45,9 @@ const propTypes = {
    * Delay on menu closing.
    */
   hoverCloseDelay: React.PropTypes.number,
+  /**
+  * A unique ID is needed in order to support keyboard navigation and ARIA support.
+  */
   id: React.PropTypes.string,
   label: React.PropTypes.string,
   /**
@@ -74,7 +79,7 @@ const defaultProps = {
   checkmark: false,
   disabled: false,
   hoverCloseDelay: 300,
-  id: uniqueId(`${MENU_DROPDOWN}-`),
+  id: shortid.generate(),
   openOn: "click",
   modal: true,
 };

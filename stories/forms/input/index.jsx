@@ -10,21 +10,18 @@ storiesOf(FORMS_INPUT, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Standard Input', () => (
 		<Input
-			id="unique-id-1"
 			label="Input Label"
 			placeholder="Placeholder Text"
 		/>
 	))
 	.add('Assistive Text, No Label', () => (
 		<Input
-			id="unique-id-1"
 			assistiveText="Assistive Text"
 			placeholder="Placeholder Text"
 		/>
 	))
 	.add('Input with Clickable Icon', () => (
 		<Input
-			id="unique-id-2"
 			label="Input Label"
 			iconName="close"
 			iconCategory="utility"
@@ -35,7 +32,6 @@ storiesOf(FORMS_INPUT, module)
 	))
 	.add('Read Only Input', () => (
 		<Input
-			id="unique-id-3"
 			label="Input Label"
 			readOnly
 			value="Read Only Value"
@@ -43,7 +39,6 @@ storiesOf(FORMS_INPUT, module)
 	))
 	.add('Required Input in Error State', () => (
 		<Input
-			id="unique-id-4"
 			label="Input Label"
 			required
 			errorText="Error Message"

@@ -58,13 +58,14 @@
     "react-highlighter": "^0.3.2",
     "react-modal": "^0.6.1",
     "react-onclickoutside": "^4.5.0",
+    "shortid": "^2.2.6",
     "tether": "1.1.0",
     "tether-drop": "1.2.2",
     "warning": "^2.1.0"
   },
   "devDependencies": {
     "@kadira/storybook": "^1.27.0",
-    "@salesforce-ux/design-system": "git+ssh://git@github.com/salesforce-ux/design-system-internal.git#v2.1.0-beta.2-dist",
+    "@salesforce-ux/design-system": "git+ssh://git@github.com/salesforce-ux/design-system-internal.git#v2.1.0-beta.3-dist",
     "@salesforce-ux/icons": "4.0.0",
     "async": "^2.0.0-rc.5",
     "babel": "^6.5.2",

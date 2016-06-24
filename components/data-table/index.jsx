@@ -18,6 +18,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React from 'react';
 
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
+
 // ### classNames
 import classNames from 'classnames';
 
@@ -32,9 +37,6 @@ import isFunction from 'lodash.isfunction';
 
 // ### reject
 import reject from 'lodash.reject';
-
-// ### uniqueId
-import uniqueId from 'lodash.uniqueid';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
@@ -86,12 +88,15 @@ const DataTable = React.createClass({
 		 * Class names to be added to the table.
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		/**
+		 * A unique ID is needed in order to support keyboard navigation and ARIA support.
+		 */
 		id: PropTypes.string,
-    /**
+		/**
  		 * The collection of items to render in the table.
  		 */
 		items: PropTypes.array.isRequired,
-    /**
+		/**
 		 * This function fires when the selection of rows changes.
 		 */
 		onChange: PropTypes.func,
@@ -124,7 +129,7 @@ const DataTable = React.createClass({
 	getDefaultProps () {
 		return {
 			bordered: false,
-			id: uniqueId(`${DATA_TABLE}-`),
+			id: shortid.generate(),
 			selection: [],
 			selectRows: false,
 			stacked: false,

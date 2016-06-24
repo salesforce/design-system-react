@@ -32,6 +32,11 @@ import Empty from './empty';
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
 
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
+
 import { CARD } from '../../utilities/constants';
 
 // Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
@@ -84,11 +89,12 @@ const Card = React.createClass({
 		/**
 		 * Set the HTML `id` of the card. This also sets the `id` of the filter and the header actions.
 		 */
-		id: PropTypes.string.isRequired
+		id: PropTypes.string
 	},
 
 	getDefaultProps () {
 		return {
+			id: shortid.generate(),
 			heading: 'Related Items'
 		};
 	},

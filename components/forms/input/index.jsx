@@ -17,6 +17,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // React is an external dependency of the project.
 import React from 'react';
 
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
+
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
@@ -99,7 +104,7 @@ const Input = React.createClass({
 		/**
 		 * Every input must have a unique ID in order to support keyboard navigation and ARIA support.
 		 */
-		id: PropTypes.string.isRequired,
+		id: PropTypes.string,
 		/**
 		 * This label appears above the input.
 		 */
@@ -160,6 +165,7 @@ const Input = React.createClass({
 
 	getDefaultProps () {
 		return {
+			id: shortid.generate(),
 			iconPosition: 'left',
 			type: 'text'
 		};
