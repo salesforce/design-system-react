@@ -17,6 +17,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // React is an external dependency of the project.
 import React from 'react';
 
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
+
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
@@ -104,7 +109,7 @@ const Input = React.createClass({
 		/**
 		 * Every input must have a unique ID in order to support keyboard navigation and ARIA support.
 		 */
-		id: PropTypes.string.isRequired,
+		id: PropTypes.string,
 		/**
 		 * This label appears above the input.
 		 */
@@ -113,6 +118,10 @@ const Input = React.createClass({
 		 * This event fires when the input changes.
 		 */
 		onChange: PropTypes.func,
+		/**
+		 * This event fires when the input is clicked.
+		 */
+		onClick: PropTypes.func,
 		/**
 		 * This event fires when the icon is clicked.
 		 */
@@ -161,6 +170,7 @@ const Input = React.createClass({
 
 	getDefaultProps () {
 		return {
+			id: shortid.generate(),
 			iconPosition: 'left',
 			type: 'text'
 		};
@@ -197,8 +207,11 @@ const Input = React.createClass({
 			iconName,
 			iconPosition,
 			id,
+			inlineEditTrigger, // eslint-disable-line react/prop-types
 			label,
 			onChange,
+			onClick,
+			onIconClick, // eslint-disable-line no-unused-vars
 			placeholder,
 			readOnly,
 			required,
@@ -241,7 +254,7 @@ const Input = React.createClass({
 						'slds-input-has-icon',
 						`slds-input-has-icon--${iconPosition}`
 					], {
-						'slds-has-divider--bottom': readOnly
+						'slds-has-divider--bottom': readOnly && !inlineEditTrigger
 					})}
 				>
 					{hasIcon && this.getIconRender('left')}
@@ -254,16 +267,17 @@ const Input = React.createClass({
 						disabled={disabled}
 						id={id}
 						onChange={onChange}
+						onClick={onClick}
 						placeholder={placeholder}
 						required={required}
 						type={type}
 						value={value}
 					/>}
-
 					{hasIcon && this.getIconRender('right')}
 
-					{readOnly && <span className="slds-form-element__static">
+					{readOnly && <span className="slds-form-element__static" onClick={onClick}>
 						{value}
+						{inlineEditTrigger}
 					</span>}
 				</div>
 				{errorText && <div className="slds-form-element__help">{errorText}</div>}

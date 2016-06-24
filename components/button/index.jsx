@@ -10,12 +10,17 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from 'react';
-const classNames = require('classnames');
+import classNames from 'classnames';
 import ButtonIcon from '../icon/button-icon';
 import TooltipTrigger from '../popover-tooltip/trigger';
 import omit from 'lodash.omit';
 
 import { BUTTON } from '../../utilities/constants';
+
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
 
 const displayName = BUTTON;
 const propTypes = {
@@ -34,7 +39,7 @@ const propTypes = {
 	 */
 	iconName: React.PropTypes.string,
 
-	iconCategory: React.PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']).isRequired,
+	iconCategory: React.PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
 	/**
 	 * If omitted, icon position is centered.
 	 */
@@ -65,6 +70,7 @@ const propTypes = {
 	variant: React.PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon', 'inverse', 'icon-inverse'])
 };
 const defaultProps = {
+	id: shortid.generate(),
 	disabled: false,
 	hint: false,
 	iconSize: 'medium',
