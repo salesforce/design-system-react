@@ -144,28 +144,4 @@ describe('SLDS INPUT **************************************************', () => 
 			expect(error.textContent).to.equal('Error Message');
 		});
 	});
-
-
-	// describe('Input with Clickable Icon', () => {
-	// 	let component;
-	// 	let input;
-	// 	let label;
-	// 	let icon;
-
-	// 	beforeEach(() => {
-	// 		component = getInput({ label: 'Input Label' });
-	// 		input = findRenderedDOMComponentWithTag(component, 'input');
-	// 		inputWrapper = findRenderedDOMComponentWithClass(component, 'slds-form-element__control');
-	// 		label = findRenderedDOMComponentWithClass(component, 'slds-form-element__label');
-	// 		icon = findRenderedDOMComponentWithTag(component, 'svg');
-	// 	});
-
-	// 	afterEach(() => {
-	// 		removeInput();
-	// 	});
-
-	// 	// input wrapper has class "slds-input-has-icon"
-	// 	// icon has class "slds-input__icon"
-	// 	// icon can be clicked (Simulate)
-	// });
 });
