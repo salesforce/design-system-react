@@ -129,6 +129,7 @@ const InlineEdit = React.createClass({
 			props.iconName = 'close';
 			props.iconPosition = 'right';
 			props.onIconClick = this.endEditMode;
+			props.onIconMouseDown = this.handleIconMouseDown;
 		} else {
 			props.onClick = this.triggerEditMode;
 		}
@@ -138,7 +139,7 @@ const InlineEdit = React.createClass({
 				{...props}
 				disabled={disabled}
 				inlineEditTrigger={inlineEditTrigger}
-				onBlur={this.saveEdits}
+				onBlur={this.handleBlur}
 				onChange={this.handleChange}
 				onKeyDown={this.handleKeyDown}
 				readOnly={!this.state.isEditing}
@@ -181,10 +182,21 @@ const InlineEdit = React.createClass({
 	},
 
 	endEditMode () {
+		if (this.willSave) {
+			clearTimeout(this.willSave);
+			delete this.willSave;
+		}
+
 		this.setState({
 			isEditing: false,
 			value: null
 		});
+	},
+
+	handleBlur () {
+		if (!this.willSave) {
+			this.willSave = setTimeout(this.saveEdits, 100);
+		}
 	},
 
 	handleChange (event) {
