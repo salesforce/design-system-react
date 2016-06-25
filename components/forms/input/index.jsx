@@ -33,6 +33,11 @@ import InputIcon from '../../icon/input-icon';
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 
+// ### isFunction
+import isFunction from 'lodash.isfunction';
+
+import Button from '../../button';
+
 // Remove the need for `React.PropTypes`
 const { PropTypes } = React;
 
@@ -171,6 +176,24 @@ const Input = React.createClass({
 		};
 	},
 
+	getIconRender (position) {
+		if (position !== this.props.iconPosition) return '';
+
+		return isFunction(this.props.onIconClick)
+		? (<Button
+			iconVariant="small"
+			variant="base"
+			className="slds-input__icon slds-button--icon"
+			iconName={this.props.iconName}
+			iconCategory={this.props.iconCategory}
+			onClick={this.props.onIconClick}
+		/>)
+		: (<InputIcon
+			name={this.props.iconName}
+			category={this.props.iconCategory}
+		/>);
+	},
+
 	// ### Render
 	render () {
 		const {
@@ -188,7 +211,7 @@ const Input = React.createClass({
 			label,
 			onChange,
 			onClick,
-			onIconClick,
+			onIconClick, // eslint-disable-line no-unused-vars
 			placeholder,
 			readOnly,
 			required,
@@ -234,11 +257,8 @@ const Input = React.createClass({
 						'slds-has-divider--bottom': readOnly && !inlineEditTrigger
 					})}
 				>
-					{hasIcon && <InputIcon
-						name={iconName}
-						category={iconCategory}
-						onClick={onIconClick}
-					/>}
+					{hasIcon && this.getIconRender('left')}
+
 					{!readOnly && <input
 						{...props}
 						aria-controls={ariaControls}
@@ -253,6 +273,8 @@ const Input = React.createClass({
 						type={type}
 						value={value}
 					/>}
+					{hasIcon && this.getIconRender('right')}
+
 					{readOnly && <span className="slds-form-element__static" onClick={onClick}>
 						{value}
 						{inlineEditTrigger}

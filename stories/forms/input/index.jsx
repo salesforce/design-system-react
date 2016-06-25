@@ -20,13 +20,34 @@ storiesOf(FORMS_INPUT, module)
 			placeholder="Placeholder Text"
 		/>
 	))
-	.add('Input with Clickable Icon', () => (
+	.add('Input with Left Clickable Icon', () => (
+		<Input
+			id="unique-id-123"
+			label="Input Label"
+			iconName="search"
+			iconCategory="utility"
+			iconPosition="left"
+			onIconClick={iconClicked('Search icon clicked')}
+			placeholder="Placeholder Text"
+		/>
+	))
+	.add('Input with Right Clickable Icon', () => (
 		<Input
 			label="Input Label"
 			iconName="close"
 			iconCategory="utility"
 			iconPosition="right"
 			onIconClick={iconClicked('Clear icon clicked')}
+			placeholder="Placeholder Text"
+		/>
+	))
+	.add('Input with Non-Clickable Icon', () => (
+		<Input
+			id="unique-id-123"
+			label="Input Label"
+			iconName="search"
+			iconCategory="utility"
+			iconPosition="left"
 			placeholder="Placeholder Text"
 		/>
 	))
