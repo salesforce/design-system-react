@@ -255,7 +255,7 @@ module.exports = React.createClass({
             <input
               name='date'
               ref='date'
-              className='slds-input'
+              className='slds-input slds-button--neutral slds-text-align--left'
               type='text'
               placeholder={this.props.placeholder}
               value={this.state.strValue}
@@ -263,7 +263,9 @@ module.exports = React.createClass({
               onChange={this.handleInputChange}
               onClick={this.handleClick}
               onBlur={this.handleBlur}
-              onFocus={this.handleFocus}/>
+              onFocus={this.handleFocus}
+              style={{cursor: 'pointer'}}
+            />
           </div>
         </div>
         {this.props.modal?this.getModalPopover():this.getSimplePopover()}
