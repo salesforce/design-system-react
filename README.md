@@ -42,7 +42,7 @@ Because this project is not open-sourced, we cannot publish it to npm. Therefore
 ```
 # package.json
 
-"design-system-react": "git+ssh://git@github.com:salesforce-ux/design-system-react.git#v0.0.32",
+"design-system-react": "git+ssh://git@github.com:salesforce-ux/design-system-react.git#v0.0.33",
 ```
 
 Then, in your React code, import each Lightning Design System component you need.
