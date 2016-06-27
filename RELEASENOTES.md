@@ -2,6 +2,16 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.0.33
+
+**MAJOR CHANGES**
+- Added new InlineEdit component
+- Clickable Input icons now use Button
+
+**OTHER**
+- Remove unused Popover class on Picklist
+- Additional code cleanup
+
 ## Release 0.0.32
 - Added containerClassName prop to Spinner
 

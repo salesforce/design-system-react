@@ -1,6 +1,6 @@
 {
   "name": "design-system-react",
-  "version": "0.0.32",
+  "version": "0.0.33",
   "description": "Salesforce Lightning Design System React components",
   "license": "BSD-3-Clause",
   "scripts": {
@@ -170,6 +170,11 @@
       "component": "icon",
       "display-name": "Icons",
       "SLDS-component-path": "/components/icons"
+    },
+    {
+      "component": "forms/input/inline",
+      "display-name": "Inline Edit Inputs",
+      "SLDS-component-path": "/components/forms#flavor-input"
     },
     {
       "component": "forms/input",
