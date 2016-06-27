@@ -1,6 +1,6 @@
 {
   "name": "design-system-react",
-  "version": "0.0.33",
+  "version": "0.0.34",
   "description": "Salesforce Lightning Design System React components",
   "license": "BSD-3-Clause",
   "scripts": {

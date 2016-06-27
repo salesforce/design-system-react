@@ -10,11 +10,7 @@ const getTimepicker = props => (
 	<Timepicker {...props} />
 );
 
-const handleDateChange = (date, inputStr) => {
-  console.log('>>> onDateChange ', date, ' inputStr: ',inputStr);
-}
-
 storiesOf(TIME_PICKER, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('Base', () => getTimepicker({ stepInMinutes: 30, onDateChange: handleDateChange }))
+	.add('Base', () => getTimepicker({ stepInMinutes: 30, onDateChange: action('onDateChange') }))
 

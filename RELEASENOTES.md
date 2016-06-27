@@ -2,6 +2,11 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.0.34
+**BREAKING CHANGES**
+- Flippable prop on Timepicker and Datepicker used to default to true. Now, it defaults to false and you must explicitly add it.
+
+
 ## Release 0.0.33
 
 **MAJOR CHANGES**

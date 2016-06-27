@@ -10,11 +10,7 @@ const getDatepicker = props => (
 	<Datepicker {...props} />
 );
 
-const handleDateChange = (date) => {
-  console.log('>>> onDateChange ', date);
-}
-
 storiesOf(DATE_PICKER, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('Base', () => getDatepicker({ onDateChange: handleDateChange }))
+	.add('Base', () => getDatepicker({ onDateChange: action('onDateChange') }))
 
