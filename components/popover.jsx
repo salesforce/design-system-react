@@ -122,7 +122,7 @@ module.exports = React.createClass( {
     }
 
     return (
-      <div className={'Popover ignore-react-onclickoutside '+this.props.className}
+      <div className={'ignore-react-onclickoutside '+this.props.className}
         style={style}
         onKeyDown={this.handleKeyDown}
         onMouseEnter={this.handleMouseEnter}
