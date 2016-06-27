@@ -172,6 +172,11 @@
       "SLDS-component-path": "/components/icons"
     },
     {
+      "component": "forms/input/inline",
+      "display-name": "Inline Edit Inputs",
+      "SLDS-component-path": "/components/forms#flavor-input"
+    },
+    {
       "component": "forms/input",
       "display-name": "Inputs",
       "SLDS-component-path": "/components/forms#flavor-input"
