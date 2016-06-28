@@ -263,7 +263,7 @@ class Lookup extends React.Component {
 		this.setState({
 			isOpen: false,
 			focusIndex: null,
-			currentFocus: null,
+			currentFocus: null
 		});
 	}
 
@@ -278,7 +278,7 @@ class Lookup extends React.Component {
 		this.setState({
 			isOpen: false,
 			focusIndex: null,
-			currentFocus: null,
+			currentFocus: null
 		});
 	}
 
@@ -487,6 +487,7 @@ class Lookup extends React.Component {
 	getClassName(){
 		return cx(this.props.className, 'slds-lookup', {
 			'slds-has-selection': this.isSelected(),
+			'slds-is-open': this.state.isOpen
 		});
 	}
 
