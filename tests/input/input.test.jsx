@@ -152,12 +152,20 @@ describe('SLDS INPUT **************************************************', () => 
 		let component;
 		let elementControl;
 		let leftButton;
+		let iconAssistiveText;
 
 		const clickCallback = sinon.spy();
 
 		beforeEach(() => {
-			component = getInput({ iconName: 'search', iconCategory: 'utility', iconPosition: 'left', onIconClick: clickCallback });
+			component = getInput({
+				iconName: 'search',
+				iconCategory: 'utility',
+				iconPosition: 'left',
+				iconAssistiveText: 'Passed assistive text to icon',
+				onIconClick: clickCallback
+			});
 			leftButton = findRenderedDOMComponentWithTag(component, 'button');
+			iconAssistiveText = findRenderedDOMComponentWithClass(component, 'slds-assistive-text');
 			elementControl = findRenderedDOMComponentWithClass(component, 'slds-form-element__control');
 		});
 
@@ -167,6 +175,10 @@ describe('SLDS INPUT **************************************************', () => 
 
 		it('element control has class "slds-input-has-icon"', () => {
 			expect(elementControl.className).to.include('slds-input-has-icon');
+		});
+
+		it('passes "assitiveText" down to icon', () => {
+			expect(iconAssistiveText.textContent).to.equal('Passed assistive text to icon');
 		});
 
 		it('icon renders button BEFORE input in DOM', () => {

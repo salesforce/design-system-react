@@ -107,6 +107,10 @@ const Input = React.createClass({
 			'right'
 		]),
 		/**
+		 * Set the assistive text for a clickable icon
+		 */
+		iconAssistiveText: PropTypes.string,
+		/**
 		 * Every input must have a unique ID in order to support keyboard navigation and ARIA support.
 		 */
 		id: PropTypes.string,
@@ -182,8 +186,9 @@ const Input = React.createClass({
 		return isFunction(this.props.onIconClick)
 		? (<Button
 			iconVariant="small"
-			variant="base"
+			variant="icon"
 			className="slds-input__icon slds-button--icon"
+			assistiveText={this.props.iconAssistiveText}
 			iconName={this.props.iconName}
 			iconCategory={this.props.iconCategory}
 			onClick={this.props.onIconClick}
