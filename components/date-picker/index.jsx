@@ -21,6 +21,10 @@ const displayName = 'Datepicker';
 const propTypes = {
   abbrWeekDayLabels: React.PropTypes.array,
   /**
+   * If true, allows popover to appear above input field based on available space with scroll position.
+   */
+  flippable: React.PropTypes.bool,
+  /**
    * Date formatting function
    */
   formatter: React.PropTypes.func,
@@ -142,7 +146,7 @@ module.exports = React.createClass({
   popover() {
     if(this.state && this.state.isOpen){
       const date = this.state.strValue?this.parseDate(this.state.strValue):this.state.value;
-      return <Popover className='slds-dropdown' targetElement={this.refs.date} onClose={this.handleClose}>
+      return <Popover className='slds-dropdown' flippable={this.props.flippable} targetElement={this.refs.date} onClose={this.handleClose}>
         <DatePicker
           onChange={this.handleChange}
           selected={this.state.selected}
@@ -207,7 +211,7 @@ module.exports = React.createClass({
             <input
               id={this.inputRefName()}
               ref='date'
-              className='slds-input'
+              className='slds-input slds-button--neutral slds-text-align--left'
               type='text'
               placeholder={this.props.placeholder}
               value={this.state.strValue}
@@ -215,7 +219,9 @@ module.exports = React.createClass({
               onChange={this.handleInputChange}
               onClick={this.handleClick}
               onBlur={this.handleBlur}
-              onFocus={this.handleFocus}/>
+              onFocus={this.handleFocus}
+              style={{cursor: 'pointer'}}
+            />
           </div>
         </div>
         {this.popover()}
