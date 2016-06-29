@@ -43,7 +43,7 @@ const ContextBarLink = (props) => {
 	function handleClick (event) {
 		if (isFunction(onClick)) {
 			EventUtil.trap(event);
-			onClick(event);
+			onClick(event, { href: this.props.href });
 		}
 	}
 
@@ -79,7 +79,7 @@ ContextBarLink.propTypes = {
 	/**
 	 * Function triggered when link is clicked. If set, `href` will be ignored.
 	 */
-	onClick: PropTypes.string
+	onClick: PropTypes.func
 };
 
 module.exports = ContextBarLink;
