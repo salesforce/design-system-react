@@ -22,6 +22,7 @@ const DemoLookup = React.createClass({
 		return (
 			<Lookup
 				{...this.props}
+				modal={false}
 				onChange={action('change')}
 				onSelect={this.handleSelect}
 				options={this.state.options}
