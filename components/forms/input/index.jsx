@@ -170,14 +170,19 @@ const Input = React.createClass({
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(FORMS_INPUT, this.props);
+
+		this.generatedId = shortid.generate();
 	},
 
 	getDefaultProps () {
 		return {
-			id: shortid.generate(),
 			iconPosition: 'left',
 			type: 'text'
 		};
+	},
+
+	getId () {
+		return this.props.id || this.generatedId;
 	},
 
 	getIconRender (position) {
@@ -211,7 +216,6 @@ const Input = React.createClass({
 			iconCategory,
 			iconName,
 			iconPosition,
-			id,
 			inlineEditTrigger, // eslint-disable-line react/prop-types
 			label,
 			onChange,
@@ -248,7 +252,8 @@ const Input = React.createClass({
 						{labelText}
 					</span>
 					: <label
-						className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText && !label })} htmlFor={id}
+						className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText && !label })}
+						htmlFor={this.getId()}
 					>
 						{required && <abbr className="slds-required" title="required">*</abbr>}
 						{labelText}
@@ -270,7 +275,7 @@ const Input = React.createClass({
 						aria-owns={ariaOwns}
 						className="slds-input"
 						disabled={disabled}
-						id={id}
+						id={this.getId()}
 						onChange={onChange}
 						onClick={onClick}
 						placeholder={placeholder}
