@@ -167,7 +167,7 @@ const Input = React.createClass({
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(FORMS_INPUT, this.props);
 
-		this.generatedId = this.props.id || shortid.generate();
+		this.generatedId = shortid.generate();
 	},
 
 	getDefaultProps () {
@@ -178,7 +178,7 @@ const Input = React.createClass({
 	},
 
 	getId () {
-		return this.generatedId;
+		return this.props.id || this.generatedId;
 	},
 
 	getIconRender (position) {
