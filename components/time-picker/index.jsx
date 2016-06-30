@@ -21,6 +21,10 @@ import {KEYS,EventUtil} from '../../utilities';
 const displayName = 'Timepicker';
 const propTypes = {
   constrainToScrollParent: React.PropTypes.bool,
+  /**
+   * If true, allows dropdown to appear above input field based on available space with scroll position.
+   */
+  flippable: React.PropTypes.bool,
 
   /**
    * Time formatting function
@@ -200,12 +204,12 @@ module.exports = React.createClass({
     return (
       !this.props.disabled && this.state.isOpen?
         <Popover
-          className="slds-dropdown slds-dropdown--left "
+          className="slds-dropdown slds-dropdown--left"
           closeOnTabKey={true}
           constrainToScrollParent={this.props.constrainToScrollParent}
           inheritTargetWidth={this.props.inheritTargetWidth}
           dropClass="slds-picklist"
-          flippable={true}
+          flippable={this.props.flippable}
           onClose={this.handleCancel.bind(this)}
           targetElement={this.refs.triggerbutton}>
           {this.getPopoverContent()}
@@ -255,7 +259,7 @@ module.exports = React.createClass({
             <input
               name='date'
               ref='date'
-              className='slds-input'
+              className='slds-input slds-button--neutral slds-text-align--left'
               type='text'
               placeholder={this.props.placeholder}
               value={this.state.strValue}
@@ -263,7 +267,9 @@ module.exports = React.createClass({
               onChange={this.handleInputChange}
               onClick={this.handleClick}
               onBlur={this.handleBlur}
-              onFocus={this.handleFocus}/>
+              onFocus={this.handleFocus}
+              style={{cursor: 'pointer'}}
+            />
           </div>
         </div>
         {this.props.modal?this.getModalPopover():this.getSimplePopover()}

@@ -10,8 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import Popover from '../popover';
 
-
-const classNames = require("classnames");
+import classNames from 'classnames';
 
 const getClassName = (props) => {
   return classNames(props.className, "slds-popover", {

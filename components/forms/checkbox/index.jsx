@@ -19,8 +19,10 @@ import React from 'react';
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
-// ### uniqueId
-import uniqueId from 'lodash.uniqueid';
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
 
 // ### Event Helpers
 import { KEYS, EventUtil } from '../../../utilities';
@@ -68,6 +70,9 @@ const Checkbox = React.createClass({
 		 * Message to display when the Checkbox is in an error state. When this is present, also visually highlights the component as in error.
 		 */
 		errorText: React.PropTypes.string,
+		/**
+		 * A unique ID is needed in order to support keyboard navigation and ARIA support.
+		 */
 		id: PropTypes.string,
 		/**
 		 * An optional label for the Checkbox.
@@ -85,7 +90,7 @@ const Checkbox = React.createClass({
 
 	getDefaultProps () {
 		return {
-			id: uniqueId(`${FORMS_CHECKBOX}-`)
+			id: shortid.generate()
 		};
 	},
 

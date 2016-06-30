@@ -2,6 +2,36 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.0.34
+**BREAKING CHANGES**
+- Flippable prop on Timepicker and Datepicker used to default to true. Now, it defaults to false and you must explicitly add it.
+
+
+## Release 0.0.33
+
+**MAJOR CHANGES**
+- Added new InlineEdit component
+- Clickable Input icons now use Button
+
+**OTHER**
+- Remove unused Popover class on Picklist
+- Additional code cleanup
+
+## Release 0.0.32
+- Added containerClassName prop to Spinner
+
+## Release 0.0.31
+
+**MAJOR CHANGES**
+- Added new Spinner component
+- Updated the ContextBar component
+- Added a highlighting utility
+- Added a custom cell type to DataTable using the highlighter
+
+**OTHER**
+- Remove isRequired for iconCategory in ButtonGroup
+- Additional bug fixes and code cleanup
+
 ## Release 0.0.29
 
 **MAJOR CHANGES**
