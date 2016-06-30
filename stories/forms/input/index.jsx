@@ -27,6 +27,7 @@ storiesOf(FORMS_INPUT, module)
 			iconName="search"
 			iconCategory="utility"
 			iconPosition="left"
+			iconAssistiveText="Search Icon"
 			onIconClick={iconClicked('Search icon clicked')}
 			placeholder="Placeholder Text"
 		/>
@@ -37,6 +38,7 @@ storiesOf(FORMS_INPUT, module)
 			iconName="close"
 			iconCategory="utility"
 			iconPosition="right"
+			iconAssistiveText="Clear Input Icon"
 			onIconClick={iconClicked('Clear icon clicked')}
 			placeholder="Placeholder Text"
 		/>
