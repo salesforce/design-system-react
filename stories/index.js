@@ -10,5 +10,6 @@ export default from './forms/input';
 export default from './forms/input/inline';
 export default from './icon';
 export default from './lookup';
+export default from './modal';
 export default from './spinner';
 export default from './time-picker';
