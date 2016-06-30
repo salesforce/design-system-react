@@ -142,7 +142,11 @@ const Branch = React.createClass({
 	},
 
 	componentDidMount () {
+		// This means that mounting and rendering does not mean that tree data is
+		// loaded. To determine if data is loaded, add a callback to your Promise.
+		// when it is resolved.
 		if (isFunction(this.props.getNodes)) {
+			// we may want to have a `getNodesResolved` to allow an async callback even when not passing in a Promise.
 			Promise.resolve(this.props.getNodes(this.props.node)).then((nodes) => this.setState({ nodes }));
 		}
 	},
