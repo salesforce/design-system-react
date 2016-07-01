@@ -2,6 +2,13 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.0.35
+**MAJOR CHANGES**
+- Reversed Flippable prop due to bug with Tether.js
+- Use Popover component in Datepicker
+- Add required and disabled props to Datepicker and Timepicker
+
+
 ## Release 0.0.34
 **BREAKING CHANGES**
 - Flippable prop on Timepicker and Datepicker used to default to true. Now, it defaults to false and you must explicitly add it.
