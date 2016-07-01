@@ -33,5 +33,6 @@ export const ICON_INPUT = 'SLDSIconInput';
 export const LOOKUP = 'SLDSLookup';
 export const MEDIA_OBJECT = 'SLDSMediaObject';
 export const MENU_DROPDOWN = 'SLDSMenuDropdown';
+export const MODAL = 'SLDSModal';
 export const SPINNER = 'SLDSSpinner';
 export const TIME_PICKER = 'SLDSTimepicker';
