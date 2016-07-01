@@ -40,7 +40,7 @@ const DemoLookup = React.createClass({
 
 storiesOf(LOOKUP, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('standard', () => <DemoLookup
+	.add('Standard', () => <DemoLookup
 		emptyMessage="No Files found"
 		hasError={false}
 		iconCategory="utility"
