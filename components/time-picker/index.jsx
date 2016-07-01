@@ -21,10 +21,7 @@ import {KEYS,EventUtil} from '../../utilities';
 const displayName = 'Timepicker';
 const propTypes = {
   constrainToScrollParent: React.PropTypes.bool,
-  /**
-   * If true, allows dropdown to appear above input field based on available space with scroll position.
-   */
-  flippable: React.PropTypes.bool,
+  disabled: React.PropTypes.bool,
 
   /**
    * Time formatting function
@@ -38,13 +35,16 @@ const propTypes = {
   parser: React.PropTypes.func,
 
   /**
-   * Date
+   * If true, adds asterisk next to input label to indicate it is a required field.
    */
-  value: React.PropTypes.instanceOf(Date),
-
+  required: React.PropTypes.bool,
   stepInMinutes: React.PropTypes.number,
 
   strValue: React.PropTypes.string,
+  /**
+   * Date
+   */
+  value: React.PropTypes.instanceOf(Date)
 
 
 
@@ -209,8 +209,8 @@ module.exports = React.createClass({
           constrainToScrollParent={this.props.constrainToScrollParent}
           inheritTargetWidth={this.props.inheritTargetWidth}
           dropClass="slds-picklist"
-          flippable={this.props.flippable}
-          onClose={this.handleCancel.bind(this)}
+          flippable={true}
+          onClose={this.handleCancel}
           targetElement={this.refs.triggerbutton}>
           {this.getPopoverContent()}
         </Popover>:null
@@ -248,10 +248,19 @@ module.exports = React.createClass({
     return <InputIcon name='clock' style={{pointerEvents: 'none'}} />;
   },
 
+  getLabel(){
+    const required = this.props.required ? <span style={{color:"red"}}>* </span> : null;
+    const inputLabel = this.props.label ? <label className="slds-form-element__label" htmlFor="date" style={{width: "100%"}}>{required}{this.props.label}</label> : null;
+    return inputLabel;
+  },
+
   render() {
+
+    const inputStyles = this.props.disabled ? {cursor: 'inherit'} : {cursor: 'pointer'};
+
     return (
       <div className='slds-form-element'>
-        <label className='slds-form-element__label' htmlFor='date'>{this.props.label}</label>
+        {this.getLabel()}
         <div className='slds-form-element__control'>
           <div className='slds-input-has-icon slds-input-has-icon--right'>
 
@@ -260,6 +269,7 @@ module.exports = React.createClass({
               name='date'
               ref='date'
               className='slds-input slds-button--neutral slds-text-align--left'
+              disabled={this.props.disabled}
               type='text'
               placeholder={this.props.placeholder}
               value={this.state.strValue}
@@ -268,7 +278,7 @@ module.exports = React.createClass({
               onClick={this.handleClick}
               onBlur={this.handleBlur}
               onFocus={this.handleFocus}
-              style={{cursor: 'pointer'}}
+              style={inputStyles}
             />
           </div>
         </div>

@@ -434,7 +434,7 @@ class Lookup extends React.Component {
 		let targetElem = this.refs[this.inputRefName()];
 		if(this.state.isOpen){
 			return <Popover
-			className='slds-lookup__menu'
+			className='slds-lookup__menu slds-show'
 			inheritTargetWidth={true}
 			closeOnTabKey={true}
 			onClose={this.handleCancel.bind(this)}
