@@ -7,6 +7,7 @@ export default from './context-bar';
 export default from './data-table';
 export default from './forms/input';
 export default from './forms/input/inline';
+export default from './forms/input/search';
 export default from './icon';
 export default from './lookup';
 export default from './spinner';
