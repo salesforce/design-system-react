@@ -38,3 +38,4 @@ export const MENU_DROPDOWN = 'SLDSMenuDropdown';
 export const MODAL = 'SLDSModal';
 export const SPINNER = 'SLDSSpinner';
 export const TIME_PICKER = 'SLDSTimepicker';
+export const TOOL = 'SLDSTool';
