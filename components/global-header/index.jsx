@@ -43,6 +43,7 @@ const GlobalHeader = React.createClass({
 
 	propTypes: {
 		children: PropTypes.node,
+		logoSrc: PropTypes.string,
 		onSkipToContent: PropTypes.func.isRequired,
 		onSkipToNav: PropTypes.func.isRequired,
 		skipToContentAssistiveText: PropTypes.string,
@@ -51,6 +52,7 @@ const GlobalHeader = React.createClass({
 
 	getDefaultProps () {
 		return {
+			logoSrc: '/assets/images/logo.svg',
 			skipToNavAssistiveText: 'Skip to Navigation',
 			skipToContentAssistiveText: 'Skip to Main Content'
 		};
@@ -78,7 +80,7 @@ const GlobalHeader = React.createClass({
 				<div className="slds-global-header slds-grid slds-grid--align-spread">
 					<div className="slds-global-header__item">
 						<div className="slds-global-header__logo">
-							<img src="/assets/images/logo.svg" alt="" />
+							<img src={this.props.logoSrc} alt="" />
 						</div>
 					</div>
 					{search}

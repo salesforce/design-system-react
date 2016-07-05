@@ -16,8 +16,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React from 'react';
 
-// ### GlobalHeaderDropdown
-import GlobalHeaderDropdown from './dropdown';
+// ### MenuDropdown
+import MenuDropdown from '../menu-dropdown';
 
 // ## Constants
 import { GLOBAL_HEADER_PROFILE } from '../../utilities/constants';
@@ -26,6 +26,8 @@ import { GLOBAL_HEADER_PROFILE } from '../../utilities/constants';
  * A helper component that renders a MenuDropdown for the user profile.
  */
 const GlobalHeaderProfile = (props) => {
+	const align = props.align || 'right';
+
 	// Temporary default profile until images are available
 	const tempProfileIcon = {};
 	if (!props.imgSrc) {
@@ -35,7 +37,14 @@ const GlobalHeaderProfile = (props) => {
 
 	return (
 		<li className="slds-dropdown-trigger slds-dropdown-trigger--click slds-m-left--x-small">
-			<GlobalHeaderDropdown {...tempProfileIcon} {...props} />
+			<MenuDropdown
+				align={align}
+				buttonVariant="icon"
+				className={`slds-nubbin--top-${align}`}
+				iconVariant="bare"
+				{...tempProfileIcon}
+				{...props}
+			/>
 		</li>
 	);
 };
@@ -43,6 +52,7 @@ const GlobalHeaderProfile = (props) => {
 GlobalHeaderProfile.displayName = GLOBAL_HEADER_PROFILE;
 
 GlobalHeaderProfile.propTypes = {
+	align: React.PropTypes.oneOf(['right', 'left']),
 	imgSrc: React.PropTypes.string
 };
 
