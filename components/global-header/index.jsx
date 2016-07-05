@@ -70,11 +70,7 @@ const GlobalHeader = React.createClass({
 							<img src="/assets/images/logo.svg" alt="" />
 						</div>
 					</div>
-					{search &&
-						<div className="slds-global-header__item slds-global-header__item--search">
-							{search}
-						</div>
-					}
+					{search}
 					<ul className="slds-global-header__item slds-grid slds-grid--vertical-align-center">
 						{tools}
 						{profile}
