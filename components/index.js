@@ -84,7 +84,7 @@ export SLDSMenuDropdown from './menu-dropdown';
 export Dropdown from './menu-dropdown';
 
 export SLDSMenuPicklist from './menu-picklist';
-export SLDSMenuPicklist from './menu-picklist';
+export Picklist from './menu-picklist';
 
 export SLDSModal from './modal';
 export Modal from './modal';
