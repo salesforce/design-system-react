@@ -46,6 +46,9 @@ const GlobalHeaderProfile = (props) => {
 GlobalHeaderProfile.displayName = GLOBAL_HEADER_PROFILE;
 
 GlobalHeaderProfile.propTypes = {
+	/**
+	 * An image to display for the profile instead of a standard icon.
+	 */
 	imgSrc: React.PropTypes.string
 };
 

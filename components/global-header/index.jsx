@@ -45,11 +45,29 @@ const GlobalHeader = React.createClass({
 	displayName: GLOBAL_HEADER,
 
 	propTypes: {
+		/**
+		 * See the component description, this accepts some combination of `SLDSGlobalHeaderSearch`, `SLDSGlobalHeaderButton`, `SLDSGlobalHeaderDropdown`, and `SLDSGlobalHeaderProfile` components.
+		 */
 		children: PropTypes.node,
+		/**
+		 * The Salesforce logo to display in the header.
+		 */
 		logoSrc: PropTypes.string,
+		/**
+		 * Required for accessibility. Should jump the user to the primary content area.
+		 */
 		onSkipToContent: PropTypes.func.isRequired,
+		/**
+		 * Required for accessibility. Should jump the user to the primary navigation.
+		 */
 		onSkipToNav: PropTypes.func.isRequired,
+		/**
+		 * The localized text that will be read back for the "Skip to Main Content" accessibility link.
+		 */
 		skipToContentAssistiveText: PropTypes.string,
+		/**
+		 * The localized text that will be read back for the "Skip to Navigation" accessibility link.
+		 */
 		skipToNavAssistiveText: PropTypes.string
 	},
 
