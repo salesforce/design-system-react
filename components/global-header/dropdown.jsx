@@ -16,21 +16,38 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React from 'react';
 
+// ### classNames
+import classNames from 'classnames';
+
 // ### MenuDropdown
 import MenuDropdown from '../menu-dropdown';
 
 // ## Constants
 import { GLOBAL_HEADER_TOOL } from '../../utilities/constants';
 
+// Removes the need for `PropTypes`.
+const { PropTypes } = React;
+
 /**
  * A helper component that renders a MenuDropdown in the tools area of the Global Header. Currently defaults to a bare icon, but this can be overriden.
  */
 const GlobalHeaderDropdown = (props) => {
-	const align = props.align || 'right';
+	const {
+		align,
+		className,
+		dropdownClassName,
+		...rest
+	} = props;
 
 	return (
-		<li className="slds-dropdown-trigger slds-dropdown-trigger--click">
-			<MenuDropdown align={align} buttonVariant="icon" className={`slds-nubbin--top-${align}`} iconVariant="bare" {...props} />
+		<li className={classNames('slds-dropdown-trigger slds-dropdown-trigger--click', className)}>
+			<MenuDropdown
+				align={align}
+				buttonVariant="icon"
+				className={classNames(`slds-nubbin--top-${align}`, dropdownClassName)}
+				iconVariant="bare"
+				{...rest}
+			/>
 		</li>
 	);
 };
@@ -38,7 +55,22 @@ const GlobalHeaderDropdown = (props) => {
 GlobalHeaderDropdown.displayName = GLOBAL_HEADER_TOOL;
 
 GlobalHeaderDropdown.propTypes = {
-	align: React.PropTypes.oneOf(['right', 'left'])
+	/**
+	 * The side of the triggering element that the menu should align itself with.
+	 */
+	align: PropTypes.oneOf(['right', 'left']),
+	/**
+	 * Extra classnames to apply to the `<li />`.
+	 */
+	className: PropTypes.string,
+	/**
+	 * Extra classnames to apply to the dropdown.
+	 */
+	dropdownClassName: PropTypes.string
+};
+
+GlobalHeaderDropdown.defaultProps = {
+	align: 'right'
 };
 
 export default GlobalHeaderDropdown;
