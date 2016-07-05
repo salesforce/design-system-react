@@ -18,6 +18,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React from 'react';
 
+// ### Event Helpers
+import { EventUtil } from '../../utilities';
+
 // ## Constants
 import { GLOBAL_HEADER, GLOBAL_HEADER_PROFILE, GLOBAL_HEADER_SEARCH, GLOBAL_HEADER_TOOL } from '../../utilities/constants';
 
@@ -76,7 +79,7 @@ const GlobalHeader = React.createClass({
 
 		/* eslint-disable max-len */
 		return (
-			<header className="slds-global-header_container"><a href="#" className="slds-assistive-text slds-assistive-text--focus">{this.props.skipToNavAssistiveText}</a><a href="#" className="slds-assistive-text slds-assistive-text--focus">{this.props.skipToContentAssistiveText}</a>
+			<header className="slds-global-header_container"><a href="#" className="slds-assistive-text slds-assistive-text--focus" onClick={this.handleSkipToNav}>{this.props.skipToNavAssistiveText}</a><a href="#" className="slds-assistive-text slds-assistive-text--focus" onClick={this.handleSkipToContent}>{this.props.skipToContentAssistiveText}</a>
 				<div className="slds-global-header slds-grid slds-grid--align-spread">
 					<div className="slds-global-header__item">
 						<div className="slds-global-header__logo">
@@ -92,6 +95,16 @@ const GlobalHeader = React.createClass({
 			</header>
 		);
 		/* eslint-enable max-len */
+	},
+
+	handleSkipToContent (e) {
+		EventUtil.trap(e);
+		this.props.onSkipToContent(e);
+	},
+
+	handleSkipToNav (e) {
+		EventUtil.trap(e);
+		this.props.onSkipToNav(e);
 	}
 });
 
