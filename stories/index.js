@@ -6,6 +6,7 @@ export default from './card';
 export default from './context-bar';
 export default from './data-table';
 export default from './date-picker';
+export default from './dropdown';
 export default from './forms/input';
 export default from './forms/input/inline';
 export default from './forms/input/search';
