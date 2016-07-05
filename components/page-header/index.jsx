@@ -198,7 +198,7 @@ class PageHeader extends Component {
         );
       } else {
         if (type === 'string') {
-          return <p className="slds-text-heading--label">{label}</p>;
+          return <p className="slds-text-title--caps">{label}</p>;
         } else {
           return label;
         }
