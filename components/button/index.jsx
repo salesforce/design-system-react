@@ -9,7 +9,7 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import ButtonIcon from '../icon/button-icon';
 import TooltipTrigger from '../popover-tooltip/trigger';
@@ -28,42 +28,63 @@ const propTypes = {
 	 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
 	 * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
 	 */
-	assistiveText: React.PropTypes.string,
-	disabled: React.PropTypes.bool,
+	assistiveText: PropTypes.string,
 	/**
-	 * Please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#hint">Lightning Design System Buttons > Hint</a>.
+	 * CSS classes to be added to button.
 	 */
-	hint: React.PropTypes.bool,
+	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	/**
+	 * Disables the button and adds disabled styling.
+	 */
+	disabled: PropTypes.bool,
+	/**
+	 * Associates an icon button with another element on the page by changes the color of the SVG. Please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#hint">Lightning Design System Buttons > Hint</a>.
+	 */
+	hint: PropTypes.bool,
+	/**
+	 * Name of the icon category. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon categories.
+	 */
+	iconCategory: PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
 	/**
 	 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
 	 */
-	iconName: React.PropTypes.string,
-
-	iconCategory: React.PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
+	iconName: PropTypes.string,
 	/**
 	 * If omitted, icon position is centered.
 	 */
-	iconPosition: React.PropTypes.oneOf(['left', 'right']),
-	iconSize: React.PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
+	iconPosition: PropTypes.oneOf(['left', 'right']),
+	/**
+	 * Determines the size of the icon.
+	 */
+	iconSize: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
 	/**
 	 * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
 	 */
-	iconVariant: React.PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'small', 'more']),
-	id: React.PropTypes.string,
+	iconVariant: PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'small', 'more']),
+	/**
+	 * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
+	 */
+	id: PropTypes.string,
 	/**
 	 * Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText</code> prop.
 	 */
-	label: React.PropTypes.string,
-	onClick: React.PropTypes.func,
+	label: PropTypes.string,
+	/**
+	 * Triggered when the button is clicked.
+	 */
+	onClick: PropTypes.func,
 	/**
 	 * If true, button scales to 100% width on small form factors.
 	 */
-	responsive: React.PropTypes.bool,
+	responsive: PropTypes.bool,
 	/**
 	 * Write <code>"-1"</code> if you don't want the user to tab to the button.
 	 */
-	tabIndex: React.PropTypes.string,
-	tooltip: React.PropTypes.node,
+	tabIndex: PropTypes.string,
+	/**
+	 * It creates a tooltip with the content of the `node` provided.
+	 */
+	tooltip: PropTypes.node,
 	/**
 	 * Use <code>icon-inverse</code> for white icons.
 	 */
@@ -89,6 +110,7 @@ class Button extends TooltipTrigger {
 	constructor (props) {
 		super(props);
 		this.state = { active: false };
+		this.handleClick = this.handleClick.bind(this);
 	}
 
 	componentDidMount () {
@@ -118,30 +140,29 @@ class Button extends TooltipTrigger {
 	}
 
 	renderIcon (name) {
+		let buttonIcon = null;
 		if (this.props.iconName) {
 			let iconSize = this.props.iconSize === '' ? null : this.props.iconSize;
-
-			return (
-				<ButtonIcon
-					hint={this.props.hint}
-					name={name}
-					category={this.props.iconCategory}
-					position={this.props.iconPosition}
-					size={iconSize}
-				/>
-			);
+			buttonIcon = (<ButtonIcon
+				hint={this.props.hint}
+				name={name}
+				category={this.props.iconCategory}
+				position={this.props.iconPosition}
+				size={iconSize}
+			/>);
 		}
+		return buttonIcon;
 	}
 
 	renderIconMore () {
+		let buttonIcon = null;
 		if (this.props.iconVariant === 'more') {
-			return (
-				<ButtonIcon
-					name="down"
-					size="x-small"
-				/>
-			);
+			buttonIcon = (<ButtonIcon
+				name="down"
+				size="x-small"
+			/>);
 		}
+		return buttonIcon;
 	}
 
 	renderLabel () {
@@ -156,7 +177,11 @@ class Button extends TooltipTrigger {
 		const props = omit(this.props, ['className', 'label', 'onClick']);
 
 		return (
-			<button className={this.getClassName()} {...props} onClick={this.handleClick.bind(this)}>
+			<button
+				className={this.getClassName()}
+				{...props}
+				onClick={this.handleClick}
+			>
 				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
 
 				{this.renderIcon(this.props.iconName)}
