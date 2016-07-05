@@ -31,6 +31,7 @@ const GlobalHeaderProfile = (props) => {
 	if (!props.imgSrc) {
 		tempProfileIcon.iconCategory = 'utility';
 		tempProfileIcon.iconName = 'user';
+		tempProfileIcon.iconSize = 'large';
 	}
 
 	return (
