@@ -8,7 +8,7 @@ const iconClicked = action;
 
 storiesOf(FORMS_INPUT, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('Standard Input', () => (
+	.add('Standard', () => (
 		<Input
 			label="Input Label"
 			placeholder="Placeholder Text"
@@ -20,7 +20,7 @@ storiesOf(FORMS_INPUT, module)
 			placeholder="Placeholder Text"
 		/>
 	))
-	.add('Input with Left Clickable Icon', () => (
+	.add('w/ Left Clickable Icon', () => (
 		<Input
 			id="unique-id-123"
 			label="Input Label"
@@ -32,7 +32,7 @@ storiesOf(FORMS_INPUT, module)
 			placeholder="Placeholder Text"
 		/>
 	))
-	.add('Input with Right Clickable Icon', () => (
+	.add('w/ Right Clickable Icon', () => (
 		<Input
 			label="Input Label"
 			iconName="close"
@@ -43,7 +43,7 @@ storiesOf(FORMS_INPUT, module)
 			placeholder="Placeholder Text"
 		/>
 	))
-	.add('Input with Non-Clickable Icon', () => (
+	.add('w/ Non-Clickable Icon', () => (
 		<Input
 			id="unique-id-123"
 			label="Input Label"
@@ -53,7 +53,7 @@ storiesOf(FORMS_INPUT, module)
 			placeholder="Placeholder Text"
 		/>
 	))
-	.add('Read Only Input', () => (
+	.add('Read Only', () => (
 		<Input
 			label="Input Label"
 			readOnly
