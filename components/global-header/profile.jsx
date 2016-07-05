@@ -9,46 +9,41 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # Profile Button Component
-
-// When the time comes to swap this button for the image, you can literally put anything here as long
-// as _something_ fires the props.onClick to trigger the dropdown. Just re-write this to be a PNG that
-// is passed in (or something)
+// # Global Header Button Component
 
 // ## Dependencies
 
 // ### React
 import React from 'react';
 
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
-
-// ### Button
-import Button from '../button';
+// ### GlobalHeaderDropdown
+import GlobalHeaderDropdown from './dropdown';
 
 // ## Constants
-import { GLOBAL_HEADER_PROFILE_BUTTON } from '../../utilities/constants';
+import { GLOBAL_HEADER_PROFILE } from '../../utilities/constants';
 
 /**
- * Component description.
+ * A helper component that renders a MenuDropdown for the user profile.
  */
-const ProfileButton = (props) => (
-	<Button
-		id={`profile-trigger-${shortid.generate()}`}
-		{...props}
-		iconCategory="utility"
-		iconName="user"
-		iconStyle="icon-inverse"
-		iconSize="large"
-	/>
-);
+const GlobalHeaderProfile = (props) => {
+	// Temporary default profile until images are available
+	const tempProfileIcon = {};
+	if (!props.imgSrc) {
+		tempProfileIcon.iconCategory = 'utility';
+		tempProfileIcon.iconName = 'user';
+	}
 
-ProfileButton.displayName = GLOBAL_HEADER_PROFILE_BUTTON;
-
-ProfileButton.propTypes = {
-	onClick: React.PropTypes.func
+	return (
+		<li className="slds-dropdown-trigger slds-dropdown-trigger--click slds-m-left--x-small">
+			<GlobalHeaderDropdown {...tempProfileIcon} {...props} />
+		</li>
+	);
 };
 
-export default ProfileButton;
+GlobalHeaderProfile.displayName = GLOBAL_HEADER_PROFILE;
+
+GlobalHeaderProfile.propTypes = {
+	imgSrc: React.PropTypes.string
+};
+
+export default GlobalHeaderProfile;

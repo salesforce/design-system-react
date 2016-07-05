@@ -29,7 +29,7 @@ const GlobalHeaderDropdown = (props) => {
 	const align = props.align || 'right';
 
 	return (
-		<li>
+		<li className="slds-dropdown-trigger slds-dropdown-trigger--click">
 			<MenuDropdown align={align} buttonVariant="icon" className={`slds-nubbin--top-${align}`} iconVariant="bare" {...props} />
 		</li>
 	);

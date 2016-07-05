@@ -25,7 +25,18 @@ import { GLOBAL_HEADER, GLOBAL_HEADER_PROFILE, GLOBAL_HEADER_SEARCH, GLOBAL_HEAD
 const { PropTypes } = React;
 
 /**
- * Component description.
+ * The global header is the anchor for the Salesforce platform and spans all other parts of the UI. It accepts children to define the items displayed within.
+ *
+ * Example:
+ * ```
+ * <SLDSGlobalHeader>
+ *   <SLDSGlobalHeaderSearch />
+ *   <SLDSGlobalHeaderButton />
+ *   <SLDSGlobalHeaderDropdown />
+ *   <SLDSGlobalHeaderDropdown />
+ *   <SLDSGlobalHeaderProfile />
+ * </SLDSGlobalHeader>
+ * ```
  */
 const GlobalHeader = React.createClass({
 	displayName: GLOBAL_HEADER,
