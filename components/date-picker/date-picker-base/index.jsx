@@ -114,7 +114,7 @@ module.exports = React.createClass( {
 
     return (
       <div className='ignore-react-onclickoutside'>
-        <div className='slds-datepicker slds-dropdown slds-dropdown--left'
+        <div className='slds-datepicker'
           aria-hidden={false}
           data-selection='single'
           onMouseDown={this.handleBGClick}

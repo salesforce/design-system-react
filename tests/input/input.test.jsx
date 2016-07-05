@@ -43,7 +43,7 @@ describe('SLDS INPUT **************************************************', () => 
 		let label;
 
 		beforeEach(() => {
-			component = getInput({ label: 'Input Label' });
+			component = getInput({ label: 'Input Label', id: 'custom-id' });
 			wrapper = findRenderedDOMComponentWithClass(component, 'slds-form-element');
 			input = findRenderedDOMComponentWithTag(component, 'input');
 			label = findRenderedDOMComponentWithClass(component, 'slds-form-element__label');
@@ -67,6 +67,10 @@ describe('SLDS INPUT **************************************************', () => 
 
 		it('has an id', () => {
 			expect(input.getAttribute('id')).to.be.ok;
+		});
+
+		it('can pass custom id', () => {
+			expect(input.getAttribute('id')).to.equal('custom-id');
 		});
 
 		it('renders placeholder text', () => {
@@ -117,6 +121,28 @@ describe('SLDS INPUT **************************************************', () => 
 
 		it('input is a span and has class "slds-form-element__static"', () => {
 			expect(input.className).to.include('slds-form-element__static');
+		});
+	});
+
+	describe('Multiple Inputs', () => {
+		let component1;
+		let component2;
+		let input1;
+		let input2;
+
+		beforeEach(() => {
+			component1 = getInput({ label: 'Input One' });
+			component2 = getInput({ label: 'Input Two' });
+			input1 = findRenderedDOMComponentWithTag(component1, 'input');
+			input2 = findRenderedDOMComponentWithTag(component2, 'input');
+		});
+
+		afterEach(() => {
+			removeInput();
+		});
+
+		it('each input has unique generated id', () => {
+			expect(input1.getAttribute('id')).to.not.equal(input2.getAttribute('id'));
 		});
 	});
 

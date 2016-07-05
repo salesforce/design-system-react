@@ -11,7 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Popover from '../popover-tooltip';
+import Popover from '../popover';
 import DatePicker from './date-picker-base/index';
 import InputIcon from '../icon/input-icon';
 
@@ -20,10 +20,7 @@ import {KEYS,EventUtil} from '../../utilities';
 const displayName = 'Datepicker';
 const propTypes = {
   abbrWeekDayLabels: React.PropTypes.array,
-  /**
-   * If true, allows popover to appear above input field based on available space with scroll position.
-   */
-  flippable: React.PropTypes.bool,
+  disabled: React.PropTypes.bool,
   /**
    * Date formatting function
    */
@@ -143,11 +140,33 @@ module.exports = React.createClass({
     return new Date();
   },
 
-  popover() {
-    if(this.state && this.state.isOpen){
+  getSimplePopover() {
+    return (
+      !this.props.disabled && this.state.isOpen?
+        <div className='slds-dropdown slds-dropdown--left'>
+          {this.getDatePicker()}
+        </div>:null
+    );
+  },
+
+  getModalPopover() {
+    return (
+      !this.props.disabled && this.state.isOpen?
+        <Popover
+          closeOnTabKey={true}
+          constrainToScrollParent={this.props.constrainToScrollParent}
+          inheritTargetWidth={this.props.inheritTargetWidth}
+          flippable={true}
+          onClose={this.handleClose}
+          targetElement={this.refs.date}>
+          {this.getDatePicker()}
+        </Popover>:null
+    );
+  },
+
+  getDatePicker() {
       const date = this.state.strValue?this.parseDate(this.state.strValue):this.state.value;
-      return <Popover className='slds-dropdown' flippable={this.props.flippable} targetElement={this.refs.date} onClose={this.handleClose}>
-        <DatePicker
+      return <DatePicker
           onChange={this.handleChange}
           selected={this.state.selected}
           onClose={this.handleClose}
@@ -157,10 +176,7 @@ module.exports = React.createClass({
           todayLabel={this.props.todayLabel}
           relativeYearFrom={this.props.relativeYearFrom}
           relativeYearTo={this.props.relativeYearTo}
-          selectedDate={date?date:new Date()} />
-      </Popover>;
-    }
-    return <span />;
+          selectedDate={date?date:new Date()} />;
   },
 
   handleInputChange() {
@@ -198,12 +214,19 @@ module.exports = React.createClass({
     return `${this.props.label}Datepicker`;
   },
 
+  getLabel(){
+    const required = this.props.required ? <span style={{color:"red"}}>* </span> : null;
+    const inputLabel = this.props.label ? <label className="slds-form-element__label" htmlFor={this.inputRefName()} style={{width: "100%"}}>{required}{this.props.label}</label> : null;
+    return inputLabel;
+  },
+
   render() {
-    const required = this.props.required ? <span style={{color:"red"}}>* </span>:null;
-    const inputLabel = this.props.label?<label className="slds-form-element__label" htmlFor={this.inputRefName()} style={{width: "100%"}}>{required}{this.props.label}</label>:null;
+
+    const inputStyles = this.props.disabled ? {cursor: 'inherit'} : {cursor: 'pointer'};
+
     return (
       <div className='slds-form-element'>
-        {inputLabel}
+        {this.getLabel()}
         <div className='slds-form-element__control'>
           <div className='slds-input-has-icon slds-input-has-icon--right'>
 
@@ -212,6 +235,7 @@ module.exports = React.createClass({
               id={this.inputRefName()}
               ref='date'
               className='slds-input slds-button--neutral slds-text-align--left'
+              disabled={this.props.disabled}
               type='text'
               placeholder={this.props.placeholder}
               value={this.state.strValue}
@@ -220,11 +244,11 @@ module.exports = React.createClass({
               onClick={this.handleClick}
               onBlur={this.handleBlur}
               onFocus={this.handleFocus}
-              style={{cursor: 'pointer'}}
+              style={inputStyles}
             />
           </div>
         </div>
-        {this.popover()}
+        {this.props.modal?this.getModalPopover():this.getSimplePopover()}
       </div>
     );
   }

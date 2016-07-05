@@ -29,4 +29,4 @@ storiesOf(SPINNER, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium" style={inverseContainer}>{getStory()}</div>)
 	.add('Inverse Small', () => getSpinner({ size: 'small', variant: 'inverse' }))
 	.add('Inverse Medium', () => getSpinner({ size: 'medium', variant: 'inverse' }))
-	.add('Inverse Large', () => getSpinner({ size: 'large', variant: 'inverse' }))
+	.add('Inverse Large', () => getSpinner({ size: 'large', variant: 'inverse' }));
