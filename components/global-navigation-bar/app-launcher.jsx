@@ -29,11 +29,11 @@ import classNames from 'classnames';
 import { EventUtil } from '../../utilities';
 
 // ## Constants
-import { CONTEXT_BAR_APPLICATION_NAME } from '../../utilities/constants';
+import { GLOBAL_NAVIGATION_BAR_APPLICATION_NAME } from '../../utilities/constants';
 
 
 const AppLauncher = React.createClass({
-	displayName: CONTEXT_BAR_APPLICATION_NAME,
+	displayName: GLOBAL_NAVIGATION_BAR_APPLICATION_NAME,
 	propTypes: {
 		/**
 		 * Label given to "app" icon for users of assistive technology.
@@ -60,7 +60,7 @@ const AppLauncher = React.createClass({
 		 */
 		noTruncate: PropTypes.bool
 	},
-	
+
 	handleClick (event) {
 		if (isFunction(this.props.onClick)) {
 			EventUtil.trap(event);

@@ -20,7 +20,7 @@ import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 
 // ## Constants
-import { CONTEXT_BAR_REGION } from '../../utilities/constants';
+import { GLOBAL_NAVIGATION_BAR_REGION } from '../../utilities/constants';
 
 // List regions for export
 const regions = [
@@ -33,7 +33,7 @@ const regions = [
  * Regions make up a Context Bar and typically contain links and dropdowns. The Primary region contains the AppSwitcher, Application Name, and Object Switcher. The secondary region typically has navigation betweens sections of the application. The tertiary region is aligned to the right side of the screen and contains shortcuts or actions.
  */
  const Region = React.createClass({
-	displayName: CONTEXT_BAR_REGION,
+	displayName: GLOBAL_NAVIGATION_BAR_REGION,
 
 	// ### Prop Types
 	propTypes: {

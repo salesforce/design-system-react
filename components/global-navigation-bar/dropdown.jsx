@@ -9,7 +9,7 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # ContextBar Dropdown Component
+// # GlobalNavigationBar Dropdown Component
 
 // ## Dependencies
 
@@ -30,14 +30,14 @@ import Popover from '../popover';
 import SLDSButton from '../button';
 
 // ## Constants
-import { CONTEXT_BAR_DROPDOWN } from '../../utilities/constants';
+import { GLOBAL_NAVIGATION_BAR_DROPDOWN } from '../../utilities/constants';
 
 const defaultProps = assign({}, dropdownDefaultProps, { align: 'right' });
 
 /**
- * This component extends `MenuDropdown` and modifies the `render` function to allow the markup to work within `ContextBar`. See the complete `MenuDropdown` for context.
+ * This component extends `MenuDropdown` and modifies the `render` function to allow the markup to work within `GlobalNavigationBar`. See the complete `MenuDropdown` for context.
  */
-class ContextBarDropdown extends Dropdown {
+class GlobalNavigationBarDropdown extends Dropdown {
 	getModalPopover () {
 		return (
 			!this.props.disabled && this.state.isOpen ?
@@ -69,7 +69,7 @@ class ContextBarDropdown extends Dropdown {
 			triggerIconName
 		} = this.props;
 
-		// If no trigger was passed in, add the default ContextBar trigger so that
+		// If no trigger was passed in, add the default GlobalNavigationBar trigger so that
 		// it overrides the button trigger that Dropdown usually defaults to.
 		return (
 			<li
@@ -112,7 +112,7 @@ class ContextBarDropdown extends Dropdown {
 	}
 }
 
-ContextBarDropdown.defaultProps = defaultProps;
-ContextBarDropdown.displayName = CONTEXT_BAR_DROPDOWN;
+GlobalNavigationBarDropdown.defaultProps = defaultProps;
+GlobalNavigationBarDropdown.displayName = GLOBAL_NAVIGATION_BAR_DROPDOWN;
 
-export default ContextBarDropdown;
+export default GlobalNavigationBarDropdown;

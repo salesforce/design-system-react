@@ -182,7 +182,7 @@
       "SLDS-component-path": "/components/forms#flavor-input"
     },
     {
-      "component": "context-bar",
+      "component": "global-navigation-bar",
       "display-name": "Global Navigation Bar",
       "SLDS-component-path": "/components/global-navigation#flavor-navigation-bar"
     },
