@@ -23,7 +23,7 @@ import Button from '../button';
 import MenuDropdown from '../menu-dropdown';
 
 // ## Constants
-import { TOOL } from '../../utilities/constants';
+import { GLOBAL_HEADER_TOOL } from '../../utilities/constants';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
@@ -54,6 +54,6 @@ const Tool = (props) => (
 	</Dropdown>
 );
 
-Tool.displayName = TOOL;
+Tool.displayName = GLOBAL_HEADER_TOOL;
 
 export default Tool;

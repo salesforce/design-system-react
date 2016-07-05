@@ -29,7 +29,7 @@ import shortid from 'shortid';
 import Button from '../button';
 
 // ## Constants
-import { PROFILE_BUTTON } from '../../utilities/constants';
+import { GLOBAL_HEADER_PROFILE_BUTTON } from '../../utilities/constants';
 
 /**
  * Component description.
@@ -45,7 +45,7 @@ const ProfileButton = (props) => (
 	/>
 );
 
-ProfileButton.displayName = PROFILE_BUTTON;
+ProfileButton.displayName = GLOBAL_HEADER_PROFILE_BUTTON;
 
 ProfileButton.propTypes = {
 	onClick: React.PropTypes.func

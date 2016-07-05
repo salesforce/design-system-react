@@ -23,7 +23,7 @@ import MenuDropdown from '../menu-dropdown';
 import ProfileButton from './profile-button';
 
 // ## Constants
-import { PROFILE_MENU } from '../../utilities/constants';
+import { GLOBAL_HEADER_PROFILE_MENU } from '../../utilities/constants';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
@@ -32,7 +32,7 @@ const { PropTypes } = React;
  * Component description.
  */
 const ProfileMenu = React.createClass({
-	displayName: PROFILE_MENU,
+	displayName: GLOBAL_HEADER_PROFILE_MENU,
 
 	propTypes: {
 		name: PropTypes.string,
