@@ -38,13 +38,13 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 			/>
 			<GlobalNavigationBarDropdown
 				id="primaryDropdown"
-				label="GlobalNavigation Menu Item 1"
+				label="Menu Item 1"
 				onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
 				options={dropdownCollection}
 			/>
 			<GlobalNavigationBarLink
 				href="#"
-				label="GlobalNavigation Menu Item 2"
+				label="Menu Item 2"
 				onClick={linkClicked('Link clicked')}
 			/>
 		</GlobalNavigationBarRegion>
