@@ -1,6 +1,6 @@
 {
   "name": "design-system-react",
-  "version": "0.0.35",
+  "version": "0.1.0",
   "description": "Salesforce Lightning Design System React components",
   "license": "BSD-3-Clause",
   "scripts": {
@@ -182,7 +182,12 @@
       "SLDS-component-path": "/components/forms#flavor-input"
     },
     {
-      "component": "context-bar",
+      "component": "global-header",
+      "display-name": "Global Header",
+      "SLDS-component-path": "/components/global-header#flavor-base"
+    },
+    {
+      "component": "global-navigation-bar",
       "display-name": "Global Navigation Bar",
       "SLDS-component-path": "/components/global-navigation#flavor-navigation-bar"
     },

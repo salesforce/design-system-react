@@ -9,7 +9,7 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # ContextBar Region Component
+// # GlobalNavigationBar Region Component
 
 // ## Dependencies
 
@@ -20,7 +20,7 @@ import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 
 // ## Constants
-import { CONTEXT_BAR_REGION } from '../../utilities/constants';
+import { GLOBAL_NAVIGATION_BAR_REGION } from '../../utilities/constants';
 
 // List regions for export
 const regions = [
@@ -30,15 +30,15 @@ const regions = [
 ];
 
 /**
- * Regions make up a Context Bar and typically contain links and dropdowns. The Primary region contains the AppSwitcher, Application Name, and Object Switcher. The secondary region typically has navigation betweens sections of the application. The tertiary region is aligned to the right side of the screen and contains shortcuts or actions.
+ * Regions make up a GlobalNavigation Bar and typically contain links and dropdowns. The Primary region contains the AppSwitcher, Application Name, and Object Switcher. The secondary region typically has navigation betweens sections of the application. The tertiary region is aligned to the right side of the screen and contains shortcuts or actions.
  */
  const Region = React.createClass({
-	displayName: CONTEXT_BAR_REGION,
+	displayName: GLOBAL_NAVIGATION_BAR_REGION,
 
 	// ### Prop Types
 	propTypes: {
 		/**
-		 * Contents of region. Expects `ContextBarLink`, `ContextBarDropdown`, `ContextBarApplicationName`, `AppSwitcher`, but could be any component. This is the place to pass in an Object Switcher until that is supported.
+		 * Contents of region. Expects `GlobalNavigationBarLink`, `GlobalNavigationBarDropdown`, `GlobalNavigationBarApplicationName`, `AppSwitcher`, but could be any component. This is the place to pass in an Object Switcher until that is supported.
 		 */
 		children: PropTypes.node,
 		/**

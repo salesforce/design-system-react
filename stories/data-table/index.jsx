@@ -99,4 +99,6 @@ storiesOf(DATA_TABLE, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Striped', () => <DemoDataTable striped />)
 	.add('Bordered', () => <DemoDataTable bordered />)
+	.add('Buffered', () => <DemoDataTable buffered />)
+	.add('Buffered + Bordered', () => <DemoDataTable buffered bordered />)
 	.add('Selectable', () => <DemoDataTable selectRows />);
