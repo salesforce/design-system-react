@@ -1,41 +1,81 @@
-import AppLauncherModal from './app-launcher-modal';
-import Button from 'slds-for-react/button';
-import Dropdown from 'slds-for-react/dropdown';
-import functionBinder from '../utilities/function-binder.js';
-import Menu from 'slds-for-react/menu';
-import PureRenderMixin from 'react/lib/ReactComponentWithPureRenderMixin';
+/*
+Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+// # App Launcher Component
+
+// ## Dependencies
+
+// ### React
 import React from 'react';
-import ReactDOM from 'react-dom';
-import reactMixin from 'react-mixin';
-import PreviewMenuItems from './preview-menu-items';
-import Search from '../search';
-import Trigger from 'slds-for-react/dropdown/button-trigger';
 
-class AppLauncher extends React.Component {
-	constructor (props) {
-		super(props);
-		this.state = {};
+// Removes the need for `React.PropTypes.prop`
+const { PropTypes } = React;
 
-		functionBinder(this, [
-			'handleDropdownClose',
-			'handleDropdownOpen',
-			'handleSearchChange',
-			'handleSearchInputClick',
-			'handleTriggerClick'
-		]);
+// ## Children
+import Modal from './modal';
+import Button from '../button';
+// import Dropdown from 'slds-for-react/dropdown';
+// import functionBinder from '../utilities/function-binder.js';
+// import Menu from 'slds-for-react/menu';
+// import PureRenderMixin from 'react/lib/ReactComponentWithPureRenderMixin';
+// import ReactDOM from 'react-dom';
+// import reactMixin from 'react-mixin';
+// import PreviewMenuItems from './preview-menu-items';
+// import Search from '../search';
+// import Trigger from 'slds-for-react/dropdown/button-trigger';
 
-		this.handleDropdownClose = this.handleDropdownClose.bind(this);
-		this.handleDropdownOpen = this.handleDropdownOpen.bind(this);
-		this.handleSearchChange = this.handleSearchChange.bind(this);
-		this.handleSearchInputClick = this.handleSearchInputClick.bind(this);
-		this.handleTriggerClick = this.handleTriggerClick.bind(this);
-	}
+// ## Constants
+import { APP_LAUNCHER } from '../../utilities/constants';
+
+const AppLauncher = React.createClass({
+	// ### Display Name
+	// Always use the canonical component name as the React display name.
+	displayName: APP_LAUNCHER,
+
+	// ### Prop Types
+	propTypes: {
+		// TODO: ADD PROPTYPE DESCRIPTIONS
+		/*
+		 * Set the App Launcher's title text (for localization)
+		 */
+		appLauncherTitle: PropTypes.string,
+		/*
+		 * Set the search input's placeholder text (for localization)
+		 */
+		searchPlaceholderText: PropTypes.string,
+		/*
+		 * Set the App Exchange Button's text (for localization)
+		 */
+		appExchangeButtonText: PropTypes.string,
+		appTileClicked: PropTypes.func,
+		collection: PropTypes.array.isRequired,
+		filterForSearch: PropTypes.func,
+		// localization: PropTypes.object.isRequired,
+		modalIsOpen: PropTypes.bool,
+		modalSearch: PropTypes.string,
+		onModalClose: PropTypes.func,
+		onModalOpen: PropTypes.func,
+		onDropdownClose: PropTypes.func,
+		onDropdownOpen: PropTypes.func,
+		onSearchChange: PropTypes.func,
+		onModalSearchChange: PropTypes.func,
+		search: PropTypes.string,
+		data: PropTypes.object
+	},
 
 	handleDropdownClose () {
 		if (this.props.onDropdownClose) {
 			this.props.onDropdownClose();
 		}
-	}
+	},
 
 	handleDropdownOpen () {
 		if (this.props.onDropdownOpen) {
@@ -43,7 +83,7 @@ class AppLauncher extends React.Component {
 		}
 		// TODO: Figure out why this doesn't work. -cdmc
 		ReactDOM.findDOMNode(this.refs['app-launcher__search'].refs.input).focus();
-	}
+	},
 
 	handleSearchChange (value, e) {
 		e.stopPropagation();
@@ -51,17 +91,17 @@ class AppLauncher extends React.Component {
 		if (value !== this.props.search && this.props.onSearchChange) {
 			this.props.onSearchChange(value, e);
 		}
-	}
+	},
 
 	handleSearchInputClick (e) {
 		e.nativeEvent.stopImmediatePropagation();
-	}
+	},
 
 	handleTriggerClick (e) {
 		if (this.props.onModalOpen) {
 			this.props.onModalOpen(e);
 		}
-	}
+	},
 
 	/*
 	 * itemCollection - collection of items to search/filter
@@ -100,7 +140,7 @@ class AppLauncher extends React.Component {
 		const rankedSearchResults = [...new Set(results)];
 
 		return rankedSearchResults;
-	}
+	},
 
 	/*
 	 * This filter is much more intelligent, in that it prioritizes not only full-string matches,
@@ -159,7 +199,7 @@ class AppLauncher extends React.Component {
 		const rankedSearchResults = [...new Set(combinedResults)];
 
 		return rankedSearchResults;
-	}
+	},
 
 	/*
 	 * Contains business rules for whether an app is considered "installed" or not,
@@ -180,85 +220,50 @@ class AppLauncher extends React.Component {
 		});
 
 		return collection;
-	}
+	},
 
+	// getDefaultProps () {
+	// 	return {
+
+	// 	};
+	// },
+
+	// ### Render
 	render () {
-		const localization = this.props.localization;
-
 		const sharedFilterDefinition = this.props.filterForSearch || this.defaultFilterForSearch;
 
 		const collection = this.populateAppVisibility(this.props.collection);
-		let filteredCollection = collection;
+		// let filteredCollection = collection;
 
-		if (this.props.search) {
-			filteredCollection = sharedFilterDefinition(filteredCollection, ['appName', 'categoryName'], this.props.search);
-		}
+		// if (this.props.search) {
+		// 	filteredCollection = sharedFilterDefinition(filteredCollection, ['appName', 'categoryName'], this.props.search);
+		// }
 
-		const dropdownCollection = filteredCollection.filter((item) => (item.visibleInAppLauncherMenu));
+		// const dropdownCollection = filteredCollection.filter((item) => (item.visibleInAppLauncherMenu));
 
-		// max visible apps out at 10.
-		if (dropdownCollection.length > 10) {
-			dropdownCollection.length = 10;
-		}
+		// // max visible apps out at 10.
+		// if (dropdownCollection.length > 10) {
+		// 	dropdownCollection.length = 10;
+		// }
 
-		const matchingText = (dropdownCollection.length === 1) ?
-			this.props.localization.APP_LAUNCHER_MATCHING_ITEM :
-			this.props.localization.APP_LAUNCHER_MATCHING_ITEMS;
+		// const matchingText = (dropdownCollection.length === 1) ?
+		// 	this.props.localization.APP_LAUNCHER_MATCHING_ITEM :
+		// 	this.props.localization.APP_LAUNCHER_MATCHING_ITEMS;
 
-		const dropdownTitle = (this.props.search.length > 0) ?
-			`${dropdownCollection.length} ${matchingText}` :
-			this.props.localization.APP_LAUNCHER_MARKETING_CLOUD_APPS;
+		// const dropdownTitle = (this.props.search.length > 0) ?
+		// 	`${dropdownCollection.length} ${matchingText}` :
+		// 	this.props.localization.APP_LAUNCHER_MARKETING_CLOUD_APPS;
 
 		return (
 			<div className="slds-global-nav__app-launcher">
-				<Dropdown
-					id="slds-global-nav__app-launcher__dropdown"
-					onClosed={this.handleDropdownClose}
-					onOpened={this.handleDropdownOpen}
-				>
-					<Trigger>
-						<Button
-							iconCategory="utility"
-							iconName="apps"
-							iconStyle="icon-inverse"
-							iconSize="large"
-							assistiveText="Open Other Apps"
-						/>
-					</Trigger>
-					<Menu nubbinPosition="top left">
-						<div className="slds-global-nav__app-launcher__menu">
-							<Search
-								className="slds-m-horizontal--medium slds-m-top--medium"
-								onChange={this.handleSearchChange}
-								onInputClick={this.handleSearchInputClick}
-								onKeyDown={this.handleSearchChange}
-								onKeyPress={this.handleSearchChange}
-								placeholder={localization.APP_LAUNCHER_SEARCH_PLACEHOLDER}
-								value={this.props.search}
-								ref="app-launcher__search"
-							/>
-							<div className="slds-text-heading--label slds-m-horizontal--medium slds-m-top--medium">
-								{dropdownTitle}
-							</div>
-							<div className="slds-m-top--x-small slds-global-nav__app-launcher__menu__body">
-								<PreviewMenuItems collection={dropdownCollection} className="slds-scrollable--y"/>
-							</div>
-							<div className="slds-text-align--left slds-m-horizontal--medium slds-m-top--xx-small">
-								<a
-									ref="trigger"
-									href="#"
-									onClick={this.handleTriggerClick}
-								>{localization.APP_LAUNCHER_MORE_APPS}</a>
-							</div>
-						</div>
-					</Menu>
-				</Dropdown>
-				<AppLauncherModal
+				<Modal
+					appLauncherTitle={this.props.appLauncherTitle}
+					searchPlaceholderText={this.props.searchPlaceholderText}
+					appExchangeButtonText={this.props.appExchangeButtonText}
 					appTileClicked={this.props.appTileClicked}
 					collection={collection}
 					data={this.props.data}
 					modalIsOpen={this.props.modalIsOpen}
-					localization={localization}
 					onClose={this.props.onModalClose}
 					trigger={this.refs.trigger}
 					filterForSearch={sharedFilterDefinition}
@@ -268,27 +273,6 @@ class AppLauncher extends React.Component {
 			</div>
 		);
 	}
-}
+});
 
-AppLauncher.propTypes = {
-	appTileClicked: React.PropTypes.func,
-	collection: React.PropTypes.array.isRequired,
-	filterForSearch: React.PropTypes.func,
-	localization: React.PropTypes.object.isRequired,
-	modalIsOpen: React.PropTypes.bool,
-	modalSearch: React.PropTypes.string,
-	onModalClose: React.PropTypes.func,
-	onModalOpen: React.PropTypes.func,
-	onDropdownClose: React.PropTypes.func,
-	onDropdownOpen: React.PropTypes.func,
-	onSearchChange: React.PropTypes.func,
-	onModalSearchChange: React.PropTypes.func,
-	search: React.PropTypes.string,
-	data: React.PropTypes.object
-};
-
-AppLauncher.displayName = 'AppLauncher';
-
-reactMixin(AppLauncher.prototype, PureRenderMixin);
-
-export default AppLauncher;
+module.exports = AppLauncher;
