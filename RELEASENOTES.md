@@ -4,6 +4,9 @@
 
 ## Release 0.1.0
 
+**BREAKING CHANGES**
+- Rename ContextBar to GlobalNavigationBar
+
 **MAJOR CHANGES**
 - Add the Global Header component
 - Add a Search component

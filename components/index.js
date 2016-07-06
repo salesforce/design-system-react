@@ -35,20 +35,20 @@ export CardFilter from './card/filter';
 export SLDSCheckbox from './forms/checkbox';
 export Checkbox from './forms/checkbox';
 
-export SLDSContextBar from './context-bar';
-export ContextBar from './context-bar';
+export SLDSGlobalNavigationBar from './global-navigation-bar';
+export GlobalNavigationBar from './global-navigation-bar';
 
-export SLDSContextBarAppLauncher from './context-bar/app-launcher';
-export ContextBarAppLauncher from './context-bar/app-launcher';
+export SLDSGlobalNavigationBarAppLauncher from './global-navigation-bar/app-launcher';
+export GlobalNavigationBarAppLauncher from './global-navigation-bar/app-launcher';
 
-export SLDSContextBarRegion from './context-bar/region';
-export ContextBarRegion from './context-bar/region';
+export SLDSGlobalNavigationBarRegion from './global-navigation-bar/region';
+export GlobalNavigationBarRegion from './global-navigation-bar/region';
 
-export SLDSContextBarLink from './context-bar/link';
-export ContextBarLink from './context-bar/link';
+export SLDSGlobalNavigationBarLink from './global-navigation-bar/link';
+export GlobalNavigationBarLink from './global-navigation-bar/link';
 
-export SLDSContextBarDropdown from './context-bar/dropdown';
-export ContextBarDropdown from './context-bar/dropdown';
+export SLDSGlobalNavigationBarDropdown from './global-navigation-bar/dropdown';
+export GlobalNavigationBarDropdown from './global-navigation-bar/dropdown';
 
 export SLDSDataTable from './data-table';
 export DataTable from './data-table';
