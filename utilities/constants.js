@@ -1,4 +1,9 @@
 // ## Components
+export const APP_LAUNCHER = 'SLDSAppLauncher';
+export const APP_LAUNCHER_MODAL = 'SLDSAppLauncherModal';
+export const APP_LAUNCHER_MODAL_HEADER = 'SLDSAppLauncherModalHeader';
+export const APP_LAUNCHER_TILE = 'SLDSAppLauncherTile';
+export const APP_LAUNCHER_TILES = 'SLDSAppLauncherTiles';
 export const BREAD_CRUMB = 'SLDSBreadCrumb';
 export const BUTTON = 'SLDSButton';
 export const BUTTON_GROUP = 'SLDSButtonGroup';
