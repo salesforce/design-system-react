@@ -12,5 +12,6 @@ export default from './forms/input/search';
 export default from './icon';
 export default from './lookup';
 export default from './modal';
+export default from './page-header';
 export default from './spinner';
 export default from './time-picker';
