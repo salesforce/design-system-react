@@ -72,6 +72,10 @@ const DataTable = React.createClass({
 		 */
 		bordered: PropTypes.bool,
 		/**
+		 * A variant which adds more horizontal padding to the outter edges of the table.
+		 */
+		buffered: PropTypes.bool,
+		/**
 		 * Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Custom `<DataTableCell />` implementations may also be passed in to override cell rendering.
 		 * ```
 		 * <DataTable>
@@ -199,6 +203,7 @@ const DataTable = React.createClass({
 			<table
 				className={classNames('slds-table', {
 					'slds-table--bordered': this.props.bordered,
+					'slds-table--cell-buffer': this.props.buffered,
 					'slds-max-medium-table--stacked': this.props.stacked,
 					'slds-max-medium-table--stacked-horizontalviewports': this.props.stackedHorizontal,
 					'slds-table--striped': this.props.striped

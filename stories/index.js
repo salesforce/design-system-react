@@ -10,6 +10,7 @@ export default from './dropdown';
 export default from './forms/input';
 export default from './forms/input/inline';
 export default from './forms/input/search';
+export default from './global-header';
 export default from './icon';
 export default from './lookup';
 export default from './modal';

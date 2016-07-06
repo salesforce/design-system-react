@@ -109,6 +109,10 @@ const MenuDropdown = React.createClass({
 		 */
 		iconVariant: React.PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'small', 'more']),
 		/**
+		 * Determines the size of the icon.
+		 */
+		iconSize: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
+		/**
 		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
 		*/
 		id: PropTypes.string,
@@ -472,6 +476,7 @@ const MenuDropdown = React.createClass({
 				hint={this.props.hint}
 				iconName={this.props.iconName}
 				iconVariant={this.props.iconVariant}
+				iconSize={this.props.iconSize}
 				id={this.props.id}
 				label={this.props.label}
 				onBlur={this.props.openOn === 'hover' ? this.handleBlur : null}
@@ -490,7 +495,6 @@ const MenuDropdown = React.createClass({
 			/>
 		);
 	}
-
 });
 
 module.exports = MenuDropdown;
