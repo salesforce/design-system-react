@@ -21,7 +21,6 @@ const { PropTypes } = React;
 
 // ## Children
 import AppTile from './app-tile';
-import Icon from '../icon';
 import Button from '../button';
 
 // ## Constants
@@ -35,88 +34,54 @@ const AppTiles = React.createClass({
 	// ### Prop Types
 	propTypes: {
 		/**
-		 * The localized text for the "All Apps" section.
+		 * The title for this section of apps.
 		 */
-		localizedAllAppsText: PropTypes.string,
-		/**
-		 * The localized text for the "All Items" section.
-		 */
-		localizedAllItemsText: PropTypes.string,
+		sectionTitle: PropTypes.string.isRequired,
 		/**
 		 * The assistive text for the section collapse icons
 		 */
 		collapseSectionAssistiveText: PropTypes.string,
+		/**
+		 * An array of applications to display
+		 */
+		collection: PropTypes.array.isRequired,
 		// v REVIEW v
 		appTileClicked: PropTypes.func,
-		collection: PropTypes.array.isRequired,
 		isVisible: PropTypes.bool,
-		search: PropTypes.string,
-		filterForSearch: PropTypes.func.isRequired
+		search: PropTypes.string
 		// ^ REVIEW ^
 	},
 
 	getDefaultProps () {
+		// TODO: pass 'collapseSectionAssistiveText' down from parent
 		return {
-			localizedAllAppsText: 'All Apps',
-			localizedAllItemsText: 'All Items',
 			collapseSectionAssistiveText: 'Toggle visibility of section'
 		};
 	},
 
-	renderAppTiles (collection) {
-		return collection.map(
-			(item, i) => (
-				<AppTile
-					appTileClicked={this.props.appTileClicked}
-					isVisible={this.props.isVisible}
-					{...item}
-					key={i}
-				/>
-			)
-		);
-	},
-
 	render () {
-		let collection = this.props.collection;
-
-		if (this.props.search) {
-			collection = this.props.filterForSearch(collection, ['appName', 'categoryName', 'appDescription'], this.props.search);
-		}
-
-		const installedApps = collection.filter((item) => (item.installed));
-		const uninstalledApps = collection.filter((item) => (item.uninstalled));
-
+		// TODO: pass 'is-open' or 'is-closed'?
 		return (
-			<div className="slds-modal__content slds-app-launcher__content slds-p-around--medium">
-				<div className="slds-section slds-is-open">
-					<div className="slds-section__title">
-						<Button
-							assistiveText={this.props.collapseSectionAssistiveText}
-							iconName="switch"
-							className="slds-button--icon slds-m-right--small"
-							variant="icon"
-						/>
-						<h3>{this.props.localizedAllAppsText}</h3>
-					</div>
-					<ul className="slds-grid slds-grid--pull-padded slds-wrap">
-						{this.renderAppTiles(installedApps)}
-					</ul>
+			<div className="slds-section slds-is-open">
+				<div className="slds-section__title">
+					<Button
+						assistiveText={this.props.collapseSectionAssistiveText}
+						iconName="switch"
+						className="slds-button--icon slds-m-right--small"
+						variant="icon"
+					/>
+					<h3>{this.props.sectionTitle}</h3>
 				</div>
-				<hr />
-				<div className="slds-section slds-is-open">
-					<div className="slds-section__title">
-						<Button
-							assistiveText={this.props.collapseSectionAssistiveText}
-							iconName="switch"
-							className="slds-button--icon slds-m-right--small"
-							variant="icon"
+				<ul className="slds-grid slds-grid--pull-padded slds-wrap">
+					{this.props.collection.map((item, index) => (
+						<AppTile
+							appTileClicked={this.props.appTileClicked}
+							isVisible={this.props.isVisible}
+							{...item}
+							key={index}
 						/>
-						<h3>{this.props.localizedAllItemsText}</h3>
-					</div>
-					<ul className="slds-grid slds-grid--pull-padded slds-wrap">
-						{this.renderAppTiles(uninstalledApps)}
-					</ul>
-				</div>
+					))}
+				</ul>
 			</div>
 		);
 	}

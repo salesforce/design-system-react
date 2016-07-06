@@ -90,6 +90,12 @@ const AppLauncherModal = React.createClass({
 	},
 
 	render () {
+		const collection = this.props.search
+			? this.props.filterForSearch(this.props.collection, ['appName', 'categoryName', 'appDescription'], this.props.search)
+			: this.props.collection;
+		const installedApps = collection.filter((item) => (item.installed));
+		const uninstalledApps = collection.filter((item) => (item.uninstalled));
+
 		return (
 			<Modal
 				size="large"
@@ -99,14 +105,26 @@ const AppLauncherModal = React.createClass({
 				renderHeader={this.createHeader}
 				triggerNode={this.props.trigger}
 			>
+
 				<ModalHeader />
-				<AppTiles
-					appTileClicked={this.handleAppTileClicked}
-					collection={this.props.collection}
-					isVisible={this.props.modalIsOpen}
-					search={this.props.search}
-					filterForSearch={this.props.filterForSearch}
-				/>
+
+				<div className="slds-modal__content slds-app-launcher__content slds-p-around--medium">
+					<AppTiles
+						sectionTitle="All Apps"
+						appTileClicked={this.handleAppTileClicked}
+						collection={installedApps}
+						isVisible={this.props.modalIsOpen}
+						search={this.props.search}
+					/>
+					<hr />
+					<AppTiles
+						sectionTitle="All Items"
+						appTileClicked={this.handleAppTileClicked}
+						collection={uninstalledApps}
+						isVisible={this.props.modalIsOpen}
+						search={this.props.search}
+					/>
+				</div>
 			</Modal>
 		);
 	}

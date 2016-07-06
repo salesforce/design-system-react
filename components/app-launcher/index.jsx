@@ -42,7 +42,6 @@ const AppLauncher = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
-		// TODO: ADD PROPTYPE DESCRIPTIONS
 		/*
 		 * Set the App Launcher's title text (for localization)
 		 */
