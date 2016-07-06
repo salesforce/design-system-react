@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // # Global Header Component
 
 // Implements the [Global Header design pattern](https://www.lightningdesignsystem.com/components/global-header) in React.
-// Based on SLDS v2.1.0-dev
+// Based on SLDS v2.1.0-rc.2
 
 // ## Dependencies
 

@@ -10,6 +10,7 @@
 **MAJOR CHANGES**
 - Add the Global Header component
 - Add a Search component
+- Updates BreadCrumb to the latest markup
 
 **OTHER**
 - Begin counting versions from 0.1.0
