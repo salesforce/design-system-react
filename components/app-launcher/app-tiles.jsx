@@ -21,6 +21,8 @@ const { PropTypes } = React;
 
 // ## Children
 import AppTile from './app-tile';
+import Icon from '../icon';
+import Button from '../button';
 
 // ## Constants
 import { APP_LAUNCHER_TILES } from '../../utilities/constants';
@@ -33,24 +35,31 @@ const AppTiles = React.createClass({
 	// ### Prop Types
 	propTypes: {
 		/**
-		 * The localized text for the "More to Explore" App Launcher section.
+		 * The localized text for the "All Apps" section.
 		 */
-		localizedMoreToExploreText: PropTypes.string,
+		localizedAllAppsText: PropTypes.string,
 		/**
-		 * The localized text for the "Not Installed" subheader.
+		 * The localized text for the "All Items" section.
 		 */
-		localizedNotInstalledText: PropTypes.string,
+		localizedAllItemsText: PropTypes.string,
+		/**
+		 * The assistive text for the section collapse icons
+		 */
+		collapseSectionAssistiveText: PropTypes.string,
+		// v REVIEW v
 		appTileClicked: PropTypes.func,
 		collection: PropTypes.array.isRequired,
 		isVisible: PropTypes.bool,
 		search: PropTypes.string,
 		filterForSearch: PropTypes.func.isRequired
+		// ^ REVIEW ^
 	},
 
 	getDefaultProps () {
 		return {
-			localizedMoreToExploreText: 'More to Explore',
-			localizedNotInstalledText: 'Not Installed'
+			localizedAllAppsText: 'All Apps',
+			localizedAllItemsText: 'All Items',
+			collapseSectionAssistiveText: 'Toggle visibility of section'
 		};
 	},
 
@@ -78,19 +87,36 @@ const AppTiles = React.createClass({
 		const uninstalledApps = collection.filter((item) => (item.uninstalled));
 
 		return (
-			<div>
-				<h2 className="slds-text-heading--small slds-m-left--small">Marketing Cloud ({installedApps.length})</h2>
-				<ul className="slds-list--horizontal slds-has-cards--space has-selections slds-wrap">
-					{this.renderAppTiles(installedApps)}
-				</ul>
+			<div className="slds-modal__content slds-app-launcher__content slds-p-around--medium">
+				<div className="slds-section slds-is-open">
+					<div className="slds-section__title">
+						<Button
+							assistiveText={this.props.collapseSectionAssistiveText}
+							iconName="switch"
+							className="slds-button--icon slds-m-right--small"
+							variant="icon"
+						/>
+						<h3>{this.props.localizedAllAppsText}</h3>
+					</div>
+					<ul className="slds-grid slds-grid--pull-padded slds-wrap">
+						{this.renderAppTiles(installedApps)}
+					</ul>
+				</div>
 				<hr />
-				<h2 className="slds-text-heading--small slds-m-left--small">
-					{this.props.localizedMoreToExploreText} ({uninstalledApps.length})
-					<div className="slds-text-heading--label slds-p-top--xxx-small">{this.props.localizedNotInstalledText}</div>
-				</h2>
-				<ul className="slds-list--horizontal slds-has-cards--space has-selections slds-wrap">
-					{this.renderAppTiles(uninstalledApps)}
-				</ul>
+				<div className="slds-section slds-is-open">
+					<div className="slds-section__title">
+						<Button
+							assistiveText={this.props.collapseSectionAssistiveText}
+							iconName="switch"
+							className="slds-button--icon slds-m-right--small"
+							variant="icon"
+						/>
+						<h3>{this.props.localizedAllItemsText}</h3>
+					</div>
+					<ul className="slds-grid slds-grid--pull-padded slds-wrap">
+						{this.renderAppTiles(uninstalledApps)}
+					</ul>
+				</div>
 			</div>
 		);
 	}

@@ -24,14 +24,10 @@ import AppTiles from './app-tiles';
 import Modal from '../modal';
 import ModalHeader from './modal-header';
 
-// import PureRenderMixin from 'react/lib/ReactComponentWithPureRenderMixin';
-// import reactMixin from 'react-mixin';
-
 // ## Constants
 import { APP_LAUNCHER_MODAL } from '../../utilities/constants';
 
 const AppLauncherModal = React.createClass({
-
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: APP_LAUNCHER_MODAL,
@@ -61,17 +57,6 @@ const AppLauncherModal = React.createClass({
 		search: PropTypes.string,
 		onSearchChange: PropTypes.func
 	},
-
-	// constructor (props) {
-	// 	super(props);
-	// 	this.state = {};
-
-	// 	this.handleAppTileClicked = this.handleAppTileClicked.bind(this);
-	// 	this.handleModalCancel = this.handleModalCancel.bind(this);
-	// 	this.handleModalClose = this.handleModalClose.bind(this);
-	// 	this.createHeader = this.createHeader.bind(this);
-	// 	this.handleSearchChange = this.handleSearchChange.bind(this);
-	// }
 
 	handleAppTileClicked (e, keepOpen) {
 		if(!keepOpen) {
@@ -126,7 +111,5 @@ const AppLauncherModal = React.createClass({
 		);
 	}
 });
-
-// reactMixin(AppLauncherModal.prototype, PureRenderMixin);
 
 module.exports = AppLauncherModal;

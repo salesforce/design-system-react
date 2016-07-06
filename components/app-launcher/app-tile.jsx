@@ -21,10 +21,9 @@ const { PropTypes } = React;
 
 // ## Children
 import Icon from '../icon';
-// import IconUtility from '../slds-for-react/icon-utility.js';
-import Tooltip from '../popover-tooltip';
-// import PureRenderMixin from 'react/lib/ReactComponentWithPureRenderMixin';
-// import reactMixin from 'react-mixin';
+import PopoverTooltip from '../popover-tooltip';
+import Button from '../button';
+
 import classNames from 'classnames';
 
 // ## Constants
@@ -45,10 +44,6 @@ const AppTile = React.createClass({
 		 * The localized text for an uninstalled app's "Learn More" link.
 		 */
 		localizedLearnMoreLink: PropTypes.string,
-		/**
-		 * The localized text for the "Not Installed" modal section.
-		 */
-		localizedNotInstalledText: PropTypes.string,
 		appName: PropTypes.string.isRequired,
 		appDescription: PropTypes.string.isRequired,
 		appTileClicked: PropTypes.func,
@@ -94,7 +89,7 @@ const AppTile = React.createClass({
 	getDefaultProps () {
 		return {
 			localizedShowMoreTooltip: 'More',
-			localizedLearnMoreLink: 'Learm More'
+			localizedLearnMoreLink: 'Learn More'
 		};
 	},
 
@@ -134,14 +129,6 @@ const AppTile = React.createClass({
 		return this.props.isVisible ? 'slds-multiline-truncate' : '';
 	},
 
-	renderLockIcon () {
-		return (
-			<span className="locked-icon slds-icon__container slds-m-around--none slds-p-around--none">
-				<Icon category="utility" name="lock" className="slds-icon slds-icon--x-small" />
-			</span>
-		);
-	},
-
 	isEnabled () {
 		return this.props.isProvisioned && this.props.hasAccess;
 	},
@@ -171,18 +158,15 @@ const AppTile = React.createClass({
 	renderMore (description, tooltipState) {
 		const displayMore = (description.length > 50);
 		const more = (
-			<button
-				className="slds-icon_container slds-tile--board__icon slds-button"
-				ref={this.moreRendered}
-				onClick={this.handleMoreClick}
-				onMouseDown={this.mouseDownHandler}
-				onMouseUp={this.mouseUpHandler}
+			<PopoverTooltip
+				align="bottom"
+				content={description}
 			>
-				<span>{this.props.localizedShowMoreTooltip}</span>
-				<Tooltip {...tooltipState}>
-					<span>{tooltipState.content}</span>
-				</Tooltip>
-			</button>
+				<Button
+					variant="base"
+					label={this.props.localizedShowMoreTooltip}
+				/>
+			</PopoverTooltip>
 		);
 
 		return displayMore ? more : '';
@@ -193,8 +177,6 @@ const AppTile = React.createClass({
 		const tileStyle = this.isEnabled() ? 'enabled' : 'non-enabled';
 		const descriptionLearnMore = <span className="learn_more">{this.props.localizedLearnMoreLink}</span>;
 		const description = this.isEnabled() ? this.props.appDescription : descriptionLearnMore;
-		const ribbon = this.isEnabled() ? '' : <div className="ribbon">{this.props.localizedNotInstalledText}</div>;
-		const lockedIcon = this.isEnabled() ? '' : this.renderLockIcon();
 
 		const iconWrapperPadding = this.props.categoryIcon.noPadding ? 'slds-p-around--none' : 'slds-p-around--small';
 		const iconWrapperClasses = classNames('slds-icon__container slds-m-around--small', iconWrapperPadding);
@@ -203,21 +185,20 @@ const AppTile = React.createClass({
 		const more = this.renderMore(description, tooltipState);
 
 		return (
-			<li className="slds-size--1-of-3">
+			<li className="slds-col--padded slds-grow-none slds-size--1-of-1 slds-medium-size--1-of-3">
 				<a
 					href="#"
 					onClick={this.handleTileClick}
-					className={classNames('slds-list__item slds-m-around--x-small slds-p-around--none', tileStyle)}
+					className={classNames('slds-app-launcher__tile slds-text-link--reset', tileStyle)}
 				>
 					<div className="slds-media slds-tile--board slds-tile slds-m-around--xxx-small">
-						{ribbon}
-						{lockedIcon}
 						<div className="slds-media__figure slds-m-right--none">
 							<span
 								className={iconWrapperClasses}
 								style={{ background: this.props.categoryIcon.background }}
 							>
 								<Icon
+									category="utility"
 									{...this.props.categoryIcon}
 									className={iconClasses}
 								/>

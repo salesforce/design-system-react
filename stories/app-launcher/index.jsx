@@ -17,7 +17,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: '',
 					appName: 'Home',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'home',
 						background: '#ED8B00',
 						SVGViewBox: '0 0 19 20',
@@ -43,7 +43,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: '',
 					appName: 'Pulse',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'dashboard',
 						background: '#ED8B00',
 						SVGViewBox: '0 0 26 26',
@@ -70,7 +70,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Playbooks',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'playbooks',
 						background: '#ED8B00',
 						SVGViewBox: '0 0 20 20',
@@ -108,7 +108,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Calendar',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'calendar',
 						background: '#ED8B00',
 						SVGViewBox: '0 0 18 20',
@@ -135,7 +135,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Campaigns',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'campaigns',
 						background: '#ED8B00',
 						SVGViewBox: '0 0 21 22',
@@ -162,7 +162,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: '',
 					appName: 'App w/ no Access',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'dashboard',
 						background: '#F69D01',
 						SVGViewBox: '0 0 208 208',
@@ -198,7 +198,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'These are just a few of the words I want to say',
 					appName: 'Email Studio',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'emailstudio',
 						background: '#E99056',
 						SVGViewBox: '0 0 21 16',
@@ -241,7 +241,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'This sentence is exactly fifty characters long end',
 					appName: 'Distributed Sending',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'emailstudio',
 						background: '#E99056',
 						SVGViewBox: '0 0 21 16',
@@ -284,7 +284,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'This sentence is exactly eighty characters long and goes on and on in the last o.',
 					appName: 'MobilePush',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'mobilestudio',
 						background: '#0082E9',
 						SVGViewBox: '0 0 14 24',
@@ -329,7 +329,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'MobileConnect',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'mobilestudio',
 						background: '#0082E9',
 						SVGViewBox: '0 0 14 24',
@@ -374,7 +374,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'GroupConnect',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'mobilestudio',
 						background: '#0082E9',
 						SVGViewBox: '0 0 14 24',
@@ -419,7 +419,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Social Pages',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'socialstudio',
 						background: '#C17ECB',
 						SVGViewBox: '1 0 20 21',
@@ -464,7 +464,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Social Studio',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'socialstudio',
 						background: '#C17ECB',
 						SVGViewBox: '1 0 20 21',
@@ -509,7 +509,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Web & Mobile Analytics',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'analyticsbuilder',
 						background: '#4AB8AA',
 						SVGViewBox: '0 0 24 24',
@@ -567,7 +567,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Reports',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'analyticsbuilder',
 						background: '#4AB8AA',
 						SVGViewBox: '0 0 24 24',
@@ -625,7 +625,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Journey Builder',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'journeybuilder',
 						background: '#68AED3',
 						SVGViewBox: '0 0 17 23',
@@ -656,7 +656,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Platform',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'platform',
 						background: '#E2B90A',
 						SVGViewBox: '0 0 23 15',
@@ -687,7 +687,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'HubExchange',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'hubexchange',
 						background: '#DF6861',
 						SVGViewBox: '0 0 26 22',
@@ -723,7 +723,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Content Builder',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'contentbuilder',
 						background: '#7A79AC',
 						SVGViewBox: '0 0 24 28',
@@ -762,7 +762,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Advertising Studio',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'advertisingstudio',
 						background: '#DC6A87',
 						SVGViewBox: '0 0 25 24',
@@ -803,7 +803,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Web Studio',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'webstudio',
 						background: '#4EAE7D',
 						SVGViewBox: '0 0 22 18',
@@ -839,7 +839,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Audience Builder',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'audiencebuilder',
 						background: '#FD90B5',
 						SVGViewBox: '0 0 25 16',
@@ -880,7 +880,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Predictive Web',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'personalizationbuilder',
 						background: '#0079BC',
 						SVGViewBox: '0 0 24 24',
@@ -916,7 +916,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Predictive Email',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'personalizationbuilder',
 						background: '#D15878',
 						SVGViewBox: '0 0 24 24',
@@ -954,7 +954,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: '',
 					appName: 'Home',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'home',
 						background: '#ED8B00',
 						SVGViewBox: '0 0 19 20',
@@ -980,7 +980,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: '',
 					appName: 'Pulse',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'dashboard',
 						background: '#ED8B00',
 						SVGViewBox: '0 0 26 26',
@@ -1007,7 +1007,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Playbooks',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'playbooks',
 						background: '#ED8B00',
 						SVGViewBox: '0 0 20 20',
@@ -1045,7 +1045,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Calendar',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'calendar',
 						background: '#ED8B00',
 						SVGViewBox: '0 0 18 20',
@@ -1072,7 +1072,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Campaigns',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'campaigns',
 						background: '#ED8B00',
 						SVGViewBox: '0 0 21 22',
@@ -1099,7 +1099,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: '',
 					appName: 'App w/ no Access',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'dashboard',
 						background: '#F69D01',
 						SVGViewBox: '0 0 208 208',
@@ -1135,7 +1135,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'These are just a few of the words I want to say',
 					appName: 'Email Studio',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'emailstudio',
 						background: '#E99056',
 						SVGViewBox: '0 0 21 16',
@@ -1178,7 +1178,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'This sentence is exactly fifty characters long end',
 					appName: 'Distributed Sending',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'emailstudio',
 						background: '#E99056',
 						SVGViewBox: '0 0 21 16',
@@ -1221,7 +1221,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'This sentence is exactly eighty characters long and goes on and on in the last o.',
 					appName: 'MobilePush',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'mobilestudio',
 						background: '#0082E9',
 						SVGViewBox: '0 0 14 24',
@@ -1266,7 +1266,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'MobileConnect',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'mobilestudio',
 						background: '#0082E9',
 						SVGViewBox: '0 0 14 24',
@@ -1311,7 +1311,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'GroupConnect',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'mobilestudio',
 						background: '#0082E9',
 						SVGViewBox: '0 0 14 24',
@@ -1356,7 +1356,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Social Pages',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'socialstudio',
 						background: '#C17ECB',
 						SVGViewBox: '1 0 20 21',
@@ -1401,7 +1401,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Social Studio',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'socialstudio',
 						background: '#C17ECB',
 						SVGViewBox: '1 0 20 21',
@@ -1446,7 +1446,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Web & Mobile Analytics',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'analyticsbuilder',
 						background: '#4AB8AA',
 						SVGViewBox: '0 0 24 24',
@@ -1504,7 +1504,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Reports',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'analyticsbuilder',
 						background: '#4AB8AA',
 						SVGViewBox: '0 0 24 24',
@@ -1562,7 +1562,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Journey Builder',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'journeybuilder',
 						background: '#68AED3',
 						SVGViewBox: '0 0 17 23',
@@ -1593,7 +1593,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Platform',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'platform',
 						background: '#E2B90A',
 						SVGViewBox: '0 0 23 15',
@@ -1624,7 +1624,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'HubExchange',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'hubexchange',
 						background: '#DF6861',
 						SVGViewBox: '0 0 26 22',
@@ -1660,7 +1660,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Content Builder',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'contentbuilder',
 						background: '#7A79AC',
 						SVGViewBox: '0 0 24 28',
@@ -1699,7 +1699,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Advertising Studio',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'advertisingstudio',
 						background: '#DC6A87',
 						SVGViewBox: '0 0 25 24',
@@ -1740,7 +1740,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Web Studio',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'webstudio',
 						background: '#4EAE7D',
 						SVGViewBox: '0 0 22 18',
@@ -1776,7 +1776,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Audience Builder',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'audiencebuilder',
 						background: '#FD90B5',
 						SVGViewBox: '0 0 25 16',
@@ -1817,7 +1817,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Predictive Web',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'personalizationbuilder',
 						background: '#0079BC',
 						SVGViewBox: '0 0 24 24',
@@ -1853,7 +1853,7 @@ const DemoAppLauncher = React.createClass({
 					appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 					appName: 'Predictive Email',
 					categoryIcon: {
-						category: 'user_provided',
+						category: 'custom',
 						name: 'personalizationbuilder',
 						background: '#D15878',
 						SVGViewBox: '0 0 24 24',
