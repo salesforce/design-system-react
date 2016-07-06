@@ -2,6 +2,9 @@ import React from 'react';
 
 import { BREAD_CRUMB } from '../../utilities/constants';
 
+/**
+ * Breadcrumb based on SLDS 2.1.0-dev
+ */
 const BreadCrumb = (props) => {
 	const {
 		assistiveText,
@@ -9,13 +12,12 @@ const BreadCrumb = (props) => {
 	} = props;
 
 	return (
-		<nav role="navigation">
-			<p id="bread-crumb-label" className="slds-assistive-text">{assistiveText}</p>
-			<ol className="slds-breadcrumb slds-list--horizontal" aria-labelledby="bread-crumb-label">
+		<nav role='navigation' aria-label={assistiveText}>
+			<ol className='slds-breadcrumb slds-list--horizontal'>
 				{trail.map((crumb, index) =>
 					<li
 						key={`BreadCrumb.${index}`}
-						className="slds-list__item slds-text-heading--label"
+						className='slds-breadcrumb__item slds-text-title--caps'
 					>{crumb}</li>
 				)}
 			</ol>
@@ -34,6 +36,10 @@ BreadCrumb.propTypes = {
 	 * An array of react elements presumably anchor elements.
 	 */
 	trail: React.PropTypes.array
+};
+
+BreadCrumb.defaultProps = {
+  assistiveText: 'Breadcrumbs'
 };
 
 module.exports = BreadCrumb;
