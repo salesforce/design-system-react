@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // # Global Navigation Bar Component
 
 // Implements the [Global Navigation Bar design pattern](https://www.lightningdesignsystem.com/components/global-navigation#flavor-navigation-bar) in React.
-// Based on SLDS v2.1.0-dev
+// Based on SLDS v2.1.0-rc.2
 
 // ## Dependencies
 
