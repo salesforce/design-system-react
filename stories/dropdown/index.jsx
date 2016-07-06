@@ -6,6 +6,8 @@ import { storiesOf, action } from '@kadira/storybook';
 
 import { MENU_DROPDOWN } from '../../utilities/constants';
 import Dropdown from '../../components/menu-dropdown';
+import Button from '../../components/button';
+import Trigger from '../../components/menu-dropdown/button-trigger';
 
 const options = [
 	{ label: 'A Option Option Super Super Long', value: 'A0' },
@@ -24,14 +26,24 @@ const getDropdown = (props) => (
 	<Dropdown {...props} />
 );
 
+const getDropdownCustomTrigger = (props) => (
+	<Dropdown {...props} >
+		<Trigger>
+			<Button iconCategory="utility" iconName="settings" />
+		</Trigger>
+	</Dropdown>
+);
+
 storiesOf(MENU_DROPDOWN, module)
-	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator(getStory => <div className="slds-p-around--medium slds-text-align--center">{getStory()}</div>)
 	.add('Base', () => getDropdown({
 		align: 'right',
-		label: 'Dropdown Click',
 		onSelect: (value) => {
 			action('Selected', value);
 		},
+		options
+	}))
+	.add('Custom Trigger', () => getDropdownCustomTrigger({
 		options
 	}))
 	.add('Hover', () => getDropdown({

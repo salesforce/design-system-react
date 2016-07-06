@@ -20,6 +20,10 @@ import ReactDOM from 'react-dom';
 // ### Children
 import Popover from '../popover';
 import Button from '../button';
+
+// This is the the default Dropdown Trigger, which expects one button as a child.
+import DefaultTrigger from './button-trigger';
+
 import List from '../menu-list/list';
 import ListItem from '../menu-list/list-item';
 import ListItemLabel from '../menu-list/list-item-label';
@@ -65,6 +69,17 @@ const MenuDropdown = React.createClass({
 		 * If true, renders checkmark icon on the selected Menu Item.
 		 */
 		checkmark: PropTypes.bool,
+		/**
+		 * If no children are present, a default button will be rendered with an arrow. Import the module `design-system-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button:
+		 * ```
+		 * <Dropdown>
+		 *   <Trigger>
+		 *     <Button iconCategory="utility" iconName="settings" />
+		 *   </Trigger>
+		 * </Dropdown>
+		 * ```
+		 */
+		children: PropTypes.node,
 		/**
 		 * CSS classes to be added to dropdown menu container. By default, It will be added to the `Popover` component.
 		 */
@@ -209,9 +224,9 @@ const MenuDropdown = React.createClass({
 		} else if (this.state.isFocused && !prevState.isFocused) {
 			this.close();
 		} else if (!this.state.isFocused && prevState.isFocused) {
-			if (this.refs.list) {
-				if (!this.isUnmounting && this.refs.list) {
-					if (!ReactDOM.findDOMNode(this.refs.list).contains(document.activeElement)) {
+			if (this.list) {
+				if (!this.isUnmounting && this.list) {
+					if (!ReactDOM.findDOMNode(this.listf).contains(document.activeElement)) {
 						this.close();
 					}
 				}
@@ -231,10 +246,6 @@ const MenuDropdown = React.createClass({
 
 	componentWillUnmount () {
 		this.isUnmounting = true;
-	},
-
-	getButtonNode () {
-		return ReactDOM.findDOMNode(this.refs.button);
 	},
 
 	getIndexByValue (value) {
@@ -379,8 +390,8 @@ const MenuDropdown = React.createClass({
 	},
 
 	setFocus () {
-		if (!this.isUnmounting) {
-			ReactDOM.findDOMNode(this.getButtonNode()).focus();
+		if (!this.isUnmounting && this.button) {
+			ReactDOM.findDOMNode(this.button).focus();
 		}
 	},
 
@@ -397,7 +408,7 @@ const MenuDropdown = React.createClass({
 				onSelect={this.handleSelect}
 				onUpdateHighlighted={this.handleUpdateHighlighted}
 				options={this.props.options}
-				ref="list"
+				ref={(component) => { this.list = component; }}
 				selectedIndex={this.state.selectedIndex}
 				triggerId={this.props.id}
 			/>
@@ -406,11 +417,11 @@ const MenuDropdown = React.createClass({
 
 	renderSimplePopover () {
 		return (
-			!this.props.disabled && this.state.isOpen ?
+			!this.props.disabled && this.state.isOpen && this.button ?
 				<div
 					className={classnames('slds-dropdown', 'slds-dropdown--menu', 'slds-dropdown--left', this.props.className)}
-					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter.bind(this) : null}
-					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave.bind(this) : null}
+					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
+					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
 				>
 					{this.renderPopoverContent()}
 				</div> : null
@@ -419,7 +430,7 @@ const MenuDropdown = React.createClass({
 
 	renderModalPopover () {
 		return (
-			!this.props.disabled && this.state.isOpen ?
+			!this.props.disabled && this.state.isOpen && this.button ?
 				<Popover
 					className={classnames('slds-dropdown',
 						'slds-dropdown--menu',
@@ -430,7 +441,7 @@ const MenuDropdown = React.createClass({
 					horizontalAlign={this.props.align}
 					flippable
 					onClose={this.handleCancel}
-					targetElement={this.refs.button}
+					targetElement={this.button}
 				>
 					{this.renderPopoverContent()}
 				</Popover> : null
@@ -438,8 +449,22 @@ const MenuDropdown = React.createClass({
 	},
 
 	render () {
+		// Trigger manipulation
+		let CurrentTrigger = DefaultTrigger;
+		let CustomTriggerChildProps = {};
+
+		// Dropdown can take a Trigger component as a child and then return it as the parent DOM element.
+		React.Children.forEach(this.props.children, (child) => {
+			if (child && child.type.displayName === 'Trigger') {
+				// `CustomTriggerChildProps` is not used by the default button Trigger, but by other triggers
+				CustomTriggerChildProps = child.props;
+				CurrentTrigger = child.type;
+			}
+		});
+
 		return (
-			<Button
+			<CurrentTrigger
+				{...CustomTriggerChildProps}
 				aria-haspopup="true"
 				assistiveText={this.props.assistiveText}
 				className={this.props.buttonClassName}
@@ -456,14 +481,13 @@ const MenuDropdown = React.createClass({
 				onMouseDown={this.props.openOn === 'click' ? this.handleMouseDown : null}
 				onMouseEnter={this.props.openOn === 'hover' ? this.handleMouseEnter : null}
 				onMouseLeave={this.props.openOn === 'hover' ? this.handleMouseLeave : null}
-				ref="button"
+				ref={(component) => { this.button = component; }}
 				style={this.props.style}
 				tabIndex={this.state.isOpen ? '-1' : '0'}
 				variant={this.props.buttonVariant}
 				tooltip={this.props.tooltip}
-			>
-				{this.props.modal ? this.renderModalPopover() : this.renderSimplePopover()}
-			</Button>
+				menu={this.props.modal ? this.renderModalPopover() : this.renderSimplePopover()}
+			/>
 		);
 	}
 
