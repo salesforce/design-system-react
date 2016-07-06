@@ -9,57 +9,47 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # Breadcrumbs
-
-// Implements the [Breadcrumbs design pattern](https://www.lightningdesignsystem.com/components/breadcrumbs) in React.
-// Based on SLDS v2.1.0-rc.2
+// # Global Header Button Component
 
 // ## Dependencies
 
 // ### React
 import React from 'react';
 
+// ### GlobalHeaderDropdown
+import GlobalHeaderDropdown from './dropdown';
+
 // ## Constants
-import { BREAD_CRUMB } from '../../utilities/constants';
+import { GLOBAL_HEADER_PROFILE } from '../../utilities/constants';
 
 /**
- * Use breadcrumbs to note the path of a record and help the user to navigate back to the parent.Breadcrumb based on SLDS 2.1.0-dev
+ * A helper component that renders a MenuDropdown for the user profile.
  */
-const BreadCrumb = (props) => {
-	const {
-		assistiveText,
-		trail
-	} = props;
+const GlobalHeaderProfile = (props) => {
+	// Temporary default profile until images are available
+	const tempProfileIcon = {};
+	if (!props.imgSrc) {
+		tempProfileIcon.iconCategory = 'utility';
+		tempProfileIcon.iconName = 'user';
+		tempProfileIcon.iconSize = 'large';
+	}
 
 	return (
-		<nav role="navigation" aria-label={assistiveText}>
-			<ol className="slds-breadcrumb slds-list--horizontal">
-				{trail.map((crumb, index) =>
-					<li
-						key={`BreadCrumb.${index}`}
-						className="slds-breadcrumb__item slds-text-title--caps"
-					>{crumb}</li>
-				)}
-			</ol>
-		</nav>
+		<GlobalHeaderDropdown
+			className="slds-m-left--x-small"
+			{...tempProfileIcon}
+			{...props}
+		/>
 	);
 };
 
-BreadCrumb.displayName = BREAD_CRUMB;
+GlobalHeaderProfile.displayName = GLOBAL_HEADER_PROFILE;
 
-BreadCrumb.propTypes = {
+GlobalHeaderProfile.propTypes = {
 	/**
-	 * The assistive text for the breadcrumb trail
+	 * An image to display for the profile instead of a standard icon.
 	 */
-	assistiveText: React.PropTypes.string,
-	/**
-	 * An array of react elements presumably anchor elements.
-	 */
-	trail: React.PropTypes.array
+	imgSrc: React.PropTypes.string
 };
 
-BreadCrumb.defaultProps = {
-	assistiveText: 'Breadcrumbs'
-};
-
-module.exports = BreadCrumb;
+export default GlobalHeaderProfile;

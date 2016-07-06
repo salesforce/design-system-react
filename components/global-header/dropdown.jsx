@@ -9,57 +9,68 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # Breadcrumbs
-
-// Implements the [Breadcrumbs design pattern](https://www.lightningdesignsystem.com/components/breadcrumbs) in React.
-// Based on SLDS v2.1.0-rc.2
+// # Global Header Button Component
 
 // ## Dependencies
 
 // ### React
 import React from 'react';
 
+// ### classNames
+import classNames from 'classnames';
+
+// ### MenuDropdown
+import MenuDropdown from '../menu-dropdown';
+
 // ## Constants
-import { BREAD_CRUMB } from '../../utilities/constants';
+import { GLOBAL_HEADER_TOOL } from '../../utilities/constants';
+
+// Removes the need for `PropTypes`.
+const { PropTypes } = React;
 
 /**
- * Use breadcrumbs to note the path of a record and help the user to navigate back to the parent.Breadcrumb based on SLDS 2.1.0-dev
+ * A helper component that renders a MenuDropdown in the tools area of the Global Header. Currently defaults to a bare icon, but this can be overriden.
  */
-const BreadCrumb = (props) => {
+const GlobalHeaderDropdown = (props) => {
 	const {
-		assistiveText,
-		trail
+		align,
+		className,
+		dropdownClassName,
+		...rest
 	} = props;
 
 	return (
-		<nav role="navigation" aria-label={assistiveText}>
-			<ol className="slds-breadcrumb slds-list--horizontal">
-				{trail.map((crumb, index) =>
-					<li
-						key={`BreadCrumb.${index}`}
-						className="slds-breadcrumb__item slds-text-title--caps"
-					>{crumb}</li>
-				)}
-			</ol>
-		</nav>
+		<li className={classNames('slds-dropdown-trigger slds-dropdown-trigger--click', className)}>
+			<MenuDropdown
+				align={align}
+				buttonVariant="icon"
+				className={classNames(`slds-nubbin--top-${align}`, dropdownClassName)}
+				iconVariant="bare"
+				{...rest}
+			/>
+		</li>
 	);
 };
 
-BreadCrumb.displayName = BREAD_CRUMB;
+GlobalHeaderDropdown.displayName = GLOBAL_HEADER_TOOL;
 
-BreadCrumb.propTypes = {
+GlobalHeaderDropdown.propTypes = {
 	/**
-	 * The assistive text for the breadcrumb trail
+	 * The side of the triggering element that the menu should align itself with.
 	 */
-	assistiveText: React.PropTypes.string,
+	align: PropTypes.oneOf(['right', 'left']),
 	/**
-	 * An array of react elements presumably anchor elements.
+	 * Extra classnames to apply to the `<li />`.
 	 */
-	trail: React.PropTypes.array
+	className: PropTypes.string,
+	/**
+	 * Extra classnames to apply to the dropdown.
+	 */
+	dropdownClassName: PropTypes.string
 };
 
-BreadCrumb.defaultProps = {
-	assistiveText: 'Breadcrumbs'
+GlobalHeaderDropdown.defaultProps = {
+	align: 'right'
 };
 
-module.exports = BreadCrumb;
+export default GlobalHeaderDropdown;

@@ -15,13 +15,13 @@ import chaiEnzyme from 'chai-enzyme';
 import { mountComponent, unmountComponent } from '../enzyme-helpers';
 
 // sample props and children
-import { dropdownCollection, propSets } from '../../utilities/sample-data/context-bar';
+import { dropdownCollection, propSets } from '../../utilities/sample-data/global-navigation-bar';
 
-import ContextBar from '../../components/context-bar';
-import ContextBarRegion from '../../components/context-bar/region';
-import ContextBarAppLauncher from '../../components/context-bar/app-launcher';
-import ContextBarDropdown from '../../components/context-bar/dropdown';
-import ContextBarLink from '../../components/context-bar/link';
+import GlobalNavigationBar from '../../components/global-navigation-bar';
+import GlobalNavigationBarRegion from '../../components/global-navigation-bar/region';
+import GlobalNavigationBarAppLauncher from '../../components/global-navigation-bar/app-launcher';
+import GlobalNavigationBarDropdown from '../../components/global-navigation-bar/dropdown';
+import GlobalNavigationBarLink from '../../components/global-navigation-bar/link';
 
 chai.use(chaiEnzyme());
 
@@ -37,7 +37,7 @@ const REGION_CSS_CLASSES = {
 	appName: 'slds-context-bar__app-name'
 };
 
-describe('Context Bar: ', () => {
+describe('Global Navigation Bar: ', () => {
 	// Base defaults
 	// no required props
 
@@ -46,7 +46,7 @@ describe('Context Bar: ', () => {
 	 */
 	describe('Default Structure', () => {
 		beforeEach(mountComponent(
-			<ContextBar />
+			<GlobalNavigationBar />
 		));
 
 		afterEach(unmountComponent);
@@ -62,7 +62,7 @@ describe('Context Bar: ', () => {
 		const customThemeProps = propSets.lightTheme.props;
 
 		beforeEach(mountComponent(
-			<ContextBar {...customCloudProps} {...customThemeProps} />
+			<GlobalNavigationBar {...customCloudProps} {...customThemeProps} />
 		));
 
 		afterEach(unmountComponent);
@@ -81,46 +81,46 @@ describe('Context Bar: ', () => {
 		const appLauncherClicked = () => {};
 		const linkClicked = () => {};
 		const dropdownItemClicked = () => {};
-		
+
 		beforeEach(mountComponent(
-			<ContextBar {...props}>
-				<ContextBarRegion
+			<GlobalNavigationBar {...props}>
+				<GlobalNavigationBarRegion
 					region="primary"
 				>
-					<ContextBarAppLauncher
+					<GlobalNavigationBarAppLauncher
 						{...primaryRegionProps.appLauncher}
 						onClick={appLauncherClicked('Application name clicked (Open App Launcher).')}
 					>
 						{primaryRegionProps.appLauncher.customChild ? primaryRegionProps.appLauncher.customChild() : null}
-					</ContextBarAppLauncher>
-				</ContextBarRegion>
-				<ContextBarRegion region="secondary" navigation>
-					<ContextBarLink
+					</GlobalNavigationBarAppLauncher>
+				</GlobalNavigationBarRegion>
+				<GlobalNavigationBarRegion region="secondary" navigation>
+					<GlobalNavigationBarLink
 						href="#"
 						label="Home"
 						id="home-link"
 						onClick={linkClicked('Home link clicked')}
 					/>
-					<ContextBarDropdown
+					<GlobalNavigationBarDropdown
 						id="primaryDropdown"
-						label="Context Menu Item 1"
+						label="Global Navigation Menu Item 1"
 						onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
 						options={dropdownCollection}
 					/>
-					<ContextBarLink
+					<GlobalNavigationBarLink
 						href="#"
-						label="Context Menu Item 2"
+						label="Global Navigation Menu Item 2"
 						onClick={linkClicked('Link clicked')}
 					/>
-				</ContextBarRegion>
-				<ContextBarRegion region="tertiary">
-					<ContextBarLink
+				</GlobalNavigationBarRegion>
+				<GlobalNavigationBarRegion region="tertiary">
+					<GlobalNavigationBarLink
 						href="#"
 						label="Actions"
 						onClick={linkClicked('Link clicked')}
 					/>
-				</ContextBarRegion>
-			</ContextBar>
+				</GlobalNavigationBarRegion>
+			</GlobalNavigationBar>
 		));
 
 		afterEach(unmountComponent);
@@ -155,14 +155,14 @@ describe('Context Bar: ', () => {
 
 			const appLauncherClicked = sinon.spy();
 			const instance = (
-				<ContextBarRegion
+				<GlobalNavigationBarRegion
 					region="primary"
 				>
-					<ContextBarAppLauncher
+					<GlobalNavigationBarAppLauncher
 						onClick={appLauncherClicked('Application name clicked (Open App Launcher).')}
 						{...primaryRegionProps.appLauncher}
 					/>
-				</ContextBarRegion>
+				</GlobalNavigationBarRegion>
 			);
 
 			this.wrapper = mount(instance, { attachTo: document.body.appendChild(document.createElement('div')) });
@@ -177,7 +177,7 @@ describe('Context Bar: ', () => {
 
 	describe('Secondary Region', () => {
 		beforeEach(mountComponent(
-			<ContextBarRegion region="secondary" />
+			<GlobalNavigationBarRegion region="secondary" />
 		));
 
 		afterEach(unmountComponent);
@@ -191,7 +191,7 @@ describe('Context Bar: ', () => {
 	// you'd never actually do this, it's for code coverage
 	describe('Empty Region', () => {
 		beforeEach(mountComponent(
-			<ContextBarRegion />
+			<GlobalNavigationBarRegion />
 		));
 
 		afterEach(unmountComponent);
@@ -204,11 +204,11 @@ describe('Context Bar: ', () => {
 
 	// // TODO still need Dropdown covered. Should be added to Dropdown tests, once special context bar dropdown features are merged into Dropdown
 
-	describe('ContextLink child component', () => {
-		it('ContextBarLink has attributes and onClick runs callback', function () {
+	describe('GlobalNavigationLink child component', () => {
+		it('GlobalNavigationBarLink has attributes and onClick runs callback', function () {
 			const linkClicked = sinon.spy();
 			const instance = (
-				<ContextBarLink
+				<GlobalNavigationBarLink
 					label="Home"
 					id="home-link"
 					onClick={linkClicked('Home link clicked')}

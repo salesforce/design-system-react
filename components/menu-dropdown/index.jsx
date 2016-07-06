@@ -324,6 +324,7 @@ class MenuDropdown extends React.Component {
         hint={this.props.hint}
         iconName={this.props.iconName}
         iconVariant={this.props.iconVariant}
+        iconSize={this.props.iconSize}
         id={this.props.id}
         label={this.props.label}
         onBlur={this.props.openOn === "hover" ? this.handleBlur.bind(this):null}
