@@ -112,5 +112,5 @@ const DemoCard = React.createClass({
 
 storiesOf(CARD, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('w/ items', () => <DemoCard items={sampleItems} />)
+	.add('w/ Items', () => <DemoCard items={sampleItems} />)
 	.add('Empty', () => <DemoCard items={[]} />);
