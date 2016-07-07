@@ -57,11 +57,79 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 		</GlobalNavigationBarRegion>
 	</GlobalNavigationBar>
 );
+const getGlobalNavigationBarCustomCloud = (props, primaryRegionProps) => (
+	<GlobalNavigationBar {...props}>
+		<GlobalNavigationBarRegion
+			region="primary"
+		>
+			<GlobalNavigationBarAppLauncher
+				onClick={appLauncherClicked('Application name clicked (Open App Launcher).')}
+				{...primaryRegionProps.appLauncher}
+			>
+				{primaryRegionProps.appLauncher.customChild ? primaryRegionProps.appLauncher.customChild() : null}
+			</GlobalNavigationBarAppLauncher>
+		</GlobalNavigationBarRegion>
+		<GlobalNavigationBarRegion region="secondary" navigation>
+			<GlobalNavigationBarLink
+				href="#"
+				label="Overview"
+				id="overview-link"
+				onClick={linkClicked('Overview link clicked')}
+			/>
+			<GlobalNavigationBarDropdown
+				id="contentDropdown"
+				label="Content"
+				onSelect={dropdownItemClicked('Content Menu Item clicked')}
+				options={dropdownCollection}
+			/>
+			<GlobalNavigationBarDropdown
+				id="subscribersDropdown"
+				label="Subscribers"
+				onSelect={dropdownItemClicked('Subscribers Menu Item clicked')}
+				options={dropdownCollection}
+			/>
+			<GlobalNavigationBarDropdown
+				id="interactionDropdown"
+				label="Interaction"
+				onSelect={dropdownItemClicked('Interaction Menu Item clicked')}
+				options={dropdownCollection}
+			/>
+			<GlobalNavigationBarLink
+				href="#"
+				label="A/B Testing"
+				onClick={linkClicked('A/B Testing Link clicked')}
+			/>
+			<GlobalNavigationBarDropdown
+				id="trackingDropdown"
+				label="Tracking"
+				onSelect={dropdownItemClicked('Tracking Menu Item clicked')}
+				options={dropdownCollection}
+			/>
+			<GlobalNavigationBarLink
+				href="#"
+				label="Admin"
+				onClick={linkClicked('Admin Link clicked')}
+			/>
+			<GlobalNavigationBarLink
+				href="#"
+				label="Audience Builder"
+				onClick={linkClicked('Audience Builder Link clicked')}
+			/>
+		</GlobalNavigationBarRegion>
+		<GlobalNavigationBarRegion region="tertiary">
+			<GlobalNavigationBarLink
+				href="#"
+				label="Actions"
+				onClick={linkClicked('Link clicked')}
+			/>
+		</GlobalNavigationBarRegion>
+	</GlobalNavigationBar>
+);
 
 storiesOf(GLOBAL_NAVIGATION_BAR, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Base', () => getGlobalNavigationBar(propSets.base.props, propSets.base.primaryRegionProps))
-	.add('Custom Cloud', () => getGlobalNavigationBar(propSets.customCloud.props, propSets.customCloud.primaryRegionProps
+	.add('Custom Cloud', () => getGlobalNavigationBarCustomCloud(propSets.customCloud.props, propSets.customCloud.primaryRegionProps
 ))
 	.add('Light Theme', () => getGlobalNavigationBar(propSets.lightTheme.props, propSets.lightTheme.primaryRegionProps));
 

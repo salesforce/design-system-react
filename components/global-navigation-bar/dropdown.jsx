@@ -93,9 +93,9 @@ class GlobalNavigationBarDropdown extends Dropdown {
 						disabled={this.props.disabled}
 						hint={this.props.hint}
 						iconCategory={triggerIconCategory || 'utility'}
-						iconName={triggerIconName || 'down'}
+						iconName={triggerIconName || 'chevrondown'}
 						iconVariant="bare"
-						iconSize="x-small"
+						iconSize="small"
 						id={this.state.triggerId}
 						onKeyDown={this.handleKeyDown.bind(this)}
 						ref="button"
