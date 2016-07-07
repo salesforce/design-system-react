@@ -14,98 +14,128 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 // React is an external dependency of the project.
 import React, { PropTypes } from 'react';
-
-// ### classNames
-// [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
-// This project uses `classnames`, "a simple javascript utility for conditionally
-// joining classNames together."
-import classNames from 'classnames';
-
-// [Button](../button.html)
 import Button from '../button';
 
-// ## DropdownObject
+// ### Children
+import { MENU_DROPDOWN_BUTTON_TRIGGER } from '../../utilities/constants';
+
+/**
+ *  The Dropdown Button Trigger renders the default trigger button for the dropdown menu. If this component has children, it does not render itself to the DOM. Instead, it renders its child element, `Button`, and all that child's properties. This component may be used as a template to create custom triggers that do not use `Button`.
+ */
 const Trigger = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
 	// display name.
-	displayName: 'Trigger',
+	displayName: MENU_DROPDOWN_BUTTON_TRIGGER,
 
 	// ### Prop Types
 	propTypes: {
 		/**
-		 * Takes a Button component as a child.
+		 * Import the module `design-system-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the triggering button. Any `id` prop or event hanlders (`onBlur`, `onClick`, etc.) set on the button grandchild will be overwritten by `MenuDropdown` to allow functionality and accessibility.
+		 * ```
+		 * <Dropdown>
+		 *   <Trigger>
+		 *     <Button iconCategory="utility" iconName="settings" />
+		 *   </Trigger>
+		 * </Dropdown>
+		 * ```
 		 */
 		children: PropTypes.element,
 		/**
-		 * Class names added to trigger wrapping tag.
+		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button. This is provided by the `MenuDropdown`. Please use `MenuDropdown` to set.
+		*/
+		id: PropTypes.string,
+		/**
+		* The dropdown menu which is typically a `Popover` component.
+		*/
+		menu: PropTypes.node,
+		/**
+		 * Is only called when `openOn` is set to `hover` and when the triggering button loses focus.
 		 */
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-		id: PropTypes.string
+		onBlur: PropTypes.func,
+		/**
+		 * This prop is passed onto the triggering `Button`. Triggered when the trigger button is clicked.
+		 */
+		onClick: PropTypes.func,
+		/**
+		 * Is only called when `openOn` is set to `hover` and when the triggering button gains focus.
+		 */
+		onFocus: PropTypes.func,
+		/**
+		 * Determines if mouse hover or click opens the dropdown menu. The default of `click` is highly recommended to comply with accessibility standards. If you are planning on using hover, please pause a moment and reconsider.
+		 */
+		openOn: PropTypes.oneOf(['hover', 'click']),
+		/**
+		 * Called when a key pressed.
+		 */
+		onKeyDown: PropTypes.func,
+		/**
+		 * Called when mouse clicks down on the trigger button.
+		 */
+		onMouseDown: PropTypes.func,
+		/**
+		 * Called when mouse hovers over the trigger button. This is only called if `this.props.openOn` is set to `hover`.
+		 */
+		onMouseEnter: PropTypes.func,
+		/**
+		 * Called when mouse hover leaves the trigger button. This is only called if `this.props.openOn` is set to `hover`.
+		 */
+		onMouseLeave: PropTypes.func
 	},
 
-	getDefaultProps () {
-		return {
-			ariaHaspopup: true,
-			iconCategory: 'utility',
-			iconName: 'down',
-			iconPosition: 'right',
-			iconStyle: 'icon-border-filled',
-			buttonClassName: null
-		};
-	},
+	// Adding defaults, so a "no prop" dropdown menu is not a gray
+	// little line for an empty button may be a good idea in the future.
+	// defaultProps = {
+	// 	iconCategory: 'utility',
+	// 	iconName: 'down'
+	// };
 
-	renderDefaultButton (customProps = {}) {
-		return (
-			<Button
-				aria-haspopup="true"
-				assistiveText={this.props.assistiveText}
-				className={this.props.className}
-				disabled={this.props.disabled}
-				hint={this.props.hint}
-				iconName={this.props.iconName}
-				iconVariant={this.props.iconVariant}
-				id={this.props.id}
-				label={this.props.label}
-				onBlur={this.props.onBlur}
-				onClick={this.props.onClick}
-				onFocus={this.props.onFocus}
-				onKeyDown={this.props.onKeyDown}
-				onMouseDown={this.props.onMouseDown}
-				onMouseEnter={this.props.onMouseEnter}
-				onMouseLeave={this.props.onMouseLeave}
-				ref="button"
-				style={this.props.style}
-				tabIndex={this.props.tabIndex}
-				variant={this.props.variant}
-				tooltip={this.props.tooltip}
-				{...customProps}
-			>
-				{this.props.menu}
-			</Button>
-			);
-	},
+	// ### Render
+	render () {
+		// The following are required for use with dropdown. Any other custom props for `Button` should be set with a `Button` child of this component, and are technically just here for backwards compatibility. See `children` prop description for more information.
+		const {
+			id,
+			onBlur,
+			menu,
+			onClick,
+			onFocus,
+			onKeyDown,
+			onMouseDown,
+			onMouseEnter,
+			onMouseLeave,
+			...deprecatedPropsFromMenuDropdown
+		} = this.props;
 
-	renderButton () {
 		// Trigger manipulation
-		let ChildButton = null;
-		if (React.Children.count(this.props.children) === 0) {
-			ChildButton = this.renderDefaultButton();
-		} else {
-			// Button Trigger can take a Button child
+		let propsFromGrandchildButton = {};
+		// if there are no children, render the default button
+		if (React.Children.count(this.props.children) !== 0) {
 			React.Children.forEach(this.props.children, (child) => {
 				if (child && child.type.displayName === Button.displayName) {
-					ChildButton = this.renderDefaultButton(child.props);
+					propsFromGrandchildButton = child.props;
 				}
 			});
 		}
 
-		return ChildButton;
-	},
-
-	// ### Render
-	render () {
-		return this.renderButton();
+		return (
+			<Button
+				aria-haspopup="true"
+				{...deprecatedPropsFromMenuDropdown}
+				{...propsFromGrandchildButton}
+				// If Trigger has a Button child, then use it's props layered
+				// on top of those passed down by dropdown
+				id={id}
+				onBlur={onBlur}
+				onClick={onClick}
+				onFocus={onFocus}
+				onKeyDown={onKeyDown}
+				onMouseDown={onMouseDown}
+				onMouseEnter={onMouseEnter}
+				onMouseLeave={onMouseLeave}
+			>
+				{menu}
+			</Button>
+		);
 	}
 });
 
