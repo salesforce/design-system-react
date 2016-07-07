@@ -18,44 +18,57 @@ const dropdownItemClicked = action;
 
 /* eslint-disable react/display-name */
 const getContextBar = (props, primaryRegionProps) => (
-	<ContextBar {...props}>
-		<ContextBarRegion
-			region="primary"
-		>
-			<ContextBarAppLauncher
-				onClick={appLauncherClicked('Application name clicked (Open App Launcher).')}
-				{...primaryRegionProps.appLauncher}
+	<div>
+		<ContextBar {...props}>
+			<ContextBarRegion
+				region="primary"
 			>
-				{primaryRegionProps.appLauncher.customChild ? primaryRegionProps.appLauncher.customChild() : null}
-			</ContextBarAppLauncher>
-		</ContextBarRegion>
-		<ContextBarRegion region="secondary" navigation>
-			<ContextBarLink
-				href="#"
-				label="Home"
-				id="home-link"
-				onClick={linkClicked('Home link clicked')}
-			/>
-			<ContextBarDropdown
-				id="primaryDropdown"
-				label="Context Menu Item 1"
-				onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
-				options={dropdownCollection}
-			/>
-			<ContextBarLink
-				href="#"
-				label="Context Menu Item 2"
-				onClick={linkClicked('Link clicked')}
-			/>
-		</ContextBarRegion>
-		<ContextBarRegion region="tertiary">
-			<ContextBarLink
-				href="#"
-				label="Actions"
-				onClick={linkClicked('Link clicked')}
-			/>
-		</ContextBarRegion>
-	</ContextBar>
+				<ContextBarAppLauncher
+					onClick={appLauncherClicked('Application name clicked (Open App Launcher).')}
+					{...primaryRegionProps.appLauncher}
+				>
+					{primaryRegionProps.appLauncher.customChild ? primaryRegionProps.appLauncher.customChild() : null}
+				</ContextBarAppLauncher>
+			</ContextBarRegion>
+			<ContextBarRegion region="secondary" navigation>
+				<ContextBarLink
+					href="#"
+					label="Home"
+					id="home-link"
+					onClick={linkClicked('Home link clicked')}
+				/>
+				<ContextBarDropdown
+					id="primaryDropdown"
+					label="Menu Item 1"
+					onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
+					options={dropdownCollection}
+				/>
+				<ContextBarLink
+					href="#"
+					label="Menu Item 2"
+					onClick={linkClicked('Link clicked')}
+				/>
+				<ContextBarLink
+					active
+					href="#"
+					label="Menu Item 3"
+					onClick={linkClicked('Link clicked')}
+				/>
+				<ContextBarLink
+					href="#"
+					label="Menu Item 4"
+					onClick={linkClicked('Link clicked')}
+				/>
+			</ContextBarRegion>
+			<ContextBarRegion region="tertiary">
+				<ContextBarLink
+					href="#"
+					label="Actions"
+					onClick={linkClicked('Link clicked')}
+				/>
+			</ContextBarRegion>
+		</ContextBar>
+	</div>
 );
 
 storiesOf(CONTEXT_BAR, module)
