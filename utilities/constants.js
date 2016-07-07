@@ -36,6 +36,7 @@ export const ICON = 'SLDSIcon';
 export const ICON_BUTTON = 'SLDSIconButton';
 export const ICON_INPUT = 'SLDSIconInput';
 export const LIST = 'SLDSList';
+export const LIST_ITEM = 'SLDSListItem';
 export const LOOKUP = 'SLDSLookup';
 export const MEDIA_OBJECT = 'SLDSMediaObject';
 export const MENU_DROPDOWN = 'SLDSMenuDropdown';

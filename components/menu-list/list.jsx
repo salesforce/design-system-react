@@ -9,8 +9,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // # List Component
 
-// Implements the [Data Table design pattern](https://www.lightningdesignsystem.com/components/data-tables) in React.
-
 // ## Dependencies
 
 // ### React
