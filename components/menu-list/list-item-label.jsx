@@ -7,48 +7,58 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+// # List Item Label Component
+
+// ## Dependencies
+
+// ### React
 import React from 'react';
+
+// ### Icon
 import Icon from '../icon';
 
-const displayName = "SLDSList-Item-Label";
-const propTypes = {
-  data: React.PropTypes.object,
-  index: React.PropTypes.number,
-  inverted: React.PropTypes.bool,
-  isHighlighted: React.PropTypes.bool,
-  isSelected: React.PropTypes.bool,
-  label: React.PropTypes.string,
-  value: React.PropTypes.any,
+// ## Constants
+import { LIST_ITEM_LABEL } from '../../utilities/constants';
+
+/**
+ * Component description.
+ */
+const ListItemLabel = (props) => (
+	<p className="slds-truncate">
+		{props.checkmark
+			? <Icon
+				name="check"
+				position="left"
+				category="utility"
+				size="x-small"
+				className="slds-icon--selected slds-icon-text-default slds-m-right--x-small"
+			/>
+			: null
+		}
+		{props.label}
+	</p>
+);
+
+ListItemLabel.displayName = LIST_ITEM_LABEL;
+
+ListItemLabel.propTypes = {
+	data: React.PropTypes.object,
+	index: React.PropTypes.number,
+	inverted: React.PropTypes.bool,
+	isHighlighted: React.PropTypes.bool,
+	isSelected: React.PropTypes.bool,
+	label: React.PropTypes.string,
+	value: React.PropTypes.any
 };
-const defaultProps = {
-  data: {},
-  index: 0,
-  inverted: false,
-  isHighlighted: false,
-  isSelected: false,
-  label: '',
-  value: null,
+
+ListItemLabel.defaultProps = {
+	data: {},
+	index: 0,
+	inverted: false,
+	isHighlighted: false,
+	isSelected: false,
+	label: '',
+	value: null
 };
 
-class SLDSListItemLabel extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  render() {
-    return (
-      <p className='slds-truncate'>
-        {this.props.checkmark ? <Icon name='check' position='left' category='utility' size="x-small" className="slds-icon--selected slds-icon-text-default slds-m-right--x-small" />: null}
-        {this.props.label}
-      </p>
-    )
-  }
-}
-
-SLDSListItemLabel.displayName = displayName;
-SLDSListItemLabel.propTypes = propTypes;
-SLDSListItemLabel.defaultProps = defaultProps;
-
-module.exports = SLDSListItemLabel;
-
+module.exports = ListItemLabel;
