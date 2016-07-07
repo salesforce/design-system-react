@@ -9,7 +9,7 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # ContextBar Link Component
+// # GlobalNavigationBar Link Component
 
 // ## Dependencies
 
@@ -26,12 +26,12 @@ import isFunction from 'lodash.isfunction';
 import { EventUtil } from '../../utilities';
 
 // ## Constants
-import { CONTEXT_BAR_LINK } from '../../utilities/constants';
+import { GLOBAL_NAVIGATION_BAR_LINK } from '../../utilities/constants';
 
 /**
- * Wraps a link in the proper markup to support use in the ContextBar.
+ * Wraps a link in the proper markup to support use in the GlobalNavigationBar.
  */
-const ContextBarLink = (props) => {
+const GlobalNavigationBarLink = (props) => {
 	// Separate props we care about in order to pass others along passively to the `a` tag
 	const {
 		active,
@@ -63,10 +63,10 @@ const ContextBarLink = (props) => {
 	);
 };
 
-ContextBarLink.displayName = CONTEXT_BAR_LINK;
+GlobalNavigationBarLink.displayName = GLOBAL_NAVIGATION_BAR_LINK;
 
 // ### Prop Types
-ContextBarLink.propTypes = {
+GlobalNavigationBarLink.propTypes = {
 	/**
 	 * Adds active item styling
 	 */
@@ -89,4 +89,4 @@ ContextBarLink.propTypes = {
 	onClick: PropTypes.func
 };
 
-module.exports = ContextBarLink;
+module.exports = GlobalNavigationBarLink;

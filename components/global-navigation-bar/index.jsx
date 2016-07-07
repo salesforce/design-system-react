@@ -9,9 +9,10 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # Context Bar Component
+// # Global Navigation Bar Component
 
-// Implements the [Context Bar design pattern](https://www.lightningdesignsystem.com/components/context-bar/) in React.
+// Implements the [Global Navigation Bar design pattern](https://www.lightningdesignsystem.com/components/global-navigation#flavor-navigation-bar) in React.
+// Based on SLDS v2.1.0-rc.2
 
 // ## Dependencies
 
@@ -22,20 +23,20 @@ import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 
 // ## Constants
-import { CONTEXT_BAR } from '../../utilities/constants';
+import { GLOBAL_NAVIGATION_BAR } from '../../utilities/constants';
 
 /**
- * Context Bar represents a list of links that either take the user to another page or parts of the page the user is in.
+ * Global Navigation Bar represents a list of links that either take the user to another page or parts of the page the user is in.
  */
-const ContextBar = React.createClass({
+const GlobalNavigationBar = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: CONTEXT_BAR,
+	displayName: GLOBAL_NAVIGATION_BAR,
 
 	// ### Prop Types
 	propTypes: {
 		/**
-		 * The items to be displayed in the ContextBar.
+		 * The items to be displayed in the Global Navigation Bar.
 		 */
 		children: PropTypes.node,
 		/**
@@ -71,4 +72,4 @@ const ContextBar = React.createClass({
 	}
 });
 
-module.exports = ContextBar;
+module.exports = GlobalNavigationBar;
