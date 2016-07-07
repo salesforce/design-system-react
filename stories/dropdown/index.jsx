@@ -38,19 +38,23 @@ storiesOf(MENU_DROPDOWN, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium slds-text-align--center">{getStory()}</div>)
 	.add('Base', () => getDropdown({
 		align: 'right',
-		onSelect: (value) => {
-			action('Selected', value);
+		label: 'Dropdown Click',
+		onSelect: (...rest) => {
+			action('Selected')(...rest);
 		},
 		options
 	}))
 	.add('Custom Trigger', () => getDropdownCustomTrigger({
+		label: 'Dropdown Click',
+		onSelect: (...rest) => {
+			action('Selected')(...rest);
+		},
 		options
 	}))
 	.add('Hover', () => getDropdown({
 		assistiveText: 'Icon More large',
 		buttonVariant: 'icon',
 		iconName: 'settings',
-		iconSize: 'large',
 		iconVariant: 'more',
 		openOn: 'hover',
 		options
