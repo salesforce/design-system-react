@@ -32,8 +32,9 @@ import { CONTEXT_BAR_LINK } from '../../utilities/constants';
  * Wraps a link in the proper markup to support use in the ContextBar.
  */
 const ContextBarLink = (props) => {
-	/* eslint-disable react/prop-types */
+	// Separate props we care about in order to pass others along passively to the `a` tag
 	const {
+		active,
 		className,
 		label,
 		onClick,
@@ -50,7 +51,7 @@ const ContextBarLink = (props) => {
 	}
 
 	return (
-		<li className="slds-context-bar__item">
+		<li className={classNames('slds-context-bar__item', { 'slds-is-active': active })}>
 			<a
 				className={classNames('slds-context-bar__label-action', className)}
 				onClick={handleClick}
@@ -66,6 +67,10 @@ ContextBarLink.displayName = CONTEXT_BAR_LINK;
 
 // ### Prop Types
 ContextBarLink.propTypes = {
+	/**
+	 * Adds active item styling
+	 */
+	active: PropTypes.bool,
 	/**
 	 * Class names to be added to the anchor element
 	 */
