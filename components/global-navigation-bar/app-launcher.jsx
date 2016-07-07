@@ -87,7 +87,7 @@ const AppLauncher = React.createClass({
 						<Icon
 							category="utility"
 							name="apps"
-							inverse
+							inverse={false}
 							className="slds-icon--small"
 							assistiveText={assistiveText}
 						/>
