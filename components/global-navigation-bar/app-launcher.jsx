@@ -81,9 +81,9 @@ const AppLauncher = React.createClass({
 		let style = noTruncate ? { maxWidth: 'none' } : null;
 
 		return (
-			<div className="slds-context-bar__item" style={style} onClick={this.handleClick}>
+			<div className="slds-context-bar__item slds-no-hover" style={style}>
 				<div className="slds-context-bar__icon-action">
-					<a id={id} href="#" aria-haspopup="true" className="slds-button slds-button--icon slds-context-bar__button">
+					<a id={id} href="#" onClick={this.handleClick} aria-haspopup="true" className="slds-button slds-button--icon slds-context-bar__button">
 						<Icon
 							category="utility"
 							name="apps"
