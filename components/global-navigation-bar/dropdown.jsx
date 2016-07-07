@@ -16,18 +16,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React, { PropTypes } from 'react';
 
-// ### classNames
-import classNames from 'classnames';
-
-// ### assign
-import assign from 'lodash.assign';
-
 // ### Dropdown
 import Dropdown from '../menu-dropdown';
 import ContextBarTrigger from './dropdown-trigger';
 
 // ## Constants
-import { CONTEXT_BAR_DROPDOWN } from '../../utilities/constants';
+import { GLOBAL_NAVIGATION_BAR_DROPDOWN } from '../../utilities/constants';
 
 
 /**
@@ -36,11 +30,11 @@ import { CONTEXT_BAR_DROPDOWN } from '../../utilities/constants';
 /**
 *  The Dropdown Button Trigger renders the default trigger button for the dropdown menu. If this component has children, it does not render itself to the DOM. Instead, it renders its child element, `Button`, and all that child's properties. This component may be used as a template to create custom triggers that do not use `Button`.
 */
-const ContextBarDropdown = React.createClass({
+const GlobalNavigationBarDropdown = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
 	// display name.
-	displayName: CONTEXT_BAR_DROPDOWN,
+	displayName: GLOBAL_NAVIGATION_BAR_DROPDOWN,
 
 	// ### Prop Types
 	propTypes: {
@@ -56,4 +50,4 @@ const ContextBarDropdown = React.createClass({
 	}
 });
 
-module.exports = ContextBarDropdown;
+module.exports = GlobalNavigationBarDropdown;
