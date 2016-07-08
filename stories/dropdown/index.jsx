@@ -81,4 +81,3 @@ storiesOf(MENU_DROPDOWN, module)
 		options,
 		value: 'C0'
 	}));
-

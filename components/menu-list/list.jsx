@@ -93,8 +93,8 @@ const List = React.createClass({
 
 	getDefaultProps () {
 		return {
-			highlightedIndex: -1,
-			length: 5,
+			highlightedIndex: 0,
+			length: '5',
 			options: [],
 			selectedIndex: -1
 		};
@@ -129,6 +129,12 @@ const List = React.createClass({
 		}
 		if (this.props.onUpdateHighlighted) {
 			this.props.onUpdateHighlighted(newHighlightedIndex);
+		}
+	},
+
+	handleSelect (index) {
+		if (this.props.onSelect) {
+			this.props.onSelect(index);
 		}
 	},
 
@@ -170,6 +176,7 @@ const List = React.createClass({
 	getItems () {
 		return this.props.options.map((option, index) => (
 			<ListItem
+				{...option}
 				checkmark={this.props.checkmark}
 				data={option}
 				index={index}
@@ -177,12 +184,10 @@ const List = React.createClass({
 				isHover={this.props.isHover}
 				isSelected={(index === this.props.selectedIndex)}
 				key={`ListItem_${index}`}
-				label={option.label}
 				labelRenderer={this.props.itemRenderer}
 				onFocus={this.handleItemFocus}
 				onSelect={this.props.onSelect}
 				onUpdateHighlighted={this.props.onUpdateHighlighted}
-				value={option.value}
 			/>
 		));
 	},

@@ -35,8 +35,8 @@ storiesOf(GLOBAL_HEADER, module)
 				iconName="add"
 				onSelect={action('Action Selected')}
 				options={[
-					{ label: 'New Note' },
-					{ label: 'Log a Call' }
+					{ label: 'New Note', rightIcon: { category: 'standard', name: 'note', size: 'small' } },
+					{ label: 'Log a Call', rightIcon: { category: 'standard', name: 'log_a_call', size: 'small' } }
 				]}
 			/>
 			<GlobalHeaderButton

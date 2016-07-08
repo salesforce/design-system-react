@@ -18,6 +18,9 @@ import ReactDOM from 'react-dom';
 // ### classNames
 import classNames from 'classnames';
 
+// ### Icon
+import Icon from '../icon';
+
 // ## Children
 import ListItemLabelRenderer from './list-item-label';
 
@@ -37,25 +40,36 @@ const ListItem = React.createClass({
 	displayName: LIST_ITEM,
 
 	propTypes: {
-		data: PropTypes.object,
 		checkmark: PropTypes.bool,
+		data: PropTypes.object,
+		href: PropTypes.string,
 		index: PropTypes.number,
 		inverted: PropTypes.bool,
 		isHighlighted: PropTypes.bool,
+		isHover: PropTypes.bool,
 		isSelected: PropTypes.bool,
 		label: PropTypes.string,
 		labelRenderer: PropTypes.func,
-		value: PropTypes.any,
+		leftIcon: PropTypes.shape({
+			category: PropTypes.string,
+			name: PropTypes.string
+		}),
 		onBlur: PropTypes.func, // TODO: Should be implemented?
 		onClick: PropTypes.func, // TODO: Should be implemented?
 		onFocus: PropTypes.func.isRequired,
 		onMoveFocus: PropTypes.func, // TODO: Should be implemented?
-		onSelect: PropTypes.func.isRequired
+		onSelect: PropTypes.func.isRequired,
+		rightIcon: PropTypes.shape({
+			category: PropTypes.string,
+			name: PropTypes.string
+		}),
+		value: PropTypes.any
 	},
 
 	getDefaultProps () {
 		return {
 			data: {},
+			href: 'javascript:void(0);', // eslint-disable-line no-script-url
 			index: 0,
 			inverted: false,
 			isHighlighted: false,
@@ -143,19 +157,52 @@ const ListItem = React.createClass({
 	},
 
 	getLabel () {
-		const LabelComp = this.props.labelRenderer;
+		const Label = this.props.labelRenderer;
 		return (
-			<LabelComp
+			<Label
 				checkmark={this.props.checkmark}
+				data={this.props.data}
+				icon={this.getIcon('left')}
 				index={this.props.index}
+				inverted={this.props.inverted}
+				isHighlighted={this.props.isHighlighted}
+				isSelected={this.props.isSelected}
 				label={this.props.label}
 				value={this.props.value}
-				inverted={this.props.inverted}
-				isSelected={this.props.isSelected}
-				isHighlighted={this.props.isHighlighted}
-				data={this.props.data}
 			/>
 		);
+	},
+
+	getIcon (position) {
+		const classnames = ['slds-icon-text-default'];
+		let iconProps = this.props[`${position}Icon`];
+
+		if (position === 'left') {
+			if (this.props.checkmark) {
+				classnames.push('slds-icon--selected');
+				iconProps = {
+					category: 'utility',
+					name: 'check'
+				};
+			}
+
+			classnames.push('slds-m-right--x-small');
+		} else {
+			classnames.push('slds-m-left--small');
+		}
+
+		if (iconProps) {
+			return (
+				<Icon
+					className={classNames(classnames)}
+					position={position}
+					size="x-small"
+					{...iconProps}
+				/>
+			);
+		}
+
+		return null;
 	},
 
 	render () {
@@ -168,7 +215,7 @@ const ListItem = React.createClass({
 			>
 				<a
 					id={`menu-0-${this.props.index}`}
-					href="javascript:void(0);"
+					href={this.props.href}
 					ref="link"
 					data-index={this.props.index}
 					onClick={this.handleClick}
@@ -177,6 +224,7 @@ const ListItem = React.createClass({
 					tabIndex={-1}
 				>
 						{this.getLabel()}
+						{this.getIcon('right')}
 				</a>
 			</li>
 		);

@@ -24,25 +24,17 @@ import { LIST_ITEM_LABEL } from '../../utilities/constants';
  * Component description.
  */
 const ListItemLabel = (props) => (
-	<p className="slds-truncate">
-		{props.checkmark
-			? <Icon
-				name="check"
-				position="left"
-				category="utility"
-				size="x-small"
-				className="slds-icon--selected slds-icon-text-default slds-m-right--x-small"
-			/>
-			: null
-		}
+	<span className="slds-truncate">
+		{props.icon}
 		{props.label}
-	</p>
+	</span>
 );
 
 ListItemLabel.displayName = LIST_ITEM_LABEL;
 
 ListItemLabel.propTypes = {
 	data: React.PropTypes.object,
+	icon: React.PropTypes.node,
 	index: React.PropTypes.number,
 	inverted: React.PropTypes.bool,
 	isHighlighted: React.PropTypes.bool,
