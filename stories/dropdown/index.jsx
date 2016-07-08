@@ -44,6 +44,15 @@ storiesOf(MENU_DROPDOWN, module)
 		},
 		options
 	}))
+	.add('No Modal', () => getDropdown({
+		align: 'right',
+		label: 'Dropdown Click',
+		onSelect: (...rest) => {
+			action('Selected')(...rest);
+		},
+		modal: false,
+		options
+	}))
 	.add('Custom Trigger', () => getDropdownCustomTrigger({
 		label: 'Dropdown Click',
 		onSelect: (...rest) => {
