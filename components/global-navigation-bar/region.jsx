@@ -61,7 +61,7 @@ const regions = [
 
 	renderPrimary () {
 		return (
-			<div className={classNames('slds-context-bar__primary', 'slds-context-bar__item--divider-right', this.props.className)}>
+			<div className={classNames('slds-context-bar__primary', this.props.className)}>
 				{this.props.children}
 			</div>
 		);
