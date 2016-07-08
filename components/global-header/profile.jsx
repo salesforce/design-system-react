@@ -14,7 +14,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ## Dependencies
 
 // ### React
-import React from 'react';
+import React, { PropTypes } from 'react';
+
+// ### classnames
+import classnames from 'classnames';
 
 // ### GlobalHeaderDropdown
 import GlobalHeaderDropdown from './dropdown';
@@ -26,30 +29,50 @@ import { GLOBAL_HEADER_PROFILE } from '../../utilities/constants';
  * A helper component that renders a MenuDropdown for the user profile.
  */
 const GlobalHeaderProfile = (props) => {
-	// Temporary default profile until images are available
+	const {
+		avatar,
+		className,
+		...rest
+	} = props;
+
+	// Use user SVG if no avatar is provided
 	const tempProfileIcon = {};
-	if (!props.imgSrc) {
+	if (!props.avatar) {
 		tempProfileIcon.iconCategory = 'utility';
 		tempProfileIcon.iconName = 'user';
 		tempProfileIcon.iconSize = 'large';
 	}
 
 	return (
+		// `slds-m-right--x-small` is present to prevent dropdown menu with a
+		// "top right" nubbin from jumping offscreen
 		<GlobalHeaderDropdown
-			className="slds-m-left--x-small"
+			avatar={avatar}
+			className={classnames('slds-m-left--x-small', 'slds-m-right--x-small', className)}
+			// TODO: Use design tokens to remove "magic numbers" that center nubbin under button
+			offset="-12px -18px"
+			iconVarient={null}
 			{...tempProfileIcon}
-			{...props}
+			{...rest}
 		/>
 	);
 };
 
+// ### Display Name
+// Always use the canonical component name (set in the core) as the React
+// display name.
 GlobalHeaderProfile.displayName = GLOBAL_HEADER_PROFILE;
 
+// ### Prop Types
 GlobalHeaderProfile.propTypes = {
 	/**
-	 * An image to display for the profile instead of a standard icon.
+	 * An image URL to display for the profile instead of a standard icon.
 	 */
-	imgSrc: React.PropTypes.string
+	avatar: React.PropTypes.string,
+	/**
+	 * CSS classes to be added to `li` element.
+	 */
+	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string])
 };
 
 export default GlobalHeaderProfile;

@@ -9,68 +9,73 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # Global Header Button Component
+// # Global Header Dropdown Component
 
 // ## Dependencies
 
 // ### React
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-// ### classNames
-import classNames from 'classnames';
-
-// ### MenuDropdown
+// ### Dropdown
 import MenuDropdown from '../menu-dropdown';
+import GlobalHeaderTrigger from './dropdown-trigger';
 
 // ## Constants
 import { GLOBAL_HEADER_TOOL } from '../../utilities/constants';
 
-// Removes the need for `PropTypes`.
-const { PropTypes } = React;
-
 /**
- * A helper component that renders a MenuDropdown in the tools area of the Global Header. Currently defaults to a bare icon, but this can be overriden.
+ * This component is an implementation of `MenuDropdown` with a custom trigger. All the properties listed below are provided to the `MenuDropdown` component. Any additional properties are provided to the Custom Trigger (that is the `Button` or `li` tag).
  */
 const GlobalHeaderDropdown = (props) => {
+	// The following props are provided to the `li`, all others are passed into the `Button`
 	const {
-		align,
-		className,
 		dropdownClassName,
+		id,
+		offset,
+		options,
 		...rest
 	} = props;
 
 	return (
-		<li className={classNames('slds-dropdown-trigger slds-dropdown-trigger--click', className)}>
-			<MenuDropdown
-				align={align}
-				buttonVariant="icon"
-				className={classNames(`slds-nubbin--top-${align}`, dropdownClassName)}
-				iconVariant="bare"
-				{...rest}
-			/>
-		</li>
+		<MenuDropdown
+			align="right"
+			dropdownClassName={dropdownClassName}
+			id={id}
+			nubbinPosition="top right"
+			offset={offset}
+			options={options}
+		>
+			<GlobalHeaderTrigger {...rest} />
+		</MenuDropdown>
 	);
 };
 
+// ### Display Name
+// Always use the canonical component name (set in the core) as the React
+// display name.
 GlobalHeaderDropdown.displayName = GLOBAL_HEADER_TOOL;
 
+// ### Prop Types
 GlobalHeaderDropdown.propTypes = {
 	/**
-	 * The side of the triggering element that the menu should align itself with.
+	 * Extra classnames to apply to the dropdown menu.
 	 */
-	align: PropTypes.oneOf(['right', 'left']),
+	dropdownClassName: PropTypes.string,
 	/**
-	 * Extra classnames to apply to the `<li />`.
-	 */
-	className: PropTypes.string,
+	* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
+	*/
+	id: PropTypes.string,
 	/**
-	 * Extra classnames to apply to the dropdown.
+	 *  Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px).
 	 */
-	dropdownClassName: PropTypes.string
+	offset: PropTypes.string,
+	/**
+	 * An array of menu item.
+	 */
+	options: PropTypes.array.isRequired
 };
 
-GlobalHeaderDropdown.defaultProps = {
-	align: 'right'
-};
+// ### Default Props
+GlobalHeaderDropdown.defaultProps = { offset: '-12px -15px' };
 
-export default GlobalHeaderDropdown;
+module.exports = GlobalHeaderDropdown;
