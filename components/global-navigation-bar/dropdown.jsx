@@ -27,27 +27,11 @@ import { GLOBAL_NAVIGATION_BAR_DROPDOWN } from '../../utilities/constants';
 /**
  * This component is an implementation of `MenuDropdown` with a custom trigger. All the properties listed below are provided to the `MenuDropdown` component. Any additional properties are provided to the Custom Trigger (that is the `Button` or `li` tag).
  */
-const GlobalNavigationBarDropdown = (props) => {
-	// The following props are provided to the `li`, all others are passed into the `Button`
-	const {
-		align,
-		dropdownClassName,
-		id,
-		options,
-		...rest
-	} = props;
-
-	return (
-		<MenuDropdown
-			className={dropdownClassName}
-			options={options}
-			align={align}
-			id={id}
-		>
-			<GlobalNavigationTrigger {...rest} />
-		</MenuDropdown>
-	);
-};
+const GlobalNavigationBarDropdown = (props) => (
+	<MenuDropdown {...props}>
+		<GlobalNavigationTrigger />
+	</MenuDropdown>
+);
 
 // ### Display Name
 // Always use the canonical component name (set in the core) as the React
@@ -63,7 +47,11 @@ GlobalNavigationBarDropdown.propTypes = {
 	/**
 	 * Extra classnames to apply to the dropdown menu.
 	 */
-	dropdownClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	className: PropTypes.string,
+	/**
+	 * CSS classes to be added to `li` element.
+	 */
+	buttonClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
 	* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
 	*/
@@ -83,6 +71,8 @@ GlobalNavigationBarDropdown.propTypes = {
 };
 
 // ### Default Props
-GlobalNavigationBarDropdown.defaultProps = { align: 'right' };
+GlobalNavigationBarDropdown.defaultProps = {
+	align: 'right'
+};
 
 module.exports = GlobalNavigationBarDropdown;

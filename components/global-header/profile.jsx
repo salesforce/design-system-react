@@ -32,7 +32,7 @@ import { GLOBAL_HEADER_PROFILE } from '../../utilities/constants';
 const GlobalHeaderProfile = (props) => {
 	const {
 		avatar,
-		className,
+		buttonClassName,
 		...rest
 	} = props;
 
@@ -50,7 +50,7 @@ const GlobalHeaderProfile = (props) => {
 		<MenuDropdown {...tempProfileIcon} {...rest}>
 			<GlobalHeaderTrigger
 				avatar={avatar}
-				className={classnames('slds-m-left--x-small', 'slds-m-right--x-small', className)}
+				className={classnames('slds-m-left--x-small', 'slds-m-right--x-small', buttonClassName)}
 			/>
 		</MenuDropdown>
 	);
@@ -70,7 +70,7 @@ GlobalHeaderProfile.propTypes = {
 	/**
 	 * Extra classnames to apply to the dropdown menu.
 	 */
-	dropdownClassName: PropTypes.string,
+	className: PropTypes.string,
 	/**
 	 * An image URL to display for the user profile.
 	 */
@@ -78,7 +78,7 @@ GlobalHeaderProfile.propTypes = {
 	/**
 	 * CSS classes to be added to `li` element.
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	buttonClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
 	* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
 	*/

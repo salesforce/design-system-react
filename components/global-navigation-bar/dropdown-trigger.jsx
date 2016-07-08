@@ -74,13 +74,13 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 			<li
 				aria-haspopup="true"
 				className={classNames('slds-context-bar__item', 'slds-context-bar-action', 'slds-dropdown-trigger', className)}
+				id={id}
 				onClick={onClick}
 			>
 				<a className="slds-context-bar__label-action">{label}</a>
 				<div className="slds-context-bar__icon-action slds-p-left--none">
 					<Button
 						assistiveText={this.props.assistiveText}
-						id={id}
 						{...rest}
 						className="slds-context-bar__button slds-context-bar-action__trigger"
 						aria-haspopup="true"

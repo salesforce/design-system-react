@@ -46,7 +46,11 @@ GlobalHeaderDropdown.propTypes = {
 	/**
 	 * Extra classnames to apply to the dropdown menu.
 	 */
-	dropdownClassName: PropTypes.string,
+	className: PropTypes.string,
+	/**
+	 * CSS classes to be added to `li` element.
+	 */
+	buttonClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
 	* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
 	*/
