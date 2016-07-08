@@ -86,6 +86,10 @@ const propTypes = {
 	 */
 	tooltip: PropTypes.node,
 	/**
+	 * HTML title attribute
+	 */
+	title: PropTypes.string,
+	/**
 	 * Use <code>icon-inverse</code> for white icons.
 	 */
 	variant: React.PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon', 'inverse', 'icon-inverse'])
