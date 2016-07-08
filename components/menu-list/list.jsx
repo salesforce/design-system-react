@@ -93,7 +93,7 @@ const List = React.createClass({
 
 	getDefaultProps () {
 		return {
-			highlightedIndex: 0,
+			highlightedIndex: -1,
 			length: '5',
 			options: [],
 			selectedIndex: -1
@@ -110,13 +110,16 @@ const List = React.createClass({
 
 	handleListItemBlur (event) {
 		if (event && event.target) {
-			const index = parseInt(event.target.getAttribute('data-index'), 10);
+			const attr = event.target.getAttribute('data-index');
+			if (attr) {
+				const index = parseInt(attr, 10);
 
-			if (this.props.onListItemBlur) {
-				this.props.onListItemBlur(index);
+				if (this.props.onListItemBlur) {
+					this.props.onListItemBlur(index);
+				}
+
+				this.setState({ lastBlurredIndex: index });
 			}
-
-			this.setState({ lastBlurredIndex: index });
 		}
 	},
 
@@ -132,6 +135,10 @@ const List = React.createClass({
 		}
 	},
 
+	handleFocusNext () {
+		this.handleMoveFocus(1);
+	},
+
 	handleSelect (index) {
 		if (this.props.onSelect) {
 			this.props.onSelect(index);
@@ -145,30 +152,27 @@ const List = React.createClass({
 	},
 
 	handleSearch (index, ch) {
-		const searchChar = ch.toLowerCase();
+		if (this.props.onUpdateHighlighted) {
+			const searchChar = ch.toLowerCase();
+			const isMatch = (i) => {
+				const option = this.props.options[i];
 
-		for (let i = index + 1; i < this.props.options.length; i++) {
-			const option = this.props.options[i];
-
-			if (option && option.label) {
-				if (option.label.charAt(0).toLowerCase() === searchChar) {
-					if (this.props.onUpdateHighlighted) {
+				if (option && option.label && option.type !== 'header') {
+					if (option.label.charAt(0).toLowerCase() === searchChar) {
 						this.props.onUpdateHighlighted(i);
+						return true;
 					}
-					return;
 				}
+
+				return false;
+			};
+
+			for (let i = index + 1; i < this.props.options.length; i++) {
+				if (isMatch(i)) return;
 			}
-		}
 
-		for (let i = 0; i < index; i++) {
-			const option = this.props.options[i];
-			if (option && option.label) {
-				if (option.label.charAt(0).toLowerCase() === searchChar) {
-					if (this.props.onUpdateHighlighted) {
-						this.props.onUpdateHighlighted(i);
-					}
-					return;
-				}
+			for (let i = 0; i < index; i++) {
+				if (isMatch(i)) return;
 			}
 		}
 	},
@@ -179,6 +183,7 @@ const List = React.createClass({
 				{...option}
 				checkmark={this.props.checkmark}
 				data={option}
+				focusNext={this.handleFocusNext}
 				index={index}
 				isHighlighted={(index === this.props.highlightedIndex)}
 				isHover={this.props.isHover}

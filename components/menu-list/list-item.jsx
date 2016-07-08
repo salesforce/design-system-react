@@ -25,7 +25,7 @@ import Icon from '../icon';
 import ListItemLabelRenderer from './list-item-label';
 
 // ### Event Helpers
-import { EventUtil, KEYS } from '../../utilities';
+import { EventUtil } from '../../utilities';
 
 // ## Constants
 import { LIST_ITEM } from '../../utilities/constants';
@@ -42,6 +42,7 @@ const ListItem = React.createClass({
 	propTypes: {
 		checkmark: PropTypes.bool,
 		data: PropTypes.object,
+		focusNext: PropTypes.func,
 		href: PropTypes.string,
 		index: PropTypes.number,
 		inverted: PropTypes.bool,
@@ -54,15 +55,13 @@ const ListItem = React.createClass({
 			category: PropTypes.string,
 			name: PropTypes.string
 		}),
-		onBlur: PropTypes.func, // TODO: Should be implemented?
-		onClick: PropTypes.func, // TODO: Should be implemented?
 		onFocus: PropTypes.func.isRequired,
-		onMoveFocus: PropTypes.func, // TODO: Should be implemented?
 		onSelect: PropTypes.func.isRequired,
 		rightIcon: PropTypes.shape({
 			category: PropTypes.string,
 			name: PropTypes.string
 		}),
+		type: PropTypes.string,
 		value: PropTypes.any
 	},
 
@@ -105,47 +104,10 @@ const ListItem = React.createClass({
 	},
 
 	setFocus () {
-		if (!this.props.isHover) {
+		if (!this.props.isHover && this.refs.link) {
 			ReactDOM.findDOMNode(this.refs.link).focus();
-		}
-	},
-
-	handleKeyDown (event) {
-		if (event.keyCode) {
-			if (event.keyCode === KEYS.DOWN) {
-				EventUtil.trapEvent(event);
-				if (this.props.onMoveFocus) {
-					this.props.onMoveFocus(1);
-				}
-			} else if (event.keyCode === KEYS.UP) {
-				EventUtil.trapEvent(event);
-				if (this.props.onMoveFocus) {
-					this.props.onMoveFocus(-1);
-				}
-			} else if (event.keyCode === KEYS.ENTER ||
-					event.keyCode === KEYS.SPACE) {
-				EventUtil.trapEvent(event);
-				if (this.props.onSelect) {
-					this.props.onSelect(this.props.index);
-				}
-			} else if (event.keyCode === KEYS.ESCAPE) {
-				EventUtil.trapEvent(event);
-				if (this.props.onCancel) {
-					this.props.onCancel();
-				}
-			} else if (event.keyCode !== KEYS.TAB) {
-				EventUtil.trapEvent(event);
-				const ch = String.fromCharCode(event.keyCode);
-				if (this.props.onSearch) {
-					this.props.onSearch(this.props.index, ch);
-				}
-			}
-		}
-	},
-
-	handleBlur (event) {
-		if (this.props.onBlur) {
-			this.props.onBlur(this.props.index, event.relatedTarget, event);
+		} else if (!this.props.isHover && this.props.focusNext) {
+			this.props.focusNext();
 		}
 	},
 
@@ -206,28 +168,37 @@ const ListItem = React.createClass({
 	},
 
 	render () {
-		return (
-			<li
-				aria-selected={this.props.isSelected}
-				className={classNames('slds-dropdown__item', { 'slds-is-selected': this.props.isSelected })}
-				onMouseDown={this.handleMouseDown}
-				role="presentation"
-			>
-				<a
-					id={`menu-0-${this.props.index}`}
-					href={this.props.href}
-					ref="link"
-					data-index={this.props.index}
-					onClick={this.handleClick}
-					onFocus={this.handleFocus}
-					role="menuitem"
-					tabIndex={-1}
-				>
-						{this.getLabel()}
-						{this.getIcon('right')}
-				</a>
-			</li>
-		);
+		switch (this.props.type) {
+			case 'header':
+				return (
+					<li className="slds-dropdown__header" onMouseDown={this.handleMouseDown} role="separator">
+						<span className="slds-text-title--caps">{this.props.label}</span>
+					</li>
+				);
+			default:
+				return (
+					<li
+						aria-selected={this.props.isSelected}
+						className={classNames('slds-dropdown__item', { 'slds-is-selected': this.props.isSelected })}
+						onMouseDown={this.handleMouseDown}
+						role="presentation"
+					>
+						<a
+							id={`menu-0-${this.props.index}`}
+							href={this.props.href}
+							ref="link"
+							data-index={this.props.index}
+							onClick={this.handleClick}
+							onFocus={this.handleFocus}
+							role="menuitem"
+							tabIndex={-1}
+						>
+								{this.getLabel()}
+								{this.getIcon('right')}
+						</a>
+					</li>
+				);
+		}
 	}
 });
 

@@ -382,7 +382,7 @@ const MenuDropdown = React.createClass({
 				EventUtil.trap(event);
 				this.setState({
 					isOpen: true,
-					highlightedIndex: 0
+					highlightedIndex: -1
 				});
 			}
 
