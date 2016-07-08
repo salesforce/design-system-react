@@ -166,7 +166,7 @@ const ListItem = React.createClass({
 			>
 				<a
 					id={`menu-0-${this.props.index}`}
-					href="#"
+					href="javascript:void(0);"
 					ref="link"
 					data-index={this.props.index}
 					onClick={this.handleClick}

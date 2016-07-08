@@ -96,15 +96,15 @@ const GlobalHeader = React.createClass({
 			}
 		});
 
-		/* eslint-disable max-len */
+		/* eslint-disable max-len, no-script-url */
 		return (
 			<header className="slds-global-header_container">{
 				this.props.onSkipToNav
-					? <a href="#" className="slds-assistive-text slds-assistive-text--focus" onClick={this.handleSkipToNav}>{this.props.skipToNavAssistiveText}</a>
+					? <a href="javascript:void(0);" className="slds-assistive-text slds-assistive-text--focus" onClick={this.handleSkipToNav}>{this.props.skipToNavAssistiveText}</a>
 					: null
 			} {
 				this.props.onSkipToContent
-					? <a href="#" className="slds-assistive-text slds-assistive-text--focus" onClick={this.handleSkipToContent}>{this.props.skipToContentAssistiveText}</a>
+					? <a href="javascript:void(0);" className="slds-assistive-text slds-assistive-text--focus" onClick={this.handleSkipToContent}>{this.props.skipToContentAssistiveText}</a>
 					: null
 			}
 				<div className="slds-global-header slds-grid slds-grid--align-spread">
@@ -121,7 +121,7 @@ const GlobalHeader = React.createClass({
 				</div>
 			</header>
 		);
-		/* eslint-enable max-len */
+		/* eslint-enable max-len, no-script-url */
 	},
 
 	handleSkipToContent (e) {
