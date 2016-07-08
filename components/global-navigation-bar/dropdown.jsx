@@ -32,7 +32,7 @@ import SLDSButton from '../button';
 // ## Constants
 import { GLOBAL_NAVIGATION_BAR_DROPDOWN } from '../../utilities/constants';
 
-const defaultProps = assign({}, dropdownDefaultProps, { align: 'right' });
+const defaultProps = assign({}, dropdownDefaultProps, { align: 'right', active: false });
 
 /**
  * This component extends `MenuDropdown` and modifies the `render` function to allow the markup to work within `GlobalNavigationBar`. See the complete `MenuDropdown` for context.
@@ -66,14 +66,15 @@ class GlobalNavigationBarDropdown extends Dropdown {
 			className,
 			label,
 			triggerIconCategory,
-			triggerIconName
+			triggerIconName,
+			active
 		} = this.props;
 
 		// If no trigger was passed in, add the default GlobalNavigationBar trigger so that
 		// it overrides the button trigger that Dropdown usually defaults to.
 		return (
 			<li
-				className={classNames('slds-context-bar__item', 'slds-context-bar-action', 'slds-dropdown-trigger', className)}
+				className={classNames('slds-context-bar__item', 'slds-context-bar-action', 'slds-dropdown-trigger', { 'slds-is-active': active }, className)}
 				onBlur={this.props.openOn === 'hover' ? this.handleBlur.bind(this) : null}
 				onClick={this.props.openOn === 'click' ? this.handleClick.bind(this) : null}
 				onFocus={this.props.openOn === 'hover' ? this.handleFocus.bind(this) : null}

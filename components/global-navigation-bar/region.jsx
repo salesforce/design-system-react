@@ -67,8 +67,7 @@ const regions = [
 		let region = null;
 		if (this.props.navigation) {
 			region = (
-				<nav className={classNames('slds-context-bar__secondary', this.props.className)} role="navigation">
-					<div className="slds-context-bar__vertical-divider" />
+				<nav className={classNames('slds-context-bar__secondary slds-context-bar__item--divider-left', this.props.className)} role="navigation">
 					<ul className="slds-grid">
 						{this.props.children}
 					</ul>
@@ -76,8 +75,7 @@ const regions = [
 			);
 		} else {
 			region = (
-				<div className={classNames('slds-context-bar__secondary', this.props.className)}>
-					<div className="slds-context-bar__vertical-divider" />
+				<div className={classNames('slds-context-bar__secondary slds-context-bar__item--divider-left', this.props.className)}>
 					<ul className="slds-grid">
 						{this.props.children}
 					</ul>
@@ -89,7 +87,7 @@ const regions = [
 
 	renderTertiary () {
 		return (
-			<div className={classNames('slds-context-bar__tertiary', 'slds-col--bump-left', this.props.className)}>
+			<div className={classNames('slds-context-bar__tertiary slds-context-bar__item--divider-left', 'slds-col--bump-left', this.props.className)}>
 				<ul className="slds-grid">
 					{this.props.children}
 				</ul>

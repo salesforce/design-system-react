@@ -37,6 +37,7 @@ const GlobalNavigationBarLink = (props) => {
 		className,
 		label,
 		onClick,
+		active,
 		...other
 	} = props;
 
@@ -50,7 +51,7 @@ const GlobalNavigationBarLink = (props) => {
 	}
 
 	return (
-		<li className="slds-context-bar__item">
+		<li className={classNames('slds-context-bar__item', { 'slds-is-active': active })}>
 			<a
 				className={classNames('slds-context-bar__label-action', className)}
 				onClick={handleClick}
@@ -74,6 +75,10 @@ GlobalNavigationBarLink.propTypes = {
 	 * The href of the link.
 	 */
 	href: PropTypes.string,
+	/**
+	 * Whether the item is active or not.
+	 */
+	active: PropTypes.bool,
 	/**
 	 * Text to show for link item.
 	 */
