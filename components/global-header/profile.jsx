@@ -66,7 +66,7 @@ GlobalHeaderProfile.displayName = GLOBAL_HEADER_PROFILE;
 // ### Prop Types
 GlobalHeaderProfile.propTypes = {
 	/**
-	 * An image URL to display for the profile instead of a standard icon.
+	 * An image URL to display for the user profile.
 	 */
 	avatar: React.PropTypes.string,
 	/**

@@ -39,10 +39,10 @@ const GlobalNavigationBarDropdown = (props) => {
 
 	return (
 		<MenuDropdown
+			className={dropdownClassName}
 			options={options}
 			align={align}
 			id={id}
-			dropdownClassName={dropdownClassName}
 		>
 			<GlobalNavigationTrigger {...rest} />
 		</MenuDropdown>
@@ -63,7 +63,7 @@ GlobalNavigationBarDropdown.propTypes = {
 	/**
 	 * Extra classnames to apply to the dropdown menu.
 	 */
-	dropdownClassName: PropTypes.string,
+	dropdownClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
 	* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
 	*/
