@@ -54,7 +54,7 @@ GlobalHeaderDropdown.propTypes = {
 	/**
 	 * Positions dropdown menu with a nubbin--that is the arrow notch. The placement options correspond to the placement of the nubbin. This is implemeted with CSS classes and is best used with a `Button` with "icon container" styling. Dropdown menus will still be contained to the closest scrolling parent.
 	 */
-	nubbinPosition: React.PropTypes.oneOf([
+	nubbinPosition: PropTypes.oneOf([
 		'top left',
 		'top',
 		'top right',
@@ -79,6 +79,8 @@ GlobalHeaderDropdown.propTypes = {
 // ### Default Props
 GlobalHeaderDropdown.defaultProps = {
 	align: 'right',
+	buttonVariant: 'icon',
+	iconVariant: 'container',
 	nubbinPosition: 'top right',
 	// TODO: Use design tokens to remove "magic numbers" that center nubbin under button
 	offset: '-12px -16px'

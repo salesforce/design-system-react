@@ -47,7 +47,7 @@ const GlobalHeaderProfile = (props) => {
 	return (
 		// `slds-m-right--x-small` is present to prevent dropdown menu with a
 		// "top right" nubbin from jumping offscreen
-		<MenuDropdown iconVarient={null} {...tempProfileIcon} {...rest}>
+		<MenuDropdown {...tempProfileIcon} {...rest}>
 			<GlobalHeaderTrigger
 				avatar={avatar}
 				className={classnames('slds-m-left--x-small', 'slds-m-right--x-small', className)}
@@ -74,7 +74,7 @@ GlobalHeaderProfile.propTypes = {
 	/**
 	 * An image URL to display for the user profile.
 	 */
-	avatar: React.PropTypes.string,
+	avatar: PropTypes.string,
 	/**
 	 * CSS classes to be added to `li` element.
 	 */
@@ -86,7 +86,7 @@ GlobalHeaderProfile.propTypes = {
 	/**
 	 * Positions dropdown menu with a nubbin--that is the arrow notch. The placement options correspond to the placement of the nubbin. This is implemeted with CSS classes and is best used with a `Button` with "icon container" styling. Dropdown menus will still be contained to the closest scrolling parent.
 	 */
-	nubbinPosition: React.PropTypes.oneOf([
+	nubbinPosition: PropTypes.oneOf([
 		'top left',
 		'top',
 		'top right',
@@ -111,6 +111,8 @@ GlobalHeaderProfile.propTypes = {
 // ### Default Props
 GlobalHeaderProfile.defaultProps = {
 	align: 'right',
+	buttonVariant: 'icon',
+	iconVariant: 'container',
 	nubbinPosition: 'top right',
 	// TODO: Use design tokens to remove "magic numbers" that center nubbin under button
 	offset: '-12px -18px'

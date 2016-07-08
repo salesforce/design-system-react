@@ -101,15 +101,15 @@ const MenuDropdown = React.createClass({
 		/**
 		 * Name of the icon category. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon categories.
 		 */
-		iconCategory: React.PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
+		iconCategory: PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
 		/**
 		 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
 		 */
-		iconName: React.PropTypes.string,
+		iconName: PropTypes.string,
 		/**
 		 * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
 		 */
-		iconVariant: React.PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'small', 'more']),
+		iconVariant: PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'small', 'more']),
 		/**
 		 * Determines the size of the icon.
 		 */
@@ -133,7 +133,7 @@ const MenuDropdown = React.createClass({
 		/**
 		 * Positions dropdown menu with a nubbin--that is the arrow notch. The placement options correspond to the placement of the nubbin. This is implemeted with CSS classes and is best used with a `Button` with "icon container" styling. Dropdown menus will still be contained to the closest scrolling parent.
 		 */
-		nubbinPosition: React.PropTypes.oneOf([
+		nubbinPosition: PropTypes.oneOf([
 			'top left',
 			'top',
 			'top right',

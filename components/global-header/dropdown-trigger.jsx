@@ -36,7 +36,7 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 		/**
 		 * An image URL to display for the user profile.
 		 */
-		avatar: React.PropTypes.string,
+		avatar: PropTypes.string,
 		/**
 		 * CSS classes to be added to `li` element.
 		 */
@@ -78,11 +78,9 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 				<Button
 					aria-haspopup="true"
 					{...rest}
-					iconVariant="container"
-					variant="icon"
 				>
 					{avatar ? <span className="slds-avatar slds-avatar--circle slds-avatar--medium">
-						<img src={avatar} alt="person name" />
+						<img src={avatar} alt="" />
 					</span> : null}
 				</Button>
 				{menu}
