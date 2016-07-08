@@ -57,11 +57,11 @@ const GlobalHeader = React.createClass({
 		/**
 		 * Required for accessibility. Should jump the user to the primary content area.
 		 */
-		onSkipToContent: PropTypes.func.isRequired,
+		onSkipToContent: PropTypes.func,
 		/**
 		 * Required for accessibility. Should jump the user to the primary navigation.
 		 */
-		onSkipToNav: PropTypes.func.isRequired,
+		onSkipToNav: PropTypes.func,
 		/**
 		 * The localized text that will be read back for the "Skip to Main Content" accessibility link.
 		 */
@@ -98,7 +98,15 @@ const GlobalHeader = React.createClass({
 
 		/* eslint-disable max-len */
 		return (
-			<header className="slds-global-header_container"><a href="#" className="slds-assistive-text slds-assistive-text--focus" onClick={this.handleSkipToNav}>{this.props.skipToNavAssistiveText}</a><a href="#" className="slds-assistive-text slds-assistive-text--focus" onClick={this.handleSkipToContent}>{this.props.skipToContentAssistiveText}</a>
+			<header className="slds-global-header_container">{
+				this.props.onSkipToNav
+					? <a href="#" className="slds-assistive-text slds-assistive-text--focus" onClick={this.handleSkipToNav}>{this.props.skipToNavAssistiveText}</a>
+					: null
+			} {
+				this.props.onSkipToContent
+					? <a href="#" className="slds-assistive-text slds-assistive-text--focus" onClick={this.handleSkipToContent}>{this.props.skipToContentAssistiveText}</a>
+					: null
+			}
 				<div className="slds-global-header slds-grid slds-grid--align-spread">
 					<div className="slds-global-header__item">
 						<div className="slds-global-header__logo">

@@ -30,6 +30,7 @@ storiesOf(GLOBAL_HEADER, module)
 				variant="neutral"
 			/>
 			<GlobalHeaderDropdown
+				assistiveText="Global Actions"
 				iconCategory="utility"
 				iconName="add"
 				onSelect={action('Action Selected')}
@@ -38,7 +39,18 @@ storiesOf(GLOBAL_HEADER, module)
 					{ label: 'Log a Call' }
 				]}
 			/>
+			<GlobalHeaderButton
+				assistiveText="Help and Training"
+				iconName="question"
+				onClick={action('Help Clicked')}
+			/>
+			<GlobalHeaderButton
+				assistiveText="Setup"
+				iconName="settings"
+				onClick={action('Setup Clicked')}
+			/>
 			<GlobalHeaderProfile
+				avatar="@salesforce-ux/design-system/assets/images/avatar2.jpg"
 				onClick={action('Profile Clicked')}
 				onSelect={action('Profile Selected')}
 				options={[
@@ -47,8 +59,8 @@ storiesOf(GLOBAL_HEADER, module)
 			/>
 		</GlobalHeader>
 	))
-	.add('w/o Search or Feedback', () => (
-		<GlobalHeader logoSrc={logo} onSkipToContent={action('Skip to Main Content')} onSkipToNav={action('Skip to Navigation')}>
+	.add('w/ Fewer Elements', () => (
+		<GlobalHeader logoSrc={logo}>
 			<GlobalHeaderDropdown
 				iconCategory="utility"
 				iconName="add"
