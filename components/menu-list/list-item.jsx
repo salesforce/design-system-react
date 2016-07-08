@@ -161,8 +161,10 @@ const ListItem = React.createClass({
 	render () {
 		return (
 			<li
+				aria-selected={this.props.isSelected}
 				className={classNames('slds-dropdown__item', { 'slds-is-selected': this.props.isSelected })}
 				onMouseDown={this.handleMouseDown}
+				role="presentation"
 			>
 				<a
 					id={`menu-0-${this.props.index}`}
@@ -171,8 +173,7 @@ const ListItem = React.createClass({
 					data-index={this.props.index}
 					onClick={this.handleClick}
 					onFocus={this.handleFocus}
-					aria-checked={this.props.isSelected}
-					role="menuitemradio"
+					role="menuitem"
 					tabIndex={-1}
 				>
 						{this.getLabel()}

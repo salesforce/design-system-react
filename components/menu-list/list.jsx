@@ -37,23 +37,64 @@ const List = React.createClass({
 	displayName: LIST,
 
 	propTypes: {
+		/**
+		 * Determines whether or not to show a checkmark for selected items.
+		 */
 		checkmark: PropTypes.bool,
+		/**
+		 * CSS classes to be added to `<ul />`.
+		 */
 		className: PropTypes.string,
+		/**
+		 * The index of the currently highlighted item in the list.
+		 */
 		highlightedIndex: PropTypes.number,
+		/**
+		 * True if the list was opened via hover.
+		 */
+		isHover: PropTypes.bool,
+		/**
+		 * If provided, this function will be used to render the contents of each menu item.
+		 */
 		itemRenderer: PropTypes.func,
+		/**
+		 * Sets the height of the list based on the numeber of items.
+		 */
+		length: PropTypes.oneOf(['5', '7', '10']),
+		/**
+		 * Triggered when the user hits escape while the menu is open.
+		 */
 		onCancel: PropTypes.func.isRequired,
-		onListBlur: PropTypes.func.isRequired,
+		/**
+		 * Triggered when a list item loses focuses.
+		 */
 		onListItemBlur: PropTypes.func.isRequired,
-		onMoveFocus: PropTypes.func, // TODO: Should be implemented?
+		/**
+		 * Triggered when a list item is selected (via mouse or keyboard).
+		 */
 		onSelect: PropTypes.func.isRequired,
+		/**
+		 * Triggered when a new list item is highlighted.
+		 */
 		onUpdateHighlighted: PropTypes.func,
+		/**
+		 * An array of items to render in the list.
+		 */
 		options: PropTypes.array,
-		selectedIndex: PropTypes.number
+		/**
+		 * The index of the currently selected item in the list.
+		 */
+		selectedIndex: PropTypes.number,
+		/**
+		 * The id of the element which triggered this list (in a menu context).
+		 */
+		triggerId: PropTypes.string
 	},
 
 	getDefaultProps () {
 		return {
-			highlightedIndex: 0,
+			highlightedIndex: -1,
+			length: 5,
 			options: [],
 			selectedIndex: -1
 		};
@@ -67,21 +108,15 @@ const List = React.createClass({
 		EventUtil.trapImmediate(event);
 	},
 
-	handleUpdateHighlighted (nextIndex) {
-		if (this.props.onUpdateHighlighted) {
-			this.props.onUpdateHighlighted(nextIndex);
-		}
-	},
-
 	handleListItemBlur (event) {
 		if (event && event.target) {
-			const indexx = parseInt(event.target.getAttribute('data-index'), 10);
+			const index = parseInt(event.target.getAttribute('data-index'), 10);
 
 			if (this.props.onListItemBlur) {
-				this.props.onListItemBlur(indexx);
+				this.props.onListItemBlur(index);
 			}
 
-			this.setState({ lastBlurredIndex: indexx });
+			this.setState({ lastBlurredIndex: index });
 		}
 	},
 
@@ -94,18 +129,6 @@ const List = React.createClass({
 		}
 		if (this.props.onUpdateHighlighted) {
 			this.props.onUpdateHighlighted(newHighlightedIndex);
-		}
-	},
-
-	handleCancel () {
-		if (this.props.onCancel) {
-			this.props.onCancel();
-		}
-	},
-
-	handleSelect (index) {
-		if (this.props.onSelect) {
-			this.props.onSelect(index);
 		}
 	},
 
@@ -157,8 +180,8 @@ const List = React.createClass({
 				label={option.label}
 				labelRenderer={this.props.itemRenderer}
 				onFocus={this.handleItemFocus}
-				onSelect={this.handleSelect}
-				onUpdateHighlighted={this.handleUpdateHighlighted}
+				onSelect={this.props.onSelect}
+				onUpdateHighlighted={this.props.onUpdateHighlighted}
 				value={option.value}
 			/>
 		));
@@ -192,10 +215,15 @@ const List = React.createClass({
 	},
 
 	render () {
+		let lengthClassName;
+		if (this.props.length) {
+			lengthClassName = `slds-dropdown--length-${this.props.length}`;
+		}
+
 		return (
 			<ul
 				aria-labelledby={this.props.triggerId}
-				className={classNames('slds-dropdown__list slds-dropdown--length-5', this.props.className)}
+				className={classNames('dropdown__list', lengthClassName, this.props.className)}
 				onBlur={this.handleListItemBlur}
 				onKeyDown={this.handleKeyDown}
 				ref="scroll"
