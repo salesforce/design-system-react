@@ -29,8 +29,10 @@ import { GLOBAL_HEADER_TOOL } from '../../utilities/constants';
 const GlobalHeaderDropdown = (props) => {
 	// The following props are provided to the `li`, all others are passed into the `Button`
 	const {
+		align,
 		dropdownClassName,
 		id,
+		nubbinPosition,
 		offset,
 		options,
 		...rest
@@ -38,10 +40,10 @@ const GlobalHeaderDropdown = (props) => {
 
 	return (
 		<MenuDropdown
-			align="right"
+			align={align}
 			dropdownClassName={dropdownClassName}
 			id={id}
-			nubbinPosition="top right"
+			nubbinPosition={nubbinPosition}
 			offset={offset}
 			options={options}
 		>
@@ -58,6 +60,10 @@ GlobalHeaderDropdown.displayName = GLOBAL_HEADER_TOOL;
 // ### Prop Types
 GlobalHeaderDropdown.propTypes = {
 	/**
+	 * Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.
+	 */
+	align: PropTypes.oneOf(['left', 'right']),
+	/**
 	 * Extra classnames to apply to the dropdown menu.
 	 */
 	dropdownClassName: PropTypes.string,
@@ -65,6 +71,17 @@ GlobalHeaderDropdown.propTypes = {
 	* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
 	*/
 	id: PropTypes.string,
+	/**
+	 * Positions dropdown menu with a nubbin--that is the arrow notch. The placement options correspond to the placement of the nubbin. This is implemeted with CSS classes and is best used with a `Button` with "icon container" styling. Dropdown menus will still be contained to the closest scrolling parent.
+	 */
+	nubbinPosition: React.PropTypes.oneOf([
+		'top left',
+		'top',
+		'top right',
+		'bottom left',
+		'bottom',
+		'bottom right'
+	]),
 	/**
 	 *  Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px).
 	 */
@@ -76,6 +93,10 @@ GlobalHeaderDropdown.propTypes = {
 };
 
 // ### Default Props
-GlobalHeaderDropdown.defaultProps = { offset: '-12px -15px' };
+GlobalHeaderDropdown.defaultProps = {
+	align: 'right',
+	nubbinPosition: 'top right',
+	offset: '-12px -16px'
+};
 
 module.exports = GlobalHeaderDropdown;

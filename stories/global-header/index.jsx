@@ -42,15 +42,11 @@ storiesOf(GLOBAL_HEADER, module)
 			<GlobalHeaderButton
 				assistiveText="Help and Training"
 				iconName="question"
-				iconVariant="container"
-				iconVariant="container"
 				onClick={action('Help Clicked')}
 			/>
 			<GlobalHeaderButton
 				assistiveText="Setup"
-				iconCategory="utility"
 				iconName="settings"
-				iconVariant="container"
 				onClick={action('Setup Clicked')}
 			/>
 			<GlobalHeaderProfile
@@ -63,8 +59,8 @@ storiesOf(GLOBAL_HEADER, module)
 			/>
 		</GlobalHeader>
 	))
-	.add('w/o Search or Feedback', () => (
-		<GlobalHeader logoSrc={logo} onSkipToContent={action('Skip to Main Content')} onSkipToNav={action('Skip to Navigation')}>
+	.add('w/ Fewer Elements', () => (
+		<GlobalHeader logoSrc={logo}>
 			<GlobalHeaderDropdown
 				iconCategory="utility"
 				iconName="add"
