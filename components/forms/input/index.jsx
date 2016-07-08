@@ -135,6 +135,10 @@ const Input = React.createClass({
 		 */
 		placeholder: PropTypes.string,
 		/**
+		 * Name of the submitted form parameter.
+		 */
+		name: PropTypes.string,
+		/**
 		 * Displays the value of the input statically.
 		 */
 		readOnly: PropTypes.bool,
@@ -221,6 +225,7 @@ const Input = React.createClass({
 			onChange,
 			onClick,
 			onIconClick, // eslint-disable-line no-unused-vars
+			name,
 			placeholder,
 			readOnly,
 			required,
@@ -278,6 +283,7 @@ const Input = React.createClass({
 						id={this.getId()}
 						onChange={onChange}
 						onClick={onClick}
+						name={name}
 						placeholder={placeholder}
 						required={required}
 						type={type}
