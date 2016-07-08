@@ -9,7 +9,8 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # ContextBar Dropdown Component
+
+// # Global Navigation Dropdown Component
 
 // ## Dependencies
 
@@ -17,37 +18,67 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { PropTypes } from 'react';
 
 // ### Dropdown
-import Dropdown from '../menu-dropdown';
-import ContextBarTrigger from './dropdown-trigger';
+import MenuDropdown from '../menu-dropdown';
+import GlobalNavigationTrigger from './dropdown-trigger';
 
 // ## Constants
 import { GLOBAL_NAVIGATION_BAR_DROPDOWN } from '../../utilities/constants';
 
-
 /**
- * This component is an implementation of `MenuDropdown` with a custom trigger.
+ * This component is an implementation of `MenuDropdown` with a custom trigger. All the properties listed below are provided to the `MenuDropdown` component. Any additional properties are provided to the Custom Trigger (that is the `Button` or `li` tag).
  */
-/**
-*  The Dropdown Button Trigger renders the default trigger button for the dropdown menu. If this component has children, it does not render itself to the DOM. Instead, it renders its child element, `Button`, and all that child's properties. This component may be used as a template to create custom triggers that do not use `Button`.
-*/
-const GlobalNavigationBarDropdown = React.createClass({
-	// ### Display Name
-	// Always use the canonical component name (set in the core) as the React
-	// display name.
-	displayName: GLOBAL_NAVIGATION_BAR_DROPDOWN,
+const GlobalNavigationBarDropdown = (props) => {
+	// The following props are provided to the `li`, all others are passed into the `Button`
+	const {
+		align,
+		dropdownClassName,
+		id,
+		options,
+		...rest
+	} = props;
 
-	// ### Prop Types
-	propTypes: {
-	},
+	return (
+		<MenuDropdown
+			options={options}
+			align={align}
+			id={id}
+			dropdownClassName={dropdownClassName}
+		>
+			<GlobalNavigationTrigger {...rest} />
+		</MenuDropdown>
+	);
+};
 
-	// ### Render
-	render () {
-		return (
-			<Dropdown options={this.props.options} align="right" id={this.props.id}>
-				<ContextBarTrigger {...this.props} />
-			</Dropdown>
-		);
-	}
-});
+// ### Display Name
+// Always use the canonical component name (set in the core) as the React
+// display name.
+GlobalNavigationBarDropdown.displayName = GLOBAL_NAVIGATION_BAR_DROPDOWN;
+
+// ### Prop Types
+GlobalNavigationBarDropdown.propTypes = {
+	/**
+	 * Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.
+	 */
+	align: PropTypes.oneOf(['left', 'right']),
+	/**
+	 * Extra classnames to apply to the dropdown menu.
+	 */
+	dropdownClassName: PropTypes.string,
+	/**
+	* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
+	*/
+	id: PropTypes.string,
+	/**
+	 *  Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px).
+	 */
+	offset: PropTypes.string,
+	/**
+	 * An array of menu item.
+	 */
+	options: PropTypes.array.isRequired
+};
+
+// ### Default Props
+GlobalNavigationBarDropdown.defaultProps = { align: 'right' };
 
 module.exports = GlobalNavigationBarDropdown;

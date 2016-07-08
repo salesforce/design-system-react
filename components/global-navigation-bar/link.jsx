@@ -45,7 +45,7 @@ const GlobalNavigationBarLink = (props) => {
 		if (isFunction(onClick)) {
 			EventUtil.trap(event);
 
-			event.href = this.props.href;
+			event.href = props.href;
 			onClick(event);
 		}
 	}

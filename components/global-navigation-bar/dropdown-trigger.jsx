@@ -9,7 +9,7 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # ContextBar Dropdown Component
+// # Global Navigation Dropdown Component
 
 // ## Dependencies
 
@@ -19,25 +19,12 @@ import React, { PropTypes } from 'react';
 // ### classNames
 import classNames from 'classnames';
 
-// ### assign
-import assign from 'lodash.assign';
-
-// ### Dropdown
-import Dropdown from '../menu-dropdown';
 import Button from '../button';
-import ContextBarTrigger from './dropdown-trigger';
 
-// ## Constants
-import { CONTEXT_BAR_DROPDOWN } from '../../utilities/constants';
-
-
-/**
- * This component is an implementation of `MenuDropdown` with a custom trigger.
- */
 /**
 *  The Dropdown Button Trigger renders the default trigger button for the dropdown menu. If this component has children, it does not render itself to the DOM. Instead, it renders its child element, `Button`, and all that child's properties. This component may be used as a template to create custom triggers that do not use `Button`.
 */
-const ContextBarDropdownTrigger = React.createClass({
+const GlobalNavigationDropdownTrigger = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
 	// display name.
@@ -45,53 +32,69 @@ const ContextBarDropdownTrigger = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
+		/**
+		 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+		 * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
+		 */
+		assistiveText: PropTypes.string.required,
+		/**
+		 * CSS classes to be added to the 'li'.
+		 */
+		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		/**
+		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
+		*/
+		id: PropTypes.string,
+		/**
+		 * Visible label on the dropdown menu trigger button.
+		 */
+		label: PropTypes.string,
+		/**
+		 * The dropdown menu.
+		 */
+		menu: PropTypes.node,
+		/**
+		 * This prop is passed onto the triggering `li` element.
+		 */
+		onClick: PropTypes.func
 	},
 
 	// ### Render
 	render () {
-		// const {
-		// 	className,
-		// 	label,
-		// 	triggerIconCategory,
-		// 	triggerIconName,
-		// 	id,
-		// 	menu,
-		// 	onClick,
-		// 	onKeyDown
-		// } = this.props;
+		const {
+			className,
+			id,
+			label,
+			menu,
+			onClick,
+			...rest
+		} = this.props;
 
 		return (
 			<li
 				aria-haspopup="true"
-				className={classNames('slds-context-bar__item', 'slds-context-bar-action', 'slds-dropdown-trigger', this.props.className)}
-				id={this.props.id}
-				onClick={this.props.onClick}
+				className={classNames('slds-context-bar__item', 'slds-context-bar-action', 'slds-dropdown-trigger', className)}
+				onClick={onClick}
 			>
-				<a className="slds-context-bar__label-action">{this.props.label}</a>
+				<a className="slds-context-bar__label-action">{label}</a>
 				<div className="slds-context-bar__icon-action slds-p-left--none">
 					<Button
-						aria-haspopup="true"
-						assistiveText={this.props.label}
+						assistiveText={this.props.assistiveText}
+						id={id}
+						{...rest}
 						className="slds-context-bar__button slds-context-bar-action__trigger"
-						disabled={this.props.disabled}
-						hint={this.props.hint}
-						iconCategory={this.props.triggerIconCategory || 'utility'}
-						iconName={this.props.triggerIconName || 'down'}
+						aria-haspopup="true"
+						iconCategory="utility"
+						iconName="down"
 						iconVariant="bare"
 						iconSize="x-small"
-						id={this.props.id}
-						onKeyDown={this.props.onKeyDown}
-
-						style={this.props.style}
-						tabIndex={this.props.tabIndex}
 						variant="icon"
-						tooltip={this.props.tooltip}
 					/>
-					{this.props.menu}
+					{menu}
 				</div>
 			</li>
 		);
 	}
 });
 
-module.exports = ContextBarDropdownTrigger;
+module.exports = GlobalNavigationDropdownTrigger;
