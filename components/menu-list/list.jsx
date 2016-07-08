@@ -44,7 +44,7 @@ const List = React.createClass({
 		onCancel: PropTypes.func.isRequired,
 		onListBlur: PropTypes.func.isRequired,
 		onListItemBlur: PropTypes.func.isRequired,
-		onMoveFocus: PropTypes.func.isRequired,
+		onMoveFocus: PropTypes.func, // TODO: Should be implemented?
 		onSelect: PropTypes.func.isRequired,
 		onUpdateHighlighted: PropTypes.func,
 		options: PropTypes.array,

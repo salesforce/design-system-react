@@ -46,10 +46,10 @@ const ListItem = React.createClass({
 		label: PropTypes.string,
 		labelRenderer: PropTypes.func,
 		value: PropTypes.any,
-		onBlur: PropTypes.func.isRequired,
-		onClick: PropTypes.func.isRequired,
+		onBlur: PropTypes.func, // TODO: Should be implemented?
+		onClick: PropTypes.func, // TODO: Should be implemented?
 		onFocus: PropTypes.func.isRequired,
-		onMoveFocus: PropTypes.func.isRequired,
+		onMoveFocus: PropTypes.func, // TODO: Should be implemented?
 		onSelect: PropTypes.func.isRequired
 	},
 
