@@ -51,6 +51,9 @@ const MenuDropdown = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
+		/**
+		 * Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.
+		 */
 		align: PropTypes.oneOf(['left', 'right']),
 		/**
 		 * This prop is passed onto the triggering `Button`. Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. You can omit this prop if you are using the `label` prop.
@@ -127,6 +130,21 @@ const MenuDropdown = React.createClass({
 		 * Renders menu within an absolutely positioned container at an elevated z-index.
 		 */
 		modal: PropTypes.bool,
+		/**
+		 * Positions dropdown menu with a nubbin--that is the arrow notch. The placement options correspond to the placement of the nubbin. This is implemeted with CSS classes and is best used with a `Button` with "icon container" styling. Dropdown menus will still be contained to the closest scrolling parent.
+		 */
+		nubbinPosition: React.PropTypes.oneOf([
+			'top left',
+			'top',
+			'top right',
+			'bottom left',
+			'bottom',
+			'bottom right'
+		]),
+		/**
+		 *  Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px).
+		 */
+		offset: PropTypes.string,
 		/**
 		 * Is only called when `openOn` is set to `hover` and when the triggering button loses focus.
 		 */
@@ -435,17 +453,39 @@ const MenuDropdown = React.createClass({
 	},
 
 	renderModalPopover () {
+		let positionClassName;
+		let marginTop;
+		let offset = this.props.offset;
+
+		if (this.props.nubbinPosition) {
+			const positions = this.props.nubbinPosition.split(' ');
+			positionClassName = classnames(
+				`slds-nubbin--${positions.join('-')}`,
+				positions.map((position) => `slds-dropdown--${position}`)
+			);
+			marginTop = 0;
+			// TODO: allow nubbinPosition prop to set the offset automatically
+			// if (this.props.nubbinPosition === 'top right') {
+			// 	offset = '-12px -24px';
+			// }
+		} else if (this.props.align) {
+			positionClassName = `slds-dropdown--${this.props.align}`;
+		}
+
 		return (
 			this.props.forceOpen || !this.props.disabled && this.state.isOpen && this.button ?
 				<Popover
 					className={classnames('slds-dropdown',
 						'slds-dropdown--menu',
 						`slds-dropdown--${this.props.align}`,
+						positionClassName,
 						this.props.className)}
 					closeOnTabKey
 					dropClass="slds-picklist" // TODO: in next SLDS release, remove slds-picklist class because slds-dropdown--length-5 will be active.
 					horizontalAlign={this.props.align}
 					flippable
+					marginTop={marginTop}
+					offset={offset}
 					onClose={this.handleCancel}
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
