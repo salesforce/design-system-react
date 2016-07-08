@@ -26,31 +26,11 @@ import { GLOBAL_HEADER_TOOL } from '../../utilities/constants';
 /**
  * This component is an implementation of `MenuDropdown` with a custom trigger. All the properties listed below are provided to the `MenuDropdown` component. Any additional properties are provided to the Custom Trigger (that is the `Button` or `li` tag).
  */
-const GlobalHeaderDropdown = (props) => {
-	// The following props are provided to the `li`, all others are passed into the `Button`
-	const {
-		align,
-		dropdownClassName,
-		id,
-		nubbinPosition,
-		offset,
-		options,
-		...rest
-	} = props;
-
-	return (
-		<MenuDropdown
-			align={align}
-			dropdownClassName={dropdownClassName}
-			id={id}
-			nubbinPosition={nubbinPosition}
-			offset={offset}
-			options={options}
-		>
-			<GlobalHeaderTrigger {...rest} />
-		</MenuDropdown>
-	);
-};
+const GlobalHeaderDropdown = (props) => (
+	<MenuDropdown {...props}>
+		<GlobalHeaderTrigger />
+	</MenuDropdown>
+);
 
 // ### Display Name
 // Always use the canonical component name (set in the core) as the React
@@ -87,6 +67,10 @@ GlobalHeaderDropdown.propTypes = {
 	 */
 	offset: PropTypes.string,
 	/**
+	 * Triggered when an item in the menu is clicked.
+	 */
+	onSelect: PropTypes.func,
+	/**
 	 * An array of menu item.
 	 */
 	options: PropTypes.array.isRequired
@@ -96,6 +80,7 @@ GlobalHeaderDropdown.propTypes = {
 GlobalHeaderDropdown.defaultProps = {
 	align: 'right',
 	nubbinPosition: 'top right',
+	// TODO: Use design tokens to remove "magic numbers" that center nubbin under button
 	offset: '-12px -16px'
 };
 

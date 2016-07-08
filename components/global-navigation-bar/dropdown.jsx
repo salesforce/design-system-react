@@ -73,6 +73,10 @@ GlobalNavigationBarDropdown.propTypes = {
 	 */
 	offset: PropTypes.string,
 	/**
+	 * Triggered when an item in the menu is clicked.
+	 */
+	onSelect: PropTypes.func,
+	/**
 	 * An array of menu item.
 	 */
 	options: PropTypes.array.isRequired

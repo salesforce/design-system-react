@@ -19,8 +19,9 @@ import React, { PropTypes } from 'react';
 // ### classnames
 import classnames from 'classnames';
 
-// ### GlobalHeaderDropdown
-import GlobalHeaderDropdown from './dropdown';
+// ### Dropdown
+import MenuDropdown from '../menu-dropdown';
+import GlobalHeaderTrigger from './dropdown-trigger';
 
 // ## Constants
 import { GLOBAL_HEADER_PROFILE } from '../../utilities/constants';
@@ -46,15 +47,12 @@ const GlobalHeaderProfile = (props) => {
 	return (
 		// `slds-m-right--x-small` is present to prevent dropdown menu with a
 		// "top right" nubbin from jumping offscreen
-		<GlobalHeaderDropdown
-			avatar={avatar}
-			className={classnames('slds-m-left--x-small', 'slds-m-right--x-small', className)}
-			// TODO: Use design tokens to remove "magic numbers" that center nubbin under button
-			offset="-12px -18px"
-			iconVarient={null}
-			{...tempProfileIcon}
-			{...rest}
-		/>
+		<MenuDropdown iconVarient={null} {...tempProfileIcon} {...rest}>
+			<GlobalHeaderTrigger
+				avatar={avatar}
+				className={classnames('slds-m-left--x-small', 'slds-m-right--x-small', className)}
+			/>
+		</MenuDropdown>
 	);
 };
 
@@ -66,13 +64,56 @@ GlobalHeaderProfile.displayName = GLOBAL_HEADER_PROFILE;
 // ### Prop Types
 GlobalHeaderProfile.propTypes = {
 	/**
+	 * Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.
+	 */
+	align: PropTypes.oneOf(['left', 'right']),
+	/**
+	 * Extra classnames to apply to the dropdown menu.
+	 */
+	dropdownClassName: PropTypes.string,
+	/**
 	 * An image URL to display for the user profile.
 	 */
 	avatar: React.PropTypes.string,
 	/**
 	 * CSS classes to be added to `li` element.
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string])
+	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	/**
+	* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
+	*/
+	id: PropTypes.string,
+	/**
+	 * Positions dropdown menu with a nubbin--that is the arrow notch. The placement options correspond to the placement of the nubbin. This is implemeted with CSS classes and is best used with a `Button` with "icon container" styling. Dropdown menus will still be contained to the closest scrolling parent.
+	 */
+	nubbinPosition: React.PropTypes.oneOf([
+		'top left',
+		'top',
+		'top right',
+		'bottom left',
+		'bottom',
+		'bottom right'
+	]),
+	/**
+	 *  Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px).
+	 */
+	offset: PropTypes.string,
+	/**
+	 * Triggered when an item in the menu is clicked.
+	 */
+	onSelect: PropTypes.func,
+	/**
+	 * An array of menu item.
+	 */
+	options: PropTypes.array.isRequired
+};
+
+// ### Default Props
+GlobalHeaderProfile.defaultProps = {
+	align: 'right',
+	nubbinPosition: 'top right',
+	// TODO: Use design tokens to remove "magic numbers" that center nubbin under button
+	offset: '-12px -18px'
 };
 
 export default GlobalHeaderProfile;

@@ -517,6 +517,7 @@ const MenuDropdown = React.createClass({
 				className={this.props.buttonClassName}
 				disabled={this.props.disabled}
 				hint={this.props.hint}
+				iconCategory={this.props.iconCategory}
 				iconName={this.props.iconName}
 				iconVariant={this.props.iconVariant}
 				iconSize={this.props.iconSize}
@@ -527,7 +528,7 @@ const MenuDropdown = React.createClass({
 				tooltip={this.props.tooltip}
 
 				{...CustomTriggerChildProps}
-				
+
 				// props that should not be overwritten by end developer
 				id={this.props.id}
 				onBlur={this.props.openOn === 'hover' ? this.handleBlur : null}
