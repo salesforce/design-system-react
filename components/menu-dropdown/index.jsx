@@ -419,7 +419,7 @@ const MenuDropdown = React.createClass({
 		}
 	},
 
-	renderPopoverContent () {
+	renderDefaultPopoverContent () {
 		return (
 			<List
 				checkmark={this.props.checkmark}
@@ -447,7 +447,7 @@ const MenuDropdown = React.createClass({
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
 				>
-					{this.renderPopoverContent()}
+					{this.renderDefaultPopoverContent()}
 				</div> : null
 		);
 	},
@@ -491,7 +491,7 @@ const MenuDropdown = React.createClass({
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
 					targetElement={this.button}
 				>
-					{this.renderPopoverContent()}
+					{this.renderDefaultPopoverContent()}
 				</Popover> : null
 		);
 	},
@@ -500,13 +500,16 @@ const MenuDropdown = React.createClass({
 		// Dropdowns are used by other components. The default trigger is a button, but some other components use `li` elements. The following allows `MenuDropdown` to be extended by providing a child component with the displayName of `DropdownTrigger`.
 		let CurrentTrigger = DefaultTrigger;
 		let CustomTriggerChildProps = {};
+		const childrenWithCustomTriggerRemoved = [];
 
 		// Dropdown can take a Trigger component as a child and then return it as the parent DOM element.
 		React.Children.forEach(this.props.children, (child) => {
-			if (child && child.type.displayName === 'DropdownTrigger') {
+			if (child && child.type.displayName === 'SLDSMenuDropdownTrigger') {
 				// `CustomTriggerChildProps` is not used by the default button Trigger, but by other triggers
 				CustomTriggerChildProps = child.props;
 				CurrentTrigger = child.type;
+			} else {
+				childrenWithCustomTriggerRemoved.push(child);
 			}
 		});
 
