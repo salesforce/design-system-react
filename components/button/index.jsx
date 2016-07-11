@@ -16,6 +16,7 @@ import TooltipTrigger from '../popover-tooltip/trigger';
 import omit from 'lodash.omit';
 
 import { BUTTON } from '../../utilities/constants';
+import {EventUtil} from '../../utilities';
 
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
@@ -99,9 +100,17 @@ class Button extends TooltipTrigger {
 		super.componentWillUnmount();
 	}
 
+  handleKeyDown(event) {
+    EventUtil.trapEvent(event);
+  }
+
 	handleClick (event) {
 		// Note that you can't read properties directly from the Synthetic event but you can read them by calling the specific property (ie. event.target, event.type, etc).
 		// http://stackoverflow.com/questions/22123055/react-keyboard-event-handlers-all-null
+		if(this.props.disabled){
+      EventUtil.trapEvent(event);
+      return;
+		}
 		if (this.props.onClick) this.props.onClick(event);
 		this.setState({ active: !this.state.active });
 	}
@@ -123,6 +132,7 @@ class Button extends TooltipTrigger {
 
 			return (
 				<ButtonIcon
+					key="icon"
 					hint={this.props.hint}
 					name={name}
 					category={this.props.iconCategory}
@@ -137,6 +147,7 @@ class Button extends TooltipTrigger {
 		if (this.props.iconVariant === 'more') {
 			return (
 				<ButtonIcon
+					key="icon-more"
 					name="down"
 					size="x-small"
 				/>
@@ -148,23 +159,38 @@ class Button extends TooltipTrigger {
 		const iconOnly = this.props.variant === 'icon' || this.props.variant === 'icon-inverse';
 
 		return iconOnly && this.props.assistiveText
-      ? <span className="slds-assistive-text">{this.props.assistiveText}</span>
-      : <span>{this.props.label}</span>;
+      ? <span key="label" className="slds-assistive-text">{this.props.assistiveText}</span>
+      : <span key="label">{this.props.label}</span>;
+	}
+
+	getBody () {
+		return [
+			this.props.iconPosition === 'right' ? this.renderLabel() : null,
+
+			this.renderIcon(this.props.iconName),
+
+			this.renderIconMore(),
+
+			(this.props.iconPosition !== 'right') ? this.renderLabel() : null,
+
+			this.props.children,
+
+			this.getTooltip()
+		];
 	}
 
 	render () {
 		const props = omit(this.props, ['className', 'label', 'onClick']);
-
+		if(this.props.disabled && this.props.tooltip){
+			return (
+				<span className={this.getClassName()} {...props} onClick={this.handleClick.bind(this)} onKeyDown={this.handleKeyDown.bind(this)}>
+					{ this.getBody() }
+				</span>
+			);
+		}
 		return (
 			<button className={this.getClassName()} {...props} onClick={this.handleClick.bind(this)}>
-				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
-
-				{this.renderIcon(this.props.iconName)}
-				{this.renderIconMore()}
-
-				{(this.props.iconPosition !== 'right') ? this.renderLabel() : null}
-				{this.props.children}
-				{this.getTooltip()}
+				{ this.getBody() }
 			</button>
 		);
 	}

@@ -96,7 +96,8 @@ class Trigger extends React.Component {
         height:'100%',
         position:'absolute',
         left:'0',
-        top:'0'
+        top:'0',
+        cursor:'default'
       }}
       onMouseOver={this.handleTooltipMouseEnter.bind(this)}
       onFocus={this.handleTooltipMouseEnter.bind(this)}
