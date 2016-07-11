@@ -509,7 +509,6 @@ const MenuDropdown = React.createClass({
 			positionClassName = `slds-dropdown--${this.props.align}`;
 		}
 
-		// TODO: in next SLDS release, remove slds-picklist class because slds-dropdown--length-5 will be active.
 		return (
 			this.props.forceOpen || !this.props.disabled && this.state.isOpen && this.button ?
 				<Popover
@@ -519,7 +518,6 @@ const MenuDropdown = React.createClass({
 						positionClassName,
 						this.props.className)}
 					closeOnTabKey
-					dropClass="slds-picklist"
 					horizontalAlign={this.props.align}
 					flippable
 					marginTop={marginTop}
