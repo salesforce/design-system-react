@@ -17,6 +17,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND 
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
+// ### classNames
+// [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
+// This project uses `classnames`, "a simple javascript utility for conditionally
+// joining classNames together."
+import classnames from 'classnames';
+
 // ### Children
 import Popover from '../popover';
 
@@ -27,11 +33,10 @@ import List from '../menu-list/list';
 import ListItem from '../menu-list/list-item';
 import ListItemLabel from '../menu-list/list-item-label';
 
-// ### classNames
-// [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
-// This project uses `classnames`, "a simple javascript utility for conditionally
-// joining classNames together."
-import classnames from 'classnames';
+// ### Traits
+
+// #### KeyboardNavigable
+import KeyboardNavigable from '../../utilities/keyboard-navigable';
 
 import { KEYS, EventUtil } from '../../utilities';
 import { MENU_DROPDOWN } from '../../utilities/constants';
@@ -48,6 +53,8 @@ const MenuDropdown = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: MENU_DROPDOWN,
+
+	mixins: [KeyboardNavigable],
 
 	// ### Prop Types
 	propTypes: {
@@ -217,7 +224,7 @@ const MenuDropdown = React.createClass({
 
 	getInitialState () {
 		return {
-			highlightedIndex: 0,
+			focusedIndex: -1,
 			isClosing: false,
 			isFocused: false,
 			isHover: false,
@@ -274,9 +281,9 @@ const MenuDropdown = React.createClass({
 
 	getIndexByValue (value) {
 		let foundIndex = -1;
+
 		if (this.props.options && this.props.options.length) {
 			this.props.options.some((element, index) => {
-				// unused parameter: array
 				if (element && element.value === value) {
 					foundIndex = index;
 					return true;
@@ -284,15 +291,18 @@ const MenuDropdown = React.createClass({
 				return false;
 			});
 		}
+
 		return foundIndex;
 	},
 
 	getValueByIndex (index) {
 		let value;
 		const option = this.props.options[index];
+
 		if (option) {
 			value = this.props.options[index];
 		}
+
 		return value;
 	},
 
@@ -302,6 +312,7 @@ const MenuDropdown = React.createClass({
 
 	handleBlur (e) {
 		this.setState({ isFocused: false });
+
 		if (this.props.onBlur) {
 			this.props.onBlur(e);
 		}
@@ -319,6 +330,7 @@ const MenuDropdown = React.createClass({
 			isFocused: true,
 			isHover: false
 		});
+
 		if (this.props.onFocus) {
 			this.props.onFocus();
 		}
@@ -326,12 +338,14 @@ const MenuDropdown = React.createClass({
 
 	handleMouseEnter () {
 		this.state.isClosing = false;
+
 		if (!this.state.isOpen) {
 			this.setState({
 				isOpen: true,
 				isHover: true
 			});
 		}
+
 		if (this.props.onMouseEnter) {
 			this.props.onMouseEnter();
 		}
@@ -339,6 +353,7 @@ const MenuDropdown = React.createClass({
 
 	handleMouseLeave () {
 		this.setState({ isClosing: true });
+
 		if (this.props.onMouseLeave) {
 			this.props.onMouseLeave();
 		}
@@ -347,6 +362,7 @@ const MenuDropdown = React.createClass({
 	handleClick () {
 		if (!this.state.isOpen) {
 			this.setState({ isOpen: true });
+
 			if (this.props.onClick) {
 				this.props.onClick();
 			}
@@ -367,10 +383,14 @@ const MenuDropdown = React.createClass({
 
 	handleSelect (index) {
 		this.setState({ selectedIndex: index });
-		this.setFocus();
+
 		if (this.props.onSelect) {
 			this.props.onSelect(this.getValueByIndex(index));
 		}
+	},
+
+	toggleOpen () {
+		this.setState({ isOpen: !this.state.isOpen });
 	},
 
 	handleKeyDown (event) {
@@ -380,9 +400,12 @@ const MenuDropdown = React.createClass({
 					event.keyCode === KEYS.DOWN ||
 					event.keyCode === KEYS.UP) {
 				EventUtil.trap(event);
-				this.setState({
-					isOpen: true,
-					highlightedIndex: -1
+
+				this.handleKeyboardNavigate({
+					isOpen: this.state.isOpen,
+					keyCode: event.keyCode,
+					onSelect: this.handleSelect,
+					toggleOpen: this.toggleOpen
 				});
 			}
 
@@ -390,10 +413,6 @@ const MenuDropdown = React.createClass({
 				this.props.onKeyDown();
 			}
 		}
-	},
-
-	handleUpdateHighlighted (nextIndex) {
-		this.setState({ highlightedIndex: nextIndex });
 	},
 
 	handleListBlur () {
@@ -417,6 +436,10 @@ const MenuDropdown = React.createClass({
 		if (!this.isUnmounting && this.button) {
 			ReactDOM.findDOMNode(this.button).focus();
 		}
+	},
+
+	getMenu () {
+		return ReactDOM.findDOMNode(this.list);
 	},
 
 	renderPopoverContent () {

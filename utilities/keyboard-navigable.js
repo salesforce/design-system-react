@@ -121,23 +121,37 @@ export function keyboardNavigate ({ currentFocusedIndex, isOpen, keyCode, naviga
 	return focusedIndex;
 }
 
+function getMenu (componentRef) {
+	return ReactDOM.findDOMNode(componentRef).querySelector('ul.dropdown__list');
+}
+
+function getMenuItem (menuItemId, context = document) {
+	let menuItem;
+
+	if (menuItemId) {
+		menuItem = context.getElementById(menuItemId);
+	}
+
+	return menuItem;
+}
+
 export const KeyboardNavigableMixin = {
 	componentWillMount () {
-		this.navigableItems = getNavigableItems(this.props.items);
+		this.navigableItems = getNavigableItems(this.props.options);
 	},
 
 	componentWillReceiveProps (nextProps) {
-		if (nextProps.items) {
-			this.navigableItems = getNavigableItems(nextProps.items);
+		if (nextProps.options) {
+			this.navigableItems = getNavigableItems(nextProps.options);
 		}
 	},
 
 	// Handling open / close toggling is optional, and a default implementation is provided for handling focus, but selection _must_ be handled
-	handleKeyboardNavigate (event, { isOpen = true, onFocus = this.handleKeyboardFocus, onSelect, toggleOpen = noop }) {
+	handleKeyboardNavigate ({ isOpen = true, keyCode, onFocus = this.handleKeyboardFocus, onSelect, toggleOpen = noop }) {
 		keyboardNavigate({
 			currentFocusedIndex: this.state.focusedIndex,
 			isOpen,
-			keyCode: event.keyCode,
+			keyCode,
 			navigableItems: this.navigableItems,
 			onFocus,
 			onSelect,
@@ -148,8 +162,12 @@ export const KeyboardNavigableMixin = {
 	handleKeyboardFocus (focusedIndex) {
 		this.setState({ focusedIndex });
 
-		const menu = this.getMenu();
-		const menuItem = this.getMenuItem(focusedIndex, menu);
+		const menu = isFunction(this.getMenu) ? this.getMenu() : getMenu(this);
+
+		const menuItem = isFunction(this.getMenuItem)
+			? this.getMenuItem(focusedIndex, menu)
+			: getMenuItem(this.getMenuItemId(focusedIndex));
+
 		if (menuItem) {
 			this.focusMenuItem(menuItem);
 			this.scrollToMenuItem(menu, menuItem);
@@ -165,21 +183,6 @@ export const KeyboardNavigableMixin = {
 		}
 
 		return menuItemId;
-	},
-
-	getMenu () {
-		return ReactDOM.findDOMNode(this).querySelector('ul.dropdown__list');
-	},
-
-	getMenuItem (index, context = document) {
-		const menuItemId = this.getMenuItemId(index);
-		let menuItem;
-
-		if (menuItemId) {
-			menuItem = context.getElementById(menuItemId);
-		}
-
-		return menuItem;
 	},
 
 	focusMenuItem (menuItem) {
