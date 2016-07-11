@@ -14,9 +14,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React from 'react';
 
-// ### Icon
-import Icon from '../icon';
-
 // ## Constants
 import { LIST_ITEM_LABEL } from '../../utilities/constants';
 
@@ -37,7 +34,6 @@ ListItemLabel.propTypes = {
 	icon: React.PropTypes.node,
 	index: React.PropTypes.number,
 	inverted: React.PropTypes.bool,
-	isHighlighted: React.PropTypes.bool,
 	isSelected: React.PropTypes.bool,
 	label: React.PropTypes.string,
 	value: React.PropTypes.any
@@ -47,7 +43,6 @@ ListItemLabel.defaultProps = {
 	data: {},
 	index: 0,
 	inverted: false,
-	isHighlighted: false,
 	isSelected: false,
 	label: '',
 	value: null

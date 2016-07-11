@@ -13,7 +13,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // ### React
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 // ### classNames
 import classNames from 'classnames';
@@ -22,7 +21,7 @@ import classNames from 'classnames';
 import ListItem from './list-item';
 
 // ### Event Helpers
-import { EventUtil, KEYS } from '../../utilities';
+import { EventUtil } from '../../utilities';
 
 // ## Constants
 import { LIST } from '../../utilities/constants';
@@ -53,6 +52,7 @@ const List = React.createClass({
 		 * True if the list was opened via hover.
 		 */
 		isHover: PropTypes.bool,
+		itemRefs: PropTypes.func,
 		/**
 		 * If provided, this function will be used to render the contents of each menu item.
 		 */
@@ -93,7 +93,6 @@ const List = React.createClass({
 
 	getDefaultProps () {
 		return {
-			highlightedIndex: -1,
 			length: '5',
 			options: [],
 			selectedIndex: -1
@@ -123,105 +122,26 @@ const List = React.createClass({
 		}
 	},
 
-	handleMoveFocus (delta) {
-		let newHighlightedIndex = this.props.highlightedIndex + delta;
-		if (newHighlightedIndex < 0) {
-			newHighlightedIndex = this.props.options.length - 1;
-		} else if (newHighlightedIndex >= this.props.options.length) {
-			newHighlightedIndex = 0;
-		}
-		if (this.props.onUpdateHighlighted) {
-			this.props.onUpdateHighlighted(newHighlightedIndex);
-		}
-	},
-
-	handleFocusNext () {
-		this.handleMoveFocus(1);
-	},
-
-	handleSelect (index) {
-		if (this.props.onSelect) {
-			this.props.onSelect(index);
-		}
-	},
-
-	handleItemFocus (itemIndex, itemHeight) {
-		if (this.refs.scroll) {
-			ReactDOM.findDOMNode(this.refs.scroll).scrollTop = itemIndex * itemHeight;
-		}
-	},
-
-	handleSearch (index, ch) {
-		if (this.props.onUpdateHighlighted) {
-			const searchChar = ch.toLowerCase();
-			const isMatch = (i) => {
-				const option = this.props.options[i];
-
-				if (option && option.label && option.type !== 'header') {
-					if (option.label.charAt(0).toLowerCase() === searchChar) {
-						this.props.onUpdateHighlighted(i);
-						return true;
-					}
-				}
-
-				return false;
-			};
-
-			for (let i = index + 1; i < this.props.options.length; i++) {
-				if (isMatch(i)) return;
-			}
-
-			for (let i = 0; i < index; i++) {
-				if (isMatch(i)) return;
-			}
-		}
-	},
-
 	getItems () {
-		return this.props.options.map((option, index) => (
-			<ListItem
-				{...option}
-				checkmark={this.props.checkmark}
-				data={option}
-				focusNext={this.handleFocusNext}
-				index={index}
-				isHighlighted={(index === this.props.highlightedIndex)}
-				isHover={this.props.isHover}
-				isSelected={(index === this.props.selectedIndex)}
-				key={`ListItem_${index}`}
-				labelRenderer={this.props.itemRenderer}
-				onFocus={this.handleItemFocus}
-				onSelect={this.props.onSelect}
-				onUpdateHighlighted={this.props.onUpdateHighlighted}
-			/>
-		));
-	},
+		return this.props.options.map((option, index) => {
+			const id = this.props.getMenuItemId(index);
 
-	handleKeyDown (event) {
-		if (event.keyCode) {
-			if (event.keyCode === KEYS.DOWN) {
-				EventUtil.trapEvent(event);
-				this.handleMoveFocus(1);
-			} else if (event.keyCode === KEYS.UP) {
-				EventUtil.trapEvent(event);
-				this.handleMoveFocus(-1);
-			} else if (event.keyCode === KEYS.ENTER ||
-					event.keyCode === KEYS.SPACE) {
-				EventUtil.trapEvent(event);
-				const index = parseInt(event.target.getAttribute('data-index'), 10);
-				this.handleSelect(index);
-			} else if (event.keyCode === KEYS.ESCAPE) {
-				EventUtil.trapEvent(event);
-				if (this.props.onCancel) {
-					this.props.onCancel();
-				}
-			} else if (event.keyCode !== KEYS.TAB) {
-				EventUtil.trapEvent(event);
-				const ch = String.fromCharCode(event.keyCode);
-				const index = parseInt(event.target.getAttribute('data-index'), 10);
-				this.handleSearch(index, ch);
-			}
-		}
+			return (
+				<ListItem
+					{...option}
+					checkmark={this.props.checkmark}
+					data={option}
+					id={id}
+					index={index}
+					isHover={this.props.isHover}
+					isSelected={(index === this.props.selectedIndex)}
+					key={id}
+					labelRenderer={this.props.itemRenderer}
+					onSelect={this.props.onSelect}
+					ref={(listItem) => this.props.itemRefs(listItem, index)}
+				/>
+			);
+		});
 	},
 
 	render () {
@@ -235,8 +155,6 @@ const List = React.createClass({
 				aria-labelledby={this.props.triggerId}
 				className={classNames('dropdown__list', lengthClassName, this.props.className)}
 				onBlur={this.handleListItemBlur}
-				onKeyDown={this.handleKeyDown}
-				ref="scroll"
 				role="menu"
 			>
 				{this.getItems()}

@@ -438,16 +438,38 @@ const MenuDropdown = React.createClass({
 		}
 	},
 
+	saveRefToList (list) {
+		this.list = list;
+	},
+
+	saveRefToListItem (listItem, index) {
+		if (!this.listItems) {
+			this.listItems = {};
+		}
+
+		this.listItems[index] = listItem;
+	},
+
 	getMenu () {
 		return ReactDOM.findDOMNode(this.list);
+	},
+
+	getMenuItem (index) {
+		if (index !== undefined) {
+			return ReactDOM.findDOMNode(this.listItems[index]);
+		}
+
+		return undefined;
 	},
 
 	renderPopoverContent () {
 		return (
 			<List
 				checkmark={this.props.checkmark}
+				getMenuItemId={this.getMenuItemId}
 				highlightedIndex={this.state.highlightedIndex}
 				isHover={this.state.isHover}
+				itemRefs={this.saveRefToListItem}
 				itemRenderer={this.getListItemRenderer()}
 				onListBlur={this.handleListBlur}
 				onListItemBlur={this.handleListItemBlur}
@@ -455,7 +477,7 @@ const MenuDropdown = React.createClass({
 				onSelect={this.handleSelect}
 				onUpdateHighlighted={this.handleUpdateHighlighted}
 				options={this.props.options}
-				ref={(component) => { this.list = component; }}
+				ref={this.saveRefToList}
 				selectedIndex={this.state.selectedIndex}
 				triggerId={this.props.id}
 			/>

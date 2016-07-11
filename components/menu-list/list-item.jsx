@@ -13,7 +13,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // ### React
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 // ### classNames
 import classNames from 'classnames';
@@ -42,11 +41,9 @@ const ListItem = React.createClass({
 	propTypes: {
 		checkmark: PropTypes.bool,
 		data: PropTypes.object,
-		focusNext: PropTypes.func,
 		href: PropTypes.string,
 		index: PropTypes.number,
 		inverted: PropTypes.bool,
-		isHighlighted: PropTypes.bool,
 		isHover: PropTypes.bool,
 		isSelected: PropTypes.bool,
 		label: PropTypes.string,
@@ -55,7 +52,6 @@ const ListItem = React.createClass({
 			category: PropTypes.string,
 			name: PropTypes.string
 		}),
-		onFocus: PropTypes.func.isRequired,
 		onSelect: PropTypes.func.isRequired,
 		rightIcon: PropTypes.shape({
 			category: PropTypes.string,
@@ -71,7 +67,6 @@ const ListItem = React.createClass({
 			href: 'javascript:void(0);', // eslint-disable-line no-script-url
 			index: 0,
 			inverted: false,
-			isHighlighted: false,
 			isSelected: false,
 			label: '',
 			labelRenderer: ListItemLabelRenderer,
@@ -91,33 +86,6 @@ const ListItem = React.createClass({
 		EventUtil.trapImmediate(event);
 	},
 
-	componentDidMount () {
-		if (this.props.isHighlighted) {
-			this.setFocus();
-		}
-	},
-
-	componentDidUpdate (prevProps) {
-		if (!prevProps.isHighlighted && this.props.isHighlighted) {
-			this.setFocus();
-		}
-	},
-
-	setFocus () {
-		if (!this.props.isHover && this.refs.link) {
-			ReactDOM.findDOMNode(this.refs.link).focus();
-		} else if (!this.props.isHover && this.props.focusNext) {
-			this.props.focusNext();
-		}
-	},
-
-	handleFocus () {
-		const height = ReactDOM.findDOMNode(this).offsetHeight;
-		if (height && this.props.onFocus) {
-			this.props.onFocus(this.props.index, height);
-		}
-	},
-
 	getLabel () {
 		const Label = this.props.labelRenderer;
 		return (
@@ -127,7 +95,6 @@ const ListItem = React.createClass({
 				icon={this.getIcon('left')}
 				index={this.props.index}
 				inverted={this.props.inverted}
-				isHighlighted={this.props.isHighlighted}
 				isSelected={this.props.isSelected}
 				label={this.props.label}
 				value={this.props.value}
@@ -180,16 +147,15 @@ const ListItem = React.createClass({
 					<li
 						aria-selected={this.props.isSelected}
 						className={classNames('slds-dropdown__item', { 'slds-is-selected': this.props.isSelected })}
+						id={this.props.id}
 						onMouseDown={this.handleMouseDown}
 						role="presentation"
 					>
 						<a
-							id={`menu-0-${this.props.index}`}
 							href={this.props.href}
 							ref="link"
 							data-index={this.props.index}
 							onClick={this.handleClick}
-							onFocus={this.handleFocus}
 							role="menuitem"
 							tabIndex={-1}
 						>

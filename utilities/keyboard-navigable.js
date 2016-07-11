@@ -189,7 +189,7 @@ export const KeyboardNavigableMixin = {
 		menuItem.getElementsByTagName('a')[0].focus();
 	},
 
-	scrollMenuItems (menu, menuItem) {
+	scrollToMenuItem (menu, menuItem) {
 		if (menu && menuItem) {
 			const menuHeight = menu.offsetHeight;
 
