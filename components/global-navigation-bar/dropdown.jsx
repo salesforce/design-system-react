@@ -29,7 +29,7 @@ import { GLOBAL_NAVIGATION_BAR_DROPDOWN } from '../../utilities/constants';
  */
 const GlobalNavigationBarDropdown = (props) => (
 	<MenuDropdown {...props}>
-		<GlobalNavigationTrigger />
+		<GlobalNavigationTrigger assistiveText={props.assistiveText} />
 	</MenuDropdown>
 );
 
@@ -40,6 +40,10 @@ GlobalNavigationBarDropdown.displayName = GLOBAL_NAVIGATION_BAR_DROPDOWN;
 
 // ### Prop Types
 GlobalNavigationBarDropdown.propTypes = {
+	/**
+	 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+	 */
+	assistiveText: PropTypes.string.isRequired,
 	/**
 	 * Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.
 	 */
