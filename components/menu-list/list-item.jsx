@@ -42,7 +42,8 @@ const ListItem = React.createClass({
 		checkmark: PropTypes.bool,
 		data: PropTypes.object,
 		href: PropTypes.string,
-		index: PropTypes.number,
+		id: PropTypes.string.isRequired,
+		index: PropTypes.number.isRequired,
 		inverted: PropTypes.bool,
 		isHover: PropTypes.bool,
 		isSelected: PropTypes.bool,
@@ -52,6 +53,7 @@ const ListItem = React.createClass({
 			category: PropTypes.string,
 			name: PropTypes.string
 		}),
+		onBlur: PropTypes.func.isRequired,
 		onSelect: PropTypes.func.isRequired,
 		rightIcon: PropTypes.shape({
 			category: PropTypes.string,
@@ -65,7 +67,6 @@ const ListItem = React.createClass({
 		return {
 			data: {},
 			href: 'javascript:void(0);', // eslint-disable-line no-script-url
-			index: 0,
 			inverted: false,
 			isSelected: false,
 			label: '',
@@ -75,7 +76,9 @@ const ListItem = React.createClass({
 	},
 
 	handleClick (event) {
-		EventUtil.trapImmediate(event);
+		if (this.props.type !== 'link' || this.props.href === 'javascript:void(0);') { // eslint-disable-line no-script-url
+			EventUtil.trapImmediate(event);
+		}
 
 		if (this.props.onSelect) {
 			this.props.onSelect(this.props.index);
@@ -84,6 +87,10 @@ const ListItem = React.createClass({
 
 	handleMouseDown (event) {
 		EventUtil.trapImmediate(event);
+	},
+
+	handleBlur () {
+		this.props.onBlur(this.props.index);
 	},
 
 	getLabel () {
@@ -136,13 +143,21 @@ const ListItem = React.createClass({
 
 	render () {
 		switch (this.props.type) {
-			case 'header':
+			case 'header': {
 				return (
 					<li className="slds-dropdown__header" onMouseDown={this.handleMouseDown} role="separator">
 						<span className="slds-text-title--caps">{this.props.label}</span>
 					</li>
 				);
-			default:
+			}
+			case 'divider': {
+				return (
+					<li className="slds-has-divider"></li>
+				);
+			}
+			case 'link':
+			case 'item':
+			default: {
 				return (
 					<li
 						aria-selected={this.props.isSelected}
@@ -164,6 +179,7 @@ const ListItem = React.createClass({
 						</a>
 					</li>
 				);
+			}
 		}
 	}
 });

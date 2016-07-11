@@ -45,13 +45,16 @@ const List = React.createClass({
 		 */
 		className: PropTypes.string,
 		/**
-		 * The index of the currently highlighted item in the list.
+		 * Used internally to determine the id that will be used for list items.
 		 */
-		highlightedIndex: PropTypes.number,
+		getListItemId: PropTypes.func,
 		/**
 		 * True if the list was opened via hover.
 		 */
 		isHover: PropTypes.bool,
+		/**
+		 * Used internally to pass references to the individual menu items back up for focusing / scrolling.
+		 */
 		itemRefs: PropTypes.func,
 		/**
 		 * If provided, this function will be used to render the contents of each menu item.
@@ -62,10 +65,6 @@ const List = React.createClass({
 		 */
 		length: PropTypes.oneOf(['5', '7', '10']),
 		/**
-		 * Triggered when the user hits escape while the menu is open.
-		 */
-		onCancel: PropTypes.func.isRequired,
-		/**
 		 * Triggered when a list item loses focuses.
 		 */
 		onListItemBlur: PropTypes.func.isRequired,
@@ -73,10 +72,6 @@ const List = React.createClass({
 		 * Triggered when a list item is selected (via mouse or keyboard).
 		 */
 		onSelect: PropTypes.func.isRequired,
-		/**
-		 * Triggered when a new list item is highlighted.
-		 */
-		onUpdateHighlighted: PropTypes.func,
 		/**
 		 * An array of items to render in the list.
 		 */
@@ -107,24 +102,9 @@ const List = React.createClass({
 		EventUtil.trapImmediate(event);
 	},
 
-	handleListItemBlur (event) {
-		if (event && event.target) {
-			const attr = event.target.getAttribute('data-index');
-			if (attr) {
-				const index = parseInt(attr, 10);
-
-				if (this.props.onListItemBlur) {
-					this.props.onListItemBlur(index);
-				}
-
-				this.setState({ lastBlurredIndex: index });
-			}
-		}
-	},
-
 	getItems () {
 		return this.props.options.map((option, index) => {
-			const id = this.props.getMenuItemId(index);
+			const id = this.props.getListItemId(index);
 
 			return (
 				<ListItem
@@ -135,8 +115,9 @@ const List = React.createClass({
 					index={index}
 					isHover={this.props.isHover}
 					isSelected={(index === this.props.selectedIndex)}
-					key={id}
+					key={`${id}-${option.value}`}
 					labelRenderer={this.props.itemRenderer}
+					onBlur={this.props.onListItemBlur}
 					onSelect={this.props.onSelect}
 					ref={(listItem) => this.props.itemRefs(listItem, index)}
 				/>
@@ -154,7 +135,6 @@ const List = React.createClass({
 			<ul
 				aria-labelledby={this.props.triggerId}
 				className={classNames('dropdown__list', lengthClassName, this.props.className)}
-				onBlur={this.handleListItemBlur}
 				role="menu"
 			>
 				{this.getItems()}

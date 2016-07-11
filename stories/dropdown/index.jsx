@@ -65,6 +65,7 @@ storiesOf(MENU_DROPDOWN, module)
 		buttonVariant: 'icon',
 		iconName: 'settings',
 		iconVariant: 'more',
+		onSelect: action('Selected'),
 		openOn: 'hover',
 		options
 	}))

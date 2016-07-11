@@ -159,6 +159,7 @@ export const KeyboardNavigableMixin = {
 		});
 	},
 
+	// This is a bit of an anti-pattern, but it has the upside of being a nice default. Component authors can always override to only set state and do their own focusing in their subcomponents.
 	handleKeyboardFocus (focusedIndex) {
 		this.setState({ focusedIndex });
 
@@ -166,7 +167,7 @@ export const KeyboardNavigableMixin = {
 
 		const menuItem = isFunction(this.getMenuItem)
 			? this.getMenuItem(focusedIndex, menu)
-			: getMenuItem(this.getMenuItemId(focusedIndex));
+			: getMenuItem(this.getListItemId(focusedIndex));
 
 		if (menuItem) {
 			this.focusMenuItem(menuItem);
@@ -174,7 +175,7 @@ export const KeyboardNavigableMixin = {
 		}
 	},
 
-	getMenuItemId (index) {
+	getListItemId (index) {
 		let menuItemId;
 
 		if (index !== undefined) {

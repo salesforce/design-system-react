@@ -225,10 +225,6 @@ const MenuDropdown = React.createClass({
 	getInitialState () {
 		return {
 			focusedIndex: -1,
-			isClosing: false,
-			isFocused: false,
-			isHover: false,
-			isOpen: false,
 			lastBlurredIndex: -1,
 			lastBlurredTimeStamp: -1,
 			selectedIndex: this.getIndexByValue(this.props.value)
@@ -288,6 +284,7 @@ const MenuDropdown = React.createClass({
 					foundIndex = index;
 					return true;
 				}
+
 				return false;
 			});
 		}
@@ -296,14 +293,7 @@ const MenuDropdown = React.createClass({
 	},
 
 	getValueByIndex (index) {
-		let value;
-		const option = this.props.options[index];
-
-		if (option) {
-			value = this.props.options[index];
-		}
-
-		return value;
+		return this.props.options[index];
 	},
 
 	getListItemRenderer () {
@@ -466,7 +456,7 @@ const MenuDropdown = React.createClass({
 		return (
 			<List
 				checkmark={this.props.checkmark}
-				getMenuItemId={this.getMenuItemId}
+				getListItemId={this.getListItemId}
 				highlightedIndex={this.state.highlightedIndex}
 				isHover={this.state.isHover}
 				itemRefs={this.saveRefToListItem}
@@ -517,6 +507,7 @@ const MenuDropdown = React.createClass({
 			positionClassName = `slds-dropdown--${this.props.align}`;
 		}
 
+		// TODO: in next SLDS release, remove slds-picklist class because slds-dropdown--length-5 will be active.
 		return (
 			this.props.forceOpen || !this.props.disabled && this.state.isOpen && this.button ?
 				<Popover
@@ -526,7 +517,7 @@ const MenuDropdown = React.createClass({
 						positionClassName,
 						this.props.className)}
 					closeOnTabKey
-					dropClass="slds-picklist" // TODO: in next SLDS release, remove slds-picklist class because slds-dropdown--length-5 will be active.
+					dropClass="slds-picklist"
 					horizontalAlign={this.props.align}
 					flippable
 					marginTop={marginTop}
@@ -575,7 +566,6 @@ const MenuDropdown = React.createClass({
 
 				{...CustomTriggerChildProps}
 
-				// props that should not be overwritten by end developer
 				id={this.props.id}
 				onBlur={this.props.openOn === 'hover' ? this.handleBlur : null}
 				onClick={this.props.openOn === 'click' ? this.handleClick : null}
