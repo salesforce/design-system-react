@@ -352,6 +352,7 @@ const MenuDropdown = React.createClass({
 	handleClick () {
 		if (!this.state.isOpen) {
 			this.setState({ isOpen: true });
+			this.setFocus();
 
 			if (this.props.onClick) {
 				this.props.onClick();
@@ -373,6 +374,7 @@ const MenuDropdown = React.createClass({
 
 	handleSelect (index) {
 		this.setState({ selectedIndex: index });
+		this.setFocus();
 
 		if (this.props.onSelect) {
 			this.props.onSelect(this.getValueByIndex(index));
@@ -393,7 +395,7 @@ const MenuDropdown = React.createClass({
 			}
 
 			this.handleKeyboardNavigate({
-				isOpen: this.state.isOpen,
+				isOpen: this.state.isOpen || false,
 				keyCode: event.keyCode,
 				onSelect: this.handleSelect,
 				toggleOpen: this.toggleOpen
