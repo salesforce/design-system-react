@@ -400,14 +400,14 @@ const MenuDropdown = React.createClass({
 					event.keyCode === KEYS.DOWN ||
 					event.keyCode === KEYS.UP) {
 				EventUtil.trap(event);
-
-				this.handleKeyboardNavigate({
-					isOpen: this.state.isOpen,
-					keyCode: event.keyCode,
-					onSelect: this.handleSelect,
-					toggleOpen: this.toggleOpen
-				});
 			}
+
+			this.handleKeyboardNavigate({
+				isOpen: this.state.isOpen,
+				keyCode: event.keyCode,
+				onSelect: this.handleSelect,
+				toggleOpen: this.toggleOpen
+			});
 
 			if (this.props.onKeyDown) {
 				this.props.onKeyDown();
@@ -532,6 +532,7 @@ const MenuDropdown = React.createClass({
 					marginTop={marginTop}
 					offset={offset}
 					onClose={this.handleCancel}
+					onKeyDown={this.handleKeyDown}
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
 					targetElement={this.button}
