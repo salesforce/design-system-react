@@ -302,48 +302,55 @@ const MenuPicklist = React.createClass({
 		return (option && option.label) ? option.label : this.props.placeholder;
 	},
 
-	render () {
-		const required = this.props.required ? <span style={{ color: 'red' }}>* </span> : null;
-		const inputLabel = this.props.label
-			? <label
-				className="slds-form-element__label"
-				htmlFor={this.getId()}
-				style={{ width: '100%' }}
-			>
-				{required}{this.props.label}
-			</label>
-			: null;
-
+	renderTrigger () {
 		return (
-			<div>
-				{inputLabel}
-				<div
-					aria-expanded={this.state.isOpen}
-					className={classNames(
-							'slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click',
-							{ 'slds-is-open': this.state.isOpen },
-							this.props.className
-						)}
-					onClick={this.handleClick}
-					onKeyDown={this.handleKeyDown}
-					onMouseDown={this.handleMouseDown}
+			<div
+				aria-expanded={this.state.isOpen}
+				className={classNames(
+						'slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click',
+						{ 'slds-is-open': this.state.isOpen },
+						this.props.className
+					)}
+				onClick={this.handleClick}
+				onKeyDown={this.handleKeyDown}
+				onMouseDown={this.handleMouseDown}
+			>
+				<button
+					aria-haspopup="true"
+					aria-activedescendant=""
+					className="slds-button slds-button--neutral slds-picklist__label"
+					id={this.getId()}
+					disabled={this.props.disabled}
+					ref={(component) => { this.button = component; }}
+					tabIndex={this.state.isOpen ? -1 : 0}
 				>
-					<button
-						aria-haspopup="true"
-						aria-activedescendant=""
-						className="slds-button slds-button--neutral slds-picklist__label"
-						id={this.getId()}
-						disabled={this.props.disabled}
-						ref={(component) => { this.button = component; }}
-						tabIndex={this.state.isOpen ? -1 : 0}
-					>
-						<span className="slds-truncate">{this.renderPlaceholder()}</span>
-						<Icon name="down" category="utility" />
-					</button>
-					{this.props.modal ? this.renderModalPopover() : this.renderSimplePopover()}
-				</div>
+					<span className="slds-truncate">{this.renderPlaceholder()}</span>
+					<Icon name="down" category="utility" />
+				</button>
+				{this.props.modal ? this.renderModalPopover() : this.renderSimplePopover()}
 			</div>
 		);
+	},
+
+	render () {
+		if (this.props.label) {
+			const required = this.props.required ? <span style={{ color: 'red' }}>* </span> : null;
+
+			return (
+				<div className="slds-form-element">
+					<label
+						className="slds-form-element__label"
+						htmlFor={this.getId()}
+						style={{ width: '100%' }}
+					>
+						{required}{this.props.label}
+					</label>
+					{this.renderTrigger()}
+				</div>
+			);
+		}
+
+		return this.renderTrigger();
 	}
 });
 
