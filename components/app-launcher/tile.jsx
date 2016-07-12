@@ -16,15 +16,19 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React from 'react';
 
+// Truncate multi-lines text for all browsers
+// [github.com/ShinyChang/react-text-truncate](https://github.com/ShinyChang/react-text-truncate)
+import Truncate from 'react-text-truncate';
+
 // Removes the need for `React.PropTypes.prop`
 const { PropTypes } = React;
 
 import classNames from 'classnames';
 
 // ## Children
-import Icon from '../icon';
-// import PopoverTooltip from '../popover-tooltip';
-// import Button from '../button';
+import Button from '../button';
+import Highlighter from '../utilities/highlighter';
+import PopoverTooltip from '../popover-tooltip';
 
 // ## Constants
 import { APP_LAUNCHER_TILE } from '../../utilities/constants';
@@ -65,13 +69,16 @@ const AppLauncherTile = React.createClass({
 		 */
 		iconNode: PropTypes.node,
 		/**
-		 * Text to be used as an icon. Only renders if iconNode is empty
+		 * Text to be used as an icon. Only renders if iconNode is undefined
 		 */
 		iconText: PropTypes.string,
-		// iconBackgroundColor
+		/**
+		 * Text used to highlight content in app tiles
+		 */
+		search: PropTypes.string
+		// TODO: allow for passing iconBackgroundColor
+		// TODO: add Highlighter to Truncate text (https://github.com/ShinyChang/React-Text-Truncate/issues/32)
 	},
-
-	// icon={<Icon />} or iconName="" or iconText=""
 
 	getDefaultProps () {
 		return {
@@ -79,8 +86,20 @@ const AppLauncherTile = React.createClass({
 			moreLabel: ' More'
 		};
 	},
-					// <span className="slds-avatar slds-avatar--large slds-align--absolute-center slds-icon-custom-27">SC</span>
-					// <Icon name="ai" category="doctype" className="slds-m-around--x-small" />
+
+	getHighlighterRender (child) {
+		return <Highlighter search={this.props.search}>{child}</Highlighter>;
+	},
+
+	getMoreRender () {
+		return (
+			<span>
+				<PopoverTooltip align="bottom" content={this.getHighlighterRender(this.props.description)}>
+					<Button variant="base" iconVariant="bare" label={this.props.moreLabel} />
+				</PopoverTooltip>
+			</span>
+		);
+	},
 
 	render () {
 		const small = this.props.size === 'small' || false;
@@ -99,70 +118,33 @@ const AppLauncherTile = React.createClass({
 				<div className={classNames('slds-app-launcher__tile-figure', small && 'slds-app-launcher__tile-figure--small')}>
 					{
 						this.props.iconNode
-						|| <span style="background: #f00" className="slds-avatar slds-avatar--large slds-align--absolute-center">this.props.iconText</span>
+						|| <span className="slds-avatar slds-avatar--large slds-align--absolute-center slds-icon-custom-27">
+							{this.props.iconText}
+						</span>
 					}
 				</div>
 				{
 					small
 					? <div className="slds-app-launcher__tile-body slds-app-launcher__tile-body--small">
-						<p className="slds-truncate slds-text-link">{this.props.title}</p>
+						<p className="slds-truncate slds-text-link">
+							{this.getHighlighterRender(this.props.title)}
+						</p>
 					</div>
 					: <div className="slds-app-launcher__tile-body">
-						<span className="slds-text-link">{this.props.title}</span>
-						<p>
-							{this.props.description}
-							<span className="slds-text-link">{this.props.moreLabel}</span>
-						</p>
+						<span className="slds-text-link">
+							{this.getHighlighterRender(this.props.title)}
+						</span>
+						<Truncate
+							line={2}
+							truncateText="…"
+							text={this.props.description}
+							textTruncateChild={this.getMoreRender()}
+						/>
 					</div>
 				}
 			</a>
 		);
 	}
 });
-			// <a className="slds-app-launcher__tile slds-text-link--reset slds-app-launcher__tile--small">
-			// 	<div className="slds-app-launcher__tile-figure slds-app-launcher__tile-figure--small">
-			// 		<span className="slds-avatar slds-avatar--large slds-align--absolute-center slds-icon-custom-27">SC</span>
-			// 	</div>
-			// 	<div className="slds-app-launcher__tile-body slds-app-launcher__tile-body--small">
-			// 		<span className="slds-truncate slds-text-link">Sales Cloud</span>
-			// 	</div>
-			// </a>
 
-			// <li className="slds-col--padded slds-grow-none slds-size--xx-small">
-   //            <a href="javascript:void(0);" className="slds-app-launcher__tile slds-text-link--reset slds-app-launcher__tile--small">
-   //              <div className="slds-app-launcher__tile-figure slds-app-launcher__tile-figure--small">
-   //                <svg aria-hidden="true" className="slds-icon slds-icon-standard-case slds-icon--large">
-   //                  <use href="/assets/icons/standard-sprite/svg/symbols.svg#case"></use>
-   //                </svg>
-   //              </div>
-   //              <div className="slds-app-launcher__tile-body slds-app-launcher__tile-body--small">
-   //                <p className="slds-truncate slds-text-link">Cases</p>
-   //              </div>
-   //            </a>
-   //          </li>
 module.exports = AppLauncherTile;
-
-
-			// <li className="slds-col--padded slds-grow-none slds-size--1-of-1 slds-medium-size--1-of-3">
-			// 	<a href="#" onClick={this.handleTileClick} className="slds-app-launcher__tile slds-text-link--reset">
-			// 		<div className="slds-app-launcher__tile-figure">
-			// 			<span className="slds-icon_container">
-			// 				<Icon
-			// 					{...this.props.categoryIcon}
-			// 					className="slds-icon slds-icon-standard-account slds-icon--large"
-			// 				/>
-			// 			</span>
-			// 		</div>
-			// 		<div className="slds-app-launcher__tile-body">
-			// 			<span className="slds-text-link">{this.props.appName}</span>
-			// 			<p className={this.getDescriptionClass()}>{description}</p>
-			// 			{
-			// 				description.length > 50
-			// 				? <PopoverTooltip align="bottom" content={description}>
-			// 					<Button variant="base" className="slds-text-link" label={this.props.localizedShowMoreTooltip} />
-			// 				</PopoverTooltip>
-			// 				: ''
-			// 			}
-			// 		</div>
-			// 	</a>
-			// </li>

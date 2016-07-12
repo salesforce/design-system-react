@@ -58,6 +58,7 @@
     "react-highlighter": "^0.3.2",
     "react-modal": "^0.6.1",
     "react-onclickoutside": "^4.5.0",
+    "react-text-truncate": "^0.8.1",
     "shortid": "^2.2.6",
     "tether": "1.1.0",
     "tether-drop": "1.2.2",
@@ -223,8 +224,8 @@
     },
     {
       "component": "popover-tooltip",
-        "display-name": "Popover Tooltips",
-        "SLDS-component-path": "/components/popovers#flavor-tooltips"
+      "display-name": "Popover Tooltips",
+      "SLDS-component-path": "/components/popovers#flavor-tooltips"
     },
     {
       "component": "time-picker",
