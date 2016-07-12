@@ -6,7 +6,8 @@ import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 
-import { SLDSMenuDropdown } from '../../components';
+import Dropdown from '../../components/menu-dropdown';
+import ListPlaceholder from '../../components/menu-list/list-placeholder';
 const { Simulate,	findRenderedDOMComponentWithClass } = TestUtils;
 
 describe('SLDSMenuDropdown: ', () => {
@@ -18,7 +19,7 @@ describe('SLDSMenuDropdown: ', () => {
 		{ label: 'D Option', value: 'D0' }
 	];
 
-	const renderDropdown = inst => {
+	const renderDropdown = (inst) => {
 		body = document.createElement('div');
 		document.body.appendChild(body);
 		return ReactDOM.render(inst, body);
@@ -51,15 +52,68 @@ describe('SLDSMenuDropdown: ', () => {
 		value: 'C0'
 	};
 
-	const createDropdown = (props) => React.createElement(SLDSMenuDropdown, assign({}, defaultProps, props));
+	const createDropdown = (props) => React.createElement(Dropdown, assign({}, defaultProps, props));
 	createDropdown.displayName = 'createDropdown';
-	const createDropdownIcon = (props) => React.createElement(SLDSMenuDropdown, assign({}, iconOnlyProps, props));
+	const createDropdownIcon = (props) => React.createElement(Dropdown, assign({}, iconOnlyProps, props));
 	createDropdownIcon.displayName = 'createDropdownIcon';
 
-	const dropItDown = (props) => renderDropdown(createDropdown(props));
+	const createDropdownWithCustomChildren = (props) => (
+		<Dropdown {...assign({}, defaultProps, props)} >
+			<div id="custom-dropdown-menu-content">
+				<div className="slds-m-around--medium">
+					<div className="slds-tile slds-tile--board slds-m-horizontal--small">
+						<p className="tile__title slds-text-heading--small">Art Vandelay</p>
+						<div className="slds-tile__detail">
+							<p className="slds-truncate">
+								<a className="slds-m-right--medium" href="#">Settings</a>
+								<a href="#" >Log Out</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<ListPlaceholder options={[{ label: 'Custom Content Option' }, ...options]} />
+		</Dropdown>
+	);
+
+	createDropdownWithCustomChildren.displayName = 'createDropdownWithCustomChildren';
+
+	const dropItDown = (props, children) => renderDropdown(createDropdown(props, children));
+	const dropItDownWithCustomChildren = (props) => renderDropdown(createDropdownWithCustomChildren(props));
 	const dropItDownIconOnly = (props) => renderDropdown(createDropdownIcon(props));
 
 	const getMenu = (dom) => dom.querySelector('.slds-dropdown--menu');
+
+	describe('Custom Content Present', () => {
+		let cmp;
+		let btn;
+		beforeEach(() => {
+			/* eslint-disable no-unused-vars */
+			let selected = false;
+			/* eslint-enable no-unused-vars */
+			cmp = dropItDownWithCustomChildren({ onSelect: (i) => {
+				selected = i;
+			} },
+			);
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+		});
+
+		afterEach(() => {
+			removeDropdownTrigger(btn);
+		});
+
+		it('has content with custom ID is present', () => {
+			Simulate.click(btn, {});
+			const customContent = getMenu(body).querySelector('#custom-dropdown-menu-content');
+			expect(customContent).to.not.equal(undefined);
+		});
+		
+		it('has additional ListItem from list child', () => {
+			Simulate.click(btn, {});
+			const customContentFirstItemText = getMenu(body).querySelector('#menu-0-0').firstChild.firstChild.textContent;
+			expect(customContentFirstItemText).to.equal('Custom Content Option');
+		});
+	});
 
 	describe('Hoverable', () => {
 		let cmp;

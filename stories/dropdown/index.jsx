@@ -37,7 +37,7 @@ const getDropdownCustomTrigger = (props) => (
 
 const getDropdownCustomContent = (props) => (
 	<Dropdown {...props} >
-		<div>
+		<div id="custom-dropdown-menu-content">
 			<div className="slds-m-around--medium">
 				<div className="slds-tile slds-tile--board slds-m-horizontal--small">
 					<p className="tile__title slds-text-heading--small">Art Vandelay</p>
