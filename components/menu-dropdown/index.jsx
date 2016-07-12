@@ -508,6 +508,11 @@ const MenuDropdown = React.createClass({
 			}
 		});
 
+		/* Below are three sections of props:
+		 - The first are the props that may be given by the dropdown component. These may get deprecated in the future.
+		 - The next set of props (`CustomTriggerChildProps`) are props that can be overwritten by the end developer.
+		 - The final set are props that should not be overwritten, since they are ones that tie the trigger to the dropdown menu.
+		*/
 		return (
 			<CurrentTrigger
 				aria-haspopup="true"
@@ -527,7 +532,6 @@ const MenuDropdown = React.createClass({
 
 				{...CustomTriggerChildProps}
 
-				// props that should not be overwritten by end developer
 				id={this.props.id}
 				onBlur={this.props.openOn === 'hover' ? this.handleBlur : null}
 				onClick={this.props.openOn === 'click' ? this.handleClick : null}
