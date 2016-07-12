@@ -32,8 +32,9 @@ import { GLOBAL_NAVIGATION_BAR_LINK } from '../../utilities/constants';
  * Wraps a link in the proper markup to support use in the GlobalNavigationBar.
  */
 const GlobalNavigationBarLink = (props) => {
-	/* eslint-disable react/prop-types */
+	// Separate props we care about in order to pass others along passively to the `a` tag
 	const {
+		active,
 		className,
 		label,
 		onClick,
@@ -44,13 +45,13 @@ const GlobalNavigationBarLink = (props) => {
 		if (isFunction(onClick)) {
 			EventUtil.trap(event);
 
-			event.href = this.props.href;
+			event.href = props.href;
 			onClick(event);
 		}
 	}
 
 	return (
-		<li className="slds-context-bar__item">
+		<li className={classNames('slds-context-bar__item', { 'slds-is-active': active })}>
 			<a
 				className={classNames('slds-context-bar__label-action', className)}
 				onClick={handleClick}
@@ -66,6 +67,10 @@ GlobalNavigationBarLink.displayName = GLOBAL_NAVIGATION_BAR_LINK;
 
 // ### Prop Types
 GlobalNavigationBarLink.propTypes = {
+	/**
+	 * Adds active item styling
+	 */
+	active: PropTypes.bool,
 	/**
 	 * Class names to be added to the anchor element
 	 */

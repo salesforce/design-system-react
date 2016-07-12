@@ -47,6 +47,17 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 				label="Menu Item 2"
 				onClick={linkClicked('Link clicked')}
 			/>
+			<GlobalNavigationBarLink
+				active
+				href="#"
+				label="Menu Item 3"
+				onClick={linkClicked('Link clicked')}
+			/>
+			<GlobalNavigationBarLink
+				href="#"
+				label="Menu Item 4"
+				onClick={linkClicked('Link clicked')}
+			/>
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="tertiary">
 			<GlobalNavigationBarLink
