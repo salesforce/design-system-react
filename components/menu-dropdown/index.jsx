@@ -206,8 +206,6 @@ const MenuDropdown = React.createClass({
 	getDefaultProps () {
 		return {
 			align: 'left',
-			checkmark: false,
-			disabled: false,
 			hoverCloseDelay: 300,
 			id: shortid.generate(),
 			modal: true,
