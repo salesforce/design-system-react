@@ -61,6 +61,10 @@ const MenuPicklist = React.createClass({
 		 */
 		checkmark: PropTypes.bool,
 		disabled: PropTypes.bool,
+		/**
+		 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
+		 */
+		id: PropTypes.string,
 		label: PropTypes.string,
 		/**
 		 * Custom element that overrides the default Menu Item component.
@@ -142,6 +146,10 @@ const MenuPicklist = React.createClass({
 
 	componentWillUnmount () {
 		this.isUnmounting = true;
+	},
+
+	getId () {
+		return this.props.id || this.generatedId;
 	},
 
 	getIndexByValue (value) {
@@ -237,6 +245,10 @@ const MenuPicklist = React.createClass({
 		}
 	},
 
+	toggleOpen () {
+		this.setState({ isOpen: !this.state.isOpen });
+	},
+
 	handleListBlur () {
 		this.setState({ isOpen: false });
 	},
@@ -250,6 +262,30 @@ const MenuPicklist = React.createClass({
 
 	handleCancel () {
 		this.setFocus();
+	},
+
+	saveRefToList (list) {
+		this.list = list;
+	},
+
+	saveRefToListItem (listItem, index) {
+		if (!this.listItems) {
+			this.listItems = {};
+		}
+
+		this.listItems[index] = listItem;
+	},
+
+	getMenu () {
+		return ReactDOM.findDOMNode(this.list);
+	},
+
+	getMenuItem (index) {
+		if (index !== undefined) {
+			return ReactDOM.findDOMNode(this.listItems[index]);
+		}
+
+		return undefined;
 	},
 
 	renderPopoverContent () {
@@ -298,6 +334,7 @@ const MenuPicklist = React.createClass({
 				dropClass="slds-picklist"
 				flippable
 				onClose={this.handleCancel}
+				onKeyDown={this.handleKeyDown}
 				targetElement={this.button}
 				inheritTargetWidth={this.props.inheritTargetWidth}
 			>
