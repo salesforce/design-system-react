@@ -13,7 +13,7 @@ const { Simulate,
 				scryRenderedDOMComponentsWithTag,
 				findRenderedDOMComponentWithClass } = TestUtils;
 
-describe.only('SLDSMenuPicklist: ',	function () {
+describe('SLDSMenuPicklist: ',	function () {
 	let body;
 
 	const options = [
@@ -49,7 +49,7 @@ describe.only('SLDSMenuPicklist: ',	function () {
 	const createPicklist = props => React.createElement(SLDSMenuPicklist, assign({}, defaultProps, props));
 
 	const getPicklist = props => renderPicklist(createPicklist(props));
-	const getMenu = dom => dom.querySelector('.slds-dropdown--menu');
+	const getMenu = dom => dom.querySelector('.slds-dropdown');
 
 	const clickOnItem = (cmp, index) => {
 		const items = scryRenderedDOMComponentsWithTag(cmp, 'a');
@@ -94,7 +94,7 @@ describe.only('SLDSMenuPicklist: ',	function () {
 		})
 
 		it('gives the button correct aria properties', () => {
-			expect(btn.props['aria-haspopup']).to.equal("true");
+			expect(btn.getAttribute('aria-haspopup')).to.equal("true");
 		})
 
 		it('sets the placeholder', () => {
@@ -182,10 +182,11 @@ describe.only('SLDSMenuPicklist: ',	function () {
 
 		it('<ul> has role menu & aria-labelledby', () => {
 			Simulate.click(btn, {});
+			let id = btn.getAttribute('id');
 			let ulRole = getMenu(body).querySelector('ul').getAttribute('role');
 			let ulAria = getMenu(body).querySelector('ul').getAttribute('aria-labelledby');
 			expect(ulRole).to.equal('menu');
-			expect(ulAria).to.equal('Picklist_Button');
+			expect(ulAria).to.equal(id);
 		})
 
 		it('<a> inside <li> has role menuitem', () => {

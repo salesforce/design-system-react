@@ -311,7 +311,6 @@ const MenuPicklist = React.createClass({
 						{ 'slds-is-open': this.state.isOpen },
 						this.props.className
 					)}
-				onClick={this.handleClick}
 				onKeyDown={this.handleKeyDown}
 				onMouseDown={this.handleMouseDown}
 			>
@@ -321,6 +320,7 @@ const MenuPicklist = React.createClass({
 					className="slds-button slds-button--neutral slds-picklist__label"
 					id={this.getId()}
 					disabled={this.props.disabled}
+					onClick={this.handleClick}
 					ref={(component) => { this.button = component; }}
 					tabIndex={this.state.isOpen ? -1 : 0}
 				>
