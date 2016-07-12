@@ -67,7 +67,7 @@ const List = React.createClass({
 		/**
 		 * Triggered when a list item loses focuses.
 		 */
-		onListItemBlur: PropTypes.func.isRequired,
+		onListItemBlur: PropTypes.func,
 		/**
 		 * Triggered when a list item is selected (via mouse or keyboard).
 		 */

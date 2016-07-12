@@ -26,9 +26,6 @@ import classNames from 'classnames';
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 
-// ### isEqual
-import isEqual from 'lodash.isequal';
-
 // ### Children
 import Popover from '../popover';
 import Icon from '../icon';
@@ -105,42 +102,23 @@ const MenuPicklist = React.createClass({
 			focusedIndex: -1,
 			lastBlurredIndex: -1,
 			lastBlurredTimeStamp: -1,
-			selectedIndex: this.getIndexByValue(this.props.value)
+			selectedIndex: -1
 		};
 	},
 
 	componentWillMount () {
 		this.generatedId = shortid.generate();
+
+		this.setState({
+			selectedIndex: this.getIndexByValue(this.props.value)
+		});
 	},
 
-	componentDidUpdate (prevProps, prevState) {
-		if (this.state.lastBlurredTimeStamp !== prevState.lastBlurredTimeStamp) {
-			if (this.state.lastBlurredIndex === this.state.highlightedIndex) {
-				this.handleClose();
-			}
-		}
-
-		if (this.state.selectedIndex !== prevState.selectedIndex) {
-			this.handleClose();
-		} else if (this.state.isFocused && !prevState.isFocused) {
-			this.setState({ isOpen: false });
-		} else if (!this.state.isFocused && prevState.isFocused) {
-			if (this.refs.list) {
-				if (!this.isUnmounting && this.refs.list) {
-					if (ReactDOM.findDOMNode(this.refs.list).contains(document.activeElement)) {
-						return;
-					}
-					this.setState({ isOpen: false });
-				}
-			}
-		}
-
-		if (this.props.value !== prevProps.value ||
-				!isEqual(this.props.options, prevProps.options)) {
-			const newSelectedIndex = this.getIndexByValue(this.props.value);
-			if (newSelectedIndex !== this.state.selectedIndex) {
-				this.handleValueUpdate(newSelectedIndex);
-			}
+	componentWillReceiveProps (nextProps) {
+		if (this.props.value !== nextProps.value) {
+			this.setState({
+				selectedIndex: this.getIndexByValue(nextProps.value)
+			});
 		}
 	},
 
@@ -186,10 +164,6 @@ const MenuPicklist = React.createClass({
 		}
 	},
 
-	handleValueUpdate (index) {
-		this.setState({ selectedIndex: index });
-	},
-
 	handleClose () {
 		this.setState({ isOpen: false });
 	},
@@ -211,14 +185,6 @@ const MenuPicklist = React.createClass({
 		if (event) {
 			EventUtil.trapImmediate(event);
 		}
-	},
-
-	handleBlur () {
-		this.setState({ isFocused: false });
-	},
-
-	handleFocus () {
-		this.setState({ isFocused: true });
 	},
 
 	setFocus () {
@@ -247,17 +213,6 @@ const MenuPicklist = React.createClass({
 
 	toggleOpen () {
 		this.setState({ isOpen: !this.state.isOpen });
-	},
-
-	handleListBlur () {
-		this.setState({ isOpen: false });
-	},
-
-	handleListItemBlur (index) {
-		this.setState({
-			lastBlurredIndex: index,
-			lastBlurredTimeStamp: Date.now()
-		});
 	},
 
 	handleCancel () {
@@ -295,8 +250,7 @@ const MenuPicklist = React.createClass({
 				getListItemId={this.getListItemId}
 				itemRefs={this.saveRefToListItem}
 				itemRenderer={this.getListItemRenderer()}
-				onListBlur={this.handleListBlur}
-				onListItemBlur={this.handleListItemBlur}
+				onListBlur={this.handleClose}
 				onCancel={this.handleCancel}
 				onSelect={this.handleSelect}
 				options={this.props.options}
@@ -311,7 +265,7 @@ const MenuPicklist = React.createClass({
 		return (
 			!this.props.disabled && this.state.isOpen
 			? <div
-				className="slds-dropdown slds-dropdown--menu slds-dropdown--left"
+				className="slds-dropdown slds-dropdown--left"
 				style={{
 					maxHeight: '20em',
 					overflowX: 'hidden',
@@ -328,10 +282,9 @@ const MenuPicklist = React.createClass({
 		return (
 			!this.props.disabled && this.state.isOpen && this.button
 			? <Popover
-				className="slds-dropdown slds-dropdown--menu slds-dropdown--left"
+				className="slds-dropdown slds-dropdown--left"
 				closeOnTabKey
 				constrainToScrollParent={this.props.constrainToScrollParent}
-				dropClass="slds-picklist"
 				flippable
 				onClose={this.handleCancel}
 				onKeyDown={this.handleKeyDown}
@@ -362,25 +315,33 @@ const MenuPicklist = React.createClass({
 			: null;
 
 		return (
-			<div className={classNames('slds-picklist', this.props.className)} aria-expanded={this.state.isOpen}>
+			<div>
 				{inputLabel}
-				<button
-					aria-haspopup="true"
-					className="slds-button slds-button--neutral slds-picklist__label"
-					id={this.getId()}
-					onBlur={this.handleBlur}
+				<div
+					aria-expanded={this.state.isOpen}
+					className={classNames(
+							'slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click',
+							{ 'slds-is-open': this.state.isOpen },
+							this.props.className
+						)}
 					onClick={this.handleClick}
-					onFocus={this.handleFocus}
 					onKeyDown={this.handleKeyDown}
 					onMouseDown={this.handleMouseDown}
-					disabled={this.props.disabled}
-					ref={(component) => { this.button = component; }}
-					tabIndex={this.state.isOpen ? -1 : 0}
 				>
-					<span className="slds-truncate">{this.renderPlaceholder()}</span>
-					<Icon name="down" category="utility" />
-				</button>
-				{this.props.modal ? this.renderModalPopover() : this.renderSimplePopover()}
+					<button
+						aria-haspopup="true"
+						aria-activedescendant=""
+						className="slds-button slds-button--neutral slds-picklist__label"
+						id={this.getId()}
+						disabled={this.props.disabled}
+						ref={(component) => { this.button = component; }}
+						tabIndex={this.state.isOpen ? -1 : 0}
+					>
+						<span className="slds-truncate">{this.renderPlaceholder()}</span>
+						<Icon name="down" category="utility" />
+					</button>
+					{this.props.modal ? this.renderModalPopover() : this.renderSimplePopover()}
+				</div>
 			</div>
 		);
 	}

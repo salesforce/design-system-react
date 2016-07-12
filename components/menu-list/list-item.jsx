@@ -53,7 +53,7 @@ const ListItem = React.createClass({
 			category: PropTypes.string,
 			name: PropTypes.string
 		}),
-		onBlur: PropTypes.func.isRequired,
+		onBlur: PropTypes.func,
 		onSelect: PropTypes.func.isRequired,
 		rightIcon: PropTypes.shape({
 			category: PropTypes.string,
