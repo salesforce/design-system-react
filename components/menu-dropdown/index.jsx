@@ -564,7 +564,7 @@ const MenuDropdown = React.createClass({
 				{...CustomTriggerChildProps}
 
 				// props that should not be overwritten by end developer
-				id={this.props.id}
+				id={this.getId()}
 				onBlur={this.props.openOn === 'hover' ? this.handleBlur : null}
 				onClick={this.props.openOn === 'click' ? this.handleClick : null}
 				onFocus={this.props.openOn === 'hover' ? this.handleFocus : null}

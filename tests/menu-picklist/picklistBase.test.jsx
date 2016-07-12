@@ -182,11 +182,10 @@ describe('SLDSMenuPicklist: ',	function () {
 
 		it('<ul> has role menu & aria-labelledby', () => {
 			Simulate.click(btn, {});
-			let id = btn.getAttribute('id');
 			let ulRole = getMenu(body).querySelector('ul').getAttribute('role');
 			let ulAria = getMenu(body).querySelector('ul').getAttribute('aria-labelledby');
 			expect(ulRole).to.equal('menu');
-			expect(ulAria).to.equal(id);
+			expect(ulAria).to.equal(btn.getAttribute('id'));
 		})
 
 		it('<a> inside <li> has role menuitem', () => {
