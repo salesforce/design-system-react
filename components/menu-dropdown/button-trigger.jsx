@@ -17,7 +17,7 @@ import React, { PropTypes } from 'react';
 import Button from '../button';
 
 // ### Children
-import { MENU_DROPDOWN_BUTTON_TRIGGER } from '../../utilities/constants';
+import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
 
 /**
  *  The Dropdown Button Trigger renders the default trigger button for the dropdown menu. If this component has children, it does not render itself to the DOM. Instead, it renders its child element, `Button`, and all that child's properties. This component may be used as a template to create custom triggers that do not use `Button`.
@@ -26,7 +26,7 @@ const Trigger = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
 	// display name.
-	displayName: MENU_DROPDOWN_BUTTON_TRIGGER,
+	displayName: MENU_DROPDOWN_TRIGGER,
 
 	// ### Prop Types
 	propTypes: {
@@ -83,13 +83,6 @@ const Trigger = React.createClass({
 		onMouseLeave: PropTypes.func
 	},
 
-	// Adding defaults, so a "no prop" dropdown menu is not a gray
-	// little line for an empty button may be a good idea in the future.
-	// defaultProps = {
-	// 	iconCategory: 'utility',
-	// 	iconName: 'down'
-	// };
-
 	// ### Render
 	render () {
 		// The following are required for use with dropdown. Any other custom props for `Button` should be set with a `Button` child of this component, and are technically just here for backwards compatibility. See `children` prop description for more information.
@@ -117,13 +110,13 @@ const Trigger = React.createClass({
 			});
 		}
 
+		// If Trigger has a Button child, then use the explicitly declared child's props layered on top of those passed down by dropdown to allow manual override
 		return (
 			<Button
 				aria-haspopup="true"
 				{...deprecatedPropsFromMenuDropdown}
 				{...propsFromGrandchildButton}
-				// If Trigger has a Button child, then use it's props layered
-				// on top of those passed down by dropdown
+
 				id={id}
 				onBlur={onBlur}
 				onClick={onClick}

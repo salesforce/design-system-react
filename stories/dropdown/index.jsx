@@ -54,7 +54,15 @@ storiesOf(MENU_DROPDOWN, module)
 		options
 	}))
 	.add('Custom Trigger', () => getDropdownCustomTrigger({
-		label: 'Dropdown Click',
+		assistiveText: 'Custom Dropdown Trigger',
+		onSelect: (...rest) => {
+			action('Selected')(...rest);
+		},
+		options
+	}))
+	.add('Custom Content', () => getDropdown({
+		label: 'Custom Content Dropdown Click',
+		forceOpen: true,
 		onSelect: (...rest) => {
 			action('Selected')(...rest);
 		},
