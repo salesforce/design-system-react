@@ -326,7 +326,7 @@ const MenuPicklist = React.createClass({
 
 	renderModalPopover () {
 		return (
-			!this.props.disabled && this.state.isOpen
+			!this.props.disabled && this.state.isOpen && this.button
 			? <Popover
 				className="slds-dropdown slds-dropdown--menu slds-dropdown--left"
 				closeOnTabKey
@@ -380,7 +380,7 @@ const MenuPicklist = React.createClass({
 					<span className="slds-truncate">{this.renderPlaceholder()}</span>
 					<Icon name="down" category="utility" />
 				</button>
-				{this.props.modal ? this.getModalPopover() : this.renderSimplePopover()}
+				{this.props.modal ? this.renderModalPopover() : this.renderSimplePopover()}
 			</div>
 		);
 	}

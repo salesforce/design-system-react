@@ -42,6 +42,7 @@ export const LOOKUP = 'SLDSLookup';
 export const MEDIA_OBJECT = 'SLDSMediaObject';
 export const MENU_DROPDOWN = 'SLDSMenuDropdown';
 export const MENU_DROPDOWN_BUTTON_TRIGGER = 'SLDSMenuDropdownButtonTrigger';
+export const MENU_PICKLIST = 'SLDSMenuPicklist';
 export const MODAL = 'SLDSModal';
 export const PAGE_HEADER = 'SLDSPageHeader';
 export const SPINNER = 'SLDSSpinner';

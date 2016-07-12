@@ -7,19 +7,21 @@ import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 
-import {SLDSMenuPicklist} from '../../components';
+import { SLDSMenuPicklist } from '../../components';
+
 const { Simulate,
 				scryRenderedDOMComponentsWithTag,
 				findRenderedDOMComponentWithClass } = TestUtils;
 
-describe.only('SLDSMenuPicklist: ',	function(){
+describe.only('SLDSMenuPicklist: ',	function () {
 	let body;
 
 	const options = [
 		{
 			label: 'A Option Option Super Super Long',
 			value: 'A0',
-			title: 'Greg'},
+			title: 'Greg'
+		},
 		{
 			label: 'B Option',
 			value: 'B0'
@@ -30,42 +32,41 @@ describe.only('SLDSMenuPicklist: ',	function(){
 		body = document.createElement('div');
 		document.body.appendChild(body);
 		return ReactDOM.render(inst, body);
-	}
+	};
 
 	function removePicklist () {
 		ReactDOM.unmountComponentAtNode(body);
 		document.body.removeChild(body);
 	}
 
-
 	const defaultProps = {
 		modal: false,
-		options: options,
+		options,
 		placeholder: 'Select a contact',
 		value: 'C0'
-	}
+	};
 
 	const createPicklist = props => React.createElement(SLDSMenuPicklist, assign({}, defaultProps, props));
 
 	const getPicklist = props => renderPicklist(createPicklist(props));
-	const getMenu = dom => dom.querySelector('.slds-dropdown--left');
+	const getMenu = dom => dom.querySelector('.slds-dropdown--menu');
 
 	const clickOnItem = (cmp, index) => {
 		const items = scryRenderedDOMComponentsWithTag(cmp, 'a');
 		Simulate.click(items[index]);
-	}
+	};
 
 	describe('in modal mode', () => {
 		let cmp, btn;
 
 		beforeEach(() => {
-			cmp = getPicklist({modal: true})
+			cmp = getPicklist({ modal: true });
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
-		})
+		});
 
 		afterEach(() => {
 			removePicklist();
-		})
+		});
 
 		it('expands/contracts the dropdown on click', (done) => {
 			expect(getMenu(document.body)).to.equal(null);
@@ -78,7 +79,6 @@ describe.only('SLDSMenuPicklist: ',	function(){
 			}, 600);
 		})
 	});
-
 
 	describe('with click handler', () => {
 		let cmp, btn, clicked;
