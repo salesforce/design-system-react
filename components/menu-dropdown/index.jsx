@@ -10,6 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND 
 // # Dropdown Component
 
 // Implements the [Dropdown design pattern](https://www.lightningdesignsystem.com/components/menus/#flavor-dropdown) in React.
+// Based on SLDS v2.1.0-rc.2
 
 // ### React
 import React, { PropTypes } from 'react';
