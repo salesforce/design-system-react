@@ -170,6 +170,7 @@ const ListItem = React.createClass({
 							href={this.props.href}
 							ref="link"
 							data-index={this.props.index}
+							onBlur={this.handleBlur}
 							onClick={this.handleClick}
 							role="menuitem"
 							tabIndex={-1}

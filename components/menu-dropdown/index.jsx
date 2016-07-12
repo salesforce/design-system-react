@@ -406,10 +406,6 @@ const MenuDropdown = React.createClass({
 		}
 	},
 
-	handleListBlur () {
-		this.setState({ isOpen: false });
-	},
-
 	handleListItemBlur (index) {
 		this.setState({
 			lastBlurredIndex: index,
@@ -461,7 +457,6 @@ const MenuDropdown = React.createClass({
 				isHover={this.state.isHover}
 				itemRefs={this.saveRefToListItem}
 				itemRenderer={this.getListItemRenderer()}
-				onListBlur={this.handleListBlur}
 				onListItemBlur={this.handleListItemBlur}
 				onCancel={this.handleCancel}
 				onSelect={this.handleSelect}
