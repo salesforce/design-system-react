@@ -9,7 +9,7 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # App Launcher Tiles Component
+// # App Launcher Section Component
 
 // ## Dependencies
 
@@ -19,24 +19,31 @@ import React from 'react';
 // Removes the need for `React.PropTypes.prop`
 const { PropTypes } = React;
 
+// ### isFunction
+import isFunction from 'lodash.isfunction';
+
+// ### classNames
+// [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
+// A simple javascript utility for conditionally joining classNames together.
+import classNames from 'classnames';
+
 // ## Children
-import AppTile from './app-tile';
 import Button from '../button';
 
 // ## Constants
-import { APP_LAUNCHER_TILES } from '../../utilities/constants';
+import { APP_LAUNCHER_SECTION } from '../../utilities/constants';
 
-const AppTiles = React.createClass({
+const AppLauncherSection = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: APP_LAUNCHER_TILES,
+	displayName: APP_LAUNCHER_SECTION,
 
 	// ### Prop Types
 	propTypes: {
 		/**
 		 * The title for this section of apps.
 		 */
-		sectionTitle: PropTypes.string.isRequired,
+		title: PropTypes.string.isRequired,
 		/**
 		 * The assistive text for the section collapse icons
 		 */
@@ -44,47 +51,73 @@ const AppTiles = React.createClass({
 		/**
 		 * An array of applications to display
 		 */
-		collection: PropTypes.array.isRequired,
+		children: PropTypes.node.isRequired,
+		/**
+		 * Sets the sections inital open state
+		 */
+		isOpen: PropTypes.bool,
+		/**
+		 * Callback for when section is toggled. Passes "isOpen" bool
+		 */
+		onToggleClick: PropTypes.func
+
 		// v REVIEW v
-		appTileClicked: PropTypes.func,
-		isVisible: PropTypes.bool,
-		search: PropTypes.string
+		// appTileClicked: PropTypes.func,
+		// isVisible: PropTypes.bool,
+		// search: PropTypes.string
 		// ^ REVIEW ^
 	},
 
+
 	getDefaultProps () {
-		// TODO: pass 'collapseSectionAssistiveText' down from parent
 		return {
-			collapseSectionAssistiveText: 'Toggle visibility of section'
+			collapseSectionAssistiveText: 'Toggle visibility of section',
+			isOpen: true
 		};
 	},
 
+	getInitialState () {
+		return {
+			isOpen: this.props.isOpen
+		};
+	},
+
+	toggleOpen () {
+		this.setState({ isOpen: !this.state.isOpen });
+
+		if (isFunction(this.props.onToggleClick)) {
+			this.props.onToggleClick(!this.state.isOpen);
+		}
+	},
+
 	render () {
-		// TODO: pass 'is-open' or 'is-closed'?
+		const iconIsOpen = this.state.isOpen ? 'slds-is-open' : 'slds-is-close';
+		const sectionIsOpen = this.state.isOpen ? 'slds-is-expanded' : 'slds-is-collapsed';
+
 		return (
-			<div className="slds-section slds-is-open">
+			<div className={classNames('slds-section', iconIsOpen)}>
 				<div className="slds-section__title">
 					<Button
 						assistiveText={this.props.collapseSectionAssistiveText}
 						iconName="switch"
-						className="slds-button--icon slds-m-right--small"
+						onClick={this.toggleOpen}
+						className="slds-button--icon slds-m-right--small slds-is-open"
 						variant="icon"
 					/>
-					<h3>{this.props.sectionTitle}</h3>
+					<h3>{this.props.title}</h3>
 				</div>
-				<ul className="slds-grid slds-grid--pull-padded slds-wrap">
-					{this.props.collection.map((item, index) => (
-						<AppTile
-							appTileClicked={this.props.appTileClicked}
-							isVisible={this.props.isVisible}
-							{...item}
-							key={index}
-						/>
-					))}
-				</ul>
+				<div className="slds-section__content">
+					<ul className={classNames('slds-grid slds-grid--pull-padded slds-wrap', sectionIsOpen)}>
+						{React.Children.map(this.props.children, (child) => (
+							<li className="slds-col--padded slds-grow-none slds-size--1-of-1 slds-medium-size--1-of-3">
+								{child}
+							</li>
+						))}
+					</ul>
+				</div>
 			</div>
 		);
 	}
 });
 
-module.exports = AppTiles;
+module.exports = AppLauncherSection;
