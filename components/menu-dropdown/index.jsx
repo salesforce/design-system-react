@@ -12,8 +12,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND 
 // Implements the [Dropdown design pattern](https://www.lightningdesignsystem.com/components/menus/#flavor-dropdown) in React.
 
 // ### React
-// React is an external dependency of the project.
-
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
@@ -21,17 +19,21 @@ import ReactDOM from 'react-dom';
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
 // joining classNames together."
-import classnames from 'classnames';
+import classNames from 'classnames';
+
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
 
 // ### Children
 import Popover from '../popover';
-
-// This is the the default Dropdown Trigger, which expects one button as a child.
-import DefaultTrigger from './button-trigger';
-
 import List from '../menu-list/list';
 import ListItem from '../menu-list/list-item';
 import ListItemLabel from '../menu-list/list-item-label';
+
+// This is the the default Dropdown Trigger, which expects one button as a child.
+import DefaultTrigger from './button-trigger';
 
 // ### Traits
 
@@ -40,11 +42,6 @@ import KeyboardNavigable from '../../utilities/keyboard-navigable';
 
 import { KEYS, EventUtil } from '../../utilities';
 import { MENU_DROPDOWN } from '../../utilities/constants';
-
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
 
 /**
  * The MenuDropdown component is a variant of the Lightning Design System Menu component.
@@ -216,7 +213,6 @@ const MenuDropdown = React.createClass({
 			checkmark: false,
 			disabled: false,
 			hoverCloseDelay: 300,
-			id: shortid.generate(),
 			modal: true,
 			openOn: 'click'
 		};
@@ -231,8 +227,8 @@ const MenuDropdown = React.createClass({
 		};
 	},
 
-	close () {
-		this.setState({ isOpen: false });
+	componentWillMount () {
+		this.generatedId = shortid.generate();
 	},
 
 	componentDidUpdate (prevProps, prevState) {
@@ -249,19 +245,19 @@ const MenuDropdown = React.createClass({
 		if (this.state.selectedIndex !== prevState.selectedIndex) {
 			this.handleClose();
 		} else if (this.state.isFocused && !prevState.isFocused) {
-			this.close();
+			this.setState({ isOpen: false });
 		} else if (!this.state.isFocused && prevState.isFocused) {
 			if (this.list) {
 				if (!this.isUnmounting && this.list) {
 					if (!ReactDOM.findDOMNode(this.listf).contains(document.activeElement)) {
-						this.close();
+						this.setState({ isOpen: false });
 					}
 				}
 			}
 		} else if (this.state.isClosing && !prevState.isClosing) {
 			setTimeout(() => {
 				if (this.state.isClosing) {
-					this.close();
+					this.setState({ isOpen: false });
 				}
 			}, this.props.hoverCloseDelay);
 		}
@@ -273,6 +269,10 @@ const MenuDropdown = React.createClass({
 
 	componentWillUnmount () {
 		this.isUnmounting = true;
+	},
+
+	getId () {
+		return this.props.id || this.generatedId;
 	},
 
 	getIndexByValue (value) {
@@ -459,7 +459,6 @@ const MenuDropdown = React.createClass({
 			<List
 				checkmark={this.props.checkmark}
 				getListItemId={this.getListItemId}
-				highlightedIndex={this.state.highlightedIndex}
 				isHover={this.state.isHover}
 				itemRefs={this.saveRefToListItem}
 				itemRenderer={this.getListItemRenderer()}
@@ -467,11 +466,10 @@ const MenuDropdown = React.createClass({
 				onListItemBlur={this.handleListItemBlur}
 				onCancel={this.handleCancel}
 				onSelect={this.handleSelect}
-				onUpdateHighlighted={this.handleUpdateHighlighted}
 				options={this.props.options}
 				ref={this.saveRefToList}
 				selectedIndex={this.state.selectedIndex}
-				triggerId={this.props.id}
+				triggerId={this.getId()}
 			/>
 		);
 	},
@@ -480,7 +478,7 @@ const MenuDropdown = React.createClass({
 		return (
 			this.props.forceOpen || !this.props.disabled && this.state.isOpen && this.button ?
 				<div
-					className={classnames('slds-dropdown', 'slds-dropdown--menu', 'slds-dropdown--left', this.props.className)}
+					className={classNames('slds-dropdown', 'slds-dropdown--menu', 'slds-dropdown--left', this.props.className)}
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
 				>
@@ -496,7 +494,7 @@ const MenuDropdown = React.createClass({
 
 		if (this.props.nubbinPosition) {
 			const positions = this.props.nubbinPosition.split(' ');
-			positionClassName = classnames(
+			positionClassName = classNames(
 				`slds-nubbin--${positions.join('-')}`,
 				positions.map((position) => `slds-dropdown--${position}`)
 			);
@@ -512,9 +510,8 @@ const MenuDropdown = React.createClass({
 		return (
 			this.props.forceOpen || !this.props.disabled && this.state.isOpen && this.button ?
 				<Popover
-					className={classnames('slds-dropdown',
+					className={classNames('slds-dropdown',
 						'slds-dropdown--menu',
-						`slds-dropdown--${this.props.align}`,
 						positionClassName,
 						this.props.className)}
 					closeOnTabKey

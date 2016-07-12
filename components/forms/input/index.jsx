@@ -17,16 +17,16 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // React is an external dependency of the project.
 import React from 'react';
 
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
-
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
 // joining classNames together."
 import classNames from 'classnames';
+
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
 
 // ## Children
 import InputIcon from '../../icon/input-icon';
@@ -167,18 +167,18 @@ const Input = React.createClass({
 		value: PropTypes.string
 	},
 
-	componentWillMount () {
-		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(FORMS_INPUT, this.props);
-
-		this.generatedId = shortid.generate();
-	},
-
 	getDefaultProps () {
 		return {
 			iconPosition: 'left',
 			type: 'text'
 		};
+	},
+
+	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(FORMS_INPUT, this.props);
+
+		this.generatedId = shortid.generate();
 	},
 
 	getId () {
