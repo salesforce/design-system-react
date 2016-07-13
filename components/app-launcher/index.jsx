@@ -62,30 +62,19 @@ const AppLauncher = React.createClass({
 		 * Set the App Launcher's title text (for localization)
 		 */
 		title: PropTypes.string,
-		// ///////////////////////////
-		// ///////////////////////////
-		// ///////////////////////////
 		/*
 		 * Callback when the App Launcher icon is clicked
 		 */
 		onAppLauncherIconClick: PropTypes.func,
-
 		/*
 		 * Set the search input's placeholder text (for localization)
 		 */
 		searchPlaceholderText: PropTypes.string,
+		/*
+		 * Set initial open state
+		 */
 		isOpen: PropTypes.bool
-		// collection: PropTypes.array.isRequired,
-		// localization: PropTypes.object.isRequired,
-		// onClose: PropTypes.func,
-		// onCancel: PropTypes.func,
-		// trigger: PropTypes.object,
-		// filterForSearch: PropTypes.func.isRequired,
-		// search: PropTypes.string,
 	},
-
-	// TODO: Optional header node
-
 // 			<AppLauncher
 // 				title="App Launcher"
 // 				searchLabel="Find an app"
@@ -113,7 +102,6 @@ const AppLauncher = React.createClass({
 // 			</AppLauncher>
 
 	getDefaultProps () {
-		// TODO: pass 'collapseSectionAssistiveText' down from parent
 		return {
 			appLauncherIconAssistiveText: 'Open App Launcher',
 			buttonLabel: 'App Exchange',
@@ -139,6 +127,7 @@ const AppLauncher = React.createClass({
 
 	closeAppLauncher () {
 		this.setState({ isOpen: false });
+		// TODO: add onClose callback
 	},
 
 	render () {

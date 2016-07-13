@@ -60,12 +60,6 @@ const AppLauncherSection = React.createClass({
 		 * Callback for when section is toggled. Passes "isOpen" bool
 		 */
 		onToggleClick: PropTypes.func
-
-		// v REVIEW v
-		// appTileClicked: PropTypes.func,
-		// isVisible: PropTypes.bool,
-		// search: PropTypes.string
-		// ^ REVIEW ^
 	},
 
 
