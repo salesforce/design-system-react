@@ -220,8 +220,6 @@ const MenuDropdown = React.createClass({
 	getInitialState () {
 		return {
 			focusedIndex: -1,
-			lastBlurredIndex: -1,
-			lastBlurredTimeStamp: -1,
 			selectedIndex: this.getIndexByValue(this.props.value)
 		};
 	},
@@ -233,12 +231,6 @@ const MenuDropdown = React.createClass({
 	},
 
 	componentDidUpdate (prevProps, prevState) {
-		if (this.state.lastBlurredTimeStamp !== prevState.lastBlurredTimeStamp) {
-			if (this.state.lastBlurredIndex === this.state.highlightedIndex) {
-				this.handleClose();
-			}
-		}
-
 		if (this.state.isOpen && !prevState.isOpen) {
 			this.state.isClosing = false;
 		}
@@ -411,13 +403,6 @@ const MenuDropdown = React.createClass({
 		}
 	},
 
-	handleListItemBlur (index) {
-		this.setState({
-			lastBlurredIndex: index,
-			lastBlurredTimeStamp: Date.now()
-		});
-	},
-
 	handleCancel () {
 		if (!this.state.isHover) {
 			this.setFocus();
@@ -472,7 +457,6 @@ const MenuDropdown = React.createClass({
 				isHover={this.state.isHover}
 				itemRefs={this.saveRefToListItem}
 				itemRenderer={this.getListItemRenderer()}
-				onListItemBlur={this.handleListItemBlur}
 				onCancel={this.handleCancel}
 				onSelect={this.handleSelect}
 				options={this.props.options}

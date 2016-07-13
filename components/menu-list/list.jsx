@@ -65,10 +65,6 @@ const List = React.createClass({
 		 */
 		length: PropTypes.oneOf(['5', '7', '10']),
 		/**
-		 * Triggered when a list item loses focuses.
-		 */
-		onListItemBlur: PropTypes.func,
-		/**
 		 * Triggered when a list item is selected (via mouse or keyboard).
 		 */
 		onSelect: PropTypes.func.isRequired,
@@ -117,7 +113,6 @@ const List = React.createClass({
 					isSelected={(index === this.props.selectedIndex)}
 					key={`${id}-${option.value}`}
 					labelRenderer={this.props.itemRenderer}
-					onBlur={this.props.onListItemBlur}
 					onSelect={this.props.onSelect}
 					ref={(listItem) => this.props.itemRefs(listItem, index)}
 				/>

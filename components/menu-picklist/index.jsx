@@ -101,8 +101,6 @@ const MenuPicklist = React.createClass({
 	getInitialState () {
 		return {
 			focusedIndex: -1,
-			lastBlurredIndex: -1,
-			lastBlurredTimeStamp: -1,
 			selectedIndex: -1
 		};
 	},
@@ -267,7 +265,6 @@ const MenuPicklist = React.createClass({
 				getListItemId={this.getListItemId}
 				itemRefs={this.saveRefToListItem}
 				itemRenderer={this.getListItemRenderer()}
-				onListBlur={this.handleClose}
 				onCancel={this.handleCancel}
 				onSelect={this.handleSelect}
 				options={this.props.options}

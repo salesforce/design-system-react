@@ -53,7 +53,6 @@ const ListItem = React.createClass({
 			category: PropTypes.string,
 			name: PropTypes.string
 		}),
-		onBlur: PropTypes.func,
 		onSelect: PropTypes.func.isRequired,
 		rightIcon: PropTypes.shape({
 			category: PropTypes.string,
@@ -87,10 +86,6 @@ const ListItem = React.createClass({
 
 	handleMouseDown (event) {
 		EventUtil.trapImmediate(event);
-	},
-
-	handleBlur () {
-		this.props.onBlur(this.props.index);
 	},
 
 	getLabel () {
@@ -170,7 +165,6 @@ const ListItem = React.createClass({
 							href={this.props.href}
 							ref="link"
 							data-index={this.props.index}
-							onBlur={this.handleBlur}
 							onClick={this.handleClick}
 							role="menuitem"
 							tabIndex={-1}
