@@ -41,11 +41,12 @@ module.exports = React.createClass({
 			horizontalAlign: 'left',
 			className: 'slds-dropdown',
 			closeOnTabKey: false,
+			flippable: true,
 			marginTop: '0.20rem',
 			marginBottom: '0.35rem',
 			marginLeft: 0,
 			marginRight: 0,
-			flippable: true,
+			offset: '0px 0px',
 			constrainToScrollParent: false,
 			inheritTargetWidth: false
 		};
@@ -196,8 +197,9 @@ module.exports = React.createClass({
 	},
 
 	dropOptions () {
+		// Please reference http://github.hubspot.com/drop/ for options.
 		const position = this.getPosition();
-
+		
 		return {
 			beforeClose: this.beforeClose,
 			classes: this.props.dropClass,
@@ -205,9 +207,12 @@ module.exports = React.createClass({
 			constrainToScrollParent: this.props.constrainToScrollParent,
 			content: this.popoverElement,
 			openOn: 'always',
-			position: position,
+			position,
 			remove: true,
-			target: this.target()
+			target: this.target(),
+			tetherOptions: {
+				offset: this.props.offset
+			}
 		};
 	},
 

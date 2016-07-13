@@ -7,216 +7,204 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+// # List Component
+
+// ## Dependencies
+
+// ### React
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import ListItem from "./list-item";
-import EventUtil from '../../utilities/EventUtil';
-import KEYS from '../../utilities/KEYS';
+// ### classNames
+import classNames from 'classnames';
 
-const displayName = "List";
-const propTypes = {
-  className: React.PropTypes.string,
-  checkmark: React.PropTypes.bool,
-  highlightedIndex: React.PropTypes.number,
-  itemRenderer: React.PropTypes.func,
-  options: React.PropTypes.array,
-  onCancel: React.PropTypes.func,
-  onListBlur: React.PropTypes.func,
-  onListItemBlur: React.PropTypes.func,
-  onMoveFocus: React.PropTypes.func,
-  onSelect: React.PropTypes.func,
-  selectedIndex: React.PropTypes.number,
-};
-const defaultProps = {
-  className: '',
-  highlightedIndex: 0,
-  itemRenderer: null,
-  options: [],
-  onCancel: (delta)=>{
-    console.log("onCancel should be overwritten");
-  },
-  onListBlur: () => {
-    console.log("onListBlur should be overwritten");
-  },
-  onListItemBlur: (listItemIndex)=>{
-    console.log("onListItemBlur should be overwritten");
-  },
-  onMoveFocus: (delta)=>{
-    console.log("onMoveFocus should be overwritten");
-  },
-  onSelect: (index)=>{
-    console.log("onSelect should be overwritten");
-  },
-  selectedIndex: -1,
-};
+// ## Children
+import ListItem from './list-item';
 
-class List extends React.Component {
-  handleMouseDown (event) {
-    EventUtil.trapImmediate(event);
-  }
+// ### Event Helpers
+import { EventUtil, KEYS } from '../../utilities';
 
-  handleClick (e) {
-    if(e.nativeEvent){
-      e.nativeEvent.preventDefault();
-      e.nativeEvent.stopImmediatePropagation();
-    }
-    e.preventDefault();
-  }
+// ## Constants
+import { LIST } from '../../utilities/constants';
 
-  handleUpdateHighlighted (nextIndex) {
-    if(this.props.onUpdateHighlighted){
-      this.props.onUpdateHighlighted(nextIndex);
-    }
-  }
+// Removes the need for `PropTypes`.
+const { PropTypes } = React;
 
-  handleListItemBlur (event) {
-    if(event && event.target){
-      const indexx = parseInt(event.target.getAttribute('data-index'));
-      if(this.props.onListItemBlur){
-        this.props.onListItemBlur(indexx);
-      }
-      this.setState({lastBlurredIndex:indexx});
-    }
-  }
+/**
+ * Component description.
+ */
+const List = React.createClass({
+	displayName: LIST,
 
-  handleMoveFocus (delta) {
-    let newHighlightedIndex = this.props.highlightedIndex + delta;
-    if(newHighlightedIndex < 0){
-      newHighlightedIndex = this.props.options.length - 1;
-    }
-    else if(newHighlightedIndex >= this.props.options.length){
-      newHighlightedIndex = 0;
-    }
-    if(this.props.onUpdateHighlighted){
-      this.props.onUpdateHighlighted(newHighlightedIndex);
-    }
-  }
+	propTypes: {
+		checkmark: PropTypes.bool,
+		className: PropTypes.string,
+		highlightedIndex: PropTypes.number,
+		itemRenderer: PropTypes.func,
+		onCancel: PropTypes.func.isRequired,
+		onListBlur: PropTypes.func.isRequired,
+		onListItemBlur: PropTypes.func.isRequired,
+		onMoveFocus: PropTypes.func, // TODO: Should be implemented?
+		onSelect: PropTypes.func.isRequired,
+		onUpdateHighlighted: PropTypes.func,
+		options: PropTypes.array,
+		selectedIndex: PropTypes.number
+	},
 
-  handleCancel () {
-    if(this.props.onCancel){
-      this.props.onCancel();
-    }
-  }
+	getDefaultProps () {
+		return {
+			highlightedIndex: 0,
+			options: [],
+			selectedIndex: -1
+		};
+	},
 
-  handleSelect (index) {
-    if(this.props.onSelect){
-      this.props.onSelect(index);
-    }
-  }
+	handleMouseDown (event) {
+		EventUtil.trapImmediate(event);
+	},
 
-  handleItemFocus (itemIndex, itemHeight) {
-    if(this.refs.scroll){
-      ReactDOM.findDOMNode(this.refs.scroll).scrollTop = itemIndex * itemHeight;
-    }
-  }
+	handleClick (event) {
+		EventUtil.trapImmediate(event);
+	},
 
-  handleSearch (index, ch) {
-    const searchChar = ch.toLowerCase();
-    for(let i=index+1;i<this.props.options.length;i++){
-      const option = this.props.options[i];
-      if(option && option.label){
-        if(option.label.charAt(0).toLowerCase() === searchChar){
-          if(this.props.onUpdateHighlighted){
-            this.props.onUpdateHighlighted(i);
-          }
-          return;
-        }
-      }
-    }
-    for(let i=0;i<index;i++){
-      const option = this.props.options[i];
-      if(option && option.label){
-        if(option.label.charAt(0).toLowerCase() === searchChar){
-          if(this.props.onUpdateHighlighted){
-            this.props.onUpdateHighlighted(i);
-          }
-          return;
-        }
-      }
-    }
-  }
+	handleUpdateHighlighted (nextIndex) {
+		if (this.props.onUpdateHighlighted) {
+			this.props.onUpdateHighlighted(nextIndex);
+		}
+	},
 
-  getItems () {
-    return this.props.options.map((option, index) =>{
-      return (
-        <ListItem
-          checkmark={this.props.checkmark}
-          data={option}
-          index={index}
-          isHighlighted={(index===this.props.highlightedIndex)}
-          isHover={this.props.isHover}
-          isSelected={(index===this.props.selectedIndex)}
-          key={'ListItem_'+index}
-          label={option.label}
-          labelRenderer={this.props.itemRenderer}
-          onFocus={this.handleItemFocus.bind(this)}
-//          onMoveFocus={this.handleMoveFocus.bind(this)}
-          onSelect={this.handleSelect.bind(this)}
-          onUpdateHighlighted={this.handleUpdateHighlighted.bind(this)}
-          value={option.value}/>
-      );
-    });
-  }
+	handleListItemBlur (event) {
+		if (event && event.target) {
+			const indexx = parseInt(event.target.getAttribute('data-index'), 10);
 
-  handleKeyDown(event) {
-    if(event.keyCode){
+			if (this.props.onListItemBlur) {
+				this.props.onListItemBlur(indexx);
+			}
 
-      if(event.keyCode === KEYS.DOWN){
-        EventUtil.trapEvent(event);
-        this.handleMoveFocus(1);
-      }
-      else if(event.keyCode === KEYS.UP){
-        EventUtil.trapEvent(event);
-        this.handleMoveFocus(-1);
-      }
-      else if(event.keyCode === KEYS.ENTER ||
-          event.keyCode === KEYS.SPACE ){
-        EventUtil.trapEvent(event);
-        const index = parseInt(event.target.getAttribute('data-index'));
-        this.handleSelect(index);
-      }
-      else if(event.keyCode === KEYS.ESCAPE){
-        EventUtil.trapEvent(event);
-        if(this.props.onCancel){
-          this.props.onCancel();
-        }
-      }
-      else if(event.keyCode === KEYS.TAB){
-      }
-      else{
-        EventUtil.trapEvent(event);
-        const ch = String.fromCharCode(event.keyCode);
-        const index = parseInt(event.target.getAttribute('data-index'));
-        this.handleSearch(index,ch);
-      }
-    }
-  }
+			this.setState({ lastBlurredIndex: indexx });
+		}
+	},
 
+	handleMoveFocus (delta) {
+		let newHighlightedIndex = this.props.highlightedIndex + delta;
+		if (newHighlightedIndex < 0) {
+			newHighlightedIndex = this.props.options.length - 1;
+		} else if (newHighlightedIndex >= this.props.options.length) {
+			newHighlightedIndex = 0;
+		}
+		if (this.props.onUpdateHighlighted) {
+			this.props.onUpdateHighlighted(newHighlightedIndex);
+		}
+	},
 
+	handleCancel () {
+		if (this.props.onCancel) {
+			this.props.onCancel();
+		}
+	},
 
-  render () {
-    return (
-      <ul
-        aria-labelledby={this.props.triggerId}
-        className={"slds-dropdown__list slds-dropdown--length-5 "+this.props.className}
-//        onMouseEnter={this.props.onMouseEnter}
-//        onMouseDown={this.handleMouseDown.bind(this)}
-//        onMouseLeave={this.props.onMouseLeave}
-        onBlur={this.handleListItemBlur.bind(this)}
-        onKeyDown={this.handleKeyDown.bind(this)}
-        ref="scroll"
-        role="menu"
-        >
-        {this.getItems()}
-      </ul>
-    );
-  }
-}
+	handleSelect (index) {
+		if (this.props.onSelect) {
+			this.props.onSelect(index);
+		}
+	},
 
-List.displayName = displayName;
-List.propTypes = propTypes;
-List.defaultProps = defaultProps;
+	handleItemFocus (itemIndex, itemHeight) {
+		if (this.refs.scroll) {
+			ReactDOM.findDOMNode(this.refs.scroll).scrollTop = itemIndex * itemHeight;
+		}
+	},
+
+	handleSearch (index, ch) {
+		const searchChar = ch.toLowerCase();
+
+		for (let i = index + 1; i < this.props.options.length; i++) {
+			const option = this.props.options[i];
+
+			if (option && option.label) {
+				if (option.label.charAt(0).toLowerCase() === searchChar) {
+					if (this.props.onUpdateHighlighted) {
+						this.props.onUpdateHighlighted(i);
+					}
+					return;
+				}
+			}
+		}
+
+		for (let i = 0; i < index; i++) {
+			const option = this.props.options[i];
+			if (option && option.label) {
+				if (option.label.charAt(0).toLowerCase() === searchChar) {
+					if (this.props.onUpdateHighlighted) {
+						this.props.onUpdateHighlighted(i);
+					}
+					return;
+				}
+			}
+		}
+	},
+
+	getItems () {
+		return this.props.options.map((option, index) => (
+			<ListItem
+				checkmark={this.props.checkmark}
+				data={option}
+				index={index}
+				isHighlighted={(index === this.props.highlightedIndex)}
+				isHover={this.props.isHover}
+				isSelected={(index === this.props.selectedIndex)}
+				key={`ListItem_${index}`}
+				label={option.label}
+				labelRenderer={this.props.itemRenderer}
+				onFocus={this.handleItemFocus}
+				onSelect={this.handleSelect}
+				onUpdateHighlighted={this.handleUpdateHighlighted}
+				value={option.value}
+			/>
+		));
+	},
+
+	handleKeyDown (event) {
+		if (event.keyCode) {
+			if (event.keyCode === KEYS.DOWN) {
+				EventUtil.trapEvent(event);
+				this.handleMoveFocus(1);
+			} else if (event.keyCode === KEYS.UP) {
+				EventUtil.trapEvent(event);
+				this.handleMoveFocus(-1);
+			} else if (event.keyCode === KEYS.ENTER ||
+					event.keyCode === KEYS.SPACE) {
+				EventUtil.trapEvent(event);
+				const index = parseInt(event.target.getAttribute('data-index'), 10);
+				this.handleSelect(index);
+			} else if (event.keyCode === KEYS.ESCAPE) {
+				EventUtil.trapEvent(event);
+				if (this.props.onCancel) {
+					this.props.onCancel();
+				}
+			} else if (event.keyCode !== KEYS.TAB) {
+				EventUtil.trapEvent(event);
+				const ch = String.fromCharCode(event.keyCode);
+				const index = parseInt(event.target.getAttribute('data-index'), 10);
+				this.handleSearch(index, ch);
+			}
+		}
+	},
+
+	render () {
+		return (
+			<ul
+				aria-labelledby={this.props.triggerId}
+				className={classNames('slds-dropdown__list slds-dropdown--length-5', this.props.className)}
+				onBlur={this.handleListItemBlur}
+				onKeyDown={this.handleKeyDown}
+				ref="scroll"
+				role="menu"
+			>
+				{this.getItems()}
+			</ul>
+		);
+	}
+});
 
 module.exports = List;
-

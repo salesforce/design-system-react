@@ -46,13 +46,23 @@ const propSets = {
 				id: 'app-launcher-trigger',
 				noTruncate: true,
 				customChild: () => (
-					<span>Marketing Cloud<Icon
-						category="utility"
-						className="slds-m-left--small slds-m-right--small"
-						name="email"
-						inverse
-						size="small"
-					/>Email Studio</span>
+					<div className="slds-grid slds-grid--align-spread">
+						<div>
+							Marketing Cloud
+						</div>
+						<div>
+							<Icon
+								category="utility"
+								className="slds-m-left--small slds-m-right--small"
+								name="email"
+								inverse={false}
+								size="x-small"
+							/>
+							<span className="context-bar__label-action slds-text-body--regular" style={{fontWeight: 'normal'}}>
+								Email Studio
+							</span>
+						</div>
+					</div>
 				)
 			}
 		}

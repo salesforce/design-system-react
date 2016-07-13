@@ -9,7 +9,7 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # GlobalNavigationBar Region Component
+// # Global Navigation Bar Region Component
 
 // ## Dependencies
 
@@ -42,6 +42,10 @@ const regions = [
 		 */
 		children: PropTypes.node,
 		/**
+		 * Determines position of separating bar. The default is `null` except for the primary region which is set to `right`.
+		 */
+		dividerPosition: PropTypes.oneOf(['none', 'left', 'right']),
+		/**
 		 * CSS classes to be added to the region
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
@@ -63,12 +67,12 @@ const regions = [
 		);
 	},
 
-	renderSecondary () {
+	renderSecondary (dividerClass) {
 		let region = null;
+
 		if (this.props.navigation) {
 			region = (
-				<nav className={classNames('slds-context-bar__secondary', this.props.className)} role="navigation">
-					<div className="slds-context-bar__vertical-divider" />
+				<nav className={classNames('slds-context-bar__secondary', dividerClass, this.props.className)} role="navigation">
 					<ul className="slds-grid">
 						{this.props.children}
 					</ul>
@@ -76,8 +80,7 @@ const regions = [
 			);
 		} else {
 			region = (
-				<div className={classNames('slds-context-bar__secondary', this.props.className)}>
-					<div className="slds-context-bar__vertical-divider" />
+				<div className={classNames('slds-context-bar__secondary', dividerClass, this.props.className)}>
 					<ul className="slds-grid">
 						{this.props.children}
 					</ul>
@@ -87,9 +90,9 @@ const regions = [
 		return region;
 	},
 
-	renderTertiary () {
+	renderTertiary (dividerClass) {
 		return (
-			<div className={classNames('slds-context-bar__tertiary', 'slds-col--bump-left', this.props.className)}>
+			<div className={classNames('slds-context-bar__tertiary', 'slds-col--bump-left', dividerClass, this.props.className)}>
 				<ul className="slds-grid">
 					{this.props.children}
 				</ul>
@@ -99,17 +102,20 @@ const regions = [
 
 	// ### Render
 	render () {
+		const dividerClass = this.props.dividerPosition ? `slds-context-bar__item--divider-${this.props.dividerPosition}` : null;
+
 		let region;
 
 		switch (this.props.region) {
 			case 'primary':
+				// divider class is always `right` for primary
 				region = this.renderPrimary();
 				break;
 			case 'secondary':
-				region = this.renderSecondary();
+				region = this.renderSecondary(dividerClass);
 				break;
 			case 'tertiary':
-				region = this.renderTertiary();
+				region = this.renderTertiary(dividerClass);
 				break;
 			default:
 				region = null;
