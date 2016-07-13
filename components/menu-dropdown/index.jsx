@@ -228,6 +228,8 @@ const MenuDropdown = React.createClass({
 
 	componentWillMount () {
 		this.generatedId = shortid.generate();
+
+		document.addEventListener('click', this.closeOnClick, false);
 	},
 
 	componentDidUpdate (prevProps, prevState) {
@@ -268,6 +270,8 @@ const MenuDropdown = React.createClass({
 
 	componentWillUnmount () {
 		this.isUnmounting = true;
+
+		document.removeEventListener('click', this.closeOnClick, false);
 	},
 
 	getId () {
@@ -348,7 +352,11 @@ const MenuDropdown = React.createClass({
 		}
 	},
 
-	handleClick () {
+	handleClick (event) {
+		if (event) {
+			event.nativeEvent.SLDSDropdownClickEvent = true;
+		}
+
 		if (!this.state.isOpen) {
 			this.setState({ isOpen: true });
 			this.setFocus();
@@ -364,6 +372,7 @@ const MenuDropdown = React.createClass({
 	handleMouseDown (event) {
 		if (event) {
 			EventUtil.trapImmediate(event);
+			event.nativeEvent.SLDSDropdownClickEvent = true;
 		}
 
 		if (this.props.onMouseDown) {
@@ -378,10 +387,6 @@ const MenuDropdown = React.createClass({
 		if (this.props.onSelect) {
 			this.props.onSelect(this.getValueByIndex(index));
 		}
-	},
-
-	toggleOpen () {
-		this.setState({ isOpen: !this.state.isOpen });
 	},
 
 	handleKeyDown (event) {
@@ -417,6 +422,16 @@ const MenuDropdown = React.createClass({
 		if (!this.state.isHover) {
 			this.setFocus();
 		}
+	},
+
+	closeOnClick (event) {
+		if (!event.SLDSDropdownClickEvent && this.state.isOpen) {
+			this.handleClose();
+		}
+	},
+
+	toggleOpen () {
+		this.setState({ isOpen: !this.state.isOpen });
 	},
 
 	setFocus () {
