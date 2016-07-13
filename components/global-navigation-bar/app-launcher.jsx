@@ -80,14 +80,21 @@ const AppLauncher = React.createClass({
 		// Should be removed in the future by adding a reset class of some sort.
 		let style = noTruncate ? { maxWidth: 'none' } : null;
 
+		/* eslint-disable no-script-url */
 		return (
-			<div className="slds-context-bar__item" style={style} onClick={this.handleClick}>
+			<div className="slds-context-bar__item slds-no-hover" style={style}>
 				<div className="slds-context-bar__icon-action">
-					<a id={id} href="#" aria-haspopup="true" className="slds-button slds-button--icon slds-context-bar__button">
+					<a
+						id={id}
+						href="javascript:void(0);"
+						onClick={this.handleClick}
+						aria-haspopup="true"
+						className="slds-button slds-button--icon slds-context-bar__button"
+					>
 						<Icon
 							category="utility"
 							name="apps"
-							inverse
+							inverse={false}
 							className="slds-icon--small"
 							assistiveText={assistiveText}
 						/>
@@ -99,6 +106,7 @@ const AppLauncher = React.createClass({
 				</span>
 			</div>
 		);
+		/* eslint-enable no-script-url */
 	}
 });
 
