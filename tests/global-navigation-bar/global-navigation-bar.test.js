@@ -22,6 +22,7 @@ import GlobalNavigationBarRegion from '../../components/global-navigation-bar/re
 import GlobalNavigationBarAppLauncher from '../../components/global-navigation-bar/app-launcher';
 import GlobalNavigationBarDropdown from '../../components/global-navigation-bar/dropdown';
 import GlobalNavigationBarLink from '../../components/global-navigation-bar/link';
+import GlobalNavigationBarButton from '../../components/global-navigation-bar/button';
 
 chai.use(chaiEnzyme());
 
@@ -202,7 +203,7 @@ describe('Global Navigation Bar: ', () => {
 		});
 	});
 
-	// // TODO still need Dropdown covered. Should be added to Dropdown tests, once special context bar dropdown features are merged into Dropdown
+	// TODO still need Dropdown covered. Should be added to Dropdown tests, once special context bar dropdown features are merged into Dropdown
 
 	describe('GlobalNavigationLink child component', () => {
 		it('GlobalNavigationBarLink has attributes and onClick runs callback', function () {
@@ -219,6 +220,26 @@ describe('Global Navigation Bar: ', () => {
 			expect(link.text()).to.equal('Home');
 			link.simulate('click');
 			expect(linkClicked.calledOnce).to.be.true;
+
+			this.wrapper.unmount();
+		});
+	});
+
+	describe('GlobalNavigationButton child component', () => {
+		it('GlobalNavigationBarLink has attributes and onClick runs callback', function () {
+			const buttonClicked = sinon.spy();
+			const instance = (
+				<GlobalNavigationBarButton
+					label="Button"
+					id="global-nav__button"
+					onClick={buttonClicked('Button clicked')}
+				/>
+			);
+			this.wrapper = mount(instance, { attachTo: document.body.appendChild(document.createElement('div')) });
+			const link = this.wrapper.find('#global-nav__button');
+			expect(link.text()).to.equal('Button');
+			link.simulate('click');
+			expect(buttonClicked.calledOnce).to.be.true;
 
 			this.wrapper.unmount();
 		});

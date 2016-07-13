@@ -26,6 +26,7 @@ export const GLOBAL_HEADER_PROFILE = 'SLDSGlobalHeaderProfile';
 export const GLOBAL_HEADER_SEARCH = 'SLDSGlobalHeaderSearch';
 export const GLOBAL_HEADER_TOOL = 'SLDSGlobalHeaderTool';
 export const GLOBAL_NAVIGATION_BAR = 'SLDSGlobalNavigationBar';
+export const GLOBAL_NAVIGATION_BAR_BUTTON = 'SLDSGlobalNavigationBarButton';
 export const GLOBAL_NAVIGATION_BAR_DROPDOWN = 'SLDSGlobalNavigationBarDropdown';
 export const GLOBAL_NAVIGATION_BAR_LINK = 'SLDSGlobalNavigationBarLink';
 export const GLOBAL_NAVIGATION_BAR_REGION = 'SLDSGlobalNavigationBarRegion';
