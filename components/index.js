@@ -11,6 +11,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND 
 
 export SLDSSettings from './SLDSSettings';
 
+export SLDSAppLauncher from './app-launcher';
+export AppLauncher from './app-launcher';
+
 export SLDSButton from './button';
 export Button from './button';
 
