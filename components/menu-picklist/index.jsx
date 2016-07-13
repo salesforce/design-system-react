@@ -244,6 +244,8 @@ const MenuPicklist = React.createClass({
 		}
 
 		this.listItems[index] = listItem;
+
+		if (index === this.state.focusedIndex) this.handleKeyboardFocus(this.state.focusedIndex);
 	},
 
 	getMenu () {
@@ -251,7 +253,7 @@ const MenuPicklist = React.createClass({
 	},
 
 	getMenuItem (index) {
-		if (index !== undefined) {
+		if (index !== undefined && this.listItems) {
 			return ReactDOM.findDOMNode(this.listItems[index]);
 		}
 

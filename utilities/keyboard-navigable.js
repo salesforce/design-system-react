@@ -79,12 +79,13 @@ export function keyboardNavigate ({ currentFocusedIndex, isOpen, keyCode, naviga
 	if (keyCode === KEYS.ESCAPE) {
 		if (isOpen) toggleOpen();
 	} else if (!isOpen) {
+		focusedIndex = indexes[0];
 		toggleOpen();
 	} else if (keyCode === KEYS.ENTER || keyCode === KEYS.SPACE) {
 		onSelect(currentFocusedIndex);
 	} else {
-		const ch = String.fromCharCode(keyCode).toLowerCase();
 		let navigableIndex = indexes.indexOf(currentFocusedIndex);
+		let ch = String.fromCharCode(keyCode);
 
 		if (keyCode === KEYS.DOWN) {
 			if (navigableIndex < lastIndex) {
@@ -97,6 +98,8 @@ export function keyboardNavigate ({ currentFocusedIndex, isOpen, keyCode, naviga
 				focusedIndex = indexes[--navigableIndex];
 			}
 		} else if (ch) {
+			ch = ch.toLowerCase();
+
 			// Combine subsequent keypresses
 			const pattern = navigableItems.keyBuffer(ch);
 			let consecutive = 0;
@@ -161,7 +164,7 @@ export const KeyboardNavigableMixin = {
 
 	// This is a bit of an anti-pattern, but it has the upside of being a nice default. Component authors can always override to only set state and do their own focusing in their subcomponents.
 	handleKeyboardFocus (focusedIndex) {
-		this.setState({ focusedIndex });
+		if (this.state.focusedIndex !== focusedIndex) this.setState({ focusedIndex });
 
 		const menu = isFunction(this.getMenu) ? this.getMenu() : getMenu(this);
 
