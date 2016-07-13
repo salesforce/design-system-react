@@ -68,7 +68,7 @@ GlobalNavigationBarLink.displayName = GLOBAL_NAVIGATION_BAR_LINK;
 // ### Prop Types
 GlobalNavigationBarLink.propTypes = {
 	/**
-	 * Adds active item styling
+	 * Whether the item is active or not.
 	 */
 	active: PropTypes.bool,
 	/**

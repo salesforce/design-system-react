@@ -50,7 +50,7 @@ const DataTableHead = React.createClass({
 	render () {
 		return (
 			<thead>
-				<tr className="slds-text-heading--label">
+				<tr className="slds-text-title--caps">
 					{this.props.canSelectRows
 						? <th className="slds-cell-shrink" scope="col">
 							<Checkbox
