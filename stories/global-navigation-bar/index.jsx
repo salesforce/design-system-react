@@ -10,11 +10,13 @@ import GlobalNavigationBarRegion from '../../components/global-navigation-bar/re
 import GlobalNavigationBarAppLauncher from '../../components/global-navigation-bar/app-launcher';
 import GlobalNavigationBarDropdown from '../../components/global-navigation-bar/dropdown';
 import GlobalNavigationBarLink from '../../components/global-navigation-bar/link';
+import GlobalNavigationBarButton from '../../components/global-navigation-bar/button';
 
 // aliased to allow copy and paste from component tests
 const appLauncherClicked = action;
 const linkClicked = action;
 const dropdownItemClicked = action;
+const buttonClicked = action;
 
 /* eslint-disable react/display-name */
 const getGlobalNavigationBar = (props, primaryRegionProps) => (
@@ -60,10 +62,13 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 			/>
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="tertiary">
+			<GlobalNavigationBarButton
+				label="Button"
+				onClick={buttonClicked('Button clicked')}
+			/>
 			<GlobalNavigationBarLink
-				href="#"
 				label="Actions"
-				onClick={linkClicked('Link clicked')}
+				onClick={buttonClicked('Link clicked')}
 			/>
 		</GlobalNavigationBarRegion>
 	</GlobalNavigationBar>
