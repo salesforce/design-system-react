@@ -13,7 +13,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // ### React
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 // ### classNames
 import classNames from 'classnames';
@@ -22,7 +21,7 @@ import classNames from 'classnames';
 import ListItem from './list-item';
 
 // ### Event Helpers
-import { EventUtil, KEYS } from '../../utilities';
+import { EventUtil } from '../../utilities';
 
 // ## Constants
 import { LIST } from '../../utilities/constants';
@@ -37,23 +36,55 @@ const List = React.createClass({
 	displayName: LIST,
 
 	propTypes: {
+		/**
+		 * Determines whether or not to show a checkmark for selected items.
+		 */
 		checkmark: PropTypes.bool,
+		/**
+		 * CSS classes to be added to `<ul />`.
+		 */
 		className: PropTypes.string,
-		highlightedIndex: PropTypes.number,
+		/**
+		 * Used internally to determine the id that will be used for list items.
+		 */
+		getListItemId: PropTypes.func,
+		/**
+		 * True if the list was opened via hover.
+		 */
+		isHover: PropTypes.bool,
+		/**
+		 * Used internally to pass references to the individual menu items back up for focusing / scrolling.
+		 */
+		itemRefs: PropTypes.func,
+		/**
+		 * If provided, this function will be used to render the contents of each menu item.
+		 */
 		itemRenderer: PropTypes.func,
-		onCancel: PropTypes.func.isRequired,
-		onListBlur: PropTypes.func.isRequired,
-		onListItemBlur: PropTypes.func.isRequired,
-		onMoveFocus: PropTypes.func, // TODO: Should be implemented?
+		/**
+		 * Sets the height of the list based on the numeber of items.
+		 */
+		length: PropTypes.oneOf(['5', '7', '10']),
+		/**
+		 * Triggered when a list item is selected (via mouse or keyboard).
+		 */
 		onSelect: PropTypes.func.isRequired,
-		onUpdateHighlighted: PropTypes.func,
+		/**
+		 * An array of items to render in the list.
+		 */
 		options: PropTypes.array,
-		selectedIndex: PropTypes.number
+		/**
+		 * The index of the currently selected item in the list.
+		 */
+		selectedIndex: PropTypes.number,
+		/**
+		 * The id of the element which triggered this list (in a menu context).
+		 */
+		triggerId: PropTypes.string
 	},
 
 	getDefaultProps () {
 		return {
-			highlightedIndex: 0,
+			length: '5',
 			options: [],
 			selectedIndex: -1
 		};
@@ -67,138 +98,38 @@ const List = React.createClass({
 		EventUtil.trapImmediate(event);
 	},
 
-	handleUpdateHighlighted (nextIndex) {
-		if (this.props.onUpdateHighlighted) {
-			this.props.onUpdateHighlighted(nextIndex);
-		}
-	},
-
-	handleListItemBlur (event) {
-		if (event && event.target) {
-			const indexx = parseInt(event.target.getAttribute('data-index'), 10);
-
-			if (this.props.onListItemBlur) {
-				this.props.onListItemBlur(indexx);
-			}
-
-			this.setState({ lastBlurredIndex: indexx });
-		}
-	},
-
-	handleMoveFocus (delta) {
-		let newHighlightedIndex = this.props.highlightedIndex + delta;
-		if (newHighlightedIndex < 0) {
-			newHighlightedIndex = this.props.options.length - 1;
-		} else if (newHighlightedIndex >= this.props.options.length) {
-			newHighlightedIndex = 0;
-		}
-		if (this.props.onUpdateHighlighted) {
-			this.props.onUpdateHighlighted(newHighlightedIndex);
-		}
-	},
-
-	handleCancel () {
-		if (this.props.onCancel) {
-			this.props.onCancel();
-		}
-	},
-
-	handleSelect (index) {
-		if (this.props.onSelect) {
-			this.props.onSelect(index);
-		}
-	},
-
-	handleItemFocus (itemIndex, itemHeight) {
-		if (this.refs.scroll) {
-			ReactDOM.findDOMNode(this.refs.scroll).scrollTop = itemIndex * itemHeight;
-		}
-	},
-
-	handleSearch (index, ch) {
-		const searchChar = ch.toLowerCase();
-
-		for (let i = index + 1; i < this.props.options.length; i++) {
-			const option = this.props.options[i];
-
-			if (option && option.label) {
-				if (option.label.charAt(0).toLowerCase() === searchChar) {
-					if (this.props.onUpdateHighlighted) {
-						this.props.onUpdateHighlighted(i);
-					}
-					return;
-				}
-			}
-		}
-
-		for (let i = 0; i < index; i++) {
-			const option = this.props.options[i];
-			if (option && option.label) {
-				if (option.label.charAt(0).toLowerCase() === searchChar) {
-					if (this.props.onUpdateHighlighted) {
-						this.props.onUpdateHighlighted(i);
-					}
-					return;
-				}
-			}
-		}
-	},
-
 	getItems () {
-		return this.props.options.map((option, index) => (
-			<ListItem
-				checkmark={this.props.checkmark}
-				data={option}
-				index={index}
-				isHighlighted={(index === this.props.highlightedIndex)}
-				isHover={this.props.isHover}
-				isSelected={(index === this.props.selectedIndex)}
-				key={`ListItem_${index}`}
-				label={option.label}
-				labelRenderer={this.props.itemRenderer}
-				onFocus={this.handleItemFocus}
-				onSelect={this.handleSelect}
-				onUpdateHighlighted={this.handleUpdateHighlighted}
-				value={option.value}
-			/>
-		));
-	},
+		return this.props.options.map((option, index) => {
+			const id = this.props.getListItemId(index);
 
-	handleKeyDown (event) {
-		if (event.keyCode) {
-			if (event.keyCode === KEYS.DOWN) {
-				EventUtil.trapEvent(event);
-				this.handleMoveFocus(1);
-			} else if (event.keyCode === KEYS.UP) {
-				EventUtil.trapEvent(event);
-				this.handleMoveFocus(-1);
-			} else if (event.keyCode === KEYS.ENTER ||
-					event.keyCode === KEYS.SPACE) {
-				EventUtil.trapEvent(event);
-				const index = parseInt(event.target.getAttribute('data-index'), 10);
-				this.handleSelect(index);
-			} else if (event.keyCode === KEYS.ESCAPE) {
-				EventUtil.trapEvent(event);
-				if (this.props.onCancel) {
-					this.props.onCancel();
-				}
-			} else if (event.keyCode !== KEYS.TAB) {
-				EventUtil.trapEvent(event);
-				const ch = String.fromCharCode(event.keyCode);
-				const index = parseInt(event.target.getAttribute('data-index'), 10);
-				this.handleSearch(index, ch);
-			}
-		}
+			return (
+				<ListItem
+					{...option}
+					checkmark={this.props.checkmark}
+					data={option}
+					id={id}
+					index={index}
+					isHover={this.props.isHover}
+					isSelected={(index === this.props.selectedIndex)}
+					key={`${id}-${option.value}`}
+					labelRenderer={this.props.itemRenderer}
+					onSelect={this.props.onSelect}
+					ref={(listItem) => this.props.itemRefs(listItem, index)}
+				/>
+			);
+		});
 	},
 
 	render () {
+		let lengthClassName;
+		if (this.props.length) {
+			lengthClassName = `slds-dropdown--length-${this.props.length}`;
+		}
+
 		return (
 			<ul
 				aria-labelledby={this.props.triggerId}
-				className={classNames('slds-dropdown__list slds-dropdown--length-5', this.props.className)}
-				onBlur={this.handleListItemBlur}
-				onKeyDown={this.handleKeyDown}
-				ref="scroll"
+				className={classNames('dropdown__list', lengthClassName, this.props.className)}
 				role="menu"
 			>
 				{this.getItems()}
