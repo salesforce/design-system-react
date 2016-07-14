@@ -6,7 +6,7 @@ import { storiesOf, action } from '@kadira/storybook';
 
 import { MENU_DROPDOWN } from '../../utilities/constants';
 import Dropdown from '../../components/menu-dropdown';
-import ListPlaceholder from '../../components/menu-list/list-placeholder';
+import List from '../../components/menu-list/list';
 import Button from '../../components/button';
 import Trigger from '../../components/menu-dropdown/button-trigger';
 
@@ -50,7 +50,7 @@ const getDropdownCustomContent = (props) => (
 				</div>
 			</div>
 		</div>
-		<ListPlaceholder options={[{ label: 'Custom Content Option' }, ...options]} />
+		<List options={[{ label: 'Custom Content Option' }, ...options]} />
 	</Dropdown>
 );
 

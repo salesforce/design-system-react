@@ -9,7 +9,7 @@ import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 
 import Dropdown from '../../components/menu-dropdown';
-import ListPlaceholder from '../../components/menu-list/list-placeholder';
+import List from '../../components/menu-list/list';
 const { Simulate,	findRenderedDOMComponentWithClass } = TestUtils;
 
 describe('SLDSMenuDropdown: ', () => {
@@ -74,7 +74,7 @@ describe('SLDSMenuDropdown: ', () => {
 					</div>
 				</div>
 			</div>
-			<ListPlaceholder options={[{ label: 'Custom Content Option' }, ...options]} />
+			<List options={[{ label: 'Custom Content Option' }, ...options]} />
 		</Dropdown>
 	);
 
