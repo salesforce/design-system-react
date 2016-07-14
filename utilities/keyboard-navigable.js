@@ -96,6 +96,8 @@ export function keyboardNavigate ({ currentFocusedIndex, isOpen, keyCode, naviga
 		} else if (keyCode === KEYS.UP) {
 			if (navigableIndex > 0) {
 				focusedIndex = indexes[--navigableIndex];
+			} else {
+				focusedIndex = indexes[lastIndex];
 			}
 		} else if (ch) {
 			ch = ch.toLowerCase();
