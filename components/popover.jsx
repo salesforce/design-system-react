@@ -85,6 +85,10 @@ module.exports = React.createClass({
 				this.handleClose();
 			}
 		}
+
+		if (this.props.onKeyDown) {
+			this.props.onKeyDown(event);
+		}
 	},
 
 	popoverComp () {
@@ -199,7 +203,7 @@ module.exports = React.createClass({
 	dropOptions () {
 		// Please reference http://github.hubspot.com/drop/ for options.
 		const position = this.getPosition();
-		
+
 		return {
 			beforeClose: this.beforeClose,
 			classes: this.props.dropClass,

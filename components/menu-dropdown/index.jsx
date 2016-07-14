@@ -10,36 +10,39 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND 
 // # Dropdown Component
 
 // Implements the [Dropdown design pattern](https://www.lightningdesignsystem.com/components/menus/#flavor-dropdown) in React. Child elements that do not have the display name of the value of `MENU_DROPDOWN_TRIGGER` in `components/constants.js` will be considered custom content and rendered in the popover.
+// Based on SLDS v2.1.0-rc.2
 
 // ### React
-// React is an external dependency of the project.
-
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-
-// ### Children
-import Popover from '../popover';
-
-// This is the the default Dropdown Trigger, which expects one button as a child.
-import DefaultTrigger from './button-trigger';
-
-import List from '../menu-list/list';
-import ListItem from '../menu-list/list-item';
-import ListItemLabel from '../menu-list/list-item-label';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
 // joining classNames together."
-import classnames from 'classnames';
-
-import { KEYS, EventUtil } from '../../utilities';
-import { MENU_DROPDOWN, MENU_DROPDOWN_TRIGGER, LIST } from '../../utilities/constants';
+import classNames from 'classnames';
 
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
+
+// ### Children
+import Popover from '../popover';
+import List from '../menu-list/list';
+import ListItem from '../menu-list/list-item';
+import ListItemLabel from '../menu-list/list-item-label';
+
+// This is the the default Dropdown Trigger, which expects one button as a child.
+import DefaultTrigger from './button-trigger';
+
+// ### Traits
+
+// #### KeyboardNavigable
+import KeyboardNavigable from '../../utilities/keyboard-navigable';
+
+import { KEYS, EventUtil } from '../../utilities';
+import { MENU_DROPDOWN, MENU_DROPDOWN_TRIGGER, LIST } from '../../utilities/constants';
 
 /**
  * The MenuDropdown component is a variant of the Lightning Design System Menu component.
@@ -48,6 +51,8 @@ const MenuDropdown = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: MENU_DROPDOWN,
+
+	mixins: [KeyboardNavigable],
 
 	// ### Prop Types
 	propTypes: {
@@ -207,7 +212,6 @@ const MenuDropdown = React.createClass({
 		return {
 			align: 'left',
 			hoverCloseDelay: 300,
-			id: shortid.generate(),
 			modal: true,
 			openOn: 'click'
 		};
@@ -215,28 +219,18 @@ const MenuDropdown = React.createClass({
 
 	getInitialState () {
 		return {
-			highlightedIndex: 0,
-			isClosing: false,
-			isFocused: false,
-			isHover: false,
-			isOpen: false,
-			lastBlurredIndex: -1,
-			lastBlurredTimeStamp: -1,
+			focusedIndex: -1,
 			selectedIndex: this.getIndexByValue(this.props.value)
 		};
 	},
 
-	close () {
-		this.setState({ isOpen: false });
+	componentWillMount () {
+		this.generatedId = shortid.generate();
+
+		document.addEventListener('click', this.closeOnClick, false);
 	},
 
 	componentDidUpdate (prevProps, prevState) {
-		if (this.state.lastBlurredTimeStamp !== prevState.lastBlurredTimeStamp) {
-			if (this.state.lastBlurredIndex === this.state.highlightedIndex) {
-				this.handleClose();
-			}
-		}
-
 		if (this.state.isOpen && !prevState.isOpen) {
 			this.state.isClosing = false;
 		}
@@ -244,19 +238,19 @@ const MenuDropdown = React.createClass({
 		if (this.state.selectedIndex !== prevState.selectedIndex) {
 			this.handleClose();
 		} else if (this.state.isFocused && !prevState.isFocused) {
-			this.close();
+			this.setState({ isOpen: false });
 		} else if (!this.state.isFocused && prevState.isFocused) {
 			if (this.list) {
 				if (!this.isUnmounting && this.list) {
-					if (!ReactDOM.findDOMNode(this.listf).contains(document.activeElement)) {
-						this.close();
+					if (!ReactDOM.findDOMNode(this.list).contains(document.activeElement)) {
+						this.setState({ isOpen: false });
 					}
 				}
 			}
 		} else if (this.state.isClosing && !prevState.isClosing) {
 			setTimeout(() => {
 				if (this.state.isClosing) {
-					this.close();
+					this.setState({ isOpen: false });
 				}
 			}, this.props.hoverCloseDelay);
 		}
@@ -268,30 +262,33 @@ const MenuDropdown = React.createClass({
 
 	componentWillUnmount () {
 		this.isUnmounting = true;
+
+		document.removeEventListener('click', this.closeOnClick, false);
+	},
+
+	getId () {
+		return this.props.id || this.generatedId;
 	},
 
 	getIndexByValue (value) {
 		let foundIndex = -1;
+
 		if (this.props.options && this.props.options.length) {
 			this.props.options.some((element, index) => {
-				// unused parameter: array
 				if (element && element.value === value) {
 					foundIndex = index;
 					return true;
 				}
+
 				return false;
 			});
 		}
+
 		return foundIndex;
 	},
 
 	getValueByIndex (index) {
-		let value;
-		const option = this.props.options[index];
-		if (option) {
-			value = this.props.options[index];
-		}
-		return value;
+		return this.props.options[index];
 	},
 
 	getListItemRenderer () {
@@ -300,6 +297,7 @@ const MenuDropdown = React.createClass({
 
 	handleBlur (e) {
 		this.setState({ isFocused: false });
+
 		if (this.props.onBlur) {
 			this.props.onBlur(e);
 		}
@@ -317,6 +315,7 @@ const MenuDropdown = React.createClass({
 			isFocused: true,
 			isHover: false
 		});
+
 		if (this.props.onFocus) {
 			this.props.onFocus();
 		}
@@ -324,12 +323,14 @@ const MenuDropdown = React.createClass({
 
 	handleMouseEnter () {
 		this.state.isClosing = false;
+
 		if (!this.state.isOpen) {
 			this.setState({
 				isOpen: true,
 				isHover: true
 			});
 		}
+
 		if (this.props.onMouseEnter) {
 			this.props.onMouseEnter();
 		}
@@ -337,14 +338,21 @@ const MenuDropdown = React.createClass({
 
 	handleMouseLeave () {
 		this.setState({ isClosing: true });
+
 		if (this.props.onMouseLeave) {
 			this.props.onMouseLeave();
 		}
 	},
 
-	handleClick () {
+	handleClick (event) {
+		if (event) {
+			event.nativeEvent.SLDSDropdownClickEvent = true;
+		}
+
 		if (!this.state.isOpen) {
 			this.setState({ isOpen: true });
+			this.setFocus();
+
 			if (this.props.onClick) {
 				this.props.onClick();
 			}
@@ -356,6 +364,7 @@ const MenuDropdown = React.createClass({
 	handleMouseDown (event) {
 		if (event) {
 			EventUtil.trapImmediate(event);
+			event.nativeEvent.SLDSDropdownClickEvent = true;
 		}
 
 		if (this.props.onMouseDown) {
@@ -366,6 +375,7 @@ const MenuDropdown = React.createClass({
 	handleSelect (index) {
 		this.setState({ selectedIndex: index });
 		this.setFocus();
+
 		if (this.props.onSelect) {
 			this.props.onSelect(this.getValueByIndex(index));
 		}
@@ -378,31 +388,19 @@ const MenuDropdown = React.createClass({
 					event.keyCode === KEYS.DOWN ||
 					event.keyCode === KEYS.UP) {
 				EventUtil.trap(event);
-				this.setState({
-					isOpen: true,
-					highlightedIndex: 0
-				});
 			}
+
+			this.handleKeyboardNavigate({
+				isOpen: this.state.isOpen || false,
+				keyCode: event.keyCode,
+				onSelect: this.handleSelect,
+				toggleOpen: this.toggleOpen
+			});
 
 			if (this.props.onKeyDown) {
 				this.props.onKeyDown();
 			}
 		}
-	},
-
-	handleUpdateHighlighted (nextIndex) {
-		this.setState({ highlightedIndex: nextIndex });
-	},
-
-	handleListBlur () {
-		this.setState({ isOpen: false });
-	},
-
-	handleListItemBlur (index) {
-		this.setState({
-			lastBlurredIndex: index,
-			lastBlurredTimeStamp: Date.now()
-		});
 	},
 
 	handleCancel () {
@@ -411,10 +409,46 @@ const MenuDropdown = React.createClass({
 		}
 	},
 
+	closeOnClick (event) {
+		if (!event.SLDSDropdownClickEvent && this.state.isOpen) {
+			this.handleClose();
+		}
+	},
+
+	toggleOpen () {
+		this.setState({ isOpen: !this.state.isOpen });
+	},
+
 	setFocus () {
 		if (!this.isUnmounting && this.button) {
 			ReactDOM.findDOMNode(this.button).focus();
 		}
+	},
+
+	saveRefToList (list) {
+		this.list = list;
+	},
+
+	saveRefToListItem (listItem, index) {
+		if (!this.listItems) {
+			this.listItems = {};
+		}
+
+		this.listItems[index] = listItem;
+
+		if (index === this.state.focusedIndex) this.handleKeyboardFocus(this.state.focusedIndex);
+	},
+
+	getMenu () {
+		return ReactDOM.findDOMNode(this.list);
+	},
+
+	getMenuItem (index) {
+		if (index !== undefined && this.listItems) {
+			return ReactDOM.findDOMNode(this.listItems[index]);
+		}
+
+		return undefined;
 	},
 
 	renderDefaultPopoverContent (customListProps) {
@@ -422,18 +456,16 @@ const MenuDropdown = React.createClass({
 			<List
 				key={`${this.props.id}-dropdown-list`}
 				checkmark={this.props.checkmark}
-				highlightedIndex={this.state.highlightedIndex}
+				getListItemId={this.getListItemId}
 				isHover={this.state.isHover}
+				itemRefs={this.saveRefToListItem}
 				itemRenderer={this.getListItemRenderer()}
-				onListBlur={this.handleListBlur}
-				onListItemBlur={this.handleListItemBlur}
 				onCancel={this.handleCancel}
 				onSelect={this.handleSelect}
-				onUpdateHighlighted={this.handleUpdateHighlighted}
 				options={this.props.options}
-				ref={(component) => { this.list = component; }}
+				ref={this.saveRefToList}
 				selectedIndex={this.state.selectedIndex}
-				triggerId={this.props.id}
+				triggerId={this.getId()}
 				{...customListProps}
 			/>
 		);
@@ -460,7 +492,7 @@ const MenuDropdown = React.createClass({
 		return (
 			this.props.forceOpen || !this.props.disabled && this.state.isOpen && this.button ?
 				<div
-					className={classnames('slds-dropdown', 'slds-dropdown--menu', 'slds-dropdown--left', this.props.className)}
+					className={classNames('slds-dropdown', 'slds-dropdown--menu', 'slds-dropdown--left', this.props.className)}
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
 				>
@@ -476,7 +508,7 @@ const MenuDropdown = React.createClass({
 
 		if (this.props.nubbinPosition) {
 			const positions = this.props.nubbinPosition.split(' ');
-			positionClassName = classnames(
+			positionClassName = classNames(
 				`slds-nubbin--${positions.join('-')}`,
 				positions.map((position) => `slds-dropdown--${position}`)
 			);
@@ -492,18 +524,17 @@ const MenuDropdown = React.createClass({
 		return (
 			this.props.forceOpen || !this.props.disabled && this.state.isOpen && this.button ?
 				<Popover
-					className={classnames('slds-dropdown',
+					className={classNames('slds-dropdown',
 						'slds-dropdown--menu',
-						`slds-dropdown--${this.props.align}`,
 						positionClassName,
 						this.props.className)}
 					closeOnTabKey
-					dropClass="slds-picklist" // TODO: in next SLDS release, remove slds-picklist class because slds-dropdown--length-5 will be active.
 					horizontalAlign={this.props.align}
 					flippable
 					marginTop={marginTop}
 					offset={offset}
 					onClose={this.handleCancel}
+					onKeyDown={this.handleKeyDown}
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
 					targetElement={this.button}
@@ -559,7 +590,7 @@ const MenuDropdown = React.createClass({
 
 				{...CustomTriggerChildProps}
 
-				id={this.props.id}
+				id={this.getId()}
 				onBlur={this.props.openOn === 'hover' ? this.handleBlur : null}
 				onClick={this.props.openOn === 'click' ? this.handleClick : null}
 				onFocus={this.props.openOn === 'hover' ? this.handleFocus : null}

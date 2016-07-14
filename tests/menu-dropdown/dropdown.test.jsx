@@ -1,5 +1,7 @@
-/* global describe, beforeEach, afterEach, it */
+/* eslint-env mocha */
+/* eslint-disable prefer-arrow-callback */
 /* eslint-disable no-unused-expressions */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import assign from 'lodash.assign';
@@ -330,8 +332,11 @@ describe('SLDSMenuDropdown: ', () => {
 		it('selects an item with keyboard', () => {
 			Simulate.click(btn, {});
 			expect(selected).to.be.false;
-			const menuItems = getMenu(body).querySelectorAll('.slds-dropdown__item');
-			Simulate.keyDown(menuItems[1].querySelector('a'), { key: 'Enter', keyCode: 13, which: 13 });
+
+			const menu = getMenu(body);
+			Simulate.keyDown(menu, { key: "Down", keyCode: 40, which: 40 });
+			Simulate.keyDown(menu, { key: "Down", keyCode: 40, which: 40 });
+			Simulate.keyDown(menu, {key: 'Enter', keyCode: 13, which: 13});
 			expect(selected.value).to.equal('B0');
 		});
 

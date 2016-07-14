@@ -11,8 +11,8 @@ import Button from '../../components/button';
 import Trigger from '../../components/menu-dropdown/button-trigger';
 
 const options = [
-	{ label: 'A Option Option Super Super Long', value: 'A0' },
-	{ label: 'B Option', value: 'B0' },
+	{ label: 'An option that is Super Super Long', value: 'A0' },
+	{ label: 'Another option', value: 'B0' },
 	{ label: 'C Option', value: 'C0' },
 	{ label: 'D Option', value: 'D0' },
 	{ label: 'E Option', value: 'E0' },
@@ -113,4 +113,3 @@ storiesOf(MENU_DROPDOWN, module)
 		options,
 		value: 'C0'
 	}));
-
