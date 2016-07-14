@@ -110,9 +110,10 @@ describe('SLDSMenuDropdown: ', () => {
 			expect(customContent).to.not.equal(undefined);
 		});
 		
-		it('has additional ListItem from list child', () => {
+		it('has additional ListItem from list child\'s options prop', () => {
+			const buttonId = body.querySelector('button').id;
 			Simulate.click(btn, {});
-			const customContentFirstItemText = getMenu(body).querySelector('#menu-0-0').firstChild.firstChild.textContent;
+			const customContentFirstItemText = getMenu(body).querySelector(`#${buttonId}-item-0`).firstChild.firstChild.textContent;
 			expect(customContentFirstItemText).to.equal('Custom Content Option');
 		});
 	});
@@ -334,9 +335,9 @@ describe('SLDSMenuDropdown: ', () => {
 			expect(selected).to.be.false;
 
 			const menu = getMenu(body);
-			Simulate.keyDown(menu, { key: "Down", keyCode: 40, which: 40 });
-			Simulate.keyDown(menu, { key: "Down", keyCode: 40, which: 40 });
-			Simulate.keyDown(menu, {key: 'Enter', keyCode: 13, which: 13});
+			Simulate.keyDown(menu, { key: 'Down', keyCode: 40, which: 40 });
+			Simulate.keyDown(menu, { key: 'Down', keyCode: 40, which: 40 });
+			Simulate.keyDown(menu, { key: 'Enter', keyCode: 13, which: 13 });
 			expect(selected.value).to.equal('B0');
 		});
 
