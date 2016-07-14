@@ -17,7 +17,7 @@ storiesOf(FORMS_INPUT, module)
 	))
 	.add('Assistive Text, No Label', () => (
 		<Input
-		name="assistive-text-no-label"
+			name="assistive-text-no-label"
 			assistiveText="Assistive Text"
 			placeholder="Placeholder Text"
 		/>
