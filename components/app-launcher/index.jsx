@@ -47,7 +47,7 @@ const AppLauncher = React.createClass({
 		 */
 		buttonLabel: PropTypes.string,
 		/*
-		 * Callback fired when button
+		 * Callback fired when button is clicked
 		 */
 		buttonOnClick: PropTypes.func,
 		/*
@@ -67,6 +67,10 @@ const AppLauncher = React.createClass({
 		 */
 		onAppLauncherIconClick: PropTypes.func,
 		/*
+		 * Callback when the App Launcher Modal is closed
+		 */
+		onAppLauncherModalClose: PropTypes.func,
+		/*
 		 * Set the search input's placeholder text (for localization)
 		 */
 		searchPlaceholderText: PropTypes.string,
@@ -75,37 +79,12 @@ const AppLauncher = React.createClass({
 		 */
 		isOpen: PropTypes.bool
 	},
-// 			<AppLauncher
-// 				title="App Launcher"
-// 				searchLabel="Find an app"
-// 				onSearch={()=>{}}
-// 				buttonLabel="App Exchange"
-// 				buttonOnClick={()=>{}}
-// 				modalClassName=""
-// 			>
-// 				<AppLauncherSection title="All Apps" className="">
-// 					<AppLauncherTile
-// 						icon={<Icon />} or iconName="" or iconText=""
-// 						title=""
-// 						description=""
-// 						size="small"
-// 						moreLabel=""
-// 						onClick={}
-// 						className=""
-// 					>
-// 						{children}
-// 					</AppLauncherTile>
-// 					<AppLauncherTile />
-// 					<AppLauncherTile />
-// 					<AppLauncherTile />
-// 				</AppLauncherSection>
-// 			</AppLauncher>
 
 	getDefaultProps () {
 		return {
 			appLauncherIconAssistiveText: 'Open App Launcher',
 			buttonLabel: 'App Exchange',
-			isOpen: false,
+			isOpen: true,
 			searchPlaceholderText: 'Find an app',
 			title: 'App Launcher'
 		};
@@ -127,12 +106,15 @@ const AppLauncher = React.createClass({
 
 	closeAppLauncher () {
 		this.setState({ isOpen: false });
-		// TODO: add onClose callback
+
+		if (isFunction(this.props.onAppLauncherModalClose)) {
+			this.props.onAppLauncherModalClose();
+		}
 	},
 
 	render () {
 		return (
-			<div>
+			<div className="app-launcher-wrapper">
 				<div className="slds-context-bar__icon-action">
 					<a
 						href="#"
@@ -153,6 +135,7 @@ const AppLauncher = React.createClass({
 				<Modal
 					isOpen={this.state.isOpen}
 					onRequestClose={this.closeAppLauncher}
+					containerClassName="app-launcher"
 					size="large"
 				>
 					<div className="slds-modal__header slds-app-launcher__header slds-grid slds-grid--align-spread slds-grid--vertical-align-center">
