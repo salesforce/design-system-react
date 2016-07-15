@@ -38,6 +38,41 @@ const DemoLookup = React.createClass({
 	}
 });
 
+const DemoLookupAccounts = React.createClass({
+	displayName: 'DemoLookupAccounts',
+
+	getInitialState () {
+		return {
+			options: [
+        {label: "Paddy\"s Pub", subTitle: "Boston, MA"},
+        {label: "Tyrell Corp", subTitle: "San Francisco, CA"},
+        {label: "Paper St. Soap Company", subTitle: "Beloit, WI"},
+        {label: "Nakatomi Investments", subTitle: "Chicago, IL"},
+        {label: "Acme Landscaping"},
+        {label: "Acme Construction", subTitle: "Grand Marais, MN"}
+      ]
+		};
+	},
+
+	render () {
+		return (
+      <Lookup
+        {...this.props}
+        onChange={action('change')}
+        onSelect={this.handleSelect}
+        options={this.state.options}
+        footerRenderer={Lookup.DefaultFooter}
+        headerRenderer={Lookup.DefaultHeader}
+      />
+		);
+	},
+
+	handleSelect (selectedItem, ...rest) {
+		action('select')(selectedItem, ...rest);
+		this.setState({ selectedItem });
+	}
+});
+
 storiesOf(LOOKUP, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Standard', () => <DemoLookup
@@ -47,4 +82,12 @@ storiesOf(LOOKUP, module)
 		iconInverse={false}
 		iconName="open_folder"
 		label="Files"
+	/>)
+	.add('Standard with Accounts', () => <DemoLookupAccounts
+		emptyMessage="No Accounts found"
+		hasError={false}
+		iconCategory="standard"
+		iconName="account"
+		label="Account"
 	/>);
+
