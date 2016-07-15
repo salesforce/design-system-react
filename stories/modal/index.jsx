@@ -138,7 +138,8 @@ storiesOf(MODAL, module)
     isOpen: true,
     tagline:"Enter in details below",
     title:"New Opportunity",
-    children: modalContent
+    children: modalContent,
+    onRequestClose: action('modal closed')
   }))
 
 
