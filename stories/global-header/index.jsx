@@ -51,7 +51,6 @@ storiesOf(GLOBAL_HEADER, module)
 				onClick={action('Setup Clicked')}
 			/>
 			<GlobalHeaderProfile
-				avatar="@salesforce-ux/design-system/assets/images/avatar2.jpg"
 				onClick={action('Profile Clicked')}
 				onSelect={action('Profile Selected')}
 				options={[
