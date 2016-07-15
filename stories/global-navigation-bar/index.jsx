@@ -13,6 +13,8 @@ import GlobalNavigationBarLink from '../../components/global-navigation-bar/link
 import GlobalNavigationBarButton from '../../components/global-navigation-bar/button';
 
 import AppLauncher from '../../components/app-launcher';
+import AppLauncherSection from '../../components/app-launcher/section';
+import AppLauncherTile from '../../components/app-launcher/tile';
 
 // aliased to allow copy and paste from component tests
 const appLauncherClicked = action;
@@ -26,7 +28,19 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 		<GlobalNavigationBarRegion
 			region="primary"
 		>
-			<AppLauncher applicationName={primaryRegionProps.appLauncher.name} />
+			<AppLauncher
+				applicationName={primaryRegionProps.appLauncher.name}
+				onSearch={() => false}
+			>
+				<AppLauncherSection title="All Items">
+					<AppLauncherTile
+						title="Marketing Cloud"
+						iconText="MC"
+						description="Send emails, track emails, read emails! Emails!"
+						onClick={action('Tile clicked!')}
+					/>
+				</AppLauncherSection>
+			</AppLauncher>
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="secondary" navigation>
 			<GlobalNavigationBarLink
