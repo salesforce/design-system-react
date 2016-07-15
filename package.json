@@ -58,7 +58,7 @@
     "react-highlighter": "^0.3.2",
     "react-modal": "^0.6.1",
     "react-onclickoutside": "^4.5.0",
-    "react-text-truncate": "^0.8.1",
+    "react-text-truncate": "git+ssh://git@github.com:iowillhoit/React-Text-Truncate.git",
     "shortid": "^2.2.6",
     "tether": "1.1.0",
     "tether-drop": "1.2.2",
