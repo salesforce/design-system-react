@@ -42,6 +42,10 @@ const AppLauncher = React.createClass({
 		 * Assistive text for app launcher icon
 		 */
 		appLauncherIconAssistiveText: PropTypes.string,
+		/**
+		 * This is typically the name of the cloud or application.
+		 */
+		applicationName: PropTypes.string,
 		/*
 		 * Set the header button's text
 		 */
@@ -84,7 +88,6 @@ const AppLauncher = React.createClass({
 		return {
 			appLauncherIconAssistiveText: 'Open App Launcher',
 			buttonLabel: 'App Exchange',
-			isOpen: true,
 			searchPlaceholderText: 'Find an app',
 			title: 'App Launcher'
 		};
@@ -114,7 +117,7 @@ const AppLauncher = React.createClass({
 
 	render () {
 		return (
-			<div className="app-launcher-wrapper">
+			<div className="app-launcher-wrapper slds-context-bar__item slds-no-hover">
 				<div className="slds-context-bar__icon-action">
 					<a
 						href="#"
@@ -125,7 +128,7 @@ const AppLauncher = React.createClass({
 						<Icon
 							category="utility"
 							name="apps"
-							size="medium"
+							size="small"
 							inverse={false}
 							assistiveText={this.props.appLauncherIconAssistiveText}
 						/>
@@ -158,6 +161,9 @@ const AppLauncher = React.createClass({
 						{this.props.children}
 					</div>
 				</Modal>
+				{this.props.applicationName ?
+					<span className="slds-context-bar__label-action slds-context-bar__app-name">{this.props.applicationName}</span>
+					: null}
 			</div>
 		);
 	}

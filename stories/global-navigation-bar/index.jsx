@@ -12,6 +12,8 @@ import GlobalNavigationBarDropdown from '../../components/global-navigation-bar/
 import GlobalNavigationBarLink from '../../components/global-navigation-bar/link';
 import GlobalNavigationBarButton from '../../components/global-navigation-bar/button';
 
+import AppLauncher from '../../components/app-launcher';
+
 // aliased to allow copy and paste from component tests
 const appLauncherClicked = action;
 const linkClicked = action;
@@ -24,12 +26,7 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 		<GlobalNavigationBarRegion
 			region="primary"
 		>
-			<GlobalNavigationBarAppLauncher
-				onClick={appLauncherClicked('Application name clicked (Open App Launcher).')}
-				{...primaryRegionProps.appLauncher}
-			>
-				{primaryRegionProps.appLauncher.customChild ? primaryRegionProps.appLauncher.customChild() : null}
-			</GlobalNavigationBarAppLauncher>
+			<AppLauncher applicationName={primaryRegionProps.appLauncher.name} />
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="secondary" navigation>
 			<GlobalNavigationBarLink
