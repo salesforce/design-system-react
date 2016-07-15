@@ -50,47 +50,19 @@ describe.only('SLDS APP LAUNCHER *******************************************', (
 	const createTile = (props) => React.createElement(AppLauncherTile, assign({}, defaultTileProps, props));
 	const renderTile = (props) => renderInstance(createTile(props));
 
-	// const createAppLauncher = (props) => React.createElement(
-	// 	AppLauncher,
-	// 	assign({}, defaultAppLauncherProps, props),
-	// 	<AppLauncherSection title="All Items">
-	// 		<AppLauncherTile title="asdf" />
-	// 	</AppLauncherSection>
-	// );
-
-	const createAppLauncher = (props) => (
-		<AppLauncher
-			onSearch={mockCallback}
-			isOpen
-		>
-			<AppLauncherSection title="All Items">
-				<AppLauncherTile title="asdf" />
-			</AppLauncherSection>
-		</AppLauncher>
+	const createAppLauncher = (props) => React.createElement(
+		AppLauncher,
+		assign({}, defaultAppLauncherProps, props),
+		<AppLauncherSection title="All Items">
+			<AppLauncherTile title="Marketing Cloud" />
+			<AppLauncherTile title="Support Cloud" />
+		</AppLauncherSection>
 	);
 
 	const renderAppLauncher = (props) => renderInstance(createAppLauncher(props));
 
-	// /////
-
-	// const getTileWrapper = dom => dom.querySelector('.slds-app-launcher__tile');
-
-	// const getTileIcon = dom => dom.querySelector('.slds-app-launcher__tile-figure');
-
-	// const getTileBody = dom => dom.querySelector('.slds-app-launcher__tile-body');
-
-	// const getSectionWrapper = dom => dom.querySelector('.slds-section');
-
-	// const getSectionContent = dom => dom.querySelector('.slds-section__content');
-
-	// const getAppLauncherWrapper = dom => dom.querySelector('.app-launcher');
-
-	// const getAppLauncherIconWrapper = dom => dom.querySelector('.slds-context-bar__icon-action');
-
-	// const getModalHeader = dom => dom.querySelector('.slds-modal__header');
 
 /* eslint-disable spaced-comment */
-
 /*///////////////////////
 //////// D O N E ////////
 ///////////////////////*/
@@ -120,19 +92,38 @@ describe.only('SLDS APP LAUNCHER *******************************************', (
 	// small tileBody span has class 'slds-truncate'
 	// small tile search highlights title
 	// small tile body only has app title
-
+// APP LAUNCHER -----
+	// can set modal header title (prop: title)
+	// modal header has h2 with class '.slds-text-heading--medium'
+	// app launcher search has id '#app-launcher-search'
+	// modal header has search bar with class ".slds-app-launcher__header-search"
+	// modal header has button with classes: slds-button slds-button--neutral
+// SECTION ------
+	// open section has class '.slds-is-open'
+	// section title has class '.slds-section__title'
+	// section content has <ul> with classes: slds-grid slds-grid--pull-padded slds-wrap
 /*///////////////////////
 //////// T O D O ////////
 ///////////////////////*/
+	// APP LAUNCHER -----
+		// you can set the search input's placeholder text (prop: searchPlaceholderText)
+		// you can set the search input's assistive text (prop: appLauncherIconAssistiveText)
+		// you can set the buttons label (prop: buttonLabel)
+		// you can pass an onClick function to the button (prop: buttonOnClick)
+		// modal header has classes: slds-app-launcher__header slds-grid slds-grid--align-spread slds-grid--vertical-align-center
+		// you can pass a onSearch callback (prop: onSearch)
+		// you can pass the initial open state (prop: isOpen)
+		// modal content has classes: slds-modal__content slds-app-launcher__content slds-p-around--medium
+		// openAppLauncher callback
+		// you can pass the app launcher's children (prop: children)
+		// you can set the search input's assistive text (prop: appLauncherIconAssistiveText)
+		// you can set the search input's placeholder text (prop: searchPlaceholderText)
 	// SECTION ------
-		// open section has class '.slds-is-open'
-		// closed section has class '.slds-is-close'
-		// section title has class '.slds-section__title'
-		// section has 'toggle' button with classes: slds-button slds-button--icon slds-m-right--small
-		// section has title has h3 with text (equals)
-		// section toggle button has assistive text '.slds-assistive-text' (equals)
-		// section content has <ul> with classes: slds-grid slds-grid--pull-padded slds-wrap
 		// each tile is wrapped in <li> with classes: slds-col--padded slds-grow-none slds-size--1-of-1 slds-medium-size--1-of-3
+		// closed section has class '.slds-is-close'
+		// section has title has h3 with text (equals)
+		// section has 'toggle' button with classes: slds-button slds-button--icon slds-m-right--small
+		// section toggle button has assistive text '.slds-assistive-text' (equals)
 		// section can be passed children
 		// you can pass an onClick callback to section toggle
 		// you can pass initial open state (prop: isOpen)
@@ -144,14 +135,7 @@ describe.only('SLDS APP LAUNCHER *******************************************', (
 		// you can pass a callback for icon click
 		// small tiles inclues slds-size--xx-small class on section
 
-/*///////////////////////
-//////// N O P E ////////
-///////////////////////*/
-	// IN MODAL
-		// app launcher wrapper has attr: aria-hidden="false"
-		// app launcher wrapper has attr: role="dialog"
-		// app launcher wrapper has classes: slds-modal slds-fade-in-open slds-modal--large
-
+/* eslint-enable spaced-comment */
 
 	describe('Default App Launcher Tile', () => {
 		let component;
@@ -230,7 +214,7 @@ describe.only('SLDS APP LAUNCHER *******************************************', (
 		beforeEach(() => {
 			component = renderTile({
 				title: 'Call Center',
-				description: 'The key to call center and contact center is not to use too many words! And we will add some more words until we reach the limit. And then we will add some more words just to make sure this works on all screensizes. What I should have done is wrap this in a class to set the widht, but this is faster.',
+				description: 'The key to call center and contact center is not to use too many words! And we will add some more words until we reach the limit. And then we will add some more words just to make sure this works on all screensizes. What I should have done is wrap this in a class to set the width, but this is faster. The key to call center and contact center is not to use too many words! And we will add some more words until we reach the limit. And then we will add some more words just to make sure this works on all screensizes. What I should have done is wrap this in a class to set the width, but this is faster.',
 				moreLabel: 'MORE!',
 				search: 'enter'
 			});
@@ -365,57 +349,83 @@ describe.only('SLDS APP LAUNCHER *******************************************', (
 	});
 
 	describe('App Launcher', () => {
-		let component;
-		let AppLauncherIcon;
-		let AppLauncherWrapper;
-		// let AppLauncherHeader;
+		let modalWrapper;
 
 		beforeEach(() => {
-			component = renderAppLauncher();
-
-			AppLauncherWrapper = findRenderedDOMComponentWithClass(component, 'app-launcher-wrapper');
-			AppLauncherIcon = findRenderedDOMComponentWithClass(component, 'slds-button');
-			// AppLauncherIcon = findRenderedDOMComponentWithClass(component, 'slds-context-bar__icon-action');
-
-
-			// AppLauncherHeader = findRenderedDOMComponentWithClass(component, 'slds-app-launcher__header');
+			renderAppLauncher({
+				title: 'App Rocket',
+				appLauncherIconAssistiveText: 'Custom Icon Assistive Text'
+			});
+			modalWrapper = document.documentElement.querySelectorAll('.ReactModalPortal .slds-modal')[0];
 		});
 
 		afterEach(() => {
 			cleanDom();
 		});
 
-	// APP LAUNCHER -----
-		// modal header has classes: slds-app-launcher__header slds-grid slds-grid--align-spread slds-grid--vertical-align-center
-		// modal header has h2 with class '.slds-text-heading--medium'
-		// can set modal header title (prop: title)
-		// modal header has search bar with class ".slds-app-launcher__header-search"
-		// you can set the search input's assistive text
-		// you can set the search input's placeholder text (prop: searchPlaceholderText)
-		// app launcher search has id '#app-launcher-search'
-		// modal header has button with classes: slds-button slds-button--neutral
-		// you can set the buttons label (prop: buttonLabel)
-		// you can pass an onClick function to the button (prop: buttonOnClick)
-		// you can pass the app launcher's children (prop: children)
-		// you can pass a onSearch callback (prop: onSearch)
-		// you can pass the initial open state (prop: isOpen)
-		// openAppLauncher callback
-		// modal content has classes: slds-modal__content slds-app-launcher__content slds-p-around--medium
+		it('modal exists', () => {
+			should.exist(modalWrapper);
+		});
 
-		it('modal header has proper classes', (done) => {
-			// console.log(AppLauncherIcon.innerHTML);
-			TestUtils.Simulate.click(AppLauncherIcon);
-			console.log(AppLauncherIcon.innerHTML);
-			console.log('-----------------------');
-			setTimeout(() => {
-				console.log('TIMEOUT');
-				console.log(AppLauncherWrapper.innerHTML);
-				done();
-			}, 600);
-			// console.log(AppLauncherWrapper.innerHTML);
-			// debugger;
-			// expect(AppLauncherHeader.className).to.include('slds-app-launcher__header slds-grid slds-grid--align-spread slds-grid--vertical-align-center');
+		it('app launcher title can be set', () => {
+			const appLauncherTitle = modalWrapper.getElementsByTagName('h2')[0];
+			expect(appLauncherTitle.className).to.include('slds-text-heading--medium');
+			expect(appLauncherTitle.textContent).to.equal('App Rocket');
+		});
+
+		it('app laucher search bar exists', () => {
+			should.exist(document.querySelectorAll('.slds-app-launcher__header-search'));
+		});
+
+		it('app laucher search bar has proper id', () => {
+			should.exist(document.getElementById('app-launcher-search'));
+		});
+
+		it('modal content exists', () => {
+			should.exist(document.querySelectorAll('.slds-modal__content'));
+		});
+
+		it('app laucher button has proper classes', () => {
+			should.exist(document.querySelectorAll('.slds-button .slds-button--neutral'));
+		});
+	});
+
+	describe('App Launcher Section', () => {
+		let modalSection;
+
+		beforeEach(() => {
+			renderAppLauncher({
+				title: 'App Rocket',
+				appLauncherIconAssistiveText: 'Custom Icon Assistive Text'
+			});
+			modalSection = document.documentElement.querySelectorAll('.slds-section')[0];
+		});
+
+		afterEach(() => {
+			cleanDom();
+		});
+
+		it('modal section exists', () => {
+			should.exist(modalSection);
+		});
+
+		it('modal section has "slds-is-open" class when open', () => {
+			expect(modalSection.className).to.include('slds-is-open');
+		});
+
+		it('section has a title', () => {
+			should.exist(document.querySelectorAll('.slds-section__title'));
+		});
+
+		it('ul has proper classes', () => {
+			const ul = modalSection.getElementsByTagName('ul')[0];
+			should.exist(ul);
+			expect(ul.className).to.include('slds-grid slds-grid--pull-padded slds-wrap');
+		});
+
+		it('li exists', () => {
+			const li = modalSection.getElementsByTagName('li')[0];
+			should.exist(li);
 		});
 	});
 });
-

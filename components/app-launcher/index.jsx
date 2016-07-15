@@ -84,7 +84,7 @@ const AppLauncher = React.createClass({
 		return {
 			appLauncherIconAssistiveText: 'Open App Launcher',
 			buttonLabel: 'App Exchange',
-			isOpen: true,
+			isOpen: false,
 			searchPlaceholderText: 'Find an app',
 			title: 'App Launcher'
 		};
