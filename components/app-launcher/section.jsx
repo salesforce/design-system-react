@@ -103,7 +103,14 @@ const AppLauncherSection = React.createClass({
 				<div className="slds-section__content">
 					<ul className={classNames('slds-grid slds-grid--pull-padded slds-wrap', sectionIsOpen)}>
 						{React.Children.map(this.props.children, (child) => (
-							<li className="slds-col--padded slds-grow-none slds-size--1-of-1 slds-medium-size--1-of-3">
+							<li
+								className={classNames(
+									'slds-col--padded slds-grow-none',
+									child.props.size === 'small'
+									? 'slds-size--xx-small'
+									: 'slds-size--1-of-1 slds-medium-size--1-of-3'
+								)}
+							>
 								{child}
 							</li>
 						))}
