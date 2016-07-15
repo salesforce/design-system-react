@@ -6,6 +6,7 @@ import { storiesOf, action } from '@kadira/storybook';
 
 import { MENU_DROPDOWN } from '../../utilities/constants';
 import Dropdown from '../../components/menu-dropdown';
+import List from '../../components/menu-list/list';
 import Button from '../../components/button';
 import Trigger from '../../components/menu-dropdown/button-trigger';
 
@@ -31,6 +32,25 @@ const getDropdownCustomTrigger = (props) => (
 		<Trigger>
 			<Button iconCategory="utility" iconName="settings" />
 		</Trigger>
+	</Dropdown>
+);
+
+const getDropdownCustomContent = (props) => (
+	<Dropdown {...props} >
+		<div id="custom-dropdown-menu-content">
+			<div className="slds-m-around--medium">
+				<div className="slds-tile slds-tile--board slds-m-horizontal--small">
+					<p className="tile__title slds-text-heading--small">Art Vandelay</p>
+					<div className="slds-tile__detail">
+						<p className="slds-truncate">
+							<a className="slds-m-right--medium" href="#">Settings</a>
+							<a href="#" >Log Out</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<List options={[{ label: 'Custom Content Option' }, ...options]} />
 	</Dropdown>
 );
 
@@ -60,9 +80,8 @@ storiesOf(MENU_DROPDOWN, module)
 		},
 		options
 	}))
-	.add('Custom Content', () => getDropdown({
+	.add('Custom Content', () => getDropdownCustomContent({
 		label: 'Custom Content Dropdown Click',
-		forceOpen: true,
 		onSelect: (...rest) => {
 			action('Selected')(...rest);
 		},
@@ -73,7 +92,9 @@ storiesOf(MENU_DROPDOWN, module)
 		buttonVariant: 'icon',
 		iconName: 'settings',
 		iconVariant: 'more',
-		onSelect: action('Selected'),
+		onSelect: (...rest) => {
+			action('Selected')(...rest);
+		},
 		openOn: 'hover',
 		options
 	}))
@@ -85,7 +106,9 @@ storiesOf(MENU_DROPDOWN, module)
 		iconVariant: 'border-filled',
 		onMouseEnter: action('Mouse enter'),
 		onMouseLeave: action('Mouse leave'),
-		onSelect: action('Selected'),
+		onSelect: (...rest) => {
+			action('Selected')(...rest);
+		},
 		openOn: 'hover',
 		options,
 		value: 'C0'

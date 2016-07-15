@@ -39,6 +39,7 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 				onClick={linkClicked('Home link clicked')}
 			/>
 			<GlobalNavigationBarDropdown
+				assistiveText="Open Menu Item 1"
 				id="primaryDropdown"
 				label="Menu Item 1"
 				onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}

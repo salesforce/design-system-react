@@ -9,7 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND 
 
 // # Dropdown Component
 
-// Implements the [Dropdown design pattern](https://www.lightningdesignsystem.com/components/menus/#flavor-dropdown) in React.
+// Implements the [Dropdown design pattern](https://www.lightningdesignsystem.com/components/menus/#flavor-dropdown) in React. Child elements that do not have the display name of the value of `MENU_DROPDOWN_TRIGGER` in `components/constants.js` will be considered custom content and rendered in the popover.
 // Based on SLDS v2.1.0-rc.2
 
 // ### React
@@ -42,7 +42,7 @@ import DefaultTrigger from './button-trigger';
 import KeyboardNavigable from '../../utilities/keyboard-navigable';
 
 import { KEYS, EventUtil } from '../../utilities';
-import { MENU_DROPDOWN } from '../../utilities/constants';
+import { MENU_DROPDOWN, MENU_DROPDOWN_TRIGGER, LIST } from '../../utilities/constants';
 
 /**
  * The MenuDropdown component is a variant of the Lightning Design System Menu component.
@@ -451,9 +451,10 @@ const MenuDropdown = React.createClass({
 		return undefined;
 	},
 
-	renderDefaultPopoverContent () {
+	renderDefaultPopoverContent (customListProps) {
 		return (
 			<List
+				key={`${this.props.id}-dropdown-list`}
 				checkmark={this.props.checkmark}
 				getListItemId={this.getListItemId}
 				isHover={this.state.isHover}
@@ -465,11 +466,29 @@ const MenuDropdown = React.createClass({
 				ref={this.saveRefToList}
 				selectedIndex={this.state.selectedIndex}
 				triggerId={this.getId()}
+				{...customListProps}
 			/>
 		);
 	},
 
-	renderSimplePopover () {
+	renderPopoverContent (customContent) {
+		let customContentWithListPropInjection = [];
+		// Dropdown can take a Trigger component as a child and then return it as the parent DOM element.
+		React.Children.forEach(customContent, (child) => {
+			if (child && child.type.displayName === LIST) {
+				customContentWithListPropInjection.push(this.renderDefaultPopoverContent(child.props));
+			} else {
+				customContentWithListPropInjection.push(child);
+			}
+		});
+		if (customContentWithListPropInjection.length === 0) {
+			customContentWithListPropInjection = null;
+		}
+
+		return customContentWithListPropInjection || this.renderDefaultPopoverContent();
+	},
+
+	renderSimplePopover (customContent) {
 		return (
 			this.props.forceOpen || !this.props.disabled && this.state.isOpen && this.button ?
 				<div
@@ -477,12 +496,12 @@ const MenuDropdown = React.createClass({
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
 				>
-					{this.renderDefaultPopoverContent()}
+					{this.renderPopoverContent(customContent)}
 				</div> : null
 		);
 	},
 
-	renderModalPopover () {
+	renderModalPopover (customContent) {
 		let positionClassName;
 		let marginTop;
 		let offset = this.props.offset;
@@ -520,7 +539,7 @@ const MenuDropdown = React.createClass({
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
 					targetElement={this.button}
 				>
-					{this.renderDefaultPopoverContent()}
+					{this.renderPopoverContent(customContent)}
 				</Popover> : null
 		);
 	},
@@ -529,19 +548,24 @@ const MenuDropdown = React.createClass({
 		// Dropdowns are used by other components. The default trigger is a button, but some other components use `li` elements. The following allows `MenuDropdown` to be extended by providing a child component with the displayName of `DropdownTrigger`.
 		let CurrentTrigger = DefaultTrigger;
 		let CustomTriggerChildProps = {};
-		const childrenWithCustomTriggerRemoved = [];
+
+		// Child elements that do not have the display name of the value of `MENU_DROPDOWN_TRIGGER` in `components/constants.js` will be considered custom content and rendered in the popover.
+		let customContent = [];
 
 		// Dropdown can take a Trigger component as a child and then return it as the parent DOM element.
 		React.Children.forEach(this.props.children, (child) => {
-			if (child && child.type.displayName === 'SLDSMenuDropdownTrigger') {
+			if (child && child.type.displayName === MENU_DROPDOWN_TRIGGER) {
 				// `CustomTriggerChildProps` is not used by the default button Trigger, but by other triggers
 				CustomTriggerChildProps = child.props;
 				CurrentTrigger = child.type;
 			} else {
-				childrenWithCustomTriggerRemoved.push(child);
+				customContent.push(child);
 			}
 		});
 
+		if (customContent.length === 0) {
+			customContent = null;
+		}
 		/* Below are three sections of props:
 		 - The first are the props that may be given by the dropdown component. These may get deprecated in the future.
 		 - The next set of props (`CustomTriggerChildProps`) are props that can be overwritten by the end developer.
@@ -575,7 +599,9 @@ const MenuDropdown = React.createClass({
 				onMouseEnter={this.props.openOn === 'hover' ? this.handleMouseEnter : null}
 				onMouseLeave={this.props.openOn === 'hover' ? this.handleMouseLeave : null}
 				ref={(component) => { this.button = component; }}
-				menu={this.props.modal ? this.renderModalPopover() : this.renderSimplePopover()}
+				menu={this.props.modal ?
+					this.renderModalPopover(customContent) :
+					this.renderSimplePopover(customContent)}
 			/>
 		);
 	}

@@ -67,7 +67,7 @@ const List = React.createClass({
 		/**
 		 * Triggered when a list item is selected (via mouse or keyboard).
 		 */
-		onSelect: PropTypes.func.isRequired,
+		onSelect: PropTypes.func,
 		/**
 		 * An array of items to render in the list.
 		 */

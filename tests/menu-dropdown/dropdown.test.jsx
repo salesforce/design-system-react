@@ -1,5 +1,6 @@
 /* eslint-env mocha */
 /* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -7,13 +8,12 @@ import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 
-import { SLDSMenuDropdown } from '../../components';
-const { Simulate,
-				findRenderedDOMComponentWithClass } = TestUtils;
+import Dropdown from '../../components/menu-dropdown';
+import List from '../../components/menu-list/list';
+const { Simulate,	findRenderedDOMComponentWithClass } = TestUtils;
 
-describe('SLDSMenuDropdown: ', function () {
+describe('SLDSMenuDropdown: ', () => {
 	let body;
-
 	const options = [
 		{ label: 'A super short', value: 'A0' },
 		{ label: 'B Option Super Super Long', value: 'B0' },
@@ -21,7 +21,7 @@ describe('SLDSMenuDropdown: ', function () {
 		{ label: 'D Option', value: 'D0' }
 	];
 
-	const renderDropdown = inst => {
+	const renderDropdown = (inst) => {
 		body = document.createElement('div');
 		document.body.appendChild(body);
 		return ReactDOM.render(inst, body);
@@ -49,33 +49,90 @@ describe('SLDSMenuDropdown: ', function () {
 		iconVariant: 'border-filled',
 		openOn: 'click',
 		modal: false,
-		options: options,
-		placeholder: "Select an Action",
+		options,
+		placeholder: 'Select an Action',
 		value: 'C0'
 	};
 
-	const createDropdown = (props) => React.createElement(SLDSMenuDropdown, assign({}, defaultProps, props));
-	const createDropdown_icon = (props) => React.createElement(SLDSMenuDropdown, assign({}, iconOnlyProps, props));
+	const createDropdown = (props) => React.createElement(Dropdown, assign({}, defaultProps, props));
+	createDropdown.displayName = 'createDropdown';
+	const createDropdownIcon = (props) => React.createElement(Dropdown, assign({}, iconOnlyProps, props));
+	createDropdownIcon.displayName = 'createDropdownIcon';
 
-	const dropItDown = (props) => renderDropdown(createDropdown(props));
-	const dropItDown_iconOnly = (props) => renderDropdown(createDropdown_icon(props));
+	const createDropdownWithCustomChildren = (props) => (
+		<Dropdown {...assign({}, defaultProps, props)} >
+			<div id="custom-dropdown-menu-content">
+				<div className="slds-m-around--medium">
+					<div className="slds-tile slds-tile--board slds-m-horizontal--small">
+						<p className="tile__title slds-text-heading--small">Art Vandelay</p>
+						<div className="slds-tile__detail">
+							<p className="slds-truncate">
+								<a className="slds-m-right--medium" href="#">Settings</a>
+								<a href="#" >Log Out</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<List options={[{ label: 'Custom Content Option' }, ...options]} />
+		</Dropdown>
+	);
+
+	createDropdownWithCustomChildren.displayName = 'createDropdownWithCustomChildren';
+
+	const dropItDown = (props, children) => renderDropdown(createDropdown(props, children));
+	const dropItDownWithCustomChildren = (props) => renderDropdown(createDropdownWithCustomChildren(props));
+	const dropItDownIconOnly = (props) => renderDropdown(createDropdownIcon(props));
 
 	const getMenu = (dom) => dom.querySelector('.slds-dropdown--menu');
 
+	describe('Custom Content Present', () => {
+		let cmp;
+		let btn;
+		beforeEach(() => {
+			/* eslint-disable no-unused-vars */
+			let selected = false;
+			/* eslint-enable no-unused-vars */
+			cmp = dropItDownWithCustomChildren({ onSelect: (i) => {
+				selected = i;
+			} },
+			);
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+		});
+
+		afterEach(() => {
+			removeDropdownTrigger(btn);
+		});
+
+		it('has content with custom ID is present', () => {
+			Simulate.click(btn, {});
+			const customContent = getMenu(body).querySelector('#custom-dropdown-menu-content');
+			expect(customContent).to.not.equal(undefined);
+		});
+		
+		it('has additional ListItem from list child\'s options prop', () => {
+			const buttonId = body.querySelector('button').id;
+			Simulate.click(btn, {});
+			const customContentFirstItemText = getMenu(body).querySelector(`#${buttonId}-item-0`).firstChild.firstChild.textContent;
+			expect(customContentFirstItemText).to.equal('Custom Content Option');
+		});
+	});
+
 	describe('Hoverable', () => {
-		let cmp, btn;
+		let cmp;
+		let btn;
 
 		beforeEach(() => {
-			cmp = dropItDown({buttonClassName: 'dijkstrafied', openOn: 'hover'});
+			cmp = dropItDown({ buttonClassName: 'dijkstrafied', openOn: 'hover' });
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
-		})
+		});
 
 		afterEach(() => {
 			removeDropdownTrigger(btn);
 		});
 
 		it('gives the button correct aria properties', () => {
-			expect(btn.props['aria-haspopup']).to.equal("true");
+			expect(btn.props['aria-haspopup']).to.equal('true');
 		});
 
 		it('sets the label', () => {
@@ -115,23 +172,25 @@ describe('SLDSMenuDropdown: ', function () {
 	});
 
 	describe('Clickable', () => {
-		let cmp, btn, clicked;
+		let cmp;
+		let btn;
+		let clicked;
 
 		beforeEach(() => {
 			clicked = false;
-			cmp = dropItDown({openOn: 'click', onClick: () => clicked = true });
+			cmp = dropItDown({ openOn: 'click', onClick: () => { clicked = true; } });
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
-		})
+		});
 
 		afterEach(() => {
 			removeDropdownTrigger(btn);
-		})
+		});
 
 		it('doesnt expand on hover', () => {
 			expect(getMenu(body)).to.equal(null);
 			Simulate.mouseEnter(btn, {});
 			expect(getMenu(body)).to.equal(null);
-		})
+		});
 
 		it('expands/contracts on click', () => {
 			expect(getMenu(body)).to.equal(null);
@@ -139,29 +198,31 @@ describe('SLDSMenuDropdown: ', function () {
 			expect(getMenu(body).className).to.include('slds-dropdown');
 			Simulate.click(btn, {});
 			expect(getMenu(body)).to.equal(null);
-		})
+		});
 
 		it('preserves click behavior', (done) => {
 			expect(clicked).to.be.false;
 			Simulate.click(btn, {});
 			expect(clicked).to.be.true;
-			Simulate.click(btn, {}) //cleanup
+			Simulate.click(btn, {}); // cleanup
 			setTimeout(() => done(), 600);
 		});
 	});
 
 	describe('Expanded', () => {
-		let cmp, btn, selected;
+		let cmp;
+		let btn;
+		let selected;
 
 		beforeEach(() => {
 			selected = false;
-			cmp = dropItDown({openOn: 'click', onSelect: i => selected = i });
+			cmp = dropItDown({ openOn: 'click', onSelect: (i) => { selected = i; } });
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
-		})
+		});
 
 		afterEach(() => {
 			removeDropdownTrigger(btn);
-		})
+		});
 
 		it('selects an item on click', () => {
 			Simulate.click(btn, {});
@@ -170,47 +231,52 @@ describe('SLDSMenuDropdown: ', function () {
 			Simulate.click(items[1].querySelector('a'), {});
 			expect(selected.value).to.equal('B0');
 		});
-
 	});
 
 	describe('accessible markup for label Dropdowns', () => {
-		let cmp, btn;
+		let cmp;
+		let btn;
 		beforeEach(() => {
+			/* eslint-disable no-unused-vars */
 			let selected = false;
+			/* eslint-enable no-unused-vars */
 			cmp = dropItDown({ onSelect: (i) => {
 				selected = i;
-			} })
+			} });
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
-		})
+		});
 
 		afterEach(() => {
 			removeDropdownTrigger(btn);
-		})
+		});
 
 		it('<ul> has role menu & aria-labelledby', () => {
 			Simulate.click(btn, {});
-			let ulRole = getMenu(body).querySelector('ul').getAttribute('role');
-			let ulAria = getMenu(body).querySelector('ul').getAttribute('aria-labelledby');
+			const ulRole = getMenu(body).querySelector('ul').getAttribute('role');
+			const ulAria = getMenu(body).querySelector('ul').getAttribute('aria-labelledby');
 			expect(ulRole).to.equal('menu');
 			expect(ulAria).to.equal(btn.getAttribute('id'));
-		})
+		});
 
 		it('<a> inside <li> has role menuitem', () => {
-			Simulate.click(btn, {})
+			Simulate.click(btn, {});
 			const items = getMenu(body).querySelectorAll('.slds-dropdown__item a');
-			let anchorRole = items[1].getAttribute('role');
-			let match = (anchorRole === 'menuitem' || anchorRole === 'menuitemradio' || anchorRole === 'menuitemcheckbox');
+			const anchorRole = items[1].getAttribute('role');
+			const match = (anchorRole === 'menuitem' || anchorRole === 'menuitemradio' || anchorRole === 'menuitemcheckbox');
 			expect(match).to.be.true;
 		});
 	});
 
 	describe('accessible markup for Icon Only Dropdowns', () => {
-		let cmp, btn;
+		let cmp;
+		let btn;
 		beforeEach(() => {
+			/* eslint-disable no-unused-vars */
 			let selected = false;
-			cmp = dropItDown_iconOnly({ onSelect: (i) => {
+			/* eslint-enable no-unused-vars */
+			cmp = dropItDownIconOnly({ onSelect: (i) => {
 				selected = i;
-			}});
+			} });
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
 
@@ -220,30 +286,31 @@ describe('SLDSMenuDropdown: ', function () {
 
 		it('<ul> has role menu & aria-labelledby', () => {
 			Simulate.click(btn, {});
-			let ulRole = getMenu(body).querySelector('ul').getAttribute('role');
-			let ulAria = getMenu(body).querySelector('ul').getAttribute('aria-labelledby');
+			const ulRole = getMenu(body).querySelector('ul').getAttribute('role');
+			const ulAria = getMenu(body).querySelector('ul').getAttribute('aria-labelledby');
 			expect(ulRole).to.equal('menu');
 			expect(ulAria).to.equal(btn.getAttribute('id'));
 		});
 
 		it('<a> inside <li> has role menuitem', () => {
-			Simulate.click(btn, {})
-			const items = getMenu(body).querySelectorAll('.slds-dropdown__item a')
-			let anchorRole = items[1].getAttribute('role');
-			let match = (anchorRole === 'menuitem' || anchorRole === 'menuitemradio' || anchorRole === 'menuitemcheckbox');
+			Simulate.click(btn, {});
+			const items = getMenu(body).querySelectorAll('.slds-dropdown__item a');
+			const anchorRole = items[1].getAttribute('role');
+			const match = (anchorRole === 'menuitem' || anchorRole === 'menuitemradio' || anchorRole === 'menuitemcheckbox');
 			expect(match).to.be.true;
 		});
 	});
 
 	describe('Keyboard behavior', () => {
-		let cmp, btn;
+		let cmp;
+		let btn;
 		let selected = false;
 		beforeEach(() => {
 			cmp = dropItDown({
 				openOn: 'click',
 				onSelect: (i) => {
 					selected = i;
-				}})
+				} });
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
 
@@ -253,13 +320,13 @@ describe('SLDSMenuDropdown: ', function () {
 
 		it('opens menu with enter', () => {
 			expect(getMenu(body)).to.equal(null);
-			Simulate.keyDown(btn, { key: "Enter", keyCode: 13, which: 13 });
+			Simulate.keyDown(btn, { key: 'Enter', keyCode: 13, which: 13 });
 			expect(getMenu(body)).to.not.equal(null);
 		});
 
 		it('opens menu with down arrow key', () => {
 			expect(getMenu(body)).to.equal(null);
-			Simulate.keyDown(btn, { key: "Down", keyCode: 40, which: 40 });
+			Simulate.keyDown(btn, { key: 'Down', keyCode: 40, which: 40 });
 			expect(getMenu(body)).to.not.equal(null);
 		});
 
@@ -268,9 +335,9 @@ describe('SLDSMenuDropdown: ', function () {
 			expect(selected).to.be.false;
 
 			const menu = getMenu(body);
-			Simulate.keyDown(menu, { key: "Down", keyCode: 40, which: 40 });
-			Simulate.keyDown(menu, { key: "Down", keyCode: 40, which: 40 });
-			Simulate.keyDown(menu, {key: "Enter", keyCode: 13, which: 13});
+			Simulate.keyDown(menu, { key: 'Down', keyCode: 40, which: 40 });
+			Simulate.keyDown(menu, { key: 'Down', keyCode: 40, which: 40 });
+			Simulate.keyDown(menu, { key: 'Enter', keyCode: 13, which: 13 });
 			expect(selected.value).to.equal('B0');
 		});
 
@@ -278,8 +345,8 @@ describe('SLDSMenuDropdown: ', function () {
 			expect(getMenu(body)).to.equal(null);
 			Simulate.click(btn, {});
 			expect(getMenu(body)).to.not.equal(null);
-			let menuItems = getMenu(body).querySelectorAll('.slds-dropdown__item');
-			Simulate.keyDown(menuItems[1].querySelector('a'), {key: "Esc", keyCode: 27, which: 27});
+			const menuItems = getMenu(body).querySelectorAll('.slds-dropdown__item');
+			Simulate.keyDown(menuItems[1].querySelector('a'), { key: 'Esc', keyCode: 27, which: 27 });
 			expect(getMenu(body)).to.equal(null);
 		});
 	});
