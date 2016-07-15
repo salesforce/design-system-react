@@ -10,40 +10,6 @@ import AppLauncherTile from '../../components/app-launcher/tile';
 import AppLauncherSection from '../../components/app-launcher/section';
 import Icon from '../../components/icon';
 
-// const DemoAppLauncher = React.createClass({
-// 	displayName: 'DemoAppLauncher',
-
-// 	render () {
-// 		return (
-// 			<AppLauncher
-// 				title="App Launcher"
-// 				searchLabel="Find an app"
-// 				onSearch={()=>{}}
-// 				buttonLabel="App Exchange"
-// 				onButtonClick={()=>{}}
-// 				modalClassName=""
-// 			>
-// 				<AppLauncherSection title="All Apps" className="">
-// 					<AppLauncherTile
-// 						icon={<Icon />} or iconName="" or iconText=""
-// 						title=""
-// 						description=""
-// 						size="small"
-// 						moreLabel=""
-// 						onClick={}
-// 						className=""
-// 					>
-// 						{children}
-// 					</AppLauncherTile>
-// 					<AppLauncherTile />
-// 					<AppLauncherTile />
-// 					<AppLauncherTile />
-// 				</AppLauncherSection>
-// 			</AppLauncher>
-// 		);
-// 	}
-// });
-
 const standardTileDemoStyles = {
 	width: '20rem',
 	paddingLeft: '.5rem',
@@ -60,7 +26,8 @@ const DemoAppLauncherTile = React.createClass({
 	displayName: 'DemoAppLauncherTile',
 
 	propTypes: {
-		search: PropTypes.string
+		search: PropTypes.string,
+		size: PropTypes.string
 	},
 
 	render () {
@@ -71,6 +38,7 @@ const DemoAppLauncherTile = React.createClass({
 				description="Send emails, track emails, read emails! Emails!"
 				onClick={action('Tile clicked!')}
 				search={this.props.search}
+				size={this.props.size}
 			/>
 		);
 	}
@@ -95,7 +63,8 @@ const DemoAppLauncherTileWithIconNode = React.createClass({
 	displayName: 'DemoAppLauncherTileWithIconNode',
 
 	propTypes: {
-		search: PropTypes.string
+		search: PropTypes.string,
+		size: PropTypes.string
 	},
 
 	render () {
@@ -108,6 +77,7 @@ const DemoAppLauncherTileWithIconNode = React.createClass({
 				iconNode={icon}
 				onClick={action('Tile with icon node clicked!')}
 				search={this.props.search}
+				size={this.props.size}
 			/>
 		);
 	}
@@ -117,7 +87,8 @@ const DemoAppLauncherTileWithIconText = React.createClass({
 	displayName: 'DemoAppLauncherTileWithIconText',
 
 	propTypes: {
-		search: PropTypes.string
+		search: PropTypes.string,
+		size: PropTypes.string
 	},
 
 	render () {
@@ -128,6 +99,7 @@ const DemoAppLauncherTileWithIconText = React.createClass({
 				iconText="SC"
 				onClick={action('Tile with icon text clicked!')}
 				search={this.props.search}
+				size={this.props.size}
 			/>
 		);
 	}
@@ -137,7 +109,8 @@ const DemoAppLauncherTileWithTruncatedText = React.createClass({
 	displayName: 'DemoAppLauncherTileWithTruncatedText',
 
 	propTypes: {
-		search: PropTypes.string
+		search: PropTypes.string,
+		size: PropTypes.string
 	},
 
 	render () {
@@ -148,6 +121,7 @@ const DemoAppLauncherTileWithTruncatedText = React.createClass({
 				iconText="CC"
 				onClick={action('Tile with icon text clicked!')}
 				search={this.props.search}
+				size={this.props.size}
 			/>
 		);
 	}
@@ -157,7 +131,8 @@ const DemoAppLauncherTileWithSearchText = React.createClass({
 	displayName: 'DemoAppLauncherTileWithSearchText',
 
 	propTypes: {
-		search: PropTypes.string
+		search: PropTypes.string,
+		size: PropTypes.string
 	},
 
 	getDefaultProps () {
@@ -167,7 +142,12 @@ const DemoAppLauncherTileWithSearchText = React.createClass({
 	},
 
 	render () {
-		return <DemoAppLauncherTileWithTruncatedText search={this.props.search} />;
+		return (
+			<DemoAppLauncherTileWithTruncatedText
+				search={this.props.search}
+				size={this.props.size}
+			/>
+		);
 	}
 });
 
@@ -185,6 +165,26 @@ const DemoAppLauncherSection = React.createClass({
 				<AppLauncherSection title="All Apps" onToggleClick={action('Section `All App` open -->')}>
 					<DemoAppLauncherTile />
 					<DemoAppLauncherTileWithIconNode />
+				</AppLauncherSection>
+			</div>
+		);
+	}
+});
+
+const DemoAppLauncherSectionWithSmallTiles = React.createClass({
+	displayName: 'DemoAppLauncherSectionWithSmallTiles',
+
+	render () {
+		return (
+			<div>
+				<AppLauncherSection title="All Items" onToggleClick={action('Section `All Items` open -->')}>
+					<DemoAppLauncherTile />
+					<DemoAppLauncherTileWithIconText />
+					<DemoAppLauncherTileWithIconNode />
+				</AppLauncherSection>
+				<AppLauncherSection title="All Apps" onToggleClick={action('Section `All App` open -->')}>
+					<DemoAppLauncherTile size="small" />
+					<DemoAppLauncherTileWithIconNode size="small" />
 				</AppLauncherSection>
 			</div>
 		);
@@ -233,4 +233,5 @@ storiesOf(APP_LAUNCHER, module)
 	.add('Tile with search text', () => <div style={standardTileDemoStyles}><DemoAppLauncherTileWithSearchText /></div>)
 	.add('Tile with truncated text', () => <div style={standardTileDemoStyles}><DemoAppLauncherTileWithTruncatedText /></div>)
 	.add('Section', () => <DemoAppLauncherSection />)
+	.add('Section with small tiles', () => <DemoAppLauncherSectionWithSmallTiles />)
 	.add('App Launcher', () => <DemoAppLauncher />);
