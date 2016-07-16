@@ -100,7 +100,7 @@ class Item extends React.Component {
   }
 
   render(){
-    let itemClassName = 'js-lookup-item';
+    let itemClassName = 'js-slds-lookup__item';
     let id = this.props.id;
     if(this.props.isActive) itemClassName += ' slds-theme--shade';
 

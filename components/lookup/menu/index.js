@@ -38,7 +38,7 @@ class Menu extends React.Component {
   componentDidUpdate(prevProps){
     // make an array of the children of the list but only count the actual items (but include section dividers)
     let list = [].slice.call(ReactDOM.findDOMNode(this.refs.list).children)
-      .filter((child) => (child.className.indexOf("js-lookup-item") > -1 || child.className.indexOf("slds-lookup__divider") > -1 ))
+      .filter((child) => (child.className.indexOf("js-slds-lookup__item") > -1 || child.className.indexOf("slds-lookup__divider") > -1 ))
       .length;
     this.props.getListLength(list);
     if(

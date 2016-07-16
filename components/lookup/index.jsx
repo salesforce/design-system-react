@@ -334,7 +334,7 @@ class Lookup extends React.Component {
 				let numFocusable = this.getNumFocusableItems()
 				this.state.focusIndex === null ? this.setState({ focusIndex: numFocusable}) : this.decreaseIndex();
 			}
-			//If user hits enter/space key, select current activedescendant item
+			//If user hits enter, select current activedescendant item
 			else if((event.keyCode === KEYS.ENTER) && this.state.focusIndex !== null){
 				EventUtil.trapImmediate(event);
 				//If the focus is on the first fixed Action Item in Menu, click it
