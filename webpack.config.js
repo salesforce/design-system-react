@@ -4,6 +4,8 @@
 const path = require('path');
 const StringReplacePlugin = require('string-replace-webpack-plugin');
 
+const packageJson = require('./package.json');
+
 module.exports = {
   entry: {
 		'design-system-react': ['./components']
