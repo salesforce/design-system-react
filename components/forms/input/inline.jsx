@@ -54,6 +54,10 @@ const InlineEdit = React.createClass({
 			PropTypes.string
 		]),
 		/**
+		 * Name of the submitted form parameter.
+		 */
+		name: PropTypes.string,
+		/**
 		 * Disables the Inline Edit component and prevents editing the contents.
 		 */
 		disabled: PropTypes.bool,
@@ -108,6 +112,7 @@ const InlineEdit = React.createClass({
 		const {
 			disabled,
 			value,
+			name,
 
 			// ### Additional properties
 			// Using [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx) to pass on any properties which are not explicitly defined.
@@ -142,6 +147,7 @@ const InlineEdit = React.createClass({
 				onChange={this.handleChange}
 				onKeyDown={this.handleKeyDown}
 				readOnly={!this.state.isEditing}
+				name={name}
 				value={this.state.isEditing ? this.state.value : value}
 			/>
 		);
