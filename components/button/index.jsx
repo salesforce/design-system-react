@@ -192,7 +192,7 @@ class Button extends TooltipTrigger {
 	}
 
 	render () {
-		const props = omit(this.props, ['className', 'label', 'onClick']);
+		const props = omit(this.props, ['assistiveText', 'className', 'hint', 'iconCategory', 'iconName', 'iconPosition', 'iconSize', 'iconVariant', 'inverse', 'label', 'onClick', 'responsive', 'tooltip', 'variant']);
 
 		return (
 			<button
