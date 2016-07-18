@@ -209,8 +209,7 @@ const DemoAppLauncher = React.createClass({
 	},
 
 	render () {
-		const modalHeaderButton = <Icon name="map" />;
-		// const modalHeaderButton = <Button label="Apps!!!" onclick={action('Modal Button clicked!')} />;
+		const modalHeaderButton = <Button label="Apps!!!" onclick={action('Modal Button clicked!')} />;
 
 		return (
 			<GlobalNavigationBar>
