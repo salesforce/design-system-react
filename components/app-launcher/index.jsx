@@ -41,7 +41,7 @@ const AppLauncher = React.createClass({
 		/*
 		 * Assistive text for app launcher icon
 		 */
-		appLauncherIconAssistiveText: PropTypes.string,
+		triggerAssistiveText: PropTypes.string,
 		/*
 		 * Set the header button's text
 		 */
@@ -82,7 +82,7 @@ const AppLauncher = React.createClass({
 
 	getDefaultProps () {
 		return {
-			appLauncherIconAssistiveText: 'Open App Launcher',
+			triggerAssistiveText: 'Open App Launcher',
 			buttonLabel: 'App Exchange',
 			isOpen: false,
 			searchPlaceholderText: 'Find an app',
@@ -127,7 +127,7 @@ const AppLauncher = React.createClass({
 							name="apps"
 							size="medium"
 							inverse={false}
-							assistiveText={this.props.appLauncherIconAssistiveText}
+							assistiveText={this.props.triggerAssistiveText}
 						/>
 					</a>
 				</div>
