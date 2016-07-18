@@ -22,7 +22,7 @@ const {
 	findRenderedDOMComponentWithClass
 } = TestUtils;
 
-describe.only('SLDS APP LAUNCHER *******************************************', () => {
+describe('SLDS APP LAUNCHER *******************************************', () => {
 	const mockCallback = sinon.spy();
 
 	const defaultAppLauncherProps = {
@@ -107,7 +107,7 @@ describe.only('SLDS APP LAUNCHER *******************************************', (
 ///////////////////////*/
 	// APP LAUNCHER -----
 		// you can set the search input's placeholder text (prop: searchPlaceholderText)
-		// you can set the search input's assistive text (prop: appLauncherIconAssistiveText)
+		// you can set the search input's assistive text (prop: triggerAssistiveText)
 		// you can set the buttons label (prop: buttonLabel)
 		// you can pass an onClick function to the button (prop: buttonOnClick)
 		// modal header has classes: slds-app-launcher__header slds-grid slds-grid--align-spread slds-grid--vertical-align-center
@@ -116,7 +116,7 @@ describe.only('SLDS APP LAUNCHER *******************************************', (
 		// modal content has classes: slds-modal__content slds-app-launcher__content slds-p-around--medium
 		// openAppLauncher callback
 		// you can pass the app launcher's children (prop: children)
-		// you can set the search input's assistive text (prop: appLauncherIconAssistiveText)
+		// you can set the search input's assistive text (prop: triggerAssistiveText)
 		// you can set the search input's placeholder text (prop: searchPlaceholderText)
 	// SECTION ------
 		// each tile is wrapped in <li> with classes: slds-col--padded slds-grow-none slds-size--1-of-1 slds-medium-size--1-of-3
@@ -131,7 +131,7 @@ describe.only('SLDS APP LAUNCHER *******************************************', (
 		// waffle icon has class slds-context-bar__icon-action
 		// waffle icon link has classes: slds-button slds-button--icon slds-context-bar__button
 		// waffle icon svg has classes: lds-button__icon slds-button__icon--large
-		// you can set the assistive text for waffle icon (prop: appLauncherIconAssistiveText)
+		// you can set the assistive text for waffle icon (prop: triggerAssistiveText)
 		// you can pass a callback for icon click
 		// small tiles inclues slds-size--xx-small class on section
 
@@ -354,7 +354,7 @@ describe.only('SLDS APP LAUNCHER *******************************************', (
 		beforeEach(() => {
 			renderAppLauncher({
 				title: 'App Rocket',
-				appLauncherIconAssistiveText: 'Custom Icon Assistive Text'
+				triggerAssistiveText: 'Custom Icon Assistive Text'
 			});
 			modalWrapper = document.documentElement.querySelectorAll('.ReactModalPortal .slds-modal')[0];
 		});
@@ -396,7 +396,7 @@ describe.only('SLDS APP LAUNCHER *******************************************', (
 		beforeEach(() => {
 			renderAppLauncher({
 				title: 'App Rocket',
-				appLauncherIconAssistiveText: 'Custom Icon Assistive Text'
+				triggerAssistiveText: 'Custom Icon Assistive Text'
 			});
 			modalSection = document.documentElement.querySelectorAll('.slds-section')[0];
 		});
