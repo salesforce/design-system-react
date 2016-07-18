@@ -62,6 +62,10 @@ const propTypes = {
    */
   dismissOnClickOutside: React.PropTypes.bool,
   /**
+   * Callback to fire with Modal is dismissed
+  */
+  onRequestClose: React.PropTypes.func,
+  /**
    * Array of buttons to be placed in the footer. They render on the right side by default but are floated left and right if <code>directional</code> is true.
    */
   footer: React.PropTypes.array,
