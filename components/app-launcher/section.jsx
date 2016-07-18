@@ -33,6 +33,9 @@ import Button from '../button';
 // ## Constants
 import { APP_LAUNCHER_SECTION } from '../../utilities/constants';
 
+/**
+ * App Launcher Sections allow users to categorize App Tiles as well as toggle their display
+ */
 const AppLauncherSection = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.

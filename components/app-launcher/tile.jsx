@@ -33,6 +33,9 @@ import PopoverTooltip from '../popover-tooltip';
 // ## Constants
 import { APP_LAUNCHER_TILE } from '../../utilities/constants';
 
+/**
+ * App Launcher Tiles provide information and links to a user's apps
+ */
 const AppLauncherTile = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.

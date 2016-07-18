@@ -31,7 +31,20 @@ import Search from '../forms/input/search';
 import { APP_LAUNCHER } from '../../utilities/constants';
 
 /**
- * Component description.
+ * The App Launcher allows the user to quickly access all the apps and functionality with their organization.
+ *
+ * USAGE EXAMPLE:
+	<AppLauncher>
+		<AppLauncherSection>
+			<AppLauncherTile />
+			<AppLauncherTile />
+			<AppLauncherTile />
+		</AppLauncherSection>
+		<AppLauncherSection>
+			<AppLauncherTile />
+			<AppLauncherTile />
+		</AppLauncherSection>
+	</AppLauncher>
  */
 const AppLauncher = React.createClass({
 	// ### Display Name
