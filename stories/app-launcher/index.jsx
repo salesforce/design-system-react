@@ -9,6 +9,7 @@ import AppLauncher from '../../components/app-launcher';
 import AppLauncherTile from '../../components/app-launcher/tile';
 import AppLauncherSection from '../../components/app-launcher/section';
 import Icon from '../../components/icon';
+import Button from '../../components/button';
 
 import GlobalNavigationBar from '../../components/global-navigation-bar';
 import GlobalNavigationBarRegion from '../../components/global-navigation-bar/region';
@@ -208,6 +209,9 @@ const DemoAppLauncher = React.createClass({
 	},
 
 	render () {
+		const modalHeaderButton = <Icon name="map" />;
+		// const modalHeaderButton = <Button label="Apps!!!" onclick={action('Modal Button clicked!')} />;
+
 		return (
 			<GlobalNavigationBar>
 				<GlobalNavigationBarRegion
@@ -216,6 +220,7 @@ const DemoAppLauncher = React.createClass({
 					<AppLauncher
 						applicationName="App Name"
 						onSearch={this.onSearch}
+						modalHeaderButton={modalHeaderButton}
 					>
 						<AppLauncherSection title="All Items">
 							<DemoAppLauncherTile search={this.state.search} />

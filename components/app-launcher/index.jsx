@@ -21,6 +21,9 @@ import React, { PropTypes } from 'react';
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+// import checkProps from './check-props';
+
 // ## Children
 import Button from '../button';
 import Icon from '../icon';
@@ -62,13 +65,9 @@ const AppLauncher = React.createClass({
 		 */
 		applicationName: PropTypes.string,
 		/*
-		 * Set the header button's text
+		 * Button that exists in the upper right hand corner of the App Launcher modal.
 		 */
-		buttonLabel: PropTypes.string,
-		/*
-		 * Callback fired when button is clicked
-		 */
-		buttonOnClick: PropTypes.func,
+		modalHeaderButton: PropTypes.node,
 		/*
 		 * All of the App Launcher's children
 		 */
@@ -99,10 +98,14 @@ const AppLauncher = React.createClass({
 		isOpen: PropTypes.bool
 	},
 
+	// componentWillMount () {
+	// 	// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+	// 	checkProps(APP_LAUNCHER, this.props);
+	// },
+
 	getDefaultProps () {
 		return {
 			triggerAssistiveText: 'Open App Launcher',
-			buttonLabel: 'App Exchange',
 			searchPlaceholderText: 'Find an app',
 			title: 'App Launcher'
 		};
@@ -166,10 +169,7 @@ const AppLauncher = React.createClass({
 								placeholder={this.props.searchPlaceholderText}
 							/>
 						</div>
-						<Button
-							label={this.props.buttonLabel}
-							buttonOnClick
-						/>
+						{this.props.modalHeaderButton}
 					</div>
 
 					<div className="slds-modal__content slds-app-launcher__content slds-p-around--medium">
