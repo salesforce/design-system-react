@@ -60,7 +60,7 @@ const propTypes = {
 	/**
 	 * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
 	 */
-	iconVariant: PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'small', 'more']),
+	iconVariant: PropTypes.oneOf(['container', 'border', 'border-inverse', 'border-filled', 'more']),
 	/**
 	 * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
 	 */
@@ -139,6 +139,7 @@ class Button extends TooltipTrigger {
 		return classNames(this.props.className, 'slds-button', {
 			[`slds-button--${this.props.variant}`]: !base && !iconOnly,
 			[`slds-button--icon-${this.props.iconVariant}`]: this.props.iconVariant,
+			[`slds-button--icon-${this.props.iconSize}`]: this.props.iconVariant && this.props.iconSize,
 			'slds-max-small-button--stretch': this.props.responsive
 		});
 	}
@@ -146,9 +147,10 @@ class Button extends TooltipTrigger {
 	renderIcon (name) {
 		let buttonIcon = null;
 		if (this.props.iconName) {
-			let iconSize = this.props.iconSize === '' ? null : this.props.iconSize;
+			let iconSize = this.props.iconSize === '' || this.props.iconVariant ? null : this.props.iconSize;
 			buttonIcon = (<ButtonIcon
 				hint={this.props.hint}
+				inverse={this.props.variant === 'icon-inverse'}
 				name={name}
 				category={this.props.iconCategory}
 				position={this.props.iconPosition}
