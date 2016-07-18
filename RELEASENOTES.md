@@ -2,6 +2,14 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.1.1
+**BREAKING CHANGES**
+- Button component: Inverse style of Button (white color to go on dark backgrounds) is now declared with a bool prop, inverse
+- Button component: `inverse` and `icon-inverse` are no longer supported in the variants prop.
+
+**BUG FIXES**
+- Button component: when button icon had an iconVariant prop, the iconSize prop did not render. It is now fixed.
+
 ## Release 0.1.0
 
 **BREAKING CHANGES**
