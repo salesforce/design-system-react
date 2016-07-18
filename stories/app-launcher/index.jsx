@@ -10,6 +10,9 @@ import AppLauncherTile from '../../components/app-launcher/tile';
 import AppLauncherSection from '../../components/app-launcher/section';
 import Icon from '../../components/icon';
 
+import GlobalNavigationBar from '../../components/global-navigation-bar';
+import GlobalNavigationBarRegion from '../../components/global-navigation-bar/region';
+
 const standardTileDemoStyles = {
 	width: '20rem',
 	paddingLeft: '.5rem',
@@ -206,19 +209,26 @@ const DemoAppLauncher = React.createClass({
 
 	render () {
 		return (
-			<AppLauncher
-				onSearch={this.onSearch}
-			>
-				<AppLauncherSection title="All Items">
-					<DemoAppLauncherTile search={this.state.search} />
-					<DemoAppLauncherTileWithIconNode search={this.state.search} />
-					<DemoAppLauncherTileWithIconText search={this.state.search} />
-				</AppLauncherSection>
-				<AppLauncherSection title="All Apps">
-					<DemoAppLauncherTile search={this.state.search} />
-					<DemoAppLauncherTileWithTruncatedText search={this.state.search} />
-				</AppLauncherSection>
-			</AppLauncher>
+			<GlobalNavigationBar>
+				<GlobalNavigationBarRegion
+					region="primary"
+				>
+					<AppLauncher
+						applicationName="App Name"
+						onSearch={this.onSearch}
+					>
+						<AppLauncherSection title="All Items">
+							<DemoAppLauncherTile search={this.state.search} />
+							<DemoAppLauncherTileWithIconNode search={this.state.search} />
+							<DemoAppLauncherTileWithIconText search={this.state.search} />
+						</AppLauncherSection>
+						<AppLauncherSection title="All Apps">
+							<DemoAppLauncherTile search={this.state.search} />
+							<DemoAppLauncherTileWithTruncatedText search={this.state.search} />
+						</AppLauncherSection>
+					</AppLauncher>
+				</GlobalNavigationBarRegion>
+			</GlobalNavigationBar>
 		);
 	}
 });
@@ -226,6 +236,7 @@ const DemoAppLauncher = React.createClass({
 
 storiesOf(APP_LAUNCHER, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.add('App Launcher', () => <DemoAppLauncher />)
 	.add('Tile', () => <div style={standardTileDemoStyles}><DemoAppLauncherTile /></div>)
 	.add('Small Tile', () => <div style={smallTileDemoStyles}><DemoAppLauncherSmallTile /></div>)
 	.add('Tile with Icon node', () => <div style={standardTileDemoStyles}><DemoAppLauncherTileWithIconNode /></div>)
@@ -233,5 +244,4 @@ storiesOf(APP_LAUNCHER, module)
 	.add('Tile with search text', () => <div style={standardTileDemoStyles}><DemoAppLauncherTileWithSearchText /></div>)
 	.add('Tile with truncated text', () => <div style={standardTileDemoStyles}><DemoAppLauncherTileWithTruncatedText /></div>)
 	.add('Section', () => <DemoAppLauncherSection />)
-	.add('Section with small tiles', () => <DemoAppLauncherSectionWithSmallTiles />)
-	.add('App Launcher', () => <DemoAppLauncher />);
+	.add('Section with small tiles', () => <DemoAppLauncherSectionWithSmallTiles />);

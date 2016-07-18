@@ -14,9 +14,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React from 'react';
 
-// ### Icon
-import Icon from '../icon';
-
 // ## Constants
 import { LIST_ITEM_LABEL } from '../../utilities/constants';
 
@@ -24,28 +21,19 @@ import { LIST_ITEM_LABEL } from '../../utilities/constants';
  * Component description.
  */
 const ListItemLabel = (props) => (
-	<p className="slds-truncate">
-		{props.checkmark
-			? <Icon
-				name="check"
-				position="left"
-				category="utility"
-				size="x-small"
-				className="slds-icon--selected slds-icon-text-default slds-m-right--x-small"
-			/>
-			: null
-		}
+	<span className="slds-truncate">
+		{props.icon}
 		{props.label}
-	</p>
+	</span>
 );
 
 ListItemLabel.displayName = LIST_ITEM_LABEL;
 
 ListItemLabel.propTypes = {
 	data: React.PropTypes.object,
+	icon: React.PropTypes.node,
 	index: React.PropTypes.number,
 	inverted: React.PropTypes.bool,
-	isHighlighted: React.PropTypes.bool,
 	isSelected: React.PropTypes.bool,
 	label: React.PropTypes.string,
 	value: React.PropTypes.any
@@ -55,7 +43,6 @@ ListItemLabel.defaultProps = {
 	data: {},
 	index: 0,
 	inverted: false,
-	isHighlighted: false,
 	isSelected: false,
 	label: '',
 	value: null

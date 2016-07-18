@@ -12,6 +12,10 @@ import GlobalNavigationBarDropdown from '../../components/global-navigation-bar/
 import GlobalNavigationBarLink from '../../components/global-navigation-bar/link';
 import GlobalNavigationBarButton from '../../components/global-navigation-bar/button';
 
+import AppLauncher from '../../components/app-launcher';
+import AppLauncherSection from '../../components/app-launcher/section';
+import AppLauncherTile from '../../components/app-launcher/tile';
+
 // aliased to allow copy and paste from component tests
 const appLauncherClicked = action;
 const linkClicked = action;
@@ -24,12 +28,19 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 		<GlobalNavigationBarRegion
 			region="primary"
 		>
-			<GlobalNavigationBarAppLauncher
-				onClick={appLauncherClicked('Application name clicked (Open App Launcher).')}
-				{...primaryRegionProps.appLauncher}
+			<AppLauncher
+				applicationName={primaryRegionProps.appLauncher.name}
+				onSearch={() => false}
 			>
-				{primaryRegionProps.appLauncher.customChild ? primaryRegionProps.appLauncher.customChild() : null}
-			</GlobalNavigationBarAppLauncher>
+				<AppLauncherSection title="All Items">
+					<AppLauncherTile
+						title="Marketing Cloud"
+						iconText="MC"
+						description="Send emails, track emails, read emails! Emails!"
+						onClick={action('Tile clicked!')}
+					/>
+				</AppLauncherSection>
+			</AppLauncher>
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="secondary" navigation>
 			<GlobalNavigationBarLink
@@ -39,6 +50,7 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 				onClick={linkClicked('Home link clicked')}
 			/>
 			<GlobalNavigationBarDropdown
+				assistiveText="Open Menu Item 1"
 				id="primaryDropdown"
 				label="Menu Item 1"
 				onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}

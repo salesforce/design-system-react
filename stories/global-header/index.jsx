@@ -35,8 +35,9 @@ storiesOf(GLOBAL_HEADER, module)
 				iconName="add"
 				onSelect={action('Action Selected')}
 				options={[
-					{ label: 'New Note' },
-					{ label: 'Log a Call' }
+					{ label: 'Setup', type: 'header' },
+					{ label: 'New Note', rightIcon: { category: 'standard', name: 'note', size: 'small' } },
+					{ label: 'Log a Call', rightIcon: { category: 'standard', name: 'log_a_call', size: 'small' } }
 				]}
 			/>
 			<GlobalHeaderButton
@@ -50,7 +51,6 @@ storiesOf(GLOBAL_HEADER, module)
 				onClick={action('Setup Clicked')}
 			/>
 			<GlobalHeaderProfile
-				avatar="@salesforce-ux/design-system/assets/images/avatar2.jpg"
 				onClick={action('Profile Clicked')}
 				onSelect={action('Profile Selected')}
 				options={[

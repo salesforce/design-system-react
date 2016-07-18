@@ -9,15 +9,14 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # App Launcher
+// # App Launcher Component
+
+// Based on SLDS v2.1.0-rc.2
 
 // ## Dependencies
 
 // ### React
-import React from 'react';
-
-// Removes the need for `React.PropTypes.prop`
-const { PropTypes } = React;
+import React, { PropTypes } from 'react';
 
 // ### isFunction
 import isFunction from 'lodash.isfunction';
@@ -31,6 +30,9 @@ import Search from '../forms/input/search';
 // ## Constants
 import { APP_LAUNCHER } from '../../utilities/constants';
 
+/**
+ * Component description.
+ */
 const AppLauncher = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
@@ -42,6 +44,10 @@ const AppLauncher = React.createClass({
 		 * Assistive text for app launcher icon
 		 */
 		triggerAssistiveText: PropTypes.string,
+		/**
+		 * This is typically the name of the cloud or application.
+		 */
+		applicationName: PropTypes.string,
 		/*
 		 * Set the header button's text
 		 */
@@ -84,7 +90,6 @@ const AppLauncher = React.createClass({
 		return {
 			triggerAssistiveText: 'Open App Launcher',
 			buttonLabel: 'App Exchange',
-			isOpen: false,
 			searchPlaceholderText: 'Find an app',
 			title: 'App Launcher'
 		};
@@ -114,7 +119,7 @@ const AppLauncher = React.createClass({
 
 	render () {
 		return (
-			<div className="app-launcher-wrapper">
+			<div className="app-launcher-wrapper slds-context-bar__item slds-no-hover">
 				<div className="slds-context-bar__icon-action">
 					<a
 						href="#"
@@ -125,7 +130,7 @@ const AppLauncher = React.createClass({
 						<Icon
 							category="utility"
 							name="apps"
-							size="medium"
+							size="small"
 							inverse={false}
 							assistiveText={this.props.triggerAssistiveText}
 						/>
@@ -158,6 +163,9 @@ const AppLauncher = React.createClass({
 						{this.props.children}
 					</div>
 				</Modal>
+				{this.props.applicationName ?
+					<span className="slds-context-bar__label-action slds-context-bar__app-name">{this.props.applicationName}</span>
+					: null}
 			</div>
 		);
 	}
