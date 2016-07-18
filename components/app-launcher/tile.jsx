@@ -14,16 +14,19 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ## Dependencies
 
 // ### React
-import React from 'react';
+import React, { PropTypes } from 'react';
 
+// ### classNames
+import classNames from 'classnames';
+
+// ### Truncate
 // Truncate multi-lines text for all browsers
 // [github.com/ShinyChang/react-text-truncate](https://github.com/ShinyChang/react-text-truncate)
 import Truncate from 'react-text-truncate';
 
-// Removes the need for `React.PropTypes.prop`
-const { PropTypes } = React;
-
-import classNames from 'classnames';
+// ### [].includes
+// Polyfill for array.includes
+import 'core-js/fn/array/includes';
 
 // ## Children
 import Button from '../button';
