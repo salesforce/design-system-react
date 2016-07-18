@@ -84,7 +84,7 @@ const AppLauncher = React.createClass({
 		/*
 		 * Callback when the App Launcher icon is clicked
 		 */
-		onAppLauncherIconClick: PropTypes.func,
+		triggerOnClick: PropTypes.func,
 		/*
 		 * Callback when the App Launcher Modal is closed
 		 */
@@ -117,8 +117,8 @@ const AppLauncher = React.createClass({
 	openAppLauncher () {
 		this.setState({ isOpen: true });
 
-		if (isFunction(this.props.onAppLauncherIconClick)) {
-			this.props.onAppLauncherIconClick();
+		if (isFunction(this.props.triggerOnClick)) {
+			this.props.triggerOnClick();
 		}
 	},
 

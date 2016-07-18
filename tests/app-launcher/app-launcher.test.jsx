@@ -110,6 +110,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		// you can set the search input's assistive text (prop: triggerAssistiveText)
 		// you can set the buttons label (prop: buttonLabel)
 		// you can pass an onClick function to the button (prop: buttonOnClick)
+		// you can pass a callback to App Launcher Icon (prop: triggerOnClick)
 		// modal header has classes: slds-app-launcher__header slds-grid slds-grid--align-spread slds-grid--vertical-align-center
 		// you can pass a onSearch callback (prop: onSearch)
 		// you can pass the initial open state (prop: isOpen)
