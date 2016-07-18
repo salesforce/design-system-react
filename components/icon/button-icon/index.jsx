@@ -38,7 +38,7 @@ class ButtonIcon extends React.Component {
   getClassName() {
     return classNames(this.props.className, 'slds-button__icon', {
       [`slds-button__icon--${this.props.position}`]: this.props.position,
-      [`slds-button__icon--${this.props.size}`]: this.props.size !== 'medium',
+      [`slds-button__icon--${this.props.size}`]: this.props.size && this.props.size !== 'medium',
       [`slds-button__icon--hint`]: this.props.hint,
     });
   }
