@@ -18,7 +18,9 @@ const displayName = 'ButtonIcon';
 const propTypes = {
   assistiveText: React.PropTypes.string,
   category: React.PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']).isRequired,
+  className: React.PropTypes.string,
   hint: React.PropTypes.bool,
+  inverse: React.PropTypes.bool,
   name: React.PropTypes.string,
   position: React.PropTypes.oneOf(['left', 'right']),
   size: React.PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
@@ -39,7 +41,8 @@ class ButtonIcon extends React.Component {
     return classNames(this.props.className, 'slds-button__icon', {
       [`slds-button__icon--${this.props.position}`]: this.props.position,
       [`slds-button__icon--${this.props.size}`]: this.props.size && this.props.size !== 'medium',
-      [`slds-button__icon--hint`]: this.props.hint,
+      [`slds-button__icon--inverse-hint`]: this.props.inverse && this.props.hint,
+      [`slds-button__icon--hint`]: this.props.hint && !this.props.inverse
     });
   }
 
