@@ -2,6 +2,21 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.1.1
+
+**MAJOR CHANGES**
+- Add support for icons, headers, links, and dividers to Dropdown and Picklist menus
+- Add support for custom content in Dropdown menus
+- Update Lookup to the latest markup
+- Update Picklist to the latest markup
+
+**OTHER**
+- Add name attributes to Checkbox and Input
+- Add Button support to Global Navigation Bar
+- Update the keyboard navigation logic used by menus
+- Update profile icon used in the Global Header
+
+
 ## Release 0.1.0
 
 **BREAKING CHANGES**
