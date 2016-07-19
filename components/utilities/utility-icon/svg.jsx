@@ -66,13 +66,18 @@ module.exports = React.createClass({
 		return shapes;
 	},
 
-	getSVG (data) {
-		return <svg {...this.props} viewBox={data.viewBox}>{this.getShapes(data)}</svg>;
+	getSVG ({ viewBox, ...rest }, props) {
+		return <svg {...props} viewBox={viewBox}>{this.getShapes(rest)}</svg>;
 	},
 
 	render () {
+		const {
+			data,
+			...props
+		} = this.props;
+
 		return (
-			this.getSVG(this.props.data)
+			this.getSVG(data, props)
 		);
 	}
 });

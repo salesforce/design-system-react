@@ -19,26 +19,30 @@ import * as SLDS_ICONS_CUSTOM from '../../../icons/custom';
 import * as SLDS_ICONS_DOCTYPE from '../../../icons/doctype';
 import * as SLDS_ICONS_STANDARD from '../../../icons/standard';
 
-const UtilityIcon = ({ name = '', category = 'utility', ...rest }) => {
+const UtilityIcon = ({ name = '', category = 'utility', icon, ...rest }) => {
 	let data;
 
-	switch (category) {
-		case 'action':
-			data = SLDS_ICONS_ACTION[name.toLowerCase()];
-			break;
-		case 'custom':
-			data = SLDS_ICONS_CUSTOM[name.toLowerCase()];
-			break;
-		case 'doctype':
-			data = SLDS_ICONS_DOCTYPE[name.toLowerCase()];
-			break;
-		case 'standard':
-			data = SLDS_ICONS_STANDARD[name.toLowerCase()];
-			break;
-		case 'utility':
-		default:
-			data = SLDS_ICONS_UTILITY[name.toLowerCase()];
-			break;
+	if (icon) {
+		data = icon;
+	} else {
+		switch (category) {
+			case 'action':
+				data = SLDS_ICONS_ACTION[name.toLowerCase()];
+				break;
+			case 'custom':
+				data = SLDS_ICONS_CUSTOM[name.toLowerCase()];
+				break;
+			case 'doctype':
+				data = SLDS_ICONS_DOCTYPE[name.toLowerCase()];
+				break;
+			case 'standard':
+				data = SLDS_ICONS_STANDARD[name.toLowerCase()];
+				break;
+			case 'utility':
+			default:
+				data = SLDS_ICONS_UTILITY[name.toLowerCase()];
+				break;
+		}
 	}
 
 	return <Svg data={data} name={name} {...rest} />;

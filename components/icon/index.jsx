@@ -92,7 +92,7 @@ class Icon extends React.Component {
           aria-hidden='true'
           category={this.props.category}
           className={this.getClassName()}
-          data={this.props.icon}
+          icon={this.props.icon}
           name={this.props.name}
         />
       </span>

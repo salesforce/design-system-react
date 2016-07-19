@@ -4,6 +4,7 @@ import { storiesOf } from '@kadira/storybook';
 import { ICON } from '../../utilities/constants';
 import Icon from '../../components/icon';
 import UtilityIcon from '../../components/utilities/utility-icon';
+import download from '../../icons/utility/download';
 
 storiesOf(ICON, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
@@ -17,6 +18,12 @@ storiesOf(ICON, module)
 		assistiveText="Accounts"
 		category="standard"
 		name="account"
+	/>)
+	.add('Imported Icon', () => <Icon
+		assistiveText="Download"
+		category="utility"
+		inverse={false}
+		icon={download}
 	/>)
 	.add('Utility Icon', () => <Icon
 		assistiveText="Location"

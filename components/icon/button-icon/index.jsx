@@ -19,7 +19,7 @@ const propTypes = {
   assistiveText: React.PropTypes.string,
   category: React.PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']).isRequired,
   hint: React.PropTypes.bool,
-  icon: React.PropTyoes.object,
+  icon: React.PropTypes.object,
   name: React.PropTypes.string,
   position: React.PropTypes.oneOf(['left', 'right']),
   size: React.PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
@@ -57,7 +57,7 @@ class ButtonIcon extends React.Component {
           aria-hidden='true'
           category={this.props.category}
           className={this.getClassName()}
-          data={this.props.icon}
+          icon={this.props.icon}
           name={this.props.name}
         />
       </span>

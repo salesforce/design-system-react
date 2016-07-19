@@ -37,7 +37,7 @@ class InputIcon extends React.Component {
               aria-hidden='true'
               category={this.props.category}
               className={className}
-              data={this.props.icon}
+              icon={this.props.icon}
               name={this.props.name}
               onClick={this.props.onClick}
               style={this.props.style}
