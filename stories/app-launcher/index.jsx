@@ -200,12 +200,22 @@ const DemoAppLauncher = React.createClass({
 
 	getInitialState () {
 		return {
-			search: ''
+			search: '',
+			appLauncherOpen: false,
+			allItemsSectionIsOpen: false
 		};
 	},
 
 	onSearch (event) {
 		this.setState({ search: event.target.value });
+	},
+
+	toggleAppLauncher () {
+		this.setState({ appLauncherOpen: !this.state.appLauncherOpen });
+	},
+
+	toggleSection () {
+		this.setState({ allItemsSectionIsOpen: !this.state.allItemsSectionIsOpen });
 	},
 
 	render () {
@@ -220,8 +230,15 @@ const DemoAppLauncher = React.createClass({
 						applicationName="App Name"
 						onSearch={this.onSearch}
 						modalHeaderButton={modalHeaderButton}
+						isOpen={this.state.appLauncherOpen}
+						triggerOnClick={this.toggleAppLauncher}
+						onClose={this.toggleAppLauncher}
 					>
-						<AppLauncherSection title="All Items">
+						<AppLauncherSection
+							title="All Items"
+							isOpen={this.state.allItemsSectionIsOpen}
+							onToggleClick={this.toggleSection}
+						>
 							<DemoAppLauncherTile search={this.state.search} />
 							<DemoAppLauncherTileWithIconNode search={this.state.search} />
 							<DemoAppLauncherTileWithIconText search={this.state.search} />

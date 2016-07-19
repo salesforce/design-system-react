@@ -25,7 +25,6 @@ import isFunction from 'lodash.isfunction';
 import checkProps from './check-props';
 
 // ## Children
-import Button from '../button';
 import Icon from '../icon';
 import Modal from '../modal';
 import Search from '../forms/input/search';
@@ -93,7 +92,7 @@ const AppLauncher = React.createClass({
 		 */
 		searchPlaceholderText: PropTypes.string,
 		/*
-		 * Set initial open state
+		 * Control the open/close state of the App Launcher
 		 */
 		isOpen: PropTypes.bool
 	},
@@ -113,7 +112,7 @@ const AppLauncher = React.createClass({
 
 	getInitialState () {
 		return {
-			isOpen: this.props.isOpen
+			isOpen: false
 		};
 	},
 
@@ -134,6 +133,8 @@ const AppLauncher = React.createClass({
 	},
 
 	render () {
+		const isOpen = this.props.isOpen !== undefined ? this.props.isOpen : this.state.isOpen;
+
 		return (
 			<div className="app-launcher-wrapper slds-context-bar__item slds-no-hover">
 				<div className="slds-context-bar__icon-action">
@@ -154,7 +155,7 @@ const AppLauncher = React.createClass({
 				</div>
 
 				<Modal
-					isOpen={this.state.isOpen}
+					isOpen={isOpen}
 					onRequestClose={this.closeAppLauncher}
 					containerClassName="app-launcher"
 					size="large"

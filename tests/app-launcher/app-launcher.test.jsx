@@ -117,6 +117,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		// modal header has classes: slds-app-launcher__header slds-grid slds-grid--align-spread slds-grid--vertical-align-center
 		// you can pass a onSearch callback (prop: onSearch)
 		// you can pass the initial open state (prop: isOpen)
+		// if you pass a isOpen prop, you must control the component with it (this.state.isOpen will now work)
 		// modal content has classes: slds-modal__content slds-app-launcher__content slds-p-around--medium
 		// openAppLauncher callback
 		// you can pass the app launcher's children (prop: children)

@@ -56,7 +56,7 @@ const AppLauncherSection = React.createClass({
 		 */
 		children: PropTypes.node.isRequired,
 		/**
-		 * Sets the sections inital open state
+		 * Controls the open/closed state of the section
 		 */
 		isOpen: PropTypes.bool,
 		/**
@@ -68,31 +68,31 @@ const AppLauncherSection = React.createClass({
 
 	getDefaultProps () {
 		return {
-			collapseSectionAssistiveText: 'Toggle visibility of section',
-			isOpen: true
+			collapseSectionAssistiveText: 'Toggle visibility of section'
 		};
 	},
 
 	getInitialState () {
 		return {
-			isOpen: this.props.isOpen
+			isOpen: true
 		};
 	},
 
-	toggleOpen () {
+	toggleOpen (event) {
 		this.setState({ isOpen: !this.state.isOpen });
 
 		if (isFunction(this.props.onToggleClick)) {
-			this.props.onToggleClick(!this.state.isOpen);
+			this.props.onToggleClick(event);
 		}
 	},
 
 	render () {
-		const iconIsOpen = this.state.isOpen ? 'slds-is-open' : 'slds-is-close';
-		const sectionIsOpen = this.state.isOpen ? 'slds-is-expanded' : 'slds-is-collapsed';
+		const isOpen = this.props.isOpen !== undefined ? this.props.isOpen : this.state.isOpen;
+		const iconIsOpenClass = isOpen ? 'slds-is-open' : 'slds-is-close';
+		const sectionIsOpenClass = isOpen ? 'slds-is-expanded' : 'slds-is-collapsed';
 
 		return (
-			<div className={classNames('slds-section', iconIsOpen)}>
+			<div className={classNames('slds-section', iconIsOpenClass)}>
 				<div className="slds-section__title">
 					<Button
 						assistiveText={this.props.collapseSectionAssistiveText}
@@ -104,7 +104,7 @@ const AppLauncherSection = React.createClass({
 					<h3>{this.props.title}</h3>
 				</div>
 				<div className="slds-section__content">
-					<ul className={classNames('slds-grid slds-grid--pull-padded slds-wrap', sectionIsOpen)}>
+					<ul className={classNames('slds-grid slds-grid--pull-padded slds-wrap', sectionIsOpenClass)}>
 						{React.Children.map(this.props.children, (child) => (
 							<li
 								className={classNames(
