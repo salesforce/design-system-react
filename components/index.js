@@ -65,6 +65,9 @@ export DataTableRowActions from './data-table/row-actions';
 export SLDSDatepicker from './date-picker';
 export Datepicker from './date-picker';
 
+export SLDSDockedComposer from './docked-composer';
+export DockedComposer from './docked-composer';
+
 export SLDSIcon from './icon';
 export Icon from './icon';
 

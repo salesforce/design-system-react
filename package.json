@@ -17,6 +17,7 @@
     "test": "scripts/test.sh --single-run",
     "validate": "npm ls"
   },
+  "design-system-react": "git+ssh://git@github.com:salesforce-ux/design-system-react.git#v0.0.30",
   "repository": {
     "type": "git",
     "url": "https://github.com/salesforce-ux/design-system-react"
@@ -58,6 +59,7 @@
     "react-highlighter": "^0.3.2",
     "react-modal": "^0.6.1",
     "react-onclickoutside": "^4.5.0",
+    "redux": "^3.5.2",
     "shortid": "^2.2.6",
     "tether": "1.1.0",
     "tether-drop": "1.2.2",
@@ -167,6 +169,11 @@
       "SLDS-component-path": "/components/datepickers"
     },
     {
+      "component": "docked-composer",
+      "display-name": "Docked Composer",
+      "SLDS-component-path": "/components/docked-composer"
+    },
+    {
       "component": "icon",
       "display-name": "Icons",
       "SLDS-component-path": "/components/icons"
@@ -218,8 +225,8 @@
     },
     {
       "component": "popover-tooltip",
-        "display-name": "Popover Tooltips",
-        "SLDS-component-path": "/components/popovers#flavor-tooltips"
+      "display-name": "Popover Tooltips",
+      "SLDS-component-path": "/components/popovers#flavor-tooltips"
     },
     {
       "component": "time-picker",

@@ -22,6 +22,7 @@ export const DATA_TABLE_HEADER_CELL = 'SLDSDataTableHeaderCell';
 export const DATA_TABLE_ROW_ACTIONS = 'SLDSDataTableRowActions';
 export const DATA_TABLE_ROW = 'SLDSDataTableRow';
 export const DATE_PICKER = 'SLDSDatePicker';
+export const DOCKED_COMPOSER = 'SLDSDockedComposer';
 export const FORMS_CHECKBOX = 'SLDSCheckbox';
 export const FORMS_INLINE_EDIT = 'SLDSInlineEdit';
 export const FORMS_INPUT = 'SLDSInput';
