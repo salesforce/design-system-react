@@ -16,6 +16,7 @@ const displayName = 'InputIcon';
 
 const propTypes = {
   category: React.PropTypes.string,
+  icon: React.PropTypes.object,
   name: React.PropTypes.string,
   onClick: React.PropTypes.func,
 };
@@ -33,13 +34,14 @@ class InputIcon extends React.Component {
   render() {
     const className = 'slds-input__icon slds-icon-text-default';
     return <SLDSUtilityIcon
-              style={this.props.style}
               aria-hidden='true'
               category={this.props.category}
               className={className}
+              data={this.props.icon}
               name={this.props.name}
               onClick={this.props.onClick}
-              />;
+              style={this.props.style}
+            />;
   }
 }
 

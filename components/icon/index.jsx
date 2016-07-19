@@ -28,13 +28,17 @@ const propTypes = {
    */
   className: React.PropTypes.string,
   /**
+   * An SVG object to use instead of name / category
+   */
+  icon: React.PropTypes.object,
+  /**
    * If true, icon color is white. If false, icon color is the default text color.
    */
   inverse: React.PropTypes.bool,
   /**
    * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
    */
-  name: React.PropTypes.string.isRequired,
+  name: React.PropTypes.string,
   size: React.PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
 };
 const defaultProps = {
@@ -84,11 +88,12 @@ class Icon extends React.Component {
     return (
       <span className={this.getContainerClassName()}>
       {label}
-      <SLDSUtilityIcon
-        aria-hidden='true'
-        category={this.props.category}
-        className={this.getClassName()}
-        name={this.props.name}
+        <SLDSUtilityIcon
+          aria-hidden='true'
+          category={this.props.category}
+          className={this.getClassName()}
+          data={this.props.icon}
+          name={this.props.name}
         />
       </span>
     )
