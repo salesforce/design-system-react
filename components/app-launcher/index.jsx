@@ -22,7 +22,7 @@ import React, { PropTypes } from 'react';
 import isFunction from 'lodash.isfunction';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
-// import checkProps from './check-props';
+import checkProps from './check-props';
 
 // ## Children
 import Button from '../button';
@@ -98,10 +98,10 @@ const AppLauncher = React.createClass({
 		isOpen: PropTypes.bool
 	},
 
-	// componentWillMount () {
-	// 	// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-	// 	checkProps(APP_LAUNCHER, this.props);
-	// },
+	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(APP_LAUNCHER, this.props);
+	},
 
 	getDefaultProps () {
 		return {
