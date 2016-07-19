@@ -12,7 +12,7 @@
     "lint": "eslint --config=./.eslintrc \"**/*.{js,jsx}\"",
     "publish-to-git": "./node_modules/.bin/babel-node scripts/publish-to-git.js",
     "publish-to-edge": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge",
-    "publish-to-upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge --remote=upstream && ./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
+    "publish-to-upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
     "start": "start-storybook -p 9001 -s ./node_modules & node tests/app",
     "test": "scripts/test.sh --single-run",
     "validate": "npm ls"
