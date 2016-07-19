@@ -227,7 +227,7 @@ const MenuDropdown = React.createClass({
 	componentWillMount () {
 		this.generatedId = shortid.generate();
 
-		document.addEventListener('click', this.closeOnClick, false);
+		window.addEventListener('click', this.closeOnClick, false);
 	},
 
 	componentDidUpdate (prevProps, prevState) {
@@ -263,7 +263,7 @@ const MenuDropdown = React.createClass({
 	componentWillUnmount () {
 		this.isUnmounting = true;
 
-		document.removeEventListener('click', this.closeOnClick, false);
+		window.removeEventListener('click', this.closeOnClick, false);
 	},
 
 	getId () {

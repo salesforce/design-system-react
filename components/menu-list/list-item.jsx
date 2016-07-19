@@ -147,7 +147,7 @@ const ListItem = React.createClass({
 			}
 			case 'divider': {
 				return (
-					<li className="slds-has-divider"></li>
+					<li className="slds-has-divider" onMouseDown={this.handleMouseDown}></li>
 				);
 			}
 			case 'link':

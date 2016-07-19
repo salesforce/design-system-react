@@ -20,9 +20,6 @@ import classNames from 'classnames';
 // ## Children
 import ListItem from './list-item';
 
-// ### Event Helpers
-import { EventUtil } from '../../utilities';
-
 // ## Constants
 import { LIST } from '../../utilities/constants';
 
@@ -88,14 +85,6 @@ const List = React.createClass({
 			options: [],
 			selectedIndex: -1
 		};
-	},
-
-	handleMouseDown (event) {
-		EventUtil.trapImmediate(event);
-	},
-
-	handleClick (event) {
-		EventUtil.trapImmediate(event);
 	},
 
 	getItems () {
