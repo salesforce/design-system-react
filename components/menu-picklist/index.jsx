@@ -108,7 +108,7 @@ const MenuPicklist = React.createClass({
 	componentWillMount () {
 		this.generatedId = shortid.generate();
 
-		document.addEventListener('click', this.closeOnClick, false);
+		window.addEventListener('click', this.closeOnClick, false);
 
 		this.setState({
 			selectedIndex: this.getIndexByValue(this.props.value)
@@ -126,7 +126,7 @@ const MenuPicklist = React.createClass({
 	componentWillUnmount () {
 		this.isUnmounting = true;
 
-		document.removeEventListener('click', this.closeOnClick, false);
+		window.removeEventListener('click', this.closeOnClick, false);
 	},
 
 	getId () {
