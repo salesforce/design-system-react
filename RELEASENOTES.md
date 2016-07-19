@@ -6,6 +6,7 @@
 
 **MAJOR CHANGES**
 - Add the App Launcher component
+- Add support for custom svg icons
 
 
 ## Release 0.1.1
