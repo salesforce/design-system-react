@@ -41,7 +41,7 @@ const UtilityIcon = ({ name = '', category = 'utility', ...rest }) => {
 			break;
 	}
 
-	return <Svg data={data} {...rest} />;
+	return <Svg data={data} name={name} {...rest} />;
 };
 
 UtilityIcon.displayName = 'UtilityIcon';
