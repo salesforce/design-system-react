@@ -12,6 +12,7 @@ import ReactDOM from 'react-dom';
 import Icon from "../../../icon";
 import {EventUtil} from '../../../../utilities';
 import escapeRegExp from 'lodash.escaperegexp';
+import cx from 'classnames';
 
 const displayName = 'Lookup-Menu-Item';
 const propTypes = {
@@ -27,8 +28,6 @@ const propTypes = {
   onSelect: React.PropTypes.func,
   searchTerm: React.PropTypes.string,
   setFocus: React.PropTypes.func,
-};
-const defaultProps = {
 };
 
 class Item extends React.Component {
@@ -61,42 +60,68 @@ class Item extends React.Component {
     if(height && this.props.handleItemFocus) this.props.handleItemFocus(this.props.index,height);
   }
 
-  getLabel(){
-    let icon;
+  getIcon() {
+    if(this.props.iconName && !this.props.listItemLabelRenderer){
+      return <Icon
+              category={this.props.iconCategory}
+              className='slds-media__figure'
+              inverse={this.props.iconInverse}
+              key={this.props.iconName}
+              name={this.props.iconName}
+              size="small"
+            />
+    }
+  }
+
+  getCustomLabel() {
     if(this.props.listItemLabelRenderer){
       const ListItemLabel = this.props.listItemLabelRenderer;
       return <ListItemLabel {... this.props} />;
     }
-    if(this.props.iconName){
-      icon = <Icon category={this.props.iconCategory} inverse={this.props.iconInverse} key={this.props.iconName} name={this.props.iconName} size="small" />;
+  }
+
+  getLabel(){
+    let label;
+    if(this.props.children.data.subTitle) {
+      label = <div className="slds-media__body">
+                <div className="slds-lookup__result-text">{this.boldSearchText(this.props.children.label)}</div>
+                <span className="slds-lookup__result-meta slds-text-body--small">{this.props.children.data.subTitle}</span>
+              </div>
+    } else {
+      const labelClassName = cx('slds-lookup__result-text', {
+        'slds-m-left--x-small': !this.props.iconName
+      });
+
+      label = <div className="slds-media__body">
+                <div className={labelClassName}>{this.boldSearchText(this.props.children.label)}</div>
+              </div>
     }
-    return [
-      icon,
-      this.boldSearchText(this.props.children.label)
-    ]
+    return label;
   }
 
   render(){
-    let className = 'slds-lookup__item';
-    let labelClassName = this.props.iconName ? '' : 'slds-m-left--x-small';
+    let itemClassName = 'js-slds-lookup__item';
     let id = this.props.id;
-    if(this.props.isActive) className += ' slds-theme--shade';
+    if(this.props.isActive) itemClassName += ' slds-theme--shade';
 
     return (
       //IMPORTANT: anchor id is used to set lookup's input's aria-activedescendant
-      <li className={className}>
+      <li className={itemClassName}>
         <a
           aria-disabled={this.props.isDisabled}
+          className='slds-lookup__item-action slds-media slds-media--center'
           href={this.props.href}
           id={id}
           onClick={this.handleClick.bind(this)}
           onMouseDown={this.handleMouseDown.bind(this)}
           ref={id}
-          role="option"
-          tabIndex="-1">
-            <span className={labelClassName}>
-            { this.getLabel() }
-            </span>
+          role='option'
+          tabIndex='-1'>
+            {this.getIcon()}
+            { this.props.listItemLabelRenderer
+              ? this.getCustomLabel()
+              : this.getLabel()
+            }
         </a>
       </li>
     )
@@ -105,6 +130,5 @@ class Item extends React.Component {
 
 Item.displayName = displayName;
 Item.propTypes = propTypes;
-Item.defaultProps = defaultProps;
 
 module.exports = Item;
