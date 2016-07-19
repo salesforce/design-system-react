@@ -87,7 +87,7 @@ const AppLauncher = React.createClass({
 		/*
 		 * Callback when the App Launcher Modal is closed
 		 */
-		onAppLauncherModalClose: PropTypes.func,
+		onClose: PropTypes.func,
 		/*
 		 * Set the search input's placeholder text (for localization)
 		 */
@@ -117,19 +117,19 @@ const AppLauncher = React.createClass({
 		};
 	},
 
-	openAppLauncher () {
+	openAppLauncher (event) {
 		this.setState({ isOpen: true });
 
 		if (isFunction(this.props.triggerOnClick)) {
-			this.props.triggerOnClick();
+			this.props.triggerOnClick(event);
 		}
 	},
 
-	closeAppLauncher () {
+	closeAppLauncher (event) {
 		this.setState({ isOpen: false });
 
-		if (isFunction(this.props.onAppLauncherModalClose)) {
-			this.props.onAppLauncherModalClose();
+		if (isFunction(this.props.onClose)) {
+			this.props.onClose(event);
 		}
 	},
 

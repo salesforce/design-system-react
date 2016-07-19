@@ -111,6 +111,9 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		// you can pass a Button `node` (prop: modalHeaderButton)
 		// modalHeaderButton HAS to be a Button
 		// you can pass a callback to App Launcher Icon (prop: triggerOnClick)
+		// triggeronClick callback receives original event as an arg
+		// you can pass a callback for when the modal is closed (prop: onClose)
+		// onClose callback receives original event as an arg
 		// modal header has classes: slds-app-launcher__header slds-grid slds-grid--align-spread slds-grid--vertical-align-center
 		// you can pass a onSearch callback (prop: onSearch)
 		// you can pass the initial open state (prop: isOpen)
