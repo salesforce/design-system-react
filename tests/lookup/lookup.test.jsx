@@ -41,9 +41,7 @@ describe('SLDSLookup: ',  function(){
   describe('component renders', function() {
     it('lookup renders', function() {
       let lookup = generateLookup(getLookup());
-      let lookupWithSelection = generateLookup(getLookupWithSelection());
       expect(lookup).to.not.equal(undefined);
-      expect(lookupWithSelection).to.not.equal(undefined);
     });
   });
 
@@ -55,7 +53,7 @@ describe('SLDSLookup: ',  function(){
     });
     it('LookupWithSelection - renders label', function() {
       let lookup = generateLookup(getLookupWithSelection());
-      let label = lookup.getElementsByTagName("label")[0];
+      let label = lookup.getElementsByTagName("span")[0];
       expect(label.textContent).to.equal('Account');
     });
   });
@@ -67,18 +65,6 @@ describe('SLDSLookup: ',  function(){
       let inputId = lookup.getElementsByTagName("input")[0].getAttribute("id");
       expect(labelFor).to.equal(inputId);
     });
-
-    /*
-     * TODO: New SLDS 2.1.0-rc3 Lookup with selection does not have an input anymore.
-     * Check with a11y if we now add the corresponding id (for htmlFor) on the selected pill div
-     it('LookupWithSelection - label for matches input id', function() {
-     let lookup = generateLookup(getLookupWithSelection());
-     let labelFor = lookup.getElementsByTagName("label")[0].getAttribute("for");
-     let inputId = lookup.getElementsByTagName("input")[0].getAttribute("id");
-     expect(labelFor).to.equal(inputId);
-     });
-     */
-
   });
 
   describe('accessibility aria attributes pass', function() {
@@ -162,17 +148,15 @@ describe('SLDSLookup: ',  function(){
       expect(ariaExpanded).to.equal('false');
     });
 
-    /*
-     * TODO: Need to find out if we need this iwth new SLDS 2.1.0-rc3
     it('aria-expanded is false after selecting item', function() {
       let lookup = generateLookup(getLookup());
       let input = lookup.getElementsByTagName("input")[0];
       TestUtils.Simulate.click(input);
       TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
       TestUtils.Simulate.keyDown(input, {key: "Enter", keyCode: 13, which: 13});
-      expect(input.className).to.have.string('slds-hide');
+      let menu = lookup.getElementsByTagName("ul");
+      expect(menu.length).to.equal(0);
     });
-    */
 
     it('focusedItem has correct style', function() {
       let lookup = generateLookup(getLookup());

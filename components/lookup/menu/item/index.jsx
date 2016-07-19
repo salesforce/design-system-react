@@ -61,7 +61,7 @@ class Item extends React.Component {
   }
 
   getIcon() {
-    if(this.props.iconName){
+    if(this.props.iconName && !this.props.listItemLabelRenderer){
       return <Icon
               category={this.props.iconCategory}
               className='slds-media__figure'
@@ -117,7 +117,7 @@ class Item extends React.Component {
           ref={id}
           role='option'
           tabIndex='-1'>
-            { this.props.iconName ? this.getIcon() : null }
+            {this.getIcon()}
             { this.props.listItemLabelRenderer
               ? this.getCustomLabel()
               : this.getLabel()

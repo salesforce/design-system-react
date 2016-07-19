@@ -42,7 +42,7 @@ class DefaultHeader extends React.Component {
     if(this.props.isActive) className += ' slds-theme--shade'
 
     return (
-      <div className="slds-lookup__item" onMouseDown={this.handleMouseDown} onClick={this.handleClick.bind(this)}>
+      <div className="js-slds-lookup__item slds-lookup__item" onMouseDown={this.handleMouseDown} onClick={this.handleClick.bind(this)}>
         <button id='searchRecords' tabIndex="-1" className={className}>
           <Icon assistiveText="Search " name='search' category="utility" size="x-small" className="slds-icon-text-default" />
           {" " + this.props.searchTerm}

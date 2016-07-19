@@ -248,7 +248,7 @@ class Lookup extends React.Component {
 	selectItemByIndex(index){
 		if(index >= 0 && index < this.state.items.length){
 			this.setState({
-        isOpen: false,
+				isOpen: false,
 				selectedIndex: index,
 				searchTerm: ''
 			});
@@ -417,7 +417,7 @@ class Lookup extends React.Component {
 				filterWith={this.props.filterWith}
 				focusIndex={this.state.focusIndex}
 				footer={this.getFooter()}
-        getListLength={this.getListLength.bind(this)}
+				getListLength={this.getListLength.bind(this)}
 				header={this.getHeader()}
 				iconCategory={this.props.iconCategory}
 				iconInverse={this.props.iconInverse}
@@ -452,37 +452,37 @@ class Lookup extends React.Component {
 			onClose={this.handleCancel.bind(this)}
 			flippable={this.props.flippable}
 			constrainToScrollParent={this.props.constrainToScrollParent}
-      targetElement={targetElem}
-      >
-			  {this.renderMenuContent()}
+			targetElement={targetElem}
+			>
+				{this.renderMenuContent()}
 			</Popover>;
 		}
 	}
 
-  renderInput() {
-    return (
-      <span>
-        <InputIcon name='search' onClick={this.focusInput.bind(this)} />
-        <input
-          aria-activedescendant={this.state.currentFocus ? this.state.currentFocus:''}
-          aria-autocomplete='list'
-          aria-describedby={this.props.describedById}
-          aria-expanded={this.state.isOpen}
-          className='slds-lookup__search-input slds-input'
-          id={this.inputRefName()}
-          onBlur={this.handleBlur.bind(this)}
-          onChange={this.handleChange.bind(this)}
-          onClick={this.handleClick.bind(this)}
-          onFocus={this.handleFocus.bind(this)}
-          onKeyDown={this.handleKeyDown.bind(this)}
-          ref={this.inputRefName()}
-          role='combobox'
-          type='text'
-          value={this.state.searchTerm}
-        />
-      </span>
-    )
-  }
+	renderInput() {
+		return (
+			<span>
+				<InputIcon name='search' onClick={this.focusInput.bind(this)} />
+				<input
+					aria-activedescendant={this.state.currentFocus ? this.state.currentFocus:''}
+					aria-autocomplete='list'
+					aria-describedby={this.props.describedById}
+					aria-expanded={this.state.isOpen}
+					className='slds-lookup__search-input slds-input'
+					id={this.inputRefName()}
+					onBlur={this.handleBlur.bind(this)}
+					onChange={this.handleChange.bind(this)}
+					onClick={this.handleClick.bind(this)}
+					onFocus={this.handleFocus.bind(this)}
+					onKeyDown={this.handleKeyDown.bind(this)}
+					ref={this.inputRefName()}
+					role='combobox'
+					type='text'
+					value={this.state.searchTerm}
+				/>
+			</span>
+		)
+	}
 
 	renderSelectedItem() {
 		let selectedItem = this.props.options[this.state.selectedIndex].label;
@@ -491,24 +491,37 @@ class Lookup extends React.Component {
 
 		// i18n
 		return (
-      <div className='slds-pill__container'>
-        <a href='javascript:void(0)' className='slds-pill' ref={'pill-' + this.state.selectedIndex} onKeyDown={this.handlePillKeyDown.bind(this)}>
-          {renderIcon}
-          <span className={labelClassName}>
-            {selectedItem}
-          </span>
-          <Button
-            assistiveText='Press delete to remove'
-            className='slds-pill__remove slds-button--icon-bare'
-            iconName='close'
-            onClick={this.handleDeleteSelected.bind(this)}
-            ref='clearSelectedItemButton'
-            tabIndex='-1'
-            variant='icon'
-          />
-        </a>
-      </div>
+			<div className='slds-pill__container'>
+				<a href='javascript:void(0)' className='slds-pill' ref={'pill-' + this.state.selectedIndex} onKeyDown={this.handlePillKeyDown.bind(this)}>
+					{renderIcon}
+					<span className={labelClassName}>
+						{selectedItem}
+					</span>
+					<Button
+						assistiveText='Press delete to remove'
+						className='slds-pill__remove slds-button--icon-bare'
+						iconName='close'
+						onClick={this.handleDeleteSelected.bind(this)}
+						ref='clearSelectedItemButton'
+						tabIndex='-1'
+						variant='icon'
+					/>
+				</a>
+			</div>
 		)
+	}
+
+	renderLabel() {
+		if(this.props.label) {
+			let inputLabel;
+			const required = this.props.required ? <span className="slds-required">*</span>:null;
+			if(this.isSelected()) {
+				inputLabel = <span className='slds-form-element__label' style={{width: '100%'}}>{required}{this.props.label}</span>;
+			} else {
+				inputLabel = <label className='slds-form-element__label' htmlFor={this.inputRefName()} style={{width: '100%'}}>{required}{this.props.label}</label>;
+			}
+			return inputLabel;
+		}
 	}
 
 	inputRefName() {
@@ -521,7 +534,7 @@ class Lookup extends React.Component {
 
 	isSelected() {
 		const hasSelection = !isNaN(parseInt(this.state.selectedIndex)) && this.state.selectedIndex >= 0;
-		return hasSelection ? true : false;
+		return hasSelection;
 	}
 
 	getClassName(){
@@ -532,17 +545,14 @@ class Lookup extends React.Component {
 	}
 
 	render() {
-    const formElementControlClasses = {
+		const formElementControlClasses = {
 			'slds-form-element__control': true,
 			'slds-input-has-icon slds-input-has-icon--right': !this.isSelected(),
-    };
-
-		const required = this.props.required ? <span className="slds-required">*</span>:null;
-		const inputLabel = this.props.label?<label className='slds-form-element__label' htmlFor={this.inputRefName()} style={{width: '100%'}}>{required}{this.props.label}</label>:null;
+		};
 
 		return (
 			<div className={this.getClassName()} data-select='single' data-scope='single'>
-					{inputLabel}
+					{this.renderLabel()}
 					<div className={cx(formElementControlClasses)}>
 						{ this.isSelected() ? this.renderSelectedItem() : null }
 						{ !this.isSelected() ? this.renderInput() : null }

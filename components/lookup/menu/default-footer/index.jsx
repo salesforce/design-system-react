@@ -42,7 +42,7 @@ class DefaultFooter extends React.Component {
     if(this.props.isActive) className += ' slds-theme--shade'
 
     return (
-      <div className="slds-lookup__item" onClick={this.handleClick.bind(this)} onMouseDown={this.handleMouseDown.bind(this)}>
+      <div className="js-slds-lookup__item slds-lookup__item" onClick={this.handleClick.bind(this)} onMouseDown={this.handleMouseDown.bind(this)}>
         <button id='newItem' tabIndex="-1" className={className}>
         <Icon name='add' category="utility" size="x-small" className="slds-icon-text-default" />
         {this.props.newItemLabel ? this.props.newItemLabel : "Add New Item" }
