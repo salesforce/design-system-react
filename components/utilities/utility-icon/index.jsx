@@ -50,4 +50,16 @@ const UtilityIcon = ({ name = '', category = 'utility', icon, ...rest }) => {
 
 UtilityIcon.displayName = 'UtilityIcon';
 
+UtilityIcon.propTypes = {
+	category: React.PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
+	/**
+   * An SVG object to use instead of name / category, look in `design-system-react/icons` for examples
+   */
+	icon: React.PropTypes.object,
+	/**
+   * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
+   */
+	name: React.PropTypes.string
+};
+
 module.exports = UtilityIcon;
