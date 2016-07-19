@@ -145,48 +145,48 @@ class ButtonStateful extends TooltipTrigger {
 					{this.getTooltip()}
 				</button>
 			);
-		} else {
-			return (
-				<button
-					onMouseLeave={blurElement}
-					className={this.getClassName(active)}
-					aria-live="assertive"
-					onClick={this.handleClick.bind(this)}
-					{...props}
-				>
-					<span className="slds-text-not-selected">
-						<ButtonIcon
-							disabled={this.props.disabled}
-							name={this.props.stateOne.iconName}
-							size="small"
-							position="left"
-							className="slds-button__icon--stateful"
-						/>
-						{this.props.stateOne.label}
-					</span>
-					<span className="slds-text-selected">
-						<ButtonIcon
-							disabled={this.props.disabled}
-							name={this.props.stateTwo.iconName}
-							size="small" position="left"
-							className="slds-button__icon--stateful"
-						/>
-						{this.props.stateTwo.label}
-					</span>
-					<span className="slds-text-selected-focus">
-						<ButtonIcon
-							disabled={this.props.disabled}
-							name={this.props.stateThree.iconName}
-							size="small"
-							position="left"
-							className="slds-button__icon--stateful"
-						/>
-						{this.props.stateThree.label}
-					</span>
-					{this.getTooltip()}
-				</button>
-			);
 		}
+		
+		return (
+			<button
+				onMouseLeave={blurElement}
+				className={this.getClassName(active)}
+				aria-live="assertive"
+				onClick={this.handleClick.bind(this)}
+				{...props}
+			>
+				<span className="slds-text-not-selected">
+					<ButtonIcon
+						disabled={this.props.disabled}
+						name={this.props.stateOne.iconName}
+						size="small"
+						position="left"
+						className="slds-button__icon--stateful"
+					/>
+					{this.props.stateOne.label}
+				</span>
+				<span className="slds-text-selected">
+					<ButtonIcon
+						disabled={this.props.disabled}
+						name={this.props.stateTwo.iconName}
+						size="small" position="left"
+						className="slds-button__icon--stateful"
+					/>
+					{this.props.stateTwo.label}
+				</span>
+				<span className="slds-text-selected-focus">
+					<ButtonIcon
+						disabled={this.props.disabled}
+						name={this.props.stateThree.iconName}
+						size="small"
+						position="left"
+						className="slds-button__icon--stateful"
+					/>
+					{this.props.stateThree.label}
+				</span>
+				{this.getTooltip()}
+			</button>
+		);
 	}
 }
 
