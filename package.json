@@ -12,7 +12,7 @@
     "lint": "eslint --config=./.eslintrc \"**/*.{js,jsx}\"",
     "publish-to-git": "./node_modules/.bin/babel-node scripts/publish-to-git.js",
     "publish-to-edge": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge",
-    "publish-to-upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge --remote=upstream && ./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
+    "publish-to-upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
     "start": "start-storybook -p 9001 -s ./node_modules & node tests/app",
     "test": "scripts/test.sh --single-run",
     "validate": "npm ls"
@@ -65,7 +65,7 @@
   },
   "devDependencies": {
     "@kadira/storybook": "^1.27.0",
-    "@salesforce-ux/design-system": "git+ssh://git@github.com/salesforce-ux/design-system-internal.git#v2.1.0-rc.2-dist",
+    "@salesforce-ux/design-system": "git+ssh://git@github.com/salesforce-ux/design-system-internal.git#v2.1.0-rc.4-dist",
     "@salesforce-ux/icons": "4.0.0",
     "async": "^2.0.0-rc.5",
     "babel": "^6.5.2",
