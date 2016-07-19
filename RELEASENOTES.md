@@ -2,7 +2,7 @@
 # React Components: design-system-react
 # Release notes
 
-## Release 0.1.1
+## Release 0.1.2
 
 **MAJOR CHANGES**
 - Add the App Launcher component
