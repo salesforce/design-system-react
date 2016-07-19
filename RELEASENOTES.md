@@ -6,8 +6,14 @@
 
 **MAJOR CHANGES**
 - Add the App Launcher component
+
+
+## Release 0.1.1
+
+**MAJOR CHANGES**
 - Add support for icons, headers, links, and dividers to Dropdown and Picklist menus
 - Add support for custom content in Dropdown menus
+- Update Lookup to the latest markup
 - Update Picklist to the latest markup
 
 **OTHER**
