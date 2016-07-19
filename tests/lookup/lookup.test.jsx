@@ -36,14 +36,12 @@ describe('SLDSLookup: ',  function(){
   const getLookupWithHeader = (props={headerRenderer: Header}) => React.createElement(SLDSLookup, assign({}, defaultProps, props))
   const getLookupWithSelection = (props={selectedItem: 1}) => React.createElement(SLDSLookup, assign({}, defaultProps, props))
 
-  const getItems = lookup => lookup.getElementsByClassName('slds-lookup__item');
+  const getItems = lookup => lookup.getElementsByClassName('js-slds-lookup__item');
 
   describe('component renders', function() {
     it('lookup renders', function() {
       let lookup = generateLookup(getLookup());
-      let lookupWithSelection = generateLookup(getLookupWithSelection());
       expect(lookup).to.not.equal(undefined);
-      expect(lookupWithSelection).to.not.equal(undefined);
     });
   });
 
@@ -55,7 +53,7 @@ describe('SLDSLookup: ',  function(){
     });
     it('LookupWithSelection - renders label', function() {
       let lookup = generateLookup(getLookupWithSelection());
-      let label = lookup.getElementsByTagName("label")[0];
+      let label = lookup.getElementsByTagName("span")[0];
       expect(label.textContent).to.equal('Account');
     });
   });
@@ -67,23 +65,9 @@ describe('SLDSLookup: ',  function(){
       let inputId = lookup.getElementsByTagName("input")[0].getAttribute("id");
       expect(labelFor).to.equal(inputId);
     });
-
-    it('LookupWithSelection - label for matches input id', function() {
-      let lookup = generateLookup(getLookupWithSelection());
-      let labelFor = lookup.getElementsByTagName("label")[0].getAttribute("for");
-      let inputId = lookup.getElementsByTagName("input")[0].getAttribute("id");
-      expect(labelFor).to.equal(inputId);
-    });
-
   });
 
   describe('accessibility aria attributes pass', function() {
-    it('aria-haspopup is true', function() {
-      let lookup = generateLookup(getLookup());
-      let ariaHaspopup = lookup.getElementsByTagName("input")[0].getAttribute("aria-haspopup");
-      expect(ariaHaspopup).to.equal('true');
-    });
-
     it('aria-expanded is false initally', function() {
       let lookup = generateLookup(getLookup());
       let ariaExpanded = lookup.getElementsByTagName("input")[0].getAttribute("aria-expanded");
@@ -100,8 +84,8 @@ describe('SLDSLookup: ',  function(){
 
     it('LookupWithSelection - aria-expanded is true when deleting selection', function() {
       let lookup = generateLookup(getLookupWithSelection());
-      let input = lookup.getElementsByTagName("input")[0];
-      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 46, which: 46});
+      let deleteBtn = lookup.getElementsByTagName("button")[0];
+      TestUtils.Simulate.keyDown(deleteBtn, {key: "Down", keyCode: 46, which: 46});
       let ariaExpanded = lookup.getElementsByTagName("input")[0].getAttribute("aria-expanded");
       expect(ariaExpanded).to.equal('true');
     });
@@ -170,10 +154,11 @@ describe('SLDSLookup: ',  function(){
       TestUtils.Simulate.click(input);
       TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
       TestUtils.Simulate.keyDown(input, {key: "Enter", keyCode: 13, which: 13});
-      expect(input.className).to.have.string('slds-hide');
+      let menu = lookup.getElementsByTagName("ul");
+      expect(menu.length).to.equal(0);
     });
 
-    it('aria-expanded is false after selecting item', function() {
+    it('focusedItem has correct style', function() {
       let lookup = generateLookup(getLookup());
       let input = lookup.getElementsByTagName("input")[0];
       TestUtils.Simulate.click(input);
