@@ -56,45 +56,45 @@ const AppLauncher = React.createClass({
 	// ### Prop Types
 	propTypes: {
 		/*
-		 * Assistive text for app launcher icon
-		 */
-		triggerAssistiveText: PropTypes.string,
-		/**
-		 * This is typically the name of the cloud or application.
-		 */
-		applicationName: PropTypes.string,
-		/*
-		 * Button that exists in the upper right hand corner of the App Launcher modal.
-		 */
-		modalHeaderButton: PropTypes.node,
-		/*
 		 * All of the App Launcher's children
 		 */
 		children: PropTypes.node.isRequired,
 		/*
-		 * Callback fired when search value changes
+		 * Control the open/close state of the App Launcher
 		 */
-		onSearch: PropTypes.func.isRequired,
+		isOpen: PropTypes.bool,
 		/*
-		 * Set the App Launcher's title text (for localization)
+		 * Button that exists in the upper right hand corner of the App Launcher modal
 		 */
-		title: PropTypes.string,
-		/*
-		 * Callback when the App Launcher icon is clicked
-		 */
-		triggerOnClick: PropTypes.func,
+		modalHeaderButton: PropTypes.node,
 		/*
 		 * Callback when the App Launcher Modal is closed
 		 */
 		onClose: PropTypes.func,
 		/*
+		 * Callback fired when search value changes
+		 */
+		onSearch: PropTypes.func.isRequired,
+		/*
 		 * Set the search input's placeholder text (for localization)
 		 */
 		searchPlaceholderText: PropTypes.string,
 		/*
-		 * Control the open/close state of the App Launcher
+		 * Set the App Launcher's title text (for localization)
 		 */
-		isOpen: PropTypes.bool
+		title: PropTypes.string,
+		/*
+		 * Assistive text for app launcher icon
+		 */
+		triggerAssistiveText: PropTypes.string,
+		/**
+		 * This is typically the name of the cloud or application
+		 */
+		triggerName: PropTypes.node,
+		/*
+		 * Callback when the App Launcher icon is clicked
+		 */
+		triggerOnClick: PropTypes.func
 	},
 
 	componentWillMount () {
@@ -139,7 +139,7 @@ const AppLauncher = React.createClass({
 			<div className="app-launcher-wrapper slds-context-bar__item slds-no-hover">
 				<div className="slds-context-bar__icon-action">
 					<a
-						href="javascript:void(0)"
+						href="javascript:void(0);" // eslint-disable-line no-script-url
 						aria-haspopup="true"
 						className="slds-button slds-button--icon slds-context-bar__button"
 						onClick={this.openAppLauncher}
@@ -177,9 +177,10 @@ const AppLauncher = React.createClass({
 						{this.props.children}
 					</div>
 				</Modal>
-				{this.props.applicationName ?
-					<span className="slds-context-bar__label-action slds-context-bar__app-name">{this.props.applicationName}</span>
-					: null}
+				{this.props.triggerName
+					? <span className="slds-context-bar__label-action slds-context-bar__app-name">{this.props.triggerName}</span>
+					: null
+				}
 			</div>
 		);
 	}

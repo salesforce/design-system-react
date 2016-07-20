@@ -227,7 +227,7 @@ const DemoAppLauncher = React.createClass({
 					region="primary"
 				>
 					<AppLauncher
-						applicationName="App Name"
+						triggerName="App Name"
 						onSearch={this.onSearch}
 						modalHeaderButton={modalHeaderButton}
 						isOpen={this.state.appLauncherOpen}
