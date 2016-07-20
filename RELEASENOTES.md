@@ -2,11 +2,16 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.1.3
+
+**MAJOR CHANGES**
+- Add support for custom svg icons
+
+
 ## Release 0.1.2
 
 **MAJOR CHANGES**
 - Add the App Launcher component
-- Add support for custom svg icons
 - Add support for the title attribute for icons
 
 **OTHER**
