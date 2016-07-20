@@ -112,7 +112,7 @@ const AppLauncherTile = React.createClass({
 
 		return (
 			<a
-				href="javascript:void(0)"
+				href="javascript:void(0);" // eslint-disable-line no-script-url
 				onClick={this.props.onClick}
 				className={
 					classNames(
