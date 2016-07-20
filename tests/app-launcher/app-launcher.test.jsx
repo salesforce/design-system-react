@@ -11,7 +11,8 @@ import TestUtils from 'react-addons-test-utils';
 
 const should = chai.should();
 
-import { AppLauncher, Icon } from '../../components';
+import { Icon } from '../../components';
+import AppLauncher from '../../components/app-launcher';
 import AppLauncherTile from '../../components/app-launcher/tile';
 import AppLauncherSection from '../../components/app-launcher/section';
 
