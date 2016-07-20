@@ -108,11 +108,13 @@ const AppLauncherTile = React.createClass({
 	},
 
 	render () {
+		/* eslint-disable no-script-url */
+
 		const small = this.props.size === 'small' || false;
 
 		return (
 			<a
-				href="javascript:void(0)"
+				href="javascript:void(0);"
 				onClick={this.props.onClick}
 				className={
 					classNames(

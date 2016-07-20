@@ -133,13 +133,15 @@ const AppLauncher = React.createClass({
 	},
 
 	render () {
+		/* eslint-disable no-script-url */
+
 		const isOpen = this.props.isOpen !== undefined ? this.props.isOpen : this.state.isOpen;
 
 		return (
 			<div className="app-launcher-wrapper slds-context-bar__item slds-no-hover">
 				<div className="slds-context-bar__icon-action">
 					<a
-						href="javascript:void(0)"
+						href="javascript:void(0);"
 						aria-haspopup="true"
 						className="slds-button slds-button--icon slds-context-bar__button"
 						onClick={this.openAppLauncher}
