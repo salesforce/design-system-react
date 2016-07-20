@@ -8,52 +8,29 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+/* eslint-disable indent */
 
-// ### React
-import React from 'react';
+// This function will deliver an error message to the browser console when all of the props passed in are undefined (falsey).
+import warning from 'warning';
 
-// ### ReactHighlighter
-import ReactHighlighter from 'react-highlighter';
+let oneOfComponent = function () {};
 
-// ## Constants
-import { HIGHLIGHTER } from '../../../utilities/constants';
+if (process.env.NODE_ENV !== 'production') {
+	const hasWarned = {};
+	oneOfComponent = function (control, props, propName, allowedComponents, comment) {
+		const additionalComment = comment ? ` ${comment}` : '';
 
-// Removes the need for `PropTypes`.
-const { PropTypes } = React;
+		const componentType = props[propName].type.displayName;
 
-/**
- * A utility component that highlights occurrences of a particular pattern in its contents.
- */
-const Highlighter = (props) => {
-	if (props.search) {
-		return (
-			<ReactHighlighter className={props.className} matchClass={null} matchElement="mark" search={props.search}>
-				{props.children}
-			</ReactHighlighter>
-		);
-	}
+		const allowedComponentFound = allowedComponents.indexOf(componentType) > -1;
 
-	return <span className={props.className}>{props.children}</span>;
-};
+		if (!hasWarned[control]) {
+			/* eslint-disable max-len */
+			warning(allowedComponentFound, `[Design System React] ${control} requires that prop '${propName}' is an instance of one of the following components: ${allowedComponents.join(', ')}. An instance of '${componentType}' was given.${additionalComment}`);
+			/* eslint-enable max-len */
+			hasWarned[control] = !!allowedComponentFound;
+		}
+	};
+}
 
-// ### Display Name
-Highlighter.displayName = HIGHLIGHTER;
-
-// ### Prop Types
-Highlighter.propTypes = {
-	/**
-	 * The full string to display.
-	 */
-	children: PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.number,
-		React.PropTypes.bool
-	]),
-	className: PropTypes.string,
-	/**
-	 * The string of text (or Regular Expression) to highlight.
-	 */
-	search: PropTypes.any
-};
-
-module.exports = Highlighter;
+export default oneOfComponent;

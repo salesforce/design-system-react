@@ -38,9 +38,6 @@ export Checkbox from './forms/checkbox';
 export SLDSGlobalNavigationBar from './global-navigation-bar';
 export GlobalNavigationBar from './global-navigation-bar';
 
-export SLDSGlobalNavigationBarAppLauncher from './global-navigation-bar/app-launcher';
-export GlobalNavigationBarAppLauncher from './global-navigation-bar/app-launcher';
-
 export SLDSGlobalNavigationBarRegion from './global-navigation-bar/region';
 export GlobalNavigationBarRegion from './global-navigation-bar/region';
 

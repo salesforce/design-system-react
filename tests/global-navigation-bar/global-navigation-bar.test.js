@@ -19,7 +19,6 @@ import { dropdownCollection, propSets } from '../../utilities/sample-data/global
 
 import GlobalNavigationBar from '../../components/global-navigation-bar';
 import GlobalNavigationBarRegion from '../../components/global-navigation-bar/region';
-import GlobalNavigationBarAppLauncher from '../../components/global-navigation-bar/app-launcher';
 import GlobalNavigationBarDropdown from '../../components/global-navigation-bar/dropdown';
 import GlobalNavigationBarLink from '../../components/global-navigation-bar/link';
 import GlobalNavigationBarButton from '../../components/global-navigation-bar/button';
@@ -77,9 +76,7 @@ describe('Global Navigation Bar: ', () => {
 
 	describe('Optional Region Structure', () => {
 		const props = propSets.base.props;
-		const primaryRegionProps = propSets.base.primaryRegionProps;
 
-		const appLauncherClicked = () => {};
 		const linkClicked = () => {};
 		const dropdownItemClicked = () => {};
 
@@ -87,14 +84,7 @@ describe('Global Navigation Bar: ', () => {
 			<GlobalNavigationBar {...props}>
 				<GlobalNavigationBarRegion
 					region="primary"
-				>
-					<GlobalNavigationBarAppLauncher
-						{...primaryRegionProps.appLauncher}
-						onClick={appLauncherClicked('Application name clicked (Open App Launcher).')}
-					>
-						{primaryRegionProps.appLauncher.customChild ? primaryRegionProps.appLauncher.customChild() : null}
-					</GlobalNavigationBarAppLauncher>
-				</GlobalNavigationBarRegion>
+				/>
 				<GlobalNavigationBarRegion region="secondary" navigation>
 					<GlobalNavigationBarLink
 						href="#"
@@ -140,39 +130,6 @@ describe('Global Navigation Bar: ', () => {
 		it('Secondary region application is a nav HTML element', function () {
 			const nav = this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`);
 			expect(nav.type()).to.equal('nav');
-		});
-
-		it('primary has correct application name', function () {
-			const appName = this.wrapper.find(`.${REGION_CSS_CLASSES.appName}`);
-			expect(appName.text()).to.equal(primaryRegionProps.appLauncher.name);
-		});
-	});
-
-	// TODO `noTruncate` prop is a style hack right now and should be revisited
-
-	describe('AppLauncher Region', () => {
-		it('AppLauncher has correct text on icon and onClick runs callback', function () {
-			const primaryRegionProps = propSets.base.primaryRegionProps;
-
-			const appLauncherClicked = sinon.spy();
-			const instance = (
-				<GlobalNavigationBarRegion
-					region="primary"
-				>
-					<GlobalNavigationBarAppLauncher
-						onClick={appLauncherClicked('Application name clicked (Open App Launcher).')}
-						{...primaryRegionProps.appLauncher}
-					/>
-				</GlobalNavigationBarRegion>
-			);
-
-			this.wrapper = mount(instance, { attachTo: document.body.appendChild(document.createElement('div')) });
-			const appLauncherIcon = this.wrapper.find(`#${primaryRegionProps.appLauncher.id}`);
-			expect(appLauncherIcon.text()).to.equal(primaryRegionProps.appLauncher.assistiveText);
-			appLauncherIcon.simulate('click');
-			expect(appLauncherClicked.calledOnce).to.be.true;
-
-			this.wrapper.unmount();
 		});
 	});
 
