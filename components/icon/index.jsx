@@ -66,7 +66,11 @@ const Icon = React.createClass({
 		/**
 		 * Size of the icon. Visit [lightningdesignsystem.com/components/icons/#flavor-sizes](https://www.lightningdesignsystem.com/components/icons/#flavor-sizes)
 		 */
-		size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large'])
+		size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
+		/**
+		 * Title attribute for the icon container
+		 */
+		title: PropTypes.string
 	},
 
 	getDefaultProps () {
@@ -106,7 +110,10 @@ const Icon = React.createClass({
 			label = <span className="slds-assistive-text">{this.props.assistiveText}</span>;
 		}
 		return (
-			<span className={this.getContainerClassName()}>
+			<span
+				className={this.getContainerClassName()}
+				title={this.props.title}
+			>
 				{label}
 				<SLDSUtilityIcon
 					aria-hidden="true"
