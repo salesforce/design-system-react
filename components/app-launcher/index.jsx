@@ -139,7 +139,7 @@ const AppLauncher = React.createClass({
 			<div className="app-launcher-wrapper slds-context-bar__item slds-no-hover">
 				<div className="slds-context-bar__icon-action">
 					<a
-						href="#"
+						href="javascript:void(0)"
 						aria-haspopup="true"
 						className="slds-button slds-button--icon slds-context-bar__button"
 						onClick={this.openAppLauncher}

@@ -112,6 +112,7 @@ const AppLauncherTile = React.createClass({
 
 		return (
 			<a
+				href="javascript:void(0)"
 				onClick={this.props.onClick}
 				className={
 					classNames(
