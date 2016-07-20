@@ -28,19 +28,24 @@ const UtilityIcon = ({ name = '', category = 'utility', icon, ...rest }) => {
 		switch (category) {
 			case 'action':
 				data = SLDS_ICONS_ACTION[name.toLowerCase()];
+				data.viewBox = SLDS_ICONS_ACTION.viewBox;
 				break;
 			case 'custom':
 				data = SLDS_ICONS_CUSTOM[name.toLowerCase()];
+				data.viewBox = SLDS_ICONS_CUSTOM.viewBox;
 				break;
 			case 'doctype':
 				data = SLDS_ICONS_DOCTYPE[name.toLowerCase()];
+				data.viewBox = SLDS_ICONS_DOCTYPE.viewBox;
 				break;
 			case 'standard':
 				data = SLDS_ICONS_STANDARD[name.toLowerCase()];
+				data.viewBox = SLDS_ICONS_STANDARD.viewBox;
 				break;
 			case 'utility':
 			default:
 				data = SLDS_ICONS_UTILITY[name.toLowerCase()];
+				data.viewBox = SLDS_ICONS_UTILITY.viewBox;
 				break;
 		}
 	}

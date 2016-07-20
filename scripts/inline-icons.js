@@ -41,13 +41,15 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 `;
 
 	const index = [
-		license
+		license,
+		'module.exports = {'
 	];
 
 	const sprite = JSON.parse(parser.toJson(text));
 
+	let viewBox;
 	async.each(sprite.svg.symbol, (symbol, iconDone) => {
-		const data = omit(symbol, ['id']);
+		let data = omit(symbol, ['id']);
 		const icon = [
 			license,
 			`module.exports = ${JSON.stringify(data)};`,
@@ -56,13 +58,16 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 		outputFile(`${spriteType}/${symbol.id}`, icon, iconDone);
 
-		index.push(`import ICON_${symbol.id} from './${symbol.id}.js';`);
-		index.push(`module.exports.${symbol.id} = ICON_${symbol.id};`);
-		index.push('');
+		if (!viewBox) viewBox = data.viewBox;
+		data = omit(data, ['viewBox']);
+		index.push(`${symbol.id}:${JSON.stringify(data)},`);
 	}, err => {
 		if (err) console.error(err);
 	});
 
+	index.push(`viewBox:'${viewBox}'`);
+	index.push('};');
+	index.push('');
 	outputFile(`${spriteType}/index`, index, done);
 };
 

@@ -9,641 +9,219 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import ICON_add from './add.js';
-module.exports.add = ICON_add;
-
-import ICON_adduser from './adduser.js';
-module.exports.adduser = ICON_adduser;
-
-import ICON_announcement from './announcement.js';
-module.exports.announcement = ICON_announcement;
-
-import ICON_answer from './answer.js';
-module.exports.answer = ICON_answer;
-
-import ICON_apex from './apex.js';
-module.exports.apex = ICON_apex;
-
-import ICON_approval from './approval.js';
-module.exports.approval = ICON_approval;
-
-import ICON_apps from './apps.js';
-module.exports.apps = ICON_apps;
-
-import ICON_arrowdown from './arrowdown.js';
-module.exports.arrowdown = ICON_arrowdown;
-
-import ICON_arrowup from './arrowup.js';
-module.exports.arrowup = ICON_arrowup;
-
-import ICON_attach from './attach.js';
-module.exports.attach = ICON_attach;
-
-import ICON_back from './back.js';
-module.exports.back = ICON_back;
-
-import ICON_ban from './ban.js';
-module.exports.ban = ICON_ban;
-
-import ICON_bold from './bold.js';
-module.exports.bold = ICON_bold;
-
-import ICON_bookmark from './bookmark.js';
-module.exports.bookmark = ICON_bookmark;
-
-import ICON_broadcast from './broadcast.js';
-module.exports.broadcast = ICON_broadcast;
-
-import ICON_brush from './brush.js';
-module.exports.brush = ICON_brush;
-
-import ICON_bucket from './bucket.js';
-module.exports.bucket = ICON_bucket;
-
-import ICON_builder from './builder.js';
-module.exports.builder = ICON_builder;
-
-import ICON_call from './call.js';
-module.exports.call = ICON_call;
-
-import ICON_capslock from './capslock.js';
-module.exports.capslock = ICON_capslock;
-
-import ICON_cases from './cases.js';
-module.exports.cases = ICON_cases;
-
-import ICON_center_align_text from './center_align_text.js';
-module.exports.center_align_text = ICON_center_align_text;
-
-import ICON_change_owner from './change_owner.js';
-module.exports.change_owner = ICON_change_owner;
-
-import ICON_chart from './chart.js';
-module.exports.chart = ICON_chart;
-
-import ICON_chat from './chat.js';
-module.exports.chat = ICON_chat;
-
-import ICON_check from './check.js';
-module.exports.check = ICON_check;
-
-import ICON_checkin from './checkin.js';
-module.exports.checkin = ICON_checkin;
-
-import ICON_chevrondown from './chevrondown.js';
-module.exports.chevrondown = ICON_chevrondown;
-
-import ICON_chevronleft from './chevronleft.js';
-module.exports.chevronleft = ICON_chevronleft;
-
-import ICON_chevronright from './chevronright.js';
-module.exports.chevronright = ICON_chevronright;
-
-import ICON_chevronup from './chevronup.js';
-module.exports.chevronup = ICON_chevronup;
-
-import ICON_clear from './clear.js';
-module.exports.clear = ICON_clear;
-
-import ICON_clock from './clock.js';
-module.exports.clock = ICON_clock;
-
-import ICON_close from './close.js';
-module.exports.close = ICON_close;
-
-import ICON_comments from './comments.js';
-module.exports.comments = ICON_comments;
-
-import ICON_company from './company.js';
-module.exports.company = ICON_company;
-
-import ICON_connected_apps from './connected_apps.js';
-module.exports.connected_apps = ICON_connected_apps;
-
-import ICON_contract from './contract.js';
-module.exports.contract = ICON_contract;
-
-import ICON_contract_alt from './contract_alt.js';
-module.exports.contract_alt = ICON_contract_alt;
-
-import ICON_copy from './copy.js';
-module.exports.copy = ICON_copy;
-
-import ICON_crossfilter from './crossfilter.js';
-module.exports.crossfilter = ICON_crossfilter;
-
-import ICON_custom_apps from './custom_apps.js';
-module.exports.custom_apps = ICON_custom_apps;
-
-import ICON_cut from './cut.js';
-module.exports.cut = ICON_cut;
-
-import ICON_dash from './dash.js';
-module.exports.dash = ICON_dash;
-
-import ICON_datadotcom from './datadotcom.js';
-module.exports.datadotcom = ICON_datadotcom;
-
-import ICON_dayview from './dayview.js';
-module.exports.dayview = ICON_dayview;
-
-import ICON_delete from './delete.js';
-module.exports.delete = ICON_delete;
-
-import ICON_deprecate from './deprecate.js';
-module.exports.deprecate = ICON_deprecate;
-
-import ICON_description from './description.js';
-module.exports.description = ICON_description;
-
-import ICON_desktop from './desktop.js';
-module.exports.desktop = ICON_desktop;
-
-import ICON_dock_panel from './dock_panel.js';
-module.exports.dock_panel = ICON_dock_panel;
-
-import ICON_down from './down.js';
-module.exports.down = ICON_down;
-
-import ICON_download from './download.js';
-module.exports.download = ICON_download;
-
-import ICON_edit from './edit.js';
-module.exports.edit = ICON_edit;
-
-import ICON_edit_form from './edit_form.js';
-module.exports.edit_form = ICON_edit_form;
-
-import ICON_email from './email.js';
-module.exports.email = ICON_email;
-
-import ICON_end_call from './end_call.js';
-module.exports.end_call = ICON_end_call;
-
-import ICON_erect_window from './erect_window.js';
-module.exports.erect_window = ICON_erect_window;
-
-import ICON_error from './error.js';
-module.exports.error = ICON_error;
-
-import ICON_event from './event.js';
-module.exports.event = ICON_event;
-
-import ICON_expand from './expand.js';
-module.exports.expand = ICON_expand;
-
-import ICON_expand_alt from './expand_alt.js';
-module.exports.expand_alt = ICON_expand_alt;
-
-import ICON_fallback from './fallback.js';
-module.exports.fallback = ICON_fallback;
-
-import ICON_favorite from './favorite.js';
-module.exports.favorite = ICON_favorite;
-
-import ICON_feed from './feed.js';
-module.exports.feed = ICON_feed;
-
-import ICON_file from './file.js';
-module.exports.file = ICON_file;
-
-import ICON_filter from './filter.js';
-module.exports.filter = ICON_filter;
-
-import ICON_filterList from './filterList.js';
-module.exports.filterList = ICON_filterList;
-
-import ICON_flow from './flow.js';
-module.exports.flow = ICON_flow;
-
-import ICON_forward from './forward.js';
-module.exports.forward = ICON_forward;
-
-import ICON_frozen from './frozen.js';
-module.exports.frozen = ICON_frozen;
-
-import ICON_full_width_view from './full_width_view.js';
-module.exports.full_width_view = ICON_full_width_view;
-
-import ICON_groups from './groups.js';
-module.exports.groups = ICON_groups;
-
-import ICON_help from './help.js';
-module.exports.help = ICON_help;
-
-import ICON_home from './home.js';
-module.exports.home = ICON_home;
-
-import ICON_identity from './identity.js';
-module.exports.identity = ICON_identity;
-
-import ICON_image from './image.js';
-module.exports.image = ICON_image;
-
-import ICON_inbox from './inbox.js';
-module.exports.inbox = ICON_inbox;
-
-import ICON_info from './info.js';
-module.exports.info = ICON_info;
-
-import ICON_insert_tag_field from './insert_tag_field.js';
-module.exports.insert_tag_field = ICON_insert_tag_field;
-
-import ICON_insert_template from './insert_template.js';
-module.exports.insert_template = ICON_insert_template;
-
-import ICON_italic from './italic.js';
-module.exports.italic = ICON_italic;
-
-import ICON_jump_to_bottom from './jump_to_bottom.js';
-module.exports.jump_to_bottom = ICON_jump_to_bottom;
-
-import ICON_jump_to_top from './jump_to_top.js';
-module.exports.jump_to_top = ICON_jump_to_top;
-
-import ICON_justify_text from './justify_text.js';
-module.exports.justify_text = ICON_justify_text;
-
-import ICON_kanban from './kanban.js';
-module.exports.kanban = ICON_kanban;
-
-import ICON_keyboard_dismiss from './keyboard_dismiss.js';
-module.exports.keyboard_dismiss = ICON_keyboard_dismiss;
-
-import ICON_knowledge_base from './knowledge_base.js';
-module.exports.knowledge_base = ICON_knowledge_base;
-
-import ICON_layers from './layers.js';
-module.exports.layers = ICON_layers;
-
-import ICON_layout from './layout.js';
-module.exports.layout = ICON_layout;
-
-import ICON_left from './left.js';
-module.exports.left = ICON_left;
-
-import ICON_left_align_text from './left_align_text.js';
-module.exports.left_align_text = ICON_left_align_text;
-
-import ICON_like from './like.js';
-module.exports.like = ICON_like;
-
-import ICON_link from './link.js';
-module.exports.link = ICON_link;
-
-import ICON_list from './list.js';
-module.exports.list = ICON_list;
-
-import ICON_location from './location.js';
-module.exports.location = ICON_location;
-
-import ICON_lock from './lock.js';
-module.exports.lock = ICON_lock;
-
-import ICON_log_a_call from './log_a_call.js';
-module.exports.log_a_call = ICON_log_a_call;
-
-import ICON_logout from './logout.js';
-module.exports.logout = ICON_logout;
-
-import ICON_magicwand from './magicwand.js';
-module.exports.magicwand = ICON_magicwand;
-
-import ICON_mark_all_as_read from './mark_all_as_read.js';
-module.exports.mark_all_as_read = ICON_mark_all_as_read;
-
-import ICON_matrix from './matrix.js';
-module.exports.matrix = ICON_matrix;
-
-import ICON_metrics from './metrics.js';
-module.exports.metrics = ICON_metrics;
-
-import ICON_minimize_window from './minimize_window.js';
-module.exports.minimize_window = ICON_minimize_window;
-
-import ICON_moneybag from './moneybag.js';
-module.exports.moneybag = ICON_moneybag;
-
-import ICON_monthlyview from './monthlyview.js';
-module.exports.monthlyview = ICON_monthlyview;
-
-import ICON_move from './move.js';
-module.exports.move = ICON_move;
-
-import ICON_muted from './muted.js';
-module.exports.muted = ICON_muted;
-
-import ICON_new from './new.js';
-module.exports.new = ICON_new;
-
-import ICON_new_window from './new_window.js';
-module.exports.new_window = ICON_new_window;
-
-import ICON_news from './news.js';
-module.exports.news = ICON_news;
-
-import ICON_note from './note.js';
-module.exports.note = ICON_note;
-
-import ICON_notebook from './notebook.js';
-module.exports.notebook = ICON_notebook;
-
-import ICON_notification from './notification.js';
-module.exports.notification = ICON_notification;
-
-import ICON_office365 from './office365.js';
-module.exports.office365 = ICON_office365;
-
-import ICON_offline from './offline.js';
-module.exports.offline = ICON_offline;
-
-import ICON_open from './open.js';
-module.exports.open = ICON_open;
-
-import ICON_open_folder from './open_folder.js';
-module.exports.open_folder = ICON_open_folder;
-
-import ICON_opened_folder from './opened_folder.js';
-module.exports.opened_folder = ICON_opened_folder;
-
-import ICON_overflow from './overflow.js';
-module.exports.overflow = ICON_overflow;
-
-import ICON_package from './package.js';
-module.exports.package = ICON_package;
-
-import ICON_package_org from './package_org.js';
-module.exports.package_org = ICON_package_org;
-
-import ICON_package_org_beta from './package_org_beta.js';
-module.exports.package_org_beta = ICON_package_org_beta;
-
-import ICON_page from './page.js';
-module.exports.page = ICON_page;
-
-import ICON_palette from './palette.js';
-module.exports.palette = ICON_palette;
-
-import ICON_paste from './paste.js';
-module.exports.paste = ICON_paste;
-
-import ICON_people from './people.js';
-module.exports.people = ICON_people;
-
-import ICON_phone_landscape from './phone_landscape.js';
-module.exports.phone_landscape = ICON_phone_landscape;
-
-import ICON_phone_portrait from './phone_portrait.js';
-module.exports.phone_portrait = ICON_phone_portrait;
-
-import ICON_photo from './photo.js';
-module.exports.photo = ICON_photo;
-
-import ICON_picklist from './picklist.js';
-module.exports.picklist = ICON_picklist;
-
-import ICON_power from './power.js';
-module.exports.power = ICON_power;
-
-import ICON_preview from './preview.js';
-module.exports.preview = ICON_preview;
-
-import ICON_priority from './priority.js';
-module.exports.priority = ICON_priority;
-
-import ICON_process from './process.js';
-module.exports.process = ICON_process;
-
-import ICON_push from './push.js';
-module.exports.push = ICON_push;
-
-import ICON_puzzle from './puzzle.js';
-module.exports.puzzle = ICON_puzzle;
-
-import ICON_question from './question.js';
-module.exports.question = ICON_question;
-
-import ICON_questions_and_answers from './questions_and_answers.js';
-module.exports.questions_and_answers = ICON_questions_and_answers;
-
-import ICON_record from './record.js';
-module.exports.record = ICON_record;
-
-import ICON_record_create from './record_create.js';
-module.exports.record_create = ICON_record_create;
-
-import ICON_redo from './redo.js';
-module.exports.redo = ICON_redo;
-
-import ICON_refresh from './refresh.js';
-module.exports.refresh = ICON_refresh;
-
-import ICON_relate from './relate.js';
-module.exports.relate = ICON_relate;
-
-import ICON_remove_formatting from './remove_formatting.js';
-module.exports.remove_formatting = ICON_remove_formatting;
-
-import ICON_remove_link from './remove_link.js';
-module.exports.remove_link = ICON_remove_link;
-
-import ICON_replace from './replace.js';
-module.exports.replace = ICON_replace;
-
-import ICON_reply from './reply.js';
-module.exports.reply = ICON_reply;
-
-import ICON_reset_password from './reset_password.js';
-module.exports.reset_password = ICON_reset_password;
-
-import ICON_retweet from './retweet.js';
-module.exports.retweet = ICON_retweet;
-
-import ICON_richtextbulletedlist from './richtextbulletedlist.js';
-module.exports.richtextbulletedlist = ICON_richtextbulletedlist;
-
-import ICON_richtextindent from './richtextindent.js';
-module.exports.richtextindent = ICON_richtextindent;
-
-import ICON_richtextnumberedlist from './richtextnumberedlist.js';
-module.exports.richtextnumberedlist = ICON_richtextnumberedlist;
-
-import ICON_richtextoutdent from './richtextoutdent.js';
-module.exports.richtextoutdent = ICON_richtextoutdent;
-
-import ICON_right from './right.js';
-module.exports.right = ICON_right;
-
-import ICON_right_align_text from './right_align_text.js';
-module.exports.right_align_text = ICON_right_align_text;
-
-import ICON_rotate from './rotate.js';
-module.exports.rotate = ICON_rotate;
-
-import ICON_rows from './rows.js';
-module.exports.rows = ICON_rows;
-
-import ICON_salesforce1 from './salesforce1.js';
-module.exports.salesforce1 = ICON_salesforce1;
-
-import ICON_search from './search.js';
-module.exports.search = ICON_search;
-
-import ICON_settings from './settings.js';
-module.exports.settings = ICON_settings;
-
-import ICON_setup from './setup.js';
-module.exports.setup = ICON_setup;
-
-import ICON_setup_assistant_guide from './setup_assistant_guide.js';
-module.exports.setup_assistant_guide = ICON_setup_assistant_guide;
-
-import ICON_share from './share.js';
-module.exports.share = ICON_share;
-
-import ICON_share_mobile from './share_mobile.js';
-module.exports.share_mobile = ICON_share_mobile;
-
-import ICON_share_post from './share_post.js';
-module.exports.share_post = ICON_share_post;
-
-import ICON_shield from './shield.js';
-module.exports.shield = ICON_shield;
-
-import ICON_side_list from './side_list.js';
-module.exports.side_list = ICON_side_list;
-
-import ICON_signpost from './signpost.js';
-module.exports.signpost = ICON_signpost;
-
-import ICON_sms from './sms.js';
-module.exports.sms = ICON_sms;
-
-import ICON_snippet from './snippet.js';
-module.exports.snippet = ICON_snippet;
-
-import ICON_socialshare from './socialshare.js';
-module.exports.socialshare = ICON_socialshare;
-
-import ICON_sort from './sort.js';
-module.exports.sort = ICON_sort;
-
-import ICON_spinner from './spinner.js';
-module.exports.spinner = ICON_spinner;
-
-import ICON_standard_objects from './standard_objects.js';
-module.exports.standard_objects = ICON_standard_objects;
-
-import ICON_stop from './stop.js';
-module.exports.stop = ICON_stop;
-
-import ICON_strikethrough from './strikethrough.js';
-module.exports.strikethrough = ICON_strikethrough;
-
-import ICON_success from './success.js';
-module.exports.success = ICON_success;
-
-import ICON_summary from './summary.js';
-module.exports.summary = ICON_summary;
-
-import ICON_summarydetail from './summarydetail.js';
-module.exports.summarydetail = ICON_summarydetail;
-
-import ICON_switch from './switch.js';
-module.exports.switch = ICON_switch;
-
-import ICON_table from './table.js';
-module.exports.table = ICON_table;
-
-import ICON_tablet_landscape from './tablet_landscape.js';
-module.exports.tablet_landscape = ICON_tablet_landscape;
-
-import ICON_tablet_portrait from './tablet_portrait.js';
-module.exports.tablet_portrait = ICON_tablet_portrait;
-
-import ICON_tabset from './tabset.js';
-module.exports.tabset = ICON_tabset;
-
-import ICON_task from './task.js';
-module.exports.task = ICON_task;
-
-import ICON_text_background_color from './text_background_color.js';
-module.exports.text_background_color = ICON_text_background_color;
-
-import ICON_text_color from './text_color.js';
-module.exports.text_color = ICON_text_color;
-
-import ICON_threedots from './threedots.js';
-module.exports.threedots = ICON_threedots;
-
-import ICON_threedots_vertical from './threedots_vertical.js';
-module.exports.threedots_vertical = ICON_threedots_vertical;
-
-import ICON_thunder from './thunder.js';
-module.exports.thunder = ICON_thunder;
-
-import ICON_tile_card_list from './tile_card_list.js';
-module.exports.tile_card_list = ICON_tile_card_list;
-
-import ICON_topic from './topic.js';
-module.exports.topic = ICON_topic;
-
-import ICON_touch_action from './touch_action.js';
-module.exports.touch_action = ICON_touch_action;
-
-import ICON_trail from './trail.js';
-module.exports.trail = ICON_trail;
-
-import ICON_undelete from './undelete.js';
-module.exports.undelete = ICON_undelete;
-
-import ICON_undeprecate from './undeprecate.js';
-module.exports.undeprecate = ICON_undeprecate;
-
-import ICON_underline from './underline.js';
-module.exports.underline = ICON_underline;
-
-import ICON_undo from './undo.js';
-module.exports.undo = ICON_undo;
-
-import ICON_unlock from './unlock.js';
-module.exports.unlock = ICON_unlock;
-
-import ICON_unmuted from './unmuted.js';
-module.exports.unmuted = ICON_unmuted;
-
-import ICON_up from './up.js';
-module.exports.up = ICON_up;
-
-import ICON_upload from './upload.js';
-module.exports.upload = ICON_upload;
-
-import ICON_user from './user.js';
-module.exports.user = ICON_user;
-
-import ICON_user_role from './user_role.js';
-module.exports.user_role = ICON_user_role;
-
-import ICON_volume_high from './volume_high.js';
-module.exports.volume_high = ICON_volume_high;
-
-import ICON_volume_low from './volume_low.js';
-module.exports.volume_low = ICON_volume_low;
-
-import ICON_volume_off from './volume_off.js';
-module.exports.volume_off = ICON_volume_off;
-
-import ICON_warning from './warning.js';
-module.exports.warning = ICON_warning;
-
-import ICON_weeklyview from './weeklyview.js';
-module.exports.weeklyview = ICON_weeklyview;
-
-import ICON_world from './world.js';
-module.exports.world = ICON_world;
-
-import ICON_zoomin from './zoomin.js';
-module.exports.zoomin = ICON_zoomin;
-
-import ICON_zoomout from './zoomout.js';
-module.exports.zoomout = ICON_zoomout;
+module.exports = {
+add:{"path":{"d":"M13.8 13.4h7.7c.3 0 .7-.3.7-.7v-1.4c0-.4-.4-.7-.7-.7h-7.7c-.2 0-.4-.2-.4-.4V2.5c0-.3-.3-.7-.7-.7h-1.4c-.4 0-.7.4-.7.7v7.7c0 .2-.2.4-.4.4H2.5c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h7.7c.2 0 .4.2.4.4v7.7c0 .3.3.7.7.7h1.4c.4 0 .7-.4.7-.7v-7.7c0-.2.2-.4.4-.4z"}},
+adduser:{"path":{"d":"M10.1 17.1c0-1.3.4-2.7 1.1-3.8.8-1.4 1.6-1.9 2.3-3 1.2-1.7 1.4-4.1.7-6-.8-1.9-2.5-3-4.6-2.9S6 2.7 5.3 4.6c-.7 2-.4 4.5 1.3 6.1.6.7 1.3 1.7.9 2.6-.3 1-1.4 1.4-2.2 1.7-1.8.8-4 1.9-4.3 4.1-.4 1.7.8 3.5 2.7 3.5h7.8c.4 0 .6-.4.4-.7-1.1-1.4-1.8-3.1-1.8-4.8zm7.4-5.6c-3.1 0-5.5 2.5-5.5 5.6s2.4 5.5 5.5 5.5 5.5-2.5 5.5-5.5-2.5-5.6-5.5-5.6zm2.8 6c0 .3-.2.5-.5.5h-1.3v1.4c0 .3-.3.4-.5.4h-1c-.2 0-.4-.1-.4-.4V18h-1.4c-.3 0-.4-.2-.4-.5v-.9c0-.3.1-.4.4-.4h1.4v-1.4c0-.3.2-.5.4-.5h1c.2 0 .5.2.5.5v1.4h1.3c.3 0 .5.1.5.4v.9z"}},
+announcement:{"path":{"d":"M10.5 21l-.6-.5c-.7-.5-.7-1.4-.7-1.9v-1.3c0-.4-.3-.7-.7-.7H5.8c-.4 0-.7.3-.7.7v3.6c0 1.2.7 2.2 1.9 2.2h2.2c1.4 0 1.5-.9 1.5-.9s.2-.9-.2-1.2zM20.8 8.3V2c0-1.1-1.4-1.4-2.2-.7l-4.1 3.9c-.6.5-1.4.8-2.3.8h-7C2.8 6 .9 8.1.9 10.5v.1c0 2.4 1.9 4.2 4.3 4.2h7c.9 0 1.7.3 2.4.9l4 4c.8.7 2.2.4 2.2-.7v-6.3c1.4 0 2.2-.9 2.2-2.2 0-1.2-.8-2.2-2.2-2.2z"}},
+answer:{"path":{"d":"M12 1.8C5.9 1.8.9 6.4.9 12c0 1.8.5 3.5 1.4 5 .1.2.1.4.1.6l-1 3.2c-.2.6.4 1.1 1 .9l3.2-1.1c.2-.1.4-.1.6.1 1.7.9 3.7 1.5 5.8 1.5 6.2 0 11.1-4.5 11.1-10.2C23 6.4 18.1 1.8 12 1.8zm5.3 7.9l-5.6 5.6c-.3.2-.5.3-.8.3-.3 0-.6-.1-.8-.3l-2.7-2.7c-.2-.2-.2-.6 0-.7l.8-.8c.2-.2.5-.2.8 0l1.9 2 4.8-4.8c.3-.3.6-.3.8 0l.8.7c.2.2.2.6 0 .7z"}},
+apex:{"path":{"d":"M22.4 18.5H9.9c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h12.5c.4 0 .7-.3.7-.7v-1.3c0-.4-.3-.7-.7-.7zm-10.7-8.4L2.8 2.9c-.3-.2-.7-.2-1 .1l-.7 1.2c-.3.3-.2.7.1.9l6.4 5.1c.2.2.2.6 0 .7L1.2 16c-.3.2-.4.7-.1 1l.7 1.2c.3.3.7.4 1 .1l8.9-7.1c.4-.3.4-.9 0-1.1z"}},
+approval:{"path":{"d":"M20.9 13.5h-4.1c-1.2 0-2.2-1-2.2-2.2.2-3.3 1.7-3.5 1.8-5.6.2-2.2-1.2-4.2-3.4-4.7-2.8-.6-5.4 1.6-5.4 4.4 0 2.4 1.6 2.4 1.8 5.9 0 1.2-1 2.2-2.2 2.2H3.1c-1.2 0-2.2.9-2.2 2.2v1.5c0 .4.3.7.8.7h20.6c.5 0 .8-.3.8-.7v-1.5c0-1.3-1-2.2-2.2-2.2zm0 6.6H3.1c-.4 0-.7.3-.7.7v.1c0 1.2 1 2.2 2.2 2.2h14.8c1.2 0 2.2-1 2.2-2.2v-.1c0-.4-.3-.7-.7-.7z"}},
+apps:{"path":{"d":"M6 1.8H3.2c-.8 0-1.4.6-1.4 1.4V6c0 .8.6 1.4 1.4 1.4H6c.8 0 1.4-.6 1.4-1.4V3.2c0-.8-.6-1.4-1.4-1.4zm0 14.8H3.2c-.8 0-1.4.6-1.4 1.4v2.8c0 .8.6 1.4 1.4 1.4H6c.8 0 1.4-.6 1.4-1.4V18c0-.8-.6-1.4-1.4-1.4zm0-7.4H3.2c-.8 0-1.4.6-1.4 1.4v2.8c0 .8.6 1.4 1.4 1.4H6c.8 0 1.4-.6 1.4-1.4v-2.8c0-.8-.6-1.4-1.4-1.4zm7.4-7.4h-2.8c-.8 0-1.4.6-1.4 1.4V6c0 .8.6 1.4 1.4 1.4h2.8c.8 0 1.4-.6 1.4-1.4V3.2c0-.8-.6-1.4-1.4-1.4zm0 14.8h-2.8c-.8 0-1.4.6-1.4 1.4v2.8c0 .8.6 1.4 1.4 1.4h2.8c.8 0 1.4-.6 1.4-1.4V18c0-.8-.6-1.4-1.4-1.4zm0-7.4h-2.8c-.8 0-1.4.6-1.4 1.4v2.8c0 .8.6 1.4 1.4 1.4h2.8c.8 0 1.4-.6 1.4-1.4v-2.8c0-.8-.6-1.4-1.4-1.4zm7.4-7.4H18c-.8 0-1.4.6-1.4 1.4V6c0 .8.6 1.4 1.4 1.4h2.8c.8 0 1.4-.6 1.4-1.4V3.2c0-.8-.6-1.4-1.4-1.4zm0 14.8H18c-.8 0-1.4.6-1.4 1.4v2.8c0 .8.6 1.4 1.4 1.4h2.8c.8 0 1.4-.6 1.4-1.4V18c0-.8-.6-1.4-1.4-1.4zm0-7.4H18c-.8 0-1.4.6-1.4 1.4v2.8c0 .8.6 1.4 1.4 1.4h2.8c.8 0 1.4-.6 1.4-1.4v-2.8c0-.8-.6-1.4-1.4-1.4z"}},
+arrowdown:{"path":{"d":"M4.4 14.3c-.3.4-.3.9 0 1.3l7 6.7c.3.4.9.4 1.2 0l7-6.7c.4-.4.4-.9 0-1.3l-1.3-1.2c-.3-.4-.9-.4-1.3 0l-2.1 2.1c-.4.4-1.1.1-1.1-.4V2.3c0-.5-.4-.9-.9-.9h-1.8c-.5 0-.9.5-.9.9v12.5c0 .5-.7.8-1.1.4L7 13.1c-.4-.4-1-.4-1.3 0l-1.3 1.2z"}},
+arrowup:{"path":{"d":"M19.1 9.7c.4-.4.4-.9 0-1.3l-6.9-6.7c-.4-.4-.9-.4-1.3 0L4 8.4c-.4.4-.4.9 0 1.3l1.3 1.2c.3.4.9.4 1.3 0l2.1-2.1c.4-.4 1-.1 1 .4v12.5c0 .5.5.9 1 .9h1.8c.5 0 .9-.5.9-.9V9.2c0-.5.7-.8 1-.4l2.2 2.1c.4.4.9.4 1.3 0l1.2-1.2z"}},
+attach:{"path":{"d":"M8.1 16.9c.3.3.7.3 1 0l4.6-4.6c.3-.3.9-.3 1.3 0 .4.4.4 1 0 1.4l-5.7 5.6c-1.2 1.2-3.3 1.2-4.5 0l-.1-.1c-1.2-1.2-1.2-3.3 0-4.5l10-10c1.3-1.3 3.3-1.3 4.6 0 1.3 1.3 1.3 3.3 0 4.6-.2.3-.3.6-.1.9.3.5.5 1 .6 1.6.1.3.6.4.8.2l.7-.7c2.4-2.4 2.4-6.2 0-8.6h-.1C18.9.4 15 .4 12.7 2.7l-10 10c-2.4 2.3-2.4 6.2 0 8.5l.1.1c2.3 2.4 6.1 2.4 8.5 0l5.7-5.7c1.5-1.4 1.4-3.8-.1-5.3-1.5-1.4-3.9-1.3-5.3.1L7.1 15c-.3.2-.3.7 0 1l1 .9z"}},
+back:{"path":{"d":"M22.4 10.6H7.1c-.4 0-.6-.5-.3-.8l4.4-4.4c.3-.3.3-.7 0-1l-1-1c-.3-.3-.7-.3-1 0l-8 8.1c-.3.3-.3.7 0 1l8 8.1c.3.3.7.3 1 0l1-1c.2-.3.2-.7 0-1l-4.5-4.4c-.2-.3-.1-.8.4-.8h15.3c.4 0 .7-.3.7-.7v-1.3c0-.4-.3-.8-.7-.8z"}},
+ban:{"path":{"d":"M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zM3.7 12c0-4.6 3.7-8.3 8.3-8.3 1.8 0 3.5.5 4.8 1.5L5.2 16.8c-1-1.3-1.5-3-1.5-4.8zm8.3 8.3c-1.8 0-3.5-.5-4.8-1.5L18.8 7.2c1 1.3 1.5 3 1.5 4.8 0 4.6-3.7 8.3-8.3 8.3z"}},
+bold:{"path":{"d":"M18.9 8.8c0-2.8-2.2-5.1-4.8-5.1H6.5c-.5 0-1 .4-1 .9v15.2c0 .6.5 1 1 1h7.6c2.6 0 4.8-2.3 4.8-5.1 0-1.3-.5-2.5-1.3-3.5.8-.9 1.3-2.1 1.3-3.4zm-4.8 8.7H8.8v-3.7h5.3c.9 0 1.6.9 1.6 1.9s-.7 1.8-1.6 1.8zm0-6.9H8.8V6.9h5.3c.9 0 1.6.9 1.6 1.9s-.7 1.8-1.6 1.8z"}},
+bookmark:{"path":{"d":"M17.2 22.9l-4.6-4.6c-.2-.3-.6-.3-.9 0l-4.9 4.6c-.3.3-.8.1-.8-.3V2.8C6 1.8 6.8.9 7.8.9h8.4c1 0 1.8.9 1.8 1.9v19.8c0 .4-.5.6-.8.3z"}},
+broadcast:{"path":{"d":"M.9 8.8c0 2.7 1.1 5.2 3 7.1.4.4 1 .4 1.4 0 .4-.5.4-1.1 0-1.5C3.8 12.9 3 10.9 3 8.8c0-2.2.8-4.2 2.3-5.7.4-.4.4-1 0-1.4-.4-.4-1-.4-1.4 0C2 3.6.9 6.1.9 8.8zm5.9 4.1c.4.4 1 .4 1.5 0 .4-.4.4-1 0-1.4-.7-.8-1.2-1.7-1.2-2.7 0-1.1.4-2 1.2-2.7.4-.4.4-1.1 0-1.5-.5-.4-1.1-.4-1.5 0-1.1 1.1-1.7 2.6-1.7 4.2 0 1.5.6 3 1.7 4.1zM20.1 1.7c-.4-.4-1.1-.4-1.5 0-.4.4-.4 1 0 1.4 1.5 1.5 2.3 3.5 2.4 5.7-.1 2.1-.9 4.1-2.4 5.6-.4.4-.4 1 0 1.5.4.4 1.1.4 1.5 0C22 14 23 11.5 23 8.8c0-2.7-1-5.2-2.9-7.1zm-1.2 7.1c0-1.6-.7-3.1-1.8-4.2-.4-.4-1-.4-1.4 0-.4.4-.4 1.1 0 1.5.7.7 1.1 1.6 1.1 2.7 0 1-.4 1.9-1.1 2.7-.4.4-.4 1 0 1.4.4.4 1 .4 1.4 0 1.1-1.1 1.8-2.6 1.8-4.1zM10.9 11.2c-1-.4-1.6-1.3-1.6-2.5C9.3 7.2 10.5 6 12 6c1.5 0 2.7 1.2 2.7 2.7 0 1.2-.7 2.1-1.7 2.5v10.9c0 .3-.2.5-.5.5h-1.1c-.2 0-.5-.2-.5-.5V11.2z"}},
+brush:{"path":{"d":"M22.8 1.2c-1.6-1.6-10.3 3.4-15.7 12-.2.4-.1.9.3 1.1 1.2.6 2.2 1.6 2.7 2.8.2.5.7.6 1.1.3C19.5 12 24.4 2.9 22.8 1.2zm-17.3 15c-.7 0-1.3.4-1.8.9h-.1c-.2 0-.4.3-.6.7-.7 1.2-.9 2.7-2 4.3-.2.3-.1.7.2.8 1.6.5 4.4 0 5.8-1v.1c.4-.1.3-.3.4-.3.5-.9 1-1.4 1-2.3-.1-1.7-1.3-3.2-2.9-3.2z"}},
+bucket:{"path":{"d":"M22.6 5.1c0-2.9-4.5-4.2-8.8-4.2S5.1 2.2 5.1 5.1v.2C1.1 6.5.5 9 .5 10.4c0 1.4.7 2.8 1.9 3.9 1 .8 2.3 1.3 3.6 1.4h.4c3-.1 5.9-1.1 6.8-2.7-.5-.4-.7-.9-.7-1.5 0-1 .8-1.8 1.8-1.8s1.9.8 1.9 1.8c0 .8-.5 1.5-1.2 1.7-.9 2.6-4.6 4.3-9 4.3v2.8c0 1.5 3.5 2.8 7.8 2.8s7.9-1.3 7.9-2.8V7.1c.6-.6.9-1.2.9-2zm-8.8-1.4c3.1 0 5 .7 5.8 1.2.1.1.1.3 0 .4-.8.5-2.7 1.2-5.8 1.2s-4.9-.7-5.7-1.2c-.1-.1-.1-.3 0-.4.8-.5 2.7-1.2 5.7-1.2zM3.6 12.8c-.8-.6-1.3-1.5-1.3-2.4 0-2 1.9-3 3.6-3.4l.1.1v6.7c-.9 0-1.8-.4-2.4-1z"}},
+builder:{"path":{"d":"M5.3 7.8H1.6c-.4 0-.7.4-.7.7v11.8c0 1 .9 1.9 1.9 1.9h2.5c.4 0 .7-.4.7-.7v-13c0-.3-.3-.7-.7-.7zm17.1 0H8.5c-.3 0-.7.4-.7.7v13c0 .3.4.7.7.7h12.7c1 0 1.9-.9 1.9-1.9V8.5c0-.3-.3-.7-.7-.7zm-1.2-6H2.8c-1 0-1.9.9-1.9 1.9v1.6c0 .4.3.7.7.7h20.8c.4 0 .7-.3.7-.7V3.7c0-1-.9-1.9-1.9-1.9z"}},
+call:{"path":{"d":"M22.4 17.5l-2.8-2.3c-.7-.5-1.6-.5-2.2 0L15 16.9c-.3.3-.7.2-1-.1l-3.6-3.2L7.2 10c-.3-.3-.3-.6-.1-1l1.7-2.4c.5-.6.5-1.5 0-2.2L6.5 1.6C5.8.8 4.6.7 3.8 1.5L1.4 3.9c-.4.3-.6.9-.6 1.4.3 4.7 2.4 9.1 5.5 12.3s7.6 5.2 12.3 5.5c.6 0 1.1-.2 1.4-.6l2.4-2.4c.9-.7.9-2 0-2.6z"}},
+capslock:{"path":{"d":"M20.1 9.7l-7.5-8.5c-.3-.4-.9-.4-1.2 0L3.9 9.7c-.3.4-.1.9.4.9h3.5v5.8c0 .4.4.7.7.7h7c.3 0 .7-.3.7-.7v-5.8h3.5c.5 0 .7-.5.4-.9zm-4.6 10.1h-7c-.3 0-.7.4-.7.7v1.9c0 .4.4.7.7.7h7c.3 0 .7-.3.7-.7v-1.9c0-.3-.4-.7-.7-.7z"}},
+cases:{"path":{"d":"M4.2 1.6c0-.4-.4-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v14.3c0 .4.3.7.7.7h1.9c.3 0 .7-.3.7-.7V1.6zm18.9 0c0-.4-.3-.7-.7-.7h-1.9c-.3 0-.7.3-.7.7v14.3c0 .4.4.7.7.7h1.9c.4 0 .7-.3.7-.7V1.6zM17.3.9h-1.4c-.3 0-.7.4-.7.8v5.7c0 .2.1.3.3.4.8.4 1.5.9 2.1 1.5.1.2.4.1.4-.1V1.7c0-.4-.3-.8-.7-.8zM11.1 7h1.8c.3 0 .5-.2.5-.4V1.7c0-.4-.3-.8-.7-.8h-1.4c-.4 0-.7.4-.7.8v4.9c0 .2.2.5.5.4zM6.4 9.3c.6-.6 1.4-1.1 2.1-1.5.2-.1.3-.2.3-.4V1.7c0-.4-.4-.8-.7-.8H6.7c-.4 0-.7.4-.7.8v7.5c0 .2.2.3.4.1zm5.6-.5c-3.3 0-6 2.7-6 6 0 1 .3 2 .7 2.9L3.5 21c-.3.2-.3.6 0 .9l.9 1c.3.3.7.3 1 0l3.2-3.2c1 .7 2.2 1.1 3.4 1.1 3.3 0 6-2.7 6-6s-2.7-6-6-6zm0 9.2c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2 3.2 1.4 3.2 3.2S13.8 18 12 18z"}},
+center_align_text:{"path":{"d":"M22.2 3c0-.4-.4-.7-.7-.7h-19c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V3zm-2.8 5.5c0-.3-.3-.7-.7-.7H5.3c-.4 0-.7.4-.7.7v1.4c0 .4.3.7.7.7h13.4c.4 0 .7-.3.7-.7V8.5zm-.9 11.1c0-.4-.4-.7-.7-.7H6.2c-.3 0-.7.3-.7.7V21c0 .4.4.7.7.7h11.6c.3 0 .7-.3.7-.7v-1.4zm3.7-5.5c0-.4-.4-.7-.7-.7h-19c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h19c.3 0 .7-.4.7-.7v-1.4z"}},
+change_owner:{"path":{"d":"M12.6 17.4c-1.4-.6-1.6-1.1-1.6-1.7 0-.5.4-1 .8-1.4.8-.7 1.2-1.8 1.2-3 0-2.2-1.3-3.9-3.8-3.9s-3.8 1.7-3.8 3.9c0 1.2.3 2.3 1.2 3 .4.4.8.9.8 1.4 0 .6-.2 1.1-1.6 1.7-2.1.8-4 1.7-4 3.5 0 1.2 1 2.2 2.1 2.2h10.6c1.2 0 2.1-1 2.1-2.2 0-1.7-2-2.7-4-3.5zm7.9-8.6c0-3.4-2.8-6.3-6.2-6.3V.9l-3.1 2.6c-.2.1-.1.3 0 .5l3.1 2.5V4.8c2.2 0 3.9 1.8 3.9 4h-1.6l2.6 3.1c.1.1.3.1.5 0l2.5-3.1h-1.7z"}},
+chart:{"path":{"d":"M21 10.8L11.5 16c-.6.3-1.3-.1-1.3-.8V3.9c0-.5-.5-.9-.9-.7-4.6 1.3-8 5.8-7.4 10.9.5 4.6 4.2 8.4 8.9 8.9 6.2.7 11.4-4.1 11.4-10.1 0-.5-.1-1.1-.2-1.6s-.6-.7-1-.5zm-8.2 2.1l9.1-4.8c.5-.3.7-1 .3-1.5-2-2.9-5.3-5-9-5.6-.6-.1-1.2.4-1.2 1v10.5c0 .4.4.6.8.4z"}},
+chat:{"path":{"d":"M12 1.8C5.9 1.8 1 6.4 1 12c0 1.7.5 3.4 1.3 4.8.1.3.2.6.1.8l-1.4 4c-.2.3.2.6.6.6l3.9-1.6c.3-.1.5 0 .8.1 1.7.9 3.7 1.5 5.8 1.5 6 0 11-4.5 11-10.2C23 6.4 18.1 1.8 12 1.8zm-5.5 12c-1.1 0-1.9-.8-1.9-1.8s.8-1.8 1.9-1.8 1.8.8 1.8 1.8-.8 1.8-1.8 1.8zm5.5 0c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8 1.8.8 1.8 1.8-.8 1.8-1.8 1.8zm5.5 0c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8 1.9.8 1.9 1.8-.8 1.8-1.9 1.8z"}},
+check:{"path":{"d":"M8.8 19.6L1.2 12c-.3-.3-.3-.8 0-1.1l1-1c.3-.3.8-.3 1 0L9 15.7c.1.2.5.2.6 0L20.9 4.4c.2-.3.7-.3 1 0l1 1c.3.3.3.7 0 1L9.8 19.6c-.2.3-.7.3-1 0z"}},
+checkin:{"path":{"d":"M12 .9C7.2.9 3.2 4.8 3.2 9.7c0 6.1 6.3 11.7 8.2 13.2.4.3.8.3 1.2 0 1.9-1.5 8.2-7.1 8.2-13.2 0-4.9-4-8.8-8.8-8.8zm0 12.5c-2 0-3.7-1.7-3.7-3.7S10 6 12 6s3.7 1.7 3.7 3.7-1.7 3.7-3.7 3.7z"}},
+chevrondown:{"path":{"d":"M22 8.2l-9.5 9.6c-.3.2-.7.2-1 0L2 8.2c-.2-.3-.2-.7 0-1l1-1c.3-.3.8-.3 1.1 0l7.4 7.5c.3.3.7.3 1 0l7.4-7.5c.3-.2.8-.2 1.1 0l1 1c.2.3.2.7 0 1z"}},
+chevronleft:{"path":{"d":"M15.8 22l-9.6-9.4c-.3-.3-.3-.8 0-1.1l9.6-9.4c.3-.3.7-.3 1 0l1 1c.3.3.3.7 0 1l-7.6 7.4c-.3.3-.3.8 0 1.1l7.5 7.4c.3.3.3.7 0 1l-1 1c-.2.2-.6.2-.9 0z"}},
+chevronright:{"path":{"d":"M8.3 2l9.5 9.5c.3.3.3.7 0 1L8.3 22c-.3.2-.8.2-1.1 0l-1-1c-.2-.3-.2-.8 0-1.1l7.6-7.4c.2-.3.2-.7 0-1L6.3 4.1C6 3.8 6 3.3 6.3 3l1-1c.3-.2.7-.2 1 0z"}},
+chevronup:{"path":{"d":"M2 15.8l9.5-9.6c.3-.2.7-.2 1 0l9.5 9.6c.2.3.2.7 0 1l-1 1c-.3.3-.8.3-1.1 0l-7.4-7.6c-.3-.2-.7-.2-1 0l-7.4 7.6c-.3.2-.8.2-1.1 0l-1-1c-.2-.3-.2-.7 0-1z"}},
+clear:{"path":{"d":"M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm2.3 11.5l3.6 3.6c.1.2.1.4 0 .6l-1.3 1.3c-.2.2-.5.2-.7 0l-3.6-3.6c-.2-.2-.4-.2-.6 0l-3.6 3.6c-.2.2-.5.2-.7 0l-1.3-1.3c-.1-.2-.1-.4 0-.6l3.6-3.6c.2-.2.2-.5 0-.7L6.1 8.1c-.2-.2-.2-.5 0-.7l1.3-1.3c.2-.1.4-.1.6 0l3.7 3.7c.2.2.4.2.6 0l3.6-3.6c.2-.2.5-.2.7 0l1.3 1.3c.1.2.1.4 0 .6l-3.6 3.6c-.2.2-.2.5 0 .7z"}},
+clock:{"path":{"d":"M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm0 19.4c-4.6 0-8.3-3.7-8.3-8.3S7.4 3.7 12 3.7s8.3 3.7 8.3 8.3-3.7 8.3-8.3 8.3zm1.6-8.2c-.2-.1-.2-.3-.2-.5V7.2c0-.4-.3-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7v5.5c0 .2.1.4.2.5l3.4 3.5c.3.2.7.2 1 0l1-1c.2-.3.2-.7 0-1l-2.6-2.6z"}},
+close:{"path":{"d":"M14.3 11.7l6-6c.3-.3.3-.7 0-1l-.9-1c-.3-.2-.7-.2-1 0l-6 6.1c-.2.2-.5.2-.7 0l-6-6.1c-.3-.3-.7-.3-1 0l-1 1c-.2.2-.2.7 0 .9l6.1 6.1c.2.2.2.4 0 .6l-6.1 6.1c-.3.3-.3.7 0 1l1 1c.2.2.7.2.9 0l6.1-6.1c.2-.2.4-.2.6 0l6.1 6.1c.2.2.7.2.9 0l1-1c.3-.3.3-.7 0-1l-6-6c-.2-.2-.2-.5 0-.7z"}},
+comments:{"path":{"d":"M22.1 14.3c-.1-.2-.1-.4 0-.5.6-1.1 1-2.3 1-3.6 0-4.1-3.5-7.4-7.9-7.4-2 0-3.8.8-5.2 2 4.7.5 8.5 4.4 8.5 9.1 0 1.1-.3 2.3-.7 3.3.5-.2 1-.4 1.5-.7.2-.1.4-.1.5 0l2.9 1.1c.2.1.5-.2.4-.4l-1-2.9zM8.8 6.5C4.4 6.5.9 9.8.9 13.9c0 1.3.4 2.5 1 3.5.1.2.1.4 0 .6l-1 2.8c-.1.3.2.5.4.4l2.9-1.1c.1 0 .3 0 .5.1 1.2.7 2.6 1 4.1 1 4.3 0 7.8-3.3 7.8-7.4 0-4-3.5-7.3-7.8-7.3z"}},
+company:{"path":{"d":"M9.7 1.8H3.2c-.8 0-1.4.6-1.4 1.4v18.5c0 .2.3.5.5.5h1.9c.2 0 .4-.2.4-.5v-2.8c0-.3.2-.4.5-.4h2.7c.3 0 .5.1.5.4v2.8c0 .3.2.5.5.5h1.4c.5 0 .9-.5.9-1v-18c0-.8-.6-1.4-1.4-1.4zM5.5 16.4c0 .1-.1.2-.2.2H3.9c-.1 0-.2-.1-.2-.2v-2.3c0-.2.1-.3.2-.3h1.4c.1 0 .2.1.2.3v2.3zm0-4.6c0 .1-.1.2-.2.2H3.9c-.1 0-.2-.1-.2-.2V9.5c0-.2.1-.3.2-.3h1.4c.1 0 .2.1.2.3v2.3zm0-4.6c0 .1-.1.2-.2.2H3.9c-.1 0-.2-.1-.2-.2V4.8c0-.1.1-.2.2-.2h1.4c.1 0 .2.1.2.2v2.4zm3.7 9.2c0 .1-.1.2-.2.2H7.6c-.1 0-.2-.1-.2-.2v-2.3c0-.2.1-.3.2-.3H9c.1 0 .2.1.2.3v2.3zm0-4.6c0 .1-.1.2-.2.2H7.6c-.1 0-.2-.1-.2-.2V9.5c0-.2.1-.3.2-.3H9c.1 0 .2.1.2.3v2.3zm0-4.6c0 .1-.1.2-.2.2H7.6c-.1 0-.2-.1-.2-.2V4.8c0-.1.1-.2.2-.2H9c.1 0 .2.1.2.2v2.4zm11.6-.7h-6.5c-.8 0-1.4.6-1.4 1.3v13.9c0 .2.3.5.5.5h1.8c.3 0 .5-.2.5-.5v-2.8c0-.3.2-.4.5-.4h2.7c.3 0 .5.1.5.4v2.8c0 .3.2.5.4.5h1.4c.5 0 1-.5 1-1V7.8c0-.7-.6-1.3-1.4-1.3zm-4.2 9.9c0 .1-.1.2-.2.2H15c-.1 0-.2-.1-.2-.2v-2.3c0-.2.1-.3.2-.3h1.4c.1 0 .2.1.2.3v2.3zm0-4.6c0 .1-.1.2-.2.2H15c-.1 0-.2-.1-.2-.2V9.5c0-.2.1-.3.2-.3h1.4c.1 0 .2.1.2.3v2.3zm3.7 4.6c0 .1-.1.2-.2.2h-1.4c-.1 0-.2-.1-.2-.2v-2.3c0-.2.1-.3.2-.3h1.4c.1 0 .2.1.2.3v2.3zm0-4.6c0 .1-.1.2-.2.2h-1.4c-.1 0-.2-.1-.2-.2V9.5c0-.2.1-.3.2-.3h1.4c.1 0 .2.1.2.3v2.3z"}},
+connected_apps:{"path":{"d":"M11 14.4l-1.8 8.1c-.1.5.5.8.8.4l9.7-12c.3-.3.1-.7-.3-.7h-5.2c-.4 0-.6-.5-.4-.7L18.4 2c.2-.5-.1-1.1-.6-1.1H9.6c-.5 0-.9.3-1.1.8L4.7 12.9c-.2.5.1.9.6.9h5.3c.2 0 .5.3.4.6z"}},
+contract:{"path":{"d":"M13.7 11.1h7.1c.4 0 .6-.5.2-.9l-2.3-2.3 4.2-4.2c.2-.2.2-.7 0-.9l-1.7-1.7c-.2-.2-.6-.2-.9.1l-4.1 4.1L13.8 3c-.4-.3-.9-.2-.9.3v7.1c0 .3.4.7.8.7zm-3.4 1.8H3.2c-.4 0-.6.5-.2.9l2.3 2.3-4.2 4.2c-.2.2-.2.7 0 .9l1.7 1.7c.2.2.6.2.9 0l4.2-4.2 2.3 2.3c.4.4.9.2.9-.2v-7.1c0-.3-.4-.8-.8-.8zm2.6.8v7.1c0 .4.5.6.9.2l2.3-2.3 4.2 4.2c.2.2.7.2.9 0l1.7-1.7c.2-.2.2-.6-.1-.9l-4.1-4.1 2.3-2.4c.3-.4.2-.9-.3-.9h-7.1c-.3 0-.7.4-.7.8zm-1.8-3.4V3.2c0-.4-.5-.6-.9-.2L7.9 5.3 3.7 1.1c-.2-.2-.7-.2-.9 0L1.1 2.8c-.2.2-.2.6 0 .9l4.2 4.2L3 10.2c-.4.4-.2.9.2.9h7.1c.3 0 .8-.4.8-.8z"}},
+contract_alt:{"path":{"d":"M13.7 11h7.1c.4 0 .6-.5.2-.8l-2.3-2.4 4.2-4.2c.2-.2.2-.6 0-.8l-1.7-1.7c-.2-.2-.6-.2-.9 0l-4.1 4.2L13.8 3c-.4-.4-.9-.2-.9.2v7.1c0 .4.4.7.8.7zm-3.4 1.9H3.2c-.4 0-.6.5-.2.9l2.3 2.3-4.2 4.2c-.2.2-.2.7 0 .9l1.7 1.7c.2.2.6.2.9 0l4.2-4.2 2.3 2.3c.4.4.9.2.9-.2v-7.1c0-.3-.4-.8-.8-.8z"}},
+copy:{"path":{"d":"M20.3.9h-12c-1 0-1.8.9-1.8 1.9v.9h11c1.1 0 1.9.8 1.9 1.8v13h.9c1 0 1.9-.9 1.9-1.9V2.8c0-1-.9-1.9-1.9-1.9zm-2.8 6.5c0-1-.8-1.9-1.8-1.9h-12c-1 0-1.9.9-1.9 1.9v13.8c0 1 .9 1.9 1.9 1.9h12c1 0 1.8-.9 1.8-1.9V7.4zm-8.3 3.2c0 .3-.2.5-.4.5H5.1c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h3.7c.2 0 .4.2.4.5v.9zm3.7 7.4c0 .3-.2.5-.4.5H5.1c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h7.4c.2 0 .4.2.4.5v.9zm1.9-3.7c0 .3-.2.5-.5.5H5.1c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h9.2c.3 0 .5.2.5.5v.9z"}},
+crossfilter:{"path":{"d":"M16.2 4.2c-.8 0-1.6 0-2.3.3.9.7 1.6 1.5 2.2 2.4h.1c2.8 0 5 2.3 5 5.1s-2.2 5.1-5 5.1c-.7 0-1.4-.2-2-.4.3-.5.7-1.1.9-1.7.1-.2.2-.4.2-.6.3-.7.4-1.6.4-2.4 0-4.3-3.5-7.8-7.9-7.8S0 7.7 0 12s3.5 7.8 7.8 7.8c.8 0 1.6 0 2.3-.3-.9-.7-1.6-1.5-2.2-2.4h-.1c-2.8 0-5-2.3-5-5.1s2.2-5.1 5-5.1c.7 0 1.4.2 2.1.4-1 1.3-1.6 2.9-1.6 4.7 0 4.3 3.5 7.8 7.9 7.8S24 16.3 24 12s-3.5-7.8-7.8-7.8z"}},
+custom_apps:{"path":{"d":"M22.8 5.6c-.1-.2-.4-.3-.6-.1l-3.8 3.7c-.3.3-.7.3-1 0l-2.6-2.6c-.3-.3-.3-.7 0-1l3.8-3.8c.1-.1 0-.5-.2-.6-.6-.2-1.3-.3-2-.3-3.9 0-7 3.4-6.6 7.4.1.7.3 1.2.5 1.8l-8.6 8.5c-1.1 1.1-1.1 2.7 0 3.7.5.5 1.2.8 1.8.8s1.3-.3 1.9-.8l8.5-8.6c.6.2 1.2.4 1.8.5 4 .4 7.4-2.7 7.4-6.6 0-.7-.1-1.4-.3-2z"}},
+cut:{"path":{"d":"M18.8 14.5c-.8-.2-1.5-.1-2.2.1L6.4 1.1C6.3.9 6 .9 5.8 1l-.4.3c-.8.6-.9 1.7-.3 2.6l4.9 6.4c.2.3.2.6 0 .9l-2.7 3.4c-.6-.2-1.4-.2-2.1-.1-1.7.4-3.1 1.7-3.3 3.5-.4 2.7 2 5 4.8 4.6 1.7-.3 3-1.6 3.4-3.2.2-1.2 0-2.2-.5-3l1.9-2.6c.3-.4.8-.4 1.1 0l1.9 2.6c-.5.9-.7 1.9-.5 3 .3 1.6 1.7 2.9 3.4 3.2 2.8.4 5.2-1.9 4.8-4.6-.4-1.8-1.8-3.2-3.4-3.5zM6 19.9c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.3.6 1.3 1.4-.6 1.4-1.3 1.4zm12 0c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.3.6 1.3 1.4c0 .8-.6 1.4-1.3 1.4zM14.4 8.7c.2.3.6.3.8 0l3.7-4.8c.5-.7.4-1.6-.1-2.3h.1-.1c-.1-.1-.7-.6-.7-.6-.1-.1-.5-.1-.6.1l-4.1 5.4c-.2.2-.2.6 0 .8l1 1.4z"}},
+dash:{"path":{"d":"M23.1 12.7c0 .4-.3.7-.7.7H1.6c-.4 0-.7-.3-.7-.7v-1.4c0-.4.3-.7.7-.7h20.8c.4 0 .7.3.7.7v1.4z"}},
+datadotcom:{"path":{"d":"M19.6 22.7h-2.4c-.2-.9-.3-1.7-.3-2.4-1.2 1.9-3.1 2.8-5.6 2.8-2.3 0-4-.8-5.2-2.3-1.2-1.5-1.7-3.5-1.7-5.9 0-1.6.3-2.9.9-4.2s1.4-2.3 2.5-2.9c1.1-.8 2.4-1.2 3.9-1.2 2.1 0 3.8.7 5.1 2.1V1h2.6v18.2c0 1.2.1 2.3.2 3.5zM16.8 16v-5c-.6-.8-1.3-1.3-2.1-1.7-.8-.4-1.7-.6-2.7-.6-1.5 0-2.7.6-3.6 1.7-.9 1.2-1.3 2.7-1.3 4.5 0 1.9.4 3.3 1.3 4.4.8 1.1 2 1.7 3.5 1.7 1.4 0 2.6-.5 3.5-1.4.9-1 1.4-2.2 1.4-3.6z"}},
+dayview:{"path":{"d":"M20.3 3.2H18v-.9c0-.7-.6-1.4-1.4-1.4-.7 0-1.4.6-1.4 1.4v.9H8.8v-.9c0-.7-.6-1.4-1.4-1.4C6.6.9 6 1.5 6 2.3v.9H3.7c-1 0-1.9.9-1.9 1.9v1.1c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V5.1c0-1-.9-1.9-1.9-1.9zm1.2 6h-19c-.3 0-.7.4-.7.7v11.3c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9V9.9c0-.3-.4-.7-.7-.7zm-8.1 10.2v.1c0 .3-.5.8-.9.8s-1-.5-1-.9v-4.6l-.7.7c-.1.1-.2.2-.4.2-.4 0-.7-.3-.7-.7 0-.2.1-.4.2-.5l1.8-1.8c.2-.2.4-.3.7-.3.5 0 1 .4 1 .9v6.1z"}},
+delete:{"path":{"d":"M21 4.6h-5.8V2.8c0-1-.8-1.9-1.8-1.9h-2.8c-1 0-1.8.9-1.8 1.9v1.8H3c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h18c.4 0 .7-.3.7-.7V5.3c0-.4-.3-.7-.7-.7zM10.6 3.2c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.4h-2.8V3.2zm8.6 6H4.8c-.3 0-.6.4-.6.7v10.9c0 1.3 1 2.3 2.3 2.3h11c1.3 0 2.3-1 2.3-2.3V9.9c0-.3-.3-.7-.6-.7zm-8.6 10.2c0 .3-.2.4-.4.4h-1c-.2 0-.4-.1-.4-.4v-6.5c0-.3.2-.4.4-.4h1c.2 0 .4.1.4.4v6.5zm4.6 0c0 .3-.2.4-.4.4h-1c-.2 0-.4-.1-.4-.4v-6.5c0-.3.2-.4.4-.4h1c.2 0 .4.1.4.4v6.5z"}},
+deprecate:{"path":{"d":"M22.2 3.2H1.8c-.5 0-.9.4-.9 1v12c0 .5.4.9.9.9h7.5c.5 2.6 2.7 4.6 5.5 4.6s5-2 5.4-4.6h2c.5 0 .9-.4.9-.9v-12c0-.6-.4-1-.9-1zm-4 15.1l-1.3 1.3-2.1-2.2-2.2 2.2-1.2-1.3 2.1-2.1-2.1-2.2 1.2-1.3 2.2 2.2 2.1-2.2 1.3 1.3-2.1 2.2 2.1 2.1zm3-3.1h-1c-.4-2.6-2.7-4.6-5.4-4.6s-5.1 2-5.5 4.6H2.8V5.1h18.4v10.1z"}},
+description:{"path":{"d":"M20.3 1.8H3.7c-1 0-1.9.9-1.9 1.9v16.6c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9V3.7c0-1-.9-1.9-1.9-1.9zM5.5 6.5c0-.3.2-.5.5-.5h4.6c.3 0 .5.2.5.5v4.6c0 .3-.2.4-.5.4H6c-.3 0-.5-.1-.5-.4V6.5zm11.1 12c0 .2-.2.4-.4.4H6c-.3 0-.5-.2-.5-.4v-1c0-.2.2-.4.5-.4h10.2c.2 0 .4.2.4.4v1zm1.9-3.7c0 .2-.2.4-.5.4H6c-.3 0-.5-.2-.5-.4v-1c0-.2.2-.4.5-.4h12c.3 0 .5.2.5.4v1zm0-3.7c0 .3-.2.4-.5.4h-4.6c-.3 0-.5-.1-.5-.4v-.9c0-.3.2-.5.5-.5H18c.3 0 .5.2.5.5v.9zm0-3.7c0 .3-.2.4-.5.4h-4.6c-.3 0-.5-.1-.5-.4v-.9c0-.3.2-.5.5-.5H18c.3 0 .5.2.5.5v.9z"}},
+desktop:{"path":{"d":"M23.1 2.8c0-1-.9-1.9-1.9-1.9H2.8C1.8.9.9 1.8.9 2.8v12c0 1 .9 1.8 1.9 1.8h18.4c1 0 1.9-.8 1.9-1.8v-12zm-2.8 10.4c0 .3-.3.6-.7.6H4.4c-.4 0-.7-.3-.7-.6V4.4c0-.4.3-.7.7-.7h15.2c.4 0 .7.3.7.7v8.8zm-5.1 7.1h-1.4c-.2 0-.4-.2-.4-.5v-.9c0-.3-.2-.4-.5-.4h-1.8c-.3 0-.5.1-.5.4v.9c0 .3-.2.5-.4.5H8.8c-1 0-1.9.8-1.9 1.9v.2c0 .4.3.7.7.7h8.8c.4 0 .7-.3.7-.7v-.2c0-1.1-.9-1.9-1.9-1.9z"}},
+dock_panel:{"path":{"d":"M.9 16.2v-12C.9 2.4 2.3.9 4.1.9h12c1.8 0 3.2 1.5 3.2 3.3v1.3h-2.7V4.2c0-.3-.2-.5-.5-.5h-12c-.3 0-.5.2-.5.5v12c0 .2.2.4.5.4h1.4v2.8H4.1C2.3 19.4.9 18 .9 16.2zm20.3-8.8h-12c-1 0-1.9.8-1.9 1.8v12c0 1 .9 1.9 1.9 1.9h12c1 0 1.8-.9 1.8-1.9v-12c0-1-.8-1.8-1.8-1.8zM19.3 19c0 .2-.1.4-.4.4h-5.3c-.3 0-.5-.2-.5-.4v-.9c0-.2.2-.4.5-.4h2.2c.3 0 .4-.3.2-.5l-4.8-4.8c-.2-.1-.2-.4 0-.6l.6-.6c.2-.1.4-.1.6 0l4.8 4.8c.2.2.4.1.4-.2v-2.2c0-.2.3-.4.5-.4h.9c.2 0 .3.2.3.4V19z"}},
+down:{"path":{"d":"M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z"}},
+download:{"path":{"d":"M22.4 14.3H21c-.4 0-.7.3-.7.7v4.6c0 .4-.3.7-.7.7H4.4c-.4 0-.7-.3-.7-.7V15c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v6.2c0 1 .9 1.9 1.9 1.9h18.4c1 0 1.9-.9 1.9-1.9V15c0-.4-.3-.7-.7-.7zm-10.9 3.1c.3.2.7.2 1 0l6.2-6.3c.3-.3.3-.7 0-.9l-.9-1c-.3-.3-.7-.3-1 0l-2.6 2.6c-.3.2-.8.1-.8-.4V1.6c0-.4-.4-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7v9.8c0 .4-.5.6-.8.3L7.2 9.1c-.2-.2-.6-.2-.9 0l-1 1.1c-.3.2-.3.6 0 .9l6.2 6.3z"}},
+edit:{"path":{"d":"M4.4 15.4l4.1 4.1c.2.2.5.2.6 0L19.4 9.2c.2-.2.2-.4 0-.6l-4.1-4.1c-.2-.2-.4-.2-.6 0L4.4 14.8c-.2.2-.2.5 0 .6zM16.7 2.6c-.2.2-.2.5 0 .7l4 4c.2.2.5.2.7 0l1.1-1.1c.8-.7.8-1.8 0-2.6l-2.1-2.1c-.8-.8-1.9-.8-2.7 0l-1 1.1zM1 22.2c-.1.5.3.9.8.8l5-1.2c.2 0 .3-.1.4-.2l.1-.1c.1-.1.1-.4-.1-.6l-4.1-4.1c-.2-.2-.5-.2-.6-.1l-.1.1c-.1.1-.2.3-.2.4l-1.2 5z"}},
+edit_form:{"path":{"d":"M14.5 7.1h3.8c.3 0 .5-.3.5-.5s-.1-.3-.2-.4l-4.7-4.7c-.1-.1-.2-.1-.3-.1-.3 0-.5.2-.5.5v3.7c0 .8.6 1.5 1.4 1.5zm8.3 4.8l-.4-.5c-.2-.2-.7-.2-1 0l-5.5 5.5v1.3c0 .1 0 .2.1.2h1.4l5.4-5.5c.4-.3.4-.8 0-1zm-4.4 8.6h-3.3c-.7 0-1.3-.6-1.3-1.3v-2.5c0-.4.1-.8.4-1l4.4-4.4c.1-.1.2-.3.2-.5v-.9c0-.4-.3-.7-.7-.7h-5c-1.2 0-2.2-1-2.2-2.1v-5c0-.4-.3-.7-.7-.7H3C1.9 1.4.9 2.4.9 3.5v17c0 1.1 1 2.1 2.1 2.1h13.6c1 0 2-.7 2.1-1.7.1-.2-.1-.4-.3-.4zM3.8 7.8c0-.4.3-.7.7-.7h2.8c.5 0 .7.3.7.7v.6c0 .4-.3.7-.7.7H4.5c-.4 0-.7-.3-.7-.7v-.6zm7.1 9.1c0 .4-.3.7-.7.7H4.5c-.4 0-.7-.3-.7-.7v-.7c0-.3.3-.6.7-.6h5.7c.4 0 .7.3.7.6v.7zm1.5-4.2c0 .4-.4.7-.7.7H4.5c-.4 0-.7-.3-.7-.7V12c0-.4.3-.7.7-.7h7.1c.4 0 .7.3.7.7v.7z"}},
+email:{"path":{"d":"M11.5 13.9c.3.3.7.3 1 0l10.4-9.7c.2-.4.1-1-.6-1l-20.6.1c-.6 0-1.1.5-.6.9l10.4 9.7zM23.1 8c0-.5-.6-.8-.9-.4L14 15.1c-.6.5-1.3.8-2 .8s-1.4-.3-2-.8L1.9 7.6c-.4-.4-.9-.1-.9.4C.9 7.8.9 18.5.9 18.5c0 1 .9 1.8 1.9 1.8h18.4c1 0 1.9-.8 1.9-1.8V8z"}},
+end_call:{"path":{"d":"M22.4 2.6l-1-1c-.3-.3-.8-.2-1.1.2L9.5 12.6 7.2 10c-.3-.3-.3-.6-.1-1l1.7-2.4c.5-.6.5-1.5 0-2.2L6.5 1.6C5.8.8 4.6.7 3.8 1.5L1.4 3.9c-.4.3-.6.9-.6 1.4.3 4.2 2 8.3 4.6 11.3l-3.6 3.7c-.4.3-.4.8-.2 1.1l1 1c.3.3.8.2 1.1-.2L22.2 3.7c.4-.3.5-.8.2-1.1zm0 14.9l-2.8-2.3c-.7-.5-1.6-.5-2.2 0L15 16.9c-.3.3-.7.2-1-.1l-1.1-1-3.9 4c2.8 1.8 6.1 3.1 9.6 3.3.6 0 1.1-.2 1.4-.6l2.4-2.4c.9-.7.9-2 0-2.6z"}},
+erect_window:{"path":{"d":"M23.1 3c0 .4-.3.7-.7.7H1.6c-.4 0-.7-.3-.7-.7V1.6c0-.4.3-.7.7-.7h20.8c.4 0 .7.3.7.7V3z"}},
+error:{"path":{"d":"M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm5.5 11.9c-.1.3-.3.6-.7.6H7.2c-.4 0-.6-.2-.7-.6v-1.6c.1-.3.3-.6.7-.6h9.6c.4 0 .6.3.7.6v1.6z"}},
+event:{"path":{"d":"M21.5 9.2h-19c-.3 0-.7.4-.7.7v11.3c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9V9.9c0-.3-.4-.7-.7-.7zM8.8 19.4c0 .3-.2.4-.5.4H6.5c-.3 0-.5-.1-.5-.4v-1.9c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.9zm0-4.6c0 .2-.2.4-.5.4H6.5c-.3 0-.5-.2-.5-.4v-1.9c0-.3.2-.4.5-.4h1.8c.3 0 .5.1.5.4v1.9zm4.6 4.6c0 .3-.2.4-.5.4h-1.8c-.3 0-.5-.1-.5-.4v-1.9c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.9zm0-4.6c0 .2-.2.4-.5.4h-1.8c-.3 0-.5-.2-.5-.4v-1.9c0-.3.2-.4.5-.4h1.8c.3 0 .5.1.5.4v1.9zm4.6 4.6c0 .3-.2.4-.5.4h-1.8c-.3 0-.5-.1-.5-.4v-1.9c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.9zm0-4.6c0 .2-.2.4-.5.4h-1.8c-.3 0-.5-.2-.5-.4v-1.9c0-.3.2-.4.5-.4h1.8c.3 0 .5.1.5.4v1.9zm2.3-11.6H18v-.9c0-.7-.6-1.4-1.4-1.4-.7 0-1.4.6-1.4 1.4v.9H8.8v-.9c0-.7-.6-1.4-1.4-1.4C6.6.9 6 1.5 6 2.3v.9H3.7c-1 0-1.9.9-1.9 1.9v1.1c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V5.1c0-1-.9-1.9-1.9-1.9z"}},
+expand:{"path":{"d":"M22.5.9h-7.1c-.5 0-.6.4-.3.8L17.4 4l-4.2 4.1c-.2.3-.2.6 0 .9l1.8 1.7c.2.2.6.2.8 0L20 6.5l2.3 2.3c.4.3.8.2.8-.3V1.4c0-.2-.3-.5-.6-.5zM1.6 23.1h7.1c.5 0 .6-.5.3-.9l-2.3-2.3 4.1-4.2c.3-.2.3-.7 0-.9l-1.7-1.7c-.2-.2-.6-.2-.8 0l-4.2 4.2L1.8 15c-.4-.4-.9-.2-.9.2v7.1c0 .4.4.8.7.8zm21.5-.6v-7.1c0-.5-.4-.6-.8-.3L20 17.4l-4.1-4.2c-.3-.2-.6-.2-.9 0L13.3 15c-.2.2-.2.6 0 .8l4.2 4.2-2.3 2.3c-.3.4-.2.8.3.8h7.1c.2 0 .5-.3.5-.6zM.9 1.6v7.1c0 .5.5.6.9.3l2.3-2.3 4.2 4.1c.2.3.7.3.9 0l1.7-1.7c.2-.2.2-.6 0-.8L6.7 4.1 9 1.8c.4-.4.2-.9-.2-.9H1.7c-.4 0-.8.4-.8.7z"}},
+expand_alt:{"path":{"d":"M22.5.9h-7.1c-.5 0-.6.4-.3.8L17.4 4l-4.2 4.1c-.2.3-.2.6 0 .9l1.8 1.7c.2.2.6.2.8 0L20 6.5l2.3 2.3c.4.3.8.2.8-.3V1.4c0-.2-.3-.5-.6-.5zM1.6 23.1h7.1c.5 0 .6-.5.3-.9l-2.3-2.3 4.1-4.2c.3-.2.3-.7 0-.9l-1.7-1.7c-.2-.2-.6-.2-.8 0l-4.2 4.2L1.8 15c-.4-.4-.9-.2-.9.2v7.1c0 .4.4.8.7.8z"}},
+fallback:{"path":{"d":"M12.9 1.6l-1.4 6.8c0 .2.2.4.5.4h7.2c.5 0 .8.6.6 1l-7.9 12.9c-.3.7-1.3.4-1.3-.3l1.4-8c0-.2-.2-.1-.5-.1H3.9c-.5 0-.9-.8-.6-1.2l8.3-11.8c.4-.6 1.3-.4 1.3.3z"}},
+favorite:{"path":{"d":"M12.6 1.9l2.2 6.5c.1.2.3.4.6.4h6.9c.7 0 1 .9.5 1.3l-5.7 4.2c-.2.1-.3.5-.2.7l2.2 6.7c.2.6-.5 1.2-1.1.8l-5.5-4.1c-.3-.2-.6-.2-.9 0L6 22.5c-.6.4-1.3-.2-1.1-.8L7.1 15c.1-.2 0-.6-.3-.7l-5.6-4.2c-.6-.4-.2-1.3.4-1.3h6.9c.4 0 .6-.1.7-.4l2.2-6.6c.1-.6 1.1-.6 1.2.1z"}},
+feed:{"path":{"d":"M11.6 19.8c-.1 0-.3 0-.5-.1-.3-.1-.5-.5-.5-.7L7.9 8.3l-2.2 5.1c-.2.4-.5.6-.9.6H1.6c-.4 0-.7-.2-.7-.6v-.7c0-.4.3-.7.7-.7H4l3.2-7.2c.2-.4.6-.7 1.1-.6.4 0 .8.3.9.7l2.7 10.8 3.7-7.9c.1-.4.6-.6 1-.6.3.1.7.4.9.7l1.8 4.1h3.1c.4 0 .7.4.7.7v.7c0 .4-.3.7-.7.7h-3.8c-.4 0-.7-.3-.9-.6l-1.2-2.7-3.9 8.5c-.2.3-.5.5-1 .5z"}},
+file:{"path":{"d":"M4.5 16.7V5.2c-1.2 0-2.2 1-2.2 2.1v13.6c0 1.2 1 2.2 2.2 2.2h10.7c1.2 0 2.2-1 2.2-2.1H8.8c-2.4 0-4.3 0-4.3-4.3zM21 7.3h-3.6c-1.2 0-2.2-.9-2.2-2.1V1.6c0-.4-.3-.7-.7-.7H8.8C7.6.9 6.6 1.9 6.6 3v13.6c0 1.2 1 2.1 2.2 2.1h10.7c1.2 0 2.2-.9 2.2-2.1V8.1c0-.4-.3-.8-.7-.8zm.6-3l-3.4-3.2c-.1-.1-.2-.2-.3-.2-.3 0-.5.3-.5.5v2.4c0 .8.6 1.4 1.4 1.4h2.4c.3 0 .5-.2.5-.5 0-.1-.1-.2-.1-.4z"}},
+filter:{"path":{"d":"M11.3 14.7c-.3-.3-.7-.3-1 0l-1.7 1.6c-.2.3-.8.1-.8-.3V9.9c0-.3-.3-.7-.6-.7H5.8c-.4 0-.7.4-.7.7V16c0 .4-.5.6-.8.3l-1.7-1.6c-.2-.3-.7-.3-.9 0l-1.1 1c-.2.3-.2.7 0 1L6 22c.2.2.6.2.9 0l5.4-5.4c.3-.3.3-.7 0-1l-1-.9zM23.5 4.4c0-.4-.3-.7-.7-.7h-17c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h17c.4 0 .7-.4.7-.7V4.4zm0 5.5c0-.3-.3-.7-.7-.7H10.4c-.4 0-.7.4-.7.7v1.4c0 .4.3.7.7.7h12.4c.4 0 .7-.3.7-.7V9.9zm0 5.6c0-.4-.3-.7-.7-.7H15c-.4 0-.7.3-.7.7v1.3c0 .4.3.7.7.7h7.8c.4 0 .7-.3.7-.7v-1.3z"}},
+filterList:{"path":{"d":"M22.3 1.8H1.8c-.7 0-1 .8-.6 1.3l9 10.5c.2.3.4.8.4 1.2v6.7c0 .3.3.7.7.7h1.4c.4 0 .6-.4.6-.7v-6.7c0-.4.2-.9.5-1.2l9.1-10.5c.4-.5.1-1.3-.6-1.3z"}},
+flow:{"path":{"d":"M23 4.9c-.9-1.9-3.4-5.4-7.9-3.3-2.8 1.3-4.4 2-4.4 2L6.6 5.4c-1.1.5-3.6-.3-5-.8-.4-.1-.8.3-.6.7.9 1.9 3.4 5.4 7.9 3.3 2.8-1.3 8.5-3.7 8.5-3.7 1.1-.6 3.6.2 5 .7.4.1.8-.3.6-.7zm-9.7 5.9c-.5.3-2.5 1.2-2.5 1.2l-2.1.9c-1 .5-3.2-.2-4.5-.7-.3-.2-.6.3-.5.6.9 1.9 3 5.2 7 3.2 2.5-1.3 4.6-2.1 4.6-2.1 1-.6 3.2.2 4.5.7.3.1.6-.3.5-.7-.9-1.8-3-5.1-7-3.1zM11.8 19c-.4.2-1.1.6-1.1.6-.8.5-2.4-.1-3.4-.6-.2-.1-.5.3-.3.7.6 1.6 2.2 4.6 5.2 2.8l1.1-.7c.8-.4 2.4.2 3.4.6.2.2.5-.2.3-.6-.6-1.7-2.1-4.5-5.2-2.8zm.2-7.4"}},
+forward:{"path":{"d":"M1.6 13.4h15.3c.4 0 .6.5.3.8l-4.4 4.4c-.3.3-.3.7 0 1l1 1c.3.3.7.3 1 0l8-8.1c.3-.3.3-.7 0-1l-8-8.1c-.3-.3-.7-.3-1 0l-1 1c-.2.3-.2.7 0 1l4.5 4.4c.2.3.1.8-.4.8H1.6c-.4 0-.7.3-.7.7v1.3c0 .4.3.8.7.8z"}},
+frozen:{"path":[{"d":"M12.5 1.4c.2 0 .4.2.4.4V23c0 .3-.2.5-.4.5h-1c-.2 0-.4-.2-.4-.5V1.8c0-.2.2-.4.4-.4h1zM12 7.9L8.3 4.2c-.2-.2-.2-.5 0-.6l.6-.7c.2-.2.5-.2.7 0L12 5.4l2.4-2.5c.2-.2.5-.2.7 0l.6.7c.2.1.2.4 0 .6L12 7.9m0 9l3.7 3.8c.2.2.2.4 0 .6l-.6.7c-.2.2-.5.2-.7 0L12 19.5 9.6 22c-.2.2-.5.2-.7 0l-.6-.7c-.2-.2-.2-.4 0-.6l3.7-3.8"},{"d":"M21.7 7.2c.2.2.1.5-.1.6L3.3 18.6c-.2.1-.5.1-.6-.2l-.5-.8c-.1-.2-.1-.5.2-.6L20.6 6.2c.3-.2.5-.1.7.2l.4.8zm-5.8 3L17.2 5c0-.2.2-.4.5-.3l.9.2c.3.1.4.3.3.6L18 8.9l3.4.8c.3.1.4.3.3.6l-.2.9c0 .2-.3.4-.5.3l-5.1-1.3m-7.8 4.5l-1.3 5.1c0 .3-.2.5-.5.4l-.9-.3c-.3 0-.4-.2-.3-.5L6 16l-3.4-.9c-.3 0-.4-.2-.3-.5l.2-.9c0-.3.3-.4.5-.3l5.1 1.3"},{"d":"M2.7 6.4c.2-.2.4-.3.7-.2L21.6 17c.2.2.3.4.2.7l-.5.8c-.1.2-.4.3-.6.1L2.4 7.8c-.2-.1-.3-.4-.2-.6l.5-.8zm5.4 3.8L3 11.5c-.3 0-.5-.1-.6-.3l-.2-.9c0-.3.1-.5.3-.6l3.4-.8L5 5.5c0-.3.1-.5.4-.6l.8-.2c.3 0 .5.1.6.3l1.3 5.2m7.7 4.5l5.2-1.3c.2-.1.5 0 .5.3l.2.9c.1.3 0 .5-.3.5L18 16l.9 3.4c.1.3 0 .5-.3.5l-.9.3c-.3 0-.5-.1-.5-.4l-1.4-5.1"}]},
+full_width_view:{"path":{"d":"M22.4 1.8H1.6c-.4 0-.7.4-.7.7v2.3c0 .4.3.7.7.7h20.8c.4 0 .7-.3.7-.7V2.5c-.1-.3-.3-.7-.7-.7zM4.9 7.4H1.7c-.4 0-.7.3-.7.7v13.7c0 .4.3.7.7.7h3.2c.4 0 .7-.3.7-.7V8.1c0-.4-.3-.7-.7-.7zm17.5 0h-3.2c-.4 0-.7.3-.7.7v13.7c0 .4.3.7.7.7h3.2c.4 0 .7-.3.7-.7V8.1c0-.4-.3-.7-.7-.7zm-6.5 0H8.2c-.4 0-.7.3-.7.7v13.7c0 .4.3.7.7.7h7.7c.4 0 .7-.3.7-.7V8.1c0-.4-.3-.7-.7-.7z"}},
+groups:{"path":{"d":"M7.3 12.9c-.6-.9-.9-2.1-.9-3.3 0-2.1.8-3.9 2.2-4.9-.4-.9-1.4-1.5-2.6-1.5-2 0-3.1 1.7-3.1 3.6 0 1 .3 1.9 1 2.5.3.3.7.8.7 1.3s-.2.9-1.4 1.4c-1.6.7-3.2 1.8-3.2 3.3 0 1 .7 1.8 1.7 1.8h1.5c.2 0 .4-.2.6-.4.7-1.3 2.1-2.2 3.3-2.8.4-.1.5-.7.2-1zm13.5-.9c-1.1-.5-1.3-.9-1.3-1.4s.3-1 .7-1.3c.7-.7 1-1.5 1-2.5 0-1.9-1.1-3.6-3.2-3.6-1.2 0-2.1.6-2.6 1.5 1.4 1 2.2 2.8 2.2 4.9 0 1.2-.3 2.4-.9 3.3-.3.4-.1.9.2 1 1.2.6 2.6 1.5 3.3 2.8.2.2.4.4.6.4h1.5c1 0 1.7-.8 1.7-1.8 0-1.5-1.5-2.6-3.2-3.3zm-5.7 3.4c-1.3-.6-1.5-1.1-1.5-1.6 0-.6.4-1.1.8-1.4.7-.7 1.2-1.7 1.2-2.8 0-2.1-1.3-3.9-3.6-3.9S8.5 7.5 8.5 9.6c0 1.1.5 2.1 1.2 2.8.4.4.8.9.8 1.4 0 .6-.2 1-1.5 1.6-1.8.8-3.6 1.6-3.6 3.3 0 1.1.8 2 1.8 2h9.6c1.1 0 1.9-.9 1.9-2 0-1.6-1.8-2.5-3.6-3.3z"}},
+help:{"path":{"d":"M13.1 17.5h-2.3c-.4 0-.6-.2-.6-.6v-.7c0-1.9 1.2-3.7 3-4.3.6-.2 1.1-.5 1.5-1 2.3-2.8.2-6.1-2.6-6.2-1 0-1.9.3-2.7 1-.6.6-1 1.3-1 2.1-.1.2-.4.5-.7.5H5.4c-.5 0-.8-.4-.7-.8.1-1.7.9-3.3 2.2-4.5C8.4 1.6 10.2.8 12.3.9c3.8.1 6.9 3.3 7.1 7.1.1 3.2-1.9 6.1-4.9 7.2-.4.2-.7.5-.7 1v.6c0 .5-.3.7-.7.7zm.7 4.9c0 .4-.3.7-.6.7h-2.4c-.3 0-.6-.3-.6-.7v-2.3c0-.4.3-.7.6-.7h2.4c.3 0 .6.3.6.7v2.3z"}},
+home:{"path":{"d":"M22.6 12.5h-2.3v10.1c0 .3-.2.5-.5.5h-4.6c-.2 0-.4-.2-.4-.5v-7.8H9.2v7.8c0 .3-.2.5-.4.5H4.2c-.3 0-.5-.2-.5-.5V12.5H1.4c-.2 0-.4-.1-.4-.3-.1-.2-.1-.4.1-.5L11.7 1.1c.2-.2.5-.2.6 0l10.6 10.6c.2.1.2.3.1.5s-.2.3-.4.3z"}},
+identity:{"path":{"d":"M21.2 3.7h-5.1s.1.3.1.5c0 1.8-1.5 3.2-3.3 3.2h-2.7C8.4 7.4 6.9 6 6.9 4.2c0-.2 0-.5.1-.5H2.8c-1 0-1.9.8-1.9 1.8v13.9c0 1 .9 1.8 1.9 1.8h18.4c1 0 1.9-.8 1.9-1.8V5.5c0-1-.9-1.8-1.9-1.8zM10 17.5H4.8c-.6 0-1.1-.5-1.1-1.1 0-.9 1-1.4 2-1.9.7-.2.8-.5.8-.8 0-.3-.2-.6-.5-.8-.4-.4-.6-.9-.6-1.5 0-1.2.7-2.2 1.9-2.2s2 1 2 2.2c0 .6-.3 1.1-.7 1.5-.2.2-.4.5-.4.8 0 .2.1.5.8.8 1 .5 2 1 2 1.9.1.6-.4 1.1-1 1.1zm10.3-1.8c0 .3-.2.5-.5.5h-6.4c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h6.4c.3 0 .5.2.5.5v.9zm.9-3.7c0 .3-.2.5-.4.5h-7.4c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h7.4c.2 0 .4.2.4.5v.9zm-11-6.5h2.7c.8 0 1.4-.6 1.4-1.3s-.6-1.4-1.4-1.4h-2.7c-.8 0-1.4.6-1.4 1.4s.6 1.3 1.4 1.3z"}},
+image:{"path":{"d":"M23.1 4.6c0-1-.9-1.8-1.9-1.8H2.8c-1 0-1.9.8-1.9 1.8v14.8c0 1 .9 1.8 1.9 1.8h18.4c1 0 1.9-.8 1.9-1.8V4.6zm-4.8 12.9H4.9c-.6 0-.9-.6-.6-1l4.1-7.1c.1-.3.6-.3.7 0l2.5 4.2c.2.3.6.3.8.1l2-2.9c.1-.3.6-.3.7 0l3.7 5.8c.3.4 0 .9-.5.9zm-1.2-8.3c-1 0-1.9-.8-1.9-1.8s.9-1.9 1.9-1.9 1.8.9 1.8 1.9-.8 1.8-1.8 1.8z"}},
+inbox:{"path":{"d":"M23.1 3.7c0-1-.9-1.9-1.9-1.9H2.8c-1 0-1.9.9-1.9 1.9v16.6c0 1 .9 1.9 1.9 1.9h18.4c1 0 1.9-.9 1.9-1.9V3.7zM8.8 16.2c0 .2-.2.4-.5.4H4.2c-.3 0-.5-.2-.5-.4v-1.9c0-.3.2-.5.5-.5h4.1c.3 0 .5.2.5.5v1.9zm0-4.7c0 .3-.2.5-.5.5H4.2c-.3 0-.5-.2-.5-.5V9.7c0-.3.2-.5.5-.5h4.1c.3 0 .5.2.5.5v1.8zm0-4.6c0 .3-.2.5-.5.5H4.2c-.3 0-.5-.2-.5-.5V5.1c0-.3.2-.5.5-.5h4.1c.3 0 .5.2.5.5v1.8zm11.5 12c0 .3-.2.5-.5.5h-8.7c-.3 0-.5-.2-.5-.5V5.1c0-.3.2-.5.5-.5h8.7c.3 0 .5.2.5.5v13.8z"}},
+info:{"path":{"d":"M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm0 5.6c.8 0 1.4.6 1.4 1.4s-.6 1.4-1.4 1.4-1.4-.6-1.4-1.4.6-1.4 1.4-1.4zm2.3 9.7c0 .2-.2.4-.5.4h-3.6c-.3 0-.5-.1-.5-.4v-.9c0-.3.2-.5.5-.5.2 0 .4-.2.4-.4v-1.9c0-.2-.2-.5-.4-.5-.3 0-.5-.1-.5-.4v-.9c0-.3.2-.5.5-.5h2.7c.3 0 .5.2.5.5v3.7c0 .2.2.4.4.4.3 0 .5.2.5.5v.9z"}},
+insert_tag_field:{"path":{"d":"M7.5 5.6l-1-.8c-.4-.3-.7-.2-1 0L.1 11.6c-.1.2-.1.6 0 .9l5.4 6.7c.3.2.7.3 1 0l1.1-.8c.3-.3.3-.7.1-1L3.3 12l4.4-5.4c.2-.3.1-.7-.2-1zm16.4 6l-5.4-6.7c-.3-.3-.7-.4-1-.1l-1.1.9c-.3.2-.3.7-.1.9l4.4 5.4-4.4 5.4c-.2.3-.1.8.1 1l1.1.9c.3.2.7.2 1-.1l5.4-6.7c.1-.4.1-.7 0-.9zM14.6 5l-1.4-.3c-.4-.1-.8.1-.9.5L8.9 18.3c-.1.3.1.7.5.8l1.4.3c.4.1.8-.1.9-.5l3.4-13.1c.1-.4-.1-.7-.5-.8z"}},
+insert_template:{"path":{"d":"M22.4 17.5h-2.1v-2c0-.4-.3-.7-.7-.7h-1.4c-.3 0-.7.3-.7.7v2h-2c-.4 0-.7.4-.7.7v1.4c0 .4.3.7.7.7h2v2.1c0 .4.4.7.7.7h1.4c.4 0 .7-.3.7-.7v-2.1h2.1c.4 0 .7-.3.7-.7v-1.4c0-.3-.3-.7-.7-.7zm-6.7-3.9c0-.4.3-.7.7-.7h1.1V2.8c0-1-.8-1.9-1.8-1.9H2.8C1.8.9.9 1.8.9 2.8v12.9c0 1 .9 1.8 1.9 1.8h10.1v-1.1c0-.4.3-.7.7-.7h2.1v-2.1zM7.4 5.1c0 .3-.2.4-.5.4H4.2c-.3 0-.5-.1-.5-.4v-.9c0-.3.2-.5.5-.5h2.7c.3 0 .5.2.5.5v.9zm5.5 7.4c0 .2-.2.4-.4.4H4.2c-.3 0-.5-.2-.5-.4v-1c0-.2.2-.4.5-.4h8.3c.2 0 .4.2.4.4v1zm1.9-3.7c0 .2-.2.4-.5.4H4.2c-.3 0-.5-.2-.5-.4v-1c0-.2.2-.4.5-.4h10.1c.3 0 .5.2.5.4v1z"}},
+italic:{"path":{"d":"M17.5 5.7v-.6c0-.5-.4-.9-.9-.9h-6.4c-.6 0-1 .4-1 .9V6c0 .5.4.9 1 .9.7 0 1.3.8 1.2 1.5l-1.7 8.1c-.1.6-.7 1-1.2 1H7.4c-.5 0-.9.5-.9 1v.9c0 .5.4.9.9.9h6.4c.6 0 1-.4 1-.9v-.9c0-.5-.4-1-1-1-.7 0-1.3-.7-1.2-1.4l1.7-8.2c.1-.6.7-1 1.2-1h.8c.7 0 1.2-.5 1.2-1.2z"}},
+jump_to_bottom:{"path":{"d":"M18.7 14l-6.2 6.3c-.3.3-.7.3-1 0L5.3 14c-.3-.2-.3-.7 0-1l1-1c.3-.3.7-.3 1 0l4.2 4.3c.3.3.7.3 1 0l4.2-4.3c.3-.2.7-.2 1 0l1 1.1c.3.2.3.7 0 .9zm0-8.3L12.5 12c-.3.3-.7.3-1 0L5.3 5.7c-.3-.3-.3-.8 0-1l1-1.1c.3-.2.7-.2 1 0L11.5 8c.3.3.7.3 1 0l4.2-4.3c.3-.3.7-.3 1 0l1 1c.3.3.3.7 0 1z"}},
+jump_to_top:{"path":{"d":"M5.3 10l6.2-6.4c.3-.2.7-.2 1 0l6.2 6.4c.3.2.3.7 0 1l-1 1c-.3.3-.7.3-1 0l-4.2-4.3c-.3-.3-.7-.3-1 0L7.3 12c-.3.2-.7.2-1 0l-1-1.1c-.3-.2-.3-.7 0-.9zm0 8.3l6.2-6.3c.3-.3.7-.3 1 0l6.2 6.3c.3.3.3.8 0 1l-1 1.1c-.3.2-.7.2-1 0L12.5 16c-.3-.3-.7-.3-1 0l-4.2 4.3c-.3.3-.7.3-1 0l-1-1c-.3-.3-.3-.7 0-1z"}},
+justify_text:{"path":{"d":"M22.2 3c0-.4-.4-.7-.7-.7h-19c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V3zm0 5.5c0-.3-.4-.7-.7-.7h-19c-.3 0-.7.4-.7.7v1.4c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V8.5zm0 11.1c0-.4-.4-.7-.7-.7h-19c-.3 0-.7.3-.7.7V21c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7v-1.4zm0-5.5c0-.4-.4-.7-.7-.7h-19c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h19c.3 0 .7-.4.7-.7v-1.4z"}},
+kanban:{"path":{"d":"M14.8 8.1c0-.4-.4-.7-.7-.7H9.9c-.3 0-.7.3-.7.7v12.4c0 .4.4.7.7.7h4.2c.3 0 .7-.3.7-.7V8.1zm-8.3 0c0-.4-.4-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v14.3c0 .4.3.7.7.7h4.2c.3 0 .7-.3.7-.7V8.1zm16.6 0c0-.4-.3-.7-.7-.7h-4.2c-.3 0-.7.3-.7.7v10.6c0 .4.4.7.7.7h4.2c.4 0 .7-.3.7-.7V8.1zm0-6.5c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v2.3c0 .4.3.7.7.7h20.8c.4 0 .7-.3.7-.7V1.6z"}},
+keyboard_dismiss:{"path":{"d":"M22.2 15.7c.5 0 .9-.4.9-.9v-12c0-.5-.4-.9-.9-.9H1.8c-.5 0-.9.4-.9.9v12c0 .5.4.9.9.9h20.4zM2.8 13.9V3.7h18.4v10.2H2.8zm3.5-7.7c0 .4-.3.7-.7.7h-.4c-.4 0-.7-.3-.7-.7v-.5c0-.3.3-.7.7-.7h.4c.4 0 .7.4.7.7v.5zM9 5.7c0-.3-.4-.7-.7-.7h-.5c-.4 0-.7.4-.7.7v.5c0 .4.3.7.7.7h.5c.3 0 .7-.3.7-.7v-.5zm5.3.5c0 .4-.4.7-.7.7h-.5c-.4 0-.7-.3-.7-.7v-.5c0-.3.3-.7.7-.7h.5c.3 0 .7.4.7.7v.5zm-2.7 0c0 .4-.3.7-.7.7h-.4c-.4 0-.7-.3-.7-.7v-.5c0-.3.3-.7.7-.7h.4c.4 0 .7.4.7.7v.5zm7.9-.5c0-.3-.3-.7-.6-.7h-.5c-.4 0-.7.4-.7.7v.5c0 .4.3.7.7.7h.5c.3 0 .6-.3.6-.7v-.5zm-2.6 0c0-.3-.3-.7-.7-.7h-.5c-.3 0-.6.4-.6.7v.5c0 .4.3.7.6.7h.5c.4 0 .7-.3.7-.7v-.5zM6.3 9c0 .3-.3.6-.7.6h-.4c-.4 0-.7-.3-.7-.6v-.5c0-.4.3-.7.7-.7h.4c.4 0 .7.3.7.7V9zM9 8.5c0-.4-.4-.7-.7-.7h-.5c-.4 0-.7.3-.7.7V9c0 .3.3.6.7.6h.5c.3 0 .7-.3.7-.6v-.5zm5.3.5c0 .3-.4.6-.7.6h-.5c-.4 0-.7-.3-.7-.6v-.5c0-.4.3-.7.7-.7h.5c.3 0 .7.3.7.7V9zm-2.7 0c0 .3-.3.6-.7.6h-.4c-.4 0-.7-.3-.7-.6v-.5c0-.4.3-.7.7-.7h.4c.4 0 .7.3.7.7V9zm7.9-.5c0-.4-.3-.7-.6-.7h-.5c-.4 0-.7.3-.7.7V9c0 .3.3.6.7.6h.5c.3 0 .6-.3.6-.6v-.5zm-2.6 0c0-.4-.3-.7-.7-.7h-.5c-.3 0-.6.3-.6.7V9c0 .3.3.6.6.6h.5c.4 0 .7-.3.7-.6v-.5zM6.3 11.7c0 .4-.3.7-.7.7h-.4c-.4 0-.7-.3-.7-.7v-.4c0-.4.3-.7.7-.7h.4c.4 0 .7.3.7.7v.4zm10.6-.4c0-.4-.3-.7-.7-.7H7.8c-.4 0-.7.3-.7.7v.4c0 .4.3.7.7.7h8.4c.4 0 .7-.3.7-.7v-.4zm2.6 0c0-.4-.3-.7-.6-.7h-.5c-.4 0-.7.3-.7.7v.4c0 .4.3.7.7.7h.5c.3 0 .6-.3.6-.7v-.4zM8.4 17.2h7.2c.3 0 .4.2.2.4L12.3 22c-.2.2-.4.2-.5 0l-3.6-4.4c-.2-.2-.1-.4.2-.4z"}},
+knowledge_base:{"path":{"d":"M4.4 16.2h6c.4 0 .7-.4.7-.7V4.6c0-.8-.9-1.4-1.5-1.4H4.4c-.4 0-.7.4-.7.7v11.6c0 .3.3.7.7.7zM22.7 5.4c-.3-.1-.5.1-.5.4v11.5c0 .4-.4.7-.7.7h-19c-.3 0-.7-.3-.7-.7V5.9c0-.4-.3-.6-.6-.5-.7.4-1.2 1.1-1.2 2V18c0 1 .8 1.8 1.8 1.8h7.7c.3 0 .7.4.7.7s.3.7.6.7h2.4c.3 0 .6-.3.6-.7s.4-.7.7-.7h7.7c1 0 1.8-.8 1.8-1.8V7.4c0-1-.3-1.8-1.3-2zm-9.1 10.8h6c.4 0 .7-.4.7-.7V3.9c0-.3-.3-.7-.7-.7h-5.2c-.7 0-1.5.6-1.5 1.4v10.9c0 .3.3.7.7.7z"}},
+layers:{"path":{"d":"M16.6 9.2c0-1-.8-1.8-1.8-1.8h-12c-1 0-1.9.8-1.9 1.8v12c0 1 .9 1.9 1.9 1.9h12c1 0 1.8-.9 1.8-1.9v-12zM19.8.9h-12C6 .9 4.6 2.4 4.6 4.2v1.3h12c1 0 1.9.9 1.9 1.9v12h1.3c1.8 0 3.3-1.4 3.3-3.2v-12c0-1.8-1.5-3.3-3.3-3.3z"}},
+layout:{"path":{"d":"M22.2 23.1H1.8c-.5 0-.9-.4-.9-.9V1.8c0-.5.4-.9.9-.9h20.4c.5 0 .9.4.9.9v20.4c0 .5-.4.9-.9.9zM2.8 21.2h18.4V2.8H2.8v18.4zM18 9.2H6c-.3 0-.5-.2-.5-.4V6c0-.3.2-.5.5-.5h12c.3 0 .5.2.5.5v2.8c0 .2-.2.4-.5.4zm-9.2 9.3H6c-.3 0-.5-.2-.5-.5v-5.5c0-.3.2-.5.5-.5h2.8c.2 0 .4.2.4.5V18c0 .3-.2.5-.4.5zm9.2 0h-5.5c-.3 0-.5-.2-.5-.5v-5.5c0-.3.2-.5.5-.5H18c.3 0 .5.2.5.5V18c0 .3-.2.5-.5.5z"}},
+left:{"path":{"d":"M17.5 3.8v16.4c0 .4-.6.8-1 .4l-9.8-8c-.3-.3-.3-.9 0-1.2l9.8-8c.4-.4 1-.1 1 .4z"}},
+left_align_text:{"path":{"d":"M22.2 3c0-.4-.4-.7-.7-.7h-19c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V3zm-3.7 5.5c0-.3-.4-.7-.7-.7H2.5c-.3 0-.7.4-.7.7v1.4c0 .4.4.7.7.7h15.3c.3 0 .7-.3.7-.7V8.5zm0 11.1c0-.4-.4-.7-.7-.7H2.5c-.3 0-.7.3-.7.7V21c0 .4.4.7.7.7h15.3c.3 0 .7-.3.7-.7v-1.4zm3.7-5.5c0-.4-.4-.7-.7-.7h-19c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h19c.3 0 .7-.4.7-.7v-1.4z"}},
+like:{"path":{"d":"M4.8 9.7H2.5c-.3 0-.7.3-.7.7V21c0 .4.4.7.7.7h1.2c1 0 1.8-.8 1.8-1.9v-9.4c0-.4-.3-.7-.7-.7zm15.5.5h-2.8c-1 0-1.8-.9-1.8-1.9V3.7c0-1-.8-1.9-1.9-1.9h-1.1c-.4 0-.7.4-.7.7v2.8c0 2.5-1.7 4.9-3.9 4.9-.4 0-.7.3-.7.6v9.3c0 .3.3.7.6.7 3.2.1 4.2 1.4 7.5 1.4 3.5 0 6.7-.4 6.7-4.4V12c0-1-.9-1.8-1.9-1.8z"}},
+link:{"path":{"d":"M12.6 19.2l-1-.1s-.7-.1-1-.3c-.2 0-.4 0-.5.2l-.3.2c-1.3 1.3-3.5 1.5-4.9.3-1.5-1.4-1.6-3.8-.1-5.2l3.5-3.5c.4-.5 1-.7 1.5-.9.8-.2 1.6-.2 2.2.1.5.2.9.4 1.2.8.2.2.4.4.5.6.2.3.6.4.8.1l1.3-1.3c.2-.2.2-.5.1-.7-.2-.3-.4-.5-.7-.7-.3-.4-.7-.7-1.1-.9-.6-.4-1.4-.7-2.1-.8-1.5-.3-3-.1-4.3.6-.5.3-1.1.7-1.5 1.1l-3.3 3.3C.4 14.6.2 18.6 2.6 21c2.4 2.7 6.6 2.8 9.1.2l1.2-1.1c.3-.3.1-.8-.3-.9zM21 2.7C18.5.3 14.5.5 12.1 3l-1 1c-.3.3-.1.8.3.9.6 0 1.3.2 1.9.4.2 0 .5 0 .6-.2l.2-.2c1.4-1.3 3.5-1.5 4.9-.3 1.6 1.4 1.6 3.8.2 5.2l-3.5 3.5c-.5.5-1 .7-1.6.9-.7.2-1.5.2-2.2-.1-.4-.2-.8-.4-1.2-.8-.2-.2-.3-.4-.5-.6-.1-.3-.6-.4-.8-.1l-1.3 1.3c-.2.2-.2.5 0 .7.2.3.4.5.6.7.3.3.8.7 1.1.9.7.4 1.4.7 2.2.8 1.4.3 3 .1 4.2-.6.6-.3 1.1-.7 1.5-1.1l3.5-3.5c2.6-2.5 2.5-6.7-.2-9.1z"}},
+list:{"path":{"d":"M3.7 4.8c0-.3-.3-.6-.7-.6H1.6c-.4 0-.7.3-.7.6v1.4c0 .4.3.7.7.7H3c.4 0 .7-.3.7-.7V4.8zm19.4 0c0-.3-.3-.6-.7-.6H6.2c-.3 0-.7.3-.7.6v1.4c0 .4.4.7.7.7h16.2c.4 0 .7-.3.7-.7V4.8zM3.7 11.3c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7H3c.4 0 .7-.3.7-.7v-1.4zm17.5 0c0-.4-.3-.7-.7-.7H6.2c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h14.3c.4 0 .7-.3.7-.7v-1.4zM3.7 17.8c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v1.4c0 .3.3.6.7.6H3c.4 0 .7-.3.7-.6v-1.4zm19.4 0c0-.4-.3-.7-.7-.7H6.2c-.3 0-.7.3-.7.7v1.4c0 .3.4.6.7.6h16.2c.4 0 .7-.3.7-.6v-1.4z"}},
+location:{"path":{"d":"M22.5 4.4l-6.6-3.3c-.3-.2-.7-.2-1 0L8.8 4.2 2.6 1.1c-.4-.2-.8-.2-1.2 0-.3.2-.5.6-.5.9v16.6c0 .5.3.8.6 1l6.7 3.3c.3.2.7.2.9 0l6.2-3.1 6.2 3.1c.1.1.3.2.5.2s.4-.1.6-.2c.3-.2.5-.6.5-.9V5.4c0-.5-.2-.8-.6-1zm-1.7 2.1v8.8c0 .5-.5.9-1 .7-1.7-.7-.3-3.5-1.5-5.1-1.2-1.4-2.7 0-4.1-2.2-1.3-2.2.5-3.8 2.1-4.6.3-.1.5-.1.7 0l3.4 1.7c.3.2.4.4.4.7zm-9.3 12.8c-.3.2-.6.1-.8-.1-.5-.4-.9-1-.9-1.7 0-1.1-1.8-.7-1.8-2.9 0-1.8-2.1-2.3-3.9-2.1-.5.1-.8-.3-.8-.7V5c0-.5.5-.9 1-.6l4 2h.1l.1.1c1.7 1 1.3 1.8.6 3-.7 1.3-1.1 0-2.2-.4s-2.2.4-1.8 1.1 1.5 0 2.2.7.7 1.9 2.9 1.1 2.6-.3 3.4.4c.7.8 1.1 2.2 0 3.3-.7.7-1 2.1-1.2 3-.1.2-.2.4-.4.5l-.5.1z"}},
+lock:{"path":{"d":"M5.1 8.8h1.8c.3 0 .5-.2.5-.4v-.1c0-2.6 2.2-4.8 4.9-4.6 2.5.2 4.3 2.3 4.3 4.8v-.1c0 .2.2.4.5.4h1.8c.3 0 .5-.2.5-.4v-.1c0-4.2-3.5-7.6-7.8-7.4-3.9.2-6.9 3.5-7 7.5.1.2.2.4.5.4zm-.5-.4v.1-.1zm16.6 4.1c0-1.1-.8-1.9-1.8-1.9H4.6c-1 0-1.8.8-1.8 1.9v8.7c0 1 .8 1.9 1.8 1.9h14.8c1 0 1.8-.9 1.8-1.9v-8.7zm-7.1 7.2c.1.3-.1.6-.4.6h-3.4c-.3 0-.5-.3-.5-.6l.9-2.8c-.7-.4-1.1-1.3-1-2.2.2-.9.9-1.5 1.8-1.7 1.5-.3 2.8.8 2.8 2.1 0 .8-.4 1.5-1 1.8l.8 2.8z"}},
+log_a_call:{"path":{"d":"M19.8.9H6.2C5 .9 4 2 4 3.1v.8h-.7c-.8 0-1.5.6-1.5 1.5s.7 1.4 1.5 1.4H4v3.7h-.7c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5H4v3.7h-.7c-.8 0-1.5.6-1.5 1.4 0 .9.7 1.5 1.5 1.5H4v.8c0 1.1 1 2.2 2.2 2.2h13.6c1.2 0 2.4-1.1 2.4-2.3V3c0-1.2-1.2-2.1-2.4-2.1zm-1.2 14.9l-1.1 1c-.2.3-.5.4-.8.4-2.4-.2-4.6-1.3-6.2-2.9s-2.7-3.9-2.8-6.4c0-.3.1-.6.3-.8l1-1c.5-.5 1.2-.5 1.7.1l.9 1.2c.3.4.3 1 0 1.4l-.8 1.1c0 .2 0 .4.1.5l1.7 1.9 1.8 1.7c.1.1.3.1.5 0l1.1-.8c.4-.3.9-.3 1.4 0l1.1 1c.5.3.5 1.1.1 1.6z"}},
+logout:{"path":{"d":"M9.7 22.4V21c0-.4-.3-.7-.7-.7H4.4c-.4 0-.7-.3-.7-.7V4.4c0-.4.3-.7.7-.7H9c.4 0 .7-.3.7-.7V1.6c0-.4-.3-.7-.7-.7H2.8C1.8.9.9 1.8.9 2.8v18.4c0 1 .9 1.9 1.9 1.9H9c.4 0 .7-.3.7-.7zm13.2-9.9c.3-.3.3-.7 0-1l-6.2-6.2c-.3-.3-.7-.3-1 0l-1 .9c-.3.3-.3.7 0 1l2.6 2.6c.3.3.1.8-.3.8H7.2c-.4 0-.7.2-.7.6v1.4c0 .4.3.7.7.7h9.7c.5 0 .6.5.4.8l-2.6 2.6c-.3.3-.3.7 0 1l.9.9c.3.3.7.3 1 0l6.3-6.1z"}},
+magicwand:{"path":{"d":"M13 9.7c-.2-.2-.4-.2-.6 0l-11.1 11c-.5.6-.5 1.4 0 2 .6.5 1.4.5 2 0l11-11.1c.2-.2.2-.4 0-.6L13 9.7zm3.2 0l1.5-1.5c.3-.3.3-.7 0-1l-.9-.9c-.3-.3-.7-.3-1 0l-1.5 1.5c-.2.1-.2.4 0 .6l1.3 1.3c.2.2.5.2.6 0zM4.8 5.4c1.8.5 3.1 1.8 3.7 3.6.1.3.5.3.5 0 .6-1.7 1.9-3.1 3.7-3.6.3-.1.3-.5 0-.6C11 4.2 9.6 2.9 9 1.1c0-.3-.4-.3-.5 0-.6 1.8-1.9 3.1-3.7 3.7-.2.1-.2.5 0 .6zm18.1 8.7c-1.6-.5-2.8-1.7-3.3-3.3-.1-.2-.4-.2-.5 0-.5 1.6-1.7 2.8-3.3 3.3-.2.1-.2.4 0 .5 1.6.5 2.8 1.7 3.3 3.3.1.2.4.2.5 0 .5-1.6 1.7-2.8 3.3-3.3.2-.1.2-.5 0-.5zM17.7 3.9c1.2.3 2.1 1.2 2.4 2.4.1.2.3.2.4 0 .4-1.2 1.2-2.1 2.4-2.4.2-.1.2-.3 0-.4-1.2-.4-2-1.2-2.4-2.4-.1-.2-.3-.2-.4 0-.3 1.2-1.2 2-2.4 2.4-.2.1-.2.3 0 .4z"}},
+mark_all_as_read:{"path":{"d":"M11.1 3.2l-.8-.8c-.2-.2-.6-.2-.8 0L4.6 7.3l-2-1.9c-.2-.3-.5-.3-.8 0l-.7.7c-.3.3-.3.6 0 .8l2.7 2.7c.2.3.5.4.8.4.2 0 .5-.1.8-.4L11.1 4c.2-.2.2-.5 0-.8zm11.2 5.3h-9.6c-.4 0-.7-.3-.7-.7V6.3c0-.4.3-.8.7-.8h9.6c.5 0 .8.4.8.8v1.5c0 .4-.3.7-.8.7zm0 6.6H4.5c-.4 0-.7-.3-.7-.7v-1.5c0-.4.3-.8.7-.8h17.8c.5 0 .8.4.8.8v1.5c0 .4-.3.7-.8.7zm0 6.6H4.5c-.4 0-.7-.3-.7-.7v-1.5c0-.4.3-.8.7-.8h17.8c.5 0 .8.4.8.8V21c0 .4-.3.7-.8.7z"}},
+matrix:{"path":{"d":"M22.2 1.6c0-.4-.4-.7-.7-.7H7.2c-.4 0-.7.3-.7.7v2.3c0 .4.3.7.7.7h14.3c.3 0 .7-.3.7-.7V1.6zM4.6 7.2c0-.4-.3-.7-.7-.7H2.5c-.3 0-.7.3-.7.7v6c0 .3.4.6.7.6h1.4c.4 0 .7-.3.7-.6v-6zm0 9.2c0-.4-.3-.7-.7-.7H2.5c-.3 0-.7.3-.7.7v6c0 .4.4.7.7.7h1.4c.4 0 .7-.3.7-.7v-6zm8.8-9.2c0-.4-.3-.7-.7-.7H7.2c-.4 0-.7.3-.7.7v1.3c0 .4.3.7.7.7h5.5c.4 0 .7-.3.7-.7V7.2zm8.8 0c0-.4-.4-.7-.7-.7h-5.6c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h5.6c.3 0 .7-.3.7-.7V7.2zm-8.8 4.6c0-.4-.3-.7-.7-.7H7.2c-.4 0-.7.3-.7.7v1.4c0 .3.3.6.7.6h5.5c.4 0 .7-.3.7-.6v-1.4zm8.8 0c0-.4-.4-.7-.7-.7h-5.6c-.3 0-.7.3-.7.7v1.4c0 .3.4.6.7.6h5.6c.3 0 .7-.3.7-.6v-1.4zm-8.8 4.6c0-.4-.3-.7-.7-.7H7.2c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h5.5c.4 0 .7-.4.7-.7v-1.4zm8.8 0c0-.4-.4-.7-.7-.7h-5.6c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h5.6c.3 0 .7-.4.7-.7v-1.4zM13.4 21c0-.4-.3-.7-.7-.7H7.2c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h5.5c.4 0 .7-.3.7-.7V21zm8.8 0c0-.4-.4-.7-.7-.7h-5.6c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h5.6c.3 0 .7-.3.7-.7V21z"}},
+metrics:{"path":{"d":"M20.7.9H3.3C2 .9.9 2 .9 3.3v17.4c0 1.3 1.1 2.4 2.4 2.4h17.4c1.3 0 2.3-1.1 2.3-2.4V3.3C23.1 2 22 .9 20.7.9zM7.2 18.3c0 .4-.3.8-.7.8h-.8c-.4 0-.8-.4-.8-.8V14c0-.4.4-.8.8-.8h.8c.4 0 .7.4.7.8v4.3zm4 0c0 .4-.4.8-.8.8h-.8c-.4 0-.7-.4-.7-.8V8c0-.4.3-.8.7-.8h.8c.4 0 .8.4.8.8v10.3zm4 0c0 .4-.4.8-.8.8h-.8c-.4 0-.8-.4-.8-.8V5.7c0-.4.4-.8.8-.8h.8c.4 0 .8.4.8.8v12.6zm3.9 0c0 .4-.4.8-.8.8h-.8c-.4 0-.7-.4-.7-.8v-7.5c0-.4.3-.8.7-.8h.8c.4 0 .8.4.8.8v7.5z"}},
+minimize_window:{"path":{"d":"M23.1 22.4c0 .4-.3.7-.7.7H1.6c-.4 0-.7-.3-.7-.7V21c0-.4.3-.7.7-.7h20.8c.4 0 .7.3.7.7v1.4z"}},
+moneybag:{"path":{"d":"M9.5 4.2c.1.3.3.4.6.4h3.7c.3 0 .6-.1.7-.4L16 1.5c.1-.3-.1-.6-.4-.6H8.4c-.3 0-.5.3-.3.5l1.4 2.8zm4.7 2.6H9.8c-3.6 0-6.6 3-6.6 6.7v7.4c0 1.2 1 2.2 2.2 2.2h13.2c1.2 0 2.2-1 2.2-2.2v-7.4c0-3.7-3-6.7-6.6-6.7zm-1.1 12.4v1.3c0 .2-.2.4-.5.4h-1.4c-.3 0-.3-.2-.3-.4v-1.2c-1.1-.2-2-.7-2.3-.9-.2-.3-.3-.5-.1-.9l.5-.7c0-.2.3-.3.5-.3.1 0 .3.1.4.1.8.5 1.4.7 1.9.7s.9-.3.9-.6c0-.2-.1-.6-1.5-1.1-1.3-.4-2.8-1.2-2.8-2.9 0-1 .6-2.1 2.5-2.5V9.1c0-.2.1-.4.3-.4h1.4c.3 0 .5.2.5.4v1.1c.7.1 1.5.5 1.8.7.1.1.2.3.3.5 0 .1-.1.3-.2.4l-.6.7c-.1.1-.4.3-.6.3-.1 0-.2-.1-.3-.1-.8-.4-1.4-.7-1.8-.7-.6 0-.9.3-.9.5 0 .3.2.6 1.4 1 1.6.5 3.3 1.4 3.3 3.1 0 1.2-1 2.3-2.4 2.6z"}},
+monthlyview:{"path":{"d":"M20.3 3.2H18v-.9c0-.7-.6-1.4-1.4-1.4-.7 0-1.4.6-1.4 1.4v.9H8.8v-.9c0-.7-.6-1.4-1.4-1.4C6.6.9 6 1.5 6 2.3v.9H3.7c-1 0-1.9.9-1.9 1.9v1.1c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V5.1c0-1-.9-1.9-1.9-1.9zm1.2 6h-19c-.3 0-.7.4-.7.7v11.3c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9V9.9c0-.3-.4-.7-.7-.7zM9.7 20.3c-1.1 0-2.3-.4-2.7-1 0-.1-.1-.2-.1-.3 0-.4.4-.8.8-.8.1 0 .2.1.4.1.5.3 1.1.5 1.6.5.9 0 1.4-.4 1.4-1s-.4-.9-1.5-.9c-.6.1-1-.1-1-.7 0-.4.3-.7.7-.7 1 .1 1.7-.2 1.7-.8 0-.6-.6-.9-1.4-.9-.5 0-1 .1-1.5.4-.1.1-.2.1-.3.1-.4 0-.7-.3-.7-.7 0-.2.1-.4.2-.5.6-.5 1.4-.8 2.5-.8 1.7 0 2.8.8 2.8 2.1 0 .9-.8 1.5-1.6 1.7.8.1 1.7.7 1.7 1.8 0 1.5-1.2 2.4-3 2.4zm7.4-.9c0 .4-.3.9-.7.9-.4 0-.7-.4-.7-.9v-4.7l-1 .9c-.1.1-.3.1-.5.1-.4 0-.7-.2-.7-.7 0-.1.1-.3.2-.4l1.8-1.8c.1-.2.4-.3.7-.3.5 0 .9.5.9 1v5.9z"}},
+move:{"path":{"d":"M22.9 11.7l-3.8-4.2c-.3-.3-.6 0-.6.4v2.7h-4.7c-.2 0-.4-.2-.4-.4V5.5h2.7c.5 0 .7-.4.4-.6l-4.1-3.8c-.2-.2-.5-.2-.7 0L7.6 4.9c-.3.3-.1.6.4.6h2.6v4.7c0 .2-.2.4-.4.4H5.5V7.9c0-.5-.4-.7-.6-.4l-3.8 4.1c-.2.2-.2.5 0 .7l3.8 4.1c.3.3.6.1.6-.4v-2.6h4.7c.2 0 .4.2.4.4v4.7H7.9c-.5 0-.7.4-.4.6l4.1 3.8c.2.2.5.2.7 0l4.1-3.8c.3-.3.1-.6-.4-.6h-2.6v-4.7c0-.2.2-.4.4-.4h4.7v2.7c0 .5.4.7.6.4l3.8-4.1c.2-.3.2-.5 0-.7z"}},
+muted:{"path":{"d":"M22.4 2.6l-1-1c-.3-.3-.8-.2-1.1.2l-4.6 4.6V4.6c0-2.1-1.6-3.7-3.7-3.7S8.3 2.5 8.3 4.6v6.7c0 .7.2 1.3.6 1.9l-1.7 1.6c-.7-1-1.2-2.2-1.2-3.5V9.4c0-.6-.5-1.1-1.2-1.1s-1.1.5-1.1 1.1v1.9c0 1.9.7 3.7 1.9 5.1l-3.8 3.9c-.4.3-.4.8-.2 1.1l1 1c.3.3.8.2 1.1-.2L22.2 3.7c.4-.3.5-.8.2-1.1zM18 10.7v.6c0 3.2-2.7 5.9-6 5.9h-.4l-1.8 1.9c.4.1.8.1 1.3.2v1.5H9c-.6 0-1.2.5-1.2 1.1s.6 1.2 1.2 1.2h6c.7 0 1.2-.5 1.2-1.2s-.6-1.1-1.2-1.1h-2.1v-1.5c4.2-.6 7.4-4 7.4-8V9.4c0-.3-.1-.5-.3-.7l-2 2z"}},
+new:{"path":{"d":"M19.8 4.2C15.5-.1 8.5-.1 4.2 4.2c-4.3 4.3-4.3 11.3 0 15.6 4.3 4.4 11.3 4.4 15.6 0 4.3-4.3 4.3-11.3 0-15.6zm-.4 8.7c0 .3-.2.5-.5.5h-5.1c-.2 0-.4.2-.4.4v5.1c0 .3-.2.5-.5.5h-1.8c-.3 0-.5-.2-.5-.5v-5.1c0-.2-.2-.4-.4-.4H5.1c-.3 0-.5-.2-.5-.5v-1.8c0-.3.2-.5.5-.5h5.1c.2 0 .4-.2.4-.4V5.1c0-.3.2-.5.5-.5h1.8c.3 0 .5.2.5.5v5.1c0 .2.2.4.4.4h5.1c.3 0 .5.2.5.5v1.8z"}},
+new_window:{"path":{"d":"M22.5.9h-8.8c-.4 0-.8.3-.8.6v1.4c0 .4.3.8.8.8h3.6c.4 0 .7.5.3.7l-7.8 7.9c-.3.3-.3.7 0 .9l1 1c.2.3.6.3.9 0l7.9-7.8c.2-.3.7-.1.7.3v3.6c0 .4.4.8.7.8h1.4c.4 0 .7-.4.7-.8V1.6c0-.4-.3-.7-.6-.7zm-5.7 10.9l-1.6 1.6c-.3.3-.4.6-.4 1v5.2c0 .4-.4.7-.7.7H4.4c-.4 0-.7-.3-.7-.7V9.9c0-.3.3-.7.7-.7h5.3c.4 0 .7-.1 1-.4l1.5-1.6c.3-.2.1-.7-.3-.7H2.8c-1 0-1.9.8-1.9 1.8v12.9c0 1 .9 1.9 1.9 1.9h12.9c1 0 1.8-.9 1.8-1.9v-9.1c0-.4-.5-.6-.7-.3z"}},
+news:{"path":{"d":"M23.3 2.8H4.4c-.4 0-.7.3-.7.7v14c0 .6-.5 1.1-1.1 1-.4-.1-.8-.5-.8-1V7.4c0-.3-.1-.5-.4-.5H.7c-.4 0-.7.3-.7.7v11.8c0 1 .8 1.8 1.8 1.8h20.4c1 0 1.8-.8 1.8-1.8V3.5c0-.4-.3-.7-.7-.7zM12.9 16.2c0 .2-.2.4-.4.4H6.9c-.3 0-.4-.2-.4-.4v-1c0-.2.1-.4.4-.4h5.6c.2 0 .4.2.4.4v1zm0-3.7c0 .2-.2.4-.4.4H6.9c-.3 0-.4-.2-.4-.4v-1c0-.2.1-.4.4-.4h5.6c.2 0 .4.2.4.4v1zm8.3 3.7c0 .2-.2.4-.4.4h-5.6c-.2 0-.4-.2-.4-.4v-1c0-.2.2-.4.4-.4h5.6c.2 0 .4.2.4.4v1zm0-3.7c0 .2-.2.4-.4.4h-5.6c-.2 0-.4-.2-.4-.4v-1c0-.2.2-.4.4-.4h5.6c.2 0 .4.2.4.4v1zm0-3.7c0 .2-.2.4-.4.4H6.9c-.3 0-.4-.2-.4-.4V6c0-.3.1-.5.4-.5h13.9c.2 0 .4.2.4.5v2.8z"}},
+note:{"path":{"d":"M19.1 18.3l-.4.4c-.5.5-1.1.7-1.7.7h-1.2c-1.1 0-2.3-.8-2.3-2.4v-1.1c0-.9.4-1.5.6-1.8l5-5.1c.1-.1.3-.5.3-.6V4.5c0-1.2-1-2.2-2.2-2.2H5.4c-1.2 0-2.3 1.1-2.3 2.2h-.7C1.6 4.5.9 5.2.9 6s.7 1.5 1.5 1.5h.7v3h-.7c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5h.7v3h-.7c-.8 0-1.5.7-1.5 1.5s.7 1.4 1.5 1.4h.7c0 1.5 1.1 2.2 2.3 2.2h11.8c1.2 0 2.2-1 2.2-2.2v-.9c0-.3-.1-.3-.3-.2zM15.3 7.9c0 .4-.3.7-.7.7H7.2c-.4 0-.7-.3-.7-.7v-.7c0-.5.3-.8.7-.8h7.4c.4 0 .7.3.7.8v.7zM12 16.8c0 .5-.3.8-.7.8H7.2c-.4 0-.7-.3-.7-.8v-.7c0-.4.3-.7.7-.7h4.1c.4 0 .7.3.7.7v.7zm1.1-4.4c0 .4-.3.7-.7.7H7.2c-.4 0-.7-.3-.7-.7v-.8c0-.4.3-.7.7-.7h5.2c.4 0 .7.3.7.7v.8zm9.7-2.1l-.4-.4c-.3-.3-.8-.3-1 0l-5.7 5.8V17c0 .1 0 .2.1.2h1.3l5.7-5.8c.4-.3.4-.7 0-1.1z"}},
+notebook:{"path":{"d":"M20.3.9H6.5c-1.1 0-1.9.9-1.9 1.9v1.4H3.2c-.8 0-1.4.6-1.4 1.3s.6 1.4 1.4 1.4h1.4v3.7H3.2c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4h1.4v3.7H3.2c-.8 0-1.4.6-1.4 1.4s.6 1.3 1.4 1.3h1.4v1.4c0 1 .8 1.9 1.9 1.9h13.8c1 0 1.9-.9 1.9-1.9V2.8c0-1-.9-1.9-1.9-1.9zm-3.2 15.7c0 .3-.2.5-.5.5h-6.4c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h6.4c.3 0 .5.2.5.5v.9zm.9-3.7c0 .3-.2.5-.5.5H9.2c-.2 0-.4-.2-.4-.5V12c0-.3.2-.5.4-.5h8.3c.3 0 .5.2.5.5v.9zm.9-4.6c0 .3-.2.5-.4.5H8.3c-.3 0-.5-.2-.5-.5V5.5c0-.2.2-.4.5-.4h10.2c.2 0 .4.2.4.4v2.8z"}},
+notification:{"path":{"d":"M21.2 15.2H21c-.9 0-1.6-.7-1.6-1.6V8.3c0-4.2-3.5-7.6-7.8-7.4-3.9.2-7 3.6-7 7.6v5.2c0 .8-.7 1.5-1.6 1.5h-.2c-1 0-1.9.9-1.9 1.9v.7c0 .3.3.7.7.7h20.8c.4 0 .7-.4.7-.7v-.7c0-1-.9-1.9-1.9-1.9zm-6.9 5.1H9.7c-.2 0-.5.3-.4.6.2 1.3 1.4 2.2 2.7 2.2s2.5-1 2.7-2.2c.1-.3-.2-.6-.4-.6z"}},
+office365:{"g":{"path":{"d":"M14.2 22.8c.3.1.6.1.9 0l5.5-1.8c.4-.1.6-.4.6-.8V3.6c0-.3-.2-.6-.4-.7L15.2 1c-.3-.1-.7-.1-.9 0L3.2 5.3c-.2.1-.4.3-.4.6v12.5c0 .3.2.6.4.7l11 3.7zm.6-3c0 .2-.3.5-.5.4L5.1 19c-.3-.1-.4-.3-.4-.5v-.2c0-.2.1-.3.3-.4l1.7-.8c.2-.1.3-.3.3-.4V6.8c0-.2.2-.4.4-.4l6.9-1.6c.3 0 .6.1.6.5v14.5z"}}},
+offline:{"path":{"d":"M16 16.7c.2-.3.2-.6 0-.9l-.8-.8c-.2-.2-.6-.2-.8 0l-2.1 2c-.1.2-.4.2-.5 0l-2.1-2c-.2-.2-.6-.2-.8 0l-.8.8c-.3.3-.3.6 0 .9l2 2c.1.1.1.4 0 .5l-2 2.1c-.3.2-.3.6 0 .8l.8.8c.2.3.6.3.8 0l2.1-2c.1-.1.4-.1.5 0l2.1 2c.2.3.6.3.8 0l.8-.8c.2-.2.2-.6 0-.8l-2-2.1c-.2-.1-.2-.4 0-.5l2-2zm6-11.3C19.5 2.5 15.9 1 12 1S4.6 2.5 2.1 5.4c-.2.1-.2.5 0 .6l1.4 1.2c.2.2.5.1.7 0C6.2 5 9 3.7 12 3.7s5.9 1.3 7.9 3.5c.2.1.5.1.7 0L22 6c.2-.2.2-.5 0-.6zm-10 2c-1.9 0-3.7.9-5 2.3-.2.2-.2.5 0 .7l1.5 1.1c.2.2.5.2.6 0 .8-.8 1.8-1.3 2.9-1.3s2.2.5 3 1.2c.1.2.4.2.6.1l1.4-1.1c.3-.2.3-.5.1-.7C15.8 8.3 14 7.4 12 7.4z"}},
+open:{"path":{"d":"M3.7 16.2v-.3.5-.2zM21.2.9H2.8C1.8.9.9 1.8.9 2.8v16.6c0 1 .9 1.8 1.9 1.8h5.5c.3 0 .5-.2.5-.4v-1.9c0-.3-.2-.4-.5-.4H4.4c-.4 0-.7-.4-.7-.7V6.2c0-.3.3-.7.7-.7h15.2c.4 0 .7.4.7.7v11.6c0 .3-.3.7-.7.7h-3.9c-.3 0-.5.1-.5.4v1.9c0 .2.2.4.5.4h5.5c1 0 1.9-.8 1.9-1.8V2.8c0-1-.9-1.9-1.9-1.9zM17.3 16l1-1c.3-.3.3-.7 0-1l-5.8-5.8c-.3-.3-.7-.3-1 0L5.7 14c-.3.3-.3.7 0 1l1 .9c.3.3.7.3 1 0l2.1-2.1c.3-.3.8-.1.8.3v8.3c0 .4.3.7.7.7h1.3c.4 0 .8-.3.8-.7v-8.3c0-.4.4-.6.8-.3l2.1 2.2c.3.2.7.2 1 0z"}},
+open_folder:{"path":{"d":"M21.2 6.5H10.8c-.7 0-1.3-.4-1.7-1L7.5 2.8c-.3-.6-.9-1-1.6-1H2.8c-1 0-1.9.9-1.9 1.9v16.6c0 1 .9 1.9 1.9 1.9h18.4c1 0 1.9-.9 1.9-1.9v-12c0-1-.9-1.8-1.9-1.8zm0-3.7H10.1c-.2 0-.3.2-.2.3l.8 1.2c.1.2.2.3.4.3h10.1c.5 0 1 .1 1.5.3.1.1.4-.1.4-.3 0-1-.9-1.8-1.9-1.8z"}},
+opened_folder:{"path":{"d":"M20.3 6.9c0-1-.8-1.8-1.8-1.8h-6.8c-.9 0-1.6-.9-1.6-.9L8.9 2.8s-.5-1-1.6-1H5.5c-1 0-1.8.9-1.8 1.9v4.1h16.6v-.9zm1.3 2.8H2.4c-1 0-1.7.9-1.4 1.7l2.6 9.7c.2.6.7 1.1 1.4 1.1h14.1c.6 0 1.2-.5 1.3-1.1l2.7-9.7c.2-.8-.5-1.7-1.5-1.7z"}},
+overflow:{"path":{"d":"M17.2 4.6H7.3c-1 0-1.7.8-1.7 1.7v.3c0 .1.1.2.3.2h9c1 0 1.7.8 1.7 1.7v10.2c0 .2.2.3.3.3h.3c.9 0 1.7-.8 1.7-1.7v-11c0-.9-.8-1.7-1.7-1.7zM20.9.9H11c-1 0-1.7.8-1.7 1.7v.3c0 .1.1.3.3.3h9c1 0 1.7.8 1.7 1.7v10.2c0 .1.1.3.3.3h.3c.9 0 1.7-.8 1.7-1.7V2.6c0-.9-.8-1.7-1.7-1.7zM15 10.1c0-1-.7-1.7-1.7-1.7H3.1c-1 0-1.7.7-1.7 1.7v11.3c0 .9.8 1.7 1.7 1.7h10.2c1 0 1.7-.8 1.7-1.7V10.1z"}},
+package:{"path":{"d":"M20.5 11.1h-3.7l-1.5 1.8h5v2.8H3.7v-2.8h4.9l-1.5-1.8H3.5c-.9 0-1.7.7-1.7 1.6v9c0 .8.6 1.4 1.4 1.4h17.6c.8 0 1.4-.6 1.4-1.4v-9c0-.9-.8-1.6-1.7-1.6zm-9.9-9.5v5.8H7.4c-.4 0-.7.4-.4.6l4.6 5.7c.2.1.5.1.7 0L16.9 8c.3-.2 0-.6-.4-.6h-3.1V1.6c0-.4-.3-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7z"}},
+package_org:{"path":{"d":"M20.5 10.6h-5.8l-1.8 1.9h7.4v2.7H3.7v-2.7h3.7l-1.8-1.9H3.5c-.9 0-1.7.8-1.7 1.7v8.9c0 .8.6 1.4 1.4 1.4h17.6c.8 0 1.4-.6 1.4-1.4v-8.9c0-.9-.8-1.7-1.7-1.7zm-11 1.3c.4.4.9.4 1.3 0l8.8-8.8c.2-.1.2-.4 0-.6l-1.3-1.3c-.2-.2-.5-.2-.7 0l-7.4 7.5-3.1-3.1c-.2-.2-.5-.2-.7 0L5.1 6.9c-.2.2-.2.4 0 .6l4.4 4.4z"}},
+package_org_beta:{"path":{"d":"M20.5 10.6h-2.7c-.2.7-.5 1.3-1 1.9h3.5v2.7H3.7v-2.7h2.8v-1.9h-3c-.9 0-1.7.8-1.7 1.7v8.9c0 .8.6 1.4 1.4 1.4h17.6c.8 0 1.4-.6 1.4-1.4v-8.9c0-.9-.8-1.7-1.7-1.7zm-4.3-6c0-1.8-1.6-3.2-3.4-3.2H9c-.4 0-.7.3-.7.7v9.7c0 .3.3.7.7.7h3.9c1.8 0 3.3-1.5 3.2-3.3 0-.9-.4-1.7-1-2.2.7-.7 1.1-1.5 1.1-2.4zm-6-1.4h2.7c.8 0 1.4.6 1.4 1.4 0 .8-.6 1.4-1.4 1.4h-2.7V3.2zm4.1 6c0 .8-.6 1.4-1.4 1.4h-2.7V7.8h2.7c.8 0 1.4.6 1.4 1.4z"}},
+page:{"path":{"d":"M20.5 8.8h-5.2c-1.2 0-1.9-.8-1.9-2V1.7c0-.5-.3-.8-.8-.8H5c-1.2 0-2.2 1-2.2 2.2v17.8c0 1.2 1 2.2 2.2 2.2h14c1.2 0 2.2-1 2.2-2.2V9.5c0-.4-.3-.7-.7-.7zm.6-2.8l-4.9-4.9c-.1-.1-.3-.2-.4-.2-.3 0-.6.3-.6.5v4c0 .8.8 1.5 1.6 1.5h3.9c.3 0 .5-.3.5-.5s0-.4-.1-.4z"}},
+palette:{"path":{"d":"M22.8 8C21.8 3.6 17.2.9 12.1.9 5.9.9.9 5.9.9 12s5 11.1 11.2 11.1c8.6 0 7.9-4.4 5.2-6.1-1.7-1-2.5-3.3-.9-5 3-3.1 7.8 1.8 6.4-4zM6 15.7c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zm.5-8.8c0-1.3 1-2.3 2.3-2.3s2.3 1 2.3 2.3-1 2.3-2.3 2.3-2.3-1-2.3-2.3zm5 13.4c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zm4.2-12c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3S18 4.7 18 6s-1 2.3-2.3 2.3z"}},
+paste:{"path":{"d":"M8.1 5.5h7.8c.4 0 .7-.3.7-.7v-2c0-1-.8-1.9-1.8-1.9H9.2c-1 0-1.8.9-1.8 1.9v2c0 .4.3.7.7.7zm12.2-2.7h-1.1c-.4 0-.7.3-.7.7v2c0 1.1-.9 1.9-1.9 1.9H7.4c-1 0-1.9-.8-1.9-1.9v-2c0-.4-.3-.7-.7-.7H3.7c-1 0-1.9.8-1.9 1.8v16.6c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9V4.6c0-1-.9-1.8-1.9-1.8zm-2.8 16.1c0 .3-.1.5-.4.5H6.9c-.3 0-.4-.2-.4-.5V18c0-.3.1-.5.4-.5h10.2c.3 0 .4.2.4.5v.9zm0-3.7c0 .3-.1.5-.4.5H6.9c-.3 0-.4-.2-.4-.5v-.9c0-.3.1-.5.4-.5h10.2c.3 0 .4.2.4.5v.9zm0-3.7c0 .3-.1.5-.4.5H6.9c-.3 0-.4-.2-.4-.5v-.9c0-.3.1-.4.4-.4h10.2c.3 0 .4.1.4.4v.9z"}},
+people:{"path":{"d":"M19.4 10.3c-1.3-.5-1.5-1-1.5-1.5s.4-1 .8-1.4c.8-.7 1.2-1.6 1.2-2.7 0-2-1.3-3.8-3.7-3.8-2.1 0-3.4 1.5-3.6 3.3 0 .2.1.3.2.4 1.8 1.1 2.8 3.1 2.8 5.4 0 1.8-.6 3.3-1.9 4.4-.1.1-.1.3 0 .4.3.2 1.1.6 1.5.8.2 0 .3.1.4.1h5.6c1 0 1.9-.9 1.9-1.9v-.2c0-1.6-1.8-2.5-3.7-3.3zm-6.2 6.4c-1.6-.6-1.8-1.2-1.8-1.8 0-.6.5-1.2 1-1.7.9-.7 1.4-1.8 1.4-3.1 0-2.4-1.6-4.5-4.4-4.5-2.8 0-4.5 2.1-4.5 4.5 0 1.3.5 2.4 1.5 3.1.5.5.9 1.1.9 1.7 0 .6-.2 1.2-1.8 1.8-2.3.9-4.6 2-4.6 3.9v.6c0 1 .9 1.9 1.9 1.9h12.8c1.1 0 1.9-.9 1.9-1.9v-.6c0-1.9-2-3-4.3-3.9z"}},
+phone_landscape:{"path":{"d":"M24 6c0-1-.8-1.8-1.8-1.8H1.8C.8 4.2 0 5 0 6v12c0 1 .8 1.8 1.8 1.8h20.4c1 0 1.8-.8 1.8-1.8V6zM2.3 13.4c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.4.6 1.4 1.4-.6 1.4-1.4 1.4zm18 3c0 .4-.3.7-.7.7H5.3c-.4 0-.7-.3-.7-.7V7.6c0-.4.3-.7.7-.7h14.3c.4 0 .7.3.7.7v8.8z"}},
+phone_portrait:{"path":{"d":"M19.8 1.8C19.8.8 19 0 18 0H6C5 0 4.2.8 4.2 1.8v20.4c0 1 .8 1.8 1.8 1.8h12c1 0 1.8-.8 1.8-1.8V1.8zM12 23.1c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.4.6 1.4 1.4-.6 1.4-1.4 1.4zm5.1-4.4c0 .4-.3.7-.7.7H7.6c-.4 0-.7-.3-.7-.7V4.4c0-.4.3-.7.7-.7h8.8c.4 0 .7.3.7.7v14.3z"}},
+photo:{"path":{"d":"M12 9.2c-2 0-3.7 1.7-3.7 3.7s1.7 3.7 3.7 3.7 3.7-1.6 3.7-3.7S14 9.2 12 9.2zm9.2-2.7h-2.4c-.6 0-1.2-.4-1.5-.9L16.2 4c-.3-.8-1.1-1.2-1.9-1.2H9.7c-.8 0-1.6.4-1.9 1.2L6.7 5.6c-.3.5-.9.9-1.6.9H2.8c-1 0-1.9.8-1.9 1.8v11.1c0 1 .9 1.8 1.9 1.8h18.4c1 0 1.9-.8 1.9-1.8V8.3c0-1-.9-1.8-1.9-1.8zm-9.2 12c-3 0-5.5-2.5-5.5-5.6S9 7.4 12 7.4s5.5 2.5 5.5 5.5-2.5 5.6-5.5 5.6z"}},
+picklist:{"path":{"d":"M22.2 18.9c.5 0 .9-.4.9-.9V6c0-.5-.4-.9-.9-.9H1.8c-.5 0-.9.4-.9.9v12c0 .5.4.9.9.9h20.4zM2.8 17.1V6.9h18.4v10.2H2.8zM15 10.6h4.3c.1 0 .2.2.1.2l-2.1 2.5c-.1.1-.3.1-.4 0l-2.1-2.5s.1-.2.2-.2z"}},
+power:{"path":{"d":"M15.9 3.6c-.3-.2-.7 0-.7.4v1.7c0 .3.2.7.5.8 2.4 1.4 4 4.2 3.6 7.3-.3 3.3-3.1 6.1-6.5 6.5-4.4.5-8.2-3-8.2-7.4 0-2.7 1.5-5.1 3.7-6.4.3-.1.5-.5.5-.8V4c0-.4-.4-.6-.7-.4-3.9 1.6-6.6 5.6-6.2 10.2.4 4.8 4.2 8.7 8.9 9.2 6.1.7 11.4-4.1 11.4-10.1 0-4.2-2.6-7.8-6.3-9.3zm-2.5-2c0-.4-.3-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7v7.9c0 .3.3.7.7.7h1.4c.4 0 .7-.4.7-.7V1.6z"}},
+preview:{"path":{"d":"M23.9 11.6C21.7 7.2 17.2 4.2 12 4.2S2.3 7.2.1 11.6c-.1.3-.1.6 0 .8 2.2 4.4 6.7 7.4 11.9 7.4s9.7-3 11.9-7.4c.1-.3.1-.5 0-.8zM12 17.1c-2.8 0-5.1-2.3-5.1-5.1S9.2 6.9 12 6.9s5.1 2.3 5.1 5.1-2.3 5.1-5.1 5.1zm0-8.3c-1.8 0-3.2 1.4-3.2 3.2s1.4 3.2 3.2 3.2 3.2-1.4 3.2-3.2-1.4-3.2-3.2-3.2z"}},
+priority:{"path":{"d":"M4.2 1.6c0-.4-.4-.7-.7-.7H2.1c-.4 0-.7.3-.7.7v20.8c0 .4.3.7.7.7h1.4c.3 0 .7-.3.7-.7V1.6zm17.7 2c-7.4 3.8-6.5-4.1-15.4-1-.3.1-.5.4-.5.6V14c0 .3.3.5.6.4 8.9-3 7.9 5.2 15.6.8.3-.1.4-.3.4-.6V3.9c0-.3-.4-.5-.7-.3z"}},
+process:{"path":{"d":"M7.5 10.7l3.9-4.9c.3-.4.8-.4 1.1 0l3.9 5c.2.1.4.3.6.3h4.4c.4 0 .8-.3.8-.7V3.7c0-1-.9-1.9-1.9-1.9H3.7c-1 0-1.9.9-1.9 1.9v6.7c0 .4.4.7.7.7h4.4c.3 0 .4-.2.6-.4zm9 2.6l-3.9 4.9c-.3.4-.9.4-1.2 0l-3.9-5c-.2-.1-.3-.3-.6-.3H2.5c-.3 0-.7.3-.7.7v6.7c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9v-6.7c0-.4-.4-.7-.7-.7H17c-.2 0-.4.2-.5.4z"}},
+push:{"path":{"d":"M20.3.9H9.2c-1 0-1.8.9-1.8 1.9 0 .3.2.7.4.8.2.1 1.9 1.9 1.9 1.9.2.1.4 0 .4-.2 0-.4.3-.7.7-.7h7.8c.4 0 .8.3.8.7v12.5c0 .3-.4.6-.8.6h-7.8c-.4 0-.6-.3-.6-.6v-.1c0-.2-.3-.3-.4-.1 0 0-1.8 1.7-2 1.8-.2.2-.4.5-.4.9v.9c0 1 .8 1.8 1.8 1.8h11.1c1 0 1.9-.8 1.9-1.8V2.8c0-1-.9-1.9-1.9-1.9zm-5.5 21.3c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.4.6 1.4 1.4-.6 1.4-1.4 1.4zM12.7 11L7 5.3c-.3-.3-.7-.3-1 0l-1 .9c-.2.3-.2.7 0 1l2.2 2.1c.2.3 0 .8-.4.8H.7c-.4.1-.7.4-.7.7v1.4c0 .4.3.7.7.7h6.1c.4 0 .6.5.3.8L5 15.8c-.3.3-.3.7 0 1l1 1c.2.2.6.2.9 0l5.8-5.8c.3-.2.3-.7 0-1z"}},
+puzzle:{"path":{"d":"M20.8 17.7c-.1 1.3-.3 2.6-.5 3.9 0 .4-.5.8-.8.8-2.5.3-5 .5-7.5.5-2.4 0-4.9-.1-7.3-.5-.4 0-.8-.4-.9-.8-.3-2-.5-4.1-.5-6.2s.2-4.1.5-6.2c.1-.3.5-.7.9-.8 1.5-.2 3-.3 4.4-.4 0 0 1.2 0 1.1-1.2 0-1-1.8-1.7-1.8-3.4C8.4 2 9.8.9 12 .9c2.3 0 3.6 1.1 3.6 2.5 0 1.8-1.7 2.4-1.8 3.4C13.8 7.9 15 8 15 8c1.5.1 3 .2 4.5.4.3 0 .8.4.8.8.2 1.5.4 2.8.5 4.2 0 .4-.4.9-.8.9h-.4c-.4 0-1-.4-1.3-.7 0 0-1-1-2.1-1-1.7-.1-3 1.4-3 3s1.3 3.1 3 3.1c1-.1 2-1.1 2-1.1.4-.2 1-.5 1.4-.5h.4c.5 0 .8.3.8.6z"}},
+question:{"path":{"d":"M13.1 17.5h-2.3c-.4 0-.6-.2-.6-.6v-.7c0-1.9 1.2-3.7 3-4.3.6-.2 1.1-.5 1.5-1 2.3-2.8.2-6.1-2.6-6.2-1 0-1.9.3-2.7 1-.6.6-1 1.3-1 2.1-.1.2-.4.5-.7.5H5.4c-.5 0-.8-.4-.7-.8.1-1.7.9-3.3 2.2-4.5C8.4 1.6 10.2.8 12.3.9c3.8.1 6.9 3.3 7.1 7.1.1 3.2-1.9 6.1-4.9 7.2-.4.2-.7.5-.7 1v.6c0 .5-.3.7-.7.7zm.7 4.9c0 .4-.3.7-.6.7h-2.4c-.3 0-.6-.3-.6-.7v-2.3c0-.4.3-.7.6-.7h2.4c.3 0 .6.3.6.7v2.3z"}},
+questions_and_answers:{"path":{"d":"M23.1 12.9c0-1.8-1.2-3.3-2.8-3.9C20.2 4.5 16.5.9 12 .9S3.8 4.5 3.7 9C2.1 9.6.9 11.1.9 12.9c0 2 1.4 3.6 3.1 4 1 3.6 4.2 6.2 8 6.2s7-2.6 8-6.2c1.7-.4 3.1-2 3.1-4zm-4.6-4.1l-.1-.1.2.1h-.1zM12 21.2c-3.6 0-6.5-3-6.5-6.6 0-.9.2-2.3.6-3.2 0-.1.1-.2.2-.4 1.4-.5 2.6-1.5 3.3-2.7 1.7 2 4.2 3.4 7 3.4H18c.1.6.3 1.3.4 2.1-.3 1.1-2.1 2.2-4.6 2.4-.1-.3-.4-.5-.7-.5h-2.3c-.4 0-.6.4-.6.7v1.4c0 .4.2.7.6.7h2.3c.3 0 .6-.2.7-.5 1.6 0 3.1-.5 4.2-1.2-.8 2.6-3.2 4.4-6 4.4z"}},
+record:{"path":{"d":"M12 3.7c4.6 0 8.3 3.7 8.3 8.3s-3.7 8.3-8.3 8.3-8.3-3.7-8.3-8.3S7.4 3.7 12 3.7z"}},
+record_create:{"path":{"d":"M8 5.4h8c.4 0 .8-.4.8-.8V3.1c0-1.2-1-2.2-2.2-2.2H9.5c-1.2 0-2.2 1-2.2 2.2v1.5c0 .4.3.8.7.8zm12-2.6h-.8c-.2 0-.3.1-.3.3v1.5c0 1.6-1.3 3-2.9 3H8c-1.6 0-2.9-1.4-2.9-3V3.1c0-.2-.1-.3-.3-.3H4c-1.2 0-2.2 1-2.2 2.2v15.9c0 1.2 1 2.2 2.2 2.2h16c1.2 0 2.2-1 2.2-2.2V5c0-1.2-1-2.2-2.2-2.2zM8 18.6c0 .5-.3.8-.7.8h-.7c-.5 0-.8-.3-.8-.8v-.7c0-.4.3-.7.8-.7h.7c.4 0 .7.3.7.7v.7zM8 15c0 .4-.3.7-.7.7h-.7c-.5 0-.8-.3-.8-.7v-.8c0-.4.3-.7.8-.7h.7c.4 0 .7.3.7.7v.8zm0-3.7c0 .4-.3.7-.7.7h-.7c-.5 0-.8-.3-.8-.7v-.8c0-.4.3-.7.8-.7h.7c.4 0 .7.3.7.7v.8zm10.2 7.3c0 .5-.3.8-.8.8h-7.2c-.4 0-.7-.3-.7-.8v-.7c0-.4.3-.7.7-.7h7.2c.5 0 .8.3.8.7v.7zm0-3.6c0 .4-.3.7-.8.7h-7.2c-.4 0-.7-.3-.7-.7v-.8c0-.4.3-.7.7-.7h7.2c.5 0 .8.3.8.7v.8zm0-3.7c0 .4-.3.7-.8.7h-7.2c-.4 0-.7-.3-.7-.7v-.8c0-.4.3-.7.7-.7h7.2c.5 0 .8.3.8.7v.8z"}},
+redo:{"path":{"d":"M21.6 1.4h-1.4c-.4 0-.8.3-.8.7v3.2c0 .4-.2.6-.5.3-.2-.2-.3-.3-.5-.4-2.3-2.3-5.5-3.3-8.8-2.7-1.2.3-2.3.7-3.3 1.4C3.5 5.7 1.9 8.7 1.8 12c0 2.4 1 4.9 2.7 6.7 1.7 1.8 3.9 2.9 6.3 3 .4.1.7-.2.7-.7v-1.3c0-.4-.2-.7-.6-.7-2.2-.2-4.2-1.4-5.4-3.4-.3-.6-.6-1.2-.7-1.8-.7-3 .5-6 3.2-7.7.5-.3 1.1-.6 1.7-.7 2.5-.6 5 .1 6.7 1.8.2.2.4.4.5.6.2.4-.1.5-.6.5h-3.2c-.4 0-.7.4-.7.8v1.4c0 .4.3.6.7.6h8.4c.3 0 .6-.2.6-.5V2.1c.1-.4-.2-.7-.5-.7z"}},
+refresh:{"path":{"d":"M21.5 1.8h-1.4c-.4 0-.7.4-.7.7v3.3c0 .4-.2.6-.6.3-.1-.2-.2-.3-.4-.5-2.3-2.3-5.6-3.2-8.9-2.6-1.1.2-2.3.7-3.2 1.3-2.8 1.9-4.5 4.9-4.5 8.1 0 2.5.9 5 2.7 6.8 1.8 1.9 4.3 3 7 3 2.3 0 4.6-.8 6.3-2.3.3-.3.3-.7.1-1l-1-1c-.2-.2-.7-.3-.9 0-1.7 1.3-4 1.9-6.2 1.3-.6-.1-1.2-.4-1.8-.7-2.6-1.6-3.8-4.7-3.1-7.7.1-.6.4-1.2.7-1.8 1.3-2.2 3.6-3.5 6-3.5 1.8 0 3.6.8 4.9 2.1.2.2.4.4.5.6.2.4-.2.6-.6.6h-3.2c-.4 0-.7.3-.7.7v1.4c0 .4.3.6.7.6h8.4c.3 0 .6-.2.6-.6V2.5c0-.3-.4-.7-.7-.7z"}},
+relate:{"path":{"d":"M16.6 9.2c0-1-.8-1.8-1.8-1.8h-12c-1 0-1.9.8-1.9 1.8v12c0 1 .9 1.9 1.9 1.9h12c1 0 1.8-.9 1.8-1.9v-12zm-3.7 6.5c0 .2-.2.5-.4.5H9.7v2.7c0 .3-.2.5-.5.5h-.9c-.2 0-.5-.2-.5-.5v-2.7H5.1c-.3 0-.5-.3-.5-.5v-.9c0-.3.2-.5.5-.5h2.7v-2.8c0-.2.3-.4.5-.4h.9c.3 0 .5.2.5.4v2.8h2.8c.2 0 .4.2.4.5v.9zm6.9 3.7h-1.3v-2.8h1.3c.3 0 .5-.2.5-.4v-12c0-.3-.2-.5-.5-.5h-12c-.2 0-.4.2-.4.5v1.3H4.6V4.2C4.6 2.4 6 .9 7.8.9h12c1.8 0 3.3 1.5 3.3 3.3v12c0 1.8-1.5 3.2-3.3 3.2z"}},
+remove_formatting:{"path":{"d":"M20.8 18.9l2.1-2.1c.2-.2.2-.5 0-.7l-1.3-1.3c-.1-.2-.4-.2-.6 0L18.9 17l-2-2c-.1-.2-.4-.2-.6 0L15 16.3c-.2.2-.2.5 0 .6l2 2-2 2c-.1.1-.1.4 0 .6l1.3 1.3c.2.2.5.2.7 0l1.9-1.9 2.1 2c.2.2.5.2.6 0l1.3-1.3c.2-.1.2-.4 0-.6l-2.1-2.1zM2.2 3.7h5L5.3 14.4c-.1.5.2.8.7.8h2.3c.3 0 .7-.2.7-.5l1.9-11H16c.3 0 .7-.2.7-.6l.2-1.4c.1-.4-.2-.8-.7-.8H2.4c-.3 0-.6.3-.6.6l-.3 1.4c-.1.4.3.8.7.8zm10.7 14.1c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v1.4c0 .3.3.6.7.6h10.6c.4 0 .7-.3.7-.6v-1.4z"}},
+remove_link:{"path":{"d":"M11.1 16.9c-.3 0-.6-.1-.9-.1-.2-.1-.6-.2-.8-.3-.2 0-.4 0-.5.1l-.2.2c-1.1 1.2-3 1.3-4.3.2-1.3-1.2-1.4-3.2-.1-4.5l3-3c.5-.5.9-.7 1.4-.8.7-.2 1.4-.2 2 .1.3.2.7.4 1 .7.1.1.3.3.4.6.1.2.5.3.7.1L14 9c.2-.2.2-.4 0-.6-.2-.2-.3-.4-.5-.6-.3-.3-.7-.6-1-.8-.6-.4-1.2-.6-1.9-.8-1.2-.2-2.6 0-3.8.6-.4.3-.8.6-1.2 1l-3 2.9c-2.1 2.1-2.3 5.6-.2 7.8 2.2 2.3 5.8 2.4 8 .1l1-1c.3-.2.1-.7-.3-.7zm7.6-6.5c2.2-2.2 2.2-5.9-.1-8-2.3-2.1-5.7-1.9-7.8.2l-1 .9c-.2.3-.1.7.3.8.6 0 1.2.1 1.7.3.2.1.4 0 .5-.1l.2-.2c1.1-1.1 3-1.3 4.3-.2 1.3 1.2 1.4 3.3.1 4.5l-3.1 3.1c-.4.4-.8.6-1.3.8-.7.1-1.4.1-2-.2-.3-.1-.7-.3-1-.7-.1-.1-.3-.3-.4-.5-.1-.3-.5-.3-.7-.1l-1.1 1.1c-.2.2-.2.5-.1.6.2.3.4.5.6.7.3.3.6.5 1 .8.6.3 1.2.6 1.9.7 1.2.2 2.5.1 3.7-.6.5-.2.9-.5 1.3-.9l3-3zm2.1 8.5l2.1-2.1c.2-.2.2-.5 0-.6l-1.3-1.3c-.1-.2-.4-.2-.6 0L18.9 17l-2-2c-.1-.1-.4-.1-.6 0L15 16.3c-.2.2-.2.5 0 .7l2 2-2 1.9c-.1.2-.1.5 0 .7l1.3 1.2c.2.2.5.2.7 0l1.9-1.9L21 23c.2.2.5.2.6 0l1.3-1.3c.2-.2.2-.5 0-.7l-2.1-2.1z"}},
+replace:{"path":{"d":"M9.2 17.3c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v5.1c0 .4.3.7.7.7h6.9c.4 0 .7-.3.7-.7v-5.1zm-5.5-7.1H1.5c-.5 0-.7.4-.4.6l3.7 3.8c.1.2.4.2.6 0l3.7-3.8c.3-.3 0-.6-.4-.6H6.5c0-2.4 2.3-4.7 4.6-4.7V2.8c-4.2 0-7.4 3.2-7.4 7.4zm15.6-.8c-.2-.2-.5-.2-.7 0L15 13.2c-.3.3-.1.6.4.6h2.2c0 2.8-1.9 4.7-4.7 4.7v2.7c4.2 0 7.5-3.2 7.5-7.4h2.2c.5 0 .7-.4.4-.6l-3.7-3.8zm3.8-7.8c0-.4-.3-.7-.7-.7h-6.9c-.4 0-.7.3-.7.7v5.1c0 .4.3.7.7.7h6.9c.4 0 .7-.3.7-.7V1.6z"}},
+reply:{"path":{"d":"M8.9 8.4s-.5-.6-.3-.8L11.2 5c.3-.3.3-.7 0-1l-1-1c-.2-.3-.6-.3-.9 0L3 9.2c-.2.3-.2.7 0 1l6.3 6.2c.3.3.7.3.9 0l1-.9c.3-.3.3-.7 0-1l-2.5-2.6c-.3-.3-.1-.7.2-.8 5.1.2 9.3 4.3 9.6 9.5 0 .4.3.7.7.7h1.4c.4 0 .6-.3.6-.8-.3-6.7-5.4-11.9-12.3-12.1z"}},
+reset_password:{"path":{"d":"M19.4 10.6H4.6c-1 0-1.8.8-1.8 1.9v8.7c0 1 .8 1.9 1.8 1.9h14.8c1 0 1.8-.9 1.8-1.9v-8.7c0-1.1-.8-1.9-1.8-1.9zm-5.1 9.9c-.7.5-1.5.7-2.3.7-.3 0-.6 0-.8-.1-1.1-.2-2.1-.8-2.7-1.7l1.6-1c.3.5.8.8 1.4.9.6.2 1.2 0 1.8-.3 1.1-.7 1.3-2.2.6-3.2-.3-.5-.8-.9-1.4-1-.6-.1-1.2 0-1.8.4l-.3.3 1.6 1.6H7.8v-4.2L9 14.1c.2-.2.5-.3.6-.5 1-.6 2.1-.8 3.2-.6 1.1.2 2 .8 2.6 1.7 1.3 2 .8 4.5-1.1 5.8zM4.6 8.4v.1-.1zm.5.4h1.8c.3 0 .5-.2.5-.4v-.1c0-2.6 2.2-4.8 4.9-4.6 2.5.2 4.3 2.3 4.3 4.8v-.1c0 .2.2.4.5.4h1.8c.3 0 .5-.2.5-.4v-.1c0-4.2-3.5-7.6-7.8-7.4-3.9.2-6.9 3.5-7 7.5.1.2.2.4.5.4z"}},
+retweet:{"path":{"d":"M23.8 13.3l-1-1c-.2-.3-.6-.3-.9 0l-1.3 1.3c-.3.3-.8.1-.8-.4V5.5c0-1-.8-1.8-1.8-1.8h-6.7c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h5.1c.4 0 .7.3.7.7v6c0 .5-.5.6-.9.4L15 12.4c-.2-.3-.7-.3-.9 0l-1 1c-.3.3-.3.7 0 1l4.9 4.8c.2.3.6.3.9 0l4.9-4.9c.2-.3.2-.7 0-1zm-11.1 4.2H7.6c-.4 0-.7-.3-.7-.7v-6c0-.5.5-.6.9-.4L9 11.6c.2.3.7.3.9 0l1-.9c.3-.3.3-.7 0-1L6.1 4.8c-.3-.3-.7-.3-1 0L.2 9.7c-.3.3-.3.7 0 1l1 .9c.2.3.6.3.9 0l1.3-1.2c.2-.3.8-.1.8.3v7.8c0 1 .8 1.8 1.8 1.8h6.7c.4 0 .7-.3.7-.7v-1.4c0-.3-.3-.7-.7-.7z"}},
+richtextbulletedlist:{"path":{"d":"M3.7 6.2c0 .4-.3.7-.7.7H1.6c-.4 0-.7-.3-.7-.7V4.8c0-.3.3-.6.7-.6H3c.4 0 .7.3.7.6v1.4zm19.4-1.4c0-.3-.3-.6-.7-.6H6.2c-.3 0-.7.3-.7.6v1.4c0 .4.4.7.7.7h16.2c.4 0 .7-.3.7-.7V4.8zM3.7 11.3c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7H3c.4 0 .7-.3.7-.7v-1.4zm17.5 0c0-.4-.3-.7-.7-.7H6.2c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h14.3c.4 0 .7-.3.7-.7v-1.4zM3.7 17.8c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v1.4c0 .3.3.6.7.6H3c.4 0 .7-.3.7-.6v-1.4zm19.4 0c0-.4-.3-.7-.7-.7H6.2c-.3 0-.7.3-.7.7v1.4c0 .3.4.6.7.6h16.2c.4 0 .7-.3.7-.6v-1.4z"}},
+richtextindent:{"path":{"d":"M24 5.3c0-.4-.3-.7-.7-.7h-7.8c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h7.8c.4 0 .7-.3.7-.7V5.3zm-1.8 11.1c0-.4-.4-.7-.7-.7h-6c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h6c.3 0 .7-.4.7-.7v-1.4zm1.8-5.6c0-.3-.3-.6-.7-.6h-7.8c-.4 0-.7.3-.7.6v1.4c0 .4.3.7.7.7h7.8c.4 0 .7-.3.7-.7v-1.4zM12.9 2.5c0-.3-.3-.7-.7-.7h-1.4c-.3 0-.6.4-.6.7v19c0 .3.3.7.6.7h1.4c.4 0 .7-.4.7-.7v-19zM4.3 7.1c-.2-.3-.6-.1-.6.4v2.7h-3c-.4 0-.7.3-.7.6v1.4c0 .4.3.7.7.7h3v2.7c0 .5.4.7.6.5l3.9-4.2c.1-.2.1-.5 0-.6L4.3 7.1z"}},
+richtextnumberedlist:{"path":{"d":"M23.1 3v1.4c0 .4-.3.7-.7.7H9.9c-.3 0-.7-.3-.7-.7V3c0-.4.4-.7.7-.7h12.5c.4 0 .7.3.7.7zM9.9 9.7h8.3c.4 0 .7-.3.7-.7V7.6c0-.4-.3-.7-.7-.7H9.9c-.3 0-.7.3-.7.7V9c0 .4.4.7.7.7zm12.5 4.1H9.9c-.3 0-.7.4-.7.7v1.4c0 .4.4.7.7.7h12.5c.4 0 .7-.3.7-.7v-1.4c0-.3-.3-.7-.7-.7zm-4.2 4.7H9.9c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h8.3c.4 0 .7-.3.7-.7v-1.3c0-.4-.3-.7-.7-.7zM1.6 3.7h1.2v5.8c0 .3.3.7.7.7h.4c.4 0 .7-.4.7-.7V2.8c0-.5-.4-1-.9-1H1.6c-.4 0-.7.4-.7.7V3c0 .4.3.7.7.7zm3.9 9.2H1.6c-.4 0-.7.3-.7.7v.5c0 .3.3.7.7.7h3v1.8H1.8c-.5 0-.9.4-.9.9v3.7c0 .5.4 1 .9 1h4c.3 0 .7-.4.7-.7V21c0-.4-.4-.7-.7-.7h-3v-1.8h2.7c.5 0 1-.5 1-1v-3.7c0-.5-.5-.9-1-.9z"}},
+richtextoutdent:{"path":{"d":"M7.6 10.2h-3V7.4c0-.4-.4-.7-.6-.4L.1 11.2c-.1.2-.1.4 0 .6L4 16c.2.2.6 0 .6-.4v-2.7h3c.3 0 .7-.3.7-.7v-1.4c0-.3-.4-.6-.7-.6zM24 5.3c0-.4-.3-.7-.7-.7h-7.8c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h7.8c.4 0 .7-.3.7-.7V5.3zm-1.8 11.1c0-.4-.4-.7-.7-.7h-6c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h6c.3 0 .7-.4.7-.7v-1.4zm1.8-5.6c0-.3-.3-.6-.7-.6h-7.8c-.4 0-.7.3-.7.6v1.4c0 .4.3.7.7.7h7.8c.4 0 .7-.3.7-.7v-1.4zM12.9 2.5c0-.3-.3-.7-.7-.7h-1.4c-.3 0-.6.4-.6.7v19c0 .3.3.7.6.7h1.4c.4 0 .7-.4.7-.7v-19z"}},
+right:{"path":{"d":"M6.5 20.2V3.8c0-.4.6-.8 1-.4l9.8 8c.3.3.3.9 0 1.2l-9.8 8c-.4.4-1 .1-1-.4z"}},
+right_align_text:{"path":{"d":"M21.5 2.3h-19c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V3c0-.4-.4-.7-.7-.7zm0 5.5H6.2c-.3 0-.7.4-.7.7v1.4c0 .4.4.7.7.7h15.3c.3 0 .7-.3.7-.7V8.5c0-.3-.4-.7-.7-.7zm0 11.1H6.2c-.3 0-.7.3-.7.7V21c0 .4.4.7.7.7h15.3c.3 0 .7-.3.7-.7v-1.4c0-.4-.4-.7-.7-.7zm0-5.5h-19c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h19c.3 0 .7-.4.7-.7v-1.4c0-.4-.4-.7-.7-.7z"}},
+rotate:{"path":{"d":"M22.4.9H21c-.4 0-.7.3-.7.7v3.2c0 .5-.5.7-.7.4-2.2-2.4-5.3-3.6-8.7-3.3-1.2.1-2.3.5-3.4 1-.5.3-1.1.6-1.5 1-.4.2-.4.7-.1 1l.9 1c.3.2.6.3.9.1.6-.4 1.2-.7 1.8-1 .3-.1.6-.2.9-.2 2.9-.6 5.7.6 7.3 2.4.5.7.1 1.1-.3 1.1h-3.3c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h8.4c.3 0 .6-.3.6-.6V1.6c0-.4-.3-.7-.7-.7zm-4.2 16.4c-.3-.3-.7-.3-1 0-.7.7-1.6 1.3-2.7 1.7-.2.1-.6.2-.9.2-2.9.6-5.7-.6-7.2-2.4-.6-.7-.2-1.1.3-1.1h3.2c.4 0 .7-.3.7-.7v-1.4c0-.4-.3-.7-.7-.7H1.5c-.3 0-.6.3-.6.6v8.9c0 .4.3.7.7.7H3c.4 0 .7-.3.7-.7v-3.2c0-.5.5-.7.7-.4 2.2 2.4 5.3 3.6 8.7 3.3 1.2-.1 2.3-.5 3.4-1 1-.5 1.9-1.2 2.6-1.9.3-.3.3-.7 0-1l-.9-.9z"}},
+rows:{"path":{"d":"M21.5 6.5h-19c-.3 0-.7-.4-.7-.7V4.4c0-.4.4-.7.7-.7h19c.3 0 .7.3.7.7v1.4c0 .3-.4.7-.7.7zm0 6.8h-19c-.3 0-.7-.3-.7-.7v-1.3c0-.4.4-.7.7-.7h19c.3 0 .7.3.7.7v1.4c0 .3-.4.6-.7.6zm0 7h-19c-.3 0-.7-.3-.7-.7v-1.4c0-.3.4-.7.7-.7h19c.3 0 .7.4.7.7v1.4c0 .4-.4.7-.7.7z"}},
+salesforce1:{"path":{"d":"M10 5.5c.8-.8 1.9-1.3 3.1-1.3 1.5 0 2.9.9 3.7 2.2.6-.3 1.3-.5 2-.5 2.9 0 5.2 2.3 5.2 5.2s-2.3 5.1-5.2 5.1h-1c-.6 1.1-1.9 1.9-3.3 1.9-.6 0-1.2-.1-1.7-.4-.6 1.5-2.1 2.6-3.9 2.6-1.9 0-3.5-1.1-4.1-2.8-.3 0-.6.1-.8.1-2.2 0-4-1.8-4-4 0-1.5.7-2.8 1.9-3.5-.2-.5-.3-1.2-.3-1.8 0-2.6 2-4.7 4.6-4.7 1.6.1 3 .8 3.8 1.9"}},
+search:{"path":{"d":"M22.9 20.9l-6.2-6.1c1.3-1.8 1.9-4 1.6-6.4-.6-3.9-3.8-7.1-7.8-7.4C5 .4.4 5 1 10.5c.3 4 3.5 7.3 7.4 7.8 2.4.3 4.6-.3 6.4-1.5l6.1 6.1c.3.3.7.3 1 0l.9-1c.3-.3.3-.7.1-1zM3.7 9.6c0-3.2 2.7-5.9 5.9-5.9s6 2.7 6 5.9-2.7 6-6 6-5.9-2.6-5.9-6z"}},
+settings:{"path":{"d":"M12 8.8c-1.8 0-3.2 1.4-3.2 3.2s1.4 3.3 3.2 3.3 3.3-1.5 3.3-3.3-1.5-3.2-3.3-3.2zm9.7 6.2L20 13.5c.1-.5.2-1 .2-1.5s-.1-1.1-.2-1.6L21.7 9c.6-.5.8-1.3.4-2l-.7-1.3c-.3-.4-.8-.7-1.4-.7-.2 0-.3 0-.5.1l-2.1.8c-.8-.8-1.8-1.3-2.7-1.6l-.4-2.2c-.1-.7-.8-1.1-1.5-1.1h-1.5c-.7 0-1.4.4-1.5 1.1l-.4 2.1c-1 .4-1.9.9-2.8 1.6L4.5 5c-.2 0-.3-.1-.5-.1-.5 0-1 .3-1.3.8L1.9 7c-.3.6-.2 1.4.4 1.9L4 10.3c-.1.5-.1 1.1-.1 1.6 0 .6 0 1.1.1 1.6l-1.7 1.4c-.5.5-.7 1.3-.4 1.9l.8 1.3c.3.5.8.8 1.3.8.2 0 .4-.1.5-.1l2.1-.8c.9.7 1.8 1.2 2.8 1.6l.3 2.2c.2.7.8 1.2 1.6 1.2h1.4c.8 0 1.4-.5 1.6-1.3l.3-2.2c1.1-.3 2.1-.9 2.9-1.7l2 .8c.2 0 .3.1.5.1.6 0 1.1-.3 1.4-.7l.7-1.2c.4-.6.2-1.4-.4-1.8zM12 17.1c-2.8 0-5-2.2-5-5.1s2.2-5 5-5 5.1 2.2 5.1 5-2.2 5.1-5.1 5.1z"}},
+setup:{"path":{"d":"M21.6 15l-1.7-1.5c.1-.5.1-1 .1-1.5s0-1.1-.1-1.6L21.6 9c.6-.5.7-1.3.4-2l-.8-1.3c-.2-.5-.8-.8-1.3-.8-.2 0-.4.1-.5.1l-2.1.8c-.8-.7-1.7-1.2-2.7-1.6l-.3-2.1c-.2-.8-.8-1.2-1.6-1.2h-1.4c-.8 0-1.4.4-1.6 1.2l-.3 2.1c-1 .3-1.9.9-2.8 1.6l-2-.8c-.2-.1-.3-.1-.5-.1-.5 0-1.1.3-1.3.7L2 6.9c-.3.7-.2 1.5.4 2l1.7 1.4c-.1.5-.1 1.1-.1 1.6s0 1 .1 1.5l-1.7 1.5c-.6.4-.7 1.3-.4 1.9l.8 1.4c.2.4.8.7 1.3.7.2 0 .4 0 .5-.1l2.1-.8c.8.8 1.7 1.3 2.7 1.6l.3 2.2c.2.8.8 1.3 1.6 1.3h1.4c.8 0 1.4-.6 1.6-1.3l.3-2.2c1.1-.4 2-1 2.8-1.7l2 .7c.2.1.4.1.5.1.6 0 1.1-.2 1.4-.7l.7-1.2c.3-.6.2-1.4-.4-1.8zM12 17.1c-2.7 0-5-2.2-5-5.1s2.2-5 5-5 5.1 2.2 5.1 5-2.3 5.1-5.1 5.1zm1.4-8.8h-2.1c-.4 0-.6.2-.7.5l-1.3 3.3c-.1.2.1.5.3.5h2.2l-.8 2.8c-.1.2.3.4.4.2l3.3-3.8c.3-.3.1-.6-.3-.6h-1.6l1.5-2.3c.1-.2-.1-.5-.4-.5h-.5z"}},
+setup_assistant_guide:{"path":{"d":"M5.3 11.5c0-.2-.2-.3-.4-.2l-2 1.7c-.1.1-.1.2-.1.4v7.3c0 .5.6.7 1 .4l3.4-2.6c.1-.1.1-.2 0-.4-.8-1.2-1.6-3.3-1.9-6.6zm4.5 6.9c.1 0 .2.1.3.1h3.8c.1 0 .2-.1.3-.1.5-.4 2.7-2.2 2.7-8.5 0-2.9-.8-5-1.8-6.3C13.7 1.5 12 .9 12 .9s-1.8.6-3.2 2.7C7.8 5 7.1 7 7.1 9.9c0 6.3 2.1 8.1 2.7 8.5zM12 6c1.5 0 2.7 1.2 2.7 2.8s-1.2 2.7-2.7 2.7-2.8-1.2-2.8-2.7S10.4 6 12 6zm9.1 7l-2-1.7c-.2-.1-.4 0-.4.2-.3 3.3-1.1 5.4-1.9 6.7v.3l3.4 2.6c.4.4 1 .1 1-.3v-7.4c0-.2 0-.3-.1-.4zm-6.2 7.5c-.1-.1-.3-.2-.4-.2H9.4c-.1 0-.3.1-.4.2-.1.3-.4.8-.6 1.5-.1.5.3 1.1.9 1.1h5.3c.6 0 1-.6.9-1.1-.2-.7-.5-1.2-.6-1.5z"}},
+share:{"path":{"d":"M22.4 13.8H21c-.4 0-.7.4-.7.7v5.1c0 .4-.3.7-.7.7H4.4c-.4 0-.7-.3-.7-.7V9.9c0-.3.3-.7.7-.7h1.8c.4 0 .7-.3.7-.7V7.2c0-.4-.3-.7-.7-.7H2.8c-1 0-1.9.8-1.9 1.8v12.9c0 1 .9 1.9 1.9 1.9h18.4c1 0 1.9-.9 1.9-1.9v-6.7c0-.3-.3-.7-.7-.7zm-6.7-7.3c-4.6 0-8.8 4.1-9.2 8.9 0 .4.3.8.7.8h1.4c.4 0 .6-.3.7-.6.3-3.5 3.3-6.4 6.9-6.4h.7c.4 0 .6.5.3.8l-2.5 2.6c-.3.3-.3.7 0 1l.9.9c.3.3.7.3 1 0l6.3-6.2c.3-.3.3-.7 0-1l-6.2-6.2c-.3-.3-.7-.3-1 0l-1 1c-.3.3-.3.7 0 .9l2.6 2.6c.2.3.1.8-.4.8l-1.2.1z"}},
+share_mobile:{"path":{"d":"M19.4 23.3c1 0 1.8-.9 1.8-1.9V9c0-1-.8-1.8-1.8-1.8h-3.5c-.4 0-.7.3-.7.7v1.3c0 .4.3.7.7.7h1.8c.4 0 .7.4.7.7v9.2c0 .4-.3.7-.7.7H6.2c-.4 0-.7-.3-.7-.7v-9.2c0-.3.3-.7.7-.7h1.9c.3 0 .7-.3.7-.7V7.9c0-.4-.4-.7-.7-.7H4.6c-1 0-1.8.8-1.8 1.8v12.4c0 1 .8 1.9 1.8 1.9h14.8zm-6-9v-9h2.7c.4 0 .7-.4.4-.6L12.3.8c-.1-.1-.4-.1-.6 0L7.5 4.7c-.2.2 0 .6.5.6h2.6v9c0 .3.3.7.7.7h1.4c.3 0 .7-.4.7-.7z"}},
+share_post:{"path":{"d":"M12 1.8C5.9 1.8.9 6.4.9 12c0 1.8.5 3.5 1.4 5 .1.2.1.4.1.6l-1 3.2c-.2.6.4 1.1 1 .9l3.2-1.1c.2-.1.4-.1.6.1 1.7.9 3.7 1.5 5.8 1.5 6.2 0 11.1-4.5 11.1-10.2C23 6.4 18 1.8 12 1.8z"}},
+shield:{"path":{"d":"M2.2 6.5h19.6c.4 0 .8-.5.7-1-.5-1.5-1.1-2.9-2-4.1-.3-.4-.8-.4-1.1-.1-.8.8-2.1 1.3-3.4 1.3-1.4 0-2.6-.6-3.5-1.5-.3-.3-.8-.3-1.1 0-.9.9-2.1 1.5-3.5 1.5-1.3 0-2.5-.5-3.4-1.3-.3-.3-.9-.2-1.1.1-.9 1.2-1.6 2.6-2 4.1 0 .5.4 1 .8 1zm20.9 2.9c0-.4-.3-.6-.8-.6H1.7c-.5 0-.8.2-.8.6v.2c0 6.9 4.8 12.6 11.1 13.5 6.3-.9 11.1-6.6 11.1-13.5v-.2z"}},
+side_list:{"path":{"d":"M22.4 1.8H9.9c-.3 0-.7.4-.7.7v19c0 .3.4.7.7.7h12.5c.4 0 .7-.4.7-.7v-19c0-.3-.3-.7-.7-.7zm-15.7 0H1.6c-.4 0-.7.4-.7.7v2.3c0 .4.3.7.7.7h5.1c.4 0 .7-.3.7-.7V2.5c0-.3-.3-.7-.7-.7zm0 5.6H1.6c-.4 0-.7.3-.7.7v2.3c0 .4.3.7.7.7h5.1c.4 0 .7-.3.7-.7V8.1c0-.4-.3-.7-.7-.7zm0 5.5H1.6c-.4 0-.7.3-.7.7v2.3c0 .4.3.7.7.7h5.1c.4 0 .7-.3.7-.7v-2.3c0-.4-.3-.7-.7-.7zm0 5.6H1.6c-.4 0-.7.3-.7.7v2.3c0 .3.3.7.7.7h5.1c.4 0 .7-.4.7-.7v-2.3c0-.4-.3-.7-.7-.7z"}},
+signpost:{"path":{"d":"M22.8 4.2l-1.9-1.5c-.3-.2-.5-.3-.9-.3h-6.5v-.7c0-.5-.3-.8-.8-.8h-1.4c-.5 0-.8.3-.8.8v.7H3.1c-.4 0-.7.3-.7.7v3c0 .4.3.7.7.7H20c.4 0 .7-.1.9-.2l1.9-1.5c.4-.3.4-.7 0-.9zm-1.9 6.3h-7.4V9.4c0-.2-.2-.4-.4-.4h-2.2c-.2 0-.4.2-.4.4v1.1H4c-.4 0-.7.1-.9.3l-1.9 1.4c-.4.3-.4.7 0 1l1.9 1.4c.3.2.5.3.9.3h16.9c.4 0 .7-.3.7-.7v-3c0-.4-.3-.7-.7-.7zM13.5 20v-2.5c0-.2-.2-.3-.4-.3h-2.2c-.2 0-.4.1-.4.3V20c-1.5.4-2.3 1.3-2.5 2.4-.1.3.2.7.5.7h7c.4 0 .7-.3.6-.7-.3-1.1-1.1-2-2.6-2.4z"}},
+sms:{"path":{"d":"M12 1.8C5.9 1.8 1 6.4 1 12c0 1.7.5 3.4 1.3 4.8.1.3.2.6.1.8l-1.4 4c-.2.3.2.6.6.6l3.9-1.6c.3-.1.5 0 .8.1 1.7.9 3.7 1.5 5.8 1.5 6 0 11-4.6 11-10.2C23 6.4 18.1 1.8 12 1.8zM7.6 13.7c-.2.2-.3.4-.5.6s-.4.2-.7.3c-.2.1-.5.1-.8.1-.3 0-.7 0-1-.2-.3-.1-.6-.3-.9-.6l-.1-.1s0-.1.1-.2l.8-.7c.1-.1.2-.1.2 0s.1.1.1.1c.1.2.2.2.4.3.2.2.4.2.7.1.1 0 .1 0 .2-.1l.2-.1V13c0-.2 0-.2-.1-.3-.1-.1-.2-.1-.4-.2s-.4-.1-.6-.2l-.6-.3c-.3-.1-.4-.3-.5-.5-.2-.2-.3-.5-.3-.8 0-.4.1-.6.2-.9.2-.2.3-.4.5-.5.2-.2.4-.3.7-.3.6-.2 1.1-.2 1.7 0 .3.1.5.3.7.4l.1.1c.1 0 .1.1 0 .2l-.7.7c-.1.1-.3.1-.4 0l-.1-.1c-.3-.1-.6-.2-.9-.1h-.2l-.1.2v.2c0 .1 0 .2.1.2 0 .1.2.1.4.2s.3.2.6.2l.6.3c.2.1.4.3.5.5.2.2.3.5.3.9 0 .3-.1.5-.2.8zm7.6.6c0 .3-.2.5-.5.5h-.4c-.3 0-.5-.2-.5-.5v-2.7c0-.3-.3-.3-.4-.1l-.8 2.1c0 .2-.2.2-.4.2h-.3c-.2 0-.4-.1-.5-.2l-.8-2.1c-.1-.2-.4-.2-.4.1v2.7c0 .3-.3.5-.6.5h-.4c-.3 0-.4-.2-.4-.5V9.2c0-.2.2-.4.4-.4h1.2c.2 0 .4.1.4.2l.9 2.4c.1.2.4.2.4 0l1-2.4c0-.1.2-.2.4-.2h1.2c.3 0 .5.2.5.4v5.1zm4.9-.6c-.2.2-.3.5-.5.6-.2.1-.4.3-.7.4s-.5.1-.8.1c-.4 0-.7-.1-1-.2-.3-.2-.7-.3-.9-.6l-.1-.1c0-.1 0-.1.1-.2l.7-.7c.1-.1.2-.1.3-.1s.1.2.1.2l.3.3c.3.1.5.1.8.1.1-.1.2-.1.2-.1l.1-.2.1-.1c0-.2-.1-.3-.1-.3-.1-.1-.2-.2-.4-.2s-.4-.2-.6-.2c-.3-.1-.5-.2-.7-.3-.2-.1-.4-.3-.5-.5-.2-.2-.3-.5-.3-.9 0-.3.1-.6.2-.8.2-.3.3-.4.5-.6.2-.1.5-.3.7-.3.6-.1 1.1-.1 1.7 0 .3.1.5.3.7.5l.1.1c.1 0 .1.2 0 .3l-.7.7c-.1.1-.2.1-.3 0l-.2-.2c-.3-.1-.6-.2-.9-.1 0 0-.1 0-.1.1l-.2.1v.2c0 .1 0 .2.1.2.1.1.2.2.4.3.2 0 .4.1.6.2.2 0 .4.1.6.2.3.2.4.4.6.5.1.3.2.5.2.9.1.2 0 .5-.1.7z"}},
+snippet:{"path":{"d":"M6.7 2.8H1.6c-.4 0-.7.3-.7.7v6c0 .3.3.7.7.7h5.1c.4 0 .7-.4.7-.7v-6c0-.4-.3-.7-.7-.7zm15.7 0H9.9c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h12.5c.4 0 .7-.3.7-.7V3.5c0-.4-.3-.7-.7-.7zM9.9 10.2h7.9c.3 0 .7-.4.7-.7V8.1c0-.4-.4-.7-.7-.7H9.9c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7zm-3.2 3.6H1.6c-.4 0-.7.4-.7.7v6c0 .4.3.7.7.7h5.1c.4 0 .7-.3.7-.7v-6c0-.3-.3-.7-.7-.7zm15.7 0H9.9c-.3 0-.7.4-.7.7v1.4c0 .4.4.7.7.7h12.5c.4 0 .7-.3.7-.7v-1.4c0-.3-.3-.7-.7-.7zm-4.6 4.7H9.9c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h7.9c.3 0 .7-.3.7-.7v-1.3c0-.4-.4-.7-.7-.7z"}},
+socialshare:{"path":{"d":"M18.9 14.8c-1.2 0-2.3.5-3 1.3l-6.8-3.4c.1-.2.1-.5.1-.7 0-.3-.1-.6-.1-.8l6.8-3.4c.7.9 1.8 1.4 3 1.4 2.3 0 4.2-1.9 4.2-4.2S21.2.9 18.9.9 14.8 2.7 14.8 5v.3l-7 3.5c-.8-.6-1.7-1-2.8-1C2.7 7.8.9 9.7.9 12s1.8 4.2 4.1 4.2c1.1 0 2-.4 2.8-1.1l6.9 3.5v.3c0 2.3 1.9 4.2 4.2 4.2s4.1-1.9 4.1-4.2-1.8-4.1-4.1-4.1z"}},
+sort:{"path":{"d":"M12.7 7.4c.3-.3.3-.7 0-1L7.4 1.1c-.2-.3-.7-.3-.9 0L1.2 6.4c-.3.3-.3.7 0 1l.9 1c.3.2.7.2 1 0l1.7-1.7c.2-.3.7-.1.7.3v9.8c0 .4.4.7.7.7h1.4c.4 0 .7-.4.7-.7V7c0-.4.5-.6.8-.3l1.7 1.7c.2.2.6.2.9 0l1-1zm10.1 9.2l-.9-.9c-.3-.3-.7-.3-1 0l-1.7 1.7c-.2.2-.7 0-.7-.4V7.2c0-.4-.4-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7v9.7c0 .5-.5.6-.8.4l-1.7-1.7c-.2-.3-.6-.3-.9 0l-1 1c-.3.3-.3.7 0 1l5.3 5.3c.3.3.7.3 1 0l5.3-5.3c.2-.3.2-.8-.1-1z"}},
+spinner:{"path":{"d":"M7.4 12.7v-1.4c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h5.1c.4 0 .7-.3.7-.7zm.9 2.1c-.3-.3-.7-.3-1 0l-3.6 3.6c-.3.2-.3.7 0 .9l1 1c.2.3.7.3.9 0l3.6-3.6c.3-.3.3-.7 0-1l-.9-.9zm7.4-5.6c.3.3.7.3 1 0l3.6-3.6c.3-.2.3-.7 0-.9l-1-1c-.2-.3-.7-.3-.9 0l-3.6 3.5c-.3.3-.3.7 0 1l.9 1zM5.6 3.7c-.2-.3-.7-.3-.9 0l-1 1c-.3.2-.3.7 0 .9l3.6 3.6c.3.3.7.3 1 0l.9-.9c.3-.3.3-.7 0-1L5.6 3.7zm11.2 11.1c-.3-.3-.7-.3-1 0l-1 .9c-.3.3-.3.7 0 1l3.6 3.6c.2.3.7.3.9 0l1-1c.3-.2.3-.7 0-.9l-3.5-3.6zm-4.1 1.8h-1.4c-.4 0-.7.3-.7.7v5.1c0 .4.3.7.7.7h1.4c.4 0 .7-.3.7-.7v-5.1c0-.4-.3-.7-.7-.7zm9.7-6h-5.1c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h5.1c.4 0 .7-.3.7-.7v-1.4c0-.4-.3-.7-.7-.7zM12.7.9h-1.4c-.4 0-.7.3-.7.7v5.1c0 .4.3.7.7.7h1.4c.4 0 .7-.3.7-.7V1.6c0-.4-.3-.7-.7-.7z"}},
+standard_objects:{"path":{"d":"M21.3 18l-8.7 4.9c-.4.3-1 .3-1.5 0L2.5 18c-.4-.2-.4-.7 0-.9l2-1.1c.2-.1.3-.1.5 0l5.2 3c.6.2 1.1.4 1.7.4s1.2-.2 1.7-.4l5.2-3c.2-.1.4-.1.5 0l2 1.1c.4.2.4.7 0 .9zm0-5.6l-8.7 5c-.4.2-1 .2-1.5 0l-8.6-5c-.4-.2-.4-.6 0-.8l2-1.2c.2-.1.3-.1.5 0l5.2 3c.6.3 1.1.4 1.7.4s1.2-.1 1.7-.4l5.2-3c.2-.1.4-.1.5 0l2 1.2c.4.2.4.6 0 .8zm-10.1-.6L2.5 6.9c-.3-.2-.3-.7 0-.9l8.7-4.9c.5-.3 1.1-.3 1.5 0L21.4 6c.4.2.4.7 0 .9l-8.7 4.9c-.4.2-1 .2-1.5 0z"}},
+stop:{"path":{"d":"M3.7 3.7h16.6v16.6H3.7V3.7z"}},
+strikethrough:{"path":{"d":"M5.6 8.4c-.1-.5-.2-1.1-.2-1.6 0-.6.2-1.3.5-2 .2-.6.7-1.3 1.3-1.8.5-.6 1.3-1.1 2.2-1.5.9-.3 2-.6 3.2-.6 1.2 0 2.3.2 3.4.5.8.3 1.6.7 2.3 1.4.3.2.3.7-.1 1L17 4.9c-.3.3-.7.3-1 0-.3-.3-.7-.6-1.1-.8-.6-.3-1.4-.5-2.3-.5-.7 0-1.4.1-1.9.3s-1 .5-1.3.9-.6.6-.7 1-.2.8-.2 1c0 .5.1 1 .2 1.3.2.3-.1.7-.4.7H6c-.2 0-.4-.3-.4-.4zm12.8 6.8h-2.3c-.3 0-.5.4-.4.6.1.3.2.7.2 1 0 .6-.2 1.1-.4 1.6-.3.4-.6.8-1 1.1-.4.3-.9.5-1.4.6-.5.2-1 .3-1.5.3-.8 0-1.7-.2-2.5-.6-.6-.3-1.1-.6-1.5-1.2-.3-.2-.7-.3-1 0l-1.3 1.1c-.3.2-.3.7 0 .9.6.8 1.4 1.3 2.4 1.7 1.2.5 2.5.7 3.9.7 1 0 2-.2 2.8-.5.9-.3 1.7-.7 2.4-1.3.6-.5 1.2-1.2 1.6-2 .3-.9.6-1.8.6-2.8 0-.3 0-.6-.1-.9-.1-.1-.3-.3-.5-.3zM23 11c-.1-.2-.3-.4-.6-.4H1.6c-.3 0-.5.2-.6.4-.1.1-.1.2-.1.3v1.3c0 .4.3.8.7.8h20.8c.4 0 .7-.4.7-.8v-1.3c0-.1 0-.2-.1-.3z"}},
+success:{"path":{"d":"M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm6.2 8.3l-7.1 7.2c-.3.3-.7.3-1 0l-3.9-3.9c-.2-.3-.2-.8 0-1.1l1-1c.3-.2.8-.2 1.1 0l2 2.1c.2.2.5.2.7 0l5.2-5.3c.2-.3.7-.3 1 0l1 1c.3.2.3.7 0 1z"}},
+summary:{"path":{"d":"M22.4.9H1.6c-.4 0-.7.3-.7.7v2.3c0 .4.3.7.7.7h20.8c.4 0 .7-.3.7-.7V1.6c0-.4-.3-.7-.7-.7zm0 5.6H6.2c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h16.2c.4 0 .7-.3.7-.7V7.2c0-.4-.3-.7-.7-.7zm0 9.2H6.2c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h16.2c.4 0 .7-.4.7-.7v-1.4c0-.4-.3-.7-.7-.7zm0 4.6h-18c-.4 0-.7-.3-.7-.7v-3.2c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v6c0 .4.3.7.7.7h20.8c.4 0 .7-.3.7-.7V21c0-.4-.3-.7-.7-.7zm0-9.2h-18c-.4 0-.7-.3-.7-.7V7.2c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v6c0 .3.3.6.7.6h20.8c.4 0 .7-.3.7-.6v-1.4c0-.4-.3-.7-.7-.7z"}},
+summarydetail:{"path":{"d":"M22.4.9H1.6c-.4 0-.7.3-.7.7v2.3c0 .4.3.7.7.7h20.8c.4 0 .7-.3.7-.7V1.6c0-.4-.3-.7-.7-.7zM9.5 6.5H6.2c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h3.3c.3 0 .7-.3.7-.7V7.2c0-.4-.4-.7-.7-.7zm6.4 0h-3.2c-.4 0-.7.3-.7.7v1.3c0 .4.3.7.7.7h3.2c.4 0 .7-.3.7-.7V7.2c0-.4-.3-.7-.7-.7zm6.5 0h-3.2c-.4 0-.7.3-.7.7v1.3c0 .4.3.7.7.7h3.2c.4 0 .7-.3.7-.7V7.2c0-.4-.3-.7-.7-.7zM9.5 15.7H6.2c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h3.3c.3 0 .7-.4.7-.7v-1.4c0-.4-.4-.7-.7-.7zm6.4 0h-3.2c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h3.2c.4 0 .7-.4.7-.7v-1.4c0-.4-.3-.7-.7-.7zm6.5 0h-3.2c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h3.2c.4 0 .7-.4.7-.7v-1.4c0-.4-.3-.7-.7-.7zm0 4.6h-18c-.4 0-.7-.3-.7-.7v-3.2c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v6c0 .4.3.7.7.7h20.8c.4 0 .7-.3.7-.7V21c0-.4-.3-.7-.7-.7zm0-9.2h-18c-.4 0-.7-.3-.7-.7V7.2c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v6c0 .3.3.6.7.6h20.8c.4 0 .7-.3.7-.6v-1.4c0-.4-.3-.7-.7-.7z"}},
+switch:{"path":{"d":"M22 8.2l-9.5 9.6c-.3.2-.7.2-1 0L2 8.2c-.2-.3-.2-.7 0-1l1-1c.3-.3.8-.3 1.1 0l7.4 7.5c.3.3.7.3 1 0l7.4-7.5c.3-.3.8-.3 1.1 0l1 1c.2.3.2.7 0 1z"}},
+table:{"path":{"d":"M21.5.9h-19c-.3 0-.7.3-.7.7v2.3c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V1.6c0-.4-.4-.7-.7-.7zM6.7 6.5H2.5c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h4.2c.4 0 .7-.3.7-.7V7.2c0-.4-.3-.7-.7-.7zm7.4 0H9.9c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h4.2c.3 0 .7-.3.7-.7V7.2c0-.4-.4-.7-.7-.7zm7.4 0h-4.2c-.4 0-.7.3-.7.7v1.3c0 .4.3.7.7.7h4.2c.3 0 .7-.3.7-.7V7.2c0-.4-.4-.7-.7-.7zM6.7 11.1H2.5c-.3 0-.7.3-.7.7v1.4c0 .3.4.6.7.6h4.2c.4 0 .7-.3.7-.6v-1.4c0-.4-.3-.7-.7-.7zm7.4 0H9.9c-.3 0-.7.3-.7.7v1.4c0 .3.4.6.7.6h4.2c.3 0 .7-.3.7-.6v-1.4c0-.4-.4-.7-.7-.7zm7.4 0h-4.2c-.4 0-.7.3-.7.7v1.4c0 .3.3.6.7.6h4.2c.3 0 .7-.3.7-.6v-1.4c0-.4-.4-.7-.7-.7zM6.7 15.7H2.5c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h4.2c.4 0 .7-.4.7-.7v-1.4c0-.4-.3-.7-.7-.7zm7.4 0H9.9c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h4.2c.3 0 .7-.4.7-.7v-1.4c0-.4-.4-.7-.7-.7zm7.4 0h-4.2c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h4.2c.3 0 .7-.4.7-.7v-1.4c0-.4-.4-.7-.7-.7zM6.7 20.3H2.5c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h4.2c.4 0 .7-.3.7-.7V21c0-.4-.3-.7-.7-.7zm7.4 0H9.9c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h4.2c.3 0 .7-.3.7-.7V21c0-.4-.4-.7-.7-.7zm7.4 0h-4.2c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h4.2c.3 0 .7-.3.7-.7V21c0-.4-.4-.7-.7-.7z"}},
+tablet_landscape:{"path":{"d":"M23.1 4.6c0-1-.9-1.8-1.9-1.8H2.8c-1 0-1.9.8-1.9 1.8v14.8c0 1 .9 1.8 1.9 1.8h18.4c1 0 1.9-.8 1.9-1.8V4.6zM3.2 13.4c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.4.6 1.4 1.4-.7 1.4-1.4 1.4zm17.1 4.4c0 .3-.3.7-.7.7H6.2c-.3 0-.7-.4-.7-.7V6.2c0-.3.4-.7.7-.7h13.4c.4 0 .7.4.7.7v11.6z"}},
+tablet_portrait:{"path":{"d":"M21.2 2.8c0-1-.8-1.9-1.8-1.9H4.6c-1 0-1.8.9-1.8 1.9v18.4c0 1 .8 1.9 1.8 1.9h14.8c1 0 1.8-.9 1.8-1.9V2.8zM12 22.2c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.3.6 1.3 1.4-.6 1.4-1.3 1.4zm6.5-4.4c0 .3-.4.7-.7.7H6.2c-.3 0-.7-.4-.7-.7V4.4c0-.4.4-.7.7-.7h11.6c.3 0 .7.3.7.7v13.4z"}},
+tabset:{"path":{"d":"M14.6.9H9.4c-.3 0-.5.3-.5.6v1.2c0 .3.2.6.5.6h5.2c.3 0 .5-.3.5-.6V1.5c.1-.3-.2-.6-.5-.6zm7.9 0h-5.2c-.3 0-.6.3-.6.6v1.2c0 .3.3.6.6.6h5.2c.3-.1.6-.3.6-.6V1.5c0-.3-.3-.6-.6-.6zm0 3.9H7.8c-.3 0-.6-.3-.6-.6V1.5c0-.3-.2-.6-.6-.6H1.5c-.3 0-.6.3-.6.6v21c0 .3.3.6.6.6h21c.3 0 .6-.3.6-.6V5.4c0-.3-.3-.6-.6-.6z"}},
+task:{"path":{"d":"M11.1 3.2l-.8-.8c-.2-.2-.6-.2-.8 0L4.6 7.3l-2-1.9c-.2-.3-.5-.3-.8 0l-.7.7c-.3.3-.3.6 0 .8l2.7 2.7c.2.3.5.4.8.4.2 0 .5-.1.8-.4L11.1 4c.2-.2.2-.5 0-.8zm11.2 5.3h-9.6c-.4 0-.7-.3-.7-.7V6.3c0-.4.3-.8.7-.8h9.6c.5 0 .8.4.8.8v1.5c0 .4-.3.7-.8.7zm0 6.6H10.5c-.4 0-.8-.3-.8-.7v-1.5c0-.4.4-.8.8-.8h11.8c.5 0 .8.4.8.8v1.5c0 .4-.3.7-.8.7zM6 15.1H4.5c-.4 0-.7-.3-.7-.7v-1.5c0-.4.3-.8.7-.8H6c.4 0 .7.4.7.8v1.5c.1.4-.3.7-.7.7zm0 6.6H4.5c-.4 0-.7-.3-.7-.7v-1.5c0-.4.3-.8.7-.8H6c.4 0 .7.4.7.8V21c.1.4-.3.7-.7.7zm16.3 0H10.5c-.4 0-.8-.3-.8-.7v-1.5c0-.4.4-.8.8-.8h11.8c.5 0 .8.4.8.8V21c0 .4-.3.7-.8.7z"}},
+text_background_color:{"path":{"d":"M12 7.4l1.9 4.6H9.8l1.8-4.6h.4zm10.2-3.7v16.6c0 1-.9 1.9-1.9 1.9H3.7c-1 0-1.9-.9-1.9-1.9V3.7c0-1 .9-1.9 1.9-1.9h16.6c1 0 1.9.9 1.9 1.9zm-2.6 15.1L14.1 5.1c-.2-.3-.4-.5-.7-.5h-3.3c-.3 0-.5.2-.6.5L4.4 18.8c-.1.3.1.6.4.6h1.9c.3 0 .5-.2.6-.5l1.5-4.1H15l1.6 4.1c.1.3.4.5.7.5h1.9c.3 0 .5-.3.4-.6z"}},
+text_color:{"path":{"d":"M4.8 16.6h1.9c.3 0 .5-.2.6-.5L8.8 12H15l1.6 4.1c.1.3.4.5.7.5h1.9c.3 0 .5-.3.4-.6L14 2.3c-.1-.3-.3-.5-.6-.5h-3.2c-.3 0-.6.2-.7.5L4.4 16c-.1.3.1.6.4.6zm6.8-12h.4l2 4.6H9.8l1.8-4.6zm10.8 14.8H1.6c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h20.8c.4 0 .7-.4.7-.7v-1.4c0-.4-.3-.7-.7-.7z"}},
+threedots:{"path":{"d":"M3.7 9.2c1.5 0 2.8 1.3 2.8 2.8s-1.3 2.8-2.8 2.8S.9 13.5.9 12s1.3-2.8 2.8-2.8zm8.3 0c1.5 0 2.8 1.3 2.8 2.8s-1.3 2.8-2.8 2.8-2.8-1.3-2.8-2.8 1.3-2.8 2.8-2.8zm8.3 0c1.5 0 2.8 1.3 2.8 2.8s-1.3 2.8-2.8 2.8-2.8-1.3-2.8-2.8 1.3-2.8 2.8-2.8z"}},
+threedots_vertical:{"path":{"d":"M9.2 20.3c0-1.5 1.3-2.8 2.8-2.8s2.8 1.3 2.8 2.8-1.3 2.8-2.8 2.8-2.8-1.3-2.8-2.8zm0-8.3c0-1.5 1.3-2.8 2.8-2.8s2.8 1.3 2.8 2.8-1.3 2.8-2.8 2.8-2.8-1.3-2.8-2.8zm0-8.3C9.2 2.2 10.5.9 12 .9s2.8 1.3 2.8 2.8-1.3 2.8-2.8 2.8-2.8-1.3-2.8-2.8z"}},
+thunder:{"path":{"d":"M14 1.4c-.7-.6-1.7-.6-2.4 0L1.4 11.6c-.6.7-.6 1.7 0 2.4l5.4 5.4c.7.7 1.8.7 2.5 0L19.4 9.3c.7-.7.7-1.8 0-2.5L14 1.4zm-8.4.9c-.2-.2-.6-.2-.9 0L2.3 4.7c-.2.3-.2.7 0 .9l.9.9c.3.3.7.3.9 0l2.4-2.4c.3-.2.3-.6 0-.9l-.9-.9zm8.7 14.4c-.2.3-.2.7 0 .9l5.3 5.3c.2.2.6.2.9 0l2.4-2.4c.2-.3.2-.7 0-.9l-5.2-5.3c-.3-.2-.7-.2-1 0l-2.4 2.4z"}},
+tile_card_list:{"path":{"d":"M6.7 1.8H2.5c-.3 0-.7.4-.7.7v7.9c0 .4.4.7.7.7h4.2c.4 0 .7-.3.7-.7V2.5c0-.3-.3-.7-.7-.7zm7.4 0H9.9c-.3 0-.7.4-.7.7v7.9c0 .4.4.7.7.7h4.2c.3 0 .7-.3.7-.7V2.5c0-.3-.4-.7-.7-.7zm7.4 0h-4.2c-.4 0-.7.4-.7.7v7.9c0 .4.3.7.7.7h4.2c.3 0 .7-.3.7-.7V2.5c0-.3-.4-.7-.7-.7zM6.7 12.9H2.5c-.3 0-.7.3-.7.7v7.9c0 .3.4.7.7.7h4.2c.4 0 .7-.4.7-.7v-7.9c0-.4-.3-.7-.7-.7zm7.4 0H9.9c-.3 0-.7.3-.7.7v7.9c0 .3.4.7.7.7h4.2c.3 0 .7-.4.7-.7v-7.9c0-.4-.4-.7-.7-.7zm7.4 0h-4.2c-.4 0-.7.3-.7.7v7.9c0 .3.3.7.7.7h4.2c.3 0 .7-.4.7-.7v-7.9c0-.4-.4-.7-.7-.7z"}},
+topic:{"path":{"d":"M8 16.3c0-.1-.2-.3-.3-.3l-1-.3c-.2-.1-.4 0-.5.2l-1.8 3c-.4.9-.2 1.1.7.7l3-1.8c.2-.1.3-.3.3-.5l-.4-1zm8-8.6c0 .1.2.3.3.3l1 .3c.2.1.4 0 .5-.2L19.6 5c.4-.8.2-1.1-.7-.6l-3 1.7c-.2.1-.3.4-.3.5l.4 1.1zm-9.8.4c.1.2.3.3.5.3l1-.3c.1-.1.3-.2.3-.3l.3-1.1c.1-.1 0-.4-.2-.5l-3-1.8c-.9-.4-1.1-.2-.7.7l1.8 3zm11.6 7.8c-.1-.2-.3-.3-.5-.3l-1 .3c-.1.1-.3.2-.3.3l-.3 1.1c-.1.2 0 .4.2.5l3.1 1.8c.8.4 1.1.2.6-.7l-1.8-3zm4.7-4.3l-7.6-2c-.3 0-.5-.3-.5-.5l-2-7.6c-.3-.8-.6-.8-.8 0l-2 7.6c-.1.3-.3.5-.6.5l-7.5 2c-.8.3-.8.6 0 .8l7.6 2c.3.1.5.3.5.6l2 7.5c.3.8.6.8.8 0l2-7.5c.1-.3.3-.5.6-.6l7.5-2c.8-.2.8-.6 0-.8zM12 13.8c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8 1.8.8 1.8 1.8-.8 1.8-1.8 1.8z"}},
+touch_action:{"path":{"d":"M17.4 13.8l-3.7-1.3c-.3-.1-.5-.4-.5-.7V6.7c0-.7-.7-1.3-1.5-1.3h-.1c-.8 0-1.4.6-1.4 1.3v10c0 .8-1.1 1.2-1.6.4l-.9-2c-.5-.9-1.7-1.1-2.5-.5l-.6.4 3.2 7.6c.1.3.4.5.8.5h8.3c.5 0 .8-.3.9-.7l1.4-5.2c.4-1.5-.4-2.9-1.8-3.4zm-9.5-3.2v-4c.1-1.8 1.7-3.4 3.5-3.5h.4c1.9.1 3.4 1.7 3.5 3.5v4c0 .3.4.5.7.3 1-1.1 1.6-2.5 1.6-4 0-3.4-3-6.2-6.5-5.9-2.7.3-4.9 2.3-5.3 5-.3 1.8.3 3.6 1.5 4.9.2.2.6 0 .6-.3z"}},
+trail:{"path":{"d":"M12.8.9c1.6 0 2.8 1.2 2.8 2.7s-1.3 2.8-2.8 2.8-2.7-1.2-2.7-2.8S11.3.9 12.8.9zm7 7.5c-.5-.1-1 .3-1.1.8l-.2 2.7c-.1 0-.2.1-.3.1h-2.5l-1.8-3.1c-.1-.3-.4-.5-.7-.5L10.5 8c-.4-.1-.9.2-1.1.6l-2 5.2c-.2.5 0 .9.4 1.1l5 3.4.4 3.9c0 .5.5.9 1 .9.6 0 1.1-.5 1-1l-.4-4.8c0-.2-.2-.5-.4-.6l-2.7-3.1 1-2.5 1.2 2.1c.2.3.5.6.9.6h3.5l-1 8.3c-.1.5.3.9.8 1 .1 0 .1-.1.1-.1.5 0 1-.3 1-.8l1.6-12.9c0-.4-.4-.9-1-.9zM5.6 12.8l1.7-4.4c.1-.3.3-.6.5-.8l-.3-.1c-1.5-.2-2.8.7-3.3 2.1L3.3 12c-.2.5.1 1.1.6 1.2l.4.1c.6.2 1.1-.1 1.3-.5zm.7 3.4l-2.1 6.2c-.1.4.1.6.5.6h1.1c.4 0 .8-.2 1-.6l2-4.5-2.3-1.4c0-.1-.1-.2-.2-.3z"}},
+undelete:{"path":{"d":"M19.2 9.2H4.8c-.3 0-.6.4-.6.7v10.9c0 1.3 1 2.3 2.3 2.3h11c1.3 0 2.3-1 2.3-2.3V9.9c0-.3-.3-.7-.6-.7zm-7.2 12v-1.8c1.5 0 2.8-1.3 2.8-2.8s-1.3-2.8-2.8-2.8c-.7 0-1.4.4-1.9.9l1.1 1.1c.1.1 0 .4-.2.4H7.6c-.1 0-.2-.1-.2-.2v-3.4c0-.2.2-.3.4-.2l1 1c.8-.8 2-1.4 3.2-1.4 2.6 0 4.7 2.1 4.7 4.7s-2.2 4.5-4.7 4.5zm9-16.6h-5.8V2.8c0-1-.8-1.9-1.8-1.9h-2.8c-1 0-1.8.9-1.8 1.9v1.8H3c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h18c.4 0 .7-.3.7-.7V5.3c0-.4-.3-.7-.7-.7zm-7.6 0h-2.8V3.2c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.4z"}},
+undeprecate:{"path":{"d":"M22.2 3.2H1.8c-.5 0-.9.4-.9 1v12c0 .5.4.9.9.9h7.5c.5 2.6 2.7 4.6 5.5 4.6s5-2 5.4-4.6h2c.5 0 .9-.4.9-.9v-12c0-.6-.4-1-.9-1zm-8.1 15.9l-2.7-2.8 1.2-1.3 1.5 1.5 3.3-3.3 1.2 1.3-4.5 4.6zm7.1-3.9h-1c-.4-2.6-2.7-4.6-5.4-4.6s-5.1 2-5.5 4.6H2.8V5.1h18.4v10.1z"}},
+underline:{"path":{"d":"M20.5 19.4h-17c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h17c.4 0 .7-.4.7-.7v-1.4c0-.4-.3-.7-.7-.7zm-8.8-1.9c-3.5-.1-6.2-3.1-6.2-6.6V4.6c0-.5.5-.9 1-.9h.9c.5 0 .9.4.9.9v6.3c0 2 1.5 3.7 3.5 3.9 2.1.1 3.9-1.6 3.9-3.7V4.6c0-.5.4-.9.9-.9h.9c.5 0 1 .4 1 .9v6.5c0 3.7-3.1 6.6-6.8 6.4z"}},
+undo:{"path":{"d":"M2.5 1.8h1.4c.4 0 .7.4.7.7v3.3c0 .4.2.6.6.3.1-.2.2-.3.4-.5 2.3-2.3 5.6-3.2 8.9-2.6 1.1.2 2.3.7 3.2 1.3 2.8 1.9 4.5 4.9 4.5 8.1 0 2.5-.9 5-2.7 6.8-1.6 1.8-3.9 2.8-6.2 3-.5 0-.8-.4-.8-.8V20c0-.3.2-.6.6-.7 2.2-.1 4.2-1.3 5.4-3.3.3-.6.6-1.2.7-1.8.7-3-.5-6.1-3.2-7.7-.5-.3-1.1-.6-1.7-.7-2.5-.6-5 .1-6.7 1.8-.2.2-.4.4-.5.6-.2.4.1.6.6.6h3.2c.4 0 .6.3.6.7v1.4c0 .4-.2.6-.6.6H2.4c-.3 0-.6-.2-.6-.6V2.5c0-.3.4-.7.7-.7z"}},
+unlock:{"path":{"d":"M4.6 8.4v.1-.1zm14.8 2.2h-12V8.4c0-2.4 1.8-4.6 4.3-4.7 2.2-.1 4.1 1.3 4.7 3.3.1.2.3.4.5.4h1.9c.3 0 .5-.3.4-.6-.7-3.5-3.8-6.1-7.6-5.9-3.9.2-6.9 3.6-7 7.5v2.2c-1 0-1.8.8-1.8 1.9v8.7c0 1 .8 1.9 1.8 1.9h14.8c1 0 1.8-.9 1.8-1.9v-8.7c0-1.1-.8-1.9-1.8-1.9zm-5.3 9.1c.1.3-.1.6-.4.6h-3.4c-.3 0-.6-.3-.5-.6l.9-2.8c-.7-.4-1.1-1.3-1-2.2.2-.9.9-1.5 1.8-1.7 1.5-.3 2.8.8 2.8 2.1 0 .8-.4 1.5-1 1.8l.8 2.8z"}},
+unmuted:{"path":{"d":"M19.2 8.3c-.7 0-1.2.5-1.2 1.1v1.9c0 3.2-2.7 5.9-6 5.9s-6.1-2.7-6.1-5.9V9.4c0-.6-.5-1.1-1.1-1.1s-1.1.5-1.1 1.1v1.9c0 4.1 3.1 7.4 7.1 8v1.6H9c-.7 0-1.2.4-1.2 1.1s.5 1.1 1.2 1.1h6c.6 0 1.2-.5 1.2-1.1s-.6-1.1-1.2-1.1h-1.9v-1.6c4.1-.6 7.2-3.9 7.2-8V9.4c0-.6-.5-1.1-1.1-1.1zM12 15c2 0 3.7-1.7 3.7-3.7V4.6c0-2.1-1.6-3.7-3.7-3.7S8.3 2.5 8.3 4.6v6.7c0 2 1.7 3.7 3.7 3.7z"}},
+up:{"path":{"d":"M20.2 17.5H3.8c-.4 0-.8-.6-.4-1l8-9.8c.3-.3.9-.3 1.2 0l8 9.8c.4.4.1 1-.4 1z"}},
+upload:{"path":{"d":"M22.4 14.3H21c-.4 0-.7.4-.7.7v4.6c0 .4-.3.7-.7.7H4.4c-.4 0-.7-.3-.7-.7V15c0-.3-.3-.7-.7-.7H1.6c-.4 0-.7.4-.7.7v6.2c0 1 .9 1.9 1.9 1.9h18.4c1 0 1.9-.9 1.9-1.9V15c0-.3-.3-.7-.7-.7zM12.5 1.1c-.3-.3-.7-.3-1 0L5.3 7.3c-.3.3-.3.7 0 1l.9 1c.3.3.7.3 1 0l2.6-2.6c.3-.3.8-.1.8.3v9.8c0 .4.3.7.7.7h1.3c.4 0 .8-.4.8-.7V7.1c0-.5.4-.6.8-.4l2.6 2.6c.2.3.6.3.9 0l1-.9c.3-.3.3-.7 0-1l-6.2-6.3z"}},
+user:{"path":{"d":"M23.1 19.8v1.1c0 1.2-1 2.2-2.2 2.2H3.1c-1.2 0-2.2-1-2.2-2.2v-1.1c0-2.6 3.2-4.3 6.1-5.6l.3-.1c.2-.1.5-.1.7 0 1.2.8 2.5 1.2 4 1.2s2.8-.4 3.9-1.2c.3-.1.5-.1.7 0l.3.1c3 1.3 6.2 2.9 6.2 5.6zM12 .9c3 0 5.5 2.7 5.5 6.1S15 13.1 12 13.1 6.5 10.4 6.5 7 9 .9 12 .9z"}},
+user_role:{"path":{"d":"M10.1 16.6c0-1.2.5-2.7 1.1-3.8.8-1.4 1.7-1.9 2.4-2.9 1.1-1.7 1.3-4.2.6-6-.7-1.9-2.5-3-4.5-3S6 2.2 5.3 4.1c-.7 2.1-.4 4.6 1.3 6.1.7.7 1.3 1.7 1 2.7-.4.9-1.5 1.3-2.3 1.7-1.8.8-3.9 1.9-4.3 4-.4 1.8.8 3.6 2.7 3.6h7.9c.3 0 .6-.5.3-.8-1.1-1.3-1.8-3-1.8-4.8zm7.4-5.5c-3 0-5.5 2.5-5.5 5.5s2.5 5.6 5.5 5.6 5.6-2.5 5.6-5.6-2.5-5.5-5.6-5.5zm1 6c-.1 0-.3 0-.4-.1l-2.2 2.2c-.1.1-.3.2-.4.2-.2 0-.4-.1-.5-.2-.3-.3-.3-.7 0-1l2.1-2.1c0-.1 0-.3-.1-.4-.1-1 .7-1.9 1.7-1.9.1 0 .3 0 .5.1 0 0 .1.1 0 .1l-.9 1c-.1.1-.1.2 0 .2l.6.7c.1.1.2.1.3 0l.9-.9c.1-.1.2-.1.2 0v.5c0 1-.8 1.7-1.8 1.6z"}},
+volume_high:{"path":{"d":"M11.4 1.2L5.5 8.3H2.8c-1 0-1.9.8-1.9 1.9v3.6c0 1.1.9 1.9 1.9 1.9h2.7l5.9 7.1c.6.6 1.5.2 1.5-.6V1.8c0-.8-1-1.2-1.5-.6zM19.7 4c-.2-.2-.5-.2-.7 0l-.6.7c-.2.1-.2.5 0 .6 1.7 1.7 2.8 4.1 2.8 6.7 0 2.6-1.1 5-2.8 6.7-.2.2-.2.5 0 .6l.6.7c.2.2.5.2.7 0 2-2 3.4-4.9 3.4-8 0-3.1-1.3-6-3.4-8zm-2.9 3c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7 1 .9 1.6 2.2 1.6 3.7s-.7 2.8-1.7 3.7c-.2.2-.2.5 0 .7l.7.6c.1.2.4.2.6 0 1.3-1.2 2.2-3 2.2-5s-.8-3.8-2.1-5z"}},
+volume_low:{"path":{"d":"M11.4 1.2L5.5 8.3H2.8c-1 0-1.9.8-1.9 1.9v3.6c0 1.1.9 1.9 1.9 1.9h2.7l5.9 7.1c.6.6 1.5.2 1.5-.6V1.8c0-.8-1-1.2-1.5-.6zM16.8 7c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7 1 .9 1.6 2.2 1.6 3.7s-.7 2.8-1.7 3.7c-.2.2-.2.5 0 .7l.7.6c.1.2.4.2.6 0 1.3-1.2 2.2-3 2.2-5s-.8-3.8-2.1-5z"}},
+volume_off:{"path":{"d":"M11.4 1.2L5.5 8.3H2.8c-1 0-1.9.8-1.9 1.9v3.6c0 1.1.9 1.9 1.9 1.9h2.7l5.9 7.1c.6.6 1.5.2 1.5-.6V1.8c0-.8-1-1.2-1.5-.6zM20.7 12l2.2-2.3c.2-.1.2-.4 0-.6l-.6-.7c-.2-.1-.5-.1-.7 0l-2.2 2.3-2.3-2.3c-.2-.1-.4-.1-.6 0l-.7.7c-.2.2-.2.5 0 .6l2.3 2.3-2.3 2.3c-.2.1-.2.4 0 .6l.7.7c.2.1.4.1.6 0l2.3-2.3 2.2 2.3c.2.1.5.1.7 0l.6-.7c.2-.2.2-.5 0-.6L20.7 12z"}},
+warning:{"path":{"d":"M23.7 19.6L13.2 2.5c-.6-.9-1.8-.9-2.4 0L.3 19.6c-.7 1.1 0 2.6 1.1 2.6h21.2c1.1 0 1.8-1.5 1.1-2.6zM12 18.5c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.4.6 1.4 1.4-.6 1.4-1.4 1.4zm1.4-4.2c0 .3-.2.5-.5.5h-1.8c-.3 0-.5-.2-.5-.5v-6c0-.3.2-.5.5-.5h1.8c.3 0 .5.2.5.5v6z"}},
+weeklyview:{"path":{"d":"M20.3 3.2H18v-.9c0-.7-.6-1.4-1.4-1.4-.7 0-1.4.6-1.4 1.4v.9H8.8v-.9c0-.7-.6-1.4-1.4-1.4C6.6.9 6 1.5 6 2.3v.9H3.7c-1 0-1.9.9-1.9 1.9v1.1c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V5.1c0-1-.9-1.9-1.9-1.9zm1.2 6h-19c-.3 0-.7.4-.7.7v11.3c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9V9.9c0-.3-.4-.7-.7-.7zm-6.4 4.4l-2.9 6.2c-.1.3-.4.5-.8.5-.5 0-.9-.4-.9-.8 0-.1.1-.3.1-.4l2.5-5.3H9.6c-.5 0-.8-.2-.8-.6 0-.4.3-.7.8-.7h4.8c.4 0 .8.3.8.8 0 .1 0 .2-.1.3z"}},
+world:{"path":{"d":"M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm0 2.3zm.9.1h-.1.1zM12 20.8c-4.8 0-8.8-4-8.8-8.8 0-.5.1-1 .2-1.4.6.1 1.3.3 1.7.7.8.8 1.6 1.8 2.5 2 0 0-.1 0-.2.2-.1.1-.2.4-.2.9 0 2.1 2 .8 2 3s2.5 3 2.5 1.3 1.6-2.6 1.6-3.9-1.3-1.3-2-1.8c-.9-.4-1.3-1.1-2.9-.9-.8-.7-1.2-1.4-.9-2.1.4-.8 2.1-1 2.1-2.2S8.5 6.4 7.7 6.4c-.4 0-1.2-.3-1.8-.6.7-.8 1.7-1.4 2.7-1.9.8.3 2 .9 3.1.9 1.2 0 1.9-.9 1.7-1.5 2.1.3 3.9 1.4 5.2 2.9-.6.4-1.6.9-3.2.9-2.1 0-2.1 2.1-.9 2.5 1.3.5 2.6-.8 3 0 .5.9-3 .9-2.1 3 .9 2.1 1.7 0 2.6 2.1.9 2.1 2.6-.3 1.3-2-.6-.7-.4-3 .9-3h.4c.2.7.3 1.5.3 2.3-.1 4.8-4.1 8.8-8.9 8.8z"}},
+zoomin:{"path":{"d":"M14.3 8.8h-2.8V6c0-.3-.1-.5-.4-.5H9.2c-.2 0-.4.2-.4.5v2.8H6c-.3 0-.5.2-.5.4v1.9c0 .3.2.4.5.4h2.8v2.8c0 .3.2.5.4.5h1.9c.3 0 .4-.2.4-.5v-2.8h2.8c.3 0 .5-.1.5-.4V9.2c0-.2-.2-.4-.5-.4zm8.6 12.1l-5.3-5.3c1.1-1.5 1.8-3.4 1.8-5.4 0-5.1-4.2-9.3-9.2-9.3S.9 5.1.9 10.2s4.2 9.2 9.3 9.2c2 0 3.9-.7 5.4-1.8l5.3 5.3c.3.3.7.3 1 0l.9-1c.3-.3.3-.7.1-1zm-12.7-4.3c-3.6 0-6.5-2.9-6.5-6.4s2.9-6.5 6.5-6.5 6.4 2.9 6.4 6.5-2.9 6.4-6.4 6.4z"}},
+zoomout:{"path":[{"d":"M8.8 11.5h5.5c.3 0 .5-.1.5-.4V9.2c0-.2-.2-.4-.5-.4H8.8m0 0H6c-.3 0-.5.2-.5.4v1.9c0 .3.2.4.5.4h2.8"},{"d":"M22.9 20.9l-5.3-5.3c1.1-1.5 1.8-3.4 1.8-5.4 0-5.1-4.2-9.3-9.2-9.3S.9 5.1.9 10.2s4.2 9.2 9.3 9.2c2 0 3.9-.7 5.4-1.8l5.3 5.3c.3.3.7.3 1 0l.9-1c.3-.3.3-.7.1-1zm-12.7-4.3c-3.6 0-6.5-2.9-6.5-6.4s2.9-6.5 6.5-6.5 6.4 2.9 6.4 6.5-2.9 6.4-6.4 6.4z"}]},
+viewBox:'0 0 24 24'
+};
