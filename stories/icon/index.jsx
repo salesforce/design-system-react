@@ -17,6 +17,7 @@ storiesOf(ICON, module)
 	.add('Standard Icon', () => <Icon
 		assistiveText="Accounts"
 		category="standard"
+		title="This is a title"
 		name="account"
 	/>)
 	.add('Imported Icon', () => <Icon

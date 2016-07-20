@@ -11,9 +11,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND 
 
 export SLDSSettings from './SLDSSettings';
 
-export SLDSAppLauncher from './app-launcher';
-export AppLauncher from './app-launcher';
-
 export SLDSButton from './button';
 export Button from './button';
 
@@ -40,9 +37,6 @@ export Checkbox from './forms/checkbox';
 
 export SLDSGlobalNavigationBar from './global-navigation-bar';
 export GlobalNavigationBar from './global-navigation-bar';
-
-export SLDSGlobalNavigationBarAppLauncher from './global-navigation-bar/app-launcher';
-export GlobalNavigationBarAppLauncher from './global-navigation-bar/app-launcher';
 
 export SLDSGlobalNavigationBarRegion from './global-navigation-bar/region';
 export GlobalNavigationBarRegion from './global-navigation-bar/region';

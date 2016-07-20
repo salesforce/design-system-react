@@ -141,7 +141,7 @@ const DemoAppLauncherTileWithSearchText = React.createClass({
 
 	getDefaultProps () {
 		return {
-			search: 'all'
+			search: 'Call'
 		};
 	},
 
@@ -227,7 +227,7 @@ const DemoAppLauncher = React.createClass({
 					region="primary"
 				>
 					<AppLauncher
-						applicationName="App Name"
+						triggerName="App Name"
 						onSearch={this.onSearch}
 						modalHeaderButton={modalHeaderButton}
 						isOpen={this.state.appLauncherOpen}

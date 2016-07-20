@@ -27,13 +27,13 @@ const { PropTypes } = React;
 const Highlighter = (props) => {
 	if (props.search) {
 		return (
-			<ReactHighlighter matchClass={null} matchElement="mark" search={props.search}>
+			<ReactHighlighter className={props.className} matchClass={null} matchElement="mark" search={props.search}>
 				{props.children}
 			</ReactHighlighter>
 		);
 	}
 
-	return <span>{props.children}</span>;
+	return <span className={props.className}>{props.children}</span>;
 };
 
 // ### Display Name
@@ -49,6 +49,7 @@ Highlighter.propTypes = {
 		React.PropTypes.number,
 		React.PropTypes.bool
 	]),
+	className: PropTypes.string,
 	/**
 	 * The string of text (or Regular Expression) to highlight.
 	 */
