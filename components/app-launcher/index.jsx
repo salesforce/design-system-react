@@ -18,6 +18,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React, { PropTypes } from 'react';
 
+// ### classNames
+import classNames from 'classnames';
+
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
@@ -75,6 +78,10 @@ const AppLauncher = React.createClass({
 		 * Callback fired when search value changes
 		 */
 		onSearch: PropTypes.func.isRequired,
+		/**
+		 * Allows longer application names without truncating them.
+		 */
+		noTruncate: PropTypes.bool,
 		/*
 		 * Set the search input's placeholder text (for localization)
 		 */
@@ -135,8 +142,11 @@ const AppLauncher = React.createClass({
 	render () {
 		const isOpen = this.props.isOpen !== undefined ? this.props.isOpen : this.state.isOpen;
 
+		// Should be removed in the future by adding a reset class of some sort.
+		const style = this.props.noTruncate ? { maxWidth: 'none' } : null;
+
 		return (
-			<div className="app-launcher-wrapper slds-context-bar__item slds-no-hover">
+			<div className="app-launcher-wrapper slds-context-bar__item slds-no-hover" style={style}>
 				<div className="slds-context-bar__icon-action">
 					<a
 						href="javascript:void(0);" // eslint-disable-line no-script-url
@@ -153,7 +163,6 @@ const AppLauncher = React.createClass({
 						/>
 					</a>
 				</div>
-
 				<Modal
 					isOpen={isOpen}
 					onRequestClose={this.closeAppLauncher}
@@ -178,7 +187,14 @@ const AppLauncher = React.createClass({
 					</div>
 				</Modal>
 				{this.props.triggerName
-					? <span className="slds-context-bar__label-action slds-context-bar__app-name">{this.props.triggerName}</span>
+					? <span
+						className={classNames(
+							'slds-context-bar__label-action slds-context-bar__app-name',
+							{ 'slds-truncate': !this.props.noTruncate })
+						}
+					>
+						{this.props.triggerName}
+					</span>
 					: null
 				}
 			</div>
