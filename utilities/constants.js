@@ -50,5 +50,6 @@ export const MENU_DROPDOWN_TRIGGER = 'SLDSMenuDropdownTrigger';
 export const MENU_PICKLIST = 'SLDSMenuPicklist';
 export const MODAL = 'SLDSModal';
 export const PAGE_HEADER = 'SLDSPageHeader';
+export const POPOVER_TOOLTIP = 'SLDSPopoverTooltip';
 export const SPINNER = 'SLDSSpinner';
 export const TIME_PICKER = 'SLDSTimepicker';
