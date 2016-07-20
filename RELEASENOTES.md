@@ -6,6 +6,10 @@
 
 **MAJOR CHANGES**
 - Add the App Launcher component
+- Add support for the title attribute for icons
+
+**OTHER**
+- Additional code cleanup
 
 
 ## Release 0.1.1
