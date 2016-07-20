@@ -141,7 +141,7 @@ const DemoAppLauncherTileWithSearchText = React.createClass({
 
 	getDefaultProps () {
 		return {
-			search: 'all'
+			search: 'Call'
 		};
 	},
 

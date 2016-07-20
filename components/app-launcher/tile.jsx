@@ -93,14 +93,10 @@ const AppLauncherTile = React.createClass({
 		};
 	},
 
-	getHighlighterRender (child) {
-		return <Highlighter search={this.props.search}>{child}</Highlighter>;
-	},
-
 	getMoreRender () {
 		return (
 			<span>
-				<PopoverTooltip align="bottom" content={this.getHighlighterRender(this.props.description)}>
+				<PopoverTooltip align="bottom" content={<Highlighter search={this.props.search}>{this.props.description}</Highlighter>}>
 					<Button variant="base" iconVariant="bare" label={this.props.moreLabel} />
 				</PopoverTooltip>
 			</span>
@@ -133,14 +129,12 @@ const AppLauncherTile = React.createClass({
 				{
 					small
 					? <div className="slds-app-launcher__tile-body slds-app-launcher__tile-body--small">
-						<p className="slds-truncate slds-text-link">
-							{this.getHighlighterRender(this.props.title)}
+						<p className="slds-truncate">
+							<Highlighter className="slds-text-link" search={this.props.search}>{this.props.title}</Highlighter>
 						</p>
 					</div>
 					: <div className="slds-app-launcher__tile-body">
-						<span className="slds-text-link">
-							{this.getHighlighterRender(this.props.title)}
-						</span>
+						<Highlighter className="slds-text-link" search={this.props.search}>{this.props.title}</Highlighter>
 						<Truncate
 							line={2}
 							truncateText="…"
