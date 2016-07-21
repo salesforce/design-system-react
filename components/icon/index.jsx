@@ -11,6 +11,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND 
 
 // # Icon Component
 
+// Based on SLDS v2.1.0-rc.4
+
 // ## Dependencies
 
 // ### React
