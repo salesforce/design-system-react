@@ -235,7 +235,7 @@ class Modal extends React.Component {
 
     return (
       <div className={classNames(headerClass)} style={{position: "relative"}} onClick={this.handleModalClick.bind(this)}>
-        <Button assistiveText="Close" variant="icon-inverse" iconName="close" iconSize="large" className="slds-modal__close" onClick={this.closeModal.bind(this)} />
+        <Button assistiveText="Close" iconName="close" iconSize="large" inverse className="slds-modal__close" onClick={this.closeModal.bind(this)} variant="icon" />
         {headerContent}
       </div>
     )

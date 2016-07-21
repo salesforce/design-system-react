@@ -194,7 +194,7 @@ const Input = React.createClass({
 
 		return isFunction(this.props.onIconClick)
 		? (<Button
-			iconVariant="small"
+			iconSize="small"
 			variant="icon"
 			className="slds-input__icon slds-button--icon"
 			assistiveText={this.props.iconAssistiveText}

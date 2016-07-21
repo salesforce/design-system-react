@@ -60,15 +60,15 @@ const propTypes = {
 	/**
 	 * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
 	 */
-	iconVariant: PropTypes.oneOf(['container', 'border', 'border-filled', 'more']),
+	iconVariant: PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'more']),
 	/**
 	 * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
 	 */
 	id: PropTypes.string,
 	/**
-    * If true, button/icon is white. Meant for buttons or utility icons on dark backgrounds.
+		* If true, button/icon is white. Meant for buttons or utility icons on dark backgrounds.
 	 */
-  inverse: PropTypes.bool,
+	inverse: PropTypes.bool,
 	/**
 	 * Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText</code> prop.
 	 */
@@ -134,24 +134,24 @@ class Button extends TooltipTrigger {
 	}
 
 	getClassName () {
-    const isIcon = this.props.variant === 'icon';
-    const iconMore = this.props.iconVariant === 'more';
-    const iconBorder = this.props.iconVariant === 'border';
+		const isIcon = this.props.variant === 'icon';
+		const iconMore = this.props.iconVariant === 'more';
+		const iconBorder = this.props.iconVariant === 'border';
 
 		const showButtonVariant = this.props.variant !== 'base' && !this.props.iconVariant && !this.props.inverse;
-    const plainInverseBtn = this.props.inverse && !isIcon;
-    const plainInverseIcon = this.props.inverse && isIcon && !iconMore && !iconBorder;
-    const moreInverseIcon = this.props.inverse && iconMore;
-    const borderInverseIcon = this.props.inverse && iconBorder;
+		const plainInverseBtn = this.props.inverse && !isIcon;
+		const plainInverseIcon = this.props.inverse && isIcon && !iconMore && !iconBorder;
+		const moreInverseIcon = this.props.inverse && iconMore;
+		const borderInverseIcon = this.props.inverse && iconBorder;
 
 		return classNames(this.props.className, 'slds-button', {
 			[`slds-button--${this.props.variant}`]: showButtonVariant,
 			[`slds-button--inverse`]: plainInverseBtn,
 			[`slds-button--icon-inverse`]: plainInverseIcon || moreInverseIcon,
-      // Bug in SLDS css where having a small icon container (with border) and inverse, the icon does not vertically align. Manual fix here until fixed in css.
+			// Bug in SLDS css where having a small icon container (with border) and inverse, the icon does not vertically align. Manual fix here until fixed in css.
 			[`slds-button--icon-border-inverse slds-align-middle slds-line-height--reset`]: borderInverseIcon,
 			[`slds-button--icon-${this.props.iconVariant}`]: this.props.iconVariant && !borderInverseIcon,
-      // If icon has a container, then we apply the icon size to the container not the svg. Icon size is medium by default so we don't need to explicitly render it here.
+			// If icon has a container, then we apply the icon size to the container not the svg. Icon size is medium by default so we don't need to explicitly render it here.
 			[`slds-button--icon-${this.props.iconSize}`]: this.props.iconVariant && this.props.iconSize !== 'medium'
 		});
 	}
@@ -187,8 +187,8 @@ class Button extends TooltipTrigger {
 		const iconOnly = this.props.variant === 'icon';
 
 		return iconOnly && this.props.assistiveText
-      ? <span className="slds-assistive-text">{this.props.assistiveText}</span>
-      : <span>{this.props.label}</span>;
+			? <span className="slds-assistive-text">{this.props.assistiveText}</span>
+			: <span>{this.props.label}</span>;
 	}
 
 	render () {
