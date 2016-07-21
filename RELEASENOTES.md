@@ -7,6 +7,9 @@
 **MAJOR CHANGES**
 - Add support for custom svg icons
 
+**OTHER**
+- Allow menus and buttons used in the Gloval Nav Bar to be marked as active
+
 
 ## Release 0.1.2
 
