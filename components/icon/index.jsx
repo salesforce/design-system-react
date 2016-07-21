@@ -78,17 +78,16 @@ const Icon = React.createClass({
 	getDefaultProps () {
 		return {
 			category: 'standard',
-			inverse: true,
 			size: 'medium'
 		};
 	},
 
 	isDefaultText () {
-		// if category is `utility` and `inverse` is true, icon will be dark // return true
-		// if category is `utility` and `inverse` is false, icon will be light // return false
-		// if category is NOT `utility` and `inverse` is true, icon will be light // return false
-		// if category is NOT `utility` and `inverse` is false, icon will be dark // return true
-		return this.props.category === 'utility' ? this.props.inverse : !this.props.inverse;
+		// if category is NOT `utility` and `inverse` is true, icon will be dark // return true
+		// if category is NOT `utility` and `inverse` is false, icon will be light // return false
+		// if category is `utility` and `inverse` is true, icon will be light // return false
+		// if category is `utility` and `inverse` is false, icon will be dark // return true
+		return this.props.category === 'utility' ? !this.props.inverse : this.props.inverse;
 	},
 
 	getContainerClasses () {

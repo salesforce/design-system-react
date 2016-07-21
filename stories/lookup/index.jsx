@@ -79,7 +79,6 @@ storiesOf(LOOKUP, module)
 		emptyMessage="No Files found"
 		hasError={false}
 		iconCategory="utility"
-		iconInverse={false}
 		iconName="open_folder"
 		label="Files"
 	/>)
@@ -90,4 +89,3 @@ storiesOf(LOOKUP, module)
 		iconName="account"
 		label="Account"
 	/>);
-

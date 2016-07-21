@@ -20,7 +20,7 @@ storiesOf(ICON, module)
 			category="standard"
 			name="account"
 			title="This is a title"
-			inverse={false}
+			inverse
 		/>
 	))
 	.add('Base: Utility', () => (
@@ -36,7 +36,7 @@ storiesOf(ICON, module)
 				assistiveText="Announcement"
 				category="utility"
 				name="announcement"
-				inverse={false}
+				inverse
 			/>
 		</div>
 	))
