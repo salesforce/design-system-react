@@ -77,6 +77,7 @@ describe('Global Navigation Bar: ', () => {
 	describe('Optional Region Structure', () => {
 		const props = propSets.base.props;
 
+		const buttonClicked = () => {};
 		const linkClicked = () => {};
 		const dropdownItemClicked = () => {};
 
@@ -99,9 +100,18 @@ describe('Global Navigation Bar: ', () => {
 						options={dropdownCollection}
 					/>
 					<GlobalNavigationBarLink
+						active
 						href="#"
+						id="menu-item-2"
 						label="Global Navigation Menu Item 2"
 						onClick={linkClicked('Link clicked')}
+					/>
+					<GlobalNavigationBarDropdown
+						active
+						id="primaryDropdownActive"
+						label="Global Navigation Menu Item 3"
+						onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
+						options={dropdownCollection}
 					/>
 				</GlobalNavigationBarRegion>
 				<GlobalNavigationBarRegion region="tertiary">
@@ -109,6 +119,17 @@ describe('Global Navigation Bar: ', () => {
 						href="#"
 						label="Actions"
 						onClick={linkClicked('Link clicked')}
+					/>
+					<GlobalNavigationBarButton
+						label="Button"
+						id="global-nav__button"
+						onClick={buttonClicked('Button clicked')}
+					/>
+					<GlobalNavigationBarButton
+						active
+						label="Button"
+						id="global-nav__button_active"
+						onClick={buttonClicked('Button clicked')}
 					/>
 				</GlobalNavigationBarRegion>
 			</GlobalNavigationBar>
@@ -130,6 +151,11 @@ describe('Global Navigation Bar: ', () => {
 		it('Secondary region application is a nav HTML element', function () {
 			const nav = this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`);
 			expect(nav.type()).to.equal('nav');
+		});
+
+		it('displays active items as active', function () {
+			const activeItems = this.wrapper.find('.slds-is-active');
+			expect(activeItems).to.have.length(3);
 		});
 	});
 
