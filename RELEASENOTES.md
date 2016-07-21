@@ -2,13 +2,45 @@
 # React Components: design-system-react
 # Release notes
 
-## Release 0.1.1
-**BREAKING CHANGES**
-- Button component: Inverse style of Button (white color to go on dark backgrounds) is now declared with a bool prop, inverse
-- Button component: `inverse` and `icon-inverse` are no longer supported in the variants prop.
+## Release 0.2.0
 
-**BUG FIXES**
-- Button component: when button icon had an iconVariant prop, the iconSize prop did not render. It is now fixed.
+**BREAKING CHANGES**
+- Changes to how the `inverse` prop works for icons and removal of the default value of `true`
+- Button component: Inverse style of Button (white color to go on dark backgrounds) is now declared with a bool prop, inverse
+- Button component: `inverse` and `icon-inverse` are no longer supported in the variants prop
+
+**MAJOR CHANGES**
+- Update Icon to the latest markup
+
+**OTHER**
+- Allow menus and buttons used in the Global Nav Bar to be marked as active
+- Button component: when button icon had an iconVariant prop, the iconSize prop did not render. It is now fixed
+
+
+## Release 0.1.2
+
+**MAJOR CHANGES**
+- Add the App Launcher component
+- Add support for the title attribute for icons
+
+**OTHER**
+- Additional code cleanup
+
+
+## Release 0.1.1
+
+**MAJOR CHANGES**
+- Add support for icons, headers, links, and dividers to Dropdown and Picklist menus
+- Add support for custom content in Dropdown menus
+- Update Lookup to the latest markup
+- Update Picklist to the latest markup
+
+**OTHER**
+- Add name attributes to Checkbox and Input
+- Add Button support to Global Navigation Bar
+- Update the keyboard navigation logic used by menus
+- Update profile icon used in the Global Header
+
 
 ## Release 0.1.0
 
@@ -18,8 +50,8 @@
 **MAJOR CHANGES**
 - Add the Global Header component
 - Add a Search component
-- Updates BreadCrumb to the latest markup
-- Updates PageHeader to the latest markup
+- Update BreadCrumb to the latest markup
+- Update PageHeader to the latest markup
 
 **OTHER**
 - Begin counting versions from 0.1.0

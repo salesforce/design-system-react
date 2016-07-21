@@ -31,7 +31,7 @@ const propSets = {
 			appLauncher: {
 				assistiveText: 'Open App Launcher',
 				id: 'app-launcher-trigger',
-				name: 'App Name'
+				triggerName: 'App Name'
 			}
 		}
 	},
@@ -45,7 +45,7 @@ const propSets = {
 				assistiveText: 'Open App Launcher',
 				id: 'app-launcher-trigger',
 				noTruncate: true,
-				customChild: () => (
+				triggerName: (
 					<div className="slds-grid slds-grid--align-spread">
 						<div>
 							Marketing Cloud
@@ -55,10 +55,9 @@ const propSets = {
 								category="utility"
 								className="slds-m-left--small slds-m-right--small"
 								name="email"
-								inverse={false}
 								size="x-small"
 							/>
-							<span className="context-bar__label-action slds-text-body--regular" style={{fontWeight: 'normal'}}>
+							<span className="context-bar__label-action slds-text-body--regular" style={{ fontWeight: 'normal' }}>
 								Email Studio
 							</span>
 						</div>
@@ -75,7 +74,7 @@ const propSets = {
 			appLauncher: {
 				assistiveText: 'Open App Launcher',
 				id: 'app-launcher-trigger',
-				name: 'App Name'
+				triggerName: 'App Name'
 			}
 		}
 	}

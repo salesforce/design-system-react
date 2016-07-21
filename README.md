@@ -33,7 +33,7 @@ npm run dist
 
 ## Getting Started
 
-Note: `design-system-react` is optimized for React 0.14.x and uses Lightning Design System 2.1.0-beta.3. You can find a more complete [getting started guide](https://react.lightningdesignsystem.com/getting-started) on the documentation site.
+Note: `design-system-react` is optimized for React 0.14.x and uses Lightning Design System 2.1.0-rc.4. You can find a more complete [getting started guide](https://react.lightningdesignsystem.com/getting-started) on the documentation site.
 
 ### New to React?
 
@@ -46,7 +46,7 @@ Because this project is not open-sourced, we cannot publish it to npm. Therefore
 ```
 # package.json
 
-"design-system-react": "git+ssh://git@github.com:salesforce-ux/design-system-react.git#v0.1.0",
+"design-system-react": "git+ssh://git@github.com:salesforce-ux/design-system-react.git#v0.2.0",
 ```
 
 Then, in your React code, import each Lightning Design System component you need.

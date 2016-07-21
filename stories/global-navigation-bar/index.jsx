@@ -7,16 +7,19 @@ import { dropdownCollection, propSets } from '../../utilities/sample-data/global
 
 import GlobalNavigationBar from '../../components/global-navigation-bar';
 import GlobalNavigationBarRegion from '../../components/global-navigation-bar/region';
-import GlobalNavigationBarAppLauncher from '../../components/global-navigation-bar/app-launcher';
 import GlobalNavigationBarDropdown from '../../components/global-navigation-bar/dropdown';
 import GlobalNavigationBarLink from '../../components/global-navigation-bar/link';
 import GlobalNavigationBarButton from '../../components/global-navigation-bar/button';
 
+import AppLauncher from '../../components/app-launcher';
+import AppLauncherSection from '../../components/app-launcher/section';
+import AppLauncherTile from '../../components/app-launcher/tile';
+
 // aliased to allow copy and paste from component tests
-const appLauncherClicked = action;
-const linkClicked = action;
-const dropdownItemClicked = action;
 const buttonClicked = action;
+const dropdownItemClicked = action;
+const linkClicked = action;
+const searchClicked = action;
 
 /* eslint-disable react/display-name */
 const getGlobalNavigationBar = (props, primaryRegionProps) => (
@@ -24,12 +27,19 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 		<GlobalNavigationBarRegion
 			region="primary"
 		>
-			<GlobalNavigationBarAppLauncher
-				onClick={appLauncherClicked('Application name clicked (Open App Launcher).')}
+			<AppLauncher
+				onSearch={searchClicked('App Launcher searched')}
 				{...primaryRegionProps.appLauncher}
 			>
-				{primaryRegionProps.appLauncher.customChild ? primaryRegionProps.appLauncher.customChild() : null}
-			</GlobalNavigationBarAppLauncher>
+				<AppLauncherSection title="All Items">
+					<AppLauncherTile
+						title="Marketing Cloud"
+						iconText="MC"
+						description="Send emails, track emails, read emails! Emails!"
+						onClick={action('Tile clicked!')}
+					/>
+				</AppLauncherSection>
+			</AppLauncher>
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="secondary" navigation>
 			<GlobalNavigationBarLink
@@ -79,12 +89,19 @@ const getGlobalNavigationBarCustomCloud = (props, primaryRegionProps) => (
 		<GlobalNavigationBarRegion
 			region="primary"
 		>
-			<GlobalNavigationBarAppLauncher
-				onClick={appLauncherClicked('Application name clicked (Open App Launcher).')}
+			<AppLauncher
+				onSearch={searchClicked('App Launcher searched')}
 				{...primaryRegionProps.appLauncher}
 			>
-				{primaryRegionProps.appLauncher.customChild ? primaryRegionProps.appLauncher.customChild() : null}
-			</GlobalNavigationBarAppLauncher>
+				<AppLauncherSection title="All Items">
+					<AppLauncherTile
+						title="Marketing Cloud"
+						iconText="MC"
+						description="Send emails, track emails, read emails! Emails!"
+						onClick={action('Tile clicked!')}
+					/>
+				</AppLauncherSection>
+			</AppLauncher>
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="secondary" navigation>
 			<GlobalNavigationBarLink
@@ -147,12 +164,19 @@ const getGlobalNavigationBarCustomCloudOverviewAcive = (props, primaryRegionProp
 		<GlobalNavigationBarRegion
 			region="primary"
 		>
-			<GlobalNavigationBarAppLauncher
-				onClick={appLauncherClicked('Application name clicked (Open App Launcher).')}
+			<AppLauncher
+				onSearch={searchClicked('App Launcher searched')}
 				{...primaryRegionProps.appLauncher}
 			>
-				{primaryRegionProps.appLauncher.customChild ? primaryRegionProps.appLauncher.customChild() : null}
-			</GlobalNavigationBarAppLauncher>
+				<AppLauncherSection title="All Items">
+					<AppLauncherTile
+						title="Marketing Cloud"
+						iconText="MC"
+						description="Send emails, track emails, read emails! Emails!"
+						onClick={action('Tile clicked!')}
+					/>
+				</AppLauncherSection>
+			</AppLauncher>
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="secondary" navigation>
 			<GlobalNavigationBarLink
@@ -218,4 +242,3 @@ storiesOf(GLOBAL_NAVIGATION_BAR, module)
 	.add('Custom Cloud', () => getGlobalNavigationBarCustomCloud(propSets.customCloud.props, propSets.customCloud.primaryRegionProps))
 	.add('Custom Cloud (Overview active)', () => getGlobalNavigationBarCustomCloudOverviewAcive(propSets.customCloud.props, propSets.customCloud.primaryRegionProps))
 	.add('Light Theme', () => getGlobalNavigationBar(propSets.lightTheme.props, propSets.lightTheme.primaryRegionProps));
-

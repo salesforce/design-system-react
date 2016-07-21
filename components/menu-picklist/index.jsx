@@ -108,7 +108,7 @@ const MenuPicklist = React.createClass({
 	componentWillMount () {
 		this.generatedId = shortid.generate();
 
-		document.addEventListener('click', this.closeOnClick, false);
+		window.addEventListener('click', this.closeOnClick, false);
 
 		this.setState({
 			selectedIndex: this.getIndexByValue(this.props.value)
@@ -126,11 +126,15 @@ const MenuPicklist = React.createClass({
 	componentWillUnmount () {
 		this.isUnmounting = true;
 
-		document.removeEventListener('click', this.closeOnClick, false);
+		window.removeEventListener('click', this.closeOnClick, false);
 	},
 
 	getId () {
 		return this.props.id || this.generatedId;
+	},
+
+	getClickEventName () {
+		return `SLDS${this.getId()}ClickEvent`;
 	},
 
 	getIndexByValue (value) {
@@ -174,7 +178,7 @@ const MenuPicklist = React.createClass({
 
 	handleClick (event) {
 		if (event) {
-			event.nativeEvent.SLDSDropdownClickEvent = true;
+			event.nativeEvent[this.getClickEventName()] = true;
 		}
 
 		if (!this.state.isOpen) {
@@ -192,7 +196,7 @@ const MenuPicklist = React.createClass({
 	handleMouseDown (event) {
 		if (event) {
 			EventUtil.trapImmediate(event);
-			event.nativeEvent.SLDSDropdownClickEvent = true;
+			event.nativeEvent[this.getClickEventName()] = true;
 		}
 	},
 
@@ -225,7 +229,7 @@ const MenuPicklist = React.createClass({
 	},
 
 	closeOnClick (event) {
-		if (!event.SLDSDropdownClickEvent && this.state.isOpen) {
+		if (!event[this.getClickEventName()] && this.state.isOpen) {
 			this.handleClose();
 		}
 	},
