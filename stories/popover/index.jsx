@@ -8,10 +8,10 @@ import PopoverTooltip from '../../components/popover-tooltip';
 
 const getPopoverTooltip = props => (
 	<PopoverTooltip {...props}>
-		<a href='#'>Trigger Tooltip</a>
+		<span>Trigger Tooltip</span>
 	</PopoverTooltip>
 );
 
 storiesOf(POPOVER_TOOLTIP, module)
-	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('tooltip', () => getPopoverTooltip({ align: 'bottom', content: 'tooltip content' }))
+	.addDecorator(getStory => <div className="slds-p-around--medium slds-m-horizontal--x-large" style={{'marginLeft': '200px'}}>{getStory()}</div>)
+	.add('tooltip', () => getPopoverTooltip({ align: 'bottom', id: 'myPopoverId', content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie' }))

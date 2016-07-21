@@ -2,13 +2,17 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.1.4
+
+**MAJOR CHANGES**
+- Update Tooltip component markup and a11y to SLDS 2.1.0-rc3
+
 ## Release 0.1.3
 
 **MAJOR CHANGES**
 
 **OTHER**
 - Allow menus and buttons used in the Gloval Nav Bar to be marked as active
-
 
 ## Release 0.1.2
 

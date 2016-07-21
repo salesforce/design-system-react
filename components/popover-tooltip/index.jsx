@@ -22,6 +22,8 @@ import { POPOVER_TOOLTIP } from '../../utilities/constants';
 // ### Children
 import tooltip from "./tooltip";
 
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
 
 // ### Util helpers
 import flatten from "lodash.flatten";
@@ -40,34 +42,34 @@ const displayName = POPOVER_TOOLTIP;
 
 
 const propTypes = {
-  /**
-   * Alignment of the Tooltip relative to the element that triggers it.
-   */
-  align: PropTypes.oneOf(["top", "top left", "top right", "right", "right top", "right bottom", "bottom", "bottom left", "bottom right", "left", "left top", "left bottom"]).isRequired,
-  /**
-   * Pass the element that triggers Tooltip as a child of the Tooltip component. It must be either an anchor or button so keyboard users can tab to it.
-   */
-  children: PropTypes.node,
-  /**
-   * Content inside Tooltip.
-   */
-  content: PropTypes.node.isRequired,
-  /**
-   * Delay on Tooltip closing.
-   */
-  hoverCloseDelay: PropTypes.number,
-    /**
-    * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the popover to the triggering element.
-    */
-  id: PropTypes.string,
-  openByDefault: PropTypes.bool
+	/**
+	 * Alignment of the Tooltip relative to the element that triggers it.
+	 */
+	align: PropTypes.oneOf(["top", "top left", "top right", "right", "right top", "right bottom", "bottom", "bottom left", "bottom right", "left", "left top", "left bottom"]).isRequired,
+	/**
+	 * Pass the element that triggers Tooltip as a child of the Tooltip component. It must be either an anchor or button so keyboard users can tab to it.
+	 */
+	children: PropTypes.node,
+	/**
+	 * Content inside Tooltip.
+	 */
+	content: PropTypes.node.isRequired,
+	/**
+	 * Delay on Tooltip closing.
+	 */
+	hoverCloseDelay: PropTypes.number,
+		/**
+		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the popover to the triggering element.
+		*/
+	id: PropTypes.string,
+	openByDefault: PropTypes.bool
 };
 
 const defaultProps = {
-  align: "top",
-  content: <span>Tooltip</span>,
-  hoverCloseDelay: 50,
-  openByDefault: false,
+	align: "top",
+	content: <span>Tooltip</span>,
+	hoverCloseDelay: 50,
+	openByDefault: false,
 };
 
 /**
@@ -75,128 +77,125 @@ const defaultProps = {
  */
 class PopoverTooltip extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      isClosing: false,
-      isOpen: false
-    };
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			isClosing: false,
+			isOpen: false
+		};
+	}
 
-  componentWillMount() {
-    this.generatedId = shortid.generate();
-  }
+	componentWillMount() {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(POPOVER_TOOLTIP, this.props);
 
-  componentDidMount() {
-    if(this.refs.triggerDOMElem){
-      const triggerTabIndex = ReactDOM.findDOMNode(this.refs.triggerDOMElem).tabIndex;
-      if(triggerTabIndex !== 0) {
-        console.log('%c=====> ERROR: The child element of PopoverTooltip must be an anchor or button so that keyboard users can tab to it to open the Tooltip.', 'color: red');
-      }
-    }
+		this.generatedId = shortid.generate();
+	}
 
-    this.setState({
-      el: ReactDOM.findDOMNode(this)
-    });
-  }
+	componentDidMount() {
+		this.setState({
+			el: ReactDOM.findDOMNode(this)
+		});
+	}
 
-  componentDidUpdate(prevProps, prevState) {
-    if(this.props.target && this.props.target !== prevProps.target){
-      this.setState({
-        tooltipTarget: this.getTooltipTarget()
-      })
-    }
-  }
+	componentDidUpdate(prevProps, prevState) {
+		if(this.props.target && this.props.target !== prevProps.target){
+			this.setState({
+				tooltipTarget: this.getTooltipTarget()
+			})
+		}
+	}
 
-  componentWillUnmount() {
-    this.isUnmounting = true;
-  }
+	componentWillUnmount() {
+		this.isUnmounting = true;
+	}
 
-  getId () {
-    return this.props.id || this.generatedId;
-  }
+	getId () {
+		return this.props.id || this.generatedId;
+	}
 
-  getTooltipTarget() {
-    return this.props.target ? this.props.target : this.state.el;
-  }
+	getTooltipTarget() {
+		return this.props.target ? this.props.target : this.state.el;
+	}
 
-  handleMouseEnter() {
-    this.setState({
-      isOpen: true,
-      isClosing: false
-    });
-  }
+	handleMouseEnter() {
+		this.setState({
+			isOpen: true,
+			isClosing: false
+		});
+	}
 
-  handleMouseLeave() {
-    this.setState({ isClosing: true });
+	handleMouseLeave() {
+		this.setState({ isClosing: true });
 
-    setTimeout(()=>{
-      if(!this.isUnmounting && this.state.isClosing){
-        this.setState({
-          isOpen: false,
-          isClosing: false
-        });
-      }
-    },this.props.hoverCloseDelay);
-  }
+		setTimeout(()=>{
+			if(!this.isUnmounting && this.state.isClosing){
+				this.setState({
+					isOpen: false,
+					isClosing: false
+				});
+			}
+		},this.props.hoverCloseDelay);
+	}
 
-  getTooltipContent() {
-    return <div id={this.getId()} className="slds-popover__body">{this.props.content}</div>;
-  }
+	getTooltipContent() {
+		return <div className="slds-popover__body">{this.props.content}</div>;
+	}
 
-  handleCancel() {
-    this.setState({
-      isOpen: false,
-      isClosing: false
-    });
-  }
+	handleCancel() {
+		this.setState({
+			isOpen: false,
+			isClosing: false
+		});
+	}
 
-  getTooltip() {
-    const isOpen = this.props.openByDefault !== undefined ? this.state.isOpen : this.props.openByDefault;
-    return isOpen
-      ? tooltip.getTooltip(this.props, this.getTooltipContent(), this.getTooltipTarget(), this.handleCancel.bind(this))
-      : <span></span>;
-  }
+	getTooltip() {
+		const isOpen = this.props.openByDefault !== undefined ? this.state.isOpen : this.props.openByDefault;
+		const id = this.getId();
+		return isOpen
+			? tooltip.getTooltip(id, this.props, this.getTooltipContent(), this.getTooltipTarget(), this.handleCancel.bind(this))
+			: <span></span>;
+	}
 
-  renderAssistantText() {
-    return <span className="slds-assistive-text">{this.props.content}</span>;
-  }
+	renderAssistantText() {
+		return <span className="slds-assistive-text">{this.props.content}</span>;
+	}
 
-  decorateGrandKidsWithKeyToSilenceWarning(grandKids) {
-    return React.Children.map(grandKids, (c, i) => React.isValidElement(c) ? React.cloneElement(c, {key: i}) : c)
-  }
+	decorateGrandKidsWithKeyToSilenceWarning(grandKids) {
+		return React.Children.map(grandKids, (c, i) => React.isValidElement(c) ? React.cloneElement(c, {key: i}) : c)
+	}
 
-  grandKidsWithAsstText(child) {
-    const {props={}} = child;
-    const grandKids = compact(flatten([this.renderAssistantText()].concat(props.children)));
-    return this.decorateGrandKidsWithKeyToSilenceWarning(grandKids);
-  }
+	grandKidsWithAsstText(child) {
+		const {props={}} = child;
+		const grandKids = compact(flatten([this.renderAssistantText()].concat(props.children)));
+		return this.decorateGrandKidsWithKeyToSilenceWarning(grandKids);
+	}
 
-  getContent() {
-    return React.Children.map(this.props.children, (child, i) => {
-      return React.cloneElement(child, {
-        key: i,
-        'aria-describedby': this.getId(),
-        onBlur: this.handleMouseLeave.bind(this),
-        onFocus: this.handleMouseEnter.bind(this),
-        onMouseEnter: this.handleMouseEnter.bind(this),
-        onMouseLeave: this.handleMouseLeave.bind(this),
-      }, this.grandKidsWithAsstText(child));
-     });
-  }
+	getContent() {
+		return React.Children.map(this.props.children, (child, i) => {
+			return React.cloneElement(child, {
+				key: i,
+				'aria-describedby': this.getId(),
+				onBlur: this.handleMouseLeave.bind(this),
+				onFocus: this.handleMouseEnter.bind(this),
+				onMouseEnter: this.handleMouseEnter.bind(this),
+				onMouseLeave: this.handleMouseLeave.bind(this),
+			}, this.grandKidsWithAsstText(child));
+		 });
+	}
 
-  render(){
-    const containerStyles = { display: "inline" };
-    return (
-      <div
-        style={containerStyles}
-        ref="tooltipTarget"
-        >
-        { this.getContent() }
-        { this.getTooltip() }
-      </div>
-    );
-  }
+	render(){
+		const containerStyles = { display: "inline" };
+		return (
+			<div
+				style={containerStyles}
+				ref="tooltipTarget"
+				>
+				{ this.getContent() }
+				{ this.getTooltip() }
+			</div>
+		);
+	}
 
 }
 
