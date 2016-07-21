@@ -5,9 +5,10 @@
 ## Release 0.1.3
 
 **MAJOR CHANGES**
+- Update Icon to the latest markup
 
 **OTHER**
-- Allow menus and buttons used in the Gloval Nav Bar to be marked as active
+- Allow menus and buttons used in the Global Nav Bar to be marked as active
 
 
 ## Release 0.1.2
