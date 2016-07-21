@@ -31,19 +31,21 @@ describe('SLDSIcon: ', function () {
 	const getIcon = (props) => renderIcon(createIcon(props));
 
 	describe('Standard Icon Props Render', () => {
-		let cmp;
+		let component;
+		let iconContainer;
 		let svg;
 		let asstText;
 
 		beforeEach(() => {
-			cmp = getIcon({
-				assistiveText: 'Accounts',
+			component = getIcon({
+				assistiveText: 'Log a Call',
 				category: 'standard',
-				name: 'account',
+				name: 'log_a_call',
 				size: 'large'
 			});
-			svg = findRenderedDOMComponentWithTag(cmp, 'svg');
-			asstText = findRenderedDOMComponentWithClass(cmp, 'slds-assistive-text');
+			iconContainer = findRenderedDOMComponentWithClass(component, 'slds-icon_container');
+			svg = findRenderedDOMComponentWithTag(component, 'svg');
+			asstText = findRenderedDOMComponentWithClass(component, 'slds-assistive-text');
 		});
 
 		afterEach(() => {
@@ -51,11 +53,12 @@ describe('SLDSIcon: ', function () {
 		});
 
 		it('renders assistive text', () => {
-			expect(asstText.textContent).to.equal('Accounts');
+			expect(asstText.textContent).to.equal('Log a Call');
 		});
 
-		it('renders icon name class', () => {
-			expect(svg.className.baseVal).to.include('slds-icon-standard-account');
+		it('renders icon name class on container', () => {
+			// also tests that all '_' are replaced with '-'
+			expect(iconContainer.className).to.include('slds-icon-standard-log-a-call');
 		});
 
 		it('renders icon size class', () => {
@@ -64,19 +67,21 @@ describe('SLDSIcon: ', function () {
 	});
 
 	describe('Custom Icon Props Render', () => {
-		let cmp;
+		let component;
+		let iconContainer;
 		let svg;
 		let asstText;
 
 		beforeEach(() => {
-			cmp = getIcon({
+			component = getIcon({
 				assistiveText: 'Heart',
 				category: 'custom',
 				name: 'custom1',
 				size: 'small'
 			});
-			svg = findRenderedDOMComponentWithTag(cmp, 'svg');
-			asstText = findRenderedDOMComponentWithClass(cmp, 'slds-assistive-text');
+			iconContainer = findRenderedDOMComponentWithClass(component, 'slds-icon_container');
+			svg = findRenderedDOMComponentWithTag(component, 'svg');
+			asstText = findRenderedDOMComponentWithClass(component, 'slds-assistive-text');
 		});
 
 		afterEach(() => {
@@ -87,8 +92,8 @@ describe('SLDSIcon: ', function () {
 			expect(asstText.textContent).to.equal('Heart');
 		});
 
-		it('renders icon name class', () => {
-			expect(svg.className.baseVal).to.include('slds-icon-custom-1');
+		it('renders icon name class on container', () => {
+			expect(iconContainer.className).to.include('slds-icon-custom-custom1');
 		});
 
 		it('renders icon size class', () => {
@@ -97,13 +102,13 @@ describe('SLDSIcon: ', function () {
 	});
 
 	describe('Action Icon Props Render', () => {
-		let cmp;
+		let component;
 		let iconContainer;
 		let svg;
 		let asstText;
 
 		beforeEach(() => {
-			cmp = getIcon({
+			component = getIcon({
 				assistiveText: 'Announcements',
 				category: 'action',
 				name: 'announcement',
@@ -111,9 +116,9 @@ describe('SLDSIcon: ', function () {
 				title: 'custom title',
 				className: 'slds-m-around--x-small'
 			});
-			iconContainer = findRenderedDOMComponentWithClass(cmp, 'slds-icon__container');
-			svg = findRenderedDOMComponentWithTag(cmp, 'svg');
-			asstText = findRenderedDOMComponentWithClass(cmp, 'slds-assistive-text');
+			iconContainer = findRenderedDOMComponentWithClass(component, 'slds-icon_container');
+			svg = findRenderedDOMComponentWithTag(component, 'svg');
+			asstText = findRenderedDOMComponentWithClass(component, 'slds-assistive-text');
 		});
 
 		afterEach(() => {
@@ -128,27 +133,32 @@ describe('SLDSIcon: ', function () {
 			expect(iconContainer.className).to.include('slds-icon-action-announcement');
 		});
 
+		it('renders round container', () => {
+			expect(iconContainer.className).to.include('slds-icon_container--circle');
+		});
+
 		it('renders icon size class', () => {
 			expect(svg.className.baseVal).to.include('slds-icon--large');
 		});
 
-		it('you can pass a title prop', () => {
+		it('renders title', () => {
 			expect(iconContainer.getAttribute('title')).to.equal('custom title');
 		});
 	});
 
 	describe('Utility Icon Props Render', () => {
-		let cmp;
-		let icon;
+		let component;
+		let iconContainer;
+		let svg;
 
 		beforeEach(() => {
-			cmp = getIcon({
-				assistiveText: '',
+			component = getIcon({
 				category: 'utility',
-				inverse: false,
-				name: 'open_folder'
+				name: 'open_folder',
+				size: 'medium'
 			});
-			icon = findRenderedDOMComponentWithClass(cmp, 'slds-icon');
+			iconContainer = findRenderedDOMComponentWithClass(component, 'slds-icon_container');
+			svg = findRenderedDOMComponentWithTag(component, 'svg');
 		});
 
 		afterEach(() => {
@@ -156,7 +166,15 @@ describe('SLDSIcon: ', function () {
 		});
 
 		it('renders icon custom classes', () => {
-			expect(icon.className.baseVal).to.include('slds-icon-text-default');
+			expect(svg.className.baseVal).to.include('slds-icon-text-default');
+		});
+
+		it('medium size does not render size class', () => {
+			expect(svg.className.baseVal).to.not.include('slds-icon--medium');
+		});
+
+		it('utility icons do not render name class on container', () => {
+			expect(iconContainer.className).to.not.include('slds-icon-utility-open-folder');
 		});
 	});
 });

@@ -285,7 +285,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 	describe('App Launcher Tile with Icon Node', () => {
 		let component;
 		let iconWrapper;
-		const icon = <Icon name="map" category="action" className="slds-m-around--x-small" />;
+		const icon = <Icon name="campaign" category="standard" size="large" />;
 
 		beforeEach(() => {
 			component = renderTile({
@@ -301,7 +301,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		});
 
 		it('tile can be passed <Icon> node for icon', () => {
-			expect(iconWrapper.getElementsByTagName('span')[0].className).to.include('slds-icon__container slds-icon-action-map');
+			expect(iconWrapper.getElementsByTagName('span')[0].className).to.include('slds-icon_container slds-icon-standard-campaign');
 		});
 	});
 
