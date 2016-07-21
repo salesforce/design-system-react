@@ -2,6 +2,14 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.1.3
+
+**MAJOR CHANGES**
+
+**OTHER**
+- Allow menus and buttons used in the Gloval Nav Bar to be marked as active
+
+
 ## Release 0.1.2
 
 **MAJOR CHANGES**
