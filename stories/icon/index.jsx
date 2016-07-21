@@ -23,6 +23,15 @@ storiesOf(ICON, module)
 			inverse={false}
 		/>
 	))
+	.add('Base: Standard (custom background)', () => (
+		<Icon
+			assistiveText="Accounts"
+			backgroundColor="rgb(15, 218, 85)"
+			category="standard"
+			name="account"
+			title="This is a title"
+		/>
+	))
 	.add('Base: Utility', () => (
 		<Icon
 			assistiveText="Announcement"
