@@ -270,6 +270,10 @@ const MenuDropdown = React.createClass({
 		return this.props.id || this.generatedId;
 	},
 
+	getClickEventName () {
+		return `SLDS${this.getId()}ClickEvent`;
+	},
+
 	getIndexByValue (value) {
 		let foundIndex = -1;
 
@@ -346,7 +350,7 @@ const MenuDropdown = React.createClass({
 
 	handleClick (event) {
 		if (event) {
-			event.nativeEvent.SLDSDropdownClickEvent = true;
+			event.nativeEvent[this.getClickEventName()] = true;
 		}
 
 		if (!this.state.isOpen) {
@@ -364,7 +368,7 @@ const MenuDropdown = React.createClass({
 	handleMouseDown (event) {
 		if (event) {
 			EventUtil.trapImmediate(event);
-			event.nativeEvent.SLDSDropdownClickEvent = true;
+			event.nativeEvent[this.getClickEventName()] = true;
 		}
 
 		if (this.props.onMouseDown) {
@@ -410,7 +414,7 @@ const MenuDropdown = React.createClass({
 	},
 
 	closeOnClick (event) {
-		if (!event.SLDSDropdownClickEvent && this.state.isOpen) {
+		if (!event[this.getClickEventName()] && this.state.isOpen) {
 			this.handleClose();
 		}
 	},
