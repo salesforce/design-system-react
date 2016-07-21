@@ -55,7 +55,6 @@ const propSets = {
 								category="utility"
 								className="slds-m-left--small slds-m-right--small"
 								name="email"
-								inverse={false}
 								size="x-small"
 							/>
 							<span className="context-bar__label-action slds-text-body--regular" style={{ fontWeight: 'normal' }}>

@@ -3,51 +3,106 @@ import { storiesOf } from '@kadira/storybook';
 
 import { ICON } from '../../utilities/constants';
 import Icon from '../../components/icon';
-import UtilityIcon from '../../components/utilities/utility-icon';
 import download from '../../icons/utility/download';
 
 storiesOf(ICON, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('Small Icon', () => <Icon
-		assistiveText="Favorite"
-		category="custom"
-		name="custom1"
-		size="small"
-	/>)
-	.add('Standard Icon', () => <Icon
-		assistiveText="Accounts"
-		category="standard"
-		title="This is a title"
-		name="account"
-	/>)
-	.add('Imported Icon', () => <Icon
+	.add('Base: Standard', () => (
+		<Icon
+			assistiveText="Accounts"
+			category="standard"
+			name="account"
+			title="This is a title"
+		/>
+	))
+	.add('Base: Standard (inverse)', () => (
+		<Icon
+			assistiveText="Accounts"
+			category="standard"
+			name="account"
+			title="This is a title"
+			inverse
+		/>
+	))
+	.add('Base: Utility', () => (
+		<Icon
+			assistiveText="Announcement"
+			category="utility"
+			name="announcement"
+			title="Announcement Icon"
+		/>
+	))
+	.add('Base: Utility (inverse)', () => (
+		<div style={{ backgroundColor: 'goldenrod', padding: '10px' }}>
+			<Icon
+				assistiveText="Announcement"
+				category="utility"
+				name="announcement"
+				inverse
+			/>
+		</div>
+	))
+	.add('Base: Utility (no assistive)', () => (
+		<Icon
+			category="utility"
+			name="announcement"
+		/>
+	))
+	.add('Base: Action', () => (
+		<Icon
+			assistiveText="Description"
+			category="action"
+			name="description"
+			size="small"
+		/>
+	))
+	.add('Base: Doctype', () => (
+		<Icon
+			assistiveText="XML"
+			category="doctype"
+			name="xml"
+		/>
+	))
+	.add('Base: Custom', () => (
+		<Icon
+			assistiveText="I think it's a leaf"
+			category="custom"
+			name="custom5"
+		/>
+	))
+	.add('Base: Imported', () => <Icon
 		assistiveText="Download"
 		category="utility"
-		inverse={false}
 		icon={download}
 	/>)
-	.add('Utility Icon', () => <Icon
-		assistiveText="Location"
-		category="utility"
-		inverse={false}
-		className="slds-m-around--x-small"
-		name="location"
-	/>)
-	.add('Round Action Icon', () => (
-		<span className="slds-icon_container slds-icon_container--circle slds-icon-action-announcement" title="description of icon when needed">
-			<UtilityIcon
-				aria-hidden
-				category="action"
-				name="announcement"
-				className="slds-icon slds-icon--small"
-			/>
-			<span className="slds-assistive-text">Description of icon</span>
-		</span>)
-	)
-	.add('Large Action Icon', () => <Icon
-		assistiveText="Approval"
-		category="action"
-		className="slds-m-around--x-small"
-		name="approval"
-		size="large"
-	/>);
+	.add('Size: X-Small', () => (
+		<Icon
+			assistiveText="Warning Icon"
+			category="utility"
+			name="warning"
+			size="x-small"
+		/>
+	))
+	.add('Size: Small', () => (
+		<Icon
+			assistiveText="Case Icon"
+			category="standard"
+			name="case"
+			size="small"
+		/>
+	))
+	.add('Size: Medium (default)', () => (
+		<Icon
+			assistiveText="Case Icon"
+			category="standard"
+			name="case"
+		/>
+	))
+	.add('Size: Large', () => (
+		<Icon
+			assistiveText="Case Icon"
+			category="standard"
+			name="case"
+			size="large"
+		/>
+	));

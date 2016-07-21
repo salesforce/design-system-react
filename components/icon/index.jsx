@@ -11,6 +11,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND 
 
 // # Icon Component
 
+// Based on SLDS v2.1.0-rc.4
+
 // ## Dependencies
 
 // ### React
@@ -56,7 +58,7 @@ const Icon = React.createClass({
 		 */
 		icon: PropTypes.object,
 		/**
-		 * If true, icon color is white. If false, icon color is the default text color.
+		 * Setting `inverse` to true will switch the color of the icon: light to dark, dark to light.
 		 */
 		inverse: PropTypes.bool,
 		/**
@@ -76,52 +78,60 @@ const Icon = React.createClass({
 	getDefaultProps () {
 		return {
 			category: 'standard',
-			inverse: true,
 			size: 'medium'
 		};
 	},
 
-	getContainerClassName () {
+	applyTextDefaultClass () {
+		// if category is `utility` and `inverse` is false (default), icon will be dark // return true
+		// if category is `utility` and `inverse` is true, icon will be light // return false
+		// if category is NOT `utility` and `inverse` is false (default), icon will be light // return false
+		// if category is NOT `utility` and `inverse` is true, icon will be dark // return true
+		return this.props.category === 'utility' ? !this.props.inverse : this.props.inverse;
+	},
+
+	getContainerClasses () {
+		const { category } = this.props;
 		const name = this.props.name ? this.props.name.replace(/_/g, '-') : '';
-		const renderName = (this.props.category === 'action');
 
 		return classNames({
-			'slds-icon__container': (this.props.category !== 'utility'),
-			[`slds-icon-${this.props.category}-${name}`]: renderName
+			'slds-icon_container': category !== 'utility',
+			'slds-icon_container--circle': category === 'action',
+			// For actions, this class needs to be on the container for the circle to render
+			[`slds-icon-${category}-${name}`]: category === 'action'
 		});
 	},
 
-	getClassName () {
+	getIconClasses () {
+		const { category } = this.props;
 		const name = this.props.name ? this.props.name.replace(/_/g, '-') : '';
-		const customName = this.props.name ? this.props.name.replace('custom', 'custom-') : null;
 
 		return classNames(this.props.className, 'slds-icon', {
 			[`slds-icon--${this.props.size}`]: this.props.size !== 'medium',
-			[`slds-icon-${customName}`]: this.props.category === 'custom',
-			[`slds-icon-${this.props.category}-${name}`]: this.props.category === 'standard',
-			'slds-icon-text-default': !this.props.inverse
+			'slds-icon-text-default': this.applyTextDefaultClass(),
+			// This class is applied to SVG instead of container due to issues with Picklist.
+			[`slds-icon-${category}-${name}`]: category !== 'utility' && category !== 'doctype' && category !== 'action'
 		});
 	},
 
 	render () {
-		let label = null;
-
-		if (this.props.assistiveText) {
-			label = <span className="slds-assistive-text">{this.props.assistiveText}</span>;
-		}
 		return (
 			<span
-				className={this.getContainerClassName()}
+				className={this.getContainerClasses()}
 				title={this.props.title}
 			>
-				{label}
 				<SLDSUtilityIcon
 					aria-hidden="true"
 					category={this.props.category}
-					className={this.getClassName()}
+					className={this.getIconClasses()}
 					icon={this.props.icon}
 					name={this.props.name}
 				/>
+				{
+					this.props.assistiveText
+					? <span className="slds-assistive-text">{this.props.assistiveText}</span>
+					: ''
+				}
 			</span>
 		);
 	}

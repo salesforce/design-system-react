@@ -72,7 +72,7 @@ const DemoAppLauncherTileWithIconNode = React.createClass({
 	},
 
 	render () {
-		const icon = <Icon name="map" category="action" className="slds-m-around--x-small" />;
+		const icon = <Icon name="campaign" category="standard" size="large" />;
 
 		return (
 			<AppLauncherTile
