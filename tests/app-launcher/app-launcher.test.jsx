@@ -277,7 +277,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 			expect(iconWrapper.getElementsByTagName('span')[0].className).to.include('slds-avatar slds-avatar--large slds-align--absolute-center slds-icon-custom-27');
 		});
 
-		it('tile can be passed a custon text icon', () => {
+		it('tile can be passed a custom text icon', () => {
 			expect(iconWrapper.textContent).to.equal('CC');
 		});
 	});
@@ -301,7 +301,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		});
 
 		it('tile can be passed <Icon> node for icon', () => {
-			expect(iconWrapper.getElementsByTagName('span')[0].className).to.include('slds-icon_container slds-icon-standard-campaign');
+			expect(iconWrapper.getElementsByTagName('span')[0].className).to.include('slds-icon_container');
 		});
 	});
 

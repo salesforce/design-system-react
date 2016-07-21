@@ -28,6 +28,7 @@ storiesOf(ICON, module)
 			assistiveText="Announcement"
 			category="utility"
 			name="announcement"
+			title="Announcement Icon"
 		/>
 	))
 	.add('Base: Utility (inverse)', () => (
@@ -39,6 +40,12 @@ storiesOf(ICON, module)
 				inverse
 			/>
 		</div>
+	))
+	.add('Base: Utility (no assistive)', () => (
+		<Icon
+			category="utility"
+			name="announcement"
+		/>
 	))
 	.add('Base: Action', () => (
 		<Icon
@@ -60,12 +67,6 @@ storiesOf(ICON, module)
 			assistiveText="I think it's a leaf"
 			category="custom"
 			name="custom5"
-		/>
-	))
-	.add('Base: Action (no assistive)', () => (
-		<Icon
-			category="utility"
-			name="announcement"
 		/>
 	))
 	.add('Size: X-Small', () => (
