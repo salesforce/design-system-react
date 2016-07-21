@@ -16,6 +16,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React from 'react';
 
+// ### classNames
+import classNames from 'classnames';
+
 // ### Button
 import Button from '../button';
 
@@ -25,13 +28,21 @@ import { GLOBAL_NAVIGATION_BAR_BUTTON } from '../../utilities/constants';
 /**
  * A helper component that renders a Button as an item in the Global Navigation Bar.
  */
-const GlobalNavigationButton = (props) => (
-	<li className="slds-context-bar__item">
+const GlobalNavigationButton = ({ active, ...props }) => (
+	<li className={classNames('slds-context-bar__item', { 'slds-is-active': active })}>
 		<Button {...props} />
 	</li>
 );
 
 GlobalNavigationButton.displayName = GLOBAL_NAVIGATION_BAR_BUTTON;
+
+// ### Prop Types
+GlobalNavigationButton.propTypes = {
+	/**
+	 * Whether the item is active or not.
+	 */
+	active: React.PropTypes.bool
+};
 
 // ### Default Props
 GlobalNavigationButton.defaultProps = {
