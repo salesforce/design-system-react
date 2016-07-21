@@ -36,6 +36,10 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 	// ### Prop Types
 	propTypes: {
 		/**
+		 * Whether the item is active or not.
+		 */
+		active: React.PropTypes.bool,
+		/**
 		 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
 		 * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
 		 */
@@ -65,6 +69,7 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 	// ### Render
 	render () {
 		const {
+			active,
 			className,
 			id,
 			label,
@@ -76,7 +81,11 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 		return (
 			<li
 				aria-haspopup="true"
-				className={classNames('slds-context-bar__item', 'slds-context-bar-action', 'slds-dropdown-trigger', className)}
+				className={classNames(
+					'slds-context-bar__item slds-context-bar-action slds-dropdown-trigger',
+					{ 'slds-is-active': active },
+					className
+				)}
 				id={id}
 				onClick={onClick}
 			>
