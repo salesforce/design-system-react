@@ -12,6 +12,7 @@
 
 **OTHER**
 - Allow menus and buttons used in the Global Nav Bar to be marked as active
+- Update the logo used in the Global Header story
 
 
 ## Release 0.1.2
