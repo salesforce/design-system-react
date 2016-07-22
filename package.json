@@ -3,6 +3,10 @@
   "version": "0.2.0",
   "description": "Salesforce Lightning Design System React components",
   "license": "BSD-3-Clause",
+  "engines": {
+    "node": "^4.4.0",
+    "npm": "^3.9.0"
+  },
   "scripts": {
     "build-storybook": "build-storybook -o ./storybook",
     "dist": "scripts/dist.sh",
