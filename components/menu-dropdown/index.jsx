@@ -428,9 +428,18 @@ const MenuDropdown = React.createClass({
 	},
 
 	setFocus () {
-		if (!this.isUnmounting && this.button) {
-			ReactDOM.findDOMNode(this.button).focus();
+		if (!this.isUnmounting && this.trigger) {
+			ReactDOM.findDOMNode(this.trigger).focus();
 		}
+	},
+
+	saveRefToTrigger (trigger) {
+		this.trigger = trigger;
+	},
+
+	saveRefToTriggerContainer (triggerContainer) {
+		this.triggerContainer = triggerContainer;
+		if (!this.trigger) this.trigger = triggerContainer;
 	},
 
 	saveRefToList (list) {
@@ -498,11 +507,12 @@ const MenuDropdown = React.createClass({
 
 	renderSimplePopover (customContent) {
 		return (
-			this.props.forceOpen || !this.props.disabled && this.state.isOpen && this.button ?
+			this.props.forceOpen || !this.props.disabled && this.state.isOpen && this.trigger ?
 				<div
 					className={classNames('slds-dropdown', 'slds-dropdown--menu', 'slds-dropdown--left', this.props.className)}
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
+					style={this.props.menuStyle}
 				>
 					{this.renderPopoverContent(customContent)}
 				</div> : null
@@ -530,7 +540,7 @@ const MenuDropdown = React.createClass({
 		}
 
 		return (
-			this.props.forceOpen || !this.props.disabled && this.state.isOpen && this.button ?
+			this.props.forceOpen || !this.props.disabled && this.state.isOpen && this.triggerContainer ?
 				<Popover
 					className={classNames('slds-dropdown',
 						'slds-dropdown--menu',
@@ -547,7 +557,7 @@ const MenuDropdown = React.createClass({
 					onKeyDown={this.handleKeyDown}
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
-					targetElement={this.button}
+					targetElement={this.triggerContainer}
 				>
 					{this.renderPopoverContent(customContent)}
 				</Popover> : null
@@ -609,7 +619,8 @@ const MenuDropdown = React.createClass({
 				onMouseDown={this.props.openOn === 'click' ? this.handleMouseDown : null}
 				onMouseEnter={this.props.openOn === 'hover' ? this.handleMouseEnter : null}
 				onMouseLeave={this.props.openOn === 'hover' ? this.handleMouseLeave : null}
-				ref={(component) => { this.button = component; }}
+				ref={this.saveRefToTriggerContainer}
+				triggerRef={this.saveRefToTrigger}
 				menu={this.props.modal ?
 					this.renderModalPopover(customContent) :
 					this.renderSimplePopover(customContent)}

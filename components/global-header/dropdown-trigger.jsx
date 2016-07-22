@@ -55,7 +55,11 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 		/**
 		 * This prop is passed onto the triggering `li` element.
 		 */
-		onClick: PropTypes.func
+		onClick: PropTypes.func,
+		/**
+		 * The ref of the actual triggering button.
+		 */
+		triggerRef: PropTypes.func
 	},
 
 	// ### Render
@@ -67,6 +71,7 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 			id,
 			menu,
 			onClick,
+			triggerRef,
 			...rest
 		} = this.props;
 
@@ -81,6 +86,7 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 				<Button
 					aria-haspopup="true"
 					{...rest}
+					ref={triggerRef}
 				>
 					{avatar ? <span className="slds-avatar slds-avatar--circle slds-avatar--medium">
 						<img src={avatar} alt="" />

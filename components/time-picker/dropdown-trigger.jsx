@@ -46,6 +46,10 @@ const TimepickerDropdownTrigger = React.createClass({
 		 */
 		menu: PropTypes.node,
 		/**
+		 * The ref of the actual triggering input.
+		 */
+		triggerRef: PropTypes.func,
+		/**
 		 * Date
 		 */
 		value: PropTypes.string
@@ -55,11 +59,12 @@ const TimepickerDropdownTrigger = React.createClass({
 	render () {
 		const {
 			menu,
+			triggerRef,
 			...props
 		} = this.props;
 
 		return (
-			<Input {...props}>
+			<Input {...props} inputRef={triggerRef}>
 				{menu}
 			</Input>
 		);

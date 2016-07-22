@@ -63,7 +63,11 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 		/**
 		 * This prop is passed onto the triggering `li` element.
 		 */
-		onClick: PropTypes.func
+		onClick: PropTypes.func,
+		/**
+		 * The ref of the actual triggering button.
+		 */
+		triggerRef: PropTypes.func
 	},
 
 	// ### Render
@@ -75,6 +79,7 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 			label,
 			menu,
 			onClick,
+			triggerRef,
 			...rest
 		} = this.props;
 
@@ -100,6 +105,7 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 						iconName="down"
 						iconVariant="bare"
 						iconSize="x-small"
+						ref={triggerRef}
 						variant="icon"
 					/>
 					{menu}

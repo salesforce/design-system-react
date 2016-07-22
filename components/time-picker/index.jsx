@@ -150,19 +150,19 @@ const Timepicker = React.createClass({
 
 	// ### Render
 	render () {
-		const popoverStyle = {
-			maxHeight: "20em",
-			overflowX: "hidden",
-			minWidth: "100%"
-		};
-
 		return (
 			<MenuDropdown
 				checkmark={false}
 				constrainToScrollParent={this.props.constrainToScrollParent}
 				disabled={this.props.disabled}
 				inheritTargetWidth={this.props.inheritTargetWidth}
+				label={this.props.label}
 				listItemRenderer={this.props.listItemRenderer}
+				menuStyle={{
+					maxHeight: '20em',
+					overflowX: 'hidden',
+					minWidth: '100%'
+				}}
 				modal={this.props.modal}
 				onSelect={this.handleSelect}
 				options={this.state.options}
@@ -172,7 +172,6 @@ const Timepicker = React.createClass({
 					iconCategory="utility"
 					iconName="clock"
 					iconPosition="right"
-					label={this.props.label}
 					placeholder={this.props.placeholder}
 					required={this.props.required}
 					type="text"

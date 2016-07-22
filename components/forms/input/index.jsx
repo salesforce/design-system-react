@@ -223,6 +223,7 @@ const Input = React.createClass({
 			iconName,
 			iconPosition,
 			inlineEditTrigger, // eslint-disable-line react/prop-types
+			inputRef, // eslint-disable-line react/prop-types
 			label,
 			onChange,
 			onClick,
@@ -287,6 +288,7 @@ const Input = React.createClass({
 						onClick={onClick}
 						name={name}
 						placeholder={placeholder}
+						ref={inputRef}
 						required={required}
 						type={type}
 						value={value}
