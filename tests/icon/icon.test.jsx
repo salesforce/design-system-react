@@ -4,13 +4,16 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { expect } from 'chai';
+import chai from 'chai';
 import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
 
+const expect = chai.expect;
+const should = chai.should();
+
 import { SLDSIcon } from '../../components';
 
-const { findRenderedDOMComponentWithTag, findRenderedDOMComponentWithClass } = TestUtils;
+const { findRenderedDOMComponentWithTag, scryRenderedDOMComponentsWithTag, findRenderedDOMComponentWithClass } = TestUtils;
 
 describe('SLDSIcon: ', function () {
 	const defaultProps = {};
@@ -32,8 +35,8 @@ describe('SLDSIcon: ', function () {
 
 	describe('Standard Icon Props Render', () => {
 		let component;
-		let iconContainer;
 		let svg;
+		let iconContainer;
 		let asstText;
 
 		beforeEach(() => {
@@ -53,17 +56,21 @@ describe('SLDSIcon: ', function () {
 			removeIcon();
 		});
 
+		it('renders container class', () => {
+			should.exist(iconContainer);
+		});
+
 		it('renders assistive text', () => {
 			expect(asstText.textContent).to.equal('Log a Call');
 		});
 
-		it('renders icon name class on container', () => {
+		it('renders icon name class on svg', () => {
 			// also tests that all '_' are replaced with '-'
-			expect(iconContainer.className).to.include('slds-icon-standard-log-a-call');
+			expect(svg.className.baseVal).to.include('slds-icon-standard-log-a-call');
 		});
 
 		it('renders custom background color', () => {
-			expect(iconContainer.style.backgroundColor).to.equal('rgb(218, 165, 32)'); // goldenrod
+			expect(svg.style.backgroundColor).to.equal('rgb(218, 165, 32)'); // goldenrod
 		});
 
 		it('renders icon size class', () => {
@@ -93,12 +100,16 @@ describe('SLDSIcon: ', function () {
 			removeIcon();
 		});
 
+		it('renders container class', () => {
+			should.exist(iconContainer);
+		});
+
 		it('renders assistive text', () => {
 			expect(asstText.textContent).to.equal('Heart');
 		});
 
-		it('renders icon name class on container', () => {
-			expect(iconContainer.className).to.include('slds-icon-custom-custom1');
+		it('renders icon name class on svg', () => {
+			expect(svg.className.baseVal).to.include('slds-icon-custom-custom1');
 		});
 
 		it('renders icon size class', () => {
@@ -130,16 +141,20 @@ describe('SLDSIcon: ', function () {
 			removeIcon();
 		});
 
+		it('renders container class', () => {
+			should.exist(iconContainer);
+		});
+
 		it('renders assistive text', () => {
 			expect(asstText.textContent).to.equal('Announcements');
 		});
 
-		it('renders name class on container', () => {
-			expect(iconContainer.className).to.include('slds-icon-action-announcement');
-		});
-
 		it('renders round container', () => {
 			expect(iconContainer.className).to.include('slds-icon_container--circle');
+		});
+
+		it('renders name class on container', () => {
+			expect(iconContainer.className).to.include('slds-icon-action-announcement');
 		});
 
 		it('renders icon size class', () => {
@@ -162,12 +177,16 @@ describe('SLDSIcon: ', function () {
 				name: 'open_folder',
 				size: 'medium'
 			});
-			iconContainer = findRenderedDOMComponentWithClass(component, 'slds-icon_container');
+			iconContainer = scryRenderedDOMComponentsWithTag(component, 'span')[0];
 			svg = findRenderedDOMComponentWithTag(component, 'svg');
 		});
 
 		afterEach(() => {
 			removeIcon();
+		});
+
+		it('does NOT render container class', () => {
+			expect(iconContainer.className).to.not.include('slds-icon_container');
 		});
 
 		it('renders icon custom classes', () => {
@@ -178,8 +197,8 @@ describe('SLDSIcon: ', function () {
 			expect(svg.className.baseVal).to.not.include('slds-icon--medium');
 		});
 
-		it('utility icons do not render name class on container', () => {
-			expect(iconContainer.className).to.not.include('slds-icon-utility-open-folder');
+		it('utility icons do not render name class on svg', () => {
+			expect(svg.className.baseVal).to.not.include('slds-icon-utility-open-folder');
 		});
 	});
 });

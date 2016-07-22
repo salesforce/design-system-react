@@ -158,7 +158,6 @@ const AppLauncher = React.createClass({
 							category="utility"
 							name="apps"
 							size="small"
-							inverse={false}
 							assistiveText={this.props.triggerAssistiveText}
 						/>
 					</a>

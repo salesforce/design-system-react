@@ -2,7 +2,42 @@ import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 
 import { ICON } from '../../utilities/constants';
-import Icon from '../../components/icon';
+import { Icon, Input } from '../../components';
+
+
+const DemoBackgroundColor = React.createClass({
+	displayName: 'DemoBackgroundColor',
+
+	getInitialState () {
+		return {
+			backgroundColor: 'teal'
+		};
+	},
+
+	onChange (event) {
+		this.setState({ backgroundColor: event.target.value });
+	},
+
+	render () {
+		return (
+			<div>
+				<Input
+					label="Enter new background-color"
+					placeholder="goldenrod, rba(123, 123, 123), #54CABB, etc..."
+					onChange={this.onChange}
+				/>
+				<hr />
+				<Icon
+					assistiveText="Accounts"
+					backgroundColor={this.state.backgroundColor}
+					category="standard"
+					name="account"
+					title="This is a title"
+				/>
+			</div>
+		);
+	}
+});
 
 storiesOf(ICON, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
@@ -20,23 +55,18 @@ storiesOf(ICON, module)
 			category="standard"
 			name="account"
 			title="This is a title"
-			inverse={false}
+			inverse
 		/>
 	))
 	.add('Base: Standard (custom background)', () => (
-		<Icon
-			assistiveText="Accounts"
-			backgroundColor="rgb(15, 218, 85)"
-			category="standard"
-			name="account"
-			title="This is a title"
-		/>
+		<DemoBackgroundColor />
 	))
 	.add('Base: Utility', () => (
 		<Icon
 			assistiveText="Announcement"
 			category="utility"
 			name="announcement"
+			title="Announcement Icon"
 		/>
 	))
 	.add('Base: Utility (inverse)', () => (
@@ -45,9 +75,15 @@ storiesOf(ICON, module)
 				assistiveText="Announcement"
 				category="utility"
 				name="announcement"
-				inverse={false}
+				inverse
 			/>
 		</div>
+	))
+	.add('Base: Utility (no assistive)', () => (
+		<Icon
+			category="utility"
+			name="announcement"
+		/>
 	))
 	.add('Base: Action', () => (
 		<Icon
@@ -69,12 +105,6 @@ storiesOf(ICON, module)
 			assistiveText="I think it's a leaf"
 			category="custom"
 			name="custom5"
-		/>
-	))
-	.add('Base: Action (no assistive)', () => (
-		<Icon
-			category="utility"
-			name="announcement"
 		/>
 	))
 	.add('Size: X-Small', () => (

@@ -2,12 +2,16 @@
 # React Components: design-system-react
 # Release notes
 
-## Release 0.1.3
+## Release 0.2.0
+
+**BREAKING CHANGES**
+- Changes to how the `inverse` prop works for icons and removal of the default value of `true`
 
 **MAJOR CHANGES**
+- Update Icon to the latest markup
 
 **OTHER**
-- Allow menus and buttons used in the Gloval Nav Bar to be marked as active
+- Allow menus and buttons used in the Global Nav Bar to be marked as active
 
 
 ## Release 0.1.2
