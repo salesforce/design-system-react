@@ -22,6 +22,7 @@
 - Timepicker wasn't working correctly after the menu updates in 0.1.1. It is now fixed
 - Update the logo used in the Global Header story
 
+
 ## Release 0.1.2
 
 **MAJOR CHANGES**
