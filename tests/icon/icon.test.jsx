@@ -44,6 +44,7 @@ describe('SLDSIcon: ', function () {
 				assistiveText: 'Log a Call',
 				category: 'standard',
 				name: 'log_a_call',
+				style: { backgroundColor: 'goldenrod' }, // rgb(218, 165, 32)
 				size: 'large'
 			});
 			iconContainer = findRenderedDOMComponentWithClass(component, 'slds-icon_container');
@@ -66,6 +67,10 @@ describe('SLDSIcon: ', function () {
 		it('renders icon name class on svg', () => {
 			// also tests that all '_' are replaced with '-'
 			expect(svg.className.baseVal).to.include('slds-icon-standard-log-a-call');
+		});
+
+		it('renders custom background color', () => {
+			expect(svg.style.backgroundColor).to.equal('rgb(218, 165, 32)'); // goldenrod
 		});
 
 		it('renders icon size class', () => {
