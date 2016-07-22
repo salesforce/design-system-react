@@ -44,7 +44,7 @@ describe('SLDSIcon: ', function () {
 				assistiveText: 'Log a Call',
 				category: 'standard',
 				name: 'log_a_call',
-				backgroundColor: 'goldenrod', // rgb(218, 165, 32)
+				style: { backgroundColor: 'goldenrod' }, // rgb(218, 165, 32)
 				size: 'large'
 			});
 			iconContainer = findRenderedDOMComponentWithClass(component, 'slds-icon_container');

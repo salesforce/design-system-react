@@ -2,42 +2,7 @@ import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 
 import { ICON } from '../../utilities/constants';
-import { Icon, Input } from '../../components';
-
-
-const DemoBackgroundColor = React.createClass({
-	displayName: 'DemoBackgroundColor',
-
-	getInitialState () {
-		return {
-			backgroundColor: 'teal'
-		};
-	},
-
-	onChange (event) {
-		this.setState({ backgroundColor: event.target.value });
-	},
-
-	render () {
-		return (
-			<div>
-				<Input
-					label="Enter new background-color"
-					placeholder="goldenrod, rba(123, 123, 123), #54CABB, etc..."
-					onChange={this.onChange}
-				/>
-				<hr />
-				<Icon
-					assistiveText="Accounts"
-					backgroundColor={this.state.backgroundColor}
-					category="standard"
-					name="account"
-					title="This is a title"
-				/>
-			</div>
-		);
-	}
-});
+import { Icon } from '../../components';
 
 storiesOf(ICON, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
@@ -58,8 +23,14 @@ storiesOf(ICON, module)
 			inverse
 		/>
 	))
-	.add('Base: Standard (custom background)', () => (
-		<DemoBackgroundColor />
+	.add('Base: Standard (custom styles)', () => (
+		<Icon
+			assistiveText="Accounts"
+			category="standard"
+			name="account"
+			style={{ backgroundColor: '#aceace', fill: 'orangered' }}
+			title="This is a title"
+		/>
 	))
 	.add('Base: Utility', () => (
 		<Icon
