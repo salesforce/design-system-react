@@ -48,15 +48,15 @@ const TimepickerDropdownTrigger = React.createClass({
 		 */
 		menu: PropTypes.node,
 		/**
-		 * Is only called when `openOn` is set to `hover` and when the triggering button loses focus.
+		 * Is only called when `openOn` is set to `hover` and when the triggering input loses focus.
 		 */
 		onBlur: PropTypes.func,
 		/**
-		 * This prop is passed onto the triggering `Button`. Triggered when the trigger button is clicked.
+		 * This prop is passed onto the triggering `Input`. Triggered when the trigger input is clicked.
 		 */
 		onClick: PropTypes.func,
 		/**
-		 * Is only called when `openOn` is set to `hover` and when the triggering button gains focus.
+		 * Is only called when `openOn` is set to `hover` and when the triggering input gains focus.
 		 */
 		onFocus: PropTypes.func,
 		/**
@@ -64,7 +64,7 @@ const TimepickerDropdownTrigger = React.createClass({
 		 */
 		onKeyDown: PropTypes.func,
 		/**
-		 * Called when mouse clicks down on the trigger button.
+		 * Called when mouse clicks down on the trigger input.
 		 */
 		onMouseDown: PropTypes.func,
 		/**

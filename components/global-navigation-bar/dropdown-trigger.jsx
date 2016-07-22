@@ -61,9 +61,25 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 		 */
 		menu: PropTypes.node,
 		/**
-		 * This prop is passed onto the triggering `li` element.
+		 * Is only called when `openOn` is set to `hover` and when the triggering li loses focus.
+		 */
+		onBlur: PropTypes.func,
+		/**
+		 * This prop is passed onto the triggering `li`. Triggered when the trigger li is clicked.
 		 */
 		onClick: PropTypes.func,
+		/**
+		 * Is only called when `openOn` is set to `hover` and when the triggering li gains focus.
+		 */
+		onFocus: PropTypes.func,
+		/**
+		 * Called when a key pressed.
+		 */
+		onKeyDown: PropTypes.func,
+		/**
+		 * Called when mouse clicks down on the trigger li.
+		 */
+		onMouseDown: PropTypes.func,
 		/**
 		 * The ref of the actual triggering button.
 		 */
@@ -78,7 +94,11 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 			id,
 			label,
 			menu,
+			onBlur,
 			onClick,
+			onFocus,
+			onKeyDown,
+			onMouseDown,
 			triggerRef,
 			...rest
 		} = this.props;
@@ -92,7 +112,11 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 					className
 				)}
 				id={id}
+				onBlur={onBlur}
 				onClick={onClick}
+				onFocus={onFocus}
+				onKeyDown={onKeyDown}
+				onMouseDown={onMouseDown}
 			>
 				<a className="slds-context-bar__label-action">{label}</a>
 				<div className="slds-context-bar__icon-action slds-p-left--none">

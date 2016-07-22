@@ -53,9 +53,25 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 		 */
 		menu: PropTypes.node,
 		/**
-		 * This prop is passed onto the triggering `li` element.
+		 * Is only called when `openOn` is set to `hover` and when the triggering li loses focus.
+		 */
+		onBlur: PropTypes.func,
+		/**
+		 * This prop is passed onto the triggering `li`. Triggered when the trigger li is clicked.
 		 */
 		onClick: PropTypes.func,
+		/**
+		 * Is only called when `openOn` is set to `hover` and when the triggering li gains focus.
+		 */
+		onFocus: PropTypes.func,
+		/**
+		 * Called when a key pressed.
+		 */
+		onKeyDown: PropTypes.func,
+		/**
+		 * Called when mouse clicks down on the trigger li.
+		 */
+		onMouseDown: PropTypes.func,
 		/**
 		 * The ref of the actual triggering button.
 		 */
@@ -70,7 +86,11 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 			className,
 			id,
 			menu,
+			onBlur,
 			onClick,
+			onFocus,
+			onKeyDown,
+			onMouseDown,
 			triggerRef,
 			...rest
 		} = this.props;
@@ -81,7 +101,11 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 				aria-haspopup="true"
 				className={classnames('slds-dropdown-trigger slds-dropdown-trigger--click', className)}
 				id={id}
+				onBlur={onBlur}
 				onClick={onClick}
+				onFocus={onFocus}
+				onKeyDown={onKeyDown}
+				onMouseDown={onMouseDown}
 			>
 				<Button
 					aria-haspopup="true"
