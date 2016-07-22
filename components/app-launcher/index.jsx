@@ -28,7 +28,6 @@ import isFunction from 'lodash.isfunction';
 import checkProps from './check-props';
 
 // ## Children
-import Icon from '../icon';
 import Modal from '../modal';
 import Search from '../forms/input/search';
 
@@ -146,20 +145,25 @@ const AppLauncher = React.createClass({
 		const style = this.props.noTruncate ? { maxWidth: 'none' } : null;
 
 		return (
-			<div className="app-launcher-wrapper slds-context-bar__item slds-no-hover" style={style}>
+			<div className="slds-context-bar__item slds-no-hover" style={style}>
 				<div className="slds-context-bar__icon-action">
 					<a
 						href="javascript:void(0);" // eslint-disable-line no-script-url
 						aria-haspopup="true"
-						className="slds-button slds-button--icon slds-context-bar__button"
+						className="slds-icon-waffle_container slds-context-bar__button"
 						onClick={this.openAppLauncher}
 					>
-						<Icon
-							category="utility"
-							name="apps"
-							size="small"
-							assistiveText={this.props.triggerAssistiveText}
-						/>
+						<div className="slds-icon-waffle">
+							<div className="slds-r1"></div>
+							<div className="slds-r2"></div>
+							<div className="slds-r3"></div>
+							<div className="slds-r4"></div>
+							<div className="slds-r5"></div>
+							<div className="slds-r6"></div>
+							<div className="slds-r7"></div>
+							<div className="slds-r8"></div>
+							<div className="slds-r9"></div>
+						</div>
 					</a>
 				</div>
 				<Modal
