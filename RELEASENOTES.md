@@ -15,6 +15,7 @@
 **OTHER**
 - Allow menus and buttons used in the Global Nav Bar to be marked as active
 - Button component: when button icon had an iconVariant prop, the iconSize prop did not render. It is now fixed
+- Update the logo used in the Global Header story
 
 
 ## Release 0.1.2
