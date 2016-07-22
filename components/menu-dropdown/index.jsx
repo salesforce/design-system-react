@@ -537,8 +537,10 @@ const MenuDropdown = React.createClass({
 						positionClassName,
 						this.props.className)}
 					closeOnTabKey
-					horizontalAlign={this.props.align}
+					constrainToScrollParent={this.props.constrainToScrollParent}
 					flippable
+					horizontalAlign={this.props.align}
+					inheritTargetWidth={this.props.inheritTargetWidth}
 					marginTop={marginTop}
 					offset={offset}
 					onClose={this.handleCancel}

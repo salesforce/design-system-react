@@ -21,7 +21,7 @@ import classNames from 'classnames';
 
 import Button from '../button';
 
-// ### Children
+// ## Constants
 import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
 
 /**

@@ -12,6 +12,4 @@ const getTimepicker = props => (
 
 storiesOf(TIME_PICKER, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('Base', () => getTimepicker({ label: 'time', required: true, stepInMinutes: 30, onDateChange: action('onDateChange') }))
-
-
+	.add('Base', () => getTimepicker({ label: 'Time', required: true, stepInMinutes: 30, onDateChange: action('onDateChange') }));
