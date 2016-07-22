@@ -124,9 +124,9 @@ class Notification extends React.Component {
 			return (
 				<Button
 					assistiveText="Dismiss Notification"
-					variant="icon-inverse"
 					iconName="close"
 					iconSize={size}
+					inverse
 					className="slds-button slds-notify__close"
 					onClick={this.onDismiss.bind(this)}
 					ref="dismissNotificationBtn"
