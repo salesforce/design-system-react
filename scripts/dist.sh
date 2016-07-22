@@ -41,9 +41,11 @@ echo "## Copying the components"
 
 cp -r .tmp .tmp-es
 cp -r components .tmp-es/components
+cp -r icons .tmp-es/icons
 cp -r utilities .tmp-es/utilities
 
 echo "## Transpiling with Babel"
 
 ./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp-es/components -d .tmp/components
+./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp-es/icons -d .tmp/icons
 ./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp-es/utilities -d .tmp/utilities
