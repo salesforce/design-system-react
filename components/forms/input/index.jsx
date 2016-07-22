@@ -69,6 +69,7 @@ const Input = React.createClass({
 		 * by this text and is visually not shown.
 		 */
 		assistiveText: PropTypes.string,
+		children: PropTypes.node,
 		/**
 		 * Class names to be added to the outer container of the input.
 		 */
@@ -214,6 +215,7 @@ const Input = React.createClass({
 			ariaControls,
 			ariaOwns,
 			assistiveText,
+			children,
 			className,
 			disabled,
 			errorText,
@@ -221,6 +223,7 @@ const Input = React.createClass({
 			iconName,
 			iconPosition,
 			inlineEditTrigger, // eslint-disable-line react/prop-types
+			inputRef, // eslint-disable-line react/prop-types
 			label,
 			onChange,
 			onClick,
@@ -285,6 +288,7 @@ const Input = React.createClass({
 						onClick={onClick}
 						name={name}
 						placeholder={placeholder}
+						ref={inputRef}
 						required={required}
 						type={type}
 						value={value}
@@ -297,6 +301,7 @@ const Input = React.createClass({
 					</span>}
 				</div>
 				{errorText && <div className="slds-form-element__help">{errorText}</div>}
+				{children}
 			</div>
 		);
 	}

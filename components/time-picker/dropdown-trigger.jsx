@@ -9,26 +9,25 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # Global Header Dropdown Component
+// # Timepicker Dropdown Trigger
 
 // ## Dependencies
 
 // ### React
 import React, { PropTypes } from 'react';
 
-// ### classNames
-import classnames from 'classnames';
-
-// ### Dropdown
-import Button from '../button';
-
 // ### Children
+import Input from '../forms/input';
+
+import { KEYS } from '../../utilities';
+
+// ## Constants
 import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
 
 /**
-*  The Dropdown Button Trigger renders the default trigger button for the dropdown menu. If this component has children, it does not render itself to the DOM. Instead, it renders its child element, `Button`, and all that child's properties. This component may be used as a template to create custom triggers that do not use `Button`.
+*  Component description.
 */
-const GlobalHeaderDropdownTrigger = React.createClass({
+const TimepickerDropdownTrigger = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
 	// display name.
@@ -37,31 +36,27 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 	// ### Prop Types
 	propTypes: {
 		/**
-		 * An image URL to display for the user profile.
-		 */
-		avatar: PropTypes.string,
-		/**
-		 * CSS classes to be added to `li` element.
-		 */
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-		/**
-		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
+		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering input.
 		*/
 		id: PropTypes.string,
+		/**
+		 * This label appears above the input.
+		 */
+		label: PropTypes.string,
 		/**
 		 * The dropdown menu.
 		 */
 		menu: PropTypes.node,
 		/**
-		 * Is only called when `openOn` is set to `hover` and when the triggering li loses focus.
+		 * Is only called when `openOn` is set to `hover` and when the triggering input loses focus.
 		 */
 		onBlur: PropTypes.func,
 		/**
-		 * This prop is passed onto the triggering `li`. Triggered when the trigger li is clicked.
+		 * This prop is passed onto the triggering `Input`. Triggered when the trigger input is clicked.
 		 */
 		onClick: PropTypes.func,
 		/**
-		 * Is only called when `openOn` is set to `hover` and when the triggering li gains focus.
+		 * Is only called when `openOn` is set to `hover` and when the triggering input gains focus.
 		 */
 		onFocus: PropTypes.func,
 		/**
@@ -69,57 +64,55 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 		 */
 		onKeyDown: PropTypes.func,
 		/**
-		 * Called when mouse clicks down on the trigger li.
+		 * Called when mouse clicks down on the trigger input.
 		 */
 		onMouseDown: PropTypes.func,
 		/**
-		 * The ref of the actual triggering button.
+		 * The ref of the actual triggering input.
 		 */
-		triggerRef: PropTypes.func
+		triggerRef: PropTypes.func,
+		/**
+		 * Date
+		 */
+		value: PropTypes.string
 	},
 
 	// ### Render
 	render () {
-		// The following props are provided to the `li`, all others are passed into the `Button`
 		const {
-			avatar,
-			className,
-			id,
 			menu,
 			onBlur,
-			onClick,
 			onFocus,
-			onKeyDown,
+			onKeyDown, // eslint-disable-line no-unused-vars
 			onMouseDown,
 			triggerRef,
-			...rest
+			...props
 		} = this.props;
 
-		// TODO: Add avatar component for use across multiple components
 		return (
-			<li
-				aria-haspopup="true"
-				className={classnames('slds-dropdown-trigger slds-dropdown-trigger--click', className)}
-				id={id}
+			<div
 				onBlur={onBlur}
-				onClick={onClick}
 				onFocus={onFocus}
-				onKeyDown={onKeyDown}
+				onKeyDown={this.handleKeyDown}
 				onMouseDown={onMouseDown}
 			>
-				<Button
-					aria-haspopup="true"
-					{...rest}
-					ref={triggerRef}
-				>
-					{avatar ? <span className="slds-avatar slds-avatar--circle slds-avatar--medium">
-						<img src={avatar} alt="" />
-					</span> : null}
-				</Button>
-				{menu}
-			</li>
+				<Input {...props} inputRef={triggerRef}>
+					{menu}
+				</Input>
+			</div>
 		);
+	},
+
+	handleKeyDown (event) {
+		if (this.props.onKeyDown && event.keyCode) {
+			if (event.keyCode === KEYS.ENTER ||
+					event.keyCode === KEYS.DOWN ||
+					event.keyCode === KEYS.UP ||
+					event.keyCode === KEYS.ESCAPE) {
+				this.props.onKeyDown(event);
+			}
+		}
 	}
 });
 
-module.exports = GlobalHeaderDropdownTrigger;
+module.exports = TimepickerDropdownTrigger;
