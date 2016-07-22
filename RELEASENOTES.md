@@ -10,7 +10,9 @@
 - Button component: `inverse` and `icon-inverse` are no longer supported in the variants prop
 
 **MAJOR CHANGES**
+- Add support for custom svg icons
 - Update Icon to the latest markup
+- Allow custom styles to be passed to icons
 
 **OTHER**
 - Allow menus and buttons used in the Global Nav Bar to be marked as active
@@ -42,6 +44,7 @@
 - Add Button support to Global Navigation Bar
 - Update the keyboard navigation logic used by menus
 - Update profile icon used in the Global Header
+
 
 ## Release 0.1.0
 

@@ -20,14 +20,14 @@ const config = Object.assign({}, baseConfig, {
 
 let FILENAME = '[name].js';
 if (process.env.MINIFY) {
-  config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
+	config.plugins.push(
+		new webpack.optimize.UglifyJsPlugin({
 			mangle: {
 				except: ['$', 'exports', 'require']
 			}
 		})
-  );
-  FILENAME = '[name].min.js';
+	);
+	FILENAME = '[name].min.js';
 }
 
 config.output.filename = FILENAME;

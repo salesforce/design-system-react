@@ -20,6 +20,7 @@ const propTypes = {
 	category: React.PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']).isRequired,
 	className: React.PropTypes.string,
 	hint: React.PropTypes.bool,
+	icon: React.PropTypes.object,
 	inverse: React.PropTypes.bool,
 	name: React.PropTypes.string,
 	position: React.PropTypes.oneOf(['left', 'right']),
@@ -52,6 +53,7 @@ class ButtonIcon extends React.Component {
 		if (this.props.assistiveText) {
 			label = <span className="slds-assistive-text">{this.props.assistiveText}</span>;
 		}
+
 		return (
 			<span>
 				{label}
@@ -59,6 +61,7 @@ class ButtonIcon extends React.Component {
 					aria-hidden="true"
 					category={this.props.category}
 					className={this.getClassName()}
+					icon={this.props.icon}
 					name={this.props.name}
 				/>
 			</span>
