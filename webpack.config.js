@@ -7,7 +7,7 @@ const StringReplacePlugin = require('string-replace-webpack-plugin');
 const packageJson = require('./package.json');
 
 module.exports = {
-  entry: {
+	entry: {
 		'design-system-react': ['./components']
 	},
 	resolve: {
@@ -32,11 +32,12 @@ module.exports = {
 						pattern: /__VERSION__/g,
 						replacement: () => packageJson.version
 					}]
-        })],
+				})],
 				include: [
 					path.join(__dirname, 'components'),
-          path.join(__dirname, 'tests'),
-          path.join(__dirname, 'utilities')
+					path.join(__dirname, 'icons'),
+					path.join(__dirname, 'tests'),
+					path.join(__dirname, 'utilities')
 				]
 			},
 			{
@@ -58,6 +59,6 @@ module.exports = {
 		]
 	},
 	plugins: [
-    new StringReplacePlugin()
+		new StringReplacePlugin()
 	]
 };

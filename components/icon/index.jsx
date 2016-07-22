@@ -54,7 +54,7 @@ const Icon = React.createClass({
 		 */
 		className: PropTypes.string,
 		/**
-		 * An SVG object to use instead of name / category
+		 * An SVG object to use instead of name / category, look in `design-system-react/icons` for examples
 		 */
 		icon: PropTypes.object,
 		/**

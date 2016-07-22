@@ -2,7 +2,9 @@ import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 
 import { ICON } from '../../utilities/constants';
-import { Icon } from '../../components';
+
+import Icon from '../../components/icon';
+import download from '../../icons/utility/download';
 
 storiesOf(ICON, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
@@ -78,6 +80,11 @@ storiesOf(ICON, module)
 			name="custom5"
 		/>
 	))
+	.add('Base: Imported', () => <Icon
+		assistiveText="Download"
+		category="utility"
+		icon={download}
+	/>)
 	.add('Size: X-Small', () => (
 		<Icon
 			assistiveText="Warning Icon"

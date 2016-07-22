@@ -148,6 +148,11 @@ describe('Global Navigation Bar: ', () => {
 			expect(tertiary).to.have.length(1);
 		});
 
+		it('Primary region has divider on right', function () {
+			const primary = this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`);
+			expect(primary.node.className).to.include('slds-context-bar__item--divider-right');
+		});
+
 		it('Secondary region application is a nav HTML element', function () {
 			const nav = this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`);
 			expect(nav.type()).to.equal('nav');
