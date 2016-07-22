@@ -14,6 +14,7 @@
 
 **OTHER**
 - Allow menus and buttons used in the Global Nav Bar to be marked as active
+- Animates the App Launcher icon based on the latest SLDS markup
 - Button component: when button icon had an iconVariant prop, the iconSize prop did not render. It is now fixed
 - Update the logo used in the Global Header story
 
