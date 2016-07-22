@@ -12,6 +12,7 @@
 **MAJOR CHANGES**
 - Add support for custom svg icons
 - Update Icon to the latest markup
+- Update Tooltip to the latest markup
 - Allow custom styles to be passed to icons
 
 **OTHER**
