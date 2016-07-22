@@ -60,7 +60,7 @@ const propTypes = {
 	/**
 	 * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
 	 */
-	iconVariant: PropTypes.oneOf(['container', 'border', 'border-filled', 'more']),
+	iconVariant: PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'more']),
 	/**
 	 * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
 	 */

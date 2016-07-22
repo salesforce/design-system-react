@@ -69,9 +69,13 @@ const MenuDropdown = React.createClass({
 		 */
 		buttonClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
+		 * If true, button/icon is white. Meant for buttons or utility icons on dark backgrounds.
+		 */
+		buttonInverse: PropTypes.bool,
+		/**
 		 * This prop is passed onto the triggering `Button`. Determines variant of the Button component that triggers dropdown.
 		 */
-		buttonVariant: PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon', 'inverse', 'icon-inverse']),
+		buttonVariant: PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon']),
 		/**
 		 * If true, renders checkmark icon on the selected Menu Item.
 		 */
@@ -586,6 +590,7 @@ const MenuDropdown = React.createClass({
 				iconName={this.props.iconName}
 				iconVariant={this.props.iconVariant}
 				iconSize={this.props.iconSize}
+				inverse={this.props.buttonInverse}
 				label={this.props.label}
 				style={this.props.style}
 				tabIndex={this.state.isOpen ? '-1' : '0'}

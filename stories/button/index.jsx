@@ -18,11 +18,11 @@ const getIconButton = props => getButton({ variant: 'icon', ...props });
 storiesOf(BUTTON, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Base', () => getButton({ label: 'Base', variant: 'base' }))
-	.add('Neutral', () => getButton({ label: 'Neutral'}))
+	.add('Neutral', () => getButton({ label: 'Neutral' }))
   .add('Neutral Icon', () => getButton({
     label: 'Neutral Icon',
     iconName: 'download',
-    iconPosition: 'left' ,
+    iconPosition: 'left'
   }))
 	.add('Disabled', () => getButton({ label: 'Disabled', disabled: true }))
 	.add('Icon large', () => getIconButton({
@@ -31,7 +31,7 @@ storiesOf(BUTTON, module)
 		iconName: 'answer'
 	}))
 
-	.addDecorator(getStory => <div className="slds-p-around--medium slds-hint-parent" style={{"backgroundColor": "green"}}>{getStory()}</div>)
+	.addDecorator(getStory => <div className="slds-p-around--medium slds-hint-parent" style={{ backgroundColor: 'green' }}>{getStory()}</div>)
 	.add('Icon Container Small', () => getIconButton({
 		assistiveText: 'Icon border container small',
 		iconName: 'settings',
@@ -52,5 +52,4 @@ storiesOf(BUTTON, module)
     iconSize: 'small',
     hint: true,
     inverse: true
-  }))
-
+  }));
