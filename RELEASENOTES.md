@@ -43,6 +43,7 @@
 - Update the keyboard navigation logic used by menus
 - Update profile icon used in the Global Header
 
+
 ## Release 0.1.0
 
 **BREAKING CHANGES**
