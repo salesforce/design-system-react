@@ -62,10 +62,6 @@ const Trigger = React.createClass({
 		 */
 		onFocus: PropTypes.func,
 		/**
-		 * Determines if mouse hover or click opens the dropdown menu. The default of `click` is highly recommended to comply with accessibility standards. If you are planning on using hover, please pause a moment and reconsider.
-		 */
-		openOn: PropTypes.oneOf(['hover', 'click']),
-		/**
 		 * Called when a key pressed.
 		 */
 		onKeyDown: PropTypes.func,
@@ -80,7 +76,11 @@ const Trigger = React.createClass({
 		/**
 		 * Called when mouse hover leaves the trigger button. This is only called if `this.props.openOn` is set to `hover`.
 		 */
-		onMouseLeave: PropTypes.func
+		onMouseLeave: PropTypes.func,
+		/**
+		 * Determines if mouse hover or click opens the dropdown menu. The default of `click` is highly recommended to comply with accessibility standards. If you are planning on using hover, please pause a moment and reconsider.
+		 */
+		openOn: PropTypes.oneOf(['hover', 'click'])
 	},
 
 	// ### Render

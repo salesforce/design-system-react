@@ -19,6 +19,8 @@ import React, { PropTypes } from 'react';
 // ### Children
 import Input from '../forms/input';
 
+import { KEYS } from '../../utilities';
+
 // ## Constants
 import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
 
@@ -46,6 +48,26 @@ const TimepickerDropdownTrigger = React.createClass({
 		 */
 		menu: PropTypes.node,
 		/**
+		 * Is only called when `openOn` is set to `hover` and when the triggering button loses focus.
+		 */
+		onBlur: PropTypes.func,
+		/**
+		 * This prop is passed onto the triggering `Button`. Triggered when the trigger button is clicked.
+		 */
+		onClick: PropTypes.func,
+		/**
+		 * Is only called when `openOn` is set to `hover` and when the triggering button gains focus.
+		 */
+		onFocus: PropTypes.func,
+		/**
+		 * Called when a key pressed.
+		 */
+		onKeyDown: PropTypes.func,
+		/**
+		 * Called when mouse clicks down on the trigger button.
+		 */
+		onMouseDown: PropTypes.func,
+		/**
 		 * The ref of the actual triggering input.
 		 */
 		triggerRef: PropTypes.func,
@@ -59,15 +81,37 @@ const TimepickerDropdownTrigger = React.createClass({
 	render () {
 		const {
 			menu,
+			onBlur,
+			onFocus,
+			onKeyDown, // eslint-disable-line no-unused-vars
+			onMouseDown,
 			triggerRef,
 			...props
 		} = this.props;
 
 		return (
-			<Input {...props} inputRef={triggerRef}>
-				{menu}
-			</Input>
+			<div
+				onBlur={onBlur}
+				onFocus={onFocus}
+				onKeyDown={this.handleKeyDown}
+				onMouseDown={onMouseDown}
+			>
+				<Input {...props} inputRef={triggerRef}>
+					{menu}
+				</Input>
+			</div>
 		);
+	},
+
+	handleKeyDown (event) {
+		if (this.props.onKeyDown && event.keyCode) {
+			if (event.keyCode === KEYS.ENTER ||
+					event.keyCode === KEYS.DOWN ||
+					event.keyCode === KEYS.UP ||
+					event.keyCode === KEYS.ESCAPE) {
+				this.props.onKeyDown(event);
+			}
+		}
 	}
 });
 

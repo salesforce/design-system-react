@@ -199,15 +199,15 @@ const Timepicker = React.createClass({
 	},
 
 	handleInputChange (event) {
-		const string = event.target.value;
+		const strValue = event.target.value;
 
 		this.setState({
-			strValue: string
+			strValue
 		});
 
 		if (this.props.onDateChange) {
-			const parsedDate = this.props.parser(string);
-			this.props.onDateChange(parsedDate, string);
+			const parsedDate = this.props.parser(strValue);
+			this.props.onDateChange(parsedDate, strValue);
 		}
 	}
 });

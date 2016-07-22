@@ -318,18 +318,18 @@ const MenuDropdown = React.createClass({
 		});
 	},
 
-	handleFocus () {
+	handleFocus (event) {
 		this.setState({
 			isFocused: true,
 			isHover: false
 		});
 
 		if (this.props.onFocus) {
-			this.props.onFocus();
+			this.props.onFocus(event);
 		}
 	},
 
-	handleMouseEnter () {
+	handleMouseEnter (event) {
 		this.state.isClosing = false;
 
 		if (!this.state.isOpen) {
@@ -340,15 +340,15 @@ const MenuDropdown = React.createClass({
 		}
 
 		if (this.props.onMouseEnter) {
-			this.props.onMouseEnter();
+			this.props.onMouseEnter(event);
 		}
 	},
 
-	handleMouseLeave () {
+	handleMouseLeave (event) {
 		this.setState({ isClosing: true });
 
 		if (this.props.onMouseLeave) {
-			this.props.onMouseLeave();
+			this.props.onMouseLeave(event);
 		}
 	},
 
@@ -362,7 +362,7 @@ const MenuDropdown = React.createClass({
 			this.setFocus();
 
 			if (this.props.onClick) {
-				this.props.onClick();
+				this.props.onClick(event);
 			}
 		} else {
 			this.handleClose();
@@ -376,7 +376,7 @@ const MenuDropdown = React.createClass({
 		}
 
 		if (this.props.onMouseDown) {
-			this.props.onMouseDown();
+			this.props.onMouseDown(event);
 		}
 	},
 
@@ -406,7 +406,7 @@ const MenuDropdown = React.createClass({
 			});
 
 			if (this.props.onKeyDown) {
-				this.props.onKeyDown();
+				this.props.onKeyDown(event);
 			}
 		}
 	},
