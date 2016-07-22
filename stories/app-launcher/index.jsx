@@ -72,7 +72,7 @@ const DemoAppLauncherTileWithIconNode = React.createClass({
 	},
 
 	render () {
-		const icon = <Icon name="map" category="action" className="slds-m-around--x-small" />;
+		const icon = <Icon name="campaign" category="standard" size="large" />;
 
 		return (
 			<AppLauncherTile
@@ -254,10 +254,30 @@ const DemoAppLauncher = React.createClass({
 	}
 });
 
+const DemoAppLauncherNoHeaderButton = React.createClass({
+	displayName: 'DemoAppLauncherNoHeaderButton',
+
+	render () {
+		return (
+			<GlobalNavigationBar>
+				<GlobalNavigationBarRegion region="primary">
+					<AppLauncher triggerName="App Name" isOpen>
+						<AppLauncherSection title="All Items">
+							<DemoAppLauncherTile />
+							<DemoAppLauncherTileWithIconNode />
+						</AppLauncherSection>
+					</AppLauncher>
+				</GlobalNavigationBarRegion>
+			</GlobalNavigationBar>
+		);
+	}
+});
+
 
 storiesOf(APP_LAUNCHER, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('App Launcher', () => <DemoAppLauncher />)
+	.add('App Launcher no header button', () => <DemoAppLauncherNoHeaderButton />)
 	.add('Tile', () => <div style={standardTileDemoStyles}><DemoAppLauncherTile /></div>)
 	.add('Small Tile', () => <div style={smallTileDemoStyles}><DemoAppLauncherSmallTile /></div>)
 	.add('Tile with Icon node', () => <div style={standardTileDemoStyles}><DemoAppLauncherTileWithIconNode /></div>)

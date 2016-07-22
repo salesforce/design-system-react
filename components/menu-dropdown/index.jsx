@@ -69,9 +69,13 @@ const MenuDropdown = React.createClass({
 		 */
 		buttonClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
+		 * If true, button/icon is white. Meant for buttons or utility icons on dark backgrounds.
+		 */
+		buttonInverse: PropTypes.bool,
+		/**
 		 * This prop is passed onto the triggering `Button`. Determines variant of the Button component that triggers dropdown.
 		 */
-		buttonVariant: PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon', 'inverse', 'icon-inverse']),
+		buttonVariant: PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon']),
 		/**
 		 * If true, renders checkmark icon on the selected Menu Item.
 		 */
@@ -314,18 +318,18 @@ const MenuDropdown = React.createClass({
 		});
 	},
 
-	handleFocus () {
+	handleFocus (event) {
 		this.setState({
 			isFocused: true,
 			isHover: false
 		});
 
 		if (this.props.onFocus) {
-			this.props.onFocus();
+			this.props.onFocus(event);
 		}
 	},
 
-	handleMouseEnter () {
+	handleMouseEnter (event) {
 		this.state.isClosing = false;
 
 		if (!this.state.isOpen) {
@@ -336,15 +340,15 @@ const MenuDropdown = React.createClass({
 		}
 
 		if (this.props.onMouseEnter) {
-			this.props.onMouseEnter();
+			this.props.onMouseEnter(event);
 		}
 	},
 
-	handleMouseLeave () {
+	handleMouseLeave (event) {
 		this.setState({ isClosing: true });
 
 		if (this.props.onMouseLeave) {
-			this.props.onMouseLeave();
+			this.props.onMouseLeave(event);
 		}
 	},
 
@@ -358,7 +362,7 @@ const MenuDropdown = React.createClass({
 			this.setFocus();
 
 			if (this.props.onClick) {
-				this.props.onClick();
+				this.props.onClick(event);
 			}
 		} else {
 			this.handleClose();
@@ -372,7 +376,7 @@ const MenuDropdown = React.createClass({
 		}
 
 		if (this.props.onMouseDown) {
-			this.props.onMouseDown();
+			this.props.onMouseDown(event);
 		}
 	},
 
@@ -402,7 +406,7 @@ const MenuDropdown = React.createClass({
 			});
 
 			if (this.props.onKeyDown) {
-				this.props.onKeyDown();
+				this.props.onKeyDown(event);
 			}
 		}
 	},
@@ -424,9 +428,18 @@ const MenuDropdown = React.createClass({
 	},
 
 	setFocus () {
-		if (!this.isUnmounting && this.button) {
-			ReactDOM.findDOMNode(this.button).focus();
+		if (!this.isUnmounting && this.trigger) {
+			ReactDOM.findDOMNode(this.trigger).focus();
 		}
+	},
+
+	saveRefToTrigger (trigger) {
+		this.trigger = trigger;
+	},
+
+	saveRefToTriggerContainer (triggerContainer) {
+		this.triggerContainer = triggerContainer;
+		if (!this.trigger) this.trigger = triggerContainer;
 	},
 
 	saveRefToList (list) {
@@ -494,11 +507,12 @@ const MenuDropdown = React.createClass({
 
 	renderSimplePopover (customContent) {
 		return (
-			this.props.forceOpen || !this.props.disabled && this.state.isOpen && this.button ?
+			this.props.forceOpen || !this.props.disabled && this.state.isOpen && this.trigger ?
 				<div
 					className={classNames('slds-dropdown', 'slds-dropdown--menu', 'slds-dropdown--left', this.props.className)}
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
+					style={this.props.menuStyle}
 				>
 					{this.renderPopoverContent(customContent)}
 				</div> : null
@@ -526,22 +540,24 @@ const MenuDropdown = React.createClass({
 		}
 
 		return (
-			this.props.forceOpen || !this.props.disabled && this.state.isOpen && this.button ?
+			this.props.forceOpen || !this.props.disabled && this.state.isOpen && this.triggerContainer ?
 				<Popover
 					className={classNames('slds-dropdown',
 						'slds-dropdown--menu',
 						positionClassName,
 						this.props.className)}
 					closeOnTabKey
-					horizontalAlign={this.props.align}
+					constrainToScrollParent={this.props.constrainToScrollParent}
 					flippable
+					horizontalAlign={this.props.align}
+					inheritTargetWidth={this.props.inheritTargetWidth}
 					marginTop={marginTop}
 					offset={offset}
 					onClose={this.handleCancel}
 					onKeyDown={this.handleKeyDown}
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
-					targetElement={this.button}
+					targetElement={this.triggerContainer}
 				>
 					{this.renderPopoverContent(customContent)}
 				</Popover> : null
@@ -586,6 +602,7 @@ const MenuDropdown = React.createClass({
 				iconName={this.props.iconName}
 				iconVariant={this.props.iconVariant}
 				iconSize={this.props.iconSize}
+				inverse={this.props.buttonInverse}
 				label={this.props.label}
 				style={this.props.style}
 				tabIndex={this.state.isOpen ? '-1' : '0'}
@@ -602,7 +619,8 @@ const MenuDropdown = React.createClass({
 				onMouseDown={this.props.openOn === 'click' ? this.handleMouseDown : null}
 				onMouseEnter={this.props.openOn === 'hover' ? this.handleMouseEnter : null}
 				onMouseLeave={this.props.openOn === 'hover' ? this.handleMouseLeave : null}
-				ref={(component) => { this.button = component; }}
+				ref={this.saveRefToTriggerContainer}
+				triggerRef={this.saveRefToTrigger}
 				menu={this.props.modal ?
 					this.renderModalPopover(customContent) :
 					this.renderSimplePopover(customContent)}

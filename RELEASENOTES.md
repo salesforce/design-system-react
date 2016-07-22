@@ -2,17 +2,25 @@
 # React Components: design-system-react
 # Release notes
 
-## Release 0.1.4
+## Release 0.2.0
+
+**BREAKING CHANGES**
+- Changes to how the `inverse` prop works for icons and removal of the default value of `true`
+- Button component: Inverse style of Button (white color to go on dark backgrounds) is now declared with a bool prop, inverse
+- Button component: `inverse` and `icon-inverse` are no longer supported in the variants prop
 
 **MAJOR CHANGES**
-- Update Tooltip component markup and a11y to SLDS 2.1.0-rc3
-
-## Release 0.1.3
-
-**MAJOR CHANGES**
+- Add support for custom svg icons
+- Update Icon to the latest markup
+- Update Tooltip to the latest markup
+- Allow custom styles to be passed to icons
 
 **OTHER**
-- Allow menus and buttons used in the Gloval Nav Bar to be marked as active
+- Allow menus and buttons used in the Global Nav Bar to be marked as active
+- Animates the App Launcher icon based on the latest SLDS markup
+- Button component: when button icon had an iconVariant prop, the iconSize prop did not render. It is now fixed
+- Timepicker wasn't working correctly after the menu updates in 0.1.1. It is now fixed
+- Update the logo used in the Global Header story
 
 ## Release 0.1.2
 

@@ -60,9 +60,13 @@ const regions = [
 	},
 
 	renderPrimary () {
+		const dividerClass = this.props.dividerPosition
+			? `slds-context-bar__item--divider-${this.props.dividerPosition}`
+			: 'slds-context-bar__item--divider-right';
+
 		return (
-			<div className={classNames('slds-context-bar__primary', this.props.className)}>
-				{this.props.children}
+			<div className={classNames('slds-context-bar__primary', dividerClass, this.props.className)}>
+                {this.props.children}
 			</div>
 		);
 	},
