@@ -70,6 +70,10 @@ const Icon = React.createClass({
 		 */
 		size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
 		/**
+		 * Custom styles to be passed to the SVG. Could be used to change icon or background color.
+		 */
+		style: PropTypes.object,
+		/**
 		 * Title attribute for the icon container
 		 */
 		title: PropTypes.string
@@ -78,7 +82,8 @@ const Icon = React.createClass({
 	getDefaultProps () {
 		return {
 			category: 'standard',
-			size: 'medium'
+			size: 'medium',
+			style: {}
 		};
 	},
 
@@ -126,6 +131,7 @@ const Icon = React.createClass({
 					className={this.getIconClasses()}
 					icon={this.props.icon}
 					name={this.props.name}
+					style={this.props.style}
 				/>
 				{
 					this.props.assistiveText

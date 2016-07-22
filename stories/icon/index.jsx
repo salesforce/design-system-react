@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 
 import { ICON } from '../../utilities/constants';
+
 import Icon from '../../components/icon';
 import download from '../../icons/utility/download';
 
@@ -22,6 +23,15 @@ storiesOf(ICON, module)
 			name="account"
 			title="This is a title"
 			inverse
+		/>
+	))
+	.add('Base: Standard (custom styles)', () => (
+		<Icon
+			assistiveText="Accounts"
+			category="standard"
+			name="account"
+			style={{ backgroundColor: '#aceace', fill: 'orangered' }}
+			title="This is a title"
 		/>
 	))
 	.add('Base: Utility', () => (
