@@ -42,9 +42,9 @@ const regions = [
 		 */
 		children: PropTypes.node,
 		/**
-		 * Determines position of separating bar. The default is `null` except for the primary region which is set to `right`.
+		 * Determines position of separating bar. The default is `null` except for the `primary` region which is set to `right` due to design system styling.
 		 */
-		dividerPosition: PropTypes.oneOf(['none', 'left', 'right']),
+		dividerPosition: PropTypes.oneOf(['left', 'right']),
 		/**
 		 * CSS classes to be added to the region
 		 */
@@ -59,20 +59,16 @@ const regions = [
 		region: PropTypes.oneOf(regions)
 	},
 
-	renderPrimary () {
-		const dividerClass = this.props.dividerPosition
-			? `slds-context-bar__item--divider-${this.props.dividerPosition}`
-			: 'slds-context-bar__item--divider-right';
-
+	renderPrimary (dividerClass) {
 		return (
 			<div className={classNames('slds-context-bar__primary', dividerClass, this.props.className)}>
-                {this.props.children}
+				{this.props.children}
 			</div>
 		);
 	},
 
 	renderSecondary (dividerClass) {
-		let region = null;
+		let region;
 
 		if (this.props.navigation) {
 			region = (
@@ -106,14 +102,21 @@ const regions = [
 
 	// ### Render
 	render () {
-		const dividerClass = this.props.dividerPosition ? `slds-context-bar__item--divider-${this.props.dividerPosition}` : null;
-
 		let region;
+		let dividerClass;
+
+		if (this.props.dividerPosition) {
+			dividerClass = `slds-context-bar__item--divider-${this.props.dividerPosition}`;
+		} else if (this.props.dividerPosition === null) {
+			dividerClass = null;
+		} else if (this.props.region === 'primary' && typeof(dividerClass) === 'undefined') {
+			// By default divider position is always `right` for the primary region due to SLDS guidelines. Implicit defaults are bad and this is a compromise to not add yet another import for just the primary region.
+			dividerClass = 'slds-context-bar__item--divider-right';
+		}
 
 		switch (this.props.region) {
 			case 'primary':
-				// divider class is always `right` for primary
-				region = this.renderPrimary();
+				region = this.renderPrimary(dividerClass);
 				break;
 			case 'secondary':
 				region = this.renderSecondary(dividerClass);
