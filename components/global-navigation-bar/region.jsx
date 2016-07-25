@@ -29,108 +29,102 @@ const regions = [
 	'tertiary'
 ];
 
-/**
- * Regions make up a GlobalNavigation Bar and typically contain links and dropdowns. The Primary region contains the AppSwitcher, Application Name, and Object Switcher. The secondary region typically has navigation betweens sections of the application. The tertiary region is aligned to the right side of the screen and contains shortcuts or actions.
- */
- const Region = React.createClass({
-	displayName: GLOBAL_NAVIGATION_BAR_REGION,
+/* eslint-disable react/display-name */
+const renderPrimary = (dividerClass, className, children) =>
+	<div className={classNames('slds-context-bar__primary', dividerClass, className)}>
+		{children}
+	</div>;
 
-	// ### Prop Types
-	propTypes: {
-		/**
-		 * Contents of region. Expects `GlobalNavigationBarLink`, `GlobalNavigationBarDropdown`, `GlobalNavigationBarApplicationName`, `AppSwitcher`, but could be any component. This is the place to pass in an Object Switcher until that is supported.
-		 */
-		children: PropTypes.node,
-		/**
-		 * Determines position of separating bar. The default is `null` except for the `primary` region which is set to `right` due to design system styling.
-		 */
-		dividerPosition: PropTypes.oneOf(['left', 'right']),
-		/**
-		 * CSS classes to be added to the region
-		 */
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-		/**
-		 * Wraps the `secondary` region in a `nav` and adds a role attribute
-		 */
-		navigation: PropTypes.bool,
-		/**
-		 * Region wrap children in styling specific to that region.
-		 */
-		region: PropTypes.oneOf(regions)
-	},
 
-	renderPrimary (dividerClass) {
-		return (
-			<div className={classNames('slds-context-bar__primary', dividerClass, this.props.className)}>
-				{this.props.children}
-			</div>
-		);
-	},
+const renderSecondary = (dividerClass, className, children, navigation) => {
+	let region;
 
-	renderSecondary (dividerClass) {
-		let region;
-
-		if (this.props.navigation) {
-			region = (
-				<nav className={classNames('slds-context-bar__secondary', dividerClass, this.props.className)} role="navigation">
-					<ul className="slds-grid">
-						{this.props.children}
-					</ul>
-				</nav>
-			);
-		} else {
-			region = (
-				<div className={classNames('slds-context-bar__secondary', dividerClass, this.props.className)}>
-					<ul className="slds-grid">
-						{this.props.children}
-					</ul>
-				</div>
-			);
-		}
-		return region;
-	},
-
-	renderTertiary (dividerClass) {
-		return (
-			<div className={classNames('slds-context-bar__tertiary', 'slds-col--bump-left', dividerClass, this.props.className)}>
+	if (navigation) {
+		region = (
+			<nav className={classNames('slds-context-bar__secondary', dividerClass, className)} role="navigation">
 				<ul className="slds-grid">
-					{this.props.children}
+					{children}
+				</ul>
+			</nav>
+		);
+	} else {
+		region = (
+			<div className={classNames('slds-context-bar__secondary', dividerClass, className)}>
+				<ul className="slds-grid">
+					{children}
 				</ul>
 			</div>
 		);
-	},
-
-	// ### Render
-	render () {
-		let region;
-		let dividerClass;
-
-		if (this.props.dividerPosition) {
-			dividerClass = `slds-context-bar__item--divider-${this.props.dividerPosition}`;
-		} else if (this.props.dividerPosition === null) {
-			dividerClass = null;
-		} else if (this.props.region === 'primary' && typeof(dividerClass) === 'undefined') {
-			// By default divider position is always `right` for the primary region due to SLDS guidelines. Implicit defaults are bad and this is a compromise to not add yet another import for just the primary region.
-			dividerClass = 'slds-context-bar__item--divider-right';
-		}
-
-		switch (this.props.region) {
-			case 'primary':
-				region = this.renderPrimary(dividerClass);
-				break;
-			case 'secondary':
-				region = this.renderSecondary(dividerClass);
-				break;
-			case 'tertiary':
-				region = this.renderTertiary(dividerClass);
-				break;
-			default:
-				region = null;
-		}
-
-		return region;
 	}
- });
+	return region;
+};
+
+const renderTertiary = (dividerClass, className, children) =>
+	<div className={classNames('slds-context-bar__tertiary', 'slds-col--bump-left', dividerClass, className)}>
+		<ul className="slds-grid">
+			{children}
+		</ul>
+	</div>;
+/* eslint-enable react/display-name */
+
+/**
+ * Regions make up a GlobalNavigation Bar and typically contain links and dropdowns. The Primary region contains the AppSwitcher, Application Name, and Object Switcher. The secondary region typically has navigation betweens sections of the application. The tertiary region is aligned to the right side of the screen and contains shortcuts or actions.
+ */
+const Region = (props) => {
+	let region;
+	let dividerClass;
+
+	if (props.dividerPosition) {
+		dividerClass = `slds-context-bar__item--divider-${this.props.dividerPosition}`;
+	} else if (props.dividerPosition === null) {
+		dividerClass = null;
+	} else if (props.region === 'primary' && typeof(dividerClass) === 'undefined') {
+		// By default divider position is always `right` for the primary region due to SLDS guidelines. Implicit defaults are bad and this is a compromise to not add yet another import for just the primary region.
+		dividerClass = 'slds-context-bar__item--divider-right';
+	}
+
+	switch (props.region) {
+		case 'primary':
+			region = renderPrimary(dividerClass, props.className, props.children);
+			break;
+		case 'secondary':
+			region = renderSecondary(dividerClass, props.className, props.children, props.navigation);
+			break;
+		case 'tertiary':
+			region = renderTertiary(dividerClass, props.className, props.children);
+			break;
+		default:
+			region = null;
+	}
+
+	return region;
+};
+
+Region.displayName = GLOBAL_NAVIGATION_BAR_REGION;
+
+Region.propTypes = {
+	/**
+	 * Contents of region. Expects `GlobalNavigationBarLink`, `GlobalNavigationBarDropdown`, `GlobalNavigationBarApplicationName`, `AppSwitcher`, but could be any component. This is the place to pass in an Object Switcher until that is supported.
+	 */
+	children: PropTypes.node,
+	/**
+	 * Determines position of separating bar. The default is `null` except for the `primary` region which is set to `right` due to design system styling.
+	 */
+	dividerPosition: PropTypes.oneOf(['left', 'right']),
+	/**
+	 * CSS classes to be added to the region
+	 */
+	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	/**
+	 * Wraps the `secondary` region in a `nav` and adds a role attribute
+	 */
+	navigation: PropTypes.bool,
+	/**
+	 * Region wrap children in styling specific to that region.
+	 */
+	region: PropTypes.oneOf(regions)
+};
+
 
 module.exports = Region;
 module.exports.regions = regions;
