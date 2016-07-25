@@ -201,7 +201,7 @@ const MenuDropdown = React.createClass({
 		/**
 		 * An array of menu item.
 		 */
-		options: PropTypes.array.isRequired,
+		options: PropTypes.array,
 		/**
 		 * An object of CSS styles that are applied to the triggering button
 		 */

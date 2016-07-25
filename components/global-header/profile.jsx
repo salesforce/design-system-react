@@ -113,7 +113,7 @@ GlobalHeaderProfile.propTypes = {
 	/**
 	 * An array of menu item.
 	 */
-	options: PropTypes.array.isRequired
+	options: PropTypes.array
 };
 
 // ### Default Props
