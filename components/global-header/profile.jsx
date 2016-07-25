@@ -48,6 +48,7 @@ const GlobalHeaderProfile = (props) => {
 				avatar={avatar || defaultAvatar}
 				className={classnames('slds-m-left--x-small', 'slds-m-right--x-small', buttonClassName)}
 			/>
+			{props.children}
 		</MenuDropdown>
 	);
 };
@@ -63,6 +64,17 @@ GlobalHeaderProfile.propTypes = {
 	 * Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.
 	 */
 	align: PropTypes.oneOf(['left', 'right']),
+	/**
+	 * By default, any children passed into this component will be rendered inside the dropdown menu. If you need custom content and a list, import 'design-system-react/components/menu-list/list' and pass in `<List>`.
+	 *
+	 * ```
+	 * <Dropdown>
+	 *   <div>Look ma! This is Custom Content.</div>
+	 *   <List options={[myArray]}/>
+	 * </Dropdown>
+	 * ```
+	 */
+	children: PropTypes.node,
 	/**
 	 * Extra classnames to apply to the dropdown menu.
 	 */

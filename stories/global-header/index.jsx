@@ -53,10 +53,21 @@ storiesOf(GLOBAL_HEADER, module)
 			<GlobalHeaderProfile
 				onClick={action('Profile Clicked')}
 				onSelect={action('Profile Selected')}
-				options={[
-					{ label: 'Profile Menu' }
-				]}
-			/>
+			>
+				<div id="custom-dropdown-menu-content">
+					<div className="slds-m-around--medium">
+						<div className="slds-tile slds-tile--board slds-m-horizontal--small">
+							<p className="tile__title slds-text-heading--small">Art Vandelay</p>
+							<div className="slds-tile__detail">
+								<p className="slds-truncate">
+									<a className="slds-m-right--medium" href="#">Settings</a>
+									<a href="#" >Log Out</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</GlobalHeaderProfile>
 		</GlobalHeader>
 	))
 	.add('w/ Fewer Elements', () => (
