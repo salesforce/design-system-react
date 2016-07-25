@@ -36,6 +36,9 @@ import ListItemLabel from '../menu-list/list-item-label';
 // This is the the default Dropdown Trigger, which expects one button as a child.
 import DefaultTrigger from './button-trigger';
 
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+
 // ### Traits
 
 // #### KeyboardNavigable
@@ -233,6 +236,9 @@ const MenuDropdown = React.createClass({
 	},
 
 	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(MENU_DROPDOWN, this.props);
+
 		this.generatedId = shortid.generate();
 
 		window.addEventListener('click', this.closeOnClick, false);
