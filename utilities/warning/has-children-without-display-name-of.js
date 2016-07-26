@@ -19,23 +19,23 @@ let hasChildrenWithoutDisplayNameOf = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
+
+	// TODO: allow `displayName` to be an array of displayNames
 	hasChildrenWithoutDisplayNameOf = function (control, children, displayName) {
-		if (React.Children.count(children) !== 0) {
-			const childrenWithNoTriggers = [];
+		const childrenWithoutSelectedDisplayName = [];
 
-			React.Children.forEach(children, (child) => {
-				if (child && child.type.displayName === displayName) {
-					childrenWithNoTriggers.push(child);
-				}
-			});
-
-			if (!hasWarned[control]) {
-				const hasNoChildren = childrenWithNoTriggers.length === 0;
-				/* eslint-disable max-len */
-				warning(hasNoChildren, `[Design System React] No list options and no children that are NOT triggers have been set in ${control}`);
-				/* eslint-enable max-len */
-				hasWarned[control] = !!hasNoChildren;
+		React.Children.forEach(children, (child) => {
+			if (child && child.type.displayName !== displayName) {
+				childrenWithoutSelectedDisplayName.push(child);
 			}
+		});
+
+		if (!hasWarned[control]) {
+			const hasChildrenWithoutSelectedDisplayName = childrenWithoutSelectedDisplayName.length > 0;
+			/* eslint-disable max-len */
+			warning(hasChildrenWithoutSelectedDisplayName, `[Design System React] No list options and no children that are NOT of display name, ${displayName}, have been set in ${control}`);
+			/* eslint-enable max-len */
+			hasWarned[control] = !!hasChildrenWithoutSelectedDisplayName;
 		}
 	};
 }
