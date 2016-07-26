@@ -22,9 +22,6 @@ import classNames from 'classnames';
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
-// ### Event Helpers
-import { EventUtil } from '../../utilities';
-
 // ## Constants
 import { GLOBAL_NAVIGATION_BAR_LINK } from '../../utilities/constants';
 
@@ -81,7 +78,7 @@ GlobalNavigationBarLink.propTypes = {
 	/**
 	 * The `href` attribute of the link. Please pass in bookmarkable URLs from your routing library. Use `GlobalNavigationBarButton` if a "real URL" is not desired. This URL will still be prevented from changing the browser's location and will use the `onClick` callback if specified instead.
 	 */
-	href: PropTypes.string.isRequired,
+	href: PropTypes.string,
 	/**
 	 * Text to show for link item.
 	 */
