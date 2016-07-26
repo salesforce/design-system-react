@@ -44,7 +44,7 @@ const GlobalNavigationBarLink = (props) => {
 
 	function handleClick (event) {
 		if (isFunction(onClick)) {
-			EventUtil.trap(event);
+			event.preventDefault();
 
 			const hrefCheck = href === 'javascript:void(0);' ? undefined : href; // eslint-disable-line no-script-url
 
@@ -79,15 +79,15 @@ GlobalNavigationBarLink.propTypes = {
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
-	 * The href of the link.
+	 * The `href` attribute of the link. Please pass in bookmarkable URLs from your routing library. Use `GlobalNavigationBarButton` if a "real URL" is not desired. This URL will still be prevented from changing the browser's location and will use the `onClick` callback if specified instead.
 	 */
-	href: PropTypes.string,
+	href: PropTypes.string.isRequired,
 	/**
 	 * Text to show for link item.
 	 */
 	label: PropTypes.string,
 	/**
-	 * `function (event)` - fires when the link is clicked. If set, `href` will be ignored, but includes the `href` of the link in the event object.
+	 * `function (event, href)` - fires when the link is clicked. If set, the browser location change to the `href` specified will be ignored, but the `href` will be an additional parameter passed to the callback.
 	 */
 	onClick: PropTypes.func
 };
