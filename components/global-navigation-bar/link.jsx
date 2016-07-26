@@ -36,6 +36,7 @@ const GlobalNavigationBarLink = (props) => {
 	const {
 		active,
 		className,
+		href,
 		label,
 		onClick,
 		...other
@@ -45,14 +46,16 @@ const GlobalNavigationBarLink = (props) => {
 		if (isFunction(onClick)) {
 			EventUtil.trap(event);
 
-			event.href = props.href;
-			onClick(event);
+			const hrefCheck = href === 'javascript:void(0);' ? undefined : href; // eslint-disable-line no-script-url
+
+			onClick(event, hrefCheck);
 		}
 	}
 
 	return (
 		<li className={classNames('slds-context-bar__item', { 'slds-is-active': active })}>
 			<a
+				href={href}
 				className={classNames('slds-context-bar__label-action', className)}
 				onClick={handleClick}
 				{...other}
@@ -87,6 +90,10 @@ GlobalNavigationBarLink.propTypes = {
 	 * `function (event)` - fires when the link is clicked. If set, `href` will be ignored, but includes the `href` of the link in the event object.
 	 */
 	onClick: PropTypes.func
+};
+
+GlobalNavigationBarLink.defaultProps = {
+	href: 'javascript:void(0);' // eslint-disable-line no-script-url
 };
 
 module.exports = GlobalNavigationBarLink;
