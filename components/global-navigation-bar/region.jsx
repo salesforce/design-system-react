@@ -75,7 +75,7 @@ const Region = (props) => {
 	let dividerClass;
 
 	if (props.dividerPosition) {
-		dividerClass = `slds-context-bar__item--divider-${this.props.dividerPosition}`;
+		dividerClass = `slds-context-bar__item--divider-${props.dividerPosition}`;
 	} else if (props.dividerPosition === null) {
 		dividerClass = null;
 	} else if (props.region === 'primary' && typeof(dividerClass) === 'undefined') {
@@ -94,7 +94,7 @@ const Region = (props) => {
 			region = renderTertiary(dividerClass, props.className, props.children);
 			break;
 		default:
-			region = null;
+			// do nothing
 	}
 
 	return region;
@@ -122,7 +122,7 @@ Region.propTypes = {
 	/**
 	 * Region wrap children in styling specific to that region.
 	 */
-	region: PropTypes.oneOf(regions)
+	region: PropTypes.oneOf(regions).isRequired
 };
 
 
