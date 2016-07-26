@@ -177,20 +177,6 @@ describe('Global Navigation Bar: ', () => {
 		});
 	});
 
-	// you'd never actually do this, it's for code coverage
-	describe('Empty Region', () => {
-		beforeEach(mountComponent(
-			<GlobalNavigationBarRegion />
-		));
-
-		afterEach(unmountComponent);
-
-		it('Empty region returns null', function () {
-			const region = this.wrapper;
-			expect(region.html()).to.equal(null);
-		});
-	});
-
 	// TODO still need Dropdown covered. Should be added to Dropdown tests, once special context bar dropdown features are merged into Dropdown
 
 	describe('GlobalNavigationLink child component', () => {
