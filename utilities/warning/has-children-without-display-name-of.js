@@ -10,24 +10,34 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 /* eslint-disable import/no-mutable-exports */
 
-import oneOfRequiredProperty from '../../utilities/warning/one-of-required-property';
-import hasChildrenWithoutDisplayNameOf from '../../utilities/warning/has-children-without-display-name-of';
+import React from 'react';
 
-import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
+// This function will deliver an error message to the browser console when all of the props passed in are undefined (falsey).
+import warning from 'warning';
 
-let checkProps = function () {};
+let hasChildrenWithoutDisplayNameOf = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, props) {
-		oneOfRequiredProperty(COMPONENT, {
-			options: props.options,
-			children: props.children
-		});
+	const hasWarned = {};
+	hasChildrenWithoutDisplayNameOf = function (control, children, displayName) {
+		if (React.Children.count(children) !== 0) {
+			const childrenWithNoTriggers = [];
 
-		if (!props.options) {
-			hasChildrenWithoutDisplayNameOf(COMPONENT, props.children, MENU_DROPDOWN_TRIGGER);
+			React.Children.forEach(children, (child) => {
+				if (child && child.type.displayName === displayName) {
+					childrenWithNoTriggers.push(child);
+				}
+			});
+
+			if (!hasWarned[control]) {
+				const hasNoChildren = childrenWithNoTriggers.length === 0;
+				/* eslint-disable max-len */
+				warning(hasNoChildren, `[Design System React] No list options and no children that are NOT triggers have been set in ${control}`);
+				/* eslint-enable max-len */
+				hasWarned[control] = !!hasNoChildren;
+			}
 		}
 	};
 }
 
-export default checkProps;
+export default hasChildrenWithoutDisplayNameOf;
