@@ -43,7 +43,7 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="secondary" navigation>
 			<GlobalNavigationBarLink
-				href="#"
+				href="http://google.com"
 				label="Home"
 				id="home-link"
 				onClick={linkClicked('Home link clicked')}
@@ -56,18 +56,15 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 				options={dropdownCollection}
 			/>
 			<GlobalNavigationBarLink
-				href="#"
 				label="Menu Item 2"
 				onClick={linkClicked('Link clicked')}
 			/>
 			<GlobalNavigationBarLink
 				active
-				href="#"
 				label="Menu Item 3"
 				onClick={linkClicked('Link clicked')}
 			/>
 			<GlobalNavigationBarLink
-				href="#"
 				label="Menu Item 4"
 				onClick={linkClicked('Link clicked')}
 			/>
@@ -106,7 +103,6 @@ const getGlobalNavigationBarCustomCloud = (props, primaryRegionProps) => (
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="secondary" navigation>
 			<GlobalNavigationBarLink
-				href="#"
 				label="Overview"
 				id="overview-link"
 				onClick={linkClicked('Overview link clicked')}
@@ -130,7 +126,6 @@ const getGlobalNavigationBarCustomCloud = (props, primaryRegionProps) => (
 				options={dropdownCollection}
 			/>
 			<GlobalNavigationBarLink
-				href="#"
 				label="A/B Testing"
 				onClick={linkClicked('A/B Testing Link clicked')}
 			/>
@@ -141,19 +136,16 @@ const getGlobalNavigationBarCustomCloud = (props, primaryRegionProps) => (
 				options={dropdownCollection}
 			/>
 			<GlobalNavigationBarLink
-				href="#"
 				label="Admin"
 				onClick={linkClicked('Admin Link clicked')}
 			/>
 			<GlobalNavigationBarLink
-				href="#"
 				label="Audience Builder"
 				onClick={linkClicked('Audience Builder Link clicked')}
 			/>
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="tertiary">
 			<GlobalNavigationBarLink
-				href="#"
 				label="Actions"
 				onClick={linkClicked('Link clicked')}
 			/>
@@ -181,7 +173,6 @@ const getGlobalNavigationBarCustomCloudOverviewAcive = (props, primaryRegionProp
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="secondary" navigation>
 			<GlobalNavigationBarLink
-				href="#"
 				label="Overview"
 				id="overview-link"
 				active
@@ -206,7 +197,6 @@ const getGlobalNavigationBarCustomCloudOverviewAcive = (props, primaryRegionProp
 				options={dropdownCollection}
 			/>
 			<GlobalNavigationBarLink
-				href="#"
 				label="A/B Testing"
 				onClick={linkClicked('A/B Testing Link clicked')}
 			/>
@@ -217,19 +207,16 @@ const getGlobalNavigationBarCustomCloudOverviewAcive = (props, primaryRegionProp
 				options={dropdownCollection}
 			/>
 			<GlobalNavigationBarLink
-				href="#"
 				label="Admin"
 				onClick={linkClicked('Admin Link clicked')}
 			/>
 			<GlobalNavigationBarLink
-				href="#"
 				label="Audience Builder"
 				onClick={linkClicked('Audience Builder Link clicked')}
 			/>
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="tertiary">
 			<GlobalNavigationBarLink
-				href="#"
 				label="Actions"
 				onClick={linkClicked('Link clicked')}
 			/>

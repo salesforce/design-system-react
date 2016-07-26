@@ -180,27 +180,40 @@ describe('Global Navigation Bar: ', () => {
 	// TODO still need Dropdown covered. Should be added to Dropdown tests, once special context bar dropdown features are merged into Dropdown
 
 	describe('GlobalNavigationLink child component', () => {
-		it('GlobalNavigationBarLink has attributes and onClick runs callback', function () {
-			const linkClicked = sinon.spy();
+		let linkClicked;
+		let link;
+
+		beforeEach(function () {
+			linkClicked = sinon.spy();
 			const instance = (
 				<GlobalNavigationBarLink
+					href="http://google.com"
 					label="Home"
 					id="home-link"
 					onClick={linkClicked('Home link clicked')}
 				/>
 			);
 			this.wrapper = mount(instance, { attachTo: document.body.appendChild(document.createElement('div')) });
-			const link = this.wrapper.find('#home-link');
+			link = this.wrapper.find('#home-link');
+		});
+
+		afterEach(function () {
+			this.wrapper.unmount();
+		});
+
+		it('GlobalNavigationBarLink has attributes and onClick runs callback', function () {
 			expect(link.text()).to.equal('Home');
 			link.simulate('click');
 			expect(linkClicked.calledOnce).to.be.true;
+		});
 
-			this.wrapper.unmount();
+		it('renders href if passed', () => {
+			expect(link).to.have.attr('href', 'http://google.com');
 		});
 	});
 
 	describe('GlobalNavigationButton child component', () => {
-		it('GlobalNavigationBarLink has attributes and onClick runs callback', function () {
+		it('GlobalNavigationBarButton has attributes and onClick runs callback', function () {
 			const buttonClicked = sinon.spy();
 			const instance = (
 				<GlobalNavigationBarButton

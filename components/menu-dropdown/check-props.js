@@ -8,35 +8,26 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-/* eslint-disable indent */
+/* eslint-disable import/no-mutable-exports */
 
-// This function will deliver an error message to the browser console when all of the props passed in are undefined (falsey).
-import warning from 'warning';
+import oneOfRequiredProperty from '../../utilities/warning/one-of-required-property';
+import hasChildrenWithoutDisplayNameOf from '../../utilities/warning/has-children-without-display-name-of';
 
-let oneOfRequired;
+import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
+
+let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
-	const hasWarned = {};
-
-	oneOfRequired = function (control, selectedProps, comment) {
-		const additionalComment = comment ? ` ${comment}` : '';
-		let atLeastOnePropIsSet = false;
-		const keys = Object.keys(selectedProps);
-		keys.forEach((key) => {
-			if (selectedProps[key]) {
-				atLeastOnePropIsSet = true;
-			}
+	checkProps = function (COMPONENT, props) {
+		oneOfRequiredProperty(COMPONENT, {
+			options: props.options,
+			children: props.children
 		});
 
-		if (!hasWarned[control]) {
-			/* eslint-disable max-len */
-			warning(atLeastOnePropIsSet, `[Design System React] One of the following props are required by ${control}: [${keys.join()}].${additionalComment}`);
-			/* eslint-enable max-len */
-			hasWarned[control] = !!selectedProps;
+		if (!props.options) {
+			hasChildrenWithoutDisplayNameOf(COMPONENT, props.children, MENU_DROPDOWN_TRIGGER);
 		}
 	};
-} else {
-	oneOfRequired = function () {};
 }
 
-module.exports = oneOfRequired;
+export default checkProps;

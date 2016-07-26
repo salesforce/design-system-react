@@ -8,35 +8,36 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-/* eslint-disable indent */
+/* eslint-disable import/no-mutable-exports */
+
+import React from 'react';
 
 // This function will deliver an error message to the browser console when all of the props passed in are undefined (falsey).
 import warning from 'warning';
 
-let oneOfRequired;
+let hasChildrenWithoutDisplayNameOf = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
+	hasChildrenWithoutDisplayNameOf = function (control, children, displayName) {
+		if (React.Children.count(children) !== 0) {
+			const childrenWithNoTriggers = [];
 
-	oneOfRequired = function (control, selectedProps, comment) {
-		const additionalComment = comment ? ` ${comment}` : '';
-		let atLeastOnePropIsSet = false;
-		const keys = Object.keys(selectedProps);
-		keys.forEach((key) => {
-			if (selectedProps[key]) {
-				atLeastOnePropIsSet = true;
+			React.Children.forEach(children, (child) => {
+				if (child && child.type.displayName === displayName) {
+					childrenWithNoTriggers.push(child);
+				}
+			});
+
+			if (!hasWarned[control]) {
+				const hasNoChildren = childrenWithNoTriggers.length === 0;
+				/* eslint-disable max-len */
+				warning(hasNoChildren, `[Design System React] No list options and no children that are NOT triggers have been set in ${control}`);
+				/* eslint-enable max-len */
+				hasWarned[control] = !!hasNoChildren;
 			}
-		});
-
-		if (!hasWarned[control]) {
-			/* eslint-disable max-len */
-			warning(atLeastOnePropIsSet, `[Design System React] One of the following props are required by ${control}: [${keys.join()}].${additionalComment}`);
-			/* eslint-enable max-len */
-			hasWarned[control] = !!selectedProps;
 		}
 	};
-} else {
-	oneOfRequired = function () {};
 }
 
-module.exports = oneOfRequired;
+export default hasChildrenWithoutDisplayNameOf;

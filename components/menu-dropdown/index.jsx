@@ -36,6 +36,9 @@ import ListItemLabel from '../menu-list/list-item-label';
 // This is the the default Dropdown Trigger, which expects one button as a child.
 import DefaultTrigger from './button-trigger';
 
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+
 // ### Traits
 
 // #### KeyboardNavigable
@@ -81,12 +84,16 @@ const MenuDropdown = React.createClass({
 		 */
 		checkmark: PropTypes.bool,
 		/**
-		 * If no children are present, a default button will be rendered with an arrow. Import the module `design-system-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button. Any `id` prop or event hanlders (`onBlur`, `onClick`, etc.) set on the button grandchild will be overwritten by `MenuDropdown` to enable functionality and accessibility.
+		 * By default, any children passed into this component will be rendered inside the dropdown menu. If you need custom content and a list, import 'design-system-react/components/menu-list/list' and pass in `<List>`.
+		 *
+		 * If you need to modify the trigger button, import the module `design-system-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button. Any `id` prop or event hanlders (`onBlur`, `onClick`, etc.) set on the button grandchild will be overwritten by `MenuDropdown` to enable functionality and accessibility. A custom trigger child will not be considered content for the dropdown menu.
 		 * ```
 		 * <Dropdown>
 		 *   <Trigger>
 		 *     <Button iconCategory="utility" iconName="settings" />
 		 *   </Trigger>
+		 *   <div>Look ma! This is Custom Content.</div>
+		 *   <List options={[myArray]}/>
 		 * </Dropdown>
 		 * ```
 		 */
@@ -197,7 +204,7 @@ const MenuDropdown = React.createClass({
 		/**
 		 * An array of menu item.
 		 */
-		options: PropTypes.array.isRequired,
+		options: PropTypes.array,
 		/**
 		 * An object of CSS styles that are applied to the triggering button
 		 */
@@ -229,6 +236,9 @@ const MenuDropdown = React.createClass({
 	},
 
 	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(MENU_DROPDOWN, this.props);
+
 		this.generatedId = shortid.generate();
 
 		window.addEventListener('click', this.closeOnClick, false);
