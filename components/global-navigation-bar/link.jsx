@@ -22,11 +22,14 @@ import classNames from 'classnames';
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
-// ### Event Helpers
-import { EventUtil } from '../../utilities';
-
 // ## Constants
 import { GLOBAL_NAVIGATION_BAR_LINK } from '../../utilities/constants';
+
+function handleClick (event, href, onClick) {
+	event.preventDefault();
+
+	onClick(event, { href });
+}
 
 /**
  * Wraps a link in the proper markup to support use in the GlobalNavigationBar.
@@ -42,22 +45,12 @@ const GlobalNavigationBarLink = (props) => {
 		...other
 	} = props;
 
-	function handleClick (event) {
-		if (isFunction(onClick)) {
-			EventUtil.trap(event);
-
-			const hrefCheck = href === 'javascript:void(0);' ? undefined : href; // eslint-disable-line no-script-url
-
-			onClick(event, hrefCheck);
-		}
-	}
-
 	return (
 		<li className={classNames('slds-context-bar__item', { 'slds-is-active': active })}>
 			<a
 				href={href}
 				className={classNames('slds-context-bar__label-action', className)}
-				onClick={handleClick}
+				onClick={isFunction(onClick) ? (event) => handleClick(event, href, onClick) : null}
 				{...other}
 			>
 				<span className="slds-truncate">{label}</span>
@@ -79,7 +72,7 @@ GlobalNavigationBarLink.propTypes = {
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
-	 * The href of the link.
+	 * The `href` attribute of the link. Please pass in bookmarkable URLs from your routing library. Use `GlobalNavigationBarButton` if a "real URL" is not desired. If the `onClick` callback is specified this URL will still be prevented from changing the browser's location.
 	 */
 	href: PropTypes.string,
 	/**
@@ -87,7 +80,7 @@ GlobalNavigationBarLink.propTypes = {
 	 */
 	label: PropTypes.string,
 	/**
-	 * `function (event)` - fires when the link is clicked. If set, `href` will be ignored, but includes the `href` of the link in the event object.
+	 * `function (event, href)` - fires when the link is clicked. If set, the browser location change to the `href` specified will be ignored, but the `href` will be included in an additional parameter passed to the callback.
 	 */
 	onClick: PropTypes.func
 };

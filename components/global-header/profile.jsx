@@ -33,6 +33,7 @@ const GlobalHeaderProfile = (props) => {
 	const {
 		avatar,
 		buttonClassName,
+		children,
 		...rest
 	} = props;
 
@@ -48,7 +49,7 @@ const GlobalHeaderProfile = (props) => {
 				avatar={avatar || defaultAvatar}
 				className={classnames('slds-m-left--x-small', 'slds-m-right--x-small', buttonClassName)}
 			/>
-			{props.children}
+			{children}
 		</MenuDropdown>
 	);
 };
