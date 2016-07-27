@@ -2,6 +2,14 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.2.1
+
+**BREAKING CHANGES**
+- Updates the GlobalNavigationBarLink to pass `{ href }` as the second parameter
+
+**MAJOR CHANGES**
+- Remove `trapEvent` from GlobalNavigationBarLink and replace with `preventDefault` to allow clicks to bubble up
+
 ## Release 0.2.0
 
 **BREAKING CHANGES**

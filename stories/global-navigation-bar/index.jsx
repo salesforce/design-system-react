@@ -43,10 +43,10 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 		</GlobalNavigationBarRegion>
 		<GlobalNavigationBarRegion region="secondary" navigation>
 			<GlobalNavigationBarLink
-				href="http://google.com"
+				href="https://www.lightningdesignsystem.com/"
 				label="Home"
 				id="home-link"
-				onClick={linkClicked('Home link clicked')}
+				onClick={linkClicked('Home link clicked. Actual href should be ignored')}
 			/>
 			<GlobalNavigationBarDropdown
 				assistiveText="Open Menu Item 1"
@@ -56,8 +56,9 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 				options={dropdownCollection}
 			/>
 			<GlobalNavigationBarLink
+				// will actually go to website
+				href="https://www.lightningdesignsystem.com/"
 				label="Menu Item 2"
-				onClick={linkClicked('Link clicked')}
 			/>
 			<GlobalNavigationBarLink
 				active
