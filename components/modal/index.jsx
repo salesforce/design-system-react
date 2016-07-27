@@ -67,9 +67,7 @@ const propTypes = {
 
 const defaultProps = {
 	align: 'center',
-	directional: false,
-	dismissible: true,
-	isOpen: false
+	dismissible: true
 };
 
 /**
