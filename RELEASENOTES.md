@@ -2,6 +2,12 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.2.1
+
+**BREAKING CHANGES**
+- Updates the GlobalNavigationBarLink to pass `{ href }` as the second parameter.
+
+
 ## Release 0.2.0
 
 **BREAKING CHANGES**
