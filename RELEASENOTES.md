@@ -10,6 +10,10 @@
 **MAJOR CHANGES**
 - Remove `trapEvent` from GlobalNavigationBarLink and replace with `preventDefault` to allow clicks to bubble up
 
+**OTHER**
+- Updates the icon script to lowercase names
+
+
 ## Release 0.2.0
 
 **BREAKING CHANGES**

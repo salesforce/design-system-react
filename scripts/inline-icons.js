@@ -50,17 +50,19 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 	let viewBox;
 	async.each(sprite.svg.symbol, (symbol, iconDone) => {
 		let data = omit(symbol, ['id']);
+		const iconName = symbol.id.toLowerCase();
+
 		const icon = [
 			license,
 			`module.exports = ${JSON.stringify(data)};`,
 			''
 		];
 
-		outputFile(`${spriteType}/${symbol.id}`, icon, iconDone);
+		outputFile(`${spriteType}/${iconName}`, icon, iconDone);
 
 		if (!viewBox) viewBox = data.viewBox;
 		data = omit(data, ['viewBox']);
-		index.push(`${symbol.id}:${JSON.stringify(data)},`);
+		index.push(`${iconName}:${JSON.stringify(data)},`);
 	}, err => {
 		if (err) console.error(err);
 	});
