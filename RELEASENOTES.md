@@ -9,9 +9,13 @@
 
 **MAJOR CHANGES**
 - Remove `trapEvent` from GlobalNavigationBarLink and replace with `preventDefault` to allow clicks to bubble up
+- Adds support for custom content to Global Header profile
+- Cleans up the dividerPosition of Nav Region
 
 **OTHER**
 - Updates the icon script to lowercase names
+- Makes the Nav Menu trigger use chevron icon
+- Corrects check props for profile children
 
 
 ## Release 0.2.0
