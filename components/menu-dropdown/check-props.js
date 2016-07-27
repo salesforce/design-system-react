@@ -25,7 +25,12 @@ if (process.env.NODE_ENV !== 'production') {
 		});
 
 		if (!props.options) {
-			hasChildrenWithoutDisplayNameOf(COMPONENT, props.children, MENU_DROPDOWN_TRIGGER);
+			hasChildrenWithoutDisplayNameOf(
+				COMPONENT,
+				props.children,
+				MENU_DROPDOWN_TRIGGER,
+				'Please add a Dropdown options prop or additional children.'
+			);
 		}
 	};
 }

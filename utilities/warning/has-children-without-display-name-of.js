@@ -21,7 +21,8 @@ if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
 
 	// TODO: allow `displayName` to be an array of displayNames
-	hasChildrenWithoutDisplayNameOf = function (control, children, displayName) {
+	hasChildrenWithoutDisplayNameOf = function (control, children, displayName, comment) {
+		const additionalComment = comment ? ` ${comment}` : '';
 		const childrenWithoutSelectedDisplayName = [];
 
 		React.Children.forEach(children, (child) => {
@@ -33,7 +34,7 @@ if (process.env.NODE_ENV !== 'production') {
 		if (!hasWarned[control]) {
 			const hasChildrenWithoutSelectedDisplayName = childrenWithoutSelectedDisplayName.length > 0;
 			/* eslint-disable max-len */
-			warning(hasChildrenWithoutSelectedDisplayName, `[Design System React] No list options and no children that are NOT of display name, ${displayName}, have been set in ${control}`);
+			warning(hasChildrenWithoutSelectedDisplayName, `[Design System React] There are no children present that do NOT have the display name, ${displayName}, in ${control}.${additionalComment}`);
 			/* eslint-enable max-len */
 			hasWarned[control] = !!hasChildrenWithoutSelectedDisplayName;
 		}
