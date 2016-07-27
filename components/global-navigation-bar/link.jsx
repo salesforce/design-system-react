@@ -28,6 +28,12 @@ import { EventUtil } from '../../utilities';
 // ## Constants
 import { GLOBAL_NAVIGATION_BAR_LINK } from '../../utilities/constants';
 
+function handleClick (event, href, onClick) {
+	EventUtil.trap(event);
+
+	onClick(event, { href });
+}
+
 /**
  * Wraps a link in the proper markup to support use in the GlobalNavigationBar.
  */
@@ -42,22 +48,12 @@ const GlobalNavigationBarLink = (props) => {
 		...other
 	} = props;
 
-	function handleClick (event) {
-		if (isFunction(onClick)) {
-			EventUtil.trap(event);
-
-			const hrefCheck = href === 'javascript:void(0);' ? undefined : href; // eslint-disable-line no-script-url
-
-			onClick(event, hrefCheck);
-		}
-	}
-
 	return (
 		<li className={classNames('slds-context-bar__item', { 'slds-is-active': active })}>
 			<a
 				href={href}
 				className={classNames('slds-context-bar__label-action', className)}
-				onClick={handleClick}
+				onClick={isFunction(onClick) ? (event) => handleClick(event, href, onClick) : null}
 				{...other}
 			>
 				<span className="slds-truncate">{label}</span>
@@ -87,7 +83,7 @@ GlobalNavigationBarLink.propTypes = {
 	 */
 	label: PropTypes.string,
 	/**
-	 * `function (event)` - fires when the link is clicked. If set, `href` will be ignored, but includes the `href` of the link in the event object.
+	 * `function (event)` - fires when the link is clicked. If set, `href` will be ignored, but includes a second parameter with the `href` of the link.
 	 */
 	onClick: PropTypes.func
 };

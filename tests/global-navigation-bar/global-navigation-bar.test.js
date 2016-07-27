@@ -94,7 +94,6 @@ describe('Global Navigation Bar: ', () => {
 				/>
 				<GlobalNavigationBarRegion region="secondary" navigation dividerPosition="right">
 					<GlobalNavigationBarLink
-						href="#"
 						label="Home"
 						id="home-link"
 						onClick={linkClicked('Home link clicked')}
@@ -107,7 +106,6 @@ describe('Global Navigation Bar: ', () => {
 					/>
 					<GlobalNavigationBarLink
 						active
-						href="#"
 						id="menu-item-2"
 						label="Global Navigation Menu Item 2"
 						onClick={linkClicked('Link clicked')}
@@ -122,7 +120,6 @@ describe('Global Navigation Bar: ', () => {
 				</GlobalNavigationBarRegion>
 				<GlobalNavigationBarRegion region="tertiary">
 					<GlobalNavigationBarLink
-						href="#"
 						label="Actions"
 						onClick={linkClicked('Link clicked')}
 					/>
