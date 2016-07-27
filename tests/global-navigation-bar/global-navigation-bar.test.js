@@ -1,5 +1,7 @@
-/* global describe, beforeEach, afterEach, it, sinon */
+/* eslint-env mocha */
+/* eslint-disable prefer-arrow-callback */
 /* eslint-disable no-unused-expressions */
+/* global sinon */
 
 // TODO: Enzyme 2.3 does not support React components containing SVGs
 // https://github.com/airbnb/enzyme/issues/375
@@ -86,9 +88,12 @@ describe('Global Navigation Bar: ', () => {
 				<GlobalNavigationBarRegion
 					region="primary"
 				/>
-				<GlobalNavigationBarRegion region="secondary" navigation>
+				<GlobalNavigationBarRegion
+					region="primary"
+					dividerPosition={null}
+				/>
+				<GlobalNavigationBarRegion region="secondary" navigation dividerPosition="right">
 					<GlobalNavigationBarLink
-						href="#"
 						label="Home"
 						id="home-link"
 						onClick={linkClicked('Home link clicked')}
@@ -101,7 +106,6 @@ describe('Global Navigation Bar: ', () => {
 					/>
 					<GlobalNavigationBarLink
 						active
-						href="#"
 						id="menu-item-2"
 						label="Global Navigation Menu Item 2"
 						onClick={linkClicked('Link clicked')}
@@ -116,7 +120,6 @@ describe('Global Navigation Bar: ', () => {
 				</GlobalNavigationBarRegion>
 				<GlobalNavigationBarRegion region="tertiary">
 					<GlobalNavigationBarLink
-						href="#"
 						label="Actions"
 						onClick={linkClicked('Link clicked')}
 					/>
@@ -137,9 +140,9 @@ describe('Global Navigation Bar: ', () => {
 
 		afterEach(unmountComponent);
 
-		it('has a primary, secondary, and tertiary region', function () {
+		it('has 2 primary, 1 secondary, and 1 tertiary region', function () {
 			const primary = this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`);
-			expect(primary).to.have.length(1);
+			expect(primary).to.have.length(2);
 
 			const secondary = this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`);
 			expect(secondary).to.have.length(1);
@@ -148,14 +151,16 @@ describe('Global Navigation Bar: ', () => {
 			expect(tertiary).to.have.length(1);
 		});
 
-		it('Primary region has divider on right', function () {
+		it('First primary region in example has divider on right by default, second primary region does not', function () {
 			const primary = this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`);
-			expect(primary.node.className).to.include('slds-context-bar__item--divider-right');
+			expect(primary.nodes[0].className).to.include('slds-context-bar__item--divider-right');
+			expect(primary.nodes[1].className).to.not.include('slds-context-bar__item--divider-right');
 		});
 
-		it('Secondary region application is a nav HTML element', function () {
+		it('Secondary region application is a nav HTML element and has divider on right side', function () {
 			const nav = this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`);
 			expect(nav.type()).to.equal('nav');
+			expect(nav.node.className).to.include('slds-context-bar__item--divider-right');
 		});
 
 		it('displays active items as active', function () {
@@ -174,20 +179,6 @@ describe('Global Navigation Bar: ', () => {
 		it('Secondary region application is div and not a nav', function () {
 			const nav = this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`);
 			expect(nav.type()).to.equal('div');
-		});
-	});
-
-	// you'd never actually do this, it's for code coverage
-	describe('Empty Region', () => {
-		beforeEach(mountComponent(
-			<GlobalNavigationBarRegion />
-		));
-
-		afterEach(unmountComponent);
-
-		it('Empty region returns null', function () {
-			const region = this.wrapper;
-			expect(region.html()).to.equal(null);
 		});
 	});
 
