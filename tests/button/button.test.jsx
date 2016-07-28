@@ -1,4 +1,5 @@
-/* global describe, it, before, after, beforeEach, afterEach, sinon */
+/* eslint-env mocha */
+/* global sinon */
 /* eslint-disable react/display-name */
 
 import React from 'react';
