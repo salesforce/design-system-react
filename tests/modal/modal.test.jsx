@@ -93,6 +93,28 @@ describe('SLDSModal: ', function () {
 		});
 	});
 
+	describe('Open with custom header and header className', () => {
+		let modal;
+
+		beforeEach(() => {
+			getModal({
+				header: <div id="art-vandelay">Art vandelay</div>,
+				headerClassName: 'art-vandelay',
+				isOpen: true
+			});
+			modal = getModalNode(document.body);
+		});
+
+		it('adds the header', () => {
+			const customHeader = modal.querySelector('#art-vandelay');
+			expect(customHeader).to.not.be.null;
+		});
+
+		it('adds the custom header class', () => {
+			expect(modal.querySelector('.slds-modal__header').className).to.include('art-vandelay');
+		});
+	});
+
 
 	describe('Open with Prompt and Footer', () => {
 		let modal;
@@ -102,7 +124,8 @@ describe('SLDSModal: ', function () {
 			getModal({
 				isOpen: true,
 				prompt: 'warning',
-				footer: feet });
+				footer: feet
+			});
 			modal = getModalNode(document.body);
 		});
 

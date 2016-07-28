@@ -33,6 +33,10 @@ const propTypes = {
 	 */
 	children: React.PropTypes.node.isRequired,
 	/**
+	  * Custom css classes for modal container.
+	  */
+	containerClassName: React.PropTypes.string,
+	/**
 	 * If true, modal footer buttons render left and right. An example use case would be for "back" and "next" buttons.
 	 */
 	directional: React.PropTypes.bool,
@@ -52,17 +56,24 @@ const propTypes = {
 	 * Array of buttons to be placed in the footer. They render on the right side by default but are floated left and right if <code>directional</code> is true.
 	 */
 	footer: React.PropTypes.array,
-	isOpen: React.PropTypes.bool.isRequired,
 	/**
-	 * Custom css classes for modal container.
+	 * Allows for a custom modal header that does not scroll with modal content. If this is defined, `title` and `tagline` will be ignored. The close button will still be present.
 	 */
-	containerClassName: React.PropTypes.string,
+	header: React.PropTypes.node,
+	/**
+	 * Adds CSS classes to the container surrounding the modal header and the close button.
+	 */
+	headerClassName: React.PropTypes.node,
+	isOpen: React.PropTypes.bool.isRequired,
 	prompt: React.PropTypes.oneOf(['success', 'warning', 'error', 'wrench', 'offline', 'info']),
 	size: React.PropTypes.oneOf(['medium', 'large']),
 	/**
-	 * Content underneath the title.
+	 * Content underneath the title in the modal header.
 	 */
 	tagline: React.PropTypes.node,
+	/**
+	 * Text heading at the top of a modal.
+	 */
 	title: React.PropTypes.node,
 	toast: React.PropTypes.node
 };
@@ -204,24 +215,19 @@ class Modal extends React.Component {
 	}
 
 	headerComponent () {
-		let headerContent = null;
-		const hasHeader = this.props.title || this.props.tagline;
+		let headerContent = this.props.header;
 		const prompClass = this.isPrompt() ? `slds-theme--${this.props.prompt}` : null;
-		const headerClass = {
-			'slds-modal__header': hasHeader,
-			prompClass,
-			'slds-theme--alert-texture': this.isPrompt()
-		};
-		const titleClass = {
-			'slds-text-heading--small': this.isPrompt(),
-			'slds-text-heading--medium': !this.isPrompt()
-		};
 
-		if (hasHeader) {
+		if (!headerContent && this.props.title || this.props.tagline) {
 			headerContent = (
 				<div>
 					{this.props.toast}
-					<h2 className={classNames(titleClass)}>{this.props.title}</h2>
+					<h2
+						className={classNames({
+							'slds-text-heading--small': this.isPrompt(),
+							'slds-text-heading--medium': !this.isPrompt()
+						})}
+					>{this.props.title}</h2>
 					{this.props.tagline ? <p className="slds-m-top--x-small">{this.props.tagline}</p> : null}
 				</div>
 			);
@@ -229,8 +235,12 @@ class Modal extends React.Component {
 
 		return (
 			<div
-				className={classNames(headerClass)}
-				style={{ position: 'relative' }}
+				className={classNames({
+					'slds-modal__header': headerContent,
+					prompClass,
+					'slds-theme--alert-texture': this.isPrompt()
+				},
+				this.props.headerClassName)}
 				onClick={this.handleModalClick}
 			>
 				<Button
@@ -248,13 +258,6 @@ class Modal extends React.Component {
 	}
 
 	getModal () {
-		const componentClassname = {
-			'slds-modal': true,
-			'slds-fade-in-open': this.state.revealed,
-			'slds-modal--large': this.props.size === 'large',
-			'slds-modal--prompt': this.isPrompt()
-		};
-
 		const modalStyle = this.props.align === 'top' ? { justifyContent: 'flex-start' } : null;
 		const contentStyle = this.props.title ? null : { borderRadius: '.25rem' };
 		return (
@@ -262,10 +265,15 @@ class Modal extends React.Component {
 				<div
 					aria-hidden="false"
 					role="dialog"
-					className={classNames(componentClassname)}
+					className={classNames({
+						'slds-modal': true,
+						'slds-fade-in-open': this.state.revealed,
+						'slds-modal--large': this.props.size === 'large',
+						'slds-modal--prompt': this.isPrompt()
+					})}
 					onClick={this.dismissModalOnClickOutside}
 				>
-					<div className={classNames(this.props.containerClassName, 'slds-modal__container')} style={modalStyle}>
+					<div className={classNames('slds-modal__container', this.props.containerClassName)} style={modalStyle}>
 						{this.headerComponent()}
 						<div className="slds-modal__content" style={contentStyle} onClick={this.handleModalClick}>
 							{this.props.children}
