@@ -153,7 +153,7 @@ export default class TextTruncate extends Component {
 
 		while (displayLine--) {
 			let ext;
-			if (prefix && displayLine === line) {
+			if (prefix && displayLine === line - 1) {
 				ext = prefix;
 			} else if (!displayLine) {
 				ext = `${truncateText} ${childText}`;

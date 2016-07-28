@@ -20,7 +20,7 @@ import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 
 // ### Truncate
-import truncate from '../utilities/truncate';
+import Truncate from '../utilities/truncate';
 
 // ### [].includes
 // Polyfill for array.includes
@@ -133,16 +133,24 @@ const AppLauncherTile = React.createClass({
 					</div>
 					: <div className="slds-app-launcher__tile-body">
 						<Highlighter className="slds-text-link" search={this.props.search}>{this.props.title}</Highlighter>
-						<div>
-							<Highlighter search={this.props.search}>
-								{truncate({
-									inputString: this.props.description,
-									maxLength: 64
-								})}
-							</Highlighter>
-							{' '}
-							{this.getMoreRender()}
-						</div>
+						<Truncate
+							line={2}
+							prefix="SUBHEADING"
+							suffix={this.props.moreLabel}
+							truncateText="…"
+							text={this.props.description}
+							wrapper={(text) =>
+								<div>
+									SUBHEADING
+									{' '}
+									<Highlighter search={this.props.search}>
+										{text}
+									</Highlighter>
+									{' '}
+									{this.getMoreRender()}
+								</div>
+							}
+						/>
 					</div>
 				}
 			</a>
