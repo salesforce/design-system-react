@@ -78,8 +78,8 @@ const Region = (props) => {
 		dividerClass = `slds-context-bar__item--divider-${props.dividerPosition}`;
 	} else if (props.dividerPosition === null) {
 		dividerClass = null;
-	} else if (props.region === 'primary' && typeof(dividerClass) === 'undefined') {
-		// By default divider position is always `right` for the primary region due to SLDS guidelines. Implicit defaults are bad and this is a compromise to not add yet another import for just the primary region.
+	} else if (props.region === 'primary') {
+		// Although an implicit default, divider position is `right` for the primary region per the design system.
 		dividerClass = 'slds-context-bar__item--divider-right';
 	}
 
@@ -122,7 +122,7 @@ Region.propTypes = {
 	/**
 	 * Region wrap children in styling specific to that region.
 	 */
-	region: PropTypes.oneOf(regions).isRequired
+	region: PropTypes.oneOf(['primary', 'secondary', 'tertiary']).isRequired
 };
 
 
