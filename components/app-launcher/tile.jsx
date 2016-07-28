@@ -20,9 +20,7 @@ import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 
 // ### Truncate
-// Truncate multi-lines text for all browsers
-// [github.com/ShinyChang/react-text-truncate](https://github.com/ShinyChang/react-text-truncate)
-import Truncate from 'react-text-truncate';
+import truncate from '../utilities/truncate';
 
 // ### [].includes
 // Polyfill for array.includes
@@ -135,12 +133,16 @@ const AppLauncherTile = React.createClass({
 					</div>
 					: <div className="slds-app-launcher__tile-body">
 						<Highlighter className="slds-text-link" search={this.props.search}>{this.props.title}</Highlighter>
-						<Truncate
-							line={2}
-							truncateText="…"
-							text={this.props.description}
-							textTruncateChild={this.getMoreRender()}
-						/>
+						<div>
+							<Highlighter search={this.props.search}>
+								{truncate({
+									inputString: this.props.description,
+									maxLength: 64
+								})}
+							</Highlighter>
+							{' '}
+							{this.getMoreRender()}
+						</div>
 					</div>
 				}
 			</a>
