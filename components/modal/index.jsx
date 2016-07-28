@@ -7,88 +7,69 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+/* eslint-disable react/prefer-es6-class */
+
 // Implements the [Modal design pattern](https://core-204.lightningdesignsystem.com/components/modals) in React.
 // Based on SLDS v2.1.0-rc.3
 
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import Button from "../button";
-import classNames from "classnames";
-import ReactModal from "react-modal";
+import Button from '../button';
+import classNames from 'classnames';
+import ReactModal from 'react-modal';
 
 // ### isBoolean
 import isBoolean from 'lodash.isboolean';
 
-const customStyles = {
-  content : {
-    position                : "default",
-    top                     : "default",
-    left                    : "default",
-    right                   : "default",
-    bottom                  : "default",
-    border                  : "default",
-    background              : "default",
-    overflow                : "default",
-    WebkitOverflowScrolling : "default",
-    borderRadius            : "default",
-    outline                 : "default",
-    padding                 : "default"
-  },
-  overlay : {
-    position: "static",
-    backgroundColor: "default"
-  }
+const displayName = 'Modal';
+const propTypes = {
+	/**
+	 * Vertical alignment of Modal.
+	 */
+	align: React.PropTypes.oneOf(['top', 'center']),
+	/**
+	 * Modal content.
+	 */
+	children: React.PropTypes.node.isRequired,
+	/**
+	 * If true, modal footer buttons render left and right. An example use case would be for "back" and "next" buttons.
+	 */
+	directional: React.PropTypes.bool,
+	/**
+	 * If true, Modals can be dismissed by clicking on the close icon or pressing esc key.
+	 */
+	dismissible: React.PropTypes.bool,
+	/**
+	 * If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to dismissible.
+	 */
+	dismissOnClickOutside: React.PropTypes.bool,
+	/**
+	 * Callback to fire with Modal is dismissed
+	*/
+	onRequestClose: React.PropTypes.func,
+	/**
+	 * Array of buttons to be placed in the footer. They render on the right side by default but are floated left and right if <code>directional</code> is true.
+	 */
+	footer: React.PropTypes.array,
+	isOpen: React.PropTypes.bool.isRequired,
+	/**
+	 * Custom css classes for modal container.
+	 */
+	containerClassName: React.PropTypes.string,
+	prompt: React.PropTypes.oneOf(['success', 'warning', 'error', 'wrench', 'offline', 'info']),
+	size: React.PropTypes.oneOf(['medium', 'large']),
+	/**
+	 * Content underneath the title.
+	 */
+	tagline: React.PropTypes.node,
+	title: React.PropTypes.node,
+	toast: React.PropTypes.node
 };
 
-const displayName = "Modal";
-const propTypes = {
-  /**
-   * Vertical alignment of Modal.
-   */
-  align: React.PropTypes.oneOf(["top", "center"]),
-  /**
-   * Modal content.
-   */
-  children: React.PropTypes.node.isRequired,
-  /**
-   * If true, modal footer buttons render left and right. An example use case would be for "back" and "next" buttons.
-   */
-  directional: React.PropTypes.bool,
-  /**
-   * If true, Modals can be dismissed by clicking on the close icon or pressing esc key.
-   */
-  dismissible: React.PropTypes.bool,
-  /**
-   * If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to dismissible.
-   */
-  dismissOnClickOutside: React.PropTypes.bool,
-  /**
-   * Callback to fire with Modal is dismissed
-  */
-  onRequestClose: React.PropTypes.func,
-  /**
-   * Array of buttons to be placed in the footer. They render on the right side by default but are floated left and right if <code>directional</code> is true.
-   */
-  footer: React.PropTypes.array,
-  isOpen: React.PropTypes.bool.isRequired,
-  /**
-   * Custom css classes for modal container.
-   */
-  containerClassName: React.PropTypes.string,
-  prompt: React.PropTypes.oneOf(["success", "warning", "error", "wrench", "offline", "info"]),
-  size: React.PropTypes.oneOf(["medium", "large"]),
-  /**
-   * Content underneath the title.
-   */
-  tagline: React.PropTypes.node,
-  title: React.PropTypes.node,
-};
 const defaultProps = {
-  align: "center",
-  directional: false,
-  dismissible: true,
-  isOpen: false,
+	align: 'center',
+	dismissible: true
 };
 
 /**
@@ -97,187 +78,238 @@ const defaultProps = {
  */
 class Modal extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      isClosing: false,
-      revealed: false,
-    };
-  }
+	constructor (props) {
+		super(props);
+		this.state = {
+			isClosing: false,
+			revealed: false
+		};
 
-  componentDidMount () {
-    this.setState({
-      returnFocusTo: document.activeElement
-    })
-    if(!this.state.revealed){
-      setTimeout(()=>{
-        this.setState({revealed: true});
-      });
-    }
-    this.updateBodyScroll();
-  }
+		// Bind
+		this.handleModalClick = this.handleModalClick.bind(this);
+		this.closeModal = this.closeModal.bind(this);
+		this.dismissModalOnClickOutside = this.dismissModalOnClickOutside.bind(this);
+	}
 
-  componentDidUpdate (prevProps, prevState) {
-    if(this.props.isOpen !== prevProps.isOpen){
-      this.updateBodyScroll();
-    }
-    if(this.state.isClosing !== prevState.isClosing){
-      if(this.state.isClosing){
-        //console.log("CLOSING: ");
-        if(!this.isUnmounting){
-          const el = ReactDOM.findDOMNode(this).parentNode;
-          if(el && el.getAttribute("data-slds-modal")){
-            ReactDOM.unmountComponentAtNode(el);
-            document.body.removeChild(el);
-          }
-        }
-      }
-    }
-  }
+	setReturnFocus () {
+		this.setState({
+			returnFocusTo: document.activeElement
+		});
+	}
 
-  componentWillUnmount () {
-    this.isUnmounting = true;
-    this.clearBodyScroll();
-  }
+	componentDidMount () {
+		this.setReturnFocus();
 
-  dismissModalOnClickOutside () {
-    // if dismissOnClickOutside is not set, default its value to dismissible
-    const dismissOnClickOutside = isBoolean(this.props.dismissOnClickOutside) ? this.props.dismissOnClickOutside : this.props.dismissible;
-    if(dismissOnClickOutside){
-      this.dismissModal();
-    }
-  }
-
-  closeModal () {
-    if(this.props.dismissible){
-      this.dismissModal();
-    }
-  }
-
-  dismissModal () {
-    this.setState({isClosing: true});
-    if(this.state.returnFocusTo && this.state.returnFocusTo.focus){
-      this.state.returnFocusTo.focus();
-    }
-    if(this.props.onRequestClose){
-      this.props.onRequestClose();
-    }
-  }
-
-  handleSubmitModal () {
-    this.closeModal();
-  }
-
-  updateBodyScroll () {
-    if(window && document && document.body){
-      if(this.props.isOpen){
-        document.body.style.overflow = "hidden";
-      }
-      else{
-        document.body.style.overflow = "inherit";
-      }
-    }
-  }
-
-  clearBodyScroll() {
-		if (window && document && document.body) {
-		  document.body.style.overflow = "inherit";
+		if (!this.state.revealed) {
+			setTimeout(() => {
+				this.setState({ revealed: true });
+			});
 		}
-  }
+		this.updateBodyScroll();
+	}
 
-  handleModalClick(event) {
-    if(event && event.stopPropagation){
-      event.stopPropagation();
-    }
-  }
+	componentDidUpdate (prevProps, prevState) {
+		if (this.props.isOpen !== prevProps.isOpen) {
+			this.updateBodyScroll();
+		}
+		if (this.state.isClosing !== prevState.isClosing) {
+			if (this.state.isClosing) {
+				// console.log("CLOSING: ');
+				if (!this.isUnmounting) {
+					const el = ReactDOM.findDOMNode(this).parentNode;
+					if (el && el.getAttribute('data-slds-modal')) {
+						ReactDOM.unmountComponentAtNode(el);
+						document.body.removeChild(el);
+					}
+				}
+			}
+		}
+	}
 
-  isPrompt(){
-    return this.props.prompt !== undefined;
-  }
+	componentWillUnmount () {
+		this.isUnmounting = true;
+		this.clearBodyScroll();
+	}
 
-  footerComponent() {
-    let footer = null;
-    const hasFooter = this.props.footer && this.props.footer.length > 0;
-    const footerClass = {
-      "slds-modal__footer": true,
-      "slds-modal__footer--directional": this.props.directional,
-      "slds-theme--default": this.isPrompt()
-    };
+	dismissModalOnClickOutside () {
+		// if dismissOnClickOutside is not set, default its value to dismissible
+		const dismissOnClickOutside = isBoolean(this.props.dismissOnClickOutside)
+			? this.props.dismissOnClickOutside
+			: this.props.dismissible;
+		
+		if (dismissOnClickOutside) {
+			this.dismissModal();
+		}
+	}
 
-    if (hasFooter) {
-      footer = (<div className={classNames(footerClass)} onClick={this.handleModalClick.bind(this)}>{this.props.footer}</div>);
-    }
-    return footer;
-  }
+	closeModal () {
+		if (this.props.dismissible) {
+			this.dismissModal();
+		}
+	}
 
-  headerComponent() {
-    let headerContent = null;
-    const hasHeader = this.props.title || this.props.tagline;
-    const headerClass = {
-      ["slds-modal__header"]: hasHeader,
-      [`slds-theme--${this.props.prompt}`]: this.isPrompt(),
-      ["slds-theme--alert-texture"]: this.isPrompt(),
-    };
-    const titleClass = {
-      "slds-text-heading--small": this.isPrompt(),
-      "slds-text-heading--medium": !this.isPrompt(),
-    };
+	dismissModal () {
+		this.setState({ isClosing: true });
+		if (this.state.returnFocusTo && this.state.returnFocusTo.focus) {
+			this.state.returnFocusTo.focus();
+		}
+		if (this.props.onRequestClose) {
+			this.props.onRequestClose();
+		}
+	}
 
-    if(hasHeader) {
-      headerContent = (
-        <div>
-          {this.props.toast}
-          <h2 className={classNames(titleClass)}>{this.props.title}</h2>
-          {this.props.tagline ? <p className="slds-m-top--x-small">{this.props.tagline}</p>:null}
-        </div>
-      )
-    }
+	handleSubmitModal () {
+		this.closeModal();
+	}
 
-    return (
-      <div className={classNames(headerClass)} style={{position: "relative"}} onClick={this.handleModalClick.bind(this)}>
-        <Button assistiveText="Close" iconName="close" iconSize="large" inverse className="slds-modal__close" onClick={this.closeModal.bind(this)} variant="icon" />
-        {headerContent}
-      </div>
-    )
-  }
+	updateBodyScroll () {
+		if (window && document && document.body) {
+			if (this.props.isOpen) {
+				document.body.style.overflow = 'hidden';
+			} else {
+				document.body.style.overflow = 'inherit';
+			}
+		}
+	}
 
-  getModal() {
-    const componentClassname = {
-      "slds-modal": true,
-      "slds-fade-in-open": this.state.revealed,
-      "slds-modal--large": this.props.size === "large",
-      "slds-modal--prompt": this.isPrompt(),
-    };
+	clearBodyScroll () {
+		if (window && document && document.body) {
+			document.body.style.overflow = 'inherit';
+		}
+	}
 
-    const modalStyle = this.props.align === "top" ? {"justifyContent": "flex-start"} : null;
-    const contentStyle = this.props.title ? null: {"borderRadius": ".25rem"};
-    return (
-      <div>
-        <div aria-hidden="false" role="dialog" className={classNames(componentClassname)} onClick={this.dismissModalOnClickOutside.bind(this)}>
-          <div className={classNames(this.props.containerClassName, "slds-modal__container")} style={modalStyle}>
-           {this.headerComponent()}
-           <div className="slds-modal__content" style={contentStyle} onClick={this.handleModalClick.bind(this)}>
-             {this.props.children}
-           </div>
-           {this.footerComponent()}
-          </div>
-        </div>
-        <div className="slds-backdrop slds-backdrop--open"></div>
-      </div>
-    )
+	handleModalClick (event) {
+		if (event && event.stopPropagation) {
+			event.stopPropagation();
+		}
+	}
 
-  }
+	isPrompt () {
+		return this.props.prompt !== undefined;
+	}
 
-  render() {
-    return (
-      <ReactModal
-        isOpen={this.props.isOpen}
-        onRequestClose={this.closeModal.bind(this)}
-        style={customStyles}>
-        {this.getModal()}
-      </ReactModal>
-    );
-  }
+	footerComponent () {
+		let footer = null;
+		const hasFooter = this.props.footer && this.props.footer.length > 0;
+		const footerClass = {
+			'slds-modal__footer': true,
+			'slds-modal__footer--directional': this.props.directional,
+			'slds-theme--default': this.isPrompt()
+		};
+
+		if (hasFooter) {
+			footer = (<div className={classNames(footerClass)} onClick={this.handleModalClick}>{this.props.footer}</div>);
+		}
+		return footer;
+	}
+
+	headerComponent () {
+		let headerContent = null;
+		const hasHeader = this.props.title || this.props.tagline;
+		const prompClass = this.isPrompt() ? `slds-theme--${this.props.prompt}` : null;
+		const headerClass = {
+			'slds-modal__header': hasHeader,
+			prompClass,
+			'slds-theme--alert-texture': this.isPrompt()
+		};
+		const titleClass = {
+			'slds-text-heading--small': this.isPrompt(),
+			'slds-text-heading--medium': !this.isPrompt()
+		};
+
+		if (hasHeader) {
+			headerContent = (
+				<div>
+					{this.props.toast}
+					<h2 className={classNames(titleClass)}>{this.props.title}</h2>
+					{this.props.tagline ? <p className="slds-m-top--x-small">{this.props.tagline}</p> : null}
+				</div>
+			);
+		}
+
+		return (
+			<div
+				className={classNames(headerClass)}
+				style={{ position: 'relative' }}
+				onClick={this.handleModalClick}
+			>
+				<Button
+					assistiveText="Close"
+					iconName="close"
+					iconSize="large"
+					inverse
+					className="slds-modal__close"
+					onClick={this.closeModal}
+					variant="icon"
+				/>
+				{headerContent}
+			</div>
+		);
+	}
+
+	getModal () {
+		const componentClassname = {
+			'slds-modal': true,
+			'slds-fade-in-open': this.state.revealed,
+			'slds-modal--large': this.props.size === 'large',
+			'slds-modal--prompt': this.isPrompt()
+		};
+
+		const modalStyle = this.props.align === 'top' ? { justifyContent: 'flex-start' } : null;
+		const contentStyle = this.props.title ? null : { borderRadius: '.25rem' };
+		return (
+			<div>
+				<div
+					aria-hidden="false"
+					role="dialog"
+					className={classNames(componentClassname)}
+					onClick={this.dismissModalOnClickOutside}
+				>
+					<div className={classNames(this.props.containerClassName, 'slds-modal__container')} style={modalStyle}>
+						{this.headerComponent()}
+						<div className="slds-modal__content" style={contentStyle} onClick={this.handleModalClick}>
+							{this.props.children}
+						</div>
+					{this.footerComponent()}
+					</div>
+				</div>
+				<div className="slds-backdrop slds-backdrop--open"></div>
+			</div>
+		);
+	}
+
+	render () {
+		const customStyles = {
+			content: {
+				position: 'default',
+				top: 'default',
+				left: 'default',
+				right: 'default',
+				bottom: 'default',
+				border: 'default',
+				background: 'default',
+				overflow: 'default',
+				WebkitOverflowScrolling: 'default',
+				borderRadius: 'default',
+				outline: 'default',
+				padding: 'default'
+			},
+			overlay: {
+				position: 'static',
+				backgroundColor: 'default'
+			}
+		};
+
+		return (
+			<ReactModal
+				isOpen={this.props.isOpen}
+				onRequestClose={this.closeModal}
+				style={customStyles}
+			>
+				{this.getModal()}
+			</ReactModal>
+		);
+	}
 
 }
 
@@ -286,4 +318,3 @@ Modal.propTypes = propTypes;
 Modal.defaultProps = defaultProps;
 
 module.exports = Modal;
-
