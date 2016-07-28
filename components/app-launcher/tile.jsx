@@ -57,7 +57,7 @@ const AppLauncherTile = React.createClass({
 		 */
 		description: PropTypes.string,
 		/**
-		 *
+		 * Heading for app description
 		 */
 		descriptionHeading: PropTypes.string,
 		/**
@@ -141,7 +141,6 @@ const AppLauncherTile = React.createClass({
 							line={2}
 							prefix={this.props.descriptionHeading && this.props.descriptionHeading.toUpperCase()}
 							suffix={this.props.moreLabel}
-							truncateText="…"
 							text={this.props.description}
 							wrapper={(text) =>
 								<div>
