@@ -147,7 +147,7 @@ class Modal extends React.Component {
 		const dismissOnClickOutside = isBoolean(this.props.dismissOnClickOutside)
 			? this.props.dismissOnClickOutside
 			: this.props.dismissible;
-		
+
 		if (dismissOnClickOutside) {
 			this.dismissModal();
 		}
@@ -216,7 +216,7 @@ class Modal extends React.Component {
 
 	headerComponent () {
 		let headerContent = this.props.header;
-		const prompClass = this.isPrompt() ? `slds-theme--${this.props.prompt}` : null;
+		const promptClass = this.isPrompt() ? `slds-theme--${this.props.prompt}` : null;
 
 		if (!headerContent && this.props.title || this.props.tagline) {
 			headerContent = (
@@ -237,7 +237,7 @@ class Modal extends React.Component {
 			<div
 				className={classNames({
 					'slds-modal__header': headerContent,
-					prompClass,
+					promptClass,
 					'slds-theme--alert-texture': this.isPrompt()
 				},
 				this.props.headerClassName)}
@@ -259,7 +259,7 @@ class Modal extends React.Component {
 
 	getModal () {
 		const modalStyle = this.props.align === 'top' ? { justifyContent: 'flex-start' } : null;
-		const contentStyle = this.props.title ? null : { borderRadius: '.25rem' };
+		const contentStyle = this.props.title || this.props.header ? null : { borderRadius: '.25rem' };
 		return (
 			<div>
 				<div
