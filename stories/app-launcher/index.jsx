@@ -122,8 +122,38 @@ const DemoAppLauncherTileWithTruncatedText = React.createClass({
 			<AppLauncherTile
 				title="Call Center"
 				description="The key to call center and contact center is not to use too many words!"
+				descriptionHeading=""
 				iconText="CC"
 				onClick={action('Tile with icon text clicked!')}
+				search={this.props.search}
+				size={this.props.size}
+			/>
+		);
+	}
+});
+
+const DemoAppLauncherTileWithDescriptionHeading = React.createClass({
+	displayName: 'DemoAppLauncherTileWithDescriptionHeading',
+
+	propTypes: {
+		search: PropTypes.string,
+		size: PropTypes.string
+	},
+
+	getDefaultProps () {
+		return {
+			search: 'journey'
+		};
+	},
+
+	render () {
+		return (
+			<AppLauncherTile
+				title="Journey Builder"
+				description="Build 1:1 journeys blah blah blah and use way too many words"
+				descriptionHeading="Journey Builder"
+				iconText="SC"
+				onClick={action('Tile with description heading clicked!')}
 				search={this.props.search}
 				size={this.props.size}
 			/>
@@ -321,5 +351,6 @@ storiesOf(APP_LAUNCHER, module)
 	.add('Tile with icon text', () => <div style={standardTileDemoStyles}><DemoAppLauncherTileWithIconText /></div>)
 	.add('Tile with search text', () => <div style={standardTileDemoStyles}><DemoAppLauncherTileWithSearchText /></div>)
 	.add('Tile with truncated text', () => <div style={standardTileDemoStyles}><DemoAppLauncherTileWithTruncatedText /></div>)
+	.add('Tile with description heading', () => <div style={standardTileDemoStyles}><DemoAppLauncherTileWithDescriptionHeading /></div>)
 	.add('Section', () => <DemoAppLauncherSection />)
 	.add('Section with small tiles', () => <DemoAppLauncherSectionWithSmallTiles />);

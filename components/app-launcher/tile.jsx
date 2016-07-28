@@ -20,9 +20,7 @@ import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 
 // ### Truncate
-// Truncate multi-lines text for all browsers
-// [github.com/ShinyChang/react-text-truncate](https://github.com/ShinyChang/react-text-truncate)
-import Truncate from 'react-text-truncate';
+import Truncate from '../utilities/truncate';
 
 // ### [].includes
 // Polyfill for array.includes
@@ -58,6 +56,10 @@ const AppLauncherTile = React.createClass({
 		 * The description of the app. Not visible on small tiles.
 		 */
 		description: PropTypes.string,
+		/**
+		 * Heading for app description
+		 */
+		descriptionHeading: PropTypes.string,
 		/**
 		 * The localized text for the "More information" tooltip.
 		 */
@@ -97,7 +99,7 @@ const AppLauncherTile = React.createClass({
 		return (
 			<span>
 				<PopoverTooltip align="bottom" content={<Highlighter search={this.props.search}>{this.props.description}</Highlighter>}>
-					<Button variant="base" iconVariant="bare" label={this.props.moreLabel} />
+					<Button variant="base" iconVariant="bare" label={this.props.moreLabel} tabIndex="0" />
 				</PopoverTooltip>
 			</span>
 		);
@@ -137,9 +139,20 @@ const AppLauncherTile = React.createClass({
 						<Highlighter className="slds-text-link" search={this.props.search}>{this.props.title}</Highlighter>
 						<Truncate
 							line={2}
-							truncateText="…"
+							prefix={this.props.descriptionHeading && this.props.descriptionHeading.toUpperCase()}
+							suffix={this.props.moreLabel}
 							text={this.props.description}
-							textTruncateChild={this.getMoreRender()}
+							wrapper={(text) =>
+								<div>
+									<span className="slds-text-heading--label">{this.props.descriptionHeading}</span>
+									{' '}
+									<Highlighter search={this.props.search}>
+										{text}
+									</Highlighter>
+									{' '}
+									{this.getMoreRender()}
+								</div>
+							}
 						/>
 					</div>
 				}
