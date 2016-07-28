@@ -182,7 +182,11 @@ const AppLauncher = React.createClass({
 								placeholder={this.props.searchPlaceholderText}
 							/>
 						</div>
-						<span>{this.props.modalHeaderButton}</span>
+						{
+							this.props.modalHeaderButton
+							? this.props.modalHeaderButton
+							: <span className="slds-size--1-of-7"></span>
+						}
 					</div>
 
 					<div className="slds-modal__content slds-app-launcher__content slds-p-around--medium">

@@ -219,7 +219,7 @@ const DemoAppLauncher = React.createClass({
 	},
 
 	render () {
-		const modalHeaderButton = <Button label="Apps!!!" onclick={action('Modal Button clicked!')} />;
+		const modalHeaderButton = <Button label="App Exchange" onclick={action('Modal Button clicked!')} />;
 
 		return (
 			<GlobalNavigationBar>
@@ -257,14 +257,51 @@ const DemoAppLauncher = React.createClass({
 const DemoAppLauncherNoHeaderButton = React.createClass({
 	displayName: 'DemoAppLauncherNoHeaderButton',
 
+	getInitialState () {
+		return {
+			search: '',
+			appLauncherOpen: false,
+			allItemsSectionIsOpen: false
+		};
+	},
+
+	onSearch (event) {
+		this.setState({ search: event.target.value });
+	},
+
+	toggleAppLauncher () {
+		this.setState({ appLauncherOpen: !this.state.appLauncherOpen });
+	},
+
+	toggleSection () {
+		this.setState({ allItemsSectionIsOpen: !this.state.allItemsSectionIsOpen });
+	},
+
 	render () {
 		return (
 			<GlobalNavigationBar>
-				<GlobalNavigationBarRegion region="primary">
-					<AppLauncher triggerName="App Name" isOpen>
-						<AppLauncherSection title="All Items">
-							<DemoAppLauncherTile />
-							<DemoAppLauncherTileWithIconNode />
+				<GlobalNavigationBarRegion
+					region="primary"
+				>
+					<AppLauncher
+						triggerName="App Name"
+						onSearch={this.onSearch}
+						isOpen={this.state.appLauncherOpen}
+						triggerOnClick={this.toggleAppLauncher}
+						onClose={this.toggleAppLauncher}
+					>
+						<AppLauncherSection
+							title="All Items"
+							isOpen={this.state.allItemsSectionIsOpen}
+							onToggleClick={this.toggleSection}
+						>
+							<DemoAppLauncherTile search={this.state.search} />
+							<DemoAppLauncherTileWithIconNode search={this.state.search} />
+							<DemoAppLauncherTileWithIconText search={this.state.search} />
+						</AppLauncherSection>
+						<AppLauncherSection title="All Apps">
+							<DemoAppLauncherTile search={this.state.search} />
+							<DemoAppLauncherTileWithTruncatedText search={this.state.search} />
 						</AppLauncherSection>
 					</AppLauncher>
 				</GlobalNavigationBarRegion>
