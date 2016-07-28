@@ -144,6 +144,21 @@ const AppLauncher = React.createClass({
 		// Should be removed in the future by adding a reset class of some sort.
 		const style = this.props.noTruncate ? { maxWidth: 'none' } : null;
 
+		const customModalHeader = (
+			<div className="slds-grid slds-grid--align-spread slds-grid--vertical-align-center">
+				<h2 className="slds-text-heading--medium">{this.props.title}</h2>
+				<div className="slds-app-launcher__header-search">
+					<Search
+						id="app-launcher-search"
+						onChange={this.props.onSearch}
+						assistiveText={this.props.searchPlaceholderText}
+						placeholder={this.props.searchPlaceholderText}
+					/>
+				</div>
+				<span>{this.props.modalHeaderButton}</span>
+			</div>
+		);
+
 		return (
 			<div className="slds-context-bar__item slds-no-hover" style={style}>
 				<div className="slds-context-bar__icon-action">
@@ -171,20 +186,9 @@ const AppLauncher = React.createClass({
 					onRequestClose={this.closeAppLauncher}
 					containerClassName="app-launcher"
 					size="large"
+					header={customModalHeader}
+					headerClassName="slds-app-launcher__header"
 				>
-					<div className="slds-modal__header slds-app-launcher__header slds-grid slds-grid--align-spread slds-grid--vertical-align-center">
-						<h2 className="slds-text-heading--medium">{this.props.title}</h2>
-						<div className="slds-app-launcher__header-search">
-							<Search
-								id="app-launcher-search"
-								onChange={this.props.onSearch}
-								assistiveText={this.props.searchPlaceholderText}
-								placeholder={this.props.searchPlaceholderText}
-							/>
-						</div>
-						<span>{this.props.modalHeaderButton}</span>
-					</div>
-
 					<div className="slds-modal__content slds-app-launcher__content slds-p-around--medium">
 						{this.props.children}
 					</div>
