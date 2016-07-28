@@ -262,7 +262,23 @@ const DemoAppLauncherNoHeaderButton = React.createClass({
 			<GlobalNavigationBar>
 				<GlobalNavigationBarRegion region="primary">
 					<AppLauncher triggerName="App Name" isOpen>
-						<AppLauncherSection title="All Items">
+						<AppLauncherSection title="First Section">
+							<DemoAppLauncherTile />
+							<DemoAppLauncherTileWithIconNode />
+						</AppLauncherSection>
+						<AppLauncherSection title="Second Section">
+							<DemoAppLauncherTile />
+							<DemoAppLauncherTileWithIconNode />
+						</AppLauncherSection>
+						<AppLauncherSection title="Third Section">
+							<DemoAppLauncherTile />
+							<DemoAppLauncherTileWithIconNode />
+						</AppLauncherSection>
+						<AppLauncherSection title="Fourth Section">
+							<DemoAppLauncherTile />
+							<DemoAppLauncherTileWithIconNode />
+						</AppLauncherSection>
+						<AppLauncherSection title="Fifth Section">
 							<DemoAppLauncherTile />
 							<DemoAppLauncherTileWithIconNode />
 						</AppLauncherSection>
