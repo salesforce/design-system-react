@@ -19,6 +19,7 @@ storiesOf(BUTTON, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Base', () => getButton({ label: 'Base', variant: 'base' }))
 	.add('Neutral', () => getButton({ label: 'Neutral' }))
+	.add('Neutral with id', () => getButton({ label: 'Neutral', id: 'custom-id' }))
 	.add('Neutral Icon', () => getButton({
 		label: 'Neutral Icon',
 		iconName: 'download',

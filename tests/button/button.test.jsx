@@ -45,6 +45,7 @@ describe('SLDSButton: ', () => {
 
 		beforeEach(() => {
 			cmp = getButton({
+				id: 'custom-id',
 				text: 'Brand',
 				theme: 'brand'
 			});
@@ -61,6 +62,10 @@ describe('SLDSButton: ', () => {
 
 		it('renders correct variant styles', () => {
 			expect(btn.className).to.include('slds-button--neutral');
+		});
+
+		it('renders custom id', () => {
+			expect(btn.getAttribute('id')).to.equal('custom-id');
 		});
 	});
 
