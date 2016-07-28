@@ -57,6 +57,10 @@ const AppLauncherTile = React.createClass({
 		 */
 		description: PropTypes.string,
 		/**
+		 *
+		 */
+		descriptionHeading: PropTypes.string,
+		/**
 		 * The localized text for the "More information" tooltip.
 		 */
 		moreLabel: PropTypes.string,
@@ -95,7 +99,7 @@ const AppLauncherTile = React.createClass({
 		return (
 			<span>
 				<PopoverTooltip align="bottom" content={<Highlighter search={this.props.search}>{this.props.description}</Highlighter>}>
-					<Button variant="base" iconVariant="bare" label={this.props.moreLabel} />
+					<Button variant="base" iconVariant="bare" label={this.props.moreLabel} tabIndex="0" />
 				</PopoverTooltip>
 			</span>
 		);
@@ -135,13 +139,13 @@ const AppLauncherTile = React.createClass({
 						<Highlighter className="slds-text-link" search={this.props.search}>{this.props.title}</Highlighter>
 						<Truncate
 							line={2}
-							prefix="SUBHEADING"
+							prefix={this.props.descriptionHeading && this.props.descriptionHeading.toUpperCase()}
 							suffix={this.props.moreLabel}
 							truncateText="…"
 							text={this.props.description}
 							wrapper={(text) =>
 								<div>
-									SUBHEADING
+									<span className="slds-text-heading--label">{this.props.descriptionHeading}</span>
 									{' '}
 									<Highlighter search={this.props.search}>
 										{text}

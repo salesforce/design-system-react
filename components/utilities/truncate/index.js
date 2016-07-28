@@ -95,11 +95,11 @@ export default class TextTruncate extends Component {
 		window.removeEventListener('resize', this.onResize);
 	}
 
-	onResize () {
+	onResize = () => {
 		window.requestAnimationFrame(this.update.bind(this));
 	}
 
-	update () {
+	update = () => {
 		this.forceUpdate();
 	}
 
@@ -153,8 +153,10 @@ export default class TextTruncate extends Component {
 
 		while (displayLine--) {
 			let ext;
+			let prefixWidth = 0;
 			if (prefix && displayLine === line - 1) {
 				ext = prefix;
+				prefixWidth = (prefix.length - 1);
 			} else if (!displayLine) {
 				ext = `${truncateText} ${childText}`;
 
@@ -165,7 +167,7 @@ export default class TextTruncate extends Component {
 
 			while (currentPos <= maxTextLength) {
 				truncatedText = text.substr(startPos, currentPos);
-				width = this.measureWidth(truncatedText + ext);
+				width = this.measureWidth(truncatedText + ext) + prefixWidth;
 				if (width < scopeWidth) {
 					splitPos = text.indexOf(' ', currentPos + 1);
 					if (splitPos === -1) {
@@ -189,7 +191,7 @@ export default class TextTruncate extends Component {
 								truncatedText = text.substr(startPos, currentPos);
 							}
 						}
-						width = this.measureWidth(truncatedText + ext);
+						width = this.measureWidth(truncatedText + ext) + prefixWidth;
 					} while (width >= scopeWidth);
 					startPos += currentPos;
 					break;
