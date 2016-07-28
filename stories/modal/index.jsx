@@ -1,3 +1,5 @@
+/* eslint-disable react/display-name */
+
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 
@@ -58,7 +60,7 @@ const modalContent = (
 			className="slds-m-bottom--large"
 			label="Lead Source"
 			modal
-			onSelect={(option) => { console.log('selected: ', option.label); }}
+			onSelect={(option) => { action('selected: ', option.label); }}
 			options={[
 				{ label: 'Third Party Program', value: 'A0' },
 				{ label: 'Cold Call', value: 'B0' },
@@ -84,14 +86,14 @@ const modalContent = (
 		</div>
 		<div className="slds-m-bottom--large">
 			<SLDSDatepicker
-				onDateChange={() => { console.log('date is selected'); }}
+				onDateChange={() => { action('date is selected'); }}
 				modal
 			/>
 		</div>
 
 		<div className="slds-m-bottom--large">
 			<SLDSTimepicker
-				onDateChange={() => { console.log('time is selected'); }}
+				onDateChange={() => { action('time is selected'); }}
 				modal
 			/>
 		</div>

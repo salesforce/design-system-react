@@ -310,9 +310,7 @@ const DemoAppLauncherNoHeaderButton = React.createClass({
 	render () {
 		return (
 			<GlobalNavigationBar>
-				<GlobalNavigationBarRegion
-					region="primary"
-				>
+				<GlobalNavigationBarRegion region="primary">
 					<AppLauncher
 						triggerName="App Name"
 						onSearch={this.onSearch}
@@ -340,11 +338,62 @@ const DemoAppLauncherNoHeaderButton = React.createClass({
 	}
 });
 
+const DemoAppLauncherWithSeveralSections = React.createClass({
+	displayName: 'DemoAppLauncherWithSeveralSections',
+
+	onSearch () {
+		// stub
+	},
+
+	render () {
+		const modalHeaderButton = <Button label="App Exchange" onclick={action('Modal Button clicked!')} />;
+
+		return (
+			<GlobalNavigationBar>
+				<GlobalNavigationBarRegion region="primary">
+					<AppLauncher
+						triggerName="App Name"
+						onSearch={this.onSearch}
+						modalHeaderButton={modalHeaderButton}
+					>
+						<AppLauncherSection title="First Section">
+							<DemoAppLauncherTile />
+							<DemoAppLauncherTileWithIconNode />
+							<DemoAppLauncherTileWithTruncatedText />
+						</AppLauncherSection>
+						<AppLauncherSection title="Second Section">
+							<DemoAppLauncherTile />
+							<DemoAppLauncherTileWithIconNode />
+							<DemoAppLauncherTileWithTruncatedText />
+						</AppLauncherSection>
+						<AppLauncherSection title="Third Section">
+							<DemoAppLauncherTile />
+							<DemoAppLauncherTileWithIconNode />
+							<DemoAppLauncherTileWithTruncatedText />
+						</AppLauncherSection>
+						<AppLauncherSection title="Fourth Section">
+							<DemoAppLauncherTile />
+							<DemoAppLauncherTileWithIconNode />
+							<DemoAppLauncherTileWithTruncatedText />
+						</AppLauncherSection>
+						<AppLauncherSection title="Fifth Section">
+							<DemoAppLauncherTile />
+							<DemoAppLauncherTileWithIconNode />
+							<DemoAppLauncherTileWithTruncatedText />
+						</AppLauncherSection>
+					</AppLauncher>
+				</GlobalNavigationBarRegion>
+			</GlobalNavigationBar>
+		);
+	}
+});
+
 
 storiesOf(APP_LAUNCHER, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('App Launcher', () => <DemoAppLauncher />)
 	.add('App Launcher no header button', () => <DemoAppLauncherNoHeaderButton />)
+	.add('App Launcher with several sections', () => <DemoAppLauncherWithSeveralSections />)
 	.add('Tile', () => <div style={standardTileDemoStyles}><DemoAppLauncherTile /></div>)
 	.add('Small Tile', () => <div style={smallTileDemoStyles}><DemoAppLauncherSmallTile /></div>)
 	.add('Tile with Icon node', () => <div style={standardTileDemoStyles}><DemoAppLauncherTileWithIconNode /></div>)
