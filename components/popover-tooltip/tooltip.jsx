@@ -12,72 +12,70 @@ import Popover from '../popover';
 
 import classNames from 'classnames';
 
-const getClassName = (props) => {
-	return classNames(props.className, "slds-popover", {
-		["slds-popover--tooltip"]: true,
-		["slds-nubbin--top"]: props.align === 'bottom',
-		["slds-nubbin--top-left"]: props.align === 'bottom left',
-		["slds-nubbin--top-right"]: props.align === 'bottom right',
-		['slds-nubbin--bottom']: props.align === 'top',
-		['slds-nubbin--bottom-left']: props.align === 'top left',
-		['slds-nubbin--bottom-right']: props.align === 'top right',
-		['slds-nubbin--left']: (props.align === 'right' || props.align === 'right bottom' || props.align === 'right top'),
-		['slds-nubbin--right']: (props.align === 'left' || props.align === 'left bottom' || props.align === 'left top')
-	});
-};
+const getClassName = (props) => classNames(props.className, 'slds-popover', {
+	'slds-popover--tooltip': true,
+	'slds-nubbin--top': props.align === 'bottom',
+	'slds-nubbin--top-left': props.align === 'bottom left',
+	'slds-nubbin--top-right': props.align === 'bottom right',
+	'slds-nubbin--bottom': props.align === 'top',
+	'slds-nubbin--bottom-left': props.align === 'top left',
+	'slds-nubbin--bottom-right': props.align === 'top right',
+	'slds-nubbin--left': (props.align === 'right' || props.align === 'right bottom' || props.align === 'right top'),
+	'slds-nubbin--right': (props.align === 'left' || props.align === 'left bottom' || props.align === 'left top')
+});
 
 const getHorizontalAlign = (align) => {
-	if (align.indexOf('left')>-1) {
+	if (align.indexOf('left') > -1) {
 		return 'left';
-	}
-	else if (align.indexOf('right')>-1) {
+	}	else if (align.indexOf('right') > -1) {
 		return 'right';
 	}
 	return 'center';
 };
 
 const getVerticalAlign = (align) => {
-	if (align.indexOf('bottom')>-1) {
+	if (align.indexOf('bottom') > -1) {
 		return 'bottom';
-	}
-	else if (align.indexOf('top')>-1) {
+	}	else if (align.indexOf('top') > -1) {
 		return 'top';
 	}
 	return 'middle';
 };
 
 const getMarginRight = (align) => {
-	if(getHorizontalAlign(align)==='right'){
+	if (getHorizontalAlign(align) === 'right') {
 		return '-.75rem';
 	}
 	return '.75rem';
-}
+};
 
 const getMarginLeft = (align) => {
-	if(getHorizontalAlign(align)==='left'){
+	if (getHorizontalAlign(align) === 'left') {
 		return '-.75rem';
 	}
 	return '.75rem';
-}
+};
 
 const getMarginTop = (align) => {
-	if(getVerticalAlign(align)==='top' && align.indexOf('top')>0){
+	if (getVerticalAlign(align) === 'top' && align.indexOf('top') > 0) {
 		return '0.25rem';
 	}
 	return '1rem';
-}
+};
 
 const getMarginBottom = (align) => {
-	if(getVerticalAlign(align)==='bottom' && align.indexOf('bottom')>0){
+	if (getVerticalAlign(align) === 'bottom' && align.indexOf('bottom') > 0) {
 		return '0.25rem';
 	}
 	return '1rem';
-}
+};
 
-const getTooltip = (id, props, content, target, onClose) => {
-	return <Popover
-		className=''
-		closeOnTabKey={true}
+/* eslint-disable react/display-name */
+/* eslint-disable react/prop-types */
+const getTooltip = (id, props, content, target, onClose) => (
+	<Popover
+		className=""
+		closeOnTabKey
 		flippable={false}
 		marginBottom={getMarginBottom(props.align)}
 		marginLeft={getMarginLeft(props.align)}
@@ -87,21 +85,17 @@ const getTooltip = (id, props, content, target, onClose) => {
 		targetElement={target}
 		align={props.align}
 		horizontalAlign={getHorizontalAlign(props.align)}
-		verticalAlign={getVerticalAlign(props.align)}>
-			<div id={id} className={getClassName(props)} role="tooltip">
-				{content}
-			</div>
-	</Popover>;
-}
+		verticalAlign={getVerticalAlign(props.align)}
+	>
+		<div id={id} className={getClassName(props)} role="tooltip">
+			{content}
+		</div>
+	</Popover>
+);
 
 module.exports = {
-
-	getClassName: getClassName,
-
-	getHorizontalAlign: getHorizontalAlign,
-
-	getVerticalAlign: getVerticalAlign,
-
-	getTooltip: getTooltip
-
+	getClassName,
+	getHorizontalAlign,
+	getVerticalAlign,
+	getTooltip
 };
