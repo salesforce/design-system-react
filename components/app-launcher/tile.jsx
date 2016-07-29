@@ -99,7 +99,7 @@ const AppLauncherTile = React.createClass({
 		return (
 			<span>
 				<PopoverTooltip align="bottom" content={<Highlighter search={this.props.search}>{this.props.description}</Highlighter>}>
-					<Button variant="base" iconVariant="bare" label={this.props.moreLabel} tabIndex="0" />
+					<Button className="slds-text-link" variant="base" iconVariant="bare" label={this.props.moreLabel} tabIndex="0" />
 				</PopoverTooltip>
 			</span>
 		);
