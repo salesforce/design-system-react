@@ -71,11 +71,17 @@ const propTypes = {
 	 * Delay on Tooltip closing.
 	 */
 	hoverCloseDelay: PropTypes.number,
-		/**
-		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the popover to the triggering element.
-		*/
+	/**
+	* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the popover to the triggering element.
+	*/
 	id: PropTypes.string,
+	/**
+	* Forces tooltip to be open.
+	*/
 	openByDefault: PropTypes.bool,
+	/**
+	* This sets the location of the tooltip, if that location is different from the triggering node.
+	*/
 	target: PropTypes.node
 };
 
@@ -163,8 +169,8 @@ class PopoverTooltip extends React.Component {
 	}
 
 	getTooltip () {
-		let isOpen = this.state.isOpen;
 		const id = this.getId();
+		let isOpen = this.state.isOpen;
 
 		if (this.props.openByDefault === true) {
 			isOpen = true;
