@@ -10,17 +10,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 /* eslint-disable import/no-mutable-exports */
 
+import isTriggerTabbable from '../../utilities/warning/is-trigger-tabbable';
+
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
-		const childType = props.children.type;
-		const childTabIndex = props.children.props.tabIndex;
-		if(childType !== 'button' && childType !== 'a') {
-			if(childTabIndex === "-1" || childTabIndex === undefined) {
-			console.log('%c=====> ERROR: The child element of PopoverTooltip must be an anchor, button, or DOM element with tabIndex="0" so that keyboard users can tab to it to open the Tooltip.', 'color: red');
-			}
-		}
+		isTriggerTabbable(COMPONENT, props.children, '');
 	};
 }
 
