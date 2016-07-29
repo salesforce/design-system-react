@@ -2,6 +2,17 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.2.2
+
+**MAJOR CHANGES**
+- Add Modal `header` and `headerClassName` props to allow for custom headers
+
+**OTHER**
+- Update the truncation logic to account for AppLauncher's description headings
+- Center AppLauncher search bar with CSS
+- AppLauncher makes use of Modal's new `header` prop
+- Remove `id` generator from button component (let parent generate it, if needed)
+
 ## Release 0.2.1
 
 **BREAKING CHANGES**
