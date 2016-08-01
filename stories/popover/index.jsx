@@ -24,9 +24,9 @@ storiesOf(POPOVER_TOOLTIP, module)
 		id: 'myPopoverId',
 		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie'
 	}))
-	.add('Open by default', () => getPopoverTooltip({
+	.add('Open', () => getPopoverTooltip({
 		align: 'bottom',
-		openByDefault: true,
+		isOpen: true,
 		id: 'myPopoverId',
 		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie'
 	}));
