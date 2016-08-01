@@ -44,7 +44,7 @@ describe('SLDSIcon: ', function () {
 				assistiveText: 'Log a Call',
 				category: 'standard',
 				name: 'log_a_call',
-				style: { backgroundColor: 'goldenrod' }, // rgb(218, 165, 32)
+				style: { backgroundColor: 'rgb(218, 165, 32)' },
 				size: 'large'
 			});
 			iconContainer = findRenderedDOMComponentWithClass(component, 'slds-icon_container');
@@ -70,7 +70,7 @@ describe('SLDSIcon: ', function () {
 		});
 
 		it('renders custom background color', () => {
-			expect(svg.style.backgroundColor).to.equal('rgb(218, 165, 32)'); // goldenrod
+			expect(svg.style.backgroundColor).to.equal('rgb(218, 165, 32)');
 		});
 
 		it('renders icon size class', () => {
