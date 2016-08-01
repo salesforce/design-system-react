@@ -43,7 +43,7 @@ const getPopoverTooltipAlign = (props) => {
 	});
 
 	return (
-		<div style={{ }}>
+		<div>
 			{children}
 		</div>
 	);
