@@ -51,15 +51,11 @@ const TextTruncate = React.createClass({
 	},
 
 	componentDidMount () {
-		window.addEventListener('resize', this.onResize, false);
+		window.addEventListener('resize', this.update, false);
 	},
 
 	componentWillUnmount () {
-		window.removeEventListener('resize', this.onResize, false);
-	},
-
-	onResize () {
-		window.requestAnimationFrame(this.update);
+		window.removeEventListener('resize', this.update, false);
 	},
 
 	update () {
@@ -142,6 +138,7 @@ const TextTruncate = React.createClass({
 							currentPos = splitPos;
 						}
 					} else {
+						let lastWidth = 0;
 						do {
 							currentPos--;
 							truncatedText = text.substr(startPos, currentPos);
@@ -156,6 +153,12 @@ const TextTruncate = React.createClass({
 								}
 							}
 							width = measureWidth(truncatedText + ext, font) + prefixWidth;
+							if (width === lastWidth) {
+								currentPos = 0;
+								break;
+							} else {
+								lastWidth = width;
+							}
 						} while (width >= scopeWidth);
 						startPos += currentPos;
 						break;
