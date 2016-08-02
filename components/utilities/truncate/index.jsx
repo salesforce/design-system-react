@@ -115,10 +115,12 @@ const TextTruncate = React.createClass({
 				let prefixWidth = 0;
 
 				if (prefix && displayLine === line - 1) {
-					ext = ` ${prefix}`;
+					ext += ` ${prefix}`;
 					prefixWidth = (prefix.length);
-				} else if (!displayLine) {
-					ext = truncateText;
+				}
+
+				if (!displayLine) {
+					ext += truncateText;
 
 					if (suffix) {
 						ext += ` ${suffix}`;
@@ -128,7 +130,6 @@ const TextTruncate = React.createClass({
 				while (currentPos <= maxTextLength) {
 					truncatedText = text.substr(startPos, currentPos);
 					width = measureWidth(truncatedText + ext, this.font) + prefixWidth;
-					console.log(truncatedText + ext, width, scopeWidth);
 
 					if (width < scopeWidth) {
 						splitPos = text.indexOf(' ', currentPos + 1);
@@ -166,14 +167,10 @@ const TextTruncate = React.createClass({
 				}
 			}
 
-			if (startPos === maxTextLength) {
-				return (
-					text
-				);
+			if (startPos !== maxTextLength) {
+				outputText = `${text.substr(0, startPos)}${truncateText} `;
+				child = textTruncateChild;
 			}
-
-			outputText = `${text.substr(0, startPos)}${truncateText} `;
-			child = textTruncateChild;
 		}
 
 		if (wrapper) {
