@@ -135,6 +135,11 @@
   ],
   "components": [
     {
+      "component": "app-launcher",
+      "display-name": "App Launcher",
+      "SLDS-component-path": "/components/app-launcher/#flavor-default"
+    },
+    {
       "component": "bread-crumb",
       "display-name": "Breadcrumbs",
       "SLDS-component-path": "/components/breadcrumbs"

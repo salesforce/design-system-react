@@ -36,19 +36,30 @@ import { APP_LAUNCHER } from '../../utilities/constants';
 
 /**
  * The App Launcher allows the user to quickly access all the apps and functionality with their organization.
+ * The App Launcher should generally only be used as a sub-component of the [Global Navigation Bar](/components/global-navigation-bar)
+ *
+ * Also note: App Launcher is not included in the standard component export. To import it, you must reference it directly via a relative path.
+ * Example:
+ * ```
+ * import AppLauncher from '../../components/app-launcher';
+ * import AppLauncherTile from '../../components/app-launcher/tile';
+ * import AppLauncherSection from '../../components/app-launcher/section';
+ * ```
  *
  * USAGE EXAMPLE:
-	<AppLauncher>
-		<AppLauncherSection>
-			<AppLauncherTile />
-			<AppLauncherTile />
-			<AppLauncherTile />
-		</AppLauncherSection>
-		<AppLauncherSection>
-			<AppLauncherTile />
-			<AppLauncherTile />
-		</AppLauncherSection>
-	</AppLauncher>
+ * ```
+ * <AppLauncher>
+ * 	<AppLauncherSection>
+ * 		<AppLauncherTile />
+ * 		<AppLauncherTile />
+ * 		<AppLauncherTile />
+ * 	</AppLauncherSection>
+ * 	<AppLauncherSection>
+ * 		<AppLauncherTile />
+ * 		<AppLauncherTile />
+ * 	</AppLauncherSection>
+ * </AppLauncher>
+ * ```
  */
 const AppLauncher = React.createClass({
 	// ### Display Name
@@ -58,7 +69,7 @@ const AppLauncher = React.createClass({
 	// ### Prop Types
 	propTypes: {
 		/*
-		 * All of the App Launcher's children
+		 * One or more `<AppLauncherSection />`s each containing one or more `<AppLauncherTile />`s
 		 */
 		children: PropTypes.node.isRequired,
 		/*
@@ -74,7 +85,7 @@ const AppLauncher = React.createClass({
 		 */
 		onClose: PropTypes.func,
 		/*
-		 * Callback fired when search value changes
+		 * Callback fired when search value changes. The event is passed as the first argument. The search value can be obtain with `event.target.value`
 		 */
 		onSearch: PropTypes.func.isRequired,
 		/**
