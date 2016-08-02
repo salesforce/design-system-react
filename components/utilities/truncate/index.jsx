@@ -63,6 +63,10 @@ const TextTruncate = React.createClass({
 	},
 
 	getRenderText (ref) {
+		if (!ref) {
+			return;
+		}
+
 		this.scope = ref;
 
 		const {
