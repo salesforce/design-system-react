@@ -272,10 +272,20 @@ const DemoAppLauncher = React.createClass({
 							<DemoAppLauncherTile search={this.state.search} />
 							<DemoAppLauncherTileWithIconNode search={this.state.search} />
 							<DemoAppLauncherTileWithIconText search={this.state.search} />
+							<DemoAppLauncherTile search={this.state.search} />
+							<DemoAppLauncherTileWithIconNode search={this.state.search} />
+							<DemoAppLauncherTileWithIconText search={this.state.search} />
 						</AppLauncherSection>
 						<AppLauncherSection title="All Apps">
 							<DemoAppLauncherTile search={this.state.search} />
 							<DemoAppLauncherTileWithTruncatedText search={this.state.search} />
+							<DemoAppLauncherTileWithDescriptionHeading search={this.state.search} />
+							<DemoAppLauncherTile search={this.state.search} />
+							<DemoAppLauncherTileWithTruncatedText search={this.state.search} />
+							<DemoAppLauncherTileWithDescriptionHeading search={this.state.search} />
+							<DemoAppLauncherTile search={this.state.search} />
+							<DemoAppLauncherTileWithTruncatedText search={this.state.search} />
+							<DemoAppLauncherTileWithDescriptionHeading search={this.state.search} />
 						</AppLauncherSection>
 					</AppLauncher>
 				</GlobalNavigationBarRegion>
