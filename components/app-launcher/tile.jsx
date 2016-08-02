@@ -146,7 +146,7 @@ const AppLauncherTile = React.createClass({
 									<Highlighter search={this.props.search}>
 										{text}
 									</Highlighter>
-									{' '}
+									{textTruncateChild && ' '}
 									{textTruncateChild}
 								</div>
 							}
