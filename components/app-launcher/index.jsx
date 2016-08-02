@@ -38,12 +38,12 @@ import { APP_LAUNCHER } from '../../utilities/constants';
  * The App Launcher allows the user to quickly access all the apps and functionality with their organization.
  * The App Launcher should generally only be used as a sub-component of the [Global Navigation Bar](/components/global-navigation-bar)
  *
- * Also note: App Launcher is not included in the standard component export. To import it, you must reference it directly via a relative path.
+ * Also note: App Launcher is not included in the standard component export. To import it, you must reference it directly via its path.
  * Example:
  * ```
- * import AppLauncher from '../../components/app-launcher';
- * import AppLauncherTile from '../../components/app-launcher/tile';
- * import AppLauncherSection from '../../components/app-launcher/section';
+ * import AppLauncher from 'design-system-react/components/app-launcher';
+ * import AppLauncherTile from 'design-system-react/components/app-launcher/tile';
+ * import AppLauncherSection from 'design-system-react/components/app-launcher/section';
  * ```
  *
  * USAGE EXAMPLE:
