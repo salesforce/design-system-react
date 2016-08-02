@@ -11,17 +11,14 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 
-import debounce from 'lodash.debounce';
 import memoize from 'lodash.memoize';
 
 const canvas = document.createElement('canvas');
 const docFragment = document.createDocumentFragment();
 docFragment.appendChild(canvas);
-
-const onDebouncedResize = debounce((callback) => window.requestAnimationFrame(callback), 100);
+const canvasContext = canvas.getContext('2d');
 
 const measureWidth = memoize((text, font) => {
-	const canvasContext = canvas.getContext('2d');
 	canvasContext.font = font;
 
 	return canvasContext.measureText(text).width;
@@ -49,17 +46,11 @@ const TextTruncate = React.createClass({
 		};
 	},
 
+	getInitialState () {
+		return {};
+	},
+
 	componentDidMount () {
-		const style = window.getComputedStyle(this.refs.scope);
-		this.font = [
-			style['font-weight'],
-			style['font-style'],
-			style['font-size'],
-			style['font-family']
-		].join(' ');
-
-		this.forceUpdate();
-
 		window.addEventListener('resize', this.onResize, false);
 	},
 
@@ -68,14 +59,16 @@ const TextTruncate = React.createClass({
 	},
 
 	onResize () {
-		onDebouncedResize(this.update);
+		window.requestAnimationFrame(this.update);
 	},
 
 	update () {
-		this.forceUpdate();
+		if (this.scope) this.getRenderText(this.scope);
 	},
 
-	getRenderText () {
+	getRenderText (ref) {
+		this.scope = ref;
+
 		const {
 			containerClassName, // eslint-disable-line no-unused-vars
 			line,
@@ -88,18 +81,26 @@ const TextTruncate = React.createClass({
 			...props
 		} = this.props;
 
-		const scopeWidth = this.refs.scope.getBoundingClientRect().width;
+		const scopeWidth = this.scope.getBoundingClientRect().width;
+		const style = window.getComputedStyle(this.scope);
+		const font = [
+			style['font-weight'],
+			style['font-style'],
+			style['font-size'],
+			style['font-family']
+		].join(' ');
 
 		// return if display:none
 		if (scopeWidth === 0) {
-			return null;
+			this.setState({ renderText: null });
+			return;
 		}
 
 		let child;
 		let outputText = text;
 
 		// return if all of text can be displayed
-		if (scopeWidth < measureWidth(text, this.font)) {
+		if (scopeWidth < measureWidth(text, font)) {
 			let currentPos = 1;
 			const maxTextLength = text.length;
 			let truncatedText = '';
@@ -129,7 +130,7 @@ const TextTruncate = React.createClass({
 
 				while (currentPos <= maxTextLength) {
 					truncatedText = text.substr(startPos, currentPos);
-					width = measureWidth(truncatedText + ext, this.font) + prefixWidth;
+					width = measureWidth(truncatedText + ext, font) + prefixWidth;
 
 					if (width < scopeWidth) {
 						splitPos = text.indexOf(' ', currentPos + 1);
@@ -154,7 +155,7 @@ const TextTruncate = React.createClass({
 									truncatedText = text.substr(startPos, currentPos);
 								}
 							}
-							width = measureWidth(truncatedText + ext, this.font) + prefixWidth;
+							width = measureWidth(truncatedText + ext, font) + prefixWidth;
 						} while (width >= scopeWidth);
 						startPos += currentPos;
 						break;
@@ -173,32 +174,29 @@ const TextTruncate = React.createClass({
 			}
 		}
 
+		let renderText;
 		if (wrapper) {
-			return wrapper(outputText, child);
+			renderText = wrapper(outputText, child);
+		} else {
+			renderText = (
+				<div {...props}>
+					{outputText}
+					{child}
+				</div>
+			);
 		}
 
-		return (
-			<div {...props}>
-				{outputText}
-				{child}
-			</div>
-		);
+		this.setState({ renderText });
 	},
 
 	render () {
 		const {
-			text,
 			containerClassName
 		} = this.props;
 
-		let renderText = text;
-		if (this.refs.scope) {
-			renderText = this.getRenderText();
-		}
-
 		return (
-			<div ref="scope" className={containerClassName} style={{ overflow: 'hidden' }}>
-				{renderText}
+			<div ref={this.getRenderText} className={containerClassName} style={{ overflow: 'hidden' }}>
+				{this.state.renderText}
 			</div>
 		);
 	}
