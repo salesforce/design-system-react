@@ -94,13 +94,17 @@ const AppLauncherSection = React.createClass({
 		return (
 			<div className={classNames('slds-section', iconIsOpenClass)}>
 				<div className="slds-section__title">
-					<Button
-						assistiveText={this.props.collapseSectionAssistiveText}
-						iconName="switch"
-						onClick={this.toggleOpen}
-						className="slds-button--icon slds-m-right--small slds-is-open"
-						variant="icon"
-					/>
+
+					{this.props.isOpen === undefined
+						?	<Button
+							assistiveText={this.props.collapseSectionAssistiveText}
+							iconName="switch"
+							onClick={this.toggleOpen}
+							className="slds-button--icon slds-m-right--small slds-is-open"
+							variant="icon"
+						/>
+						: null
+					}
 					<h3>{this.props.title}</h3>
 				</div>
 				<div className="slds-section__content">

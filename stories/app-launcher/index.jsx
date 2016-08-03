@@ -204,6 +204,22 @@ const DemoAppLauncherSection = React.createClass({
 	}
 });
 
+const DemoAppLauncherSectionOpen = React.createClass({
+	displayName: 'DemoAppLauncherSection',
+
+	render () {
+		return (
+			<div>
+				<AppLauncherSection title="All Items" isOpen onToggleClick={action('Section `All Items` open -->')}>
+					<DemoAppLauncherTile />
+					<DemoAppLauncherTileWithIconText />
+					<DemoAppLauncherTileWithIconNode />
+				</AppLauncherSection>
+			</div>
+		);
+	}
+});
+
 const DemoAppLauncherSectionWithSmallTiles = React.createClass({
 	displayName: 'DemoAppLauncherSectionWithSmallTiles',
 
@@ -411,4 +427,5 @@ storiesOf(APP_LAUNCHER, module)
 	.add('Tile with truncated text', () => <div style={standardTileDemoStyles}><DemoAppLauncherTileWithTruncatedText /></div>)
 	.add('Tile with description heading', () => <div style={standardTileDemoStyles}><DemoAppLauncherTileWithDescriptionHeading /></div>)
 	.add('Section', () => <DemoAppLauncherSection />)
+	.add('Section Always Open', () => <DemoAppLauncherSectionOpen />)
 	.add('Section with small tiles', () => <DemoAppLauncherSectionWithSmallTiles />);
