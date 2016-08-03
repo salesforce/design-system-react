@@ -32,6 +32,7 @@ export const GLOBAL_HEADER_TOOL = 'SLDSGlobalHeaderTool';
 export const GLOBAL_NAVIGATION_BAR = 'SLDSGlobalNavigationBar';
 export const GLOBAL_NAVIGATION_BAR_BUTTON = 'SLDSGlobalNavigationBarButton';
 export const GLOBAL_NAVIGATION_BAR_DROPDOWN = 'SLDSGlobalNavigationBarDropdown';
+export const GLOBAL_NAVIGATION_BAR_LABEL = 'SLDSGlobalNavigationBarLabel';
 export const GLOBAL_NAVIGATION_BAR_LINK = 'SLDSGlobalNavigationBarLink';
 export const GLOBAL_NAVIGATION_BAR_REGION = 'SLDSGlobalNavigationBarRegion';
 export const GLOBAL_NAVIGATION_BAR_APP_LAUNCHER = 'SLDSGlobalNavigationBarAppLauncher';

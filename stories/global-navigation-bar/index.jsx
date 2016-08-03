@@ -9,6 +9,7 @@ import GlobalNavigationBar from '../../components/global-navigation-bar';
 import GlobalNavigationBarRegion from '../../components/global-navigation-bar/region';
 import GlobalNavigationBarDropdown from '../../components/global-navigation-bar/dropdown';
 import GlobalNavigationBarLink from '../../components/global-navigation-bar/link';
+import GlobalNavigationBarLabel from '../../components/global-navigation-bar/label';
 import GlobalNavigationBarButton from '../../components/global-navigation-bar/button';
 
 import AppLauncher from '../../components/app-launcher';
@@ -78,6 +79,11 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 			<GlobalNavigationBarLink
 				label="Actions"
 				onClick={buttonClicked('Link clicked')}
+			/>
+		</GlobalNavigationBarRegion>
+		<GlobalNavigationBarRegion region="tertiary" dividerPosition="left">
+			<GlobalNavigationBarLabel
+				label="Vandelay Enterprises"
 			/>
 		</GlobalNavigationBarRegion>
 	</GlobalNavigationBar>
