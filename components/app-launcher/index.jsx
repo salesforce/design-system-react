@@ -30,6 +30,10 @@ import checkProps from './check-props';
 // ## Children
 import Modal from '../modal';
 import Search from '../forms/input/search';
+// DO NOT REMOVE UNTIL THIS IS RESOLVED https://github.com/salesforce-ux/design-system-react-site/issues/56
+import AppLauncherSection from './section'; // eslint-disable-line no-unused-vars
+import AppLauncherTile from './tile'; // eslint-disable-line no-unused-vars
+// //////////////////////////////////////////////////////////////////////////////////
 
 // ## Constants
 import { APP_LAUNCHER } from '../../utilities/constants';
