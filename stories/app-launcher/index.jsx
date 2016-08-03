@@ -122,7 +122,6 @@ const DemoAppLauncherTileWithTruncatedText = React.createClass({
 			<AppLauncherTile
 				title="Call Center"
 				description="The key to call center and contact center is not to use too many words!"
-				descriptionHeading=""
 				iconText="CC"
 				onClick={action('Tile with icon text clicked!')}
 				search={this.props.search}
@@ -272,10 +271,20 @@ const DemoAppLauncher = React.createClass({
 							<DemoAppLauncherTile search={this.state.search} />
 							<DemoAppLauncherTileWithIconNode search={this.state.search} />
 							<DemoAppLauncherTileWithIconText search={this.state.search} />
+							<DemoAppLauncherTile search={this.state.search} />
+							<DemoAppLauncherTileWithIconNode search={this.state.search} />
+							<DemoAppLauncherTileWithIconText search={this.state.search} />
 						</AppLauncherSection>
 						<AppLauncherSection title="All Apps">
 							<DemoAppLauncherTile search={this.state.search} />
 							<DemoAppLauncherTileWithTruncatedText search={this.state.search} />
+							<DemoAppLauncherTileWithDescriptionHeading search={this.state.search} />
+							<DemoAppLauncherTile search={this.state.search} />
+							<DemoAppLauncherTileWithTruncatedText search={this.state.search} />
+							<DemoAppLauncherTileWithDescriptionHeading search={this.state.search} />
+							<DemoAppLauncherTile search={this.state.search} />
+							<DemoAppLauncherTileWithTruncatedText search={this.state.search} />
+							<DemoAppLauncherTileWithDescriptionHeading search={this.state.search} />
 						</AppLauncherSection>
 					</AppLauncher>
 				</GlobalNavigationBarRegion>
