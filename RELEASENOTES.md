@@ -2,6 +2,12 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.2.3
+
+**MAJOR CHANGES**
+- Bugfixes and documentation for AppLauncher
+
+
 ## Release 0.2.2
 
 **MAJOR CHANGES**
@@ -12,6 +18,7 @@
 - Center AppLauncher search bar with CSS
 - AppLauncher makes use of Modal's new `header` prop
 - Remove `id` generator from button component (let parent generate it, if needed)
+
 
 ## Release 0.2.1
 

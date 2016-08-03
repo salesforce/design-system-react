@@ -219,6 +219,7 @@ const Input = React.createClass({
 			className,
 			disabled,
 			errorText,
+			iconAssistiveText, // eslint-disable-line no-unused-vars
 			iconCategory,
 			iconName,
 			iconPosition,
