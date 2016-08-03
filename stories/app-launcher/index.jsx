@@ -122,7 +122,6 @@ const DemoAppLauncherTileWithTruncatedText = React.createClass({
 			<AppLauncherTile
 				title="Call Center"
 				description="The key to call center and contact center is not to use too many words!"
-				descriptionHeading=""
 				iconText="CC"
 				onClick={action('Tile with icon text clicked!')}
 				search={this.props.search}
