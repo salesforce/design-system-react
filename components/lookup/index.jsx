@@ -76,6 +76,13 @@ const propTypes = {
 	 * Name of icon. Please refer to <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to view icon names.
 	 */
 	iconName: PropTypes.string,
+	/**
+	 * Determines whether the input's icon will display that icon on the left or the right.
+	 */
+	iconPosition: PropTypes.oneOf([
+		'left',
+		'right'
+	]),
 	label: PropTypes.string,
 	/**
 	 * Custom component that overrides the default Lookup Item component.
@@ -93,6 +100,10 @@ const propTypes = {
 	 * Lookup item data.
 	 */
 	options: PropTypes.array.isRequired,
+	/**
+	 * Text that will appear in an empty input.
+	 */
+	placeholder: PropTypes.string,
 	/**
 	 * If true, adds asterisk next to input label to indicate it is a required field.
 	 */
@@ -462,7 +473,7 @@ class Lookup extends React.Component {
 	renderInput() {
 		return (
 			<span>
-				<InputIcon name='search' onClick={this.focusInput.bind(this)} />
+				<InputIcon name="search" onClick={this.focusInput.bind(this)} />
 				<input
 					aria-activedescendant={this.state.currentFocus ? this.state.currentFocus:''}
 					aria-autocomplete='list'
@@ -476,6 +487,7 @@ class Lookup extends React.Component {
 					onFocus={this.handleFocus.bind(this)}
 					onKeyDown={this.handleKeyDown.bind(this)}
 					ref={this.inputRefName()}
+					placeholder={this.props.placeholder}
 					role='combobox'
 					type='text'
 					value={this.state.searchTerm}
@@ -547,7 +559,7 @@ class Lookup extends React.Component {
 	render() {
 		const formElementControlClasses = {
 			'slds-form-element__control': true,
-			'slds-input-has-icon slds-input-has-icon--right': !this.isSelected(),
+			[`slds-input-has-icon slds-input-has-icon--${this.props.iconPosition}`]: !this.isSelected()
 		};
 
 		return (
