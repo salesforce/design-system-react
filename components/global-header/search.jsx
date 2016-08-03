@@ -27,7 +27,7 @@ import { GLOBAL_HEADER_SEARCH } from '../../utilities/constants';
  */
 const GlobalHeaderSearch = (props) => (
 	<div className="slds-global-header__item slds-global-header__item--search">
-		<Lookup {...props} />
+		<Lookup iconPosition="left" {...props} />
 	</div>
 );
 
