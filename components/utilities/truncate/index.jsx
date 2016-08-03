@@ -54,6 +54,10 @@ const TextTruncate = React.createClass({
 		window.addEventListener('resize', this.update, false);
 	},
 
+	componentWillReceiveProps () {
+		this.update();
+	},
+
 	componentWillUnmount () {
 		window.removeEventListener('resize', this.update, false);
 	},
