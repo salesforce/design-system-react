@@ -23,6 +23,7 @@ import GlobalNavigationBar from '../../components/global-navigation-bar';
 import GlobalNavigationBarRegion from '../../components/global-navigation-bar/region';
 import GlobalNavigationBarDropdown from '../../components/global-navigation-bar/dropdown';
 import GlobalNavigationBarLink from '../../components/global-navigation-bar/link';
+import GlobalNavigationBarLabel from '../../components/global-navigation-bar/label';
 import GlobalNavigationBarButton from '../../components/global-navigation-bar/button';
 
 chai.use(chaiEnzyme());
@@ -124,15 +125,15 @@ describe('Global Navigation Bar: ', () => {
 						onClick={linkClicked('Link clicked')}
 					/>
 					<GlobalNavigationBarButton
+						active
 						label="Button"
 						id="global-nav__button"
 						onClick={buttonClicked('Button clicked')}
 					/>
-					<GlobalNavigationBarButton
-						active
-						label="Button"
-						id="global-nav__button_active"
-						onClick={buttonClicked('Button clicked')}
+				</GlobalNavigationBarRegion>
+				<GlobalNavigationBarRegion region="tertiary" dividerPosition="left">
+					<GlobalNavigationBarLabel
+						label="Vandelay Enterprises"
 					/>
 				</GlobalNavigationBarRegion>
 			</GlobalNavigationBar>
@@ -148,7 +149,7 @@ describe('Global Navigation Bar: ', () => {
 			expect(secondary).to.have.length(1);
 
 			const tertiary = this.wrapper.find(`.${REGION_CSS_CLASSES.tertiary}`);
-			expect(tertiary).to.have.length(1);
+			expect(tertiary).to.have.length(2);
 		});
 
 		it('First primary region in example has divider on right by default, second primary region does not', function () {
@@ -232,6 +233,22 @@ describe('Global Navigation Bar: ', () => {
 			expect(link.text()).to.equal('Button');
 			link.simulate('click');
 			expect(buttonClicked.calledOnce).to.be.true;
+
+			this.wrapper.unmount();
+		});
+	});
+
+	describe('GlobalNavigationLabel child component', () => {
+		it('GlobalNavigationBarLabel has attributes', function () {
+			const instance = (
+				<GlobalNavigationBarLabel
+					label="Text"
+					id="test-text"
+				/>
+			);
+			this.wrapper = mount(instance, { attachTo: document.body.appendChild(document.createElement('div')) });
+			const item = this.wrapper.find('#test-text');
+			expect(item.text()).to.equal('Text');
 
 			this.wrapper.unmount();
 		});
