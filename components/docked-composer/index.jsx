@@ -36,17 +36,15 @@ const defaultProps = {
 class DockedComposer extends React.Component {
     constructor(props) {
         super(props);
-        const dialogOpenClass = this.props.isOpen ? 'slds-is-open' : '';
         this.state = {
             isDockedOpen: this.props.isOpen,
-            dialogOpenClass: dialogOpenClass,
             composerModalOpen: false
         };
     }
 
-    // This is needed in the case that a headerRenderer is passed in.
+    // This is needed in the case that isOpen is being user-controlled by the props
     componentWillReceiveProps(nextProps) {
-        if (nextProps.isOpen !== this.state.isDockedOpen) {
+        if (nextProps.isOpen !== this.props.isOpen && nextProps.isOpen !== this.state.isDockedOpen) {
             this.toggleMinimize();
         }
     }
@@ -133,12 +131,10 @@ class DockedComposer extends React.Component {
 
     openComposer() {
         this.setState({isDockedOpen: true});
-        this.setState({dialogOpenClass: 'slds-is-open'});
     }
 
     minimizeComposer() {
         this.setState({isDockedOpen: false});
-        this.setState({dialogOpenClass: ''});
     }
 
     // open if minimized and vice versa
@@ -187,11 +183,9 @@ class DockedComposer extends React.Component {
         if (!this.state.composerModalOpen) { // create modal
             return (
                 <div className = 'slds-docked_container'>
-                    <div
+                    <div className = {cx('slds-docked-composer slds-grid slds-grid--vertical slds-nowrap', { 'slds-is-open': this.state.isDockedOpen })}
                         role="dialog"
-                        aria-labelledby="dialog-heading-id"
-                        className = {cx('slds-docked-composer slds-grid slds-grid--vertical slds-nowrap', this.state.dialogOpenClass)}
-                        >
+                        aria-labelledby="dialog-heading-id">
                         {header}
                         {body}
                         {footer}
@@ -205,11 +199,9 @@ class DockedComposer extends React.Component {
                     <div className="slds-modal__container">
                         <div className="slds-modal__content">
                             <div className="slds-docked-composer slds-grid slds-grid--vertical slds-nowrap">
-
-                            {header}
-                            {body}
-                            {footer}
-
+                                {header}
+                                {body}
+                                {footer}
                             </div>
                         </div>
                     </div>
