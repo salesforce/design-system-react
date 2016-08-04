@@ -190,29 +190,13 @@ const DemoAppLauncherSection = React.createClass({
 	render () {
 		return (
 			<div>
-				<AppLauncherSection title="All Items" onToggleClick={action('Section `All Items` open -->')}>
+				<AppLauncherSection title="All Items" hasToggle onToggleClick={action('Section `All Items` open -->')}>
 					<DemoAppLauncherTile />
 					<DemoAppLauncherTileWithIconText />
 					<DemoAppLauncherTileWithIconNode />
 				</AppLauncherSection>
 				<AppLauncherSection title="All Apps" onToggleClick={action('Section `All App` open -->')}>
 					<DemoAppLauncherTile />
-					<DemoAppLauncherTileWithIconNode />
-				</AppLauncherSection>
-			</div>
-		);
-	}
-});
-
-const DemoAppLauncherSectionOpen = React.createClass({
-	displayName: 'DemoAppLauncherSection',
-
-	render () {
-		return (
-			<div>
-				<AppLauncherSection title="All Items" isOpen onToggleClick={action('Section `All Items` open -->')}>
-					<DemoAppLauncherTile />
-					<DemoAppLauncherTileWithIconText />
 					<DemoAppLauncherTileWithIconNode />
 				</AppLauncherSection>
 			</div>
@@ -280,6 +264,7 @@ const DemoAppLauncher = React.createClass({
 						onClose={this.toggleAppLauncher}
 					>
 						<AppLauncherSection
+							hasToggle
 							title="All Items"
 							isOpen={this.state.allItemsSectionIsOpen}
 							onToggleClick={this.toggleSection}
@@ -291,7 +276,7 @@ const DemoAppLauncher = React.createClass({
 							<DemoAppLauncherTileWithIconNode search={this.state.search} />
 							<DemoAppLauncherTileWithIconText search={this.state.search} />
 						</AppLauncherSection>
-						<AppLauncherSection title="All Apps">
+						<AppLauncherSection title="All Apps" hasToggle>
 							<DemoAppLauncherTile search={this.state.search} />
 							<DemoAppLauncherTileWithTruncatedText search={this.state.search} />
 							<DemoAppLauncherTileWithDescriptionHeading search={this.state.search} />
@@ -328,10 +313,6 @@ const DemoAppLauncherNoHeaderButton = React.createClass({
 		this.setState({ appLauncherOpen: !this.state.appLauncherOpen });
 	},
 
-	toggleSection () {
-		this.setState({ allItemsSectionIsOpen: !this.state.allItemsSectionIsOpen });
-	},
-
 	render () {
 		return (
 			<GlobalNavigationBar>
@@ -344,15 +325,14 @@ const DemoAppLauncherNoHeaderButton = React.createClass({
 						onClose={this.toggleAppLauncher}
 					>
 						<AppLauncherSection
+							hasToggle
 							title="All Items"
-							isOpen={this.state.allItemsSectionIsOpen}
-							onToggleClick={this.toggleSection}
 						>
 							<DemoAppLauncherTile search={this.state.search} />
 							<DemoAppLauncherTileWithIconNode search={this.state.search} />
 							<DemoAppLauncherTileWithIconText search={this.state.search} />
 						</AppLauncherSection>
-						<AppLauncherSection title="All Apps">
+						<AppLauncherSection title="All Apps" hasToggle>
 							<DemoAppLauncherTile search={this.state.search} />
 							<DemoAppLauncherTileWithTruncatedText search={this.state.search} />
 						</AppLauncherSection>
@@ -418,7 +398,7 @@ storiesOf(APP_LAUNCHER, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('App Launcher', () => <DemoAppLauncher />)
 	.add('App Launcher no header button', () => <DemoAppLauncherNoHeaderButton />)
-	.add('App Launcher with several sections', () => <DemoAppLauncherWithSeveralSections />)
+	.add('App Launcher with several sections (no toggle)', () => <DemoAppLauncherWithSeveralSections />)
 	.add('Tile', () => <div style={standardTileDemoStyles}><DemoAppLauncherTile /></div>)
 	.add('Small Tile', () => <div style={smallTileDemoStyles}><DemoAppLauncherSmallTile /></div>)
 	.add('Tile with Icon node', () => <div style={standardTileDemoStyles}><DemoAppLauncherTileWithIconNode /></div>)
@@ -427,5 +407,4 @@ storiesOf(APP_LAUNCHER, module)
 	.add('Tile with truncated text', () => <div style={standardTileDemoStyles}><DemoAppLauncherTileWithTruncatedText /></div>)
 	.add('Tile with description heading', () => <div style={standardTileDemoStyles}><DemoAppLauncherTileWithDescriptionHeading /></div>)
 	.add('Section', () => <DemoAppLauncherSection />)
-	.add('Section Always Open', () => <DemoAppLauncherSectionOpen />)
 	.add('Section with small tiles', () => <DemoAppLauncherSectionWithSmallTiles />);
