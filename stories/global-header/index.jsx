@@ -32,8 +32,10 @@ storiesOf(GLOBAL_HEADER, module)
 			/>
 			<GlobalHeaderDropdown
 				assistiveText="Global Actions"
+				globalAction
 				iconCategory="utility"
 				iconName="add"
+				iconSize="small"
 				onSelect={action('Action Selected')}
 				options={[
 					{ label: 'Setup', type: 'header' },
@@ -48,8 +50,13 @@ storiesOf(GLOBAL_HEADER, module)
 			/>
 			<GlobalHeaderButton
 				assistiveText="Setup"
-				iconName="settings"
+				iconName="setup"
 				onClick={action('Setup Clicked')}
+			/>
+			<GlobalHeaderButton
+				assistiveText="Notifications"
+				iconName="Notification"
+				onClick={action('Notifications Clicked')}
 			/>
 			<GlobalHeaderProfile
 				onClick={action('Profile Clicked')}
