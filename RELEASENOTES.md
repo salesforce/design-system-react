@@ -2,6 +2,18 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.2.4
+
+**MAJOR CHANGES**
+- Add `toggleable` prop to `AppLauncherSection`
+- Add `GlobalNavBarLabel` child component
+- Make `GlobalHeader` search to use left side icon
+- Correct letter spacing of `AppLauncherTile` sub-heading
+
+**OTHER**
+- Adds 'tile' and 'section' imports to `AppLauncher` for site
+
+
 ## Release 0.2.3
 
 **MAJOR CHANGES**
