@@ -230,7 +230,7 @@ const DemoAppLauncher = React.createClass({
 	getInitialState () {
 		return {
 			search: '',
-			appLauncherOpen: false,
+			appLauncherOpen: this.props.isOpen || false, // eslint-disable-line react/prop-types
 			allItemsSectionIsOpen: false
 		};
 	},
@@ -400,6 +400,7 @@ const DemoAppLauncherWithSeveralSections = React.createClass({
 
 storiesOf(APP_LAUNCHER, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.add('App Launcher (open)', () => <DemoAppLauncher isOpen />)
 	.add('App Launcher', () => <DemoAppLauncher />)
 	.add('App Launcher no header button', () => <DemoAppLauncherNoHeaderButton />)
 	.add('App Launcher with several sections', () => <DemoAppLauncherWithSeveralSections />)
