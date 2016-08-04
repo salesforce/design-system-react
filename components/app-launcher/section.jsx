@@ -44,13 +44,13 @@ const AppLauncherSection = React.createClass({
 	// ### Prop Types
 	propTypes: {
 		/**
-		 * The title for this section of apps.
+		 * The title for this section of apps
 		 */
 		title: PropTypes.string.isRequired,
 		/**
 		 * Allows the user to show/hide the section
 		 */
-		hasToggle: PropTypes.string,
+		toggleable: PropTypes.bool,
 		/**
 		 * The assistive text for the section collapse icons
 		 */
@@ -64,7 +64,7 @@ const AppLauncherSection = React.createClass({
 		 */
 		isOpen: PropTypes.bool,
 		/**
-		 * Callback for when section is toggled. Passes "isOpen" bool
+		 * Callback for when section is toggled. Passes "isOpen" bool. Forces `toggleable` to true
 		 */
 		onToggleClick: PropTypes.func
 	},
@@ -99,7 +99,7 @@ const AppLauncherSection = React.createClass({
 			<div className={classNames('slds-section', iconIsOpenClass)}>
 				<div className="slds-section__title">
 
-					{this.props.hasToggle || this.props.onToggleClick
+					{this.props.toggleable || this.props.onToggleClick
 						?	<Button
 							assistiveText={this.props.collapseSectionAssistiveText}
 							iconName="switch"
