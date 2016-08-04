@@ -41,6 +41,10 @@ const propTypes = {
 	 */
 	iconCategory: PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
 	/**
+	 * CSS classes to be added to icon SVG.
+	 */
+	iconClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	/**
 	 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
 	 */
 	iconName: PropTypes.string,
@@ -138,7 +142,7 @@ class Button extends TooltipTrigger {
 		const moreInverseIcon = this.props.inverse && iconMore;
 		const borderInverseIcon = this.props.inverse && iconBorder;
 
-		return classNames(this.props.className, 'slds-button', {
+		return classNames('slds-button', {
 			[`slds-button--${this.props.variant}`]: showButtonVariant,
 			'slds-button--inverse': plainInverseBtn,
 			'slds-button--icon-inverse': plainInverseIcon || moreInverseIcon,
@@ -147,7 +151,7 @@ class Button extends TooltipTrigger {
 			[`slds-button--icon-${this.props.iconVariant}`]: this.props.iconVariant && !borderInverseIcon,
 			// If icon has a container, then we apply the icon size to the container not the svg. Icon size is medium by default so we don't need to explicitly render it here.
 			[`slds-button--icon-${this.props.iconSize}`]: this.props.iconVariant && this.props.iconSize !== 'medium'
-		});
+		}, this.props.className);
 	}
 
 	renderIcon (name) {
@@ -155,6 +159,7 @@ class Button extends TooltipTrigger {
 		if (this.props.iconName) {
 			let iconSize = this.props.iconSize === '' || this.props.iconVariant ? null : this.props.iconSize;
 			buttonIcon = (<ButtonIcon
+				className={this.props.iconClassName}
 				hint={this.props.hint}
 				inverse={this.props.inverse}
 				name={name}
