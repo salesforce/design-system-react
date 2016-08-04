@@ -145,7 +145,7 @@ const AppLauncherTile = React.createClass({
 										// inline style override
 										&& <span
 											className="slds-text-heading--label"
-											style={{ letterSpacing: 'inherit' }}
+											style={{ letterSpacing: '0.025rem' }}
 										>{this.props.descriptionHeading}{' '}</span>}
 									<Highlighter search={this.props.search}>
 										{text}
