@@ -190,7 +190,7 @@ const DemoAppLauncherSection = React.createClass({
 	render () {
 		return (
 			<div>
-				<AppLauncherSection title="All Items" hasToggle onToggleClick={action('Section `All Items` open -->')}>
+				<AppLauncherSection title="All Items" toggleable onToggleClick={action('Section `All Items` open -->')}>
 					<DemoAppLauncherTile />
 					<DemoAppLauncherTileWithIconText />
 					<DemoAppLauncherTileWithIconNode />
@@ -264,7 +264,7 @@ const DemoAppLauncher = React.createClass({
 						onClose={this.toggleAppLauncher}
 					>
 						<AppLauncherSection
-							hasToggle
+							toggleable
 							title="All Items"
 							isOpen={this.state.allItemsSectionIsOpen}
 							onToggleClick={this.toggleSection}
@@ -276,7 +276,7 @@ const DemoAppLauncher = React.createClass({
 							<DemoAppLauncherTileWithIconNode search={this.state.search} />
 							<DemoAppLauncherTileWithIconText search={this.state.search} />
 						</AppLauncherSection>
-						<AppLauncherSection title="All Apps" hasToggle>
+						<AppLauncherSection title="All Apps" toggleable>
 							<DemoAppLauncherTile search={this.state.search} />
 							<DemoAppLauncherTileWithTruncatedText search={this.state.search} />
 							<DemoAppLauncherTileWithDescriptionHeading search={this.state.search} />
@@ -325,14 +325,14 @@ const DemoAppLauncherNoHeaderButton = React.createClass({
 						onClose={this.toggleAppLauncher}
 					>
 						<AppLauncherSection
-							hasToggle
+							toggleable
 							title="All Items"
 						>
 							<DemoAppLauncherTile search={this.state.search} />
 							<DemoAppLauncherTileWithIconNode search={this.state.search} />
 							<DemoAppLauncherTileWithIconText search={this.state.search} />
 						</AppLauncherSection>
-						<AppLauncherSection title="All Apps" hasToggle>
+						<AppLauncherSection title="All Apps" toggleable>
 							<DemoAppLauncherTile search={this.state.search} />
 							<DemoAppLauncherTileWithTruncatedText search={this.state.search} />
 						</AppLauncherSection>
