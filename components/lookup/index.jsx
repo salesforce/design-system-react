@@ -528,6 +528,7 @@ class Lookup extends React.Component {
 			let inputLabel;
 			const required = this.props.required ? <span className="slds-required">*</span>:null;
 			if(this.isSelected()) {
+				// inline style override
 				inputLabel = <span className='slds-form-element__label' style={{width: '100%'}}>{required}{this.props.label}</span>;
 			} else {
 				inputLabel = <label className='slds-form-element__label' htmlFor={this.inputRefName()} style={{width: '100%'}}>{required}{this.props.label}</label>;

@@ -205,6 +205,7 @@ const TextTruncate = React.createClass({
 			containerClassName
 		} = this.props;
 
+		// inline style override
 		return (
 			<div ref={this.getRenderText} className={containerClassName} style={{ overflow: 'hidden' }}>
 				{this.state.renderText}

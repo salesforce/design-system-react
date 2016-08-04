@@ -36,6 +36,7 @@ const GlobalNavigationBarLabel = (props) => {
 	return (
 		<li className="slds-context-bar__item slds-no-hover">
 			<span
+				// inline style override
 				style={{ color: '#16325c' }}
 				className={classNames('slds-context-bar__label-action', className)}
 				{...other}

@@ -142,10 +142,10 @@ const AppLauncherTile = React.createClass({
 							wrapper={(text, textTruncateChild) =>
 								<div>
 									{this.props.descriptionHeading
-										// custom style
+										// inline style override
 										&& <span
 											className="slds-text-heading--label"
-											style={{ letterSpacing: '0.025rem' }}
+											style={{ letterSpacing: 'inherit' }}
 										>{this.props.descriptionHeading}{' '}</span>}
 									<Highlighter search={this.props.search}>
 										{text}

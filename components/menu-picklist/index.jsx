@@ -286,6 +286,7 @@ const MenuPicklist = React.createClass({
 			!this.props.disabled && this.state.isOpen
 			? <div
 				className="slds-dropdown slds-dropdown--left"
+				// inline style override
 				style={{
 					maxHeight: '20em',
 					overflowX: 'hidden',
@@ -361,6 +362,7 @@ const MenuPicklist = React.createClass({
 					<label
 						className="slds-form-element__label"
 						htmlFor={this.getId()}
+						// inline style override
 						style={{ width: '100%' }}
 					>
 						{required}{this.props.label}
