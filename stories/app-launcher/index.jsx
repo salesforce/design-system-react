@@ -10,6 +10,7 @@ import AppLauncherTile from '../../components/app-launcher/tile';
 import AppLauncherSection from '../../components/app-launcher/section';
 import Icon from '../../components/icon';
 import Button from '../../components/button';
+import Search from '../../components/forms/input/search';
 
 import GlobalNavigationBar from '../../components/global-navigation-bar';
 import GlobalNavigationBarRegion from '../../components/global-navigation-bar/region';
@@ -248,6 +249,7 @@ const DemoAppLauncher = React.createClass({
 	},
 
 	render () {
+		const search = <Search onChange={this.onSearch} placeholder="Find an app" assistiveText="Find an app" />;
 		const modalHeaderButton = <Button label="App Exchange" onclick={action('Modal Button clicked!')} />;
 
 		return (
@@ -257,7 +259,7 @@ const DemoAppLauncher = React.createClass({
 				>
 					<AppLauncher
 						triggerName="App Name"
-						onSearch={this.onSearch}
+						search={search}
 						modalHeaderButton={modalHeaderButton}
 						isOpen={this.state.appLauncherOpen}
 						triggerOnClick={this.toggleAppLauncher}
@@ -314,12 +316,14 @@ const DemoAppLauncherNoHeaderButton = React.createClass({
 	},
 
 	render () {
+		const search = <Search onChange={this.onSearch} placeholder="Find an app" assistiveText="Find an app" />;
+
 		return (
 			<GlobalNavigationBar>
 				<GlobalNavigationBarRegion region="primary">
 					<AppLauncher
 						triggerName="App Name"
-						onSearch={this.onSearch}
+						search={search}
 						isOpen={this.state.appLauncherOpen}
 						triggerOnClick={this.toggleAppLauncher}
 						onClose={this.toggleAppLauncher}
@@ -343,11 +347,18 @@ const DemoAppLauncherNoHeaderButton = React.createClass({
 	}
 });
 
-const DemoAppLauncherWithSeveralSections = React.createClass({
-	displayName: 'DemoAppLauncherWithSeveralSections',
+const DemoAppLauncherNoSearch = React.createClass({
+	displayName: 'DemoAppLauncherNoSearch',
 
-	onSearch () {
-		// stub
+	getInitialState () {
+		return {
+			appLauncherOpen: false,
+			allItemsSectionIsOpen: false
+		};
+	},
+
+	toggleAppLauncher () {
+		this.setState({ appLauncherOpen: !this.state.appLauncherOpen });
 	},
 
 	render () {
@@ -358,7 +369,47 @@ const DemoAppLauncherWithSeveralSections = React.createClass({
 				<GlobalNavigationBarRegion region="primary">
 					<AppLauncher
 						triggerName="App Name"
-						onSearch={this.onSearch}
+						modalHeaderButton={modalHeaderButton}
+						isOpen={this.state.appLauncherOpen}
+						triggerOnClick={this.toggleAppLauncher}
+						onClose={this.toggleAppLauncher}
+					>
+						<AppLauncherSection
+							toggleable
+							title="All Items"
+						>
+							<DemoAppLauncherTile />
+							<DemoAppLauncherTileWithIconNode />
+							<DemoAppLauncherTileWithIconText />
+						</AppLauncherSection>
+						<AppLauncherSection title="All Apps" toggleable>
+							<DemoAppLauncherTile />
+							<DemoAppLauncherTileWithTruncatedText />
+						</AppLauncherSection>
+					</AppLauncher>
+				</GlobalNavigationBarRegion>
+			</GlobalNavigationBar>
+		);
+	}
+});
+
+const DemoAppLauncherWithSeveralSections = React.createClass({
+	displayName: 'DemoAppLauncherWithSeveralSections',
+
+	onSearch () {
+		// stub
+	},
+
+	render () {
+		const search = <Search onChange={this.onSearch} placeholder="Find an app" assistiveText="Find an app" />;
+		const modalHeaderButton = <Button label="App Exchange" onclick={action('Modal Button clicked!')} />;
+
+		return (
+			<GlobalNavigationBar>
+				<GlobalNavigationBarRegion region="primary">
+					<AppLauncher
+						triggerName="App Name"
+						search={search}
 						modalHeaderButton={modalHeaderButton}
 					>
 						<AppLauncherSection title="First Section">
@@ -399,6 +450,7 @@ storiesOf(APP_LAUNCHER, module)
 	.add('App Launcher (open)', () => <DemoAppLauncher isOpen />)
 	.add('App Launcher', () => <DemoAppLauncher />)
 	.add('App Launcher no header button', () => <DemoAppLauncherNoHeaderButton />)
+	.add('App Launcher no search', () => <DemoAppLauncherNoSearch />)
 	.add('App Launcher with several sections (no toggle)', () => <DemoAppLauncherWithSeveralSections />)
 	.add('Tile', () => <div style={standardTileDemoStyles}><DemoAppLauncherTile /></div>)
 	.add('Small Tile', () => <div style={smallTileDemoStyles}><DemoAppLauncherSmallTile /></div>)
