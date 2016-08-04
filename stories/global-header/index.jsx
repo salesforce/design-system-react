@@ -35,7 +35,6 @@ storiesOf(GLOBAL_HEADER, module)
 				globalAction
 				iconCategory="utility"
 				iconName="add"
-				iconSize="small"
 				onSelect={action('Action Selected')}
 				options={[
 					{ label: 'Setup', type: 'header' },
