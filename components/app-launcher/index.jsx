@@ -29,7 +29,6 @@ import checkProps from './check-props';
 
 // ## Children
 import Modal from '../modal';
-import Search from '../forms/input/search';
 // DO NOT REMOVE UNTIL THIS IS RESOLVED https://github.com/salesforce-ux/design-system-react-site/issues/56
 import AppLauncherSection from './section'; // eslint-disable-line no-unused-vars
 import AppLauncherTile from './tile'; // eslint-disable-line no-unused-vars
@@ -88,18 +87,14 @@ const AppLauncher = React.createClass({
 		 * Callback when the App Launcher Modal is closed
 		 */
 		onClose: PropTypes.func,
-		/*
-		 * Callback fired when search value changes. The event is passed as the first argument. The search value can be obtain with `event.target.value`
-		 */
-		onSearch: PropTypes.func.isRequired,
 		/**
 		 * Allows longer application names without truncating them.
 		 */
 		noTruncate: PropTypes.bool,
 		/*
-		 * Set the search input's placeholder text (for localization)
+		 * Search bar for the Modal's header. Will typically be an instance of `design-system-react/forms/input/search`
 		 */
-		searchPlaceholderText: PropTypes.string,
+		search: PropTypes.node,
 		/*
 		 * Set the App Launcher's title text (for localization)
 		 */
@@ -126,7 +121,6 @@ const AppLauncher = React.createClass({
 	getDefaultProps () {
 		return {
 			triggerAssistiveText: 'Open App Launcher',
-			searchPlaceholderText: 'Find an app',
 			title: 'App Launcher'
 		};
 	},
@@ -162,14 +156,9 @@ const AppLauncher = React.createClass({
 		const customModalHeader = (
 			<div className="slds-grid slds-grid--align-spread slds-grid--vertical-align-center">
 				<h2 className="slds-text-heading--medium">{this.props.title}</h2>
-				<div className="slds-app-launcher__header-search">
-					<Search
-						id="app-launcher-search"
-						onChange={this.props.onSearch}
-						assistiveText={this.props.searchPlaceholderText}
-						placeholder={this.props.searchPlaceholderText}
-					/>
-				</div>
+
+				{this.props.search && <div className="slds-app-launcher__header-search">{this.props.search}</div>}
+
 				{
 					this.props.modalHeaderButton
 					? this.props.modalHeaderButton
