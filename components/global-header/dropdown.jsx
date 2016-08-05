@@ -26,11 +26,18 @@ import { GLOBAL_HEADER_TOOL } from '../../utilities/constants';
 /**
  * This component is an implementation of `MenuDropdown` with a custom trigger. All the properties listed below are provided to the `MenuDropdown` component. Any additional properties are provided to the Custom Trigger (that is the `Button` or `li` tag).
  */
-const GlobalHeaderDropdown = (props) => (
-	<MenuDropdown {...props}>
-		<GlobalHeaderTrigger />
-	</MenuDropdown>
-);
+const GlobalHeaderDropdown = (props) => {
+	const {
+		globalAction,
+		...rest
+	} = props;
+
+	return (
+		<MenuDropdown {...rest}>
+			<GlobalHeaderTrigger globalAction={globalAction} iconSize={globalAction && 'small'} />
+		</MenuDropdown>
+	);
+};
 
 // ### Display Name
 // Always use the canonical component name (set in the core) as the React
@@ -55,6 +62,10 @@ GlobalHeaderDropdown.propTypes = {
 	* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
 	*/
 	id: PropTypes.string,
+	/**
+	* Adds custom styling such as inverse fill and special sizing/spacing
+	*/
+	globalAction: PropTypes.bool,
 	/**
 	 * Positions dropdown menu with a nubbin--that is the arrow notch. The placement options correspond to the placement of the nubbin. This is implemeted with CSS classes and is best used with a `Button` with "icon container" styling. Dropdown menus will still be contained to the closest scrolling parent.
 	 */
