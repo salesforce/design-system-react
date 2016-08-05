@@ -15,6 +15,7 @@ import { Icon } from '../../components';
 import AppLauncher from '../../components/app-launcher';
 import AppLauncherTile from '../../components/app-launcher/tile';
 import AppLauncherSection from '../../components/app-launcher/section';
+import Search from '../../components/forms/input/search';
 
 const {
 	Simulate,
@@ -358,7 +359,10 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		let modalWrapper;
 
 		beforeEach(() => {
+			const search = <Search assistiveText="Find an app" />;
+
 			renderAppLauncher({
+				search,
 				title: 'App Rocket',
 				triggerAssistiveText: 'Custom Icon Assistive Text'
 			});
@@ -381,10 +385,6 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 
 		it('app laucher search bar exists', () => {
 			should.exist(document.querySelectorAll('.slds-app-launcher__header-search'));
-		});
-
-		it('app laucher search bar has proper id', () => {
-			should.exist(document.getElementById('app-launcher-search'));
 		});
 
 		it('modal content exists', () => {

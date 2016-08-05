@@ -8,7 +8,6 @@ import ReactDOM from 'react-dom';
 import { expect } from 'chai';
 import TestUtils from 'react-addons-test-utils';
 
-
 import SLDSPopoverTooltip from '../../components/popover-tooltip';
 import SLDSButton from '../../components/button';
 
@@ -18,6 +17,17 @@ const { Simulate,
 
 describe('SLDSPopoverTooltip: ', function () {
 	let body;
+
+	const defaultTrigger = (<SLDSButton label="Hover me for tooltip" />);
+	const defaultTextContent = 'This is more info. blah blah.';
+	const defaultProps = {
+		content: (
+			<span
+				className="tooltip-content"
+				style={{ width: 30 }}
+			>{defaultTextContent}</span>),
+		id: 'myTooltip123'
+	};
 
 	afterEach(() => {
 		try {
@@ -45,20 +55,18 @@ describe('SLDSPopoverTooltip: ', function () {
 	const getTip = (dom) => dom.querySelector('.slds-popover--tooltip');
 
 	describe('component basic props render', () => {
-		let cmp;
+		let rootNode;
 
 		beforeEach(() => {
-			const content = (<span style={{ width: 30 }}>This is more info. blah blah.</span>);
 			createBody();
-			cmp = generateTooltip({
-				id: 'myTooltip123',
-				align: 'bottom',
-				content
-			}, React.createElement(SLDSButton, { label: 'Hover me for tooltip' }));
+			rootNode = generateTooltip({
+				...defaultProps,
+				align: 'bottom'
+			}, defaultTrigger);
 		});
 
 		it('renders the content as assistive text', () => {
-			const span = findRenderedDOMComponentWithClass(cmp, 'slds-assistive-text');
+			const span = findRenderedDOMComponentWithClass(rootNode, 'slds-assistive-text');
 			expect(span.textContent).to.equal('This is more info. blah blah.');
 		});
 
@@ -71,21 +79,17 @@ describe('SLDSPopoverTooltip: ', function () {
 			let trigger;
 
 			beforeEach((done) => {
-				expect(getTip(document.body)).to.equal(null);
-
+				trigger = findRenderedDOMComponentWithTag(rootNode, 'button');
+				Simulate.mouseEnter(trigger, {});
 				setTimeout(() => {
-					trigger = findRenderedDOMComponentWithTag(cmp, 'button');
-					Simulate.mouseEnter(trigger, {});
-					setTimeout(() => {
-						tip = getTip(document.body);
-						done();
-					}, 200);
-				}, 200);
+					tip = getTip(document.body);
+					done();
+				}, 0);
 			});
 
 			it('places bottom aligned tooltip at the trigger if no target', (done) => {
-				// "Magic Number" in pixels, based on size of trigger and CSS
-				const tooltipOffset = 40;
+				// "Magic Number" in pixels, based on size of trigger, CSS, and DropJS offset
+				const tooltipOffset = 46;
 				const tipBounds = tip.getBoundingClientRect();
 				const triggerBounds = trigger.getBoundingClientRect();
 				expect(tipBounds.bottom).to.be.within(triggerBounds.bottom, triggerBounds.bottom + tooltipOffset);
@@ -106,15 +110,58 @@ describe('SLDSPopoverTooltip: ', function () {
 		});
 	});
 
+
+	describe('Custom props work as expected', () => {
+		it('isOpen is false', (done) => {
+			const rootNode = generateTooltip({
+				...defaultProps,
+				isOpen: false
+			}, defaultTrigger);
+
+			setTimeout(() => {
+				const trigger = findRenderedDOMComponentWithTag(rootNode, 'button');
+				Simulate.mouseEnter(trigger, {});
+				setTimeout(() => {
+					expect(getTip(document.body)).to.be.null;
+					done();
+				}, 0);
+			}, 0);
+		});
+
+		it('isOpen is true', (done) => {
+			let contentRendered;
+
+			const tooltipContentRendered = (component) => {
+				this.tip = getTip(document.body);
+				if (!contentRendered) {
+					expect(component).to.not.be.null;
+					contentRendered = true;
+					done();
+				}
+			};
+
+			generateTooltip({
+				...defaultProps,
+				// overwrite default content
+				content: (<span
+					ref={tooltipContentRendered}
+					className="tooltip-content"
+					style={{ width: 30 }}
+				>{defaultTextContent}</span>),
+				isOpen: true
+			}, defaultTrigger);
+		});
+	});
+
 	/*
 	// Commented out until fully understood.
 	describe('using target', () => {
-		let cmp, trigger;
+		let rootNode, trigger;
 
 		beforeEach(() => {
 			const content = (<span style={{width: 30}}>This is more info. blah blah.</span>);
 			createBody();
-			cmp = generateTooltip({
+			rootNode = generateTooltip({
 				align: 'bottom',
 				content: content,
 				target: body.firstChild
