@@ -3,7 +3,7 @@ import { storiesOf, action } from '@kadira/storybook';
 
 import { GLOBAL_NAVIGATION_BAR } from '../../utilities/constants';
 
-import { dropdownCollection, propSets } from '../../utilities/sample-data/global-navigation-bar';
+import { propSets } from '../../utilities/sample-data/global-navigation-bar';
 
 import GlobalNavigationBar from '../../components/global-navigation-bar';
 import GlobalNavigationBarRegion from '../../components/global-navigation-bar/region';
@@ -22,15 +22,37 @@ const dropdownItemClicked = action;
 const linkClicked = action;
 const searchClicked = action;
 
+const dropdownCollection = [{
+	label: 'Menu Item One',
+	value: '1',
+	iconCategory: 'utility',
+	iconName: 'table',
+	href: 'http://www.google.com'
+}, {
+	label: 'Menu Item Two',
+	value: '2',
+	iconCategory: 'utility',
+	iconName: 'kanban',
+	href: 'http://www.google.com'
+}, {
+	label: 'Menu Item Three',
+	value: '3',
+	iconCategory: 'utility',
+	iconName: 'side_list',
+	href: 'http://www.google.com'
+}];
+
 /* eslint-disable react/display-name */
-const getGlobalNavigationBar = (props, primaryRegionProps) => (
+const getGlobalNavigationBar = (props) => (
 	<GlobalNavigationBar {...props}>
 		<GlobalNavigationBarRegion
 			region="primary"
 		>
 			<AppLauncher
 				onSearch={searchClicked('App Launcher searched')}
-				{...primaryRegionProps.appLauncher}
+				assistiveText="Open App Launcher"
+				id="app-launcher-trigger"
+				triggerName="App Name"
 			>
 				<AppLauncherSection title="All Items">
 					<AppLauncherTile
@@ -93,6 +115,7 @@ const getGlobalNavigationBarCustomCloud = (props, primaryRegionProps) => (
 	<GlobalNavigationBar {...props}>
 		<GlobalNavigationBarRegion
 			region="primary"
+			{...primaryRegionProps}
 		>
 			<AppLauncher
 				onSearch={searchClicked('App Launcher searched')}
@@ -159,7 +182,7 @@ const getGlobalNavigationBarCustomCloud = (props, primaryRegionProps) => (
 		</GlobalNavigationBarRegion>
 	</GlobalNavigationBar>
 );
-const getGlobalNavigationBarCustomCloudOverviewAcive = (props, primaryRegionProps) => (
+const getGlobalNavigationBarCustomCloudOverviewActive = (props, primaryRegionProps) => (
 	<GlobalNavigationBar {...props}>
 		<GlobalNavigationBarRegion
 			region="primary"
@@ -235,5 +258,12 @@ storiesOf(GLOBAL_NAVIGATION_BAR, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Base', () => getGlobalNavigationBar(propSets.base.props, propSets.base.primaryRegionProps))
 	.add('Custom Cloud', () => getGlobalNavigationBarCustomCloud(propSets.customCloud.props, propSets.customCloud.primaryRegionProps))
-	.add('Custom Cloud (Overview active)', () => getGlobalNavigationBarCustomCloudOverviewAcive(propSets.customCloud.props, propSets.customCloud.primaryRegionProps))
+	.add('Custom Cloud (Overview active)', () =>
+		getGlobalNavigationBarCustomCloudOverviewActive(
+			propSets.customCloud.props,
+			propSets.customCloud.primaryRegionProps
+		)
+	)
 	.add('Light Theme', () => getGlobalNavigationBar(propSets.lightTheme.props, propSets.lightTheme.primaryRegionProps));
+
+module.exports = getGlobalNavigationBar;
