@@ -55,6 +55,10 @@ const GlobalHeader = React.createClass({
 		 */
 		logoSrc: PropTypes.string,
 		/**
+		 * Pass in the Global Navigation Bar component
+		 */
+		navigation: PropTypes.node,
+		/**
 		 * Required for accessibility. Should jump the user to the primary content area.
 		 */
 		onSkipToContent: PropTypes.func,
@@ -119,6 +123,7 @@ const GlobalHeader = React.createClass({
 						{profile}
 					</ul>
 				</div>
+				{this.props.navigation}
 			</header>
 		);
 		/* eslint-enable max-len, no-script-url */
