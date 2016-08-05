@@ -90,6 +90,7 @@ class Trigger extends React.Component {
       href="javascript:void(0)"
       aria-hidden={true}
       tabIndex={-1}
+      // inline style override
       style={{
         backgroundColor:'transparent',
         width:'100%',

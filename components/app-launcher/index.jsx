@@ -29,26 +29,40 @@ import checkProps from './check-props';
 
 // ## Children
 import Modal from '../modal';
-import Search from '../forms/input/search';
+// DO NOT REMOVE UNTIL THIS IS RESOLVED https://github.com/salesforce-ux/design-system-react-site/issues/56
+import AppLauncherSection from './section'; // eslint-disable-line no-unused-vars
+import AppLauncherTile from './tile'; // eslint-disable-line no-unused-vars
+// //////////////////////////////////////////////////////////////////////////////////
 
 // ## Constants
 import { APP_LAUNCHER } from '../../utilities/constants';
 
 /**
  * The App Launcher allows the user to quickly access all the apps and functionality with their organization.
+ * The App Launcher should generally only be used as a sub-component of the [Global Navigation Bar](/components/global-navigation-bar)
+ *
+ * Also note: App Launcher is not included in the standard component export. To import it, you must reference it directly via its path.
+ * Example:
+ * ```
+ * import AppLauncher from 'design-system-react/components/app-launcher';
+ * import AppLauncherTile from 'design-system-react/components/app-launcher/tile';
+ * import AppLauncherSection from 'design-system-react/components/app-launcher/section';
+ * ```
  *
  * USAGE EXAMPLE:
-	<AppLauncher>
-		<AppLauncherSection>
-			<AppLauncherTile />
-			<AppLauncherTile />
-			<AppLauncherTile />
-		</AppLauncherSection>
-		<AppLauncherSection>
-			<AppLauncherTile />
-			<AppLauncherTile />
-		</AppLauncherSection>
-	</AppLauncher>
+ * ```
+ * <AppLauncher>
+ * 	<AppLauncherSection>
+ * 		<AppLauncherTile />
+ * 		<AppLauncherTile />
+ * 		<AppLauncherTile />
+ * 	</AppLauncherSection>
+ * 	<AppLauncherSection>
+ * 		<AppLauncherTile />
+ * 		<AppLauncherTile />
+ * 	</AppLauncherSection>
+ * </AppLauncher>
+ * ```
  */
 const AppLauncher = React.createClass({
 	// ### Display Name
@@ -58,7 +72,7 @@ const AppLauncher = React.createClass({
 	// ### Prop Types
 	propTypes: {
 		/*
-		 * All of the App Launcher's children
+		 * One or more `<AppLauncherSection />`s each containing one or more `<AppLauncherTile />`s
 		 */
 		children: PropTypes.node.isRequired,
 		/*
@@ -73,18 +87,14 @@ const AppLauncher = React.createClass({
 		 * Callback when the App Launcher Modal is closed
 		 */
 		onClose: PropTypes.func,
-		/*
-		 * Callback fired when search value changes
-		 */
-		onSearch: PropTypes.func.isRequired,
 		/**
 		 * Allows longer application names without truncating them.
 		 */
 		noTruncate: PropTypes.bool,
 		/*
-		 * Set the search input's placeholder text (for localization)
+		 * Search bar for the Modal's header. Will typically be an instance of `design-system-react/forms/input/search`
 		 */
-		searchPlaceholderText: PropTypes.string,
+		search: PropTypes.node,
 		/*
 		 * Set the App Launcher's title text (for localization)
 		 */
@@ -111,7 +121,6 @@ const AppLauncher = React.createClass({
 	getDefaultProps () {
 		return {
 			triggerAssistiveText: 'Open App Launcher',
-			searchPlaceholderText: 'Find an app',
 			title: 'App Launcher'
 		};
 	},
@@ -147,14 +156,9 @@ const AppLauncher = React.createClass({
 		const customModalHeader = (
 			<div className="slds-grid slds-grid--align-spread slds-grid--vertical-align-center">
 				<h2 className="slds-text-heading--medium">{this.props.title}</h2>
-				<div className="slds-app-launcher__header-search">
-					<Search
-						id="app-launcher-search"
-						onChange={this.props.onSearch}
-						assistiveText={this.props.searchPlaceholderText}
-						placeholder={this.props.searchPlaceholderText}
-					/>
-				</div>
+
+				{this.props.search && <div className="slds-app-launcher__header-search">{this.props.search}</div>}
+
 				{
 					this.props.modalHeaderButton
 					? this.props.modalHeaderButton

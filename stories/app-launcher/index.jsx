@@ -10,6 +10,7 @@ import AppLauncherTile from '../../components/app-launcher/tile';
 import AppLauncherSection from '../../components/app-launcher/section';
 import Icon from '../../components/icon';
 import Button from '../../components/button';
+import Search from '../../components/forms/input/search';
 
 import GlobalNavigationBar from '../../components/global-navigation-bar';
 import GlobalNavigationBarRegion from '../../components/global-navigation-bar/region';
@@ -122,7 +123,6 @@ const DemoAppLauncherTileWithTruncatedText = React.createClass({
 			<AppLauncherTile
 				title="Call Center"
 				description="The key to call center and contact center is not to use too many words!"
-				descriptionHeading=""
 				iconText="CC"
 				onClick={action('Tile with icon text clicked!')}
 				search={this.props.search}
@@ -191,7 +191,7 @@ const DemoAppLauncherSection = React.createClass({
 	render () {
 		return (
 			<div>
-				<AppLauncherSection title="All Items" onToggleClick={action('Section `All Items` open -->')}>
+				<AppLauncherSection title="All Items" toggleable onToggleClick={action('Section `All Items` open -->')}>
 					<DemoAppLauncherTile />
 					<DemoAppLauncherTileWithIconText />
 					<DemoAppLauncherTileWithIconNode />
@@ -231,7 +231,7 @@ const DemoAppLauncher = React.createClass({
 	getInitialState () {
 		return {
 			search: '',
-			appLauncherOpen: false,
+			appLauncherOpen: this.props.isOpen || false, // eslint-disable-line react/prop-types
 			allItemsSectionIsOpen: false
 		};
 	},
@@ -249,6 +249,7 @@ const DemoAppLauncher = React.createClass({
 	},
 
 	render () {
+		const search = <Search onChange={this.onSearch} placeholder="Find an app" assistiveText="Find an app" />;
 		const modalHeaderButton = <Button label="App Exchange" onclick={action('Modal Button clicked!')} />;
 
 		return (
@@ -258,13 +259,14 @@ const DemoAppLauncher = React.createClass({
 				>
 					<AppLauncher
 						triggerName="App Name"
-						onSearch={this.onSearch}
+						search={search}
 						modalHeaderButton={modalHeaderButton}
 						isOpen={this.state.appLauncherOpen}
 						triggerOnClick={this.toggleAppLauncher}
 						onClose={this.toggleAppLauncher}
 					>
 						<AppLauncherSection
+							toggleable
 							title="All Items"
 							isOpen={this.state.allItemsSectionIsOpen}
 							onToggleClick={this.toggleSection}
@@ -272,10 +274,20 @@ const DemoAppLauncher = React.createClass({
 							<DemoAppLauncherTile search={this.state.search} />
 							<DemoAppLauncherTileWithIconNode search={this.state.search} />
 							<DemoAppLauncherTileWithIconText search={this.state.search} />
+							<DemoAppLauncherTile search={this.state.search} />
+							<DemoAppLauncherTileWithIconNode search={this.state.search} />
+							<DemoAppLauncherTileWithIconText search={this.state.search} />
 						</AppLauncherSection>
-						<AppLauncherSection title="All Apps">
+						<AppLauncherSection title="All Apps" toggleable>
 							<DemoAppLauncherTile search={this.state.search} />
 							<DemoAppLauncherTileWithTruncatedText search={this.state.search} />
+							<DemoAppLauncherTileWithDescriptionHeading search={this.state.search} />
+							<DemoAppLauncherTile search={this.state.search} />
+							<DemoAppLauncherTileWithTruncatedText search={this.state.search} />
+							<DemoAppLauncherTileWithDescriptionHeading search={this.state.search} />
+							<DemoAppLauncherTile search={this.state.search} />
+							<DemoAppLauncherTileWithTruncatedText search={this.state.search} />
+							<DemoAppLauncherTileWithDescriptionHeading search={this.state.search} />
 						</AppLauncherSection>
 					</AppLauncher>
 				</GlobalNavigationBarRegion>
@@ -303,33 +315,76 @@ const DemoAppLauncherNoHeaderButton = React.createClass({
 		this.setState({ appLauncherOpen: !this.state.appLauncherOpen });
 	},
 
-	toggleSection () {
-		this.setState({ allItemsSectionIsOpen: !this.state.allItemsSectionIsOpen });
-	},
-
 	render () {
+		const search = <Search onChange={this.onSearch} placeholder="Find an app" assistiveText="Find an app" />;
+
 		return (
 			<GlobalNavigationBar>
 				<GlobalNavigationBarRegion region="primary">
 					<AppLauncher
 						triggerName="App Name"
-						onSearch={this.onSearch}
+						search={search}
 						isOpen={this.state.appLauncherOpen}
 						triggerOnClick={this.toggleAppLauncher}
 						onClose={this.toggleAppLauncher}
 					>
 						<AppLauncherSection
+							toggleable
 							title="All Items"
-							isOpen={this.state.allItemsSectionIsOpen}
-							onToggleClick={this.toggleSection}
 						>
 							<DemoAppLauncherTile search={this.state.search} />
 							<DemoAppLauncherTileWithIconNode search={this.state.search} />
 							<DemoAppLauncherTileWithIconText search={this.state.search} />
 						</AppLauncherSection>
-						<AppLauncherSection title="All Apps">
+						<AppLauncherSection title="All Apps" toggleable>
 							<DemoAppLauncherTile search={this.state.search} />
 							<DemoAppLauncherTileWithTruncatedText search={this.state.search} />
+						</AppLauncherSection>
+					</AppLauncher>
+				</GlobalNavigationBarRegion>
+			</GlobalNavigationBar>
+		);
+	}
+});
+
+const DemoAppLauncherNoSearch = React.createClass({
+	displayName: 'DemoAppLauncherNoSearch',
+
+	getInitialState () {
+		return {
+			appLauncherOpen: false,
+			allItemsSectionIsOpen: false
+		};
+	},
+
+	toggleAppLauncher () {
+		this.setState({ appLauncherOpen: !this.state.appLauncherOpen });
+	},
+
+	render () {
+		const modalHeaderButton = <Button label="App Exchange" onclick={action('Modal Button clicked!')} />;
+
+		return (
+			<GlobalNavigationBar>
+				<GlobalNavigationBarRegion region="primary">
+					<AppLauncher
+						triggerName="App Name"
+						modalHeaderButton={modalHeaderButton}
+						isOpen={this.state.appLauncherOpen}
+						triggerOnClick={this.toggleAppLauncher}
+						onClose={this.toggleAppLauncher}
+					>
+						<AppLauncherSection
+							toggleable
+							title="All Items"
+						>
+							<DemoAppLauncherTile />
+							<DemoAppLauncherTileWithIconNode />
+							<DemoAppLauncherTileWithIconText />
+						</AppLauncherSection>
+						<AppLauncherSection title="All Apps" toggleable>
+							<DemoAppLauncherTile />
+							<DemoAppLauncherTileWithTruncatedText />
 						</AppLauncherSection>
 					</AppLauncher>
 				</GlobalNavigationBarRegion>
@@ -346,6 +401,7 @@ const DemoAppLauncherWithSeveralSections = React.createClass({
 	},
 
 	render () {
+		const search = <Search onChange={this.onSearch} placeholder="Find an app" assistiveText="Find an app" />;
 		const modalHeaderButton = <Button label="App Exchange" onclick={action('Modal Button clicked!')} />;
 
 		return (
@@ -353,7 +409,7 @@ const DemoAppLauncherWithSeveralSections = React.createClass({
 				<GlobalNavigationBarRegion region="primary">
 					<AppLauncher
 						triggerName="App Name"
-						onSearch={this.onSearch}
+						search={search}
 						modalHeaderButton={modalHeaderButton}
 					>
 						<AppLauncherSection title="First Section">
@@ -391,9 +447,11 @@ const DemoAppLauncherWithSeveralSections = React.createClass({
 
 storiesOf(APP_LAUNCHER, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.add('App Launcher (open)', () => <DemoAppLauncher isOpen />)
 	.add('App Launcher', () => <DemoAppLauncher />)
 	.add('App Launcher no header button', () => <DemoAppLauncherNoHeaderButton />)
-	.add('App Launcher with several sections', () => <DemoAppLauncherWithSeveralSections />)
+	.add('App Launcher no search', () => <DemoAppLauncherNoSearch />)
+	.add('App Launcher with several sections (no toggle)', () => <DemoAppLauncherWithSeveralSections />)
 	.add('Tile', () => <div style={standardTileDemoStyles}><DemoAppLauncherTile /></div>)
 	.add('Small Tile', () => <div style={smallTileDemoStyles}><DemoAppLauncherSmallTile /></div>)
 	.add('Tile with Icon node', () => <div style={standardTileDemoStyles}><DemoAppLauncherTileWithIconNode /></div>)

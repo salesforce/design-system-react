@@ -22,10 +22,6 @@ import classNames from 'classnames';
 // ### Truncate
 import Truncate from '../utilities/truncate';
 
-// ### [].includes
-// Polyfill for array.includes
-import 'core-js/fn/array/includes';
-
 // ## Children
 import Button from '../button';
 import Highlighter from '../utilities/highlighter';
@@ -142,15 +138,20 @@ const AppLauncherTile = React.createClass({
 							prefix={this.props.descriptionHeading && this.props.descriptionHeading.toUpperCase()}
 							suffix={this.props.moreLabel}
 							text={this.props.description}
-							wrapper={(text) =>
+							textTruncateChild={this.getMoreRender()}
+							wrapper={(text, textTruncateChild) =>
 								<div>
-									<span className="slds-text-heading--label">{this.props.descriptionHeading}</span>
-									{' '}
+									{this.props.descriptionHeading
+										// inline style override
+										&& <span
+											className="slds-text-heading--label"
+											style={{ letterSpacing: '0.025rem' }}
+										>{this.props.descriptionHeading}{' '}</span>}
 									<Highlighter search={this.props.search}>
 										{text}
 									</Highlighter>
-									{' '}
-									{this.getMoreRender()}
+									{textTruncateChild && ' '}
+									{textTruncateChild}
 								</div>
 							}
 						/>

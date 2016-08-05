@@ -17,6 +17,7 @@ storiesOf(GLOBAL_HEADER, module)
 		<GlobalHeader logoSrc={logo} onSkipToContent={action('Skip to Main Content')} onSkipToNav={action('Skip to Navigation')}>
 			<GlobalHeaderSearch
 				onSelect={action('Search Selected')}
+				placeholder="Search Salesforce"
 				options={[
 					{ label: 'Email' },
 					{ label: 'Mobile' }

@@ -9,28 +9,27 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # Global Header Search Component
+export default function truncateByLength ({ inputString = '', maxLength = 140, truncationChars = '...', startingLength = 0 }) {
+	let outputString;
 
-// ## Dependencies
+	if (inputString.length <= maxLength) {
+		outputString = inputString;
+	} else {
+		const words = inputString.split(' ');
+		let length = startingLength + truncationChars.length - 1;
 
-// ### React
-import React from 'react';
+		outputString = words.reduce((combined, word) => {
+			length += word.length + 1;
 
-// ### Lookup
-import Lookup from '../lookup';
+			if (length <= maxLength) {
+				combined.push(word);
+			}
 
-// ## Constants
-import { GLOBAL_HEADER_SEARCH } from '../../utilities/constants';
+			return combined;
+		}, []).join(' ');
 
-/**
- * The Global Header Search component is currently a Lookup. In the future this wrapper may provide additional presets or features.
- */
-const GlobalHeaderSearch = (props) => (
-	<div className="slds-global-header__item slds-global-header__item--search">
-		<Lookup iconPosition="left" {...props} />
-	</div>
-);
+		outputString += truncationChars;
+	}
 
-GlobalHeaderSearch.displayName = GLOBAL_HEADER_SEARCH;
-
-export default GlobalHeaderSearch;
+	return outputString;
+}

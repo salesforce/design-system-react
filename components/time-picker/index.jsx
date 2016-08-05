@@ -158,6 +158,7 @@ const Timepicker = React.createClass({
 				inheritTargetWidth={this.props.inheritTargetWidth}
 				label={this.props.label}
 				listItemRenderer={this.props.listItemRenderer}
+				// inline style override
 				menuStyle={{
 					maxHeight: '20em',
 					overflowX: 'hidden',
