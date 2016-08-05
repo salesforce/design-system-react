@@ -129,10 +129,11 @@ class Button extends TooltipTrigger {
 
 	getClassName () {
 		const isIcon = this.props.variant === 'icon';
-		const iconMore = this.props.iconVariant === 'more';
-		const iconBorder = this.props.iconVariant === 'border';
-		const iconGlobalHeader = this.props.iconVariant === 'global-header';
+
 		let iconVariant = this.props.iconVariant;
+		const iconMore = iconVariant === 'more';
+		const iconBorder = iconVariant === 'border';
+		const iconGlobalHeader = iconVariant === 'global-header';
 
 		const showButtonVariant = this.props.variant !== 'base' && !iconVariant && !this.props.inverse;
 		const plainInverseBtn = this.props.inverse && !isIcon;
@@ -140,7 +141,7 @@ class Button extends TooltipTrigger {
 		const moreInverseIcon = this.props.inverse && iconMore;
 		const borderInverseIcon = this.props.inverse && iconBorder;
 
-		if (this.props.iconVariant === 'global-header') {
+		if (iconVariant === 'global-header') {
 			iconVariant = 'container';
 		}
 
