@@ -66,6 +66,9 @@ const propTypes = {
 	 * Content inside Tooltip.
 	 */
 	content: PropTypes.node.isRequired,
+	/**
+	 * Constrains tooltip to window. If the tooltip is near the bottom, then it may appear about the trigger, despite the value of `align`.
+	 */
 	flippable: PropTypes.bool,
 	/**
 	 * Delay on Tooltip closing.
@@ -76,9 +79,9 @@ const propTypes = {
 	*/
 	id: PropTypes.string,
 	/**
-	* Forces tooltip to be open.
+	* Forces tooltip to be open. A value of `false` will disable any interaction with the tooltip.
 	*/
-	openByDefault: PropTypes.bool,
+	isOpen: PropTypes.bool,
 	/**
 	* This sets the location of the tooltip, if that location is different from the triggering node.
 	*/
@@ -170,13 +173,7 @@ class PopoverTooltip extends React.Component {
 
 	getTooltip () {
 		const id = this.getId();
-		let isOpen = this.state.isOpen;
-
-		if (this.props.openByDefault === true) {
-			isOpen = true;
-		} else if (this.props.openByDefault === false) {
-			isOpen = false;
-		}
+		const isOpen = this.props.isOpen === undefined ? this.state.isOpen : this.props.isOpen;
 
 		return isOpen
 			? tooltip.getTooltip(id, this.props, this.getTooltipContent(), this.getTooltipTarget(), this.handleCancel.bind(this))

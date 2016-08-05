@@ -60,7 +60,7 @@ const getMarginTop = (align) => {
 	if (getVerticalAlign(align) === 'top' && align.indexOf('top') > 0) {
 		return '0.25rem';
 	}
-	return '1rem';
+	return '1.25rem';
 };
 
 const getMarginBottom = (align) => {
