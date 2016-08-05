@@ -55,7 +55,7 @@ const propTypes = {
 	/**
 	 * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
 	 */
-	iconVariant: PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'more']),
+	iconVariant: PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'more', 'global-header']),
 	/**
 	 * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
 	 */
@@ -129,32 +129,45 @@ class Button extends TooltipTrigger {
 
 	getClassName () {
 		const isIcon = this.props.variant === 'icon';
-		const iconMore = this.props.iconVariant === 'more';
-		const iconBorder = this.props.iconVariant === 'border';
 
-		const showButtonVariant = this.props.variant !== 'base' && !this.props.iconVariant && !this.props.inverse;
+		let iconVariant = this.props.iconVariant;
+		const iconMore = iconVariant === 'more';
+		const iconBorder = iconVariant === 'border';
+		const iconGlobalHeader = iconVariant === 'global-header';
+
+		const showButtonVariant = this.props.variant !== 'base' && !iconVariant && !this.props.inverse;
 		const plainInverseBtn = this.props.inverse && !isIcon;
 		const plainInverseIcon = this.props.inverse && isIcon && !iconMore && !iconBorder;
 		const moreInverseIcon = this.props.inverse && iconMore;
 		const borderInverseIcon = this.props.inverse && iconBorder;
 
-		return classNames(this.props.className, 'slds-button', {
+		if (iconVariant === 'global-header') {
+			iconVariant = 'container';
+		}
+
+		return classNames('slds-button', {
 			[`slds-button--${this.props.variant}`]: showButtonVariant,
 			'slds-button--inverse': plainInverseBtn,
 			'slds-button--icon-inverse': plainInverseIcon || moreInverseIcon,
 			// Bug in SLDS css where having a small icon container (with border) and inverse, the icon does not vertically align. Manual fix here until fixed in css.
 			'slds-button--icon-border-inverse slds-align-middle slds-line-height--reset': borderInverseIcon,
-			[`slds-button--icon-${this.props.iconVariant}`]: this.props.iconVariant && !borderInverseIcon,
+			[`slds-button--icon-${iconVariant}`]: iconVariant && !borderInverseIcon,
+			'slds-global-header__button--icon': iconGlobalHeader,
 			// If icon has a container, then we apply the icon size to the container not the svg. Icon size is medium by default so we don't need to explicitly render it here.
-			[`slds-button--icon-${this.props.iconSize}`]: this.props.iconVariant && this.props.iconSize !== 'medium'
-		});
+			[`slds-button--icon-${this.props.iconSize}`]: iconVariant && this.props.iconSize !== 'medium'
+		}, this.props.className);
 	}
 
 	renderIcon (name) {
 		let buttonIcon = null;
 		if (this.props.iconName) {
+			let iconClassName;
+			if (this.props.iconVariant === 'global-header') {
+				iconClassName = 'slds-global-header__icon';
+			}
 			let iconSize = this.props.iconSize === '' || this.props.iconVariant ? null : this.props.iconSize;
 			buttonIcon = (<ButtonIcon
+				className={iconClassName}
 				hint={this.props.hint}
 				inverse={this.props.inverse}
 				name={name}

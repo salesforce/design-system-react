@@ -27,7 +27,11 @@ import { GLOBAL_HEADER_TOOL } from '../../utilities/constants';
  */
 const GlobalHeaderButton = (props) => (
 	<li>
-		<Button iconVariant="container" variant="icon" {...props} />
+		<Button
+			iconVariant="global-header"
+			variant="icon"
+			{...props}
+		/>
 	</li>
 );
 

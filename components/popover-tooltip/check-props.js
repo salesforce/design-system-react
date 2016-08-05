@@ -10,6 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 /* eslint-disable import/no-mutable-exports */
 
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import isTriggerTabbable from '../../utilities/warning/is-trigger-tabbable';
 
 let checkProps = function () {};
@@ -17,6 +18,9 @@ let checkProps = function () {};
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
 		isTriggerTabbable(COMPONENT, props.children, '');
+
+		// Deprecated and changed to another property
+		deprecatedProperty(COMPONENT, props.openByDefault, 'openByDefault', 'isOpen');
 	};
 }
 
