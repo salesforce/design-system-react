@@ -49,6 +49,10 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 		*/
 		id: PropTypes.string,
 		/**
+		* Adds custom styling such as inverse fill and special sizing/spacing
+		*/
+		globalAction: PropTypes.bool,
+		/**
 		 * The dropdown menu.
 		 */
 		menu: PropTypes.node,
@@ -85,6 +89,7 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 			avatar,
 			className,
 			id,
+			globalAction,
 			menu,
 			onBlur,
 			onClick,
@@ -99,7 +104,11 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 		return (
 			<li
 				aria-haspopup="true"
-				className={classnames('slds-dropdown-trigger slds-dropdown-trigger--click', className)}
+				className={classnames(
+					'slds-dropdown-trigger slds-dropdown-trigger--click',
+					{ 'slds-p-around--xx-small': globalAction },
+					className
+				)}
 				id={id}
 				onBlur={onBlur}
 				onClick={onClick}
@@ -108,6 +117,8 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 				onMouseDown={onMouseDown}
 			>
 				<Button
+					className={classnames({ 'slds-global-header__button--icon-actions': globalAction })}
+					iconClassName={classnames({ 'slds-global-header__icon-actions': globalAction })}
 					aria-haspopup="true"
 					{...rest}
 					ref={triggerRef}
