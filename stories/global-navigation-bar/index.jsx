@@ -199,6 +199,8 @@ const getGlobalNavigationBarCustomCloudOverviewAcive = (props, primaryRegionProp
 				options={dropdownCollection}
 			/>
 			<GlobalNavigationBarDropdown
+				active
+				activeBackgroundColor="#ffffff"
 				id="interactionDropdown"
 				label="Interaction"
 				onSelect={dropdownItemClicked('Interaction Menu Item clicked')}

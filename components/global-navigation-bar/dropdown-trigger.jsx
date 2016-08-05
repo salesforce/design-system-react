@@ -40,6 +40,10 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 		 */
 		active: React.PropTypes.bool,
 		/**
+		 * Allows alignment of active item with active application background color.
+		 */
+		activeBackgroundColor: PropTypes.string,
+		/**
 		 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
 		 * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
 		 */
@@ -90,6 +94,7 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 	render () {
 		const {
 			active,
+			activeBackgroundColor,
 			className,
 			id,
 			label,
@@ -102,6 +107,8 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 			triggerRef,
 			...rest
 		} = this.props;
+
+		const listItemstyle = active ? { backgroundColor: activeBackgroundColor, borderBottomColor: activeBackgroundColor } : null;
 
 		return (
 			<li
@@ -117,6 +124,7 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 				onFocus={onFocus}
 				onKeyDown={onKeyDown}
 				onMouseDown={onMouseDown}
+				style={listItemstyle}
 			>
 				<a className="slds-context-bar__label-action">{label}</a>
 				<div className="slds-context-bar__icon-action slds-p-left--none">

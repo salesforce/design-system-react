@@ -43,7 +43,7 @@ const GlobalNavigationBarLink = (props) => {
 		href,
 		label,
 		onClick,
-		...other
+		...rest
 	} = props;
 
 	const listItemstyle = active ? { backgroundColor: activeBackgroundColor, borderBottomColor: activeBackgroundColor } : null;
@@ -54,7 +54,7 @@ const GlobalNavigationBarLink = (props) => {
 				href={href}
 				className={classNames('slds-context-bar__label-action', className)}
 				onClick={isFunction(onClick) ? (event) => handleClick(event, href, onClick) : null}
-				{...other}
+				{...rest}
 			>
 				<span className="slds-truncate">{label}</span>
 			</a>
