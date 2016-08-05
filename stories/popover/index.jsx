@@ -6,6 +6,7 @@ import { storiesOf } from '@kadira/storybook';
 import { POPOVER_TOOLTIP } from '../../utilities/constants';
 import PopoverTooltip from '../../components/popover-tooltip';
 
+import Icon from '../../components/icon';
 import Button from '../../components/button';
 
 const getPopoverTooltip = (props) => (
@@ -15,6 +16,7 @@ const getPopoverTooltip = (props) => (
 );
 
 const getPopoverTooltipAlign = (props) => {
+/* eslint-disable react/prop-types */
 	const children = [];
 
 	const align = [
@@ -34,16 +36,16 @@ const getPopoverTooltipAlign = (props) => {
 
 	align.forEach((value) => {
 		children.push(
-			<div style={{ margin: '100px auto' }}>
+			<div key={value} style={{ margin: '100px auto' }}>
 				<PopoverTooltip {...props} align={value}>
-					<Button label="Trigger Tooltip" />
+					{props.trigger}
 				</PopoverTooltip>
 			</div>
 		);
 	});
 
 	return (
-		<div>
+		<div key="container">
 			{children}
 		</div>
 	);
@@ -68,8 +70,26 @@ storiesOf(POPOVER_TOOLTIP, module)
 		id: 'myPopoverId',
 		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie'
 	}))
-	.add('Alignment', () => getPopoverTooltipAlign({
+	.add('Alignment (Button)', () => getPopoverTooltipAlign({
 		id: 'myPopoverId',
 		isOpen: true,
-		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie'
+		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
+		trigger: (<Button label="Trigger Tooltip" />)
+	}))
+	.add('Alignment (span)', () => getPopoverTooltipAlign({
+		id: 'myPopoverId',
+		isOpen: true,
+		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
+		trigger: (<span tabIndex="0" key="trigger">Trigger Tooltip</span>)
+	}))
+	.add('Alignment (icon)', () => getPopoverTooltipAlign({
+		id: 'myPopoverId',
+		isOpen: true,
+		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
+		trigger: (<Icon
+			assistiveText="Case Icon"
+			category="standard"
+			name="case"
+			size="small"
+		/>)
 	}));
