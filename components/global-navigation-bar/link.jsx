@@ -38,20 +38,23 @@ const GlobalNavigationBarLink = (props) => {
 	// Separate props we care about in order to pass others along passively to the `a` tag
 	const {
 		active,
+		activeBackgroundColor,
 		className,
 		href,
 		label,
 		onClick,
-		...other
+		...rest
 	} = props;
 
+	const listItemstyle = active ? { backgroundColor: activeBackgroundColor, borderBottomColor: activeBackgroundColor } : null;
+
 	return (
-		<li className={classNames('slds-context-bar__item', { 'slds-is-active': active })}>
+		<li className={classNames('slds-context-bar__item', { 'slds-is-active': active })} style={listItemstyle}>
 			<a
 				href={href}
 				className={classNames('slds-context-bar__label-action', className)}
 				onClick={isFunction(onClick) ? (event) => handleClick(event, href, onClick) : null}
-				{...other}
+				{...rest}
 			>
 				<span className="slds-truncate">{label}</span>
 			</a>
@@ -67,6 +70,10 @@ GlobalNavigationBarLink.propTypes = {
 	 * Whether the item is active or not.
 	 */
 	active: PropTypes.bool,
+	/**
+	 * Allows alignment of active item with active application background color. If application background is dark, text color may need to be `#fff`. This can be done with the style prop.
+	 */
+	activeBackgroundColor: PropTypes.string,
 	/**
 	 * Class names to be added to the anchor element
 	 */

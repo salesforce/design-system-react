@@ -26,11 +26,25 @@ import { GLOBAL_NAVIGATION_BAR_DROPDOWN } from '../../utilities/constants';
 /**
  * This component is an implementation of `MenuDropdown` with a custom trigger. All the properties listed below are provided to the `MenuDropdown` component. Any additional properties are provided to the Custom Trigger (that is the `Button` or `li` tag).
  */
-const GlobalNavigationBarDropdown = ({ active, assistiveText, ...props }) => (
-	<MenuDropdown {...props}>
-		<GlobalNavigationTrigger active={active} assistiveText={assistiveText} />
-	</MenuDropdown>
-);
+const GlobalNavigationBarDropdown = (props) => {
+	// Separate props we care about in order to pass others along passively to the dropdown component
+	const {
+		active,
+		activeBackgroundColor,
+		assistiveText,
+		...rest
+	} = props;
+
+	return (
+		<MenuDropdown {...rest}>
+			<GlobalNavigationTrigger
+				active={active}
+				assistiveText={assistiveText}
+				activeBackgroundColor={activeBackgroundColor}
+			/>
+		</MenuDropdown>
+	);
+};
 
 // ### Display Name
 // Always use the canonical component name (set in the core) as the React
@@ -43,6 +57,10 @@ GlobalNavigationBarDropdown.propTypes = {
 	 * Whether the item is active or not.
 	 */
 	active: React.PropTypes.bool,
+	/**
+	 * Allows alignment of active item with active application background color.
+	 */
+	activeBackgroundColor: PropTypes.string,
 	/**
 	 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
 	 */

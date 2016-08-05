@@ -206,6 +206,7 @@ const getGlobalNavigationBarCustomCloudOverviewActive = (props, primaryRegionPro
 				label="Overview"
 				id="overview-link"
 				active
+				activeBackgroundColor="#ffffff"
 				onClick={linkClicked('Overview link clicked')}
 			/>
 			<GlobalNavigationBarDropdown
@@ -221,6 +222,8 @@ const getGlobalNavigationBarCustomCloudOverviewActive = (props, primaryRegionPro
 				options={dropdownCollection}
 			/>
 			<GlobalNavigationBarDropdown
+				active
+				activeBackgroundColor="#ffffff"
 				id="interactionDropdown"
 				label="Interaction"
 				onSelect={dropdownItemClicked('Interaction Menu Item clicked')}
@@ -258,7 +261,7 @@ storiesOf(GLOBAL_NAVIGATION_BAR, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Base', () => getGlobalNavigationBar(propSets.base.props, propSets.base.primaryRegionProps))
 	.add('Custom Cloud', () => getGlobalNavigationBarCustomCloud(propSets.customCloud.props, propSets.customCloud.primaryRegionProps))
-	.add('Custom Cloud (Overview active)', () =>
+	.add('Custom Cloud (Multiple active and white)', () =>
 		getGlobalNavigationBarCustomCloudOverviewActive(
 			propSets.customCloud.props,
 			propSets.customCloud.primaryRegionProps

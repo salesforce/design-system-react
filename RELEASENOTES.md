@@ -2,6 +2,15 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.3.1
+
+**MAJOR CHANGES**
+- Allow setting of active navigation bar item background color
+
+**OTHER**
+- Allows you to put the navigation bar right into the header if desired
+
+
 ## Release 0.3.0
 
 **BREAKING CHANGES**
