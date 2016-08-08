@@ -42,11 +42,14 @@ const dropdownCollection = [{
 	href: 'http://www.google.com'
 }];
 
+console.log(propSets.noNav.primaryRegionProps.dividerPosition);
+
 /* eslint-disable react/display-name */
-const getGlobalNavigationBar = (props) => (
+const getGlobalNavigationBar = (props, primaryRegionProps) => (
 	<GlobalNavigationBar {...props}>
 		<GlobalNavigationBarRegion
 			region="primary"
+			{...primaryRegionProps}
 		>
 			<AppLauncher
 				onSearch={searchClicked('App Launcher searched')}
@@ -64,45 +67,51 @@ const getGlobalNavigationBar = (props) => (
 				</AppLauncherSection>
 			</AppLauncher>
 		</GlobalNavigationBarRegion>
-		<GlobalNavigationBarRegion region="secondary" navigation>
-			<GlobalNavigationBarLink
-				href="https://www.lightningdesignsystem.com/"
-				label="Home"
-				id="home-link"
-				onClick={linkClicked('Home link clicked. Actual href should be ignored')}
-			/>
-			<GlobalNavigationBarDropdown
-				assistiveText="Open Menu Item 1"
-				id="primaryDropdown"
-				label="Menu Item 1"
-				onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
-				options={dropdownCollection}
-			/>
-			<GlobalNavigationBarLink
-				// will actually go to website
-				href="https://www.lightningdesignsystem.com/"
-				label="Menu Item 2"
-			/>
-			<GlobalNavigationBarLink
-				active
-				label="Menu Item 3"
-				onClick={linkClicked('Link clicked')}
-			/>
-			<GlobalNavigationBarLink
-				label="Menu Item 4"
-				onClick={linkClicked('Link clicked')}
-			/>
-		</GlobalNavigationBarRegion>
-		<GlobalNavigationBarRegion region="tertiary">
-			<GlobalNavigationBarButton
-				label="Button"
-				onClick={buttonClicked('Button clicked')}
-			/>
-			<GlobalNavigationBarLink
-				label="Actions"
-				onClick={buttonClicked('Link clicked')}
-			/>
-		</GlobalNavigationBarRegion>
+		{!primaryRegionProps && primaryRegionProps.dividerPosition !== null ?
+			<GlobalNavigationBarRegion region="secondary" navigation>
+				<GlobalNavigationBarLink
+					href="https://www.lightningdesignsystem.com/"
+					label="Home"
+					id="home-link"
+					onClick={linkClicked('Home link clicked. Actual href should be ignored')}
+				/>
+				<GlobalNavigationBarDropdown
+					assistiveText="Open Menu Item 1"
+					id="primaryDropdown"
+					label="Menu Item 1"
+					onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
+					options={dropdownCollection}
+				/>
+				<GlobalNavigationBarLink
+					// will actually go to website
+					href="https://www.lightningdesignsystem.com/"
+					label="Menu Item 2"
+				/>
+				<GlobalNavigationBarLink
+					active
+					label="Menu Item 3"
+					onClick={linkClicked('Link clicked')}
+				/>
+				<GlobalNavigationBarLink
+					label="Menu Item 4"
+					onClick={linkClicked('Link clicked')}
+				/>
+			</GlobalNavigationBarRegion>
+		: null
+	}
+		{!primaryRegionProps && primaryRegionProps.dividerPosition !== null ?
+			<GlobalNavigationBarRegion region="tertiary">
+				<GlobalNavigationBarButton
+					label="Button"
+					onClick={buttonClicked('Button clicked')}
+				/>
+				<GlobalNavigationBarLink
+					label="Actions"
+					onClick={buttonClicked('Link clicked')}
+				/>
+			</GlobalNavigationBarRegion>
+			: null
+		}
 		<GlobalNavigationBarRegion region="tertiary" dividerPosition="left">
 			<GlobalNavigationBarLabel
 				label="Vandelay Enterprises"
@@ -267,5 +276,11 @@ storiesOf(GLOBAL_NAVIGATION_BAR, module)
 			propSets.customCloud.primaryRegionProps
 		)
 	)
+	.add('No Nav', () =>
+		getGlobalNavigationBar(
+			propSets.noNav.props,
+			propSets.noNav.primaryRegionProps
+		)
+	);
 
 module.exports = getGlobalNavigationBar;
