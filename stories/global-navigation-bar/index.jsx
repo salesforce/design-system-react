@@ -267,6 +267,5 @@ storiesOf(GLOBAL_NAVIGATION_BAR, module)
 			propSets.customCloud.primaryRegionProps
 		)
 	)
-	.add('Light Theme', () => getGlobalNavigationBar(propSets.lightTheme.props, propSets.lightTheme.primaryRegionProps));
 
 module.exports = getGlobalNavigationBar;
