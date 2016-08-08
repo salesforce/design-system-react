@@ -42,8 +42,6 @@ const dropdownCollection = [{
 	href: 'http://www.google.com'
 }];
 
-console.log(propSets.noNav.primaryRegionProps.dividerPosition);
-
 /* eslint-disable react/display-name */
 const getGlobalNavigationBar = (props, primaryRegionProps) => (
 	<GlobalNavigationBar {...props}>
@@ -67,7 +65,7 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 				</AppLauncherSection>
 			</AppLauncher>
 		</GlobalNavigationBarRegion>
-		{!primaryRegionProps && primaryRegionProps.dividerPosition !== null ?
+		{!!primaryRegionProps && primaryRegionProps.dividerPosition !== null ?
 			<GlobalNavigationBarRegion region="secondary" navigation>
 				<GlobalNavigationBarLink
 					href="https://www.lightningdesignsystem.com/"
@@ -99,7 +97,7 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 			</GlobalNavigationBarRegion>
 		: null
 	}
-		{!primaryRegionProps && primaryRegionProps.dividerPosition !== null ?
+		{!!primaryRegionProps && primaryRegionProps.dividerPosition !== null ?
 			<GlobalNavigationBarRegion region="tertiary">
 				<GlobalNavigationBarButton
 					label="Button"
@@ -109,14 +107,13 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 					label="Actions"
 					onClick={buttonClicked('Link clicked')}
 				/>
+				<GlobalNavigationBarLabel
+					dividerPosition="left"
+					label="Vandelay Enterprises"
+				/>
 			</GlobalNavigationBarRegion>
 			: null
 		}
-		<GlobalNavigationBarRegion region="tertiary" dividerPosition="left">
-			<GlobalNavigationBarLabel
-				label="Vandelay Enterprises"
-			/>
-		</GlobalNavigationBarRegion>
 	</GlobalNavigationBar>
 );
 
