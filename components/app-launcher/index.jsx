@@ -71,19 +71,19 @@ const AppLauncher = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
-		/*
+		/**
 		 * One or more `<AppLauncherSection />`s each containing one or more `<AppLauncherTile />`s
 		 */
 		children: PropTypes.node.isRequired,
-		/*
+		/**
 		 * Control the open/close state of the App Launcher
 		 */
 		isOpen: PropTypes.bool,
-		/*
+		/**
 		 * Button that exists in the upper right hand corner of the App Launcher modal
 		 */
 		modalHeaderButton: PropTypes.node,
-		/*
+		/**
 		 * Callback when the App Launcher Modal is closed
 		 */
 		onClose: PropTypes.func,
@@ -91,15 +91,15 @@ const AppLauncher = React.createClass({
 		 * Allows longer application names without truncating them.
 		 */
 		noTruncate: PropTypes.bool,
-		/*
+		/**
 		 * Search bar for the Modal's header. Will typically be an instance of `design-system-react/forms/input/search`
 		 */
 		search: PropTypes.node,
-		/*
+		/**
 		 * Set the App Launcher's title text (for localization)
 		 */
 		title: PropTypes.string,
-		/*
+		/**
 		 * Assistive text for app launcher icon
 		 */
 		triggerAssistiveText: PropTypes.string,
@@ -107,7 +107,7 @@ const AppLauncher = React.createClass({
 		 * This is typically the name of the cloud or application
 		 */
 		triggerName: PropTypes.node,
-		/*
+		/**
 		 * Callback when the App Launcher icon is clicked
 		 */
 		triggerOnClick: PropTypes.func
