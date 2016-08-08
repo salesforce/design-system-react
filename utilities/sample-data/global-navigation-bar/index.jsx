@@ -66,11 +66,10 @@ const propSets = {
 			}
 		}
 	},
-	lightTheme: {
-		props: {
-			theme: 'light'
-		},
+	noNav: {
+		props: {},
 		primaryRegionProps: {
+			dividerPosition: null,
 			appLauncher: {
 				assistiveText: 'Open App Launcher',
 				id: 'app-launcher-trigger',
