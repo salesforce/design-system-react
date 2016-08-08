@@ -53,6 +53,10 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
+		 * Determines position of separating bar.
+		 */
+		dividerPosition: PropTypes.oneOf(['left', 'right']),
+		/**
 		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
 		*/
 		id: PropTypes.string,
@@ -96,6 +100,7 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 			active,
 			activeBackgroundColor,
 			className,
+			dividerPosition,
 			id,
 			label,
 			menu,
@@ -115,7 +120,10 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 				aria-haspopup="true"
 				className={classNames(
 					'slds-context-bar__item slds-context-bar-action slds-dropdown-trigger',
-					{ 'slds-is-active': active },
+					{
+						'slds-is-active': active,
+						[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition
+					},
 					className
 				)}
 				id={id}
