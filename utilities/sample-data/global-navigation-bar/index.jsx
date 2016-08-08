@@ -66,6 +66,11 @@ const propSets = {
 			}
 		}
 	},
+	lightTheme: {
+		props: {
+			theme: 'light'
+		}
+	},
 	noNav: {
 		props: {},
 		primaryRegionProps: {
