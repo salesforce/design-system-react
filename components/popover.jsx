@@ -10,16 +10,22 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// ### classNames
+// [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
+// This project uses `classnames`, "a simple javascript utility for conditionally
+// joining classNames together."
 import classNames from 'classnames';
+
+// ### onClickOutside
+// Listen for clicks that occur somewhere in the document, outside of the element itself
+import onClickOutside from 'react-onclickoutside';
 
 import TetherDrop from 'tether-drop';
 import { EventUtil, KEYS } from '../utilities';
 
-module.exports = React.createClass({
+module.exports = onClickOutside(React.createClass({
 
 	displayName: 'Popover',
-
-	mixins: [require('react-onclickoutside')],
 
 	handleClickOutside () {
 		this.handleClose();
@@ -47,6 +53,7 @@ module.exports = React.createClass({
 			marginLeft: 0,
 			marginRight: 0,
 			offset: '0px 0px',
+			outsideClickIgnoreClass: 'ignore-react-onclickoutside',
 			constrainToScrollParent: false,
 			inheritTargetWidth: false
 		};
@@ -113,7 +120,7 @@ module.exports = React.createClass({
 
 		return (
 			<div
-				className={classNames('ignore-react-onclickoutside', this.props.className)}
+				className={classNames(this.props.outsideClickIgnoreClass, this.props.className)}
 				style={style}
 				onKeyDown={this.handleKeyDown}
 				onMouseEnter={this.props.onMouseEnter}
@@ -122,9 +129,6 @@ module.exports = React.createClass({
 				{this.props.children}
 			</div>
 		);
-	},
-
-	beforeClose () {
 	},
 
 	getHorizontalAlign (align) {
@@ -261,4 +265,4 @@ module.exports = React.createClass({
 	render () {
 		return <noscript></noscript>;
 	}
-});
+}));

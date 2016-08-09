@@ -22,6 +22,10 @@ import ReactDOM from 'react-dom';
 // joining classNames together."
 import classNames from 'classnames';
 
+// ### onClickOutside
+// Listen for clicks that occur somewhere in the document, outside of the element itself
+import onClickOutside from 'react-onclickoutside';
+
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
@@ -50,7 +54,7 @@ import { MENU_DROPDOWN, MENU_DROPDOWN_TRIGGER, LIST } from '../../utilities/cons
 /**
  * The MenuDropdown component is a variant of the Lightning Design System Menu component.
  */
-const MenuDropdown = React.createClass({
+const MenuDropdown = onClickOutside(React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: MENU_DROPDOWN,
@@ -231,7 +235,7 @@ const MenuDropdown = React.createClass({
 	getInitialState () {
 		return {
 			focusedIndex: -1,
-			selectedIndex: this.getIndexByValue(this.props.value)
+			selectedIndex: -1
 		};
 	},
 
@@ -241,51 +245,25 @@ const MenuDropdown = React.createClass({
 
 		this.generatedId = shortid.generate();
 
-		window.addEventListener('click', this.closeOnClick, false);
+		this.setState({
+			selectedIndex: this.getIndexByValue(this.props.value)
+		});
 	},
 
-	componentDidUpdate (prevProps, prevState) {
-		if (this.state.isOpen && !prevState.isOpen) {
-			this.state.isClosing = false;
-		}
-
-		if (this.state.selectedIndex !== prevState.selectedIndex) {
-			this.handleClose();
-		} else if (this.state.isFocused && !prevState.isFocused) {
-			this.setState({ isOpen: false });
-		} else if (!this.state.isFocused && prevState.isFocused) {
-			if (this.list) {
-				if (!this.isUnmounting && this.list) {
-					if (!ReactDOM.findDOMNode(this.list).contains(document.activeElement)) {
-						this.setState({ isOpen: false });
-					}
-				}
-			}
-		} else if (this.state.isClosing && !prevState.isClosing) {
-			setTimeout(() => {
-				if (this.state.isClosing) {
-					this.setState({ isOpen: false });
-				}
-			}, this.props.hoverCloseDelay);
-		}
-
-		if (this.props.value !== prevProps.value) {
-			this.handleSelect(this.getIndexByValue(this.props.value));
+	componentWillReceiveProps (nextProps) {
+		if (this.props.value !== nextProps.value) {
+			this.setState({
+				selectedIndex: this.getIndexByValue(nextProps.value)
+			});
 		}
 	},
 
 	componentWillUnmount () {
 		this.isUnmounting = true;
-
-		window.removeEventListener('click', this.closeOnClick, false);
 	},
 
 	getId () {
 		return this.props.id || this.generatedId;
-	},
-
-	getClickEventName () {
-		return `SLDS${this.getId()}ClickEvent`;
 	},
 
 	getIndexByValue (value) {
@@ -313,40 +291,25 @@ const MenuDropdown = React.createClass({
 		return this.props.listItemRenderer ? this.props.listItemRenderer : ListItemLabel;
 	},
 
-	handleBlur (e) {
-		this.setState({ isFocused: false });
-
-		if (this.props.onBlur) {
-			this.props.onBlur(e);
-		}
-	},
-
 	handleClose () {
-		this.setState({
-			isOpen: false,
-			isHover: false
-		});
-	},
+		if (this.state.isOpen) {
+			this.setState({
+				isOpen: false
+			});
 
-	handleFocus (event) {
-		this.setState({
-			isFocused: true,
-			isHover: false
-		});
-
-		if (this.props.onFocus) {
-			this.props.onFocus(event);
+			this.isHover = false;
 		}
 	},
 
 	handleMouseEnter (event) {
-		this.state.isClosing = false;
+		this.isHover = true;
 
 		if (!this.state.isOpen) {
 			this.setState({
-				isOpen: true,
-				isHover: true
+				isOpen: true
 			});
+		} else {
+			clearTimeout(this.isClosing);
 		}
 
 		if (this.props.onMouseEnter) {
@@ -355,7 +318,11 @@ const MenuDropdown = React.createClass({
 	},
 
 	handleMouseLeave (event) {
-		this.setState({ isClosing: true });
+		if (this.state.isOpen) {
+			this.isClosing = setTimeout(() => {
+				this.handleClose();
+			}, this.props.hoverCloseDelay);
+		}
 
 		if (this.props.onMouseLeave) {
 			this.props.onMouseLeave(event);
@@ -363,36 +330,33 @@ const MenuDropdown = React.createClass({
 	},
 
 	handleClick (event) {
-		if (event) {
-			event.nativeEvent[this.getClickEventName()] = true;
-		}
-
 		if (!this.state.isOpen) {
 			this.setState({ isOpen: true });
 			this.setFocus();
-
-			if (this.props.onClick) {
-				this.props.onClick(event);
-			}
 		} else {
 			this.handleClose();
 		}
+
+		if (this.props.onClick) {
+			this.props.onClick(event);
+		}
 	},
 
-	handleMouseDown (event) {
-		if (event) {
-			EventUtil.trapImmediate(event);
-			event.nativeEvent[this.getClickEventName()] = true;
+	handleFocus (event) {
+		if (!this.state.isOpen) {
+			this.setState({ isOpen: true });
 		}
 
-		if (this.props.onMouseDown) {
-			this.props.onMouseDown(event);
+		if (this.props.onFocus) {
+			this.props.onFocus(event);
 		}
 	},
 
 	handleSelect (index) {
 		this.setState({ selectedIndex: index });
+
 		this.setFocus();
+		this.handleClose();
 
 		if (this.props.onSelect) {
 			this.props.onSelect(this.getValueByIndex(index));
@@ -408,12 +372,16 @@ const MenuDropdown = React.createClass({
 				EventUtil.trap(event);
 			}
 
-			this.handleKeyboardNavigate({
-				isOpen: this.state.isOpen || false,
-				keyCode: event.keyCode,
-				onSelect: this.handleSelect,
-				toggleOpen: this.toggleOpen
-			});
+			if (event.keyCode !== KEYS.TAB) {
+				this.handleKeyboardNavigate({
+					isOpen: this.state.isOpen || false,
+					keyCode: event.keyCode,
+					onSelect: this.handleSelect,
+					toggleOpen: this.toggleOpen
+				});
+			} else {
+				this.setFocus();
+			}
 
 			if (this.props.onKeyDown) {
 				this.props.onKeyDown(event);
@@ -422,15 +390,12 @@ const MenuDropdown = React.createClass({
 	},
 
 	handleCancel () {
-		if (!this.state.isHover) {
-			this.setFocus();
-		}
+		this.setFocus();
+		this.handleClose();
 	},
 
-	closeOnClick (event) {
-		if (!event[this.getClickEventName()] && this.state.isOpen) {
-			this.handleClose();
-		}
+	handleClickOutside () {
+		this.handleClose();
 	},
 
 	toggleOpen () {
@@ -438,7 +403,7 @@ const MenuDropdown = React.createClass({
 	},
 
 	setFocus () {
-		if (!this.isUnmounting && this.trigger) {
+		if (!this.isHover && !this.isUnmounting && this.trigger) {
 			ReactDOM.findDOMNode(this.trigger).focus();
 		}
 	},
@@ -484,7 +449,6 @@ const MenuDropdown = React.createClass({
 				key={`${this.props.id}-dropdown-list`}
 				checkmark={this.props.checkmark}
 				getListItemId={this.getListItemId}
-				isHover={this.state.isHover}
 				itemRefs={this.saveRefToListItem}
 				itemRenderer={this.getListItemRenderer()}
 				onCancel={this.handleCancel}
@@ -529,7 +493,7 @@ const MenuDropdown = React.createClass({
 		);
 	},
 
-	renderModalPopover (customContent) {
+	renderModalPopover (customContent, outsideClickIgnoreClass) {
 		let positionClassName;
 		let marginTop;
 		let offset = this.props.offset;
@@ -554,6 +518,7 @@ const MenuDropdown = React.createClass({
 				<Popover
 					className={classNames('slds-dropdown',
 						'slds-dropdown--menu',
+						'ignore-react-onclickoutside',
 						positionClassName,
 						this.props.className)}
 					closeOnTabKey
@@ -563,10 +528,11 @@ const MenuDropdown = React.createClass({
 					inheritTargetWidth={this.props.inheritTargetWidth}
 					marginTop={marginTop}
 					offset={offset}
-					onClose={this.handleCancel}
+					onClose={this.handleClose}
 					onKeyDown={this.handleKeyDown}
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
+					outsideClickIgnoreClass={outsideClickIgnoreClass}
 					targetElement={this.triggerContainer}
 				>
 					{this.renderPopoverContent(customContent)}
@@ -596,6 +562,9 @@ const MenuDropdown = React.createClass({
 		if (customContent.length === 0) {
 			customContent = null;
 		}
+
+		const outsideClickIgnoreClass = `ignore-click-${this.getId()}`;
+
 		/* Below are three sections of props:
 		 - The first are the props that may be given by the dropdown component. These may get deprecated in the future.
 		 - The next set of props (`CustomTriggerChildProps`) are props that can be overwritten by the end developer.
@@ -605,7 +574,7 @@ const MenuDropdown = React.createClass({
 			<CurrentTrigger
 				aria-haspopup="true"
 				assistiveText={this.props.assistiveText}
-				className={this.props.buttonClassName}
+				className={classNames(outsideClickIgnoreClass, this.props.buttonClassName)}
 				disabled={this.props.disabled}
 				hint={this.props.hint}
 				iconCategory={this.props.iconCategory}
@@ -622,22 +591,22 @@ const MenuDropdown = React.createClass({
 				{...CustomTriggerChildProps}
 
 				id={this.getId()}
-				onBlur={this.props.openOn === 'hover' ? this.handleBlur : null}
+				onBlur={this.props.onBlur}
 				onClick={this.props.openOn === 'click' ? this.handleClick : null}
 				onFocus={this.props.openOn === 'hover' ? this.handleFocus : null}
 				onKeyDown={this.handleKeyDown}
-				onMouseDown={this.props.openOn === 'click' ? this.handleMouseDown : null}
+				onMouseDown={this.props.onMouseDown}
 				onMouseEnter={this.props.openOn === 'hover' ? this.handleMouseEnter : null}
 				onMouseLeave={this.props.openOn === 'hover' ? this.handleMouseLeave : null}
 				ref={this.saveRefToTriggerContainer}
 				triggerRef={this.saveRefToTrigger}
 				menu={this.props.modal ?
-					this.renderModalPopover(customContent) :
+					this.renderModalPopover(customContent, outsideClickIgnoreClass) :
 					this.renderSimplePopover(customContent)}
 			/>
 		);
 	}
-});
+}));
 
 module.exports = MenuDropdown;
 module.exports.ListItem = ListItem;

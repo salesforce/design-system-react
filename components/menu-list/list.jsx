@@ -46,10 +46,6 @@ const List = React.createClass({
 		 */
 		getListItemId: PropTypes.func,
 		/**
-		 * True if the list was opened via hover.
-		 */
-		isHover: PropTypes.bool,
-		/**
 		 * Used internally to pass references to the individual menu items back up for focusing / scrolling.
 		 */
 		itemRefs: PropTypes.func,
@@ -98,7 +94,6 @@ const List = React.createClass({
 					data={option}
 					id={id}
 					index={index}
-					isHover={this.props.isHover}
 					isSelected={(index === this.props.selectedIndex)}
 					key={`${id}-${option.value}`}
 					labelRenderer={this.props.itemRenderer}
