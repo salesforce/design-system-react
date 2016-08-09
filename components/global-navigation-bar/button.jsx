@@ -14,7 +14,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ## Dependencies
 
 // ### React
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 // ### classNames
 import classNames from 'classnames';
@@ -26,10 +26,16 @@ import Button from '../button';
 import { GLOBAL_NAVIGATION_BAR_BUTTON } from '../../utilities/constants';
 
 /**
- * A helper component that renders a Button as an item in the Global Navigation Bar.
+ * A helper component that renders a Button as an item in the Global Navigation Bar. All props are passed onto `Button` except `active` and `dividerPosition`.
  */
-const GlobalNavigationButton = ({ active, ...props }) => (
-	<li className={classNames('slds-context-bar__item', { 'slds-is-active': active })}>
+const GlobalNavigationButton = ({ active, dividerPosition, ...props }) => (
+	<li
+		className={classNames(
+			'slds-context-bar__item',
+			{ 'slds-is-active': active,
+			[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition
+		})}
+	>
 		<Button {...props} />
 	</li>
 );
@@ -41,7 +47,11 @@ GlobalNavigationButton.propTypes = {
 	/**
 	 * Whether the item is active or not.
 	 */
-	active: React.PropTypes.bool
+	active: PropTypes.bool,
+	/**
+	 * Determines position of separating bar.
+	 */
+	dividerPosition: PropTypes.oneOf(['left', 'right'])
 };
 
 // ### Default Props

@@ -32,6 +32,7 @@ const GlobalNavigationBarDropdown = (props) => {
 		active,
 		activeBackgroundColor,
 		assistiveText,
+		dividerPosition,
 		...rest
 	} = props;
 
@@ -41,6 +42,7 @@ const GlobalNavigationBarDropdown = (props) => {
 				active={active}
 				assistiveText={assistiveText}
 				activeBackgroundColor={activeBackgroundColor}
+				dividerPosition={dividerPosition}
 			/>
 		</MenuDropdown>
 	);
@@ -73,6 +75,10 @@ GlobalNavigationBarDropdown.propTypes = {
 	 * Extra classnames to apply to the dropdown menu.
 	 */
 	className: PropTypes.string,
+	/**
+	 * Determines position of separating bar.
+	 */
+	dividerPosition: PropTypes.oneOf(['left', 'right']),
 	/**
 	 * CSS classes to be added to `li` element.
 	 */

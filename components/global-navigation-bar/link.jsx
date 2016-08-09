@@ -40,6 +40,7 @@ const GlobalNavigationBarLink = (props) => {
 		active,
 		activeBackgroundColor,
 		className,
+		dividerPosition,
 		href,
 		label,
 		onClick,
@@ -49,7 +50,14 @@ const GlobalNavigationBarLink = (props) => {
 	const listItemstyle = active ? { backgroundColor: activeBackgroundColor, borderBottomColor: activeBackgroundColor } : null;
 
 	return (
-		<li className={classNames('slds-context-bar__item', { 'slds-is-active': active })} style={listItemstyle}>
+		<li
+			className={classNames(
+				'slds-context-bar__item',
+				{ 'slds-is-active': active,
+				[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition
+			})}
+			style={listItemstyle}
+		>
 			<a
 				href={href}
 				className={classNames('slds-context-bar__label-action', className)}
@@ -78,6 +86,10 @@ GlobalNavigationBarLink.propTypes = {
 	 * Class names to be added to the anchor element
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	/**
+	 * Determines position of separating bar.
+	 */
+	dividerPosition: PropTypes.oneOf(['left', 'right']),
 	/**
 	 * The `href` attribute of the link. Please pass in bookmarkable URLs from your routing library. Use `GlobalNavigationBarButton` if a "real URL" is not desired. If the `onClick` callback is specified this URL will still be prevented from changing the browser's location.
 	 */
