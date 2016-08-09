@@ -592,7 +592,7 @@ const MenuDropdown = onClickOutside(React.createClass({
 
 				id={this.getId()}
 				onBlur={this.props.onBlur}
-				onClick={this.props.openOn === 'click' ? this.handleClick : null}
+				onClick={this.props.openOn === 'click' ? this.handleClick : this.props.onClick}
 				onFocus={this.props.openOn === 'hover' ? this.handleFocus : null}
 				onKeyDown={this.handleKeyDown}
 				onMouseDown={this.props.onMouseDown}
