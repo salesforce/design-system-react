@@ -29,12 +29,22 @@ import { GLOBAL_HEADER_TOOL } from '../../utilities/constants';
 const GlobalHeaderDropdown = (props) => {
 	const {
 		globalAction,
+		iconVariant,
 		...rest
 	} = props;
+	let iconVariantOverride;
+
+	if (globalAction) {
+		iconVariantOverride = 'container';
+	}
 
 	return (
 		<MenuDropdown {...rest}>
-			<GlobalHeaderTrigger globalAction={globalAction} iconSize={globalAction && 'small'} />
+			<GlobalHeaderTrigger
+				globalAction={globalAction}
+				iconSize={globalAction && 'small'}
+				iconVariant={iconVariantOverride || iconVariant}
+			/>
 		</MenuDropdown>
 	);
 };
@@ -58,6 +68,14 @@ GlobalHeaderDropdown.propTypes = {
 	 * CSS classes to be added to `li` element.
 	 */
 	buttonClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	/**
+	 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
+	 */
+	iconName: PropTypes.string,
+	/**
+	 * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
+	 */
+	iconVariant: PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'more', 'global-header']),
 	/**
 	* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
 	*/
@@ -95,7 +113,7 @@ GlobalHeaderDropdown.propTypes = {
 GlobalHeaderDropdown.defaultProps = {
 	align: 'right',
 	buttonVariant: 'icon',
-	iconVariant: 'container',
+	iconVariant: 'global-header',
 	nubbinPosition: 'top right',
 	// TODO: Use design tokens to remove "magic numbers" that center nubbin under button
 	offset: '-12px -16px'

@@ -43,7 +43,6 @@ const GlobalHeaderDemo = () => (
 			iconName="add"
 			onSelect={action('Action Selected')}
 			options={[
-				{ label: 'Setup', type: 'header' },
 				{ label: 'New Note', rightIcon: { category: 'standard', name: 'note', size: 'small' } },
 				{ label: 'Log a Call', rightIcon: { category: 'standard', name: 'log_a_call', size: 'small' } }
 			]}
@@ -53,10 +52,14 @@ const GlobalHeaderDemo = () => (
 			iconName="question"
 			onClick={action('Help Clicked')}
 		/>
-		<GlobalHeaderButton
+		<GlobalHeaderDropdown
 			assistiveText="Setup"
 			iconName="setup"
-			onClick={action('Setup Clicked')}
+			onSelect={action('Action Selected')}
+			options={[
+				{ label: 'Global Setup' },
+				{ label: 'Permissions' }
+			]}
 		/>
 		<GlobalHeaderButton
 			assistiveText="Notifications"
@@ -86,16 +89,16 @@ const GlobalHeaderDemo = () => (
 
 storiesOf(GLOBAL_HEADER, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('w/ Search', () => (<GlobalHeaderDemo />))
+	.add('w/ Search + Navigation', () => (<GlobalHeaderDemo />))
 	.add('w/ Fewer Elements', () => (
 		<GlobalHeader logoSrc={logo}>
 			<GlobalHeaderDropdown
-				iconCategory="utility"
-				iconName="add"
+				assistiveText="Setup"
+				iconName="setup"
 				onSelect={action('Action Selected')}
 				options={[
-					{ label: 'New Note' },
-					{ label: 'Log a Call' }
+					{ label: 'Global Setup' },
+					{ label: 'Permissions' }
 				]}
 			/>
 			<GlobalHeaderProfile
