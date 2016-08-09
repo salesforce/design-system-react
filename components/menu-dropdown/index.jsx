@@ -414,6 +414,7 @@ const MenuDropdown = onClickOutside(React.createClass({
 	},
 
 	toggleOpen () {
+		this.setFocus();
 		this.setState({ isOpen: !this.state.isOpen });
 	},
 
