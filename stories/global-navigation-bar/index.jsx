@@ -65,55 +65,49 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 				</AppLauncherSection>
 			</AppLauncher>
 		</GlobalNavigationBarRegion>
-		{!!primaryRegionProps && primaryRegionProps.dividerPosition !== null ?
-			<GlobalNavigationBarRegion region="secondary" navigation>
-				<GlobalNavigationBarLink
-					href="https://www.lightningdesignsystem.com/"
-					label="Home"
-					id="home-link"
-					onClick={linkClicked('Home link clicked. Actual href should be ignored')}
-				/>
-				<GlobalNavigationBarDropdown
-					assistiveText="Open Menu Item 1"
-					id="primaryDropdown"
-					label="Menu Item 1"
-					onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
-					options={dropdownCollection}
-				/>
-				<GlobalNavigationBarLink
-					// will actually go to website
-					href="https://www.lightningdesignsystem.com/"
-					label="Menu Item 2"
-				/>
-				<GlobalNavigationBarLink
-					active
-					label="Menu Item 3"
-					onClick={linkClicked('Link clicked')}
-				/>
-				<GlobalNavigationBarLink
-					label="Menu Item 4"
-					onClick={linkClicked('Link clicked')}
-				/>
-			</GlobalNavigationBarRegion>
-		: null
-	}
-		{!!primaryRegionProps && primaryRegionProps.dividerPosition !== null ?
-			<GlobalNavigationBarRegion region="tertiary">
-				<GlobalNavigationBarButton
-					label="Button"
-					onClick={buttonClicked('Button clicked')}
-				/>
-				<GlobalNavigationBarLink
-					label="Actions"
-					onClick={buttonClicked('Link clicked')}
-				/>
-				<GlobalNavigationBarLabel
-					dividerPosition="left"
-					label="Vandelay Enterprises"
-				/>
-			</GlobalNavigationBarRegion>
-			: null
-		}
+		<GlobalNavigationBarRegion region="secondary" navigation>
+			<GlobalNavigationBarLink
+				href="https://www.lightningdesignsystem.com/"
+				label="Home"
+				id="home-link"
+				onClick={linkClicked('Home link clicked. Actual href should be ignored')}
+			/>
+			<GlobalNavigationBarDropdown
+				assistiveText="Open Menu Item 1"
+				id="primaryDropdown"
+				label="Menu Item 1"
+				onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
+				options={dropdownCollection}
+			/>
+			<GlobalNavigationBarLink
+				// will actually go to website
+				href="https://www.lightningdesignsystem.com/"
+				label="Menu Item 2"
+			/>
+			<GlobalNavigationBarLink
+				active
+				label="Menu Item 3"
+				onClick={linkClicked('Link clicked')}
+			/>
+			<GlobalNavigationBarLink
+				label="Menu Item 4"
+				onClick={linkClicked('Link clicked')}
+			/>
+		</GlobalNavigationBarRegion>
+		<GlobalNavigationBarRegion region="tertiary">
+			<GlobalNavigationBarButton
+				label="Button"
+				onClick={buttonClicked('Button clicked')}
+			/>
+			<GlobalNavigationBarLink
+				label="Actions"
+				onClick={buttonClicked('Link clicked')}
+			/>
+			<GlobalNavigationBarLabel
+				dividerPosition="left"
+				label="Vandelay Enterprises"
+			/>
+		</GlobalNavigationBarRegion>
 	</GlobalNavigationBar>
 );
 
@@ -263,6 +257,31 @@ const getGlobalNavigationBarCustomCloudOverviewActive = (props, primaryRegionPro
 	</GlobalNavigationBar>
 );
 
+const getGlobalNavigationBarNoNav = (props, primaryRegionProps) => (
+	<GlobalNavigationBar {...props}>
+		<GlobalNavigationBarRegion
+			region="primary"
+			{...primaryRegionProps}
+		>
+			<AppLauncher
+				onSearch={searchClicked('App Launcher searched')}
+				assistiveText="Open App Launcher"
+				id="app-launcher-trigger"
+				triggerName="App Name"
+			>
+				<AppLauncherSection title="All Items">
+					<AppLauncherTile
+						title="Marketing Cloud"
+						iconText="MC"
+						description="Send emails, track emails, read emails! Emails!"
+						onClick={action('Tile clicked!')}
+					/>
+				</AppLauncherSection>
+			</AppLauncher>
+		</GlobalNavigationBarRegion>
+	</GlobalNavigationBar>
+);
+
 storiesOf(GLOBAL_NAVIGATION_BAR, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Base', () => getGlobalNavigationBar(propSets.base.props, propSets.base.primaryRegionProps))
@@ -273,8 +292,8 @@ storiesOf(GLOBAL_NAVIGATION_BAR, module)
 			propSets.customCloud.primaryRegionProps
 		)
 	)
-	.add('No Nav', () =>
-		getGlobalNavigationBar(
+	.add('No Secondary Navigation', () =>
+		getGlobalNavigationBarNoNav(
 			propSets.noNav.props,
 			propSets.noNav.primaryRegionProps
 		)

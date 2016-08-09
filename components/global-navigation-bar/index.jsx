@@ -23,53 +23,79 @@ import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 
 // ## Constants
-import { GLOBAL_NAVIGATION_BAR } from '../../utilities/constants';
+import { GLOBAL_NAVIGATION_BAR, GLOBAL_NAVIGATION_BAR_REGION } from '../../utilities/constants';
+
+const auditChildren = (children) => {
+	let primaryRegion;
+	// there can be multiple secondary navigation regions
+	const secondaryRegions = [];
+	let tertiaryRegion;
+
+	React.Children.forEach(children, (child) => {
+		if (child && child.type.displayName === GLOBAL_NAVIGATION_BAR_REGION) {
+			if (child.props.region === 'primary') {
+				primaryRegion = child;
+			} else if (child.props.region === 'secondary') {
+				secondaryRegions.push(child);
+			} else if (child.props.region === 'tertiary') {
+				tertiaryRegion = child;
+			}
+		}
+	});
+
+	if (primaryRegion && secondaryRegions.length === 0) {
+		primaryRegion = React.cloneElement(primaryRegion, {
+			dividerPosition: null,
+			key: 'primary-region'
+		});
+	}
+
+	return [primaryRegion, ...secondaryRegions, tertiaryRegion];
+};
 
 /**
- * Global Navigation Bar represents a list of links that either take the user to another page or parts of the page the user is in.
+  * Global Navigation Bar represents a list of links that either take the user to another page or parts of the page the user is in.
  */
-const GlobalNavigationBar = React.createClass({
-	// ### Display Name
-	// Always use the canonical component name as the React display name.
-	displayName: GLOBAL_NAVIGATION_BAR,
+const GlobalNavigationBar = (props) => (
+	<div
+		className={classNames(
+			'slds-context-bar',
+			{
+				[`slds-context-bar--theme-${props.cloud}`]: props.cloud,
+				[`slds-context-bar--theme-${props.theme}`]: props.theme
+			},
+			props.className)}
+	>
+			{auditChildren(props.children)}
+	</div>
+);
 
-	// ### Prop Types
-	propTypes: {
-		/**
-		 * The items to be displayed in the Global Navigation Bar.
-		 */
-		children: PropTypes.node,
-		/**
-		 * CSS class names to be added to the container element.
-		 */
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-		/**
-		 * Typically the cloud name (e.g.- "sales" or "marketing"). This primarily changes the background color.
-		 */
-		cloud: PropTypes.string,
-		/**
-		 * Transforms text and interactions (such as hover) to be more visually accessible.
-		 */
-		theme: PropTypes.oneOf(['light', 'dark'])
-	},
+// ### Prop Types
+GlobalNavigationBar.propTypes = {
+	/**
+	 * The items to be displayed in the Global Navigation Bar.
+	 */
+	children: PropTypes.node,
+	/**
+	 * CSS class names to be added to the container element.
+	 */
+	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	/**
+	 * Typically the cloud name (e.g.- "sales" or "marketing"). This primarily changes the background color.
+	 */
+	cloud: PropTypes.string,
+	/**
+	 * Transforms text and interactions (such as hover) to be more visually accessible.
+	 */
+	theme: PropTypes.oneOf(['light', 'dark'])
+};
 
-	getDefaultProps () {
-		return {
-			cloud: 'default',
-			theme: 'dark'
-		};
-	},
+GlobalNavigationBar.defaultProps = {
+	cloud: 'default',
+	theme: 'dark'
+};
 
-	// ### Render
-	render () {
-		const cloudClass = `slds-context-bar--theme-${this.props.cloud}`;
-		const themeClass = `slds-context-bar--theme-${this.props.theme}`;
-		return (
-			<div className={classNames('slds-context-bar', cloudClass, themeClass, this.props.className)}>
-					{this.props.children}
-			</div>
-		);
-	}
-});
+
+GlobalNavigationBar.displayName = GLOBAL_NAVIGATION_BAR;
 
 module.exports = GlobalNavigationBar;
