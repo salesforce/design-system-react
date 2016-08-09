@@ -22,6 +22,9 @@ import ReactDOM from 'react-dom';
 // joining classNames together."
 import classNames from 'classnames';
 
+// ### isFunction
+import isFunction from 'lodash.isfunction';
+
 // ### onClickOutside
 // Listen for clicks that occur somewhere in the document, outside of the element itself
 import onClickOutside from 'react-onclickoutside';
@@ -50,6 +53,13 @@ import KeyboardNavigable from '../../utilities/keyboard-navigable';
 
 import { KEYS, EventUtil } from '../../utilities';
 import { MENU_DROPDOWN, MENU_DROPDOWN_TRIGGER, LIST } from '../../utilities/constants';
+
+const overlay = document.createElement('span');
+overlay.style.top = 0;
+overlay.style.left = 0;
+overlay.style.width = '100%';
+overlay.style.height = '100%';
+overlay.style.position = 'absolute';
 
 /**
  * The MenuDropdown component is a variant of the Lightning Design System Menu component.
@@ -210,9 +220,13 @@ const MenuDropdown = onClickOutside(React.createClass({
 		 */
 		options: PropTypes.array,
 		/**
-		 * An object of CSS styles that are applied to the triggering button
+		 * An object of CSS styles that are applied to the triggering button.
 		 */
 		style: PropTypes.object,
+		/**
+		 * If `true`, adds a transparent overlay when the menu is open to handle outside clicks. Allows clicks on iframes to be captured, but also forces a double-click to interact with other elements. If a function is passed, custom overlay logic may be defined by the app.
+		 */
+		overlay: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
 		/**
 		 * Current selected menu item.
 		 */
@@ -260,6 +274,7 @@ const MenuDropdown = onClickOutside(React.createClass({
 
 	componentWillUnmount () {
 		this.isUnmounting = true;
+		this.renderOverlay(false);
 	},
 
 	getId () {
@@ -479,9 +494,9 @@ const MenuDropdown = onClickOutside(React.createClass({
 		return customContentWithListPropInjection || this.renderDefaultPopoverContent();
 	},
 
-	renderSimplePopover (customContent) {
+	renderSimplePopover (customContent, isOpen) {
 		return (
-			this.props.forceOpen || !this.props.disabled && this.state.isOpen && this.trigger ?
+			isOpen ?
 				<div
 					className={classNames('slds-dropdown', 'slds-dropdown--menu', 'slds-dropdown--left', this.props.className)}
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
@@ -493,7 +508,7 @@ const MenuDropdown = onClickOutside(React.createClass({
 		);
 	},
 
-	renderModalPopover (customContent, outsideClickIgnoreClass) {
+	renderModalPopover (customContent, isOpen, outsideClickIgnoreClass) {
 		let positionClassName;
 		let marginTop;
 		let offset = this.props.offset;
@@ -514,7 +529,7 @@ const MenuDropdown = onClickOutside(React.createClass({
 		}
 
 		return (
-			this.props.forceOpen || !this.props.disabled && this.state.isOpen && this.triggerContainer ?
+			isOpen ?
 				<Popover
 					className={classNames('slds-dropdown',
 						'slds-dropdown--menu',
@@ -538,6 +553,18 @@ const MenuDropdown = onClickOutside(React.createClass({
 					{this.renderPopoverContent(customContent)}
 				</Popover> : null
 		);
+	},
+
+	renderOverlay (isOpen) {
+		if (isFunction(overlay)) {
+			overlay(isOpen, overlay);
+		} else if (this.props.overlay && isOpen && !this.overlay) {
+			this.overlay = overlay;
+			document.querySelector('body').appendChild(this.overlay);
+		} else if (!isOpen && this.overlay && this.overlay.parentNode) {
+			this.overlay.parentNode.removeChild(this.overlay);
+			this.overlay = undefined;
+		}
 	},
 
 	render () {
@@ -564,6 +591,9 @@ const MenuDropdown = onClickOutside(React.createClass({
 		}
 
 		const outsideClickIgnoreClass = `ignore-click-${this.getId()}`;
+		const isOpen = this.props.forceOpen || !this.props.disabled && this.state.isOpen && this.trigger;
+
+		this.renderOverlay(isOpen);
 
 		/* Below are three sections of props:
 		 - The first are the props that may be given by the dropdown component. These may get deprecated in the future.
@@ -584,7 +614,7 @@ const MenuDropdown = onClickOutside(React.createClass({
 				inverse={this.props.buttonInverse}
 				label={this.props.label}
 				style={this.props.style}
-				tabIndex={this.state.isOpen ? '-1' : '0'}
+				tabIndex={isOpen ? '-1' : '0'}
 				variant={this.props.buttonVariant}
 				tooltip={this.props.tooltip}
 
@@ -601,8 +631,8 @@ const MenuDropdown = onClickOutside(React.createClass({
 				ref={this.saveRefToTriggerContainer}
 				triggerRef={this.saveRefToTrigger}
 				menu={this.props.modal ?
-					this.renderModalPopover(customContent, outsideClickIgnoreClass) :
-					this.renderSimplePopover(customContent)}
+					this.renderModalPopover(customContent, isOpen, outsideClickIgnoreClass) :
+					this.renderSimplePopover(customContent, isOpen)}
 			/>
 		);
 	}
