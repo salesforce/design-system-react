@@ -2,6 +2,15 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.3.2
+
+**MAJOR CHANGES**
+- Add an AMD tag for users of Require.JS
+
+**OTHER**
+- Remove SLDS media figure when no icon present in page header
+
+
 ## Release 0.3.1
 
 **MAJOR CHANGES**
