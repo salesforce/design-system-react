@@ -24,6 +24,11 @@ import Branch, { cssClasses as branchCssClasses } from './branch';
 // ### classNames
 import classNames from 'classnames';
 
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
+
 // Similar to React's PropTypes check. When in development mode, it issues errors in the console about properties.
 import checkProps from './check-props';
 
@@ -87,7 +92,7 @@ const Tree = React.createClass({
 		/**
 		 * HTML `id` of primary element that has `.slds-tree` on it. This component has a wrapping container element outside of `.slds-tree`.
 		 */
-		id: PropTypes.string.isRequired,
+		id: PropTypes.string,
 		/**
 		 * Function that will run whenever an item or branch is clicked.
 		 */
@@ -104,7 +109,8 @@ const Tree = React.createClass({
 
 	getDefaultProps () {
 		return {
-			getNodes: (node) => node.nodes
+			getNodes: (node) => node.nodes,
+			id: shortid.generate()
 		};
 	},
 
@@ -115,7 +121,7 @@ const Tree = React.createClass({
 	},
 
 	componentWillMount () {
-		// TODO: This may beed to be cleaned up to alert a developer when they do both that the heading is hidden.
+		// TODO: This may need to be cleaned up to alert a developer when they do both that the heading is hidden.
 		checkProps(TREE, this.props);
 	},
 
