@@ -45,7 +45,6 @@ const ListItem = React.createClass({
 		id: PropTypes.string.isRequired,
 		index: PropTypes.number.isRequired,
 		inverted: PropTypes.bool,
-		isHover: PropTypes.bool,
 		isSelected: PropTypes.bool,
 		label: PropTypes.string,
 		labelRenderer: PropTypes.func,

@@ -1,4 +1,5 @@
 /* eslint-env mocha */
+/* global sinon */
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable no-unused-expressions */
 
@@ -109,7 +110,7 @@ describe('SLDSMenuDropdown: ', () => {
 			const customContent = getMenu(body).querySelector('#custom-dropdown-menu-content');
 			expect(customContent).to.not.equal(undefined);
 		});
-		
+
 		it('has additional ListItem from list child\'s options prop', () => {
 			const buttonId = body.querySelector('button').id;
 			Simulate.click(btn, {});
@@ -174,11 +175,10 @@ describe('SLDSMenuDropdown: ', () => {
 	describe('Clickable', () => {
 		let cmp;
 		let btn;
-		let clicked;
+		const onClick = sinon.spy();
 
 		beforeEach(() => {
-			clicked = false;
-			cmp = dropItDown({ openOn: 'click', onClick: () => { clicked = true; } });
+			cmp = dropItDown({ openOn: 'click', onClick });
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
 
@@ -200,12 +200,11 @@ describe('SLDSMenuDropdown: ', () => {
 			expect(getMenu(body)).to.equal(null);
 		});
 
-		it('preserves click behavior', (done) => {
-			expect(clicked).to.be.false;
+		it('preserves click behavior', () => {
+			onClick.reset();
 			Simulate.click(btn, {});
-			expect(clicked).to.be.true;
-			Simulate.click(btn, {}); // cleanup
-			setTimeout(() => done(), 600);
+			expect(onClick.calledOnce);
+			Simulate.click(btn, {});
 		});
 	});
 

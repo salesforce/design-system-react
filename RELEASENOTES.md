@@ -6,6 +6,13 @@
 
 **MAJOR CHANGES**
 - Add an AMD tag for users of Require.JS
+- Makes the keyboard navigation logic less greedy
+- Closes dropdown menu on second click of trigger
+- Closes dropdown menu when another modal opens
+- Closes dropdown menu when tabbed away from
+- Opens hoverable dropdown menu on focus
+- Provides a workaround for closing dropdown menus when clicking in another iframe
+- Returns focus to the dropdown menu trigger when clicking escape
 
 **OTHER**
 - Remove SLDS media figure when no icon present in page header

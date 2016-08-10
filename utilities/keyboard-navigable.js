@@ -71,21 +71,27 @@ export function getNavigableItems (items) {
 	return navigableItems;
 }
 
-export function keyboardNavigate ({ currentFocusedIndex, isOpen, keyCode, navigableItems, onFocus, onSelect, toggleOpen }) {
+export function keyboardNavigate ({ currentFocusedIndex, isOpen, key, keyCode, navigableItems, onFocus, onSelect, toggleOpen }) {
 	const indexes = navigableItems.indexes;
 	const lastIndex = indexes.length - 1;
 	let focusedIndex = undefined;
+	let ch = key || String.fromCharCode(keyCode);
+
+	if (/^[ -~]$/.test(ch)) {
+		ch = ch.toLowerCase();
+	} else {
+		ch = null;
+	}
 
 	if (keyCode === KEYS.ESCAPE) {
 		if (isOpen) toggleOpen();
 	} else if (!isOpen) {
 		focusedIndex = indexes[0];
-		toggleOpen();
+		if (keyCode === KEYS.ENTER || keyCode === KEYS.SPACE || keyCode === KEYS.DOWN || keyCode === KEYS.TAB || ch) toggleOpen();
 	} else if (keyCode === KEYS.ENTER || keyCode === KEYS.SPACE) {
 		onSelect(currentFocusedIndex);
 	} else {
 		let navigableIndex = indexes.indexOf(currentFocusedIndex);
-		let ch = String.fromCharCode(keyCode);
 
 		if (keyCode === KEYS.DOWN) {
 			if (navigableIndex < lastIndex) {
@@ -100,8 +106,6 @@ export function keyboardNavigate ({ currentFocusedIndex, isOpen, keyCode, naviga
 				focusedIndex = indexes[lastIndex];
 			}
 		} else if (ch) {
-			ch = ch.toLowerCase();
-
 			// Combine subsequent keypresses
 			const pattern = navigableItems.keyBuffer(ch);
 			let consecutive = 0;
