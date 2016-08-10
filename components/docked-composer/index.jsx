@@ -3,7 +3,9 @@ import Button from '../button';
 import Icon from '../icon';
 import cx from 'classnames';
 
-const displayName = 'DockedComposer';
+import { DOCKED_COMPOSER } from '../../utilities/constants';
+
+const displayName = 'DOCKED_COMPOSER';
 
 const propTypes = {
         bodyClasses: PropTypes.string,
