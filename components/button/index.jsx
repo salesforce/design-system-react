@@ -141,6 +141,7 @@ class Button extends TooltipTrigger {
 		const moreInverseIcon = this.props.inverse && iconMore;
 		const borderInverseIcon = this.props.inverse && iconBorder;
 
+		// After hijacking `iconVariant` to let `Button` know it's in the header, we reset to container style for the actual button CSS.
 		if (iconVariant === 'global-header') {
 			iconVariant = 'container';
 		}
@@ -153,7 +154,7 @@ class Button extends TooltipTrigger {
 			'slds-button--icon-border-inverse slds-align-middle slds-line-height--reset': borderInverseIcon,
 			[`slds-button--icon-${iconVariant}`]: iconVariant && !borderInverseIcon,
 			'slds-global-header__button--icon': iconGlobalHeader,
-			// If icon has a container, then we apply the icon size to the container not the svg. Icon size is medium by default so we don't need to explicitly render it here.
+			// If icon has a container, then we apply the icon size to the container not the svg. Icon size is medium by default, so we don't need to explicitly render it here.
 			[`slds-button--icon-${this.props.iconSize}`]: iconVariant && this.props.iconSize !== 'medium'
 		}, this.props.className);
 	}

@@ -182,6 +182,7 @@ const getGlobalNavigationBarCustomCloud = (props, primaryRegionProps) => (
 		</GlobalNavigationBarRegion>
 	</GlobalNavigationBar>
 );
+
 const getGlobalNavigationBarCustomCloudOverviewActive = (props, primaryRegionProps) => (
 	<GlobalNavigationBar {...props}>
 		<GlobalNavigationBarRegion

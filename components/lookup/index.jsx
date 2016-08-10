@@ -127,6 +127,7 @@ const defaultProps = {
 	constrainToScrollParent: true,
 	filterWith: defaultFilter,
 	flippable: false,
+	iconPosition: 'right',
 	modal: false,
 	required: false,
 	searchTerm: ''

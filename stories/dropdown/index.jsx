@@ -98,6 +98,31 @@ storiesOf(MENU_DROPDOWN, module)
 		openOn: 'hover',
 		options
 	}))
+	.add('Two Hovers', () => <div>
+		{getDropdown({
+			assistiveText: 'Icon More large',
+			buttonVariant: 'icon',
+			iconName: 'settings',
+			iconVariant: 'more',
+			onSelect: (...rest) => {
+				action('Selected')(...rest);
+			},
+			openOn: 'hover',
+			options
+		})}
+		{' '}
+		{getDropdown({
+			assistiveText: 'Icon More large',
+			buttonVariant: 'icon',
+			iconName: 'settings',
+			iconVariant: 'more',
+			onSelect: (...rest) => {
+				action('Selected')(...rest);
+			},
+			openOn: 'hover',
+			options
+		})}
+	</div>)
 	.add('Hover with Checkmark', () => getDropdown({
 		assistiveText: 'More Options',
 		buttonVariant: 'icon',
