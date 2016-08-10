@@ -13,7 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // This function will deliver an error message to the browser console when all of the props passed in are undefined (falsey).
 import warning from 'warning';
 
-let oneOfRequired = function () {};
+let oneOfRequired;
 
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
@@ -21,9 +21,9 @@ if (process.env.NODE_ENV !== 'production') {
 	oneOfRequired = function (control, selectedProps, comment) {
 		const additionalComment = comment ? ` ${comment}` : '';
 		let atLeastOnePropIsSet = false;
-		let keys = Object.keys(selectedProps)
-		keys.forEach( (key) => {
-			if(selectedProps[key]) {
+		const keys = Object.keys(selectedProps);
+		keys.forEach((key) => {
+			if (selectedProps[key]) {
 				atLeastOnePropIsSet = true;
 			}
 		});
@@ -35,6 +35,8 @@ if (process.env.NODE_ENV !== 'production') {
 			hasWarned[control] = !!selectedProps;
 		}
 	};
+} else {
+	oneOfRequired = function () {};
 }
 
-export default oneOfRequired;
+module.exports = oneOfRequired;

@@ -35,20 +35,17 @@ export CardFilter from './card/filter';
 export SLDSCheckbox from './forms/checkbox';
 export Checkbox from './forms/checkbox';
 
-export SLDSContextBar from './context-bar';
-export ContextBar from './context-bar';
+export SLDSGlobalNavigationBar from './global-navigation-bar';
+export GlobalNavigationBar from './global-navigation-bar';
 
-export SLDSContextBarAppLauncher from './context-bar/app-launcher';
-export ContextBarAppLauncher from './context-bar/app-launcher';
+export SLDSGlobalNavigationBarRegion from './global-navigation-bar/region';
+export GlobalNavigationBarRegion from './global-navigation-bar/region';
 
-export SLDSContextBarRegion from './context-bar/region';
-export ContextBarRegion from './context-bar/region';
+export SLDSGlobalNavigationBarLink from './global-navigation-bar/link';
+export GlobalNavigationBarLink from './global-navigation-bar/link';
 
-export SLDSContextBarLink from './context-bar/link';
-export ContextBarLink from './context-bar/link';
-
-export SLDSContextBarDropdown from './context-bar/dropdown';
-export ContextBarDropdown from './context-bar/dropdown';
+export SLDSGlobalNavigationBarDropdown from './global-navigation-bar/dropdown';
+export GlobalNavigationBarDropdown from './global-navigation-bar/dropdown';
 
 export SLDSDataTable from './data-table';
 export DataTable from './data-table';
@@ -69,7 +66,10 @@ export SLDSIcon from './icon';
 export Icon from './icon';
 
 export SLDSButtonIcon from './icon/button-icon';
-export ButtonIcon from './icon';
+export ButtonIcon from './icon/button-icon';
+
+export SLDSInlineEdit from './forms/input/inline';
+export InlineEdit from './forms/input/inline';
 
 export SLDSInput from './forms/input';
 export Input from './forms/input';
@@ -81,7 +81,7 @@ export SLDSMenuDropdown from './menu-dropdown';
 export Dropdown from './menu-dropdown';
 
 export SLDSMenuPicklist from './menu-picklist';
-export SLDSMenuPicklist from './menu-picklist';
+export Picklist from './menu-picklist';
 
 export SLDSModal from './modal';
 export Modal from './modal';
@@ -97,6 +97,9 @@ export PageHeader from './page-header';
 
 export SLDSPopoverTooltip from './popover-tooltip';
 export PopoverTooltip from './popover-tooltip';
+
+export SLDSSpinner from './spinner';
+export Spinner from './spinner';
 
 export SLDSTimepicker from './time-picker';
 export Timepicker from './time-picker';

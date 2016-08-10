@@ -14,59 +14,65 @@ import DetailRow from '../detail-row';
 
 const displayName = 'PageHeaderRecordHome';
 const propTypes = {
-  /**
-   * Icon node passed by PageHeader
-   */
-  icon: React.PropTypes.node,
-  /**
-   * Title node passed by PageHeader
-   */
-  title: React.PropTypes.node,
-  /**
-   * Info node passed by PageHeader
-   */
-  info: React.PropTypes.node,
-  /**
-   * Content to appear on the right hand side of the page header
-   */
-  contentRight: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.element,
-  ]),
-  /**
-   * An array of detail blocks
-   */
-  details: React.PropTypes.array,
+	/**
+	 * Icon node passed by PageHeader
+	 */
+	icon: React.PropTypes.node,
+	/**
+	 * Title node passed by PageHeader
+	 */
+	title: React.PropTypes.node,
+	/**
+	 * Info node passed by PageHeader
+	 */
+	info: React.PropTypes.node,
+	/**
+	 * Content to appear on the right hand side of the page header
+	 */
+	contentRight: React.PropTypes.oneOfType([
+		React.PropTypes.string,
+		React.PropTypes.element,
+	]),
+	/**
+	 * An array of detail blocks
+	 */
+	details: React.PropTypes.array,
 };
 const defaultProps = {};
 
 class RecordHome extends Component {
-  render() {
-    const { details } = this.props;
+	renderIcon() {
+		if(this.props.icon) {
+			return <div className="slds-media__figure">
+				{ this.props.icon }
+			</div>
+		}
+	}
 
-    return (
-      <div>
-        <div className="slds-grid">
-          <div className="slds-col slds-has-flexi-truncate">
-            <div className="slds-media slds-media--center">
-              <div className="slds-media__figure">
-                { this.props.icon }
-              </div>
-              <div className="slds-media__body">
-                { this.props.label }
-                { this.props.title }
-                { this.props.info }
-              </div>
-            </div>
-          </div>
-          <div className="slds-col slds-no-flex slds-grid slds-align-bottom">
-            { this.props.contentRight }
-          </div>
-        </div>
-        <DetailRow details={details} />
-      </div>
-    );
-  }
+	render() {
+		const { details } = this.props;
+
+		return (
+			<div>
+				<div className="slds-grid">
+					<div className="slds-col slds-has-flexi-truncate">
+						<div className="slds-media slds-media--center">
+							{this.renderIcon()}
+							<div className="slds-media__body">
+								{ this.props.label }
+								{ this.props.title }
+								{ this.props.info }
+							</div>
+						</div>
+					</div>
+					<div className="slds-col slds-no-flex slds-grid slds-align-bottom">
+						{ this.props.contentRight }
+					</div>
+				</div>
+				<DetailRow details={details} />
+			</div>
+		);
+	}
 }
 
 RecordHome.displayName = displayName;

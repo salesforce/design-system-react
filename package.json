@@ -1,8 +1,12 @@
 {
   "name": "design-system-react",
-  "version": "0.0.30",
+  "version": "0.3.2",
   "description": "Salesforce Lightning Design System React components",
   "license": "BSD-3-Clause",
+  "engines": {
+    "node": "^4.4.0",
+    "npm": "^3.9.0"
+  },
   "scripts": {
     "build-storybook": "build-storybook -o ./storybook",
     "dist": "scripts/dist.sh",
@@ -12,8 +16,8 @@
     "lint": "eslint --config=./.eslintrc \"**/*.{js,jsx}\"",
     "publish-to-git": "./node_modules/.bin/babel-node scripts/publish-to-git.js",
     "publish-to-edge": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge",
-    "publish-to-upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge --remote=upstream && ./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
-    "start": "start-storybook -p 9001 & node tests/app",
+    "publish-to-upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
+    "start": "start-storybook -p 9001 -s ./node_modules & node tests/app",
     "test": "scripts/test.sh --single-run",
     "validate": "npm ls"
   },
@@ -49,14 +53,18 @@
     "lodash.flatten": "^4.2.0",
     "lodash.isarray": "^4.0.0",
     "lodash.isboolean": "^3.0.3",
+    "lodash.isdate": "^3.0.3",
     "lodash.isequal": "^4.2.0",
     "lodash.isfunction": "^3.0.8",
+    "lodash.memoize": "^4.1.1",
     "lodash.omit": "^4.3.0",
     "lodash.partial": "^4.1.3",
     "lodash.reject": "^4.3.0",
     "lodash.uniqueid": "^4.0.0",
-    "react-modal": "^0.6.1",
-    "react-onclickoutside": "^4.5.0",
+    "react-highlighter": "^0.3.2",
+    "react-modal": "^1.4.0",
+    "react-onclickoutside": "^5.3.3",
+    "react-text-truncate": "^0.8.2",
     "shortid": "^2.2.6",
     "tether": "1.1.0",
     "tether-drop": "1.2.2",
@@ -64,13 +72,14 @@
   },
   "devDependencies": {
     "@kadira/storybook": "^1.27.0",
-    "@salesforce-ux/design-system": "git+ssh://git@github.com/salesforce-ux/design-system-internal.git#v2.1.0-beta.2-dist",
+    "@salesforce-ux/design-system": "git+ssh://git@github.com/salesforce-ux/design-system-internal.git#v2.1.0-rc.4-dist",
     "@salesforce-ux/icons": "4.0.0",
     "async": "^2.0.0-rc.5",
     "babel": "^6.5.2",
     "babel-cli": "^6.9.0",
     "babel-core": "^6.9.0",
     "babel-loader": "^6.2.2",
+    "babel-plugin-transform-es2015-modules-amd": "^6.8.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.8.0",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
@@ -85,6 +94,7 @@
     "eslint-loader": "~1.3.0",
     "express": "^4.13.4",
     "file-loader": "^0.8.4",
+    "fs-extra": "^0.30.0",
     "isparta-loader": "^2.0.0",
     "istanbul": "^1.0.0-alpha.2",
     "json-loader": "^0.5.3",
@@ -124,25 +134,116 @@
     "validate",
     "test"
   ],
-  "components": {
-    "bread-crumb": "Breadcrumbs",
-    "button": "Buttons",
-    "button-stateful": "Stateful Buttons",
-    "button-group": "Button Groups",
-    "card": "Cards",
-    "forms/checkbox": "Checkbox",
-    "context-bar": "ContextBar",
-    "data-table": "Data Tables",
-    "date-picker": "DatePickers",
-    "icon": "Icons",
-    "forms/input": "Input",
-    "lookup": "Lookups",
-    "menu-dropdown": "Dropdown Menus",
-    "menu-picklist": "Picklist Menus",
-    "modal": "Modals",
-    "notification": "Notifications",
-    "page-header": "Page Headers",
-    "popover-tooltip": "Popover Tooltips",
-    "time-picker": "Timepickers"
-  }
+  "components": [
+    {
+      "component": "app-launcher",
+      "display-name": "App Launcher",
+      "SLDS-component-path": "/components/app-launcher/#flavor-default"
+    },
+    {
+      "component": "bread-crumb",
+      "display-name": "Breadcrumbs",
+      "SLDS-component-path": "/components/breadcrumbs"
+    },
+    {
+      "component": "button",
+      "display-name": "Buttons",
+      "SLDS-component-path": "/components/buttons"
+    },
+    {
+      "component": "button-stateful",
+      "display-name": "Stateful Buttons",
+      "SLDS-component-path": "/components/buttons/#flavor-stateful"
+    },
+    {
+      "component": "button-group",
+      "display-name": "Button Groups",
+      "SLDS-component-path": "/components/button-groups"
+    },
+    {
+      "component": "card",
+      "display-name": "Cards",
+      "SLDS-component-path": "/components/cards"
+    },
+    {
+      "component": "forms/checkbox",
+      "display-name": "Checkboxes",
+      "SLDS-component-path": "/components/forms/#flavor-checkbox"
+    },
+    {
+      "component": "data-table",
+      "display-name": "Data Tables",
+      "SLDS-component-path": "/components/data-tables"
+    },
+    {
+      "component": "date-picker",
+      "display-name": "Datepickers",
+      "SLDS-component-path": "/components/datepickers"
+    },
+    {
+      "component": "icon",
+      "display-name": "Icons",
+      "SLDS-component-path": "/components/icons"
+    },
+    {
+      "component": "forms/input/inline",
+      "display-name": "Inline Edit Inputs",
+      "SLDS-component-path": "/components/forms#flavor-input"
+    },
+    {
+      "component": "forms/input",
+      "display-name": "Inputs",
+      "SLDS-component-path": "/components/forms#flavor-input"
+    },
+    {
+      "component": "global-header",
+      "display-name": "Global Header",
+      "SLDS-component-path": "/components/global-header#flavor-base"
+    },
+    {
+      "component": "global-navigation-bar",
+      "display-name": "Global Navigation Bar",
+      "SLDS-component-path": "/components/global-navigation#flavor-navigation-bar"
+    },
+    {
+      "component": "lookup",
+      "display-name": "Lookups",
+      "SLDS-component-path": "/components/lookups"
+    },
+    {
+      "component": "menu-dropdown",
+      "display-name": "Dropdown Menus",
+      "SLDS-component-path": "/components/menus#flavor-dropdown"
+    },
+    {
+      "component": "menu-picklist",
+      "display-name": "Picklist Menus",
+      "SLDS-component-path": "/components/menus#flavor-picklist"
+    },
+    {
+      "component": "modal",
+      "display-name": "Modals",
+      "SLDS-component-path": "/components/modals"
+    },
+    {
+      "component": "notification",
+      "display-name": "Notifications",
+      "SLDS-component-path": "/components/notifications"
+    },
+    {
+      "component": "page-header",
+      "display-name": "Page Headers",
+      "SLDS-component-path": "/components/page-headers"
+    },
+    {
+      "component": "popover-tooltip",
+      "display-name": "Popover Tooltips",
+      "SLDS-component-path": "/components/popovers#flavor-tooltips"
+    },
+    {
+      "component": "time-picker",
+      "display-name": "Timepickers",
+      "SLDS-component-path": "/components/datepickers"
+    }
+  ]
 }

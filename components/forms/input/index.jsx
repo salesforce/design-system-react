@@ -23,10 +23,20 @@ import React from 'react';
 // joining classNames together."
 import classNames from 'classnames';
 
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
+
 // ## Children
 import InputIcon from '../../icon/input-icon';
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
+
+// ### isFunction
+import isFunction from 'lodash.isfunction';
+
+import Button from '../../button';
 
 // Remove the need for `React.PropTypes`
 const { PropTypes } = React;
@@ -59,6 +69,7 @@ const Input = React.createClass({
 		 * by this text and is visually not shown.
 		 */
 		assistiveText: PropTypes.string,
+		children: PropTypes.node,
 		/**
 		 * Class names to be added to the outer container of the input.
 		 */
@@ -97,9 +108,13 @@ const Input = React.createClass({
 			'right'
 		]),
 		/**
+		 * Set the assistive text for a clickable icon
+		 */
+		iconAssistiveText: PropTypes.string,
+		/**
 		 * Every input must have a unique ID in order to support keyboard navigation and ARIA support.
 		 */
-		id: PropTypes.string.isRequired,
+		id: PropTypes.string,
 		/**
 		 * This label appears above the input.
 		 */
@@ -109,6 +124,10 @@ const Input = React.createClass({
 		 */
 		onChange: PropTypes.func,
 		/**
+		 * This event fires when the input is clicked.
+		 */
+		onClick: PropTypes.func,
+		/**
 		 * This event fires when the icon is clicked.
 		 */
 		onIconClick: PropTypes.func,
@@ -116,6 +135,10 @@ const Input = React.createClass({
 		 * Text that will appear in an empty input.
 		 */
 		placeholder: PropTypes.string,
+		/**
+		 * Name of the submitted form parameter.
+		 */
+		name: PropTypes.string,
 		/**
 		 * Displays the value of the input statically.
 		 */
@@ -149,16 +172,41 @@ const Input = React.createClass({
 		value: PropTypes.string
 	},
 
-	componentWillMount () {
-		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(FORMS_INPUT, this.props);
-	},
-
 	getDefaultProps () {
 		return {
 			iconPosition: 'left',
 			type: 'text'
 		};
+	},
+
+	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(FORMS_INPUT, this.props);
+
+		this.generatedId = shortid.generate();
+	},
+
+	getId () {
+		return this.props.id || this.generatedId;
+	},
+
+	getIconRender (position) {
+		if (position !== this.props.iconPosition) return '';
+
+		return isFunction(this.props.onIconClick)
+		? (<Button
+			iconSize="small"
+			variant="icon"
+			className="slds-input__icon slds-button--icon"
+			assistiveText={this.props.iconAssistiveText}
+			iconName={this.props.iconName}
+			iconCategory={this.props.iconCategory}
+			onClick={this.props.onIconClick}
+		/>)
+		: (<InputIcon
+			name={this.props.iconName}
+			category={this.props.iconCategory}
+		/>);
 	},
 
 	// ### Render
@@ -167,16 +215,21 @@ const Input = React.createClass({
 			ariaControls,
 			ariaOwns,
 			assistiveText,
+			children,
 			className,
 			disabled,
 			errorText,
+			iconAssistiveText, // eslint-disable-line no-unused-vars
 			iconCategory,
 			iconName,
 			iconPosition,
-			id,
+			inlineEditTrigger, // eslint-disable-line react/prop-types
+			inputRef, // eslint-disable-line react/prop-types
 			label,
 			onChange,
-			onIconClick,
+			onClick,
+			onIconClick, // eslint-disable-line no-unused-vars
+			name,
 			placeholder,
 			readOnly,
 			required,
@@ -191,7 +244,7 @@ const Input = React.createClass({
 		const hasIcon = iconCategory && iconName;
 
 		// One of these is required to pass accessibility tests
-		const labelText = assistiveText || label;
+		const labelText = label || assistiveText;
 
 		return (
 			<div
@@ -201,45 +254,55 @@ const Input = React.createClass({
 				},
 				className)}
 			>
-				{labelText && (!readOnly
-					? <label className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText })} htmlFor={id}>
+				{labelText && (readOnly
+					? <span
+						className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText && !label })}
+					>
+						{labelText}
+					</span>
+					: <label
+						className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText && !label })}
+						htmlFor={this.getId()}
+					>
 						{required && <abbr className="slds-required" title="required">*</abbr>}
 						{labelText}
 					</label>
-					: <span className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText })}>
-						{labelText}
-					</span>)}
+				)}
 				<div
 					className={classNames('slds-form-element__control', hasIcon && [
 						'slds-input-has-icon',
 						`slds-input-has-icon--${iconPosition}`
 					], {
-						'slds-has-divider--bottom': readOnly
+						'slds-has-divider--bottom': readOnly && !inlineEditTrigger
 					})}
 				>
-					{hasIcon && <InputIcon
-						name={iconName}
-						category={iconCategory}
-						onClick={onIconClick}
-					/>}
+					{hasIcon && this.getIconRender('left')}
+
 					{!readOnly && <input
 						{...props}
 						aria-controls={ariaControls}
 						aria-owns={ariaOwns}
 						className="slds-input"
 						disabled={disabled}
-						id={id}
+						id={this.getId()}
 						onChange={onChange}
+						onClick={onClick}
+						name={name}
 						placeholder={placeholder}
+						ref={inputRef}
 						required={required}
 						type={type}
 						value={value}
 					/>}
-					{readOnly && <span className="slds-form-element__static">
+					{hasIcon && this.getIconRender('right')}
+
+					{readOnly && <span className="slds-form-element__static" onClick={onClick}>
 						{value}
+						{inlineEditTrigger}
 					</span>}
 				</div>
 				{errorText && <div className="slds-form-element__help">{errorText}</div>}
+				{children}
 			</div>
 		);
 	}

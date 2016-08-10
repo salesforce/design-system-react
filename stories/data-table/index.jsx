@@ -1,5 +1,3 @@
-/* eslint-disable indent */
-
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 
@@ -63,14 +61,14 @@ const DemoDataTable = React.createClass({
 		);
 	},
 
-	handleChange (selection) {
-		action('change')(...arguments);
+	handleChange (selection, ...rest) {
+		action('change')(selection, ...rest);
 
 		this.setState({ selection });
 	},
 
-	handleSort (sortColumn) {
-		action('sort')(...arguments);
+	handleSort (sortColumn, ...rest) {
+		action('sort')(sortColumn, ...rest);
 
 		const sortProperty = sortColumn.property;
 		const sortDirection = sortColumn.sortDirection;
@@ -99,6 +97,8 @@ const DemoDataTable = React.createClass({
 
 storiesOf(DATA_TABLE, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('striped', () => <DemoDataTable striped={true} />)
-	.add('bordered', () => <DemoDataTable bordered={true} />)
-	.add('selectable', () => <DemoDataTable selectRows={true} />);
+	.add('Striped', () => <DemoDataTable striped />)
+	.add('Bordered', () => <DemoDataTable bordered />)
+	.add('Buffered', () => <DemoDataTable buffered />)
+	.add('Buffered + Bordered', () => <DemoDataTable buffered bordered />)
+	.add('Selectable', () => <DemoDataTable selectRows />);

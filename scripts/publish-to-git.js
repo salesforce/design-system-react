@@ -20,10 +20,7 @@ import { version } from '../package.json';
 
 const argv = minimist(process.argv.slice(2));
 const rootPath = path.resolve(__dirname, '../');
-const distPaths = {
-	commonjs: path.resolve.bind(path, path.resolve(rootPath, '.tmp')),
-	es: path.resolve.bind(path, path.resolve(rootPath, '.tmp-es'))
-};
+const getTmpPath = (type) => path.resolve.bind(path, path.resolve(rootPath, `.tmp-${type}`));
 const gitDir = '.git';
 
 const exec = ([command, dir = '.'], callback) => {
@@ -41,7 +38,7 @@ const exec = ([command, dir = '.'], callback) => {
 ///////////////////////////////////////////////////////////////
 
 const cleanPackageJson = (done, type) => {
-	const tmpPath = distPaths[type];
+	const tmpPath = getTmpPath(type);
 
 	const packageJSON = JSON.parse(fs.readFileSync(tmpPath('package.json')).toString());
 
@@ -57,7 +54,7 @@ const cleanPackageJson = (done, type) => {
 };
 
 const publish = (done, type) => {
-	const tmpPath = distPaths[type];
+	const tmpPath = getTmpPath(type);
 	const tmpDir = tmpPath();
 	const remote = argv.remote || 'origin';
 
@@ -109,7 +106,10 @@ async.series([
 	done => publish(done, 'es'),
 
 	done => cleanPackageJson(done, 'commonjs'),
-	done => publish(done, 'commonjs')
+	done => publish(done, 'commonjs'),
+
+	done => cleanPackageJson(done, 'amd'),
+	done => publish(done, 'amd')
 ], err => {
 	if (err) throw err;
 });

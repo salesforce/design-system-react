@@ -11,17 +11,23 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 /* eslint-disable import/no-mutable-exports */
 
 import oneOfRequiredProperty from '../../../utilities/warning/one-of-required-property';
+import onlyOneOfProperties from '../../../utilities/warning/only-one-of-properties';
 
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
-		/* eslint-disable max-len */
-		oneOfRequiredProperty(COMPONENT, {
+		if (!props.inlineEditTrigger) {
+			oneOfRequiredProperty(COMPONENT, {
+				assistiveText: props.assistiveText,
+				label: props.label
+			});
+		}
+		
+		onlyOneOfProperties(COMPONENT, {
 			assistiveText: props.assistiveText,
 			label: props.label
 		});
-		/* eslint-enable max-len */
 	};
 }
 

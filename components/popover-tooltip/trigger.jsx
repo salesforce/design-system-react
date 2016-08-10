@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from "react";
 import ReactDOM from "react-dom";
 
-const classNames = require("classnames");
+import classNames from 'classnames';
 
 import omit from "lodash.omit";
 
@@ -90,6 +90,7 @@ class Trigger extends React.Component {
       href="javascript:void(0)"
       aria-hidden={true}
       tabIndex={-1}
+      // inline style override
       style={{
         backgroundColor:'transparent',
         width:'100%',

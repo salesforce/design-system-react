@@ -18,8 +18,16 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React from 'react';
 
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
+
 // ### classNames
 import classNames from 'classnames';
+
+// ### assign
+import assign from 'lodash.assign';
 
 // ### isArray
 import isArray from 'lodash.isarray';
@@ -29,9 +37,6 @@ import isFunction from 'lodash.isfunction';
 
 // ### reject
 import reject from 'lodash.reject';
-
-// ### uniqueId
-import uniqueId from 'lodash.uniqueid';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
@@ -67,6 +72,10 @@ const DataTable = React.createClass({
 		 */
 		bordered: PropTypes.bool,
 		/**
+		 * A variant which adds more horizontal padding to the outter edges of the table.
+		 */
+		buffered: PropTypes.bool,
+		/**
 		 * Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Custom `<DataTableCell />` implementations may also be passed in to override cell rendering.
 		 * ```
 		 * <DataTable>
@@ -83,12 +92,15 @@ const DataTable = React.createClass({
 		 * Class names to be added to the table.
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		/**
+		 * A unique ID is needed in order to support keyboard navigation and ARIA support.
+		 */
 		id: PropTypes.string,
-    /**
+		/**
  		 * The collection of items to render in the table.
  		 */
 		items: PropTypes.array.isRequired,
-    /**
+		/**
 		 * This function fires when the selection of rows changes.
 		 */
 		onChange: PropTypes.func,
@@ -121,7 +133,7 @@ const DataTable = React.createClass({
 	getDefaultProps () {
 		return {
 			bordered: false,
-			id: uniqueId(`${DATA_TABLE}-`),
+			id: shortid.generate(),
 			selection: [],
 			selectRows: false,
 			stacked: false,
@@ -162,19 +174,25 @@ const DataTable = React.createClass({
 			if (child && child.type === DataTableColumn) {
 				const {
 					children,
-					...props
+					...columnProps
 				} = child.props;
+
+				const props = assign({}, this.props);
+				delete props.children;
+				assign(props, columnProps);
 
 				let Cell;
 				if (children && children.type.displayName === DATA_TABLE_CELL) {
 					Cell = children.type;
+					assign(props, children.props);
 				} else {
 					Cell = DataTableCell;
 				}
 
 				columns.push({
 					Cell,
-					props
+					props,
+					dataTableProps: this.props
 				});
 			} else if (child && child.type === DataTableRowActions) {
 				RowActions = child;
@@ -185,6 +203,7 @@ const DataTable = React.createClass({
 			<table
 				className={classNames('slds-table', {
 					'slds-table--bordered': this.props.bordered,
+					'slds-table--cell-buffer': this.props.buffered,
 					'slds-max-medium-table--stacked': this.props.stacked,
 					'slds-max-medium-table--stacked-horizontalviewports': this.props.stackedHorizontal,
 					'slds-table--striped': this.props.striped

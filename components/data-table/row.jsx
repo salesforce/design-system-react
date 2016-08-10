@@ -81,7 +81,9 @@ const DataTableRow = React.createClass({
 							id={`${this.props.id}-${DATA_TABLE_CELL}-${index}`}
 							item={this.props.item}
 							key={column.props.property}
-						/>
+						>
+							{this.props.item[column.props.property]}
+						</Cell>
 					);
 				})}
 				{this.props.rowActions ?

@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const classNames = require('classnames');
+import classNames from 'classnames';
 import Button from '../button';
 import Icon from '../icon';
 
@@ -124,9 +124,9 @@ class Notification extends React.Component {
 			return (
 				<Button
 					assistiveText="Dismiss Notification"
-					variant="icon-inverse"
 					iconName="close"
 					iconSize={size}
+					inverse
 					className="slds-button slds-notify__close"
 					onClick={this.onDismiss.bind(this)}
 					ref="dismissNotificationBtn"

@@ -21,40 +21,38 @@ const { PropTypes } = React;
 /**
  * The default Cell renderer for the DataTable. Pass in any React component with the same `displayName` which takes the same props to provide custom rendering.
  */
-const DataTableCell = React.createClass({
-	// ### Display Name
-	// Always use the canonical component name as the React display name.
-	displayName: DATA_TABLE_CELL,
+const DataTableCell = (props) => (
+	<td className={props.className} data-label={props.label}>
+		{props.children}
+	</td>
+);
+
+// ### Display Name
+// Always use the canonical component name as the React display name.
+DataTableCell.displayName = DATA_TABLE_CELL;
 
 	// ### Prop Types
-	propTypes: {
-		/**
-		 * Class names to be added to the cell.
-		 */
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-		/**
-		 * The item from the items which represents this row.
-		 */
-		item: PropTypes.object,
-		/**
-		 * The column label.
-		 */
-		label: PropTypes.string,
-		/**
-		 * The property of this item to display.
-		 */
-		property: PropTypes.string
-	},
-
-	// ### Render
-	// Should return a `<td></td>`.
-	render () {
-		return (
-			<td className={this.props.className} data-label={this.props.label}>
-				{this.props.item[this.props.property]}
-			</td>
-		);
-	}
-});
+DataTableCell.propTypes = {
+	/**
+	 * The contents of the cell. Equivalent to `props.item[props.property]`
+	 */
+	children: PropTypes.node,
+	/**
+	 * Class names to be added to the cell.
+	 */
+	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	/**
+	 * The item from the items which represents this row.
+	 */
+	item: PropTypes.object,
+	/**
+	 * The column label.
+	 */
+	label: PropTypes.string,
+	/**
+	 * The property of this item to display.
+	 */
+	property: PropTypes.string
+};
 
 module.exports = DataTableCell;

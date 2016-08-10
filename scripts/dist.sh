@@ -15,6 +15,8 @@ echo "# Building design-system-react"
 echo "## Preparing the .tmp directory"
 
 rm -rf .tmp/
+rm -rf .tmp-amd/
+rm -rf .tmp-commonjs/
 rm -rf .tmp-es/
 mkdir -p .tmp/
 
@@ -39,11 +41,21 @@ echo "## Running js steps"
 
 echo "## Copying the components"
 
+cp -r .tmp .tmp-amd
+cp -r .tmp .tmp-commonjs
 cp -r .tmp .tmp-es
+rm -rf .tmp/
+
 cp -r components .tmp-es/components
+cp -r icons .tmp-es/icons
 cp -r utilities .tmp-es/utilities
 
 echo "## Transpiling with Babel"
 
-./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp-es/components -d .tmp/components
-./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp-es/utilities -d .tmp/utilities
+./node_modules/.bin/babel --plugins transform-es2015-modules-amd .tmp-es/components -d .tmp-amd/components
+./node_modules/.bin/babel --plugins transform-es2015-modules-amd .tmp-es/icons -d .tmp-amd/icons
+./node_modules/.bin/babel --plugins transform-es2015-modules-amd .tmp-es/utilities -d .tmp-amd/utilities
+
+./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp-es/components -d .tmp-commonjs/components
+./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp-es/icons -d .tmp-commonjs/icons
+./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp-es/utilities -d .tmp-commonjs/utilities

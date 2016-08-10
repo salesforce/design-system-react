@@ -1,155 +1,203 @@
+/* eslint-env mocha */
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable react/display-name */
+/* eslint-disable no-unused-expressions */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 
-import {SLDSModal} from '../../components'
-const { Simulate,
-        renderIntoDocument,
-        scryRenderedDOMComponentsWithClass,
-        findRenderedDOMComponentWithClass } = TestUtils
+import { SLDSModal } from '../../components';
 
-describe('SLDSModal: ', function(){
-  let container, renderedNode;
+const { Simulate } = TestUtils;
 
-  afterEach(() => {
-   ReactDOM.unmountComponentAtNode(container);
-   document.body.removeChild(container)
-   container = null;
-  })
+describe('SLDSModal: ', function () {
+	let container;
+	let renderedNode;
 
-  const defaultProps = {align: "top", isOpen: false, children: <div>hello</div>}
+	afterEach(() => {
+		ReactDOM.unmountComponentAtNode(container);
+		document.body.removeChild(container);
+		container = null;
+	});
 
-  const renderModal = (modalInstance) => {
-    container = document.createElement('div');
-    const opener = <button>{modalInstance}</button>;
-    document.body.appendChild(container);
-    renderedNode = ReactDOM.render(opener, container);
-    return renderedNode;
-  }
+	const defaultProps = {
+		align: 'top',
+		children: (<div>hello</div>)
+	};
 
-  const createModal = (props) => React.createElement(SLDSModal, assign({}, defaultProps, props));
+	const renderModal = (modalInstance) => {
+		container = document.createElement('div');
+		const opener = <button>{modalInstance}</button>;
+		document.body.appendChild(container);
+		renderedNode = ReactDOM.render(opener, container);
+		return renderedNode;
+	};
 
-  const getModal = (props) => renderModal(createModal(props));
+	const createModal = (props) => React.createElement(SLDSModal, assign({}, defaultProps, props));
 
-  const getModalNode = (dom) => dom.querySelector('.slds-modal');
+	const getModal = (props) => renderModal(createModal(props));
 
-  describe('Closed modal', () => {
-    let cmp;
+	const getModalNode = (dom) => dom.querySelector('.slds-modal');
 
-    beforeEach(() => {
-      cmp = getModal({isOpen: false});
-    })
+	describe('Closed modal', () => {
+		beforeEach(() => {
+			getModal({ isOpen: false });
+		});
 
-    it('updates the overflow', () => {
-      expect(document.body.style.overflow).to.equal('inherit');
-    })
+		it('updates the overflow', () => {
+			expect(document.body.style.overflow).to.equal('inherit');
+		});
 
-    it('does not render to the body', () => {
-      expect(getModalNode(document.body)).to.be.null;
-    })
-  })
+		it('does not render to the body', () => {
+			expect(getModalNode(document.body)).to.be.null;
+		});
+	});
 
-  describe('Open modal', () => {
-    let cmp, closed, modal;
+	describe('Open modal', () => {
+		let cmp;
+		let closed;
+		let modal;
 
-    beforeEach(() => {
-      closed = false;
-      cmp = getModal({isOpen: true, size: 'large', containerClassName: 'my-custom-class', onRequestClose: () => closed = true});
-      modal = getModalNode(document.body);
-    })
+		beforeEach(() => {
+			closed = false;
+			cmp = getModal({
+				isOpen: true,
+				size: 'large',
+				containerClassName: 'my-custom-class',
+				onRequestClose: () => { closed = true; }
+			});
+			modal = getModalNode(document.body);
+		});
 
-    it('renders a noscript', () => {
-      const renderedNode = ReactDOM.findDOMNode(cmp);
-      expect(renderedNode.firstChild.tagName).to.equal('NOSCRIPT');
-    })
+		it('renders a noscript', () => {
+			const renderedNoScriptNode = ReactDOM.findDOMNode(cmp);
+			expect(renderedNoScriptNode.firstChild.tagName).to.equal('NOSCRIPT');
+		});
 
-    it('adds the large class', () => {
-      expect(modal.className).to.include('slds-modal--large');
-    })
+		it('adds the large class', () => {
+			expect(modal.className).to.include('slds-modal--large');
+		});
 
-    it('adds custom classname from modal container prop', () => {
-      expect(modal.firstChild.className).to.include('my-custom-class');
-    })
+		it('adds custom classname from modal container prop', () => {
+			expect(modal.firstChild.className).to.include('my-custom-class');
+		});
 
-    it('calls onRequestClose', () => {
-      const close_btn = modal.querySelector('.slds-modal__close');
-      expect(closed).to.be.false;
-      Simulate.click(close_btn, {});
-      expect(closed).to.be.true;
-    })
-  })
+		it('calls onRequestClose', () => {
+			const closeBtn = modal.querySelector('.slds-modal__close');
+			expect(closed).to.be.false;
+			Simulate.click(closeBtn, {});
+			expect(closed).to.be.true;
+		});
+	});
+
+	describe('Open with custom header and header className', () => {
+		let modal;
+
+		beforeEach(() => {
+			getModal({
+				header: <div id="art-vandelay">Art vandelay</div>,
+				headerClassName: 'art-vandelay',
+				isOpen: true
+			});
+			modal = getModalNode(document.body);
+		});
+
+		it('adds the header', () => {
+			const customHeader = modal.querySelector('#art-vandelay');
+			expect(customHeader).to.not.be.null;
+		});
+
+		it('adds the custom header class', () => {
+			expect(modal.querySelector('.slds-modal__header').className).to.include('art-vandelay');
+		});
+	});
 
 
-  describe('Open with Prompt and Footer', () => {
-    let cmp, modal;
+	describe('Open with Prompt and Footer', () => {
+		let modal;
 
-    beforeEach(() => {
-      const feet = [<div className="toes">Toes</div>]
-      cmp = getModal({isOpen: true, prompt: 'warning', footer: feet })
-      modal = getModalNode(document.body)
-    })
+		beforeEach(() => {
+			const feet = [<div className="toes">Toes</div>];
+			getModal({
+				isOpen: true,
+				prompt: 'warning',
+				footer: feet
+			});
+			modal = getModalNode(document.body);
+		});
 
-    it('adds the footer', () => {
-      const footer = modal.querySelector('.slds-modal__footer')
-      expect(footer.className).to.include('slds-theme--default')
-    })
+		it('adds the footer', () => {
+			const footer = modal.querySelector('.slds-modal__footer');
+			expect(footer.className).to.include('slds-theme--default');
+		});
 
-    it('adds the prompt class', () => {
-      expect(modal.className).to.include('slds-modal--prompt')
-    })
+		it('adds the prompt class', () => {
+			expect(modal.className).to.include('slds-modal--prompt');
+		});
 
-    it('adds the prompt class', () => {
-      expect(modal.querySelector('.toes').innerHTML).to.equal('Toes')
-    })
-  })
+		it('adds the prompt class', () => {
+			expect(modal.querySelector('.toes').innerHTML).to.equal('Toes');
+		});
+	});
 
-  describe('Open Directional', () => {
-    let cmp, modal;
+	describe('Open Directional', () => {
+		let modal;
 
-    beforeEach(() => {
-      const feet = [<div className="toes">Toes</div>]
-      cmp = getModal({isOpen: true, directional: true, footer: feet})
-      modal = getModalNode(document.body)
-    })
+		beforeEach(() => {
+			const feet = [<div className="toes">Toes</div>];
+			getModal({
+				isOpen: true,
+				directional: true,
+				footer: feet
+			});
+			modal = getModalNode(document.body);
+		});
 
-    it('adds the footer', () => {
-      const footer = modal.querySelector('.slds-modal__footer--directional')
-      expect(footer.className).to.include('slds-modal__footer')
-    })
-  })
+		it('adds the footer', () => {
+			const footer = modal.querySelector('.slds-modal__footer--directional');
+			expect(footer.className).to.include('slds-modal__footer');
+		});
+	});
 
-  describe('Keyboard behavior', () => {
-    let cmp, closed, modal;
+	describe('Keyboard behavior', () => {
+		let modal;
 
-    beforeEach(() => {
-      closed = false;
-      const feet = [
-        <button className="cancel">Cancel</button>,
-        <button className="save">Save</button>
-      ]
-      cmp = getModal({isOpen: true, directional: true, footer: feet, onRequestClose: () => closed = true})
-      modal = getModalNode(document.body)
-    })
+		beforeEach(() => {
+			const feet = [
+				<button className="cancel">Cancel</button>,
+				<button className="save">Save</button>
+			];
+			getModal({
+				isOpen: true,
+				directional: true,
+				footer: feet
+			});
+			modal = getModalNode(document.body);
+		});
 
-    it('first tab focuses close button', (done) => {
-      setTimeout(() => {
-        Simulate.keyDown(modal, {key: 'Tab', keyCode: 9, which: 9})
-        setTimeout(() => {
-          expect(document.activeElement.className).to.include('slds-modal__close');
-          done();
-        }, 200);
-      }, 200);
-    })
+		it('first tab focuses close button', (done) => {
+			setTimeout(() => {
+				Simulate.keyDown(modal, { key: 'Tab',
+					keyCode: 9,
+					which: 9
+				});
+				setTimeout(() => {
+					expect(document.activeElement.className).to.include('slds-modal__close');
+					done();
+				}, 200);
+			}, 200);
+		});
 
-    it('enter on close button works', () => {
-      //TODO: simulate enter on close button and modal is undefined
-    })
+		it('enter on close button works', () => {
+			// TODO: simulate enter on close button and modal is undefined
+		});
 
-    it('traps focus inside Modal', () => {
-      //TODO: simulate tabbing around inside of Modal
-    })
-  })
-})
+		it('traps focus inside Modal', () => {
+			// TODO: simulate tabbing around inside of Modal
+		});
+	});
+});
 

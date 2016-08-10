@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND 
 // ## Dependencies
 
 // ### React
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 // ### classNames
 import classNames from 'classnames';
@@ -38,44 +38,45 @@ const propTypes = {
 	/**
 	 * Specifies the current state of the button. If set, the button will act as a ['controlled' component](https://facebook.github.io/react/docs/forms.html#controlled-components).
 	 */
-	active: React.PropTypes.bool,
+	active: PropTypes.bool,
 	/**
 	 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
 	 * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
 	 */
-	assistiveText: React.PropTypes.string,
-	disabled: React.PropTypes.bool,
+	assistiveText: PropTypes.string,
+	disabled: PropTypes.bool,
 	/**
 	 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
 	 */
-	iconName: React.PropTypes.string,
-	iconSize: React.PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
-	onClick: React.PropTypes.func,
+	iconName: PropTypes.string,
+	iconSize: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
+	/**
+	 * If true, button/icon is white. Meant for buttons or utility icons on dark backgrounds.
+	 */
+	inverse: PropTypes.bool,
+	onClick: PropTypes.func,
 	/**
 	 * If true, button scales to 100% width on small form factors.
 	 */
-	responsive: React.PropTypes.bool,
+	responsive: PropTypes.bool,
 	/**
 	 * Write <code>'-1'</code> if you don't want the user to tab to the button.
 	 */
-	tabIndex: React.PropTypes.string,
+	tabIndex: PropTypes.string,
 	/**
 	 * Initial label and icon (optional) of button.
 	 */
-	stateOne: React.PropTypes.object,
+	stateOne: PropTypes.object,
 	/**
 	 * Selected label and icon (optional) of button.
 	 */
-	stateTwo: React.PropTypes.object,
+	stateTwo: PropTypes.object,
 	/**
 	 *	Deselect label and icon (optional) of button.
 	 */
-	stateThree: React.PropTypes.object,
-	tooltip: React.PropTypes.node,
-	/**
-	 * Use <code>icon-inverse</code> for white icons.
-	 */
-	variant: React.PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon', 'inverse', 'icon-inverse'])
+	stateThree: PropTypes.object,
+	tooltip: PropTypes.node,
+	variant: PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon'])
 };
 
 // i18n
@@ -145,48 +146,48 @@ class ButtonStateful extends TooltipTrigger {
 					{this.getTooltip()}
 				</button>
 			);
-		} else {
-			return (
-				<button
-					onMouseLeave={blurElement}
-					className={this.getClassName(active)}
-					aria-live="assertive"
-					onClick={this.handleClick.bind(this)}
-					{...props}
-				>
-					<span className="slds-text-not-selected">
-						<ButtonIcon
-							disabled={this.props.disabled}
-							name={this.props.stateOne.iconName}
-							size="small"
-							position="left"
-							className="slds-button__icon--stateful"
-						/>
-						{this.props.stateOne.label}
-					</span>
-					<span className="slds-text-selected">
-						<ButtonIcon
-							disabled={this.props.disabled}
-							name={this.props.stateTwo.iconName}
-							size="small" position="left"
-							className="slds-button__icon--stateful"
-						/>
-						{this.props.stateTwo.label}
-					</span>
-					<span className="slds-text-selected-focus">
-						<ButtonIcon
-							disabled={this.props.disabled}
-							name={this.props.stateThree.iconName}
-							size="small"
-							position="left"
-							className="slds-button__icon--stateful"
-						/>
-						{this.props.stateThree.label}
-					</span>
-					{this.getTooltip()}
-				</button>
-			);
 		}
+		
+		return (
+			<button
+				onMouseLeave={blurElement}
+				className={this.getClassName(active)}
+				aria-live="assertive"
+				onClick={this.handleClick.bind(this)}
+				{...props}
+			>
+				<span className="slds-text-not-selected">
+					<ButtonIcon
+						disabled={this.props.disabled}
+						name={this.props.stateOne.iconName}
+						size="small"
+						position="left"
+						className="slds-button__icon--stateful"
+					/>
+					{this.props.stateOne.label}
+				</span>
+				<span className="slds-text-selected">
+					<ButtonIcon
+						disabled={this.props.disabled}
+						name={this.props.stateTwo.iconName}
+						size="small" position="left"
+						className="slds-button__icon--stateful"
+					/>
+					{this.props.stateTwo.label}
+				</span>
+				<span className="slds-text-selected-focus">
+					<ButtonIcon
+						disabled={this.props.disabled}
+						name={this.props.stateThree.iconName}
+						size="small"
+						position="left"
+						className="slds-button__icon--stateful"
+					/>
+					{this.props.stateThree.label}
+				</span>
+				{this.getTooltip()}
+			</button>
+		);
 	}
 }
 
