@@ -116,7 +116,7 @@ describe('SLDSModal: ', function () {
 	});
 
 
-	describe.only('Open with Prompt and Footer', () => {
+	describe('Open with Prompt and Footer', () => {
 		let modal;
 
 		beforeEach(() => {

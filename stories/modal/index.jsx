@@ -152,7 +152,7 @@ storiesOf(MODAL, module)
 	.add('Prompt', () => getModal({
 		isOpen: true,
 		title: 'Delete state - Default',
-		children: <div>AAre you sure you want to delete the Default State? This action cannot be undone.Are you sure you want to delete the Default State? This action cannot be undone.rAre you sure you want to delete the Default State? This action cannot be undone.e you sure you want to delete the Default State? This action cannot be undone.</div>,
-		prompt: "error",
+		children: <div>Are you sure you want to delete the Default State? This action cannot be undone. Are you sure you want to delete the Default State? This action cannot be undone. Are you sure you want to delete the Default State? This action cannot be undone.</div>, // eslint-disable-line max-len
+		prompt: 'error',
 		onRequestClose: action('modal closed')
 	}));
