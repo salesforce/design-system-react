@@ -43,7 +43,8 @@ import ListItemLabel from '../menu-list/list-item-label';
 // This is the the default Dropdown Trigger, which expects one button as a child.
 import DefaultTrigger from './button-trigger';
 
-// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+// This component's `checkProps` which issues warnings to developers about properties
+// when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 
 // ### Traits
@@ -54,6 +55,10 @@ import KeyboardNavigable from '../../utilities/keyboard-navigable';
 import { KEYS, EventUtil } from '../../utilities';
 import { MENU_DROPDOWN, MENU_DROPDOWN_TRIGGER, LIST } from '../../utilities/constants';
 
+// The overlay is an optional way to allow the dropdown to close on outside
+// clicks even when those clicks are over areas that wouldn't normally fire
+// click or touch events (for example, iframes). A single overlay is shared
+// between all dropdowns in the app.
 const overlay = document.createElement('span');
 overlay.style.top = 0;
 overlay.style.left = 0;
@@ -390,6 +395,7 @@ const MenuDropdown = onClickOutside(React.createClass({
 			if (event.keyCode !== KEYS.TAB) {
 				this.handleKeyboardNavigate({
 					isOpen: this.state.isOpen || false,
+					key: event.key,
 					keyCode: event.keyCode,
 					onSelect: this.handleSelect,
 					toggleOpen: this.toggleOpen
