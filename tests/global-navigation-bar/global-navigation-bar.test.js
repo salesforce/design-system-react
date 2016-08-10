@@ -49,14 +49,26 @@ describe('Global Navigation Bar: ', () => {
 	 */
 	describe('Default Structure', () => {
 		beforeEach(mountComponent(
-			<GlobalNavigationBar />
+			<GlobalNavigationBar>
+				<GlobalNavigationBarRegion
+					region="primary"
+				/>
+			</GlobalNavigationBar>
 		));
 
 		afterEach(unmountComponent);
 
-		it('has wrapping div', function () {
+		it('has wrapping div and one primary region', function () {
 			const component = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
 			expect(component).to.have.length(1);
+
+			const primary = this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`);
+			expect(primary).to.have.length(1);
+		});
+
+		it('Primary region DOES not have divider on right', function () {
+			const primary = this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`);
+			expect(primary.nodes[0].className).to.not.include('slds-context-bar__item--divider-right');
 		});
 	});
 
@@ -88,10 +100,6 @@ describe('Global Navigation Bar: ', () => {
 			<GlobalNavigationBar {...props}>
 				<GlobalNavigationBarRegion
 					region="primary"
-				/>
-				<GlobalNavigationBarRegion
-					region="primary"
-					dividerPosition={null}
 				/>
 				<GlobalNavigationBarRegion region="secondary" navigation dividerPosition="right">
 					<GlobalNavigationBarLink
@@ -130,9 +138,8 @@ describe('Global Navigation Bar: ', () => {
 						id="global-nav__button"
 						onClick={buttonClicked('Button clicked')}
 					/>
-				</GlobalNavigationBarRegion>
-				<GlobalNavigationBarRegion region="tertiary" dividerPosition="left">
 					<GlobalNavigationBarLabel
+						dividerPosition="left"
 						label="Vandelay Enterprises"
 					/>
 				</GlobalNavigationBarRegion>
@@ -141,21 +148,20 @@ describe('Global Navigation Bar: ', () => {
 
 		afterEach(unmountComponent);
 
-		it('has 2 primary, 1 secondary, and 1 tertiary region', function () {
+		it('has 1 primary, 1 secondary, and 1 tertiary region', function () {
 			const primary = this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`);
-			expect(primary).to.have.length(2);
+			expect(primary).to.have.length(1);
 
 			const secondary = this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`);
 			expect(secondary).to.have.length(1);
 
 			const tertiary = this.wrapper.find(`.${REGION_CSS_CLASSES.tertiary}`);
-			expect(tertiary).to.have.length(2);
+			expect(tertiary).to.have.length(1);
 		});
 
-		it('First primary region in example has divider on right by default, second primary region does not', function () {
+		it('Primary region has divider on right due to secondary region', function () {
 			const primary = this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`);
 			expect(primary.nodes[0].className).to.include('slds-context-bar__item--divider-right');
-			expect(primary.nodes[1].className).to.not.include('slds-context-bar__item--divider-right');
 		});
 
 		it('Secondary region application is a nav HTML element and has divider on right side', function () {
