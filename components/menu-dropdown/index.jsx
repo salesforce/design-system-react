@@ -66,6 +66,8 @@ overlay.style.width = '100%';
 overlay.style.height = '100%';
 overlay.style.position = 'absolute';
 
+let currentOpenDropdown;
+
 /**
  * The MenuDropdown component is a variant of the Lightning Design System Menu component.
  */
@@ -318,16 +320,30 @@ const MenuDropdown = onClickOutside(React.createClass({
 			});
 
 			this.isHover = false;
+
+			if (currentOpenDropdown === this) {
+				currentOpenDropdown = undefined;
+			}
 		}
+	},
+
+	handleOpen () {
+		if (currentOpenDropdown && isFunction(currentOpenDropdown.handleClose)) {
+			currentOpenDropdown.handleClose();
+		}
+
+		currentOpenDropdown = this;
+
+		this.setState({
+			isOpen: true
+		});
 	},
 
 	handleMouseEnter (event) {
 		this.isHover = true;
 
 		if (!this.state.isOpen) {
-			this.setState({
-				isOpen: true
-			});
+			this.handleOpen();
 		} else {
 			clearTimeout(this.isClosing);
 		}
@@ -351,7 +367,7 @@ const MenuDropdown = onClickOutside(React.createClass({
 
 	handleClick (event) {
 		if (!this.state.isOpen) {
-			this.setState({ isOpen: true });
+			this.handleOpen();
 			this.setFocus();
 		} else {
 			this.handleClose();
@@ -364,7 +380,7 @@ const MenuDropdown = onClickOutside(React.createClass({
 
 	handleFocus (event) {
 		if (!this.state.isOpen) {
-			this.setState({ isOpen: true });
+			this.handleOpen();
 		}
 
 		if (this.props.onFocus) {
@@ -401,7 +417,7 @@ const MenuDropdown = onClickOutside(React.createClass({
 					toggleOpen: this.toggleOpen
 				});
 			} else {
-				this.setFocus();
+				this.handleCancel();
 			}
 
 			if (this.props.onKeyDown) {
@@ -421,7 +437,11 @@ const MenuDropdown = onClickOutside(React.createClass({
 
 	toggleOpen () {
 		this.setFocus();
-		this.setState({ isOpen: !this.state.isOpen });
+		if (this.state.isOpen) {
+			this.handleClose();
+		} else {
+			this.handleOpen();
+		}
 	},
 
 	setFocus () {
