@@ -13,9 +13,11 @@
 - Opens hoverable dropdown menu on focus
 - Provides a workaround for closing dropdown menus when clicking in another iframe
 - Returns focus to the dropdown menu trigger when clicking escape
+- Removes the default divider from the primary Global Navigation region when no secondary region is present
 
 **OTHER**
 - Remove SLDS media figure when no icon present in page header
+- Adds a default iconPosition to Lookup
 
 
 ## Release 0.3.1

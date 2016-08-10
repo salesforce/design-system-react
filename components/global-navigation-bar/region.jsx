@@ -72,16 +72,7 @@ const renderTertiary = (dividerClass, className, children) =>
  */
 const Region = (props) => {
 	let region;
-	let dividerClass;
-
-	if (props.dividerPosition) {
-		dividerClass = `slds-context-bar__item--divider-${props.dividerPosition}`;
-	} else if (props.dividerPosition === null) {
-		dividerClass = null;
-	} else if (props.region === 'primary') {
-		// Although an implicit default, divider position is `right` for the primary region per the design system.
-		dividerClass = 'slds-context-bar__item--divider-right';
-	}
+	const dividerClass = props.dividerPosition ? `slds-context-bar__item--divider-${props.dividerPosition}` : null;
 
 	switch (props.region) {
 		case 'primary':
@@ -108,7 +99,7 @@ Region.propTypes = {
 	 */
 	children: PropTypes.node,
 	/**
-	 * Determines position of separating bar. The default is `null` except for the `primary` region which is set to `right` due to design system styling.
+	 * Determines position of separating bar.
 	 */
 	dividerPosition: PropTypes.oneOf(['left', 'right']),
 	/**
