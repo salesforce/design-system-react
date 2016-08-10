@@ -71,7 +71,7 @@ let currentOpenDropdown;
 /**
  * The MenuDropdown component is a variant of the Lightning Design System Menu component.
  */
-const MenuDropdown = onClickOutside(React.createClass({
+const MenuDropdown = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: MENU_DROPDOWN,
@@ -663,8 +663,8 @@ const MenuDropdown = onClickOutside(React.createClass({
 			/>
 		);
 	}
-}));
+});
 
-module.exports = MenuDropdown;
+module.exports = onClickOutside(MenuDropdown);
 module.exports.ListItem = ListItem;
 module.exports.ListItemLabel = ListItemLabel;

@@ -18,6 +18,7 @@
 **OTHER**
 - Remove SLDS media figure when no icon present in page header
 - Adds a default iconPosition to Lookup
+- Fixes modal Prompt heading style
 
 
 ## Release 0.3.1

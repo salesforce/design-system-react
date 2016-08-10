@@ -23,7 +23,7 @@ import onClickOutside from 'react-onclickoutside';
 import TetherDrop from 'tether-drop';
 import { EventUtil, KEYS } from '../utilities';
 
-module.exports = onClickOutside(React.createClass({
+const Popover = React.createClass({
 
 	displayName: 'Popover',
 
@@ -265,4 +265,6 @@ module.exports = onClickOutside(React.createClass({
 	render () {
 		return <noscript></noscript>;
 	}
-}));
+});
+
+module.exports = onClickOutside(Popover);
