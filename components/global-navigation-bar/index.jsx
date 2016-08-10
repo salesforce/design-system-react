@@ -43,9 +43,11 @@ const auditChildren = (children) => {
 		}
 	});
 
-	if (primaryRegion && secondaryRegions.length === 0) {
+	if (primaryRegion && secondaryRegions.length > 0) {
+		const dividerPosition = primaryRegion.props.dividerPosition === undefined ? 'right' : primaryRegion.props.dividerPosition;
+
 		primaryRegion = React.cloneElement(primaryRegion, {
-			dividerPosition: null,
+			dividerPosition,
 			key: 'primary-region'
 		});
 	}
