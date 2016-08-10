@@ -216,7 +216,6 @@ class Modal extends React.Component {
 
 	headerComponent () {
 		let headerContent = this.props.header;
-		const promptClass = this.isPrompt() ? `slds-theme--${this.props.prompt}` : null;
 
 		if (!headerContent && this.props.title || this.props.tagline) {
 			headerContent = (
@@ -237,7 +236,7 @@ class Modal extends React.Component {
 			<div
 				className={classNames({
 					'slds-modal__header': headerContent,
-					promptClass,
+					[`slds-theme--${this.props.prompt}`]: this.isPrompt(),
 					'slds-theme--alert-texture': this.isPrompt()
 				},
 				this.props.headerClassName)}

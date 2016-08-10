@@ -124,6 +124,7 @@ describe('SLDSModal: ', function () {
 			getModal({
 				isOpen: true,
 				prompt: 'warning',
+				title: 'are you sure?',
 				footer: feet
 			});
 			modal = getModalNode(document.body);
@@ -138,7 +139,11 @@ describe('SLDSModal: ', function () {
 			expect(modal.className).to.include('slds-modal--prompt');
 		});
 
-		it('adds the prompt class', () => {
+		it('adds the prompt theme class', () => {
+			expect(modal.querySelector('.slds-modal__header').className).to.include('slds-theme--warning');
+		});
+
+		it('adds the footer html content', () => {
 			expect(modal.querySelector('.toes').innerHTML).to.equal('Toes');
 		});
 	});

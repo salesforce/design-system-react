@@ -148,4 +148,11 @@ storiesOf(MODAL, module)
 		children: modalContent,
 		onRequestClose: action('modal closed'),
 		footer: modalFooter
+	}))
+	.add('Prompt', () => getModal({
+		isOpen: true,
+		title: 'Delete state - Default',
+		children: <div>Are you sure you want to delete the Default State? This action cannot be undone. Are you sure you want to delete the Default State? This action cannot be undone. Are you sure you want to delete the Default State? This action cannot be undone.</div>, // eslint-disable-line max-len
+		prompt: 'error',
+		onRequestClose: action('modal closed')
 	}));
