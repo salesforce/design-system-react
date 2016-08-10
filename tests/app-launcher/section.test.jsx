@@ -24,7 +24,7 @@ const {
 	findRenderedDOMComponentWithClass
 } = TestUtils;
 
-describe.only('SLDS APP LAUNCHER SECTION *******************************************', () => {
+describe('SLDS APP LAUNCHER SECTION *******************************************', () => {
 	const defaultSectionProps = {
 		title: 'All Items'
 	};
