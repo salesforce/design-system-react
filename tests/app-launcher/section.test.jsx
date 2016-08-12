@@ -6,7 +6,7 @@
 /* eslint-disable max-len */
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { mount } from 'enzyme';
 import chai from 'chai';
 import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
@@ -18,10 +18,7 @@ import AppLauncherTile from '../../components/app-launcher/tile';
 import AppLauncherSection from '../../components/app-launcher/section';
 
 const {
-	Simulate,
-	findRenderedDOMComponentWithTag,
-	scryRenderedDOMComponentsWithTag,
-	findRenderedDOMComponentWithClass
+	Simulate
 } = TestUtils;
 
 // ///////////////////////
@@ -40,71 +37,50 @@ const {
 	// small tiles inclues slds-size--xx-small class on section
 	// Remove modal in `cleanDom()`
 
-describe('SLDS APP LAUNCHER SECTION *******************************************', () => {
+describe.only('SLDS APP LAUNCHER SECTION *******************************************', () => {
+	const handles = {
+		section: null
+	};
+
 	const defaultSectionProps = {
 		title: 'All Items'
 	};
 
-	let body;
-
-	const renderInstance = instance => {
-		body = document.createElement('div');
-		document.body.appendChild(body);
-		return ReactDOM.render(instance, body);
-	};
-
-	function cleanDom () {
-		ReactDOM.unmountComponentAtNode(body);
-		document.body.removeChild(body);
-	}
-
 	const createSection = (props) => React.createElement(
 		AppLauncherSection,
 		assign({}, defaultSectionProps, props),
-		[
-			<AppLauncherTile title="Marketing Cloud" />,
-			<AppLauncherTile title="Support Cloud" />
-		]
+		[<AppLauncherTile title="Marketing Cloud" />, <AppLauncherTile title="Support Cloud" />]
 	);
 
-	const renderAppLauncher = (props) => renderInstance(createSection(props));
+	function mountSection (props) {
+		handles.section = mount(createSection(props));
+	}
 
 	describe('App Launcher Section', () => {
-		let modalSection;
-
 		beforeEach(() => {
-			renderAppLauncher({
-				title: 'App Rocket',
-				triggerAssistiveText: 'Custom Icon Assistive Text'
+			mountSection({
+				toggleable: true
 			});
-			modalSection = document.documentElement.querySelectorAll('.slds-section')[0];
-		});
-
-		afterEach(() => {
-			cleanDom();
 		});
 
 		it('modal section exists', () => {
-			should.exist(modalSection);
+			should.exist(handles.section);
 		});
 
 		it('modal section has "slds-is-open" class when open', () => {
-			expect(modalSection.className).to.include('slds-is-open');
+			expect(handles.section.find('.slds-section').node.className).to.include('slds-is-open');
 		});
 
 		it('section has a title', () => {
-			should.exist(document.querySelectorAll('.slds-section__title'));
+			should.exist(handles.section.find('.slds-section__title'));
 		});
 
 		it('ul has proper classes', () => {
-			const ul = modalSection.getElementsByTagName('ul')[0];
-			should.exist(ul);
-			expect(ul.className).to.include('slds-grid slds-grid--pull-padded slds-wrap');
+			should.exist(handles.section.find('ul.slds-grid.slds-grid--pull-padded.slds-wrap'));
 		});
 
 		it('li exists', () => {
-			const li = modalSection.getElementsByTagName('li')[0];
-			should.exist(li);
+			expect(handles.section.find('li').length).to.equal(2);
 		});
 	});
 });
