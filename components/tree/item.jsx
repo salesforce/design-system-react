@@ -76,6 +76,10 @@ const Item = React.createClass({
 		 * The current node that is being rendered.
 		 */
 		node: PropTypes.object.isRequired,
+		nodeKeys: React.PropTypes.shape({
+			label: React.PropTypes.string,
+			nodes: React.PropTypes.string
+		}),
 		/**
 		 * Function that will run whenever an item or branch is clicked.
 		 */

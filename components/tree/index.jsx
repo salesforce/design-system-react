@@ -86,6 +86,7 @@ const Tree = React.createClass({
 		 */
 		id: PropTypes.string,
 		nodeKeys: React.PropTypes.shape({
+			label: React.PropTypes.string,
 			nodes: React.PropTypes.string
 		}),
 		/**
@@ -110,7 +111,8 @@ const Tree = React.createClass({
 		return {
 			id: shortid.generate(),
 			nodeKeys: {
-				nodes: 'nodes'
+				nodes: 'nodes',
+				label: 'label'
 			}
 		};
 	},
@@ -162,6 +164,7 @@ const Tree = React.createClass({
 					onExpandClick={onExpandClick}
 					onClick={onClick}
 					selection={selection}
+					treeIndex=""
 				/>
 			</div>
 		);

@@ -4,6 +4,7 @@ import { storiesOf, action } from '@kadira/storybook';
 import { TREE } from '../../utilities/constants';
 import {
 	treeNodes,
+	manyNodes,
 	initialExpanded as sampleExpanded,
 	initialSelection as sampleSelection,
 	loading as sampleLoading
@@ -35,7 +36,7 @@ const DemoTree = React.createClass({
 
 	getInitialState () {
 		return {
-			nodes: treeNodes,
+			nodes: manyNodes.BuData,
 			// Open: Fruits, Tree Fruits, Citrus, Apples, Empty Folder (2, 5, 17, 18, 7)
 			expanded: this.props.initialExpanded,
 			loading: this.props.loading,
@@ -74,6 +75,10 @@ const DemoTree = React.createClass({
 				expanded={this.state.expanded}
 				loading={this.state.loading}
 				selection={this.state.selection}
+				nodeKeys={{
+					nodes: 'nodes',
+					label: 'text'
+				}}
 				{...this.props}
 			/>
 		);

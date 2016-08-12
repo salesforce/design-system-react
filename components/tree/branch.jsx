@@ -65,239 +65,244 @@ const idSuffixes = {
 /**
  * A Tree Item is a non-branching node in a hierarchical list.
  */
-const Branch = React.createClass({
-	// ### Display Name
-	// Always use the canonical component name as the React display name.
-	displayName: TREE_BRANCH,
+const Branch = (props) => {
+	const isExpanded = function () {
+		const node = omit(props.node, props.nodeKeys.nodes);
+		return !!find(props.expanded, node);
+	};
 
-	// ### Prop Types
-	propTypes: {
-		/**
-		 * List of expanded branches. A list of each branches `id` object key,
-		 * */
-		expanded: PropTypes.array,
-		/**
-		 * HTML `id` of primary element that has `.slds-tree` on it. This component has a wrapping container element outside of `.slds-tree`.
-		 */
-		htmlId: PropTypes.oneOfType([
-			PropTypes.number,
-			PropTypes.string]).isRequired,
-		/**
-		 * All tree nodes must have a unique HTML `id` for users of assistive technology. If no `id` key is present in the  is provided, one will be generated.
-		 */
-		index: PropTypes.number,
-		/**
-		 * Determines if nodes in the top-level of the tree.
-		 */
-		initial: PropTypes.bool,
-		/**
-		 * Class names to be added to the top-level `ul` element.
-		 */
-		initalClassName: PropTypes.oneOfType([
-			PropTypes.array,
-			PropTypes.object,
-			PropTypes.string]),
-		/**
-		 * The text of the tree item.
-		 */
-		label: PropTypes.string.isRequired,
-		/**
-		 * The number of nestings. Determines the ARIA level and style alignment.
-		 */
-		level: PropTypes.number.isRequired,
-		/**
-		 * The current node that is being rendered.
-		 */
-		node: PropTypes.object.isRequired,
-		nodeKeys: React.PropTypes.shape({
-			nodes: React.PropTypes.string
-		}),
-		/**
-		 * Function that will run whenever an item or branch is clicked.
-		 */
-		onClick: PropTypes.func,
-		/**
-		 * This function triggers when the expand or collapse icon is clicked.
-		 */
-		onExpandClick: PropTypes.func.isRequired,
-		/**
-		 * An array of the currently selected items
-		 */
-		selection: PropTypes.array
-	},
+	const isLoading = function () {
+		const node = omit(props.node, props.nodeKeys.nodes);
+		return !!find(props.loading, node);
+	};
 
-	getDefaultProps () {
-		return {
-			expanded: [],
-			level: 0,
-			loading: [],
-			selection: []
-		};
-	},
+	const isSelected = function () {
+		const node = omit(props.node, props.nodeKeys.nodes);
+		return !!find(props.selection, node);
+	};
 
-	handleExpandClick (e) {
+	const handleExpandClick = function (e) {
 		EventUtil.trap(e);
 
-		if (isFunction(this.props.onExpandClick)) {
+		if (isFunction(props.onExpandClick)) {
 			let expanded;
-			const node = omit(this.props.node, this.props.nodeKeys.nodes);
-			const isExpanded = this.isExpanded();
+			const node = omit(props.node, props.nodeKeys.nodes);
+			const isExpandedStored = isExpanded();
 
-			if (!isExpanded) {
-				expanded = [...this.props.expanded, node];
+			if (!isExpandedStored) {
+				expanded = [...props.expanded, node];
 			} else {
-				expanded = reject(this.props.expanded, node);
+				expanded = reject(props.expanded, node);
 			}
 
-			this.props.onExpandClick(expanded, node, e);
+			props.onExpandClick(expanded, node, treeIndex, e);
 		}
-	},
+	};
 
-	handleClick (e) {
+	const handleClick = function (e) {
 		EventUtil.trap(e);
-		if (isFunction(this.props.onClick)) {
+		if (isFunction(props.onClick)) {
 			let selection;
-			const node = omit(this.props.node, this.props.nodeKeys.nodes);
-			const isSelected = this.isSelected();
+			const node = omit(props.node, props.nodeKeys.nodes);
+			const isSelectedStored = isSelected();
 
-			if (!isSelected) {
-				selection = [...this.props.selection, node];
+			if (!isSelectedStored) {
+				selection = [...props.selection, node];
 			} else {
-				selection = reject(this.props.selection, node);
+				selection = reject(props.selection, node);
 			}
 
-			this.props.onClick(selection, node, e);
+			props.onClick(selection, node, e);
 		}
-	},
+	};
 
-	renderInitialNode (children) {
-		console.log(this.props.node);
+	const renderInitialNode = function (children) {
 		const selectionID = [];
-		this.props.selection.forEach((node) => {
+		props.selection.forEach((node) => {
 			selectionID.push(node.id);
 		});
 		// id intentionally not rendered here, and is present on container
 		return (
 			<ul
-				className={classNames('slds-tree', this.props.initalClassName)}
+				className={classNames('slds-tree', props.initalClassName)}
 				role="tree"
-				aria-labelledby={`${this.props.htmlId}__heading`}
+				aria-labelledby={`${props.htmlId}__heading`}
 				aria-activedescendant={selectionID.join(' ')}
 			>
 				{children}
 			</ul>
 		);
-	},
-
-	isExpanded () {
-		const node = omit(this.props.node, this.props.nodeKeys.nodes);
-		return !!find(this.props.expanded, node);
-	},
-
-	isLoading () {
-		const node = omit(this.props.node, this.props.nodeKeys.nodes);
-		return !!find(this.props.loading, node);
-	},
-
-	isSelected () {
-		const node = omit(this.props.node, this.props.nodeKeys.nodes);
-		return !!find(this.props.selection, node);
-	},
+	};
 
 	// Most of these props come from the nodes array, not from the Tree props
-	renderBranch (children) {
-		const isExpanded = this.props.node.expanded || this.isExpanded();
-		const isSelected = this.props.node.selected || this.isSelected();
-		const isLoading = this.isLoading();
+	const renderBranch = function (children) {
+		const isExpandedStored = isExpanded();
+		const isSelectedStored = isSelected();
+		const isLoadingStored = isLoading();
 		return (
 			<li
-				id={this.props.htmlId}
+				id={props.htmlId}
 				role="treeitem"
-				aria-level={this.props.level}
-				aria-expanded={isExpanded ? 'true' : 'false'}
+				aria-level={props.level}
+				aria-expanded={isExpandedStored ? 'true' : 'false'}
 			>
-				<div className={classNames('slds-tree__item', { 'slds-is-selected': isSelected })} onClick={this.handleClick}>
+				<div className={classNames('slds-tree__item', { 'slds-is-selected': isSelectedStored })} onClick={handleClick}>
 					<Button
 						assistiveText="Toggle"
 						iconName="chevronright"
 						iconSize="small"
 						variant="icon"
 						className="slds-m-right--small"
-						aria-controls={this.props.htmlId}
-						onClick={this.handleExpandClick}
+						aria-controls={props.htmlId}
+						onClick={handleExpandClick}
 					/>
 					<a
-						id={`${this.props.htmlId}__label`}
+						id={`${props.htmlId}__label`}
 						href="#"
 						tabIndex={-1}
 						role="presentation"
 						className="slds-truncate"
-					>{this.props.label}{isLoading ? ' [Loading]' : null}</a>
+					>{props.label}{isLoadingStored ? ' [Loading]' : null}</a>
 				</div>
 				<ul
-					className={classNames({ 'slds-is-expanded': isExpanded, 'slds-is-collapsed': !isExpanded })}
+					className={classNames({ 'slds-is-expanded': isExpandedStored, 'slds-is-collapsed': !isExpandedStored })}
 					role="group"
-					aria-labelledby={`${this.props.htmlId}__label`}
+					aria-labelledby={`${props.htmlId}__label`}
 				>{children}
 				</ul>
 			</li>
 		);
-	},
+	};
 
-	// ### Render
-	render () {
-		const children = [];
-		const {
-			level,
-			onExpandClick,
-			loading,
-			selection
-		} = this.props;
+	let treeIndex = '';
+	const children = [];
+	const {
+		level,
+		onExpandClick,
+		loading,
+		selection
+	} = props;
 
-		if (isArray(this.props.node[this.props.nodeKeys.nodes])) {
-			this.props.node[this.props.nodeKeys.nodes].forEach((node, index) => {
-				const htmlId = `${this.props.htmlId}-${node.htmlId || index}`;
+	if (isArray(props.node[props.nodeKeys.nodes])) {
+		props.node[props.nodeKeys.nodes].forEach((node, index) => {
+			const htmlId = `${props.htmlId}-${node.htmlId || index}`;
+			treeIndex = `${index}`;
+			if (props.treeIndex) {
+				treeIndex = `${props.treeIndex}-${treeIndex}`;
+			}
 
-				if (node.type === 'folder') {
-					children.push(
-						<Branch
-							expanded={this.props.expanded}
-							htmlId={htmlId}
-							key={shortid.generate()}
-							label={node.label}
-							level={level + 1}
-							loading={loading}
-							node={node}
-							nodeKeys={this.props.nodeKeys}
-							nodes={node[this.props.nodeKeys.nodes]}
-							onClick={this.props.onClick}
-							onExpandClick={onExpandClick}
-							selection={selection}
-						/>
-					);
-				} else {
-					children.push(
-						<Item
-							{...node}
-							htmlId={htmlId}
-							key={shortid.generate()}
-							level={level + 1}
-							node={node}
-							nodes={this.props.node[this.props.nodeKeys.nodes]}
-							onClick={this.props.onClick}
-							selection={selection}
-						/>
-					);
-				}
-			});
-		}
-
-		const branch = this.props.level === 0 ? this.renderInitialNode(children) : this.renderBranch(children);
-
-		return branch;
+			if (node.type === 'folder') {
+				children.push(
+					<Branch
+						expanded={props.expanded}
+						htmlId={htmlId}
+						key={shortid.generate()}
+						label={node[props.nodeKeys.label]}
+						level={level + 1}
+						loading={loading}
+						node={node}
+						nodeKeys={props.nodeKeys}
+						nodes={node[props.nodeKeys.nodes]}
+						onClick={props.onClick}
+						onExpandClick={onExpandClick}
+						selection={selection}
+						treeIndex={treeIndex}
+					/>
+				);
+			} else {
+				children.push(
+					<Item
+						{...node}
+						label={node[props.nodeKeys.label]}
+						htmlId={htmlId}
+						key={shortid.generate()}
+						level={level + 1}
+						node={node}
+						nodeKeys={props.nodeKeys}
+						nodes={props.node[props.nodeKeys.nodes]}
+						onClick={props.onClick}
+						selection={selection}
+						treeIndex={treeIndex}
+					/>
+				);
+			}
+		});
 	}
-});
+
+	const branch = props.level === 0 ? renderInitialNode(children) : renderBranch(children);
+
+	return branch;
+};
+
+// ### Display Name
+// Always use the canonical component name as the React display name.
+Branch.displayName = TREE_BRANCH;
+
+// ### Prop Types
+Branch.propTypes = {
+	/**
+	 * List of expanded branches. A list of each branches `id` object key,
+	 * */
+	expanded: PropTypes.array,
+	/**
+	 * HTML `id` of primary element that has `.slds-tree` on it. This component has a wrapping container element outside of `.slds-tree`.
+	 */
+	htmlId: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string]).isRequired,
+	/**
+	 * All tree nodes must have a unique HTML `id` for users of assistive technology. If no `id` key is present in the  is provided, one will be generated.
+	 */
+	index: PropTypes.number,
+	/**
+	 * Determines if nodes in the top-level of the tree.
+	 */
+	initial: PropTypes.bool,
+	/*
+	 * Class names to be added to the top-level `ul` element.
+	 */
+	initalClassName: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string]),
+	/**
+	 * The text of the tree item.
+	 */
+	label: PropTypes.string.isRequired,
+	/**
+	 * The number of nestings. Determines the ARIA level and style alignment.
+	 */
+	level: PropTypes.number.isRequired,
+	/**
+	 * The current node that is being rendered.
+	 */
+	node: PropTypes.object.isRequired,
+	nodeKeys: React.PropTypes.shape({
+		label: React.PropTypes.string,
+		nodes: React.PropTypes.string
+	}),
+	/**
+	 * Function that will run whenever an item or branch is clicked.
+	 */
+	onClick: PropTypes.func,
+	/**
+	 * This function triggers when the expand or collapse icon is clicked.
+	 */
+	onExpandClick: PropTypes.func.isRequired,
+	/**
+	 * An array of the currently selected items
+	 */
+	selection: PropTypes.array
+},
+
+Branch.getDefaultProps = {
+	expanded: [],
+	level: 0,
+	loading: [],
+	selection: []
+};
 
 module.exports = Branch;
 module.exports.cssClasses = cssClasses;
 module.exports.idSuffixes = idSuffixes;
+
