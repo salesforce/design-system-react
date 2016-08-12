@@ -21,7 +21,7 @@ const {
 	Simulate
 } = TestUtils;
 
-describe.only('SLDS APP LAUNCHER SECTION *******************************************', () => {
+describe('SLDS APP LAUNCHER SECTION *******************************************', () => {
 	const handles = {
 		section: null
 	};
