@@ -207,6 +207,7 @@ module.exports = React.createClass({
   },
 
   getInputIcon(){
+    // inline style override
     return <InputIcon name='event' style={{pointerEvents: 'none'}} />;
   },
 
@@ -215,6 +216,7 @@ module.exports = React.createClass({
   },
 
   getLabel(){
+    // inline style override
     const required = this.props.required ? <span style={{color:"red"}}>* </span> : null;
     const inputLabel = this.props.label ? <label className="slds-form-element__label" htmlFor={this.inputRefName()} style={{width: "100%"}}>{required}{this.props.label}</label> : null;
     return inputLabel;

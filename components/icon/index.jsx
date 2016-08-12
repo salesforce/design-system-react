@@ -9,94 +9,138 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import React from 'react';
-import SLDSUtilityIcon from '../utilities/utility-icon';
+// # Icon Component
+
+// Based on SLDS v2.1.0-rc.4
+
+// ## Dependencies
+
+// ### React
+import React, { PropTypes } from 'react';
+
+// ### classNames
+// [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
+// A simple javascript utility for conditionally joining classNames together.
 import classNames from 'classnames';
 
-const displayName = 'Icon';
+// ## Children
+import SLDSUtilityIcon from '../utilities/utility-icon';
 
-const propTypes = {
-  /**
-   * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
-   * Naked icons must have assistive text, however, if you also have visible descriptive text with the icon,
-   * declare this prop as <code>assistiveText=''</code>.
-   */
-  assistiveText: React.PropTypes.string,
-  category: React.PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']).isRequired,
-  /**
-   * CSS classes that are applied to the SVG
-   */
-  className: React.PropTypes.string,
-  /**
-   * If true, icon color is white. If false, icon color is the default text color.
-   */
-  inverse: React.PropTypes.bool,
-  /**
-   * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
-   */
-  name: React.PropTypes.string.isRequired,
-  size: React.PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
-};
-const defaultProps = {
-  category: 'standard',
-  inverse: true,
-  size: 'medium',
-};
+// ## Constants
+import { ICON } from '../../utilities/constants';
 
 /**
  * The Icon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href='#/button'>SLDSButton component</a> component with <code>variant='icon'</code>.
  */
-class Icon extends React.Component {
+const Icon = React.createClass({
+	// ### Display Name
+	// Always use the canonical component name as the React display name.
+	displayName: ICON,
 
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+	// ### Prop Types
+	propTypes: {
+		/**
+		 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+		 * Naked icons must have assistive text, however, if you also have visible descriptive text with the icon,
+		 * declare this prop as <code>assistiveText=''</code>.
+		 */
+		assistiveText: PropTypes.string,
+		/**
+		 * Icon category from [lightningdesignsystem.com/icons/](https://www.lightningdesignsystem.com/icons/)
+		 */
+		category: PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']).isRequired,
+		/**
+		 * CSS classes that are applied to the SVG
+		 */
+		className: PropTypes.string,
+		/**
+		 * An SVG object to use instead of name / category, look in `design-system-react/icons` for examples
+		 */
+		icon: PropTypes.object,
+		/**
+		 * Setting `inverse` to true will switch the color of the icon: light to dark, dark to light.
+		 */
+		inverse: PropTypes.bool,
+		/**
+		 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
+		 */
+		name: PropTypes.string,
+		/**
+		 * Size of the icon. Visit [lightningdesignsystem.com/components/icons/#flavor-sizes](https://www.lightningdesignsystem.com/components/icons/#flavor-sizes)
+		 */
+		size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
+		/**
+		 * Custom styles to be passed to the SVG. Could be used to change icon or background color.
+		 */
+		style: PropTypes.object,
+		/**
+		 * Title attribute for the icon container
+		 */
+		title: PropTypes.string
+	},
 
-  getContainerClassName() {
-    const name = this.props.name ? this.props.name.replace(/_/g,'-') : '';
-    const renderName = (this.props.category === 'action');
+	getDefaultProps () {
+		return {
+			category: 'standard',
+			size: 'medium',
+			style: {}
+		};
+	},
 
-    return classNames({
-      ['slds-icon__container']: this.props.category !== 'utility',
-      [`slds-icon-${this.props.category}-${name}`]: renderName,
-    })
-  }
+	applyTextDefaultClass () {
+		// if category is `utility` and `inverse` is false (default), icon will be dark // return true
+		// if category is `utility` and `inverse` is true, icon will be light // return false
+		// if category is NOT `utility` and `inverse` is false (default), icon will be light // return false
+		// if category is NOT `utility` and `inverse` is true, icon will be dark // return true
+		return this.props.category === 'utility' ? !this.props.inverse : this.props.inverse;
+	},
 
-  getClassName() {
-    const name = this.props.name ? this.props.name.replace(/_/g,'-') : '';
-    const customName = this.props.name ? this.props.name.replace('custom', 'custom-'): null;
+	getContainerClasses () {
+		const { category } = this.props;
+		const name = this.props.name ? this.props.name.replace(/_/g, '-') : '';
 
-    return classNames(this.props.className, 'slds-icon', {
-      [`slds-icon--${this.props.size}`]: this.props.size !== 'medium',
-      [`slds-icon-${customName}`]: this.props.category === 'custom',
-      [`slds-icon-${this.props.category}-${name}`]: this.props.category === 'standard',
-      [`slds-icon-text-default`]: !this.props.inverse,
-    });
-  }
+		return classNames({
+			'slds-icon_container': category !== 'utility',
+			'slds-icon_container--circle': category === 'action',
+			// For actions, this class needs to be on the container for the circle to render
+			[`slds-icon-${category}-${name}`]: category === 'action'
+		});
+	},
 
-  render() {
-    let label = null;
+	getIconClasses () {
+		const { category } = this.props;
+		const name = this.props.name ? this.props.name.replace(/_/g, '-') : '';
 
-    if(this.props.assistiveText) {
-      label = <span className='slds-assistive-text'>{this.props.assistiveText}</span>;
-    }
-    return (
-      <span className={this.getContainerClassName()}>
-      {label}
-      <SLDSUtilityIcon
-        aria-hidden='true'
-        category={this.props.category}
-        className={this.getClassName()}
-        name={this.props.name}
-        />
-      </span>
-    )
-  }
-}
+		return classNames(this.props.className, 'slds-icon', {
+			[`slds-icon--${this.props.size}`]: this.props.size !== 'medium',
+			'slds-icon-text-default': this.applyTextDefaultClass(),
+			// This class is applied to SVG instead of container due to issues with Picklist.
+			[`slds-icon-${category}-${name}`]: category !== 'utility' && category !== 'doctype' && category !== 'action'
+		});
+	},
 
-Icon.displayName = displayName;
-Icon.propTypes = propTypes;
-Icon.defaultProps = defaultProps;
+	render () {
+		return (
+			<span
+				className={this.getContainerClasses()}
+				title={this.props.title}
+			>
+				<SLDSUtilityIcon
+					aria-hidden="true"
+					category={this.props.category}
+					className={this.getIconClasses()}
+					icon={this.props.icon}
+					name={this.props.name}
+					style={this.props.style}
+				/>
+				{
+					this.props.assistiveText
+					? <span className="slds-assistive-text">{this.props.assistiveText}</span>
+					: ''
+				}
+			</span>
+		);
+	}
+});
 
 module.exports = Icon;

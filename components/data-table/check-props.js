@@ -19,9 +19,9 @@ if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
 		/* eslint-disable max-len */
 		// Deprecated and changed to another property
-		deprecatedProperty(COMPONENT, props.onSelect, 'collection', 'items');
+		deprecatedProperty(COMPONENT, props.collection, 'collection', 'items');
 		deprecatedProperty(COMPONENT, props.onSelect, 'onSelect', 'onChange');
-		deprecatedProperty(COMPONENT, props.onSelect, 'onDeselect', 'onChange');
+		deprecatedProperty(COMPONENT, props.onDeselect, 'onDeselect', 'onChange');
 		sunsetProperty(COMPONENT, props.sortable, 'sortable', 'The table is sortable if one or more of its columns are sortable.');
 
 		// Deprecated and moved to a child

@@ -79,6 +79,10 @@ const Checkbox = React.createClass({
 		 */
 		label: React.PropTypes.string,
 		/**
+		 * Name of the submitted form parameter.
+		 */
+		name: PropTypes.string,
+		/**
 		 * This event fires when the Checkbox changes.
 		 */
 		onChange: PropTypes.func,
@@ -103,6 +107,7 @@ const Checkbox = React.createClass({
 			disabled,
 			errorText,
 			label,
+			name,
 			onChange, // eslint-disable-line no-unused-vars
 			required,
 
@@ -126,6 +131,7 @@ const Checkbox = React.createClass({
 						<input
 							{...props}
 							checked={checked}
+							name={name}
 							disabled={disabled}
 							onChange={this.handleChange}
 							type="checkbox"

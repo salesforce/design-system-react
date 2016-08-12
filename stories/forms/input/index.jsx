@@ -8,21 +8,24 @@ const iconClicked = action;
 
 storiesOf(FORMS_INPUT, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('Standard Input', () => (
+	.add('Standard', () => (
 		<Input
 			label="Input Label"
+			name="standard-input"
 			placeholder="Placeholder Text"
 		/>
 	))
 	.add('Assistive Text, No Label', () => (
 		<Input
+			name="assistive-text-no-label"
 			assistiveText="Assistive Text"
 			placeholder="Placeholder Text"
 		/>
 	))
-	.add('Input with Left Clickable Icon', () => (
+	.add('w/ Left Clickable Icon', () => (
 		<Input
 			id="unique-id-123"
+			name="left-clickable-icon"
 			label="Input Label"
 			iconName="search"
 			iconCategory="utility"
@@ -32,8 +35,9 @@ storiesOf(FORMS_INPUT, module)
 			placeholder="Placeholder Text"
 		/>
 	))
-	.add('Input with Right Clickable Icon', () => (
+	.add('w/ Right Clickable Icon', () => (
 		<Input
+			name="right-clickable-icon"
 			label="Input Label"
 			iconName="close"
 			iconCategory="utility"
@@ -43,8 +47,9 @@ storiesOf(FORMS_INPUT, module)
 			placeholder="Placeholder Text"
 		/>
 	))
-	.add('Input with Non-Clickable Icon', () => (
+	.add('w/ Non-Clickable Icon', () => (
 		<Input
+			name="non-clickable-icon"
 			id="unique-id-123"
 			label="Input Label"
 			iconName="search"
@@ -53,8 +58,9 @@ storiesOf(FORMS_INPUT, module)
 			placeholder="Placeholder Text"
 		/>
 	))
-	.add('Read Only Input', () => (
+	.add('Read Only', () => (
 		<Input
+			name="read-only"
 			label="Input Label"
 			readOnly
 			value="Read Only Value"
@@ -62,6 +68,7 @@ storiesOf(FORMS_INPUT, module)
 	))
 	.add('Required Input in Error State', () => (
 		<Input
+			name="required-input-error"
 			label="Input Label"
 			required
 			errorText="Error Message"

@@ -10,16 +10,22 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// ### classNames
+// [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
+// This project uses `classnames`, "a simple javascript utility for conditionally
+// joining classNames together."
 import classNames from 'classnames';
+
+// ### onClickOutside
+// Listen for clicks that occur somewhere in the document, outside of the element itself
+import onClickOutside from 'react-onclickoutside';
 
 import TetherDrop from 'tether-drop';
 import { EventUtil, KEYS } from '../utilities';
 
-module.exports = React.createClass({
+const Popover = React.createClass({
 
 	displayName: 'Popover',
-
-	mixins: [require('react-onclickoutside')],
 
 	handleClickOutside () {
 		this.handleClose();
@@ -41,11 +47,13 @@ module.exports = React.createClass({
 			horizontalAlign: 'left',
 			className: 'slds-dropdown',
 			closeOnTabKey: false,
+			flippable: true,
 			marginTop: '0.20rem',
 			marginBottom: '0.35rem',
 			marginLeft: 0,
 			marginRight: 0,
-			flippable: true,
+			offset: '0px 0px',
+			outsideClickIgnoreClass: 'ignore-react-onclickoutside',
 			constrainToScrollParent: false,
 			inheritTargetWidth: false
 		};
@@ -84,6 +92,10 @@ module.exports = React.createClass({
 				this.handleClose();
 			}
 		}
+
+		if (this.props.onKeyDown) {
+			this.props.onKeyDown(event);
+		}
 	},
 
 	popoverComp () {
@@ -108,7 +120,7 @@ module.exports = React.createClass({
 
 		return (
 			<div
-				className={classNames('ignore-react-onclickoutside', this.props.className)}
+				className={classNames(this.props.outsideClickIgnoreClass, this.props.className)}
 				style={style}
 				onKeyDown={this.handleKeyDown}
 				onMouseEnter={this.props.onMouseEnter}
@@ -117,9 +129,6 @@ module.exports = React.createClass({
 				{this.props.children}
 			</div>
 		);
-	},
-
-	beforeClose () {
 	},
 
 	getHorizontalAlign (align) {
@@ -196,6 +205,7 @@ module.exports = React.createClass({
 	},
 
 	dropOptions () {
+		// Please reference http://github.hubspot.com/drop/ for options.
 		const position = this.getPosition();
 
 		return {
@@ -205,9 +215,12 @@ module.exports = React.createClass({
 			constrainToScrollParent: this.props.constrainToScrollParent,
 			content: this.popoverElement,
 			openOn: 'always',
-			position: position,
+			position,
 			remove: true,
-			target: this.target()
+			target: this.target(),
+			tetherOptions: {
+				offset: this.props.offset
+			}
 		};
 	},
 
@@ -253,3 +266,5 @@ module.exports = React.createClass({
 		return <noscript></noscript>;
 	}
 });
+
+module.exports = onClickOutside(Popover);

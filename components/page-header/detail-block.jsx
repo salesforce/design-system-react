@@ -73,7 +73,7 @@ class DetailBlock extends Component {
       const type = typeof label;
 
       if (type === 'string') {
-        const labelClasses = classnames('slds-text-heading--label-normal', {
+        const labelClasses = classnames('slds-text-title', {
           'slds-truncate': truncate,
         });
 

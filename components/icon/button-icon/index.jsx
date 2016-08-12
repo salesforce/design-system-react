@@ -16,50 +16,57 @@ import classNames from 'classnames';
 const displayName = 'ButtonIcon';
 
 const propTypes = {
-  assistiveText: React.PropTypes.string,
-  category: React.PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']).isRequired,
-  hint: React.PropTypes.bool,
-  name: React.PropTypes.string,
-  position: React.PropTypes.oneOf(['left', 'right']),
-  size: React.PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
+	assistiveText: React.PropTypes.string,
+	category: React.PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']).isRequired,
+	className: React.PropTypes.string,
+	hint: React.PropTypes.bool,
+	icon: React.PropTypes.object,
+	inverse: React.PropTypes.bool,
+	name: React.PropTypes.string,
+	position: React.PropTypes.oneOf(['left', 'right']),
+	size: React.PropTypes.oneOf(['x-small', 'small', 'medium', 'large'])
 };
+
 const defaultProps = {
-  category: 'utility',
-  size: 'medium',
+	category: 'utility',
+	size: 'medium'
 };
 
 class ButtonIcon extends React.Component {
+	constructor (props) {
+		super(props);
+		this.state = {};
+	}
 
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+	getClassName () {
+		return classNames(this.props.className, 'slds-button__icon', {
+			[`slds-button__icon--${this.props.position}`]: this.props.position,
+			[`slds-button__icon--${this.props.size}`]: this.props.size && this.props.size !== 'medium',
+			'slds-button__icon--inverse-hint': this.props.inverse && this.props.hint,
+			'slds-button__icon--hint': this.props.hint && !this.props.inverse
+		});
+	}
 
-  getClassName() {
-    return classNames(this.props.className, 'slds-button__icon', {
-      [`slds-button__icon--${this.props.position}`]: this.props.position,
-      [`slds-button__icon--${this.props.size}`]: this.props.size !== 'medium',
-      [`slds-button__icon--hint`]: this.props.hint,
-    });
-  }
+	render () {
+		let label = null;
 
-  render() {
-    let label = null;
-    if(this.props.assistiveText) {
-      label = <span className='slds-assistive-text'>{this.props.assistiveText}</span>;
-    }
-    return (
-      <span>
-        {label}
-        <SLDSUtilityIcon
-          aria-hidden='true'
-          category={this.props.category}
-          className={this.getClassName()}
-          name={this.props.name}
-          />
-      </span>
-    )
-  }
+		if (this.props.assistiveText) {
+			label = <span className="slds-assistive-text">{this.props.assistiveText}</span>;
+		}
+
+		return (
+			<span>
+				{label}
+				<SLDSUtilityIcon
+					aria-hidden="true"
+					category={this.props.category}
+					className={this.getClassName()}
+					icon={this.props.icon}
+					name={this.props.name}
+				/>
+			</span>
+		);
+	}
 }
 
 ButtonIcon.displayName = displayName;

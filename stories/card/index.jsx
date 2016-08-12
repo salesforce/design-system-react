@@ -53,7 +53,7 @@ const DemoCard = React.createClass({
 						: null
 					}
 					heading="Releated Items"
-					icon={<Icon category="standard" name="default" size="small" />}
+					icon={<Icon category="standard" name="document" size="small" />}
 					empty={isEmpty
 						? <CardEmpty heading="No Related Items">
 							<Button label="Add Item" onClick={this.handleAddItem} />
@@ -112,5 +112,5 @@ const DemoCard = React.createClass({
 
 storiesOf(CARD, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('w/ items', () => <DemoCard items={sampleItems} />)
+	.add('w/ Items', () => <DemoCard items={sampleItems} />)
 	.add('Empty', () => <DemoCard items={[]} />);

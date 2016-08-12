@@ -1,148 +1,199 @@
+/* eslint-env mocha */
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable react/display-name */
+/* eslint-disable no-unused-expressions */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { expect } from 'chai';
 import TestUtils from 'react-addons-test-utils';
 
-
-import {SLDSPopoverTooltip} from '../../components';
-import {SLDSButton} from '../../components';
+import SLDSPopoverTooltip from '../../components/popover-tooltip';
+import SLDSButton from '../../components/button';
 
 const { Simulate,
-        scryRenderedDOMComponentsWithClass,
-        findRenderedDOMComponentWithClass } = TestUtils;
+				findRenderedDOMComponentWithTag,
+				findRenderedDOMComponentWithClass } = TestUtils;
 
-describe('SLDSPopoverTooltip: ',  function(){
-  let body;
+describe('SLDSPopoverTooltip: ', function () {
+	let body;
 
-  afterEach(() => {
-    try {
-      Array.prototype.forEach.call(document.body.querySelectorAll('.drop'), c => document.body.removeChild(c));
-      if(body) document.body.removeChild(body);
-    } catch(e){}
-  })
+	const defaultTrigger = (<SLDSButton label="Hover me for tooltip" />);
+	const defaultTextContent = 'This is more info. blah blah.';
+	const defaultProps = {
+		content: (
+			<span
+				className="tooltip-content"
+				style={{ width: 30 }}
+			>{defaultTextContent}</span>),
+		id: 'myTooltip123'
+	};
 
-  const createBody = () => {
-    const target = document.createElement('h1');
-    target.textContent = 'Tooltip Tip Target';
-    body = document.createElement('div');
-    body.appendChild(target);
-    document.body.appendChild(body);
-  }
+	afterEach(() => {
+		try {
+			Array.prototype.forEach.call(document.body.querySelectorAll('.drop'), component => document.body.removeChild(component));
+			if (body) {
+				document.body.removeChild(body);
+			}
+		} catch (e) { /* empty */ }
+	});
 
-  const renderTooltip = inst => {
-    return ReactDOM.render(inst, body);
-  }
+	const createBody = () => {
+		const target = document.createElement('h1');
+		target.textContent = 'Tooltip Tip Target';
+		body = document.createElement('div');
+		body.appendChild(target);
+		document.body.appendChild(body);
+	};
 
-  const createTooltip = (props, kids) => React.createElement(SLDSPopoverTooltip, props, kids);
+	const renderTooltip = inst => ReactDOM.render(inst, body);
 
-  const generateTooltip = (props, kids) => renderTooltip(createTooltip(props, kids));
+	const createTooltip = (props, kids) => React.createElement(SLDSPopoverTooltip, props, kids);
 
-  const getTip = (dom) => dom.querySelector('.slds-popover--tooltip');
+	const generateTooltip = (props, kids) => renderTooltip(createTooltip(props, kids));
 
-  describe('component basic props render', () => {
-    let cmp, trigger;
+	const getTip = (dom) => dom.querySelector('.slds-popover--tooltip');
 
-    beforeEach(() => {
-      const content = (<span style={{width: 30}}>This is more info. blah blah.</span>);
-      createBody();
-      cmp = generateTooltip({
-        align: 'bottom', 
-        content: content
-      }, React.createElement(SLDSButton, {label: 'Hover me for tooltip'}));
-      trigger = document.body.querySelector('[role=tooltip]').firstChild;
-    })
+	describe('component basic props render', () => {
+		let rootNode;
 
-    it('renders the content as assistive text', () => {
-      const span = findRenderedDOMComponentWithClass(cmp, 'slds-assistive-text');
-      expect(span.textContent).to.equal('This is more info. blah blah.');
-    })
+		beforeEach(() => {
+			createBody();
+			rootNode = generateTooltip({
+				...defaultProps,
+				align: 'bottom'
+			}, defaultTrigger);
+		});
 
-    it('is not open', () => {
-      expect(getTip(document.body)).to.equal(null);
-    })
+		it('renders the content as assistive text', () => {
+			const span = findRenderedDOMComponentWithClass(rootNode, 'slds-assistive-text');
+			expect(span.textContent).to.equal('This is more info. blah blah.');
+		});
 
-    describe('expanded', () => {
-      let tip;
+		it('is not open', () => {
+			expect(getTip(document.body)).to.equal(null);
+		});
 
-      beforeEach((done) => {
-        expect(getTip(document.body)).to.equal(null)
+		describe('expanded', () => {
+			let tip;
+			let trigger;
 
-        setTimeout(() => {
-          Simulate.mouseEnter(trigger, {});
-          setTimeout(() => {
-            tip = getTip(document.body);
-            done();
-          }, 200);
-        }, 200);
-      });
+			beforeEach((done) => {
+				trigger = findRenderedDOMComponentWithTag(rootNode, 'button');
+				Simulate.mouseEnter(trigger, {});
+				setTimeout(() => {
+					tip = getTip(document.body);
+					done();
+				}, 0);
+			});
 
-      it('has the right classname', () => {
-        expect(tip.className).to.include('slds-popover--tooltip');
-      })
+			it('places bottom aligned tooltip at the trigger if no target', (done) => {
+				// "Magic Number" in pixels, based on size of trigger, CSS, and DropJS offset
+				const tooltipOffset = 46;
+				const tipBounds = tip.getBoundingClientRect();
+				const triggerBounds = trigger.getBoundingClientRect();
+				expect(tipBounds.bottom).to.be.within(triggerBounds.bottom, triggerBounds.bottom + tooltipOffset);
+				done();
+			});
 
-      it('places bottom aligned tooltip at the trigger if no target', (done) => {
-        // "Magic Number" in pixels, based on size of trigger and CSS
-        const tooltipOffset = 40;
-        const tipBounds = tip.getBoundingClientRect();
-        const triggerBounds = trigger.getBoundingClientRect();
-        expect(tipBounds.bottom).to.be.within(triggerBounds.bottom, triggerBounds.bottom + tooltipOffset);
-        done();
-      })
+			it('adds nubbin', () => {
+				expect(tip.className).to.include('slds-nubbin--top');
+			});
 
-      it('adds nubbin', () => {
-        expect(tip.className).to.include('slds-nubbin--top');
-      })
+			it('closes', (done) => {
+				Simulate.mouseLeave(trigger, {});
+				setTimeout(() => {
+					expect(getTip(document.body)).to.be.null;
+					done();
+				}, 600);
+			});
+		});
+	});
 
-      it('closes', (done) => {
-         Simulate.mouseLeave(trigger, {})
-         setTimeout(() => {
-           expect(getTip(document.body)).to.be.null;
-           done();
-         }, 600)
-      })
-    })
-  })
 
-  describe('using target', () => {
-    let cmp, trigger;
+	describe('Custom props work as expected', () => {
+		it('isOpen is false', (done) => {
+			const rootNode = generateTooltip({
+				...defaultProps,
+				isOpen: false
+			}, defaultTrigger);
 
-    beforeEach(() => {
-      const content = (<span style={{width: 30}}>This is more info. blah blah.</span>);
-      createBody();
-      cmp = generateTooltip({
-        align: 'bottom', 
-        content: content, 
-        target: body.firstChild
-      }, React.createElement(SLDSButton, {}), ['Hover me for tooltip']);
-      trigger = document.body.querySelector('[role=tooltip]').firstChild;
-    })
+			setTimeout(() => {
+				const trigger = findRenderedDOMComponentWithTag(rootNode, 'button');
+				Simulate.mouseEnter(trigger, {});
+				setTimeout(() => {
+					expect(getTip(document.body)).to.be.null;
+					done();
+				}, 0);
+			}, 0);
+		});
 
-    // Commented out until fully understood.
-    // 
-    // describe('expanded', () => {
-    //   let tip;
+		it('isOpen is true', (done) => {
+			let contentRendered;
 
-    //   beforeEach((done) => {
-    //     expect(getTip(document.body)).to.equal(null);
+			const tooltipContentRendered = (component) => {
+				this.tip = getTip(document.body);
+				if (!contentRendered) {
+					expect(component).to.not.be.null;
+					contentRendered = true;
+					done();
+				}
+			};
 
-    //     setTimeout(() => {
-    //       Simulate.mouseEnter(trigger, {})
-    //       setTimeout(() => {
-    //         tip = getTip(document.body);
-    //         done();
-    //       }, 200);
-    //     }, 200);
-    //   });
+			generateTooltip({
+				...defaultProps,
+				// overwrite default content
+				content: (<span
+					ref={tooltipContentRendered}
+					className="tooltip-content"
+					style={{ width: 30 }}
+				>{defaultTextContent}</span>),
+				isOpen: true
+			}, defaultTrigger);
+		});
+	});
 
-    //   it('sets the tooltip close to the target, not the trigger', () => {
-    //     // "Magic Number" in pixels, based on size of trigger and CSS
-    //     const tooltipOffset = 40;
-    //     const tipBounds = tip.getBoundingClientRect();
-    //     const targetBounds = body.firstChild.getBoundingClientRect();
-    //     console.log(tipBounds);
-    //     console.log(targetBounds);
-    //     expect(tipBounds.bottom).to.be.within(targetBounds.bottom, targetBounds.bottom + tooltipOffset);
-    //   })
-    // })
-  })
-})
+	/*
+	// Commented out until fully understood.
+	describe('using target', () => {
+		let rootNode, trigger;
+
+		beforeEach(() => {
+			const content = (<span style={{width: 30}}>This is more info. blah blah.</span>);
+			createBody();
+			rootNode = generateTooltip({
+				align: 'bottom',
+				content: content,
+				target: body.firstChild
+			}, React.createElement(SLDSButton, {}), ['Hover me for tooltip']);
+			trigger = document.body.querySelector('[role=tooltip]').firstChild;
+		})
+
+		describe('expanded', () => {
+			let tip;
+
+			beforeEach((done) => {
+				expect(getTip(document.body)).to.equal(null);
+
+				setTimeout(() => {
+					Simulate.mouseEnter(trigger, {})
+					setTimeout(() => {
+						tip = getTip(document.body);
+						done();
+					}, 200);
+				}, 200);
+			});
+
+			it('sets the tooltip close to the target, not the trigger', () => {
+				// "Magic Number" in pixels, based on size of trigger and CSS
+				const tooltipOffset = 40;
+				const tipBounds = tip.getBoundingClientRect();
+				const targetBounds = body.firstChild.getBoundingClientRect();
+				console.log(tipBounds);
+				console.log(targetBounds);
+				expect(tipBounds.bottom).to.be.within(targetBounds.bottom, targetBounds.bottom + tooltipOffset);
+			})
+		})
+	})
+	*/
+});

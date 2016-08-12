@@ -15,35 +15,43 @@ import omit from 'lodash.omit';
 
 const displayName = 'PageHeaderBase';
 const propTypes = {
-  /**
-   * Icon node passed by PageHeader
-   */
-  icon: React.PropTypes.node,
-  /**
-   * Title node passed by PageHeader
-   */
-  title: React.PropTypes.node,
-  /**
-   * Info node passed by PageHeader
-   */
-  info: React.PropTypes.node,
+	/**
+	 * Icon node passed by PageHeader
+	 */
+	icon: React.PropTypes.node,
+	/**
+	 * Title node passed by PageHeader
+	 */
+	title: React.PropTypes.node,
+	/**
+	 * Info node passed by PageHeader
+	 */
+	info: React.PropTypes.node,
 };
 const defaultProps = {};
 
 class Base extends Component {
-  render() {
-    return (
-      <div className="slds-media slds-media--center">
-        <div className="slds-media__figure">
-          { this.props.icon }
-        </div>
-        <div className="slds-media__body">
-          { this.props.title }
-          { this.props.info }
-        </div>
-      </div>
-    );
-  }
+	renderIcon() {
+		if(this.props.icon) {
+			return (
+				<div className="slds-media__figure">
+					{ this.props.icon }
+				</div>
+			)
+		}
+	}
+
+	render() {
+		return (
+			<div className="slds-media slds-media--center">
+				{this.renderIcon()}
+				<div className="slds-media__body">
+					{ this.props.title }
+					{ this.props.info }
+				</div>
+			</div>
+		);
+	}
 }
 
 Base.displayName = displayName;

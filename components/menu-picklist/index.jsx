@@ -4,305 +4,377 @@ Redistribution and use in source and binary forms, with or without modification,
 Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import React from "react";
-import ReactDOM from "react-dom";
-import isEqual from "lodash.isequal";
+// # Picklist Component
 
-import Popover from "../popover";
-import {KEYS, EventUtil} from "../../utilities";
-import Icon from "../icon";
-import List from "../menu-list/list";
-import ListItemLabel from "../menu-list/list-item-label";
+// Implements the [Picklist design pattern](https://www.lightningdesignsystem.com/components/menus/#flavor-picklist) in React.
+// Based on SLDS v2.1.0-rc.2
 
-const displayName = "MenuPicklist";
-const propTypes = {
-  className: React.PropTypes.string,
-  /**
-   * If true, renders checkmark icon on the selected Menu Item.
-   */
-  checkmark: React.PropTypes.bool,
-  disabled: React.PropTypes.bool,
-  label: React.PropTypes.string,
-  /**
-   * Custom element that overrides the default Menu Item component.
-   */
-  listItemRenderer: React.PropTypes.func,
-  /**
-   * If true, component renders specifically to work inside Modal.
-   */
-  modal: React.PropTypes.bool,
-  onClick: React.PropTypes.func,
-  onSelect: React.PropTypes.func,
-  /**
-   * Menu item data.
-   */
-  options: React.PropTypes.array.isRequired,
-  placeholder: React.PropTypes.string,
-  required: React.PropTypes.bool,
-  /**
-   * Current selected item.
-   */
-  value: React.PropTypes.node,
-};
-const defaultProps = {
-	constrainToScrollParent: false,
-  disabled: false,
-  inheritTargetWidth: true,
-  modal: true,
-  required: false,
-  placeholder: "Select an Option",
-  checkmark: true
-};
+// ### React
+import React, { PropTypes } from 'react';
+import ReactDOM from 'react-dom';
+
+// ### classNames
+// [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
+// This project uses `classnames`, "a simple javascript utility for conditionally
+// joining classNames together."
+import classNames from 'classnames';
+
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
+
+// ### Children
+import Popover from '../popover';
+import Icon from '../icon';
+import List from '../menu-list/list';
+import ListItemLabel from '../menu-list/list-item-label';
+
+// ### Traits
+
+// #### KeyboardNavigable
+import KeyboardNavigable from '../../utilities/keyboard-navigable';
+
+import { KEYS, EventUtil } from '../../utilities';
+import { MENU_PICKLIST } from '../../utilities/constants';
 
 /**
  * The MenuPicklist component is a variant of the Lightning Design System Menu component.
  */
-class MenuPicklist extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      highlightedIndex: 0,
-      isOpen: false,
-      isFocused: false,
-      lastBlurredIndex: -1,
-      lastBlurredTimeStamp: -1,
-      selectedIndex: this.getIndexByValue(this.props.value),
-      /* triggerId is the id of the element that triggers the Menu to open.
-      * Need this for aria-labelledby on <ul> in Menu for accessibility. */
-      triggerId: this.props.label ? this.props.label.replace(/\s+/g, '') + '_Button': 'Picklist_Button',
-    };
-  }
+const MenuPicklist = React.createClass({
+	// ### Display Name
+	// Always use the canonical component name as the React display name.
+	displayName: MENU_PICKLIST,
 
-  componentWillUnmount(){
-    this.isUnmounting = true;
-  }
+	mixins: [KeyboardNavigable],
 
-  componentDidUpdate( prevProps, prevState) {
-    if(this.state.lastBlurredTimeStamp !== prevState.lastBlurredTimeStamp){
-      if(this.state.lastBlurredIndex === this.state.highlightedIndex){
-        this.handleClose();
-      }
-    }
-    if(this.state.selectedIndex !== prevState.selectedIndex){
-      this.handleClose();
-    }
-    else if(this.state.isFocused && !prevState.isFocused){
-      this.setState({isOpen: false});
-    }
-    else if(!this.state.isFocused && prevState.isFocused){
-      if(this.refs.list){
-        if(!this.isUnmounting && this.refs.list){
-          if(ReactDOM.findDOMNode(this.refs.list).contains(document.activeElement)){
-            return;
-          }
-          this.setState({isOpen: false})
-        }
-      }
-    }
+	// ### Prop Types
+	propTypes: {
+		className: PropTypes.string,
+		/**
+		 * If true, renders checkmark icon on the selected Menu Item.
+		 */
+		checkmark: PropTypes.bool,
+		disabled: PropTypes.bool,
+		/**
+		 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
+		 */
+		id: PropTypes.string,
+		label: PropTypes.string,
+		/**
+		 * Custom element that overrides the default Menu Item component.
+		 */
+		listItemRenderer: PropTypes.func,
+		/**
+		 * If true, component renders specifically to work inside Modal.
+		 */
+		modal: PropTypes.bool,
+		onClick: PropTypes.func,
+		onSelect: PropTypes.func,
+		/**
+		 * Menu item data.
+		 */
+		options: PropTypes.array.isRequired,
+		placeholder: PropTypes.string,
+		required: PropTypes.bool,
+		/**
+		 * Current selected item.
+		 */
+		value: PropTypes.node
+	},
 
-    if(this.props.value !== prevProps.value ||
-        !isEqual(this.props.options, prevProps.options)){
-      var newSelectedIndex = this.getIndexByValue(this.props.value);
-      if (newSelectedIndex !== this.state.selectedIndex) {
-        this.handleValueUpdate(newSelectedIndex);
-      }
-    }
-  }
+	getDefaultProps () {
+		return {
+			constrainToScrollParent: false,
+			disabled: false,
+			inheritTargetWidth: true,
+			modal: true,
+			required: false,
+			placeholder: 'Select an Option',
+			checkmark: true
+		};
+	},
 
-  getIndexByValue(value){
-    let foundIndex = -1;
-    if(this.props.options && this.props.options.length){
-      this.props.options.some((element, index, array)=>{
-        if(element && element.value === value){
-          foundIndex = index;
-          return true;
-        }
-        return false;
-      });
-    }
-    return foundIndex;
-  }
+	getInitialState () {
+		return {
+			focusedIndex: -1,
+			selectedIndex: -1
+		};
+	},
 
-  getValueByIndex(index){
-    const option = this.props.options[index];
-    if(option){
-      return this.props.options[index];
-    }
-  }
+	componentWillMount () {
+		this.generatedId = shortid.generate();
 
-  handleSelect(index) {
-    this.setState({selectedIndex: index})
-    this.setFocus();
-    if(this.props.onSelect){
-      this.props.onSelect(this.getValueByIndex(index));
-    }
-  }
+		window.addEventListener('click', this.closeOnClick, false);
 
-  handleValueUpdate(index) {
-    this.setState({selectedIndex: index})
-  }
+		this.setState({
+			selectedIndex: this.getIndexByValue(this.props.value)
+		});
+	},
 
-  handleClose() {
-    this.setState({isOpen: false});
-  }
+	componentWillReceiveProps (nextProps) {
+		if (this.props.value !== nextProps.value) {
+			this.setState({
+				selectedIndex: this.getIndexByValue(nextProps.value)
+			});
+		}
+	},
 
-  handleClick() {
-    if(!this.state.isOpen){
-      this.setState({isOpen: true});
-      if(this.props.onClick) this.props.onClick();
-    }
-    else{
-      this.handleClose();
-    }
-  }
+	componentWillUnmount () {
+		this.isUnmounting = true;
 
-  handleMouseDown(event){
-    EventUtil.trapImmediate(event);
-  }
+		window.removeEventListener('click', this.closeOnClick, false);
+	},
 
-  handleBlur(e) {
-    this.setState({isFocused: false});
-  }
+	getId () {
+		return this.props.id || this.generatedId;
+	},
 
-  handleFocus() {
-    this.setState({isFocused: true});
-  }
+	getClickEventName () {
+		return `SLDS${this.getId()}ClickEvent`;
+	},
 
-  setFocus() {
-    if(!this.isUnmounting){
-      ReactDOM.findDOMNode(this.refs.triggerbutton).focus();
-    }
-  }
+	getIndexByValue (value) {
+		let foundIndex = -1;
 
-  handleKeyDown(event) {
-    if (event.keyCode){
-      if (event.keyCode === KEYS.ENTER ||
-          event.keyCode === KEYS.SPACE ||
-          event.keyCode === KEYS.DOWN ||
-          event.keyCode === KEYS.UP){
-        EventUtil.trapEvent(event);
+		if (this.props.options && this.props.options.length) {
+			this.props.options.some((element, index) => {
+				if (element && element.value === value) {
+					foundIndex = index;
+					return true;
+				}
 
-        this.setState({
-          isOpen: true,
-          highlightedIndex: 0
-        });
+				return false;
+			});
+		}
 
-      }
-    }
-  }
+		return foundIndex;
+	},
 
-  handleUpdateHighlighted(nextIndex){
-    this.setState({highlightedIndex: nextIndex});
-  }
+	getValueByIndex (index) {
+		return this.props.options[index];
+	},
 
-  handleListBlur(){
-    this.setState({isOpen: false});
-  }
+	getListItemRenderer () {
+		return this.props.listItemRenderer ? this.props.listItemRenderer : ListItemLabel;
+	},
 
-  handleCancel () {
-    this.setFocus();
-  }
+	handleSelect (index) {
+		this.setState({ selectedIndex: index });
+		this.handleClose();
+		this.setFocus();
 
-  getListItemRenderer() {
-    return this.props.listItemRenderer?this.props.listItemRenderer:ListItemLabel;
-  }
+		if (this.props.onSelect) {
+			this.props.onSelect(this.getValueByIndex(index));
+		}
+	},
 
-  getPopoverContent() {
-    return <List
-            checkmark={this.props.checkmark}
-            highlightedIndex={this.state.highlightedIndex}
-            itemRenderer={this.getListItemRenderer()}
-            onCancel={this.handleCancel.bind(this)}
-            onListBlur={this.handleListBlur.bind(this)}
-            onListItemBlur={this.handleListItemBlur.bind(this)}
-            onSelect={this.handleSelect.bind(this)}
-            onUpdateHighlighted={this.handleUpdateHighlighted.bind(this)}
-            options={this.props.options}
-            ref="list"
-            selectedIndex={this.state.selectedIndex}
-            triggerId={this.state.triggerId}
-            />;
-  }
+	handleClose () {
+		this.setState({ isOpen: false });
+	},
 
-  getSimplePopover() {
-    return (
-      !this.props.disabled && this.state.isOpen?
-        <div
-          className="slds-dropdown slds-dropdown--left slds-dropdown--menu"
-          style={{
-            maxHeight: "20em",
-            overflowX: "hidden",
-            minWidth: "100%"
-          }}>
-          {this.getPopoverContent()}
-        </div>:null
-    );
-  }
+	handleClick (event) {
+		if (event) {
+			event.nativeEvent[this.getClickEventName()] = true;
+		}
 
-  getModalPopover() {
-    return (
-      !this.props.disabled && this.state.isOpen?
-        <Popover
-          className="slds-dropdown slds-dropdown--left "
-          closeOnTabKey={true}
-          constrainToScrollParent={this.props.constrainToScrollParent}
-          dropClass="slds-picklist"
-          flippable={true}
-          onClose={this.handleCancel.bind(this)}
-          targetElement={this.refs.triggerbutton}
-          inheritTargetWidth={this.props.inheritTargetWidth}>
-          {this.getPopoverContent()}
-        </Popover>:null
-    );
-  }
+		if (!this.state.isOpen) {
+			this.setState({ isOpen: true });
+			this.setFocus();
 
-  getPlaceholder() {
-    const option = this.props.options[this.state.selectedIndex];
-    return (option && option.label)?option.label:this.props.placeholder;
-  }
+			if (this.props.onClick) {
+				this.props.onClick();
+			}
+		} else {
+			this.handleClose();
+		}
+	},
 
-  handleListItemBlur (index, relatedTarget) {
-    this.setState({
-      lastBlurredIndex: index,
-      lastBlurredTimeStamp: Date.now()
-    });
-  }
+	handleMouseDown (event) {
+		if (event) {
+			EventUtil.trapImmediate(event);
+			event.nativeEvent[this.getClickEventName()] = true;
+		}
+	},
 
-  render() {
-    const required = this.props.required ? <span style={{color: "red"}}>* </span>:null;
-    const inputLabel = this.props.label?<label className="slds-form-element__label" htmlFor={this.state.triggerId} style={{width: "100%"}}>{required}{this.props.label}</label>:null;
-    return (
-      <div className={"slds-picklist " + this.props.className} aria-expanded={this.state.isOpen}>
-        {inputLabel}
-        <button
-          aria-haspopup="true"
-          className="slds-button slds-button--neutral slds-picklist__label"
-          id={this.state.triggerId}
-          onBlur={this.handleBlur.bind(this)}
-          onClick={this.handleClick.bind(this)}
-          onFocus={this.handleFocus.bind(this)}
-          onKeyDown={this.handleKeyDown.bind(this)}
-          onMouseDown={this.handleMouseDown.bind(this)}
-          disabled={this.props.disabled}
-          ref="triggerbutton"
-          tabIndex={this.state.isOpen?-1:0}>
-            <span className="slds-truncate">{this.getPlaceholder()}</span>
-            <Icon name="down" category="utility" />
-        </button>
-        {this.props.modal?this.getModalPopover():this.getSimplePopover()}
-      </div>
-    );
-  }
+	setFocus () {
+		if (!this.isUnmounting && this.button) {
+			ReactDOM.findDOMNode(this.button).focus();
+		}
+	},
 
-}
+	handleKeyDown (event) {
+		if (event.keyCode) {
+			if (event.keyCode === KEYS.ENTER ||
+					event.keyCode === KEYS.SPACE ||
+					event.keyCode === KEYS.DOWN ||
+					event.keyCode === KEYS.UP) {
+				EventUtil.trap(event);
+			}
 
+			this.handleKeyboardNavigate({
+				isOpen: this.state.isOpen || false,
+				keyCode: event.keyCode,
+				onSelect: this.handleSelect,
+				toggleOpen: this.toggleOpen
+			});
+		}
+	},
 
-MenuPicklist.displayName = displayName;
-MenuPicklist.propTypes = propTypes;
-MenuPicklist.defaultProps = defaultProps;
+	handleCancel () {
+		this.setFocus();
+	},
+
+	closeOnClick (event) {
+		if (!event[this.getClickEventName()] && this.state.isOpen) {
+			this.handleClose();
+		}
+	},
+
+	toggleOpen () {
+		this.setState({ isOpen: !this.state.isOpen });
+	},
+
+	saveRefToList (list) {
+		this.list = list;
+	},
+
+	saveRefToListItem (listItem, index) {
+		if (!this.listItems) {
+			this.listItems = {};
+		}
+
+		this.listItems[index] = listItem;
+
+		if (index === this.state.focusedIndex) this.handleKeyboardFocus(this.state.focusedIndex);
+	},
+
+	getMenu () {
+		return ReactDOM.findDOMNode(this.list);
+	},
+
+	getMenuItem (index) {
+		if (index !== undefined && this.listItems) {
+			return ReactDOM.findDOMNode(this.listItems[index]);
+		}
+
+		return undefined;
+	},
+
+	renderPopoverContent () {
+		return (
+			<List
+				checkmark={this.props.checkmark}
+				getListItemId={this.getListItemId}
+				itemRefs={this.saveRefToListItem}
+				itemRenderer={this.getListItemRenderer()}
+				onCancel={this.handleCancel}
+				onSelect={this.handleSelect}
+				options={this.props.options}
+				ref={this.saveRefToList}
+				selectedIndex={this.state.selectedIndex}
+				triggerId={this.getId()}
+			/>
+		);
+	},
+
+	renderSimplePopover () {
+		return (
+			!this.props.disabled && this.state.isOpen
+			? <div
+				className="slds-dropdown slds-dropdown--left"
+				// inline style override
+				style={{
+					maxHeight: '20em',
+					overflowX: 'hidden',
+					minWidth: '100%'
+				}}
+			>
+				{this.renderPopoverContent()}
+			</div>
+			: null
+		);
+	},
+
+	renderModalPopover () {
+		return (
+			!this.props.disabled && this.state.isOpen && this.button
+			? <Popover
+				className="slds-dropdown slds-dropdown--left"
+				closeOnTabKey
+				constrainToScrollParent={this.props.constrainToScrollParent}
+				flippable
+				onClose={this.handleCancel}
+				onKeyDown={this.handleKeyDown}
+				targetElement={this.button}
+				inheritTargetWidth={this.props.inheritTargetWidth}
+			>
+				{this.renderPopoverContent()}
+			</Popover>
+			: null
+		);
+	},
+
+	renderPlaceholder () {
+		const option = this.props.options[this.state.selectedIndex];
+		return (option && option.label) ? option.label : this.props.placeholder;
+	},
+
+	renderTrigger () {
+		return (
+			<div
+				aria-expanded={this.state.isOpen}
+				className={classNames(
+						'slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click',
+						{ 'slds-is-open': this.state.isOpen },
+						this.props.className
+					)}
+				onKeyDown={this.handleKeyDown}
+				onMouseDown={this.handleMouseDown}
+			>
+				<button
+					aria-haspopup="true"
+					aria-activedescendant=""
+					className="slds-button slds-button--neutral slds-picklist__label"
+					id={this.getId()}
+					disabled={this.props.disabled}
+					onClick={this.handleClick}
+					ref={(component) => { this.button = component; }}
+					tabIndex={this.state.isOpen ? -1 : 0}
+				>
+					<span className="slds-truncate">{this.renderPlaceholder()}</span>
+					<Icon name="down" category="utility" />
+				</button>
+				{this.props.modal ? this.renderModalPopover() : this.renderSimplePopover()}
+			</div>
+		);
+	},
+
+	render () {
+		if (this.props.label) {
+			const required = this.props.required ? <span style={{ color: 'red' }}>* </span> : null;
+
+			return (
+				<div className="slds-form-element">
+					<label
+						className="slds-form-element__label"
+						htmlFor={this.getId()}
+						// inline style override
+						style={{ width: '100%' }}
+					>
+						{required}{this.props.label}
+					</label>
+					{this.renderTrigger()}
+				</div>
+			);
+		}
+
+		return this.renderTrigger();
+	}
+});
 
 module.exports = MenuPicklist;
 module.exports.ListItemLabel = ListItemLabel;
