@@ -24,6 +24,22 @@ const {
 	findRenderedDOMComponentWithClass
 } = TestUtils;
 
+// ///////////////////////
+// ////// T O D O ////////
+// ///////////////////////
+
+	// optional toggle
+	// each tile is wrapped in <li> with classes: slds-col--padded slds-grow-none slds-size--1-of-1 slds-medium-size--1-of-3
+	// closed section has class '.slds-is-close'
+	// section has title has h3 with text (equals)
+	// section has 'toggle' button with classes: slds-button slds-button--icon slds-m-right--small
+	// section toggle button has assistive text '.slds-assistive-text' (equals)
+	// section can be passed children
+	// you can pass an onClick callback to section toggle
+	// you can pass initial open state (prop: isOpen)
+	// small tiles inclues slds-size--xx-small class on section
+	// Remove modal in `cleanDom()`
+
 describe('SLDS APP LAUNCHER SECTION *******************************************', () => {
 	const defaultSectionProps = {
 		title: 'All Items'
