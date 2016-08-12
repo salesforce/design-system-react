@@ -94,7 +94,7 @@ class DockedComposer extends React.Component {
                         iconName = 'minimize_window'
                         iconVariant = 'bare'
                         variant = 'icon-inverse'
-                        onClick = {this.toggleMinimize}
+                        onClick = {this.toggleMinimize.bind(this)}
                         iconCategory = 'utility'
                     />
                     {expandButton}
@@ -182,7 +182,7 @@ class DockedComposer extends React.Component {
 
         const footer = this.renderFooter();
 
-        if (!this.state.composerModalOpen) { // create modal
+        if (!this.state.composerModalOpen) { 
             return (
                 <div className = 'slds-docked_container'>
                     <div className = {cx('slds-docked-composer slds-grid slds-grid--vertical slds-nowrap', { 'slds-is-open': this.state.isDockedOpen })}
@@ -195,7 +195,7 @@ class DockedComposer extends React.Component {
                 </div>
             );
         } else {
-            return (
+            return ( // create modal
                 <div>
                 <div aria-hidden="false" role="dialog" className="slds-modal slds-fade-in-open slds-docked-composer-modal">
                     <div className="slds-modal__container">
