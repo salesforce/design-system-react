@@ -5,14 +5,10 @@ import cx from 'classnames';
 
 import { DOCKED_COMPOSER } from '../../utilities/constants';
 
-const displayName = 'DOCKED_COMPOSER';
+const displayName='DOCKED_COMPOSER';
 
-const propTypes = {
+const propTypes={
         bodyClasses: PropTypes.string,
-        /**
-        * If true, the expand button will appear allowing user to open the docked composer in a modal.
-        **/
-        canPopout: PropTypes.bool,
         children: React.PropTypes.element,
         footerRenderer: PropTypes.func,
         headerIconAssistiveText: PropTypes.string,
@@ -26,19 +22,23 @@ const propTypes = {
         onClose: PropTypes.func,
         onMinimize: PropTypes.func,
         onPrimaryActionClick: PropTypes.func,
+        /**
+        * If true, the expand button will appear allowing user to open the docked composer in a modal.
+        **/
+        popout: PropTypes.bool,
         primaryActionIsDisabled: PropTypes.bool,
         primaryActionLabel: PropTypes.string,
         title: PropTypes.string
 };
 
-const defaultProps = {
+const defaultProps={
      bodyClasses: 'slds-col slds-grid slds-grid--vertical slds-nowrap slds-size--1-of-1'
 };
 
 class DockedComposer extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
+        this.state={
             isDockedOpen: this.props.isOpen,
             composerModalOpen: false
         };
@@ -57,17 +57,18 @@ class DockedComposer extends React.Component {
         }
 
         let expandButton;
-        if (this.props.canPopout) {
-            expandButton = (
+        if (this.props.popout) {
+            expandButton=(
                 <Button
-                    assistiveText = 'Expand Composer'
-                    iconName = 'expand_alt'
-                    iconVariant = 'bare'
-                    variant = 'icon-inverse'
-                    onClick = {this.toggleModal}
+                    assistiveText='Expand Composer'
+                    iconName='expand_alt'
+                    iconVariant='bare'
+                    variant='icon'
+                    inverse
+                    onClick={this.toggleModal.bind(this)}
                     iconCategory = 'utility'
                 />
-            );
+            )
         }
 
         return (
@@ -75,10 +76,10 @@ class DockedComposer extends React.Component {
                 <div className="slds-media slds-media--center">
                     <div className="slds-media__figure">
                         <Icon
-                            assistiveText = {this.props.headerIconAssistiveText}
-                            category = {this.props.headerIconCategory}
-                            name = {this.props.headerIconName}
-                            size = "small"
+                            assistiveText={this.props.headerIconAssistiveText}
+                            category={this.props.headerIconCategory}
+                            name={this.props.headerIconName}
+                            size="small"
                         />
 
                     </div>
@@ -90,21 +91,23 @@ class DockedComposer extends React.Component {
 
                 <div className="slds-docked-composer__actions">
                     <Button
-                        assistiveText = 'Minimize window'
-                        iconName = 'minimize_window'
-                        iconVariant = 'bare'
-                        variant = 'icon-inverse'
-                        onClick = {this.toggleMinimize.bind(this)}
-                        iconCategory = 'utility'
+                        assistiveText='Minimize window'
+                        iconName='minimize_window'
+                        iconVariant='bare'
+                        variant='icon'
+                        inverse
+                        onClick={this.toggleMinimize.bind(this)}
+                        iconCategory='utility'
                     />
                     {expandButton}
                     <Button
-                        assistiveText = 'Close'
-                        iconName = 'close'
-                        iconVariant = 'bare'
-                        variant = 'icon-inverse'
-                        onClick = {this.props.onClose}
-                        iconCategory = 'utility'
+                        assistiveText='Close'
+                        iconName='close'
+                        iconVariant='bare'
+                        variant='icon'
+                        inverse
+                        onClick={this.props.onClose}
+                        iconCategory='utility'
                     />
                 </div>
             </header>
@@ -120,10 +123,10 @@ class DockedComposer extends React.Component {
             <footer className="slds-docked-composer__footer slds-shrink-none">
                 <div className="slds-float--right slds-grid slds-grid--align-end slds-size--1-of-2 slds-text-align--right">
                     <Button
-                        label = {this.props.primaryActionLabel}
+                        label={this.props.primaryActionLabel}
                         variant="brand"
                         onClick={this.props.onPrimaryActionClick}
-                        disabled = {this.props.primaryActionIsDisabled}
+                        disabled={this.props.primaryActionIsDisabled}
                     />
 
                 </div>
@@ -172,20 +175,20 @@ class DockedComposer extends React.Component {
     }
 
     render() {
-        const header = this.renderHeader();
+        const header=this.renderHeader();
 
-        const body = (
-            <div className = {cx('slds-docked-composer__body', this.props.bodyClasses)}>
+        const body=(
+            <div className={cx('slds-docked-composer__body', this.props.bodyClasses)}>
                 {this.props.children}
             </div>
         );
 
-        const footer = this.renderFooter();
+        const footer=this.renderFooter();
 
         if (!this.state.composerModalOpen) { 
             return (
-                <div className = 'slds-docked_container'>
-                    <div className = {cx('slds-docked-composer slds-grid slds-grid--vertical slds-nowrap', { 'slds-is-open': this.state.isDockedOpen })}
+                <div className='slds-docked_container'>
+                    <div className={cx('slds-docked-composer slds-grid slds-grid--vertical slds-nowrap', { 'slds-is-open': this.state.isDockedOpen })}
                         role="dialog"
                         aria-labelledby="dialog-heading-id">
                         {header}
@@ -215,8 +218,8 @@ class DockedComposer extends React.Component {
     }
 }
 
-DockedComposer.displayName = displayName;
-DockedComposer.propTypes = propTypes;
-DockedComposer.defaultProps = defaultProps;
+DockedComposer.displayName=displayName;
+DockedComposer.propTypes=propTypes;
+DockedComposer.defaultProps=defaultProps;
 
-module.exports = DockedComposer;
+module.exports=DockedComposer;

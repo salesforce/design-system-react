@@ -17,6 +17,7 @@ storiesOf(DOCKED_COMPOSER, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
 
 	.add('Base', () => getDockedComposer({
+							popout: {true},
 							headerIconName: 'call',
 							isOpen: true,
 							primaryActionLabel: 'Action',
