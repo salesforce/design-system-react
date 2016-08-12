@@ -110,9 +110,7 @@ const Branch = React.createClass({
 		 */
 		node: PropTypes.object.isRequired,
 		nodeKeys: React.PropTypes.shape({
-			nodes: React.PropTypes.string,
-			expanded: React.PropTypes.string,
-			selected: React.PropTypes.string
+			nodes: React.PropTypes.string
 		}),
 		/**
 		 * Function that will run whenever an item or branch is clicked.
@@ -142,7 +140,7 @@ const Branch = React.createClass({
 
 		if (isFunction(this.props.onExpandClick)) {
 			let expanded;
-			const node = omit(this.props.node, 'nodes');
+			const node = omit(this.props.node, this.props.nodeKeys.nodes);
 			const isExpanded = this.isExpanded();
 
 			if (!isExpanded) {
@@ -159,7 +157,7 @@ const Branch = React.createClass({
 		EventUtil.trap(e);
 		if (isFunction(this.props.onClick)) {
 			let selection;
-			const node = omit(this.props.node, 'nodes');
+			const node = omit(this.props.node, this.props.nodeKeys.nodes);
 			const isSelected = this.isSelected();
 
 			if (!isSelected) {
@@ -173,6 +171,7 @@ const Branch = React.createClass({
 	},
 
 	renderInitialNode (children) {
+		console.log(this.props.node);
 		const selectionID = [];
 		this.props.selection.forEach((node) => {
 			selectionID.push(node.id);
@@ -191,17 +190,17 @@ const Branch = React.createClass({
 	},
 
 	isExpanded () {
-		const node = omit(this.props.node, 'nodes');
+		const node = omit(this.props.node, this.props.nodeKeys.nodes);
 		return !!find(this.props.expanded, node);
 	},
 
 	isLoading () {
-		const node = omit(this.props.node, 'nodes');
+		const node = omit(this.props.node, this.props.nodeKeys.nodes);
 		return !!find(this.props.loading, node);
 	},
 
 	isSelected () {
-		const node = omit(this.props.node, 'nodes');
+		const node = omit(this.props.node, this.props.nodeKeys.nodes);
 		return !!find(this.props.selection, node);
 	},
 
@@ -255,8 +254,8 @@ const Branch = React.createClass({
 			selection
 		} = this.props;
 
-		if (isArray(this.props.node.nodes)) {
-			this.props.node.nodes.forEach((node, index) => {
+		if (isArray(this.props.node[this.props.nodeKeys.nodes])) {
+			this.props.node[this.props.nodeKeys.nodes].forEach((node, index) => {
 				const htmlId = `${this.props.htmlId}-${node.htmlId || index}`;
 
 				if (node.type === 'folder') {
@@ -269,7 +268,8 @@ const Branch = React.createClass({
 							level={level + 1}
 							loading={loading}
 							node={node}
-							nodes={node.nodes}
+							nodeKeys={this.props.nodeKeys}
+							nodes={node[this.props.nodeKeys.nodes]}
 							onClick={this.props.onClick}
 							onExpandClick={onExpandClick}
 							selection={selection}
@@ -283,7 +283,7 @@ const Branch = React.createClass({
 							key={shortid.generate()}
 							level={level + 1}
 							node={node}
-							nodes={this.props.node.nodes}
+							nodes={this.props.node[this.props.nodeKeys.nodes]}
 							onClick={this.props.onClick}
 							selection={selection}
 						/>

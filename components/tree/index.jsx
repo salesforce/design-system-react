@@ -115,12 +115,6 @@ const Tree = React.createClass({
 		};
 	},
 
-	getInitialState () {
-		return {
-			nodes: []
-		};
-	},
-
 	componentWillMount () {
 		// TODO: This may need to be cleaned up to alert a developer when they do both that the heading is hidden.
 		checkProps(TREE, this.props);
@@ -163,7 +157,7 @@ const Tree = React.createClass({
 					label=""
 					level={0}
 					loading={loading}
-					node={{ nodes }}
+					node={{ [this.props.nodeKeys.nodes]: nodes }}
 					nodeKeys={nodeKeys}
 					onExpandClick={onExpandClick}
 					onClick={onClick}
