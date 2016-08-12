@@ -60,10 +60,6 @@ const Tree = React.createClass({
 		 */
 		assistiveText: PropTypes.string,
 		/**
-		 * Array of items starting at the top of the tree. Every object in the array should have an id key in order to be fully accessible to users of assistive technology.
-		 */
-		nodes: PropTypes.array,
-		/**
 		 * Class names to be added to the container element.
 		 */
 		containerClassName: PropTypes.oneOfType([
@@ -82,10 +78,6 @@ const Tree = React.createClass({
 		 * */
 		expanded: PropTypes.array,
 		/**
-		 * Function that will be called by every branch to receive its child nodes. `node` object with the branch data is passed into this function: `getNodes(node)`. `getNodes` can return a Promise and it will be resolved.
-		 * */
-		getNodes: PropTypes.func,
-		/**
 		 * This is the tree's heading and describes it contents. It can be hidden, see `assistiveText`.
 		 * */
 		heading: React.PropTypes.string,
@@ -93,6 +85,13 @@ const Tree = React.createClass({
 		 * HTML `id` of primary element that has `.slds-tree` on it. This component has a wrapping container element outside of `.slds-tree`.
 		 */
 		id: PropTypes.string,
+		nodeKeys: React.PropTypes.shape({
+			nodes: React.PropTypes.string
+		}),
+		/**
+		 * Array of items starting at the top of the tree. Every object in the array should have an id key in order to be fully accessible to users of assistive technology.
+		 */
+		nodes: PropTypes.array,
 		/**
 		 * Function that will run whenever an item or branch is clicked.
 		 */
@@ -109,8 +108,10 @@ const Tree = React.createClass({
 
 	getDefaultProps () {
 		return {
-			getNodes: (node) => node.nodes,
-			id: shortid.generate()
+			id: shortid.generate(),
+			nodeKeys: {
+				nodes: 'nodes'
+			}
 		};
 	},
 
@@ -135,6 +136,8 @@ const Tree = React.createClass({
 			heading,
 			id,
 			nodes,
+			nodeKeys,
+			loading,
 			onClick,
 			onExpandClick,
 			selection
@@ -155,12 +158,13 @@ const Tree = React.createClass({
 					: null}
 				<Branch
 					expanded={expanded}
-					getNodes={this.props.getNodes}
 					initalClassName={className}
 					htmlId={id}
 					label=""
 					level={0}
+					loading={loading}
 					node={{ nodes }}
+					nodeKeys={nodeKeys}
 					onExpandClick={onExpandClick}
 					onClick={onClick}
 					selection={selection}

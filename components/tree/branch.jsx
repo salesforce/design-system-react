@@ -77,10 +77,6 @@ const Branch = React.createClass({
 		 * */
 		expanded: PropTypes.array,
 		/**
-		 * Function that will be called by every branch to receive its child nodes. `node` object with the branch data is passed into this function: `getNodes(node)`. `getNodes` can return a Promise and it will be resolved.
-		 * */
-		getNodes: PropTypes.func,
-		/**
 		 * HTML `id` of primary element that has `.slds-tree` on it. This component has a wrapping container element outside of `.slds-tree`.
 		 */
 		htmlId: PropTypes.oneOfType([
@@ -113,6 +109,11 @@ const Branch = React.createClass({
 		 * The current node that is being rendered.
 		 */
 		node: PropTypes.object.isRequired,
+		nodeKeys: React.PropTypes.shape({
+			nodes: React.PropTypes.string,
+			expanded: React.PropTypes.string,
+			selected: React.PropTypes.string
+		}),
 		/**
 		 * Function that will run whenever an item or branch is clicked.
 		 */
@@ -131,24 +132,9 @@ const Branch = React.createClass({
 		return {
 			expanded: [],
 			level: 0,
+			loading: [],
 			selection: []
 		};
-	},
-
-	getInitialState () {
-		return {
-			nodes: []
-		};
-	},
-
-	componentDidMount () {
-		// This means that mounting and rendering does not mean that tree data is
-		// loaded. To determine if data is loaded, add a callback to your Promise.
-		// when it is resolved.
-		if (isFunction(this.props.getNodes)) {
-			// we may want to have a `getNodesResolved` to allow an async callback even when not passing in a Promise.
-			Promise.resolve(this.props.getNodes(this.props.node)).then((nodes) => this.setState({ nodes }));
-		}
 	},
 
 	handleExpandClick (e) {
@@ -168,7 +154,6 @@ const Branch = React.createClass({
 			this.props.onExpandClick(expanded, node, e);
 		}
 	},
-
 
 	handleClick (e) {
 		EventUtil.trap(e);
@@ -210,6 +195,11 @@ const Branch = React.createClass({
 		return !!find(this.props.expanded, node);
 	},
 
+	isLoading () {
+		const node = omit(this.props.node, 'nodes');
+		return !!find(this.props.loading, node);
+	},
+
 	isSelected () {
 		const node = omit(this.props.node, 'nodes');
 		return !!find(this.props.selection, node);
@@ -217,8 +207,9 @@ const Branch = React.createClass({
 
 	// Most of these props come from the nodes array, not from the Tree props
 	renderBranch (children) {
-		const isExpanded = this.isExpanded();
-		const isSelected = this.isSelected();
+		const isExpanded = this.props.node.expanded || this.isExpanded();
+		const isSelected = this.props.node.selected || this.isSelected();
+		const isLoading = this.isLoading();
 		return (
 			<li
 				id={this.props.htmlId}
@@ -242,7 +233,7 @@ const Branch = React.createClass({
 						tabIndex={-1}
 						role="presentation"
 						className="slds-truncate"
-					>{this.props.label}</a>
+					>{this.props.label}{isLoading ? ' [Loading]' : null}</a>
 				</div>
 				<ul
 					className={classNames({ 'slds-is-expanded': isExpanded, 'slds-is-collapsed': !isExpanded })}
@@ -260,24 +251,25 @@ const Branch = React.createClass({
 		const {
 			level,
 			onExpandClick,
+			loading,
 			selection
 		} = this.props;
 
-		if (isArray(this.state.nodes)) {
-			this.state.nodes.forEach((node, index) => {
+		if (isArray(this.props.node.nodes)) {
+			this.props.node.nodes.forEach((node, index) => {
 				const htmlId = `${this.props.htmlId}-${node.htmlId || index}`;
 
 				if (node.type === 'folder') {
 					children.push(
 						<Branch
 							expanded={this.props.expanded}
-							getNodes={this.props.getNodes}
 							htmlId={htmlId}
 							key={shortid.generate()}
 							label={node.label}
 							level={level + 1}
+							loading={loading}
 							node={node}
-							nodes={this.props.getNodes(node)}
+							nodes={node.nodes}
 							onClick={this.props.onClick}
 							onExpandClick={onExpandClick}
 							selection={selection}
@@ -291,7 +283,7 @@ const Branch = React.createClass({
 							key={shortid.generate()}
 							level={level + 1}
 							node={node}
-							nodes={this.props.getNodes(node)}
+							nodes={this.props.node.nodes}
 							onClick={this.props.onClick}
 							selection={selection}
 						/>
