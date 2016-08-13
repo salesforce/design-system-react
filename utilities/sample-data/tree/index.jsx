@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Tree from '../../../components/tree';
+import manyNodes from './tree-nodes-large-dataset';
 
 const treeNodes = [
 	{
@@ -132,5 +133,7 @@ const initialExpanded = [treeNodes[1], treeNodes[1].nodes[1], treeNodes[1].nodes
 const initialSelection = [treeNodes[1].nodes[1].nodes[0]];
 
 module.exports.treeNodes = treeNodes;
+module.exports.manyNodes = manyNodes;
 module.exports.initialExpanded = initialExpanded;
 module.exports.initialSelection = initialSelection;
+module.exports.loading = loading;
