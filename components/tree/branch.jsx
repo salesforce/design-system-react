@@ -66,23 +66,25 @@ const idSuffixes = {
  * A Tree Item is a non-branching node in a hierarchical list.
  */
 const Branch = (props) => {
-	const isExpanded = function () {
+	let treeIndex = '';
+
+	const isExpanded = () => {
 		const node = omit(props.node, props.nodeKeys.nodes);
 		return !!find(props.expanded, node);
 	};
 
-	const isLoading = function () {
+	const isLoading = () => {
 		const node = omit(props.node, props.nodeKeys.nodes);
 		return !!find(props.loading, node);
 	};
 
-	const isSelected = function () {
+	const isSelected = () => {
 		const node = omit(props.node, props.nodeKeys.nodes);
 		return !!find(props.selection, node);
 	};
 
-	const handleExpandClick = function (e) {
-		EventUtil.trap(e);
+	const handleExpandClick = (event) => {
+		EventUtil.trap(event);
 
 		if (isFunction(props.onExpandClick)) {
 			let expanded;
@@ -95,12 +97,12 @@ const Branch = (props) => {
 				expanded = reject(props.expanded, node);
 			}
 
-			props.onExpandClick(expanded, node, treeIndex, e);
+			props.onExpandClick(event, { expanded, node, expand: !isExpandedStored, treeIndex: props.treeIndex });
 		}
 	};
 
-	const handleClick = function (e) {
-		EventUtil.trap(e);
+	const handleClick = (event) => {
+		EventUtil.trap(event);
 		if (isFunction(props.onClick)) {
 			let selection;
 			const node = omit(props.node, props.nodeKeys.nodes);
@@ -112,11 +114,11 @@ const Branch = (props) => {
 				selection = reject(props.selection, node);
 			}
 
-			props.onClick(selection, node, e);
+			props.onClick(event, { selection, node, select: !isSelectedStored, treeIndex: props.treeIndex });
 		}
 	};
 
-	const renderInitialNode = function (children) {
+	const renderInitialNode = (children) => {
 		const selectionID = [];
 		props.selection.forEach((node) => {
 			selectionID.push(node.id);
@@ -134,8 +136,10 @@ const Branch = (props) => {
 		);
 	};
 
+	renderInitialNode.displayName = 'InitialNode';
+
 	// Most of these props come from the nodes array, not from the Tree props
-	const renderBranch = function (children) {
+	const renderBranch = (children) => {
 		const isExpandedStored = isExpanded();
 		const isSelectedStored = isSelected();
 		const isLoadingStored = isLoading();
@@ -162,19 +166,20 @@ const Branch = (props) => {
 						tabIndex={-1}
 						role="presentation"
 						className="slds-truncate"
-					>{props.label}{isLoadingStored ? ' [Loading]' : null}</a>
+					>{props.label}{isLoadingStored ? <i> [Loading]</i> : null}</a>
 				</div>
 				<ul
 					className={classNames({ 'slds-is-expanded': isExpandedStored, 'slds-is-collapsed': !isExpandedStored })}
 					role="group"
 					aria-labelledby={`${props.htmlId}__label`}
-				>{children}
+				>{isExpandedStored ? children : null}
 				</ul>
 			</li>
 		);
 	};
 
-	let treeIndex = '';
+	renderBranch.displayName = 'Branch';
+
 	const children = [];
 	const {
 		level,
@@ -191,7 +196,7 @@ const Branch = (props) => {
 				treeIndex = `${props.treeIndex}-${treeIndex}`;
 			}
 
-			if (node.type === 'folder') {
+			if (node[props.nodeKeys.type] === 'folder') {
 				children.push(
 					<Branch
 						expanded={props.expanded}
@@ -229,8 +234,8 @@ const Branch = (props) => {
 		});
 	}
 
-	const branch = props.level === 0 ? renderInitialNode(children) : renderBranch(children);
-
+	let branch = props.level === 0 ? renderInitialNode(children) : renderBranch(children);
+	branch = isExpanded ? branch : null;
 	return branch;
 };
 
@@ -268,7 +273,7 @@ Branch.propTypes = {
 	/**
 	 * The text of the tree item.
 	 */
-	label: PropTypes.string.isRequired,
+	label: PropTypes.string,
 	/**
 	 * The number of nestings. Determines the ARIA level and style alignment.
 	 */
@@ -277,6 +282,13 @@ Branch.propTypes = {
 	 * The current node that is being rendered.
 	 */
 	node: PropTypes.object.isRequired,
+	/**
+	 * Allows the nodes prop to determine state, {label: 'My cool node', expanded: true, selected: true, type: 'folder', nodes: [...childNodes]}`. Useful if UI state is part of your application's state engine.
+	 */
+	nodeHasState: PropTypes.bool,
+	/**
+	 * Keys into your JSON object, so the data does not need to be reformatted. The default expects `{label: 'My cool node', type: 'folder', nodes: [...childNodes]}`.
+	 */
 	nodeKeys: React.PropTypes.shape({
 		label: React.PropTypes.string,
 		nodes: React.PropTypes.string
@@ -292,14 +304,20 @@ Branch.propTypes = {
 	/**
 	 * An array of the currently selected items
 	 */
-	selection: PropTypes.array
-},
+	selection: PropTypes.array,
+	/**
+	 * Location of node (zero index) First node is `0`. It's first child is `0-0`. This can be used to modify your nodes without searching for the node.
+	 */
+	treeIndex: PropTypes.string
+};
 
 Branch.getDefaultProps = {
 	expanded: [],
 	level: 0,
+	label: '',
 	loading: [],
-	selection: []
+	selection: [],
+	treeIndex: ''
 };
 
 module.exports = Branch;

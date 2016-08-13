@@ -85,9 +85,21 @@ const Tree = React.createClass({
 		 * HTML `id` of primary element that has `.slds-tree` on it. This component has a wrapping container element outside of `.slds-tree`.
 		 */
 		id: PropTypes.string,
+		/**
+		 * Allows the nodes prop to determine state, {label: 'My cool node', expanded: true, selected: true, type: 'folder', nodes: [...childNodes]}`. Useful if UI state is part of your application's state engine.
+		 */
+		nodeHasState: PropTypes.bool,
+		/**
+		 * Folder nodes that are currently loading. Once the nodes prop has been updated with the new folder contents, remove that node from this array.
+		 */
+		loading: PropTypes.array,
+		/**
+		 * Keys into your JSON object, so the data does not need to be reformatted. The default expects `{label: 'My cool node', type: 'folder', nodes: [...childNodes]}`.
+		 */
 		nodeKeys: React.PropTypes.shape({
 			label: React.PropTypes.string,
-			nodes: React.PropTypes.string
+			nodes: React.PropTypes.string,
+			type: React.PropTypes.string
 		}),
 		/**
 		 * Array of items starting at the top of the tree. Every object in the array should have an id key in order to be fully accessible to users of assistive technology.
@@ -110,9 +122,11 @@ const Tree = React.createClass({
 	getDefaultProps () {
 		return {
 			id: shortid.generate(),
+			nodeHasState: false,
 			nodeKeys: {
 				nodes: 'nodes',
-				label: 'label'
+				label: 'label',
+				type: 'type'
 			}
 		};
 	},
@@ -131,6 +145,7 @@ const Tree = React.createClass({
 			expanded,
 			heading,
 			id,
+			nodeHasState,
 			nodes,
 			nodeKeys,
 			loading,
@@ -156,15 +171,14 @@ const Tree = React.createClass({
 					expanded={expanded}
 					initalClassName={className}
 					htmlId={id}
-					label=""
 					level={0}
 					loading={loading}
 					node={{ [this.props.nodeKeys.nodes]: nodes }}
 					nodeKeys={nodeKeys}
+					nodeHasState={nodeHasState}
 					onExpandClick={onExpandClick}
 					onClick={onClick}
 					selection={selection}
-					treeIndex=""
 				/>
 			</div>
 		);

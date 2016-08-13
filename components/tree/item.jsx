@@ -53,99 +53,100 @@ const idSuffixes = {
 /**
  * A Tree Item is a non-branching node in a hierarchical list.
  */
-const Item = React.createClass({
-	// ### Display Name
-	// Always use the canonical component name as the React display name.
-	displayName: TREE_ITEM,
+const Item = (props) => {
+	const isSelected = () => {
+		const node = omit(props.node, 'nodes');
+		return !!find(props.selection, node);
+	};
 
-	// ### Prop Types
-	propTypes: {
-/**
-		 * The text of the tree item.
-		 */
-		htmlId: PropTypes.string.isRequired,
-		/**
-		 * The text of the tree item.
-		 */
-		label: PropTypes.string.isRequired,
-		/**
-		 * The number of nestings. Determines the ARIA level and style alignment.
-		 */
-		level: PropTypes.number.isRequired,
-		/**
-		 * The current node that is being rendered.
-		 */
-		node: PropTypes.object.isRequired,
-		nodeKeys: React.PropTypes.shape({
-			label: React.PropTypes.string,
-			nodes: React.PropTypes.string
-		}),
-		/**
-		 * Function that will run whenever an item or branch is clicked.
-		 */
-		onClick: PropTypes.func,
-		/**
-		 * An array of the currently selected items
-		 */
-		selection: PropTypes.array
-	},
+	const	handleClick = (event) => {
+		EventUtil.trap(event);
 
-	getDefaultProps () {
-		return {
-			selected: false
-		};
-	},
-
-	handleClick (e) {
-		EventUtil.trap(e);
-
-		if (isFunction(this.props.onClick)) {
+		if (isFunction(props.onClick)) {
 			let selection;
-			const node = omit(this.props.node, 'nodes');
-			const isSelected = this.isSelected();
+			const node = omit(props.node, 'nodes');
+			const isSelectedStored = isSelected();
 
-			if (!isSelected) {
-				selection = [...this.props.selection, node];
+			if (!isSelectedStored) {
+				selection = [...props.selection, node];
 			} else {
-				selection = reject(this.props.selection, node);
+				selection = reject(props.selection, node);
 			}
 
-			this.props.onClick(selection, node, e);
+			props.onClick(event, { selection, node, select: !isSelectedStored, treeIndex: props.treeIndex });
 		}
-	},
-
-	isSelected () {
-		const node = omit(this.props.node, 'nodes');
-		return !!find(this.props.selection, node);
-	},
+	};
 
 	// ### Render
-	render () {
-		const isSelected = this.isSelected();
+	const isSelectedStored = isSelected();
 
-		return (
-			<li id={this.props.htmlId} role="treeitem" aria-level={this.props.level}>
-				<div
-					className={classNames('slds-tree__item', { 'slds-is-selected': isSelected })}
-					aria-selected={isSelected ? 'true' : 'false'}
-					onClick={this.handleClick}
-				>
-					<Button
-						assistiveText="Toggle"
-						iconName="chevronright"
-						iconSize="small"
-						iconVariant="bare"
-						variant="icon"
-						className="slds-m-right--small slds-is-disabled"
-						disabled
-					/>
-					<a href="#" tabIndex={-1} role="presentation" className="slds-truncate">{this.props.label}</a>
-				</div>
-			</li>
-		);
-	}
-});
+	return (
+		<li id={props.htmlId} role="treeitem" aria-level={props.level}>
+			<div
+				className={classNames('slds-tree__item', { 'slds-is-selected': isSelectedStored })}
+				aria-selected={isSelectedStored ? 'true' : 'false'}
+				onClick={handleClick}
+			>
+				<Button
+					assistiveText="Toggle"
+					iconName="chevronright"
+					iconSize="small"
+					iconVariant="bare"
+					variant="icon"
+					className="slds-m-right--small slds-is-disabled"
+					disabled
+				/>
+				<a href="#" tabIndex={-1} role="presentation" className="slds-truncate">{props.label}</a>
+			</div>
+		</li>
+	);
+};
+
+// ### Display Name
+// Always use the canonical component name as the React display name.
+Item.displayName = TREE_ITEM;
+
+// ### Prop Types
+Item.propTypes = {
+	/**
+	 * The text of the tree item.
+	 */
+	htmlId: PropTypes.string.isRequired,
+	/**
+	 * The text of the tree item.
+	 */
+	label: PropTypes.string.isRequired,
+	/**
+	 * The number of nestings. Determines the ARIA level and style alignment.
+	 */
+	level: PropTypes.number.isRequired,
+	/**
+	 * The current node that is being rendered.
+	 */
+	node: PropTypes.object.isRequired,
+	nodeKeys: React.PropTypes.shape({
+		label: React.PropTypes.string,
+		nodes: React.PropTypes.string
+	}),
+	/**
+	 * Function that will run whenever an item or branch is clicked.
+	 */
+	onClick: PropTypes.func,
+	/**
+	 * An array of the currently selected items
+	 */
+	selection: PropTypes.array,
+	/**
+	 * Location of node (zero index) First node is `0`. It's first child is `0-0`. This can be used to modify your nodes without searching for the node.
+	 */
+	treeIndex: PropTypes.string
+};
+
+Item.getDefaultProps = {
+	selected: false
+};
 
 module.exports = Item;
 module.exports.cssClasses = cssClasses;
 module.exports.idSuffixes = idSuffixes;
+
