@@ -65,12 +65,12 @@ const DemoTree = React.createClass({
 	handleClick (event, data) {
 		if (!this.props.singleSelection) {
 			if (!this.props.noBranchSelection ||
-				(this.props.noBranchSelection && data.clickedItem.type !== 'folder')) {
-				this.state.selection = data.selection;
+				(this.props.noBranchSelection && data.node.type !== 'folder')) {
+				this.setState({ selection: data.selection });
 				itemClicked('Node Clicked')(event, data);
 			}
 		} else {
-			this.state.selection = [data.clickedItem];
+			this.setState({ selection: [data.node] });
 			itemClicked('Node Clicked')(event, data);
 		}
 	},

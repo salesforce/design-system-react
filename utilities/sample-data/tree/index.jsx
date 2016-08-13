@@ -136,4 +136,3 @@ module.exports.treeNodes = treeNodes;
 module.exports.manyNodes = manyNodes;
 module.exports.initialExpanded = initialExpanded;
 module.exports.initialSelection = initialSelection;
-module.exports.loading = loading;
