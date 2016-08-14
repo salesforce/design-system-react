@@ -78,7 +78,7 @@ const Item = (props) => {
 	};
 
 	// ### Render
-	const isSelectedStored = isSelected();
+	const isSelectedStored = props.nodeHasState ? props.node[props.nodeKeys.treeNodeSelected] : isSelected();
 
 	return (
 		<li id={props.htmlId} role="treeitem" aria-level={props.level}>
@@ -124,9 +124,19 @@ Item.propTypes = {
 	 * The current node that is being rendered.
 	 */
 	node: PropTypes.object.isRequired,
+	/**
+	 * Allows the nodes prop to determine state, {label: 'My cool node', expanded: true, selected: true, type: 'folder', nodes: [...childNodes]}`. Useful if UI state is part of your application's state engine.
+	 */
+	nodeHasState: PropTypes.bool,
+	/**
+	 * Keys into your JSON object, so the data does not need to be reformatted. The default expects `{label: 'My cool node', type: 'folder', nodes: [...childNodes]}`.
+	 */
 	nodeKeys: React.PropTypes.shape({
+		expanded: React.PropTypes.string,
 		label: React.PropTypes.string,
-		nodes: React.PropTypes.string
+		nodes: React.PropTypes.string,
+		selected: React.PropTypes.string,
+		type: React.PropTypes.string
 	}),
 	/**
 	 * Function that will run whenever an item or branch is clicked.

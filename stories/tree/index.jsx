@@ -6,13 +6,16 @@ import {
 	treeNodes,
 	manyNodes,
 	initialExpanded as sampleExpanded,
-	initialSelection as sampleSelection
+	initialSelection as sampleSelection,
+	treeNodesWithState
 } from '../../utilities/sample-data/tree';
 
 import Tree from '../../components/tree';
 
 const branchExpandClicked = action;
 const itemClicked = action;
+
+console.log(treeNodesWithState);
 
 const DemoTree = React.createClass({
 	displayName: 'DemoTree',
@@ -108,11 +111,16 @@ storiesOf(TREE, module)
 	/>)
 	.add('Assistive Heading', () => <DemoTree assistiveText="Miscellaneous Foods" />)
 	.add('Large dataset (300+)', () => <DemoTree
-		assistiveText="Miscellaneous Foods"
+		heading="Miscellaneous Foods"
 		nodes={manyNodes}
 		nodeKeys={{
 			nodes: 'nodes',
 			label: 'text',
 			type: 'type'
 		}}
+	/>)
+	.add('Nodes contain state', () => <DemoTree
+		heading="Miscellaneous Foods"
+		nodeHasState
+		nodes={treeNodesWithState}
 	/>);

@@ -1,16 +1,15 @@
-import manyNodes from './tree-nodes-large-dataset';
-import { treeNodesWithState } from './tree-nodes-with-state';
-
-const treeNodes = [
+const treeNodesWithState = [
 	{
 		label: 'Grains',
 		type: 'item',
-		id: 1
+		id: 1,
+		treeNodeSelected: true
 	},
 	{
 		label: 'Fruits',
 		type: 'folder',
 		id: 2,
+		treeNodeExpanded: true,
 		nodes: [
 			{
 				label: 'Ground Fruits',
@@ -32,6 +31,7 @@ const treeNodes = [
 				label: 'Tree Fruits',
 				type: 'folder',
 				id: 5,
+				treeNodeSelected: true,
 				nodes: [
 					{
 						label: 'Peaches',
@@ -124,15 +124,14 @@ const treeNodes = [
 	{
 		label: 'Empty folder',
 		type: 'folder',
-		id: 7
+		id: 7,
+		treeNodeExpanded: true
 	}
 ];
 
-const initialExpanded = [treeNodes[1], treeNodes[1].nodes[1], treeNodes[1].nodes[1].nodes[2], treeNodes[1].nodes[1].nodes[3], treeNodes[3]];
-const initialSelection = [treeNodes[1].nodes[1].nodes[0]];
+const initialExpanded = [treeNodesWithState[1], treeNodesWithState[1].nodes[1], treeNodesWithState[1].nodes[1].nodes[2], treeNodesWithState[1].nodes[1].nodes[3], treeNodesWithState[3]];
+const initialSelection = [treeNodesWithState[1].nodes[1].nodes[0]];
 
-module.exports.treeNodes = treeNodes;
-module.exports.manyNodes = manyNodes;
 module.exports.treeNodesWithState = treeNodesWithState;
 module.exports.initialExpanded = initialExpanded;
 module.exports.initialSelection = initialSelection;

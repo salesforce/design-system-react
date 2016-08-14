@@ -140,8 +140,8 @@ const Branch = (props) => {
 
 	// Most of these props come from the nodes array, not from the Tree props
 	const renderBranch = (children) => {
-		const isExpandedStored = isExpanded();
-		const isSelectedStored = isSelected();
+		const isExpandedStored = props.nodeHasState ? props.node[props.nodeKeys.treeNodeExpanded] : isExpanded();
+		const isSelectedStored = props.nodeHasState ? props.node[props.nodeKeys.treeNodeSelected] : isSelected();
 		const isLoadingStored = isLoading();
 		return (
 			<li
@@ -206,6 +206,7 @@ const Branch = (props) => {
 						level={level + 1}
 						loading={loading}
 						node={node}
+						nodeHasState={props.nodeHasState}
 						nodeKeys={props.nodeKeys}
 						nodes={node[props.nodeKeys.nodes]}
 						onClick={props.onClick}
@@ -223,6 +224,7 @@ const Branch = (props) => {
 						key={shortid.generate()}
 						level={level + 1}
 						node={node}
+						nodeHasState={props.nodeHasState}
 						nodeKeys={props.nodeKeys}
 						nodes={props.node[props.nodeKeys.nodes]}
 						onClick={props.onClick}
@@ -290,8 +292,11 @@ Branch.propTypes = {
 	 * Keys into your JSON object, so the data does not need to be reformatted. The default expects `{label: 'My cool node', type: 'folder', nodes: [...childNodes]}`.
 	 */
 	nodeKeys: React.PropTypes.shape({
+		expanded: React.PropTypes.string,
 		label: React.PropTypes.string,
-		nodes: React.PropTypes.string
+		nodes: React.PropTypes.string,
+		selected: React.PropTypes.string,
+		type: React.PropTypes.string
 	}),
 	/**
 	 * Function that will run whenever an item or branch is clicked.
