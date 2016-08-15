@@ -187,6 +187,7 @@ const AppLauncher = React.createClass({
 							<div className="slds-r8"></div>
 							<div className="slds-r9"></div>
 						</div>
+						{this.props.triggerAssistiveText && <span className="slds-assistive-text">{this.props.triggerAssistiveText}</span>}
 					</a>
 				</div>
 				<Modal

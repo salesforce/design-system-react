@@ -1,56 +1,38 @@
 /* eslint-env mocha */
+/* global sinon */
+/* eslint-disable react/display-name */
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { expect } from 'chai';
+import { mount, ReactWrapper } from 'enzyme';
 import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
 
 const should = chai.should();
 
-import { Icon } from '../../components';
 import AppLauncher from '../../components/app-launcher';
 import AppLauncherTile from '../../components/app-launcher/tile';
 import AppLauncherSection from '../../components/app-launcher/section';
 import Search from '../../components/forms/input/search';
+import Button from '../../components/button';
 
 const {
-	Simulate,
-	findRenderedDOMComponentWithTag,
-	scryRenderedDOMComponentsWithTag,
-	findRenderedDOMComponentWithClass
+	Simulate
 } = TestUtils;
 
 describe('SLDS APP LAUNCHER *******************************************', () => {
-	const mockCallback = sinon.spy();
+	const handles = {
+		appLauncher: null,
+		appLauncherIcon: null,
+		modal: null
+	};
 
 	const defaultAppLauncherProps = {
-		onSearch: mockCallback,
 		isOpen: true
 	};
-
-	const defaultTileProps = {
-		title: 'Marketing Cloud'
-	};
-
-	let body;
-
-	const renderInstance = instance => {
-		body = document.createElement('div');
-		document.body.appendChild(body);
-		return ReactDOM.render(instance, body);
-	};
-
-	function cleanDom () {
-		ReactDOM.unmountComponentAtNode(body);
-		document.body.removeChild(body);
-	}
-
-	const createTile = (props) => React.createElement(AppLauncherTile, assign({}, defaultTileProps, props));
-	const renderTile = (props) => renderInstance(createTile(props));
 
 	const createAppLauncher = (props) => React.createElement(
 		AppLauncher,
@@ -61,377 +43,150 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		</AppLauncherSection>
 	);
 
-	const renderAppLauncher = (props) => renderInstance(createAppLauncher(props));
+	function mountAppLauncher (props) {
+		handles.appLauncher = mount(createAppLauncher(props));
+
+		handles.appLauncherIcon = handles.appLauncher.find('.slds-context-bar__icon-action');
+
+		// https://www.dropbox.com/s/0a5lukwoxbatx8l/Screenshot%202016-08-10%2012.57.59.png?dl=0
+		const portal = handles.appLauncher.node._reactInternalInstance._renderedComponent._renderedChildren['.1']._renderedComponent._instance.portal; // eslint-disable-line no-underscore-dangle
+		// Wrap the modal portal in an Enzyme wrapper
+		handles.modal = new ReactWrapper(portal, portal);
+	}
 
 
-/* eslint-disable spaced-comment */
-/*///////////////////////
-//////// D O N E ////////
-///////////////////////*/
-// TILE -----
-	// textIcon is wrapped in class '.slds-app-launcher__tile-figure'
-	// tileBody span has class '.slds-text-link'
-	// you can set the tile's title (equals)
-	// tile body has app description (equals)
-	// you can add a onClick callback
-	// you can pass custom classNames to tile
-	// you can pass a search string (equals)
-	// tile name highlights search string
-// TRUNCATED TILE
-	// long tile body description has '…'
-	// you can set the "more" link label
-	// long tile body tooltip
-	// tile tooltip highlights search string
-// TEXT ICON ------
-	// textIcon has classes: slds-avatar slds-avatar--large slds-align--absolute-center
-	// textIcon text "MC" is equal to "MC"
-// ICON -----
-	// tile can be passed an icon node
-// SMALL TILE -------
-	// small tile has class '.slds-app-launcher__tile--small'
-	// small tile textIcon has class '.slds-app-launcher__tile-figure--small'
-	// small tile body has class '.slds-app-launcher__tile-body--small'
-	// small tileBody span has class 'slds-truncate'
-	// small tile search highlights title
-	// small tile body only has app title
-// APP LAUNCHER -----
-	// can set modal header title (prop: title)
-	// modal header has h2 with class '.slds-text-heading--medium'
-	// app launcher search has id '#app-launcher-search'
-	// modal header has search bar with class ".slds-app-launcher__header-search"
-	// modal header has button with classes: slds-button slds-button--neutral
-// SECTION ------
-	// open section has class '.slds-is-open'
-	// section title has class '.slds-section__title'
-	// section content has <ul> with classes: slds-grid slds-grid--pull-padded slds-wrap
-/*///////////////////////
-//////// T O D O ////////
-///////////////////////*/
+	function cleanDom () {
+		// Removes the modal container element from the bottom of the DOM, this will prevent the 'setState' errors
+		// gotta be a better way to do this..
+		const modalWrapper = document.documentElement.querySelectorAll('.ReactModalPortal')[0];
+
+		if (modalWrapper) {
+			modalWrapper.parentNode.removeChild(modalWrapper);
+		}
+	}
+
+// ///////////////////////
+// ////// T O D O ////////
+// ///////////////////////
 	// APP LAUNCHER -----
-		// you can set the search input's placeholder text (prop: searchPlaceholderText)
-		// you can set the search input's assistive text (prop: triggerAssistiveText)
-		// you can pass a Button `node` (prop: modalHeaderButton)
-		// modalHeaderButton HAS to be a Button
-		// you can pass a callback to App Launcher Icon (prop: triggerOnClick)
-		// triggeronClick callback receives original event as an arg
-		// you can pass a callback for when the modal is closed (prop: onClose)
-		// onClose callback receives original event as an arg
-		// modal header has classes: slds-app-launcher__header slds-grid slds-grid--align-spread slds-grid--vertical-align-center
-		// you can pass a onSearch callback (prop: onSearch)
-		// you can pass the initial open state (prop: isOpen)
+		// tabs?
 		// if you pass a isOpen prop, you must control the component with it (this.state.isOpen will now work)
-		// modal content has classes: slds-modal__content slds-app-launcher__content slds-p-around--medium
-		// openAppLauncher callback
-		// you can pass the app launcher's children (prop: children)
-		// you can set the search input's assistive text (prop: triggerAssistiveText)
-		// you can set the search input's placeholder text (prop: searchPlaceholderText)
-	// SECTION ------
-		// each tile is wrapped in <li> with classes: slds-col--padded slds-grow-none slds-size--1-of-1 slds-medium-size--1-of-3
-		// closed section has class '.slds-is-close'
-		// section has title has h3 with text (equals)
-		// section has 'toggle' button with classes: slds-button slds-button--icon slds-m-right--small
-		// section toggle button has assistive text '.slds-assistive-text' (equals)
-		// section can be passed children
-		// you can pass an onClick callback to section toggle
-		// you can pass initial open state (prop: isOpen)
-	// APP LAUNCHER ICON -----
-		// waffle icon has class slds-context-bar__icon-action
-		// waffle icon link has classes: slds-button slds-button--icon slds-context-bar__button
-		// waffle icon svg has classes: lds-button__icon slds-button__icon--large
-		// you can set the assistive text for waffle icon (prop: triggerAssistiveText)
-		// you can pass a callback for icon click
-		// small tiles inclues slds-size--xx-small class on section
-
-/* eslint-enable spaced-comment */
-
-	describe('Default App Launcher Tile', () => {
-		let component;
-		let tileWrapper;
-		let tileBody;
-		let tileBodyTitle;
-		let tileBodyDescription;
-
-		beforeEach(() => {
-			component = renderTile({
-				title: 'Support Cloud',
-				description: 'Fluffy support',
-				onClick: mockCallback,
-				className: 'this-is-a-custom-class',
-				search: 'upport'
-			});
-			tileWrapper = findRenderedDOMComponentWithClass(component, 'slds-app-launcher__tile');
-			tileBody = findRenderedDOMComponentWithClass(component, 'slds-app-launcher__tile-body');
-			tileBodyTitle = tileBody.getElementsByTagName('span')[0];
-			tileBodyDescription = tileBody.getElementsByTagName('div')[0];
-		});
-
-		afterEach(() => {
-			cleanDom();
-		});
-
-		it('tile wrapper has proper classes', () => {
-			should.exist(tileWrapper);
-			expect(tileWrapper.className).to.include('slds-text-link--reset');
-		});
-
-		it('tile body exists', () => {
-			should.exist(tileBody);
-		});
-
-		it('tile body has title span with proper classes', () => {
-			expect(tileBodyTitle.className).to.include('slds-text-link');
-		});
-
-		it('tile body title can be set', () => {
-			expect(tileBodyTitle.textContent).to.equal('Support Cloud');
-		});
-
-		it('app description can be set', () => {
-			expect(tileBodyDescription.textContent).to.equal('Fluffy support');
-		});
-
-		it('onClick callback can be passed', () => {
-			TestUtils.Simulate.click(tileWrapper);
-			/* eslint-disable no-unused-expressions */
-			expect(mockCallback.calledOnce).to.be.true;
-			/* eslint-enable no-unused-expressions */
-		});
-
-		it('tile can be passed custom className', () => {
-			expect(tileWrapper.className).to.include('this-is-a-custom-class');
-		});
-
-		it('tile can be passed a search string', () => {
-			expect(component.props.search).to.equal('upport');
-		});
-
-		it('search string highlights title', () => {
-			const mark = tileBody.getElementsByTagName('mark')[0];
-
-			expect(mark.textContent).to.equal('upport');
-		});
-	});
-
-	describe('App Launcher Tile with Truncated Text', () => {
-		let component;
-		let tileBody;
-		let tileBodyDescription;
-		let moreTooltipButton;
-
-		beforeEach(() => {
-			component = renderTile({
-				title: 'Call Center',
-				description: 'The key to call center and contact center is not to use too many words! And we will add some more words until we reach the limit. And then we will add some more words just to make sure this works on all screensizes. What I should have done is wrap this in a class to set the width, but this is faster. The key to call center and contact center is not to use too many words! And we will add some more words until we reach the limit. And then we will add some more words just to make sure this works on all screensizes. What I should have done is wrap this in a class to set the width, but this is faster.',
-				moreLabel: 'MORE!',
-				search: 'enter'
-			});
-			tileBody = findRenderedDOMComponentWithClass(component, 'slds-app-launcher__tile-body');
-			tileBodyDescription = tileBody.getElementsByTagName('div')[0];
-			moreTooltipButton = findRenderedDOMComponentWithClass(component, 'slds-button');
-		});
-
-		afterEach(() => {
-			cleanDom();
-		});
-
-		it('long descriptions get truncated', () => {
-			const etcIndex = tileBodyDescription.textContent.indexOf('…');
-			expect(etcIndex).to.not.equal(-1);
-		});
-
-		it('tile can be passed a label for expanding truncation', () => {
-			const moreText = moreTooltipButton.getElementsByTagName('span')[0];
-			expect(moreText.textContent).to.equal('MORE!');
-		});
-
-		it('long descriptions use Tooltip activated by hover', () => {
-			Simulate.mouseEnter(moreTooltipButton, {});
-			/* eslint-disable no-unused-expressions */
-			expect(findRenderedDOMComponentWithClass(component, 'drop-target')).to.be.ok;
-			/* eslint-enable no-unused-expressions */
-		});
-
-		it('search string highlights tooltip content', () => {
-			const mark = moreTooltipButton.getElementsByTagName('mark')[0];
-			expect(mark.textContent).to.equal('enter');
-		});
-	});
-
-	describe('App Launcher Tile with Text Icon', () => {
-		let component;
-		let iconWrapper;
-
-		beforeEach(() => {
-			component = renderTile({
-				title: 'Call Center',
-				iconText: 'CC',
-				description: 'Call center and contact center.'
-			});
-			iconWrapper = findRenderedDOMComponentWithClass(component, 'slds-app-launcher__tile-figure');
-		});
-
-		afterEach(() => {
-			cleanDom();
-		});
-
-		it('text icon wrapper has proper classes', () => {
-			expect(iconWrapper.getElementsByTagName('span')[0].className).to.include('slds-avatar slds-avatar--large slds-align--absolute-center slds-icon-custom-27');
-		});
-
-		it('tile can be passed a custom text icon', () => {
-			expect(iconWrapper.textContent).to.equal('CC');
-		});
-	});
-
-	describe('App Launcher Tile with Icon Node', () => {
-		let component;
-		let iconWrapper;
-		const icon = <Icon name="campaign" category="standard" size="large" />;
-
-		beforeEach(() => {
-			component = renderTile({
-				title: 'Call Center',
-				iconNode: icon,
-				description: 'Call center and contact center.'
-			});
-			iconWrapper = findRenderedDOMComponentWithClass(component, 'slds-app-launcher__tile-figure');
-		});
-
-		afterEach(() => {
-			cleanDom();
-		});
-
-		it('tile can be passed <Icon> node for icon', () => {
-			expect(iconWrapper.getElementsByTagName('span')[0].className).to.include('slds-icon_container');
-		});
-	});
-
-	describe('Small App Launcher Tile', () => {
-		let component;
-		let tileWrapper;
-		let iconWrapper;
-		let tileBody;
-
-		beforeEach(() => {
-			component = renderTile({
-				title: 'Support Cloud',
-				iconText: 'SC',
-				size: 'small',
-				description: 'This is the app description',
-				search: 'upport'
-			});
-			tileWrapper = findRenderedDOMComponentWithClass(component, 'slds-app-launcher__tile');
-			iconWrapper = findRenderedDOMComponentWithClass(component, 'slds-app-launcher__tile-figure');
-			tileBody = findRenderedDOMComponentWithClass(component, 'slds-app-launcher__tile-body');
-		});
-
-		afterEach(() => {
-			cleanDom();
-		});
-
-		it('small tile wrapper has proper classes', () => {
-			expect(tileWrapper.className).to.include('slds-app-launcher__tile--small');
-		});
-
-		it('small tile icon wrapper has proper classes', () => {
-			expect(iconWrapper.className).to.include('slds-app-launcher__tile-figure--small');
-		});
-
-		it('small tile body has proper classes', () => {
-			expect(tileBody.className).to.include('slds-app-launcher__tile-body--small');
-		});
-
-		it('small tile body has <p> tag with truncate class', () => {
-			expect(tileBody.getElementsByTagName('p')[0].className).to.include('slds-truncate');
-		});
-
-		it('search string highlights title', () => {
-			const mark = tileBody.getElementsByTagName('mark')[0];
-			expect(mark.textContent).to.equal('upport');
-		});
-
-		it('small tile does not have app description', () => {
-			expect(tileBody.textContent.indexOf('This is the app description')).to.equal(-1);
-		});
-	});
+		// (#591, waiting on #590) modal content has classes: slds-modal__content slds-app-launcher__content slds-p-around--medium
 
 	describe('App Launcher', () => {
-		let modalWrapper;
+		let onClose;
 
 		beforeEach(() => {
-			const search = <Search assistiveText="Find an app" />;
+			onClose = sinon.spy();
 
-			renderAppLauncher({
-				search,
-				title: 'App Rocket',
-				triggerAssistiveText: 'Custom Icon Assistive Text'
+			mountAppLauncher({
+				modalHeaderButton: <Button label="App Exchange" />,
+				onClose,
+				search: <Search assistiveText="Find an app" />,
+				title: 'App Launcher!'
 			});
-			modalWrapper = document.documentElement.querySelectorAll('.ReactModalPortal .slds-modal')[0];
 		});
 
 		afterEach(() => {
 			cleanDom();
 		});
 
-		it('modal exists', () => {
-			should.exist(modalWrapper);
+		it('renders modal', () => {
+			should.exist(handles.modal);
+		});
+
+		it('renders modal header', () => {
+			should.exist(handles.modal.find('.slds-app-launcher__header'));
 		});
 
 		it('app launcher title can be set', () => {
-			const appLauncherTitle = modalWrapper.getElementsByTagName('h2')[0];
-			expect(appLauncherTitle.className).to.include('slds-text-heading--medium');
-			expect(appLauncherTitle.textContent).to.equal('App Rocket');
+			expect(
+				handles.modal.contains(<h2 className="slds-text-heading--medium">App Launcher!</h2>)
+			).to.equal(true);
 		});
 
-		it('app laucher search bar exists', () => {
-			should.exist(document.querySelectorAll('.slds-app-launcher__header-search'));
+		it('renders search bar', () => {
+			should.exist(handles.modal.find(Search));
 		});
 
-		it('modal content exists', () => {
-			should.exist(document.querySelectorAll('.slds-modal__content'));
+		it('renders search bar with proper class', () => {
+			should.exist(handles.modal.find('.slds-app-launcher__header-search'));
 		});
 
-		it('app laucher button has proper classes', () => {
-			should.exist(document.querySelectorAll('.slds-button .slds-button--neutral'));
+		it('renders `modalHeaderButton`', () => {
+			should.exist(handles.modal.find(Button).at(1));
+		});
+
+		it('closing modal fires callback', () => {
+			Simulate.click(handles.modal.find('.slds-modal__close').node);
+			expect(onClose.calledOnce).to.be.true; // eslint-disable-line no-unused-expressions
+		});
+
+		it('close modal callback receives original event as arg', () => {
+			Simulate.click(handles.modal.find('.slds-modal__close').node);
+			expect(onClose.args.length).to.equal(1);
+		});
+
+		it('renders modal content', () => {
+			should.exist(handles.modal.find('.slds-modal__content .slds-app-launcher__content .slds-p-around--medium'));
+		});
+
+		it('app launcher can be passed children', () => {
+			should.exist(handles.modal.find('SLDSAppLauncherSection'));
+			expect(handles.modal.find('SLDSAppLauncherTile').length).to.equal(2);
 		});
 	});
 
-	describe('App Launcher Section', () => {
-		let modalSection;
+	describe('App Launcher Icon', () => {
+		let triggerOnClick;
 
 		beforeEach(() => {
-			renderAppLauncher({
-				title: 'App Rocket',
-				triggerAssistiveText: 'Custom Icon Assistive Text'
+			triggerOnClick = sinon.spy();
+
+			mountAppLauncher({
+				triggerAssistiveText: 'Custom Icon Assistive Text',
+				triggerOnClick
 			});
-			modalSection = document.documentElement.querySelectorAll('.slds-section')[0];
 		});
 
 		afterEach(() => {
 			cleanDom();
 		});
 
-		it('modal section exists', () => {
-			should.exist(modalSection);
+		it('renders App Launcer icon', () => {
+			should.exist(handles.appLauncherIcon);
 		});
 
-		it('modal section has "slds-is-open" class when open', () => {
-			expect(modalSection.className).to.include('slds-is-open');
+		it('renders all App Launcher dots', () => {
+			expect(handles.appLauncherIcon.find('.slds-icon-waffle').containsAllMatchingElements([
+				<div className="slds-r1"></div>,
+				<div className="slds-r2"></div>,
+				<div className="slds-r3"></div>,
+				<div className="slds-r4"></div>,
+				<div className="slds-r5"></div>,
+				<div className="slds-r6"></div>,
+				<div className="slds-r7"></div>,
+				<div className="slds-r8"></div>,
+				<div className="slds-r9"></div>
+			])).to.equal(true);
 		});
 
-		it('section has a title', () => {
-			should.exist(document.querySelectorAll('.slds-section__title'));
+		it('App Launcher Icon link has proper classes', () => {
+			expect(handles.appLauncherIcon.find('a').node.className).to.include('slds-icon-waffle_container slds-context-bar__button');
 		});
 
-		it('ul has proper classes', () => {
-			const ul = modalSection.getElementsByTagName('ul')[0];
-			should.exist(ul);
-			expect(ul.className).to.include('slds-grid slds-grid--pull-padded slds-wrap');
+		it('clicking App Launcher Icon fires callback', () => {
+			Simulate.click(handles.appLauncherIcon.find('a').node);
+			expect(triggerOnClick.calledOnce).to.be.true; // eslint-disable-line no-unused-expressions
 		});
 
-		it('li exists', () => {
-			const li = modalSection.getElementsByTagName('li')[0];
-			should.exist(li);
+		it('App Launcher Icon callback receives original event as arg', () => {
+			Simulate.click(handles.appLauncherIcon.find('a').node);
+			expect(triggerOnClick.args.length).to.equal(1);
+		});
+
+		it('renders assistive text from prop', () => {
+			expect(handles.appLauncherIcon.find('.slds-assistive-text').text()).to.equal('Custom Icon Assistive Text');
 		});
 	});
 });
