@@ -311,7 +311,7 @@ Branch.propTypes = {
 	 */
 	selection: PropTypes.array,
 	/**
-	 * Location of node (zero index) First node is `0`. It's first child is `0-0`. This can be used to modify your nodes without searching for the node.
+	 * Location of node (zero index). First node is `0`. It's first child is `0-0`. This can be used to modify your nodes without searching for the node. This index is only valid if the `nodes` prop is the same as at the time of the event.
 	 */
 	treeIndex: PropTypes.string
 };

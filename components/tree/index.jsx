@@ -56,7 +56,7 @@ const Tree = React.createClass({
 	// ### Prop Types
 	propTypes: {
 		/**
-		 * For users of assistive technology, if set the heading will be hidden. `heading` or `assistiveText` must be set in order to label the tree.
+		 * For users of assistive technology, if set the heading will be hidden. One of `heading` or `assistiveText` must be set in order to label the tree.
 		 */
 		assistiveText: PropTypes.string,
 		/**
@@ -86,7 +86,7 @@ const Tree = React.createClass({
 		 */
 		id: PropTypes.string,
 		/**
-		 * Allows the nodes prop to determine state, {label: 'My cool node', expanded: true, selected: true, type: 'folder', nodes: [...childNodes]}`. Useful if UI state is part of your application's state engine.
+		 * Allows the nodes prop to determine state, {label: 'My cool node', expanded: true, selected: true, type: 'folder', nodes: [...childNodes]}`. Useful if UI state is part of your application's state engine. Keys into your object can be configured with `nodeKeys`;
 		 */
 		nodeHasState: PropTypes.bool,
 		/**
@@ -94,7 +94,7 @@ const Tree = React.createClass({
 		 */
 		loading: PropTypes.array,
 		/**
-		 * Keys into your JSON object, so the data does not need to be reformatted. The default expects `{label: 'My cool node', type: 'folder', nodes: [...childNodes]}`.
+		 * Keys into your JSON object, so the data does not need to be iterated over and reformatted. The default expects `{label: 'My cool node', type: 'folder', nodes: [...childNodes]}`. `selected` and `expanded` are only needed it `nodeHasState` is true.
 		 */
 		nodeKeys: React.PropTypes.shape({
 			expanded: React.PropTypes.string,
