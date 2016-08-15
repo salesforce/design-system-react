@@ -118,18 +118,32 @@ const Branch = (props) => {
 		}
 	};
 
+	const handleScroll = (event) => {
+		const percentage = (event.target.scrollTop) / (event.target.scrollHeight - event.target.clientHeight) * 100;
+
+		if (isFunction(props.onScroll)) {
+			props.onScroll(event, {
+				percentage
+			});
+		}
+	};
+
 	const renderInitialNode = (children) => {
 		const selectionID = [];
+		// the following must be unique to the and be available via selection in order to be accessible
 		props.selection.forEach((node) => {
-			selectionID.push(node.id);
+			selectionID.push(`${props.treeId}-${node.id}`);
 		});
+
 		// id intentionally not rendered here, and is present on container
 		return (
 			<ul
-				className={classNames('slds-tree', props.initalClassName)}
-				role="tree"
 				aria-labelledby={`${props.htmlId}__heading`}
 				aria-activedescendant={selectionID.join(' ')}
+				className={classNames('slds-tree', props.initalClassName)}
+				onScroll={handleScroll}
+				role="tree"
+				style={props.initialStyle}
 			>
 				{children}
 			</ul>
@@ -166,14 +180,16 @@ const Branch = (props) => {
 						tabIndex={-1}
 						role="presentation"
 						className="slds-truncate"
-					>{props.label}{isLoadingStored ? <i> [Loading]</i> : null}</a>
+					>{props.label}{isLoadingStored ? props.loader : null}</a>
 				</div>
-				<ul
-					className={classNames({ 'slds-is-expanded': isExpandedStored, 'slds-is-collapsed': !isExpandedStored })}
-					role="group"
-					aria-labelledby={`${props.htmlId}__label`}
-				>{isExpandedStored ? children : null}
+				{isExpandedStored
+				?	<ul
+						className={classNames({ 'slds-is-expanded': isExpandedStored, 'slds-is-collapsed': !isExpandedStored })}
+						role="group"
+						aria-labelledby={`${props.htmlId}__label`}
+				> {children}
 				</ul>
+				: null}
 			</li>
 		);
 	};
@@ -182,15 +198,17 @@ const Branch = (props) => {
 
 	const children = [];
 	const {
+		treeId,
 		level,
 		onExpandClick,
+		loader,
 		loading,
 		selection
 	} = props;
 
 	if (isArray(props.node[props.nodeKeys.nodes])) {
 		props.node[props.nodeKeys.nodes].forEach((node, index) => {
-			const htmlId = `${props.htmlId}-${node.htmlId || index}`;
+			const htmlId = `${props.treeId}-${node.id}`;
 			treeIndex = `${index}`;
 			if (props.treeIndex) {
 				treeIndex = `${props.treeIndex}-${treeIndex}`;
@@ -199,6 +217,7 @@ const Branch = (props) => {
 			if (node[props.nodeKeys.type] === 'folder') {
 				children.push(
 					<Branch
+						loader={loader}
 						expanded={props.expanded}
 						htmlId={htmlId}
 						key={shortid.generate()}
@@ -212,6 +231,7 @@ const Branch = (props) => {
 						onClick={props.onClick}
 						onExpandClick={onExpandClick}
 						selection={selection}
+						treeId={treeId}
 						treeIndex={treeIndex}
 					/>
 				);
@@ -226,10 +246,10 @@ const Branch = (props) => {
 						node={node}
 						nodeHasState={props.nodeHasState}
 						nodeKeys={props.nodeKeys}
-						nodes={props.node[props.nodeKeys.nodes]}
 						onClick={props.onClick}
 						selection={selection}
 						treeIndex={treeIndex}
+						treeId={treeId}
 					/>
 				);
 			}
@@ -272,6 +292,7 @@ Branch.propTypes = {
 		PropTypes.array,
 		PropTypes.object,
 		PropTypes.string]),
+	initialStyle: PropTypes.object,
 	/**
 	 * The text of the tree item.
 	 */
@@ -280,6 +301,7 @@ Branch.propTypes = {
 	 * The number of nestings. Determines the ARIA level and style alignment.
 	 */
 	level: PropTypes.number.isRequired,
+	loader: PropTypes.node,
 	/**
 	 * The current node that is being rendered.
 	 */
@@ -310,6 +332,10 @@ Branch.propTypes = {
 	 * An array of the currently selected items
 	 */
 	selection: PropTypes.array,
+	/**
+	 * Unique id used for a prefix of all tree nodes
+	 */
+	treeId: PropTypes.string,
 	/**
 	 * Location of node (zero index). First node is `0`. It's first child is `0-0`. This can be used to modify your nodes without searching for the node. This index is only valid if the `nodes` prop is the same as at the time of the event.
 	 */

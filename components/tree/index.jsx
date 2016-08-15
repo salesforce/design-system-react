@@ -85,6 +85,7 @@ const Tree = React.createClass({
 		 * HTML `id` of primary element that has `.slds-tree` on it. This component has a wrapping container element outside of `.slds-tree`.
 		 */
 		id: PropTypes.string,
+		inlineBranchLoader: PropTypes.node,
 		/**
 		 * Allows the nodes prop to determine state, {label: 'My cool node', expanded: true, selected: true, type: 'folder', nodes: [...childNodes]}`. Useful if UI state is part of your application's state engine. Keys into your object can be configured with `nodeKeys`;
 		 */
@@ -104,7 +105,7 @@ const Tree = React.createClass({
 			type: React.PropTypes.string
 		}),
 		/**
-		 * Array of items starting at the top of the tree. Every object in the array should have an id key in order to be fully accessible to users of assistive technology.
+		 * Array of items starting at the top of the tree.
 		 */
 		nodes: PropTypes.array,
 		/**
@@ -116,13 +117,22 @@ const Tree = React.createClass({
 		 */
 		onExpandClick: PropTypes.func.isRequired,
 		/**
+		 * This function triggers when the top-level `ul` element scrolls. This can be used to implement an "infinite scroll" pattern and update the `nodes` prop accordingly.
+		 */
+		onScroll: PropTypes.func.isRequired,
+		/**
 		 * An array of the currently selected items
 		 */
-		selection: PropTypes.array
+		selection: PropTypes.array,
+		/**
+		 * An object of CSS styles that are applied to `ul` element.
+		 */
+		style: PropTypes.object
 	},
 
 	getDefaultProps () {
 		return {
+			branchLoader: <i> [Loading]</i>,
 			id: shortid.generate(),
 			nodeHasState: false,
 			nodeKeys: {
@@ -149,13 +159,16 @@ const Tree = React.createClass({
 			expanded,
 			heading,
 			id,
+			inlineBranchLoader,
 			nodeHasState,
 			nodes,
 			nodeKeys,
 			loading,
 			onClick,
 			onExpandClick,
-			selection
+			onScroll,
+			selection,
+			style
 		} = this.props;
 
 		// One of these is required to pass accessibility tests
@@ -172,17 +185,21 @@ const Tree = React.createClass({
 					>{headingText}</h4>
 					: null}
 				<Branch
+					loader={inlineBranchLoader}
 					expanded={expanded}
 					initalClassName={className}
 					htmlId={id}
+					initialStyle={style}
 					level={0}
 					loading={loading}
 					node={{ [this.props.nodeKeys.nodes]: nodes }}
 					nodeKeys={nodeKeys}
 					nodeHasState={nodeHasState}
-					onExpandClick={onExpandClick}
 					onClick={onClick}
+					onExpandClick={onExpandClick}
+					onScroll={onScroll}
 					selection={selection}
+					treeId={id}
 				/>
 			</div>
 		);

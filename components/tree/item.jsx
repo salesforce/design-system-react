@@ -81,7 +81,7 @@ const Item = (props) => {
 	const isSelectedStored = props.nodeHasState ? props.node[props.nodeKeys.treeNodeSelected] : isSelected();
 
 	return (
-		<li id={props.htmlId} role="treeitem" aria-level={props.level}>
+		<li id={`${props.treeId}-${props.node.id}`} role="treeitem" aria-level={props.level}>
 			<div
 				className={classNames('slds-tree__item', { 'slds-is-selected': isSelectedStored })}
 				aria-selected={isSelectedStored ? 'true' : 'false'}
@@ -146,6 +146,10 @@ Item.propTypes = {
 	 * An array of the currently selected items
 	 */
 	selection: PropTypes.array,
+	/**
+	 * Unique id used for a prefix of all tree nodes
+	 */
+	treeId: PropTypes.string,
 	/**
 	 * Location of node (zero index). First node is `0`. It's first child is `0-0`. This can be used to modify your nodes without searching for the node. This index is only valid if the `nodes` prop is the same as at the time of the event.
 	 */

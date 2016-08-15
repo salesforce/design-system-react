@@ -14,8 +14,7 @@ import Tree from '../../components/tree';
 
 const branchExpandClicked = action;
 const itemClicked = action;
-
-console.log(treeNodesWithState);
+const treeScrolled = action;
 
 const DemoTree = React.createClass({
 	displayName: 'DemoTree',
@@ -66,16 +65,20 @@ const DemoTree = React.createClass({
 	// By default Tree can have multiple selected nodes and folders/branches can be
 	// selected. To disable either of these, use the following conditions.
 	handleClick (event, data) {
-		if (!this.props.singleSelection) {
+		if (this.props.singleSelection) {
+			this.setState({ selection: [data.node] });
+			itemClicked('Node Clicked')(event, data);
+		} else {
 			if (!this.props.noBranchSelection ||
 				(this.props.noBranchSelection && data.node.type !== 'folder')) {
 				this.setState({ selection: data.selection });
 				itemClicked('Node Clicked')(event, data);
 			}
-		} else {
-			this.setState({ selection: [data.node] });
-			itemClicked('Node Clicked')(event, data);
 		}
+	},
+
+	handleScroll (event, data) {
+		treeScrolled('Tree scrolled')(event, data);
 	},
 
 	render () {
@@ -86,6 +89,7 @@ const DemoTree = React.createClass({
 				onClick={this.handleClick}
 				expanded={this.state.expanded}
 				loading={this.state.loading}
+				onScroll={this.handleScroll}
 				selection={this.state.selection}
 				{...this.props}
 			/>
@@ -110,6 +114,21 @@ storiesOf(TREE, module)
 		singleSelection
 	/>)
 	.add('Assistive Heading', () => <DemoTree assistiveText="Miscellaneous Foods" />)
+	.add('Overflow Hidden', () =>
+		<DemoTree
+			heading="Miscellaneous Foods"
+			nodes={manyNodes}
+			nodeKeys={{
+				nodes: 'nodes',
+				label: 'text',
+				type: 'type'
+			}}
+			style={{
+				height: '300px',
+				overflowY: 'auto'
+			}}
+		/>
+	)
 	.add('Large dataset (300+)', () => <DemoTree
 		heading="Miscellaneous Foods"
 		nodes={manyNodes}
