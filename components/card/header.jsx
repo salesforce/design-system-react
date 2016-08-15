@@ -55,7 +55,9 @@ const CardHeader = React.createClass({
 		/**
 		 * The heading is the name of the related item group.
 		 */
-		heading: PropTypes.string.isRequired,
+		heading: PropTypes.oneOf([
+			PropTypes.node,
+			PropTypes.text]).isRequired,
 		/**
 		 * Icon associated with grouped items
 		 */
