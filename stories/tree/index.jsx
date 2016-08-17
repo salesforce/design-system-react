@@ -26,6 +26,7 @@ const DemoTree = React.createClass({
 		loading: PropTypes.array,
 		nodes: PropTypes.array,
 		noBranchSelection: PropTypes.bool,
+		searchTerm: PropTypes.string,
 		singleSelection: PropTypes.bool
 	},
 
@@ -142,4 +143,8 @@ storiesOf(TREE, module)
 		heading="Miscellaneous Foods"
 		nodeHasState
 		nodes={treeNodesWithState}
+	/>)
+	.add('Highlighted search', () => <DemoTree
+		heading="Results for fruit"
+		searchTerm="fruit"
 	/>);

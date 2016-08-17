@@ -32,6 +32,8 @@ import omit from 'lodash.omit';
 // ### find
 import find from 'lodash.find';
 
+import Highlighter from '../utilities/highlighter';
+
 // ### isArray
 import isArray from 'lodash.isarray';
 
@@ -180,7 +182,7 @@ const Branch = (props) => {
 						tabIndex={-1}
 						role="presentation"
 						className="slds-truncate"
-					>{props.label}{isLoadingStored ? props.loader : null}</a>
+					>{<Highlighter search={props.searchTerm}>{props.label}</Highlighter>}</a>
 				</div>
 				{isExpandedStored
 				?	<ul
@@ -203,6 +205,7 @@ const Branch = (props) => {
 		onExpandClick,
 		loader,
 		loading,
+		searchTerm,
 		selection
 	} = props;
 
@@ -230,6 +233,7 @@ const Branch = (props) => {
 						nodes={node[props.nodeKeys.nodes]}
 						onClick={props.onClick}
 						onExpandClick={onExpandClick}
+						searchTerm={searchTerm}
 						selection={selection}
 						treeId={treeId}
 						treeIndex={treeIndex}
@@ -247,6 +251,7 @@ const Branch = (props) => {
 						nodeHasState={props.nodeHasState}
 						nodeKeys={props.nodeKeys}
 						onClick={props.onClick}
+						searchTerm={searchTerm}
 						selection={selection}
 						treeIndex={treeIndex}
 						treeId={treeId}
@@ -328,6 +333,10 @@ Branch.propTypes = {
 	 * This function triggers when the expand or collapse icon is clicked.
 	 */
 	onExpandClick: PropTypes.func.isRequired,
+	/**
+	 * Highlights term if found in node label
+	 */
+	searchTerm: PropTypes.string,
 	/**
 	 * An array of the currently selected items
 	 */

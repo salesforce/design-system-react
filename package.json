@@ -61,7 +61,7 @@
     "lodash.partial": "^4.1.3",
     "lodash.reject": "^4.3.0",
     "lodash.uniqueid": "^4.0.0",
-    "react-highlighter": "^0.3.2",
+    "react-highlighter": "^0.3.3",
     "react-modal": "^1.4.0",
     "react-onclickoutside": "^5.3.3",
     "react-text-truncate": "^0.8.2",

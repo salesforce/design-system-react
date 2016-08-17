@@ -125,6 +125,10 @@ const Tree = React.createClass({
 		 */
 		selection: PropTypes.array,
 		/**
+		 * Highlights term if found in node label
+		 */
+		searchTerm: PropTypes.string,
+		/**
 		 * An object of CSS styles that are applied to `ul` element.
 		 */
 		style: PropTypes.object
@@ -167,6 +171,7 @@ const Tree = React.createClass({
 			onClick,
 			onExpandClick,
 			onScroll,
+			searchTerm,
 			selection,
 			style
 		} = this.props;
@@ -198,6 +203,7 @@ const Tree = React.createClass({
 					onClick={onClick}
 					onExpandClick={onExpandClick}
 					onScroll={onScroll}
+					searchTerm={searchTerm}
 					selection={selection}
 					treeId={id}
 				/>

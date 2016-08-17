@@ -32,6 +32,8 @@ import omit from 'lodash.omit';
 // ### find
 import find from 'lodash.find';
 
+import Highlighter from '../utilities/highlighter';
+
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
@@ -96,7 +98,9 @@ const Item = (props) => {
 					className="slds-m-right--small slds-is-disabled"
 					disabled
 				/>
-				<a href="#" tabIndex={-1} role="presentation" className="slds-truncate">{props.label}</a>
+				<a href="#" tabIndex={-1} role="presentation" className="slds-truncate">
+					<Highlighter search={props.searchTerm}>{props.label}</Highlighter>
+				</a>
 			</div>
 		</li>
 	);
@@ -142,6 +146,10 @@ Item.propTypes = {
 	 * Function that will run whenever an item or branch is clicked.
 	 */
 	onClick: PropTypes.func,
+	/**
+	 * Highlights term if found in node label
+	 */
+	searchTerm: PropTypes.string,
 	/**
 	 * An array of the currently selected items
 	 */
