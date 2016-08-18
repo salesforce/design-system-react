@@ -9,6 +9,7 @@ import SLDSButtonStateful from '../../components/button-stateful';
 import SLDSButtonGroup from '../../components/button-group';
 import SLDSButton from '../../components/button';
 import SLDSMenuDropdown from '../../components/menu-dropdown';
+import PopoverTooltip from '../../components/popover-tooltip';
 
 const getPageHeader = props => (
 	<SLDSPageHeader {...props} />
@@ -52,11 +53,24 @@ const recordHomeContentRight = (
 	</div>
 );
 
+const customTooltip = () => {
+	const content = 'here is a super long description that will truncate and the rest of it will show in the tooltip.';
+	return (
+		<PopoverTooltip
+			align="top"
+			content={content}>
+			<p tabIndex="0" className='slds-text-title slds-truncate'>
+				{content}
+			</p>
+		</PopoverTooltip>
+	);
+};
+
 const recordHomeDetails = [
-	{ label: 'Field 1', content: 'Description that demonstrates truncation with content.', flavor: '2-of-4', truncate: true },
+	{ label: 'Field 1', content: 'Description that demonstrates truncation with content. Description that demonstrates truncation with content.', flavor: '1-of-4', truncate: true },
 	{ label: 'Field 2', content: 'Multiple Values' },
-	{ label: 'Field 3', content: (<a href="#">Hyperlink</a>) },
-	{ label: 'Field 4', content: 'Description (2-line truncation)' }
+	{ label: 'Field 3', content: customTooltip(), flavor: '1-of-4' },
+	{ label: 'Field 4', content: 'Description (2-line truncation)'}
 ];
 
 
