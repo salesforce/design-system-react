@@ -83,7 +83,7 @@ const propTypes = {
 	/**
 	 * For icon variants, please reference <a href='http://www.lightningdesignsystem.com/components/buttons/#icon'>Lightning Design System Icons</a>.
 	 */
-	iconVariant: React.PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'small', 'more']),
+	iconVariant: React.PropTypes.oneOf(['container', 'border', 'border-filled', 'small', 'more']),
 	/**
 	 * Content to appear on the right hand side of the page header
 	 */
@@ -289,8 +289,7 @@ class PageHeader extends Component {
 					info={infoElement}
 					contentRight={contentRightElement}
 					navRight={navRightElement}
-					details={details}
-    />
+					details={details} />
 			</div>
 			);
 	}

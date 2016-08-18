@@ -53,7 +53,7 @@ const recordHomeContentRight = (
 );
 
 const recordHomeDetails = [
-	{ label: 'Field 1', content: 'Description that demonstrates truncation with content.' },
+	{ label: 'Field 1', content: 'Description that demonstrates truncation with content.', flavor: '2-of-4', truncate: true },
 	{ label: 'Field 2', content: 'Multiple Values' },
 	{ label: 'Field 3', content: (<a href="#">Hyperlink</a>) },
 	{ label: 'Field 4', content: 'Description (2-line truncation)' }
@@ -213,7 +213,7 @@ storiesOf(PAGE_HEADER, module)
 		title: 'Rohde Corp - 80,000 Widgets',
 		info: 'Mark Jaeckal • Unlimited Customer • 11/13/15'
 	}))
-	.add('Record Home', () => getPageHeader({
+	.add('Record Home (truncates)', () => getPageHeader({
 		iconAssistiveText: 'User',
 		iconCategory: 'standard',
 		iconName: 'user',
@@ -225,17 +225,15 @@ storiesOf(PAGE_HEADER, module)
 	}))
 	.add('Object Home', () => getPageHeader({
 		label: 'Leads',
-		title: 'My Leads (truncates)',
+		title: 'My Leads',
 		variant: 'objectHome',
-		truncate: true,
 		info: '10 items • sorted by name',
 		contentRight: objectHomeContentRight,
 		navRight: objectHomeNavRight
 	}))
 	.add('Related List', () => getPageHeader({
-		title: 'Contacts (will truncate)',
+		title: 'Contacts',
 		variant: 'objectHome',
-		truncate: true,
 		info: '10 items • sorted by name',
 		contentRight: relatedListContentRight,
 		navRight: relatedListNavRight,

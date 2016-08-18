@@ -50,7 +50,8 @@ class DetailRow extends Component {
               key={key}
               flavor={detail.flavor}
               label={detail.label}
-              content={detail.content} />
+              content={detail.content}
+              truncate={detail.truncate} />
           );
         });
       }

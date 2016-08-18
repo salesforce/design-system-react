@@ -36,14 +36,12 @@ const propTypes = {
   /**
    * Sets whether the fields truncate
    */
-  truncate: React.PropTypes.bool.isRequired,
+  truncate: React.PropTypes.bool,
   flavor: React.PropTypes.string,
 };
 const defaultProps = {
   label: '',
-  content: '',
-  truncate: true,
-  flavor: '1-of-4',
+  content: ''
 };
 
 class DetailBlock extends Component {
