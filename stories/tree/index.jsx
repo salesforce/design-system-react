@@ -2,15 +2,10 @@ import React, { PropTypes } from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 
 import { TREE } from '../../utilities/constants';
-import {
-	treeNodes,
-	manyNodes,
-	initialExpanded as sampleExpanded,
-	initialSelection as sampleSelection,
-	treeNodesWithState
-} from '../../utilities/sample-data/tree';
+import sampleNodes from '../../utilities/sample-data/tree';
 
 import Tree from '../../components/tree';
+import Search from '../../components/forms/input/search';
 
 const branchExpandClicked = action;
 const itemClicked = action;
@@ -21,58 +16,57 @@ const DemoTree = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
-		initialExpanded: PropTypes.array,
-		initialSelection: PropTypes.array,
-		loading: PropTypes.array,
-		nodes: PropTypes.array,
+		exampleNodesIndex: PropTypes.string,
 		noBranchSelection: PropTypes.bool,
 		searchTerm: PropTypes.string,
+		searchable: PropTypes.bool,
 		singleSelection: PropTypes.bool
 	},
 
 	getDefaultProps () {
 		return {
-			initialExpanded: [],
-			initialSelection: []
+			exampleNodesIndex: 'treeNodes',
+			id: 'TreeStory'
 		};
 	},
 
 	getInitialState () {
+		const initalNodes = this.props.exampleNodesIndex
+		? sampleNodes[this.props.exampleNodesIndex]
+		: sampleNodes.treeNodes;
 		return {
-			nodes: this.props.nodes || treeNodes,
-			// Open: Fruits, Tree Fruits, Citrus, Apples, Empty Folder (2, 5, 17, 18, 7)
-			expanded: this.props.initialExpanded,
-			loading: this.props.loading,
-			// Selected: Peaches
-			selection: this.props.initialSelection
+			nodes: initalNodes,
+			searchTerm: this.props.searchable ? 'fruit' : undefined
 		};
 	},
 
-	removeLoading (expanded, treeIndex) {
-		this.setState({ loading: [] });
-		this.setState({ expanded });
-		console.log(`Insert new data at node: ${treeIndex}`);	// eslint-disable-line no-console
-	},
-
+	// By default Tree can have multiple selected nodes and folders/branches can be selected. To disable either of these, you can use the following logic. However, `props` are immutable. The node passed in shouldn't be modified, and due to object and arrays being reference variables, forceUpate is needed. This is just a "working example" not a prescription.
 	handleExpandClick (event, data) {
 		branchExpandClicked('Expand Branch')(event, data);
-		if (data.expand) {
-			this.setState({ loading: [data.node] });
-		}
-		// Fake delay for visual effect
-		setTimeout(this.removeLoading, 500, data.expanded, data.treeIndex);
+		data.node.loading = data.expand ? true : undefined;
+
+		// Fake delay to demonstrate use of loading node attibute
+		setTimeout((node) => {
+			node.loading = false;
+			this.forceUpdate();
+		}, 500, data.node);
+		data.node.expanded = data.expand;
 	},
 
-	// By default Tree can have multiple selected nodes and folders/branches can be
-	// selected. To disable either of these, use the following conditions.
 	handleClick (event, data) {
 		if (this.props.singleSelection) {
-			this.setState({ selection: [data.node] });
+			data.node.selected = data.select;
+			this.setState({ singleSelection: data.node });
+			if (this.state.singleSelection) {
+				this.state.singleSelection.selected = undefined;
+			}
+			this.forceUpdate();
 			itemClicked('Node Clicked')(event, data);
 		} else {
 			if (!this.props.noBranchSelection ||
 				(this.props.noBranchSelection && data.node.type !== 'folder')) {
-				this.setState({ selection: data.selection });
+				data.node.selected = data.select;
+				this.forceUpdate();
 				itemClicked('Node Clicked')(event, data);
 			}
 		}
@@ -82,18 +76,29 @@ const DemoTree = React.createClass({
 		treeScrolled('Tree scrolled')(event, data);
 	},
 
+	handleSearchChange (event) {
+		this.setState({ searchTerm: event.target.value });
+	},
+
 	render () {
 		return (
-			<Tree
-				nodes={this.state.nodes}
-				onExpandClick={this.handleExpandClick}
-				onClick={this.handleClick}
-				expanded={this.state.expanded}
-				loading={this.state.loading}
-				onScroll={this.handleScroll}
-				selection={this.state.selection}
-				{...this.props}
-			/>
+			<div>{
+				this.props.searchable
+				? <div>
+					<Search assistiveText="Search Tree" value={this.state.searchTerm} onChange={this.handleSearchChange} />
+					<br />
+				</div>
+				: null
+			}
+				<Tree
+					nodes={this.state.nodes}
+					onExpandClick={this.handleExpandClick}
+					onClick={this.handleClick}
+					onScroll={this.handleScroll}
+					searchTerm={this.state.searchTerm}
+					{...this.props}
+				/>
+			</div>
 		);
 	}
 });
@@ -103,8 +108,7 @@ storiesOf(TREE, module)
 	.add('Base', () => <DemoTree heading="Miscellaneous Foods" />)
 	.add('Initial Expanded/Selection', () => <DemoTree
 		heading="Miscellaneous Foods"
-		initialExpanded={sampleExpanded}
-		initialSelection={sampleSelection}
+		exampleNodesIndex="treeNodesWithState"
 	/>)
 	.add('No Branch Select', () => <DemoTree
 		heading="Miscellaneous Foods"
@@ -118,12 +122,7 @@ storiesOf(TREE, module)
 	.add('Overflow Hidden', () =>
 		<DemoTree
 			heading="Miscellaneous Foods"
-			nodes={manyNodes}
-			nodeKeys={{
-				nodes: 'nodes',
-				label: 'text',
-				type: 'type'
-			}}
+			exampleNodesIndex="manyNodes"
 			style={{
 				height: '300px',
 				overflowY: 'auto'
@@ -132,19 +131,9 @@ storiesOf(TREE, module)
 	)
 	.add('Large dataset (300+)', () => <DemoTree
 		heading="Miscellaneous Foods"
-		nodes={manyNodes}
-		nodeKeys={{
-			nodes: 'nodes',
-			label: 'text',
-			type: 'type'
-		}}
+		exampleNodesIndex="manyNodes"
 	/>)
-	.add('Nodes contain state', () => <DemoTree
-		heading="Miscellaneous Foods"
-		nodeHasState
-		nodes={treeNodesWithState}
-	/>)
-	.add('Highlighted search', () => <DemoTree
+	.add('Highlighted Search', () => <DemoTree
 		heading="Results for fruit"
-		searchTerm="fruit"
+		searchable
 	/>);

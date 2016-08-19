@@ -56,37 +56,23 @@ const idSuffixes = {
  * A Tree Item is a non-branching node in a hierarchical list.
  */
 const Item = (props) => {
-	const isSelected = () => {
-		const node = omit(props.node, 'nodes');
-		return !!find(props.selection, node);
-	};
-
 	const	handleClick = (event) => {
 		EventUtil.trap(event);
 
 		if (isFunction(props.onClick)) {
-			let selection;
-			const node = omit(props.node, 'nodes');
-			const isSelectedStored = isSelected();
-
-			if (!isSelectedStored) {
-				selection = [...props.selection, node];
-			} else {
-				selection = reject(props.selection, node);
-			}
-
-			props.onClick(event, { selection, node, select: !isSelectedStored, treeIndex: props.treeIndex });
+			props.onClick(event, { node: props.node, select: !props.node.selected, treeIndex: props.treeIndex });
 		}
 	};
 
 	// ### Render
-	const isSelectedStored = props.nodeHasState ? props.node[props.nodeKeys.treeNodeSelected] : isSelected();
+	const isSelected = props.node.selected;
 
+	// TODO: Remove tabbing from anchor tag / add tabIndex={-1} when keyboard navigation is present.
 	return (
 		<li id={`${props.treeId}-${props.node.id}`} role="treeitem" aria-level={props.level}>
 			<div
-				className={classNames('slds-tree__item', { 'slds-is-selected': isSelectedStored })}
-				aria-selected={isSelectedStored ? 'true' : 'false'}
+				className={classNames('slds-tree__item', { 'slds-is-selected': isSelected })}
+				aria-selected={isSelected ? 'true' : 'false'}
 				onClick={handleClick}
 			>
 				<Button
@@ -98,7 +84,7 @@ const Item = (props) => {
 					className="slds-m-right--small slds-is-disabled"
 					disabled
 				/>
-				<a href="#" tabIndex={-1} role="presentation" className="slds-truncate">
+				<a href="#" role="presentation" className="slds-truncate">
 					<Highlighter search={props.searchTerm}>{props.label}</Highlighter>
 				</a>
 			</div>
@@ -128,20 +114,6 @@ Item.propTypes = {
 	 * The current node that is being rendered.
 	 */
 	node: PropTypes.object.isRequired,
-	/**
-	 * Allows the nodes prop to determine state, {label: 'My cool node', expanded: true, selected: true, type: 'folder', nodes: [...childNodes]}`. Useful if UI state is part of your application's state engine.
-	 */
-	nodeHasState: PropTypes.bool,
-	/**
-	 * Keys into your JSON object, so the data does not need to be reformatted. The default expects `{label: 'My cool node', type: 'folder', nodes: [...childNodes]}`.
-	 */
-	nodeKeys: React.PropTypes.shape({
-		expanded: React.PropTypes.string,
-		label: React.PropTypes.string,
-		nodes: React.PropTypes.string,
-		selected: React.PropTypes.string,
-		type: React.PropTypes.string
-	}),
 	/**
 	 * Function that will run whenever an item or branch is clicked.
 	 */

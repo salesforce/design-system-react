@@ -46,7 +46,7 @@ const idSuffixes = {
 };
 
 /**
- * A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed..
+ * A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed. This is a controlled component, since visual state is present in the `nodes` data.
  */
 const Tree = React.createClass({
 	// ### Display Name
@@ -84,7 +84,7 @@ const Tree = React.createClass({
 		/**
 		 * HTML `id` of primary element that has `.slds-tree` on it. This component has a wrapping container element outside of `.slds-tree`.
 		 */
-		id: PropTypes.string,
+		id: PropTypes.string.isRequired,
 		inlineBranchLoader: PropTypes.node,
 		/**
 		 * Allows the nodes prop to determine state, {label: 'My cool node', expanded: true, selected: true, type: 'folder', nodes: [...childNodes]}`. Useful if UI state is part of your application's state engine. Keys into your object can be configured with `nodeKeys`;
@@ -119,7 +119,7 @@ const Tree = React.createClass({
 		/**
 		 * This function triggers when the top-level `ul` element scrolls. This can be used to implement an "infinite scroll" pattern and update the `nodes` prop accordingly.
 		 */
-		onScroll: PropTypes.func.isRequired,
+		onScroll: PropTypes.func,
 		/**
 		 * An array of the currently selected items
 		 */
@@ -136,16 +136,7 @@ const Tree = React.createClass({
 
 	getDefaultProps () {
 		return {
-			branchLoader: <i> [Loading]</i>,
-			id: shortid.generate(),
-			nodeHasState: false,
-			nodeKeys: {
-				nodes: 'nodes',
-				label: 'label',
-				treeNodeExpanded: 'treeNodeExpanded',
-				treeNodeSelected: 'treeNodeSelected',
-				type: 'type'
-			}
+			inlineBranchLoader: <i> [Loading]</i>
 		};
 	},
 
@@ -164,9 +155,7 @@ const Tree = React.createClass({
 			heading,
 			id,
 			inlineBranchLoader,
-			nodeHasState,
 			nodes,
-			nodeKeys,
 			loading,
 			onClick,
 			onExpandClick,
@@ -179,6 +168,7 @@ const Tree = React.createClass({
 		// One of these is required to pass accessibility tests
 		const headingText = assistiveText || heading;
 
+
 		// Start the zero level branch--that is the tree root. There is no label for
 		// the tree root, but is required by all other nodes
 		return (
@@ -190,16 +180,14 @@ const Tree = React.createClass({
 					>{headingText}</h4>
 					: null}
 				<Branch
-					loader={inlineBranchLoader}
+					inlineLoader={inlineBranchLoader}
 					expanded={expanded}
 					initalClassName={className}
 					htmlId={id}
 					initialStyle={style}
 					level={0}
 					loading={loading}
-					node={{ [this.props.nodeKeys.nodes]: nodes }}
-					nodeKeys={nodeKeys}
-					nodeHasState={nodeHasState}
+					node={{ nodes }}
 					onClick={onClick}
 					onExpandClick={onExpandClick}
 					onScroll={onScroll}

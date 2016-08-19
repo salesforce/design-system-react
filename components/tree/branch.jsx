@@ -23,15 +23,6 @@ import Button from '../button';
 // Child components
 import Item from './item';
 
-// ### reject
-import reject from 'lodash.reject';
-
-// ### omit
-import omit from 'lodash.omit';
-
-// ### find
-import find from 'lodash.find';
-
 import Highlighter from '../utilities/highlighter';
 
 // ### isArray
@@ -70,53 +61,26 @@ const idSuffixes = {
 const Branch = (props) => {
 	let treeIndex = '';
 
-	const isExpanded = () => {
-		const node = omit(props.node, props.nodeKeys.nodes);
-		return !!find(props.expanded, node);
-	};
-
-	const isLoading = () => {
-		const node = omit(props.node, props.nodeKeys.nodes);
-		return !!find(props.loading, node);
-	};
-
-	const isSelected = () => {
-		const node = omit(props.node, props.nodeKeys.nodes);
-		return !!find(props.selection, node);
-	};
-
 	const handleExpandClick = (event) => {
 		EventUtil.trap(event);
 
 		if (isFunction(props.onExpandClick)) {
-			let expanded;
-			const node = omit(props.node, props.nodeKeys.nodes);
-			const isExpandedStored = isExpanded();
-
-			if (!isExpandedStored) {
-				expanded = [...props.expanded, node];
-			} else {
-				expanded = reject(props.expanded, node);
-			}
-
-			props.onExpandClick(event, { expanded, node, expand: !isExpandedStored, treeIndex: props.treeIndex });
+			props.onExpandClick(event, {
+				node: props.node,
+				expand: !props.node.expanded,
+				treeIndex: props.treeIndex
+			});
 		}
 	};
 
 	const handleClick = (event) => {
 		EventUtil.trap(event);
 		if (isFunction(props.onClick)) {
-			let selection;
-			const node = omit(props.node, props.nodeKeys.nodes);
-			const isSelectedStored = isSelected();
-
-			if (!isSelectedStored) {
-				selection = [...props.selection, node];
-			} else {
-				selection = reject(props.selection, node);
-			}
-
-			props.onClick(event, { selection, node, select: !isSelectedStored, treeIndex: props.treeIndex });
+			props.onClick(event, {
+				node: props.node,
+				select: !props.node.selected,
+				treeIndex: props.treeIndex
+			});
 		}
 	};
 
@@ -130,43 +94,39 @@ const Branch = (props) => {
 		}
 	};
 
-	const renderInitialNode = (children) => {
-		const selectionID = [];
-		// the following must be unique to the and be available via selection in order to be accessible
-		props.selection.forEach((node) => {
-			selectionID.push(`${props.treeId}-${node.id}`);
-		});
-
-		// id intentionally not rendered here, and is present on container
-		return (
-			<ul
-				aria-labelledby={`${props.htmlId}__heading`}
-				aria-activedescendant={selectionID.join(' ')}
-				className={classNames('slds-tree', props.initalClassName)}
-				onScroll={handleScroll}
-				role="tree"
-				style={props.initialStyle}
-			>
-				{children}
-			</ul>
-		);
-	};
+	const renderInitialNode = (children) => (
+		// id intentionally not rendered here, and is present on container that includes the header
+		<ul
+			aria-labelledby={`${props.htmlId}__heading`}
+			// TODO
+			// aria-activedescendant=""
+			className={classNames('slds-tree', props.initalClassName)}
+			onScroll={handleScroll}
+			role="tree"
+			style={props.initialStyle}
+			// tabIndex="0"
+		>
+			{children}
+		</ul>
+	);
 
 	renderInitialNode.displayName = 'InitialNode';
 
 	// Most of these props come from the nodes array, not from the Tree props
 	const renderBranch = (children) => {
-		const isExpandedStored = props.nodeHasState ? props.node[props.nodeKeys.treeNodeExpanded] : isExpanded();
-		const isSelectedStored = props.nodeHasState ? props.node[props.nodeKeys.treeNodeSelected] : isSelected();
-		const isLoadingStored = isLoading();
+		const isExpanded = props.node.expanded;
+		const isSelected = props.node.selected;
+		const isLoading = props.node.loading;
+
+		// TODO: Remove tabbing from anchor tag AND button / add tabIndex={-1} when keyboard navigation is present.
 		return (
 			<li
 				id={props.htmlId}
 				role="treeitem"
 				aria-level={props.level}
-				aria-expanded={isExpandedStored ? 'true' : 'false'}
+				aria-expanded={isExpanded ? 'true' : 'false'}
 			>
-				<div className={classNames('slds-tree__item', { 'slds-is-selected': isSelectedStored })} onClick={handleClick}>
+				<div className={classNames('slds-tree__item', { 'slds-is-selected': isSelected })} onClick={handleClick}>
 					<Button
 						assistiveText="Toggle"
 						iconName="chevronright"
@@ -179,14 +139,14 @@ const Branch = (props) => {
 					<a
 						id={`${props.htmlId}__label`}
 						href="#"
-						tabIndex={-1}
 						role="presentation"
 						className="slds-truncate"
-					>{<Highlighter search={props.searchTerm}>{props.label}</Highlighter>}</a>
+					>{<Highlighter search={props.searchTerm}>{props.label}</Highlighter>}
+					{isLoading ? props.inlineLoader : null}</a>
 				</div>
-				{isExpandedStored
+				{isExpanded
 				?	<ul
-						className={classNames({ 'slds-is-expanded': isExpandedStored, 'slds-is-collapsed': !isExpandedStored })}
+						className={classNames({ 'slds-is-expanded': isExpanded, 'slds-is-collapsed': !isExpanded })}
 						role="group"
 						aria-labelledby={`${props.htmlId}__label`}
 				> {children}
@@ -203,34 +163,32 @@ const Branch = (props) => {
 		treeId,
 		level,
 		onExpandClick,
-		loader,
+		inlineLoader,
 		loading,
 		searchTerm,
 		selection
 	} = props;
 
-	if (isArray(props.node[props.nodeKeys.nodes])) {
-		props.node[props.nodeKeys.nodes].forEach((node, index) => {
+	if (isArray(props.node.nodes)) {
+		props.node.nodes.forEach((node, index) => {
 			const htmlId = `${props.treeId}-${node.id}`;
 			treeIndex = `${index}`;
 			if (props.treeIndex) {
 				treeIndex = `${props.treeIndex}-${treeIndex}`;
 			}
 
-			if (node[props.nodeKeys.type] === 'folder') {
+			if (node.type === 'folder') {
 				children.push(
 					<Branch
-						loader={loader}
+						inlineLoader={inlineLoader}
 						expanded={props.expanded}
 						htmlId={htmlId}
 						key={shortid.generate()}
-						label={node[props.nodeKeys.label]}
+						label={node.label}
 						level={level + 1}
 						loading={loading}
 						node={node}
-						nodeHasState={props.nodeHasState}
-						nodeKeys={props.nodeKeys}
-						nodes={node[props.nodeKeys.nodes]}
+						nodes={node.nodes}
 						onClick={props.onClick}
 						onExpandClick={onExpandClick}
 						searchTerm={searchTerm}
@@ -243,13 +201,11 @@ const Branch = (props) => {
 				children.push(
 					<Item
 						{...node}
-						label={node[props.nodeKeys.label]}
+						label={node.label}
 						htmlId={htmlId}
 						key={shortid.generate()}
 						level={level + 1}
 						node={node}
-						nodeHasState={props.nodeHasState}
-						nodeKeys={props.nodeKeys}
 						onClick={props.onClick}
 						searchTerm={searchTerm}
 						selection={selection}
@@ -262,7 +218,6 @@ const Branch = (props) => {
 	}
 
 	let branch = props.level === 0 ? renderInitialNode(children) : renderBranch(children);
-	branch = isExpanded ? branch : null;
 	return branch;
 };
 
@@ -306,25 +261,11 @@ Branch.propTypes = {
 	 * The number of nestings. Determines the ARIA level and style alignment.
 	 */
 	level: PropTypes.number.isRequired,
-	loader: PropTypes.node,
+	inlineLoader: PropTypes.node,
 	/**
 	 * The current node that is being rendered.
 	 */
 	node: PropTypes.object.isRequired,
-	/**
-	 * Allows the nodes prop to determine state, {label: 'My cool node', expanded: true, selected: true, type: 'folder', nodes: [...childNodes]}`. Useful if UI state is part of your application's state engine.
-	 */
-	nodeHasState: PropTypes.bool,
-	/**
-	 * Keys into your JSON object, so the data does not need to be reformatted. The default expects `{label: 'My cool node', type: 'folder', nodes: [...childNodes]}`.
-	 */
-	nodeKeys: React.PropTypes.shape({
-		expanded: React.PropTypes.string,
-		label: React.PropTypes.string,
-		nodes: React.PropTypes.string,
-		selected: React.PropTypes.string,
-		type: React.PropTypes.string
-	}),
 	/**
 	 * Function that will run whenever an item or branch is clicked.
 	 */
@@ -352,11 +293,8 @@ Branch.propTypes = {
 };
 
 Branch.getDefaultProps = {
-	expanded: [],
 	level: 0,
 	label: '',
-	loading: [],
-	selection: [],
 	treeIndex: ''
 };
 
