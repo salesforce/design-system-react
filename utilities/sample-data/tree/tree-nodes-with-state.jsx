@@ -129,9 +129,4 @@ const treeNodesWithState = [
 	}
 ];
 
-const initialExpanded = [treeNodesWithState[1], treeNodesWithState[1].nodes[1], treeNodesWithState[1].nodes[1].nodes[2], treeNodesWithState[1].nodes[1].nodes[3], treeNodesWithState[3]];
-const initialSelection = [treeNodesWithState[1].nodes[1].nodes[0]];
-
 module.exports.treeNodesWithState = treeNodesWithState;
-module.exports.initialExpanded = initialExpanded;
-module.exports.initialSelection = initialSelection;
