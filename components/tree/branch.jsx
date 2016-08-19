@@ -43,18 +43,6 @@ import shortid from 'shortid';
 // ## Constants
 import { TREE_BRANCH } from '../../utilities/constants';
 
-
-// Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
-const cssClasses = {
-	base: 'slds-item',
-	tree: 'slds-tree'
-};
-
-const idSuffixes = {
-	label: '__label'
-};
-
-
 /**
  * A Tree Item is a non-branching node in a hierarchical list.
  */
@@ -177,7 +165,7 @@ const Branch = (props) => {
 				treeIndex = `${props.treeIndex}-${treeIndex}`;
 			}
 
-			if (node.type === 'folder') {
+			if (node.type === 'branch') {
 				children.push(
 					<Branch
 						inlineLoader={inlineLoader}
@@ -217,7 +205,7 @@ const Branch = (props) => {
 		});
 	}
 
-	let branch = props.level === 0 ? renderInitialNode(children) : renderBranch(children);
+	const branch = props.level === 0 ? renderInitialNode(children) : renderBranch(children);
 	return branch;
 };
 
@@ -231,6 +219,10 @@ Branch.propTypes = {
 	 * List of expanded branches. A list of each branches `id` object key,
 	 * */
 	expanded: PropTypes.array,
+	/**
+	 * Function that will be called by every branch to receive its child nodes. `node` object with the branch data is passed into this function: `getNodes(node)`. `getNodes` can return a Promise and it will be resolved.
+	 */
+	getNodes: PropTypes.func,
 	/**
 	 * HTML `id` of primary element that has `.slds-tree` on it. This component has a wrapping container element outside of `.slds-tree`.
 	 */
@@ -299,6 +291,3 @@ Branch.getDefaultProps = {
 };
 
 module.exports = Branch;
-module.exports.cssClasses = cssClasses;
-module.exports.idSuffixes = idSuffixes;
-

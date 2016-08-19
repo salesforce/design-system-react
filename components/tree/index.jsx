@@ -19,31 +19,16 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { PropTypes } from 'react';
 
 // Child components
-import Branch, { cssClasses as branchCssClasses } from './branch';
+import Branch from './branch';
 
 // ### classNames
 import classNames from 'classnames';
-
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
 
 // Similar to React's PropTypes check. When in development mode, it issues errors in the console about properties.
 import checkProps from './check-props';
 
 // ## Constants
 import { TREE } from '../../utilities/constants';
-
-// Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
-const cssClasses = {
-	base: branchCssClasses.tree,
-	container: 'slds-tree_container'
-};
-
-const idSuffixes = {
-	heading: '__heading'
-};
 
 /**
  * A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed. This is a controlled component, since visual state is present in the `nodes` data.
@@ -60,52 +45,30 @@ const Tree = React.createClass({
 		 */
 		assistiveText: PropTypes.string,
 		/**
-		 * Class names to be added to the container element.
+		 * Class names to be added to the container element which has the heading and the `ul.slds-tree` element as children.
 		 */
 		containerClassName: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
 			PropTypes.string]),
 		/**
-		 * Class names to be added to the top-level `ul` element.
+		 * Class names to be added to the top-level `ul` element of the tree.
 		 */
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
 			PropTypes.string]),
 		/**
-		 * List of expanded branch objects `{label: 'Cat', id=2}`.
-		 * */
-		expanded: PropTypes.array,
-		/**
-		 * This is the tree's heading and describes it contents. It can be hidden, see `assistiveText`.
+		 * This is the tree's heading and describes its contents. It can be hidden, see `assistiveText`.
 		 * */
 		heading: React.PropTypes.string,
 		/**
 		 * HTML `id` of primary element that has `.slds-tree` on it. This component has a wrapping container element outside of `.slds-tree`.
 		 */
 		id: PropTypes.string.isRequired,
-		inlineBranchLoader: PropTypes.node,
+		inlineBranchLoader: PropTypes.bool,
 		/**
-		 * Allows the nodes prop to determine state, {label: 'My cool node', expanded: true, selected: true, type: 'folder', nodes: [...childNodes]}`. Useful if UI state is part of your application's state engine. Keys into your object can be configured with `nodeKeys`;
-		 */
-		nodeHasState: PropTypes.bool,
-		/**
-		 * Folder nodes that are currently loading. Once the nodes prop has been updated with the new folder contents, remove that node from this array.
-		 */
-		loading: PropTypes.array,
-		/**
-		 * Keys into your JSON object, so the data does not need to be iterated over and reformatted. The default expects `{label: 'My cool node', type: 'folder', nodes: [...childNodes]}`. `selected` and `expanded` are only needed it `nodeHasState` is true.
-		 */
-		nodeKeys: React.PropTypes.shape({
-			expanded: React.PropTypes.string,
-			label: React.PropTypes.string,
-			nodes: React.PropTypes.string,
-			selected: React.PropTypes.string,
-			type: React.PropTypes.string
-		}),
-		/**
-		 * Array of items starting at the top of the tree.
+		 * Array of items starting at the top of the tree. The required shape is: `{expanded: string, id: string, label: string, selected: string, type: string, nodes: array}`, but only `id` and `label` are required. Use `type: 'branch'` for folder and categories.
 		 */
 		nodes: PropTypes.array,
 		/**
@@ -121,23 +84,13 @@ const Tree = React.createClass({
 		 */
 		onScroll: PropTypes.func,
 		/**
-		 * An array of the currently selected items
-		 */
-		selection: PropTypes.array,
-		/**
-		 * Highlights term if found in node label
+		 * Highlights term if found in node label. This does not auto-expand branches.
 		 */
 		searchTerm: PropTypes.string,
 		/**
 		 * An object of CSS styles that are applied to `ul` element.
 		 */
 		style: PropTypes.object
-	},
-
-	getDefaultProps () {
-		return {
-			inlineBranchLoader: <i> [Loading]</i>
-		};
 	},
 
 	componentWillMount () {
@@ -201,5 +154,3 @@ const Tree = React.createClass({
 });
 
 module.exports = Tree;
-module.exports.cssClasses = cssClasses;
-module.exports.idSuffixes = idSuffixes;

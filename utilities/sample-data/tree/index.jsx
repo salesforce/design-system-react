@@ -9,12 +9,12 @@ const treeNodes = [
 	},
 	{
 		label: 'Fruits',
-		type: 'folder',
+		type: 'branch',
 		id: 2,
 		nodes: [
 			{
 				label: 'Ground Fruits',
-				type: 'folder',
+				type: 'branch',
 				id: 4,
 				nodes: [
 					{
@@ -30,7 +30,7 @@ const treeNodes = [
 			},
 			{
 				label: 'Tree Fruits',
-				type: 'folder',
+				type: 'branch',
 				id: 5,
 				nodes: [
 					{
@@ -46,7 +46,7 @@ const treeNodes = [
 					},
 					{
 						label: 'Citrus',
-						type: 'folder',
+						type: 'branch',
 						id: 17,
 						nodes: [{
 							label: 'Orange', type: 'item', id: 20
@@ -61,7 +61,7 @@ const treeNodes = [
 					},
 					{
 						label: 'Apples',
-						type: 'folder',
+						type: 'branch',
 						id: 18,
 						nodes: [
 							{
@@ -77,7 +77,7 @@ const treeNodes = [
 					},
 					{
 						label: 'Cherries',
-						type: 'folder',
+						type: 'branch',
 						id: 19,
 						nodes: [
 							{
@@ -106,7 +106,7 @@ const treeNodes = [
 	},
 	{
 		label: 'Nuts',
-		type: 'folder',
+		type: 'branch',
 		_iconClass: 'glyphicon-file',
 		id: 3,
 		nodes: [
@@ -123,7 +123,7 @@ const treeNodes = [
 	},
 	{
 		label: 'Empty folder',
-		type: 'folder',
+		type: 'branch',
 		id: 7
 	}
 ];
