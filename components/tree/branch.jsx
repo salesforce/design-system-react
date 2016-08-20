@@ -246,8 +246,8 @@ renderBranch.propTypes = {
  */
 const Branch = (props) => {
 	let treeIndex = '';
+	let children;
 
-	const children = [];
 	const {
 		treeId,
 		level,
@@ -255,8 +255,9 @@ const Branch = (props) => {
 		searchTerm
 	} = props;
 
-	if (isArray(props.node.nodes)) {
-		props.node.nodes.forEach((node, index) => {
+	if (isArray(props.getNodes(props.node))) {
+		children = props.node.nodes.map((node, index) => {
+			let child;
 			const htmlId = `${props.treeId}-${node.id}`;
 			treeIndex = `${index}`;
 			if (props.treeIndex) {
@@ -264,8 +265,9 @@ const Branch = (props) => {
 			}
 
 			if (node.type === 'branch') {
-				children.push(
+				child = (
 					<Branch
+						getNodes={props.getNodes}
 						htmlId={htmlId}
 						key={shortid.generate()}
 						label={node.label}
@@ -280,9 +282,8 @@ const Branch = (props) => {
 					/>
 				);
 			} else {
-				children.push(
+				child =  (
 					<Item
-						{...node}
 						label={node.label}
 						htmlId={htmlId}
 						key={shortid.generate()}
@@ -295,6 +296,7 @@ const Branch = (props) => {
 					/>
 				);
 			}
+			return child;
 		});
 	}
 

@@ -63,6 +63,7 @@ const Tree = (props) => {
 				id={`${id}__heading`}
 			>{headingText}</h4>
 			<Branch
+				getNodes={props.getNodes}
 				initalClassName={className}
 				htmlId={id}
 				initialStyle={style}
@@ -76,6 +77,10 @@ const Tree = (props) => {
 			/>
 		</div>
 	);
+};
+
+Tree.defaultProps = {
+	getNodes: (node) => node.nodes
 };
 
 // ### Display Name
@@ -102,6 +107,10 @@ Tree.propTypes = {
 		PropTypes.array,
 		PropTypes.object,
 		PropTypes.string]),
+	/**
+	 * A function that will be called by every branch to receive its child nodes. `node` object with the branch data is passed into this function: `getNodes(node)`. If your state engine is Flux or Redux, then your tree data structure will probably be flattened or normalized within the store. This will allow you to build out your tree without transversing a tree and may be more performant.
+	 */
+	getNodes: PropTypes.func,
 	/**
 	 * This is the tree's heading and describes its contents. It can be hidden, see `assistiveText`.
 	 * */
