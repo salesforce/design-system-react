@@ -33,124 +33,107 @@ import { TREE } from '../../utilities/constants';
 /**
  * A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed. This is a controlled component, since visual state is present in the `nodes` data.
  */
-const Tree = React.createClass({
-	// ### Display Name
-	// Always use the canonical component name as the React display name.
-	displayName: TREE,
+const Tree = (props) => {
+	// TODO: This may need to be cleaned up to alert a developer when they do both that the heading is hidden.
+	checkProps(TREE, props);
 
-	// ### Prop Types
-	propTypes: {
-		/**
-		 * For users of assistive technology, if set the heading will be hidden. One of `heading` or `assistiveText` must be set in order to label the tree.
-		 */
-		assistiveText: PropTypes.string,
-		/**
-		 * Class names to be added to the container element which has the heading and the `ul.slds-tree` element as children.
-		 */
-		containerClassName: PropTypes.oneOfType([
-			PropTypes.array,
-			PropTypes.object,
-			PropTypes.string]),
-		/**
-		 * Class names to be added to the top-level `ul` element of the tree.
-		 */
-		className: PropTypes.oneOfType([
-			PropTypes.array,
-			PropTypes.object,
-			PropTypes.string]),
-		/**
-		 * This is the tree's heading and describes its contents. It can be hidden, see `assistiveText`.
-		 * */
-		heading: React.PropTypes.string,
-		/**
-		 * HTML `id` of primary element that has `.slds-tree` on it. This component has a wrapping container element outside of `.slds-tree`.
-		 */
-		id: PropTypes.string.isRequired,
-		inlineBranchLoader: PropTypes.bool,
-		/**
-		 * Array of items starting at the top of the tree. The required shape is: `{expanded: string, id: string, label: string, selected: string, type: string, nodes: array}`, but only `id` and `label` are required. Use `type: 'branch'` for folder and categories.
-		 */
-		nodes: PropTypes.array,
-		/**
-		 * Function that will run whenever an item or branch is clicked.
-		 */
-		onClick: PropTypes.func.isRequired,
-		/**
-		 * This function triggers when the expand or collapse icon is clicked.
-		 */
-		onExpandClick: PropTypes.func.isRequired,
-		/**
-		 * This function triggers when the top-level `ul` element scrolls. This can be used to implement an "infinite scroll" pattern and update the `nodes` prop accordingly.
-		 */
-		onScroll: PropTypes.func,
-		/**
-		 * Highlights term if found in node label. This does not auto-expand branches.
-		 */
-		searchTerm: PropTypes.string,
-		/**
-		 * An object of CSS styles that are applied to `ul` element.
-		 */
-		style: PropTypes.object
-	},
+	const {
+		assistiveText,
+		containerClassName,
+		className,
+		heading,
+		id,
+		nodes,
+		onClick,
+		onExpandClick,
+		onScroll,
+		searchTerm,
+		style
+	} = props;
 
-	componentWillMount () {
-		// TODO: This may need to be cleaned up to alert a developer when they do both that the heading is hidden.
-		checkProps(TREE, this.props);
-	},
+	// One of these is required to pass accessibility tests
+	const headingText = assistiveText || heading;
 
-	// ### Render
-	render () {
-		const {
-			assistiveText,
-			containerClassName,
-			className,
-			expanded,
-			heading,
-			id,
-			inlineBranchLoader,
-			nodes,
-			loading,
-			onClick,
-			onExpandClick,
-			onScroll,
-			searchTerm,
-			selection,
-			style
-		} = this.props;
+	// Start the zero level branch--that is the tree root. There is no label for
+	// the tree root, but is required by all other nodes
+	return (
+		<div id={id} className={classNames('slds-tree_container', containerClassName)} role="application">
+			<h4
+				className={classNames('slds-text-title--caps', { 'slds-assistive-text': assistiveText })}
+				id={`${id}__heading`}
+			>{headingText}</h4>
+			<Branch
+				initalClassName={className}
+				htmlId={id}
+				initialStyle={style}
+				level={0}
+				node={{ nodes }}
+				onClick={onClick}
+				onExpandClick={onExpandClick}
+				onScroll={onScroll}
+				searchTerm={searchTerm}
+				treeId={id}
+			/>
+		</div>
+	);
+};
 
-		// One of these is required to pass accessibility tests
-		const headingText = assistiveText || heading;
+// ### Display Name
+// Always use the canonical component name as the React display name.
+Tree.displayName = TREE;
 
-
-		// Start the zero level branch--that is the tree root. There is no label for
-		// the tree root, but is required by all other nodes
-		return (
-			<div id={id} className={classNames('slds-tree_container', containerClassName)} role="application">
-				{headingText
-					? <h4
-						className={classNames('slds-text-title--caps', { 'slds-assistive-text': assistiveText })}
-						id={`${id}__heading`}
-					>{headingText}</h4>
-					: null}
-				<Branch
-					inlineLoader={inlineBranchLoader}
-					expanded={expanded}
-					initalClassName={className}
-					htmlId={id}
-					initialStyle={style}
-					level={0}
-					loading={loading}
-					node={{ nodes }}
-					onClick={onClick}
-					onExpandClick={onExpandClick}
-					onScroll={onScroll}
-					searchTerm={searchTerm}
-					selection={selection}
-					treeId={id}
-				/>
-			</div>
-		);
-	}
-});
+// ### Prop Types
+Tree.propTypes = {
+	/**
+	 * For users of assistive technology, if set the heading will be hidden. One of `heading` or `assistiveText` must be set in order to label the tree.
+	 */
+	assistiveText: PropTypes.string,
+	/**
+	 * Class names to be added to the container element which has the heading and the `ul.slds-tree` element as children.
+	 */
+	containerClassName: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string]),
+	/**
+	 * Class names to be added to the top-level `ul` element of the tree.
+	 */
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string]),
+	/**
+	 * This is the tree's heading and describes its contents. It can be hidden, see `assistiveText`.
+	 * */
+	heading: React.PropTypes.string,
+	/**
+	 * HTML `id` of primary element that has `.slds-tree` on it. This component has a wrapping container element outside of `.slds-tree`.
+	 */
+	id: PropTypes.string.isRequired,
+	/**
+	 * Array of items starting at the top of the tree. The required shape is: `{expanded: string, id: string, label: string, selected: string, type: string, nodes: array}`, but only `id` and `label` are required. Use `type: 'branch'` for folder and categories.
+	 */
+	nodes: PropTypes.array,
+	/**
+	 * Function that will run whenever an item or branch is clicked.
+	 */
+	onClick: PropTypes.func.isRequired,
+	/**
+	 * This function triggers when the expand or collapse icon is clicked.
+	 */
+	onExpandClick: PropTypes.func.isRequired,
+	/**
+	 * This function triggers when the top-level `ul` element scrolls. This can be used to implement an "infinite scroll" pattern and update the `nodes` prop accordingly.
+	 */
+	onScroll: PropTypes.func,
+	/**
+	 * Highlights term if found in node label. This does not auto-expand branches.
+	 */
+	searchTerm: PropTypes.string,
+	/**
+	 * An object of CSS styles that are applied to `ul` element.
+	 */
+	style: PropTypes.object
+};
 
 module.exports = Tree;

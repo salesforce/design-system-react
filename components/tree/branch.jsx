@@ -43,118 +43,216 @@ import shortid from 'shortid';
 // ## Constants
 import { TREE_BRANCH } from '../../utilities/constants';
 
+const handleExpandClick = (event, props) => {
+	EventUtil.trap(event);
+
+	if (isFunction(props.onExpandClick)) {
+		props.onExpandClick(event, {
+			node: props.node,
+			expand: !props.node.expanded,
+			treeIndex: props.treeIndex
+		});
+	}
+};
+
+const handleClick = (event, props) => {
+	EventUtil.trap(event);
+	if (isFunction(props.onClick)) {
+		props.onClick(event, {
+			node: props.node,
+			select: !props.node.selected,
+			treeIndex: props.treeIndex
+		});
+	}
+};
+
+const handleScroll = (event, props) => {
+	const percentage = (event.target.scrollTop) / (event.target.scrollHeight - event.target.clientHeight) * 100;
+
+	if (isFunction(props.onScroll)) {
+		props.onScroll(event, {
+			percentage
+		});
+	}
+};
+
+const renderInitialNode = (children, props) => (
+	// id intentionally not rendered here, and is present on container that includes the header
+	<ul
+		aria-labelledby={`${props.htmlId}__heading`}
+		// TODO
+		// aria-activedescendant=""
+		className={classNames('slds-tree', props.initalClassName)}
+		onScroll={(event) => { handleScroll(event, props); }}
+		role="tree"
+		style={props.initialStyle}
+		// tabIndex="0"
+	>
+		{children}
+	</ul>
+);
+
+renderInitialNode.displayName = 'InitialNode';
+
+renderInitialNode.propTypes = {
+	/**
+	 * HTML `id` of primary element that has `.slds-tree` on it. This component has a wrapping container element outside of `.slds-tree`.
+	 */
+	htmlId: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string]).isRequired,
+	/*
+	 * Class names to be added to the top-level `ul` element.
+	 */
+	initalClassName: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string]),
+	/*
+	 * Styles to be added to the top-level `ul` element. Useful for `overflow:hidden`.
+	 */
+	initialStyle: PropTypes.object
+};
+
+// Most of these props come from the nodes array, not from the Tree props
+const renderBranch = (children, props) => {
+	const isExpanded = props.node.expanded;
+	const isSelected = props.node.selected;
+	const isLoading = props.node.loading;
+
+	// TODO: Remove tabbing from anchor tag AND button / add tabIndex={-1} when keyboard navigation is present.
+	return (
+		<li
+			id={props.htmlId}
+			role="treeitem"
+			aria-level={props.level}
+			aria-expanded={isExpanded ? 'true' : 'false'}
+		>
+			<div
+				className={classNames('slds-tree__item', { 'slds-is-selected': isSelected })}
+				onClick={(event) => { handleClick(event, props); }}
+			>
+				<Button
+					assistiveText="Toggle"
+					iconName="chevronright"
+					iconSize="small"
+					variant="icon"
+					className="slds-m-right--small"
+					aria-controls={props.htmlId}
+					onClick={(event) => { handleExpandClick(event, props); }}
+				/>
+				<a
+					id={`${props.htmlId}__label`}
+					href="#"
+					role="presentation"
+					className="slds-truncate"
+				>{<Highlighter search={props.searchTerm}>{props.label}</Highlighter>}
+				</a>
+			</div>
+			{isLoading ?
+				<div
+					style={{
+						display: 'block',
+						paddingLeft: `${1.5 * props.level + 1.5}rem`,
+						marginTop: '.5rem' }}
+				>
+					<div
+						style={{
+							borderRadius: '15rem',
+							display: 'block',
+							marginBottom: '.75rem',
+							height: '.5rem',
+							backgroundColor: 'rgb(224, 229, 238)',
+							width: '40%' }}
+					/>
+					<div
+						style={{
+							borderRadius: '15rem',
+							display: 'block',
+							marginBottom: '.75rem',
+							height: '.5rem',
+							backgroundColor: 'rgb(224, 229, 238)',
+							width: '80%' }}
+					/>
+					<div
+						style={{
+							borderRadius: '15rem',
+							display: 'block',
+							marginBottom: '.75rem',
+							height: '.5rem',
+							backgroundColor: 'rgb(224, 229, 238)',
+							width: '60%' }}
+					/>
+				</div>
+			: null}
+			<ul
+				className={classNames({
+					'slds-is-expanded': isExpanded,
+					'slds-is-collapsed': !isExpanded
+				})}
+				role="group"
+				aria-labelledby={`${props.htmlId}__label`}
+			> {isExpanded && !isLoading ? children : null}
+			</ul>
+		</li>
+	);
+};
+
+renderBranch.displayName = 'Branch';
+
+renderBranch.propTypes = {
+	/**
+	 * HTML `id` of primary element that has `.slds-tree` on it. This component has a wrapping container element outside of `.slds-tree`.
+	 */
+	htmlId: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string]).isRequired,
+	/**
+	 * All tree nodes must have a unique HTML `id` for users of assistive technology. If no `id` key is present in the  is provided, one will be generated.
+	 */
+	index: PropTypes.number,
+	/**
+	 * The text of the tree item.
+	 */
+	label: PropTypes.string,
+	/**
+	 * The number of nestings. Determines the ARIA level and style alignment.
+	 */
+	level: PropTypes.number.isRequired,
+	/**
+	 * The current node that is being rendered.
+	 */
+	node: PropTypes.object.isRequired,
+	/**
+	 * Function that will run whenever an item or branch is clicked.
+	 */
+	onClick: PropTypes.func,
+	/**
+	 * This function triggers when the expand or collapse icon is clicked.
+	 */
+	onExpandClick: PropTypes.func.isRequired,
+	/**
+	 * Highlights term if found in node label
+	 */
+	searchTerm: PropTypes.string,
+	/**
+	 * Location of node (zero index). First node is `0`. It's first child is `0-0`. This can be used to modify your nodes without searching for the node. This index is only valid if the `nodes` prop is the same as at the time of the event.
+	 */
+	treeIndex: PropTypes.string
+};
+
 /**
  * A Tree Item is a non-branching node in a hierarchical list.
  */
 const Branch = (props) => {
 	let treeIndex = '';
 
-	const handleExpandClick = (event) => {
-		EventUtil.trap(event);
-
-		if (isFunction(props.onExpandClick)) {
-			props.onExpandClick(event, {
-				node: props.node,
-				expand: !props.node.expanded,
-				treeIndex: props.treeIndex
-			});
-		}
-	};
-
-	const handleClick = (event) => {
-		EventUtil.trap(event);
-		if (isFunction(props.onClick)) {
-			props.onClick(event, {
-				node: props.node,
-				select: !props.node.selected,
-				treeIndex: props.treeIndex
-			});
-		}
-	};
-
-	const handleScroll = (event) => {
-		const percentage = (event.target.scrollTop) / (event.target.scrollHeight - event.target.clientHeight) * 100;
-
-		if (isFunction(props.onScroll)) {
-			props.onScroll(event, {
-				percentage
-			});
-		}
-	};
-
-	const renderInitialNode = (children) => (
-		// id intentionally not rendered here, and is present on container that includes the header
-		<ul
-			aria-labelledby={`${props.htmlId}__heading`}
-			// TODO
-			// aria-activedescendant=""
-			className={classNames('slds-tree', props.initalClassName)}
-			onScroll={handleScroll}
-			role="tree"
-			style={props.initialStyle}
-			// tabIndex="0"
-		>
-			{children}
-		</ul>
-	);
-
-	renderInitialNode.displayName = 'InitialNode';
-
-	// Most of these props come from the nodes array, not from the Tree props
-	const renderBranch = (children) => {
-		const isExpanded = props.node.expanded;
-		const isSelected = props.node.selected;
-		const isLoading = props.node.loading;
-
-		// TODO: Remove tabbing from anchor tag AND button / add tabIndex={-1} when keyboard navigation is present.
-		return (
-			<li
-				id={props.htmlId}
-				role="treeitem"
-				aria-level={props.level}
-				aria-expanded={isExpanded ? 'true' : 'false'}
-			>
-				<div className={classNames('slds-tree__item', { 'slds-is-selected': isSelected })} onClick={handleClick}>
-					<Button
-						assistiveText="Toggle"
-						iconName="chevronright"
-						iconSize="small"
-						variant="icon"
-						className="slds-m-right--small"
-						aria-controls={props.htmlId}
-						onClick={handleExpandClick}
-					/>
-					<a
-						id={`${props.htmlId}__label`}
-						href="#"
-						role="presentation"
-						className="slds-truncate"
-					>{<Highlighter search={props.searchTerm}>{props.label}</Highlighter>}
-					{isLoading ? props.inlineLoader : null}</a>
-				</div>
-				{isExpanded
-				?	<ul
-						className={classNames({ 'slds-is-expanded': isExpanded, 'slds-is-collapsed': !isExpanded })}
-						role="group"
-						aria-labelledby={`${props.htmlId}__label`}
-				> {children}
-				</ul>
-				: null}
-			</li>
-		);
-	};
-
-	renderBranch.displayName = 'Branch';
-
 	const children = [];
 	const {
 		treeId,
 		level,
 		onExpandClick,
-		inlineLoader,
-		loading,
-		searchTerm,
-		selection
+		searchTerm
 	} = props;
 
 	if (isArray(props.node.nodes)) {
@@ -168,19 +266,15 @@ const Branch = (props) => {
 			if (node.type === 'branch') {
 				children.push(
 					<Branch
-						inlineLoader={inlineLoader}
-						expanded={props.expanded}
 						htmlId={htmlId}
 						key={shortid.generate()}
 						label={node.label}
 						level={level + 1}
-						loading={loading}
 						node={node}
 						nodes={node.nodes}
 						onClick={props.onClick}
 						onExpandClick={onExpandClick}
 						searchTerm={searchTerm}
-						selection={selection}
 						treeId={treeId}
 						treeIndex={treeIndex}
 					/>
@@ -196,7 +290,6 @@ const Branch = (props) => {
 						node={node}
 						onClick={props.onClick}
 						searchTerm={searchTerm}
-						selection={selection}
 						treeIndex={treeIndex}
 						treeId={treeId}
 					/>
@@ -205,7 +298,7 @@ const Branch = (props) => {
 		});
 	}
 
-	const branch = props.level === 0 ? renderInitialNode(children) : renderBranch(children);
+	const branch = props.level === 0 ? renderInitialNode(children, props) : renderBranch(children, props);
 	return branch;
 };
 
@@ -215,10 +308,6 @@ Branch.displayName = TREE_BRANCH;
 
 // ### Prop Types
 Branch.propTypes = {
-	/**
-	 * List of expanded branches. A list of each branches `id` object key,
-	 * */
-	expanded: PropTypes.array,
 	/**
 	 * Function that will be called by every branch to receive its child nodes. `node` object with the branch data is passed into this function: `getNodes(node)`. `getNodes` can return a Promise and it will be resolved.
 	 */
@@ -253,7 +342,6 @@ Branch.propTypes = {
 	 * The number of nestings. Determines the ARIA level and style alignment.
 	 */
 	level: PropTypes.number.isRequired,
-	inlineLoader: PropTypes.node,
 	/**
 	 * The current node that is being rendered.
 	 */
@@ -270,10 +358,6 @@ Branch.propTypes = {
 	 * Highlights term if found in node label
 	 */
 	searchTerm: PropTypes.string,
-	/**
-	 * An array of the currently selected items
-	 */
-	selection: PropTypes.array,
 	/**
 	 * Unique id used for a prefix of all tree nodes
 	 */

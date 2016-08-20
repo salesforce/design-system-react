@@ -23,15 +23,6 @@ import Button from '../button';
 // ### classNames
 import classNames from 'classnames';
 
-// ### reject
-import reject from 'lodash.reject';
-
-// ### omit
-import omit from 'lodash.omit';
-
-// ### find
-import find from 'lodash.find';
-
 import Highlighter from '../utilities/highlighter';
 
 // ### isFunction
@@ -43,28 +34,19 @@ import { EventUtil } from '../../utilities';
 // ## Constants
 import { TREE_ITEM } from '../../utilities/constants';
 
-// Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
-const cssClasses = {
-	base: 'slds-item'
-};
 
-const idSuffixes = {
-	base: '__body'
+const	handleClick = (event, props) => {
+	EventUtil.trap(event);
+
+	if (isFunction(props.onClick)) {
+		props.onClick(event, { node: props.node, select: !props.node.selected, treeIndex: props.treeIndex });
+	}
 };
 
 /**
  * A Tree Item is a non-branching node in a hierarchical list.
  */
 const Item = (props) => {
-	const	handleClick = (event) => {
-		EventUtil.trap(event);
-
-		if (isFunction(props.onClick)) {
-			props.onClick(event, { node: props.node, select: !props.node.selected, treeIndex: props.treeIndex });
-		}
-	};
-
-	// ### Render
 	const isSelected = props.node.selected;
 
 	// TODO: Remove tabbing from anchor tag / add tabIndex={-1} when keyboard navigation is present.
@@ -73,10 +55,10 @@ const Item = (props) => {
 			<div
 				className={classNames('slds-tree__item', { 'slds-is-selected': isSelected })}
 				aria-selected={isSelected ? 'true' : 'false'}
-				onClick={handleClick}
+				onClick={(event) => handleClick(event, props)}
 			>
 				<Button
-					assistiveText="Toggle"
+					assistiveText=""
 					iconName="chevronright"
 					iconSize="small"
 					iconVariant="bare"
@@ -123,10 +105,6 @@ Item.propTypes = {
 	 */
 	searchTerm: PropTypes.string,
 	/**
-	 * An array of the currently selected items
-	 */
-	selection: PropTypes.array,
-	/**
 	 * Unique id used for a prefix of all tree nodes
 	 */
 	treeId: PropTypes.string,
@@ -141,6 +119,3 @@ Item.getDefaultProps = {
 };
 
 module.exports = Item;
-module.exports.cssClasses = cssClasses;
-module.exports.idSuffixes = idSuffixes;
-
