@@ -120,6 +120,41 @@ const renderBranch = (children, props) => {
 	const isSelected = props.node.selected;
 	const isLoading = props.node.loading;
 
+	const loader = (<div
+		style={{
+			display: 'block',
+			paddingLeft: `${1.5 * props.level + 1.5}rem`,
+			marginTop: '.5rem' }}
+	>
+		<div
+			style={{
+				borderRadius: '15rem',
+				display: 'block',
+				marginBottom: '.75rem',
+				height: '.5rem',
+				backgroundColor: 'rgb(224, 229, 238)',
+				width: '40%' }}
+		/>
+		<div
+			style={{
+				borderRadius: '15rem',
+				display: 'block',
+				marginBottom: '.75rem',
+				height: '.5rem',
+				backgroundColor: 'rgb(224, 229, 238)',
+				width: '80%' }}
+		/>
+		<div
+			style={{
+				borderRadius: '15rem',
+				display: 'block',
+				marginBottom: '.75rem',
+				height: '.5rem',
+				backgroundColor: 'rgb(224, 229, 238)',
+				width: '60%' }}
+		/>
+	</div>);
+
 	// TODO: Remove tabbing from anchor tag AND button / add tabIndex={-1} when keyboard navigation is present.
 	return (
 		<li
@@ -148,52 +183,14 @@ const renderBranch = (children, props) => {
 					className="slds-truncate"
 				>{<Highlighter search={props.searchTerm}>{props.label}</Highlighter>}
 				</a>
-			</div>
-			{isLoading ?
-				<div
-					style={{
-						display: 'block',
-						paddingLeft: `${1.5 * props.level + 1.5}rem`,
-						marginTop: '.5rem' }}
-				>
-					<div
-						style={{
-							borderRadius: '15rem',
-							display: 'block',
-							marginBottom: '.75rem',
-							height: '.5rem',
-							backgroundColor: 'rgb(224, 229, 238)',
-							width: '40%' }}
-					/>
-					<div
-						style={{
-							borderRadius: '15rem',
-							display: 'block',
-							marginBottom: '.75rem',
-							height: '.5rem',
-							backgroundColor: 'rgb(224, 229, 238)',
-							width: '80%' }}
-					/>
-					<div
-						style={{
-							borderRadius: '15rem',
-							display: 'block',
-							marginBottom: '.75rem',
-							height: '.5rem',
-							backgroundColor: 'rgb(224, 229, 238)',
-							width: '60%' }}
-					/>
-				</div>
-			: null}
-			<ul
+			</div>{isLoading ? loader : null}<ul
 				className={classNames({
 					'slds-is-expanded': isExpanded,
 					'slds-is-collapsed': !isExpanded
 				})}
 				role="group"
 				aria-labelledby={`${props.htmlId}__label`}
-			> {isExpanded && !isLoading ? children : null}
-			</ul>
+			>{isExpanded && !isLoading ? children : null}</ul>
 		</li>
 	);
 };
