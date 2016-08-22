@@ -156,7 +156,7 @@ const AppLauncher = React.createClass({
 					className="slds-app-launcher__header-search"
 					ref={(component) => {
 						if (component) {
-							if (!this.focusedOnSearch && this.props.search) {
+							if (!this.focusedOnSearch) {
 								const input = component.querySelector('input');
 								if (input) {
 									// push to end of stack so click event doesn't blur the focus
