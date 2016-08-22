@@ -25,15 +25,15 @@ const DemoTree = React.createClass({
 
 	getDefaultProps () {
 		return {
-			exampleNodesIndex: 'treeNodes',
-			id: 'TreeStory'
+			exampleNodesIndex: 'sampleNodesDefault',
+			id: 'example-tree'
 		};
 	},
 
 	getInitialState () {
 		const initalNodes = this.props.exampleNodesIndex
 		? sampleNodes[this.props.exampleNodesIndex]
-		: sampleNodes.treeNodes;
+		: sampleNodes.sampleNodesDefault;
 		return {
 			nodes: initalNodes,
 			searchTerm: this.props.searchable ? 'fruit' : undefined
@@ -64,7 +64,7 @@ const DemoTree = React.createClass({
 			itemClicked('Node Clicked')(event, data);
 		} else {
 			if (!this.props.noBranchSelection ||
-				(this.props.noBranchSelection && data.node.type !== 'folder')) {
+				(this.props.noBranchSelection && data.node.type !== 'branch')) {
 				data.node.selected = data.select;
 				this.forceUpdate();
 				itemClicked('Node Clicked')(event, data);
@@ -108,7 +108,7 @@ storiesOf(TREE, module)
 	.add('Base', () => <DemoTree heading="Miscellaneous Foods" />)
 	.add('Initial Expanded/Selection', () => <DemoTree
 		heading="Miscellaneous Foods"
-		exampleNodesIndex="treeNodesWithState"
+		exampleNodesIndex="sampleNodesWithInitialState"
 	/>)
 	.add('No Branch Select', () => <DemoTree
 		heading="Miscellaneous Foods"
@@ -122,7 +122,7 @@ storiesOf(TREE, module)
 	.add('Overflow Hidden', () =>
 		<DemoTree
 			heading="Miscellaneous Foods"
-			exampleNodesIndex="manyNodes"
+			exampleNodesIndex="sampleNodesWithLargeDataset"
 			style={{
 				height: '300px',
 				overflowY: 'auto'
@@ -131,7 +131,7 @@ storiesOf(TREE, module)
 	)
 	.add('Large dataset (300+)', () => <DemoTree
 		heading="Miscellaneous Foods"
-		exampleNodesIndex="manyNodes"
+		exampleNodesIndex="sampleNodesWithLargeDataset"
 	/>)
 	.add('Highlighted Search', () => <DemoTree
 		heading="Results for fruit"

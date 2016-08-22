@@ -1,7 +1,7 @@
-import manyNodes from './tree-nodes-large-dataset';
-import { treeNodesWithState } from './tree-nodes-with-state';
+import sampleNodesWithLargeDataset from './sample-nodes-with-large-dataset';
+import sampleNodesWithInitialState from './sample-nodes-with-initial-state';
 
-const treeNodes = [
+const sampleNodesDefault = [
 	{
 		label: 'Grains',
 		type: 'item',
@@ -128,11 +128,6 @@ const treeNodes = [
 	}
 ];
 
-const initialExpanded = [treeNodes[1], treeNodes[1].nodes[1], treeNodes[1].nodes[1].nodes[2], treeNodes[1].nodes[1].nodes[3], treeNodes[3]];
-const initialSelection = [treeNodes[1].nodes[1].nodes[0]];
-
-module.exports.treeNodes = treeNodes;
-module.exports.manyNodes = manyNodes;
-module.exports.treeNodesWithState = treeNodesWithState;
-module.exports.initialExpanded = initialExpanded;
-module.exports.initialSelection = initialSelection;
+module.exports.sampleNodesDefault = sampleNodesDefault;
+module.exports.sampleNodesWithLargeDataset = sampleNodesWithLargeDataset;
+module.exports.sampleNodesWithInitialState = sampleNodesWithInitialState;

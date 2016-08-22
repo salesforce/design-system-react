@@ -250,7 +250,7 @@ const DemoAppLauncher = React.createClass({
 
 	render () {
 		const search = <Search onChange={this.onSearch} placeholder="Find an app" assistiveText="Find an app" />;
-		const modalHeaderButton = <Button label="App Exchange" onclick={action('Modal Button clicked!')} />;
+		const modalHeaderButton = <Button label="App Exchange" onClick={action('Modal Button clicked!')} />;
 
 		return (
 			<GlobalNavigationBar>

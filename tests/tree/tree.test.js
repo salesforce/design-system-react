@@ -12,16 +12,14 @@ import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 // `this.wrapper` and `this.dom` is set in the helpers file
 import { mountComponent, unmountComponent } from '../enzyme-helpers';
-import {
-	treeNodes,
-	initialExpanded,
-	initialSelection
-} from '../../utilities/sample-data/tree';
 
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
+import sampleNodes from '../../utilities/sample-data/tree';
+
 import Tree from '../../components/tree';
+import Search from '../../components/forms/input/search';
 
 chai.use(chaiEnzyme());
 
@@ -34,73 +32,107 @@ const DemoTree = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
-		initialExpanded: PropTypes.array,
-		initialSelection: PropTypes.array,
-		noBranchSelection: PropTypes.bool,
-		singleSelection: PropTypes.bool,
 		branchExpandClicked: PropTypes.func,
-		itemClicked: PropTypes.func
+		exampleNodesIndex: PropTypes.string,
+		itemClicked: PropTypes.func,
+		noBranchSelection: PropTypes.bool,
+		searchTerm: PropTypes.string,
+		searchable: PropTypes.bool,
+		singleSelection: PropTypes.bool,
+		treeScrolled: PropTypes.func
 	},
 
 	getDefaultProps () {
 		return {
-			initialExpanded: [],
-			initialSelection: []
+			exampleNodesIndex: 'sampleNodesDefault',
+			id: 'example-tree'
 		};
 	},
 
 	getInitialState () {
+		const initalNodes = this.props.exampleNodesIndex
+		? sampleNodes[this.props.exampleNodesIndex]
+		: sampleNodes.sampleNodesDefault;
 		return {
-			nodes: treeNodes,
-			// Open: Fruits, Tree Fruits, Citrus, Apples, Empty Folder (2, 5, 17, 18, 7)
-			expanded: this.props.initialExpanded,
-			// Selected: Peaches
-			selection: this.props.initialSelection
+			nodes: initalNodes,
+			searchTerm: this.props.searchable ? 'fruit' : undefined
 		};
 	},
 
-	handleExpandClick (expanded) {
+	// By default Tree can have multiple selected nodes and folders/branches can be selected. To disable either of these, you can use the following logic. However, `props` are immutable. The node passed in shouldn't be modified, and due to object and arrays being reference variables, forceUpate is needed. This is just a "working example" not a prescription.
+	handleExpandClick (event, data) {
 		if (isFunction(this.props.branchExpandClicked)) {
-			this.props.branchExpandClicked();
+			this.props.branchExpandClicked(event, data);
 		}
-		this.state.expanded = expanded;
+		data.node.loading = data.expand ? true : undefined;
+
+		// Fake delay to demonstrate use of loading node attibute
+		setTimeout((node) => {
+			node.loading = false;
+			this.forceUpdate();
+		}, 500, data.node);
+		data.node.expanded = data.expand;
 	},
 
-	// By default Tree can have multiple selected nodes and folders/branches can be
-	// selected. To disable either of these, use the following conditions.
-	handleClick (selection, clickedItem) {
-		if (isFunction(this.props.itemClicked)) {
-			this.props.itemClicked();
-		}
-		// itemClicked('Node Clicked')(selection, clickedItem, ...rest);
-		if (!this.props.singleSelection) {
-			if (!this.props.noBranchSelection ||
-				(this.props.noBranchSelection && clickedItem.type !== 'folder')) {
-				this.state.selection = selection;
+	handleClick (event, data) {
+		console.log(this.props.itemClicked);
+		if (this.props.singleSelection) {
+			data.node.selected = data.select;
+			this.setState({ singleSelection: data.node });
+			if (this.state.singleSelection) {
+				this.state.singleSelection.selected = undefined;
+			}
+			this.forceUpdate();
+			if (isFunction(this.props.itemClicked)) {
+				this.props.itemClicked(event, data);
 			}
 		} else {
-			this.state.selection = [clickedItem];
+			if (!this.props.noBranchSelection ||
+				(this.props.noBranchSelection && data.node.type !== 'branch')) {
+				data.node.selected = data.select;
+				this.forceUpdate();
+				if (isFunction(this.props.itemClicked)) {
+					this.props.itemClicked(event, data);
+				}
+			}
 		}
+	},
+
+	handleScroll (event, data) {
+		if (isFunction(this.props.treeScrolled)) {
+			this.props.treeScrolled(event, data);
+		}
+	},
+
+	handleSearchChange (event) {
+		this.setState({ searchTerm: event.target.value });
 	},
 
 	render () {
 		return (
-			<Tree
-				id="example-tree"
-				nodes={this.state.nodes}
-				onExpandClick={this.handleExpandClick}
-				onClick={this.handleClick}
-				expanded={this.state.expanded}
-				selection={this.state.selection}
-				{...this.props}
-			/>
+			<div>{
+				this.props.searchable
+				? <div>
+					<Search assistiveText="Search Tree" value={this.state.searchTerm} onChange={this.handleSearchChange} />
+					<br />
+				</div>
+				: null
+			}
+				<Tree
+					id="example-tree"
+					nodes={this.state.nodes}
+					onExpandClick={this.handleExpandClick}
+					onClick={this.handleClick}
+					onScroll={this.handleScroll}
+					searchTerm={this.state.searchTerm}
+					{...this.props}
+				/>
+			</div>
 		);
 	}
 });
 
 describe('Tree: ', () => {
-	// Base defaults
-
 	/*
 		Tests
 	 */
@@ -134,57 +166,56 @@ describe('Tree: ', () => {
 		});
 	});
 
-	/*
-	 * setTimeOut should not be used, a callback in `getNodes` should be used
-	 */
-	describe('Initial Expanded and Selection', () => {
+	describe('Initial Expanded and Selection based on nodes', () => {
 		beforeEach(mountComponent(
-			<DemoTree heading="Foods" initialSelection={initialSelection} initialExpanded={initialExpanded} />
+			<DemoTree
+				heading="Foods"
+				exampleNodesIndex="sampleNodesWithInitialState"
+			/>
 		));
 
 		afterEach(unmountComponent);
 
-		it('has initial selection id', function (done) {
-			setTimeout(() => {
-				const component = this.wrapper.find('.slds-tree[aria-activedescendant="15"]');
-				expect(component).to.have.length(1);
-				done();
-			}, 200);
+		it('has initial selection', function () {
+			let selectedNode = this.wrapper.find('#example-tree-1').find('.slds-is-selected');
+			expect(selectedNode).to.have.length(1);
+			selectedNode = this.wrapper.find('#example-tree-5').find('.slds-is-selected');
+			expect(selectedNode).to.have.length(1);
 		});
 
-		it('has initial expanded branches', function (done) {
-			setTimeout(() => {
-				const expandedBranches = this.wrapper.find('li[aria-expanded="true"]');
-				expect(expandedBranches).to.have.length(5);
-				// TODO: add foreach to cycle through and check for correct IDs
-				done();
-			}, 200);
+		it('has initial expanded branches', function () {
+			const expandedBranchList = this.wrapper.find('#example-tree-2').find('.slds-is-expanded');
+			expect(expandedBranchList.node.childNodes).to.have.length(2);
 		});
 	});
 
-	describe('Expand and selects on click', () => {
-		it('branch expands and closes', function (done) {
+	describe('Branch and items expand and select on click', () => {
+		it('branch expands and closes, selects and deselects', function () {
+			const itemClicked = sinon.spy();
 			const expandClicked = sinon.spy();
 
 			const instance = (
 				<DemoTree
 					branchExpandClicked={expandClicked}
+					itemClicked={itemClicked}
 					heading="Foods"
 				/>
 			);
 
 			this.wrapper = mount(instance, { attachTo: document.body.appendChild(document.createElement('div')) });
-			setTimeout(() => {
-				const expandedButton = this.wrapper.first('.slds-button');
-				expandedButton.simulate('click');
-				expect(expandClicked.callCount).to.equal(1);
-				expandedButton.simulate('click');
-				expect(expandClicked.callCount).to.equal(2);
-				done();
-			}, 200);
+			const expandButton = this.wrapper.find('#example-tree-2').find('.slds-button');
+			expandButton.simulate('click');
+			expect(expandClicked.callCount).to.equal(1);
+			expandButton.simulate('click');
+			expect(expandClicked.callCount).to.equal(2);
+			expandButton.simulate('click');
+
+			const branch = this.wrapper.find('#example-tree-2').find('.slds-tree__item');
+			branch.simulate('click');
+			expect(itemClicked.callCount).to.equal(1);
 		});
 
-		it('branch selects and unselects', function (done) {
+		it('item selects', function () {
 			const itemClicked = sinon.spy();
 
 			const instance = (
@@ -195,18 +226,10 @@ describe('Tree: ', () => {
 			);
 
 			this.wrapper = mount(instance, { attachTo: document.body.appendChild(document.createElement('div')) });
-			setTimeout(() => {
-				const item = this.wrapper.first('.slds-item');
-				// verify if closed?
-				item.simulate('click');
-				expect(itemClicked.callCount).to.equal(1);
-				// verify if open?
-				item.simulate('click');
-				expect(itemClicked.callCount).to.equal(2);
-				done();
-			}, 200);
+			const item = this.wrapper.find('#example-tree-1').find('.slds-tree__item');
+			item.simulate('click');
+			expect(itemClicked.callCount).to.equal(1);
 		});
 	});
 	
-	// test getNodes? in some ways it's always being tested--just not as an external Promise.
 });

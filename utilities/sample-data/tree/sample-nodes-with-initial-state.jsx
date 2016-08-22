@@ -1,15 +1,15 @@
-const treeNodesWithState = [
+const treeNodesWithInitialState = [
 	{
 		label: 'Grains',
 		type: 'item',
 		id: 1,
-		treeNodeSelected: true
+		selected: true
 	},
 	{
 		label: 'Fruits',
 		type: 'branch',
 		id: 2,
-		treeNodeExpanded: true,
+		expanded: true,
 		nodes: [
 			{
 				label: 'Ground Fruits',
@@ -31,7 +31,7 @@ const treeNodesWithState = [
 				label: 'Tree Fruits',
 				type: 'branch',
 				id: 5,
-				treeNodeSelected: true,
+				selected: true,
 				nodes: [
 					{
 						label: 'Peaches',
@@ -125,8 +125,8 @@ const treeNodesWithState = [
 		label: 'Empty folder',
 		type: 'branch',
 		id: 7,
-		treeNodeExpanded: true
+		expanded: true
 	}
 ];
 
-module.exports.treeNodesWithState = treeNodesWithState;
+module.exports = treeNodesWithInitialState;
