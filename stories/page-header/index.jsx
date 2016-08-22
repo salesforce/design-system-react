@@ -58,8 +58,9 @@ const customTooltip = () => {
 	return (
 		<PopoverTooltip
 			align="top"
-			content={content}>
-			<p tabIndex="0" className='slds-text-title slds-truncate'>
+			content={content}
+		>
+			<p tabIndex="0" className="slds-truncate">
 				{content}
 			</p>
 		</PopoverTooltip>
@@ -70,7 +71,7 @@ const recordHomeDetails = [
 	{ label: 'Field 1', content: 'Description that demonstrates truncation with content. Description that demonstrates truncation with content.', flavor: '1-of-4', truncate: true },
 	{ label: 'Field 2', content: 'Multiple Values' },
 	{ label: 'Field 3', content: customTooltip(), flavor: '1-of-4' },
-	{ label: 'Field 4', content: 'Description (2-line truncation)'}
+	{ label: 'Field 4', content: 'Description (2-line truncation)' }
 ];
 
 

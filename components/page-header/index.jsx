@@ -122,7 +122,22 @@ const defaultProps = {
  */
 class PageHeader extends Component {
 	render () {
-		const { className, icon, iconName, iconCategory, iconPosition, iconSize, iconVariant, label, title, info, variant, contentRight, navRight, details, trail } = this.props;
+		const {
+			className,
+			contentRight,
+			details,
+			icon,
+			iconCategory,
+			iconName,
+			iconPosition,
+			iconSize,
+			iconVariant,
+			info,
+			label,
+			navRight,
+			title,
+			trail,
+			variant } = this.props;
 		/**
 		 * OPTIMIZE ES7 style object destructuring removes the need for _.omit.
 		 *
@@ -164,9 +179,7 @@ class PageHeader extends Component {
 		 * Render the icon
 		 */
 		const renderIcon = () => {
-			if (icon) {
-				return icon;
-			} else if (iconName) {
+			if (iconName) {
 				return (
 					<Icon
 						name={iconName}
@@ -177,6 +190,7 @@ class PageHeader extends Component {
      />
 					);
 			}
+			return icon;
 		};
 
 		/**
@@ -194,9 +208,8 @@ class PageHeader extends Component {
 			} else {
 				if (type === 'string') {
 					return <p className="slds-text-title--caps">{label}</p>;
-				} else {
-					return label;
 				}
+				return label;
 			}
 		};
 
@@ -208,9 +221,8 @@ class PageHeader extends Component {
 
 			if (type === 'string') {
 				return <Title title={title} />;
-			} else {
-				return title;
 			}
+			return title;
 		};
 
 		/**
@@ -221,9 +233,8 @@ class PageHeader extends Component {
 
 			if (type === 'string') {
 				return <Info>{info}</Info>;
-			} else {
-				return info;
 			}
+			return info;
 		};
 
 		/**
@@ -239,9 +250,8 @@ class PageHeader extends Component {
 						{...navRight.props}
      />
 					);
-			} else {
-				return navRight;
 			}
+			return navRight;
 		};
 
 		/**
@@ -254,9 +264,8 @@ class PageHeader extends Component {
 				return (
 					<div className="slds-grid" {...contentRight.props} />
 					);
-			} else {
-				return contentRight;
 			}
+			return contentRight;
 		};
 
 		labelElement = renderLabel();
@@ -289,7 +298,8 @@ class PageHeader extends Component {
 					info={infoElement}
 					contentRight={contentRightElement}
 					navRight={navRightElement}
-					details={details} />
+					details={details}
+				/>
 			</div>
 			);
 	}
