@@ -123,7 +123,7 @@ storiesOf(TREE, module)
 		<DemoTree
 			heading="Miscellaneous Foods"
 			exampleNodesIndex="sampleNodesWithLargeDataset"
-			style={{
+			listStyle={{
 				height: '300px',
 				overflowY: 'auto'
 			}}

@@ -1,12 +1,9 @@
-/* global describe, beforeEach, afterEach, it, sinon */
+/* eslint-env mocha */
+/* global sinon */
+/* eslint-disable prefer-arrow-callback */
 /* eslint-disable no-unused-expressions */
 
-// TODO: Enzyme 2.3 does not support React components containing SVGs
-// https://github.com/airbnb/enzyme/issues/375
-
 import React, { PropTypes } from 'react';
-
-import { mount } from 'enzyme';
 
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
@@ -34,6 +31,7 @@ const DemoTree = React.createClass({
 	propTypes: {
 		branchExpandClicked: PropTypes.func,
 		exampleNodesIndex: PropTypes.string,
+		getNodes: PropTypes.func,
 		itemClicked: PropTypes.func,
 		noBranchSelection: PropTypes.bool,
 		searchTerm: PropTypes.string,
@@ -75,7 +73,6 @@ const DemoTree = React.createClass({
 	},
 
 	handleClick (event, data) {
-		console.log(this.props.itemClicked);
 		if (this.props.singleSelection) {
 			data.node.selected = data.select;
 			this.setState({ singleSelection: data.node });
@@ -120,6 +117,7 @@ const DemoTree = React.createClass({
 			}
 				<Tree
 					id="example-tree"
+					getNodes={this.props.getNodes}
 					nodes={this.state.nodes}
 					onExpandClick={this.handleExpandClick}
 					onClick={this.handleClick}
@@ -136,17 +134,30 @@ describe('Tree: ', () => {
 	/*
 		Tests
 	 */
-	describe('Default Structure', () => {
+	describe('Default Structure and CSS', () => {
+		const id = 'this-is-a-container-test';
 		beforeEach(mountComponent(
-			<DemoTree heading="Foods" />
+			<DemoTree
+				className="this-is-a-container-test"
+				heading="Foods"
+				id={id}
+				listClassName="this-is-an-unordered-list-test"
+				listStyle={{ height: '500px' }}
+			/>
 		));
 
 		afterEach(unmountComponent);
 
-		it('has tree class and heading', function () {
-			const component = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
-			const heading = this.wrapper.find('#example-tree__heading');
-			expect(component).to.have.length(1);
+		it('has tree container class, list class, and heading', function () {
+			const container = this.wrapper.find('.slds-tree_container');
+			expect(container.hasClass('this-is-a-container-test')).to.be.true;
+
+			const list = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
+			expect(list).to.have.length(1);
+			expect(list.hasClass('this-is-an-unordered-list-test')).to.be.true;
+			expect(list.node.offsetHeight).to.equal(500);
+
+			const heading = this.wrapper.find(`#${id}__heading`);
 			expect(heading).to.have.length(1);
 		});
 	});
@@ -169,8 +180,8 @@ describe('Tree: ', () => {
 	describe('Initial Expanded and Selection based on nodes', () => {
 		beforeEach(mountComponent(
 			<DemoTree
-				heading="Foods"
 				exampleNodesIndex="sampleNodesWithInitialState"
+				heading="Foods"
 			/>
 		));
 
@@ -189,47 +200,105 @@ describe('Tree: ', () => {
 		});
 	});
 
-	describe('Branch and items expand and select on click', () => {
-		it('branch expands and closes, selects and deselects', function () {
-			const itemClicked = sinon.spy();
-			const expandClicked = sinon.spy();
+	describe('Branch expands and selects on click', () => {
+		const itemClicked = sinon.spy();
+		const expandClicked = sinon.spy();
 
-			const instance = (
-				<DemoTree
-					branchExpandClicked={expandClicked}
-					itemClicked={itemClicked}
-					heading="Foods"
-				/>
-			);
+		beforeEach(mountComponent(
+			<DemoTree
+				branchExpandClicked={expandClicked}
+				itemClicked={itemClicked}
+				heading="Foods"
+			/>
+		));
 
-			this.wrapper = mount(instance, { attachTo: document.body.appendChild(document.createElement('div')) });
-			const expandButton = this.wrapper.find('#example-tree-2').find('.slds-button');
-			expandButton.simulate('click');
-			expect(expandClicked.callCount).to.equal(1);
-			expandButton.simulate('click');
-			expect(expandClicked.callCount).to.equal(2);
-			expandButton.simulate('click');
+		afterEach(unmountComponent);
 
+		it('branch calls onExpandClicked and onClick', function () {
 			const branch = this.wrapper.find('#example-tree-2').find('.slds-tree__item');
 			branch.simulate('click');
 			expect(itemClicked.callCount).to.equal(1);
+
+			const expandButton = this.wrapper.find('#example-tree-2').find('.slds-button');
+			expandButton.simulate('click');
+			expect(expandClicked.callCount).to.equal(1);
 		});
+	});
 
-		it('item selects', function () {
-			const itemClicked = sinon.spy();
+	describe('Item calls onClick', () => {
+		const itemClicked = sinon.spy();
 
-			const instance = (
-				<DemoTree
-					itemClicked={itemClicked}
-					heading="Foods"
-				/>
-			);
+		beforeEach(mountComponent(
+			<DemoTree
+				itemClicked={itemClicked}
+				heading="Foods"
+			/>
+		));
 
-			this.wrapper = mount(instance, { attachTo: document.body.appendChild(document.createElement('div')) });
+		afterEach(unmountComponent);
+
+		it('item calls itemClicked', function () {
 			const item = this.wrapper.find('#example-tree-1').find('.slds-tree__item');
 			item.simulate('click');
 			expect(itemClicked.callCount).to.equal(1);
 		});
 	});
-	
+
+	describe('getNodes is called on initial tree', () => {
+		const getNodes = sinon.spy();
+
+		beforeEach(mountComponent(
+			<DemoTree
+				exampleNodesIndex="sampleNodesWithInitialState"
+				getNodes={getNodes}
+				heading="Foods"
+			/>
+		));
+
+		afterEach(unmountComponent);
+
+		it('getNodes is called on initial tree', () => {
+			expect(getNodes.callCount).to.equal(1);
+		});
+	});
+
+	describe('Search term is highlighted', () => {
+		beforeEach(mountComponent(
+			<DemoTree
+				searchTerm="fruit"
+				heading="Foods"
+			/>
+		));
+
+		afterEach(unmountComponent);
+
+		it('item calls itemClicked', function () {
+			const markedItem = this.wrapper.find('mark');
+			expect(markedItem).to.have.length(1);
+		});
+	});
+
+	describe('Scrolling calls onScroll', () => {
+		const onScroll = sinon.spy();
+
+		beforeEach(mountComponent(
+			<DemoTree
+				exampleNodesIndex="sampleNodesWithLargeDataset"
+				heading="Foods"
+				onScroll={onScroll}
+				listStyle={{
+					height: '300px',
+					overflowY: 'auto'
+				}}
+			/>
+		));
+
+		afterEach(unmountComponent);
+
+		it('scrolling calls onScroll', function () {
+			const list = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
+			list.simulate('scroll');
+			expect(onScroll.callCount).to.equal(1);
+		});
+	});
 });

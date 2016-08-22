@@ -39,16 +39,16 @@ const Tree = (props) => {
 
 	const {
 		assistiveText,
-		containerClassName,
 		className,
 		heading,
 		id,
+		listClassName,
 		nodes,
 		onClick,
 		onExpandClick,
 		onScroll,
 		searchTerm,
-		style
+		listStyle
 	} = props;
 
 	// One of these is required to pass accessibility tests
@@ -57,16 +57,16 @@ const Tree = (props) => {
 	// Start the zero level branch--that is the tree root. There is no label for
 	// the tree root, but is required by all other nodes
 	return (
-		<div id={id} className={classNames('slds-tree_container', containerClassName)} role="application">
+		<div id={id} className={classNames('slds-tree_container', className)} /* role="application" */>
 			<h4
 				className={classNames('slds-text-title--caps', { 'slds-assistive-text': assistiveText })}
 				id={`${id}__heading`}
 			>{headingText}</h4>
 			<Branch
 				getNodes={props.getNodes}
-				initalClassName={className}
+				initalClassName={listClassName}
 				htmlId={id}
-				initialStyle={style}
+				initialStyle={listStyle}
 				level={0}
 				node={{ nodes }}
 				onClick={onClick}
@@ -96,19 +96,19 @@ Tree.propTypes = {
 	/**
 	 * Class names to be added to the container element which has the heading and the `ul.slds-tree` element as children.
 	 */
-	containerClassName: PropTypes.oneOfType([
+	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
 		PropTypes.string]),
 	/**
 	 * Class names to be added to the top-level `ul` element of the tree.
 	 */
-	className: PropTypes.oneOfType([
+	listClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
 		PropTypes.string]),
 	/**
-	 * A function that will be called by every branch to receive its child nodes. `node` object with the branch data is passed into this function: `getNodes(node)`. If your state engine is Flux or Redux, then your tree data structure will probably be flattened or normalized within the store. This will allow you to build out your tree without transversing a tree and may be more performant.
+	 * A function that will be called by every branch to receive its child nodes. The parent `node` object with the branch data is passed into this function: `getNodes(node)`. If your state engine is Flux or Redux, then your tree data structure will probably be flattened or normalized within the store. This will allow you to build out your tree without transversing an actual tree of data and may be more performant.
 	 */
 	getNodes: PropTypes.func,
 	/**
@@ -139,10 +139,10 @@ Tree.propTypes = {
 	 * Highlights term if found in node label. This does not auto-expand branches.
 	 */
 	searchTerm: PropTypes.string,
-	/**
-	 * An object of CSS styles that are applied to `ul` element.
+	/*
+	 * Styles to be added to the top-level `ul` element. Useful for `overflow:hidden`.
 	 */
-	style: PropTypes.object
+	listStyle: PropTypes.object
 };
 
 module.exports = Tree;

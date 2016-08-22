@@ -39,7 +39,11 @@ const	handleClick = (event, props) => {
 	EventUtil.trap(event);
 
 	if (isFunction(props.onClick)) {
-		props.onClick(event, { node: props.node, select: !props.node.selected, treeIndex: props.treeIndex });
+		props.onClick(event, {
+			node: props.node,
+			select: !props.node.selected,
+			treeIndex: props.treeIndex
+		});
 	}
 };
 
@@ -81,7 +85,7 @@ Item.displayName = TREE_ITEM;
 // ### Prop Types
 Item.propTypes = {
 	/**
-	 * The text of the tree item.
+	 * HTML `id` of the wrapping container element joined with the `id` of the node. This will recursively increase as the tree depth increases.
 	 */
 	htmlId: PropTypes.string.isRequired,
 	/**

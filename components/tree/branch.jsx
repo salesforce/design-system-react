@@ -96,7 +96,7 @@ renderInitialNode.displayName = 'InitialNode';
 
 renderInitialNode.propTypes = {
 	/**
-	 * HTML `id` of primary element that has `.slds-tree` on it. This component has a wrapping container element outside of `.slds-tree`.
+	 * HTML `id` of the wrapping container element.
 	 */
 	htmlId: PropTypes.oneOfType([
 		PropTypes.number,
@@ -205,10 +205,6 @@ renderBranch.propTypes = {
 		PropTypes.number,
 		PropTypes.string]).isRequired,
 	/**
-	 * All tree nodes must have a unique HTML `id` for users of assistive technology. If no `id` key is present in the  is provided, one will be generated.
-	 */
-	index: PropTypes.number,
-	/**
 	 * The text of the tree item.
 	 */
 	label: PropTypes.string,
@@ -308,11 +304,11 @@ Branch.displayName = TREE_BRANCH;
 // ### Prop Types
 Branch.propTypes = {
 	/**
-	 * Function that will be called by every branch to receive its child nodes. `node` object with the branch data is passed into this function: `getNodes(node)`. `getNodes` can return a Promise and it will be resolved.
+	 * A function that will be called by every branch to receive its child nodes. The parent `node` object with the branch data is passed into this function: `getNodes(node)`. If your state engine is Flux or Redux, then your tree data structure will probably be flattened or normalized within the store. This will allow you to build out your tree without transversing an actual tree of data and may be more performant.
 	 */
 	getNodes: PropTypes.func,
 	/**
-	 * HTML `id` of primary element that has `.slds-tree` on it. This component has a wrapping container element outside of `.slds-tree`.
+	 * HTML `id` of the wrapping container element joined with the `id` of the node. This will recursively increase as the tree depth increases.
 	 */
 	htmlId: PropTypes.oneOfType([
 		PropTypes.number,
@@ -358,7 +354,7 @@ Branch.propTypes = {
 	 */
 	searchTerm: PropTypes.string,
 	/**
-	 * Unique id used for a prefix of all tree nodes
+	 * Unique id used for a prefix of all tree nodes. This is the prefix for subsequent `htmlId` props.
 	 */
 	treeId: PropTypes.string,
 	/**
