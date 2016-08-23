@@ -77,7 +77,9 @@ const Card = React.createClass({
 		/**
 		 * The heading is the name of the related item group.
 		 */
-		heading: PropTypes.string.isRequired,
+		heading: PropTypes.oneOf([
+			PropTypes.node,
+			PropTypes.text]).isRequired,
 		/**
 		 * Actions to perform on selected items or actions that are not specific to one item such as adding an item. If no group actions are needed, then the number of selected items is often present.
 		 */
