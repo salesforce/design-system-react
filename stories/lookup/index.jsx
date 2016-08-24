@@ -3,12 +3,14 @@ import { storiesOf, action } from '@kadira/storybook';
 
 import { LOOKUP } from '../../utilities/constants';
 import Lookup from '../../components/lookup';
+import SLDSButton from '../../components/button';
 
 const DemoLookup = React.createClass({
 	displayName: 'DemoLookup',
 
 	getInitialState () {
 		return {
+			currentSelected: 2,
 			options: [
 				{ label: 'File 1' },
 				{ label: 'File 2' },
@@ -18,23 +20,29 @@ const DemoLookup = React.createClass({
 		};
 	},
 
+	clearSelected() {
+		this.setState({ currentSelected: -1 });
+	},
+
 	render () {
 		return (
+			<div>
+				<SLDSButton onClick={this.clearSelected}>Clear Selected</SLDSButton>
 			<Lookup
 				{...this.props}
 				modal={false}
 				onChange={action('change')}
 				onSelect={this.handleSelect}
 				options={this.state.options}
-				selectedItem={this.state.selectedItem}
+				selectedItem={this.state.currentSelected}
 			/>
+			</div>
 		);
 	},
 
 	handleSelect (selectedItem, ...rest) {
 		action('select')(selectedItem, ...rest);
-
-		this.setState({ selectedItem });
+		this.setState({ currentSelected: this.state.options.indexOf(selectedItem) });
 	}
 });
 
