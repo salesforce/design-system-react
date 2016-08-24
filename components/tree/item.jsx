@@ -59,13 +59,12 @@ const Item = (props) => {
 			<div
 				className={classNames('slds-tree__item', { 'slds-is-selected': isSelected })}
 				aria-selected={isSelected ? 'true' : 'false'}
-				onClick={(event) => handleClick(event, props)}
+				onClick={(event) => { handleClick(event, props); }}
 			>
 				<Button
 					assistiveText=""
 					iconName="chevronright"
 					iconSize="small"
-					iconVariant="bare"
 					variant="icon"
 					className="slds-m-right--small slds-is-disabled"
 					disabled
