@@ -2,6 +2,10 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.3.3
+**Bug Fix**
+- Lookup component had a bug where updating the selectedItem prop did not work. Now it does. To clear the item, pass in -1.
+
 ## Release 0.3.2
 
 **MAJOR CHANGES**

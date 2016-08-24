@@ -110,7 +110,7 @@ const propTypes = {
 	required: PropTypes.bool,
 	searchTerm: PropTypes.string,
 	/**
-	 * Index of current selected item.
+	 * Index of current selected item. To clear the selection, pass in -1.
 	 */
 	selectedItem: PropTypes.number
 };
@@ -167,6 +167,9 @@ class Lookup extends React.Component {
 	componentWillReceiveProps (newProps) {
 		if (newProps.options) {
 			this.modifyItems(newProps.options);
+		}
+		if (newProps.selectedItem !== this.props.selectedItem) {
+			this.setState({ selectedIndex: newProps.selectedItem });
 		}
 	}
 
