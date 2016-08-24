@@ -16,58 +16,61 @@ import DetailBlock from './detail-block';
 
 const displayName = 'PageHeaderDetailRow';
 const propTypes = {
-  /**
-   * Optional class name
-   */
-  className: React.PropTypes.string,
-  /**
-   * An array of detail blocks
-   */
-  details: React.PropTypes.array,
+	children: React.PropTypes.node,
+	/**
+	 * Optional class name
+	 */
+	className: React.PropTypes.string,
+	/**
+	 * An array of detail blocks
+	 */
+	details: React.PropTypes.array
 };
 const defaultProps = {};
 
 class DetailRow extends Component {
-  render() {
-    const { children, className, details } = this.props;
-    const attr = omit(['children', 'className'], this.props);
-    const classes = this._getClassNames(className);
+	render () {
+		const { children, className, details } = this.props;
+		const attr = omit(['children', 'className'], this.props);
+		const classes = this._getClassNames(className);
 
-    let detailsElement;
+		let detailsElement;
 
-    /**
-     * Render the deets
-     */
-    const renderDetails = () => {
-      if (children !== void(0)) {
-        return children;
-      } else {
-        return details.map((detail, i) => {
-          const key = `PageHeader.detailBlock.${i}`;
+		/**
+		 * Render the deets
+		 */
+		const renderDetails = () => {
+			if (children !== void(0)) {
+				return children;
+			}
 
-          return (
-            <DetailBlock
-              key={key}
-              flavor={detail.flavor}
-              label={detail.label}
-              content={detail.content} />
-          );
-        });
-      }
-    };
+			return details.map((detail, i) => {
+				const key = `PageHeader.detailBlock.${i}`;
 
-    detailsElement = renderDetails();
+				return (
+					<DetailBlock
+						key={key}
+						flavor={detail.flavor}
+						label={detail.label}
+						content={detail.content}
+						truncate={detail.truncate}
+					/>
+				);
+			});
+		};
 
-    return (
-      <ul className={classes} {...attr}>
-        {detailsElement}
-      </ul>
-    );
-  }
+		detailsElement = renderDetails();
 
-  _getClassNames(className) {
-    return classnames('slds-grid slds-page-header__detail-row', className);
-  }
+		return (
+			<ul className={classes} {...attr}>
+				{detailsElement}
+			</ul>
+		);
+	}
+
+	_getClassNames (className) {
+		return classnames('slds-grid slds-page-header__detail-row', className);
+	}
 }
 
 DetailRow.displayName = displayName;
