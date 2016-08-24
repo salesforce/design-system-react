@@ -147,6 +147,38 @@ const AppLauncher = React.createClass({
 		}
 	},
 
+	renderSearch () {
+		let returnVal;
+
+		if (this.props.search) {
+			returnVal = (
+				<div
+					className="slds-app-launcher__header-search"
+					ref={(component) => {
+						if (component) {
+							if (!this.focusedOnSearch) {
+								const input = component.querySelector('input');
+								if (input) {
+									// push to end of stack so click event doesn't blur the focus
+									setTimeout(() => {
+										input.focus();
+										this.focusedOnSearch = true;
+									}, 0);
+								}
+							}
+						} else {
+							this.focusedOnSearch = false;
+						}
+					}}
+				>
+					{this.props.search}
+				</div>
+			);
+		}
+
+		return returnVal;
+	},
+
 	render () {
 		const isOpen = this.props.isOpen !== undefined ? this.props.isOpen : this.state.isOpen;
 
@@ -157,7 +189,7 @@ const AppLauncher = React.createClass({
 			<div className="slds-grid slds-grid--align-spread slds-grid--vertical-align-center">
 				<h2 className="slds-text-heading--medium">{this.props.title}</h2>
 
-				{this.props.search && <div className="slds-app-launcher__header-search">{this.props.search}</div>}
+				{this.renderSearch()}
 
 				{
 					this.props.modalHeaderButton
