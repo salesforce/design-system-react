@@ -8,11 +8,11 @@
 - Make field truncation optional.
 - If field truncates, then show PopoverTooltip on hover/focus to view full field text.
 
-
-## Release 0.3.3
 **Bug Fix**
 - Lookup component had a bug where updating the selectedItem prop did not work. Now it does. To clear the item, pass in -1.
-
+- Focus on search input when App Launcher opens
+- No longer renders a close button if modal type is prompt.
+- Lookup search icon default should be on right side.
 
 ## Release 0.3.2
 
