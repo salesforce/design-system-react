@@ -41,7 +41,8 @@ const DemoAppLauncherTile = React.createClass({
 				title="Marketing Cloud"
 				iconText="MC"
 				description="Send emails, track emails, read emails! Emails!"
-				onClick={action('Tile clicked!')}
+				href="https://www.marketingcloud.com/"
+				onClick={action('Tile clicked! Actual href should be ignored')}
 				search={this.props.search}
 				size={this.props.size}
 			/>
@@ -79,6 +80,7 @@ const DemoAppLauncherTileWithIconNode = React.createClass({
 			<AppLauncherTile
 				title="Sales Cloud"
 				description="The primary internal Salesforce org."
+				href="https://www.salesforce.com/"
 				iconNode={icon}
 				onClick={action('Tile with icon node clicked!')}
 				search={this.props.search}

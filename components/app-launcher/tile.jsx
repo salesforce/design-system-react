@@ -22,6 +22,9 @@ import classNames from 'classnames';
 // ### Truncate
 import Truncate from '../utilities/truncate';
 
+// ### isFunction
+import isFunction from 'lodash.isfunction';
+
 // ## Children
 import Button from '../button';
 import Highlighter from '../utilities/highlighter';
@@ -57,6 +60,10 @@ const AppLauncherTile = React.createClass({
 		 */
 		descriptionHeading: PropTypes.string,
 		/**
+		 * The `href` attribute of the tile. Please pass in bookmarkable URLs from your routing library. If the `onClick` callback is specified this URL will be prevented from changing the browser's location.
+		 */
+		href: PropTypes.string,
+		/**
 		 * The localized text for the "More information" tooltip.
 		 */
 		moreLabel: PropTypes.string,
@@ -86,9 +93,18 @@ const AppLauncherTile = React.createClass({
 
 	getDefaultProps () {
 		return {
+			href: 'javascript:void(0);', // eslint-disable-line no-script-url
 			size: 'default',
 			moreLabel: ' More'
 		};
+	},
+
+	handleClick (event, href, onClick) {
+		event.preventDefault();
+
+		if (isFunction(this.props.onClick)) {
+			onClick(event, { href });
+		}
 	},
 
 	getMoreRender () {
@@ -106,8 +122,8 @@ const AppLauncherTile = React.createClass({
 
 		return (
 			<a
-				href="javascript:void(0);" // eslint-disable-line no-script-url
-				onClick={this.props.onClick}
+				href={this.props.href} // eslint-disable-line no-script-url
+				onClick={(event) => this.handleClick(event, this.props.href, this.props.onClick)}
 				className={
 					classNames(
 						'slds-app-launcher__tile slds-text-link--reset',
