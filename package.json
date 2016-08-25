@@ -241,6 +241,11 @@
       "SLDS-component-path": "/components/popovers#flavor-tooltips"
     },
     {
+      "component": "tabs",
+      "display-name": "Tabs",
+      "SLDS-component-path": "/components/tabs"
+    },
+    {
       "component": "time-picker",
       "display-name": "Timepickers",
       "SLDS-component-path": "/components/datepickers"

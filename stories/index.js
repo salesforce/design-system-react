@@ -20,4 +20,5 @@ export default from './page-header';
 export default from './popover';
 export default from './picklist';
 export default from './spinner';
+export default from './tabs';
 export default from './time-picker';
