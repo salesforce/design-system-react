@@ -23,23 +23,23 @@ const linkClicked = action;
 const searchClicked = action;
 
 const dropdownCollection = [{
-	label: 'Menu Item One',
-	value: '1',
-	iconCategory: 'utility',
-	iconName: 'table',
-	href: 'http://www.google.com'
+	label: 'Menu Item One', value: '1', iconCategory: 'utility',
+	iconName: 'table', href: 'http://www.google.com'
 }, {
-	label: 'Menu Item Two',
-	value: '2',
-	iconCategory: 'utility',
-	iconName: 'kanban',
-	href: 'http://www.google.com'
+	label: 'Menu Item Two', value: '2', iconCategory: 'utility',
+	iconName: 'kanban', href: 'http://www.google.com'
 }, {
-	label: 'Menu Item Three',
-	value: '3',
-	iconCategory: 'utility',
-	iconName: 'side_list',
-	href: 'http://www.google.com'
+	label: 'Menu Item Three', value: '3', iconCategory: 'utility',
+	iconName: 'side_list', href: 'http://www.google.com'
+}, {
+	label: 'Menu Item Three', value: '3', iconCategory: 'utility',
+	iconName: 'side_list', href: 'http://www.google.com'
+}, {
+	label: 'Menu Item Four', value: '4', iconCategory: 'utility',
+	iconName: 'side_list', href: 'http://www.google.com'
+}, {
+	label: 'Menu Item Five', value: '5', iconCategory: 'utility',
+	iconName: 'side_list', href: 'http://www.google.com'
 }];
 
 /* eslint-disable react/display-name */
@@ -78,6 +78,7 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 				label="Menu Item 1"
 				onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
 				options={dropdownCollection}
+				length={null}
 			/>
 			<GlobalNavigationBarLink
 				// will actually go to website
