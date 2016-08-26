@@ -55,6 +55,10 @@ const Card = React.createClass({
 	// ### Prop Types
 	propTypes: {
 		/**
+		 * CSS classes to be added to the card body (wraps children).
+		 */
+		bodyClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		/**
 		 * The main section of the card. It often contains a `DataTable` or `Tile`.
 		 */
 		children: PropTypes.node,
@@ -89,7 +93,11 @@ const Card = React.createClass({
 		/**
 		 * Set the HTML `id` of the card. This also sets the `id` of the filter and the header actions.
 		 */
-		id: PropTypes.string
+		id: PropTypes.string,
+		/**
+		 * Custom styles to be added to the card.
+		 */
+		style: PropTypes.object
 	},
 
 	getDefaultProps () {
@@ -109,7 +117,7 @@ const Card = React.createClass({
 
 	renderBody (body) {
 		return (
-			<Body id={this.props.id}>
+			<Body id={this.props.id} className={this.props.bodyClassName}>
 				{body}
 			</Body>
 		);
@@ -124,12 +132,14 @@ const Card = React.createClass({
 
 	// ### Render
 	render () {
+		const { style } = this.props;
 		let { empty } = this.props;
+
 		if (empty === true) {
 			empty = this.renderDefaultEmpty();
 		}
 		return (
-			<div id={this.props.id} className={classnames(cssClasses.base, this.props.className)}>
+			<div id={this.props.id} className={classnames(cssClasses.base, this.props.className)} style={style}>
 				<Header
 					icon={empty ? null : this.props.icon}
 					id={this.props.id}
