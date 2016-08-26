@@ -56,7 +56,7 @@ const List = React.createClass({
 		/**
 		 * Sets the height of the list based on the numeber of items.
 		 */
-		length: PropTypes.oneOf(['5', '7', '10']),
+		length: PropTypes.oneOf([null, '5', '7', '10']),
 		/**
 		 * Triggered when a list item is selected (via mouse or keyboard).
 		 */

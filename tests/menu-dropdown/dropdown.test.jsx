@@ -232,6 +232,32 @@ describe('SLDSMenuDropdown: ', () => {
 		});
 	});
 
+	describe('Optional List length property', () => {
+		let cmp;
+		let btn;
+
+		function withList (dropDownOptions, expectation) {
+			cmp = dropItDown(dropDownOptions);
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+			Simulate.click(btn, {});
+			const list = getMenu(body).querySelector('.dropdown__list');
+			expectation(list);
+			removeDropdownTrigger(btn);
+		}
+
+		it('applies correct length classname', () => {
+			withList({ length: '10', openOn: 'click' }, function (list) {
+				expect(list.getAttribute('class')).to.match(/slds-dropdown--length-10/);
+			});
+		});
+
+		it('does not apply length classname when null', () => {
+			withList({ length: null, openOn: 'click' }, function (list) {
+				expect(list.getAttribute('class')).not.to.match(/slds-dropdown--length/);
+			});
+		});
+	});
+
 	describe('accessible markup for label Dropdowns', () => {
 		let cmp;
 		let btn;
