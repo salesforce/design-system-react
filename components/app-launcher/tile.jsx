@@ -35,10 +35,7 @@ import { APP_LAUNCHER_TILE } from '../../utilities/constants';
 
 const handleClick = (event, props, onClick) => {
 	event.preventDefault();
-
-	if (isFunction(onClick)) {
-		onClick(event, { href: props.href });
-	}
+	onClick(event, { href: props.href });
 };
 
 /**
@@ -50,7 +47,7 @@ const AppLauncherTile = (props) => {
 	return (
 		<a
 			href={props.href} // eslint-disable-line no-script-url
-			onClick={(event) => handleClick(event, props.href, props.onClick)}
+			onClick={isFunction(props.onClick) ? (event) => handleClick(event, props.href, props.onClick) : null}
 			className={
 				classNames(
 					'slds-app-launcher__tile slds-text-link--reset',
