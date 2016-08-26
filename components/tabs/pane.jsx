@@ -37,7 +37,8 @@ import {
 	TABS,
 	TABS_LIST,
 	TAB,
-	TAB_PANEL
+	TAB_PANEL,
+	TAB_PANE
 } from '../../utilities/constants';
 
 
@@ -47,97 +48,17 @@ import {
 	uuid
 } from '../../utilities';
 
-// ### isFunction
-import isFunction from 'lodash.isfunction';
-
-const handleClick = (event, props) => {
-	EventUtil.trap(event);
-
-	if (isFunction(props.onClick)) {
-		props.onClick(event, {
-			node: props.node,
-			select: !props.node.selected,
-			treeIndex: props.treeIndex
-		});
-	}
-};
-
-const Tabs = React.createClass({
-	displayName: TABS,
+const Pane = React.createClass({
+	displayName: TAB_PANE,
 	propTypes: {
-		selected: PropTypes.number,
-		children: PropTypes.oneOfType([
-			PropTypes.array,
-			PropTypes.element
-		]).isRequired
-	},
-	getDefaultProps () {
-		return {
-			selected: 0
-		};
-	},
-	getInitialState () {
-		return {
-			selected: this.props.selected
-		};
-	},
-	// handleClick (index, event) {
-	// 	event.preventDefault();
-	// 	this.setState({
-	// 		selected: index
-	// 	});
-	// },
-	_renderTitles () {
-		function labels (child, index) {
-			let activeClass = (this.state.selected === index ? 'slds-active' : '');
-			return (
-				<li
-					className={classNames(
-						'slds-tabs--default__item',
-						'slds-text-title--caps',
-						activeClass
-					)}
-					key={
-						index
-					}
-				>
-					<a
-						href="#"
-						className={classNames(
-							'slds-tabs--default__link',
-							activeClass
-						)}
-						onClick={(event) => handleClick(event, props)}
-
-						// onClick={
-						// 	this.handleClick.bind(this, index)
-						// }
-					>
-					{child.props.label}
-					</a>
-				</li>
-			);
-		}
-		return (
-			<ul className="slds-tabs--default__nav">
-				{this.props.children.map(labels.bind(this))}
-			</ul>
-		);
-	},
-	_renderContent () {
-		return (
-			<div className="slds-tabs--default__content">
-				{this.props.children[this.state.selected]}
-			</div>
-		);
+		label: PropTypes.string.isRequired,
+		children: PropTypes.element.isRequired
 	},
 	render () {
-		return (
-			<div className="slds-tabs--default">
-				{this._renderTitles()}
-				{this._renderContent()}
-			</div>);
+		return (<div > {
+			this.props.children
+		} </div>);
 	}
 });
 
-module.exports = Tabs;
+module.exports = Pane;
