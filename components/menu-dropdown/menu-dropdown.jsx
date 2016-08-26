@@ -164,6 +164,10 @@ const MenuDropdown = React.createClass({
 		 */
 		listItemRenderer: PropTypes.func,
 		/**
+		 * This prop is passed into the List for the menu. Pass null to make it the size of the content, or a string with an integer from here: https://www.lightningdesignsystem.com/components/menus/#flavor-dropdown-height
+		 */
+		length: PropTypes.oneOf([null, '5', '7', '10']),
+		/**
 		 * Renders menu within an absolutely positioned container at an elevated z-index.
 		 */
 		modal: PropTypes.bool,
@@ -499,6 +503,7 @@ const MenuDropdown = React.createClass({
 				ref={this.saveRefToList}
 				selectedIndex={this.state.selectedIndex}
 				triggerId={this.getId()}
+				length={this.props.length}
 				{...customListProps}
 			/>
 		);
