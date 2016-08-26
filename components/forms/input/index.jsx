@@ -120,7 +120,7 @@ const Input = React.createClass({
 		 */
 		label: PropTypes.string,
 		/**
-		 * This event fires when the input changes.
+		 * This callback fires when the input changes. The synthetic React event will be the first parameter to the callback. You will probably want to reference `event.target.value` in your callback. No custom data object is provided.
 		 */
 		onChange: PropTypes.func,
 		/**
