@@ -15,10 +15,12 @@ import DateUtil from './DateUtil';
 import EventUtil from './EventUtil';
 import CSSUtil from './CSSUtil';
 import KEYS from './KEYS';
+import uuid from './uuid';
 
 module.exports = {
   DateUtil: DateUtil,
   EventUtil: EventUtil,
   CSSUtil: CSSUtil,
   KEYS: KEYS,
+  uuid: uuid,
 };
