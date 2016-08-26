@@ -216,6 +216,17 @@ class Modal extends React.Component {
 
 	headerComponent () {
 		let headerContent = this.props.header;
+		let closeButton = (
+			<Button
+				assistiveText="Close"
+				iconName="close"
+				iconSize="large"
+				inverse
+				className="slds-modal__close"
+				onClick={this.closeModal}
+				variant="icon"
+			/>
+		)
 
 		if (!headerContent && this.props.title || this.props.tagline) {
 			headerContent = (
@@ -242,15 +253,7 @@ class Modal extends React.Component {
 				this.props.headerClassName)}
 				onClick={this.handleModalClick}
 			>
-				<Button
-					assistiveText="Close"
-					iconName="close"
-					iconSize="large"
-					inverse
-					className="slds-modal__close"
-					onClick={this.closeModal}
-					variant="icon"
-				/>
+				{this.isPrompt() === true ? null : closeButton}
 				{headerContent}
 			</div>
 		);
