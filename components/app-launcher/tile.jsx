@@ -36,7 +36,7 @@ import { APP_LAUNCHER_TILE } from '../../utilities/constants';
 const handleClick = (event, props, onClick) => {
 	event.preventDefault();
 
-	if (isFunction(props.onClick)) {
+	if (isFunction(onClick)) {
 		onClick(event, { href: props.href });
 	}
 };
@@ -94,7 +94,13 @@ const AppLauncherTile = (props) => {
 									>{props.description}</Highlighter>
 								}
 								>
-									<Button className="slds-text-link" variant="base" label={props.moreLabel} tabIndex="0" />
+									<Button
+										className="slds-text-link"
+										variant="base"
+										iconVariant="bare"
+										label={props.moreLabel}
+										tabIndex="0"
+									/>
 								</PopoverTooltip>
 							</span>
 						}
