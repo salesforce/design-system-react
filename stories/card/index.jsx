@@ -110,7 +110,37 @@ const DemoCard = React.createClass({
 	}
 });
 
+const SetHeightCard = () => (
+	<Card
+		bodyClassName="slds-grow slds-scrollable--y"
+		className="slds-grid slds-grid--vertical"
+		footer={<a href="javascript:void(0);">Footer text</a>} // eslint-disable-line no-script-url
+		heading="Card with set height"
+		icon={<Icon category="standard" name="document" size="small" />}
+		style={{ height: '300px' }}
+	>
+		<div className="slds-card__body--inner">
+			<div>asdf</div>
+			<div>asdf</div>
+			<div>asdf</div>
+			<div>asdf</div>
+			<div>asdf</div>
+			<div>asdf</div>
+			<div>asdf</div>
+			<div>asdf</div>
+			<div>asdf</div>
+			<div>asdf</div>
+			<div>asdf</div>
+			<div>asdf</div>
+			<div>asdf</div>
+		</div>
+	</Card>
+);
+
+SetHeightCard.displayName = 'SET_HEIGHT_CARD';
+
 storiesOf(CARD, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('w/ Items', () => <DemoCard items={sampleItems} />)
-	.add('Empty', () => <DemoCard items={[]} />);
+	.add('Empty', () => <DemoCard items={[]} />)
+	.add('Set height card', () => <SetHeightCard />);

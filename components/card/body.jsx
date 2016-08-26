@@ -15,6 +15,11 @@ import React from 'react';
 
 import { CARD_BODY } from '../../utilities/constants';
 
+// ### classNames
+// [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
+// This project uses `classnames`, "a simple javascript utility for conditionally joining classNames together."
+import classNames from 'classnames';
+
 const cssClasses = {
 	base: 'slds-card__body'
 };
@@ -25,7 +30,7 @@ const idSuffixes = {
 
 const CardBody = (props) => (
 	<div
-		className={cssClasses.base}
+		className={classNames(cssClasses.base, props.className)}
 		id={props.id + idSuffixes.base}
 	>
 		{props.children}
@@ -39,6 +44,10 @@ CardBody.propTypes = {
 	 * Elements to place in the body.
 	 */
 	children: React.PropTypes.node,
+	/**
+	 * CSS classes to be added to the card.
+	 */
+	className: React.PropTypes.oneOfType([React.PropTypes.array, React.PropTypes.object, React.PropTypes.string]),
 	/**
 	 * Set the HTML `id` of the body.
 	 */
