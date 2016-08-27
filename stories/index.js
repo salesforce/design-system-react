@@ -21,3 +21,4 @@ export default from './popover';
 export default from './picklist';
 export default from './spinner';
 export default from './time-picker';
+export default from './tree';

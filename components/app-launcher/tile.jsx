@@ -22,6 +22,9 @@ import classNames from 'classnames';
 // ### Truncate
 import Truncate from '../utilities/truncate';
 
+// ### isFunction
+import isFunction from 'lodash.isfunction';
+
 // ## Children
 import Button from '../button';
 import Highlighter from '../utilities/highlighter';
@@ -30,136 +33,154 @@ import PopoverTooltip from '../popover-tooltip';
 // ## Constants
 import { APP_LAUNCHER_TILE } from '../../utilities/constants';
 
+const handleClick = (event, props, onClick) => {
+	event.preventDefault();
+	onClick(event, { href: props.href });
+};
+
 /**
  * App Launcher Tiles provide information and links to a user's apps
  */
-const AppLauncherTile = React.createClass({
-	// ### Display Name
-	// Always use the canonical component name as the React display name.
-	displayName: APP_LAUNCHER_TILE,
+const AppLauncherTile = (props) => {
+	const smallTile = props.size === 'small' || false;
 
-	// ### Prop Types
-	propTypes: {
-		/**
-		 * App name for the tile's title.
-		 */
-		title: PropTypes.string.isRequired,
-		/**
-		 * Size of the rendered tile.
-		 */
-		size: PropTypes.oneOf(['default', 'small']),
-		/**
-		 * The description of the app. Not visible on small tiles.
-		 */
-		description: PropTypes.string,
-		/**
-		 * Heading for app description
-		 */
-		descriptionHeading: PropTypes.string,
-		/**
-		 * The localized text for the "More information" tooltip.
-		 */
-		moreLabel: PropTypes.string,
-		/**
-		 * Class names to be added to the tile.
-		 */
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-		/**
-		 * Function that will be executed when clicking on a tile
-		 */
-		onClick: PropTypes.func,
-		/**
-		 * Icon node for app tile. Takes priority over `iconText`
-		 */
-		iconNode: PropTypes.node,
-		/**
-		 * Text to be used as an icon. Only renders if iconNode is undefined
-		 */
-		iconText: PropTypes.string,
-		/**
-		 * Text used to highlight content in app tiles
-		 */
-		search: PropTypes.string
-		// TODO: allow for passing iconBackgroundColor
-		// TODO: add Highlighter to Truncate text (https://github.com/ShinyChang/React-Text-Truncate/issues/32)
-	},
-
-	getDefaultProps () {
-		return {
-			size: 'default',
-			moreLabel: ' More'
-		};
-	},
-
-	getMoreRender () {
-		return (
-			<span>
-				<PopoverTooltip align="bottom" content={<Highlighter search={this.props.search}>{this.props.description}</Highlighter>}>
-					<Button className="slds-text-link" variant="base" iconVariant="bare" label={this.props.moreLabel} tabIndex="0" />
-				</PopoverTooltip>
-			</span>
-		);
-	},
-
-	render () {
-		const small = this.props.size === 'small' || false;
-
-		return (
-			<a
-				href="javascript:void(0);" // eslint-disable-line no-script-url
-				onClick={this.props.onClick}
-				className={
-					classNames(
-						'slds-app-launcher__tile slds-text-link--reset',
-						small && 'slds-app-launcher__tile--small',
-						this.props.className
-					)
-				}
+	return (
+		<a
+			href={props.href} // eslint-disable-line no-script-url
+			onClick={isFunction(props.onClick) ? (event) => handleClick(event, props.href, props.onClick) : null}
+			className={
+				classNames(
+					'slds-app-launcher__tile slds-text-link--reset',
+					{ 'slds-app-launcher__tile--small': smallTile },
+					props.className
+				)
+			}
+		>
+			<div
+				className={classNames(
+					'slds-app-launcher__tile-figure',
+					{ 'slds-app-launcher__tile-figure--small': smallTile })}
 			>
-				<div className={classNames('slds-app-launcher__tile-figure', small && 'slds-app-launcher__tile-figure--small')}>
-					{
-						this.props.iconNode
-						|| <span className="slds-avatar slds-avatar--large slds-align--absolute-center slds-icon-custom-27">
-							{this.props.iconText}
-						</span>
-					}
-				</div>
 				{
-					small
-					? <div className="slds-app-launcher__tile-body slds-app-launcher__tile-body--small">
-						<p className="slds-truncate">
-							<Highlighter className="slds-text-link" search={this.props.search}>{this.props.title}</Highlighter>
-						</p>
-					</div>
-					: <div className="slds-app-launcher__tile-body">
-						<Highlighter className="slds-text-link" search={this.props.search}>{this.props.title}</Highlighter>
-						<Truncate
-							line={2}
-							prefix={this.props.descriptionHeading && this.props.descriptionHeading.toUpperCase()}
-							suffix={this.props.moreLabel}
-							text={this.props.description}
-							textTruncateChild={this.getMoreRender()}
-							wrapper={(text, textTruncateChild) =>
-								<div>
-									{this.props.descriptionHeading
-										// inline style override
-										&& <span
-											className="slds-text-heading--label"
-											style={{ letterSpacing: '0.025rem' }}
-										>{this.props.descriptionHeading}{' '}</span>}
-									<Highlighter search={this.props.search}>
-										{text}
-									</Highlighter>
-									{textTruncateChild && ' '}
-									{textTruncateChild}
-								</div>
-							}
-						/>
-					</div>
+					props.iconNode
+					|| <span className="slds-avatar slds-avatar--large slds-align--absolute-center slds-icon-custom-27">
+						{props.iconText}
+					</span>
 				}
-			</a>
-		);
-	}
-});
+			</div>
+			{
+				smallTile
+				? <div className="slds-app-launcher__tile-body slds-app-launcher__tile-body--small">
+					<p className="slds-truncate">
+						<Highlighter className="slds-text-link" search={props.search}>{props.title}</Highlighter>
+					</p>
+				</div>
+				: <div className="slds-app-launcher__tile-body">
+					<Highlighter className="slds-text-link" search={props.search}>{props.title}</Highlighter>
+					<Truncate
+						line={2}
+						prefix={props.descriptionHeading && props.descriptionHeading.toUpperCase()}
+						suffix={props.moreLabel}
+						text={props.description}
+						textTruncateChild={
+							<span>
+								<PopoverTooltip
+									align="bottom"
+									content={<Highlighter
+										search={props.search}
+									>{props.description}</Highlighter>
+								}
+								>
+									<Button
+										className="slds-text-link"
+										variant="base"
+										iconVariant="bare"
+										label={props.moreLabel}
+										tabIndex="0"
+									/>
+								</PopoverTooltip>
+							</span>
+						}
+						wrapper={(text, textTruncateChild) =>
+							<div>
+								{props.descriptionHeading
+									// inline style override
+									&& <span
+										className="slds-text-heading--label"
+										style={{ letterSpacing: '0.025rem' }}
+									>{props.descriptionHeading}{' '}</span>}
+								<Highlighter search={props.search}>
+									{text}
+								</Highlighter>
+								{textTruncateChild && ' '}
+								{textTruncateChild}
+							</div>
+						}
+					/>
+				</div>
+			}
+		</a>
+	);
+};
+
+// ### Display Name
+// Always use the canonical component name as the React display name.
+AppLauncherTile.displayName = APP_LAUNCHER_TILE;
+
+AppLauncherTile.defaultProps = {
+	href: 'javascript:void(0);', // eslint-disable-line no-script-url
+	size: 'default',
+	moreLabel: ' More'
+};
+
+// ### Prop Types
+AppLauncherTile.propTypes = {
+	/**
+	 * App name for the tile's title.
+	 */
+	title: PropTypes.string.isRequired,
+	/**
+	 * Size of the rendered tile.
+	 */
+	size: PropTypes.oneOf(['default', 'small']),
+	/**
+	 * The description of the app. Not visible on small tiles.
+	 */
+	description: PropTypes.string,
+	/**
+	 * Heading for app description
+	 */
+	descriptionHeading: PropTypes.string,
+	/**
+	 * The `href` attribute of the tile. Please pass in bookmarkable URLs from your routing library. If the `onClick` callback is specified this URL will be prevented from changing the browser's location.
+	 */
+	href: PropTypes.string,
+	/**
+	 * The localized text for the "More information" tooltip.
+	 */
+	moreLabel: PropTypes.string,
+	/**
+	 * Class names to be added to the tile.
+	 */
+	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	/**
+	 * Function that will be executed when clicking on a tile
+	 */
+	onClick: PropTypes.func,
+	/**
+	 * Icon node for app tile. Takes priority over `iconText`
+	 */
+	iconNode: PropTypes.node,
+	/**
+	 * Text to be used as an icon. Only renders if iconNode is undefined
+	 */
+	iconText: PropTypes.string,
+	/**
+	 * Text used to highlight content in app tiles
+	 */
+	search: PropTypes.string
+	// TODO: allow for passing iconBackgroundColor
+	// TODO: add Highlighter to Truncate text (https://github.com/ShinyChang/React-Text-Truncate/issues/32)
+};
 
 module.exports = AppLauncherTile;
