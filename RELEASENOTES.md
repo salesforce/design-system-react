@@ -2,6 +2,12 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.3.5
+
+**MAJOR CHANGES**
+- Add `style` and `bodyClassName` props to Card to allow overflow on Card body.
+- Add `length` prop to GlobalNavigationMenuDropdown. It can be set to `null` to remove scrolling.
+
 ## Release 0.3.4
 
 **MAJOR CHANGES - SLDSPageHeader**

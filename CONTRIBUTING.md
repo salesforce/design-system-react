@@ -30,7 +30,6 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 - Add as many prop checking tests that will _only run in development_ as needed via `checkProp`. If the test can become an independent module and work in multiple components, add it to the `utilities` folder.
 - Any text the user can read (including a11y text for screenreaders) should be able to be set via a prop for internationalization.
 - React component hierarchy doesn't always mean HTML tag hierarchy. Sometimes children become the wrapping component.
-- Understand grandchild prop decorating such as in `MenuDropdown` and the example of creating custom trigger buttons which prevents the creation of new props such as `buttonClassName` and allows an existing component, `<Button>` to be decorated with props from its parent or grandparent while adding the flexibility of the developer to use all existing `<Button>` props. In short, don't alias props for child components that already exist.
 - [Props in getInitialState is an anti-pattern.](https://facebook.github.io/react/tips/props-in-getInitialState-as-anti-pattern.html)
 - Read [JSX Gotchas](https://facebook.github.io/react/docs/jsx-gotchas.html#html-entities)
 
@@ -109,6 +108,57 @@ Wrap props on newlines for exactly 2 or more. Always list alphabetically.
  occupation="Designer"
 />
 ```
+
+## Understand child component decorator pattern
+Limit aliasing of props for child components that already exist. This pattern is similar to [higher-order components](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750#.gjdiuf68s). It creates a separation of concern and a more declarative approach that relies on child components with their own props instead of additional props on the parent component.
+
+For instance, allowing `MenuDropdown` to have a `Trigger` child that can be a `Button` can prevent the creation of new props such as `buttonClassName` on `MenuDropdown`, since `Button` already has a `className` prop.
+
+- This reduces `prop` duplication for `props` that will just be passed down to the child component.
+- It allows `MenuDropdown` to decorate `Button` with the correct `onClick` among other `props`.
+- It allows the end-developer to use all existing `Button` props that they may already be familiar with.
+
+The following is a simple example of the cloning process within the parent.
+
+
+```javascript
+const CleverParent = React.createClass({
+  render() {
+    const children = React.Children.map(this.props.children, (child) => {
+      return React.cloneElement(child, {
+        onClick: () => alert(JSON.stringify(child.props, 0, 2))
+      })
+    })
+    return <div>{children}</div>
+  }
+})
+
+const SimpleChild = React.createClass({
+  render() {
+    return (
+      <div onClick={this.props.onClick}>
+        {this.props.children}
+      </div>
+    )
+  }
+})
+
+const App = React.createClass({
+  render() {
+    return (
+      <CleverParent>
+        <SimpleChild>1</SimpleChild>
+        <SimpleChild>2</SimpleChild>
+        <SimpleChild>3</SimpleChild>
+        <SimpleChild>4</SimpleChild>
+        <SimpleChild>5</SimpleChild>
+      </CleverParent>
+    )
+  }
+})
+```
+Example taken from [React Composability Patterns](http://www.zhubert.com/blog/2016/02/05/react-composability-patterns/)
+
 
 ## Prefer Ternary to Sub-render
 

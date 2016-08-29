@@ -83,10 +83,13 @@ describe('Card: ', () => {
 	});
 
 	const optionalProps = assign(requiredProps, {
+		bodyClassName: 'this-is-a-custom-body-class',
+		className: 'this-is-a-custom-card-class',
 		footer: renderFooterContents,
 		headerActions: renderHeaderActions,
 		filter: renderFilter,
-		icon: renderIcon
+		icon: renderIcon,
+		style: { background: 'rgb(18, 49, 35)' }
 	});
 
 	describe('Optional Structure', () => {
@@ -101,6 +104,21 @@ describe('Card: ', () => {
 		it('has a header', function () {
 			const header = getHeader(this.dom);
 			header.should.not.be.undefined;
+		});
+
+		it('renders custom styles', function () {
+			const card = getCard(this.dom);
+			card.style.backgroundColor.should.equal('rgb(18, 49, 35)');
+		});
+
+		it('renders custom classes on card', function () {
+			const card = getCard(this.dom);
+			card.className.should.contain('this-is-a-custom-card-class');
+		});
+
+		it('renders custom classes on body', function () {
+			const body = getBody(this.dom);
+			body.className.should.contain('this-is-a-custom-body-class');
 		});
 
 		it('has a body', function () {

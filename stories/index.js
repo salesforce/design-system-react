@@ -22,3 +22,4 @@ export default from './picklist';
 export default from './spinner';
 export default from './tabs';
 export default from './time-picker';
+export default from './tree';

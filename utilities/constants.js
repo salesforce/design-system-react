@@ -60,3 +60,6 @@ export const TAB_ITEM = 'SLDSTabItem';
 export const TAB_PANEL = 'SLDSTabPanel';
 export const PANE = 'SLDSTabPane';
 export const TIME_PICKER = 'SLDSTimepicker';
+export const TREE = 'SLDSTree';
+export const TREE_BRANCH = 'SLDSTreeBranch';
+export const TREE_ITEM = 'SLDSTreeItem';
