@@ -20,11 +20,13 @@ import React, {
 	PropTypes
 } from 'react';
 
+import { findDOMNode } from 'react-dom';
+
 // Child components
 // import TabsList from './tabs-list';
-// import Tab from './tab';
+import Tab from './tab';
 // import TabItem from './tab-item';
-// import TabPanel from './tab-panel';
+import TabPanel from './tab-panel';
 
 // ### classNames
 import classNames from 'classnames';
@@ -47,91 +49,271 @@ import {
 	uuid
 } from '../../utilities';
 
-const handleClick = (event, props) => {
-	EventUtil.trap(event);
 
-	if (isFunction(props.onClick)) {
-		props.onClick(event, {
-			props: !props.selected
-		});
-	}
-};
+// Determine if a node from event.target is a Tab element
+function isTabNode(node) {
+	return (node.nodeName === 'A' && node.getAttribute('role') === 'tab' || node.nodeName === 'LI' && node.getAttribute('role') === 'tab');
+}
+
+
+// Determine if a tab node is disabled
+function isTabDisabled(node) {
+	// console.log("[isTabDisabled] node", node);
+	return node.getAttribute('aria-disabled') === 'true';
+}
+
 
 const Tabs = React.createClass({
 	displayName: TABS,
 	propTypes: {
-		selected: PropTypes.number,
-		children: PropTypes.oneOfType([
-			PropTypes.array,
-			PropTypes.element
+		selectedIndex: React.PropTypes.number,
+		children: React.PropTypes.oneOfType([
+			React.PropTypes.array,
+			React.PropTypes.element
 		]).isRequired
 	},
 	getDefaultProps () {
 		return {
-			selected: 0
+			selectedIndex: -1
 		};
 	},
 	getInitialState () {
 		return {
-			selected: this.props.selected
+			selectedIndex: this.props.selectedIndex
 		};
 	},
-	// handleClick (index, event) {
-	// 	event.preventDefault();
-	// 	this.setState({
-	// 		selected: index
-	// 	});
-	// },
-	_renderTitles (props) {
-		function labels (child, index) {
-			let activeClass = (props.selected === index ? 'slds-active' : '');
-			return (
-				<li
-					className={classNames(
-						'slds-tabs--default__item',
-						'slds-text-title--caps',
-						activeClass
-					)}
-					key={
-						index
-					}
-				>
-					<a
-						href="#"
-						className={classNames(
-							'slds-tabs--default__link',
-							activeClass
-						)}
-						onClick={(event) => handleClick(event, props)}
 
-						// onClick={
-						// 	this.handleClick.bind(this, index)
-						// }
-					>
+
+	handleClick(e) {
+		let node = e.target;
+		do { // eslint-disable-line no-cond-assign
+			if (this.isTabFromContainer(node)) {
+				if (isTabDisabled(node)) {
+					return;
+				}
+
+				const index = [].slice.call(node.parentNode.children).indexOf(node);
+				this.setSelected(index);
+				return;
+			}
+		} while ((node = node.parentNode) !== null);
+	},
+
+	setSelected(index, focus) {
+		// console.log("[setSelected] index", index);
+		// console.log("[setSelected] focus", focus);
+		// Don't do anything if nothing has changed
+		// console.log("[setSelected] this.getTabsCount()", this.getTabsCount());
+		// console.log("[setSelected] this.state.selectedIndex", this.state.selectedIndex);
+		if (index === this.state.selectedIndex) return;
+		// Check index boundary
+		if (index < 0 || index >= this.getTabsCount()) return;
+
+		// Keep reference to last index for event handler
+		const last = this.state.selectedIndex;
+
+		// Check if the change event handler cancels the tab change
+		let cancel = false;
+
+		// Call change event handler
+		if (typeof this.props.onSelect === 'function') {
+			cancel = this.props.onSelect(index, last) === false;
+		}
+
+		if (!cancel) {
+			// Update selected index
+			this.setState({ selectedIndex: index, focus: focus === true });
+		}
+	},
+
+	getNextTab(index) {
+		const count = this.getTabsCount();
+
+		// console.log("[getNextTab] index", index);
+
+		// Look for non-disabled tab from index to the last tab on the right
+		for (let i = index + 1; i < count; i++) {
+			const tab = this.getTab(i);
+			if (!isTabDisabled(findDOMNode(tab))) {
+				return i;
+			}
+		}
+
+		// If no tab found, continue searching from first on left to index
+		for (let i = 0; i < index; i++) {
+			const tab = this.getTab(i);
+			if (!isTabDisabled(findDOMNode(tab))) {
+				return i;
+			}
+		}
+
+		// No tabs are disabled, return index
+		return index;
+	},
+
+	getPrevTab(index) {
+		let i = index;
+
+		// console.log("[getPrevTab] index", index);
+
+		// Look for non-disabled tab from index to first tab on the left
+		while (i--) {
+			const tab = this.getTab(i);
+			if (!isTabDisabled(findDOMNode(tab))) {
+				return i;
+			}
+		}
+
+		// If no tab found, continue searching from last tab on right to index
+		i = this.getTabsCount();
+		while (i-- > index) {
+			const tab = this.getTab(i);
+			if (!isTabDisabled(findDOMNode(tab))) {
+				return i;
+			}
+		}
+
+		// No tabs are disabled, return index
+		return index;
+	},
+
+	getTabsCount() {
+		return this.props.children ?
+			React.Children.count(this.props.children) :
+			0;
+	},
+
+	getPanelsCount() {
+		return this.props.children ?
+			React.Children.count(this.props.children) :
+			0;
+	},
+
+
+	getTab(index) {
+		return this.refs[`tabs-${index}`];
+	},
+
+	/**
+	 * Determine if a node from event.target is a Tab element for the current Tabs container.
+	 * If the clicked element is not a Tab, it returns false.
+	 * If it finds another Tabs container between the Tab and `this`, it returns false.
+	 */
+	isTabFromContainer(node) {
+		// return immediately if the clicked element is not a Tab.
+		if (!isTabNode(node)) {
+			return false;
+		}
+
+		// Check if the first occurrence of a Tabs container is `this` one.
+		let nodeAncestor = node.parentElement;
+		const tabsNode = findDOMNode(this);
+		do {
+			if (nodeAncestor === tabsNode) return true;
+			else if (nodeAncestor.getAttribute('data-tabs')) break;
+
+			nodeAncestor = nodeAncestor.parentElement;
+		} while (nodeAncestor);
+
+		return false;
+	},
+
+	handleKeyDown(e) {
+		if (this.isTabFromContainer(e.target)) {
+			let index = this.state.selectedIndex;
+			let preventDefault = false;
+
+			// Select next tab to the left
+			if (e.keyCode === 37 || e.keyCode === 38) {
+				index = this.getPrevTab(index);
+				preventDefault = true;
+			}
+			// Select next tab to the right
+			/* eslint brace-style:0 */
+			else if (e.keyCode === 39 || e.keyCode === 40) {
+				index = this.getNextTab(index);
+				preventDefault = true;
+			}
+
+			// This prevents scrollbars from moving around
+			if (preventDefault) {
+				e.preventDefault();
+			}
+
+			this.setSelected(index, true);
+		}
+	},
+
+	_renderTitles () {
+		function labels (child, index) {
+			let activeClass = (this.state.selectedIndex === index ? 'slds-active' : '');
+			const ref = `tabs-${index}`;
+			const id = `slds-tabs--tab-${index}`;
+			const panelId = `slds-tabs--panel-${index}`;
+			const selected = this.state.selectedIndex === index;
+			const focus = selected && this.state.focus;
+			return (
+				<Tab
+					key={index}
+					ref={ref}
+					focus={focus}
+					selected={selected}
+					id={id}
+					panelId={panelId}
+					// onClick={this.handleClick.bind(this, index, event)}
+				>
 					{child.props.label}
-					</a>
-				</li>
-			);
+				</Tab>
+				);
 		}
 		return (
-			<ul className="slds-tabs--default__nav">
+			<ul className="slds-tabs--default__nav" role="tablist">
 				{this.props.children.map(labels.bind(this))}
 			</ul>
 		);
 	},
 	_renderContent () {
+		function panels (child, index) {
+			const ref = `panels-${index}`;
+			const tabId = `slds-tabs--tab-${index}`;
+			const id = `slds-tabs--panel-${index}`;
+			const selected = this.state.selectedIndex === index;
+			return (
+				<TabPanel
+					key={index}
+					ref={ref}
+					focus={focus}
+					selected={selected}
+					id={id}
+					tabId={tabId}
+				>
+					{this.props.children[this.state.selectedIndex]}
+				</TabPanel>
+			);
+		}
 		return (
-			<div className="slds-tabs--default__content">
-				{this.props.children[this.state.selected]}
-			</div>
+			<span className="slds-tabs--default__content-wrapper">
+				{this.props.children.map(panels.bind(this))}
+			</span>
 		);
 	},
 	render () {
+		if (this.state.focus) {
+			setTimeout(() => {
+				this.state.focus = false;
+			}, 0);
+		}
+
 		return (
-			<div className="slds-tabs--default">
-				{this._renderTitles(this.props)}
+			<div
+				onClick={this.handleClick}
+				onKeyDown={this.handleKeyDown}
+				className="slds-tabs--default"
+			>
+				{this._renderTitles()}
 				{this._renderContent()}
-			</div>);
+			</div>
+		);
 	}
 });
 
