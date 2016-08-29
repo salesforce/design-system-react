@@ -25,10 +25,6 @@ import classNames from 'classnames';
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
-// ### onClickOutside
-// Listen for clicks that occur somewhere in the document, outside of the element itself
-import onClickOutside from 'react-onclickoutside';
-
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
