@@ -639,6 +639,7 @@ const MenuDropdown = React.createClass({
 				iconVariant={this.props.iconVariant}
 				iconSize={this.props.iconSize}
 				inverse={this.props.buttonInverse}
+				isOpen={isOpen}
 				label={this.props.label}
 				style={this.props.style}
 				tabIndex={isOpen ? '-1' : '0'}

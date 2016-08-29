@@ -61,6 +61,10 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 		*/
 		id: PropTypes.string,
 		/**
+		* Allows the dropdown menu to style itself accordingly when open since CSS hover rules cannot take effect if the menu is not inline.
+		*/
+		isOpen: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+		/**
 		 * Visible label on the dropdown menu trigger button.
 		 */
 		label: PropTypes.string,
@@ -102,6 +106,7 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 			className,
 			dividerPosition,
 			id,
+			isOpen,
 			label,
 			menu,
 			onBlur,
@@ -113,7 +118,19 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 			...rest
 		} = this.props;
 
-		const listItemstyle = active ? { backgroundColor: activeBackgroundColor, borderBottomColor: activeBackgroundColor } : null;
+		let listItemstyle = {};
+		// TODO: This should eventually exist in a CSS class. Feature has been filed.
+		const hoverBackgroundColor = '#f7f9fb';
+
+		if (active) {
+			listItemstyle.backgroundColor = activeBackgroundColor;
+			listItemstyle.borderBottomColor = activeBackgroundColor;
+		}
+
+		// Per SLDS pattern set trigger style like hover style
+		if (isOpen) {
+			listItemstyle.backgroundColor = hoverBackgroundColor;
+		}
 
 		return (
 			<li
