@@ -26,6 +26,8 @@ const dropdownCollection = [{
 	label: 'Menu Item One', value: '1', iconCategory: 'utility',
 	iconName: 'table', href: 'http://www.google.com'
 }, {
+	label: 'Menu Header', type: 'header'
+}, {
 	label: 'Menu Item Two', value: '2', iconCategory: 'utility',
 	iconName: 'kanban', href: 'http://www.google.com'
 }, {
@@ -78,7 +80,6 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 				label="Menu Item 1"
 				onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
 				options={dropdownCollection}
-				length={null}
 			/>
 			<GlobalNavigationBarLink
 				// will actually go to website
