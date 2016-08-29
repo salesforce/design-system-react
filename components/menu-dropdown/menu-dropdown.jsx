@@ -526,7 +526,7 @@ const MenuDropdown = React.createClass({
 		return (
 			isOpen ?
 				<div
-					className={classNames('slds-dropdown', 'slds-dropdown--menu', 'slds-dropdown--left', this.props.className)}
+					className={classNames('slds-dropdown', 'slds-dropdown--left', this.props.className)}
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
 					style={this.props.menuStyle}
@@ -560,7 +560,6 @@ const MenuDropdown = React.createClass({
 			isOpen ?
 				<Popover
 					className={classNames('slds-dropdown',
-						'slds-dropdown--menu',
 						'ignore-react-onclickoutside',
 						positionClassName,
 						this.props.className)}
