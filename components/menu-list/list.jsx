@@ -83,27 +83,6 @@ const List = React.createClass({
 		};
 	},
 
-	getItems () {
-		return this.props.options.map((option, index) => {
-			const id = this.props.getListItemId(index);
-
-			return (
-				<ListItem
-					{...option}
-					checkmark={this.props.checkmark}
-					data={option}
-					id={id}
-					index={index}
-					isSelected={(index === this.props.selectedIndex)}
-					key={`${id}-${option.value}`}
-					labelRenderer={this.props.itemRenderer}
-					onSelect={this.props.onSelect}
-					ref={(listItem) => this.props.itemRefs(listItem, index)}
-				/>
-			);
-		});
-	},
-
 	render () {
 		let lengthClassName;
 		if (this.props.length) {
@@ -116,7 +95,26 @@ const List = React.createClass({
 				className={classNames('dropdown__list', lengthClassName, this.props.className)}
 				role="menu"
 			>
-				{this.getItems()}
+				{
+					this.props.options.map((option, index) => {
+						const id = this.props.getListItemId(index);
+
+						return (
+							<ListItem
+								{...option}
+								checkmark={this.props.checkmark}
+								data={option}
+								id={id}
+								index={index}
+								isSelected={(index === this.props.selectedIndex)}
+								key={`${id}-${option.value}`}
+								labelRenderer={this.props.itemRenderer}
+								onSelect={this.props.onSelect}
+								ref={(listItem) => this.props.itemRefs(listItem, index)}
+							/>
+						);
+					})
+				}
 			</ul>
 		);
 	}
