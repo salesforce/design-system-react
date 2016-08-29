@@ -246,7 +246,6 @@ const Tabs = React.createClass({
 
 	_renderTitles () {
 		function labels (child, index) {
-			let activeClass = (this.state.selectedIndex === index ? 'slds-active' : '');
 			const ref = `tabs-${index}`;
 			const id = `slds-tabs--tab-${index}`;
 			const panelId = `slds-tabs--panel-${index}`;
@@ -260,7 +259,6 @@ const Tabs = React.createClass({
 					selected={selected}
 					id={id}
 					panelId={panelId}
-					// onClick={this.handleClick.bind(this, index, event)}
 				>
 					{child.props.label}
 				</Tab>
@@ -309,6 +307,7 @@ const Tabs = React.createClass({
 				onClick={this.handleClick}
 				onKeyDown={this.handleKeyDown}
 				className="slds-tabs--default"
+				data-tabs
 			>
 				{this._renderTitles()}
 				{this._renderContent()}

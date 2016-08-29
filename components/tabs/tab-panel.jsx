@@ -67,6 +67,7 @@ module.exports = React.createClass({
         )}
         role="tabpanel"
         id={id}
+        aria-selected={selected ? 'true' : 'false'}
         aria-labelledby={tabId}
       >
         {(this.context.forceRenderTabPanel || selected) ? children : null}
