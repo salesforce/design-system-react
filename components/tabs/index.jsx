@@ -47,17 +47,12 @@ import {
 	uuid
 } from '../../utilities';
 
-// ### isFunction
-import isFunction from 'lodash.isfunction';
-
 const handleClick = (event, props) => {
 	EventUtil.trap(event);
 
 	if (isFunction(props.onClick)) {
 		props.onClick(event, {
-			node: props.node,
-			select: !props.node.selected,
-			treeIndex: props.treeIndex
+			props: !props.selected
 		});
 	}
 };
@@ -87,9 +82,9 @@ const Tabs = React.createClass({
 	// 		selected: index
 	// 	});
 	// },
-	_renderTitles () {
+	_renderTitles (props) {
 		function labels (child, index) {
-			let activeClass = (this.state.selected === index ? 'slds-active' : '');
+			let activeClass = (props.selected === index ? 'slds-active' : '');
 			return (
 				<li
 					className={classNames(
@@ -134,7 +129,7 @@ const Tabs = React.createClass({
 	render () {
 		return (
 			<div className="slds-tabs--default">
-				{this._renderTitles()}
+				{this._renderTitles(this.props)}
 				{this._renderContent()}
 			</div>);
 	}
