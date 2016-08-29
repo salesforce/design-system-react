@@ -35,6 +35,21 @@ export CardFilter from './card/filter';
 export SLDSCheckbox from './forms/checkbox';
 export Checkbox from './forms/checkbox';
 
+export SLDSGlobalHeader from './global-header';
+export GlobalHeader from './global-header';
+
+export SLDSGlobalHeaderButton from './global-header/button';
+export GlobalHeaderButton from './global-header/button';
+
+export SLDSGlobalHeaderDropdown from './global-header/dropdown';
+export GlobalHeaderDropdown from './global-header/dropdown';
+
+export SLDSGlobalHeaderProfile from './global-header/profile';
+export GlobalHeaderProfile from './global-header/profile';
+
+export SLDSGlobalHeaderSearch from './global-header/search';
+export GlobalHeaderSearch from './global-header/search';
+
 export SLDSGlobalNavigationBar from './global-navigation-bar';
 export GlobalNavigationBar from './global-navigation-bar';
 
