@@ -1,0 +1,174 @@
+{
+  "name": "design-system-react",
+  "version": "0.3.6",
+  "description": "Salesforce Lightning Design System React components",
+  "license": "BSD-3-Clause",
+  "engines": {
+    "node": "^4.4.0",
+    "npm": "^3.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/salesforce-ux/design-system-react"
+  },
+  "keywords": [
+    "react",
+    "slds",
+    "salesforce",
+    "salesforce-ux",
+    "lightning",
+    "design system",
+    "lightning design system",
+    "salesforce lightning design system",
+    "interactive components",
+    "interactive",
+    "components"
+  ],
+  "bugs": {
+    "url": "https://github.com/salesforce-ux/design-system-react/issues"
+  },
+  "main": "components/index.js",
+  "homepage": "https://react.lightningdesignsystem.com",
+  "dependencies": {
+    "babel-preset-stage-1": "^6.5.0",
+    "classnames": "^2.1.3",
+    "lodash.assign": "^4.0.9",
+    "lodash.compact": "^3.0.0",
+    "lodash.escaperegexp": "^4.1.1",
+    "lodash.find": "^4.3.0",
+    "lodash.flatten": "^4.2.0",
+    "lodash.isarray": "^4.0.0",
+    "lodash.isboolean": "^3.0.3",
+    "lodash.isdate": "^3.0.3",
+    "lodash.isequal": "^4.2.0",
+    "lodash.isfunction": "^3.0.8",
+    "lodash.memoize": "^4.1.1",
+    "lodash.omit": "^4.3.0",
+    "lodash.partial": "^4.1.3",
+    "lodash.reject": "^4.3.0",
+    "lodash.uniqueid": "^4.0.0",
+    "react-highlighter": "^0.3.3",
+    "react-modal": "^1.4.0",
+    "react-onclickoutside": "^5.3.3",
+    "react-text-truncate": "^0.8.2",
+    "shortid": "^2.2.6",
+    "tether": "1.1.0",
+    "tether-drop": "1.2.2",
+    "warning": "^2.1.0"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "components": [
+    {
+      "component": "app-launcher",
+      "display-name": "App Launcher",
+      "SLDS-component-path": "/components/app-launcher/#flavor-default"
+    },
+    {
+      "component": "bread-crumb",
+      "display-name": "Breadcrumbs",
+      "SLDS-component-path": "/components/breadcrumbs"
+    },
+    {
+      "component": "button",
+      "display-name": "Buttons",
+      "SLDS-component-path": "/components/buttons"
+    },
+    {
+      "component": "button-stateful",
+      "display-name": "Stateful Buttons",
+      "SLDS-component-path": "/components/buttons/#flavor-stateful"
+    },
+    {
+      "component": "button-group",
+      "display-name": "Button Groups",
+      "SLDS-component-path": "/components/button-groups"
+    },
+    {
+      "component": "card",
+      "display-name": "Cards",
+      "SLDS-component-path": "/components/cards"
+    },
+    {
+      "component": "forms/checkbox",
+      "display-name": "Checkboxes",
+      "SLDS-component-path": "/components/forms/#flavor-checkbox"
+    },
+    {
+      "component": "data-table",
+      "display-name": "Data Tables",
+      "SLDS-component-path": "/components/data-tables"
+    },
+    {
+      "component": "date-picker",
+      "display-name": "Datepickers",
+      "SLDS-component-path": "/components/datepickers"
+    },
+    {
+      "component": "icon",
+      "display-name": "Icons",
+      "SLDS-component-path": "/components/icons"
+    },
+    {
+      "component": "forms/input/inline",
+      "display-name": "Inline Edit Inputs",
+      "SLDS-component-path": "/components/forms#flavor-input"
+    },
+    {
+      "component": "forms/input",
+      "display-name": "Inputs",
+      "SLDS-component-path": "/components/forms#flavor-input"
+    },
+    {
+      "component": "global-header",
+      "display-name": "Global Header",
+      "SLDS-component-path": "/components/global-header#flavor-base"
+    },
+    {
+      "component": "global-navigation-bar",
+      "display-name": "Global Navigation Bar",
+      "SLDS-component-path": "/components/global-navigation#flavor-navigation-bar"
+    },
+    {
+      "component": "lookup",
+      "display-name": "Lookups",
+      "SLDS-component-path": "/components/lookups"
+    },
+    {
+      "component": "menu-dropdown",
+      "display-name": "Dropdown Menus",
+      "SLDS-component-path": "/components/menus#flavor-dropdown"
+    },
+    {
+      "component": "menu-picklist",
+      "display-name": "Picklist Menus",
+      "SLDS-component-path": "/components/menus#flavor-picklist"
+    },
+    {
+      "component": "modal",
+      "display-name": "Modals",
+      "SLDS-component-path": "/components/modals"
+    },
+    {
+      "component": "notification",
+      "display-name": "Notifications",
+      "SLDS-component-path": "/components/notifications"
+    },
+    {
+      "component": "page-header",
+      "display-name": "Page Headers",
+      "SLDS-component-path": "/components/page-headers"
+    },
+    {
+      "component": "popover-tooltip",
+      "display-name": "Popover Tooltips",
+      "SLDS-component-path": "/components/popovers#flavor-tooltips"
+    },
+    {
+      "component": "time-picker",
+      "display-name": "Timepickers",
+      "SLDS-component-path": "/components/datepickers"
+    }
+  ]
+}
