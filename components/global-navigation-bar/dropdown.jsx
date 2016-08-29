@@ -37,7 +37,10 @@ const GlobalNavigationBarDropdown = (props) => {
 	} = props;
 
 	return (
-		<MenuDropdown {...rest}>
+		<MenuDropdown
+			length={null}
+			{...rest}
+		>
 			<GlobalNavigationTrigger
 				active={active}
 				assistiveText={assistiveText}
