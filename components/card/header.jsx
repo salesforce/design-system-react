@@ -49,23 +49,46 @@ renderFilter.displayName = 'renderFilter';
 
 // ## CardHeaderDefinition
 const CardHeader = (props) => {
+	let title = null;
+
+	if (typeof props.heading === 'string' || props.heading instanceof String) {
+		title = props.heading;
+	}
+
+	const heading = (
+		<h2
+			id={props.id + idSuffixes.heading}
+			className="slds-text-heading--small slds-truncate"
+			title={title}
+		>
+			{props.heading}
+		</h2>
+	);
+
 	const hasFilter = props.filter ? true : null;
-	const mediaObjectBody = (<h2
-		id={props.id + idSuffixes.heading}
-		className="slds-text-heading--small slds-truncate"
-		title={props.heading}
-	>
-		{props.heading}
-	</h2>);
+
+	let Header;
+
+	if (props.header) {
+		Header = React.cloneElement(props.header, {
+			figure: props.icon,
+			body: heading,
+			verticalCenter: true,
+			canTruncate: true,
+			...props.header.props
+		});
+	} else {
+		Header = (<MediaObject
+			figure={props.icon}
+			body={heading}
+			verticalCenter
+			canTruncate
+		/>);
+	}
 
 	return (
 		<div className={classnames('slds-card__header', 'slds-grid')}>
-			<MediaObject
-				figure={props.icon}
-				body={mediaObjectBody}
-				verticalCenter
-				canTruncate
-			/>
+			{Header}
 			{
 				props.filter
 				? renderFilter(props.filter, props.id)
@@ -96,6 +119,10 @@ CardHeader.propTypes = {
 	 * Adds a filter input to the card header
 	 */
 	filter: PropTypes.node,
+	/**
+	 * Allows a custom header (the media object with the icon in the first column). `icon`, `heading` and other props are passed in the media object from Card. Use `design-system-react/components/media-object` to create your own.
+	 */
+	header: PropTypes.node,
 	/**
 	 * Actions performed on selected items or that relate to the entire group of items such as "Add Item.""
 	 */

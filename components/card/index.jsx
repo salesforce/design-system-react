@@ -52,6 +52,7 @@ const Card = (props) => {
 	return (
 		<div id={props.id} className={classnames('slds-card', props.className)} style={props.style}>
 			<Header
+				header={props.header}
 				icon={empty ? null : props.icon}
 				id={props.id}
 				filter={props.filter}
@@ -116,7 +117,11 @@ Card.propTypes = {
 	 */
 	footer: PropTypes.node,
 	/**
-	 * The heading is the name of the related item group.
+	 * Allows a custom header (the media object with the icon in the first column). `icon`, `heading` and other props are passed into the media object from Card if present. Use `design-system-react/components/media-object` to create your own custom header.
+	 */
+	header: PropTypes.node,
+	/**
+	 * The heading is the name of the related item group and should only contain inline elements.
 	 */
 	heading: PropTypes.oneOfType([
 		PropTypes.node,

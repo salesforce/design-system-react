@@ -12,6 +12,9 @@ import DataTableColumn from '../../components/data-table/column';
 import DataTableHighlightCell from '../../components/data-table/highlight-cell';
 import Icon from '../../components/icon';
 
+import MediaObject from '../../components/media-object';
+import InlineEdit from '../../components/forms/input/inline';
+
 const sampleItems = [
 	{ name: 'Cloudhub' },
 	{ name: 'Cloudhub + Anypoint Connectors' },
@@ -23,6 +26,7 @@ const DemoCard = React.createClass({
 
 	propTypes: {
 		items: PropTypes.array,
+		header: PropTypes.node,
 		heading: PropTypes.oneOfType([
 			PropTypes.node,
 			PropTypes.string
@@ -60,6 +64,7 @@ const DemoCard = React.createClass({
 						? <CardFilter onChange={this.handleFilterChange} />
 						: null
 					}
+					header={this.props.header}
 					headerActions={!isEmpty
 						? <Button label="Delete All Items" onClick={this.handleDeleteAllItems} />
 						: null
@@ -156,12 +161,23 @@ storiesOf(CARD, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('w/ Items', () => <DemoCard items={sampleItems} />)
 	.add('Empty', () => <DemoCard items={[]} />)
+	.add('Custom Header', () =>
+		<DemoCard
+			header={<MediaObject
+				body={<InlineEdit
+					className="slds-text-heading--small slds-truncate"
+					name="inline-edit-standard"
+					value="Write your own heading"
+					id="inline-edit-standard"
+				/>}
+			/>}
+			items={sampleItems}
+		/>)
 	.add('Custom Heading', () => (
 		<DemoCard
 			items={sampleItems}
-			heading={<h2
-				className="slds-text-heading--small slds-truncate"
+			heading={<span
 				style={{ color: 'red' }}
-			>To Wanda! This is custom!</h2>}
+			>To Wanda! This is custom!</span>}
 		/>))
 	.add('Set height card', () => <SetHeightCard />);
