@@ -23,16 +23,16 @@ const linkClicked = action;
 const searchClicked = action;
 
 const dropdownCollection = [{
-	label: 'Menu Item One', value: '1', iconCategory: 'utility',
+	label: 'Main action', value: '0', iconCategory: 'utility',
 	iconName: 'table', href: 'http://www.google.com'
 }, {
 	label: 'Menu Header', type: 'header'
 }, {
-	label: 'Menu Item Two', value: '2', iconCategory: 'utility',
+	label: 'Menu Item One', value: '1', iconCategory: 'utility',
 	iconName: 'kanban', href: 'http://www.google.com'
 }, {
-	label: 'Menu Item Three', value: '3', iconCategory: 'utility',
-	iconName: 'side_list', href: 'http://www.google.com'
+	label: 'Menu Item Two', value: '2', iconCategory: 'utility',
+	iconName: 'kanban', href: 'http://www.google.com'
 }, {
 	label: 'Menu Item Three', value: '3', iconCategory: 'utility',
 	iconName: 'side_list', href: 'http://www.google.com'
