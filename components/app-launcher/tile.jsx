@@ -33,9 +33,9 @@ import PopoverTooltip from '../popover-tooltip';
 // ## Constants
 import { APP_LAUNCHER_TILE } from '../../utilities/constants';
 
-const handleClick = (event, props, onClick) => {
+const handleClick = (event, href, onClick) => {
 	event.preventDefault();
-	onClick(event, { href: props.href });
+	onClick(event, { href });
 };
 
 /**
