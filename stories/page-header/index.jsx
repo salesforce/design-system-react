@@ -11,6 +11,59 @@ import SLDSButton from '../../components/button';
 import SLDSMenuDropdown from '../../components/menu-dropdown';
 import PopoverTooltip from '../../components/popover-tooltip';
 
+const recordHomeDetails1 = [
+	{ label: 'Field 1', content: 'Description that demonstrates truncation with content. Description that demonstrates truncation with content.', flavor: '1-of-4', truncate: true },
+	{ label: 'Field 2', content: 'Multiple Values' },
+	{ label: 'Field 3', content: 'Description (2-line truncation)' }
+];
+
+const recordHomeDetails2 = [
+	{ label: 'Field 1', content: 'hi', flavor: '1-of-4', truncate: true },
+	{ label: 'Field 2', content: 'Multiple Values' },
+	{ label: 'Field 3', content: 'Description (2-line truncation)' }
+];
+
+const DemoPageHeader = React.createClass({
+	displayName: 'DemoPageHeader',
+
+	getInitialState () {
+		return {
+			recordHomeDetails: recordHomeDetails2
+		};
+	},
+
+	changeDescription() {
+		if(this.state.recordHomeDetails[0].content == 'hi') {
+			this.setState({ recordHomeDetails: recordHomeDetails1 });
+		} else {
+			this.setState({ recordHomeDetails: recordHomeDetails2 });
+		}
+	},
+
+	render () {
+		const defaultProps = {
+			iconAssistiveText: 'User',
+			iconCategory: 'standard',
+			iconName: 'user',
+			label: 'Record Type',
+			title: 'Record Title',
+			variant: 'recordHome',
+			details: this.state.recordHomeDetails
+		};
+
+		return (
+			<div>
+				<SLDSButton onClick={this.changeDescription}>Change Description</SLDSButton>
+				<SLDSPageHeader {...defaultProps} />
+			</div>
+		);
+	},
+
+	handleSelect (selectedItem, ...rest) {
+		action('select')(selectedItem, ...rest);
+		this.setState({ currentSelected: this.state.options.indexOf(selectedItem) });
+	}
+});
 const getPageHeader = props => (
 	<SLDSPageHeader {...props} />
 );
@@ -254,4 +307,4 @@ storiesOf(PAGE_HEADER, module)
 		navRight: relatedListNavRight,
 		trail: relatedListTrail
 	}))
-;
+	.add('Record Home (field updates)', () => <DemoPageHeader />);

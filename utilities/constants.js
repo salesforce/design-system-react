@@ -54,3 +54,6 @@ export const PAGE_HEADER = 'SLDSPageHeader';
 export const POPOVER_TOOLTIP = 'SLDSPopoverTooltip';
 export const SPINNER = 'SLDSSpinner';
 export const TIME_PICKER = 'SLDSTimepicker';
+export const TREE = 'SLDSTree';
+export const TREE_BRANCH = 'SLDSTreeBranch';
+export const TREE_ITEM = 'SLDSTreeItem';

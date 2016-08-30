@@ -121,7 +121,7 @@ For instance, allowing `MenuDropdown` to have a `Trigger` child that can be a `B
 The following is a simple example of the cloning process within the parent.
 
 
-```
+```javascript
 const CleverParent = React.createClass({
   render() {
     const children = React.Children.map(this.props.children, (child) => {

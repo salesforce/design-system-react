@@ -66,6 +66,7 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 				className: 'this-is-a-custom-class',
 				description: 'Fluffy support',
 				descriptionHeading: 'Sub Heading',
+				href: 'https://www.marketingcloud.com/',
 				onClick,
 				search: 'upport',
 				title: 'Support Cloud'
@@ -103,6 +104,10 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		it('renders custom app description', () => {
 			// the .at(1) would only apply when descriptionHeading is set
 			expect(handles.description.find('span').at(1).text()).to.equal('Fluffy support');
+		});
+
+		it('has an href attribute', () => {
+			expect(handles.tile.find('a').node.href).to.equal('https://www.marketingcloud.com/');
 		});
 
 		it('clicking tile fires callback', () => {

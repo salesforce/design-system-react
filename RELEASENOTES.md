@@ -2,6 +2,15 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.3.6
+
+**MAJOR CHANGES**
+- Add Tree as a prototype component. Tree is not accessible to assistive technology at this time.
+- Add GlobalHeader to default library export.
+
+**Bug Fix**
+- Detect PageHeader detail field truncation on update instead of mount.
+
 ## Release 0.3.5
 
 **MAJOR CHANGES**
