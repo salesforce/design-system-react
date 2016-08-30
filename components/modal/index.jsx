@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // Implements the [Modal design pattern](https://core-204.lightningdesignsystem.com/components/modals) in React.
 // Based on SLDS v2.1.0-rc.3
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
 import Button from '../button';
@@ -27,55 +27,61 @@ const propTypes = {
 	/**
 	 * Vertical alignment of Modal.
 	 */
-	align: React.PropTypes.oneOf(['top', 'center']),
+	align: PropTypes.oneOf(['top', 'center']),
 	/**
 	 * Modal content.
 	 */
-	children: React.PropTypes.node.isRequired,
+	children: PropTypes.node.isRequired,
 	/**
 	  * Custom css classes for modal container.
 	  */
-	containerClassName: React.PropTypes.string,
+	containerClassName: PropTypes.string,
 	/**
 	 * If true, modal footer buttons render left and right. An example use case would be for "back" and "next" buttons.
 	 */
-	directional: React.PropTypes.bool,
+	directional: PropTypes.bool,
 	/**
 	 * If true, Modals can be dismissed by clicking on the close icon or pressing esc key.
 	 */
-	dismissible: React.PropTypes.bool,
+	dismissible: PropTypes.bool,
 	/**
 	 * If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to dismissible.
 	 */
-	dismissOnClickOutside: React.PropTypes.bool,
+	dismissOnClickOutside: PropTypes.bool,
 	/**
 	 * Callback to fire with Modal is dismissed
 	*/
-	onRequestClose: React.PropTypes.func,
+	onRequestClose: PropTypes.func,
 	/**
 	 * Array of buttons to be placed in the footer. They render on the right side by default but are floated left and right if <code>directional</code> is true.
 	 */
-	footer: React.PropTypes.array,
+	footer: PropTypes.array,
 	/**
 	 * Allows for a custom modal header that does not scroll with modal content. If this is defined, `title` and `tagline` will be ignored. The close button will still be present.
 	 */
-	header: React.PropTypes.node,
+	header: PropTypes.node,
 	/**
 	 * Adds CSS classes to the container surrounding the modal header and the close button.
 	 */
-	headerClassName: React.PropTypes.node,
-	isOpen: React.PropTypes.bool.isRequired,
-	prompt: React.PropTypes.oneOf(['success', 'warning', 'error', 'wrench', 'offline', 'info']),
-	size: React.PropTypes.oneOf(['medium', 'large']),
+	headerClassName: PropTypes.node,
+	/**
+	 * Forces the modal to be open or closed.
+	 */
+	isOpen: PropTypes.bool.isRequired,
+	/**
+	 * Styles the modal as a prompt.
+	 */
+	prompt: PropTypes.oneOf(['success', 'warning', 'error', 'wrench', 'offline', 'info']),
+	size: PropTypes.oneOf(['medium', 'large']),
 	/**
 	 * Content underneath the title in the modal header.
 	 */
-	tagline: React.PropTypes.node,
+	tagline: PropTypes.node,
 	/**
 	 * Text heading at the top of a modal.
 	 */
-	title: React.PropTypes.node,
-	toast: React.PropTypes.node
+	title: PropTypes.node,
+	toast: PropTypes.node
 };
 
 const defaultProps = {
@@ -216,7 +222,7 @@ class Modal extends React.Component {
 
 	headerComponent () {
 		let headerContent = this.props.header;
-		let closeButton = (
+		const closeButton = (
 			<Button
 				assistiveText="Close"
 				iconName="close"
@@ -226,7 +232,7 @@ class Modal extends React.Component {
 				onClick={this.closeModal}
 				variant="icon"
 			/>
-		)
+		);
 
 		if (!headerContent && this.props.title || this.props.tagline) {
 			headerContent = (
