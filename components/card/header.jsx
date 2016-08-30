@@ -28,96 +28,91 @@ const { PropTypes } = React;
 import { CARD_HEADER } from '../../utilities/constants';
 
 // Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
-const cssClasses = {
-	base: 'slds-card__header'
-};
-
 const idSuffixes = {
 	headerActions: '__header-actions',
 	heading: '__heading'
 };
 
+const renderFilter = (filter, id) => {
+	const clonedFilter = React.cloneElement(filter, {
+		id
+	});
+
+	return (
+		<div className="slds-input-has-icon slds-input-has-icon--left slds-size--1-of-3">
+			{clonedFilter}
+		</div>
+	);
+};
+
+renderFilter.displayName = 'renderFilter';
+
 // ## CardHeaderDefinition
-const CardHeader = React.createClass({
-	// ### Display Name
-	// Always use the canonical component name as the React display name.
-	displayName: CARD_HEADER,
-	// ### Prop Types
-	propTypes: {
-		/**
-		 * Adds a filter input to the card header
-		 */
-		filter: PropTypes.node,
-		/**
-		 * Actions performed on selected items or that relate to the entire group of items such as "Add Item.""
-		 */
-		headerActions: PropTypes.node,
-		/**
-		 * The heading is the name of the related item group.
-		 */
-		heading: PropTypes.string.isRequired,
-		/**
-		 * Icon associated with grouped items
-		 */
-		icon: PropTypes.node,
-		/**
-		 * Set the HTML `id` of the card filter and header actions.
-		 */
-		id: PropTypes.string.isRequired
-	},
+const CardHeader = (props) => {
+	const hasFilter = props.filter ? true : null;
+	const mediaObjectBody = (<h2
+		id={props.id + idSuffixes.heading}
+		className="slds-text-heading--small slds-truncate"
+		title={props.heading}
+	>
+		{props.heading}
+	</h2>);
 
-	renderFilter () {
-		const filter = React.cloneElement(this.props.filter, {
-			id: this.props.id
-		});
-
-		return (
-			<div className="slds-input-has-icon slds-input-has-icon--left slds-size--1-of-3">
-				{filter}
-			</div>
-		);
-	},
-
-	renderMediaObjectBody () {
-		return (
-			<h2
-				id={this.props.id + idSuffixes.heading}
-				className="slds-text-heading--small slds-truncate"
-				title={this.props.heading}
+	return (
+		<div className={classnames('slds-card__header', 'slds-grid')}>
+			<MediaObject
+				figure={props.icon}
+				body={mediaObjectBody}
+				verticalCenter
+				canTruncate
+			/>
+			{
+				props.filter
+				? renderFilter(props.filter, props.id)
+				: null
+			}
+			<div
+				id={props.id + idSuffixes.headerActions}
+				className={classnames(
+					'slds-no-flex',
+					{
+						'slds-size--1-of-3': hasFilter,
+						'slds-text-align--right': hasFilter
+					})}
 			>
-				{this.props.heading}
-			</h2>
-		);
-	},
-
-	render () {
-		let filter = null;
-		const hasFilter = this.props.filter ? true : null;
-
-		if (this.props.filter) {
-			filter = this.renderFilter();
-		}
-
-		return (
-			<div className={classnames(cssClasses.base, 'slds-grid')}>
-				<MediaObject
-					figure={this.props.icon}
-					body={this.renderMediaObjectBody()}
-					verticalCenter
-					canTruncate
-				/>
-				{filter}
-				<div
-					id={this.props.id + idSuffixes.headerActions}
-					className={classnames('slds-no-flex', { 'slds-size--1-of-3': hasFilter, 'slds-text-align--right': hasFilter })}
-				>
-					{this.props.headerActions}
-				</div>
+				{props.headerActions}
 			</div>
-		);
-	}
-});
+		</div>
+	);
+};
+
+// ### Display Name
+// Always use the canonical component name as the React display name.
+CardHeader.displayName = CARD_HEADER;
+
+// ### Prop Types
+CardHeader.propTypes = {
+	/**
+	 * Adds a filter input to the card header
+	 */
+	filter: PropTypes.node,
+	/**
+	 * Actions performed on selected items or that relate to the entire group of items such as "Add Item.""
+	 */
+	headerActions: PropTypes.node,
+	/**
+	 * The heading is the name of the related item group.
+	 */
+	heading: PropTypes.string.isRequired,
+	/**
+	 * Icon associated with grouped items
+	 */
+	icon: PropTypes.node,
+	/**
+	 * Set the HTML `id` of the card filter and header actions. The suffixes, `__header-actions` and `__heading` will be this `id` and added to their respective HTML elements.
+	 */
+	id: PropTypes.string.isRequired
+};
 
 module.exports = CardHeader;
-module.exports.cssClasses = cssClasses;
 module.exports.idSuffixes = idSuffixes;
