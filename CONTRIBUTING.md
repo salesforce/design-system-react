@@ -268,6 +268,8 @@ from the [Planning Center](https://github.com/planningcenter/react-patterns)
   * [Donielle Berg](https://github.com/donnieberg)
   * [Ivan Bogdanov](https://github.com/madpotato)
   * [David Brainer](https://github.com/tweettypography)
+  * [Stephen James](https://github.com/interactivellama)
+  * [David Woodward](https://github.com/futuremint)
 4. Get your component/feature approved by the UX Accessibility Team (refer to the link above).
 
 
