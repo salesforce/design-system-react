@@ -199,6 +199,9 @@ const AppLauncher = React.createClass({
 			</div>
 		);
 
+		// Not present in SLDS, but is consistent with other implementations of App Launcher. This also prevents resizing/jumping around when filtering. It will start clipping the modal close button at 600px viewport height.
+		const modalContentStaticHeight = '90%';
+
 		return (
 			<div className="slds-context-bar__item slds-no-hover" style={style}>
 				<div className="slds-context-bar__icon-action">
@@ -223,6 +226,8 @@ const AppLauncher = React.createClass({
 					</a>
 				</div>
 				<Modal
+					contentClassName="slds-modal__content slds-app-launcher__content slds-p-around--medium"
+					contentStyle={{ minHeight: modalContentStaticHeight }}
 					isOpen={isOpen}
 					onRequestClose={this.closeAppLauncher}
 					containerClassName="app-launcher"
@@ -230,9 +235,7 @@ const AppLauncher = React.createClass({
 					header={customModalHeader}
 					headerClassName="slds-app-launcher__header"
 				>
-					<div className="slds-modal__content slds-app-launcher__content slds-p-around--medium">
-						{this.props.children}
-					</div>
+					{this.props.children}
 				</Modal>
 				{this.props.triggerName
 					? <span
