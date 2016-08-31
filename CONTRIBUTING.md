@@ -260,6 +260,13 @@ Read: [Class Name Manipulation](https://github.com/JedWatson/classnames/blob/mas
 
 from the [Planning Center](https://github.com/planningcenter/react-patterns)
 
+## Testing Guidelines
+
+- All external APIs should be tested, so that breaking changes can be detected. If a breaking change doesn't cause at least one test to fail, then add a test.
+    - All `props` should be tested. It is OK to test multiple props in the same test for optmization as long as they are isolated and do not affect each other (for instance `id`, `classname`, and `style`).
+    - All event callbacks should be tested along with any data object keys outside of the synthetic event to confirm the data. The data object, if present, is typically the second parameter of an event callback. 
+    - All mouse and keyboard interactions should be tested.
+
 ## Finalize new component/features
 
 1. Write tests for your new component/feature.
