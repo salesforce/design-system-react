@@ -33,9 +33,23 @@ const propTypes = {
 	 */
 	children: PropTypes.node.isRequired,
 	/**
-	  * Custom css classes for modal container.
+	  * Custom CSS classes for the modal's container.
 	  */
-	containerClassName: PropTypes.string,
+	containerClassName: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string]),
+	/**
+	 * Custom CSS classes for the modal's body. This is the element that has overflow rules and should be used to set a static height if desired.
+	 */
+	contentClassName: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string]),
+	/**
+	 * Custom styles for the modal's body. This is the element that has overflow rules and should be used to set a static height if desired.
+	 */
+	contentStyle: React.PropTypes.object,
 	/**
 	 * If true, modal footer buttons render left and right. An example use case would be for "back" and "next" buttons.
 	 */
@@ -72,6 +86,9 @@ const propTypes = {
 	 * Styles the modal as a prompt.
 	 */
 	prompt: PropTypes.oneOf(['success', 'warning', 'error', 'wrench', 'offline', 'info']),
+	/**
+	 * Specifiies the modal's width. May be deprecated in favor of `width` in the future.
+	 */
 	size: PropTypes.oneOf(['medium', 'large']),
 	/**
 	 * Content underneath the title in the modal header.
@@ -81,6 +98,9 @@ const propTypes = {
 	 * Text heading at the top of a modal.
 	 */
 	title: PropTypes.node,
+	/**
+	 * Allows adding additional notifications within the modal.
+	 */
 	toast: PropTypes.node
 };
 
@@ -267,7 +287,12 @@ class Modal extends React.Component {
 
 	getModal () {
 		const modalStyle = this.props.align === 'top' ? { justifyContent: 'flex-start' } : null;
-		const contentStyle = this.props.title || this.props.header ? null : { borderRadius: '.25rem' };
+		const borderRadius = this.props.title || this.props.header ? {} : { borderRadius: '.25rem' };
+		const contentStyleFromProps = this.props.contentStyle || {};
+		const contentStyle =  {
+			...borderRadius,
+			...contentStyleFromProps
+		};
 		return (
 			<div>
 				<div
@@ -283,7 +308,11 @@ class Modal extends React.Component {
 				>
 					<div className={classNames('slds-modal__container', this.props.containerClassName)} style={modalStyle}>
 						{this.headerComponent()}
-						<div className="slds-modal__content" style={contentStyle} onClick={this.handleModalClick}>
+						<div
+							className={classNames('slds-modal__content', this.props.contentClassName)}
+							style={contentStyle}
+							onClick={this.handleModalClick}
+						>
 							{this.props.children}
 						</div>
 					{this.footerComponent()}
