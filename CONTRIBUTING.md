@@ -266,6 +266,9 @@ from the [Planning Center](https://github.com/planningcenter/react-patterns)
     - All `props` should be tested. It is OK to test multiple props in the same test for optmization as long as they are isolated and do not affect each other (for instance `id`, `classname`, and `style`).
     - All event callbacks should be tested along with any data object keys outside of the synthetic event to confirm the data. The data object, if present, is typically the second parameter of an event callback. 
     - All mouse and keyboard interactions should be tested.
+- Components should have 90%+ test coverage. Coverage can be determined by reviewing the coverage summary at the end of `npm test`. Please note that high test coverage does not imply correct logic, but low coverage implies low test quality/quantity. 
+- Test should run correctly in headless browsers (`npm test`) and within a "real" browser (`npm start` -> `http://localhost:8001/`)
+
 
 ## Finalize new component/features
 
