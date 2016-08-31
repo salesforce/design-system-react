@@ -618,7 +618,7 @@ const MenuDropdown = React.createClass({
 		}
 
 		const outsideClickIgnoreClass = `ignore-click-${this.getId()}`;
-		const isOpen = this.props.forceOpen || !this.props.disabled && this.state.isOpen && this.trigger;
+		const isOpen = this.props.forceOpen || !this.props.disabled && this.state.isOpen && !!this.trigger;
 
 		this.renderOverlay(isOpen);
 

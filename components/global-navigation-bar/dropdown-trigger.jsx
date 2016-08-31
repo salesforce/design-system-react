@@ -63,7 +63,7 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 		/**
 		* Allows the dropdown menu to style itself accordingly when open since CSS hover rules cannot take effect if the menu is not inline.
 		*/
-		isOpen: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+		isOpen: PropTypes.bool,
 		/**
 		 * Visible label on the dropdown menu trigger button.
 		 */
