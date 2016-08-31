@@ -55,9 +55,11 @@ const CardHeader = (props) => {
 		title = props.heading;
 	}
 
+	const headingId = props.id ? (props.id + idSuffixes.heading) : null;
+
 	const heading = (
 		<h2
-			id={props.id + idSuffixes.heading}
+			id={headingId}
 			className="slds-text-heading--small slds-truncate"
 			title={title}
 		>
@@ -86,6 +88,8 @@ const CardHeader = (props) => {
 		/>);
 	}
 
+	const headerActionsId = props.id ? (props.id + idSuffixes.headerActions) : null;
+
 	return (
 		<div className={classnames('slds-card__header', 'slds-grid')}>
 			{Header}
@@ -95,7 +99,7 @@ const CardHeader = (props) => {
 				: null
 			}
 			<div
-				id={props.id + idSuffixes.headerActions}
+				id={headerActionsId}
 				className={classnames(
 					'slds-no-flex',
 					{
@@ -138,7 +142,7 @@ CardHeader.propTypes = {
 	/**
 	 * Set the HTML `id` of the card filter and header actions. The suffixes, `__header-actions` and `__heading` will be this `id` and added to their respective HTML elements.
 	 */
-	id: PropTypes.string.isRequired
+	id: PropTypes.string
 };
 
 module.exports = CardHeader;

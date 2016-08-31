@@ -32,17 +32,12 @@ import Empty from './empty';
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
 
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
-
 import { CARD } from '../../utilities/constants';
 
 /**
  * Cards are used to apply a container around a related grouping of information. It has a header, a body, and an optional footer. It often contains a DataTable or Tile (coming soon). Actions associated with selected items or with all items are included within the header actions. Footer often contains pagination.
  */
-const Card = (props) => {
+const Card = function (props) {
 	let { empty } = props;
 	if (empty === true) {
 		// Can be overridden by passing in a node to the empty prop
@@ -78,7 +73,6 @@ const Card = (props) => {
 Card.displayName = CARD;
 
 Card.defaultProps = {
-	id: shortid.generate(),
 	heading: 'Related Items'
 };
 
