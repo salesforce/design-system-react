@@ -23,47 +23,44 @@ const idSuffixes = {
 	heading: '__empty-heading'
 };
 
-const CardEmpty = React.createClass({
-	// ### Display Name
-	// Always use the canonical component name as the React display name.
-	displayName: CARD_EMPTY,
-
-	// ### Prop Types
-	propTypes: {
-		/**
-		 * Additional call to actions that will render under the heading. Often this is an "Add Item" button.
-		 */
-		children: PropTypes.node,
-		/**
-		 * Primary text for an Empty Card.
-		 */
-		heading: PropTypes.string,
-		/**
-		 * Set the HTML `id` of the empty heading.
-		 */
-		id: PropTypes.string
-	},
-
-	// i18n
-	getDefaultProps () {
-		return {
-			heading: 'No Related Items'
-		};
-	},
-
-	// ### Render
-	render () {
-		const id = this.props.id ? (this.props.id + idSuffixes.heading) : null;
-		return (
-			<div className="slds-p-horizontal--small">
-				<div className="slds-text-align--center slds-m-bottom--x-large">
-					<h3 id={id} className="slds-text-heading--small slds-p-top--large slds-p-bottom--large">{this.props.heading}</h3>
-					{this.props.children}
-				</div>
+/**
+ * A default empty state for Cards.
+ */
+const CardEmpty = (props) => {
+	const id = props.id ? (props.id + idSuffixes.heading) : null;
+	return (
+		<div className="slds-p-horizontal--small">
+			<div className="slds-text-align--center slds-m-bottom--x-large">
+				<h3 id={id} className="slds-text-heading--small slds-p-top--large slds-p-bottom--large">{props.heading}</h3>
+				{props.children}
 			</div>
-		);
-	}
-});
+		</div>
+	);
+};
+
+// ### Display Name
+// Always use the canonical component name as the React display name.
+CardEmpty.displayName = CARD_EMPTY;
+
+// ### Prop Types
+CardEmpty.propTypes = {
+	/**
+	 * Additional call to actions that will render under the heading. Often this is an "Add Item" button.
+	 */
+	children: PropTypes.node,
+	/**
+	 * Primary text for an Empty Card.
+	 */
+	heading: PropTypes.string,
+	/**
+	 * Set the HTML `id` of the empty heading.
+	 */
+	id: PropTypes.string
+};
+
+CardEmpty.defaultProps = {
+	heading: 'No Related Items'
+};
 
 module.exports = CardEmpty;
 module.exports.idSuffixes = idSuffixes;
