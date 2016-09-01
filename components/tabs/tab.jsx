@@ -115,11 +115,14 @@ const Tab = React.createClass({
 				tabIndex={selected ? '0' : disabled ? '-1' : null}
 				id={id}
 				title={children}
+				style={disabled ? { opacity: 0.5 } : {}}
 			>
 				<a
 					className="slds-tabs--default__link"
 					href="javascript:void(0);"
 					role="presentation"
+					tabIndex="-1"
+					aria-disabled={disabled}
 				>
 					{children}
 				</a>
