@@ -37,7 +37,7 @@ Note: `design-system-react` is optimized for React 0.14.x and uses Lightning Des
 
 ### New to React?
 
-Take a look at our [recommended reading list](https://react.lightningdesignsystem.com/resources) on the documentation site and level up on your knowledge. The reading list also includes helpful articles on Redux, Webpack, ES6, and structuring a your app.
+Take a look at our [recommended reading list](https://react.lightningdesignsystem.com/resources) on the documentation site and level up on your knowledge. The reading list also includes helpful articles on Redux, Webpack, ES6, and structuring your app.
 
 ### NPM
 
