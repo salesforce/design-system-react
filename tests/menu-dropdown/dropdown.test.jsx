@@ -85,7 +85,7 @@ describe('SLDSMenuDropdown: ', () => {
 	const dropItDownWithCustomChildren = (props) => renderDropdown(createDropdownWithCustomChildren(props));
 	const dropItDownIconOnly = (props) => renderDropdown(createDropdownIcon(props));
 
-	const getMenu = (dom) => dom.querySelector('.slds-dropdown--menu');
+	const getMenu = (dom) => dom.querySelector('.slds-dropdown');
 
 	describe('Custom Content Present', () => {
 		let cmp;
