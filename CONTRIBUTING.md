@@ -30,6 +30,7 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 - Add as many prop checking tests that will _only run in development_ as needed via `checkProp`. If the test can become an independent module and work in multiple components, add it to the `utilities` folder.
 - Any text the user can read (including a11y text for screenreaders) should be able to be set via a prop for internationalization.
 - React component hierarchy doesn't always mean HTML tag hierarchy. Sometimes children become the wrapping component.
+- This library makes extensive use of the [classnames](https://github.com/JedWatson/classnames) library for feeding conditional CSS classes into `className` attributes and allows a variety of types such as `string`, `object`, and `arrays`. Please review the libary's API.
 - [Props in getInitialState is an anti-pattern.](https://facebook.github.io/react/tips/props-in-getInitialState-as-anti-pattern.html)
 - Read [JSX Gotchas](https://facebook.github.io/react/docs/jsx-gotchas.html#html-entities)
 
