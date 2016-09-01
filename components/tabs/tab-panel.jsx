@@ -24,54 +24,54 @@ import { TAB_PANEL } from '../../utilities/constants';
 
 
 module.exports = React.createClass({
-  displayName: TAB_PANEL,
+	displayName: TAB_PANEL,
 
-  propTypes: {
-    children: PropTypes.oneOfType([
-      PropTypes.array,
-      PropTypes.object,
-      PropTypes.string,
-    ]),
-    className: PropTypes.string,
-    id: PropTypes.string,
-    selected: PropTypes.bool,
-    style: PropTypes.object,
-    tabId: PropTypes.string,
-  },
+	propTypes: {
+		children: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string
+		]),
+		className: PropTypes.string,
+		id: PropTypes.string,
+		selected: PropTypes.bool,
+		style: PropTypes.object,
+		tabId: PropTypes.string
+	},
 
-  contextTypes: {
-    forceRenderTabPanel: PropTypes.bool,
-  },
+	contextTypes: {
+		forceRenderTabPanel: PropTypes.bool
+	},
 
-  getDefaultProps() {
-    return {
-      selected: false,
-      id: null,
-      tabId: null,
-    };
-  },
+	getDefaultProps () {
+		return {
+			selected: false,
+			id: null,
+			tabId: null
+		};
+	},
 
-  render() {
-    const { className, children, selected, id, tabId, style, ...attributes } = this.props;
+	render () {
+		const { className, children, selected, id, tabId, ...attributes } = this.props;
 
-    return (
-      <div
-        {...attributes}
-        className={classNames(
-          'slds-tabs--default__content',
-          className,
-          {
-            'slds-show': selected,
-            'slds-hide': !selected
-          }
-        )}
-        role="tabpanel"
-        id={id}
-        aria-selected={selected ? 'true' : 'false'}
-        aria-labelledby={tabId}
-      >
-        {(this.context.forceRenderTabPanel || selected) ? children : null}
-      </div>
-    );
-  },
+		return (
+			<div
+				{...attributes}
+				className={classNames(
+					'slds-tabs--default__content',
+					className,
+					{
+						'slds-show': selected,
+						'slds-hide': !selected
+					}
+				)}
+				role="tabpanel"
+				id={id}
+				aria-selected={selected ? 'true' : 'false'}
+				aria-labelledby={tabId}
+			>
+				{(this.context.forceRenderTabPanel || selected) ? children : null}
+			</div>
+		);
+	}
 });

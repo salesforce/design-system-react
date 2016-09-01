@@ -18,47 +18,44 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React, {
 	PropTypes
-} from 'react';
+}                      from 'react';
 
+// ### findDOMNode
 import { findDOMNode } from 'react-dom';
 
-// Child components
-// import TabsList from './tabs-list';
-import Tab from './tab';
-// import TabItem from './tab-item';
-import TabPanel from './tab-panel';
+
+// ### shortid
+// `shortid` is a short, non-sequential, url-friendly, unique id generator. It is used here to provide unique strings for the HTML attribute `id` on the Tabs components. It is only used if the `id` prop is not provided on the man <Tabs /> component.
+import shortid         from 'shortid';
 
 // ### classNames
-import classNames from 'classnames';
+import classNames      from 'classnames';
 
 // ### isFunction
-import isFunction from 'lodash.isfunction';
+import isFunction      from 'lodash.isfunction';
+
+
+// Child components
+import TabsList        from './tabs-list';
+import Tab             from './tab';
+import TabPanel        from './tab-panel';
 
 // ## Constants
-import {
-	TABS,
-	TABS_LIST,
-	TAB,
-	TAB_PANEL
-} from '../../utilities/constants';
+import { TABS }        from '../../utilities/constants';
 
 
-// ### Helpers from Utilities
-import {
-	EventUtil,
-	uuid
-} from '../../utilities';
+// ### Helpers         from Utilities
+import { EventUtil }   from '../../utilities';
 
 
 // Determine if a node from event.target is a Tab element
-function isTabNode(node) {
+function isTabNode (node) {
 	return (node.nodeName === 'A' && node.getAttribute('role') === 'tab' || node.nodeName === 'LI' && node.getAttribute('role') === 'tab');
 }
 
 
 // Determine if a tab node is disabled
-function isTabDisabled(node) {
-	// console.log("[isTabDisabled] node", node);
+function isTabDisabled (node) {
 	return node.getAttribute('aria-disabled') === 'true';
 }
 
@@ -66,27 +63,79 @@ function isTabDisabled(node) {
 const Tabs = React.createClass({
 	displayName: TABS,
 	propTypes: {
-		selectedIndex: React.PropTypes.number,
+
+		/**
+		 * HTML `id` attribute of primary element that has `.slds-tabs--default` on it. Optional: If one is not supplied, a `shortid` will be created.
+		 */
+		id: React.PropTypes.string,
+
+		/**
+		 * The `children` are the actual tabs and panels to be displayed.
+		 *
+		 * Note that the structure of the `<Tabs />` component **does not** correspond to the DOM structure that is rendered. The `<Tabs />` component requires one or more children of type `<Pane />`, which themselves require a `label` property which will be what shows in the `<Tab />` and has `children`, which end up being the _contents of the tab's corresponding panel_.
+		 *
+		 * The component iterates through each `<Pane />` and rendering one `<Tab />` and one `<TabPanel />` for each of them. The tab(s) end up being children of the `<TabsList />`.
+		 *
+		 * ```
+		 * <Tabs>
+		 * 	<Pane label="Tab 1">
+		 * 		<div>
+		 * 			<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
+		 * 			<p>They show when you click the first tab.</p>
+		 * 		</div>
+		 * 	</Pane>
+		 * 	<Pane label="Tab 2">
+		 * 		<div>
+		 * 			<h2 className="slds-text-heading--medium">This is my tab 2 contents!</h2>
+		 * 			<p>They show when you click the second tab.</p>
+		 * 		</div>
+		 * 	</Pane>
+		 * </Tabs>
+		 * ```
+		 */
 		children: React.PropTypes.oneOfType([
-			React.PropTypes.array,
+			React.PropTypes.arrayOf(React.PropTypes.node),
+			React.PropTypes.node,
 			React.PropTypes.element
-		]).isRequired
+		]).isRequired,
+
+		/**
+		 * Class names to be added to the container element and is passed along to its children.
+		 */
+		className: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string
+		]),
+
+		/**
+		 * This function triggers when a tab is selected
+		 */
+		onSelect: PropTypes.func,
+
+		/**
+		 * The Tab (and corresponding TAbPanel) that is selected when the component renders. Defaults to `0`.
+		 */
+		selectedIndex: React.PropTypes.number
 	},
+
 	getDefaultProps () {
 		return {
-			selectedIndex: -1
+			id: shortid.generate(),
+			selectedIndex: 0
 		};
 	},
+
 	getInitialState () {
 		return {
 			selectedIndex: this.props.selectedIndex
 		};
 	},
 
-
-	handleClick(e) {
+	handleClick (e) {
 		let node = e.target;
-		do { // eslint-disable-line no-cond-assign
+		/* eslint-disable no-cond-assign */
+		do {
 			if (this.isTabFromContainer(node)) {
 				if (isTabDisabled(node)) {
 					return;
@@ -97,17 +146,19 @@ const Tabs = React.createClass({
 				return;
 			}
 		} while ((node = node.parentNode) !== null);
+		/* eslint-enable no-cond-assign */
 	},
 
-	setSelected(index, focus) {
-		// console.log("[setSelected] index", index);
-		// console.log("[setSelected] focus", focus);
+	setSelected (index, focus) {
 		// Don't do anything if nothing has changed
-		// console.log("[setSelected] this.getTabsCount()", this.getTabsCount());
-		// console.log("[setSelected] this.state.selectedIndex", this.state.selectedIndex);
-		if (index === this.state.selectedIndex) return;
+		if (index === this.state.selectedIndex) {
+			return;
+		}
+
 		// Check index boundary
-		if (index < 0 || index >= this.getTabsCount()) return;
+		if (index < 0 || index >= this.getTabsCount()) {
+			return;
+		}
 
 		// Keep reference to last index for event handler
 		const last = this.state.selectedIndex;
@@ -116,7 +167,7 @@ const Tabs = React.createClass({
 		let cancel = false;
 
 		// Call change event handler
-		if (typeof this.props.onSelect === 'function') {
+		if (isFunction(this.props.onSelect)) {
 			cancel = this.props.onSelect(index, last) === false;
 		}
 
@@ -126,10 +177,9 @@ const Tabs = React.createClass({
 		}
 	},
 
-	getNextTab(index) {
+	getNextTab (index) {
 		const count = this.getTabsCount();
 
-		// console.log("[getNextTab] index", index);
 
 		// Look for non-disabled tab from index to the last tab on the right
 		for (let i = index + 1; i < count; i++) {
@@ -151,10 +201,9 @@ const Tabs = React.createClass({
 		return index;
 	},
 
-	getPrevTab(index) {
+	getPrevTab (index) {
 		let i = index;
 
-		// console.log("[getPrevTab] index", index);
 
 		// Look for non-disabled tab from index to first tab on the left
 		while (i--) {
@@ -177,20 +226,20 @@ const Tabs = React.createClass({
 		return index;
 	},
 
-	getTabsCount() {
+	getTabsCount () {
 		return this.props.children ?
 			React.Children.count(this.props.children) :
 			0;
 	},
 
-	getPanelsCount() {
+	getPanelsCount () {
 		return this.props.children ?
 			React.Children.count(this.props.children) :
 			0;
 	},
 
 
-	getTab(index) {
+	getTab (index) {
 		return this.refs[`tabs-${index}`];
 	},
 
@@ -199,8 +248,8 @@ const Tabs = React.createClass({
 	 * If the clicked element is not a Tab, it returns false.
 	 * If it finds another Tabs container between the Tab and `this`, it returns false.
 	 */
-	isTabFromContainer(node) {
-		// return immediately if the clicked element is not a Tab.
+	isTabFromContainer (node) {
+		// Return immediately if the clicked element is not a Tab. This prevents tab panel content from selecting a tab.
 		if (!isTabNode(node)) {
 			return false;
 		}
@@ -218,37 +267,37 @@ const Tabs = React.createClass({
 		return false;
 	},
 
-	handleKeyDown(e) {
+	handleKeyDown (e) {
 		if (this.isTabFromContainer(e.target)) {
 			let index = this.state.selectedIndex;
 			let preventDefault = false;
 
-			// Select next tab to the left
 			if (e.keyCode === 37 || e.keyCode === 38) {
+				// Select next tab to the left
 				index = this.getPrevTab(index);
 				preventDefault = true;
-			}
-			// Select next tab to the right
-			/* eslint brace-style:0 */
-			else if (e.keyCode === 39 || e.keyCode === 40) {
+			} else if (e.keyCode === 39 || e.keyCode === 40) {
+				// Select next tab to the right
 				index = this.getNextTab(index);
 				preventDefault = true;
 			}
 
-			// This prevents scrollbars from moving around
+			// Prevent any dumn scrollbars from moving around as we type.
 			if (preventDefault) {
-				e.preventDefault();
+				EventUtil.trap(event);
 			}
 
 			this.setSelected(index, true);
 		}
 	},
 
-	_renderTitles () {
+	renderTabsList (parentId) {
+		const children = React.Children.toArray(this.props.children);
+
 		function labels (child, index) {
 			const ref = `tabs-${index}`;
-			const id = `slds-tabs--tab-${index}`;
-			const panelId = `slds-tabs--panel-${index}`;
+			const id = `${parentId}-slds-tabs--tab-${index}`;
+			const panelId = `${parentId}-slds-tabs--panel-${index}`;
 			const selected = this.state.selectedIndex === index;
 			const focus = selected && this.state.focus;
 			return (
@@ -259,22 +308,26 @@ const Tabs = React.createClass({
 					selected={selected}
 					id={id}
 					panelId={panelId}
+					disabled={child.props.disabled}
 				>
 					{child.props.label}
 				</Tab>
 				);
 		}
 		return (
-			<ul className="slds-tabs--default__nav" role="tablist">
-				{this.props.children.map(labels.bind(this))}
-			</ul>
+			<TabsList id={parentId}>
+				{children.map(labels.bind(this))}
+			</TabsList>
 		);
 	},
-	_renderContent () {
+
+	renderTabPanels (parentId) {
+		const children = React.Children.toArray(this.props.children);
+
 		function panels (child, index) {
 			const ref = `panels-${index}`;
-			const tabId = `slds-tabs--tab-${index}`;
-			const id = `slds-tabs--panel-${index}`;
+			const tabId = `${parentId}-slds-tabs--tab-${index}`;
+			const id = `${parentId}-slds-tabs--panel-${index}`;
 			const selected = this.state.selectedIndex === index;
 			return (
 				<TabPanel
@@ -285,17 +338,22 @@ const Tabs = React.createClass({
 					id={id}
 					tabId={tabId}
 				>
-					{this.props.children[this.state.selectedIndex]}
+					{children[this.state.selectedIndex]}
 				</TabPanel>
 			);
 		}
 		return (
 			<span className="slds-tabs--default__content-wrapper">
-				{this.props.children.map(panels.bind(this))}
+				{children.map(panels.bind(this))}
 			</span>
 		);
 	},
 	render () {
+		const {
+			className,
+			id
+			} = this.props;
+
 		if (this.state.focus) {
 			setTimeout(() => {
 				this.state.focus = false;
@@ -304,13 +362,17 @@ const Tabs = React.createClass({
 
 		return (
 			<div
+				id={id}
+				className={classNames(
+					'slds-tabs--default',
+					className
+				)}
 				onClick={this.handleClick}
 				onKeyDown={this.handleKeyDown}
-				className="slds-tabs--default"
 				data-tabs
 			>
-				{this._renderTitles()}
-				{this._renderContent()}
+				{this.renderTabsList(id)}
+				{this.renderTabPanels(id)}
 			</div>
 		);
 	}

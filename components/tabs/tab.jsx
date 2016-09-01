@@ -23,91 +23,96 @@ import classNames from 'classnames';
 import { TAB } from '../../utilities/constants';
 import { findDOMNode } from 'react-dom';
 
-module.exports = React.createClass({
-  displayName: TAB,
 
-  propTypes: {
-    className: PropTypes.string,
-    id: PropTypes.string,
-    focus: PropTypes.bool,
-    selected: PropTypes.bool,
-    disabled: PropTypes.bool,
-    activeTabClassName: PropTypes.string,
-    disabledTabClassName: PropTypes.string,
-    panelId: PropTypes.string,
-    children: PropTypes.oneOfType([
-      PropTypes.array,
-      PropTypes.object,
-      PropTypes.string,
-    ]),
-  },
+const Tab = React.createClass({
+	displayName: TAB,
 
-  getDefaultProps() {
-    return {
-      focus: false,
-      selected: false,
-      id: null,
-      panelId: null,
-      activeTabClassName: 'slds-active',
-      disabledTabClassName: 'slds-disabled',
-    };
-  },
+	propTypes: {
+		className: PropTypes.string,
+		id: PropTypes.string,
+		focus: PropTypes.bool,
+		selected: PropTypes.bool,
+		disabled: PropTypes.bool,
+		activeTabClassName: PropTypes.string,
+		disabledTabClassName: PropTypes.string,
+		panelId: PropTypes.string,
+		children: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string
+		])
+	},
 
-  componentDidMount() {
-    this.checkFocus();
-  },
+	getDefaultProps () {
+		return {
+			focus: false,
+			selected: false,
+			id: null,
+			panelId: null,
+			activeTabClassName: 'slds-active',
+			disabledTabClassName: 'slds-disabled'
+		};
+	},
 
-  componentDidUpdate() {
-    this.checkFocus();
-  },
+	componentDidMount () {
+		this.checkFocus();
+	},
 
-  checkFocus() {
-    if (this.props.selected && this.props.focus) {
-      findDOMNode(this).focus();
-    }
-  },
+	componentDidUpdate () {
+		this.checkFocus();
+	},
 
-  render() {
-    const {
-      selected,
-      disabled,
-      panelId,
-      activeTabClassName,
-      disabledTabClassName,
-      className,
-      children,
-      id,
-      ...attributes } = this.props;
+	checkFocus () {
+		if (this.props.selected && this.props.focus) {
+			findDOMNode(this).focus();
+		}
+	},
 
-    delete attributes.focus;
-  
-    return (
-      <li
-        {...attributes}
-        className={classNames(
-          'slds-tabs--default__item',
-          'slds-text-title--caps',
-          className,
-          {
-            [activeTabClassName]: selected,
-            [disabledTabClassName]: disabled,
-          }
-        )}
-        role="tab"
-        aria-selected={selected ? 'true' : 'false'}
-        aria-disabled={disabled ? 'true' : 'false'}
-        aria-controls={panelId}
-        tabIndex={selected ? '0' : null}
-        id={id}
-      >
-        <a 
-          className="slds-tabs--default__link"
-          href="javascript:void(0);"
-          role="presentation"
-        >
-          {children}
-        </a>
-      </li>
-    );
-  },
+	render () {
+		const {
+			selected,
+			disabled,
+			panelId,
+			activeTabClassName,
+			disabledTabClassName,
+			className,
+			children,
+			id,
+			...attributes } = this.props;
+
+		delete attributes.focus;
+	
+		return (
+			<li
+				{...attributes}
+				className={classNames(
+					'slds-tabs--default__item',
+					'slds-text-title--caps',
+					className,
+					{
+						[activeTabClassName]: selected,
+						[disabledTabClassName]: disabled
+					}
+				)}
+				role="tab"
+				aria-selected={selected ? 'true' : 'false'}
+				aria-disabled="false"
+				aria-disabled-not-yet-implemented={disabled ? 'true' : 'false'}
+				aria-controls={panelId}
+				tabIndex={selected ? '0' : disabled ? '-1' : null}
+				id={id}
+				label={children}
+			>
+				<a
+					className="slds-tabs--default__link"
+					href="javascript:void(0);"
+					role="presentation"
+				>
+					{children}
+				</a>
+			</li>
+		);
+	}
 });
+
+module.exports = Tab;
