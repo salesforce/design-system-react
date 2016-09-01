@@ -27,6 +27,30 @@ module.exports = React.createClass({
 	displayName: TAB_PANEL,
 
 	propTypes: {
+		/**
+		 * The `children` are the contents of the tab panel.
+		 *
+		 * Note that the structure of the `<Tabs />` component **does not** correspond to the DOM structure that is rendered. The `<Tabs />` component requires one or more children of type `<Pane />`, which themselves require a `label` property which will be what shows in the `<Tab />` and has `children`, which end up being the _contents of the tab's corresponding panel_.
+		 *
+		 * The component iterates through each `<Pane />` and rendering one `<Tab />` and one `<TabPanel />` for each of them. The tab(s) end up being children of the `<TabsList />`.
+		 *
+		 * ```
+		 * <Tabs>
+		 * 	<Pane label="Tab 1">
+		 * 		<div>
+		 * 			<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
+		 * 			<p>They show when you click the first tab.</p>
+		 * 		</div>
+		 * 	</Pane>
+		 * 	<Pane label="Tab 2">
+		 * 		<div>
+		 * 			<h2 className="slds-text-heading--medium">This is my tab 2 contents!</h2>
+		 * 			<p>They show when you click the second tab.</p>
+		 * 		</div>
+		 * 	</Pane>
+		 * </Tabs>
+		 * ```
+		 */
 		children: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
@@ -34,8 +58,14 @@ module.exports = React.createClass({
 		]),
 		className: PropTypes.string,
 		id: PropTypes.string,
+		
+		/**
+		 * Whether this panel is hidden or shown. Uses the `.slds-show` and `.slds-hide` classes.
+		 */
 		selected: PropTypes.bool,
-		style: PropTypes.object,
+		/**
+		 * The HTML ID of the `<Tab />` that controls this panel.
+		 */
 		tabId: PropTypes.string
 	},
 
