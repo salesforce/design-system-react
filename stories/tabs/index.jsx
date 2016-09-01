@@ -25,7 +25,7 @@ const getTabs = () => (
 				<p className="slds-box slds-theme--info slds-m-top--large">(You might have to hit shift+tab to put the focus onto the tab bar ;)</p>
 			</div>
 		</Pane>
-		<Pane label="Tab 2" disabled>
+		<Pane label="Tab 2">
 			<div>
 				<h2 className="slds-text-heading--medium">This is my tab 2 contents!</h2>
 				<p>And they&rsquo;re also amazing.</p>
@@ -51,7 +51,7 @@ const getTabsNested = () => (
 				<p>And they&rsquo;re amazing.</p>
 			</div>
 		</Pane>
-		<Pane label="Tab 2" disabled>
+		<Pane label="Tab 2">
 			<div>
 				<h2 className="slds-text-heading--medium">This is my tab 2 contents!</h2>
 				<p>And they&rsquo;re also amazing.</p>
@@ -161,10 +161,13 @@ const DemoTabsConditional = React.createClass({
 					<Pane label="Always No">
 						<div>
 							<p>
-								This one can not be selected. But it <em>can</em> be shown if you hide the other tabs.
+								This one can not be selected from the tabs list because this example provides a custom <code>onSelct</code> function that retuns false when it is run, preventing the component&rsquo;s built-in handler from running, and thus the tab is never selected.
 							</p>
 							<p>
-								This should not be taken as an example of how to be sneaky about disabling tab selection, but rather that you can <strong>do stuff</strong> when a tab is selected by sending it a custom <code>onSelect</code> function.
+								Note that you <em>can</em> still see the panel if you hide the other tabs, because the tab/panel are not <em>disabled</em>.
+							</p>
+							<p>
+								In other words, this should not be taken as an example of how to be sneaky about disabling tab selection, but rather that you can <strong>do stuff</strong> when a tab is selected by sending it a custom <code>onSelect</code> function.
 							</p>
 						</div>
 					</Pane>
@@ -174,12 +177,42 @@ const DemoTabsConditional = React.createClass({
 	}
 });
 
+/* eslint-disable react/display-name */
+const getTabsDisabled = () => (
+	<Tabs id="disabled-tabs-demo" onSelect={handleSelect('Tab from disabled demo clicked')}>
+		<Pane label="Tab 1">
+			<div>
+				<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
+				<p>And they&rsquo;re amazing.</p>
+				<p>It's awesome.</p>
+				<p>You can use your <var>TAB</var> and <var>ARROW</var> keys to navigate around. Try it!</p>
+				<p className="slds-box slds-theme--info slds-m-top--large">(You might have to hit shift+tab to put the focus onto the tab bar ;)</p>
+			</div>
+		</Pane>
+		<Pane label="Tab 2" disabled>
+			<div>
+				<h2 className="slds-text-heading--medium">This is my tab 2 contents!</h2>
+				<p>And they&rsquo;re also amazing.</p>
+			</div>
+		</Pane>
+		<Pane label="Tab 3">
+			<div>
+				<h2 className="slds-text-heading--medium">This is my tab 3 contents!</h2>
+				<p>And they&rsquo;re quite spectacular.</p>
+			</div>
+		</Pane>
+	</Tabs>
+);
+/* eslint-enable react/display-name */
+
+
 
 storiesOf(TABS, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Base', () => getTabs())
 	.add('Nested', () => getTabsNested())
 	.add('Conditional', () => <DemoTabsConditional />)
+	.add('With disabled tab', () => getTabsDisabled())
 	;
 
 module.exports = getTabs;

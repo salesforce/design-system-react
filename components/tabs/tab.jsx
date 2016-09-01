@@ -110,12 +110,11 @@ const Tab = React.createClass({
 				)}
 				role="tab"
 				aria-selected={selected ? 'true' : 'false'}
-				aria-disabled="false"
-				aria-disabled-not-yet-implemented={disabled ? 'true' : 'false'}
+				aria-disabled={disabled}
 				aria-controls={panelId}
 				tabIndex={selected ? '0' : disabled ? '-1' : null}
 				id={id}
-				label={children}
+				title={children}
 			>
 				<a
 					className="slds-tabs--default__link"
