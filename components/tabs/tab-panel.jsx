@@ -69,10 +69,6 @@ module.exports = React.createClass({
 		tabId: PropTypes.string
 	},
 
-	contextTypes: {
-		forceRenderTabPanel: PropTypes.bool
-	},
-
 	getDefaultProps () {
 		return {
 			selected: false,
@@ -100,7 +96,7 @@ module.exports = React.createClass({
 				aria-selected={selected ? 'true' : 'false'}
 				aria-labelledby={tabId}
 			>
-				{(this.context.forceRenderTabPanel || selected) ? children : null}
+				{children}
 			</div>
 		);
 	}
