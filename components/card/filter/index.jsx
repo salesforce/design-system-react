@@ -69,4 +69,3 @@ Filter.defaultProps = {
 };
 
 module.exports = Filter;
-module.exports.idSuffixes = idSuffixes;
