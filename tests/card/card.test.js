@@ -52,10 +52,10 @@ describe('Card: ', () => {
 	const getCard = dom => dom.querySelector(`.${cssClasses.base}`);
 	const getHeader = (dom) => getCard(dom).querySelectorAll(`.${headerCssClasses.base}`)[0];
 	const getHeaderActions = (dom) => getHeader(dom).querySelectorAll(`#${requiredProps.id}${headerIdSuffixes.headerActions}`)[0];
-	const getFilter = (dom) => getHeader(dom).querySelectorAll(`#${requiredProps.id}${filterIdSuffixes.base}`)[0];
+	const getFilter = (dom) => getHeader(dom).querySelectorAll('.slds-form-element')[0];
 	const getBody = (dom) => getCard(dom).querySelectorAll(`#${requiredProps.id}${bodyIdSuffixes.base}`)[0];
 	const getFooter = (dom) => getCard(dom).querySelectorAll(`.${footerCssClasses.base}`)[0];
-	const getEmptyBodyHeading = (dom) => getBody(dom).querySelectorAll(`#${requiredProps.id}${emptyIdSuffixes.heading}`)[0];
+	const getEmptyBodyHeading = (dom) => getBody(dom).querySelectorAll('h3')[0];
 
 	// Tests
 	describe('Default Structure', () => {
@@ -166,11 +166,11 @@ describe('Card: ', () => {
 	describe('Accepts a custom node as heading', () => {
 		const props = {
 			id: 'ExampleCard',
-			heading: (<h2
+			heading: (<span
 				id="custom-heading"
 				className="slds-text-heading--small slds-truncate"
 				style={{ color: 'red' }}
-			>To Wanda! This is custom!</h2>)
+			>To Wanda! This is custom!</span>)
 		};
 
 		beforeEach(renderCard(
