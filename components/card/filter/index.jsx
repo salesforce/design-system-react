@@ -27,50 +27,52 @@ const idSuffixes = {
 /**
  * A default filter or search input for Cards that contain items.
  */
-const Filter = React.createClass({
-	// ### Display Name
-	// Always use the canonical component name as the React display name.
-	displayName: CARD_FILTER,
+const Filter = (props) => {
+	const {
+		id,
+		placeholder,
+		onChange,
+		...rest
+	} = props;
+
+	const modifiedId = id ? id + idSuffixes.base : null;
+
+	return (
+		<Input
+			{...rest}
+			assistiveText={placeholder}
+			iconCategory="utility"
+			iconName="search"
+			id={modifiedId}
+			onChange={onChange}
+			placeholder={placeholder}
+		/>
+	);
+};
+
+// ### Display Name
+// Always use the canonical component name as the React display name.
+Filter.displayName = CARD_FILTER;
 
 	// ### Prop Types
-	propTypes: {
-		/**
-		 * The HTML `id` from the card.
-		 */
-		id: PropTypes.string,
-		/**
-		 * This callback fires when the input changes.
-		 */
-		onChange: PropTypes.func,
-		/**
-		 * Text present in input until the user enters text. This text will also be used for a visually hidden label on the filter `input` element for accessibility.
-		 */
-		placeholder: PropTypes.string.isRequired
-	},
+Filter.propTypes = {
+	/**
+	 * The HTML `id` from the card.
+	 */
+	id: PropTypes.string,
+	/**
+	 * This callback fires when the input changes.
+	 */
+	onChange: PropTypes.func,
+	/**
+	 * Text present in input until the user enters text. This text will also be used for a visually hidden label on the filter `input` element for accessibility.
+	 */
+	placeholder: PropTypes.string.isRequired
+};
 
-	// i18n
-	getDefaultProps () {
-		return {
-			placeholder: 'Find in List'
-		};
-	},
-
-	render () {
-		const { id, placeholder, onChange, ...props } = this.props;
-
-		return (
-			<Input
-				{...props}
-				assistiveText={placeholder}
-				iconCategory="utility"
-				iconName="search"
-				id={id + idSuffixes.base}
-				onChange={onChange}
-				placeholder={placeholder}
-			/>
-		);
-	}
-});
+Filter.defaultProps = {
+	placeholder: 'Find in List'
+};
 
 module.exports = Filter;
 module.exports.idSuffixes = idSuffixes;
