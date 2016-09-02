@@ -96,6 +96,20 @@ module.exports = React.createClass({
     };
   },
 
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.value) {
+      const currentDate = this.props.formatter(this.props.value);
+      const nextDate = this.props.formatter(nextProps.value);
+ 
+      if(currentDate !== nextDate) {
+        this.setState({
+          value: nextProps.value,
+          strValue: nextDate
+        });
+      }
+    }
+  },
+
   handleChange(date) {
     this.setState({
       value:date,
