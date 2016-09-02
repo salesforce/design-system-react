@@ -56,13 +56,22 @@ module.exports = React.createClass({
 			PropTypes.object,
 			PropTypes.string
 		]),
+
+		/**
+		 * CSS classes to be added to the tab panel.
+		 */
 		className: PropTypes.string,
+
+		/**
+		 * The HTML ID of this tab panel. Also used by the `<Tab />`that controls it as `panelId`.
+		 */
 		id: PropTypes.string,
 		
 		/**
 		 * Whether this panel is hidden or shown. Uses the `.slds-show` and `.slds-hide` classes.
 		 */
 		selected: PropTypes.bool,
+
 		/**
 		 * The HTML ID of the `<Tab />` that controls this panel.
 		 */

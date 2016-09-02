@@ -114,12 +114,13 @@ const Tabs = React.createClass({
 		onSelect: PropTypes.func,
 
 		/**
-		 * The Tab (and corresponding TAbPanel) that is selected when the component renders. Defaults to `0`.
+		 * The Tab (and corresponding TabPanel) that is selected when the component renders. Defaults to `0`.
 		 */
 		selectedIndex: React.PropTypes.number
 	},
 
 	getDefaultProps () {
+		// If no `id` is supplied in the props we generate one. An HTML ID is _required_ for several elements in a tabs component in order to leverage ARIA attributes for accessibility.
 		return {
 			id: shortid.generate(),
 			selectedIndex: 0

@@ -28,29 +28,46 @@ const Tab = React.createClass({
 	displayName: TAB,
 
 	propTypes: {
-		className: PropTypes.string,
 		/**
-		 * The HTML ID of this tab. Also used by the `<TabPanel />` it controls.
+		 * CSS classes to be added to the tab.
+		 */
+		className: PropTypes.string,
+
+		/**
+		 * The HTML ID of this tab. Also used by the `<TabPanel />` it controls as `tabId`.
 		 */
 		id: PropTypes.string,
+
 		/**
 		 * Whether to apply focus to this tab.
 		 */
 		focus: PropTypes.bool,
+
 		/**
 		 * When `true`, the class `.slds-active` is applied.
 		 */
 		selected: PropTypes.bool,
+
 		/**
 		 * When `true`, the HTML attribute `aria-disabled` will be applied.
 		 */
 		disabled: PropTypes.bool,
+
+		/**
+		 * The CSS class to be applied when this tab is selected. Defaults to `.slds-active`. If another class is desired, it should be passed in _along with_ `.slds-active`, not _instead_ of it.
+		 */
 		activeTabClassName: PropTypes.string,
+
+		/**
+		 * The CSS class to be applied when this tab is disabled. Defaults to `.slds-disabled`. If another class is desired, it should be passed in _along with_ `.slds-disabled`, not _instead_ of it.
+		 */
 		disabledTabClassName: PropTypes.string,
+
 		/**
 		 * The HTML ID of `<TabPanel />` this tab controls.
 		 */
 		panelId: PropTypes.string,
+		
 		/**
 		 * The string that is shown as both the title and the label for this tab.
 		 */
