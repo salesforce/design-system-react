@@ -137,7 +137,10 @@ CardHeader.propTypes = {
 	/**
 	 * The heading is the name of the related item group.
 	 */
-	heading: PropTypes.string.isRequired,
+	heading: PropTypes.oneOfType([
+		PropTypes.element,
+		PropTypes.string
+	]).isRequired,
 	/**
 	 * Icon associated with grouped items
 	 */
