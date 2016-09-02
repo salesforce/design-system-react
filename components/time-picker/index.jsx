@@ -112,7 +112,7 @@ const Timepicker = React.createClass({
 	},
 
 	componentWillReceiveProps(nextProps) {
-		if(nextProps.value) {
+		if(nextProps.value && this.props.value) {
 			const currentTime = this.props.formatter(this.props.value);
 			const nextTime = this.props.formatter(nextProps.value);
 
