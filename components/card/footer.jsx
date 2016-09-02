@@ -15,13 +15,8 @@ import React from 'react';
 
 import { CARD_FOOTER } from '../../utilities/constants';
 
-// Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
-const cssClasses = {
-	base: 'slds-card__footer'
-};
-
 const CardFooter = (props) => (
-	<div className={cssClasses.base}>
+	<div className="slds-card__footer">
 		{props.children}
 	</div>
 );
@@ -36,4 +31,3 @@ CardFooter.propTypes = {
 };
 
 module.exports = CardFooter;
-module.exports.cssClasses = cssClasses;

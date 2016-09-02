@@ -30,12 +30,14 @@ import { CARD_HEADER } from '../../utilities/constants';
 // Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
 const idSuffixes = {
 	headerActions: '__header-actions',
-	heading: '__heading'
+	heading: '__heading',
+	filter: '__filter-input'
 };
 
 const renderFilter = (filter, id) => {
+	const filterIdfromParent = id ? id + idSuffixes.filter : null;
 	const clonedFilter = React.cloneElement(filter, {
-		id
+		id: filter.props.id || filterIdfromParent
 	});
 
 	return (
@@ -47,7 +49,9 @@ const renderFilter = (filter, id) => {
 
 renderFilter.displayName = 'renderFilter';
 
-// ## CardHeaderDefinition
+/**
+ * Card Header is a private component and is not meant to be imported or used for Card's `header` prop. It just happens to have the same file name.
+ */
 const CardHeader = (props) => {
 	let title = null;
 
@@ -66,8 +70,6 @@ const CardHeader = (props) => {
 			{props.heading}
 		</h2>
 	);
-
-	const hasFilter = props.filter ? true : null;
 
 	let Header;
 
@@ -88,6 +90,7 @@ const CardHeader = (props) => {
 		/>);
 	}
 
+	const hasFilter = props.filter ? true : null;
 	const headerActionsId = props.id ? (props.id + idSuffixes.headerActions) : null;
 
 	return (

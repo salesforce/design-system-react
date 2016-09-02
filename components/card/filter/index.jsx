@@ -20,10 +20,6 @@ const { PropTypes } = React;
 
 import { CARD_FILTER } from '../../../utilities/constants';
 
-const idSuffixes = {
-	base: '__filter-input'
-};
-
 /**
  * A default filter or search input for Cards that contain items.
  */
@@ -35,15 +31,13 @@ const Filter = (props) => {
 		...rest
 	} = props;
 
-	const modifiedId = id ? id + idSuffixes.base : null;
-
 	return (
 		<Input
 			{...rest}
 			assistiveText={placeholder}
 			iconCategory="utility"
 			iconName="search"
-			id={modifiedId}
+			id={id}
 			onChange={onChange}
 			placeholder={placeholder}
 		/>
@@ -57,7 +51,7 @@ Filter.displayName = CARD_FILTER;
 	// ### Prop Types
 Filter.propTypes = {
 	/**
-	 * The HTML `id` from the card.
+	 * The HTML `id` from the card with a suffixe.
 	 */
 	id: PropTypes.string,
 	/**
