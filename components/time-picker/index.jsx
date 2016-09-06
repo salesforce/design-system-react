@@ -113,17 +113,18 @@ const Timepicker = React.createClass({
 
 	componentWillReceiveProps(nextProps) {
 		if(nextProps.value && this.props.value) {
-			const currentTime = this.props.formatter(this.props.value);
-			const nextTime = this.props.formatter(nextProps.value);
+			const currentTime = this.props.value.getTime()
+			const nextTime = nextProps.value.getTime();
 
 			if(currentTime !== nextTime) {
 				this.setState({
 					value: nextProps.value,
-					strValue: nextTime
+					strValue: this.props.formatter(nextProps.value)
 				});
 			}
 		}
 	},
+
 	getOptions () {
 		const baseDate = new Date();
 		const options = [];

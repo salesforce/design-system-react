@@ -17,6 +17,7 @@ const mockCallback = sinon.spy();
 const formatter = (date) => date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
 const dateTimeNow = new Date();
 const defaultStrValue = formatter(dateTimeNow);
+
 const defaultProps = {
     onDateChange: () => {},
     value: dateTimeNow,

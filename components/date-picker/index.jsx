@@ -98,13 +98,13 @@ module.exports = React.createClass({
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.value && this.props.value) {
-      const currentDate = this.props.formatter(this.props.value);
-      const nextDate = this.props.formatter(nextProps.value);
+      const currentDate = this.props.value.getTime();
+      const nextDate = this.props.value.getTime();
 
       if(currentDate !== nextDate) {
         this.setState({
           value: nextProps.value,
-          strValue: nextDate
+          strValue: this.props.formatter(nextProps.value)
         });
       }
     }

@@ -72,6 +72,9 @@ describe('SLDSDatepicker: ', () => {
 
             const parent = TestUtils.renderIntoDocument(TestDatePicker());
             parent.refs.datePicker.state.strValue.should.eql(defaultStrValue);
+
+            const time = parent.refs.datePicker.state.value.getTime();
+            time.should.eql(dateTimeNow.getTime());
         });
     });
 });
