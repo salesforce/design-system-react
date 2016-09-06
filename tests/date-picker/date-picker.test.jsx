@@ -27,32 +27,7 @@ describe('SLDSDatepicker: ', () => {
         strValue: defaultStrValue
     };
 
-    const renderDatePicker = inst => {
-        body = document.createElement('div');
-        document.body.appendChild(body);
-
-        return ReactDOM.render(inst, body);
-    };
-
-    const removeDatePicker = () => {
-        ReactDOM.unmountComponentAtNode(body);
-        document.body.removeChild(body);
-    };
-
-    const createDatePicker = (props) => React.createElement(SLDSDatepicker, assign({}, defaultProps, props));
-    const getDatePicker = (props) => renderDatePicker(createDatePicker(props));
-
     describe('DatePicker Value Prop Change', () => {
-        let cmp;
-        let picker;
-
-        beforeEach(() => {
-            cmp = getDatePicker(defaultProps);
-            picker = findRenderedDOMComponentWithClass(cmp, 'slds-form-element');
-        });
-
-        afterEach(() => removeDatePicker());
-
         it("displays a modified state upon changing props", () => {
             const TestDatePicker = createFactory(
                 createClass({
