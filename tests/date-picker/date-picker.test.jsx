@@ -19,8 +19,6 @@ const dateTimeNow = new Date();
 const defaultStrValue = formatter(dateTimeNow);
 
 describe('SLDSDatepicker: ', () => {
-    let body;
-
     const defaultProps = {
         onDateChange: () => {},
         value: dateTimeNow,
