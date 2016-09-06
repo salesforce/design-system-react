@@ -14,7 +14,7 @@ import { SLDSDatepicker } from '../../components';
 
 const mockCallback = sinon.spy();
 
-const formatter = (date) => (date.getMonth() + 1 ) + '/' + date.getDate() + '/' + date.getFullYear();
+const formatter = (date) => `${ date.getMonth() + 1 }/${ date.getDate() }/${ date.getFullYear() }`;
 const dateTimeNow = new Date();
 const defaultStrValue = formatter(dateTimeNow);
 
@@ -27,14 +27,15 @@ describe('SLDSDatepicker: ', () => {
 
     describe('DatePicker Value Prop Change', () => {
         it("displays a modified state upon changing props", () => {
+            const futureDateTime = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
             const TestDatePicker = createFactory(
                 createClass({
                     getInitialState() {
                         // force the state to have a future dateTime...
                         return {
-                          isOpen:false,
-                          value: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
-                          strValue: formatter(new Date(new Date().getTime() + 24 * 60 * 60 * 1000))
+                          isOpen: false,
+                          value: futureDateTime,
+                          strValue: formatter(futureDateTime)
                         };
                     },
                     render() {
