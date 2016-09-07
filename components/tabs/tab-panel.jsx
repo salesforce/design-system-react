@@ -22,8 +22,8 @@ import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import { TAB_PANEL } from '../../utilities/constants';
 
+const TabPanel = React.createClass({
 
-module.exports = React.createClass({
 	displayName: TAB_PANEL,
 
 	propTypes: {
@@ -110,3 +110,5 @@ module.exports = React.createClass({
 		);
 	}
 });
+
+module.exports = TabPanel;

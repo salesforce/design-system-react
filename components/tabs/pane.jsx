@@ -50,18 +50,3 @@ Pane.propTypes = {
 };
 
 module.exports = Pane;
-
-const Pane = React.createClass({
-	displayName: TAB_PANE,
-	propTypes: {
-		label: PropTypes.string.isRequired,
-		children: PropTypes.element.isRequired
-	},
-	render () {
-		return (<div> {
-			this.props.children
-		} </div>);
-	}
-});
-
-module.exports = Pane;
