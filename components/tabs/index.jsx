@@ -324,29 +324,26 @@ const Tabs = React.createClass({
 	
 	renderTabPanels (parentId) {
 		const children = React.Children.toArray(this.props.children);
+		let result = null;
 
-		return (
-			<span id={`${parentId}-tabs__content-wrapper`} className="slds-tabs--default__content-wrapper">
-				{children.map((child, index) => {
-					const ref = `panels-${index}`;
-					const tabId = `${parentId}-slds-tabs--tab-${index}`;
-					const id = `${parentId}-slds-tabs--panel-${index}`;
-					const selected = this.state.selectedIndex === index;
-					return (
-						<TabPanel
-							key={index}
-							ref={ref}
-							focus={focus}
-							selected={selected}
-							id={id}
-							tabId={tabId}
-						>
-							{children[this.state.selectedIndex]}
-						</TabPanel>
-					);
-				})}
-			</span>
-		);
+		result = children.map((child, index) => {
+			const tabId = `${parentId}-slds-tabs--tab-${index}`;
+			const id = `${parentId}-slds-tabs--panel-${index}`;
+			const selected = this.state.selectedIndex === index;
+
+			return (
+				<TabPanel
+					key={index}
+					focus={focus}
+					selected={selected}
+					id={id}
+					tabId={tabId}
+				>
+					{children[this.state.selectedIndex]}
+				</TabPanel>
+			);
+		});
+		return result;
 	},
 	
 

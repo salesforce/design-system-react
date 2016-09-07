@@ -34,19 +34,18 @@ const TabPanel = React.createClass({
 		 *
 		 * The component iterates through each `<Pane />` and rendering one `<Tab />` and one `<TabPanel />` for each of them. The tab(s) end up being children of the `<TabsList />`.
 		 *
+		 * The tab panel component actually returns the _children_ of the _children_ which were provided by the `<Pane />` component.
+		 *
+		 * Due to React's nature, the `<Pane />` component wraps its children in a `div` element which we don't need nor want in our rendered DOM structure, so we just bypass it and get its kids via `{children.props.children}` in the render method below.
 		 * ```
 		 * <Tabs>
 		 * 	<Pane label="Tab 1">
-		 * 		<div>
-		 * 			<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
-		 * 			<p>They show when you click the first tab.</p>
-		 * 		</div>
+		 * 		<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
+		 * 		<p>They show when you click the first tab.</p>
 		 * 	</Pane>
 		 * 	<Pane label="Tab 2">
-		 * 		<div>
-		 * 			<h2 className="slds-text-heading--medium">This is my tab 2 contents!</h2>
-		 * 			<p>They show when you click the second tab.</p>
-		 * 		</div>
+		 * 		<h2 className="slds-text-heading--medium">This is my tab 2 contents!</h2>
+		 * 		<p>They show when you click the second tab.</p>
 		 * 	</Pane>
 		 * </Tabs>
 		 * ```
@@ -103,7 +102,7 @@ const TabPanel = React.createClass({
 				aria-selected={selected ? 'true' : 'false'}
 				aria-labelledby={tabId}
 			>
-				{children}
+				{children.props.children}
 			</div>
 		);
 	}

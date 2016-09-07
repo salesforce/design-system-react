@@ -10,11 +10,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 // # Tabs: Pane child component
-
-// Helps implement the [Tabs design pattern](https://www.lightningdesignsystem.com/components/tabs/) in React. 
-
-// The `<Pane />` component allows us to simplify the structure of the `<Tabs />` component. 
+//
+// Helps implement the [Tabs design pattern](https://www.lightningdesignsystem.com/components/tabs/) in React.
+//
+// The `<Pane />` component allows us to simplify the structure of the `<Tabs />` component.
+//
 // Rather than require different (deeply nested) children for tabslist, with its tab(s) as well as tabpanel(s), we provide this Pane component which takes a `label` property that will become what is shown on the `<Tab />` that will be associated with it.
+//
 // The `children` of the Pane will be fed to the `<TabPanel />` component, while its `label` is handled in `<Tab />`, via `<TabsList />`.
 /**
  *
@@ -38,15 +40,34 @@ import React, {
 // ## Constants
 import { TAB_PANE } from '../../utilities/constants';
 
-const Pane = (props) => (<div>{props.children}</div>);
+// const Pane = (props) => (<div>{props.children}</div>);
 
-Pane.displayName = TAB_PANE;
-Pane.propTypes = {
-	/**
-	 * The string that is handed off to the `<Tab />` component, ends up being the title and the label for the tab associated with its tab panel.
-	 */
-	label: PropTypes.string.isRequired,
-	children: PropTypes.element.isRequired
-};
+const Pane = React.createClass({
+	displayName: TAB_PANE,
+	propTypes: {
+		/**
+		 * The string that is handed off to the `<Tab />` component, ends up being the title and the label for the tab associated with its tab panel.
+		 */
+		label: PropTypes.string.isRequired,
+
+		/**
+		 * The `children` are the actual tab panels to be rendered. They get created by [tabs/index.jsx](./index.jsx) in the `renderTabPanels` function.
+		 *
+		 * Note that the `<Pane />` component inserts a `div` element around the children, because React requires exactly one "parent" element returned. The `<TabPanel />` component simply dips down into `children` to get the children of this wrapping `div` so that it does not get rendered in the DOM.
+		 */
+		children: React.PropTypes.oneOfType([
+			React.PropTypes.arrayOf(React.PropTypes.node),
+			React.PropTypes.node,
+			React.PropTypes.element
+		]).isRequired
+	},
+	render () {
+		const children = React.Children.toArray(this.props.children);
+		return (
+			<div>{children}</div>
+		);
+	}
+});
+
 
 module.exports = Pane;
