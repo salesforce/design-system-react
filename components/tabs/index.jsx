@@ -326,7 +326,7 @@ const Tabs = React.createClass({
 		const children = React.Children.toArray(this.props.children);
 
 		return (
-			<span  id={`${parentId}-tabs__content-wrapper`} className="slds-tabs--default__content-wrapper">
+			<span id={`${parentId}-tabs__content-wrapper`} className="slds-tabs--default__content-wrapper">
 				{children.map((child, index) => {
 					const ref = `panels-${index}`;
 					const tabId = `${parentId}-slds-tabs--tab-${index}`;
@@ -349,33 +349,6 @@ const Tabs = React.createClass({
 		);
 	},
 	
-	// renderTabPanels (parentId) {
-	// 	const children = React.Children.toArray(this.props.children);
-
-	// 	function panels (child, index) {
-	// 		const ref = `panels-${index}`;
-	// 		const tabId = `${parentId}-slds-tabs--tab-${index}`;
-	// 		const id = `${parentId}-slds-tabs--panel-${index}`;
-	// 		const selected = this.state.selectedIndex === index;
-	// 		return (
-	// 			<TabPanel
-	// 				key={index}
-	// 				ref={ref}
-	// 				focus={focus}
-	// 				selected={selected}
-	// 				id={id}
-	// 				tabId={tabId}
-	// 			>
-	// 				{children[this.state.selectedIndex]}
-	// 			</TabPanel>
-	// 		);
-	// 	}
-	// 	return (
-	// 		<span className="slds-tabs--default__content-wrapper">
-	// 			{children.map(panels.bind(this))}
-	// 		</span>
-	// 	);
-	// },
 
 	render () {
 		const {
@@ -385,7 +358,7 @@ const Tabs = React.createClass({
 
 		if (this.state.focus) {
 			setTimeout(() => {
-				this.state.focus = false;
+				this.setState({ focus: false });
 			}, 0);
 		}
 
