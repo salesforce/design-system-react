@@ -28,96 +28,122 @@ const { PropTypes } = React;
 import { CARD_HEADER } from '../../utilities/constants';
 
 // Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
-const cssClasses = {
-	base: 'slds-card__header'
-};
-
 const idSuffixes = {
 	headerActions: '__header-actions',
 	heading: '__heading'
 };
 
+const renderFilter = (filter, id) => {
+	const clonedFilter = React.cloneElement(filter, {
+		id
+	});
+
+	return (
+		<div className="slds-input-has-icon slds-input-has-icon--left slds-size--1-of-3">
+			{clonedFilter}
+		</div>
+	);
+};
+
+renderFilter.displayName = 'renderFilter';
+
 // ## CardHeaderDefinition
-const CardHeader = React.createClass({
-	// ### Display Name
-	// Always use the canonical component name as the React display name.
-	displayName: CARD_HEADER,
-	// ### Prop Types
-	propTypes: {
-		/**
-		 * Adds a filter input to the card header
-		 */
-		filter: PropTypes.node,
-		/**
-		 * Actions performed on selected items or that relate to the entire group of items such as "Add Item.""
-		 */
-		headerActions: PropTypes.node,
-		/**
-		 * The heading is the name of the related item group.
-		 */
-		heading: PropTypes.string.isRequired,
-		/**
-		 * Icon associated with grouped items
-		 */
-		icon: PropTypes.node,
-		/**
-		 * Set the HTML `id` of the card filter and header actions.
-		 */
-		id: PropTypes.string.isRequired
-	},
+const CardHeader = (props) => {
+	let title = null;
 
-	renderFilter () {
-		const filter = React.cloneElement(this.props.filter, {
-			id: this.props.id
-		});
-
-		return (
-			<div className="slds-input-has-icon slds-input-has-icon--left slds-size--1-of-3">
-				{filter}
-			</div>
-		);
-	},
-
-	renderMediaObjectBody () {
-		return (
-			<h2
-				id={this.props.id + idSuffixes.heading}
-				className="slds-text-heading--small slds-truncate"
-				title={this.props.heading}
-			>
-				{this.props.heading}
-			</h2>
-		);
-	},
-
-	render () {
-		let filter = null;
-		const hasFilter = this.props.filter ? true : null;
-
-		if (this.props.filter) {
-			filter = this.renderFilter();
-		}
-
-		return (
-			<div className={classnames(cssClasses.base, 'slds-grid')}>
-				<MediaObject
-					figure={this.props.icon}
-					body={this.renderMediaObjectBody()}
-					verticalCenter
-					canTruncate
-				/>
-				{filter}
-				<div
-					id={this.props.id + idSuffixes.headerActions}
-					className={classnames('slds-no-flex', { 'slds-size--1-of-3': hasFilter, 'slds-text-align--right': hasFilter })}
-				>
-					{this.props.headerActions}
-				</div>
-			</div>
-		);
+	if (typeof props.heading === 'string' || props.heading instanceof String) {
+		title = props.heading;
 	}
-});
+
+	const headingId = props.id ? (props.id + idSuffixes.heading) : null;
+
+	const heading = (
+		<h2
+			id={headingId}
+			className="slds-text-heading--small slds-truncate"
+			title={title}
+		>
+			{props.heading}
+		</h2>
+	);
+
+	const hasFilter = props.filter ? true : null;
+
+	let Header;
+
+	if (props.header) {
+		Header = React.cloneElement(props.header, {
+			figure: props.icon,
+			body: heading,
+			verticalCenter: true,
+			canTruncate: true,
+			...props.header.props
+		});
+	} else {
+		Header = (<MediaObject
+			figure={props.icon}
+			body={heading}
+			verticalCenter
+			canTruncate
+		/>);
+	}
+
+	const headerActionsId = props.id ? (props.id + idSuffixes.headerActions) : null;
+
+	return (
+		<div className={classnames('slds-card__header', 'slds-grid')}>
+			{Header}
+			{
+				props.filter
+				? renderFilter(props.filter, props.id)
+				: null
+			}
+			<div
+				id={headerActionsId}
+				className={classnames(
+					'slds-no-flex',
+					{
+						'slds-size--1-of-3': hasFilter,
+						'slds-text-align--right': hasFilter
+					})}
+			>
+				{props.headerActions}
+			</div>
+		</div>
+	);
+};
+
+// ### Display Name
+// Always use the canonical component name as the React display name.
+CardHeader.displayName = CARD_HEADER;
+
+// ### Prop Types
+CardHeader.propTypes = {
+	/**
+	 * Adds a filter input to the card header
+	 */
+	filter: PropTypes.node,
+	/**
+	 * Allows a custom header (the media object with the icon in the first column). `icon`, `heading` and other props are passed in the media object from Card. Use `design-system-react/components/media-object` to create your own.
+	 */
+	header: PropTypes.node,
+	/**
+	 * Actions performed on selected items or that relate to the entire group of items such as "Add Item.""
+	 */
+	headerActions: PropTypes.node,
+	/**
+	 * The heading is the name of the related item group.
+	 */
+	heading: PropTypes.string.isRequired,
+	/**
+	 * Icon associated with grouped items
+	 */
+	icon: PropTypes.node,
+	/**
+	 * Set the HTML `id` of the card filter and header actions. The suffixes, `__header-actions` and `__heading` will be this `id` and added to their respective HTML elements.
+	 */
+	id: PropTypes.string
+};
 
 module.exports = CardHeader;
-module.exports.cssClasses = cssClasses;
 module.exports.idSuffixes = idSuffixes;

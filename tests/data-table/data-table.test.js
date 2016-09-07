@@ -81,7 +81,7 @@ describe('DataTable: ', function () {
 		return tr.querySelectorAll('td')[column];
 	};
 
-	const getMenu = dom => dom.querySelector('.slds-dropdown--menu');
+	const getMenu = dom => dom.querySelector('.slds-dropdown');
 
 	describe('Structure', function () {
 		beforeEach(renderTable(

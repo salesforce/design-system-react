@@ -1,4 +1,5 @@
 /*
+ *
  Copyright (c) 2015, salesforce.com, inc. All rights reserved.
 
  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -53,10 +54,22 @@ class DetailBlock extends Component {
 	}
 
 	componentDidMount () {
+		this._renderFieldTruncation();
+	}
+
+	componentDidUpdate (prevProps) {
+		if (this.props.content !== prevProps.content) {
+			this._renderFieldTruncation();
+		}
+	}
+
+	_renderFieldTruncation () {
 		const fieldContent = this.refs.fieldContent;
 		const isTruncated = fieldContent && fieldContent.scrollWidth > fieldContent.offsetWidth;
 		if (isTruncated) {
 			this.setState({ showTooltip: true });
+		} else {
+			this.setState({ showTooltip: false });
 		}
 	}
 

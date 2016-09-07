@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import uniqueId from 'lodash.uniqueid';
 import { storiesOf, action } from '@kadira/storybook';
 
@@ -12,6 +12,9 @@ import DataTableColumn from '../../components/data-table/column';
 import DataTableHighlightCell from '../../components/data-table/highlight-cell';
 import Icon from '../../components/icon';
 
+import MediaObject from '../../components/media-object';
+import InlineEdit from '../../components/forms/input/inline';
+
 const sampleItems = [
 	{ name: 'Cloudhub' },
 	{ name: 'Cloudhub + Anypoint Connectors' },
@@ -22,7 +25,12 @@ const DemoCard = React.createClass({
 	displayName: 'DemoCard',
 
 	propTypes: {
-		items: React.PropTypes.array
+		items: PropTypes.array,
+		header: PropTypes.node,
+		heading: PropTypes.oneOfType([
+			PropTypes.node,
+			PropTypes.string
+		])
 	},
 
 	getInitialState () {
@@ -40,6 +48,14 @@ const DemoCard = React.createClass({
 
 		const isEmpty = (items.length === 0);
 
+		let heading = this.props.heading;
+
+		if (!this.props.heading) {
+			heading = items.length > 0
+			? `Related Items (${items.length})`
+			: 'Related Items';
+		}
+
 		return (
 			<div className="slds-grid slds-grid--vertical">
 				<Card
@@ -48,11 +64,13 @@ const DemoCard = React.createClass({
 						? <CardFilter onChange={this.handleFilterChange} />
 						: null
 					}
+					header={this.props.header}
 					headerActions={!isEmpty
 						? <Button label="Delete All Items" onClick={this.handleDeleteAllItems} />
 						: null
 					}
-					heading="Releated Items"
+					footer="Card Footer"
+					heading={heading}
 					icon={<Icon category="standard" name="document" size="small" />}
 					empty={isEmpty
 						? <CardEmpty heading="No Related Items">
@@ -143,4 +161,23 @@ storiesOf(CARD, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('w/ Items', () => <DemoCard items={sampleItems} />)
 	.add('Empty', () => <DemoCard items={[]} />)
+	.add('Custom Header', () =>
+		<DemoCard
+			header={<MediaObject
+				body={<InlineEdit
+					className="slds-text-heading--small slds-truncate"
+					name="inline-edit-standard"
+					value="Write your own heading"
+					id="inline-edit-standard"
+				/>}
+			/>}
+			items={sampleItems}
+		/>)
+	.add('Custom Heading', () => (
+		<DemoCard
+			items={sampleItems}
+			heading={<span
+				style={{ color: 'red' }}
+			>To Wanda! This is custom!</span>}
+		/>))
 	.add('Set height card', () => <SetHeightCard />);

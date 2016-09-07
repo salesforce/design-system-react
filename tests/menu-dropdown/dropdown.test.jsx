@@ -85,7 +85,7 @@ describe('SLDSMenuDropdown: ', () => {
 	const dropItDownWithCustomChildren = (props) => renderDropdown(createDropdownWithCustomChildren(props));
 	const dropItDownIconOnly = (props) => renderDropdown(createDropdownIcon(props));
 
-	const getMenu = (dom) => dom.querySelector('.slds-dropdown--menu');
+	const getMenu = (dom) => dom.querySelector('.slds-dropdown');
 
 	describe('Custom Content Present', () => {
 		let cmp;
@@ -229,32 +229,6 @@ describe('SLDSMenuDropdown: ', () => {
 			const items = getMenu(body).querySelectorAll('.slds-dropdown__item');
 			Simulate.click(items[1].querySelector('a'), {});
 			expect(selected.value).to.equal('B0');
-		});
-	});
-
-	describe('Optional List length property', () => {
-		let cmp;
-		let btn;
-
-		function withList (dropDownOptions, expectation) {
-			cmp = dropItDown(dropDownOptions);
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
-			Simulate.click(btn, {});
-			const list = getMenu(body).querySelector('.dropdown__list');
-			expectation(list);
-			removeDropdownTrigger(btn);
-		}
-
-		it('applies correct length classname', () => {
-			withList({ length: '10', openOn: 'click' }, function (list) {
-				expect(list.getAttribute('class')).to.match(/slds-dropdown--length-10/);
-			});
-		});
-
-		it('does not apply length classname when null', () => {
-			withList({ length: null, openOn: 'click' }, function (list) {
-				expect(list.getAttribute('class')).not.to.match(/slds-dropdown--length/);
-			});
 		});
 	});
 

@@ -7,17 +7,28 @@ import assign from 'lodash.assign';
 
 import chai from 'chai';
 
-import Card, { cssClasses as CardCssClasses } from '../../components/card';
+import Card from '../../components/card';
 import CardFilter, { idSuffixes as filterIdSuffixes } from '../../components/card/filter';
 import { idSuffixes as bodyIdSuffixes } from '../../components/card/body';
-import { cssClasses as footerCssClasses } from '../../components/card/footer';
 import { idSuffixes as emptyIdSuffixes } from '../../components/card/empty';
 import { cssClasses as mediaObjectCssClasses } from '../../components/media-object';
-import { idSuffixes as headerIdSuffixes, cssClasses as headerCssClasses } from '../../components/card/header';
+import { idSuffixes as headerIdSuffixes } from '../../components/card/header';
 
 import Icon from '../../components/icon';
 
 chai.should();
+
+const cssClasses = {
+	base: 'slds-card'
+};
+
+const footerCssClasses = {
+	base: 'slds-card__footer'
+};
+
+const headerCssClasses = {
+	base: 'slds-card__header'
+};
 
 describe('Card: ', () => {
 	// Base defaults
@@ -38,7 +49,7 @@ describe('Card: ', () => {
 	}
 
 	// DOM queries, [0] present due to test framework, not because it returns a DOM collection
-	const getCard = dom => dom.querySelector(`.${CardCssClasses.base}`);
+	const getCard = dom => dom.querySelector(`.${cssClasses.base}`);
 	const getHeader = (dom) => getCard(dom).querySelectorAll(`.${headerCssClasses.base}`)[0];
 	const getHeaderActions = (dom) => getHeader(dom).querySelectorAll(`#${requiredProps.id}${headerIdSuffixes.headerActions}`)[0];
 	const getFilter = (dom) => getHeader(dom).querySelectorAll(`#${requiredProps.id}${filterIdSuffixes.base}`)[0];
@@ -149,6 +160,30 @@ describe('Card: ', () => {
 			headerActions.should.not.be.undefined;
 			const headerActionsChildren = headerActions.querySelectorAll('#sampleHeaderActions')[0];
 			headerActionsChildren.should.not.be.undefined;
+		});
+	});
+
+	describe('Accepts a custom node as heading', () => {
+		const props = {
+			id: 'ExampleCard',
+			heading: (<h2
+				id="custom-heading"
+				className="slds-text-heading--small slds-truncate"
+				style={{ color: 'red' }}
+			>To Wanda! This is custom!</h2>)
+		};
+
+		beforeEach(renderCard(
+			<Card
+				{...props}
+			/>
+		));
+
+		afterEach(removeCard);
+
+		it('has header with unique ID', function () {
+			const heading = getCard(this.dom).querySelectorAll('#custom-heading')[0];
+			heading.id.should.not.be.undefined;
 		});
 	});
 

@@ -30,6 +30,7 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 - Add as many prop checking tests that will _only run in development_ as needed via `checkProp`. If the test can become an independent module and work in multiple components, add it to the `utilities` folder.
 - Any text the user can read (including a11y text for screenreaders) should be able to be set via a prop for internationalization.
 - React component hierarchy doesn't always mean HTML tag hierarchy. Sometimes children become the wrapping component.
+- This library makes extensive use of the [classnames](https://github.com/JedWatson/classnames) library for feeding conditional CSS classes into `className` attributes and allows a variety of types such as `string`, `object`, and `arrays`. Please review the libary's API.
 - [Props in getInitialState is an anti-pattern.](https://facebook.github.io/react/tips/props-in-getInitialState-as-anti-pattern.html)
 - Read [JSX Gotchas](https://facebook.github.io/react/docs/jsx-gotchas.html#html-entities)
 
@@ -260,6 +261,16 @@ Read: [Class Name Manipulation](https://github.com/JedWatson/classnames/blob/mas
 
 from the [Planning Center](https://github.com/planningcenter/react-patterns)
 
+## Testing Guidelines
+
+- All external APIs should be tested, so that breaking changes can be detected. If a breaking change doesn't cause at least one test to fail, then add a test.
+    - All `props` should be tested. It is OK to test multiple props in the same test for optmization as long as they are isolated and do not affect each other (for instance `id`, `classname`, and `style`).
+    - All event callbacks should be tested along with any data object keys outside of the synthetic event to confirm the data. The data object, if present, is typically the second parameter of an event callback. 
+    - All mouse and keyboard interactions should be tested.
+- Components should have 90%+ test coverage. Coverage can be determined by reviewing the coverage summary at the end of `npm test`. Please note that high test coverage does not imply correct logic, but low coverage implies low test quality/quantity. 
+- Test should run correctly in headless browsers (`npm test`) and within a "real" browser (`npm start` -> `http://localhost:8001/`)
+
+
 ## Finalize new component/features
 
 1. Write tests for your new component/feature.
@@ -268,6 +279,8 @@ from the [Planning Center](https://github.com/planningcenter/react-patterns)
   * [Donielle Berg](https://github.com/donnieberg)
   * [Ivan Bogdanov](https://github.com/madpotato)
   * [David Brainer](https://github.com/tweettypography)
+  * [Stephen James](https://github.com/interactivellama)
+  * [David Woodward](https://github.com/futuremint)
 4. Get your component/feature approved by the UX Accessibility Team (refer to the link above).
 
 

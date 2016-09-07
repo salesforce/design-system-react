@@ -25,10 +25,6 @@ import classNames from 'classnames';
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
-// ### onClickOutside
-// Listen for clicks that occur somewhere in the document, outside of the element itself
-import onClickOutside from 'react-onclickoutside';
-
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
@@ -530,7 +526,7 @@ const MenuDropdown = React.createClass({
 		return (
 			isOpen ?
 				<div
-					className={classNames('slds-dropdown', 'slds-dropdown--menu', 'slds-dropdown--left', this.props.className)}
+					className={classNames('slds-dropdown', 'slds-dropdown--left', this.props.className)}
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
 					style={this.props.menuStyle}
@@ -564,7 +560,6 @@ const MenuDropdown = React.createClass({
 			isOpen ?
 				<Popover
 					className={classNames('slds-dropdown',
-						'slds-dropdown--menu',
 						'ignore-react-onclickoutside',
 						positionClassName,
 						this.props.className)}
@@ -623,7 +618,7 @@ const MenuDropdown = React.createClass({
 		}
 
 		const outsideClickIgnoreClass = `ignore-click-${this.getId()}`;
-		const isOpen = this.props.forceOpen || !this.props.disabled && this.state.isOpen && this.trigger;
+		const isOpen = this.props.forceOpen || !this.props.disabled && this.state.isOpen && !!this.trigger;
 
 		this.renderOverlay(isOpen);
 
@@ -644,6 +639,7 @@ const MenuDropdown = React.createClass({
 				iconVariant={this.props.iconVariant}
 				iconSize={this.props.iconSize}
 				inverse={this.props.buttonInverse}
+				isOpen={isOpen}
 				label={this.props.label}
 				style={this.props.style}
 				tabIndex={isOpen ? '-1' : '0'}
