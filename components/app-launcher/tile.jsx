@@ -91,13 +91,7 @@ const AppLauncherTile = (props) => {
 									>{props.description}</Highlighter>
 								}
 								>
-									<Button
-										className="slds-text-link"
-										variant="base"
-										iconVariant="bare"
-										label={props.moreLabel}
-										tabIndex="0"
-									/>
+									<span className="slds-text-link" tabIndex="0">{props.moreLabel}</span>
 								</PopoverTooltip>
 							</span>
 						}
