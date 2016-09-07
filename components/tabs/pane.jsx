@@ -38,6 +38,18 @@ import React, {
 // ## Constants
 import { TAB_PANE } from '../../utilities/constants';
 
+const Pane = (props) => (<div>{props.children}</div>);
+
+Pane.displayName = TAB_PANE;
+Pane.propTypes = {
+	/**
+	 * The string that is handed off to the `<Tab />` component, ends up being the title and the label for the tab associated with its tab panel.
+	 */
+	label: PropTypes.string.isRequired,
+	children: PropTypes.element.isRequired
+};
+
+module.exports = Pane;
 
 const Pane = React.createClass({
 	displayName: TAB_PANE,
@@ -46,7 +58,7 @@ const Pane = React.createClass({
 		children: PropTypes.element.isRequired
 	},
 	render () {
-		return (<div > {
+		return (<div> {
 			this.props.children
 		} </div>);
 	}
