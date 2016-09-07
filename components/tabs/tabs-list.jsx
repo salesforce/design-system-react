@@ -23,7 +23,7 @@ import classNames from 'classnames';
 import { TABS_LIST } from '../../utilities/constants';
 
 
-module.exports = React.createClass({
+const TabsList = React.createClass({
 	displayName: TABS_LIST,
 
 	propTypes: {
@@ -42,7 +42,7 @@ module.exports = React.createClass({
 		]),
 
 		/**
-		 * The `children` are the actual tabs to be rendered as `li` elements.
+		 * The `children` are the actual tabs to be rendered as `li` elements. They get created by [tabs/index.jsx](./index.jsx) in the `renderTabsList` function.
 		 */
 		children: PropTypes.oneOfType([
 			PropTypes.object,
@@ -72,3 +72,5 @@ module.exports = React.createClass({
 		);
 	}
 });
+
+module.exports = TabsList;
