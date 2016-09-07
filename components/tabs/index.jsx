@@ -295,60 +295,88 @@ const Tabs = React.createClass({
 	renderTabsList (parentId) {
 		const children = React.Children.toArray(this.props.children);
 
-		function labels (child, index) {
-			const ref = `tabs-${index}`;
-			const id = `${parentId}-slds-tabs--tab-${index}`;
-			const panelId = `${parentId}-slds-tabs--panel-${index}`;
-			const selected = this.state.selectedIndex === index;
-			const focus = selected && this.state.focus;
-			return (
-				<Tab
-					key={index}
-					ref={ref}
-					focus={focus}
-					selected={selected}
-					id={id}
-					panelId={panelId}
-					disabled={child.props.disabled}
-				>
-					{child.props.label}
-				</Tab>
-				);
-		}
 		return (
+			// `parentId` gets consumed by TabsList, adding a suffix of `-tabs__nav`
 			<TabsList id={parentId}>
-				{children.map(labels.bind(this))}
+				{children.map((child, index) => {
+					const ref = `tabs-${index}`;
+					const id = `${parentId}-slds-tabs--tab-${index}`;
+					const panelId = `${parentId}-slds-tabs--panel-${index}`;
+					const selected = this.state.selectedIndex === index;
+					const focus = selected && this.state.focus;
+					return (
+						<Tab
+							key={index}
+							ref={ref}
+							focus={focus}
+							selected={selected}
+							id={id}
+							panelId={panelId}
+							disabled={child.props.disabled}
+						>
+							{child.props.label}
+						</Tab>
+						);
+				})}
 			</TabsList>
 		);
 	},
-
+	
 	renderTabPanels (parentId) {
 		const children = React.Children.toArray(this.props.children);
 
-		function panels (child, index) {
-			const ref = `panels-${index}`;
-			const tabId = `${parentId}-slds-tabs--tab-${index}`;
-			const id = `${parentId}-slds-tabs--panel-${index}`;
-			const selected = this.state.selectedIndex === index;
-			return (
-				<TabPanel
-					key={index}
-					ref={ref}
-					focus={focus}
-					selected={selected}
-					id={id}
-					tabId={tabId}
-				>
-					{children[this.state.selectedIndex]}
-				</TabPanel>
-			);
-		}
 		return (
-			<span className="slds-tabs--default__content-wrapper">
-				{children.map(panels.bind(this))}
+			<span  id={`${parentId}-tabs__content-wrapper`} className="slds-tabs--default__content-wrapper">
+				{children.map((child, index) => {
+					const ref = `panels-${index}`;
+					const tabId = `${parentId}-slds-tabs--tab-${index}`;
+					const id = `${parentId}-slds-tabs--panel-${index}`;
+					const selected = this.state.selectedIndex === index;
+					return (
+						<TabPanel
+							key={index}
+							ref={ref}
+							focus={focus}
+							selected={selected}
+							id={id}
+							tabId={tabId}
+						>
+							{children[this.state.selectedIndex]}
+						</TabPanel>
+					);
+				})}
 			</span>
 		);
 	},
+	
+	// renderTabPanels (parentId) {
+	// 	const children = React.Children.toArray(this.props.children);
+
+	// 	function panels (child, index) {
+	// 		const ref = `panels-${index}`;
+	// 		const tabId = `${parentId}-slds-tabs--tab-${index}`;
+	// 		const id = `${parentId}-slds-tabs--panel-${index}`;
+	// 		const selected = this.state.selectedIndex === index;
+	// 		return (
+	// 			<TabPanel
+	// 				key={index}
+	// 				ref={ref}
+	// 				focus={focus}
+	// 				selected={selected}
+	// 				id={id}
+	// 				tabId={tabId}
+	// 			>
+	// 				{children[this.state.selectedIndex]}
+	// 			</TabPanel>
+	// 		);
+	// 	}
+	// 	return (
+	// 		<span className="slds-tabs--default__content-wrapper">
+	// 			{children.map(panels.bind(this))}
+	// 		</span>
+	// 	);
+	// },
+
 	render () {
 		const {
 			className,
