@@ -7,6 +7,9 @@ import Tabs from '../../components/tabs';
 import Pane from '../../components/tabs/pane';
 
 
+// Used in the Nested story
+import Input from '../../components/forms/input';
+
 // Used in the Conditinal story
 import Checkbox from '../../components/forms/checkbox';
 
@@ -48,11 +51,25 @@ const getTabsNested = () => (
 		<Tabs id="nested-tabs-demo" onSelect={handleSelect('Tab from outermost Tabs clicked')}>
 			<Pane label="Tab 1">
 				<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
-				<p>And they&rsquo;re amazing.</p>
+				<p>And they&rsquo;re <a href="#amazing">amazing</a>.</p>
 			</Pane>
 			<Pane label="Tab 2">
 				<h2 className="slds-text-heading--medium">This is my tab 2 contents!</h2>
 				<p>And they&rsquo;re also amazing.</p>
+
+				<Input
+					id="unique-id-123"
+					name="left-clickable-icon"
+					label="Input Label"
+					iconName="search"
+					iconCategory="utility"
+					iconPosition="left"
+					iconAssistiveText="Search Icon"
+					onIconClick={action('Search icon clicked')}
+					placeholder="You can tab onto this to focus it."
+				/>
+
+
 			</Pane>
 			<Pane label="Tab 3 (has children)">
 				<h2 className="slds-text-heading--medium">This is my tab 3 contents!</h2>
