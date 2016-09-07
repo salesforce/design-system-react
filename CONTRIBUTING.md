@@ -269,6 +269,7 @@ from the [Planning Center](https://github.com/planningcenter/react-patterns)
     - All mouse and keyboard interactions should be tested.
 - Components should have 90%+ test coverage. Coverage can be determined by reviewing the coverage summary at the end of `npm test`. Please note that high test coverage does not imply correct logic, but low coverage implies low test quality/quantity. 
 - Test should run correctly in headless browsers (`npm test`) and within a "real" browser (`npm start` -> `http://localhost:8001/`)
+- For more specifics about testing please review the [testing module walkthough](tests/README.md).
 
 
 ## Finalize new component/features
