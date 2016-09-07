@@ -80,9 +80,7 @@ const TabPanel = React.createClass({
 
 	getDefaultProps () {
 		return {
-			selected: false,
-			id: null,
-			tabId: null
+			selected: false
 		};
 	},
 

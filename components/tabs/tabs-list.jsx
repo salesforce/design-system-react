@@ -27,8 +27,23 @@ module.exports = React.createClass({
 	displayName: TABS_LIST,
 
 	propTypes: {
+		/**
+		 * Inherits the `id` from the parent `<Tabs />` component and appends `-tabs__nav`. Becomes the HTML `id` attribute of UL element that has the class `.slds-tabs--default__nav` on it.
+		 */
 		id: PropTypes.string,
-		className: PropTypes.string,
+
+		/**
+		 * Class names to be added to the tabs list element.
+		 */
+		className: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string
+		]),
+
+		/**
+		 * The `children` are the actual tabs to be rendered as `li` elements.
+		 */
 		children: PropTypes.oneOfType([
 			PropTypes.object,
 			PropTypes.array

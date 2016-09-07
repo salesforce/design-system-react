@@ -78,8 +78,6 @@ const Tab = React.createClass({
 		return {
 			focus: false,
 			selected: false,
-			id: null,
-			panelId: null,
 			activeTabClassName: 'slds-active',
 			disabledTabClassName: 'slds-disabled'
 		};
