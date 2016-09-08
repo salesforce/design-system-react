@@ -125,6 +125,7 @@ const InlineEdit = React.createClass({
 				disabled={disabled}
 				iconName="edit"
 				iconPosition="right"
+				iconSize="small"
 				variant="icon"
 			/>
 		);
