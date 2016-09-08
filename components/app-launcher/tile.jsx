@@ -89,7 +89,7 @@ const AppLauncherTile = (props) => {
 								>{props.description}</Highlighter>
 							}
 							>
-								<div className="slds-app-launcher__tile-more slds-text-link" tabIndex="0">{props.moreLabel}</div>
+								<span className="slds-app-launcher__tile-more slds-text-link" tabIndex="0">{props.moreLabel}</span>
 							</PopoverTooltip>
 						}
 						wrapper={(text, textTruncateChild) =>
