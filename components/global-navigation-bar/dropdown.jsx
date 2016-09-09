@@ -92,7 +92,7 @@ GlobalNavigationBarDropdown.propTypes = {
 	*/
 	id: PropTypes.string,
 	/**
-	 * This prop is passed into the List for the menu. Pass null to make it the size of the content, or a string with an integer from here: https://www.lightningdesignsystem.com/components/menus/#flavor-dropdown-height
+	 * Provided to List to indicate number of items visible in the List. Pass `null` to display all items, or a string containing one of the numeric option values listed under [Dropdown Height](https://www.lightningdesignsystem.com/components/menus/#flavor-dropdown-height) at the right (eg. '5').
 	 */
 	length: PropTypes.oneOf([null, '5', '7', '10']),
 	/**
