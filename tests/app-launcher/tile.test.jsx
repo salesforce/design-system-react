@@ -50,8 +50,8 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		handles.body = handles.tile.find('.slds-app-launcher__tile-body');
 		handles.description = handles.body.find('div').at(1);
 		handles.icon = handles.tile.find('.slds-app-launcher__tile-figure');
-		handles.more = handles.tile.find('.slds-button .slds-button--icon-bare .slds-text-link');
-		handles.title = handles.tile.find('span.slds-text-link');
+		handles.more = handles.tile.find('.slds-app-launcher__tile-body .slds-app-launcher__tile-more');
+		handles.title = handles.tile.find('.slds-app-launcher__tile-body').childAt(0);
 	}
 
 	function cleanDom () {
@@ -155,7 +155,8 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		});
 
 		it('renders custom more link', () => {
-			expect(handles.more.find('span').at(0).text()).to.equal('MORE!');
+			// Enzyme is unable to find React inserted `<span>` tags due to text wrapping. Therefore the DOM transversal.
+			expect(handles.more.node.children[1].textContent).to.equal('MORE!');
 		});
 
 		it('long descriptions use Tooltip activated by hover', () => {
