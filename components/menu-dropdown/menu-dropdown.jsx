@@ -31,7 +31,7 @@ import isFunction from 'lodash.isfunction';
 import shortid from 'shortid';
 
 // ### Children
-import Popover from '../popover';
+import Dialog from '../../utilities/dialog';
 import List from '../menu-list/list';
 import ListItem from '../menu-list/list-item';
 import ListItemLabel from '../menu-list/list-item-label';
@@ -48,7 +48,9 @@ import checkProps from './check-props';
 // #### KeyboardNavigable
 import KeyboardNavigable from '../../utilities/keyboard-navigable';
 
-import { KEYS, EventUtil } from '../../utilities';
+import EventUtil from '../../utilities/EventUtil';
+import KEYS from '../../utilities/KEYS';
+
 import { MENU_DROPDOWN, MENU_DROPDOWN_TRIGGER, LIST } from '../../utilities/constants';
 
 // The overlay is an optional way to allow the dropdown to close on outside
@@ -488,7 +490,7 @@ const MenuDropdown = React.createClass({
 		return undefined;
 	},
 
-	renderDefaultPopoverContent (customListProps) {
+	renderDefaultDropdownContent (customListProps) {
 		return (
 			<List
 				key={`${this.props.id}-dropdown-list`}
@@ -508,12 +510,12 @@ const MenuDropdown = React.createClass({
 		);
 	},
 
-	renderPopoverContent (customContent) {
+	renderDropdownContent (customContent) {
 		let customContentWithListPropInjection = [];
 		// Dropdown can take a Trigger component as a child and then return it as the parent DOM element.
 		React.Children.forEach(customContent, (child) => {
 			if (child && child.type.displayName === LIST) {
-				customContentWithListPropInjection.push(this.renderDefaultPopoverContent(child.props));
+				customContentWithListPropInjection.push(this.renderDefaultDropdownContent(child.props));
 			} else {
 				customContentWithListPropInjection.push(child);
 			}
@@ -522,10 +524,10 @@ const MenuDropdown = React.createClass({
 			customContentWithListPropInjection = null;
 		}
 
-		return customContentWithListPropInjection || this.renderDefaultPopoverContent();
+		return customContentWithListPropInjection || this.renderDefaultDropdownContent();
 	},
 
-	renderSimplePopover (customContent, isOpen) {
+	renderSimpleDropdown (customContent, isOpen) {
 		return (
 			isOpen ?
 				<div
@@ -534,12 +536,12 @@ const MenuDropdown = React.createClass({
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
 					style={this.props.menuStyle}
 				>
-					{this.renderPopoverContent(customContent)}
+					{this.renderDropdownContent(customContent)}
 				</div> : null
 		);
 	},
 
-	renderModalPopover (customContent, isOpen, outsideClickIgnoreClass) {
+	renderDialog (customContent, isOpen, outsideClickIgnoreClass) {
 		let positionClassName;
 		let marginTop;
 		let offset = this.props.offset;
@@ -561,7 +563,7 @@ const MenuDropdown = React.createClass({
 
 		return (
 			isOpen ?
-				<Popover
+				<Dialog
 					className={classNames('slds-dropdown',
 						'ignore-react-onclickoutside',
 						positionClassName,
@@ -580,8 +582,8 @@ const MenuDropdown = React.createClass({
 					outsideClickIgnoreClass={outsideClickIgnoreClass}
 					targetElement={this.triggerContainer}
 				>
-					{this.renderPopoverContent(customContent)}
-				</Popover> : null
+					{this.renderDropdownContent(customContent)}
+				</Dialog> : null
 		);
 	},
 
@@ -662,8 +664,8 @@ const MenuDropdown = React.createClass({
 				ref={this.saveRefToTriggerContainer}
 				triggerRef={this.saveRefToTrigger}
 				menu={this.props.modal ?
-					this.renderModalPopover(customContent, isOpen, outsideClickIgnoreClass) :
-					this.renderSimplePopover(customContent, isOpen)}
+					this.renderDialog(customContent, isOpen, outsideClickIgnoreClass) :
+					this.renderSimpleDropdown(customContent, isOpen)}
 			/>
 		);
 	}

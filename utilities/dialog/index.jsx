@@ -7,6 +7,7 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+// Dialog
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -21,11 +22,18 @@ import classNames from 'classnames';
 import onClickOutside from 'react-onclickoutside';
 
 import TetherDrop from 'tether-drop';
-import { EventUtil, KEYS } from '../utilities';
 
-const Popover = React.createClass({
+import EventUtil from '../EventUtil';
+import KEYS from '../KEYS';
 
-	displayName: 'Popover',
+import { DIALOG } from '../constants';
+
+
+/* A dialog is a non-modal container that separates content from the rest of the web application. This library uses the Drop library (https://github.com/HubSpot/drop which is based on TetherJS) to absolutely position and align content to another item on the page. This component is not meant for external consumption.
+*/
+const Dialog = React.createClass({
+
+	displayName: DIALOG,
 
 	handleClickOutside () {
 		this.handleClose();
@@ -267,4 +275,4 @@ const Popover = React.createClass({
 	}
 });
 
-module.exports = onClickOutside(Popover);
+module.exports = onClickOutside(Dialog);

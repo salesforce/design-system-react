@@ -11,11 +11,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Popover from '../popover';
+import Dialog from '../../utilities/dialog';
 import DatePicker from './date-picker-base/index';
 import InputIcon from '../icon/input-icon';
 
-import {KEYS,EventUtil} from '../../utilities';
+import EventUtil from '../../utilities/EventUtil';
+import KEYS from '../../utilities/KEYS';
 
 const displayName = 'Datepicker';
 const propTypes = {
@@ -154,7 +155,7 @@ module.exports = React.createClass({
     return new Date();
   },
 
-  getSimplePopover() {
+  getSimpleDropdown() {
     return (
       !this.props.disabled && this.state.isOpen?
         <div className='slds-dropdown slds-dropdown--left'>
@@ -163,10 +164,10 @@ module.exports = React.createClass({
     );
   },
 
-  getModalPopover() {
+  getDialog() {
     return (
       !this.props.disabled && this.state.isOpen?
-        <Popover
+        <Dialog
           closeOnTabKey={true}
           constrainToScrollParent={this.props.constrainToScrollParent}
           inheritTargetWidth={this.props.inheritTargetWidth}
@@ -174,7 +175,7 @@ module.exports = React.createClass({
           onClose={this.handleClose}
           targetElement={this.refs.date}>
           {this.getDatePicker()}
-        </Popover>:null
+        </Dialog>:null
     );
   },
 
@@ -264,7 +265,7 @@ module.exports = React.createClass({
             />
           </div>
         </div>
-        {this.props.modal?this.getModalPopover():this.getSimplePopover()}
+        {this.props.modal?this.getDialog():this.getSimpleDropdown()}
       </div>
     );
   }

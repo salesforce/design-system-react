@@ -20,13 +20,14 @@ import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import escapeRegExp from 'lodash.escaperegexp';
 
-import Popover from '../popover';
+import Dialog from '../../utilities/dialog';
 import Button from '../button';
 import Icon from '../icon';
 import InputIcon from '../icon/input-icon';
 
 // ### Event Helpers
-import { KEYS, EventUtil } from '../../utilities';
+import EventUtil from '../../utilities/EventUtil';
+import KEYS from '../../utilities/KEYS';
 
 import Menu from './menu';
 import DefaultFooter from './menu/default-footer';
@@ -460,7 +461,7 @@ class Lookup extends React.Component {
 	renderModalMenu() {
 		let targetElem = this.refs[this.inputRefName()];
 		if(this.state.isOpen){
-			return <Popover
+			return <Dialog
 			className='slds-lookup__menu slds-show'
 			closeOnTabKey={true}
 			inheritTargetWidth={true}
@@ -470,7 +471,7 @@ class Lookup extends React.Component {
 			targetElement={targetElem}
 			>
 				{this.renderMenuContent()}
-			</Popover>;
+			</Dialog>;
 		}
 	}
 

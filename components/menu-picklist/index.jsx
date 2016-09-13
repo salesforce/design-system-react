@@ -28,7 +28,7 @@ import classNames from 'classnames';
 import shortid from 'shortid';
 
 // ### Children
-import Popover from '../popover';
+import Dialog from '../../utilities/dialog';
 import Icon from '../icon';
 import List from '../menu-list/list';
 import ListItemLabel from '../menu-list/list-item-label';
@@ -38,7 +38,9 @@ import ListItemLabel from '../menu-list/list-item-label';
 // #### KeyboardNavigable
 import KeyboardNavigable from '../../utilities/keyboard-navigable';
 
-import { KEYS, EventUtil } from '../../utilities';
+import EventUtil from '../../utilities/EventUtil';
+import KEYS from '../../utilities/KEYS';
+
 import { MENU_PICKLIST } from '../../utilities/constants';
 
 /**
@@ -264,7 +266,7 @@ const MenuPicklist = React.createClass({
 		return undefined;
 	},
 
-	renderPopoverContent () {
+	renderDropdownContent () {
 		return (
 			<List
 				checkmark={this.props.checkmark}
@@ -281,7 +283,7 @@ const MenuPicklist = React.createClass({
 		);
 	},
 
-	renderSimplePopover () {
+	renderSimpleMenu () {
 		return (
 			!this.props.disabled && this.state.isOpen
 			? <div
@@ -293,16 +295,16 @@ const MenuPicklist = React.createClass({
 					minWidth: '100%'
 				}}
 			>
-				{this.renderPopoverContent()}
+				{this.renderDropdownContent()}
 			</div>
 			: null
 		);
 	},
 
-	renderModalPopover () {
+	renderDialog () {
 		return (
 			!this.props.disabled && this.state.isOpen && this.button
-			? <Popover
+			? <Dialog
 				className="slds-dropdown slds-dropdown--left"
 				closeOnTabKey
 				constrainToScrollParent={this.props.constrainToScrollParent}
@@ -312,8 +314,8 @@ const MenuPicklist = React.createClass({
 				targetElement={this.button}
 				inheritTargetWidth={this.props.inheritTargetWidth}
 			>
-				{this.renderPopoverContent()}
-			</Popover>
+				{this.renderDropdownContent()}
+			</Dialog>
 			: null
 		);
 	},
@@ -348,7 +350,7 @@ const MenuPicklist = React.createClass({
 					<span className="slds-truncate">{this.renderPlaceholder()}</span>
 					<Icon name="down" category="utility" />
 				</button>
-				{this.props.modal ? this.renderModalPopover() : this.renderSimplePopover()}
+				{this.props.modal ? this.renderDialog() : this.renderSimpleDropdown()}
 			</div>
 		);
 	},
