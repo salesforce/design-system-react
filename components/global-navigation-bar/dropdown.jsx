@@ -38,7 +38,8 @@ const GlobalNavigationBarDropdown = (props) => {
 
 	return (
 		<MenuDropdown
-			length={null}
+			length={props.length}
+			hasStaticAlignment
 			{...rest}
 		>
 			<GlobalNavigationTrigger
@@ -91,6 +92,10 @@ GlobalNavigationBarDropdown.propTypes = {
 	*/
 	id: PropTypes.string,
 	/**
+	 * Provided to List to indicate number of items visible in the List. Pass `null` to display all items, or a string containing one of the numeric option values listed under [Dropdown Height](https://www.lightningdesignsystem.com/components/menus/#flavor-dropdown-height) at the right (eg. '5').
+	 */
+	length: PropTypes.oneOf([null, '5', '7', '10']),
+	/**
 	 *  Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px).
 	 */
 	offset: PropTypes.string,
@@ -106,7 +111,8 @@ GlobalNavigationBarDropdown.propTypes = {
 
 // ### Default Props
 GlobalNavigationBarDropdown.defaultProps = {
-	align: 'right'
+	align: 'right',
+	length: null
 };
 
 module.exports = GlobalNavigationBarDropdown;
