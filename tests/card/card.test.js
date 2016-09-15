@@ -7,10 +7,8 @@ import assign from 'lodash.assign';
 
 import chai from 'chai';
 
-import Card from '../../components/card';
-import CardFilter, { idSuffixes as filterIdSuffixes } from '../../components/card/filter';
-import { idSuffixes as bodyIdSuffixes } from '../../components/card/body';
-import { idSuffixes as emptyIdSuffixes } from '../../components/card/empty';
+import Card, { idSuffixes as cardIdSuffixes } from '../../components/card';
+import CardFilter from '../../components/card/filter';
 import { cssClasses as mediaObjectCssClasses } from '../../components/media-object';
 import { idSuffixes as headerIdSuffixes } from '../../components/card/header';
 
@@ -53,7 +51,7 @@ describe('Card: ', () => {
 	const getHeader = (dom) => getCard(dom).querySelectorAll(`.${headerCssClasses.base}`)[0];
 	const getHeaderActions = (dom) => getHeader(dom).querySelectorAll(`#${requiredProps.id}${headerIdSuffixes.headerActions}`)[0];
 	const getFilter = (dom) => getHeader(dom).querySelectorAll('.slds-form-element')[0];
-	const getBody = (dom) => getCard(dom).querySelectorAll(`#${requiredProps.id}${bodyIdSuffixes.base}`)[0];
+	const getBody = (dom) => getCard(dom).querySelectorAll(`#${requiredProps.id}${cardIdSuffixes.body}`)[0];
 	const getFooter = (dom) => getCard(dom).querySelectorAll(`.${footerCssClasses.base}`)[0];
 	const getEmptyBodyHeading = (dom) => getBody(dom).querySelectorAll('h3')[0];
 
@@ -78,7 +76,7 @@ describe('Card: ', () => {
 		});
 
 		it('has the correct heading text', function () {
-			const heading = getHeader(this.dom).querySelectorAll(`#${requiredProps.id}${headerIdSuffixes.heading}`)[0];
+			const heading = getHeader(this.dom).querySelectorAll(`#${requiredProps.id}${cardIdSuffixes.heading}`)[0];
 			heading.textContent = requiredProps.heading;
 		});
 	});

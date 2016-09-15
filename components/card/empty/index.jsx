@@ -43,11 +43,7 @@ CardEmpty.propTypes = {
 	/**
 	 * Primary text for an Empty Card.
 	 */
-	heading: PropTypes.string,
-	/**
-	 * Set the HTML `id` of the empty heading.
-	 */
-	id: PropTypes.string
+	heading: PropTypes.string
 };
 
 CardEmpty.defaultProps = {
