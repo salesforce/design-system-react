@@ -1,11 +1,15 @@
-# Salesforce Lightning Design System
+  # Salesforce Lightning Design System
 # React Components: design-system-react
 # Release notes
+
+## Release 0.3.9
+
+**Bug Fix**
+- Prevent Global Nav menus from flipping up at small screen heights
 
 ## Release 0.3.8
 
 **Bug Fix**
-- Prevent Global Nav menus from flipping up at small screen heights
 - Make App Launcher Tile More tooltip trigger a span tag
 - Make inline input’s edit icon smaller
 - Make DatePicker and TimePicker value prop the source of future state
