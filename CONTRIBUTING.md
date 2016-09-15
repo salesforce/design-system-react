@@ -21,7 +21,11 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 - Familiarize yourself with concepts used in the rest of the library.
 - If a file is touched that has outstanding ESlint errors, please fix the ESlint errors first (and in a separate commit). Sometimes special cases require an `eslint-disable` comment for a particular rule and/or line. Please use sparingly.
 - `React.createClass` is preferred over ES6 classes and `extend` at this time.
-- Prefer stateless components (basically a one fat-arrow functional component) unless you need state. Try not to use state.
+- Know how smart/stateful React components [work together](https://gist.github.com/trevordmiller/a7791c11228b48f0366b) with [pure/dumb stateless function components](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions).
+- It is preferable to only have one stateful top-level class per component in this library. For these top-level components, it’s preferable to leave them stateful (that is, to use `React.createClass`). It's much easier to get the DOM node reference if you need it for such things as measurements. Then, you don't have to go through a lot of hassle to work around not having lifecycle methods. It also allows components to follow the controlled / uncontrolled pattern mentioned below. All sub-components should be stateless and manipulated with props if possible.
+    - A Tree should have state. A tree node should not.
+    - A Data Table should have state, a Table Column should not.
+    - Frequently used items such as badges, pills, buttons or icons should probably not have state.
 - Avoid mixins. Instead, import and use shared code and external libraries as libraries, or use higher-order components. Do not add external dependencies unless absolutely necessary. Consider the "total cost of ownership" of all dependencies.
 - Be careful with [rest operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters) when passively applying unnamed and unknown props to JSX nodes. This concept allows flexibility to the consuming developer, but is difficult to track for maintainers. If rest operators should be used, be sure to deconstruct each one that is actually needed by the JSX nodes, so that the rest operator only handles "unknown props." In short, don't utilize any properties in the `...props` object within the component. After using `const { active, className, ...other } = props;` do not go back to using this.prop.* anywhere in the render function.
 - Use the controlled/uncontrolled callback/prop pattern. By default, React components should be "controlled" - exposing a callback and expecting their parent to control them. If a component needs to ability to also manage its own state (be an "uncontrolled" component) in particular situations the parent should still be able to take over and make it controlled simply by passing in a value for the prop. For instance, an `onModalClose` callback could change `isModalOpen` to `false` when it is ready to close the modal. For more detail and examples of this pattern, visit [DIMOC: Do It Myself or Callback](https://gist.github.com/jamesgpearce/53a6fc57677870f93248).
@@ -269,6 +273,7 @@ from the [Planning Center](https://github.com/planningcenter/react-patterns)
     - All mouse and keyboard interactions should be tested.
 - Components should have 90%+ test coverage. Coverage can be determined by reviewing the coverage summary at the end of `npm test`. Please note that high test coverage does not imply correct logic, but low coverage implies low test quality/quantity. 
 - Test should run correctly in headless browsers (`npm test`) and within a "real" browser (`npm start` -> `http://localhost:8001/`)
+- For more specifics about testing please review the [testing module walkthough](tests/README.md).
 
 
 ## Finalize new component/features
@@ -285,11 +290,12 @@ from the [Planning Center](https://github.com/planningcenter/react-patterns)
 
 
 # Releasing
+1. `git pull upstream` the latest changes.
 1. Run `npm prune` and `npm install` to clean up node modules in preparation for build.
-2. Increment the package version in `package.json` based on the `semver` methodology.
-3. [Add to release notes](https://github.com/salesforce-ux/design-system-react/blob/master/RELEASENOTES.md)
-4. Commit the previous two changes.
-5. Publish to your upstream repo (that is this repo): `npm run publish-to-upstream`
-6. Copy and paste your release notes into the Github Draft Release UI and publish.
+1. Increment the package version in `package.json` based on the `semver` methodology.
+1. [Add to release notes](https://github.com/salesforce-ux/design-system-react/blob/master/RELEASENOTES.md)
+1. Commit the previous two changes.
+1. Publish to your upstream repo (that is this repo): `npm run publish-to-upstream`
+1. Copy and paste your release notes into the Github Draft Release UI and publish.
 
 _If you are timid about releasing or need your pull request in review "pre-released," you can publish to origin (your fork) with `npm run publish-to-git` and then test and review the tag on your fork._

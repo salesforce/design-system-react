@@ -26,7 +26,6 @@ import Truncate from '../utilities/truncate';
 import isFunction from 'lodash.isfunction';
 
 // ## Children
-import Button from '../button';
 import Highlighter from '../utilities/highlighter';
 import PopoverTooltip from '../popover-tooltip';
 
@@ -83,23 +82,15 @@ const AppLauncherTile = (props) => {
 						suffix={props.moreLabel}
 						text={props.description}
 						textTruncateChild={
-							<span>
-								<PopoverTooltip
-									align="bottom"
-									content={<Highlighter
-										search={props.search}
-									>{props.description}</Highlighter>
-								}
-								>
-									<Button
-										className="slds-text-link"
-										variant="base"
-										iconVariant="bare"
-										label={props.moreLabel}
-										tabIndex="0"
-									/>
-								</PopoverTooltip>
-							</span>
+							<PopoverTooltip
+								align="bottom"
+								content={<Highlighter
+									search={props.search}
+								>{props.description}</Highlighter>
+							}
+							>
+								<span className="slds-app-launcher__tile-more slds-text-link" tabIndex="0">{props.moreLabel}</span>
+							</PopoverTooltip>
 						}
 						wrapper={(text, textTruncateChild) =>
 							<div>
