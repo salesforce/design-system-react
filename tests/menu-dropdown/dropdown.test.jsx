@@ -208,6 +208,43 @@ describe('SLDSMenuDropdown: ', () => {
 		});
 	});
 
+	describe('Hybrid-able', () => {
+		let cmp;
+		let btn;
+		const onClick = sinon.spy();
+
+		beforeEach(() => {
+			cmp = dropItDown({ openOn: 'hybrid', onClick });
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+		});
+
+		afterEach(() => {
+			removeDropdownTrigger(btn);
+		});
+
+		it('doesnt expand on hover', () => {
+			expect(getMenu(body)).to.equal(null);
+			Simulate.mouseEnter(btn, {});
+			expect(getMenu(body)).to.equal(null);
+		});
+
+		it('opens on click, closes on mouseLeave', (done) => {
+			// open
+			expect(getMenu(body)).to.equal(null);
+			Simulate.click(btn, {});
+			expect(getMenu(body).className).to.include('slds-dropdown');
+			
+			// close
+			Simulate.mouseEnter(btn, {});
+			Simulate.mouseLeave(btn);
+			expect(getMenu(body)).to.not.equal(null);
+			setTimeout(() => {
+				expect(getMenu(body)).to.equal(null);
+				done();
+			}, 600);
+		});
+	});
+
 	describe('Expanded', () => {
 		let cmp;
 		let btn;
