@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 
 import { TABS } from '../../utilities/constants';
@@ -12,6 +12,8 @@ import Input from '../../components/forms/input';
 
 // Used in the Conditinal story
 import Checkbox from '../../components/forms/checkbox';
+
+import classNames from 'classnames';
 
 const handleSelect = action;
 
@@ -108,6 +110,18 @@ const getTabsNested = () => (
 const DemoTabsConditional = React.createClass({
 	displayName: 'DemoTabsConditional',
 
+	// ### Prop Types
+	propTypes: {
+		/**
+		 * Class names to be added to the container element and is passed along to its children.
+		 */
+		className: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string
+		])
+	},
+
 	getInitialState () {
 		return {
 			showA: true,
@@ -160,10 +174,17 @@ const DemoTabsConditional = React.createClass({
 				/>
 
 
-				<Tabs className="slds-m-top--large" onSelect={this.handleSelectNopesOnThree}>
-					{this.state.showA && <Pane label="Tab A"><p>This is tab A</p></Pane>}
-					{this.state.showB && <Pane label="Tab B"><p>This is tab B</p></Pane>}
-					{this.state.showC && <Pane label="Tab C"><p>This is tab C</p></Pane>}
+				<Tabs
+					className={classNames(
+						'slds-m-top--large',
+						this.props.className
+					)}
+					onSelect={this.handleSelectNopesOnThree}
+					selectedIndex={1}
+				>
+					{this.state.showA && <Pane label="Tab A"><p>This is tab A.</p></Pane>}
+					{this.state.showB && <Pane label="Tab B"><p>This is tab B.</p><p>It should be selected by default.</p></Pane>}
+					{this.state.showC && <Pane label="Tab C"><p>This is tab C.</p></Pane>}
 					<Pane label="Always No">
 						<p>
 							This one can not be selected from the tabs list because this example provides a custom <code>onSelct</code> function that retuns false when it is run, preventing the component&rsquo;s built-in handler from running, and thus the tab is never selected.
@@ -215,7 +236,7 @@ storiesOf(TABS, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Base', () => getTabs())
 	.add('Nested', () => getTabsNested())
-	.add('Conditional', () => <DemoTabsConditional />)
+	.add('Conditional', () => <DemoTabsConditional className="conditional-yo" />)
 	.add('With disabled tab', () => getTabsDisabled())
 	;
 
