@@ -18,25 +18,17 @@ const { PropTypes } = React;
 
 import { CARD_EMPTY } from '../../../utilities/constants';
 
-// Allow for predicatable DOM queries with `querySelectorAll(cssClasses.base)`
-const idSuffixes = {
-	heading: '__empty-heading'
-};
-
 /**
  * A default empty state for Cards.
  */
-const CardEmpty = (props) => {
-	const id = props.id ? (props.id + idSuffixes.heading) : null;
-	return (
-		<div className="slds-p-horizontal--small">
-			<div className="slds-text-align--center slds-m-bottom--x-large">
-				<h3 id={id} className="slds-text-heading--small slds-p-top--large slds-p-bottom--large">{props.heading}</h3>
-				{props.children}
-			</div>
+const CardEmpty = (props) => (
+	<div className="slds-p-horizontal--small">
+		<div className="slds-text-align--center slds-m-bottom--x-large">
+			<h3 className="slds-text-heading--small slds-p-top--large slds-p-bottom--large">{props.heading}</h3>
+			{props.children}
 		</div>
-	);
-};
+	</div>
+);
 
 // ### Display Name
 // Always use the canonical component name as the React display name.
@@ -51,11 +43,7 @@ CardEmpty.propTypes = {
 	/**
 	 * Primary text for an Empty Card.
 	 */
-	heading: PropTypes.string,
-	/**
-	 * Set the HTML `id` of the empty heading.
-	 */
-	id: PropTypes.string
+	heading: PropTypes.string
 };
 
 CardEmpty.defaultProps = {
@@ -63,4 +51,3 @@ CardEmpty.defaultProps = {
 };
 
 module.exports = CardEmpty;
-module.exports.idSuffixes = idSuffixes;
