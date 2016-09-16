@@ -198,9 +198,9 @@ const MenuDropdown = React.createClass({
 		 */
 		onFocus: PropTypes.func,
 		/**
-		 * Determines if mouse hover or click opens the dropdown menu. The default of `click` is highly recommended to comply with accessibility standards. If you are planning on using hover, please pause a moment and reconsider.
+		 * Determines if mouse hover or click opens or closes the dropdown menu. The default of `click` opens the menu on click, touch, or keyboard navigation and is highly recommended to comply with accessibility standards. The other options are `hover` which opens when the mouse enters the focusable area, and `hybrid` which causes the menu to open on clicking of the trigger, but closes the menu when the mouse leaves the menu and trigger area. If you are planning on using `hover` or `hybrid`, please pause a moment and reconsider.
 		 */
-		openOn: PropTypes.oneOf(['hover', 'click']),
+		openOn: PropTypes.oneOf(['hover', 'click', 'hybrid']),
 		/**
 		 * Set dropdown to be open. Must be returned to false to become interactive again.
 		 */
@@ -653,12 +653,19 @@ const MenuDropdown = React.createClass({
 
 				id={this.getId()}
 				onBlur={this.props.onBlur}
-				onClick={this.props.openOn === 'click' ? this.handleClick : this.props.onClick}
+				onClick={
+					this.props.openOn === 'click'
+					|| this.props.openOn === 'hybrid'
+					? this.handleClick : this.props.onClick
+				}
 				onFocus={this.props.openOn === 'hover' ? this.handleFocus : null}
 				onKeyDown={this.handleKeyDown}
 				onMouseDown={this.props.onMouseDown}
 				onMouseEnter={this.props.openOn === 'hover' ? this.handleMouseEnter : null}
-				onMouseLeave={this.props.openOn === 'hover' ? this.handleMouseLeave : null}
+				onMouseLeave={
+					this.props.openOn === 'hover'
+					|| this.props.openOn === 'hybrid'
+					? this.handleMouseLeave : null}
 				ref={this.saveRefToTriggerContainer}
 				triggerRef={this.saveRefToTrigger}
 				menu={this.props.modal ?
