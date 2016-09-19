@@ -154,7 +154,6 @@ describe('Tree: ', () => {
 
 			const list = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
 			expect(list).to.have.length(1);
-			console.log("list", list);
 			expect(list.hasClass('this-is-an-unordered-list-test')).to.be.true;
 			expect(list.node.offsetHeight).to.equal(500);
 
