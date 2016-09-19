@@ -78,7 +78,7 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 				assistiveText="Open Menu Item 1"
 				id="primaryDropdown"
 				label="Menu Item 1"
-				openOn={props.openOn || null}
+				openOn={props.openOn || undefined}
 				onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
 				options={dropdownCollection}
 			/>
