@@ -35,6 +35,18 @@ const propSets = {
 			}
 		}
 	},
+	hybrid: {
+		props: {
+			openOn: 'hybrid'
+		},
+		primaryRegionProps: {
+			appLauncher: {
+				assistiveText: 'Open App Launcher',
+				id: 'app-launcher-trigger',
+				triggerName: 'App Name'
+			}
+		}
+	},
 	customCloud: {
 		props: {
 			cloud: 'marketing'
