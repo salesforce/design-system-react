@@ -290,12 +290,9 @@ from the [Planning Center](https://github.com/planningcenter/react-patterns)
 
 
 # Releasing
-1. `git pull upstream` the latest changes.
+1. [Add to release notes](https://github.com/salesforce-ux/design-system-react/blob/master/RELEASENOTES.md).
 1. Run `npm prune` and `npm install` to clean up node modules in preparation for build.
-1. Increment the package version in `package.json` based on the `semver` methodology.
-1. [Add to release notes](https://github.com/salesforce-ux/design-system-react/blob/master/RELEASENOTES.md)
-1. Commit the previous two changes.
-1. Publish to your upstream repo (that is this repo): `npm run publish-to-upstream`
+1. Pull from upstream, bump and commit the package version, and publish tags to your upstream repo (that is this repo). **Choose one**: `npm run release-patch` or `npm run release-minor`
 1. Copy and paste your release notes into the Github Draft Release UI and publish.
 
-_If you are timid about releasing or need your pull request in review "pre-released," you can publish to origin (your fork) with `npm run publish-to-git` and then test and review the tag on your fork._
+_If you are timid about releasing or need your pull request in review "pre-released," you can publish to origin (your fork) with `npm run publish-to-git` and then test and review the tag on your fork. This is just the publish step though, any other tasks you will need to do manually to test publishing._
