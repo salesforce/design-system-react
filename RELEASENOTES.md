@@ -2,6 +2,11 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.3.10
+
+**MAJOR CHANGES**
+- Adds `hybrid` to `openOn` options. This allows a click to open and hover out to close in case one does not have control of the DOM outside of the navigation.
+
 ## Release 0.3.9
 
 **Bug Fix**
