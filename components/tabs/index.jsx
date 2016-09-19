@@ -360,17 +360,10 @@ const Tabs = React.createClass({
 			}, 0);
 		}
 
-		// const { className, ...attributes } = this.props;
-
 		// Delete all known props, so they don't get added to DOM
-		console.log("attributes", attributes);
 		delete attributes.selectedIndex;
 		delete attributes.onSelect;
-		// delete attributes.focus;
 		delete attributes.children;
-		// delete attributes.forceRenderTabPanel;
-		// delete attributes.onClick;
-		// delete attributes.onKeyDown;
 
 		return (
 			<div
