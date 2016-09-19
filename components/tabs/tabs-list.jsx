@@ -59,7 +59,7 @@ const TabsList = React.createClass({
 
 		return (
 			<ul
-				id={`${id}-tabs__nav`}
+				id={`${id}-slds-tabs__nav`}
 				{...attributes}
 				className={classNames(
 					'slds-tabs--default__nav',

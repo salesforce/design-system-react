@@ -137,116 +137,139 @@
   "components": [
     {
       "component": "app-launcher",
+      "status": "prod",
       "display-name": "App Launcher",
       "SLDS-component-path": "/components/app-launcher/#flavor-default"
     },
     {
       "component": "bread-crumb",
+      "status": "prod",
       "display-name": "Breadcrumbs",
       "SLDS-component-path": "/components/breadcrumbs"
     },
     {
       "component": "button",
+      "status": "prod",
       "display-name": "Buttons",
       "SLDS-component-path": "/components/buttons"
     },
     {
       "component": "button-stateful",
+      "status": "prod",
       "display-name": "Stateful Buttons",
       "SLDS-component-path": "/components/buttons/#flavor-stateful"
     },
     {
       "component": "button-group",
+      "status": "prod",
       "display-name": "Button Groups",
       "SLDS-component-path": "/components/button-groups"
     },
     {
       "component": "card",
+      "status": "prod",
       "display-name": "Cards",
       "SLDS-component-path": "/components/cards"
     },
     {
       "component": "forms/checkbox",
+      "status": "prod",
       "display-name": "Checkboxes",
       "SLDS-component-path": "/components/forms/#flavor-checkbox"
     },
     {
       "component": "data-table",
+      "status": "prod",
       "display-name": "Data Tables",
       "SLDS-component-path": "/components/data-tables"
     },
     {
       "component": "date-picker",
+      "status": "prod",
       "display-name": "Datepickers",
       "SLDS-component-path": "/components/datepickers"
     },
     {
       "component": "icon",
+      "status": "prod",
       "display-name": "Icons",
       "SLDS-component-path": "/components/icons"
     },
     {
       "component": "forms/input/inline",
+      "status": "prod",
       "display-name": "Inline Edit Inputs",
       "SLDS-component-path": "/components/forms#flavor-input"
     },
     {
       "component": "forms/input",
+      "status": "prod",
       "display-name": "Inputs",
       "SLDS-component-path": "/components/forms#flavor-input"
     },
     {
       "component": "global-header",
+      "status": "prod",
       "display-name": "Global Header",
       "SLDS-component-path": "/components/global-header#flavor-base"
     },
     {
       "component": "global-navigation-bar",
+      "status": "prod",
       "display-name": "Global Navigation Bar",
       "SLDS-component-path": "/components/global-navigation#flavor-navigation-bar"
     },
     {
       "component": "lookup",
+      "status": "prod",
       "display-name": "Lookups",
       "SLDS-component-path": "/components/lookups"
     },
     {
       "component": "menu-dropdown",
+      "status": "prod",
       "display-name": "Dropdown Menus",
       "SLDS-component-path": "/components/menus#flavor-dropdown"
     },
     {
       "component": "menu-picklist",
+      "status": "prod",
       "display-name": "Picklist Menus",
       "SLDS-component-path": "/components/menus#flavor-picklist"
     },
     {
       "component": "modal",
+      "status": "prod",
       "display-name": "Modals",
       "SLDS-component-path": "/components/modals"
     },
     {
       "component": "notification",
+      "status": "prod",
       "display-name": "Notifications",
       "SLDS-component-path": "/components/notifications"
     },
     {
       "component": "page-header",
+      "status": "prod",
       "display-name": "Page Headers",
       "SLDS-component-path": "/components/page-headers"
     },
     {
       "component": "popover-tooltip",
+      "status": "prod",
       "display-name": "Popover Tooltips",
       "SLDS-component-path": "/components/popovers#flavor-tooltips"
     },
     {
       "component": "tabs",
+      "status": "prototype",
       "display-name": "Tabs",
       "SLDS-component-path": "/components/tabs"
     },
     {
       "component": "time-picker",
+      "status": "prod",
       "display-name": "Timepickers",
       "SLDS-component-path": "/components/datepickers"
     }

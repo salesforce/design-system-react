@@ -350,7 +350,8 @@ const Tabs = React.createClass({
 	render () {
 		const {
 			className,
-			id
+			id,
+			...attributes
 			} = this.props;
 
 		if (this.state.focus) {
@@ -358,6 +359,18 @@ const Tabs = React.createClass({
 				this.setState({ focus: false });
 			}, 0);
 		}
+
+		// const { className, ...attributes } = this.props;
+
+		// Delete all known props, so they don't get added to DOM
+		console.log("attributes", attributes);
+		delete attributes.selectedIndex;
+		delete attributes.onSelect;
+		// delete attributes.focus;
+		delete attributes.children;
+		// delete attributes.forceRenderTabPanel;
+		// delete attributes.onClick;
+		// delete attributes.onKeyDown;
 
 		return (
 			<div
@@ -369,6 +382,7 @@ const Tabs = React.createClass({
 				onClick={this.handleClick}
 				onKeyDown={this.handleKeyDown}
 				data-tabs
+				{...attributes}
 			>
 				{this.renderTabsList(id)}
 				{this.renderTabPanels(id)}

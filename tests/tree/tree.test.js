@@ -146,7 +146,7 @@ describe('Tree: ', () => {
 			/>
 		));
 
-		// afterEach(unmountComponent);
+		afterEach(unmountComponent);
 
 		it('has tree container class, list class, and heading', function () {
 			const container = this.wrapper.find('.slds-tree_container');

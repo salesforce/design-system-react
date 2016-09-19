@@ -22,7 +22,7 @@ const handleSelect = action;
 const getTabs = () => (
 	<div>
 		<h2 className="slds-text-heading--large">Base Tabs Demo</h2>
-		<Tabs id="main-tabs-demo" className="custom-class-is-custom" onSelect={handleSelect('Tab from outermost Tabs clicked')}>
+		<Tabs id="main-tabs-demo" className="custom-class-is-custom" onSelect={handleSelect('Tab from outermost Tabs clicked')} foo="baz">
 			<Pane label="Tab 1">
 				<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 				<p>And they&rsquo;re amazing.</p>

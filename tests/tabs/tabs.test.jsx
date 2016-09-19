@@ -63,7 +63,11 @@ const TabsDemoComponent = React.createClass({
 			PropTypes.array,
 			PropTypes.object,
 			PropTypes.string
-		])
+		]),
+		/**
+		 * HTML `id` attribute of primary element that has `.slds-tabs--default` on it. Optional: If one is not supplied, a `shortid` will be created.
+		 */
+		id: React.PropTypes.string
 	},
 
 
@@ -72,14 +76,21 @@ const TabsDemoComponent = React.createClass({
 		};
 	},
 
-	handleSelectNopesOnThree (index, last) {
-		if (index === 3) {
-			return false;
-		}
-		return true;
-	},
-
 	render () {
+		const {
+			className,
+			id,
+			...attributes
+		} = this.props;
+
+
+		// Delete all known props, so they don't get added to DOM
+		delete attributes.selectedIndex;
+		delete attributes.onSelect;
+		delete attributes.children;
+		delete attributes.id;
+
+
 		return (
 			<div
 				className={classNames(
@@ -89,89 +100,15 @@ const TabsDemoComponent = React.createClass({
 			>
 				<Tabs
 					className={classNames(
-						this.props.className
+						className
 					)}
 					onSelect={this.handleSelectNopesOnThree}
+					id={id}
+					{...attributes}
 				>
 					<Pane label="Tab A"><p>This is tab A</p></Pane>
 					<Pane label="Tab B" disabled><p>This is tab B.</p><p>It is disabled.</p></Pane>
 					<Pane label="Tab C"><p>This is tab C</p></Pane>
-					<Pane label="Always No">
-						<p>
-							This one can not be selected from the tabs list because this example provides a custom <code>onSelct</code> function that retuns false when it is run, preventing the component&rsquo;s built-in handler from running, and thus the tab is never selected.
-						</p>
-						<p>
-							Note that you <em>can</em> still see the panel if you hide the other tabs, because the tab/panel are not <em>disabled</em>.
-						</p>
-						<p>
-							In other words, this should not be taken as an example of how to be sneaky about disabling tab selection, but rather that you can <strong>do stuff</strong> when a tab is selected by sending it a custom <code>onSelect</code> function.
-						</p>
-					</Pane>
-				</Tabs>
-			</div>
-		);
-	}
-});
-
-/* A re-usable demo component fixture outside of `describe` sections
- * can accept props within each test and be unmounted after each tests.
- * This wrapping component will be similar to your wrapping component
- * you will create in the React Storybook for manual testing.
- */
-const TabsDemoComponent2 = React.createClass({
-	displayName: 'DemoTabsConditional',
-
-	// ### Prop Types
-	propTypes: {
-		/**
-		 * Class names to be added to the container element and is passed along to its children.
-		 */
-		className: PropTypes.oneOfType([
-			PropTypes.array,
-			PropTypes.object,
-			PropTypes.string
-		]),
-		/**
-		 * This function triggers when a tab is selected
-		 */
-		onSelect: PropTypes.func
-	},
-
-	getInitialState () {
-		return {
-			showA: true,
-			showB: true,
-			showC: true
-		};
-	},
-
-	handleCheckClicked (checked, event) {
-		const state = {};
-		state[event.target.name] = checked;
-		this.setState(state);
-	},
-
-	handleSelectNopesOnThree (index, last) {
-		return true;
-	},
-
-	render () {
-		return (
-			<div>
-				<h2 className="slds-text-heading--large">Conditional Tabs Demo</h2>
-
-
-				<Tabs
-					className={classNames(
-						'slds-m-top--large',
-						this.props.className
-					)}
-					onSelect={this.props.onSelect}
-					selectedIndex={1}
-				>
-					<Pane label="Tab A"><p>This is tab A.</p></Pane>
-					<Pane label="Tab B"><p>This is tab B.</p><p>It should be selected by default.</p></Pane>
-					<Pane label="Tab C"><p>This is tab C.</p></Pane>
 					<Pane label="Always No">
 						<p>
 							This one can not be selected from the tabs list because this example provides a custom <code>onSelct</code> function that retuns false when it is run, preventing the component&rsquo;s built-in handler from running, and thus the tab is never selected.
@@ -194,54 +131,46 @@ describe('Tabs', () => {
 	// BASIC STRUCTURE
 
 	describe('Default structure and CSS', () => {
-		// Test DOM with minimal props set
-
-		// String provided as first parameter names the `it` section.
-		// Use short declarative sentences (sentence with "it").
-		// it('is present with expected attributes set', () => {});
-
 		const id = 'this-is-an-id-for-testing';
 
 		before(mountComponent(
 			<TabsDemoComponent
 				className={`${COMPONENT_CSS_CLASSES.testClass}`}
 				id={id}
+				bar="baz"
 			/>
 		));
 		after(unmountComponent);
 
-		// it('has tabs with the proper class name', function () {
-		// 	const myTabs = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
-		// 	console.log("myTabs", myTabs);
-		// 	expect(myTabs.hasClass(COMPONENT_CSS_CLASSES.base)).to.be.true;
-		// });
-
-		// it('has a tabs with the proper class name', function () {
-		// 	const myTabs = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
-		// 	console.log("myTabs", myTabs);
-		// 	expect(myTabs.hasClass(COMPONENT_CSS_CLASSES.base)).to.be.true;
-		// });
-
-		it('has a main wrapper with the proper class name.', function () {
+		it('Has a main wrapper with the proper class name.', function () {
 			const myTabsWrapper = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.wrapper}`);
 			expect(myTabsWrapper.hasClass(COMPONENT_CSS_CLASSES.wrapper)).to.be.true;
 		});
 
-
-		it('has exactly one (1) tabs component, and has with the proper class name.', function () {
+		it('Has exactly one (1) tabs component, and has with the proper class name.', function () {
 			const myTabs = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
 			expect(myTabs.hasClass(COMPONENT_CSS_CLASSES.base)).to.be.true;
 			expect(myTabs).to.have.length(1);
 		});
 
+		it('Has the custom id (this-is-an-id-for-testing) we supplied.', function () {
+			const myTabs = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
+			expect(myTabs).attr('id').to.equal(id);
+		});
 
-		it('has exactly one (1) nav component, and has with the proper class name.', function () {
+
+		it('Has exactly one (1) nav component, and has with the proper class name.', function () {
 			const myTabsNav = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.nav}`);
 			expect(myTabsNav.hasClass(COMPONENT_CSS_CLASSES.nav)).to.be.true;
 			expect(myTabsNav).to.have.length(1);
 		});
 
-		it('has exactly four (4) list items, each with the proper class name.', function () {
+		it(`Nav component builds proper ID (${id}-tabs__nav) because it inherits Tabs id property and appends "-slds-tabs__nav" to it.`, function () {
+			const myTabsNav = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.nav}`);
+			expect(myTabsNav).attr('id').to.equal(`${id}-slds-tabs__nav`);
+		});
+
+		it(`Has exactly four (4) <Tab /> components, each with the proper class name (${COMPONENT_CSS_CLASSES.item}).`, function () {
 			const myTabsListItems = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}`);
 			this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}`).forEach(function (node) {
 				expect(node.hasClass(COMPONENT_CSS_CLASSES.item)).to.equal(true);
@@ -249,18 +178,23 @@ describe('Tabs', () => {
 			expect(myTabsListItems).to.have.length(4);
 		});
 
-		it('has only one (1) disabled tab.', function () {
+		it('Has only one (1) tab with ".slds-disabled" class on it.', function () {
 			const myTabsListItem = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}.slds-disabled`);
 			expect(myTabsListItem).to.have.length(1);
 		});
 
-		it('has the proper disabled class on the second tab.', function () {
+		it('Tab components have proper ID attributes because they inherit the Tabs "id" property and append "-slds-tabs--tab-<index>" to it.', function () {
+			this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}`).forEach(function (node, index) {
+				expect(node).to.have.attr('id', `${id}-slds-tabs--tab-${index}`);
+			});
+		});
+
+		it('Has the proper disabled class on the second tab.', function () {
 			const myTabsListItem = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}.slds-disabled`);
 			expect(myTabsListItem.hasClass('slds-disabled')).to.equal(true);
 		});
 
-
-		it('has the same number of tabs as panels.', function () {
+		it('Has the same number of tabs as panels.', function () {
 			const myTabsListItems = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}`);
 			const myTabsPanels = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.content}`);
 			expect(myTabsListItems).to.have.length(4);
@@ -271,12 +205,7 @@ describe('Tabs', () => {
 	describe('Assistive technology', () => {
 		/* Detect if presence of accessibility features such as ARIA
 		 * roles and screen reader text is present in the DOM.
-		 * If your component has an ARIA role in application, and
-		 * does not use `tab-index`, test that the correct keyboard
-		 * navigation is present.
 		 */
-
-
 		const id = 'this-is-an-id-for-testing';
 
 		before(mountComponent(
@@ -287,83 +216,28 @@ describe('Tabs', () => {
 		));
 		after(unmountComponent);
 
-		it('has the aria-disabled attribute on the second tab.', function () {
+
+		it('Tab components have proper "aria-controls" attribute because they inherit Tabs ID property and append "-slds-tabs--panel-<index>" to it.', function () {
+			this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}`).forEach(function (node, index) {
+				expect(node).to.have.attr('aria-controls', `${id}-slds-tabs--panel-${index}`);
+			});
+		});
+
+		it('Tab components have proper "aria-labelledby" attribute because they inherit Tabs ID property and append "-slds-tabs--tab-<index>" to it.', function () {
+			this.wrapper.find(`.${COMPONENT_CSS_CLASSES.panel}`).forEach(function (node, index) {
+				expect(node).to.have.attr('aria-labelledby', `${id}-slds-tabs--tab-${index}`);
+			});
+		});
+
+
+		it('Has the aria-disabled attribute on the second tab.', function () {
 			const myTabsListItem = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}.slds-disabled`);
 			expect(myTabsListItem).to.have.attr('aria-disabled').equal('true');
 		});
 
-		it('has a tabindex of -1 on the second tab.', function () {
+		it('Has a tabindex of -1 on the second tab.', function () {
 			const myTabsListItem = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}.slds-disabled`);
 			expect(myTabsListItem).to.have.attr('tabindex').equal('-1');
 		});
 	});
-
-
-
-	describe('Tabs and panels properly shown on click', () => {
-		const onSelect = sinon.spy();
-
-		beforeEach(mountComponent(
-			<TabsDemoComponent2
-				onSelect={onSelect}
-			/>
-		));
-
-		afterEach(unmountComponent);
-
-		// it('clicking a tab calls onSelect', function () {
-		// 	const myTabsListItem = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}.slds-active`);
-		// 	// expect(myTabsListItem).to.have.length(1);
-
-		// 	myTabsListItem.simulate('click');
-		// 	expect(onSelect.callCount).to.equal(1);
-		// });
-	});
-
-	// PROPS AND CHILDREN
-
-	describe('Optional Props', () => {
-		// What should be present in the DOM when style and className are applied?
-	});
-
-	describe('Optional Children', () => {
-		// What should be present when children are added?
-	});
-
-
-	// DATA PROPS
-
-	describe('Data', () => {
-		/* Use exports from a corresponding `utilities/sample-data/[COMPONENT-NAME]`
-		 * file to provide data to your Storybook Stories and tests in JSON format.
-		 */
-	});
-
-
-	// EVENTS
-
-	// describe('Mouse and keyboard interactions', () => {
-	// 	/* Test event callback functions using Simulate. For more information, view
-	// 	 * https://github.com/airbnb/enzyme/blob/master/docs/api/ReactWrapper/simulate.md
-	// 	 */
-
-	// 	describe('onClick', () => {
-	// 		const itemClicked = sinon.spy();
-
-	// 		beforeEach(mountComponent(
-	// 			<TabsDemoComponent className={`${COMPONENT_CSS_CLASSES.testClass}`} itemClicked={itemClicked} />
-	// 		));
-
-	// 		afterEach(unmountComponent);
-
-	// 		// it('calls event handler', function () {
-	// 		// 	const item = this.wrapper.find('#example-tree-1').find('.slds-tree__item');
-	// 		// 	// If applicable, use second parameter to pass the data object
-	// 		// 	item.simulate('click', {});
-	// 		// 	expect(itemClicked.callCount).to.equal(1);
-	// 		// 	// If applicable, also test data object for correct contents.
-	// 		// });
-	// 	});
-	// });
-
 });
