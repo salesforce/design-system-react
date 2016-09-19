@@ -140,7 +140,7 @@ describe('Tabs', () => {
 				bar="baz"
 			/>
 		));
-		after(unmountComponent);
+		// after(unmountComponent);
 
 		it('Has a main wrapper with the proper class name.', function () {
 			const myTabsWrapper = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.wrapper}`);
@@ -189,6 +189,12 @@ describe('Tabs', () => {
 			});
 		});
 
+		it('TabPanel components have proper ID attributes because they inherit the Tabs "id" property and append "-slds-tabs--panel-<index>" to it.', function () {
+			this.wrapper.find(`.${COMPONENT_CSS_CLASSES.panel}`).forEach(function (node, index) {
+				expect(node).to.have.attr('id', `${id}-slds-tabs--panel-${index}`);
+			});
+		});
+
 		it('Has the proper disabled class on the second tab.', function () {
 			const myTabsListItem = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}.slds-disabled`);
 			expect(myTabsListItem.hasClass('slds-disabled')).to.equal(true);
@@ -223,7 +229,7 @@ describe('Tabs', () => {
 			});
 		});
 
-		it('Tab components have proper "aria-labelledby" attribute because they inherit Tabs ID property and append "-slds-tabs--tab-<index>" to it.', function () {
+		it('TabPanel components have proper "aria-labelledby" attribute because they inherit Tabs ID property and append "-slds-tabs--tab-<index>" to it.', function () {
 			this.wrapper.find(`.${COMPONENT_CSS_CLASSES.panel}`).forEach(function (node, index) {
 				expect(node).to.have.attr('aria-labelledby', `${id}-slds-tabs--tab-${index}`);
 			});
