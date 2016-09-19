@@ -1,6 +1,34 @@
-# Salesforce Lightning Design System
+  # Salesforce Lightning Design System
 # React Components: design-system-react
 # Release notes
+
+## Release 0.3.9
+
+**Bug Fix**
+- Prevent Global Nav menus from flipping up at small screen heights
+
+## Release 0.3.8
+
+**Bug Fix**
+- Make App Launcher Tile More tooltip trigger a span tag
+- Make inline input’s edit icon smaller
+- Make DatePicker and TimePicker value prop the source of future state
+
+**Documentation**
+- Add mention of classnames library to `contributing.md` 
+- Add test coverage comments, surfacing in-browser tests
+
+## Release 0.3.7
+
+**MAJOR CHANGES**
+- Global Navigation menus no longer are fixed to a height of `5`. They're as high as their content.
+- Card heading can also be a node to allow full customization of a Card header
+- Card control is now fully stateless to better match React patterns
+
+**Bug Fix**
+- Sets App Launcher modal to 90% height
+- Sends correct `href` to App Launcher Tile click callback
+- Corrects markup for menu separators and headers in Global Navigation
 
 ## Release 0.3.6
 
