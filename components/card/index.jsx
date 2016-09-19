@@ -34,10 +34,22 @@ const { PropTypes } = React;
 
 import { CARD } from '../../utilities/constants';
 
+const idSuffixes = {
+	body: '__body',
+	headerActions: '__header-actions',
+	heading: '__heading',
+	filter: '__filter-input'
+};
+
 /**
  * Cards are used to apply a container around a related grouping of information. It has a header, a body, and an optional footer. It often contains a DataTable or Tile (coming soon). Actions associated with selected items or with all items are included within the header actions. Footer often contains pagination.
  */
 const Card = function (props) {
+	const bodyId = props.id ? (props.id + idSuffixes.body) : null;
+	const filterId = props.id ? (props.id + idSuffixes.filter) : null;
+	const headingId = props.id ? (props.id + idSuffixes.heading) : null;
+	const headerActionsId = props.id ? (props.id + idSuffixes.headerActions) : null;
+
 	let { empty } = props;
 	if (empty === true) {
 		// Can be overridden by passing in a node to the empty prop
@@ -48,16 +60,18 @@ const Card = function (props) {
 		<div id={props.id} className={classnames('slds-card', props.className)} style={props.style}>
 			<Header
 				header={props.header}
+				headingId={headingId}
 				icon={empty ? null : props.icon}
-				id={props.id}
 				filter={props.filter}
+				filterId={filterId}
 				heading={props.heading}
 				headerActions={empty ? null : props.headerActions}
+				headerActionsId={headerActionsId}
 			/>
 			{
 				!empty
-				? <Body id={props.id} className={props.bodyClassName}>{props.children}</Body>
-				: <Body id={props.id} className={props.bodyClassName}>{empty}</Body>
+				? <Body id={bodyId} className={props.bodyClassName}>{props.children}</Body>
+				: <Body id={bodyId} className={props.bodyClassName}>{empty}</Body>
 			}
 			{
 				props.footer && !empty
@@ -140,3 +154,4 @@ Card.propTypes = {
 };
 
 module.exports = Card;
+module.exports.idSuffixes = idSuffixes;

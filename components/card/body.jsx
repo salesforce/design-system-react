@@ -20,21 +20,14 @@ import { CARD_BODY } from '../../utilities/constants';
 // This project uses `classnames`, "a simple javascript utility for conditionally joining classNames together."
 import classNames from 'classnames';
 
-const idSuffixes = {
-	base: '__body'
-};
-
-const CardBody = (props) => {
-	const id = props.id ? (props.id + idSuffixes.base) : null;
-
-	return (<div
+const CardBody = (props) => (
+	<div
 		className={classNames('slds-card__body', props.className)}
-		id={id}
+		id={props.id}
 	>
 		{props.children}
 	</div>
-	);
-};
+);
 
 CardBody.displayName = CARD_BODY;
 
@@ -54,4 +47,3 @@ CardBody.propTypes = {
 };
 
 module.exports = CardBody;
-module.exports.idSuffixes = idSuffixes;
