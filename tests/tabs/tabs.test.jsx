@@ -140,7 +140,7 @@ describe('Tabs', () => {
 				bar="baz"
 			/>
 		));
-		// after(unmountComponent);
+		after(unmountComponent);
 
 		it('Has a main wrapper with the proper class name.', function () {
 			const myTabsWrapper = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.wrapper}`);
