@@ -78,6 +78,7 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 				assistiveText="Open Menu Item 1"
 				id="primaryDropdown"
 				label="Menu Item 1"
+				openOn={props.openOn || undefined}
 				onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
 				options={dropdownCollection}
 			/>
@@ -300,6 +301,7 @@ storiesOf(GLOBAL_NAVIGATION_BAR, module)
 			propSets.noNav.props,
 			propSets.noNav.primaryRegionProps
 		)
-	);
+	)
+	.add('Hybrid Dropdown', () => getGlobalNavigationBar(propSets.hybrid.props, propSets.base.primaryRegionProps));
 
 module.exports = getGlobalNavigationBar;

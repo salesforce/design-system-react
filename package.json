@@ -1,6 +1,6 @@
 {
   "name": "design-system-react",
-  "version": "0.3.9",
+  "version": "0.3.10",
   "description": "Salesforce Lightning Design System React components",
   "license": "BSD-3-Clause",
   "engines": {
@@ -14,12 +14,16 @@
     "heroku-postbuild": "./scripts/heroku-postbuild.sh",
     "icons": "./node_modules/.bin/babel-node scripts/inline-icons.js",
     "lint": "eslint --config=./.eslintrc \"**/*.{js,jsx}\"",
+    "preversion": "git add RELEASENOTES.md && git commit -m \"Update release notes\" && git pull upstream master && git diff --exit-code",
     "publish-to-git": "./node_modules/.bin/babel-node scripts/publish-to-git.js",
     "publish-to-edge": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge",
     "publish-to-upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
+    "release-patch": "npm --no-git-tag-version version patch && npm run publish-to-upstream",
+    "release-minor": "npm --no-git-tag-version version minor && npm run publish-to-upstream",
     "start": "start-storybook -p 9001 -s ./node_modules & node tests/app",
     "test": "scripts/test.sh --single-run",
-    "validate": "npm ls"
+    "validate": "npm ls",
+    "version": "git add package.json && git commit -m \"Bump package version\""
   },
   "repository": {
     "type": "git",
