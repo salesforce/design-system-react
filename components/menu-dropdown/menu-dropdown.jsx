@@ -202,10 +202,6 @@ const MenuDropdown = React.createClass({
 		 */
 		openOn: PropTypes.oneOf(['hover', 'click', 'hybrid']),
 		/**
-		 * Set dropdown to be open. Must be returned to false to become interactive again.
-		 */
-		forceOpen: PropTypes.bool,
-		/**
 		 * Called when a key pressed.
 		 */
 		onKeyDown: PropTypes.func,
