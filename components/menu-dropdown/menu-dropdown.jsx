@@ -155,6 +155,10 @@ const MenuDropdown = React.createClass({
 		*/
 		id: PropTypes.string,
 		/**
+		 * Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use [](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices)
+		 */
+		isOpen: PropTypes.bool,
+		/**
 		* This prop is passed onto the triggering `Button`. Text within the trigger button.
 		*/
 		label: PropTypes.string,
@@ -222,6 +226,14 @@ const MenuDropdown = React.createClass({
 		 */
 		onSelect: PropTypes.func,
 		/**
+		 * Triggered when the dropdown is opened.
+		 */
+		onOpen: PropTypes.func,
+		/**
+		 * Triggered when the dropdown is closed.
+		 */
+		onClose: PropTypes.func,
+		/**
 		 * An array of menu item.
 		 */
 		options: PropTypes.array,
@@ -276,6 +288,9 @@ const MenuDropdown = React.createClass({
 				selectedIndex: this.getIndexByValue(nextProps.value)
 			});
 		}
+		if (nextProps.isOpen === true) {
+			this.setFocus();
+		}
 	},
 
 	componentWillUnmount () {
@@ -313,29 +328,37 @@ const MenuDropdown = React.createClass({
 	},
 
 	handleClose () {
-		if (this.state.isOpen) {
-			this.setState({
-				isOpen: false
-			});
+		if (this.props.onClose) {
+			this.props.onClose();
+		} else {
+			if (this.state.isOpen) {
+				this.setState({
+					isOpen: false
+				});
 
-			this.isHover = false;
+				this.isHover = false;
 
-			if (currentOpenDropdown === this) {
-				currentOpenDropdown = undefined;
+				if (currentOpenDropdown === this) {
+					currentOpenDropdown = undefined;
+				}
 			}
 		}
 	},
 
 	handleOpen () {
-		if (currentOpenDropdown && isFunction(currentOpenDropdown.handleClose)) {
-			currentOpenDropdown.handleClose();
+		if (this.props.onOpen) {
+			this.props.onOpen();
+		} else {
+			if (currentOpenDropdown && isFunction(currentOpenDropdown.handleClose)) {
+				currentOpenDropdown.handleClose();
+			}
+
+			currentOpenDropdown = this;
+
+			this.setState({
+				isOpen: true
+			});
 		}
-
-		currentOpenDropdown = this;
-
-		this.setState({
-			isOpen: true
-		});
 	},
 
 	handleMouseEnter (event) {
@@ -617,8 +640,15 @@ const MenuDropdown = React.createClass({
 		}
 
 		const outsideClickIgnoreClass = `ignore-click-${this.getId()}`;
-		const isOpen = this.props.forceOpen || !this.props.disabled && this.state.isOpen && !!this.trigger;
+		let isOpen;
+		
+		if (this.props.isOpen !== undefined) {
+			isOpen = this.props.isOpen;
+		} else {
+			isOpen = !this.props.disabled && this.state.isOpen && !!this.trigger;
+		}
 
+		
 		this.renderOverlay(isOpen);
 
 		/* Below are three sections of props:

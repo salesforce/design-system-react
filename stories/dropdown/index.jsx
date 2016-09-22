@@ -27,6 +27,77 @@ const getDropdown = (props) => (
 	<Dropdown {...props} />
 );
 
+const DropdownControlled = React.createClass({
+	displayName: 'DropdownControlled',
+	getInitialState () {
+		return {
+			isOpen: undefined
+		};
+	},
+	handleClickOpen () {
+		this.setState({ isOpen: true });
+	},
+	handleClickClose () {
+		this.setState({ isOpen: false });
+	},
+	handleClickReset () {
+		this.setState({ isOpen: null });
+	},
+	handleOpen () {
+		this.setState({ isOpen: true });
+	},
+	handleClose () {
+		this.setState({ isOpen: undefined });
+	},
+	handleClickCustomContent () {
+		this.setState({ isOpen: false });
+	},
+	render () {
+		let isOpen;
+		if (this.state && this.state.isOpen === true) {
+			isOpen = true;
+		} else if (this.state && this.state.isOpen === false) {
+			isOpen = false;
+		}	else {
+			isOpen = undefined;
+		}
+		const props = this.props;
+		return (
+			<div className="slds-grid">
+
+				<div className="slds-col">
+					<Dropdown
+						{...props}
+						isOpen={isOpen}
+						onClose={this.handleClose}
+						onOpen={this.handleOpen}
+					>
+						<div id="custom-dropdown-menu-content">
+							<div className="slds-m-around--medium">
+								<div className="slds-tile slds-tile--board slds-m-horizontal--small">
+									<p className="tile__title slds-text-heading--small">Art Vandelay</p>
+									<div className="slds-tile__detail">
+										<p className="slds-truncate">
+											<a className="slds-m-right--medium" onClick={this.handleClickCustomContent}>Settings</a>
+											<a href="#" >Log Out</a>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<List options={options} />
+					</Dropdown>
+				</div>
+				<div className="slds-col">
+					<Button label="Open Dropdown" onClick={this.handleClickOpen} />
+					<Button label="Close Dropdown" onClick={this.handleClickClose} />
+					<Button label="Reset Dropdown" onClick={this.handleClickReset} />
+				</div>
+			</div>
+		);
+	}
+});
+
 const getDropdownCustomTrigger = (props) => (
 	<Dropdown {...props} >
 		<Trigger>
@@ -73,6 +144,11 @@ storiesOf(MENU_DROPDOWN, module)
 		modal: false,
 		options
 	}))
+	.add('Controled w/ isOpen', () => <DropdownControlled
+		align="right"
+		label="Dropdown Click"
+		options={options}
+	/>)
 	.add('Custom Trigger', () => getDropdownCustomTrigger({
 		assistiveText: 'Custom Dropdown Trigger',
 		onSelect: (...rest) => {
