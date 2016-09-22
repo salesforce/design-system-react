@@ -391,6 +391,15 @@ const MenuDropdown = React.createClass({
 		}
 	},
 
+	handleClickCustomContent () {
+		this.setFocus();
+		this.handleClose();
+
+		if (this.props.onSelect) {
+			this.props.onSelect();
+		}
+	},
+
 	handleSelect (index) {
 		this.setState({ selectedIndex: index });
 
@@ -515,7 +524,11 @@ const MenuDropdown = React.createClass({
 			if (child && child.type.displayName === LIST) {
 				customContentWithListPropInjection.push(this.renderDefaultPopoverContent(child.props));
 			} else {
-				customContentWithListPropInjection.push(child);
+				const clonedCustomContent = React.cloneElement(child, {
+					onClick: this.handleClickCustomContent,
+					key: shortid.generate()
+				});
+				customContentWithListPropInjection.push(clonedCustomContent);
 			}
 		});
 		if (customContentWithListPropInjection.length === 0) {
