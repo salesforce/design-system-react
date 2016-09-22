@@ -35,21 +35,27 @@ const getDropdownCustomTrigger = (props) => (
 	</Dropdown>
 );
 
-const getDropdownCustomContent = (props) => (
-	<Dropdown {...props} >
-		<div id="custom-dropdown-menu-content">
-			<div className="slds-m-around--medium">
-				<div className="slds-tile slds-tile--board slds-m-horizontal--small">
-					<p className="tile__title slds-text-heading--small">Art Vandelay</p>
-					<div className="slds-tile__detail">
-						<p className="slds-truncate">
-							<a className="slds-m-right--medium" href="#">Settings</a>
-							<a href="#" >Log Out</a>
-						</p>
-					</div>
+/* eslint-disable react/prop-types */
+/* eslint-disable no-script-url */
+const DropdownCustomContent = (props) => (
+	<div id="custom-dropdown-menu-content">
+		<div className="slds-m-around--medium">
+			<div className="slds-tile slds-tile--board slds-m-horizontal--small">
+				<p className="tile__title slds-text-heading--small">Art Vandelay</p>
+				<div className="slds-tile__detail">
+					<p className="slds-truncate">
+						<a className="slds-m-right--medium" href="javascript:void(0)" onClick={props.onClick}>Settings</a>
+						<a href="javascript:void(0)" onClick={props.onClick}>Log Out</a>
+					</p>
 				</div>
 			</div>
 		</div>
+	</div>
+);
+
+const getDropdownCustomContent = (props) => (
+	<Dropdown {...props} >
+		<DropdownCustomContent />
 		<List options={[{ label: 'Custom Content Option' }, ...options]} />
 	</Dropdown>
 );
