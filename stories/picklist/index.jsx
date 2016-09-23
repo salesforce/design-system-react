@@ -21,7 +21,10 @@ const options = [
 ];
 
 const getPicklist = (props) => (
-	<Picklist {...props} />
+	<div>
+		<Picklist {...props} />
+		<button style={{ padding: '10px', margin: '50px' }}>test</button>
+	</div>
 );
 
 storiesOf(MENU_PICKLIST, module)
