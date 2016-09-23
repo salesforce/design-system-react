@@ -132,7 +132,10 @@ const Tabs = React.createClass({
 			selectedIndex: this.props.selectedIndex
 		};
 	},
-
+	shouldComponentUpdate: function(nextProps, nextState) {
+		return nextProps.selectedIndex !== this.props.selectedIndex;
+	},
+	
 	handleClick (e) {
 		let node = e.target;
 		/* eslint-disable no-cond-assign */
