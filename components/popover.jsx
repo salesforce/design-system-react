@@ -113,7 +113,10 @@ const Popover = React.createClass({
 			float: 'inherit',
 			position: 'inherit'
 		};
-		style = Object.assign({}, style, this.props.style);
+
+		if (this.props.style) {
+			style = Object.assign({}, style, this.props.style);
+		}
 
 		if (this.props.inheritTargetWidth) {
 			style.width = this.target().getBoundingClientRect().width;

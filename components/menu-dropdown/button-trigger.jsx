@@ -20,7 +20,7 @@ import Button from '../button';
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
 // joining classNames together."
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 // ### Children
 import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
@@ -112,6 +112,7 @@ const Trigger = React.createClass({
 			onMouseDown,
 			onMouseEnter,
 			onMouseLeave,
+			openOn,
 			positioned,
 			...deprecatedPropsFromMenuDropdown
 		} = this.props;
@@ -135,8 +136,8 @@ const Trigger = React.createClass({
 			// menu is a sibling of trigger button that allows relative position (nubbins) inside wrapping `div`
 			triggerRendered = (
 				<div
-					className={classNames(
-					`slds-dropdown-trigger slds-dropdown-trigger--${this.props.openOn}`,
+					className={classnames(
+					`slds-dropdown-trigger slds-dropdown-trigger--${openOn}`,
 						{
 							'slds-is-open': isOpen
 						},

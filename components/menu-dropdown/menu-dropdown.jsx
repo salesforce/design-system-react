@@ -358,9 +358,10 @@ const MenuDropdown = React.createClass({
 	handleMouseEnter (event) {
 		this.isHover = true;
 
-		if (!this.state.isOpen) {
+		if (!this.state.isOpen && this.props.openOn === 'hover') {
 			this.handleOpen();
 		} else {
+			// we want this clear when openOn is hover or hybrid
 			clearTimeout(this.isClosing);
 		}
 
@@ -712,7 +713,10 @@ const MenuDropdown = React.createClass({
 				onFocus={this.props.openOn === 'hover' ? this.handleFocus : null}
 				onKeyDown={this.handleKeyDown}
 				onMouseDown={this.props.onMouseDown}
-				onMouseEnter={this.props.openOn === 'hover' ? this.handleMouseEnter : null}
+				onMouseEnter={(this.props.openOn === 'hover' || this.props.openOn === 'hybrid')
+					? this.handleMouseEnter
+					: null
+				}
 				onMouseLeave={
 					this.props.openOn === 'hover'
 					|| this.props.openOn === 'hybrid'
