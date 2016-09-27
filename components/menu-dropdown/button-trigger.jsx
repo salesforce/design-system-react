@@ -16,6 +16,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { PropTypes } from 'react';
 import Button from '../button';
 
+// ### classNames
+// [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
+// This project uses `classnames`, "a simple javascript utility for conditionally
+// joining classNames together."
+import classNames from 'classnames';
+
 // ### Children
 import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
 
@@ -45,6 +51,10 @@ const Trigger = React.createClass({
 		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button. This is provided by the `MenuDropdown`. Please use `MenuDropdown` to set.
 		*/
 		id: PropTypes.string,
+		/**
+		 * Informs the trigger on the open/close state of the dropdown menu
+		 */
+		isOpen: PropTypes.bool,
 		/**
 		* The dropdown menu which is typically a `Popover` component.
 		*/
@@ -80,14 +90,20 @@ const Trigger = React.createClass({
 		/**
 		 * Determines if mouse hover or click opens the dropdown menu. The default of `click` is highly recommended to comply with accessibility standards. If you are planning on using hover, please pause a moment and reconsider.
 		 */
-		openOn: PropTypes.oneOf(['hover', 'click'])
+		openOn: PropTypes.oneOf(['hover', 'click']),
+		/**
+		 * Set to true if menu is inline and relatively positioned with CSS. This is the typical use case for menus with nubbins.
+		 */
+		positioned: PropTypes.bool
 	},
 
 	// ### Render
 	render () {
 		// The following are required for use with dropdown. Any other custom props for `Button` should be set with a `Button` child of this component, and are technically just here for backwards compatibility. See `children` prop description for more information.
 		const {
+			children,	// eslint-disable-line no-unused-vars
 			id,
+			isOpen,
 			onBlur,
 			menu,
 			onClick,
@@ -96,6 +112,7 @@ const Trigger = React.createClass({
 			onMouseDown,
 			onMouseEnter,
 			onMouseLeave,
+			positioned,
 			...deprecatedPropsFromMenuDropdown
 		} = this.props;
 
@@ -110,25 +127,61 @@ const Trigger = React.createClass({
 			});
 		}
 
-		// If Trigger has a Button child, then use the explicitly declared child's props layered on top of those passed down by dropdown to allow manual override
-		return (
-			<Button
-				aria-haspopup="true"
-				{...deprecatedPropsFromMenuDropdown}
-				{...propsFromGrandchildButton}
+		let triggerRendered;
 
-				id={id}
-				onBlur={onBlur}
-				onClick={onClick}
-				onFocus={onFocus}
-				onKeyDown={onKeyDown}
-				onMouseDown={onMouseDown}
-				onMouseEnter={onMouseEnter}
-				onMouseLeave={onMouseLeave}
-			>
-				{menu}
-			</Button>
-		);
+		// If Trigger has a Button child, then use the explicitly declared child's props layered on top of those passed down by dropdown to allow manual override
+
+		if (positioned) {
+			// menu is a sibling of trigger button that allows relative position (nubbins) inside wrapping `div`
+			triggerRendered = (
+				<div
+					className={classNames(
+					`slds-dropdown-trigger slds-dropdown-trigger--${this.props.openOn}`,
+						{
+							'slds-is-open': isOpen
+						},
+					)}
+				>
+					<Button
+						aria-haspopup="true"
+						{...deprecatedPropsFromMenuDropdown}
+						{...propsFromGrandchildButton}
+
+						id={id}
+						onBlur={onBlur}
+						onClick={onClick}
+						onFocus={onFocus}
+						onKeyDown={onKeyDown}
+						onMouseDown={onMouseDown}
+						onMouseEnter={onMouseEnter}
+						onMouseLeave={onMouseLeave}
+					/>
+					{menu}
+				</div>
+			);
+		}	else {
+			// menu is inside trigger button. This allows the outer DOM element rendered to an an actual `button` and not a div.
+			triggerRendered = (
+				<Button
+					aria-haspopup="true"
+					{...deprecatedPropsFromMenuDropdown}
+					{...propsFromGrandchildButton}
+
+					id={id}
+					onBlur={onBlur}
+					onClick={onClick}
+					onFocus={onFocus}
+					onKeyDown={onKeyDown}
+					onMouseDown={onMouseDown}
+					onMouseEnter={onMouseEnter}
+					onMouseLeave={onMouseLeave}
+				>
+					{menu}
+				</Button>
+			);
+		}
+
+		return triggerRendered;
 	}
 });
 
