@@ -215,17 +215,22 @@ const MenuPicklist = React.createClass({
 				EventUtil.trap(event);
 			}
 
-			this.handleKeyboardNavigate({
-				isOpen: this.state.isOpen || false,
-				keyCode: event.keyCode,
-				onSelect: this.handleSelect,
-				toggleOpen: this.toggleOpen
-			});
+			if (event.keyCode !== KEYS.TAB) {
+				this.handleKeyboardNavigate({
+					isOpen: this.state.isOpen || false,
+					keyCode: event.keyCode,
+					onSelect: this.handleSelect,
+					toggleOpen: this.toggleOpen
+				});
+			} else {
+				this.handleCancel();
+			}
 		}
 	},
 
 	handleCancel () {
 		this.setFocus();
+		this.handleClose();
 	},
 
 	closeOnClick (event) {

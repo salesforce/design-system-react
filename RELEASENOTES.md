@@ -2,6 +2,12 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.3.11
+
+**BUG FIX**
+- In Picklist, tabbing moves focus to the next tabbable DOM element, instead of opening the menu
+- In Dropdown, an `onCLick` prop is passed down to all custom content children, so that they can close the menu.
+
 ## Release 0.3.10
 
 **MAJOR CHANGES**

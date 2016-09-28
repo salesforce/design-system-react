@@ -60,21 +60,27 @@ describe('SLDSMenuDropdown: ', () => {
 	const createDropdownIcon = (props) => React.createElement(Dropdown, assign({}, iconOnlyProps, props));
 	createDropdownIcon.displayName = 'createDropdownIcon';
 
-	const createDropdownWithCustomChildren = (props) => (
-		<Dropdown {...assign({}, defaultProps, props)} >
-			<div id="custom-dropdown-menu-content">
-				<div className="slds-m-around--medium">
-					<div className="slds-tile slds-tile--board slds-m-horizontal--small">
-						<p className="tile__title slds-text-heading--small">Art Vandelay</p>
-						<div className="slds-tile__detail">
-							<p className="slds-truncate">
-								<a className="slds-m-right--medium" href="#">Settings</a>
-								<a href="#" >Log Out</a>
-							</p>
-						</div>
+	/* eslint-disable react/prop-types */
+	const DropdownCustomContent = (props) => (
+		<div id="custom-dropdown-menu-content">
+			<div className="slds-m-around--medium">
+				<div className="slds-tile slds-tile--board slds-m-horizontal--small">
+					<p className="tile__title slds-text-heading--small">Art Vandelay</p>
+					<div className="slds-tile__detail">
+						<p className="slds-truncate">
+							<a id="custom-dropdown-menu-content-link" className="slds-m-right--medium" href="#" onClick={props.onClick}>Settings</a>
+							<a href="#" onClick={props.onClick}>Log Out</a>
+						</p>
 					</div>
 				</div>
 			</div>
+		</div>
+	);
+	DropdownCustomContent.displayName = 'DropdownCustomContent';
+
+	const createDropdownWithCustomChildren = (props) => (
+		<Dropdown {...assign({}, defaultProps, props)} >
+			<DropdownCustomContent />
 			<List options={[{ label: 'Custom Content Option' }, ...options]} />
 		</Dropdown>
 	);
@@ -109,6 +115,13 @@ describe('SLDSMenuDropdown: ', () => {
 			Simulate.click(btn, {});
 			const customContent = getMenu(body).querySelector('#custom-dropdown-menu-content');
 			expect(customContent).to.not.equal(undefined);
+		});
+
+		it('closes when custom content is clicked', () => {
+			Simulate.click(btn, {});
+			const customContentLink = getMenu(body).querySelector('#custom-dropdown-menu-content').querySelector('#custom-dropdown-menu-content-link');
+			Simulate.click(customContentLink, {});
+			expect(getMenu(body)).to.equal(null);
 		});
 
 		it('has additional ListItem from list child\'s options prop', () => {
