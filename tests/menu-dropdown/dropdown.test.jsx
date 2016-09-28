@@ -7,11 +7,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
-import { expect } from 'chai';
+
+import chai, { expect } from 'chai';
+import chaiEnzyme from 'chai-enzyme';
+
+// `this.wrapper` and `this.dom` is set in the helpers file
+import { mountComponent, unmountComponent } from '../enzyme-helpers';
 
 import Dropdown from '../../components/menu-dropdown';
 import List from '../../components/menu-list/list';
 const { Simulate,	findRenderedDOMComponentWithClass } = TestUtils;
+
+chai.use(chaiEnzyme());
 
 describe('SLDSMenuDropdown: ', () => {
 	let body;
@@ -92,6 +99,29 @@ describe('SLDSMenuDropdown: ', () => {
 	const dropItDownIconOnly = (props) => renderDropdown(createDropdownIcon(props));
 
 	const getMenu = (dom) => dom.querySelector('.slds-dropdown');
+
+	describe('Styling', () => {
+		beforeEach(mountComponent(
+			<Dropdown
+				className="this-is-the-menu"
+				nubbinPosition="top left"
+				modal={false}
+				forceOpen
+				label="Test"
+				menuStyle={{ height: '500px' }}
+				openOn="click"
+				options={options}
+			/>
+		));
+
+		afterEach(unmountComponent);
+
+		it('has correct CSS classes and style', function () {
+			const component = this.wrapper.find('.slds-dropdown.slds-nubbin--top-left.this-is-the-menu');
+			expect(component).to.exist;
+			expect(component).to.have.style('height', '500px');
+		});
+	});
 
 	describe('Custom Content Present', () => {
 		let cmp;
