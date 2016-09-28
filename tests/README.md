@@ -60,9 +60,10 @@ import chaiEnzyme from 'chai-enzyme';
 // Import your internal dependencies (for example):
 import Tree from '../../components/tree';
 
-/* Enzyme Helpers can mount and unmount React component instances to 
+/* Enzyme Helpers that can mount and unmount React component instances to 
  * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this` 
- * context [full source here](tests/enzyme-helpers.js). 
+ * context [full source here](tests/enzyme-helpers.js). `this` can
+ * only be referenced if inside `function () {}`.
  */
 import { mountComponent, unmountComponent } from '../enzyme-helpers';
 
@@ -169,7 +170,10 @@ describe('Component Name here', () => {
 
             afterEach(unmountComponent);
 
-            it('calls event handler', function () {
+	    /* Please notice the of `function () {}` and not () => {}. 
+	     * It allows access to the Mocha test context via `this`.
+             */
+	    it('calls event handler', function () {
                 const item = this.wrapper.find('#example-tree-1').find('.slds-tree__item');
                 // If applicable, use second parameter to pass the data object
                 item.simulate('click', {});
