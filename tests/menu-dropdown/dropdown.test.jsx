@@ -43,7 +43,7 @@ describe('SLDSMenuDropdown: ', () => {
 	const defaultProps = {
 		label: 'Contacts',
 		openOn: 'click',
-		modal: false,
+		inline: true,
 		options,
 		placeholder: 'Select a contact',
 		value: 'B0'
@@ -56,7 +56,7 @@ describe('SLDSMenuDropdown: ', () => {
 		iconName: 'down',
 		iconVariant: 'border-filled',
 		openOn: 'click',
-		modal: false,
+		inline: true,
 		options,
 		placeholder: 'Select an Action',
 		value: 'C0'
@@ -104,8 +104,8 @@ describe('SLDSMenuDropdown: ', () => {
 		beforeEach(mountComponent(
 			<Dropdown
 				className="this-is-the-menu"
+				inline
 				nubbinPosition="top left"
-				modal={false}
 				forceOpen
 				label="Test"
 				menuStyle={{ height: '500px' }}

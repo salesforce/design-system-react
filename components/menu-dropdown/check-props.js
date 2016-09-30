@@ -10,6 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 /* eslint-disable import/no-mutable-exports */
 
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import oneOfRequiredProperty from '../../utilities/warning/one-of-required-property';
 import hasChildrenWithoutDisplayNameOf from '../../utilities/warning/has-children-without-display-name-of';
 
@@ -19,6 +20,9 @@ let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
+		// Deprecated and changed to another property
+		deprecatedProperty(COMPONENT, props.modal, 'modal', 'isInline', 'In an effort to add clarity to the meaning of the modal prop and to make more props default to false, `isInline` has replaced `modal` and is the reverse of modal.');
+
 		oneOfRequiredProperty(COMPONENT, {
 			options: props.options,
 			children: props.children
