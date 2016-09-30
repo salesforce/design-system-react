@@ -103,16 +103,20 @@ const Popover = React.createClass({
 			return <span></span>;
 		}
 
-		const style = {
+		let style = {
 			transform: 'none',
 			WebkitTransform: 'none',
-			'marginTop': this.props.marginTop,
-			'marginBottom': this.props.marginBottom,
-			'marginLeft': this.props.marginLeft,
-			'marginRight': this.props.marginRight,
-			'float': 'inherit',
-			'position': 'inherit'
+			marginTop: this.props.marginTop,
+			marginBottom: this.props.marginBottom,
+			marginLeft: this.props.marginLeft,
+			marginRight: this.props.marginRight,
+			float: 'inherit',
+			position: 'inherit'
 		};
+
+		if (this.props.style) {
+			style = Object.assign({}, style, this.props.style);
+		}
 
 		if (this.props.inheritTargetWidth) {
 			style.width = this.target().getBoundingClientRect().width;

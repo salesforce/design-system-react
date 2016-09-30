@@ -45,8 +45,6 @@ const GlobalNavigationBarDropdown = (props) => {
 			// only need if using hybrid or hover
 			hoverCloseDelay={400}
 			{...rest}
-			// only used on inline dropdowns
-			menuStyle={{ top: '100%' }}
 		>
 			<GlobalNavigationTrigger
 				active={active}
