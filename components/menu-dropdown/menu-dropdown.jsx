@@ -476,10 +476,12 @@ const MenuDropdown = React.createClass({
 		}
 	},
 
+	// Trigger opens, closes, and recieves focus on close
 	saveRefToTrigger (trigger) {
 		this.trigger = trigger;
 	},
 
+	// TriggerContainer is the wrapping outer DOM element which may differ from the actual trigger which is most likely a `button`.
 	saveRefToTriggerContainer (triggerContainer) {
 		this.triggerContainer = triggerContainer;
 		if (!this.trigger) this.trigger = triggerContainer;
@@ -670,11 +672,6 @@ const MenuDropdown = React.createClass({
 
 		this.renderOverlay(isOpen);
 
-		let positioned;
-		if (this.props.nubbinPosition) {
-			positioned = true;
-		}
-
 		/* Below are three sections of props:
 		 - The first are the props that may be given by the dropdown component. These may get deprecated in the future.
 		 - The next set of props (`CustomTriggerChildProps`) are props that can be overwritten by the end developer.
@@ -695,7 +692,7 @@ const MenuDropdown = React.createClass({
 				isOpen={isOpen}
 				label={this.props.label}
 				openOn={this.props.openOn}
-				positioned={positioned}
+				isInline={!this.props.modal}
 				style={this.props.style}
 				tabIndex={isOpen ? '-1' : '0'}
 				variant={this.props.buttonVariant}

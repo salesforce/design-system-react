@@ -48,6 +48,10 @@ const Trigger = React.createClass({
 		 */
 		children: PropTypes.element,
 		/**
+		 * CSS classes to be added to triggering button.
+		 */
+		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		/**
 		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button. This is provided by the `MenuDropdown`. Please use `MenuDropdown` to set.
 		*/
 		id: PropTypes.string,
@@ -92,9 +96,9 @@ const Trigger = React.createClass({
 		 */
 		openOn: PropTypes.oneOf(['hover', 'click']),
 		/**
-		 * Set to true if menu is inline and relatively positioned with CSS. This is the typical use case for menus with nubbins.
+		 * The ref of the actual triggering button.
 		 */
-		positioned: PropTypes.bool
+		triggerRef: PropTypes.func
 	},
 
 	// ### Render
@@ -102,6 +106,7 @@ const Trigger = React.createClass({
 		// The following are required for use with dropdown. Any other custom props for `Button` should be set with a `Button` child of this component, and are technically just here for backwards compatibility. See `children` prop description for more information.
 		const {
 			children,	// eslint-disable-line no-unused-vars
+			className,
 			id,
 			isOpen,
 			onBlur,
@@ -113,7 +118,6 @@ const Trigger = React.createClass({
 			onMouseEnter,
 			onMouseLeave,
 			openOn,
-			positioned,
 			...deprecatedPropsFromMenuDropdown
 		} = this.props;
 
@@ -128,61 +132,34 @@ const Trigger = React.createClass({
 			});
 		}
 
-		let triggerRendered;
-
-		// If Trigger has a Button child, then use the explicitly declared child's props layered on top of those passed down by dropdown to allow manual override
-
-		if (positioned) {
-			// menu is a sibling of trigger button that allows relative position (nubbins) inside wrapping `div`
-			triggerRendered = (
-				<div
-					className={classnames(
-					`slds-dropdown-trigger slds-dropdown-trigger--${openOn}`,
-						{
-							'slds-is-open': isOpen
-						},
-					)}
-				>
-					<Button
-						aria-haspopup="true"
-						{...deprecatedPropsFromMenuDropdown}
-						{...propsFromGrandchildButton}
-
-						id={id}
-						onBlur={onBlur}
-						onClick={onClick}
-						onFocus={onFocus}
-						onKeyDown={onKeyDown}
-						onMouseDown={onMouseDown}
-						onMouseEnter={onMouseEnter}
-						onMouseLeave={onMouseLeave}
-					/>
-					{menu}
-				</div>
-			);
-		}	else {
-			// menu is inside trigger button. This allows the outer DOM element rendered to an an actual `button` and not a div.
-			triggerRendered = (
+		// If Trigger has a Button child, then use the explicitly declared child's props layered on top of those passed down by dropdown's props to allow manual override
+		return (
+			<div
+				className={classnames(
+				`slds-dropdown-trigger slds-dropdown-trigger--${openOn}`,
+					{
+						'slds-is-open': isOpen
+					}
+				)}
+				id={id}
+				onBlur={onBlur}
+				onClick={onClick}
+				onKeyDown={onKeyDown}
+				onFocus={onFocus}
+				onMouseDown={onMouseDown}
+				onMouseEnter={onMouseEnter}
+				onMouseLeave={onMouseLeave}
+			>
 				<Button
+					className={className}
 					aria-haspopup="true"
 					{...deprecatedPropsFromMenuDropdown}
 					{...propsFromGrandchildButton}
-
-					id={id}
-					onBlur={onBlur}
-					onClick={onClick}
-					onFocus={onFocus}
-					onKeyDown={onKeyDown}
-					onMouseDown={onMouseDown}
-					onMouseEnter={onMouseEnter}
-					onMouseLeave={onMouseLeave}
-				>
-					{menu}
-				</Button>
-			);
-		}
-
-		return triggerRendered;
+					ref={this.props.triggerRef}
+				/>
+				{menu}
+			</div>
+		);
 	}
 });
 
