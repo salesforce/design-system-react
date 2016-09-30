@@ -155,7 +155,7 @@ describe('SLDSMenuDropdown: ', () => {
 		});
 
 		it('has additional ListItem from list child\'s options prop', () => {
-			const buttonId = body.querySelector('button').id;
+			const buttonId = body.querySelector('.slds-dropdown-trigger').id;
 			Simulate.click(btn, {});
 			const customContentFirstItemText = getMenu(body).querySelector(`#${buttonId}-item-0`).firstChild.firstChild.textContent;
 			expect(customContentFirstItemText).to.equal('Custom Content Option');
@@ -168,7 +168,7 @@ describe('SLDSMenuDropdown: ', () => {
 
 		beforeEach(() => {
 			cmp = dropItDown({ buttonClassName: 'dijkstrafied', openOn: 'hover' });
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
 		});
 
 		afterEach(() => {
@@ -176,7 +176,7 @@ describe('SLDSMenuDropdown: ', () => {
 		});
 
 		it('gives the button correct aria properties', () => {
-			expect(btn.props['aria-haspopup']).to.equal('true');
+			expect(btn.firstChild.props['aria-haspopup']).to.equal('true');
 		});
 
 		it('sets the label', () => {
@@ -258,7 +258,7 @@ describe('SLDSMenuDropdown: ', () => {
 
 		beforeEach(() => {
 			cmp = dropItDown({ openOn: 'hybrid', onClick });
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
 		});
 
 		afterEach(() => {
@@ -322,7 +322,7 @@ describe('SLDSMenuDropdown: ', () => {
 			cmp = dropItDown({ onSelect: (i) => {
 				selected = i;
 			} });
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
 		});
 
 		afterEach(() => {
@@ -356,7 +356,7 @@ describe('SLDSMenuDropdown: ', () => {
 			cmp = dropItDownIconOnly({ onSelect: (i) => {
 				selected = i;
 			} });
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
 		});
 
 		afterEach(() => {

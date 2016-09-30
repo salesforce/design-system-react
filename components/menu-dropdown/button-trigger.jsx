@@ -94,7 +94,7 @@ const Trigger = React.createClass({
 		/**
 		 * Determines if mouse hover or click opens the dropdown menu. The default of `click` is highly recommended to comply with accessibility standards. If you are planning on using hover, please pause a moment and reconsider.
 		 */
-		openOn: PropTypes.oneOf(['hover', 'click']),
+		openOn: PropTypes.oneOf(['hover', 'click', 'hybrid']),
 		/**
 		 * The ref of the actual triggering button.
 		 */
