@@ -2,6 +2,13 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.3.12
+
+**BUG FIX**
+- In Picklist, pressing enter now triggers the `onClick` prop
+- Add Dropdown wrapping `div` to align with SLDS and allow menu nubbins to be positioned with default CSS. [DOM change]
+- Make Global Header dropdowns inline instead of "modal"
+
 ## Release 0.3.11
 
 **BUG FIX**
