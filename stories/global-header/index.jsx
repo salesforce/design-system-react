@@ -13,6 +13,10 @@ import { GLOBAL_HEADER } from '../../utilities/constants';
 
 import globalNavigationBar from '../global-navigation-bar';
 
+/* eslint-disable react/prop-types */
+/* eslint-disable no-script-url */
+/* eslint-disable react/display-name */
+
 const HeaderProfileCustomContent = (props) => (
 	<div id="custom-dropdown-menu-content">
 		<div className="slds-m-around--medium">
@@ -53,6 +57,7 @@ const GlobalHeaderDemo = (props) => (
 			variant="neutral"
 		/>
 		<GlobalHeaderDropdown
+			openOn={props.openOn}
 			assistiveText="Global Actions"
 			globalAction
 			iconCategory="utility"
@@ -69,6 +74,7 @@ const GlobalHeaderDemo = (props) => (
 			onClick={action('Help Clicked')}
 		/>
 		<GlobalHeaderDropdown
+			openOn={props.openOn}
 			assistiveText="Setup"
 			iconName="setup"
 			onSelect={action('Action Selected')}
@@ -83,6 +89,7 @@ const GlobalHeaderDemo = (props) => (
 			onClick={action('Notifications Clicked')}
 		/>
 		<GlobalHeaderProfile
+			openOn={props.openOn}
 			onClick={action('Profile Clicked')}
 			onSelect={action('Profile Selected')}
 		>
@@ -93,8 +100,9 @@ const GlobalHeaderDemo = (props) => (
 
 storiesOf(GLOBAL_HEADER, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('w/ Search + Navigation', () => (<GlobalHeaderDemo />))
-	.add('w/ Fewer Elements', () => (
+	.add('Search + Navigation', () => (<GlobalHeaderDemo />))
+	.add('Open on Hybrid', () => (<GlobalHeaderDemo openOn="hybrid" />))
+	.add('Fewer Elements', () => (
 		<GlobalHeader logoSrc={logo}>
 			<GlobalHeaderDropdown
 				assistiveText="Setup"

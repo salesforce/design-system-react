@@ -6,6 +6,7 @@ import { storiesOf, action } from '@kadira/storybook';
 
 import { MENU_DROPDOWN } from '../../utilities/constants';
 import Dropdown from '../../components/menu-dropdown';
+import { DropdownNubbinPositions } from '../../components/menu-dropdown/menu-dropdown';
 import List from '../../components/menu-list/list';
 import Button from '../../components/button';
 import Trigger from '../../components/menu-dropdown/button-trigger';
@@ -26,6 +27,43 @@ const options = [
 const getDropdown = (props) => (
 	<Dropdown {...props} />
 );
+
+const getDropdownPositioned = (props) => {
+	const positionedDropdowns = [];
+	DropdownNubbinPositions.forEach((position) => {
+		positionedDropdowns.push(
+			<div className="slds-col slds-size--1-of-3" style={{ minHeight: '500px' }}>
+				<Dropdown
+					{...props}
+					forceOpen
+					nubbinPosition={position}
+				>
+					<Trigger>
+						<Button iconVariant="container" iconName="settings" label={position} />
+					</Trigger>
+				</Dropdown>
+			</div>
+		);
+	});
+
+	return (
+		<div>
+			<div className="slds-grid slds-wrap">
+				{positionedDropdowns}
+			</div>
+			<div className="slds-col" style={{ minHeight: '500px' }}>
+				<Dropdown
+					{...props}
+					nubbinPosition="top right"
+				>
+					<Trigger>
+						<Button iconVariant="container" iconName="settings" assistiveText="top right" />
+					</Trigger>
+				</Dropdown>
+			</div>
+		</div>
+	);
+};
 
 const getDropdownCustomTrigger = (props) => (
 	<Dropdown {...props} >
@@ -73,6 +111,13 @@ storiesOf(MENU_DROPDOWN, module)
 	.add('No Modal', () => getDropdown({
 		align: 'right',
 		label: 'Dropdown Click',
+		onSelect: (...rest) => {
+			action('Selected')(...rest);
+		},
+		modal: false,
+		options
+	}))
+	.add('No Modal w/ Nubbins', () => getDropdownPositioned({
 		onSelect: (...rest) => {
 			action('Selected')(...rest);
 		},

@@ -16,6 +16,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { PropTypes } from 'react';
 import Button from '../button';
 
+// ### classNames
+// [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
+// This project uses `classnames`, "a simple javascript utility for conditionally
+// joining classNames together."
+import classnames from 'classnames';
+
 // ### Children
 import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
 
@@ -42,9 +48,17 @@ const Trigger = React.createClass({
 		 */
 		children: PropTypes.element,
 		/**
+		 * CSS classes to be added to triggering button.
+		 */
+		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		/**
 		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button. This is provided by the `MenuDropdown`. Please use `MenuDropdown` to set.
 		*/
 		id: PropTypes.string,
+		/**
+		 * Informs the trigger on the open/close state of the dropdown menu
+		 */
+		isOpen: PropTypes.bool,
 		/**
 		* The dropdown menu which is typically a `Popover` component.
 		*/
@@ -80,14 +94,21 @@ const Trigger = React.createClass({
 		/**
 		 * Determines if mouse hover or click opens the dropdown menu. The default of `click` is highly recommended to comply with accessibility standards. If you are planning on using hover, please pause a moment and reconsider.
 		 */
-		openOn: PropTypes.oneOf(['hover', 'click'])
+		openOn: PropTypes.oneOf(['hover', 'click', 'hybrid']),
+		/**
+		 * The ref of the actual triggering button.
+		 */
+		triggerRef: PropTypes.func
 	},
 
 	// ### Render
 	render () {
 		// The following are required for use with dropdown. Any other custom props for `Button` should be set with a `Button` child of this component, and are technically just here for backwards compatibility. See `children` prop description for more information.
 		const {
+			children,	// eslint-disable-line no-unused-vars
+			className,
 			id,
+			isOpen,
 			onBlur,
 			menu,
 			onClick,
@@ -96,6 +117,7 @@ const Trigger = React.createClass({
 			onMouseDown,
 			onMouseEnter,
 			onMouseLeave,
+			openOn,
 			...deprecatedPropsFromMenuDropdown
 		} = this.props;
 
@@ -110,24 +132,33 @@ const Trigger = React.createClass({
 			});
 		}
 
-		// If Trigger has a Button child, then use the explicitly declared child's props layered on top of those passed down by dropdown to allow manual override
+		// If Trigger has a Button child, then use the explicitly declared child's props layered on top of those passed down by dropdown's props to allow manual override
 		return (
-			<Button
-				aria-haspopup="true"
-				{...deprecatedPropsFromMenuDropdown}
-				{...propsFromGrandchildButton}
-
+			<div
+				className={classnames(
+				`slds-dropdown-trigger slds-dropdown-trigger--${openOn}`,
+					{
+						'slds-is-open': isOpen
+					}
+				)}
 				id={id}
 				onBlur={onBlur}
 				onClick={onClick}
-				onFocus={onFocus}
 				onKeyDown={onKeyDown}
+				onFocus={onFocus}
 				onMouseDown={onMouseDown}
 				onMouseEnter={onMouseEnter}
 				onMouseLeave={onMouseLeave}
 			>
+				<Button
+					className={className}
+					aria-haspopup="true"
+					{...deprecatedPropsFromMenuDropdown}
+					{...propsFromGrandchildButton}
+					ref={this.props.triggerRef}
+				/>
 				{menu}
-			</Button>
+			</div>
 		);
 	}
 });
