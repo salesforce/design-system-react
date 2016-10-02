@@ -50,28 +50,40 @@ const TextTruncate = React.createClass({
 		return {};
 	},
 
-	componentDidMount () {
-		window.addEventListener('resize', this.update, false);
+	onResize () {
+		this.update(this.props);
 	},
 
-	componentWillReceiveProps () {
-		this.update();
+	componentDidMount () {
+		window.addEventListener('resize', this.onResize, false);
+	},
+
+	componentWillReceiveProps (nextProps) {
+		this.update(nextProps);
 	},
 
 	componentWillUnmount () {
-		window.removeEventListener('resize', this.update, false);
+		window.removeEventListener('resize', this.onResize, false);
 	},
 
-	update () {
-		if (this.scope) this.getRenderText(this.scope);
+	update (nextProps) {
+		this.getRenderText(this.scope, nextProps);
 	},
 
-	getRenderText (ref) {
+	getRenderText (ref, nextProps) {
 		if (!ref) {
 			return;
 		}
 
 		this.scope = ref;
+
+		// nextProps will be undefined for resize events, but will change if search or other props are changed
+		let propsToRender;
+		if (nextProps) {
+			propsToRender = nextProps;
+		} else {
+			propsToRender = this.props;
+		}
 
 		const {
 			containerClassName, // eslint-disable-line no-unused-vars
@@ -83,7 +95,8 @@ const TextTruncate = React.createClass({
 			truncateText,
 			wrapper,
 			...props
-		} = this.props;
+		} = propsToRender;
+
 
 		const scopeWidth = this.scope.getBoundingClientRect().width;
 		const style = window.getComputedStyle(this.scope);
