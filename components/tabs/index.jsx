@@ -45,7 +45,7 @@ import { TABS }        from '../../utilities/constants';
 
 
 // ### Helpers         from Utilities
-import { EventUtil }   from '../../utilities';
+import { KEYS, EventUtil }   from '../../utilities';
 
 
 // Determine if a node from event.target is a Tab element
@@ -285,17 +285,17 @@ const Tabs = React.createClass({
 
 		return false;
 	},
-
-	handleKeyDown (e) {
-		if (this.isTabFromContainer(e.target)) {
+	
+	handleKeyDown (event) {
+		if (this.isTabFromContainer(event.target)) {
 			let index = this.state.selectedIndex;
 			let preventDefault = false;
 
-			if (e.keyCode === 37 || e.keyCode === 38) {
+			if (event.keyCode === KEYS.LEFT || event.keyCode === KEYS.UP) {
 				// Select next tab to the left
 				index = this.getPrevTab(index);
 				preventDefault = true;
-			} else if (e.keyCode === 39 || e.keyCode === 40) {
+			} else if (event.keyCode === KEYS.RIGHT || event.keyCode === KEYS.DOWN) {
 				// Select next tab to the right
 				index = this.getNextTab(index);
 				preventDefault = true;
