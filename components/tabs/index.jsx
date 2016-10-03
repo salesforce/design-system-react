@@ -132,9 +132,24 @@ const Tabs = React.createClass({
 			selectedIndex: this.props.selectedIndex
 		};
 	},
-	// shouldComponentUpdate: function(nextProps, nextState) {
-	// 	return nextProps.selectedIndex !== this.props.selectedIndex;
-	// },
+
+	componentWillReceiveProps (nextProps) {
+		this.setState({
+			selectedIndex: nextProps.selectedIndex
+		});
+	},
+
+	shouldComponentUpdate (nextProps, nextState) {
+		let toReturn = true;
+		if (
+			nextProps.selectedIndex === this.props.selectedIndex
+		&&	nextProps.selectedIndex === nextState.selectedIndex
+		&&	nextProps.selectedIndex === this.state.selectedIndex
+		) {
+			toReturn = false;
+		}
+		return toReturn;
+	},
 	
 	handleClick (e) {
 		let node = e.target;
