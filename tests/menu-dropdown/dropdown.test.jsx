@@ -7,11 +7,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
-import { expect } from 'chai';
+
+import chai, { expect } from 'chai';
+import chaiEnzyme from 'chai-enzyme';
+
+// `this.wrapper` and `this.dom` is set in the helpers file
+import { mountComponent, unmountComponent } from '../enzyme-helpers';
 
 import Dropdown from '../../components/menu-dropdown';
 import List from '../../components/menu-list/list';
 const { Simulate,	findRenderedDOMComponentWithClass } = TestUtils;
+
+chai.use(chaiEnzyme());
 
 describe('SLDSMenuDropdown: ', () => {
 	let body;
@@ -93,6 +100,29 @@ describe('SLDSMenuDropdown: ', () => {
 
 	const getMenu = (dom) => dom.querySelector('.slds-dropdown');
 
+	describe('Styling', () => {
+		beforeEach(mountComponent(
+			<Dropdown
+				className="this-is-the-menu"
+				nubbinPosition="top left"
+				modal={false}
+				forceOpen
+				label="Test"
+				menuStyle={{ height: '500px' }}
+				openOn="click"
+				options={options}
+			/>
+		));
+
+		afterEach(unmountComponent);
+
+		it('has correct CSS classes and style', function () {
+			const component = this.wrapper.find('.slds-dropdown.slds-nubbin--top-left.this-is-the-menu');
+			expect(component).to.exist;
+			expect(component).to.have.style('height', '500px');
+		});
+	});
+
 	describe('Custom Content Present', () => {
 		let cmp;
 		let btn;
@@ -125,7 +155,7 @@ describe('SLDSMenuDropdown: ', () => {
 		});
 
 		it('has additional ListItem from list child\'s options prop', () => {
-			const buttonId = body.querySelector('button').id;
+			const buttonId = body.querySelector('.slds-dropdown-trigger').id;
 			Simulate.click(btn, {});
 			const customContentFirstItemText = getMenu(body).querySelector(`#${buttonId}-item-0`).firstChild.firstChild.textContent;
 			expect(customContentFirstItemText).to.equal('Custom Content Option');
@@ -138,7 +168,7 @@ describe('SLDSMenuDropdown: ', () => {
 
 		beforeEach(() => {
 			cmp = dropItDown({ buttonClassName: 'dijkstrafied', openOn: 'hover' });
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
 		});
 
 		afterEach(() => {
@@ -146,7 +176,7 @@ describe('SLDSMenuDropdown: ', () => {
 		});
 
 		it('gives the button correct aria properties', () => {
-			expect(btn.props['aria-haspopup']).to.equal('true');
+			expect(btn.firstChild.props['aria-haspopup']).to.equal('true');
 		});
 
 		it('sets the label', () => {
@@ -228,7 +258,7 @@ describe('SLDSMenuDropdown: ', () => {
 
 		beforeEach(() => {
 			cmp = dropItDown({ openOn: 'hybrid', onClick });
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
 		});
 
 		afterEach(() => {
@@ -292,7 +322,7 @@ describe('SLDSMenuDropdown: ', () => {
 			cmp = dropItDown({ onSelect: (i) => {
 				selected = i;
 			} });
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
 		});
 
 		afterEach(() => {
@@ -326,7 +356,7 @@ describe('SLDSMenuDropdown: ', () => {
 			cmp = dropItDownIconOnly({ onSelect: (i) => {
 				selected = i;
 			} });
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
 		});
 
 		afterEach(() => {

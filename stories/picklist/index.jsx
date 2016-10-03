@@ -40,6 +40,9 @@ storiesOf(MENU_PICKLIST, module)
 	.add('Non-modal', () => getPicklist({
 		label: 'Contacts',
 		modal: false,
+		onClick: (event) => {
+			console.log('clicked', event.target);
+		},
 		placeholder: 'Select a contact',
 		onSelect: (...rest) => {
 			action('Selected')(...rest);

@@ -137,18 +137,18 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 			listItemstyle.borderBottomColor = activeBackgroundColor;
 		}
 
-		// Per SLDS pattern set trigger style like hover style
+		// Per SLDS pattern, set trigger style like hover style, so that hover visuals and menu being open and closed are in same state
 		if (isOpen) {
 			listItemstyle.backgroundColor = hoverBackgroundColor;
 		}
 
 		return (
 			<li
-				ref={triggerRef}
 				aria-haspopup="true"
 				className={classNames(
-					'slds-context-bar__item slds-context-bar-action',
+					'slds-context-bar__item slds-context-bar-action slds-dropdown-trigger slds-dropdown-trigger--click',
 					{
+						'slds-is-open': isOpen,
 						'slds-is-active': active,
 						[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition
 					},
@@ -162,6 +162,7 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 				onMouseDown={onMouseDown}
 				onMouseEnter={onMouseEnter}
 				onMouseLeave={onMouseLeave}
+				ref={triggerRef}
 				style={listItemstyle}
 			>
 				<a className="slds-context-bar__label-action">{label}</a>

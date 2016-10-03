@@ -39,7 +39,11 @@ const GlobalHeaderDropdown = (props) => {
 	}
 
 	return (
-		<MenuDropdown {...rest}>
+		<MenuDropdown
+			nubbinPosition="top right"
+			modal={false}
+			{...rest}
+		>
 			<GlobalHeaderTrigger
 				globalAction={globalAction}
 				iconSize={globalAction && 'small'}
