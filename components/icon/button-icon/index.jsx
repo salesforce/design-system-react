@@ -11,18 +11,19 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND 
 
 import React from 'react';
 import SLDSUtilityIcon from '../../utilities/utility-icon';
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 const displayName = 'ButtonIcon';
 
 const propTypes = {
-	assistiveText: React.PropTypes.string,
+	assistiveText: React.PropTypes.string.isRequired,
 	category: React.PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']).isRequired,
 	className: React.PropTypes.string,
 	hint: React.PropTypes.bool,
 	icon: React.PropTypes.object,
 	inverse: React.PropTypes.bool,
 	name: React.PropTypes.string,
+	onClick: React.PropTypes.func,
 	position: React.PropTypes.oneOf(['left', 'right']),
 	size: React.PropTypes.oneOf(['x-small', 'small', 'medium', 'large'])
 };
@@ -38,33 +39,25 @@ class ButtonIcon extends React.Component {
 		this.state = {};
 	}
 
-	getClassName () {
-		return classNames(this.props.className, 'slds-button__icon', {
-			[`slds-button__icon--${this.props.position}`]: this.props.position,
-			[`slds-button__icon--${this.props.size}`]: this.props.size && this.props.size !== 'medium',
-			'slds-button__icon--inverse-hint': this.props.inverse && this.props.hint,
-			'slds-button__icon--hint': this.props.hint && !this.props.inverse
-		});
-	}
-
 	render () {
-		let label = null;
-
-		if (this.props.assistiveText) {
-			label = <span className="slds-assistive-text">{this.props.assistiveText}</span>;
-		}
-
 		return (
-			<span>
-				{label}
+			<button
+				className={classnames('slds-button slds-button--icon', this.props.className)}
+				onClick={this.props.onClick}
+			>
+				<span className="slds-assistive-text">{this.props.assistiveText}</span>
 				<SLDSUtilityIcon
 					aria-hidden="true"
 					category={this.props.category}
-					className={this.getClassName()}
+					className={classnames('slds-button__icon', {
+						[`slds-button__icon--${this.props.size}`]: this.props.size && this.props.size !== 'medium',
+						'slds-button__icon--inverse-hint': this.props.inverse && this.props.hint,
+						'slds-button__icon--hint': this.props.hint && !this.props.inverse
+					})}
 					icon={this.props.icon}
 					name={this.props.name}
 				/>
-			</span>
+			</button>
 		);
 	}
 }
