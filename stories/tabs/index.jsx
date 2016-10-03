@@ -202,6 +202,111 @@ const DemoTabsConditional = React.createClass({
 	}
 });
 
+const DemoTabsOutsideControl = React.createClass({
+	displayName: 'DemoTabsOutsideControl',
+
+	// ### Prop Types
+	propTypes: {
+		/**
+		 * Class names to be added to the container element and is passed along to its children.
+		 */
+		className: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string
+		])
+	},
+
+	getInitialState () {
+		return {
+			selectedIndex: 1
+		};
+	},
+
+	handleCheckClicked (checked, event) {
+		const state = {};
+		state[event.target.name] = checked;
+		this.setState(state);
+	},
+
+	handleSelectNopesOnThree (index, last) {
+		if (index === 3) {
+			console.log("The last Tab can not be selected because the onSelect handler returns false for this tab's index.");
+			return false;
+		}
+		return true;
+	},
+
+	render () {
+		return (
+			<div>
+				<h2 className="slds-text-heading--large">Outside Tabs Demo</h2>
+
+				<fieldset className="slds-form-element">
+					<legend className="slds-form-element__legend slds-form-element__label">Show Panel</legend>
+					<div className="slds-form-element__control">
+						<div className="slds-radio--button-group">
+							<span className="slds-button slds-radio--button">
+								<input name="radio" type="radio" id="monday" checked={this.state.selectedIndex === 0} />
+								<label className="slds-radio--button__label" htmlFor="monday">
+									<span className="slds-radio--faux">Mon</span>
+								</label>
+							</span>
+							<span className="slds-button slds-radio--button">
+								<input name="radio" type="radio" id="tuesday" />
+								<label className="slds-radio--button__label" htmlFor="tuesday">
+									<span className="slds-radio--faux">Tue</span>
+								</label>
+							</span>
+							<span className="slds-button slds-radio--button">
+								<input name="radio" type="radio" id="wednesday" />
+								<label className="slds-radio--button__label" htmlFor="wednesday">
+									<span className="slds-radio--faux">Wed</span>
+								</label>
+							</span>
+							<span className="slds-button slds-radio--button">
+								<input name="radio" type="radio" id="thursday" />
+								<label className="slds-radio--button__label" htmlFor="thursday">
+									<span className="slds-radio--faux">Thu</span>
+								</label>
+							</span>
+							<span className="slds-button slds-radio--button">
+								<input name="radio" type="radio" id="friday" />
+								<label className="slds-radio--button__label" htmlFor="friday">
+									<span className="slds-radio--faux">Fri</span>
+								</label>
+							</span>
+						</div>
+					</div>
+				</fieldset>
+
+				<Tabs
+					className={classNames(
+						'slds-m-top--large',
+						this.props.className
+					)}
+					selectedIndex={this.state.selectedIndex}
+				>
+					<Pane label="Tab A"><p>This is tab A.</p></Pane>}
+					<Pane label="Tab B"><p>This is tab B.</p><p>It should be selected by default.</p></Pane>}
+					<Pane label="Tab C"><p>This is tab C.</p></Pane>}
+					<Pane label="Always No">
+						<p>
+							This one can not be selected from the tabs list because this example provides a custom <code>onSelct</code> function that retuns false when it is run, preventing the component&rsquo;s built-in handler from running, and thus the tab is never selected.
+						</p>
+						<p>
+							Note that you <em>can</em> still see the panel if you hide the other tabs, because the tab/panel are not <em>disabled</em>.
+						</p>
+						<p>
+							In other words, this should not be taken as an example of how to be sneaky about disabling tab selection, but rather that you can <strong>do stuff</strong> when a tab is selected by sending it a custom <code>onSelect</code> function.
+						</p>
+					</Pane>
+				</Tabs>
+			</div>
+		);
+	}
+});
+
 /* eslint-disable react/display-name */
 const getTabsDisabled = () => (
 	<div>
@@ -237,6 +342,7 @@ storiesOf(TABS, module)
 	.add('Base', () => getTabs())
 	.add('Nested', () => getTabsNested())
 	.add('Conditional', () => <DemoTabsConditional className="conditional-yo" />)
+	.add('Outside Control', () => <DemoTabsOutsideControl className="controlled-yo" />)
 	.add('With disabled tab', () => getTabsDisabled())
 	;
 
