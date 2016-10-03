@@ -185,6 +185,11 @@
       "SLDS-component-path": "/components/datepickers"
     },
     {
+      "component": "docked-composer",
+      "display-name": "Docked Composer",
+      "SLDS-component-path": "/components/docked-composer"
+    },
+    {
       "component": "icon",
       "display-name": "Icons",
       "SLDS-component-path": "/components/icons"

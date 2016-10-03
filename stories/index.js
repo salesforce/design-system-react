@@ -8,6 +8,7 @@ export default from './forms/checkbox';
 export default from './global-navigation-bar';
 export default from './data-table';
 export default from './date-picker';
+export default from './docked-composer';
 export default from './dropdown';
 export default from './forms/input';
 export default from './forms/input/inline';
