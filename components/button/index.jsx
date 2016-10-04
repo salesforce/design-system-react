@@ -177,18 +177,6 @@ class Button extends TooltipTrigger {
 			/>);
 	}
 
-	renderIconMore () {
-		let buttonIcon = null;
-		if (this.props.iconVariant === 'more') {
-			buttonIcon = (<ButtonIcon
-				category="utility"
-				name="down"
-				size="x-small"
-			/>);
-		}
-		return buttonIcon;
-	}
-
 	renderLabel () {
 		const iconOnly = this.props.variant === 'icon';
 
@@ -224,7 +212,9 @@ class Button extends TooltipTrigger {
 				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
 
 				{this.props.iconName ? this.renderIcon(this.props.iconName) : null}
-				{this.renderIconMore()}
+				{this.props.iconVariant === 'more'
+				? <ButtonIcon	category="utility" name="down" size="x-small" />
+				: null}
 
 				{(this.props.iconPosition === 'left' || !this.props.iconPosition) ? this.renderLabel() : null}
 				{this.props.children}
