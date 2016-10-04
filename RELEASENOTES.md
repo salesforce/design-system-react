@@ -2,6 +2,11 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.3.13
+
+**BUG FIX**
+- In App Launcher, Tile Truncate utility uses new props to prevent UI state from being out-of-sync with props.
+
 ## Release 0.3.12
 
 **BUG FIX**
