@@ -170,33 +170,20 @@ const Input = React.createClass({
 
 		/* eslint-disable react/prop-types */
 		const deprecatedProps = {
-			iconAssistiveText: this.props[iconPositionProp] && this.props[iconPositionProp].props.assistiveText
+			assistiveText: this.props[iconPositionProp] && this.props[iconPositionProp].props.assistiveText
 				|| this.props.iconAssistiveText,
-			iconCategory: this.props[iconPositionProp] && this.props[iconPositionProp].props.category || this.props.iconCategory,
+			category: this.props[iconPositionProp] && this.props[iconPositionProp].props.category || this.props.iconCategory,
 			name: this.props[iconPositionProp] && this.props[iconPositionProp].props.name || this.props.iconName,
-			onIconClick: this.props[iconPositionProp] && this.props[iconPositionProp].props.onClick || this.props.onIconClick
+			onClick: this.props[iconPositionProp] && this.props[iconPositionProp].props.onClick || this.props.onIconClick
 		};
 		/* eslint-enable react/prop-types */
 
-		if (position === 'left') {
-			if (this.props[iconPositionProp]) {
-				icon = React.cloneElement(this.props.iconLeft, {
-					iconPosition: 'left',
-					...deprecatedProps
-				});
-			} else if (deprecatedProps.name) {
-				icon = <InputIcon iconPosition="left" {...deprecatedProps} />;
-			}
-		} else if (position === 'right') {
-			if (this.props[iconPositionProp]) {
-				icon = React.cloneElement(this.props.iconRight, {
-					iconPosition: 'right',
-					name: 'clear',
-					...deprecatedProps
-				});
-			} else if (deprecatedProps.name) {
-				icon = <InputIcon iconPosition="left" {...deprecatedProps} />;
-			}
+		if (this.props[iconPositionProp] && position && this.props[iconPositionProp]) {
+			icon = React.cloneElement(this.props[iconPositionProp], {
+				iconPosition: `${position}`
+			});
+		} else if (deprecatedProps.name) {
+			icon = <InputIcon iconPosition={position} {...deprecatedProps} />;
 		}
 
 		return icon;
@@ -230,11 +217,11 @@ const Input = React.createClass({
 			// Using [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx) to pass on any properties which are not explicitly defined.
 			...props
 		} = this.props;
+		
+		const labelText = label || assistiveText; // One of these is required to pass accessibility tests
 
-		// One of these is required to pass accessibility tests
-		const labelText = label || assistiveText;
-		const hasLeftIcon = !!this.props.iconLeft || this.props.iconPosition === 'left' && this.props.iconName;
-		const hasRightIcon = !!this.props.iconRight || this.props.iconPosition === 'right' && this.props.iconName;
+		const hasLeftIcon = !!iconLeft || this.props.iconPosition === 'left' && !!this.props.iconName;
+		const hasRightIcon = !!iconRight || this.props.iconPosition === 'right' && !!this.props.iconName;
 
 		return (
 			<div
@@ -258,10 +245,10 @@ const Input = React.createClass({
 				)}
 				<div
 					className={classNames('slds-form-element__control', {
-						'slds-input-has-icon': iconLeft || iconRight,
-						'slds-input-has-icon--left': iconLeft && !iconRight,
-						'slds-input-has-icon--right': !iconLeft && iconRight,
-						'slds-input-has-icon--left-right': iconLeft && iconRight,
+						'slds-input-has-icon': hasLeftIcon || hasRightIcon,
+						'slds-input-has-icon--left': hasLeftIcon && !hasRightIcon,
+						'slds-input-has-icon--right': !hasLeftIcon && hasRightIcon,
+						'slds-input-has-icon--left-right': hasLeftIcon && hasRightIcon,
 						'slds-has-divider--bottom': readOnly && !inlineEditTrigger
 					})}
 				>
