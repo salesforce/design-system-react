@@ -14,7 +14,6 @@ import Input from '../../components/forms/input';
 import Checkbox from '../../components/forms/checkbox';
 
 // Used in the outside control story
-import { BUTTON } from '../../utilities/constants';
 import Button from '../../components/button';
 
 import classNames from 'classnames';
@@ -221,40 +220,70 @@ const DemoTabsOutsideControl = React.createClass({
 		/**
 		 * The Tab (and corresponding TabPanel) that is selected when the component renders. Defaults to `0`.
 		 */
-		selectedIndex: React.PropTypes.number
+		whichOneSelectedYo: React.PropTypes.number,
+		prevOneSelectedYo: React.PropTypes.number
 	},
 
 	getInitialState () {
 		return {
-			selectedIndex: this.props.selectedIndex || 4
+			whichOneSelectedYo: this.props.whichOneSelectedYo || 0,
+			prevOneSelectedYo: this.props.prevOneSelectedYo || 0
 		};
+	},
+
+	handleSelect (index, last) {
+		if (index === this.state.whichOneSelectedYo) {
+			this.setState({ whichOneSelectedYo: index, prevOneSelectedYo: last });
+			return false;
+		}
+		this.setState({ whichOneSelectedYo: index, prevOneSelectedYo: last });
+		return true;
 	},
 
 	handleButtonClicked (event) {
 		// console.log("event.currentTarget.id", event.currentTarget.id);
+		const prevOneSelected = this.state.prevOneSelectedYo;
+		const thisOneSelected = this.state.whichOneSelectedYo;
+
+		console.log("prevOneSelected", prevOneSelected);
+		console.log("thisOneSelected", thisOneSelected);
+
 		switch (event.currentTarget.id) {
 			case 'monday':
-				this.setState({ selectedIndex: 0 });
+				this.setState({ whichOneSelectedYo: 0, prevOneSelectedYo: prevOneSelected });
 				break;
 
 			case 'tuesday':
-				this.setState({ selectedIndex: 1 });
-
+				this.setState({ whichOneSelectedYo: 1, prevOneSelectedYo: prevOneSelected });
 				break;
+
+			case 'tuesday-alt':
+				this.setState({ whichOneSelectedYo: 1, prevOneSelectedYo: prevOneSelected });
+				break;
+
 			case 'wednesday':
-				this.setState({ selectedIndex: 2 });
-
+				this.setState({ whichOneSelectedYo: 2, prevOneSelectedYo: prevOneSelected });
 				break;
+
 			case 'thursday':
-				this.setState({ selectedIndex: 3 });
+				this.setState({ whichOneSelectedYo: 3, prevOneSelectedYo: prevOneSelected });
+				break;
 
-				break;
 			case 'friday':
-				this.setState({ selectedIndex: 4 });
+				this.setState({ whichOneSelectedYo: 4, prevOneSelectedYo: prevOneSelected });
 				break;
+
+			case 'none':
+				this.setState({ whichOneSelectedYo: undefined, prevOneSelectedYo: prevOneSelected });
+				break;
+
+			case 'previous':
+				this.setState({ whichOneSelectedYo: prevOneSelected, prevOneSelectedYo: thisOneSelected });
+				break;
+
 			default:
 				// Statements executed when none of the values match the value of the expression
-				this.setState({ selectedIndex: 0 });
+				this.setState({ whichOneSelectedYo: 0, prevOneSelectedYo: prevOneSelected });
 		}
 		// state[event.target.name] = checked;
 	},
@@ -296,15 +325,35 @@ const DemoTabsOutsideControl = React.createClass({
 					onClick={this.handleButtonClicked}
 				/>
 
+				<Button
+					id="none"
+					label="None"
+					onClick={this.handleButtonClicked}
+				/>
+
+				<Button
+					id="previous"
+					label="Previous"
+					onClick={this.handleButtonClicked}
+				/>
+
 
 				<Tabs
 					className={classNames(
 						'slds-m-top--large',
 						this.props.className
 					)}
-					selectedIndex={this.state.selectedIndex}
+					selectedIndex={this.state.whichOneSelectedYo}
+					onSelect={this.handleSelect}
 				>
-					<Pane label="Monday"><p>This is Monday's Pane.</p></Pane>
+					<Pane label="Monday">
+						<p>This is Monday's Pane.</p>
+						<Button
+							id="tuesday-alt"
+							label="Submit"
+							onClick={this.handleButtonClicked}
+						/>
+					</Pane>
 					<Pane label="Tuesday"><p>This is Tuesday's Pane.</p></Pane>
 					<Pane label="Wednesday"><p>This is Wednesday's Pane.</p></Pane>
 					<Pane label="Thursday"><p>This is Thursday's Pane.</p></Pane>
