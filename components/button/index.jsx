@@ -10,9 +10,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React, { PropTypes } from 'react';
-import classNames from 'classnames';
+import classnames from 'classnames';
 import ButtonIcon from '../icon/button-icon';
 import TooltipTrigger from '../popover-tooltip/trigger';
+import SLDSUtilityIcon from '../utilities/utility-icon';
 import omit from 'lodash.omit';
 
 import { BUTTON } from '../../utilities/constants';
@@ -146,7 +147,7 @@ class Button extends TooltipTrigger {
 			iconVariant = 'container';
 		}
 
-		return classNames('slds-button', {
+		return classnames('slds-button', {
 			[`slds-button--${this.props.variant}`]: showButtonVariant,
 			'slds-button--inverse': plainInverseBtn,
 			'slds-button--icon-inverse': plainInverseIcon || moreInverseIcon,
@@ -160,30 +161,27 @@ class Button extends TooltipTrigger {
 	}
 
 	renderIcon (name) {
-		let buttonIcon = null;
-		if (this.props.iconName) {
-			let iconClassName;
-			if (this.props.iconVariant === 'global-header') {
-				iconClassName = 'slds-global-header__icon';
-			}
-			let iconSize = this.props.iconSize === '' || this.props.iconVariant ? null : this.props.iconSize;
-			buttonIcon = (<ButtonIcon
-				className={iconClassName}
+		const iconSize = this.props.iconSize === '' || this.props.iconVariant ? null : this.props.iconSize;
+		return (
+			<ButtonIcon
+				category={this.props.category}
+				className={classnames({
+					'slds-global-header__icon': this.props.iconVariant === 'global-header'
+				},
+				this.props.iconClassName)}
 				hint={this.props.hint}
-				inverse={this.props.inverse}
 				name={name}
-				category={this.props.iconCategory}
 				position={this.props.iconPosition}
+				inverse={this.props.inverse}
 				size={iconSize}
 			/>);
-		}
-		return buttonIcon;
 	}
 
 	renderIconMore () {
 		let buttonIcon = null;
 		if (this.props.iconVariant === 'more') {
 			buttonIcon = (<ButtonIcon
+				category="utility"
 				name="down"
 				size="x-small"
 			/>);
@@ -225,10 +223,10 @@ class Button extends TooltipTrigger {
 			>
 				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
 
-				{this.renderIcon(this.props.iconName)}
+				{this.props.iconName ? this.renderIcon(this.props.iconName) : null}
 				{this.renderIconMore()}
 
-				{(this.props.iconPosition !== 'right') ? this.renderLabel() : null}
+				{(this.props.iconPosition === 'left' || !this.props.iconPosition) ? this.renderLabel() : null}
 				{this.props.children}
 				{this.getTooltip()}
 			</button>
