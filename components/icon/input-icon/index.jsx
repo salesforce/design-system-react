@@ -39,7 +39,8 @@ const InputIcon = (props) => {
 		category,
 		iconPosition,
 		name,
-		onClick
+		onClick,
+		...rest
 	} = props;
 
 	return isFunction(props.onClick)
@@ -49,14 +50,14 @@ const InputIcon = (props) => {
 		iconName={name}
 		onClick={onClick}
 		variant="icon"
-		{...props}
+		{...rest}
 	/>
 	: <SLDSUtilityIcon
 		aria-hidden
 		category={category}
 		className={classNames('slds-input__icon slds-icon-text-default', { [`slds-input__icon--${iconPosition}`]: iconPosition })}
 		name={name}
-		{...props}
+		{...rest}
 	/>;
 };
 
@@ -68,7 +69,7 @@ InputIcon.propTypes = {
 	 */
 	category: PropTypes.string,
 	/**
-	 * This is only needed if an input contains two icons, Input handles this prop for you.
+	 * This is only needed if an input contains two icons, the Input component handles this prop for you.
 	 */
 	iconPosition: PropTypes.oneOf([
 		'left',
