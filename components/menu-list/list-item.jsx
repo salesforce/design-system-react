@@ -139,14 +139,14 @@ const ListItem = React.createClass({
 		switch (this.props.type) {
 			case 'header': {
 				return (
-					<li className="slds-dropdown__header slds-has-divider--top-space" onMouseDown={this.handleMouseDown} role="separator">
+					<li className="slds-dropdown__header" onMouseDown={this.handleMouseDown} role="separator">
 						<span className="slds-text-title--caps">{this.props.label}</span>
 					</li>
 				);
 			}
 			case 'divider': {
 				return (
-					<li className="slds-has-divider" onMouseDown={this.handleMouseDown} role="separator"></li>
+					<li className="slds-has-divider--top-space" onMouseDown={this.handleMouseDown} role="separator"></li>
 				);
 			}
 			case 'link':
