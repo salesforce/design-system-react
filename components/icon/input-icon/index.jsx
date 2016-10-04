@@ -22,7 +22,7 @@ import isFunction from 'lodash.isfunction';
 
 // ## Children
 import SLDSUtilityIcon from '../../utilities/utility-icon';
-import ButtonIcon from '../button-icon';
+import Button from '../../button';
 
 // ## Constants
 import { ICON_INPUT } from '../../../utilities/constants';
@@ -43,10 +43,10 @@ const InputIcon = (props) => {
 	} = props;
 
 	return isFunction(props.onClick)
-	? <ButtonIcon
+	? <Button
 		className={classNames('slds-input__icon', { [`slds-input__icon--${iconPosition}`]: iconPosition })}
 		iconCategory={category}
-		name={name}
+		iconName={name}
 		onClick={onClick}
 		variant="icon"
 		{...props}
