@@ -20,6 +20,7 @@ import React from 'react';
 
 // ## Children
 import Input from './index';
+import InputIcon from '../../icon/input-icon';
 
 // ## Constants
 import { FORMS_SEARCH } from '../../../utilities/constants';
@@ -29,10 +30,12 @@ import { FORMS_SEARCH } from '../../../utilities/constants';
  */
 const Search = (props) => (
 	<Input
-		iconAssistiveText="Search"
-		iconCategory="utility"
-		iconName="search"
-		iconPosition="left"
+		iconLeft={
+			<InputIcon
+				assistiveText="Search"
+				category="utility"
+				name="search"
+			/>}
 		{...props}
 	/>
 );
