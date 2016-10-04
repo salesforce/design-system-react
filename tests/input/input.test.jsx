@@ -1,5 +1,8 @@
 /* eslint-env mocha */
+/* global sinon */
 /* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable react/display-name */
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -7,9 +10,10 @@ import { expect } from 'chai';
 import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
 
-import { SLDSInput } from '../../components';
+import Input from '../../components/forms/input';
+import InputIcon from '../../components/icon/input-icon';
+
 const {
-	Simulate,
 	findRenderedDOMComponentWithTag,
 	scryRenderedDOMComponentsWithTag,
 	findRenderedDOMComponentWithClass
@@ -33,7 +37,7 @@ describe('SLDS INPUT **************************************************', () => 
 		document.body.removeChild(body);
 	}
 
-	const createInput = (props) => React.createElement(SLDSInput, assign({}, defaultProps, props));
+	const createInput = (props) => React.createElement(Input, assign({}, defaultProps, props));
 	const getInput = (props) => renderInput(createInput(props));
 
 	describe('Standard Input with Label', () => {
@@ -184,11 +188,13 @@ describe('SLDS INPUT **************************************************', () => 
 
 		beforeEach(() => {
 			component = getInput({
-				iconName: 'search',
-				iconCategory: 'utility',
-				iconPosition: 'left',
-				iconAssistiveText: 'Passed assistive text to icon',
-				onIconClick: clickCallback
+				iconLeft: <InputIcon
+					assistiveText="Passed assistive text to icon"
+					name="search"
+					nategory="utility"
+					onClick={clickCallback}
+					position="left"
+				/>
 			});
 			leftButton = findRenderedDOMComponentWithTag(component, 'button');
 			iconAssistiveText = findRenderedDOMComponentWithClass(component, 'slds-assistive-text');
@@ -214,7 +220,6 @@ describe('SLDS INPUT **************************************************', () => 
 
 		it('icon can be clicked', () => {
 			TestUtils.Simulate.click(leftButton);
-
 			expect(clickCallback.calledOnce).to.be.true;
 		});
 	});
@@ -227,7 +232,15 @@ describe('SLDS INPUT **************************************************', () => 
 		const clickCallback = sinon.spy();
 
 		beforeEach(() => {
-			component = getInput({ iconName: 'search', iconCategory: 'utility', iconPosition: 'right', onIconClick: clickCallback });
+			component = getInput({
+				iconRight: <InputIcon
+					assistiveText="Passed assistive text to icon"
+					name="search"
+					nategory="utility"
+					onClick={clickCallback}
+					position="right"
+				/>
+			});
 			leftButton = findRenderedDOMComponentWithTag(component, 'button');
 			elementControl = findRenderedDOMComponentWithClass(component, 'slds-form-element__control');
 		});
