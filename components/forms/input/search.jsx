@@ -16,7 +16,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ## Dependencies
 
 // ### React
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 // ## Children
 import Input from './index';
@@ -26,20 +26,44 @@ import InputIcon from '../../icon/input-icon';
 import { FORMS_SEARCH } from '../../../utilities/constants';
 
 /**
- * An `Search` is is an `Input` which renders the search icon by default.
+ * A `Search` is is an `Input` which renders the search icon by default. It can be cleared, too.
  */
-const Search = (props) => (
-	<Input
-		iconLeft={
-			<InputIcon
-				assistiveText="Search"
+const Search = (props) => {
+	const {
+		clearable,
+		onClear,
+		...rest
+	} = props;
+	return (
+		<Input
+			iconLeft={
+				<InputIcon
+					assistiveText="Search"
+					category="utility"
+					name="search"
+				/>}
+			iconRight={clearable ? <InputIcon
+				assistiveText="Clear"
 				category="utility"
-				name="search"
-			/>}
-		{...props}
-	/>
-);
+				name="clear"
+				onClick={onClear}
+			/> : null}
+			{...rest}
+		/>
+	);
+};
 
 Search.displayName = FORMS_SEARCH;
+
+Search.propTypes = {
+	/**
+	 * Adds a clear button to right side of the input
+	 */
+	clearable: PropTypes.bool,
+	/**
+	 * Triggers when the clear button is clicked
+	 */
+	onClear: PropTypes.func
+};
 
 module.exports = Search;

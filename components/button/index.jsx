@@ -13,7 +13,6 @@ import React, { PropTypes } from 'react';
 import classnames from 'classnames';
 import ButtonIcon from '../icon/button-icon';
 import TooltipTrigger from '../popover-tooltip/trigger';
-import SLDSUtilityIcon from '../utilities/utility-icon';
 import omit from 'lodash.omit';
 
 import { BUTTON } from '../../utilities/constants';

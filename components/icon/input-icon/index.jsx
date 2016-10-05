@@ -43,7 +43,7 @@ const InputIcon = (props) => {
 		...rest
 	} = props;
 
-	return isFunction(props.onClick)
+	return isFunction(onClick)
 	? <Button
 		className={classNames('slds-input__icon', { [`slds-input__icon--${iconPosition}`]: iconPosition })}
 		iconCategory={category}
