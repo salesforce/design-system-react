@@ -41,6 +41,7 @@ const ListItem = React.createClass({
 	propTypes: {
 		checkmark: PropTypes.bool,
 		data: PropTypes.object,
+		divider: PropTypes.oneOf(['top', 'bottom']),
 		href: PropTypes.string,
 		id: PropTypes.string.isRequired,
 		index: PropTypes.number.isRequired,
@@ -139,14 +140,22 @@ const ListItem = React.createClass({
 		switch (this.props.type) {
 			case 'header': {
 				return (
-					<li className="slds-dropdown__header" onMouseDown={this.handleMouseDown} role="separator">
+					<li
+						className={classNames('slds-dropdown__header', {
+							'slds-has-divider--top-space': this.props.divider === 'top',
+							'slds-has-divider--bottom-space': this.props.divider === 'bottom'
+						}
+						)}
+						onMouseDown={this.handleMouseDown}
+						role="separator"
+					>
 						<span className="slds-text-title--caps">{this.props.label}</span>
 					</li>
 				);
 			}
 			case 'divider': {
 				return (
-					<li className="slds-has-divider--top-space" onMouseDown={this.handleMouseDown} role="separator"></li>
+					<li className="slds-has-divider" onMouseDown={this.handleMouseDown} role="separator"></li>
 				);
 			}
 			case 'link':
