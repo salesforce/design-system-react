@@ -18,13 +18,11 @@ import Button from '../../components/button';
 
 import classNames from 'classnames';
 
-const handleSelect = action;
-
 /* eslint-disable react/display-name */
 const getTabs = () => (
 	<div>
 		<h2 className="slds-text-heading--large">Base Tabs Demo</h2>
-		<Tabs id="main-tabs-demo" className="custom-class-is-custom" onSelect={handleSelect('Tab from outermost Tabs clicked')} foo="baz">
+		<Tabs id="main-tabs-demo" className="custom-class-is-custom" foo="baz">
 			<Pane label="Tab 1">
 				<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 				<p>And they&rsquo;re amazing.</p>
@@ -52,7 +50,7 @@ const getTabs = () => (
 const getTabsNested = () => (
 	<div>
 		<h2 className="slds-text-heading--large">Nested Tabs Demo</h2>
-		<Tabs id="nested-tabs-demo" onSelect={handleSelect('Tab from outermost Tabs clicked')}>
+		<Tabs id="nested-tabs-demo">
 			<Pane label="Tab 1">
 				<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 				<p>And they&rsquo;re <a href="#amazing">amazing</a>.</p>
@@ -79,7 +77,7 @@ const getTabsNested = () => (
 				<h2 className="slds-text-heading--medium">This is my tab 3 contents!</h2>
 				<p>And they&rsquo;re tabceptionish.</p>
 				<div className="slds-box slds-m-vertical--large">
-					<Tabs selectedIndex={0} onSelect={handleSelect('Tab from nested Tabs clicked')}>
+					<Tabs selectedIndex={0}>
 						<Pane label="Tab 1">
 							<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 							<p>And they&rsquo;re amazing.</p>
@@ -128,7 +126,10 @@ const DemoTabsConditional = React.createClass({
 		return {
 			showA: true,
 			showB: true,
-			showC: true
+			showC: true,
+			disableA: false,
+			disableB: true,
+			disableC: true
 		};
 	},
 
@@ -138,12 +139,37 @@ const DemoTabsConditional = React.createClass({
 		this.setState(state);
 	},
 
-	handleSelectNopesOnThree (index, last) {
-		if (index === 3) {
-			console.log("The last Tab can not be selected because the onSelect handler returns false for this tab's index.");
-			return false;
-		}
-		return true;
+	handleCheckClickedDisable (checked, event) {
+		const state = {};
+		state[event.target.name] = checked;
+		this.setState(state);
+	},
+
+	renderPaneA (disabled) {
+		return (
+			<Pane
+				label="Tab A"
+				disabled={disabled}
+			>
+				<p>This is tab A.</p>
+				<div>
+					<Checkbox
+						assistiveText="Disable tab B"
+						checked={this.state.disableB}
+						onChange={this.handleCheckClickedDisable}
+						label="Disable tab B"
+						name="disableB"
+					/>
+					<Checkbox
+						assistiveText="Disable tab C"
+						checked={this.state.disableC}
+						onChange={this.handleCheckClickedDisable}
+						label="Disable tab C"
+						name="disableC"
+					/>
+				</div>
+			</Pane>
+		);
 	},
 
 	render () {
@@ -158,7 +184,6 @@ const DemoTabsConditional = React.createClass({
 					label="Show tab A"
 					name="showA"
 				/>
-
 				<Checkbox
 					assistiveText="Show tab B"
 					checked={this.state.showB}
@@ -175,29 +200,16 @@ const DemoTabsConditional = React.createClass({
 					name="showC"
 				/>
 
-
 				<Tabs
 					className={classNames(
 						'slds-m-top--large',
 						this.props.className
 					)}
 					onSelect={this.handleSelectNopesOnThree}
-					selectedIndex={1}
 				>
-					{this.state.showA && <Pane label="Tab A"><p>This is tab A.</p></Pane>}
-					{this.state.showB && <Pane label="Tab B"><p>This is tab B.</p><p>It should be selected by default.</p></Pane>}
-					{this.state.showC && <Pane label="Tab C"><p>This is tab C.</p></Pane>}
-					<Pane label="Always No">
-						<p>
-							This one can not be selected from the tabs list because this example provides a custom <code>onSelct</code> function that retuns false when it is run, preventing the component&rsquo;s built-in handler from running, and thus the tab is never selected.
-						</p>
-						<p>
-							Note that you <em>can</em> still see the panel if you hide the other tabs, because the tab/panel are not <em>disabled</em>.
-						</p>
-						<p>
-							In other words, this should not be taken as an example of how to be sneaky about disabling tab selection, but rather that you can <strong>do stuff</strong> when a tab is selected by sending it a custom <code>onSelect</code> function.
-						</p>
-					</Pane>
+					{this.state.showA && this.renderPaneA(this.state.disableA)}
+					{this.state.showB && this.state.disableB ? <Pane label="Tab B" disabled><p>This is tab B.</p></Pane> : this.state.showB && <Pane label="Tab B"><p>This is tab B.</p></Pane>}
+					{this.state.showC && this.state.disableC ? <Pane label="Tab C" disabled><p>This is tab C.</p></Pane> : this.state.showC && <Pane label="Tab C"><p>This is tab C.</p></Pane>}
 				</Tabs>
 			</div>
 		);
@@ -241,12 +253,8 @@ const DemoTabsOutsideControl = React.createClass({
 	},
 
 	handleButtonClicked (event) {
-		// console.log("event.currentTarget.id", event.currentTarget.id);
 		const prevOneSelected = this.state.prevOneSelectedYo;
 		const thisOneSelected = this.state.whichOneSelectedYo;
-
-		console.log("prevOneSelected", prevOneSelected);
-		console.log("thisOneSelected", thisOneSelected);
 
 		switch (event.currentTarget.id) {
 			case 'monday':
@@ -285,7 +293,6 @@ const DemoTabsOutsideControl = React.createClass({
 				// Statements executed when none of the values match the value of the expression
 				this.setState({ whichOneSelectedYo: 0, prevOneSelectedYo: prevOneSelected });
 		}
-		// state[event.target.name] = checked;
 	},
 
 	render () {
@@ -324,13 +331,11 @@ const DemoTabsOutsideControl = React.createClass({
 					label="Friday"
 					onClick={this.handleButtonClicked}
 				/>
-
 				<Button
 					id="none"
 					label="None"
 					onClick={this.handleButtonClicked}
 				/>
-
 				<Button
 					id="previous"
 					label="Previous"
@@ -350,13 +355,13 @@ const DemoTabsOutsideControl = React.createClass({
 						<p>This is Monday's Pane.</p>
 						<Button
 							id="tuesday-alt"
-							label="Submit"
+							label="Submit and go to next tab"
 							onClick={this.handleButtonClicked}
 						/>
 					</Pane>
 					<Pane label="Tuesday"><p>This is Tuesday's Pane.</p></Pane>
 					<Pane label="Wednesday"><p>This is Wednesday's Pane.</p></Pane>
-					<Pane label="Thursday"><p>This is Thursday's Pane.</p></Pane>
+					<Pane label="Thursday"><p>Thursday's Pane has far to go.</p></Pane>
 					<Pane label="Friday"><p>This is Friday's Pane.</p></Pane>
 				</Tabs>
 			</div>
@@ -368,13 +373,15 @@ const DemoTabsOutsideControl = React.createClass({
 const getTabsDisabled = () => (
 	<div>
 		<h2 className="slds-text-heading--large">Disabled Tabs Demo</h2>
-		<Tabs id="disabled-tabs-demo" onSelect={handleSelect('Tab from disabled demo clicked')}>
+		<Tabs id="disabled-tabs-demo">
 			<Pane label="Tab 1">
 				<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 				<p>And they&rsquo;re amazing.</p>
 				<p>It's awesome.</p>
 				<p>You can use your <var>TAB</var> and <var>ARROW</var> keys to navigate around. Try it!</p>
-				<p className="slds-box slds-theme--info slds-m-top--large">(You might have to hit shift+tab to put the focus onto the tab bar ;)</p>
+				<p className="slds-box slds-theme--info slds-m-top--large">
+					(You might have to hit shift+tab to put the focus onto the tab bar ;)
+				</p>
 			</Pane>
 			<Pane label="Tab 2" disabled>
 				<h2 className="slds-text-heading--medium">This is my tab 2 contents!</h2>
@@ -397,10 +404,10 @@ const getTabsDisabled = () => (
 storiesOf(TABS, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Base', () => getTabs())
-	.add('Nested', () => getTabsNested())
-	.add('Conditional', () => <DemoTabsConditional className="conditional-yo" />)
-	.add('Outside Control', () => <DemoTabsOutsideControl className="controlled-yo" />)
 	.add('With disabled tab', () => getTabsDisabled())
+	.add('Nested', () => getTabsNested())
+	.add('Outside Control', () => <DemoTabsOutsideControl className="controlled-yo" />)
+	.add('Conditional', () => <DemoTabsConditional className="conditional-yo" />)
 	;
 
 module.exports = getTabs;

@@ -141,13 +141,26 @@ const Tabs = React.createClass({
 
 	shouldComponentUpdate (nextProps, nextState) {
 		let toReturn = true;
+		let toReturnSelectedIndex = true;
+		let toReturnChildren = true;
+
 		if (
 			nextProps.selectedIndex === this.props.selectedIndex
 		&&	nextProps.selectedIndex === nextState.selectedIndex
 		&&	nextProps.selectedIndex === this.state.selectedIndex
 		) {
-			toReturn = false;
+			toReturnSelectedIndex = false;
 		}
+		
+		if (
+			nextProps.children === this.props.children
+		&&	nextProps.children === nextState.children
+		&&	nextProps.children === this.state.children
+		) {
+			toReturnChildren = false;
+		}
+
+		toReturn = toReturnSelectedIndex === true || toReturnChildren === true;
 		return toReturn;
 	},
 	
