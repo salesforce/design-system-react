@@ -2,6 +2,11 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.3.14
+
+- Remove top divider as default of `MenuDropdown` list menu heading items.
+- Adds `divider` key with values `top` and `bottom` to `MenuDropdown` options to allow for a divider to be added to a heading. 
+
 ## Release 0.3.13
 
 **BUG FIX**
