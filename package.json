@@ -272,6 +272,12 @@
       "SLDS-component-path": "/components/tabs"
     },
     {
+      "component": "tree",
+      "status": "prototype",
+      "display-name": "Tree",
+      "SLDS-component-path": "/components/tree"
+    },
+    {
       "component": "time-picker",
       "status": "prod",
       "display-name": "Timepickers",
