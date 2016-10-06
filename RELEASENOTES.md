@@ -2,6 +2,16 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.3.15
+
+**MAJOR CHANGES**
+
+- Allow icon on the left and right of inputs. 
+- Search can be `clearable` now with right clear icon.
+- Input now uses `iconRight` and `iconLeft` and [accepts](https://github.com/salesforce-ux/design-system-react/blob/master/stories/forms/input/index.jsx#L36) an `InputIcon` component. Use of `onClick` [makes it clickable](https://github.com/salesforce-ux/design-system-react/blob/master/stories/forms/input/index.jsx#L11).
+- The wrapping span has been removed from `ButtonIcon`. `ButtonIcon` is just a CSS customization of `UtilityIcon` now.
+- Be sure to check inputs for deprecation notices.
+
 ## Release 0.3.14
 
 - Remove top divider as default of `MenuDropdown` list menu heading items.
