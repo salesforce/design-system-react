@@ -19,6 +19,10 @@ import React, { PropTypes } from 'react';
 // ### isDate
 import isDate from 'lodash.isdate';
 
+// This component's `checkProps` which issues warnings to developers about properties
+// when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+
 // ### Dropdown
 import InputIcon from '../icon/input-icon';
 import MenuDropdown from '../menu-dropdown';
@@ -109,6 +113,11 @@ const Timepicker = React.createClass({
 			strValue: this.props.strValue,
 			options: this.getOptions()
 		};
+	},
+
+	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(TIME_PICKER, this.props);
 	},
 
 	componentWillReceiveProps(nextProps) {
