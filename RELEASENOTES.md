@@ -2,6 +2,23 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.3.14
+
+- Remove top divider as default of `MenuDropdown` list menu heading items.
+- Adds `divider` key with values `top` and `bottom` to `MenuDropdown` options to allow for a divider to be added to a heading. 
+
+## Release 0.3.13
+
+**BUG FIX**
+- In App Launcher, Tile Truncate utility uses new props to prevent UI state from being out-of-sync with props.
+
+## Release 0.3.12
+
+**BUG FIX**
+- In Picklist, pressing enter now triggers the `onClick` prop
+- Add Dropdown wrapping `div` to align with SLDS and allow menu nubbins to be positioned with default CSS. [DOM change]
+- Make Global Header dropdowns inline instead of "modal"
+
 ## Release 0.3.11
 
 **BUG FIX**

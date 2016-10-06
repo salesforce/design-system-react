@@ -8,74 +8,17 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+/* eslint-disable import/no-mutable-exports */
 
-// # Search Component
+import sunsetProperty from '../../../utilities/warning/sunset-property';
 
-// Wraps the input to default to a search style.
+let checkProps = function () {};
 
-// ## Dependencies
+if (process.env.NODE_ENV !== 'production') {
+	checkProps = function (COMPONENT, props) {
+		/* eslint-disable max-len */
+		sunsetProperty(COMPONENT, props.assistiveText, 'assistiveText', 'The wrapping span and assistive text has been removed from this component in order to make it a more pure "higher-level component" of `UtilityIcon`.');
+	};
+}
 
-// ### React
-import React, { PropTypes } from 'react';
-
-// ## Children
-import Input from './index';
-import InputIcon from '../../icon/input-icon';
-
-// ## Constants
-import { FORMS_SEARCH } from '../../../utilities/constants';
-
-/**
- * A `Search` is is an `Input` which renders the search icon by default. It can be cleared, too.
- */
-const Search = (props) => {
-	const {
-		assistiveText,
-		clearable,
-		onClear,
-		placeholder,
-		...rest
-	} = props;
-	return (
-		<Input
-			assistiveText={assistiveText}
-			iconLeft={
-				<InputIcon
-					assistiveText="Search"
-					category="utility"
-					name="search"
-				/>}
-			iconRight={clearable ? <InputIcon
-				assistiveText="Clear"
-				category="utility"
-				name="clear"
-				onClick={onClear}
-			/> : null}
-			placeholder={placeholder}
-			{...rest}
-		/>
-	);
-};
-
-Search.displayName = FORMS_SEARCH;
-
-Search.propTypes = {
-	/**
-	 * Assistive text to search input
-	 */
-	assistiveText: PropTypes.string,
-	/**
-	 * Adds a clear button to right side of the input
-	 */
-	clearable: PropTypes.bool,
-	/**
-	 * Triggers when the clear button is clicked
-	 */
-	onClear: PropTypes.func,
-	/**
-	 * Placeholder for the input
-	 */
-	placeholder: PropTypes.string
-};
-
-module.exports = Search;
+export default checkProps;

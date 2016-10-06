@@ -3,8 +3,14 @@ import { storiesOf, action } from '@kadira/storybook';
 
 import { FORMS_INPUT } from '../../../utilities/constants';
 import Input from '../../../components/forms/input';
+import InputIcon from '../../../components/icon/input-icon';
 
 const iconClicked = action;
+
+const clearIcon = <InputIcon assistiveText="clear" name="clear" category="utility" />;
+const clearIconClickable = <InputIcon assistiveText="clear" name="clear" category="utility" onClick={iconClicked('Clear icon clicked')} />;
+const searchIcon = <InputIcon name="search" category="utility" />;
+const searchIconClickable = <InputIcon name="search" category="utility" onClick={iconClicked('Search icon clicked')} />;
 
 storiesOf(FORMS_INPUT, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
@@ -27,11 +33,7 @@ storiesOf(FORMS_INPUT, module)
 			id="unique-id-123"
 			name="left-clickable-icon"
 			label="Input Label"
-			iconName="search"
-			iconCategory="utility"
-			iconPosition="left"
-			iconAssistiveText="Search Icon"
-			onIconClick={iconClicked('Search icon clicked')}
+			iconLeft={searchIconClickable}
 			placeholder="Placeholder Text"
 		/>
 	))
@@ -39,22 +41,43 @@ storiesOf(FORMS_INPUT, module)
 		<Input
 			name="right-clickable-icon"
 			label="Input Label"
-			iconName="close"
-			iconCategory="utility"
-			iconPosition="right"
-			iconAssistiveText="Clear Input Icon"
-			onIconClick={iconClicked('Clear icon clicked')}
+			iconRight={clearIconClickable}
 			placeholder="Placeholder Text"
 		/>
 	))
-	.add('w/ Non-Clickable Icon', () => (
+	.add('w/ Left (non-clickable) and Right (non-clickable) Icon', () => (
+		<Input
+			name="right-clickable-icon"
+			label="Input Label"
+			iconLeft={searchIcon}
+			iconRight={clearIcon}
+			placeholder="Placeholder Text"
+		/>
+	))
+	.add('w/ Left (clickable) and Right (non-clickable) Icon', () => (
+		<Input
+			name="right-clickable-icon"
+			label="Input Label"
+			iconLeft={searchIconClickable}
+			iconRight={clearIcon}
+			placeholder="Placeholder Text"
+		/>
+	))
+	.add('w/ Left (non-clickable) and Right (clickable) Icon', () => (
+		<Input
+			name="right-clickable-icon"
+			label="Input Label"
+			iconLeft={searchIcon}
+			iconRight={clearIconClickable}
+			placeholder="Placeholder Text"
+		/>
+	))
+	.add('w/ Left (non-clickable)', () => (
 		<Input
 			name="non-clickable-icon"
 			id="unique-id-123"
 			label="Input Label"
-			iconName="search"
-			iconCategory="utility"
-			iconPosition="left"
+			iconLeft={searchIcon}
 			placeholder="Placeholder Text"
 		/>
 	))
