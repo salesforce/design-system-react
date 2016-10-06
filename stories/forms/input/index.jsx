@@ -42,7 +42,6 @@ storiesOf(FORMS_INPUT, module)
 			name="right-clickable-icon"
 			label="Input Label"
 			iconRight={clearIconClickable}
-			onIconClick={iconClicked('Clear icon clicked')}
 			placeholder="Placeholder Text"
 		/>
 	))
@@ -52,7 +51,6 @@ storiesOf(FORMS_INPUT, module)
 			label="Input Label"
 			iconLeft={searchIcon}
 			iconRight={clearIcon}
-			onIconClick={iconClicked('Clear icon clicked')}
 			placeholder="Placeholder Text"
 		/>
 	))
@@ -62,7 +60,6 @@ storiesOf(FORMS_INPUT, module)
 			label="Input Label"
 			iconLeft={searchIconClickable}
 			iconRight={clearIcon}
-			onIconClick={iconClicked('Clear icon clicked')}
 			placeholder="Placeholder Text"
 		/>
 	))
@@ -72,11 +69,10 @@ storiesOf(FORMS_INPUT, module)
 			label="Input Label"
 			iconLeft={searchIcon}
 			iconRight={clearIconClickable}
-			onIconClick={iconClicked('Clear icon clicked')}
 			placeholder="Placeholder Text"
 		/>
 	))
-	.add('w/ Non-Clickable Icon', () => (
+	.add('w/ Left (non-clickable)', () => (
 		<Input
 			name="non-clickable-icon"
 			id="unique-id-123"

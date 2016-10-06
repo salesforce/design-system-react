@@ -148,7 +148,6 @@ const Input = React.createClass({
 
 	getDefaultProps () {
 		return {
-			iconPosition: 'left', // remove when iconPosition is removed from props
 			type: 'text'
 		};
 	},
@@ -220,7 +219,8 @@ const Input = React.createClass({
 		
 		const labelText = label || assistiveText; // One of these is required to pass accessibility tests
 
-		const hasLeftIcon = !!iconLeft || this.props.iconPosition === 'left' && !!this.props.iconName;
+		// this is a hack to make left the default prop unless overwritten by `iconPosition="right"`
+		const hasLeftIcon = !!iconLeft || (this.props.iconPosition === 'left' || this.props.iconPosition === undefined) && !!this.props.iconName;
 		const hasRightIcon = !!iconRight || this.props.iconPosition === 'right' && !!this.props.iconName;
 
 		return (

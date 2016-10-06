@@ -169,9 +169,9 @@ class Button extends TooltipTrigger {
 				},
 				this.props.iconClassName)}
 				hint={this.props.hint}
+				inverse={this.props.inverse}
 				name={name}
 				position={this.props.iconPosition}
-				inverse={this.props.inverse}
 				size={iconSize}
 			/>);
 	}
