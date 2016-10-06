@@ -40,7 +40,7 @@ const GlobalHeaderDropdown = (props) => {
 
 	return (
 		<MenuDropdown
-			inline
+			isInline
 			nubbinPosition="top right"
 			{...rest}
 		>

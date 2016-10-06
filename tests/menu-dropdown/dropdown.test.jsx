@@ -43,7 +43,7 @@ describe('SLDSMenuDropdown: ', () => {
 	const defaultProps = {
 		label: 'Contacts',
 		openOn: 'click',
-		inline: true,
+		isInline: true,
 		options,
 		placeholder: 'Select a contact',
 		value: 'B0'
@@ -56,7 +56,7 @@ describe('SLDSMenuDropdown: ', () => {
 		iconName: 'down',
 		iconVariant: 'border-filled',
 		openOn: 'click',
-		inline: true,
+		isInline: true,
 		options,
 		placeholder: 'Select an Action',
 		value: 'C0'
@@ -104,7 +104,7 @@ describe('SLDSMenuDropdown: ', () => {
 		beforeEach(mountComponent(
 			<Dropdown
 				className="this-is-the-menu"
-				inline
+				isInline
 				nubbinPosition="top left"
 				forceOpen
 				label="Test"
@@ -118,6 +118,7 @@ describe('SLDSMenuDropdown: ', () => {
 
 		it('has correct CSS classes and style', function () {
 			const component = this.wrapper.find('.slds-dropdown.slds-nubbin--top-left.this-is-the-menu');
+			console.log(component);
 			expect(component).to.exist;
 			expect(component).to.have.style('height', '500px');
 		});

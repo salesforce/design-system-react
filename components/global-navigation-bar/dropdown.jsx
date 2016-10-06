@@ -39,10 +39,10 @@ const GlobalNavigationBarDropdown = (props) => {
 	return (
 		<MenuDropdown
 			align="right"
-			inline
 			hasStaticAlignment
 			// only need if using hybrid or hover
 			hoverCloseDelay={400}
+			isInline
 			length={props.length}
 			{...rest}
 		>
