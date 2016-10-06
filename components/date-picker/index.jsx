@@ -15,6 +15,10 @@ import Popover from '../popover';
 import DatePicker from './date-picker-base/index';
 import InputIcon from '../icon/input-icon';
 
+// This component's `checkProps` which issues warnings to developers about properties
+// when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+
 import {KEYS,EventUtil} from '../../utilities';
 
 import { DATEPICKER } from '../../utilities/constants';

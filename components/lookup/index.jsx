@@ -511,12 +511,10 @@ class Lookup extends React.Component {
 				onKeyDown={this.handleKeyDown.bind(this)}
 				inputRef={(component) => {
 					this.input = component;
-					console.log('focusOnRender', this.focusOnRender);
 					if (this.focusOnRender) {
 						ReactDOM.findDOMNode(this.input).focus();
 						this.focusOnRender = false;
 					}
-					console.log(component);
 				}}
 				placeholder={this.props.placeholder}
 				role="combobox"
