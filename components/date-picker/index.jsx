@@ -17,7 +17,8 @@ import InputIcon from '../icon/input-icon';
 
 import {KEYS,EventUtil} from '../../utilities';
 
-const displayName = 'Datepicker';
+import { DATEPICKER } from '../../utilities/constants';
+
 const propTypes = {
   abbrWeekDayLabels: React.PropTypes.array,
   disabled: React.PropTypes.bool,
@@ -80,7 +81,7 @@ const defaultProps = {
 
 module.exports = React.createClass({
 
-  displayName: displayName,
+  displayName: DATEPICKER,
 
   propTypes: propTypes,
 
@@ -94,6 +95,11 @@ module.exports = React.createClass({
       value:this.props.value,
       strValue:this.props.strValue
     };
+  },
+
+  componentWillMount () {
+    // `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+    checkProps(DATEPICKER, this.props);
   },
 
   componentWillReceiveProps(nextProps) {
