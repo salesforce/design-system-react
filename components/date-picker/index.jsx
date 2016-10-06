@@ -154,7 +154,7 @@ module.exports = React.createClass({
     return new Date();
   },
 
-  getSimplePopover() {
+  getInlineMenu() {
     return (
       !this.props.disabled && this.state.isOpen?
         <div className='slds-dropdown slds-dropdown--left'>
@@ -163,7 +163,7 @@ module.exports = React.createClass({
     );
   },
 
-  getModalPopover() {
+  getSeparateMenu() {
     return (
       !this.props.disabled && this.state.isOpen?
         <Popover
@@ -237,6 +237,14 @@ module.exports = React.createClass({
   },
 
   render() {
+    let isInline;
+    /* eslint-disable react/prop-types */
+    if (this.props.isInline) {
+      isInline = true;
+    } else if (this.props.modal !== undefined) {
+      isInline = !this.props.modal;
+    }
+    /* eslint-enable react/prop-types */
 
     const inputStyles = this.props.disabled ? {cursor: 'inherit'} : {cursor: 'pointer'};
 
@@ -264,7 +272,7 @@ module.exports = React.createClass({
             />
           </div>
         </div>
-        {this.props.modal?this.getModalPopover():this.getSimplePopover()}
+        {isInline ? this.getInlineMenu() : this.getSeparateMenu()}
       </div>
     );
   }
