@@ -6,4 +6,4 @@ import Search from '../../../components/forms/input/search';
 
 storiesOf(FORMS_SEARCH, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('Standard', () => <Search name="search-input" onChange={action('change')} />);
+	.add('Standard', () => <Search assistiveText="Search" placeholder="Search" name="search-input" onChange={action('change')} />);

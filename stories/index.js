@@ -3,6 +3,7 @@ import '@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-s
 export AppLauncher from './app-launcher';
 export BreadCrumb from './bread-crumb';
 export Button from './button';
+export ButtonStateful from './button-stateful';
 export Card from './card';
 export Checkbox from './forms/checkbox';
 export GlobalNavigationBar from './global-navigation-bar';

@@ -20,6 +20,7 @@ import React, { PropTypes } from 'react';
 import isDate from 'lodash.isdate';
 
 // ### Dropdown
+import InputIcon from '../icon/input-icon';
 import MenuDropdown from '../menu-dropdown';
 import TimepickerDropdownTrigger from './dropdown-trigger';
 
@@ -183,10 +184,11 @@ const Timepicker = React.createClass({
 				options={this.state.options}
 			>
 				<TimepickerDropdownTrigger
+					iconRight={<InputIcon
+						category="utility"
+						name="clock"
+					/>}
 					onChange={this.handleInputChange}
-					iconCategory="utility"
-					iconName="clock"
-					iconPosition="right"
 					placeholder={this.props.placeholder}
 					required={this.props.required}
 					type="text"
