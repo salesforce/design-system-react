@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React, { PropTypes } from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import ButtonIcon from '../icon/button-icon';
 import TooltipTrigger from '../popover-tooltip/trigger';
 import omit from 'lodash.omit';
@@ -146,7 +146,7 @@ class Button extends TooltipTrigger {
 			iconVariant = 'container';
 		}
 
-		return classnames('slds-button', {
+		return classNames('slds-button', {
 			[`slds-button--${this.props.variant}`]: showButtonVariant,
 			'slds-button--inverse': plainInverseBtn,
 			'slds-button--icon-inverse': plainInverseIcon || moreInverseIcon,
@@ -164,7 +164,7 @@ class Button extends TooltipTrigger {
 		return (
 			<ButtonIcon
 				category={this.props.category}
-				className={classnames({
+				className={classNames({
 					'slds-global-header__icon': this.props.iconVariant === 'global-header'
 				},
 				this.props.iconClassName)}

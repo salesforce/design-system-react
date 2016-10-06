@@ -16,7 +16,7 @@ import React, { PropTypes } from 'react';
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
 // joining classNames together."
-import classnames from 'classnames';
+import classNames from 'classnames';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
@@ -36,7 +36,7 @@ const ButtonIcon = (props) => {
 		<SLDSUtilityIcon
 			aria-hidden="true"
 			category={props.category}
-			className={classnames('slds-button__icon', {
+			className={classNames('slds-button__icon', {
 				[`slds-button__icon--${props.size}`]: props.size && props.size !== 'medium',
 				'slds-button__icon--inverse-hint': props.inverse && props.hint,
 				'slds-button__icon--hint': props.hint && !props.inverse,

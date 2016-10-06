@@ -30,12 +30,15 @@ import { FORMS_SEARCH } from '../../../utilities/constants';
  */
 const Search = (props) => {
 	const {
+		assistiveText,
 		clearable,
 		onClear,
+		placeholder,
 		...rest
 	} = props;
 	return (
 		<Input
+			assistiveText={assistiveText}
 			iconLeft={
 				<InputIcon
 					assistiveText="Search"
@@ -48,6 +51,7 @@ const Search = (props) => {
 				name="clear"
 				onClick={onClear}
 			/> : null}
+			placeholder={placeholder}
 			{...rest}
 		/>
 	);
@@ -57,13 +61,21 @@ Search.displayName = FORMS_SEARCH;
 
 Search.propTypes = {
 	/**
+	 * Assistive text to search input
+	 */
+	assistiveText: PropTypes.string,
+	/**
 	 * Adds a clear button to right side of the input
 	 */
 	clearable: PropTypes.bool,
 	/**
 	 * Triggers when the clear button is clicked
 	 */
-	onClear: PropTypes.func
+	onClear: PropTypes.func,
+	/**
+	 * Placeholder for the input
+	 */
+	placeholder: PropTypes.string
 };
 
 module.exports = Search;
