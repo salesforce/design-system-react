@@ -33,11 +33,6 @@ import InputIcon from '../../icon/input-icon';
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 
-// ### isFunction
-import isFunction from 'lodash.isfunction';
-
-import Button from '../../button';
-
 // Remove the need for `React.PropTypes`
 const { PropTypes } = React;
 
@@ -87,30 +82,13 @@ const Input = React.createClass({
 		 */
 		errorText: PropTypes.string,
 		/**
-		 * Category of the icon.
+		 * Left aligned icon, must be instace of `design-system-react/components/icon/input-icon`
 		 */
-		iconCategory: PropTypes.oneOf([
-			'action',
-			'custom',
-			'doctype',
-			'standard',
-			'utility'
-		]),
+		iconLeft: PropTypes.node,
 		/**
-		 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
+		 * Right aligned icon, must be instace of `design-system-react/components/icon/input-icon`
 		 */
-		iconName: PropTypes.string,
-		/**
-		 * Determines whether the input's icon will display that icon on the left or the right.
-		 */
-		iconPosition: PropTypes.oneOf([
-			'left',
-			'right'
-		]),
-		/**
-		 * Set the assistive text for a clickable icon
-		 */
-		iconAssistiveText: PropTypes.string,
+		iconRight: PropTypes.node,
 		/**
 		 * Every input must have a unique ID in order to support keyboard navigation and ARIA support.
 		 */
@@ -127,10 +105,6 @@ const Input = React.createClass({
 		 * This event fires when the input is clicked.
 		 */
 		onClick: PropTypes.func,
-		/**
-		 * This event fires when the icon is clicked.
-		 */
-		onIconClick: PropTypes.func,
 		/**
 		 * Text that will appear in an empty input.
 		 */
@@ -174,7 +148,6 @@ const Input = React.createClass({
 
 	getDefaultProps () {
 		return {
-			iconPosition: 'left',
 			type: 'text'
 		};
 	},
@@ -190,23 +163,29 @@ const Input = React.createClass({
 		return this.props.id || this.generatedId;
 	},
 
-	getIconRender (position) {
-		if (position !== this.props.iconPosition) return '';
+	// This is convuluted to maintain backwards compatibility. Please remove deprecatedProps on next breaking change.
+	getIconRender (position, iconPositionProp) {
+		let icon;
 
-		return isFunction(this.props.onIconClick)
-		? (<Button
-			iconSize="small"
-			variant="icon"
-			className="slds-input__icon slds-button--icon"
-			assistiveText={this.props.iconAssistiveText}
-			iconName={this.props.iconName}
-			iconCategory={this.props.iconCategory}
-			onClick={this.props.onIconClick}
-		/>)
-		: (<InputIcon
-			name={this.props.iconName}
-			category={this.props.iconCategory}
-		/>);
+		/* eslint-disable react/prop-types */
+		const deprecatedProps = {
+			assistiveText: this.props[iconPositionProp] && this.props[iconPositionProp].props.assistiveText
+				|| this.props.iconAssistiveText,
+			category: this.props[iconPositionProp] && this.props[iconPositionProp].props.category || this.props.iconCategory,
+			name: this.props[iconPositionProp] && this.props[iconPositionProp].props.name || this.props.iconName,
+			onClick: this.props[iconPositionProp] && this.props[iconPositionProp].props.onClick || this.props.onIconClick
+		};
+		/* eslint-enable react/prop-types */
+
+		if (this.props[iconPositionProp] && position && this.props[iconPositionProp]) {
+			icon = React.cloneElement(this.props[iconPositionProp], {
+				iconPosition: `${position}`
+			});
+		} else if (deprecatedProps.name) {
+			icon = <InputIcon iconPosition={position} {...deprecatedProps} />;
+		}
+
+		return icon;
 	},
 
 	// ### Render
@@ -219,16 +198,13 @@ const Input = React.createClass({
 			className,
 			disabled,
 			errorText,
-			iconAssistiveText, // eslint-disable-line no-unused-vars
-			iconCategory,
-			iconName,
-			iconPosition,
+			iconLeft,
+			iconRight,
 			inlineEditTrigger, // eslint-disable-line react/prop-types
 			inputRef, // eslint-disable-line react/prop-types
 			label,
 			onChange,
 			onClick,
-			onIconClick, // eslint-disable-line no-unused-vars
 			name,
 			placeholder,
 			readOnly,
@@ -240,11 +216,12 @@ const Input = React.createClass({
 			// Using [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx) to pass on any properties which are not explicitly defined.
 			...props
 		} = this.props;
+		
+		const labelText = label || assistiveText; // One of these is required to pass accessibility tests
 
-		const hasIcon = iconCategory && iconName;
-
-		// One of these is required to pass accessibility tests
-		const labelText = label || assistiveText;
+		// this is a hack to make left the default prop unless overwritten by `iconPosition="right"`
+		const hasLeftIcon = !!iconLeft || (this.props.iconPosition === 'left' || this.props.iconPosition === undefined) && !!this.props.iconName;
+		const hasRightIcon = !!iconRight || this.props.iconPosition === 'right' && !!this.props.iconName;
 
 		return (
 			<div
@@ -255,9 +232,7 @@ const Input = React.createClass({
 				className)}
 			>
 				{labelText && (readOnly
-					? <span
-						className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText && !label })}
-					>
+					? <span className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText && !label })}>
 						{labelText}
 					</span>
 					: <label
@@ -269,14 +244,15 @@ const Input = React.createClass({
 					</label>
 				)}
 				<div
-					className={classNames('slds-form-element__control', hasIcon && [
-						'slds-input-has-icon',
-						`slds-input-has-icon--${iconPosition}`
-					], {
+					className={classNames('slds-form-element__control', {
+						'slds-input-has-icon': hasLeftIcon || hasRightIcon,
+						'slds-input-has-icon--left': hasLeftIcon && !hasRightIcon,
+						'slds-input-has-icon--right': !hasLeftIcon && hasRightIcon,
+						'slds-input-has-icon--left-right': hasLeftIcon && hasRightIcon,
 						'slds-has-divider--bottom': readOnly && !inlineEditTrigger
 					})}
 				>
-					{hasIcon && this.getIconRender('left')}
+					{hasLeftIcon ? this.getIconRender('left', 'iconLeft') : null}
 
 					{!readOnly && <input
 						{...props}
@@ -294,7 +270,8 @@ const Input = React.createClass({
 						type={type}
 						value={value}
 					/>}
-					{hasIcon && this.getIconRender('right')}
+
+					{hasRightIcon ? this.getIconRender('right', 'iconRight') : null}
 
 					{readOnly && <span className="slds-form-element__static" onClick={onClick}>
 						{value}

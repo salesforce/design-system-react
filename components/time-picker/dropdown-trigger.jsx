@@ -36,6 +36,10 @@ const TimepickerDropdownTrigger = React.createClass({
 	// ### Prop Types
 	propTypes: {
 		/**
+		* Icon for right side of trigger
+		*/
+		iconRight: PropTypes.node,
+		/**
 		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering input.
 		*/
 		id: PropTypes.string,
@@ -80,6 +84,7 @@ const TimepickerDropdownTrigger = React.createClass({
 	// ### Render
 	render () {
 		const {
+			iconRight,
 			menu,
 			onBlur,
 			onFocus,
@@ -96,7 +101,7 @@ const TimepickerDropdownTrigger = React.createClass({
 				onKeyDown={this.handleKeyDown}
 				onMouseDown={onMouseDown}
 			>
-				<Input {...props} inputRef={triggerRef}>
+				<Input iconRight={iconRight} {...props} inputRef={triggerRef}>
 					{menu}
 				</Input>
 			</div>

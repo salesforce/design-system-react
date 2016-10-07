@@ -3,23 +3,23 @@
 [![Build Status](https://travis-ci.com/salesforce-ux/design-system-react.svg?token=BMXxPFKR5GZuYsqAFsEf&branch=master)](https://travis-ci.com/salesforce-ux/design-system-react)
 
 ## Overview
-The Design System React library is the Reactjs implementation of the [Lightning Design System](https://www.lightningdesignsystem.com/).
-Each Design System React component is a specific variant of a component from Lightning Design System.
-For example, `SLDSMenuDropdown` represents [Lightning Design System Menu > Dropdown](http://www.lightningdesignsystem.com/components/menus/#dropdown),
+Please visit [Design System React](https://react.lightningdesignsystem.com/) for documentation and examples of using the Design System React components. The documentation site has a [Getting Started Guide](https://react.lightningdesignsystem.com/getting-started) and a [FAQ](https://react.lightningdesignsystem.com/faq) page.
+
+The Design System React library is the [React](https://facebook.github.io/react/) implementation of the [Lightning Design System](https://www.lightningdesignsystem.com/). Each Design System React component is a specific variant of a component from Lightning Design System. For example, `SLDSMenuDropdown` represents [Lightning Design System Menu > Dropdown](http://www.lightningdesignsystem.com/components/menus/#dropdown),
 and `SLDSLookup` represents [Lightning Design System Lookup > Base](http://www.lightningdesignsystem.com/components/lookups/#base).
 
+If you are using the ECMAScript 6 source files in `./components/`, you will need to enable your ES5 transpiler to allow [stage-1 and higher proposed features](https://babeljs.io/docs/plugins/preset-stage-1/). If you are using Babel, it may be helpful to install the [NPM module](https://www.npmjs.com/package/babel-preset-stage-1) `babel-preset-stage-1` into your project and review the `.babelrc` file in this project.
 
-This project is in beta and very experimental. Please visit [Design System React](https://react.lightningdesignsystem.com/) for documentation and examples of using the Design System React Components. If you are using the ECMAScript 6 source files in `./components/`, you will need to enable your ES5 transpiler to allow stage-1 proposed features. If you are using Babel, it may be helpful to install the NPM module `babel-preset-stage-1` into your project and review the `.babelrc` file in this project.
-
-### Run local server
+### Run local development and testing server
 
 ```
 npm install
 npm start
 open http://localhost:9001
+open http://localhost:8001
 ```
 
-### Run tests
+### Run command line tests
 
 ```
 npm test
@@ -41,12 +41,12 @@ Take a look at our [recommended reading list](https://react.lightningdesignsyste
 
 ### NPM
 
-Because this project is not open-sourced, we cannot publish it to npm. Therefore we have a build script that compiles `components/` to es5 and outputs it to a tagged git release where outside projects pull from. Add the following line to your `package.json` devDependencies and run `npm install`.
+Because this project is not open-sourced yet, we cannot publish it to npm. Therefore we have a build script that compiles `components/` to es5 and outputs it to a tagged git release where outside projects pull from. Add the following line to your `package.json` devDependencies and run `npm install`.
 
 ```
 # package.json
 
-"design-system-react": "git+ssh://git@github.com:salesforce-ux/design-system-react.git#v0.3.2",
+"design-system-react": "git+ssh://git@github.com:salesforce-ux/design-system-react.git#v[VERSION]",
 ```
 
 Then, in your React code, import each Lightning Design System component you need.

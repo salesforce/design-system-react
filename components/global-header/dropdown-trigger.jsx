@@ -17,6 +17,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { PropTypes } from 'react';
 
 // ### classNames
+// [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
+// This project uses `classnames`, "a simple javascript utility for conditionally
+// joining classNames together."
 import classnames from 'classnames';
 
 // ### Dropdown
@@ -51,6 +54,10 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 		*/
 		id: PropTypes.string,
 		/**
+		 * Informs the trigger on the open/close state of the dropdown menu
+		 */
+		isOpen: PropTypes.bool,
+		/**
 		* Adds custom styling such as inverse fill and special sizing/spacing
 		*/
 		globalAction: PropTypes.bool,
@@ -79,6 +86,22 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 		 */
 		onMouseDown: PropTypes.func,
 		/**
+		 * Called when mouse hovers over the trigger `li`.
+		 */
+		onMouseEnter: PropTypes.func,
+		/**
+		 * Called when mouse leaves trigger `li` or the menu.
+		 */
+		onMouseLeave: PropTypes.func,
+		/**
+		 * Determines if mouse hover or click opens the dropdown menu. The default of `click` is highly recommended to comply with accessibility standards. If you are planning on using hover, please pause a moment and reconsider.
+		 */
+		openOn: PropTypes.oneOf(['hover', 'click', 'hybrid']),
+		/**
+		 * Set to true if menu is inline and relatively positioned with CSS. This is the typical use case for menus with nubbins.
+		 */
+		positioned: PropTypes.bool,
+		/**
 		 * The ref of the actual triggering button.
 		 */
 		triggerRef: PropTypes.func
@@ -91,6 +114,7 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 			avatar,
 			className,
 			id,
+			isOpen,
 			globalAction,
 			menu,
 			onBlur,
@@ -98,6 +122,8 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 			onFocus,
 			onKeyDown,
 			onMouseDown,
+			onMouseEnter,
+			onMouseLeave,
 			triggerRef,
 			...rest
 		} = this.props;
@@ -107,8 +133,11 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 			<li
 				aria-haspopup="true"
 				className={classnames(
-					'slds-dropdown-trigger slds-dropdown-trigger--click',
-					{ 'slds-p-around--xx-small': globalAction },
+				'slds-dropdown-trigger slds-dropdown-trigger--click',
+					{
+						'slds-is-open': isOpen,
+						'slds-p-around--xx-small': globalAction
+					},
 					className
 				)}
 				id={id}
@@ -117,13 +146,15 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 				onFocus={onFocus}
 				onKeyDown={onKeyDown}
 				onMouseDown={onMouseDown}
+				onMouseEnter={onMouseEnter}
+				onMouseLeave={onMouseLeave}
+				ref={triggerRef}
 			>
 				<Button
 					className={classnames({ 'slds-global-header__button--icon-actions': globalAction })}
 					iconClassName={classnames({ 'slds-global-header__icon-actions': globalAction })}
 					aria-haspopup="true"
 					{...rest}
-					ref={triggerRef}
 				>
 					{avatar ? <span className="slds-avatar slds-avatar--circle slds-avatar--medium">
 						<img src={avatar} alt="" />
