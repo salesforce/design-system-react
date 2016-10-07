@@ -295,14 +295,25 @@ const MenuDropdown = React.createClass({
 		});
 	},
 
-	componentWillReceiveProps (nextProps) {
+	componentWillReceiveProps (nextProps, prevProps) {
 		if (this.props.value !== nextProps.value) {
 			this.setState({
 				selectedIndex: this.getIndexByValue(nextProps.value)
 			});
 		}
+
 		if (nextProps.isOpen === true) {
+			this.setState({
+				isOpen: true
+			});
 			this.setFocus();
+		}	else if (nextProps.isOpen === false) {
+			this.setState({
+				isOpen: false
+			});
+			if (prevProps.isOpen === true) {
+				this.setFocus();
+			}
 		}
 	},
 
@@ -341,36 +352,38 @@ const MenuDropdown = React.createClass({
 	},
 
 	handleClose () {
-		if (this.props.onClose) {
-			this.props.onClose();
-		} else {
-			if (this.state.isOpen) {
+		if (this.state.isOpen) {
+			if (this.props.isOpen === undefined) {
 				this.setState({
 					isOpen: false
 				});
-
-				this.isHover = false;
-
-				if (currentOpenDropdown === this) {
-					currentOpenDropdown = undefined;
-				}
 			}
+
+			this.isHover = false;
+
+			if (currentOpenDropdown === this) {
+				currentOpenDropdown = undefined;
+			}
+		}
+
+		if (this.props.onClose) {
+			this.props.onClose();
 		}
 	},
 
 	handleOpen () {
-		if (this.props.onOpen) {
-			this.props.onOpen();
-		} else {
-			if (currentOpenDropdown && isFunction(currentOpenDropdown.handleClose)) {
-				currentOpenDropdown.handleClose();
-			}
+		if (currentOpenDropdown && isFunction(currentOpenDropdown.handleClose)) {
+			currentOpenDropdown.handleClose();
+		}
 
-			currentOpenDropdown = this;
+		currentOpenDropdown = this;
 
+		if (this.props.isOpen === undefined) {
 			this.setState({
 				isOpen: true
 			});
+		} else if (this.props.onOpen) {
+			this.props.onOpen();
 		}
 	},
 
@@ -402,11 +415,13 @@ const MenuDropdown = React.createClass({
 	},
 
 	handleClick (event) {
-		if (!this.state.isOpen) {
-			this.handleOpen();
-			this.setFocus();
-		} else {
-			this.handleClose();
+		if (this.props.isOpen === undefined) {
+			if (!this.state.isOpen) {
+				this.handleOpen();
+				this.setFocus();
+			} else {
+				this.handleClose();
+			}
 		}
 
 		if (this.props.onClick) {
@@ -491,7 +506,9 @@ const MenuDropdown = React.createClass({
 
 	setFocus () {
 		if (!this.isHover && !this.isUnmounting && this.trigger) {
-			ReactDOM.findDOMNode(this.trigger).focus();
+			setTimeout(() => {
+				ReactDOM.findDOMNode(this.trigger).focus();
+			}, 0);
 		}
 	},
 
@@ -687,15 +704,8 @@ const MenuDropdown = React.createClass({
 		}
 
 		const outsideClickIgnoreClass = `ignore-click-${this.getId()}`;
-		let isOpen;
-		
-		if (this.props.isOpen !== undefined) {
-			isOpen = this.props.isOpen;
-		} else {
-			isOpen = !this.props.disabled && this.state.isOpen && !!this.trigger;
-		}
+		const isOpen = !this.props.disabled && this.state.isOpen && !!this.trigger;
 
-		
 		this.renderOverlay(isOpen);
 
 		/* Below are three sections of props:
