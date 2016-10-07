@@ -2,6 +2,12 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.3.16
+
+**BUG FIX**
+
+- Due to deprecations in v0.3.15 of `Input`'s `onIconClick`, an `onSearch` callback has been added to `Search`.
+
 ## Release 0.3.15
 
 **MAJOR CHANGES**
