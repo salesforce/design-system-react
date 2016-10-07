@@ -508,7 +508,7 @@ const MenuDropdown = React.createClass({
 
 	setFocus () {
 		if (!this.isHover && !this.isUnmounting && this.trigger) {
-				ReactDOM.findDOMNode(this.trigger).focus();
+			ReactDOM.findDOMNode(this.trigger).focus();
 		}
 	},
 

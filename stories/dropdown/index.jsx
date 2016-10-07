@@ -25,7 +25,7 @@ const options = [
 ];
 
 const getDropdown = (props) => (
-	<Dropdown {...props} openOn="hybrid" />
+	<Dropdown {...props} />
 );
 
 const DropdownControlled = React.createClass({
