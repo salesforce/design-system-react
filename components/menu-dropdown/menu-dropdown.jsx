@@ -470,10 +470,12 @@ const MenuDropdown = React.createClass({
 
 			if (event.keyCode !== KEYS.TAB) {
 				this.handleKeyboardNavigate({
+					event,
 					isOpen: this.state.isOpen || false,
 					key: event.key,
 					keyCode: event.keyCode,
 					onSelect: this.handleSelect,
+					target: event.target,
 					toggleOpen: this.toggleOpen
 				});
 			} else {
@@ -506,9 +508,7 @@ const MenuDropdown = React.createClass({
 
 	setFocus () {
 		if (!this.isHover && !this.isUnmounting && this.trigger) {
-			setTimeout(() => {
 				ReactDOM.findDOMNode(this.trigger).focus();
-			}, 0);
 		}
 	},
 

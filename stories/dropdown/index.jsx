@@ -25,7 +25,7 @@ const options = [
 ];
 
 const getDropdown = (props) => (
-	<Dropdown {...props} />
+	<Dropdown {...props} openOn="hybrid" />
 );
 
 const DropdownControlled = React.createClass({
@@ -162,6 +162,9 @@ storiesOf(MENU_DROPDOWN, module)
 	.add('Base', () => getDropdown({
 		align: 'right',
 		label: 'Dropdown Click',
+		onClick: (...rest) => {
+			action('Clicked')(...rest);
+		},
 		onSelect: (...rest) => {
 			action('Selected')(...rest);
 		},
@@ -170,6 +173,9 @@ storiesOf(MENU_DROPDOWN, module)
 	.add('No Modal', () => getDropdown({
 		align: 'right',
 		label: 'Dropdown Click',
+		onClick: (...rest) => {
+			action('Clicked')(...rest);
+		},
 		onSelect: (...rest) => {
 			action('Selected')(...rest);
 		},
