@@ -79,7 +79,7 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 			<GlobalNavigationBarDropdown
 				assistiveText="Open Menu Item 1"
 				id="primaryDropdown"
-				label="Menu Item 1"
+				label="Menu Item"
 				openOn={props.openOn || undefined}
 				onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
 				options={dropdownCollection}
@@ -87,15 +87,15 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 			<GlobalNavigationBarLink
 				// will actually go to website
 				href="https://www.lightningdesignsystem.com/"
-				label="Menu Item 2"
+				label="Menu Item"
 			/>
 			<GlobalNavigationBarLink
 				active
-				label="Menu Item 3"
+				label="Menu Item"
 				onClick={linkClicked('Link clicked')}
 			/>
 			<GlobalNavigationBarLink
-				label="Menu Item 4"
+				label="Menu Item"
 				onClick={linkClicked('Link clicked')}
 			/>
 		</GlobalNavigationBarRegion>
