@@ -188,7 +188,7 @@ const MenuPicklist = React.createClass({
 			this.setFocus();
 
 			if (this.props.onClick) {
-				this.props.onClick();
+				this.props.onClick(event);
 			}
 		} else {
 			this.handleClose();
@@ -211,23 +211,35 @@ const MenuPicklist = React.createClass({
 	handleKeyDown (event) {
 		if (event.keyCode) {
 			if (event.keyCode === KEYS.ENTER ||
-					event.keyCode === KEYS.SPACE ||
-					event.keyCode === KEYS.DOWN ||
-					event.keyCode === KEYS.UP) {
+				event.keyCode === KEYS.SPACE ||
+				event.keyCode === KEYS.DOWN ||
+				event.keyCode === KEYS.UP) {
 				EventUtil.trap(event);
 			}
 
-			this.handleKeyboardNavigate({
-				isOpen: this.state.isOpen || false,
-				keyCode: event.keyCode,
-				onSelect: this.handleSelect,
-				toggleOpen: this.toggleOpen
-			});
+			if (event.keyCode !== KEYS.TAB) {
+				//The outer div with onKeyDown is overriding button onClick so we need to add it here.
+				const openMenuKeys = event.keyCode === KEYS.ENTER || event.keyCode === KEYS.DOWN || event.keyCode === KEYS.UP;
+				const isTrigger = event.target.tagName === 'BUTTON';
+				if (openMenuKeys && isTrigger && this.props.onClick) {
+					this.props.onClick(event);
+				}
+
+				this.handleKeyboardNavigate({
+					isOpen: this.state.isOpen || false,
+					keyCode: event.keyCode,
+					onSelect: this.handleSelect,
+					toggleOpen: this.toggleOpen
+				});
+			} else {
+				this.handleCancel();
+			}
 		}
 	},
 
 	handleCancel () {
 		this.setFocus();
+		this.handleClose();
 	},
 
 	closeOnClick (event) {

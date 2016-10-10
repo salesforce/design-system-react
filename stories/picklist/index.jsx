@@ -21,7 +21,10 @@ const options = [
 ];
 
 const getPicklist = (props) => (
-	<Picklist {...props} />
+	<div>
+		<Picklist {...props} />
+		<button style={{ padding: '10px', margin: '50px' }}>test</button>
+	</div>
 );
 
 storiesOf(MENU_PICKLIST, module)
@@ -37,6 +40,9 @@ storiesOf(MENU_PICKLIST, module)
 	.add('Non-modal', () => getPicklist({
 		label: 'Contacts',
 		modal: false,
+		onClick: (event) => {
+			console.log('clicked', event.target);
+		},
 		placeholder: 'Select a contact',
 		onSelect: (...rest) => {
 			action('Selected')(...rest);

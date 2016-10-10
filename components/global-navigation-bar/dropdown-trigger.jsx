@@ -89,9 +89,17 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 		 */
 		onKeyDown: PropTypes.func,
 		/**
-		 * Called when mouse clicks down on the trigger li.
+		 * Called when mouse clicks down on the trigger `li`.
 		 */
 		onMouseDown: PropTypes.func,
+		/**
+		 * Called when mouse hovers over the trigger `li`.
+		 */
+		onMouseEnter: PropTypes.func,
+		/**
+		 * Called when mouse leaves trigger `li` or the menu.
+		 */
+		onMouseLeave: PropTypes.func,
 		/**
 		 * The ref of the actual triggering button.
 		 */
@@ -114,6 +122,8 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 			onFocus,
 			onKeyDown,
 			onMouseDown,
+			onMouseEnter,
+			onMouseLeave,
 			triggerRef,
 			...rest
 		} = this.props;
@@ -127,7 +137,7 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 			listItemstyle.borderBottomColor = activeBackgroundColor;
 		}
 
-		// Per SLDS pattern set trigger style like hover style
+		// Per SLDS pattern, set trigger style like hover style, so that hover visuals and menu being open and closed are in same state
 		if (isOpen) {
 			listItemstyle.backgroundColor = hoverBackgroundColor;
 		}
@@ -136,8 +146,9 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 			<li
 				aria-haspopup="true"
 				className={classNames(
-					'slds-context-bar__item slds-context-bar-action slds-dropdown-trigger',
+					'slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--click',
 					{
+						'slds-is-open': isOpen,
 						'slds-is-active': active,
 						[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition
 					},
@@ -149,6 +160,9 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 				onFocus={onFocus}
 				onKeyDown={onKeyDown}
 				onMouseDown={onMouseDown}
+				onMouseEnter={onMouseEnter}
+				onMouseLeave={onMouseLeave}
+				ref={triggerRef}
 				style={listItemstyle}
 			>
 				<a className="slds-context-bar__label-action">{label}</a>
@@ -162,11 +176,10 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 						iconName="chevrondown"
 						iconVariant="bare"
 						iconSize="x-small"
-						ref={triggerRef}
 						variant="icon"
 					/>
-					{menu}
 				</div>
+				{menu}
 			</li>
 		);
 	}

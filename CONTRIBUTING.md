@@ -17,26 +17,27 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 ## Concepts and Best Practices
 
-- This library should include only components which have approved patterns in SLDS.
-- Familiarize yourself with concepts used in the rest of the library.
-- If a file is touched that has outstanding ESlint errors, please fix the ESlint errors first (and in a separate commit). Sometimes special cases require an `eslint-disable` comment for a particular rule and/or line. Please use sparingly.
-- `React.createClass` is preferred over ES6 classes and `extend` at this time.
-- Know how smart/stateful React components [work together](https://gist.github.com/trevordmiller/a7791c11228b48f0366b) with [pure/dumb stateless function components](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions).
-- It is preferable to only have one stateful top-level class per component in this library. For these top-level components, it’s preferable to leave them stateful (that is, to use `React.createClass`). It's much easier to get the DOM node reference if you need it for such things as measurements. Then, you don't have to go through a lot of hassle to work around not having lifecycle methods. It also allows components to follow the controlled / uncontrolled pattern mentioned below. All sub-components should be stateless and manipulated with props if possible.
+- <a name="approved-slds-patterns" href="#approved-slds-patterns">#</a> This library should include only components which have approved patterns in SLDS.
+- <a name="familiarize" href="#familiarize">#</a> Familiarize yourself with concepts used in the rest of the library.
+- <a name="eslint-all-files-touched" href="#eslint-all-files-touched">#</a> If a file is touched that has outstanding ESlint errors, please fix the ESlint errors first (and in a separate commit). Sometimes special cases require an `eslint-disable` comment for a particular rule and/or line. Please use sparingly.
+- <a name="react-create-class" href="#react-create-class">#</a> `React.createClass` is preferred over ES6 classes and `extend` at this time.
+- <a name="stateful-stateless-components" href="#stateful-stateless-components">#</a> Know how smart/stateful React components [work together](https://gist.github.com/trevordmiller/a7791c11228b48f0366b) with [pure/dumb stateless function components](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions).
+- <a name="stateful-top-level-component" href="#stateful-top-level-component">#</a> It is preferable to only have one stateful top-level class per component in this library. For these top-level components, it’s preferable to leave them stateful (that is, to use `React.createClass`). It's much easier to get the DOM node reference if you need it for such things as measurements. Then, you don't have to go through a lot of hassle to work around not having lifecycle methods. It also allows components to follow the controlled / uncontrolled pattern mentioned below. All sub-components should be stateless and manipulated with props if possible.
     - A Tree should have state. A tree node should not.
     - A Data Table should have state, a Table Column should not.
     - Frequently used items such as badges, pills, buttons or icons should probably not have state.
-- Avoid mixins. Instead, import and use shared code and external libraries as libraries, or use higher-order components. Do not add external dependencies unless absolutely necessary. Consider the "total cost of ownership" of all dependencies.
-- Be careful with [rest operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters) when passively applying unnamed and unknown props to JSX nodes. This concept allows flexibility to the consuming developer, but is difficult to track for maintainers. If rest operators should be used, be sure to deconstruct each one that is actually needed by the JSX nodes, so that the rest operator only handles "unknown props." In short, don't utilize any properties in the `...props` object within the component. After using `const { active, className, ...other } = props;` do not go back to using this.prop.* anywhere in the render function.
-- Use the controlled/uncontrolled callback/prop pattern. By default, React components should be "controlled" - exposing a callback and expecting their parent to control them. If a component needs to ability to also manage its own state (be an "uncontrolled" component) in particular situations the parent should still be able to take over and make it controlled simply by passing in a value for the prop. For instance, an `onModalClose` callback could change `isModalOpen` to `false` when it is ready to close the modal. For more detail and examples of this pattern, visit [DIMOC: Do It Myself or Callback](https://gist.github.com/jamesgpearce/53a6fc57677870f93248).
-- Event callbacks should pass in the synthetic event, then a data object with contents that relate to the event.
-- If a prop is a boolean, please prefix with `is` or `can` or suffix it with `-able`. Never default a prop to `true`.
-- Add as many prop checking tests that will _only run in development_ as needed via `checkProp`. If the test can become an independent module and work in multiple components, add it to the `utilities` folder.
-- Any text the user can read (including a11y text for screenreaders) should be able to be set via a prop for internationalization.
-- React component hierarchy doesn't always mean HTML tag hierarchy. Sometimes children become the wrapping component.
-- This library makes extensive use of the [classnames](https://github.com/JedWatson/classnames) library for feeding conditional CSS classes into `className` attributes and allows a variety of types such as `string`, `object`, and `arrays`. Please review the libary's API.
-- [Props in getInitialState is an anti-pattern.](https://facebook.github.io/react/tips/props-in-getInitialState-as-anti-pattern.html)
-- Read [JSX Gotchas](https://facebook.github.io/react/docs/jsx-gotchas.html#html-entities)
+- <a name="avoid-mixins" href="#avoid-mixins">#</a> Avoid mixins. Instead, import and use shared code and external libraries as libraries, or use higher-order components. Do not add external dependencies unless absolutely necessary. Consider the "total cost of ownership" of all dependencies.
+- <a name="rest-operators-with-jsx" href="#rest-operators-with-jsx">#</a> Be careful with [rest operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters) when passively applying unnamed and unknown props to JSX nodes. This concept allows flexibility to the consuming developer, but is difficult to track for maintainers. If rest operators should be used, be sure to deconstruct each one that is actually needed by the JSX nodes, so that the rest operator only handles "unknown props" passed in from the outside developer. In short, don't utilize any properties in the `...props` object within the component. After using `const { active, className, ...rest } = props;` do not go back to using `this.prop.*` anywhere in the render function. 
+- <a name="rest-operators-with-jsx-delete" href="#rest-operators-with-jsx-delete">#</a> If a rest operator is already present in your render function and you need to remove additional props so that they do not get passed to a JSX node, use the rest operator along with `// eslint-disable-line no-unused-vars` to remove the prop from `...rest`.
+- <a name="dimoc" href="#dimoc">#</a> Use the controlled/uncontrolled callback/prop pattern. By default, React components should be "controlled" - exposing a callback and expecting their parent to control them. If a component needs to ability to also manage its own state (be an "uncontrolled" component) in particular situations the parent should still be able to take over and make it controlled simply by passing in a value for the prop. For instance, an `onModalClose` callback could change `isModalOpen` to `false` when it is ready to close the modal. For more detail and examples of this pattern, visit [DIMOC: Do It Myself or Callback](https://gist.github.com/jamesgpearce/53a6fc57677870f93248).
+- <a name="event-callbacks" href="#event-callbacks">#</a> Event callbacks should pass in the synthetic event, then a data object with contents that relate to the event.
+- <a name="boolean-prop-prefix" href="#boolean-prop-prefix">#</a> If a prop is a boolean, please prefix with `is` or `can` or suffix it with `-able`. Never default a prop to `true`.
+- <a name="use-checkprops" href="#use-checkprops">#</a> Add as many prop checking tests that will _only run in development_ as needed via `checkProp`. If the test can become an independent module and work in multiple components, add it to the `utilities` folder.
+- <a name="all-text-can-be-internationalized" href="#all-text-can-be-internationalized">#</a> Any text the user can read (including text for screenreaders) should be able to be set via a prop for internationalization.
+- <a name="different-react-component-hierarchy" href="#different-react-component-hierarchy">#</a> React component hierarchy doesn't always mean HTML tag hierarchy. Sometimes children become the wrapping component.
+- <a name="classnames" href="#classnames">#</a> This library makes extensive use of the [classnames](https://github.com/JedWatson/classnames) library for feeding conditional CSS classes into `className` attributes and allows a variety of types such as `string`, `object`, and `arrays`. Please review the libary's API.
+- <a name="props-in-get-initial-state" href="#props-in-get-initial-state">#</a> [Props in getInitialState is an anti-pattern.](https://facebook.github.io/react/tips/props-in-getInitialState-as-anti-pattern.html)
+- <a name="jsx-gotchas" href="#jsx-gotchas">#</a> Read [JSX Gotchas](https://facebook.github.io/react/docs/jsx-gotchas.html#html-entities)
 
 ## Component Organization
 
@@ -290,11 +291,9 @@ from the [Planning Center](https://github.com/planningcenter/react-patterns)
 
 
 # Releasing
+1. [Add to release notes](https://github.com/salesforce-ux/design-system-react/blob/master/RELEASENOTES.md).
 1. Run `npm prune` and `npm install` to clean up node modules in preparation for build.
-2. Increment the package version in `package.json` based on the `semver` methodology.
-3. [Add to release notes](https://github.com/salesforce-ux/design-system-react/blob/master/RELEASENOTES.md)
-4. Commit the previous two changes.
-5. Publish to your upstream repo (that is this repo): `npm run publish-to-upstream`
-6. Copy and paste your release notes into the Github Draft Release UI and publish.
+1. **Choose one**: `npm run release-patch` or `npm run release-minor` This script pulls from upstream, bumps the version, commits changes, and publishes tags to your upstream repo (that is this repo).
+1. Copy and paste your release notes into the [Github Draft Release UI](https://github.com/salesforce-ux/design-system-react/releases) and publish.
 
-_If you are timid about releasing or need your pull request in review "pre-released," you can publish to origin (your fork) with `npm run publish-to-git` and then test and review the tag on your fork._
+_If you are timid about releasing or need your pull request in review "pre-released," you can publish to origin (your fork) with `npm run publish-to-git` and then test and review the tag on your fork. This is just the publish step though, any other tasks you will need to do manually to test publishing._

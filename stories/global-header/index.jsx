@@ -13,13 +13,33 @@ import { GLOBAL_HEADER } from '../../utilities/constants';
 
 import globalNavigationBar from '../global-navigation-bar';
 
+/* eslint-disable react/prop-types */
+/* eslint-disable no-script-url */
 /* eslint-disable react/display-name */
-const GlobalHeaderDemo = () => (
+
+const HeaderProfileCustomContent = (props) => (
+	<div id="custom-dropdown-menu-content">
+		<div className="slds-m-around--medium">
+			<div className="slds-tile slds-tile--board slds-m-horizontal--small">
+				<p className="tile__title slds-text-heading--small">Art Vandelay</p>
+				<div className="slds-tile__detail">
+					<p className="slds-truncate">
+						<a className="slds-m-right--medium" href="javascript:void(0)" onClick={props.onClick}>Settings</a>
+						<a href="javascript:void(0)" onClick={props.onClick}>Log Out</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+);
+
+/* eslint-disable react/display-name */
+const GlobalHeaderDemo = (props) => (
 	<GlobalHeader
 		logoSrc={logo}
 		onSkipToContent={action('Skip to Main Content')}
 		onSkipToNav={action('Skip to Navigation')}
-		navigation={globalNavigationBar()}
+		navigation={globalNavigationBar(props)}
 	>
 		<GlobalHeaderSearch
 			onSelect={action('Search Selected')}
@@ -37,6 +57,7 @@ const GlobalHeaderDemo = () => (
 			variant="neutral"
 		/>
 		<GlobalHeaderDropdown
+			openOn={props.openOn}
 			assistiveText="Global Actions"
 			globalAction
 			iconCategory="utility"
@@ -53,6 +74,7 @@ const GlobalHeaderDemo = () => (
 			onClick={action('Help Clicked')}
 		/>
 		<GlobalHeaderDropdown
+			openOn={props.openOn}
 			assistiveText="Setup"
 			iconName="setup"
 			onSelect={action('Action Selected')}
@@ -67,30 +89,20 @@ const GlobalHeaderDemo = () => (
 			onClick={action('Notifications Clicked')}
 		/>
 		<GlobalHeaderProfile
+			openOn={props.openOn}
 			onClick={action('Profile Clicked')}
 			onSelect={action('Profile Selected')}
 		>
-			<div id="custom-dropdown-menu-content">
-				<div className="slds-m-around--medium">
-					<div className="slds-tile slds-tile--board slds-m-horizontal--small">
-						<p className="tile__title slds-text-heading--small">Art Vandelay</p>
-						<div className="slds-tile__detail">
-							<p className="slds-truncate">
-								<a className="slds-m-right--medium" href="#">Settings</a>
-								<a href="#" >Log Out</a>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
+			<HeaderProfileCustomContent />
 		</GlobalHeaderProfile>
 	</GlobalHeader>
 );
 
 storiesOf(GLOBAL_HEADER, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('w/ Search + Navigation', () => (<GlobalHeaderDemo />))
-	.add('w/ Fewer Elements', () => (
+	.add('Search + Navigation', () => (<GlobalHeaderDemo />))
+	.add('Open on Hybrid', () => (<GlobalHeaderDemo openOn="hybrid" />))
+	.add('Fewer Elements', () => (
 		<GlobalHeader logoSrc={logo}>
 			<GlobalHeaderDropdown
 				assistiveText="Setup"

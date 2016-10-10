@@ -7,11 +7,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
-import { expect } from 'chai';
+
+import chai, { expect } from 'chai';
+import chaiEnzyme from 'chai-enzyme';
+
+// `this.wrapper` and `this.dom` is set in the helpers file
+import { mountComponent, unmountComponent } from '../enzyme-helpers';
 
 import Dropdown from '../../components/menu-dropdown';
 import List from '../../components/menu-list/list';
 const { Simulate,	findRenderedDOMComponentWithClass } = TestUtils;
+
+chai.use(chaiEnzyme());
 
 describe('SLDSMenuDropdown: ', () => {
 	let body;
@@ -60,21 +67,27 @@ describe('SLDSMenuDropdown: ', () => {
 	const createDropdownIcon = (props) => React.createElement(Dropdown, assign({}, iconOnlyProps, props));
 	createDropdownIcon.displayName = 'createDropdownIcon';
 
-	const createDropdownWithCustomChildren = (props) => (
-		<Dropdown {...assign({}, defaultProps, props)} >
-			<div id="custom-dropdown-menu-content">
-				<div className="slds-m-around--medium">
-					<div className="slds-tile slds-tile--board slds-m-horizontal--small">
-						<p className="tile__title slds-text-heading--small">Art Vandelay</p>
-						<div className="slds-tile__detail">
-							<p className="slds-truncate">
-								<a className="slds-m-right--medium" href="#">Settings</a>
-								<a href="#" >Log Out</a>
-							</p>
-						</div>
+	/* eslint-disable react/prop-types */
+	const DropdownCustomContent = (props) => (
+		<div id="custom-dropdown-menu-content">
+			<div className="slds-m-around--medium">
+				<div className="slds-tile slds-tile--board slds-m-horizontal--small">
+					<p className="tile__title slds-text-heading--small">Art Vandelay</p>
+					<div className="slds-tile__detail">
+						<p className="slds-truncate">
+							<a id="custom-dropdown-menu-content-link" className="slds-m-right--medium" href="#" onClick={props.onClick}>Settings</a>
+							<a href="#" onClick={props.onClick}>Log Out</a>
+						</p>
 					</div>
 				</div>
 			</div>
+		</div>
+	);
+	DropdownCustomContent.displayName = 'DropdownCustomContent';
+
+	const createDropdownWithCustomChildren = (props) => (
+		<Dropdown {...assign({}, defaultProps, props)} >
+			<DropdownCustomContent />
 			<List options={[{ label: 'Custom Content Option' }, ...options]} />
 		</Dropdown>
 	);
@@ -86,6 +99,29 @@ describe('SLDSMenuDropdown: ', () => {
 	const dropItDownIconOnly = (props) => renderDropdown(createDropdownIcon(props));
 
 	const getMenu = (dom) => dom.querySelector('.slds-dropdown');
+
+	describe('Styling', () => {
+		beforeEach(mountComponent(
+			<Dropdown
+				className="this-is-the-menu"
+				nubbinPosition="top left"
+				modal={false}
+				forceOpen
+				label="Test"
+				menuStyle={{ height: '500px' }}
+				openOn="click"
+				options={options}
+			/>
+		));
+
+		afterEach(unmountComponent);
+
+		it('has correct CSS classes and style', function () {
+			const component = this.wrapper.find('.slds-dropdown.slds-nubbin--top-left.this-is-the-menu');
+			expect(component).to.exist;
+			expect(component).to.have.style('height', '500px');
+		});
+	});
 
 	describe('Custom Content Present', () => {
 		let cmp;
@@ -111,8 +147,15 @@ describe('SLDSMenuDropdown: ', () => {
 			expect(customContent).to.not.equal(undefined);
 		});
 
+		it('closes when custom content is clicked', () => {
+			Simulate.click(btn, {});
+			const customContentLink = getMenu(body).querySelector('#custom-dropdown-menu-content').querySelector('#custom-dropdown-menu-content-link');
+			Simulate.click(customContentLink, {});
+			expect(getMenu(body)).to.equal(null);
+		});
+
 		it('has additional ListItem from list child\'s options prop', () => {
-			const buttonId = body.querySelector('button').id;
+			const buttonId = body.querySelector('.slds-dropdown-trigger').id;
 			Simulate.click(btn, {});
 			const customContentFirstItemText = getMenu(body).querySelector(`#${buttonId}-item-0`).firstChild.firstChild.textContent;
 			expect(customContentFirstItemText).to.equal('Custom Content Option');
@@ -125,7 +168,7 @@ describe('SLDSMenuDropdown: ', () => {
 
 		beforeEach(() => {
 			cmp = dropItDown({ buttonClassName: 'dijkstrafied', openOn: 'hover' });
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
 		});
 
 		afterEach(() => {
@@ -133,7 +176,7 @@ describe('SLDSMenuDropdown: ', () => {
 		});
 
 		it('gives the button correct aria properties', () => {
-			expect(btn.props['aria-haspopup']).to.equal('true');
+			expect(btn.firstChild.props['aria-haspopup']).to.equal('true');
 		});
 
 		it('sets the label', () => {
@@ -208,6 +251,43 @@ describe('SLDSMenuDropdown: ', () => {
 		});
 	});
 
+	describe('Hybrid-able', () => {
+		let cmp;
+		let btn;
+		const onClick = sinon.spy();
+
+		beforeEach(() => {
+			cmp = dropItDown({ openOn: 'hybrid', onClick });
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
+		});
+
+		afterEach(() => {
+			removeDropdownTrigger(btn);
+		});
+
+		it('doesnt expand on hover', () => {
+			expect(getMenu(body)).to.equal(null);
+			Simulate.mouseEnter(btn, {});
+			expect(getMenu(body)).to.equal(null);
+		});
+
+		it('opens on click, closes on mouseLeave', (done) => {
+			// open
+			expect(getMenu(body)).to.equal(null);
+			Simulate.click(btn, {});
+			expect(getMenu(body).className).to.include('slds-dropdown');
+			
+			// close
+			Simulate.mouseEnter(btn, {});
+			Simulate.mouseLeave(btn);
+			expect(getMenu(body)).to.not.equal(null);
+			setTimeout(() => {
+				expect(getMenu(body)).to.equal(null);
+				done();
+			}, 600);
+		});
+	});
+
 	describe('Expanded', () => {
 		let cmp;
 		let btn;
@@ -242,7 +322,7 @@ describe('SLDSMenuDropdown: ', () => {
 			cmp = dropItDown({ onSelect: (i) => {
 				selected = i;
 			} });
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
 		});
 
 		afterEach(() => {
@@ -276,7 +356,7 @@ describe('SLDSMenuDropdown: ', () => {
 			cmp = dropItDownIconOnly({ onSelect: (i) => {
 				selected = i;
 			} });
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
 		});
 
 		afterEach(() => {

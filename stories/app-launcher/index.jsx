@@ -238,6 +238,10 @@ const DemoAppLauncher = React.createClass({
 		};
 	},
 
+	onClear () {
+		this.setState({ search: '' });
+	},
+
 	onSearch (event) {
 		this.setState({ search: event.target.value });
 	},
@@ -251,7 +255,14 @@ const DemoAppLauncher = React.createClass({
 	},
 
 	render () {
-		const search = <Search onChange={this.onSearch} placeholder="Find an app" assistiveText="Find an app" />;
+		const search = (<Search
+			clearable={this.state.search !== ''}
+			onChange={this.onSearch}
+			onClear={this.onClear}
+			placeholder="Find an app"
+			assistiveText="Find an app"
+			value={this.state.search}
+		/>);
 		const modalHeaderButton = <Button label="App Exchange" onClick={action('Modal Button clicked!')} />;
 
 		return (

@@ -66,6 +66,15 @@ overlay.style.position = 'absolute';
 
 let currentOpenDropdown;
 
+const DropdownNubbinPositions = [
+	'top left',
+	'top',
+	'top right',
+	'bottom left',
+	'bottom',
+	'bottom right'
+];
+
 /**
  * The MenuDropdown component is a variant of the Lightning Design System Menu component.
  */
@@ -169,11 +178,15 @@ const MenuDropdown = React.createClass({
 		 */
 		length: PropTypes.oneOf([null, '5', '7', '10']),
 		/**
+		 * Style applied to menu element (that is the `.slds-dropdown` element)
+		 */
+		menuStyle: PropTypes.object,
+		/**
 		 * Renders menu within an absolutely positioned container at an elevated z-index.
 		 */
 		modal: PropTypes.bool,
 		/**
-		 * Positions dropdown menu with a nubbin--that is the arrow notch. The placement options correspond to the placement of the nubbin. This is implemeted with CSS classes and is best used with a `Button` with "icon container" styling. Dropdown menus will still be contained to the closest scrolling parent.
+		 * Positions dropdown menu with a nubbin--that is the arrow notch. The placement options correspond to the placement of the nubbin. This is implemeted with CSS classes and is best used with a `Button` with "icon container" styling (`iconVariant="container"`). Use with `modal={false}`, since positioning is determined by CSS via absolute-relative positioning, and using an absolutely positioned menu will not position the menu correctly.
 		 */
 		nubbinPosition: PropTypes.oneOf([
 			'top left',
@@ -200,9 +213,9 @@ const MenuDropdown = React.createClass({
 		 */
 		onFocus: PropTypes.func,
 		/**
-		 * Determines if mouse hover or click opens the dropdown menu. The default of `click` is highly recommended to comply with accessibility standards. If you are planning on using hover, please pause a moment and reconsider.
+		 * Determines if mouse hover or click opens or closes the dropdown menu. The default of `click` opens the menu on click, touch, or keyboard navigation and is highly recommended to comply with accessibility standards. The other options are `hover` which opens when the mouse enters the focusable area, and `hybrid` which causes the menu to open on clicking of the trigger, but closes the menu when the mouse leaves the menu and trigger area. If you are planning on using `hover` or `hybrid`, please pause a moment and reconsider.
 		 */
-		openOn: PropTypes.oneOf(['hover', 'click']),
+		openOn: PropTypes.oneOf(['hover', 'click', 'hybrid']),
 		/**
 		 * Set dropdown to be open. Must be returned to false to become interactive again.
 		 */
@@ -347,9 +360,10 @@ const MenuDropdown = React.createClass({
 	handleMouseEnter (event) {
 		this.isHover = true;
 
-		if (!this.state.isOpen) {
+		if (!this.state.isOpen && this.props.openOn === 'hover') {
 			this.handleOpen();
 		} else {
+			// we want this clear when openOn is hover or hybrid
 			clearTimeout(this.isClosing);
 		}
 
@@ -390,6 +404,15 @@ const MenuDropdown = React.createClass({
 
 		if (this.props.onFocus) {
 			this.props.onFocus(event);
+		}
+	},
+
+	handleClickCustomContent () {
+		this.setFocus();
+		this.handleClose();
+
+		if (this.props.onSelect) {
+			this.props.onSelect();
 		}
 	},
 
@@ -455,10 +478,12 @@ const MenuDropdown = React.createClass({
 		}
 	},
 
+	// Trigger opens, closes, and recieves focus on close
 	saveRefToTrigger (trigger) {
 		this.trigger = trigger;
 	},
 
+	// TriggerContainer is the wrapping outer DOM element which may differ from the actual trigger which is most likely a `button`.
 	saveRefToTriggerContainer (triggerContainer) {
 		this.triggerContainer = triggerContainer;
 		if (!this.trigger) this.trigger = triggerContainer;
@@ -517,7 +542,11 @@ const MenuDropdown = React.createClass({
 			if (child && child.type.displayName === LIST) {
 				customContentWithListPropInjection.push(this.renderDefaultDropdownContent(child.props));
 			} else {
-				customContentWithListPropInjection.push(child);
+				const clonedCustomContent = React.cloneElement(child, {
+					onClick: this.handleClickCustomContent,
+					key: shortid.generate()
+				});
+				customContentWithListPropInjection.push(clonedCustomContent);
 			}
 		});
 		if (customContentWithListPropInjection.length === 0) {
@@ -528,10 +557,26 @@ const MenuDropdown = React.createClass({
 	},
 
 	renderSimpleDropdown (customContent, isOpen) {
+		let marginTop;
+		let positionClassName;
+		if (this.props.nubbinPosition) {
+			const positions = this.props.nubbinPosition.split(' ');
+			positionClassName = classNames(
+				`slds-nubbin--${positions.join('-')}`,
+				positions.map((position) => `slds-dropdown--${position}`)
+			);
+			marginTop = 0;
+			// TODO: allow nubbinPosition prop to set the offset automatically
+			// if (this.props.nubbinPosition === 'top right') {
+			// 	offset = '-12px -24px';
+			// }
+		} else if (this.props.align) {
+			positionClassName = `slds-dropdown--${this.props.align}`;
+		}
 		return (
 			isOpen ?
 				<div
-					className={classNames('slds-dropdown', 'slds-dropdown--left', this.props.className)}
+					className={classNames('slds-dropdown', positionClassName, this.props.className)}
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
 					style={this.props.menuStyle}
@@ -580,6 +625,7 @@ const MenuDropdown = React.createClass({
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
 					outsideClickIgnoreClass={outsideClickIgnoreClass}
+					style={this.props.menuStyle}
 					targetElement={this.triggerContainer}
 				>
 					{this.renderDropdownContent(customContent)}
@@ -602,6 +648,7 @@ const MenuDropdown = React.createClass({
 	render () {
 		// Dropdowns are used by other components. The default trigger is a button, but some other components use `li` elements. The following allows `MenuDropdown` to be extended by providing a child component with the displayName of `DropdownTrigger`.
 		let CurrentTrigger = DefaultTrigger;
+
 		let CustomTriggerChildProps = {};
 
 		// Child elements that do not have the display name of the value of `MENU_DROPDOWN_TRIGGER` in `components/constants.js` will be considered custom content and rendered in the popover.
@@ -646,6 +693,8 @@ const MenuDropdown = React.createClass({
 				inverse={this.props.buttonInverse}
 				isOpen={isOpen}
 				label={this.props.label}
+				openOn={this.props.openOn}
+				isInline={!this.props.modal}
 				style={this.props.style}
 				tabIndex={isOpen ? '-1' : '0'}
 				variant={this.props.buttonVariant}
@@ -655,12 +704,22 @@ const MenuDropdown = React.createClass({
 
 				id={this.getId()}
 				onBlur={this.props.onBlur}
-				onClick={this.props.openOn === 'click' ? this.handleClick : this.props.onClick}
+				onClick={
+					this.props.openOn === 'click'
+					|| this.props.openOn === 'hybrid'
+					? this.handleClick : this.props.onClick
+				}
 				onFocus={this.props.openOn === 'hover' ? this.handleFocus : null}
 				onKeyDown={this.handleKeyDown}
 				onMouseDown={this.props.onMouseDown}
-				onMouseEnter={this.props.openOn === 'hover' ? this.handleMouseEnter : null}
-				onMouseLeave={this.props.openOn === 'hover' ? this.handleMouseLeave : null}
+				onMouseEnter={(this.props.openOn === 'hover' || this.props.openOn === 'hybrid')
+					? this.handleMouseEnter
+					: null
+				}
+				onMouseLeave={
+					this.props.openOn === 'hover'
+					|| this.props.openOn === 'hybrid'
+					? this.handleMouseLeave : null}
 				ref={this.saveRefToTriggerContainer}
 				triggerRef={this.saveRefToTrigger}
 				menu={this.props.modal ?
@@ -674,3 +733,4 @@ const MenuDropdown = React.createClass({
 module.exports = MenuDropdown;
 module.exports.ListItem = ListItem;
 module.exports.ListItemLabel = ListItemLabel;
+module.exports.DropdownNubbinPositions = DropdownNubbinPositions;

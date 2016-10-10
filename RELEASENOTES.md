@@ -1,11 +1,43 @@
-# Salesforce Lightning Design System
+  # Salesforce Lightning Design System
 # React Components: design-system-react
 # Release notes
+
+## Release 0.3.14
+
+- Remove top divider as default of `MenuDropdown` list menu heading items.
+- Adds `divider` key with values `top` and `bottom` to `MenuDropdown` options to allow for a divider to be added to a heading. 
+
+## Release 0.3.13
+
+**BUG FIX**
+- In App Launcher, Tile Truncate utility uses new props to prevent UI state from being out-of-sync with props.
+
+## Release 0.3.12
+
+**BUG FIX**
+- In Picklist, pressing enter now triggers the `onClick` prop
+- Add Dropdown wrapping `div` to align with SLDS and allow menu nubbins to be positioned with default CSS. [DOM change]
+- Make Global Header dropdowns inline instead of "modal"
+
+## Release 0.3.11
+
+**BUG FIX**
+- In Picklist, tabbing moves focus to the next tabbable DOM element, instead of opening the menu.
+- In Dropdown, an `onCLick` prop is passed down to all custom content children, so that they can close the menu.
+
+## Release 0.3.10
+
+**MAJOR CHANGES**
+- Adds `hybrid` to `openOn` options. This allows a click to open and hover out to close in case one does not have control of the DOM outside of the navigation.
+
+## Release 0.3.9
+
+**Bug Fix**
+- Prevent Global Nav menus from flipping up at small screen heights
 
 ## Release 0.3.8
 
 **Bug Fix**
-- Prevent Global Nav menus from flipping up at small screen heights
 - Make App Launcher Tile More tooltip trigger a span tag
 - Make inline input’s edit icon smaller
 - Make DatePicker and TimePicker value prop the source of future state
