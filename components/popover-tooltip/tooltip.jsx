@@ -8,7 +8,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from 'react';
-import Dialog from '../../utilities/dialog';
+import Dialog from '../utilities/dialog';
 
 import classNames from 'classnames';
 

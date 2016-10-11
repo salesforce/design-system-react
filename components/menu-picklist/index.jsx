@@ -28,7 +28,7 @@ import classNames from 'classnames';
 import shortid from 'shortid';
 
 // ### Children
-import Dialog from '../../utilities/dialog';
+import Dialog from '../utilities/dialog';
 import Icon from '../icon';
 import List from '../menu-list/list';
 import ListItemLabel from '../menu-list/list-item-label';

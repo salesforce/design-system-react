@@ -23,10 +23,10 @@ import onClickOutside from 'react-onclickoutside';
 
 import TetherDrop from 'tether-drop';
 
-import EventUtil from '../EventUtil';
-import KEYS from '../KEYS';
+import EventUtil from '../../../utilities/EventUtil';
+import KEYS from '../../../utilities/KEYS';
 
-import { DIALOG } from '../constants';
+import { DIALOG } from '../../../utilities/constants';
 
 
 /* A dialog is a non-modal container that separates content from the rest of the web application. This library uses the Drop library (https://github.com/HubSpot/drop which is based on TetherJS) to absolutely position and align content to another item on the page. This component is not meant for external consumption.

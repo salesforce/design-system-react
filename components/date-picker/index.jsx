@@ -11,7 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Dialog from '../../utilities/dialog';
+import Dialog from '../utilities/dialog';
 import DatePicker from './date-picker-base/index';
 import InputIcon from '../icon/input-icon';
 

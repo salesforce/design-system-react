@@ -20,7 +20,7 @@ import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import escapeRegExp from 'lodash.escaperegexp';
 
-import Dialog from '../../utilities/dialog';
+import Dialog from '../utilities/dialog';
 import Button from '../button';
 import Icon from '../icon';
 import InputIcon from '../icon/input-icon';

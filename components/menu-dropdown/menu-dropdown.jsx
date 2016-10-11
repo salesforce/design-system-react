@@ -31,7 +31,7 @@ import isFunction from 'lodash.isfunction';
 import shortid from 'shortid';
 
 // ### Children
-import Dialog from '../../utilities/dialog';
+import Dialog from '../utilities/dialog';
 import List from '../menu-list/list';
 import ListItem from '../menu-list/list-item';
 import ListItemLabel from '../menu-list/list-item-label';
