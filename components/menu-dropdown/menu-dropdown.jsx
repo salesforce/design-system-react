@@ -565,7 +565,7 @@ const MenuDropdown = React.createClass({
 				`slds-nubbin--${positions.join('-')}`,
 				positions.map((position) => `slds-dropdown--${position}`)
 			);
-			marginTop = 0;
+			marginTop = '0px';
 			// TODO: allow nubbinPosition prop to set the offset automatically
 			// if (this.props.nubbinPosition === 'top right') {
 			// 	offset = '-12px -24px';

@@ -8,7 +8,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 // Dialog
-import React from 'react';
+import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
 // ### classNames
@@ -29,7 +29,7 @@ import KEYS from '../../../utilities/KEYS';
 import { DIALOG } from '../../../utilities/constants';
 
 
-/* A dialog is a non-modal container that separates content from the rest of the web application. This library uses the Drop library (https://github.com/HubSpot/drop which is based on TetherJS) to absolutely position and align content to another item on the page. This component is not meant for external consumption.
+/* A dialog is a non-modal container that separates content from the rest of the web application. This library uses the Drop library (https://github.com/HubSpot/drop which is based on TetherJS) to absolutely position and align content to another item on the page. This component is not meant for external consumption or part of the published component API.
 */
 const Dialog = React.createClass({
 
@@ -46,7 +46,110 @@ const Dialog = React.createClass({
 	},
 
 	propTypes: {
-//		targetAttachment: React.PropTypes.string,
+		/**
+		 * Aligns the right or left side of the dialog with the respective side of the target.
+		 */
+		align: PropTypes.oneOf(['left', 'right']),
+		/**
+		 * CSS classes to be added to the wrapping `div` of the contents of the dialog.
+		 */
+		className: React.PropTypes.oneOfType([
+			React.PropTypes.array,
+			React.PropTypes.object,
+			React.PropTypes.string]
+		),
+		/**
+		 * CSS classes to be added to the absolutely positioned element.
+		 */
+		containerClassName: React.PropTypes.oneOfType([
+			React.PropTypes.array,
+			React.PropTypes.object,
+			React.PropTypes.string]
+		),
+		/**
+		 * Contents of dialog
+		**/
+		children: PropTypes.node,
+		/**
+		 * Closes dialog when tab key is pressed
+		**/
+		closeOnTabKey: PropTypes.bool,
+		/**
+		 * If true, the dialog is constrained to the scrolling parent and may be flipped up instead of down. This is helpful for use within modals.
+		 */
+		constrainToScrollParent: PropTypes.bool,
+		/**
+		 * Positions the dialog horizontally.
+		**/
+		horizontalAlign: PropTypes.oneOf([
+			'left',
+			'right',
+			'center'
+		]),
+		/**
+		 * Sets the dialog width to the width of the target.
+		 */
+		inheritTargetWidth: PropTypes.bool,
+		/**
+		 * If true, the dialog is constrained to the window and may be flipped up instead of down.
+		 */
+		flippable: PropTypes.bool,
+		/**
+		 * Top margin offset of dialog from target.
+		 */
+		marginTop: PropTypes.string,
+		/**
+		 * Bottom margin offset of dialog from target.
+		 */
+		marginBottom: PropTypes.string,
+		/**
+		 * Left margin offset of dialog from target.
+		 */
+		marginLeft: PropTypes.string,
+		/**
+		 * Right margin offset of dialog from target.
+		 */
+		marginRight: PropTypes.string,
+		/**
+		 *  Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px).
+		 */
+		offset: PropTypes.string,
+		/**
+		 * Called when dialog closes (that is unmounts).
+		 */
+		onClose: PropTypes.func,
+		/**
+		 * Called when a key pressed.
+		 */
+		onKeyDown: PropTypes.func,
+		/**
+		 * Called when mouse clicks down on the trigger button.
+		 */
+		onMouseDown: PropTypes.func,
+		/**
+		 * Called when mouse hovers over the trigger button. This is only called if `this.props.openOn` is set to `hover`.
+		 */
+		onMouseEnter: PropTypes.func,
+		/**
+		 * Called when mouse hover leaves the trigger button. This is only called if `this.props.openOn` is set to `hover`.
+		 */
+		onMouseLeave: PropTypes.func,
+		/**
+		 * Triggered when an item in the menu is clicked.
+		 */
+		outsideClickIgnoreClass: PropTypes.string,
+		/**
+		 * An object of CSS styles that are applied to the .
+		 */
+		style: PropTypes.object,
+		/**
+		 * React component to be aligned with. This will be passed to `ReactDOM.findDOMNode()` if set and should be set from a component reference (`ref`).
+		 */
+		targetElement: PropTypes.object,
+		/**
+		 * Positions the dialog vertically.
+		**/
+		verticalAlign: PropTypes.oneOf(['top', 'bottom'])
 	},
 
 	getDefaultProps () {
@@ -58,8 +161,8 @@ const Dialog = React.createClass({
 			flippable: true,
 			marginTop: '0.20rem',
 			marginBottom: '0.35rem',
-			marginLeft: 0,
-			marginRight: 0,
+			marginLeft: '0px',
+			marginRight: '0px',
 			offset: '0px 0px',
 			outsideClickIgnoreClass: 'ignore-react-onclickoutside',
 			constrainToScrollParent: false,
@@ -74,16 +177,16 @@ const Dialog = React.createClass({
 	},
 
 	componentWillMount () {
-		this.popoverElement = document.createElement('span');
-		document.querySelector('body').appendChild(this.popoverElement);
+		this.dialogElement = document.createElement('span');
+		document.querySelector('body').appendChild(this.dialogElement);
 	},
 
 	componentDidMount () {
-		this.renderPopover();
+		this.renderDialog();
 	},
 
 	componentDidUpdate () {
-		this.renderPopover();
+		this.renderDialog();
 	},
 
 	handleClick (event) {
@@ -106,7 +209,7 @@ const Dialog = React.createClass({
 		}
 	},
 
-	popoverComp () {
+	renderDialogContents () {
 		if (!this.state.isOpen) {
 			return <span></span>;
 		}
@@ -222,10 +325,10 @@ const Dialog = React.createClass({
 
 		return {
 			beforeClose: this.beforeClose,
-			classes: this.props.dropClass,
+			classes: classNames(this.props.containerClassName, this.props.dropClass), // eslint-disable-line react/prop-types
 			constrainToWindow: this.props.flippable,
 			constrainToScrollParent: this.props.constrainToScrollParent,
-			content: this.popoverElement,
+			content: this.dialogElement,
 			openOn: 'always',
 			position,
 			remove: true,
@@ -240,15 +343,15 @@ const Dialog = React.createClass({
 		this.setState({ isOpen: true });
 	},
 
-	renderPopover () {
-		ReactDOM.render(this.popoverComp(), this.popoverElement);
+	renderDialog () {
+		ReactDOM.render(this.renderDialogContents(), this.dialogElement);
 
-		if (this.popoverElement &&
-				this.popoverElement.parentNode &&
-				this.popoverElement.parentNode.parentNode &&
-				this.popoverElement.parentNode.parentNode.className &&
-				this.popoverElement.parentNode.parentNode.className.indexOf('drop ') > -1) {
-			this.popoverElement.parentNode.parentNode.style.zIndex = 10001;
+		if (this.dialogElement &&
+				this.dialogElement.parentNode &&
+				this.dialogElement.parentNode.parentNode &&
+				this.dialogElement.parentNode.parentNode.className &&
+				this.dialogElement.parentNode.parentNode.className.indexOf('drop ') > -1) {
+			this.dialogElement.parentNode.parentNode.style.zIndex = 10001;
 		}
 
 		if (this.drop != null) {
@@ -263,10 +366,10 @@ const Dialog = React.createClass({
 
 	componentWillUnmount () {
 		this.drop.destroy();
-		ReactDOM.unmountComponentAtNode(this.popoverElement);
+		ReactDOM.unmountComponentAtNode(this.dialogElement);
 
-		if (this.popoverElement.parentNode) {
-			this.popoverElement.parentNode.removeChild(this.popoverElement);
+		if (this.dialogElement.parentNode) {
+			this.dialogElement.parentNode.removeChild(this.dialogElement);
 		}
 
 		if (this.props.onClose) {
@@ -275,7 +378,8 @@ const Dialog = React.createClass({
 	},
 
 	render () {
-		return <noscript></noscript>;
+		// DOM tree mount location is different than React component tree, so we do not render anything here.
+		return null;
 	}
 });
 
