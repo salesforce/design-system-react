@@ -13,6 +13,14 @@ storiesOf(FORMS_CHECKBOX, module)
 			name="checkbox-example-standard"
 		/>
 	))
+	.add('Checkbox (indeterminate)', () => (
+		<Checkbox
+			assistiveText="Checkbox (indeterminate)"
+			label="Checkbox Label"
+			name="checkbox-example-standard-indeterminate"
+			indeterminate={true}
+		/>
+	))
 	.add('Checkbox (checked)', () => (
 		<Checkbox
 			assistiveText="Checkbox (checked)"

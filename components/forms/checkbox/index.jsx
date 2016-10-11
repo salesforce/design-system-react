@@ -75,6 +75,10 @@ const Checkbox = React.createClass({
 		 */
 		id: PropTypes.string,
 		/**
+		 * The Checkbox will be indeterminate if its state can not be figure out.
+		 */
+		indeterminate: React.PropTypes.bool,
+		/**
 		 * An optional label for the Checkbox.
 		 */
 		label: React.PropTypes.string,
@@ -98,11 +102,18 @@ const Checkbox = React.createClass({
 		};
 	},
 
+	componentDidMount () {
+		const checkbox = this._input;
+		checkbox.checked = this.props.checked;
+		checkbox.indeterminate = this.props.indeterminate;
+	},
+
 	// ### Render
 	render () {
 		const {
 			assistiveText,
 			checked,
+			indeterminate,
 			className,
 			disabled,
 			errorText,
@@ -110,6 +121,7 @@ const Checkbox = React.createClass({
 			name,
 			onChange, // eslint-disable-line no-unused-vars
 			required,
+			id,
 
 			// ### Additional properties
 			// Using [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx) to pass on any properties which are not explicitly defined.
@@ -126,28 +138,33 @@ const Checkbox = React.createClass({
 				onKeyDown={this.handleKeyDown}
 			>
 				<div className="slds-form-element__control">
-					<label className="slds-checkbox">
+					<span className="slds-checkbox">
 						{required ? <abbr className="slds-required" title="required">*</abbr> : null}
 						<input
 							{...props}
+							id={id}
 							checked={checked}
+							indeterminate={indeterminate}
 							name={name}
 							disabled={disabled}
 							onChange={this.handleChange}
 							type="checkbox"
+							ref={(c) => this._input = c}
 						/>
-						<span className="slds-checkbox--faux"></span>
-						{label
-							? <span className="slds-form-element__label">
-								{label}
-							</span>
-						: null}
-						{assistiveText
-							? <span className="slds-assistive-text">
-								{assistiveText}
-							</span>
-						: null}
-					</label>
+						<label className="slds-checkbox__label" htmlFor={id}>
+							<span className="slds-checkbox--faux"></span>
+							{label
+								? <span className="slds-form-element__label">
+									{label}
+								</span>
+							: null}
+							{assistiveText
+								? <span className="slds-assistive-text">
+									{assistiveText}
+								</span>
+							: null}
+						</label>
+					</span>
 				</div>
 				{errorText ? <div className="slds-form-element__help">{errorText}</div> : null}
 			</div>
