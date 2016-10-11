@@ -127,9 +127,13 @@ const MenuDropdown = React.createClass({
 		 */
 		children: PropTypes.node,
 		/**
-		 * CSS classes to be added to dropdown menu container. By default, It will be added to the `Popover` component.
+		 * CSS classes to be added to dropdown menu.
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		/**
+		 * By default, these class names will be added to the absolutely-positioned `Dialog` component.
+		 */
+		containerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
 		 * This prop is passed onto the triggering `Button`. Prevent dropdown menu from opening. Also applies disabled styling to trigger button.
 		 */
@@ -609,12 +613,13 @@ const MenuDropdown = React.createClass({
 		return (
 			isOpen ?
 				<Dialog
-					className={classNames('slds-dropdown',
+					className={classNames(this.props.containerClassName)}
+					closeOnTabKey
+					constrainToScrollParent={this.props.constrainToScrollParent}
+					contentsClassName={classNames('slds-dropdown',
 						'ignore-react-onclickoutside',
 						positionClassName,
 						this.props.className)}
-					closeOnTabKey
-					constrainToScrollParent={this.props.constrainToScrollParent}
 					flippable={!this.props.hasStaticAlignment}
 					horizontalAlign={this.props.align}
 					inheritTargetWidth={this.props.inheritTargetWidth}

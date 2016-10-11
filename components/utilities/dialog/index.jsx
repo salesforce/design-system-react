@@ -51,7 +51,7 @@ const Dialog = React.createClass({
 		 */
 		align: PropTypes.oneOf(['left', 'right']),
 		/**
-		 * CSS classes to be added to the wrapping `div` of the contents of the dialog.
+		 * CSS classes to be added to the absolutely positioned element.
 		 */
 		className: React.PropTypes.oneOfType([
 			React.PropTypes.array,
@@ -59,9 +59,9 @@ const Dialog = React.createClass({
 			React.PropTypes.string]
 		),
 		/**
-		 * CSS classes to be added to the absolutely positioned element.
+		 * CSS classes to be added to the wrapping `div` of the contents of the dialog.
 		 */
-		containerClassName: React.PropTypes.oneOfType([
+		contentsClassName: React.PropTypes.oneOfType([
 			React.PropTypes.array,
 			React.PropTypes.object,
 			React.PropTypes.string]
@@ -225,17 +225,17 @@ const Dialog = React.createClass({
 			position: 'inherit'
 		};
 
-		if (this.props.style) {
-			style = Object.assign({}, style, this.props.style);
-		}
-
 		if (this.props.inheritTargetWidth) {
 			style.width = this.target().getBoundingClientRect().width;
 		}
 
+		if (this.props.style) {
+			style = Object.assign({}, style, this.props.style);
+		}
+
 		return (
 			<div
-				className={classNames(this.props.outsideClickIgnoreClass, this.props.className)}
+				className={classNames(this.props.outsideClickIgnoreClass, this.props.contentsClassName)}
 				style={style}
 				onKeyDown={this.handleKeyDown}
 				onMouseEnter={this.props.onMouseEnter}

@@ -462,8 +462,8 @@ class Lookup extends React.Component {
 		let targetElem = this.refs[this.inputRefName()];
 		if(this.state.isOpen){
 			return <Dialog
-			className='slds-lookup__menu slds-show'
 			closeOnTabKey={true}
+			contentsClassName='slds-lookup__menu slds-show'
 			inheritTargetWidth={true}
 			onClose={this.handleCancel.bind(this)}
 			flippable={this.props.flippable}

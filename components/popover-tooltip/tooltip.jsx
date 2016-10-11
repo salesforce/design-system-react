@@ -74,8 +74,8 @@ const getMarginBottom = (align) => {
 /* eslint-disable react/prop-types */
 const getTooltip = (id, props, content, target, onClose) => (
 	<Dialog
-		className=""
 		closeOnTabKey
+		contentsClassName=""
 		flippable={false}
 		marginBottom={getMarginBottom(props.align)}
 		marginLeft={getMarginLeft(props.align)}

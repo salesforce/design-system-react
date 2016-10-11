@@ -317,9 +317,9 @@ const MenuPicklist = React.createClass({
 		return (
 			!this.props.disabled && this.state.isOpen && this.button
 			? <Dialog
-				className="slds-dropdown slds-dropdown--left"
 				closeOnTabKey
 				constrainToScrollParent={this.props.constrainToScrollParent}
+				contentsClassName="slds-dropdown slds-dropdown--left"
 				flippable
 				onClose={this.handleCancel}
 				onKeyDown={this.handleKeyDown}
