@@ -362,7 +362,7 @@ const MenuPicklist = React.createClass({
 					<span className="slds-truncate">{this.renderPlaceholder()}</span>
 					<Icon name="down" category="utility" />
 				</button>
-				{this.props.modal ? this.renderDialog() : this.renderSimpleDropdown()}
+				{this.props.modal ? this.renderDialog() : this.renderSimpleMenu()}
 			</div>
 		);
 	},

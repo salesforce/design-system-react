@@ -49,7 +49,20 @@ const Dialog = React.createClass({
 		/**
 		 * Aligns the right or left side of the dialog with the respective side of the target.
 		 */
-		align: PropTypes.oneOf(['left', 'right']),
+		align: PropTypes.oneOf([
+			'top',
+			'top left',
+			'top right',
+			'right',
+			'right top',
+			'right bottom',
+			'bottom',
+			'bottom left',
+			'bottom right',
+			'left',
+			'left top',
+			'left bottom'
+		]),
 		/**
 		 * CSS classes to be added to the absolutely positioned element.
 		 */
@@ -149,7 +162,7 @@ const Dialog = React.createClass({
 		/**
 		 * Positions the dialog vertically.
 		**/
-		verticalAlign: PropTypes.oneOf(['top', 'bottom'])
+		verticalAlign: PropTypes.oneOf(['bottom', 'middle', 'top'])
 	},
 
 	getDefaultProps () {
@@ -378,8 +391,8 @@ const Dialog = React.createClass({
 	},
 
 	render () {
-		// DOM tree mount location is different than React component tree, so we do not render anything here.
-		return null;
+		// Must use `<noscript></noscript>` in order for `this.drop` to not be undefined when unmounting
+		return <noscript></noscript>;
 	}
 });
 

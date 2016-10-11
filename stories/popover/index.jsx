@@ -91,5 +91,6 @@ storiesOf(POPOVER_TOOLTIP, module)
 			category="standard"
 			name="case"
 			size="small"
+			tabIndex="0"
 		/>)
 	}));
