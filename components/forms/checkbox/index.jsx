@@ -99,36 +99,35 @@ const Checkbox = React.createClass({
 	getDefaultProps () {
 		return {
 			id: shortid.generate(),
-			checked: false,
+			checked: null,
 			indeterminate: false
 		};
 	},
 
 	getInitialState () {
 		return {
-			checked: this.props.checked,
+			checked: this.props.indeterminate === true ? false : this.props.checked,
+			defaultChecked: this.props.checked,
 			indeterminate: this.props.indeterminate
 		};
 	},
 
 	componentDidMount () {
 		const checkbox = this.input;
-		console.group('[componentDidMount]');
-		console.log("this.state.checked", this.state.checked);
-		console.log("this.state.indeterminate", this.state.indeterminate);
-		console.groupEnd();
-		checkbox.checked = this.state.checked;
+		checkbox.checked = this.state.indeterminate === true ? false : this.state.checked;
 		checkbox.indeterminate = this.state.indeterminate;
 	},
 
+
 	componentWillReceiveProps (nextProps) {
-		console.log("[componentWillReceiveProps] nextProps", nextProps);
-		console.log("[componentWillReceiveProps] this.state (before)", this.state);
+		const checkbox = this.input;
+		checkbox.checked = nextProps.indeterminate === true ? null : nextProps.checked;
+		checkbox.indeterminate = nextProps.indeterminate;
 		this.setState({
-			checked: nextProps.checked,
+			checked: nextProps.indeterminate === true ? null : nextProps.checked,
 			indeterminate: nextProps.indeterminate
 		});
-		console.log("[componentWillReceiveProps] this.state (after)", this.state);
+		// console.log("[componentWillReceiveProps] this.state (after)", this.state);
 	},
 
 	shouldComponentUpdate (nextProps, nextState) {
@@ -136,32 +135,20 @@ const Checkbox = React.createClass({
 		let toReturnIndeterminate = true;
 		let toReturnChecked = true;
 
-		console.group('[shouldComponentUpdate]');
-
-			console.group('[shouldComponentUpdate this.props]');
-				console.log("this.props.indeterminate", this.props.indeterminate);
-				console.log("this.props.checked", this.props.checked);
-			console.groupEnd();
-
-			console.group('[shouldComponentUpdate nextProps]');
-				console.log("nextProps.indeterminate", nextProps.indeterminate);
-				console.log("nextProps.checked", nextProps.checked);
-			console.groupEnd();
-
-			console.group('[shouldComponentUpdate this.state]');
-				console.log("this.state.indeterminate", this.state.indeterminate);
-				console.log("this.state.checked", this.state.checked);
-			console.groupEnd();
-
-			console.group('[shouldComponentUpdate nextState]');
-				console.log("nextState.indeterminate", nextState.indeterminate);
-				console.log("nextState.checked", nextState.checked);
-			console.groupEnd();
-
 		if (
-			nextProps.indeterminate === this.props.indeterminate
-		&&	nextProps.indeterminate === nextState.indeterminate
-		&&	nextProps.indeterminate === this.state.indeterminate
+				nextProps.indeterminate === this.props.indeterminate
+			&&	nextProps.indeterminate === nextState.indeterminate
+			&&	nextProps.indeterminate === this.state.indeterminate
+		) {
+			toReturnIndeterminate = false;
+		}
+
+		// Sometimes the indeterminate stuff is not a boolean, so double-check ehre
+		if (
+				(typeof nextProps.indeterminate === 'object' && nextProps.indeterminate === null)
+			&& (typeof this.props.indeterminate === 'object' && this.props.indeterminate === null)
+			&& (this.state.indeterminate === false)
+			&& (nextState.indeterminate === false)
 		) {
 			toReturnIndeterminate = false;
 		}
@@ -173,41 +160,18 @@ const Checkbox = React.createClass({
 		) {
 			toReturnChecked = false;
 		}
-		
+	
 		toReturn = toReturnIndeterminate === true || toReturnChecked === true;
-		console.log("toReturnIndeterminate", toReturnIndeterminate);
-		console.log("toReturnChecked", toReturnChecked);
-		console.group('[shouldComponentUpdate nextState]');
-			console.log("nextState", nextState);
-		console.groupEnd();
 
-		console.warn("toReturn is being forced to true!");
-		toReturn = true;
-		console.log("toReturn", toReturn);
-
-		console.groupEnd();
 		return toReturn;
 	},
 
 	componentWillUpdate (nextProps, nextState) {
-		console.group('[componentWillUpdate nextProps]');
-			console.log("nextProps", nextProps);
-		console.groupEnd();
-		console.group('[componentWillUpdate nextState]');
-			console.log("nextState", nextState);
-		console.groupEnd();
+		if (nextProps.indeterminate === true) {
+			nextState.checked = null;
+		}
 	},
 
-	componentDidUpdate (prevProps, prevState) {
-		console.group('[componentDidUpdate prev]');
-			console.log("prevProps", prevProps);
-			console.log("prevState", prevState);
-		console.groupEnd();
-		console.group('[componentDidUpdate current]');
-			console.log("this.props", this.props);
-			console.log("this.state", this.state);
-		console.groupEnd();
-	},
 
 	// ### Render
 	render () {
@@ -244,13 +208,13 @@ const Checkbox = React.createClass({
 						<input
 							{...props}
 							id={id}
-							checked={checked}
+							checked={indeterminate === true ? null : checked}
 							indeterminate={indeterminate}
 							name={name}
 							disabled={disabled}
 							onChange={this.handleChange}
 							type="checkbox"
-							ref={(c) => this.input = c}
+							ref={(component) => this.input = component}
 						/>
 						<label className="slds-checkbox__label" htmlFor={id}>
 							<span className="slds-checkbox--faux"></span>
@@ -272,20 +236,55 @@ const Checkbox = React.createClass({
 		);
 	},
 
-	handleChange (e) {
-		if (isFunction(this.props.onChange)) {
-			console.log("isFunction(this.props.onChange)", isFunction(this.props.onChange));
-			this.props.onChange(!this.props.checked, e);
-			this.props.onChange(!this.props.indeterminate, e);
+	getValue () {
+		const checkbox = this.input;
+		return !checkbox.checked;
+	},
+
+	isChecked () {
+		return this.getValue() || false;
+	},
+
+	handleChange (event) {
+		let value = event.target.checked;
+		const props = this.props;
+		const oldValue = this.getValue();
+
+		if (props.indeterminate === true) {
+			if (typeof props.nextValue === 'function') {
+				value = props.nextValue(oldValue, this.props);
+			}
+		}
+
+		if (isFunction(props.onChange)) {
+			if (oldValue !== !this.state.defaultValue) {
+				this.props.onChange(event, {
+					checked: value,
+					indeterminate: null
+				});
+				this.setState({
+					checked: value,
+					indeterminate: null
+				});
+			} else {
+				this.props.onChange(event, {
+					checked: props.indeterminate === true ? null : value,
+					indeterminate: props.indeterminate
+				});
+				this.setState({
+					checked: props.indeterminate === true ? null : value,
+					indeterminate: props.indeterminate
+				});
+			}
 		}
 	},
 
-	handleKeyDown (e) {
-		if (e.keyCode) {
-			if (e.keyCode === KEYS.ENTER ||
-					e.keyCode === KEYS.SPACE) {
-				EventUtil.trapImmediate(e);
-				this.handleChange(e);
+	handleKeyDown (event) {
+		if (event.keyCode) {
+			if (event.keyCode === KEYS.ENTER ||
+					event.keyCode === KEYS.SPACE) {
+				EventUtil.trapImmediate(event);
+				this.handleChange(event);
 			}
 		}
 	}

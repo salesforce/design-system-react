@@ -11,39 +11,33 @@ const CheckboxIndeterminate = React.createClass({
 	getInitialState () {
 		return {
 			indeterminate: true,
-			checked: false
+			checked: false,
+			currentStateHelper: 'Default'
 		};
 	},
 
+	handleChange (event, data) {
+		action('handleChange')(event, `checked: ${data.checked}, indeterminate:  ${data.indeterminate}`);
+		this.setState({
+			currentStateHelper: data.indeterminate === true ? 'Inderterminate' : data.checked === true ? 'Checked' : 'Unchecked',
+			checked: data.indeterminate === true ? null : data.checked,
+			indeterminate: data.indeterminate
+		});
+	},
 
 	changeToIndeterminate () {
-		console.group('[changeToIndeterminate] (before)');
-			console.log("this.state", this.state);
-		console.groupEnd();
-		this.setState({ indeterminate: true, checked: false });
-		console.group('[changeToIndeterminate] (after)');
-			console.log("this.state", this.state);
-		console.groupEnd();
+		this.setState({ currentStateHelper: 'Inderterminate', indeterminate: true, checked: null });
+		action('changeToIndeterminate')(event, `checked: ${this.state.checked}, indeterminate:  ${this.state.indeterminate}`);
 	},
 
 	changeToCheck () {
-		console.group('[changeToCheck] (before)');
-			console.log("this.state", this.state);
-		console.groupEnd();
-		this.setState({ checked: true, indeterminate: false });
-		console.group('[changeToCheck] (after)');
-			console.log("this.state", this.state);
-		console.groupEnd();
+		this.setState({ currentStateHelper: 'Checked', checked: true, indeterminate: null });
+		action('changeToCheck')(event, `checked: ${this.state.checked}, indeterminate:  ${this.state.indeterminate}`);
 	},
 
 	changeToUnChecked () {
-		console.group('[changeToUnChecked] (before)');
-			console.log("this.state", this.state);
-		console.groupEnd();
-		this.setState({ checked: false, indeterminate: false });
-		console.group('[changeToUnChecked] (after)');
-			console.log("this.state", this.state);
-		console.groupEnd();
+		this.setState({ currentStateHelper: 'Unchecked', checked: false, indeterminate: null });
+		action('changeToUnChecked')(event, `checked: ${this.state.checked}, indeterminate:  ${this.state.indeterminate}`);
 	},
 
 	render () {
@@ -52,13 +46,16 @@ const CheckboxIndeterminate = React.createClass({
 				<Button onClick={this.changeToIndeterminate} label="Inderterminate" />
 				<Button onClick={this.changeToCheck} label="Check" />
 				<Button onClick={this.changeToUnChecked} label="Uncheck" />
-
+				<p>
+					<strong>Current State:</strong> {this.state.currentStateHelper}
+				</p>
 				<Checkbox
 					assistiveText="Checkbox (indeterminate)"
 					label="Checkbox Label"
 					name="checkbox-example-standard-indeterminate"
 					checked={this.state.checked}
 					indeterminate={this.state.indeterminate}
+					onChange={this.handleChange}
 				/>
 				<div className="slds-box slds-text-longform slds-m-top--large">
 					<p>
