@@ -27,17 +27,17 @@ const CheckboxIndeterminate = React.createClass({
 
 	changeToIndeterminate () {
 		this.setState({ currentStateHelper: 'Inderterminate', indeterminate: true, checked: null });
-		action('changeToIndeterminate')(event, `checked: ${this.state.checked}, indeterminate:  ${this.state.indeterminate}`);
+		action('changeToIndeterminate')(event, `checked: null, indeterminate:  true`);
 	},
 
 	changeToCheck () {
 		this.setState({ currentStateHelper: 'Checked', checked: true, indeterminate: null });
-		action('changeToCheck')(event, `checked: ${this.state.checked}, indeterminate:  ${this.state.indeterminate}`);
+		action('changeToCheck')(event, `checked: true, indeterminate: null`);
 	},
 
 	changeToUnChecked () {
 		this.setState({ currentStateHelper: 'Unchecked', checked: false, indeterminate: null });
-		action('changeToUnChecked')(event, `checked: ${this.state.checked}, indeterminate:  ${this.state.indeterminate}`);
+		action('changeToUnChecked')(event, `checked: false, indeterminate: null`);
 	},
 
 	render () {
