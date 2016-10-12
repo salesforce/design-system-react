@@ -146,7 +146,7 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 			<li
 				aria-haspopup="true"
 				className={classNames(
-					'slds-context-bar__item slds-context-bar-action slds-dropdown-trigger slds-dropdown-trigger--click',
+					'slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger--click',
 					{
 						'slds-is-open': isOpen,
 						'slds-is-active': active,
