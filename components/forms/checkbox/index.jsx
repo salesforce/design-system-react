@@ -103,7 +103,7 @@ const Checkbox = React.createClass({
 	},
 
 	componentDidMount () {
-		const checkbox = this._input;
+		const checkbox = this.input;
 		checkbox.checked = this.props.checked;
 		checkbox.indeterminate = this.props.indeterminate;
 	},
@@ -149,7 +149,7 @@ const Checkbox = React.createClass({
 							disabled={disabled}
 							onChange={this.handleChange}
 							type="checkbox"
-							ref={(c) => this._input = c}
+							ref={(component) => this.input = component}
 						/>
 						<label className="slds-checkbox__label" htmlFor={id}>
 							<span className="slds-checkbox--faux"></span>
