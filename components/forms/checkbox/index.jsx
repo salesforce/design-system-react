@@ -75,7 +75,7 @@ const Checkbox = React.createClass({
 		 */
 		id: PropTypes.string,
 		/**
-		 * The Checkbox will be indeterminate if its state can not be figure out.
+		 * The Checkbox will be indeterminate if its state can not be figured out.
 		 */
 		indeterminate: React.PropTypes.bool,
 		/**
