@@ -10,49 +10,69 @@ const CheckboxIndeterminate = React.createClass({
 
 	getInitialState () {
 		return {
-			indeterminate: false
+			indeterminate: true,
+			checked: false
 		};
 	},
 
+
 	changeToIndeterminate () {
-		this.setState({ indeterminate: true });
+		console.group('[changeToIndeterminate] (before)');
+			console.log("this.state", this.state);
+		console.groupEnd();
+		this.setState({ indeterminate: true, checked: false });
+		console.group('[changeToIndeterminate] (after)');
+			console.log("this.state", this.state);
+		console.groupEnd();
 	},
 
 	changeToCheck () {
-		this.setState({ checked: true });
-		this.setState({ indeterminate: false });
+		console.group('[changeToCheck] (before)');
+			console.log("this.state", this.state);
+		console.groupEnd();
+		this.setState({ checked: true, indeterminate: false });
+		console.group('[changeToCheck] (after)');
+			console.log("this.state", this.state);
+		console.groupEnd();
 	},
 
 	changeToUnChecked () {
-		this.setState({ checked: false });
-		this.setState({ indeterminate: false });
+		console.group('[changeToUnChecked] (before)');
+			console.log("this.state", this.state);
+		console.groupEnd();
+		this.setState({ checked: false, indeterminate: false });
+		console.group('[changeToUnChecked] (after)');
+			console.log("this.state", this.state);
+		console.groupEnd();
 	},
 
 	render () {
-		return (<div>
-			<Button onClick={this.changeToIndeterminate} label="Inderterminate" />
-			<Button onClick={this.changeToCheck} label="Check" />
-			<Button onClick={this.changeToUnChecked} label="Uncheck" />
+		return (
+			<div>
+				<Button onClick={this.changeToIndeterminate} label="Inderterminate" />
+				<Button onClick={this.changeToCheck} label="Check" />
+				<Button onClick={this.changeToUnChecked} label="Uncheck" />
 
-			<Checkbox
-				assistiveText="Checkbox (indeterminate)"
-				label="Checkbox Label"
-				name="checkbox-example-standard-indeterminate"
-				checked={this.state.checked}
-				indeterminate={this.state.indeterminate}
-			/>
-			<div className="slds-box slds-text-longform slds-m-top--large">
-				<p>
-					This example has an <em>indeterminate</em> checkbox.
-				</p>
-				<p>
-					It is set by providing the <code>indeterminate</code> prop as <code><strong>true</strong></code>.
-				</p>
-				<p>
-					Once it is clicked, there is no way to make it go <em>back</em> to the indeterminate state, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:indeterminate#Checkbox_radio_button">it must be done programatically, through JavaScript</a>.
-				</p>
+				<Checkbox
+					assistiveText="Checkbox (indeterminate)"
+					label="Checkbox Label"
+					name="checkbox-example-standard-indeterminate"
+					checked={this.state.checked}
+					indeterminate={this.state.indeterminate}
+				/>
+				<div className="slds-box slds-text-longform slds-m-top--large">
+					<p>
+						This example has an <em>indeterminate</em> checkbox.
+					</p>
+					<p>
+						It is set by providing the <code>indeterminate</code> prop as <code><strong>true</strong></code>.
+					</p>
+					<p>
+						Once it is clicked, there is no way to make it go <em>back</em> to the indeterminate state, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:indeterminate#Checkbox_radio_button">it must be done programatically, through JavaScript</a>.
+					</p>
+				</div>
 			</div>
-		</div>);
+		);
 	}
 
 });
