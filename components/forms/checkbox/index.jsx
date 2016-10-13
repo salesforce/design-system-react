@@ -108,13 +108,13 @@ const Checkbox = React.createClass({
 		return {
 			checked: this.props.indeterminate === true ? false : this.props.checked,
 			defaultChecked: this.props.checked,
-			indeterminate: this.props.indeterminate
+			indeterminate: this.props.indeterminate === true ? true : null
 		};
 	},
 
 	componentDidMount () {
 		const checkbox = this.input;
-		checkbox.checked = this.state.indeterminate === true ? false : this.state.checked;
+		checkbox.checked = this.state.indeterminate === true ? false : this.state.defaultChecked;
 		checkbox.indeterminate = this.state.indeterminate;
 	},
 
@@ -123,11 +123,11 @@ const Checkbox = React.createClass({
 		const checkbox = this.input;
 		checkbox.checked = nextProps.indeterminate === true ? null : nextProps.checked;
 		checkbox.indeterminate = nextProps.indeterminate;
+		// nextProps.checked !== 
 		this.setState({
 			checked: nextProps.indeterminate === true ? null : nextProps.checked,
 			indeterminate: nextProps.indeterminate
 		});
-		// console.log("[componentWillReceiveProps] this.state (after)", this.state);
 	},
 
 	shouldComponentUpdate (nextProps, nextState) {
@@ -162,7 +162,6 @@ const Checkbox = React.createClass({
 		}
 	
 		toReturn = toReturnIndeterminate === true || toReturnChecked === true;
-
 		return toReturn;
 	},
 
@@ -170,7 +169,20 @@ const Checkbox = React.createClass({
 		if (nextProps.indeterminate === true) {
 			nextState.checked = null;
 		}
+		if (nextProps.checked !== nextState.checked) {
+
+		}
 	},
+
+	componentDidUpdate () {
+		const checkbox = this.input;
+		checkbox.checked = this.state.indeterminate === true ? null : this.state.checked === true ? true : null;
+		checkbox.indeterminate = this.state.indeterminate;
+		if (this.state.indeterminate === false && this.state.checked === false) {
+			checkbox.checked = false;
+		}
+	},
+
 
 
 	// ### Render
@@ -256,26 +268,28 @@ const Checkbox = React.createClass({
 			}
 		}
 
-		if (isFunction(props.onChange)) {
-			if (oldValue !== !this.state.defaultValue) {
+		if (oldValue !== !this.state.defaultValue) {
+			if (isFunction(props.onChange)) {
 				this.props.onChange(event, {
 					checked: value,
 					indeterminate: null
 				});
-				this.setState({
-					checked: value,
-					indeterminate: null
-				});
-			} else {
+			}
+			this.setState({
+				checked: value,
+				indeterminate: null
+			});
+		} else {
+			if (isFunction(props.onChange)) {
 				this.props.onChange(event, {
-					checked: props.indeterminate === true ? null : value,
-					indeterminate: props.indeterminate
-				});
-				this.setState({
 					checked: props.indeterminate === true ? null : value,
 					indeterminate: props.indeterminate
 				});
 			}
+			this.setState({
+				checked: props.indeterminate === true ? null : value,
+				indeterminate: props.indeterminate
+			});
 		}
 	},
 

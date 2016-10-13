@@ -11,7 +11,7 @@ const CheckboxIndeterminate = React.createClass({
 	getInitialState () {
 		return {
 			indeterminate: true,
-			checked: false,
+			checked: true,
 			currentStateHelper: 'Default'
 		};
 	},
