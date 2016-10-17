@@ -18,7 +18,7 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 ## Concepts and Best Practices
 
 - <a name="approved-slds-patterns" href="#approved-slds-patterns">#</a> This library should include only components which have approved patterns in SLDS.
-- <a name="controlled-component" href="#controlled-component">#</a>Know what a [controlled component](#understanding-controlled-and-uncontrolled-components) is.
+- <a name="controlled-component" href="#controlled-component">#</a> Know what a [controlled component](#understanding-controlled-and-uncontrolled-components) is.
 - <a name="familiarize" href="#familiarize">#</a> Familiarize yourself with concepts used in the rest of the library.
 - <a name="eslint-all-files-touched" href="#eslint-all-files-touched">#</a> If a file is touched that has outstanding ESlint errors, please fix the ESlint errors first (and in a separate commit). Sometimes special cases require an `eslint-disable` comment for a particular rule and/or line. Please use sparingly.
 - <a name="react-create-class" href="#react-create-class">#</a> `React.createClass` is preferred over ES6 classes and `extend` at this time.
