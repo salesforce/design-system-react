@@ -30,7 +30,6 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 - <a name="avoid-mixins" href="#avoid-mixins">#</a> Avoid mixins. Instead, import and use shared code and external libraries as libraries, or use higher-order components. Do not add external dependencies unless absolutely necessary. Consider the "total cost of ownership" of all dependencies.
 - <a name="rest-operators-with-jsx" href="#rest-operators-with-jsx">#</a> Be careful with [rest operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters) when passively applying unnamed and unknown props to JSX nodes. This concept allows flexibility to the consuming developer, but is difficult to track for maintainers. If rest operators should be used, be sure to deconstruct each one that is actually needed by the JSX nodes, so that the rest operator only handles "unknown props" passed in from the outside developer. In short, don't utilize any properties in the `...props` object within the component. After using `const { active, className, ...rest } = props;` do not go back to using `this.prop.*` anywhere in the render function. 
 - <a name="rest-operators-with-jsx-delete" href="#rest-operators-with-jsx-delete">#</a> If a rest operator is already present in your render function and you need to remove additional props so that they do not get passed to a JSX node, use the rest operator along with `// eslint-disable-line no-unused-vars` to remove the prop from `...rest`.
-- <a name="dimoc" href="#dimoc">#</a> Use the controlled/uncontrolled callback/prop pattern. By default, React components should be "controlled" - exposing a callback and expecting their parent to control them. If a component needs to ability to also manage its own state (be an "uncontrolled" component) in particular situations the parent should still be able to take over and make it controlled simply by passing in a value for the prop. For instance, an `onModalClose` callback could change `isModalOpen` to `false` when it is ready to close the modal. For more detail and examples of this pattern, visit [DIMOC: Do It Myself or Callback](https://gist.github.com/jamesgpearce/53a6fc57677870f93248).
 - <a name="event-callbacks" href="#event-callbacks">#</a> Event callbacks should pass in the synthetic event, then a data object with contents that relate to the event.
 - <a name="boolean-prop-prefix" href="#boolean-prop-prefix">#</a> If a prop is a boolean, please prefix with `is` or `can` or suffix it with `-able`. Never default a prop to `true`.
 - <a name="use-checkprops" href="#use-checkprops">#</a> Add as many prop checking tests that will _only run in development_ as needed via `checkProp`. If the test can become an independent module and work in multiple components, add it to the `utilities` folder.
@@ -39,6 +38,63 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 - <a name="classnames" href="#classnames">#</a> This library makes extensive use of the [classnames](https://github.com/JedWatson/classnames) library for feeding conditional CSS classes into `className` attributes and allows a variety of types such as `string`, `object`, and `arrays`. Please review the libary's API.
 - <a name="props-in-get-initial-state" href="#props-in-get-initial-state">#</a> [Props in getInitialState is an anti-pattern.](https://facebook.github.io/react/tips/props-in-getInitialState-as-anti-pattern.html)
 - <a name="jsx-gotchas" href="#jsx-gotchas">#</a> Read [JSX Gotchas](https://facebook.github.io/react/docs/jsx-gotchas.html#html-entities)
+
+## Understanding Controlled and Uncontrolled Components
+- All new components should be controlled at first and then uncontrolled support added later if needed. 
+- All Design System React components should be able to be "controlled"--that is expose a callback and expect their parent to control them with props. 
+- Please note that if controlled by its parent, a component will appear broken if just copied and pasted into an application without a parent to control its value.
+- Controlled components can be stateless components.
+
+A **controlled** `<input>` has a `value` prop. Rendering a controlled `<input>` will reflect the value of the `value` prop.
+
+```javascript
+  render() {
+    return <input type="text" value="Hello!" />;
+  }
+```
+
+User input will have no effect on the rendered element because React has declared the value to be `Hello!`. To update the value in response to user input, you could use the `onChange` event:
+
+```javascript
+class MyForm extends React.Component {
+  constructor(props) {
+    super(props);    
+    this.state = {value: 'Hello!'};
+    this.handleChange = this.handleChange.bind(this);
+  }
+  
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+  
+  render() {
+    return (
+      <input
+        type="text"
+        value={this.state.value}
+        onChange={this.handleChange}
+      />
+    );
+  }
+}
+```
+
+In this example, we are accepting the value provided by the user and updating the `value` prop of the `<input>` component. This pattern makes it easy to implement interfaces that respond to or validate user interactions. For example:
+
+```javascript
+  handleChange(event) {
+    this.setState({value: event.target.value.substr(0, 140)});
+  }
+```
+
+This would accept user input and truncate the value to the first 140 characters.
+
+A **Controlled** component does not maintain its own internal state; the component renders purely based on props.
+
+_from [Controlled Components](https://facebook.github.io/react/docs/forms.html#controlled-components) in the React documentation._
+
+- If a component needs the ability to also manage its own state (that is to be an "uncontrolled" component) in particular situations the parent should still be able to take over and make it controlled simply by passing in a value for the prop. For instance, an `onModalClose` callback could change `isModalOpen` to `false` when it is ready to close the modal.
+- For more detail and examples of this pattern, visit [DIMOC: Do It Myself or Callback](https://gist.github.com/jamesgpearce/53a6fc57677870f93248).
 
 ## Component Organization
 
