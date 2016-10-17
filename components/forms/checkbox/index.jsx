@@ -121,11 +121,10 @@ const Checkbox = React.createClass({
 
 	componentWillReceiveProps (nextProps) {
 		const checkbox = this.input;
-		checkbox.checked = nextProps.indeterminate === true ? null : nextProps.checked;
+		checkbox.checked = nextProps.indeterminate === true ? false : nextProps.checked;
 		checkbox.indeterminate = nextProps.indeterminate;
-		// nextProps.checked !== 
 		this.setState({
-			checked: nextProps.indeterminate === true ? null : nextProps.checked,
+			checked: nextProps.indeterminate === true ? false : nextProps.checked,
 			indeterminate: nextProps.indeterminate
 		});
 	},
@@ -267,10 +266,14 @@ const Checkbox = React.createClass({
 				value = props.nextValue(oldValue, this.props);
 			}
 		}
+		console.log("!this.state.defaultValue", !this.state.defaultValue);
+		console.log("oldValue", oldValue);
+		console.log("value", value);
 
 		if (oldValue !== !this.state.defaultValue) {
+			console.warn('one');
 			if (isFunction(props.onChange)) {
-				this.props.onChange(event, {
+				this.props.onChange(value, event, {
 					checked: value,
 					indeterminate: null
 				});
@@ -280,8 +283,9 @@ const Checkbox = React.createClass({
 				indeterminate: null
 			});
 		} else {
+			console.warn('two');
 			if (isFunction(props.onChange)) {
-				this.props.onChange(event, {
+				this.props.onChange(value, event, {
 					checked: props.indeterminate === true ? null : value,
 					indeterminate: props.indeterminate
 				});

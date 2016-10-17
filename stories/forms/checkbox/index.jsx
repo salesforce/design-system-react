@@ -16,8 +16,8 @@ const CheckboxIndeterminate = React.createClass({
 		};
 	},
 
-	handleChange (event, data) {
-		action('handleChange')(event, `checked: ${data.checked}, indeterminate:  ${data.indeterminate}`);
+	handleChange (checked, event, data) {
+		action('handleChange')(checked, event, `checked: ${data.checked}, indeterminate:  ${data.indeterminate}`);
 		this.setState({
 			currentStateHelper: data.indeterminate === true ? 'Inderterminate' : data.checked === true ? 'Checked' : 'Unchecked',
 			checked: data.indeterminate === true ? null : data.checked,
