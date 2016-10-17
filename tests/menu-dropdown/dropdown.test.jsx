@@ -106,7 +106,7 @@ describe('SLDSMenuDropdown: ', () => {
 				className="this-is-the-menu"
 				isInline
 				nubbinPosition="top left"
-				forceOpen
+				modal={false}
 				label="Test"
 				menuStyle={{ height: '500px' }}
 				openOn="click"
@@ -117,10 +117,11 @@ describe('SLDSMenuDropdown: ', () => {
 		afterEach(unmountComponent);
 
 		it('has correct CSS classes and style', function () {
-			const component = this.wrapper.find('.slds-dropdown.slds-nubbin--top-left.this-is-the-menu');
-			console.log(component);
-			expect(component).to.exist;
-			expect(component).to.have.style('height', '500px');
+			const btn = this.wrapper.find('.slds-button').node;
+			Simulate.click(btn);
+			const componentNode = this.wrapper.find('.slds-dropdown');
+			expect(componentNode).to.exist;
+			expect(componentNode).to.have.style('height', '500px');
 		});
 	});
 

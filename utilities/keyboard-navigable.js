@@ -71,7 +71,19 @@ export function getNavigableItems (items) {
 	return navigableItems;
 }
 
-export function keyboardNavigate ({ currentFocusedIndex, isOpen, key, keyCode, navigableItems, onFocus, onSelect, toggleOpen }) {
+export function keyboardNavigate ({
+	componentContext,
+	currentFocusedIndex,
+	isOpen,
+	event,
+	key,
+	keyCode,
+	navigableItems,
+	onFocus,
+	onSelect,
+	target,
+	toggleOpen
+	}) {
 	const indexes = navigableItems.indexes;
 	const lastIndex = indexes.length - 1;
 	let focusedIndex = undefined;
@@ -83,11 +95,20 @@ export function keyboardNavigate ({ currentFocusedIndex, isOpen, key, keyCode, n
 		ch = null;
 	}
 
+	const openMenuKeys = keyCode === KEYS.ENTER ||
+		keyCode === KEYS.SPACE ||
+		keyCode === KEYS.UP;
+
 	if (keyCode === KEYS.ESCAPE) {
 		if (isOpen) toggleOpen();
 	} else if (!isOpen) {
 		focusedIndex = indexes[0];
-		if (keyCode === KEYS.ENTER || keyCode === KEYS.SPACE || keyCode === KEYS.DOWN || keyCode === KEYS.TAB || ch) toggleOpen();
+		if (openMenuKeys || ch) {
+			toggleOpen();
+		}
+		if (openMenuKeys && componentContext.trigger &&	ReactDOM.findDOMNode(componentContext.trigger) === target) {
+			componentContext.handleClick(event);
+		}
 	} else if (keyCode === KEYS.ENTER || keyCode === KEYS.SPACE) {
 		onSelect(currentFocusedIndex);
 	} else {
@@ -156,14 +177,25 @@ export const KeyboardNavigableMixin = {
 	},
 
 	// Handling open / close toggling is optional, and a default implementation is provided for handling focus, but selection _must_ be handled
-	handleKeyboardNavigate ({ isOpen = true, keyCode, onFocus = this.handleKeyboardFocus, onSelect, toggleOpen = noop }) {
+	handleKeyboardNavigate ({
+		event,
+		isOpen = true,
+		keyCode,
+		onFocus = this.handleKeyboardFocus,
+		onSelect,
+		target,
+		toggleOpen = noop
+		}) {
 		keyboardNavigate({
+			componentContext: this,
 			currentFocusedIndex: this.state.focusedIndex,
+			event,
 			isOpen,
 			keyCode,
 			navigableItems: this.navigableItems,
 			onFocus,
 			onSelect,
+			target,
 			toggleOpen
 		});
 	},
