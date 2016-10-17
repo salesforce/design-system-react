@@ -164,6 +164,10 @@ const MenuDropdown = React.createClass({
 		*/
 		id: PropTypes.string,
 		/**
+		 * Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use [](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices)
+		 */
+		isOpen: PropTypes.bool,
+		/**
 		* This prop is passed onto the triggering `Button`. Text within the trigger button.
 		*/
 		label: PropTypes.string,
@@ -215,10 +219,6 @@ const MenuDropdown = React.createClass({
 		 */
 		openOn: PropTypes.oneOf(['hover', 'click', 'hybrid']),
 		/**
-		 * Set dropdown to be open. Must be returned to false to become interactive again.
-		 */
-		forceOpen: PropTypes.bool,
-		/**
 		 * Called when a key pressed.
 		 */
 		onKeyDown: PropTypes.func,
@@ -238,6 +238,14 @@ const MenuDropdown = React.createClass({
 		 * Triggered when an item in the menu is clicked.
 		 */
 		onSelect: PropTypes.func,
+		/**
+		 * Triggered when the dropdown is opened.
+		 */
+		onOpen: PropTypes.func,
+		/**
+		 * Triggered when the dropdown is closed.
+		 */
+		onClose: PropTypes.func,
 		/**
 		 * An array of menu item.
 		 */
@@ -287,11 +295,25 @@ const MenuDropdown = React.createClass({
 		});
 	},
 
-	componentWillReceiveProps (nextProps) {
+	componentWillReceiveProps (nextProps, prevProps) {
 		if (this.props.value !== nextProps.value) {
 			this.setState({
 				selectedIndex: this.getIndexByValue(nextProps.value)
 			});
+		}
+
+		if (nextProps.isOpen === true) {
+			this.setState({
+				isOpen: true
+			});
+			this.setFocus();
+		}	else if (nextProps.isOpen === false) {
+			this.setState({
+				isOpen: false
+			});
+			if (prevProps.isOpen === true) {
+				this.setFocus();
+			}
 		}
 	},
 
@@ -331,15 +353,21 @@ const MenuDropdown = React.createClass({
 
 	handleClose () {
 		if (this.state.isOpen) {
-			this.setState({
-				isOpen: false
-			});
+			if (this.props.isOpen === undefined) {
+				this.setState({
+					isOpen: false
+				});
+			}
 
 			this.isHover = false;
 
 			if (currentOpenDropdown === this) {
 				currentOpenDropdown = undefined;
 			}
+		}
+
+		if (this.props.onClose) {
+			this.props.onClose();
 		}
 	},
 
@@ -350,9 +378,13 @@ const MenuDropdown = React.createClass({
 
 		currentOpenDropdown = this;
 
-		this.setState({
-			isOpen: true
-		});
+		if (this.props.isOpen === undefined) {
+			this.setState({
+				isOpen: true
+			});
+		} else if (this.props.onOpen) {
+			this.props.onOpen();
+		}
 	},
 
 	handleMouseEnter (event) {
@@ -383,11 +415,13 @@ const MenuDropdown = React.createClass({
 	},
 
 	handleClick (event) {
-		if (!this.state.isOpen) {
-			this.handleOpen();
-			this.setFocus();
-		} else {
-			this.handleClose();
+		if (this.props.isOpen === undefined) {
+			if (!this.state.isOpen) {
+				this.handleOpen();
+				this.setFocus();
+			} else {
+				this.handleClose();
+			}
 		}
 
 		if (this.props.onClick) {
@@ -436,10 +470,12 @@ const MenuDropdown = React.createClass({
 
 			if (event.keyCode !== KEYS.TAB) {
 				this.handleKeyboardNavigate({
+					event,
 					isOpen: this.state.isOpen || false,
 					key: event.key,
 					keyCode: event.keyCode,
 					onSelect: this.handleSelect,
+					target: event.target,
 					toggleOpen: this.toggleOpen
 				});
 			} else {
@@ -668,7 +704,7 @@ const MenuDropdown = React.createClass({
 		}
 
 		const outsideClickIgnoreClass = `ignore-click-${this.getId()}`;
-		const isOpen = this.props.forceOpen || !this.props.disabled && this.state.isOpen && !!this.trigger;
+		const isOpen = !this.props.disabled && this.state.isOpen && !!this.trigger;
 
 		this.renderOverlay(isOpen);
 

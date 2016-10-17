@@ -28,6 +28,65 @@ const getDropdown = (props) => (
 	<Dropdown {...props} />
 );
 
+const DropdownControlled = React.createClass({
+	displayName: 'DropdownControlled',
+	getInitialState () {
+		return {
+			isOpen: false
+		};
+	},
+	handleButtonClickOpen () {
+		this.handleOpen();
+	},
+	handleButtonClickClose () {
+		this.handleClose();
+	},
+	handleButtonClickReset () {
+		this.setState({ isOpen: undefined });
+	},
+	handleOpen () {
+		this.setState({ isOpen: true });
+	},
+	handleClose () {
+		this.setState({ isOpen: false });
+	},
+	handleClickCustomContent () {
+		this.setState({ isOpen: false });
+	},
+	render () {
+		let isOpen;
+		if (this.state && this.state.isOpen === true) {
+			isOpen = true;
+		} else if (this.state && this.state.isOpen === false) {
+			isOpen = false;
+		}	else {
+			isOpen = undefined;
+		}
+		const props = this.props;
+		return (
+			<div className="slds-grid">
+
+				<div className="slds-col">
+					<Dropdown
+						{...props}
+						modal={false}
+						isOpen={isOpen}
+						onClose={this.handleClose}
+						onOpen={this.handleOpen}
+						options={options}
+						onClick={this.handleOpen}
+					/>
+				</div>
+				<div className="slds-col">
+					<Button label="Open Dropdown" onClick={this.handleButtonClickOpen} />
+					<Button label="Close Dropdown" onClick={this.handleButtonClickClose} />
+					<Button label="Reset Dropdown" onClick={this.handleButtonClickReset} />
+				</div>
+			</div>
+		);
+	}
+});
+
 const getDropdownPositioned = (props) => {
 	const positionedDropdowns = [];
 	DropdownNubbinPositions.forEach((position) => {
@@ -103,6 +162,9 @@ storiesOf(MENU_DROPDOWN, module)
 	.add('Base', () => getDropdown({
 		align: 'right',
 		label: 'Dropdown Click',
+		onClick: (...rest) => {
+			action('Clicked')(...rest);
+		},
 		onSelect: (...rest) => {
 			action('Selected')(...rest);
 		},
@@ -111,6 +173,9 @@ storiesOf(MENU_DROPDOWN, module)
 	.add('No Modal', () => getDropdown({
 		align: 'right',
 		label: 'Dropdown Click',
+		onClick: (...rest) => {
+			action('Clicked')(...rest);
+		},
 		onSelect: (...rest) => {
 			action('Selected')(...rest);
 		},
@@ -188,4 +253,9 @@ storiesOf(MENU_DROPDOWN, module)
 		openOn: 'hover',
 		options,
 		value: 'C0'
-	}));
+	}))
+	.add('Controled w/ isOpen', () => <DropdownControlled
+		align="right"
+		label="Dropdown Click"
+		options={options}
+	/>);

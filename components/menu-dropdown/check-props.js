@@ -12,6 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import oneOfRequiredProperty from '../../utilities/warning/one-of-required-property';
 import hasChildrenWithoutDisplayNameOf from '../../utilities/warning/has-children-without-display-name-of';
+import sunsetProperty from '../../utilities/warning/sunset-property';
 
 import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
 
@@ -19,6 +20,9 @@ let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
+		// Deprecated and changed to another property
+		sunsetProperty(COMPONENT, props.forceOpen, 'forceOpen', 'Please use isOpen instead. It provides a consistent prop that aligns with other componenents.');
+
 		oneOfRequiredProperty(COMPONENT, {
 			options: props.options,
 			children: props.children
