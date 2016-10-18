@@ -2,31 +2,51 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.4.0
+
+**BREAKING CHANGES**
+
+- Replaces `modal` with `isInline` for all dropdown-like components.
+
+**MAJOR CHANGES**
+
+- Adds a Tabs component.
+- Allow parent to control state of dropdown.
+
+**BUG FIX**
+
+- Tweaks the class names on dropdown trigger to match SLDS.
+
+
 ## Release 0.3.16
 
 **BUG FIX**
 
 - Due to deprecations in v0.3.15 of `Input`'s `onIconClick`, an `onSearch` callback has been added to `Search`.
 
+
 ## Release 0.3.15
 
 **MAJOR CHANGES**
 
-- Allow icon on the left and right of inputs. 
+- Allow icon on the left and right of inputs.
 - Search can be `clearable` now with right clear icon.
 - Input now uses `iconRight` and `iconLeft` and [accepts](https://github.com/salesforce-ux/design-system-react/blob/master/stories/forms/input/index.jsx#L36) an `InputIcon` component. Use of `onClick` [makes it clickable](https://github.com/salesforce-ux/design-system-react/blob/master/stories/forms/input/index.jsx#L11).
 - The wrapping span has been removed from `ButtonIcon`. `ButtonIcon` is just a CSS customization of `UtilityIcon` now.
 - Be sure to check inputs for deprecation notices.
 
+
 ## Release 0.3.14
 
 - Remove top divider as default of `MenuDropdown` list menu heading items.
-- Adds `divider` key with values `top` and `bottom` to `MenuDropdown` options to allow for a divider to be added to a heading. 
+- Adds `divider` key with values `top` and `bottom` to `MenuDropdown` options to allow for a divider to be added to a heading.
+
 
 ## Release 0.3.13
 
 **BUG FIX**
 - In App Launcher, Tile Truncate utility uses new props to prevent UI state from being out-of-sync with props.
+
 
 ## Release 0.3.12
 
@@ -35,21 +55,25 @@
 - Add Dropdown wrapping `div` to align with SLDS and allow menu nubbins to be positioned with default CSS. [DOM change]
 - Make Global Header dropdowns inline instead of "modal"
 
+
 ## Release 0.3.11
 
 **BUG FIX**
 - In Picklist, tabbing moves focus to the next tabbable DOM element, instead of opening the menu.
 - In Dropdown, an `onCLick` prop is passed down to all custom content children, so that they can close the menu.
 
+
 ## Release 0.3.10
 
 **MAJOR CHANGES**
 - Adds `hybrid` to `openOn` options. This allows a click to open and hover out to close in case one does not have control of the DOM outside of the navigation.
 
+
 ## Release 0.3.9
 
 **Bug Fix**
 - Prevent Global Nav menus from flipping up at small screen heights
+
 
 ## Release 0.3.8
 
@@ -59,8 +83,9 @@
 - Make DatePicker and TimePicker value prop the source of future state
 
 **Documentation**
-- Add mention of classnames library to `contributing.md` 
+- Add mention of classnames library to `contributing.md`
 - Add test coverage comments, surfacing in-browser tests
+
 
 ## Release 0.3.7
 
@@ -74,6 +99,7 @@
 - Sends correct `href` to App Launcher Tile click callback
 - Corrects markup for menu separators and headers in Global Navigation
 
+
 ## Release 0.3.6
 
 **MAJOR CHANGES**
@@ -83,11 +109,13 @@
 **Bug Fix**
 - Detect PageHeader detail field truncation on update instead of mount.
 
+
 ## Release 0.3.5
 
 **MAJOR CHANGES**
 - Add `style` and `bodyClassName` props to Card to allow overflow on Card body.
 - Add `length` prop to GlobalNavigationMenuDropdown. It can be set to `null` to remove scrolling.
+
 
 ## Release 0.3.4
 
@@ -100,6 +128,7 @@
 - Focus on search input when App Launcher opens
 - No longer renders a close button if modal type is prompt.
 - Lookup search icon default should be on right side.
+
 
 ## Release 0.3.2
 
