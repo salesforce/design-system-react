@@ -23,7 +23,7 @@ import classNames from 'classnames';
 import { TAB } from '../../utilities/constants';
 import { findDOMNode } from 'react-dom';
 
-import './styles';
+import './tab.css';
 
 
 const Tab = React.createClass({
@@ -69,7 +69,7 @@ const Tab = React.createClass({
 		 * The HTML ID of `<TabPanel />` this tab controls.
 		 */
 		panelId: PropTypes.string,
-		
+
 		/**
 		 * The string that is shown as both the title and the label for this tab.
 		 */
@@ -112,7 +112,7 @@ const Tab = React.createClass({
 			...attributes } = this.props;
 
 		delete attributes.focus;
-	
+
 		return (
 			<li
 				{...attributes}
@@ -135,7 +135,7 @@ const Tab = React.createClass({
 			>
 				<a
 					className="slds-tabs--default__link"
-					href="javascript:void(0);"
+					href="javascript:void(0);" // eslint-disable-line no-script-url
 					role="presentation"
 					tabIndex="-1"
 					aria-disabled={disabled}

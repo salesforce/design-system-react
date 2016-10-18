@@ -23,54 +23,49 @@ import classNames from 'classnames';
 import { TABS_LIST } from '../../utilities/constants';
 
 
-const TabsList = React.createClass({
-	displayName: TABS_LIST,
+const TabsList = ({
+	id,
+	className,
+	children,
+	...attributes
+}) => (
+	<ul
+		id={`${id}-slds-tabs__nav`}
+		{...attributes}
+		className={classNames(
+			'slds-tabs--default__nav',
+			className
+		)}
+		role="tablist"
+	>
+		{children}
+	</ul>
+);
 
-	propTypes: {
-		/**
-		 * Inherits the `id` from the parent `<Tabs />` component and appends `-tabs__nav`. Becomes the HTML `id` attribute of UL element that has the class `.slds-tabs--default__nav` on it.
-		 */
-		id: PropTypes.string,
+TabsList.displayName = TABS_LIST;
 
-		/**
-		 * Class names to be added to the tabs list element.
-		 */
-		className: PropTypes.oneOfType([
-			PropTypes.array,
-			PropTypes.object,
-			PropTypes.string
-		]),
+TabsList.propTypes = {
+	/**
+	 * Inherits the `id` from the parent `<Tabs />` component and appends `-tabs__nav`. Becomes the HTML `id` attribute of UL element that has the class `.slds-tabs--default__nav` on it.
+	 */
+	id: PropTypes.string,
 
-		/**
-		 * The `children` are the actual tabs to be rendered as `li` elements. They get created by [tabs/index.jsx](./index.jsx) in the `renderTabsList` function.
-		 */
-		children: PropTypes.oneOfType([
-			PropTypes.object,
-			PropTypes.array
-		])
-	},
+	/**
+	 * Class names to be added to the tabs list element.
+	 */
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string
+	]),
 
-	render () {
-		const {
-			id,
-			className,
-			children,
-			...attributes } = this.props;
-
-		return (
-			<ul
-				id={`${id}-slds-tabs__nav`}
-				{...attributes}
-				className={classNames(
-					'slds-tabs--default__nav',
-					className
-				)}
-				role="tablist"
-			>
-				{children}
-			</ul>
-		);
-	}
-});
+	/**
+	 * The `children` are the actual tabs to be rendered as `li` elements. They get created by [tabs/index.jsx](./index.jsx) in the `renderTabsList` function.
+	 */
+	children: PropTypes.oneOfType([
+		PropTypes.object,
+		PropTypes.array
+	])
+};
 
 module.exports = TabsList;
