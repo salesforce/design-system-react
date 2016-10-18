@@ -170,7 +170,8 @@ class ButtonStateful extends TooltipTrigger {
 					<ButtonIcon
 						disabled={this.props.disabled}
 						name={this.props.stateTwo.iconName}
-						size="small" position="left"
+						size="small"
+						position="left"
 						className="slds-button__icon--stateful"
 					/>
 					{this.props.stateTwo.label}

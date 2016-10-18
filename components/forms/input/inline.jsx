@@ -16,7 +16,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ## Dependencies
 
 // ### React
-import React from 'react';
+import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
 // ### isFunction
@@ -25,15 +25,13 @@ import isFunction from 'lodash.isfunction';
 // ## Children
 import Button from '../../button';
 import Input from './index';
+import InputIcon from '../../icon/input-icon';
 
 // ### Event Helpers
 import { KEYS } from '../../../utilities';
 
 // ## Constants
 import { FORMS_INLINE_EDIT } from '../../../utilities/constants';
-
-// Remove the need for `React.PropTypes`
-const { PropTypes } = React;
 
 /**
  * An inline input is rendered as a label by default. When clicked (or tabbed in), it's rendered as an input. When the focus is lost, the current input value is saved and the input is rendered as a label again.
@@ -116,7 +114,7 @@ const InlineEdit = React.createClass({
 
 			// ### Additional properties
 			// Using [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx) to pass on any properties which are not explicitly defined.
-			...props
+			...rest
 		} = this.props;
 
 		const inlineEditTrigger = (
@@ -130,22 +128,22 @@ const InlineEdit = React.createClass({
 			/>
 		);
 
-		if (this.state.isEditing) {
-			props.iconCategory = 'utility';
-			props.iconName = 'close';
-			props.iconPosition = 'right';
-			props.onIconClick = this.endEditMode;
-		} else {
-			props.onClick = this.triggerEditMode;
-		}
-
 		return (
 			<Input
-				{...props}
+				{...rest}
+				iconRight={this.state.isEditing
+					? <InputIcon
+						category="utility"
+						name="close"
+						position="right"
+						onClick={this.endEditMode}
+					/>
+					: null}
 				disabled={disabled}
 				inlineEditTrigger={inlineEditTrigger}
 				onBlur={this.handleBlur}
 				onChange={this.handleChange}
+				onClick={!this.state.isEditing ? this.triggerEditMode : null}
 				onKeyDown={this.handleKeyDown}
 				readOnly={!this.state.isEditing}
 				name={name}

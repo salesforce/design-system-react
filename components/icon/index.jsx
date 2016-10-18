@@ -52,7 +52,7 @@ const Icon = React.createClass({
 		/**
 		 * CSS classes that are applied to the SVG
 		 */
-		className: PropTypes.string,
+		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
 		 * An SVG object to use instead of name / category, look in `design-system-react/icons` for examples
 		 */

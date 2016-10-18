@@ -160,35 +160,20 @@ class Button extends TooltipTrigger {
 	}
 
 	renderIcon (name) {
-		let buttonIcon = null;
-		if (this.props.iconName) {
-			let iconClassName;
-			if (this.props.iconVariant === 'global-header') {
-				iconClassName = 'slds-global-header__icon';
-			}
-			let iconSize = this.props.iconSize === '' || this.props.iconVariant ? null : this.props.iconSize;
-			buttonIcon = (<ButtonIcon
-				className={iconClassName}
+		const iconSize = this.props.iconSize === '' || this.props.iconVariant ? null : this.props.iconSize;
+		return (
+			<ButtonIcon
+				category={this.props.category}
+				className={classNames({
+					'slds-global-header__icon': this.props.iconVariant === 'global-header'
+				},
+				this.props.iconClassName)}
 				hint={this.props.hint}
 				inverse={this.props.inverse}
 				name={name}
-				category={this.props.iconCategory}
 				position={this.props.iconPosition}
 				size={iconSize}
 			/>);
-		}
-		return buttonIcon;
-	}
-
-	renderIconMore () {
-		let buttonIcon = null;
-		if (this.props.iconVariant === 'more') {
-			buttonIcon = (<ButtonIcon
-				name="down"
-				size="x-small"
-			/>);
-		}
-		return buttonIcon;
 	}
 
 	renderLabel () {
@@ -225,10 +210,12 @@ class Button extends TooltipTrigger {
 			>
 				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
 
-				{this.renderIcon(this.props.iconName)}
-				{this.renderIconMore()}
+				{this.props.iconName ? this.renderIcon(this.props.iconName) : null}
+				{this.props.iconVariant === 'more'
+				? <ButtonIcon	category="utility" name="down" size="x-small" />
+				: null}
 
-				{(this.props.iconPosition !== 'right') ? this.renderLabel() : null}
+				{(this.props.iconPosition === 'left' || !this.props.iconPosition) ? this.renderLabel() : null}
 				{this.props.children}
 				{this.getTooltip()}
 			</button>

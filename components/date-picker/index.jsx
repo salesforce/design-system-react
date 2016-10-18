@@ -15,9 +15,14 @@ import Popover from '../popover';
 import DatePicker from './date-picker-base/index';
 import InputIcon from '../icon/input-icon';
 
+// This component's `checkProps` which issues warnings to developers about properties
+// when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+
 import {KEYS,EventUtil} from '../../utilities';
 
-const displayName = 'Datepicker';
+import { DATEPICKER } from '../../utilities/constants';
+
 const propTypes = {
   abbrWeekDayLabels: React.PropTypes.array,
   disabled: React.PropTypes.bool,
@@ -80,7 +85,7 @@ const defaultProps = {
 
 module.exports = React.createClass({
 
-  displayName: displayName,
+  displayName: DATEPICKER,
 
   propTypes: propTypes,
 
@@ -94,6 +99,11 @@ module.exports = React.createClass({
       value:this.props.value,
       strValue:this.props.strValue
     };
+  },
+
+  componentWillMount () {
+    // `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+    checkProps(DATEPICKER, this.props);
   },
 
   componentWillReceiveProps(nextProps) {
@@ -154,7 +164,7 @@ module.exports = React.createClass({
     return new Date();
   },
 
-  getSimplePopover() {
+  getInlineMenu() {
     return (
       !this.props.disabled && this.state.isOpen?
         <div className='slds-dropdown slds-dropdown--left'>
@@ -163,7 +173,7 @@ module.exports = React.createClass({
     );
   },
 
-  getModalPopover() {
+  getSeparateMenu() {
     return (
       !this.props.disabled && this.state.isOpen?
         <Popover
@@ -237,6 +247,14 @@ module.exports = React.createClass({
   },
 
   render() {
+    let isInline;
+    /* eslint-disable react/prop-types */
+    if (this.props.isInline) {
+      isInline = true;
+    } else if (this.props.modal !== undefined) {
+      isInline = !this.props.modal;
+    }
+    /* eslint-enable react/prop-types */
 
     const inputStyles = this.props.disabled ? {cursor: 'inherit'} : {cursor: 'pointer'};
 
@@ -264,7 +282,7 @@ module.exports = React.createClass({
             />
           </div>
         </div>
-        {this.props.modal?this.getModalPopover():this.getSimplePopover()}
+        {isInline ? this.getInlineMenu() : this.getSeparateMenu()}
       </div>
     );
   }

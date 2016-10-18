@@ -16,27 +16,73 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ## Dependencies
 
 // ### React
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 // ## Children
 import Input from './index';
+import InputIcon from '../../icon/input-icon';
+
+// ### Event Helpers
+import { KEYS, EventUtil } from '../../../utilities';
 
 // ## Constants
 import { FORMS_SEARCH } from '../../../utilities/constants';
 
+const handleKeyDown = (event, onSearch) => {
+	if (event.keyCode === KEYS.ENTER) {
+		EventUtil.trapImmediate(event);
+		onSearch(event);
+	}
+};
+
 /**
- * An `Search` is is an `Input` which renders the search icon by default.
+ * A `Search` is an `Input` which renders the search icon by default. It can be cleared, too. All `Input` props not specified as props already may be used with this component and will override defaults.
  */
-const Search = (props) => (
+const Search = ({ assistiveText, clearable, onClear, onSearch, placeholder, ...props }) => (
 	<Input
-		iconAssistiveText="Search"
-		iconCategory="utility"
-		iconName="search"
-		iconPosition="left"
+		assistiveText={assistiveText}
+		iconLeft={
+			<InputIcon
+				assistiveText="Search"
+				category="utility"
+				name="search"
+				onClick={onSearch}
+			/>}
+		iconRight={clearable ? <InputIcon
+			assistiveText="Clear"
+			category="utility"
+			name="clear"
+			onClick={onClear}
+		/> : null}
+		onKeyDown={onSearch ? event => handleKeyDown(event, onSearch) : null}
+		placeholder={placeholder}
 		{...props}
 	/>
 );
 
 Search.displayName = FORMS_SEARCH;
+
+Search.propTypes = {
+	/**
+	 * Assistive text to search input
+	 */
+	assistiveText: PropTypes.string,
+	/**
+	 * Adds a clear button to right side of the input
+	 */
+	clearable: PropTypes.bool,
+	/**
+	 * Triggers when the clear button is clicked
+	 */
+	onClear: PropTypes.func,
+	/**
+	 * This event fires when enter is pressed in the `input` or the search button is clicked.
+	 */
+	onSearch: React.PropTypes.func,
+	/**
+	 * Placeholder for the input
+	 */
+	placeholder: PropTypes.string
+};
 
 module.exports = Search;

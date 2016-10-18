@@ -2,6 +2,32 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.3.16
+
+**BUG FIX**
+
+- Due to deprecations in v0.3.15 of `Input`'s `onIconClick`, an `onSearch` callback has been added to `Search`.
+
+## Release 0.3.15
+
+**MAJOR CHANGES**
+
+- Allow icon on the left and right of inputs. 
+- Search can be `clearable` now with right clear icon.
+- Input now uses `iconRight` and `iconLeft` and [accepts](https://github.com/salesforce-ux/design-system-react/blob/master/stories/forms/input/index.jsx#L36) an `InputIcon` component. Use of `onClick` [makes it clickable](https://github.com/salesforce-ux/design-system-react/blob/master/stories/forms/input/index.jsx#L11).
+- The wrapping span has been removed from `ButtonIcon`. `ButtonIcon` is just a CSS customization of `UtilityIcon` now.
+- Be sure to check inputs for deprecation notices.
+
+## Release 0.3.14
+
+- Remove top divider as default of `MenuDropdown` list menu heading items.
+- Adds `divider` key with values `top` and `bottom` to `MenuDropdown` options to allow for a divider to be added to a heading. 
+
+## Release 0.3.13
+
+**BUG FIX**
+- In App Launcher, Tile Truncate utility uses new props to prevent UI state from being out-of-sync with props.
+
 ## Release 0.3.12
 
 **BUG FIX**

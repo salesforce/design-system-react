@@ -40,8 +40,8 @@ const GlobalHeaderDropdown = (props) => {
 
 	return (
 		<MenuDropdown
+			isInline
 			nubbinPosition="top right"
-			modal={false}
 			{...rest}
 		>
 			<GlobalHeaderTrigger
