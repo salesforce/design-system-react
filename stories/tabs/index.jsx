@@ -45,6 +45,26 @@ const getTabs = () => (
 );
 /* eslint-enable react/display-name */
 
+/* eslint-disable react/display-name */
+const getTabsMoreThanOneAllowGeneratedID = () => (
+	<div>
+		<h2 className="slds-text-heading--large">Generated Unique IDs Demo</h2>
+		<Tabs>
+			<Pane label="Only 1 Tab">
+				<h2 className="slds-text-heading--medium">About this story</h2>
+				<p>There should be two instances of Tabs in this story, and each should have a unique (generated) ID.</p>
+			</Pane>
+		</Tabs>
+		<Tabs>
+			<Pane label="Only 1 Tab">
+				<h2 className="slds-text-heading--medium">About this story</h2>
+				<p>There should be two instances of Tabs in this story, and each should have a unique (generated) ID.</p>
+			</Pane>
+		</Tabs>
+	</div>
+);
+/* eslint-enable react/display-name */
+
 
 /* eslint-disable react/display-name */
 const getTabsNested = () => (
@@ -408,6 +428,7 @@ storiesOf(TABS, module)
 	.add('Nested', () => getTabsNested())
 	.add('Outside Control', () => <DemoTabsOutsideControl className="controlled-yo" />)
 	.add('Conditional', () => <DemoTabsConditional className="conditional-yo" />)
+	.add('Unique Generated IDs', () => getTabsMoreThanOneAllowGeneratedID())
 	;
 
 module.exports = getTabs;

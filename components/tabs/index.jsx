@@ -130,7 +130,6 @@ const Tabs = React.createClass({
 	getDefaultProps () {
 		// If no `id` is supplied in the props we generate one. An HTML ID is _required_ for several elements in a tabs component in order to leverage ARIA attributes for accessibility.
 		return {
-			id: shortid.generate(),
 			defaultSelectedIndex: 0
 		};
 	},
@@ -140,6 +139,8 @@ const Tabs = React.createClass({
 	},
 
 	componentWillMount () {
+		this.generatedId = shortid.generate();
+
 		this.setState({
 			selectedIndex: this.props.defaultSelectedIndex
 		});
@@ -184,6 +185,7 @@ const Tabs = React.createClass({
 
 	getNextTab (index) {
 		const count = this.getTabsCount();
+
 
 		// Look for non-disabled tab from index to the last tab on the right
 		for (let i = index + 1; i < count; i++) {
@@ -357,7 +359,7 @@ const Tabs = React.createClass({
 	render () {
 		const {
 			className,
-			id,
+			id = this.generatedId,
 			...attributes
 			} = this.props;
 
