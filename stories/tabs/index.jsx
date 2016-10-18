@@ -77,7 +77,7 @@ const getTabsNested = () => (
 				<h2 className="slds-text-heading--medium">This is my tab 3 contents!</h2>
 				<p>And they&rsquo;re tabceptionish.</p>
 				<div className="slds-box slds-m-vertical--large">
-					<Tabs selectedIndex={0}>
+					<Tabs defaultSelectedIndex={0}>
 						<Pane label="Tab 1">
 							<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 							<p>And they&rsquo;re amazing.</p>
@@ -90,7 +90,7 @@ const getTabsNested = () => (
 							<h2 className="slds-text-heading--medium">This is my tab 3 contents!</h2>
 							<p>And they&rsquo;re even <em>more</em> tabceptionish.</p>
 							<div className="slds-box slds-m-vertical--large">
-								<Tabs selectedIndex={0}>
+								<Tabs defaultSelectedIndex={0}>
 									<Pane label="Tab 1 (no children!)">
 										<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 										<p>And they&rsquo;re amazing.</p>
