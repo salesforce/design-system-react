@@ -25,7 +25,11 @@ const options = [
 ];
 
 const getDropdown = (props) => (
-	<Dropdown {...props} />
+	<Dropdown
+		{...props}
+		onClose={action('Closed')}
+		onOpen={action('Opened')}
+	/>
 );
 
 const DropdownControlled = React.createClass({
@@ -44,10 +48,12 @@ const DropdownControlled = React.createClass({
 	handleButtonClickReset () {
 		this.setState({ isOpen: undefined });
 	},
-	handleOpen () {
+	handleOpen (...params) {
+		action('Opened')(...params);
 		this.setState({ isOpen: true });
 	},
-	handleClose () {
+	handleClose (...params) {
+		action('Closed')(...params);
 		this.setState({ isOpen: false });
 	},
 	handleClickCustomContent () {
@@ -96,6 +102,8 @@ const getDropdownPositioned = (props) => {
 					{...props}
 					forceOpen
 					nubbinPosition={position}
+					onClose={action('Closed')}
+					onOpen={action('Opened')}
 				>
 					<Trigger>
 						<Button iconVariant="container" iconName="settings" label={position} />
@@ -114,6 +122,8 @@ const getDropdownPositioned = (props) => {
 				<Dropdown
 					{...props}
 					nubbinPosition="top right"
+					onClose={action('Closed')}
+					onOpen={action('Opened')}
 				>
 					<Trigger>
 						<Button iconVariant="container" iconName="settings" assistiveText="top right" />
@@ -125,7 +135,11 @@ const getDropdownPositioned = (props) => {
 };
 
 const getDropdownCustomTrigger = (props) => (
-	<Dropdown {...props} >
+	<Dropdown
+		{...props}
+		onClose={action('Closed')}
+		onOpen={action('Opened')}
+	>
 		<Trigger>
 			<Button iconCategory="utility" iconName="settings" />
 		</Trigger>
@@ -151,7 +165,11 @@ const DropdownCustomContent = (props) => (
 );
 
 const getDropdownCustomContent = (props) => (
-	<Dropdown {...props} >
+	<Dropdown
+		{...props}
+		onClose={action('Closed')}
+		onOpen={action('Opened')}
+	>
 		<DropdownCustomContent />
 		<List options={[{ label: 'Custom Content Option' }, ...options]} />
 	</Dropdown>
