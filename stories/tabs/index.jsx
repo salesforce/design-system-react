@@ -45,6 +45,26 @@ const getTabs = () => (
 );
 /* eslint-enable react/display-name */
 
+/* eslint-disable react/display-name */
+const getTabsMoreThanOneAllowGeneratedID = () => (
+	<div>
+		<h2 className="slds-text-heading--large">Generated Unique IDs Demo</h2>
+		<Tabs>
+			<Pane label="Only 1 Tab">
+				<h2 className="slds-text-heading--medium">About this story</h2>
+				<p>There should be two instances of Tabs in this story, and each should have a unique (generated) ID.</p>
+			</Pane>
+		</Tabs>
+		<Tabs>
+			<Pane label="Only 1 Tab">
+				<h2 className="slds-text-heading--medium">About this story</h2>
+				<p>There should be two instances of Tabs in this story, and each should have a unique (generated) ID.</p>
+			</Pane>
+		</Tabs>
+	</div>
+);
+/* eslint-enable react/display-name */
+
 
 /* eslint-disable react/display-name */
 const getTabsNested = () => (
@@ -77,7 +97,7 @@ const getTabsNested = () => (
 				<h2 className="slds-text-heading--medium">This is my tab 3 contents!</h2>
 				<p>And they&rsquo;re tabceptionish.</p>
 				<div className="slds-box slds-m-vertical--large">
-					<Tabs selectedIndex={0}>
+					<Tabs defaultSelectedIndex={0}>
 						<Pane label="Tab 1">
 							<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 							<p>And they&rsquo;re amazing.</p>
@@ -90,7 +110,7 @@ const getTabsNested = () => (
 							<h2 className="slds-text-heading--medium">This is my tab 3 contents!</h2>
 							<p>And they&rsquo;re even <em>more</em> tabceptionish.</p>
 							<div className="slds-box slds-m-vertical--large">
-								<Tabs selectedIndex={0}>
+								<Tabs defaultSelectedIndex={0}>
 									<Pane label="Tab 1 (no children!)">
 										<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 										<p>And they&rsquo;re amazing.</p>
@@ -244,54 +264,67 @@ const DemoTabsOutsideControl = React.createClass({
 	},
 
 	handleSelect (index, last) {
-		if (index === this.state.whichOneSelectedYo) {
+		let toReturn = true;
+		if (index === this.state.whichOneSelectedYo && last === this.state.prevOneSelectedYo) {
+			toReturn = false;
+		} else {
+			action('handleSelect')(index, last);
 			this.setState({ whichOneSelectedYo: index, prevOneSelectedYo: last });
-			return false;
 		}
-		this.setState({ whichOneSelectedYo: index, prevOneSelectedYo: last });
-		return true;
+		return toReturn;
+	},
+
+
+	showState () {
+		action('showState (current)')(this.state.whichOneSelectedYo);
+		action('showState (previous)')(this.state.prevOneSelectedYo);
 	},
 
 	handleButtonClicked (event) {
 		const prevOneSelected = this.state.prevOneSelectedYo;
 		const thisOneSelected = this.state.whichOneSelectedYo;
 
+		action('handleButtonClicked')(event.currentTarget.id);
 		switch (event.currentTarget.id) {
 			case 'monday':
-				this.setState({ whichOneSelectedYo: 0, prevOneSelectedYo: prevOneSelected });
+				this.handleSelect(0, thisOneSelected);
 				break;
 
 			case 'tuesday':
-				this.setState({ whichOneSelectedYo: 1, prevOneSelectedYo: prevOneSelected });
+				this.handleSelect(1, thisOneSelected);
 				break;
 
 			case 'tuesday-alt':
-				this.setState({ whichOneSelectedYo: 1, prevOneSelectedYo: prevOneSelected });
+				this.handleSelect(1, thisOneSelected);
 				break;
 
 			case 'wednesday':
-				this.setState({ whichOneSelectedYo: 2, prevOneSelectedYo: prevOneSelected });
+				this.handleSelect(2, thisOneSelected);
 				break;
 
 			case 'thursday':
-				this.setState({ whichOneSelectedYo: 3, prevOneSelectedYo: prevOneSelected });
+				this.handleSelect(3, thisOneSelected);
 				break;
 
 			case 'friday':
-				this.setState({ whichOneSelectedYo: 4, prevOneSelectedYo: prevOneSelected });
+				this.handleSelect(4, thisOneSelected);
 				break;
 
 			case 'none':
-				this.setState({ whichOneSelectedYo: undefined, prevOneSelectedYo: prevOneSelected });
+				this.handleSelect(undefined, thisOneSelected);
 				break;
 
 			case 'previous':
-				this.setState({ whichOneSelectedYo: prevOneSelected, prevOneSelectedYo: thisOneSelected });
+				this.handleSelect(prevOneSelected, thisOneSelected);
+				break;
+
+			case 'show-state':
+				this.showState();
 				break;
 
 			default:
 				// Statements executed when none of the values match the value of the expression
-				this.setState({ whichOneSelectedYo: 0, prevOneSelectedYo: prevOneSelected });
+				this.handleSelect(thisOneSelected, prevOneSelected);
 		}
 	},
 
@@ -305,6 +338,12 @@ const DemoTabsOutsideControl = React.createClass({
 				<p className="slds-m-bottom--large">
 					This shows that you can pass a new selected index property into the component from the outside and have it re-render.
 				</p>
+
+				<Button
+					id="show-state"
+					label="Show State"
+					onClick={this.showState}
+				/>
 
 				<Button
 					id="monday"
@@ -408,6 +447,7 @@ storiesOf(TABS, module)
 	.add('Nested', () => getTabsNested())
 	.add('Outside Control', () => <DemoTabsOutsideControl className="controlled-yo" />)
 	.add('Conditional', () => <DemoTabsConditional className="conditional-yo" />)
+	.add('Unique Generated IDs', () => getTabsMoreThanOneAllowGeneratedID())
 	;
 
 module.exports = getTabs;
