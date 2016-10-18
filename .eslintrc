@@ -1,7 +1,5 @@
 {
 	"extends": "eslint-config-slds",
 	"parser": "babel-eslint",
-	"rules": {
-		"quote-props": [1, "consistent"]
-	}
+    "rules": {}
 }
