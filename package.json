@@ -60,6 +60,7 @@
     "lodash.isdate": "^3.0.3",
     "lodash.isequal": "^4.2.0",
     "lodash.isfunction": "^3.0.8",
+    "lodash.isnumber": "^3.0.3",
     "lodash.memoize": "^4.1.1",
     "lodash.omit": "^4.3.0",
     "lodash.partial": "^4.1.3",

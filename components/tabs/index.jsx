@@ -34,6 +34,9 @@ import classNames      from 'classnames';
 // ### isFunction
 import isFunction      from 'lodash.isfunction';
 
+// ### isNumber
+import isNumber      from 'lodash.isnumber';
+
 
 // Child components
 import TabsList        from './tabs-list';
@@ -109,12 +112,17 @@ const Tabs = React.createClass({
 		]),
 
 		/**
+		 * The Tab (and corresponding TabPanel) that is selected when the component first renders. Defaults to `0`.
+		 */
+		defaultSelectedIndex: React.PropTypes.number,
+
+		/**
 		 * This function triggers when a tab is selected
 		 */
 		onSelect: PropTypes.func,
 
 		/**
-		 * The Tab (and corresponding TabPanel) that is selected when the component renders. Defaults to `0`.
+		 * The Tab (and corresponding TabPanel) that is currently selected.
 		 */
 		selectedIndex: React.PropTypes.number
 	},
@@ -122,48 +130,22 @@ const Tabs = React.createClass({
 	getDefaultProps () {
 		// If no `id` is supplied in the props we generate one. An HTML ID is _required_ for several elements in a tabs component in order to leverage ARIA attributes for accessibility.
 		return {
-			id: shortid.generate(),
-			selectedIndex: 0
+			defaultSelectedIndex: 0
 		};
 	},
 
 	getInitialState () {
-		return {
-			selectedIndex: this.props.selectedIndex
-		};
+		return {};
 	},
 
-	componentWillReceiveProps (nextProps) {
+	componentWillMount () {
+		this.generatedId = shortid.generate();
+
 		this.setState({
-			selectedIndex: nextProps.selectedIndex
+			selectedIndex: this.props.defaultSelectedIndex
 		});
 	},
 
-	shouldComponentUpdate (nextProps, nextState) {
-		let toReturn = true;
-		let toReturnSelectedIndex = true;
-		let toReturnChildren = true;
-
-		if (
-			nextProps.selectedIndex === this.props.selectedIndex
-		&&	nextProps.selectedIndex === nextState.selectedIndex
-		&&	nextProps.selectedIndex === this.state.selectedIndex
-		) {
-			toReturnSelectedIndex = false;
-		}
-		
-		if (
-			nextProps.children === this.props.children
-		&&	nextProps.children === nextState.children
-		&&	nextProps.children === this.state.children
-		) {
-			toReturnChildren = false;
-		}
-
-		toReturn = toReturnSelectedIndex === true || toReturnChildren === true;
-		return toReturn;
-	},
-	
 	handleClick (e) {
 		let node = e.target;
 		/* eslint-disable no-cond-assign */
@@ -182,29 +164,21 @@ const Tabs = React.createClass({
 	},
 
 	setSelected (index, focus) {
-		// Don't do anything if nothing has changed
-		if (index === this.state.selectedIndex) {
-			return;
-		}
-
 		// Check index boundary
 		if (index < 0 || index >= this.getTabsCount()) {
 			return;
 		}
 
 		// Keep reference to last index for event handler
-		const last = this.state.selectedIndex;
-
-		// Check if the change event handler cancels the tab change
-		let cancel = false;
+		const last = this.getSelectedIndex();
 
 		// Call change event handler
 		if (isFunction(this.props.onSelect)) {
-			cancel = this.props.onSelect(index, last) === false;
+			this.props.onSelect(index, last);
 		}
 
-		if (!cancel) {
-			// Update selected index
+		// Don't update the state if nothing has changed
+		if (index !== this.state.selectedIndex) {
 			this.setState({ selectedIndex: index, focus: focus === true });
 		}
 	},
@@ -270,6 +244,9 @@ const Tabs = React.createClass({
 			0;
 	},
 
+	getSelectedIndex () {
+		return isNumber(this.props.selectedIndex) ? this.props.selectedIndex : this.state.selectedIndex;
+	},
 
 	getTab (index) {
 		return this.refs[`tabs-${index}`];
@@ -298,10 +275,10 @@ const Tabs = React.createClass({
 
 		return false;
 	},
-	
+
 	handleKeyDown (event) {
 		if (this.isTabFromContainer(event.target)) {
-			let index = this.state.selectedIndex;
+			let index = this.getSelectedIndex();
 			let preventDefault = false;
 
 			if (event.keyCode === KEYS.LEFT || event.keyCode === KEYS.UP) {
@@ -333,7 +310,7 @@ const Tabs = React.createClass({
 					const ref = `tabs-${index}`;
 					const id = `${parentId}-slds-tabs--tab-${index}`;
 					const panelId = `${parentId}-slds-tabs--panel-${index}`;
-					const selected = this.state.selectedIndex === index;
+					const selected = this.getSelectedIndex() === index;
 					const focus = selected && this.state.focus;
 					return (
 						<Tab
@@ -352,15 +329,16 @@ const Tabs = React.createClass({
 			</TabsList>
 		);
 	},
-	
+
 	renderTabPanels (parentId) {
 		const children = React.Children.toArray(this.props.children);
+		const selectedIndex = this.getSelectedIndex();
 		let result = null;
 
 		result = children.map((child, index) => {
 			const tabId = `${parentId}-slds-tabs--tab-${index}`;
 			const id = `${parentId}-slds-tabs--panel-${index}`;
-			const selected = this.state.selectedIndex === index;
+			const selected = selectedIndex === index;
 
 			return (
 				<TabPanel
@@ -370,18 +348,18 @@ const Tabs = React.createClass({
 					id={id}
 					tabId={tabId}
 				>
-					{children[this.state.selectedIndex]}
+					{children[index]}
 				</TabPanel>
 			);
 		});
 		return result;
 	},
-	
+
 
 	render () {
 		const {
 			className,
-			id,
+			id = this.generatedId,
 			...attributes
 			} = this.props;
 
