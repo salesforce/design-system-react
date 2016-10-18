@@ -20,10 +20,16 @@ import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import escapeRegExp from 'lodash.escaperegexp';
 
+// This component's `checkProps` which issues warnings to developers about properties
+// when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+
+// Children
 import Popover from '../popover';
 import Button from '../button';
 import Icon from '../icon';
 import InputIcon from '../icon/input-icon';
+import Input from '../forms/input';
 
 // ### Event Helpers
 import { KEYS, EventUtil } from '../../utilities';
@@ -34,10 +40,12 @@ import DefaultHeader from './menu/default-header';
 import DefaultSectionDivider from './menu/default-section-divider';
 import cx from 'classnames';
 
-const displayName = 'Lookup';
+import { LOOKUP } from '../../utilities/constants';
+
+const displayName = LOOKUP;
 const propTypes = {
 	/**
-	 * If true, constrains the menu to the scroll parent. Has no effect if modal is false.
+	 * If true, constrains the menu to the scroll parent. Has no effect if `isInline` is `true`.
 	 */
 	constrainToScrollParent: PropTypes.bool,
 	/**
@@ -53,7 +61,7 @@ const propTypes = {
 	 */
 	filterWith: PropTypes.func,
 	/**
-	 * If true, the menu is constrained to the window and may be flipped up. Has no effect if modal is false.
+	 * If true, the menu is constrained to the window and may be flipped up. Has no effect if `isInline` is `true`.
 	 */
 	flippable: PropTypes.bool,
 	/**
@@ -83,15 +91,15 @@ const propTypes = {
 		'left',
 		'right'
 	]),
+	/**
+	 * Renders menu within the wrapping trigger as a sibling of the button. By default, you will have an absolutely positioned container at an elevated z-index.
+	 */
+	isInline: PropTypes.bool,
 	label: PropTypes.string,
 	/**
 	 * Custom component that overrides the default Lookup Item component.
 	 */
 	listItemLabelRenderer: PropTypes.func,
-	/**
-	 * If true, component renders specifically to work inside Modal.
-	 */
-	modal: PropTypes.bool,
 	onBlur: PropTypes.func,
 	onChange: PropTypes.func,
 	onSelect: PropTypes.func,
@@ -126,10 +134,7 @@ const defaultFilter = (term, item) => {
 const defaultProps = {
 	constrainToScrollParent: true,
 	filterWith: defaultFilter,
-	flippable: false,
 	iconPosition: 'right',
-	modal: false,
-	required: false,
 	searchTerm: ''
 };
 
@@ -142,8 +147,8 @@ class Lookup extends React.Component {
 		this.state = {
 			currentFocus: null,
 			focusIndex: null,
-			items: [],
 			isOpen: false,
+			items: [],
 			listLength: this.props.options.length,
 			searchTerm: this.normalizeSearchTerm(this.props.searchTerm),
 			selectedIndex: this.props.selectedItem
@@ -151,7 +156,7 @@ class Lookup extends React.Component {
 	}
 
 	componentDidUpdate (prevProps, prevState) {
-		let lookup = this.inputRefName();
+		let lookup = this.inputRefId();
 		if (!isNaN(parseInt(prevState.selectedIndex)) && isNaN(parseInt(this.state.selectedIndex))) {
 			if (this.refs[lookup]) {
 				ReactDOM.findDOMNode(this.refs[lookup]).focus();
@@ -171,6 +176,11 @@ class Lookup extends React.Component {
 		if (newProps.selectedItem !== this.props.selectedItem) {
 			this.setState({ selectedIndex: newProps.selectedItem });
 		}
+	}
+
+	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(LOOKUP, this.props);
 	}
 
 	componentDidMount () {
@@ -279,7 +289,10 @@ class Lookup extends React.Component {
 			selectedIndex: null,
 			isOpen: true,
 		});
-		if(this.props.onUnselect){
+
+		this.focusInput();
+
+		if (this.props.onUnselect) {
 			this.props.onUnselect();
 		}
 	}
@@ -449,7 +462,7 @@ class Lookup extends React.Component {
 		}
 	}
 
-	renderSimpleMenu() {
+	renderInlineMenu() {
 		if(this.state.isOpen){
 			return <div className='ignore-react-onclickoutside slds-lookup__menu' role='listbox' ref='scroll'>
 				{this.renderMenuContent()}
@@ -457,47 +470,58 @@ class Lookup extends React.Component {
 		}
 	}
 
-	renderModalMenu() {
-		let targetElem = this.refs[this.inputRefName()];
-		if(this.state.isOpen){
-			return <Popover
-			className='slds-lookup__menu slds-show'
-			closeOnTabKey={true}
-			inheritTargetWidth={true}
-			onClose={this.handleCancel.bind(this)}
-			flippable={this.props.flippable}
-			constrainToScrollParent={this.props.constrainToScrollParent}
-			targetElement={targetElem}
-			>
-				{this.renderMenuContent()}
-			</Popover>;
-		}
+	renderSeparateMenu() {
+		return (
+			this.state.isOpen ?
+				<Popover
+					className="slds-lookup__menu slds-show"
+					closeOnTabKey={true}
+					inheritTargetWidth={true}
+					onClose={this.handleCancel.bind(this)}
+					flippable={this.props.flippable}
+					constrainToScrollParent={this.props.constrainToScrollParent}
+					targetElement={this.input}
+					verticalAlign="bottom"
+				>
+					{this.renderMenuContent()}
+				</Popover> : null
+		);
 	}
 
 	renderInput() {
 		return (
-			<span>
-				<InputIcon name="search" onClick={this.focusInput.bind(this)} />
-				<input
-					aria-activedescendant={this.state.currentFocus ? this.state.currentFocus:''}
-					aria-autocomplete='list'
-					aria-describedby={this.props.describedById}
-					aria-expanded={this.state.isOpen}
-					className='slds-lookup__search-input slds-input'
-					id={this.inputRefName()}
-					onBlur={this.handleBlur.bind(this)}
-					onChange={this.handleChange.bind(this)}
-					onClick={this.handleClick.bind(this)}
-					onFocus={this.handleFocus.bind(this)}
-					onKeyDown={this.handleKeyDown.bind(this)}
-					ref={this.inputRefName()}
-					placeholder={this.props.placeholder}
-					role='combobox'
-					type='text'
-					value={this.state.searchTerm}
-				/>
-			</span>
-		)
+			<Input
+				aria-activedescendant={this.state.currentFocus ? this.state.currentFocus : ''}
+				aria-autocomplete="list"
+				aria-describedby={this.props.describedById}
+				aria-expanded={this.state.isOpen}
+				assistiveText={this.props.assistiveText}
+				className="slds-lookup__search-input"
+				iconRight={
+					<InputIcon
+						assistiveText="Search"
+						category="utility"
+						name="search"
+					/>}
+				id={this.inputRefId()}
+				onBlur={this.handleBlur.bind(this)}
+				onChange={this.handleChange.bind(this)}
+				onClick={this.handleClick.bind(this)}
+				onFocus={this.handleFocus.bind(this)}
+				onKeyDown={this.handleKeyDown.bind(this)}
+				inputRef={(component) => {
+					this.input = component;
+					if (this.focusOnRender) {
+						ReactDOM.findDOMNode(this.input).focus();
+						this.focusOnRender = false;
+					}
+				}}
+				placeholder={this.props.placeholder}
+				role="combobox"
+				type="text"
+				value={this.state.searchTerm}
+			/>
+		);
 	}
 
 	renderSelectedItem() {
@@ -535,18 +559,18 @@ class Lookup extends React.Component {
 				// inline style override
 				inputLabel = <span className='slds-form-element__label' style={{width: '100%'}}>{required}{this.props.label}</span>;
 			} else {
-				inputLabel = <label className='slds-form-element__label' htmlFor={this.inputRefName()} style={{width: '100%'}}>{required}{this.props.label}</label>;
+				inputLabel = <label className='slds-form-element__label' htmlFor={this.inputRefId()} style={{width: '100%'}}>{required}{this.props.label}</label>;
 			}
 			return inputLabel;
 		}
 	}
 
-	inputRefName() {
+	inputRefId() {
 		return `${this.props.label}Lookup`;
 	}
 
 	focusInput() {
-		ReactDOM.findDOMNode(this.refs[this.inputRefName()]).focus();
+		this.focusOnRender = true;
 	}
 
 	isSelected() {
@@ -562,6 +586,15 @@ class Lookup extends React.Component {
 	}
 
 	render() {
+		let isInline;
+		/* eslint-disable react/prop-types */
+		if (this.props.isInline) {
+			isInline = true;
+		} else if (this.props.modal !== undefined) {
+			isInline = !this.props.modal;
+		}
+		/* eslint-enable react/prop-types */
+
 		const formElementControlClasses = {
 			'slds-form-element__control': true,
 			[`slds-input-has-icon slds-input-has-icon--${this.props.iconPosition}`]: !this.isSelected()
@@ -574,7 +607,7 @@ class Lookup extends React.Component {
 						{ this.isSelected() ? this.renderSelectedItem() : null }
 						{ !this.isSelected() ? this.renderInput() : null }
 					</div>
-					{this.props.modal?this.renderModalMenu():this.renderSimpleMenu()}
+					{isInline ? this.renderInlineMenu() : this.renderSeparateMenu()}
 			</div>
 		);
 	}

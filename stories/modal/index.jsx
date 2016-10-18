@@ -38,7 +38,6 @@ const modalContent = (
 		{/*
 		*/}
 		<SLDSLookup
-			modal
 			className="slds-m-bottom--large"
 			emptyMessage="No Accounts Found"
 			hasError={false}
@@ -59,7 +58,6 @@ const modalContent = (
 		<SLDSMenuPicklist
 			className="slds-m-bottom--large"
 			label="Lead Source"
-			modal
 			onSelect={(option) => { action('selected: ', option.label); }}
 			options={[
 				{ label: 'Third Party Program', value: 'A0' },
@@ -87,14 +85,12 @@ const modalContent = (
 		<div className="slds-m-bottom--large">
 			<SLDSDatepicker
 				onDateChange={() => { action('date is selected'); }}
-				modal
 			/>
 		</div>
 
 		<div className="slds-m-bottom--large">
 			<SLDSTimepicker
 				onDateChange={() => { action('time is selected'); }}
-				modal
 			/>
 		</div>
 

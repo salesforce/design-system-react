@@ -16,6 +16,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND 
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
+// This component's `checkProps` which issues warnings to developers about properties
+// when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
@@ -63,15 +67,15 @@ const MenuPicklist = React.createClass({
 		 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
 		 */
 		id: PropTypes.string,
+		/**
+		 * Renders menu within the wrapping trigger as a sibling of the button. By default, you will have an absolutely positioned container at an elevated z-index.
+		 */
+		isInline: PropTypes.bool,
 		label: PropTypes.string,
 		/**
 		 * Custom element that overrides the default Menu Item component.
 		 */
 		listItemRenderer: PropTypes.func,
-		/**
-		 * If true, component renders specifically to work inside Modal.
-		 */
-		modal: PropTypes.bool,
 		onClick: PropTypes.func,
 		onSelect: PropTypes.func,
 		/**
@@ -88,11 +92,7 @@ const MenuPicklist = React.createClass({
 
 	getDefaultProps () {
 		return {
-			constrainToScrollParent: false,
-			disabled: false,
 			inheritTargetWidth: true,
-			modal: true,
-			required: false,
 			placeholder: 'Select an Option',
 			checkmark: true
 		};
@@ -106,6 +106,9 @@ const MenuPicklist = React.createClass({
 	},
 
 	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(MENU_PICKLIST, this.props);
+
 		this.generatedId = shortid.generate();
 
 		window.addEventListener('click', this.closeOnClick, false);
@@ -216,7 +219,7 @@ const MenuPicklist = React.createClass({
 			}
 
 			if (event.keyCode !== KEYS.TAB) {
-				//The outer div with onKeyDown is overriding button onClick so we need to add it here.
+				// The outer div with onKeyDown is overriding button onClick so we need to add it here.
 				const openMenuKeys = event.keyCode === KEYS.ENTER || event.keyCode === KEYS.DOWN || event.keyCode === KEYS.UP;
 				const isTrigger = event.target.tagName === 'BUTTON';
 				if (openMenuKeys && isTrigger && this.props.onClick) {
@@ -276,7 +279,7 @@ const MenuPicklist = React.createClass({
 		return undefined;
 	},
 
-	renderPopoverContent () {
+	renderMenuContent () {
 		return (
 			<List
 				checkmark={this.props.checkmark}
@@ -293,7 +296,7 @@ const MenuPicklist = React.createClass({
 		);
 	},
 
-	renderSimplePopover () {
+	renderInlineMenu () {
 		return (
 			!this.props.disabled && this.state.isOpen
 			? <div
@@ -305,13 +308,13 @@ const MenuPicklist = React.createClass({
 					minWidth: '100%'
 				}}
 			>
-				{this.renderPopoverContent()}
+				{this.renderMenuContent()}
 			</div>
 			: null
 		);
 	},
 
-	renderModalPopover () {
+	renderSeparateMenu () {
 		return (
 			!this.props.disabled && this.state.isOpen && this.button
 			? <Popover
@@ -324,7 +327,7 @@ const MenuPicklist = React.createClass({
 				targetElement={this.button}
 				inheritTargetWidth={this.props.inheritTargetWidth}
 			>
-				{this.renderPopoverContent()}
+				{this.renderMenuContent()}
 			</Popover>
 			: null
 		);
@@ -336,6 +339,15 @@ const MenuPicklist = React.createClass({
 	},
 
 	renderTrigger () {
+		let isInline;
+		/* eslint-disable react/prop-types */
+		if (this.props.isInline) {
+			isInline = true;
+		} else if (this.props.modal !== undefined) {
+			isInline = !this.props.modal;
+		}
+		/* eslint-enable react/prop-types */
+
 		return (
 			<div
 				aria-expanded={this.state.isOpen}
@@ -360,7 +372,7 @@ const MenuPicklist = React.createClass({
 					<span className="slds-truncate">{this.renderPlaceholder()}</span>
 					<Icon name="down" category="utility" />
 				</button>
-				{this.props.modal ? this.renderModalPopover() : this.renderSimplePopover()}
+				{isInline ? this.renderInlineMenu() : this.renderSeparateMenu()}
 			</div>
 		);
 	},

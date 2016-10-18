@@ -38,12 +38,12 @@ const GlobalNavigationBarDropdown = (props) => {
 
 	return (
 		<MenuDropdown
-			length={props.length}
-			hasStaticAlignment
-			modal={false}
 			align="right"
+			hasStaticAlignment
 			// only need if using hybrid or hover
 			hoverCloseDelay={400}
+			isInline
+			length={props.length}
 			{...rest}
 		>
 			<GlobalNavigationTrigger

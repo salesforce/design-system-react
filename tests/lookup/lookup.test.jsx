@@ -19,6 +19,7 @@ describe('SLDSLookup: ',  function(){
     footerRenderer:Footer,
     iconCategory:"standard",
     iconName:"account",
+    isInline: true,
     label:"Account",
     onChange:function(newValue){console.log("New search term: ", newValue)},
     onSelect:function(item){console.log(item , " Selected")},

@@ -19,6 +19,10 @@ import React, { PropTypes } from 'react';
 // ### isDate
 import isDate from 'lodash.isdate';
 
+// This component's `checkProps` which issues warnings to developers about properties
+// when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+
 // ### Dropdown
 import InputIcon from '../icon/input-icon';
 import MenuDropdown from '../menu-dropdown';
@@ -48,6 +52,10 @@ const Timepicker = React.createClass({
 		formatter: PropTypes.func,
 		inheritTargetWidth: PropTypes.bool,
 		/**
+		 * Renders menu within the wrapping trigger as a sibling of the button. By default, you will have an absolutely positioned container at an elevated z-index.
+		 */
+		isInline: PropTypes.bool,
+		/**
 		 * This label appears above the input.
 		 */
 		label: PropTypes.string,
@@ -55,10 +63,6 @@ const Timepicker = React.createClass({
 		 * Custom element that overrides the default Menu Item component.
 		 */
 		listItemRenderer: PropTypes.func,
-		/**
-		 * Renders menu within an absolutely positioned container at an elevated z-index.
-		 */
-		modal: PropTypes.bool,
 		/**
 		 * Receives the props `(dateValue, stringValue)`
 		 */
@@ -92,7 +96,6 @@ const Timepicker = React.createClass({
 
 				return null;
 			},
-			modal: false,
 			parser (timeStr) {
 				const date = new Date();
 				const dateStr = date.toLocaleString(navigator.language, { year: 'numeric', month: 'numeric', day: 'numeric' });
@@ -110,6 +113,11 @@ const Timepicker = React.createClass({
 			strValue: this.props.strValue,
 			options: this.getOptions()
 		};
+	},
+
+	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(TIME_PICKER, this.props);
 	},
 
 	componentWillReceiveProps(nextProps) {
@@ -165,6 +173,15 @@ const Timepicker = React.createClass({
 
 	// ### Render
 	render () {
+		let isInline;
+		/* eslint-disable react/prop-types */
+		if (this.props.isInline) {
+			isInline = true;
+		} else if (this.props.modal !== undefined) {
+			isInline = !this.props.modal;
+		}
+		/* eslint-enable react/prop-types */
+
 		return (
 			<MenuDropdown
 				checkmark={false}
@@ -179,7 +196,7 @@ const Timepicker = React.createClass({
 					overflowX: 'hidden',
 					minWidth: '100%'
 				}}
-				modal={this.props.modal}
+				isInline={isInline}
 				onSelect={this.handleSelect}
 				options={this.state.options}
 			>

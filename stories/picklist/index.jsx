@@ -39,7 +39,7 @@ storiesOf(MENU_PICKLIST, module)
 	}))
 	.add('Non-modal', () => getPicklist({
 		label: 'Contacts',
-		modal: false,
+		isInline: true,
 		onClick: (event) => {
 			console.log('clicked', event.target);
 		},
