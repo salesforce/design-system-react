@@ -63,7 +63,8 @@ const DemoDataTable = React.createClass({
 
 	handleChange (selection, ...rest) {
 		action('change')(selection, ...rest);
-
+		console.log("selection", selection);
+		console.dir(...rest);
 		this.setState({ selection });
 	},
 

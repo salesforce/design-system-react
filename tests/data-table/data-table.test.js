@@ -141,7 +141,7 @@ describe('DataTable: ', function () {
 			}
 		];
 
-		afterEach(removeTable);
+		// afterEach(removeTable);
 
 		it('can start with a row selected', function () {
 			renderTable(
@@ -161,7 +161,9 @@ describe('DataTable: ', function () {
 		});
 
 		it('can deselect a row', function (done) {
-			this.onChange = (newSelection) => {
+			this.onChange = (newSelection, ...rest) => {
+				console.log("newSelection", newSelection);
+				console.log("...rest", ...rest);
 				newSelection.should.have.length(0);
 				done();
 			};
@@ -179,7 +181,9 @@ describe('DataTable: ', function () {
 			const tbody = getTable(this.dom).querySelectorAll('tbody')[0];
 			const selectedRow = tbody.querySelectorAll('tr.slds-is-selected')[0];
 			const checkbox = selectedRow.querySelectorAll('.slds-checkbox input')[0];
-
+			console.log("tbody", tbody);
+			console.log("selectedRow", selectedRow);
+			console.log("checkbox", checkbox);
 			Simulate.change(checkbox, {});
 		});
 

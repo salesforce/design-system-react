@@ -266,12 +266,8 @@ const Checkbox = React.createClass({
 				value = props.nextValue(oldValue, this.props);
 			}
 		}
-		console.log("!this.state.defaultValue", !this.state.defaultValue);
-		console.log("oldValue", oldValue);
-		console.log("value", value);
 
 		if (oldValue !== !this.state.defaultValue) {
-			console.warn('one');
 			if (isFunction(props.onChange)) {
 				this.props.onChange(value, event, {
 					checked: value,
@@ -283,7 +279,6 @@ const Checkbox = React.createClass({
 				indeterminate: null
 			});
 		} else {
-			console.warn('two');
 			if (isFunction(props.onChange)) {
 				this.props.onChange(value, event, {
 					checked: props.indeterminate === true ? null : value,
