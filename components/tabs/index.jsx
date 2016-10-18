@@ -70,7 +70,7 @@ const Tabs = React.createClass({
 		/**
 		 * HTML `id` attribute of primary element that has `.slds-tabs--default` on it. Optional: If one is not supplied, a `shortid` will be created.
 		 */
-		id: React.PropTypes.string,
+		id: PropTypes.string,
 
 		/**
 		 * The `children` are the actual tabs and panels to be displayed.
@@ -96,10 +96,10 @@ const Tabs = React.createClass({
 		 * </Tabs>
 		 * ```
 		 */
-		children: React.PropTypes.oneOfType([
-			React.PropTypes.arrayOf(React.PropTypes.node),
-			React.PropTypes.node,
-			React.PropTypes.element
+		children: PropTypes.oneOfType([
+			PropTypes.arrayOf(PropTypes.node),
+			PropTypes.node,
+			PropTypes.element
 		]).isRequired,
 
 		/**
@@ -114,7 +114,7 @@ const Tabs = React.createClass({
 		/**
 		 * The Tab (and corresponding TabPanel) that is selected when the component first renders. Defaults to `0`.
 		 */
-		defaultSelectedIndex: React.PropTypes.number,
+		defaultSelectedIndex: PropTypes.number,
 
 		/**
 		 * This function triggers when a tab is selected
@@ -124,7 +124,7 @@ const Tabs = React.createClass({
 		/**
 		 * The Tab (and corresponding TabPanel) that is currently selected.
 		 */
-		selectedIndex: React.PropTypes.number
+		selectedIndex: PropTypes.number
 	},
 
 	getDefaultProps () {
