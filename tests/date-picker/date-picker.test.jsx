@@ -21,6 +21,7 @@ const defaultStrValue = formatter(dateTimeNow);
 describe('SLDSDatepicker: ', () => {
     const defaultProps = {
         onDateChange: () => {},
+        isInline: true,
         value: dateTimeNow,
         strValue: defaultStrValue
     };

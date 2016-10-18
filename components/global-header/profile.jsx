@@ -45,8 +45,8 @@ const GlobalHeaderProfile = (props) => {
 		// `slds-m-right--x-small` is present to prevent dropdown menu with a
 		// "top right" nubbin from jumping offscreen
 		<MenuDropdown
+			isInline
 			nubbinPosition="top right"
-			modal={false}
 			{...rest}
 		>
 			<GlobalHeaderTrigger

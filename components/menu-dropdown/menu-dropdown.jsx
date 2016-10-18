@@ -164,7 +164,11 @@ const MenuDropdown = React.createClass({
 		*/
 		id: PropTypes.string,
 		/**
-		 * Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use [](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices)
+		 * Renders menu within the wrapping trigger as a sibling of the button. By default, you will have an absolutely positioned container at an elevated z-index.
+		 */
+		isInline: PropTypes.bool,
+		/**
+		 * Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use view [Concepts and Best Practices](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices)
 		 */
 		isOpen: PropTypes.bool,
 		/**
@@ -184,11 +188,7 @@ const MenuDropdown = React.createClass({
 		 */
 		menuStyle: PropTypes.object,
 		/**
-		 * Renders menu within an absolutely positioned container at an elevated z-index.
-		 */
-		modal: PropTypes.bool,
-		/**
-		 * Positions dropdown menu with a nubbin--that is the arrow notch. The placement options correspond to the placement of the nubbin. This is implemeted with CSS classes and is best used with a `Button` with "icon container" styling (`iconVariant="container"`). Use with `modal={false}`, since positioning is determined by CSS via absolute-relative positioning, and using an absolutely positioned menu will not position the menu correctly.
+		 * Positions dropdown menu with a nubbin--that is the arrow notch. The placement options correspond to the placement of the nubbin. This is implemeted with CSS classes and is best used with a `Button` with "icon container" styling (`iconVariant="container"`). Use with `isInline` prop, since positioning is determined by CSS via absolute-relative positioning, and using an absolutely positioned menu will not position the menu correctly without manual offsets.
 		 */
 		nubbinPosition: PropTypes.oneOf([
 			'top left',
@@ -272,7 +272,6 @@ const MenuDropdown = React.createClass({
 		return {
 			align: 'left',
 			hoverCloseDelay: 300,
-			modal: true,
 			openOn: 'click'
 		};
 	},
@@ -549,7 +548,7 @@ const MenuDropdown = React.createClass({
 		return undefined;
 	},
 
-	renderDefaultPopoverContent (customListProps) {
+	renderDefaultMenuContent (customListProps) {
 		return (
 			<List
 				key={`${this.props.id}-dropdown-list`}
@@ -569,12 +568,12 @@ const MenuDropdown = React.createClass({
 		);
 	},
 
-	renderPopoverContent (customContent) {
+	renderMenuContent (customContent) {
 		let customContentWithListPropInjection = [];
 		// Dropdown can take a Trigger component as a child and then return it as the parent DOM element.
 		React.Children.forEach(customContent, (child) => {
 			if (child && child.type.displayName === LIST) {
-				customContentWithListPropInjection.push(this.renderDefaultPopoverContent(child.props));
+				customContentWithListPropInjection.push(this.renderDefaultMenuContent(child.props));
 			} else {
 				const clonedCustomContent = React.cloneElement(child, {
 					onClick: this.handleClickCustomContent,
@@ -587,10 +586,10 @@ const MenuDropdown = React.createClass({
 			customContentWithListPropInjection = null;
 		}
 
-		return customContentWithListPropInjection || this.renderDefaultPopoverContent();
+		return customContentWithListPropInjection || this.renderDefaultMenuContent();
 	},
 
-	renderSimplePopover (customContent, isOpen) {
+	renderInlineMenu (customContent, isOpen) {
 		let marginTop;
 		let positionClassName;
 		if (this.props.nubbinPosition) {
@@ -615,12 +614,12 @@ const MenuDropdown = React.createClass({
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
 					style={this.props.menuStyle}
 				>
-					{this.renderPopoverContent(customContent)}
+					{this.renderMenuContent(customContent)}
 				</div> : null
 		);
 	},
 
-	renderModalPopover (customContent, isOpen, outsideClickIgnoreClass) {
+	renderSeparatedMenu (customContent, isOpen, outsideClickIgnoreClass) {
 		let positionClassName;
 		let marginTop;
 		let offset = this.props.offset;
@@ -662,7 +661,7 @@ const MenuDropdown = React.createClass({
 					style={this.props.menuStyle}
 					targetElement={this.triggerContainer}
 				>
-					{this.renderPopoverContent(customContent)}
+					{this.renderMenuContent(customContent)}
 				</Popover> : null
 		);
 	},
@@ -708,6 +707,15 @@ const MenuDropdown = React.createClass({
 
 		this.renderOverlay(isOpen);
 
+		let isInline;
+		/* eslint-disable react/prop-types */
+		if (this.props.isInline) {
+			isInline = true;
+		} else if (this.props.modal !== undefined) {
+			isInline = !this.props.modal;
+		}
+		/* eslint-enable react/prop-types */
+
 		/* Below are three sections of props:
 		 - The first are the props that may be given by the dropdown component. These may get deprecated in the future.
 		 - The next set of props (`CustomTriggerChildProps`) are props that can be overwritten by the end developer.
@@ -728,7 +736,7 @@ const MenuDropdown = React.createClass({
 				isOpen={isOpen}
 				label={this.props.label}
 				openOn={this.props.openOn}
-				isInline={!this.props.modal}
+				isInline={isInline}
 				style={this.props.style}
 				tabIndex={isOpen ? '-1' : '0'}
 				variant={this.props.buttonVariant}
@@ -756,9 +764,10 @@ const MenuDropdown = React.createClass({
 					? this.handleMouseLeave : null}
 				ref={this.saveRefToTriggerContainer}
 				triggerRef={this.saveRefToTrigger}
-				menu={this.props.modal ?
-					this.renderModalPopover(customContent, isOpen, outsideClickIgnoreClass) :
-					this.renderSimplePopover(customContent, isOpen)}
+				menu={isInline ?
+					this.renderInlineMenu(customContent, isOpen) :
+					this.renderSeparatedMenu(customContent, isOpen, outsideClickIgnoreClass)
+				}
 			/>
 		);
 	}

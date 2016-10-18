@@ -170,8 +170,9 @@ storiesOf(MENU_DROPDOWN, module)
 		},
 		options
 	}))
-	.add('No Modal', () => getDropdown({
+	.add('Render inline', () => getDropdown({
 		align: 'right',
+		isInline: true,
 		label: 'Dropdown Click',
 		onClick: (...rest) => {
 			action('Clicked')(...rest);
@@ -179,14 +180,13 @@ storiesOf(MENU_DROPDOWN, module)
 		onSelect: (...rest) => {
 			action('Selected')(...rest);
 		},
-		modal: false,
 		options
 	}))
-	.add('No Modal w/ Nubbins', () => getDropdownPositioned({
+	.add('Render inline w/ Nubbins', () => getDropdownPositioned({
+		isInline: true,
 		onSelect: (...rest) => {
 			action('Selected')(...rest);
 		},
-		modal: false,
 		options
 	}))
 	.add('Custom Trigger', () => getDropdownCustomTrigger({

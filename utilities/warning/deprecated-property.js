@@ -23,9 +23,9 @@ if (process.env.NODE_ENV !== 'production') {
 		const newProperty = newProp ? `Use \`${newProp}\`` : '';
 		if (!hasWarned[control + oldProp]) {
 			/* eslint-disable max-len */
-			warning(!propValue, `[Design System React] \`${oldProp}\` will be deprecated in the next major version of ${control}. ${newProperty} instead.${additionalComment}`);
+			warning(propValue === undefined, `[Design System React] \`${oldProp}\` will be deprecated in the next major version of ${control}. ${newProperty} instead.${additionalComment}`);
 			/* eslint-enable max-len */
-			hasWarned[control + oldProp] = !!propValue;
+			hasWarned[control + oldProp] = propValue !== undefined;
 		}
 	};
 }

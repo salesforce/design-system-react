@@ -10,7 +10,6 @@ const DemoLookup = React.createClass({
 
 	getInitialState () {
 		return {
-			currentSelected: 2,
 			options: [
 				{ label: 'File 1' },
 				{ label: 'File 2' },
@@ -20,22 +19,21 @@ const DemoLookup = React.createClass({
 		};
 	},
 
-	clearSelected() {
+	clearSelected () {
 		this.setState({ currentSelected: -1 });
 	},
 
 	render () {
 		return (
 			<div>
-				<SLDSButton onClick={this.clearSelected}>Clear Selected</SLDSButton>
-			<Lookup
-				{...this.props}
-				modal={false}
-				onChange={action('change')}
-				onSelect={this.handleSelect}
-				options={this.state.options}
-				selectedItem={this.state.currentSelected}
-			/>
+				<div><SLDSButton onClick={this.clearSelected}>Clear Selected</SLDSButton></div>
+				<Lookup
+					{...this.props}
+					onChange={action('change')}
+					onSelect={this.handleSelect}
+					options={this.state.options}
+					selectedItem={this.state.currentSelected}
+				/>
 			</div>
 		);
 	},
@@ -52,26 +50,26 @@ const DemoLookupAccounts = React.createClass({
 	getInitialState () {
 		return {
 			options: [
-        {label: "Paddy\"s Pub", subTitle: "Boston, MA"},
-        {label: "Tyrell Corp", subTitle: "San Francisco, CA"},
-        {label: "Paper St. Soap Company", subTitle: "Beloit, WI"},
-        {label: "Nakatomi Investments", subTitle: "Chicago, IL"},
-        {label: "Acme Landscaping"},
-        {label: "Acme Construction", subTitle: "Grand Marais, MN"}
-      ]
+				{ label: 'Paddy\'s Pub', subTitle: 'Boston, MA' },
+				{ label: 'Tyrell Corp', subTitle: 'San Francisco, CA' },
+				{ label: 'Paper St. Soap Company', subTitle: 'Beloit, WI' },
+				{ label: 'Nakatomi Investments', subTitle: 'Chicago, IL' },
+				{ label: 'Acme Landscaping' },
+				{ label: 'Acme Construction', subTitle: 'Grand Marais, MN' }
+			]
 		};
 	},
 
 	render () {
 		return (
-      <Lookup
-        {...this.props}
-        onChange={action('change')}
-        onSelect={this.handleSelect}
-        options={this.state.options}
-        footerRenderer={Lookup.DefaultFooter}
-        headerRenderer={Lookup.DefaultHeader}
-      />
+			<Lookup
+				{...this.props}
+				footerRenderer={Lookup.DefaultFooter}
+				headerRenderer={Lookup.DefaultHeader}
+				onChange={action('change')}
+				onSelect={this.handleSelect}
+				options={this.state.options}
+			/>
 		);
 	},
 
@@ -88,6 +86,7 @@ storiesOf(LOOKUP, module)
 		hasError={false}
 		iconCategory="utility"
 		iconName="open_folder"
+		isInline
 		label="Files"
 	/>)
 	.add('Standard with Accounts', () => <DemoLookupAccounts
@@ -95,5 +94,6 @@ storiesOf(LOOKUP, module)
 		hasError={false}
 		iconCategory="standard"
 		iconName="account"
+		isInline
 		label="Account"
 	/>);
