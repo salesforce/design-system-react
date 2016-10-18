@@ -43,7 +43,12 @@ const DemoDataTable = React.createClass({
 					lastModified: 'Today'
 				}
 			],
-			selection: []
+			selection: [{
+				id: 'M4D37GW83H',
+				name: 'Salesforce Tower',
+				count: 101280,
+				lastModified: 'Today'
+			}]
 		};
 	},
 
