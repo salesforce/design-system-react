@@ -33,6 +33,7 @@ const DataTableHead = React.createClass({
 	// ### Prop Types
 	propTypes: {
 		allSelected: PropTypes.bool.isRequired,
+		indeterminateSelected: PropTypes.bool.isRequired,
 		canSelectRows: PropTypes.bool.isRequired,
 		columns: PropTypes.arrayOf(
 			PropTypes.shape({
@@ -56,6 +57,7 @@ const DataTableHead = React.createClass({
 							<Checkbox
 								assistiveText="Select All"
 								checked={this.props.allSelected}
+								indeterminate={this.props.indeterminateSelected}
 								id={`${this.props.id}-SelectAll`}
 								name="SelectAll"
 								onChange={this.props.onToggleAll}
