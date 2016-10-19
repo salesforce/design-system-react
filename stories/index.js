@@ -21,5 +21,6 @@ export PageHeader from './page-header';
 export Popover from './popover';
 export Picklist from './picklist';
 export Spinner from './spinner';
+export Tabs from './tabs';
 export TimePicker from './time-picker';
 export Tree from './tree';

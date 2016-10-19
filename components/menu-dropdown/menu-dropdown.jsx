@@ -50,7 +50,6 @@ import KeyboardNavigable from '../../utilities/keyboard-navigable';
 
 import EventUtil from '../../utilities/EventUtil';
 import KEYS from '../../utilities/KEYS';
-
 import { MENU_DROPDOWN, MENU_DROPDOWN_TRIGGER, LIST } from '../../utilities/constants';
 
 // The overlay is an optional way to allow the dropdown to close on outside
@@ -170,6 +169,14 @@ const MenuDropdown = React.createClass({
 		*/
 		id: PropTypes.string,
 		/**
+		 * Renders menu within the wrapping trigger as a sibling of the button. By default, you will have an absolutely positioned container at an elevated z-index.
+		 */
+		isInline: PropTypes.bool,
+		/**
+		 * Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use view [Concepts and Best Practices](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices)
+		 */
+		isOpen: PropTypes.bool,
+		/**
 		* This prop is passed onto the triggering `Button`. Text within the trigger button.
 		*/
 		label: PropTypes.string,
@@ -186,11 +193,7 @@ const MenuDropdown = React.createClass({
 		 */
 		menuStyle: PropTypes.object,
 		/**
-		 * Renders menu within an absolutely positioned container at an elevated z-index.
-		 */
-		modal: PropTypes.bool,
-		/**
-		 * Positions dropdown menu with a nubbin--that is the arrow notch. The placement options correspond to the placement of the nubbin. This is implemeted with CSS classes and is best used with a `Button` with "icon container" styling (`iconVariant="container"`). Use with `modal={false}`, since positioning is determined by CSS via absolute-relative positioning, and using an absolutely positioned menu will not position the menu correctly.
+		 * Positions dropdown menu with a nubbin--that is the arrow notch. The placement options correspond to the placement of the nubbin. This is implemeted with CSS classes and is best used with a `Button` with "icon container" styling (`iconVariant="container"`). Use with `isInline` prop, since positioning is determined by CSS via absolute-relative positioning, and using an absolutely positioned menu will not position the menu correctly without manual offsets.
 		 */
 		nubbinPosition: PropTypes.oneOf([
 			'top left',
@@ -221,10 +224,6 @@ const MenuDropdown = React.createClass({
 		 */
 		openOn: PropTypes.oneOf(['hover', 'click', 'hybrid']),
 		/**
-		 * Set dropdown to be open. Must be returned to false to become interactive again.
-		 */
-		forceOpen: PropTypes.bool,
-		/**
 		 * Called when a key pressed.
 		 */
 		onKeyDown: PropTypes.func,
@@ -244,6 +243,14 @@ const MenuDropdown = React.createClass({
 		 * Triggered when an item in the menu is clicked.
 		 */
 		onSelect: PropTypes.func,
+		/**
+		 * Triggered when the dropdown is opened.
+		 */
+		onOpen: PropTypes.func,
+		/**
+		 * Triggered when the dropdown is closed.
+		 */
+		onClose: PropTypes.func,
 		/**
 		 * An array of menu item.
 		 */
@@ -270,7 +277,6 @@ const MenuDropdown = React.createClass({
 		return {
 			align: 'left',
 			hoverCloseDelay: 300,
-			modal: true,
 			openOn: 'click'
 		};
 	},
@@ -293,11 +299,25 @@ const MenuDropdown = React.createClass({
 		});
 	},
 
-	componentWillReceiveProps (nextProps) {
+	componentWillReceiveProps (nextProps, prevProps) {
 		if (this.props.value !== nextProps.value) {
 			this.setState({
 				selectedIndex: this.getIndexByValue(nextProps.value)
 			});
+		}
+
+		if (nextProps.isOpen === true) {
+			this.setState({
+				isOpen: true
+			});
+			this.setFocus();
+		}	else if (nextProps.isOpen === false) {
+			this.setState({
+				isOpen: false
+			});
+			if (prevProps.isOpen === true) {
+				this.setFocus();
+			}
 		}
 	},
 
@@ -337,15 +357,21 @@ const MenuDropdown = React.createClass({
 
 	handleClose () {
 		if (this.state.isOpen) {
-			this.setState({
-				isOpen: false
-			});
+			if (this.props.isOpen === undefined) {
+				this.setState({
+					isOpen: false
+				});
+			}
 
 			this.isHover = false;
 
 			if (currentOpenDropdown === this) {
 				currentOpenDropdown = undefined;
 			}
+		}
+
+		if (this.props.onClose) {
+			this.props.onClose();
 		}
 	},
 
@@ -356,9 +382,13 @@ const MenuDropdown = React.createClass({
 
 		currentOpenDropdown = this;
 
-		this.setState({
-			isOpen: true
-		});
+		if (this.props.isOpen === undefined) {
+			this.setState({
+				isOpen: true
+			});
+		} else if (this.props.onOpen) {
+			this.props.onOpen();
+		}
 	},
 
 	handleMouseEnter (event) {
@@ -389,11 +419,13 @@ const MenuDropdown = React.createClass({
 	},
 
 	handleClick (event) {
-		if (!this.state.isOpen) {
-			this.handleOpen();
-			this.setFocus();
-		} else {
-			this.handleClose();
+		if (this.props.isOpen === undefined) {
+			if (!this.state.isOpen) {
+				this.handleOpen();
+				this.setFocus();
+			} else {
+				this.handleClose();
+			}
 		}
 
 		if (this.props.onClick) {
@@ -442,10 +474,12 @@ const MenuDropdown = React.createClass({
 
 			if (event.keyCode !== KEYS.TAB) {
 				this.handleKeyboardNavigate({
+					event,
 					isOpen: this.state.isOpen || false,
 					key: event.key,
 					keyCode: event.keyCode,
 					onSelect: this.handleSelect,
+					target: event.target,
 					toggleOpen: this.toggleOpen
 				});
 			} else {
@@ -519,7 +553,7 @@ const MenuDropdown = React.createClass({
 		return undefined;
 	},
 
-	renderDefaultDropdownContent (customListProps) {
+	renderDefaultMenuContent (customListProps) {
 		return (
 			<List
 				key={`${this.props.id}-dropdown-list`}
@@ -539,12 +573,12 @@ const MenuDropdown = React.createClass({
 		);
 	},
 
-	renderDropdownContent (customContent) {
+	renderMenuContent (customContent) {
 		let customContentWithListPropInjection = [];
 		// Dropdown can take a Trigger component as a child and then return it as the parent DOM element.
 		React.Children.forEach(customContent, (child) => {
 			if (child && child.type.displayName === LIST) {
-				customContentWithListPropInjection.push(this.renderDefaultDropdownContent(child.props));
+				customContentWithListPropInjection.push(this.renderDefaultMenuContent(child.props));
 			} else {
 				const clonedCustomContent = React.cloneElement(child, {
 					onClick: this.handleClickCustomContent,
@@ -557,10 +591,10 @@ const MenuDropdown = React.createClass({
 			customContentWithListPropInjection = null;
 		}
 
-		return customContentWithListPropInjection || this.renderDefaultDropdownContent();
+		return customContentWithListPropInjection || this.renderDefaultMenuContent();
 	},
 
-	renderSimpleDropdown (customContent, isOpen) {
+	renderInlineMenu (customContent, isOpen) {
 		let marginTop;
 		let positionClassName;
 		if (this.props.nubbinPosition) {
@@ -585,7 +619,7 @@ const MenuDropdown = React.createClass({
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
 					style={this.props.menuStyle}
 				>
-					{this.renderDropdownContent(customContent)}
+					{this.renderMenuContent(customContent)}
 				</div> : null
 		);
 	},
@@ -633,9 +667,8 @@ const MenuDropdown = React.createClass({
 					style={this.props.menuStyle}
 					targetElement={this.triggerContainer}
 				>
-					{this.renderDropdownContent(customContent)}
-				</Dialog> : null
-		);
+					{this.renderMenuContent(customContent)}
+				</Dialog> : null		);
 	},
 
 	renderOverlay (isOpen) {
@@ -675,9 +708,18 @@ const MenuDropdown = React.createClass({
 		}
 
 		const outsideClickIgnoreClass = `ignore-click-${this.getId()}`;
-		const isOpen = this.props.forceOpen || !this.props.disabled && this.state.isOpen && !!this.trigger;
+		const isOpen = !this.props.disabled && this.state.isOpen && !!this.trigger;
 
 		this.renderOverlay(isOpen);
+
+		let isInline;
+		/* eslint-disable react/prop-types */
+		if (this.props.isInline) {
+			isInline = true;
+		} else if (this.props.modal !== undefined) {
+			isInline = !this.props.modal;
+		}
+		/* eslint-enable react/prop-types */
 
 		/* Below are three sections of props:
 		 - The first are the props that may be given by the dropdown component. These may get deprecated in the future.
@@ -699,7 +741,7 @@ const MenuDropdown = React.createClass({
 				isOpen={isOpen}
 				label={this.props.label}
 				openOn={this.props.openOn}
-				isInline={!this.props.modal}
+				isInline={isInline}
 				style={this.props.style}
 				tabIndex={isOpen ? '-1' : '0'}
 				variant={this.props.buttonVariant}
@@ -727,9 +769,10 @@ const MenuDropdown = React.createClass({
 					? this.handleMouseLeave : null}
 				ref={this.saveRefToTriggerContainer}
 				triggerRef={this.saveRefToTrigger}
-				menu={this.props.modal ?
-					this.renderDialog(customContent, isOpen, outsideClickIgnoreClass) :
-					this.renderSimpleDropdown(customContent, isOpen)}
+				menu={isInline ?
+					this.renderInlineMenu(customContent, isOpen) :
+					this.renderDialog(customContent, isOpen, outsideClickIgnoreClass)
+				}
 			/>
 		);
 	}
