@@ -34,58 +34,44 @@ const getDropdown = (props) => (
 
 const DropdownControlled = React.createClass({
 	displayName: 'DropdownControlled',
+
 	getInitialState () {
 		return {
-			isOpen: false
+			isOpen: undefined
 		};
 	},
-	handleButtonClickOpen () {
-		this.handleOpen();
-	},
-	handleButtonClickClose () {
-		this.handleClose();
-	},
+
 	handleButtonClickReset () {
 		this.setState({ isOpen: undefined });
 	},
+
 	handleOpen (...params) {
 		action('Opened')(...params);
 		this.setState({ isOpen: true });
 	},
+
 	handleClose (...params) {
 		action('Closed')(...params);
 		this.setState({ isOpen: false });
 	},
-	handleClickCustomContent () {
-		this.setState({ isOpen: false });
-	},
+
 	render () {
-		let isOpen;
-		if (this.state && this.state.isOpen === true) {
-			isOpen = true;
-		} else if (this.state && this.state.isOpen === false) {
-			isOpen = false;
-		}	else {
-			isOpen = undefined;
-		}
-		const props = this.props;
 		return (
 			<div className="slds-grid">
 
 				<div className="slds-col">
 					<Dropdown
-						{...props}
+						{...this.props}
 						modal={false}
-						isOpen={isOpen}
-						onClose={this.handleClose}
-						onOpen={this.handleOpen}
+						isOpen={this.state.isOpen}
+						onClose={action('Closed')}
+						onOpen={action('Opened')}
 						options={options}
-						onClick={this.handleOpen}
 					/>
 				</div>
 				<div className="slds-col">
-					<Button label="Open Dropdown" onClick={this.handleButtonClickOpen} />
-					<Button label="Close Dropdown" onClick={this.handleButtonClickClose} />
+					<Button label="Open Dropdown" onClick={this.handleOpen} />
+					<Button label="Close Dropdown" onClick={this.handleClose} />
 					<Button label="Reset Dropdown" onClick={this.handleButtonClickReset} />
 				</div>
 			</div>
