@@ -2,6 +2,13 @@
 # React Components: design-system-react
 # Release notes
 
+## Release 0.4.1
+
+**BUG FIX**
+
+- Fixes bugs in allowing parent to control state of dropdown.
+
+
 ## Release 0.4.0
 
 **BREAKING CHANGES**
