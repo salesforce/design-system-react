@@ -64,7 +64,7 @@ function isTabDisabled (node) {
 
 
 /**
- * Tabs keeps related content in a single container that is shown and hidden through navigation. This implementation is currently marked `prototype` because not all of the required unit tests are yet complete.
+ * Tabs keeps related content in a single container that is shown and hidden through navigation.
  */
 const Tabs = React.createClass({
 	displayName: TABS,
