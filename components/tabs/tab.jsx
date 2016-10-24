@@ -23,8 +23,8 @@ import classNames from 'classnames';
 import { TAB } from '../../utilities/constants';
 import { findDOMNode } from 'react-dom';
 
-import './tab.css';
-
+// Temporary hack until included in SLDS
+import '!style!css!../../styles/tabs/tab.css'; // eslint-disable-line import/no-unresolved
 
 const Tab = React.createClass({
 	displayName: TAB,
