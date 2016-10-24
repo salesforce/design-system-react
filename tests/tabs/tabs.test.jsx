@@ -246,8 +246,8 @@ describe('Tabs', () => {
 		});
 	});
 
-	describe('Interactions', () => {
-		const id = 'this-is-an-id-for-testing';
+	describe('Interactions click', () => {
+		const id = 'this-is-an-id-for-testing--click';
 
 		before(mountComponent(
 			<TabsDemoComponent
@@ -279,6 +279,19 @@ describe('Tabs', () => {
 			expect(myThirdPanel.hasClass('slds-hide')).to.equal(false);
 		});
 
+	});
+
+	describe('Interactions disabled', () => {
+		const id = 'this-is-an-id-for-testing--disabled';
+
+		before(mountComponent(
+			<TabsDemoComponent
+				id={id}
+			/>
+		));
+		after(unmountComponent);
+
+
 		it('Disabled tab does not reveal new content ', function () {
 			const myTabsListItems = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}`);
 			const myFirstPanel = this.wrapper.find(`#${id}-slds-tabs--panel-0`);
@@ -299,6 +312,22 @@ describe('Tabs', () => {
 			expect(mySecondPanel.hasClass('slds-hide')).to.equal(true);
 
 		});
+
+	});
+
+	describe('Interactions tabby', () => {
+		const id = 'this-is-an-id-for-testing--tabby';
+
+		before(mountComponent(
+			<TabsDemoComponent
+				id={id}
+			/>
+		));
+		after(unmountComponent);
+
+
+
+
 
 		it('Can be tabbed into', function () {
 			const myTabsListItems = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}`);
@@ -323,6 +352,19 @@ describe('Tabs', () => {
 
 		});
 
+	});
+
+	describe('Interactions tabby disabled', () => {
+		const id = 'this-is-an-id-for-testing--tabby-disabled';
+
+		before(mountComponent(
+			<TabsDemoComponent
+				id={id}
+			/>
+		));
+		after(unmountComponent);
+
+
 		it('Disabled tab can NOT be tabbed into', function () {
 			const myTabsListItems = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}`);
 			const myFirstPanel = this.wrapper.find(`#${id}-slds-tabs--panel-0`);
@@ -345,4 +387,5 @@ describe('Tabs', () => {
 		});
 
 	});
+
 });
