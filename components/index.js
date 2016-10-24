@@ -119,8 +119,8 @@ export Spinner from './spinner';
 
 export SLDSTabs from './tabs';
 export Tabs from './tabs';
-export SLDSPane from './tabs/pane';
-export Pane from './tabs/pane';
+export SLDSPanel from './tabs/panel';
+export Panel from './tabs/panel';
 
 export SLDSTimepicker from './time-picker';
 export Timepicker from './time-picker';

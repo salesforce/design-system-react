@@ -9,24 +9,24 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # Tabs: Pane child component
+// # Tabs: Panel child component
 //
 // Helps implement the [Tabs design pattern](https://www.lightningdesignsystem.com/components/tabs/) in React.
 //
-// The `<Pane />` component allows us to simplify the structure of the `<Tabs />` component.
+// The `<Panel />` component allows us to simplify the structure of the `<Tabs />` component.
 //
-// Rather than require different (deeply nested) children for tabslist, with its tab(s) as well as tabpanel(s), we provide this Pane component which takes a `label` property that will become what is shown on the `<Tab />` that will be associated with it.
+// Rather than require different (deeply nested) children for tabslist, with its tab(s) as well as tabpanel(s), we provide this Panel component which takes a `label` property that will become what is shown on the `<Tab />` that will be associated with it.
 //
-// The `children` of the Pane will be fed to the `<TabPanel />` component, while its `label` is handled in `<Tab />`, via `<TabsList />`.
+// The `children` of the Panel will be fed to the `<TabPanel />` component, while its `label` is handled in `<Tab />`, via `<TabsList />`.
 /**
  *
  * ```
- * <Pane label="Tab 1">
+ * <Panel label="Tab 1">
  * 	<div>
  * 		<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
  * 		<p>They show when you click the first tab.</p>
  * 	</div>
- * </Pane>
+ * </Panel>
  * ```
  */
 
@@ -38,13 +38,13 @@ import React, {
 } from 'react';
 
 // ## Constants
-import { TAB_PANE } from '../../utilities/constants';
+import { PANEL } from '../../utilities/constants';
 
-const Pane = ({ children }) => <div>{React.Children.toArray(children)}</div>;
+const Panel = ({ children }) => <div>{React.Children.toArray(children)}</div>;
 
-Pane.displayName = TAB_PANE;
+Panel.displayName = PANEL;
 
-Pane.propTypes = {
+Panel.propTypes = {
 	/**
 	 * The string that is handed off to the `<Tab />` component, ends up being the title and the label for the tab associated with its tab panel.
 	 */
@@ -53,7 +53,7 @@ Pane.propTypes = {
 	/**
 	 * The `children` are the actual tab panels to be rendered. They get created by [tabs/index.jsx](./index.jsx) in the `renderTabPanels` function.
 	 *
-	 * Note that the `<Pane />` component inserts a `div` element around the children, because React requires exactly one "parent" element returned. The `<TabPanel />` component simply dips down into `children` to get the children of this wrapping `div` so that it does not get rendered in the DOM.
+	 * Note that the `<Panel />` component inserts a `div` element around the children, because React requires exactly one "parent" element returned. The `<TabPanel />` component simply dips down into `children` to get the children of this wrapping `div` so that it does not get rendered in the DOM.
 	 */
 	children: PropTypes.oneOfType([
 		PropTypes.arrayOf(PropTypes.node),
@@ -62,4 +62,4 @@ Pane.propTypes = {
 	]).isRequired
 };
 
-module.exports = Pane;
+module.exports = Panel;

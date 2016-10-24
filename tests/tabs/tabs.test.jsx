@@ -21,7 +21,7 @@ import classNames from 'classnames';
 
 // Import your internal dependencies (for example):
 import Tabs from '../../components/tabs';
-import Pane from '../../components/tabs/pane';
+import Panel from '../../components/tabs/panel';
 
 /* Enzyme Helpers can mount and unmount React component instances to
  * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`
@@ -106,10 +106,10 @@ const TabsDemoComponent = React.createClass({
 					id={id}
 					{...attributes}
 				>
-					<Pane label="Tab A"><p>This is tab A</p></Pane>
-					<Pane label="Tab B" disabled><p>This is tab B.</p><p>It is disabled.</p></Pane>
-					<Pane label="Tab C"><p>This is tab C</p></Pane>
-					<Pane label="Always No">
+					<Panel label="Tab A"><p>This is tab A</p></Panel>
+					<Panel label="Tab B" disabled><p>This is tab B.</p><p>It is disabled.</p></Panel>
+					<Panel label="Tab C"><p>This is tab C</p></Panel>
+					<Panel label="Always No">
 						<p>
 							This one can not be selected from the tabs list because this example provides a custom <code>onSelct</code> function that retuns false when it is run, preventing the component&rsquo;s built-in handler from running, and thus the tab is never selected.
 						</p>
@@ -119,7 +119,7 @@ const TabsDemoComponent = React.createClass({
 						<p>
 							In other words, this should not be taken as an example of how to be sneaky about disabling tab selection, but rather that you can <strong>do stuff</strong> when a tab is selected by sending it a custom <code>onSelect</code> function.
 						</p>
-					</Pane>
+					</Panel>
 				</Tabs>
 			</div>
 		);
