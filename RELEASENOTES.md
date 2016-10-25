@@ -2,6 +2,24 @@
 # React Components: design-system-react
 # Release notes
 
+## Future Breaking Changes
+
+These are changes that have backwards-compatible solutions present and that compatibiity will be removed at a breaking change release in the future.
+
+- `TabsPane` has be replaced with `TabsPanel`.
+- `Input`'s props: `iconPosition`, `iconAssistiveText`, `iconCategory`, `iconName`, `onIconClick` are deprecated. An `Icon` component should be used instead.
+- `DataTable`'s' `collection`, `onSelect`, `onDeselect` are deprecated.
+- The prop `modal` in `DatePicker`, `Lookup`, `MenuDropdown`, `MenuPicklist`, `TimePicker` is deprecated
+- Remove `openByDefault` from `PopoverTooltip`.
+
+## Release 0.4.2
+
+**BUG FIX**
+
+- Manages CSS imports better for ES6, CommonJS and AMD packages. Previously, CSS imports would fail if a CSS file imports were present in the ECMAScript. This will remove the CSS imports from CommonJS and AMD packages.
+- Changes `TabsPane` to `TabsPanel`
+- Removes prototype status from Tabs
+
 ## Release 0.4.1
 
 **BUG FIX**
