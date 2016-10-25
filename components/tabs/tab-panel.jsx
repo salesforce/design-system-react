@@ -48,20 +48,20 @@ TabPanel.propTypes = {
 	/**
 	 * The `children` are the contents of the tab panel.
 	 *
-	 * Note that the structure of the `<Tabs />` component **does not** correspond to the DOM structure that is rendered. The `<Tabs />` component requires one or more children of type `<Pane />`, which themselves require a `label` property which will be what shows in the `<Tab />` and has `children`, which end up being the _contents of the tab's corresponding panel_.
+	 * Note that the structure of the `<Tabs />` component **does not** correspond to the DOM structure that is rendered. The `<Tabs />` component requires one or more children of type `<Panel />`, which themselves require a `label` property which will be what shows in the `<Tab />` and has `children`, which end up being the _contents of the tab's corresponding panel_.
 	 *
-	 * The component iterates through each `<Pane />` and rendering one `<Tab />` and one `<TabPanel />` for each of them. The tab(s) end up being children of the `<TabsList />`.
+	 * The component iterates through each `<Panel />` and rendering one `<Tab />` and one `<TabPanel />` for each of them. The tab(s) end up being children of the `<TabsList />`.
 	 *
-	 * The tab panel component actually returns the _children_ of the _children_ which were provided by the `<Pane />` component.
+	 * The tab panel component actually returns the _children_ of the _children_ which were provided by the `<Panel />` component.
 	 *
-	 * Due to React's nature, the `<Pane />` component wraps its children in a `div` element which we don't need nor want in our rendered DOM structure, so we just bypass it and get its kids via `{children.props.children}` in the render method below.
+	 * Due to React's nature, the `<Panel />` component wraps its children in a `div` element which we don't need nor want in our rendered DOM structure, so we just bypass it and get its kids via `{children.props.children}` in the render method below.
 	 * ```
 	 * <Tabs>
-	 * 	<Pane label="Tab 1">
+	 * 	<Panel label="Tab 1">
 	 * 		<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 	 * 		<p>They show when you click the first tab.</p>
 	 * 	</Pane>
-	 * 	<Pane label="Tab 2">
+	 * 	<Panel label="Tab 2">
 	 * 		<h2 className="slds-text-heading--medium">This is my tab 2 contents!</h2>
 	 * 		<p>They show when you click the second tab.</p>
 	 * 	</Pane>

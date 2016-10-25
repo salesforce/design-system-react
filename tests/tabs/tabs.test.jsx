@@ -13,15 +13,15 @@
 
 // Import your external dependencies
 import React, { PropTypes } from 'react';
+import TestUtils from 'react-addons-test-utils';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-
 import classNames from 'classnames';
 
 
 // Import your internal dependencies (for example):
 import Tabs from '../../components/tabs';
-import Pane from '../../components/tabs/pane';
+import Panel from '../../components/tabs/panel';
 
 /* Enzyme Helpers can mount and unmount React component instances to
  * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`
@@ -34,6 +34,10 @@ import { mountComponent, unmountComponent } from '../enzyme-helpers';
  */
 chai.use(chaiEnzyme());
 
+const {
+	Simulate
+} = TestUtils;
+
 const COMPONENT_CSS_CLASSES = {
 	wrapper: 'slds-tabs--default--wrapper',
 	base: 'slds-tabs--default',
@@ -44,7 +48,6 @@ const COMPONENT_CSS_CLASSES = {
 	testClass: 'this-is-a-css-class-name'
 
 };
-
 
 /* A re-usable demo component fixture outside of `describe` sections
  * can accept props within each test and be unmounted after each tests.
@@ -68,12 +71,6 @@ const TabsDemoComponent = React.createClass({
 		 * HTML `id` attribute of primary element that has `.slds-tabs--default` on it. Optional: If one is not supplied, a `shortid` will be created.
 		 */
 		id: React.PropTypes.string
-	},
-
-
-	getInitialState () {
-		return {
-		};
 	},
 
 	render () {
@@ -102,14 +99,13 @@ const TabsDemoComponent = React.createClass({
 					className={classNames(
 						className
 					)}
-					onSelect={this.handleSelectNopesOnThree}
 					id={id}
 					{...attributes}
 				>
-					<Pane label="Tab A"><p>This is tab A</p></Pane>
-					<Pane label="Tab B" disabled><p>This is tab B.</p><p>It is disabled.</p></Pane>
-					<Pane label="Tab C"><p>This is tab C</p></Pane>
-					<Pane label="Always No">
+					<Panel label="Tab A"><p>This is tab A</p></Panel>
+					<Panel label="Tab B" disabled><p>This is tab B.</p><p>It is disabled.</p></Panel>
+					<Panel label="Tab C"><p>This is tab C</p></Panel>
+					<Panel label="Always No">
 						<p>
 							This one can not be selected from the tabs list because this example provides a custom <code>onSelct</code> function that retuns false when it is run, preventing the component&rsquo;s built-in handler from running, and thus the tab is never selected.
 						</p>
@@ -119,7 +115,7 @@ const TabsDemoComponent = React.createClass({
 						<p>
 							In other words, this should not be taken as an example of how to be sneaky about disabling tab selection, but rather that you can <strong>do stuff</strong> when a tab is selected by sending it a custom <code>onSelect</code> function.
 						</p>
-					</Pane>
+					</Panel>
 				</Tabs>
 			</div>
 		);
@@ -222,7 +218,6 @@ describe('Tabs', () => {
 		));
 		after(unmountComponent);
 
-
 		it('Tab components have proper "aria-controls" attribute because they inherit Tabs ID property and append "-slds-tabs--panel-<index>" to it.', function () {
 			this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}`).forEach(function (node, index) {
 				expect(node).to.have.attr('aria-controls', `${id}-slds-tabs--panel-${index}`);
@@ -235,7 +230,6 @@ describe('Tabs', () => {
 			});
 		});
 
-
 		it('Has the aria-disabled attribute on the second tab.', function () {
 			const myTabsListItem = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}.slds-disabled`);
 			expect(myTabsListItem).to.have.attr('aria-disabled').equal('true');
@@ -244,6 +238,135 @@ describe('Tabs', () => {
 		it('Has a tabindex of -1 on the second tab.', function () {
 			const myTabsListItem = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}.slds-disabled`);
 			expect(myTabsListItem).to.have.attr('tabindex').equal('-1');
+		});
+	});
+
+	describe('Interactions click', () => {
+		const id = 'this-is-an-id-for-testing--click';
+
+		before(mountComponent(
+			<TabsDemoComponent
+				id={id}
+			/>
+		));
+		after(unmountComponent);
+
+		it('New panel renders when a tab is clicked ', function () {
+			const myTabsListItems = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}`);
+			const myFirstPanel = this.wrapper.find(`#${id}-slds-tabs--panel-0`);
+			const myThirdPanel = this.wrapper.find(`#${id}-slds-tabs--panel-2`);
+
+
+			expect(myFirstPanel.hasClass('slds-show')).to.equal(true);
+			expect(myFirstPanel.hasClass('slds-hide')).to.equal(false);
+
+			expect(myThirdPanel.hasClass('slds-show')).to.equal(false);
+			expect(myThirdPanel.hasClass('slds-hide')).to.equal(true);
+
+			Simulate.click(myTabsListItems.nodes[2], {});
+
+			expect(myFirstPanel.hasClass('slds-show')).to.equal(false);
+			expect(myFirstPanel.hasClass('slds-hide')).to.equal(true);
+
+			expect(myThirdPanel.hasClass('slds-show')).to.equal(true);
+			expect(myThirdPanel.hasClass('slds-hide')).to.equal(false);
+		});
+	});
+
+	describe('Interactions disabled', () => {
+		const id = 'this-is-an-id-for-testing--disabled';
+
+		before(mountComponent(
+			<TabsDemoComponent
+				id={id}
+			/>
+		));
+		after(unmountComponent);
+
+		it('Disabled tab does not reveal new content ', function () {
+			const myTabsListItems = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}`);
+			const myFirstPanel = this.wrapper.find(`#${id}-slds-tabs--panel-0`);
+			const mySecondPanel = this.wrapper.find(`#${id}-slds-tabs--panel-1`);
+
+			expect(myFirstPanel.hasClass('slds-show')).to.equal(true);
+			expect(myFirstPanel.hasClass('slds-hide')).to.equal(false);
+
+			expect(mySecondPanel.hasClass('slds-show')).to.equal(false);
+			expect(mySecondPanel.hasClass('slds-hide')).to.equal(true);
+
+			Simulate.click(myTabsListItems.nodes[1], {});
+
+			expect(myFirstPanel.hasClass('slds-show')).to.equal(true);
+			expect(myFirstPanel.hasClass('slds-hide')).to.equal(false);
+
+			expect(mySecondPanel.hasClass('slds-show')).to.equal(false);
+			expect(mySecondPanel.hasClass('slds-hide')).to.equal(true);
+		});
+	});
+
+	describe('Interactions tabby', () => {
+		const id = 'this-is-an-id-for-testing--tabby';
+
+		before(mountComponent(
+			<TabsDemoComponent
+				id={id}
+			/>
+		));
+		after(unmountComponent);
+
+		it('Can be tabbed into', function () {
+			const myTabsListItems = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}`);
+			const myFirstPanel = this.wrapper.find(`#${id}-slds-tabs--panel-0`);
+
+			const myThirdPanel = this.wrapper.find(`#${id}-slds-tabs--panel-2`);
+
+			expect(myFirstPanel.hasClass('slds-show')).to.equal(true);
+			expect(myFirstPanel.hasClass('slds-hide')).to.equal(false);
+
+			expect(myThirdPanel.hasClass('slds-show')).to.equal(false);
+			expect(myThirdPanel.hasClass('slds-hide')).to.equal(true);
+
+			Simulate.keyDown(myTabsListItems.nodes[0], { key: 'Tab', keyCode: 9, which: 9 });
+			Simulate.keyDown(myTabsListItems.nodes[0], { key: 'Right', keyCode: 39, which: 39 });
+
+			expect(myFirstPanel.hasClass('slds-show')).to.equal(false);
+			expect(myFirstPanel.hasClass('slds-hide')).to.equal(true);
+
+			expect(myThirdPanel.hasClass('slds-show')).to.equal(true);
+			expect(myThirdPanel.hasClass('slds-hide')).to.equal(false);
+		});
+	});
+
+	describe('Interactions tabby disabled', () => {
+		const id = 'this-is-an-id-for-testing--tabby-disabled';
+
+		before(mountComponent(
+			<TabsDemoComponent
+				id={id}
+			/>
+		));
+		after(unmountComponent);
+
+
+		it('Disabled tab can NOT be tabbed into', function () {
+			const myTabsListItems = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}`);
+			const myFirstPanel = this.wrapper.find(`#${id}-slds-tabs--panel-0`);
+			const mySecondPanel = this.wrapper.find(`#${id}-slds-tabs--panel-1`);
+
+			expect(myFirstPanel.hasClass('slds-show')).to.equal(true);
+			expect(myFirstPanel.hasClass('slds-hide')).to.equal(false);
+
+			expect(mySecondPanel.hasClass('slds-show')).to.equal(false);
+			expect(mySecondPanel.hasClass('slds-hide')).to.equal(true);
+
+			Simulate.keyDown(myTabsListItems.nodes[0], { key: 'Tab', keyCode: 9, which: 9 });
+			Simulate.keyDown(myTabsListItems.nodes[0], { key: 'Right', keyCode: 39, which: 39 });
+
+			expect(myFirstPanel.hasClass('slds-show')).to.equal(false);
+			expect(myFirstPanel.hasClass('slds-hide')).to.equal(true);
+
+			expect(mySecondPanel.hasClass('slds-show')).to.equal(false);
+			expect(mySecondPanel.hasClass('slds-hide')).to.equal(true);
 		});
 	});
 });

@@ -4,7 +4,7 @@ import { storiesOf, action } from '@kadira/storybook';
 import { TABS } from '../../utilities/constants';
 
 import Tabs from '../../components/tabs';
-import Pane from '../../components/tabs/pane';
+import Panel from '../../components/tabs/panel';
 
 
 // Used in the Nested story
@@ -23,7 +23,7 @@ const getTabs = () => (
 	<div>
 		<h2 className="slds-text-heading--large">Base Tabs Demo</h2>
 		<Tabs id="main-tabs-demo" className="custom-class-is-custom" foo="baz">
-			<Pane label="Tab 1">
+			<Panel label="Tab 1">
 				<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 				<p>And they&rsquo;re amazing.</p>
 				<p>It's awesome.</p>
@@ -31,15 +31,15 @@ const getTabs = () => (
 				<p className="slds-box slds-theme--info slds-m-top--large">
 					(You might have to hit shift+tab to put the focus onto the tab bar ;)
 				</p>
-			</Pane>
-			<Pane label="Tab 2">
+			</Panel>
+			<Panel label="Tab 2">
 				<h2 className="slds-text-heading--medium">This is my tab 2 contents!</h2>
 				<p>And they&rsquo;re also amazing.</p>
-			</Pane>
-			<Pane label="Tab 3">
+			</Panel>
+			<Panel label="Tab 3">
 				<h2 className="slds-text-heading--medium">This is my tab 3 contents!</h2>
 				<p>And they&rsquo;re quite spectacular.</p>
-			</Pane>
+			</Panel>
 		</Tabs>
 	</div>
 );
@@ -50,16 +50,16 @@ const getTabsMoreThanOneAllowGeneratedID = () => (
 	<div>
 		<h2 className="slds-text-heading--large">Generated Unique IDs Demo</h2>
 		<Tabs>
-			<Pane label="Only 1 Tab">
+			<Panel label="Only 1 Tab">
 				<h2 className="slds-text-heading--medium">About this story</h2>
 				<p>There should be two instances of Tabs in this story, and each should have a unique (generated) ID.</p>
-			</Pane>
+			</Panel>
 		</Tabs>
 		<Tabs>
-			<Pane label="Only 1 Tab">
+			<Panel label="Only 1 Tab">
 				<h2 className="slds-text-heading--medium">About this story</h2>
 				<p>There should be two instances of Tabs in this story, and each should have a unique (generated) ID.</p>
-			</Pane>
+			</Panel>
 		</Tabs>
 	</div>
 );
@@ -71,11 +71,11 @@ const getTabsNested = () => (
 	<div>
 		<h2 className="slds-text-heading--large">Nested Tabs Demo</h2>
 		<Tabs id="nested-tabs-demo">
-			<Pane label="Tab 1">
+			<Panel label="Tab 1">
 				<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 				<p>And they&rsquo;re <a href="#amazing">amazing</a>.</p>
-			</Pane>
-			<Pane label="Tab 2">
+			</Panel>
+			<Panel label="Tab 2">
 				<h2 className="slds-text-heading--medium">This is my tab 2 contents!</h2>
 				<p>And they&rsquo;re also amazing.</p>
 
@@ -92,35 +92,35 @@ const getTabsNested = () => (
 				/>
 
 
-			</Pane>
-			<Pane label="Tab 3 (has children)">
+			</Panel>
+			<Panel label="Tab 3 (has children)">
 				<h2 className="slds-text-heading--medium">This is my tab 3 contents!</h2>
 				<p>And they&rsquo;re tabceptionish.</p>
 				<div className="slds-box slds-m-vertical--large">
 					<Tabs defaultSelectedIndex={0}>
-						<Pane label="Tab 1">
+						<Panel label="Tab 1">
 							<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 							<p>And they&rsquo;re amazing.</p>
-						</Pane>
-						<Pane label="Tab 2">
+						</Panel>
+						<Panel label="Tab 2">
 							<h2 className="slds-text-heading--medium">This is my tab 2 contents!</h2>
 							<p>And they&rsquo;re also amazing.</p>
-						</Pane>
-						<Pane label="Tab 3 (Also has children!)">
+						</Panel>
+						<Panel label="Tab 3 (Also has children!)">
 							<h2 className="slds-text-heading--medium">This is my tab 3 contents!</h2>
 							<p>And they&rsquo;re even <em>more</em> tabceptionish.</p>
 							<div className="slds-box slds-m-vertical--large">
 								<Tabs defaultSelectedIndex={0}>
-									<Pane label="Tab 1 (no children!)">
+									<Panel label="Tab 1 (no children!)">
 										<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 										<p>And they&rsquo;re amazing.</p>
-									</Pane>
+									</Panel>
 								</Tabs>
 							</div>
-						</Pane>
+						</Panel>
 					</Tabs>
 				</div>
-			</Pane>
+			</Panel>
 		</Tabs>
 	</div>
 );
@@ -167,7 +167,7 @@ const DemoTabsConditional = React.createClass({
 
 	renderPaneA (disabled) {
 		return (
-			<Pane
+			<Panel
 				label="Tab A"
 				disabled={disabled}
 			>
@@ -188,7 +188,7 @@ const DemoTabsConditional = React.createClass({
 						name="disableC"
 					/>
 				</div>
-			</Pane>
+			</Panel>
 		);
 	},
 
@@ -228,8 +228,8 @@ const DemoTabsConditional = React.createClass({
 					onSelect={this.handleSelectNopesOnThree}
 				>
 					{this.state.showA && this.renderPaneA(this.state.disableA)}
-					{this.state.showB && this.state.disableB ? <Pane label="Tab B" disabled><p>This is tab B.</p></Pane> : this.state.showB && <Pane label="Tab B"><p>This is tab B.</p></Pane>}
-					{this.state.showC && this.state.disableC ? <Pane label="Tab C" disabled><p>This is tab C.</p></Pane> : this.state.showC && <Pane label="Tab C"><p>This is tab C.</p></Pane>}
+					{this.state.showB && this.state.disableB ? <Panel label="Tab B" disabled><p>This is tab B.</p></Panel> : this.state.showB && <Panel label="Tab B"><p>This is tab B.</p></Panel>}
+					{this.state.showC && this.state.disableC ? <Panel label="Tab C" disabled><p>This is tab C.</p></Panel> : this.state.showC && <Panel label="Tab C"><p>This is tab C.</p></Panel>}
 				</Tabs>
 			</div>
 		);
@@ -390,18 +390,18 @@ const DemoTabsOutsideControl = React.createClass({
 					selectedIndex={this.state.whichOneSelectedYo}
 					onSelect={this.handleSelect}
 				>
-					<Pane label="Monday">
+					<Panel label="Monday">
 						<p>This is Monday's Pane.</p>
 						<Button
 							id="tuesday-alt"
 							label="Submit and go to next tab"
 							onClick={this.handleButtonClicked}
 						/>
-					</Pane>
-					<Pane label="Tuesday"><p>This is Tuesday's Pane.</p></Pane>
-					<Pane label="Wednesday"><p>This is Wednesday's Pane.</p></Pane>
-					<Pane label="Thursday"><p>Thursday's Pane has far to go.</p></Pane>
-					<Pane label="Friday"><p>This is Friday's Pane.</p></Pane>
+					</Panel>
+					<Panel label="Tuesday"><p>This is Tuesday's Pane.</p></Panel>
+					<Panel label="Wednesday"><p>This is Wednesday's Pane.</p></Panel>
+					<Panel label="Thursday"><p>Thursday's Pane has far to go.</p></Panel>
+					<Panel label="Friday"><p>This is Friday's Pane.</p></Panel>
 				</Tabs>
 			</div>
 		);
@@ -413,7 +413,7 @@ const getTabsDisabled = () => (
 	<div>
 		<h2 className="slds-text-heading--large">Disabled Tabs Demo</h2>
 		<Tabs id="disabled-tabs-demo">
-			<Pane label="Tab 1">
+			<Panel label="Tab 1">
 				<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 				<p>And they&rsquo;re amazing.</p>
 				<p>It's awesome.</p>
@@ -421,19 +421,19 @@ const getTabsDisabled = () => (
 				<p className="slds-box slds-theme--info slds-m-top--large">
 					(You might have to hit shift+tab to put the focus onto the tab bar ;)
 				</p>
-			</Pane>
-			<Pane label="Tab 2" disabled>
+			</Panel>
+			<Panel label="Tab 2" disabled>
 				<h2 className="slds-text-heading--medium">This is my tab 2 contents!</h2>
 				<p>And they&rsquo;re also amazing.</p>
-			</Pane>
-			<Pane label="Tab 3">
+			</Panel>
+			<Panel label="Tab 3">
 				<h2 className="slds-text-heading--medium">This is my tab 3 contents!</h2>
 				<p>And they&rsquo;re quite spectacular.</p>
-			</Pane>
-			<Pane label="Tab 4">
+			</Panel>
+			<Panel label="Tab 4">
 				<h2 className="slds-text-heading--medium">This is my tab 3 contents!</h2>
 				<p>Note that using your arrow keys you can loop <em>around the tabs</em>! 🎉</p>
-			</Pane>
+			</Panel>
 		</Tabs>
 	</div>
 );

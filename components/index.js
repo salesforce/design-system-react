@@ -117,13 +117,13 @@ export PopoverTooltip from './popover-tooltip';
 export SLDSSpinner from './spinner';
 export Spinner from './spinner';
 
-export SLDSTabs from './tabs';
-export Tabs from './tabs';
-export SLDSPane from './tabs/pane';
-export Pane from './tabs/pane';
-
 export SLDSTimepicker from './time-picker';
 export Timepicker from './time-picker';
+
+export SLDSTabs from './tabs';
+export Tabs from './tabs';
+export SLDSPanel from './tabs/panel';
+export Panel from './tabs/panel';
 
 export SLDSUtilityIcon from './utilities/utility-icon';
 export UtilityIcon from './utilities/utility-icon';

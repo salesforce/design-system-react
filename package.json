@@ -269,7 +269,7 @@
     },
     {
       "component": "tabs",
-      "status": "prototype",
+      "status": "prod",
       "display-name": "Tabs",
       "SLDS-component-path": "/components/tabs"
     },
