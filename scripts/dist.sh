@@ -47,15 +47,19 @@ cp -r .tmp .tmp-es
 rm -rf .tmp/
 
 cp -r components .tmp-es/components
+cp -r styles .tmp-es/styles
 cp -r icons .tmp-es/icons
 cp -r utilities .tmp-es/utilities
 
 echo "## Transpiling with Babel"
 
-./node_modules/.bin/babel --plugins transform-es2015-modules-amd .tmp-es/components -d .tmp-amd/components
-./node_modules/.bin/babel --plugins transform-es2015-modules-amd .tmp-es/icons -d .tmp-amd/icons
-./node_modules/.bin/babel --plugins transform-es2015-modules-amd .tmp-es/utilities -d .tmp-amd/utilities
+NODE_ENV=amd ./node_modules/.bin/babel --plugins transform-es2015-modules-amd .tmp-es/components --out-dir .tmp-amd/components
+cp -r styles .tmp-amd/styles
+./node_modules/.bin/babel --plugins transform-es2015-modules-amd .tmp-es/icons --out-dir .tmp-amd/icons
+NODE_ENV=amd ./node_modules/.bin/babel --plugins transform-es2015-modules-amd .tmp-es/utilities --out-dir .tmp-amd/utilities
 
-./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp-es/components -d .tmp-commonjs/components
-./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp-es/icons -d .tmp-commonjs/icons
-./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp-es/utilities -d .tmp-commonjs/utilities
+
+NODE_ENV=commonjs ./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp-es/components --out-dir .tmp-commonjs/components
+cp -r styles .tmp-commonjs/styles
+./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp-es/icons --out-dir .tmp-commonjs/icons
+NODE_ENV=commonjs ./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp-es/utilities --out-dir .tmp-commonjs/utilities
