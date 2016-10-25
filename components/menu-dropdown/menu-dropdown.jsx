@@ -264,7 +264,7 @@ const MenuDropdown = React.createClass({
 		/**
 		 * Current selected menu item.
 		 */
-		value: PropTypes.string,
+		value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 		/**
 		 * This prop is passed onto the triggering `Button`. It creates a tooltip with the content of the `node` provided.
 		 */
