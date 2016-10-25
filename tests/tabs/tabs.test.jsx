@@ -35,9 +35,7 @@ import { mountComponent, unmountComponent } from '../enzyme-helpers';
 chai.use(chaiEnzyme());
 
 const {
-	Simulate,
-	scryRenderedComponentsWithType,
-	findRenderedDOMComponentWithClass
+	Simulate
 } = TestUtils;
 
 const COMPONENT_CSS_CLASSES = {
@@ -50,7 +48,6 @@ const COMPONENT_CSS_CLASSES = {
 	testClass: 'this-is-a-css-class-name'
 
 };
-
 
 /* A re-usable demo component fixture outside of `describe` sections
  * can accept props within each test and be unmounted after each tests.
@@ -221,7 +218,6 @@ describe('Tabs', () => {
 		));
 		after(unmountComponent);
 
-
 		it('Tab components have proper "aria-controls" attribute because they inherit Tabs ID property and append "-slds-tabs--panel-<index>" to it.', function () {
 			this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}`).forEach(function (node, index) {
 				expect(node).to.have.attr('aria-controls', `${id}-slds-tabs--panel-${index}`);
@@ -233,7 +229,6 @@ describe('Tabs', () => {
 				expect(node).to.have.attr('aria-labelledby', `${id}-slds-tabs--tab-${index}`);
 			});
 		});
-
 
 		it('Has the aria-disabled attribute on the second tab.', function () {
 			const myTabsListItem = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}.slds-disabled`);
@@ -256,8 +251,6 @@ describe('Tabs', () => {
 		));
 		after(unmountComponent);
 
-
-
 		it('New panel renders when a tab is clicked ', function () {
 			const myTabsListItems = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}`);
 			const myFirstPanel = this.wrapper.find(`#${id}-slds-tabs--panel-0`);
@@ -278,7 +271,6 @@ describe('Tabs', () => {
 			expect(myThirdPanel.hasClass('slds-show')).to.equal(true);
 			expect(myThirdPanel.hasClass('slds-hide')).to.equal(false);
 		});
-
 	});
 
 	describe('Interactions disabled', () => {
@@ -290,7 +282,6 @@ describe('Tabs', () => {
 			/>
 		));
 		after(unmountComponent);
-
 
 		it('Disabled tab does not reveal new content ', function () {
 			const myTabsListItems = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}`);
@@ -310,9 +301,7 @@ describe('Tabs', () => {
 
 			expect(mySecondPanel.hasClass('slds-show')).to.equal(false);
 			expect(mySecondPanel.hasClass('slds-hide')).to.equal(true);
-
 		});
-
 	});
 
 	describe('Interactions tabby', () => {
@@ -324,10 +313,6 @@ describe('Tabs', () => {
 			/>
 		));
 		after(unmountComponent);
-
-
-
-
 
 		it('Can be tabbed into', function () {
 			const myTabsListItems = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}`);
@@ -341,17 +326,15 @@ describe('Tabs', () => {
 			expect(myThirdPanel.hasClass('slds-show')).to.equal(false);
 			expect(myThirdPanel.hasClass('slds-hide')).to.equal(true);
 
-			Simulate.keyDown(myTabsListItems.nodes[0], {key: "Tab", keyCode: 9, which: 9});
-			Simulate.keyDown(myTabsListItems.nodes[0], {key: "Right", keyCode: 39, which: 39});
+			Simulate.keyDown(myTabsListItems.nodes[0], { key: 'Tab', keyCode: 9, which: 9 });
+			Simulate.keyDown(myTabsListItems.nodes[0], { key: 'Right', keyCode: 39, which: 39 });
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(false);
 			expect(myFirstPanel.hasClass('slds-hide')).to.equal(true);
 
 			expect(myThirdPanel.hasClass('slds-show')).to.equal(true);
 			expect(myThirdPanel.hasClass('slds-hide')).to.equal(false);
-
 		});
-
 	});
 
 	describe('Interactions tabby disabled', () => {
@@ -376,8 +359,8 @@ describe('Tabs', () => {
 			expect(mySecondPanel.hasClass('slds-show')).to.equal(false);
 			expect(mySecondPanel.hasClass('slds-hide')).to.equal(true);
 
-			Simulate.keyDown(myTabsListItems.nodes[0], {key: "Tab", keyCode: 9, which: 9});
-			Simulate.keyDown(myTabsListItems.nodes[0], {key: "Right", keyCode: 39, which: 39});
+			Simulate.keyDown(myTabsListItems.nodes[0], { key: 'Tab', keyCode: 9, which: 9 });
+			Simulate.keyDown(myTabsListItems.nodes[0], { key: 'Right', keyCode: 39, which: 39 });
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(false);
 			expect(myFirstPanel.hasClass('slds-hide')).to.equal(true);
@@ -385,7 +368,5 @@ describe('Tabs', () => {
 			expect(mySecondPanel.hasClass('slds-show')).to.equal(false);
 			expect(mySecondPanel.hasClass('slds-hide')).to.equal(true);
 		});
-
 	});
-
 });
