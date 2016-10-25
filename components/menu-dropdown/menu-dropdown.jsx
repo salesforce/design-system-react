@@ -22,6 +22,9 @@ import ReactDOM from 'react-dom';
 // joining classNames together."
 import classNames from 'classnames';
 
+// ### isBoolean
+import isBoolean from 'lodash.isboolean';
+
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
@@ -300,24 +303,14 @@ const MenuDropdown = React.createClass({
 	},
 
 	componentWillReceiveProps (nextProps, prevProps) {
-		if (this.props.value !== nextProps.value) {
+		if (prevProps.value !== nextProps.value) {
 			this.setState({
 				selectedIndex: this.getIndexByValue(nextProps.value)
 			});
 		}
 
-		if (nextProps.isOpen === true) {
-			this.setState({
-				isOpen: true
-			});
+		if (prevProps.isOpen !== nextProps.isOpen) {
 			this.setFocus();
-		}	else if (nextProps.isOpen === false) {
-			this.setState({
-				isOpen: false
-			});
-			if (prevProps.isOpen === true) {
-				this.setFocus();
-			}
 		}
 	},
 
@@ -328,6 +321,10 @@ const MenuDropdown = React.createClass({
 
 	getId () {
 		return this.props.id || this.generatedId;
+	},
+
+	getIsOpen () {
+		return !!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
 	},
 
 	getIndexByValue (value) {
@@ -356,45 +353,51 @@ const MenuDropdown = React.createClass({
 	},
 
 	handleClose () {
-		if (this.state.isOpen) {
-			if (this.props.isOpen === undefined) {
-				this.setState({
-					isOpen: false
-				});
-			}
+		const isOpen = this.getIsOpen();
 
-			this.isHover = false;
-
+		if (isOpen) {
 			if (currentOpenDropdown === this) {
 				currentOpenDropdown = undefined;
 			}
-		}
 
-		if (this.props.onClose) {
-			this.props.onClose();
+			this.setState({
+				isOpen: false
+			});
+
+			this.isHover = false;
+
+			if (this.props.onClose) {
+				this.props.onClose();
+			}
 		}
 	},
 
 	handleOpen () {
-		if (currentOpenDropdown && isFunction(currentOpenDropdown.handleClose)) {
-			currentOpenDropdown.handleClose();
-		}
+		const isOpen = this.getIsOpen();
 
-		currentOpenDropdown = this;
+		if (!isOpen) {
+			if (currentOpenDropdown && isFunction(currentOpenDropdown.handleClose)) {
+				currentOpenDropdown.handleClose();
+			}
 
-		if (this.props.isOpen === undefined) {
+			currentOpenDropdown = this;
+
 			this.setState({
 				isOpen: true
 			});
-		} else if (this.props.onOpen) {
-			this.props.onOpen();
+
+			if (this.props.onOpen) {
+				this.props.onOpen();
+			}
 		}
 	},
 
 	handleMouseEnter (event) {
+		const isOpen = this.getIsOpen();
+
 		this.isHover = true;
 
-		if (!this.state.isOpen && this.props.openOn === 'hover') {
+		if (!isOpen && this.props.openOn === 'hover') {
 			this.handleOpen();
 		} else {
 			// we want this clear when openOn is hover or hybrid
@@ -407,7 +410,9 @@ const MenuDropdown = React.createClass({
 	},
 
 	handleMouseLeave (event) {
-		if (this.state.isOpen) {
+		const isOpen = this.getIsOpen();
+
+		if (isOpen) {
 			this.isClosing = setTimeout(() => {
 				this.handleClose();
 			}, this.props.hoverCloseDelay);
@@ -419,13 +424,13 @@ const MenuDropdown = React.createClass({
 	},
 
 	handleClick (event) {
-		if (this.props.isOpen === undefined) {
-			if (!this.state.isOpen) {
-				this.handleOpen();
-				this.setFocus();
-			} else {
-				this.handleClose();
-			}
+		const isOpen = this.getIsOpen();
+
+		if (!isOpen) {
+			this.handleOpen();
+			this.setFocus();
+		} else {
+			this.handleClose();
 		}
 
 		if (this.props.onClick) {
@@ -434,7 +439,9 @@ const MenuDropdown = React.createClass({
 	},
 
 	handleFocus (event) {
-		if (!this.state.isOpen) {
+		const isOpen = this.getIsOpen();
+
+		if (!isOpen) {
 			this.handleOpen();
 		}
 
@@ -473,9 +480,11 @@ const MenuDropdown = React.createClass({
 			}
 
 			if (event.keyCode !== KEYS.TAB) {
+				const isOpen = this.getIsOpen();
+
 				this.handleKeyboardNavigate({
 					event,
-					isOpen: this.state.isOpen || false,
+					isOpen,
 					key: event.key,
 					keyCode: event.keyCode,
 					onSelect: this.handleSelect,
@@ -502,8 +511,10 @@ const MenuDropdown = React.createClass({
 	},
 
 	toggleOpen () {
+		const isOpen = this.getIsOpen();
 		this.setFocus();
-		if (this.state.isOpen) {
+
+		if (isOpen) {
 			this.handleClose();
 		} else {
 			this.handleOpen();
@@ -595,15 +606,15 @@ const MenuDropdown = React.createClass({
 	},
 
 	renderInlineMenu (customContent, isOpen) {
-		let marginTop;
 		let positionClassName;
+
 		if (this.props.nubbinPosition) {
 			const positions = this.props.nubbinPosition.split(' ');
 			positionClassName = classNames(
 				`slds-nubbin--${positions.join('-')}`,
 				positions.map((position) => `slds-dropdown--${position}`)
 			);
-			marginTop = '0px';
+
 			// TODO: allow nubbinPosition prop to set the offset automatically
 			// if (this.props.nubbinPosition === 'top right') {
 			// 	offset = '-12px -24px';
@@ -611,6 +622,7 @@ const MenuDropdown = React.createClass({
 		} else if (this.props.align) {
 			positionClassName = `slds-dropdown--${this.props.align}`;
 		}
+
 		return (
 			isOpen ?
 				<div
@@ -708,7 +720,7 @@ const MenuDropdown = React.createClass({
 		}
 
 		const outsideClickIgnoreClass = `ignore-click-${this.getId()}`;
-		const isOpen = !this.props.disabled && this.state.isOpen && !!this.trigger;
+		const isOpen = !this.props.disabled && this.getIsOpen() && !!this.trigger;
 
 		this.renderOverlay(isOpen);
 
