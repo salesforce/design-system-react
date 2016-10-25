@@ -8,7 +8,6 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-/* eslint-disable indent */
 
 // ### React
 // React is an external dependency of the project.
@@ -33,7 +32,7 @@ export const cssClasses = {
 };
 
 /**
- * A media object should be used when text and a figure next to each other is needed.
+ * When you need text and a figure next to each other, use a media object.
  */
 const MediaObject = React.createClass({
 	// ### Display Name
@@ -42,11 +41,11 @@ const MediaObject = React.createClass({
 	// ### Prop Types
 	propTypes: {
 		/**
-		 * Allows truncation in nested flexbox containers. Often the body may need to be truncated.
+		 * Often the body may need to be truncated for correct layout. This is only applicable if using the component within a flexbox container.
 		 */
 		canTruncate: PropTypes.bool,
 		/**
-		 * Class names to be added to the Media Object.
+		 * Class names to be added to the component's HTML tag with `slds-media` class.
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
@@ -63,35 +62,24 @@ const MediaObject = React.createClass({
 		verticalCenter: PropTypes.bool
 	},
 
-	_renderMediaFigure () {
-		// icon should be size small
-		return (
-			<div className={cssClasses.figure}>
-				{this.props.figure}
-			</div>
-		);
-	},
-
 	render () {
-		let mediaFigure = null;
-		if (this.props.figure) {
-			mediaFigure = this._renderMediaFigure();
-		}
-
 		return (
-			<div className={
+			<div
+				className={
 					classnames(
 						cssClasses.base,
 						{
 							'slds-media--center': this.props.verticalCenter,
 							'slds-has-flexi-truncate': this.props.canTruncate
-							}, this.props.className)}>
-				{mediaFigure}
+						}, this.props.className)}
+			>
+				{this.props.figure ? <div className={cssClasses.figure}>
+					{this.props.figure} </div> : null}
 				<div className={cssClasses.body}>
 					{this.props.body}
 				</div>
 			</div>
-		)
+		);
 	}
 });
 
