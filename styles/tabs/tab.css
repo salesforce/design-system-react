@@ -1,0 +1,18 @@
+.slds-tabs--default .slds-tabs--default__item.slds-disabled {
+  opacity: 0.5;
+}
+.slds-tabs--default .slds-tabs--default__item.slds-disabled > a:hover, .slds-tabs--default .slds-tabs--default__item.slds-disabled > a.slds-tabs--default__link:focus {
+  cursor: not-allowed;
+  text-decoration: none;
+  border-color: transparent;
+  color: inherit;
+}
+.slds-tabs--default .slds-tabs--default__item.slds-disabled.slds-active a.slds-tabs--default__link {
+  cursor: not-allowed;
+  border-color: transparent;
+  color: inherit;
+}
+.slds-tabs--default .slds-tabs--default__item.slds-disabled.slds-active a.slds-tabs--default__link:focus {
+  cursor: not-allowed;
+  color: inherit;
+}
