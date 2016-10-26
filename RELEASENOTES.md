@@ -1,4 +1,4 @@
-  # Salesforce Lightning Design System
+# Salesforce Lightning Design System
 # React Components: design-system-react
 # Release notes
 
