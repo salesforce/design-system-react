@@ -12,7 +12,7 @@ These are changes that have backwards-compatible solutions present and that comp
 - The prop `modal` in `DatePicker`, `Lookup`, `MenuDropdown`, `MenuPicklist`, `TimePicker` is deprecated
 - Remove `openByDefault` from `PopoverTooltip`.
 
-## Release 0.4.2
+## Release 0.4.3
 
 **BUG FIX**
 
