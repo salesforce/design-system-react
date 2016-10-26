@@ -17,14 +17,14 @@ These are changes that have backwards-compatible solutions present and that comp
 
 **BUG FIX**
 
-- Tabs' `Pane` changed to `TabsPane` to align with other component names.
+- Tabs' `Panel` changed to `TabsPanel` to align with other component names.
 
 ## Release 0.4.3
 
 **BUG FIX**
 
 - Manages CSS imports better for ES6, CommonJS and AMD packages. Previously, CSS imports would fail if a CSS file imports were present in the ECMAScript. This will remove the CSS imports from CommonJS and AMD packages.
-- Changes `TabsPane` to `TabsPanel`
+- Changes Tabs' `Pane` to `Panel`
 - Removes prototype status from Tabs
 
 ## Release 0.4.1
