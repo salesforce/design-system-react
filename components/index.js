@@ -126,6 +126,8 @@ export SLDSTabsPanel from './tabs/panel';
 export TabsPanel from './tabs/panel';
 
 // This is just an alias, Sydney Bristow. Remove at next breaking release.
+export SLDSPanel from './tabs/panel';
+export Panel from './tabs/panel';
 export SLDSPane from './tabs/panel';
 export Pane from './tabs/panel';
 

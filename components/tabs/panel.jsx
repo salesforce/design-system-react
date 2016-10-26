@@ -13,20 +13,20 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 //
 // Helps implement the [Tabs design pattern](https://www.lightningdesignsystem.com/components/tabs/) in React.
 //
-// The `<Panel />` component allows us to simplify the structure of the `<Tabs />` component.
+// The `<TabsPanel />` component allows us to simplify the structure of the `<Tabs />` component.
 //
-// Rather than require different (deeply nested) children for tabslist, with its tab(s) as well as tabpanel(s), we provide this Panel component which takes a `label` property that will become what is shown on the `<Tab />` that will be associated with it.
+// Rather than require different (deeply nested) children for tabslist, with its tab(s) as well as tabpanel(s), we provide this TabsPanel component which takes a `label` property that will become what is shown on the `<Tab />` that will be associated with it.
 //
 // The `children` of the Panel will be fed to the `<TabPanel />` component, while its `label` is handled in `<Tab />`, via `<TabsList />`.
 /**
  *
  * ```
- * <Panel label="Tab 1">
+ * <TabsPanel label="Tab 1">
  * 	<div>
  * 		<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
  * 		<p>They show when you click the first tab.</p>
  * 	</div>
- * </Panel>
+ * </TabsPanel>
  * ```
  */
 
@@ -38,11 +38,11 @@ import React, {
 } from 'react';
 
 // ## Constants
-import { PANEL } from '../../utilities/constants';
+import { TABS_PANEL } from '../../utilities/constants';
 
 const Panel = ({ children }) => <div>{React.Children.toArray(children)}</div>;
 
-Panel.displayName = PANEL;
+Panel.displayName = TABS_PANEL;
 
 Panel.propTypes = {
 	/**

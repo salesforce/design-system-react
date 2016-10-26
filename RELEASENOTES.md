@@ -1,6 +1,5 @@
-  # Salesforce Lightning Design System
-# React Components: design-system-react
 # Release notes
+_Salesforce Lightning Design System :: React Components :: design-system-react_
 
 ## Future Breaking Changes
 
