@@ -28,6 +28,26 @@ const DataTableColumn = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
+		/**
+		 * Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.
+     * ```
+     * import DataTableCell from 'design-system-react/data-table/cell';
+     * const CustomDataTableCell = ({ children, ...props }) => (
+     *   <DataTableCell {...props} >
+     *     <a href="javascript:void(0);">{children}</a>
+     *   </DataTableCell>
+     * );
+     * CustomDataTableCell.displayName = DataTableCell.displayName;
+     *
+     * <DataTable>
+     *   <DataTableColumn />
+     *   <DataTableColumn>
+     *     <DataTableCustomCell />
+     *   </DataTableColumn>
+     *   <DataTableRowActions />
+     * </DataTable>
+     * ```
+     */
 		children: React.PropTypes.element,
 		/**
 		 * The column label.
