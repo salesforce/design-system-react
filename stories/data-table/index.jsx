@@ -4,6 +4,23 @@ import { storiesOf, action } from '@kadira/storybook';
 import { DATA_TABLE } from '../../utilities/constants';
 import DataTable from '../../components/data-table';
 import Column from '../../components/data-table/column';
+import DataTableCell from '../../components/data-table/cell';
+
+/* eslint-disable no-script-url */
+/* eslint-disable react/prop-types */
+const CustomDataTableCell = ({ children, ...props }) => (
+	<DataTableCell {...props} >
+		<a
+			href="javascript:void(0);"
+			onClick={(event) => {
+				event.preventDefault();
+				action('Link clicked')(event, { name: props.item.name });
+			}}
+		>{children}</a>
+	</DataTableCell>
+);
+CustomDataTableCell.displayName = DataTableCell.displayName;
+/* eslint-enable react/prop-types */
 
 const DemoDataTable = React.createClass({
 	displayName: 'DemoDataTable',
@@ -45,7 +62,10 @@ const DemoDataTable = React.createClass({
 					label="Opportunity Name"
 					property="name"
 					truncate
-				/>
+					sortable
+				>
+					<CustomDataTableCell />
+				</Column>
 				<Column
 					label="Count"
 					property="count"
@@ -101,4 +121,5 @@ storiesOf(DATA_TABLE, module)
 	.add('Bordered', () => <DemoDataTable bordered />)
 	.add('Buffered', () => <DemoDataTable buffered />)
 	.add('Buffered + Bordered', () => <DemoDataTable buffered bordered />)
-	.add('Selectable', () => <DemoDataTable selectRows />);
+	.add('Selectable', () => <DemoDataTable selectRows />)
+	.add('Custom Cell Component', () => <DemoDataTable customCellComponent />);

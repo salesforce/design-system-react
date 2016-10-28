@@ -76,8 +76,16 @@ const DataTable = React.createClass({
 		 */
 		buffered: PropTypes.bool,
 		/**
-		 * Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Custom `<DataTableCell />` implementations may also be passed in to override cell rendering.
+		 * Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.
 		 * ```
+		 * import DataTableCell from 'design-system-react/data-table/cell';
+     * const CustomDataTableCell = ({ children, ...props }) => (
+     *   <DataTableCell {...props} >
+     *     <a href="javascript:void(0);">{children}</a>
+     *   </DataTableCell>
+     * );
+     * CustomDataTableCell.displayName = DataTableCell.displayName;
+     *
 		 * <DataTable>
 		 *   <DataTableColumn />
 		 *   <DataTableColumn>
