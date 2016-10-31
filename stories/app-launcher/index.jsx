@@ -273,6 +273,7 @@ const DemoAppLauncher = React.createClass({
 					<AppLauncher
 						triggerName="App Name"
 						search={search}
+						modalClassName="custom-modal-class"
 						modalHeaderButton={modalHeaderButton}
 						isOpen={this.state.appLauncherOpen}
 						triggerOnClick={this.toggleAppLauncher}

@@ -216,7 +216,7 @@ const Input = React.createClass({
 			// Using [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx) to pass on any properties which are not explicitly defined.
 			...props
 		} = this.props;
-		
+
 		const labelText = label || assistiveText; // One of these is required to pass accessibility tests
 
 		// this is a hack to make left the default prop unless overwritten by `iconPosition="right"`
