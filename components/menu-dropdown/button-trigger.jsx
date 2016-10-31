@@ -123,7 +123,7 @@ const Trigger = React.createClass({
 			onMouseEnter,
 			onMouseLeave,
 			openOn,
-			triggerRef, // eslint-disable-line no-unused-vars
+			triggerRef,
 			...deprecatedPropsFromMenuDropdown
 		} = this.props;
 
@@ -161,7 +161,7 @@ const Trigger = React.createClass({
 					aria-haspopup="true"
 					{...deprecatedPropsFromMenuDropdown}
 					{...propsFromGrandchildButton}
-					ref={this.props.triggerRef}
+					ref={triggerRef}
 				/>
 				{menu}
 			</div>
