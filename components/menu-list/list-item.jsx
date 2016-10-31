@@ -39,6 +39,7 @@ const ListItem = React.createClass({
 	displayName: LIST_ITEM,
 
 	propTypes: {
+		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		checkmark: PropTypes.bool,
 		data: PropTypes.object,
 		divider: PropTypes.oneOf(['top', 'bottom']),
@@ -141,10 +142,13 @@ const ListItem = React.createClass({
 			case 'header': {
 				return (
 					<li
-						className={classNames('slds-dropdown__header', {
-							'slds-has-divider--top-space': this.props.divider === 'top',
-							'slds-has-divider--bottom-space': this.props.divider === 'bottom'
-						}
+						className={classNames(
+							'slds-dropdown__header',
+							{
+								'slds-has-divider--top-space': this.props.divider === 'top',
+								'slds-has-divider--bottom-space': this.props.divider === 'bottom'
+							},
+							this.props.className
 						)}
 						onMouseDown={this.handleMouseDown}
 						role="separator"
@@ -155,7 +159,11 @@ const ListItem = React.createClass({
 			}
 			case 'divider': {
 				return (
-					<li className="slds-has-divider" onMouseDown={this.handleMouseDown} role="separator"></li>
+					<li
+						className={classNames('slds-has-divider', this.props.className)}
+						onMouseDown={this.handleMouseDown}
+						role="separator"
+					></li>
 				);
 			}
 			case 'link':
@@ -164,7 +172,7 @@ const ListItem = React.createClass({
 				return (
 					<li
 						aria-selected={this.props.isSelected}
-						className={classNames('slds-dropdown__item', { 'slds-is-selected': this.props.isSelected })}
+						className={classNames('slds-dropdown__item', { 'slds-is-selected': this.props.isSelected }, this.props.className)}
 						id={this.props.id}
 						onMouseDown={this.handleMouseDown}
 						role="presentation"
