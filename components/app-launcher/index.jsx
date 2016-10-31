@@ -80,17 +80,21 @@ const AppLauncher = React.createClass({
 		 */
 		isOpen: PropTypes.bool,
 		/**
+		 * CSS classes to be added to App Launcher Modal.
+		 */
+		modalClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		/**
 		 * Button that exists in the upper right hand corner of the App Launcher modal
 		 */
 		modalHeaderButton: PropTypes.node,
 		/**
-		 * Callback when the App Launcher Modal is closed
-		 */
-		onClose: PropTypes.func,
-		/**
 		 * Allows longer application names without truncating them.
 		 */
 		noTruncate: PropTypes.bool,
+		/**
+		 * Callback when the App Launcher Modal is closed
+		 */
+		onClose: PropTypes.func,
 		/**
 		 * Search bar for the Modal's header. Will typically be an instance of `design-system-react/forms/input/search`
 		 */
@@ -230,7 +234,7 @@ const AppLauncher = React.createClass({
 					contentStyle={{ minHeight: modalContentStaticHeight }}
 					isOpen={isOpen}
 					onRequestClose={this.closeAppLauncher}
-					containerClassName="app-launcher"
+					containerClassName={classNames('app-launcher', this.props.modalClassName)}
 					size="large"
 					header={customModalHeader}
 					headerClassName="slds-app-launcher__header"
