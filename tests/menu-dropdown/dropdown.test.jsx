@@ -178,7 +178,7 @@ describe('SLDSMenuDropdown: ', () => {
 		});
 
 		it('gives the button correct aria properties', () => {
-			expect(btn.firstChild.props['aria-haspopup']).to.equal('true');
+			expect(btn.firstChild.getAttribute('aria-haspopup')).to.equal('true');
 		});
 
 		it('sets the label', () => {

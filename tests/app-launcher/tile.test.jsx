@@ -137,11 +137,15 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 	});
 
 	describe('App Launcher Tile (truncated)', () => {
+		const description = 'The key to call center and contact center is not to use too many words! And we will add some more words until we reach the limit.';
+
+		const moreLabel = 'MORE!';
+
 		beforeEach(() => {
 			mountTile({
 				title: 'Call Center',
-				description: 'The key to call center and contact center is not to use too many words! And we will add some more words until we reach the limit.',
-				moreLabel: 'MORE!',
+				description,
+				moreLabel,
 				search: 'enter'
 			});
 		});
@@ -156,7 +160,15 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 
 		it('renders custom more link', () => {
 			// Enzyme is unable to find React inserted `<span>` tags due to text wrapping. Therefore the DOM transversal.
-			expect(handles.more.node.children[1].textContent).to.equal('MORE!');
+
+			const clonedNode = handles.more.node.cloneNode();
+			console.log(handles.more.node);
+			console.log(clonedNode);
+
+			// const clonedNodeWithoutSpan = clonedNode.firstChild.remove();
+			// console.log(clonedNode);
+
+			expect(handles.more.node.textContent).to.equal(`${description}${moreLabel}`);
 		});
 
 		it('long descriptions use Tooltip activated by hover', () => {

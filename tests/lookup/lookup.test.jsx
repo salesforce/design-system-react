@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
@@ -11,7 +13,7 @@ const {Simulate, scryRenderedDOMComponentsWithClass, scryRenderedDOMComponentsWi
 describe('SLDSLookup: ',  function(){
   const generateLookup = function(lookupInstance) {
     let reactCmp = TestUtils.renderIntoDocument(lookupInstance);
-    return React.findDOMNode(reactCmp);
+    return ReactDOM.findDOMNode(reactCmp);
   };
 
   const defaultProps = {
