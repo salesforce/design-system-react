@@ -35,6 +35,7 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 - <a name="boolean-prop-prefix" href="#boolean-prop-prefix">#</a> If a prop is a boolean, please prefix with `is` or `can` or suffix it with `-able`. Never default a prop to `true`.
 - <a name="use-checkprops" href="#use-checkprops">#</a> Add as many prop checking tests that will _only run in development_ as needed via `checkProp`. If the test can become an independent module and work in multiple components, add it to the `utilities` folder.
 - <a name="all-text-can-be-internationalized" href="#all-text-can-be-internationalized">#</a> Any text the user can read (including text for screenreaders) should be able to be set via a prop for internationalization.
+- <a name="avoid-css" href="#avoid-css">#</a> Avoid use of inline styles and additional CSS classes not present in SLDS.
 - <a name="different-react-component-hierarchy" href="#different-react-component-hierarchy">#</a> React component hierarchy doesn't always mean HTML tag hierarchy. Sometimes children become the wrapping component.
 - <a name="classnames" href="#classnames">#</a> This library makes extensive use of the [classnames](https://github.com/JedWatson/classnames) library for feeding conditional CSS classes into `className` attributes and allows a variety of types such as `string`, `object`, and `arrays`. Please review the libary's API.
 - <a name="props-in-get-initial-state" href="#props-in-get-initial-state">#</a> [Props in getInitialState is an anti-pattern.](https://facebook.github.io/react/tips/props-in-getInitialState-as-anti-pattern.html)
@@ -349,9 +350,9 @@ from the [Planning Center](https://github.com/planningcenter/react-patterns)
 
 
 # Releasing
-1. [Add to release notes](https://github.com/salesforce-ux/design-system-react/blob/master/RELEASENOTES.md).
+1. [Write the release notes](https://github.com/salesforce-ux/design-system-react/blob/master/RELEASENOTES.md) that cover everything that has changed since the last release. You don't have to commit your release notes changes though. The following script will do that for you.
 1. Run `npm prune` and `npm install` to clean up node modules in preparation for build.
-1. **Choose one**: `npm run release-patch` or `npm run release-minor` This script pulls from upstream, bumps the version, commits changes, and publishes tags to your upstream repo (that is this repo).
+1. **Choose one**: `npm run release-patch` or `npm run release-minor` This script pulls from upstream, bumps the version, commits changes, and publishes tags to your `upstream` repository (that is this repo).
 1. Copy and paste your release notes into the [Github Draft Release UI](https://github.com/salesforce-ux/design-system-react/releases) and publish.
 
 _If you are timid about releasing or need your pull request in review "pre-released," you can publish to origin (your fork) with `npm run publish-to-git` and then test and review the tag on your fork. This is just the publish step though, any other tasks you will need to do manually to test publishing._

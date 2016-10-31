@@ -80,6 +80,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 			onClose = sinon.spy();
 
 			mountAppLauncher({
+				modalClassName: 'custom-modal-class',
 				modalHeaderButton: <Button label="App Exchange" />,
 				onClose,
 				search: <Search assistiveText="Find an app" />,
@@ -93,6 +94,10 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 
 		it('renders modal', () => {
 			should.exist(handles.modal);
+		});
+
+		it('renders custom modal class', () => {
+			should.exist(handles.modal.find('.custom-modal-class'));
 		});
 
 		it('renders modal header', () => {

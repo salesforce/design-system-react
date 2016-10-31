@@ -1,3 +1,11 @@
 {
-  "presets": ["react", "es2015", "stage-1"]
+  "presets": ["react", "es2015", "stage-1"],
+  "env": {
+      "amd": {
+        "plugins": ["import-noop"]
+      },
+      "commonjs": {
+        "plugins": ["import-noop"]
+      }
+    }
 }

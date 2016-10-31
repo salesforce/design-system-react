@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 
@@ -9,7 +11,7 @@ describe('SLDSButtonGroup: ',  function(){
 
   let generateButtonGroup = function(buttonGroupInstance) {
     let reactCmp = TestUtils.renderIntoDocument(<div>{buttonGroupInstance}</div>);
-    return React.findDOMNode(reactCmp).children[0];
+    return ReactDOM.findDOMNode(reactCmp).children[0];
   };
 
   describe('component renders', function() {
