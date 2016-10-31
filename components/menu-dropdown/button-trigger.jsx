@@ -56,6 +56,10 @@ const Trigger = React.createClass({
 		*/
 		id: PropTypes.string,
 		/**
+		 * Renders menu within the wrapping trigger as a sibling of the button. By default, you will have an absolutely positioned container at an elevated z-index.
+		 */
+		isInline: PropTypes.bool,
+		/**
 		 * Informs the trigger on the open/close state of the dropdown menu
 		 */
 		isOpen: PropTypes.bool,
@@ -108,6 +112,7 @@ const Trigger = React.createClass({
 			children,	// eslint-disable-line no-unused-vars
 			className,
 			id,
+			isInline, // eslint-disable-line no-unused-vars
 			isOpen,
 			onBlur,
 			menu,
@@ -118,6 +123,7 @@ const Trigger = React.createClass({
 			onMouseEnter,
 			onMouseLeave,
 			openOn,
+			triggerRef,
 			...deprecatedPropsFromMenuDropdown
 		} = this.props;
 
@@ -155,7 +161,7 @@ const Trigger = React.createClass({
 					aria-haspopup="true"
 					{...deprecatedPropsFromMenuDropdown}
 					{...propsFromGrandchildButton}
-					ref={this.props.triggerRef}
+					ref={triggerRef}
 				/>
 				{menu}
 			</div>
