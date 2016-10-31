@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
@@ -10,7 +11,7 @@ describe('SLDSNotification: ',  function(){
 
   const generateNotification = function(notificationInstance) {
     let reactCmp = TestUtils.renderIntoDocument(notificationInstance);
-    return React.findDOMNode(reactCmp);
+    return ReactDOM.findDOMNode(reactCmp);
   };
 
   describe('component renders', function() {
