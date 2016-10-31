@@ -13,6 +13,12 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ---
 
+## Release 0.4.5
+
+**MINOR CHANGES**
+
+- App Launcher has a `modalClassName` that will be added to the `Modal` when rendered.
+
 ## Release 0.4.4
 
 **BUG FIX**
