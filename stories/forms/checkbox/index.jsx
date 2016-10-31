@@ -12,32 +12,39 @@ const CheckboxIndeterminate = React.createClass({
 		return {
 			indeterminate: true,
 			checked: true,
-			currentStateHelper: 'Default'
+			currentStateHelper: 'Indeterminate'
 		};
 	},
 
 	handleChange (checked, event, data) {
-		action('handleChange')(checked, event, `checked: ${data.checked}, indeterminate:  ${data.indeterminate}`);
+		const checkedLabel = data.checked ? 'Checked' : 'Unchecked';
 		this.setState({
-			currentStateHelper: data.indeterminate === true ? 'Inderterminate' : data.checked === true ? 'Checked' : 'Unchecked',
-			checked: data.indeterminate === true ? null : data.checked,
+			checked: data.checked,
+			currentStateHelper: data.indeterminate ? 'Indeterminate' : checkedLabel,
 			indeterminate: data.indeterminate
 		});
+
+		action('handleChange')(
+			checked,
+			event,
+			`checked: ${data.checked},
+			indeterminate: ${data.indeterminate}`
+		);
 	},
 
 	changeToIndeterminate () {
-		this.setState({ currentStateHelper: 'Inderterminate', indeterminate: true, checked: null });
-		action('changeToIndeterminate')(event, `checked: null, indeterminate:  true`);
+		this.setState({ currentStateHelper: 'Inderterminate', checked: true, indeterminate: true });
+		action('changeToIndeterminate')(event, 'checked: true, indeterminate: true');
 	},
 
 	changeToCheck () {
-		this.setState({ currentStateHelper: 'Checked', checked: true, indeterminate: null });
-		action('changeToCheck')(event, `checked: true, indeterminate: null`);
+		this.setState({ currentStateHelper: 'Checked', checked: true, indeterminate: false });
+		action('changeToCheck')(event, 'checked: true, indeterminate: false');
 	},
 
 	changeToUnChecked () {
-		this.setState({ currentStateHelper: 'Unchecked', checked: false, indeterminate: null });
-		action('changeToUnChecked')(event, `checked: false, indeterminate: null`);
+		this.setState({ currentStateHelper: 'Unchecked', checked: false, indeterminate: false });
+		action('changeToUnChecked')(event, 'checked: false, indeterminate: false');
 	},
 
 	render () {
@@ -81,6 +88,7 @@ storiesOf(FORMS_CHECKBOX, module)
 			assistiveText="Checkbox"
 			label="Checkbox Label"
 			name="checkbox-example-standard"
+			onChange={action('change')}
 		/>
 	))
 	.add('Checkbox (indeterminate)', () => (
@@ -91,23 +99,24 @@ storiesOf(FORMS_CHECKBOX, module)
 			assistiveText="Checkbox (required)"
 			label="Checkbox Label"
 			name="checkbox-example-standard-required"
+			onChange={action('change')}
 			required
 		/>
 	))
 	.add('Checkbox (assistive text)', () => (
 		<div>
 			<Checkbox
-				assistiveText="Checkbox (assistiveText)"
+				assistiveText={`This is my checkbox. 
+							There are many like it, but this one is mine.
+							My checkbox is my best friend. 
+							It is my life.
+							I must master it as I must master my life.
+							Without me, my checkbox is useless. Without my checkbox, I am useless.
+							I must make my checkbox true.
+							I must make it truer than my radio button who is trying to... `}
 				label="Checkbox Label"
 				name="checkbox-example-standard-assistiveText"
-				assistiveText={`This is my checkbox. 
-								There are many like it, but this one is mine.
-								My checkbox is my best friend. 
-								It is my life.
-								I must master it as I must master my life.
-								Without me, my checkbox is useless. Without my checkbox, I am useless.
-								I must make my checkbox true.
-								I must make it truer than my radio button who is trying to... `}
+				onChange={action('change')}
 			/>
 			<div className="slds-box slds-text-longform slds-m-top--large">
 				<p>
@@ -127,9 +136,10 @@ storiesOf(FORMS_CHECKBOX, module)
 	.add('Checkbox (checked)', () => (
 		<Checkbox
 			assistiveText="Checkbox (checked)"
+			checked
 			label="Checkbox Label"
 			name="checkbox-example-standard-checked"
-			checked
+			onChange={action('change')}
 		/>
 	))
 ;

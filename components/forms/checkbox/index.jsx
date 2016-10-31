@@ -51,7 +51,7 @@ const Checkbox = React.createClass({
 		 */
 		assistiveText: React.PropTypes.string,
 		/**
-		 * The Checkbox is a controlled component, and will always be in this state.
+		 * The Checkbox is a controlled component, and will always be in this state. If checked is not defined, the state of the uncontrolled native `input` component will be used.
 		 */
 		checked: React.PropTypes.bool,
 		/**
@@ -75,7 +75,7 @@ const Checkbox = React.createClass({
 		 */
 		id: PropTypes.string,
 		/**
-		 * The Checkbox will be indeterminate if its state can not be figured out.
+		 * The Checkbox will be indeterminate if its state can not be figured out or is partially checked. Once a checkbox is indeterminate, a click should cause it to be checked. Since a user cannot put a checkbox into an indeterminate state, it is assumed you are controlling the value of `checked` with the parent, also, and that this is a controlled component.
 		 */
 		indeterminate: React.PropTypes.bool,
 		/**
@@ -96,93 +96,9 @@ const Checkbox = React.createClass({
 		required: PropTypes.bool
 	},
 
-	getDefaultProps () {
-		return {
-			id: shortid.generate(),
-			checked: null,
-			indeterminate: false
-		};
+	componentWillMount () {
+		this.generatedId = shortid.generate();
 	},
-
-	getInitialState () {
-		return {
-			checked: this.props.indeterminate === true ? false : this.props.checked,
-			defaultChecked: this.props.checked,
-			indeterminate: this.props.indeterminate === true ? true : null
-		};
-	},
-
-	componentDidMount () {
-		const checkbox = this.input;
-		checkbox.checked = this.state.indeterminate === true ? false : this.state.defaultChecked;
-		checkbox.indeterminate = this.state.indeterminate;
-	},
-
-
-	componentWillReceiveProps (nextProps) {
-		const checkbox = this.input;
-		checkbox.checked = nextProps.indeterminate === true ? false : nextProps.checked;
-		checkbox.indeterminate = nextProps.indeterminate;
-		this.setState({
-			checked: nextProps.indeterminate === true ? false : nextProps.checked,
-			indeterminate: nextProps.indeterminate
-		});
-	},
-
-	shouldComponentUpdate (nextProps, nextState) {
-		let toReturn = true;
-		let toReturnIndeterminate = true;
-		let toReturnChecked = true;
-
-		if (
-				nextProps.indeterminate === this.props.indeterminate
-			&&	nextProps.indeterminate === nextState.indeterminate
-			&&	nextProps.indeterminate === this.state.indeterminate
-		) {
-			toReturnIndeterminate = false;
-		}
-
-		// Sometimes the indeterminate stuff is not a boolean, so double-check ehre
-		if (
-				(typeof nextProps.indeterminate === 'object' && nextProps.indeterminate === null)
-			&& (typeof this.props.indeterminate === 'object' && this.props.indeterminate === null)
-			&& (this.state.indeterminate === false)
-			&& (nextState.indeterminate === false)
-		) {
-			toReturnIndeterminate = false;
-		}
-		
-		if (
-			nextProps.checked === this.props.checked
-		&&	nextProps.checked === nextState.checked
-		&&	nextProps.checked === this.state.checked
-		) {
-			toReturnChecked = false;
-		}
-	
-		toReturn = toReturnIndeterminate === true || toReturnChecked === true;
-		return toReturn;
-	},
-
-	componentWillUpdate (nextProps, nextState) {
-		if (nextProps.indeterminate === true) {
-			nextState.checked = null;
-		}
-		if (nextProps.checked !== nextState.checked) {
-
-		}
-	},
-
-	componentDidUpdate () {
-		const checkbox = this.input;
-		checkbox.checked = this.state.indeterminate === true ? null : this.state.checked === true ? true : null;
-		checkbox.indeterminate = this.state.indeterminate;
-		if (this.state.indeterminate === false && this.state.checked === false) {
-			checkbox.checked = false;
-		}
-	},
-
-
 
 	// ### Render
 	render () {
@@ -218,16 +134,21 @@ const Checkbox = React.createClass({
 						{required ? <abbr className="slds-required" title="required">*</abbr> : null}
 						<input
 							{...props}
-							id={id}
-							checked={indeterminate === true ? null : checked}
-							indeterminate={indeterminate}
+							id={id || this.generatedId}
+							checked={checked}
 							name={name}
 							disabled={disabled}
 							onChange={this.handleChange}
 							type="checkbox"
-							ref={(component) => this.input = component}
+							ref={
+								(component) => {
+									if (component) {
+										component.indeterminate = indeterminate;
+									}
+									this.input = component;
+								}}
 						/>
-						<label className="slds-checkbox__label" htmlFor={id}>
+						<label className="slds-checkbox__label" htmlFor={id || this.generatedId}>
 							<span className="slds-checkbox--faux"></span>
 							{label
 								? <span className="slds-form-element__label">
@@ -247,47 +168,19 @@ const Checkbox = React.createClass({
 		);
 	},
 
-	getValue () {
-		const checkbox = this.input;
-		return !checkbox.checked;
-	},
-
-	isChecked () {
-		return this.getValue() || false;
-	},
-
 	handleChange (event) {
-		let value = event.target.checked;
-		const props = this.props;
-		const oldValue = this.getValue();
+		const value = event.target.checked;
+		const {
+			checked,
+			indeterminate,
+			onChange
+		} = this.props;
 
-		if (props.indeterminate === true) {
-			if (typeof props.nextValue === 'function') {
-				value = props.nextValue(oldValue, this.props);
-			}
-		}
-
-		if (oldValue !== !this.state.defaultValue) {
-			if (isFunction(props.onChange)) {
-				this.props.onChange(value, event, {
-					checked: value,
-					indeterminate: null
-				});
-			}
-			this.setState({
-				checked: value,
-				indeterminate: null
-			});
-		} else {
-			if (isFunction(props.onChange)) {
-				this.props.onChange(value, event, {
-					checked: props.indeterminate === true ? null : value,
-					indeterminate: props.indeterminate
-				});
-			}
-			this.setState({
-				checked: props.indeterminate === true ? null : value,
-				indeterminate: props.indeterminate
+		if (isFunction(onChange)) {
+			// `checked` is present twice to maintain backwards compatibility. Please remove first parameter `value` on the next breaking change.
+			onChange(value, event, {
+				checked: indeterminate ? true : !checked,
+				indeterminate: false
 			});
 		}
 	},
