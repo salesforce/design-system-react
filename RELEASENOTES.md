@@ -14,14 +14,19 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ---
 
+## Release 0.4.7
+
+**MINOR FEATURES**
+
+- Add indeterminate state support to `Checkbox`.
+- Add indeterminate state support to selectable variant of `DataTable`.
+- Export `InputIcon`.
+
 ## Release 0.4.6
 
 **MINOR FEATURE**
 
-- Allow custom classes on menu list items with item object key within `options` prop.
-
-
-Allow custom classes on menu list items
+- Allow custom classes on menu list items with item object key, `classname`, within `options` prop.
 
 ## Release 0.4.5
 
