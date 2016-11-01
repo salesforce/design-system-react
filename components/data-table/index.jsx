@@ -161,6 +161,7 @@ const DataTable = React.createClass({
 		const numSelected = count(this.props.selection);
 		const canSelectRows = this.props.selectRows && numRows > 0;
 		const allSelected = canSelectRows && numRows === numSelected;
+		const indeterminateSelected = canSelectRows && numRows !== numSelected && numSelected !== 0;
 		const columns = [];
 		let RowActions = null;
 
@@ -220,6 +221,7 @@ const DataTable = React.createClass({
 			>
 				<DataTableHead
 					allSelected={allSelected}
+					indeterminateSelected={indeterminateSelected}
 					canSelectRows={canSelectRows}
 					columns={columns}
 					id={`${this.props.id}_${DATA_TABLE_HEAD}`}

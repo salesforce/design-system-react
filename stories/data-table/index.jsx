@@ -43,9 +43,29 @@ const DemoDataTable = React.createClass({
 					name: 'Cloud City',
 					count: 101280,
 					lastModified: 'Today'
+				}, {
+					id: '2FSH2DP0LY',
+					name: 'IoT',
+					count: 976,
+					lastModified: 'Yesterday'
+				}, {
+					id: '8NE888QKV1',
+					name: 'IoT + Anypoint Connectors',
+					count: 54976,
+					lastModified: 'Today'
+				}, {
+					id: 'M4D37GW83H',
+					name: 'Salesforce Tower',
+					count: 101280,
+					lastModified: 'Today'
 				}
 			],
-			selection: []
+			selection: [{
+				id: 'M4D37GW83H',
+				name: 'Salesforce Tower',
+				count: 101280,
+				lastModified: 'Today'
+			}]
 		};
 	},
 
@@ -83,7 +103,8 @@ const DemoDataTable = React.createClass({
 
 	handleChange (selection, ...rest) {
 		action('change')(selection, ...rest);
-
+		console.log("selection", selection);
+		console.dir(...rest);
 		this.setState({ selection });
 	},
 
