@@ -51,7 +51,7 @@ const Checkbox = React.createClass({
 		 */
 		assistiveText: React.PropTypes.string,
 		/**
-		 * The Checkbox is a controlled component, and will always be in this state.
+		 * The Checkbox is a controlled component, and will always be in this state. If checked is not defined, the state of the uncontrolled native `input` component will be used.
 		 */
 		checked: React.PropTypes.bool,
 		/**
@@ -75,6 +75,10 @@ const Checkbox = React.createClass({
 		 */
 		id: PropTypes.string,
 		/**
+		 * The Checkbox will be indeterminate if its state can not be figured out or is partially checked. Once a checkbox is indeterminate, a click should cause it to be checked. Since a user cannot put a checkbox into an indeterminate state, it is assumed you are controlling the value of `checked` with the parent, also, and that this is a controlled component.
+		 */
+		indeterminate: React.PropTypes.bool,
+		/**
 		 * An optional label for the Checkbox.
 		 */
 		label: React.PropTypes.string,
@@ -92,10 +96,8 @@ const Checkbox = React.createClass({
 		required: PropTypes.bool
 	},
 
-	getDefaultProps () {
-		return {
-			id: shortid.generate()
-		};
+	componentWillMount () {
+		this.generatedId = shortid.generate();
 	},
 
 	// ### Render
@@ -103,6 +105,7 @@ const Checkbox = React.createClass({
 		const {
 			assistiveText,
 			checked,
+			indeterminate,
 			className,
 			disabled,
 			errorText,
@@ -110,6 +113,7 @@ const Checkbox = React.createClass({
 			name,
 			onChange, // eslint-disable-line no-unused-vars
 			required,
+			id,
 
 			// ### Additional properties
 			// Using [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx) to pass on any properties which are not explicitly defined.
@@ -126,46 +130,67 @@ const Checkbox = React.createClass({
 				onKeyDown={this.handleKeyDown}
 			>
 				<div className="slds-form-element__control">
-					<label className="slds-checkbox">
+					<span className="slds-checkbox">
 						{required ? <abbr className="slds-required" title="required">*</abbr> : null}
 						<input
 							{...props}
+							id={id || this.generatedId}
 							checked={checked}
 							name={name}
 							disabled={disabled}
 							onChange={this.handleChange}
 							type="checkbox"
+							ref={
+								(component) => {
+									if (component) {
+										component.indeterminate = indeterminate;
+									}
+									this.input = component;
+								}}
 						/>
-						<span className="slds-checkbox--faux"></span>
-						{label
-							? <span className="slds-form-element__label">
-								{label}
-							</span>
-						: null}
-						{assistiveText
-							? <span className="slds-assistive-text">
-								{assistiveText}
-							</span>
-						: null}
-					</label>
+						<label className="slds-checkbox__label" htmlFor={id || this.generatedId}>
+							<span className="slds-checkbox--faux"></span>
+							{label
+								? <span className="slds-form-element__label">
+									{label}
+								</span>
+							: null}
+							{assistiveText
+								? <span className="slds-assistive-text">
+									{assistiveText}
+								</span>
+							: null}
+						</label>
+					</span>
 				</div>
 				{errorText ? <div className="slds-form-element__help">{errorText}</div> : null}
 			</div>
 		);
 	},
 
-	handleChange (e) {
-		if (isFunction(this.props.onChange)) {
-			this.props.onChange(!this.props.checked, e);
+	handleChange (event) {
+		const value = event.target.checked;
+		const {
+			checked,
+			indeterminate,
+			onChange
+		} = this.props;
+
+		if (isFunction(onChange)) {
+			// `checked` is present twice to maintain backwards compatibility. Please remove first parameter `value` on the next breaking change.
+			onChange(value, event, {
+				checked: indeterminate ? true : !checked,
+				indeterminate: false
+			});
 		}
 	},
 
-	handleKeyDown (e) {
-		if (e.keyCode) {
-			if (e.keyCode === KEYS.ENTER ||
-					e.keyCode === KEYS.SPACE) {
-				EventUtil.trapImmediate(e);
-				this.handleChange(e);
+	handleKeyDown (event) {
+		if (event.keyCode) {
+			if (event.keyCode === KEYS.ENTER ||
+					event.keyCode === KEYS.SPACE) {
+				EventUtil.trapImmediate(event);
+				this.handleChange(event);
 			}
 		}
 	}

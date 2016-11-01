@@ -36,6 +36,21 @@ describe('DataTable: ', function () {
 			name: 'Cloud City',
 			count: 101280,
 			lastModified: 'Today'
+		}, {
+			id: '2FSH2DP0LY',
+			name: 'IoT',
+			count: 976,
+			lastModified: 'Yesterday'
+		}, {
+			id: '8NE888QKV1',
+			name: 'IoT + Anypoint Connectors',
+			count: 54976,
+			lastModified: 'Today'
+		}, {
+			id: 'M4D37GW83H',
+			name: 'Salesforce Tower',
+			count: 101280,
+			lastModified: 'Today'
 		}
 	];
 
@@ -103,7 +118,7 @@ describe('DataTable: ', function () {
 		it('has a row for each item', function () {
 			const tbody = getTable(this.dom).querySelectorAll('tbody');
 			tbody.should.have.length(1);
-			tbody[0].querySelectorAll('tr').should.have.length(3);
+			tbody[0].querySelectorAll('tr').should.have.length(6);
 		});
 
 		it('renders the correct contents in each cell', function () {
@@ -115,7 +130,7 @@ describe('DataTable: ', function () {
 
 		it('has checkboxes only when selectRows is true', function () {
 			let checkboxes = getTable(this.dom).querySelectorAll('.slds-checkbox');
-			checkboxes.should.have.length(4);
+			checkboxes.should.have.length(7);
 			removeTable.call(this);
 
 			renderTable(
@@ -161,7 +176,9 @@ describe('DataTable: ', function () {
 		});
 
 		it('can deselect a row', function (done) {
-			this.onChange = (newSelection) => {
+			this.onChange = (newSelection, ...rest) => {
+				console.log("newSelection", newSelection);
+				console.log("...rest", ...rest);
 				newSelection.should.have.length(0);
 				done();
 			};
@@ -179,8 +196,10 @@ describe('DataTable: ', function () {
 			const tbody = getTable(this.dom).querySelectorAll('tbody')[0];
 			const selectedRow = tbody.querySelectorAll('tr.slds-is-selected')[0];
 			const checkbox = selectedRow.querySelectorAll('.slds-checkbox input')[0];
-
-			Simulate.change(checkbox, {});
+			console.log("tbody", tbody);
+			console.log("selectedRow", selectedRow);
+			console.log("checkbox", checkbox);
+			Simulate.change(checkbox, { target: { checked: false }});
 		});
 
 		it('can select a row', function (done) {
@@ -203,12 +222,12 @@ describe('DataTable: ', function () {
 			const secondRow = getRow(this.dom, 2);
 			const checkbox = secondRow.querySelectorAll('.slds-checkbox input')[0];
 
-			Simulate.change(checkbox, {});
+			Simulate.change(checkbox, { target: { checked: true }});
 		});
 
 		it('can select all rows', function (done) {
 			this.onChange = (newSelection) => {
-				newSelection.should.have.length(3);
+				newSelection.should.have.length(6);
 				done();
 			};
 
@@ -224,7 +243,7 @@ describe('DataTable: ', function () {
 			const thead = getTable(this.dom).querySelectorAll('thead')[0];
 			const checkAll = thead.querySelectorAll('.slds-checkbox input')[0];
 
-			Simulate.change(checkAll, {});
+			Simulate.change(checkAll, { target: { checked: true }});
 		});
 
 		it('can deselect all rows', function (done) {
@@ -246,7 +265,7 @@ describe('DataTable: ', function () {
 			const thead = getTable(this.dom).querySelectorAll('thead')[0];
 			const checkAll = thead.querySelectorAll('.slds-checkbox input')[0];
 
-			Simulate.change(checkAll, {});
+			Simulate.change(checkAll, { target: { checked: false }});
 		});
 	});
 
@@ -323,7 +342,7 @@ describe('DataTable: ', function () {
 			).call(this);
 
 			const rowActionMenus = scryRenderedComponentsWithType(this.component, DataTableRowActions);
-			rowActionMenus.should.have.length(3);
+			rowActionMenus.should.have.length(6);
 		});
 
 		it('calls onAction when an action is clicked', function (done) {
