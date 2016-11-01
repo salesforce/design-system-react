@@ -13,9 +13,18 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ---
 
+## Release 0.4.6
+
+**MINOR FEATURE**
+
+- Allow custom classes on menu list items with item object key within `options` prop.
+
+
+Allow custom classes on menu list items
+
 ## Release 0.4.5
 
-**MINOR CHANGES**
+**MINOR FEATURE**
 
 - App Launcher has a `modalClassName` that will be added to the `Modal` when rendered.
 
