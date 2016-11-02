@@ -16,6 +16,7 @@ export Search from './forms/input/search';
 export GlobalHeader from './global-header';
 export Icon from './icon';
 export Lookup from './lookup';
+export MediaObject from './media-object';
 export Modal from './modal';
 export PageHeader from './page-header';
 export Popover from './popover';

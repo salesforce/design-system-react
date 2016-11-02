@@ -96,6 +96,9 @@ export InputIcon from './icon/input-icon';
 export SLDSLookup from './lookup';
 export Lookup from './lookup';
 
+export SLDSMediaObject from './media-object';
+export MediaObject from './media-object';
+
 export SLDSMenuDropdown from './menu-dropdown';
 export Dropdown from './menu-dropdown';
 
