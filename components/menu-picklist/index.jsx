@@ -32,7 +32,7 @@ import classNames from 'classnames';
 import shortid from 'shortid';
 
 // ### Children
-import Popover from '../popover';
+import Dialog from '../utilities/dialog';
 import Icon from '../icon';
 import List from '../menu-list/list';
 import ListItemLabel from '../menu-list/list-item-label';
@@ -42,7 +42,8 @@ import ListItemLabel from '../menu-list/list-item-label';
 // #### KeyboardNavigable
 import KeyboardNavigable from '../../utilities/keyboard-navigable';
 
-import { KEYS, EventUtil } from '../../utilities';
+import EventUtil from '../../utilities/EventUtil';
+import KEYS from '../../utilities/KEYS';
 import { MENU_PICKLIST } from '../../utilities/constants';
 
 /**
@@ -314,13 +315,13 @@ const MenuPicklist = React.createClass({
 		);
 	},
 
-	renderSeparateMenu () {
+	renderDialog () {
 		return (
 			!this.props.disabled && this.state.isOpen && this.button
-			? <Popover
-				className="slds-dropdown slds-dropdown--left"
+			? <Dialog
 				closeOnTabKey
 				constrainToScrollParent={this.props.constrainToScrollParent}
+				contentsClassName="slds-dropdown slds-dropdown--left"
 				flippable
 				onClose={this.handleCancel}
 				onKeyDown={this.handleKeyDown}
@@ -328,7 +329,7 @@ const MenuPicklist = React.createClass({
 				inheritTargetWidth={this.props.inheritTargetWidth}
 			>
 				{this.renderMenuContent()}
-			</Popover>
+			</Dialog>
 			: null
 		);
 	},
@@ -372,7 +373,7 @@ const MenuPicklist = React.createClass({
 					<span className="slds-truncate">{this.renderPlaceholder()}</span>
 					<Icon name="down" category="utility" />
 				</button>
-				{isInline ? this.renderInlineMenu() : this.renderSeparateMenu()}
+				{isInline ? this.renderInlineMenu() : this.renderDialog()}
 			</div>
 		);
 	},
