@@ -51,6 +51,7 @@ export const MENU_DROPDOWN = 'SLDSMenuDropdown';
 export const MENU_DROPDOWN_TRIGGER = 'SLDSMenuDropdownTrigger';
 export const MENU_PICKLIST = 'SLDSMenuPicklist';
 export const MODAL = 'SLDSModal';
+export const NOTIFICATION = 'SLDSNotification';
 export const PAGE_HEADER = 'SLDSPageHeader';
 export const POPOVER_TOOLTIP = 'SLDSPopoverTooltip';
 export const SPINNER = 'SLDSSpinner';
