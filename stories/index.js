@@ -18,6 +18,7 @@ export Icon from './icon';
 export Lookup from './lookup';
 export MediaObject from './media-object';
 export Modal from './modal';
+export Notification from './notification';
 export PageHeader from './page-header';
 export Popover from './popover';
 export Picklist from './picklist';
