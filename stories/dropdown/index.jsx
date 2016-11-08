@@ -19,7 +19,6 @@ const options = [
 	{ label: 'C Option', value: 'C0' },
 	{ label: 'D Option', value: 'D0' },
 	{ label: 'E Option', value: 'E0' },
-	{ className: 'custom-divider-class', type: 'divider' },
 	{ label: 'A1 Option', value: 'A1' },
 	{ label: 'B2 Option', value: 'B1' },
 	{ label: 'C2 Option', value: 'C1' },
