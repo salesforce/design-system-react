@@ -58,7 +58,7 @@ const DataTableRow = React.createClass({
 		// i18n
 		return (
 			<tr
-				className={classNames({ 'slds-hint-parent': this.props.rowActions, 'slds-is-selected': isSelected })}
+				className={classNames({ 'slds-hint-parent': this.props.rowActions, 'slds-is-selected': this.props.canSelectRows && isSelected })}
 			>
 				{this.props.canSelectRows ? (
 					<td className="slds-cell-shrink" data-label="Select Row">

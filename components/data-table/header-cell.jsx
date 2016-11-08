@@ -19,7 +19,7 @@ import classNames from 'classnames';
 import isFunction from 'lodash.isfunction';
 
 // ## Children
-import Button from '../button';
+import Icon from '../icon';
 
 // ## Constants
 import { DATA_TABLE_HEADER_CELL } from '../../utilities/constants';
@@ -87,20 +87,19 @@ const DataTableHeaderCell = React.createClass({
 				})}
 				onClick={sortable && this.handleSort}
 			>
-				<div className="slds-truncate">{label}
+				<a href='javascript:void(0)' className='slds-th__action slds-text-link--reset'>
+					<span className="slds-truncate">{label}</span>
 					{sortable
-						? <Button
+						? <Icon
 							assistiveText={sortDirection === 'desc' ? 'Sort Ascending' : 'Sort Descending'}
-							iconCategory="utility"
-							iconName={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
-							iconSize="small"
-							iconVariant="bare"
-							id={`${this.props.id}-Sort`}
-							variant="icon"
+							className="slds-is-sortable__icon"
+							category="utility"
+							name={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
+							size="x-small"
 						/>
 						: null
 					}
-				</div>
+				</a>
 			</th>
 		);
 	},

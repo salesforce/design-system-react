@@ -101,6 +101,10 @@ const DataTable = React.createClass({
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
+		 * A variant which adds border to the vertical columns.
+		 */
+		columnBordered: PropTypes.bool,
+		/**
 		 * A unique ID is needed in order to support keyboard navigation and ARIA support.
 		 */
 		id: PropTypes.string,
@@ -108,6 +112,10 @@ const DataTable = React.createClass({
  		 * The collection of items to render in the table.
  		 */
 		items: PropTypes.array.isRequired,
+		/**
+		 * A variant which removes hover style on rows
+		 */
+		noRowHover: PropTypes.bool,
 		/**
 		 * This function fires when the selection of rows changes.
 		 */
@@ -141,7 +149,9 @@ const DataTable = React.createClass({
 	getDefaultProps () {
 		return {
 			bordered: false,
+			columnBordered: false,
 			id: shortid.generate(),
+			noRowHover: false,
 			selection: [],
 			selectRows: false,
 			stacked: false,
@@ -210,12 +220,14 @@ const DataTable = React.createClass({
 
 		return (
 			<table
-				className={classNames('slds-table', {
+				className={classNames('slds-table slds-table--fixed-layout', {
 					'slds-table--bordered': this.props.bordered,
 					'slds-table--cell-buffer': this.props.buffered,
 					'slds-max-medium-table--stacked': this.props.stacked,
 					'slds-max-medium-table--stacked-horizontalviewports': this.props.stackedHorizontal,
-					'slds-table--striped': this.props.striped
+					'slds-table--striped': this.props.striped,
+					'slds-table--col-bordered': this.props.columnBordered,
+					'slds-no-row-hover': this.props.noRowHover
 				}, this.props.className)}
 				id={this.props.id}
 			>

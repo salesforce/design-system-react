@@ -32,17 +32,20 @@ const DemoDataTable = React.createClass({
 					id: '8IKZHZZV80',
 					name: 'Cloudhub',
 					count: 100976,
-					lastModified: 'Yesterday'
+					lastModified: 'Yesterday',
+					modifiedBy: 'mr morse and dr pepper fjweif owejfi owegjiweo gjiweo'
 				}, {
 					id: '5GJOOOPWU7',
 					name: 'Cloudhub + Anypoint Connectors',
 					count: 54976,
-					lastModified: 'Today'
+					lastModified: 'Today',
+					modifiedBy: 'mr morse and dr peppero wjegio wejigo wejgiweo gjiweo gjweiog '
 				}, {
 					id: 'Q8Z71ZUCEZ',
 					name: 'Cloud City',
 					count: 101280,
-					lastModified: 'Today'
+					lastModified: 'Today',
+					modifiedBy: 'mr morse and dr pepper'
 				}, {
 					id: '2FSH2DP0LY',
 					name: 'IoT',
@@ -79,6 +82,12 @@ const DemoDataTable = React.createClass({
 				{...this.props}
 			>
 				<Column
+					label="Id"
+					property="id"
+					truncate
+					sortable
+				/>
+				<Column
 					label="Opportunity Name"
 					property="name"
 					truncate
@@ -94,6 +103,12 @@ const DemoDataTable = React.createClass({
 				<Column
 					label="Last Modified"
 					property="lastModified"
+					sortable
+					truncate
+				/>
+				<Column
+					label="Last Modified By is a long title"
+					property="modifiedBy"
 					sortable
 					truncate
 				/>
@@ -138,6 +153,7 @@ const DemoDataTable = React.createClass({
 
 storiesOf(DATA_TABLE, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.add('Updated DataTable', () => <DemoDataTable bordered buffered striped />)
 	.add('Striped', () => <DemoDataTable striped />)
 	.add('Bordered', () => <DemoDataTable bordered />)
 	.add('Buffered', () => <DemoDataTable buffered />)
