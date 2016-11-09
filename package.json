@@ -1,6 +1,6 @@
 {
   "name": "design-system-react",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "description": "Salesforce Lightning Design System React components",
   "license": "BSD-3-Clause",
   "engines": {
@@ -230,6 +230,12 @@
       "status": "prod",
       "display-name": "Lookups",
       "SLDS-component-path": "/components/lookups"
+    },
+    {
+      "component": "media-object",
+      "status": "prod",
+      "display-name": "Media Objects",
+      "SLDS-component-path": "/components/utilities/media-objects/"
     },
     {
       "component": "menu-dropdown",

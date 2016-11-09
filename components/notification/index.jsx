@@ -109,7 +109,15 @@ class Notification extends React.Component {
 				classes = 'slds-m-right--small slds-col slds-no-flex';
 			}
 
-			return <Icon category="utility" name={this.props.iconName} size="small" className={classes} />;
+			return (
+				<Icon
+					category="utility"
+					className={classes}
+					inverse
+					name={this.props.iconName}
+					size="small"
+				/>
+			);
 		}
 
 		return null;
@@ -127,9 +135,10 @@ class Notification extends React.Component {
 					iconName="close"
 					iconSize={size}
 					inverse
-					className="slds-button slds-notify__close"
+					className="slds-notify__close"
 					onClick={this.onDismiss.bind(this)}
 					ref="dismissNotificationBtn"
+					variant="icon"
 				/>
 			);
 		}
@@ -173,7 +182,7 @@ class Notification extends React.Component {
 		return classNames(this.props.className, 'slds-notify', {
 			[`slds-notify--${this.props.variant}`]: this.props.variant,
 			[`slds-theme--${this.props.theme}`]: this.props.theme,
-			'slds-theme--alert-texture-animated': this.props.texture
+			'slds-theme--alert-texture': this.props.texture
 		});
 	}
 
@@ -202,7 +211,13 @@ class Notification extends React.Component {
 	render () {
 		// TODO: If there are multiple notifications on a page, we must 'hide' the ones that aren't open.
 		// Need to find a better way to do this than using width:0 to override slds-notify-container.
-		let styles = !this.props.isOpen ? { width: '0' } : { width: '100%' };
+		let styles;
+		if(!this.props.isOpen) {
+			styles = { width: '0px' }
+		} else {
+			styles = this.props.variant === 'toast' ? { width: 'auto', left: '50%', transform: 'translateX(-50%)' } : { width: '100%' };
+		}
+
 		let alertStyles = !this.props.isOpen ? { display: 'none' } : null;
 		return (
 			<div className="slds-notify-container" style={styles}>

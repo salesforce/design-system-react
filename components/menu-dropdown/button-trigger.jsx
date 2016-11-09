@@ -64,7 +64,7 @@ const Trigger = React.createClass({
 		 */
 		isOpen: PropTypes.bool,
 		/**
-		* The dropdown menu which is typically a `Popover` component.
+		* By Default the dropdown menu is inside a `Dialog` component.
 		*/
 		menu: PropTypes.node,
 		/**

@@ -34,7 +34,7 @@ import isFunction from 'lodash.isfunction';
 import shortid from 'shortid';
 
 // ### Children
-import Popover from '../popover';
+import Dialog from '../utilities/dialog';
 import List from '../menu-list/list';
 import ListItem from '../menu-list/list-item';
 import ListItemLabel from '../menu-list/list-item-label';
@@ -51,7 +51,8 @@ import checkProps from './check-props';
 // #### KeyboardNavigable
 import KeyboardNavigable from '../../utilities/keyboard-navigable';
 
-import { KEYS, EventUtil } from '../../utilities';
+import EventUtil from '../../utilities/EventUtil';
+import KEYS from '../../utilities/KEYS';
 import { MENU_DROPDOWN, MENU_DROPDOWN_TRIGGER, LIST } from '../../utilities/constants';
 
 // The overlay is an optional way to allow the dropdown to close on outside
@@ -128,9 +129,13 @@ const MenuDropdown = React.createClass({
 		 */
 		children: PropTypes.node,
 		/**
-		 * CSS classes to be added to dropdown menu container. By default, It will be added to the `Popover` component.
+		 * CSS classes to be added to dropdown menu.
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		/**
+		 * By default, these class names will be added to the absolutely-positioned `Dialog` component.
+		 */
+		containerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
 		 * This prop is passed onto the triggering `Button`. Prevent dropdown menu from opening. Also applies disabled styling to trigger button.
 		 */
@@ -310,6 +315,9 @@ const MenuDropdown = React.createClass({
 	},
 
 	componentWillUnmount () {
+        if (currentOpenDropdown === this) {
+            currentOpenDropdown = undefined;
+        }
 		this.isUnmounting = true;
 		this.renderOverlay(false);
 	},
@@ -631,7 +639,7 @@ const MenuDropdown = React.createClass({
 		);
 	},
 
-	renderSeparatedMenu (customContent, isOpen, outsideClickIgnoreClass) {
+	renderDialog (customContent, isOpen, outsideClickIgnoreClass) {
 		let positionClassName;
 		let marginTop;
 		let offset = this.props.offset;
@@ -653,13 +661,14 @@ const MenuDropdown = React.createClass({
 
 		return (
 			isOpen ?
-				<Popover
-					className={classNames('slds-dropdown',
+				<Dialog
+					className={classNames(this.props.containerClassName)}
+					closeOnTabKey
+					constrainToScrollParent={this.props.constrainToScrollParent}
+					contentsClassName={classNames('slds-dropdown',
 						'ignore-react-onclickoutside',
 						positionClassName,
 						this.props.className)}
-					closeOnTabKey
-					constrainToScrollParent={this.props.constrainToScrollParent}
 					flippable={!this.props.hasStaticAlignment}
 					horizontalAlign={this.props.align}
 					inheritTargetWidth={this.props.inheritTargetWidth}
@@ -674,8 +683,7 @@ const MenuDropdown = React.createClass({
 					targetElement={this.triggerContainer}
 				>
 					{this.renderMenuContent(customContent)}
-				</Popover> : null
-		);
+				</Dialog> : null		);
 	},
 
 	renderOverlay (isOpen) {
@@ -778,7 +786,7 @@ const MenuDropdown = React.createClass({
 				triggerRef={this.saveRefToTrigger}
 				menu={isInline ?
 					this.renderInlineMenu(customContent, isOpen) :
-					this.renderSeparatedMenu(customContent, isOpen, outsideClickIgnoreClass)
+					this.renderDialog(customContent, isOpen, outsideClickIgnoreClass)
 				}
 			/>
 		);

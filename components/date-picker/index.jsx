@@ -11,7 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Popover from '../popover';
+import Dialog from '../utilities/dialog';
 import DatePicker from './date-picker-base/index';
 import InputIcon from '../icon/input-icon';
 
@@ -19,7 +19,8 @@ import InputIcon from '../icon/input-icon';
 // when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 
-import {KEYS,EventUtil} from '../../utilities';
+import EventUtil from '../../utilities/EventUtil';
+import KEYS from '../../utilities/KEYS';
 
 import { DATEPICKER } from '../../utilities/constants';
 
@@ -173,10 +174,10 @@ module.exports = React.createClass({
     );
   },
 
-  getSeparateMenu() {
+  getDialog() {
     return (
       !this.props.disabled && this.state.isOpen?
-        <Popover
+        <Dialog
           closeOnTabKey={true}
           constrainToScrollParent={this.props.constrainToScrollParent}
           inheritTargetWidth={this.props.inheritTargetWidth}
@@ -184,7 +185,7 @@ module.exports = React.createClass({
           onClose={this.handleClose}
           targetElement={this.refs.date}>
           {this.getDatePicker()}
-        </Popover>:null
+        </Dialog>:null
     );
   },
 
@@ -282,7 +283,7 @@ module.exports = React.createClass({
             />
           </div>
         </div>
-        {isInline ? this.getInlineMenu() : this.getSeparateMenu()}
+        {isInline ? this.getInlineMenu() : this.getDialog()}
       </div>
     );
   }

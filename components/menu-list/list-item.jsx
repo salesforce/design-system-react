@@ -147,23 +147,18 @@ const ListItem = React.createClass({
 							{
 								'slds-has-divider--top-space': this.props.divider === 'top',
 								'slds-has-divider--bottom-space': this.props.divider === 'bottom'
-							},
-							this.props.className
+							}
 						)}
 						onMouseDown={this.handleMouseDown}
 						role="separator"
 					>
-						<span className="slds-text-title--caps">{this.props.label}</span>
+						<span className={classNames('slds-text-title--caps', this.props.className)}>{this.props.label}</span>
 					</li>
 				);
 			}
 			case 'divider': {
 				return (
-					<li
-						className={classNames('slds-has-divider', this.props.className)}
-						onMouseDown={this.handleMouseDown}
-						role="separator"
-					></li>
+					<li className="slds-has-divider" onMouseDown={this.handleMouseDown} role="separator"></li>
 				);
 			}
 			case 'link':
@@ -172,12 +167,13 @@ const ListItem = React.createClass({
 				return (
 					<li
 						aria-selected={this.props.isSelected}
-						className={classNames('slds-dropdown__item', { 'slds-is-selected': this.props.isSelected }, this.props.className)}
+						className={classNames('slds-dropdown__item', { 'slds-is-selected': this.props.isSelected })}
 						id={this.props.id}
 						onMouseDown={this.handleMouseDown}
 						role="presentation"
 					>
 						<a
+							className={this.props.className}
 							href={this.props.href}
 							ref="link"
 							data-index={this.props.index}

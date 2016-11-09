@@ -25,14 +25,15 @@ import escapeRegExp from 'lodash.escaperegexp';
 import checkProps from './check-props';
 
 // Children
-import Popover from '../popover';
+import Dialog from '../utilities/dialog';
 import Button from '../button';
 import Icon from '../icon';
 import InputIcon from '../icon/input-icon';
 import Input from '../forms/input';
 
 // ### Event Helpers
-import { KEYS, EventUtil } from '../../utilities';
+import EventUtil from '../../utilities/EventUtil';
+import KEYS from '../../utilities/KEYS';
 
 import Menu from './menu';
 import DefaultFooter from './menu/default-footer';
@@ -473,9 +474,10 @@ class Lookup extends React.Component {
 	renderSeparateMenu() {
 		return (
 			this.state.isOpen ?
-				<Popover
+				<Dialog
 					className="slds-lookup__menu slds-show"
 					closeOnTabKey={true}
+					contentsClassName='slds-lookup__menu slds-show'
 					inheritTargetWidth={true}
 					onClose={this.handleCancel.bind(this)}
 					flippable={this.props.flippable}
@@ -484,7 +486,7 @@ class Lookup extends React.Component {
 					verticalAlign="bottom"
 				>
 					{this.renderMenuContent()}
-				</Popover> : null
+				</Dialog> : null
 		);
 	}
 

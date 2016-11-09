@@ -8,7 +8,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from 'react';
-import Popover from '../popover';
+import Dialog from '../utilities/dialog';
 
 import classNames from 'classnames';
 
@@ -73,9 +73,9 @@ const getMarginBottom = (align) => {
 /* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
 const getTooltip = (id, props, content, target, onClose) => (
-	<Popover
-		className=""
+	<Dialog
 		closeOnTabKey
+		contentsClassName=""
 		flippable={false}
 		marginBottom={getMarginBottom(props.align)}
 		marginLeft={getMarginLeft(props.align)}
@@ -90,7 +90,7 @@ const getTooltip = (id, props, content, target, onClose) => (
 		<div id={id} className={getClassName(props)} role="tooltip">
 			{content}
 		</div>
-	</Popover>
+	</Dialog>
 );
 
 module.exports = {
