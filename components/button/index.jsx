@@ -68,10 +68,17 @@ const propTypes = {
 	 * Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText</code> prop.
 	 */
 	label: PropTypes.string,
+	onBlur: PropTypes.func,
 	/**
 	 * Triggered when the button is clicked.
 	 */
 	onClick: PropTypes.func,
+	onFocus: PropTypes.func,
+	onKeyDown: PropTypes.func,
+	onKeyPress: PropTypes.func,
+	onKeyUp: PropTypes.func,
+	onMouseEnter: PropTypes.func,
+	onMouseLeave: PropTypes.func,
 	/**
 	 * If true, button scales to 100% width on small form factors.
 	 */
@@ -185,28 +192,19 @@ class Button extends TooltipTrigger {
 	}
 
 	render () {
-		const props = omit(this.props, [
-			'assistiveText',
-			'className',
-			'hint',
-			'iconCategory',
-			'iconName',
-			'iconPosition',
-			'iconSize',
-			'iconVariant',
-			'inverse',
-			'label',
-			'onClick',
-			'responsive',
-			'tooltip',
-			'variant'
-		]);
-
 		return (
 			<button
 				className={this.getClassName()}
-				{...props}
+				disabled={this.props.disabled}
+				onBlur={this.props.onBlur}
 				onClick={this.handleClick}
+				onFocus={this.props.onFocus}
+				onKeyDown={this.props.onKeyDown}
+				onKeyPress={this.props.onKeyPress}
+				onKeyUp={this.props.onKeyUp}
+				onMouseEnter={this.props.onMouseEnter}
+				onMouseLeave={this.props.onBlur}
+				tabIndex={this.props.tabIndex}
 			>
 				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
 

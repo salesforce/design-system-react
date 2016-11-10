@@ -32,7 +32,6 @@ import TooltipTrigger from '../popover-tooltip/trigger';
 
 import { BUTTON_STATEFUL } from '../../utilities/constants';
 
-const blurElement = e => e.currentTarget.blur();
 
 const propTypes = {
 	/**
@@ -54,15 +53,18 @@ const propTypes = {
 	 * If true, button/icon is white. Meant for buttons or utility icons on dark backgrounds.
 	 */
 	inverse: PropTypes.bool,
+	onBlur: PropTypes.func,
 	onClick: PropTypes.func,
+	onFocus: PropTypes.func,
+	onKeyDown: PropTypes.func,
+	onKeyPress: PropTypes.func,
+	onKeyUp: PropTypes.func,
+	onMouseEnter: PropTypes.func,
+	onMouseLeave: PropTypes.func,
 	/**
 	 * If true, button scales to 100% width on small form factors.
 	 */
 	responsive: PropTypes.bool,
-	/**
-	 * Write <code>'-1'</code> if you don't want the user to tab to the button.
-	 */
-	tabIndex: PropTypes.string,
 	/**
 	 * Initial label and icon (optional) of button.
 	 */
@@ -75,6 +77,10 @@ const propTypes = {
 	 *	Deselect label and icon (optional) of button.
 	 */
 	stateThree: PropTypes.object,
+	/**
+	 * Write <code>'-1'</code> if you don't want the user to tab to the button.
+	 */
+	tabIndex: PropTypes.string,
 	tooltip: PropTypes.node,
 	variant: PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon'])
 };
@@ -112,6 +118,11 @@ class ButtonStateful extends TooltipTrigger {
 		if (!isBoolean(this.props.active)) this.setState({ active: !this.state.active });
 	}
 
+	handleBlur(e) {
+		if(this.props.onBlur) this.props.onBlur(e);
+		e.currentTarget.blur();
+	}
+
 	getClassName (active) {
 		return classNames(this.props.className, 'slds-button', {
 			'slds-button--neutral': this.props.variant !== 'icon',
@@ -124,17 +135,23 @@ class ButtonStateful extends TooltipTrigger {
 	}
 
 	render () {
-		const props = omit(this.props, ['className', 'label', 'onClick', 'type', 'active']);
 		const active = isBoolean(this.props.active) ? this.props.active : this.state.active;
 
 		if (this.props.variant === 'icon') {
 			return (
 				<button
-					onMouseLeave={blurElement}
-					className={this.getClassName(active)}
-					onClick={this.handleClick.bind(this)}
-					{...props}
 					aria-live="polite"
+					className={this.getClassName(active)}
+					disabled={this.props.disabled}
+					onBlur={this.handleBlur.bind(this)}
+					onClick={this.handleClick.bind(this)}
+					onFocus={this.props.onFocus}
+					onKeyDown={this.props.onKeyDown}
+					onKeyPress={this.props.onKeyPress}
+					onKeyUp={this.props.onKeyUp}
+					onMouseEnter={this.props.onMouseEnter}
+					onMouseLeave={this.handleBlur.bind(this)}
+					tabIndex={this.props.tabIndex}
 				>
 					<ButtonIcon
 						assistiveText={active ?	`${this.props.assistiveText} selected` : this.props.assistiveText}
@@ -147,14 +164,21 @@ class ButtonStateful extends TooltipTrigger {
 				</button>
 			);
 		}
-		
+
 		return (
 			<button
-				onMouseLeave={blurElement}
-				className={this.getClassName(active)}
 				aria-live="assertive"
+				className={this.getClassName(active)}
+				disabled={this.props.disabled}
+				onBlur={this.handleBlur.bind(this)}
 				onClick={this.handleClick.bind(this)}
-				{...props}
+				onFocus={this.props.onFocus}
+				onKeyDown={this.props.onKeyDown}
+				onKeyPress={this.props.onKeyPress}
+				onKeyUp={this.props.onKeyUp}
+				onMouseEnter={this.props.onMouseEnter}
+				onMouseLeave={this.handleBlur.bind(this)}
+				tabIndex={this.props.tabIndex}
 			>
 				<span className="slds-text-not-selected">
 					<ButtonIcon
