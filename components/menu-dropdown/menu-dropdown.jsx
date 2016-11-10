@@ -255,7 +255,31 @@ const MenuDropdown = React.createClass({
 		 */
 		onClose: PropTypes.func,
 		/**
-		 * An array of menu item.
+		 * An array of menu item objects. `className` and `id` object keys are applied to the `li` DOM node. `divider` key can have a value of `top` or `bottom`. `rightIcon` and `leftIcon` are not actually `Icon` components, but prop objects that get passed to an `Icon` component. The `href` key will be added to the `a` and its default click event will be prevented. Here is a sample:
+		 * ```
+		 * [{
+		 *    className: 'custom-li-class',
+		 *  	divider: 'bottom',
+		 *  	label: 'A Header',
+		 *  	type: 'header'
+		 *  }, {
+		 *  	href: 'http://sfdc.co/',
+		 *  	id: 'custom-li-id',
+		 *  	label: 'Has a value',
+		 *    leftIcon: {
+		 *      name: 'settings',
+		 *      category: 'utility'
+		 *    },
+		 *    rightIcon: {
+		 *        name: 'settings',
+		 *        category: 'utility'
+		 *    },
+		 *  	type: 'item',
+		 *  	value: 'B0'
+		 *  }, {
+		 *    type: 'divider'
+		 * }]
+		 * ```
 		 */
 		options: PropTypes.array,
 		/**
