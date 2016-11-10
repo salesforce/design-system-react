@@ -17,7 +17,8 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 ## Concepts and Best Practices
 
-- <a name="approved-slds-patterns" href="#approved-slds-patterns">#</a> This library should include only components which have approved patterns in SLDS.
+- <a name="not-bootstrap" href="#not-bootstrap">#</a> This project is not Bootstrap. The primary audience for this project is software engineers. Yes, contributors should overdocument and explain as much as you can, but you do not need to have components just work when you drop them on the page. New components should always start out as controlled by their parent and only be uncontrolled if a use case presents itself. Think of this project as SLDS templates with minimal logic that happen to work with the React framework.
+- <a name="approved-slds-patterns" href="#approved-slds-patterns">#</a> This library should include only components which have approved patterns in SLDS. If there is a use case from a designer that conforms to an SLDS pattern, that component should be able to be implemented with this library.
 - <a name="controlled-component" href="#controlled-component">#</a> Know what a [controlled component](#understanding-controlled-and-uncontrolled-components) is.
 - <a name="familiarize" href="#familiarize">#</a> Familiarize yourself with concepts used in the rest of the library.
 - <a name="eslint-all-files-touched" href="#eslint-all-files-touched">#</a> If a file is touched that has outstanding ESlint errors, please fix the ESlint errors first (and in a separate commit). Sometimes special cases require an `eslint-disable` comment for a particular rule and/or line. Please use sparingly.
