@@ -12,10 +12,30 @@ import Button from '../../components/button';
 import Trigger from '../../components/menu-dropdown/button-trigger';
 
 const options = [
-	{ label: 'A Header', divider: 'bottom', className: 'custom-header-class', type: 'header' },
+	{ className: 'custom-li-class',
+		divider: 'bottom',
+		label: 'A Header',
+		type: 'header'
+	},
 	{ label: 'An option that is Super Super Long', value: 'A0' },
 	{ label: 'Custom Class', className: 'custom-item-class', value: 'classssss' },
-	{ label: 'Another option', value: 'B0' },
+	{
+		href: 'http://sfdc.co/',
+		id: 'custom-li-id',
+		label: 'Has a value',
+		leftIcon: {
+			name: 'settings',
+			category: 'utility'
+		},
+		rightIcon: {
+				name: 'settings',
+				category: 'utility'
+		},
+		type: 'item',
+		value: 'B0'
+	}, {
+		type: 'divider'
+	},
 	{ label: 'C Option', value: 'C0' },
 	{ label: 'D Option', value: 'D0' },
 	{ label: 'E Option', value: 'E0' },

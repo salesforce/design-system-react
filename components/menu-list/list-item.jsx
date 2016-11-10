@@ -167,13 +167,15 @@ const ListItem = React.createClass({
 				return (
 					<li
 						aria-selected={this.props.isSelected}
-						className={classNames('slds-dropdown__item', { 'slds-is-selected': this.props.isSelected })}
+						className={classNames('slds-dropdown__item', {
+							'slds-is-selected': this.props.isSelected
+						},
+							this.props.className)}
 						id={this.props.id}
 						onMouseDown={this.handleMouseDown}
 						role="presentation"
 					>
 						<a
-							className={this.props.className}
 							href={this.props.href}
 							ref="link"
 							data-index={this.props.index}
