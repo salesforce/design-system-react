@@ -360,7 +360,7 @@ class Modal extends React.Component {
 				isOpen={this.props.isOpen}
 				onRequestClose={this.closeModal}
 				style={customStyles}
-				portalClassName={classNames(this.props.portalClassName)}
+				portalClassName={classNames('ReactModalPortal', this.props.portalClassName)}
 			>
 				{this.getModal()}
 			</ReactModal>
