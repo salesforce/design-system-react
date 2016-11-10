@@ -48,16 +48,19 @@ describe('SLDSModal: ', function () {
 				containerClassName: 'container-class-name-test',
 				contentClassName: 'content-class-name-test',
 				contentStyle: { height: '500px' },
-				isOpen: true
+				isOpen: true,
+				portalClassName: 'portal-class-name-test'
 			});
 		});
 
-		it('has correct containerClassName, contentClassName, and contentStyle', () => {
+		it('has correct containerClassName, contentClassName, contentStyle, and portalClassName', () => {
 			const modalContainer = getModalNode(document.body).querySelector('.slds-modal__container.container-class-name-test');
 			expect(modalContainer).to.exist;
 			const modalContent = getModalNode(document.body).querySelector('.slds-modal__content.content-class-name-test');
 			expect(modalContent).to.exist;
 			expect(modalContent.style.height).to.equal('500px');
+			const modalPortal = document.querySelector('body > .portal-class-name-test');
+			expect(modalPortal).to.exist;
 		});
 	});
 
