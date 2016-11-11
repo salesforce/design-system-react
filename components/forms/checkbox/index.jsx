@@ -127,7 +127,6 @@ const Checkbox = React.createClass({
 					'slds-has-error': errorText
 				},
 				className)}
-				onKeyDown={this.handleKeyDown}
 			>
 				<div className="slds-form-element__control">
 					<span className="slds-checkbox">

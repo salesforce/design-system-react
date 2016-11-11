@@ -97,6 +97,7 @@ const Input = React.createClass({
 		 * This label appears above the input.
 		 */
 		label: PropTypes.string,
+		onBlur: PropTypes.func,
 		/**
 		 * This callback fires when the input changes. The synthetic React event will be the first parameter to the callback. You will probably want to reference `event.target.value` in your callback. No custom data object is provided.
 		 */
@@ -105,10 +106,19 @@ const Input = React.createClass({
 		 * This event fires when the input is clicked.
 		 */
 		onClick: PropTypes.func,
+		onFocus: PropTypes.func,
+		onInput: PropTypes.func,
+		onInvalid: PropTypes.func,
+		onKeyDown: PropTypes.func,
+		onKeyPress: PropTypes.func,
+		onKeyUp: PropTypes.func,
+		onSelect: PropTypes.func,
+		onSubmit: PropTypes.func,
 		/**
 		 * Text that will appear in an empty input.
 		 */
 		placeholder: PropTypes.string,
+		maxLength: PropTypes.string,
 		/**
 		 * Name of the submitted form parameter.
 		 */
@@ -203,8 +213,18 @@ const Input = React.createClass({
 			inlineEditTrigger, // eslint-disable-line react/prop-types
 			inputRef, // eslint-disable-line react/prop-types
 			label,
+			onBlur,
 			onChange,
 			onClick,
+			onFocus,
+			onInput,
+			onInvalid,
+			onKeyDown,
+			onKeyPress,
+			onKeyUp,
+			onSelect,
+			onSubmit,
+			maxLength,
 			name,
 			placeholder,
 			readOnly,
@@ -255,15 +275,24 @@ const Input = React.createClass({
 					{hasLeftIcon ? this.getIconRender('left', 'iconLeft') : null}
 
 					{!readOnly && <input
-						{...props}
 						aria-controls={ariaControls}
 						aria-owns={ariaOwns}
 						className="slds-input"
 						disabled={disabled}
 						id={this.getId()}
+						maxLength={maxLength}
+						name={name}
+						onBlur={onBlur}
 						onChange={onChange}
 						onClick={onClick}
-						name={name}
+						onFocus={onFocus}
+						onInput={onInput}
+						onInvalid={onInvalid}
+						onKeyDown={onKeyDown}
+						onKeyPress={onKeyPress}
+						onKeyUp={onKeyUp}
+						onSelect={onSelect}
+						onSubmit={onSubmit}
 						placeholder={placeholder}
 						ref={inputRef}
 						required={required}
