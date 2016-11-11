@@ -89,6 +89,7 @@ storiesOf(FORMS_CHECKBOX, module)
 			label="Checkbox Label"
 			name="checkbox-example-standard"
 			onChange={action('change')}
+			onBlur={ (e) => { console.log('bluring ', e.target) }}
 		/>
 	))
 	.add('Checkbox (indeterminate)', () => (
@@ -106,9 +107,9 @@ storiesOf(FORMS_CHECKBOX, module)
 	.add('Checkbox (assistive text)', () => (
 		<div>
 			<Checkbox
-				assistiveText={`This is my checkbox. 
+				assistiveText={`This is my checkbox.
 							There are many like it, but this one is mine.
-							My checkbox is my best friend. 
+							My checkbox is my best friend.
 							It is my life.
 							I must master it as I must master my life.
 							Without me, my checkbox is useless. Without my checkbox, I am useless.

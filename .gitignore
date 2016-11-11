@@ -1,4 +1,4 @@
-
+# filesystem
 .DS_Store
 
 # dependencies
@@ -24,5 +24,3 @@ server/public/assets/bundle
 scripts/pre-commit.sh
 coverage/
 storybook/
-
-.jscsrc

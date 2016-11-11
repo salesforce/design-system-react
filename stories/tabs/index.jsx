@@ -9,6 +9,7 @@ import Panel from '../../components/tabs/panel';
 
 // Used in the Nested story
 import Input from '../../components/forms/input';
+import InputIcon from '../../components/icon/input-icon';
 
 // Used in the Conditinal story
 import Checkbox from '../../components/forms/checkbox';
@@ -83,11 +84,7 @@ const getTabsNested = () => (
 					id="unique-id-123"
 					name="left-clickable-icon"
 					label="Input Label"
-					iconName="search"
-					iconCategory="utility"
-					iconPosition="left"
-					iconAssistiveText="Search Icon"
-					onIconClick={action('Search icon clicked')}
+					iconLeft={<InputIcon name="search" category="utility" onClick={action('search icon clicked')}/>}
 					placeholder="You can tab onto this to focus it."
 				/>
 

@@ -45,6 +45,8 @@ const Input = React.createClass({
 	displayName: FORMS_INPUT,
 	// ### Prop Types
 	propTypes: {
+		ariaActivedescendant: PropTypes.string,
+		ariaAutocomplete: PropTypes.string,
 		/**
 		 * An HTML ID that is shared with ARIA-supported devices with the
 		 * `aria-controls` attribute in order to relate the input with
@@ -52,6 +54,9 @@ const Input = React.createClass({
 		 * that shows or hides a panel.
 		 */
 		ariaControls: PropTypes.string,
+		ariaDescribedby: PropTypes.string,
+		ariaExpanded: PropTypes.bool,
+		ariaLabeledby: PropTypes.string,
 		/**
 		 * An HTML ID that is shared with ARIA-supported devices with the
 		 * `aria-controls` attribute in order to relate the input with
@@ -59,6 +64,7 @@ const Input = React.createClass({
 		 * that shows search results.
 		 */
 		ariaOwns: PropTypes.string,
+		ariaRequired: PropTypes.bool,
 		/**
 		 * If present, the label associated with this `input` is overwritten
 		 * by this text and is visually not shown.
@@ -118,6 +124,7 @@ const Input = React.createClass({
 		 * Text that will appear in an empty input.
 		 */
 		placeholder: PropTypes.string,
+		minLength: PropTypes.string,
 		maxLength: PropTypes.string,
 		/**
 		 * Name of the submitted form parameter.
@@ -201,8 +208,13 @@ const Input = React.createClass({
 	// ### Render
 	render () {
 		const {
+			ariaActivedescendant,
+			ariaAutocomplete,
 			ariaControls,
+			ariaDescribedby,
+			ariaExpanded,
 			ariaOwns,
+			ariaRequired,
 			assistiveText,
 			children,
 			className,
@@ -224,11 +236,13 @@ const Input = React.createClass({
 			onKeyUp,
 			onSelect,
 			onSubmit,
+			minLength,
 			maxLength,
 			name,
 			placeholder,
 			readOnly,
 			required,
+			role,
 			type,
 			value,
 
@@ -275,11 +289,17 @@ const Input = React.createClass({
 					{hasLeftIcon ? this.getIconRender('left', 'iconLeft') : null}
 
 					{!readOnly && <input
+						aria-activedescendant={ariaActivedescendant}
+						aria-autocomplete={ariaAutocomplete}
 						aria-controls={ariaControls}
+						aria-describedby={ariaDescribedby}
+						aria-expanded={ariaExpanded}
 						aria-owns={ariaOwns}
+						aria-required={ariaRequired}
 						className="slds-input"
 						disabled={disabled}
 						id={this.getId()}
+						minLength={minLength}
 						maxLength={maxLength}
 						name={name}
 						onBlur={onBlur}
@@ -295,6 +315,7 @@ const Input = React.createClass({
 						onSubmit={onSubmit}
 						placeholder={placeholder}
 						ref={inputRef}
+						role={role}
 						required={required}
 						type={type}
 						value={value}
