@@ -82,7 +82,7 @@ Read our [FAQ](https://react.lightningdesignsystem.com/faq) on the documentation
 
 ## Contributing to the code base
 
-Please read the [CONTRIBUTING.md](CONTRIBUTING.md) first.
+Please read the [CONTRIBUTING.md](CONTRIBUTING.md) first. If you'd like to meet or discuss this project, please contact @interactivellama, so you can be invited to the Slack channel and/or the weekly Cross-Cloud Office Hours.
 
 ## Licenses
 
