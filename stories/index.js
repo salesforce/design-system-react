@@ -25,4 +25,5 @@ export Picklist from './picklist';
 export Spinner from './spinner';
 export Tabs from './tabs';
 export TimePicker from './time-picker';
+export Tooltip from './tooltip';
 export Tree from './tree';
