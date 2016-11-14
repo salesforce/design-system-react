@@ -62,7 +62,6 @@ function isTabDisabled (node) {
 	return node.getAttribute('aria-disabled') === 'true';
 }
 
-
 /**
  * Tabs keeps related content in a single container that is shown and hidden through navigation.
  */
@@ -125,6 +124,11 @@ const Tabs = React.createClass({
 		onSelect: PropTypes.func,
 
 		/**
+		 * If the Tabs should be scopped, defaults to false
+		 */
+		variant: React.PropTypes.oneOf(['default', 'scoped']),
+
+		/**
 		 * The Tab (and corresponding TabPanel) that is currently selected.
 		 */
 		selectedIndex: PropTypes.number
@@ -132,7 +136,8 @@ const Tabs = React.createClass({
 
 	getDefaultProps () {
 		return {
-			defaultSelectedIndex: 0
+			defaultSelectedIndex: 0,
+			variant: 'default'
 		};
 	},
 
@@ -143,10 +148,14 @@ const Tabs = React.createClass({
 	componentWillMount () {
 		// If no `id` is supplied in the props we generate one. An HTML ID is _required_ for several elements in a tabs component in order to leverage ARIA attributes for accessibility.
 		this.generatedId = shortid.generate();
-
+		this.flavor = this.getVariant();
 		this.setState({
 			selectedIndex: this.props.defaultSelectedIndex
 		});
+	},
+
+	getVariant () {
+		return this.props.variant === 'scoped' ? 'scoped' : 'default';
 	},
 
 	handleClick (e) {
@@ -308,13 +317,14 @@ const Tabs = React.createClass({
 
 		return (
 			// `parentId` gets consumed by TabsList, adding a suffix of `-tabs__nav`
-			<TabsList id={parentId}>
+			<TabsList id={parentId} variant={this.getVariant()}>
 				{children.map((child, index) => {
 					const ref = `tabs-${index}`;
 					const id = `${parentId}-slds-tabs--tab-${index}`;
 					const panelId = `${parentId}-slds-tabs--panel-${index}`;
 					const selected = this.getSelectedIndex() === index;
 					const focus = selected && this.state.focus;
+					const variant = this.getVariant();
 					return (
 						<Tab
 							key={index}
@@ -324,6 +334,7 @@ const Tabs = React.createClass({
 							id={id}
 							panelId={panelId}
 							disabled={child.props.disabled}
+							variant={variant}
 						>
 							{child.props.label}
 						</Tab>
@@ -342,6 +353,7 @@ const Tabs = React.createClass({
 			const tabId = `${parentId}-slds-tabs--tab-${index}`;
 			const id = `${parentId}-slds-tabs--panel-${index}`;
 			const selected = selectedIndex === index;
+			const variant = this.getVariant();
 
 			return (
 				<TabPanel
@@ -350,6 +362,7 @@ const Tabs = React.createClass({
 					selected={selected}
 					id={id}
 					tabId={tabId}
+					variant={variant}
 				>
 					{children[index]}
 				</TabPanel>
@@ -363,6 +376,7 @@ const Tabs = React.createClass({
 		const {
 			className,
 			id = this.generatedId,
+			variant = this.getVariant,
 			...attributes
 			} = this.props;
 
@@ -381,12 +395,16 @@ const Tabs = React.createClass({
 			<div
 				id={id}
 				className={classNames(
-					'slds-tabs--default',
+					{
+						'slds-tabs--default': variant === 'default',
+						'slds-tabs--scoped': variant === 'scoped'
+					},
 					className
 				)}
 				onClick={this.handleClick}
 				onKeyDown={this.handleKeyDown}
 				data-tabs
+				variant={variant}
 				{...attributes}
 			>
 				{this.renderTabsList(id)}

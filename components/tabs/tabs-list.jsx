@@ -27,16 +27,21 @@ const TabsList = ({
 	id,
 	className,
 	children,
+	variant,
 	...attributes
 }) => (
 	<ul
 		id={`${id}-slds-tabs__nav`}
 		{...attributes}
 		className={classNames(
-			'slds-tabs--default__nav',
-			className
+			className,
+			{
+				'slds-tabs--default__nav': variant === 'default',
+				'slds-tabs--scoped__nav': variant === 'scoped'
+			}
 		)}
 		role="tablist"
+		variant={variant}
 	>
 		{children}
 	</ul>
@@ -65,7 +70,12 @@ TabsList.propTypes = {
 	children: PropTypes.oneOfType([
 		PropTypes.object,
 		PropTypes.array
-	])
+	]),
+
+	/**
+	 * If the Tabs should be scopped, defaults to false
+	 */
+	variant: React.PropTypes.oneOf(['default', 'scoped'])
 };
 
 module.exports = TabsList;

@@ -147,18 +147,23 @@ const ListItem = React.createClass({
 							{
 								'slds-has-divider--top-space': this.props.divider === 'top',
 								'slds-has-divider--bottom-space': this.props.divider === 'bottom'
-							}
+							},
+							this.props.className
 						)}
 						onMouseDown={this.handleMouseDown}
 						role="separator"
 					>
-						<span className={classNames('slds-text-title--caps', this.props.className)}>{this.props.label}</span>
+						<span className="slds-text-title--caps">{this.props.label}</span>
 					</li>
 				);
 			}
 			case 'divider': {
 				return (
-					<li className="slds-has-divider" onMouseDown={this.handleMouseDown} role="separator"></li>
+					<li
+						className={classNames('slds-has-divider', this.props.className)}
+						onMouseDown={this.handleMouseDown}
+						role="separator"
+					></li>
 				);
 			}
 			case 'link':

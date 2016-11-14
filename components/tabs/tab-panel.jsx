@@ -22,21 +22,23 @@ import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import { TAB_PANEL } from '../../utilities/constants';
 
-const TabPanel = ({ className, children, selected, id, tabId, ...attributes }) => (
+const TabPanel = ({ className, children, variant, selected, id, tabId, ...attributes }) => (
 	<div
 		{...attributes}
 		className={classNames(
-			'slds-tabs--default__content',
 			className,
 			{
 				'slds-show': selected,
-				'slds-hide': !selected
+				'slds-hide': !selected,
+				'slds-tabs--default__content': variant === 'default',
+				'slds-tabs--scoped__content': variant === 'scoped'
 			}
 		)}
 		role="tabpanel"
 		id={id}
 		aria-selected={selected ? 'true' : 'false'}
 		aria-labelledby={tabId}
+		variant={variant}
 	>
 		{children.props.children}
 	</div>
@@ -90,12 +92,18 @@ TabPanel.propTypes = {
 	selected: PropTypes.bool,
 
 	/**
+	 * If the Tabs should be scopped, defaults to false
+	 */
+	variant: React.PropTypes.oneOf(['default', 'scoped']),
+
+	/**
 	 * The HTML ID of the `<Tab />` that controls this panel.
 	 */
 	tabId: PropTypes.string
 };
 
 TabPanel.defaultProps = {
+	variant: 'default',
 	selected: false
 };
 

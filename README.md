@@ -1,10 +1,12 @@
-# Salesforce Design System
-### Interactive and accessible components for React
+# Salesforce Lightning Design System for JavaScript
+### Lightweight and accessible React components
 
 [![Build Status](https://travis-ci.com/salesforce-ux/design-system-react.svg?token=BMXxPFKR5GZuYsqAFsEf&branch=master)](https://travis-ci.com/salesforce-ux/design-system-react)
 
 ## Overview
-Please visit [Design System React](https://react.lightningdesignsystem.com/) for documentation and examples of using the Design System React components. The documentation site has a [Getting Started Guide](https://react.lightningdesignsystem.com/getting-started) and a [FAQ](https://react.lightningdesignsystem.com/faq) page.
+Welcome to the project! :wave: This is an internal open source project and contributions are expected from production teams consuming this library. There is only one engineer 100%-aligned to this project at this moment. All other contributors are on production teams that ship end-product with releases dates, too.
+
+Please visit [Design System React](https://react.lightningdesignsystem.com/) for documentation and examples of using the Design System React components. The documentation site has a [Getting Started Guide](https://react.lightningdesignsystem.com/getting-started) and a [FAQ](https://react.lightningdesignsystem.com/faq) page. If you are new to this project or React, please review the [Concepts and Best Practices](https://react.lightningdesignsystem.com/contributing#concepts-and-best-practices) section of the [Contributing](https://react.lightningdesignsystem.com/contributing) page. It will help you with the approach of this library and offer some suggestions for your own components.
 
 The Design System React library is the [React](https://facebook.github.io/react/) implementation of the [Lightning Design System](https://www.lightningdesignsystem.com/). Each Design System React component is a specific variant of a component from Lightning Design System. For example, `SLDSMenuDropdown` represents [Lightning Design System Menu > Dropdown](http://www.lightningdesignsystem.com/components/menus/#dropdown),
 and `SLDSLookup` represents [Lightning Design System Lookup > Base](http://www.lightningdesignsystem.com/components/lookups/#base).
@@ -38,7 +40,7 @@ Note: `design-system-react` is optimized for React 0.14.x and uses Lightning Des
 
 ### New to React?
 
-Take a look at our [recommended reading list](https://react.lightningdesignsystem.com/resources) on the documentation site and level up on your knowledge. The reading list also includes helpful articles on Redux, Webpack, ES6, and structuring your app.
+Take a look at our [recommended reading list](https://react.lightningdesignsystem.com/resources) on the documentation site and level up on your knowledge. The reading list also includes helpful articles on Redux, Webpack, ES6, and structuring your app. The [Concepts and Best Practices](https://react.lightningdesignsystem.com/contributing#concepts-and-best-practices) section of the [Contributing](https://react.lightningdesignsystem.com/contributing) page will help you understand the approach of this library and offer some suggestions for your own components, too.
 
 ### NPM
 
@@ -80,7 +82,7 @@ Read our [FAQ](https://react.lightningdesignsystem.com/faq) on the documentation
 
 ## Contributing to the code base
 
-Please read the [CONTRIBUTING.md](CONTRIBUTING.md) first.
+Please read the [CONTRIBUTING.md](CONTRIBUTING.md) first. If you'd like to meet or discuss this project, please contact @interactivellama, so you can be invited to the Slack channel and/or the weekly Cross-Cloud Office Hours.
 
 ## Licenses
 

@@ -17,7 +17,8 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 ## Concepts and Best Practices
 
-- <a name="approved-slds-patterns" href="#approved-slds-patterns">#</a> This library should include only components which have approved patterns in SLDS.
+- <a name="not-bootstrap" href="#not-bootstrap">#</a> This project is not Bootstrap. The primary audience for this project is software engineers. Yes, contributors should over-document and explain as you need to, but you do not need to have components just work when you drop them on the page. New components should always start out as controlled by their parent and only be uncontrolled (that is have state) if a use case presents itself. In short, it's better to have a component that needs 20 props set and outputs the correct SLDS markup, than to have a component that works with no props set. Think of this project as SLDS templates with minimal logic that happen to work with the React framework. 
+- <a name="approved-slds-patterns" href="#approved-slds-patterns">#</a> This library should include only components which have approved patterns in SLDS. If there is a use case from a designer that conforms to an SLDS pattern, that component should be able to be implemented with this library.
 - <a name="controlled-component" href="#controlled-component">#</a> Know what a [controlled component](#understanding-controlled-and-uncontrolled-components) is.
 - <a name="familiarize" href="#familiarize">#</a> Familiarize yourself with concepts used in the rest of the library.
 - <a name="eslint-all-files-touched" href="#eslint-all-files-touched">#</a> If a file is touched that has outstanding ESlint errors, please fix the ESlint errors first (and in a separate commit). Sometimes special cases require an `eslint-disable` comment for a particular rule and/or line. Please use sparingly.
@@ -34,6 +35,7 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 - <a name="event-callbacks" href="#event-callbacks">#</a> Event callbacks should pass in the synthetic event, then a data object with contents that relate to the event.
 - <a name="boolean-prop-prefix" href="#boolean-prop-prefix">#</a> If a prop is a boolean, please prefix with `is` or `can` or suffix it with `-able`. Never default a prop to `true`.
 - <a name="use-checkprops" href="#use-checkprops">#</a> Add as many prop checking tests that will _only run in development_ as needed via `checkProp`. If the test can become an independent module and work in multiple components, add it to the `utilities` folder.
+- <a name="no-window-events" href="#no-window-events">#</a> Global window events like `resize` or external DOM nodes should not be accessed from the component. If needed, `body` can be used for additional mount nodes. If a menu needs to be smaller to be responsive, consuming applications should listen for the resize event and change the correct props to make the component responsive--or a CSS solution should be found. The component should not be listening to the event directly. Global key press or mouse clicks are fine if used appropriately.
 - <a name="all-text-can-be-internationalized" href="#all-text-can-be-internationalized">#</a> Any text the user can read (including text for screenreaders) should be able to be set via a prop for internationalization.
 - <a name="avoid-css" href="#avoid-css">#</a> Avoid use of inline styles and additional CSS classes not present in SLDS.
 - <a name="different-react-component-hierarchy" href="#different-react-component-hierarchy">#</a> React component hierarchy doesn't always mean HTML tag hierarchy. Sometimes children become the wrapping component.
@@ -44,8 +46,8 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 ## Understanding Controlled and Uncontrolled Components
 - All new components should be controlled at first and then uncontrolled support added later if needed. 
 - All Design System React components should be able to be "controlled"--that is expose a callback and expect their parent to control them with props. 
-- Please note that if controlled by its parent, a component will appear broken if just copied and pasted into an application without a parent to control its value.
-- Controlled components can be stateless components.
+- Please note that if controlled by its parent, a component will appear broken if just copied and pasted into an application without a parent to control its props.
+- Controlled components can be stateless components, but entirely stateless components do complicate DOM selectors for the consuming applications.
 
 A **controlled** `<input>` has a `value` prop. Rendering a controlled `<input>` will reflect the value of the `value` prop.
 

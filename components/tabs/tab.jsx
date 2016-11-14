@@ -73,7 +73,12 @@ const Tab = React.createClass({
 		/**
 		 * The string that is shown as both the title and the label for this tab.
 		 */
-		children: PropTypes.string
+		children: PropTypes.string,
+
+		/**
+		 * If the Tabs should be scopped, defaults to false
+		 */
+		variant: React.PropTypes.oneOf(['default', 'scoped'])
 	},
 
 	getDefaultProps () {
@@ -81,7 +86,8 @@ const Tab = React.createClass({
 			focus: false,
 			selected: false,
 			activeTabClassName: 'slds-active',
-			disabledTabClassName: 'slds-disabled'
+			disabledTabClassName: 'slds-disabled',
+			variant: 'default'
 		};
 	},
 
@@ -109,20 +115,21 @@ const Tab = React.createClass({
 			className,
 			children,
 			id,
+			variant,
 			...attributes } = this.props;
 
 		delete attributes.focus;
-
 		return (
 			<li
 				{...attributes}
 				className={classNames(
-					'slds-tabs--default__item',
 					'slds-text-title--caps',
 					className,
 					{
 						[activeTabClassName]: selected,
-						[disabledTabClassName]: disabled
+						[disabledTabClassName]: disabled,
+						'slds-tabs--default__item': variant === 'default',
+						'slds-tabs--scoped__item': variant === 'scoped'
 					}
 				)}
 				role="tab"
@@ -134,7 +141,14 @@ const Tab = React.createClass({
 				title={children}
 			>
 				<a
-					className="slds-tabs--default__link"
+					className={classNames(
+						{
+							[activeTabClassName]: selected,
+							[disabledTabClassName]: disabled,
+							'slds-tabs--default__link': variant === 'default',
+							'slds-tabs--scoped__link': variant === 'scoped'
+						}
+					)}
 					href="javascript:void(0);" // eslint-disable-line no-script-url
 					role="presentation"
 					tabIndex="-1"
