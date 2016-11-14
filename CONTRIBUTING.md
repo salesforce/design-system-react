@@ -46,8 +46,8 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 ## Understanding Controlled and Uncontrolled Components
 - All new components should be controlled at first and then uncontrolled support added later if needed. 
 - All Design System React components should be able to be "controlled"--that is expose a callback and expect their parent to control them with props. 
-- Please note that if controlled by its parent, a component will appear broken if just copied and pasted into an application without a parent to control its value.
-- Controlled components can be stateless components.
+- Please note that if controlled by its parent, a component will appear broken if just copied and pasted into an application without a parent to control its props.
+- Controlled components can be stateless components, but entirely stateless components do complicate DOM selectors for the consuming applications.
 
 A **controlled** `<input>` has a `value` prop. Rendering a controlled `<input>` will reflect the value of the `value` prop.
 
