@@ -127,7 +127,7 @@ GlobalNavigationBarLink.propTypes = {
 	onMouseEnter: PropTypes.func,
 	onMouseLeave: PropTypes.func,
 	/**
-	 * Write <code>"-1"</code> if you don't want the user to tab to the button.
+	 * Write "-1" if you don't want the user to tab to the button.
 	 */
 	tabIndex: PropTypes.string
 };

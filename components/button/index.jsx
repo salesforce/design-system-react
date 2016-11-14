@@ -85,6 +85,7 @@ const propTypes = {
 	onKeyDown: PropTypes.func,
 	onKeyPress: PropTypes.func,
 	onKeyUp: PropTypes.func,
+	onMouseDown: PropTypes.func,
 	onMouseEnter: PropTypes.func,
 	onMouseLeave: PropTypes.func,
 	/**
@@ -214,6 +215,7 @@ class Button extends TooltipTrigger {
 			onKeyDown,
 			onKeyPress,
 			onKeyUp,
+			onMouseDown,
 			onMouseEnter,
 			onMouseLeave,
 			tabIndex
@@ -232,6 +234,7 @@ class Button extends TooltipTrigger {
 				onKeyDown={onKeyDown}
 				onKeyPress={onKeyPress}
 				onKeyUp={onKeyUp}
+				onMouseDown={onMouseDown}
 				onMouseEnter={onMouseEnter}
 				onMouseLeave={onMouseLeave}
 				tabIndex={tabIndex}

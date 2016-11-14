@@ -260,7 +260,7 @@ module.exports = React.createClass({
 			onInput,
 			pattern,
 			placeholder,
-			...props
+			...props // eslint-disable-line no-unused-vars
 		} = this.props;
 
 		let isInline;

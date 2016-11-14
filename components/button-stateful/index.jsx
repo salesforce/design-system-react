@@ -59,6 +59,7 @@ const propTypes = {
 	onKeyDown: PropTypes.func,
 	onKeyPress: PropTypes.func,
 	onKeyUp: PropTypes.func,
+	onMouseDown: PropTypes.func,
 	onMouseEnter: PropTypes.func,
 	onMouseLeave: PropTypes.func,
 	/**
@@ -78,7 +79,7 @@ const propTypes = {
 	 */
 	stateThree: PropTypes.object,
 	/**
-	 * Write <code>'-1'</code> if you don't want the user to tab to the button.
+	 * Write "-1" if you don't want the user to tab to the button.
 	 */
 	tabIndex: PropTypes.string,
 	tooltip: PropTypes.node,
@@ -146,6 +147,7 @@ class ButtonStateful extends TooltipTrigger {
 			onKeyDown,
 			onKeyPress,
 			onKeyUp,
+			onMouseDown,
 			onMouseEnter,
 			onMouseLeave,
 			stateOne,
@@ -170,6 +172,7 @@ class ButtonStateful extends TooltipTrigger {
 					onKeyDown={onKeyDown}
 					onKeyPress={onKeyPress}
 					onKeyUp={onKeyUp}
+					onMouseDown={onMouseDown}
 					onMouseEnter={onMouseEnter}
 					onMouseLeave={this.handleBlur.bind(this)}
 					tabIndex={tabIndex}
