@@ -3,19 +3,19 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 
-import { POPOVER_TOOLTIP } from '../../utilities/constants';
-import PopoverTooltip from '../../components/popover-tooltip';
+import { POPOVER } from '../../utilities/constants';
+import Popover from '../../components/popover';
 
 import Icon from '../../components/icon';
 import Button from '../../components/button';
 
-const getPopoverTooltip = (props) => (
-	<PopoverTooltip {...props}>
-		<Button label="Trigger Tooltip" />
-	</PopoverTooltip>
+const getPopover = (props) => (
+	<Popover {...props}>
+		<Button label="Trigger Popover" />
+	</Popover>
 );
 
-const getPopoverTooltipAlign = (props) => {
+const getPopoverAlign = (props) => {
 /* eslint-disable react/prop-types */
 	const children = [];
 
@@ -37,9 +37,9 @@ const getPopoverTooltipAlign = (props) => {
 	align.forEach((value) => {
 		children.push(
 			<div key={value} style={{ margin: '100px auto' }}>
-				<PopoverTooltip {...props} align={value}>
+				<Popover {...props} align={value} assistiveText="This is a popover.">
 					{props.trigger}
-				</PopoverTooltip>
+				</Popover>
 			</div>
 		);
 	});
@@ -51,7 +51,7 @@ const getPopoverTooltipAlign = (props) => {
 	);
 };
 
-storiesOf(POPOVER_TOOLTIP, module)
+storiesOf(POPOVER, module)
 	.addDecorator(getStory => <div
 		className="slds-p-around--medium slds-m-horizontal--x-large"
 		style={{
@@ -59,30 +59,29 @@ storiesOf(POPOVER_TOOLTIP, module)
 			textAlign: 'center',
 			width: '500px' }}
 	>{getStory()}</div>)
-	.add('Base', () => getPopoverTooltip({
+	.add('Base', () => getPopover({
+		id: 'myPopoverId',
+		content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi laudantium molestias reprehenderit nostrum quod natus saepe ea corrupti odit minima?'
+	}))
+	.add('Open', () => getPopover({
 		align: 'bottom',
+		isOpen: true,
 		id: 'myPopoverId',
 		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie'
 	}))
-	.add('Open', () => getPopoverTooltip({
-		align: 'bottom',
-		isOpen: true,
-		id: 'myPopoverId',
-		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie'
-	}))
-	.add('Alignment (Button)', () => getPopoverTooltipAlign({
+	.add('Alignment (Button)', () => getPopoverAlign({
 		id: 'myPopoverId',
 		isOpen: true,
 		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
-		trigger: (<Button label="Trigger Tooltip" />)
+		trigger: (<Button label="Trigger Popover" tabIndex="0" />)
 	}))
-	.add('Alignment (span)', () => getPopoverTooltipAlign({
+	.add('Alignment (span)', () => getPopoverAlign({
 		id: 'myPopoverId',
 		isOpen: true,
 		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
-		trigger: (<span tabIndex="0" key="trigger">Trigger Tooltip</span>)
+		trigger: (<span tabIndex="0" key="trigger">Trigger Popover</span>)
 	}))
-	.add('Alignment (icon)', () => getPopoverTooltipAlign({
+	.add('Alignment (icon)', () => getPopoverAlign({
 		id: 'myPopoverId',
 		isOpen: true,
 		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
