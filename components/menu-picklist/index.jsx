@@ -40,7 +40,7 @@ import ListItemLabel from '../menu-list/list-item-label';
 // ### Traits
 
 // #### KeyboardNavigable
-import KeyboardNavigable from '../../utilities/keyboard-navigable';
+import KeyboardNavigable from '../../utilities/keyboard-navigable-menu';
 
 import EventUtil from '../../utilities/EventUtil';
 import KEYS from '../../utilities/KEYS';
