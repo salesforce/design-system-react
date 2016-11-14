@@ -40,7 +40,7 @@ import { getMargin, getNubbinClassName } from '../../utilities/dialog-helpers';
 // ### Traits
 
 // #### KeyboardNavigable
-import KeyboardNavigable from '../../utilities/keyboard-navigable';
+import keyboardNavigableDialog from '../../utilities/keyboard-navigable-dialog';
 
 import EventUtil from '../../utilities/EventUtil';
 import KEYS from '../../utilities/KEYS';
@@ -75,8 +75,6 @@ const Popover = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: POPOVER,
-
-	mixins: [KeyboardNavigable],
 
 	// ### Prop Types
 	propTypes: {
@@ -157,10 +155,6 @@ const Popover = React.createClass({
 		 */
 		onFocus: PropTypes.func,
 		/**
-		 * Determines if mouse hover or click opens or closes the dropdown menu. The default of `click` opens the menu on click, touch, or keyboard navigation and is highly recommended to comply with accessibility standards. The other options are `hover` which opens when the mouse enters the focusable area, and `hybrid` which causes the menu to open on clicking of the trigger, but closes the menu when the mouse leaves the menu and trigger area. If you are planning on using `hover` or `hybrid`, please pause a moment and reconsider.
-		 */
-		openOn: PropTypes.oneOf(['hover', 'click', 'hybrid']),
-		/**
 		 * Called when a key pressed.
 		 */
 		onKeyDown: PropTypes.func,
@@ -234,6 +228,11 @@ const Popover = React.createClass({
 		return !!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
 	},
 
+	getMenu () {
+		// needed by keyboard navigation
+		return ReactDOM.findDOMNode(this.dialog);
+	},
+
 	handleClose () {
 		const isOpen = this.getIsOpen();
 
@@ -274,6 +273,9 @@ const Popover = React.createClass({
 		}
 	},
 
+	/* props.openOn is not a part of prop-types because it is not a supported feature, but may be needed for backwards compatibility with non-accessible dropdown/popover hybrids. */
+
+	/* eslint-disable react/prop-types */
 	handleMouseEnter (event) {
 		const isOpen = this.getIsOpen();
 
@@ -304,6 +306,7 @@ const Popover = React.createClass({
 			this.props.onMouseLeave(event);
 		}
 	},
+	/* eslint-enable react/prop-types */
 
 	handleClick (event) {
 		const isOpen = this.getIsOpen();
@@ -334,24 +337,22 @@ const Popover = React.createClass({
 
 	handleKeyDown (event) {
 		if (event.keyCode) {
-			if (event.keyCode === KEYS.ENTER ||
-					event.keyCode === KEYS.SPACE ||
-					event.keyCode === KEYS.DOWN ||
-					event.keyCode === KEYS.UP) {
+			if (event.keyCode === KEYS.ENTER) {
 				EventUtil.trap(event);
 			}
 
 			if (event.keyCode !== KEYS.TAB) {
 				const isOpen = this.getIsOpen();
 
-				this.handleKeyboardNavigate({
+				keyboardNavigableDialog({
 					event,
 					isOpen,
+					handleClick: this.handleClick,
 					key: event.key,
 					keyCode: event.keyCode,
-					onSelect: this.handleSelect,
-					target: event.target,
-					toggleOpen: this.toggleOpen
+					targetTarget: event.target,
+					toggleOpen: this.toggleOpen,
+					trigger: this.trigger
 				});
 			} else {
 				this.handleCancel();
@@ -457,13 +458,10 @@ const Popover = React.createClass({
 		const outsideClickIgnoreClass = `ignore-click-${this.getId()}`;
 		const isOpen = this.props.isOpen === undefined ? !this.props.disabled && this.state && this.state.isOpen && !!this.trigger : this.props.isOpen;
 
-		// console.log('this.state.isOpen', this.state.isOpen);
-		console.log(isOpen);
-
 		const clonedTrigger = React.cloneElement(this.props.children, {
 			tabIndex: this.props.children.props.tabIndex || '0',
 			ref: (component) => { this.trigger = component; },
-			ariaHaspopup: 'true',
+			['aria-haspopup']: 'true',
 			className: classNames(outsideClickIgnoreClass),
 			style: this.props.style,
 			id: this.getId(),
