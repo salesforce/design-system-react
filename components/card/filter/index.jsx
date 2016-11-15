@@ -14,6 +14,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 
 import Input from '../../forms/input';
+import InputIcon from '../../icon/input-icon';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
@@ -35,8 +36,7 @@ const Filter = (props) => {
 		<Input
 			{...rest}
 			assistiveText={placeholder}
-			iconCategory="utility"
-			iconName="search"
+			iconLeft={<InputIcon name="search" category="utility" />}
 			id={id}
 			onChange={onChange}
 			placeholder={placeholder}

@@ -32,7 +32,6 @@ const TabsList = ({
 }) => (
 	<ul
 		id={`${id}-slds-tabs__nav`}
-		{...attributes}
 		className={classNames(
 			className,
 			{

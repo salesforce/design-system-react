@@ -23,7 +23,9 @@ storiesOf(BUTTON, module)
 	.add('Neutral Icon', () => getButton({
 		label: 'Neutral Icon',
 		iconName: 'download',
-		iconPosition: 'left'
+		iconPosition: 'left',
+		onFocus: action('focus'),
+		onKeyDown: action('keyDown')
 	}))
 	.add('Disabled', () => getButton({ label: 'Disabled', disabled: true }))
 	.add('Icon large', () => getIconButton({

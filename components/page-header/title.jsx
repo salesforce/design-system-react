@@ -45,7 +45,7 @@ class Title extends Component {
     const classes = this._getClassNames(truncate, align, className);
 
     return (
-      <p className={classes} title={title} {...attr}>
+      <p className={classes} title={title}>
         {title}
         {children}
       </p>

@@ -42,9 +42,17 @@ const GlobalNavigationBarLink = (props) => {
 		className,
 		dividerPosition,
 		href,
+		id,
 		label,
+		onBlur,
 		onClick,
-		...rest
+		onFocus,
+		onKeyDown,
+		onKeyPress,
+		onKeyUp,
+		onMouseEnter,
+		onMouseLeave,
+		tabIndex
 	} = props;
 
 	const listItemstyle = active ? { backgroundColor: activeBackgroundColor, borderBottomColor: activeBackgroundColor } : null;
@@ -61,8 +69,13 @@ const GlobalNavigationBarLink = (props) => {
 			<a
 				href={href}
 				className={classNames('slds-context-bar__label-action', className)}
+				id={id}
+				onBlur={onBlur}
 				onClick={isFunction(onClick) ? (event) => handleClick(event, href, onClick) : null}
-				{...rest}
+				onFocus={onFocus}
+				onKeyDown={onKeyDown}
+				onKeyPress={onKeyPress}
+				tabIndex={tabIndex}
 			>
 				<span className="slds-truncate">{label}</span>
 			</a>
@@ -95,13 +108,28 @@ GlobalNavigationBarLink.propTypes = {
 	 */
 	href: PropTypes.string,
 	/**
+	 * The `id` attribute of the link applied to the anchor tag.
+	 */
+	id: PropTypes.string,
+	/**
 	 * Text to show for link item.
 	 */
 	label: PropTypes.string,
+	onBlur: PropTypes.func,
 	/**
 	 * `function (event, href)` - fires when the link is clicked. If set, the browser location change to the `href` specified will be ignored, but the `href` will be included in an additional parameter passed to the callback.
 	 */
-	onClick: PropTypes.func
+	onClick: PropTypes.func,
+	onFocus: PropTypes.func,
+	onKeyDown: PropTypes.func,
+	onKeyPress: PropTypes.func,
+	onKeyUp: PropTypes.func,
+	onMouseEnter: PropTypes.func,
+	onMouseLeave: PropTypes.func,
+	/**
+	 * Write "-1" if you don't want the user to tab to the button.
+	 */
+	tabIndex: PropTypes.string
 };
 
 GlobalNavigationBarLink.defaultProps = {

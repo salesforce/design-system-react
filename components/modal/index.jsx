@@ -33,14 +33,14 @@ const propTypes = {
 	 */
 	children: PropTypes.node.isRequired,
 	/**
-	  * Custom CSS classes for the modal's container.
+	  * Custom CSS classes for the modal's container. This is the element with `.slds-modal__container`. Use `classNames` [API](https://github.com/JedWatson/classnames).
 	  */
 	containerClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
 		PropTypes.string]),
 	/**
-	 * Custom CSS classes for the modal's body. This is the element that has overflow rules and should be used to set a static height if desired.
+	 * Custom CSS classes for the modal's body. This is the element that has overflow rules and should be used to set a static height if desired. Use `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
 	contentClassName: PropTypes.oneOfType([
 		PropTypes.array,
@@ -75,13 +75,23 @@ const propTypes = {
 	 */
 	header: PropTypes.node,
 	/**
-	 * Adds CSS classes to the container surrounding the modal header and the close button.
+	 * Adds CSS classes to the container surrounding the modal header and the close button. Use `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
-	headerClassName: PropTypes.node,
+	headerClassName: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string]),
 	/**
 	 * Forces the modal to be open or closed.
 	 */
 	isOpen: PropTypes.bool.isRequired,
+	/**
+	 * Custom CSS classes for the portal DOM node. This node is a direct descendant of the `body` and is the parent of `ReactModal__Overlay`. Use `classNames` [API](https://github.com/JedWatson/classnames).
+	 */
+	portalClassName: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string]),
 	/**
 	 * Styles the modal as a prompt.
 	 */
@@ -350,6 +360,7 @@ class Modal extends React.Component {
 				isOpen={this.props.isOpen}
 				onRequestClose={this.closeModal}
 				style={customStyles}
+				portalClassName={classNames('ReactModalPortal', this.props.portalClassName)}
 			>
 				{this.getModal()}
 			</ReactModal>

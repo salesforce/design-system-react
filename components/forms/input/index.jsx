@@ -45,6 +45,8 @@ const Input = React.createClass({
 	displayName: FORMS_INPUT,
 	// ### Prop Types
 	propTypes: {
+		ariaActivedescendant: PropTypes.string,
+		ariaAutocomplete: PropTypes.string,
 		/**
 		 * An HTML ID that is shared with ARIA-supported devices with the
 		 * `aria-controls` attribute in order to relate the input with
@@ -52,6 +54,9 @@ const Input = React.createClass({
 		 * that shows or hides a panel.
 		 */
 		ariaControls: PropTypes.string,
+		ariaDescribedby: PropTypes.string,
+		ariaExpanded: PropTypes.bool,
+		ariaLabeledby: PropTypes.string,
 		/**
 		 * An HTML ID that is shared with ARIA-supported devices with the
 		 * `aria-controls` attribute in order to relate the input with
@@ -59,6 +64,7 @@ const Input = React.createClass({
 		 * that shows search results.
 		 */
 		ariaOwns: PropTypes.string,
+		ariaRequired: PropTypes.bool,
 		/**
 		 * If present, the label associated with this `input` is overwritten
 		 * by this text and is visually not shown.
@@ -97,6 +103,7 @@ const Input = React.createClass({
 		 * This label appears above the input.
 		 */
 		label: PropTypes.string,
+		onBlur: PropTypes.func,
 		/**
 		 * This callback fires when the input changes. The synthetic React event will be the first parameter to the callback. You will probably want to reference `event.target.value` in your callback. No custom data object is provided.
 		 */
@@ -105,10 +112,20 @@ const Input = React.createClass({
 		 * This event fires when the input is clicked.
 		 */
 		onClick: PropTypes.func,
+		onFocus: PropTypes.func,
+		onInput: PropTypes.func,
+		onInvalid: PropTypes.func,
+		onKeyDown: PropTypes.func,
+		onKeyPress: PropTypes.func,
+		onKeyUp: PropTypes.func,
+		onSelect: PropTypes.func,
+		onSubmit: PropTypes.func,
 		/**
 		 * Text that will appear in an empty input.
 		 */
 		placeholder: PropTypes.string,
+		minLength: PropTypes.string,
+		maxLength: PropTypes.string,
 		/**
 		 * Name of the submitted form parameter.
 		 */
@@ -191,8 +208,13 @@ const Input = React.createClass({
 	// ### Render
 	render () {
 		const {
+			ariaActivedescendant,
+			ariaAutocomplete,
 			ariaControls,
+			ariaDescribedby,
+			ariaExpanded,
 			ariaOwns,
+			ariaRequired,
 			assistiveText,
 			children,
 			className,
@@ -203,12 +225,24 @@ const Input = React.createClass({
 			inlineEditTrigger, // eslint-disable-line react/prop-types
 			inputRef, // eslint-disable-line react/prop-types
 			label,
+			onBlur,
 			onChange,
 			onClick,
+			onFocus,
+			onInput,
+			onInvalid,
+			onKeyDown,
+			onKeyPress,
+			onKeyUp,
+			onSelect,
+			onSubmit,
+			minLength,
+			maxLength,
 			name,
 			placeholder,
 			readOnly,
 			required,
+			role,
 			type,
 			value,
 
@@ -255,17 +289,33 @@ const Input = React.createClass({
 					{hasLeftIcon ? this.getIconRender('left', 'iconLeft') : null}
 
 					{!readOnly && <input
-						{...props}
+						aria-activedescendant={ariaActivedescendant}
+						aria-autocomplete={ariaAutocomplete}
 						aria-controls={ariaControls}
+						aria-describedby={ariaDescribedby}
+						aria-expanded={ariaExpanded}
 						aria-owns={ariaOwns}
+						aria-required={ariaRequired}
 						className="slds-input"
 						disabled={disabled}
 						id={this.getId()}
+						minLength={minLength}
+						maxLength={maxLength}
+						name={name}
+						onBlur={onBlur}
 						onChange={onChange}
 						onClick={onClick}
-						name={name}
+						onFocus={onFocus}
+						onInput={onInput}
+						onInvalid={onInvalid}
+						onKeyDown={onKeyDown}
+						onKeyPress={onKeyPress}
+						onKeyUp={onKeyUp}
+						onSelect={onSelect}
+						onSubmit={onSubmit}
 						placeholder={placeholder}
 						ref={inputRef}
+						role={role}
 						required={required}
 						type={type}
 						value={value}

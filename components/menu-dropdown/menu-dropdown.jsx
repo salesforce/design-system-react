@@ -770,28 +770,24 @@ const MenuDropdown = React.createClass({
 		*/
 		return (
 			<CurrentTrigger
-				aria-haspopup="true"
+				ariaHaspopup={true}
 				assistiveText={this.props.assistiveText}
 				className={classNames(outsideClickIgnoreClass, this.props.buttonClassName)}
 				disabled={this.props.disabled}
 				hint={this.props.hint}
 				iconCategory={this.props.iconCategory}
 				iconName={this.props.iconName}
-				iconVariant={this.props.iconVariant}
 				iconSize={this.props.iconSize}
+				iconVariant={this.props.iconVariant}
+				id={this.getId()}
 				inverse={this.props.buttonInverse}
+				isInline={isInline}
 				isOpen={isOpen}
 				label={this.props.label}
-				openOn={this.props.openOn}
-				isInline={isInline}
-				style={this.props.style}
-				tabIndex={isOpen ? '-1' : '0'}
-				variant={this.props.buttonVariant}
-				tooltip={this.props.tooltip}
-
-				{...CustomTriggerChildProps}
-
-				id={this.getId()}
+				menu={isInline ?
+					this.renderInlineMenu(customContent, isOpen) :
+					this.renderDialog(customContent, isOpen, outsideClickIgnoreClass)
+				}
 				onBlur={this.props.onBlur}
 				onClick={
 					this.props.openOn === 'click'
@@ -809,12 +805,14 @@ const MenuDropdown = React.createClass({
 					this.props.openOn === 'hover'
 					|| this.props.openOn === 'hybrid'
 					? this.handleMouseLeave : null}
+				openOn={this.props.openOn}
 				ref={this.saveRefToTriggerContainer}
+				style={this.props.style}
+				tabIndex={isOpen ? '-1' : '0'}
+				tooltip={this.props.tooltip}
 				triggerRef={this.saveRefToTrigger}
-				menu={isInline ?
-					this.renderInlineMenu(customContent, isOpen) :
-					this.renderDialog(customContent, isOpen, outsideClickIgnoreClass)
-				}
+				variant={this.props.buttonVariant}
+				{...CustomTriggerChildProps}
 			/>
 		);
 	}

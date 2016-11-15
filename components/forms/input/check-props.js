@@ -26,13 +26,17 @@ if (process.env.NODE_ENV !== 'production') {
 		deprecatedProperty(COMPONENT, props.iconAssistiveText, 'iconAssistiveText', undefined, 'Please use `iconLeft` and `iconRight` to pass in a customized <Icon> component');
 		deprecatedProperty(COMPONENT, props.onIconClick, 'onIconClick', undefined, 'Please use `iconLeft` and `iconRight` to pass in a customized <Icon> component');
 
+		/*
+		 * Once we support horizontal labels, then I think we can enable this check
+		 *
 		if (!props.inlineEditTrigger) {
 			oneOfRequiredProperty(COMPONENT, {
 				assistiveText: props.assistiveText,
 				label: props.label
 			});
 		}
-		
+		*/
+
 		onlyOneOfProperties(COMPONENT, {
 			assistiveText: props.assistiveText,
 			label: props.label

@@ -75,6 +75,7 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 				label="Home"
 				id="home-link"
 				onClick={linkClicked('Home link clicked. Actual href should be ignored')}
+				onKeyDown={(e) => { console.log(e.target);}}
 			/>
 			<GlobalNavigationBarDropdown
 				assistiveText="Open Menu Item 1"

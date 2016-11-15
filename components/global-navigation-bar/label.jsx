@@ -30,20 +30,20 @@ const GlobalNavigationBarLabel = (props) => {
 	const {
 		className,
 		dividerPosition,
+		id,
 		label,
-		...other
 	} = props;
 
 	return (
 		<li className="slds-context-bar__item slds-no-hover">
 			<span
+				id={id}
 				// inline style override
 				style={{ color: '#16325c' }}
 				className={classNames(
 					'slds-context-bar__label-action',
 					{ [`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition },
 					className)}
-				{...other}
 			>
 				<span className="slds-truncate">{label}</span>
 			</span>
@@ -63,6 +63,10 @@ GlobalNavigationBarLabel.propTypes = {
 	 * Determines position of separating bar.
 	 */
 	dividerPosition: PropTypes.oneOf(['left', 'right']),
+	/**
+	 * Id string applied to first <span> inside of <li>
+	 */
+	id: PropTypes.string,
 	/**
 	 * Text to show
 	 */

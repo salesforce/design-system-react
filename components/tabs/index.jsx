@@ -386,11 +386,6 @@ const Tabs = React.createClass({
 			}, 0);
 		}
 
-		// Delete all known props, so they don't get added to DOM
-		delete attributes.selectedIndex;
-		delete attributes.onSelect;
-		delete attributes.children;
-
 		return (
 			<div
 				id={id}
@@ -405,7 +400,6 @@ const Tabs = React.createClass({
 				onKeyDown={this.handleKeyDown}
 				data-tabs
 				variant={variant}
-				{...attributes}
 			>
 				{this.renderTabsList(id)}
 				{this.renderTabPanels(id)}

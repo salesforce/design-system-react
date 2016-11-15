@@ -27,11 +27,10 @@ const defaultProps = {
 class Info extends Component {
   render() {
     const { children, className } = this.props;
-    const attr = omit(['children', 'className'], this.props);
     const classes = this._getClassNames(className);
 
     return (
-      <p className={classes} {...attr}>
+      <p className={classes}>
         {children}
       </p>
     );
