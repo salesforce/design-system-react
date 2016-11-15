@@ -35,16 +35,6 @@ const Dialog = React.createClass({
 
 	displayName: DIALOG,
 
-	handleClickOutside () {
-		this.handleClose();
-	},
-
-	handleClose () {
-		if (this.props.onClose) {
-			this.props.onClose();
-		}
-	},
-
 	propTypes: {
 		/**
 		 * Aligns the right or left side of the dialog with the respective side of the target.
@@ -148,6 +138,10 @@ const Dialog = React.createClass({
 		 */
 		onMouseLeave: PropTypes.func,
 		/**
+		 * Called when dialog opens (that is mounts).
+		 */
+		onOpen: PropTypes.func,
+		/**
 		 * Triggered when an item in the menu is clicked.
 		 */
 		outsideClickIgnoreClass: PropTypes.string,
@@ -200,6 +194,18 @@ const Dialog = React.createClass({
 
 	componentDidUpdate () {
 		this.renderDialog();
+	},
+
+	handleClickOutside () {
+		this.handleClose();
+	},
+
+	handleClose () {
+		if (this.props.onClose) {
+			this.props.onClose();
+		}
+
+		// document.removeEventListener('focus', this.trapFocus, true);
 	},
 
 	handleClick (event) {
@@ -354,6 +360,11 @@ const Dialog = React.createClass({
 
 	handleOpen () {
 		this.setState({ isOpen: true });
+		if (this.props.onOpen) {
+			this.props.onOpen();
+		}
+
+		// document.addEventListener('focus', this.trapFocus, true);
 	},
 
 	renderDialog () {
@@ -376,6 +387,20 @@ const Dialog = React.createClass({
 			this.drop.once('open', this.handleOpen);
 		}
 	},
+
+	// trapFocus (e) {
+	// 	console.log(e);
+	// 	console.log('this', ReactDOM.findDOMNode(this.dialogElement));
+	// 	console.log(ReactDOM.findDOMNode(this.dialogElement).contains(e.target));
+	// 	if (ReactDOM.findDOMNode(this.dialogElement).contains(e.target)) return;
+	// 	e.preventDefault();
+	// 	e.stopImmediatePropagation();
+	// 	console.log(this.props.initialFocus);
+	// 	ReactDOM.findDOMNode(this.props.initialFocus).focus;
+	// 	console.log(ReactDOM.findDOMNode(this.props.initialFocus));
+	// 	// Checking for a blur method here resolves a Firefox issue (#15)
+	// 	if (typeof e.target.blur === 'function') e.target.blur();
+	// },
 
 	componentWillUnmount () {
 		this.drop.destroy();

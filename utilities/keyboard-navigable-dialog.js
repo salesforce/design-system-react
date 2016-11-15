@@ -60,13 +60,13 @@ const KeyboardNavigableDialog = ({
 			break;
 		case KEYS.ENTER:
 			if (!isOpen) {
-				toggleOpen();
+				// toggleOpen();
+				internalHandleClick({
+					trigger,
+					eventTarget,
+					handleClick
+				});
 			}
-			internalHandleClick({
-				trigger,
-				eventTarget,
-				handleClick
-			});
 			break;
 		default:
 			break;

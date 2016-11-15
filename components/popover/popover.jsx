@@ -32,6 +32,8 @@ import isFunction from 'lodash.isfunction';
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 
+import Button from '../button';
+
 // ### Children
 import Dialog from '../utilities/dialog';
 
@@ -118,6 +120,7 @@ const Popover = React.createClass({
 		/* Prevents the dropdown from changing position based on the viewport/window. If set to true your dropdowns can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the dropdowns contents scrollable to fit the menu on the screen.
 		*/
 		hasStaticAlignment: PropTypes.bool,
+		heading: PropTypes.oneOfType([PropTypes.string]),
 		/**
 		 * Delay on menu closing in milliseconds.
 		 */
@@ -204,12 +207,6 @@ const Popover = React.createClass({
 
 	componentWillMount () {
 		this.generatedId = shortid.generate();
-	},
-
-	componentWillReceiveProps (nextProps, prevProps) {
-		if (prevProps.isOpen !== nextProps.isOpen) {
-			this.dialogFocus();
-		}
 	},
 
 	componentWillUnmount () {
@@ -313,7 +310,6 @@ const Popover = React.createClass({
 
 		if (!isOpen) {
 			this.handleOpen();
-			this.dialogFocus();
 		} else {
 			this.handleClose();
 		}
@@ -355,7 +351,7 @@ const Popover = React.createClass({
 					trigger: this.trigger
 				});
 			} else {
-				this.handleCancel();
+				console.log(document.activeElement);
 			}
 
 			if (this.props.onKeyDown) {
@@ -383,7 +379,7 @@ const Popover = React.createClass({
 
 	dialogFocus () {
 		if (!this.isHover && !this.isUnmounting && this.dialog) {
-			ReactDOM.findDOMNode(this.dialog).focus();
+			ReactDOM.findDOMNode(this.closeButton).focus();
 		}
 	},
 
@@ -391,17 +387,6 @@ const Popover = React.createClass({
 		if (!this.isHover && !this.isUnmounting && this.props.children) {
 			ReactDOM.findDOMNode(this.trigger).focus();
 		}
-	},
-
-	// Trigger opens, closes, and recieves focus on close
-	saveRefToTrigger (trigger) {
-		this.trigger = trigger;
-	},
-
-	// TriggerContainer is the wrapping outer DOM element which may differ from the actual trigger which is most likely a `button`.
-	saveRefToTriggerContainer (triggerContainer) {
-		this.triggerContainer = triggerContainer;
-		if (!this.trigger) this.trigger = triggerContainer;
 	},
 
 	renderDialog (isOpen, outsideClickIgnoreClass) {
@@ -412,7 +397,6 @@ const Popover = React.createClass({
 				<Dialog
 					align={this.props.align}
 					className={classNames(this.props.containerClassName)}
-					closeOnTabKey
 					constrainToScrollParent={this.props.constrainToScrollParent}
 					contentsClassName={classNames(
 						'slds-popover',
@@ -420,6 +404,7 @@ const Popover = React.createClass({
 						getNubbinClassName(this.props.align),
 						this.props.className)}
 					flippable={!this.props.hasStaticAlignment}
+					initialFocus={this.closeButton}
 					marginBottom="0px"
 					marginLeft="0px"
 					marginRight="0px"
@@ -429,13 +414,30 @@ const Popover = React.createClass({
 					onKeyDown={this.handleKeyDown}
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
+					onOpen={this.dialogFocus}
 					outsideClickIgnoreClass={outsideClickIgnoreClass}
 					ref={(component) => { this.dialog = component; }}
+					role="dialog"
 					style={this.props.style}
 					targetElement={this.triggerContainer}
-					tabIndex="0"
+					tabIndex="-1"
 				>
-					<div className="slds-popover__body" role="dialog">
+					<Button
+						assistiveText="Close dialog"
+						iconName="close"
+						iconSize="small"
+						className="slds-float--right slds-popover__close"
+						onClick={this.handleCancel}
+						ref={(component) => {
+							this.closeButton = component;
+							console.log(this.closeButton);
+						}}
+						variant="icon"
+					/>
+					<header className="slds-popover__header">
+						<h2 id="dialog-heading-id-2400" className="slds-text-heading--small">{this.props.heading}</h2>
+					</header>
+					<div className="slds-popover__body">
 						{this.props.content}
 					</div>
 				</Dialog> : null
@@ -471,7 +473,6 @@ const Popover = React.createClass({
 				|| this.props.openOn === 'hybrid'
 				? this.handleClick : this.props.onClick,
 			onFocus: this.props.openOn === 'hover' ? this.handleFocus : null,
-			onKeyDown: this.handleKeyDown,
 			onMouseDown: this.props.onMouseDown,
 			onMouseEnter: (this.props.openOn === 'hover' || this.props.openOn === 'hybrid')
 				? this.handleMouseEnter
