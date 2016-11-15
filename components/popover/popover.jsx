@@ -333,10 +333,6 @@ const Popover = React.createClass({
 
 	handleKeyDown (event) {
 		if (event.keyCode) {
-			if (event.keyCode === KEYS.ENTER) {
-				EventUtil.trap(event);
-			}
-
 			if (event.keyCode !== KEYS.TAB) {
 				const isOpen = this.getIsOpen();
 
@@ -351,7 +347,7 @@ const Popover = React.createClass({
 					trigger: this.trigger
 				});
 			} else {
-				console.log(document.activeElement);
+
 			}
 
 			if (this.props.onKeyDown) {
@@ -361,7 +357,6 @@ const Popover = React.createClass({
 	},
 
 	handleCancel () {
-		this.returnFocus();
 		this.handleClose();
 	},
 
@@ -378,15 +373,15 @@ const Popover = React.createClass({
 	},
 
 	dialogFocus () {
-		if (!this.isHover && !this.isUnmounting && this.dialog) {
-			ReactDOM.findDOMNode(this.closeButton).focus();
-		}
+		// if (!this.isHover && !this.isUnmounting && this.dialog) {
+		// 	ReactDOM.findDOMNode(this.closeButton).focus();
+		// }
 	},
 
 	returnFocus () {
-		if (!this.isHover && !this.isUnmounting && this.props.children) {
-			ReactDOM.findDOMNode(this.trigger).focus();
-		}
+		// if (!this.isHover && !this.isUnmounting && this.props.children) {
+		// 	ReactDOM.findDOMNode(this.trigger).focus();
+		// }
 	},
 
 	renderDialog (isOpen, outsideClickIgnoreClass) {
@@ -428,10 +423,7 @@ const Popover = React.createClass({
 						iconSize="small"
 						className="slds-float--right slds-popover__close"
 						onClick={this.handleCancel}
-						ref={(component) => {
-							this.closeButton = component;
-							console.log(this.closeButton);
-						}}
+						ref={(component) => { this.closeButton = component; }}
 						variant="icon"
 					/>
 					<header className="slds-popover__header">

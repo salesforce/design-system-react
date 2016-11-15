@@ -11,9 +11,12 @@ import Icon from '../../components/icon';
 import Button from '../../components/button';
 
 const getPopover = (props) => (
-	<Popover {...props}>
-		<Button label="Trigger Popover" />
-	</Popover>
+	<div>
+		<Popover {...props}>
+			<Button label="Trigger Popover" />
+		</Popover>
+		<Button label="Not Trigger Popover" />
+	</div>
 );
 
 const getPopoverAlign = (props) => {

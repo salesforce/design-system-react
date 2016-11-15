@@ -25,6 +25,7 @@ import TetherDrop from 'tether-drop';
 
 import EventUtil from '../../../utilities/EventUtil';
 import KEYS from '../../../utilities/KEYS';
+import focusManager from '../../../utilities/focus-manager';
 
 import { DIALOG } from '../../../utilities/constants';
 
@@ -196,6 +197,11 @@ const Dialog = React.createClass({
 		this.renderDialog();
 	},
 
+	contentHasFocus () {
+		return document.activeElement === ReactDOM.findDOMNode(this.content)
+			|| ReactDOM.findDOMNode(this.content).contains(document.activeElement);
+	},
+
 	handleClickOutside () {
 		this.handleClose();
 	},
@@ -205,6 +211,8 @@ const Dialog = React.createClass({
 			this.props.onClose();
 		}
 
+		focusManager.teardownScopedFocus(ReactDOM.findDOMNode(this.dialogElement));
+		focusManager.returnFocus();
 		// document.removeEventListener('focus', this.trapFocus, true);
 	},
 
@@ -241,7 +249,8 @@ const Dialog = React.createClass({
 			marginLeft: this.props.marginLeft,
 			marginRight: this.props.marginRight,
 			float: 'inherit',
-			position: 'inherit'
+			position: 'inherit',
+			outline: '0'
 		};
 
 		if (this.props.inheritTargetWidth) {
@@ -259,6 +268,8 @@ const Dialog = React.createClass({
 				onKeyDown={this.handleKeyDown}
 				onMouseEnter={this.props.onMouseEnter}
 				onMouseLeave={this.props.onMouseLeave}
+				tabIndex="0"
+				ref={(component) => { this.content = component; }}
 			>
 				{this.props.children}
 			</div>
@@ -358,12 +369,23 @@ const Dialog = React.createClass({
 		};
 	},
 
+	focusContent () {
+		// Don't steal focus from inner elements
+		if (!this.contentHasFocus()) {
+			this.content.focus();
+		}
+	},
+
 	handleOpen () {
 		this.setState({ isOpen: true });
 		if (this.props.onOpen) {
 			this.props.onOpen();
 		}
 
+		focusManager.markForFocusLater();
+		console.log('this.content', ReactDOM.findDOMNode(this.content));
+		focusManager.setupScopedFocus(ReactDOM.findDOMNode(this.content));
+		this.focusContent();
 		// document.addEventListener('focus', this.trapFocus, true);
 	},
 
@@ -403,6 +425,8 @@ const Dialog = React.createClass({
 	// },
 
 	componentWillUnmount () {
+		this.handleClose();
+
 		this.drop.destroy();
 		ReactDOM.unmountComponentAtNode(this.dialogElement);
 
