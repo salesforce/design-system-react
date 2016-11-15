@@ -14,6 +14,10 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ---
 
+## Release 0.4.9
+- Removed {...props} from DOM nodes in components to prevent non-valid ones from being passed on (ie. `<input myFunkyprop .. />`)
+- If users need specific props passed onto DOM nodes, please submit a github issue.
+
 ## Release 0.4.7
 
 **MINOR FEATURES**

@@ -122,6 +122,10 @@ const defaultProps = {
  */
 class PageHeader extends Component {
 	render () {
+		/**
+		 * OPTIMIZE ES7 style object destructuring removes the need for _.omit.
+		 * Example: const {foo, ...bar} = this.props;
+		 */
 		const {
 			className,
 			contentRight,
@@ -138,30 +142,7 @@ class PageHeader extends Component {
 			title,
 			trail,
 			variant } = this.props;
-		/**
-		 * OPTIMIZE ES7 style object destructuring removes the need for _.omit.
-		 *
-		 * Example:
-		 *
-		 *     const {foo, ...bar} = this.props;
-		 */
-		const attr = omit([
-			'className',
-			'icon',
-			'iconName',
-			'iconCategory',
-			'iconPosition',
-			'iconSize',
-			'iconVariant',
-			'label',
-			'title',
-			'info',
-			'variant',
-			'contentRight',
-			'navRight',
-			'details',
-			'trail'
-		], this.props);
+
 		const classes = this._getClassNames(className);
 
 		/**
@@ -290,7 +271,7 @@ class PageHeader extends Component {
 		}
 
 		return (
-			<div className={classes} role="banner" {...attr}>
+			<div className={classes} role="banner">
 				<Variant
 					label={labelElement}
 					icon={iconElement}

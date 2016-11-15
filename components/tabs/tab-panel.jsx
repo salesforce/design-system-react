@@ -24,7 +24,6 @@ import { TAB_PANEL } from '../../utilities/constants';
 
 const TabPanel = ({ className, children, variant, selected, id, tabId, ...attributes }) => (
 	<div
-		{...attributes}
 		className={classNames(
 			className,
 			{

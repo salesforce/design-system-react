@@ -118,10 +118,8 @@ const Tab = React.createClass({
 			variant,
 			...attributes } = this.props;
 
-		delete attributes.focus;
 		return (
 			<li
-				{...attributes}
 				className={classNames(
 					'slds-text-title--caps',
 					className,

@@ -20,10 +20,8 @@ class GridColumn extends React.Component {
   }
 
   render() {
-    const props = omit('className', this.props);
-
     return (
-      <div className={this.getClassName()} {...props}>
+      <div className={this.getClassName()}>
         {this.props.children}
       </div>
     );
@@ -38,10 +36,8 @@ class Grid extends React.Component {
   }
 
   render() {
-    const props = omit(['className', 'flavor'], this.props);
-
     return (
-      <div {...props} className={this.getClassName()}>
+      <div className={this.getClassName()}>
         { this.props.children }
       </div>
     );

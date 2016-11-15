@@ -493,10 +493,10 @@ class Lookup extends React.Component {
 	renderInput() {
 		return (
 			<Input
-				aria-activedescendant={this.state.currentFocus ? this.state.currentFocus : ''}
-				aria-autocomplete="list"
-				aria-describedby={this.props.describedById}
-				aria-expanded={this.state.isOpen}
+				ariaActivedescendant={this.state.currentFocus ? this.state.currentFocus : ''}
+				ariaAutocomplete="list"
+				ariaDescribedby={this.props.describedById}
+				ariaExpanded={this.state.isOpen}
 				assistiveText={this.props.assistiveText}
 				className="slds-lookup__search-input"
 				iconRight={

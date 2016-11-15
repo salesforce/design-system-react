@@ -31,7 +31,6 @@ const defaultProps = {};
 class DetailRow extends Component {
 	render () {
 		const { children, className, details } = this.props;
-		const attr = omit(['children', 'className'], this.props);
 		const classes = this._getClassNames(className);
 
 		let detailsElement;
@@ -62,7 +61,7 @@ class DetailRow extends Component {
 		detailsElement = renderDetails();
 
 		return (
-			<ul className={classes} {...attr}>
+			<ul className={classes}>
 				{detailsElement}
 			</ul>
 		);

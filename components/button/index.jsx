@@ -20,6 +20,14 @@ import { BUTTON } from '../../utilities/constants';
 const displayName = BUTTON;
 const propTypes = {
 	/**
+	 * Used if the Button triggers a menu or popup. Bool indicates if the menu or popup is open or closed.
+	 */
+	ariaExpanded: PropTypes.bool,
+	/**
+	 * True if Button triggers a menu or popup to open/close.
+	 */
+	ariaHaspopup: PropTypes.bool,
+	/**
 	 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
 	 * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
 	 */
@@ -57,7 +65,7 @@ const propTypes = {
 	 */
 	iconVariant: PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'more', 'global-header']),
 	/**
-	 * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
+	 * Id string applied to button node.
 	 */
 	id: PropTypes.string,
 	/**
@@ -68,10 +76,18 @@ const propTypes = {
 	 * Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText</code> prop.
 	 */
 	label: PropTypes.string,
+	onBlur: PropTypes.func,
 	/**
 	 * Triggered when the button is clicked.
 	 */
 	onClick: PropTypes.func,
+	onFocus: PropTypes.func,
+	onKeyDown: PropTypes.func,
+	onKeyPress: PropTypes.func,
+	onKeyUp: PropTypes.func,
+	onMouseDown: PropTypes.func,
+	onMouseEnter: PropTypes.func,
+	onMouseLeave: PropTypes.func,
 	/**
 	 * If true, button scales to 100% width on small form factors.
 	 */
@@ -185,38 +201,53 @@ class Button extends TooltipTrigger {
 	}
 
 	render () {
-		const props = omit(this.props, [
-			'assistiveText',
-			'className',
-			'hint',
-			'iconCategory',
-			'iconName',
-			'iconPosition',
-			'iconSize',
-			'iconVariant',
-			'inverse',
-			'label',
-			'onClick',
-			'responsive',
-			'tooltip',
-			'variant'
-		]);
+		const {
+			ariaExpanded,
+			ariaHaspopup,
+			children,
+			disabled,
+			iconName,
+			iconPosition,
+			iconVariant,
+			id,
+			onBlur,
+			onFocus,
+			onKeyDown,
+			onKeyPress,
+			onKeyUp,
+			onMouseDown,
+			onMouseEnter,
+			onMouseLeave,
+			tabIndex
+		} = this.props;
 
 		return (
 			<button
+				aria-expanded={ariaExpanded}
+				aria-haspopup={ariaHaspopup}
 				className={this.getClassName()}
-				{...props}
+				disabled={disabled}
+				id={id}
+				onBlur={onBlur}
 				onClick={this.handleClick}
+				onFocus={onFocus}
+				onKeyDown={onKeyDown}
+				onKeyPress={onKeyPress}
+				onKeyUp={onKeyUp}
+				onMouseDown={onMouseDown}
+				onMouseEnter={onMouseEnter}
+				onMouseLeave={onMouseLeave}
+				tabIndex={tabIndex}
 			>
-				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
+				{iconPosition === 'right' ? this.renderLabel() : null}
 
-				{this.props.iconName ? this.renderIcon(this.props.iconName) : null}
-				{this.props.iconVariant === 'more'
+				{iconName ? this.renderIcon(this.props.iconName) : null}
+				{iconVariant === 'more'
 				? <ButtonIcon	category="utility" name="down" size="x-small" />
 				: null}
 
-				{(this.props.iconPosition === 'left' || !this.props.iconPosition) ? this.renderLabel() : null}
-				{this.props.children}
+				{(iconPosition === 'left' || !iconPosition) ? this.renderLabel() : null}
+				{children}
 				{this.getTooltip()}
 			</button>
 		);
