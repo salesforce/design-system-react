@@ -14,9 +14,17 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ---
 
-## Release 0.4.9
-- Removed {...props} from DOM nodes in components to prevent non-valid ones from being passed on (ie. `<input myFunkyprop .. />`)
-- If users need specific props passed onto DOM nodes, please submit a github issue.
+## Release 0.5.0
+
+**MINOR FEATURES**
+
+- Add `portalClassName` to Modal.
+- Tabs: Add scoped variant
+
+**BUG FIX**
+
+- Removed {...props} from DOM nodes in components to prevent non-valid ones from being passed on (ie. `<input myFunkyprop .. />`). If users need specific props passed onto DOM nodes, please submit a Github issue.
+- Fix icons and alert texture in Notification
 
 ## Release 0.4.7
 
