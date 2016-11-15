@@ -135,7 +135,8 @@ storiesOf(MODAL, module)
 		tagline: 'Enter in details below',
 		title: 'New Opportunity',
 		children: modalContent,
-		onRequestClose: action('modal closed')
+		onRequestClose: action('modal closed'),
+		portalClassName: 'portal-class-name-test'
 	}))
 	.add('Small with footer', () => getModal({
 		isOpen: true,
