@@ -392,6 +392,8 @@ const Popover = React.createClass({
 					variant="popover"
 				>
 					<div
+						aria-labelledby={`${this.generatedId}-dialog-heading`}
+						aria-describedby={`${this.generatedId}-dialog-body`}
 						className={classNames(
 							'slds-popover',
 							getNubbinClassName(this.props.align),
@@ -410,10 +412,15 @@ const Popover = React.createClass({
 							onClick={this.handleCancel}
 							variant="icon"
 						/>
-						<header className="slds-popover__header">
-							<h2 id="dialog-heading-id-2400" className="slds-text-heading--small">{this.props.heading}</h2>
+						<header
+							className="slds-popover__header"
+						>
+							<h2 id={`${this.generatedId}-dialog-heading`} className="slds-text-heading--small">{this.props.heading}</h2>
 						</header>
-						<div className="slds-popover__body">
+						<div
+							id={`${this.generatedId}-dialog-body`}
+							className="slds-popover__body"
+						>
 							{this.props.content}
 						</div>
 					</div>
