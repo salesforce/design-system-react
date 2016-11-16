@@ -98,6 +98,7 @@ module.exports = React.createClass({
 	},
 
 	getInitialState(){
+		const defaultDate = this.props.value;
         let dateString;
         if (this.props.value) {
             let month = defaultDate.getMonth() + 1;
@@ -105,11 +106,11 @@ module.exports = React.createClass({
             let year = defaultDate.getFullYear();
             dateString = [ month, date, year].join('/')
         }
-		const initDate = this.props.value ? dateString : this.props.strValue;
+		const initDate = defaultDate ? dateString : this.props.strValue;
 		return {
 			isOpen:false,
-	        value:this.props.value,
-            strValue:initDate
+			value:this.props.value,
+			strValue:initDate
 		};
 	},
 
