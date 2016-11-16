@@ -47,6 +47,9 @@ const propTypes = {
 	/**
 	 * Date
 	 */
+    /**
+     * Sets default date. If not null, input is filled with date string of value.
+     */
 	value: React.PropTypes.instanceOf(Date),
 	weekDayLabels: React.PropTypes.array,
 };
@@ -95,10 +98,18 @@ module.exports = React.createClass({
 	},
 
 	getInitialState(){
+        let dateString;
+        if (this.props.value) {
+            let month = defaultDate.getMonth() + 1;
+            let date = defaultDate.getDate();
+            let year = defaultDate.getFullYear();
+            dateString = [ month, date, year].join('/')
+        }
+		const initDate = this.props.value ? dateString : this.props.strValue;
 		return {
 			isOpen:false,
-	value:this.props.value,
-	strValue:this.props.strValue
+	        value:this.props.value,
+            strValue:initDate
 		};
 	},
 
@@ -149,6 +160,7 @@ module.exports = React.createClass({
 	handleBlur() {
 		if (this.props.onBlur) this.props.onBlur(e);
 	//    this.setState({isOpen:false})
+		this.setFocus();
 	},
 
 	setFocus () {
