@@ -75,7 +75,6 @@ const getMarginBottom = (align) => {
 const getTooltip = (id, props, content, target, onClose) => (
 	<Dialog
 		closeOnTabKey
-		contentsClassName=""
 		flippable={false}
 		marginBottom={getMarginBottom(props.align)}
 		marginLeft={getMarginLeft(props.align)}
@@ -86,6 +85,7 @@ const getTooltip = (id, props, content, target, onClose) => (
 		align={props.align}
 		horizontalAlign={getHorizontalAlign(props.align)}
 		verticalAlign={getVerticalAlign(props.align)}
+		variant="tooltip"
 	>
 		<div id={id} className={getClassName(props)} role="tooltip">
 			{content}

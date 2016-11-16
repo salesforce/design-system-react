@@ -25,10 +25,9 @@ import TetherDrop from 'tether-drop';
 
 import EventUtil from '../../../utilities/EventUtil';
 import KEYS from '../../../utilities/KEYS';
-import focusManager from '../../../utilities/focus-manager';
+import DOMElementFocus from '../../../utilities/dom-element-focus';
 
 import { DIALOG } from '../../../utilities/constants';
-
 
 /* A dialog is a non-modal container that separates content from the rest of the web application. This library uses the Drop library (https://github.com/HubSpot/drop which is based on TetherJS) to absolutely position and align content to another item on the page. This component is not meant for external consumption or part of the published component API.
 */
@@ -155,6 +154,10 @@ const Dialog = React.createClass({
 		 */
 		targetElement: PropTypes.object,
 		/**
+		 * Informs the component on how to handle focus. Popovers trap focus and must be exited to regain focus.
+		**/
+		variant: PropTypes.oneOf(['dropdown', 'popover', 'tooltip']),
+		/**
 		 * Positions the dialog vertically.
 		**/
 		verticalAlign: PropTypes.oneOf(['bottom', 'middle', 'top'])
@@ -164,7 +167,6 @@ const Dialog = React.createClass({
 		return {
 			verticalAlign: 'bottom',
 			horizontalAlign: 'left',
-			className: 'slds-dropdown',
 			closeOnTabKey: false,
 			flippable: true,
 			marginTop: '0.20rem',
@@ -197,11 +199,6 @@ const Dialog = React.createClass({
 		this.renderDialog();
 	},
 
-	contentHasFocus () {
-		return document.activeElement === ReactDOM.findDOMNode(this.content)
-			|| ReactDOM.findDOMNode(this.content).contains(document.activeElement);
-	},
-
 	handleClickOutside () {
 		this.handleClose();
 	},
@@ -211,9 +208,10 @@ const Dialog = React.createClass({
 			this.props.onClose();
 		}
 
-		focusManager.teardownScopedFocus(ReactDOM.findDOMNode(this.dialogElement));
-		focusManager.returnFocus();
-		// document.removeEventListener('focus', this.trapFocus, true);
+		if (this.props.variant === 'popover') {
+			DOMElementFocus.teardownScopedFocus();
+			DOMElementFocus.returnFocusToStoredElement();
+		}
 	},
 
 	handleClick (event) {
@@ -249,27 +247,24 @@ const Dialog = React.createClass({
 			marginLeft: this.props.marginLeft,
 			marginRight: this.props.marginRight,
 			float: 'inherit',
-			position: 'inherit',
-			outline: '0'
+			position: 'inherit'
 		};
 
 		if (this.props.inheritTargetWidth) {
 			style.width = this.target().getBoundingClientRect().width;
 		}
-
 		if (this.props.style) {
 			style = Object.assign({}, style, this.props.style);
 		}
 
 		return (
 			<div
-				className={classNames(this.props.outsideClickIgnoreClass, this.props.contentsClassName)}
+				className={classNames(this.props.contentsClassName, this.props.outsideClickIgnoreClass)}
 				style={style}
 				onKeyDown={this.handleKeyDown}
 				onMouseEnter={this.props.onMouseEnter}
 				onMouseLeave={this.props.onMouseLeave}
-				tabIndex="0"
-				ref={(component) => { this.content = component; }}
+				ref={(component) => { this.dialogContent = component; }}
 			>
 				{this.props.children}
 			</div>
@@ -349,7 +344,7 @@ const Dialog = React.createClass({
 		return this.props.targetElement ? ReactDOM.findDOMNode(this.props.targetElement) : ReactDOM.findDOMNode(this).parentNode;
 	},
 
-	dropOptions () {
+	tetherDropOptions () {
 		// Please reference http://github.hubspot.com/drop/ for options.
 		const position = this.getPosition();
 
@@ -369,24 +364,20 @@ const Dialog = React.createClass({
 		};
 	},
 
-	focusContent () {
-		// Don't steal focus from inner elements
-		if (!this.contentHasFocus()) {
-			this.content.focus();
-		}
-	},
-
 	handleOpen () {
 		this.setState({ isOpen: true });
 		if (this.props.onOpen) {
 			this.props.onOpen();
 		}
 
-		focusManager.markForFocusLater();
-		console.log('this.content', ReactDOM.findDOMNode(this.content));
-		focusManager.setupScopedFocus(ReactDOM.findDOMNode(this.content));
-		this.focusContent();
-		// document.addEventListener('focus', this.trapFocus, true);
+		if (this.props.variant === 'popover') {
+			DOMElementFocus.storeActiveElement();
+			DOMElementFocus.setupScopedFocus({ ancestorElement: ReactDOM.findDOMNode(this.dialogContent).firstChild });
+			// Don't steal focus from inner elements
+			if (!DOMElementFocus.hasOrAncestorHasFocus()) {
+				DOMElementFocus.focusAncestor();
+			}
+		}
 	},
 
 	renderDialog () {
@@ -405,24 +396,10 @@ const Dialog = React.createClass({
 				this.drop.position();
 			}
 		} else if (window && document) {
-			this.drop = new TetherDrop(this.dropOptions());
+			this.drop = new TetherDrop(this.tetherDropOptions());
 			this.drop.once('open', this.handleOpen);
 		}
 	},
-
-	// trapFocus (e) {
-	// 	console.log(e);
-	// 	console.log('this', ReactDOM.findDOMNode(this.dialogElement));
-	// 	console.log(ReactDOM.findDOMNode(this.dialogElement).contains(e.target));
-	// 	if (ReactDOM.findDOMNode(this.dialogElement).contains(e.target)) return;
-	// 	e.preventDefault();
-	// 	e.stopImmediatePropagation();
-	// 	console.log(this.props.initialFocus);
-	// 	ReactDOM.findDOMNode(this.props.initialFocus).focus;
-	// 	console.log(ReactDOM.findDOMNode(this.props.initialFocus));
-	// 	// Checking for a blur method here resolves a Firefox issue (#15)
-	// 	if (typeof e.target.blur === 'function') e.target.blur();
-	// },
 
 	componentWillUnmount () {
 		this.handleClose();

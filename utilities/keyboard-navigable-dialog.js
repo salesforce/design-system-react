@@ -7,18 +7,18 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # Keyboard Navigable Trait for Dialogs with Tabbable content
+// # Assistive Technology / Keyboard Navigable Trait for Dialogs with Tabbable content
 
 /*
  * Guidelines for Popover
  *
  * - Focus is trapped. Tabbing to an index outside of the dialog is not allowed. Popover must be closed first via ESC.
  * - There should always be a focusable element inside, to place user focus on
- * - Must be dismissible via ESC and a close button (not currently present in SLDS)
+ * - Must be dismissible via ESC and a close button
  * - Uses tabIndex in wrapper and has tabbable items within it despite being outside document flow.
- * - Popover heading, entire popover receives focus, or close button when opened and has a aria-labelledby that points to  the header id, so it will be read
- * - F6 will allow the user to keep popover open and go back to tabbing in “app-context” instead of “dialog-context.”
+ * - Entire popover receives focus when opened and has a aria-labelledby that points to the header id, so it will read the heading,
  * - Must return focus to trigger after closing.
+ * - F6 will allow the user to keep popover open and go back to tabbing in “app-context” instead of “dialog-context.” (not implemented)
  */
 
 // ## Dependencies
@@ -39,15 +39,10 @@ const internalHandleClick = ({
 	}
 };
 
-
 const KeyboardNavigableDialog = ({
-	componentContext,
 	isOpen,
-	event,
 	handleClick,
-	key,
 	keyCode,
-	onFocus,
 	eventTarget,
 	trigger,
 	toggleOpen
@@ -60,7 +55,6 @@ const KeyboardNavigableDialog = ({
 			break;
 		case KEYS.ENTER:
 			if (!isOpen) {
-				// toggleOpen();
 				internalHandleClick({
 					trigger,
 					eventTarget,
@@ -73,4 +67,4 @@ const KeyboardNavigableDialog = ({
 	}
 };
 
-export default KeyboardNavigableDialog;
+module.exports = KeyboardNavigableDialog;

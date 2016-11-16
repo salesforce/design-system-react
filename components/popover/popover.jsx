@@ -37,14 +37,12 @@ import Button from '../button';
 // ### Children
 import Dialog from '../utilities/dialog';
 
-import { getMargin, getNubbinClassName } from '../../utilities/dialog-helpers';
-
 // ### Traits
+import { getMargin, getNubbinClassName } from '../../utilities/dialog-helpers';
 
 // #### KeyboardNavigable
 import keyboardNavigableDialog from '../../utilities/keyboard-navigable-dialog';
 
-import EventUtil from '../../utilities/EventUtil';
 import KEYS from '../../utilities/KEYS';
 import { POPOVER } from '../../utilities/constants';
 
@@ -81,7 +79,7 @@ const Popover = React.createClass({
 	// ### Prop Types
 	propTypes: {
 		/**
-		 * Aligns the right or left side of the menu with the respective side of the trigger.
+		 * Aligns the menu with the respective side of the trigger. That is `top` will place the `Popover` above the trigger.
 		 */
 		align: PropTypes.oneOf([
 			'top',
@@ -346,10 +344,7 @@ const Popover = React.createClass({
 					toggleOpen: this.toggleOpen,
 					trigger: this.trigger
 				});
-			} else {
-
 			}
-
 			if (this.props.onKeyDown) {
 				this.props.onKeyDown(event);
 			}
@@ -372,18 +367,6 @@ const Popover = React.createClass({
 		}
 	},
 
-	dialogFocus () {
-		// if (!this.isHover && !this.isUnmounting && this.dialog) {
-		// 	ReactDOM.findDOMNode(this.closeButton).focus();
-		// }
-	},
-
-	returnFocus () {
-		// if (!this.isHover && !this.isUnmounting && this.props.children) {
-		// 	ReactDOM.findDOMNode(this.trigger).focus();
-		// }
-	},
-
 	renderDialog (isOpen, outsideClickIgnoreClass) {
 		let offset = this.props.offset;
 
@@ -393,13 +376,8 @@ const Popover = React.createClass({
 					align={this.props.align}
 					className={classNames(this.props.containerClassName)}
 					constrainToScrollParent={this.props.constrainToScrollParent}
-					contentsClassName={classNames(
-						'slds-popover',
-						'ignore-react-onclickoutside',
-						getNubbinClassName(this.props.align),
-						this.props.className)}
 					flippable={!this.props.hasStaticAlignment}
-					initialFocus={this.closeButton}
+					initialFocus={this.dialog}
 					marginBottom="0px"
 					marginLeft="0px"
 					marginRight="0px"
@@ -409,28 +387,35 @@ const Popover = React.createClass({
 					onKeyDown={this.handleKeyDown}
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
-					onOpen={this.dialogFocus}
 					outsideClickIgnoreClass={outsideClickIgnoreClass}
-					ref={(component) => { this.dialog = component; }}
-					role="dialog"
-					style={this.props.style}
 					targetElement={this.triggerContainer}
-					tabIndex="-1"
+					variant="popover"
 				>
-					<Button
-						assistiveText="Close dialog"
-						iconName="close"
-						iconSize="small"
-						className="slds-float--right slds-popover__close"
-						onClick={this.handleCancel}
-						ref={(component) => { this.closeButton = component; }}
-						variant="icon"
-					/>
-					<header className="slds-popover__header">
-						<h2 id="dialog-heading-id-2400" className="slds-text-heading--small">{this.props.heading}</h2>
-					</header>
-					<div className="slds-popover__body">
-						{this.props.content}
+					<div
+						className={classNames(
+							'slds-popover',
+							getNubbinClassName(this.props.align),
+							this.props.className,
+						)}
+						role="dialog"
+						style={Object.assign({ outline: '0' }, this.props.style)}
+						tabIndex="0"
+						ref={(component) => { this.dialog = component; }}
+					>
+						<Button
+							assistiveText="Close dialog"
+							iconName="close"
+							iconSize="small"
+							className="slds-float--right slds-popover__close"
+							onClick={this.handleCancel}
+							variant="icon"
+						/>
+						<header className="slds-popover__header">
+							<h2 id="dialog-heading-id-2400" className="slds-text-heading--small">{this.props.heading}</h2>
+						</header>
+						<div className="slds-popover__body">
+							{this.props.content}
+						</div>
 					</div>
 				</Dialog> : null
 		);
