@@ -1,10 +1,10 @@
 # Contributing Code
 
 1. Create a new issue before starting your project so that we can keep track of what you are trying to add/fix. That way, we can also offer suggestions or let you know if there is already an effort in progress.
-2. Fork off this repository.
-3. Create a topic branch for the issue that you are trying to add.
-4. Edit the code in your fork.
-5. Send us a well documented pull request when you are done.
+2. Fork this repository, and clone that forked repository locally.
+3. Create a topic branch for the issue that you are trying to add locally.
+4. Edit the code locally and push to your username's forked repository.
+5. Send us a well-documented pull request based on the branch from your forked repository.
 
 **GitHub pull requests** should meet the following criteria:
 
