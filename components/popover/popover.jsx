@@ -79,7 +79,7 @@ const Popover = React.createClass({
 	// ### Prop Types
 	propTypes: {
 		/**
-		 * Aligns the menu with the respective side of the trigger. That is `top` will place the `Popover` above the trigger.
+		 * Aligns the popover with the respective side of the trigger. That is `top` will place the `Popover` above the trigger.
 		 */
 		align: PropTypes.oneOf([
 			'top',
@@ -102,39 +102,42 @@ const Popover = React.createClass({
 		/**
 		 * The contents of the popover. This should also accept arrays.
 		 */
-		content: PropTypes.node,
+		body: PropTypes.oneOfType([PropTypes.node, PropTypes.array]),
 		/**
 		 * CSS classes to be added to the popover.
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		/*
+		 * All popovers require a close button.
+		*/
+		closeButtonAssistiveText: PropTypes.oneOfType([PropTypes.string]),
 		/**
 		 * These class names will be added to the absolutely-positioned `Dialog` component which is a DOM container for the SLDS Popover.
 		 */
 		containerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
+		 * Style applied to the absolutely-positioned `Dialog` component which is a DOM container for the SLDS Popover.
+		 */
+		containerStyle: PropTypes.object,
+		/**
 		 * This prop is passed onto the triggering `Button`. Prevent dropdown menu from opening. Also applies disabled styling to trigger button.
 		 */
 		disabled: PropTypes.bool,
-		/* Prevents the dropdown from changing position based on the viewport/window. If set to true your dropdowns can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the dropdowns contents scrollable to fit the menu on the screen.
+		/* Prevents the Popover from changing position based on the viewport/window. If set to true your popover can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the popover contents scrollable to fit the menu on the screen.
 		*/
 		hasStaticAlignment: PropTypes.bool,
-		heading: PropTypes.oneOfType([PropTypes.string]),
+		/*
+		 * All popovers require a heading that labels the popover for assistive technology users.
+		*/
+		heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 		/**
-		 * Delay on menu closing in milliseconds.
-		 */
-		hoverCloseDelay: PropTypes.number,
-		/**
-		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
+		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the popover to the triggering button.
 		*/
 		id: PropTypes.string,
 		/**
 		 * Forces the popover to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use [](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices)
 		 */
 		isOpen: PropTypes.bool,
-		/**
-		 * Style applied to the absolutely-positioned `Dialog` component which is a DOM container for the SLDS Popover.
-		 */
-		containerStyle: PropTypes.object,
 		/**
 		 * Renders menu within an absolutely positioned container at an elevated z-index.
 		 */
@@ -144,33 +147,17 @@ const Popover = React.createClass({
 		 */
 		offset: PropTypes.string,
 		/**
-		 * Is only called when `openOn` is set to `hover` and when the triggering button loses focus.
-		 */
-		onBlur: PropTypes.func,
-		/**
 		 * This prop is passed onto the triggering `Button`. Triggered when the trigger button is clicked.
 		 */
 		onClick: PropTypes.func,
 		/**
-		 * Is only called when `openOn` is set to `hover` and when the triggering button gains focus.
-		 */
-		onFocus: PropTypes.func,
-		/**
-		 * Called when a key pressed.
+		 * Called when a key is pressed.
 		 */
 		onKeyDown: PropTypes.func,
 		/**
 		 * Called when mouse clicks down on the trigger button.
 		 */
 		onMouseDown: PropTypes.func,
-		/**
-		 * Called when mouse hovers over the trigger button. This is only called if `this.props.openOn` is set to `hover`.
-		 */
-		onMouseEnter: PropTypes.func,
-		/**
-		 * Called when mouse hover leaves the trigger button. This is only called if `this.props.openOn` is set to `hover`.
-		 */
-		onMouseLeave: PropTypes.func,
 		/**
 		 * Triggered when the dropdown is opened.
 		 */
@@ -192,6 +179,7 @@ const Popover = React.createClass({
 	getDefaultProps () {
 		return {
 			align: 'right',
+			closeButtonAssistiveText: 'Close dialog',
 			hoverCloseDelay: 300,
 			openOn: 'click'
 		};
@@ -209,7 +197,7 @@ const Popover = React.createClass({
 
 	componentWillUnmount () {
 		if (currentOpenPopover === this) {
-				currentOpenPopover = undefined;
+			currentOpenPopover = undefined;
 		}
 		this.isUnmounting = true;
 		this.renderOverlay(false);
@@ -368,25 +356,26 @@ const Popover = React.createClass({
 	},
 
 	renderDialog (isOpen, outsideClickIgnoreClass) {
-		let offset = this.props.offset;
+		const props = this.props;
+		let offset = props.offset;
 
 		return (
 			isOpen ?
 				<Dialog
-					align={this.props.align}
-					className={classNames(this.props.containerClassName)}
-					constrainToScrollParent={this.props.constrainToScrollParent}
-					flippable={!this.props.hasStaticAlignment}
+					align={props.align}
+					className={classNames(props.containerClassName)}
+					constrainToScrollParent={props.constrainToScrollParent}
+					flippable={!props.hasStaticAlignment}
 					initialFocus={this.dialog}
-					marginBottom={getMargin.bottom(this.props.align)}
-					marginLeft={getMargin.left(this.props.align)}
-					marginRight={getMargin.right(this.props.align)}
-					marginTop={getMargin.top(this.props.align)}
+					marginBottom={getMargin.bottom(props.align)}
+					marginLeft={getMargin.left(props.align)}
+					marginRight={getMargin.right(props.align)}
+					marginTop={getMargin.top(props.align)}
 					offset={offset}
 					onClose={this.handleClose}
 					onKeyDown={this.handleKeyDown}
-					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
-					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
+					onMouseEnter={(props.openOn === 'hover') ? this.handleMouseEnter : null}
+					onMouseLeave={(props.openOn === 'hover') ? this.handleMouseLeave : null}
 					outsideClickIgnoreClass={outsideClickIgnoreClass}
 					targetElement={this.triggerContainer}
 					variant="popover"
@@ -396,8 +385,8 @@ const Popover = React.createClass({
 						aria-describedby={`${this.generatedId}-dialog-body`}
 						className={classNames(
 							'slds-popover',
-							getNubbinClassName(this.props.align),
-							this.props.className,
+							getNubbinClassName(props.align),
+							props.className,
 						)}
 						role="dialog"
 						style={Object.assign({ outline: '0' }, this.props.style)}
@@ -405,7 +394,7 @@ const Popover = React.createClass({
 						ref={(component) => { this.dialog = component; }}
 					>
 						<Button
-							assistiveText="Close dialog"
+							assistiveText={props.closeButtonAssistiveText}
 							iconName="close"
 							iconSize="small"
 							className="slds-float--right slds-popover__close"
@@ -421,7 +410,7 @@ const Popover = React.createClass({
 							id={`${this.generatedId}-dialog-body`}
 							className="slds-popover__body"
 						>
-							{this.props.content}
+							{props.body}
 						</div>
 					</div>
 				</Dialog> : null
@@ -442,7 +431,9 @@ const Popover = React.createClass({
 
 	render () {
 		const outsideClickIgnoreClass = `ignore-click-${this.getId()}`;
-		const isOpen = this.props.isOpen === undefined ? !this.props.disabled && this.state && this.state.isOpen && !!this.trigger : this.props.isOpen;
+		const isOpen = this.props.isOpen === undefined
+			? !this.props.disabled && this.state && this.state.isOpen && !!this.trigger
+			: this.props.isOpen;
 
 		const clonedTrigger = React.cloneElement(this.props.children, {
 			tabIndex: this.props.children.props.tabIndex || '0',
