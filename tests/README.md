@@ -57,15 +57,15 @@ import React, { PropTypes } from 'react';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 
-// Import your internal dependencies (for example):
-import Tree from '../../components/tree';
-
 /* Enzyme Helpers that can mount and unmount React component instances to 
  * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this` 
  * context [full source here](tests/enzyme-helpers.js). `this` can
  * only be referenced if inside `function () {}`.
  */
 import { mountComponent, unmountComponent } from '../enzyme-helpers';
+
+// Import your internal dependencies (for example):
+import Tree from '../../components/tree';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions: 
  * https://github.com/producthunt/chai-enzyme
