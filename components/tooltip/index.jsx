@@ -16,11 +16,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
+import classNames from 'classnames';
+
 import { POPOVER_TOOLTIP } from '../../utilities/constants';
 
-
-// ### Children
-import tooltip from './tooltip';
+import Dialog from '../utilities/dialog';
+import { getAlignment, getMargin, getNubbinClassName } from '../../utilities/dialog-helpers';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
@@ -172,11 +173,34 @@ class PopoverTooltip extends React.Component {
 	}
 
 	getTooltip () {
-		const id = this.getId();
 		const isOpen = this.props.isOpen === undefined ? this.state.isOpen : this.props.isOpen;
+		const align = this.props.align;
 
 		return isOpen
-			? tooltip.getTooltip(id, this.props, this.getTooltipContent(), this.getTooltipTarget(), this.handleCancel.bind(this))
+			? <Dialog
+				closeOnTabKey
+				flippable={false}
+				marginBottom={getMargin.bottom(align)}
+				marginLeft={getMargin.left(align)}
+				marginRight={getMargin.right(align)}
+				marginTop={getMargin.top(align)}
+				onClose={this.handleCancel.bind(this)}
+				targetElement={this.getTooltipTarget()}
+				align={align}
+				horizontalAlign={getAlignment.horizontal(align)}
+				verticalAlign={getAlignment.vertical(align)}
+				variant="tooltip"
+			>
+				<div
+					id={this.getId()}
+					className={classNames(
+					'slds-popover',
+					'slds-popover--tooltip',
+					getNubbinClassName(align))} role="tooltip"
+				>
+					{this.getTooltipContent()}
+				</div>
+			</Dialog>
 			: <span></span>;
 	}
 
