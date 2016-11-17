@@ -13,6 +13,7 @@
 
 // Import your external dependencies
 import React, { PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 
@@ -32,19 +33,34 @@ import Button from '../../components/button';
  */
 chai.use(chaiEnzyme());
 
+const dialogOpen = new CustomEvent('dialogOpen', { bubbles: true });
+
+const defaultProps = {
+	id: 'sample-popover',
+	body: 'This is the body.',
+	heading: 'This is the heading',
+	onOpen: (dialogContents) => { ReactDOM.findDOMNode(dialogContents).dispatchEvent(dialogOpen); }
+};
+
+const defaultIds = {
+	popover: `${defaultProps.id}-popover`,
+	body: `${defaultProps.id}-dialog-body`,
+	heading: `${defaultProps.id}-dialog-heading`
+};
+
 /* A re-usable demo component fixture outside of `describe` sections
  * can accept props within each test and be unmounted after each tests.
  * This wrapping component will be similar to your wrapping component
  * you will create in the React Storybook for manual testing.
  */
 const DemoComponent = React.createClass({
-	displayName: 'DemoComponent',
+	displayName: 'PopoverDemoComponent',
 	propTypes: {
 		isOpen: PropTypes.bool
 	},
 
 	getDefaultProps () {
-		return {};
+		return defaultProps;
 	},
 
 	getInitialState () {
@@ -54,6 +70,7 @@ const DemoComponent = React.createClass({
 	// event handlers
 
 	render () {
+		console.log(this.props);
 		return (
 			<div>
 				<Popover {...this.props}>
@@ -64,6 +81,8 @@ const DemoComponent = React.createClass({
 		);
 	}
 });
+
+const getPopover = (dialogContents) => dialogContents.querySelector(`#${defaultIds.popover}`);
 
 /* All tests for component being tested should be wrapped in a root `describe`,
  * which should be named after the component being tested.
@@ -85,18 +104,24 @@ describe('SLDSPopover', () => {
 	describe('default structure and css', () => {
 		// Test DOM with minimal props set
 		beforeEach(mountComponent(
-			<DemoComponent isOpen />
+			<DemoComponent
+				isOpen
+			/>
 		));
 
-		afterEach(unmountComponent);
+		// afterEach(unmountComponent);
 
 		/* Please notice the of `function () {}` and not () => {}.
 		 * It allows access to the Mocha test context via `this`.
 		 */
-		it('calls event handler', function () {
-			debugger;
-			const item = this.wrapper.find('#example-tree-1').find('.slds-tree__item');
-			expect(item).to.equal(1);
+		it('is Open, has heading, body', function (done) {
+			document.addEventListener('dialogOpen', function (e) {
+				const popover = getPopover(e.target);
+				expect(popover).to.exist;
+				document.removeEventListener('dialogOpen', this);
+				done();
+			});
+
 				// If applicable, also test data object for correct contents.
 		});
 	});
@@ -130,30 +155,32 @@ describe('SLDSPopover', () => {
 
 	// EVENTS
 
-	describe('Mouse and keyboard interactions', () => {
-		/* Test event callback functions using Simulate. For more information, view
-		 * https://github.com/airbnb/enzyme/blob/master/docs/api/ReactWrapper/simulate.md
-		 */
-
-		describe('onClick', () => {
-			const itemClicked = sinon.spy();
-
-			beforeEach(mountComponent(
-				<DemoComponent itemClicked={itemClicked} />
-			));
-
-			afterEach(unmountComponent);
-
-			/* Please notice the of `function () {}` and not () => {}.
-			 * It allows access to the Mocha test context via `this`.
-			 */
-			it('calls event handler', function () {
-				const item = this.wrapper.find('#example-tree-1').find('.slds-tree__item');
-				// If applicable, use second parameter to pass the data object
-				item.simulate('click', {});
-				expect(itemClicked.callCount).to.equal(1);
-					// If applicable, also test data object for correct contents.
-			});
-		});
-	});
+	// describe('Mouse and keyboard interactions', () => {
+	// 	/* Test event callback functions using Simulate. For more information, view
+	// 	 * https://github.com/airbnb/enzyme/blob/master/docs/api/ReactWrapper/simulate.md
+	// 	 */
+// 
+	// 	describe('onClick', () => {
+	// 		const itemClicked = sinon.spy();
+// 
+	// 		beforeEach(mountComponent(
+	// 			<DemoComponent itemClicked={itemClicked} />
+	// 		));
+// 
+	// 		afterEach(unmountComponent);
+// 
+	// 		/* Please notice the of `function () {}` and not () => {}.
+	// 		 * It allows access to the Mocha test context via `this`.
+	// 		 */
+	// 		it('calls event handler', function () {
+	// 			const item = this.wrapper.find('#example-tree-1').find('.slds-tree__item');
+	// 			// If applicable, use second parameter to pass the data object
+	// 			item.simulate('click', {});
+	// 			expect(itemClicked.callCount).to.equal(1);
+	// 				// If applicable, also test data object for correct contents.
+	// 				// 
+	// 		debugger;
+	// 		});
+	// 	});
+	// });
 });

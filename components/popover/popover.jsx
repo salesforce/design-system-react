@@ -102,7 +102,7 @@ const Popover = React.createClass({
 		/**
 		 * The contents of the popover. This should also accept arrays.
 		 */
-		body: PropTypes.oneOfType([PropTypes.node, PropTypes.array]),
+		body: PropTypes.oneOfType([PropTypes.node, PropTypes.array]).isRequired,
 		/**
 		 * CSS classes to be added to the popover.
 		 */
@@ -129,19 +129,15 @@ const Popover = React.createClass({
 		/*
 		 * All popovers require a heading that labels the popover for assistive technology users.
 		*/
-		heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+		heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 		/**
-		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the popover to the triggering button.
+		* By default, a unique ID will be created at render to support keyboard navigation, ARIA roles, and connect the popover to the triggering button. This ID will be applied to the triggering element. `${id}-popover`, `${id}-dialog-heading`, `${id}-dialog-body` are also created.
 		*/
 		id: PropTypes.string,
 		/**
 		 * Forces the popover to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use [](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices)
 		 */
 		isOpen: PropTypes.bool,
-		/**
-		 * Renders menu within an absolutely positioned container at an elevated z-index.
-		 */
-		modal: PropTypes.bool,
 		/**
 		 *  Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px).
 		 */
@@ -249,10 +245,6 @@ const Popover = React.createClass({
 			this.setState({
 				isOpen: true
 			});
-
-			if (this.props.onOpen) {
-				this.props.onOpen();
-			}
 		}
 	},
 
@@ -373,6 +365,7 @@ const Popover = React.createClass({
 					marginTop={getMargin.top(props.align)}
 					offset={offset}
 					onClose={this.handleClose}
+					onOpen={this.props.onOpen}
 					onKeyDown={this.handleKeyDown}
 					onMouseEnter={(props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(props.openOn === 'hover') ? this.handleMouseLeave : null}
@@ -381,13 +374,14 @@ const Popover = React.createClass({
 					variant="popover"
 				>
 					<div
-						aria-labelledby={`${this.generatedId}-dialog-heading`}
-						aria-describedby={`${this.generatedId}-dialog-body`}
+						aria-labelledby={`${this.getId()}-dialog-heading`}
+						aria-describedby={`${this.getId()}-dialog-body`}
 						className={classNames(
 							'slds-popover',
 							getNubbinClassName(props.align),
 							props.className,
 						)}
+						id={`${this.getId()}-popover`}
 						role="dialog"
 						style={Object.assign({ outline: '0' }, this.props.style)}
 						tabIndex="0"
@@ -404,10 +398,10 @@ const Popover = React.createClass({
 						<header
 							className="slds-popover__header"
 						>
-							<h2 id={`${this.generatedId}-dialog-heading`} className="slds-text-heading--small">{this.props.heading}</h2>
+							<h2 id={`${this.getId()}-dialog-heading`} className="slds-text-heading--small">{this.props.heading}</h2>
 						</header>
 						<div
-							id={`${this.generatedId}-dialog-body`}
+							id={`${this.getId()}-dialog-body`}
 							className="slds-popover__body"
 						>
 							{props.body}

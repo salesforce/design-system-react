@@ -56,18 +56,18 @@ const Dialog = React.createClass({
 		/**
 		 * CSS classes to be added to the absolutely positioned element.
 		 */
-		className: React.PropTypes.oneOfType([
-			React.PropTypes.array,
-			React.PropTypes.object,
-			React.PropTypes.string]
+		className: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string]
 		),
 		/**
 		 * CSS classes to be added to the wrapping `div` of the contents of the dialog.
 		 */
-		contentsClassName: React.PropTypes.oneOfType([
-			React.PropTypes.array,
-			React.PropTypes.object,
-			React.PropTypes.string]
+		contentsClassName: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string]
 		),
 		/**
 		 * Contents of dialog
@@ -367,7 +367,7 @@ const Dialog = React.createClass({
 	handleOpen () {
 		this.setState({ isOpen: true });
 		if (this.props.onOpen) {
-			this.props.onOpen();
+			this.props.onOpen(this.dialogContent);
 		}
 
 		if (this.props.variant === 'popover') {
