@@ -82,19 +82,11 @@ class DetailBlock extends Component {
 	render () {
 		const {
 			className,
-			label,
 			content,
-			truncate,
-			flavor
+			flavor,
+			label,
+			truncate
 		} = this.props;
-
-		const attr = omit([
-			'className',
-			'label',
-			'content',
-			'truncate',
-			'flavor'
-		], this.props);
 
 		const classes = this._getClassNames(className, flavor);
 		let labelElement;
@@ -152,7 +144,7 @@ class DetailBlock extends Component {
 		contentElement = this.state.showTooltip ? renderContentWithTooltip() : renderContent();
 
 		return (
-			<li className={classes} {...attr}>
+			<li className={classes}>
 				{labelElement}
 				{contentElement}
 			</li>

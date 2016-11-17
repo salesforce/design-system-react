@@ -103,17 +103,29 @@ const Checkbox = React.createClass({
 	// ### Render
 	render () {
 		const {
+			ariaControls,
+			ariaDescribedby,
+			ariaOwns,
+			ariaRequired,
 			assistiveText,
 			checked,
-			indeterminate,
 			className,
 			disabled,
+			id,
 			errorText,
+			indeterminate,
 			label,
 			name,
+			onBlur,
 			onChange, // eslint-disable-line no-unused-vars
+			onFocus,
+			onKeyDown,
+			onKeyPress,
+			onKeyUp,
+			readOnly,
 			required,
-			id,
+			role,
+
 
 			// ### Additional properties
 			// Using [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx) to pass on any properties which are not explicitly defined.
@@ -127,19 +139,25 @@ const Checkbox = React.createClass({
 					'slds-has-error': errorText
 				},
 				className)}
-				onKeyDown={this.handleKeyDown}
 			>
 				<div className="slds-form-element__control">
 					<span className="slds-checkbox">
 						{required ? <abbr className="slds-required" title="required">*</abbr> : null}
 						<input
-							{...props}
-							id={id || this.generatedId}
-							checked={checked}
-							name={name}
+							aria-controls={ariaControls}
+							aria-describedby={ariaDescribedby}
+							aria-owns={ariaOwns}
+							aria-required={ariaRequired}
 							disabled={disabled}
+							checked={checked}
+							id={id || this.generatedId}
+							name={name}
+							onBlur={onBlur}
 							onChange={this.handleChange}
-							type="checkbox"
+							onFocus={onFocus}
+							onKeyDown={onKeyDown}
+							onKeyPress={onKeyPress}
+							onKeyUp={onKeyUp}
 							ref={
 								(component) => {
 									if (component) {
@@ -147,7 +165,10 @@ const Checkbox = React.createClass({
 									}
 									this.input = component;
 								}}
-						/>
+								role={role}
+								required={required}
+								type="checkbox"
+							/>
 						<label className="slds-checkbox__label" htmlFor={id || this.generatedId}>
 							<span className="slds-checkbox--faux"></span>
 							{label

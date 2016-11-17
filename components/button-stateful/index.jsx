@@ -32,7 +32,6 @@ import TooltipTrigger from '../popover-tooltip/trigger';
 
 import { BUTTON_STATEFUL } from '../../utilities/constants';
 
-const blurElement = e => e.currentTarget.blur();
 
 const propTypes = {
 	/**
@@ -54,15 +53,19 @@ const propTypes = {
 	 * If true, button/icon is white. Meant for buttons or utility icons on dark backgrounds.
 	 */
 	inverse: PropTypes.bool,
+	onBlur: PropTypes.func,
 	onClick: PropTypes.func,
+	onFocus: PropTypes.func,
+	onKeyDown: PropTypes.func,
+	onKeyPress: PropTypes.func,
+	onKeyUp: PropTypes.func,
+	onMouseDown: PropTypes.func,
+	onMouseEnter: PropTypes.func,
+	onMouseLeave: PropTypes.func,
 	/**
 	 * If true, button scales to 100% width on small form factors.
 	 */
 	responsive: PropTypes.bool,
-	/**
-	 * Write <code>'-1'</code> if you don't want the user to tab to the button.
-	 */
-	tabIndex: PropTypes.string,
 	/**
 	 * Initial label and icon (optional) of button.
 	 */
@@ -75,6 +78,10 @@ const propTypes = {
 	 *	Deselect label and icon (optional) of button.
 	 */
 	stateThree: PropTypes.object,
+	/**
+	 * Write "-1" if you don't want the user to tab to the button.
+	 */
+	tabIndex: PropTypes.string,
 	tooltip: PropTypes.node,
 	variant: PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon'])
 };
@@ -112,6 +119,11 @@ class ButtonStateful extends TooltipTrigger {
 		if (!isBoolean(this.props.active)) this.setState({ active: !this.state.active });
 	}
 
+	handleBlur(e) {
+		if(this.props.onBlur) this.props.onBlur(e);
+		e.currentTarget.blur();
+	}
+
 	getClassName (active) {
 		return classNames(this.props.className, 'slds-button', {
 			'slds-button--neutral': this.props.variant !== 'icon',
@@ -124,67 +136,104 @@ class ButtonStateful extends TooltipTrigger {
 	}
 
 	render () {
-		const props = omit(this.props, ['className', 'label', 'onClick', 'type', 'active']);
-		const active = isBoolean(this.props.active) ? this.props.active : this.state.active;
+		const {
+			active,
+			assistiveText,
+			disabled,
+			iconName,
+			iconSize,
+			id,
+			onFocus,
+			onKeyDown,
+			onKeyPress,
+			onKeyUp,
+			onMouseDown,
+			onMouseEnter,
+			onMouseLeave,
+			stateOne,
+			stateTwo,
+			stateThree,
+			tabIndex,
+			variant
+		} = this.props;
 
-		if (this.props.variant === 'icon') {
+		const isActive = isBoolean(active) ? active : this.state.active;
+
+		if (variant === 'icon') {
 			return (
 				<button
-					onMouseLeave={blurElement}
-					className={this.getClassName(active)}
-					onClick={this.handleClick.bind(this)}
-					{...props}
 					aria-live="polite"
+					className={this.getClassName(isActive)}
+					disabled={disabled}
+					id={id}
+					onBlur={this.handleBlur.bind(this)}
+					onClick={this.handleClick.bind(this)}
+					onFocus={onFocus}
+					onKeyDown={onKeyDown}
+					onKeyPress={onKeyPress}
+					onKeyUp={onKeyUp}
+					onMouseDown={onMouseDown}
+					onMouseEnter={onMouseEnter}
+					onMouseLeave={this.handleBlur.bind(this)}
+					tabIndex={tabIndex}
 				>
 					<ButtonIcon
-						assistiveText={active ?	`${this.props.assistiveText} selected` : this.props.assistiveText}
-						disabled={this.props.disabled}
-						name={this.props.iconName}
-						size={this.props.iconSize}
+						assistiveText={isActive ? `${assistiveText} selected` : assistiveText}
+						disabled={disabled}
+						name={iconName}
+						size={iconSize}
 						className="slds-button__icon--stateful"
 					/>
 					{this.getTooltip()}
 				</button>
 			);
 		}
-		
+
 		return (
 			<button
-				onMouseLeave={blurElement}
-				className={this.getClassName(active)}
 				aria-live="assertive"
+				className={this.getClassName(isActive)}
+				disabled={disabled}
+				id={id}
+				onBlur={this.handleBlur.bind(this)}
 				onClick={this.handleClick.bind(this)}
-				{...props}
+				onFocus={onFocus}
+				onKeyDown={onKeyDown}
+				onKeyPress={onKeyPress}
+				onKeyUp={onKeyUp}
+				onMouseEnter={onMouseEnter}
+				onMouseLeave={this.handleBlur.bind(this)}
+				tabIndex={tabIndex}
 			>
 				<span className="slds-text-not-selected">
 					<ButtonIcon
-						disabled={this.props.disabled}
-						name={this.props.stateOne.iconName}
+						disabled={disabled}
+						name={stateOne.iconName}
 						size="small"
 						position="left"
 						className="slds-button__icon--stateful"
 					/>
-					{this.props.stateOne.label}
+					{stateOne.label}
 				</span>
 				<span className="slds-text-selected">
 					<ButtonIcon
-						disabled={this.props.disabled}
-						name={this.props.stateTwo.iconName}
+						disabled={disabled}
+						name={stateTwo.iconName}
 						size="small"
 						position="left"
 						className="slds-button__icon--stateful"
 					/>
-					{this.props.stateTwo.label}
+					{stateTwo.label}
 				</span>
 				<span className="slds-text-selected-focus">
 					<ButtonIcon
-						disabled={this.props.disabled}
-						name={this.props.stateThree.iconName}
+						disabled={disabled}
+						name={stateThree.iconName}
 						size="small"
 						position="left"
 						className="slds-button__icon--stateful"
 					/>
-					{this.props.stateThree.label}
+					{stateThree.label}
 				</span>
 				{this.getTooltip()}
 			</button>

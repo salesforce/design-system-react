@@ -20,5 +20,7 @@ storiesOf(BUTTON_STATEFUL, module)
 	.add('Icon', () => getButtonStateful({
 		variant: 'icon',
 		label: 'Neutral Icon',
-		iconName: 'check'
+		iconName: 'check',
+		onFocus: action('hover'),
+		onMouseEnter: (e) => { console.log('target is ', e.target) }
 	}));

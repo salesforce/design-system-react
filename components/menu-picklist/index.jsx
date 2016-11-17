@@ -351,7 +351,6 @@ const MenuPicklist = React.createClass({
 
 		return (
 			<div
-				aria-expanded={this.state.isOpen}
 				className={classNames(
 						'slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click',
 						{ 'slds-is-open': this.state.isOpen },
@@ -361,11 +360,11 @@ const MenuPicklist = React.createClass({
 				onMouseDown={this.handleMouseDown}
 			>
 				<button
+					aria-expanded={this.state.isOpen}
 					aria-haspopup="true"
-					aria-activedescendant=""
 					className="slds-button slds-button--neutral slds-picklist__label"
-					id={this.getId()}
 					disabled={this.props.disabled}
+					id={this.getId()}
 					onClick={this.handleClick}
 					ref={(component) => { this.button = component; }}
 					tabIndex={this.state.isOpen ? -1 : 0}
