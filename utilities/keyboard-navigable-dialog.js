@@ -13,12 +13,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
  * Guidelines for Popover
  *
  * - Focus is trapped. Tabbing to an index outside of the dialog is not allowed. Popover must be closed first via ESC.
- * - There should always be a focusable element inside, to place user focus on
+ * - There should always be a focusable element inside, to place user focus on such as a close button
  * - Must be dismissible via ESC and a close button
  * - Uses tabIndex in wrapper and has tabbable items within it despite being outside document flow.
  * - Entire popover receives focus when opened and has a aria-labelledby that points to the header id, so it will read the heading,
  * - Must return focus to trigger after closing.
- * - F6 will allow the user to keep popover open and go back to tabbing in “app-context” instead of “dialog-context.” (not implemented)
+ * - F6 will allow the user to keep popover open and go back to tabbing in “app-context” instead of “dialog-context.” (not implemented, yet)
  */
 
 // ## Dependencies
