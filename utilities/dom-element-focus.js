@@ -13,7 +13,7 @@ const handleScopedFocus = () => {
 	// is that the document.body gets focus, and then we focus our element right
 	// after.
 	setTimeout(() => {
-		if (!ancestor.contains(document.activeElement)) {
+		if (ancestor && !ancestor.contains(document.activeElement)) {
 			const el = (findTabbableElement(ancestor)[0] || ancestor);
 			el.focus();
 		}

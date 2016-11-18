@@ -16,6 +16,10 @@ import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
+import TestUtils from 'react-addons-test-utils';
+
+const { Simulate } = TestUtils;
+
 
 /* Enzyme Helpers that can mount and unmount React component instances to
  * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`
@@ -45,6 +49,22 @@ const defaultProps = {
 			bubbles: true
 		});
 		ReactDOM.findDOMNode(dialogRootNode).dispatchEvent(dialogOpen);
+	},
+	onClose: ({ component }) => {
+		const dialogClose = new CustomEvent('dialogClose', {
+			bubbles: true
+		});
+		ReactDOM.findDOMNode(component).dispatchEvent(dialogClose);
+	},
+	onKeyDown: (event) => {
+		console.log(document.activeElement);
+		const customKeyDown = new CustomEvent('customKeyDown', {
+			detail: {
+				originalEvent: event
+			},
+			bubbles: true
+		});
+		// ReactDOM.findDOMNode(event.target).dispatchEvent(customKeyDown);
 	}
 };
 
@@ -81,7 +101,7 @@ const DemoComponent = React.createClass({
 				<Popover {...this.props}>
 					<Button label="Trigger Popover" />
 				</Popover>
-				<Button label="Not Trigger Popover" />
+				<Button id="not-the-trigger" label="Not Trigger Popover" />
 			</div>
 		);
 	}
@@ -108,7 +128,7 @@ describe('SLDSPopover', () => {
 
 	// BASIC STRUCTURE
 
-	describe('default structure and css', () => {
+	describe('Default structure and css', () => {
 		// Test DOM with minimal props set
 		beforeEach(mountComponent(
 			<DemoComponent
@@ -139,17 +159,42 @@ describe('SLDSPopover', () => {
 		});
 	});
 
-	describe('assistive technology', () => {
+	describe('Assistive technology', () => {
 		/* Detect if presence of accessibility features such as ARIA
 		 * roles and screen reader text is present in the DOM.
 		 * If your component has an ARIA role in application, and
-		 * does not use `tab-index`, test that the correct keyboard
-		 * navigation is present.
+		 * does not use `tab-index`.
 		 */
+		beforeEach(mountComponent(
+			<DemoComponent
+				isOpen
+			/>
+		));
+
+		afterEach(unmountComponent);
+
+		it('has aria-haspopup, correct aria-expanded when open and closed', function (done) {
+			const trigger = this.wrapper.find('#sample-popover');
+			expect(trigger.node.getAttribute('aria-haspopup')).to.equal('true');
+
+			const testOpen = function (event) {
+				const rootNode = event.detail.rootNode;
+				const ariaExpanded = trigger.find('button').nodes[0].getAttribute('aria-expanded');
+				expect(ariaExpanded).to.equal('true');
+
+				expect(getPopover(rootNode).getAttribute('aria-labelledby')).to.equal(`${defaultIds.heading}`);
+				expect(getPopover(rootNode).getAttribute('aria-describedby')).to.equal(`${defaultIds.body}`);
+
+				document.removeEventListener('dialogOpen', testOpen);
+				done();
+			};
+
+			document.addEventListener('dialogOpen', testOpen);
+		});
 	});
 	// PROPS AND CHILDREN
 
-	describe('Optional Props', () => {
+	describe('Optional props', () => {
 		const popoverBackgroundColor = 'rgb(255, 80, 121)';
 		const containerBackgroundColor = 'rgb(255, 127, 80)';
 		// What should be present in the DOM when style and className are applied?
@@ -198,32 +243,70 @@ describe('SLDSPopover', () => {
 
 		describe('onClick', () => {
 			const triggerClicked = sinon.spy();
-			const handleClose = sinon.spy();
-			const handleOpen = sinon.spy();
 
 			beforeEach(mountComponent(
 				<DemoComponent
 					onClick={triggerClicked}
-					onClose={handleClose}
-					onOpen={handleOpen}
 				/>
 			));
 
 			afterEach(unmountComponent);
 
-			it('calls event handler', function () {
+			it('calls onClick handler on trigger, click on popover close closes', function (done) {
 				const trigger = this.wrapper.find('#sample-popover');
 				// If applicable, use second parameter to pass the data object
 				trigger.simulate('click', {});
-				expect(triggerClicked.callCount).to.equal(1);
+
+				const testOpen = function (event) {
+					const rootNode = event.detail.rootNode;
+
+					expect(rootNode).to.exist;
+					expect(triggerClicked.callCount).to.equal(1);
+
+					Simulate.click(getPopover(rootNode).querySelector('.slds-popover__close'), {});
+					document.removeEventListener('dialogOpen', testOpen);
+				};
+
+				const testClose = function () {
+					setTimeout(() => {
+						expect(getPopover(document.body)).to.be.null;
+					}, 0);
+
+					document.removeEventListener('dialogClose', testClose);
+					done();
+				};
+
+				document.addEventListener('dialogOpen', testOpen);
+				document.addEventListener('dialogClose', testClose);
 			});
 
-			// it('opens on enter', function () {
-			// 	const trigger = this.wrapper.find('#sample-popover');
-			// 	// If applicable, use second parameter to pass the data object
-			// 	trigger.simulate('keydown', { key: 'Enter', keyCode: 13, which: 13 });
-			// 	expect(triggerClicked.callCount).to.equal(1);
-			// });
+			it('opens on click, closes on ESC', function (done) {
+				const trigger = this.wrapper.find('#sample-popover');
+				// If applicable, use second parameter to pass the data object
+				trigger.simulate('click', {});
+
+				const testOpen = function (event) {
+					const rootNode = event.detail.rootNode;
+
+					expect(rootNode).to.exist;
+
+					setTimeout(() => {
+						Simulate.keyDown(rootNode, { key: 'Esc', keyCode: 27, which: 27 });
+						document.removeEventListener('dialogOpen', testOpen);
+					}, 0);
+				};
+
+				const testClose = function () {
+					setTimeout(() => {
+						expect(getPopover(document.body)).to.be.null;
+					}, 0);
+					document.removeEventListener('dialogClose', testClose);
+					done();
+				};
+
+				document.addEventListener('dialogOpen', testOpen);
+				document.addEventListener('dialogClose', testClose);
+			});
 		});
 	});
 });

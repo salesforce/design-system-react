@@ -204,7 +204,7 @@ const Popover = React.createClass({
 	},
 
 	getIsOpen () {
-		return !!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
+		return !this.props.disabled && !!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
 	},
 
 	getMenu () {
@@ -227,7 +227,7 @@ const Popover = React.createClass({
 			this.isHover = false;
 
 			if (this.props.onClose) {
-				this.props.onClose();
+				this.props.onClose({ component: this });
 			}
 		}
 	},
@@ -372,7 +372,6 @@ const Popover = React.createClass({
 					onMouseLeave={(props.openOn === 'hover') ? this.handleMouseLeave : null}
 					outsideClickIgnoreClass={outsideClickIgnoreClass}
 					style={props.containerStyle}
-					targetElement={this.triggerContainer}
 					variant="popover"
 				>
 					<div
@@ -386,7 +385,7 @@ const Popover = React.createClass({
 						id={`${this.getId()}-popover`}
 						role="dialog"
 						style={Object.assign({ outline: '0' }, this.props.style)}
-						tabIndex="0"
+						tabIndex="-1"
 						ref={(component) => { this.dialog = component; }}
 					>
 						<Button
@@ -427,14 +426,11 @@ const Popover = React.createClass({
 
 	render () {
 		const outsideClickIgnoreClass = `ignore-click-${this.getId()}`;
-		const isOpen = this.props.isOpen === undefined
-			? !this.props.disabled && this.state && this.state.isOpen && !!this.trigger
-			: this.props.isOpen;
 
 		const clonedTrigger = React.cloneElement(this.props.children, {
-			tabIndex: this.props.children.props.tabIndex || '0',
 			ref: (component) => { this.trigger = component; },
-			['aria-haspopup']: 'true',
+			ariaHaspopup: true,
+			ariaExpanded: this.getIsOpen(),
 			className: classNames(outsideClickIgnoreClass),
 			style: this.props.style,
 			id: this.getId(),
@@ -451,10 +447,11 @@ const Popover = React.createClass({
 			onMouseLeave:
 				this.props.openOn === 'hover'
 				|| this.props.openOn === 'hybrid'
-				? this.handleMouseLeave : null
+				? this.handleMouseLeave : null,
+			tabIndex: this.props.children.props.tabIndex || '0'
 		});
 
-		this.renderOverlay(isOpen);
+		this.renderOverlay(this.getIsOpen());
 
 		const containerStyles = { display: 'inline' };
 		return (
@@ -462,7 +459,7 @@ const Popover = React.createClass({
 				style={containerStyles}
 			>
 				{clonedTrigger}
-				{this.renderDialog(isOpen, outsideClickIgnoreClass)}
+				{this.renderDialog(this.getIsOpen(), outsideClickIgnoreClass)}
 			</div>
 		);
 	}

@@ -209,11 +209,6 @@ const Dialog = React.createClass({
 		if (this.props.onClose) {
 			this.props.onClose();
 		}
-
-		if (this.props.variant === 'popover') {
-			DOMElementFocus.teardownScopedFocus();
-			DOMElementFocus.returnFocusToStoredElement();
-		}
 	},
 
 	handleClick (event) {
@@ -368,9 +363,6 @@ const Dialog = React.createClass({
 
 	handleOpen () {
 		this.setState({ isOpen: true });
-		if (this.props.onOpen) {
-			this.props.onOpen(this.portal);
-		}
 
 		if (this.props.variant === 'popover') {
 			DOMElementFocus.storeActiveElement();
@@ -380,11 +372,15 @@ const Dialog = React.createClass({
 				DOMElementFocus.focusAncestor();
 			}
 		}
+
+		if (this.props.onOpen) {
+			this.props.onOpen(this.portal);
+		}
 	},
 
 	renderDialog () {
 		// parentComponent, nextElement, container, callback
-		this.portal = renderSubtreeIntoContainer(this, this.renderDialogContents(), this.dialogElement);
+		this.portal = ReactDOM.render(this.renderDialogContents(), this.dialogElement);
 
 		if (this.dialogElement &&
 				this.dialogElement.parentNode &&
@@ -394,7 +390,7 @@ const Dialog = React.createClass({
 			this.dialogElement.parentNode.parentNode.style.zIndex = 10001;
 		}
 
-		if (this.drop != null) {
+		if (this.drop !== null && this.drop !== undefined) {
 			if (this.drop && this.drop) {
 				this.drop.position();
 			}
@@ -405,7 +401,10 @@ const Dialog = React.createClass({
 	},
 
 	componentWillUnmount () {
-		this.handleClose();
+		if (this.props.variant === 'popover') {
+			DOMElementFocus.teardownScopedFocus();
+			DOMElementFocus.returnFocusToStoredElement();
+		}
 
 		this.drop.destroy();
 		ReactDOM.unmountComponentAtNode(this.dialogElement);
@@ -414,9 +413,7 @@ const Dialog = React.createClass({
 			this.dialogElement.parentNode.removeChild(this.dialogElement);
 		}
 
-		if (this.props.onClose) {
-			this.props.onClose();
-		}
+		this.handleClose();
 	},
 
 	render () {
