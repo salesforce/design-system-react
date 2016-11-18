@@ -432,6 +432,7 @@ const Popover = React.createClass({
 			ariaHaspopup: true,
 			ariaExpanded: this.getIsOpen(),
 			className: classNames(outsideClickIgnoreClass),
+			disabled: this.props.disabled,
 			style: this.props.style,
 			id: this.getId(),
 			onBlur: this.props.onBlur,

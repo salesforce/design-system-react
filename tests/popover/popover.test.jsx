@@ -282,7 +282,6 @@ describe('SLDSPopover', () => {
 
 			it('opens on click, closes on ESC', function (done) {
 				const trigger = this.wrapper.find('#sample-popover');
-				// If applicable, use second parameter to pass the data object
 				trigger.simulate('click', {});
 
 				const testOpen = function (event) {
@@ -307,6 +306,37 @@ describe('SLDSPopover', () => {
 				document.addEventListener('dialogOpen', testOpen);
 				document.addEventListener('dialogClose', testClose);
 			});
+		});
+	});
+
+	describe('Disabled', () => {
+		const triggerClicked = sinon.spy();
+
+		beforeEach(mountComponent(
+			<DemoComponent
+				disabled
+				onClick={triggerClicked}
+			/>
+		));
+
+		afterEach(unmountComponent);
+
+		it('onOpen is not called when disabled', function (done) {
+			let hasOpened = false;
+			const trigger = this.wrapper.find('#sample-popover');
+			trigger.simulate('click', {});
+
+			const testOpen = function () {
+				hasOpened = true;
+				document.removeEventListener('dialogOpen', testOpen);
+			};
+
+			setTimeout(() => {
+				expect(hasOpened).to.be.false;
+				done();
+			}, 200);
+
+			document.addEventListener('dialogOpen', testOpen);
 		});
 	});
 });
