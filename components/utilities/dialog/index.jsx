@@ -29,6 +29,8 @@ import DOMElementFocus from '../../../utilities/dom-element-focus';
 
 import { DIALOG } from '../../../utilities/constants';
 
+const renderSubtreeIntoContainer = ReactDOM.unstable_renderSubtreeIntoContainer;
+
 /* A dialog is a non-modal container that separates content from the rest of the web application. This library uses the Drop library (https://github.com/HubSpot/drop which is based on TetherJS) to absolutely position and align content to another item on the page. This component is not meant for external consumption or part of the published component API.
 */
 const Dialog = React.createClass({
@@ -367,12 +369,12 @@ const Dialog = React.createClass({
 	handleOpen () {
 		this.setState({ isOpen: true });
 		if (this.props.onOpen) {
-			this.props.onOpen(this.dialogContent);
+			this.props.onOpen(this.portal);
 		}
 
 		if (this.props.variant === 'popover') {
 			DOMElementFocus.storeActiveElement();
-			DOMElementFocus.setupScopedFocus({ ancestorElement: ReactDOM.findDOMNode(this.dialogContent).firstChild });
+			DOMElementFocus.setupScopedFocus({ ancestorElement: ReactDOM.findDOMNode(this.dialogElement).querySelector('.slds-popover') });
 			// Don't steal focus from inner elements
 			if (!DOMElementFocus.hasOrAncestorHasFocus()) {
 				DOMElementFocus.focusAncestor();
@@ -381,7 +383,8 @@ const Dialog = React.createClass({
 	},
 
 	renderDialog () {
-		ReactDOM.render(this.renderDialogContents(), this.dialogElement);
+		// parentComponent, nextElement, container, callback
+		this.portal = renderSubtreeIntoContainer(this, this.renderDialogContents(), this.dialogElement);
 
 		if (this.dialogElement &&
 				this.dialogElement.parentNode &&

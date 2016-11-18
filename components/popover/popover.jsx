@@ -104,7 +104,7 @@ const Popover = React.createClass({
 		 */
 		body: PropTypes.oneOfType([PropTypes.node, PropTypes.array]).isRequired,
 		/**
-		 * CSS classes to be added to the popover.
+		 * CSS classes to be added to the popover. That is the element with `.slds-popover` on it.
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/*
@@ -356,6 +356,7 @@ const Popover = React.createClass({
 				<Dialog
 					align={props.align}
 					className={classNames(props.containerClassName)}
+					contentsClassName={this.props.containerClassName}
 					constrainToScrollParent={props.constrainToScrollParent}
 					flippable={!props.hasStaticAlignment}
 					initialFocus={this.dialog}
@@ -370,6 +371,7 @@ const Popover = React.createClass({
 					onMouseEnter={(props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(props.openOn === 'hover') ? this.handleMouseLeave : null}
 					outsideClickIgnoreClass={outsideClickIgnoreClass}
+					style={props.containerStyle}
 					targetElement={this.triggerContainer}
 					variant="popover"
 				>

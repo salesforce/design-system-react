@@ -33,13 +33,19 @@ import Button from '../../components/button';
  */
 chai.use(chaiEnzyme());
 
-const dialogOpen = new CustomEvent('dialogOpen', { bubbles: true });
-
 const defaultProps = {
 	id: 'sample-popover',
-	body: 'This is the body.',
-	heading: 'This is the heading',
-	onOpen: (dialogContents) => { ReactDOM.findDOMNode(dialogContents).dispatchEvent(dialogOpen); }
+	body: <span id="sample-body">This is the body</span>,
+	heading: <span id="sample-heading">This is the heading</span>,
+	onOpen: (dialogRootNode) => {
+		const dialogOpen = new CustomEvent('dialogOpen', {
+			detail: {
+				rootNode: dialogRootNode
+			},
+			bubbles: true
+		});
+		ReactDOM.findDOMNode(dialogRootNode).dispatchEvent(dialogOpen);
+	}
 };
 
 const defaultIds = {
@@ -70,7 +76,6 @@ const DemoComponent = React.createClass({
 	// event handlers
 
 	render () {
-		console.log(this.props);
 		return (
 			<div>
 				<Popover {...this.props}>
@@ -82,7 +87,9 @@ const DemoComponent = React.createClass({
 	}
 });
 
-const getPopover = (dialogContents) => dialogContents.querySelector(`#${defaultIds.popover}`);
+const getPopover = (rootNode) => rootNode.querySelector(`#${defaultIds.popover}`);
+const getHeading = (rootNode) => rootNode.querySelector(`#${defaultIds.heading}`);
+const getBody = (rootNode) => rootNode.querySelector(`#${defaultIds.body}`);
 
 /* All tests for component being tested should be wrapped in a root `describe`,
  * which should be named after the component being tested.
@@ -109,20 +116,26 @@ describe('SLDSPopover', () => {
 			/>
 		));
 
-		// afterEach(unmountComponent);
+		afterEach(unmountComponent);
 
 		/* Please notice the of `function () {}` and not () => {}.
 		 * It allows access to the Mocha test context via `this`.
 		 */
-		it('is Open, has heading, body', function (done) {
-			document.addEventListener('dialogOpen', function (e) {
-				const popover = getPopover(e.target);
-				expect(popover).to.exist;
-				document.removeEventListener('dialogOpen', this);
-				done();
-			});
+		it('is open, has heading, body, close button', function (done) {
+			const test = function (event) {
+				const rootNode = event.detail.rootNode;
 
-				// If applicable, also test data object for correct contents.
+				expect(rootNode).to.exist;
+				expect(getPopover(rootNode)).to.exist;
+				expect(getHeading(rootNode).querySelector('#sample-heading')).to.exist;
+				expect(getBody(rootNode).querySelector('#sample-body')).to.exist;
+				expect(getPopover(rootNode).querySelector('.slds-popover__close')).to.exist;
+
+				document.removeEventListener('dialogOpen', test);
+				done();
+			};
+
+			document.addEventListener('dialogOpen', test);
 		});
 	});
 
@@ -137,50 +150,80 @@ describe('SLDSPopover', () => {
 	// PROPS AND CHILDREN
 
 	describe('Optional Props', () => {
+		const popoverBackgroundColor = 'rgb(255, 80, 121)';
+		const containerBackgroundColor = 'rgb(255, 127, 80)';
 		// What should be present in the DOM when style and className are applied?
+		const optionalProps = {
+			className: 'sample-classname',
+			closeButtonAssistiveText: 'Shut it now!',
+			containerClassName: 'sample-container-classname',
+			containerStyle: { background: containerBackgroundColor },
+			style: { background: popoverBackgroundColor }
+		};
+
+		beforeEach(mountComponent(
+			<DemoComponent
+				isOpen
+				{...optionalProps}
+			/>
+		));
+
+		afterEach(unmountComponent);
+
+		it('has correct className, closeButtonAssistiveText, containerClassName, containerStyle, style', function (done) {
+			// document.addEv		it('is Open, has heading, body, close button', function (done) {
+			const test = function (event) {
+				const rootNode = event.detail.rootNode;
+
+				expect(getPopover(rootNode).classList.contains(optionalProps.className)).to.be.true;
+				expect(getPopover(rootNode).querySelector('.slds-popover__close').textContent).to.equal(optionalProps.closeButtonAssistiveText);
+				expect(getPopover(rootNode).style.background).to.equal(popoverBackgroundColor);
+				expect(rootNode.classList.contains(optionalProps.containerClassName)).to.be.true;
+				expect(rootNode.style.background).to.equal(containerBackgroundColor);
+
+				document.removeEventListener('dialogOpen', test);
+				done();
+			};
+
+			document.addEventListener('dialogOpen', test);
+		});
 	});
-
-	describe('Optional Children', () => {
-		// What should be present when children are added?
-	});
-
-	// DATA PROPS
-
-	describe('Data', () => {
-		/* Use exports from a corresponding `utilities/sample-data/[COMPONENT-NAME]`
-		 * file to provide data to your Storybook Stories and tests in JSON format.
-		 */
-	});
-
 
 	// EVENTS
 
-	// describe('Mouse and keyboard interactions', () => {
-	// 	/* Test event callback functions using Simulate. For more information, view
-	// 	 * https://github.com/airbnb/enzyme/blob/master/docs/api/ReactWrapper/simulate.md
-	// 	 */
-// 
-	// 	describe('onClick', () => {
-	// 		const itemClicked = sinon.spy();
-// 
-	// 		beforeEach(mountComponent(
-	// 			<DemoComponent itemClicked={itemClicked} />
-	// 		));
-// 
-	// 		afterEach(unmountComponent);
-// 
-	// 		/* Please notice the of `function () {}` and not () => {}.
-	// 		 * It allows access to the Mocha test context via `this`.
-	// 		 */
-	// 		it('calls event handler', function () {
-	// 			const item = this.wrapper.find('#example-tree-1').find('.slds-tree__item');
-	// 			// If applicable, use second parameter to pass the data object
-	// 			item.simulate('click', {});
-	// 			expect(itemClicked.callCount).to.equal(1);
-	// 				// If applicable, also test data object for correct contents.
-	// 				// 
-	// 		debugger;
-	// 		});
-	// 	});
-	// });
+	describe('Mouse and keyboard interactions', () => {
+		/* Test event callback functions using Simulate. For more information, view
+		 * https://github.com/airbnb/enzyme/blob/master/docs/api/ReactWrapper/simulate.md
+		 */
+
+		describe('onClick', () => {
+			const triggerClicked = sinon.spy();
+			const handleClose = sinon.spy();
+			const handleOpen = sinon.spy();
+
+			beforeEach(mountComponent(
+				<DemoComponent
+					onClick={triggerClicked}
+					onClose={handleClose}
+					onOpen={handleOpen}
+				/>
+			));
+
+			afterEach(unmountComponent);
+
+			it('calls event handler', function () {
+				const trigger = this.wrapper.find('#sample-popover');
+				// If applicable, use second parameter to pass the data object
+				trigger.simulate('click', {});
+				expect(triggerClicked.callCount).to.equal(1);
+			});
+
+			// it('opens on enter', function () {
+			// 	const trigger = this.wrapper.find('#sample-popover');
+			// 	// If applicable, use second parameter to pass the data object
+			// 	trigger.simulate('keydown', { key: 'Enter', keyCode: 13, which: 13 });
+			// 	expect(triggerClicked.callCount).to.equal(1);
+			// });
+		});
+	});
 });
