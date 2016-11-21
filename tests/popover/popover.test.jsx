@@ -13,20 +13,16 @@
 
 // Import your external dependencies
 import React, { PropTypes } from 'react';
-import ReactDOM from 'react-dom';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import TestUtils from 'react-addons-test-utils';
-
-const { Simulate } = TestUtils;
-
+import { mount } from 'enzyme';
 
 /* Enzyme Helpers that can mount and unmount React component instances to
  * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`
  * context [full source here](tests/enzyme-helpers.js). `this` can
  * only be referenced if inside `function () {}`.
  */
-import { mountComponent, unmountComponent } from '../enzyme-helpers';
+import { createMountNode, destroyMountNode } from '../enzyme-helpers';
 
 // Import your internal dependencies (for example):
 import Popover from '../../components/popover';
@@ -40,35 +36,11 @@ chai.use(chaiEnzyme());
 const defaultProps = {
 	id: 'sample-popover',
 	body: <span id="sample-body">This is the body</span>,
-	heading: <span id="sample-heading">This is the heading</span>,
-	onOpen: (dialogRootNode) => {
-		const dialogOpen = new CustomEvent('dialogOpen', {
-			detail: {
-				rootNode: dialogRootNode
-			},
-			bubbles: true
-		});
-		ReactDOM.findDOMNode(dialogRootNode).dispatchEvent(dialogOpen);
-	},
-	onClose: ({ component }) => {
-		const dialogClose = new CustomEvent('dialogClose', {
-			bubbles: true
-		});
-		ReactDOM.findDOMNode(component).dispatchEvent(dialogClose);
-	},
-	onKeyDown: (event) => {
-		console.log(document.activeElement);
-		const customKeyDown = new CustomEvent('customKeyDown', {
-			detail: {
-				originalEvent: event
-			},
-			bubbles: true
-		});
-		// ReactDOM.findDOMNode(event.target).dispatchEvent(customKeyDown);
-	}
+	heading: <span id="sample-heading">This is the heading</span>
 };
 
 const defaultIds = {
+	trigger: defaultProps.id,
 	popover: `${defaultProps.id}-popover`,
 	body: `${defaultProps.id}-dialog-body`,
 	heading: `${defaultProps.id}-dialog-heading`
@@ -120,79 +92,72 @@ const getBody = (rootNode) => rootNode.querySelector(`#${defaultIds.body}`);
  * String provided as first parameter names the `describe` section. Limit to nouns
  * as much as possible/appropriate.`
  */
-describe('SLDSPopover', () => {
-	/* Below you will find some examples of minimum areas to be tested.
-	 * This should not be considered an exhaustive list. Please ensure
-	 * thorough testing of your code.
-	 */
+describe('SLDSPopover', function () {
+	let mountNode;
+	let portalWrapper;
+	let wrapper;
 
 	// BASIC STRUCTURE
 
-	describe('Default structure and css', () => {
-		// Test DOM with minimal props set
-		beforeEach(mountComponent(
-			<DemoComponent
+	describe('Default structure and css', function () {
+		beforeEach(() => {
+			mountNode = createMountNode({ context: this });
+		});
+
+		afterEach(() => {
+			destroyMountNode({ wrapper, mountNode });
+		});
+
+		it('is open, has heading, body, close button', (done) => {
+			wrapper = mount(<DemoComponent
 				isOpen
-			/>
-		));
-
-		afterEach(unmountComponent);
-
-		/* Please notice the of `function () {}` and not () => {}.
-		 * It allows access to the Mocha test context via `this`.
-		 */
-		it('is open, has heading, body, close button', function (done) {
-			const test = function (event) {
-				const rootNode = event.detail.rootNode;
-
-				expect(rootNode).to.exist;
-				expect(getPopover(rootNode)).to.exist;
-				expect(getHeading(rootNode).querySelector('#sample-heading')).to.exist;
-				expect(getBody(rootNode).querySelector('#sample-body')).to.exist;
-				expect(getPopover(rootNode).querySelector('.slds-popover__close')).to.exist;
-
-				document.removeEventListener('dialogOpen', test);
-				done();
-			};
-
-			document.addEventListener('dialogOpen', test);
+				portalMount={(reactElement, domContainerNode) => {
+					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
+				}}
+				onOpen={() => {
+					expect(portalWrapper.find(`#${defaultIds.heading}`)).to.exist;
+					expect(portalWrapper.find(`#${defaultIds.body}`)).to.exist;
+					expect(portalWrapper.find('.slds-popover__close')).to.exist;
+					done();
+				}}
+			/>, { attachTo: mountNode });
 		});
 	});
 
 	describe('Assistive technology', () => {
 		/* Detect if presence of accessibility features such as ARIA
 		 * roles and screen reader text is present in the DOM.
-		 * If your component has an ARIA role in application, and
-		 * does not use `tab-index`.
 		 */
-		beforeEach(mountComponent(
-			<DemoComponent
+		beforeEach(() => {
+			mountNode = createMountNode({ context: this });
+		});
+
+		afterEach(() => {
+			destroyMountNode({ wrapper, mountNode });
+		});
+
+		it('has aria-haspopup, correct aria-expanded on trigger, aria-labelledby/aria-describedby on popover', function (done) {
+			wrapper = mount(<DemoComponent
 				isOpen
-			/>
-		));
+				portalMount={(reactElement, domContainerNode) => {
+					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
+				}}
+				onOpen={() => {
+					const trigger = wrapper.find('#sample-popover');
+					expect(trigger.node.getAttribute('aria-haspopup')).to.equal('true');
+					const ariaExpanded = trigger.find('button').node.getAttribute('aria-expanded');
+					expect(ariaExpanded).to.equal('true');
 
-		afterEach(unmountComponent);
-
-		it('has aria-haspopup, correct aria-expanded when open and closed', function (done) {
-			const trigger = this.wrapper.find('#sample-popover');
-			expect(trigger.node.getAttribute('aria-haspopup')).to.equal('true');
-
-			const testOpen = function (event) {
-				const rootNode = event.detail.rootNode;
-				const ariaExpanded = trigger.find('button').nodes[0].getAttribute('aria-expanded');
-				expect(ariaExpanded).to.equal('true');
-
-				expect(getPopover(rootNode).getAttribute('aria-labelledby')).to.equal(`${defaultIds.heading}`);
-				expect(getPopover(rootNode).getAttribute('aria-describedby')).to.equal(`${defaultIds.body}`);
-
-				document.removeEventListener('dialogOpen', testOpen);
-				done();
-			};
-
-			document.addEventListener('dialogOpen', testOpen);
+					const popover = portalWrapper.find(`#${defaultIds.popover}`);
+					expect(popover.node.getAttribute('aria-labelledby')).to.equal(`${defaultIds.heading}`);
+					expect(popover.node.getAttribute('aria-describedby')).to.equal(`${defaultIds.body}`);
+					done();
+				}}
+			/>, { attachTo: mountNode });
 		});
 	});
-	// PROPS AND CHILDREN
+
+	// // PROPS AND CHILDREN
 
 	describe('Optional props', () => {
 		const popoverBackgroundColor = 'rgb(255, 80, 121)';
@@ -206,137 +171,132 @@ describe('SLDSPopover', () => {
 			style: { background: popoverBackgroundColor }
 		};
 
-		beforeEach(mountComponent(
-			<DemoComponent
-				isOpen
+		beforeEach(() => {
+			mountNode = createMountNode({ context: this });
+		});
+
+		afterEach(() => {
+			destroyMountNode({ wrapper, mountNode });
+		});
+
+		it('has correct className, closeButtonAssistiveText, style', function (done) {
+			wrapper = mount(<DemoComponent
 				{...optionalProps}
-			/>
-		));
+				isOpen
+				portalMount={(reactElement, domContainerNode) => {
+					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
+				}}
+				onOpen={() => {
+					const popover = portalWrapper.find(`#${defaultIds.popover}`);
 
-		afterEach(unmountComponent);
-
-		it('has correct className, closeButtonAssistiveText, containerClassName, containerStyle, style', function (done) {
-			// document.addEv		it('is Open, has heading, body, close button', function (done) {
-			const test = function (event) {
-				const rootNode = event.detail.rootNode;
-
-				expect(getPopover(rootNode).classList.contains(optionalProps.className)).to.be.true;
-				expect(getPopover(rootNode).querySelector('.slds-popover__close').textContent).to.equal(optionalProps.closeButtonAssistiveText);
-				expect(getPopover(rootNode).style.background).to.equal(popoverBackgroundColor);
-				expect(rootNode.classList.contains(optionalProps.containerClassName)).to.be.true;
-				expect(rootNode.style.background).to.equal(containerBackgroundColor);
-
-				document.removeEventListener('dialogOpen', test);
-				done();
-			};
-
-			document.addEventListener('dialogOpen', test);
+					expect(popover.node.classList.contains(optionalProps.className)).to.be.true;
+					expect(popover.find('.slds-popover__close').node.textContent).to.equal(optionalProps.closeButtonAssistiveText);
+					expect(popover.node.style.background).to.equal(popoverBackgroundColor);
+					done();
+				}}
+			/>, { attachTo: mountNode });
 		});
 	});
 
-	// EVENTS
+	// // EVENTS
 
 	describe('Mouse and keyboard interactions', () => {
 		/* Test event callback functions using Simulate. For more information, view
 		 * https://github.com/airbnb/enzyme/blob/master/docs/api/ReactWrapper/simulate.md
 		 */
 
-		describe('onClick', () => {
+		describe('onClick', function () {
 			const triggerClicked = sinon.spy();
 
-			beforeEach(mountComponent(
-				<DemoComponent
-					onClick={triggerClicked}
-				/>
-			));
+			beforeEach(() => {
+				mountNode = createMountNode({ context: this });
+			});
 
-			afterEach(unmountComponent);
+			afterEach(() => {
+				destroyMountNode({ wrapper, mountNode });
+			});
 
 			it('calls onClick handler on trigger, click on popover close closes', function (done) {
-				const trigger = this.wrapper.find('#sample-popover');
-				// If applicable, use second parameter to pass the data object
+				wrapper = mount(<DemoComponent
+					onClick={triggerClicked}
+					portalMount={(reactElement, domContainerNode) => {
+						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
+					}}
+					onClose={(data) => {
+						if (!data.componentWillUnmount) {
+							setTimeout(() => {
+								const popover = portalWrapper.find(`#${defaultIds.popover}`);
+								expect(popover.node).to.not.exist;
+								done();
+							}, 0);
+						}
+					}}
+					onOpen={() => {
+						const popover = portalWrapper.find(`#${defaultIds.popover}`);
+
+						expect(popover).to.exist;
+						expect(triggerClicked.callCount).to.equal(1);
+
+						popover.find('.slds-popover__close').simulate('click', {});
+					}}
+				/>, { attachTo: mountNode });
+
+				const trigger = wrapper.find(`#${defaultIds.trigger}`);
 				trigger.simulate('click', {});
-
-				const testOpen = function (event) {
-					const rootNode = event.detail.rootNode;
-
-					expect(rootNode).to.exist;
-					expect(triggerClicked.callCount).to.equal(1);
-
-					Simulate.click(getPopover(rootNode).querySelector('.slds-popover__close'), {});
-					document.removeEventListener('dialogOpen', testOpen);
-				};
-
-				const testClose = function () {
-					setTimeout(() => {
-						expect(getPopover(document.body)).to.be.null;
-					}, 0);
-
-					document.removeEventListener('dialogClose', testClose);
-					done();
-				};
-
-				document.addEventListener('dialogOpen', testOpen);
-				document.addEventListener('dialogClose', testClose);
 			});
 
 			it('opens on click, closes on ESC', function (done) {
-				const trigger = this.wrapper.find('#sample-popover');
+				wrapper = mount(<DemoComponent
+					portalMount={(reactElement, domContainerNode) => {
+						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
+					}}
+					onClose={(data) => {
+						if (!data.componentWillUnmount) {
+							setTimeout(() => {
+								const popover = portalWrapper.find(`#${defaultIds.popover}`);
+								expect(popover.node).to.not.exist;
+								done();
+							}, 0);
+						}
+					}}
+					onOpen={() => {
+						const popover = portalWrapper.find(`#${defaultIds.popover}`);
+						popover.simulate('keyDown', { key: 'Esc', keyCode: 27, which: 27 });
+					}}
+				/>, { attachTo: mountNode });
+
+				const trigger = wrapper.find(`#${defaultIds.trigger}`);
 				trigger.simulate('click', {});
-
-				const testOpen = function (event) {
-					const rootNode = event.detail.rootNode;
-
-					expect(rootNode).to.exist;
-
-					setTimeout(() => {
-						Simulate.keyDown(rootNode, { key: 'Esc', keyCode: 27, which: 27 });
-						document.removeEventListener('dialogOpen', testOpen);
-					}, 0);
-				};
-
-				const testClose = function () {
-					setTimeout(() => {
-						expect(getPopover(document.body)).to.be.null;
-					}, 0);
-					document.removeEventListener('dialogClose', testClose);
-					done();
-				};
-
-				document.addEventListener('dialogOpen', testOpen);
-				document.addEventListener('dialogClose', testClose);
 			});
 		});
 	});
 
-	describe('Disabled', () => {
+	describe('Disabled', function () {
 		const triggerClicked = sinon.spy();
+		const popoverOpened = sinon.spy();
 
-		beforeEach(mountComponent(
-			<DemoComponent
-				disabled
-				onClick={triggerClicked}
-			/>
-		));
+		beforeEach(() => {
+			mountNode = createMountNode({ context: this });
+		});
 
-		afterEach(unmountComponent);
+		afterEach(() => {
+			destroyMountNode({ wrapper, mountNode });
+		});
 
 		it('onOpen is not called when disabled', function (done) {
-			let hasOpened = false;
-			const trigger = this.wrapper.find('#sample-popover');
+			wrapper = mount(<DemoComponent
+				disabled
+				onClick={triggerClicked}
+				onOpen={popoverOpened}
+			/>, { attachTo: mountNode });
+
+			const trigger = wrapper.find(`#${defaultIds.trigger}`);
 			trigger.simulate('click', {});
 
-			const testOpen = function () {
-				hasOpened = true;
-				document.removeEventListener('dialogOpen', testOpen);
-			};
-
 			setTimeout(() => {
-				expect(hasOpened).to.be.false;
+				expect(popoverOpened.callCount).to.equal(0);
 				done();
 			}, 200);
-
-			document.addEventListener('dialogOpen', testOpen);
 		});
 	});
 });
