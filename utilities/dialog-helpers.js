@@ -24,11 +24,12 @@ const getNubbinClassName = (align) => classNames({
 
 const getAlignment = {};
 
+// `indexOf` is used becauses `align` can be a string OR an array at this time.
 getAlignment.horizontal = (align) => {
 	let alignment = 'center';
-	if (align.includes('left')) {
+	if (align && align.indexOf('left') > -1) {
 		alignment = 'left';
-	}	else if (align.includes('right')) {
+	}	else if (align && align.indexOf('right') > -1) {
 		alignment = 'right';
 	}
 	return alignment;
@@ -36,9 +37,9 @@ getAlignment.horizontal = (align) => {
 
 getAlignment.vertical = (align) => {
 	let alignment = 'middle';
-	if (align.includes('bottom')) {
+	if (align && align.indexOf('bottom') > -1) {
 		alignment = 'bottom';
-	}	else if (align.includes('top')) {
+	}	else if (align && align.indexOf('top') > -1) {
 		alignment = 'top';
 	}
 	return alignment;
@@ -60,14 +61,14 @@ getMargin.left = (align) => {
 };
 
 getMargin.top = (align) => {
-	if (getAlignment.vertical(align) === 'top' && align.includes('top')) {
+	if (align && getAlignment.vertical(align) === 'top' && align.indexOf('top') > 0) {
 		return '0.25rem';
 	}
 	return '1.25rem';
 };
 
 getMargin.bottom = (align) => {
-	if (getAlignment.vertical(align) === 'bottom' && align.includes('bottom')) {
+	if (align && getAlignment.vertical(align) === 'bottom' && align.indexOf('bottom') > 0) {
 		return '0.25rem';
 	}
 	return '1rem';
