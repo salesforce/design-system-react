@@ -146,7 +146,7 @@ const Dialog = React.createClass({
 		 */
 		outsideClickIgnoreClass: PropTypes.string,
 		/**
-		 * An object of CSS styles that are applied to the .
+		 * An object of CSS styles that are applied to the immediate parent `div` of the contents.
 		 */
 		style: PropTypes.object,
 		/**
@@ -203,9 +203,9 @@ const Dialog = React.createClass({
 		this.handleClose();
 	},
 
-	handleClose () {
+	handleClose (data) {
 		if (this.props.onClose) {
-			this.props.onClose();
+			this.props.onClose(data);
 		}
 	},
 
@@ -345,7 +345,6 @@ const Dialog = React.createClass({
 
 		return {
 			beforeClose: this.beforeClose,
-			classes: classNames(this.props.containerClassName, this.props.dropClass), // eslint-disable-line react/prop-types
 			constrainToWindow: this.props.flippable,
 			constrainToScrollParent: this.props.constrainToScrollParent,
 			content: this.dialogElement,
@@ -377,8 +376,14 @@ const Dialog = React.createClass({
 	},
 
 	renderDialog () {
-		// parentComponent, nextElement, container, callback
-		this.portal = ReactDOM.render(this.renderDialogContents(), this.dialogElement);
+		let mount = ReactDOM.render;
+
+		if (this.props.portalMount) {
+			mount = this.props.portalMount;
+		}
+
+		// nextElement, container, callback
+		this.portal = mount(this.renderDialogContents(), this.dialogElement);
 
 		if (this.dialogElement &&
 				this.dialogElement.parentNode &&
@@ -411,7 +416,7 @@ const Dialog = React.createClass({
 			this.dialogElement.parentNode.removeChild(this.dialogElement);
 		}
 
-		this.handleClose();
+		this.handleClose({ componentWillUnmount: true });
 	},
 
 	render () {

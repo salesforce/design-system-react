@@ -116,6 +116,9 @@ const panelContent = (<div>
 </div>
 );
 
+const popoverBackgroundColor = 'rgb(255, 80, 121)';
+const containerBackgroundColor = 'rgb(255, 127, 80)';
+
 storiesOf(POPOVER, module)
 	.addDecorator(getStory => <div
 		className="slds-p-around--medium slds-m-horizontal--x-large"
@@ -128,6 +131,16 @@ storiesOf(POPOVER, module)
 		body: panelContent,
 		id: 'myPopoverId',
 		heading: 'My Popover'
+	}))
+	.add('Styling', () => getPopover({
+		body: panelContent,
+		id: 'myPopoverId',
+		heading: 'My Popover',
+		className: 'sample-classname',
+		closeButtonAssistiveText: 'Shut it now!',
+		containerClassName: 'sample-container-classname',
+		containerStyle: { background: containerBackgroundColor },
+		style: { background: popoverBackgroundColor }
 	}))
 	.add('Open', () => getPopover({
 		body: panelContent,

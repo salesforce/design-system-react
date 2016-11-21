@@ -15,6 +15,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND 
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
+// ### assign
+import assign from 'lodash.assign';
+
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
@@ -112,14 +115,6 @@ const Popover = React.createClass({
 		*/
 		closeButtonAssistiveText: PropTypes.oneOfType([PropTypes.string]),
 		/**
-		 * These class names will be added to the absolutely-positioned `Dialog` component which is a DOM container for the SLDS Popover.
-		 */
-		containerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-		/**
-		 * Style applied to the absolutely-positioned `Dialog` component which is a DOM container for the SLDS Popover.
-		 */
-		containerStyle: PropTypes.object,
-		/**
 		 * This prop is passed onto the triggering `Button`. Prevent dropdown menu from opening. Also applies disabled styling to trigger button.
 		 */
 		disabled: PropTypes.bool,
@@ -212,8 +207,9 @@ const Popover = React.createClass({
 		return ReactDOM.findDOMNode(this.dialog);
 	},
 
-	handleClose () {
+	handleClose (data) {
 		const isOpen = this.getIsOpen();
+		const componentWillUnmount = data && data.componentWillUnmount || false;
 
 		if (isOpen) {
 			if (currentOpenPopover === this) {
@@ -227,7 +223,10 @@ const Popover = React.createClass({
 			this.isHover = false;
 
 			if (this.props.onClose) {
-				this.props.onClose({ component: this });
+				this.props.onClose({
+					component: this,
+					componentWillUnmount
+				});
 			}
 		}
 	},
@@ -350,13 +349,13 @@ const Popover = React.createClass({
 	renderDialog (isOpen, outsideClickIgnoreClass) {
 		const props = this.props;
 		let offset = props.offset;
+		const style = this.props.style || {};
 
 		return (
 			isOpen ?
 				<Dialog
 					align={props.align}
-					className={classNames(props.containerClassName)}
-					contentsClassName={this.props.containerClassName}
+					contentsClassName={this.props.contentsClassName}
 					constrainToScrollParent={props.constrainToScrollParent}
 					flippable={!props.hasStaticAlignment}
 					initialFocus={this.dialog}
@@ -371,7 +370,7 @@ const Popover = React.createClass({
 					onMouseEnter={(props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(props.openOn === 'hover') ? this.handleMouseLeave : null}
 					outsideClickIgnoreClass={outsideClickIgnoreClass}
-					style={props.containerStyle}
+					portalMount={this.props.portalMount}
 					variant="popover"
 				>
 					<div
@@ -384,7 +383,7 @@ const Popover = React.createClass({
 						)}
 						id={`${this.getId()}-popover`}
 						role="dialog"
-						style={Object.assign({ outline: '0' }, this.props.style)}
+						style={assign({ outline: '0' }, style)}
 						tabIndex="-1"
 						ref={(component) => { this.dialog = component; }}
 					>
