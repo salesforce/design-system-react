@@ -122,6 +122,11 @@ const defaultProps = {
 /**
  * The Modal component is used for the Lightning Design System Modal and Notification > Prompt components. The Modal opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).
  * For more details on the Prompt markup, please review the <a href="http://www.lightningdesignsystem.com/components/notifications#prompt">Notifications > Prompt</a>.
+ * By default, `Modal` will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like hide from assistive technologies when the `Modal` is open.
+ * ```
+ * import settings from 'design-system-react/components/settings';
+ * settings.setAppElement('#mount');
+ * ```
  */
 class Modal extends React.Component {
 
