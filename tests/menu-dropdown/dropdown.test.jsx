@@ -15,7 +15,7 @@ import chaiEnzyme from 'chai-enzyme';
 import { mountComponent, unmountComponent } from '../enzyme-helpers';
 
 import Dropdown from '../../components/menu-dropdown';
-import List from '../../components/menu-list/list';
+import List from '../../components/utilities/menu-list';
 const { Simulate,	findRenderedDOMComponentWithClass } = TestUtils;
 
 chai.use(chaiEnzyme());

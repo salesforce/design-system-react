@@ -18,14 +18,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import omit from 'lodash.omit';
-import Info from './info';
-import Title from './title';
-import DetailRow from './detail-row';
-import DetailBlock from './detail-block';
-import Base from './base';
-import RecordHome from './record-home';
-import ObjectHome from './object-home';
+import Info from './private/info';
+import Title from './private/title';
+import DetailRow from './private/detail-row';
+import DetailBlock from './private/detail-block';
+import Base from './private/base';
+import RecordHome from './private/record-home';
+import ObjectHome from './private/object-home';
 import Icon from '../icon';
 import BreadCrumb from '../bread-crumb';
 

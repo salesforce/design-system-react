@@ -34,8 +34,8 @@ import shortid from 'shortid';
 // ### Children
 import Dialog from '../utilities/dialog';
 import Icon from '../icon';
-import List from '../menu-list/list';
-import ListItemLabel from '../menu-list/list-item-label';
+import List from '../utilities/menu-list';
+import ListItemLabel from '../utilities/menu-list/item-label';
 
 // ### Traits
 

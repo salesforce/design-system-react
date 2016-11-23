@@ -35,9 +35,9 @@ import shortid from 'shortid';
 
 // ### Children
 import Dialog from '../utilities/dialog';
-import List from '../menu-list/list';
-import ListItem from '../menu-list/list-item';
-import ListItemLabel from '../menu-list/list-item-label';
+import List from '../utilities/menu-list';
+import ListItem from '../utilities/menu-list/item';
+import ListItemLabel from '../utilities/menu-list/item-label';
 
 // This is the the default Dropdown Trigger, which expects one button as a child.
 import DefaultTrigger from './button-trigger';
