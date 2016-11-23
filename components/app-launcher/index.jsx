@@ -64,7 +64,7 @@ import { APP_LAUNCHER } from '../../utilities/constants';
  * </AppLauncher>
  * ```
  *
- * By default, `Modal`, a child component of App Launcher, will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like hide from assistive technologies when the `Modal` is open.
+ * By default, `Modal`, a child component of App Launcher, will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.
  * ```
  * import settings from 'design-system-react/components/settings';
  * settings.setAppElement('#mount');

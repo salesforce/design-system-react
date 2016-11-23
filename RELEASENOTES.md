@@ -14,6 +14,12 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ---
 
+## Release 0.5.1
+
+**DOCUMENTATION**
+
+- Adds mention of setting `AppElement` for `Modal` and `AppLauncher` to component documenation, so that the entire `body` is not hidden for assistive technology users.
+
 ## Release 0.5.0
 
 **MINOR FEATURES**
