@@ -327,6 +327,14 @@ Read: [Class Name Manipulation](https://github.com/JedWatson/classnames/blob/mas
 
 from the [Planning Center](https://github.com/planningcenter/react-patterns)
 
+## Accessibility resources
+
+- [ARIA-1.1 Authoring Practices guide](http://w3c.github.io/aria-practices/) - Although no one actually implemented ARIA 1.0 guidelines fully, this is the bleeding edge of the W3C's re-write of the Authoring Practices, which are based on ARIA 1.1. Many now come with the W3C's own examples pages.
+- [ARIA 1.1](https://www.w3.org/TR/wai-aria-1.1/) - Recommendation Candidate for the new ARIA Spec.
+- [ARIA in HTML](http://w3c.github.io/html-aria/) - Super useful reference to answer the question "Should I put ARIA on this?". Often a native HTML element will have an implicit role, so it's not required, _nor recommended_ to be added.
+- [HTML 5.1](https://www.w3.org/TR/html51/) - This is at the Recommendation Candidate stage, so it is very unlikely to change. Please notice the places where it informs of ARIA role for each element, the implicit roles, may not be 100% accurate. The document authors state that the ARIA in HTML spec above is the definitive source of truth for that bit and they'll fix up 5.1 when they find stuff that's not correct.
+- [eBay MIND patterns](https://ebay.gitbooks.io/mindpatterns/content/) - Nice to digest content. Most up to date functional base components our team has found so far with [examples](http://ianmcburnie.github.io/mindpatterns/). This does not mean they are correct, though. 
+
 ## Testing Guidelines
 
 - All external APIs should be tested, so that breaking changes can be detected. If a breaking change doesn't cause at least one test to fail, then add a test.
