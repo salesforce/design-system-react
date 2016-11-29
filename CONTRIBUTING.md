@@ -359,7 +359,7 @@ from the [Planning Center](https://github.com/planningcenter/react-patterns)
 4. Get your component/feature approved by the UX Accessibility Team (refer to the link above).
 
 
-# Releasing
+## Releasing
 1. [Write the release notes](https://github.com/salesforce-ux/design-system-react/blob/master/RELEASENOTES.md) that cover everything that has changed since the last release. You don't have to commit your release notes changes though. The following script will do that for you.
 1. Run `npm prune` and `npm install` to clean up node modules in preparation for build.
 1. **Choose one**: `npm run release-patch` or `npm run release-minor` This script pulls from upstream, bumps the version, commits changes, and publishes tags to your `upstream` repository (that is this repo).
