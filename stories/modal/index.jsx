@@ -5,19 +5,19 @@ import { storiesOf, action } from '@kadira/storybook';
 
 import { MODAL } from '../../utilities/constants';
 import Modal from '../../components/modal';
-import SLDSLookup from '../../components/lookup';
-import SLDSMenuPicklist from '../../components/menu-picklist';
-import SLDSTimepicker from '../../components/time-picker';
-import SLDSDatepicker from '../../components/date-picker';
-import SLDSButton from '../../components/button';
+import Lookup from '../../components/lookup';
+import MenuPicklist from '../../components/menu-picklist';
+import Timepicker from '../../components/time-picker';
+import Datepicker from '../../components/date-picker';
+import Button from '../../components/button';
 
 const getModal = props => (
 	<Modal {...props} />
 );
 
 const modalFooter = [
-	<SLDSButton key="modalBCancel" label="Cancel" />,
-	<SLDSButton key="modalBSave" label="Save" variant="brand" />
+	<Button key="modalBCancel" label="Cancel" />,
+	<Button key="modalBSave" label="Save" variant="brand" />
 ];
 
 const modalContent = (
@@ -37,7 +37,7 @@ const modalContent = (
 
 		{/*
 		*/}
-		<SLDSLookup
+		<Lookup
 			className="slds-m-bottom--large"
 			emptyMessage="No Accounts Found"
 			hasError={false}
@@ -55,7 +55,7 @@ const modalContent = (
 			]}
 		/>
 
-		<SLDSMenuPicklist
+		<MenuPicklist
 			className="slds-m-bottom--large"
 			label="Lead Source"
 			onSelect={(option) => { action('selected: ', option.label); }}
@@ -83,13 +83,13 @@ const modalContent = (
 			</div>
 		</div>
 		<div className="slds-m-bottom--large">
-			<SLDSDatepicker
+			<Datepicker
 				onDateChange={() => { action('date is selected'); }}
 			/>
 		</div>
 
 		<div className="slds-m-bottom--large">
-			<SLDSTimepicker
+			<Timepicker
 				onDateChange={() => { action('time is selected'); }}
 			/>
 		</div>
