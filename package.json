@@ -145,7 +145,15 @@
       "component": "app-launcher",
       "status": "prod",
       "display-name": "App Launcher",
-      "SLDS-component-path": "/components/app-launcher/#flavor-default"
+      "SLDS-component-path": "/components/app-launcher/#flavor-default",
+      "dependencies": [
+        {
+          "component": "section"
+        },
+        {
+          "component": "tile"
+        }
+      ]
     },
     {
       "component": "bread-crumb",
@@ -175,7 +183,15 @@
       "component": "card",
       "status": "prod",
       "display-name": "Cards",
-      "SLDS-component-path": "/components/cards"
+      "SLDS-component-path": "/components/cards",
+      "dependencies": [
+        {
+          "component": "empty"
+        },
+        {
+          "component": "filter"
+        }
+      ]
     },
     {
       "component": "forms/checkbox",
@@ -187,7 +203,21 @@
       "component": "data-table",
       "status": "prod",
       "display-name": "Data Tables",
-      "SLDS-component-path": "/components/data-tables"
+      "SLDS-component-path": "/components/data-tables",
+      "dependencies": [
+        {
+          "component": "cell"
+        },
+        {
+          "component": "column"
+        },
+        {
+          "component": "highlight-cell"
+        },
+        {
+          "component": "row-actions"
+        }
+      ]
     },
     {
       "component": "date-picker",
@@ -217,19 +247,61 @@
       "component": "global-header",
       "status": "prod",
       "display-name": "Global Header",
-      "SLDS-component-path": "/components/global-header#flavor-base"
+      "SLDS-component-path": "/components/global-header#flavor-base",
+      "dependencies": [
+        {
+          "component": "button"
+        },
+        {
+          "component": "dropdown"
+        },
+        {
+          "component": "profile"
+        },
+        {
+          "component": "search"
+        }
+      ]
     },
     {
       "component": "global-navigation-bar",
       "status": "prod",
       "display-name": "Global Navigation Bar",
-      "SLDS-component-path": "/components/global-navigation#flavor-navigation-bar"
+      "SLDS-component-path": "/components/global-navigation#flavor-navigation-bar",
+      "dependencies": [
+        {
+          "component": "button"
+        },
+        {
+          "component": "dropdown"
+        },
+        {
+          "component": "label"
+        },
+        {
+          "component": "link"
+        },
+        {
+          "component": "region"
+        }
+      ]
     },
     {
       "component": "lookup",
       "status": "prod",
       "display-name": "Lookups",
-      "SLDS-component-path": "/components/lookups"
+      "SLDS-component-path": "/components/lookups",
+      "dependencies": [
+        {
+          "component": "footer"
+        },
+        {
+          "component": "header"
+        },
+        {
+          "component": "section-divider"
+        }
+      ]
     },
     {
       "component": "media-object",
@@ -241,7 +313,12 @@
       "component": "menu-dropdown",
       "status": "prod",
       "display-name": "Dropdown Menus",
-      "SLDS-component-path": "/components/menus#flavor-dropdown"
+      "SLDS-component-path": "/components/menus#flavor-dropdown",
+      "dependencies": [
+        {
+          "component": "button-trigger"
+        }
+      ]
     },
     {
       "component": "menu-picklist",
@@ -253,7 +330,12 @@
       "component": "modal",
       "status": "prod",
       "display-name": "Modals",
-      "SLDS-component-path": "/components/modals"
+      "SLDS-component-path": "/components/modals",
+      "dependencies": [
+        {
+          "component": "trigger"
+        }
+      ]
     },
     {
       "component": "notification",
@@ -277,7 +359,12 @@
       "component": "tabs",
       "status": "prod",
       "display-name": "Tabs",
-      "SLDS-component-path": "/components/tabs"
+      "SLDS-component-path": "/components/tabs",
+      "dependencies": [
+        {
+          "component": "panel"
+        }
+      ]
     },
     {
       "component": "tree",
