@@ -18,7 +18,7 @@ import React, { PropTypes } from 'react';
 
 // ### Dropdown
 import MenuDropdown from '../menu-dropdown';
-import GlobalHeaderTrigger from './dropdown-trigger';
+import GlobalHeaderTrigger from './private/dropdown-trigger';
 
 // ## Constants
 import { GLOBAL_HEADER_TOOL } from '../../utilities/constants';

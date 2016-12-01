@@ -21,7 +21,7 @@ import classnames from 'classnames';
 
 // ### Dropdown
 import MenuDropdown from '../menu-dropdown';
-import GlobalHeaderTrigger from './dropdown-trigger';
+import GlobalHeaderTrigger from './private/dropdown-trigger';
 
 // ## Constants
 import { GLOBAL_HEADER_PROFILE } from '../../utilities/constants';
@@ -70,7 +70,7 @@ GlobalHeaderProfile.propTypes = {
 	 */
 	align: PropTypes.oneOf(['left', 'right']),
 	/**
-	 * By default, any children passed into this component will be rendered inside the dropdown menu. If you need custom content and a list, import 'design-system-react/components/menu-list/list' and pass in `<List>`.
+	 * By default, any children passed into this component will be rendered inside the dropdown menu. If you need custom content and a list, import 'design-system-react/components/utilities/menu-list/list' and pass in `<List>`.
 	 *
 	 * ```
 	 * <Dropdown>

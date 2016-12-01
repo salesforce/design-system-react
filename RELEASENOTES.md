@@ -11,8 +11,26 @@ These are changes that have backwards-compatible solutions present and that comp
 - `DataTable`'s' `collection`, `onSelect`, `onDeselect` are deprecated.
 - The prop `modal` in `DatePicker`, `Lookup`, `MenuDropdown`, `MenuPicklist`, `TimePicker` is deprecated
 - Remove `openByDefault` from `PopoverTooltip`.
+- Remove alias component files. Please update the following removed files to their new file name.
+    - tabs/pane
+    - SLDSSettings
+    - lookup/menu/
+    - lookup/menu/default-footer
+    - lookup/menu/default-header
+    - lookup/menu/default-section-divider
+    - lookup/menu/item/
+    - menu-list/list-item-label
+    - menu-list/list-item
+    - menu-list/list
 
 ---
+
+## Release 0.5.2
+
+**MINOR CHANGES**
+
+- React components that are really just sub-renders and are not meant to be consumed by end-users of this project have been moved to `components/[COMPONENT_NAME]/private`. Feel free to continue using components that are still in `components/[COMPONENT_NAME]` folder and consider them part of the public API. Hopefully, this adds clarity to what components can and should be used.
+
 
 ## Release 0.5.1
 
