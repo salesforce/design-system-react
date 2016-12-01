@@ -29,7 +29,8 @@ These are changes that have backwards-compatible solutions present and that comp
 
 **MINOR CHANGES**
 
-- React components that are really just sub-renders and are not meant to be consumed by end-users of this project have been moved to `components/[COMPONENT_NAME]/private`. Feel free to continue using components that are still in `components/[COMPONENT_NAME]` folder and consider them part of the public API. Hopefully, this adds clarity to what components can and should be used.
+- React components that are really are just sub-renders and are not meant to be consumed by end-users of this project have been moved to `components/[COMPONENT_NAME]/private`. Feel free to continue using components that are still in `components/[COMPONENT_NAME]` folder and consider them part of the public API. Hopefully, this adds clarity to what components can and should be used.
+- In order to automate more the documentation site, more components are listed in package.json and an `examples` folder has been added to the `-es` tagged package to be used by the doc site.
 
 
 ## Release 0.5.1
