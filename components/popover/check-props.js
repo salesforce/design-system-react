@@ -12,6 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 /* eslint-disable max-len */
 
 import oneOfRequiredProperty from '../../utilities/warning/one-of-required-property';
+import oneOfComponent from '../../utilities/warning/one-of-component';
 
 let checkProps = function () {};
 
@@ -21,6 +22,10 @@ if (process.env.NODE_ENV !== 'production') {
 			ariaLabelledby: props.ariaLabelledby,
 			heading: props.heading
 		});
+
+		if (props.children !== undefined) {
+			oneOfComponent(COMPONENT, props, 'children', ['SLDSButton', 'a', 'button']);
+		}
 	};
 }
 

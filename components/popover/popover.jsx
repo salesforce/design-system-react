@@ -106,9 +106,9 @@ const Popover = React.createClass({
 		 */
 		ariaLabelledby: PropTypes.string,
 		/**
-		 * The trigger of the component. This must be a single node. Many props will be passed into this trigger related to popover interactions.
+		 * The trigger of the component. This must be a **single node**. Many props will be passed into this trigger related to popover interactions. The child needs to be a clickable element, such as a `Button` or an anchor tag (`a`).
 		 */
-		children: PropTypes.node,
+		children: PropTypes.node.isRequired,
 		/**
 		 * The contents of the popover. This should also accept arrays.
 		 */
@@ -446,7 +446,7 @@ const Popover = React.createClass({
 	render () {
 		const outsideClickIgnoreClass = `ignore-click-${this.getId()}`;
 
-		const clonedTrigger = React.cloneElement(this.props.children, {
+		const clonedTrigger = this.props.children ? React.cloneElement(this.props.children, {
 			ref: (component) => { this.trigger = component; },
 			ariaHaspopup: true,
 			ariaExpanded: this.getIsOpen(),
@@ -469,7 +469,7 @@ const Popover = React.createClass({
 				|| this.props.openOn === 'hybrid'
 				? this.handleMouseLeave : null,
 			tabIndex: this.props.children.props.tabIndex || '0'
-		});
+		}) : null;
 
 		this.renderOverlay(this.getIsOpen());
 
