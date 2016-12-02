@@ -11,7 +11,11 @@ Please visit [Design System React](https://react.lightningdesignsystem.com/) for
 The Design System React library is the [React](https://facebook.github.io/react/) implementation of the [Lightning Design System](https://www.lightningdesignsystem.com/). Each Design System React component is a specific variant of a component from Lightning Design System. For example, `SLDSMenuDropdown` represents [Lightning Design System Menu > Dropdown](http://www.lightningdesignsystem.com/components/menus/#dropdown),
 and `SLDSLookup` represents [Lightning Design System Lookup > Base](http://www.lightningdesignsystem.com/components/lookups/#base).
 
-_It is highly recommended that you `npm install` the `-es` suffixed package tag and import the individual [ECMAScript 6](https://github.com/lukehoban/es6features/blob/master/README.md) source files in `./components/`._ If you do this, you will need to enable your ES5 transpiler to allow [stage-1 and higher proposed features](https://babeljs.io/docs/plugins/preset-stage-1/). If you are using Babel, it may be helpful to install the [NPM module](https://www.npmjs.com/package/babel-preset-stage-1) `babel-preset-stage-1` into your project and review the `.babelrc` file in this project. If you are looking for a a [CommonJS](https://nodejs.org/docs/latest/api/modules.html)-compatible package, use the package tag that does not have a suffix. 
+#### Multiple packages for different module loaders
+
+_It is highly recommended that you `npm install` the `-es` suffixed package tag and import the individual [ECMAScript 6](https://github.com/lukehoban/es6features/blob/master/README.md) source files in `./components/`._ If you do this, you will need to enable your ES5 transpiler to allow [stage-1 and higher proposed features](https://babeljs.io/docs/plugins/preset-stage-1/). If you are using Babel, it may be helpful to install the [NPM module](https://www.npmjs.com/package/babel-preset-stage-1) `babel-preset-stage-1` into your project and review the `.babelrc` file in this project. 
+
+If you are looking for a a [CommonJS](https://nodejs.org/docs/latest/api/modules.html)-compatible package, use the package tag that does not have a suffix. 
 
 ### Run local development and testing server
 

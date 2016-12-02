@@ -19,7 +19,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { PropTypes } from 'react';
 
 // Child components
-import Branch from './branch';
+import Branch from './private/branch';
 
 // ### classNames
 import classNames from 'classnames';
