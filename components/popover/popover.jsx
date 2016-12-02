@@ -30,6 +30,9 @@ import isBoolean from 'lodash.isboolean';
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
@@ -99,6 +102,10 @@ const Popover = React.createClass({
 			'left bottom'
 		]),
 		/**
+		 * HTML `id` of heading for popover. Only use if your header is within your popover body.
+		 */
+		ariaLabelledby: PropTypes.string,
+		/**
 		 * The trigger of the component. This must be a single node. Many props will be passed into this trigger related to popover interactions.
 		 */
 		children: PropTypes.node,
@@ -118,13 +125,17 @@ const Popover = React.createClass({
 		 * This prop is passed onto the triggering `Button`. Prevent dropdown menu from opening. Also applies disabled styling to trigger button.
 		 */
 		disabled: PropTypes.bool,
+		/*
+		 * A footer is an optional. Buttons are often placed here.
+		*/
+		footer: PropTypes.node,
 		/* Prevents the Popover from changing position based on the viewport/window. If set to true your popover can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the popover contents scrollable to fit the menu on the screen.
 		*/
 		hasStaticAlignment: PropTypes.bool,
 		/*
-		 * All popovers require a heading that labels the popover for assistive technology users.
+		 * All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop.
 		*/
-		heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+		heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 		/**
 		* By default, a unique ID will be created at render to support keyboard navigation, ARIA roles, and connect the popover to the triggering button. This ID will be applied to the triggering element. `${id}-popover`, `${id}-dialog-heading`, `${id}-dialog-body` are also created.
 		*/
@@ -184,6 +195,8 @@ const Popover = React.createClass({
 
 	componentWillMount () {
 		this.generatedId = shortid.generate();
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(POPOVER, this.props);
 	},
 
 	componentWillUnmount () {
@@ -355,7 +368,7 @@ const Popover = React.createClass({
 			isOpen ?
 				<Dialog
 					align={props.align}
-					contentsClassName={this.props.contentsClassName}
+					contentsClassName={classNames(this.props.contentsClassName, 'ignore-react-onclickoutside')}
 					constrainToScrollParent={props.constrainToScrollParent}
 					flippable={!props.hasStaticAlignment}
 					initialFocus={this.dialog}
@@ -374,7 +387,7 @@ const Popover = React.createClass({
 					variant="popover"
 				>
 					<div
-						aria-labelledby={`${this.getId()}-dialog-heading`}
+						aria-labelledby={this.props.ariaLabelledby ? this.props.ariaLabelledby : `${this.getId()}-dialog-heading`}
 						aria-describedby={`${this.getId()}-dialog-body`}
 						className={classNames(
 							'slds-popover',
@@ -395,17 +408,24 @@ const Popover = React.createClass({
 							onClick={this.handleCancel}
 							variant="icon"
 						/>
-						<header
-							className="slds-popover__header"
-						>
-							<h2 id={`${this.getId()}-dialog-heading`} className="slds-text-heading--small">{this.props.heading}</h2>
-						</header>
+						{this.props.heading
+							? <header
+								className="slds-popover__header"
+							>
+								<h2 id={`${this.getId()}-dialog-heading`} className="slds-text-heading--small">{this.props.heading}</h2>
+							</header>
+							: null}
 						<div
 							id={`${this.getId()}-dialog-body`}
 							className="slds-popover__body"
 						>
 							{props.body}
 						</div>
+						{this.props.footer
+							? <footer className="slds-popover__footer">
+								{this.props.footer}
+							</footer>
+							: null}
 					</div>
 				</Dialog> : null
 		);

@@ -168,6 +168,7 @@ describe('SLDSPopover', function () {
 			closeButtonAssistiveText: 'Shut it now!',
 			containerClassName: 'sample-container-classname',
 			containerStyle: { background: containerBackgroundColor },
+			footer: <p id="footer">Footer</p>,
 			style: { background: popoverBackgroundColor }
 		};
 
@@ -179,7 +180,7 @@ describe('SLDSPopover', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('has correct className, closeButtonAssistiveText, style', function (done) {
+		it('has correct className, closeButtonAssistiveText, style, and footer', function (done) {
 			wrapper = mount(<DemoComponent
 				{...optionalProps}
 				isOpen
@@ -191,6 +192,7 @@ describe('SLDSPopover', function () {
 
 					expect(popover.node.classList.contains(optionalProps.className)).to.be.true;
 					expect(popover.find('.slds-popover__close').node.textContent).to.equal(optionalProps.closeButtonAssistiveText);
+					expect(popover.find('#footer')).to.exist;
 					expect(popover.node.style.background).to.equal(popoverBackgroundColor);
 					done();
 				}}

@@ -69,7 +69,7 @@ const panelContent = (<div>
 					/>
 				</div>
 				<div className="slds-media__body">
-					<p className="slds-text-heading--small slds-hyphenate">Opportunities (2+)</p>
+					<p id="alternative-heading" className="slds-text-heading--small slds-hyphenate">Opportunities (2+)</p>
 				</div>
 			</div>
 		</dt>
@@ -129,13 +129,19 @@ storiesOf(POPOVER, module)
 	>{getStory()}</div>)
 	.add('Base', () => getPopover({
 		body: panelContent,
-		id: 'myPopoverId',
-		heading: 'My Popover'
+		heading: 'My Popover',
+		id: 'myPopoverId'
+	}))
+	.add('With Footer, no heading', () => getPopover({
+		ariaLabelledby: 'alternative-heading',
+		body: panelContent,
+		footer: <p id="footer">Footer</p>,
+		id: 'myPopoverId'
 	}))
 	.add('Styling', () => getPopover({
 		body: panelContent,
-		id: 'myPopoverId',
 		heading: 'My Popover',
+		id: 'myPopoverId',
 		className: 'sample-classname',
 		closeButtonAssistiveText: 'Shut it now!',
 		containerClassName: 'sample-container-classname',
