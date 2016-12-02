@@ -75,7 +75,7 @@ const PopoverNubbinPositions = [
 ];
 
 /**
- * The Popover component is a non-modal dialogs.
+ * The Popover component is a non-modal dialog. It should be paired with a clickable trigger such as a `Button`. It traps focus from the page and must be exited if focus needs to be outside the Popover. Use a `Tooltip` if there are no call to actions within the dialog. A `Tooltip` does not need to be clicked.
  */
 const Popover = React.createClass({
 	// ### Display Name
