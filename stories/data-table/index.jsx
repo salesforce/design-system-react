@@ -3,7 +3,7 @@ import { storiesOf, action } from '@kadira/storybook';
 
 import { DATA_TABLE } from '../../utilities/constants';
 import DataTable from '../../components/data-table';
-import Column from '../../components/data-table/column';
+import DataTableColumn from '../../components/data-table/column';
 import DataTableCell from '../../components/data-table/cell';
 
 /* eslint-disable no-script-url */
@@ -78,20 +78,20 @@ const DemoDataTable = React.createClass({
 				selection={this.state.selection}
 				{...this.props}
 			>
-				<Column
+				<DataTableColumn
 					label="Opportunity Name"
 					property="name"
 					truncate
 					sortable
 				>
 					<CustomDataTableCell />
-				</Column>
-				<Column
+				</DataTableColumn>
+				<DataTableColumn
 					label="Count"
 					property="count"
 					sortable
 				/>
-				<Column
+				<DataTableColumn
 					label="Last Modified"
 					property="lastModified"
 					sortable

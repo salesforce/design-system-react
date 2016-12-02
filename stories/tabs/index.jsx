@@ -6,7 +6,6 @@ import { TABS } from '../../utilities/constants';
 import Tabs from '../../components/tabs';
 import Panel from '../../components/tabs/panel';
 
-
 // Used in the Nested story
 import Input from '../../components/forms/input';
 import InputIcon from '../../components/icon/input-icon';
