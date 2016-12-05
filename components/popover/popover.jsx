@@ -371,7 +371,6 @@ const Popover = React.createClass({
 					contentsClassName={classNames(this.props.contentsClassName, 'ignore-react-onclickoutside')}
 					constrainToScrollParent={props.constrainToScrollParent}
 					flippable={!props.hasStaticAlignment}
-					initialFocus={this.dialog}
 					marginBottom={getMargin.bottom(props.align)}
 					marginLeft={getMargin.left(props.align)}
 					marginRight={getMargin.right(props.align)}
