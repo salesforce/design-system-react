@@ -54,7 +54,9 @@ const DateUtil = {
     return d1.getTime() === d2.getTime();
   },
   addDays(date, deltaDays) {
-    return new Date(date.getTime() + parseInt(deltaDays) * 86400000);
+    let d = new Date(date);
+    d.setDate(d.getDate() + parseInt(deltaDays));
+    return d;
   },
   addWeeks(date, deltaWeeks) {
     return DateUtil.addDays(date, parseInt(deltaWeeks)*7);
