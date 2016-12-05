@@ -11,7 +11,7 @@ import GlobalHeaderSearch from '../../components/global-header/search';
 
 import { GLOBAL_HEADER } from '../../utilities/constants';
 
-import globalNavigationBar from '../global-navigation-bar';
+import globalNavigationBar from '../global-navigation-bar/stories';
 
 /* eslint-disable react/prop-types */
 /* eslint-disable no-script-url */

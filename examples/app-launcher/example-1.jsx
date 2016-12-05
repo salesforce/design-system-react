@@ -1,3 +1,4 @@
+import React from 'react';
 import AppLauncher from 'design-system-react/components/app-launcher';
 import AppLauncherTile from 'design-system-react/components/app-launcher/tile';
 import AppLauncherSection from 'design-system-react/components/app-launcher/section';
@@ -55,4 +56,4 @@ const AppLauncherExample = React.createClass({
 	}
 });
 
-ReactDOM.render(<AppLauncherExample />, mountNode);
+export default AppLauncherExample;

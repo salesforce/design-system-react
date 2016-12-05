@@ -3,8 +3,8 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 
-import { FORMS_INLINE_EDIT } from '../../../utilities/constants';
-import InlineEdit from '../../../components/forms/input/inline';
+import { FORMS_INLINE_EDIT } from '../../../../utilities/constants';
+import InlineEdit from '../../../../components/forms/input/inline';
 
 const DemoInlineEdit = React.createClass({
 	displayName: 'DemoInlineEdit',

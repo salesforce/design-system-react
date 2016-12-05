@@ -1,5 +1,7 @@
 {
 	"extends": "eslint-config-slds",
 	"parser": "babel-eslint",
-    "rules": {}
+    "rules": {
+      "import/no-unresolved": [2, { "ignore": ["^[~]"] }]
+    }
 }

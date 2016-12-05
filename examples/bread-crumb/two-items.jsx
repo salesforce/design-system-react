@@ -1,4 +1,5 @@
-import BreadCrumb from 'design-system-react/components/bread-crumb';
+import React from 'react';
+import BreadCrumb from '~/components/bread-crumb';
 
 class BreadCrumbExample extends React.Component {
 	render () {
@@ -13,4 +14,4 @@ class BreadCrumbExample extends React.Component {
 	}
 }
 
-ReactDOM.render(<BreadCrumbExample />, mountNode);
+export default BreadCrumbExample;
