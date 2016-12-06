@@ -1,13 +1,16 @@
 import React from 'react';
-import AppLauncher from '~/components/app-launcher';
+import AppLauncher from '~/components/app-launcher'; // `~` is replaced with design-system-react at runtime
 import AppLauncherTile from '~/components/app-launcher/tile';
 import AppLauncherSection from '~/components/app-launcher/section';
+
+import GlobalNavigationBar from '~/components/global-navigation-bar';
+import GlobalNavigationBarRegion from '~/components/global-navigation-bar/region';
 
 import Icon from '~/components/icon';
 import Button from '~/components/button';
 import Search from '~/components/forms/input/search';
 
-const AppLauncherExample = React.createClass({
+const Example = React.createClass({
 	displayName: 'AppLauncherExample',
 
 	render () {
@@ -56,4 +59,4 @@ const AppLauncherExample = React.createClass({
 	}
 });
 
-export default AppLauncherExample;
+export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

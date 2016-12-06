@@ -1,7 +1,7 @@
 import React from 'react';
-import BreadCrumb from '~/components/bread-crumb';
+import BreadCrumb from '~/components/bread-crumb'; // `~` is replaced with design-system-react at runtime
 
-const BreadCrumbExample = React.createClass({
+const Example = React.createClass({
 	displayName: 'BreadCrumbExample',
 
 	render () {
@@ -15,4 +15,4 @@ const BreadCrumbExample = React.createClass({
 	}
 });
 
-export default BreadCrumbExample;
+export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
