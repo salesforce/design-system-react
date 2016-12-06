@@ -1,4 +1,4 @@
-import Icon from 'design-system-react/components/icon';
+import Icon from '~/components/icon';
 
 <div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
 	<div className="slds-col--padded">

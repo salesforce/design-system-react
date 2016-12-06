@@ -1,8 +1,8 @@
-import GlobalHeader from 'design-system-react/components/global-header';
-import GlobalHeaderButton from 'design-system-react/components/global-header/button';
-import GlobalHeaderDropdown from 'design-system-react/components/global-header/dropdown';
-import GlobalHeaderProfile from 'design-system-react/components/global-header/profile';
-import GlobalHeaderSearch from 'design-system-react/components/global-header/search';
+import GlobalHeader from '~/components/global-header';
+import GlobalHeaderButton from '~/components/global-header/button';
+import GlobalHeaderDropdown from '~/components/global-header/dropdown';
+import GlobalHeaderProfile from '~/components/global-header/profile';
+import GlobalHeaderSearch from '~/components/global-header/search';
 
 <GlobalHeader
 	logoSrc="/images/logo.svg"

@@ -1,5 +1,5 @@
-import Modal from 'design-system-react/components/modal';
-import Button from 'design-system-react/components/button';
+import Modal from '~/components/modal';
+import Button from '~/components/button';
 
 const ModalExample = React.createClass({
 	getInitialState () {

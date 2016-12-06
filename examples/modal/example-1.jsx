@@ -1,9 +1,9 @@
-import Modal from 'design-system-react/components/modal';
-import SLDSLookup from 'design-system-react/components/lookup';
-import SLDSMenuPicklist from 'design-system-react/components/menu-picklist';
-import SLDSTimepicker from 'design-system-react/components/time-picker';
-import SLDSDatepicker from 'design-system-react/components/date-picker';
-import SLDSButton from 'design-system-react/components/button';
+import Modal from '~/components/modal';
+import SLDSLookup from '~/components/lookup';
+import SLDSMenuPicklist from '~/components/menu-picklist';
+import SLDSTimepicker from '~/components/time-picker';
+import SLDSDatepicker from '~/components/date-picker';
+import SLDSButton from '~/components/button';
 
 const ModalExample = React.createClass({
 	getInitialState () {

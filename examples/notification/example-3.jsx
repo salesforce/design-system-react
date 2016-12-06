@@ -1,6 +1,6 @@
-import Notification from 'design-system-react/components/notification';
-import Modal from 'design-system-react/components/modal';
-import Button from 'design-system-react/components/button';
+import Notification from '~/components/notification';
+import Modal from '~/components/modal';
+import Button from '~/components/button';
 
 const NotificationExample = React.createClass({
 	getInitialState () {

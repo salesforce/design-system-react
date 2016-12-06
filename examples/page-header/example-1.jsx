@@ -1,4 +1,4 @@
-import SLDSPageHeader from 'design-system-react/components/page-header';
+import SLDSPageHeader from '~/components/page-header';
 
 const PageHeaderExample = React.createClass({
 	render(){

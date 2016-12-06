@@ -1,6 +1,6 @@
-import ButtonGroup from 'design-system-react/components/button-group';
-import Button from 'design-system-react/components/button';
-import Dropdown from 'design-system-react/components/menu-dropdown';
+import ButtonGroup from '~/components/button-group';
+import Button from '~/components/button';
+import Dropdown from '~/components/menu-dropdown';
 
 <ButtonGroup>
 	<Button label="Refresh" />

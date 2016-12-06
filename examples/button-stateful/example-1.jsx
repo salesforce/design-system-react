@@ -1,4 +1,4 @@
-import ButtonStateful from 'design-system-react/components/button-stateful';
+import ButtonStateful from '~/components/button-stateful';
 
 <ButtonStateful
 	assistiveText="like"

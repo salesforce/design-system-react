@@ -1,6 +1,6 @@
-import PopoverTooltip from 'design-system-react/components/popover-tooltip';
-import ButtonGroup from 'design-system-react/components/button-group';
-import Button from 'design-system-react/components/button';
+import PopoverTooltip from '~/components/popover-tooltip';
+import ButtonGroup from '~/components/button-group';
+import Button from '~/components/button';
 
 <ButtonGroup className="slds-p-bottom--medium">
 	<PopoverTooltip

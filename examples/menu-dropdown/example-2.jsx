@@ -1,4 +1,4 @@
-import Dropdown from 'design-system-react/components/menu-dropdown';
+import Dropdown from '~/components/menu-dropdown';
 
 <Dropdown
 	assistiveText="Icon More large"

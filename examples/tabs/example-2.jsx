@@ -1,5 +1,5 @@
-import Tabs from 'design-system-react/components/tabs';
-import Panel from 'design-system-react/components/tabs/panel';
+import Tabs from '~/components/tabs';
+import Panel from '~/components/tabs/panel';
 
 <Tabs id="tabs-example-1">
 	<TabsPanel label="Tab 1">

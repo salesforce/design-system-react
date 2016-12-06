@@ -1,5 +1,5 @@
-import PopoverTooltip from 'design-system-react/components/popover-tooltip';
-import Button from 'design-system-react/components/button';
+import PopoverTooltip from '~/components/popover-tooltip';
+import Button from '~/components/button';
 
 <PopoverTooltip
 	align="right"

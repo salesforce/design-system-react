@@ -1,4 +1,4 @@
-import Button from 'design-system-react/components/button';
+import Button from '~/components/button';
 
 <div className="-x-small-buttons--horizontal">
 	<Button

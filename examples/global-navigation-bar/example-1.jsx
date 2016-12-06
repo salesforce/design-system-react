@@ -1,13 +1,11 @@
-import GlobalNavigationBar from 'design-system-react/components/global-navigation-bar';
-import GlobalNavigationBarRegion from 'design-system-react/components/global-navigation-bar/region';
-import GlobalNavigationBarDropdown from 'design-system-react/components/global-navigation-bar/dropdown';
-import GlobalNavigationBarLink from 'design-system-react/components/global-navigation-bar/link';
-import GlobalNavigationBarLabel from 'design-system-react/components/global-navigation-bar/label';
-import GlobalNavigationBarButton from 'design-system-react/components/global-navigation-bar/button';
+import GlobalNavigationBar from '~/components/global-navigation-bar';
+import GlobalNavigationBarRegion from '~/components/global-navigation-bar/region';
+import GlobalNavigationBarDropdown from '~/components/global-navigation-bar/dropdown';
+import GlobalNavigationBarLink from '~/components/global-navigation-bar/link';
 
-import AppLauncher from 'design-system-react/components/app-launcher';
-import AppLauncherSection from 'design-system-react/components/app-launcher/section';
-import AppLauncherTile from 'design-system-react/components/app-launcher/tile';
+import AppLauncher from '~/components/app-launcher';
+import AppLauncherSection from '~/components/app-launcher/section';
+import AppLauncherTile from '~/components/app-launcher/tile';
 
 const GlobalNavigationBarExample = React.createClass({
 	displayName: 'GlobalNavigationBarExample',

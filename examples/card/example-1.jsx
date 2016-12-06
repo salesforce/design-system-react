@@ -1,12 +1,12 @@
 import { CARD } from '../../utilities/constants';
-import Button from 'design-system-react/components/button';
-import Card from 'design-system-react/components/card';
-import CardEmpty from 'design-system-react/components/card/empty';
-import CardFilter from 'design-system-react/components/card/filter';
-import DataTable from 'design-system-react/components/data-table';
-import DataTableColumn from 'design-system-react/components/data-table/column';
-import DataTableHighlightCell from 'design-system-react/components/data-table/highlight-cell';
-import Icon from 'design-system-react/components/icon';
+import Button from '~/components/button';
+import Card from '~/components/card';
+import CardEmpty from '~/components/card/empty';
+import CardFilter from '~/components/card/filter';
+import DataTable from '~/components/data-table';
+import DataTableColumn from '~/components/data-table/column';
+import DataTableHighlightCell from '~/components/data-table/highlight-cell';
+import Icon from '~/components/icon';
 
 const sampleItems = [{
 	name: 'Cloudhub'}, {

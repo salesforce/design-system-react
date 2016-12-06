@@ -1,6 +1,6 @@
-import SLDSPageHeader from 'design-system-react/components/page-header';
-import SLDSButton from 'design-system-react/components/button';
-import SLDSButtonGroup from 'design-system-react/components/button-group';
+import SLDSPageHeader from '~/components/page-header';
+import SLDSButton from '~/components/button';
+import SLDSButtonGroup from '~/components/button-group';
 
 const PageHeaderExample = React.createClass({
 	render() {

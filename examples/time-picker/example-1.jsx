@@ -1,4 +1,4 @@
-import Timepicker from 'design-system-react/components/time-picker';
+import Timepicker from '~/components/time-picker';
 
 <Timepicker 
 	stepInMinutes={30}

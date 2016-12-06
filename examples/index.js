@@ -2,7 +2,7 @@
 
 const Snippets = {
 	'app-launcher': [
-		require('raw-loader!design-system-react/examples/app-launcher/example-1.jsx')
+		require('raw-loader!design-system-react/examples/app-launcher/default.jsx')
 	],
 	'bread-crumb': [
 		require('raw-loader!design-system-react/examples/bread-crumb/two-items.jsx'),

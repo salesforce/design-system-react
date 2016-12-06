@@ -1,4 +1,4 @@
-import ButtonGroup from 'design-system-react/components/button-group';
+import ButtonGroup from '~/components/button-group';
 
 <ButtonGroup>
 	<ButtonStateful

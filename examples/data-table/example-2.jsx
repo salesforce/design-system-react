@@ -1,7 +1,7 @@
-import DataTable from 'design-system-react/components/data-table';
-import DataTableColumn from 'design-system-react/components/data-table/column';
-import DataTableCell from 'design-system-react/components/data-table/cell';
-import DataTableRowActions from 'design-system-react/components/data-table/row-actions';
+import DataTable from '~/components/data-table';
+import DataTableColumn from '~/components/data-table/column';
+import DataTableCell from '~/components/data-table/cell';
+import DataTableRowActions from '~/components/data-table/row-actions';
 
 const DataTableExample = React.createClass({
 	displayName: 'DataTableExample',

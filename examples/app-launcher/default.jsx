@@ -1,11 +1,11 @@
 import React from 'react';
-import AppLauncher from 'design-system-react/components/app-launcher';
-import AppLauncherTile from 'design-system-react/components/app-launcher/tile';
-import AppLauncherSection from 'design-system-react/components/app-launcher/section';
+import AppLauncher from '~/components/app-launcher';
+import AppLauncherTile from '~/components/app-launcher/tile';
+import AppLauncherSection from '~/components/app-launcher/section';
 
-import Icon from 'design-system-react/components/icon';
-import Button from 'design-system-react/components/button';
-import Search from 'design-system-react/components/forms/input/search';
+import Icon from '~/components/icon';
+import Button from '~/components/button';
+import Search from '~/components/forms/input/search';
 
 const AppLauncherExample = React.createClass({
 	displayName: 'AppLauncherExample',

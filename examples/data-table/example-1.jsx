@@ -1,6 +1,6 @@
-import DataTable from 'design-system-react/components/data-table';
-import DataTableColumn from 'design-system-react/components/data-table/column';
-import DataTableCell from 'design-system-react/components/data-table/cell';
+import DataTable from '~/components/data-table';
+import DataTableColumn from '~/components/data-table/column';
+import DataTableCell from '~/components/data-table/cell';
 
 const DataTableExample = React.createClass({
 	displayName: 'DataTableExample',
@@ -91,4 +91,4 @@ const DataTableExample = React.createClass({
 	}
 });
 
-ReactDOM.render(<DataTableExample />, mountNode);
+export default DataTableExample;

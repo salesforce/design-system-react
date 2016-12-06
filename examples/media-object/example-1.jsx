@@ -1,4 +1,4 @@
-import MediaObject from 'design-system-react/components/media-object';
+import MediaObject from '~/components/media-object';
 
 const MediaObjectExample = React.createClass({
 	displayName: 'MediaObjectExample',

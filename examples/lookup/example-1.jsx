@@ -1,4 +1,4 @@
-import Lookup from 'design-system-react/components/lookup';
+import Lookup from '~/components/lookup';
 
 <Lookup
 	emptyMessage="No items found"

@@ -1,7 +1,9 @@
 import React from 'react';
 import BreadCrumb from '~/components/bread-crumb';
 
-class BreadCrumbExample extends React.Component {
+const BreadCrumbExample = React.createClass({
+	displayName: 'BreadCrumbExample',
+
 	render () {
 		const trail = [
 			(<a href="#">Parent Entity</a>),
@@ -12,6 +14,6 @@ class BreadCrumbExample extends React.Component {
 			<BreadCrumb trail={trail} />
 			);
 	}
-}
+});
 
 export default BreadCrumbExample;

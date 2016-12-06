@@ -1,4 +1,4 @@
-import Tree from 'design-system-react/components/tree';
+import Tree from '~/components/tree';
 
 const sampleNodes = {
 	sampleNodesWithInitialState: [
