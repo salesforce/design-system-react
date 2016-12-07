@@ -1,19 +1,19 @@
-import { CARD } from '../../utilities/constants';
-import Button from '~/components/button';
+import React from 'react';
+import Button from '~/components/button'; // `~` is replaced with design-system-react at runtime
 import Card from '~/components/card';
 import CardEmpty from '~/components/card/empty';
 import CardFilter from '~/components/card/filter';
 import DataTable from '~/components/data-table';
 import DataTableColumn from '~/components/data-table/column';
-import DataTableHighlightCell from '~/components/data-table/highlight-cell';
 import Icon from '~/components/icon';
 
-const sampleItems = [{
-	name: 'Cloudhub'}, {
-	name: 'Cloudhub + Anypoint Connectors'},{
-	name: 'Cloud City'}];
+const sampleItems = [
+	{ name: 'Cloudhub' },
+	{ name: 'Cloudhub + Anypoint Connectors' },
+	{ name: 'Cloud City' }
+];
 
-const CardExample = React.createClass({
+const Example = React.createClass({
 	displayName: 'CardExample',
 
 	getInitialState () {
@@ -70,4 +70,4 @@ const CardExample = React.createClass({
 	},
 });
 
-ReactDOM.render(<CardExample />, mountNode);
+export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

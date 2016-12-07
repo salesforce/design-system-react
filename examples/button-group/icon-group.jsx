@@ -14,7 +14,7 @@ import ButtonGroup from '~/components/button-group';
 		iconVariant="border"
 		variant="icon"
 	/>
-	<MenuDropdown
+	<Dropdown
 		assistiveText="Sort"
 		checkmark
 		iconName="sort"

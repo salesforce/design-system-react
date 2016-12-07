@@ -5,31 +5,31 @@ const Snippets = {
 		require('raw-loader!design-system-react/examples/app-launcher/default.jsx')
 	],
 	'bread-crumb': [
-		require('raw-loader!design-system-react/examples/bread-crumb/two-items.jsx'),
+		require('raw-loader!design-system-react/examples/bread-crumb/base.jsx'),
 		require('raw-loader!design-system-react/examples/bread-crumb/one-item.jsx')
 	],
 	button: [
-		require('raw-loader!design-system-react/examples/button/example-1.jsx'),
-		require('raw-loader!design-system-react/examples/button/example-2.jsx'),
-		require('raw-loader!design-system-react/examples/button/example-3.jsx')
+		require('raw-loader!design-system-react/examples/button/base-neutral.jsx'),
+		require('raw-loader!design-system-react/examples/button/brand-disabled-destructive-inverse.jsx'),
+		require('raw-loader!design-system-react/examples/button/button-icons.jsx')
 	],
 	'button-group': [
-		require('raw-loader!design-system-react/examples/button-group/example-1.jsx'),
-		require('raw-loader!design-system-react/examples/button-group/example-2.jsx')
+		require('raw-loader!design-system-react/examples/button-group/more-icon.jsx'),
+		require('raw-loader!design-system-react/examples/button-group/icon-group.jsx')
 	],
 	'button-stateful': [
-		require('raw-loader!design-system-react/examples/button-stateful/example-1.jsx'),
-		require('raw-loader!design-system-react/examples/button-stateful/example-2.jsx')
+		require('raw-loader!design-system-react/examples/button-stateful/icon.jsx'),
+		require('raw-loader!design-system-react/examples/button-stateful/icon-text.jsx')
 	],
 	card: [
-		require('raw-loader!design-system-react/examples/card/example-1.jsx')
+		require('raw-loader!design-system-react/examples/card/related-list-with-table.jsx')
 	],
 	'forms-checkbox': [
-		require('raw-loader!design-system-react/examples/forms-checkbox/example-1.jsx')
+		require('raw-loader!design-system-react/examples/forms/checkbox/default.jsx')
 	],
 	'data-table': [
-		require('raw-loader!design-system-react/examples/data-table/example-1.jsx'),
-		require('raw-loader!design-system-react/examples/data-table/example-2.jsx')
+		require('raw-loader!design-system-react/examples/data-table/basic.jsx'),
+		require('raw-loader!design-system-react/examples/data-table/advanced.jsx')
 	],
 	'date-picker': [
 		require('raw-loader!design-system-react/examples/date-picker/example-1.jsx')
@@ -38,13 +38,13 @@ const Snippets = {
 		require('raw-loader!design-system-react/examples/icon/example-1.jsx')
 	],
 	'forms-input-inline': [
-		require('raw-loader!design-system-react/examples/forms-input-inline/example-1.jsx')
+		require('raw-loader!design-system-react/examples/forms/input/inline/example-1.jsx')
 	],
 	'forms-input': [
-		require('raw-loader!design-system-react/examples/forms-input/example-1.jsx'),
-		require('raw-loader!design-system-react/examples/forms-input/example-2.jsx'),
-		require('raw-loader!design-system-react/examples/forms-input/example-3.jsx'),
-		require('raw-loader!design-system-react/examples/forms-input/example-4.jsx')
+		require('raw-loader!design-system-react/examples/forms/input/example-1.jsx'),
+		require('raw-loader!design-system-react/examples/forms/input/example-2.jsx'),
+		require('raw-loader!design-system-react/examples/forms/input/example-3.jsx'),
+		require('raw-loader!design-system-react/examples/forms/input/example-4.jsx')
 	],
 	'global-header': [
 		require('raw-loader!design-system-react/examples/global-header/example-1.jsx')
@@ -84,7 +84,7 @@ const Snippets = {
 		require('raw-loader!design-system-react/examples/page-header/example-3.jsx'),
 		require('raw-loader!design-system-react/examples/page-header/example-4.jsx')
 	],
-	'tooltip': [
+	'popover-tooltip': [
 		require('raw-loader!design-system-react/examples/popover-tooltip/example-1.jsx'),
 		require('raw-loader!design-system-react/examples/popover-tooltip/example-2.jsx'),
 		require('raw-loader!design-system-react/examples/popover-tooltip/example-3.jsx')
