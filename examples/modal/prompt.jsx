@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from '~/components/modal';
+import Modal from '~/components/modal'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 
 const Example = React.createClass({

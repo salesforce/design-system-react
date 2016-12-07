@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from '~/components/modal';
+import Modal from '~/components/modal'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 import Lookup from '~/components/lookup';
 import Picklist from '~/components/menu-picklist';
@@ -24,8 +24,8 @@ const Example = React.createClass({
 				<Modal
 					isOpen={this.state.isOpen}
 					footer={[
-						<Button key="modalBCancel" label="Cancel" onClick={this.toggleOpen} />,
-						<Button key="modalBSave" label="Save" variant="brand" onClick={this.toggleOpen} />
+						<Button label="Cancel" onClick={this.toggleOpen} />,
+						<Button label="Save" variant="brand" onClick={this.toggleOpen} />
 					]}
 					onRequestClose={this.toggleOpen}
 					title="New Opportunity"
