@@ -1,13 +1,17 @@
-import GlobalNavigationBar from '~/components/global-navigation-bar';
+import React from 'react';
+import GlobalNavigationBar from '~/components/global-navigation-bar'; // `~` is replaced with design-system-react at runtime
 import GlobalNavigationBarRegion from '~/components/global-navigation-bar/region';
 import GlobalNavigationBarDropdown from '~/components/global-navigation-bar/dropdown';
 import GlobalNavigationBarLink from '~/components/global-navigation-bar/link';
+
+import Button from '~/components/button';
+import Icon from '~/components/icon';
 
 import AppLauncher from '~/components/app-launcher';
 import AppLauncherSection from '~/components/app-launcher/section';
 import AppLauncherTile from '~/components/app-launcher/tile';
 
-const GlobalNavigationBarExample = React.createClass({
+const Example = React.createClass({
 	displayName: 'GlobalNavigationBarExample',
 
 	render () {
@@ -97,4 +101,4 @@ const GlobalNavigationBarExample = React.createClass({
 	}
 });
 
-ReactDOM.render(<GlobalNavigationBarExample />, mountNode);
+export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

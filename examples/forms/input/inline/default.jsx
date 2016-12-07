@@ -1,6 +1,7 @@
-import InlineEdit from '../../../components/forms/input/inline';
+import React from 'react';
+import InlineEdit from '~/components/forms/input/inline'; // `~` is replaced with design-system-react at runtime
 
-const InlineEditExample = React.createClass({
+const Example = React.createClass({
 	displayName: 'InlineEditExample',
 
 	getInitialState () {
@@ -25,4 +26,4 @@ const InlineEditExample = React.createClass({
 	}
 });
 
-ReactDOM.render(<InlineEditExample />, mountNode);
+export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

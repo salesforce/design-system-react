@@ -1,17 +1,19 @@
-import MediaObject from '~/components/media-object';
+import React from 'react';
+import MediaObject from '~/components/media-object'; // `~` is replaced with design-system-react at runtime
+import Icon from '~/components/icon';
 
-const MediaObjectExample = React.createClass({
+const Example = React.createClass({
 	displayName: 'MediaObjectExample',
 
 	render () {
 		return (
 			<MediaObject
 				body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda."
-				figure={<Icon category="standard" name="user" size="medium" />}
+				figure={<Icon category="standard" name="user" size="large" />}
 				verticalCenter
 			/>
 		);
 	}
 });
 
-ReactDOM.render(<MediaObjectExample />, mountNode);
+export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

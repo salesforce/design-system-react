@@ -1,12 +1,12 @@
 const ListItemRenderer = React.createClass({
-	render(){
-		return (			
-			<SLDSPopoverTooltip
+	render () {
+		return (
+			<PopoverTooltip
 				openByDefault={this.props.isHighlighted}
 				align="bottom left"
 				content="Tooltip on top">
 					<p className='slds-truncate'>~~ {this.props.label}</p>
-			</SLDSPopoverTooltip>
+			</PopoverTooltip>
 		);
 	}
 });
@@ -14,7 +14,7 @@ const ListItemRenderer = React.createClass({
 const PicklistExample = React.createClass({
 	render(){
 		return (
-			<SLDSMenuPicklist
+			<Picklist
 				listItemRenderer={ListItemRenderer}
 				label="Contacts"
 				onSelect={function(value){console.log("selected: ",value)}}

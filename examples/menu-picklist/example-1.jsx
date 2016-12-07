@@ -1,4 +1,4 @@
-<SLDSMenuPicklist
+<Picklist
 	label="Contacts"
 	onSelect={function(value){console.log("selected: ",value)}}
 	options={[
