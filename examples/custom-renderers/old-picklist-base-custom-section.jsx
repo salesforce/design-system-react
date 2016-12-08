@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
-import { SLDSPicklistBase, SLDSIcon } from 'design-system-react/components';
+import { SLDSPicklistBase, SLDSIcon } from '~/components';
 
 import CustomListItemLabel from './custom-list-item-label.cjsx';
 
