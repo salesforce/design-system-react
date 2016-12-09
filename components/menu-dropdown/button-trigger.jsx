@@ -102,7 +102,11 @@ const Trigger = React.createClass({
 		/**
 		 * The ref of the actual triggering button.
 		 */
-		triggerRef: PropTypes.func
+		triggerRef: PropTypes.func,
+		/**
+		 * CSS classes to be added to wrapping trigger `div` around the button.
+		 */
+		triggerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string])
 	},
 
 	// ### Render
@@ -124,6 +128,7 @@ const Trigger = React.createClass({
 			onMouseLeave,
 			openOn,
 			triggerRef,
+			triggerClassName,
 			...deprecatedPropsFromMenuDropdown
 		} = this.props;
 
@@ -145,7 +150,8 @@ const Trigger = React.createClass({
 				`slds-dropdown-trigger slds-dropdown-trigger--${openOn}`,
 					{
 						'slds-is-open': isOpen
-					}
+					},
+					triggerClassName
 				)}
 				id={id}
 				onBlur={onBlur}

@@ -300,7 +300,11 @@ const MenuDropdown = React.createClass({
 		/**
 		 * This prop is passed onto the triggering `Button`. It creates a tooltip with the content of the `node` provided.
 		 */
-		tooltip: PropTypes.node
+		tooltip: PropTypes.node,
+		/**
+		 * CSS classes to be added to wrapping trigger `div` around the button.
+		 */
+		triggerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string])
 	},
 
 	getDefaultProps () {
@@ -810,6 +814,7 @@ const MenuDropdown = React.createClass({
 				style={this.props.style}
 				tabIndex={isOpen ? '-1' : '0'}
 				tooltip={this.props.tooltip}
+				triggerClassName={this.props.triggerClassName}
 				triggerRef={this.saveRefToTrigger}
 				variant={this.props.buttonVariant}
 				{...CustomTriggerChildProps}
