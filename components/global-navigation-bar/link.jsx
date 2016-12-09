@@ -64,12 +64,12 @@ const GlobalNavigationBarLink = (props) => {
 				{ 'slds-is-active': active,
 				[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition
 			})}
+			id={id}
 			style={listItemstyle}
 		>
 			<a
 				href={href}
 				className={classNames('slds-context-bar__label-action', className)}
-				id={id}
 				onBlur={onBlur}
 				onClick={isFunction(onClick) ? (event) => handleClick(event, href, onClick) : null}
 				onFocus={onFocus}
@@ -108,7 +108,7 @@ GlobalNavigationBarLink.propTypes = {
 	 */
 	href: PropTypes.string,
 	/**
-	 * The `id` attribute of the link applied to the anchor tag.
+	 * The `id` attribute is applied to the `li` tag. _This was recently changed from being on the anchor tag._
 	 */
 	id: PropTypes.string,
 	/**
