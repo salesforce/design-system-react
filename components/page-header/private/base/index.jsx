@@ -9,53 +9,36 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import React, { Component } from 'react';
-import classnames from 'classnames';
-import omit from 'lodash.omit';
+import React, { PropTypes } from 'react';
+import MediaObject from '../../../media-object';
 
 const displayName = 'PageHeaderBase';
 const propTypes = {
 	/**
 	 * Icon node passed by PageHeader
 	 */
-	icon: React.PropTypes.node,
+	icon: PropTypes.node,
 	/**
 	 * Title node passed by PageHeader
 	 */
-	title: React.PropTypes.node,
+	title: PropTypes.node,
 	/**
 	 * Info node passed by PageHeader
 	 */
-	info: React.PropTypes.node,
+	info: PropTypes.node
 };
-const defaultProps = {};
 
-class Base extends Component {
-	renderIcon() {
-		if(this.props.icon) {
-			return (
-				<div className="slds-media__figure">
-					{ this.props.icon }
-				</div>
-			)
-		}
-	}
-
-	render() {
-		return (
-			<div className="slds-media slds-media--center">
-				{this.renderIcon()}
-				<div className="slds-media__body">
-					{ this.props.title }
-					{ this.props.info }
-				</div>
-			</div>
-		);
-	}
-}
+const Base = (props) => (
+	<MediaObject
+		body={<div>
+			{props.title}
+			{props.info}</div>}
+		figure={props.icon}
+		verticalCenter
+	/>
+);
 
 Base.displayName = displayName;
 Base.propTypes = propTypes;
-Base.defaultProps = defaultProps;
 
 module.exports = Base;

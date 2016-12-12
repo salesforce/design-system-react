@@ -11,6 +11,8 @@ import SLDSButton from '../../components/button';
 import SLDSMenuDropdown from '../../components/menu-dropdown';
 import PopoverTooltip from '../../components/popover-tooltip';
 
+import ObjectHome from './object-home';
+
 const recordHomeDetails1 = [
 	{ label: 'Field 1', content: 'Description that demonstrates truncation with content. Description that demonstrates truncation with content.', flavor: '1-of-4', truncate: true },
 	{ label: 'Field 2', content: 'Multiple Values' },
@@ -32,8 +34,8 @@ const DemoPageHeader = React.createClass({
 		};
 	},
 
-	changeDescription() {
-		if(this.state.recordHomeDetails[0].content == 'hi') {
+	changeDescription () {
+		if (this.state.recordHomeDetails[0].content === 'hi') {
 			this.setState({ recordHomeDetails: recordHomeDetails1 });
 		} else {
 			this.setState({ recordHomeDetails: recordHomeDetails2 });
@@ -64,7 +66,7 @@ const DemoPageHeader = React.createClass({
 		this.setState({ currentSelected: this.state.options.indexOf(selectedItem) });
 	}
 });
-const getPageHeader = props => (
+const getPageHeader = (props) => (
 	<SLDSPageHeader {...props} />
 );
 
@@ -184,13 +186,11 @@ const objectHomeNavRight = (
 			variant="neutral"
 		/>
 		<SLDSMenuDropdown
+			align="right"
 			assistiveText="More Options"
-			buttonVariant="icon"
 			iconName="down"
 			iconVariant="border-filled"
 			onSelect={action('select')}
-			openOn="click"
-			align="right"
 			options={[
 				{ label: 'Refresh List', value: 'A0' },
 				{ label: 'Duplicate Selected Leads', value: 'B0' },
@@ -291,14 +291,7 @@ storiesOf(PAGE_HEADER, module)
 		contentRight: recordHomeContentRight,
 		details: recordHomeDetails
 	}))
-	.add('Object Home', () => getPageHeader({
-		label: 'Leads',
-		title: 'My Leads',
-		variant: 'objectHome',
-		info: '10 items • sorted by name',
-		contentRight: objectHomeContentRight,
-		navRight: objectHomeNavRight
-	}))
+	.add('Object Home', () => <ObjectHome />)
 	.add('Related List', () => getPageHeader({
 		title: 'Contacts',
 		variant: 'objectHome',

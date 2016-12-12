@@ -2,7 +2,7 @@ import React from 'react';
 import PageHeader from '~/components/page-header'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 import ButtonGroup from '~/components/button-group';
-import Dropdown from '~/components/dropdown';
+import Dropdown from '~/components/menu-dropdown';
 import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
 
 const Example = React.createClass({
@@ -10,29 +10,27 @@ const Example = React.createClass({
 	
 	render () {
 		const navRight = (
-			<div>
-				<ButtonGroup>
-					<Button
-						label="New Lead"
-					/>
-					<Button
-						label="Import Leads"
-					/>
-					<Dropdown
-						align="right"
-						assistiveText="More Options"
-						iconName="down"
-						iconVariant="border-filled"
-						options={[
-							{ label: 'Menu Item One', value: 'A0' },
-							{ label: 'Menu Item Two', value: 'B0' },
-							{ label: 'Menu Item Three', value: 'C0' },
-							{ type: 'divider' },
-							{ label: 'Menu Item Four', value: 'D0' }
-						]}
-					/>
-				</ButtonGroup>
-			</div>
+			<ButtonGroup>
+				<Button
+					label="New Lead"
+				/>
+				<Button
+					label="Import Leads"
+				/>
+				<Dropdown
+					align="right"
+					assistiveText="More Options"
+					iconName="down"
+					iconVariant="border-filled"
+					options={[
+						{ label: 'Menu Item One', value: 'A0' },
+						{ label: 'Menu Item Two', value: 'B0' },
+						{ label: 'Menu Item Three', value: 'C0' },
+						{ type: 'divider' },
+						{ label: 'Menu Item Four', value: 'D0' }
+					]}
+				/>
+			</ButtonGroup>
 		);
 
 		const contentRight = (
@@ -117,7 +115,28 @@ const Example = React.createClass({
 				info="10 items • sorted by name"
 				label="Leads"
 				navRight={navRight}
-				title="My Leads"
+				title={<h1 className="slds-page-header__title slds-p-right--x-small">
+					<Dropdown
+						options={[
+							{ label: 'Menu Item One', value: 'A0' },
+							{ label: 'Menu Item Two', value: 'B0' },
+							{ label: 'Menu Item Three', value: 'C0' },
+							{ type: 'divider' },
+							{ label: 'Menu Item Four', value: 'D0' }
+						]}
+					>
+						<DropdownTrigger>
+							<Button
+								className="slds-button--reset slds-type-focus"
+								iconName="down"
+								iconPosition="right"
+								label="Dropdown"
+								responsive
+								variant="base"
+							/>
+						</DropdownTrigger>
+					</Dropdown>
+				</h1>}
 				truncate
 				variant="objectHome"
 			/>
