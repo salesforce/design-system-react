@@ -58,7 +58,47 @@ const Example = React.createClass({
 		return (
 			<div style={{ overflow: 'auto' }}>
 				<DataTable
-					bordered
+					items={this.state.items}
+					id="DataTableExample-1"
+					onChange={this.handleChanged}
+				>
+					<DataTableColumn
+						label="Opportunity Name"
+						property="opportunityName"
+						truncate
+						sortable
+					>
+						<CustomDataTableCell />
+					</DataTableColumn>
+					<DataTableColumn
+						label="Account Name"
+						property="accountName"
+					/>
+					<DataTableColumn
+						label="Close Date"
+						property="closeDate"
+					/>
+					<DataTableColumn
+						label="Stage"
+						property="stage"
+					/>
+					<DataTableColumn
+						label="Confidence"
+						property="confidence"
+					/>
+					<DataTableColumn
+						label="Amount"
+						property="amount"
+					/>
+					<DataTableColumn
+						label="Contact"
+						property="contact"
+					>
+						<CustomDataTableCell />
+					</DataTableColumn>
+				</DataTable>
+				<br />
+				<DataTable
 					items={this.state.items}
 					id="DataTableExample-1"
 					onChange={this.handleChanged}
@@ -100,6 +140,7 @@ const Example = React.createClass({
 						<CustomDataTableCell />
 					</DataTableColumn>
 				</DataTable>
+
 			</div>
 		);
 	},

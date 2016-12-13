@@ -68,10 +68,6 @@ const DataTable = React.createClass({
 	// ### Prop Types
 	propTypes: {
 		/**
-		 * A variant which adds borders to the table.
-		 */
-		bordered: PropTypes.bool,
-		/**
 		 * A variant which adds more horizontal padding to the outter edges of the table.
 		 */
 		buffered: PropTypes.bool,
@@ -143,20 +139,18 @@ const DataTable = React.createClass({
 		/**
 		 * A variant which adds stripes to alternating rows.
 		 */
-		striped: PropTypes.bool
+		striped: PropTypes.bool,
+		/**
+		 * Tables have borders by default. This removes them.
+		 */
+		unbordered: PropTypes.bool
 	},
 
 	getDefaultProps () {
 		return {
-			bordered: false,
-			columnBordered: false,
 			id: shortid.generate(),
-			noRowHover: false,
 			selection: [],
-			selectRows: false,
-			stacked: false,
-			stackedHorizontal: false,
-			striped: false
+			unbordered: false
 		};
 	},
 
@@ -221,7 +215,7 @@ const DataTable = React.createClass({
 		return (
 			<table
 				className={classNames('slds-table slds-table--fixed-layout', {
-					'slds-table--bordered': this.props.bordered,
+					'slds-table--bordered': !this.props.unbordered,
 					'slds-table--cell-buffer': this.props.buffered,
 					'slds-max-medium-table--stacked': this.props.stacked,
 					'slds-max-medium-table--stacked-horizontalviewports': this.props.stackedHorizontal,

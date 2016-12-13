@@ -32,19 +32,19 @@ const DataTableHead = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
-		allSelected: PropTypes.bool.isRequired,
-		indeterminateSelected: PropTypes.bool.isRequired,
-		canSelectRows: PropTypes.bool.isRequired,
+		allSelected: PropTypes.bool,
+		indeterminateSelected: PropTypes.bool,
+		canSelectRows: PropTypes.bool,
 		columns: PropTypes.arrayOf(
 			PropTypes.shape({
 				Cell: PropTypes.func,
 				props: PropTypes.object
 			})
 		),
-		id: PropTypes.string.isRequired,
-		onToggleAll: PropTypes.func.isRequired,
+		id: PropTypes.string,
+		onToggleAll: PropTypes.func,
 		onSort: PropTypes.func,
-		showRowActions: PropTypes.bool.isRequired
+		showRowActions: PropTypes.bool
 	},
 
 	// ### Render

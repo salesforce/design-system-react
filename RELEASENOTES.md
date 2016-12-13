@@ -25,6 +25,12 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ---
 
+## Release 0.5.4
+
+**MINOR CHANGES**
+
+- `bordered==true` is now the default for horizontal borders. Please use `unbordered` if you would like to not have horizontal borders. This is not being considered a breaking change, because SLDS does not have an unbordered `DataTable`.
+
 ## Release 0.5.3
 
 **DOCUMENTATION**

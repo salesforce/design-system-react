@@ -37,7 +37,7 @@ const DataTableRow = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
-		canSelectRows: PropTypes.bool.isRequired,
+		canSelectRows: PropTypes.bool,
 		columns: PropTypes.arrayOf(
 			PropTypes.shape({
 				Cell: PropTypes.func,
@@ -46,9 +46,9 @@ const DataTableRow = React.createClass({
 		),
 		id: PropTypes.string.isRequired,
 		item: React.PropTypes.object.isRequired,
-		onToggle: PropTypes.func.isRequired,
+		onToggle: PropTypes.func,
 		rowActions: PropTypes.element,
-		selection: PropTypes.array.isRequired
+		selection: PropTypes.array
 	},
 
 	// ### Render
@@ -58,7 +58,10 @@ const DataTableRow = React.createClass({
 		// i18n
 		return (
 			<tr
-				className={classNames({ 'slds-hint-parent': this.props.rowActions, 'slds-is-selected': this.props.canSelectRows && isSelected })}
+				className={classNames({
+					'slds-hint-parent': this.props.rowActions,
+					'slds-is-selected': this.props.canSelectRows && isSelected
+				})}
 			>
 				{this.props.canSelectRows ? (
 					<td className="slds-cell-shrink" data-label="Select Row">

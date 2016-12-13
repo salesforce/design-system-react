@@ -19,7 +19,7 @@ import classNames from 'classnames';
 import isFunction from 'lodash.isfunction';
 
 // ## Children
-import Icon from '../icon';
+import Icon from '../../icon';
 
 // ## Constants
 import { DATA_TABLE_HEADER_CELL } from '../../../utilities/constants';

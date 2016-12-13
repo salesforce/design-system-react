@@ -6,6 +6,10 @@ import DataTable from '../../components/data-table';
 import DataTableColumn from '../../components/data-table/column';
 import DataTableCell from '../../components/data-table/cell';
 
+import Advanced from './advanced';
+import Basic from './basic';
+
+
 /* eslint-disable no-script-url */
 /* eslint-disable react/prop-types */
 const CustomDataTableCell = ({ children, ...props }) => (
@@ -138,8 +142,8 @@ const DemoDataTable = React.createClass({
 
 storiesOf(DATA_TABLE, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('Striped', () => <DemoDataTable striped />)
-	.add('Bordered', () => <DemoDataTable bordered />)
+	.add('Basic', () => <Basic striped />)
+	.add('Advanced', () => <Advanced log={action} striped />)
 	.add('Buffered', () => <DemoDataTable buffered />)
 	.add('Buffered + Bordered', () => <DemoDataTable buffered bordered />)
 	.add('Selectable', () => <DemoDataTable selectRows />)
