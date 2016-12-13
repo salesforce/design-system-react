@@ -29,7 +29,6 @@ const Example = React.createClass({
 					iconVariant="more"
 					onSelect={function (item) { console.log(item.label, 'selected'); }}
 					openOn="click"
-					modal
 					options={[
 						{ label: 'Sort ascending', value: 'A0' },
 						{ label: 'Sort descending', value: 'B0' }
