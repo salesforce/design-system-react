@@ -39,9 +39,9 @@ import isNumber      from 'lodash.isnumber';
 
 
 // Child components
-import TabsList        from './tabs-list';
-import Tab             from './tab';
-import TabPanel        from './tab-panel';
+import TabsList        from './private/tabs-list';
+import Tab             from './private/tab';
+import TabPanel        from './private/tab-panel';
 
 // ## Constants
 import { TABS }        from '../../utilities/constants';

@@ -10,7 +10,7 @@ import chai from 'chai';
 import Card, { idSuffixes as cardIdSuffixes } from '../../components/card';
 import CardFilter from '../../components/card/filter';
 import { cssClasses as mediaObjectCssClasses } from '../../components/media-object';
-import { idSuffixes as headerIdSuffixes } from '../../components/card/header';
+import { idSuffixes as headerIdSuffixes } from '../../components/card/private/header';
 
 import Icon from '../../components/icon';
 

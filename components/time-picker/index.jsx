@@ -26,7 +26,7 @@ import checkProps from './check-props';
 // ### Dropdown
 import InputIcon from '../icon/input-icon';
 import MenuDropdown from '../menu-dropdown';
-import TimepickerDropdownTrigger from './dropdown-trigger';
+import TimepickerDropdownTrigger from './private/dropdown-trigger';
 
 // ## Constants
 import { TIME_PICKER } from '../../utilities/constants';

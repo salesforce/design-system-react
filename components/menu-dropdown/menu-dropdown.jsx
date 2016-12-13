@@ -35,9 +35,9 @@ import shortid from 'shortid';
 
 // ### Children
 import Dialog from '../utilities/dialog';
-import List from '../menu-list/list';
-import ListItem from '../menu-list/list-item';
-import ListItemLabel from '../menu-list/list-item-label';
+import List from '../utilities/menu-list';
+import ListItem from '../utilities/menu-list/item';
+import ListItemLabel from '../utilities/menu-list/item-label';
 
 // This is the the default Dropdown Trigger, which expects one button as a child.
 import DefaultTrigger from './button-trigger';
@@ -300,7 +300,11 @@ const MenuDropdown = React.createClass({
 		/**
 		 * This prop is passed onto the triggering `Button`. It creates a tooltip with the content of the `node` provided.
 		 */
-		tooltip: PropTypes.node
+		tooltip: PropTypes.node,
+		/**
+		 * CSS classes to be added to wrapping trigger `div` around the button.
+		 */
+		triggerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string])
 	},
 
 	getDefaultProps () {
@@ -810,6 +814,7 @@ const MenuDropdown = React.createClass({
 				style={this.props.style}
 				tabIndex={isOpen ? '-1' : '0'}
 				tooltip={this.props.tooltip}
+				triggerClassName={this.props.triggerClassName}
 				triggerRef={this.saveRefToTrigger}
 				variant={this.props.buttonVariant}
 				{...CustomTriggerChildProps}

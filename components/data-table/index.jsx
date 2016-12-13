@@ -44,8 +44,8 @@ import checkProps from './check-props';
 // ## Children
 import DataTableCell from './cell';
 import DataTableColumn from './column';
-import DataTableHead from './head';
-import DataTableRow from './row';
+import DataTableHead from './private/head';
+import DataTableRow from './private/row';
 import DataTableRowActions from './row-actions';
 
 // ## Constants

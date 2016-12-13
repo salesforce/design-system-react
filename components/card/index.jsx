@@ -24,9 +24,9 @@ import React from 'react';
 import classnames from 'classnames';
 
 // ## Children
-import Header from './header';
-import Body from './body';
-import Footer from './footer';
+import Header from './private/header';
+import Body from './private/body';
+import Footer from './private/footer';
 import Empty from './empty';
 
 // Removes the need for `PropTypes`.

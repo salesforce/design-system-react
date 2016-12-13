@@ -29,10 +29,6 @@ import checkProps from './check-props';
 
 // ## Children
 import Modal from '../modal';
-// DO NOT REMOVE UNTIL THIS IS RESOLVED https://github.com/salesforce-ux/design-system-react-site/issues/56
-import AppLauncherSection from './section'; // eslint-disable-line no-unused-vars
-import AppLauncherTile from './tile'; // eslint-disable-line no-unused-vars
-// //////////////////////////////////////////////////////////////////////////////////
 
 // ## Constants
 import { APP_LAUNCHER } from '../../utilities/constants';
@@ -63,7 +59,14 @@ import { APP_LAUNCHER } from '../../utilities/constants';
  * 	</AppLauncherSection>
  * </AppLauncher>
  * ```
+ *
+ * By default, `Modal`, a child component of App Launcher, will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.
+ * ```
+ * import settings from 'design-system-react/components/settings';
+ * settings.setAppElement('#mount');
+ * ```
  */
+
 const AppLauncher = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.

@@ -30,7 +30,7 @@ import SLDSUtilityIcon from '../utilities/utility-icon';
 import { ICON } from '../../utilities/constants';
 
 /**
- * The Icon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href='#/button'>SLDSButton component</a> component with <code>variant='icon'</code>.
+ * The Icon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href='/components/buttons/'>Button component</a> component with <code>variant='icon'</code>.
  */
 const Icon = React.createClass({
 	// ### Display Name
