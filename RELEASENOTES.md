@@ -25,6 +25,13 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ---
 
+## Release 0.6.0
+
+**MINOR CHANGES**
+
+- Move `id` on GlobalNav Link to list item instead of `a`
+- In Button, `aria-*` props now use hyphen instead of camelCase. Use `aria-expanded` and not `ariaExpanded`.
+
 ## Release 0.5.4
 
 **MINOR CHANGES**
