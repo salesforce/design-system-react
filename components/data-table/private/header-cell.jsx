@@ -80,9 +80,10 @@ const DataTableHeaderCell = React.createClass({
 		// i18n
 		return (
 			<th
+				focusable={sortable ? true : null}
 				scope="col"
 				key={property}
-				className={classNames({
+				className={classNames('slds-text-title--caps', {
 					'slds-is-sortable': sortable
 				})}
 				onClick={sortable && this.handleSort}

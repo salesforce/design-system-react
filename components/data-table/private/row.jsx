@@ -37,6 +37,10 @@ const DataTableRow = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
+		/**
+		 * Text for select row
+		 */
+		assistiveTextForSelectRow: PropTypes.string,
 		canSelectRows: PropTypes.bool,
 		columns: PropTypes.arrayOf(
 			PropTypes.shape({
@@ -66,7 +70,7 @@ const DataTableRow = React.createClass({
 				{this.props.canSelectRows ? (
 					<td className="slds-cell-shrink" data-label="Select Row">
 						<Checkbox
-							assistiveText="Select Row"
+							assistiveText={this.props.assistiveTextForSelectRow}
 							checked={isSelected}
 							id={`${this.props.id}-SelectRow`}
 							name="SelectRow"

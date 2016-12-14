@@ -69,7 +69,7 @@ const Example = React.createClass({
 		return (
 			<div style={{ overflow: 'auto' }}>
 				<DataTable
-					bordered
+					fixedLayout
 					items={this.state.items}
 					id="DataTableExample-2"
 					onChange={this.handleChanged}

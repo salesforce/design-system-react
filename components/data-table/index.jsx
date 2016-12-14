@@ -70,6 +70,14 @@ const DataTable = React.createClass({
 	// ### Prop Types
 	propTypes: {
 		/**
+		 * Text for select all checkbox within the table header
+		 */
+		assistiveTextForSelectAllRows: PropTypes.string,
+		/**
+		 * Text for select row
+		 */
+		assistiveTextForSelectRow: PropTypes.string,
+		/**
 		 * Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.
 		 * ```
 		 * import DataTableCell from 'design-system-react/data-table/cell';
@@ -109,7 +117,7 @@ const DataTable = React.createClass({
 		/**
 		 * Use this if you are createing a basic table (not selectable, not sortable, not resizable rows)
 		 */
-		fluidLayout: PropTypes.bool,
+		fixedLayout: PropTypes.bool,
 		/**
  		 * The collection of items to render in the table.
  		 */
@@ -151,13 +159,15 @@ const DataTable = React.createClass({
 		 */
 		unborderedRow: PropTypes.bool,
 		/**
-		 * A variant which removes horizontal padding.
+		 * A variant which removes horizontal padding. CSS class will be removed if `fixedLayout==true`.
 		 */
 		unbufferedCell: PropTypes.bool
 	},
 
 	getDefaultProps () {
 		return {
+			assistiveTextForSelectAllRows: 'Select all rows',
+			assistiveTextForSelectRow: 'Select row',
 			id: shortid.generate(),
 			selection: []
 		};
@@ -177,20 +187,6 @@ const DataTable = React.createClass({
 		const indeterminateSelected = canSelectRows && numRows !== numSelected && numSelected !== 0;
 		const columns = [];
 		let RowActions = null;
-
-		// Legacy Support
-		if (isArray(this.props.columns)) {
-			this.props.columns.forEach((column) => {
-				columns.push({
-					Cell: DataTableCell,
-					props: {
-						label: column.displayName,
-						property: column.propertyName,
-						sortable: column.sortable
-					}
-				});
-			});
-		}
 
 		React.Children.forEach(this.props.children, (child) => {
 			if (child && child.type === DataTableColumn) {
@@ -225,9 +221,9 @@ const DataTable = React.createClass({
 			<table
 				className={classNames('slds-table', {
 					'slds-table--compact': this.props.compact,
-					'slds-table--fixed-layout': !this.props.fluidLayout,
+					'slds-table--fixed-layout': this.props.fixedLayout,
 					'slds-table--bordered': !this.props.unborderedRow,
-					'slds-table--cell-buffer': !this.props.unbufferedCell,
+					'slds-table--cell-buffer': !this.props.fixedLayout && !this.props.unbufferedCell,
 					'slds-max-medium-table--stacked': this.props.stacked,
 					'slds-max-medium-table--stacked-horizontalviewports': this.props.stackedHorizontal,
 					'slds-table--striped': this.props.striped,
@@ -235,8 +231,10 @@ const DataTable = React.createClass({
 					'slds-no-row-hover': this.props.noRowHover
 				}, this.props.className)}
 				id={this.props.id}
+				role={this.props.fixedLayout ? 'grid' : null}
 			>
 				<DataTableHead
+					assistiveTextForSelectAllRows={this.props.assistiveTextForSelectAllRows}
 					allSelected={allSelected}
 					indeterminateSelected={indeterminateSelected}
 					canSelectRows={canSelectRows}
@@ -250,6 +248,7 @@ const DataTable = React.createClass({
 					{numRows > 0
 						? this.props.items.map((item, index) => (
 							<DataTableRow
+								assistiveTextForSelectRow={this.props.assistiveTextForSelectRow}
 								canSelectRows={canSelectRows}
 								columns={columns}
 								id={`${this.props.id}-${DATA_TABLE_ROW}-${index}`}

@@ -32,6 +32,10 @@ const DataTableHead = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
+		/**
+		 * Text for select all checkbox within the table header
+		 */
+		assistiveTextForSelectAllRows: PropTypes.string,
 		allSelected: PropTypes.bool,
 		indeterminateSelected: PropTypes.bool,
 		canSelectRows: PropTypes.bool,
@@ -51,17 +55,21 @@ const DataTableHead = React.createClass({
 	render () {
 		return (
 			<thead>
-				<tr className="slds-text-title--caps">
+				<tr className="slds-line-height--reset">
 					{this.props.canSelectRows
-						? <th className="slds-cell-shrink" scope="col">
-							<Checkbox
-								assistiveText="Select All"
-								checked={this.props.allSelected}
-								indeterminate={this.props.indeterminateSelected}
-								id={`${this.props.id}-SelectAll`}
-								name="SelectAll"
-								onChange={this.props.onToggleAll}
-							/>
+						? <th className="slds-text-align--right" scope="col">
+							<div
+								className="slds-th__action slds-th__action--form"
+							>
+								<Checkbox
+									assistiveText={this.props.assistiveTextForSelectAllRows}
+									checked={this.props.allSelected}
+									indeterminate={this.props.indeterminateSelected}
+									id={`${this.props.id}-SelectAll`}
+									name="SelectAll"
+									onChange={this.props.onToggleAll}
+								/>
+							</div>
 						</th>
 						: null
 					}
