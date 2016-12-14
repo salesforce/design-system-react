@@ -164,8 +164,8 @@ const Trigger = React.createClass({
 			>
 				<Button
 					className={className}
-					ariaExpanded={isOpen}
-					ariaHaspopup={true}
+					aria-expanded={isOpen}
+					aria-haspopup={true}
 					{...deprecatedPropsFromMenuDropdown}
 					{...propsFromGrandchildButton}
 					ref={triggerRef}

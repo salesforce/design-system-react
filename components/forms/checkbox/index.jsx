@@ -103,10 +103,6 @@ const Checkbox = React.createClass({
 	// ### Render
 	render () {
 		const {
-			ariaControls,
-			ariaDescribedby,
-			ariaOwns,
-			ariaRequired,
 			assistiveText,
 			checked,
 			className,
@@ -144,10 +140,10 @@ const Checkbox = React.createClass({
 					<span className="slds-checkbox">
 						{required ? <abbr className="slds-required" title="required">*</abbr> : null}
 						<input
-							aria-controls={ariaControls}
-							aria-describedby={ariaDescribedby}
-							aria-owns={ariaOwns}
-							aria-required={ariaRequired}
+							aria-controls={this.props['aria-controls']}
+							aria-describedby={this.props['aria-describedby']}
+							aria-owns={this.props['aria-owns']}
+							aria-required={this.props['aria-required']}
 							disabled={disabled}
 							checked={checked}
 							id={id || this.generatedId}
