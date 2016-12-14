@@ -79,10 +79,6 @@ const DemoComponent = React.createClass({
 	}
 });
 
-const getPopover = (rootNode) => rootNode.querySelector(`#${defaultIds.popover}`);
-const getHeading = (rootNode) => rootNode.querySelector(`#${defaultIds.heading}`);
-const getBody = (rootNode) => rootNode.querySelector(`#${defaultIds.body}`);
-
 /* All tests for component being tested should be wrapped in a root `describe`,
  * which should be named after the component being tested.
  * When read aloud, the cumulative `describe` and `it` names should form a coherent

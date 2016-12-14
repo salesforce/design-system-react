@@ -447,8 +447,8 @@ const Popover = React.createClass({
 
 		const clonedTrigger = this.props.children ? React.cloneElement(this.props.children, {
 			ref: (component) => { this.trigger = component; },
-			ariaHaspopup: true,
-			ariaExpanded: this.getIsOpen(),
+			'aria-haspopup': true,
+			'aria-expanded': this.getIsOpen(),
 			className: classNames(outsideClickIgnoreClass),
 			disabled: this.props.disabled,
 			style: this.props.style,
