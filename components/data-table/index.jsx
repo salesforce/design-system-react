@@ -70,10 +70,6 @@ const DataTable = React.createClass({
 	// ### Prop Types
 	propTypes: {
 		/**
-		 * A variant which adds more horizontal padding to the outter edges of the table.
-		 */
-		buffered: PropTypes.bool,
-		/**
 		 * Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.
 		 * ```
 		 * import DataTableCell from 'design-system-react/data-table/cell';
@@ -102,6 +98,10 @@ const DataTable = React.createClass({
 		 * A variant which adds border to the vertical columns.
 		 */
 		columnBordered: PropTypes.bool,
+		/**
+		 * A variant which decreases padding and allows more items and columns to be viewed.
+		 */
+		compact: PropTypes.bool,
 		/**
 		 * A unique ID is needed in order to support keyboard navigation and ARIA support.
 		 */
@@ -147,16 +147,19 @@ const DataTable = React.createClass({
 		 */
 		striped: PropTypes.bool,
 		/**
-		 * Tables have borders by default. This removes them.
+		 * Tables have horizontal borders by default. This removes them.
 		 */
-		unbordered: PropTypes.bool
+		unborderedRow: PropTypes.bool,
+		/**
+		 * A variant which removes horizontal padding.
+		 */
+		unbufferedCell: PropTypes.bool
 	},
 
 	getDefaultProps () {
 		return {
 			id: shortid.generate(),
-			selection: [],
-			unbordered: false
+			selection: []
 		};
 	},
 
@@ -221,9 +224,10 @@ const DataTable = React.createClass({
 		return (
 			<table
 				className={classNames('slds-table', {
+					'slds-table--compact': this.props.compact,
 					'slds-table--fixed-layout': !this.props.fluidLayout,
-					'slds-table--bordered': !this.props.unbordered,
-					'slds-table--cell-buffer': this.props.buffered,
+					'slds-table--bordered': !this.props.unborderedRow,
+					'slds-table--cell-buffer': !this.props.unbufferedCell,
 					'slds-max-medium-table--stacked': this.props.stacked,
 					'slds-max-medium-table--stacked-horizontalviewports': this.props.stackedHorizontal,
 					'slds-table--striped': this.props.striped,

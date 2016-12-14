@@ -15,6 +15,57 @@ const CustomDataTableCell = ({ children, ...props }) => (
 );
 CustomDataTableCell.displayName = DataTableCell.displayName;
 
+const columns = [
+	<DataTableColumn
+		key="opportunity"
+		label="Opportunity Name"
+		property="opportunityName"
+		truncate
+	>
+		<CustomDataTableCell />
+	</DataTableColumn>,
+
+	<DataTableColumn
+		key="account-name"
+		label="Account Name"
+		property="accountName"
+	/>,
+
+	<DataTableColumn
+		key="close-date"
+		label="Close Date"
+		property="closeDate"
+	/>,
+
+	<DataTableColumn
+		key="stage"
+		label="Stage"
+		property="stage"
+	/>,
+
+	<DataTableColumn
+		key="confidence"
+		label="Confidence"
+		property="confidence"
+	/>,
+
+	<DataTableColumn
+		key="amount"
+		label="Amount"
+		property="amount"
+	/>,
+
+	<DataTableColumn
+		key="contact"
+		label="Contact"
+		property="contact"
+	>
+		<CustomDataTableCell />
+	</DataTableColumn>
+];
+
+CustomDataTableCell.displayName = DataTableCell.displayName;
+
 const Example = React.createClass({
 	displayName: 'DataTableExample',
 
@@ -57,48 +108,16 @@ const Example = React.createClass({
 	render () {
 		return (
 			<div style={{ overflow: 'auto' }}>
-				<br id="default" />
+				<h3 className="slds-text-heading--medium slds-m-vertical--medium">Default Fluid Layout</h3>
 				<DataTable
 					fluidLayout
 					items={this.state.items}
 					id="DataTableExample-1-default"
 				>
-					<DataTableColumn
-						label="Opportunity Name"
-						property="opportunityName"
-						truncate
-					>
-						<CustomDataTableCell />
-					</DataTableColumn>
-					<DataTableColumn
-						label="Account Name"
-						property="accountName"
-					/>
-					<DataTableColumn
-						label="Close Date"
-						property="closeDate"
-					/>
-					<DataTableColumn
-						label="Stage"
-						property="stage"
-					/>
-					<DataTableColumn
-						label="Confidence"
-						property="confidence"
-					/>
-					<DataTableColumn
-						label="Amount"
-						property="amount"
-					/>
-					<DataTableColumn
-						label="Contact"
-						property="contact"
-					>
-						<CustomDataTableCell />
-					</DataTableColumn>
+					{columns}
 				</DataTable>
 
-				<br />
+				<h3 className="slds-text-heading--medium slds-m-vertical--medium">Striped</h3>
 				
 				<DataTable
 					fluidLayout
@@ -106,42 +125,10 @@ const Example = React.createClass({
 					id="DataTableExample-1-striped"
 					striped
 				>
-					<DataTableColumn
-						label="Opportunity Name"
-						property="opportunityName"
-						truncate
-					>
-						<CustomDataTableCell />
-					</DataTableColumn>
-					<DataTableColumn
-						label="Account Name"
-						property="accountName"
-					/>
-					<DataTableColumn
-						label="Close Date"
-						property="closeDate"
-					/>
-					<DataTableColumn
-						label="Stage"
-						property="stage"
-					/>
-					<DataTableColumn
-						label="Confidence"
-						property="confidence"
-					/>
-					<DataTableColumn
-						label="Amount"
-						property="amount"
-					/>
-					<DataTableColumn
-						label="Contact"
-						property="contact"
-					>
-						<CustomDataTableCell />
-					</DataTableColumn>
+					{columns}
 				</DataTable>
 				
-				<br />
+				<h3 className="slds-text-heading--medium slds-m-vertical--medium">No Row Hover</h3>
 				
 				<DataTable
 					fluidLayout
@@ -149,84 +136,31 @@ const Example = React.createClass({
 					id="DataTableExample-noRowHover"
 					noRowHover
 				>
-					<DataTableColumn
-						label="Opportunity Name"
-						property="opportunityName"
-						truncate
-					>
-						<CustomDataTableCell />
-					</DataTableColumn>
-					<DataTableColumn
-						label="Account Name"
-						property="accountName"
-					/>
-					<DataTableColumn
-						label="Close Date"
-						property="closeDate"
-					/>
-					<DataTableColumn
-						label="Stage"
-						property="stage"
-					/>
-					<DataTableColumn
-						label="Confidence"
-						property="confidence"
-					/>
-					<DataTableColumn
-						label="Amount"
-						property="amount"
-					/>
-					<DataTableColumn
-						label="Contact"
-						property="contact"
-					>
-						<CustomDataTableCell />
-					</DataTableColumn>
+					{columns}
 				</DataTable>
 
-				<br />
+				<h3 className="slds-text-heading--medium slds-m-vertical--medium">Column Bordered</h3>
 				
 				<DataTable
 					columnBordered
 					fluidLayout
 					items={this.state.items}
 					id="DataTableExample-columnBordered"
-					noRowHover
 				>
-					<DataTableColumn
-						label="Opportunity Name"
-						property="opportunityName"
-						truncate
-					>
-						<CustomDataTableCell />
-					</DataTableColumn>
-					<DataTableColumn
-						label="Account Name"
-						property="accountName"
-					/>
-					<DataTableColumn
-						label="Close Date"
-						property="closeDate"
-					/>
-					<DataTableColumn
-						label="Stage"
-						property="stage"
-					/>
-					<DataTableColumn
-						label="Confidence"
-						property="confidence"
-					/>
-					<DataTableColumn
-						label="Amount"
-						property="amount"
-					/>
-					<DataTableColumn
-						label="Contact"
-						property="contact"
-					>
-						<CustomDataTableCell />
-					</DataTableColumn>
+					{columns}
 				</DataTable>
+
+				<h3 className="slds-text-heading--medium slds-m-vertical--medium">Compact</h3>
+				
+				<DataTable
+					compact
+					fluidLayout
+					items={this.state.items}
+					id="DataTableExample-compact"
+				>
+					{columns}
+				</DataTable>
+
 
 			</div>
 		);
