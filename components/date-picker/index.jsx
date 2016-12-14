@@ -44,9 +44,6 @@ const propTypes = {
 	required: React.PropTypes.bool,
 	strValue: React.PropTypes.string,
 	todayLabel: React.PropTypes.string,
-	/**
-	 * Date
-	 */
     /**
      * Sets default date. If not null, input is filled with date string of value.
      */
@@ -98,15 +95,8 @@ module.exports = React.createClass({
 	},
 
 	getInitialState(){
-		const defaultDate = this.props.value;
-        let dateString;
-        if (this.props.value) {
-            let month = defaultDate.getMonth() + 1;
-            let date = defaultDate.getDate();
-            let year = defaultDate.getFullYear();
-            dateString = [ month, date, year].join('/')
-        }
-		const initDate = defaultDate ? dateString : this.props.strValue;
+        let dateString = this.props.formatter(this.props.value);
+		const initDate = this.props.value ? dateString : this.props.strValue;
 		return {
 			isOpen:false,
 			value:this.props.value,
