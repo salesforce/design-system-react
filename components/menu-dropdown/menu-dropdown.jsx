@@ -774,7 +774,7 @@ const MenuDropdown = React.createClass({
 		*/
 		return (
 			<CurrentTrigger
-				ariaHaspopup={true}
+				aria-haspopup
 				assistiveText={this.props.assistiveText}
 				className={classNames(outsideClickIgnoreClass, this.props.buttonClassName)}
 				disabled={this.props.disabled}
