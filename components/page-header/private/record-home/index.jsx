@@ -9,74 +9,62 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import React, { Component } from 'react';
+import React, { PropTypes } from 'react';
 import DetailRow from '../detail-row';
+import MediaObject from '../../../media-object';
 
 const displayName = 'PageHeaderRecordHome';
 const propTypes = {
 	/**
-	 * Icon node passed by PageHeader
-	 */
-	icon: React.PropTypes.node,
-	/**
-	 * Title node passed by PageHeader
-	 */
-	title: React.PropTypes.node,
-	/**
-	 * Info node passed by PageHeader
-	 */
-	info: React.PropTypes.node,
-	/**
 	 * Content to appear on the right hand side of the page header
 	 */
-	contentRight: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element,
+	contentRight: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
 	/**
 	 * An array of detail blocks
 	 */
-	details: React.PropTypes.array,
+	details: PropTypes.array,
+	/**
+	 * Icon node passed by PageHeader
+	 */
+	icon: PropTypes.node,
+	/**
+	 * Info node passed by PageHeader
+	 */
+	info: PropTypes.node,
+	/**
+	 * Heading above title
+	 */
+	label: PropTypes.node,
+	/**
+	 * Title node passed by PageHeader
+	 */
+	title: PropTypes.node
 };
-const defaultProps = {};
 
-class RecordHome extends Component {
-	renderIcon() {
-		if(this.props.icon) {
-			return <div className="slds-media__figure">
-				{ this.props.icon }
+const RecordHome = (props) => (
+	<div>
+		<div className="slds-grid">
+			<div className="slds-col slds-has-flexi-truncate">
+				<MediaObject
+					body={<div>{props.label}
+						{props.title}
+						{props.info}</div>}
+					figure={props.icon}
+					verticalCenter
+				/>
 			</div>
-		}
-	}
-
-	render() {
-		const { details } = this.props;
-
-		return (
-			<div>
-				<div className="slds-grid">
-					<div className="slds-col slds-has-flexi-truncate">
-						<div className="slds-media slds-media--center">
-							{this.renderIcon()}
-							<div className="slds-media__body">
-								{ this.props.label }
-								{ this.props.title }
-								{ this.props.info }
-							</div>
-						</div>
-					</div>
-					<div className="slds-col slds-no-flex slds-grid slds-align-bottom">
-						{ this.props.contentRight }
-					</div>
-				</div>
-				<DetailRow details={details} />
+			<div className="slds-col slds-no-flex slds-grid slds-align-bottom">
+				{props.contentRight}
 			</div>
-		);
-	}
-}
+		</div>
+		<DetailRow details={props.details} />
+	</div>
+);
 
 RecordHome.displayName = displayName;
 RecordHome.propTypes = propTypes;
-RecordHome.defaultProps = defaultProps;
 
 module.exports = RecordHome;

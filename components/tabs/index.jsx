@@ -399,7 +399,6 @@ const Tabs = React.createClass({
 				onClick={this.handleClick}
 				onKeyDown={this.handleKeyDown}
 				data-tabs
-				variant={variant}
 			>
 				{this.renderTabsList(id)}
 				{this.renderTabPanels(id)}

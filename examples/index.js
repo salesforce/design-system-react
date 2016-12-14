@@ -2,101 +2,110 @@
 
 const Snippets = {
 	'app-launcher': [
-		require('raw-loader!design-system-react/examples/app-launcher/example-1.js')
+		require('raw-loader!design-system-react/examples/app-launcher/default.jsx')
 	],
 	'bread-crumb': [
-		require('raw-loader!design-system-react/examples/bread-crumb/example-1.js')
+		require('raw-loader!design-system-react/examples/bread-crumb/base.jsx'),
+		require('raw-loader!design-system-react/examples/bread-crumb/one-item.jsx')
 	],
 	button: [
-		require('raw-loader!design-system-react/examples/button/example-1.js'),
-		require('raw-loader!design-system-react/examples/button/example-2.js'),
-		require('raw-loader!design-system-react/examples/button/example-3.js')
+		require('raw-loader!design-system-react/examples/button/base-neutral.jsx'),
+		require('raw-loader!design-system-react/examples/button/brand-disabled-destructive-inverse.jsx'),
+		require('raw-loader!design-system-react/examples/button/button-icons.jsx')
 	],
 	'button-group': [
-		require('raw-loader!design-system-react/examples/button-group/example-1.js'),
-		require('raw-loader!design-system-react/examples/button-group/example-2.js')
+		require('raw-loader!design-system-react/examples/button-group/more-icon.jsx'),
+		require('raw-loader!design-system-react/examples/button-group/icon-group.jsx')
 	],
 	'button-stateful': [
-		require('raw-loader!design-system-react/examples/button-stateful/example-1.js'),
-		require('raw-loader!design-system-react/examples/button-stateful/example-2.js')
+		require('raw-loader!design-system-react/examples/button-stateful/icon.jsx'),
+		require('raw-loader!design-system-react/examples/button-stateful/icon-text.jsx')
 	],
 	card: [
-		require('raw-loader!design-system-react/examples/card/example-1.js')
+		require('raw-loader!design-system-react/examples/card/related-list-with-table.jsx')
 	],
 	'forms-checkbox': [
-		require('raw-loader!design-system-react/examples/forms-checkbox/example-1.js')
+		require('raw-loader!design-system-react/examples/forms/checkbox/default.jsx'),
+		require('raw-loader!design-system-react/examples/forms/checkbox/error.jsx')
 	],
 	'data-table': [
-		require('raw-loader!design-system-react/examples/data-table/example-1.js'),
-		require('raw-loader!design-system-react/examples/data-table/example-2.js')
+		require('raw-loader!design-system-react/examples/data-table/basic.jsx'),
+		require('raw-loader!design-system-react/examples/data-table/advanced.jsx')
 	],
 	'date-picker': [
-		require('raw-loader!design-system-react/examples/date-picker/example-1.js')
+		require('raw-loader!design-system-react/examples/date-picker/default.jsx')
 	],
 	icon: [
-		require('raw-loader!design-system-react/examples/icon/example-1.js')
+		require('raw-loader!design-system-react/examples/icon/categories.jsx'),
+		require('raw-loader!design-system-react/examples/icon/colors.jsx'),
+		require('raw-loader!design-system-react/examples/icon/sizes.jsx')
 	],
 	'forms-input-inline': [
-		require('raw-loader!design-system-react/examples/forms-input-inline/example-1.js')
+		require('raw-loader!design-system-react/examples/forms/input/inline/default.jsx')
 	],
 	'forms-input': [
-		require('raw-loader!design-system-react/examples/forms-input/example-1.js'),
-		require('raw-loader!design-system-react/examples/forms-input/example-2.js'),
-		require('raw-loader!design-system-react/examples/forms-input/example-3.js'),
-		require('raw-loader!design-system-react/examples/forms-input/example-4.js')
+		require('raw-loader!design-system-react/examples/forms/input/default.jsx'),
+		require('raw-loader!design-system-react/examples/forms/input/icons.jsx'),
+		require('raw-loader!design-system-react/examples/forms/input/error.jsx'),
+		require('raw-loader!design-system-react/examples/forms/input/disabled.jsx'),
+		require('raw-loader!design-system-react/examples/forms/input/read-only.jsx')
 	],
 	'global-header': [
-		require('raw-loader!design-system-react/examples/global-header/example-1.js')
+		require('raw-loader!design-system-react/examples/global-header/default.jsx')
 	],
 	'global-navigation-bar': [
-		require('raw-loader!design-system-react/examples/global-navigation-bar/example-1.js')
+		require('raw-loader!design-system-react/examples/global-navigation-bar/default.jsx')
 	],
 	lookup: [
-		require('raw-loader!design-system-react/examples/lookup/example-1.js'),
-		require('raw-loader!design-system-react/examples/lookup/example-2.js'),
-		require('raw-loader!design-system-react/examples/lookup/example-3.js')
+		require('raw-loader!design-system-react/examples/lookup/default.jsx'),
+		require('raw-loader!design-system-react/examples/lookup/files.jsx'),
+		require('raw-loader!design-system-react/examples/lookup/with-selection.jsx')
 	],
 	'media-object': [
-		require('raw-loader!design-system-react/examples/media-object/example-1.js')
+		require('raw-loader!design-system-react/examples/media-object/default.jsx'),
+		require('raw-loader!design-system-react/examples/media-object/vertically-centered.jsx')
 	],
 	'menu-dropdown': [
-		require('raw-loader!design-system-react/examples/menu-dropdown/example-1.js'),
-		require('raw-loader!design-system-react/examples/menu-dropdown/example-2.js')
+		require('raw-loader!design-system-react/examples/menu-dropdown/default.jsx'),
+		require('raw-loader!design-system-react/examples/menu-dropdown/sub-heading.jsx'),
+		require('raw-loader!design-system-react/examples/menu-dropdown/custom-trigger.jsx'),
+		require('raw-loader!design-system-react/examples/menu-dropdown/checkmark.jsx')
 	],
 	'menu-picklist': [
-		require('raw-loader!design-system-react/examples/menu-picklist/example-1.js'),
-		require('raw-loader!design-system-react/examples/menu-picklist/example-2.js')
+		require('raw-loader!design-system-react/examples/menu-picklist/base.jsx'),
+		require('raw-loader!design-system-react/examples/menu-picklist/tooltip-list-item.jsx')
 	],
 	modal: [
-		require('raw-loader!design-system-react/examples/modal/example-1.js'),
-		require('raw-loader!design-system-react/examples/modal/example-2.js'),
-		require('raw-loader!design-system-react/examples/modal/example-3.js')
+		require('raw-loader!design-system-react/examples/modal/menu-contents.jsx'),
+		require('raw-loader!design-system-react/examples/modal/header-footer.jsx'),
+		require('raw-loader!design-system-react/examples/modal/taglines.jsx'),
+		require('raw-loader!design-system-react/examples/modal/prompt.jsx'),
+		require('raw-loader!design-system-react/examples/modal/sizes.jsx')
 	],
 	notification: [
-		require('raw-loader!design-system-react/examples/notification/example-1.js'),
-		require('raw-loader!design-system-react/examples/notification/example-2.js'),
-		require('raw-loader!design-system-react/examples/notification/example-3.js')
+		require('raw-loader!design-system-react/examples/notification/alerts.jsx'),
+		require('raw-loader!design-system-react/examples/notification/toasts.jsx'),
+		require('raw-loader!design-system-react/examples/notification/within-modal.jsx')
 	],
 	'page-header': [
-		require('raw-loader!design-system-react/examples/page-header/example-1.js'),
-		require('raw-loader!design-system-react/examples/page-header/example-2.js'),
-		require('raw-loader!design-system-react/examples/page-header/example-3.js'),
-		require('raw-loader!design-system-react/examples/page-header/example-4.js')
+		require('raw-loader!design-system-react/examples/page-header/record-home.jsx'),
+		require('raw-loader!design-system-react/examples/page-header/object-home.jsx'),
+		require('raw-loader!design-system-react/examples/page-header/related-list.jsx')
 	],
 	'popover-tooltip': [
-		require('raw-loader!design-system-react/examples/popover-tooltip/example-1.js'),
-		require('raw-loader!design-system-react/examples/popover-tooltip/example-2.js'),
-		require('raw-loader!design-system-react/examples/popover-tooltip/example-3.js')
+		require('raw-loader!design-system-react/examples/popover-tooltip/base.jsx'),
+		require('raw-loader!design-system-react/examples/popover-tooltip/button.jsx'),
+		require('raw-loader!design-system-react/examples/popover-tooltip/button-group.jsx')
 	],
 	tabs: [
-		require('raw-loader!design-system-react/examples/tabs/example-1.js'),
-		require('raw-loader!design-system-react/examples/tabs/example-2.js')
+		require('raw-loader!design-system-react/examples/tabs/default.jsx'),
+		require('raw-loader!design-system-react/examples/tabs/scoped.jsx')
 	],
 	'time-picker': [
-		require('raw-loader!design-system-react/examples/time-picker/example-1.js')
+		require('raw-loader!design-system-react/examples/time-picker/default.jsx')
 	],
 	tree: [
-		require('raw-loader!design-system-react/examples/tree/example-1.js')
+		require('raw-loader!design-system-react/examples/tree/default.jsx')
 	]
 };
 

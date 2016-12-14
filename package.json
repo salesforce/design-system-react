@@ -1,6 +1,6 @@
 {
   "name": "design-system-react",
-  "version": "0.5.2",
+  "version": "0.5.4",
   "description": "Salesforce Lightning Design System React components",
   "license": "BSD-3-Clause",
   "engines": {
@@ -78,7 +78,7 @@
   },
   "devDependencies": {
     "@kadira/storybook": "^2.22.0",
-    "@salesforce-ux/design-system": "git+ssh://git@github.com/salesforce-ux/design-system-internal.git#v2.2.0-beta.1-dist",
+    "@salesforce-ux/design-system": "git+ssh://git@github.com/salesforce-ux/design-system-internal.git#v2.2.0-rc.1-dist",
     "@salesforce-ux/icons": "^5.2.1",
     "async": "^2.0.0-rc.5",
     "babel": "^6.5.2",
@@ -91,6 +91,7 @@
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-1": "^6.5.0",
+    "babel-root-import": "^4.1.5",
     "basic-auth": "^1.0.4",
     "chai": "^3.5.0",
     "chai-enzyme": "^0.5.2",

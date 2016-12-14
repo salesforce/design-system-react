@@ -8,7 +8,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from 'react';
-import SLDSLookup from 'design-system-react/components/SLDSLookup';
+import SLDSLookup from '~/components/SLDSLookup';
 
 module.exports = React.createClass({
 

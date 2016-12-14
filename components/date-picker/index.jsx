@@ -42,9 +42,9 @@ const propTypes = {
 	required: React.PropTypes.bool,
 	strValue: React.PropTypes.string,
 	todayLabel: React.PropTypes.string,
-	/**
-	 * Date
-	 */
+    /**
+     * Sets default date. If not null, input is filled with date string of value.
+     */
 	value: React.PropTypes.instanceOf(Date),
 	weekDayLabels: React.PropTypes.array
 };
@@ -94,10 +94,12 @@ module.exports = React.createClass({
 	},
 
 	getInitialState(){
+        let dateString = this.props.formatter(this.props.value);
+		const initDate = this.props.value ? dateString : this.props.strValue;
 		return {
 			isOpen:false,
-	value:this.props.value,
-	strValue:this.props.strValue
+			value:this.props.value,
+			strValue:initDate
 		};
 	},
 
@@ -148,6 +150,7 @@ module.exports = React.createClass({
 	handleBlur() {
 		if (this.props.onBlur) this.props.onBlur(e);
 	//    this.setState({isOpen:false})
+		this.setFocus();
 	},
 
 	setFocus () {
