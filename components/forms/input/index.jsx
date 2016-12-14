@@ -45,26 +45,26 @@ const Input = React.createClass({
 	displayName: FORMS_INPUT,
 	// ### Prop Types
 	propTypes: {
-		ariaActivedescendant: PropTypes.string,
-		ariaAutocomplete: PropTypes.string,
+		'aria-activedescendant': PropTypes.string,
+		'aria-autocomplete': PropTypes.string,
 		/**
 		 * An HTML ID that is shared with ARIA-supported devices with the
 		 * `aria-controls` attribute in order to relate the input with
 		 * another region of the page. An example would be a select box
 		 * that shows or hides a panel.
 		 */
-		ariaControls: PropTypes.string,
-		ariaDescribedby: PropTypes.string,
-		ariaExpanded: PropTypes.bool,
-		ariaLabeledby: PropTypes.string,
+		'aria-controls': PropTypes.string,
+		'aria-describedby': PropTypes.string,
+		'aria-expanded': PropTypes.bool,
+		'aria-labeledby': PropTypes.string,
 		/**
 		 * An HTML ID that is shared with ARIA-supported devices with the
 		 * `aria-controls` attribute in order to relate the input with
 		 * another region of the page. An example would be a search field
 		 * that shows search results.
 		 */
-		ariaOwns: PropTypes.string,
-		ariaRequired: PropTypes.bool,
+		'aria-owns': PropTypes.string,
+		'aria-required': PropTypes.bool,
 		/**
 		 * If present, the label associated with this `input` is overwritten
 		 * by this text and is visually not shown.
@@ -208,13 +208,6 @@ const Input = React.createClass({
 	// ### Render
 	render () {
 		const {
-			ariaActivedescendant,
-			ariaAutocomplete,
-			ariaControls,
-			ariaDescribedby,
-			ariaExpanded,
-			ariaOwns,
-			ariaRequired,
 			assistiveText,
 			children,
 			className,
@@ -289,13 +282,13 @@ const Input = React.createClass({
 					{hasLeftIcon ? this.getIconRender('left', 'iconLeft') : null}
 
 					{!readOnly && <input
-						aria-activedescendant={ariaActivedescendant}
-						aria-autocomplete={ariaAutocomplete}
-						aria-controls={ariaControls}
-						aria-describedby={ariaDescribedby}
-						aria-expanded={ariaExpanded}
-						aria-owns={ariaOwns}
-						aria-required={ariaRequired}
+						aria-activedescendant={this.props['aria-activedescendant']}
+						aria-autocomplete={this.props['aria-autocomplete']}
+						aria-controls={this.props['aria-controls']}
+						aria-describedby={this.props['aria-describedby']}
+						aria-expanded={this.props['aria-expanded']}
+						aria-owns={this.props['aria-owns']}
+						aria-required={this.props['aria-required']}
 						className="slds-input"
 						disabled={disabled}
 						id={this.getId()}

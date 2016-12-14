@@ -40,7 +40,6 @@ const TabsList = ({
 			}
 		)}
 		role="tablist"
-		variant={variant}
 	>
 		{children}
 	</ul>
