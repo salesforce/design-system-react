@@ -49,7 +49,7 @@ import checkProps from './check-props';
 // ### Traits
 
 // #### KeyboardNavigable
-import KeyboardNavigable from '../../utilities/keyboard-navigable';
+import KeyboardNavigable from '../../utilities/keyboard-navigable-menu';
 
 import EventUtil from '../../utilities/EventUtil';
 import KEYS from '../../utilities/KEYS';

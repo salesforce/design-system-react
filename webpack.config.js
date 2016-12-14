@@ -1,6 +1,3 @@
-/* eslint-disable indent */
-'use strict';
-
 const path = require('path');
 const StringReplacePlugin = require('string-replace-webpack-plugin');
 
