@@ -59,6 +59,8 @@ const count = (array) => (isArray(array) ? array.length : 0);
 
 /**
  * DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
+ *
+ * The fixed layout table is the default. This table variant is called advanced on the SLDS site. Use `fluidLayout` if you would like a basic fluid table.
  */
 const DataTable = React.createClass({
 	// ### Display Name
@@ -104,6 +106,10 @@ const DataTable = React.createClass({
 		 * A unique ID is needed in order to support keyboard navigation and ARIA support.
 		 */
 		id: PropTypes.string,
+		/**
+		 * Use this if you are createing a basic table (not selectable, not sortable, not resizable rows)
+		 */
+		fluidLayout: PropTypes.bool,
 		/**
  		 * The collection of items to render in the table.
  		 */
@@ -214,7 +220,8 @@ const DataTable = React.createClass({
 
 		return (
 			<table
-				className={classNames('slds-table slds-table--fixed-layout', {
+				className={classNames('slds-table', {
+					'slds-table--fixed-layout': !this.props.fluidLayout,
 					'slds-table--bordered': !this.props.unbordered,
 					'slds-table--cell-buffer': this.props.buffered,
 					'slds-max-medium-table--stacked': this.props.stacked,

@@ -146,5 +146,4 @@ storiesOf(DATA_TABLE, module)
 	.add('Advanced', () => <Advanced log={action} striped />)
 	.add('Buffered', () => <DemoDataTable buffered />)
 	.add('Buffered + Bordered', () => <DemoDataTable buffered bordered />)
-	.add('Selectable', () => <DemoDataTable selectRows />)
 	.add('Custom Cell Component', () => <DemoDataTable customCellComponent />);

@@ -87,19 +87,19 @@ const DataTableHeaderCell = React.createClass({
 				})}
 				onClick={sortable && this.handleSort}
 			>
-				<a href='javascript:void(0)' className='slds-th__action slds-text-link--reset'>
-					<span className="slds-truncate">{label}</span>
 					{sortable
-						? <Icon
-							assistiveText={sortDirection === 'desc' ? 'Sort Ascending' : 'Sort Descending'}
-							className="slds-is-sortable__icon"
-							category="utility"
-							name={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
-							size="x-small"
-						/>
-						: null
+						?	<a href="javascript:void(0)" className="slds-th__action slds-text-link--reset">
+							<span className="slds-truncate">{label}</span>
+							<Icon
+								assistiveText={sortDirection === 'desc' ? 'Sort Ascending' : 'Sort Descending'}
+								className="slds-is-sortable__icon"
+								category="utility"
+								name={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
+								size="x-small"
+							/>
+						</a>
+						: <div className="slds-truncate">{label}</div>
 					}
-				</a>
 			</th>
 		);
 	},
