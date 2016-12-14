@@ -50,6 +50,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 
 		// https://www.dropbox.com/s/0a5lukwoxbatx8l/Screenshot%202016-08-10%2012.57.59.png?dl=0
 		const portal = handles.appLauncher.node._reactInternalInstance._renderedComponent._renderedChildren['.1']._renderedComponent._instance.portal; // eslint-disable-line no-underscore-dangle
+
 		// Wrap the modal portal in an Enzyme wrapper
 		handles.modal = new ReactWrapper(portal, portal);
 	}

@@ -25,25 +25,15 @@ import TetherDrop from 'tether-drop';
 
 import EventUtil from '../../../utilities/EventUtil';
 import KEYS from '../../../utilities/KEYS';
+import DOMElementFocus from '../../../utilities/dom-element-focus';
 
 import { DIALOG } from '../../../utilities/constants';
-
 
 /* A dialog is a non-modal container that separates content from the rest of the web application. This library uses the Drop library (https://github.com/HubSpot/drop which is based on TetherJS) to absolutely position and align content to another item on the page. This component is not meant for external consumption or part of the published component API.
 */
 const Dialog = React.createClass({
 
 	displayName: DIALOG,
-
-	handleClickOutside () {
-		this.handleClose();
-	},
-
-	handleClose () {
-		if (this.props.onClose) {
-			this.props.onClose();
-		}
-	},
 
 	propTypes: {
 		/**
@@ -66,18 +56,18 @@ const Dialog = React.createClass({
 		/**
 		 * CSS classes to be added to the absolutely positioned element.
 		 */
-		className: React.PropTypes.oneOfType([
-			React.PropTypes.array,
-			React.PropTypes.object,
-			React.PropTypes.string]
+		className: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string]
 		),
 		/**
 		 * CSS classes to be added to the wrapping `div` of the contents of the dialog.
 		 */
-		contentsClassName: React.PropTypes.oneOfType([
-			React.PropTypes.array,
-			React.PropTypes.object,
-			React.PropTypes.string]
+		contentsClassName: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string]
 		),
 		/**
 		 * Contents of dialog
@@ -148,17 +138,25 @@ const Dialog = React.createClass({
 		 */
 		onMouseLeave: PropTypes.func,
 		/**
+		 * Called when dialog opens (that is mounts).
+		 */
+		onOpen: PropTypes.func,
+		/**
 		 * Triggered when an item in the menu is clicked.
 		 */
 		outsideClickIgnoreClass: PropTypes.string,
 		/**
-		 * An object of CSS styles that are applied to the .
+		 * An object of CSS styles that are applied to the immediate parent `div` of the contents.
 		 */
 		style: PropTypes.object,
 		/**
 		 * React component to be aligned with. This will be passed to `ReactDOM.findDOMNode()` if set and should be set from a component reference (`ref`).
 		 */
 		targetElement: PropTypes.object,
+		/**
+		 * Informs the component on how to handle focus. Popovers trap focus and must be exited to regain focus.
+		**/
+		variant: PropTypes.oneOf(['dropdown', 'popover', 'tooltip']),
 		/**
 		 * Positions the dialog vertically.
 		**/
@@ -169,7 +167,6 @@ const Dialog = React.createClass({
 		return {
 			verticalAlign: 'bottom',
 			horizontalAlign: 'left',
-			className: 'slds-dropdown',
 			closeOnTabKey: false,
 			flippable: true,
 			marginTop: '0.20rem',
@@ -200,6 +197,16 @@ const Dialog = React.createClass({
 
 	componentDidUpdate () {
 		this.renderDialog();
+	},
+
+	handleClickOutside () {
+		this.handleClose();
+	},
+
+	handleClose (data) {
+		if (this.props.onClose) {
+			this.props.onClose(data);
+		}
 	},
 
 	handleClick (event) {
@@ -241,18 +248,18 @@ const Dialog = React.createClass({
 		if (this.props.inheritTargetWidth) {
 			style.width = this.target().getBoundingClientRect().width;
 		}
-
 		if (this.props.style) {
 			style = Object.assign({}, style, this.props.style);
 		}
 
 		return (
 			<div
-				className={classNames(this.props.outsideClickIgnoreClass, this.props.contentsClassName)}
+				className={classNames(this.props.contentsClassName, this.props.outsideClickIgnoreClass)}
 				style={style}
 				onKeyDown={this.handleKeyDown}
 				onMouseEnter={this.props.onMouseEnter}
 				onMouseLeave={this.props.onMouseLeave}
+				ref={(component) => { this.dialogContent = component; }}
 			>
 				{this.props.children}
 			</div>
@@ -332,13 +339,12 @@ const Dialog = React.createClass({
 		return this.props.targetElement ? ReactDOM.findDOMNode(this.props.targetElement) : ReactDOM.findDOMNode(this).parentNode;
 	},
 
-	dropOptions () {
+	tetherDropOptions () {
 		// Please reference http://github.hubspot.com/drop/ for options.
 		const position = this.getPosition();
 
 		return {
 			beforeClose: this.beforeClose,
-			classes: classNames(this.props.containerClassName, this.props.dropClass), // eslint-disable-line react/prop-types
 			constrainToWindow: this.props.flippable,
 			constrainToScrollParent: this.props.constrainToScrollParent,
 			content: this.dialogElement,
@@ -354,10 +360,30 @@ const Dialog = React.createClass({
 
 	handleOpen () {
 		this.setState({ isOpen: true });
+
+		if (this.props.variant === 'popover') {
+			DOMElementFocus.storeActiveElement();
+			DOMElementFocus.setupScopedFocus({ ancestorElement: ReactDOM.findDOMNode(this.dialogElement).querySelector('.slds-popover') });
+			// Don't steal focus from inner elements
+			if (!DOMElementFocus.hasOrAncestorHasFocus()) {
+				DOMElementFocus.focusAncestor();
+			}
+		}
+
+		if (this.props.onOpen) {
+			this.props.onOpen(this.portal);
+		}
 	},
 
 	renderDialog () {
-		ReactDOM.render(this.renderDialogContents(), this.dialogElement);
+		let mount = ReactDOM.render;
+
+		if (this.props.portalMount) {
+			mount = this.props.portalMount;
+		}
+
+		// nextElement, container, callback
+		this.portal = mount(this.renderDialogContents(), this.dialogElement);
 
 		if (this.dialogElement &&
 				this.dialogElement.parentNode &&
@@ -367,17 +393,22 @@ const Dialog = React.createClass({
 			this.dialogElement.parentNode.parentNode.style.zIndex = 10001;
 		}
 
-		if (this.drop != null) {
+		if (this.drop !== null && this.drop !== undefined) {
 			if (this.drop && this.drop) {
 				this.drop.position();
 			}
 		} else if (window && document) {
-			this.drop = new TetherDrop(this.dropOptions());
+			this.drop = new TetherDrop(this.tetherDropOptions());
 			this.drop.once('open', this.handleOpen);
 		}
 	},
 
 	componentWillUnmount () {
+		if (this.props.variant === 'popover') {
+			DOMElementFocus.teardownScopedFocus();
+			DOMElementFocus.returnFocusToStoredElement();
+		}
+
 		this.drop.destroy();
 		ReactDOM.unmountComponentAtNode(this.dialogElement);
 
@@ -385,9 +416,7 @@ const Dialog = React.createClass({
 			this.dialogElement.parentNode.removeChild(this.dialogElement);
 		}
 
-		if (this.props.onClose) {
-			this.props.onClose();
-		}
+		this.handleClose({ componentWillUnmount: true });
 	},
 
 	render () {

@@ -21,6 +21,7 @@
     "release-patch": "npm --no-git-tag-version version patch && npm run publish-to-upstream",
     "release-minor": "npm --no-git-tag-version version minor && npm run publish-to-upstream",
     "start": "start-storybook -p 9001 -s ./node_modules & node tests/app",
+    "storybook": "start-storybook -p 9001 -s ./node_modules",
     "test": "scripts/test.sh --single-run",
     "validate": "npm ls",
     "version": "git add package.json && git commit -m \"Bump package version\""
@@ -129,9 +130,9 @@
     "sinon-chai": "^2.8.0",
     "string-replace-webpack-plugin": "^0.0.4",
     "style-loader": "^0.13.1",
-    "webpack": "^1.9.6",
-    "webpack-dev-middleware": "^1.6.1",
-    "webpack-hot-middleware": "^2.10.0",
+    "webpack": "^1.13.3",
+    "webpack-dev-middleware": "^1.8.4",
+    "webpack-hot-middleware": "^2.13.2",
     "xml2json": "^0.10.0"
   },
   "pre-commit": [
@@ -345,16 +346,21 @@
       "SLDS-component-path": "/components/notifications"
     },
     {
+      "component": "popover",
+      "display-name": "Popovers",
+      "SLDS-component-path": "/components/popovers"
+    },
+    {
       "component": "page-header",
       "status": "prod",
       "display-name": "Page Headers",
       "SLDS-component-path": "/components/page-headers"
     },
     {
-      "component": "popover-tooltip",
+      "component": "tooltip",
       "status": "prod",
-      "display-name": "Popover Tooltips",
-      "SLDS-component-path": "/components/popovers#flavor-tooltips"
+      "display-name": "Tooltips",
+      "SLDS-component-path": "/components/tooltips"
     },
     {
       "component": "tabs",

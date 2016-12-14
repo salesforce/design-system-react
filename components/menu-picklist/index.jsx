@@ -1,3 +1,4 @@
+
 /*
 Copyright (c) 2015, salesforce.com, inc. All rights reserved.
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -40,7 +41,7 @@ import ListItemLabel from '../utilities/menu-list/item-label';
 // ### Traits
 
 // #### KeyboardNavigable
-import KeyboardNavigable from '../../utilities/keyboard-navigable';
+import KeyboardNavigable from '../../utilities/keyboard-navigable-menu';
 
 import EventUtil from '../../utilities/EventUtil';
 import KEYS from '../../utilities/KEYS';
@@ -349,6 +350,7 @@ const MenuPicklist = React.createClass({
 		}
 		/* eslint-enable react/prop-types */
 
+		// TODO: make use of <Button>
 		return (
 			<div
 				className={classNames(
@@ -365,7 +367,7 @@ const MenuPicklist = React.createClass({
 					className="slds-button slds-button--neutral slds-picklist__label"
 					disabled={this.props.disabled}
 					id={this.getId()}
-					onClick={this.handleClick}
+					onClick={!this.props.disabled && this.handleClick}
 					ref={(component) => { this.button = component; }}
 					tabIndex={this.state.isOpen ? -1 : 0}
 				>

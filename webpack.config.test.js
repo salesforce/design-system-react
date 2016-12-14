@@ -17,7 +17,7 @@ config.externals = {
 	cheerio: 'window'
 };
 
-config.devtool = 'eval-cheap-module-source-map';
+config.devtool = 'eval-source-map';
 
 config.output = {
 	libraryTarget: 'umd',

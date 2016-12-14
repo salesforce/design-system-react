@@ -15,7 +15,7 @@ const { Simulate,
 				findRenderedDOMComponentWithTag,
 				findRenderedDOMComponentWithClass } = TestUtils;
 
-describe('SLDSPopoverTooltip: ', function () {
+describe('SLDSTooltip: ', function () {
 	let body;
 
 	const defaultTrigger = (<SLDSButton label="Hover me for tooltip" />);
