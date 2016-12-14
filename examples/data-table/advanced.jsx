@@ -5,7 +5,7 @@ import DataTableCell from '~/components/data-table/cell';
 import DataTableRowActions from '~/components/data-table/row-actions';
 
 const CustomDataTableCell = ({ children, ...props }) => (
-	<DataTableCell {...props} >
+	<DataTableCell title={children} {...props} >
 		<a
 			href="javascript:void(0);"
 			onClick={(event) => {
@@ -78,10 +78,11 @@ const Example = React.createClass({
 					selectRows
 				>
 					<DataTableColumn
-						label="Opportunity Name"
+						label="Name"
+						primaryColumn
 						property="opportunityName"
-						truncate
 						sortable
+						width="5rem"
 					>
 						<CustomDataTableCell />
 					</DataTableColumn>
@@ -146,6 +147,8 @@ const Example = React.createClass({
 		const newState = {
 			items: [...this.state.items]
 		};
+
+		// needs to work in both directions
 
 		newState.items = newState.items.sort((a, b) => {
 			let val = 0;

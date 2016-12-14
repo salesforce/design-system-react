@@ -48,6 +48,10 @@ const DataTableRow = React.createClass({
 				props: PropTypes.object
 			})
 		),
+		/**
+		 * Use this if you are creating an advanced table (selectable, sortable, or resizable rows)
+		 */
+		fixedLayout: PropTypes.bool,
 		id: PropTypes.string.isRequired,
 		item: React.PropTypes.object.isRequired,
 		onToggle: PropTypes.func,
@@ -68,7 +72,12 @@ const DataTableRow = React.createClass({
 				})}
 			>
 				{this.props.canSelectRows ? (
-					<td className="slds-cell-shrink" data-label="Select Row">
+					<td
+						role={this.props.fixedLayout ? 'gridcell' : null}
+						className="slds-text-align--right"
+						data-label="Select Row"
+						style={{ width: '3.25rem' }}
+					>
 						<Checkbox
 							assistiveText={this.props.assistiveTextForSelectRow}
 							checked={isSelected}
@@ -85,9 +94,12 @@ const DataTableRow = React.createClass({
 						<Cell
 							{...column.props}
 							className={column.props.truncate ? 'slds-truncate' : null}
+							fixedLayout={this.props.fixedLayout}
+							rowHeader={column.props.primaryColumn}
 							id={`${this.props.id}-${DATA_TABLE_CELL}-${index}`}
 							item={this.props.item}
 							key={column.props.property}
+							width={column.props.width}
 						>
 							{this.props.item[column.props.property]}
 						</Cell>

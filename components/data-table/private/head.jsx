@@ -33,6 +33,10 @@ const DataTableHead = React.createClass({
 	// ### Prop Types
 	propTypes: {
 		/**
+		 * Text for heading of actions column
+		 */
+		assistiveTextForActionsHeader: PropTypes.string,
+		/**
 		 * Text for select all checkbox within the table header
 		 */
 		assistiveTextForSelectAllRows: PropTypes.string,
@@ -57,10 +61,8 @@ const DataTableHead = React.createClass({
 			<thead>
 				<tr className="slds-line-height--reset">
 					{this.props.canSelectRows
-						? <th className="slds-text-align--right" scope="col">
-							<div
-								className="slds-th__action slds-th__action--form"
-							>
+						? <th className="slds-text-align--right" scope="col" style={{ width: '3.25rem' }}>
+							<div className="slds-th__action slds-th__action--form">
 								<Checkbox
 									assistiveText={this.props.assistiveTextForSelectAllRows}
 									checked={this.props.allSelected}
@@ -75,6 +77,7 @@ const DataTableHead = React.createClass({
 					}
 					{this.props.columns.map((column, index) =>
 						<HeaderCell
+							assistiveTextForColumnSort={this.props.assistiveTextForColumnSort}
 							id={`${this.props.id}-${DATA_TABLE_HEADER_CELL}-${index}`}
 							key={index}
 							onSort={this.props.onSort}
@@ -82,7 +85,11 @@ const DataTableHead = React.createClass({
 						/>
 					)}
 					{this.props.showRowActions
-						? <th className="slds-cell-shrink"></th>
+						? <th scope="col" style={{ width: '3.25rem' }}>
+							<div className="slds-th__action">
+								<span className="slds-assistive-text">{this.props.assistiveTextForActionsHeader}</span>
+							</div>
+						</th>
 						: null
 					}
 				</tr>

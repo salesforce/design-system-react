@@ -60,7 +60,6 @@ const count = (array) => (isArray(array) ? array.length : 0);
 /**
  * DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
  *
- * The fixed layout table is the default. This table variant is called advanced on the SLDS site. Use `fluidLayout` if you would like a basic fluid table.
  */
 const DataTable = React.createClass({
 	// ### Display Name
@@ -69,6 +68,22 @@ const DataTable = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
+		/**
+		 * Text for heading of actions column
+		 */
+		assistiveTextForActionsHeader: PropTypes.string,
+		/**
+		 * Text for sort action on table column header
+		 */
+		assistiveTextForColumnSort: PropTypes.string,
+		/**
+		 * Text announced once a column is sorted in ascending order
+		 */
+		assistiveTextForColumnSortedAscending: PropTypes.string,
+		/**
+		 * Text announced once a column is sorted in descending order
+		 */
+		assistiveTextForColumnSortedDescending: PropTypes.string,
 		/**
 		 * Text for select all checkbox within the table header
 		 */
@@ -115,7 +130,7 @@ const DataTable = React.createClass({
 		 */
 		id: PropTypes.string,
 		/**
-		 * Use this if you are createing a basic table (not selectable, not sortable, not resizable rows)
+		 * Use this if you are creating an advanced table (selectable, sortable, or resizable rows)
 		 */
 		fixedLayout: PropTypes.bool,
 		/**
@@ -166,6 +181,10 @@ const DataTable = React.createClass({
 
 	getDefaultProps () {
 		return {
+			assistiveTextForActionsHeader: 'Actions',
+			assistiveTextForColumnSort: 'Sort',
+			assistiveTextForColumnSortedAscending: 'Sorted Ascending',
+			assistiveTextForColumnSortedDescending: 'Sorted Descending',
 			assistiveTextForSelectAllRows: 'Select all rows',
 			assistiveTextForSelectRow: 'Select row',
 			id: shortid.generate(),
@@ -234,7 +253,11 @@ const DataTable = React.createClass({
 				role={this.props.fixedLayout ? 'grid' : null}
 			>
 				<DataTableHead
+					assistiveTextForActionsHeader={this.props.assistiveTextForActionsHeader}
 					assistiveTextForSelectAllRows={this.props.assistiveTextForSelectAllRows}
+					assistiveTextForColumnSortedAscending={this.props.assistiveTextForColumnSortedAscending}
+					assistiveTextForColumnSortedDescending={this.props.assistiveTextForColumnSortedDescending}
+					assistiveTextForColumnSort={this.props.assistiveTextForColumnSort}
 					allSelected={allSelected}
 					indeterminateSelected={indeterminateSelected}
 					canSelectRows={canSelectRows}
@@ -251,6 +274,7 @@ const DataTable = React.createClass({
 								assistiveTextForSelectRow={this.props.assistiveTextForSelectRow}
 								canSelectRows={canSelectRows}
 								columns={columns}
+								fixedLayout={this.props.fixedLayout}
 								id={`${this.props.id}-${DATA_TABLE_ROW}-${index}`}
 								item={item}
 								key={index}
