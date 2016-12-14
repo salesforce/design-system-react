@@ -25,6 +25,14 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ---
 
+## Release 0.5.4
+
+**MINOR CHANGES**
+
+- Add icon/figure support to Page header (Object home variant)
+- Correct dropdown trigger styling within a button group (e.g.- more button)
+- Fix bug caused by DST and hours calculation in Datepicker.
+
 ## Release 0.5.3
 
 **DOCUMENTATION**
