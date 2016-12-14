@@ -20,13 +20,17 @@ import { BUTTON } from '../../utilities/constants';
 const displayName = BUTTON;
 const propTypes = {
 	/**
+	 * Used if the Button triggers a tooltip. The value should match the `id` of the element with `role="tooltip"`.
+	 */
+	'aria-describedby': PropTypes.string,
+	/**
 	 * Used if the Button triggers a menu or popup. Bool indicates if the menu or popup is open or closed.
 	 */
-	ariaExpanded: PropTypes.bool,
+	'aria-expanded': PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 	/**
 	 * True if Button triggers a menu or popup to open/close.
 	 */
-	ariaHaspopup: PropTypes.bool,
+	'aria-haspopup': PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 	/**
 	 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
 	 * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
@@ -202,8 +206,6 @@ class Button extends TooltipTrigger {
 
 	render () {
 		const {
-			ariaExpanded,
-			ariaHaspopup,
 			children,
 			disabled,
 			iconName,
@@ -223,8 +225,9 @@ class Button extends TooltipTrigger {
 
 		return (
 			<button
-				aria-expanded={ariaExpanded}
-				aria-haspopup={ariaHaspopup}
+				aria-describedby={this.props['aria-describedby']}
+				aria-expanded={this.props['aria-expanded']}
+				aria-haspopup={this.props['aria-haspopup']}
 				className={this.getClassName()}
 				disabled={disabled}
 				id={id}

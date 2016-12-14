@@ -220,7 +220,7 @@ describe('Global Navigation Bar: ', () => {
 		});
 
 		it('renders href if passed', () => {
-			expect(link).to.have.attr('href', 'http://google.com');
+			expect(link.find('a')).to.have.attr('href', 'http://google.com');
 		});
 	});
 

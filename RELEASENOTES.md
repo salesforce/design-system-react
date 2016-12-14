@@ -25,11 +25,20 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ---
 
+## Release 0.6.0
+
+**MINOR CHANGES**
+
+- Move `id` on GlobalNav Link to list item instead of `a`
+- In Button, `aria-*` props now use hyphen instead of camelCase. Use `aria-expanded` and not `ariaExpanded`.
+
 ## Release 0.5.4
 
 **MINOR CHANGES**
 
-- `bordered==true` is now the default for horizontal borders. Please use `unbordered` if you would like to not have horizontal borders. This is not being considered a breaking change, because SLDS does not have an unbordered `DataTable`.
+- Add icon/figure support to Page header (Object home variant)
+- Correct dropdown trigger styling within a button group (e.g.- more button)
+- Fix bug caused by DST and hours calculation in Datepicker.
 
 ## Release 0.5.3
 
