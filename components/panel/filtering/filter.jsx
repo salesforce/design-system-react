@@ -19,6 +19,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React, { PropTypes } from 'react';
 
+// ### classNames
+import classNames from 'classnames';
+
 import Button from '../../button';
 import Popover from '../../popover';
 
@@ -116,7 +119,7 @@ const FilteringPanelFilter = React.createClass({
 
 	handleChange () {
 		this.setState({ popoverIsOpen: false });
-		
+
 		if (this.props.onChange) {
 			this.props.onChange({ id: this.getId() });
 		}
@@ -145,7 +148,15 @@ const FilteringPanelFilter = React.createClass({
 
 		return (
 			<li className="slds-item slds-hint-parent">
-				<div className="slds-filters__item slds-grid slds-grid--vertical-align-center">
+				<div
+					className={classNames(
+						'slds-filters__item',
+						'slds-grid',
+						'slds-grid--vertical-align-center', {
+							'slds-is-locked': this.props.locked
+						}
+					)}
+				>
 				{!this.props.locked && this.props.children
 					? <Popover
 						ariaLabelledby={`${this.getId()}-popover-heading`}
