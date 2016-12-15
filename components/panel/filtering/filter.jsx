@@ -123,18 +123,26 @@ const FilteringPanelFilter = React.createClass({
 	},
 
 	render () {
+		const popoverBody = (
+			<div>
+				{this.props.children}
+				<div className="slds-m-top--small slds-text-align--right">
+					<Button
+						className="slds-col--bump-left"
+						label="Done"
+						onClick={this.handleChange}
+					/>
+				</div>
+			</div>
+		);
+
 		return (
 			<li className="slds-item slds-hint-parent">
 				<div className="slds-filters__item slds-grid slds-grid--vertical-align-center">
 				{!this.props.locked && this.props.children
 					? <Popover
 						align="left"
-						body={this.props.children}
-						footer={<Button
-							className="slds-col--bump-left"
-							label="Done"
-							onClick={this.handleChange}
-						/>}
+						body={popoverBody}
 						heading="Choose filter criteria"
 						isOpen={this.state.popoverIsOpen}
 						onClose={this.handleClose}

@@ -12,7 +12,7 @@ const Example = React.createClass({
 
 	render () {
 		return (
-			<div style={{paddingLeft: '300px'}}>
+			<div style={{ paddingLeft: '400px' }}>
 				<FilteringPanel
 					footer={<PanelFilteringFooter>
 						<a href="javascript:void(0);">Add Filter</a>
@@ -28,17 +28,16 @@ const Example = React.createClass({
 						>
 							<Picklist
 								isInline
-								label="Contacts"
+								label="Show Me"
 								onSelect={(value) => { console.log('selected: ', value); }}
 								options={[
-									{ label: 'Option A', value: 'A0' },
-									{ label: 'Option B', value: 'B0' },
-									{ label: 'Option C', value: 'C0' },
-									{ label: 'Option D', value: 'D0' },
-									{ label: 'Option E', value: 'E0' },
-									{ label: 'Option FGHIJKLMNOPQRSTUVWXYZ', value: 'F0' }
+									{ label: 'Everything', value: 'A0' },
+									{ label: 'All Products', value: 'B0' },
+									{ label: 'All Widgets', value: 'C0' },
+									{ label: 'All Wackamoles', value: 'D0' },
 								]}
 								placeholder="Select a contact"
+								value="B0"
 							/>
 						</PanelFilteringFilter>
 					</PanelFilteringList>
@@ -52,17 +51,16 @@ const Example = React.createClass({
 						>
 							<Picklist
 								isInline
-								label="Contacts"
+								label="Created Date EQUALS"
 								onSelect={(value) => { console.log('selected: ', value); }}
 								options={[
-									{ label: 'Option A', value: 'A0' },
-									{ label: 'Option B', value: 'B0' },
-									{ label: 'Option C', value: 'C0' },
-									{ label: 'Option D', value: 'D0' },
-									{ label: 'Option E', value: 'E0' },
-									{ label: 'Option FGHIJKLMNOPQRSTUVWXYZ', value: 'F0' }
+									{ label: 'LAST WEEK', value: 'A0' },
+									{ label: 'THIS WEEK', value: 'B0' },
+									{ label: 'THIS MONTH', value: 'C0' },
+									{ label: 'THIS YEAR', value: 'D0' }
 								]}
 								placeholder="Select a contact"
+								value="B0"
 							/>
 						</PanelFilteringFilter>
 						<PanelFilteringFilter
