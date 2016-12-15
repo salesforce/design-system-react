@@ -19,40 +19,58 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React, { PropTypes } from 'react';
 
-// ### classNames
-import classNames from 'classnames';
+import Button from '../../button';
+import Popover from '../../popover';
 
 // ## Constants
-import { PANEL } from '../../utilities/constants';
+import { PANEL_FILTERING_FILTER } from '../../../utilities/constants';
 
 /**
- * A panel provides detailed contextual information or contextual filtering options.
+ * A filtering panel contextual filtering options.
  */
-const Panel = ({ children, variant }) => (
-	<div
-		className={classNames(
-			'slds-panel',
-			'slds-grid',
-			'slds-grid--vertical',
-			'slds-nowrap', {
-				'slds-panel--filters': variant === 'filters'
-			})}
-	>
-		{children}
-	</div>
+const FilteringPanelFilter = ({ assistiveTextRemoveFilter, children, predicate, property }) => (
+	<li className="slds-item slds-hint-parent">
+		<div className="slds-filters__item slds-grid slds-grid--vertical-align-center">
+			<Popover
+				align="left"
+				body={children}
+				heading="Choose filter criteria"
+			>
+				<a href="javascript:void(0);" className="slds-grow slds-has-blur-focus">
+					<p className="slds-text-body--small">{property}</p>
+					<p>{predicate}</p>
+				</a>
+			</Popover>
+
+			<Button
+				className="slds-col--bump-left"
+				assistiveText={assistiveTextRemoveFilter}
+				hint
+				iconCategory="utility"
+				iconName="close"
+				iconVariant="bare"
+				iconSize="small"
+				variant="icon"
+			/>
+		</div>
+	</li>
 );
 
-Panel.displayName = PANEL;
+FilteringPanelFilter.displayName = PANEL_FILTERING_FILTER;
 
-Panel.propTypes = {
+FilteringPanelFilter.propTypes = {
 	/**
-	 * The contents of the panel
+	 * Assistive text for removing a filter
 	 */
-	children: PropTypes.node,
+	assistiveTextRemoveFilter: PropTypes.string,
 	/**
-	 * The type of panel
+	 * The property you are filter
 	 */
-	variant: PropTypes.oneOf(['filters'])
+	property: PropTypes.string,
+	/**
+	 * The criteria you are filtering for. ("[The property] is blue")
+	 */
+	predicate: PropTypes.string
 };
 
-module.exports = Panel;
+module.exports = FilteringPanelFilter;

@@ -19,40 +19,25 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React, { PropTypes } from 'react';
 
-// ### classNames
-import classNames from 'classnames';
-
 // ## Constants
-import { PANEL } from '../../utilities/constants';
+import { PANEL_FILTERING_FOOTER } from '../../../utilities/constants';
 
 /**
- * A panel provides detailed contextual information or contextual filtering options.
+ * A filtering panel contextual filtering options.
  */
-const Panel = ({ children, variant }) => (
-	<div
-		className={classNames(
-			'slds-panel',
-			'slds-grid',
-			'slds-grid--vertical',
-			'slds-nowrap', {
-				'slds-panel--filters': variant === 'filters'
-			})}
-	>
+const FilteringPanel = ({ children }) => (
+	<div className="slds-filters__footer slds-grid slds-shrink-none">
 		{children}
 	</div>
 );
 
-Panel.displayName = PANEL;
+FilteringPanel.displayName = PANEL_FILTERING_FOOTER;
 
-Panel.propTypes = {
+FilteringPanel.propTypes = {
 	/**
-	 * The contents of the panel
+	 * A place for actions such as "Add a filter" or "Remove all"
 	 */
-	children: PropTypes.node,
-	/**
-	 * The type of panel
-	 */
-	variant: PropTypes.oneOf(['filters'])
+	children: PropTypes.node
 };
 
-module.exports = Panel;
+module.exports = FilteringPanel;

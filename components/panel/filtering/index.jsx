@@ -19,40 +19,64 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React, { PropTypes } from 'react';
 
-// ### classNames
-import classNames from 'classnames';
+import Panel from '../';
+import Button from '../../button';
 
 // ## Constants
-import { PANEL } from '../../utilities/constants';
+import { PANEL_FILTERING } from '../../../utilities/constants';
 
 /**
- * A panel provides detailed contextual information or contextual filtering options.
+ * A filtering panel contextual filtering options.
  */
-const Panel = ({ children, variant }) => (
-	<div
-		className={classNames(
-			'slds-panel',
-			'slds-grid',
-			'slds-grid--vertical',
-			'slds-nowrap', {
-				'slds-panel--filters': variant === 'filters'
-			})}
-	>
-		{children}
-	</div>
+const FilteringPanel = ({ assistiveTextCloseFilterPanel, children, heading, footer }) => (
+	<Panel variant="filters">
+		<div className="slds-form--stacked slds-grow slds-scrollable--y slds-grid slds-grid--vertical">
+			<div className="slds-filters">
+				<div className="slds-filters__header slds-grid slds-has-divider--bottom-space">
+					<h4 className="slds-align-middle slds-text-heading--small">{heading}</h4>
+					<Button
+						className="slds-col--bump-left"
+						assistiveText={assistiveTextCloseFilterPanel}
+						iconCategory="utility"
+						iconName="forward"
+						iconVariant="bare"
+						iconSize="small"
+						variant="icon"
+					/>
+				</div>
+				<div className="slds-filters__body">
+					{children}
+				</div>
+				{footer}
+			</div>
+		</div>
+	</Panel>
 );
 
-Panel.displayName = PANEL;
+FilteringPanel.displayName = PANEL_FILTERING;
 
-Panel.propTypes = {
+FilteringPanel.propTypes = {
 	/**
-	 * The contents of the panel
+	 * Pass in `FilterList`'s of `Filters`
+	 */
+	assistiveTextCloseFilterPanel: PropTypes.node,
+	/**
+	 * Pass in `FilterList`'s of `Filters`
 	 */
 	children: PropTypes.node,
 	/**
-	 * The type of panel
+	 * A place for actions such as "Add a filter" or remove all
 	 */
-	variant: PropTypes.oneOf(['filters'])
+	footer: PropTypes.node,
+	/**
+	 * The heading of the filtering panel
+	 */
+	heading: PropTypes.node
 };
 
-module.exports = Panel;
+FilteringPanel.defaultProps = {
+	assistiveTextCloseFilterPanel: 'Close Filter Panel',
+	heading: 'Filters'
+};
+
+module.exports = FilteringPanel;

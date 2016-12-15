@@ -19,40 +19,35 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React, { PropTypes } from 'react';
 
-// ### classNames
-import classNames from 'classnames';
-
 // ## Constants
-import { PANEL } from '../../utilities/constants';
+import { PANEL_FILTERING_LIST } from '../../../utilities/constants';
 
 /**
- * A panel provides detailed contextual information or contextual filtering options.
+ * A filtering panel contextual filtering options.
  */
-const Panel = ({ children, variant }) => (
-	<div
-		className={classNames(
-			'slds-panel',
-			'slds-grid',
-			'slds-grid--vertical',
-			'slds-nowrap', {
-				'slds-panel--filters': variant === 'filters'
-			})}
-	>
-		{children}
+const PanelFilteringList = ({ children, heading }) => (
+	<div>
+		{heading
+				? <p className="slds-text-body--small slds-m-vertical--x-small">{heading}</p>
+				: null
+			}
+		<ol className="slds-list--vertical slds-list--vertical-space">
+			{children}
+		</ol>
 	</div>
 );
 
-Panel.displayName = PANEL;
+PanelFilteringList.displayName = PANEL_FILTERING_LIST;
 
-Panel.propTypes = {
+PanelFilteringList.propTypes = {
 	/**
-	 * The contents of the panel
+	 * Pass in `Filter` components
 	 */
 	children: PropTypes.node,
 	/**
-	 * The type of panel
+	 * Heading for a group of filters
 	 */
-	variant: PropTypes.oneOf(['filters'])
+	heading: PropTypes.string
 };
 
-module.exports = Panel;
+module.exports = PanelFilteringList;

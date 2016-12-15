@@ -21,6 +21,7 @@ export MediaObject from './media-object/stories';
 export Modal from './modal/stories';
 export Notification from './notification/stories';
 export PageHeader from './page-header/stories';
+export Panel from './panel/stories';
 export Popover from './popover/stories';
 export Picklist from './menu-picklist/stories';
 export Spinner from './spinner/stories';
