@@ -41,10 +41,15 @@ const FilteringPanelFilter = React.createClass({
 		/**
 		 * Assistive text for removing a filter
 		 */
-		assistiveTextRemoveFilter: PropTypes.string,	/**
+		assistiveTextRemoveFilter: PropTypes.string,
+		/**
 		 * Assistive text for removing a filter
 		 */
 		assistiveTextChangeFilter: PropTypes.string,
+		/**
+		 * Assistive text for Popover heading
+		 */
+		assistiveTextChangeFilterHeading: PropTypes.string,
 		/**
 		 * Contents of popover. That is the dropdowns and inputs that set the filter criteria. Dropdowns, Picklists and other menus must use `isInline` to work properly within a Popover.
 		 */
@@ -82,6 +87,7 @@ const FilteringPanelFilter = React.createClass({
 	getDefaultProps () {
 		return {
 			assistiveTextChangeFilter: 'Select to change filter',
+			assistiveTextChangeFilterHeading: 'Choose filter criteria',
 			assistiveTextRemoveFilter: 'Remove filter'
 		};
 	},
@@ -125,6 +131,7 @@ const FilteringPanelFilter = React.createClass({
 	render () {
 		const popoverBody = (
 			<div>
+				<h4 className="slds-assistive-text" id={`${this.getId()}-popover-heading`}>{this.props.assistiveTextChangeFilterHeading}</h4>
 				{this.props.children}
 				<div className="slds-m-top--small slds-text-align--right">
 					<Button
@@ -141,9 +148,10 @@ const FilteringPanelFilter = React.createClass({
 				<div className="slds-filters__item slds-grid slds-grid--vertical-align-center">
 				{!this.props.locked && this.props.children
 					? <Popover
+						ariaLabelledby={`${this.getId()}-popover-heading`}
 						align="left"
 						body={popoverBody}
-						heading="Choose filter criteria"
+						heading=""
 						isOpen={this.state.popoverIsOpen}
 						onClose={this.handleClose}
 						onClickOutside={this.handleClose}
