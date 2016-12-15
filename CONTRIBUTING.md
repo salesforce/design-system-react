@@ -45,10 +45,7 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 ## Understanding Controlled and Uncontrolled Components
 - All new components should be controlled at first and then uncontrolled support added later if needed. 
-- All Design System React components should be able to be "controlled"--that is expose a callback and expect their 
-
-
-to control them with props. 
+- All Design System React components should be able to be "controlled"--that is expose a callback and expect their parent to control them with props. 
 - Prefix callbacks that occur before an event with `onRequest`. Prefix callbacks that occur as a result of an event with `on`. The close button in a Popover will call `onRequestClose` while the Popover will call `onClose` after the Popover has been closed. This is because closing isn't guarenteed with `onRequestClose`, since the parent component will decide.
 - Please note that if controlled by its parent, a component will appear broken if just copied and pasted into an application without a parent to control its props.
 - Controlled components can be stateless components, but entirely stateless components do complicate DOM selectors for the consuming applications.
