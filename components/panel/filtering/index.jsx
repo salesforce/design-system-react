@@ -57,7 +57,7 @@ FilteringPanel.displayName = PANEL_FILTERING;
 
 FilteringPanel.propTypes = {
 	/**
-	 * Pass in `FilterList`'s of `Filters`
+	 * Localized description of the close button for the panel for screen readers
 	 */
 	assistiveTextCloseFilterPanel: PropTypes.node,
 	/**

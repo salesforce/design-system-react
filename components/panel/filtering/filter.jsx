@@ -64,13 +64,17 @@ FilteringPanelFilter.propTypes = {
 	 */
 	assistiveTextRemoveFilter: PropTypes.string,
 	/**
-	 * The property you are filter
+	 * The contents of the popover
 	 */
-	property: PropTypes.string,
+	children: PropTypes.node,
+	/**
+	 * The property you are filtering
+	 */
+	property: PropTypes.node,
 	/**
 	 * The criteria you are filtering for. ("[The property] is blue")
 	 */
-	predicate: PropTypes.string
+	predicate: PropTypes.node
 };
 
 module.exports = FilteringPanelFilter;
