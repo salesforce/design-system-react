@@ -49,11 +49,11 @@ const Example = React.createClass({
 							This is popover contents.
 						</PanelFilteringFilter>
 						<PanelFilteringFilter
+							locked
+							permanent
 							property="List Price"
 							predicate="greater than &quot;500&quot;"
-						>
-							This is popover contents.
-						</PanelFilteringFilter>
+						/>
 					</PanelFilteringList>
 				</FilteringPanel>
 			</div>

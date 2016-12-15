@@ -19,6 +19,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React, { PropTypes } from 'react';
 
+// ### classNames
+import classNames from 'classnames';
+
 import Button from '../../button';
 import Popover from '../../popover';
 
@@ -28,30 +31,46 @@ import { PANEL_FILTERING_FILTER } from '../../../utilities/constants';
 /**
  * A filtering panel contextual filtering options.
  */
-const FilteringPanelFilter = ({ assistiveTextRemoveFilter, children, predicate, property }) => (
+const FilteringPanelFilter = ({ assistiveTextRemoveFilter, children, locked, permanent, predicate, property }) => (
 	<li className="slds-item slds-hint-parent">
-		<div className="slds-filters__item slds-grid slds-grid--vertical-align-center">
-			<Popover
-				align="left"
-				body={children}
-				heading="Choose filter criteria"
-			>
-				<a href="javascript:void(0);" className="slds-grow slds-has-blur-focus">
+		<div
+			className={classNames(
+				'slds-filters__item',
+				'slds-grid',
+				'slds-grid--vertical-align-center', {
+					'slds-is-locked': locked
+				}
+			)}
+		>
+			{!locked && children
+				? <Popover
+					align="left"
+					body={children}
+					heading="Choose filter criteria"
+				>
+					<a href="javascript:void(0);" className="slds-grow slds-has-blur-focus">
+						<p className="slds-text-body--small">{property}</p>
+						<p>{predicate}</p>
+					</a>
+				</Popover>
+				: <a href="javascript:void(0);" className="slds-grow slds-has-blur-focus">
 					<p className="slds-text-body--small">{property}</p>
 					<p>{predicate}</p>
 				</a>
-			</Popover>
-
-			<Button
-				className="slds-col--bump-left"
-				assistiveText={assistiveTextRemoveFilter}
-				hint
-				iconCategory="utility"
-				iconName="close"
-				iconVariant="bare"
-				iconSize="small"
-				variant="icon"
-			/>
+			}
+			{!permanent
+				? <Button
+					className="slds-col--bump-left"
+					assistiveText={assistiveTextRemoveFilter}
+					hint
+					iconCategory="utility"
+					iconName="close"
+					iconVariant="bare"
+					iconSize="small"
+					variant="icon"
+				/>
+				: null
+			}
 		</div>
 	</li>
 );
@@ -68,13 +87,21 @@ FilteringPanelFilter.propTypes = {
 	 */
 	children: PropTypes.node,
 	/**
-	 * The property you are filtering
+	 * If true, the filter will not display an editing popover when clicked
 	 */
-	property: PropTypes.node,
+	locked: PropTypes.bool,
+	/**
+	 * If true, the filter will not include a remove button
+	 */
+	permanent: PropTypes.bool,
 	/**
 	 * The criteria you are filtering for. ("[The property] is blue")
 	 */
-	predicate: PropTypes.node
+	predicate: PropTypes.node,
+	/**
+	 * The property you are filtering
+	 */
+	property: PropTypes.node
 };
 
 module.exports = FilteringPanelFilter;
