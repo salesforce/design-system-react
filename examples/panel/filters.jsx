@@ -24,6 +24,7 @@ const Example = React.createClass({
 							property="Show Me"
 							predicate="All Products"
 							onChange={({ id }) => { console.log('onChange ', id); }}
+							onRemove={({ id }) => { console.log('onRemove ', id); }}
 						>
 							<Picklist
 								isInline
@@ -46,8 +47,23 @@ const Example = React.createClass({
 						<PanelFilteringFilter
 							property="Created Date"
 							predicate="equals THIS WEEK"
+							onChange={({ id }) => { console.log('onChange ', id); }}
+							onRemove={({ id }) => { console.log('onRemove ', id); }}
 						>
-							This is popover contents.
+							<Picklist
+								isInline
+								label="Contacts"
+								onSelect={(value) => { console.log('selected: ', value); }}
+								options={[
+									{ label: 'Option A', value: 'A0' },
+									{ label: 'Option B', value: 'B0' },
+									{ label: 'Option C', value: 'C0' },
+									{ label: 'Option D', value: 'D0' },
+									{ label: 'Option E', value: 'E0' },
+									{ label: 'Option FGHIJKLMNOPQRSTUVWXYZ', value: 'F0' }
+								]}
+								placeholder="Select a contact"
+							/>
 						</PanelFilteringFilter>
 						<PanelFilteringFilter
 							locked

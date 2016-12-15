@@ -54,6 +54,14 @@ const FilteringPanelFilter = React.createClass({
 		*/
 		id: PropTypes.string,
 		/**
+			* If true, the filter will not display an editing popover when clicked
+			*/
+		locked: PropTypes.bool,
+		/**
+			* If true, the filter will not include a remove button
+			*/
+		permanent: PropTypes.bool,
+		/**
 		 * Will be triggered when Done within the Popover is clicked
 		 */
 		onChange: PropTypes.func,
@@ -62,13 +70,13 @@ const FilteringPanelFilter = React.createClass({
 		 */
 		onRemove: PropTypes.func,
 		/**
-		 * The property you are filter
-		 */
-		property: PropTypes.string,
-		/**
 		 * The criteria you are filtering for. ("[The property] is blue")
 		 */
-		predicate: PropTypes.string
+		predicate: PropTypes.string,
+		/**
+		 * The property you are filter
+		 */
+		property: PropTypes.string
 	},
 
 	getDefaultProps () {
@@ -108,11 +116,18 @@ const FilteringPanelFilter = React.createClass({
 		}
 	},
 
+	handleRemove () {
+		if (this.props.onRemove) {
+			this.props.onRemove({ id: this.getId() });
+		}
+	},
+
 	render () {
 		return (
 			<li className="slds-item slds-hint-parent">
 				<div className="slds-filters__item slds-grid slds-grid--vertical-align-center">
-					<Popover
+				{!this.props.locked && this.props.children
+					? <Popover
 						align="left"
 						body={this.props.children}
 						footer={<Button
@@ -136,18 +151,24 @@ const FilteringPanelFilter = React.createClass({
 							<span className="slds-assistive-text">{this.props.assistiveTextChangeFilter}</span>
 						</a>
 					</Popover>
-
-					<Button
-						className="slds-col--bump-left"
-						assistiveText={this.props.assistiveTextRemoveFilter}
-						hint
-						iconCategory="utility"
-						iconName="close"
-						iconSize="small"
-						iconVariant="bare"
-						onClick={() => { this.props.onRemove({ id: this.getId() }); }}
-						variant="icon"
-					/>
+					: <a href="javascript:void(0);" className="slds-grow slds-has-blur-focus">
+						<p className="slds-text-body--small">{this.props.property}</p>
+						<p>{this.props.predicate}</p>
+					</a>
+					}
+					{!this.props.permanent
+						? <Button
+							className="slds-col--bump-left"
+							assistiveText={this.props.assistiveTextRemoveFilter}
+							hint
+							iconCategory="utility"
+							iconName="close"
+							iconSize="small"
+							iconVariant="bare"
+							onClick={this.handleRemove}
+							variant="icon"
+						/>
+					: null}
 				</div>
 			</li>
 		);
