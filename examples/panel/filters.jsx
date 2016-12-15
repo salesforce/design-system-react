@@ -23,6 +23,7 @@ const Example = React.createClass({
 						<PanelFilteringFilter
 							property="Show Me"
 							predicate="All Products"
+							onChange={({ id }) => { console.log('onChange ', id); }}
 						>
 							<Picklist
 								isInline

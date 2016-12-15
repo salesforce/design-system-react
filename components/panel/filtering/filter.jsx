@@ -22,55 +22,136 @@ import React, { PropTypes } from 'react';
 import Button from '../../button';
 import Popover from '../../popover';
 
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
+
 // ## Constants
 import { PANEL_FILTERING_FILTER } from '../../../utilities/constants';
 
+
 /**
- * A filtering panel contextual filtering options.
+ * A filtering panel's contextual filtering options.
  */
-const FilteringPanelFilter = ({ assistiveTextRemoveFilter, children, predicate, property }) => (
-	<li className="slds-item slds-hint-parent">
-		<div className="slds-filters__item slds-grid slds-grid--vertical-align-center">
-			<Popover
-				align="left"
-				body={children}
-				heading="Choose filter criteria"
-			>
-				<a href="javascript:void(0);" className="slds-grow slds-has-blur-focus">
-					<p className="slds-text-body--small">{property}</p>
-					<p>{predicate}</p>
-				</a>
-			</Popover>
+const FilteringPanelFilter = React.createClass({
+	displayName: PANEL_FILTERING_FILTER,
 
-			<Button
-				className="slds-col--bump-left"
-				assistiveText={assistiveTextRemoveFilter}
-				hint
-				iconCategory="utility"
-				iconName="close"
-				iconVariant="bare"
-				iconSize="small"
-				variant="icon"
-			/>
-		</div>
-	</li>
-);
+	propTypes: {
+		/**
+		 * Assistive text for removing a filter
+		 */
+		assistiveTextRemoveFilter: PropTypes.string,	/**
+		 * Assistive text for removing a filter
+		 */
+		assistiveTextChangeFilter: PropTypes.string,
+		/**
+		 * Contents of popover. That is the dropdowns and inputs that set the filter criteria. Dropdowns, Picklists and other menus must use `isInline` to work properly within a Popover.
+		 */
+		children: PropTypes.node,
+		/**
+		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
+		*/
+		id: PropTypes.string,
+		/**
+		 * Will be triggered when Done within the Popover is clicked
+		 */
+		onChange: PropTypes.func,
+		/**
+		 * Will be triggered when "Remove Filter" button is clicked
+		 */
+		onRemove: PropTypes.func,
+		/**
+		 * The property you are filter
+		 */
+		property: PropTypes.string,
+		/**
+		 * The criteria you are filtering for. ("[The property] is blue")
+		 */
+		predicate: PropTypes.string
+	},
 
-FilteringPanelFilter.displayName = PANEL_FILTERING_FILTER;
+	getDefaultProps () {
+		return {
+			assistiveTextChangeFilter: 'Select to change filter',
+			assistiveTextRemoveFilter: 'Remove filter'
+		};
+	},
 
-FilteringPanelFilter.propTypes = {
-	/**
-	 * Assistive text for removing a filter
-	 */
-	assistiveTextRemoveFilter: PropTypes.string,
-	/**
-	 * The property you are filter
-	 */
-	property: PropTypes.string,
-	/**
-	 * The criteria you are filtering for. ("[The property] is blue")
-	 */
-	predicate: PropTypes.string
-};
+	getInitialState () {
+		return {
+			popoverIsOpen: false
+		};
+	},
+
+	componentWillMount () {
+		this.generatedId = shortid.generate();
+	},
+
+	getId () {
+		return this.props.id || this.generatedId;
+	},
+
+	handleFilterClick () {
+		this.setState({ popoverIsOpen: true });
+	},
+
+	handleClose () {
+		this.setState({ popoverIsOpen: false });
+	},
+
+	handleChange () {
+		this.setState({ popoverIsOpen: false });
+		
+		if (this.props.onChange) {
+			this.props.onChange({ id: this.getId() });
+		}
+	},
+
+	render () {
+		return (
+			<li className="slds-item slds-hint-parent">
+				<div className="slds-filters__item slds-grid slds-grid--vertical-align-center">
+					<Popover
+						align="left"
+						body={this.props.children}
+						footer={<Button
+							className="slds-col--bump-left"
+							label="Done"
+							onClick={this.handleChange}
+						/>}
+						heading="Choose filter criteria"
+						isOpen={this.state.popoverIsOpen}
+						onClose={this.handleClose}
+						onClickOutside={this.handleClose}
+						triggerClassName="slds-grow"
+					>
+						<a
+							href="javascript:void(0);"
+							className="slds-has-blur-focus"
+							onClick={this.handleFilterClick}
+						>
+							<p className="slds-text-body--small">{this.props.property}</p>
+							<p>{this.props.predicate}</p>
+							<span className="slds-assistive-text">{this.props.assistiveTextChangeFilter}</span>
+						</a>
+					</Popover>
+
+					<Button
+						className="slds-col--bump-left"
+						assistiveText={this.props.assistiveTextRemoveFilter}
+						hint
+						iconCategory="utility"
+						iconName="close"
+						iconSize="small"
+						iconVariant="bare"
+						onClick={() => { this.props.onRemove({ id: this.getId() }); }}
+						variant="icon"
+					/>
+				</div>
+			</li>
+		);
+	}
+});
 
 module.exports = FilteringPanelFilter;
