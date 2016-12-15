@@ -449,7 +449,7 @@ const Popover = React.createClass({
 			ref: (component) => { this.trigger = component; },
 			'aria-haspopup': true,
 			'aria-expanded': this.getIsOpen(),
-			className: classNames(outsideClickIgnoreClass),
+			className: classNames(this.props.children.props.className, outsideClickIgnoreClass),
 			disabled: this.props.disabled,
 			style: this.props.style,
 			id: this.getId(),
