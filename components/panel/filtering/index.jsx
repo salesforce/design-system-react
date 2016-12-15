@@ -28,7 +28,7 @@ import { PANEL_FILTERING } from '../../../utilities/constants';
 /**
  * A filtering panel contextual filtering options.
  */
-const FilteringPanel = ({ assistiveTextCloseFilterPanel, children, heading, footer }) => (
+const FilteringPanel = ({ assistiveTextCloseFilterPanel, children, footer, heading, onRequestClose }) => (
 	<Panel variant="filters">
 		<div className="slds-form--stacked slds-grow slds-scrollable--y slds-grid slds-grid--vertical">
 			<div className="slds-filters">
@@ -41,6 +41,7 @@ const FilteringPanel = ({ assistiveTextCloseFilterPanel, children, heading, foot
 						iconName="forward"
 						iconVariant="bare"
 						iconSize="small"
+						onClick={onRequestClose}
 						variant="icon"
 					/>
 				</div>
@@ -71,7 +72,11 @@ FilteringPanel.propTypes = {
 	/**
 	 * The heading of the filtering panel
 	 */
-	heading: PropTypes.node
+	heading: PropTypes.node,
+	/**
+	 * When the panel's close button is clicked
+	 */
+	onRequestClose: PropTypes.func
 };
 
 FilteringPanel.defaultProps = {

@@ -18,6 +18,7 @@ const Example = React.createClass({
 						<a href="javascript:void(0);">Add Filter</a>
 						<a href="javascript:void(0);" className="slds-col--bump-left">Remove All</a>
 					</PanelFilteringFooter>}
+					onRequestClose={() => { console.log('onRequestClose'); }}
 				>
 					<PanelFilteringList>
 						<PanelFilteringFilter
