@@ -123,9 +123,9 @@ describe('DataTable: ', function () {
 
 		it('renders the correct contents in each cell', function () {
 			const firstName = getCell(this.dom, 1, 1);
-			firstName.innerHTML.should.equal('Cloudhub');
+			firstName.firstChild.innerHTML.should.equal('Cloudhub');
 			const secondCount = getCell(this.dom, 2, 2);
-			secondCount.innerHTML.should.equal('54976');
+			secondCount.firstChild.innerHTML.should.equal('54976');
 		});
 
 		it('has checkboxes only when selectRows is true', function () {
@@ -275,7 +275,7 @@ describe('DataTable: ', function () {
 		it('calls onSort when a sortable column is clicked', function (done) {
 			this.onSort = (data) => {
 				data.property.should.equal('count');
-				data.sortDirection.should.equal('desc');
+				data.sortDirection.should.equal('asc');
 				done();
 			};
 

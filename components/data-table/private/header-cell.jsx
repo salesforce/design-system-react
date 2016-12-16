@@ -88,9 +88,11 @@ const DataTableHeaderCell = React.createClass({
 		} = this.props;
 
 		const sortDirection = this.props.sortDirection || this.state.sortDirection;
+		const ariaSort = !!sortDirection ? (sortDirection === 'desc' ? 'descending' : 'ascending') : null;
 
 		return (
 			<th
+				aria-sort={ariaSort}
 				focusable={sortable ? true : null}
 				scope="col"
 				key={property}
