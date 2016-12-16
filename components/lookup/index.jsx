@@ -53,6 +53,10 @@ const propTypes = {
 	 */
 	describedById: PropTypes.string,
 	/**
+	 * This prop is passed onto the `input`. Prevents dropdown menu from opening. Also applies disabled styling to input.
+	 */
+	disabled: PropTypes.bool,
+	/**
 	 * Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.
 	 */
 	emptyMessage: PropTypes.string,
@@ -516,6 +520,7 @@ class Lookup extends React.Component {
 				aria-expanded={this.state.isOpen}
 				assistiveText={this.props.assistiveText}
 				className="slds-lookup__search-input"
+				disabled={this.props.disabled}
 				iconRight={
 					<InputIcon
 						assistiveText="Search"
