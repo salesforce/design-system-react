@@ -42,6 +42,8 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 - <a name="classnames" href="#classnames">#</a> This library makes extensive use of the [classnames](https://github.com/JedWatson/classnames) library for feeding conditional CSS classes into `className` attributes and allows a variety of types such as `string`, `object`, and `arrays`. Please review the libary's API.
 - <a name="props-in-get-initial-state" href="#props-in-get-initial-state">#</a> [Props in getInitialState is an anti-pattern.](https://facebook.github.io/react/tips/props-in-getInitialState-as-anti-pattern.html)
 - <a name="jsx-gotchas" href="#jsx-gotchas">#</a> Read [JSX Gotchas](https://facebook.github.io/react/docs/jsx-gotchas.html#html-entities)
+- <a name="jsx-gotchas" href="#jsx-gotchas">#</a> Read [JSX Gotchas](https://facebook.github.io/react/docs/jsx-gotchas.html#html-entities)
+- <a name="no-default-false-values" href="#no-default-false-values">#</a> Do not set default prop values to `false`. If you need to detect if a variable is `false` in order to execute code, use a "double logical NOT operator". If `isOpen` gives you a "falsey" value, then `!!isOpen` will make it return the boolean value `false`. Otherwise it will return true.
 
 ## Understanding Controlled and Uncontrolled Components
 - All new components should be controlled at first and then uncontrolled support added later if needed. 
