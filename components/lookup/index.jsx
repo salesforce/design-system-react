@@ -38,12 +38,21 @@ import Menu from './menu';
 import DefaultFooter from './menu/default-footer';
 import DefaultHeader from './menu/default-header';
 import DefaultSectionDivider from './menu/default-section-divider';
-import cx from 'classnames';
+import classNames from 'classnames';
 
 import { LOOKUP } from '../../utilities/constants';
 
 const displayName = LOOKUP;
 const propTypes = {
+	/**
+	 * If present, the label associated with this `input` is overwritten
+	 * by this text and is visually not shown.
+	 */
+	assistiveText: PropTypes.string,
+	/**
+	 * Class names to be added to the tag classed with `slds-lookup`.
+	 */
+	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
 	 * If true, constrains the menu to the scroll parent. Has no effect if `isInline` is `true`.
 	 */
@@ -140,6 +149,10 @@ const propTypes = {
 	 */
 	searchTerm: PropTypes.string,
 	/**
+	 * Custom component that overrides the default section divider
+	 */
+	sectionDividerRenderer: PropTypes.func,
+	/**
 	 * Index of current selected item. To clear the selection, pass in -1.
 	 */
 	selectedItem: PropTypes.number
@@ -161,15 +174,22 @@ const defaultProps = {
 };
 
 /**
- * The Lookup component
+ * Lookup is an advanced inline search form.
  */
+export const Lookup = React.createClass({
+	render() {
+		return (
+			<div></div>
+		);
+	}
+});
+
 class Lookup extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
 			currentFocus: null,
 			focusIndex: null,
-			isOpen: false,
 			items: [],
 			listLength: this.props.options.length,
 			searchTerm: this.normalizeSearchTerm(this.props.searchTerm),
@@ -178,13 +198,13 @@ class Lookup extends React.Component {
 	}
 
 	componentDidUpdate (prevProps, prevState) {
-		let lookup = this.inputRefId();
-		if (!isNaN(parseInt(prevState.selectedIndex)) && isNaN(parseInt(this.state.selectedIndex))) {
+		const lookup = this.inputRefId();
+		if (!isNaN(parseInt(prevState.selectedIndex, 10)) && isNaN(parseInt(this.state.selectedIndex, 10))) {
 			if (this.refs[lookup]) {
 				ReactDOM.findDOMNode(this.refs[lookup]).focus();
 			}
-		} else if (isNaN(parseInt(prevState.selectedIndex)) && !isNaN(parseInt(this.state.selectedIndex))) {
-			let selectedItem = 'pill-' + this.state.selectedIndex;
+		} else if (isNaN(parseInt(prevState.selectedIndex, 10)) && !isNaN(parseInt(this.state.selectedIndex, 10))) {
+			const selectedItem = `pill-${this.state.selectedIndex}`;
 			if (this.refs[selectedItem]) {
 				ReactDOM.findDOMNode(this.refs[selectedItem]).focus();
 			}
@@ -211,7 +231,7 @@ class Lookup extends React.Component {
 
 	modifyItems (itemsToModify) {
 		const items = itemsToModify.map((item, index) => ({
-			id: 'item-' + index,
+			id: `item-${index}`,
 			label: item.label,
 			data: item
 		}));
@@ -220,7 +240,6 @@ class Lookup extends React.Component {
 	}
 
 	setFirstIndex () {
-		let numFocusable = this.getNumFocusableItems();
 		let nextFocusIndex = 0;
 		let filteredItem = this.state.items[0];
 
@@ -235,11 +254,11 @@ class Lookup extends React.Component {
 		this.setState({ focusIndex: nextFocusIndex });
 	}
 
-	//=================================================
+	// =================================================
 	// Using down/up keys, set Focus on list item and assign it to aria-activedescendant attribute in input.
 	// Need to keep track of filtered list length to be able to increment/decrement the focus index so it's contained to the number of available list items.
 	increaseIndex () {
-		let numFocusable = this.getNumFocusableItems();
+		const numFocusable = this.getNumFocusableItems();
 		let nextFocusIndex = this.state.focusIndex < numFocusable ? this.state.focusIndex + 1 : 0;
 		const filteredItem = this.refs.menu.getFilteredItemForIndex(nextFocusIndex);
 
@@ -251,65 +270,68 @@ class Lookup extends React.Component {
 	}
 
 	decreaseIndex () {
-		let numFocusable = this.getNumFocusableItems();
+		const numFocusable = this.getNumFocusableItems();
 		let prevFocusIndex = this.state.focusIndex > 0 ? this.state.focusIndex - 1 : numFocusable;
 		const filteredItem = this.refs.menu.getFilteredItemForIndex(prevFocusIndex);
 
 		if (filteredItem && filteredItem.data.type === 'section') {
-			prevFocusIndex === 0 ? prevFocusIndex = numFocusable : prevFocusIndex--;
+			prevFocusIndex = prevFocusIndex === 0 ? numFocusable : prevFocusIndex - 1;
 		}
 
 		this.setState({ focusIndex: prevFocusIndex });
 	}
 
-	setFocus(id) {
-		this.setState({currentFocus: id});
+	setFocus (id) {
+		this.setState({ currentFocus: id });
 	}
 
-	getListLength(qty) {
-		if(qty !== this.state.listLength){
+	getListLength (qty) {
+		if (qty !== this.state.listLength) {
 			this.setState({ listLength: qty });
 		}
 	}
 
-	getNumFocusableItems() {
-		let offset = 0
-		if(this.refs.footer){
-			offset += 1
+	getNumFocusableItems () {
+		let offset = 0;
+
+		if (this.refs.footer) {
+			offset += 1;
 		}
-		if(this.refs.header){
-			offset += 1
+
+		if (this.refs.header) {
+			offset += 1;
 		}
-		return (this.state.listLength - 1) + offset
+
+		return (this.state.listLength - 1) + offset;
 	}
 
-	//=================================================
+	// =================================================
 	// Select menu item (onClick or on key enter/space)
-	selectItem(itemId) {
-		if(itemId){
+	selectItem (itemId) {
+		if (itemId) {
 			const index = itemId.replace('item-', '');
 			this.selectItemByIndex(index);
 		}
 	}
 
-	selectItemByIndex(index){
-		if(index >= 0 && index < this.state.items.length){
+	selectItemByIndex (index) {
+		if (index >= 0 && index < this.state.items.length) {
 			this.setState({
 				isOpen: false,
 				selectedIndex: index,
 				searchTerm: ''
 			});
 			const data = this.state.items[index].data;
-			if(this.props.onSelect){
+			if (this.props.onSelect) {
 				this.props.onSelect(data);
 			}
 		}
 	}
 
-	handleDeleteSelected() {
+	handleDeleteSelected () {
 		this.setState({
 			selectedIndex: null,
-			isOpen: true,
+			isOpen: true
 		});
 
 		this.focusInput();
@@ -319,9 +341,9 @@ class Lookup extends React.Component {
 		}
 	}
 
-	//=================================================
+	// =================================================
 	// Event Listeners on Input
-	handleClose() {
+	handleClose () {
 		this.setState({
 			isOpen: false,
 			focusIndex: null,
@@ -329,14 +351,14 @@ class Lookup extends React.Component {
 		});
 	}
 
-	handleEscape(event) {
-		if(this.state.isOpen && event){
+	handleEscape (event) {
+		if (this.state.isOpen && event) {
 			EventUtil.trap(event);
 		}
 		this.handleClose();
 	}
 
-	handleCancel(){
+	handleCancel () {
 		this.setState({
 			isOpen: false,
 			focusIndex: null,
@@ -344,131 +366,132 @@ class Lookup extends React.Component {
 		});
 	}
 
-	handleClick() {
+	handleClick () {
 		this.setState({ isOpen: true });
 	}
 
-	handleBlur(event) {
+	handleBlur (event) {
 		this.handleClose();
-		if(this.props.onBlur){
+		if (this.props.onBlur) {
 			const target = event.target || event.currentTarget;
 			this.props.onBlur(target.value);
 		}
 	}
 
-	handleFocus() {
+	handleFocus () {
 		this.setState({ isOpen: true });
 	}
 
-	handleChange(event) {
+	handleChange (event) {
 		const target = event.target || event.currentTarget;
-		this.setState({searchTerm: this.normalizeSearchTerm(target.value)});
-		if(this.props.onChange){
+		this.setState({ searchTerm: this.normalizeSearchTerm(target.value) });
+		if (this.props.onChange) {
 			this.props.onChange(target.value);
 		}
 	}
 
-	handleKeyDown(event) {
-		if(event.keyCode){
-			//If user hits esc key, close menu
-			event.keyCode === KEYS.ESCAPE ? this.handleEscape(event) : this.handleClick();
+	handleKeyDown (event) {
+		if (event.keyCode) {
+			// If user hits esc key, close menu
+			if (event.keyCode === KEYS.ESCAPE) {
+				this.handleEscape(event);
+			} else {
+				this.handleClick();
+			}
 
-			//If user hits down key, advance aria activedescendant to next item
-			if(event.keyCode === KEYS.DOWN){
+			// If user hits down key, advance aria activedescendant to next item
+			if (event.keyCode === KEYS.DOWN) {
 				EventUtil.trapImmediate(event);
-				this.state.focusIndex === null ? this.setFirstIndex() : this.increaseIndex();
-			}
-			//If user hits up key, advance aria activedescendant to previous item
-			else if(event.keyCode === KEYS.UP){
+				if (this.state.focusIndex === null) {
+					this.setFirstIndex();
+				} else {
+					this.increaseIndex();
+				}
+			} else if (event.keyCode === KEYS.UP) {
+				// If user hits up key, advance aria activedescendant to previous item
 				EventUtil.trapImmediate(event);
-				let numFocusable = this.getNumFocusableItems()
-				this.state.focusIndex === null ? this.setState({ focusIndex: numFocusable}) : this.decreaseIndex();
-			}
-			//If user hits enter, select current activedescendant item
-			else if((event.keyCode === KEYS.ENTER) && this.state.focusIndex !== null){
+				const numFocusable = this.getNumFocusableItems();
+				if (this.state.focusIndex === null) {
+					this.setState({ focusIndex: numFocusable });
+				} else {
+					this.decreaseIndex();
+				}
+			} else if ((event.keyCode === KEYS.ENTER) && this.state.focusIndex !== null) {
+				// If user hits enter, select current activedescendant item
 				EventUtil.trapImmediate(event);
-				//If the focus is on the first fixed Action Item in Menu, click it
-				if(this.refs.header && this.state.focusIndex === 0){
+				// If the focus is on the first fixed Action Item in Menu, click it
+				if (this.refs.header && this.state.focusIndex === 0) {
 					ReactDOM.findDOMNode(this.refs.header).click();
-				}
-				//If the focus is on the last fixed Action Item in Menu, click it
-				else if(this.refs.footer && this.state.focusIndex === (this.state.listLength + 1)){
+				} else if (this.refs.footer && this.state.focusIndex === (this.state.listLength + 1)) {
+					// If the focus is on the last fixed Action Item in Menu, click it
 					ReactDOM.findDOMNode(this.refs.footer).click();
-				}
-				//If not, then select menu item
-				else{
+				} else {
+					// If not, then select menu item
 					this.selectItem(this.state.currentFocus);
 				}
 			}
 		}
 	}
 
-	handlePillKeyDown(event){
-		if(event.keyCode){
-			if(event.keyCode === KEYS.DELETE || event.keyCode === KEYS.BACKSPACE){
+	handlePillKeyDown (event) {
+		if (event.keyCode) {
+			if (event.keyCode === KEYS.DELETE || event.keyCode === KEYS.BACKSPACE) {
 				EventUtil.trapImmediate(event);
 				this.handleDeleteSelected();
 			}
 		}
 	}
 
-	getHeader(){
-		if(this.props.headerRenderer){
-			const Header = this.props.headerRenderer;
-			let headerActive = false;
-			this.state.focusIndex === 0 ? headerActive = true : headerActive = false;
+	getHeader () {
+		const Header = this.props.headerRenderer;
+		const headerActive = this.state.focusIndex === 0;
 
-			return <Header ref='header' {...this.props}
-					focusIndex={this.state.focusIndex}
-					isActive={headerActive}
-					onClose={this.handleClose.bind(this)}
-					searchTerm={this.state.searchTerm}
-					setFocus={this.setFocus.bind(this)}
-				/>
-		}
+		return (
+			<Header
+				ref="header"
+				{...this.props}
+				focusIndex={this.state.focusIndex}
+				isActive={headerActive}
+				onClose={this.handleClose.bind(this)}
+				searchTerm={this.state.searchTerm}
+				setFocus={this.setFocus.bind(this)}
+			/>
+		);
 	}
 
-	getFooter() {
-		if(this.props.footerRenderer){
-			const Footer = this.props.footerRenderer;
-			let footerActive = false;
-			let numFocusable = this.getNumFocusableItems();
-			this.state.focusIndex === numFocusable ? footerActive = true : footerActive = false;
+	getFooter () {
+		const Footer = this.props.footerRenderer;
+		const numFocusable = this.getNumFocusableItems();
+		const footerActive = this.state.focusIndex === numFocusable;
 
-			return <Footer ref='footer' {... this.props}
+		return (
+			<Footer
+				ref="footer"
+				{... this.props}
 				focusIndex={this.state.focusIndex}
 				isActive={footerActive}
 				onClose={this.handleClose.bind(this)}
 				setFocus={this.setFocus.bind(this)}
-			/>;
-		}
+			/>
+		);
 	}
 
-	/*
-	getSectionDivider(){
-		if(this.props.sectionDividerRenderer){
-			const SectionDivider = this.props.sectionDividerRenderer;
-			return <SectionDivider {... this.props} />;
-		}
-	}
- */
-
-	normalizeSearchTerm(string) {
+	normalizeSearchTerm (string) {
 		return (string || '').toString().replace(/^\s+/, '');
 	}
 
-	//=================================================
+	// =================================================
 	// Rendering Things
-	renderMenuContent() {
-		if(this.state.isOpen){
-			return <Menu
-				ref='menu'
+	renderMenuContent () {
+		return (
+			<Menu
+				ref="menu"
 				emptyMessage={this.props.emptyMessage}
 				filterWith={this.props.filterWith}
 				focusIndex={this.state.focusIndex}
-				footer={this.getFooter()}
+				footer={this.props.footerRenderer ? this.getFooter() : null}
 				getListLength={this.getListLength.bind(this)}
-				header={this.getHeader()}
+				header={this.props.headerRenderer ? this.getHeader() : null}
 				iconCategory={this.props.iconCategory}
 				iconInverse={this.props.iconInverse}
 				iconName={this.props.iconName}
@@ -480,38 +503,39 @@ class Lookup extends React.Component {
 				searchTerm={this.state.searchTerm}
 				sectionDividerRenderer={this.props.sectionDividerRenderer}
 				setFocus={this.setFocus.bind(this)}
-			/>;
-		}
-	}
-
-	renderInlineMenu() {
-		if(this.state.isOpen){
-			return <div className='ignore-react-onclickoutside slds-lookup__menu' role='listbox' ref='scroll'>
-				{this.renderMenuContent()}
-			</div>;
-		}
-	}
-
-	renderSeparateMenu() {
-		return (
-			this.state.isOpen ?
-				<Dialog
-					className="slds-lookup__menu slds-show"
-					closeOnTabKey={true}
-					contentsClassName='slds-lookup__menu slds-show'
-					inheritTargetWidth={true}
-					onClose={this.handleCancel.bind(this)}
-					flippable={this.props.flippable}
-					constrainToScrollParent={this.props.constrainToScrollParent}
-					targetElement={this.input}
-					verticalAlign="bottom"
-				>
-					{this.renderMenuContent()}
-				</Dialog> : null
+			/>
 		);
 	}
 
-	renderInput() {
+	renderInlineMenu () {
+		return (this.state.isOpen
+			? <div className="ignore-react-onclickoutside slds-lookup__menu" role="listbox" ref="scroll">
+				{this.renderMenuContent()}
+			</div>
+			: null
+		);
+	}
+
+	renderSeparateMenu () {
+		return (this.state.isOpen
+			? <Dialog
+				className="slds-lookup__menu slds-show"
+				closeOnTabKey
+				contentsClassName="slds-lookup__menu slds-show"
+				inheritTargetWidth
+				onClose={this.handleCancel.bind(this)}
+				flippable={this.props.flippable}
+				constrainToScrollParent={this.props.constrainToScrollParent}
+				targetElement={this.input}
+				verticalAlign="bottom"
+			>
+				{this.renderMenuContent()}
+			</Dialog>
+			: null
+		);
+	}
+
+	renderInput () {
 		return (
 			<Input
 				aria-activedescendant={this.state.currentFocus ? this.state.currentFocus : ''}
@@ -548,68 +572,87 @@ class Lookup extends React.Component {
 		);
 	}
 
-	renderSelectedItem() {
+	renderSelectedItem () {
 		let selectedItem = this.props.options[this.state.selectedIndex].label;
-		const renderIcon = this.props.iconName ? <Icon category={this.props.iconCategory} className='slds-icon slds-pill__icon' inverse={this.props.iconInverse} name={this.props.iconName} /> : null;
+		const renderIcon = this.props.iconName
+			? <Icon
+				category={this.props.iconCategory}
+				className="slds-icon slds-pill__icon"
+				inverse={this.props.iconInverse}
+				name={this.props.iconName}
+			/>
+			: null;
 		let labelClassName = this.props.iconName ? 'slds-pill__label' : 'slds-pill__label slds-m-left--x-small';
 
 		// i18n
 		return (
-			<div className='slds-pill__container'>
-				<a href='javascript:void(0)' className='slds-pill' ref={'pill-' + this.state.selectedIndex} onKeyDown={this.handlePillKeyDown.bind(this)}>
+			<div className="slds-pill__container">
+				<a
+					href="javascript:void(0)"
+					className="slds-pill"
+					ref={`pill-${this.state.selectedIndex}`}
+					onKeyDown={this.handlePillKeyDown.bind(this)}
+				>
 					{renderIcon}
 					<span className={labelClassName}>
 						{selectedItem}
 					</span>
 					<Button
-						assistiveText='Press delete to remove'
-						className='slds-pill__remove slds-button--icon-bare'
-						iconName='close'
+						assistiveText="Press delete to remove"
+						className="slds-pill__remove slds-button--icon-bare"
+						iconName="close"
 						onClick={this.handleDeleteSelected.bind(this)}
-						ref='clearSelectedItemButton'
-						tabIndex='-1'
-						variant='icon'
+						ref="clearSelectedItemButton"
+						tabIndex="-1"
+						variant="icon"
 					/>
 				</a>
 			</div>
-		)
+		);
 	}
 
-	renderLabel() {
-		if(this.props.label) {
-			let inputLabel;
-			const required = this.props.required ? <span className="slds-required">*</span>:null;
-			if(this.isSelected()) {
-				// inline style override
-				inputLabel = <span className='slds-form-element__label' style={{width: '100%'}}>{required}{this.props.label}</span>;
-			} else {
-				inputLabel = <label className='slds-form-element__label' htmlFor={this.inputRefId()} style={{width: '100%'}}>{required}{this.props.label}</label>;
-			}
-			return inputLabel;
+	renderLabel () {
+		let inputLabel;
+		const required = this.props.required
+			? <span className="slds-required">*</span>
+			: null;
+		if (this.isSelected()) {
+			// inline style override
+			inputLabel = (<span
+				className="slds-form-element__label"
+				style={{ width: '100%' }}
+			>{required}{this.props.label}</span>);
+		} else {
+			inputLabel = (<label
+				className="slds-form-element__label"
+				htmlFor={this.inputRefId()}
+				style={{ width: '100%' }}
+			>{required}{this.props.label}</label>);
 		}
+		return inputLabel;
 	}
 
-	inputRefId() {
+	inputRefId () {
 		return `${this.props.label}Lookup`;
 	}
 
-	focusInput() {
+	focusInput () {
 		this.focusOnRender = true;
 	}
 
-	isSelected() {
-		const hasSelection = !isNaN(parseInt(this.state.selectedIndex)) && this.state.selectedIndex >= 0;
+	isSelected () {
+		const hasSelection = !isNaN(parseInt(this.state.selectedIndex, 10)) && this.state.selectedIndex >= 0;
 		return hasSelection;
 	}
 
-	getClassName(){
-		return cx(this.props.className, 'slds-form-element slds-lookup', {
+	getClassName () {
+		return classNames(this.props.className, 'slds-form-element slds-lookup', {
 			'slds-has-selection': this.isSelected(),
 			'slds-is-open': this.state.isOpen
 		});
 	}
 
-	render() {
+	render () {
 		let isInline;
 		/* eslint-disable react/prop-types */
 		if (this.props.isInline) {
@@ -625,13 +668,13 @@ class Lookup extends React.Component {
 		};
 
 		return (
-			<div className={this.getClassName()} data-select='single' data-scope='single'>
-					{this.renderLabel()}
-					<div className={cx(formElementControlClasses)}>
-						{ this.isSelected() ? this.renderSelectedItem() : null }
-						{ !this.isSelected() ? this.renderInput() : null }
-					</div>
-					{isInline ? this.renderInlineMenu() : this.renderSeparateMenu()}
+			<div className={this.getClassName()} data-select="single" data-scope="single">
+				{this.props.label ? this.renderLabel() : null}
+				<div className={classNames(formElementControlClasses)}>
+					{this.isSelected() ? this.renderSelectedItem() : null}
+					{!this.isSelected() ? this.renderInput() : null}
+				</div>
+				{isInline ? this.renderInlineMenu() : this.renderSeparateMenu()}
 			</div>
 		);
 	}
