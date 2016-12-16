@@ -14,7 +14,6 @@
 
 // ## Dependencies
 
-
 // ### React
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
@@ -96,17 +95,32 @@ const propTypes = {
 	 * Renders menu within the wrapping trigger as a sibling of the button. By default, you will have an absolutely positioned container at an elevated z-index.
 	 */
 	isInline: PropTypes.bool,
+	/**
+	 * Form label for input.
+	 */
 	label: PropTypes.string,
 	/**
 	 * Custom component that overrides the default Lookup Item component.
 	 */
 	listItemLabelRenderer: PropTypes.func,
+	/**
+	 * Triggered when input focus is removed.
+	 */
 	onBlur: PropTypes.func,
+	/**
+	 * Triggered when the contents of the input changes.
+	 */
 	onChange: PropTypes.func,
+	/**
+	 * Triggered when an item is selected from the dropdown menu.
+	 */
 	onSelect: PropTypes.func,
+	/**
+	 * Triggered when an item is an item is removed from the input.
+	 */
 	onUnselect: PropTypes.func,
 	/**
-	 * Lookup item data.
+	 * Item added to the dropdown menu.
 	 */
 	options: PropTypes.array.isRequired,
 	/**
@@ -117,6 +131,9 @@ const propTypes = {
 	 * If true, adds asterisk next to input label to indicate it is a required field.
 	 */
 	required: PropTypes.bool,
+	/**
+	 * Text passed on to header search input of dropdown menu.
+	 */
 	searchTerm: PropTypes.string,
 	/**
 	 * Index of current selected item. To clear the selection, pass in -1.
