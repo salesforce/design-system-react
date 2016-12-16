@@ -42,122 +42,6 @@ import classNames from 'classnames';
 
 import { LOOKUP } from '../../utilities/constants';
 
-const displayName = LOOKUP;
-const propTypes = {
-	/**
-	 * If present, the label associated with this `input` is overwritten
-	 * by this text and is visually not shown.
-	 */
-	assistiveText: PropTypes.string,
-	/**
-	 * Class names to be added to the tag classed with `slds-lookup`.
-	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-	/**
-	 * If true, constrains the menu to the scroll parent. Has no effect if `isInline` is `true`.
-	 */
-	constrainToScrollParent: PropTypes.bool,
-	/**
-	 * ID for aria-describedby (e.g. for an error message or a description)
-	 */
-	describedById: PropTypes.string,
-	/**
-	 * This prop is passed onto the `input`. Prevents dropdown menu from opening. Also applies disabled styling to input.
-	 */
-	disabled: PropTypes.bool,
-	/**
-	 * Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.
-	 */
-	emptyMessage: PropTypes.string,
-	/**
-	 * Custom function to filter the Lookup items when typing into input field. The default function is case-insensitive and uses the searchTerm to filter Lookup items on their labels.
-	 */
-	filterWith: PropTypes.func,
-	/**
-	 * If true, the menu is constrained to the window and may be flipped up. Has no effect if `isInline` is `true`.
-	 */
-	flippable: PropTypes.bool,
-	/**
-	 * Custom component for Lookup footer. The default footer allows user to add new item - see <a href='http://www.lightningdesignsystem.com/components/lookups/#base'>Lightning Design System Lookup > Base</a>. To use the default footer, pass in <code>Lookup.DefaultFooter</code>.
-	 */
-	footerRenderer: PropTypes.func,
-	/**
-	 * Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href='http://www.lightningdesignsystem.com/components/lookups/#base'>Lightning Design System Lookup > Base</a>. To use the default header, pass in <code>Lookup.DefaultHeader</code>.
-	 */
-	headerRenderer: PropTypes.func,
-	/**
-	 * Please refer to <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to view categories.
-	 */
-	iconCategory: PropTypes.string,
-	/**
-	 * If true, icon color is white. If false, icon color is the default text color.
-	 */
-	iconInverse: PropTypes.bool,
-	/**
-	 * Name of icon. Please refer to <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to view icon names.
-	 */
-	iconName: PropTypes.string,
-	/**
-	 * Determines whether the input's icon will display that icon on the left or the right.
-	 */
-	iconPosition: PropTypes.oneOf([
-		'left',
-		'right'
-	]),
-	/**
-	 * Renders menu within the wrapping trigger as a sibling of the button. By default, you will have an absolutely positioned container at an elevated z-index.
-	 */
-	isInline: PropTypes.bool,
-	/**
-	 * Form label for input.
-	 */
-	label: PropTypes.string,
-	/**
-	 * Custom component that overrides the default Lookup Item component.
-	 */
-	listItemLabelRenderer: PropTypes.func,
-	/**
-	 * Triggered when input focus is removed.
-	 */
-	onBlur: PropTypes.func,
-	/**
-	 * Triggered when the contents of the input changes.
-	 */
-	onChange: PropTypes.func,
-	/**
-	 * Triggered when an item is selected from the dropdown menu.
-	 */
-	onSelect: PropTypes.func,
-	/**
-	 * Triggered when an item is an item is removed from the input.
-	 */
-	onUnselect: PropTypes.func,
-	/**
-	 * Item added to the dropdown menu.
-	 */
-	options: PropTypes.array.isRequired,
-	/**
-	 * Text that will appear in an empty input.
-	 */
-	placeholder: PropTypes.string,
-	/**
-	 * If true, adds asterisk next to input label to indicate it is a required field.
-	 */
-	required: PropTypes.bool,
-	/**
-	 * Text passed on to header search input of dropdown menu.
-	 */
-	searchTerm: PropTypes.string,
-	/**
-	 * Custom component that overrides the default section divider
-	 */
-	sectionDividerRenderer: PropTypes.func,
-	/**
-	 * Index of current selected item. To clear the selection, pass in -1.
-	 */
-	selectedItem: PropTypes.number
-};
-
 /**
  * A function that takes a term string and an item and returns a truthy value if the item should be kept.
  */
@@ -166,28 +50,138 @@ const defaultFilter = (term, item) => {
 	return (item.data && item.data.type === 'section') || item.label.match(new RegExp(escapeRegExp(term), 'ig'));
 };
 
-const defaultProps = {
-	constrainToScrollParent: true,
-	filterWith: defaultFilter,
-	iconPosition: 'right',
-	searchTerm: ''
-};
-
 /**
- * Lookup is an advanced inline search form.
+ * Lookup is an advanced inline search form. The lookup can parse through single or multi scoped datasets. The parsed dataset can be filtered by single or multi option selects.
  */
 export const Lookup = React.createClass({
-	render() {
-		return (
-			<div></div>
-		);
-	}
-});
+	displayName: LOOKUP,
 
-class Lookup extends React.Component {
-	constructor (props) {
-		super(props);
-		this.state = {
+	propTypes: {
+		/**
+		 * If present, the label associated with this `input` is overwritten
+		 * by this text and is visually not shown.
+		 */
+		assistiveText: PropTypes.string,
+		/**
+		 * Class names to be added to the tag classed with `slds-lookup`.
+		 */
+		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		/**
+		 * If true, constrains the menu to the scroll parent. Has no effect if `isInline` is `true`.
+		 */
+		constrainToScrollParent: PropTypes.bool,
+		/**
+		 * ID for aria-describedby (e.g. for an error message or a description)
+		 */
+		describedById: PropTypes.string,
+		/**
+		 * This prop is passed onto the `input`. Prevents dropdown menu from opening. Also applies disabled styling to input.
+		 */
+		disabled: PropTypes.bool,
+		/**
+		 * Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.
+		 */
+		emptyMessage: PropTypes.string,
+		/**
+		 * Custom function to filter the Lookup items when typing into input field. The default function is case-insensitive and uses the searchTerm to filter Lookup items on their labels.
+		 */
+		filterWith: PropTypes.func,
+		/**
+		 * If true, the menu is constrained to the window and may be flipped up. Has no effect if `isInline` is `true`.
+		 */
+		flippable: PropTypes.bool,
+		/**
+		 * Custom component for Lookup footer. The default footer allows user to add new item - see <a href='http://www.lightningdesignsystem.com/components/lookups/#base'>Lightning Design System Lookup > Base</a>. To use the default footer, pass in <code>Lookup.DefaultFooter</code>.
+		 */
+		footerRenderer: PropTypes.func,
+		/**
+		 * Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href='http://www.lightningdesignsystem.com/components/lookups/#base'>Lightning Design System Lookup > Base</a>. To use the default header, pass in <code>Lookup.DefaultHeader</code>.
+		 */
+		headerRenderer: PropTypes.func,
+		/**
+		 * Please refer to <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to view categories.
+		 */
+		iconCategory: PropTypes.string,
+		/**
+		 * If true, icon color is white. If false, icon color is the default text color.
+		 */
+		iconInverse: PropTypes.bool,
+		/**
+		 * Name of icon. Please refer to <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to view icon names.
+		 */
+		iconName: PropTypes.string,
+		/**
+		 * Determines whether the input's icon will display that icon on the left or the right.
+		 */
+		iconPosition: PropTypes.oneOf([
+			'left',
+			'right'
+		]),
+		/**
+		 * Renders menu within the wrapping trigger as a sibling of the button. By default, you will have an absolutely positioned container at an elevated z-index.
+		 */
+		isInline: PropTypes.bool,
+		/**
+		 * Form label for input.
+		 */
+		label: PropTypes.string,
+		/**
+		 * Custom component that overrides the default Lookup Item component.
+		 */
+		listItemLabelRenderer: PropTypes.func,
+		/**
+		 * Triggered when input focus is removed.
+		 */
+		onBlur: PropTypes.func,
+		/**
+		 * Triggered when the contents of the input changes.
+		 */
+		onChange: PropTypes.func,
+		/**
+		 * Triggered when an item is selected from the dropdown menu.
+		 */
+		onSelect: PropTypes.func,
+		/**
+		 * Triggered when an item is an item is removed from the input.
+		 */
+		onUnselect: PropTypes.func,
+		/**
+		 * Item added to the dropdown menu.
+		 */
+		options: PropTypes.array.isRequired,
+		/**
+		 * Text that will appear in an empty input.
+		 */
+		placeholder: PropTypes.string,
+		/**
+		 * If true, adds asterisk next to input label to indicate it is a required field.
+		 */
+		required: PropTypes.bool,
+		/**
+		 * Text passed on to header search input of dropdown menu.
+		 */
+		searchTerm: PropTypes.string,
+		/**
+		 * Custom component that overrides the default section divider
+		 */
+		sectionDividerRenderer: PropTypes.func,
+		/**
+		 * Index of current selected item. To clear the selection, pass in -1.
+		 */
+		selectedItem: PropTypes.number
+	},
+
+	getDefaultProps () {
+		return {
+			constrainToScrollParent: true,
+			filterWith: defaultFilter,
+			iconPosition: 'right',
+			searchTerm: ''
+		};
+	},
+
+	getInitialState () {
+		return {
 			currentFocus: null,
 			focusIndex: null,
 			items: [],
@@ -195,7 +189,7 @@ class Lookup extends React.Component {
 			searchTerm: this.normalizeSearchTerm(this.props.searchTerm),
 			selectedIndex: this.props.selectedItem
 		};
-	}
+	},
 
 	componentDidUpdate (prevProps, prevState) {
 		const lookup = this.inputRefId();
@@ -209,7 +203,7 @@ class Lookup extends React.Component {
 				ReactDOM.findDOMNode(this.refs[selectedItem]).focus();
 			}
 		}
-	}
+	},
 
 	componentWillReceiveProps (newProps) {
 		if (newProps.options) {
@@ -218,16 +212,16 @@ class Lookup extends React.Component {
 		if (newProps.selectedItem !== this.props.selectedItem) {
 			this.setState({ selectedIndex: newProps.selectedItem });
 		}
-	}
+	},
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(LOOKUP, this.props);
-	}
+	},
 
 	componentDidMount () {
 		this.modifyItems(this.props.options);
-	}
+	},
 
 	modifyItems (itemsToModify) {
 		const items = itemsToModify.map((item, index) => ({
@@ -237,7 +231,7 @@ class Lookup extends React.Component {
 		}));
 
 		this.setState({ items });
-	}
+	},
 
 	setFirstIndex () {
 		let nextFocusIndex = 0;
@@ -252,7 +246,7 @@ class Lookup extends React.Component {
 		}
 
 		this.setState({ focusIndex: nextFocusIndex });
-	}
+	},
 
 	// =================================================
 	// Using down/up keys, set Focus on list item and assign it to aria-activedescendant attribute in input.
@@ -267,7 +261,7 @@ class Lookup extends React.Component {
 		}
 
 		this.setState({ focusIndex: nextFocusIndex });
-	}
+	},
 
 	decreaseIndex () {
 		const numFocusable = this.getNumFocusableItems();
@@ -279,17 +273,17 @@ class Lookup extends React.Component {
 		}
 
 		this.setState({ focusIndex: prevFocusIndex });
-	}
+	},
 
 	setFocus (id) {
 		this.setState({ currentFocus: id });
-	}
+	},
 
 	getListLength (qty) {
 		if (qty !== this.state.listLength) {
 			this.setState({ listLength: qty });
 		}
-	}
+	},
 
 	getNumFocusableItems () {
 		let offset = 0;
@@ -303,7 +297,7 @@ class Lookup extends React.Component {
 		}
 
 		return (this.state.listLength - 1) + offset;
-	}
+	},
 
 	// =================================================
 	// Select menu item (onClick or on key enter/space)
@@ -312,7 +306,7 @@ class Lookup extends React.Component {
 			const index = itemId.replace('item-', '');
 			this.selectItemByIndex(index);
 		}
-	}
+	},
 
 	selectItemByIndex (index) {
 		if (index >= 0 && index < this.state.items.length) {
@@ -326,7 +320,7 @@ class Lookup extends React.Component {
 				this.props.onSelect(data);
 			}
 		}
-	}
+	},
 
 	handleDeleteSelected () {
 		this.setState({
@@ -339,7 +333,7 @@ class Lookup extends React.Component {
 		if (this.props.onUnselect) {
 			this.props.onUnselect();
 		}
-	}
+	},
 
 	// =================================================
 	// Event Listeners on Input
@@ -349,14 +343,14 @@ class Lookup extends React.Component {
 			focusIndex: null,
 			currentFocus: null
 		});
-	}
+	},
 
 	handleEscape (event) {
 		if (this.state.isOpen && event) {
 			EventUtil.trap(event);
 		}
 		this.handleClose();
-	}
+	},
 
 	handleCancel () {
 		this.setState({
@@ -364,11 +358,11 @@ class Lookup extends React.Component {
 			focusIndex: null,
 			currentFocus: null
 		});
-	}
+	},
 
 	handleClick () {
 		this.setState({ isOpen: true });
-	}
+	},
 
 	handleBlur (event) {
 		this.handleClose();
@@ -376,11 +370,11 @@ class Lookup extends React.Component {
 			const target = event.target || event.currentTarget;
 			this.props.onBlur(target.value);
 		}
-	}
+	},
 
 	handleFocus () {
 		this.setState({ isOpen: true });
-	}
+	},
 
 	handleChange (event) {
 		const target = event.target || event.currentTarget;
@@ -388,7 +382,7 @@ class Lookup extends React.Component {
 		if (this.props.onChange) {
 			this.props.onChange(target.value);
 		}
-	}
+	},
 
 	handleKeyDown (event) {
 		if (event.keyCode) {
@@ -431,7 +425,7 @@ class Lookup extends React.Component {
 				}
 			}
 		}
-	}
+	},
 
 	handlePillKeyDown (event) {
 		if (event.keyCode) {
@@ -440,7 +434,7 @@ class Lookup extends React.Component {
 				this.handleDeleteSelected();
 			}
 		}
-	}
+	},
 
 	getHeader () {
 		const Header = this.props.headerRenderer;
@@ -452,12 +446,12 @@ class Lookup extends React.Component {
 				{...this.props}
 				focusIndex={this.state.focusIndex}
 				isActive={headerActive}
-				onClose={this.handleClose.bind(this)}
+				onClose={this.handleClose}
 				searchTerm={this.state.searchTerm}
-				setFocus={this.setFocus.bind(this)}
+				setFocus={this.setFocus}
 			/>
 		);
-	}
+	},
 
 	getFooter () {
 		const Footer = this.props.footerRenderer;
@@ -470,15 +464,15 @@ class Lookup extends React.Component {
 				{... this.props}
 				focusIndex={this.state.focusIndex}
 				isActive={footerActive}
-				onClose={this.handleClose.bind(this)}
-				setFocus={this.setFocus.bind(this)}
+				onClose={this.handleClose}
+				setFocus={this.setFocus}
 			/>
 		);
-	}
+	},
 
 	normalizeSearchTerm (string) {
 		return (string || '').toString().replace(/^\s+/, '');
-	}
+	},
 
 	// =================================================
 	// Rendering Things
@@ -490,7 +484,7 @@ class Lookup extends React.Component {
 				filterWith={this.props.filterWith}
 				focusIndex={this.state.focusIndex}
 				footer={this.props.footerRenderer ? this.getFooter() : null}
-				getListLength={this.getListLength.bind(this)}
+				getListLength={this.getListLength}
 				header={this.props.headerRenderer ? this.getHeader() : null}
 				iconCategory={this.props.iconCategory}
 				iconInverse={this.props.iconInverse}
@@ -499,13 +493,13 @@ class Lookup extends React.Component {
 				label={this.props.label}
 				listItemLabelRenderer={this.props.listItemLabelRenderer}
 				listLength={this.state.listLength}
-				onSelect={this.selectItem.bind(this)}
+				onSelect={this.selectItem}
 				searchTerm={this.state.searchTerm}
 				sectionDividerRenderer={this.props.sectionDividerRenderer}
-				setFocus={this.setFocus.bind(this)}
+				setFocus={this.setFocus}
 			/>
 		);
-	}
+	},
 
 	renderInlineMenu () {
 		return (this.state.isOpen
@@ -514,7 +508,7 @@ class Lookup extends React.Component {
 			</div>
 			: null
 		);
-	}
+	},
 
 	renderSeparateMenu () {
 		return (this.state.isOpen
@@ -523,7 +517,7 @@ class Lookup extends React.Component {
 				closeOnTabKey
 				contentsClassName="slds-lookup__menu slds-show"
 				inheritTargetWidth
-				onClose={this.handleCancel.bind(this)}
+				onClose={this.handleCancel}
 				flippable={this.props.flippable}
 				constrainToScrollParent={this.props.constrainToScrollParent}
 				targetElement={this.input}
@@ -533,7 +527,7 @@ class Lookup extends React.Component {
 			</Dialog>
 			: null
 		);
-	}
+	},
 
 	renderInput () {
 		return (
@@ -541,7 +535,7 @@ class Lookup extends React.Component {
 				aria-activedescendant={this.state.currentFocus ? this.state.currentFocus : ''}
 				aria-autocomplete="list"
 				aria-describedby={this.props.describedById}
-				aria-expanded={this.state.isOpen}
+				aria-expanded={!!this.state.isOpen}
 				assistiveText={this.props.assistiveText}
 				className="slds-lookup__search-input"
 				disabled={this.props.disabled}
@@ -552,11 +546,11 @@ class Lookup extends React.Component {
 						name="search"
 					/>}
 				id={this.inputRefId()}
-				onBlur={this.handleBlur.bind(this)}
-				onChange={this.handleChange.bind(this)}
-				onClick={this.handleClick.bind(this)}
-				onFocus={this.handleFocus.bind(this)}
-				onKeyDown={this.handleKeyDown.bind(this)}
+				onBlur={this.handleBlur}
+				onChange={this.handleChange}
+				onClick={this.handleClick}
+				onFocus={this.handleFocus}
+				onKeyDown={this.handleKeyDown}
 				inputRef={(component) => {
 					this.input = component;
 					if (this.focusOnRender) {
@@ -570,7 +564,7 @@ class Lookup extends React.Component {
 				value={this.state.searchTerm}
 			/>
 		);
-	}
+	},
 
 	renderSelectedItem () {
 		let selectedItem = this.props.options[this.state.selectedIndex].label;
@@ -591,7 +585,7 @@ class Lookup extends React.Component {
 					href="javascript:void(0)"
 					className="slds-pill"
 					ref={`pill-${this.state.selectedIndex}`}
-					onKeyDown={this.handlePillKeyDown.bind(this)}
+					onKeyDown={this.handlePillKeyDown}
 				>
 					{renderIcon}
 					<span className={labelClassName}>
@@ -601,7 +595,7 @@ class Lookup extends React.Component {
 						assistiveText="Press delete to remove"
 						className="slds-pill__remove slds-button--icon-bare"
 						iconName="close"
-						onClick={this.handleDeleteSelected.bind(this)}
+						onClick={this.handleDeleteSelected}
 						ref="clearSelectedItemButton"
 						tabIndex="-1"
 						variant="icon"
@@ -609,7 +603,7 @@ class Lookup extends React.Component {
 				</a>
 			</div>
 		);
-	}
+	},
 
 	renderLabel () {
 		let inputLabel;
@@ -630,27 +624,27 @@ class Lookup extends React.Component {
 			>{required}{this.props.label}</label>);
 		}
 		return inputLabel;
-	}
+	},
 
 	inputRefId () {
 		return `${this.props.label}Lookup`;
-	}
+	},
 
 	focusInput () {
 		this.focusOnRender = true;
-	}
+	},
 
 	isSelected () {
 		const hasSelection = !isNaN(parseInt(this.state.selectedIndex, 10)) && this.state.selectedIndex >= 0;
 		return hasSelection;
-	}
+	},
 
 	getClassName () {
 		return classNames(this.props.className, 'slds-form-element slds-lookup', {
 			'slds-has-selection': this.isSelected(),
 			'slds-is-open': this.state.isOpen
 		});
-	}
+	},
 
 	render () {
 		let isInline;
@@ -678,11 +672,7 @@ class Lookup extends React.Component {
 			</div>
 		);
 	}
-}
-
-Lookup.displayName = displayName;
-Lookup.propTypes = propTypes;
-Lookup.defaultProps = defaultProps;
+});
 
 module.exports = Lookup;
 module.exports.DefaultHeader = DefaultHeader;
