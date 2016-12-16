@@ -80,11 +80,11 @@ const FilteringPanelFilter = React.createClass({
 		/**
 		 * The criteria you are filtering for. ("[The property] is blue")
 		 */
-		predicate: PropTypes.string,
+		predicate: PropTypes.node,
 		/**
 		 * The property you are filter
 		 */
-		property: PropTypes.string
+		property: PropTypes.node
 	},
 
 	getDefaultProps () {
