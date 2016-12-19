@@ -46,6 +46,7 @@ This project is not Bootstrap. The primary audience for this project is software
 - <a name="private-child-components" href="#private-child-components">#</a> Place child components not intended to be part of the public API within a folder labelled `private`. All other React components should be considered public (and considered within the scope of Semantic Versioning), and can be used by developers in their own JSX within their application. See [Child component decorator pattern](#child-component-decorator-pattern)
 - <a name="jsx-gotchas" href="#jsx-gotchas">#</a> Read [JSX Gotchas](https://facebook.github.io/react/docs/jsx-gotchas.html#html-entities)
 - <a name="no-default-false-values" href="#no-default-false-values">#</a> Do not set default prop values to `false`. If you need to detect if a variable is `false` or undefined in order to execute code, use a "double logical NOT operator". If `isOpen` gives you a "falsey" value, then `!!isOpen` will make it return the boolean value `false`. Otherwise it will return true. If you need to test if the value is not `undefined`, use `!== undefined`.
+- <a name="required-callbacks" href="#required-callbacks">#</a> Public callback/handler function props should always be optional and tested to see if they exist before execution. Within private child components use `.isRequired` if the callback is needed internally for the component to function.
 
 ## Controlled and Uncontrolled Components
 - All new components should be controlled at first and then uncontrolled support added later if needed. 
