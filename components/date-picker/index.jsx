@@ -15,6 +15,9 @@ import DatepickerDialog from './private/datepicker-dialog';
 import InputIcon from '../icon/input-icon';
 import Input from '../forms/input';
 
+// ### isBoolean
+import isBoolean from 'lodash.isboolean';
+
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
@@ -68,6 +71,10 @@ module.exports = React.createClass({
 		 * Renders menu within the wrapping trigger as a sibling of the input. By default, you will have an absolutely positioned container at an elevated z-index.
 		 */
 		isInline: PropTypes.bool,
+		/**
+		 * Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use view [Concepts and Best Practices](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices)
+		 */
+		isOpen: PropTypes.bool,
 		/**
 		 * Names of the months
 		 */
@@ -184,6 +191,10 @@ module.exports = React.createClass({
 		return this.props.id || this.generatedId;
 	},
 
+	getIsOpen () {
+		return !!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
+	},
+
 	handleChange (event, { date }) {
 		this.setState({
 			value: date,
@@ -236,7 +247,7 @@ module.exports = React.createClass({
 
 	getInlineMenu () {
 		return (
-			!this.props.disabled && this.state.isOpen
+			!this.props.disabled && this.getIsOpen()
 			? <div className="slds-dropdown slds-dropdown--left">
 				{this.getDatePicker()}
 			</div>
@@ -246,7 +257,7 @@ module.exports = React.createClass({
 
 	getDialog () {
 		return (
-				!this.props.disabled && this.state.isOpen
+				!this.props.disabled && this.getIsOpen()
 				? <Dialog
 					closeOnTabKey
 					constrainToScrollParent={this.props.constrainToScrollParent}
@@ -315,7 +326,7 @@ module.exports = React.createClass({
 		const clonedInput = this.props.children ? React.cloneElement(this.props.children, {
 			ref: (component) => { this.input = component; },
 			'aria-haspopup': true,
-			'aria-expanded': this.state.isOpen,
+			'aria-expanded': this.getIsOpen(),
 			// className: classNames(outsideClickIgnoreClass),
 			disabled: this.props.children.props.disabled || this.props.disabled,
 			iconRight: (<InputIcon category="utility" name="event" />),
@@ -331,7 +342,7 @@ module.exports = React.createClass({
 		: <Input
 			ref={(component) => { this.input = component; }}
 			aria-haspopup
-			aria-expanded={this.state.isOpen}
+			aria-expanded={this.getIsOpen()}
 			// className: classNames(outsideClickIgnoreClass),
 			disabled={this.props.disabled}
 			iconRight={<InputIcon category="utility" name="event" />}
@@ -351,7 +362,7 @@ module.exports = React.createClass({
 			<div
 				className={classNames(
 					'slds-datepicker-trigger', {
-						'slds-is-open': this.state.isOpen
+						'slds-is-open': this.getIsOpen()
 					},
 					this.props.triggerClassName
 				)}

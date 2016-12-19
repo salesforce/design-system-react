@@ -51,11 +51,11 @@ const DatepickerCalendarDay = React.createClass({
 		date: PropTypes.instanceOf(Date),
 		displayedDate: PropTypes.instanceOf(Date),
 		focused: PropTypes.bool,
-		onBlur: PropTypes.func.isRequired,
+		onBlur: PropTypes.func,
 		onCancel: PropTypes.func.isRequired,
-		onClick: PropTypes.func.isRequired,
-		onFocus: PropTypes.func.isRequired,
-		onMoveFocus: PropTypes.func.isRequired,
+		onClick: PropTypes.func,
+		onFocus: PropTypes.func,
+		onMoveFocus: PropTypes.func,
 		onPrevDay: PropTypes.func,
 		onPrevWeek: PropTypes.func,
 		onNextDay: PropTypes.func,
@@ -164,11 +164,11 @@ const DatepickerCalendarDay = React.createClass({
 			<td
 				aria-disabled={!isCurrentMonth}
 				aria-selected={isSelectedDay}
-				className={classNames(
+				className={classNames({
 					'slds-is-today': isToday,
-					'slds-disabled-text': isCurrentMonth,
+					'slds-disabled-text': !isCurrentMonth,
 					'slds-is-selected': isSelectedDay
-				)}
+				})}
 				onClick={this.handleClick}
 				onKeyDown={this.handleKeyDown}
 				onMouseDown={this.handleClick}

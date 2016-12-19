@@ -8,9 +8,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from 'react';
-import SelectYear from '../year-selector';
-import ButtonIcon from '../../../icon/button-icon';
-import { DateUtil, EventUtil, KEYS } from './../../../../utilities';
+import SelectYear from './year-picklist';
+import ButtonIcon from '../../icon/button-icon';
+import { DateUtil, EventUtil, KEYS } from '../../../utilities';
 
 const DatepickerMonthNavigation = React.createClass({
 	displayName: 'SLDSDatepickerMonthNavigation',

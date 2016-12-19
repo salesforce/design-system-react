@@ -8,7 +8,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from 'react';
-import MenuPicklist from '../../../menu-picklist';
+import MenuPicklist from '../../menu-picklist';
 
 const DatepickerYearSelector = React.createClass({
 	displayName: 'SLDSDatepickerYearSelector',

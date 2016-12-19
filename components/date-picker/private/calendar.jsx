@@ -11,9 +11,8 @@ import React from 'react';
 import Week from './calendar-week';
 import { EventUtil, DateUtil, KEYS } from '../../../utilities';
 
-module.exports = React.createClass({
-
-	displayName: 'Calendar',
+const DatepickerCalendar = React.createClass({
+	displayName: 'SLDSDatepickerCalendar',
 
 	getDefaultProps () {
 		return {
@@ -92,10 +91,6 @@ module.exports = React.createClass({
 		} else {
 			this.setState({ highlightedDate: nextDate });
 		}
-	},
-
-	handleTodaySelect () {
-		this.handleSelectDate(new Date());
 	},
 
 	handleFocus () {
@@ -185,7 +180,7 @@ module.exports = React.createClass({
 						tabIndex="0"
 						onKeyDown={this.handleKeyDown}
 						className="slds-show--inline-block slds-p-bottom--x-small"
-						onClick={this.handleTodaySelect}
+						onClick={(event) => { this.handleSelectDate(event, { date: new Date() }); }}
 					>
 						{this.props.todayLabel}
 					</a>
@@ -245,3 +240,5 @@ module.exports = React.createClass({
 	}
 
 });
+
+module.exports = DatepickerCalendar;
