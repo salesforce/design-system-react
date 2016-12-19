@@ -40,7 +40,7 @@ npm run dist
 
 ## Getting Started
 
-Note: `design-system-react` is optimized for React 0.14.x and uses Lightning Design System 2.1.3. You can find a more complete [getting started guide](https://react.lightningdesignsystem.com/getting-started/) on the documentation site.
+`design-system-react` should be paired with React 15.x and Lightning Design System 2.2.x. You can find a more complete [getting started guide](https://react.lightningdesignsystem.com/getting-started/) on the documentation site.
 
 ### New to React?
 
