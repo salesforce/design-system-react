@@ -45,6 +45,10 @@ module.exports = React.createClass({
 		 */
 		abbrWeekDayLabels: PropTypes.array,
 		/**
+		 * Allows customization of the input field. Event handlers for the input should be added here. <Input onKeyDown... />
+		 */
+		children: PropTypes.instanceOf(Input),
+		/**
 		 * CSS classes to be added to tag with `slds-datepicker`.
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
@@ -73,25 +77,17 @@ module.exports = React.createClass({
 		 */
 		monthLabels: PropTypes.array,
 		/**
-		 * Triggered when the input's focus is removed.
-		 */
-		onBlur: PropTypes.func,
-		/**
 		 * Triggered when the date changes. It receives an object. {date: [Date object, formattedDate: [string]}
 		 */
 		onDateChange: PropTypes.func,
 		/**
-		 * Triggered when the input is focused. The calendar would show at a similar time.
-		 */
-		onFocus: PropTypes.func,
-		/**
-		 * Triggered when a key is pressed while the input as focus
-		 */
-		onKeyDown: PropTypes.func,
-		/**
 		 * Custom function to parase date string into and return a `Date` object. Default function passes the input value to `Date()` and prays.
 		 */
 		parser: PropTypes.func,
+		/**
+		 * Placeholder text for input
+		 */
+		placeholder: PropTypes.string,
 		/**
 		 * The earliest year that can be selected in the year selection dropdown.
 		 */
@@ -105,7 +101,7 @@ module.exports = React.createClass({
 		 */
 		required: PropTypes.bool,
 		/**
-		 * Value of input for when you wanted a controlled version of datepicker.
+		 * Alternative to `value` prop. Allows control of input directly.
 		 */
 		strValue: PropTypes.string,
 		/**
@@ -117,7 +113,7 @@ module.exports = React.createClass({
 		 */
 		triggerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
-     * Sets default date. If not null, input is filled with date string of value.
+     * Sets date with a `Date` ECMAScript object.
      */
 		value: PropTypes.instanceOf(Date),
 		/**
@@ -153,7 +149,6 @@ module.exports = React.createClass({
 			relativeYearFrom: -5,
 			relativeYearTo: 5,
 			todayLabel: 'Today',
-			value: null,
 			weekDayLabels: [
 				'Sunday',
 				'Monday',
@@ -202,7 +197,6 @@ module.exports = React.createClass({
 	},
 
 	handleChange (event, { date }) {
-		console.log(event);
 		this.setState({
 			value: date,
 			strValue: this.props.formatter(date),
@@ -330,18 +324,40 @@ module.exports = React.createClass({
 	},
 
 	render () {
-		const {
-			disabled,
-			onKeyUp,
-			onKeyPress,
-			onInvalid,
-			onInput,
-			pattern,
-			placeholder,
-			...props // eslint-disable-line no-unused-vars
-		} = this.props;
+		const clonedInput = this.props.children ? React.cloneElement(this.props.children, {
+			ref: (component) => { this.input = component; },
+			'aria-haspopup': true,
+			'aria-expanded': this.state.isOpen,
+			// className: classNames(outsideClickIgnoreClass),
+			disabled: this.props.disabled,
+			iconRight: (<InputIcon category="utility" name="event" />),
+			id: this.getId(),
+			onBlur: this.handleBlur,
+			onChange: this.handleInputChange,
+			onClick: this.handleClick,
+			onFocus: this.handleFocus,
+			onKeyDown: this.handleKeyDown,
+			placeholder: this.props.placeholder,
+			value: this.state.strValue
+		})
+		: <Input
+			ref={(component) => { this.input = component; }}
+			aria-haspopup
+			aria-expanded={this.state.isOpen}
+			// className: classNames(outsideClickIgnoreClass),
+			disabled={this.props.disabled}
+			iconRight={<InputIcon category="utility" name="event" />}
+			id={this.getId()}
+			onBlur={this.handleBlur}
+			onChange={this.handleInputChange}
+			onClick={this.handleClick}
+			onFocus={this.handleFocus}
+			onKeyDown={this.handleKeyDown}
+			placeholder={this.props.placeholder}
+			value={this.state.strValue || ''}	// needs to be controlled from the beginning
+		/>;
 
-		/* eslint-enable react/prop-types */
+		const containerStyles = { display: 'inline' };
 
 		return (
 			<div
@@ -351,27 +367,9 @@ module.exports = React.createClass({
 					},
 					this.props.triggerClassName
 				)}
+				style={containerStyles}
 			>
-				<Input
-					disabled={disabled}
-					iconRight={<InputIcon category="utility" name="event" />}
-					id={this.getId()}
-					label={this.props.label}
-					onBlur={this.handleBlur}
-					onChange={this.handleInputChange}
-					onClick={this.handleClick}
-					onFocus={this.handleFocus}
-					onInvalid={onInvalid}
-					onInput={onInput}
-					onKeyDown={this.handleKeyDown}
-					onKeyUp={onKeyUp}
-					onKeyPress={onKeyPress}
-					pattern={pattern} // ?
-					placeholder={placeholder}
-					required={this.props.required}
-					ref={(component) => { this.input = component; }}
-					value={this.state.strValue}
-				/>
+				{clonedInput}
 				{this.props.isInline ? this.getInlineMenu() : this.getDialog()}
 			</div>
 		);
