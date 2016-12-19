@@ -12,105 +12,128 @@ import SelectYear from '../year-selector';
 import ButtonIcon from '../../../icon/button-icon';
 import { DateUtil, EventUtil, KEYS } from './../../../../utilities';
 
-module.exports = React.createClass({
-	getDefaultProps (){
+const DatepickerMonthNavigation = React.createClass({
+	displayName: 'SLDSDatepickerMonthNavigation',
+
+	getDefaultProps () {
 		return {
-			displayedDate:new Date(),
-			monthLabels:['January','February','March','April','May','June','July','August','September','October','November','December'],
+			displayedDate: new Date(),
+			monthLabels: [
+				'January',
+				'February',
+				'March',
+				'April',
+				'May',
+				'June',
+				'July',
+				'August',
+				'September',
+				'October',
+				'November',
+				'December'
+			],
 			onChangeMonth (){
 				console.log('onChangeMonth should be defined');
 			}
 		};
 	},
 
-	handleClick (event){
+	handleClick (event) {
 		event.preventDefault();
 		event.stopPropagation();
 	},
 
-	handleChange (displayedDate){
-		if(this.props.onChange){
+	handleChange (displayedDate) {
+		if (this.props.onChange) {
 			this.props.onChange(displayedDate);
 		}
 	},
 
-	handleCancel(){
-		if(this.props.onCancel){
-				this.props.onCancel();
+	handleCancel () {
+		if (this.props.onCancel) {
+			this.props.onCancel();
 		}
 	},
 
-	previousMonth (){
-		if(this.props.displayedDate && this.handleChange){
-			this.handleChange(DateUtil.addMonths(this.props.displayedDate,-1));
+	previousMonth () {
+		if (this.props.displayedDate && this.handleChange) {
+			this.handleChange(DateUtil.addMonths(this.props.displayedDate, -1));
 		}
-
 	},
 
 	componentDidMount () {
 	},
 
-	nextMonth (){
-		if(this.props.displayedDate && this.handleChange){
-			this.handleChange(DateUtil.addMonths(this.props.displayedDate,1));
+	nextMonth () {
+		if (this.props.displayedDate && this.handleChange) {
+			this.handleChange(DateUtil.addMonths(this.props.displayedDate, 1));
 		}
 	},
 
 	handleYearSelect (displayedDate) {
-		if(this.props.onChange){
+		if (this.props.onChange) {
 			this.props.onChange(displayedDate);
 		}
 	},
 
 	handleKeyDown (event) {
-		if(event.keyCode === KEYS.TAB){
-			if(event.shiftKey){
+		if (event.keyCode === KEYS.TAB) {
+			if (event.shiftKey) {
 				EventUtil.trapEvent(event);
 				this.handleCancel();
 			}
 		}
 	},
 
-	getMonthLabel(){
+	getMonthLabel () {
 		return this.props.monthLabels[new Date(this.props.displayedDate).getMonth()];
 	},
 
-	render() {
+	render () {
 		return (
 
-			<div className='slds-datepicker__filter slds-grid'>
-				<div className='slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-size--3-of-4'>
-					<div className='slds-align-middle' role='button' aria-labelledby='bn_prev-label' tabIndex={-1}>
+			<div className="slds-datepicker__filter slds-grid">
+				<div className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-size--3-of-4">
+					<div className="slds-align-middle" role="button" aria-labelledby="bn_prev-label" tabIndex={-1}>
 						<button
-							ref='prevMonth'
-							className='slds-button slds-button--icon-container'
+							ref="prevMonth"
+							className="slds-button slds-button--icon-container"
 							autoFocus={this.props.autoFocus}
-							role='button'
+							role="button"
 							tabIndex={0}
 							onKeyDown={this.handleKeyDown}
-							onClick={this.previousMonth}>
-							<ButtonIcon name='left' />
-							<span className='slds-assistive-text'>Previous Month</span>
+							onClick={this.previousMonth}
+						>
+							<ButtonIcon name="left" />
+							<span className="slds-assistive-text">Previous Month</span>
 						</button>
 					</div>
 
-					<h2 id='month' className='slds-align-middle' role='heading' aria-live='assertive' aria-atomic={true}>{this.getMonthLabel()}</h2>
-					<div className='slds-align-middle' role='button' aria-labelledby='bn_next-label' tabIndex={-1}>
+					<h2
+						id="month"
+						className="slds-align-middle"
+						role="heading"
+						aria-live="assertive"
+						aria-atomic
+					>{this.getMonthLabel()}</h2>
+					<div className="slds-align-middle" role="button" aria-labelledby="bn_next-label" tabIndex={-1}>
 						<button
-							ref='nextMonth'
-							className='slds-button slds-button--icon-container'
-							onClick={this.nextMonth}>
-							<ButtonIcon name='right'/>
-							<span className='slds-assistive-text'>Next Month</span>
+							ref="nextMonth"
+							className="slds-button slds-button--icon-container"
+							onClick={this.nextMonth}
+						>
+							<ButtonIcon name="right" />
+							<span className="slds-assistive-text">Next Month</span>
 						</button>
 					</div>
 				</div>
-				<div className='slds-picklist slds-picklist--fluid slds-shrink-none'>
+				<div className="slds-picklist slds-picklist--fluid slds-shrink-none">
 					<SelectYear
 						displayedDate={this.props.displayedDate}
 						relativeYearFrom={this.props.relativeYearFrom}
 						relativeYearTo={this.props.relativeYearTo}
-						onChange={this.handleYearSelect} />
+						onChange={this.handleYearSelect}
+					/>
 				</div>
 			</div>
 
@@ -118,3 +141,4 @@ module.exports = React.createClass({
 	}
 });
 
+module.exports = DatepickerMonthNavigation;

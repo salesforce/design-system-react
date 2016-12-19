@@ -69,10 +69,6 @@ module.exports = React.createClass({
 		 */
 		isInline: PropTypes.bool,
 		/**
-		 * Date formatting function
-		 */
-		label: PropTypes.string,
-		/**
 		 * Names of the months
 		 */
 		monthLabels: PropTypes.array,
@@ -96,14 +92,6 @@ module.exports = React.createClass({
 		 * The maximum year that can be selected in the year selection dropdown.
 		 */
 		relativeYearTo: PropTypes.number,
-		/**
-		 * If true, adds asterisk next to input label to indicate it is a required field.
-		 */
-		required: PropTypes.bool,
-		/**
-		 * Alternative to `value` prop. Allows control of input directly.
-		 */
-		strValue: PropTypes.string,
 		/**
 		 * Label of shortcut to jump to today within the calendar
 		 */
@@ -329,7 +317,7 @@ module.exports = React.createClass({
 			'aria-haspopup': true,
 			'aria-expanded': this.state.isOpen,
 			// className: classNames(outsideClickIgnoreClass),
-			disabled: this.props.disabled,
+			disabled: this.props.children.props.disabled || this.props.disabled,
 			iconRight: (<InputIcon category="utility" name="event" />),
 			id: this.getId(),
 			onBlur: this.handleBlur,
@@ -337,7 +325,7 @@ module.exports = React.createClass({
 			onClick: this.handleClick,
 			onFocus: this.handleFocus,
 			onKeyDown: this.handleKeyDown,
-			placeholder: this.props.placeholder,
+			placeholder: this.props.children.props.placeholder || this.props.placeholder,
 			value: this.state.strValue
 		})
 		: <Input

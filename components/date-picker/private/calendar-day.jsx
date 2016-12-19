@@ -7,50 +7,72 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import React from 'react';
-import { KEYS, EventUtil, DateUtil } from '../../../../../utilities';
+import React, { PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 
-module.exports = React.createClass({
+import { KEYS, EventUtil, DateUtil } from '../../../utilities';
+
+// ### classNames
+// [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
+// This project uses `classnames`, "a simple javascript utility for conditionally
+// joining classNames together."
+import classNames from 'classnames';
+
+
+const DatepickerCalendarDay = React.createClass({
+	displayName: 'SLDSDatepickerCalendarDay',
+
+	// onSelectDate (date) {
+	// 	console.log('onSelectDate should be defined ',date);
+	// },
+
+	// onClick (index) {
+	// 	console.log('onClick should be defined ',index);
+	// },
+
+	// onMoveFocus (delta){
+	// 	console.log('onMoveFocus should be defined ',delta);
+	// },
+
+	// onBlur (relatedTarget){
+	// 	console.log('onBlur should be defined ',relatedTarget);
+	// },
+
+	// onFocus (index, height) {
+	// 	console.log('onFocus should be defined ',index,height);
+	// },
+
+	// onCancel () {
+	// 	console.log('onCancel should be defined');
+	// }
+
+	propTypes: {
+		calendarHasFocus: PropTypes.bool,
+		date: PropTypes.instanceOf(Date),
+		displayedDate: PropTypes.instanceOf(Date),
+		focused: PropTypes.bool,
+		onBlur: PropTypes.func.isRequired,
+		onCancel: PropTypes.func.isRequired,
+		onClick: PropTypes.func.isRequired,
+		onFocus: PropTypes.func.isRequired,
+		onMoveFocus: PropTypes.func.isRequired,
+		onPrevDay: PropTypes.func,
+		onPrevWeek: PropTypes.func,
+		onNextDay: PropTypes.func,
+		onNextWeek: PropTypes.func,
+		onSelectDate: PropTypes.func.isRequired,
+		selectedDate: PropTypes.instanceOf(Date)
+	},
 
 	getDefaultProps () {
 		return {
-
 			displayedDate: new Date(),
-			displayedDate: new Date(),
-
 			selectedDate: new Date(),
-
 			calendarHasFocus: false
-
-			// onSelectDate (date) {
-			// 	console.log('onSelectDate should be defined ',date);
-			// },
-
-			// onClick (index) {
-			// 	console.log('onClick should be defined ',index);
-			// },
-
-			// onMoveFocus (delta){
-			// 	console.log('onMoveFocus should be defined ',delta);
-			// },
-
-			// onBlur (relatedTarget){
-			// 	console.log('onBlur should be defined ',relatedTarget);
-			// },
-
-			// onFocus (index, height) {
-			// 	console.log('onFocus should be defined ',index,height);
-			// },
-
-			// onCancel () {
-			// 	console.log('onCancel should be defined');
-			// }
-
 		};
 	},
 
 	handleClick (event) {
-		console.log(event, this.props.date);
 		this.props.onSelectDate(event, { date: this.props.date });
 
 		if (event.nativeEvent) {
@@ -59,26 +81,26 @@ module.exports = React.createClass({
 		}
 	},
 
-	handleToPrevDay(){
-		if(this.props.onPrevDay){
+	handleToPrevDay () {
+		if (this.props.onPrevDay) {
 			this.props.onPrevDay(this.props.date);
 		}
 	},
 
-	handleToNextDay(){
-		if(this.props.onNextDay){
+	handleToNextDay () {
+		if (this.props.onNextDay) {
 			this.props.onNextDay(this.props.date);
 		}
 	},
 
-	handleToPrevWeek(){
-		if(this.props.onPrevWeek){
+	handleToPrevWeek () {
+		if (this.props.onPrevWeek) {
 			this.props.onPrevWeek(this.props.date);
 		}
 	},
 
-	handleToNextWeek(){
-		if(this.props.onNextWeek){
+	handleToNextWeek () {
+		if (this.props.onNextWeek) {
 			this.props.onNextWeek(this.props.date);
 		}
 	},
@@ -127,8 +149,8 @@ module.exports = React.createClass({
 	},
 
 	setFocus () {
-		if (this.isMounted() && this.props.calendarHasFocus){
-			this.getDOMNode().focus();
+		if (this.dayCell && this.props.calendarHasFocus) {
+			ReactDOM.findDOMNode(this.dayCell).focus();
 		}
 	},
 
@@ -140,15 +162,19 @@ module.exports = React.createClass({
 
 		return (
 			<td
-				role="gridcell"
 				aria-disabled={!isCurrentMonth}
 				aria-selected={isSelectedDay}
-//        autoFocus={this.props.calendarHasFocus && this.props.focused}
-				tabIndex={!this.props.calendarHasFocus && isFirstDayOfMonth && isCurrentMonth ? 0 : -1}
-				className={(isToday ? ' slds-is-today' : '') + (isCurrentMonth ? '' : ' slds-disabled-text') + (isSelectedDay ? ' slds-is-selected' : '')}
+				className={classNames(
+					'slds-is-today': isToday,
+					'slds-disabled-text': isCurrentMonth,
+					'slds-is-selected': isSelectedDay
+				)}
 				onClick={this.handleClick}
-				onMouseDown={this.handleClick}
 				onKeyDown={this.handleKeyDown}
+				onMouseDown={this.handleClick}
+				ref={(component) => { this.dayCell = component; }}
+				role="gridcell"
+				tabIndex={!this.props.calendarHasFocus && isFirstDayOfMonth && isCurrentMonth ? 0 : -1}
 			>
 				<span className="slds-day">
 					{this.props.date.getDate()}
@@ -164,3 +190,5 @@ module.exports = React.createClass({
 	}
 
 });
+
+module.exports = DatepickerCalendarDay;

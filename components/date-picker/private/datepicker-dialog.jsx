@@ -26,7 +26,7 @@ const DatepickerDialog = React.createClass({
 	getDefaultProps () {
 		return {
 			selectedDate: new Date(),
-			value: new Date(),
+			value: new Date()
 			// onChange (date) {
 			// 	console.log('onChange should be defined ', date);
 			// },
@@ -56,9 +56,13 @@ const DatepickerDialog = React.createClass({
 					this.props.onClose();
 				}
 			} else if (event.keyCode === KEYS.SPACE) {
+				// do nothing
 			} else if (event.keyCode === KEYS.ENTER) {
+				// do nothing
 			} else if (event.keyCode === KEYS.TAB) {
+				// do nothing
 			} else if (event.keyCode === KEYS.ESCAPE) {
+				// do nothing
 			} else {
 				EventUtil.trapEvent(event);
 			}
@@ -77,7 +81,7 @@ const DatepickerDialog = React.createClass({
 		if (this.props.onDisplayedDateChange) {
 			this.props.onDisplayedDateChange(displayedDate);
 		}
-		this.setState({ displayedDate:displayedDate });
+		this.setState({ displayedDate });
 	},
 
 	handleCancel () {
@@ -86,26 +90,25 @@ const DatepickerDialog = React.createClass({
 		}
 	},
 
-	handleBGClick(event) {
+	handleBGClick (event) {
 		if (event.nativeEvent) {
 			event.nativeEvent.preventDefault();
 		}
 	},
 
 	handleFocus () {
-		this.setState({isFocused:true});
+		this.setState({ isFocused: true });
 	},
 
 	handleBlur () {
-		this.setState({isFocused:false});
+		this.setState({ isFocused: false });
 	},
 
-	render() {
-
+	render () {
 		return (
 			<div className="ignore-react-onclickoutside">
 				<div
-					className={classNames('slds-datepicker', this.props.className)}
+					className={classNames('slds-datepicker slds-dropdown slds-dropdown--left', this.props.className)}
 					aria-hidden={false}
 					data-selection="single"
 					onMouseDown={this.handleBGClick}
@@ -131,9 +134,10 @@ const DatepickerDialog = React.createClass({
 						abbrWeekDayLabels={this.props.abbrWeekDayLabels}
 						weekDayLabels={this.props.weekDayLabels}
 						todayLabel={this.props.todayLabel}
-						onCancel={this.handleCancel} />
-					<span id='bn_prev-label' className='slds-assistive-text'>Go to previous month</span>
-					<span id='bn_next-label' className='slds-assistive-text'>Go to next month</span>
+						onCancel={this.handleCancel}
+					/>
+					<span id="bn_prev-label" className="slds-assistive-text">Go to previous month</span>
+					<span id="bn_next-label" className="slds-assistive-text">Go to next month</span>
 				</div>
 
 			</div>
@@ -142,28 +146,22 @@ const DatepickerDialog = React.createClass({
 
 	componentDidUpdate (prevProps, prevState) {
 		if (!this.state.isFocused && prevState.isFocused) {
-			this.setState({isClosing:true});
+			this.setState({ isClosing: true });
 
-			setTimeout ( () => {
-
+			setTimeout(() => {
 				if (this.isMounted()) {
 					if (this.state.isClosing) {
 						if (this.state.isFocused) {
-							this.setState({isClosing:false});
-						}
-						else{
+							this.setState({ isClosing: false });
+						} else {
 							if (this.props.onClose) {
 								this.props.onClose();
 							}
 						}
 					}
 				}
-
-
 			});
-
 		}
-
 	}
 });
 

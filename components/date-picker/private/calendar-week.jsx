@@ -9,53 +9,53 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 
-import Day from '../calendar-day/index';
-import { DateUtil } from '../../../../../utilities';
+import Day from './calendar-day';
+import { DateUtil } from '../../../utilities';
 
-
-module.exports = React.createClass({
+const DatepickerWeek = React.createClass({
+	displayName: 'SLDSDatepickerWeek',
 
 	getDefaultProps () {
 		return {
-			displayedDate:new Date(),
-			selectedDate:new Date()
+			displayedDate: new Date(),
+			selectedDate: new Date()
 		};
 	},
 
 	handleCancel () {
-		if(this.props.onCancel){
+		if (this.props.onCancel) {
 			this.props.onCancel();
 		}
 	},
 
 	handlePrevDay (date) {
-		if(this.props.onPrevDay){
+		if (this.props.onPrevDay) {
 			this.props.onPrevDay(date);
 		}
 	},
 
 	handleNextDay (date) {
-		if(this.props.onNextDay){
+		if (this.props.onNextDay) {
 			this.props.onNextDay(date);
 		}
 	},
 
 	handlePrevWeek (date) {
-		if(this.props.onPrevWeek){
+		if (this.props.onPrevWeek) {
 			this.props.onPrevWeek(date);
 		}
 	},
 
 	handleNextWeek (date) {
-		if(this.props.onNextWeek){
+		if (this.props.onNextWeek) {
 			this.props.onNextWeek(date);
 		}
 	},
 
-	render: function() {
+	render () {
 		let days = [];
 		let date = this.props.date;
-		for (var i = 0; i < 7; i++) {
+		for (let i = 0; i < 7; i++) {
 			days.push(<Day
 					key={date.toString()}
 					date={date}
@@ -70,12 +70,17 @@ module.exports = React.createClass({
 					onNextDay={this.handleNextDay}
 					onPrevWeek={this.handlePrevWeek}
 					onNextWeek={this.handleNextWeek}
-					onCancel={this.handleCancel} />);
-				date = DateUtil.addDays(date,1);
+					onCancel={this.handleCancel}
+			/>);
+			date = DateUtil.addDays(date, 1);
 		}
 
-		return <tr className='week' key={days[0].toString()}>
-			{days}
-		</tr>
+		return (
+			<tr className="week" key={days[0].toString()}>
+				{days}
+			</tr>
+		);
 	}
 });
+
+module.exports = DatepickerWeek;

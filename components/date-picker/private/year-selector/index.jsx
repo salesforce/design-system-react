@@ -10,55 +10,57 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import MenuPicklist from '../../../menu-picklist';
 
-module.exports = React.createClass({
+const DatepickerYearSelector = React.createClass({
+	displayName: 'SLDSDatepickerYearSelector',
 
-  displayName: 'YearSelector',
+	getDefaultProps () {
+		return {
+			displayedDate: new Date(),
+			relativeYearFrom: -5,
+			relativeYearTo: 5,
+			onChange (displayedDate) {
+				console.log('onChange should be defined: ', displayedDate);
+			}
+		};
+	},
 
-  getDefaultProps (){
-    return {
-      displayedDate:new Date(),
-      relativeYearFrom:-5,
-      relativeYearTo:5,
-      onChange (displayedDate){
-        console.log('onChange should be defined: ',displayedDate);
-      }
-    };
-  },
+	getOptions () {
+		const now = new Date();
+		const fromYear = now.getFullYear() + this.props.relativeYearFrom;
+		const toYear = now.getFullYear() + this.props.relativeYearTo;
+		const opts = [];
 
-  getOptions () {
-    const now = new Date();
-    const fromYear = now.getFullYear()+this.props.relativeYearFrom;
-    const toYear = now.getFullYear()+this.props.relativeYearTo;
-    let opts = [];
+		for (let year = fromYear; year < toYear; year++) {
+			opts.push({ label: year, value: year });
+		}
+		return opts;
+	},
 
-    for (let year = fromYear; year < toYear; year++){
-      opts.push({label:year,value:year});
-    }
-    return opts;
-  },
+	handleSelect (selectedValue) {
+		if (selectedValue) {
+			if (this.props.onChange) {
+				this.props.onChange(new Date(this.props.displayedDate.setFullYear(parseInt(selectedValue.value, 10))));
+			}
+		}
+	},
 
-  handleSelect(selectedValue){
-    if(selectedValue){
-      if(this.props.onChange){
-        this.props.onChange(new Date(this.props.displayedDate.setFullYear(parseInt(selectedValue.value))));
-      }
-    }
-  },
+	render () {
+		return (
+			<div className="slds-form-element">
 
-  render() {
-    return (
-      <div className='slds-form-element'>
-
-        <MenuPicklist
-          options={this.getOptions()}
-          placeholder='Year'
-          checkmark={false}
-          isInline
-          value={this.props.displayedDate.getFullYear()}
-          onSelect={this.handleSelect}
-          className='slds-picklist--fluid slds-shrink-none'
-          initialFocus={true}/>
-      </div>
-    );
-  }
+				<MenuPicklist
+					checkmark={false}
+					className="slds-picklist--fluid slds-shrink-none"
+					initialFocus
+					isInline
+					onSelect={this.handleSelect}
+					options={this.getOptions()}
+					placeholder="Year"
+					value={this.props.displayedDate.getFullYear()}
+				/>
+			</div>
+		);
+	}
 });
+
+module.exports = DatepickerYearSelector;
