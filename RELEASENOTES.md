@@ -29,6 +29,7 @@ These are changes that have backwards-compatible solutions present and that comp
 
 **MINOR CHANGES**
 
+- Datepicker `onDateChange` now receives an object as it's second parameter `{date: [Date object, formattedDate: [string]}`
 - Move `id` on GlobalNav Link to list item instead of `a`
 - In Button, `aria-*` props now use hyphen instead of camelCase. Use `aria-expanded` and not `ariaExpanded`.
 

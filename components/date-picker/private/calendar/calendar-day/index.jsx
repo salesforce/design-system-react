@@ -12,161 +12,155 @@ import { KEYS, EventUtil, DateUtil } from '../../../../../utilities';
 
 module.exports = React.createClass({
 
-  getDefaultProps () {
-    return {
+	getDefaultProps () {
+		return {
 
-      displayedDate:new Date(),
+			displayedDate: new Date(),
+			displayedDate: new Date(),
 
-      selectedDate:new Date(),
+			selectedDate: new Date(),
 
-      calendarHasFocus: false,
+			calendarHasFocus: false
 
-      onSelectDate (date) {
-        console.log('onSelectDate should be defined ',date);
-      },
+			// onSelectDate (date) {
+			// 	console.log('onSelectDate should be defined ',date);
+			// },
 
-      onClick (index) {
-        console.log('onClick should be defined ',index);
-      },
+			// onClick (index) {
+			// 	console.log('onClick should be defined ',index);
+			// },
 
-      onMoveFocus (delta){
-        console.log('onMoveFocus should be defined ',delta);
-      },
+			// onMoveFocus (delta){
+			// 	console.log('onMoveFocus should be defined ',delta);
+			// },
 
-      onBlur (relatedTarget){
-        console.log('onBlur should be defined ',relatedTarget);
-      },
+			// onBlur (relatedTarget){
+			// 	console.log('onBlur should be defined ',relatedTarget);
+			// },
 
-      onFocus (index, height) {
-        console.log('onFocus should be defined ',index,height);
-      },
+			// onFocus (index, height) {
+			// 	console.log('onFocus should be defined ',index,height);
+			// },
 
-      onCancel () {
-        console.log('onCancel should be defined');
-      }
+			// onCancel () {
+			// 	console.log('onCancel should be defined');
+			// }
 
-    };
-  },
+		};
+	},
 
-  handleClick (event) {
-    if(this.props.onSelectDate){
-      this.props.onSelectDate(this.props.date);
-    }
-    if(event.nativeEvent){
-      event.nativeEvent.stopImmediatePropagation();
-      event.nativeEvent.preventDefault();
-    }
-  },
+	handleClick (event) {
+		console.log(event, this.props.date);
+		this.props.onSelectDate(event, { date: this.props.date });
 
-  handleToPrevDay(){
-    if(this.props.onPrevDay){
-      this.props.onPrevDay(this.props.date);
-    }
-  },
+		if (event.nativeEvent) {
+			event.nativeEvent.stopImmediatePropagation();
+			event.nativeEvent.preventDefault();
+		}
+	},
 
-  handleToNextDay(){
-    if(this.props.onNextDay){
-      this.props.onNextDay(this.props.date);
-    }
-  },
+	handleToPrevDay(){
+		if(this.props.onPrevDay){
+			this.props.onPrevDay(this.props.date);
+		}
+	},
 
-  handleToPrevWeek(){
-    if(this.props.onPrevWeek){
-      this.props.onPrevWeek(this.props.date);
-    }
-  },
+	handleToNextDay(){
+		if(this.props.onNextDay){
+			this.props.onNextDay(this.props.date);
+		}
+	},
 
-  handleToNextWeek(){
-    if(this.props.onNextWeek){
-      this.props.onNextWeek(this.props.date);
-    }
-  },
+	handleToPrevWeek(){
+		if(this.props.onPrevWeek){
+			this.props.onPrevWeek(this.props.date);
+		}
+	},
 
-  handleKeyDown(event) {
-    if(event.keyCode){
-      if(event.keyCode === KEYS.ENTER ||
-        event.keyCode === KEYS.SPACE ){
-        EventUtil.trapEvent(event);
-        if(this.props.onSelectDate){
-          this.props.onSelectDate(this.props.date);
-        }
-      }
-      else if(event.keyCode === KEYS.ESCAPE){
-        EventUtil.trapEvent(event);
-        if(this.props.onCancel){
-          this.props.onCancel();
-        }
-      }
-      else if(event.keyCode === KEYS.TAB){
+	handleToNextWeek(){
+		if(this.props.onNextWeek){
+			this.props.onNextWeek(this.props.date);
+		}
+	},
+
+	handleKeyDown (event) {
+		if (event.keyCode) {
+			if (event.keyCode === KEYS.ENTER ||
+				event.keyCode === KEYS.SPACE) {
+				EventUtil.trapEvent(event);
+				if (this.props.onSelectDate) {
+					this.props.onSelectDate(event, { date: this.props.date });
+				}
+			} else if (event.keyCode === KEYS.ESCAPE) {
+				EventUtil.trapEvent(event);
+				if (this.props.onCancel) {
+					this.props.onCancel();
+				}
+			} else if (event.keyCode === KEYS.TAB) {
 /*
-        if(!event.shiftKey){
-          EventUtil.trapEvent(event);
-          if(this.props.onCancel){
-            this.props.onCancel();
-          }
-        }
+				if(!event.shiftKey){
+					EventUtil.trapEvent(event);
+					if(this.props.onCancel){
+						this.props.onCancel();
+					}
+				}
 */
-      }
-      else if(event.keyCode === KEYS.RIGHT){
-        EventUtil.trapEvent(event);
-        this.handleToNextDay();
-      }
-      else if(event.keyCode === KEYS.LEFT){
-        EventUtil.trapEvent(event);
-        this.handleToPrevDay();
-      }
-      else if(event.keyCode === KEYS.RIGHT){
-        EventUtil.trapEvent(event);
-        this.handleToNextDay();
-      }
-      else if(event.keyCode === KEYS.UP){
-        EventUtil.trapEvent(event);
-        this.handleToPrevWeek();
-      }
-      else if(event.keyCode === KEYS.DOWN){
-        EventUtil.trapEvent(event);
-        this.handleToNextWeek();
-      }
-      else{
-        EventUtil.trapEvent(event);
-      }
-    }
-  },
+			} else if (event.keyCode === KEYS.RIGHT) {
+				EventUtil.trapEvent(event);
+				this.handleToNextDay();
+			} else if (event.keyCode === KEYS.LEFT) {
+				EventUtil.trapEvent(event);
+				this.handleToPrevDay();
+			} else if (event.keyCode === KEYS.RIGHT) {
+				EventUtil.trapEvent(event);
+				this.handleToNextDay();
+			} else if (event.keyCode === KEYS.UP) {
+				EventUtil.trapEvent(event);
+				this.handleToPrevWeek();
+			} else if (event.keyCode === KEYS.DOWN) {
+				EventUtil.trapEvent(event);
+				this.handleToNextWeek();
+			} else {
+				EventUtil.trapEvent(event);
+			}
+		}
+	},
 
-  setFocus () {
-    if(this.isMounted() && this.props.calendarHasFocus){
-      this.getDOMNode().focus();
-    }
-  },
+	setFocus () {
+		if (this.isMounted() && this.props.calendarHasFocus){
+			this.getDOMNode().focus();
+		}
+	},
 
-  render () {
+	render () {
+		const isCurrentMonth = DateUtil.isSameMonth(this.props.date, this.props.displayedDate);
+		const isToday = DateUtil.isToday(this.props.date);
+		const isSelectedDay = DateUtil.isSameDay(this.props.date, this.props.selectedDate);
+		const isFirstDayOfMonth = DateUtil.isFirstDayOfMonth(this.props.date);
 
-    const isCurrentMonth = DateUtil.isSameMonth(this.props.date,this.props.displayedDate);
-    const isToday = DateUtil.isToday(this.props.date);
-    const isSelectedDay = DateUtil.isSameDay(this.props.date,this.props.selectedDate);
-    const isFirstDayOfMonth = DateUtil.isFirstDayOfMonth(this.props.date);
-
-    return (
-      <td role='gridcell'
-        aria-disabled={!isCurrentMonth}
-        aria-selected={isSelectedDay}
+		return (
+			<td
+				role="gridcell"
+				aria-disabled={!isCurrentMonth}
+				aria-selected={isSelectedDay}
 //        autoFocus={this.props.calendarHasFocus && this.props.focused}
-        tabIndex={!this.props.calendarHasFocus && isFirstDayOfMonth && isCurrentMonth?0:-1}
-        className={(isToday ? ' slds-is-today' : '') + (isCurrentMonth ? '' : ' slds-disabled-text') + (isSelectedDay? ' slds-is-selected' : '')}
-        onClick={this.handleClick}
-        onMouseDown={this.handleClick}
-        onKeyDown={this.handleKeyDown} >
-        <span className='slds-day'>
-          {this.props.date.getDate()}
-        </span>
-      </td>
-    );
-  },
+				tabIndex={!this.props.calendarHasFocus && isFirstDayOfMonth && isCurrentMonth ? 0 : -1}
+				className={(isToday ? ' slds-is-today' : '') + (isCurrentMonth ? '' : ' slds-disabled-text') + (isSelectedDay ? ' slds-is-selected' : '')}
+				onClick={this.handleClick}
+				onMouseDown={this.handleClick}
+				onKeyDown={this.handleKeyDown}
+			>
+				<span className="slds-day">
+					{this.props.date.getDate()}
+				</span>
+			</td>
+		);
+	},
 
-  componentDidUpdate (prevProps) {
-    if(this.props.focused && !prevProps.focused){
-      this.setFocus();
-    }
-  }
+	componentDidUpdate (prevProps) {
+		if (this.props.focused && !prevProps.focused) {
+			this.setFocus();
+		}
+	}
 
 });

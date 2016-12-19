@@ -15,73 +15,67 @@ import { DateUtil } from '../../../../../utilities';
 
 module.exports = React.createClass({
 
-  getDefaultProps () {
-    return {
-      displayedDate:new Date(),
-      selectedDate:new Date()
-    };
-  },
+	getDefaultProps () {
+		return {
+			displayedDate:new Date(),
+			selectedDate:new Date()
+		};
+	},
 
-  handleSelectDate (day) {
-    if(this.props.onSelectDate){
-      this.props.onSelectDate(day);
-    }
-  },
+	handleCancel () {
+		if(this.props.onCancel){
+			this.props.onCancel();
+		}
+	},
 
-  handleCancel () {
-    if(this.props.onCancel){
-      this.props.onCancel();
-    }
-  },
+	handlePrevDay (date) {
+		if(this.props.onPrevDay){
+			this.props.onPrevDay(date);
+		}
+	},
 
-  handlePrevDay (date) {
-    if(this.props.onPrevDay){
-      this.props.onPrevDay(date);
-    }
-  },
+	handleNextDay (date) {
+		if(this.props.onNextDay){
+			this.props.onNextDay(date);
+		}
+	},
 
-  handleNextDay (date) {
-    if(this.props.onNextDay){
-      this.props.onNextDay(date);
-    }
-  },
+	handlePrevWeek (date) {
+		if(this.props.onPrevWeek){
+			this.props.onPrevWeek(date);
+		}
+	},
 
-  handlePrevWeek (date) {
-    if(this.props.onPrevWeek){
-      this.props.onPrevWeek(date);
-    }
-  },
+	handleNextWeek (date) {
+		if(this.props.onNextWeek){
+			this.props.onNextWeek(date);
+		}
+	},
 
-  handleNextWeek (date) {
-    if(this.props.onNextWeek){
-      this.props.onNextWeek(date);
-    }
-  },
+	render: function() {
+		let days = [];
+		let date = this.props.date;
+		for (var i = 0; i < 7; i++) {
+			days.push(<Day
+					key={date.toString()}
+					date={date}
+					month={this.props.month}
+					selectedDate={this.props.selectedDate}
+					onSelectDate={this.props.onSelectDate}
+					displayedDate={this.props.displayedDate}
+					highlightedDate={this.props.highlightedDate}
+					focused={this.props.calendarHasFocus && DateUtil.isSameDay(this.props.highlightedDate, date)}
+					calendarHasFocus={this.props.calendarHasFocus}
+					onPrevDay={this.handlePrevDay}
+					onNextDay={this.handleNextDay}
+					onPrevWeek={this.handlePrevWeek}
+					onNextWeek={this.handleNextWeek}
+					onCancel={this.handleCancel} />);
+				date = DateUtil.addDays(date,1);
+		}
 
-  render: function() {
-    let days = [];
-    let date = this.props.date;
-    for (var i = 0; i < 7; i++) {
-      days.push(<Day
-          key={date.toString()}
-          date={date}
-          month={this.props.month}
-          selectedDate={this.props.selectedDate}
-          onSelectDate={this.handleSelectDate}
-          displayedDate={this.props.displayedDate}
-          highlightedDate={this.props.highlightedDate}
-          focused={this.props.calendarHasFocus && DateUtil.isSameDay(this.props.highlightedDate, date)}
-          calendarHasFocus={this.props.calendarHasFocus}
-          onPrevDay={this.handlePrevDay}
-          onNextDay={this.handleNextDay}
-          onPrevWeek={this.handlePrevWeek}
-          onNextWeek={this.handleNextWeek}
-          onCancel={this.handleCancel} />);
-        date = DateUtil.addDays(date,1);
-    }
-
-    return <tr className='week' key={days[0].toString()}>
-      {days}
-    </tr>
-  }
+		return <tr className='week' key={days[0].toString()}>
+			{days}
+		</tr>
+	}
 });
