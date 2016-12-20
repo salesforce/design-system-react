@@ -149,6 +149,8 @@ const DatepickerCalendarDay = React.createClass({
 	},
 
 	setFocus () {
+		console.log(this.dayCell);
+		console.log(this.props.calendarHasFocus);
 		if (this.dayCell && this.props.calendarHasFocus) {
 			ReactDOM.findDOMNode(this.dayCell).focus();
 		}
@@ -185,6 +187,7 @@ const DatepickerCalendarDay = React.createClass({
 	},
 
 	componentDidUpdate (prevProps) {
+		console.log(this.props.focused);
 		if (this.props.focused && !prevProps.focused) {
 			this.setFocus();
 		}

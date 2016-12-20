@@ -55,6 +55,7 @@ const DatepickerWeek = React.createClass({
 	render () {
 		let days = [];
 		let date = this.props.date;
+
 		for (let i = 0; i < 7; i++) {
 			days.push(<Day
 				key={date.toString()}

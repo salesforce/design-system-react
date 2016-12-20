@@ -261,6 +261,11 @@ module.exports = React.createClass({
 		);
 	},
 
+	focusToday () {
+		console.log(document.querySelector('.slds-is-selected'));
+		document.querySelector('.slds-is-selected').focus();
+	},
+
 	getDialog () {
 		return (
 				!this.props.disabled && this.getIsOpen()
@@ -270,6 +275,7 @@ module.exports = React.createClass({
 					inheritTargetWidth={this.props.inheritTargetWidth}
 					flippable
 					onClose={this.handleClose}
+					onOpen={this.focusToday}
 					targetElement={this.input}
 				>
 				{this.getDatePicker()}
