@@ -5,14 +5,23 @@ import Input from '~/components/forms/input';
 const Example = React.createClass({
 	displayName: 'DatepickerExample',
 
+	getInitialState () {
+		return {
+			isOpen: false
+		};
+	},
+
 	render () {
 		return (
 			<Datepicker
+				isOpen={true}
+				onRequestClose={() => { this.setState({ isOpen: false }); }}
+				onRequestOpen={() => { this.setState({ isOpen: true }); }}
 				onDateChange={({ date, formattedDate }) => {
 					if (this.props.log) { this.props.log('onDateChange')(date, formattedDate); }
 				}}
 			>
-				<Input value="" />
+				<Input placeholder="With custom Input" value="" />
 			</Datepicker>
 		);
 	}

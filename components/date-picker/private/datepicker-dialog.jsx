@@ -69,14 +69,6 @@ const DatepickerDialog = React.createClass({
 		}
 	},
 
-	handleClickOutside (e) {
-		e.preventDefault();
-		e.stopPropagation();
-		if (this.props.onClose) {
-			this.props.onClose();
-		}
-	},
-
 	handleDisplayedDateChange (displayedDate) {
 		if (this.props.onDisplayedDateChange) {
 			this.props.onDisplayedDateChange(displayedDate);
@@ -87,12 +79,6 @@ const DatepickerDialog = React.createClass({
 	handleCancel () {
 		if (this.props.onClose) {
 			this.props.onClose();
-		}
-	},
-
-	handleBGClick (event) {
-		if (event.nativeEvent) {
-			event.nativeEvent.preventDefault();
 		}
 	},
 
@@ -111,7 +97,6 @@ const DatepickerDialog = React.createClass({
 					className={classNames('slds-datepicker slds-dropdown slds-dropdown--left', this.props.className)}
 					aria-hidden={false}
 					data-selection="single"
-					onMouseDown={this.handleBGClick}
 					onKeyDown={this.handleKeyDown}
 					onFocus={this.handleFocus}
 					onBlur={this.handleBlur}
@@ -119,7 +104,6 @@ const DatepickerDialog = React.createClass({
 				>
 					<DatePickerNav
 						onChange={this.handleDisplayedDateChange}
-						autoFocus
 						displayedDate={this.state.displayedDate}
 						monthLabels={this.props.monthLabels}
 						relativeYearFrom={this.props.relativeYearFrom}

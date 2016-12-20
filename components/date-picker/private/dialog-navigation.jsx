@@ -100,7 +100,6 @@ const DatepickerMonthNavigation = React.createClass({
 							className="slds-button slds-button--icon-container"
 							autoFocus={this.props.autoFocus}
 							role="button"
-							tabIndex={0}
 							onKeyDown={this.handleKeyDown}
 							onClick={this.previousMonth}
 						>

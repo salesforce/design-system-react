@@ -56,6 +56,7 @@ const Input = React.createClass({
 		'aria-controls': PropTypes.string,
 		'aria-describedby': PropTypes.string,
 		'aria-expanded': PropTypes.bool,
+		'aria-haspopup': PropTypes.bool,
 		'aria-labeledby': PropTypes.string,
 		/**
 		 * An HTML ID that is shared with ARIA-supported devices with the

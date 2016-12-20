@@ -36,7 +36,7 @@ const DatepickerCalendar = React.createClass({
 		return {
 			highlightedDate: DateUtil.firstDayOfMonth(this.props.displayedDate),
 			hasFocus: false,
-			todayFocus: false
+			todayFocus: true
 		};
 	},
 

@@ -160,6 +160,7 @@ const DatepickerCalendarDay = React.createClass({
 		const isSelectedDay = DateUtil.isSameDay(this.props.date, this.props.selectedDate);
 		const isFirstDayOfMonth = DateUtil.isFirstDayOfMonth(this.props.date);
 
+
 		return (
 			<td
 				aria-disabled={!isCurrentMonth}
@@ -171,10 +172,10 @@ const DatepickerCalendarDay = React.createClass({
 				})}
 				onClick={this.handleClick}
 				onKeyDown={this.handleKeyDown}
-				onMouseDown={this.handleClick}
 				ref={(component) => { this.dayCell = component; }}
 				role="gridcell"
-				tabIndex={!this.props.calendarHasFocus && isFirstDayOfMonth && isCurrentMonth ? 0 : -1}
+				tabIndex="0"
+				// tabIndex={!this.props.calendarHasFocus && isFirstDayOfMonth && isCurrentMonth ? 0 : -1}
 			>
 				<span className="slds-day">
 					{this.props.date.getDate()}

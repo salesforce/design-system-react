@@ -57,20 +57,20 @@ const DatepickerWeek = React.createClass({
 		let date = this.props.date;
 		for (let i = 0; i < 7; i++) {
 			days.push(<Day
-					key={date.toString()}
-					date={date}
-					month={this.props.month}
-					selectedDate={this.props.selectedDate}
-					onSelectDate={this.props.onSelectDate}
-					displayedDate={this.props.displayedDate}
-					highlightedDate={this.props.highlightedDate}
-					focused={this.props.calendarHasFocus && DateUtil.isSameDay(this.props.highlightedDate, date)}
-					calendarHasFocus={this.props.calendarHasFocus}
-					onPrevDay={this.handlePrevDay}
-					onNextDay={this.handleNextDay}
-					onPrevWeek={this.handlePrevWeek}
-					onNextWeek={this.handleNextWeek}
-					onCancel={this.handleCancel}
+				key={date.toString()}
+				date={date}
+				month={this.props.month}
+				selectedDate={this.props.selectedDate}
+				onSelectDate={this.props.onSelectDate}
+				displayedDate={this.props.displayedDate}
+				highlightedDate={this.props.highlightedDate}
+				focused={this.props.calendarHasFocus && DateUtil.isSameDay(this.props.highlightedDate, date)}
+				calendarHasFocus={this.props.calendarHasFocus}
+				onPrevDay={this.handlePrevDay}
+				onNextDay={this.handleNextDay}
+				onPrevWeek={this.handlePrevWeek}
+				onNextWeek={this.handleNextWeek}
+				onCancel={this.handleCancel}
 			/>);
 			date = DateUtil.addDays(date, 1);
 		}
