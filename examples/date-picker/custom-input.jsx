@@ -1,5 +1,6 @@
 import React from 'react';
 import Datepicker from '~/components/date-picker';
+import Input from '~/components/forms/input';
 
 const Example = React.createClass({
 	displayName: 'DatepickerExample',
@@ -10,7 +11,9 @@ const Example = React.createClass({
 				onDateChange={({ date, formattedDate }) => {
 					if (this.props.log) { this.props.log('onDateChange')(date, formattedDate); }
 				}}
-			/>
+			>
+				<Input value="" />
+			</Datepicker>
 		);
 	}
 });
