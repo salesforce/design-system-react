@@ -111,6 +111,7 @@ const DatepickerDialog = React.createClass({
 						onCancel={this.handleCancel}
 					/>
 					<Calendar
+						isIsoWeekday={this.props.isIsoWeekday}
 						selectedDate={this.props.selectedDate}
 						onChange={this.handleDisplayedDateChange}
 						displayedDate={this.state.displayedDate}

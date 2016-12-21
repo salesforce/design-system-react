@@ -125,6 +125,12 @@ const DatepickerCalendar = React.createClass({
 	},
 
 	render () {
+		const sunday = (
+			<th ref="Sunday">
+				<abbr title={this.props.weekDayLabels[0]}>{this.props.abbrWeekDayLabels[0]}</abbr>
+			</th>
+		);
+
 		return (
 			<div
 				className="Calendar"
@@ -134,9 +140,7 @@ const DatepickerCalendar = React.createClass({
 				<table className="datepicker__month" role="grid" aria-labelledby="month">
 					<thead>
 						<tr ref="weekdays">
-							<th ref="Sunday">
-								<abbr title={this.props.weekDayLabels[0]}>{this.props.abbrWeekDayLabels[0]}</abbr>
-							</th>
+						{this.props.isIsoWeekday ? null : sunday}
 							<th ref="Monday">
 								<abbr title={this.props.weekDayLabels[1]}>{this.props.abbrWeekDayLabels[1]}</abbr>
 							</th>
@@ -155,6 +159,7 @@ const DatepickerCalendar = React.createClass({
 							<th ref="Saturday">
 								<abbr title={this.props.weekDayLabels[6]}>{this.props.abbrWeekDayLabels[6]}</abbr>
 							</th>
+							{this.props.isIsoWeekday && sunday}
 						</tr>
 					</thead>
 					<tbody>
@@ -190,24 +195,28 @@ const DatepickerCalendar = React.createClass({
 	},
 
 	renderWeeks () {
+		const firstDayOfWeekOffset = this.props.isIsoWeekday ? 1 : 0;
+
 		const firstDayOfMonth = DateUtil.firstDayOfMonth(this.props.displayedDate);
 
-		let date = firstDayOfMonth;
-		if (firstDayOfMonth.getDay() > 0) {
+		let firstDayOfWeek;
+		if (firstDayOfMonth.getDay() > firstDayOfWeekOffset) {
 			const prevWeek = DateUtil.addWeeks(firstDayOfMonth, -1);
-			const nextSunday = DateUtil.nearestWeekDay(prevWeek, 0);
-			date = nextSunday;
+			firstDayOfWeek = DateUtil.nearestWeekDay(prevWeek, firstDayOfWeekOffset);
+		} else {
+			firstDayOfWeek = firstDayOfMonth;
 		}
 
 		const weeks = [];
 		let done = false;
 
-		let monthIndex = date.getMonth();
+		let monthIndex = firstDayOfWeek.getMonth();
 		let count = 0;
+
 		while (!done) {
 			weeks.push(<Week
-				key={date.toString()}
-				date={date}
+				key={firstDayOfWeek.toString()}
+				date={firstDayOfWeek}
 				month={this.props.month}
 				onSelectDate={this.handleSelectDate}
 				selectedDate={this.props.selectedDate}
@@ -220,9 +229,11 @@ const DatepickerCalendar = React.createClass({
 				calendarHasFocus={this.state.hasFocus}
 				onCancel={this.handleCancel}
 			/>);
-			date = DateUtil.addWeeks(date, 1);
-			done = count++ > 2 && monthIndex !== date.getMonth();
-			monthIndex = date.getMonth();
+
+			// create new weeks
+			firstDayOfWeek = DateUtil.addWeeks(firstDayOfWeek, 1);
+			done = count++ > 2 && monthIndex !== firstDayOfWeek.getMonth();
+			monthIndex = firstDayOfWeek.getMonth();
 		}
 		let extra = 0;
 		while (weeks.length < 6) {

@@ -76,6 +76,10 @@ module.exports = React.createClass({
 		 */
 		isOpen: PropTypes.bool,
 		/**
+		 * Makes Monday the first day of the week
+		 */
+		isIsoWeekday: PropTypes.bool,
+		/**
 		 * Names of the months
 		 */
 		monthLabels: PropTypes.array,
@@ -291,6 +295,7 @@ module.exports = React.createClass({
 
 		return (<DatepickerDialog
 			className={this.props.className}
+			isIsoWeekday={this.props.isIsoWeekday}
 			onSelectDate={this.handleChange}
 			selected={this.state.selected}
 			onClose={this.handleClose}
