@@ -10,6 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import SelectYear from './year-picklist';
 import ButtonIcon from '../../icon/button-icon';
+import Button from '../../button';
 import { DateUtil, EventUtil, KEYS } from '../../../utilities';
 
 const DatepickerMonthNavigation = React.createClass({
@@ -76,54 +77,47 @@ const DatepickerMonthNavigation = React.createClass({
 		}
 	},
 
-	handleKeyDown (event) {
-		if (event.keyCode === KEYS.TAB) {
-			if (event.shiftKey) {
-				EventUtil.trapEvent(event);
-				this.handleCancel();
-			}
-		}
-	},
-
 	getMonthLabel () {
 		return this.props.monthLabels[new Date(this.props.displayedDate).getMonth()];
 	},
 
+	getYearLabel () {
+		return this.props.monthLabels[new Date(this.props.displayedDate).getFullYear()];
+	},
+
 	render () {
 		return (
-
 			<div className="slds-datepicker__filter slds-grid">
 				<div className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-size--3-of-4">
-					<div className="slds-align-middle" role="button" aria-labelledby="bn_prev-label" tabIndex={-1}>
-						<button
-							ref="prevMonth"
-							className="slds-button slds-button--icon-container"
-							autoFocus={this.props.autoFocus}
-							role="button"
+					<div className="slds-align-middle">
+						<Button
+							assistiveText="Previous Month"
+							iconCategory="utility"
+							iconName="left"
+							iconVariant="container"
 							onKeyDown={this.handleKeyDown}
 							onClick={this.previousMonth}
-						>
-							<ButtonIcon name="left" />
-							<span className="slds-assistive-text">Previous Month</span>
-						</button>
+							ref="prevMonth"
+							variant="icon"
+						/>
 					</div>
-
 					<h2
 						id="month"
 						className="slds-align-middle"
 						role="heading"
 						aria-live="assertive"
 						aria-atomic
-					>{this.getMonthLabel()}</h2>
-					<div className="slds-align-middle" role="button" aria-labelledby="bn_next-label" tabIndex={-1}>
-						<button
-							ref="nextMonth"
-							className="slds-button slds-button--icon-container"
+					>{this.getMonthLabel()} <span className="slds-assistive-text">{this.getYearLabel()}}</span></h2>
+					<div className="slds-align-middle">
+						<Button
+							assistiveText="Next Month"
+							iconCategory="utility"
+							iconName="right"
+							iconVariant="container"
 							onClick={this.nextMonth}
-						>
-							<ButtonIcon name="right" />
-							<span className="slds-assistive-text">Next Month</span>
-						</button>
+							ref="nextMonth"
+							variant="icon"
+						/>
 					</div>
 				</div>
 				<div className="slds-picklist slds-picklist--fluid slds-shrink-none">

@@ -149,8 +149,6 @@ const DatepickerCalendarDay = React.createClass({
 	},
 
 	setFocus () {
-		console.log(this.dayCell);
-		console.log(this.props.calendarHasFocus);
 		if (this.dayCell && this.props.calendarHasFocus) {
 			ReactDOM.findDOMNode(this.dayCell).focus();
 		}
@@ -161,7 +159,6 @@ const DatepickerCalendarDay = React.createClass({
 		const isToday = DateUtil.isToday(this.props.date);
 		const isSelectedDay = DateUtil.isSameDay(this.props.date, this.props.selectedDate);
 		const isFirstDayOfMonth = DateUtil.isFirstDayOfMonth(this.props.date);
-
 
 		return (
 			<td
@@ -176,8 +173,7 @@ const DatepickerCalendarDay = React.createClass({
 				onKeyDown={this.handleKeyDown}
 				ref={(component) => { this.dayCell = component; }}
 				role="gridcell"
-				tabIndex="0"
-				// tabIndex={!this.props.calendarHasFocus && isFirstDayOfMonth && isCurrentMonth ? 0 : -1}
+				tabIndex={!this.props.calendarHasFocus && isFirstDayOfMonth && isCurrentMonth ? 0 : -1}
 			>
 				<span className="slds-day">
 					{this.props.date.getDate()}
@@ -187,7 +183,6 @@ const DatepickerCalendarDay = React.createClass({
 	},
 
 	componentDidUpdate (prevProps) {
-		console.log(this.props.focused);
 		if (this.props.focused && !prevProps.focused) {
 			this.setFocus();
 		}

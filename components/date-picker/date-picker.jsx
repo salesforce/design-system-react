@@ -44,6 +44,10 @@ module.exports = React.createClass({
 
 	propTypes: {
 		/**
+		 * Text for the calendar trigger
+		 */
+		assistiveTextOpenCalendar: PropTypes.string,
+		/**
 		 * One letter abbreviations of the days of the week, starting on Sunday.
 		 */
 		abbrWeekDayLabels: PropTypes.array,
@@ -131,7 +135,8 @@ module.exports = React.createClass({
 
 	getDefaultProps () {
 		return {
-			abbrWeekDayLabels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+			assistiveTextOpenCalendar: 'Open Calendar Dialog',
+			abbrWeekDayLabels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 			formatter (date) {
 				return date ? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}` : '';
 			},
@@ -227,8 +232,8 @@ module.exports = React.createClass({
 			this.props.onRequestClose();
 		} else {
 			this.setState({ isOpen: false });
-			this.setFocusToInput();
 		}
+		this.setFocusToInput();
 	},
 
 	openDialog () {
@@ -241,7 +246,7 @@ module.exports = React.createClass({
 
 	setFocusToInput () {
 		if (this.input) {
-			ReactDOM.findDOMNode(this.input).focus();
+			ReactDOM.findDOMNode(this.input).querySelector('input').focus();
 		}
 	},
 
@@ -266,8 +271,9 @@ module.exports = React.createClass({
 	},
 
 	focusToday () {
-		console.log(document.querySelector('.slds-is-selected'));
-		document.querySelector('.slds-is-selected').focus();
+		if (this.datepickerDialog) {
+			ReactDOM.findDOMNode(this.datepickerDialog).querySelector('.slds-is-selected').focus();
+		}
 	},
 
 	getDialog () {
@@ -303,6 +309,7 @@ module.exports = React.createClass({
 			weekDayLabels={this.props.weekDayLabels}
 			monthLabels={this.props.monthLabels}
 			todayLabel={this.props.todayLabel}
+			ref={(component) => { this.datepickerDialog = component; }}
 			relativeYearFrom={this.props.relativeYearFrom}
 			relativeYearTo={this.props.relativeYearTo}
 			selectedDate={date || new Date()}
@@ -346,6 +353,9 @@ module.exports = React.createClass({
 			// className: classNames(outsideClickIgnoreClass),
 			disabled: this.props.children && !!this.props.children.props.disabled || this.props.disabled,
 			iconRight: this.props.children && !!this.props.children.props.iconRight || (<InputIcon
+				assistiveText={this.props.assistiveTextOpenCalendar}
+				aria-haspopup
+				aria-expanded={this.state.isOpen}
 				category="utility"
 				name="event"
 				onClick={this.openDialog}

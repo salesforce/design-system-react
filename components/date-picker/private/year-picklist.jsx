@@ -31,7 +31,7 @@ const DatepickerYearSelector = React.createClass({
 		const opts = [];
 
 		for (let year = fromYear; year < toYear; year++) {
-			opts.push({ label: year, value: year });
+			opts.push({ label: `${year}`, value: year });
 		}
 		return opts;
 	},

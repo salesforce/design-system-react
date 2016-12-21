@@ -51,17 +51,10 @@ const DatepickerDialog = React.createClass({
 
 	handleKeyDown (event) {
 		if (event.keyCode) {
-			if (event.keyCode === KEYS.ESCAPE) {
-				if (this.props.onClose) {
-					this.props.onClose();
-				}
-			} else if (event.keyCode === KEYS.SPACE) {
-				// do nothing
-			} else if (event.keyCode === KEYS.ENTER) {
-				// do nothing
-			} else if (event.keyCode === KEYS.TAB) {
-				// do nothing
-			} else if (event.keyCode === KEYS.ESCAPE) {
+			if (event.keyCode === KEYS.ESCAPE
+				|| event.keyCode === KEYS.SPACE
+				|| event.keyCode === KEYS.ENTER
+				|| event.keyCode === KEYS.TAB) {
 				// do nothing
 			} else {
 				EventUtil.trapEvent(event);

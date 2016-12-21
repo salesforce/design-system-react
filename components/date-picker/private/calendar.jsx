@@ -7,20 +7,22 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Week from './calendar-week';
 import { EventUtil, DateUtil, KEYS } from '../../../utilities';
 
 const DatepickerCalendar = React.createClass({
 	displayName: 'SLDSDatepickerCalendar',
 
+	propTypes: {
+		abbrWeekDayLabels: PropTypes.array.isRequired,
+		weekDayLabels: PropTypes.array.isRequired
+	},
+
 	getDefaultProps () {
 		return {
 			displayedDate: new Date(),
-			selectedDate: new Date(),
-			weekDayLabels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-			abbrWeekDayLabels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-			todayLabel: 'Today'
+			selectedDate: new Date()
 			// onSelectDate (date) {
 			// 	console.log('onSelectDate should be defined ',date);
 			// },
@@ -141,22 +143,22 @@ const DatepickerCalendar = React.createClass({
 					<thead>
 						<tr ref="weekdays">
 						{this.props.isIsoWeekday ? null : sunday}
-							<th ref="Monday">
+							<th ref="Monday" scope="col">
 								<abbr title={this.props.weekDayLabels[1]}>{this.props.abbrWeekDayLabels[1]}</abbr>
 							</th>
-							<th ref="Tuesday">
+							<th ref="Tuesday" scope="col">
 								<abbr title={this.props.weekDayLabels[2]}>{this.props.abbrWeekDayLabels[2]}</abbr>
 							</th>
-							<th ref="Wednesday">
+							<th ref="Wednesday" scope="col">
 								<abbr title={this.props.weekDayLabels[3]}>{this.props.abbrWeekDayLabels[3]}</abbr>
 							</th>
-							<th ref="Thursday">
+							<th ref="Thursday" scope="col">
 								<abbr title={this.props.weekDayLabels[4]}>{this.props.abbrWeekDayLabels[4]}</abbr>
 							</th>
-							<th ref="Friday">
+							<th ref="Friday" scope="col">
 								<abbr title={this.props.weekDayLabels[5]}>{this.props.abbrWeekDayLabels[5]}</abbr>
 							</th>
-							<th ref="Saturday">
+							<th ref="Saturday" scope="col">
 								<abbr title={this.props.weekDayLabels[6]}>{this.props.abbrWeekDayLabels[6]}</abbr>
 							</th>
 							{this.props.isIsoWeekday && sunday}
