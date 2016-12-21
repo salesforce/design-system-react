@@ -82,7 +82,7 @@ const DatepickerMonthNavigation = React.createClass({
 	},
 
 	getYearLabel () {
-		return this.props.monthLabels[new Date(this.props.displayedDate).getFullYear()];
+		return new Date(this.props.displayedDate).getFullYear();
 	},
 
 	render () {
@@ -107,7 +107,7 @@ const DatepickerMonthNavigation = React.createClass({
 						role="heading"
 						aria-live="assertive"
 						aria-atomic
-					>{this.getMonthLabel()} <span className="slds-assistive-text">{this.getYearLabel()}}</span></h2>
+					>{this.getMonthLabel()} <span className="slds-assistive-text">{this.getYearLabel()}</span></h2>
 					<div className="slds-align-middle">
 						<Button
 							assistiveText="Next Month"
