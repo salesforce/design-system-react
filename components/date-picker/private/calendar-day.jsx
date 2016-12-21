@@ -47,6 +47,7 @@ const DatepickerCalendarDay = React.createClass({
 	// }
 
 	propTypes: {
+		assistiveTextToday: PropTypes.string,
 		calendarHasFocus: PropTypes.bool,
 		date: PropTypes.instanceOf(Date),
 		displayedDate: PropTypes.instanceOf(Date),
@@ -66,6 +67,7 @@ const DatepickerCalendarDay = React.createClass({
 
 	getDefaultProps () {
 		return {
+			assistiveTextToday: 'Today',
 			displayedDate: new Date(),
 			selectedDate: new Date(),
 			calendarHasFocus: false
@@ -176,6 +178,9 @@ const DatepickerCalendarDay = React.createClass({
 				tabIndex={!this.props.calendarHasFocus && isFirstDayOfMonth && isCurrentMonth ? 0 : -1}
 			>
 				<span className="slds-day">
+					{isToday
+						? <span className="slds-assistive-text">{this.props.assistiveTextToday}: </span>
+						: null}
 					{this.props.date.getDate()}
 				</span>
 			</td>
