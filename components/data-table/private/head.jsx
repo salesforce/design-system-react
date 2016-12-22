@@ -52,13 +52,14 @@ const DataTableHead = React.createClass({
 		id: PropTypes.string,
 		onToggleAll: PropTypes.func,
 		onSort: PropTypes.func,
+		scrollLeft: PropTypes.number,
 		showRowActions: PropTypes.bool
 	},
 
 	// ### Render
 	render () {
 		return (
-			<thead>
+			<thead style={{transform:`translate(${-this.props.scrollLeft || 0}px, 0)`}}>
 				<tr className="slds-line-height--reset">
 					{this.props.canSelectRows
 						? <th className="slds-text-align--right" scope="col" style={{ width: '3.25rem' }}>

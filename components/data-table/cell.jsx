@@ -43,7 +43,7 @@ const DataTableCell = (props) => {
 			className={props.className}
 			data-label={props.label}
 			role={props.fixedLayout ? 'gridcell' : null}
-			style={props.width ? { width: props.width } : null}
+			style={props.width ? { minWidth:props.width, maxWidth:props.width } : null}
 		>
 			{contents}
 		</th>
@@ -52,7 +52,7 @@ const DataTableCell = (props) => {
 			className={props.className}
 			data-label={props.label}
 			role={props.fixedLayout ? 'gridcell' : null}
-			style={props.width ? { width: props.width } : null}
+			style={props.width ? { minWidth:props.width, maxWidth:props.width } : null}
 		>
 			{contents}
 		</td>
