@@ -92,6 +92,11 @@ const Snippets = {
 		require('raw-loader!design-system-react/examples/page-header/object-home.jsx'),
 		require('raw-loader!design-system-react/examples/page-header/related-list.jsx')
 	],
+	popover: [
+		require('raw-loader!design-system-react/examples/popover/header.jsx'),
+		require('raw-loader!design-system-react/examples/popover-tooltip/alternative-header.jsx'),
+		require('raw-loader!design-system-react/examples/popover-tooltip/controlled-with-footer.jsx')
+	],
 	'popover-tooltip': [
 		require('raw-loader!design-system-react/examples/popover-tooltip/base.jsx'),
 		require('raw-loader!design-system-react/examples/popover-tooltip/button.jsx'),
