@@ -45,7 +45,7 @@ const panelContent = (<div>
 </div>
 );
 
-const Container = React.createClass({
+const Example = React.createClass({
 	displayName: 'PopoverExample',
 
 	render () {
@@ -62,4 +62,4 @@ const Container = React.createClass({
 	}
 });
 
-export default Container;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
