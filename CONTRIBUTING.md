@@ -15,7 +15,8 @@
 
 We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
-## What we've learned about building React components for the enterprise
+## Concepts and Best Practices
+#### What we've learned about building React components for the enterprise
 
 ### Think of others first
 - <a name="not-bootstrap" href="#not-bootstrap">#</a> **Consider your audience.** This project is not Bootstrap, and we've built [frameworks on top of Bootstrap](https://github.com/ExactTarget/fuelux). The primary audience for this project is software engineers yearning to easily implement the design artifact handed to them. Yes, contributors should over-document and explain much as you need to, but you do _not_ need to have components just work when you drop them on the page. Read on for more about limiting internal component state.
@@ -41,9 +42,9 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 - <a name="approved-slds-patterns" href="#approved-slds-patterns">#</a> **Only submit approved design system patterns.** This library should include only components which have approved patterns in Salesforce's [design system](https://www.lightningdesignsystem.com/) or the latest internal beta releases. If there is a use case from a designer that conforms to a design pattern, that component should be able to be implemented with this library.
 
-- <a name="avoid-mixins" href="#avoid-mixins">#</a> ** Avoid mixins. ** Instead, import and use shared code and external libraries as libraries, or use higher-order components. Do not add external dependencies unless absolutely necessary. Consider the "total cost of ownership" of all dependencies.
+- <a name="avoid-mixins" href="#avoid-mixins">#</a> **Avoid mixins.** Instead, import and use shared code and external libraries as libraries, or use higher-order components. Do not add external dependencies unless absolutely necessary. Consider the "total cost of ownership" of all dependencies.
 
-- <a name="avoid-css" href="#avoid-css">#</a> ** Avoid inline CSS style/custom classes.** We are blessed to have a team of great CSS developers working on our design system. Use their CSS or contribute code back to them.
+- <a name="avoid-css" href="#avoid-css">#</a> **Avoid inline CSS style/custom classes.** We are blessed to have a team of great CSS developers working on our design system. Use their CSS or contribute code back to them.
 
 ### Be consistent with component structure, callbacks, and prop names
 - <a name="use-eslint" href="#use-eslint">#</a> **Use ESlint** The larger a codebase becomes and the more contributors the project has, the more organization that is needed. Please use ESlint in your editor (via `.eslinttc`) and conform to ESlint settings present in [ESlint Configuration for SLDS](https://github.com/salesforce-ux/eslint-config-slds). The team is open to contributions. If a file is touched that has outstanding ESlint errors, please fix the ESlint errors first--in a separate commit. Sometimes special cases require an `eslint-disable-line`, but please use sparingly.
@@ -52,11 +53,11 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 - <a name="react-create-class" href="#react-create-class">#</a> `React.createClass` is preferred over ES6 classes and use of `extend` at this time.
 
-- <a name="event-callbacks" href="#event-callbacks">#</a> ** Consistent callback parameters ** Event callbacks should pass in the synthetic event, then a data object with contents that relate to the event.
+- <a name="event-callbacks" href="#event-callbacks">#</a> **Use consistent callback parameters.** Event callbacks should pass in the synthetic event, then a data object with contents that relate to the event.
 
-- <a name="classnames" href="#classnames">#</a> ** Use classNames library. ** This library makes extensive use of the [classnames](https://github.com/JedWatson/classnames) library for feeding conditional CSS classes into `className` attributes and allows a variety of types such as `string`, `object`, and `arrays`. Please review the libary's API.
+- <a name="classnames" href="#classnames">#</a> **Use classNames library.** This library makes extensive use of the [classnames](https://github.com/JedWatson/classnames) library for feeding conditional CSS classes into `className` attributes and allows a variety of types such as `string`, `object`, and `arrays`. Please review the libary's API.
 
-- <a name="boolean-prop-prefix" href="#boolean-prop-prefix">#</a> ** Use boolean prefixes. ** If a prop is a boolean, please prefix with `is` or `can` or suffix it with `-able`. Never default a prop to `true`.
+- <a name="boolean-prop-prefix" href="#boolean-prop-prefix">#</a> **Use boolean prefixes.** If a prop is a boolean, please prefix with `is` or `can` or suffix it with `-able`. Never default a prop to `true`.
 
 ### Be careful with the power of ES6
 - <a name="rest-operators-with-jsx" href="#rest-operators-with-jsx">#</a> Be careful with [rest operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters) when passively applying unnamed and unknown props to JSX nodes. This concept allows flexibility to the consuming developer, but is difficult to track for maintainers. If rest operators should be used, be sure to deconstruct each one that is actually needed by the JSX nodes, so that the rest operator only handles "unknown props" passed in from the outside developer. In short, don't utilize any properties in the `...props` object within the component. After using `const { active, className, ...rest } = props;` do not go back to using `this.prop.*` anywhere in the render function. 
@@ -68,9 +69,9 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 - <a name="jsx-gotchas" href="#jsx-gotchas">#</a> Read [JSX Gotchas](https://facebook.github.io/react/docs/jsx-gotchas.html#html-entities)
 
-- <a name="no-default-false-values" href="#no-default-false-values">#</a> ** No falsy defaults. ** Do not set default prop values to `false`. If you need to detect if a variable is `false` or undefined in order to execute code, use a "double logical NOT operator". If `isOpen` gives you a "falsey" value, then `!!isOpen` will make it return the boolean value `false`. Otherwise it will return true. If you need to test if the value is not `undefined`, use `!== undefined`.
+- <a name="no-default-false-values" href="#no-default-false-values">#</a> **No falsy defaults.** Do not set default prop values to `false`. If you need to detect if a variable is `false` or undefined in order to execute code, use a "double logical NOT operator". If `isOpen` gives you a "falsey" value, then `!!isOpen` will make it return the boolean value `false`. Otherwise it will return true. If you need to test if the value is not `undefined`, use `!== undefined`.
 
-- <a name="required-callbacks" href="#required-callbacks">#</a> ** External callbacks are optional. ** Public callback/handler function props should always be optional and tested to see if they exist before execution. Within private child components use `.isRequired` if the callback is needed internally for the component to function.
+- <a name="required-callbacks" href="#required-callbacks">#</a> **External callbacks are optional.** Public callback/handler function props should always be optional and tested to see if they exist before execution. Within private child components use `.isRequired` if the callback is needed internally for the component to function.
 
 ### Read up on accessibility
 
