@@ -65,7 +65,7 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 - <a name="rest-operators-with-jsx-delete" href="#rest-operators-with-jsx-delete">#</a> If a rest operator is already present in your render function and you need to remove additional props so that they do not get passed to a JSX node, use the rest operator along with `// eslint-disable-line no-unused-vars` to remove the prop from `...rest`.
 
 ### Other things to be careful of
-- <a name="props-in-get-initial-state" href="#props-in-get-initial-state">#</a> **Do not use props in getInitialState. ** Please review [props in getInitialState is an anti-pattern.](https://facebook.github.io/react/tips/props-in-getInitialState-as-anti-pattern.html)
+- <a name="props-in-get-initial-state" href="#props-in-get-initial-state">#</a> **Do not use props in initial state.** Please review [props in getInitialState is an anti-pattern.](https://facebook.github.io/react/tips/props-in-getInitialState-as-anti-pattern.html)
 
 - <a name="jsx-gotchas" href="#jsx-gotchas">#</a> Read [JSX Gotchas](https://facebook.github.io/react/docs/jsx-gotchas.html#html-entities)
 
