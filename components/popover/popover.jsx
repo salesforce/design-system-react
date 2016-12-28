@@ -149,9 +149,9 @@ const Popover = React.createClass({
 		 */
 		onClick: PropTypes.func,
 		/**
-		 * This function is triggered when the user clicks outside the Popover or clicks the close button. You will want to define this if Popover is to be a controlled component. Most of the time you will want wnat to set `isOpen` to `false` when this is triggered unless you need to validate something.
+		 * This function is triggered when the dialog is closed. This occurs when the Dialog child component (that is the actual popover) is unmounted and removed from the DOM. This function returns `{event, { trigger, componentWillUnmount }`. Trigger can have the values `cancel`, `clickOutside`, or `newPopover`.
 		 */
-		onRequestClose: PropTypes.func,
+		onClose: PropTypes.func,
 		/**
 		 * Called when a key is pressed.
 		 */
@@ -165,9 +165,9 @@ const Popover = React.createClass({
 		 */
 		onOpen: PropTypes.func,
 		/**
-		 * This function is triggered when the dialog is closed. This occurs when the Dialog child component (that is the actual popover) is unmounted and removed from the DOM. This function returns `{event, { trigger, componentWillUnmount }`. Trigger can have the values `cancel`, `clickOutside`, or `newPopover`.
+		 * This function is triggered when the user clicks outside the Popover or clicks the close button. You will want to define this if Popover is to be a controlled component. Most of the time you will want wnat to set `isOpen` to `false` when this is triggered unless you need to validate something.
 		 */
-		onClose: PropTypes.func,
+		onRequestClose: PropTypes.func,
 		/**
 		 * An object of CSS styles that are applied to the `slds-popover` DOM element.
 		 */
