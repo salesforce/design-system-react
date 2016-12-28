@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '~/components/button'; // `~` is replaced with design-system-react at runtime
 
-const Container = React.createClass({
+const Example = React.createClass({
 	displayName: 'ButtonExample',
 
 	render () {
@@ -80,4 +80,4 @@ const Container = React.createClass({
 	}
 });
 
-export default Container;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
