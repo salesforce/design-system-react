@@ -161,7 +161,7 @@ const Popover = React.createClass({
 		 */
 		onMouseDown: PropTypes.func,
 		/**
-		 * This function is triggered when the Dialog child component (that is the actual popover) is mounted and added to the DOM. The parameters are `event, { portal: }`. p
+		 * This function is triggered when the Dialog child component (that is the actual popover) is mounted and added to the DOM. The parameters are `event, { portal: }`. `portal` can be used as a React tree root node.
 		 */
 		onOpen: PropTypes.func,
 		/**
