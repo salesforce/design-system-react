@@ -53,7 +53,7 @@ const defaultFilter = (term, item) => {
 /**
  * Lookup is an advanced inline search form. The lookup can parse through single or multi scoped datasets. The parsed dataset can be filtered by single or multi option selects.
  */
-export const Lookup = React.createClass({
+const Lookup = React.createClass({
 	displayName: LOOKUP,
 
 	propTypes: {
