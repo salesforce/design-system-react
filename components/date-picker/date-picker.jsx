@@ -11,7 +11,7 @@ import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
 import Dialog from '../utilities/dialog';
-import DatepickerDialog from './private/datepicker-dialog';
+import CalendarWrapper from './private/calendar-wrapper';
 import InputIcon from '../icon/input-icon';
 import Input from '../forms/input';
 
@@ -51,6 +51,10 @@ module.exports = React.createClass({
 		 * One letter abbreviations of the days of the week, starting on Sunday.
 		 */
 		abbrWeekDayLabels: PropTypes.array,
+		/**
+		 * Aligns the right or left side of the menu with the respective side of the trigger.
+		 */
+		align: PropTypes.oneOf(['left', 'right']),
 		/**
 		 * Pass in an <Input /> component to customize it. Event handlers for the input should be added here. `<Input onKeyDown... />`.`
 		 */
@@ -135,6 +139,7 @@ module.exports = React.createClass({
 
 	getDefaultProps () {
 		return {
+			align: 'left',
 			assistiveTextOpenCalendar: 'Open Calendar Dialog',
 			abbrWeekDayLabels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 			formatter (date) {
@@ -263,7 +268,12 @@ module.exports = React.createClass({
 	getInlineMenu () {
 		return (
 			!this.props.disabled && this.getIsOpen()
-			? <div className="slds-dropdown slds-dropdown--left">
+			? <div
+				className={classNames('slds-datepicker',
+					'slds-dropdown',
+					`slds-dropdown--${this.props.align}`,
+				this.props.className)}
+			>
 				{this.getDatePicker()}
 			</div>
 			: null
@@ -280,8 +290,10 @@ module.exports = React.createClass({
 		return (
 				!this.props.disabled && this.getIsOpen()
 				? <Dialog
+					contentsClassName="slds-datepicker slds-dropdown"
 					closeOnTabKey
 					constrainToScrollParent={this.props.constrainToScrollParent}
+					horizontalAlign={this.props.align}
 					inheritTargetWidth={this.props.inheritTargetWidth}
 					flippable
 					onClose={this.handleClose}
@@ -299,8 +311,7 @@ module.exports = React.createClass({
 			? this.parseDate(this.state.formattedValue)
 			: this.state.value;
 
-		return (<DatepickerDialog
-			className={this.props.className}
+		return (<CalendarWrapper
 			isIsoWeekday={this.props.isIsoWeekday}
 			onSelectDate={this.handleChange}
 			selected={this.state.selected}
@@ -380,18 +391,16 @@ module.exports = React.createClass({
 			{...clonedProps}
 		/>;
 
-		const containerStyles = { display: 'inline' };
-
 		return (
 			<div
 				className={classNames(
-					'slds-datepicker-trigger',
+					'slds-dropdown-trigger',
+					'slds-dropdown-trigger--click',
 					'ignore-react-onclickoutside', {
 						'slds-is-open': this.getIsOpen()
 					},
 					this.props.triggerClassName
 				)}
-				style={containerStyles}
 			>
 				{clonedInput}
 				{this.props.isInline ? this.getInlineMenu() : this.getDialog()}

@@ -714,7 +714,8 @@ const MenuDropdown = React.createClass({
 					targetElement={this.triggerContainer}
 				>
 					{this.renderMenuContent(customContent)}
-				</Dialog> : null		);
+				</Dialog> : null
+			);
 	},
 
 	renderOverlay (isOpen) {

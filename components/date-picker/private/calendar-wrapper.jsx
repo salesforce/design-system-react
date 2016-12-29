@@ -85,39 +85,36 @@ const DatepickerDialog = React.createClass({
 
 	render () {
 		return (
-			<div className="ignore-react-onclickoutside">
-				<div
-					className={classNames('slds-datepicker slds-dropdown slds-dropdown--left', this.props.className)}
-					aria-hidden={false}
-					data-selection="single"
-					onKeyDown={this.handleKeyDown}
-					onFocus={this.handleFocus}
-					onBlur={this.handleBlur}
-					onClick={this.handleBGClick}
-				>
-					<DatePickerNav
-						onChange={this.handleDisplayedDateChange}
-						displayedDate={this.state.displayedDate}
-						monthLabels={this.props.monthLabels}
-						relativeYearFrom={this.props.relativeYearFrom}
-						relativeYearTo={this.props.relativeYearTo}
-						onCancel={this.handleCancel}
-					/>
-					<Calendar
-						isIsoWeekday={this.props.isIsoWeekday}
-						selectedDate={this.props.selectedDate}
-						onChange={this.handleDisplayedDateChange}
-						displayedDate={this.state.displayedDate}
-						onSelectDate={this.props.onSelectDate}
-						abbrWeekDayLabels={this.props.abbrWeekDayLabels}
-						weekDayLabels={this.props.weekDayLabels}
-						todayLabel={this.props.todayLabel}
-						onCancel={this.handleCancel}
-					/>
-					<span id="bn_prev-label" className="slds-assistive-text">Go to previous month</span>
-					<span id="bn_next-label" className="slds-assistive-text">Go to next month</span>
-				</div>
-
+			<div
+				className={classNames(this.props.className)}
+				aria-hidden="false"
+				data-selection="single"
+				onKeyDown={this.handleKeyDown}
+				onFocus={this.handleFocus}
+				onBlur={this.handleBlur}
+				onClick={this.handleBGClick}
+			>
+				<DatePickerNav
+					onChange={this.handleDisplayedDateChange}
+					displayedDate={this.state.displayedDate}
+					monthLabels={this.props.monthLabels}
+					relativeYearFrom={this.props.relativeYearFrom}
+					relativeYearTo={this.props.relativeYearTo}
+					onCancel={this.handleCancel}
+				/>
+				<Calendar
+					isIsoWeekday={this.props.isIsoWeekday}
+					selectedDate={this.props.selectedDate}
+					onChange={this.handleDisplayedDateChange}
+					displayedDate={this.state.displayedDate}
+					onSelectDate={this.props.onSelectDate}
+					abbrWeekDayLabels={this.props.abbrWeekDayLabels}
+					weekDayLabels={this.props.weekDayLabels}
+					todayLabel={this.props.todayLabel}
+					onCancel={this.handleCancel}
+				/>
+				<span id="bn_prev-label" className="slds-assistive-text">Go to previous month</span>
+				<span id="bn_next-label" className="slds-assistive-text">Go to next month</span>
 			</div>
 		);
 	},
