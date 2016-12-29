@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { PropTypes } from 'react';
 
 import Calendar from './calendar';
-import DatePickerNav from './dialog-navigation';
+import CalendarNavigation from './calendar-navigation';
 
 import { EventUtil, KEYS } from '../../../utilities';
 
@@ -20,24 +20,76 @@ import { EventUtil, KEYS } from '../../../utilities';
 // joining classNames together."
 import classNames from 'classnames';
 
-const DatepickerDialog = React.createClass({
-	displayName: 'SLDSDatepickerDialog',
+const SLDSDatepickerCalendarWrapper = React.createClass({
+	displayName: 'SLDSDatepickerCalendarWrapper',
+
+	propTypes: {
+		/**
+		 * Label for button to go to the next month
+		 */
+		assistiveTextNextMonth: PropTypes.string.isRequired,
+		/**
+		 * Label for button to go to the previous month
+		 */
+		assistiveTextPreviousMonth: PropTypes.string.isRequired,
+		/**
+		 * One letter abbreviations of the days of the week, starting on Sunday.
+		 */
+		abbrWeekDayLabels: PropTypes.array.isRequired,
+		/**
+		 * CSS classes to be added to tag with `slds-datepicker`.
+		 */
+		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		/**
+		 * Makes Monday the first day of the week
+		 */
+		isIsoWeekday: PropTypes.bool,
+		/**
+		 * For use of datepicker outside of dropdown.
+		 */
+		isolated: PropTypes.bool,
+		/**
+		 * Names of the months
+		 */
+		monthLabels: PropTypes.array.isRequired,
+		/**
+		 * Triggered when the calendar is closed.
+		 */
+		onClose: PropTypes.func.isRequired,
+		/**
+		 * Triggered when calendar changes the date.
+		 */
+		onDisplayedDateChange: PropTypes.func,
+		/**
+		 * Triggered when a date on the calendar is clicked.
+		 */
+		onSelectDate: PropTypes.func,
+		/**
+		 * The earliest year that can be selected in the year selection dropdown.
+		 */
+		relativeYearFrom: PropTypes.number.isRequired,
+		/**
+		 * The maximum year that can be selected in the year selection dropdown.
+		 */
+		relativeYearTo: PropTypes.number.isRequired,
+		/**
+		 * Currently selected date
+		 */
+		selectedDate: React.PropTypes.instanceOf(Date),
+		/**
+		 * Label of shortcut to jump to today within the calendar
+		 */
+		todayLabel: PropTypes.string.isRequired,
+		/**
+		 * Names of the seven days of the week, starting on Sunday.
+		 */
+		weekDayLabels: PropTypes.array.isRequired
+	},
 
 	getDefaultProps () {
 		return {
 			selectedDate: new Date(),
 			value: new Date()
-			// onChange (date) {
-			// 	console.log('onChange should be defined ', date);
-			// },
-
-			// onDisplayedDateChange (date) {
-			// 	console.log('onDisplayedDateChange should be defined ', date);
-			// },
-
-			// onClose () {
-			// 	console.log('onClose should be defined');
-			// }
 		};
 	},
 
@@ -86,7 +138,10 @@ const DatepickerDialog = React.createClass({
 	render () {
 		return (
 			<div
-				className={classNames(this.props.className)}
+				className={classNames({
+					'slds-datepicker': this.props.isolated
+				},
+					this.props.className)}
 				aria-hidden="false"
 				data-selection="single"
 				onKeyDown={this.handleKeyDown}
@@ -94,7 +149,9 @@ const DatepickerDialog = React.createClass({
 				onBlur={this.handleBlur}
 				onClick={this.handleBGClick}
 			>
-				<DatePickerNav
+				<CalendarNavigation
+					assistiveTextNextMonth={this.props.assistiveTextNextMonth}
+					assistiveTextPreviousMonth={this.props.assistiveTextPreviousMonth}
 					onChange={this.handleDisplayedDateChange}
 					displayedDate={this.state.displayedDate}
 					monthLabels={this.props.monthLabels}
@@ -113,8 +170,8 @@ const DatepickerDialog = React.createClass({
 					todayLabel={this.props.todayLabel}
 					onCancel={this.handleCancel}
 				/>
-				<span id="bn_prev-label" className="slds-assistive-text">Go to previous month</span>
-				<span id="bn_next-label" className="slds-assistive-text">Go to next month</span>
+				<span id="bn_prev-label" className="slds-assistive-text">{this.props.assistiveTextNextMonth}</span>
+				<span id="bn_next-label" className="slds-assistive-text">{this.props.assistiveTextPreviousMonth}</span>
 			</div>
 		);
 	},
@@ -140,4 +197,4 @@ const DatepickerDialog = React.createClass({
 	}
 });
 
-module.exports = DatepickerDialog;
+module.exports = SLDSDatepickerCalendarWrapper;

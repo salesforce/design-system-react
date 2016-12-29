@@ -44,9 +44,17 @@ module.exports = React.createClass({
 
 	propTypes: {
 		/**
+		 * Label for button to go to the next month
+		 */
+		assistiveTextNextMonth: PropTypes.string.isRequired,
+		/**
 		 * Text for the calendar trigger
 		 */
 		assistiveTextOpenCalendar: PropTypes.string,
+		/**
+		 * Label for button to go to the previous month
+		 */
+		assistiveTextPreviousMonth: PropTypes.string.isRequired,
 		/**
 		 * One letter abbreviations of the days of the week, starting on Sunday.
 		 */
@@ -91,6 +99,10 @@ module.exports = React.createClass({
 		 * Names of the months
 		 */
 		monthLabels: PropTypes.array,
+		/**
+		 * Triggered when the calendar is closed.
+		 */
+		onClose: PropTypes.func,
 		/**
 		 * Triggered when the date changes. It receives an object. {date: [Date object, formattedDate: [string]}
 		 */
@@ -141,6 +153,8 @@ module.exports = React.createClass({
 		return {
 			align: 'left',
 			assistiveTextOpenCalendar: 'Open Calendar Dialog',
+			assistiveTextNextMonth: 'Next month',
+			assistiveTextPreviousMonth: 'Previous month',
 			abbrWeekDayLabels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 			formatter (date) {
 				return date ? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}` : '';
@@ -233,11 +247,22 @@ module.exports = React.createClass({
 	},
 
 	handleClose () {
+		const isOpen = this.getIsOpen();
+
 		if (this.props.onRequestOpen) {
 			this.props.onRequestClose();
-		} else {
-			this.setState({ isOpen: false });
 		}
+
+		if (isOpen) {
+			this.setState({
+				isOpen: false
+			});
+
+			if (this.props.onClose) {
+				this.props.onClose();
+			}
+		}
+
 		this.setFocusToInput();
 	},
 
@@ -312,18 +337,19 @@ module.exports = React.createClass({
 			: this.state.value;
 
 		return (<CalendarWrapper
-			isIsoWeekday={this.props.isIsoWeekday}
-			onSelectDate={this.handleChange}
-			selected={this.state.selected}
-			onClose={this.handleClose}
+			assistiveTextNextMonth={this.props.assistiveTextNextMonth}
+			assistiveTextPreviousMonth={this.props.assistiveTextPreviousMonth}
 			abbrWeekDayLabels={this.props.abbrWeekDayLabels}
-			weekDayLabels={this.props.weekDayLabels}
+			isIsoWeekday={this.props.isIsoWeekday}
 			monthLabels={this.props.monthLabels}
-			todayLabel={this.props.todayLabel}
+			onClose={this.handleClose}
+			onSelectDate={this.handleChange}
 			ref={(component) => { this.datepickerDialog = component; }}
 			relativeYearFrom={this.props.relativeYearFrom}
 			relativeYearTo={this.props.relativeYearTo}
 			selectedDate={date || new Date()}
+			todayLabel={this.props.todayLabel}
+			weekDayLabels={this.props.weekDayLabels}
 		/>);
 	},
 
