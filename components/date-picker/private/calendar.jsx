@@ -240,7 +240,11 @@ const DatepickerCalendar = React.createClass({
 		let extra = 0;
 		while (weeks.length < 6) {
 			extra = extra + 1;
-			weeks.push(<tr key={`extra_${extra}`} className="week"><td><span className="slds-day">&nbsp;</span></td></tr>);
+			weeks.push(<tr key={`extra_${extra}`} className="week">
+				<td aria-disabled="true" aria-selected="false" className="slds-disabled-text">
+					<span className="slds-day ">&nbsp;</span>
+				</td>
+			</tr>);
 		}
 
 		return weeks;
