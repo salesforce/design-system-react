@@ -96,8 +96,7 @@ const SLDSDatepickerCalendarWrapper = React.createClass({
 	getInitialState () {
 		return {
 			displayedDate: this.props.selectedDate,
-			isFocused: false,
-			isClosing: false
+			isFocused: false
 		};
 	},
 
@@ -157,7 +156,6 @@ const SLDSDatepickerCalendarWrapper = React.createClass({
 					monthLabels={this.props.monthLabels}
 					relativeYearFrom={this.props.relativeYearFrom}
 					relativeYearTo={this.props.relativeYearTo}
-					onCancel={this.handleCancel}
 				/>
 				<Calendar
 					isIsoWeekday={this.props.isIsoWeekday}
@@ -174,26 +172,6 @@ const SLDSDatepickerCalendarWrapper = React.createClass({
 				<span id="bn_next-label" className="slds-assistive-text">{this.props.assistiveTextPreviousMonth}</span>
 			</div>
 		);
-	},
-
-	componentDidUpdate (prevProps, prevState) {
-		if (!this.state.isFocused && prevState.isFocused) {
-			this.setState({ isClosing: true });
-
-			setTimeout(() => {
-				if (this.isMounted()) {
-					if (this.state.isClosing) {
-						if (this.state.isFocused) {
-							this.setState({ isClosing: false });
-						} else {
-							if (this.props.onClose) {
-								this.props.onClose();
-							}
-						}
-					}
-				}
-			});
-		}
 	}
 });
 

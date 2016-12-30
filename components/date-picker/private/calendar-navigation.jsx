@@ -51,12 +51,6 @@ const DatepickerMonthNavigation = React.createClass({
 		}
 	},
 
-	handleCancel () {
-		if (this.props.onCancel) {
-			this.props.onCancel();
-		}
-	},
-
 	previousMonth () {
 		if (this.props.displayedDate && this.handleChange) {
 			this.handleChange(DateUtil.addMonths(this.props.displayedDate, -1));
