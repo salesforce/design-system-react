@@ -15,6 +15,10 @@ const DatepickerCalendar = React.createClass({
 	displayName: 'SLDSDatepickerCalendar',
 
 	propTypes: {
+		/**
+		 * Label for today's date
+		 */
+		assistiveTextToday: PropTypes.string,
 		abbrWeekDayLabels: PropTypes.array.isRequired,
 		weekDayLabels: PropTypes.array.isRequired
 	},
@@ -217,6 +221,7 @@ const DatepickerCalendar = React.createClass({
 
 		while (!done) {
 			weeks.push(<Week
+				assistiveTextToday={this.props.assistiveTextToday}
 				key={firstDayOfWeek.toString()}
 				date={firstDayOfWeek}
 				month={this.props.month}

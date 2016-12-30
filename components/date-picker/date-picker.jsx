@@ -46,7 +46,7 @@ module.exports = React.createClass({
 		/**
 		 * Label for button to go to the next month
 		 */
-		assistiveTextNextMonth: PropTypes.string.isRequired,
+		assistiveTextNextMonth: PropTypes.string,
 		/**
 		 * Text for the calendar trigger
 		 */
@@ -54,7 +54,11 @@ module.exports = React.createClass({
 		/**
 		 * Label for button to go to the previous month
 		 */
-		assistiveTextPreviousMonth: PropTypes.string.isRequired,
+		assistiveTextPreviousMonth: PropTypes.string,
+		/**
+		 * Label for today's date
+		 */
+		assistiveTextToday: PropTypes.string,
 		/**
 		 * One letter abbreviations of the days of the week, starting on Sunday.
 		 */
@@ -166,6 +170,7 @@ module.exports = React.createClass({
 			assistiveTextOpenCalendar: 'Open Calendar Dialog',
 			assistiveTextNextMonth: 'Next month',
 			assistiveTextPreviousMonth: 'Previous month',
+			assistiveTextToday: 'Today',
 			abbrWeekDayLabels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 			formatter (date) {
 				return date ? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}` : '';
@@ -351,6 +356,7 @@ module.exports = React.createClass({
 		return (<CalendarWrapper
 			assistiveTextNextMonth={this.props.assistiveTextNextMonth}
 			assistiveTextPreviousMonth={this.props.assistiveTextPreviousMonth}
+			assistiveTextToday={this.props.assistiveTextToday}
 			abbrWeekDayLabels={this.props.abbrWeekDayLabels}
 			isIsoWeekday={this.props.isIsoWeekday}
 			monthLabels={this.props.monthLabels}

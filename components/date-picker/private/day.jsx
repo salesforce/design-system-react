@@ -18,7 +18,6 @@ import { KEYS, EventUtil, DateUtil } from '../../../utilities';
 // joining classNames together."
 import classNames from 'classnames';
 
-
 const DatepickerCalendarDay = React.createClass({
 	displayName: 'SLDSDatepickerCalendarDay',
 
@@ -47,6 +46,9 @@ const DatepickerCalendarDay = React.createClass({
 	// }
 
 	propTypes: {
+		/**
+		 * Label for today's date
+		 */
 		assistiveTextToday: PropTypes.string,
 		calendarHasFocus: PropTypes.bool,
 		date: PropTypes.instanceOf(Date),
@@ -150,7 +152,7 @@ const DatepickerCalendarDay = React.createClass({
 		}
 	},
 
-	setFocus () {
+	setFocusToSelf () {
 		if (this.dayCell && this.props.calendarHasFocus) {
 			ReactDOM.findDOMNode(this.dayCell).focus();
 		}
@@ -189,7 +191,7 @@ const DatepickerCalendarDay = React.createClass({
 
 	componentDidUpdate (prevProps) {
 		if (this.props.focused && !prevProps.focused) {
-			this.setFocus();
+			this.setFocusToSelf();
 		}
 	}
 
