@@ -72,6 +72,10 @@ module.exports = React.createClass({
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
+		 * If true, constrains the menu to the scroll parent. Has no effect if `isInline` is `true`.
+		 */
+		constrainToScrollParent: PropTypes.bool,
+		/**
 		 * Disable input and calendar.
 		 */
 		disabled: PropTypes.bool,
@@ -79,6 +83,13 @@ module.exports = React.createClass({
 		 * Date formatting function
 		 */
 		formatter: PropTypes.func,
+		/**
+		 * Value of input that gets passed to `parser` prop. Set the `value` prop if using a `Date` object.
+		 */
+		formattedValue: PropTypes.string,
+		/* Prevents the dropdown from changing position based on the viewport/window. If set to true your dropdowns can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the dropdowns contents scrollable to fit the menu on the screen.
+		*/
+		hasStaticAlignment: PropTypes.bool,
 		/**
 		 * HTML id for component
 		 */
@@ -198,7 +209,8 @@ module.exports = React.createClass({
 		return {
 			isOpen: false,
 			value: this.props.value,
-			formattedValue: initDate
+			formattedValue: initDate || '',
+			inputValue: initDate || ''
 		};
 	},
 
@@ -231,14 +243,15 @@ module.exports = React.createClass({
 		return !!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
 	},
 
-	handleChange (event, { date }) {
+	handleCalendarChange (event, { date }) {
 		this.setState({
 			value: date,
-			formattedValue: this.props.formatter(date)
+			formattedValue: this.props.formatter(date),
+			inputValue: this.props.formatter(date)
 		});
 
 		if (this.props.onDateChange) {
-			this.props.onDateChange({ date, formattedDate: this.props.formatter(date) });
+			this.props.onDateChange(event, { date, formattedDate: this.props.formatter(date) });
 		}
 	},
 
@@ -305,7 +318,7 @@ module.exports = React.createClass({
 		);
 	},
 
-	focusToday () {
+	focusTodayDate () {
 		if (this.datepickerDialog) {
 			ReactDOM.findDOMNode(this.datepickerDialog).querySelector('.slds-is-selected').focus();
 		}
@@ -319,10 +332,9 @@ module.exports = React.createClass({
 					closeOnTabKey
 					constrainToScrollParent={this.props.constrainToScrollParent}
 					horizontalAlign={this.props.align}
-					inheritTargetWidth={this.props.inheritTargetWidth}
-					flippable
+					flippable={!this.props.hasStaticAlignment}
 					onClose={this.handleClose}
-					onOpen={this.focusToday}
+					onOpen={this.focusTodayDate}
 					targetElement={this.input}
 				>
 				{this.getDatePicker()}
@@ -343,7 +355,7 @@ module.exports = React.createClass({
 			isIsoWeekday={this.props.isIsoWeekday}
 			monthLabels={this.props.monthLabels}
 			onClose={this.handleClose}
-			onSelectDate={this.handleChange}
+			onSelectDate={this.handleCalendarChange}
 			ref={(component) => { this.datepickerDialog = component; }}
 			relativeYearFrom={this.props.relativeYearFrom}
 			relativeYearTo={this.props.relativeYearTo}
@@ -353,14 +365,14 @@ module.exports = React.createClass({
 		/>);
 	},
 
-	handleInputChange () {
-		const string = ReactDOM.findDOMNode(this.input).value;
+	handleInputChange (event) {
 		this.setState({
-			formattedValue: string
+			formattedValue: event.target.value,
+			inputValue: event.target.value
 		});
 
 		if (this.props.onDateChange) {
-			this.props.onDateChange({ date: this.props.parser(string), formattedDate: string });
+			this.props.onDateChange(event, { date: this.props.parser(event.target.value), formattedDate: event.target.value });
 		}
 	},
 
@@ -377,9 +389,6 @@ module.exports = React.createClass({
 					isOpen: true
 				});
 			}
-		}
-		if (this.props.onKeyDown) {
-			this.props.onKeyDown(event);
 		}
 	},
 
@@ -407,7 +416,7 @@ module.exports = React.createClass({
 			},
 			onKeyDown: this.props.children && this.props.children.props.onKeyDown || this.handleKeyDown,
 			placeholder: this.props.children && this.props.children.props.placeholder || this.props.placeholder,
-			value: this.props.children && this.props.children.props.value || this.state.formattedValue
+			value: this.props.children && this.props.children.props.value || this.state.inputValue
 		};
 
 		const clonedInput = this.props.children ? React.cloneElement(this.props.children, {

@@ -9,7 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 
-import Day from './calendar-day';
+import Day from './day';
 import { DateUtil } from '../../../utilities';
 
 const DatepickerWeek = React.createClass({

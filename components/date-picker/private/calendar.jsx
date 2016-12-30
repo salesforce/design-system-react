@@ -8,7 +8,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React, { PropTypes } from 'react';
-import Week from './calendar-week';
+import Week from './week';
 import { EventUtil, DateUtil, KEYS } from '../../../utilities';
 
 const DatepickerCalendar = React.createClass({

@@ -7,8 +7,8 @@ const Example = React.createClass({
 	render () {
 		return (
 			<Datepicker
-				onDateChange={({ date, formattedDate }) => {
-					if (this.props.log) { this.props.log('onDateChange')(date, formattedDate); }
+				onDateChange={(event, data) => {
+					if (this.props.log) { this.props.log('onDateChange')(data.date, data.formattedDate); }
 				}}
 			/>
 		);

@@ -7,32 +7,32 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import SelectYear from './year-picklist';
-import ButtonIcon from '../../icon/button-icon';
 import Button from '../../button';
-import { DateUtil, EventUtil, KEYS } from '../../../utilities';
+import { DateUtil } from '../../../utilities';
 
 const DatepickerMonthNavigation = React.createClass({
 	displayName: 'SLDSDatepickerMonthNavigation',
 
+	propTypes: {
+		/**
+		 * Label for button to go to the next month
+		 */
+		assistiveTextNextMonth: PropTypes.string.isRequired,
+		/**
+		 * Label for button to go to the previous month
+		 */
+		assistiveTextPreviousMonth: PropTypes.string.isRequired,
+		/**
+		 * Names of the months
+		 */
+		monthLabels: PropTypes.array.isRequired
+	},
+
 	getDefaultProps () {
 		return {
 			displayedDate: new Date(),
-			monthLabels: [
-				'January',
-				'February',
-				'March',
-				'April',
-				'May',
-				'June',
-				'July',
-				'August',
-				'September',
-				'October',
-				'November',
-				'December'
-			],
 			onChangeMonth (){
 				console.log('onChangeMonth should be defined');
 			}
@@ -47,12 +47,6 @@ const DatepickerMonthNavigation = React.createClass({
 	handleChange (displayedDate) {
 		if (this.props.onChange) {
 			this.props.onChange(displayedDate);
-		}
-	},
-
-	handleCancel () {
-		if (this.props.onCancel) {
-			this.props.onCancel();
 		}
 	},
 
@@ -91,7 +85,7 @@ const DatepickerMonthNavigation = React.createClass({
 				<div className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-size--3-of-4">
 					<div className="slds-align-middle">
 						<Button
-							assistiveText="Previous Month"
+							assistiveText={this.props.assistiveTextPreviousMonth}
 							iconCategory="utility"
 							iconName="left"
 							iconVariant="container"
@@ -110,7 +104,7 @@ const DatepickerMonthNavigation = React.createClass({
 					>{this.getMonthLabel()} <span className="slds-assistive-text">{this.getYearLabel()}</span></h2>
 					<div className="slds-align-middle">
 						<Button
-							assistiveText="Next Month"
+							assistiveText={this.props.assistiveTextNextMonth}
 							iconCategory="utility"
 							iconName="right"
 							iconVariant="container"

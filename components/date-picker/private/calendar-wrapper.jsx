@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { PropTypes } from 'react';
 
 import Calendar from './calendar';
-import CalendarNavigation from './calendar-navigation';
+import CalendarNavigation from './navigation';
 
 import { EventUtil, KEYS } from '../../../utilities';
 
@@ -20,8 +20,8 @@ import { EventUtil, KEYS } from '../../../utilities';
 // joining classNames together."
 import classNames from 'classnames';
 
-const SLDSDatepickerCalendarWrapper = React.createClass({
-	displayName: 'SLDSDatepickerCalendarWrapper',
+const DatepickerCalendarWrapper = React.createClass({
+	displayName: 'DatepickerCalendarWrapper',
 
 	propTypes: {
 		/**
@@ -175,4 +175,4 @@ const SLDSDatepickerCalendarWrapper = React.createClass({
 	}
 });
 
-module.exports = SLDSDatepickerCalendarWrapper;
+module.exports = DatepickerCalendarWrapper;
