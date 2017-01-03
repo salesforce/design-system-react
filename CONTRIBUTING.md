@@ -45,7 +45,7 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 - <a name="approved-slds-patterns" href="#approved-slds-patterns">#</a> **Only submit approved design system patterns.** This library should include only components which have approved patterns in Salesforce's [design system](https://www.lightningdesignsystem.com/) or the latest internal beta releases. If there is a use case from a designer that conforms to a design pattern, that component should be able to be implemented with this library.
 
-- <a name="avoid-mixins" href="#avoid-mixins">#</a> **Avoid mixins.** Instead, import and use shared code and external libraries as libraries, or use higher-order components. Do not add external dependencies unless absolutely necessary. Consider the "total cost of ownership" of all dependencies.
+- <a name="avoid-mixins" href="#avoid-mixins">#</a> **Avoid mixins.** Instead, import and use shared code and external libraries as libraries, or use higher-order components. Do not add external dependencies _to production dependencies_ list unless absolutely necessary. Consider the "total cost of ownership" of all dependencies.
 
 - <a name="avoid-css" href="#avoid-css">#</a> **Avoid inline CSS style/custom classes.** We are blessed to have a team of great CSS developers working on our design system. Use their CSS or contribute code back to them.
 
