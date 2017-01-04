@@ -80,7 +80,7 @@ const DropdownNubbinPositions = [
 /**
  * The MenuDropdown component is a variant of the Lightning Design System Menu component. This component
  * may require a polyfill such as [classList](https://github.com/yola/classlist-polyfill) due to
- * [react-onclickoutside](https://github.com/Pomax/react-onclickoutside) if Internet Explorer 11 
+ * [react-onclickoutside](https://github.com/Pomax/react-onclickoutside) if Internet Explorer 11
  * support is needed.
  */
 const MenuDropdown = React.createClass({
@@ -346,9 +346,9 @@ const MenuDropdown = React.createClass({
 	},
 
 	componentWillUnmount () {
-        if (currentOpenDropdown === this) {
-            currentOpenDropdown = undefined;
-        }
+		if (currentOpenDropdown === this) {
+			currentOpenDropdown = undefined;
+		}
 		this.isUnmounting = true;
 		this.renderOverlay(false);
 	},
@@ -601,7 +601,7 @@ const MenuDropdown = React.createClass({
 	renderDefaultMenuContent (customListProps) {
 		return (
 			<List
-				key={`${this.props.id}-dropdown-list`}
+				key={`${this.getId()}-dropdown-list`}
 				checkmark={this.props.checkmark}
 				getListItemId={this.getListItemId}
 				itemRefs={this.saveRefToListItem}
