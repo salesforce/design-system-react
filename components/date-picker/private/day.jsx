@@ -95,38 +95,20 @@ const DatepickerCalendarDay = React.createClass({
 
 	handleKeyDown (event) {
 		const fromDate = this.props.date;
+		const keyDownFunctions = {
+			[KEYS.SPACE]: () => { this.props.onSelectDate(event, { date: fromDate }); },
+			[KEYS.ENTER]: () => { this.props.onSelectDate(event, { date: fromDate }); },
+			[KEYS.ESCAPE]: () => { this.props.onRequestClose(); },
+			[KEYS.LEFT]: () => { this.props.onKeyboardNavigateToPreviousDay(fromDate); },
+			[KEYS.RIGHT]: () => { this.props.onKeyboardNavigateToNextDay(fromDate); },
+			[KEYS.UP]: () => { this.props.onKeyboardNavigateToPreviousWeek(fromDate); },
+			[KEYS.DOWN]: () => { this.props.onKeyboardNavigateToNextWeek(fromDate); }
+		};
 
 		if (event.keyCode) {
-			if (event.keyCode === KEYS.ENTER ||
-				event.keyCode === KEYS.SPACE) {
-				EventUtil.trapEvent(event);
-				if (this.props.onSelectDate) {
-					this.props.onSelectDate(event, { date: fromDate });
-				}
-			} else if (event.keyCode === KEYS.ESCAPE) {
-				EventUtil.trapEvent(event);
-				if (this.props.onRequestClose) {
-					this.props.onRequestClose();
-				}
-			} else if (event.keyCode === KEYS.TAB) {
-				// no nothing
-			} else if (event.keyCode === KEYS.RIGHT) {
-				EventUtil.trapEvent(event);
-				this.props.onKeyboardNavigateToNextDay(fromDate);
-			} else if (event.keyCode === KEYS.LEFT) {
-				EventUtil.trapEvent(event);
-				this.props.onKeyboardNavigateToPreviousDay(fromDate);
-			} else if (event.keyCode === KEYS.RIGHT) {
-				EventUtil.trapEvent(event);
-				this.props.onKeyboardNavigateToNextDay(fromDate);
-			} else if (event.keyCode === KEYS.UP) {
-				EventUtil.trapEvent(event);
-				this.props.onKeyboardNavigateToPreviousWeek(fromDate);
-			} else if (event.keyCode === KEYS.DOWN) {
-				EventUtil.trapEvent(event);
-				this.props.onKeyboardNavigateToNextWeek(fromDate);
-			} else {
-				EventUtil.trapEvent(event);
+			EventUtil.trapEvent(event);
+			if (keyDownFunctions[event.keyCode]) {
+				keyDownFunctions[event.keyCode]();
 			}
 		}
 	},
