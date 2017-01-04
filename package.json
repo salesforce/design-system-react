@@ -20,15 +20,19 @@
     "publish-to-upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
     "release-patch": "npm --no-git-tag-version version patch && npm run publish-to-upstream",
     "release-minor": "npm --no-git-tag-version version minor && npm run publish-to-upstream",
+    "snapshot-test": "jest",
     "start": "start-storybook -p 9001 -s ./node_modules & node tests/app",
     "storybook": "start-storybook -p 9001 -s ./node_modules",
-    "test": "scripts/test.sh --single-run",
+    "test": "scripts/test.sh",
     "validate": "npm ls",
     "version": "git add package.json && git commit -m \"Bump package version\""
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/salesforce-ux/design-system-react"
+  },
+  "jest": {
+    "testRegex": "\/tests\/.*\\.snapshot-test\\.jsx?$"
   },
   "keywords": [
     "react",
@@ -105,6 +109,7 @@
     "fs-extra": "^0.30.0",
     "isparta-loader": "^2.0.0",
     "istanbul": "^1.0.0-alpha.2",
+    "jest": "^18.1.0",
     "json-loader": "^0.5.3",
     "karma": "^1.3.0",
     "karma-chai-sinon": "^0.1.5",
@@ -126,6 +131,7 @@
     "react-addons-test-utils": ">=0.14.7",
     "react-dom": ">=0.14.7",
     "react-hot-loader": "^1.2.7",
+    "react-test-renderer": "^15.4.1",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
     "string-replace-webpack-plugin": "^0.0.4",
