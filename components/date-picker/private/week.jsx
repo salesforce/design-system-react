@@ -19,25 +19,66 @@ const DatepickerWeek = React.createClass({
 		/**
 		 * Label for today's date
 		 */
-		assistiveTextToday: PropTypes.string
+		assistiveTextToday: PropTypes.string,
+		/**
+     * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
+     */
+		initialDateForCalendarRender: PropTypes.instanceOf(Date).isRequired,
+		/**
+     * Is true if calendar day has focus.
+     */
+		calendarHasFocus: PropTypes.bool,
+		/**
+     * First day of week.
+     */
+		firstDayOfWeek: PropTypes.instanceOf(Date).isRequired,
+		/**
+     * Date that has focus.
+     */
+		focusedDate: PropTypes.instanceOf(Date).isRequired,
+		/**
+		 * For keyboard navigation. Changes the focus to the same day in the next week on the calendar. Triggered when down arrow button is pressed.
+		 */
+		onNextWeek: PropTypes.func.isRequired,
+		/**
+		 * For keyboard navigation. Changes the focus to the next day on the calendar. Triggered when right arrow button is pressed.
+		 */
+		onNextDay: PropTypes.func.isRequired,
+		/**
+		 * For keyboard navigation. Changes the focus to the previous day on the calendar. Triggered when left arrow button is pressed.
+		 */
+		onPreviousDay: PropTypes.func.isRequired,
+		/**
+		 * For keyboard navigation. Changes the focus to the same day in the previous week on the calendar. Triggered when up arrow button is pressed.
+		 */
+		onPreviousWeek: PropTypes.func.isRequired,
+		/**
+		 * Triggered when the calendar is cancelled.
+		 */
+		onRequestClose: PropTypes.func.isRequired,
+		/**
+		 * Triggered when a date on the calendar is clicked.
+		 */
+		onSelectDate: PropTypes.func,
+		/**
+		 * Currently selected date. This should be present in the input field.
+		 */
+		selectedDate: PropTypes.instanceOf(Date).isRequired,
+		/**
+		 * Label of shortcut to jump to today within the calendar. Also used for assistive text for the current day.
+		 */
+		todayLabel: PropTypes.string.isRequired
 	},
 
-	getDefaultProps () {
-		return {
-			displayedDate: new Date(),
-			selectedDate: new Date()
-		};
-	},
-
-	handleCancel () {
-		if (this.props.onCancel) {
-			this.props.onCancel();
+	handleRequestClose () {
+		if (this.props.onRequestClose) {
+			this.props.onRequestClose();
 		}
 	},
 
-	handlePrevDay (date) {
-		if (this.props.onPrevDay) {
-			this.props.onPrevDay(date);
+	handlePreviousDay (date) {
+		if (this.props.onPreviousDay) {
+			this.props.onPreviousDay(date);
 		}
 	},
 
@@ -47,9 +88,9 @@ const DatepickerWeek = React.createClass({
 		}
 	},
 
-	handlePrevWeek (date) {
-		if (this.props.onPrevWeek) {
-			this.props.onPrevWeek(date);
+	handlePreviousWeek (date) {
+		if (this.props.onPreviousWeek) {
+			this.props.onPreviousWeek(date);
 		}
 	},
 
@@ -61,25 +102,24 @@ const DatepickerWeek = React.createClass({
 
 	render () {
 		let days = [];
-		let date = this.props.date;
+		let date = this.props.firstDayOfWeek;
 
 		for (let i = 0; i < 7; i++) {
 			days.push(<Day
-				assistiveTextToday={this.props.assistiveTextToday}
-				key={date.toString()}
+				calendarHasFocus={this.props.calendarHasFocus}
 				date={date}
-				month={this.props.month}
 				selectedDate={this.props.selectedDate}
 				onSelectDate={this.props.onSelectDate}
-				displayedDate={this.props.displayedDate}
-				highlightedDate={this.props.highlightedDate}
-				focused={this.props.calendarHasFocus && DateUtil.isSameDay(this.props.highlightedDate, date)}
-				calendarHasFocus={this.props.calendarHasFocus}
-				onPrevDay={this.handlePrevDay}
+				initialDateForCalendarRender={this.props.initialDateForCalendarRender}
+				focusedDate={this.props.focusedDate}
+				focused={this.props.calendarHasFocus && DateUtil.isSameDay(this.props.focusedDate, date)}
+				key={date.toString()}
 				onNextDay={this.handleNextDay}
-				onPrevWeek={this.handlePrevWeek}
 				onNextWeek={this.handleNextWeek}
-				onCancel={this.handleCancel}
+				onPreviousDay={this.handlePreviousDay}
+				onPreviousWeek={this.handlePreviousWeek}
+				onRequestClose={this.handleRequestClose}
+				todayLabel={this.props.todayLabel}
 			/>);
 			date = DateUtil.addDays(date, 1);
 		}
