@@ -25,7 +25,7 @@ const DatepickerCalendarDay = React.createClass({
 		/**
 		 * If elements within the calendar have focus. This is helpful for keyboard event trapping.
 		 */
-		calendarHasFocus: PropTypes.bool,
+		calendarHasFocus: PropTypes.bool.isRequired,
 		/**
 		 * Date of day
 		 */
@@ -72,12 +72,6 @@ const DatepickerCalendarDay = React.createClass({
 		todayLabel: PropTypes.string.isRequired
 	},
 
-	getDefaultProps () {
-		return {
-			calendarHasFocus: false
-		};
-	},
-
 	componentDidUpdate (prevProps) {
 		if (this.props.focused && !prevProps.focused) {
 			this.setFocusToSelf();
@@ -95,10 +89,11 @@ const DatepickerCalendarDay = React.createClass({
 
 	handleKeyDown (event) {
 		const fromDate = this.props.date;
-		const keyDownFunctions = {
+		const keyDownCallbacks = {
 			[KEYS.SPACE]: () => { this.props.onSelectDate(event, { date: fromDate }); },
 			[KEYS.ENTER]: () => { this.props.onSelectDate(event, { date: fromDate }); },
 			[KEYS.ESCAPE]: () => { this.props.onRequestClose(); },
+			[KEYS.TAB]: () => { this.props.onRequestClose(); },
 			[KEYS.LEFT]: () => { this.props.onKeyboardNavigateToPreviousDay(fromDate); },
 			[KEYS.RIGHT]: () => { this.props.onKeyboardNavigateToNextDay(fromDate); },
 			[KEYS.UP]: () => { this.props.onKeyboardNavigateToPreviousWeek(fromDate); },
@@ -107,8 +102,8 @@ const DatepickerCalendarDay = React.createClass({
 
 		if (event.keyCode) {
 			EventUtil.trapEvent(event);
-			if (keyDownFunctions[event.keyCode]) {
-				keyDownFunctions[event.keyCode]();
+			if (keyDownCallbacks[event.keyCode]) {
+				keyDownCallbacks[event.keyCode]();
 			}
 		}
 	},

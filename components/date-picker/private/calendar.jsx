@@ -56,7 +56,7 @@ const DatepickerCalendar = React.createClass({
 	getInitialState () {
 		return {
 			focusedDate: DateUtil.firstDayOfMonth(this.props.initialDateForCalendarRender),
-			hasFocus: true,
+			calendarHasFocus: true,
 			todayFocus: false
 		};
 	},
@@ -235,7 +235,7 @@ const DatepickerCalendar = React.createClass({
 				onKeyboardNavigateToNextDay={this.handleNextDay}
 				onKeyboardNavigateToPreviousWeek={this.handlePreviousWeek}
 				onKeyboardNavigateToNextWeek={this.handleNextWeek}
-				calendarHasFocus={this.state.hasFocus}
+				calendarHasFocus={this.state.calendarHasFocus}
 				onRequestClose={this.handleRequestClose}
 				todayLabel={this.props.todayLabel}
 			/>);
