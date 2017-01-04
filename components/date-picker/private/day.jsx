@@ -21,59 +21,67 @@ import classNames from 'classnames';
 const DatepickerCalendarDay = React.createClass({
 	displayName: 'SLDSDatepickerCalendarDay',
 
-	// onSelectDate (date) {
-	// 	console.log('onSelectDate should be defined ',date);
-	// },
-
-	// onClick (index) {
-	// 	console.log('onClick should be defined ',index);
-	// },
-
-	// onMoveFocus (delta){
-	// 	console.log('onMoveFocus should be defined ',delta);
-	// },
-
-	// onBlur (relatedTarget){
-	// 	console.log('onBlur should be defined ',relatedTarget);
-	// },
-
-	// onFocus (index, height) {
-	// 	console.log('onFocus should be defined ',index,height);
-	// },
-
-	// onCancel () {
-	// 	console.log('onCancel should be defined');
-	// }
-
 	propTypes: {
 		/**
-		 * Label for today's date
+		 * If elements within the calendar have focus. This is helpful for keyboard event trapping.
 		 */
-		assistiveTextToday: PropTypes.string,
 		calendarHasFocus: PropTypes.bool,
+		/**
+		 * Date of day
+		 */
 		date: PropTypes.instanceOf(Date),
-		displayedDate: PropTypes.instanceOf(Date),
+		/**
+     * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
+     */
+		initialDateForCalendarRender: PropTypes.instanceOf(Date).isRequired,
+		/**
+		 * Set if this day is to focused.
+		 */
 		focused: PropTypes.bool,
-		onBlur: PropTypes.func,
-		onCancel: PropTypes.func.isRequired,
-		onClick: PropTypes.func,
-		onFocus: PropTypes.func,
-		onMoveFocus: PropTypes.func,
-		onPrevDay: PropTypes.func,
-		onPrevWeek: PropTypes.func,
-		onNextDay: PropTypes.func,
-		onNextWeek: PropTypes.func,
+		/**
+		 * For keyboard navigation. Changes the focus to the same day in the next week on the calendar. Triggered when down arrow button is pressed.
+		 */
+		onNextWeek: PropTypes.func.isRequired,
+		/**
+		 * For keyboard navigation. Changes the focus to the next day on the calendar. Triggered when right arrow button is pressed.
+		 */
+		onNextDay: PropTypes.func.isRequired,
+		/**
+		 * For keyboard navigation. Changes the focus to the previous day on the calendar. Triggered when left arrow button is pressed.
+		 */
+		onPreviousDay: PropTypes.func.isRequired,
+		/**
+		 * For keyboard navigation. Changes the focus to the same day in the previous week on the calendar. Triggered when up arrow button is pressed.
+		 */
+		onPreviousWeek: PropTypes.func.isRequired,
+		/**
+		 * Triggered when the calendar is cancelled.
+		 */
+		onRequestClose: PropTypes.func.isRequired,
+		/**
+		 * Triggered when a date on the calendar is clicked.
+		 */
 		onSelectDate: PropTypes.func.isRequired,
-		selectedDate: PropTypes.instanceOf(Date)
+		/**
+		 * Currently selected date. This should be present in the input field.
+		 */
+		selectedDate: PropTypes.instanceOf(Date),
+		/**
+		 * Label of shortcut to jump to today within the calendar. Also used for assistive text for the current day.
+		 */
+		todayLabel: PropTypes.string.isRequired
 	},
 
 	getDefaultProps () {
 		return {
-			assistiveTextToday: 'Today',
-			displayedDate: new Date(),
-			selectedDate: new Date(),
 			calendarHasFocus: false
 		};
+	},
+
+	componentDidUpdate (prevProps) {
+		if (this.props.focused && !prevProps.focused) {
+			this.setFocusToSelf();
+		}
 	},
 
 	handleClick (event) {
@@ -85,9 +93,9 @@ const DatepickerCalendarDay = React.createClass({
 		}
 	},
 
-	handleToPrevDay () {
-		if (this.props.onPrevDay) {
-			this.props.onPrevDay(this.props.date);
+	handleToPreviousDay () {
+		if (this.props.onPreviousDay) {
+			this.props.onPreviousDay(this.props.date);
 		}
 	},
 
@@ -97,9 +105,9 @@ const DatepickerCalendarDay = React.createClass({
 		}
 	},
 
-	handleToPrevWeek () {
-		if (this.props.onPrevWeek) {
-			this.props.onPrevWeek(this.props.date);
+	handleToPreviousWeek () {
+		if (this.props.onPreviousWeek) {
+			this.props.onPreviousWeek(this.props.date);
 		}
 	},
 
@@ -119,30 +127,23 @@ const DatepickerCalendarDay = React.createClass({
 				}
 			} else if (event.keyCode === KEYS.ESCAPE) {
 				EventUtil.trapEvent(event);
-				if (this.props.onCancel) {
-					this.props.onCancel();
+				if (this.props.onRequestClose) {
+					this.props.onRequestClose();
 				}
 			} else if (event.keyCode === KEYS.TAB) {
-/*
-				if(!event.shiftKey){
-					EventUtil.trapEvent(event);
-					if(this.props.onCancel){
-						this.props.onCancel();
-					}
-				}
-*/
+				// no nothing
 			} else if (event.keyCode === KEYS.RIGHT) {
 				EventUtil.trapEvent(event);
 				this.handleToNextDay();
 			} else if (event.keyCode === KEYS.LEFT) {
 				EventUtil.trapEvent(event);
-				this.handleToPrevDay();
+				this.handleToPreviousDay();
 			} else if (event.keyCode === KEYS.RIGHT) {
 				EventUtil.trapEvent(event);
 				this.handleToNextDay();
 			} else if (event.keyCode === KEYS.UP) {
 				EventUtil.trapEvent(event);
-				this.handleToPrevWeek();
+				this.handleToPreviousWeek();
 			} else if (event.keyCode === KEYS.DOWN) {
 				EventUtil.trapEvent(event);
 				this.handleToNextWeek();
@@ -159,7 +160,7 @@ const DatepickerCalendarDay = React.createClass({
 	},
 
 	render () {
-		const isCurrentMonth = DateUtil.isSameMonth(this.props.date, this.props.displayedDate);
+		const isCurrentMonth = DateUtil.isSameMonth(this.props.date, this.props.initialDateForCalendarRender);
 		const isToday = DateUtil.isToday(this.props.date);
 		const isSelectedDay = DateUtil.isSameDay(this.props.date, this.props.selectedDate);
 		const isFirstDayOfMonth = DateUtil.isFirstDayOfMonth(this.props.date);
@@ -181,18 +182,12 @@ const DatepickerCalendarDay = React.createClass({
 			>
 				<span className="slds-day">
 					{isToday
-						? <span className="slds-assistive-text">{this.props.assistiveTextToday}: </span>
+						? <span className="slds-assistive-text">{this.props.todayLabel}: </span>
 						: null}
 					{this.props.date.getDate()}
 				</span>
 			</td>
 		);
-	},
-
-	componentDidUpdate (prevProps) {
-		if (this.props.focused && !prevProps.focused) {
-			this.setFocusToSelf();
-		}
 	}
 
 });
