@@ -8,7 +8,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React, { PropTypes } from 'react';
-import SelectYear from './year-picklist';
+import YearPicklist from './year-picklist';
 import Button from '../../button';
 import { DateUtil } from '../../../utilities';
 
@@ -25,18 +25,25 @@ const DatepickerMonthNavigation = React.createClass({
 		 */
 		assistiveTextPreviousMonth: PropTypes.string.isRequired,
 		/**
+     * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
+     */
+		initialDateForCalendarRender: PropTypes.instanceOf(Date).isRequired,
+		/**
+		 * Displayed calendar has changed or re-rendered
+		 */
+		onChangeMonth: PropTypes.func.isRequired,
+		/**
 		 * Names of the months
 		 */
-		monthLabels: PropTypes.array.isRequired
-	},
-
-	getDefaultProps () {
-		return {
-			displayedDate: new Date(),
-			onChangeMonth (){
-				console.log('onChangeMonth should be defined');
-			}
-		};
+		monthLabels: PropTypes.array.isRequired,
+		/**
+		 * Offset of year from current year that can be selected in the year selection dropdown. (2017 - 5 = 2012).
+		 */
+		relativeYearFrom: PropTypes.number,
+		/**
+		 * Offset of year from current year that can be selected in the year selection dropdown. (2017 + 5 = 2012).
+		 */
+		relativeYearTo: PropTypes.number
 	},
 
 	handleClick (event) {
@@ -44,45 +51,30 @@ const DatepickerMonthNavigation = React.createClass({
 		event.stopPropagation();
 	},
 
-	handleChange (displayedDate) {
-		if (this.props.onChange) {
-			this.props.onChange(displayedDate);
-		}
+	previousMonthClicked () {
+		this.props.onChangeMonth(DateUtil.addMonths(this.props.initialDateForCalendarRender, -1));
 	},
 
-	previousMonth () {
-		if (this.props.displayedDate && this.handleChange) {
-			this.handleChange(DateUtil.addMonths(this.props.displayedDate, -1));
-		}
+	nextMonthClicked () {
+		this.props.onChangeMonth(DateUtil.addMonths(this.props.initialDateForCalendarRender, 1));
 	},
 
-	componentDidMount () {
-	},
-
-	nextMonth () {
-		if (this.props.displayedDate && this.handleChange) {
-			this.handleChange(DateUtil.addMonths(this.props.displayedDate, 1));
-		}
-	},
-
-	handleYearSelect (displayedDate) {
-		if (this.props.onChange) {
-			this.props.onChange(displayedDate);
-		}
+	handleYearSelect (initialDateForCalendarRender) {
+		this.props.onChangeMonth(initialDateForCalendarRender);
 	},
 
 	getMonthLabel () {
-		return this.props.monthLabels[new Date(this.props.displayedDate).getMonth()];
+		return this.props.monthLabels[new Date(this.props.initialDateForCalendarRender).getMonth()];
 	},
 
 	getYearLabel () {
-		return new Date(this.props.displayedDate).getFullYear();
+		return new Date(this.props.initialDateForCalendarRender).getFullYear();
 	},
 
 	render () {
 		return (
 			<div className="slds-datepicker__filter slds-grid">
-				<div className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-size--3-of-4">
+				<div className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow">
 					<div className="slds-align-middle">
 						<Button
 							assistiveText={this.props.assistiveTextPreviousMonth}
@@ -90,7 +82,7 @@ const DatepickerMonthNavigation = React.createClass({
 							iconName="left"
 							iconVariant="container"
 							onKeyDown={this.handleKeyDown}
-							onClick={this.previousMonth}
+							onClick={this.previousMonthClicked}
 							ref="prevMonth"
 							variant="icon"
 						/>
@@ -108,22 +100,19 @@ const DatepickerMonthNavigation = React.createClass({
 							iconCategory="utility"
 							iconName="right"
 							iconVariant="container"
-							onClick={this.nextMonth}
+							onClick={this.nextMonthClicked}
 							ref="nextMonth"
 							variant="icon"
 						/>
 					</div>
 				</div>
-				<div className="slds-picklist slds-picklist--fluid slds-shrink-none">
-					<SelectYear
-						displayedDate={this.props.displayedDate}
-						relativeYearFrom={this.props.relativeYearFrom}
-						relativeYearTo={this.props.relativeYearTo}
-						onChange={this.handleYearSelect}
-					/>
-				</div>
+				<YearPicklist
+					initialDateForCalendarRender={this.props.initialDateForCalendarRender}
+					onChangeMonth={this.handleYearSelect}
+					relativeYearFrom={this.props.relativeYearFrom}
+					relativeYearTo={this.props.relativeYearTo}
+				/>
 			</div>
-
 		);
 	}
 });

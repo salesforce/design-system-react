@@ -7,21 +7,29 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import MenuPicklist from '../../menu-picklist';
 
 const DatepickerYearSelector = React.createClass({
 	displayName: 'SLDSDatepickerYearSelector',
 
-	getDefaultProps () {
-		return {
-			displayedDate: new Date(),
-			relativeYearFrom: -5,
-			relativeYearTo: 5,
-			onChange (displayedDate) {
-				console.log('onChange should be defined: ', displayedDate);
-			}
-		};
+	propTypes: {
+		/**
+     * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
+     */
+		initialDateForCalendarRender: PropTypes.instanceOf(Date).isRequired,
+		/**
+		 * Displayed calendar has changed or re-rendered
+		 */
+		onChangeMonth: PropTypes.func.isRequired,
+		/**
+		 * Offset of year from current year that can be selected in the year selection dropdown. (2017 - 5 = 2012).
+		 */
+		relativeYearFrom: PropTypes.number,
+		/**
+		 * Offset of year from current year that can be selected in the year selection dropdown. (2017 + 5 = 2012).
+		 */
+		relativeYearTo: PropTypes.number
 	},
 
 	getOptions () {
@@ -38,9 +46,7 @@ const DatepickerYearSelector = React.createClass({
 
 	handleSelect (selectedValue) {
 		if (selectedValue) {
-			if (this.props.onChange) {
-				this.props.onChange(new Date(this.props.displayedDate.setFullYear(parseInt(selectedValue.value, 10))));
-			}
+			this.props.onChangeMonth(new Date(this.props.initialDateForCalendarRender.setFullYear(parseInt(selectedValue.value, 10))));
 		}
 	},
 
@@ -56,7 +62,7 @@ const DatepickerYearSelector = React.createClass({
 					onSelect={this.handleSelect}
 					options={this.getOptions()}
 					placeholder="Year"
-					value={this.props.displayedDate.getFullYear()}
+					value={this.props.initialDateForCalendarRender.getFullYear()}
 				/>
 			</div>
 		);
