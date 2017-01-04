@@ -16,34 +16,60 @@ const DatepickerCalendar = React.createClass({
 
 	propTypes: {
 		/**
-		 * Label for today's date
+		 * Three letter abbreviations of the days of the week, starting on Sunday.
 		 */
-		assistiveTextToday: PropTypes.string,
-		abbrWeekDayLabels: PropTypes.array.isRequired,
+		abbreviatedWeekDayLabels: PropTypes.array.isRequired,
+		/**
+     * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
+     */
+		initialDateForCalendarRender: PropTypes.instanceOf(Date).isRequired,
+		/**
+		 * Makes Monday the first day of the week
+		 */
+		isIsoWeekday: PropTypes.bool,
+		/**
+		 * Displayed calendar has changed or re-rendered
+		 */
+		onChangeMonth: PropTypes.func,
+		/**
+		 * Triggered when the calendar is cancelled.
+		 */
+		onRequestClose: PropTypes.func.isRequired,
+		/**
+		 * Triggered when a date on the calendar is clicked.
+		 */
+		onSelectDate: PropTypes.func.isRequired,
+		/**
+		 * Currently selected date. This should be present in the input field.
+		 */
+		selectedDate: PropTypes.instanceOf(Date),
+		/**
+		 * Label of shortcut to jump to today within the calendar. This is also used for assistive text on today's date.
+		 */
+		todayLabel: PropTypes.string.isRequired,
+		/**
+		 * Names of the seven days of the week, starting on Sunday.
+		 */
 		weekDayLabels: PropTypes.array.isRequired
-	},
-
-	getDefaultProps () {
-		return {
-			displayedDate: new Date(),
-			selectedDate: new Date()
-			// onSelectDate (date) {
-			// 	console.log('onSelectDate should be defined ',date);
-			// },
-
-			// onCancel () {
-			// 	console.log('onCancel should be defined');
-			// }
-
-		};
 	},
 
 	getInitialState () {
 		return {
-			highlightedDate: DateUtil.firstDayOfMonth(this.props.displayedDate),
+			focusedDate: DateUtil.firstDayOfMonth(this.props.initialDateForCalendarRender),
 			hasFocus: true,
 			todayFocus: false
 		};
+	},
+
+	componentDidUpdate (prevProps) {
+		this.setFocusedDate(prevProps);
+	},
+
+	setFocusedDate (prevProps) {
+		// Set prop that sets focus in child component once it is rendered. This occurs when the month DOM has changed. This will trigger a re-render, but no DOM change will occur, just a DOM focus.
+		if (!DateUtil.isEqual(this.props.initialDateForCalendarRender, prevProps.initialDateForCalendarRender)) {
+			this.setState({ focusedDate: this.props.initialDateForCalendarRender });
+		}
 	},
 
 	handleSelectDate (event, { date }) {
@@ -51,24 +77,24 @@ const DatepickerCalendar = React.createClass({
 		this.props.onSelectDate(event, { date });
 	},
 
-	handleCancel () {
-		if (this.props.onCancel) {
-			this.props.onCancel();
+	handleRequestClose () {
+		if (this.props.onRequestClose) {
+			this.props.onRequestClose();
 		}
 	},
 
 	handleChangeDisplayedDate (date) {
-		if (this.props.onChange) {
-			this.props.onChange(date);
+		if (this.props.onChangeMonth) {
+			this.props.onChangeMonth(date);
 		}
 	},
 
-	handlePrevDay (date) {
+	handlePreviousDay (date) {
 		const prevDate = DateUtil.addDays(date, -1);
 		if (!DateUtil.isSameMonth(prevDate, date)) {
 			this.handleChangeDisplayedDate(prevDate);
 		} else {
-			this.setState({ highlightedDate: prevDate });
+			this.setState({ focusedDate: prevDate });
 		}
 	},
 
@@ -77,16 +103,16 @@ const DatepickerCalendar = React.createClass({
 		if (!DateUtil.isSameMonth(nextDate, date)) {
 			this.handleChangeDisplayedDate(nextDate);
 		} else {
-			this.setState({ highlightedDate: nextDate });
+			this.setState({ focusedDate: nextDate });
 		}
 	},
 
-	handlePrevWeek (date) {
+	handlePreviousWeek (date) {
 		const prevDate = DateUtil.addDays(date, -7);
 		if (!DateUtil.isSameMonth(prevDate, date)) {
 			this.handleChangeDisplayedDate(prevDate);
 		} else {
-			this.setState({ highlightedDate: prevDate });
+			this.setState({ focusedDate: prevDate });
 		}
 	},
 
@@ -95,18 +121,8 @@ const DatepickerCalendar = React.createClass({
 		if (!DateUtil.isSameMonth(nextDate, date)) {
 			this.handleChangeDisplayedDate(nextDate);
 		} else {
-			this.setState({ highlightedDate: nextDate });
+			this.setState({ focusedDate: nextDate });
 		}
-	},
-
-	handleFocus () {
-		if (!this.state.todayFocus) {
-			this.setState({ hasFocus: true });
-		}
-	},
-
-	handleBlur () {
-		this.setState({ hasFocus: false });
 	},
 
 	handleTodayFocus () {
@@ -122,8 +138,8 @@ const DatepickerCalendar = React.createClass({
 			if (event.keyCode === KEYS.TAB) {
 				if (!event.shiftKey) {
 					EventUtil.trapEvent(event);
-					if (this.props.onCancel) {
-						this.props.onCancel();
+					if (this.props.onRequestClose) {
+						this.props.onRequestClose();
 					}
 				}
 			}
@@ -133,77 +149,71 @@ const DatepickerCalendar = React.createClass({
 	render () {
 		const sunday = (
 			<th ref="Sunday">
-				<abbr title={this.props.weekDayLabels[0]}>{this.props.abbrWeekDayLabels[0]}</abbr>
+				<abbr title={this.props.weekDayLabels[0]}>{this.props.abbreviatedWeekDayLabels[0]}</abbr>
 			</th>
 		);
 
 		return (
 			<div
 				className="Calendar"
-				onFocus={this.handleFocus}
-				onBlur={this.handleBlur}
 			>
 				<table className="datepicker__month" role="grid" aria-labelledby="month">
 					<thead>
 						<tr ref="weekdays">
 						{this.props.isIsoWeekday ? null : sunday}
 							<th ref="Monday" scope="col">
-								<abbr title={this.props.weekDayLabels[1]}>{this.props.abbrWeekDayLabels[1]}</abbr>
+								<abbr title={this.props.weekDayLabels[1]}>{this.props.abbreviatedWeekDayLabels[1]}</abbr>
 							</th>
 							<th ref="Tuesday" scope="col">
-								<abbr title={this.props.weekDayLabels[2]}>{this.props.abbrWeekDayLabels[2]}</abbr>
+								<abbr title={this.props.weekDayLabels[2]}>{this.props.abbreviatedWeekDayLabels[2]}</abbr>
 							</th>
 							<th ref="Wednesday" scope="col">
-								<abbr title={this.props.weekDayLabels[3]}>{this.props.abbrWeekDayLabels[3]}</abbr>
+								<abbr title={this.props.weekDayLabels[3]}>{this.props.abbreviatedWeekDayLabels[3]}</abbr>
 							</th>
 							<th ref="Thursday" scope="col">
-								<abbr title={this.props.weekDayLabels[4]}>{this.props.abbrWeekDayLabels[4]}</abbr>
+								<abbr title={this.props.weekDayLabels[4]}>{this.props.abbreviatedWeekDayLabels[4]}</abbr>
 							</th>
 							<th ref="Friday" scope="col">
-								<abbr title={this.props.weekDayLabels[5]}>{this.props.abbrWeekDayLabels[5]}</abbr>
+								<abbr title={this.props.weekDayLabels[5]}>{this.props.abbreviatedWeekDayLabels[5]}</abbr>
 							</th>
 							<th ref="Saturday" scope="col">
-								<abbr title={this.props.weekDayLabels[6]}>{this.props.abbrWeekDayLabels[6]}</abbr>
+								<abbr title={this.props.weekDayLabels[6]}>{this.props.abbreviatedWeekDayLabels[6]}</abbr>
 							</th>
 							{this.props.isIsoWeekday && sunday}
 						</tr>
 					</thead>
 					<tbody>
+
 						{this.renderWeeks()}
-						{this.renderToday()}
+
+						<tr>
+							<td
+								colSpan="7"
+								role="gridcell"
+							>
+								<a
+									href="javascript:void(0)"	// eslint-disable-line no-script-url
+									// onFocus={this.handleTodayFocus}
+									onBlur={this.handleTodayBlur}
+									tabIndex="0"
+									onKeyDown={this.handleKeyDown}
+									className="slds-show--inline-block slds-p-bottom--x-small"
+									onClick={(event) => { this.handleSelectDate(event, { date: new Date() }); }}
+								>
+									{this.props.todayLabel}
+								</a>
+							</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>
 		);
 	},
 
-	renderToday () {
-		return (
-			<tr>
-				<td
-					colSpan="7"
-					role="gridcell"
-				>
-					<a
-						href="javascript:void(0)"
-						// onFocus={this.handleTodayFocus}
-						onBlur={this.handleTodayBlur}
-						tabIndex="0"
-						onKeyDown={this.handleKeyDown}
-						className="slds-show--inline-block slds-p-bottom--x-small"
-						onClick={(event) => { this.handleSelectDate(event, { date: new Date() }); }}
-					>
-						{this.props.todayLabel}
-					</a>
-				</td>
-			</tr>
-		);
-	},
-
 	renderWeeks () {
 		const firstDayOfWeekOffset = this.props.isIsoWeekday ? 1 : 0;
 
-		const firstDayOfMonth = DateUtil.firstDayOfMonth(this.props.displayedDate);
+		const firstDayOfMonth = DateUtil.firstDayOfMonth(this.props.initialDateForCalendarRender);
 
 		let firstDayOfWeek;
 		if (firstDayOfMonth.getDay() > firstDayOfWeekOffset) {
@@ -221,20 +231,19 @@ const DatepickerCalendar = React.createClass({
 
 		while (!done) {
 			weeks.push(<Week
-				assistiveTextToday={this.props.assistiveTextToday}
 				key={firstDayOfWeek.toString()}
-				date={firstDayOfWeek}
-				month={this.props.month}
+				firstDayOfWeek={firstDayOfWeek}
 				onSelectDate={this.handleSelectDate}
 				selectedDate={this.props.selectedDate}
-				displayedDate={this.props.displayedDate}
-				highlightedDate={this.state.highlightedDate}
-				onPrevDay={this.handlePrevDay}
+				initialDateForCalendarRender={this.props.initialDateForCalendarRender}
+				focusedDate={this.state.focusedDate}
+				onPreviousDay={this.handlePreviousDay}
 				onNextDay={this.handleNextDay}
-				onPrevWeek={this.handlePrevWeek}
+				onPreviousWeek={this.handlePreviousWeek}
 				onNextWeek={this.handleNextWeek}
 				calendarHasFocus={this.state.hasFocus}
-				onCancel={this.handleCancel}
+				onRequestClose={this.handleRequestClose}
+				todayLabel={this.props.todayLabel}
 			/>);
 
 			// create new weeks
@@ -242,10 +251,10 @@ const DatepickerCalendar = React.createClass({
 			done = count++ > 2 && monthIndex !== firstDayOfWeek.getMonth();
 			monthIndex = firstDayOfWeek.getMonth();
 		}
-		let extra = 0;
+		let extraWeeks = 0;
 		while (weeks.length < 6) {
-			extra = extra + 1;
-			weeks.push(<tr key={`extra_${extra}`} className="week">
+			extraWeeks = extraWeeks + 1;
+			weeks.push(<tr key={`extra_${extraWeeks}`} className="week">
 				<td aria-disabled="true" aria-selected="false" className="slds-disabled-text">
 					<span className="slds-day ">&nbsp;</span>
 				</td>
@@ -253,14 +262,7 @@ const DatepickerCalendar = React.createClass({
 		}
 
 		return weeks;
-	},
-
-	componentDidUpdate (prevProps) {
-		if (!DateUtil.isEqual(this.props.displayedDate, prevProps.displayedDate)) {
-			this.setState({ highlightedDate: this.props.displayedDate });
-		}
 	}
-
 });
 
 module.exports = DatepickerCalendar;
