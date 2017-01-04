@@ -295,7 +295,7 @@ module.exports = React.createClass({
 
 	parseDate (formattedValue) {
 		let parsedDate = this.props.parser(formattedValue);
-		if (Object.prototype.toString.call(parsedDate) === '[object Date]'
+		if (Object.prototype.toString.call(parsedDate) !== '[object Date]'
 			|| isNaN(parsedDate.getTime())) {
 			parsedDate = new Date();
 		}
@@ -386,18 +386,12 @@ module.exports = React.createClass({
 	},
 
 	handleKeyDown (event) {
-		if (event.keyCode) {
-			const isShift = !!event.shiftKey;
-			if (!isShift && (event.keyCode === KEYS.ENTER ||
-						// event.keyCode === KEYS.SPACE ||
-						event.keyCode === KEYS.DOWN ||
-						event.keyCode === KEYS.UP)) {
-				EventUtil.trapEvent(event);
-
-				this.setState({
-					isOpen: true
-				});
-			}
+		// Don't open if user is selecting text
+		if (event.keyCode
+				&& !event.shiftKey
+				&& (event.keyCode === KEYS.DOWN || event.keyCode === KEYS.UP)) {
+			EventUtil.trapEvent(event);
+			this.setState({ isOpen: true });
 		}
 	},
 

@@ -59,7 +59,7 @@ const DatepickerWeek = React.createClass({
 		/**
 		 * Triggered when a date on the calendar is clicked.
 		 */
-		onSelectDate: PropTypes.func,
+		onSelectDate: PropTypes.func.isRequired,
 		/**
 		 * Currently selected date. This should be present in the input field.
 		 */
@@ -72,8 +72,6 @@ const DatepickerWeek = React.createClass({
 
 
 	render () {
-		console.log(this.props.onKeyboardNavigateToPreviousWeek);
-
 		let days = [];
 		let date = this.props.firstDayOfWeek;
 
