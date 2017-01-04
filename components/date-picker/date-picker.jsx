@@ -44,11 +44,15 @@ module.exports = React.createClass({
 
 	propTypes: {
 		/**
+		 * Three letter abbreviations of the days of the week, starting on Sunday.
+		 */
+		abbreviatedWeekDayLabels: PropTypes.array,
+		/**
 		 * Label for button to go to the next month
 		 */
 		assistiveTextNextMonth: PropTypes.string,
 		/**
-		 * Text for the calendar trigger
+		 * Call to action label for calendar dialog trigger
 		 */
 		assistiveTextOpenCalendar: PropTypes.string,
 		/**
@@ -56,19 +60,11 @@ module.exports = React.createClass({
 		 */
 		assistiveTextPreviousMonth: PropTypes.string,
 		/**
-		 * Label for today's date
-		 */
-		assistiveTextToday: PropTypes.string,
-		/**
-		 * One letter abbreviations of the days of the week, starting on Sunday.
-		 */
-		abbrWeekDayLabels: PropTypes.array,
-		/**
 		 * Aligns the right or left side of the menu with the respective side of the trigger.
 		 */
 		align: PropTypes.oneOf(['left', 'right']),
 		/**
-		 * Pass in an <Input /> component to customize it. Event handlers for the input should be added here. `<Input onKeyDown... />`.`
+		 * Pass in an <Input /> component to customize it. Event handlers for the input (if needed) should be added here and not to this component. `<Input onKeyDown... />`.`
 		 */
 		children: PropTypes.node,
 		/**
@@ -88,7 +84,7 @@ module.exports = React.createClass({
 		 */
 		formatter: PropTypes.func,
 		/**
-		 * Value of input that gets passed to `parser` prop. Set the `value` prop if using a `Date` object.
+		 * Value of input that gets passed to `parser` prop. Set the `value` prop if using a `Date` object. Use an external library such as [MomentJS](https://github.com/moment/moment/) if additional date formatting or internationalization is needed.
 		 */
 		formattedValue: PropTypes.string,
 		/* Prevents the dropdown from changing position based on the viewport/window. If set to true your dropdowns can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the dropdowns contents scrollable to fit the menu on the screen.
@@ -115,23 +111,27 @@ module.exports = React.createClass({
 		 */
 		monthLabels: PropTypes.array,
 		/**
+		 * Triggered when the date changes. It receives an object. {date: [Date object], formattedDate: [string]}. Can be used for validation.
+		 */
+		onChange: PropTypes.func,
+		/**
 		 * Triggered when the calendar is closed.
 		 */
 		onClose: PropTypes.func,
 		/**
-		 * Triggered when the date changes. It receives an object. {date: [Date object, formattedDate: [string]}
+		 * Triggered when the calendar has opened.
 		 */
-		onDateChange: PropTypes.func,
+		onOpen: PropTypes.func,
 		/**
-		 * Custom function to parase date string into and return a `Date` object. Default function passes the input value to `Date()` and prays.
+		 * Custom function to parase date string into and return a `Date` object. Default function passes the input value to `Date()` and prays. Use an external library such as [MomentJS](https://github.com/moment/moment/) if additional date parsing is needed.
 		 */
 		parser: PropTypes.func,
 		/**
-		 * Function called when the calendar would like hide.
+		 * Function called when the calendar dialog would like hide.
 		 */
 		onRequestClose: PropTypes.func,
 		/**
-		 * Function called when the calendar would like show.
+		 * Function called when the calendar dialog would like show.
 		 */
 		onRequestOpen: PropTypes.func,
 		/**
@@ -139,19 +139,19 @@ module.exports = React.createClass({
 		 */
 		placeholder: PropTypes.string,
 		/**
-		 * The earliest year that can be selected in the year selection dropdown.
+		 * Offset of year from current year that can be selected in the year selection dropdown. (2017 - 5 = 2012).
 		 */
 		relativeYearFrom: PropTypes.number,
 		/**
-		 * The maximum year that can be selected in the year selection dropdown.
+		 * Offset of year from current year that can be selected in the year selection dropdown. (2017 + 5 = 2012).
 		 */
 		relativeYearTo: PropTypes.number,
 		/**
-		 * Label of shortcut to jump to today within the calendar
+		 * Label of shortcut to jump to today within the calendar. This is also used for assistive text on today's date.
 		 */
 		todayLabel: PropTypes.string,
 		/**
-		 * CSS classes to be added to tag with `slds-datepicker-trigger`.
+		 * CSS classes to be added to tag with `slds-datepicker-trigger`. This is typically a wrapping `div` around the input.
 		 */
 		triggerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
@@ -159,7 +159,7 @@ module.exports = React.createClass({
      */
 		value: PropTypes.instanceOf(Date),
 		/**
-		 * Names of the seven days of the week, starting on Sunday.
+		 * Full names of the seven days of the week, starting on Sunday.
 		 */
 		weekDayLabels: PropTypes.array
 	},
@@ -167,11 +167,10 @@ module.exports = React.createClass({
 	getDefaultProps () {
 		return {
 			align: 'left',
-			assistiveTextOpenCalendar: 'Open Calendar Dialog',
+			abbreviatedWeekDayLabels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+			assistiveTextOpenCalendar: 'Open Calendar',
 			assistiveTextNextMonth: 'Next month',
 			assistiveTextPreviousMonth: 'Previous month',
-			assistiveTextToday: 'Today',
-			abbrWeekDayLabels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 			formatter (date) {
 				return date ? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}` : '';
 			},
@@ -255,19 +254,19 @@ module.exports = React.createClass({
 			inputValue: this.props.formatter(date)
 		});
 
-		if (this.props.onDateChange) {
-			this.props.onDateChange(event, { date, formattedDate: this.props.formatter(date) });
+		if (this.props.onChange) {
+			this.props.onChange(event, { date, formattedDate: this.props.formatter(date) });
 		}
 	},
 
 	handleClickOutside () {
-		this.handleClose();
+		this.handleRequestClose();
 	},
 
-	handleClose () {
+	handleRequestClose () {
 		const isOpen = this.getIsOpen();
 
-		if (this.props.onRequestOpen) {
+		if (this.props.onRequestClose) {
 			this.props.onRequestClose();
 		}
 
@@ -275,10 +274,6 @@ module.exports = React.createClass({
 			this.setState({
 				isOpen: false
 			});
-
-			if (this.props.onClose) {
-				this.props.onClose();
-			}
 		}
 
 		this.setFocusToInput();
@@ -299,13 +294,12 @@ module.exports = React.createClass({
 	},
 
 	parseDate (formattedValue) {
-		const parsedDate = this.props.parser(formattedValue);
-		if (Object.prototype.toString.call(parsedDate) === '[object Date]') {
-			if (!isNaN(parsedDate.getTime())) {
-				return parsedDate;
-			}
+		let parsedDate = this.props.parser(formattedValue);
+		if (Object.prototype.toString.call(parsedDate) === '[object Date]'
+			|| isNaN(parsedDate.getTime())) {
+			parsedDate = new Date();
 		}
-		return new Date();
+		return parsedDate;
 	},
 
 	getInlineMenu () {
@@ -323,7 +317,17 @@ module.exports = React.createClass({
 		);
 	},
 
-	focusTodayDate () {
+	handleClose () {
+		if (this.props.onClose) {
+			this.props.onClose();
+		}
+	},
+
+	handleOpen () {
+		if (this.props.onOpen) {
+			this.props.onOpen();
+		}
+
 		if (this.datepickerDialog) {
 			ReactDOM.findDOMNode(this.datepickerDialog).querySelector('.slds-is-selected').focus();
 		}
@@ -339,7 +343,7 @@ module.exports = React.createClass({
 					horizontalAlign={this.props.align}
 					flippable={!this.props.hasStaticAlignment}
 					onClose={this.handleClose}
-					onOpen={this.focusTodayDate}
+					onOpen={this.handleOpen}
 					targetElement={this.input}
 				>
 				{this.getDatePicker()}
@@ -354,13 +358,12 @@ module.exports = React.createClass({
 			: this.state.value;
 
 		return (<CalendarWrapper
+			abbreviatedWeekDayLabels={this.props.abbreviatedWeekDayLabels}
 			assistiveTextNextMonth={this.props.assistiveTextNextMonth}
 			assistiveTextPreviousMonth={this.props.assistiveTextPreviousMonth}
-			assistiveTextToday={this.props.assistiveTextToday}
-			abbrWeekDayLabels={this.props.abbrWeekDayLabels}
 			isIsoWeekday={this.props.isIsoWeekday}
 			monthLabels={this.props.monthLabels}
-			onClose={this.handleClose}
+			onRequestClose={this.handleRequestClose}
 			onSelectDate={this.handleCalendarChange}
 			ref={(component) => { this.datepickerDialog = component; }}
 			relativeYearFrom={this.props.relativeYearFrom}
@@ -377,8 +380,8 @@ module.exports = React.createClass({
 			inputValue: event.target.value
 		});
 
-		if (this.props.onDateChange) {
-			this.props.onDateChange(event, { date: this.props.parser(event.target.value), formattedDate: event.target.value });
+		if (this.props.onChange) {
+			this.props.onChange(event, { date: this.props.parser(event.target.value), formattedDate: event.target.value });
 		}
 	},
 

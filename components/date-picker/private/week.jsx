@@ -37,21 +37,21 @@ const DatepickerWeek = React.createClass({
      */
 		focusedDate: PropTypes.instanceOf(Date).isRequired,
 		/**
-		 * For keyboard navigation. Changes the focus to the same day in the next week on the calendar. Triggered when down arrow button is pressed.
-		 */
-		onNextWeek: PropTypes.func.isRequired,
-		/**
 		 * For keyboard navigation. Changes the focus to the next day on the calendar. Triggered when right arrow button is pressed.
 		 */
-		onNextDay: PropTypes.func.isRequired,
+		onKeyboardNavigateToNextDay: PropTypes.func.isRequired,
+		/**
+		 * For keyboard navigation. Changes the focus to the same day in the next week on the calendar. Triggered when down arrow button is pressed.
+		 */
+		onKeyboardNavigateToNextWeek: PropTypes.func.isRequired,
 		/**
 		 * For keyboard navigation. Changes the focus to the previous day on the calendar. Triggered when left arrow button is pressed.
 		 */
-		onPreviousDay: PropTypes.func.isRequired,
+		onKeyboardNavigateToPreviousDay: PropTypes.func.isRequired,
 		/**
 		 * For keyboard navigation. Changes the focus to the same day in the previous week on the calendar. Triggered when up arrow button is pressed.
 		 */
-		onPreviousWeek: PropTypes.func.isRequired,
+		onKeyboardNavigateToPreviousWeek: PropTypes.func.isRequired,
 		/**
 		 * Triggered when the calendar is cancelled.
 		 */
@@ -70,37 +70,10 @@ const DatepickerWeek = React.createClass({
 		todayLabel: PropTypes.string.isRequired
 	},
 
-	handleRequestClose () {
-		if (this.props.onRequestClose) {
-			this.props.onRequestClose();
-		}
-	},
-
-	handlePreviousDay (date) {
-		if (this.props.onPreviousDay) {
-			this.props.onPreviousDay(date);
-		}
-	},
-
-	handleNextDay (date) {
-		if (this.props.onNextDay) {
-			this.props.onNextDay(date);
-		}
-	},
-
-	handlePreviousWeek (date) {
-		if (this.props.onPreviousWeek) {
-			this.props.onPreviousWeek(date);
-		}
-	},
-
-	handleNextWeek (date) {
-		if (this.props.onNextWeek) {
-			this.props.onNextWeek(date);
-		}
-	},
 
 	render () {
+		console.log(this.props.onKeyboardNavigateToPreviousWeek);
+
 		let days = [];
 		let date = this.props.firstDayOfWeek;
 
@@ -114,11 +87,11 @@ const DatepickerWeek = React.createClass({
 				focusedDate={this.props.focusedDate}
 				focused={this.props.calendarHasFocus && DateUtil.isSameDay(this.props.focusedDate, date)}
 				key={date.toString()}
-				onNextDay={this.handleNextDay}
-				onNextWeek={this.handleNextWeek}
-				onPreviousDay={this.handlePreviousDay}
-				onPreviousWeek={this.handlePreviousWeek}
-				onRequestClose={this.handleRequestClose}
+				onKeyboardNavigateToNextDay={this.props.onKeyboardNavigateToNextDay}
+				onKeyboardNavigateToNextWeek={this.props.onKeyboardNavigateToNextWeek}
+				onKeyboardNavigateToPreviousDay={this.props.onKeyboardNavigateToPreviousDay}
+				onKeyboardNavigateToPreviousWeek={this.props.onKeyboardNavigateToPreviousWeek}
+				onRequestClose={this.props.onRequestClose}
 				todayLabel={this.props.todayLabel}
 			/>);
 			date = DateUtil.addDays(date, 1);

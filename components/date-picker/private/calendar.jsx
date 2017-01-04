@@ -30,7 +30,7 @@ const DatepickerCalendar = React.createClass({
 		/**
 		 * Displayed calendar has changed or re-rendered
 		 */
-		onChangeMonth: PropTypes.func,
+		onChangeMonth: PropTypes.func.isRequired,
 		/**
 		 * Triggered when the calendar is cancelled.
 		 */
@@ -83,16 +83,10 @@ const DatepickerCalendar = React.createClass({
 		}
 	},
 
-	handleChangeDisplayedDate (date) {
-		if (this.props.onChangeMonth) {
-			this.props.onChangeMonth(date);
-		}
-	},
-
 	handlePreviousDay (date) {
 		const prevDate = DateUtil.addDays(date, -1);
 		if (!DateUtil.isSameMonth(prevDate, date)) {
-			this.handleChangeDisplayedDate(prevDate);
+			this.props.onChangeMonth(prevDate);
 		} else {
 			this.setState({ focusedDate: prevDate });
 		}
@@ -101,7 +95,7 @@ const DatepickerCalendar = React.createClass({
 	handleNextDay (date) {
 		const nextDate = DateUtil.addDays(date, 1);
 		if (!DateUtil.isSameMonth(nextDate, date)) {
-			this.handleChangeDisplayedDate(nextDate);
+			this.props.onChangeMonth(nextDate);
 		} else {
 			this.setState({ focusedDate: nextDate });
 		}
@@ -110,7 +104,7 @@ const DatepickerCalendar = React.createClass({
 	handlePreviousWeek (date) {
 		const prevDate = DateUtil.addDays(date, -7);
 		if (!DateUtil.isSameMonth(prevDate, date)) {
-			this.handleChangeDisplayedDate(prevDate);
+			this.props.onChangeMonth(prevDate);
 		} else {
 			this.setState({ focusedDate: prevDate });
 		}
@@ -119,7 +113,7 @@ const DatepickerCalendar = React.createClass({
 	handleNextWeek (date) {
 		const nextDate = DateUtil.addDays(date, 7);
 		if (!DateUtil.isSameMonth(nextDate, date)) {
-			this.handleChangeDisplayedDate(nextDate);
+			this.props.onChangeMonth(nextDate);
 		} else {
 			this.setState({ focusedDate: nextDate });
 		}
@@ -237,10 +231,10 @@ const DatepickerCalendar = React.createClass({
 				selectedDate={this.props.selectedDate}
 				initialDateForCalendarRender={this.props.initialDateForCalendarRender}
 				focusedDate={this.state.focusedDate}
-				onPreviousDay={this.handlePreviousDay}
-				onNextDay={this.handleNextDay}
-				onPreviousWeek={this.handlePreviousWeek}
-				onNextWeek={this.handleNextWeek}
+				onKeyboardNavigateToPreviousDay={this.handlePreviousDay}
+				onKeyboardNavigateToNextDay={this.handleNextDay}
+				onKeyboardNavigateToPreviousWeek={this.handlePreviousWeek}
+				onKeyboardNavigateToNextWeek={this.handleNextWeek}
 				calendarHasFocus={this.state.hasFocus}
 				onRequestClose={this.handleRequestClose}
 				todayLabel={this.props.todayLabel}

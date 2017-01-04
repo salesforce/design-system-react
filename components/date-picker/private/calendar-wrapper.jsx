@@ -39,7 +39,7 @@ const DatepickerCalendarWrapper = React.createClass({
 		/**
 		 * One letter abbreviations of the days of the week, starting on Sunday.
 		 */
-		abbrWeekDayLabels: PropTypes.array.isRequired,
+		abbreviatedWeekDayLabels: PropTypes.array.isRequired,
 		/**
 		 * CSS classes to be added to tag with `slds-datepicker`.
 		 */
@@ -57,13 +57,13 @@ const DatepickerCalendarWrapper = React.createClass({
 		 */
 		monthLabels: PropTypes.array.isRequired,
 		/**
-		 * Triggered when the calendar is closed.
-		 */
-		onClose: PropTypes.func.isRequired,
-		/**
 		 * Triggered when calendar changes the date.
 		 */
 		onDisplayedDateChange: PropTypes.func,
+		/**
+		 * Triggered when the calendar is supposed to close.
+		 */
+		onRequestClose: PropTypes.func.isRequired,
 		/**
 		 * Triggered when a date on the calendar is clicked.
 		 */
@@ -81,7 +81,7 @@ const DatepickerCalendarWrapper = React.createClass({
 		 */
 		selectedDate: React.PropTypes.instanceOf(Date),
 		/**
-		 * Label of shortcut to jump to today within the calendar
+		 * Label of shortcut to jump to today within the calendar. Also used for assistive text for the current day.
 		 */
 		todayLabel: PropTypes.string.isRequired,
 		/**
@@ -121,12 +121,13 @@ const DatepickerCalendarWrapper = React.createClass({
 		if (this.props.onDisplayedDateChange) {
 			this.props.onDisplayedDateChange(displayedDate);
 		}
+		console.log('date', `${displayedDate.getMonth() + 1}-${displayedDate.getDate()}-${displayedDate.getFullYear()}`);
 		this.setState({ displayedDate });
 	},
 
-	handleCancel () {
-		if (this.props.onClose) {
-			this.props.onClose();
+	handleRequestClose () {
+		if (this.props.onRequestClose) {
+			this.props.onRequestClose();
 		}
 	},
 
@@ -155,23 +156,22 @@ const DatepickerCalendarWrapper = React.createClass({
 				<CalendarNavigation
 					assistiveTextNextMonth={this.props.assistiveTextNextMonth}
 					assistiveTextPreviousMonth={this.props.assistiveTextPreviousMonth}
-					onChange={this.handleDisplayedDateChange}
 					displayedDate={this.state.displayedDate}
 					monthLabels={this.props.monthLabels}
+					onChange={this.handleDisplayedDateChange}
 					relativeYearFrom={this.props.relativeYearFrom}
 					relativeYearTo={this.props.relativeYearTo}
 				/>
 				<Calendar
-					assistiveTextToday={this.props.assistiveTextToday}
+					abbreviatedWeekDayLabels={this.props.abbreviatedWeekDayLabels}
+					initialDateForCalendarRender={this.state.displayedDate}
 					isIsoWeekday={this.props.isIsoWeekday}
-					selectedDate={this.props.selectedDate}
-					onChange={this.handleDisplayedDateChange}
-					displayedDate={this.state.displayedDate}
+					onChangeMonth={this.handleDisplayedDateChange}
+					onRequestClose={this.handleRequestClose}
 					onSelectDate={this.props.onSelectDate}
-					abbrWeekDayLabels={this.props.abbrWeekDayLabels}
-					weekDayLabels={this.props.weekDayLabels}
+					selectedDate={this.props.selectedDate}
 					todayLabel={this.props.todayLabel}
-					onCancel={this.handleCancel}
+					weekDayLabels={this.props.weekDayLabels}
 				/>
 				<span id="bn_prev-label" className="slds-assistive-text">{this.props.assistiveTextNextMonth}</span>
 				<span id="bn_next-label" className="slds-assistive-text">{this.props.assistiveTextPreviousMonth}</span>

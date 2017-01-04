@@ -39,21 +39,21 @@ const DatepickerCalendarDay = React.createClass({
 		 */
 		focused: PropTypes.bool,
 		/**
-		 * For keyboard navigation. Changes the focus to the same day in the next week on the calendar. Triggered when down arrow button is pressed.
-		 */
-		onNextWeek: PropTypes.func.isRequired,
-		/**
 		 * For keyboard navigation. Changes the focus to the next day on the calendar. Triggered when right arrow button is pressed.
 		 */
-		onNextDay: PropTypes.func.isRequired,
+		onKeyboardNavigateToNextDay: PropTypes.func.isRequired,
+		/**
+		 * For keyboard navigation. Changes the focus to the same day in the next week on the calendar. Triggered when down arrow button is pressed.
+		 */
+		onKeyboardNavigateToNextWeek: PropTypes.func.isRequired,
 		/**
 		 * For keyboard navigation. Changes the focus to the previous day on the calendar. Triggered when left arrow button is pressed.
 		 */
-		onPreviousDay: PropTypes.func.isRequired,
+		onKeyboardNavigateToPreviousDay: PropTypes.func.isRequired,
 		/**
 		 * For keyboard navigation. Changes the focus to the same day in the previous week on the calendar. Triggered when up arrow button is pressed.
 		 */
-		onPreviousWeek: PropTypes.func.isRequired,
+		onKeyboardNavigateToPreviousWeek: PropTypes.func.isRequired,
 		/**
 		 * Triggered when the calendar is cancelled.
 		 */
@@ -93,37 +93,15 @@ const DatepickerCalendarDay = React.createClass({
 		}
 	},
 
-	handleToPreviousDay () {
-		if (this.props.onPreviousDay) {
-			this.props.onPreviousDay(this.props.date);
-		}
-	},
-
-	handleToNextDay () {
-		if (this.props.onNextDay) {
-			this.props.onNextDay(this.props.date);
-		}
-	},
-
-	handleToPreviousWeek () {
-		if (this.props.onPreviousWeek) {
-			this.props.onPreviousWeek(this.props.date);
-		}
-	},
-
-	handleToNextWeek () {
-		if (this.props.onNextWeek) {
-			this.props.onNextWeek(this.props.date);
-		}
-	},
-
 	handleKeyDown (event) {
+		const fromDate = this.props.date;
+
 		if (event.keyCode) {
 			if (event.keyCode === KEYS.ENTER ||
 				event.keyCode === KEYS.SPACE) {
 				EventUtil.trapEvent(event);
 				if (this.props.onSelectDate) {
-					this.props.onSelectDate(event, { date: this.props.date });
+					this.props.onSelectDate(event, { date: fromDate });
 				}
 			} else if (event.keyCode === KEYS.ESCAPE) {
 				EventUtil.trapEvent(event);
@@ -134,19 +112,19 @@ const DatepickerCalendarDay = React.createClass({
 				// no nothing
 			} else if (event.keyCode === KEYS.RIGHT) {
 				EventUtil.trapEvent(event);
-				this.handleToNextDay();
+				this.props.onKeyboardNavigateToNextDay(fromDate);
 			} else if (event.keyCode === KEYS.LEFT) {
 				EventUtil.trapEvent(event);
-				this.handleToPreviousDay();
+				this.props.onKeyboardNavigateToPreviousDay(fromDate);
 			} else if (event.keyCode === KEYS.RIGHT) {
 				EventUtil.trapEvent(event);
-				this.handleToNextDay();
+				this.props.onKeyboardNavigateToNextDay(fromDate);
 			} else if (event.keyCode === KEYS.UP) {
 				EventUtil.trapEvent(event);
-				this.handleToPreviousWeek();
+				this.props.onKeyboardNavigateToPreviousWeek(fromDate);
 			} else if (event.keyCode === KEYS.DOWN) {
 				EventUtil.trapEvent(event);
-				this.handleToNextWeek();
+				this.props.onKeyboardNavigateToNextWeek(fromDate);
 			} else {
 				EventUtil.trapEvent(event);
 			}
