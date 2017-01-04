@@ -57,10 +57,6 @@ const DatepickerCalendarWrapper = React.createClass({
 		 */
 		monthLabels: PropTypes.array.isRequired,
 		/**
-		 * Triggered when calendar changes the date.
-		 */
-		onDisplayedDateChange: PropTypes.func,
-		/**
 		 * Triggered when the calendar is supposed to close.
 		 */
 		onRequestClose: PropTypes.func.isRequired,
@@ -99,7 +95,7 @@ const DatepickerCalendarWrapper = React.createClass({
 
 	getInitialState () {
 		return {
-			displayedDate: this.props.selectedDate,
+			initialDateForCalendarRender: this.props.selectedDate,
 			isFocused: false
 		};
 	},
@@ -114,11 +110,8 @@ const DatepickerCalendarWrapper = React.createClass({
 		}
 	},
 
-	handleDisplayedDateChange (displayedDate) {
-		if (this.props.onDisplayedDateChange) {
-			this.props.onDisplayedDateChange(displayedDate);
-		}
-		this.setState({ displayedDate });
+	handleInitialDateForCalendarRenderChange (initialDateForCalendarRender) {
+		this.setState({ initialDateForCalendarRender });
 	},
 
 	handleRequestClose () {
@@ -152,17 +145,17 @@ const DatepickerCalendarWrapper = React.createClass({
 				<CalendarNavigation
 					assistiveTextNextMonth={this.props.assistiveTextNextMonth}
 					assistiveTextPreviousMonth={this.props.assistiveTextPreviousMonth}
-					displayedDate={this.state.displayedDate}
+					initialDateForCalendarRender={this.state.initialDateForCalendarRender}
 					monthLabels={this.props.monthLabels}
-					onChange={this.handleDisplayedDateChange}
+					onChangeMonth={this.handleInitialDateForCalendarRenderChange}
 					relativeYearFrom={this.props.relativeYearFrom}
 					relativeYearTo={this.props.relativeYearTo}
 				/>
 				<Calendar
 					abbreviatedWeekDayLabels={this.props.abbreviatedWeekDayLabels}
-					initialDateForCalendarRender={this.state.displayedDate}
+					initialDateForCalendarRender={this.state.initialDateForCalendarRender}
 					isIsoWeekday={this.props.isIsoWeekday}
-					onChangeMonth={this.handleDisplayedDateChange}
+					onChangeMonth={this.handleInitialDateForCalendarRenderChange}
 					onRequestClose={this.handleRequestClose}
 					onSelectDate={this.props.onSelectDate}
 					selectedDate={this.props.selectedDate}
