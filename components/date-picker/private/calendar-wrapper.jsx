@@ -67,7 +67,7 @@ const DatepickerCalendarWrapper = React.createClass({
 		/**
 		 * Triggered when a date on the calendar is clicked.
 		 */
-		onSelectDate: PropTypes.func,
+		onSelectDate: PropTypes.func.isRequired,
 		/**
 		 * The earliest year that can be selected in the year selection dropdown.
 		 */
@@ -105,15 +105,12 @@ const DatepickerCalendarWrapper = React.createClass({
 	},
 
 	handleKeyDown (event) {
-		if (event.keyCode) {
-			if (event.keyCode === KEYS.ESCAPE
-				|| event.keyCode === KEYS.SPACE
-				|| event.keyCode === KEYS.ENTER
-				|| event.keyCode === KEYS.TAB) {
-				// do nothing
-			} else {
-				EventUtil.trapEvent(event);
-			}
+		if (event.keyCode
+			&& (event.keyCode !== KEYS.ESCAPE
+				|| event.keyCode !== KEYS.SPACE
+				|| event.keyCode !== KEYS.ENTER
+				|| event.keyCode !== KEYS.TAB)) {
+			EventUtil.trapEvent(event);
 		}
 	},
 
@@ -121,7 +118,6 @@ const DatepickerCalendarWrapper = React.createClass({
 		if (this.props.onDisplayedDateChange) {
 			this.props.onDisplayedDateChange(displayedDate);
 		}
-		console.log('date', `${displayedDate.getMonth() + 1}-${displayedDate.getDate()}-${displayedDate.getFullYear()}`);
 		this.setState({ displayedDate });
 	},
 
