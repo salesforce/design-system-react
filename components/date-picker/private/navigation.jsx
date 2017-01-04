@@ -25,6 +25,10 @@ const DatepickerMonthNavigation = React.createClass({
 		 */
 		assistiveTextPreviousMonth: PropTypes.string.isRequired,
 		/**
+		 * HTML id for component
+		 */
+		id: PropTypes.string,
+		/**
      * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
      */
 		initialDateForCalendarRender: PropTypes.instanceOf(Date).isRequired,
@@ -88,9 +92,8 @@ const DatepickerMonthNavigation = React.createClass({
 						/>
 					</div>
 					<h2
-						id="month"
+						id={`${this.props.id}-month`}
 						className="slds-align-middle"
-						role="heading"
 						aria-live="assertive"
 						aria-atomic
 					>{this.getMonthLabel()} <span className="slds-assistive-text">{this.getYearLabel()}</span></h2>

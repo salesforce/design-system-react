@@ -151,7 +151,7 @@ const DatepickerCalendar = React.createClass({
 			<div
 				className="Calendar"
 			>
-				<table className="datepicker__month" role="grid" aria-labelledby="month">
+				<table className="datepicker__month" role="grid" aria-labelledby={`${this.props.id}-month`}>
 					<thead>
 						<tr ref="weekdays">
 						{this.props.isIsoWeekday ? null : sunday}

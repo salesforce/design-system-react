@@ -93,7 +93,7 @@ module.exports = React.createClass({
 		/**
 		 * HTML id for component
 		 */
-		id: PropTypes.func,
+		id: PropTypes.string,
 		/**
 		 * Renders menu within the wrapping trigger as a sibling of the input. By default, you will have an absolutely positioned container at an elevated z-index.
 		 */
@@ -361,6 +361,7 @@ module.exports = React.createClass({
 			abbreviatedWeekDayLabels={this.props.abbreviatedWeekDayLabels}
 			assistiveTextNextMonth={this.props.assistiveTextNextMonth}
 			assistiveTextPreviousMonth={this.props.assistiveTextPreviousMonth}
+			id={this.getId()}
 			isIsoWeekday={this.props.isIsoWeekday}
 			monthLabels={this.props.monthLabels}
 			onRequestClose={this.handleRequestClose}

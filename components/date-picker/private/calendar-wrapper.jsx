@@ -45,6 +45,10 @@ const DatepickerCalendarWrapper = React.createClass({
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
+		 * HTML id for component
+		 */
+		id: PropTypes.string,
+		/**
 		 * Makes Monday the first day of the week
 		 */
 		isIsoWeekday: PropTypes.bool,
@@ -145,6 +149,7 @@ const DatepickerCalendarWrapper = React.createClass({
 				<CalendarNavigation
 					assistiveTextNextMonth={this.props.assistiveTextNextMonth}
 					assistiveTextPreviousMonth={this.props.assistiveTextPreviousMonth}
+					id={this.props.id}
 					initialDateForCalendarRender={this.state.initialDateForCalendarRender}
 					monthLabels={this.props.monthLabels}
 					onChangeMonth={this.handleInitialDateForCalendarRenderChange}
@@ -153,6 +158,7 @@ const DatepickerCalendarWrapper = React.createClass({
 				/>
 				<Calendar
 					abbreviatedWeekDayLabels={this.props.abbreviatedWeekDayLabels}
+					id={this.props.id}
 					initialDateForCalendarRender={this.state.initialDateForCalendarRender}
 					isIsoWeekday={this.props.isIsoWeekday}
 					onChangeMonth={this.handleInitialDateForCalendarRenderChange}
