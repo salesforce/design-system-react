@@ -368,7 +368,12 @@ module.exports = React.createClass({
 			monthLabels={this.props.monthLabels}
 			onRequestClose={this.handleRequestClose}
 			onSelectDate={this.handleCalendarChange}
-			ref={(component) => { this.datepickerDialog = component; }}
+			ref={(component) => {
+				this.datepickerDialog = component;
+				if (this.props.isInline) {
+					this.handleOpen();
+				}
+			}}
 			relativeYearFrom={this.props.relativeYearFrom}
 			relativeYearTo={this.props.relativeYearTo}
 			selectedDate={date || new Date()}

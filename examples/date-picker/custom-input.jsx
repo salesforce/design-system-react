@@ -14,7 +14,7 @@ const Example = React.createClass({
 	render () {
 		return (
 			<Datepicker
-				isOpen={true}
+				isOpen={this.state.isOpen}
 				onRequestClose={() => { this.setState({ isOpen: false }); }}
 				onRequestOpen={() => { this.setState({ isOpen: true }); }}
 				onDateChange={({ date, formattedDate }) => {
