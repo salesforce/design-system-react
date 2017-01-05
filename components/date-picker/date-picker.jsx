@@ -38,8 +38,7 @@ import KEYS from '../../utilities/KEYS';
 
 import { DATEPICKER } from '../../utilities/constants';
 
-module.exports = React.createClass({
-
+const Datepicker = React.createClass({
 	displayName: DATEPICKER,
 
 	propTypes: {
@@ -454,3 +453,5 @@ module.exports = React.createClass({
 		);
 	}
 });
+
+export default Datepicker;
