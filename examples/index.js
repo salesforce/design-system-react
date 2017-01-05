@@ -1,6 +1,8 @@
-// This object is imported into the documentation site. An example for the documentation site should be part of the pull request for the component. The object key is the kabob case of the "URL folder". In the case of `http://localhost:8080/components/app-launcher/`, `app-launcher` is the `key`. The folder name is created by `components.component` value in `package.json`. Keep in mind, some components like `forms/checkbox` will be changed to `forms-checkbox`. The following uses webpack's raw-loader plugin to get "text files" that will be eval()'d by CodeMirror within the documentation site
+// This object is imported into the documentation site. An example for the documentation site should be part of the pull request for the component. The object key is the kabob case of the "URL folder". In the case of `http://localhost:8080/components/app-launcher/`, `app-launcher` is the `key`. The folder name is created by `components.component` value in `package.json`. Keep in mind, some components like `forms/checkbox` will be changed to `forms-checkbox`. The following uses webpack's raw-loader plugin to get "text files" that will be eval()'d by CodeMirror within the documentation site on page load.
 
-const Snippets = {
+/* eslint-disable global-require */
+
+const documentationSiteLiveExamples = {
 	'app-launcher': [
 		require('raw-loader!design-system-react/examples/app-launcher/default.jsx')
 	],
@@ -92,6 +94,11 @@ const Snippets = {
 		require('raw-loader!design-system-react/examples/page-header/object-home.jsx'),
 		require('raw-loader!design-system-react/examples/page-header/related-list.jsx')
 	],
+	popover: [
+		require('raw-loader!design-system-react/examples/popover/header.jsx'),
+		require('raw-loader!design-system-react/examples/popover/alternative-header.jsx'),
+		require('raw-loader!design-system-react/examples/popover/controlled-with-footer.jsx')
+	],
 	'popover-tooltip': [
 		require('raw-loader!design-system-react/examples/popover-tooltip/base.jsx'),
 		require('raw-loader!design-system-react/examples/popover-tooltip/button.jsx'),
@@ -109,4 +116,4 @@ const Snippets = {
 	]
 };
 
-module.exports = Snippets;
+module.exports = documentationSiteLiveExamples;

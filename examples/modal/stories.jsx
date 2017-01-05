@@ -11,6 +11,9 @@ import Timepicker from '../../components/time-picker';
 import Datepicker from '../../components/date-picker';
 import Button from '../../components/button';
 
+import SLDSSettings from '../../components/SLDSSettings';
+SLDSSettings.setAppElement('#root');	// used by Modal component
+
 const getModal = props => (
 	<Modal {...props} />
 );

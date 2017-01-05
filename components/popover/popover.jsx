@@ -92,14 +92,10 @@ const Popover = React.createClass({
 			'top left',
 			'top right',
 			'right',
-			'right top',
-			'right bottom',
 			'bottom',
 			'bottom left',
 			'bottom right',
-			'left',
-			'left top',
-			'left bottom'
+			'left'
 		]),
 		/**
 		 * HTML `id` of heading for popover. Only use if your header is within your popover body.
@@ -122,7 +118,7 @@ const Popover = React.createClass({
 		*/
 		closeButtonAssistiveText: PropTypes.oneOfType([PropTypes.string]),
 		/**
-		 * This prop is passed onto the triggering `Button`. Prevent dropdown menu from opening. Also applies disabled styling to trigger button.
+		 * This prop is passed onto the triggering `Button`. Prevent popover from opening. Also applies disabled styling to trigger button.
 		 */
 		disabled: PropTypes.bool,
 		/*
@@ -141,17 +137,21 @@ const Popover = React.createClass({
 		*/
 		id: PropTypes.string,
 		/**
-		 * Forces the popover to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use [](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices)
+		 * Forces the popover to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use [](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices) You will want this if Popover is to be a controlled component.
 		 */
 		isOpen: PropTypes.bool,
 		/**
-		 *  Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px).
+		 *  Offset adds pixels to the absolutely positioned dialog in the format: ([vertical]px [horizontal]px).
 		 */
 		offset: PropTypes.string,
 		/**
-		 * This prop is passed onto the triggering `Button`. Triggered when the trigger button is clicked.
+		 * This function is passed onto the triggering `Button`. Triggered when the trigger button is clicked. You will want this if Popover is to be a controlled component.
 		 */
 		onClick: PropTypes.func,
+		/**
+		 * This function is triggered when the dialog is closed. This occurs when the Dialog child component (that is the actual popover) is unmounted and removed from the DOM. This function returns `{event, { trigger, componentWillUnmount }`. Trigger can have the values `cancel`, `clickOutside`, or `newPopover`.
+		 */
+		onClose: PropTypes.func,
 		/**
 		 * Called when a key is pressed.
 		 */
@@ -161,13 +161,13 @@ const Popover = React.createClass({
 		 */
 		onMouseDown: PropTypes.func,
 		/**
-		 * Triggered when the dropdown is opened.
+		 * This function is triggered when the Dialog child component (that is the actual popover) is mounted and added to the DOM. The parameters are `event, { portal: }`. `portal` can be used as a React tree root node.
 		 */
 		onOpen: PropTypes.func,
 		/**
-		 * Triggered when the dropdown is closed.
+		 * This function is triggered when the user clicks outside the Popover or clicks the close button. You will want to define this if Popover is to be a controlled component. Most of the time you will want wnat to set `isOpen` to `false` when this is triggered unless you need to validate something.
 		 */
-		onClose: PropTypes.func,
+		onRequestClose: PropTypes.func,
 		/**
 		 * An object of CSS styles that are applied to the `slds-popover` DOM element.
 		 */
@@ -175,7 +175,11 @@ const Popover = React.createClass({
 		/**
 		 * If `true`, adds a transparent overlay when the menu is open to handle outside clicks. Allows clicks on iframes to be captured, but also forces a double-click to interact with other elements. If a function is passed, custom overlay logic may be defined by the app.
 		 */
-		overlay: PropTypes.oneOfType([PropTypes.bool, PropTypes.func])
+		overlay: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+		/**
+		 * CSS classes to be added to wrapping trigger `div` around the button.
+		 */
+		triggerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string])
 	},
 
 	getDefaultProps () {
@@ -220,11 +224,30 @@ const Popover = React.createClass({
 		return ReactDOM.findDOMNode(this.dialog);
 	},
 
-	handleClose (data) {
-		const isOpen = this.getIsOpen();
+	handleDialogClose (event, data) {
 		const componentWillUnmount = data && data.componentWillUnmount || false;
 
+		if (currentOpenPopover === this) {
+			currentOpenPopover = undefined;
+		}
+
+		if (this.props.onClose) {
+			this.props.onClose(event, {
+				component: this,
+				componentWillUnmount
+			});
+		}
+	},
+
+	handleClose (event, data) {
+		const isOpen = this.getIsOpen();
+
 		if (isOpen) {
+			// call even if closed
+			if (this.props.onRequestClose) {
+				this.props.onRequestClose(event, data);
+			}
+
 			if (currentOpenPopover === this) {
 				currentOpenPopover = undefined;
 			}
@@ -234,13 +257,6 @@ const Popover = React.createClass({
 			});
 
 			this.isHover = false;
-
-			if (this.props.onClose) {
-				this.props.onClose({
-					component: this,
-					componentWillUnmount
-				});
-			}
 		}
 	},
 
@@ -249,7 +265,7 @@ const Popover = React.createClass({
 
 		if (!isOpen) {
 			if (currentOpenPopover && isFunction(currentOpenPopover.handleClose)) {
-				currentOpenPopover.handleClose();
+				currentOpenPopover.handleClose(undefined, { trigger: 'newPopover', id: currentOpenPopover.getId() });
 			}
 
 			currentOpenPopover = this;
@@ -295,7 +311,7 @@ const Popover = React.createClass({
 	},
 	/* eslint-enable react/prop-types */
 
-	handleClick (event) {
+	handleClick (event, { triggerOnClickCallback }) {
 		const isOpen = this.getIsOpen();
 
 		if (!isOpen) {
@@ -306,6 +322,10 @@ const Popover = React.createClass({
 
 		if (this.props.onClick) {
 			this.props.onClick(event);
+		}
+
+		if (triggerOnClickCallback) {
+			triggerOnClickCallback(event);
 		}
 	},
 
@@ -333,7 +353,7 @@ const Popover = React.createClass({
 					key: event.key,
 					keyCode: event.keyCode,
 					targetTarget: event.target,
-					toggleOpen: this.toggleOpen,
+					toggleOpen: this.toggleOpenFromKeyboard,
 					trigger: this.trigger
 				});
 			}
@@ -343,17 +363,17 @@ const Popover = React.createClass({
 		}
 	},
 
-	handleCancel () {
-		this.handleClose();
+	handleCancel (event) {
+		this.handleClose(event, { trigger: 'cancel' });
 	},
 
-	handleClickOutside () {
-		this.handleClose();
+	handleClickOutside (event) {
+		this.handleClose(event, { trigger: 'clickOutside' });
 	},
 
-	toggleOpen () {
+	toggleOpenFromKeyboard (event) {
 		if (this.state.isOpen) {
-			this.handleClose();
+			this.handleCancel(event);
 		} else {
 			this.handleOpen();
 		}
@@ -376,7 +396,8 @@ const Popover = React.createClass({
 					marginRight={getMargin.right(props.align)}
 					marginTop={getMargin.top(props.align)}
 					offset={offset}
-					onClose={this.handleClose}
+					onCancel={this.handleClose}
+					onClose={this.handleDialogClose}
 					onOpen={this.props.onOpen}
 					onKeyDown={this.handleKeyDown}
 					onMouseEnter={(props.openOn === 'hover') ? this.handleMouseEnter : null}
@@ -446,18 +467,13 @@ const Popover = React.createClass({
 		const outsideClickIgnoreClass = `ignore-click-${this.getId()}`;
 
 		const clonedTrigger = this.props.children ? React.cloneElement(this.props.children, {
-			ref: (component) => { this.trigger = component; },
-			'aria-haspopup': true,
+			'aria-haspopup': 'true',
 			'aria-expanded': this.getIsOpen(),
-			className: classNames(outsideClickIgnoreClass),
-			disabled: this.props.disabled,
-			style: this.props.style,
 			id: this.getId(),
-			onBlur: this.props.onBlur,
 			onClick:
 				this.props.openOn === 'click'
 				|| this.props.openOn === 'hybrid'
-				? this.handleClick : this.props.onClick,
+				? (event) => { this.handleClick(event, { triggerOnClickCallback: this.props.children.props.onClick }); } : this.children.props.onClick,
 			onFocus: this.props.openOn === 'hover' ? this.handleFocus : null,
 			onMouseDown: this.props.onMouseDown,
 			onMouseEnter: (this.props.openOn === 'hover' || this.props.openOn === 'hybrid')
@@ -467,7 +483,8 @@ const Popover = React.createClass({
 				this.props.openOn === 'hover'
 				|| this.props.openOn === 'hybrid'
 				? this.handleMouseLeave : null,
-			tabIndex: this.props.children.props.tabIndex || '0'
+			tabIndex: this.props.children.props.tabIndex || '0',
+			...this.props.children.props
 		}) : null;
 
 		this.renderOverlay(this.getIsOpen());
@@ -475,6 +492,7 @@ const Popover = React.createClass({
 		const containerStyles = { display: 'inline' };
 		return (
 			<div
+				className={this.props.triggerClassName}
 				style={containerStyles}
 			>
 				{clonedTrigger}

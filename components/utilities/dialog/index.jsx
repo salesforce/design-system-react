@@ -29,7 +29,7 @@ import DOMElementFocus from '../../../utilities/dom-element-focus';
 
 import { DIALOG } from '../../../utilities/constants';
 
-/* A dialog is a non-modal container that separates content from the rest of the web application. This library uses the Drop library (https://github.com/HubSpot/drop which is based on TetherJS) to absolutely position and align content to another item on the page. This component is not meant for external consumption or part of the published component API.
+/* Dialog creates a new top-level React tree and injects its child into it. This is necessary for proper styling (especially positioning). A dialog is a non-modal container that separates content from the rest of the web application. This library uses the Drop library (https://github.com/HubSpot/drop which is based on TetherJS) to absolutely position and align content to another item on the page. This component is not meant for external consumption or part of the published component API.
 */
 const Dialog = React.createClass({
 
@@ -138,7 +138,7 @@ const Dialog = React.createClass({
 		 */
 		onMouseLeave: PropTypes.func,
 		/**
-		 * Called when dialog opens (that is mounts).
+		 * Called when dialog opens (that is mounts). The parameters are `undefined, { portal: this.portal }`.
 		 */
 		onOpen: PropTypes.func,
 		/**
@@ -203,9 +203,9 @@ const Dialog = React.createClass({
 		this.handleClose();
 	},
 
-	handleClose (data) {
+	handleClose (event, data) {
 		if (this.props.onClose) {
-			this.props.onClose(data);
+			this.props.onClose(event, data);
 		}
 	},
 
@@ -220,7 +220,7 @@ const Dialog = React.createClass({
 		if (event.keyCode === KEYS.TAB) {
 			if (this.props.closeOnTabKey) {
 				EventUtil.trap(event);
-				this.handleClose();
+				this.handleClose(event);
 			}
 		}
 
@@ -371,7 +371,7 @@ const Dialog = React.createClass({
 		}
 
 		if (this.props.onOpen) {
-			this.props.onOpen(this.portal);
+			this.props.onOpen(undefined, { portal: this.portal });
 		}
 	},
 
@@ -416,7 +416,7 @@ const Dialog = React.createClass({
 			this.dialogElement.parentNode.removeChild(this.dialogElement);
 		}
 
-		this.handleClose({ componentWillUnmount: true });
+		this.handleClose(undefined, { componentWillUnmount: true });
 	},
 
 	render () {

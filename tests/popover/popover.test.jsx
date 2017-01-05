@@ -140,6 +140,7 @@ describe('SLDSPopover', function () {
 				}}
 				onOpen={() => {
 					const trigger = wrapper.find('#sample-popover');
+					
 					expect(trigger.node.getAttribute('aria-haspopup')).to.equal('true');
 					const ariaExpanded = trigger.find('button').node.getAttribute('aria-expanded');
 					expect(ariaExpanded).to.equal('true');
@@ -153,7 +154,7 @@ describe('SLDSPopover', function () {
 		});
 	});
 
-	// // PROPS AND CHILDREN
+	// PROPS AND CHILDREN
 
 	describe('Optional props', () => {
 		const popoverBackgroundColor = 'rgb(255, 80, 121)';
@@ -196,13 +197,12 @@ describe('SLDSPopover', function () {
 		});
 	});
 
-	// // EVENTS
+	// EVENTS
 
 	describe('Mouse and keyboard interactions', () => {
 		/* Test event callback functions using Simulate. For more information, view
 		 * https://github.com/airbnb/enzyme/blob/master/docs/api/ReactWrapper/simulate.md
 		 */
-
 		describe('onClick', function () {
 			const triggerClicked = sinon.spy();
 
@@ -220,14 +220,12 @@ describe('SLDSPopover', function () {
 					portalMount={(reactElement, domContainerNode) => {
 						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
 					}}
-					onClose={(data) => {
-						if (!data.componentWillUnmount) {
-							setTimeout(() => {
-								const popover = portalWrapper.find(`#${defaultIds.popover}`);
-								expect(popover.node).to.not.exist;
-								done();
-							}, 0);
-						}
+					onClose={() => {
+						setTimeout(() => {
+							const popover = portalWrapper.find(`#${defaultIds.popover}`);
+							expect(popover.node).to.not.exist;
+							done();
+						}, 0);
 					}}
 					onOpen={() => {
 						const popover = portalWrapper.find(`#${defaultIds.popover}`);
@@ -248,14 +246,12 @@ describe('SLDSPopover', function () {
 					portalMount={(reactElement, domContainerNode) => {
 						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
 					}}
-					onClose={(data) => {
-						if (!data.componentWillUnmount) {
-							setTimeout(() => {
-								const popover = portalWrapper.find(`#${defaultIds.popover}`);
-								expect(popover.node).to.not.exist;
-								done();
-							}, 0);
-						}
+					onClose={() => {
+						setTimeout(() => {
+							const popover = portalWrapper.find(`#${defaultIds.popover}`);
+							expect(popover.node).to.not.exist;
+							done();
+						}, 0);
 					}}
 					onOpen={() => {
 						const popover = portalWrapper.find(`#${defaultIds.popover}`);

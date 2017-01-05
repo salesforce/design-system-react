@@ -346,9 +346,9 @@ const MenuDropdown = React.createClass({
 	},
 
 	componentWillUnmount () {
-        if (currentOpenDropdown === this) {
-            currentOpenDropdown = undefined;
-        }
+		if (currentOpenDropdown === this) {
+			currentOpenDropdown = undefined;
+		}
 		this.isUnmounting = true;
 		this.renderOverlay(false);
 	},
@@ -601,7 +601,7 @@ const MenuDropdown = React.createClass({
 	renderDefaultMenuContent (customListProps) {
 		return (
 			<List
-				key={`${this.props.id}-dropdown-list`}
+				key={`${this.getId()}-dropdown-list`}
 				checkmark={this.props.checkmark}
 				getListItemId={this.getListItemId}
 				itemRefs={this.saveRefToListItem}
