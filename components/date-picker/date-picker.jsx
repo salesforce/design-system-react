@@ -254,6 +254,8 @@ module.exports = React.createClass({
 			inputValue: this.props.formatter(date)
 		});
 
+		this.handleRequestClose();
+
 		if (this.props.onChange) {
 			this.props.onChange(event, { date, formattedDate: this.props.formatter(date) });
 		}
