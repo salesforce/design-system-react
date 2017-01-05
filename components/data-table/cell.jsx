@@ -12,6 +12,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React from 'react';
 
+// ### classNames
+import classNames from 'classnames';
+
 // ## Constants
 import { DATA_TABLE_CELL } from '../../utilities/constants';
 
@@ -21,11 +24,40 @@ const { PropTypes } = React;
 /**
  * The default Cell renderer for the DataTable. Pass in any React component with the same `displayName` which takes the same props to provide custom rendering.
  */
-const DataTableCell = (props) => (
-	<td className={props.className} data-label={props.label}>
-		{props.children}
-	</td>
-);
+const DataTableCell = (props) => {
+	const contents = (
+		<div
+			className={classNames({
+				'slds-truncate': props.fixedLayout
+			})}
+			title={props.title || props.children}
+		>
+			{props.children}
+		</div>
+	);
+
+
+	return (
+		props.primaryColumn
+		? <th
+			className={props.className}
+			data-label={props.label}
+			role={props.fixedLayout ? 'gridcell' : null}
+			style={props.width ? { width: props.width } : null}
+		>
+			{contents}
+		</th>
+
+		: <td
+			className={props.className}
+			data-label={props.label}
+			role={props.fixedLayout ? 'gridcell' : null}
+			style={props.width ? { width: props.width } : null}
+		>
+			{contents}
+		</td>
+	);
+};
 
 // ### Display Name
 // Always use the canonical component name as the React display name.
@@ -42,6 +74,10 @@ DataTableCell.propTypes = {
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
+	 * Use this if you are creating an advanced table (selectable, sortable, or resizable rows)
+	 */
+	fixedLayout: PropTypes.bool,
+	/**
 	 * The item from the items which represents this row.
 	 */
 	item: PropTypes.object,
@@ -50,9 +86,21 @@ DataTableCell.propTypes = {
 	 */
 	label: PropTypes.string,
 	/**
+	 * The primary column for a row. This is almost always the first column.
+	 */
+	primaryColumn: PropTypes.bool,
+	/**
 	 * The property of this item to display.
 	 */
-	property: PropTypes.string
+	property: PropTypes.string,
+	/**
+	 * Shows on hover. Useful for truncated cells.
+	 */
+	title: PropTypes.string,
+	/**
+	 * Width of column. This is required for advanced/fixed layout tables. Please provide units. (`rems` are recommended)
+	 */
+	width: PropTypes.string
 };
 
 module.exports = DataTableCell;

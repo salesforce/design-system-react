@@ -52,7 +52,11 @@ const DataTableColumn = React.createClass({
 		/**
 		 * The column label.
 		 */
-		label: PropTypes.string,
+		label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+		/**
+		 * The primary column for a row. This is almost always the first column.
+		 */
+		primaryColumn: PropTypes.bool,
 		/**
 		 * The property which corresponds to this column.
 		 */
@@ -65,7 +69,11 @@ const DataTableColumn = React.createClass({
 		 * The current sort direction. If left out the component will track this internally.
 		 */
 		sortDirection: PropTypes.oneOf(['desc', 'asc']),
-		truncate: PropTypes.bool
+		truncate: PropTypes.bool,
+		/**
+		 * Width of column. This is required for advanced/fixed layout tables. Please provide units. (`rems` are recommended)
+		 */
+		width: PropTypes.string
 	},
 
 	// ### Render

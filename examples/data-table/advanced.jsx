@@ -5,7 +5,7 @@ import DataTableCell from '~/components/data-table/cell';
 import DataTableRowActions from '~/components/data-table/row-actions';
 
 const CustomDataTableCell = ({ children, ...props }) => (
-	<DataTableCell {...props} >
+	<DataTableCell title={children} {...props} >
 		<a
 			href="javascript:void(0);"
 			onClick={(event) => {
@@ -52,7 +52,16 @@ const Example = React.createClass({
 					contact: 'nathan@salesforce.com'
 				}
 			],
-			selection: []
+			selection: [{
+				id: '8IKZHZZV81',
+				opportunityName: 'salesforce.com - 1,000 Widgets',
+				accountName: 'salesforce.com',
+				closeDate: '1/31/15 3:45PM',
+				stage: 'Id. Decision Makers',
+				confidence: '70%',
+				amount: '$25,000',
+				contact: 'nathan@salesforce.com'
+			}]
 		};
 	},
 
@@ -60,18 +69,20 @@ const Example = React.createClass({
 		return (
 			<div style={{ overflow: 'auto' }}>
 				<DataTable
-					bordered
+					fixedLayout
 					items={this.state.items}
 					id="DataTableExample-2"
 					onChange={this.handleChanged}
+					onSort={this.handleSort}
 					selection={this.state.selection}
 					selectRows
 				>
 					<DataTableColumn
-						label="Opportunity Name"
+						label="Name"
+						primaryColumn
 						property="opportunityName"
-						truncate
 						sortable
+						width="5rem"
 					>
 						<CustomDataTableCell />
 					</DataTableColumn>
@@ -126,6 +137,35 @@ const Example = React.createClass({
 
 	handleRowAction (item, action) {
 		console.log(item, action);
+	},
+
+	handleSort (sortColumn, ...rest) {
+		if (this.props.log) { this.props.log('sort')(sortColumn, ...rest); }
+
+		const sortProperty = sortColumn.property;
+		const sortDirection = sortColumn.sortDirection;
+		const newState = {
+			items: [...this.state.items]
+		};
+
+		// needs to work in both directions
+
+		newState.items = newState.items.sort((a, b) => {
+			let val = 0;
+
+			if (a[sortProperty] > b[sortProperty]) {
+				val = 1;
+			}
+			if (a[sortProperty] < b[sortProperty]) {
+				val = -1;
+			}
+
+			if (sortDirection === 'desc') val = val * -1;
+
+			return val;
+		});
+
+		this.setState(newState);
 	}
 });
 
