@@ -101,6 +101,10 @@ const Input = React.createClass({
 		 */
 		id: PropTypes.string,
 		/**
+		 * This callback exposes the input reference / DOM node to parent components. `<Parent inputRef={(inputComponent) => this.input = inputComponent} />
+		 */
+		inputRef: PropTypes.func,
+		/**
 		 * This label appears above the input.
 		 */
 		label: PropTypes.string,
