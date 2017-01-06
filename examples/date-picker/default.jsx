@@ -1,8 +1,11 @@
-import React from 'react';
-import Datepicker from '~/components/date-picker';
+import React, { PropTypes } from 'react';
+import Datepicker from '~/components/date-picker/date-picker';
 
 const Example = React.createClass({
 	displayName: 'DatepickerExample',
+	propTypes: {
+		log: PropTypes.func
+	},
 
 	render () {
 		return (

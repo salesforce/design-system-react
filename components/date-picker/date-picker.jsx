@@ -8,7 +8,6 @@
  */
 
 import React, { PropTypes } from 'react';
-import ReactDOM from 'react-dom';
 
 import Dialog from '../utilities/dialog';
 import CalendarWrapper from './private/calendar-wrapper';
@@ -38,6 +37,10 @@ import KEYS from '../../utilities/KEYS';
 
 import { DATEPICKER } from '../../utilities/constants';
 
+/* A datepicker is a non text input form element. You can select a single date from a popup or inline calendar. The datepicker supplied by this library comes with an input by default, but other components could be passed in as children--however, pairing with other components is untested.
+
+This component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.
+*/
 const Datepicker = React.createClass({
 	displayName: DATEPICKER,
 
@@ -125,6 +128,23 @@ const Datepicker = React.createClass({
 		 * Custom function to parase date string into and return a `Date` object. Default function passes the input value to `Date()` and prays. Use an external library such as [MomentJS](https://github.com/moment/moment/) if additional date parsing is needed.
 		 */
 		parser: PropTypes.func,
+		/**
+		 * Absolutely positioned DOM nodes, such as a datepicker dialog, may need their own React DOM tree root. They may need their alignment "flipped" if extended beyond the window or outside the bounds of an overflow-hidden scrolling modal. This library's portal mounts are added as a child node of `body`. This prop will be triggered instead of the default `ReactDOM.mount()` when this dialog is mounted. This prop is useful for testing and simliar to a "callback ref." Two arguments,`reactElement` and `domContainerNode` are passed in. Consider the following code that bypasses the internal mount and uses an Enzyme wrapper to mount the React root tree to the DOM.
+		 *
+		 * ```
+		 * <Datepicker
+				isOpen
+				portalMount={(reactElement, domContainerNode) => {
+					portalWrapper = Enzyme.mount(reactElement, { attachTo: domContainerNode });
+				}}
+				onOpen={() => {
+					expect(portalWrapper.find(`#my-heading`)).to.exist;
+					done();
+				}}
+			/>
+			```
+		 */
+		portalMount: PropTypes.func,
 		/**
 		 * Function called when the calendar dialog would like hide.
 		 */
@@ -272,12 +292,12 @@ const Datepicker = React.createClass({
 		}
 
 		if (isOpen) {
-			this.setState({
-				isOpen: false
-			});
+			this.setState({ isOpen: false });
 		}
 
-		this.setFocusToInput();
+		if (this.input) {
+			this.input.focus();
+		}
 	},
 
 	openDialog () {
@@ -285,12 +305,6 @@ const Datepicker = React.createClass({
 			this.props.onRequestOpen();
 		} else {
 			this.setState({ isOpen: true });
-		}
-	},
-
-	setFocusToInput () {
-		if (this.input) {
-			ReactDOM.findDOMNode(this.input).querySelector('input').focus();
 		}
 	},
 
@@ -329,8 +343,8 @@ const Datepicker = React.createClass({
 			this.props.onOpen();
 		}
 
-		if (this.datepickerDialog) {
-			ReactDOM.findDOMNode(this.datepickerDialog).querySelector('.slds-is-selected').focus();
+		if (this.selectedDateCell) {
+			this.selectedDateCell.focus();
 		}
 	},
 
@@ -345,6 +359,7 @@ const Datepicker = React.createClass({
 					flippable={!this.props.hasStaticAlignment}
 					onClose={this.handleClose}
 					onOpen={this.handleOpen}
+					portalMount={this.props.portalMount}
 					targetElement={this.input}
 				>
 				{this.getDatePicker()}
@@ -367,8 +382,8 @@ const Datepicker = React.createClass({
 			monthLabels={this.props.monthLabels}
 			onRequestClose={this.handleRequestClose}
 			onSelectDate={this.handleCalendarChange}
-			ref={(component) => {
-				this.datepickerDialog = component;
+			ref={() => {
+				// since it's inline, there is no callback except on render
 				if (this.props.isInline) {
 					this.handleOpen();
 				}
@@ -376,6 +391,7 @@ const Datepicker = React.createClass({
 			relativeYearFrom={this.props.relativeYearFrom}
 			relativeYearTo={this.props.relativeYearTo}
 			selectedDate={date || new Date()}
+			selectedDateRef={(component) => { this.selectedDateCell = component; }}
 			todayLabel={this.props.todayLabel}
 			weekDayLabels={this.props.weekDayLabels}
 		/>);
@@ -404,9 +420,6 @@ const Datepicker = React.createClass({
 
 	render () {
 		const clonedProps = {
-			ref: (component) => { this.input = component; },
-			'aria-expanded': this.getIsOpen(),
-			// className: classNames(outsideClickIgnoreClass),
 			disabled: this.props.children && !!this.props.children.props.disabled || this.props.disabled,
 			iconRight: this.props.children && !!this.props.children.props.iconRight || (<InputIcon
 				assistiveText={this.props.assistiveTextOpenCalendar}
@@ -417,6 +430,7 @@ const Datepicker = React.createClass({
 				onClick={this.openDialog}
 			/>),
 			id: this.getId(),
+			inputRef: (component) => { this.input = component; },
 			onChange: this.handleInputChange,
 			onClick: () => {
 				this.openDialog();

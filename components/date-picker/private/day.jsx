@@ -8,7 +8,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React, { PropTypes } from 'react';
-import ReactDOM from 'react-dom';
 
 import { KEYS, EventUtil, DateUtil } from '../../../utilities';
 
@@ -66,6 +65,10 @@ const DatepickerCalendarDay = React.createClass({
 		 * Currently selected date. This should be present in the input field.
 		 */
 		selectedDate: PropTypes.instanceOf(Date),
+		/**
+		 * Component reference / DOM node for selected day.
+		 */
+		selectedDateRef: PropTypes.func,
 		/**
 		 * Label of shortcut to jump to today within the calendar. Also used for assistive text for the current day.
 		 */
@@ -131,7 +134,12 @@ const DatepickerCalendarDay = React.createClass({
 				})}
 				onClick={this.handleClick}
 				onKeyDown={this.handleKeyDown}
-				ref={(component) => { this.dayCell = component; }}
+				ref={(component) => {
+					this.dayCell = component;
+					if (isSelectedDay) {
+						this.props.selectedDateRef(component);
+					}
+				}}
 				role="gridcell"
 				tabIndex={!this.props.calendarHasFocus && isFirstDayOfMonth && isCurrentMonth ? 0 : -1}
 			>

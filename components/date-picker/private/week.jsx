@@ -65,6 +65,10 @@ const DatepickerWeek = React.createClass({
 		 */
 		selectedDate: PropTypes.instanceOf(Date).isRequired,
 		/**
+		 * Component reference / DOM node for selected day.
+		 */
+		selectedDateRef: PropTypes.func,
+		/**
 		 * Label of shortcut to jump to today within the calendar. Also used for assistive text for the current day.
 		 */
 		todayLabel: PropTypes.string.isRequired
@@ -79,17 +83,18 @@ const DatepickerWeek = React.createClass({
 			days.push(<Day
 				calendarHasFocus={this.props.calendarHasFocus}
 				date={date}
-				selectedDate={this.props.selectedDate}
-				onSelectDate={this.props.onSelectDate}
-				initialDateForCalendarRender={this.props.initialDateForCalendarRender}
 				focusedDate={this.props.focusedDate}
 				focused={this.props.calendarHasFocus && DateUtil.isSameDay(this.props.focusedDate, date)}
+				initialDateForCalendarRender={this.props.initialDateForCalendarRender}
 				key={date.toString()}
 				onKeyboardNavigateToNextDay={this.props.onKeyboardNavigateToNextDay}
 				onKeyboardNavigateToNextWeek={this.props.onKeyboardNavigateToNextWeek}
 				onKeyboardNavigateToPreviousDay={this.props.onKeyboardNavigateToPreviousDay}
 				onKeyboardNavigateToPreviousWeek={this.props.onKeyboardNavigateToPreviousWeek}
 				onRequestClose={this.props.onRequestClose}
+				onSelectDate={this.props.onSelectDate}
+				selectedDate={this.props.selectedDate}
+				selectedDateRef={this.props.selectedDateRef}
 				todayLabel={this.props.todayLabel}
 			/>);
 			date = DateUtil.addDays(date, 1);

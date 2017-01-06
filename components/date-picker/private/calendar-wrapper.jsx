@@ -81,6 +81,10 @@ const DatepickerCalendarWrapper = React.createClass({
 		 */
 		selectedDate: React.PropTypes.instanceOf(Date),
 		/**
+		 * Component reference / DOM node for selected day.
+		 */
+		selectedDateRef: PropTypes.func,
+		/**
 		 * Label of shortcut to jump to today within the calendar. Also used for assistive text for the current day.
 		 */
 		todayLabel: PropTypes.string.isRequired,
@@ -165,6 +169,7 @@ const DatepickerCalendarWrapper = React.createClass({
 					onRequestClose={this.handleRequestClose}
 					onSelectDate={this.props.onSelectDate}
 					selectedDate={this.props.selectedDate}
+					selectedDateRef={this.props.selectedDateRef}
 					todayLabel={this.props.todayLabel}
 					weekDayLabels={this.props.weekDayLabels}
 				/>
