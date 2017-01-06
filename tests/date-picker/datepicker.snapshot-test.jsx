@@ -2,20 +2,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import DatepickerDefault from '../../examples/date-picker/default';
-
-function createNodeMock () {
-	return {
-		focus () {}
-	};
-}
-
-const options = { createNodeMock };
+import SnapshotDefault from '../../examples/date-picker/snapshot-default';
 
 test('Datepicker Default Snapshot', () => {
 	const domTree = renderer.create(
-		<DatepickerDefault />,
-		options
+		<SnapshotDefault />,
 	).toJSON();
 	expect(domTree).toMatchSnapshot();
 });
