@@ -171,7 +171,7 @@ exports[`test Datepicker Default Snapshot 1`] = `
               aria-haspopup="true"
               className="slds-button slds-button--neutral slds-picklist__label"
               disabled={undefined}
-              id="Hk-ndPOarx"
+              id="sample-datepicker-year-picklist"
               onClick={[Function]}
               tabIndex={0}>
               <span

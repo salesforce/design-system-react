@@ -15,6 +15,10 @@ const DatepickerYearSelector = React.createClass({
 
 	propTypes: {
 		/**
+		 * HTML id for component
+		 */
+		id: PropTypes.string,
+		/**
      * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
      */
 		initialDateForCalendarRender: PropTypes.instanceOf(Date).isRequired,
@@ -59,6 +63,7 @@ const DatepickerYearSelector = React.createClass({
 					className="slds-picklist--fluid slds-shrink-none"
 					initialFocus
 					isInline
+					id={`${this.props.id}-year-picklist`}
 					onSelect={this.handleSelect}
 					options={this.getOptions()}
 					placeholder="Year"
