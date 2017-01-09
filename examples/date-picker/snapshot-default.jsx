@@ -10,6 +10,7 @@ const Example = React.createClass({
 				id="sample-datepicker"
 				isInline
 				isOpen
+				value={new Date(2014, 6, 23)}
 			/>
 		);
 	}

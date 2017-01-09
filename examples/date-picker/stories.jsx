@@ -15,4 +15,4 @@ storiesOf(DATE_PICKER, module)
 	.add('ISO weekdays', () => (<IsoWeekdays log={action} />))
 	.add('Custom Input', () => (<CustomInput log={action} />))
 	.add('Inline menu', () => (<Datepicker isInline />))
-	.add('Markup Snapshot', () => (<SnaphotDefault />));
+	.add('DOM Snapshot', () => (<SnaphotDefault />));
