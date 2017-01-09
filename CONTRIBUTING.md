@@ -45,7 +45,7 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 - <a name="approved-slds-patterns" href="#approved-slds-patterns">#</a> **Only submit approved design system patterns.** This library should include only components which have approved patterns in Salesforce's [design system](https://www.lightningdesignsystem.com/) or the latest internal beta releases. If there is a use case from a designer that conforms to a design pattern, that component should be able to be implemented with this library.
 
-- <a name="avoid-mixins" href="#avoid-mixins">#</a> **Avoid mixins.** Instead, import and use shared code and external libraries as libraries, or use higher-order components. Do not add external dependencies _to production dependencies_ list unless absolutely necessary. Consider the "total cost of ownership" of all dependencies.
+- <a name="avoid-mixins" href="#avoid-mixins">#</a> **Avoid implied mixins.** Instead, import and use shared code and external libraries as libraries, or use higher-order components in order to more easily trace the code execution. Do not add external dependencies _to production dependencies_ list unless absolutely necessary. Consider the "total cost of ownership" of all dependencies.
 
 - <a name="avoid-css" href="#avoid-css">#</a> **Avoid inline CSS style/custom classes.** We are blessed to have a team of great CSS developers working on our design system. Use their CSS or contribute code back to them.
 
@@ -54,7 +54,7 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 - <a name="familiarize" href="#familiarize">#</a>**Do not create in a vaccuum.** Familiarize yourself with concepts used in the rest of the library.
 
-- <a name="react-create-class" href="#react-create-class">#</a> `React.createClass` is preferred over ES6 classes and use of `extend` at this time.
+- <a name="react-create-class" href="#react-create-class">#</a> Use `React.createClass` and not ES6 classes/`extend`. This prevents class hierarchies and tight coupling being created beyond the basic `React.Component`. This completely avoids the gorilla-banana problem (“what you wanted was a banana, what you got was a gorilla holding the banana, and the entire jungle” - Joe Armstrong).
 
 - <a name="event-callbacks" href="#event-callbacks">#</a> **Use consistent callback parameters.** Event callbacks should pass in the synthetic event, then a data object with contents that relate to the event.
 
