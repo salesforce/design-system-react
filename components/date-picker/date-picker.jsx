@@ -48,7 +48,7 @@ const Datepicker = React.createClass({
 
 	propTypes: {
 		/**
-		 * Three letter abbreviations of the days of the week, starting on Sunday.
+		 * Three letter abbreviations of the days of the week, starting on Sunday. Tested wtih snapshot testing.
 		 */
 		abbreviatedWeekDayLabels: PropTypes.array,
 		/**
@@ -127,6 +127,14 @@ const Datepicker = React.createClass({
 		 */
 		onOpen: PropTypes.func,
 		/**
+		 * Function called when the calendar dialog would like hide.
+		 */
+		onRequestClose: PropTypes.func,
+		/**
+		 * Function called when the calendar dialog would like show.
+		 */
+		onRequestOpen: PropTypes.func,
+		/**
 		 * Custom function to parase date string into and return a `Date` object. Default function passes the input value to `Date()` and prays. Use an external library such as [MomentJS](https://github.com/moment/moment/) if additional date parsing is needed.
 		 */
 		parser: PropTypes.func,
@@ -147,14 +155,6 @@ const Datepicker = React.createClass({
 			```
 		 */
 		portalMount: PropTypes.func,
-		/**
-		 * Function called when the calendar dialog would like hide.
-		 */
-		onRequestClose: PropTypes.func,
-		/**
-		 * Function called when the calendar dialog would like show.
-		 */
-		onRequestOpen: PropTypes.func,
 		/**
 		 * Placeholder text for input
 		 */
@@ -426,7 +426,7 @@ const Datepicker = React.createClass({
 			iconRight: this.props.children && !!this.props.children.props.iconRight || (<InputIcon
 				assistiveText={this.props.assistiveTextOpenCalendar}
 				aria-haspopup
-				aria-expanded={this.state.isOpen}
+				aria-expanded={this.getIsOpen()}
 				category="utility"
 				name="event"
 				onClick={this.openDialog}
