@@ -21,6 +21,7 @@ const Example = React.createClass({
 
 	getInitialState () {
 		return {
+			sortColumn: "opportunityName",
 			items: [
 				{
 					id: '8IKZHZZV80',
@@ -82,12 +83,15 @@ const Example = React.createClass({
 						primaryColumn
 						property="opportunityName"
 						sortable
+						isSorted={this.state.sortColumn === "opportunityName"}
 						width="5rem"
 					>
 						<CustomDataTableCell />
 					</DataTableColumn>
 					<DataTableColumn
 						label="Account Name"
+						sortable
+						isSorted={this.state.sortColumn === "accountName"}
 						property="accountName"
 					/>
 					<DataTableColumn
@@ -145,6 +149,7 @@ const Example = React.createClass({
 		const sortProperty = sortColumn.property;
 		const sortDirection = sortColumn.sortDirection;
 		const newState = {
+			sortColumn: sortProperty,
 			items: [...this.state.items]
 		};
 
