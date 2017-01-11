@@ -48,54 +48,54 @@ const Datepicker = React.createClass({
 
 	propTypes: {
 		/**
-		 * Three letter abbreviations of the days of the week, starting on Sunday. Tested wtih snapshot testing.
+		 * Three letter abbreviations of the days of the week, starting on Sunday. _Tested with snapshot testing._
 		 */
 		abbreviatedWeekDayLabels: PropTypes.array,
 		/**
-		 * Label for button to go to the next month
+		 * Label for button to go to the next month _Tested with snapshot testing._
 		 */
 		assistiveTextNextMonth: PropTypes.string,
 		/**
-		 * Call to action label for calendar dialog trigger
+		 * Call to action label for calendar dialog trigger _Tested with snapshot testing._
 		 */
 		assistiveTextOpenCalendar: PropTypes.string,
 		/**
-		 * Label for button to go to the previous month
+		 * Label for button to go to the previous month _Tested with snapshot testing._
 		 */
 		assistiveTextPreviousMonth: PropTypes.string,
 		/**
-		 * Aligns the right or left side of the menu with the respective side of the trigger.
+		 * Aligns the right or left side of the menu with the respective side of the trigger. _Tested with snapshot testing._
 		 */
 		align: PropTypes.oneOf(['left', 'right']),
 		/**
-		 * Pass in an <Input /> component to customize it. Event handlers for the input (if needed) should be added here and not to this component. `<Input onKeyDown... />`.`
+		 * Pass in an <Input /> component to customize it. Event handlers for the input (if needed) should be added here and not to this component. `<Input onKeyDown... />`.` _Tested with Mocha framework._
 		 */
 		children: PropTypes.node,
 		/**
-		 * CSS classes to be added to tag with `slds-datepicker`.
+		 * CSS classes to be added to tag with `slds-datepicker`. _Tested with snapshot testing._
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
-		 * If true, constrains the menu to the scroll parent. Has no effect if `isInline` is `true`.
+		 * If true, constrains the menu to the scroll parent. Has no effect if `isInline` is `true`. _Not tested._
 		 */
 		constrainToScrollParent: PropTypes.bool,
 		/**
-		 * Disable input and calendar.
+		 * Disable input and calendar. _Tested with Mocha framework._
 		 */
 		disabled: PropTypes.bool,
 		/**
-		 * Date formatting function
+		 * Date formatting function. _Tested with snapshot testing._
 		 */
 		formatter: PropTypes.func,
 		/**
-		 * Value of input that gets passed to `parser` prop. Set the `value` prop if using a `Date` object. Use an external library such as [MomentJS](https://github.com/moment/moment/) if additional date formatting or internationalization is needed.
+		 * Value of input that gets passed to `parser` prop. Set the `value` prop if using a `Date` object. Use an external library such as [MomentJS](https://github.com/moment/moment/) if additional date formatting or internationalization is needed. _Not tested._
 		 */
 		formattedValue: PropTypes.string,
-		/* Prevents the dropdown from changing position based on the viewport/window. If set to true your dropdowns can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the dropdowns contents scrollable to fit the menu on the screen.
+		/* Prevents the dropdown from changing position based on the viewport/window. If set to true your dropdowns can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the dropdowns contents scrollable to fit the menu on the screen. _Not tested._
 		*/
 		hasStaticAlignment: PropTypes.bool,
 		/**
-		 * HTML id for component
+		 * HTML id for component _Tested with snapshot testing._
 		 */
 		id: PropTypes.string,
 		/**
@@ -107,35 +107,35 @@ const Datepicker = React.createClass({
 		 */
 		isOpen: PropTypes.bool,
 		/**
-		 * Makes Monday the first day of the week
+		 * Makes Monday the first day of the week. _Tested with snapshot testing._
 		 */
 		isIsoWeekday: PropTypes.bool,
 		/**
-		 * Names of the months
+		 * Names of the months. _Tested with snapshot testing._
 		 */
 		monthLabels: PropTypes.array,
 		/**
-		 * Triggered when the date changes. It receives an object. {date: [Date object], formattedDate: [string]}. Can be used for validation.
+		 * Triggered when the date changes. It receives an object. {date: [Date object], formattedDate: [string]}. Can be used for validation. Please note data.date is Coordinated Universal Time (UTC). _Tested with Mocha framework._
 		 */
 		onChange: PropTypes.func,
 		/**
-		 * Triggered when the calendar is closed.
+		 * Triggered when the calendar is closed. _Tested with Mocha framework._
 		 */
 		onClose: PropTypes.func,
 		/**
-		 * Triggered when the calendar has opened.
+		 * Triggered when the calendar has opened. _Tested with Mocha framework._
 		 */
 		onOpen: PropTypes.func,
 		/**
-		 * Function called when the calendar dialog would like hide.
+		 * Function called when the calendar dialog would like hide. _Tested with Mocha framework._
 		 */
 		onRequestClose: PropTypes.func,
 		/**
-		 * Function called when the calendar dialog would like show.
+		 * Function called when the calendar dialog would like show. _Tested with Mocha framework._
 		 */
 		onRequestOpen: PropTypes.func,
 		/**
-		 * Custom function to parase date string into and return a `Date` object. Default function passes the input value to `Date()` and prays. Use an external library such as [MomentJS](https://github.com/moment/moment/) if additional date parsing is needed.
+		 * Custom function to parse date string into and return a `Date` object. Default function passes the input value to `Date()` and prays for a miracle. Use an external library such as [MomentJS](https://github.com/moment/moment/) if additional date parsing is needed. _Tested with snapshot testing._
 		 */
 		parser: PropTypes.func,
 		/**
@@ -153,34 +153,35 @@ const Datepicker = React.createClass({
 				}}
 			/>
 			```
+			_Tested with Mocha framework._
 		 */
 		portalMount: PropTypes.func,
 		/**
-		 * Placeholder text for input
+		 * Placeholder text for input. _Tested with snapshot testing._
 		 */
 		placeholder: PropTypes.string,
 		/**
-		 * Offset of year from current year that can be selected in the year selection dropdown. (2017 - 5 = 2012).
+		 * Offset of year from current year that can be selected in the year selection dropdown. (2017 - 5 = 2012). _Tested with snapshot testing._
 		 */
 		relativeYearFrom: PropTypes.number,
 		/**
-		 * Offset of year from current year that can be selected in the year selection dropdown. (2017 + 5 = 2012).
+		 * Offset of year from current year that can be selected in the year selection dropdown. (2017 + 5 = 2012). _Tested with snapshot testing._
 		 */
 		relativeYearTo: PropTypes.number,
 		/**
-		 * Label of shortcut to jump to today within the calendar. This is also used for assistive text on today's date.
+		 * Label of shortcut to jump to today within the calendar. This is also used for assistive text on today's date. _Tested with snapshot testing._
 		 */
 		todayLabel: PropTypes.string,
 		/**
-		 * CSS classes to be added to tag with `slds-datepicker-trigger`. This is typically a wrapping `div` around the input.
+		 * CSS classes to be added to tag with `slds-datepicker-trigger`. This is typically a wrapping `div` around the input. _Tested with snapshot testing._
 		 */
 		triggerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
-     * Sets date with a `Date` ECMAScript object.
+     * Sets date with a `Date` ECMAScript object. _Tested with snapshot testing._
      */
 		value: PropTypes.instanceOf(Date),
 		/**
-		 * Full names of the seven days of the week, starting on Sunday.
+		 * Full names of the seven days of the week, starting on Sunday. _Tested with snapshot testing._
 		 */
 		weekDayLabels: PropTypes.array
 	},

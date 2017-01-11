@@ -26,6 +26,7 @@ import { createMountNode, destroyMountNode } from '../enzyme-helpers';
 
 // Import your internal dependencies (for example):
 import Datepicker from '../../components/date-picker';
+import Input from '../../components/forms/input';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme
@@ -33,10 +34,8 @@ import Datepicker from '../../components/date-picker';
 chai.use(chaiEnzyme());
 
 const defaultProps = {
-	id: 'sample-datepicker'
-};
-
-const defaultIds = {
+	id: 'sample-datepicker',
+	value: new Date(2007, 0, 6)
 };
 
 /* A re-usable demo component fixture outside of `describe` sections
@@ -93,7 +92,7 @@ describe('SLDSDatepicker', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('has aria-haspopup, correct aria-expanded on input trigger', function (done) {
+		it('has aria-haspopup, correct aria-expanded on input trigger. also tests portalMount.', function (done) {
 			wrapper = mount(<DemoComponent
 				isOpen
 				portalMount={(reactElement, domContainerNode) => {
@@ -101,9 +100,8 @@ describe('SLDSDatepicker', function () {
 				}}
 				onOpen={() => {
 					const inputTrigger = wrapper.find('.slds-input__icon');
-					console.log(inputTrigger);
-					
 					expect(inputTrigger.node.getAttribute('aria-haspopup')).to.equal('true');
+
 					const ariaExpanded = inputTrigger.find('button').node.getAttribute('aria-expanded');
 					expect(ariaExpanded).to.equal('true');
 					done();
@@ -111,6 +109,164 @@ describe('SLDSDatepicker', function () {
 			/>, { attachTo: mountNode });
 		});
 	});
+
+	// PROPS AND CHILDREN
+
+	describe('Optional props', () => {
+		const customPlaceholder = 'With custom Input';
+		const optionalProps = {
+			children: (<Input placeholder={customPlaceholder} value="" />)
+		};
+
+		beforeEach(() => {
+			mountNode = createMountNode({ context: this });
+		});
+
+		afterEach(() => {
+			destroyMountNode({ wrapper, mountNode });
+		});
+
+		it('has custom input with custom placeholder', function () {
+			wrapper = mount(<DemoComponent
+				{...optionalProps}
+			/>, { attachTo: mountNode });
+
+			expect(wrapper.find('input').node.getAttribute('placeholder')).to.equal(customPlaceholder);
+		});
+	});
+
+	// EVENTS
+
+	describe('onClose, onRequestClose, onOpen callbacks are set', function () {
+		beforeEach(() => {
+			mountNode = createMountNode({ context: this });
+		});
+
+		afterEach(() => {
+			destroyMountNode({ wrapper, mountNode });
+		});
+
+		it('onOpen is executed when trigger is clicked, onClose is executed when date is selected', function (done) {
+			wrapper = mount(<DemoComponent
+				portalMount={(reactElement, domContainerNode) => {
+					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
+				}}
+				onClose={() => {
+					setTimeout(() => {
+						const month = portalWrapper.find('.datepicker__month');
+						expect(month.node).to.not.exist;
+						done();
+					}, 0);
+				}}
+				onRequestClose={() => {
+					const month = portalWrapper.find('.datepicker__month');
+					expect(month.node).to.exist;
+				}}
+				onOpen={() => {
+					const firstDayOfMonth = portalWrapper.find('.datepicker__month [aria-disabled=false]').first();
+					expect(firstDayOfMonth).to.exist;
+					firstDayOfMonth.simulate('click', {});
+				}}
+			/>, { attachTo: mountNode });
+
+			const trigger = wrapper.find('.slds-input__icon');
+			trigger.simulate('click', {});
+		});
+
+		it('onChange is triggered when date is selected', function (done) {
+			wrapper = mount(<DemoComponent
+				portalMount={(reactElement, domContainerNode) => {
+					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
+				}}
+				onChange={(event, data) => {
+					setTimeout(() => {
+						const input = wrapper.find('input');
+						expect(input.node.value).to.equal('1/1/2007');
+
+						// test callback parameters
+						expect(String(data.date), 'utf-8').to.equal(String(new Date('1/1/2007'), 'utf-8'));
+						expect(data.formattedDate).to.equal('1/1/2007');
+						
+						done();
+					}, 0);
+				}}
+				onOpen={() => {
+					const firstDayOfMonth = portalWrapper.find('.datepicker__month [aria-disabled=false]').first();
+					expect(firstDayOfMonth).to.exist;
+					firstDayOfMonth.simulate('click', {});
+				}}
+			/>, { attachTo: mountNode });
+
+			const trigger = wrapper.find('.slds-input__icon');
+			trigger.simulate('click', {});
+		});
+	});
+
+	// describe('Mouse and keyboard interactions', () => {
+	// 	/* Test event callback functions using Simulate. For more information, view
+	// 	 * https://github.com/airbnb/enzyme/blob/master/docs/api/ReactWrapper/simulate.md
+	// 	 */
+	// 	describe('onClick', function () {
+	// 		const triggerClicked = sinon.spy();
+
+	// 		beforeEach(() => {
+	// 			mountNode = createMountNode({ context: this });
+	// 		});
+
+	// 		afterEach(() => {
+	// 			destroyMountNode({ wrapper, mountNode });
+	// 		});
+
+	// 		it('calls onClick handler on trigger, click on popover close closes', function (done) {
+	// 			wrapper = mount(<DemoComponent
+	// 				onClick={triggerClicked}
+	// 				portalMount={(reactElement, domContainerNode) => {
+	// 					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
+	// 				}}
+	// 				onClose={() => {
+	// 					setTimeout(() => {
+	// 						const popover = portalWrapper.find(`#${defaultIds.popover}`);
+	// 						expect(popover.node).to.not.exist;
+	// 						done();
+	// 					}, 0);
+	// 				}}
+	// 				onOpen={() => {
+	// 					const popover = portalWrapper.find(`#${defaultIds.popover}`);
+
+	// 					expect(popover).to.exist;
+	// 					expect(triggerClicked.callCount).to.equal(1);
+
+	// 					popover.find('.slds-popover__close').simulate('click', {});
+	// 				}}
+	// 			/>, { attachTo: mountNode });
+
+	// 			const trigger = wrapper.find(`#${defaultIds.trigger}`);
+	// 			trigger.simulate('click', {});
+	// 		});
+
+	// 		it('opens on click, closes on ESC', function (done) {
+	// 			wrapper = mount(<DemoComponent
+	// 				portalMount={(reactElement, domContainerNode) => {
+	// 					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
+	// 				}}
+	// 				onClose={() => {
+	// 					setTimeout(() => {
+	// 						const popover = portalWrapper.find(`#${defaultIds.popover}`);
+	// 						expect(popover.node).to.not.exist;
+	// 						done();
+	// 					}, 0);
+	// 				}}
+	// 				onOpen={() => {
+	// 					const popover = portalWrapper.find(`#${defaultIds.popover}`);
+	// 					popover.simulate('keyDown', { key: 'Esc', keyCode: 27, which: 27 });
+	// 				}}
+	// 			/>, { attachTo: mountNode });
+
+	// 			const trigger = wrapper.find(`#${defaultIds.trigger}`);
+	// 			trigger.simulate('click', {});
+	// 		});
+	// 	});
+	// });
 
 	describe('Disabled', function () {
 		const triggerClicked = sinon.spy();

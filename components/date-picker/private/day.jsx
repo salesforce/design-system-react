@@ -83,11 +83,6 @@ const DatepickerCalendarDay = React.createClass({
 
 	handleClick (event) {
 		this.props.onSelectDate(event, { date: this.props.date });
-
-		if (event.nativeEvent) {
-			event.nativeEvent.stopImmediatePropagation();
-			event.nativeEvent.preventDefault();
-		}
 	},
 
 	handleKeyDown (event) {

@@ -11,6 +11,7 @@ const Example = React.createClass({
 				isInline
 				isOpen
 				value={new Date(2014, 6, 23)}
+				{...this.props}
 			/>
 		);
 	}
