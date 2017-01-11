@@ -291,6 +291,13 @@ const Datepicker = React.createClass({
 				timezoneOffset: date.getTimezoneOffset()
 			});
 		}
+
+		// Please remove `onDateChange` on the next breaking change.
+		/* eslint-disable react/prop-types */
+		if (this.props.onDateChange) {
+			this.props.onDateChange(date, this.props.formatter(date));
+		}
+		/* eslint-enable react/prop-types */
 	},
 
 	handleClickOutside () {
@@ -387,7 +394,8 @@ const Datepicker = React.createClass({
 			: this.state.value;
 
 		return (<CalendarWrapper
-			abbreviatedWeekDayLabels={this.props.abbreviatedWeekDayLabels}
+			// Please remove `abbrWeekDayLabels` on the next breaking change.
+			abbreviatedWeekDayLabels={this.props.abbreviatedWeekDayLabels || this.props.abbrWeekDayLabels} // eslint-disable-line react/prop-types
 			assistiveTextNextMonth={this.props.assistiveTextNextMonth}
 			assistiveTextPreviousMonth={this.props.assistiveTextPreviousMonth}
 			id={this.getId()}
@@ -460,6 +468,7 @@ const Datepicker = React.createClass({
 			},
 			onKeyDown: this.props.children && this.props.children.props.onKeyDown || this.handleKeyDown,
 			placeholder: this.props.children && this.props.children.props.placeholder || this.props.placeholder,
+			required: this.props.required, // eslint-disable-line react/prop-types
 			value: this.props.children && this.props.children.props.value || this.state.inputValue
 		};
 

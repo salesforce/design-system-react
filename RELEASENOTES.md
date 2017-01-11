@@ -25,11 +25,14 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ---
 
-## Release 0.6.0
+## Release 0.5.5
 
 **MINOR CHANGES**
 
-- Datepicker `onDateChange` now receives an object as it's second parameter `{date: [Date object, formattedDate: [string]}`
+- Datepicker updates
+    - `onChange` (formerly onDateChange) now provides callback with event and a data object in the shape: `{date: [Date object], formattedDate: [string], timezoneOffset: [number]}`
+    - Many new props: calendar alignment, assistive text props, accepts custom input, supports ISO weekday (Monday first), new props to allow calendar to be controlled (onClose, onOpen, onRequestClose, onRequestOpen), `portalMount` prop for testing React root nodes, more alignment with other menu/dialog components
+    - Additional accessiblity testing
 - Move `id` on GlobalNav Link to list item instead of `a`
 - In Button, `aria-*` props now use hyphen instead of camelCase. Use `aria-expanded` and not `ariaExpanded`.
 
