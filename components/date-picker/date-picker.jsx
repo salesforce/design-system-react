@@ -39,6 +39,8 @@ import { DATEPICKER } from '../../utilities/constants';
 
 /* A datepicker is a non text input form element. You can select a single date from a popup or inline calendar. The datepicker supplied by this library comes with an input by default, but other components could be passed in as children--however, pairing with other components is untested.
 
+The calendar is rendered with time/dates based on local browser time of the client. All dates are in local user timezones. Another way to put it is if a user selects a date, they are selecting midnight their time on that day and not mightnight in UTC. If this component is being used in conjuction with a timezone input, you may want to convert dates provided to UTC in that timezone.
+
  * This component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.
  *
  * This component may use a portalMount (a disconnected React subtree mount) within an absolutely positioned DOM node created with [Drop](http://github.hubspot.com/drop/).
@@ -115,7 +117,7 @@ const Datepicker = React.createClass({
 		 */
 		monthLabels: PropTypes.array,
 		/**
-		 * Triggered when the date changes. It receives an object. {date: [Date object], formattedDate: [string]}. Can be used for validation. Please note data.date is Coordinated Universal Time (UTC). _Tested with Mocha framework._
+		 * Triggered when the date changes. `onChange` can be used for form validation if needed. It receives an event and a data object in the shape: `{date: [Date object], formattedDate: [string], timezoneOffset: [number]}`. `data.date` is Coordinated Universal Time (UTC), but the days of the calendar are in local time of the user. The `timezoneOffset` is the difference, in minutes, between UTC and the local time. Please note that this means that the offset is positive if the local timezone is behind UTC and negative if it is ahead. `timezoneOffset` is in minutes, for hours divide by `60`. _Tested with Mocha framework._
 		 */
 		onChange: PropTypes.func,
 		/**
@@ -123,15 +125,19 @@ const Datepicker = React.createClass({
 		 */
 		onClose: PropTypes.func,
 		/**
+		 * Triggered when the user wants to focus on a new day witht he keyboard. It returns the keyboard event a data object with the shape: `{date: [Date object]}`. Keyboard event is ommited if a new month is rendered.  _Tested with Mocha framework._
+		 */
+		onRequestFocusDate: PropTypes.func,
+		/**
 		 * Triggered when the calendar has opened. _Tested with Mocha framework._
 		 */
 		onOpen: PropTypes.func,
 		/**
-		 * Function called when the calendar dialog would like hide. _Tested with Mocha framework._
+		 * Function called when the calendar dialog would like hide. This will turn the calendar dialog into into a controlled component. Please use with `isOpen`. _Tested with Mocha framework._
 		 */
 		onRequestClose: PropTypes.func,
 		/**
-		 * Function called when the calendar dialog would like show. _Tested with Mocha framework._
+		 * Function called when the calendar dialog would like show. This will turn the calendar dialog into into a controlled component. Please use with `isOpen`. _Tested with Mocha framework._
 		 */
 		onRequestOpen: PropTypes.func,
 		/**
@@ -279,7 +285,11 @@ const Datepicker = React.createClass({
 		this.handleRequestClose();
 
 		if (this.props.onChange) {
-			this.props.onChange(event, { date, formattedDate: this.props.formatter(date) });
+			this.props.onChange(event, {
+				date,
+				formattedDate: this.props.formatter(date),
+				timezoneOffset: date.getTimezoneOffset()
+			});
 		}
 	},
 
@@ -383,6 +393,7 @@ const Datepicker = React.createClass({
 			id={this.getId()}
 			isIsoWeekday={this.props.isIsoWeekday}
 			monthLabels={this.props.monthLabels}
+			onRequestFocusDate={this.props.onRequestFocusDate}
 			onRequestClose={this.handleRequestClose}
 			onSelectDate={this.handleCalendarChange}
 			ref={() => {
@@ -406,8 +417,14 @@ const Datepicker = React.createClass({
 			inputValue: event.target.value
 		});
 
+		const date = this.props.parser(event.target.value);
+
 		if (this.props.onChange) {
-			this.props.onChange(event, { date: this.props.parser(event.target.value), formattedDate: event.target.value });
+			this.props.onChange(event, {
+				date,
+				formattedDate: event.target.value,
+				timezoneOffset: date.getTimezoneOffset()
+			});
 		}
 	},
 

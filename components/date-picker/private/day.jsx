@@ -92,10 +92,10 @@ const DatepickerCalendarDay = React.createClass({
 			[KEYS.ENTER]: () => { this.props.onSelectDate(event, { date: fromDate }); },
 			[KEYS.ESCAPE]: () => { this.props.onRequestClose(); },
 			[KEYS.TAB]: () => { this.props.onRequestClose(); },
-			[KEYS.LEFT]: () => { this.props.onKeyboardNavigateToPreviousDay(fromDate); },
-			[KEYS.RIGHT]: () => { this.props.onKeyboardNavigateToNextDay(fromDate); },
-			[KEYS.UP]: () => { this.props.onKeyboardNavigateToPreviousWeek(fromDate); },
-			[KEYS.DOWN]: () => { this.props.onKeyboardNavigateToNextWeek(fromDate); }
+			[KEYS.LEFT]: () => { this.props.onKeyboardNavigateToPreviousDay(event, fromDate); },
+			[KEYS.RIGHT]: () => { this.props.onKeyboardNavigateToNextDay(event, fromDate); },
+			[KEYS.UP]: () => { this.props.onKeyboardNavigateToPreviousWeek(event, fromDate); },
+			[KEYS.DOWN]: () => { this.props.onKeyboardNavigateToNextWeek(event, fromDate); }
 		};
 
 		if (event.keyCode) {

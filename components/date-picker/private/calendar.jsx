@@ -32,6 +32,10 @@ const DatepickerCalendar = React.createClass({
 		 */
 		onChangeMonth: PropTypes.func.isRequired,
 		/**
+		 * Triggered when the keyboard moves focus on the calendar. {date: [Date object], formattedDate: [string]}  _Tested with Mocha framework._
+		 */
+		onRequestFocusDate: PropTypes.func,
+		/**
 		 * Triggered when the calendar is cancelled.
 		 */
 		onRequestClose: PropTypes.func.isRequired,
@@ -66,13 +70,16 @@ const DatepickerCalendar = React.createClass({
 	},
 
 	componentDidUpdate (prevProps) {
-		this.setFocusedDate(prevProps);
+		this.setCalendarRenderSeedDate(prevProps);
 	},
 
-	setFocusedDate (prevProps) {
+	setCalendarRenderSeedDate (prevProps) {
 		// Set prop that sets focus in child component once it is rendered. This occurs when the month DOM has changed. This will trigger a re-render, but no DOM change will occur, just a DOM focus.
 		if (!DateUtil.isEqual(this.props.initialDateForCalendarRender, prevProps.initialDateForCalendarRender)) {
 			this.setState({ focusedDate: this.props.initialDateForCalendarRender });
+			if (this.props.onRequestFocusDate) {
+				this.props.onRequestFocusDate(event, { date: this.props.initialDateForCalendarRender });
+			}
 		}
 	},
 
@@ -87,39 +94,55 @@ const DatepickerCalendar = React.createClass({
 		}
 	},
 
-	handlePreviousDay (date) {
+	handlePreviousDay (event, date) {
 		const prevDate = DateUtil.addDays(date, -1);
 		if (!DateUtil.isSameMonth(prevDate, date)) {
-			this.props.onChangeMonth(prevDate);
+			this.props.onChangeMonth(event, prevDate);
 		} else {
 			this.setState({ focusedDate: prevDate });
+
+			if (this.props.onRequestFocusDate) {
+				this.props.onRequestFocusDate(event, { date: prevDate });
+			}
 		}
 	},
 
-	handleNextDay (date) {
+	handleNextDay (event, date) {
 		const nextDate = DateUtil.addDays(date, 1);
 		if (!DateUtil.isSameMonth(nextDate, date)) {
-			this.props.onChangeMonth(nextDate);
+			this.props.onChangeMonth(event, nextDate);
 		} else {
 			this.setState({ focusedDate: nextDate });
+
+			if (this.props.onRequestFocusDate) {
+				this.props.onRequestFocusDate(event, { date: nextDate });
+			}
 		}
 	},
 
-	handlePreviousWeek (date) {
+	handlePreviousWeek (event, date) {
 		const prevDate = DateUtil.addDays(date, -7);
 		if (!DateUtil.isSameMonth(prevDate, date)) {
-			this.props.onChangeMonth(prevDate);
+			this.props.onChangeMonth(event, prevDate);
 		} else {
 			this.setState({ focusedDate: prevDate });
+
+			if (this.props.onRequestFocusDate) {
+				this.props.onRequestFocusDate(event, { date: prevDate });
+			}
 		}
 	},
 
-	handleNextWeek (date) {
+	handleNextWeek (event, date) {
 		const nextDate = DateUtil.addDays(date, 7);
 		if (!DateUtil.isSameMonth(nextDate, date)) {
-			this.props.onChangeMonth(nextDate);
+			this.props.onChangeMonth(event, nextDate);
 		} else {
 			this.setState({ focusedDate: nextDate });
+
+			if (this.props.onRequestFocusDate) {
+				this.props.onRequestFocusDate(event, { date: nextDate });
+			}
 		}
 	},
 

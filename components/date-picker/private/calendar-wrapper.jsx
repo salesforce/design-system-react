@@ -61,6 +61,10 @@ const DatepickerCalendarWrapper = React.createClass({
 		 */
 		monthLabels: PropTypes.array.isRequired,
 		/**
+		 * Triggered when the keyboard moves focus on the calendar. {date: [Date object], formattedDate: [string]}  _Tested with Mocha framework._
+		 */
+		onRequestFocusDate: PropTypes.func,
+		/**
 		 * Triggered when the calendar is supposed to close.
 		 */
 		onRequestClose: PropTypes.func.isRequired,
@@ -118,7 +122,7 @@ const DatepickerCalendarWrapper = React.createClass({
 		}
 	},
 
-	handleInitialDateForCalendarRenderChange (initialDateForCalendarRender) {
+	handleInitialDateForCalendarRenderChange (event, initialDateForCalendarRender) {
 		this.setState({ initialDateForCalendarRender });
 	},
 
@@ -167,6 +171,7 @@ const DatepickerCalendarWrapper = React.createClass({
 					isIsoWeekday={this.props.isIsoWeekday}
 					onChangeMonth={this.handleInitialDateForCalendarRenderChange}
 					onRequestClose={this.handleRequestClose}
+					onRequestFocusDate={this.props.onRequestFocusDate}
 					onSelectDate={this.props.onSelectDate}
 					selectedDate={this.props.selectedDate}
 					selectedDateRef={this.props.selectedDateRef}

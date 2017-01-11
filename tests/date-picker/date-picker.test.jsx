@@ -80,6 +80,8 @@ describe('SLDSDatepicker', function () {
 	let portalWrapper;
 	let wrapper;
 
+	const triggerClassSelector = '.slds-input__icon';
+
 	describe('Assistive technology', () => {
 		/* Detect if presence of accessibility features such as ARIA
 		 * roles and screen reader text is present in the DOM.
@@ -99,7 +101,7 @@ describe('SLDSDatepicker', function () {
 					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
 				}}
 				onOpen={() => {
-					const inputTrigger = wrapper.find('.slds-input__icon');
+					const inputTrigger = wrapper.find(triggerClassSelector);
 					expect(inputTrigger.node.getAttribute('aria-haspopup')).to.equal('true');
 
 					const ariaExpanded = inputTrigger.find('button').node.getAttribute('aria-expanded');
@@ -169,7 +171,7 @@ describe('SLDSDatepicker', function () {
 				}}
 			/>, { attachTo: mountNode });
 
-			const trigger = wrapper.find('.slds-input__icon');
+			const trigger = wrapper.find(triggerClassSelector);
 			trigger.simulate('click', {});
 		});
 
@@ -184,7 +186,7 @@ describe('SLDSDatepicker', function () {
 						expect(input.node.value).to.equal('1/1/2007');
 
 						// test callback parameters
-						expect(String(data.date), 'utf-8').to.equal(String(new Date('1/1/2007'), 'utf-8'));
+						expect(data.date.getTime()).to.equal(new Date('1/1/2007').getTime());
 						expect(data.formattedDate).to.equal('1/1/2007');
 						
 						done();
@@ -197,76 +199,115 @@ describe('SLDSDatepicker', function () {
 				}}
 			/>, { attachTo: mountNode });
 
-			const trigger = wrapper.find('.slds-input__icon');
+			const trigger = wrapper.find(triggerClassSelector);
 			trigger.simulate('click', {});
 		});
 	});
 
-	// describe('Mouse and keyboard interactions', () => {
-	// 	/* Test event callback functions using Simulate. For more information, view
-	// 	 * https://github.com/airbnb/enzyme/blob/master/docs/api/ReactWrapper/simulate.md
-	// 	 */
-	// 	describe('onClick', function () {
-	// 		const triggerClicked = sinon.spy();
+	describe('keyboard interactions', () => {
+		/* Test event callback functions using Simulate. For more information, view
+		 * https://github.com/airbnb/enzyme/blob/master/docs/api/ReactWrapper/simulate.md
+		 */
+		describe('Esc when menu is open', function () {
+			beforeEach(() => {
+				mountNode = createMountNode({ context: this });
+			});
 
-	// 		beforeEach(() => {
-	// 			mountNode = createMountNode({ context: this });
-	// 		});
+			afterEach(() => {
+				destroyMountNode({ wrapper, mountNode });
+			});
 
-	// 		afterEach(() => {
-	// 			destroyMountNode({ wrapper, mountNode });
-	// 		});
+			it('opens on trigger click, closes on ESC', function (done) {
+				wrapper = mount(<DemoComponent
+					portalMount={(reactElement, domContainerNode) => {
+						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
+					}}
+					onClose={() => {
+						setTimeout(() => {
+							const month = portalWrapper.find('.datepicker__month');
+							expect(month.node).to.not.exist;
+							done();
+						}, 0);
+					}}
+					onOpen={() => {
+						const firstDayOfMonth = portalWrapper.find('.datepicker__month [aria-disabled=false]').first();
+						firstDayOfMonth.simulate('keyDown', { key: 'Esc', keyCode: 27, which: 27 });
+					}}
+				/>, { attachTo: mountNode });
 
-	// 		it('calls onClick handler on trigger, click on popover close closes', function (done) {
-	// 			wrapper = mount(<DemoComponent
-	// 				onClick={triggerClicked}
-	// 				portalMount={(reactElement, domContainerNode) => {
-	// 					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-	// 				}}
-	// 				onClose={() => {
-	// 					setTimeout(() => {
-	// 						const popover = portalWrapper.find(`#${defaultIds.popover}`);
-	// 						expect(popover.node).to.not.exist;
-	// 						done();
-	// 					}, 0);
-	// 				}}
-	// 				onOpen={() => {
-	// 					const popover = portalWrapper.find(`#${defaultIds.popover}`);
+				const trigger = wrapper.find(triggerClassSelector);
+				trigger.simulate('click', {});
+			});
 
-	// 					expect(popover).to.exist;
-	// 					expect(triggerClicked.callCount).to.equal(1);
+			it('navigates to next week', function (done) {
+				wrapper = mount(<DemoComponent
+					isOpen
+					portalMount={(reactElement, domContainerNode) => {
+						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
+					}}
+					onOpen={() => {
+						const selectedDay = portalWrapper.find('.datepicker__month [aria-selected=true]');
+						selectedDay.simulate('keyDown', { key: 'Down', keyCode: 40, which: 40 });
+					}}
+					onRequestFocusDate={(event, data) => {
+						expect(data.date.getTime()).to.equal(new Date(2007, 0, 13).getTime());
+						done();
+					}}
+				/>, { attachTo: mountNode });
+			});
 
-	// 					popover.find('.slds-popover__close').simulate('click', {});
-	// 				}}
-	// 			/>, { attachTo: mountNode });
+			it('navigates to next day', function (done) {
+				wrapper = mount(<DemoComponent
+					isOpen
+					portalMount={(reactElement, domContainerNode) => {
+						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
+					}}
+					onOpen={() => {
+						const selectedDay = portalWrapper.find('.datepicker__month [aria-selected=true]');
+						selectedDay.simulate('keyDown', { key: 'Right', keyCode: 39, which: 39 });
+					}}
+					onRequestFocusDate={(event, data) => {
+						expect(data.date.getTime()).to.equal(new Date(2007, 0, 7).getTime());
+						done();
+					}}
+				/>, { attachTo: mountNode });
+			});
 
-	// 			const trigger = wrapper.find(`#${defaultIds.trigger}`);
-	// 			trigger.simulate('click', {});
-	// 		});
+			it('navigates to previous week (that is of a previous month)', function (done) {
+				wrapper = mount(<DemoComponent
+					isOpen
+					portalMount={(reactElement, domContainerNode) => {
+						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
+					}}
+					onOpen={() => {
+						const selectedDay = portalWrapper.find('.datepicker__month [aria-selected=true]');
+						selectedDay.simulate('keyDown', { key: 'Up', keyCode: 38, which: 38 });
+					}}
+					onRequestFocusDate={(event, data) => {
+						expect(data.date.getTime()).to.equal(new Date(2006, 11, 30).getTime());
+						done();
+					}}
+				/>, { attachTo: mountNode });
+			});
 
-	// 		it('opens on click, closes on ESC', function (done) {
-	// 			wrapper = mount(<DemoComponent
-	// 				portalMount={(reactElement, domContainerNode) => {
-	// 					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-	// 				}}
-	// 				onClose={() => {
-	// 					setTimeout(() => {
-	// 						const popover = portalWrapper.find(`#${defaultIds.popover}`);
-	// 						expect(popover.node).to.not.exist;
-	// 						done();
-	// 					}, 0);
-	// 				}}
-	// 				onOpen={() => {
-	// 					const popover = portalWrapper.find(`#${defaultIds.popover}`);
-	// 					popover.simulate('keyDown', { key: 'Esc', keyCode: 27, which: 27 });
-	// 				}}
-	// 			/>, { attachTo: mountNode });
-
-	// 			const trigger = wrapper.find(`#${defaultIds.trigger}`);
-	// 			trigger.simulate('click', {});
-	// 		});
-	// 	});
-	// });
+			it('navigates to previous day', function (done) {
+				wrapper = mount(<DemoComponent
+					isOpen
+					portalMount={(reactElement, domContainerNode) => {
+						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
+					}}
+					onOpen={() => {
+						const selectedDay = portalWrapper.find('.datepicker__month [aria-selected=true]');
+						selectedDay.simulate('keyDown', { key: 'Left', keyCode: 37, which: 37 });
+					}}
+					onRequestFocusDate={(event, data) => {
+						expect(data.date.getTime()).to.equal(new Date(2007, 0, 5).getTime());
+						done();
+					}}
+				/>, { attachTo: mountNode });
+			});
+		});
+	});
 
 	describe('Disabled', function () {
 		const triggerClicked = sinon.spy();

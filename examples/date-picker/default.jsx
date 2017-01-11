@@ -11,7 +11,15 @@ const Example = React.createClass({
 		return (
 			<Datepicker
 				onChange={(event, data) => {
-					if (this.props.log) { this.props.log('onChange')(data.date, data.formattedDate); }
+					if (this.props.log) {
+						this.props.log('onChange')(
+						data.date,
+						data.formattedDate,
+						data.localOffset);
+					}
+				}}
+				onRequestFocusDate={(event, data) => {
+					if (this.props.log) { this.props.log('onRequestFocusDate')(event, data.date); }
 				}}
 			/>
 		);
