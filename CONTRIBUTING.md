@@ -1,5 +1,7 @@
 # Contributing Code
 
+## The preferred process
+
 1. Create a new issue before starting your project so that we can keep track of what you are trying to add/fix. That way, we can also offer suggestions or let you know if there is already an effort in progress.
 2. Fork this repository, and clone that forked repository locally.
 3. Create a topic branch for the issue that you are trying to add locally.
