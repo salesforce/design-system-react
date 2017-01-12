@@ -1,25 +1,25 @@
 # Contributing Code
 
 ## The preferred process
-
 1. Create a new issue before starting your project so that we can keep track of what you are trying to add/fix. That way, we can also offer suggestions or let you know if there is already an effort in progress.
 2. Fork this repository, then clone that forked repository locally.
 3. Create a topic branch for the issue that you are trying to add locally.
 4. Edit the code locally and push to your username's forked repository. Be sure to [add a Storybook story](https://getstorybook.io/docs/react-storybook/basics/writing-stories) for new features.
 5. Send us a well-documented pull request based on the branch from your forked repository.
 
-- If you are adding a feature, [add a story](https://getstorybook.io/docs/react-storybook/basics/writing-stories) to the React Storybook that uses your feature, so that reviewers can test it.
-- All new props / features need tests to prevent regressions in the future. Please review the [testing readme](/tests/README.md)
-- Stories are stored in [examples folder](/examples) along with Documentation site examples. To add a story to the interactive examples on the documentation site, add the JSX file to [examples/index.js](/examples/index.js). All examples that are present for a component in the [SLDS website](https://www.lightningdesignsystem.com/) or it's internal site should be created as a Storybook story _and_ listed in `examples/index.js`.
-
 **GitHub pull requests** should meet the following criteria:
-
   - descriptive title
   - brief summary
   - @mention several relevant people to review the code
   - add helpful GitHub comments on lines where you have questions or concerns
 
 We'll review your code, suggest any needed changes, and merge it in. Thank you.
+
+- If you are adding a feature, [add a story](https://getstorybook.io/docs/react-storybook/basics/writing-stories) to the React Storybook that uses your feature, so that reviewers can test it.
+- All new props / features need tests to prevent regressions in the future. Please review the [testing readme](/tests/README.md)
+- Stories are stored in [examples folder](/examples) along with Documentation site examples. To add a story to the interactive examples on the [documentation site](https://react.lightningdesignsystem.com/components/), add the JSX file to [examples/index.js](/examples/index.js). All examples that are present for a component in the [SLDS website](https://www.lightningdesignsystem.com/) or it's internal site should be created as a Storybook story _and_ listed in `examples/index.js`.
+- Prop description tables on the documentation site are generated from propType comments within the component.
+- Introductory component descriptions are generated from the comment before the component declaration. 
 
 ## Concepts and Best Practices
 #### What we've learned about building React components for the enterprise
