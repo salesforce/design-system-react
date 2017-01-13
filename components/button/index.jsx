@@ -130,18 +130,6 @@ const Button = React.createClass({
 		};
 	},
 
-	// constructor (props) {
-	// 	super(props);
-	// }
-
-	// componentDidMount () {
-	// 	super.componentDidMount();
-	// }
-
-	// componentWillUnmount () {
-	// 	super.componentWillUnmount();
-	// }
-
 	handleClick (event) {
 		if (this.props.onClick) {
 			this.props.onClick(event);
@@ -235,7 +223,6 @@ const Button = React.createClass({
 
 				{(this.props.iconPosition === 'left' || !this.props.iconPosition) ? this.renderLabel() : null}
 				{this.props.children}
-				{/* this.getTooltip() */}
 			</button>
 		);
 	},
