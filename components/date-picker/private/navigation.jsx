@@ -56,15 +56,15 @@ const DatepickerMonthNavigation = React.createClass({
 	},
 
 	previousMonthClicked () {
-		this.props.onChangeMonth(DateUtil.addMonths(this.props.initialDateForCalendarRender, -1));
+		this.props.onChangeMonth(undefined, DateUtil.addMonths(this.props.initialDateForCalendarRender, -1));
 	},
 
 	nextMonthClicked () {
-		this.props.onChangeMonth(DateUtil.addMonths(this.props.initialDateForCalendarRender, 1));
+		this.props.onChangeMonth(undefined, DateUtil.addMonths(this.props.initialDateForCalendarRender, 1));
 	},
 
 	handleYearSelect (initialDateForCalendarRender) {
-		this.props.onChangeMonth(initialDateForCalendarRender);
+		this.props.onChangeMonth(undefined, initialDateForCalendarRender);
 	},
 
 	getMonthLabel () {
