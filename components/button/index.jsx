@@ -43,6 +43,10 @@ const Button = React.createClass({
 		 */
 		assistiveText: PropTypes.string,
 		/**
+		 * Callback that passes in the DOM reference of the `<button>` DOM node within this component. Primary use is to allow `focus` to be called. You should still test if the node exists, since rendering is asynchronous. `buttonRef={(component) => { if(component) console.log(component); }}`
+		 */
+		buttonRef: PropTypes.func,
+		/**
 		 * CSS classes to be added to button.
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
@@ -212,6 +216,11 @@ const Button = React.createClass({
 				onMouseDown={this.props.onMouseDown}
 				onMouseEnter={this.props.onMouseEnter}
 				onMouseLeave={this.props.onMouseLeave}
+				ref={(component) => {
+					if (this.props.buttonRef) {
+						this.props.buttonRef(component);
+					}
+				}}
 				tabIndex={this.props.tabIndex}
 			>
 				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
