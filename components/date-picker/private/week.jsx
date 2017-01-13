@@ -37,6 +37,10 @@ const DatepickerWeek = React.createClass({
      */
 		focusedDate: PropTypes.instanceOf(Date).isRequired,
 		/**
+		 * Triggered when the keyboard moves focus off the calendar.
+		 */
+		onCalendarBlur: PropTypes.func,
+		/**
 		 * For keyboard navigation. Changes the focus to the next day on the calendar. Triggered when right arrow button is pressed.
 		 */
 		onKeyboardNavigateToNextDay: PropTypes.func.isRequired,
@@ -87,6 +91,7 @@ const DatepickerWeek = React.createClass({
 				focused={this.props.calendarHasFocus && DateUtil.isSameDay(this.props.focusedDate, date)}
 				initialDateForCalendarRender={this.props.initialDateForCalendarRender}
 				key={date.toString()}
+				onCalendarBlur={this.props.onCalendarBlur}
 				onKeyboardNavigateToNextDay={this.props.onKeyboardNavigateToNextDay}
 				onKeyboardNavigateToNextWeek={this.props.onKeyboardNavigateToNextWeek}
 				onKeyboardNavigateToPreviousDay={this.props.onKeyboardNavigateToPreviousDay}

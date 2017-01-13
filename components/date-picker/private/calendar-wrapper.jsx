@@ -126,6 +126,14 @@ const DatepickerCalendarWrapper = React.createClass({
 		this.setState({ initialDateForCalendarRender });
 	},
 
+	handleLeaveCalendarFocus (event, { direction }) {
+		if (direction === 'next' && this.previousMonthRef) {
+			this.previousMonthRef.focus();
+		} else if (direction === 'previous' && this.nextMonthRef) {
+			this.nextMonthRef.focus();
+		}
+	},
+
 	handleRequestClose () {
 		if (this.props.onRequestClose) {
 			this.props.onRequestClose();
@@ -160,7 +168,13 @@ const DatepickerCalendarWrapper = React.createClass({
 					id={this.props.id}
 					initialDateForCalendarRender={this.state.initialDateForCalendarRender}
 					monthLabels={this.props.monthLabels}
+					nextMonthRef={(component) => {
+						this.nextMonthRef = component;
+					}}
 					onChangeMonth={this.handleInitialDateForCalendarRenderChange}
+					previousMonthRef={(component) => {
+						this.previousMonthRef = component;
+					}}
 					relativeYearFrom={this.props.relativeYearFrom}
 					relativeYearTo={this.props.relativeYearTo}
 				/>
@@ -169,6 +183,7 @@ const DatepickerCalendarWrapper = React.createClass({
 					id={this.props.id}
 					initialDateForCalendarRender={this.state.initialDateForCalendarRender}
 					isIsoWeekday={this.props.isIsoWeekday}
+					onCalendarBlur={this.handleLeaveCalendarFocus}
 					onChangeMonth={this.handleInitialDateForCalendarRenderChange}
 					onRequestClose={this.handleRequestClose}
 					onRequestFocusDate={this.props.onRequestFocusDate}

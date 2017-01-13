@@ -38,6 +38,10 @@ const DatepickerCalendarDay = React.createClass({
 		 */
 		focused: PropTypes.bool,
 		/**
+		 * Triggered when the keyboard moves focus off the calendar.
+		 */
+		onCalendarBlur: PropTypes.func,
+		/**
 		 * For keyboard navigation. Changes the focus to the next day on the calendar. Triggered when right arrow button is pressed.
 		 */
 		onKeyboardNavigateToNextDay: PropTypes.func.isRequired,
@@ -91,16 +95,22 @@ const DatepickerCalendarDay = React.createClass({
 			[KEYS.SPACE]: () => { this.props.onSelectDate(event, { date: fromDate }); },
 			[KEYS.ENTER]: () => { this.props.onSelectDate(event, { date: fromDate }); },
 			[KEYS.ESCAPE]: () => { this.props.onRequestClose(); },
-			[KEYS.TAB]: () => { this.props.onRequestClose(); },
+			[KEYS.TAB]: () => { this.props.onCalendarBlur(event, { direction: 'next' }); },
 			[KEYS.LEFT]: () => { this.props.onKeyboardNavigateToPreviousDay(event, fromDate); },
 			[KEYS.RIGHT]: () => { this.props.onKeyboardNavigateToNextDay(event, fromDate); },
 			[KEYS.UP]: () => { this.props.onKeyboardNavigateToPreviousWeek(event, fromDate); },
 			[KEYS.DOWN]: () => { this.props.onKeyboardNavigateToNextWeek(event, fromDate); }
 		};
 
+		const shiftKeyDownCallbacks = {
+			[KEYS.TAB]: () => { this.props.onCalendarBlur(event, { direction: 'previous' }); }
+		};
+
 		if (event.keyCode) {
 			EventUtil.trapEvent(event);
-			if (keyDownCallbacks[event.keyCode]) {
+			if (event.shiftKey && keyDownCallbacks[event.keyCode]) {
+				shiftKeyDownCallbacks[event.keyCode]();
+			} else if (keyDownCallbacks[event.keyCode]) {
 				keyDownCallbacks[event.keyCode]();
 			}
 		}

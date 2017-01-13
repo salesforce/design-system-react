@@ -9,7 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React, { PropTypes } from 'react';
 import Week from './week';
-import { EventUtil, DateUtil, KEYS } from '../../../utilities';
+import { DateUtil } from '../../../utilities';
 
 const DatepickerCalendar = React.createClass({
 	displayName: 'SLDSDatepickerCalendar',
@@ -27,6 +27,10 @@ const DatepickerCalendar = React.createClass({
 		 * Makes Monday the first day of the week
 		 */
 		isIsoWeekday: PropTypes.bool,
+		/**
+		 * Triggered when the keyboard moves focus off the calendar.
+		 */
+		onCalendarBlur: PropTypes.func,
 		/**
 		 * Displayed calendar has changed or re-rendered
 		 */
@@ -154,19 +158,6 @@ const DatepickerCalendar = React.createClass({
 		this.state.todayFocus = false;
 	},
 
-	handleKeyDown (event) {
-		if (event.keyCode) {
-			if (event.keyCode === KEYS.TAB) {
-				if (!event.shiftKey) {
-					EventUtil.trapEvent(event);
-					if (this.props.onRequestClose) {
-						this.props.onRequestClose();
-					}
-				}
-			}
-		}
-	},
-
 	render () {
 		const sunday = (
 			<th ref="Sunday">
@@ -217,7 +208,6 @@ const DatepickerCalendar = React.createClass({
 									// onFocus={this.handleTodayFocus}
 									onBlur={this.handleTodayBlur}
 									tabIndex="0"
-									onKeyDown={this.handleKeyDown}
 									className="slds-show--inline-block slds-p-bottom--x-small"
 									onClick={(event) => { this.handleSelectDate(event, { date: new Date() }); }}
 								>
@@ -257,6 +247,7 @@ const DatepickerCalendar = React.createClass({
 				key={firstDayOfWeek.toString()}
 				focusedDate={this.state.focusedDate}
 				initialDateForCalendarRender={this.props.initialDateForCalendarRender}
+				onCalendarBlur={this.props.onCalendarBlur}
 				onKeyboardNavigateToPreviousDay={this.handlePreviousDay}
 				onKeyboardNavigateToNextDay={this.handleNextDay}
 				onKeyboardNavigateToPreviousWeek={this.handlePreviousWeek}

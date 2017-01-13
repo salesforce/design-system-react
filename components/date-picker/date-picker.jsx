@@ -305,18 +305,16 @@ const Datepicker = React.createClass({
 	},
 
 	handleRequestClose () {
-		const isOpen = this.getIsOpen();
-
 		if (this.props.onRequestClose) {
 			this.props.onRequestClose();
 		}
 
-		if (isOpen) {
+		if (this.getIsOpen()) {
 			this.setState({ isOpen: false });
 		}
 
-		if (this.input) {
-			this.input.focus();
+		if (this.inputRef) {
+			this.inputRef.focus();
 		}
 	},
 
@@ -369,18 +367,18 @@ const Datepicker = React.createClass({
 	},
 
 	getDialog () {
+		console.log(this.getIsOpen());
 		return (
 				!this.props.disabled && this.getIsOpen()
 				? <Dialog
 					contentsClassName="slds-datepicker slds-dropdown"
-					closeOnTabKey
 					constrainToScrollParent={this.props.constrainToScrollParent}
 					horizontalAlign={this.props.align}
 					flippable={!this.props.hasStaticAlignment}
 					onClose={this.handleClose}
 					onOpen={this.handleOpen}
 					portalMount={this.props.portalMount}
-					targetElement={this.input}
+					targetElement={this.inputRef}
 				>
 				{this.getDatePicker()}
 				</Dialog>
@@ -458,7 +456,7 @@ const Datepicker = React.createClass({
 				onClick={this.openDialog}
 			/>),
 			id: this.getId(),
-			inputRef: (component) => { this.input = component; },
+			inputRef: (component) => { this.inputRef = component; },
 			onChange: this.handleInputChange,
 			onClick: () => {
 				this.openDialog();
