@@ -1,4 +1,6 @@
 import React from 'react';
+
+// Higher Order Components such as `react-onclickoutside` use the DOM and Jest snapshot testing must be DOMless
 import Datepicker from '~/components/date-picker/date-picker';
 
 const Example = React.createClass({
@@ -17,4 +19,4 @@ const Example = React.createClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example;
