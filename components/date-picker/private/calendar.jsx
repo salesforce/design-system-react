@@ -9,7 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React, { PropTypes } from 'react';
 import Week from './week';
-import { DateUtil } from '../../../utilities';
+import { DateUtil, EventUtil, KEYS } from '../../../utilities';
 
 const DatepickerCalendar = React.createClass({
 	displayName: 'SLDSDatepickerCalendar',
@@ -19,6 +19,10 @@ const DatepickerCalendar = React.createClass({
 		 * Three letter abbreviations of the days of the week, starting on Sunday.
 		 */
 		abbreviatedWeekDayLabels: PropTypes.array.isRequired,
+		/**
+		 * HTML id for component
+		 */
+		id: PropTypes.string,
 		/**
      * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
      */
@@ -150,14 +154,6 @@ const DatepickerCalendar = React.createClass({
 		}
 	},
 
-	handleTodayFocus () {
-		this.state.todayFocus = true;
-	},
-
-	handleTodayBlur () {
-		this.state.todayFocus = false;
-	},
-
 	render () {
 		const sunday = (
 			<th ref="Sunday">
@@ -205,11 +201,11 @@ const DatepickerCalendar = React.createClass({
 							>
 								<a
 									href="javascript:void(0)"	// eslint-disable-line no-script-url
-									// onFocus={this.handleTodayFocus}
-									onBlur={this.handleTodayBlur}
 									tabIndex="0"
 									className="slds-show--inline-block slds-p-bottom--x-small"
 									onClick={(event) => { this.handleSelectDate(event, { date: new Date() }); }}
+									onKeyDown={this.props.onTodayKeyDown}
+									ref={this.props.todayRef}
 								>
 									{this.props.todayLabel}
 								</a>
@@ -252,6 +248,7 @@ const DatepickerCalendar = React.createClass({
 				onKeyboardNavigateToNextDay={this.handleNextDay}
 				onKeyboardNavigateToPreviousWeek={this.handlePreviousWeek}
 				onKeyboardNavigateToNextWeek={this.handleNextWeek}
+				onCalendarBlur={this.props.onCalendarBlur}
 				onRequestClose={this.handleRequestClose}
 				onSelectDate={this.handleSelectDate}
 				selectedDate={this.props.selectedDate}

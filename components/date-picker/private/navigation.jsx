@@ -93,7 +93,7 @@ const DatepickerMonthNavigation = React.createClass({
 							iconCategory="utility"
 							iconName="left"
 							iconVariant="container"
-							onKeyDown={this.handleKeyDown}
+							onKeyDown={this.props.onPreviousMonthKeyDown}
 							onClick={this.previousMonthClicked}
 							buttonRef={(component) => {
 								this.props.previousMonthRef(component);
@@ -122,6 +122,7 @@ const DatepickerMonthNavigation = React.createClass({
 					</div>
 				</div>
 				<YearPicklist
+					buttonRef={this.props.yearPicklistButtonRef}
 					id={this.props.id}
 					initialDateForCalendarRender={this.props.initialDateForCalendarRender}
 					onChangeMonth={this.handleYearSelect}

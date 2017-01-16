@@ -59,6 +59,7 @@ const DatepickerYearSelector = React.createClass({
 			<div className="slds-form-element">
 
 				<MenuPicklist
+					buttonRef={this.props.buttonRef}
 					checkmark={false}
 					className="slds-picklist--fluid slds-shrink-none"
 					initialFocus

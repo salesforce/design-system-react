@@ -118,7 +118,7 @@ const DatepickerCalendarWrapper = React.createClass({
 				|| event.keyCode !== KEYS.SPACE
 				|| event.keyCode !== KEYS.ENTER
 				|| event.keyCode !== KEYS.TAB)) {
-			EventUtil.trapEvent(event);
+			// EventUtil.trapEvent(event);
 		}
 	},
 
@@ -126,17 +126,33 @@ const DatepickerCalendarWrapper = React.createClass({
 		this.setState({ initialDateForCalendarRender });
 	},
 
-	handleLeaveCalendarFocus (event, { direction }) {
+	handleCalendarBlur (event, { direction }) {
+		console.log(event);
 		if (direction === 'next' && this.previousMonthRef) {
 			this.previousMonthRef.focus();
-		} else if (direction === 'previous' && this.nextMonthRef) {
-			this.nextMonthRef.focus();
+		} else if (direction === 'previous' && this.todayRef) {
+			console.log(this.todayRef);
+			this.todayRef.focus();
 		}
 	},
 
 	handleRequestClose () {
 		if (this.props.onRequestClose) {
 			this.props.onRequestClose();
+		}
+	},
+
+	handleTodayKeyDown (event) {
+		if (!event.shiftKey && event.keyCode === KEYS.TAB) {
+			EventUtil.trapEvent(event);
+			console.log('calendarFocus');
+		}
+	},
+
+	handlePreviousMonthKeyDown (event) {
+		if (event.shiftKey && event.keyCode === KEYS.TAB) {
+			EventUtil.trapEvent(event);
+			console.log('calendarFocus');
 		}
 	},
 
@@ -175,15 +191,19 @@ const DatepickerCalendarWrapper = React.createClass({
 					previousMonthRef={(component) => {
 						this.previousMonthRef = component;
 					}}
+					onPreviousMonthKeyDown={this.handlePreviousMonthKeyDown}
 					relativeYearFrom={this.props.relativeYearFrom}
 					relativeYearTo={this.props.relativeYearTo}
+					yearPicklistButtonRef={(component) => {
+						this.yearPicklistButtonRef = component;
+					}}
 				/>
 				<Calendar
 					abbreviatedWeekDayLabels={this.props.abbreviatedWeekDayLabels}
 					id={this.props.id}
 					initialDateForCalendarRender={this.state.initialDateForCalendarRender}
 					isIsoWeekday={this.props.isIsoWeekday}
-					onCalendarBlur={this.handleLeaveCalendarFocus}
+					onCalendarBlur={this.handleCalendarBlur}
 					onChangeMonth={this.handleInitialDateForCalendarRenderChange}
 					onRequestClose={this.handleRequestClose}
 					onRequestFocusDate={this.props.onRequestFocusDate}
@@ -191,6 +211,10 @@ const DatepickerCalendarWrapper = React.createClass({
 					selectedDate={this.props.selectedDate}
 					selectedDateRef={this.props.selectedDateRef}
 					todayLabel={this.props.todayLabel}
+					todayRef={(component) => {
+						this.todayRef = component;
+					}}
+					onTodayKeyDown={this.handleTodayKeyDown}
 					weekDayLabels={this.props.weekDayLabels}
 				/>
 				<span id="bn_prev-label" className="slds-assistive-text">{this.props.assistiveTextNextMonth}</span>
