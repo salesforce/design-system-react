@@ -88,6 +88,8 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 - If a component has a focusable element, such as a button or an input, write a callback function that will pass the `ref` back to it's parent. `buttonRef` or `inputRef` are possible prop names.
 
+- Non-accessible component contributions are permitted but discouraged. These are labelled "prototypes" and do not follow an approved accessible user-experience pattern. Please create an additional issue to follow up with the contribution.
+
 Unless you have an accessiblity guru in your department (knowledge of implementing accessible code and using assistive technology), you are going to have to figure out some things for yourself. A wise manager once said "real work is when you can't Google the answer." Here are some resources that have _different_ answers to your questions.
 
 - [ARIA-1.1 Authoring Practices guide](http://w3c.github.io/aria-practices/) - Although no one actually implemented ARIA 1.0 guidelines fully, this is the bleeding edge of the W3C's re-write of the Authoring Practices, which are based on ARIA 1.1. Many now come with the W3C's own examples pages.
