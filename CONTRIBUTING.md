@@ -82,7 +82,11 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 - <a name="required-callbacks" href="#required-callbacks">#</a> **External callbacks are optional.** Public callback/handler function props should always be optional and tested to see if they exist before execution. Within private child components use `.isRequired` if the callback is needed internally for the component to function.
 
-### Read up on accessibility
+### Advocate for accessibility
+
+- One of the key aspects of accessibility with React components is managing a DOM node's `focus` and `blur`. This should be implemented with callback references to DOM nodes and should _not_ use `ReactDOM.findDOMNode()`. Use the the current DOM node `ref` prop to create a function that passes the DOM node to a callback that is provided by the parent which will control the focus once the DOM node has been rendered.
+
+- If a component has a focusable element, such as a button or an input, write a callback function that will pass the `ref` back to it's parent. `buttonRef` or `inputRef` are possible prop names.
 
 Unless you have an accessiblity guru in your department (knowledge of implementing accessible code and using assistive technology), you are going to have to figure out some things for yourself. A wise manager once said "real work is when you can't Google the answer." Here are some resources that have _different_ answers to your questions.
 
