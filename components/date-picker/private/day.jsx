@@ -34,10 +34,6 @@ const DatepickerCalendarDay = React.createClass({
      */
 		initialDateForCalendarRender: PropTypes.instanceOf(Date).isRequired,
 		/**
-		 * Set if this day is to focused.
-		 */
-		focused: PropTypes.bool,
-		/**
 		 * Triggered when the keyboard moves focus off the calendar.
 		 */
 		onCalendarBlur: PropTypes.func,
@@ -79,12 +75,6 @@ const DatepickerCalendarDay = React.createClass({
 		todayLabel: PropTypes.string.isRequired
 	},
 
-	componentDidUpdate (prevProps) {
-		if (this.props.focused && !prevProps.focused) {
-			this.setFocusToSelf();
-		}
-	},
-
 	handleClick (event) {
 		this.props.onSelectDate(event, { date: this.props.date });
 	},
@@ -116,12 +106,6 @@ const DatepickerCalendarDay = React.createClass({
 		}
 	},
 
-	setFocusToSelf () {
-		if (this.dayCell && this.props.calendarHasFocus) {
-			this.dayCell.focus();
-		}
-	},
-
 	render () {
 		const isCurrentMonth = DateUtil.isSameMonth(this.props.date, this.props.initialDateForCalendarRender);
 		const isToday = DateUtil.isToday(this.props.date);
@@ -140,9 +124,12 @@ const DatepickerCalendarDay = React.createClass({
 				onClick={this.handleClick}
 				onKeyDown={this.handleKeyDown}
 				ref={(component) => {
-					this.dayCell = component;
 					if (isSelectedDay) {
 						this.props.selectedDateRef(component);
+					}
+
+					if (this.props.calendarHasFocus && DateUtil.isSameDay(this.props.focusedDate, this.props.date) && isCurrentMonth) {
+						this.props.onRequestFocusDate(undefined, { date: this.props.date, ref: component });
 					}
 				}}
 				role="gridcell"
