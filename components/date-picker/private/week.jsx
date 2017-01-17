@@ -29,9 +29,8 @@ const DatepickerWeek = (props) => {
 			onKeyboardNavigateToPreviousWeek={props.onKeyboardNavigateToPreviousWeek}
 			onCalendarBlur={props.onCalendarBlur}
 			onRequestClose={props.onRequestClose}
-			onRequestFocusDate={props.onRequestFocusDate}
+			onRequestInternalFocusDate={props.onRequestInternalFocusDate}
 			onSelectDate={props.onSelectDate}
-			previousfocusedDate={props.previousfocusedDate}
 			selectedDate={props.selectedDate}
 			selectedDateRef={props.selectedDateRef}
 			todayLabel={props.todayLabel}
@@ -90,7 +89,7 @@ DatepickerWeek.propTypes = {
 	/**
 	 * Triggered when the user wants to focus on a new day witht he keyboard. It returns the keyboard event a data object with the shape: `{date: [Date object]}`. Keyboard event is ommited if a new month is rendered.  _Tested with Mocha framework._
 	 */
-	onRequestFocusDate: PropTypes.func.isRequired,
+	onRequestInternalFocusDate: PropTypes.func.isRequired,
 	/**
 	 * Triggered when a date on the calendar is clicked.
 	 */

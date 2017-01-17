@@ -108,18 +108,8 @@ const DatepickerCalendarWrapper = React.createClass({
 	getInitialState () {
 		return {
 			initialDateForCalendarRender: this.props.selectedDate,
-			isFocused: false
+			isCalendarFocused: true
 		};
-	},
-
-	handleKeyDown (event) {
-		if (event.keyCode
-			&& (event.keyCode !== KEYS.ESCAPE
-				|| event.keyCode !== KEYS.SPACE
-				|| event.keyCode !== KEYS.ENTER
-				|| event.keyCode !== KEYS.TAB)) {
-			// EventUtil.trapEvent(event);
-		}
 	},
 
 	handleInitialDateForCalendarRenderChange (event, initialDateForCalendarRender) {
@@ -127,11 +117,11 @@ const DatepickerCalendarWrapper = React.createClass({
 	},
 
 	handleCalendarBlur (event, { direction }) {
-		// console.log(direction);
-		// console.log(this.previousMonthRef);
 		if (direction === 'next' && this.previousMonthRef) {
+			this.setState({ isCalendarFocused: false });
 			this.previousMonthRef.focus();
 		} else if (direction === 'previous' && this.todayRef) {
+			this.setState({ isCalendarFocused: false });
 			this.todayRef.focus();
 		}
 	},
@@ -145,30 +135,28 @@ const DatepickerCalendarWrapper = React.createClass({
 	handleLastFocusableNodeKeyDown (event) {
 		if (!event.shiftKey && event.keyCode === KEYS.TAB) {
 			EventUtil.trapEvent(event);
-			// console.log('calendarFocus');
+			this.setState({ isCalendarFocused: true });
 		}
 	},
 
 	handleFirstFocusableNodeKeyDown (event) {
 		if (event.shiftKey && event.keyCode === KEYS.TAB) {
 			EventUtil.trapEvent(event);
-			// console.log('calendarFocus');
+			this.setState({ isCalendarFocused: true });
 		}
 	},
 
 	handleRequestFocusDate (event, data) {
-		// console.log(event, data);
-		if (data.ref) {
+		// will be called three times, due to re-render
+		if (data.ref && this.state.isCalendarFocused) {
 			data.ref.focus();
 		}
-	},
 
-	handleFocus () {
-		this.setState({ isFocused: true });
-	},
-
-	handleBlur () {
-		this.setState({ isFocused: false });
+		// only call on actual DOM event and not on re-render
+		if (this.props.onRequestFocusDate && data.triggerCallback) {
+			const { triggerCallback, ...modifiedData } = data;	// eslint-disable-line no-unused-vars
+			this.props.onRequestFocusDate(event, modifiedData);
+		}
 	},
 
 	render () {
@@ -181,9 +169,6 @@ const DatepickerCalendarWrapper = React.createClass({
 				aria-hidden="false"
 				data-selection="single"
 				onKeyDown={this.handleKeyDown}
-				onFocus={this.handleFocus}
-				onBlur={this.handleBlur}
-				onClick={this.handleBGClick}
 			>
 				<CalendarNavigation
 					assistiveTextNextMonth={this.props.assistiveTextNextMonth}
@@ -210,7 +195,7 @@ const DatepickerCalendarWrapper = React.createClass({
 					onCalendarBlur={this.handleCalendarBlur}
 					onChangeMonth={this.handleInitialDateForCalendarRenderChange}
 					onRequestClose={this.handleRequestClose}
-					onRequestFocusDate={this.handleRequestFocusDate}
+					onRequestInternalFocusDate={this.handleRequestFocusDate}
 					onSelectDate={this.props.onSelectDate}
 					selectedDate={this.props.selectedDate}
 					selectedDateRef={this.props.selectedDateRef}
@@ -218,7 +203,7 @@ const DatepickerCalendarWrapper = React.createClass({
 					todayRef={(component) => {
 						this.todayRef = component;
 					}}
-					onLastFocusableNodeKeyDown={this.onLastFocusableNodeKeyDown}
+					onLastFocusableNodeKeyDown={this.handleLastFocusableNodeKeyDown}
 					weekDayLabels={this.props.weekDayLabels}
 				/>
 				<span id="bn_prev-label" className="slds-assistive-text">{this.props.assistiveTextNextMonth}</span>

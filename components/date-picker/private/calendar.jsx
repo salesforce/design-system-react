@@ -40,9 +40,9 @@ const DatepickerCalendar = React.createClass({
 		 */
 		onChangeMonth: PropTypes.func.isRequired,
 		/**
-		 * Triggered when the keyboard moves focus on the calendar. {date: [Date object], formattedDate: [string]}  _Tested with Mocha framework._
+		 * Internal callback that will eventually trigger when the keyboard moves focus on the calendar. `{date: [Date object], formattedDate: [string]}`.
 		 */
-		onRequestFocusDate: PropTypes.func,
+		onRequestInternalFocusDate: PropTypes.func,
 		/**
 		 * Triggered when the calendar is cancelled.
 		 */
@@ -93,11 +93,7 @@ const DatepickerCalendar = React.createClass({
 		// Set prop that sets focus in child component once it is rendered. This occurs when the month DOM has changed. This will trigger a re-render, but no DOM change will occur, just a DOM focus.
 		if (!DateUtil.isEqual(this.props.initialDateForCalendarRender, prevProps.initialDateForCalendarRender)) {
 			this.setState({ focusedDate: this.props.initialDateForCalendarRender });
-			console.log(prevProps.focusedDate);
-			this.setState({ previousFocusedDate: prevProps.focusedDate });
-			if (this.props.onRequestFocusDate) {
-				this.props.onRequestFocusDate(event, { date: this.props.initialDateForCalendarRender });
-			}
+			this.props.onRequestInternalFocusDate(undefined, { date: this.props.initialDateForCalendarRender, triggerCallback: true });
 		}
 	},
 
@@ -118,10 +114,7 @@ const DatepickerCalendar = React.createClass({
 			this.props.onChangeMonth(event, prevDate);
 		} else {
 			this.setState({ focusedDate: prevDate });
-
-			if (this.props.onRequestFocusDate) {
-				this.props.onRequestFocusDate(event, { date: prevDate });
-			}
+			this.props.onRequestInternalFocusDate(event, { date: prevDate, triggerCallback: true });
 		}
 	},
 
@@ -131,10 +124,7 @@ const DatepickerCalendar = React.createClass({
 			this.props.onChangeMonth(event, nextDate);
 		} else {
 			this.setState({ focusedDate: nextDate });
-
-			if (this.props.onRequestFocusDate) {
-				this.props.onRequestFocusDate(event, { date: nextDate });
-			}
+			this.props.onRequestInternalFocusDate(event, { date: nextDate, triggerCallback: true });
 		}
 	},
 
@@ -144,10 +134,7 @@ const DatepickerCalendar = React.createClass({
 			this.props.onChangeMonth(event, prevDate);
 		} else {
 			this.setState({ focusedDate: prevDate });
-
-			if (this.props.onRequestFocusDate) {
-				this.props.onRequestFocusDate(event, { date: prevDate });
-			}
+			this.props.onRequestInternalFocusDate(event, { date: prevDate, triggerCallback: true });
 		}
 	},
 
@@ -157,10 +144,7 @@ const DatepickerCalendar = React.createClass({
 			this.props.onChangeMonth(event, nextDate);
 		} else {
 			this.setState({ focusedDate: nextDate });
-
-			if (this.props.onRequestFocusDate) {
-				this.props.onRequestFocusDate(event, { date: nextDate });
-			}
+			this.props.onRequestInternalFocusDate(event, { date: nextDate, triggerCallback: true });
 		}
 	},
 
@@ -259,9 +243,8 @@ const DatepickerCalendar = React.createClass({
 				onKeyboardNavigateToPreviousWeek={this.handleKeyboardNavigateToPreviousWeek}
 				onKeyboardNavigateToNextWeek={this.handleKeyboardNavigateToNextWeek}
 				onRequestClose={this.handleRequestClose}
-				onRequestFocusDate={this.props.onRequestFocusDate}
+				onRequestInternalFocusDate={this.props.onRequestInternalFocusDate}
 				onSelectDate={this.handleSelectDate}
-				previousfocusedDate={this.props.previousfocusedDate}
 				selectedDate={this.props.selectedDate}
 				selectedDateRef={this.props.selectedDateRef}
 				todayLabel={this.props.todayLabel}

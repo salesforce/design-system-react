@@ -86,9 +86,8 @@ const DatepickerCalendarDay = (props) => {
 
 				if (props.calendarHasFocus
 					&& DateUtil.isSameDay(props.focusedDate, props.date)
-					&& !DateUtil.isSameDay(props.previousfocusedDate, props.date)
 					&& isCurrentMonth) {
-					props.onRequestFocusDate(undefined, { date: props.date, ref: component });
+					props.onRequestInternalFocusDate(undefined, { date: props.date, ref: component });
 				}
 			}}
 			role="gridcell"
