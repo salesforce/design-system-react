@@ -183,7 +183,7 @@ class Button extends TooltipTrigger {
 		const iconSize = this.props.iconSize === '' || this.props.iconVariant ? null : this.props.iconSize;
 		return (
 			<ButtonIcon
-				category={this.props.category}
+				category={this.props.iconCategory}
 				className={classNames({
 					'slds-global-header__icon': this.props.iconVariant === 'global-header'
 				},

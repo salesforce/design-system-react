@@ -347,7 +347,7 @@ const MenuDropdown = React.createClass({
 
 	componentWillUnmount () {
 		if (currentOpenDropdown === this) {
-				currentOpenDropdown = undefined;
+			currentOpenDropdown = undefined;
 		}
 		this.isUnmounting = true;
 		this.renderOverlay(false);

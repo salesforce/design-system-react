@@ -15,6 +15,9 @@ import Search from '../../components/forms/input/search';
 import GlobalNavigationBar from '../../components/global-navigation-bar';
 import GlobalNavigationBarRegion from '../../components/global-navigation-bar/region';
 
+import SLDSSettings from '../../components/SLDSSettings';
+SLDSSettings.setAppElement('#root');	// used by Modal component
+
 const standardTileDemoStyles = {
 	width: '20rem',
 	paddingLeft: '.5rem',

@@ -165,7 +165,6 @@ const FilteringPanelFilter = React.createClass({
 						heading=""
 						isOpen={this.state.popoverIsOpen}
 						onClose={this.handleClose}
-						onClickOutside={this.handleClose}
 						triggerClassName="slds-grow"
 					>
 						<a

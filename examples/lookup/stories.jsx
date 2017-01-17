@@ -89,6 +89,9 @@ storiesOf(LOOKUP, module)
 		isInline
 		label="Files"
 	/>)
+	.add('Disabled', () => <DemoLookup
+		disabled
+	/>)
 	.add('Standard with Accounts', () => <DemoLookupAccounts
 		emptyMessage="No Accounts found"
 		hasError={false}
