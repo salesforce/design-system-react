@@ -9,7 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React, { PropTypes } from 'react';
 import Week from './week';
-import { DateUtil, EventUtil, KEYS } from '../../../utilities';
+import { DateUtil } from '../../../utilities';
 
 const DatepickerCalendar = React.createClass({
 	displayName: 'SLDSDatepickerCalendar',
@@ -22,7 +22,7 @@ const DatepickerCalendar = React.createClass({
 		/**
 		 * HTML id for component
 		 */
-		id: PropTypes.string,
+		id: PropTypes.string.isRequired,
 		/**
      * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
      */
@@ -34,7 +34,7 @@ const DatepickerCalendar = React.createClass({
 		/**
 		 * Triggered when the keyboard moves focus off the calendar.
 		 */
-		onCalendarBlur: PropTypes.func,
+		onCalendarBlur: PropTypes.func.isRequired,
 		/**
 		 * Displayed calendar has changed or re-rendered
 		 */
@@ -64,6 +64,14 @@ const DatepickerCalendar = React.createClass({
 		 */
 		todayLabel: PropTypes.string.isRequired,
 		/**
+		 * For keyboard navigation. Listens for key presses on the last focusable DOM Node, the "Today" link, so that dialog focus can be trapped.
+		 */
+		onLastFocusableNodeKeyDown: PropTypes.func,
+		/**
+		 * Callback that passes in the DOM reference of the Today `a` DOM node within this component. Primary use is to allow `focus` to be called. You should still test if the node exists, since rendering is asynchronous. `buttonRef={(component) => { if(component) console.log(component); }}`
+		 */
+		todayRef: PropTypes.func,
+		/**
 		 * Names of the seven days of the week, starting on Sunday.
 		 */
 		weekDayLabels: PropTypes.array.isRequired
@@ -85,6 +93,8 @@ const DatepickerCalendar = React.createClass({
 		// Set prop that sets focus in child component once it is rendered. This occurs when the month DOM has changed. This will trigger a re-render, but no DOM change will occur, just a DOM focus.
 		if (!DateUtil.isEqual(this.props.initialDateForCalendarRender, prevProps.initialDateForCalendarRender)) {
 			this.setState({ focusedDate: this.props.initialDateForCalendarRender });
+			console.log(prevProps.focusedDate);
+			this.setState({ previousFocusedDate: prevProps.focusedDate });
 			if (this.props.onRequestFocusDate) {
 				this.props.onRequestFocusDate(event, { date: this.props.initialDateForCalendarRender });
 			}
@@ -102,7 +112,7 @@ const DatepickerCalendar = React.createClass({
 		}
 	},
 
-	handlePreviousDay (event, date) {
+	handleKeyboardNavigateToPreviousDay (event, { date }) {
 		const prevDate = DateUtil.addDays(date, -1);
 		if (!DateUtil.isSameMonth(prevDate, date)) {
 			this.props.onChangeMonth(event, prevDate);
@@ -115,7 +125,7 @@ const DatepickerCalendar = React.createClass({
 		}
 	},
 
-	handleNextDay (event, date) {
+	handleKeyboardNavigateToNextDay (event, { date }) {
 		const nextDate = DateUtil.addDays(date, 1);
 		if (!DateUtil.isSameMonth(nextDate, date)) {
 			this.props.onChangeMonth(event, nextDate);
@@ -128,7 +138,7 @@ const DatepickerCalendar = React.createClass({
 		}
 	},
 
-	handlePreviousWeek (event, date) {
+	handleKeyboardNavigateToPreviousWeek (event, { date }) {
 		const prevDate = DateUtil.addDays(date, -7);
 		if (!DateUtil.isSameMonth(prevDate, date)) {
 			this.props.onChangeMonth(event, prevDate);
@@ -141,7 +151,7 @@ const DatepickerCalendar = React.createClass({
 		}
 	},
 
-	handleNextWeek (event, date) {
+	handleKeyboardNavigateToNextWeek (event, { date }) {
 		const nextDate = DateUtil.addDays(date, 7);
 		if (!DateUtil.isSameMonth(nextDate, date)) {
 			this.props.onChangeMonth(event, nextDate);
@@ -204,7 +214,7 @@ const DatepickerCalendar = React.createClass({
 									tabIndex="0"
 									className="slds-show--inline-block slds-p-bottom--x-small"
 									onClick={(event) => { this.handleSelectDate(event, { date: new Date() }); }}
-									onKeyDown={this.props.onTodayKeyDown}
+									onKeyDown={this.props.onLastFocusableNodeKeyDown}
 									ref={this.props.todayRef}
 								>
 									{this.props.todayLabel}
@@ -244,14 +254,14 @@ const DatepickerCalendar = React.createClass({
 				focusedDate={this.state.focusedDate}
 				initialDateForCalendarRender={this.props.initialDateForCalendarRender}
 				onCalendarBlur={this.props.onCalendarBlur}
-				onKeyboardNavigateToPreviousDay={this.handlePreviousDay}
-				onKeyboardNavigateToNextDay={this.handleNextDay}
-				onKeyboardNavigateToPreviousWeek={this.handlePreviousWeek}
-				onKeyboardNavigateToNextWeek={this.handleNextWeek}
-				onCalendarBlur={this.props.onCalendarBlur}
+				onKeyboardNavigateToPreviousDay={this.handleKeyboardNavigateToPreviousDay}
+				onKeyboardNavigateToNextDay={this.handleKeyboardNavigateToNextDay}
+				onKeyboardNavigateToPreviousWeek={this.handleKeyboardNavigateToPreviousWeek}
+				onKeyboardNavigateToNextWeek={this.handleKeyboardNavigateToNextWeek}
 				onRequestClose={this.handleRequestClose}
 				onRequestFocusDate={this.props.onRequestFocusDate}
 				onSelectDate={this.handleSelectDate}
+				previousfocusedDate={this.props.previousfocusedDate}
 				selectedDate={this.props.selectedDate}
 				selectedDateRef={this.props.selectedDateRef}
 				todayLabel={this.props.todayLabel}

@@ -367,7 +367,6 @@ const Datepicker = React.createClass({
 	},
 
 	getDialog () {
-		console.log(this.getIsOpen());
 		return (
 				!this.props.disabled && this.getIsOpen()
 				? <Dialog

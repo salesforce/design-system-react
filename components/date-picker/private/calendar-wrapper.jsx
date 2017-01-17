@@ -127,6 +127,8 @@ const DatepickerCalendarWrapper = React.createClass({
 	},
 
 	handleCalendarBlur (event, { direction }) {
+		console.log(direction);
+		console.log(this.previousMonthRef);
 		if (direction === 'next' && this.previousMonthRef) {
 			this.previousMonthRef.focus();
 		} else if (direction === 'previous' && this.todayRef) {
@@ -140,14 +142,14 @@ const DatepickerCalendarWrapper = React.createClass({
 		}
 	},
 
-	handleTodayKeyDown (event) {
+	handleLastFocusableNodeKeyDown (event) {
 		if (!event.shiftKey && event.keyCode === KEYS.TAB) {
 			EventUtil.trapEvent(event);
 			console.log('calendarFocus');
 		}
 	},
 
-	handlePreviousMonthKeyDown (event) {
+	handleFirstFocusableNodeKeyDown (event) {
 		if (event.shiftKey && event.keyCode === KEYS.TAB) {
 			EventUtil.trapEvent(event);
 			console.log('calendarFocus');
@@ -155,9 +157,9 @@ const DatepickerCalendarWrapper = React.createClass({
 	},
 
 	handleRequestFocusDate (event, data) {
-		console.log(data.ref);
+		console.log(event, data);
 		if (data.ref) {
-			data.ref.focus();
+			// data.ref.focus();
 		}
 	},
 
@@ -189,14 +191,11 @@ const DatepickerCalendarWrapper = React.createClass({
 					id={this.props.id}
 					initialDateForCalendarRender={this.state.initialDateForCalendarRender}
 					monthLabels={this.props.monthLabels}
-					nextMonthRef={(component) => {
-						this.nextMonthRef = component;
-					}}
 					onChangeMonth={this.handleInitialDateForCalendarRenderChange}
 					previousMonthRef={(component) => {
 						this.previousMonthRef = component;
 					}}
-					onPreviousMonthKeyDown={this.handlePreviousMonthKeyDown}
+					onPreviousMonthKeyDown={this.handleFirstFocusableNodeKeyDown}
 					relativeYearFrom={this.props.relativeYearFrom}
 					relativeYearTo={this.props.relativeYearTo}
 					yearPicklistButtonRef={(component) => {
@@ -219,7 +218,7 @@ const DatepickerCalendarWrapper = React.createClass({
 					todayRef={(component) => {
 						this.todayRef = component;
 					}}
-					onTodayKeyDown={this.handleTodayKeyDown}
+					onLastFocusableNodeKeyDown={this.onLastFocusableNodeKeyDown}
 					weekDayLabels={this.props.weekDayLabels}
 				/>
 				<span id="bn_prev-label" className="slds-assistive-text">{this.props.assistiveTextNextMonth}</span>

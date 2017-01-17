@@ -33,7 +33,11 @@ const DatepickerYearSelector = React.createClass({
 		/**
 		 * Offset of year from current year that can be selected in the year selection dropdown. (2017 + 5 = 2012).
 		 */
-		relativeYearTo: PropTypes.number
+		relativeYearTo: PropTypes.number,
+		/**
+		 * Callback that passes in the DOM reference of the `<button>` DOM node within this component. Primary use is to allow `focus` to be called. You should still test if the node exists, since rendering is asynchronous. `buttonRef={(component) => { if(component) console.log(component); }}`
+		 */
+		yearPicklistButtonRef: PropTypes.func
 	},
 
 	getOptions () {
@@ -59,7 +63,7 @@ const DatepickerYearSelector = React.createClass({
 			<div className="slds-form-element">
 
 				<MenuPicklist
-					buttonRef={this.props.buttonRef}
+					buttonRef={this.props.yearPicklistButtonRef}
 					checkmark={false}
 					className="slds-picklist--fluid slds-shrink-none"
 					initialFocus

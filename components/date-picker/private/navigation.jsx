@@ -41,13 +41,13 @@ const DatepickerMonthNavigation = React.createClass({
 		 */
 		monthLabels: PropTypes.array.isRequired,
 		/**
-		 * Callback that passes in the DOM reference of the `<button>` DOM node within this component. Primary use is to allow `focus` to be called. You should still test if the node exists, since rendering is asynchronous.
+		 * For keyboard navigation. In order to trap focus within the dialog, the first DOM node with a tab index should be listened to.
 		 */
-		nextMonthRef: PropTypes.func,
+		onPreviousMonthKeyDown: PropTypes.func,
 		/**
 		 * Callback that passes in the DOM reference of the `<button>` DOM node within this component. Primary use is to allow `focus` to be called. You should still test if the node exists, since rendering is asynchronous.
 		 */
-		previousMonthRef: PropTypes.func,
+		previousMonthRef: PropTypes.func.isRequired,
 		/**
 		 * Offset of year from current year that can be selected in the year selection dropdown. (2017 - 5 = 2012).
 		 */
@@ -114,9 +114,6 @@ const DatepickerMonthNavigation = React.createClass({
 							iconName="right"
 							iconVariant="container"
 							onClick={this.nextMonthClicked}
-							buttonRef={(component) => {
-								this.props.nextMonthRef(component);
-							}}
 							variant="icon"
 						/>
 					</div>
