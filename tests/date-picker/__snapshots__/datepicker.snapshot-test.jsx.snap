@@ -88,10 +88,7 @@ exports[`test Datepicker
       aria-hidden="false"
       className=""
       data-selection="single"
-      onBlur={[Function]}
-      onClick={undefined}
-      onFocus={[Function]}
-      onKeyDown={[Function]}>
+      onKeyDown={undefined}>
       <div
         className="slds-datepicker__filter slds-grid">
         <div
@@ -108,7 +105,7 @@ exports[`test Datepicker
               onBlur={undefined}
               onClick={[Function]}
               onFocus={undefined}
-              onKeyDown={undefined}
+              onKeyDown={[Function]}
               onKeyPress={undefined}
               onKeyUp={undefined}
               onMouseDown={undefined}
@@ -758,7 +755,6 @@ exports[`test Datepicker
                 <a
                   className="slds-show--inline-block slds-p-bottom--x-small"
                   href="javascript:void(0)"
-                  onBlur={[Function]}
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   tabIndex="0">
@@ -861,10 +857,7 @@ exports[`test Datepicker
       aria-hidden="false"
       className=""
       data-selection="single"
-      onBlur={[Function]}
-      onClick={undefined}
-      onFocus={[Function]}
-      onKeyDown={[Function]}>
+      onKeyDown={undefined}>
       <div
         className="slds-datepicker__filter slds-grid">
         <div
@@ -881,7 +874,7 @@ exports[`test Datepicker
               onBlur={undefined}
               onClick={[Function]}
               onFocus={undefined}
-              onKeyDown={undefined}
+              onKeyDown={[Function]}
               onKeyPress={undefined}
               onKeyUp={undefined}
               onMouseDown={undefined}
@@ -1531,7 +1524,6 @@ exports[`test Datepicker
                 <a
                   className="slds-show--inline-block slds-p-bottom--x-small"
                   href="javascript:void(0)"
-                  onBlur={[Function]}
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   tabIndex="0">
@@ -1632,10 +1624,7 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
       aria-hidden="false"
       className=""
       data-selection="single"
-      onBlur={[Function]}
-      onClick={undefined}
-      onFocus={[Function]}
-      onKeyDown={[Function]}>
+      onKeyDown={undefined}>
       <div
         className="slds-datepicker__filter slds-grid">
         <div
@@ -1652,7 +1641,7 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
               onBlur={undefined}
               onClick={[Function]}
               onFocus={undefined}
-              onKeyDown={undefined}
+              onKeyDown={[Function]}
               onKeyPress={undefined}
               onKeyUp={undefined}
               onMouseDown={undefined}
@@ -2302,7 +2291,6 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 <a
                   className="slds-show--inline-block slds-p-bottom--x-small"
                   href="javascript:void(0)"
-                  onBlur={[Function]}
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   tabIndex="0">
