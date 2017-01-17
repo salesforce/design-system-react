@@ -3,12 +3,12 @@ _Salesforce Lightning Design System :: React Components :: design-system-react_
 
 ## Future Breaking Changes
 
-These are changes that have backwards-compatible solutions present and that compatibiity will be removed at a breaking change release in the future.
+These are changes that have backwards-compatible solutions present and that compatibility will be removed at a breaking change release in the future.
 
-- `Checkbox`'s `onChange` now recieves `event, {checked: [boolean], indeterminate: [boolean] }`. Previously, `checked` was the first parameter.
-- `TabsPane` has be replaced with `TabsPanel`.
+- `Checkbox`'s `onChange` now receives `event, { checked: [boolean], indeterminate: [boolean] }`. Previously, `checked` was the first parameter.
+- `TabsPane` has been replaced with `TabsPanel`.
 - `Input`'s props: `iconPosition`, `iconAssistiveText`, `iconCategory`, `iconName`, `onIconClick` are deprecated. An `Icon` component should be used instead.
-- `DataTable`'s' `collection`, `onSelect`, `onDeselect` are deprecated.
+- `DataTable`'s `collection`, `onSelect`, `onDeselect` are deprecated.
 - The prop `modal` in `DatePicker`, `Lookup`, `MenuDropdown`, `MenuPicklist`, `TimePicker` is deprecated
 - Remove `openByDefault` from `PopoverTooltip`.
 - Remove alias component files. Please update the following removed files to their new file name.
