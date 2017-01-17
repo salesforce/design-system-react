@@ -32,7 +32,7 @@
     "url": "https://github.com/salesforce-ux/design-system-react"
   },
   "jest": {
-    "testRegex": "\/tests\/.*\\.snapshot-test\\.jsx?$"
+    "testRegex": "/tests/.*\\.snapshot-test\\.jsx?$"
   },
   "keywords": [
     "react",
