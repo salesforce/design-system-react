@@ -71,7 +71,9 @@ const DatepickerCalendarDay = (props) => {
 				'slds-disabled-text': !isCurrentMonth,
 				'slds-is-selected': isSelectedDay
 			})}
-			onClick={handleClick}
+			onClick={(event) => {
+				handleClick(event, { date: props.date, onSelectDate: props.onSelectDate });
+			}}
 			onKeyDown={(event) => {
 				handleKeyDown(event, {
 					...props

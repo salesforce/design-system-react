@@ -127,8 +127,8 @@ const DatepickerCalendarWrapper = React.createClass({
 	},
 
 	handleCalendarBlur (event, { direction }) {
-		console.log(direction);
-		console.log(this.previousMonthRef);
+		// console.log(direction);
+		// console.log(this.previousMonthRef);
 		if (direction === 'next' && this.previousMonthRef) {
 			this.previousMonthRef.focus();
 		} else if (direction === 'previous' && this.todayRef) {
@@ -145,21 +145,21 @@ const DatepickerCalendarWrapper = React.createClass({
 	handleLastFocusableNodeKeyDown (event) {
 		if (!event.shiftKey && event.keyCode === KEYS.TAB) {
 			EventUtil.trapEvent(event);
-			console.log('calendarFocus');
+			// console.log('calendarFocus');
 		}
 	},
 
 	handleFirstFocusableNodeKeyDown (event) {
 		if (event.shiftKey && event.keyCode === KEYS.TAB) {
 			EventUtil.trapEvent(event);
-			console.log('calendarFocus');
+			// console.log('calendarFocus');
 		}
 	},
 
 	handleRequestFocusDate (event, data) {
-		console.log(event, data);
+		// console.log(event, data);
 		if (data.ref) {
-			// data.ref.focus();
+			data.ref.focus();
 		}
 	},
 
