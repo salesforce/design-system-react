@@ -141,7 +141,8 @@ storiesOf(MODAL, module)
 		onRequestClose: action('modal closed'),
 		portalClassName: 'portal-class-name-test'
 	}))
-	.add('Small with footer', () => getModal({
+	.add('Small with footer, not dismissible', () => getModal({
+		dismissible: false,
 		isOpen: true,
 		tagline: 'Enter in details below',
 		title: 'New Opportunity',
@@ -149,10 +150,27 @@ storiesOf(MODAL, module)
 		onRequestClose: action('modal closed'),
 		footer: modalFooter
 	}))
+	.add('Small no header', () => getModal({
+		isOpen: true,
+		children: modalContent,
+		onRequestClose: action('modal closed'),
+		portalClassName: 'portal-class-name-test'
+	}))
+	.add('Large with directional footer', () => getModal({
+		directional: true,
+		isOpen: true,
+		tagline: 'Enter in details below',
+		title: 'New Opportunity',
+		children: modalContent,
+		onRequestClose: action('modal closed'),
+		footer: modalFooter,
+		size: 'large'
+
+	}))
 	.add('Prompt', () => getModal({
 		isOpen: true,
 		title: 'Delete state - Default',
-		children: <div>Are you sure you want to delete the Default State? This action cannot be undone. Are you sure you want to delete the Default State? This action cannot be undone. Are you sure you want to delete the Default State? This action cannot be undone.</div>, // eslint-disable-line max-len
+		children: <div className='slds-p-around--medium'>Are you sure you want to delete the Default State? This action cannot be undone. Are you sure you want to delete the Default State? This action cannot be undone. Are you sure you want to delete the Default State? This action cannot be undone. <Button className="slds-m-around--medium">Ok, got it!</Button></div>, // eslint-disable-line max-len
 		prompt: 'error',
 		onRequestClose: action('modal closed')
 	}));
