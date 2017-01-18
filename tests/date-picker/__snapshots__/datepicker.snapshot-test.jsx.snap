@@ -88,7 +88,7 @@ exports[`test Datepicker
       aria-hidden="false"
       className=""
       data-selection="single"
-      onKeyDown={undefined}>
+      onKeyDown={[Function]}>
       <div
         className="slds-datepicker__filter slds-grid">
         <div
@@ -857,7 +857,7 @@ exports[`test Datepicker
       aria-hidden="false"
       className=""
       data-selection="single"
-      onKeyDown={undefined}>
+      onKeyDown={[Function]}>
       <div
         className="slds-datepicker__filter slds-grid">
         <div
@@ -1624,7 +1624,7 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
       aria-hidden="false"
       className=""
       data-selection="single"
-      onKeyDown={undefined}>
+      onKeyDown={[Function]}>
       <div
         className="slds-datepicker__filter slds-grid">
         <div
