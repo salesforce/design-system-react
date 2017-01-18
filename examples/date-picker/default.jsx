@@ -18,8 +18,9 @@ const Example = React.createClass({
 						data.localOffset);
 					}
 				}}
-				onRequestFocusDate={(event, data) => {
-					if (this.props.log) { this.props.log('onRequestFocusDate')(event, data.date); }
+				onCalendarFocus={(event, data) => {
+					console.log(data.ref);
+					if (this.props.log) { this.props.log('onCalendarFocus')(event, data.date); }
 				}}
 			/>
 		);

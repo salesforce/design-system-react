@@ -24,7 +24,6 @@ const handleClick = (event, { date, onSelectDate }) => {
 const handleKeyDown = (event, {
 	date,
 	onCalendarBlur,
-	onRequestClose,
 	onSelectDate,
 	onKeyboardNavigateToPreviousDay,
 	onKeyboardNavigateToNextDay,
@@ -34,7 +33,6 @@ const handleKeyDown = (event, {
 	const keyDownCallbacks = {
 		[KEYS.SPACE]: () => { onSelectDate(event, { date }); },
 		[KEYS.ENTER]: () => { onSelectDate(event, { date }); },
-		[KEYS.ESCAPE]: () => { onRequestClose(); },
 		[KEYS.TAB]: () => { onCalendarBlur(event, { direction: 'next' }); },
 		[KEYS.LEFT]: () => { onKeyboardNavigateToPreviousDay(event, { date }); },
 		[KEYS.RIGHT]: () => { onKeyboardNavigateToNextDay(event, { date }); },
@@ -47,10 +45,11 @@ const handleKeyDown = (event, {
 	};
 
 	if (event.keyCode) {
-		EventUtil.trapEvent(event);
 		if (event.shiftKey && keyDownCallbacks[event.keyCode]) {
+			EventUtil.trapEvent(event);
 			shiftKeyDownCallbacks[event.keyCode]();
 		} else if (keyDownCallbacks[event.keyCode]) {
+			EventUtil.trapEvent(event);
 			keyDownCallbacks[event.keyCode]();
 		}
 	}

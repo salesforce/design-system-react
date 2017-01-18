@@ -129,9 +129,9 @@ const Datepicker = React.createClass({
 		 */
 		onClose: PropTypes.func,
 		/**
-		 * Triggered when the user wants to focus on a new day witht he keyboard. It returns the keyboard event a data object with the shape: `{date: [Date object]}`. Keyboard event is ommited if a new month is rendered.  _Tested with Mocha framework._
+		 * Triggered when the user wants to focus on a new day with the keyboard. If the target node is a day it will return the keyboard event a data object with the shape: `{date: [Date object]}`. Event will be `null` when new month is re-rendered.  _Tested with Mocha framework._
 		 */
-		onRequestFocusDate: PropTypes.func,
+		onCalendarFocus: PropTypes.func,
 		/**
 		 * Triggered when the calendar has opened. _Tested with Mocha framework._
 		 */
@@ -404,7 +404,7 @@ const Datepicker = React.createClass({
 			id={this.getId()}
 			isIsoWeekday={this.props.isIsoWeekday}
 			monthLabels={this.props.monthLabels}
-			onRequestFocusDate={this.props.onRequestFocusDate}
+			onCalendarFocus={this.props.onCalendarFocus}
 			onRequestClose={this.handleRequestClose}
 			onSelectDate={this.handleCalendarChange}
 			ref={() => {

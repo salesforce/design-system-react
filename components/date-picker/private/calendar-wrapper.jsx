@@ -8,6 +8,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React, { PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 
 import Calendar from './calendar';
 import CalendarNavigation from './navigation';
@@ -63,7 +64,7 @@ const DatepickerCalendarWrapper = React.createClass({
 		/**
 		 * Triggered when the keyboard moves focus on the calendar. {date: [Date object], formattedDate: [string]}  _Tested with Mocha framework._
 		 */
-		onRequestFocusDate: PropTypes.func,
+		onCalendarFocus: PropTypes.func,
 		/**
 		 * Triggered when the calendar is supposed to close.
 		 */
@@ -119,9 +120,15 @@ const DatepickerCalendarWrapper = React.createClass({
 	handleCalendarBlur (event, { direction }) {
 		if (direction === 'next' && this.previousMonthRef) {
 			this.setState({ isCalendarFocused: false });
+			if (this.props.onCalendarFocus) {
+				this.props.onCalendarFocus(event, { direction, isCalendarFocused: false, ref: this.previousMonthRef });
+			}
 			this.previousMonthRef.focus();
 		} else if (direction === 'previous' && this.todayRef) {
 			this.setState({ isCalendarFocused: false });
+			if (this.props.onCalendarFocus) {
+				this.props.onCalendarFocus(event, { direction, isCalendarFocused: false, ref: this.todayRef });
+			}
 			this.todayRef.focus();
 		}
 	},
@@ -153,9 +160,16 @@ const DatepickerCalendarWrapper = React.createClass({
 		}
 
 		// only call on actual DOM event and not on re-render
-		if (this.props.onRequestFocusDate && data.triggerCallback) {
+		if (this.props.onCalendarFocus && data.triggerCallback) {
 			const { triggerCallback, ...modifiedData } = data;	// eslint-disable-line no-unused-vars
-			this.props.onRequestFocusDate(event, modifiedData);
+			this.props.onCalendarFocus(event, modifiedData);
+		}
+	},
+
+	handleKeyDown (event) {
+		if (event.keyCode === KEYS.ESCAPE) {
+			EventUtil.trapEvent(event);
+			this.props.onRequestClose(event);
 		}
 	},
 

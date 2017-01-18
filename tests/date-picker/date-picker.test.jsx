@@ -27,6 +27,7 @@ import { createMountNode, destroyMountNode } from '../enzyme-helpers';
 // Import your internal dependencies (for example):
 import Datepicker from '../../components/date-picker';
 import Input from '../../components/forms/input';
+import { KEYS } from '../../utilities';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme
@@ -231,7 +232,7 @@ describe('SLDSDatepicker', function () {
 					}}
 					onOpen={() => {
 						const firstDayOfMonth = portalWrapper.find('.datepicker__month [aria-disabled=false]').first();
-						firstDayOfMonth.simulate('keyDown', { key: 'Esc', keyCode: 27, which: 27 });
+						firstDayOfMonth.simulate('keyDown', { key: 'Esc', keyCode: KEYS.ESCAPE, which: KEYS.ESCAPE });
 					}}
 				/>, { attachTo: mountNode });
 
@@ -247,9 +248,9 @@ describe('SLDSDatepicker', function () {
 					}}
 					onOpen={() => {
 						const selectedDay = portalWrapper.find('.datepicker__month [aria-selected=true]');
-						selectedDay.simulate('keyDown', { key: 'Down', keyCode: 40, which: 40 });
+						selectedDay.simulate('keyDown', { key: 'Down', keyCode: KEYS.DOWN, which: KEYS.DOWN });
 					}}
-					onRequestFocusDate={(event, data) => {
+					onCalendarFocus={(event, data) => {
 						expect(data.date.getTime()).to.equal(new Date(2007, 0, 13).getTime());
 						done();
 					}}
@@ -264,9 +265,9 @@ describe('SLDSDatepicker', function () {
 					}}
 					onOpen={() => {
 						const selectedDay = portalWrapper.find('.datepicker__month [aria-selected=true]');
-						selectedDay.simulate('keyDown', { key: 'Right', keyCode: 39, which: 39 });
+						selectedDay.simulate('keyDown', { key: 'Right', keyCode: KEYS.RIGHT, which: KEYS.RIGHT });
 					}}
-					onRequestFocusDate={(event, data) => {
+					onCalendarFocus={(event, data) => {
 						expect(data.date.getTime()).to.equal(new Date(2007, 0, 7).getTime());
 						done();
 					}}
@@ -281,9 +282,9 @@ describe('SLDSDatepicker', function () {
 					}}
 					onOpen={() => {
 						const selectedDay = portalWrapper.find('.datepicker__month [aria-selected=true]');
-						selectedDay.simulate('keyDown', { key: 'Up', keyCode: 38, which: 38 });
+						selectedDay.simulate('keyDown', { key: 'Up', keyCode: KEYS.UP, which: KEYS.UP });
 					}}
-					onRequestFocusDate={(event, data) => {
+					onCalendarFocus={(event, data) => {
 						expect(data.date.getTime()).to.equal(new Date(2006, 11, 30).getTime());
 						done();
 					}}
@@ -298,10 +299,44 @@ describe('SLDSDatepicker', function () {
 					}}
 					onOpen={() => {
 						const selectedDay = portalWrapper.find('.datepicker__month [aria-selected=true]');
-						selectedDay.simulate('keyDown', { key: 'Left', keyCode: 37, which: 37 });
+						selectedDay.simulate('keyDown', { key: 'Left', keyCode: KEYS.LEFT, which: KEYS.LEFT });
 					}}
-					onRequestFocusDate={(event, data) => {
+					onCalendarFocus={(event, data) => {
 						expect(data.date.getTime()).to.equal(new Date(2007, 0, 5).getTime());
+						done();
+					}}
+				/>, { attachTo: mountNode });
+			});
+
+			it('calendar blur, focus on previous month button', function (done) {
+				wrapper = mount(<DemoComponent
+					isOpen
+					portalMount={(reactElement, domContainerNode) => {
+						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
+					}}
+					onOpen={() => {
+						const selectedDay = portalWrapper.find('.datepicker__month [aria-selected=true]');
+						selectedDay.simulate('keyDown', { key: 'Tab', keyCode: KEYS.TAB, which: KEYS.TAB });
+					}}
+					onCalendarFocus={(event, data) => {
+						expect(data.ref.textContent).to.equal('Previous month');
+						done();
+					}}
+				/>, { attachTo: mountNode });
+			});
+
+			it('calendar blur, focus on today', function (done) {
+				wrapper = mount(<DemoComponent
+					isOpen
+					portalMount={(reactElement, domContainerNode) => {
+						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
+					}}
+					onOpen={() => {
+						const selectedDay = portalWrapper.find('.datepicker__month [aria-selected=true]');
+						selectedDay.simulate('keyDown', { key: 'Tab', keyCode: KEYS.TAB, shiftKey: true, which: KEYS.TAB });
+					}}
+					onCalendarFocus={(event, data) => {
+						expect(data.ref.textContent).to.equal('Today');
 						done();
 					}}
 				/>, { attachTo: mountNode });
