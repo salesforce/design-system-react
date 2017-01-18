@@ -35,7 +35,7 @@ import checkProps from './check-props';
 import EventUtil from '../../utilities/EventUtil';
 import KEYS from '../../utilities/KEYS';
 
-import { DATEPICKER } from '../../utilities/constants';
+import { DATE_PICKER } from '../../utilities/constants';
 
 /* A datepicker is a non text input form element. You can select a single date from a popup or inline calendar. The datepicker supplied by this library comes with an input by default, but other components could be passed in as children--however, pairing with other components is untested.
 
@@ -46,7 +46,7 @@ The calendar is rendered with time/dates based on local browser time of the clie
  * This component may use a portalMount (a disconnected React subtree mount) within an absolutely positioned DOM node created with [Drop](http://github.hubspot.com/drop/).
 */
 const Datepicker = React.createClass({
-	displayName: DATEPICKER,
+	displayName: DATE_PICKER,
 
 	propTypes: {
 		/**
@@ -256,7 +256,7 @@ const Datepicker = React.createClass({
 		this.generatedId = shortid.generate();
 
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(DATEPICKER, this.props);
+		checkProps(DATE_PICKER, this.props);
 	},
 
 	componentWillReceiveProps (nextProps) {

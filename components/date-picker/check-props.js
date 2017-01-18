@@ -11,26 +11,28 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 /* eslint-disable import/no-mutable-exports */
 /* eslint-disable  max-len */
 
-import sunsetProperty from '../../utilities/warning/deprecated-property';
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
 		// Deprecated and changed to another property
-		sunsetProperty(COMPONENT, props.modal, 'modal', 'isInline', 'In an effort to add clarity to the meaning of the modal prop and to make more props default to false, `isInline` has replaced `modal` and is the reverse of modal.');
+		deprecatedProperty(COMPONENT, props.modal, 'modal', 'isInline', 'In an effort to add clarity to the meaning of the modal prop and to make more props default to false, `isInline` has replaced `modal` and is the reverse of modal.');
 
-		sunsetProperty(COMPONENT, props.onFocus, 'onFocus', undefined, 'Please see children prop description and add your own `Input` with this prop as a child of Datepicker.');
+		deprecatedProperty(COMPONENT, props.onFocus, 'onFocus', undefined, 'Please see children prop description and add your own `Input` with this prop as a child of Datepicker.');
 
-		sunsetProperty(COMPONENT, props.onBlur, 'onBlur', undefined, 'Please see children prop description and add your own `Input` with this prop as a child of Datepicker.');
+		deprecatedProperty(COMPONENT, props.onBlur, 'onBlur', undefined, 'Please see children prop description and add your own `Input` with this prop as a child of Datepicker.');
 
-		sunsetProperty(COMPONENT, props.onFocus, 'abbrWeekDayLabels', 'abbreviatedWeekDayLabels', 'Prop name has changed.');
+		deprecatedProperty(COMPONENT, props.onFocus, 'abbrWeekDayLabels', 'abbreviatedWeekDayLabels', 'Prop name has changed.');
 
-		sunsetProperty(COMPONENT, props.onFocus, 'onDateChange', 'onChange', 'Please see prop description for `onChange`. Parameters have changed. The callback recieves an event and a data object of the shape: `{date: [Date object], formattedDate: [string], timezoneOffset: [number]}`');
+		deprecatedProperty(COMPONENT, props.onFocus, 'onDateChange', 'onChange', 'Please see prop description for `onChange`. Parameters have changed. The callback recieves an event and a data object of the shape: `{date: [Date object], formattedDate: [string], timezoneOffset: [number]}`');
 
-		sunsetProperty(COMPONENT, props.onFocus, 'onKeyDown', undefined, 'Please see children prop description and add your own `Input` as a child of Datepicker.');
+		deprecatedProperty(COMPONENT, props.onFocus, 'onKeyDown', undefined, 'Please see children prop description and add your own `Input` as a child of Datepicker.');
 
-		sunsetProperty(COMPONENT, props.onFocus, 'required', undefined, 'Please see children prop description and add your own `Input` as a child of Datepicker.');
+		deprecatedProperty(COMPONENT, props.onFocus, 'required', undefined, 'Please see children prop description and add your own `Input` as a child of Datepicker.');
+
+		deprecatedProperty(COMPONENT, props.strValue, 'strValue', 'formattedValue');
 	};
 }
 
