@@ -8,12 +8,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React, { PropTypes } from 'react';
-import ReactDOM from 'react-dom';
 
 import Calendar from './calendar';
 import CalendarNavigation from './navigation';
 
-import { EventUtil, KEYS } from '../../../utilities';
+import EventUtil from '../../../utilities/EventUtil';
+import KEYS from '../../../utilities/KEYS';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)

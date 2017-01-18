@@ -9,7 +9,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React, { PropTypes } from 'react';
 
-import { KEYS, EventUtil, DateUtil } from '../../../utilities';
+import EventUtil from '../../../utilities/EventUtil';
+import DateUtil from '../../../utilities/DateUtil';
+import KEYS from '../../../utilities/KEYS';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)

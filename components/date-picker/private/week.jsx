@@ -10,7 +10,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { PropTypes } from 'react';
 
 import Day from './day';
-import { DateUtil } from '../../../utilities';
+
+import DateUtil from '../../../utilities/DateUtil';
 
 const DatepickerWeek = (props) => {
 	let days = [];

@@ -121,6 +121,10 @@ const Datepicker = React.createClass({
 		 */
 		monthLabels: PropTypes.array,
 		/**
+		 * Triggered when the user wants to focus on a new day with the keyboard. If the target node is a day it will return the keyboard event a data object with the shape: `{date: [Date object]}`. Event will be `null` when new month is re-rendered.  _Tested with Mocha framework._
+		 */
+		onCalendarFocus: PropTypes.func,
+		/**
 		 * Triggered when the date changes. `onChange` can be used for form validation if needed. It receives an event and a data object in the shape: `{date: [Date object], formattedDate: [string], timezoneOffset: [number]}`. `data.date` is Coordinated Universal Time (UTC), but the days of the calendar are in local time of the user. The `timezoneOffset` is the difference, in minutes, between UTC and the local time. Please note that this means that the offset is positive if the local timezone is behind UTC and negative if it is ahead. `timezoneOffset` is in minutes, for hours divide by `60`. _Tested with Mocha framework._
 		 */
 		onChange: PropTypes.func,
@@ -128,10 +132,6 @@ const Datepicker = React.createClass({
 		 * Triggered when the calendar is closed. _Tested with Mocha framework._
 		 */
 		onClose: PropTypes.func,
-		/**
-		 * Triggered when the user wants to focus on a new day with the keyboard. If the target node is a day it will return the keyboard event a data object with the shape: `{date: [Date object]}`. Event will be `null` when new month is re-rendered.  _Tested with Mocha framework._
-		 */
-		onCalendarFocus: PropTypes.func,
 		/**
 		 * Triggered when the calendar has opened. _Tested with Mocha framework._
 		 */

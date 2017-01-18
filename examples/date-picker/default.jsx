@@ -19,7 +19,6 @@ const Example = React.createClass({
 					}
 				}}
 				onCalendarFocus={(event, data) => {
-					console.log(data.ref);
 					if (this.props.log) { this.props.log('onCalendarFocus')(event, data.date); }
 				}}
 			/>

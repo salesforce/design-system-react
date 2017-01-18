@@ -9,7 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React, { PropTypes } from 'react';
 import Week from './week';
-import { DateUtil } from '../../../utilities';
+import DateUtil from '../../../utilities/DateUtil';
 
 const DatepickerCalendar = React.createClass({
 	displayName: 'SLDSDatepickerCalendar',

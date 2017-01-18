@@ -10,7 +10,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { PropTypes } from 'react';
 import YearPicklist from './year-picklist';
 import Button from '../../button';
-import { DateUtil } from '../../../utilities';
+
+import DateUtil from '../../../utilities/DateUtil';
 
 const DatepickerMonthNavigation = React.createClass({
 	displayName: 'SLDSDatepickerMonthNavigation',
