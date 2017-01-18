@@ -34,10 +34,6 @@ const DatepickerCalendarWrapper = React.createClass({
 		 */
 		assistiveTextPreviousMonth: PropTypes.string.isRequired,
 		/**
-		 * Label for today's date
-		 */
-		assistiveTextToday: PropTypes.string,
-		/**
 		 * One letter abbreviations of the days of the week, starting on Sunday.
 		 */
 		abbreviatedWeekDayLabels: PropTypes.array.isRequired,
@@ -197,9 +193,6 @@ const DatepickerCalendarWrapper = React.createClass({
 					onPreviousMonthKeyDown={this.handleFirstFocusableNodeKeyDown}
 					relativeYearFrom={this.props.relativeYearFrom}
 					relativeYearTo={this.props.relativeYearTo}
-					yearPicklistButtonRef={(component) => {
-						this.yearPicklistButtonRef = component;
-					}}
 				/>
 				<Calendar
 					abbreviatedWeekDayLabels={this.props.abbreviatedWeekDayLabels}

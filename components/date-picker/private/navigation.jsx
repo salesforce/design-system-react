@@ -120,7 +120,6 @@ const DatepickerMonthNavigation = React.createClass({
 					</div>
 				</div>
 				<YearPicklist
-					buttonRef={this.props.yearPicklistButtonRef}
 					id={this.props.id}
 					initialDateForCalendarRender={this.props.initialDateForCalendarRender}
 					onChangeMonth={this.handleYearSelect}
