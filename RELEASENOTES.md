@@ -25,11 +25,12 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ---
 
-## Release 0.5.5
+## Release 0.6.0
 
-**MINOR CHANGES**
+**MAJOR CHANGES**
 
 - Datepicker updates
+    - `className` now is added to the node with `slds-datepicker` within the dialog. Use `triggerClassName` for the outer wrapping `div`.
     - `onChange` (formerly onDateChange) now provides callback with event and a data object in the shape: `{date: [Date object], formattedDate: [string], timezoneOffset: [number]}`
     - Many new props: calendar alignment, assistive text props, accepts custom input, supports ISO weekday (Monday first), new props to allow calendar to be controlled (onClose, onOpen, onRequestClose, onRequestOpen), `portalMount` prop for testing React root nodes, more alignment with other menu/dialog components
     - Additional accessiblity testing

@@ -74,7 +74,7 @@ const Datepicker = React.createClass({
 		 */
 		children: PropTypes.node,
 		/**
-		 * CSS classes to be added to tag with `slds-datepicker`. _Tested with snapshot testing._
+		 * CSS classes to be added to tag with `slds-datepicker`. If you are looking for the outer DOM node (slds-dropdown-trigger), please review `triggerClassName`. _Tested with snapshot testing._
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
@@ -104,6 +104,10 @@ const Datepicker = React.createClass({
 		 * Renders menu within the wrapping trigger as a sibling of the input. By default, you will have an absolutely positioned container at an elevated z-index.
 		 */
 		isInline: PropTypes.bool,
+		/**
+		 * This label appears above the input.
+		 */
+		label: PropTypes.string,
 		/**
 		 * Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use view [Concepts and Best Practices](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices)
 		 */
