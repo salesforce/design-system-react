@@ -67,15 +67,13 @@ const DemoCard = React.createClass({
 					header={this.props.header}
 					headerActions={!isEmpty
 						? <Button label="Delete All Items" onClick={this.handleDeleteAllItems} />
-						: null
+						: <Button label="New" onClick={this.handleAddItem} />
 					}
 					footer="Card Footer"
 					heading={heading}
 					icon={<Icon category="standard" name="document" size="small" />}
 					empty={isEmpty
-						? <CardEmpty heading="No Related Items">
-							<Button label="Add Item" onClick={this.handleAddItem} />
-						</CardEmpty>
+						? <CardEmpty heading="No Related Items" />
 						: null}
 				>
 					<DataTable

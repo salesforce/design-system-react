@@ -12,6 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // # Card Component
 
 // Implements the [Card design pattern](https://www.lightningdesignsystem.com/components/cards/) in React.
+// Based on SLDS v2.2.1
 
 // ### React
 // React is an external dependency of the project.
@@ -57,15 +58,15 @@ const Card = function (props) {
 	}
 
 	return (
-		<div id={props.id} className={classnames('slds-card', props.className)} style={props.style}>
+		<article id={props.id} className={classnames('slds-card', props.className)} style={props.style}>
 			<Header
 				header={props.header}
 				headingId={headingId}
-				icon={empty ? null : props.icon}
+				icon={props.icon}
 				filter={props.filter}
 				filterId={filterId}
 				heading={props.heading}
-				headerActions={empty ? null : props.headerActions}
+				headerActions={props.headerActions}
 				headerActionsId={headerActionsId}
 			/>
 			{
@@ -74,11 +75,11 @@ const Card = function (props) {
 				: <Body id={bodyId} className={props.bodyClassName}>{empty}</Body>
 			}
 			{
-				props.footer && !empty
+				props.footer
 				? <Footer>{props.footer}</Footer>
 				: null
 			}
-		</div>
+		</article>
 	);
 };
 
