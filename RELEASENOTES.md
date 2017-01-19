@@ -25,6 +25,10 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ---
 
+## Release 0.6.1
+
+- Documentation site updates. *No production code changes in this release*.
+
 
 ## Release 0.6.0
 
