@@ -37,14 +37,15 @@ import KEYS from '../../utilities/KEYS';
 
 import { DATE_PICKER } from '../../utilities/constants';
 
-/* A datepicker is a non text input form element. You can select a single date from a popup or inline calendar. The datepicker supplied by this library comes with an input by default, but other components could be passed in as children--however, pairing with other components is untested.
-
-The calendar is rendered with time/dates based on local browser time of the client. All dates are in local user timezones. Another way to put it is if a user selects a date, they are selecting midnight their time on that day and not mightnight in UTC. If this component is being used in conjuction with a timezone input, you may want to convert dates provided to UTC in that timezone.
-
+/**
+ * A date picker is a non text input form element. You can select a single date from a popup or inline calendar. The date picker supplied by this library comes with an input by default, but other components could be passed in as children--however, pairing with other components is untested.
+ *
+ * The calendar is rendered with time/dates based on local browser time of the client. All dates are in local user timezones. Another way to put it is if a user selects a date, they are selecting midnight their time on that day and not mightnight in UTC. If this component is being used in conjuction with a timezone input, you may want to convert dates provided to UTC in that timezone.
+ *
  * This component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.
  *
  * This component may use a portalMount (a disconnected React subtree mount) within an absolutely positioned DOM node created with [Drop](http://github.hubspot.com/drop/).
-*/
+ */
 const Datepicker = React.createClass({
 	displayName: DATE_PICKER,
 
@@ -70,7 +71,7 @@ const Datepicker = React.createClass({
 		 */
 		align: PropTypes.oneOf(['left', 'right']),
 		/**
-		 * Pass in an <Input /> component to customize it. Event handlers for the input (if needed) should be added here and not to this component. `<Input onKeyDown... />`.` _Tested with Mocha framework._
+		 * Pass in an `<Input />` component to customize it. Event handlers for the input (if needed) should be added here and not to this component. `<Input onKeyDown... />`.` _Tested with Mocha framework._
 		 */
 		children: PropTypes.node,
 		/**

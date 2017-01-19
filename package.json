@@ -229,7 +229,7 @@
       ]
     },
     {
-      "component": "date-picker/date-picker",
+      "component": "date-picker",
       "status": "prod",
       "display-name": "Datepickers",
       "SLDS-component-path": "/components/datepickers"
