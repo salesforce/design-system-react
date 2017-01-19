@@ -82,6 +82,11 @@ const DropdownNubbinPositions = [
  * may require a polyfill such as [classList](https://github.com/yola/classlist-polyfill) due to
  * [react-onclickoutside](https://github.com/Pomax/react-onclickoutside) if Internet Explorer 11
  * support is needed.
+ *
+ * This component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.
+ *
+ * This component may use a portalMount (a disconnected React subtree mount) within an absolutely positioned DOM node created with [Drop](http://github.hubspot.com/drop/).
+
  */
 const MenuDropdown = React.createClass({
 	// ### Display Name
@@ -714,7 +719,8 @@ const MenuDropdown = React.createClass({
 					targetElement={this.triggerContainer}
 				>
 					{this.renderMenuContent(customContent)}
-				</Dialog> : null		);
+				</Dialog> : null
+			);
 	},
 
 	renderOverlay (isOpen) {

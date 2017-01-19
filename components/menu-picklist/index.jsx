@@ -59,6 +59,10 @@ const MenuPicklist = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
+		/**
+		 * Callback that passes in the DOM reference of the `<button>` DOM node within this component. Primary use is to allow `focus` to be called. You should still test if the node exists, since rendering is asynchronous. `buttonRef={(component) => { if(component) console.log(component); }}`
+		 */
+		buttonRef: PropTypes.func,
 		className: PropTypes.string,
 		/**
 		 * If true, renders checkmark icon on the selected Menu Item.
@@ -207,7 +211,7 @@ const MenuPicklist = React.createClass({
 
 	setFocus () {
 		if (!this.isUnmounting && this.button) {
-			ReactDOM.findDOMNode(this.button).focus();
+			this.button.focus();
 		}
 	},
 
@@ -368,7 +372,13 @@ const MenuPicklist = React.createClass({
 					disabled={this.props.disabled}
 					id={this.getId()}
 					onClick={!this.props.disabled && this.handleClick}
-					ref={(component) => { this.button = component; }}
+					ref={(component) => {
+						this.button = component;
+
+						if (this.props.buttonRef) {
+							this.props.buttonRef(this.button);
+						}
+					}}
 					tabIndex={this.state.isOpen ? -1 : 0}
 				>
 					<span className="slds-truncate">{this.renderPlaceholder()}</span>
