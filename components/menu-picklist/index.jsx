@@ -120,14 +120,14 @@ const MenuPicklist = React.createClass({
 		window.addEventListener('click', this.closeOnClick, false);
 
 		this.setState({
-			selectedIndex: this.getIndexByValue(this.props.value)
+			selectedIndex: this.getIndexByValue(this.props)
 		});
 	},
 
 	componentWillReceiveProps (nextProps) {
-		if (this.props.value !== nextProps.value) {
+		if (this.props.value !== nextProps.value || this.props.options.length !== nextProps.length) {
 			this.setState({
-				selectedIndex: this.getIndexByValue(nextProps.value)
+				selectedIndex: this.getIndexByValue(nextProps)
 			});
 		}
 	},
@@ -146,11 +146,11 @@ const MenuPicklist = React.createClass({
 		return `SLDS${this.getId()}ClickEvent`;
 	},
 
-	getIndexByValue (value) {
+	getIndexByValue ({ value, options } = this.props) {
 		let foundIndex = -1;
 
-		if (this.props.options && this.props.options.length) {
-			this.props.options.some((element, index) => {
+		if (options && options.length) {
+			options.some((element, index) => {
 				if (element && element.value === value) {
 					foundIndex = index;
 					return true;
