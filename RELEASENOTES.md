@@ -25,6 +25,7 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ---
 
+
 ## Release 0.6.0
 
 **MAJOR CHANGES**
