@@ -1,25 +1,28 @@
-import React, { PropTypes } from 'react';
+/* eslint-disable no-console, react/prop-types */
+import React from 'react';
 import Datepicker from '~/components/date-picker';
 
 const Example = React.createClass({
 	displayName: 'DatepickerExample',
-	propTypes: {
-		log: PropTypes.func
-	},
 
 	render () {
 		return (
 			<Datepicker
 				onChange={(event, data) => {
-					if (this.props.log) {
-						this.props.log('onChange')(
-						data.date,
-						data.formattedDate,
-						data.localOffset);
+					if (this.props.action) {
+						const dataAsArray = Object.keys(data).map((key) => data[key]);
+						this.props.action('onChange')(event, data, ...dataAsArray);
+					} else if (console) {
+						console.log('onChange', event, data);
 					}
 				}}
 				onCalendarFocus={(event, data) => {
-					if (this.props.log) { this.props.log('onCalendarFocus')(event, data.date); }
+					if (this.props.action) {
+						const dataAsArray = Object.keys(data).map((key) => data[key]);
+						this.props.action('onCalendarFocus')(event, data, ...dataAsArray);
+					} else if (console) {
+						console.log('onCalendarFocus', event, data);
+					}
 				}}
 			/>
 		);

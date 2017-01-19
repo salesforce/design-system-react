@@ -1,3 +1,4 @@
+/* eslint-disable no-console, react/prop-types */
 import React from 'react';
 import Datepicker from '~/components/date-picker';
 
@@ -8,8 +9,13 @@ const Example = React.createClass({
 		return (
 			<Datepicker
 				isIsoWeekday
-				onDateChange={({ date, formattedDate }) => {
-					if (this.props.log) { this.props.log('onDateChange')(date, formattedDate); }
+				onChange={(event, data) => {
+					if (this.props.action) {
+						const dataAsArray = Object.keys(data).map((key) => data[key]);
+						this.props.action('onChange')(event, data, ...dataAsArray);
+					} else if (console) {
+						console.log('onChange', event, data);
+					}
 				}}
 			/>
 		);

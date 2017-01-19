@@ -11,8 +11,8 @@ import SnaphotDefault from './snapshot-default';
 
 storiesOf(DATE_PICKER, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('Default', () => (<Default log={action} />))
-	.add('ISO weekdays', () => (<IsoWeekdays log={action} />))
-	.add('Custom Input', () => (<CustomInput log={action} />))
+	.add('Default', () => (<Default action={action} />))
+	.add('ISO weekdays', () => (<IsoWeekdays action={action} />))
+	.add('Custom Input', () => (<CustomInput action={action} />))
 	.add('Inline menu', () => (<Datepicker isInline />))
 	.add('DOM Snapshot', () => (<SnaphotDefault />));
