@@ -1,6 +1,6 @@
 {
   "name": "design-system-react",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Salesforce Lightning Design System React components",
   "license": "BSD-3-Clause",
   "engines": {
@@ -229,7 +229,7 @@
       ]
     },
     {
-      "component": "date-picker",
+      "component": "date-picker/date-picker",
       "status": "prod",
       "display-name": "Datepickers",
       "SLDS-component-path": "/components/datepickers"
