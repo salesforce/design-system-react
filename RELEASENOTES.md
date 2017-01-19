@@ -30,12 +30,22 @@ These are changes that have backwards-compatible solutions present and that comp
 **MAJOR CHANGES**
 
 - Datepicker updates
-    - `className` now is added to the node with `slds-datepicker` within the dialog. Use `triggerClassName` for the outer wrapping `div`.
+    - `className` now is added to the node with `slds-datepicker` class within the dialog. Use `triggerClassName` for the outer wrapping `div`. *[BRAKING CHANGE]*
     - `onChange` (formerly onDateChange) now provides callback with event and a data object in the shape: `{date: [Date object], formattedDate: [string], timezoneOffset: [number]}`
-    - Many new props: calendar alignment, assistive text props, accepts custom input, supports ISO weekday (Monday first), new props to allow calendar to be controlled (onClose, onOpen, onRequestClose, onRequestOpen), `portalMount` prop for testing React root nodes, more alignment with other menu/dialog components
-    - Additional accessiblity testing
-- Move `id` on GlobalNav Link to list item instead of `a`
-- In Button, `aria-*` props now use hyphen instead of camelCase. Use `aria-expanded` and not `ariaExpanded`.
+    - Many new props and features: calendar alignment, assistive text props, accepts custom input, supports ISO weekday (Monday first), new props to allow calendar to be controlled (onClose, onOpen, onRequestClose, onRequestOpen), `portalMount` prop for testing React root nodes, more alignment with other menu/dialog components
+    - Additional accessiblity and testing
+    - See [Date Picker documentation](https://react.lightningdesignsystem.com/components/datepickers/) for fullset of changes
+- `id` on GlobalNav Link move to list item instead of `a`
+- In Button, `aria-*` props now use hyphen instead of camelCase. Use `aria-expanded` and not `ariaExpanded`. *[BREAKING CHANGE]*
+
+**MIONR CHANGES**
+
+- Picklist bugfix where the value might be available before the options object is. This would make the active item index be incorrect.
+- Fix sort arrow bug in DataTable. Only one column can be actively sorted at a time. Column heading padding has also been updated.
+- Add `disabled` prop to Lookup.
+- Popover's `onRequestClose` and `onClose` now fire once when Dialog component closes. 
+- Popover spacing from target/trigger is correct.
+- `checkProp`'s `oneOfComponent` parses `displayName` properly
 
 ## Release 0.5.4
 
