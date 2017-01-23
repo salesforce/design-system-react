@@ -66,8 +66,10 @@ exports[`test Datepicker
         onMouseDown={undefined}
         onMouseEnter={undefined}
         onMouseLeave={undefined}
-        tabIndex={undefined}>
+        tabIndex={undefined}
+        title={undefined}>
         <svg
+          aria-hidden="true"
           className="slds-button__icon"
           name="event"
           style={undefined}
@@ -111,8 +113,10 @@ exports[`test Datepicker
               onMouseDown={undefined}
               onMouseEnter={undefined}
               onMouseLeave={undefined}
-              tabIndex={undefined}>
+              tabIndex={undefined}
+              title={undefined}>
               <svg
+                aria-hidden="true"
                 className="slds-button__icon"
                 name="left"
                 style={undefined}
@@ -156,8 +160,10 @@ exports[`test Datepicker
               onMouseDown={undefined}
               onMouseEnter={undefined}
               onMouseLeave={undefined}
-              tabIndex={undefined}>
+              tabIndex={undefined}
+              title={undefined}>
               <svg
+                aria-hidden="true"
                 className="slds-button__icon"
                 name="right"
                 style={undefined}
@@ -194,6 +200,7 @@ exports[`test Datepicker
                 className=""
                 title={undefined}>
                 <svg
+                  aria-hidden="true"
                   className="slds-icon slds-icon-text-default"
                   name="down"
                   style={Object {}}
@@ -835,8 +842,10 @@ exports[`test Datepicker
         onMouseDown={undefined}
         onMouseEnter={undefined}
         onMouseLeave={undefined}
-        tabIndex={undefined}>
+        tabIndex={undefined}
+        title={undefined}>
         <svg
+          aria-hidden="true"
           className="slds-button__icon"
           name="event"
           style={undefined}
@@ -880,8 +889,10 @@ exports[`test Datepicker
               onMouseDown={undefined}
               onMouseEnter={undefined}
               onMouseLeave={undefined}
-              tabIndex={undefined}>
+              tabIndex={undefined}
+              title={undefined}>
               <svg
+                aria-hidden="true"
                 className="slds-button__icon"
                 name="left"
                 style={undefined}
@@ -925,8 +936,10 @@ exports[`test Datepicker
               onMouseDown={undefined}
               onMouseEnter={undefined}
               onMouseLeave={undefined}
-              tabIndex={undefined}>
+              tabIndex={undefined}
+              title={undefined}>
               <svg
+                aria-hidden="true"
                 className="slds-button__icon"
                 name="right"
                 style={undefined}
@@ -963,6 +976,7 @@ exports[`test Datepicker
                 className=""
                 title={undefined}>
                 <svg
+                  aria-hidden="true"
                   className="slds-icon slds-icon-text-default"
                   name="down"
                   style={Object {}}
@@ -1602,8 +1616,10 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
         onMouseDown={undefined}
         onMouseEnter={undefined}
         onMouseLeave={undefined}
-        tabIndex={undefined}>
+        tabIndex={undefined}
+        title={undefined}>
         <svg
+          aria-hidden="true"
           className="slds-button__icon"
           name="event"
           style={undefined}
@@ -1647,8 +1663,10 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
               onMouseDown={undefined}
               onMouseEnter={undefined}
               onMouseLeave={undefined}
-              tabIndex={undefined}>
+              tabIndex={undefined}
+              title={undefined}>
               <svg
+                aria-hidden="true"
                 className="slds-button__icon"
                 name="left"
                 style={undefined}
@@ -1692,8 +1710,10 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
               onMouseDown={undefined}
               onMouseEnter={undefined}
               onMouseLeave={undefined}
-              tabIndex={undefined}>
+              tabIndex={undefined}
+              title={undefined}>
               <svg
+                aria-hidden="true"
                 className="slds-button__icon"
                 name="right"
                 style={undefined}
@@ -1730,6 +1750,7 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 className=""
                 title={undefined}>
                 <svg
+                  aria-hidden="true"
                   className="slds-icon slds-icon-text-default"
                   name="down"
                   style={Object {}}
@@ -2319,19 +2340,19 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
 exports[`test Datepicker Default HTML Snapshot 1`] = `
 "<div class=\"slds-dropdown-trigger slds-dropdown-trigger--click ignore-react-onclickoutside slds-is-open\">
     <div class=\"slds-form-element\">
-        <div class=\"slds-form-element__control slds-input-has-icon slds-input-has-icon--right\"><input type=\"text\" class=\"slds-input\" id=\"sample-datepicker\" placeholder=\"Pick a Date\" value=\"7/23/2014\" /><button aria-expanded=\"true\" aria-haspopup=\"true\" class=\"slds-button slds-button--icon slds-input__icon slds-input__icon--right\"><svg class=\"slds-button__icon\" viewBox=\"0 0 24 24\" name=\"event\"><path d=\"M21.5 9.2h-19c-.3 0-.7.4-.7.7v11.3c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9V9.9c0-.3-.4-.7-.7-.7zM8.8 19.4c0 .3-.2.4-.5.4H6.5c-.3 0-.5-.1-.5-.4v-1.9c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.9zm0-4.6c0 .2-.2.4-.5.4H6.5c-.3 0-.5-.2-.5-.4v-1.9c0-.3.2-.4.5-.4h1.8c.3 0 .5.1.5.4v1.9zm4.6 4.6c0 .3-.2.4-.5.4h-1.8c-.3 0-.5-.1-.5-.4v-1.9c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.9zm0-4.6c0 .2-.2.4-.5.4h-1.8c-.3 0-.5-.2-.5-.4v-1.9c0-.3.2-.4.5-.4h1.8c.3 0 .5.1.5.4v1.9zm4.6 4.6c0 .3-.2.4-.5.4h-1.8c-.3 0-.5-.1-.5-.4v-1.9c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.9zm0-4.6c0 .2-.2.4-.5.4h-1.8c-.3 0-.5-.2-.5-.4v-1.9c0-.3.2-.4.5-.4h1.8c.3 0 .5.1.5.4v1.9zm2.3-11.6H18v-.9c0-.7-.6-1.4-1.4-1.4-.7 0-1.4.6-1.4 1.4v.9H8.8v-.9c0-.7-.6-1.4-1.4-1.4C6.6.9 6 1.5 6 2.3v.9H3.7c-1 0-1.9.9-1.9 1.9v1.1c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V5.1c0-1-.9-1.9-1.9-1.9z\"></path></svg><span class=\"slds-assistive-text\">Open Calendar</span></button></div>
+        <div class=\"slds-form-element__control slds-input-has-icon slds-input-has-icon--right\"><input type=\"text\" class=\"slds-input\" id=\"sample-datepicker\" placeholder=\"Pick a Date\" value=\"7/23/2014\" /><button aria-expanded=\"true\" aria-haspopup=\"true\" class=\"slds-button slds-button--icon slds-input__icon slds-input__icon--right\"><svg aria-hidden=\"true\" class=\"slds-button__icon\" viewBox=\"0 0 24 24\" name=\"event\"><path d=\"M21.5 9.2h-19c-.3 0-.7.4-.7.7v11.3c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9V9.9c0-.3-.4-.7-.7-.7zM8.8 19.4c0 .3-.2.4-.5.4H6.5c-.3 0-.5-.1-.5-.4v-1.9c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.9zm0-4.6c0 .2-.2.4-.5.4H6.5c-.3 0-.5-.2-.5-.4v-1.9c0-.3.2-.4.5-.4h1.8c.3 0 .5.1.5.4v1.9zm4.6 4.6c0 .3-.2.4-.5.4h-1.8c-.3 0-.5-.1-.5-.4v-1.9c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.9zm0-4.6c0 .2-.2.4-.5.4h-1.8c-.3 0-.5-.2-.5-.4v-1.9c0-.3.2-.4.5-.4h1.8c.3 0 .5.1.5.4v1.9zm4.6 4.6c0 .3-.2.4-.5.4h-1.8c-.3 0-.5-.1-.5-.4v-1.9c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.9zm0-4.6c0 .2-.2.4-.5.4h-1.8c-.3 0-.5-.2-.5-.4v-1.9c0-.3.2-.4.5-.4h1.8c.3 0 .5.1.5.4v1.9zm2.3-11.6H18v-.9c0-.7-.6-1.4-1.4-1.4-.7 0-1.4.6-1.4 1.4v.9H8.8v-.9c0-.7-.6-1.4-1.4-1.4C6.6.9 6 1.5 6 2.3v.9H3.7c-1 0-1.9.9-1.9 1.9v1.1c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V5.1c0-1-.9-1.9-1.9-1.9z\"></path></svg><span class=\"slds-assistive-text\">Open Calendar</span></button></div>
     </div>
     <div class=\"slds-datepicker slds-dropdown slds-dropdown--left\">
         <div class=\"\" aria-hidden=\"false\" data-selection=\"single\">
             <div class=\"slds-datepicker__filter slds-grid\">
                 <div class=\"slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow\">
-                    <div class=\"slds-align-middle\"><button class=\"slds-button slds-button--icon-container\"><svg class=\"slds-button__icon\" viewBox=\"0 0 24 24\" name=\"left\"><path d=\"M17.5 3.8v16.4c0 .4-.6.8-1 .4l-9.8-8c-.3-.3-.3-.9 0-1.2l9.8-8c.4-.4 1-.1 1 .4z\"></path></svg><span class=\"slds-assistive-text\">Previous month</span></button></div>
+                    <div class=\"slds-align-middle\"><button class=\"slds-button slds-button--icon-container\"><svg aria-hidden=\"true\" class=\"slds-button__icon\" viewBox=\"0 0 24 24\" name=\"left\"><path d=\"M17.5 3.8v16.4c0 .4-.6.8-1 .4l-9.8-8c-.3-.3-.3-.9 0-1.2l9.8-8c.4-.4 1-.1 1 .4z\"></path></svg><span class=\"slds-assistive-text\">Previous month</span></button></div>
                     <h2
                         id=\"sample-datepicker-month\" class=\"slds-align-middle\" aria-live=\"assertive\" aria-atomic=\"true\">July <span class=\"slds-assistive-text\">2014</span></h2>
-                    <div class=\"slds-align-middle\"><button class=\"slds-button slds-button--icon-container\"><svg class=\"slds-button__icon\" viewBox=\"0 0 24 24\" name=\"right\"><path d=\"M6.5 20.2V3.8c0-.4.6-.8 1-.4l9.8 8c.3.3.3.9 0 1.2l-9.8 8c-.4.4-1 .1-1-.4z\"></path></svg><span class=\"slds-assistive-text\">Next month</span></button></div>
+                    <div class=\"slds-align-middle\"><button class=\"slds-button slds-button--icon-container\"><svg aria-hidden=\"true\" class=\"slds-button__icon\" viewBox=\"0 0 24 24\" name=\"right\"><path d=\"M6.5 20.2V3.8c0-.4.6-.8 1-.4l9.8 8c.3.3.3.9 0 1.2l-9.8 8c-.4.4-1 .1-1-.4z\"></path></svg><span class=\"slds-assistive-text\">Next month</span></button></div>
                 </div>
                 <div class=\"slds-form-element\">
-                    <div class=\"slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click slds-picklist--fluid slds-shrink-none\"><button aria-haspopup=\"true\" class=\"slds-button slds-button--neutral slds-picklist__label\" id=\"sample-datepicker-year-picklist\" tabindex=\"0\"><span class=\"slds-truncate\">2014</span><span class=\"\"><svg class=\"slds-icon slds-icon-text-default\" viewBox=\"0 0 24 24\" name=\"down\"><path d=\"M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z\"></path></svg></span></button></div>
+                    <div class=\"slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click slds-picklist--fluid slds-shrink-none\"><button aria-haspopup=\"true\" class=\"slds-button slds-button--neutral slds-picklist__label\" id=\"sample-datepicker-year-picklist\" tabindex=\"0\"><span class=\"slds-truncate\">2014</span><span class=\"\"><svg aria-hidden=\"true\" class=\"slds-icon slds-icon-text-default\" viewBox=\"0 0 24 24\" name=\"down\"><path d=\"M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z\"></path></svg></span></button></div>
                 </div>
             </div>
             <div class=\"Calendar\">
