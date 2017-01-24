@@ -100,7 +100,7 @@ Unless you have an accessiblity guru in your department (knowledge of implementi
 - [HTML 5.1](https://www.w3.org/TR/html51/) - This is at the Recommendation Candidate stage, so it is very unlikely to change. Please notice the places where it informs of ARIA role for each element, the implicit roles, may not be 100% accurate. The document authors state that the ARIA in HTML spec above is the definitive source of truth for that bit and they'll fix up 5.1 when they find stuff that's not correct.
 - [eBay MIND patterns](https://ebay.gitbooks.io/mindpatterns/content/) - Nice to digest content. Most up to date functional base components our team has found so far with [examples](http://ianmcburnie.github.io/mindpatterns/). This does not mean they are correct, though. 
 
-### Be kind to your future project steward and write tests
+### Be kind to future contributors and write tests
 
 - All external APIs should be tested, so that breaking changes can be detected. If a breaking change doesn't cause at least one test to fail, then add a test.
     - All `props` should be tested. It is OK to test multiple props in the same test for optmization as long as they are isolated and do not affect each other (for instance `id`, `classname`, and `style`).
