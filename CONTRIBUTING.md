@@ -70,12 +70,11 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 - <a name="boolean-prop-prefix" href="#boolean-prop-prefix">#</a> **Use boolean prefixes.** If a prop is a boolean, please prefix with `is` or `can` or suffix it with `-able`. Never default a prop to `true`.
 
-### Be careful with the power of ES6
+### Use "the good parts"
 - <a name="rest-operators-with-jsx" href="#rest-operators-with-jsx">#</a> Be careful with [rest operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters) when passively applying unnamed and unknown props to JSX nodes. This concept allows flexibility to the consuming developer, but is difficult to track for maintainers. If rest operators should be used, be sure to deconstruct each one that is actually needed by the JSX nodes, so that the rest operator only handles "unknown props" passed in from the outside developer. In short, don't utilize any properties in the `...props` object within the component. After using `const { active, className, ...rest } = props;` do not go back to using `this.prop.*` anywhere in the render function. 
 
 - <a name="rest-operators-with-jsx-delete" href="#rest-operators-with-jsx-delete">#</a> If a rest operator is already present in your render function and you need to remove additional props so that they do not get passed to a JSX node, use the rest operator along with `// eslint-disable-line no-unused-vars` to remove the prop from `...rest`.
 
-### Other things to be careful of
 - <a name="props-in-get-initial-state" href="#props-in-get-initial-state">#</a> **Do not use props in initial state.** Please review [props in getInitialState is an anti-pattern.](https://facebook.github.io/react/tips/props-in-getInitialState-as-anti-pattern.html)
 
 - <a name="jsx-gotchas" href="#jsx-gotchas">#</a> Read [JSX Gotchas](https://facebook.github.io/react/docs/jsx-gotchas.html#html-entities)
