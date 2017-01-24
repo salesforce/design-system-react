@@ -57,7 +57,7 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 - <a name="avoid-css" href="#avoid-css">#</a> **Avoid inline CSS style/custom classes.** We are blessed to have a team of great CSS developers working on our design system. Use their CSS or contribute code back to them.
 
-### Be consistent with component structure, callbacks, and prop names
+### Be consistent
 - <a name="use-eslint" href="#use-eslint">#</a> **Use ESlint** The larger a codebase becomes and the more contributors the project has, the more organization that is needed. Please use ESlint in your editor (via `.eslinttc`) and conform to ESlint settings present in [ESlint Configuration for SLDS](https://github.com/salesforce-ux/eslint-config-slds). The team is open to contributions. If a file is touched that has outstanding ESlint errors, please fix the ESlint errors first--in a separate commit. Sometimes special cases require an `eslint-disable-line`, but please use sparingly.
 
 - <a name="familiarize" href="#familiarize">#</a>**Do not create in a vaccuum.** Familiarize yourself with concepts used in the rest of the library.
