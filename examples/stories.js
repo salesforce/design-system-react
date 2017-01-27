@@ -26,5 +26,5 @@ export Picklist from './menu-picklist/stories';
 export Spinner from './spinner/stories';
 export Tabs from './tabs/stories';
 export TimePicker from './time-picker/stories';
-export Tooltip from './popover-tooltip/stories';
+export Tooltip from './tooltip/stories';
 export Tree from './tree/stories';
