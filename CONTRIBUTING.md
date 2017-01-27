@@ -39,7 +39,7 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 - <a name="private-child-components" href="#private-child-components">#</a> Place child components not intended to be part of the public API within a folder labelled `private`. All other React components should be considered public (and considered within the scope of Semantic Versioning), and can be used by developers in their own JSX within their application. See [Child component decorator pattern](#child-component-decorator-pattern)
 
-### Limit state, side effects, custom CSS, mixins, and external dependencies
+### Limit side effects
 - <a name="limit-state" href="#limit-state">#</a> **Limit use of component state.** If the parent application's state engine can handle it with a `prop`, then don't use state. _New components should always start out as controlled by their parent and only be uncontrolled (that is have state) if a use case presents itself._ It's better to have a component that needs 20 props set and outputs the correct markup, than to have a component that works with no props set, yet maintains multiple internal states. We like to think of this project as design system templates with minimal logic that happen to work with the React framework. Let the library consumer create a simple _container component_ with state. Read more about [controlled components](#controlled-and-uncontrolled-components).
     - <a name="stateful-stateless-components" href="#stateful-stateless-components">#</a> Know how smart/stateful React components [work together](https://gist.github.com/trevordmiller/a7791c11228b48f0366b) with [pure/dumb stateless function components](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions).
     - <a name="stateful-top-level-component" href="#stateful-top-level-component">#</a> It is preferable to only have one stateful top-level class per component in this library. For these top-level components, it’s preferable to leave them stateful (that is, to use `React.createClass`). It's much easier to get the DOM node reference if you need it for such things as measurements. Then, you don't have to go through a lot of hassle to work around not having lifecycle methods. It also allows components to follow the controlled / uncontrolled pattern mentioned below. All sub-components should be stateless and manipulated with props if possible.
@@ -51,11 +51,13 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 - <a name="approved-slds-patterns" href="#approved-slds-patterns">#</a> **Only submit approved design system patterns.** This library should include only components which have approved patterns in Salesforce's [design system](https://www.lightningdesignsystem.com/) or the latest internal beta releases. If there is a use case from a designer that conforms to a design pattern, that component should be able to be implemented with this library.
 
-- <a name="avoid-mixins" href="#avoid-mixins">#</a> **Avoid implied mixins.** Instead, import and use shared code and external libraries as libraries, or use higher-order components in order to more easily trace the code execution. Do not add external dependencies _to production dependencies_ list unless absolutely necessary. Consider the "total cost of ownership" of all dependencies.
+- <a name="avoid-mixins" href="#avoid-mixins">#</a> **Avoid implied mixins.** Instead, import and use shared code and external libraries as libraries, or use higher-order components in order to more easily trace the code execution. 
+
+- <a name="avoid-dependencies" href="#avoid-dependencies">#</a> **Avoid external dependencies.** Do not add external dependencies _to production dependencies_ list unless absolutely necessary. Always consider the "total cost of ownership" for all dependencies.
 
 - <a name="avoid-css" href="#avoid-css">#</a> **Avoid inline CSS style/custom classes.** We are blessed to have a team of great CSS developers working on our design system. Use their CSS or contribute code back to them.
 
-### Be consistent with component structure, callbacks, and prop names
+### Be consistent
 - <a name="use-eslint" href="#use-eslint">#</a> **Use ESlint** The larger a codebase becomes and the more contributors the project has, the more organization that is needed. Please use ESlint in your editor (via `.eslinttc`) and conform to ESlint settings present in [ESlint Configuration for SLDS](https://github.com/salesforce-ux/eslint-config-slds). The team is open to contributions. If a file is touched that has outstanding ESlint errors, please fix the ESlint errors first--in a separate commit. Sometimes special cases require an `eslint-disable-line`, but please use sparingly.
 
 - <a name="familiarize" href="#familiarize">#</a>**Do not create in a vaccuum.** Familiarize yourself with concepts used in the rest of the library.
@@ -68,12 +70,11 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 - <a name="boolean-prop-prefix" href="#boolean-prop-prefix">#</a> **Use boolean prefixes.** If a prop is a boolean, please prefix with `is` or `can` or suffix it with `-able`. Never default a prop to `true`.
 
-### Be careful with the power of ES6
+### Use "the good parts"
 - <a name="rest-operators-with-jsx" href="#rest-operators-with-jsx">#</a> Be careful with [rest operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters) when passively applying unnamed and unknown props to JSX nodes. This concept allows flexibility to the consuming developer, but is difficult to track for maintainers. If rest operators should be used, be sure to deconstruct each one that is actually needed by the JSX nodes, so that the rest operator only handles "unknown props" passed in from the outside developer. In short, don't utilize any properties in the `...props` object within the component. After using `const { active, className, ...rest } = props;` do not go back to using `this.prop.*` anywhere in the render function. 
 
 - <a name="rest-operators-with-jsx-delete" href="#rest-operators-with-jsx-delete">#</a> If a rest operator is already present in your render function and you need to remove additional props so that they do not get passed to a JSX node, use the rest operator along with `// eslint-disable-line no-unused-vars` to remove the prop from `...rest`.
 
-### Other things to be careful of
 - <a name="props-in-get-initial-state" href="#props-in-get-initial-state">#</a> **Do not use props in initial state.** Please review [props in getInitialState is an anti-pattern.](https://facebook.github.io/react/tips/props-in-getInitialState-as-anti-pattern.html)
 
 - <a name="jsx-gotchas" href="#jsx-gotchas">#</a> Read [JSX Gotchas](https://facebook.github.io/react/docs/jsx-gotchas.html#html-entities)
@@ -98,7 +99,7 @@ Unless you have an accessiblity guru in your department (knowledge of implementi
 - [HTML 5.1](https://www.w3.org/TR/html51/) - This is at the Recommendation Candidate stage, so it is very unlikely to change. Please notice the places where it informs of ARIA role for each element, the implicit roles, may not be 100% accurate. The document authors state that the ARIA in HTML spec above is the definitive source of truth for that bit and they'll fix up 5.1 when they find stuff that's not correct.
 - [eBay MIND patterns](https://ebay.gitbooks.io/mindpatterns/content/) - Nice to digest content. Most up to date functional base components our team has found so far with [examples](http://ianmcburnie.github.io/mindpatterns/). This does not mean they are correct, though. 
 
-### Be kind to your future project steward and write tests
+### Be kind to future contributors and write tests
 
 - All external APIs should be tested, so that breaking changes can be detected. If a breaking change doesn't cause at least one test to fail, then add a test.
     - All `props` should be tested. It is OK to test multiple props in the same test for optmization as long as they are isolated and do not affect each other (for instance `id`, `classname`, and `style`).

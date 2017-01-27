@@ -1,5 +1,5 @@
 # Salesforce Lightning Design System for JavaScript
-### Accessible, presentational React components
+### Accessible, localization-friendly, presentational React components
 
 [![Build Status](https://travis-ci.com/salesforce-ux/design-system-react.svg?token=BMXxPFKR5GZuYsqAFsEf&branch=master)](https://travis-ci.com/salesforce-ux/design-system-react)
 
