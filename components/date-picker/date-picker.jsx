@@ -164,7 +164,7 @@ const Datepicker = React.createClass({
 				}}
 			/>
 			```
-			_Tested with Mocha framework._
+		 * _Tested with Mocha framework._
 		 */
 		portalMount: PropTypes.func,
 		/**
