@@ -127,6 +127,8 @@ const defaultProps = {
  * import settings from 'design-system-react/components/settings';
  * settings.setAppElement('#mount');
  * ```
+ *
+ * This component uses a portalMount (a disconnected React subtree mount) to create a modal as a child of `body`.
  */
 class Modal extends React.Component {
 

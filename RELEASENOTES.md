@@ -3,12 +3,12 @@ _Salesforce Lightning Design System :: React Components :: design-system-react_
 
 ## Future Breaking Changes
 
-These are changes that have backwards-compatible solutions present and that compatibiity will be removed at a breaking change release in the future.
+These are changes that have backwards-compatible solutions present and that compatibility will be removed at a breaking change release in the future.
 
-- `Checkbox`'s `onChange` now recieves `event, {checked: [boolean], indeterminate: [boolean] }`. Previously, `checked` was the first parameter.
-- `TabsPane` has be replaced with `TabsPanel`.
+- `Checkbox`'s `onChange` now receives `event, { checked: [boolean], indeterminate: [boolean] }`. Previously, `checked` was the first parameter.
+- `TabsPane` has been replaced with `TabsPanel`.
 - `Input`'s props: `iconPosition`, `iconAssistiveText`, `iconCategory`, `iconName`, `onIconClick` are deprecated. An `Icon` component should be used instead.
-- `DataTable`'s' `collection`, `onSelect`, `onDeselect` are deprecated.
+- `DataTable`'s `collection`, `onSelect`, `onDeselect` are deprecated.
 - The prop `modal` in `DatePicker`, `Lookup`, `MenuDropdown`, `MenuPicklist`, `TimePicker` is deprecated
 - Remove `openByDefault` from `PopoverTooltip`.
 - Remove alias component files. Please update the following removed files to their new file name.
@@ -25,12 +25,32 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ---
 
+## Release 0.6.1
+
+- Documentation site updates. *No production code changes in this release*.
+
+
 ## Release 0.6.0
+
+**MAJOR CHANGES**
+
+- Datepicker updates
+    - `className` now is added to the node with `slds-datepicker` class within the dialog. Use `triggerClassName` for the outer wrapping `div`. *[BREAKING CHANGE]*
+    - `onChange` (formerly onDateChange) now provides callback with event and a data object in the shape: `{date: [Date object], formattedDate: [string], timezoneOffset: [number]}`
+    - Many new props and features: calendar alignment, assistive text props, accepts custom input, supports ISO weekday (Monday first), new props to allow calendar to be controlled (onClose, onOpen, onRequestClose, onRequestOpen), `portalMount` prop for testing React root nodes, more alignment with other menu/dialog components
+    - Additional accessiblity and testing
+    - See [Date Picker documentation](https://react.lightningdesignsystem.com/components/datepickers/) for fullset of changes
+- `id` on GlobalNav Link move to list item instead of `a` *[BREAKING CHANGE]*
+- In Button, `aria-*` props now use hyphen instead of camelCase. Use `aria-expanded` and not `ariaExpanded`. *[BREAKING CHANGE]*
 
 **MINOR CHANGES**
 
-- Move `id` on GlobalNav Link to list item instead of `a`
-- In Button, `aria-*` props now use hyphen instead of camelCase. Use `aria-expanded` and not `ariaExpanded`.
+- Picklist bugfix where the value might be available before the options object is. This would make the active item index be incorrect.
+- Fix sort arrow bug in DataTable. Only one column can be actively sorted at a time. Column heading padding has also been updated.
+- Add `disabled` prop to Lookup.
+- Popover's `onRequestClose` and `onClose` now fire once when Dialog component closes. 
+- Popover spacing from target/trigger is correct.
+- `checkProp`'s `oneOfComponent` parses `displayName` properly
 
 ## Release 0.5.4
 

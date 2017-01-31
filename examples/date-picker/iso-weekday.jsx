@@ -8,20 +8,13 @@ const Example = React.createClass({
 	render () {
 		return (
 			<Datepicker
+				isIsoWeekday
 				onChange={(event, data) => {
 					if (this.props.action) {
 						const dataAsArray = Object.keys(data).map((key) => data[key]);
 						this.props.action('onChange')(event, data, ...dataAsArray);
 					} else if (console) {
 						console.log('onChange', event, data);
-					}
-				}}
-				onCalendarFocus={(event, data) => {
-					if (this.props.action) {
-						const dataAsArray = Object.keys(data).map((key) => data[key]);
-						this.props.action('onCalendarFocus')(event, data, ...dataAsArray);
-					} else if (console) {
-						console.log('onCalendarFocus', event, data);
 					}
 				}}
 			/>

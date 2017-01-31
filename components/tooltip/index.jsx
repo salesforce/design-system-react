@@ -86,7 +86,15 @@ const propTypes = {
 	/**
 	* This sets the location of the tooltip, if that location is different from the triggering node.
 	*/
-	target: PropTypes.node
+	target: PropTypes.node,
+	/**
+	 * CSS classes to be added to tag with `slds-tooltip-trigger`.
+	 */
+	triggerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	/**
+	 * Custom styles to be added to wrapping triggering `div`.
+	 */
+	triggerStyle: PropTypes.object
 };
 
 const defaultProps = {
@@ -237,9 +245,10 @@ class PopoverTooltip extends React.Component {
 	}
 
 	render () {
-		const containerStyles = { display: 'inline' };
+		const containerStyles = { display: 'inline', ...this.props.triggerStyle };
 		return (
 			<div
+				className={classNames('slds-tooltip-trigger', this.props.triggerClassName)}
 				style={containerStyles}
 				ref="tooltipTarget"
 			>

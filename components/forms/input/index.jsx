@@ -56,6 +56,7 @@ const Input = React.createClass({
 		'aria-controls': PropTypes.string,
 		'aria-describedby': PropTypes.string,
 		'aria-expanded': PropTypes.bool,
+		'aria-haspopup': PropTypes.bool,
 		'aria-labeledby': PropTypes.string,
 		/**
 		 * An HTML ID that is shared with ARIA-supported devices with the
@@ -99,6 +100,10 @@ const Input = React.createClass({
 		 * Every input must have a unique ID in order to support keyboard navigation and ARIA support.
 		 */
 		id: PropTypes.string,
+		/**
+		 * This callback exposes the input reference / DOM node to parent components. `<Parent inputRef={(inputComponent) => this.input = inputComponent} />
+		 */
+		inputRef: PropTypes.func,
 		/**
 		 * This label appears above the input.
 		 */

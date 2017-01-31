@@ -59,6 +59,10 @@ const MenuPicklist = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
+		/**
+		 * Callback that passes in the DOM reference of the `<button>` DOM node within this component. Primary use is to allow `focus` to be called. You should still test if the node exists, since rendering is asynchronous. `buttonRef={(component) => { if(component) console.log(component); }}`
+		 */
+		buttonRef: PropTypes.func,
 		className: PropTypes.string,
 		/**
 		 * If true, renders checkmark icon on the selected Menu Item.
@@ -116,14 +120,14 @@ const MenuPicklist = React.createClass({
 		window.addEventListener('click', this.closeOnClick, false);
 
 		this.setState({
-			selectedIndex: this.getIndexByValue(this.props.value)
+			selectedIndex: this.getIndexByValue(this.props)
 		});
 	},
 
 	componentWillReceiveProps (nextProps) {
-		if (this.props.value !== nextProps.value) {
+		if (this.props.value !== nextProps.value || this.props.options.length !== nextProps.length) {
 			this.setState({
-				selectedIndex: this.getIndexByValue(nextProps.value)
+				selectedIndex: this.getIndexByValue(nextProps)
 			});
 		}
 	},
@@ -142,11 +146,11 @@ const MenuPicklist = React.createClass({
 		return `SLDS${this.getId()}ClickEvent`;
 	},
 
-	getIndexByValue (value) {
+	getIndexByValue ({ value, options } = this.props) {
 		let foundIndex = -1;
 
-		if (this.props.options && this.props.options.length) {
-			this.props.options.some((element, index) => {
+		if (options && options.length) {
+			options.some((element, index) => {
 				if (element && element.value === value) {
 					foundIndex = index;
 					return true;
@@ -207,7 +211,7 @@ const MenuPicklist = React.createClass({
 
 	setFocus () {
 		if (!this.isUnmounting && this.button) {
-			ReactDOM.findDOMNode(this.button).focus();
+			this.button.focus();
 		}
 	},
 
@@ -368,7 +372,13 @@ const MenuPicklist = React.createClass({
 					disabled={this.props.disabled}
 					id={this.getId()}
 					onClick={!this.props.disabled && this.handleClick}
-					ref={(component) => { this.button = component; }}
+					ref={(component) => {
+						this.button = component;
+
+						if (this.props.buttonRef) {
+							this.props.buttonRef(this.button);
+						}
+					}}
 					tabIndex={this.state.isOpen ? -1 : 0}
 				>
 					<span className="slds-truncate">{this.renderPlaceholder()}</span>
