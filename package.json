@@ -102,6 +102,7 @@
     "compression": "^1.6.2",
     "css-loader": "^0.25.0",
     "enzyme": "^2.5.1",
+    "enzyme-to-json": "^1.4.5",
     "eslint-config-slds": "git+ssh://git@github.com/salesforce-ux/eslint-config-slds.git#v2.0.4",
     "eslint-loader": "^1.6.0",
     "express": "^4.13.4",
