@@ -20,24 +20,22 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { PropTypes } from 'react';
 
 // ## Constants
-import { PANEL_FILTERING_LIST } from '../../../utilities/constants';
+import { PANEL_FILTERING_LIST_HEADING } from '../../../utilities/constants';
 
 /**
  * A filtering panel contextual filtering options.
  */
-const PanelFilteringList = ({ children }) => (
-	<ol className="slds-list--vertical slds-list--vertical-space">
-			{children}
-	</ol>
+const FilteringPanelListHeading = ({ label }) => (
+	<h3 className="slds-text-body--small slds-m-vertical--x-small">{label}</h3>
 );
 
-PanelFilteringList.displayName = PANEL_FILTERING_LIST;
+FilteringPanelListHeading.displayName = PANEL_FILTERING_LIST_HEADING;
 
-PanelFilteringList.propTypes = {
+FilteringPanelListHeading.propTypes = {
 	/**
-	 * Pass in `Filter` components
+	 * Heading for a group of filters
 	 */
-	children: PropTypes.node
+	label: PropTypes.string
 };
 
-module.exports = PanelFilteringList;
+module.exports = FilteringPanelListHeading;

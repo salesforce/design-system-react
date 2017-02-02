@@ -57,6 +57,7 @@ export const PANEL_FILTERING = 'SLDSPanelFiltering';
 export const PANEL_FILTERING_FOOTER = 'SLDSPanelFilteringFooter';
 export const PANEL_FILTERING_FILTER = 'SLDSPanelFilteringFilter';
 export const PANEL_FILTERING_LIST = 'SLDSPanelFilteringList';
+export const PANEL_FILTERING_LIST_HEADING = 'SLDSPanelFilteringListHeading';
 export const PAGE_HEADER = 'SLDSPageHeader';
 export const POPOVER = 'SLDSPopover';
 export const POPOVER_TOOLTIP = 'SLDSPopoverTooltip';

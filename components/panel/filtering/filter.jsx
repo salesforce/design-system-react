@@ -9,6 +9,8 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+/* eslint-disable no-script-url */
+
 // # Panel - Filter variant
 
 // Implements the [Panel design pattern](https://www.lightningdesignsystem.com/components/panels) in React.
@@ -46,7 +48,7 @@ const FilteringPanelFilter = React.createClass({
 		 */
 		assistiveTextRemoveFilter: PropTypes.string,
 		/**
-		 * Assistive text for removing a filter
+		 * Assistive text for changing a filter
 		 */
 		assistiveTextChangeFilter: PropTypes.string,
 		/**
@@ -89,9 +91,9 @@ const FilteringPanelFilter = React.createClass({
 
 	getDefaultProps () {
 		return {
-			assistiveTextChangeFilter: 'Select to change filter',
+			assistiveTextChangeFilter: 'Edit filter:',
 			assistiveTextChangeFilterHeading: 'Choose filter criteria',
-			assistiveTextRemoveFilter: 'Remove filter'
+			assistiveTextRemoveFilter: 'Remove filter:'
 		};
 	},
 
@@ -163,35 +165,33 @@ const FilteringPanelFilter = React.createClass({
 						align="left"
 						body={popoverBody}
 						heading=""
+						id={this.getId()}
 						isOpen={this.state.popoverIsOpen}
 						onClose={this.handleClose}
 						triggerClassName="slds-grow"
 					>
-						<a
-							href="javascript:void(0);"
-							className="slds-has-blur-focus"
-							onClick={this.handleFilterClick}
+						<button	className="slds-button--reset slds-grow slds-has-blur-focus" onClick={this.handleFilterClick}
 						>
+							<span className="slds-assistive-text">{this.props.assistiveTextChangeFilter}</span>
 							<p className="slds-text-body--small">{this.props.property}</p>
 							<p>{this.props.predicate}</p>
-							<span className="slds-assistive-text">{this.props.assistiveTextChangeFilter}</span>
-						</a>
+						</button>
 					</Popover>
-					: <a href="javascript:void(0);" className="slds-grow slds-has-blur-focus">
+					: <button className="slds-grow slds-has-blur-focus">
 						<p className="slds-text-body--small">{this.props.property}</p>
 						<p>{this.props.predicate}</p>
-					</a>
+					</button>
 					}
 					{!this.props.permanent
 						? <Button
-							className="slds-col--bump-left"
-							assistiveText={this.props.assistiveTextRemoveFilter}
+							assistiveText={`${this.props.assistiveTextRemoveFilter} ${this.props.property} ${this.props.predicate}`}
 							hint
 							iconCategory="utility"
 							iconName="close"
 							iconSize="small"
 							iconVariant="bare"
 							onClick={this.handleRemove}
+							title={`${this.props.assistiveTextRemoveFilter} ${this.props.predicate}`}
 							variant="icon"
 						/>
 					: null}

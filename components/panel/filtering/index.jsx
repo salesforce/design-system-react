@@ -33,7 +33,7 @@ const FilteringPanel = ({ assistiveTextCloseFilterPanel, children, footer, headi
 		<div className="slds-form--stacked slds-grow slds-scrollable--y slds-grid slds-grid--vertical">
 			<div className="slds-filters">
 				<div className="slds-filters__header slds-grid slds-has-divider--bottom-space">
-					<h4 className="slds-align-middle slds-text-heading--small">{heading}</h4>
+					<h2 className="slds-align-middle slds-text-heading--small">{heading}</h2>
 					<Button
 						className="slds-col--bump-left"
 						assistiveText={assistiveTextCloseFilterPanel}
@@ -42,6 +42,7 @@ const FilteringPanel = ({ assistiveTextCloseFilterPanel, children, footer, headi
 						iconVariant="bare"
 						iconSize="small"
 						onClick={onRequestClose}
+						title={assistiveTextCloseFilterPanel}
 						variant="icon"
 					/>
 				</div>
@@ -81,7 +82,7 @@ FilteringPanel.propTypes = {
 
 FilteringPanel.defaultProps = {
 	assistiveTextCloseFilterPanel: 'Close Filter Panel',
-	heading: 'Filters'
+	heading: 'Filter'
 };
 
 module.exports = FilteringPanel;
