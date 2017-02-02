@@ -66,7 +66,8 @@ exports[`test Datepicker
         onMouseDown={undefined}
         onMouseEnter={undefined}
         onMouseLeave={undefined}
-        tabIndex={undefined}>
+        tabIndex={undefined}
+        title={undefined}>
         <svg
           className="slds-button__icon"
           name="event"
@@ -111,7 +112,8 @@ exports[`test Datepicker
               onMouseDown={undefined}
               onMouseEnter={undefined}
               onMouseLeave={undefined}
-              tabIndex={undefined}>
+              tabIndex={undefined}
+              title={undefined}>
               <svg
                 className="slds-button__icon"
                 name="left"
@@ -156,7 +158,8 @@ exports[`test Datepicker
               onMouseDown={undefined}
               onMouseEnter={undefined}
               onMouseLeave={undefined}
-              tabIndex={undefined}>
+              tabIndex={undefined}
+              title={undefined}>
               <svg
                 className="slds-button__icon"
                 name="right"
@@ -835,7 +838,8 @@ exports[`test Datepicker
         onMouseDown={undefined}
         onMouseEnter={undefined}
         onMouseLeave={undefined}
-        tabIndex={undefined}>
+        tabIndex={undefined}
+        title={undefined}>
         <svg
           className="slds-button__icon"
           name="event"
@@ -880,7 +884,8 @@ exports[`test Datepicker
               onMouseDown={undefined}
               onMouseEnter={undefined}
               onMouseLeave={undefined}
-              tabIndex={undefined}>
+              tabIndex={undefined}
+              title={undefined}>
               <svg
                 className="slds-button__icon"
                 name="left"
@@ -925,7 +930,8 @@ exports[`test Datepicker
               onMouseDown={undefined}
               onMouseEnter={undefined}
               onMouseLeave={undefined}
-              tabIndex={undefined}>
+              tabIndex={undefined}
+              title={undefined}>
               <svg
                 className="slds-button__icon"
                 name="right"
@@ -1602,7 +1608,8 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
         onMouseDown={undefined}
         onMouseEnter={undefined}
         onMouseLeave={undefined}
-        tabIndex={undefined}>
+        tabIndex={undefined}
+        title={undefined}>
         <svg
           className="slds-button__icon"
           name="event"
@@ -1647,7 +1654,8 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
               onMouseDown={undefined}
               onMouseEnter={undefined}
               onMouseLeave={undefined}
-              tabIndex={undefined}>
+              tabIndex={undefined}
+              title={undefined}>
               <svg
                 className="slds-button__icon"
                 name="left"
@@ -1692,7 +1700,8 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
               onMouseDown={undefined}
               onMouseEnter={undefined}
               onMouseLeave={undefined}
-              tabIndex={undefined}>
+              tabIndex={undefined}
+              title={undefined}>
               <svg
                 className="slds-button__icon"
                 name="right"

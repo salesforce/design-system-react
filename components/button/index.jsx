@@ -114,7 +114,7 @@ const Button = React.createClass({
 		 * HTML title attribute
 		 */
 		title: PropTypes.string,
-		variant: React.PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon'])
+		variant: React.PropTypes.oneOf(['base', 'link', 'neutral', 'brand', 'destructive', 'icon'])
 	},
 
 	getDefaultProps () {
@@ -149,7 +149,7 @@ const Button = React.createClass({
 		const iconBorder = iconVariant === 'border';
 		const iconGlobalHeader = iconVariant === 'global-header';
 
-		const showButtonVariant = this.props.variant !== 'base' && !iconVariant && !this.props.inverse;
+		const showButtonVariant = this.props.variant !== 'base' && !iconVariant && !this.props.inverse && this.props.variant !== 'link' || iconVariant === 'bare';
 		const plainInverseBtn = this.props.inverse && !isIcon;
 		const plainInverseIcon = this.props.inverse && isIcon && !iconMore && !iconBorder;
 		const moreInverseIcon = this.props.inverse && iconMore;
@@ -160,16 +160,19 @@ const Button = React.createClass({
 			iconVariant = 'container';
 		}
 
-		return classNames('slds-button', {
+		return classNames({
+			'slds-button': this.props.variant !== 'link',
 			[`slds-button--${this.props.variant}`]: showButtonVariant,
 			'slds-button--inverse': plainInverseBtn,
 			'slds-button--icon-inverse': plainInverseIcon || moreInverseIcon,
 			// Bug in SLDS css where having a small icon container (with border) and inverse, the icon does not vertically align. Manual fix here until fixed in css.
 			'slds-button--icon-border-inverse slds-align-middle slds-line-height--reset': borderInverseIcon,
-			[`slds-button--icon-${iconVariant}`]: iconVariant && !borderInverseIcon,
+			[`slds-button--icon-${iconVariant}`]: iconVariant && !borderInverseIcon && iconVariant !== 'bare',
 			'slds-global-header__button--icon': iconGlobalHeader,
 			// If icon has a container, then we apply the icon size to the container not the svg. Icon size is medium by default, so we don't need to explicitly render it here.
-			[`slds-button--icon-${this.props.iconSize}`]: iconVariant && this.props.iconSize !== 'medium'
+			[`slds-button--icon-${this.props.iconSize}`]: iconVariant && this.props.iconSize !== 'medium',
+			'slds-button--reset': this.props.variant === 'link',
+			'slds-text-link': this.props.variant === 'link'
 		}, this.props.className);
 	},
 
@@ -195,7 +198,7 @@ const Button = React.createClass({
 
 		return iconOnly && this.props.assistiveText
 			? <span className="slds-assistive-text">{this.props.assistiveText}</span>
-			: <span>{this.props.label}</span>;
+			: this.props.label;
 	},
 
 	renderButton () {
@@ -222,6 +225,7 @@ const Button = React.createClass({
 					}
 				}}
 				tabIndex={this.props.tabIndex}
+				title={this.props.title}
 			>
 				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
 
