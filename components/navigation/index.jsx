@@ -88,10 +88,40 @@ const Navigation = React.createClass({
 		});
 	},
 
+	renderCategory (category) {
+		const categoryId = `${this.getId()}-${category.id}`;
+		const selectedId = this.getSelectedId();
+		return [
+			<h2
+				id={categoryId}
+				key={categoryId + '-header'}
+				className='slds-text-title--caps slds-p-around--medium'
+			>
+				{category.label}
+			</h2>,
+			<ul key={categoryId}>
+				{category.items.map((item) => {
+					return (
+						<li className={classNames({'slds-is-active': item.id === selectedId})} key={item.id}>
+							<a
+								data-id={item.id}
+								href='javascript:void(0);' // eslint-disable-line no-script-url
+								className='slds-navigation-list--vertical__action slds-text-link--reset'
+								aria-describedby={categoryId}
+								onClick={this.handleClick}
+							>
+								{item.label}
+							</a>
+						</li>
+					);
+				})}
+			</ul>
+		];
+	},
+
 	render () {
 		const rootId = this.getId();
 		const variant = this.getVariant();
-		const selectedId = this.getSelectedId();
 		return (
 			<div
 				id={rootId}
@@ -104,35 +134,7 @@ const Navigation = React.createClass({
 					this.props.className
 				)}
 			>
-				{this.props.categories.map((category) => {
-					const categoryId = `${rootId}-${category.id}`;
-					return [
-						<h2
-							id={categoryId}
-							key={categoryId + '-header'}
-							className='slds-text-title--caps slds-p-around--medium'
-						>
-							{category.label}
-						</h2>,
-						<ul key={categoryId}>
-							{category.items.map((item) => {
-								return (
-									<li className={classNames({'slds-is-active': item.id === selectedId})} key={item.id}>
-										<a
-											data-id={item.id}
-											href='javascript:void(0);' // eslint-disable-line no-script-url
-											className='slds-navigation-list--vertical__action slds-text-link--reset'
-											aria-describedby={categoryId}
-											onClick={this.handleClick}
-										>
-											{item.label}
-										</a>
-									</li>
-								);
-							})}
-						</ul>
-					];
-				})}
+				{this.props.categories.map(this.renderCategory)}
 			</div>
 		);
 	}

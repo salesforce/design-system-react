@@ -13,7 +13,7 @@ exports[`test Navigation
   </h2>
   <ul>
     <li
-      className="slds-is-active">
+      className="">
       <a
         aria-describedby="CUSTOM-ID-reports"
         className="slds-navigation-list--vertical__action slds-text-link--reset"
@@ -57,7 +57,7 @@ exports[`test Navigation
       </a>
     </li>
     <li
-      className="">
+      className="slds-is-active">
       <a
         aria-describedby="CUSTOM-ID-reports"
         className="slds-navigation-list--vertical__action slds-text-link--reset"

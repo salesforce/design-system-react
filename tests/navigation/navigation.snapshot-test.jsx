@@ -24,7 +24,8 @@ test('Navigation Default HTML Snapshot', () => {
 const customProps = {
 	className: 'CUSTOM-CLASSNAME',
 	id: 'CUSTOM-ID',
-	variant: 'shade'
+	variant: 'shade',
+	selectedId: 'all_reports'
 };
 
 test(`Navigation
