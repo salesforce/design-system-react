@@ -214,7 +214,7 @@ const FilteringPanelFilter = React.createClass({
 						/>
 					: null}
 				</div>
-				<p id={`${this.getId()}-error`} className="slds-text-color--error slds-m-top--xx-small">{this.props.errorLabel}</p>
+				{this.props.errorLabel ? <p id={`${this.getId()}-error`} className="slds-text-color--error slds-m-top--xx-small">{this.props.errorLabel}</p> : null}
 			</li>
 		);
 	}
