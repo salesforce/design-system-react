@@ -19,14 +19,34 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React, { PropTypes } from 'react';
 
+// ### classNames
+import classNames from 'classnames';
+
+import Icon from '~/components/icon';
+
 // ## Constants
 import { PANEL_FILTERING_LIST_HEADING } from '../../../utilities/constants';
 
 /**
  * A filtering panel contextual filtering options.
  */
-const FilteringPanelListHeading = ({ label }) => (
-	<h3 className="slds-text-body--small slds-m-vertical--x-small">{label}</h3>
+const FilteringPanelListHeading = ({ label, locked, lockedLabel }) => (
+	<h3
+		className={classNames('slds-text-body--small', 'slds-m-vertical--x-small',
+		{ 'slds-grid': locked })}
+	>
+	{locked
+		? lockedLabel
+	: label}
+	{locked
+		? <Icon
+			className="slds-m-left--x-small"
+			assistiveText="locked"
+			category="utility"
+			name="lock"
+			size="x-small"
+		/>
+	: null}</h3>
 );
 
 FilteringPanelListHeading.displayName = PANEL_FILTERING_LIST_HEADING;
@@ -35,7 +55,20 @@ FilteringPanelListHeading.propTypes = {
 	/**
 	 * Heading for a group of filters
 	 */
-	label: PropTypes.string
+	label: PropTypes.string,
+	/**
+	 * Displayed a heading for a locked list of filters
+	 */
+	locked: PropTypes.bool,
+	/**
+	 * Heading for a group of filters that are locked
+	 */
+	lockedLabel: PropTypes.string
+};
+
+FilteringPanelListHeading.defaultProps = {
+	label: 'Matching all these filters',
+	lockedLabel: 'Locked filters'
 };
 
 module.exports = FilteringPanelListHeading;

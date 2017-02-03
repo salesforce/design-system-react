@@ -19,25 +19,41 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React, { PropTypes } from 'react';
 
+import Button from '../../button';
+
 // ## Constants
 import { PANEL_FILTERING_FOOTER } from '../../../utilities/constants';
 
 /**
  * A filtering panel contextual filtering options.
  */
-const FilteringPanel = ({ children }) => (
-	<div className="slds-filters__footer slds-grid slds-shrink-none">
-		{children}
-	</div>
-);
+const FilteringPanelFooter = ({ children, onClickAdd, onClickRemoveAll }) => {
+	const isChildren = !!React.Children.count(children);
+	const output = isChildren
+		? <div className="slds-filters__footer slds-grid slds-shrink-none">{children}</div>
+		: <div className="slds-filters__footer slds-grid slds-shrink-none">
+			<Button
+				label="Add Filter"
+				onClick={onClickAdd}
+				variant="link"
+			/>
+			<Button
+				className="slds-col--bump-left"
+				label="Remove All"
+				onClick={onClickRemoveAll}
+				variant="link"
+			/>
+		</div>;
+	return output;
+};
 
-FilteringPanel.displayName = PANEL_FILTERING_FOOTER;
+FilteringPanelFooter.displayName = PANEL_FILTERING_FOOTER;
 
-FilteringPanel.propTypes = {
+FilteringPanelFooter.propTypes = {
 	/**
 	 * A place for actions such as "Add a filter" or "Remove all"
 	 */
 	children: PropTypes.node
 };
 
-module.exports = FilteringPanel;
+module.exports = FilteringPanelFooter;

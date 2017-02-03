@@ -60,6 +60,10 @@ const FilteringPanelFilter = React.createClass({
 		 */
 		children: PropTypes.node,
 		/**
+			* Will put filter into error styling and add error label to it.
+			*/
+		errorLabel: PropTypes.string,
+		/**
 		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
 		*/
 		id: PropTypes.string,
@@ -67,6 +71,10 @@ const FilteringPanelFilter = React.createClass({
 			* If true, the filter will not display an editing popover when clicked
 			*/
 		locked: PropTypes.bool,
+		/**
+			* Applies new filter styling
+			*/
+		new: PropTypes.bool,
 		/**
 			* If true, the filter will not include a remove button
 			*/
@@ -93,7 +101,8 @@ const FilteringPanelFilter = React.createClass({
 		return {
 			assistiveTextChangeFilter: 'Edit filter:',
 			assistiveTextChangeFilterHeading: 'Choose filter criteria',
-			assistiveTextRemoveFilter: 'Remove filter:'
+			assistiveTextRemoveFilter: 'Remove filter:',
+			predicate: 'New Filter'
 		};
 	},
 
@@ -148,6 +157,8 @@ const FilteringPanelFilter = React.createClass({
 			</div>
 		);
 
+		/* TODO: Button wrapper for property and predictate should be transitioned to `Button` component */
+
 		return (
 			<li className="slds-item slds-hint-parent">
 				<div
@@ -155,7 +166,9 @@ const FilteringPanelFilter = React.createClass({
 						'slds-filters__item',
 						'slds-grid',
 						'slds-grid--vertical-align-center', {
-							'slds-is-locked': this.props.locked
+							'slds-is-locked': this.props.locked,
+							'slds-is-new': this.props.new,
+							'slds-has-error': this.props.errorLabel
 						}
 					)}
 				>
@@ -168,21 +181,26 @@ const FilteringPanelFilter = React.createClass({
 						id={this.getId()}
 						isOpen={this.state.popoverIsOpen}
 						onClose={this.handleClose}
+						onRequestClose={this.handleClose}
 						triggerClassName="slds-grow"
 					>
-						<button	className="slds-button--reset slds-grow slds-has-blur-focus" onClick={this.handleFilterClick}
+						<button
+							className="slds-button--reset slds-grow slds-has-blur-focus"
+							onClick={this.handleFilterClick}
+							disabled={this.props.locked}
+							aria-describedby={this.props.errorLabel ? `${this.getId()}-error` : undefined}
 						>
 							<span className="slds-assistive-text">{this.props.assistiveTextChangeFilter}</span>
-							<p className="slds-text-body--small">{this.props.property}</p>
+							{this.props.property ? <p className="slds-text-body--small">{this.props.property}</p> : null}
 							<p>{this.props.predicate}</p>
 						</button>
 					</Popover>
-					: <button className="slds-grow slds-has-blur-focus">
+					: <button className="slds-button--reset slds-grow slds-has-blur-focus" disabled>
 						<p className="slds-text-body--small">{this.props.property}</p>
 						<p>{this.props.predicate}</p>
 					</button>
 					}
-					{!this.props.permanent
+					{!this.props.permanent && !this.props.locked
 						? <Button
 							assistiveText={`${this.props.assistiveTextRemoveFilter} ${this.props.property} ${this.props.predicate}`}
 							hint
@@ -196,6 +214,7 @@ const FilteringPanelFilter = React.createClass({
 						/>
 					: null}
 				</div>
+				<p id={`${this.getId()}-error`} className="slds-text-color--error slds-m-top--xx-small">{this.props.errorLabel}</p>
 			</li>
 		);
 	}

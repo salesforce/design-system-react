@@ -19,10 +19,6 @@ const options = {
 	'list-price': [
 		{ label: 'greater than "500"', value: 'greater-than-500' },
 		{ label: 'greater than "100"', value: 'greater-than-100' }
-	],
-	new: [
-		{ label: 'less than "1000"', value: 'less-than-1000' },
-		{ label: 'less than "800"', value: 'less-than-800' }
 	]
 };
 
@@ -45,8 +41,7 @@ const Example = React.createClass({
 				selectedPicklistItem: options['list-price'][0],
 				selectedItem: options['list-price'][0],
 				isActive: true
-			},
-			new: {}
+			}
 		};
 	},
 
@@ -87,6 +82,7 @@ const Example = React.createClass({
 		return (
 			<div style={{ paddingLeft: '300px' }}>
 				<FilteringPanel
+					errorLabel="Filters could not be applied. Please fix the validation errors below."
 					modified={this.state.modifiedPanel}
 					onClickAdd={() => {
 						this.setState({ modifiedPanel: true, new: { isActive: true, new: true } });
@@ -164,31 +160,15 @@ const Example = React.createClass({
 								/>
 							</PanelFilteringFilter>
 							: null}
-
-							{this.state.new.isActive
-							?	<PanelFilteringFilter
-								id="sample-panel-filtering-new"
-								new={this.state.new.new && this.state.modifiedPanel}
-								onChange={this.onChangePredicate}
-								onRemove={this.onRemove}
-								predicate={this.state.new.selectedItem && this.state.new.selectedItem.label}
-								property={this.state.new.selectedItem && this.state.new.selectedItem.label && 'List Price'}
-							>
-								<Picklist
-									isInline
-									label="List Price"
-									onSelect={(selectedItem) => {
-										this.onSelectPicklist(selectedItem, 'new');
-									}}
-									options={options.new}
-									placeholder="Select Criteria"
-									value={this.state.new.selectedPicklistItem && this.state.new.selectedPicklistItem.value}
-								/>
-							</PanelFilteringFilter>
-							: null}
-
+							<PanelFilteringFilter
+								errorLabel="Error Message"
+								id="sample-panel-filtering-error"
+								predicate={'equals "Red"'}
+								property="Stage"
+							/>
 						</PanelFilteringList>
 					: null}
+
 				</FilteringPanel>
 			</div>
 		);

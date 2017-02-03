@@ -21,6 +21,7 @@ import React, { PropTypes } from 'react';
 
 import Panel from '../';
 import Button from '../../button';
+import PanelFilteringFooter from '~/components/panel/filtering/footer';
 
 // ## Constants
 import { PANEL_FILTERING } from '../../../utilities/constants';
@@ -28,11 +29,37 @@ import { PANEL_FILTERING } from '../../../utilities/constants';
 /**
  * A filtering panel contextual filtering options.
  */
-const FilteringPanel = ({ assistiveTextCloseFilterPanel, children, footer, heading, onRequestClose }) => (
+const FilteringPanel = ({
+	assistiveTextCloseFilterPanel,
+	cancelLabel,
+	children,
+	errorLabel,
+	footer,
+	heading,
+	modified,
+	onClickAdd,
+	onClickRemoveAll,
+	onRequestCancel,
+	onRequestClose,
+	onRequestSave,
+	saveLabel
+}) => (
 	<Panel variant="filters">
 		<div className="slds-form--stacked slds-grow slds-scrollable--y slds-grid slds-grid--vertical">
 			<div className="slds-filters">
-				<div className="slds-filters__header slds-grid slds-has-divider--bottom-space">
+				{modified ? <div className="slds-filters__header slds-grid slds-has-divider--bottom-space slds-grid--align-spread">
+					<Button
+						label={cancelLabel}
+						onClick={onRequestCancel}
+						variant="neutral"
+					/>
+					<Button
+						label={saveLabel}
+						onClick={onRequestSave}
+						variant="brand"
+					/>
+				</div>
+				: <div className="slds-filters__header slds-grid slds-has-divider--bottom-space">
 					<h2 className="slds-align-middle slds-text-heading--small">{heading}</h2>
 					<Button
 						className="slds-col--bump-left"
@@ -45,11 +72,14 @@ const FilteringPanel = ({ assistiveTextCloseFilterPanel, children, footer, headi
 						title={assistiveTextCloseFilterPanel}
 						variant="icon"
 					/>
-				</div>
+				</div>}
 				<div className="slds-filters__body">
+					{errorLabel
+						? <div className="slds-text-color--error slds-m-bottom--x-small" role="alert">{errorLabel}</div>
+						: null}
 					{children}
 				</div>
-				{footer}
+				{footer || <PanelFilteringFooter onClickAdd={onClickAdd} onClickRemoveAll={onClickRemoveAll} />}
 			</div>
 		</div>
 	</Panel>
@@ -63,11 +93,15 @@ FilteringPanel.propTypes = {
 	 */
 	assistiveTextCloseFilterPanel: PropTypes.node,
 	/**
+	 * Label for button that cancels modified filters
+	 */
+	cancelLabel: PropTypes.string,
+	/**
 	 * Pass in `FilterList`'s of `Filters`
 	 */
 	children: PropTypes.node,
 	/**
-	 * A place for actions such as "Add a filter" or remove all
+	 * Allows for customization of footer beyond default
 	 */
 	footer: PropTypes.node,
 	/**
@@ -75,14 +109,40 @@ FilteringPanel.propTypes = {
 	 */
 	heading: PropTypes.node,
 	/**
-	 * When the panel's close button is clicked
+	 * Shows confirmation heading. Please see `onRequestCancel` and `onRequestSave`.
 	 */
-	onRequestClose: PropTypes.func
+	modified: PropTypes.bool,
+	/**
+	 * Callback triggered when "Add Filter" is clicked. Recieves an `event`.
+	 */
+	onClickAdd: PropTypes.func,
+	/**
+	 * Callback triggered when "Remove All" is clicked. Recieves an `event`.
+	 */
+	onClickRemoveAll: PropTypes.func,
+	/**
+	 * When the panel's cancel button is clicked in order to reset filter panel to previous state.
+	 */
+	onRequestCancel: PropTypes.func,
+	/**
+	 * When the panel's close button is clicked. Please place Panel within another element to control position and visibility.
+	 */
+	onRequestClose: PropTypes.func,
+	/**
+	 * When the panel's save button is clicked in order to confirm filter panel state.
+	 */
+	onRequestSave: PropTypes.func,
+	/**
+	 * Label for button that saves modified filters
+	 */
+	saveLabel: PropTypes.string
 };
 
 FilteringPanel.defaultProps = {
+	cancelLabel: 'Cancel',
 	assistiveTextCloseFilterPanel: 'Close Filter Panel',
-	heading: 'Filter'
+	heading: 'Filter',
+	saveLabel: 'Save'
 };
 
 module.exports = FilteringPanel;
