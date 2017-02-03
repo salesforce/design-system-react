@@ -12,6 +12,4 @@ storiesOf(NAVIGATION, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Default', () => (<Default action={action} />))
 	.add('Shade', () => (<Shade action={action} />))
-	.add('DOM Snapshot', () => (<SnaphotDefault />))
-	;
-
+	.add('DOM Snapshot', () => (<SnaphotDefault />));

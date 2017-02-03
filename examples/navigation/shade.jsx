@@ -2,29 +2,7 @@
 import React from 'react';
 import Navigation from '~/components/navigation';
 
-const sampleCategories = [
-	{id: 'search_results', label: 'Search Results', items:
-		[
-			{id: 'top', label: 'Top Results'},
-			{id: 'accounts', label: 'Accounts'},
-			{id: 'contacts', label: 'Contacts'},
-			{id: 'opportunities', label: 'Opportunities'},
-			{id: 'leads', label: 'Leads'},
-			{id: 'groups', label: 'Groups'},
-			{id: 'files', label: 'Files'},
-			{id: 'dashboards', label: 'Dashboards'},
-			{id: 'reports', label: 'Reports'},
-			{id: 'feeds', label: 'Feeds'}
-		]
-	},
-	{id: 'external_results', label: 'External Results', items:
-		[
-			{id: 'app_one', label: 'App One'},
-			{id: 'app_two', label: 'App Two'},
-			{id: 'app_three', label: 'App Three'}
-		]
-	}
-];
+import { sampleSearchCategories } from '../../utilities/sample-data/navigation';
 
 const Example = React.createClass({
 	displayName: 'NavigationExample',
@@ -41,7 +19,7 @@ const Example = React.createClass({
 				<Navigation
 					id='sample-navigation'
 					variant='shade'
-					categories={sampleCategories}
+					categories={sampleSearchCategories}
 					selectedId={this.state.selectedId}
 					onSelect={(event, data) => {
 						this.setState({selectedId: data.selectedId})
