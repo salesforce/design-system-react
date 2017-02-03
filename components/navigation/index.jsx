@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+ Copyright (c) 2017, salesforce.com, inc. All rights reserved.
  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
@@ -30,27 +30,27 @@ const Navigation = React.createClass({
 
 	propTypes: {
 		/**
-		 * HTML id for component
+		 * HTML id for component. _Tested with snapshot testing._
 		 */
 		id: PropTypes.string,
 		/**
-		 * CSS class names to be added to the container element.
+		 * CSS class names to be added to the container element. _Tested with snapshot testing._
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
-		 * Array of categories. The required shape is: `{id: string, label: string, items: array}`. The required shape of an item is `{id: string, label: string}`. All item ids are expected to be unique.
+		 * Array of categories. The required shape is: `{id: string, label: string, items: array}`. The required shape of an item is `{id: string, label: string}`. All item ids are expected to be unique. _Tested with snapshot testing._
 		 */
 		categories: PropTypes.array,
 		/**
-		 * The ID of the item that is currently selected. Defaults to the ID of the first item.
+		 * The ID of the item that is currently selected. Defaults to the ID of the first item. _Tested with Mocha framework._
 		 */
 		selectedId: PropTypes.string,
 		/**
-		 * Triggered when the selection changes.
+		 * Triggered when the selection changes. _Tested with Mocha framework._
 		 */
 		onSelect: PropTypes.func,
 		/**
-		 * Determines component style.
+		 * Determines component style. _Tested with snapshot testing._
 		 */
 		variant: React.PropTypes.oneOf(['default', 'shade'])
 	},
@@ -88,37 +88,6 @@ const Navigation = React.createClass({
 		});
 	},
 
-	renderCategory (category) {
-		const categoryId = `${this.getId()}-${category.id}`;
-		const selectedId = this.getSelectedId();
-		return [
-			<h2
-				id={categoryId}
-				key={categoryId + '-header'}
-				className='slds-text-title--caps slds-p-around--medium'
-			>
-				{category.label}
-			</h2>,
-			<ul key={categoryId}>
-				{category.items.map((item) => {
-					return (
-						<li className={classNames({'slds-is-active': item.id === selectedId})} key={item.id}>
-							<a
-								data-id={item.id}
-								href='javascript:void(0);' // eslint-disable-line no-script-url
-								className='slds-navigation-list--vertical__action slds-text-link--reset'
-								aria-describedby={categoryId}
-								onClick={this.handleClick}
-							>
-								{item.label}
-							</a>
-						</li>
-					);
-				})}
-			</ul>
-		];
-	},
-
 	render () {
 		const rootId = this.getId();
 		const variant = this.getVariant();
@@ -134,7 +103,38 @@ const Navigation = React.createClass({
 					this.props.className
 				)}
 			>
-				{this.props.categories.map(this.renderCategory)}
+				{this.props.categories.map((category) => {
+					const categoryId = `${rootId}-${category.id}`;
+					const selectedId = this.getSelectedId();
+					return [
+						<h2
+							id={categoryId}
+							key={categoryId + '-header'}
+							className='slds-text-title--caps slds-p-around--medium'
+						>
+							{category.label}
+						</h2>,
+						<ul key={categoryId}>
+							{category.items.map((item) => {
+								return (
+									<li
+										key={item.id}
+										className={classNames({'slds-is-active': item.id === selectedId})}>
+										<a
+											data-id={item.id}
+											href='javascript:void(0);' // eslint-disable-line no-script-url
+											className='slds-navigation-list--vertical__action slds-text-link--reset'
+											aria-describedby={categoryId}
+											onClick={this.handleClick}
+										>
+											{item.label}
+										</a>
+									</li>
+								);
+							})}
+						</ul>
+					];
+				})}
 			</div>
 		);
 	}

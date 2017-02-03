@@ -87,6 +87,23 @@ describe('SLDSNavigation', () => {
 		});
 	});
 
+	// PROPS
+
+	describe('selectedId prop', () => {
+		const selectedId = "my_folders";
+
+		beforeEach(mountComponent(
+			<DemoComponent selectedId={selectedId} />
+		));
+
+		afterEach(unmountComponent);
+
+		it('is used to select an item', function () {
+			const item = this.wrapper.find('.sample-navigation').find('li.slds-is-active').find('a[data-id="my_folders"]');
+			expect(item).to.have.length(1);
+		});
+	});
+
 	// EVENTS
 
 	describe('Item', () => {
