@@ -1,6 +1,6 @@
 {
   "name": "design-system-react",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Salesforce Lightning Design System React components",
   "license": "BSD-3-Clause",
   "engines": {
@@ -352,6 +352,26 @@
       "status": "prod",
       "display-name": "Notifications",
       "SLDS-component-path": "/components/notifications"
+    },
+    {
+      "component": "panel",
+      "status": "prototype",
+      "display-name": "Panels",
+      "SLDS-component-path": "/components/panels",
+      "dependencies": [
+        {
+          "component": "filtering/filter"
+        },
+        {
+          "component": "filtering/footer"
+        },
+        {
+          "component": "filtering/list-heading"
+        },
+        {
+          "component": "filtering/list"
+        }
+      ]
     },
     {
       "component": "popover",

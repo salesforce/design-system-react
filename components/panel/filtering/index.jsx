@@ -21,7 +21,7 @@ import React, { PropTypes } from 'react';
 
 import Panel from '../';
 import Button from '../../button';
-import PanelFilteringFooter from '~/components/panel/filtering/footer';
+import PanelFilteringFooter from './footer';
 
 // ## Constants
 import { PANEL_FILTERING } from '../../../utilities/constants';
@@ -100,6 +100,10 @@ FilteringPanel.propTypes = {
 	 * Pass in `FilterList`'s of `Filters`
 	 */
 	children: PropTypes.node,
+	/**
+	 * Label for the error message at the top of the panel.
+	 */
+	errorLabel: PropTypes.string,
 	/**
 	 * Allows for customization of footer beyond default
 	 */

@@ -94,6 +94,11 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!design-system-react/examples/page-header/object-home.jsx'),
 		require('raw-loader!design-system-react/examples/page-header/related-list.jsx')
 	],
+	'panel': [
+		require('raw-loader!design-system-react/examples/panel/filtering.jsx'),
+		require('raw-loader!design-system-react/examples/panel/filtering-locked.jsx'),
+		require('raw-loader!design-system-react/examples/panel/filtering-error.jsx')
+	],
 	popover: [
 		require('raw-loader!design-system-react/examples/popover/header.jsx'),
 		require('raw-loader!design-system-react/examples/popover/alternative-header.jsx'),

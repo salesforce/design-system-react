@@ -22,7 +22,7 @@ import React, { PropTypes } from 'react';
 // ### classNames
 import classNames from 'classnames';
 
-import Icon from '~/components/icon';
+import Icon from '../../icon';
 
 // ## Constants
 import { PANEL_FILTERING_LIST_HEADING } from '../../../utilities/constants';
