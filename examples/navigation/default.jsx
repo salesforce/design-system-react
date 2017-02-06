@@ -38,7 +38,7 @@ const Example = React.createClass({
 					categories={sampleReportCategories}
 					selectedId={this.state.selectedId}
 					onSelect={(event, data) => {
-						this.setState({selectedId: data.selectedId})
+						this.setState({selectedId: data.item.id})
 						if (this.props.action) {
 							const dataAsArray = Object.keys(data).map((key) => data[key]);
 							this.props.action('onSelect')(event, data, ...dataAsArray);

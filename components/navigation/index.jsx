@@ -7,6 +7,9 @@
  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+// Implements the [Navigation design pattern](https://lightningdesignsystem.com/components/navigation/) in React.
+// Based on SLDS v2.2.1
+
 import React, { PropTypes } from 'react';
 
 // ### classNames
@@ -21,6 +24,9 @@ import classNames from 'classnames';
 import shortid from 'shortid';
 
 import { NAVIGATION } from '../../utilities/constants';
+
+// Child components
+import Item from './private/item';
 
 /**
  * Navigation represents a list of links that either take the user to another page or parts of the page the user is in.
@@ -38,7 +44,7 @@ const Navigation = React.createClass({
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
-		 * Array of categories. The required shape is: `{id: string, label: string, items: array}`. The required shape of an item is `{id: string, label: string}`. All item ids are expected to be unique. _Tested with snapshot testing._
+		 * Array of categories. The required shape is: `{id: string, label: string, items: array}`. The required shape of an item is `{id: string, label: string, url: string}`. All item ids are expected to be unique. _Tested with snapshot testing._
 		 */
 		categories: PropTypes.array,
 		/**
@@ -46,7 +52,7 @@ const Navigation = React.createClass({
 		 */
 		selectedId: PropTypes.string,
 		/**
-		 * Triggered when the selection changes. _Tested with Mocha framework._
+		 * Triggered when the selection changes. It receives an event and an item object in the shape: {event, {item: [object] }}. _Tested with Mocha framework._
 		 */
 		onSelect: PropTypes.func,
 		/**
@@ -82,12 +88,6 @@ const Navigation = React.createClass({
 		}
 	},
 
-	handleClick (event) {
-		this.props.onSelect(event, {
-			selectedId: event.target.dataset.id
-		});
-	},
-
 	render () {
 		const rootId = this.getId();
 		const variant = this.getVariant();
@@ -117,19 +117,13 @@ const Navigation = React.createClass({
 						<ul key={categoryId}>
 							{category.items.map((item) => {
 								return (
-									<li
+									<Item
 										key={item.id}
-										className={classNames({'slds-is-active': item.id === selectedId})}>
-										<a
-											data-id={item.id}
-											href='javascript:void(0);' // eslint-disable-line no-script-url
-											className='slds-navigation-list--vertical__action slds-text-link--reset'
-											aria-describedby={categoryId}
-											onClick={this.handleClick}
-										>
-											{item.label}
-										</a>
-									</li>
+										item={item}
+										isSelected={item.id === selectedId}
+										categoryId={categoryId}
+										onSelect={this.props.onSelect}
+									/>
 								);
 							})}
 						</ul>

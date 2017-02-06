@@ -52,6 +52,7 @@ export const MENU_DROPDOWN_TRIGGER = 'SLDSMenuDropdownTrigger';
 export const MENU_PICKLIST = 'SLDSMenuPicklist';
 export const MODAL = 'SLDSModal';
 export const NAVIGATION = 'SLDSNavigation';
+export const NAVIGATION_ITEM = 'SLDSNavigationItem';
 export const NOTIFICATION = 'SLDSNotification';
 export const PAGE_HEADER = 'SLDSPageHeader';
 export const POPOVER = 'SLDSPopover';

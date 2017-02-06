@@ -10,7 +10,7 @@ const sampleReportCategories = [
 	},
 	{id: 'folders', label: 'Folders', items:
 		[
-			{id: 'my_folders', label: 'Created by Me'},
+			{id: 'my_folders', label: 'Created by Me', url: 'http://www.google.com'},
 			{id: 'shared_folders', label: 'Shared with Me'},
 			{id: 'all_folders', label: 'All Folders'}
 		]

@@ -80,7 +80,7 @@ exports[`test Navigation
         aria-describedby="CUSTOM-ID-folders"
         className="slds-navigation-list--vertical__action slds-text-link--reset"
         data-id="my_folders"
-        href="javascript:void(0);"
+        href="http://www.google.com"
         onClick={[Function]}>
         Created by Me
       </a>
@@ -189,7 +189,7 @@ exports[`test Navigation Default DOM Snapshot 1`] = `
         aria-describedby="sample-navigation-folders"
         className="slds-navigation-list--vertical__action slds-text-link--reset"
         data-id="my_folders"
-        href="javascript:void(0);"
+        href="http://www.google.com"
         onClick={[Function]}>
         Created by Me
       </a>
@@ -232,7 +232,7 @@ exports[`test Navigation Default HTML Snapshot 1`] = `
     </ul>
     <h2 id=\"sample-navigation-folders\" class=\"slds-text-title--caps slds-p-around--medium\">Folders</h2>
     <ul>
-        <li class=\"\"><a data-id=\"my_folders\" href=\"javascript:void(0);\" class=\"slds-navigation-list--vertical__action slds-text-link--reset\" aria-describedby=\"sample-navigation-folders\">Created by Me</a></li>
+        <li class=\"\"><a data-id=\"my_folders\" href=\"http://www.google.com\" class=\"slds-navigation-list--vertical__action slds-text-link--reset\" aria-describedby=\"sample-navigation-folders\">Created by Me</a></li>
         <li class=\"\"><a data-id=\"shared_folders\" href=\"javascript:void(0);\" class=\"slds-navigation-list--vertical__action slds-text-link--reset\" aria-describedby=\"sample-navigation-folders\">Shared with Me</a></li>
         <li class=\"\"><a data-id=\"all_folders\" href=\"javascript:void(0);\" class=\"slds-navigation-list--vertical__action slds-text-link--reset\" aria-describedby=\"sample-navigation-folders\">All Folders</a></li>
     </ul>
