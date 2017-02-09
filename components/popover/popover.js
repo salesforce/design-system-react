@@ -1,0 +1,547 @@
+'use strict';
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /*
+                                                                                                                                                                                                                                                                  Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+                                                                                                                                                                                                                                                                  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+                                                                                                                                                                                                                                                                  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+                                                                                                                                                                                                                                                                  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+                                                                                                                                                                                                                                                                  Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+                                                                                                                                                                                                                                                                  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+                                                                                                                                                                                                                                                                  */
+
+// # Popver Component
+
+// Implements the [Popover design pattern](https://www.lightningdesignsystem.com/components/popovers) in React.
+
+// ### React
+
+
+// ### assign
+
+
+// ### classNames
+// [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
+// This project uses `classnames`, "a simple javascript utility for conditionally
+// joining classNames together."
+
+
+// ### isBoolean
+
+
+// ### isFunction
+
+
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+
+
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+
+
+// ### Children
+
+
+// ### Traits
+
+
+// #### KeyboardNavigable
+
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _lodash = require('lodash.assign');
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _lodash3 = require('lodash.isboolean');
+
+var _lodash4 = _interopRequireDefault(_lodash3);
+
+var _lodash5 = require('lodash.isfunction');
+
+var _lodash6 = _interopRequireDefault(_lodash5);
+
+var _checkProps = require('./check-props');
+
+var _checkProps2 = _interopRequireDefault(_checkProps);
+
+var _shortid = require('shortid');
+
+var _shortid2 = _interopRequireDefault(_shortid);
+
+var _button = require('../button');
+
+var _button2 = _interopRequireDefault(_button);
+
+var _dialog = require('../utilities/dialog');
+
+var _dialog2 = _interopRequireDefault(_dialog);
+
+var _dialogHelpers = require('../../utilities/dialog-helpers');
+
+var _keyboardNavigableDialog = require('../../utilities/keyboard-navigable-dialog');
+
+var _keyboardNavigableDialog2 = _interopRequireDefault(_keyboardNavigableDialog);
+
+var _KEYS = require('../../utilities/KEYS');
+
+var _KEYS2 = _interopRequireDefault(_KEYS);
+
+var _constants = require('../../utilities/constants');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// The overlay is an optional way to allow the popover to close on outside
+// clicks even when those clicks are over areas that wouldn't normally fire
+// click or touch events (for example, iframes). A single overlay is shared
+// between all popovers in the app.
+var overlay = document.createElement('span');
+overlay.style.top = 0;
+overlay.style.left = 0;
+overlay.style.width = '100%';
+overlay.style.height = '100%';
+overlay.style.position = 'absolute';
+
+var currentOpenPopover = void 0;
+
+var PopoverNubbinPositions = ['top left', 'top', 'top right', 'bottom left', 'bottom', 'bottom right'];
+
+/**
+ * The Popover component is a non-modal dialog. It should be paired with a clickable trigger such as a `Button`. It traps focus from the page and must be exited if focus needs to be outside the Popover. Use a `Tooltip` if there are no call to actions within the dialog. A `Tooltip` does not need to be clicked.
+ */
+var Popover = _react2.default.createClass({
+	// ### Display Name
+	// Always use the canonical component name as the React display name.
+	displayName: _constants.POPOVER,
+
+	// ### Prop Types
+	propTypes: {
+		/**
+   * Aligns the popover with the respective side of the trigger. That is `top` will place the `Popover` above the trigger.
+   */
+		align: _react.PropTypes.oneOf(['top', 'top left', 'top right', 'right', 'bottom', 'bottom left', 'bottom right', 'left']),
+		/**
+   * HTML `id` of heading for popover. Only use if your header is within your popover body.
+   */
+		ariaLabelledby: _react.PropTypes.string,
+		/**
+   * The trigger of the component. This must be a **single node**. Many props will be passed into this trigger related to popover interactions. The child needs to be a clickable element, such as a `Button` or an anchor tag (`a`).
+   */
+		children: _react.PropTypes.node.isRequired,
+		/**
+   * The contents of the popover. This should also accept arrays.
+   */
+		body: _react.PropTypes.oneOfType([_react.PropTypes.node, _react.PropTypes.array]).isRequired,
+		/**
+   * CSS classes to be added to the popover. That is the element with `.slds-popover` on it.
+   */
+		className: _react.PropTypes.oneOfType([_react.PropTypes.array, _react.PropTypes.object, _react.PropTypes.string]),
+		/*
+   * All popovers require a close button.
+  */
+		closeButtonAssistiveText: _react.PropTypes.oneOfType([_react.PropTypes.string]),
+		/**
+   * This prop is passed onto the triggering `Button`. Prevent popover from opening. Also applies disabled styling to trigger button.
+   */
+		disabled: _react.PropTypes.bool,
+		/*
+   * A footer is an optional. Buttons are often placed here.
+  */
+		footer: _react.PropTypes.node,
+		/* Prevents the Popover from changing position based on the viewport/window. If set to true your popover can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the popover contents scrollable to fit the menu on the screen.
+  */
+		hasStaticAlignment: _react.PropTypes.bool,
+		/*
+   * All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop.
+  */
+		heading: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.node]),
+		/**
+  * By default, a unique ID will be created at render to support keyboard navigation, ARIA roles, and connect the popover to the triggering button. This ID will be applied to the triggering element. `${id}-popover`, `${id}-dialog-heading`, `${id}-dialog-body` are also created.
+  */
+		id: _react.PropTypes.string,
+		/**
+   * Forces the popover to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use [](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices) You will want this if Popover is to be a controlled component.
+   */
+		isOpen: _react.PropTypes.bool,
+		/**
+   *  Offset adds pixels to the absolutely positioned dialog in the format: ([vertical]px [horizontal]px).
+   */
+		offset: _react.PropTypes.string,
+		/**
+   * This function is passed onto the triggering `Button`. Triggered when the trigger button is clicked. You will want this if Popover is to be a controlled component.
+   */
+		onClick: _react.PropTypes.func,
+		/**
+   * This function is triggered when the dialog is closed. This occurs when the Dialog child component (that is the actual popover) is unmounted and removed from the DOM. This function returns `{event, { trigger, componentWillUnmount }`. Trigger can have the values `cancel`, `clickOutside`, or `newPopover`.
+   */
+		onClose: _react.PropTypes.func,
+		/**
+   * Called when a key is pressed.
+   */
+		onKeyDown: _react.PropTypes.func,
+		/**
+   * Called when mouse clicks down on the trigger button.
+   */
+		onMouseDown: _react.PropTypes.func,
+		/**
+   * This function is triggered when the Dialog child component (that is the actual popover) is mounted and added to the DOM. The parameters are `event, { portal: }`. `portal` can be used as a React tree root node.
+   */
+		onOpen: _react.PropTypes.func,
+		/**
+   * This function is triggered when the user clicks outside the Popover or clicks the close button. You will want to define this if Popover is to be a controlled component. Most of the time you will want wnat to set `isOpen` to `false` when this is triggered unless you need to validate something.
+   */
+		onRequestClose: _react.PropTypes.func,
+		/**
+   * Absolutely positioned DOM nodes, such as a popover dialog, may need their own React DOM tree root. They may need their alignment "flipped" if extended beyond the window or outside the bounds of an overflow-hidden scrolling modal. This library's portal mounts are added as a child node of `body`. This prop will be triggered instead of the default `ReactDOM.mount()` when this dialog is mounted. This prop is useful for testing and simliar to a "callback ref." Two arguments,`reactElement` and `domContainerNode` are passed in. Consider the following code that bypasses the internal mount and uses an Enzyme wrapper to mount the React root tree to the DOM.
+   *
+   * ```
+   * <Popover
+  		isOpen
+  		portalMount={(reactElement, domContainerNode) => {
+  			portalWrapper = Enzyme.mount(reactElement, { attachTo: domContainerNode });
+  		}}
+  		onOpen={() => {
+  			expect(portalWrapper.find(`#my-heading`)).to.exist;
+  			done();
+  		}}
+  	/>
+  	```
+   */
+		portalMount: _react.PropTypes.func,
+		/**
+   * An object of CSS styles that are applied to the `slds-popover` DOM element.
+   */
+		style: _react.PropTypes.object,
+		/**
+   * If `true`, adds a transparent overlay when the menu is open to handle outside clicks. Allows clicks on iframes to be captured, but also forces a double-click to interact with other elements. If a function is passed, custom overlay logic may be defined by the app.
+   */
+		overlay: _react.PropTypes.oneOfType([_react.PropTypes.bool, _react.PropTypes.func]),
+		/**
+   * CSS classes to be added to wrapping trigger `div` around the button.
+   */
+		triggerClassName: _react.PropTypes.oneOfType([_react.PropTypes.array, _react.PropTypes.object, _react.PropTypes.string])
+	},
+
+	getDefaultProps: function getDefaultProps() {
+		return {
+			align: 'right',
+			closeButtonAssistiveText: 'Close dialog',
+			hoverCloseDelay: 300,
+			openOn: 'click'
+		};
+	},
+	getInitialState: function getInitialState() {
+		return {
+			isOpen: false
+		};
+	},
+	componentWillMount: function componentWillMount() {
+		this.generatedId = _shortid2.default.generate();
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		(0, _checkProps2.default)(_constants.POPOVER, this.props);
+	},
+	componentWillUnmount: function componentWillUnmount() {
+		if (currentOpenPopover === this) {
+			currentOpenPopover = undefined;
+		}
+		this.isUnmounting = true;
+		this.renderOverlay(false);
+	},
+	getId: function getId() {
+		return this.props.id || this.generatedId;
+	},
+	getIsOpen: function getIsOpen() {
+		return !this.props.disabled && !!((0, _lodash4.default)(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
+	},
+	getMenu: function getMenu() {
+		// needed by keyboard navigation
+		return _reactDom2.default.findDOMNode(this.dialog);
+	},
+	handleDialogClose: function handleDialogClose(event, data) {
+		var componentWillUnmount = data && data.componentWillUnmount || false;
+
+		if (currentOpenPopover === this) {
+			currentOpenPopover = undefined;
+		}
+
+		if (this.props.onClose) {
+			this.props.onClose(event, {
+				component: this,
+				componentWillUnmount: componentWillUnmount
+			});
+		}
+	},
+	handleClose: function handleClose(event, data) {
+		var isOpen = this.getIsOpen();
+
+		if (isOpen) {
+			// call even if closed
+			if (this.props.onRequestClose) {
+				this.props.onRequestClose(event, data);
+			}
+
+			if (currentOpenPopover === this) {
+				currentOpenPopover = undefined;
+			}
+
+			this.setState({
+				isOpen: false
+			});
+
+			this.isHover = false;
+		}
+	},
+	handleOpen: function handleOpen() {
+		var isOpen = this.getIsOpen();
+
+		if (!isOpen) {
+			if (currentOpenPopover && (0, _lodash6.default)(currentOpenPopover.handleClose)) {
+				currentOpenPopover.handleClose(undefined, { trigger: 'newPopover', id: currentOpenPopover.getId() });
+			}
+
+			currentOpenPopover = this;
+
+			this.setState({
+				isOpen: true
+			});
+		}
+	},
+
+
+	/* props.openOn is not a part of prop-types because it is not a supported feature, but may be needed for backwards compatibility with non-accessible dropdown/popover hybrids. */
+
+	/* eslint-disable react/prop-types */
+	handleMouseEnter: function handleMouseEnter(event) {
+		var isOpen = this.getIsOpen();
+
+		this.isHover = true;
+
+		if (!isOpen && this.props.openOn === 'hover') {
+			this.handleOpen();
+		} else {
+			// we want this clear when openOn is hover or hybrid
+			clearTimeout(this.isClosing);
+		}
+
+		if (this.props.onMouseEnter) {
+			this.props.onMouseEnter(event);
+		}
+	},
+	handleMouseLeave: function handleMouseLeave(event) {
+		var _this = this;
+
+		var isOpen = this.getIsOpen();
+
+		if (isOpen) {
+			this.isClosing = setTimeout(function () {
+				_this.handleClose();
+			}, this.props.hoverCloseDelay);
+		}
+
+		if (this.props.onMouseLeave) {
+			this.props.onMouseLeave(event);
+		}
+	},
+
+	/* eslint-enable react/prop-types */
+
+	handleClick: function handleClick(event, _ref) {
+		var triggerOnClickCallback = _ref.triggerOnClickCallback;
+
+		var isOpen = this.getIsOpen();
+
+		if (!isOpen) {
+			this.handleOpen();
+		} else {
+			this.handleClose();
+		}
+
+		if (this.props.onClick) {
+			this.props.onClick(event);
+		}
+
+		if (triggerOnClickCallback) {
+			triggerOnClickCallback(event);
+		}
+	},
+	handleFocus: function handleFocus(event) {
+		var isOpen = this.getIsOpen();
+
+		if (!isOpen) {
+			this.handleOpen();
+		}
+
+		if (this.props.onFocus) {
+			this.props.onFocus(event);
+		}
+	},
+	handleKeyDown: function handleKeyDown(event) {
+		if (event.keyCode) {
+			if (event.keyCode !== _KEYS2.default.TAB) {
+				var isOpen = this.getIsOpen();
+
+				(0, _keyboardNavigableDialog2.default)({
+					event: event,
+					isOpen: isOpen,
+					handleClick: this.handleClick,
+					key: event.key,
+					keyCode: event.keyCode,
+					targetTarget: event.target,
+					toggleOpen: this.toggleOpenFromKeyboard,
+					trigger: this.trigger
+				});
+			}
+			if (this.props.onKeyDown) {
+				this.props.onKeyDown(event);
+			}
+		}
+	},
+	handleCancel: function handleCancel(event) {
+		this.handleClose(event, { trigger: 'cancel' });
+	},
+	handleClickOutside: function handleClickOutside(event) {
+		this.handleClose(event, { trigger: 'clickOutside' });
+	},
+	toggleOpenFromKeyboard: function toggleOpenFromKeyboard(event) {
+		if (this.state.isOpen) {
+			this.handleCancel(event);
+		} else {
+			this.handleOpen();
+		}
+	},
+	renderDialog: function renderDialog(isOpen, outsideClickIgnoreClass) {
+		var _this2 = this;
+
+		var props = this.props;
+		var offset = props.offset;
+		var style = this.props.style || {};
+
+		return isOpen ? _react2.default.createElement(
+			_dialog2.default,
+			{
+				align: props.align,
+				contentsClassName: (0, _classnames2.default)(this.props.contentsClassName, 'ignore-react-onclickoutside'),
+				constrainToScrollParent: props.constrainToScrollParent,
+				flippable: !props.hasStaticAlignment,
+				marginBottom: _dialogHelpers.getMargin.bottom(props.align),
+				marginLeft: _dialogHelpers.getMargin.left(props.align),
+				marginRight: _dialogHelpers.getMargin.right(props.align),
+				marginTop: _dialogHelpers.getMargin.top(props.align),
+				offset: offset,
+				onCancel: this.handleClose,
+				onClose: this.handleDialogClose,
+				onOpen: this.props.onOpen,
+				onKeyDown: this.handleKeyDown,
+				onMouseEnter: props.openOn === 'hover' ? this.handleMouseEnter : null,
+				onMouseLeave: props.openOn === 'hover' ? this.handleMouseLeave : null,
+				outsideClickIgnoreClass: outsideClickIgnoreClass,
+				portalMount: this.props.portalMount,
+				variant: 'popover'
+			},
+			_react2.default.createElement(
+				'div',
+				{
+					'aria-labelledby': this.props.ariaLabelledby ? this.props.ariaLabelledby : this.getId() + '-dialog-heading',
+					'aria-describedby': this.getId() + '-dialog-body',
+					className: (0, _classnames2.default)('slds-popover', (0, _dialogHelpers.getNubbinClassName)(props.align), props.className),
+					id: this.getId() + '-popover',
+					role: 'dialog',
+					style: (0, _lodash2.default)({ outline: '0' }, style),
+					tabIndex: '-1',
+					ref: function ref(component) {
+						_this2.dialog = component;
+					}
+				},
+				_react2.default.createElement(_button2.default, {
+					assistiveText: props.closeButtonAssistiveText,
+					iconName: 'close',
+					iconSize: 'small',
+					className: 'slds-float--right slds-popover__close',
+					onClick: this.handleCancel,
+					variant: 'icon'
+				}),
+				this.props.heading ? _react2.default.createElement(
+					'header',
+					{
+						className: 'slds-popover__header'
+					},
+					_react2.default.createElement(
+						'h2',
+						{ id: this.getId() + '-dialog-heading', className: 'slds-text-heading--small' },
+						this.props.heading
+					)
+				) : null,
+				_react2.default.createElement(
+					'div',
+					{
+						id: this.getId() + '-dialog-body',
+						className: 'slds-popover__body'
+					},
+					props.body
+				),
+				this.props.footer ? _react2.default.createElement(
+					'footer',
+					{ className: 'slds-popover__footer' },
+					this.props.footer
+				) : null
+			)
+		) : null;
+	},
+	renderOverlay: function renderOverlay(isOpen) {
+		if ((0, _lodash6.default)(overlay)) {
+			overlay(isOpen, overlay);
+		} else if (this.props.overlay && isOpen && !this.overlay) {
+			this.overlay = overlay;
+			document.querySelector('body').appendChild(this.overlay);
+		} else if (!isOpen && this.overlay && this.overlay.parentNode) {
+			this.overlay.parentNode.removeChild(this.overlay);
+			this.overlay = undefined;
+		}
+	},
+	render: function render() {
+		var _this3 = this;
+
+		var outsideClickIgnoreClass = 'ignore-click-' + this.getId();
+
+		var clonedTrigger = this.props.children ? _react2.default.cloneElement(this.props.children, _extends({
+			'aria-haspopup': 'true',
+			'aria-expanded': this.getIsOpen(),
+			id: this.getId(),
+			onClick: this.props.openOn === 'click' || this.props.openOn === 'hybrid' ? function (event) {
+				_this3.handleClick(event, { triggerOnClickCallback: _this3.props.children.props.onClick });
+			} : this.children.props.onClick,
+			onFocus: this.props.openOn === 'hover' ? this.handleFocus : null,
+			onMouseDown: this.props.onMouseDown,
+			onMouseEnter: this.props.openOn === 'hover' || this.props.openOn === 'hybrid' ? this.handleMouseEnter : null,
+			onMouseLeave: this.props.openOn === 'hover' || this.props.openOn === 'hybrid' ? this.handleMouseLeave : null,
+			tabIndex: this.props.children.props.tabIndex || '0'
+		}, this.props.children.props)) : null;
+
+		this.renderOverlay(this.getIsOpen());
+
+		var containerStyles = { display: 'inline' };
+		return _react2.default.createElement(
+			'div',
+			{
+				className: this.props.triggerClassName,
+				style: containerStyles
+			},
+			clonedTrigger,
+			this.renderDialog(this.getIsOpen(), outsideClickIgnoreClass)
+		);
+	}
+});
+
+module.exports = Popover;
+module.exports.PopoverNubbinPositions = PopoverNubbinPositions;
