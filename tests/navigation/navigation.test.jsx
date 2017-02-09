@@ -16,6 +16,13 @@ import React, { PropTypes } from 'react';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 
+import entries from 'object.entries';
+
+// shim for PhantomJS
+if (!Object.entries) {
+	entries.shim();
+}
+
 /* Enzyme Helpers that can mount and unmount React component instances to
  * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`
  * context [full source here](tests/enzyme-helpers.js). `this` can
