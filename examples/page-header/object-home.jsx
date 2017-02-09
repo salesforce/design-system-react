@@ -7,30 +7,32 @@ import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
 
 const Example = React.createClass({
 	displayName: 'PageHeaderExample',
-	
+
 	render () {
 		const navRight = (
-			<ButtonGroup>
-				<Button
-					label="New Lead"
-				/>
-				<Button
-					label="Import Leads"
-				/>
-				<Dropdown
-					align="right"
-					assistiveText="More Options"
-					iconName="down"
-					iconVariant="border-filled"
-					options={[
-						{ label: 'Menu Item One', value: 'A0' },
-						{ label: 'Menu Item Two', value: 'B0' },
-						{ label: 'Menu Item Three', value: 'C0' },
-						{ type: 'divider' },
-						{ label: 'Menu Item Four', value: 'D0' }
-					]}
-				/>
-			</ButtonGroup>
+			<div>
+				<ButtonGroup>
+					<Button
+						label="New Lead"
+					/>
+					<Button
+						label="Import Leads"
+					/>
+					<Dropdown
+						align="right"
+						assistiveText="More Options"
+						iconName="down"
+						iconVariant="border-filled"
+						options={[
+							{ label: 'Menu Item One', value: 'A0' },
+							{ label: 'Menu Item Two', value: 'B0' },
+							{ label: 'Menu Item Three', value: 'C0' },
+							{ type: 'divider' },
+							{ label: 'Menu Item Four', value: 'D0' }
+						]}
+					/>
+				</ButtonGroup>
+			</div>
 		);
 
 		const contentRight = (
@@ -89,20 +91,22 @@ const Example = React.createClass({
 					iconVariant="border"
 					variant="icon"
 				/>
-				<ButtonGroup>
-					<Button
-						assistiveText="Charts"
-						iconName="chart"
-						iconVariant="border"
-						variant="icon"
-					/>
-					<Button
-						assistiveText="Filters"
-						iconName="filterList"
-						iconVariant="border"
-						variant="icon"
-					/>
-				</ButtonGroup>
+				<div>
+					<ButtonGroup>
+						<Button
+							assistiveText="Charts"
+							iconName="chart"
+							iconVariant="border"
+							variant="icon"
+						/>
+						<Button
+							assistiveText="Filters"
+							iconName="filterList"
+							iconVariant="border"
+							variant="icon"
+						/>
+					</ButtonGroup>
+				</div>
 			</div>
 		);
 

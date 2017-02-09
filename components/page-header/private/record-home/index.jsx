@@ -52,11 +52,11 @@ const RecordHome = (props) => (
 					body={<div>{props.label}
 						{props.title}
 						{props.info}</div>}
+					className="slds-no-space slds-grow"
 					figure={props.icon}
-					verticalCenter
 				/>
 			</div>
-			<div className="slds-col slds-no-flex slds-grid slds-align-bottom">
+			<div className="slds-col slds-no-flex slds-grid slds-align-top">
 				{props.contentRight}
 			</div>
 		</div>
