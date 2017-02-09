@@ -215,7 +215,7 @@ exports[`test Datepicker
         </div>
       </div>
       <div
-        className="Calendar">
+        className="calendar">
         <table
           aria-labelledby="CUSTOM-ID-month"
           className="datepicker__month"
@@ -991,7 +991,7 @@ exports[`test Datepicker
         </div>
       </div>
       <div
-        className="Calendar">
+        className="calendar">
         <table
           aria-labelledby="sample-datepicker-month"
           className="datepicker__month"
@@ -1765,7 +1765,7 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
         </div>
       </div>
       <div
-        className="Calendar">
+        className="calendar">
         <table
           aria-labelledby="sample-datepicker-month"
           className="datepicker__month"
@@ -2355,7 +2355,7 @@ exports[`test Datepicker Default HTML Snapshot 1`] = `
                     <div class=\"slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click slds-picklist--fluid slds-shrink-none\"><button aria-haspopup=\"true\" class=\"slds-button slds-button--neutral slds-picklist__label\" id=\"sample-datepicker-year-picklist\" tabindex=\"0\"><span class=\"slds-truncate\">2014</span><span class=\"\"><svg aria-hidden=\"true\" class=\"slds-icon slds-icon-text-default\" viewBox=\"0 0 24 24\" name=\"down\"><path d=\"M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z\"></path></svg></span></button></div>
                 </div>
             </div>
-            <div class=\"Calendar\">
+            <div class=\"calendar\">
                 <table class=\"datepicker__month\" role=\"grid\" aria-labelledby=\"sample-datepicker-month\">
                     <thead>
                         <tr>
