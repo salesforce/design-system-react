@@ -65,7 +65,6 @@ const DemoComponent = React.createClass({
 });
 
 describe('SLDSNavigation', () => {
-
 	describe('Assistive technology', () => {
 		/* Detect if presence of accessibility features such as ARIA
 		 * roles and screen reader text is present in the DOM.
@@ -77,20 +76,20 @@ describe('SLDSNavigation', () => {
 		afterEach(unmountComponent);
 
 		it('has items described by category headers', function () {
-			const structure = { 'reports': 5, 'folders' : 3 };
+			const structure = { reports: 5, folders: 3 };
 			Object.entries(structure).forEach(([categoryId, itemCount]) => {
-				const header = this.wrapper.find('#sample-navigation-' + categoryId);
+				const header = this.wrapper.find(`#sample-navigation-${categoryId}`);
 				expect(header).to.have.length(1);
-				const ariaDescribedbyId = this.wrapper.find('.sample-navigation a[aria-describedby="sample-navigation-' + categoryId + '"]');
+				const ariaDescribedbyId = this.wrapper.find(`a[aria-describedby="sample-navigation-${categoryId}"]`);
 				expect(ariaDescribedbyId).to.have.length(itemCount);
-			})
+			});
 		});
 	});
 
 	// PROPS
 
 	describe('selectedId prop', () => {
-		const selectedId = "my_folders";
+		const selectedId = 'my_folders';
 
 		beforeEach(mountComponent(
 			<DemoComponent selectedId={selectedId} />
