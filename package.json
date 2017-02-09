@@ -347,6 +347,12 @@
       ]
     },
     {
+      "component": "navigation",
+      "status": "prototype",
+      "display-name": "Navigation",
+      "SLDS-component-path": "/components/navigation"
+    },
+    {
       "component": "notification",
       "status": "prod",
       "display-name": "Notifications",
