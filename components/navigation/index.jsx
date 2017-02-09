@@ -81,11 +81,13 @@ const Navigation = React.createClass({
 
 	getSelectedId () {
 		const categories = this.props.categories;
+		let selectedId;
 		if (this.props.selectedId) {
-			return this.props.selectedId;
+			selectedId = this.props.selectedId;
 		} else if (categories.length > 0 && categories[0].items && categories[0].items.length > 0) {
-			return categories[0].items[0].id;
+			selectedId = categories[0].items[0].id;
 		}
+		return selectedId;
 	},
 
 	render () {
@@ -109,23 +111,21 @@ const Navigation = React.createClass({
 					return [
 						<h2
 							id={categoryId}
-							key={categoryId + '-header'}
-							className='slds-text-title--caps slds-p-around--medium'
+							key={`${categoryId}-header`}
+							className="slds-text-title--caps slds-p-around--medium"
 						>
 							{category.label}
 						</h2>,
 						<ul key={categoryId}>
-							{category.items.map((item) => {
-								return (
-									<Item
-										key={item.id}
-										item={item}
-										isSelected={item.id === selectedId}
-										categoryId={categoryId}
-										onSelect={this.props.onSelect}
-									/>
-								);
-							})}
+							{category.items.map((item) => (
+								<Item
+									key={item.id}
+									item={item}
+									isSelected={item.id === selectedId}
+									categoryId={categoryId}
+									onSelect={this.props.onSelect}
+								/>
+							))}
 						</ul>
 					];
 				})}

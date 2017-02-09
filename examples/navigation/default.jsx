@@ -3,21 +3,23 @@ import React from 'react';
 import Navigation from '~/components/navigation';
 
 const sampleReportCategories = [
-	{id: 'reports', label: 'Reports', items:
-		[
-			{id: 'recent_reports', label: 'Recent'},
-			{id: 'my_reports', label: 'Created by Me'},
-			{id: 'private_reports', label: 'Private Reports'},
-			{id: 'public_reports', label: 'Public Reports'},
-			{id: 'all_reports', label: 'All Reports'}
-		]
+	{ id: 'reports',
+	label: 'Reports',
+	items: [
+			{ id: 'recent_reports', label: 'Recent' },
+			{ id: 'my_reports', label: 'Created by Me' },
+			{ id: 'private_reports', label: 'Private Reports' },
+			{ id: 'public_reports', label: 'Public Reports' },
+			{ id: 'all_reports', label: 'All Reports' }
+	]
 	},
-	{id: 'folders', label: 'Folders', items:
-		[
-			{id: 'my_folders', label: 'Created by Me'},
-			{id: 'shared_folders', label: 'Shared with Me'},
-			{id: 'all_folders', label: 'All Folders'}
-		]
+	{ id: 'folders',
+	label: 'Folders',
+	items: [
+			{ id: 'my_folders', label: 'Created by Me' },
+			{ id: 'shared_folders', label: 'Shared with Me' },
+			{ id: 'all_folders', label: 'All Folders' }
+	]
 	}
 ];
 
@@ -32,20 +34,19 @@ const Example = React.createClass({
 
 	render () {
 		return (
-			<div style={{width: '320px'}}>
+			<div style={{ width: '320px' }}>
 				<Navigation
-					id='sample-navigation'
+					id="sample-navigation"
 					categories={sampleReportCategories}
 					selectedId={this.state.selectedId}
 					onSelect={(event, data) => {
-						this.setState({selectedId: data.item.id})
+						this.setState({ selectedId: data.item.id });
 						if (this.props.action) {
 							const dataAsArray = Object.keys(data).map((key) => data[key]);
 							this.props.action('onSelect')(event, data, ...dataAsArray);
 						} else if (console) {
 							console.log('[onSelect] (event, data)', event, data);
 						}
-
 					}}
 				/>
 			</div>

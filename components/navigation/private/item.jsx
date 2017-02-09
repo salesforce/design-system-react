@@ -28,21 +28,19 @@ const	handleClick = (event, props) => {
 	}
 };
 
-const Item = (props) => {
-	return (
-		<li className={classNames({'slds-is-active': props.isSelected})}>
-			<a
-				data-id={props.item.id}
-				href={props.item.url || 'javascript:void(0);'} // eslint-disable-line no-script-url
-				className='slds-navigation-list--vertical__action slds-text-link--reset'
-				aria-describedby={props.categoryId}
-				onClick={(event) => { handleClick(event, props); }}
-			>
-				{props.item.label}
-			</a>
-		</li>
-	);
-};
+const Item = (props) => (
+	<li className={classNames({ 'slds-is-active': props.isSelected })}>
+		<a
+			data-id={props.item.id}
+			href={props.item.url || 'javascript:void(0);'} // eslint-disable-line no-script-url
+			className="slds-navigation-list--vertical__action slds-text-link--reset"
+			aria-describedby={props.categoryId}
+			onClick={(event) => { handleClick(event, props); }}
+		>
+			{props.item.label}
+		</a>
+	</li>
+);
 
 // ### Display Name
 // Always use the canonical component name as the React display name.
@@ -54,9 +52,9 @@ Item.propTypes = {
 	 * Item to be rendered.
 	 */
 	item: PropTypes.shape({
-			id: PropTypes.string.isRequired,
-			label: PropTypes.string.isRequired,
-			url: PropTypes.string
+		id: PropTypes.string.isRequired,
+		label: PropTypes.string.isRequired,
+		url: PropTypes.string
 	}),
 	/**
 	 * Whether item is selected or not.
