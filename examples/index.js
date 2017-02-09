@@ -84,6 +84,10 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!design-system-react/examples/modal/prompt.jsx'),
 		require('raw-loader!design-system-react/examples/modal/sizes.jsx')
 	],
+	navigation: [
+		require('raw-loader!design-system-react/examples/navigation/default.jsx'),
+		require('raw-loader!design-system-react/examples/navigation/shade.jsx')
+	],
 	notification: [
 		require('raw-loader!design-system-react/examples/notification/alerts.jsx'),
 		require('raw-loader!design-system-react/examples/notification/toasts.jsx'),
