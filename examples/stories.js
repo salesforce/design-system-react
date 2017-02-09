@@ -19,6 +19,7 @@ export Icon from './icon/stories';
 export Lookup from './lookup/stories';
 export MediaObject from './media-object/stories';
 export Modal from './modal/stories';
+export Navigation from './navigation/stories';
 export Notification from './notification/stories';
 export PageHeader from './page-header/stories';
 export Popover from './popover/stories';
