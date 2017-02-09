@@ -44,15 +44,15 @@ class Title extends Component {
     const classes = this._getClassNames(truncate, align, className);
 
     return (
-      <p className={classes} title={title}>
+      <h1 className={classes} title={title}>
         {title}
         {children}
-      </p>
+      </h1>
     );
   }
 
   _getClassNames(truncate, align, className) {
-    return classnames('slds-page-header__title', className, {
+    return classnames('slds-page-header__title slds-m-right--small', className, {
       'slds-truncate': truncate,
       [`slds-align-${align}`]: align,
     });

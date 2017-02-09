@@ -165,8 +165,8 @@ describe('SLDS INPUT **************************************************', () => 
 			removeInput();
 		});
 
-		it('input wrapper has class "is-required"', () => {
-			expect(wrapper.className).to.include('is-required');
+		it('input wrapper contains an <abbr> that has class "slds-required"', () => {
+			expect(findRenderedDOMComponentWithTag(component, 'abbr').className).to.include('slds-required');
 		});
 
 		it('input wrapper has class "slds-has-error"', () => {

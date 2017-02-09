@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // # Page Header Component
 
 // Implements the [Page Header design pattern](https://www.lightningdesignsystem.com/components/page-headers) in React.
-// Based on SLDS v2.1.0-rc.2
+// Based on SLDS v2.2.1
 
 // ## Dependencies
 
@@ -187,7 +187,7 @@ class PageHeader extends Component {
 					);
 			} else {
 				if (type === 'string') {
-					return <p className="slds-text-title--caps">{label}</p>;
+					return <p className="slds-text-title--caps slds-line-height--reset">{label}</p>;
 				}
 				return label;
 			}
@@ -270,7 +270,7 @@ class PageHeader extends Component {
 		}
 
 		return (
-			<div className={classes} role="banner">
+			<div className={classes}>
 				<Variant
 					label={labelElement}
 					icon={iconElement}
@@ -285,7 +285,9 @@ class PageHeader extends Component {
 	}
 
 	_getClassNames (className) {
-		return classnames('slds-page-header', className);
+		return classnames('slds-page-header', {
+			'slds-page-header--object-home': this.props.variant === 'objectHome'
+		}, className);
 	}
 }
 

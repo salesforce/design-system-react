@@ -9,8 +9,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 /* eslint-disable react/prefer-es6-class */
 
-// Implements the [Modal design pattern](https://core-204.lightningdesignsystem.com/components/modals) in React.
-// Based on SLDS v2.1.0-rc.3
+// Implements the [Modal design pattern](https://lightningdesignsystem.com/components/modals/) in React.
+// Based on SLDS v2.2.1
 
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
@@ -21,6 +21,11 @@ import ReactModal from 'react-modal';
 
 // ### isBoolean
 import isBoolean from 'lodash.isboolean';
+
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
 
 const displayName = 'Modal';
 const propTypes = {
@@ -180,9 +185,17 @@ class Modal extends React.Component {
 		}
 	}
 
+	componentWillMount() {
+		this.generatedId = shortid.generate();
+	}
+
 	componentWillUnmount () {
 		this.isUnmounting = true;
 		this.clearBodyScroll();
+	}
+
+	getId () {
+		return this.props.id || this.generatedId;
 	}
 
 	dismissModalOnClickOutside () {
@@ -259,6 +272,7 @@ class Modal extends React.Component {
 
 	headerComponent () {
 		let headerContent = this.props.header;
+		const headerEmpty = !headerContent && !this.props.title && !this.props.tagline;
 		const closeButton = (
 			<Button
 				assistiveText="Close"
@@ -267,6 +281,7 @@ class Modal extends React.Component {
 				inverse
 				className="slds-modal__close"
 				onClick={this.closeModal}
+				title="Close"
 				variant="icon"
 			/>
 		);
@@ -280,6 +295,7 @@ class Modal extends React.Component {
 							'slds-text-heading--small': this.isPrompt(),
 							'slds-text-heading--medium': !this.isPrompt()
 						})}
+						id={this.getId()}
 					>{this.props.title}</h2>
 					{this.props.tagline ? <p className="slds-m-top--x-small">{this.props.tagline}</p> : null}
 				</div>
@@ -288,15 +304,15 @@ class Modal extends React.Component {
 
 		return (
 			<div
-				className={classNames({
-					'slds-modal__header': headerContent,
+				className={classNames('slds-modal__header', {
+					'slds-modal__header--empty': headerEmpty,
 					[`slds-theme--${this.props.prompt}`]: this.isPrompt(),
 					'slds-theme--alert-texture': this.isPrompt()
 				},
 				this.props.headerClassName)}
 				onClick={this.handleModalClick}
 			>
-				{this.isPrompt() === true ? null : closeButton}
+				{this.props.dismissible ? closeButton : null}
 				{headerContent}
 			</div>
 		);
@@ -311,31 +327,28 @@ class Modal extends React.Component {
 			...contentStyleFromProps
 		};
 		return (
-			<div>
-				<div
-					aria-hidden="false"
-					role="dialog"
-					className={classNames({
-						'slds-modal': true,
-						'slds-fade-in-open': this.state.revealed,
-						'slds-modal--large': this.props.size === 'large',
-						'slds-modal--prompt': this.isPrompt()
-					})}
-					onClick={this.dismissModalOnClickOutside}
-				>
-					<div className={classNames('slds-modal__container', this.props.containerClassName)} style={modalStyle}>
-						{this.headerComponent()}
-						<div
-							className={classNames('slds-modal__content', this.props.contentClassName)}
-							style={contentStyle}
-							onClick={this.handleModalClick}
-						>
-							{this.props.children}
-						</div>
-					{this.footerComponent()}
+			<div
+				aria-labelledby={this.getId()}
+				className={classNames({
+					'slds-modal': true,
+					'slds-fade-in-open': this.state.revealed,
+					'slds-modal--large': this.props.size === 'large',
+					'slds-modal--prompt': this.isPrompt()
+				})}
+				onClick={this.dismissModalOnClickOutside}
+				role="dialog"
+			>
+				<div className={classNames('slds-modal__container', this.props.containerClassName)} style={modalStyle}>
+					{this.headerComponent()}
+					<div
+						className={classNames('slds-modal__content', this.props.contentClassName)}
+						style={contentStyle}
+						onClick={this.handleModalClick}
+					>
+						{this.props.children}
 					</div>
+					{this.footerComponent()}
 				</div>
-				<div className="slds-backdrop slds-backdrop--open"></div>
 			</div>
 		);
 	}
@@ -364,12 +377,14 @@ class Modal extends React.Component {
 
 		return (
 			<ReactModal
+				contentLabel="Modal"
 				isOpen={this.props.isOpen}
 				onRequestClose={this.closeModal}
 				style={customStyles}
 				portalClassName={classNames('ReactModalPortal', this.props.portalClassName)}
 			>
 				{this.getModal()}
+				<div className="slds-backdrop slds-backdrop--open"></div>
 			</ReactModal>
 		);
 	}
