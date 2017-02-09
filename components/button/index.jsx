@@ -9,6 +9,9 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+// Implements the [Button design pattern](https://lightningdesignsystem.com/components/buttons/) in React.
+// Based on SLDS v2.2.1
+
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import ButtonIcon from '../icon/button-icon';
@@ -114,7 +117,7 @@ const Button = React.createClass({
 		 * HTML title attribute
 		 */
 		title: PropTypes.string,
-		variant: React.PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon'])
+		variant: React.PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'success', 'icon'])
 	},
 
 	getDefaultProps () {
@@ -164,8 +167,7 @@ const Button = React.createClass({
 			[`slds-button--${this.props.variant}`]: showButtonVariant,
 			'slds-button--inverse': plainInverseBtn,
 			'slds-button--icon-inverse': plainInverseIcon || moreInverseIcon,
-			// Bug in SLDS css where having a small icon container (with border) and inverse, the icon does not vertically align. Manual fix here until fixed in css.
-			'slds-button--icon-border-inverse slds-align-middle slds-line-height--reset': borderInverseIcon,
+			'slds-button--icon-border-inverse': borderInverseIcon,
 			[`slds-button--icon-${iconVariant}`]: iconVariant && !borderInverseIcon,
 			'slds-global-header__button--icon': iconGlobalHeader,
 			// If icon has a container, then we apply the icon size to the container not the svg. Icon size is medium by default, so we don't need to explicitly render it here.
@@ -222,6 +224,7 @@ const Button = React.createClass({
 					}
 				}}
 				tabIndex={this.props.tabIndex}
+				title={this.props.title}
 			>
 				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
 
