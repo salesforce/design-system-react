@@ -52,7 +52,7 @@ const Navigation = React.createClass({
 		 */
 		selectedId: PropTypes.string,
 		/**
-		 * Triggered when the selection changes. It receives an event and an item object in the shape: {event, {item: [object] }}. _Tested with Mocha framework._
+		 * Triggered when the selection changes. It receives an event and an item object in the shape: `event, {item: [object] }`. _Tested with Mocha framework._
 		 */
 		onSelect: PropTypes.func,
 		/**
