@@ -42,6 +42,35 @@ const Example = React.createClass({
 					contact: 'bob@acme.com'
 				},
 				{
+					id: '8IKZHZZV80',
+					opportunityName: 'Acme - 1,200 Widgets',
+					accountName: 'Acme',
+					closeDate: '4/10/15',
+					stage: 'Value Proposition',
+					confidence: '30%',
+					amount: '$25,000,000',
+					contact: 'jrogers@acme.com'
+				}, {
+					id: '8IKZHZZV81',
+					opportunityName: 'Acme - 300 Widgets',
+					accountName: 'Acme',
+					closeDate: '1/30/15',
+					stage: 'Prospecting',
+					confidence: '60%',
+					amount: '$6,000,000',
+					contact: 'betsy@acme.com'
+				},
+				{
+					id: '8IKZHZZV82',
+					opportunityName: 'Acme - 900 Widgets',
+					accountName: 'Acme',
+					closeDate: '1/30/16',
+					stage: 'Value Proposition',
+					confidence: '30%',
+					amount: '$6,000,000',
+					contact: 'bjane@acme.com'
+				},
+				{
 					id: '8IKZHZZV81',
 					opportunityName: 'salesforce.com - 1,000 Widgets',
 					accountName: 'salesforce.com',
@@ -76,39 +105,47 @@ const Example = React.createClass({
 					onSort={this.handleSort}
 					selection={this.state.selection}
 					selectRows
+					fixedHeader
+					height='10rem'
 				>
 					<DataTableColumn
 						label="Name"
 						primaryColumn
 						property="opportunityName"
 						sortable
-						width="5rem"
+						width="10rem"
 					>
 						<CustomDataTableCell />
 					</DataTableColumn>
 					<DataTableColumn
 						label="Account Name"
 						property="accountName"
+						width="5rem"
 					/>
 					<DataTableColumn
 						label="Close Date"
 						property="closeDate"
+						width="5rem"
 					/>
 					<DataTableColumn
 						label="Stage"
 						property="stage"
+						width="10rem"
 					/>
 					<DataTableColumn
 						label="Confidence"
 						property="confidence"
+						width="10rem"
 					/>
 					<DataTableColumn
 						label="Amount"
 						property="amount"
+						width="10rem"
 					/>
 					<DataTableColumn
 						label="Contact"
 						property="contact"
+						width="10rem"
 					>
 						<CustomDataTableCell />
 					</DataTableColumn>

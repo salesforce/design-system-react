@@ -118,7 +118,7 @@ const Example = React.createClass({
 				</DataTable>
 
 				<h3 className="slds-text-heading--medium slds-m-vertical--medium">Striped</h3>
-				
+
 				<DataTable
 					fluidLayout
 					items={this.state.items}
@@ -127,9 +127,9 @@ const Example = React.createClass({
 				>
 					{columns}
 				</DataTable>
-				
+
 				<h3 className="slds-text-heading--medium slds-m-vertical--medium">No Row Hover</h3>
-				
+
 				<DataTable
 					fluidLayout
 					items={this.state.items}
@@ -140,7 +140,7 @@ const Example = React.createClass({
 				</DataTable>
 
 				<h3 className="slds-text-heading--medium slds-m-vertical--medium">Column Bordered</h3>
-				
+
 				<DataTable
 					columnBordered
 					fluidLayout
@@ -151,7 +151,7 @@ const Example = React.createClass({
 				</DataTable>
 
 				<h3 className="slds-text-heading--medium slds-m-vertical--medium">Compact</h3>
-				
+
 				<DataTable
 					compact
 					fluidLayout

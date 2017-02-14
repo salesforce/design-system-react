@@ -52,7 +52,7 @@ const DataTableColumn = React.createClass({
 		/**
 		 * The column label.
 		 */
-		label: PropTypes.string,
+		label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 		/**
 		 * The primary column for a row. This is almost always the first column.
 		 */

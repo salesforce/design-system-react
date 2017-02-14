@@ -130,12 +130,20 @@ const DataTable = React.createClass({
 		 */
 		id: PropTypes.string,
 		/**
+		 * Make the header fixed when scrolling. When this is used, you must explicitly pass widths into the columns, and it is recommended that you set a height for the table.
+		 */
+		fixedHeader: PropTypes.bool,
+		/**
 		 * Use this if you are creating an advanced table (selectable, sortable, or resizable rows)
 		 */
 		fixedLayout: PropTypes.bool,
+	 	/**
+	  	* The height of the table. This is recommended when using a fixedHeader.
+	  	*/
+		height: PropTypes.string,
 		/**
- 		 * The collection of items to render in the table.
- 		 */
+		 * The collection of items to render in the table.
+		 */
 		items: PropTypes.array.isRequired,
 		/**
 		 * A variant which removes hover style on rows
@@ -192,6 +200,12 @@ const DataTable = React.createClass({
 		};
 	},
 
+	getInitialState () {
+		return {
+			scrollLeft: 0
+		}
+	},
+
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(DATA_TABLE, this.props);
@@ -237,7 +251,7 @@ const DataTable = React.createClass({
 		});
 
 		return (
-			<table
+			<table style={this.props.fixedHeader ? {height:this.props.height || '6rem'} : null}
 				className={classNames('slds-table', {
 					'slds-table--compact': this.props.compact,
 					'slds-table--fixed-layout': this.props.fixedLayout,
@@ -247,7 +261,10 @@ const DataTable = React.createClass({
 					'slds-max-medium-table--stacked-horizontalviewports': this.props.stackedHorizontal,
 					'slds-table--striped': this.props.striped,
 					'slds-table--col-bordered': this.props.columnBordered,
-					'slds-no-row-hover': this.props.noRowHover
+					'slds-no-row-hover': this.props.noRowHover,
+					'slds-scrollable': this.props.fixedHeader,
+					'slds-grid': this.props.fixedHeader,
+					'slds-grid--vertical': this.props.fixedHeader
 				}, this.props.className)}
 				id={this.props.id}
 				role={this.props.fixedLayout ? 'grid' : null}
@@ -265,9 +282,10 @@ const DataTable = React.createClass({
 					id={`${this.props.id}_${DATA_TABLE_HEAD}`}
 					onToggleAll={this.handleToggleAll}
 					onSort={this.props.onSort}
+					scrollLeft={this.state.scrollLeft}
 					showRowActions={!!RowActions}
 				/>
-				<tbody>
+			<tbody onScroll={this.handleScroll} className='slds-scrollable'>
 					{numRows > 0
 						? this.props.items.map((item, index) => (
 							<DataTableRow
@@ -310,6 +328,13 @@ const DataTable = React.createClass({
 			}
 
 			this.props.onChange(selection, e);
+		}
+	},
+
+	handleScroll (e) {
+		const scrollLeft = e.target.scrollLeft;
+		if (this.state.scrollLeft !== scrollLeft) { // if scrolling vertically, ignore
+			this.setState({scrollLeft: scrollLeft})
 		}
 	}
 });

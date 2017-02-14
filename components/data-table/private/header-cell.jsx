@@ -69,7 +69,11 @@ const DataTableHeaderCell = React.createClass({
 		/**
 		 * The current sort direction.
 		 */
-		sortDirection: PropTypes.oneOf(['desc', 'asc'])
+		sortDirection: PropTypes.oneOf(['desc', 'asc']),
+		/**
+		 * Width of column. This is required for tables with a fixed header. Please provide units. (`rems` are recommended)
+		 */
+		width: PropTypes.string
 	},
 
 	getInitialState () {
@@ -88,9 +92,11 @@ const DataTableHeaderCell = React.createClass({
 		} = this.props;
 
 		const sortDirection = this.props.sortDirection || this.state.sortDirection;
+		const ariaSort = !!sortDirection ? (sortDirection === 'desc' ? 'descending' : 'ascending') : null;
 
 		return (
-			<th
+			<th style={this.props.width ? { minWidth:this.props.width, maxWidth:this.props.width } : null}
+				aria-sort={ariaSort}
 				focusable={sortable ? true : null}
 				scope="col"
 				key={property}
