@@ -20,7 +20,13 @@ if (process.env.NODE_ENV !== 'production') {
 	oneOfComponent = function (control, props, propName, allowedComponents, comment) {
 		const additionalComment = comment ? ` ${comment}` : '';
 
-		const componentType = props[propName].type.displayName;
+		let componentType;
+
+		if (typeof props[propName].type === 'string') {
+			componentType = props[propName].type;
+		} else {
+			componentType = props[propName].type.displayName;
+		}
 
 		const allowedComponentFound = allowedComponents.indexOf(componentType) > -1;
 

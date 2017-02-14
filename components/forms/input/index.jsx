@@ -11,7 +11,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // # Input Component
 
-// Implements the [Input design pattern](https://www.lightningdesignsystem.com/components/forms/#input) in React.
+// Implements the [Input design pattern](https://lightningdesignsystem.com/components/forms/#flavor-input) in React. Does not yet implement [fixed text](https://lightningdesignsystem.com/components/forms/#flavor-input-input-fixed-text).
+// Based on SLDS v2.2.1
+//
 
 // ### React
 // React is an external dependency of the project.
@@ -56,6 +58,7 @@ const Input = React.createClass({
 		'aria-controls': PropTypes.string,
 		'aria-describedby': PropTypes.string,
 		'aria-expanded': PropTypes.bool,
+		'aria-haspopup': PropTypes.bool,
 		'aria-labeledby': PropTypes.string,
 		/**
 		 * An HTML ID that is shared with ARIA-supported devices with the
@@ -99,6 +102,10 @@ const Input = React.createClass({
 		 * Every input must have a unique ID in order to support keyboard navigation and ARIA support.
 		 */
 		id: PropTypes.string,
+		/**
+		 * This callback exposes the input reference / DOM node to parent components. `<Parent inputRef={(inputComponent) => this.input = inputComponent} />
+		 */
+		inputRef: PropTypes.func,
 		/**
 		 * This label appears above the input.
 		 */
@@ -174,10 +181,17 @@ const Input = React.createClass({
 		checkProps(FORMS_INPUT, this.props);
 
 		this.generatedId = shortid.generate();
+		if(this.props.errorText) {
+			this.generatedErrorId = shortid.generate();
+		}
 	},
 
 	getId () {
 		return this.props.id || this.generatedId;
+	},
+
+	getErrorId () {
+		return this.props['aria-describedby'] || this.generatedErrorId;
 	},
 
 	// This is convuluted to maintain backwards compatibility. Please remove deprecatedProps on next breaking change.
@@ -253,7 +267,6 @@ const Input = React.createClass({
 		return (
 			<div
 				className={classNames('slds-form-element', {
-					'is-required': required,
 					'slds-has-error': errorText
 				},
 				className)}
@@ -285,7 +298,7 @@ const Input = React.createClass({
 						aria-activedescendant={this.props['aria-activedescendant']}
 						aria-autocomplete={this.props['aria-autocomplete']}
 						aria-controls={this.props['aria-controls']}
-						aria-describedby={this.props['aria-describedby']}
+						aria-describedby={this.getErrorId()}
 						aria-expanded={this.props['aria-expanded']}
 						aria-owns={this.props['aria-owns']}
 						aria-required={this.props['aria-required']}
@@ -321,7 +334,7 @@ const Input = React.createClass({
 						{inlineEditTrigger}
 					</span>}
 				</div>
-				{errorText && <div className="slds-form-element__help">{errorText}</div>}
+				{errorText && <div id={this.getErrorId()} className="slds-form-element__help">{errorText}</div>}
 				{children}
 			</div>
 		);

@@ -108,6 +108,7 @@ describe('Global Navigation Bar: ', () => {
 						onClick={linkClicked('Home link clicked')}
 					/>
 					<GlobalNavigationBarDropdown
+						assistiveText="Open Menu"
 						id="primaryDropdown"
 						label="Global Navigation Menu Item 1"
 						onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
@@ -121,6 +122,7 @@ describe('Global Navigation Bar: ', () => {
 					/>
 					<GlobalNavigationBarDropdown
 						active
+						assistiveText="Open Menu"
 						id="primaryDropdownActive"
 						label="Global Navigation Menu Item 3"
 						onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}

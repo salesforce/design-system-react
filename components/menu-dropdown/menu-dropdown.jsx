@@ -49,7 +49,7 @@ import checkProps from './check-props';
 // ### Traits
 
 // #### KeyboardNavigable
-import KeyboardNavigable from '../../utilities/keyboard-navigable';
+import KeyboardNavigable from '../../utilities/keyboard-navigable-menu';
 
 import EventUtil from '../../utilities/EventUtil';
 import KEYS from '../../utilities/KEYS';
@@ -80,8 +80,13 @@ const DropdownNubbinPositions = [
 /**
  * The MenuDropdown component is a variant of the Lightning Design System Menu component. This component
  * may require a polyfill such as [classList](https://github.com/yola/classlist-polyfill) due to
- * [react-onclickoutside](https://github.com/Pomax/react-onclickoutside) if Internet Explorer 11 
+ * [react-onclickoutside](https://github.com/Pomax/react-onclickoutside) if Internet Explorer 11
  * support is needed.
+ *
+ * This component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.
+ *
+ * This component may use a portalMount (a disconnected React subtree mount) within an absolutely positioned DOM node created with [Drop](http://github.hubspot.com/drop/).
+
  */
 const MenuDropdown = React.createClass({
 	// ### Display Name
@@ -346,9 +351,9 @@ const MenuDropdown = React.createClass({
 	},
 
 	componentWillUnmount () {
-        if (currentOpenDropdown === this) {
-            currentOpenDropdown = undefined;
-        }
+		if (currentOpenDropdown === this) {
+			currentOpenDropdown = undefined;
+		}
 		this.isUnmounting = true;
 		this.renderOverlay(false);
 	},
@@ -601,7 +606,7 @@ const MenuDropdown = React.createClass({
 	renderDefaultMenuContent (customListProps) {
 		return (
 			<List
-				key={`${this.props.id}-dropdown-list`}
+				key={`${this.getId()}-dropdown-list`}
 				checkmark={this.props.checkmark}
 				getListItemId={this.getListItemId}
 				itemRefs={this.saveRefToListItem}
@@ -714,7 +719,8 @@ const MenuDropdown = React.createClass({
 					targetElement={this.triggerContainer}
 				>
 					{this.renderMenuContent(customContent)}
-				</Dialog> : null		);
+				</Dialog> : null
+			);
 	},
 
 	renderOverlay (isOpen) {
@@ -774,7 +780,7 @@ const MenuDropdown = React.createClass({
 		*/
 		return (
 			<CurrentTrigger
-				ariaHaspopup={true}
+				aria-haspopup
 				assistiveText={this.props.assistiveText}
 				className={classNames(outsideClickIgnoreClass, this.props.buttonClassName)}
 				disabled={this.props.disabled}

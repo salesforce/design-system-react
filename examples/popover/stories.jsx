@@ -1,21 +1,28 @@
 /* eslint-disable react/display-name */
+/* eslint-disable no-script-url */
 
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf, action } from '@kadira/storybook';
 
-import { POPOVER_TOOLTIP } from '../../utilities/constants';
-import PopoverTooltip from '../../components/popover-tooltip';
+import { POPOVER } from '../../utilities/constants';
+import Header from './header';
+import AlternativeHeader from './alternative-header';
+import ControlledWithFooter from './controlled-with-footer';
 
-import Icon from '../../components/icon';
+import Popover from '../../components/popover';
 import Button from '../../components/button';
 
-const getPopoverTooltip = (props) => (
-	<PopoverTooltip {...props}>
-		<Button label="Trigger Tooltip" />
-	</PopoverTooltip>
+const getPopover = (props) => (
+	<div>
+		<Popover {...props}>
+			<Button label="Trigger Popover" />
+			<br />
+			<a href="#"> Focusable Not Trigger Popover</a>
+		</Popover>
+	</div>
 );
 
-const getPopoverTooltipAlign = (props) => {
+const getPopoverNubbins = (props) => {
 /* eslint-disable react/prop-types */
 	const children = [];
 
@@ -24,22 +31,26 @@ const getPopoverTooltipAlign = (props) => {
 		'top left',
 		'top right',
 		'right',
-		'right top',
-		'right bottom',
 		'bottom',
 		'bottom left',
 		'bottom right',
-		'left',
-		'left top',
-		'left bottom'
+		'left'
 	];
 
 	align.forEach((value) => {
 		children.push(
-			<div key={value} style={{ margin: '100px auto' }}>
-				<PopoverTooltip {...props} align={value}>
+			<div key={value} style={{ margin: '150px auto' }}>
+				<Popover
+					align={value}
+					assistiveText="This is a popover."
+					body="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+					hasStaticAlignment
+					heading="My Popover"
+					isOpen
+					{...props}
+				>
 					{props.trigger}
-				</PopoverTooltip>
+				</Popover>
 			</div>
 		);
 	});
@@ -51,46 +62,48 @@ const getPopoverTooltipAlign = (props) => {
 	);
 };
 
-storiesOf(POPOVER_TOOLTIP, module)
+const bodyContent = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+
+const popoverBackgroundColor = 'rgb(255, 80, 121)';
+const containerBackgroundColor = 'rgb(255, 127, 80)';
+
+storiesOf(POPOVER, module)
 	.addDecorator(getStory => <div
 		className="slds-p-around--medium slds-m-horizontal--x-large"
 		style={{
-			margin: '100px auto',
+			margin: '300px auto',
 			textAlign: 'center',
 			width: '500px' }}
 	>{getStory()}</div>)
-	.add('Base', () => getPopoverTooltip({
-		align: 'bottom',
-		id: 'myPopoverId',
-		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie'
+	.add('Header', () => <Header />)
+	.add('Controlled w/ Footer', () => <ControlledWithFooter log={action} />)
+	.add('AlternativeHeader', () => <AlternativeHeader />)
+	.add('Alignment (Button)', () => getPopoverNubbins({
+		trigger: (<Button label="Trigger Popover" tabIndex="0" />)
 	}))
-	.add('Open', () => getPopoverTooltip({
-		align: 'bottom',
-		isOpen: true,
-		id: 'myPopoverId',
-		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie'
-	}))
-	.add('Alignment (Button)', () => getPopoverTooltipAlign({
+	.add('Alignment (ButtonIcon)', () => getPopoverNubbins({
+		body: bodyContent,
+		hasStaticAlignment: true,
+		heading: 'My Popover',
 		id: 'myPopoverId',
 		isOpen: true,
-		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
-		trigger: (<Button label="Trigger Tooltip" />)
-	}))
-	.add('Alignment (span)', () => getPopoverTooltipAlign({
-		id: 'myPopoverId',
-		isOpen: true,
-		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
-		trigger: (<span tabIndex="0" key="trigger">Trigger Tooltip</span>)
-	}))
-	.add('Alignment (icon)', () => getPopoverTooltipAlign({
-		id: 'myPopoverId',
-		isOpen: true,
-		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
-		trigger: (<Icon
+		trigger: (<Button
 			assistiveText="Case Icon"
-			category="standard"
-			name="case"
-			size="small"
-			tabIndex="0"
+			iconCategory="utility"
+			iconName="filter"
+			iconSize="small"
+			iconVariant="border"
+			variant="icon"
 		/>)
+	}))
+	.add('Styling (dev-only)', () => getPopover({
+		body: bodyContent,
+		heading: 'My Popover',
+		id: 'myPopoverId',
+		isOpen: true,
+		className: 'sample-classname',
+		closeButtonAssistiveText: 'Shut it now!',
+		containerClassName: 'sample-container-classname',
+		containerStyle: { background: containerBackgroundColor },
+		style: { background: popoverBackgroundColor }
 	}));

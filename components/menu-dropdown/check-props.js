@@ -34,8 +34,7 @@ if (process.env.NODE_ENV !== 'production') {
 			hasChildrenWithoutDisplayNameOf(
 				COMPONENT,
 				props.children,
-				MENU_DROPDOWN_TRIGGER,
-				'Please add a Dropdown options prop or additional children.'
+				MENU_DROPDOWN_TRIGGER
 			);
 		}
 	};

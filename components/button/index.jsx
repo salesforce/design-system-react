@@ -9,143 +9,140 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+// Implements the [Button design pattern](https://lightningdesignsystem.com/components/buttons/) in React.
+// Based on SLDS v2.2.1
+
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import ButtonIcon from '../icon/button-icon';
-import TooltipTrigger from '../popover-tooltip/trigger';
-import omit from 'lodash.omit';
+import PopoverTooltip from '../popover-tooltip';
 
 import { BUTTON } from '../../utilities/constants';
-
-const displayName = BUTTON;
-const propTypes = {
-	/**
-	 * Used if the Button triggers a tooltip. The value should match the `id` of the element with `role="tooltip"`.
-	 */
-	'aria-describedby': PropTypes.string,
-	/**
-	 * Used if the Button triggers a menu or popup. Bool indicates if the menu or popup is open or closed.
-	 */
-	'aria-expanded': PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-	/**
-	 * True if Button triggers a menu or popup to open/close.
-	 */
-	'aria-haspopup': PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-	/**
-	 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
-	 * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
-	 */
-	assistiveText: PropTypes.string,
-	/**
-	 * CSS classes to be added to button.
-	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-	/**
-	 * Disables the button and adds disabled styling.
-	 */
-	disabled: PropTypes.bool,
-	/**
-	 * Associates an icon button with another element on the page by changes the color of the SVG. Please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#hint">Lightning Design System Buttons > Hint</a>.
-	 */
-	hint: PropTypes.bool,
-	/**
-	 * Name of the icon category. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon categories.
-	 */
-	iconCategory: PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
-	/**
-	 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
-	 */
-	iconName: PropTypes.string,
-	/**
-	 * If omitted, icon position is centered.
-	 */
-	iconPosition: PropTypes.oneOf(['left', 'right']),
-	/**
-	 * Determines the size of the icon.
-	 */
-	iconSize: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
-	/**
-	 * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
-	 */
-	iconVariant: PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'more', 'global-header']),
-	/**
-	 * Id string applied to button node.
-	 */
-	id: PropTypes.string,
-	/**
-		* If true, button/icon is white. Meant for buttons or utility icons on dark backgrounds.
-	 */
-	inverse: PropTypes.bool,
-	/**
-	 * Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText</code> prop.
-	 */
-	label: PropTypes.string,
-	onBlur: PropTypes.func,
-	/**
-	 * Triggered when the button is clicked.
-	 */
-	onClick: PropTypes.func,
-	onFocus: PropTypes.func,
-	onKeyDown: PropTypes.func,
-	onKeyPress: PropTypes.func,
-	onKeyUp: PropTypes.func,
-	onMouseDown: PropTypes.func,
-	onMouseEnter: PropTypes.func,
-	onMouseLeave: PropTypes.func,
-	/**
-	 * If true, button scales to 100% width on small form factors.
-	 */
-	responsive: PropTypes.bool,
-	/**
-	 * Write <code>"-1"</code> if you don't want the user to tab to the button.
-	 */
-	tabIndex: PropTypes.string,
-	/**
-	 * It creates a tooltip with the content of the `node` provided.
-	 */
-	tooltip: PropTypes.node,
-	/**
-	 * HTML title attribute
-	 */
-	title: PropTypes.string,
-	variant: React.PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon'])
-};
-const defaultProps = {
-	disabled: false,
-	hint: false,
-	iconSize: 'medium',
-	iconCategory: 'utility',
-	responsive: false,
-	variant: 'neutral'
-};
 
 /**
  * The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.
  * Either a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.
  * For buttons that maintain selected/unselected states, use the <a href="#/button-stateful">ButtonStateful</a> component.
  */
-class Button extends TooltipTrigger {
+const Button = React.createClass({
+	displayName: BUTTON,
 
-	constructor (props) {
-		super(props);
-		this.state = { active: false };
-		this.handleClick = this.handleClick.bind(this);
-	}
+	propTypes: {
+		/**
+		 * Used if the Button triggers a tooltip. The value should match the `id` of the element with `role="tooltip"`.
+		 */
+		'aria-describedby': PropTypes.string,
+		/**
+		 * Used if the Button triggers a menu or popup. Bool indicates if the menu or popup is open or closed.
+		 */
+		'aria-expanded': PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+		/**
+		 * True if Button triggers a menu or popup to open/close.
+		 */
+		'aria-haspopup': PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+		/**
+		 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+		 * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
+		 */
+		assistiveText: PropTypes.string,
+		/**
+		 * Callback that passes in the DOM reference of the `<button>` DOM node within this component. Primary use is to allow `focus` to be called. You should still test if the node exists, since rendering is asynchronous. `buttonRef={(component) => { if(component) console.log(component); }}`
+		 */
+		buttonRef: PropTypes.func,
+		/**
+		 * CSS classes to be added to button.
+		 */
+		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		/**
+		 * Disables the button and adds disabled styling.
+		 */
+		disabled: PropTypes.bool,
+		/**
+		 * Associates an icon button with another element on the page by changes the color of the SVG. Please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#hint">Lightning Design System Buttons > Hint</a>.
+		 */
+		hint: PropTypes.bool,
+		/**
+		 * Name of the icon category. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon categories.
+		 */
+		iconCategory: PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
+		/**
+		 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
+		 */
+		iconName: PropTypes.string,
+		/**
+		 * If omitted, icon position is centered.
+		 */
+		iconPosition: PropTypes.oneOf(['left', 'right']),
+		/**
+		 * Determines the size of the icon.
+		 */
+		iconSize: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
+		/**
+		 * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
+		 */
+		iconVariant: PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'more', 'global-header']),
+		/**
+		 * Id string applied to button node.
+		 */
+		id: PropTypes.string,
+		/**
+			* If true, button/icon is white. Meant for buttons or utility icons on dark backgrounds.
+		 */
+		inverse: PropTypes.bool,
+		/**
+		 * Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText</code> prop.
+		 */
+		label: PropTypes.string,
+		onBlur: PropTypes.func,
+		/**
+		 * Triggered when the button is clicked.
+		 */
+		onClick: PropTypes.func,
+		onFocus: PropTypes.func,
+		onKeyDown: PropTypes.func,
+		onKeyPress: PropTypes.func,
+		onKeyUp: PropTypes.func,
+		onMouseDown: PropTypes.func,
+		onMouseEnter: PropTypes.func,
+		onMouseLeave: PropTypes.func,
+		/**
+		 * If true, button scales to 100% width on small form factors.
+		 */
+		responsive: PropTypes.bool,
+		/**
+		 * Write <code>"-1"</code> if you don't want the user to tab to the button.
+		 */
+		tabIndex: PropTypes.string,
+		/**
+		 * HTML title attribute
+		 */
+		title: PropTypes.string,
+		variant: React.PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'success', 'icon'])
+	},
 
-	componentDidMount () {
-		super.componentDidMount();
-	}
+	getDefaultProps () {
+		return {
+			disabled: false,
+			hint: false,
+			iconSize: 'medium',
+			iconCategory: 'utility',
+			responsive: false,
+			variant: 'neutral'
+		};
+	},
 
-	componentWillUnmount () {
-		super.componentWillUnmount();
-	}
+	getInitialState () {
+		return {
+			active: false
+		};
+	},
 
 	handleClick (event) {
-		// Note that you can't read properties directly from the Synthetic event but you can read them by calling the specific property (ie. event.target, event.type, etc).
-		// http://stackoverflow.com/questions/22123055/react-keyboard-event-handlers-all-null
-		if (this.props.onClick) this.props.onClick(event);
+		if (this.props.onClick) {
+			this.props.onClick(event);
+		}
 		this.setState({ active: !this.state.active });
-	}
+	},
 
 	getClassName () {
 		const isIcon = this.props.variant === 'icon';
@@ -170,20 +167,19 @@ class Button extends TooltipTrigger {
 			[`slds-button--${this.props.variant}`]: showButtonVariant,
 			'slds-button--inverse': plainInverseBtn,
 			'slds-button--icon-inverse': plainInverseIcon || moreInverseIcon,
-			// Bug in SLDS css where having a small icon container (with border) and inverse, the icon does not vertically align. Manual fix here until fixed in css.
-			'slds-button--icon-border-inverse slds-align-middle slds-line-height--reset': borderInverseIcon,
+			'slds-button--icon-border-inverse': borderInverseIcon,
 			[`slds-button--icon-${iconVariant}`]: iconVariant && !borderInverseIcon,
 			'slds-global-header__button--icon': iconGlobalHeader,
 			// If icon has a container, then we apply the icon size to the container not the svg. Icon size is medium by default, so we don't need to explicitly render it here.
 			[`slds-button--icon-${this.props.iconSize}`]: iconVariant && this.props.iconSize !== 'medium'
 		}, this.props.className);
-	}
+	},
 
 	renderIcon (name) {
 		const iconSize = this.props.iconSize === '' || this.props.iconVariant ? null : this.props.iconSize;
 		return (
 			<ButtonIcon
-				category={this.props.category}
+				category={this.props.iconCategory}
 				className={classNames({
 					'slds-global-header__icon': this.props.iconVariant === 'global-header'
 				},
@@ -194,7 +190,7 @@ class Button extends TooltipTrigger {
 				position={this.props.iconPosition}
 				size={iconSize}
 			/>);
-	}
+	},
 
 	renderLabel () {
 		const iconOnly = this.props.variant === 'icon';
@@ -202,63 +198,61 @@ class Button extends TooltipTrigger {
 		return iconOnly && this.props.assistiveText
 			? <span className="slds-assistive-text">{this.props.assistiveText}</span>
 			: <span>{this.props.label}</span>;
-	}
+	},
 
-	render () {
-		const {
-			children,
-			disabled,
-			iconName,
-			iconPosition,
-			iconVariant,
-			id,
-			onBlur,
-			onFocus,
-			onKeyDown,
-			onKeyPress,
-			onKeyUp,
-			onMouseDown,
-			onMouseEnter,
-			onMouseLeave,
-			tabIndex
-		} = this.props;
-
+	renderButton () {
 		return (
 			<button
 				aria-describedby={this.props['aria-describedby']}
 				aria-expanded={this.props['aria-expanded']}
 				aria-haspopup={this.props['aria-haspopup']}
 				className={this.getClassName()}
-				disabled={disabled}
-				id={id}
-				onBlur={onBlur}
+				disabled={this.props.disabled}
+				id={this.props.id}
+				onBlur={this.props.onBlur}
 				onClick={this.handleClick}
-				onFocus={onFocus}
-				onKeyDown={onKeyDown}
-				onKeyPress={onKeyPress}
-				onKeyUp={onKeyUp}
-				onMouseDown={onMouseDown}
-				onMouseEnter={onMouseEnter}
-				onMouseLeave={onMouseLeave}
-				tabIndex={tabIndex}
+				onFocus={this.props.onFocus}
+				onKeyDown={this.props.onKeyDown}
+				onKeyPress={this.props.onKeyPress}
+				onKeyUp={this.props.onKeyUp}
+				onMouseDown={this.props.onMouseDown}
+				onMouseEnter={this.props.onMouseEnter}
+				onMouseLeave={this.props.onMouseLeave}
+				ref={(component) => {
+					if (this.props.buttonRef) {
+						this.props.buttonRef(component);
+					}
+				}}
+				tabIndex={this.props.tabIndex}
+				title={this.props.title}
 			>
-				{iconPosition === 'right' ? this.renderLabel() : null}
+				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
 
-				{iconName ? this.renderIcon(this.props.iconName) : null}
-				{iconVariant === 'more'
+				{this.props.iconName ? this.renderIcon(this.props.iconName) : null}
+				{this.props.iconVariant === 'more'
 				? <ButtonIcon	category="utility" name="down" size="x-small" />
 				: null}
 
-				{(iconPosition === 'left' || !iconPosition) ? this.renderLabel() : null}
-				{children}
-				{this.getTooltip()}
+				{(this.props.iconPosition === 'left' || !this.props.iconPosition) ? this.renderLabel() : null}
+				{this.props.children}
 			</button>
 		);
+	},
+
+	// This is present for backwards compatibility and should be removed at a future breaking change release. Please wrap a `Button` in a `PopoverTooltip` to achieve the same result. There will be an extra trigger `div` wrapping the `Button` though.
+	renderTooltip () {
+		return (
+			<PopoverTooltip
+				content={this.props.tooltip}
+			>
+				{this.renderButton}
+			</PopoverTooltip>
+		);
+	},
+
+	render () {
+		return this.props.tooltip ? this.renderTooltip() : this.renderButton();
 	}
-}
+});
 
-Button.displayName = displayName;
-Button.propTypes = propTypes;
-Button.defaultProps = defaultProps;
-
-module.exports = Button;
+export default Button;

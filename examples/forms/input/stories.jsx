@@ -91,6 +91,7 @@ storiesOf(FORMS_INPUT, module)
 	))
 	.add('Required Input in Error State', () => (
 		<Input
+			aria-describedby="error-1"
 			name="required-input-error"
 			label="Input Label"
 			required

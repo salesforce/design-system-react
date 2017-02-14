@@ -112,14 +112,21 @@ export Modal from './modal';
 export SLDSModalTrigger from './modal/trigger';
 export ModalTrigger from './modal/trigger';
 
+export SLDSNavigation from './navigation';
+export Navigation from './navigation';
+
 export SLDSNotification from './notification';
 export Notification from './notification';
 
 export SLDSPageHeader from './page-header';
 export PageHeader from './page-header';
 
-export SLDSPopoverTooltip from './popover-tooltip';
-export PopoverTooltip from './popover-tooltip';
+export SLDSPopover from './popover';
+export Popover from './popover';
+
+export SLDSPopoverTooltip from './tooltip';
+export PopoverTooltip from './tooltip';
+export SLDSTooltip from './tooltip';
 
 export SLDSSpinner from './spinner';
 export Spinner from './spinner';
