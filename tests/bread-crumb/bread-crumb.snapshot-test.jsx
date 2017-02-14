@@ -2,11 +2,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import BreadCrumbBase from '../../examples/bread-crumb/base';
+import BreadcrumbBase from '../../examples/breadcrumb/base';
 
-test('BreadCrumb Base Snapshot', () => {
+test('Breadcrumb Base Snapshot', () => {
 	const domTree = renderer.create(
-		<BreadCrumbBase />
+		<BreadcrumbBase />
 	).toJSON();
 	expect(domTree).toMatchSnapshot();
 });

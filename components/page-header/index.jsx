@@ -26,7 +26,7 @@ import Base from './private/base';
 import RecordHome from './private/record-home';
 import ObjectHome from './private/object-home';
 import Icon from '../icon';
-import BreadCrumb from '../bread-crumb';
+import Breadcrumb from '../breadcrumb';
 
 // ## Constants
 import { PAGE_HEADER } from '../../utilities/constants';
@@ -182,7 +182,7 @@ class PageHeader extends Component {
 			if (trail.length > 0) {
 				return (
 					<nav className="slds-m-bottom--xx-small" role="navigation">
-						<BreadCrumb trail={trail} />
+						<Breadcrumb trail={trail} />
 					</nav>
 					);
 			} else {

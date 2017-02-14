@@ -1,7 +1,7 @@
 import '@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.css';
 
 export AppLauncher from './app-launcher/stories';
-export BreadCrumb from './bread-crumb/stories';
+export Breadcrumb from './breadcrumb/stories';
 export Button from './button/stories';
 export ButtonGroup from './button-group/stories';
 export ButtonStateful from './button-stateful/stories';
