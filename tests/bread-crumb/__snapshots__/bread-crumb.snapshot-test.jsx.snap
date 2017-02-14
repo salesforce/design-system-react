@@ -1,4 +1,4 @@
-exports[`test BreadCrumb Base Snapshot 1`] = `
+exports[`test Breadcrumb Base Snapshot 1`] = `
 <nav
   aria-label="Breadcrumbs"
   role="navigation">
