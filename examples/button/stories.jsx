@@ -17,7 +17,7 @@ const getIconButton = props => getButton({ variant: 'icon', ...props });
 
 storiesOf(BUTTON, module)
 	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('Base', () => getButton({ label: 'Base' }))
+	.add('Base', () => getButton({ label: 'Base', variant: 'base' }))
 	.add('Neutral', () => getButton({ label: 'Neutral' }))
 	.add('Neutral with id', () => getButton({ label: 'Neutral', id: 'custom-id' }))
 	.add('Neutral Icon', () => getButton({
@@ -31,10 +31,11 @@ storiesOf(BUTTON, module)
 	.add('Icon large', () => getIconButton({
 		assistiveText: 'Icon',
 		iconSize: 'large',
-		iconName: 'answer'
+		iconName: 'answer',
+		title: 'chat'
 	}))
 	.addDecorator(getStory => (
-		<div className="slds-p-around--medium slds-hint-parent" style={{ backgroundColor: 'goldenrod' }}>
+		<div className="slds-p-around--medium slds-hint-parent" style={{ backgroundColor: '#16325c' }}>
 			{getStory()}
 		</div>
 	))
@@ -46,11 +47,17 @@ storiesOf(BUTTON, module)
 		inverse: true
 	}))
 	.add('Dropdown Icon inverse', () => getIconButton({
+		'aria-haspopup': true,
 		assistiveText: 'Dropdown Icon inverse',
 		iconName: 'settings',
 		iconVariant: 'more',
 		inverse: true
 	}))
+	.addDecorator(getStory => (
+		<div className="slds-hint-parent" style={{ backgroundColor: '#16325c' }}>
+			{getStory()}
+		</div>
+	))
 	.add('Small Icon Hint inverse', () => getIconButton({
 		assistiveTest: 'Hint',
 		iconName: 'down',

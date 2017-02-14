@@ -52,17 +52,17 @@ const ObjectHome = (props) => (<div>
 			<MediaObject
 				body={<div>{props.label}
 					{props.title}</div>}
+				className="slds-no-space slds-grow"
 				figure={props.icon}
-				verticalCenter
 			/>
 		</div>
-		<div className="slds-col slds-no-flex slds-grid slds-align-top">
+		<div className="slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom--xx-small">
 			{props.navRight}
 		</div>
 	</div>
 	<div className="slds-grid">
 		<div className="slds-col slds-align-bottom">
-			<p className="slds-text-body--small">{props.info}</p>
+			{props.info}
 		</div>
 		<div className="slds-col slds-no-flex slds-grid slds-align-bottom">
 		{props.contentRight}

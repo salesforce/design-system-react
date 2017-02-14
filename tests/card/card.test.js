@@ -208,11 +208,6 @@ describe('Card: ', () => {
 			body.should.not.be.undefined;
 		});
 
-		it('does NOT have a footer', function () {
-			const footer = getFooter(this.dom);
-			(typeof footer).should.equal('undefined');
-		});
-
 		it('has body heading based on heading of Card', function () {
 			const emptyBodyheading = getEmptyBodyHeading(this.dom);
 			emptyBodyheading.should.not.be.undefined;

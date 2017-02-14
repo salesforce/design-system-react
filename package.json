@@ -1,6 +1,6 @@
 {
   "name": "design-system-react",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Salesforce Lightning Design System React components",
   "license": "BSD-3-Clause",
   "engines": {
@@ -127,6 +127,7 @@
     "minimist": "^1.2.0",
     "mocha": "^3.1.2",
     "node-sass": "^3.7.0",
+    "object.entries": "^1.0.4",
     "phantomjs-prebuilt": "^2.1.7",
     "precommit-hook": "^3.0.0",
     "react": ">=15.4.1",
@@ -346,6 +347,12 @@
           "component": "trigger"
         }
       ]
+    },
+    {
+      "component": "navigation",
+      "status": "prototype",
+      "display-name": "Navigation",
+      "SLDS-component-path": "/components/navigation"
     },
     {
       "component": "notification",

@@ -6,6 +6,9 @@ import { storiesOf } from '@kadira/storybook';
 import { POPOVER_TOOLTIP } from '../../utilities/constants';
 import PopoverTooltip from '../../components/popover-tooltip';
 
+import ButtonGroupExample from '../../examples/tooltip/button-group';
+import ButtonExample from '../../examples/tooltip/button';
+
 import Icon from '../../components/icon';
 import Button from '../../components/button';
 
@@ -64,6 +67,8 @@ storiesOf(POPOVER_TOOLTIP, module)
 		id: 'myPopoverId',
 		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie'
 	}))
+	.add('Button Group', () => <ButtonGroupExample />)
+	.add('Button', () => <ButtonExample />)
 	.add('Open', () => getPopoverTooltip({
 		align: 'bottom',
 		isOpen: true,

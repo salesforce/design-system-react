@@ -189,7 +189,7 @@ describe('SLDSDatepicker', function () {
 						// test callback parameters
 						expect(data.date.getTime()).to.equal(new Date('1/1/2007').getTime());
 						expect(data.formattedDate).to.equal('1/1/2007');
-						
+
 						done();
 					}, 0);
 				}}

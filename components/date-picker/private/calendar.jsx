@@ -157,28 +157,28 @@ const DatepickerCalendar = React.createClass({
 
 		return (
 			<div
-				className="Calendar"
+				className="calendar"
 			>
 				<table className="datepicker__month" role="grid" aria-labelledby={`${this.props.id}-month`}>
 					<thead>
-						<tr ref="weekdays">
+						<tr>
 						{this.props.isIsoWeekday ? null : sunday}
-							<th ref="Monday" scope="col">
+							<th scope="col">
 								<abbr title={this.props.weekDayLabels[1]}>{this.props.abbreviatedWeekDayLabels[1]}</abbr>
 							</th>
-							<th ref="Tuesday" scope="col">
+							<th scope="col">
 								<abbr title={this.props.weekDayLabels[2]}>{this.props.abbreviatedWeekDayLabels[2]}</abbr>
 							</th>
-							<th ref="Wednesday" scope="col">
+							<th scope="col">
 								<abbr title={this.props.weekDayLabels[3]}>{this.props.abbreviatedWeekDayLabels[3]}</abbr>
 							</th>
-							<th ref="Thursday" scope="col">
+							<th scope="col">
 								<abbr title={this.props.weekDayLabels[4]}>{this.props.abbreviatedWeekDayLabels[4]}</abbr>
 							</th>
-							<th ref="Friday" scope="col">
+							<th scope="col">
 								<abbr title={this.props.weekDayLabels[5]}>{this.props.abbreviatedWeekDayLabels[5]}</abbr>
 							</th>
-							<th ref="Saturday" scope="col">
+							<th scope="col">
 								<abbr title={this.props.weekDayLabels[6]}>{this.props.abbreviatedWeekDayLabels[6]}</abbr>
 							</th>
 							{this.props.isIsoWeekday && sunday}

@@ -51,6 +51,8 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 - <a name="approved-slds-patterns" href="#approved-slds-patterns">#</a> **Only submit approved design system patterns.** This library should include only components which have approved patterns in Salesforce's [design system](https://www.lightningdesignsystem.com/) or the latest internal beta releases. If there is a use case from a designer that conforms to a design pattern, that component should be able to be implemented with this library.
 
+- <a name="limit-extra-div" href="#limit-extra-div">#</a> **Limit the use of grouping `div` elements.** React components can only have one HTML node / JSX / function return value. A component's render function should have one HTML node as its parent JSX element. Please limit use of extra wrapping `div` elements in order to align with SLDS markup. Other options include creating additional sub-components or passing an array of components to the parent component to render.
+
 - <a name="avoid-mixins" href="#avoid-mixins">#</a> **Avoid implied mixins.** Instead, import and use shared code and external libraries as libraries, or use higher-order components in order to more easily trace the code execution. 
 
 - <a name="avoid-dependencies" href="#avoid-dependencies">#</a> **Avoid external dependencies.** Do not add external dependencies _to production dependencies_ list unless absolutely necessary. Always consider the "total cost of ownership" for all dependencies.

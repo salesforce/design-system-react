@@ -84,6 +84,10 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!design-system-react/examples/modal/prompt.jsx'),
 		require('raw-loader!design-system-react/examples/modal/sizes.jsx')
 	],
+	navigation: [
+		require('raw-loader!design-system-react/examples/navigation/default.jsx'),
+		require('raw-loader!design-system-react/examples/navigation/shade.jsx')
+	],
 	notification: [
 		require('raw-loader!design-system-react/examples/notification/alerts.jsx'),
 		require('raw-loader!design-system-react/examples/notification/toasts.jsx'),
@@ -104,17 +108,17 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!design-system-react/examples/popover/alternative-header.jsx'),
 		require('raw-loader!design-system-react/examples/popover/controlled-with-footer.jsx')
 	],
-	'popover-tooltip': [
-		require('raw-loader!design-system-react/examples/popover-tooltip/base.jsx'),
-		require('raw-loader!design-system-react/examples/popover-tooltip/button.jsx'),
-		require('raw-loader!design-system-react/examples/popover-tooltip/button-group.jsx')
-	],
 	tabs: [
 		require('raw-loader!design-system-react/examples/tabs/default.jsx'),
 		require('raw-loader!design-system-react/examples/tabs/scoped.jsx')
 	],
 	'time-picker': [
 		require('raw-loader!design-system-react/examples/time-picker/default.jsx')
+	],
+	'tooltip': [
+		require('raw-loader!design-system-react/examples/tooltip/base.jsx'),
+		require('raw-loader!design-system-react/examples/tooltip/button.jsx'),
+		require('raw-loader!design-system-react/examples/tooltip/button-group.jsx')
 	],
 	tree: [
 		require('raw-loader!design-system-react/examples/tree/default.jsx')
