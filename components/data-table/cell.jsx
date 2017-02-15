@@ -25,12 +25,13 @@ const { PropTypes } = React;
  * The default Cell renderer for the DataTable. Pass in any React component with the same `displayName` which takes the same props to provide custom rendering.
  */
 const DataTableCell = (props) => {
+	const childText = typeof props.children == 'object' ? props.children.props.children : props.children;
 	const contents = (
 		<div
 			className={classNames({
 				'slds-truncate': props.fixedLayout
 			})}
-			title={props.title || props.children}
+			title={props.title || childText}
 		>
 			{props.children}
 		</div>
@@ -41,7 +42,6 @@ const DataTableCell = (props) => {
 		props.primaryColumn
 		? <th
 			className={props.className}
-			data-label={props.label}
 			role={props.fixedLayout ? 'gridcell' : null}
 			style={props.width ? { width: props.width } : null}
 		>
@@ -50,7 +50,6 @@ const DataTableCell = (props) => {
 
 		: <td
 			className={props.className}
-			data-label={props.label}
 			role={props.fixedLayout ? 'gridcell' : null}
 			style={props.width ? { width: props.width } : null}
 		>
@@ -81,10 +80,6 @@ DataTableCell.propTypes = {
 	 * The item from the items which represents this row.
 	 */
 	item: PropTypes.object,
-	/**
-	 * The column label.
-	 */
-	label: PropTypes.string,
 	/**
 	 * The primary column for a row. This is almost always the first column.
 	 */

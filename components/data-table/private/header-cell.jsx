@@ -39,6 +39,7 @@ const DataTableHeaderCell = React.createClass({
 	propTypes: {
 		/**
 		 * Text for sort action on table column header
+	 *
 		 */
 		assistiveTextForColumnSort: PropTypes.string,
 		/**
@@ -50,6 +51,10 @@ const DataTableHeaderCell = React.createClass({
 		 */
 		assistiveTextForColumnSortedDescending: PropTypes.string,
 		id: PropTypes.string.isRequired,
+		/**
+		 * Indicates if column is sorted.
+		 */
+		isSorted: PropTypes.bool,
 		/**
 		 * The column label.
 		 */
@@ -74,7 +79,7 @@ const DataTableHeaderCell = React.createClass({
 
 	getInitialState () {
 		return {
-			sortDirection: null
+			sortDirection: 'asc'
 		};
 	},
 
@@ -82,32 +87,33 @@ const DataTableHeaderCell = React.createClass({
 	// Should return a `<th></th>`.
 	render () {
 		const {
+			isSorted,
 			label,
 			property,
 			sortable
 		} = this.props;
 
 		const sortDirection = this.props.sortDirection || this.state.sortDirection;
+		const ariaSort = isSorted ? (sortDirection === 'desc' ? 'descending' : 'ascending') : null;
 
 		return (
 			<th
-				focusable={sortable ? true : null}
-				scope="col"
-				key={property}
-				className={classNames('slds-text-title--caps', {
-					'slds-is-sortable': sortable
+				aria-sort={ariaSort}
+				className={classNames({
+					"slds-is-sortable": sortable,
+					"slds-is-sorted": isSorted,
+					[`slds-is-sorted--${sortDirection}`]: sortDirection,
+					'slds-is-sorted--asc': isSorted && !sortDirection // default for hover, up arrow is ascending which means A is at the top of the table, and Z is at the bottom. You have to think about row numbers abstracting, and not the visual order on the table.
 				})}
+				focusable={sortable ? true : null}
+				key={property}
 				onClick={sortable && this.handleSort}
+				scope="col"
 			>
 					{sortable
 						?	<a
 							href="javascript:void(0)"
-							className={classNames('slds-th__action',
-							'slds-text-link--reset', {
-								'slds-is-sorted': sortDirection,
-								[`slds-is-sorted--${sortDirection}`]: sortDirection,
-								'slds-is-sorted--asc': !sortDirection // default for hover, up arrow is ascending which means A is at the top of the table, and Z is at the bottom. You have to think about row numbers abstracting, and not the visual order on the table.
-							})}
+							className="slds-th__action slds-text-link--reset"
 							tabIndex="0"
 						>
 							<span className="slds-assistive-text">{this.props.assistiveTextForColumnSort} </span>

@@ -59,7 +59,7 @@ const DataTableHead = React.createClass({
 	render () {
 		return (
 			<thead>
-				<tr className="slds-line-height--reset">
+				<tr className="slds-text-title--caps">
 					{this.props.canSelectRows
 						? <th className="slds-text-align--right" scope="col" style={{ width: '3.25rem' }}>
 							<div className="slds-th__action slds-th__action--form">
