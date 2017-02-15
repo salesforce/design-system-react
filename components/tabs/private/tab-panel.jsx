@@ -37,7 +37,6 @@ const TabPanel = ({ className, children, variant, selected, id, tabId, ...attrib
 		id={id}
 		aria-selected={selected ? 'true' : 'false'}
 		aria-labelledby={tabId}
-		variant={variant}
 	>
 		{children.props.children}
 	</div>
