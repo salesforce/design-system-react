@@ -6,6 +6,7 @@ install:
   - npm install
 script:
   - npm test
+  - node ./node_modules/.bin/eslint-changes
 cache:
   directories:
     - node_modules

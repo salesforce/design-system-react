@@ -10,21 +10,21 @@ var app = express();
 if (process.env.NODE_ENV === 'production') {
 	// Authentication
 	app.use(function (req, res, next) {
-	  var user = auth(req)
-	  var username = process.env.AUTH_USERNAME;
-	  var password = process.env.AUTH_PASSWORD;
+		var user = auth(req)
+		var username = process.env.AUTH_USERNAME;
+		var password = process.env.AUTH_PASSWORD;
 
-	  var unauthorized = function () {
-	    res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
-	    res.sendStatus(401);
-	  }
+		var unauthorized = function () {
+			res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
+			res.sendStatus(401);
+		}
 
-	  if (!username || !password) return unauthorized();
-	  if (!user || user.name !== username || user.pass !== password) {
-	    return unauthorized();
-	  }
+		if (!username || !password) return unauthorized();
+		if (!user || user.name !== username || user.pass !== password) {
+			return unauthorized();
+		}
 
-	  next();
+		next();
 	});
 }
 
