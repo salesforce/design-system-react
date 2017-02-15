@@ -7,6 +7,9 @@
     "node": "^4.4.0",
     "npm": "^3.9.0"
   },
+  "lint-staged": {
+    "*.{js,jsx}": "eslint --quiet"
+  },
   "scripts": {
     "build-storybook": "build-storybook -o ./storybook",
     "dist": "scripts/dist.sh",
@@ -14,6 +17,7 @@
     "heroku-postbuild": "./scripts/heroku-postbuild.sh",
     "icons": "./node_modules/.bin/babel-node scripts/inline-icons.js",
     "lint": "eslint --config=./.eslintrc \"**/*.{js,jsx}\"",
+    "lint-staged": "lint-staged",
     "preversion": "git add RELEASENOTES.md && git commit -m \"Update release notes\" && git pull upstream master && git diff --exit-code",
     "publish-to-git": "./node_modules/.bin/babel-node scripts/publish-to-git.js",
     "publish-to-edge": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge",
@@ -122,13 +126,14 @@
     "karma-sourcemap-loader": "^0.3.5",
     "karma-spec-reporter": "^0.0.26",
     "karma-webpack": "^1.7.0",
+    "lint-staged": "^3.3.0",
     "lodash.trim": "^4.0.1",
     "minimist": "^1.2.0",
     "mocha": "^3.1.2",
     "node-sass": "^3.7.0",
     "object.entries": "^1.0.4",
     "phantomjs-prebuilt": "^2.1.7",
-    "precommit-hook": "^3.0.0",
+    "pre-commit": "^1.2.2",
     "react": ">=15.4.1",
     "react-addons-test-utils": ">=15.4.1",
     "react-dom": ">=15.4.1",
@@ -144,7 +149,7 @@
     "xml2json": "^0.10.0"
   },
   "pre-commit": [
-    "lint"
+    "lint-staged"
   ],
   "pre-push": [
     "validate",
