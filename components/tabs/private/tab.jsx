@@ -71,9 +71,12 @@ const Tab = React.createClass({
 		panelId: PropTypes.string,
 
 		/**
-		 * The string that is shown as both the title and the label for this tab.
+		 * The string or element that is shown as both the title and the label for this tab.
 		 */
-		children: PropTypes.string,
+		children: React.PropTypes.oneOfType([
+			React.PropTypes.string,
+			React.PropTypes.element
+		]),
 
 		/**
 		 * If the Tabs should be scopped, defaults to false
@@ -136,7 +139,7 @@ const Tab = React.createClass({
 				aria-controls={panelId}
 				tabIndex={selected ? '0' : disabled ? '-1' : null}
 				id={id}
-				title={children}
+				title={typeof children === 'string' ? children : null}
 			>
 				<a
 					className={classNames(
