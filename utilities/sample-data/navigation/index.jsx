@@ -38,7 +38,8 @@ const sampleSearchCategories = [
 			{ id: 'feeds', label: 'Feeds' }
 		]
 	},
-	{ id: 'external_results',
+	{
+		id: 'external_results',
 		label: 'External Results',
 		items:
 		[
