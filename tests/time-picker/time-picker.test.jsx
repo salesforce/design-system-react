@@ -19,34 +19,34 @@ const dateTimeNow = new Date();
 const defaultStrValue = formatter(dateTimeNow);
 
 const defaultProps = {
-    onDateChange: () => {},
-    value: dateTimeNow,
-    strValue: defaultStrValue
+	onDateChange: () => {},
+	value: dateTimeNow,
+	strValue: defaultStrValue
 };
 
 describe('SLDSTimepicker: ', () => {
-    describe('Timepicker Value Prop Change', () => {
-        it("displays a modified state upon changing props", () => {
-            const futureDateTime = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+	describe('Timepicker Value Prop Change', () => {
+		it('displays a modified state upon changing props', () => {
+			const futureDateTime = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
 
-            const TestTimepicker = createFactory(
+			const TestTimepicker = createFactory(
                 createClass({
-                    getInitialState() {
+	getInitialState () {
                         // force the state to have a future dateTime...
-                        return {
-                          isOpen:false,
-                          value: futureDateTime,
-                          strValue: formatter(futureDateTime)
-                        };
-                    },
-                    render() {
-                        return <SLDSTimepicker ref="timePicker" { ...defaultProps } />
-                    }
-                })
+		return {
+			isOpen: false,
+			value: futureDateTime,
+			strValue: formatter(futureDateTime)
+		};
+	},
+	render () {
+		return <SLDSTimepicker ref="timePicker" {...defaultProps} />;
+	}
+})
             );
 
-            const parent = TestUtils.renderIntoDocument(TestTimepicker());
-            parent.refs.timePicker.state.strValue.should.eql(defaultStrValue);
-        });
-    });
+			const parent = TestUtils.renderIntoDocument(TestTimepicker());
+			parent.refs.timePicker.state.strValue.should.eql(defaultStrValue);
+		});
+	});
 });

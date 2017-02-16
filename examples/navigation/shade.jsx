@@ -3,25 +3,29 @@ import React from 'react';
 import Navigation from '~/components/navigation';
 
 const sampleSearchCategories = [
-	{id: 'search_results', label: 'Search Results', items:
+	{ id: 'search_results',
+		label: 'Search Results',
+		items:
 		[
-			{id: 'top', label: 'Top Results'},
-			{id: 'accounts', label: 'Accounts'},
-			{id: 'contacts', label: 'Contacts'},
-			{id: 'opportunities', label: 'Opportunities'},
-			{id: 'leads', label: 'Leads'},
-			{id: 'groups', label: 'Groups'},
-			{id: 'files', label: 'Files'},
-			{id: 'dashboards', label: 'Dashboards'},
-			{id: 'reports', label: 'Reports'},
-			{id: 'feeds', label: 'Feeds'}
+			{ id: 'top', label: 'Top Results' },
+			{ id: 'accounts', label: 'Accounts' },
+			{ id: 'contacts', label: 'Contacts' },
+			{ id: 'opportunities', label: 'Opportunities' },
+			{ id: 'leads', label: 'Leads' },
+			{ id: 'groups', label: 'Groups' },
+			{ id: 'files', label: 'Files' },
+			{ id: 'dashboards', label: 'Dashboards' },
+			{ id: 'reports', label: 'Reports' },
+			{ id: 'feeds', label: 'Feeds' }
 		]
 	},
-	{id: 'external_results', label: 'External Results', items:
+	{ id: 'external_results',
+		label: 'External Results',
+		items:
 		[
-			{id: 'app_one', label: 'App One'},
-			{id: 'app_two', label: 'App Two'},
-			{id: 'app_three', label: 'App Three'}
+			{ id: 'app_one', label: 'App One' },
+			{ id: 'app_two', label: 'App Two' },
+			{ id: 'app_three', label: 'App Three' }
 		]
 	}
 ];
@@ -37,21 +41,20 @@ const Example = React.createClass({
 
 	render () {
 		return (
-			<div style={{width: '320px', backgroundColor: '#FAFAFB'}}>
+			<div style={{ width: '320px', backgroundColor: '#FAFAFB' }}>
 				<Navigation
-					id='sample-navigation'
-					variant='shade'
+					id="sample-navigation"
+					variant="shade"
 					categories={sampleSearchCategories}
 					selectedId={this.state.selectedId}
 					onSelect={(event, data) => {
-						this.setState({selectedId: data.item.id})
+						this.setState({ selectedId: data.item.id });
 						if (this.props.action) {
 							const dataAsArray = Object.keys(data).map((key) => data[key]);
 							this.props.action('onSelect')(event, data, ...dataAsArray);
 						} else if (console) {
 							console.log('[onSelect] (event, data)', event, data);
 						}
-
 					}}
 				/>
 			</div>

@@ -10,7 +10,7 @@ import CustomInput from './custom-input';
 import SnaphotDefault from './snapshot-default';
 
 storiesOf(DATE_PICKER, module)
-	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Default', () => (<Default action={action} />))
 	.add('ISO weekdays', () => (<IsoWeekdays action={action} />))
 	.add('Custom Input', () => (<CustomInput action={action} />))

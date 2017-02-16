@@ -5,219 +5,219 @@ import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 
-import {SLDSLookup} from '../../components';
+import { SLDSLookup } from '../../components';
 const Header = SLDSLookup.DefaultHeader;
 const Footer = SLDSLookup.DefaultFooter;
-const {Simulate, scryRenderedDOMComponentsWithClass, scryRenderedDOMComponentsWithTag} = TestUtils;
+const { Simulate, scryRenderedDOMComponentsWithClass, scryRenderedDOMComponentsWithTag } = TestUtils;
 
-describe('SLDSLookup: ',  function(){
-  const generateLookup = function(lookupInstance) {
-    let reactCmp = TestUtils.renderIntoDocument(lookupInstance);
-    return ReactDOM.findDOMNode(reactCmp);
-  };
+describe('SLDSLookup: ', () => {
+	const generateLookup = function (lookupInstance) {
+		const reactCmp = TestUtils.renderIntoDocument(lookupInstance);
+		return ReactDOM.findDOMNode(reactCmp);
+	};
 
-  const defaultProps = {
-    emptyMessage:"No items found",
-    footerRenderer:Footer,
-    iconCategory:"standard",
-    iconName:"account",
-    isInline: true,
-    label:"Account",
-    onChange:function(newValue){console.log("New search term: ", newValue)},
-    onSelect:function(item){console.log(item , " Selected")},
-    options:[
-      {label: "Paddy\"s Pub"},
-      {label: "Tyrell Corp"},
-      {label: "Paper St. Soap Company"},
-      {label: "Nakatomi Investments"},
-      {label: "Acme Landscaping"},
-      {label: "Acme Construction"}
-    ],
-  };
+	const defaultProps = {
+		emptyMessage: 'No items found',
+		footerRenderer: Footer,
+		iconCategory: 'standard',
+		iconName: 'account',
+		isInline: true,
+		label: 'Account',
+		onChange (newValue) { console.log('New search term: ', newValue); },
+		onSelect (item) { console.log(item, ' Selected'); },
+		options: [
+      { label: 'Paddy"s Pub' },
+      { label: 'Tyrell Corp' },
+      { label: 'Paper St. Soap Company' },
+      { label: 'Nakatomi Investments' },
+      { label: 'Acme Landscaping' },
+      { label: 'Acme Construction' }
+		]
+	};
 
-  const getLookup = (props={}) => React.createElement(SLDSLookup, assign({}, defaultProps, props))
-  const getLookupWithHeader = (props={headerRenderer: Header}) => React.createElement(SLDSLookup, assign({}, defaultProps, props))
-  const getLookupWithSelection = (props={selectedItem: 1}) => React.createElement(SLDSLookup, assign({}, defaultProps, props))
+	const getLookup = (props = {}) => React.createElement(SLDSLookup, assign({}, defaultProps, props));
+	const getLookupWithHeader = (props = { headerRenderer: Header }) => React.createElement(SLDSLookup, assign({}, defaultProps, props));
+	const getLookupWithSelection = (props = { selectedItem: 1 }) => React.createElement(SLDSLookup, assign({}, defaultProps, props));
 
-  const getItems = lookup => lookup.getElementsByClassName('js-slds-lookup__item');
+	const getItems = (lookup) => lookup.getElementsByClassName('js-slds-lookup__item');
 
-  describe('component renders', function() {
-    it('lookup renders', function() {
-      let lookup = generateLookup(getLookup());
-      expect(lookup).to.not.equal(undefined);
-    });
-  });
+	describe('component renders', () => {
+		it('lookup renders', () => {
+			const lookup = generateLookup(getLookup());
+			expect(lookup).to.not.equal(undefined);
+		});
+	});
 
-  describe('component basic props render', function() {
-    it('renders label', function() {
-      let lookup = generateLookup(getLookup());
-      let label = lookup.getElementsByTagName("label")[0];
-      expect(label.textContent).to.equal('Account');
-    });
-    it('LookupWithSelection - renders label', function() {
-      let lookup = generateLookup(getLookupWithSelection());
-      let label = lookup.getElementsByTagName("span")[0];
-      expect(label.textContent).to.equal('Account');
-    });
-  });
+	describe('component basic props render', () => {
+		it('renders label', () => {
+			const lookup = generateLookup(getLookup());
+			const label = lookup.getElementsByTagName('label')[0];
+			expect(label.textContent).to.equal('Account');
+		});
+		it('LookupWithSelection - renders label', () => {
+			const lookup = generateLookup(getLookupWithSelection());
+			const label = lookup.getElementsByTagName('span')[0];
+			expect(label.textContent).to.equal('Account');
+		});
+	});
 
-  describe('accessibility markup passes', function() {
-    it('label for matches input id', function() {
-      let lookup = generateLookup(getLookup());
-      let labelFor = lookup.getElementsByTagName("label")[0].getAttribute("for");
-      let inputId = lookup.getElementsByTagName("input")[0].getAttribute("id");
-      expect(labelFor).to.equal(inputId);
-    });
-  });
+	describe('accessibility markup passes', () => {
+		it('label for matches input id', () => {
+			const lookup = generateLookup(getLookup());
+			const labelFor = lookup.getElementsByTagName('label')[0].getAttribute('for');
+			const inputId = lookup.getElementsByTagName('input')[0].getAttribute('id');
+			expect(labelFor).to.equal(inputId);
+		});
+	});
 
-  describe('accessibility aria attributes pass', function() {
-    it('aria-expanded is false initally', function() {
-      let lookup = generateLookup(getLookup());
-      let ariaExpanded = lookup.getElementsByTagName("input")[0].getAttribute("aria-expanded");
-      expect(ariaExpanded).to.equal('false');
-    });
+	describe('accessibility aria attributes pass', () => {
+		it('aria-expanded is false initally', () => {
+			const lookup = generateLookup(getLookup());
+			const ariaExpanded = lookup.getElementsByTagName('input')[0].getAttribute('aria-expanded');
+			expect(ariaExpanded).to.equal('false');
+		});
 
-    it('aria-expanded is true when clicking on input field', function() {
-      let lookup = generateLookup(getLookup());
-      let input = lookup.getElementsByTagName("input")[0];
-      TestUtils.Simulate.click(input);
-      let ariaExpanded = lookup.getElementsByTagName("input")[0].getAttribute("aria-expanded");
-      expect(ariaExpanded).to.equal('true');
-    });
+		it('aria-expanded is true when clicking on input field', () => {
+			const lookup = generateLookup(getLookup());
+			const input = lookup.getElementsByTagName('input')[0];
+			TestUtils.Simulate.click(input);
+			const ariaExpanded = lookup.getElementsByTagName('input')[0].getAttribute('aria-expanded');
+			expect(ariaExpanded).to.equal('true');
+		});
 
-    it('LookupWithSelection - aria-expanded is true when deleting selection', function() {
-      let lookup = generateLookup(getLookupWithSelection());
-      let deleteBtn = lookup.getElementsByTagName("button")[0];
-      TestUtils.Simulate.keyDown(deleteBtn, {key: "Down", keyCode: 46, which: 46});
-      let ariaExpanded = lookup.getElementsByTagName("input")[0].getAttribute("aria-expanded");
-      expect(ariaExpanded).to.equal('true');
-    });
-  });
+		it('LookupWithSelection - aria-expanded is true when deleting selection', () => {
+			const lookup = generateLookup(getLookupWithSelection());
+			const deleteBtn = lookup.getElementsByTagName('button')[0];
+			TestUtils.Simulate.keyDown(deleteBtn, { key: 'Down', keyCode: 46, which: 46 });
+			const ariaExpanded = lookup.getElementsByTagName('input')[0].getAttribute('aria-expanded');
+			expect(ariaExpanded).to.equal('true');
+		});
+	});
 
 
-  describe('selecting item works', function() {
+	describe('selecting item works', () => {
+		it('no fixed header: focuses correct item', () => {
+			const lookup = generateLookup(getLookup());
+			const input = lookup.getElementsByTagName('input')[0];
+			TestUtils.Simulate.click(input);
+			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
+			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
+			const ariaActiveDescendant = lookup.getElementsByTagName('input')[0].getAttribute('aria-activedescendant');
+			expect(ariaActiveDescendant).to.equal('item-1');
+		});
 
-    it('no fixed header: focuses correct item', function() {
-      let lookup = generateLookup(getLookup());
-      let input = lookup.getElementsByTagName("input")[0];
-      TestUtils.Simulate.click(input);
-      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
-      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
-      let ariaActiveDescendant = lookup.getElementsByTagName("input")[0].getAttribute("aria-activedescendant");
-      expect(ariaActiveDescendant).to.equal('item-1');
-    });
+		it('with fixed header: focuses correct item', () => {
+			const lookup = generateLookup(getLookupWithHeader());
+			const input = lookup.getElementsByTagName('input')[0];
+			TestUtils.Simulate.click(input);
+			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
+			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
+			const ariaActiveDescendant = lookup.getElementsByTagName('input')[0].getAttribute('aria-activedescendant');
+			expect(ariaActiveDescendant).to.equal('item-0');
+		});
 
-    it('with fixed header: focuses correct item', function() {
-      let lookup = generateLookup(getLookupWithHeader());
-      let input = lookup.getElementsByTagName("input")[0];
-      TestUtils.Simulate.click(input);
-      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
-      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
-      let ariaActiveDescendant = lookup.getElementsByTagName("input")[0].getAttribute("aria-activedescendant");
-      expect(ariaActiveDescendant).to.equal('item-0');
-    });
+		it('no header: selects correct item', () => {
+			const lookup = generateLookup(getLookup());
+			const input = lookup.getElementsByTagName('input')[0];
+			TestUtils.Simulate.click(input);
+			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
+			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
+			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
+			TestUtils.Simulate.keyDown(input, { key: 'Enter', keyCode: 13, which: 13 });
+			const selected = lookup.getElementsByTagName('a')[0].getElementsByClassName('slds-pill__label')[0].textContent;
+			expect(selected).to.equal('Paper St. Soap Company');
+		});
 
-    it('no header: selects correct item', function() {
-      let lookup = generateLookup(getLookup());
-      let input = lookup.getElementsByTagName("input")[0];
-      TestUtils.Simulate.click(input);
-      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
-      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
-      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
-      TestUtils.Simulate.keyDown(input, {key: "Enter", keyCode: 13, which: 13});
-      let selected = lookup.getElementsByTagName("a")[0].getElementsByClassName('slds-pill__label')[0].textContent;
-      expect(selected).to.equal('Paper St. Soap Company');
-    });
+		it('with header: selects correct item', () => {
+			const lookup = generateLookup(getLookupWithHeader());
+			const input = lookup.getElementsByTagName('input')[0];
+			TestUtils.Simulate.click(input);
+			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
+			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
+			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
+			TestUtils.Simulate.keyDown(input, { key: 'Enter', keyCode: 13, which: 13 });
+			const selected = lookup.getElementsByTagName('a')[0].getElementsByClassName('slds-pill__label')[0].textContent;
+			expect(selected).to.equal('Tyrell Corp');
+		});
 
-    it('with header: selects correct item', function() {
-      let lookup = generateLookup(getLookupWithHeader());
-      let input = lookup.getElementsByTagName("input")[0];
-      TestUtils.Simulate.click(input);
-      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
-      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
-      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
-      TestUtils.Simulate.keyDown(input, {key: "Enter", keyCode: 13, which: 13});
-      let selected = lookup.getElementsByTagName("a")[0].getElementsByClassName('slds-pill__label')[0].textContent;
-      expect(selected).to.equal('Tyrell Corp');
-    });
+		it('closes lookup menu on esc', () => {
+			const lookup = generateLookup(getLookup());
+			const input = lookup.getElementsByTagName('input')[0];
+			TestUtils.Simulate.click(input);
+			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
+			TestUtils.Simulate.keyDown(input, { key: 'Esc', keyCode: 27, which: 27 });
+			const ariaExpanded = input.getAttribute('aria-expanded');
+			expect(ariaExpanded).to.equal('false');
+		});
 
-    it('closes lookup menu on esc', function() {
-      let lookup = generateLookup(getLookup());
-      let input = lookup.getElementsByTagName("input")[0];
-      TestUtils.Simulate.click(input);
-      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
-      TestUtils.Simulate.keyDown(input, {key: "Esc", keyCode: 27, which: 27});
-      let ariaExpanded = input.getAttribute("aria-expanded");
-      expect(ariaExpanded).to.equal('false');
-    });
+		it('aria-expanded is false after selecting item', () => {
+			const lookup = generateLookup(getLookup());
+			const input = lookup.getElementsByTagName('input')[0];
+			TestUtils.Simulate.click(input);
+			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
+			TestUtils.Simulate.keyDown(input, { key: 'Enter', keyCode: 13, which: 13 });
+			const menu = lookup.getElementsByTagName('ul');
+			expect(menu.length).to.equal(0);
+		});
 
-    it('aria-expanded is false after selecting item', function() {
-      let lookup = generateLookup(getLookup());
-      let input = lookup.getElementsByTagName("input")[0];
-      TestUtils.Simulate.click(input);
-      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
-      TestUtils.Simulate.keyDown(input, {key: "Enter", keyCode: 13, which: 13});
-      let menu = lookup.getElementsByTagName("ul");
-      expect(menu.length).to.equal(0);
-    });
+		it('focusedItem has correct style', () => {
+			const lookup = generateLookup(getLookup());
+			const input = lookup.getElementsByTagName('input')[0];
+			TestUtils.Simulate.click(input);
+			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
+			const focusedItem = lookup.getElementsByTagName('ul')[0].getElementsByTagName('li')[0];
+			expect(focusedItem.className).to.have.string('slds-theme--shade');
+		});
+	});
 
-    it('focusedItem has correct style', function() {
-      let lookup = generateLookup(getLookup());
-      let input = lookup.getElementsByTagName("input")[0];
-      TestUtils.Simulate.click(input);
-      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
-      let focusedItem = lookup.getElementsByTagName("ul")[0].getElementsByTagName('li')[0];
-      expect(focusedItem.className).to.have.string('slds-theme--shade');
-    });
+	describe('expanded', () => {
+		let lookup,
+			input;
 
-  });
+		beforeEach(() => {
+			lookup = generateLookup(getLookup());
+			input = lookup.getElementsByTagName('input')[0];
+			Simulate.click(input);
+		});
 
-  describe("expanded", function() {
-    let lookup, input;
+		it('filters its items', () => {
+			Simulate.change(input, { target: { value: 'Pa' } });
+			expect(getItems(lookup).length).to.equal(3);
+		});
 
-    beforeEach(function() {
-      lookup = generateLookup(getLookup());
-      input = lookup.getElementsByTagName("input")[0];
-      Simulate.click(input);
-    });
+		it('filters its items all the way!', () => {
+			Simulate.change(input, { target: { value: 'Poof!' } });
+			expect(getItems(lookup).length).to.equal(1); // 1 cause of add-item
+		});
 
-    it('filters its items', () => {
-      Simulate.change(input, {target: {value: 'Pa'}});
-      expect(getItems(lookup).length).to.equal(3);
-    });
+		it('unfilters its items if no val', () => {
+			Simulate.change(input, { target: { value: '' } });
+			expect(getItems(lookup).length).to.equal(7);
+		});
 
-    it('filters its items all the way!', () => {
-      Simulate.change(input, {target: {value: 'Poof!'}});
-      expect(getItems(lookup).length).to.equal(1); //1 cause of add-item
-    });
+		it('displays no items when item count is 0', () => {
+			expect(lookup.getElementsByClassName('slds-lookup__message').length).to.equal(0);
+			Simulate.change(input, { target: { value: 'kdjfksjdf' } });
+			expect(getItems(lookup).length).to.equal(1); // add item
+			expect(lookup.getElementsByClassName('slds-lookup__message').length).to.equal(1);
+		});
+	});
 
-    it('unfilters its items if no val', () => {
-      Simulate.change(input, {target: {value: ''}});
-      expect(getItems(lookup).length).to.equal(7);
-    });
+	describe('custom filter', () => {
+		let lookup,
+			input;
 
-    it('displays no items when item count is 0', () => {
-      expect(lookup.getElementsByClassName('slds-lookup__message').length).to.equal(0);
-      Simulate.change(input, {target: {value: 'kdjfksjdf'}});
-      expect(getItems(lookup).length).to.equal(1); // add item
-      expect(lookup.getElementsByClassName('slds-lookup__message').length).to.equal(1);
-    });
-  });
+		beforeEach(() => {
+			lookup = generateLookup(getLookup({ filterWith: (t, i) => t === i.label[0] }));
+			input = lookup.getElementsByTagName('input')[0];
+			Simulate.click(input);
+		});
 
-  describe("custom filter", function() {
-    let lookup, input;
-
-    beforeEach(function() {
-      lookup = generateLookup(getLookup({filterWith: (t, i) => t === i.label[0] }));
-      input = lookup.getElementsByTagName("input")[0];
-      Simulate.click(input);
-    });
-
-    it('filters its items by case sensitive first letter', () => {
-      Simulate.change(input, {target: {value: 'P'}});
-      expect(getItems(lookup).length).to.equal(3);
-      Simulate.change(input, {target: {value: 'p'}});
-      expect(getItems(lookup).length).to.equal(1);
-    });
-  })
+		it('filters its items by case sensitive first letter', () => {
+			Simulate.change(input, { target: { value: 'P' } });
+			expect(getItems(lookup).length).to.equal(3);
+			Simulate.change(input, { target: { value: 'p' } });
+			expect(getItems(lookup).length).to.equal(1);
+		});
+	});
 });

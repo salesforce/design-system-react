@@ -82,14 +82,14 @@ const CheckboxIndeterminate = React.createClass({
 });
 
 storiesOf(FORMS_CHECKBOX, module)
-	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Checkbox', () => (
 		<Checkbox
 			assistiveText="Checkbox"
 			label="Checkbox Label"
 			name="checkbox-example-standard"
 			onChange={action('change')}
-			onBlur={ (e) => { console.log('bluring ', e.target) }}
+			onBlur={(e) => { console.log('bluring ', e.target); }}
 		/>
 	))
 	.add('Checkbox (indeterminate)', () => (

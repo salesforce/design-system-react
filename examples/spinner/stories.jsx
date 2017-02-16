@@ -6,7 +6,7 @@ import { storiesOf, action } from '@kadira/storybook';
 import { SPINNER } from '../../utilities/constants';
 import Spinner from '../../components/spinner';
 
-const getSpinner = props => (
+const getSpinner = (props) => (
 	<Spinner {...props} />
 );
 
@@ -18,7 +18,7 @@ const inverseContainer = {
 };
 
 storiesOf(SPINNER, module)
-	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Small', () => getSpinner({ size: 'small', variant: 'base' }))
 	.add('Medium', () => getSpinner({ size: 'medium', variant: 'base' }))
 	.add('Large', () => getSpinner({ size: 'large', variant: 'base' }))
@@ -26,7 +26,7 @@ storiesOf(SPINNER, module)
 	.add('Brand Medium', () => getSpinner({ size: 'medium', variant: 'brand' }))
 	.add('Brand Large', () => getSpinner({ size: 'large', variant: 'brand', containerClassName: 'my-custom-classname' }))
 
-	.addDecorator(getStory => <div className="slds-p-around--medium" style={inverseContainer}>{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium" style={inverseContainer}>{getStory()}</div>)
 	.add('Inverse Small', () => getSpinner({ size: 'small', variant: 'inverse' }))
 	.add('Inverse Medium', () => getSpinner({ size: 'medium', variant: 'inverse' }))
 	.add('Inverse Large', () => getSpinner({ size: 'large', variant: 'inverse' }));

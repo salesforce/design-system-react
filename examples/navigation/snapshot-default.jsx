@@ -12,7 +12,7 @@ const Example = React.createClass({
 	render () {
 		return (
 			<Navigation
-				id='sample-navigation'
+				id="sample-navigation"
 				categories={sampleReportCategories}
 				{...this.props}
 			/>

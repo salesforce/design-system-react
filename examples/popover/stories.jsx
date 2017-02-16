@@ -68,7 +68,7 @@ const popoverBackgroundColor = 'rgb(255, 80, 121)';
 const containerBackgroundColor = 'rgb(255, 127, 80)';
 
 storiesOf(POPOVER, module)
-	.addDecorator(getStory => <div
+	.addDecorator((getStory) => <div
 		className="slds-p-around--medium slds-m-horizontal--x-large"
 		style={{
 			margin: '300px auto',

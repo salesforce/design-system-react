@@ -25,7 +25,7 @@ describe('SLDSButton: ', () => {
 		variant: 'neutral'
 	};
 
-	const renderButton = inst => {
+	const renderButton = (inst) => {
 		body = document.createElement('div');
 		document.body.appendChild(body);
 		return ReactDOM.render(inst, body);

@@ -80,7 +80,7 @@ const DemoLookupAccounts = React.createClass({
 });
 
 storiesOf(LOOKUP, module)
-	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Standard', () => <DemoLookup
 		emptyMessage="No Files found"
 		hasError={false}

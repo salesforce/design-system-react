@@ -5,26 +5,24 @@ import ReactDOM from 'react-dom';
 import assign from 'lodash.assign';
 import chai from 'chai';
 
-import {Spinner} from '../../components';
+import { Spinner } from '../../components';
 
 chai.should();
 
-describe('Spinner: ', function () {
+describe('Spinner: ', () => {
 	// Setup and takedown
-	const renderSpinner = (instance) => {
-		return function () {
+	const renderSpinner = (instance) => function () {
 			this.dom = document.createElement('div');
 			document.body.appendChild(this.dom);
 			this.component = ReactDOM.render(instance, this.dom);
 		};
-	};
 
 	function removeSpinner () {
 		ReactDOM.unmountComponentAtNode(this.dom);
 		document.body.removeChild(this.dom);
-	};
+	}
 
-	const getSpinner = dom => dom.querySelector('.slds-spinner');
+	const getSpinner = (dom) => dom.querySelector('.slds-spinner');
 
 	// Tests
   describe('Default spinner renders properly', () => {
@@ -43,12 +41,11 @@ describe('Spinner: ', function () {
 			const spinner = getSpinner(this.dom);
       spinner.className.should.equal('slds-spinner slds-spinner--medium');
 		});
-  })
+  });
 
-	describe('Props render proper css classes', function () {
-
+	describe('Props render proper css classes', () => {
 		beforeEach(renderSpinner(
-			<Spinner size='small' variant='brand' />
+			<Spinner size="small" variant="brand" />
 		));
 
 		afterEach(removeSpinner);
@@ -57,9 +54,6 @@ describe('Spinner: ', function () {
 			const spinner = getSpinner(this.dom);
       spinner.className.should.include('slds-spinner--small slds-spinner--brand');
 		});
-
 	});
-
 });
-
 

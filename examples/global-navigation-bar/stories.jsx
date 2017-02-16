@@ -23,27 +23,45 @@ const linkClicked = action;
 const searchClicked = action;
 
 const dropdownCollection = [{
-	label: 'Main action', value: '0', iconCategory: 'utility',
-	iconName: 'table', href: 'http://www.google.com'
+	label: 'Main action',
+	value: '0',
+	iconCategory: 'utility',
+	iconName: 'table',
+	href: 'http://www.google.com'
 }, {
 	label: 'Menu Header', type: 'header', divider: 'top'
 }, {
-	label: 'Menu Item One', value: '1', iconCategory: 'utility',
-	iconName: 'kanban', href: 'http://www.google.com'
+	label: 'Menu Item One',
+	value: '1',
+	iconCategory: 'utility',
+	iconName: 'kanban',
+	href: 'http://www.google.com'
 }, {
-	label: 'Menu Item Two', value: '2', iconCategory: 'utility',
-	iconName: 'kanban', href: 'http://www.google.com'
+	label: 'Menu Item Two',
+	value: '2',
+	iconCategory: 'utility',
+	iconName: 'kanban',
+	href: 'http://www.google.com'
 }, {
-	label: 'Menu Item Three', value: '3', iconCategory: 'utility',
-	iconName: 'side_list', href: 'http://www.google.com'
+	label: 'Menu Item Three',
+	value: '3',
+	iconCategory: 'utility',
+	iconName: 'side_list',
+	href: 'http://www.google.com'
 }, {
-	label: 'Menu Item Four', value: '4', iconCategory: 'utility',
-	iconName: 'side_list', href: 'http://www.google.com'
+	label: 'Menu Item Four',
+	value: '4',
+	iconCategory: 'utility',
+	iconName: 'side_list',
+	href: 'http://www.google.com'
 }, {
 	type: 'divider'
 }, {
-	label: 'Menu Item Five', value: '5', iconCategory: 'utility',
-	iconName: 'side_list', href: 'http://www.google.com'
+	label: 'Menu Item Five',
+	value: '5',
+	iconCategory: 'utility',
+	iconName: 'side_list',
+	href: 'http://www.google.com'
 }];
 
 /* eslint-disable react/display-name */
@@ -75,7 +93,7 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 				label="Home"
 				id="home-link"
 				onClick={linkClicked('Home link clicked. Actual href should be ignored')}
-				onKeyDown={(e) => { console.log(e.target);}}
+				onKeyDown={(e) => { console.log(e.target); }}
 			/>
 			<GlobalNavigationBarDropdown
 				assistiveText="Open Menu Item 1"
@@ -290,7 +308,7 @@ const getGlobalNavigationBarNoNav = (props, primaryRegionProps) => (
 );
 
 storiesOf(GLOBAL_NAVIGATION_BAR, module)
-	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Base', () => getGlobalNavigationBar(propSets.base.props, propSets.base.primaryRegionProps))
 	.add('Custom Cloud', () => getGlobalNavigationBarCustomCloud(propSets.customCloud.props, propSets.customCloud.primaryRegionProps))
 	.add('Custom Cloud (Multiple active and white)', () =>

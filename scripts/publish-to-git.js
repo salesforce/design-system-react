@@ -30,12 +30,12 @@ const exec = ([command, dir = '.'], callback) => {
 		callback(err);
 	});
 
-	child.stdout.on('data', data => process.stdout.write(data.toString()));
+	child.stdout.on('data', (data) => process.stdout.write(data.toString()));
 };
 
-///////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////
 // Tasks
-///////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////
 
 const cleanPackageJson = (done, type) => {
 	const tmpPath = getTmpPath(type);
@@ -90,7 +90,7 @@ const publish = (done, type) => {
 		[`rm -r ${tmpDir}`]
 	];
 
-	async.eachSeries(actions, exec, err => {
+	async.eachSeries(actions, exec, (err) => {
 		if (err) throw err;
 
 		console.log(`## Successfully published ${type} to git`);
@@ -100,16 +100,16 @@ const publish = (done, type) => {
 };
 
 async.series([
-	done => exec(['npm run dist'], done),
+	(done) => exec(['npm run dist'], done),
 
-	done => cleanPackageJson(done, 'es'),
-	done => publish(done, 'es'),
+	(done) => cleanPackageJson(done, 'es'),
+	(done) => publish(done, 'es'),
 
-	done => cleanPackageJson(done, 'commonjs'),
-	done => publish(done, 'commonjs'),
+	(done) => cleanPackageJson(done, 'commonjs'),
+	(done) => publish(done, 'commonjs'),
 
-	done => cleanPackageJson(done, 'amd'),
-	done => publish(done, 'amd')
-], err => {
+	(done) => cleanPackageJson(done, 'amd'),
+	(done) => publish(done, 'amd')
+], (err) => {
 	if (err) throw err;
 });

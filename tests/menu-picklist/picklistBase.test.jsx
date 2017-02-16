@@ -28,7 +28,7 @@ describe('SLDSMenuPicklist: ',	function () {
 		}
 	];
 
-	const renderPicklist = inst => {
+	const renderPicklist = (inst) => {
 		body = document.createElement('div');
 		document.body.appendChild(body);
 		return ReactDOM.render(inst, body);
@@ -46,10 +46,10 @@ describe('SLDSMenuPicklist: ',	function () {
 		value: 'C0'
 	};
 
-	const createPicklist = props => React.createElement(SLDSMenuPicklist, assign({}, defaultProps, props));
+	const createPicklist = (props) => React.createElement(SLDSMenuPicklist, assign({}, defaultProps, props));
 
-	const getPicklist = props => renderPicklist(createPicklist(props));
-	const getMenu = dom => dom.querySelector('.slds-dropdown');
+	const getPicklist = (props) => renderPicklist(createPicklist(props));
+	const getMenu = (dom) => dom.querySelector('.slds-dropdown');
 
 	const clickOnItem = (cmp, index) => {
 		const items = scryRenderedDOMComponentsWithTag(cmp, 'a');
@@ -57,7 +57,8 @@ describe('SLDSMenuPicklist: ',	function () {
 	};
 
 	describe('in modal mode', () => {
-		let cmp, btn;
+		let cmp,
+			btn;
 
 		beforeEach(() => {
 			cmp = getPicklist({ modal: true });
@@ -77,58 +78,62 @@ describe('SLDSMenuPicklist: ',	function () {
 				expect(getMenu(document.body)).to.equal(null);
 				done();
 			}, 600);
-		})
+		});
 	});
 
 	describe('with click handler', () => {
-		let cmp, btn, clicked;
+		let cmp,
+			btn,
+			clicked;
 
 		beforeEach(() => {
 			clicked = false;
-			cmp = getPicklist({onClick: () => clicked = true });
+			cmp = getPicklist({ onClick: () => clicked = true });
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
-		})
+		});
 
 		afterEach(() => {
 			removePicklist();
-		})
+		});
 
 		it('gives the button correct aria properties', () => {
-			expect(btn.getAttribute('aria-haspopup')).to.equal("true");
-		})
+			expect(btn.getAttribute('aria-haspopup')).to.equal('true');
+		});
 
 		it('sets the placeholder', () => {
 			expect(btn.textContent).to.equal('Select a contact');
-		})
+		});
 
 		it('expands/contracts the dropdown on click', () => {
-			expect(getMenu(body)).to.equal(null)
+			expect(getMenu(body)).to.equal(null);
 			Simulate.click(btn, {});
 			expect(getMenu(body).className).to.include('slds-dropdown');
 			Simulate.click(btn, {});
 			expect(getMenu(body)).to.equal(null);
-		})
+		});
 
 		it('preserves click behavior', () => {
-			expect(clicked).to.be.false
-			Simulate.click(btn, {})
-			expect(clicked).to.be.true
-		})
-	})
+			expect(clicked).to.be.false;
+			Simulate.click(btn, {});
+			expect(clicked).to.be.true;
+		});
+	});
 
 	describe('expanded with onSelect', () => {
-		let cmp, btn, selected;
+		let cmp,
+			btn,
+			selected;
 
 		beforeEach(() => {
 			selected = false;
-			cmp = getPicklist({onSelect: i => selected = i });
+			cmp = getPicklist({ onSelect: (i) => selected = i });
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 			Simulate.click(btn, {});
-		})
+		});
 
 		afterEach(() => {
 			removePicklist();
-		})
+		});
 
 
 		it('selects an item', () => {
@@ -136,111 +141,115 @@ describe('SLDSMenuPicklist: ',	function () {
 			const items = getMenu(body).querySelectorAll('.slds-dropdown__item');
 			Simulate.click(items[1].querySelector('a'), {});
 			expect(selected.value).to.equal('B0');
-		})
-
-	})
+		});
+	});
 
 	describe('disabled', () => {
-		let cmp, btn, clicked;
+		let cmp,
+			btn,
+			clicked;
 
 		beforeEach(() => {
 			clicked = false;
-			cmp = getPicklist({disabled: true, onClick: () => clicked = true });
+			cmp = getPicklist({ disabled: true, onClick: () => clicked = true });
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
-		})
+		});
 
 		afterEach(() => {
 			removePicklist();
-		})
+		});
 
 
 		it("doesn't open", () => {
 			Simulate.click(btn, {});
 			expect(getMenu(body)).to.equal(null);
-		})
+		});
 
 		it('prevents click behavior', () => {
 			expect(clicked).to.be.false;
-			Simulate.click(btn, {})
+			Simulate.click(btn, {});
 			expect(clicked).to.be.false;
-		})
-	})
+		});
+	});
 
 	describe('accessible markup', () => {
-		let cmp, btn, selected;
+		let cmp,
+			btn,
+			selected;
 
 		beforeEach(() => {
 			selected = false;
-			cmp = getPicklist({onSelect: i => selected = i });
+			cmp = getPicklist({ onSelect: (i) => selected = i });
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
-		})
+		});
 
 		afterEach(() => {
 			removePicklist();
-		})
+		});
 
 
 		it('<ul> has role menu & aria-labelledby', () => {
 			Simulate.click(btn, {});
-			let ulRole = getMenu(body).querySelector('ul').getAttribute('role');
-			let ulAria = getMenu(body).querySelector('ul').getAttribute('aria-labelledby');
+			const ulRole = getMenu(body).querySelector('ul').getAttribute('role');
+			const ulAria = getMenu(body).querySelector('ul').getAttribute('aria-labelledby');
 			expect(ulRole).to.equal('menu');
 			expect(ulAria).to.equal(btn.getAttribute('id'));
-		})
+		});
 
 		it('<a> inside <li> has role menuitem', () => {
 			Simulate.click(btn, {});
-			const items = getMenu(body).querySelectorAll('.slds-dropdown__item a')
-			let anchorRole = items[1].getAttribute('role');
-			let match = (anchorRole === 'menuitem' || anchorRole === 'menuitemradio' || anchorRole === 'menuitemcheckbox');
+			const items = getMenu(body).querySelectorAll('.slds-dropdown__item a');
+			const anchorRole = items[1].getAttribute('role');
+			const match = (anchorRole === 'menuitem' || anchorRole === 'menuitemradio' || anchorRole === 'menuitemcheckbox');
 			expect(match).to.be.true;
-		})
-	})
+		});
+	});
 
 	describe('Keyboard behavior', () => {
-		let cmp, btn, selected;
+		let cmp,
+			btn,
+			selected;
 
 		beforeEach(() => {
 			selected = false;
-			cmp = getPicklist({onSelect: i => selected = i });
+			cmp = getPicklist({ onSelect: (i) => selected = i });
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
-		})
+		});
 
 		afterEach(() => {
 			removePicklist();
-		})
+		});
 
 		it('opens menu with enter', () => {
 			expect(getMenu(body)).to.equal(null);
-			Simulate.keyDown(btn, {key: "Enter", keyCode: 13, which: 13});
+			Simulate.keyDown(btn, { key: 'Enter', keyCode: 13, which: 13 });
 			expect(getMenu(body)).to.not.equal(null);
-		})
+		});
 
 		it('opens menu with down arrow key', () => {
-			expect(getMenu(body)).to.equal(null)
-			Simulate.keyDown(btn, {key: "Down", keyCode: 40, which: 40});
-			expect(getMenu(body)).to.not.equal(null)
-		})
+			expect(getMenu(body)).to.equal(null);
+			Simulate.keyDown(btn, { key: 'Down', keyCode: 40, which: 40 });
+			expect(getMenu(body)).to.not.equal(null);
+		});
 
 		it('selects an item with keyboard', () => {
 			Simulate.click(btn, {});
 			expect(selected).to.be.false;
 
 			const menu = getMenu(body);
-			Simulate.keyDown(menu, { key: "Down", keyCode: 40, which: 40 });
-			Simulate.keyDown(menu, { key: "Down", keyCode: 40, which: 40 });
-			Simulate.keyDown(menu, {key: "Enter", keyCode: 13, which: 13});
+			Simulate.keyDown(menu, { key: 'Down', keyCode: 40, which: 40 });
+			Simulate.keyDown(menu, { key: 'Down', keyCode: 40, which: 40 });
+			Simulate.keyDown(menu, { key: 'Enter', keyCode: 13, which: 13 });
 			expect(selected.value).to.equal('B0');
-		})
+		});
 
 		it('closes Menu on esc', () => {
 			expect(getMenu(body)).to.equal(null);
 			Simulate.click(btn, {});
 			expect(getMenu(body)).to.not.equal(null);
-			let menuItems = getMenu(body).querySelectorAll('.slds-dropdown__item');
-			Simulate.keyDown(menuItems[1].querySelector('a'), {key: "Esc", keyCode: 27, which: 27});
+			const menuItems = getMenu(body).querySelectorAll('.slds-dropdown__item');
+			Simulate.keyDown(menuItems[1].querySelector('a'), { key: 'Esc', keyCode: 27, which: 27 });
 			expect(getMenu(body)).to.equal(null);
-		})
-
-	})
+		});
+	});
 });

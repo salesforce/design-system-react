@@ -19,7 +19,7 @@ describe('SLDSIcon: ', function () {
 	const defaultProps = {};
 	let body;
 
-	const renderIcon = inst => {
+	const renderIcon = (inst) => {
 		body = document.createElement('div');
 		document.body.appendChild(body);
 		return ReactDOM.render(inst, body);

@@ -14,7 +14,7 @@ import Button from '../../components/button';
 import SLDSSettings from '../../components/SLDSSettings';
 SLDSSettings.setAppElement('#root');	// used by Modal component
 
-const getModal = props => (
+const getModal = (props) => (
 	<Modal {...props} />
 );
 
@@ -34,7 +34,7 @@ const modalContent = (
 		<div className="slds-form-element slds-m-bottom--large">
 			<label className="slds-form-element__label" htmlFor="description">Opportunity Description</label>
 			<div className="slds-form-element__control">
-				<textarea id="description" className="slds-textarea" placeholder="Enter description"></textarea>
+				<textarea id="description" className="slds-textarea" placeholder="Enter description" />
 			</div>
 		</div>
 
@@ -132,7 +132,7 @@ const modalContent = (
 );
 
 storiesOf(MODAL, module)
-	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Small', () => getModal({
 		isOpen: true,
 		tagline: 'Enter in details below',
@@ -170,7 +170,7 @@ storiesOf(MODAL, module)
 	.add('Prompt', () => getModal({
 		isOpen: true,
 		title: 'Delete state - Default',
-		children: <div className='slds-p-around--medium'>Are you sure you want to delete the Default State? This action cannot be undone. Are you sure you want to delete the Default State? This action cannot be undone. Are you sure you want to delete the Default State? This action cannot be undone. <Button className="slds-m-around--medium">Ok, got it!</Button></div>, // eslint-disable-line max-len
+		children: <div className="slds-p-around--medium">Are you sure you want to delete the Default State? This action cannot be undone. Are you sure you want to delete the Default State? This action cannot be undone. Are you sure you want to delete the Default State? This action cannot be undone. <Button className="slds-m-around--medium">Ok, got it!</Button></div>, // eslint-disable-line max-len
 		prompt: 'error',
 		onRequestClose: action('modal closed')
 	}));

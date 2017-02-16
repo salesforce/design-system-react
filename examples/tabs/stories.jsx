@@ -83,7 +83,7 @@ const getTabsNested = () => (
 					id="unique-id-123"
 					name="left-clickable-icon"
 					label="Input Label"
-					iconLeft={<InputIcon name="search" category="utility" onClick={action('search icon clicked')}/>}
+					iconLeft={<InputIcon name="search" category="utility" onClick={action('search icon clicked')} />}
 					placeholder="You can tab onto this to focus it."
 				/>
 
@@ -463,7 +463,7 @@ const getTabsDisabled = () => (
 
 
 storiesOf(TABS, module)
-	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Base', () => getTabs())
 	.add('With disabled tab', () => getTabsDisabled())
 	.add('Nested', () => getTabsNested())

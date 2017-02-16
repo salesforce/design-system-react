@@ -28,13 +28,13 @@ describe('DataTable: ', function () {
 		document.body.removeChild(this.dom);
 	}
 
-	const getWrapper = dom => dom.querySelector('.slds-form-element');
+	const getWrapper = (dom) => dom.querySelector('.slds-form-element');
 
-	const getInput = dom => dom.querySelector('.slds-input');
+	const getInput = (dom) => dom.querySelector('.slds-input');
 
-	const getStatic = dom => dom.querySelector('.slds-form-element__static');
+	const getStatic = (dom) => dom.querySelector('.slds-form-element__static');
 
-	const getTrigger = dom => getStatic(dom).querySelector('.slds-button');
+	const getTrigger = (dom) => getStatic(dom).querySelector('.slds-button');
 
 	describe('Structure', function () {
 		beforeEach(renderInlineEdit(

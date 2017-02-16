@@ -103,7 +103,7 @@ const DemoDataTable = React.createClass({
 
 	handleChange (selection, ...rest) {
 		action('change')(selection, ...rest);
-		console.log("selection", selection);
+		console.log('selection', selection);
 		console.dir(...rest);
 		this.setState({ selection });
 	},
@@ -127,7 +127,7 @@ const DemoDataTable = React.createClass({
 				val = -1;
 			}
 
-			if (sortDirection === 'desc') val = val * -1;
+			if (sortDirection === 'desc') val *= -1;
 
 			return val;
 		});
@@ -137,7 +137,7 @@ const DemoDataTable = React.createClass({
 });
 
 storiesOf(DATA_TABLE, module)
-	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Striped', () => <DemoDataTable striped />)
 	.add('Bordered', () => <DemoDataTable bordered />)
 	.add('Buffered', () => <DemoDataTable buffered />)

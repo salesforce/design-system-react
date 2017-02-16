@@ -125,7 +125,7 @@ const Example = React.createClass({
 				val = -1;
 			}
 
-			if (sortDirection === 'desc') val = val * -1;
+			if (sortDirection === 'desc') val *= -1;
 
 			return val;
 		});

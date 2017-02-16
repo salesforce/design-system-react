@@ -32,7 +32,7 @@ const Example = React.createClass({
 					texture
 					variant="alert"
 				/>
-				<span> </span>
+				<span />
 				<Button
 					label="Open success alert"
 					onClick={(event) => { this.toggleOpen(event, 'success'); }}
@@ -46,7 +46,7 @@ const Example = React.createClass({
 					theme="success"
 					variant="alert"
 				/>
-				<span> </span>
+				<span />
 				<Button
 					label="Open error alert"
 					onClick={(event) => { this.toggleOpen(event, 'error'); }}
@@ -60,7 +60,7 @@ const Example = React.createClass({
 					theme="error"
 					variant="alert"
 				/>
-				<span> </span>
+				<span />
 				<Button
 					label="Open offline alert"
 					onClick={(event) => { this.toggleOpen(event, 'offline'); }}

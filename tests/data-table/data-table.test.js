@@ -84,7 +84,7 @@ describe('DataTable: ', function () {
 		document.body.removeChild(this.dom);
 	}
 
-	const getTable = dom => dom.querySelector('.slds-table');
+	const getTable = (dom) => dom.querySelector('.slds-table');
 
 	const getRow = (dom, row) => {
 		const tbody = getTable(dom).querySelectorAll('tbody')[0];
@@ -96,7 +96,7 @@ describe('DataTable: ', function () {
 		return tr.querySelectorAll('td')[column];
 	};
 
-	const getMenu = dom => dom.querySelector('.slds-dropdown');
+	const getMenu = (dom) => dom.querySelector('.slds-dropdown');
 
 	describe('Structure', function () {
 		beforeEach(renderTable(
@@ -177,8 +177,8 @@ describe('DataTable: ', function () {
 
 		it('can deselect a row', function (done) {
 			this.onChange = (newSelection, ...rest) => {
-				console.log("newSelection", newSelection);
-				console.log("...rest", ...rest);
+				console.log('newSelection', newSelection);
+				console.log('...rest', ...rest);
 				newSelection.should.have.length(0);
 				done();
 			};
@@ -196,10 +196,10 @@ describe('DataTable: ', function () {
 			const tbody = getTable(this.dom).querySelectorAll('tbody')[0];
 			const selectedRow = tbody.querySelectorAll('tr.slds-is-selected')[0];
 			const checkbox = selectedRow.querySelectorAll('.slds-checkbox input')[0];
-			console.log("tbody", tbody);
-			console.log("selectedRow", selectedRow);
-			console.log("checkbox", checkbox);
-			Simulate.change(checkbox, { target: { checked: false }});
+			console.log('tbody', tbody);
+			console.log('selectedRow', selectedRow);
+			console.log('checkbox', checkbox);
+			Simulate.change(checkbox, { target: { checked: false } });
 		});
 
 		it('can select a row', function (done) {
@@ -222,7 +222,7 @@ describe('DataTable: ', function () {
 			const secondRow = getRow(this.dom, 2);
 			const checkbox = secondRow.querySelectorAll('.slds-checkbox input')[0];
 
-			Simulate.change(checkbox, { target: { checked: true }});
+			Simulate.change(checkbox, { target: { checked: true } });
 		});
 
 		it('can select all rows', function (done) {
@@ -243,7 +243,7 @@ describe('DataTable: ', function () {
 			const thead = getTable(this.dom).querySelectorAll('thead')[0];
 			const checkAll = thead.querySelectorAll('.slds-checkbox input')[0];
 
-			Simulate.change(checkAll, { target: { checked: true }});
+			Simulate.change(checkAll, { target: { checked: true } });
 		});
 
 		it('can deselect all rows', function (done) {
@@ -265,7 +265,7 @@ describe('DataTable: ', function () {
 			const thead = getTable(this.dom).querySelectorAll('thead')[0];
 			const checkAll = thead.querySelectorAll('.slds-checkbox input')[0];
 
-			Simulate.change(checkAll, { target: { checked: false }});
+			Simulate.change(checkAll, { target: { checked: false } });
 		});
 	});
 

@@ -110,7 +110,7 @@ const documentationSiteLiveExamples = {
 	'time-picker': [
 		require('raw-loader!design-system-react/examples/time-picker/default.jsx')
 	],
-	'tooltip': [
+	tooltip: [
 		require('raw-loader!design-system-react/examples/tooltip/base.jsx'),
 		require('raw-loader!design-system-react/examples/tooltip/button.jsx'),
 		require('raw-loader!design-system-react/examples/tooltip/button-group.jsx')

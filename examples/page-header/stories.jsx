@@ -273,7 +273,7 @@ const relatedListTrail = [
 
 
 storiesOf(PAGE_HEADER, module)
-	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Base', () => getPageHeader({
 		iconAssistiveText: 'Opportunity',
 		iconCategory: 'standard',

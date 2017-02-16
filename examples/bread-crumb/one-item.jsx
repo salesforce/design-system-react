@@ -11,7 +11,7 @@ const Example = React.createClass({
 
 		return (
 			<BreadCrumb trail={trail} />
-			);
+		);
 	}
 });
 

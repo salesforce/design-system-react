@@ -1,13 +1,13 @@
-var express = require('express');
-var path = require('path');
-var port = 8001;
-var webpack = require('webpack');
-var webpackDevMiddleware = require('webpack-dev-middleware');
-var webpackHotMiddleware = require('webpack-hot-middleware');
-var webpackConfig = require('../webpack.config.test');
+const express = require('express');
+const path = require('path');
+const port = 8001;
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const webpackConfig = require('../webpack.config.test');
 
-var app = express();
-var compiler = webpack(webpackConfig);
+const app = express();
+const compiler = webpack(webpackConfig);
 
 // // Use the webpack dev middleware for development
 app.use(webpackDevMiddleware(compiler, {
@@ -27,8 +27,8 @@ app.use('/node_modules', express.static(path.join(__dirname, '../node_modules'))
 
 // Needed for in browser testing
 app.use(express.static(path.join(__dirname, '../tests')));
-app.use('/base/node_modules', express.static(__dirname + '/node_modules'));
+app.use('/base/node_modules', express.static(`${__dirname}/node_modules`));
 
-var server = app.listen(port, function() {
-	console.log('In-browser unit test server listening on port ' + server.address().port);
+var server = app.listen(port, () => {
+	console.log(`In-browser unit test server listening on port ${server.address().port}`);
 });

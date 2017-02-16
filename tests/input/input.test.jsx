@@ -26,7 +26,7 @@ describe('SLDS INPUT **************************************************', () => 
 
 	let body;
 
-	const renderInput = instance => {
+	const renderInput = (instance) => {
 		body = document.createElement('div');
 		document.body.appendChild(body);
 		return ReactDOM.render(instance, body);

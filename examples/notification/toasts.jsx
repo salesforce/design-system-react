@@ -31,7 +31,7 @@ const Example = React.createClass({
 					onDismiss={(event) => { this.toggleOpen(event, 'base'); }}
 					variant="toast"
 				/>
-				<span> </span>
+				<span />
 				<Button
 					label="Open success toast"
 					onClick={(event) => { this.toggleOpen(event, 'success'); }}
@@ -44,7 +44,7 @@ const Example = React.createClass({
 					theme="success"
 					variant="toast"
 				/>
-				<span> </span>
+				<span />
 				<Button
 					label="Open warning toast"
 					onClick={(event) => { this.toggleOpen(event, 'warning'); }}
@@ -56,7 +56,7 @@ const Example = React.createClass({
 					theme="warning"
 					variant="toast"
 				/>
-				<span> </span>
+				<span />
 				<Button
 					label="Open error toast"
 					onClick={(event) => { this.toggleOpen(event, 'error'); }}
