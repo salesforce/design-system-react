@@ -172,7 +172,7 @@
       ]
     },
     {
-      "component": "bread-crumb",
+      "component": "breadcrumb",
       "status": "prod",
       "display-name": "Breadcrumbs",
       "SLDS-component-path": "/components/breadcrumbs"

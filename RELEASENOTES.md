@@ -22,6 +22,8 @@ These are changes that have backwards-compatible solutions present and that comp
     - menu-list/list-item-label
     - menu-list/list-item
     - menu-list/list
+- BreadCrumb is now Breadcrumb (bread-crumb -> breadcrumb)
+
 
 ---
 

@@ -1,13 +1,12 @@
 import React from 'react';
-import BreadCrumb from '~/components/bread-crumb'; // `~` is replaced with design-system-react at runtime
+import BreadCrumb from '~/components/breadcrumb'; // `~` is replaced with design-system-react at runtime
 
 const Example = React.createClass({
 	displayName: 'BreadCrumbExample',
 
 	render () {
 		const trail = [
-			(<a href="javascript:void(0);">Parent Entity</a>),
-			(<a href="javascript:void(0);">Parent Record Name</a>)
+			(<a href="#">Parent Entity</a>)
 		];
 
 		return (
