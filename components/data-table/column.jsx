@@ -49,32 +49,32 @@ DataTableColumn.propTypes = {
    * </DataTable>
    * ```
    */
-  children: React.PropTypes.element,
+	children: React.PropTypes.element,
   /**
    * The column label.
    */
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+	label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
    * The primary column for a row. This is almost always the first column.
    */
-  primaryColumn: PropTypes.bool,
+	primaryColumn: PropTypes.bool,
   /**
    * The property which corresponds to this column.
    */
-  property: PropTypes.string,
+	property: PropTypes.string,
   /**
    * Whether or not the column is sortable.
    */
-  sortable: PropTypes.bool,
+	sortable: PropTypes.bool,
   /**
    * The current sort direction. If left out the component will track this internally.
    */
-  sortDirection: PropTypes.oneOf(['desc', 'asc']),
-  truncate: PropTypes.bool,
+	sortDirection: PropTypes.oneOf(['desc', 'asc']),
+	truncate: PropTypes.bool,
   /**
    * Width of column. This is required for advanced/fixed layout tables. Please provide units. (`rems` are recommended)
    */
-  width: PropTypes.string
+	width: PropTypes.string
 };
 
 module.exports = DataTableColumn;

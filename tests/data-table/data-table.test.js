@@ -73,7 +73,7 @@ describe('DataTable: ', function () {
 		selectRows: true
 	};
 
-	const renderTable = (instance) => function () {
+	const renderTable = instance => function () {
 		this.dom = document.createElement('div');
 		document.body.appendChild(this.dom);
 		this.component = ReactDOM.render(instance, this.dom);
@@ -103,7 +103,7 @@ describe('DataTable: ', function () {
 			<DataTable
 				{...defaultProps}
 			>
-				{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+				{columns.map(columnProps => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 			</DataTable>
 		));
 
@@ -138,7 +138,7 @@ describe('DataTable: ', function () {
 					{...defaultProps}
 					selectRows={false}
 				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+					{columns.map(columnProps => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 				</DataTable>
 			).call(this);
 			checkboxes = getTable(this.dom).querySelectorAll('.slds-checkbox');
@@ -164,7 +164,7 @@ describe('DataTable: ', function () {
 					{...defaultProps}
 					selection={defaultSelection}
 				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+					{columns.map(columnProps => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 				</DataTable>
 			).call(this);
 
@@ -177,8 +177,8 @@ describe('DataTable: ', function () {
 
 		it('can deselect a row', function (done) {
 			this.onChange = (newSelection, ...rest) => {
-				console.log("newSelection", newSelection);
-				console.log("...rest", ...rest);
+				console.log('newSelection', newSelection);
+				console.log('...rest', ...rest);
 				newSelection.should.have.length(0);
 				done();
 			};
@@ -189,17 +189,17 @@ describe('DataTable: ', function () {
 					selection={defaultSelection}
 					onChange={this.onChange}
 				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+					{columns.map(columnProps => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 				</DataTable>
 			).call(this);
 
 			const tbody = getTable(this.dom).querySelectorAll('tbody')[0];
 			const selectedRow = tbody.querySelectorAll('tr.slds-is-selected')[0];
 			const checkbox = selectedRow.querySelectorAll('.slds-checkbox input')[0];
-			console.log("tbody", tbody);
-			console.log("selectedRow", selectedRow);
-			console.log("checkbox", checkbox);
-			Simulate.change(checkbox, { target: { checked: false }});
+			console.log('tbody', tbody);
+			console.log('selectedRow', selectedRow);
+			console.log('checkbox', checkbox);
+			Simulate.change(checkbox, { target: { checked: false } });
 		});
 
 		it('can select a row', function (done) {
@@ -215,14 +215,14 @@ describe('DataTable: ', function () {
 					selection={defaultSelection}
 					onChange={this.onChange}
 				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+					{columns.map(columnProps => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 				</DataTable>
 			).call(this);
 
 			const secondRow = getRow(this.dom, 2);
 			const checkbox = secondRow.querySelectorAll('.slds-checkbox input')[0];
 
-			Simulate.change(checkbox, { target: { checked: true }});
+			Simulate.change(checkbox, { target: { checked: true } });
 		});
 
 		it('can select all rows', function (done) {
@@ -236,14 +236,14 @@ describe('DataTable: ', function () {
 					{...defaultProps}
 					onChange={this.onChange}
 				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+					{columns.map(columnProps => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 				</DataTable>
 			).call(this);
 
 			const thead = getTable(this.dom).querySelectorAll('thead')[0];
 			const checkAll = thead.querySelectorAll('.slds-checkbox input')[0];
 
-			Simulate.change(checkAll, { target: { checked: true }});
+			Simulate.change(checkAll, { target: { checked: true } });
 		});
 
 		it('can deselect all rows', function (done) {
@@ -258,14 +258,14 @@ describe('DataTable: ', function () {
 					selection={items}
 					onChange={this.onChange}
 				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+					{columns.map(columnProps => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 				</DataTable>
 			).call(this);
 
 			const thead = getTable(this.dom).querySelectorAll('thead')[0];
 			const checkAll = thead.querySelectorAll('.slds-checkbox input')[0];
 
-			Simulate.change(checkAll, { target: { checked: false }});
+			Simulate.change(checkAll, { target: { checked: false } });
 		});
 	});
 
@@ -284,7 +284,7 @@ describe('DataTable: ', function () {
 					{...defaultProps}
 					onSort={this.onSort}
 				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+					{columns.map(columnProps => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 				</DataTable>
 			).call(this);
 
@@ -304,7 +304,7 @@ describe('DataTable: ', function () {
 					{...defaultProps}
 					onSort={this.onSort}
 				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+					{columns.map(columnProps => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 				</DataTable>
 			).call(this);
 
@@ -324,7 +324,7 @@ describe('DataTable: ', function () {
 				<DataTable
 					{...defaultProps}
 				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+					{columns.map(columnProps => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 					<DataTableRowActions
 						options={[
 							{
@@ -356,7 +356,7 @@ describe('DataTable: ', function () {
 				<DataTable
 					{...defaultProps}
 				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+					{columns.map(columnProps => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 					<DataTableRowActions
 						options={[
 							{
@@ -395,7 +395,7 @@ describe('DataTable: ', function () {
 					{...defaultProps}
 					search="Cloud"
 				>
-					{columns.map((columnProps) => (
+					{columns.map(columnProps => (
 						<DataTableColumn {...columnProps} key={columnProps.property}>
 							<DataTableHighlightCell />
 						</DataTableColumn>

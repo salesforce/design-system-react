@@ -100,8 +100,8 @@ const DataTableHeaderCell = React.createClass({
 			<th
 				aria-sort={ariaSort}
 				className={classNames({
-					"slds-is-sortable": sortable,
-					"slds-is-sorted": isSorted,
+					'slds-is-sortable': sortable,
+					'slds-is-sorted': isSorted,
 					[`slds-is-sorted--${sortDirection}`]: sortDirection,
 					'slds-is-sorted--asc': isSorted && !sortDirection // default for hover, up arrow is ascending which means A is at the top of the table, and Z is at the bottom. You have to think about row numbers abstracting, and not the visual order on the table.
 				})}
@@ -110,7 +110,7 @@ const DataTableHeaderCell = React.createClass({
 				onClick={sortable && this.handleSort}
 				scope="col"
 			>
-					{sortable
+				{sortable
 						?	<a
 							href="javascript:void(0)"
 							className="slds-th__action slds-text-link--reset"

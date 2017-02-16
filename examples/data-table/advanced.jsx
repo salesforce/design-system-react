@@ -79,7 +79,7 @@ const Example = React.createClass({
 					selectRows
 				>
 					<DataTableColumn
-						isSorted={this.state.sortColumn === "opportunityName"}
+						isSorted={this.state.sortColumn === 'opportunityName'}
 						label="Name"
 						primaryColumn
 						property="opportunityName"
@@ -102,7 +102,7 @@ const Example = React.createClass({
 						property="stage"
 					/>
 					<DataTableColumn
-						isSorted={this.state.sortColumn === "confidence"}
+						isSorted={this.state.sortColumn === 'confidence'}
 						label="Confidence"
 						property="confidence"
 						sortable
@@ -166,7 +166,7 @@ const Example = React.createClass({
 				val = -1;
 			}
 
-			if (sortDirection === 'desc') val = val * -1;
+			if (sortDirection === 'desc') val *= -1;
 
 			return val;
 		});

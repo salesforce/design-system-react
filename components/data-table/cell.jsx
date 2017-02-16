@@ -25,7 +25,7 @@ const { PropTypes } = React;
  * The default Cell renderer for the DataTable. Pass in any React component with the same `displayName` which takes the same props to provide custom rendering.
  */
 const DataTableCell = (props) => {
-	const childText = typeof props.children == 'object' ? props.children.props.children : props.children;
+	const childText = typeof props.children === 'object' ? props.children.props.children : props.children;
 	const contents = (
 		<div
 			className={classNames({
