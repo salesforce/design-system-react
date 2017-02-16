@@ -1,11 +1,8 @@
-/* eslint-disable indent */
-
-
 const fs = require('fs');
 const webpack = require('webpack');
-
 const packageJson = require('./package.json');
-const header = `${packageJson.name}\n` + `v${packageJson.version}\n`;
+
+const header = `${packageJson.name}\nv${packageJson.version}\n`;
 const license = fs.readFileSync('./LICENSE', 'utf8');
 
 const baseConfig = require('./webpack.config');
