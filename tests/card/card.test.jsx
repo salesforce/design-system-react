@@ -1,6 +1,3 @@
-/* global describe, beforeEach, afterEach, it */
-/* eslint-disable no-unused-expressions */
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import assign from 'lodash.assign';

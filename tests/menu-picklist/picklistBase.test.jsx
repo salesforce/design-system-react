@@ -1,5 +1,4 @@
-/* eslint-env mocha */
-/* eslint-disable prefer-arrow-callback */
+/* eslint-disable react/no-render-return-value */
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -57,8 +56,8 @@ describe('SLDSMenuPicklist: ',	function () {
 	};
 
 	describe('in modal mode', () => {
-		let cmp,
-			btn;
+		let cmp;
+		let	btn;
 
 		beforeEach(() => {
 			cmp = getPicklist({ modal: true });
@@ -82,13 +81,13 @@ describe('SLDSMenuPicklist: ',	function () {
 	});
 
 	describe('with click handler', () => {
-		let cmp,
-			btn,
-			clicked;
+		let cmp;
+		let	btn;
+		let	clicked;
 
 		beforeEach(() => {
 			clicked = false;
-			cmp = getPicklist({ onClick: () => clicked = true });
+			cmp = getPicklist({ onClick: () => { clicked = true; } });
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
 
@@ -120,13 +119,14 @@ describe('SLDSMenuPicklist: ',	function () {
 	});
 
 	describe('expanded with onSelect', () => {
-		let cmp,
-			btn,
-			selected;
+		let cmp;
+		let	btn;
+		let	clicked;
+		let	selected;
 
 		beforeEach(() => {
 			selected = false;
-			cmp = getPicklist({ onSelect: (i) => selected = i });
+			cmp = getPicklist({ onSelect: (i) => { selected = i; } });
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 			Simulate.click(btn, {});
 		});
@@ -145,13 +145,13 @@ describe('SLDSMenuPicklist: ',	function () {
 	});
 
 	describe('disabled', () => {
-		let cmp,
-			btn,
-			clicked;
+		let cmp;
+		let	btn;
+		let	clicked;
 
 		beforeEach(() => {
 			clicked = false;
-			cmp = getPicklist({ disabled: true, onClick: () => clicked = true });
+			cmp = getPicklist({ disabled: true, onClick: () => { clicked = true; } });
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
 
@@ -173,13 +173,14 @@ describe('SLDSMenuPicklist: ',	function () {
 	});
 
 	describe('accessible markup', () => {
-		let cmp,
-			btn,
-			selected;
+		let cmp;
+		let	btn;
+		let	clicked;
+		let	selected;
 
 		beforeEach(() => {
 			selected = false;
-			cmp = getPicklist({ onSelect: (i) => selected = i });
+			cmp = getPicklist({ onSelect: (i) => { selected = i; } });
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
 
@@ -206,13 +207,13 @@ describe('SLDSMenuPicklist: ',	function () {
 	});
 
 	describe('Keyboard behavior', () => {
-		let cmp,
-			btn,
-			selected;
+		let cmp;
+		let	btn;
+		let	selected;
 
 		beforeEach(() => {
 			selected = false;
-			cmp = getPicklist({ onSelect: (i) => selected = i });
+			cmp = getPicklist({ onSelect: (i) => { selected = i; } });
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
 

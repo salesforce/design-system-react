@@ -1,16 +1,3 @@
-/* Adds all of the Mocha (eg `it` and `should`) and sinon testing global
- * variables to the global namespace for eslint purposes.
- */
-/* eslint-env mocha */
-/* global sinon */
-
-// Additional modifiers to [eslint-config-slds](https://github.com/salesforce-ux/eslint-config-slds) for convenience
-/* eslint-disable no-console */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable max-len */
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable react/display-name */
-
 // Import your external dependencies
 import React, { PropTypes } from 'react';
 import chai, { expect } from 'chai';

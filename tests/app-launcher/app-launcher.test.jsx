@@ -1,10 +1,3 @@
-/* eslint-env mocha */
-/* global sinon */
-/* eslint-disable react/display-name */
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-console */
-/* eslint-disable max-len */
-
 import React from 'react';
 import { expect } from 'chai';
 import { mount, ReactWrapper } from 'enzyme';

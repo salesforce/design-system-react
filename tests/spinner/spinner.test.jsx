@@ -1,5 +1,3 @@
-/* eslint-disable indent */
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import assign from 'lodash.assign';
@@ -12,10 +10,10 @@ chai.should();
 describe('Spinner: ', () => {
 	// Setup and takedown
 	const renderSpinner = (instance) => function () {
-			this.dom = document.createElement('div');
-			document.body.appendChild(this.dom);
-			this.component = ReactDOM.render(instance, this.dom);
-		};
+		this.dom = document.createElement('div');
+		document.body.appendChild(this.dom);
+		this.component = ReactDOM.render(instance, this.dom);
+	};
 
 	function removeSpinner () {
 		ReactDOM.unmountComponentAtNode(this.dom);
@@ -25,7 +23,7 @@ describe('Spinner: ', () => {
 	const getSpinner = (dom) => dom.querySelector('.slds-spinner');
 
 	// Tests
-  describe('Default spinner renders properly', () => {
+	describe('Default spinner renders properly', () => {
 		before(renderSpinner(
 			<Spinner />
 		));
@@ -39,9 +37,9 @@ describe('Spinner: ', () => {
 
 		it('renders default classes when no props passed in', function () {
 			const spinner = getSpinner(this.dom);
-      spinner.className.should.equal('slds-spinner slds-spinner--medium');
+			spinner.className.should.equal('slds-spinner slds-spinner--medium');
 		});
-  });
+	});
 
 	describe('Props render proper css classes', () => {
 		beforeEach(renderSpinner(
@@ -52,7 +50,7 @@ describe('Spinner: ', () => {
 
 		it('renders correct classes when props passed in', function () {
 			const spinner = getSpinner(this.dom);
-      spinner.className.should.include('slds-spinner--small slds-spinner--brand');
+			spinner.className.should.include('slds-spinner--small slds-spinner--brand');
 		});
 	});
 });
