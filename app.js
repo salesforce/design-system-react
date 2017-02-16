@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 const auth = require('basic-auth');
 const compression = require('compression');
 const express = require('express');
@@ -10,21 +11,22 @@ const app = express();
 if (process.env.NODE_ENV === 'production') {
 	// Authentication
 	app.use((req, res, next) => {
-	  const user = auth(req);
-	  const username = process.env.AUTH_USERNAME;
-	  const password = process.env.AUTH_PASSWORD;
+		const user = auth(req);
+		const username = process.env.AUTH_USERNAME;
+		const password = process.env.AUTH_PASSWORD;
 
-	  const unauthorized = function () {
-	    res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
-	    res.sendStatus(401);
-	  };
+		const unauthorized = function () {
+			res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
+			res.sendStatus(401);
+		};
 
-	  if (!username || !password) return unauthorized();
-	  if (!user || user.name !== username || user.pass !== password) {
-	    return unauthorized();
-	  }
+		if (!username || !password) {
+			return unauthorized();
+		}	else if (!user || user.name !== username || user.pass !== password) {
+			return unauthorized();
+		}
 
-	  next();
+		next();
 	});
 }
 
@@ -35,6 +37,6 @@ app.use(compression());
 app.use(express.static(`${__dirname}/storybook`));
 
 // Listen
-var server = app.listen(port, () => {
+const server = app.listen(port, () => {
 	console.log('Server listening on port ', server.address().port);
 });
