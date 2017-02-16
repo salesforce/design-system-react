@@ -16,6 +16,7 @@ import GlobalNavigationBar from '../../components/global-navigation-bar';
 import GlobalNavigationBarRegion from '../../components/global-navigation-bar/region';
 
 import SLDSSettings from '../../components/SLDSSettings';
+
 SLDSSettings.setAppElement('#root');	// used by Modal component
 
 const standardTileDemoStyles = {

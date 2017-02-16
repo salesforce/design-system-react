@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-/* global sinon */
-/* eslint-disable react/display-name */
-
+/* eslint-disable react/no-render-return-value */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';

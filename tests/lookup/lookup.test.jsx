@@ -1,3 +1,6 @@
+/* eslint-disable react/no-render-return-value */
+/* eslint-disable react/no-find-dom-node */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -6,6 +9,7 @@ import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 
 import { SLDSLookup } from '../../components';
+
 const Header = SLDSLookup.DefaultHeader;
 const Footer = SLDSLookup.DefaultFooter;
 const { Simulate, scryRenderedDOMComponentsWithClass, scryRenderedDOMComponentsWithTag } = TestUtils;
@@ -26,12 +30,12 @@ describe('SLDSLookup: ', () => {
 		onChange (newValue) { console.log('New search term: ', newValue); },
 		onSelect (item) { console.log(item, ' Selected'); },
 		options: [
-      { label: 'Paddy"s Pub' },
-      { label: 'Tyrell Corp' },
-      { label: 'Paper St. Soap Company' },
-      { label: 'Nakatomi Investments' },
-      { label: 'Acme Landscaping' },
-      { label: 'Acme Construction' }
+			{ label: 'Paddy"s Pub' },
+			{ label: 'Tyrell Corp' },
+			{ label: 'Paper St. Soap Company' },
+			{ label: 'Nakatomi Investments' },
+			{ label: 'Acme Landscaping' },
+			{ label: 'Acme Construction' }
 		]
 	};
 
@@ -171,8 +175,8 @@ describe('SLDSLookup: ', () => {
 	});
 
 	describe('expanded', () => {
-		let lookup,
-			input;
+		let lookup;
+		let	input;
 
 		beforeEach(() => {
 			lookup = generateLookup(getLookup());
@@ -204,11 +208,11 @@ describe('SLDSLookup: ', () => {
 	});
 
 	describe('custom filter', () => {
-		let lookup,
-			input;
+		let lookup;
+		let	input;
 
 		beforeEach(() => {
-			lookup = generateLookup(getLookup({ filterWith: (t, i) => t === i.label[0] }));
+			lookup = generateLookup(getLookup({ filterWith: (text, i) => text === i.label[0] }));
 			input = lookup.getElementsByTagName('input')[0];
 			Simulate.click(input);
 		});

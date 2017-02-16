@@ -26,7 +26,7 @@ const getTabs = () => (
 			<Panel label="Tab 1">
 				<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 				<p>And they&rsquo;re amazing.</p>
-				<p>It's awesome.</p>
+				<p>It&quot;s awesome.</p>
 				<p>You can use your <var>TAB</var> and <var>ARROW</var> keys to navigate around. Try it!</p>
 				<p className="slds-box slds-theme--info slds-m-top--large">
 					(You might have to hit shift+tab to put the focus onto the tab bar ;)
@@ -130,7 +130,7 @@ const getTabsScoped = () => (
 			<Panel label="Tab 1">
 				<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 				<p>And they&rsquo;re amazing.</p>
-				<p>It's awesome.</p>
+				<p>It&quot;s awesome.</p>
 				<p>You can use your <var>TAB</var> and <var>ARROW</var> keys to navigate around. Try it!</p>
 				<p className="slds-box slds-theme--info slds-m-top--large">
 					(You might have to hit shift+tab to put the focus onto the tab bar ;)
@@ -413,17 +413,17 @@ const DemoTabsOutsideControl = React.createClass({
 					onSelect={this.handleSelect}
 				>
 					<Panel label="Monday">
-						<p>This is Monday's Pane.</p>
+						<p>This is Monday&quot;s Pane.</p>
 						<Button
 							id="tuesday-alt"
 							label="Submit and go to next tab"
 							onClick={this.handleButtonClicked}
 						/>
 					</Panel>
-					<Panel label="Tuesday"><p>This is Tuesday's Pane.</p></Panel>
-					<Panel label="Wednesday"><p>This is Wednesday's Pane.</p></Panel>
-					<Panel label="Thursday"><p>Thursday's Pane has far to go.</p></Panel>
-					<Panel label="Friday"><p>This is Friday's Pane.</p></Panel>
+					<Panel label="Tuesday"><p>This is Tuesday&quot;s Pane.</p></Panel>
+					<Panel label="Wednesday"><p>This is Wednesday&quot;s Pane.</p></Panel>
+					<Panel label="Thursday"><p>Thursday&quot;s Pane has far to go.</p></Panel>
+					<Panel label="Friday"><p>This is Friday&quot;s Pane.</p></Panel>
 				</Tabs>
 			</div>
 		);
@@ -438,7 +438,7 @@ const getTabsDisabled = () => (
 			<Panel label="Tab 1">
 				<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 				<p>And they&rsquo;re amazing.</p>
-				<p>It's awesome.</p>
+				<p>It&quot;s awesome.</p>
 				<p>You can use your <var>TAB</var> and <var>ARROW</var> keys to navigate around. Try it!</p>
 				<p className="slds-box slds-theme--info slds-m-top--large">
 					(You might have to hit shift+tab to put the focus onto the tab bar ;)

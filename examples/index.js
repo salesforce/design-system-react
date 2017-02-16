@@ -6,7 +6,7 @@ const documentationSiteLiveExamples = {
 	'app-launcher': [
 		require('raw-loader!design-system-react/examples/app-launcher/default.jsx')
 	],
-	'breadcrumb': [
+	breadcrumb: [
 		require('raw-loader!design-system-react/examples/breadcrumb/base.jsx'),
 		require('raw-loader!design-system-react/examples/breadcrumb/one-item.jsx')
 	],

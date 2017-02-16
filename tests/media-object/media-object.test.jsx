@@ -1,10 +1,4 @@
-/* eslint-env mocha */
-/* global sinon */
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
-
 import React from 'react';
-
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 // `this.wrapper` and `this.dom` is set in the helpers file

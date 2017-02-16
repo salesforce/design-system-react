@@ -1,11 +1,13 @@
+/* eslint-disable react/no-render-return-value */
+/* eslint-disable react/no-find-dom-node */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 
-import { SLDSButtonGroup } from '../../components';
-import { SLDSButton } from '../../components';
+import { SLDSButtonGroup, SLDSButton } from '../../components';
 
 describe('SLDSButtonGroup: ', () => {
 	const generateButtonGroup = function (buttonGroupInstance) {
