@@ -7,7 +7,8 @@ exports[`test Breadcrumb Base Snapshot 1`] = `
     <li
       className="slds-breadcrumb__item slds-text-title--caps">
       <a
-        href="javascript:void(0);">
+        href="javascript:void(0);"
+        id="parent-entity">
         Parent Entity
       </a>
     </li>
