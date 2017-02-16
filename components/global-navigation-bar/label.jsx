@@ -31,7 +31,7 @@ const GlobalNavigationBarLabel = (props) => {
 		className,
 		dividerPosition,
 		id,
-		label,
+		label
 	} = props;
 
 	return (

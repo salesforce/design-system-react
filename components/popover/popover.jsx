@@ -49,7 +49,7 @@ import { getMargin, getNubbinClassName } from '../../utilities/dialog-helpers';
 // #### KeyboardNavigable
 import keyboardNavigableDialog from '../../utilities/keyboard-navigable-dialog';
 
-import KEYS from '../../utilities/KEYS';
+import KEYS from '../../utilities/keys';
 import { POPOVER } from '../../utilities/constants';
 
 // The overlay is an optional way to allow the popover to close on outside
@@ -398,7 +398,7 @@ const Popover = React.createClass({
 
 	renderDialog (isOpen, outsideClickIgnoreClass) {
 		const props = this.props;
-		let offset = props.offset;
+		const offset = props.offset;
 		const style = this.props.style || {};
 
 		return (

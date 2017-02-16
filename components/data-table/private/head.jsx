@@ -74,7 +74,7 @@ const DataTableHead = React.createClass({
 						/>
 					)}
 					{this.props.showRowActions
-						? <th className="slds-cell-shrink"></th>
+						? <th className="slds-cell-shrink" />
 						: null
 					}
 				</tr>

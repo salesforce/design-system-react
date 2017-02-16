@@ -69,7 +69,7 @@ module.exports = React.createClass({
 	getSVG ({ viewBox, ...rest }, props) {
 		return (
 			<svg
-				aria-hidden={props["aria-hidden"]}
+				aria-hidden={props['aria-hidden']}
 				className={props.className}
 				viewBox={viewBox}
 				name={props.name}

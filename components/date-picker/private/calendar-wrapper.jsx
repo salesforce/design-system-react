@@ -12,8 +12,8 @@ import React, { PropTypes } from 'react';
 import Calendar from './calendar';
 import CalendarNavigation from './navigation';
 
-import EventUtil from '../../../utilities/EventUtil';
-import KEYS from '../../../utilities/KEYS';
+import EventUtil from '../../../utilities/event';
+import KEYS from '../../../utilities/keys';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)

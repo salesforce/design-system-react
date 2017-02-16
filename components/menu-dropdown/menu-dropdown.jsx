@@ -51,8 +51,8 @@ import checkProps from './check-props';
 // #### KeyboardNavigable
 import KeyboardNavigable from '../../utilities/keyboard-navigable-menu';
 
-import EventUtil from '../../utilities/EventUtil';
-import KEYS from '../../utilities/KEYS';
+import EventUtil from '../../utilities/event';
+import KEYS from '../../utilities/keys';
 import { MENU_DROPDOWN, MENU_DROPDOWN_TRIGGER, LIST } from '../../utilities/constants';
 
 // The overlay is an optional way to allow the dropdown to close on outside
@@ -678,7 +678,7 @@ const MenuDropdown = React.createClass({
 	renderDialog (customContent, isOpen, outsideClickIgnoreClass) {
 		let positionClassName;
 		let marginTop;
-		let offset = this.props.offset;
+		const offset = this.props.offset;
 
 		if (this.props.nubbinPosition) {
 			const positions = this.props.nubbinPosition.split(' ');
@@ -720,7 +720,7 @@ const MenuDropdown = React.createClass({
 				>
 					{this.renderMenuContent(customContent)}
 				</Dialog> : null
-			);
+		);
 	},
 
 	renderOverlay (isOpen) {

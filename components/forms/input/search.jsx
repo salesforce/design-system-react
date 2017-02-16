@@ -54,7 +54,7 @@ const Search = ({ assistiveText, clearable, onClear, onSearch, placeholder, ...p
 			name="clear"
 			onClick={onClear}
 		/> : null}
-		onKeyDown={onSearch ? event => handleKeyDown(event, onSearch) : null}
+		onKeyDown={onSearch ? (event) => handleKeyDown(event, onSearch) : null}
 		placeholder={placeholder}
 		{...props}
 	/>

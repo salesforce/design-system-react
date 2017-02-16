@@ -201,7 +201,7 @@ const AppLauncher = React.createClass({
 				{
 					this.props.modalHeaderButton
 					? this.props.modalHeaderButton
-					: <span className="slds-size--1-of-7"></span>
+					: <span className="slds-size--1-of-7" />
 				}
 			</div>
 		);
@@ -219,15 +219,15 @@ const AppLauncher = React.createClass({
 						onClick={this.openAppLauncher}
 					>
 						<div className="slds-icon-waffle">
-							<div className="slds-r1"></div>
-							<div className="slds-r2"></div>
-							<div className="slds-r3"></div>
-							<div className="slds-r4"></div>
-							<div className="slds-r5"></div>
-							<div className="slds-r6"></div>
-							<div className="slds-r7"></div>
-							<div className="slds-r8"></div>
-							<div className="slds-r9"></div>
+							<div className="slds-r1" />
+							<div className="slds-r2" />
+							<div className="slds-r3" />
+							<div className="slds-r4" />
+							<div className="slds-r5" />
+							<div className="slds-r6" />
+							<div className="slds-r7" />
+							<div className="slds-r8" />
+							<div className="slds-r9" />
 						</div>
 						{this.props.triggerAssistiveText && <span className="slds-assistive-text">{this.props.triggerAssistiveText}</span>}
 					</a>

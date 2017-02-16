@@ -209,7 +209,7 @@ class PopoverTooltip extends React.Component {
 					{this.getTooltipContent()}
 				</div>
 			</Dialog>
-			: <span></span>;
+			: <span />;
 	}
 
 	renderAssistantText () {
