@@ -16,6 +16,9 @@ import Checkbox from '../../components/forms/checkbox';
 // Used in the outside control story
 import Button from '../../components/button';
 
+// Used in the custom content story
+import Icon from '../../components/icon';
+
 import classNames from 'classnames';
 
 /* eslint-disable react/display-name */
@@ -461,6 +464,36 @@ const getTabsDisabled = () => (
 );
 /* eslint-enable react/display-name */
 
+/* eslint-disable react/display-name */
+const getCustomContentTabs = () => {
+	const tab1Label = (
+		<div aria-label="test accessibility!">
+			<Icon
+				assistiveText=""
+				category="utility"
+				name="list"
+				style={{ marginRight: '.5rem' }}
+				size="x-small"
+			/>
+			<span>my tab</span>
+		</div>
+	);
+	const tab2Label = <span style={{ color: 'red' }}>my other tab</span>;
+	return (
+		<div>
+			<h2 className="slds-text-heading--large">Custom Tab Contents Demo</h2>
+			<Tabs>
+				<Panel label={tab1Label}>
+					<h2 className="slds-text-heading--medium">This is my first custom content tab!</h2>
+				</Panel>
+				<Panel label={tab2Label}>
+					<h2 className="slds-text-heading--medium">This is my second custom content tab!</h2>
+				</Panel>
+			</Tabs>
+		</div>
+	);
+};
+/* eslint-enable react/display-name */
 
 storiesOf(TABS, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
@@ -471,6 +504,7 @@ storiesOf(TABS, module)
 	.add('Conditional', () => <DemoTabsConditional className="conditional-yo" />)
 	.add('Unique Generated IDs', () => getTabsMoreThanOneAllowGeneratedID())
 	.add('Scoped', () => getTabsScoped())
+	.add('Custom Tab Contents', () => getCustomContentTabs())
 	;
 
 module.exports = getTabs;
