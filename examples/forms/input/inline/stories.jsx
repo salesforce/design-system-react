@@ -25,14 +25,14 @@ const DemoInlineEdit = React.createClass({
 		);
 	},
 
-	handleChange (eventProps) {
-		action('change')(...arguments);
+	handleChange (eventProps, ...rest) {
+		action('change')(rest);
 
 		this.setState({ value: eventProps.value });
 	}
 });
 
 storiesOf(FORMS_INLINE_EDIT, module)
-	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Standard', () => <DemoInlineEdit name="inline-edit-standard" id="inline-edit-standard" />)
 	.add('Disabled', () => <DemoInlineEdit name="inline-edit-disabled" id="inline-edit-disabled" disabled />);

@@ -99,7 +99,7 @@ const GlobalHeaderDemo = (props) => (
 );
 
 storiesOf(GLOBAL_HEADER, module)
-	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Search + Navigation', () => (<GlobalHeaderDemo />))
 	.add('Open on Hybrid', () => (<GlobalHeaderDemo openOn="hybrid" />))
 	.add('Fewer Elements', () => (

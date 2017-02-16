@@ -22,8 +22,10 @@ import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import { TAB_PANEL } from '../../../utilities/constants';
 
+/* eslint-disable no-unused-vars */
 const TabPanel = ({ className, children, variant, selected, id, tabId, ...attributes }) => (
 	<div
+		aria-labelledby={tabId}
 		className={classNames(
 			className,
 			{
@@ -33,11 +35,8 @@ const TabPanel = ({ className, children, variant, selected, id, tabId, ...attrib
 				'slds-tabs--scoped__content': variant === 'scoped'
 			}
 		)}
-		role="tabpanel"
 		id={id}
-		aria-selected={selected ? 'true' : 'false'}
-		aria-labelledby={tabId}
-		variant={variant}
+		role="tabpanel"
 	>
 		{children.props.children}
 	</div>

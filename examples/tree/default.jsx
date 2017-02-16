@@ -1,3 +1,4 @@
+import React from 'react';
 import Tree from '~/components/tree';
 
 const sampleNodes = {
@@ -60,7 +61,7 @@ const sampleNodes = {
 							}, {
 								label: 'Lime', type: 'item', id: 23
 							}
-						]
+							]
 						},
 						{
 							label: 'Apples',
@@ -189,7 +190,7 @@ const sampleNodes = {
 							}, {
 								label: 'Lime', type: 'item', id: 23
 							}
-						]
+							]
 						},
 						{
 							label: 'Apples',
@@ -313,13 +314,11 @@ const TreeExample = React.createClass({
 			}
 			this.forceUpdate();
 			console.log('[handleClick] (event, data)', event, data);
-		} else {
-			if (!this.props.noBranchSelection ||
+		} else if (!this.props.noBranchSelection ||
 				(this.props.noBranchSelection && data.node.type !== 'branch')) {
-				data.node.selected = data.select;
-				this.forceUpdate();
-				console.log('[handleClick] (event, data)', event, data);
-			}
+			data.node.selected = data.select;
+			this.forceUpdate();
+			console.log('[handleClick] (event, data)', event, data);
 		}
 	},
 

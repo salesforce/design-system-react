@@ -63,7 +63,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 		if (!viewBox) viewBox = data.viewBox;
 		data = omit(data, ['viewBox']);
 		index.push(`${iconName}:${JSON.stringify(data)},`);
-	}, err => {
+	}, (err) => {
 		if (err) console.error(err);
 	});
 
@@ -79,6 +79,6 @@ async.each([
 	'custom',
 	'doctype',
 	'standard'
-], inlineIcons, err => {
+], inlineIcons, (err) => {
 	if (err) console.error(err);
 });

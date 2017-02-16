@@ -1,6 +1,3 @@
-/* eslint-env mocha */
-/* eslint-disable prefer-arrow-callback */
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
@@ -84,7 +81,7 @@ describe('DataTable: ', function () {
 		document.body.removeChild(this.dom);
 	}
 
-	const getTable = dom => dom.querySelector('.slds-table');
+	const getTable = (dom) => dom.querySelector('.slds-table');
 
 	const getRow = (dom, row) => {
 		const tbody = getTable(dom).querySelectorAll('tbody')[0];
@@ -96,7 +93,7 @@ describe('DataTable: ', function () {
 		return tr.querySelectorAll('td')[column];
 	};
 
-	const getMenu = dom => dom.querySelector('.slds-dropdown');
+	const getMenu = (dom) => dom.querySelector('.slds-dropdown');
 
 	describe('Structure', function () {
 		beforeEach(renderTable(

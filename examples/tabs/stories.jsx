@@ -16,6 +16,9 @@ import Checkbox from '../../components/forms/checkbox';
 // Used in the outside control story
 import Button from '../../components/button';
 
+// Used in the custom content story
+import Icon from '../../components/icon';
+
 import classNames from 'classnames';
 
 /* eslint-disable react/display-name */
@@ -26,7 +29,7 @@ const getTabs = () => (
 			<Panel label="Tab 1">
 				<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 				<p>And they&rsquo;re amazing.</p>
-				<p>It's awesome.</p>
+				<p>It&quot;s awesome.</p>
 				<p>You can use your <var>TAB</var> and <var>ARROW</var> keys to navigate around. Try it!</p>
 				<p className="slds-box slds-theme--info slds-m-top--large">
 					(You might have to hit shift+tab to put the focus onto the tab bar ;)
@@ -83,7 +86,7 @@ const getTabsNested = () => (
 					id="unique-id-123"
 					name="left-clickable-icon"
 					label="Input Label"
-					iconLeft={<InputIcon name="search" category="utility" onClick={action('search icon clicked')}/>}
+					iconLeft={<InputIcon name="search" category="utility" onClick={action('search icon clicked')} />}
 					placeholder="You can tab onto this to focus it."
 				/>
 
@@ -130,7 +133,7 @@ const getTabsScoped = () => (
 			<Panel label="Tab 1">
 				<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 				<p>And they&rsquo;re amazing.</p>
-				<p>It's awesome.</p>
+				<p>It&quot;s awesome.</p>
 				<p>You can use your <var>TAB</var> and <var>ARROW</var> keys to navigate around. Try it!</p>
 				<p className="slds-box slds-theme--info slds-m-top--large">
 					(You might have to hit shift+tab to put the focus onto the tab bar ;)
@@ -413,17 +416,17 @@ const DemoTabsOutsideControl = React.createClass({
 					onSelect={this.handleSelect}
 				>
 					<Panel label="Monday">
-						<p>This is Monday's Pane.</p>
+						<p>This is Monday&quot;s Pane.</p>
 						<Button
 							id="tuesday-alt"
 							label="Submit and go to next tab"
 							onClick={this.handleButtonClicked}
 						/>
 					</Panel>
-					<Panel label="Tuesday"><p>This is Tuesday's Pane.</p></Panel>
-					<Panel label="Wednesday"><p>This is Wednesday's Pane.</p></Panel>
-					<Panel label="Thursday"><p>Thursday's Pane has far to go.</p></Panel>
-					<Panel label="Friday"><p>This is Friday's Pane.</p></Panel>
+					<Panel label="Tuesday"><p>This is Tuesday&quot;s Pane.</p></Panel>
+					<Panel label="Wednesday"><p>This is Wednesday&quot;s Pane.</p></Panel>
+					<Panel label="Thursday"><p>Thursday&quot;s Pane has far to go.</p></Panel>
+					<Panel label="Friday"><p>This is Friday&quot;s Pane.</p></Panel>
 				</Tabs>
 			</div>
 		);
@@ -438,7 +441,7 @@ const getTabsDisabled = () => (
 			<Panel label="Tab 1">
 				<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 				<p>And they&rsquo;re amazing.</p>
-				<p>It's awesome.</p>
+				<p>It&quot;s awesome.</p>
 				<p>You can use your <var>TAB</var> and <var>ARROW</var> keys to navigate around. Try it!</p>
 				<p className="slds-box slds-theme--info slds-m-top--large">
 					(You might have to hit shift+tab to put the focus onto the tab bar ;)
@@ -461,9 +464,39 @@ const getTabsDisabled = () => (
 );
 /* eslint-enable react/display-name */
 
+/* eslint-disable react/display-name */
+const getCustomContentTabs = () => {
+	const tab1Label = (
+		<div aria-label="test accessibility!">
+			<Icon
+				assistiveText=""
+				category="utility"
+				name="list"
+				style={{ marginRight: '.5rem' }}
+				size="x-small"
+			/>
+			<span>my tab</span>
+		</div>
+	);
+	const tab2Label = <span style={{ color: 'red' }}>my other tab</span>;
+	return (
+		<div>
+			<h2 className="slds-text-heading--large">Custom Tab Contents Demo</h2>
+			<Tabs>
+				<Panel label={tab1Label}>
+					<h2 className="slds-text-heading--medium">This is my first custom content tab!</h2>
+				</Panel>
+				<Panel label={tab2Label}>
+					<h2 className="slds-text-heading--medium">This is my second custom content tab!</h2>
+				</Panel>
+			</Tabs>
+		</div>
+	);
+};
+/* eslint-enable react/display-name */
 
 storiesOf(TABS, module)
-	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Base', () => getTabs())
 	.add('With disabled tab', () => getTabsDisabled())
 	.add('Nested', () => getTabsNested())
@@ -471,6 +504,7 @@ storiesOf(TABS, module)
 	.add('Conditional', () => <DemoTabsConditional className="conditional-yo" />)
 	.add('Unique Generated IDs', () => getTabsMoreThanOneAllowGeneratedID())
 	.add('Scoped', () => getTabsScoped())
+	.add('Custom Tab Contents', () => getCustomContentTabs())
 	;
 
 module.exports = getTabs;

@@ -17,7 +17,7 @@ const getPopover = (props) => (
 		<Popover {...props}>
 			<Button label="Trigger Popover" />
 			<br />
-			<a href="#"> Focusable Not Trigger Popover</a>
+			<a href="javascript:void(0);"> Focusable Not Trigger Popover</a>
 		</Popover>
 	</div>
 );
@@ -68,7 +68,7 @@ const popoverBackgroundColor = 'rgb(255, 80, 121)';
 const containerBackgroundColor = 'rgb(255, 127, 80)';
 
 storiesOf(POPOVER, module)
-	.addDecorator(getStory => <div
+	.addDecorator((getStory) => <div
 		className="slds-p-around--medium slds-m-horizontal--x-large"
 		style={{
 			margin: '300px auto',

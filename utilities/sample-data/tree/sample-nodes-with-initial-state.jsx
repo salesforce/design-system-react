@@ -57,7 +57,7 @@ const treeNodesWithInitialState = [
 						}, {
 							label: 'Lime', type: 'item', id: 23
 						}
-					]
+						]
 					},
 					{
 						label: 'Apples',

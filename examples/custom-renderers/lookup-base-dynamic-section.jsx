@@ -29,12 +29,12 @@ module.exports = React.createClass({
 	componentDidMount () {
 		let times = 0;
 		setInterval(() => {
-			let items = this.state.items;
+			const items = this.state.items;
 			items.push({
-				label: 'SUPER ITEM ' + (times++)
+				label: `SUPER ITEM ${times++}`
 			});
 			this.setState({
-				items: items
+				items
 			});
 		}, 1000);
 	},
@@ -63,6 +63,6 @@ module.exports = React.createClass({
 					<SLDSLookup items={this.state.items} label="Accounts" type="account" onChange={this.onChange} onItemSelect={this.handleItemSelect} />
 				</div>
 			</div>
-			);
+		);
 	}
 });

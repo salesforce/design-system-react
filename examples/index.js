@@ -6,9 +6,9 @@ const documentationSiteLiveExamples = {
 	'app-launcher': [
 		require('raw-loader!design-system-react/examples/app-launcher/default.jsx')
 	],
-	'bread-crumb': [
-		require('raw-loader!design-system-react/examples/bread-crumb/base.jsx'),
-		require('raw-loader!design-system-react/examples/bread-crumb/one-item.jsx')
+	breadcrumb: [
+		require('raw-loader!design-system-react/examples/breadcrumb/base.jsx'),
+		require('raw-loader!design-system-react/examples/breadcrumb/one-item.jsx')
 	],
 	button: [
 		require('raw-loader!design-system-react/examples/button/base-neutral.jsx'),
@@ -110,7 +110,7 @@ const documentationSiteLiveExamples = {
 	'time-picker': [
 		require('raw-loader!design-system-react/examples/time-picker/default.jsx')
 	],
-	'tooltip': [
+	tooltip: [
 		require('raw-loader!design-system-react/examples/tooltip/base.jsx'),
 		require('raw-loader!design-system-react/examples/tooltip/button.jsx'),
 		require('raw-loader!design-system-react/examples/tooltip/button-group.jsx')

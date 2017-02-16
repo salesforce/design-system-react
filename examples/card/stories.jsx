@@ -156,7 +156,7 @@ const SetHeightCard = () => (
 SetHeightCard.displayName = 'SET_HEIGHT_CARD';
 
 storiesOf(CARD, module)
-	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('w/ Items', () => <DemoCard items={sampleItems} />)
 	.add('Empty', () => <DemoCard items={[]} />)
 	.add('Custom Header', () =>

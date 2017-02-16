@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-/* global sinon */
-/* eslint-disable react/display-name */
-
+/* eslint-disable react/no-render-return-value */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
@@ -25,7 +22,7 @@ describe('SLDSButton: ', () => {
 		variant: 'neutral'
 	};
 
-	const renderButton = inst => {
+	const renderButton = (inst) => {
 		body = document.createElement('div');
 		document.body.appendChild(body);
 		return ReactDOM.render(inst, body);

@@ -1,6 +1,3 @@
-/* global describe, beforeEach, afterEach, it */
-/* eslint-disable no-unused-expressions */
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import assign from 'lodash.assign';
@@ -47,7 +44,7 @@ describe('Card: ', () => {
 	}
 
 	// DOM queries, [0] present due to test framework, not because it returns a DOM collection
-	const getCard = dom => dom.querySelector(`.${cssClasses.base}`);
+	const getCard = (dom) => dom.querySelector(`.${cssClasses.base}`);
 	const getHeader = (dom) => getCard(dom).querySelectorAll(`.${headerCssClasses.base}`)[0];
 	const getHeaderActions = (dom) => getHeader(dom).querySelectorAll(`#${requiredProps.id}${headerIdSuffixes.headerActions}`)[0];
 	const getFilter = (dom) => getHeader(dom).querySelectorAll('.slds-form-element')[0];

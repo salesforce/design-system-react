@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-/* global sinon */
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
+/* eslint-disable react/no-render-return-value */
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -16,6 +13,7 @@ import { mountComponent, unmountComponent } from '../enzyme-helpers';
 
 import Dropdown from '../../components/menu-dropdown';
 import List from '../../components/utilities/menu-list';
+
 const { Simulate,	findRenderedDOMComponentWithClass } = TestUtils;
 
 chai.use(chaiEnzyme());
@@ -75,8 +73,8 @@ describe('SLDSMenuDropdown: ', () => {
 					<p className="tile__title slds-text-heading--small">Art Vandelay</p>
 					<div className="slds-tile__detail">
 						<p className="slds-truncate">
-							<a id="custom-dropdown-menu-content-link" className="slds-m-right--medium" href="#" onClick={props.onClick}>Settings</a>
-							<a href="#" onClick={props.onClick}>Log Out</a>
+							<a id="custom-dropdown-menu-content-link" className="slds-m-right--medium" href="javascript:void(0);" onClick={props.onClick}>Settings</a>
+							<a href="javascript:void(0);" onClick={props.onClick}>Log Out</a>
 						</p>
 					</div>
 				</div>

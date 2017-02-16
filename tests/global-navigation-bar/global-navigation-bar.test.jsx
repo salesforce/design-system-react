@@ -1,15 +1,5 @@
-/* eslint-env mocha */
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
-/* global sinon */
-
-// TODO: Enzyme 2.3 does not support React components containing SVGs
-// https://github.com/airbnb/enzyme/issues/375
-
 import React from 'react';
-
 import { mount } from 'enzyme';
-
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 

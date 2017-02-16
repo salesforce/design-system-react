@@ -65,11 +65,12 @@ module.exports = React.createClass({
 											Lookup with Custom Item Label Renderer
 										</h3>
 				<div className="slds-p-vertical--large">
-					<SLDSLookup footerRenderer={SLDSLookup.DefaultFooter} hasError headerRenderer={SLDSLookup.DefaultHeader} iconCategory="utility" iconClasses="slds-icon-text-default" iconName="open_folder"
+					<SLDSLookup
+						footerRenderer={SLDSLookup.DefaultFooter} hasError headerRenderer={SLDSLookup.DefaultHeader} iconCategory="utility" iconClasses="slds-icon-text-default" iconName="open_folder"
 						items={items} label="Account" listItemLabelRenderer={CustomLookupListItemLabel} onChange={this.onChange} onItemSelect={this.selectItem} type="account"
 					/>
 				</div>
 			</div>
-			);
+		);
 	}
 });

@@ -267,13 +267,13 @@ const relatedListNavRight = (
 );
 
 const relatedListTrail = [
-	(<a href="#">Accounts</a>),
-	(<a href="#">Company One</a>)
+	(<a href="javascript:void(0);">Accounts</a>),
+	(<a href="javascript:void(0);">Company One</a>)
 ];
 
 
 storiesOf(PAGE_HEADER, module)
-	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Base', () => getPageHeader({
 		iconAssistiveText: 'Opportunity',
 		iconCategory: 'standard',

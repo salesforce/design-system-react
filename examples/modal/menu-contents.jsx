@@ -40,7 +40,7 @@ const Example = React.createClass({
 						<div className="slds-form-element slds-m-bottom--large">
 							<label className="slds-form-element__label" htmlFor="description">Opportunity Description</label>
 							<div className="slds-form-element__control">
-								<textarea id="description" className="-textarea" placeholder="Enter description"></textarea>
+								<textarea id="description" className="-textarea" placeholder="Enter description" />
 							</div>
 						</div>
 						<div className="slds-form-element slds-m-bottom--large">

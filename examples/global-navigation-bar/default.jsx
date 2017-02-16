@@ -74,7 +74,7 @@ const Example = React.createClass({
 				</GlobalNavigationBarRegion>
 				<GlobalNavigationBarRegion region="secondary" navigation>
 					<GlobalNavigationBarLink
-						href="#"
+						href="javascript:void(0);"
 						label="Home"
 						id="home-link"
 					/>
@@ -85,14 +85,14 @@ const Example = React.createClass({
 						options={dropdownCollection}
 					/>
 					<GlobalNavigationBarLink
-						href="#"
+						href="javascript:void(0);"
 						label="Context Menu Item 2"
 						active
 					/>
 				</GlobalNavigationBarRegion>
 				<GlobalNavigationBarRegion region="tertiary">
 					<GlobalNavigationBarLink
-						href="#"
+						href="javascript:void(0);"
 						label="Actions"
 					/>
 				</GlobalNavigationBarRegion>

@@ -12,13 +12,13 @@ const DemoMediaObject = (props) => (
 DemoMediaObject.displayName = 'DemoMediaObject';
 
 storiesOf(MEDIA_OBJECT, module)
-	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Base', () => (<DemoMediaObject
 		body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda."
 		figure={<Icon category="standard" name="user" size="medium" />}
 	/>))
 	.add('Figure Vertical Center', () => (<DemoMediaObject
-	body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda."
-	figure={<Icon category="standard" name="user" size="medium" />}
-	verticalCenter
+		body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda."
+		figure={<Icon category="standard" name="user" size="medium" />}
+		verticalCenter
 	/>));

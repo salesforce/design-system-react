@@ -28,7 +28,7 @@ const getPicklist = (props) => (
 );
 
 storiesOf(MENU_PICKLIST, module)
-	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Modal', () => getPicklist({
 		label: 'Contacts',
 		placeholder: 'Select a contact',

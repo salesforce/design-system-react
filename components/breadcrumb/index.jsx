@@ -8,35 +8,58 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-/* eslint-disable import/no-mutable-exports */
 
-// This function will deliver an error message to the browser console when all of the props passed in are undefined (falsey).
-import warning from 'warning';
+// # Breadcrumbs
 
-let oneOfComponent = function () {};
+// Implements the [Breadcrumbs design pattern](https://www.lightningdesignsystem.com/components/breadcrumbs) in React.
+// Based on SLDS v2.1.0-rc.2
 
-if (process.env.NODE_ENV !== 'production') {
-	const hasWarned = {};
-	oneOfComponent = function (control, props, propName, allowedComponents, comment) {
-		const additionalComment = comment ? ` ${comment}` : '';
+// ## Dependencies
 
-		let componentType;
+// ### React
+import React from 'react';
 
-		if (typeof props[propName].type === 'string') {
-			componentType = props[propName].type;
-		} else {
-			componentType = props[propName].type.displayName;
-		}
+// ## Constants
+import { BREADCRUMB } from '../../utilities/constants';
 
-		const allowedComponentFound = allowedComponents.indexOf(componentType) > -1;
+/**
+ * Use breadcrumbs to note the path of a record and help the user to navigate back to the parent.Breadcrumb based on SLDS 2.1.0-dev
+ */
+const Breadcrumb = (props) => {
+	const {
+		assistiveText,
+		trail
+	} = props;
 
-		if (!hasWarned[control]) {
-			/* eslint-disable max-len */
-			warning(allowedComponentFound, `[Design System React] ${control} requires that prop '${propName}' is an instance of one of the following components: ${allowedComponents.join(', ')}. An instance of '${componentType}' was given.${additionalComment}`);
-			/* eslint-enable max-len */
-			hasWarned[control] = !!allowedComponentFound;
-		}
-	};
-}
+	return (
+		<nav role="navigation" aria-label={assistiveText}>
+			<ol className="slds-breadcrumb slds-list--horizontal">
+				{trail.map((crumb, index) =>
+					<li
+						key={`BreadCrumb.${index}`}
+						className="slds-breadcrumb__item slds-text-title--caps"
+					>{crumb}</li>
+				)}
+			</ol>
+		</nav>
+	);
+};
 
-export default oneOfComponent;
+Breadcrumb.displayName = BREADCRUMB;
+
+Breadcrumb.propTypes = {
+	/**
+	 * The assistive text for the breadcrumb trail
+	 */
+	assistiveText: React.PropTypes.string,
+	/**
+	 * An array of react elements presumably anchor elements.
+	 */
+	trail: React.PropTypes.array
+};
+
+Breadcrumb.defaultProps = {
+	assistiveText: 'Breadcrumbs'
+};
+
+module.exports = Breadcrumb;

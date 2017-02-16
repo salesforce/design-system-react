@@ -40,8 +40,8 @@ const Example = React.createClass({
 					heading="Releated Items"
 					icon={<Icon category="standard" name="document" size="small" />}
 					empty={isEmpty ? <CardEmpty heading="No Related Items">
-							<Button label="Add Item" onClick={this.handleAddItem} />
-						</CardEmpty> : null}
+						<Button label="Add Item" onClick={this.handleAddItem} />
+					</CardEmpty> : null}
 				>
 					<DataTable items={this.state.items} id="DataTableExample-1" bordered>
 						<DataTableColumn
@@ -57,17 +57,17 @@ const Example = React.createClass({
 	},
 
 	handleFilterChange (event) {
-		const filteredItems = sampleItems.filter( (item) => RegExp(event.target.value, 'i').test(item.name));
-		this.setState({isFiltering: true, items: filteredItems});
+		const filteredItems = sampleItems.filter((item) => RegExp(event.target.value, 'i').test(item.name));
+		this.setState({ isFiltering: true, items: filteredItems });
 	},
 
 	handleDeleteAllItems () {
-		this.setState({isFiltering: false, items: []});
+		this.setState({ isFiltering: false, items: [] });
 	},
 
 	handleAddItem () {
-		this.setState({items: sampleItems});
-	},
+		this.setState({ items: sampleItems });
+	}
 });
 
 export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

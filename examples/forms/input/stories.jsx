@@ -13,7 +13,7 @@ const searchIcon = <InputIcon name="search" category="utility" />;
 const searchIconClickable = <InputIcon name="search" category="utility" onClick={iconClicked('Search icon clicked')} />;
 
 storiesOf(FORMS_INPUT, module)
-	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Standard', () => (
 		<Input
 			label="Input Label"

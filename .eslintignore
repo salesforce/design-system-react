@@ -4,5 +4,4 @@ coverage/
 node_modules/
 storybook/
 
-components/SLDSDateInput/
 icons/
