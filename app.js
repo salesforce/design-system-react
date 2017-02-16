@@ -1,4 +1,5 @@
 /* eslint-disable consistent-return */
+/* eslint-disable no-console */
 const auth = require('basic-auth');
 const compression = require('compression');
 const express = require('express');
