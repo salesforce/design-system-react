@@ -28,7 +28,7 @@ const Example = React.createClass({
 					size="medium"
 					title={<span>Service Unavailable</span>}
 				>
-					<div className="slds-m-around--medium">The service you're trying to reach is unavailable due to limited conectivity. Please restart the application or contact your system administrator for assistance.
+					<div className="slds-m-around--medium">The service you&quot;re trying to reach is unavailable due to limited conectivity. Please restart the application or contact your system administrator for assistance.
 					</div>
 				</Modal>
 			</div>

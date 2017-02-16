@@ -115,10 +115,10 @@ module.exports = React.createClass({
 							value: 'D1',
 							strongLabel: 'SUPER TITLE D1'
 						}, {
-								label: 'E2 Option Super Super Long',
-								value: 'E1',
-								strongLabel: 'SUPER TITLE E1'
-							}]
+							label: 'E2 Option Super Super Long',
+							value: 'E1',
+							strongLabel: 'SUPER TITLE E1'
+						}]
 						}
 						value="C0"
 						label="Contacts"

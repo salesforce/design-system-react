@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable react/display-name */
-/* eslint-disable no-unused-expressions */
+/* eslint-disable react/no-render-return-value */
 
 import React from 'react';
 import ReactDOM from 'react-dom';

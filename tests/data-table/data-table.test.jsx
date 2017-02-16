@@ -1,6 +1,3 @@
-/* eslint-env mocha */
-/* eslint-disable prefer-arrow-callback */
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';

@@ -1,9 +1,4 @@
-/* eslint-env mocha */
-/* global sinon */
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable react/display-name */
-
+/* eslint-disable react/no-render-return-value */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { expect } from 'chai';

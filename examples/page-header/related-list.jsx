@@ -82,8 +82,8 @@ const Example = React.createClass({
 		);
 
 		const trail = [
-			(<a href="#">Accounts</a>),
-			(<a href="#">Company One</a>)
+			(<a href="javascript:void(0);">Accounts</a>),
+			(<a href="javascript:void(0);">Company One</a>)
 		];
 
 		return (
