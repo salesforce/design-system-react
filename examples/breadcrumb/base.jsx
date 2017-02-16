@@ -6,7 +6,7 @@ const Example = React.createClass({
 
 	render () {
 		const trail = [
-			(<a href="javascript:void(0);">Parent Entity</a>),
+		(<a id="parent-entity" href="javascript:void(0);">Parent Entity</a>),
 			(<a href="javascript:void(0);">Parent Record Name</a>)
 		];
 

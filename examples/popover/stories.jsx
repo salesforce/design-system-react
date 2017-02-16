@@ -17,7 +17,7 @@ const getPopover = (props) => (
 		<Popover {...props}>
 			<Button label="Trigger Popover" />
 			<br />
-			<a href="#"> Focusable Not Trigger Popover</a>
+			<a href="javascript:void(0);"> Focusable Not Trigger Popover</a>
 		</Popover>
 	</div>
 );

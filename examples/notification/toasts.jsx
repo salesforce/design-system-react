@@ -50,7 +50,7 @@ const Example = React.createClass({
 					onClick={(event) => { this.toggleOpen(event, 'warning'); }}
 				/>
 				<Notification
-					content={[<span key="required-fields">Oops, you've missed some required form inputs.</span>]}
+					content={[<span key="required-fields">Oops, you&quot;ve missed some required form inputs.</span>]}
 					isOpen={this.state.warningIsOpen}
 					onDismiss={(event) => { this.toggleOpen(event, 'warning'); }}
 					theme="warning"

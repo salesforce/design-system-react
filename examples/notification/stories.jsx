@@ -8,7 +8,7 @@ storiesOf(NOTIFICATION, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Base: Alert', () => (
 		<Notification
-			content={['Your new contact ', <a href="#" key="0123">Sara Smith</a>, ' was successfully created.']}
+			content={['Your new contact ', <a href="javascript:void(0);" key="0123">Sara Smith</a>, ' was successfully created.']}
 			iconName="notification"
 			isOpen
 			onDismiss={() => { console.log('dismiss alert'); }}
