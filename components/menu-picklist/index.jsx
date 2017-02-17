@@ -43,8 +43,8 @@ import ListItemLabel from '../utilities/menu-list/item-label';
 // #### KeyboardNavigable
 import KeyboardNavigable from '../../utilities/keyboard-navigable-menu';
 
-import EventUtil from '../../utilities/EventUtil';
-import KEYS from '../../utilities/KEYS';
+import EventUtil from '../../utilities/event';
+import KEYS from '../../utilities/keys';
 import { MENU_PICKLIST } from '../../utilities/constants';
 
 /**

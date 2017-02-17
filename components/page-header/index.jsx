@@ -168,7 +168,7 @@ class PageHeader extends Component {
 						size={iconSize}
 						variant={iconVariant}
      />
-					);
+				);
 			}
 			return icon;
 		};
@@ -184,13 +184,12 @@ class PageHeader extends Component {
 					<nav className="slds-m-bottom--xx-small" role="navigation">
 						<Breadcrumb trail={trail} />
 					</nav>
-					);
-			} else {
-				if (type === 'string') {
-					return <p className="slds-text-title--caps slds-line-height--reset">{label}</p>;
-				}
-				return label;
+				);
 			}
+			if (type === 'string') {
+				return <p className="slds-text-title--caps slds-line-height--reset">{label}</p>;
+			}
+			return label;
 		};
 
 		/**
@@ -229,7 +228,7 @@ class PageHeader extends Component {
 						className="slds-col slds-no-flex slds-grid slds-align-top"
 						{...navRight.props}
      />
-					);
+				);
 			}
 			return navRight;
 		};
@@ -243,7 +242,7 @@ class PageHeader extends Component {
 			if (type !== 'string') {
 				return (
 					<div className="slds-grid" {...contentRight.props} />
-					);
+				);
 			}
 			return contentRight;
 		};
@@ -281,7 +280,7 @@ class PageHeader extends Component {
 					details={details}
 				/>
 			</div>
-			);
+		);
 	}
 
 	_getClassNames (className) {

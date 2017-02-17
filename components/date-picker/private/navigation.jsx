@@ -11,7 +11,7 @@ import React, { PropTypes } from 'react';
 import YearPicklist from './year-picklist';
 import Button from '../../button';
 
-import DateUtil from '../../../utilities/DateUtil';
+import DateUtil from '../../../utilities/date';
 
 const DatepickerMonthNavigation = React.createClass({
 	displayName: 'SLDSDatepickerMonthNavigation',

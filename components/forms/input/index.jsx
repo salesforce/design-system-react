@@ -181,7 +181,7 @@ const Input = React.createClass({
 		checkProps(FORMS_INPUT, this.props);
 
 		this.generatedId = shortid.generate();
-		if(this.props.errorText) {
+		if (this.props.errorText) {
 			this.generatedErrorId = shortid.generate();
 		}
 	},

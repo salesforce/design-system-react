@@ -19,7 +19,7 @@ import isFunction from 'lodash.isfunction';
 import Dropdown from '../menu-dropdown';
 
 // ### Event Helpers
-import { EventUtil } from '../../utilities';
+import EventUtil from '../../utilities/event';
 
 // ## Constants
 import { DATA_TABLE_ROW_ACTIONS } from '../../utilities/constants';

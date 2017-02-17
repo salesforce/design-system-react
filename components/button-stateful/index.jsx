@@ -122,8 +122,8 @@ class ButtonStateful extends TooltipTrigger {
 		if (!isBoolean(this.props.active)) this.setState({ active: !this.state.active });
 	}
 
-	handleBlur(e) {
-		if(this.props.onBlur) this.props.onBlur(e);
+	handleBlur (e) {
+		if (this.props.onBlur) this.props.onBlur(e);
 		e.currentTarget.blur();
 	}
 

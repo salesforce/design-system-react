@@ -33,8 +33,8 @@ const GlobalNavigationButton = ({ active, dividerPosition, ...props }) => (
 		className={classNames(
 			'slds-context-bar__item',
 			{ 'slds-is-active': active,
-			[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition
-		})}
+				[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition
+			})}
 	>
 		<Button {...props} />
 	</li>
