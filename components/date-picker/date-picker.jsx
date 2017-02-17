@@ -32,8 +32,8 @@ import shortid from 'shortid';
 // when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 
-import EventUtil from '../../utilities/EventUtil';
-import KEYS from '../../utilities/KEYS';
+import EventUtil from '../../utilities/event';
+import KEYS from '../../utilities/keys';
 
 import { DATE_PICKER } from '../../utilities/constants';
 
@@ -386,7 +386,7 @@ const Datepicker = React.createClass({
 					portalMount={this.props.portalMount}
 					targetElement={this.inputRef}
 				>
-				{this.getDatePicker()}
+					{this.getDatePicker()}
 				</Dialog>
 				: null
 		);
@@ -489,9 +489,9 @@ const Datepicker = React.createClass({
 		const clonedInput = this.props.children ? React.cloneElement(this.props.children, {
 			...clonedProps
 		})
-		: <Input
+		: (<Input
 			{...clonedProps}
-		/>;
+		/>);
 
 		return (
 			<div

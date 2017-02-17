@@ -95,5 +95,7 @@ const propSets = {
 	}
 };
 
-module.exports.dropdownCollection = dropdownCollection;
-module.exports.propSets = propSets;
+export {
+	dropdownCollection,
+	propSets
+};

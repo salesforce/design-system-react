@@ -11,10 +11,10 @@
  */
 
 function focusable (element, isTabIndexNotNaN) {
-	var nodeName = element.nodeName.toLowerCase();
+	const nodeName = element.nodeName.toLowerCase();
 	return (/input|select|textarea|button|object/.test(nodeName) ?
 		!element.disabled :
-		"a" === nodeName ?
+		nodeName === 'a' ?
 			element.href || isTabIndexNotNaN :
 			isTabIndexNotNaN);
 }
@@ -34,16 +34,14 @@ function visible (element) {
 }
 
 function tabbable (element) {
-	var tabIndex = element.getAttribute('tabindex');
+	let tabIndex = element.getAttribute('tabindex');
 	if (tabIndex === null) tabIndex = undefined;
-	var isTabIndexNaN = isNaN(tabIndex);
+	const isTabIndexNaN = isNaN(tabIndex);
 	return (isTabIndexNaN || tabIndex >= 0) && focusable(element, !isTabIndexNaN);
 }
 
 function findTabbableDescendants (element) {
-	return [].slice.call(element.querySelectorAll('*'), 0).filter(function(el) {
-		return tabbable(el);
-	});
+	return [].slice.call(element.querySelectorAll('*'), 0).filter((el) => tabbable(el));
 }
 
 module.exports = findTabbableDescendants;

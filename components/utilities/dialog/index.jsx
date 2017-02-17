@@ -23,8 +23,8 @@ import onClickOutside from 'react-onclickoutside';
 
 import TetherDrop from 'tether-drop';
 
-import EventUtil from '../../../utilities/EventUtil';
-import KEYS from '../../../utilities/KEYS';
+import EventUtil from '../../../utilities/event';
+import KEYS from '../../../utilities/keys';
 import DOMElementFocus from '../../../utilities/dom-element-focus';
 
 import { DIALOG } from '../../../utilities/constants';
@@ -248,7 +248,7 @@ const Dialog = React.createClass({
 
 	renderDialogContents () {
 		if (!this.state.isOpen) {
-			return <span></span>;
+			return <span />;
 		}
 
 		let style = {
@@ -439,7 +439,7 @@ const Dialog = React.createClass({
 
 	render () {
 		// Must use `<noscript></noscript>` in order for `this.drop` to not be undefined when unmounting
-		return <noscript></noscript>;
+		return <noscript />;
 	}
 });
 

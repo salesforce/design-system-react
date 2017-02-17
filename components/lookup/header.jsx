@@ -14,47 +14,47 @@ import React from 'react';
 import Icon from '../icon';
 import { EventUtil } from '../../utilities';
 
-const displayName = "LookupDefaultHeader";
+const displayName = 'LookupDefaultHeader';
 const propTypes = {};
 const defaultProps = {};
 
 class DefaultHeader extends React.Component {
-	constructor(props) {
+	constructor (props) {
 		super(props);
 	}
 
-	componentWillReceiveProps(nextProps){
-		if(nextProps.isActive !== this.props.isActive && nextProps.isActive === true) {
+	componentWillReceiveProps (nextProps) {
+		if (nextProps.isActive !== this.props.isActive && nextProps.isActive === true) {
 			this.props.setFocus('searchRecords');
 		}
 	}
 
-	handleClick(){
-		if(this.props.onClose){
+	handleClick () {
+		if (this.props.onClose) {
 			this.props.onClose();
 		}
 	}
 
-	handleMouseDown(event) {
+	handleMouseDown (event) {
 		EventUtil.trapImmediate(event);
 	}
 
-	render(){
+	render () {
 		let className = 'slds-lookup__item-action slds-lookup__item-action--label';
-		if(this.props.isActive) className += ' slds-theme--shade'
+		if (this.props.isActive) className += ' slds-theme--shade';
 
 		return (
 			<div className="js-slds-lookup__item" onMouseDown={this.handleMouseDown} onClick={this.handleClick.bind(this)}>
 				<a id="searchRecords" href="javascript:void(0);" className={className}>
 					<span className="lookup__item-action-label">
-						<Icon name='search' category="utility" size="x-small" className="slds-icon-text-default" />
+						<Icon name="search" category="utility" size="x-small" className="slds-icon-text-default" />
 						<span className="slds-truncate">
 							{this.props.searchTerm}
 						</span>
 					</span>
 				</a>
 			</div>
-		)
+		);
 	}
 }
 

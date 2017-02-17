@@ -9,7 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React, { PropTypes } from 'react';
 import Week from './week';
-import DateUtil from '../../../utilities/DateUtil';
+import DateUtil from '../../../utilities/date';
 
 const DatepickerCalendar = React.createClass({
 	displayName: 'SLDSDatepickerCalendar',
@@ -162,7 +162,7 @@ const DatepickerCalendar = React.createClass({
 				<table className="datepicker__month" role="grid" aria-labelledby={`${this.props.id}-month`}>
 					<thead>
 						<tr>
-						{this.props.isIsoWeekday ? null : sunday}
+							{this.props.isIsoWeekday ? null : sunday}
 							<th scope="col">
 								<abbr title={this.props.weekDayLabels[1]}>{this.props.abbreviatedWeekDayLabels[1]}</abbr>
 							</th>
@@ -257,7 +257,7 @@ const DatepickerCalendar = React.createClass({
 		}
 		let extraWeeks = 0;
 		while (weeks.length < 6) {
-			extraWeeks = extraWeeks + 1;
+			extraWeeks += 1;
 			weeks.push(<tr key={`extra_${extraWeeks}`} className="week">
 				<td aria-disabled="true" aria-selected="false" className="slds-disabled-text">
 					<span className="slds-day ">&nbsp;</span>

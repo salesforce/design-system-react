@@ -24,7 +24,7 @@ import isArray from 'lodash.isarray';
 import isFunction from 'lodash.isfunction';
 
 // ### Event Helpers
-import KEYS from './KEYS';
+import KEYS from './keys';
 
 const noop = () => {};
 
@@ -86,7 +86,7 @@ export function keyboardNavigate ({
 	}) {
 	const indexes = navigableItems.indexes;
 	const lastIndex = indexes.length - 1;
-	let focusedIndex = undefined;
+	let focusedIndex;
 	let ch = key || String.fromCharCode(keyCode);
 
 	if (/^[ -~]$/.test(ch)) {
