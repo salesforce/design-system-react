@@ -4,14 +4,26 @@ import assign from 'lodash.assign';
 
 import chai from 'chai';
 
-import Card, { idSuffixes as cardIdSuffixes } from '../../components/card';
+import Card from '../../components/card';
 import CardFilter from '../../components/card/filter';
 import { cssClasses as mediaObjectCssClasses } from '../../components/media-object';
-import { idSuffixes as headerIdSuffixes } from '../../components/card/private/header';
 
 import Icon from '../../components/icon';
 
 chai.should();
+
+const headerIdSuffixes = {
+	headerActions: '__header-actions',
+	heading: '__heading',
+	filter: '__filter-input'
+};
+
+const cardIdSuffixes = {
+	body: '__body',
+	headerActions: '__header-actions',
+	heading: '__heading',
+	filter: '__filter-input'
+};
 
 const cssClasses = {
 	base: 'slds-card'

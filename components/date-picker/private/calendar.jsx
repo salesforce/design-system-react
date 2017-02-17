@@ -257,7 +257,7 @@ const DatepickerCalendar = React.createClass({
 		}
 		let extraWeeks = 0;
 		while (weeks.length < 6) {
-			extraWeeks = extraWeeks + 1;
+			extraWeeks += extraWeeks;
 			weeks.push(<tr key={`extra_${extraWeeks}`} className="week">
 				<td aria-disabled="true" aria-selected="false" className="slds-disabled-text">
 					<span className="slds-day ">&nbsp;</span>
@@ -269,4 +269,4 @@ const DatepickerCalendar = React.createClass({
 	}
 });
 
-module.exports = DatepickerCalendar;
+export default DatepickerCalendar;

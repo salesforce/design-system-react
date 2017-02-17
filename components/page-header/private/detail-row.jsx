@@ -75,4 +75,4 @@ DetailRow.displayName = displayName;
 DetailRow.propTypes = propTypes;
 DetailRow.defaultProps = defaultProps;
 
-module.exports = DetailRow;
+export default DetailRow;

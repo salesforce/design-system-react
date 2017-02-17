@@ -41,4 +41,4 @@ const Base = (props) => (
 Base.displayName = displayName;
 Base.propTypes = propTypes;
 
-module.exports = Base;
+export default Base;

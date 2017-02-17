@@ -73,4 +73,4 @@ const ObjectHome = (props) => (<div>
 ObjectHome.displayName = displayName;
 ObjectHome.propTypes = propTypes;
 
-module.exports = ObjectHome;
+export default ObjectHome;

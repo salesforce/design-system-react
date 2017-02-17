@@ -166,4 +166,4 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 	}
 });
 
-module.exports = GlobalHeaderDropdownTrigger;
+export default GlobalHeaderDropdownTrigger;

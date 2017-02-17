@@ -131,4 +131,4 @@ class Item extends React.Component {
 Item.displayName = displayName;
 Item.propTypes = propTypes;
 
-module.exports = Item;
+export default Item;

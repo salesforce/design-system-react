@@ -46,4 +46,4 @@ CardBody.propTypes = {
 	id: React.PropTypes.string
 };
 
-module.exports = CardBody;
+export default CardBody;

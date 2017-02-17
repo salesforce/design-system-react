@@ -37,7 +37,7 @@ const customStyles = {
   }
 };
 
-module.exports = React.createClass( {
+const Manager = React.createClass( {
 
   getDefaultProps () {
     return {
@@ -149,3 +149,5 @@ module.exports = React.createClass( {
 
 
 });
+
+export default Manager;

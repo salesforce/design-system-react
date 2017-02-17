@@ -155,5 +155,5 @@ DetailBlock.displayName = displayName;
 DetailBlock.propTypes = propTypes;
 DetailBlock.defaultProps = defaultProps;
 
-module.exports = DetailBlock;
+export default DetailBlock;
 

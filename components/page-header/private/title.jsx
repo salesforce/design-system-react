@@ -63,4 +63,4 @@ Title.displayName = displayName;
 Title.propTypes = propTypes;
 Title.defaultProps = defaultProps;
 
-module.exports = Title;
+export default Title;
