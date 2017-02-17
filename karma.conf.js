@@ -1,7 +1,13 @@
-/* eslint-disable global-require */
-
 const webpackConfig = require('./webpack.config');
 const path = require('path');
+const karmaWebpack = require('karma-webpack');
+const karmaMocha = require('karma-mocha');
+const karmaChaiSinon = require('karma-chai-sinon');
+const karmaSourcemapLoader = require('karma-sourcemap-loader');
+const karmaPhantomjsLauncher = require('karma-phantomjs-launcher');
+const karmaChromeLauncher = require('karma-chrome-launcher');
+const karmaSpecReporter = require('karma-spec-reporter');
+const karmaCoverage = require('karma-coverage');
 
 webpackConfig.devtool = 'inline-source-map';
 webpackConfig.externals = {
@@ -10,7 +16,6 @@ webpackConfig.externals = {
 	'react/addons': true,
 	cheerio: 'window'
 };
-
 
 webpackConfig.module.preLoaders = webpackConfig.module.preLoaders || [];
 const ispartaPreLoaderWebpackConfig = [
@@ -33,7 +38,7 @@ webpackConfig.isparta = {
 };
 
 // Karma configuration
-module.exports = function (config) {
+const configExport = function (config) {
 	config.set({
 
 		// base path that will be used to resolve all patterns (eg. files, exclude)
@@ -95,14 +100,16 @@ module.exports = function (config) {
 		webpack: webpackConfig,
 
 		plugins: [
-			require('karma-webpack'),
-			require('karma-mocha'),
-			require('karma-chai-sinon'),
-			require('karma-sourcemap-loader'),
-			require('karma-phantomjs-launcher'),
-			require('karma-chrome-launcher'),
-			require('karma-spec-reporter'),
-			require('karma-coverage')
+			karmaWebpack,
+			karmaMocha,
+			karmaChaiSinon,
+			karmaSourcemapLoader,
+			karmaPhantomjsLauncher,
+			karmaChromeLauncher,
+			karmaSpecReporter,
+			karmaCoverage
 		]
 	});
 };
+
+module.exports = configExport;
