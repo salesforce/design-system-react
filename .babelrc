@@ -9,6 +9,6 @@
       }
     },
     "plugins": [
-      ["babel-root-import"]
+      ["babel-plugin-root-import"]
     ]
 }
