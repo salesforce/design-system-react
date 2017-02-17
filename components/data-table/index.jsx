@@ -55,7 +55,7 @@ import { DATA_TABLE, DATA_TABLE_CELL, DATA_TABLE_HEAD, DATA_TABLE_ROW } from '..
 const { PropTypes } = React;
 
 // Safely get the length of an array, returning 0 for invalid input.
-const count = array => (isArray(array) ? array.length : 0);
+const count = (array) => (isArray(array) ? array.length : 0);
 
 /**
  * DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
@@ -262,27 +262,30 @@ const DataTable = React.createClass({
 					indeterminateSelected={indeterminateSelected}
 					canSelectRows={canSelectRows}
 					columns={columns}
-					id={`${this.props.id}_${DATA_TABLE_HEAD}`}
+					id={`${this.props.id}-${DATA_TABLE_HEAD}`}
 					onToggleAll={this.handleToggleAll}
 					onSort={this.props.onSort}
 					showRowActions={!!RowActions}
 				/>
 				<tbody>
 					{numRows > 0
-						? this.props.items.map((item, index) => (
-							<DataTableRow
-								assistiveTextForSelectRow={this.props.assistiveTextForSelectRow}
-								canSelectRows={canSelectRows}
-								columns={columns}
-								fixedLayout={this.props.fixedLayout}
-								id={`${this.props.id}-${DATA_TABLE_ROW}-${index}`}
-								item={item}
-								key={index}
-								onToggle={this.handleRowToggle}
-								selection={this.props.selection}
-								rowActions={RowActions}
-							/>
-						))
+						? this.props.items.map((item) => {
+							const rowId = `${this.props.id}-${DATA_TABLE_ROW}-${item.id}` || shortid.generate();
+							return (
+								<DataTableRow
+									assistiveTextForSelectRow={this.props.assistiveTextForSelectRow}
+									canSelectRows={canSelectRows}
+									columns={columns}
+									fixedLayout={this.props.fixedLayout}
+									id={rowId}
+									item={item}
+									key={rowId}
+									onToggle={this.handleRowToggle}
+									selection={this.props.selection}
+									rowActions={RowActions}
+								/>
+							);
+						})
 						// Someday this should be an element to render when the table is empty
 						: null
 					}

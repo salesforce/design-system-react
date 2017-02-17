@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes }  from 'react';
 import DataTable from '~/components/data-table'; // `~` is replaced with design-system-react at runtime
 import DataTableColumn from '~/components/data-table/column';
 import DataTableCell from '~/components/data-table/cell';
@@ -14,6 +14,12 @@ const CustomDataTableCell = ({ children, ...props }) => (
 	</DataTableCell>
 );
 CustomDataTableCell.displayName = DataTableCell.displayName;
+CustomDataTableCell.propTypes = {
+	/**
+	 * Cell contents
+	 */
+	children: PropTypes.string
+};
 
 const columns = [
 	<DataTableColumn
@@ -63,8 +69,6 @@ const columns = [
 	</DataTableColumn>
 ];
 
-CustomDataTableCell.displayName = DataTableCell.displayName;
-
 const Example = React.createClass({
 	displayName: 'DataTableExample',
 
@@ -109,7 +113,6 @@ const Example = React.createClass({
 			<div style={{ overflow: 'auto' }}>
 				<h3 className="slds-text-heading--medium slds-m-vertical--medium">Default Fluid Layout</h3>
 				<DataTable
-					fluidLayout
 					items={this.state.items}
 					id="DataTableExample-1-default"
 				>
@@ -119,7 +122,6 @@ const Example = React.createClass({
 				<h3 className="slds-text-heading--medium slds-m-vertical--medium">Striped</h3>
 
 				<DataTable
-					fluidLayout
 					items={this.state.items}
 					id="DataTableExample-1-striped"
 					striped
@@ -130,7 +132,6 @@ const Example = React.createClass({
 				<h3 className="slds-text-heading--medium slds-m-vertical--medium">No Row Hover</h3>
 
 				<DataTable
-					fluidLayout
 					items={this.state.items}
 					id="DataTableExample-noRowHover"
 					noRowHover
@@ -142,7 +143,6 @@ const Example = React.createClass({
 
 				<DataTable
 					columnBordered
-					fluidLayout
 					items={this.state.items}
 					id="DataTableExample-columnBordered"
 				>
@@ -153,7 +153,6 @@ const Example = React.createClass({
 
 				<DataTable
 					compact
-					fluidLayout
 					items={this.state.items}
 					id="DataTableExample-compact"
 				>

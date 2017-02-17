@@ -62,12 +62,12 @@ const DataTableCell = (props) => {
 // Always use the canonical component name as the React display name.
 DataTableCell.displayName = DATA_TABLE_CELL;
 
-	// ### Prop Types
+// ### Prop Types
 DataTableCell.propTypes = {
 	/**
-	 * The contents of the cell. Equivalent to `props.item[props.property]`
+	 * The contents of the cell. This can be simple text or DOM nodes. Equivalent to `props.item[props.property]`
 	 */
-	children: PropTypes.node,
+	children: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	/**
 	 * Class names to be added to the cell.
 	 */

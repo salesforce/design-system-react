@@ -89,12 +89,12 @@ const DataTableHeaderCell = React.createClass({
 		const {
 			isSorted,
 			label,
-			property,
 			sortable
 		} = this.props;
 
 		const sortDirection = this.props.sortDirection || this.state.sortDirection;
-		const ariaSort = isSorted ? (sortDirection === 'desc' ? 'descending' : 'ascending') : null;
+		const expandedSortDirection = sortDirection === 'desc' ? 'descending' : 'ascending';
+		const ariaSort = isSorted ? expandedSortDirection : null;
 
 		return (
 			<th
@@ -106,14 +106,13 @@ const DataTableHeaderCell = React.createClass({
 					'slds-is-sorted--asc': isSorted && !sortDirection // default for hover, up arrow is ascending which means A is at the top of the table, and Z is at the bottom. You have to think about row numbers abstracting, and not the visual order on the table.
 				})}
 				focusable={sortable ? true : null}
-				key={property}
-				onClick={sortable && this.handleSort}
 				scope="col"
 			>
 				{sortable
 						?	<a
-							href="javascript:void(0)"
+							href="javascript:void(0)" // eslint-disable-line no-script-url
 							className="slds-th__action slds-text-link--reset"
+							onClick={this.handleSort}
 							tabIndex="0"
 						>
 							<span className="slds-assistive-text">{this.props.assistiveTextForColumnSort} </span>
@@ -124,7 +123,11 @@ const DataTableHeaderCell = React.createClass({
 								name={sortDirection === 'desc' || !sortDirection ? 'arrowdown' : 'arrowup'}
 								size="x-small"
 							/>
-							{sortDirection ? <span className="slds-assistive-text" aria-live="assertive" aria-atomic="true">{sortDirection === 'asc' ? this.props.assistiveTextForColumnSortedAscending : this.props.assistiveTextForColumnSortedDescending}</span> : null}
+							{sortDirection
+								? <span className="slds-assistive-text" aria-live="assertive" aria-atomic="true">{sortDirection === 'asc'
+									? this.props.assistiveTextForColumnSortedAscending
+									: this.props.assistiveTextForColumnSortedDescending}</span>
+								: null}
 						</a>
 						: <div className="slds-truncate">{label}</div>
 					}

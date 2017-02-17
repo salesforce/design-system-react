@@ -17,7 +17,7 @@ import Checkbox from '../../forms/checkbox';
 import HeaderCell from './header-cell';
 
 // ## Constants
-import { DATA_TABLE_HEAD, DATA_TABLE_HEADER_CELL } from '../../../utilities/constants';
+import { DATA_TABLE_HEAD } from '../../../utilities/constants';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
@@ -37,6 +37,10 @@ const DataTableHead = React.createClass({
 		 */
 		assistiveTextForActionsHeader: PropTypes.string,
 		/**
+		 * Text for sort action on table column header
+		 */
+		assistiveTextForColumnSort: PropTypes.string,
+		/**
 		 * Text for select all checkbox within the table header
 		 */
 		assistiveTextForSelectAllRows: PropTypes.string,
@@ -53,6 +57,10 @@ const DataTableHead = React.createClass({
 		onToggleAll: PropTypes.func,
 		onSort: PropTypes.func,
 		showRowActions: PropTypes.bool
+	},
+
+	componentWillMount () {
+		
 	},
 
 	// ### Render
@@ -75,11 +83,11 @@ const DataTableHead = React.createClass({
 						</th>
 						: null
 					}
-					{this.props.columns.map((column, index) =>
+					{this.props.columns.map((column) =>
 						<HeaderCell
 							assistiveTextForColumnSort={this.props.assistiveTextForColumnSort}
-							id={`${this.props.id}-${DATA_TABLE_HEADER_CELL}-${index}`}
-							key={index}
+							id={`${this.props.id}-${column.props.property}`}
+							key={`${this.props.id}-${column.props.property}`}
 							onSort={this.props.onSort}
 							{...column.props}
 						/>

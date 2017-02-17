@@ -10,4 +10,3 @@ storiesOf(DATA_TABLE, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Basic (Fluid Layout)', () => <Basic />)
 	.add('Advanced (Fixed Layout)', () => <Advanced log={action} />);
-	

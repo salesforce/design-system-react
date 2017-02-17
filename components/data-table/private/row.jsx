@@ -87,8 +87,9 @@ const DataTableRow = React.createClass({
 						/>
 					</td>
 				) : null}
-				{this.props.columns.map((column, index) => {
+				{this.props.columns.map((column) => {
 					const Cell = column.Cell;
+					const cellId = `${this.props.id}-${DATA_TABLE_CELL}-${column.props.property}`;
 
 					return (
 						<Cell
@@ -96,9 +97,9 @@ const DataTableRow = React.createClass({
 							className={column.props.truncate ? 'slds-truncate' : null}
 							fixedLayout={this.props.fixedLayout}
 							rowHeader={column.props.primaryColumn}
-							id={`${this.props.id}-${DATA_TABLE_CELL}-${index}`}
+							id={cellId}
 							item={this.props.item}
-							key={column.props.property}
+							key={cellId}
 							width={column.props.width}
 						>
 							{this.props.item[column.props.property]}
