@@ -129,4 +129,4 @@ const treeNodesWithInitialState = [
 	}
 ];
 
-module.exports = treeNodesWithInitialState;
+export default treeNodesWithInitialState;

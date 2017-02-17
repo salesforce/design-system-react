@@ -504,7 +504,4 @@ storiesOf(TABS, module)
 	.add('Conditional', () => <DemoTabsConditional className="conditional-yo" />)
 	.add('Unique Generated IDs', () => getTabsMoreThanOneAllowGeneratedID())
 	.add('Scoped', () => getTabsScoped())
-	.add('Custom Tab Contents', () => getCustomContentTabs())
-	;
-
-module.exports = getTabs;
+	.add('Custom Tab Contents', () => getCustomContentTabs());

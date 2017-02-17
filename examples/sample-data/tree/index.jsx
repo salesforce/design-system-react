@@ -128,6 +128,8 @@ const sampleNodesDefault = [
 	}
 ];
 
-module.exports.sampleNodesDefault = sampleNodesDefault;
-module.exports.sampleNodesWithLargeDataset = sampleNodesWithLargeDataset;
-module.exports.sampleNodesWithInitialState = sampleNodesWithInitialState;
+export {
+	sampleNodesDefault,
+	sampleNodesWithLargeDataset,
+	sampleNodesWithInitialState
+};

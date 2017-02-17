@@ -1,3 +1,4 @@
+/* eslint-env node */
 /* `webpack.config.test` can be used for contributing/developing and testing. */
 const webpack = require('webpack');
 

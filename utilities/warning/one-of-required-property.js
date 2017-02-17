@@ -39,4 +39,4 @@ if (process.env.NODE_ENV !== 'production') {
 	oneOfRequired = function () {};
 }
 
-module.exports = oneOfRequired;
+export default oneOfRequired;

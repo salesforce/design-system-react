@@ -5612,4 +5612,4 @@ const sampleNodesWithLargeDataset = [
 	}
 ];
 
-module.exports = sampleNodesWithLargeDataset;
+export default sampleNodesWithLargeDataset;

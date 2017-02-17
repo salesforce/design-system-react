@@ -1,3 +1,4 @@
+/* eslint-env node */
 const webpackConfig = require('./webpack.config');
 const path = require('path');
 const karmaWebpack = require('karma-webpack');
