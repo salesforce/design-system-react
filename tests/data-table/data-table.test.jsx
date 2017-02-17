@@ -70,7 +70,7 @@ describe('DataTable: ', function () {
 		selectRows: true
 	};
 
-	const renderTable = (instance) => function () {
+	const renderTable = instance => function () {
 		this.dom = document.createElement('div');
 		document.body.appendChild(this.dom);
 		this.component = ReactDOM.render(instance, this.dom);
@@ -100,7 +100,7 @@ describe('DataTable: ', function () {
 			<DataTable
 				{...defaultProps}
 			>
-				{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+				{columns.map(columnProps => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 			</DataTable>
 		));
 
@@ -120,9 +120,9 @@ describe('DataTable: ', function () {
 
 		it('renders the correct contents in each cell', function () {
 			const firstName = getCell(this.dom, 1, 1);
-			firstName.innerHTML.should.equal('Cloudhub');
+			firstName.innerHTML.should.equal('<div class="" title="Cloudhub">Cloudhub</div>');
 			const secondCount = getCell(this.dom, 2, 2);
-			secondCount.innerHTML.should.equal('54976');
+			secondCount.innerHTML.should.equal('<div class="" title="54976">54976</div>');
 		});
 
 		it('has checkboxes only when selectRows is true', function () {
@@ -135,7 +135,7 @@ describe('DataTable: ', function () {
 					{...defaultProps}
 					selectRows={false}
 				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+					{columns.map(columnProps => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 				</DataTable>
 			).call(this);
 			checkboxes = getTable(this.dom).querySelectorAll('.slds-checkbox');
@@ -161,7 +161,7 @@ describe('DataTable: ', function () {
 					{...defaultProps}
 					selection={defaultSelection}
 				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+					{columns.map(columnProps => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 				</DataTable>
 			).call(this);
 
@@ -186,7 +186,7 @@ describe('DataTable: ', function () {
 					selection={defaultSelection}
 					onChange={this.onChange}
 				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+					{columns.map(columnProps => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 				</DataTable>
 			).call(this);
 
@@ -212,7 +212,7 @@ describe('DataTable: ', function () {
 					selection={defaultSelection}
 					onChange={this.onChange}
 				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+					{columns.map(columnProps => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 				</DataTable>
 			).call(this);
 
@@ -233,7 +233,7 @@ describe('DataTable: ', function () {
 					{...defaultProps}
 					onChange={this.onChange}
 				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+					{columns.map(columnProps => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 				</DataTable>
 			).call(this);
 
@@ -255,7 +255,7 @@ describe('DataTable: ', function () {
 					selection={items}
 					onChange={this.onChange}
 				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+					{columns.map(columnProps => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 				</DataTable>
 			).call(this);
 
@@ -281,7 +281,7 @@ describe('DataTable: ', function () {
 					{...defaultProps}
 					onSort={this.onSort}
 				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+					{columns.map(columnProps => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 				</DataTable>
 			).call(this);
 
@@ -301,7 +301,7 @@ describe('DataTable: ', function () {
 					{...defaultProps}
 					onSort={this.onSort}
 				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+					{columns.map(columnProps => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 				</DataTable>
 			).call(this);
 
@@ -321,7 +321,7 @@ describe('DataTable: ', function () {
 				<DataTable
 					{...defaultProps}
 				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+					{columns.map(columnProps => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 					<DataTableRowActions
 						options={[
 							{
@@ -353,7 +353,7 @@ describe('DataTable: ', function () {
 				<DataTable
 					{...defaultProps}
 				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+					{columns.map(columnProps => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 					<DataTableRowActions
 						options={[
 							{
@@ -392,7 +392,7 @@ describe('DataTable: ', function () {
 					{...defaultProps}
 					search="Cloud"
 				>
-					{columns.map((columnProps) => (
+					{columns.map(columnProps => (
 						<DataTableColumn {...columnProps} key={columnProps.property}>
 							<DataTableHighlightCell />
 						</DataTableColumn>

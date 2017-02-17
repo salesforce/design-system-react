@@ -25,7 +25,7 @@ const { PropTypes } = React;
 /**
  * A Cell renderer for the DataTable that automatically highlights search text.
  */
-const DataTableHighlightCell = (props) => (
+const DataTableHighlightCell = props => (
 	<DataTableCell {...props}>
 		<Highlighter search={props.search}>{props.children}</Highlighter>
 	</DataTableCell>

@@ -62,8 +62,9 @@ const DataTableRowActions = React.createClass({
 		// i18n
 		return (
 			<td
-				className="slds-cell-shrink" data-label="Actions"
+				className="" data-label="Actions"
 				onClick={this.handleClick}
+				style={{ width: '3.25rem' }}
 			>
 				<Dropdown
 					align="right"
