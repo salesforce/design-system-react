@@ -38,7 +38,7 @@ class DetailRow extends Component {
 		 * Render the deets
 		 */
 		const renderDetails = () => {
-			if (children !== void(0)) {
+			if (children !== void (0)) {
 				return children;
 			}
 

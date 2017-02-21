@@ -31,8 +31,8 @@ import InputIcon from '../icon/input-icon';
 import Input from '../forms/input';
 
 // ### Event Helpers
-import EventUtil from '../../utilities/EventUtil';
-import KEYS from '../../utilities/KEYS';
+import EventUtil from '../../utilities/event';
+import KEYS from '../../utilities/keys';
 
 import Menu from './menu';
 import DefaultFooter from './menu/default-footer';
@@ -571,16 +571,16 @@ const Lookup = React.createClass({
 	},
 
 	renderSelectedItem () {
-		let selectedItem = this.props.options[this.state.selectedIndex].label;
+		const selectedItem = this.props.options[this.state.selectedIndex].label;
 		const renderIcon = this.props.iconName
-			? <Icon
+			? (<Icon
 				category={this.props.iconCategory}
 				className="slds-icon slds-pill__icon"
 				inverse={this.props.iconInverse}
 				name={this.props.iconName}
-			/>
+			/>)
 			: null;
-		let labelClassName = this.props.iconName ? 'slds-pill__label' : 'slds-pill__label slds-m-left--x-small';
+		const labelClassName = this.props.iconName ? 'slds-pill__label' : 'slds-pill__label slds-m-left--x-small';
 
 		// i18n
 		return (

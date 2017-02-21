@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes }  from 'react';
 import DataTable from '~/components/data-table'; // `~` is replaced with design-system-react at runtime
 import DataTableColumn from '~/components/data-table/column';
 import DataTableCell from '~/components/data-table/cell';
@@ -14,6 +14,60 @@ const CustomDataTableCell = ({ children, ...props }) => (
 	</DataTableCell>
 );
 CustomDataTableCell.displayName = DataTableCell.displayName;
+CustomDataTableCell.propTypes = {
+	/**
+	 * Cell contents
+	 */
+	children: PropTypes.string
+};
+
+const columns = [
+	<DataTableColumn
+		key="opportunity"
+		label="Opportunity Name"
+		property="opportunityName"
+	>
+		<CustomDataTableCell />
+	</DataTableColumn>,
+
+	<DataTableColumn
+		key="account-name"
+		label="Account Name"
+		property="accountName"
+	/>,
+
+	<DataTableColumn
+		key="close-date"
+		label="Close Date"
+		property="closeDate"
+	/>,
+
+	<DataTableColumn
+		key="stage"
+		label="Stage"
+		property="stage"
+	/>,
+
+	<DataTableColumn
+		key="confidence"
+		label="Confidence"
+		property="confidence"
+	/>,
+
+	<DataTableColumn
+		key="amount"
+		label="Amount"
+		property="amount"
+	/>,
+
+	<DataTableColumn
+		key="contact"
+		label="Contact"
+		property="contact"
+	>
+		<CustomDataTableCell />
+	</DataTableColumn>
+];
 
 const Example = React.createClass({
 	displayName: 'DataTableExample',
@@ -57,80 +111,57 @@ const Example = React.createClass({
 	render () {
 		return (
 			<div style={{ overflow: 'auto' }}>
+				<h3 className="slds-text-heading--medium slds-m-vertical--medium">Default Fluid Layout</h3>
 				<DataTable
-					bordered
 					items={this.state.items}
-					id="DataTableExample-1"
-					onChange={this.handleChanged}
-					onSort={this.handleSort}
+					id="DataTableExample-1-default"
+				>
+					{columns}
+				</DataTable>
+
+				<h3 className="slds-text-heading--medium slds-m-vertical--medium">Striped</h3>
+
+				<DataTable
+					items={this.state.items}
+					id="DataTableExample-1-striped"
 					striped
 				>
-					<DataTableColumn
-						label="Opportunity Name"
-						property="opportunityName"
-						truncate
-						sortable
-					>
-						<CustomDataTableCell />
-					</DataTableColumn>
-					<DataTableColumn
-						label="Account Name"
-						property="accountName"
-					/>
-					<DataTableColumn
-						label="Close Date"
-						property="closeDate"
-					/>
-					<DataTableColumn
-						label="Stage"
-						property="stage"
-					/>
-					<DataTableColumn
-						label="Confidence"
-						property="confidence"
-					/>
-					<DataTableColumn
-						label="Amount"
-						property="amount"
-					/>
-					<DataTableColumn
-						label="Contact"
-						property="contact"
-					>
-						<CustomDataTableCell />
-					</DataTableColumn>
+					{columns}
 				</DataTable>
+
+				<h3 className="slds-text-heading--medium slds-m-vertical--medium">No Row Hover</h3>
+
+				<DataTable
+					items={this.state.items}
+					id="DataTableExample-noRowHover"
+					noRowHover
+				>
+					{columns}
+				</DataTable>
+
+				<h3 className="slds-text-heading--medium slds-m-vertical--medium">Column Bordered</h3>
+
+				<DataTable
+					columnBordered
+					items={this.state.items}
+					id="DataTableExample-columnBordered"
+				>
+					{columns}
+				</DataTable>
+
+				<h3 className="slds-text-heading--medium slds-m-vertical--medium">Compact</h3>
+
+				<DataTable
+					compact
+					items={this.state.items}
+					id="DataTableExample-compact"
+				>
+					{columns}
+				</DataTable>
+
+
 			</div>
 		);
-	},
-
-	handleChanged (selection) {
-		this.setState({ selection });
-	},
-
-	handleSort (sortColumn) {
-		const sortProperty = sortColumn.property;
-		const sortDirection = sortColumn.sortDirection;
-		const newState = {
-			items: [...this.state.items]
-		};
-
-		newState.items = newState.items.sort((a, b) => {
-			let val = 0;
-
-			if (a[sortProperty] > b[sortProperty]) {
-				val = 1;
-			}
-			if (a[sortProperty] < b[sortProperty]) {
-				val = -1;
-			}
-
-			if (sortDirection === 'desc') val *= -1;
-
-			return val;
-		});
-
-		this.setState(newState);
 	}
 });
 

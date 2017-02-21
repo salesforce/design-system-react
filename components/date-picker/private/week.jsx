@@ -11,10 +11,10 @@ import React, { PropTypes } from 'react';
 
 import Day from './day';
 
-import DateUtil from '../../../utilities/DateUtil';
+import DateUtil from '../../../utilities/date';
 
 const DatepickerWeek = (props) => {
-	let days = [];
+	const days = [];
 	let date = props.firstDayOfWeek;
 
 	for (let i = 0; i < 7; i++) {

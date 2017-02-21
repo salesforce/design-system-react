@@ -37,18 +37,26 @@ const DataTableRow = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
-		canSelectRows: PropTypes.bool.isRequired,
+		/**
+		 * Text for select row
+		 */
+		assistiveTextForSelectRow: PropTypes.string,
+		canSelectRows: PropTypes.bool,
 		columns: PropTypes.arrayOf(
 			PropTypes.shape({
 				Cell: PropTypes.func,
 				props: PropTypes.object
 			})
 		),
+		/**
+		 * Use this if you are creating an advanced table (selectable, sortable, or resizable rows)
+		 */
+		fixedLayout: PropTypes.bool,
 		id: PropTypes.string.isRequired,
 		item: React.PropTypes.object.isRequired,
-		onToggle: PropTypes.func.isRequired,
+		onToggle: PropTypes.func,
 		rowActions: PropTypes.element,
-		selection: PropTypes.array.isRequired
+		selection: PropTypes.array
 	},
 
 	// ### Render
@@ -58,12 +66,20 @@ const DataTableRow = React.createClass({
 		// i18n
 		return (
 			<tr
-				className={classNames({ 'slds-hint-parent': this.props.rowActions, 'slds-is-selected': isSelected })}
+				className={classNames({
+					'slds-hint-parent': this.props.rowActions,
+					'slds-is-selected': this.props.canSelectRows && isSelected
+				})}
 			>
 				{this.props.canSelectRows ? (
-					<td className="slds-cell-shrink" data-label="Select Row">
+					<td
+						role={this.props.fixedLayout ? 'gridcell' : null}
+						className="slds-text-align--right"
+						data-label="Select Row"
+						style={{ width: '3.25rem' }}
+					>
 						<Checkbox
-							assistiveText="Select Row"
+							assistiveText={this.props.assistiveTextForSelectRow}
 							checked={isSelected}
 							id={`${this.props.id}-SelectRow`}
 							name="SelectRow"
@@ -71,16 +87,20 @@ const DataTableRow = React.createClass({
 						/>
 					</td>
 				) : null}
-				{this.props.columns.map((column, index) => {
+				{this.props.columns.map((column) => {
 					const Cell = column.Cell;
+					const cellId = `${this.props.id}-${DATA_TABLE_CELL}-${column.props.property}`;
 
 					return (
 						<Cell
 							{...column.props}
 							className={column.props.truncate ? 'slds-truncate' : null}
-							id={`${this.props.id}-${DATA_TABLE_CELL}-${index}`}
+							fixedLayout={this.props.fixedLayout}
+							rowHeader={column.props.primaryColumn}
+							id={cellId}
 							item={this.props.item}
-							key={column.props.property}
+							key={cellId}
+							width={column.props.width}
 						>
 							{this.props.item[column.props.property]}
 						</Cell>

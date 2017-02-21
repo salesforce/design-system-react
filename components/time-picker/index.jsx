@@ -120,12 +120,12 @@ const Timepicker = React.createClass({
 		checkProps(TIME_PICKER, this.props);
 	},
 
-	componentWillReceiveProps(nextProps) {
-		if(nextProps.value && this.props.value) {
-			const currentTime = this.props.value.getTime()
+	componentWillReceiveProps (nextProps) {
+		if (nextProps.value && this.props.value) {
+			const currentTime = this.props.value.getTime();
 			const nextTime = nextProps.value.getTime();
 
-			if(currentTime !== nextTime) {
+			if (currentTime !== nextTime) {
 				this.setState({
 					value: nextProps.value,
 					strValue: this.props.formatter(nextProps.value)

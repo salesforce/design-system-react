@@ -65,7 +65,7 @@ const ObjectHome = (props) => (<div>
 			{props.info}
 		</div>
 		<div className="slds-col slds-no-flex slds-grid slds-align-bottom">
-		{props.contentRight}
+			{props.contentRight}
 		</div>
 	</div>
 </div>);

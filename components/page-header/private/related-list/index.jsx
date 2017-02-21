@@ -16,56 +16,56 @@ const propTypes = {
   /**
    * Icon node passed by PageHeader
    */
-  icon: React.PropTypes.node,
+	icon: React.PropTypes.node,
   /**
    * Title node passed by PageHeader
    */
-  title: React.PropTypes.node,
+	title: React.PropTypes.node,
   /**
    * Info node passed by PageHeader
    */
-  info: React.PropTypes.node,
+	info: React.PropTypes.node,
   /**
    * Content to appear on the right hand side of the page header
    */
-  contentRight: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.element,
-  ]),
+	contentRight: React.PropTypes.oneOfType([
+		React.PropTypes.string,
+		React.PropTypes.element
+	]),
   /**
    * Nav content which appears in the upper right hand corner.
    */
-  navRight: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.element,
-  ]),
+	navRight: React.PropTypes.oneOfType([
+		React.PropTypes.string,
+		React.PropTypes.element
+	])
 };
 const defaultProps = {};
 
 class RelatedList extends Component {
-  render() {
-    return (
-      <div>
-        <div className="slds-grid">
-          <div className="slds-col slds-has-flexi-truncate">
-            { this.props.label }
-            { this.props.title }
-          </div>
-          <div className="slds-col slds-no-flex slds-grid slds-align-top">
-            { this.props.navRight }
-          </div>
-        </div>
-        <div className="slds-grid">
-          <div className="slds-col slds-align-bottom">
-            { this.props.info }
-          </div>
-          <div className="slds-col slds-no-flex slds-grid slds-align-bottom">
-            { this.props.contentRight }
-          </div>
-        </div>
-      </div>
-    );
-  }
+	render () {
+		return (
+			<div>
+				<div className="slds-grid">
+					<div className="slds-col slds-has-flexi-truncate">
+						{ this.props.label }
+						{ this.props.title }
+					</div>
+					<div className="slds-col slds-no-flex slds-grid slds-align-top">
+						{ this.props.navRight }
+					</div>
+				</div>
+				<div className="slds-grid">
+					<div className="slds-col slds-align-bottom">
+						{ this.props.info }
+					</div>
+					<div className="slds-col slds-no-flex slds-grid slds-align-bottom">
+						{ this.props.contentRight }
+					</div>
+				</div>
+			</div>
+		);
+	}
 }
 
 RelatedList.displayName = displayName;

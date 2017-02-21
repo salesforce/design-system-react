@@ -14,7 +14,7 @@ import { createMountNode, destroyMountNode } from '../enzyme-helpers';
 // Import your internal dependencies (for example):
 import Datepicker from '../../components/date-picker';
 import Input from '../../components/forms/input';
-import KEYS from '../../utilities/KEYS';
+import KEYS from '../../utilities/keys';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme

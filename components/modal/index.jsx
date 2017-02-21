@@ -185,7 +185,7 @@ class Modal extends React.Component {
 		}
 	}
 
-	componentWillMount() {
+	componentWillMount () {
 		this.generatedId = shortid.generate();
 	}
 
@@ -384,7 +384,7 @@ class Modal extends React.Component {
 				portalClassName={classNames('ReactModalPortal', this.props.portalClassName)}
 			>
 				{this.getModal()}
-				<div className="slds-backdrop slds-backdrop--open"></div>
+				<div className="slds-backdrop slds-backdrop--open" />
 			</ReactModal>
 		);
 	}

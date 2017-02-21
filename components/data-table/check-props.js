@@ -26,6 +26,8 @@ if (process.env.NODE_ENV !== 'production') {
 
 		// Deprecated and moved to a child
 		sunsetProperty(COMPONENT, props.columns, 'columns', 'Please provide one or more children of the type <Column /> instead.');
+
+		sunsetProperty(COMPONENT, props.bordered, 'bordered', 'All SLDS DataTables have row borders by default now. If you do not want row borders, please use `unborderedRow`');
 		/* eslint-enable max-len */
 	};
 }
