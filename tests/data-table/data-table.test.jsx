@@ -120,9 +120,9 @@ describe('DataTable: ', function () {
 
 		it('renders the correct contents in each cell', function () {
 			const firstName = getCell(this.dom, 1, 1);
-			firstName.innerHTML.should.equal('Cloudhub');
+			firstName.innerHTML.should.equal('<div class="" title="Cloudhub">Cloudhub</div>');
 			const secondCount = getCell(this.dom, 2, 2);
-			secondCount.innerHTML.should.equal('54976');
+			secondCount.innerHTML.should.equal('<div class="" title="54976">54976</div>');
 		});
 
 		it('has checkboxes only when selectRows is true', function () {
@@ -279,16 +279,23 @@ describe('DataTable: ', function () {
 			renderTable(
 				<DataTable
 					{...defaultProps}
+					fixedLayout
 					onSort={this.onSort}
 				>
 					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
 				</DataTable>
 			).call(this);
 
+			console.log(getTable(this.dom).querySelectorAll('thead a'));
+
 			const thead = getTable(this.dom).querySelectorAll('thead')[0];
 			const thirdColumn = thead.querySelectorAll('th')[2];
+			const sortButton = thead.querySelectorAll('a')[0];
 
-			Simulate.click(thirdColumn, {});
+			console.log(sortButton);
+
+
+			Simulate.click(sortButton, {});
 		});
 
 		it('does not call onSort when a non-sortable column is clicked', function (done) {

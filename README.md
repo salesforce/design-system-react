@@ -1,8 +1,6 @@
 # Salesforce Lightning Design System for JavaScript
 ### Accessible, localization-friendly, presentational React components
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/salesforce-ux/design-system-react.svg?token=d2cfefd2da2a20e86d13d4573674ef5de0309484252f32f0693593bef29e8f0b)](https://greenkeeper.io/)
-
 [![Build Status](https://travis-ci.com/salesforce-ux/design-system-react.svg?token=BMXxPFKR5GZuYsqAFsEf&branch=master)](https://travis-ci.com/salesforce-ux/design-system-react)
 
 ## Overview

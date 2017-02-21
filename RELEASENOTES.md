@@ -27,6 +27,13 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ---
 
+## Unreleased
+
+- DataTable
+  - Markup updates to SLDS 2.2.1
+  - If you are using `id` attributes, to query the DOM (tsk, tsk), the `id`s have changed format.
+  - DataTable is now bordered by default. This is a visual breaking change, but will not be considered one for semver, due to SLDS's change to bordered tables being the default style.
+
 ## Release 0.6.2
 
 **Major Changes**

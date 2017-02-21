@@ -17,7 +17,7 @@ import Checkbox from '../../forms/checkbox';
 import HeaderCell from './header-cell';
 
 // ## Constants
-import { DATA_TABLE_HEAD, DATA_TABLE_HEADER_CELL } from '../../../utilities/constants';
+import { DATA_TABLE_HEAD } from '../../../utilities/constants';
 
 // Removes the need for `PropTypes`.
 const { PropTypes } = React;
@@ -32,19 +32,35 @@ const DataTableHead = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
-		allSelected: PropTypes.bool.isRequired,
-		indeterminateSelected: PropTypes.bool.isRequired,
-		canSelectRows: PropTypes.bool.isRequired,
+		/**
+		 * Text for heading of actions column
+		 */
+		assistiveTextForActionsHeader: PropTypes.string,
+		/**
+		 * Text for sort action on table column header
+		 */
+		assistiveTextForColumnSort: PropTypes.string,
+		/**
+		 * Text for select all checkbox within the table header
+		 */
+		assistiveTextForSelectAllRows: PropTypes.string,
+		allSelected: PropTypes.bool,
+		indeterminateSelected: PropTypes.bool,
+		canSelectRows: PropTypes.bool,
 		columns: PropTypes.arrayOf(
 			PropTypes.shape({
 				Cell: PropTypes.func,
 				props: PropTypes.object
 			})
 		),
-		id: PropTypes.string.isRequired,
-		onToggleAll: PropTypes.func.isRequired,
+		id: PropTypes.string,
+		onToggleAll: PropTypes.func,
 		onSort: PropTypes.func,
-		showRowActions: PropTypes.bool.isRequired
+		showRowActions: PropTypes.bool
+	},
+
+	componentWillMount () {
+		
 	},
 
 	// ### Render
@@ -53,28 +69,35 @@ const DataTableHead = React.createClass({
 			<thead>
 				<tr className="slds-text-title--caps">
 					{this.props.canSelectRows
-						? <th className="slds-cell-shrink" scope="col">
-							<Checkbox
-								assistiveText="Select All"
-								checked={this.props.allSelected}
-								indeterminate={this.props.indeterminateSelected}
-								id={`${this.props.id}-SelectAll`}
-								name="SelectAll"
-								onChange={this.props.onToggleAll}
-							/>
+						? <th className="slds-text-align--right" scope="col" style={{ width: '3.25rem' }}>
+							<div className="slds-th__action slds-th__action--form">
+								<Checkbox
+									assistiveText={this.props.assistiveTextForSelectAllRows}
+									checked={this.props.allSelected}
+									indeterminate={this.props.indeterminateSelected}
+									id={`${this.props.id}-SelectAll`}
+									name="SelectAll"
+									onChange={this.props.onToggleAll}
+								/>
+							</div>
 						</th>
 						: null
 					}
-					{this.props.columns.map((column, index) =>
+					{this.props.columns.map((column) =>
 						<HeaderCell
-							id={`${this.props.id}-${DATA_TABLE_HEADER_CELL}-${index}`}
-							key={index}
+							assistiveTextForColumnSort={this.props.assistiveTextForColumnSort}
+							id={`${this.props.id}-${column.props.property}`}
+							key={`${this.props.id}-${column.props.property}`}
 							onSort={this.props.onSort}
 							{...column.props}
 						/>
 					)}
 					{this.props.showRowActions
-						? <th className="slds-cell-shrink" />
+						? <th scope="col" style={{ width: '3.25rem' }}>
+							<div className="slds-th__action">
+								<span className="slds-assistive-text">{this.props.assistiveTextForActionsHeader}</span>
+							</div>
+						</th>
 						: null
 					}
 				</tr>

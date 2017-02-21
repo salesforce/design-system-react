@@ -19,7 +19,7 @@ import classNames from 'classnames';
 import isFunction from 'lodash.isfunction';
 
 // ## Children
-import Button from '../../button';
+import Icon from '../../icon';
 
 // ## Constants
 import { DATA_TABLE_HEADER_CELL } from '../../../utilities/constants';
@@ -37,7 +37,24 @@ const DataTableHeaderCell = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
+		/**
+		 * Text for sort action on table column header
+	 *
+		 */
+		assistiveTextForColumnSort: PropTypes.string,
+		/**
+		 * Text announced once a column is sorted in ascending order
+		 */
+		assistiveTextForColumnSortedAscending: PropTypes.string,
+		/**
+		 * Text announced once a column is sorted in descending order
+		 */
+		assistiveTextForColumnSortedDescending: PropTypes.string,
 		id: PropTypes.string.isRequired,
+		/**
+		 * Indicates if column is sorted.
+		 */
+		isSorted: PropTypes.bool,
 		/**
 		 * The column label.
 		 */
@@ -70,37 +87,50 @@ const DataTableHeaderCell = React.createClass({
 	// Should return a `<th></th>`.
 	render () {
 		const {
+			isSorted,
 			label,
-			property,
 			sortable
 		} = this.props;
 
 		const sortDirection = this.props.sortDirection || this.state.sortDirection;
+		const expandedSortDirection = sortDirection === 'desc' ? 'descending' : 'ascending';
+		const ariaSort = isSorted ? expandedSortDirection : null;
 
-		// i18n
 		return (
 			<th
-				scope="col"
-				key={property}
+				aria-sort={ariaSort}
 				className={classNames({
-					'slds-is-sortable': sortable
+					'slds-is-sortable': sortable,
+					'slds-is-sorted': isSorted,
+					[`slds-is-sorted--${sortDirection}`]: sortDirection,
+					'slds-is-sorted--asc': isSorted && !sortDirection // default for hover, up arrow is ascending which means A is at the top of the table, and Z is at the bottom. You have to think about row numbers abstracting, and not the visual order on the table.
 				})}
-				onClick={sortable && this.handleSort}
+				focusable={sortable ? true : null}
+				scope="col"
 			>
-				<div className="slds-truncate">{label}
-					{sortable
-						? <Button
-							assistiveText={sortDirection === 'desc' ? 'Sort Ascending' : 'Sort Descending'}
-							iconCategory="utility"
-							iconName={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
-							iconSize="small"
-							iconVariant="bare"
-							id={`${this.props.id}-Sort`}
-							variant="icon"
-						/>
-						: null
+				{sortable
+						?	<a
+							href="javascript:void(0)" // eslint-disable-line no-script-url
+							className="slds-th__action slds-text-link--reset"
+							onClick={this.handleSort}
+							tabIndex="0"
+						>
+							<span className="slds-assistive-text">{this.props.assistiveTextForColumnSort} </span>
+							<span className="slds-truncate" title={label}>{label}</span>
+							<Icon
+								className="slds-is-sortable__icon"
+								category="utility"
+								name={sortDirection === 'desc' || !sortDirection ? 'arrowdown' : 'arrowup'}
+								size="x-small"
+							/>
+							{sortDirection
+								? <span className="slds-assistive-text" aria-live="assertive" aria-atomic="true">{sortDirection === 'asc'
+									? this.props.assistiveTextForColumnSortedAscending
+									: this.props.assistiveTextForColumnSortedDescending}</span>
+								: null}
+						</a>
+						: <div className="slds-truncate">{label}</div>
 					}
-				</div>
 			</th>
 		);
 	},
