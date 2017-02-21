@@ -15,7 +15,7 @@ test('Datepicker Default DOM Snapshot', () => {
 
 test('Datepicker Default HTML Snapshot', () => {
 	const domTree = String(
-		jsBeautify.html(ReactDOMServer.renderToStaticMarkup(<SnapshotDefault />)),
+		jsBeautify.html(ReactDOMServer.renderToStaticMarkup(<SnapshotDefault />), {}),
 		'utf-8'
 	);
 	expect(domTree).toMatchSnapshot();
