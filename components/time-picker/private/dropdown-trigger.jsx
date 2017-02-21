@@ -120,4 +120,4 @@ const TimepickerDropdownTrigger = React.createClass({
 	}
 });
 
-module.exports = TimepickerDropdownTrigger;
+export default TimepickerDropdownTrigger;

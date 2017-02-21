@@ -156,5 +156,5 @@ CardHeader.propTypes = {
 	icon: PropTypes.node
 };
 
-module.exports = CardHeader;
-module.exports.idSuffixes = idSuffixes;
+export default CardHeader;
+export { idSuffixes };

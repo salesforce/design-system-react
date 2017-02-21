@@ -173,4 +173,4 @@ Menu.displayName = displayName;
 Menu.propTypes = propTypes;
 Menu.defaultProps = defaultProps;
 
-module.exports = Menu;
+export default Menu;

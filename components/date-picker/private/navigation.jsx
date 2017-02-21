@@ -131,4 +131,4 @@ const DatepickerMonthNavigation = React.createClass({
 	}
 });
 
-module.exports = DatepickerMonthNavigation;
+export default DatepickerMonthNavigation;

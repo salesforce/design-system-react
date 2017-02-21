@@ -72,4 +72,4 @@ RelatedList.displayName = displayName;
 RelatedList.propTypes = propTypes;
 RelatedList.defaultProps = defaultProps;
 
-module.exports = RelatedList;
+export default RelatedList;

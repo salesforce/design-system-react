@@ -105,4 +105,4 @@ TabPanel.defaultProps = {
 	selected: false
 };
 
-module.exports = TabPanel;
+export default TabPanel;

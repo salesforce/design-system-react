@@ -37,8 +37,7 @@ const customStyles = {
 	}
 };
 
-module.exports = React.createClass({
-
+const Manager = React.createClass({
 	getDefaultProps () {
 		return {
 			title: '',
@@ -147,3 +146,5 @@ module.exports = React.createClass({
 
 
 });
+
+export default Manager;

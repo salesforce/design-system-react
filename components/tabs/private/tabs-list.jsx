@@ -76,4 +76,4 @@ TabsList.propTypes = {
 	variant: React.PropTypes.oneOf(['default', 'scoped'])
 };
 
-module.exports = TabsList;
+export default TabsList;

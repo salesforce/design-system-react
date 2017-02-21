@@ -33,4 +33,4 @@ const Info = (props) => (
 Info.displayName = displayName;
 Info.propTypes = propTypes;
 
-module.exports = Info;
+export default Info;

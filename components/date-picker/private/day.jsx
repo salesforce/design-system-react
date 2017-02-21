@@ -161,4 +161,4 @@ DatepickerCalendarDay.propTypes = {
 	todayLabel: PropTypes.string.isRequired
 };
 
-module.exports = DatepickerCalendarDay;
+export default DatepickerCalendarDay;

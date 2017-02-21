@@ -269,4 +269,4 @@ const DatepickerCalendar = React.createClass({
 	}
 });
 
-module.exports = DatepickerCalendar;
+export default DatepickerCalendar;

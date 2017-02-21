@@ -106,4 +106,4 @@ const DataTableHead = React.createClass({
 	}
 });
 
-module.exports = DataTableHead;
+export default DataTableHead;

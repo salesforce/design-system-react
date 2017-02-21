@@ -111,4 +111,4 @@ DatepickerWeek.propTypes = {
 
 DatepickerWeek.displayName = 'SLDSDatepickerWeek';
 
-module.exports = DatepickerWeek;
+export default DatepickerWeek;

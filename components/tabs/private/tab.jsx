@@ -162,4 +162,4 @@ const Tab = React.createClass({
 	}
 });
 
-module.exports = Tab;
+export default Tab;

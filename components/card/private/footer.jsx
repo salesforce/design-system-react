@@ -30,4 +30,4 @@ CardFooter.propTypes = {
 	children: React.PropTypes.node
 };
 
-module.exports = CardFooter;
+export default CardFooter;
