@@ -144,7 +144,7 @@
     "sinon-chai": "^2.8.0",
     "string-replace-webpack-plugin": "^0.0.5",
     "style-loader": "^0.13.1",
-    "webpack": "^2.2.1",
+    "webpack": "^1.13.3",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.13.2",
     "xml2json": "^0.11.0"
