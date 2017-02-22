@@ -40,7 +40,7 @@ npm run dist
 
 ## Getting Started
 
-`design-system-react` should be paired with React 15.x. This library and it's markup will be updated to the next version of the Lightning Design System at "core" release freeze. Releases with critical production bugfixes can be made for older versions of Lightning Design System upon request. You can find a more complete [getting started guide](https://react.lightningdesignsystem.com/getting-started/) on the documentation site.
+`design-system-react` should be paired with React 15.x. This library and it's markup will be updated to the next version of the Lightning Design System at "core" release freeze. Releases with critical production bugfixes can be made for older versions of Lightning Design System upon request. You can find the specific version of SLDS in use, and a more complete [getting started guide](https://react.lightningdesignsystem.com/getting-started/) on the documentation site.
 
 ### New to React?
 
