@@ -172,7 +172,7 @@ const FilteringPanelFilter = React.createClass({
 						}
 					)}
 				>
-				{!this.props.locked && this.props.children
+					{!this.props.locked && this.props.children
 					? <Popover
 						ariaLabelledby={`${this.getId()}-popover-heading`}
 						align="left"

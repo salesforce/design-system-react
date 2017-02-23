@@ -35,10 +35,10 @@ const FilteringPanelListHeading = ({ label, locked, lockedLabel }) => (
 		className={classNames('slds-text-body--small', 'slds-m-vertical--x-small',
 		{ 'slds-grid': locked })}
 	>
-	{locked
+		{locked
 		? lockedLabel
-	: label}
-	{locked
+		: label}
+		{locked
 		? <Icon
 			className="slds-m-left--x-small"
 			assistiveText="locked"
@@ -46,7 +46,8 @@ const FilteringPanelListHeading = ({ label, locked, lockedLabel }) => (
 			name="lock"
 			size="x-small"
 		/>
-	: null}</h3>
+		: null}
+	</h3>
 );
 
 FilteringPanelListHeading.displayName = PANEL_FILTERING_LIST_HEADING;

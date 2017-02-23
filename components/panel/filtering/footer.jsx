@@ -30,8 +30,8 @@ import { PANEL_FILTERING_FOOTER } from '../../../utilities/constants';
 const FilteringPanelFooter = ({ children, onClickAdd, onClickRemoveAll }) => {
 	const isChildren = !!React.Children.count(children);
 	const output = isChildren
-		? <div className="slds-filters__footer slds-grid slds-shrink-none">{children}</div>
-		: <div className="slds-filters__footer slds-grid slds-shrink-none">
+		? (<div className="slds-filters__footer slds-grid slds-shrink-none">{children}</div>)
+		: (<div className="slds-filters__footer slds-grid slds-shrink-none">
 			<Button
 				label="Add Filter"
 				onClick={onClickAdd}
@@ -43,7 +43,7 @@ const FilteringPanelFooter = ({ children, onClickAdd, onClickRemoveAll }) => {
 				onClick={onClickRemoveAll}
 				variant="link"
 			/>
-		</div>;
+		</div>);
 	return output;
 };
 

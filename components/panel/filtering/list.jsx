@@ -27,7 +27,7 @@ import { PANEL_FILTERING_LIST } from '../../../utilities/constants';
  */
 const PanelFilteringList = ({ children }) => (
 	<ol className="slds-list--vertical slds-list--vertical-space">
-			{children}
+		{children}
 	</ol>
 );
 
