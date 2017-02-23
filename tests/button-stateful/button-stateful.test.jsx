@@ -1,5 +1,3 @@
-/* eslint-disable indent */
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import assign from 'lodash.assign';
@@ -7,37 +5,35 @@ import assign from 'lodash.assign';
 import chai from 'chai';
 
 import Icon from '../../components/icon';
-import {ButtonStateful} from '../../components';
+import { ButtonStateful } from '../../components';
 
 chai.should();
 
-describe('Button Stateful: ', function () {
+describe('Button Stateful: ', () => {
 	// Base defaults
 	const requiredProps = {
-    assistiveText:"like",
-    iconName:"like",
-    iconSize:"large",
-    variant:"icon"
+		assistiveText: 'like',
+		iconName: 'like',
+		iconSize: 'large',
+		variant: 'icon'
 	};
 
 
 	// Setup and takedown
-	const renderButton = (instance) => {
-		return function () {
-			this.dom = document.createElement('div');
-			document.body.appendChild(this.dom);
-			this.component = ReactDOM.render(instance, this.dom);
-		};
+	const renderButton = (instance) => function () {
+		this.dom = document.createElement('div');
+		document.body.appendChild(this.dom);
+		this.component = ReactDOM.render(instance, this.dom);
 	};
 	function removeButton () {
 		ReactDOM.unmountComponentAtNode(this.dom);
 		document.body.removeChild(this.dom);
 	}
 
-	const getButton = dom => dom.querySelector('.slds-button');
+	const getButton = (dom) => dom.querySelector('.slds-button');
 
 	// Tests
-	describe('Default Structure', function () {
+	describe('Default Structure', () => {
 		beforeEach(renderButton(
 			<ButtonStateful
 				{...requiredProps}
@@ -52,13 +48,12 @@ describe('Button Stateful: ', function () {
 
 		it('if no active prop, is not active', function () {
 			const button = getButton(this.dom);
-      button.className.should.include('slds-not-selected');
+			button.className.should.include('slds-not-selected');
 		});
-
 	});
 
-  describe('External active props works', () => {
-    const propsWithActive = assign(requiredProps, { active: true });
+	describe('External active props works', () => {
+		const propsWithActive = assign(requiredProps, { active: true });
 
 		beforeEach(renderButton(
 			<ButtonStateful
@@ -69,9 +64,9 @@ describe('Button Stateful: ', function () {
 
 		it('renders active prop', function () {
 			const button = getButton(this.dom);
-      button.className.should.include('slds-is-selected');
+			button.className.should.include('slds-is-selected');
 		});
-  })
+	});
 
-  //TODO: Write more tests for custom renderers
+	// TODO: Write more tests for custom renderers
 });

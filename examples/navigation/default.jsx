@@ -4,22 +4,22 @@ import Navigation from '~/components/navigation';
 
 const sampleReportCategories = [
 	{ id: 'reports',
-	label: 'Reports',
-	items: [
+		label: 'Reports',
+		items: [
 			{ id: 'recent_reports', label: 'Recent' },
 			{ id: 'my_reports', label: 'Created by Me' },
 			{ id: 'private_reports', label: 'Private Reports' },
 			{ id: 'public_reports', label: 'Public Reports' },
 			{ id: 'all_reports', label: 'All Reports' }
-	]
+		]
 	},
 	{ id: 'folders',
-	label: 'Folders',
-	items: [
+		label: 'Folders',
+		items: [
 			{ id: 'my_folders', label: 'Created by Me' },
 			{ id: 'shared_folders', label: 'Shared with Me' },
 			{ id: 'all_folders', label: 'All Folders' }
-	]
+		]
 	}
 ];
 

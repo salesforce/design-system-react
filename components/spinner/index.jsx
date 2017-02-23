@@ -28,20 +28,20 @@ const PROP_TYPES = {
   /**
    * Custom css classes applied to Spinner container
    */
-  containerClassName: PropTypes.string,
+	containerClassName: PropTypes.string,
   /**
    * Determines the size of the spinner
    */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+	size: PropTypes.oneOf(['small', 'medium', 'large']),
   /**
    * Determines the color of the spinner: `base` is gray, `brand` is blue, and `inverse` is white.
    */
-  variant: PropTypes.oneOf(['base', 'brand', 'inverse'])
+	variant: PropTypes.oneOf(['base', 'brand', 'inverse'])
 };
 
 const DEFAULT_PROPS = {
-  size: 'medium',
-  variant: 'base'
+	size: 'medium',
+	variant: 'base'
 };
 
 // ## Spinner
@@ -52,23 +52,23 @@ const Spinner = (props) => {
 		size
 	} = props;
 
-  const sizeClass = `slds-spinner--${props.size}`;
-  const variants = {
-    brand: 'slds-spinner--brand',
-    inverse: 'slds-spinner--inverse'
-  };
+	const sizeClass = `slds-spinner--${props.size}`;
+	const variants = {
+		brand: 'slds-spinner--brand',
+		inverse: 'slds-spinner--inverse'
+	};
 
 	return (
-			<div className={classNames(props.containerClassName, 'slds-spinner_container')}>
-				<div
-					className={classNames('slds-spinner', sizeClass, variants[props.variant])}
-					aria-hidden='false'
-					role='alert'
-				>
-					<div className='slds-spinner__dot-a'></div>
-					<div className='slds-spinner__dot-b'></div>
-				</div>
+		<div className={classNames(props.containerClassName, 'slds-spinner_container')}>
+			<div
+				className={classNames('slds-spinner', sizeClass, variants[props.variant])}
+				aria-hidden="false"
+				role="alert"
+			>
+				<div className="slds-spinner__dot-a" />
+				<div className="slds-spinner__dot-b" />
 			</div>
+		</div>
 	);
 };
 

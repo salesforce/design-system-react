@@ -12,6 +12,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React from 'react';
 
+// ### classNames
+import classNames from 'classnames';
+
 // ## Constants
 import { DATA_TABLE_CELL } from '../../utilities/constants';
 
@@ -21,38 +24,78 @@ const { PropTypes } = React;
 /**
  * The default Cell renderer for the DataTable. Pass in any React component with the same `displayName` which takes the same props to provide custom rendering.
  */
-const DataTableCell = (props) => (
-	<td className={props.className} data-label={props.label}>
-		{props.children}
-	</td>
-);
+const DataTableCell = (props) => {
+	const childText = typeof props.children === 'object' ? props.children.props.children : props.children;
+	const contents = (
+		<div
+			className={classNames({
+				'slds-truncate': props.fixedLayout
+			})}
+			title={props.title || childText}
+		>
+			{props.children}
+		</div>
+	);
+
+
+	return (
+		props.primaryColumn
+		? <th
+			className={props.className}
+			role={props.fixedLayout ? 'gridcell' : null}
+			style={props.width ? { width: props.width } : null}
+		>
+			{contents}
+		</th>
+
+		: <td
+			className={props.className}
+			role={props.fixedLayout ? 'gridcell' : null}
+			style={props.width ? { width: props.width } : null}
+		>
+			{contents}
+		</td>
+	);
+};
 
 // ### Display Name
 // Always use the canonical component name as the React display name.
 DataTableCell.displayName = DATA_TABLE_CELL;
 
-	// ### Prop Types
+// ### Prop Types
 DataTableCell.propTypes = {
 	/**
-	 * The contents of the cell. Equivalent to `props.item[props.property]`
+	 * The contents of the cell. This can be simple text or DOM nodes. Equivalent to `props.item[props.property]`
 	 */
-	children: PropTypes.node,
+	children: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	/**
 	 * Class names to be added to the cell.
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
+	 * Use this if you are creating an advanced table (selectable, sortable, or resizable rows)
+	 */
+	fixedLayout: PropTypes.bool,
+	/**
 	 * The item from the items which represents this row.
 	 */
 	item: PropTypes.object,
 	/**
-	 * The column label.
+	 * The primary column for a row. This is almost always the first column.
 	 */
-	label: PropTypes.string,
+	primaryColumn: PropTypes.bool,
 	/**
 	 * The property of this item to display.
 	 */
-	property: PropTypes.string
+	property: PropTypes.string,
+	/**
+	 * Shows on hover. Useful for truncated cells.
+	 */
+	title: PropTypes.string,
+	/**
+	 * Width of column. This is required for advanced/fixed layout tables. Please provide units. (`rems` are recommended)
+	 */
+	width: PropTypes.string
 };
 
 module.exports = DataTableCell;

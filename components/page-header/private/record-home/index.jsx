@@ -67,4 +67,4 @@ const RecordHome = (props) => (
 RecordHome.displayName = displayName;
 RecordHome.propTypes = propTypes;
 
-module.exports = RecordHome;
+export default RecordHome;

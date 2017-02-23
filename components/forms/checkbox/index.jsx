@@ -161,12 +161,12 @@ const Checkbox = React.createClass({
 									}
 									this.input = component;
 								}}
-								role={role}
-								required={required}
-								type="checkbox"
-							/>
+							role={role}
+							required={required}
+							type="checkbox"
+						/>
 						<label className="slds-checkbox__label" htmlFor={id || this.generatedId}>
-							<span className="slds-checkbox--faux"></span>
+							<span className="slds-checkbox--faux" />
 							{label
 								? <span className="slds-form-element__label">
 									{label}

@@ -338,7 +338,7 @@ const Tabs = React.createClass({
 						>
 							{child.props.label}
 						</Tab>
-						);
+					);
 				})}
 			</TabsList>
 		);

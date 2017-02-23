@@ -39,7 +39,7 @@ const Example = React.createClass({
 					/>
 				</div>
 			</div>
-			);
+		);
 	}
 });
 

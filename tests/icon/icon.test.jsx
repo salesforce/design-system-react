@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable react/display-name */
-
+/* eslint-disable react/no-render-return-value */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import chai from 'chai';
@@ -19,7 +16,7 @@ describe('SLDSIcon: ', function () {
 	const defaultProps = {};
 	let body;
 
-	const renderIcon = inst => {
+	const renderIcon = (inst) => {
 		body = document.createElement('div');
 		document.body.appendChild(body);
 		return ReactDOM.render(inst, body);

@@ -68,7 +68,7 @@ const GlobalNavigationBar = (props) => (
 			},
 			props.className)}
 	>
-			{auditChildren(props.children)}
+		{auditChildren(props.children)}
 	</div>
 );
 

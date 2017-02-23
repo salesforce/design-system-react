@@ -57,7 +57,7 @@ const sampleNodesDefault = [
 						}, {
 							label: 'Lime', type: 'item', id: 23
 						}
-					]
+						]
 					},
 					{
 						label: 'Apples',
@@ -128,6 +128,10 @@ const sampleNodesDefault = [
 	}
 ];
 
-module.exports.sampleNodesDefault = sampleNodesDefault;
-module.exports.sampleNodesWithLargeDataset = sampleNodesWithLargeDataset;
-module.exports.sampleNodesWithInitialState = sampleNodesWithInitialState;
+const sampleNodes = {
+	sampleNodesDefault,
+	sampleNodesWithLargeDataset,
+	sampleNodesWithInitialState
+};
+
+export default sampleNodes;

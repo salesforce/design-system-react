@@ -26,7 +26,7 @@ import Base from './private/base';
 import RecordHome from './private/record-home';
 import ObjectHome from './private/object-home';
 import Icon from '../icon';
-import BreadCrumb from '../bread-crumb';
+import Breadcrumb from '../breadcrumb';
 
 // ## Constants
 import { PAGE_HEADER } from '../../utilities/constants';
@@ -168,7 +168,7 @@ class PageHeader extends Component {
 						size={iconSize}
 						variant={iconVariant}
      />
-					);
+				);
 			}
 			return icon;
 		};
@@ -182,15 +182,14 @@ class PageHeader extends Component {
 			if (trail.length > 0) {
 				return (
 					<nav className="slds-m-bottom--xx-small" role="navigation">
-						<BreadCrumb trail={trail} />
+						<Breadcrumb trail={trail} />
 					</nav>
-					);
-			} else {
-				if (type === 'string') {
-					return <p className="slds-text-title--caps slds-line-height--reset">{label}</p>;
-				}
-				return label;
+				);
 			}
+			if (type === 'string') {
+				return <p className="slds-text-title--caps slds-line-height--reset">{label}</p>;
+			}
+			return label;
 		};
 
 		/**
@@ -229,7 +228,7 @@ class PageHeader extends Component {
 						className="slds-col slds-no-flex slds-grid slds-align-top"
 						{...navRight.props}
      />
-					);
+				);
 			}
 			return navRight;
 		};
@@ -243,7 +242,7 @@ class PageHeader extends Component {
 			if (type !== 'string') {
 				return (
 					<div className="slds-grid" {...contentRight.props} />
-					);
+				);
 			}
 			return contentRight;
 		};
@@ -281,7 +280,7 @@ class PageHeader extends Component {
 					details={details}
 				/>
 			</div>
-			);
+		);
 	}
 
 	_getClassNames (className) {

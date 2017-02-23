@@ -57,7 +57,7 @@ const treeNodesWithInitialState = [
 						}, {
 							label: 'Lime', type: 'item', id: 23
 						}
-					]
+						]
 					},
 					{
 						label: 'Apples',
@@ -129,4 +129,4 @@ const treeNodesWithInitialState = [
 	}
 ];
 
-module.exports = treeNodesWithInitialState;
+export default treeNodesWithInitialState;

@@ -7,7 +7,7 @@ import Icon from '../../components/icon';
 import download from '../../icons/utility/download';
 
 storiesOf(ICON, module)
-	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Base: Standard', () => (
 		<Icon
 			assistiveText="Accounts"

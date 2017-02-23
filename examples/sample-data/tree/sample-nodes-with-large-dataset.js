@@ -1,3 +1,10 @@
+/* eslint-disable max-len */
+/* eslint-disable object-curly-spacing */
+/* eslint-disable quote-props */
+/* eslint-disable quotes */
+/* eslint-disable key-spacing */
+/* eslint-disable comma-spacing */
+
 const sampleNodesWithLargeDataset = [
 	{
 		nodes: [{
@@ -5605,4 +5612,4 @@ const sampleNodesWithLargeDataset = [
 	}
 ];
 
-module.exports = sampleNodesWithLargeDataset;
+export default sampleNodesWithLargeDataset;

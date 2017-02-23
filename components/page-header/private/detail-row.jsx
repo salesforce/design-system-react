@@ -38,7 +38,7 @@ class DetailRow extends Component {
 		 * Render the deets
 		 */
 		const renderDetails = () => {
-			if (children !== void(0)) {
+			if (children !== void (0)) {
 				return children;
 			}
 
@@ -75,4 +75,4 @@ DetailRow.displayName = displayName;
 DetailRow.propTypes = propTypes;
 DetailRow.defaultProps = defaultProps;
 
-module.exports = DetailRow;
+export default DetailRow;

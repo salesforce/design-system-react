@@ -32,13 +32,13 @@ const Example = React.createClass({
 					texture
 					variant="alert"
 				/>
-				<span> </span>
+				<span />
 				<Button
 					label="Open success alert"
 					onClick={(event) => { this.toggleOpen(event, 'success'); }}
 				/>
 				<Notification
-					content={[<span key="maintenance">Scheduled Maintenance Notification: Sunday March 15, 8:00 AM–10:00 PST <a href="#">More Information</a></span>]}
+					content={[<span key="maintenance">Scheduled Maintenance Notification: Sunday March 15, 8:00 AM–10:00 PST <a href="javascript:void(0);">More Information</a></span>]}
 					iconName="notification"
 					isOpen={this.state.successIsOpen}
 					onDismiss={(event) => { this.toggleOpen(event, 'success'); }}
@@ -46,13 +46,13 @@ const Example = React.createClass({
 					theme="success"
 					variant="alert"
 				/>
-				<span> </span>
+				<span />
 				<Button
 					label="Open error alert"
 					onClick={(event) => { this.toggleOpen(event, 'error'); }}
 				/>
 				<Notification
-					content={[<span key="browser">Your browser is currently not supported. Your Salesforce may be degraded. <a href="#">More Information</a></span>]}
+					content={[<span key="browser">Your browser is currently not supported. Your Salesforce may be degraded. <a href="javascript:void(0);">More Information</a></span>]}
 					iconName="ban"
 					isOpen={this.state.errorIsOpen}
 					onDismiss={(event) => { this.toggleOpen(event, 'error'); }}
@@ -60,13 +60,13 @@ const Example = React.createClass({
 					theme="error"
 					variant="alert"
 				/>
-				<span> </span>
+				<span />
 				<Button
 					label="Open offline alert"
 					onClick={(event) => { this.toggleOpen(event, 'offline'); }}
 				/>
 				<Notification
-					content={[<span key="offline">You are in offline mode <a href="#">More Information</a></span>]}
+					content={[<span key="offline">You are in offline mode <a href="javascript:void(0);">More Information</a></span>]}
 					iconName="offline"
 					isOpen={this.state.offlineIsOpen}
 					onDismiss={(event) => { this.toggleOpen(event, 'offline'); }}

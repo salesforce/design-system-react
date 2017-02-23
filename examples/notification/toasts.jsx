@@ -31,7 +31,7 @@ const Example = React.createClass({
 					onDismiss={(event) => { this.toggleOpen(event, 'base'); }}
 					variant="toast"
 				/>
-				<span> </span>
+				<span />
 				<Button
 					label="Open success toast"
 					onClick={(event) => { this.toggleOpen(event, 'success'); }}
@@ -44,19 +44,19 @@ const Example = React.createClass({
 					theme="success"
 					variant="toast"
 				/>
-				<span> </span>
+				<span />
 				<Button
 					label="Open warning toast"
 					onClick={(event) => { this.toggleOpen(event, 'warning'); }}
 				/>
 				<Notification
-					content={[<span key="required-fields">Oops, you've missed some required form inputs.</span>]}
+					content={[<span key="required-fields">Oops, you&quot;ve missed some required form inputs.</span>]}
 					isOpen={this.state.warningIsOpen}
 					onDismiss={(event) => { this.toggleOpen(event, 'warning'); }}
 					theme="warning"
 					variant="toast"
 				/>
-				<span> </span>
+				<span />
 				<Button
 					label="Open error toast"
 					onClick={(event) => { this.toggleOpen(event, 'error'); }}

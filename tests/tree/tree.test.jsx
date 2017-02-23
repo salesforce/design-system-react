@@ -83,14 +83,12 @@ const DemoTree = React.createClass({
 			if (isFunction(this.props.itemClicked)) {
 				this.props.itemClicked(event, data);
 			}
-		} else {
-			if (!this.props.noBranchSelection ||
+		} else if (!this.props.noBranchSelection ||
 				(this.props.noBranchSelection && data.node.type !== 'branch')) {
-				data.node.selected = data.select;
-				this.forceUpdate();
-				if (isFunction(this.props.itemClicked)) {
-					this.props.itemClicked(event, data);
-				}
+			data.node.selected = data.select;
+			this.forceUpdate();
+			if (isFunction(this.props.itemClicked)) {
+				this.props.itemClicked(event, data);
 			}
 		}
 	},

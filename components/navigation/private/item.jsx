@@ -74,4 +74,4 @@ Item.getDefaultProps = {
 	isSelected: false
 };
 
-module.exports = Item;
+export default Item;

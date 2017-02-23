@@ -128,7 +128,7 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 			...rest
 		} = this.props;
 
-		let listItemstyle = {};
+		const listItemstyle = {};
 		// TODO: This should eventually exist in a CSS class. Feature has been filed.
 		const hoverBackgroundColor = '#f7f9fb';
 

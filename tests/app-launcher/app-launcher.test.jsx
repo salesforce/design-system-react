@@ -1,10 +1,3 @@
-/* eslint-env mocha */
-/* global sinon */
-/* eslint-disable react/display-name */
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-console */
-/* eslint-disable max-len */
-
 import React from 'react';
 import { expect } from 'chai';
 import { mount, ReactWrapper } from 'enzyme';
@@ -165,15 +158,15 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 
 		it('renders all App Launcher dots', () => {
 			expect(handles.appLauncherIcon.find('.slds-icon-waffle').containsAllMatchingElements([
-				<div className="slds-r1"></div>,
-				<div className="slds-r2"></div>,
-				<div className="slds-r3"></div>,
-				<div className="slds-r4"></div>,
-				<div className="slds-r5"></div>,
-				<div className="slds-r6"></div>,
-				<div className="slds-r7"></div>,
-				<div className="slds-r8"></div>,
-				<div className="slds-r9"></div>
+				<div className="slds-r1" />,
+				<div className="slds-r2" />,
+				<div className="slds-r3" />,
+				<div className="slds-r4" />,
+				<div className="slds-r5" />,
+				<div className="slds-r6" />,
+				<div className="slds-r7" />,
+				<div className="slds-r8" />,
+				<div className="slds-r9" />
 			])).to.equal(true);
 		});
 

@@ -62,13 +62,11 @@ const DemoTree = React.createClass({
 			}
 			this.forceUpdate();
 			itemClicked('Node Clicked')(event, data);
-		} else {
-			if (!this.props.noBranchSelection ||
+		} else if (!this.props.noBranchSelection ||
 				(this.props.noBranchSelection && data.node.type !== 'branch')) {
-				data.node.selected = data.select;
-				this.forceUpdate();
-				itemClicked('Node Clicked')(event, data);
-			}
+			data.node.selected = data.select;
+			this.forceUpdate();
+			itemClicked('Node Clicked')(event, data);
 		}
 	},
 
@@ -104,7 +102,7 @@ const DemoTree = React.createClass({
 });
 
 storiesOf(TREE, module)
-	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Base', () => <DemoTree heading="Miscellaneous Foods" />)
 	.add('Initial Expanded/Selection', () => <DemoTree
 		heading="Miscellaneous Foods"

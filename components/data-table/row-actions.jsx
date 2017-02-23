@@ -19,7 +19,7 @@ import isFunction from 'lodash.isfunction';
 import Dropdown from '../menu-dropdown';
 
 // ### Event Helpers
-import { EventUtil } from '../../utilities';
+import EventUtil from '../../utilities/event';
 
 // ## Constants
 import { DATA_TABLE_ROW_ACTIONS } from '../../utilities/constants';
@@ -62,8 +62,9 @@ const DataTableRowActions = React.createClass({
 		// i18n
 		return (
 			<td
-				className="slds-cell-shrink" data-label="Actions"
+				className="" data-label="Actions"
 				onClick={this.handleClick}
+				style={{ width: '3.25rem' }}
 			>
 				<Dropdown
 					align="right"

@@ -1,7 +1,4 @@
-/* eslint-env mocha */
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable react/display-name */
-/* eslint-disable no-unused-expressions */
+/* eslint-disable react/no-render-return-value */
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -31,7 +28,7 @@ describe('SLDSTooltip: ', function () {
 
 	afterEach(() => {
 		try {
-			Array.prototype.forEach.call(document.body.querySelectorAll('.drop'), component => document.body.removeChild(component));
+			Array.prototype.forEach.call(document.body.querySelectorAll('.drop'), (component) => document.body.removeChild(component));
 			if (body) {
 				document.body.removeChild(body);
 			}
@@ -46,7 +43,7 @@ describe('SLDSTooltip: ', function () {
 		document.body.appendChild(body);
 	};
 
-	const renderTooltip = inst => ReactDOM.render(inst, body);
+	const renderTooltip = (inst) => ReactDOM.render(inst, body);
 
 	const createTooltip = (props, kids) => React.createElement(SLDSPopoverTooltip, props, kids);
 

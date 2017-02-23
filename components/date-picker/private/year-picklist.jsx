@@ -79,4 +79,4 @@ const DatepickerYearSelector = React.createClass({
 	}
 });
 
-module.exports = DatepickerYearSelector;
+export default DatepickerYearSelector;

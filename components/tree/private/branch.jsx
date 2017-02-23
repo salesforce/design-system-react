@@ -369,4 +369,4 @@ Branch.getDefaultProps = {
 	treeIndex: ''
 };
 
-module.exports = Branch;
+export default Branch;

@@ -163,7 +163,7 @@ const ListItem = React.createClass({
 						className={classNames('slds-has-divider', this.props.className)}
 						onMouseDown={this.handleMouseDown}
 						role="separator"
-					></li>
+					/>
 				);
 			}
 			case 'link':
@@ -188,8 +188,8 @@ const ListItem = React.createClass({
 							role="menuitem"
 							tabIndex="-1"
 						>
-								{this.getLabel()}
-								{this.getIcon('right')}
+							{this.getLabel()}
+							{this.getIcon('right')}
 						</a>
 					</li>
 				);

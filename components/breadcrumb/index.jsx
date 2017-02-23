@@ -1,75 +1,65 @@
 /*
 Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
+// # Breadcrumbs
+
+// Implements the [Breadcrumbs design pattern](https://www.lightningdesignsystem.com/components/breadcrumbs) in React.
+// Based on SLDS v2.1.0-rc.2
+
+// ## Dependencies
+
+// ### React
 import React from 'react';
-import SLDSLookup from '~/components/SLDSLookup';
-import CustomLookupListItemLabel from './custom-lookup-list-item-label.cjsx';
 
-const items = [
-	{
-		label: 'Paddy\'s Pub'
-	},
-	{
-		label: 'Tyrell Corp'
-	},
-	{
-		label: 'Paper St. Soap Company'
-	},
-	{
-		label: 'Nakatomi Investments'
-	},
-	{
-		label: 'Acme Landscaping'
-	},
-	{
-		label: 'Acme Construction'
-	}
-];
+// ## Constants
+import { BREADCRUMB } from '../../utilities/constants';
 
-module.exports = React.createClass({
+/**
+ * Use breadcrumbs to note the path of a record and help the user to navigate back to the parent.Breadcrumb based on SLDS 2.1.0-dev
+ */
+const Breadcrumb = (props) => {
+	const {
+		assistiveText,
+		trail
+	} = props;
 
-	getDefaultProps () {
-		return {};
-	},
+	return (
+		<nav role="navigation" aria-label={assistiveText}>
+			<ol className="slds-breadcrumb slds-list--horizontal">
+				{trail.map((crumb, index) =>
+					<li
+						key={`BreadCrumb.${index}`}
+						className="slds-breadcrumb__item slds-text-title--caps"
+					>{crumb}</li>
+				)}
+			</ol>
+		</nav>
+	);
+};
 
-	getInitialState () {
-		return {
-			searchVal: null
-		};
-	},
+Breadcrumb.displayName = BREADCRUMB;
 
-	onChange (newValue) {
-		console.log('New search term: ', newValue);
-		this.setState({
-			searchVal: newValue
-		});
-	},
+Breadcrumb.propTypes = {
+	/**
+	 * The assistive text for the breadcrumb trail
+	 */
+	assistiveText: React.PropTypes.string,
+	/**
+	 * An array of react elements presumably anchor elements.
+	 */
+	trail: React.PropTypes.array
+};
 
-	selectItem (item) {
-		console.log(item, ' Selected');
-	},
+Breadcrumb.defaultProps = {
+	assistiveText: 'Breadcrumbs'
+};
 
-	getFooter () {
-		return <SLDSLookup.DefaultFooter type="account" />;
-	},
-
-	render () {
-		return (
-			<div className="slds-p-around--medium">
-				<h3 className="slds-text-heading--medium slds-truncate">
-											Lookup with Custom Item Label Renderer
-										</h3>
-				<div className="slds-p-vertical--large">
-					<SLDSLookup footerRenderer={SLDSLookup.DefaultFooter} hasError headerRenderer={SLDSLookup.DefaultHeader} iconCategory="utility" iconClasses="slds-icon-text-default" iconName="open_folder"
-						items={items} label="Account" listItemLabelRenderer={CustomLookupListItemLabel} onChange={this.onChange} onItemSelect={this.selectItem} type="account"
-					/>
-				</div>
-			</div>
-			);
-	}
-});
+module.exports = Breadcrumb;

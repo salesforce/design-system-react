@@ -21,8 +21,13 @@ export ButtonGroup from './button-group';
 export SLDSButtonStateful from './button-stateful';
 export ButtonStateful from './button-stateful';
 
-export SLDSBreadCrumb from './bread-crumb';
-export BreadCrumb from './bread-crumb';
+/* Remove at next breaking change */
+export SLDSBreadCrumb from './breadcrumb';
+export BreadCrumb from './breadcrumb';
+
+export SLDSBreadcrumb from './breadcrumb';
+export Breadcrumb from './breadcrumb';
+
 
 export SLDSCard from './card';
 export Card from './card';

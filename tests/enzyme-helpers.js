@@ -29,7 +29,9 @@ function destroyMountNode ({ wrapper, mountNode }) {
 	document.body.removeChild(mountNode);
 }
 
-module.exports.createMountNode = createMountNode;
-module.exports.destroyMountNode = destroyMountNode;
-module.exports.mountComponent = mountComponent;
-module.exports.unmountComponent = unmountComponent;
+export {
+	createMountNode,
+	destroyMountNode,
+	mountComponent,
+	unmountComponent
+};
