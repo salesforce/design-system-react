@@ -44,40 +44,40 @@ const FilteringPanelFilter = React.createClass({
 
 	propTypes: {
 		/**
-		 * Assistive text for removing a filter
+		 * Assistive text for removing a filter. The default is `Remove Filter: ${this.props.property} ${this.props.predicate}`.
 		 */
 		assistiveTextRemoveFilter: PropTypes.string,
 		/**
 		 * Assistive text for changing a filter
 		 */
-		assistiveTextChangeFilter: PropTypes.string,
+		assistiveTextEditFilter: PropTypes.string,
 		/**
 		 * Assistive text for Popover heading
 		 */
-		assistiveTextChangeFilterHeading: PropTypes.string,
+		assistiveTextEditFilterHeading: PropTypes.string,
 		/**
 		 * Contents of popover. That is the dropdowns and inputs that set the filter criteria. Dropdowns, Picklists and other menus must use `isInline` to work properly within a Popover.
 		 */
 		children: PropTypes.node,
 		/**
-			* Will put filter into error styling and add error label to it.
-			*/
+		 * Will put filter into error styling and add error label to it.
+		 */
 		errorLabel: PropTypes.string,
 		/**
-		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
-		*/
+		 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
+		 */
 		id: PropTypes.string,
 		/**
-			* If true, the filter will not display an editing popover when clicked
-			*/
+		 * If true, the filter will not display an editing popover when clicked
+		 */
 		locked: PropTypes.bool,
 		/**
-			* Applies new filter styling
-			*/
+		 * Applies new filter styling
+		 */
 		new: PropTypes.bool,
 		/**
-			* If true, the filter will not include a remove button
-			*/
+		 * If true, the filter will not include a remove button
+		 */
 		permanent: PropTypes.bool,
 		/**
 		 * Will be triggered when Done within the Popover is clicked
@@ -88,20 +88,19 @@ const FilteringPanelFilter = React.createClass({
 		 */
 		onRemove: PropTypes.func,
 		/**
-		 * The criteria you are filtering for. ("[The property] is blue")
+		 * The criteria you are filtering for. For instance, if "Hair Color is PURPLE" is your filter, "is PURPLE" is your filter predicate.
 		 */
 		predicate: PropTypes.node,
 		/**
-		 * The property you are filter
+		 * The property you are filtering. For instance, if "Hair Color is PURPLE" is your filter, "Hair Color" is your filter property.
 		 */
 		property: PropTypes.node
 	},
 
 	getDefaultProps () {
 		return {
-			assistiveTextChangeFilter: 'Edit filter:',
-			assistiveTextChangeFilterHeading: 'Choose filter criteria',
-			assistiveTextRemoveFilter: 'Remove filter:',
+			assistiveTextEditFilter: 'Edit filter:',
+			assistiveTextEditFilterHeading: 'Choose filter criteria',
 			predicate: 'New Filter'
 		};
 	},
@@ -145,7 +144,7 @@ const FilteringPanelFilter = React.createClass({
 	render () {
 		const popoverBody = (
 			<div>
-				<h4 className="slds-assistive-text" id={`${this.getId()}-popover-heading`}>{this.props.assistiveTextChangeFilterHeading}</h4>
+				<h4 className="slds-assistive-text" id={`${this.getId()}-popover-heading`}>{this.props.assistiveTextEditFilterHeading}</h4>
 				{this.props.children}
 				<div className="slds-m-top--small slds-text-align--right">
 					<Button
@@ -157,7 +156,7 @@ const FilteringPanelFilter = React.createClass({
 			</div>
 		);
 
-		/* TODO: Button wrapper for property and predictate should be transitioned to `Button` component */
+		/* TODO: Button wrapper for property and predictate should be transitioned to `Button` component. `Button` needs to take custom children first though. */
 
 		return (
 			<li className="slds-item slds-hint-parent">
@@ -176,7 +175,7 @@ const FilteringPanelFilter = React.createClass({
 					? <Popover
 						ariaLabelledby={`${this.getId()}-popover-heading`}
 						align="left"
-						body={popoverBody}
+						body={popoverBody} // this is wrapped props.children essentially
 						heading=""
 						id={this.getId()}
 						isOpen={this.state.popoverIsOpen}
@@ -187,10 +186,9 @@ const FilteringPanelFilter = React.createClass({
 						<button
 							className="slds-button--reset slds-grow slds-has-blur-focus"
 							onClick={this.handleFilterClick}
-							disabled={this.props.locked}
 							aria-describedby={this.props.errorLabel ? `${this.getId()}-error` : undefined}
 						>
-							<span className="slds-assistive-text">{this.props.assistiveTextChangeFilter}</span>
+							<span className="slds-assistive-text">{this.props.assistiveTextEditFilter}</span>
 							{this.props.property ? <p className="slds-text-body--small">{this.props.property}</p> : null}
 							<p>{this.props.predicate}</p>
 						</button>
@@ -200,16 +198,19 @@ const FilteringPanelFilter = React.createClass({
 						<p>{this.props.predicate}</p>
 					</button>
 					}
-					{!this.props.permanent && !this.props.locked
+					{// Close button
+						!this.props.permanent && !this.props.locked
 						? <Button
-							assistiveText={`${this.props.assistiveTextRemoveFilter} ${this.props.property} ${this.props.predicate}`}
+							assistiveText={this.props.assistiveTextRemoveFilter
+								|| `Remove Filter: ${this.props.property} ${this.props.predicate}`}
 							hint
 							iconCategory="utility"
 							iconName="close"
 							iconSize="small"
 							iconVariant="bare"
 							onClick={this.handleRemove}
-							title={`${this.props.assistiveTextRemoveFilter} ${this.props.predicate}`}
+							title={this.props.assistiveTextRemoveFilter
+								|| `Remove Filter: ${this.props.property} ${this.props.predicate}`}
 							variant="icon"
 						/>
 					: null}
