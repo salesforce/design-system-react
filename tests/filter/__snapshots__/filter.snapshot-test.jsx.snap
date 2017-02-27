@@ -1,0 +1,168 @@
+exports[`test Error Filter Base Snapshot 1`] = `
+<SLDSFilter
+  align="left"
+  assistiveTextEditFilter="Edit filter:"
+  assistiveTextEditFilterHeading="Choose filter criteria"
+  id="sample-panel-filtering-show-me"
+  isError={true}
+  onChange={[Function]}
+  onRemove={[Function]}
+  predicate="All Products"
+  property="Show Me">
+  <SLDSMenuPicklist
+    checkmark={true}
+    inheritTargetWidth={true}
+    isInline={true}
+    label="Show Me"
+    onSelect={[Function]}
+    options={
+      Array [
+        Object {
+          "label": "All Products",
+          "value": "all-products",
+        },
+        Object {
+          "label": "All Wackamoles",
+          "value": "all-Wackamoles",
+        },
+      ]
+    }
+    placeholder="Select record type"
+    value="all-products" />
+</SLDSFilter>
+`;
+
+exports[`test Filter Base Snapshot 1`] = `
+<SLDSFilter
+  align="left"
+  assistiveTextEditFilter="Edit filter:"
+  assistiveTextEditFilterHeading="Choose filter criteria"
+  id="sample-panel-filtering-show-me"
+  onChange={[Function]}
+  onRemove={[Function]}
+  predicate="All Products"
+  property="Show Me">
+  <SLDSMenuPicklist
+    checkmark={true}
+    inheritTargetWidth={true}
+    isInline={true}
+    label="Show Me"
+    onSelect={[Function]}
+    options={
+      Array [
+        Object {
+          "label": "All Products",
+          "value": "all-products",
+        },
+        Object {
+          "label": "All Wackamoles",
+          "value": "all-Wackamoles",
+        },
+      ]
+    }
+    placeholder="Select record type"
+    value="all-products" />
+</SLDSFilter>
+`;
+
+exports[`test LockedFilter Base Snapshot 1`] = `
+<SLDSFilter
+  align="left"
+  assistiveTextEditFilter="Edit filter:"
+  assistiveTextEditFilterHeading="Choose filter criteria"
+  id="sample-panel-filtering-show-me"
+  isLocked={true}
+  onChange={[Function]}
+  onRemove={[Function]}
+  predicate="All Products"
+  property="Show Me">
+  <SLDSMenuPicklist
+    checkmark={true}
+    inheritTargetWidth={true}
+    isInline={true}
+    label="Show Me"
+    onSelect={[Function]}
+    options={
+      Array [
+        Object {
+          "label": "All Products",
+          "value": "all-products",
+        },
+        Object {
+          "label": "All Wackamoles",
+          "value": "all-Wackamoles",
+        },
+      ]
+    }
+    placeholder="Select record type"
+    value="all-products" />
+</SLDSFilter>
+`;
+
+exports[`test NewFilter Base Snapshot 1`] = `
+<SLDSFilter
+  align="left"
+  assistiveTextEditFilter="Edit filter:"
+  assistiveTextEditFilterHeading="Choose filter criteria"
+  id="sample-panel-filtering-show-me"
+  isNew={true}
+  onChange={[Function]}
+  onRemove={[Function]}
+  predicate="All Products"
+  property="Show Me">
+  <SLDSMenuPicklist
+    checkmark={true}
+    inheritTargetWidth={true}
+    isInline={true}
+    label="Show Me"
+    onSelect={[Function]}
+    options={
+      Array [
+        Object {
+          "label": "All Products",
+          "value": "all-products",
+        },
+        Object {
+          "label": "All Wackamoles",
+          "value": "all-Wackamoles",
+        },
+      ]
+    }
+    placeholder="Select record type"
+    value="all-products" />
+</SLDSFilter>
+`;
+
+exports[`test Permanant Filter Base Snapshot 1`] = `
+<SLDSFilter
+  align="left"
+  assistiveTextEditFilter="Edit filter:"
+  assistiveTextEditFilterHeading="Choose filter criteria"
+  id="sample-panel-filtering-show-me"
+  isPermanent={true}
+  onChange={[Function]}
+  onRemove={[Function]}
+  predicate="All Products"
+  property="Show Me">
+  <SLDSMenuPicklist
+    checkmark={true}
+    inheritTargetWidth={true}
+    isInline={true}
+    label="Show Me"
+    onSelect={[Function]}
+    options={
+      Array [
+        Object {
+          "label": "All Products",
+          "value": "all-products",
+        },
+        Object {
+          "label": "All Wackamoles",
+          "value": "all-Wackamoles",
+        },
+      ]
+    }
+    placeholder="Select record type"
+    value="all-products" />
+</SLDSFilter>
+`;

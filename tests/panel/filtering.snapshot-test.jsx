@@ -9,12 +9,12 @@ import jsBeautify from 'js-beautify';
 
 import PanelFiltering from '../../examples/panel/filtering';
 
-// test('Panel Filtering Default Snapshot', () => {
-// 	const domTree = toJson(shallow(
-// 		<PanelFiltering />
-// 	));
-// 	expect(domTree).toMatchSnapshot();
-// });
+test('Panel Filtering Default Snapshot', () => {
+	const domTree = toJson(shallow(
+		<PanelFiltering />
+	));
+	expect(domTree).toMatchSnapshot();
+});
 
 test('Panel Filtering Default HTML Snapshot', () => {
 	const domTree = String(
