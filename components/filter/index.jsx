@@ -11,9 +11,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 /* eslint-disable no-script-url */
 
-// # Panel - Filter variant
+// # Filter
 
-// Implements the [Panel design pattern](https://www.lightningdesignsystem.com/components/panels) in React.
+// Implements part of the [Panel design pattern](https://www.lightningdesignsystem.com/components/panels) in React.
 // Based on SLDS v2.2.0-rc.1
 
 // ## Dependencies
@@ -24,8 +24,8 @@ import React, { PropTypes } from 'react';
 // ### classNames
 import classNames from 'classnames';
 
-import Button from '../../button';
-import Popover from '../../popover';
+import Button from '../button';
+import Popover from '../popover';
 
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
@@ -33,26 +33,29 @@ import Popover from '../../popover';
 import shortid from 'shortid';
 
 // ## Constants
-import { PANEL_FILTERING_FILTER } from '../../../utilities/constants';
-
+import { FILTER } from '../../utilities/constants';
 
 /**
- * A filtering panel's contextual filtering options.
+ * A Filter is a popover with custom trigger. It is used by Panel Filtering
  */
-const FilteringPanelFilter = React.createClass({
-	displayName: PANEL_FILTERING_FILTER,
+const Filter = React.createClass({
+	displayName: FILTER,
 
 	propTypes: {
+		/**
+		 * Aligns the popover with the respective side of the trigger. That is `left` will place the `Popover` to the left of the Filter.
+		 */
+		align: PropTypes.oneOf(['left', 'right']),
 		/**
 		 * Assistive text for removing a filter. The default is `Remove Filter: ${this.props.property} ${this.props.predicate}`.
 		 */
 		assistiveTextRemoveFilter: PropTypes.string,
 		/**
-		 * Assistive text for changing a filter
+		 * Assistive text for changing a filter.
 		 */
 		assistiveTextEditFilter: PropTypes.string,
 		/**
-		 * Assistive text for Popover heading
+		 * Assistive text for Popover heading.
 		 */
 		assistiveTextEditFilterHeading: PropTypes.string,
 		/**
@@ -60,31 +63,31 @@ const FilteringPanelFilter = React.createClass({
 		 */
 		children: PropTypes.node,
 		/**
-		 * Will put filter into error styling and add error label to it.
+		 * Applies error state styling. Per filter error messages are outside this components.
 		 */
-		errorLabel: PropTypes.string,
+		isError: PropTypes.bool,
 		/**
-		 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
+		 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button. An `id` will be generated if none is supplied.
 		 */
 		id: PropTypes.string,
 		/**
-		 * If true, the filter will not display an editing popover when clicked
+		 * If true, the filter will not display an editing popover when clicked.
 		 */
-		locked: PropTypes.bool,
+		isLocked: PropTypes.bool,
 		/**
-		 * Applies new filter styling
+		 * Applies new filter styling.
 		 */
-		new: PropTypes.bool,
+		isNew: PropTypes.bool,
 		/**
-		 * If true, the filter will not include a remove button
+		 * If true, the filter will not include a remove button.
 		 */
-		permanent: PropTypes.bool,
+		isPermanent: PropTypes.bool,
 		/**
-		 * Will be triggered when Done within the Popover is clicked
+		 * Will be triggered when Done within the Popover is clicked. This is the place to update the filter props displayed. Callback will recieve parameters: `clickEvent, { id }`. An index into your store may be a good setting for `id`, so that it will be passed back here.
 		 */
 		onChange: PropTypes.func,
 		/**
-		 * Will be triggered when "Remove Filter" button is clicked
+		 * Will be triggered when "Remove Filter" button is clicked. Callback will recieve parameters: `clickEvent, { id }`. An index into your store may be a good setting for `id`, so that it will be passed back here.
 		 */
 		onRemove: PropTypes.func,
 		/**
@@ -99,6 +102,7 @@ const FilteringPanelFilter = React.createClass({
 
 	getDefaultProps () {
 		return {
+			align: 'left',
 			assistiveTextEditFilter: 'Edit filter:',
 			assistiveTextEditFilterHeading: 'Choose filter criteria',
 			predicate: 'New Filter'
@@ -127,17 +131,17 @@ const FilteringPanelFilter = React.createClass({
 		this.setState({ popoverIsOpen: false });
 	},
 
-	handleChange () {
+	handleChange (event) {
 		this.setState({ popoverIsOpen: false });
 
 		if (this.props.onChange) {
-			this.props.onChange({ id: this.getId() });
+			this.props.onChange(event, { id: this.getId() });
 		}
 	},
 
-	handleRemove () {
+	handleRemove (event) {
 		if (this.props.onRemove) {
-			this.props.onRemove({ id: this.getId() });
+			this.props.onRemove(event, { id: this.getId() });
 		}
 	},
 
@@ -159,66 +163,70 @@ const FilteringPanelFilter = React.createClass({
 		/* TODO: Button wrapper for property and predictate should be transitioned to `Button` component. `Button` needs to take custom children first though. */
 
 		return (
-			<li className="slds-item slds-hint-parent">
-				<div
-					className={classNames(
-						'slds-filters__item',
-						'slds-grid',
-						'slds-grid--vertical-align-center', {
-							'slds-is-locked': this.props.locked,
-							'slds-is-new': this.props.new,
-							'slds-has-error': this.props.errorLabel
-						}
-					)}
+			<div
+				className={classNames(
+					'slds-filters__item',
+					'slds-grid',
+					'slds-grid--vertical-align-center', {
+						'slds-is-locked': this.props.isLocked,
+						'slds-is-new': this.props.isNew,
+						'slds-has-error': this.props.isError
+					}
+				)}
+			>
+				{!this.props.isLocked && this.props.children
+				? <Popover
+					ariaLabelledby={`${this.getId()}-popover-heading`}
+					align={this.props.align}
+					body={popoverBody} // this is wrapped props.children essentially
+					heading=""
+					id={this.getId()}
+					isOpen={this.state.popoverIsOpen}
+
+					// MAGIC NUMBERS - REMOVE/REDESIGN WHEN DESIGN FOR RIGHT-ALIGNED FILTERS ARE ADDED TO SLDS
+					offset={this.props.align === 'right' ? '0px -35px' : undefined}
+					onClose={this.handleClose}
+					onRequestClose={this.handleClose}
+					triggerClassName="slds-grow"
 				>
-					{!this.props.locked && this.props.children
-					? <Popover
-						ariaLabelledby={`${this.getId()}-popover-heading`}
-						align="left"
-						body={popoverBody} // this is wrapped props.children essentially
-						heading=""
-						id={this.getId()}
-						isOpen={this.state.popoverIsOpen}
-						onClose={this.handleClose}
-						onRequestClose={this.handleClose}
-						triggerClassName="slds-grow"
+					<button
+						className="slds-button--reset slds-grow slds-has-blur-focus"
+						onClick={this.handleFilterClick}
+						aria-describedby={this.props.isError ? `${this.getId()}-error` : undefined}
 					>
-						<button
-							className="slds-button--reset slds-grow slds-has-blur-focus"
-							onClick={this.handleFilterClick}
-							aria-describedby={this.props.errorLabel ? `${this.getId()}-error` : undefined}
-						>
-							<span className="slds-assistive-text">{this.props.assistiveTextEditFilter}</span>
-							{this.props.property ? <p className="slds-text-body--small">{this.props.property}</p> : null}
-							<p>{this.props.predicate}</p>
-						</button>
-					</Popover>
-					: <button className="slds-button--reset slds-grow slds-has-blur-focus" disabled>
-						<p className="slds-text-body--small">{this.props.property}</p>
+						<span className="slds-assistive-text">{this.props.assistiveTextEditFilter}</span>
+						{this.props.property ? <p className="slds-text-body--small">{this.props.property}</p> : null}
 						<p>{this.props.predicate}</p>
 					</button>
-					}
-					{// Close button
-						!this.props.permanent && !this.props.locked
-						? <Button
-							assistiveText={this.props.assistiveTextRemoveFilter
-								|| `Remove Filter: ${this.props.property} ${this.props.predicate}`}
-							hint
-							iconCategory="utility"
-							iconName="close"
-							iconSize="small"
-							iconVariant="bare"
-							onClick={this.handleRemove}
-							title={this.props.assistiveTextRemoveFilter
-								|| `Remove Filter: ${this.props.property} ${this.props.predicate}`}
-							variant="icon"
-						/>
-					: null}
-				</div>
-				{this.props.errorLabel ? <p id={`${this.getId()}-error`} className="slds-text-color--error slds-m-top--xx-small">{this.props.errorLabel}</p> : null}
-			</li>
+				</Popover>
+				: <button
+					aria-describedby={this.props.isError ? `${this.getId()}-error` : undefined}
+					className="slds-button--reset slds-grow slds-has-blur-focus"
+					disabled
+				>
+					<p className="slds-text-body--small">{this.props.property}</p>
+					<p>{this.props.predicate}</p>
+				</button>
+				}
+				{// Close button
+					!this.props.isPermanent && !this.props.isLocked
+					? <Button
+						assistiveText={this.props.assistiveTextRemoveFilter
+							|| `Remove Filter: ${this.props.property} ${this.props.predicate}`}
+						hint
+						iconCategory="utility"
+						iconName="close"
+						iconSize="small"
+						iconVariant="bare"
+						onClick={this.handleRemove}
+						title={this.props.assistiveTextRemoveFilter
+							|| `Remove Filter: ${this.props.property} ${this.props.predicate}`}
+						variant="icon"
+					/>
+				: null}
+			</div>
 		);
 	}
 });
 
-module.exports = FilteringPanelFilter;
+export default Filter;

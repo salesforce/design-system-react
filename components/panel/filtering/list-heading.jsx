@@ -9,7 +9,7 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # Panel - Filter variant
+// # FIlter List Heading
 
 // Implements the [Panel design pattern](https://www.lightningdesignsystem.com/components/panels) in React.
 // Based on SLDS v2.2.0-rc.1
@@ -25,20 +25,24 @@ import classNames from 'classnames';
 import Icon from '../../icon';
 
 // ## Constants
-import { PANEL_FILTERING_LIST_HEADING } from '../../../utilities/constants';
+import { PANEL_FILTER_LIST_HEADING } from '../../../utilities/constants';
 
 /**
  * A filtering panel contextual filtering options.
  */
-const FilteringPanelListHeading = ({ label, locked, lockedLabel }) => (
+const PanelFilterListHeading = ({
+	heading,
+	isLocked,
+	lockedHeading
+}) => (
 	<h3
 		className={classNames('slds-text-body--small', 'slds-m-vertical--x-small',
-		{ 'slds-grid': locked })}
+		{ 'slds-grid': isLocked })}
 	>
-		{locked
-		? lockedLabel
-		: label}
-		{locked
+		{isLocked
+		? lockedHeading
+		: heading}
+		{isLocked
 		? <Icon
 			className="slds-m-left--x-small"
 			assistiveText="locked"
@@ -50,26 +54,27 @@ const FilteringPanelListHeading = ({ label, locked, lockedLabel }) => (
 	</h3>
 );
 
-FilteringPanelListHeading.displayName = PANEL_FILTERING_LIST_HEADING;
+PanelFilterListHeading.displayName = PANEL_FILTER_LIST_HEADING;
 
-FilteringPanelListHeading.propTypes = {
+PanelFilterListHeading.propTypes = {
 	/**
-	 * Heading for a group of filters
+	 * Heading for following PanelFilterList
 	 */
-	label: PropTypes.string,
+	heading: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	/**
 	 * Displayed a heading for a locked list of filters
 	 */
-	locked: PropTypes.bool,
+	isLocked: PropTypes.bool,
 	/**
 	 * Heading for a group of filters that are locked
 	 */
-	lockedLabel: PropTypes.string
+	lockedHeading: PropTypes.string
 };
 
-FilteringPanelListHeading.defaultProps = {
-	label: 'Matching all these filters',
+PanelFilterListHeading.defaultProps = {
+	heading: 'Matching all these filters',
 	lockedLabel: 'Locked filters'
+
 };
 
-module.exports = FilteringPanelListHeading;
+export default PanelFilterListHeading;

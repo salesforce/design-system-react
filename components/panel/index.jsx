@@ -38,7 +38,9 @@ const Panel = ({ children, variant }) => (
 				'slds-panel--filters': variant === 'filters'
 			})}
 	>
-		{children}
+		<div className="slds-form--stacked slds-grow slds-scrollable--y slds-grid slds-grid--vertical">
+			{children}
+		</div>
 	</div>
 );
 

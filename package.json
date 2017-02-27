@@ -251,6 +251,12 @@
       "SLDS-component-path": "/components/icons"
     },
     {
+      "component": "filter",
+      "status": "prototype",
+      "display-name": "Filters",
+      "SLDS-component-path": "/components/panels"
+    },
+    {
       "component": "forms/input/inline",
       "status": "prod",
       "display-name": "Inline Edit Inputs",
@@ -375,10 +381,7 @@
       "SLDS-component-path": "/components/panels",
       "dependencies": [
         {
-          "component": "filtering/filter"
-        },
-        {
-          "component": "filtering/footer"
+          "component": "filtering/filter-group"
         },
         {
           "component": "filtering/list-heading"

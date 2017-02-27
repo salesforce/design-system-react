@@ -9,9 +9,9 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # Panel - Filter variant
+// # Panel Filter Group
 
-// Implements the [Panel design pattern](https://www.lightningdesignsystem.com/components/panels) in React.
+// Implements the Filter part of [Panel design pattern](https://www.lightningdesignsystem.com/components/panels) in React.
 // Based on SLDS v2.2.0-rc.1
 
 // ## Dependencies
@@ -19,75 +19,76 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React, { PropTypes } from 'react';
 
-import Panel from '../';
-import Button from '../../button';
-import PanelFilteringFooter from './footer';
+import PanelFilteringFooter from './private/panel-footer';
+import PanelHeader from './private/panel-header';
 
 // ## Constants
-import { PANEL_FILTERING } from '../../../utilities/constants';
+import { PANEL_FILTER_GROUP } from '../../../utilities/constants';
 
 /**
  * A filtering panel contextual filtering options.
  */
-const FilteringPanel = ({
-	assistiveTextCloseFilterPanel,
-	cancelLabel,
+const PanelFilterGroup = ({
 	children,
 	errorLabel,
 	footer,
-	heading,
-	modified,
+	header,
+	variant,
+
+	// footer
+	addFilterLabel,
 	onClickAdd,
 	onClickRemoveAll,
+	removeAllLabel,
+
+	// header
+	assistiveTextCloseFilterPanel,
+	cancelLabel,
+	heading,
+	modified,
 	onRequestCancel,
 	onRequestClose,
 	onRequestSave,
 	saveLabel
 }) => (
-	<Panel variant="filters">
-		<div className="slds-form--stacked slds-grow slds-scrollable--y slds-grid slds-grid--vertical">
-			<div className="slds-filters">
-				{modified ? <div className="slds-filters__header slds-grid slds-has-divider--bottom-space slds-grid--align-spread">
-					<Button
-						label={cancelLabel}
-						onClick={onRequestCancel}
-						variant="neutral"
-					/>
-					<Button
-						label={saveLabel}
-						onClick={onRequestSave}
-						variant="brand"
-					/>
-				</div>
-				: <div className="slds-filters__header slds-grid slds-has-divider--bottom-space">
-					<h2 className="slds-align-middle slds-text-heading--small">{heading}</h2>
-					<Button
-						className="slds-col--bump-left"
-						assistiveText={assistiveTextCloseFilterPanel}
-						iconCategory="utility"
-						iconName="forward"
-						iconVariant="bare"
-						iconSize="small"
-						onClick={onRequestClose}
-						title={assistiveTextCloseFilterPanel}
-						variant="icon"
-					/>
-				</div>}
-				<div className="slds-filters__body">
-					{errorLabel
-						? <div className="slds-text-color--error slds-m-bottom--x-small" role="alert">{errorLabel}</div>
-						: null}
-					{children}
-				</div>
-				{footer || <PanelFilteringFooter onClickAdd={onClickAdd} onClickRemoveAll={onClickRemoveAll} />}
-			</div>
+	<div className="slds-filters">
+		{variant === 'panel' ? <PanelHeader
+			assistiveTextCloseFilterPanel={assistiveTextCloseFilterPanel}
+			cancelLabel={cancelLabel}
+			heading={heading}
+			modified={modified}
+			onRequestCancel={onRequestCancel}
+			onRequestClose={onRequestClose}
+			onRequestSave={onRequestSave}
+			saveLabel={saveLabel}
+
+		/>
+		: header || null
+		}
+		<div className="slds-filters__body">
+			{errorLabel
+				? <div className="slds-text-color--error slds-m-bottom--x-small" role="alert">{errorLabel}</div>
+				: null}
+			{children}
 		</div>
-	</Panel>
+		{variant === 'panel' ? <PanelFilteringFooter
+			addFilterLabel={addFilterLabel}
+			onClickAdd={onClickAdd}
+			onClickRemoveAll={onClickRemoveAll}
+			removeAllLabel={removeAllLabel}
+		/>
+		: footer || null
+		}
+	</div>
 );
 
-FilteringPanel.displayName = PANEL_FILTERING;
+PanelFilterGroup.displayName = PANEL_FILTER_GROUP;
 
-FilteringPanel.propTypes = {
+PanelFilterGroup.propTypes = {
+	/**
+	 * Localized description of the "Add Filter" button in the footer
+	 */
+	addFilterLabel: PropTypes.node,
 	/**
 	 * Localized description of the close button for the panel for screen readers
 	 */
@@ -97,7 +98,22 @@ FilteringPanel.propTypes = {
 	 */
 	cancelLabel: PropTypes.string,
 	/**
-	 * Pass in `FilterList`'s of `Filters`
+	 * Pass in `FilterList`'s of `Filters`:
+	 *
+	 * ```
+	 * <FilterGroup
+	 *   variant="panel"
+	 * >
+	 *   <FilterList>
+	 *     <Filter
+	 *       property="Show Me"
+	 *       predicate="All Wackamoles"
+	 *     >
+	 *     {popoverContents}
+	 *     </Filter>
+	 *   </FilterList>
+	 * </FilterGroup>
+	 * ```
 	 */
 	children: PropTypes.node,
 	/**
@@ -105,13 +121,17 @@ FilteringPanel.propTypes = {
 	 */
 	errorLabel: PropTypes.string,
 	/**
-	 * Allows for customization of footer beyond default
+	 * Allows for customization of footer. This will be added after any `FilterList`'s in the DOM. If using Panel Filter Group outside of a panel, do not set the variant to `panel` and header and footer will be removed.
 	 */
 	footer: PropTypes.node,
 	/**
-	 * The heading of the filtering panel
+	 * Allows for customization of header. This will be added before any `FilterList`'s in the DOM. If using Panel Filter Group outside of a panel, do not set the variant to `panel` and header and footer will be removed.
 	 */
-	heading: PropTypes.node,
+	header: PropTypes.node,
+	/**
+	 * The heading within the header of the filtering panel
+	 */
+	heading: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	/**
 	 * Shows confirmation heading. Please see `onRequestCancel` and `onRequestSave`.
 	 */
@@ -137,16 +157,26 @@ FilteringPanel.propTypes = {
 	 */
 	onRequestSave: PropTypes.func,
 	/**
+	 * Localized description of the "Remove All" button in the footer
+	 */
+	removeAllLabel: PropTypes.node,
+	/**
 	 * Label for button that saves modified filters
 	 */
-	saveLabel: PropTypes.string
+	saveLabel: PropTypes.string,
+	/**
+	 * Adds in default Panel header and footer
+	 */
+	variant: React.PropTypes.oneOf(['panel'])
 };
 
-FilteringPanel.defaultProps = {
+PanelFilterGroup.defaultProps = {
+	addFilterLabel: 'Add Filter',
 	cancelLabel: 'Cancel',
 	assistiveTextCloseFilterPanel: 'Close Filter Panel',
 	heading: 'Filter',
-	saveLabel: 'Save'
+	saveLabel: 'Save',
+	removeAllLabel: 'Remove All'
 };
 
-module.exports = FilteringPanel;
+export default PanelFilterGroup;

@@ -9,7 +9,7 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # Panel - Filter variant
+// # Panel Filter Group Footer
 
 // Implements the [Panel design pattern](https://www.lightningdesignsystem.com/components/panels) in React.
 // Based on SLDS v2.2.0-rc.1
@@ -19,41 +19,52 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React, { PropTypes } from 'react';
 
-import Button from '../../button';
-
-// ## Constants
-import { PANEL_FILTERING_FOOTER } from '../../../utilities/constants';
+import Button from '../../../button';
 
 /**
  * A filtering panel contextual filtering options.
  */
-const FilteringPanelFooter = ({ children, onClickAdd, onClickRemoveAll }) => {
-	const isChildren = !!React.Children.count(children);
-	const output = isChildren
-		? (<div className="slds-filters__footer slds-grid slds-shrink-none">{children}</div>)
-		: (<div className="slds-filters__footer slds-grid slds-shrink-none">
-			<Button
-				label="Add Filter"
-				onClick={onClickAdd}
-				variant="link"
-			/>
-			<Button
-				className="slds-col--bump-left"
-				label="Remove All"
-				onClick={onClickRemoveAll}
-				variant="link"
-			/>
-		</div>);
-	return output;
-};
+const PanelFilterFooter = ({
+	addFilterLabel,
+	onClickAdd,
+	onClickRemoveAll,
+	removeAllLabel
+}) => (
+	<div className="slds-filters__footer slds-grid slds-shrink-none">
+		<Button
+			label={addFilterLabel}
+			onClick={onClickAdd}
+			variant="link"
+		/>
+		<Button
+			className="slds-col--bump-left"
+			label={removeAllLabel}
+			onClick={onClickRemoveAll}
+			variant="link"
+		/>
+	</div>
+);
 
-FilteringPanelFooter.displayName = PANEL_FILTERING_FOOTER;
+PanelFilterFooter.displayName = 'SLDSPanelFilterFooter';
 
-FilteringPanelFooter.propTypes = {
+PanelFilterFooter.propTypes = {
 	/**
-	 * A place for actions such as "Add a filter" or "Remove all"
+	 * Localized description of the "Add Filter" button in the footer
 	 */
-	children: PropTypes.node
+	addFilterLabel: PropTypes.node.isRequired,
+	/**
+	 * Callback triggered when "Add Filter" is clicked. Recieves an `event`.
+	 */
+	onClickAdd: PropTypes.func.isRequired,
+	/**
+	 * Callback triggered when "Remove All" is clicked. Recieves an `event`.
+	 */
+	onClickRemoveAll: PropTypes.func.isRequired,
+	/**
+	 * Localized description of the "Remove All" button in the footer
+	 */
+	removeAllLabel: PropTypes.node.isRequired
+
 };
 
-module.exports = FilteringPanelFooter;
+export default PanelFilterFooter;
