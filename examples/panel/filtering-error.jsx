@@ -1,9 +1,9 @@
 import React from 'react';
 
 import Panel from '~/components/panel'; // `~` is replaced with design-system-react at runtime
-import FilterGroup from '~/components/panel/filtering/group';
-import FilterList from '~/components/panel/filtering/list';
-import FilterListHeading from '~/components/panel/filtering/list-heading';
+import PanelFilterGroup from '~/components/panel/filtering/group';
+import PanelFilterList from '~/components/panel/filtering/list';
+import PanelFilterListHeading from '~/components/panel/filtering/list-heading';
 import Filter from '~/components/filter';
 
 import Picklist from '~/components/menu-picklist';
@@ -85,7 +85,7 @@ const Example = React.createClass({
 				<Panel
 					variant="filters"
 				>
-					<FilterGroup
+					<PanelFilterGroup
 						errorLabel="Filters could not be applied. Please fix the validation errors below."
 						modified={this.state.modifiedPanel}
 						onClickAdd={() => {
@@ -101,7 +101,7 @@ const Example = React.createClass({
 						onRequestSave={() => { this.setState({ modifiedPanel: false }); }}
 						variant="panel"
 					>
-						<FilterList>
+						<PanelFilterList>
 							<Filter
 								id="sample-panel-filtering-show-me"
 								isPermanent
@@ -120,10 +120,10 @@ const Example = React.createClass({
 									value={this.state['show-me'].selectedPicklistItem.value}
 								/>
 							</Filter>
-						</FilterList>
+						</PanelFilterList>
 
-						{hasActiveFilters ? <FilterListHeading label="Matching all these filters" /> : null}
-						{hasActiveFilters ? <FilterList>
+						{hasActiveFilters ? <PanelFilterListHeading label="Matching all these filters" /> : null}
+						{hasActiveFilters ? <PanelFilterList>
 							{this.state['created-date'].isActive
 								? <Filter
 									id="sample-panel-filtering-created-date"
@@ -171,9 +171,9 @@ const Example = React.createClass({
 								predicate={'equals "Red"'}
 								property="Stage"
 							/>
-						</FilterList>
+						</PanelFilterList>
 						: null}
-					</FilterGroup>
+					</PanelFilterGroup>
 				</Panel>
 			</div>
 		);
