@@ -1,9 +1,10 @@
 import React from 'react';
 
-import FilteringPanel from '~/components/panel/filtering'; // `~` is replaced with design-system-react at runtime
-import PanelFilteringList from '~/components/panel/filtering/list';
-import PanelFilteringListHeading from '~/components/panel/filtering/list-heading';
-import PanelFilteringFilter from '~/components/panel/filtering/filter';
+import Panel from '~/components/panel'; // `~` is replaced with design-system-react at runtime
+import FilterGroup from '~/components/panel/filtering/group';
+import FilterList from '~/components/panel/filtering/list';
+import FilterListHeading from '~/components/panel/filtering/list-heading';
+import Filter from '~/components/filter';
 
 import Picklist from '~/components/menu-picklist';
 
@@ -50,7 +51,7 @@ const Example = React.createClass({
 		};
 	},
 
-	onChangePredicate ({ id }) {
+	onChangePredicate (event, { id }) {
 		const idSuffix = id.split('sample-panel-filtering-')[1];
 		this.setState({
 			modifiedPanel: this.state[idSuffix].selectedItem !== this.state[idSuffix].selectedPicklistItem,
@@ -70,7 +71,7 @@ const Example = React.createClass({
 		});
 	},
 
-	onRemove ({ id }) {
+	onRemove (event, { id }) {
 		const idSuffix = id.split('sample-panel-filtering-')[1];
 		this.setState({
 			[idSuffix]: {
@@ -85,8 +86,10 @@ const Example = React.createClass({
 			|| this.state['list-price'].isActive
 			|| this.state.new.isActive;
 		return (
-			<div style={{ paddingLeft: '300px' }}>
-				<FilteringPanel
+			<Panel
+				variant="filters"
+			>
+				<FilterGroup
 					modified={this.state.modifiedPanel}
 					onClickAdd={() => {
 						this.setState({ modifiedPanel: true, new: { isActive: true, new: true } });
@@ -99,11 +102,12 @@ const Example = React.createClass({
 					onRequestCancel={() => { this.setState({ modifiedPanel: false }); }}
 					onRequestClose={() => { console.log('Request filtering panel to close'); }}
 					onRequestSave={() => { this.setState({ modifiedPanel: false }); }}
+					variant="panel"
 				>
-					<PanelFilteringList>
-						<PanelFilteringFilter
+					<FilterList>
+						<Filter
 							id="sample-panel-filtering-show-me"
-							permanent
+							isPermanent
 							onChange={this.onChangePredicate}
 							property="Show Me"
 							predicate={this.state['show-me'].selectedItem.label}
@@ -118,13 +122,13 @@ const Example = React.createClass({
 								placeholder="Select record type"
 								value={this.state['show-me'].selectedPicklistItem.value}
 							/>
-						</PanelFilteringFilter>
-					</PanelFilteringList>
+						</Filter>
+					</FilterList>
 
-					{hasActiveFilters ? <PanelFilteringListHeading label="Matching all these filters" /> : null}
-					{hasActiveFilters ? <PanelFilteringList>
+					{hasActiveFilters ? <FilterListHeading label="Matching all these filters" /> : null}
+					{hasActiveFilters ? <FilterList>
 						{this.state['created-date'].isActive
-							? <PanelFilteringFilter
+							? <Filter
 								id="sample-panel-filtering-created-date"
 								onChange={this.onChangePredicate}
 								onRemove={this.onRemove}
@@ -141,11 +145,11 @@ const Example = React.createClass({
 									placeholder="Select a time range"
 									value={this.state['created-date'].selectedPicklistItem.value}
 								/>
-							</PanelFilteringFilter>
+							</Filter>
 						: null}
 						
 						{this.state['list-price'].isActive
-						?	<PanelFilteringFilter
+						?	<Filter
 							id="sample-panel-filtering-list-price"
 							onChange={this.onChangePredicate}
 							onRemove={this.onRemove}
@@ -162,11 +166,11 @@ const Example = React.createClass({
 								placeholder="Select a price"
 								value={this.state['list-price'].selectedPicklistItem.value}
 							/>
-						</PanelFilteringFilter>
+						</Filter>
 						: null}
 
 						{this.state.new.isActive
-						?	<PanelFilteringFilter
+						?	<Filter
 							id="sample-panel-filtering-new"
 							new={this.state.new.new && this.state.modifiedPanel}
 							onChange={this.onChangePredicate}
@@ -184,13 +188,13 @@ const Example = React.createClass({
 								placeholder="Select Criteria"
 								value={this.state.new.selectedPicklistItem && this.state.new.selectedPicklistItem.value}
 							/>
-						</PanelFilteringFilter>
+						</Filter>
 						: null}
 
-					</PanelFilteringList>
+					</FilterList>
 					: null}
-				</FilteringPanel>
-			</div>
+				</FilterGroup>
+			</Panel>
 		);
 	}
 });

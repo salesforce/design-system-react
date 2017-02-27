@@ -1,9 +1,10 @@
 import React from 'react';
 
-import FilteringPanel from '~/components/panel/filtering'; // `~` is replaced with design-system-react at runtime
-import PanelFilteringList from '~/components/panel/filtering/list';
-import PanelFilteringListHeading from '~/components/panel/filtering/list-heading';
-import PanelFilteringFilter from '~/components/panel/filtering/filter';
+import Panel from '~/components/panel'; // `~` is replaced with design-system-react at runtime
+import FilterGroup from '~/components/panel/filtering/group';
+import FilterList from '~/components/panel/filtering/list';
+import FilterListHeading from '~/components/panel/filtering/list-heading';
+import Filter from '~/components/filter';
 
 import Picklist from '~/components/menu-picklist';
 
@@ -45,7 +46,7 @@ const Example = React.createClass({
 		};
 	},
 
-	onChangePredicate ({ id }) {
+	onChangePredicate (event, { id }) {
 		const idSuffix = id.split('sample-panel-filtering-')[1];
 		this.setState({
 			modifiedPanel: this.state[idSuffix].selectedItem !== this.state[idSuffix].selectedPicklistItem,
@@ -65,7 +66,7 @@ const Example = React.createClass({
 		});
 	},
 
-	onRemove ({ id }) {
+	onRemove (event, { id }) {
 		const idSuffix = id.split('sample-panel-filtering-')[1];
 		this.setState({
 			[idSuffix]: {
@@ -81,45 +82,49 @@ const Example = React.createClass({
 			|| this.state.new.isActive;
 		return (
 			<div style={{ paddingLeft: '300px' }}>
-				<FilteringPanel
-					modified={this.state.modifiedPanel}
-					onClickAdd={() => {
-						this.setState({ modifiedPanel: true, new: { isActive: true, new: true } });
-					}}
-					onClickRemoveAll={() => {
-						this.onRemove({ id: 'sample-panel-filtering-created-date' });
-						this.onRemove({ id: 'sample-panel-filtering-list-price' });
-						this.onRemove({ id: 'sample-panel-filtering-new' });
-					}}
-					onRequestCancel={() => { this.setState({ modifiedPanel: false }); }}
-					onRequestClose={() => { console.log('Request filtering panel to close'); }}
-					onRequestSave={() => { this.setState({ modifiedPanel: false }); }}
+				<Panel
+					variant="filters"
 				>
-					<PanelFilteringList>
-						<PanelFilteringFilter
-							id="sample-panel-filtering-show-me"
-							permanent
-							onChange={this.onChangePredicate}
-							property="Show Me"
-							predicate={this.state['show-me'].selectedItem.label}
-						>
-							<Picklist
-								isInline
-								label="Show Me"
-								onSelect={(selectedItem) => {
-									this.onSelectPicklist(selectedItem, 'show-me');
-								}}
-								options={options['show-me']}
-								placeholder="Select record type"
-								value={this.state['show-me'].selectedPicklistItem.value}
-							/>
-						</PanelFilteringFilter>
-					</PanelFilteringList>
+					<FilterGroup
+						modified={this.state.modifiedPanel}
+						onClickAdd={() => {
+							this.setState({ modifiedPanel: true, new: { isActive: true, new: true } });
+						}}
+						onClickRemoveAll={() => {
+							this.onRemove({ id: 'sample-panel-filtering-created-date' });
+							this.onRemove({ id: 'sample-panel-filtering-list-price' });
+							this.onRemove({ id: 'sample-panel-filtering-new' });
+						}}
+						onRequestCancel={() => { this.setState({ modifiedPanel: false }); }}
+						onRequestClose={() => { console.log('Request filtering panel to close'); }}
+						onRequestSave={() => { this.setState({ modifiedPanel: false }); }}
+						variant="panel"
+					>
+						<FilterList>
+							<Filter
+								id="sample-panel-filtering-show-me"
+								isPermanent
+								onChange={this.onChangePredicate}
+								property="Show Me"
+								predicate={this.state['show-me'].selectedItem.label}
+							>
+								<Picklist
+									isInline
+									label="Show Me"
+									onSelect={(selectedItem) => {
+										this.onSelectPicklist(selectedItem, 'show-me');
+									}}
+									options={options['show-me']}
+									placeholder="Select record type"
+									value={this.state['show-me'].selectedPicklistItem.value}
+								/>
+							</Filter>
+						</FilterList>
 
-					{hasActiveFilters ? <PanelFilteringListHeading label="Matching all these filters" /> : null}
-						{hasActiveFilters ? <PanelFilteringList>
+						{hasActiveFilters ? <FilterListHeading label="Matching all these filters" /> : null}
+						{hasActiveFilters ? <FilterList>
 							{this.state['created-date'].isActive
-								? <PanelFilteringFilter
+								? <Filter
 									id="sample-panel-filtering-created-date"
 									onChange={this.onChangePredicate}
 									onRemove={this.onRemove}
@@ -136,11 +141,11 @@ const Example = React.createClass({
 										placeholder="Select a time range"
 										value={this.state['created-date'].selectedPicklistItem.value}
 									/>
-								</PanelFilteringFilter>
+								</Filter>
 							: null}
 							
 							{this.state['list-price'].isActive
-							?	<PanelFilteringFilter
+							?	<Filter
 								id="sample-panel-filtering-list-price"
 								onChange={this.onChangePredicate}
 								onRemove={this.onRemove}
@@ -157,22 +162,23 @@ const Example = React.createClass({
 									placeholder="Select a price"
 									value={this.state['list-price'].selectedPicklistItem.value}
 								/>
-							</PanelFilteringFilter>
+							</Filter>
 							: null}
-						</PanelFilteringList>
-					: null}
+						</FilterList>
+						: null}
 
-					<PanelFilteringListHeading locked />
-					<PanelFilteringList>
-						<PanelFilteringFilter
-							id="sample-panel-filtering-name"
-							locked
-							predicate={'equals "ACME"'}
-							property="Name"
-						/>
-					</PanelFilteringList>
+						<FilterListHeading isLocked />
+						<FilterList>
+							<Filter
+								id="sample-panel-filtering-name"
+								isLocked
+								predicate={'equals "ACME"'}
+								property="Name"
+							/>
+						</FilterList>
+					</FilterGroup>
 
-				</FilteringPanel>
+				</Panel>
 			</div>
 		);
 	}

@@ -7,7 +7,16 @@ import FilteringLocked from './filtering-locked';
 import FilteringError from './filtering-error';
 
 storiesOf(PANEL, module)
-	.addDecorator(getStory => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => (
+		<div className="slds-grid">
+			<div
+				className="slds-col--bump-left"
+				style={{ width: '420px' }}
+			>
+				{getStory()}
+			</div>
+		</div>
+	))
 	.add('Filters', () => <Filtering />)
 	.add('Filters Locked', () => <FilteringLocked />)
 	.add('Filters Error', () => <FilteringError />);
