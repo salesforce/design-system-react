@@ -91,9 +91,9 @@ const Example = React.createClass({
 						this.setState({ modifiedPanel: true, new: { isActive: true, new: true } });
 					}}
 					onClickRemoveAll={() => {
-						this.onRemove({ id: 'sample-panel-filtering-created-date' });
-						this.onRemove({ id: 'sample-panel-filtering-list-price' });
-						this.onRemove({ id: 'sample-panel-filtering-new' });
+						this.onRemove(null, { id: 'sample-panel-filtering-created-date' });
+						this.onRemove(null, { id: 'sample-panel-filtering-list-price' });
+						this.onRemove(null, { id: 'sample-panel-filtering-new' });
 					}}
 					onRequestCancel={() => { this.setState({ modifiedPanel: false }); }}
 					onRequestClose={() => { console.log('Request filtering panel to close'); }}
