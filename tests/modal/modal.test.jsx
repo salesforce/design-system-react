@@ -83,6 +83,7 @@ describe('SLDSModal: ', function () {
 		beforeEach(() => {
 			closed = false;
 			cmp = getModal({
+				closeButtonAssistiveText: 'Exit',
 				isOpen: true,
 				size: 'large',
 				containerClassName: 'my-custom-class',
@@ -102,6 +103,11 @@ describe('SLDSModal: ', function () {
 
 		it('adds custom classname from modal container prop', () => {
 			expect(modal.firstChild.className).to.include('my-custom-class');
+		});
+
+		it('renders correct assistive text/title for close button', () => {
+			const closeBtn = modal.querySelector('.slds-modal__close');
+			expect(closeBtn.title).to.be('Exit');
 		});
 
 		it('calls onRequestClose', () => {
