@@ -172,7 +172,7 @@ const Example = React.createClass({
 						{this.state.new.isActive
 						?	<Filter
 							id="sample-panel-filtering-new"
-							new={this.state.new.new && this.state.modifiedPanel}
+							isNew={this.state.new.new && this.state.modifiedPanel}
 							onChange={this.onChangePredicate}
 							onRemove={this.onRemove}
 							predicate={this.state.new.selectedItem && this.state.new.selectedItem.label}
@@ -194,7 +194,7 @@ const Example = React.createClass({
 					</PanelFilterList>
 					: null}
 				</PanelFilterGroup>
-				
+
 			</Panel>
 		);
 	}
