@@ -57,4 +57,4 @@ Panel.propTypes = {
 	variant: PropTypes.oneOf(['filters'])
 };
 
-module.exports = Panel;
+export default Panel;
