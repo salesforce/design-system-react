@@ -1,5 +1,5 @@
 /* eslint-disable no-console, max-len */
-console.log('# Generating docs'); // eslint-disable-line no-console
+console.log('# Generating docs based on `components` object in `package.json`. Please add any public components to this object.');
 
 import { parse } from 'react-docgen';
 import fs from 'fs';
