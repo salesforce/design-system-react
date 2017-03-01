@@ -348,12 +348,7 @@
       "component": "modal",
       "status": "prod",
       "display-name": "Modals",
-      "SLDS-component-path": "/components/modals",
-      "dependencies": [
-        {
-          "component": "trigger"
-        }
-      ]
+      "SLDS-component-path": "/components/modals"
     },
     {
       "component": "navigation",

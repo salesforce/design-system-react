@@ -10,16 +10,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 // ### React
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 // ### classNames
 import classNames from 'classnames';
 
 // ## Constants
 import { DATA_TABLE_CELL } from '../../utilities/constants';
-
-// Removes the need for `PropTypes`.
-const { PropTypes } = React;
 
 /**
  * The default Cell renderer for the DataTable. Pass in any React component with the same `displayName` which takes the same props to provide custom rendering.
@@ -37,25 +34,25 @@ const DataTableCell = (props) => {
 		</div>
 	);
 
+	let cell = (<td
+		className={props.className}
+		role={props.fixedLayout ? 'gridcell' : null}
+		style={props.width ? { width: props.width } : null}
+	>
+		{contents}
+	</td>);
 
-	return (
-		props.primaryColumn
-		? <th
+	if (props.primaryColumn) {
+		cell = (<th
 			className={props.className}
 			role={props.fixedLayout ? 'gridcell' : null}
 			style={props.width ? { width: props.width } : null}
 		>
 			{contents}
-		</th>
+		</th>);
+	}
 
-		: <td
-			className={props.className}
-			role={props.fixedLayout ? 'gridcell' : null}
-			style={props.width ? { width: props.width } : null}
-		>
-			{contents}
-		</td>
-	);
+	return cell;
 };
 
 // ### Display Name
