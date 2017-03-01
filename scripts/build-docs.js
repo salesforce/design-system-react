@@ -96,7 +96,7 @@ components.map((node) => {
 				toReturn[dependency.component] = depDoc;
 			} catch (err) {
 				if (err) {
-					console.log('\n\n  ERROR: ./scripts/build-docs.js:106\n ', util.inspect(err.message, { showHidden: true, depth: null, colors: true }), `\n  ${depInputPathToUse.replace(dirName, '.')} is apparently not a valid JSX file...?\n\n`);
+					console.log('\n\n  ERROR: ./scripts/build-docs.js:106\n ', util.inspect(err.message, { showHidden: true, depth: null, colors: true }), `\n  ${depInputPathToUse.replace(dirName, '.')} is apparently not a valid JSX file...? This library uses https://github.com/reactjs/react-docgen to create its documentation. Please conform to code that is compatible with that library.\n\n`);
 					process.exit(1);
 				}
 			}
@@ -123,8 +123,7 @@ components.map((node) => {
 	return true;
 });
 
-const outputPath = path.join(__dirname, '../examples/components.json');
-const outputAstPath = path.join(__dirname, '../examples/components-ast.json');
+const outputPath = path.join(__dirname, '../examples/component-docs.json');
 
 fs.writeFile(outputPath, JSON.stringify(output, null, 4), (err) => {
 	if (err) {
@@ -132,8 +131,11 @@ fs.writeFile(outputPath, JSON.stringify(output, null, 4), (err) => {
 	}
 });
 
-fs.writeFile(outputAstPath, JSON.stringify(outputAst, null, 4), (err) => {
-	if (err) {
-		console.log('  [ ERROR AT ./scripts/build-docs.js:145 ] err: ', util.inspect(err, { showHidden: true, depth: null, colors: true }));
-	}
-});
+// FOR DEBUGGING
+
+// const outputAstPath = path.join(__dirname, '../examples/components-ast.json');
+// fs.writeFile(outputAstPath, JSON.stringify(outputAst, null, 4), (err) => {
+// 	if (err) {
+// 		console.log('  [ ERROR AT ./scripts/build-docs.js:145 ] err: ', util.inspect(err, { showHidden: true, depth: null, colors: true }));
+// 	}
+// });
