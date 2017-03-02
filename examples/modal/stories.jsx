@@ -135,6 +135,7 @@ const modalContent = (
 storiesOf(MODAL, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Small', () => getModal({
+		closeButtonAssistiveText: 'Exit',
 		isOpen: true,
 		tagline: 'Enter in details below',
 		title: 'New Opportunity',
