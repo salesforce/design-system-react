@@ -11,6 +11,7 @@
     "*.{js,jsx}": "eslint --quiet"
   },
   "scripts": {
+    "build-docs": "./node_modules/.bin/babel-node ./scripts/build-docs.js",
     "build-storybook": "build-storybook -o ./storybook",
     "dist": "scripts/dist.sh",
     "heroku-prebuild": "./scripts/heroku-prebuild.sh",
@@ -131,6 +132,8 @@
     "karma-spec-reporter": "^0.0.26",
     "karma-webpack": "^2.0.2",
     "lint-staged": "^3.3.0",
+    "lodash.isempty": "^4.2.1",
+    "lodash.kebabcase": "^4.0.1",
     "lodash.trim": "^4.0.1",
     "minimist": "^1.2.0",
     "mocha": "^3.1.2",
@@ -140,6 +143,7 @@
     "pre-commit": "^1.2.2",
     "react": ">=15.4.1",
     "react-addons-test-utils": ">=15.4.1",
+    "react-docgen": "^2.13.0",
     "react-dom": ">=15.4.1",
     "react-hot-loader": "^1.2.7",
     "react-test-renderer": "^15.4.1",
@@ -349,12 +353,7 @@
       "component": "modal",
       "status": "prod",
       "display-name": "Modals",
-      "SLDS-component-path": "/components/modals",
-      "dependencies": [
-        {
-          "component": "trigger"
-        }
-      ]
+      "SLDS-component-path": "/components/modals"
     },
     {
       "component": "navigation",
