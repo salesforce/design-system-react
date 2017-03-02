@@ -10,18 +10,17 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 // ### React
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 // ## Constants
 import { DATA_TABLE_COLUMN } from '../../utilities/constants';
 
-// Removes the need for `PropTypes`.
-const { PropTypes } = React;
+// extends is used below so that react-docgen can detect the component
 
 /**
  * Columns define the structure of the data displayed in the DataTable.
  */
-const DataTableColumn = () => { };
+class DataTableColumn extends React.Component { }
 
 // ### Display Name
 // Always use the canonical component name as the React display name.

@@ -11,3 +11,4 @@
 
 NODE_ENV=test node_modules/.bin/karma start --single-run "$@"
 NODE_ENV=test npm run snapshot-test
+NODE_ENV=test npm run build-docs
