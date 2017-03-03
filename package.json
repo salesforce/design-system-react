@@ -111,6 +111,7 @@
     "compression": "^1.6.2",
     "css-loader": "^0.26.1",
     "enzyme": "^2.5.1",
+    "enzyme-to-json": "^1.5.0",
     "eslint-config-slds": "git+ssh://git@github.com/salesforce-ux/eslint-config-slds.git#v3.0.1",
     "eslint-loader": "^1.6.0",
     "express": "^4.13.4",
@@ -255,6 +256,12 @@
       "SLDS-component-path": "/components/icons"
     },
     {
+      "component": "filter",
+      "status": "prototype",
+      "display-name": "Filters",
+      "SLDS-component-path": "/components/panels"
+    },
+    {
       "component": "forms/input/inline",
       "status": "prod",
       "display-name": "Inline Edit Inputs",
@@ -366,6 +373,23 @@
       "status": "prod",
       "display-name": "Notifications",
       "SLDS-component-path": "/components/notifications"
+    },
+    {
+      "component": "panel",
+      "status": "prototype",
+      "display-name": "Panels",
+      "SLDS-component-path": "/components/panels",
+      "dependencies": [
+        {
+          "component": "filtering/group"
+        },
+        {
+          "component": "filtering/list-heading"
+        },
+        {
+          "component": "filtering/list"
+        }
+      ]
     },
     {
       "component": "popover",

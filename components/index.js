@@ -90,6 +90,9 @@ export Icon from './icon';
 export SLDSButtonIcon from './icon/button-icon';
 export ButtonIcon from './icon/button-icon';
 
+export SLDSFilter from './filter';
+export Filter from './filter';
+
 export SLDSInlineEdit from './forms/input/inline';
 export InlineEdit from './forms/input/inline';
 
@@ -123,6 +126,15 @@ export Navigation from './navigation';
 export SLDSNotification from './notification';
 export Notification from './notification';
 
+export SLDSPanel from './panel';
+export Panel from './panel';
+export SLDSPanelFilterGroup from './panel/filtering/group';
+export PanelFilterGroup from './panel/filtering/group';
+export SLDSPanelFilterList from './panel/filtering/list';
+export PanelFilterList from './panel/filtering/list';
+export SLDSPanelFilterListHeading from './panel/filtering/list-heading';
+export PanelFilterListHeading from './panel/filtering/list-heading';
+
 export SLDSPageHeader from './page-header';
 export PageHeader from './page-header';
 
@@ -143,12 +155,6 @@ export SLDSTabs from './tabs';
 export Tabs from './tabs';
 export SLDSTabsPanel from './tabs/panel';
 export TabsPanel from './tabs/panel';
-
-// This is just an alias, Sydney Bristow. Remove at next breaking release.
-export SLDSPanel from './tabs/panel';
-export Panel from './tabs/panel';
-export SLDSPane from './tabs/panel';
-export Pane from './tabs/panel';
 
 export SLDSUtilityIcon from './utilities/utility-icon';
 export UtilityIcon from './utilities/utility-icon';
