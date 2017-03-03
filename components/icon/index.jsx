@@ -24,7 +24,7 @@ import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 
 // ## Children
-import SLDSUtilityIcon from '../utilities/utility-icon';
+import UtilityIcon from '../utilities/utility-icon';
 
 // ## Constants
 import { ICON } from '../../utilities/constants';
@@ -32,115 +32,106 @@ import { ICON } from '../../utilities/constants';
 /**
  * The Icon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href='/components/buttons/'>Button component</a> component with <code>variant='icon'</code>.
  */
-const Icon = React.createClass({
-	// ### Display Name
-	// Always use the canonical component name as the React display name.
-	displayName: ICON,
+const Icon = ({
+	assistiveText,
+	category,
+	className,
+	icon,
+	inverse,
+	name,
+	size,
+	style,
+	title }) => {
+	const kababCaseName = name ? name.replace(/_/g, '-') : '';
+	
+	return (
+		<span
+			className={classNames({
+				'slds-icon_container': category !== 'utility',
+				'slds-icon_container--circle': category === 'action',
+				// For actions, this class needs to be on the container for the circle to render
+				[`slds-icon-${category}-${kababCaseName}`]: category === 'action'
+			})}
+			title={title}
+		>
+			<UtilityIcon
+				aria-hidden="true"
+				category={category}
+				className={classNames(className, 'slds-icon', {
+					[`slds-icon--${size}`]: size !== 'medium',
+					// if category is `utility` and `inverse` is false (default), icon will be dark // return true
+					// if category is `utility` and `inverse` is true, icon will be light // return false
+					// if category is NOT `utility` and `inverse` is false (default), icon will be light // return false
+					// if category is NOT `utility` and `inverse` is true, icon will be dark // return true
+					'slds-icon-text-default': category === 'utility' ? !inverse : inverse,
+					// This class is applied to SVG instead of container due to issues with Picklist.
+					[`slds-icon-${category}-${kababCaseName}`]:
+						category !== 'utility'
+						&& category !== 'doctype'
+						&& category !== 'action'
+				})}
+				icon={icon}
+				name={name}
+				style={style}
+			/>
+			{
+				assistiveText
+				? <span className="slds-assistive-text">{assistiveText}</span>
+				: ''
+			}
+		</span>
+	);
+};
+
+// ### Display Name
+// Always use the canonical component name as the React display name.
+Icon.displayName = ICON;
 
 	// ### Prop Types
-	propTypes: {
-		/**
-		 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
-		 * Naked icons must have assistive text, however, if you also have visible descriptive text with the icon,
-		 * declare this prop as <code>assistiveText=''</code>.
-		 */
-		assistiveText: PropTypes.string,
-		/**
-		 * Icon category from [lightningdesignsystem.com/icons/](https://www.lightningdesignsystem.com/icons/)
-		 */
-		category: PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']).isRequired,
-		/**
-		 * CSS classes that are applied to the SVG
-		 */
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-		/**
-		 * An SVG object to use instead of name / category, look in `design-system-react/icons` for examples
-		 */
-		icon: PropTypes.object,
-		/**
-		 * Setting `inverse` to true will switch the color of the icon: light to dark, dark to light.
-		 */
-		inverse: PropTypes.bool,
-		/**
-		 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
-		 */
-		name: PropTypes.string,
-		/**
-		 * Size of the icon. Visit [lightningdesignsystem.com/components/icons/#flavor-sizes](https://www.lightningdesignsystem.com/components/icons/#flavor-sizes)
-		 */
-		size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
-		/**
-		 * Custom styles to be passed to the SVG. Could be used to change icon or background color.
-		 */
-		style: PropTypes.object,
-		/**
-		 * Title attribute for the icon container
-		 */
-		title: PropTypes.string
-	},
+Icon.propTypes = {
+	/**
+	 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+	 * Naked icons must have assistive text, however, if you also have visible descriptive text with the icon,
+	 * declare this prop as <code>assistiveText=''</code>.
+	 */
+	assistiveText: PropTypes.string,
+	/**
+	 * Icon category from [lightningdesignsystem.com/icons/](https://www.lightningdesignsystem.com/icons/)
+	 */
+	category: PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']).isRequired,
+	/**
+	 * CSS classes that are applied to the SVG.
+	 */
+	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	/**
+	 * A custom SVG object to use instead of the supplied SLDS icons, look in `design-system-react/icons` for examples and syntax.
+	 */
+	icon: PropTypes.object,
+	/**
+	 * Setting `inverse` to true will switch the color of the icon: light to dark, dark to light.
+	 */
+	inverse: PropTypes.bool,
+	/**
+	 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
+	 */
+	name: PropTypes.string,
+	/**
+	 * Size of the icon. Visit [lightningdesignsystem.com/components/icons/#flavor-sizes](https://www.lightningdesignsystem.com/components/icons/#flavor-sizes)
+	 */
+	size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
+	/**
+	 * Custom styles to be passed to the SVG. Could be used to change icon or background color.
+	 */
+	style: PropTypes.object,
+	/**
+	 * Title attribute for the icon container
+	 */
+	title: PropTypes.string
+};
 
-	getDefaultProps () {
-		return {
-			category: 'standard',
-			size: 'medium',
-			style: {}
-		};
-	},
-
-	applyTextDefaultClass () {
-		// if category is `utility` and `inverse` is false (default), icon will be dark // return true
-		// if category is `utility` and `inverse` is true, icon will be light // return false
-		// if category is NOT `utility` and `inverse` is false (default), icon will be light // return false
-		// if category is NOT `utility` and `inverse` is true, icon will be dark // return true
-		return this.props.category === 'utility' ? !this.props.inverse : this.props.inverse;
-	},
-
-	getContainerClasses () {
-		const { category } = this.props;
-		const name = this.props.name ? this.props.name.replace(/_/g, '-') : '';
-
-		return classNames({
-			'slds-icon_container': category !== 'utility',
-			'slds-icon_container--circle': category === 'action',
-			// For actions, this class needs to be on the container for the circle to render
-			[`slds-icon-${category}-${name}`]: category === 'action'
-		});
-	},
-
-	getIconClasses () {
-		const { category } = this.props;
-		const name = this.props.name ? this.props.name.replace(/_/g, '-') : '';
-
-		return classNames(this.props.className, 'slds-icon', {
-			[`slds-icon--${this.props.size}`]: this.props.size !== 'medium',
-			'slds-icon-text-default': this.applyTextDefaultClass(),
-			// This class is applied to SVG instead of container due to issues with Picklist.
-			[`slds-icon-${category}-${name}`]: category !== 'utility' && category !== 'doctype' && category !== 'action'
-		});
-	},
-
-	render () {
-		return (
-			<span
-				className={this.getContainerClasses()}
-				title={this.props.title}
-			>
-				<SLDSUtilityIcon
-					aria-hidden="true"
-					category={this.props.category}
-					className={this.getIconClasses()}
-					icon={this.props.icon}
-					name={this.props.name}
-					style={this.props.style}
-				/>
-				{
-					this.props.assistiveText
-					? <span className="slds-assistive-text">{this.props.assistiveText}</span>
-					: ''
-				}
-			</span>
-		);
-	}
-});
+Icon.defaultProps = {
+	category: 'standard',
+	size: 'medium'
+};
 
 module.exports = Icon;
