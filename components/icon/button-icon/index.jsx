@@ -45,6 +45,7 @@ const ButtonIcon = (props) => {
 			props.className)}	// iconClassName has been deprecated
 			icon={props.icon}
 			name={props.name}
+			path={props.path}
 		/>
 	);
 };
@@ -74,6 +75,10 @@ const propTypes = {
 	 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
 	 */
 	name: PropTypes.string,
+	/**
+   * Path to SLDS icon folder
+   */
+	path: PropTypes.string,
 	/**
 	 * Adds additional spacing on the opposite side specified between button icon and the button label
 	 */

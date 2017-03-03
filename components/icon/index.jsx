@@ -39,6 +39,7 @@ const Icon = ({
 	icon,
 	inverse,
 	name,
+	path,
 	size,
 	style,
 	title }) => {
@@ -72,6 +73,7 @@ const Icon = ({
 				})}
 				icon={icon}
 				name={name}
+				path={path}
 				style={style}
 			/>
 			{
@@ -115,6 +117,10 @@ Icon.propTypes = {
 	 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
 	 */
 	name: PropTypes.string,
+	/**
+   * Path to SLDS icon folder
+   */
+	path: PropTypes.string,
 	/**
 	 * Size of the icon. Visit [lightningdesignsystem.com/components/icons/#flavor-sizes](https://www.lightningdesignsystem.com/components/icons/#flavor-sizes)
 	 */

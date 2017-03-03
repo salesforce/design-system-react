@@ -70,6 +70,10 @@ const Button = React.createClass({
 		 */
 		iconName: PropTypes.string,
 		/**
+	   * Path to SLDS icon folder
+	   */
+		iconPath: PropTypes.string,
+		/**
 		 * If omitted, icon position is centered.
 		 */
 		iconPosition: PropTypes.oneOf(['left', 'right']),
@@ -187,6 +191,7 @@ const Button = React.createClass({
 				hint={this.props.hint}
 				inverse={this.props.inverse}
 				name={name}
+				path={this.props.iconPath}
 				position={this.props.iconPosition}
 				size={iconSize}
 			/>);

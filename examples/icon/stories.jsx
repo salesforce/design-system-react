@@ -6,6 +6,10 @@ import { ICON } from '../../utilities/constants';
 import Icon from '../../components/icon';
 import download from '../../icons/utility/download';
 
+import globalSettings from '../../components/settings';
+
+globalSettings.setIconsPath('/assets/icons');
+
 storiesOf(ICON, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Base: Standard', () => (
