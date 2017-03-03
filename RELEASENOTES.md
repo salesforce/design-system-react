@@ -27,12 +27,28 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ---
 
-## Unreleased
+## Release 0.6.3
 
-- DataTable
+**Major Changes**
+
+- `BreadCrumb` component is now `Breadcrumb` with a backwards compatible alias.
+- ElementS are now allowed within Tab's `label` prop.
+- `DataTable`
   - Markup updates to SLDS 2.2.1
   - If you are using `id` attributes, to query the DOM (tsk, tsk), the `id`s have changed format.
-  - DataTable is now bordered by default. This is a visual breaking change, but will not be considered one for semver, due to SLDS's change to bordered tables being the default style.
+  - `DataTable` is now bordered by default. This is a visual breaking change, but will not be considered one for semver, due to SLDS's change to bordered tables being the default style.
+  - Advanced/Fixed Table supports "title" attribute for truncated cells
+  - `DataTable` Column `label` can be a node.
+  - `DataTable` column sort arrow issues resolved, including ARIA issues.
+- Icons are now [v7.7.0](https://github.com/salesforce-ux/icons/releases/tag/v7.7.0).
+- Added `closeButtonAssistiveText` to Modal for i18n
+
+**MAINTENANCE**
+
+- Documentation build out now occurs on all pull requests to catch issue sooner.
+- Internal components use ES6's `export default`. Public components were not affected, but will be moved ES6's `export default` in the future.
+- ESlint issues reduced to less than 300.
+- Added Greenkeeper for dependency management
 
 ## Release 0.6.2
 

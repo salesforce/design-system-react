@@ -38,6 +38,10 @@ const propTypes = {
 	 */
 	children: PropTypes.node.isRequired,
 	/**
+	  * Text read aloud by screen readers when the user focuses on the Close Button.
+	  */
+	closeButtonAssistiveText: PropTypes.string,
+	/**
 	  * Custom CSS classes for the modal's container. This is the element with `.slds-modal__container`. Use `classNames` [API](https://github.com/JedWatson/classnames).
 	  */
 	containerClassName: PropTypes.oneOfType([
@@ -175,7 +179,7 @@ class Modal extends React.Component {
 			if (this.state.isClosing) {
 				// console.log("CLOSING: ');
 				if (!this.isUnmounting) {
-					const el = ReactDOM.findDOMNode(this).parentNode;
+					const el = ReactDOM.findDOMNode(this).parentNode; // eslint-disable-line react/no-find-dom-node
 					if (el && el.getAttribute('data-slds-modal')) {
 						ReactDOM.unmountComponentAtNode(el);
 						document.body.removeChild(el);
@@ -239,13 +243,13 @@ class Modal extends React.Component {
 		}
 	}
 
-	clearBodyScroll () {
+	clearBodyScroll () { // eslint-disable-line class-methods-use-this
 		if (window && document && document.body) {
 			document.body.style.overflow = 'inherit';
 		}
 	}
 
-	handleModalClick (event) {
+	handleModalClick (event) { // eslint-disable-line class-methods-use-this
 		if (event && event.stopPropagation) {
 			event.stopPropagation();
 		}
@@ -265,6 +269,7 @@ class Modal extends React.Component {
 		};
 
 		if (hasFooter) {
+			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
 			footer = (<div className={classNames(footerClass)} onClick={this.handleModalClick}>{this.props.footer}</div>);
 		}
 		return footer;
@@ -273,20 +278,21 @@ class Modal extends React.Component {
 	headerComponent () {
 		let headerContent = this.props.header;
 		const headerEmpty = !headerContent && !this.props.title && !this.props.tagline;
+		const closeButtonAssistiveText = this.props.closeButtonAssistiveText || 'Close';
 		const closeButton = (
 			<Button
-				assistiveText="Close"
+				assistiveText={closeButtonAssistiveText}
 				iconName="close"
 				iconSize="large"
 				inverse
 				className="slds-modal__close"
 				onClick={this.closeModal}
-				title="Close"
+				title={closeButtonAssistiveText}
 				variant="icon"
 			/>
 		);
 
-		if (!headerContent && this.props.title || this.props.tagline) {
+		if ((!headerContent && this.props.title) || this.props.tagline) {
 			headerContent = (
 				<div>
 					{this.props.toast}
@@ -303,6 +309,7 @@ class Modal extends React.Component {
 		}
 
 		return (
+			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
 			<div
 				className={classNames('slds-modal__header', {
 					'slds-modal__header--empty': headerEmpty,
@@ -327,6 +334,8 @@ class Modal extends React.Component {
 			...contentStyleFromProps
 		};
 		return (
+			// temporarily disabling eslint for the onClicks on the div tags
+			/* eslint-disable */
 			<div
 				aria-labelledby={this.getId()}
 				className={classNames({
@@ -350,6 +359,7 @@ class Modal extends React.Component {
 					{this.footerComponent()}
 				</div>
 			</div>
+			/* eslint-enable */
 		);
 	}
 
