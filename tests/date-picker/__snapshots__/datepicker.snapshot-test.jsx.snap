@@ -772,16 +772,6 @@ exports[`test Datepicker
           </tbody>
         </table>
       </div>
-      <span
-        className="slds-assistive-text"
-        id="bn_prev-label">
-        CUSTOM next month
-      </span>
-      <span
-        className="slds-assistive-text"
-        id="bn_next-label">
-        CUSTOM previous month
-      </span>
     </div>
   </div>
 </div>
@@ -1548,16 +1538,6 @@ exports[`test Datepicker
           </tbody>
         </table>
       </div>
-      <span
-        className="slds-assistive-text"
-        id="bn_prev-label">
-        Next month
-      </span>
-      <span
-        className="slds-assistive-text"
-        id="bn_next-label">
-        Previous month
-      </span>
     </div>
   </div>
 </div>
@@ -2322,16 +2302,6 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
           </tbody>
         </table>
       </div>
-      <span
-        className="slds-assistive-text"
-        id="bn_prev-label">
-        Next month
-      </span>
-      <span
-        className="slds-assistive-text"
-        id="bn_next-label">
-        Previous month
-      </span>
     </div>
   </div>
 </div>
@@ -2422,7 +2392,8 @@ exports[`test Datepicker Default HTML Snapshot 1`] = `
                         </tr>
                     </tbody>
                 </table>
-            </div><span id=\"bn_prev-label\" class=\"slds-assistive-text\">Next month</span><span id=\"bn_next-label\" class=\"slds-assistive-text\">Previous month</span></div>
+            </div>
+        </div>
     </div>
 </div>"
 `;
