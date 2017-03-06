@@ -2,8 +2,13 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import renderer from 'react-test-renderer';
 import jsBeautify from 'js-beautify';
+import { jsBeautify as jsBeautifySettings } from '../settings';
 
 import SnapshotDefault from '../../examples/navigation/snapshot-default';
+
+import globalSettings from '../../components/settings';
+
+globalSettings.setIconsPath('/assets/icons');
 
 test('Navigation Default DOM Snapshot', () => {
 	const domTree = renderer.create(
@@ -14,7 +19,8 @@ test('Navigation Default DOM Snapshot', () => {
 
 test('Navigation Default HTML Snapshot', () => {
 	const domTree = String(
-		jsBeautify.html(ReactDOMServer.renderToStaticMarkup(<SnapshotDefault />)),
+		jsBeautify.html(ReactDOMServer.renderToStaticMarkup(<SnapshotDefault />), {
+			jsBeautifySettings }),
 		'utf-8'
 	);
 	expect(domTree).toMatchSnapshot();
