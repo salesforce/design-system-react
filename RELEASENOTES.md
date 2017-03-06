@@ -27,6 +27,18 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ---
 
+## Release 0.6.4
+
+**Major Changes**
+
+- Filtering `Panel` component added with variants New, Error, and Locked.
+  - Filters component added.
+  - _Forward looking statement:_ `FilterGroup` may be broken out of `Panel` and into it's own component in the future so that it can be used outside of a `Panel`, but was not broken out in this release due to pattern not existing outside of Panel in SLDS.
+
+**MAINTENANCE**
+
+- Reference of `undefined` variable in `Tabs` removed.
+
 ## Release 0.6.3
 
 **Major Changes**
