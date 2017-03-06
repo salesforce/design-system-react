@@ -21,7 +21,7 @@ import React, { PropTypes } from 'react';
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // A simple javascript utility for conditionally joining classNames together.
-import classNames from 'classnames';
+import classNames from '../../utilities/class-names';
 
 // ## Children
 import UtilityIcon from '../utilities/utility-icon';
@@ -50,8 +50,9 @@ const Icon = ({
 			className={classNames({
 				'slds-icon_container': category !== 'utility',
 				'slds-icon_container--circle': category === 'action',
-				// For actions, this class needs to be on the container for the circle to render
-				[`slds-icon-${category}-${kababCaseName}`]: category === 'action'
+				[`slds-icon-${category}-${kababCaseName}`]:
+					category !== 'utility'
+					&& category !== 'doctype'
 			})}
 			title={title}
 		>
@@ -64,12 +65,7 @@ const Icon = ({
 					// if category is `utility` and `inverse` is true, icon will be light // return false
 					// if category is NOT `utility` and `inverse` is false (default), icon will be light // return false
 					// if category is NOT `utility` and `inverse` is true, icon will be dark // return true
-					'slds-icon-text-default': category === 'utility' ? !inverse : inverse,
-					// This class is applied to SVG instead of container due to issues with Picklist.
-					[`slds-icon-${category}-${kababCaseName}`]:
-						category !== 'utility'
-						&& category !== 'doctype'
-						&& category !== 'action'
+					'slds-icon-text-default': category === 'utility' ? !inverse : inverse
 				})}
 				icon={icon}
 				name={name}
@@ -105,6 +101,10 @@ Icon.propTypes = {
 	 * CSS classes that are applied to the SVG.
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	/**
+	 * Icon color variants
+	 */
+	colorVariant: PropTypes.oneOf(['base', 'default', 'error', 'warning']),
 	/**
 	 * A custom SVG object to use instead of the supplied SLDS icons, look in `design-system-react/icons` for examples and syntax.
 	 */

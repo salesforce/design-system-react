@@ -60,12 +60,9 @@ const UtilityIcon = ({ name = '',
 	// Use icon path prop if set, then see if a global path is set, if not use inline icons
 	const modifiedPath = path || settings.getIconsPath();
 
-	const output = modifiedPath
+	const output = modifiedPath && !icon
 		? (<svg {...rest}>
-			<use
-				xmlnsXlink="http://www.w3.org/1999/xlink"
-				xlinkHref={`${modifiedPath}/${category}-sprite/svg/symbols.svg#${name}`}
-			/>
+			<use xlinkHref={`${modifiedPath}/${category}-sprite/svg/symbols.svg#${name}`} />
 		</svg>)
 		: (<Svg data={data} name={name} {...rest} />);
 
