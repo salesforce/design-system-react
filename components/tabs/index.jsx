@@ -358,7 +358,6 @@ const Tabs = React.createClass({
 			return (
 				<TabPanel
 					key={index}
-					focus={focus}
 					selected={selected}
 					id={id}
 					tabId={tabId}
