@@ -27,6 +27,12 @@ const documentationSiteLiveExamples = {
 	card: [
 		require('raw-loader!design-system-react/examples/card/related-list-with-table.jsx')
 	],
+	filter: [
+		require('raw-loader!design-system-react/examples/filter/default.jsx'),
+		require('raw-loader!design-system-react/examples/filter/new.jsx'),
+		require('raw-loader!design-system-react/examples/filter/error.jsx'),
+		require('raw-loader!design-system-react/examples/filter/locked.jsx')
+	],
 	'forms-checkbox': [
 		require('raw-loader!design-system-react/examples/forms/checkbox/default.jsx'),
 		require('raw-loader!design-system-react/examples/forms/checkbox/error.jsx')
@@ -98,6 +104,11 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!design-system-react/examples/page-header/record-home.jsx'),
 		require('raw-loader!design-system-react/examples/page-header/object-home.jsx'),
 		require('raw-loader!design-system-react/examples/page-header/related-list.jsx')
+	],
+	panel: [
+		require('raw-loader!design-system-react/examples/panel/filtering.jsx'),
+		require('raw-loader!design-system-react/examples/panel/filtering-locked.jsx'),
+		require('raw-loader!design-system-react/examples/panel/filtering-error.jsx')
 	],
 	popover: [
 		require('raw-loader!design-system-react/examples/popover/header.jsx'),
