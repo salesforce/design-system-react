@@ -68,7 +68,7 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 - <a name="event-callbacks" href="#event-callbacks">#</a> **Use consistent callback parameters.** Event callbacks should pass in the synthetic event, then a data object with contents that relate to the event.
 
-- <a name="classnames" href="#classnames">#</a> **Use classNames library.** This library makes extensive use of the [classnames](https://github.com/JedWatson/classnames) library for feeding conditional CSS classes into `className` attributes and allows a variety of types such as `string`, `object`, and `arrays`. Please review the libary's API.
+- <a name="use-classnames" href="#use-classnames">#</a> **Use classNames library.** This library makes extensive use of the [classnames](https://github.com/JedWatson/classnames) library for feeding conditional CSS classes into `className` attributes and allows a variety of types such as `string`, `object`, and `arrays`. Although longer, static classname strings are preferred more than dynamic classnames (dynamic object keys) due to searchability when updating markup. See [Classnames](#classnames) section for more details.
 
 - <a name="boolean-prop-prefix" href="#boolean-prop-prefix">#</a> **Use boolean prefixes.** If a prop is a boolean, please prefix with `is` or `can` or suffix it with `-able`. Never default a prop to `true`.
 
@@ -381,14 +381,25 @@ render () {
 ```
 
 ```javascript
-// good
+// better
 render () {
-  let classes = {
-    'MyComponent': true,
-    'MyComponent--active': this.state.active
-  };
-
-  return <div className={classnames(classes)} />;
+  return (
+    <div className={classnames('MyComponent', 
+      `MyComponent--${this.props.active}`,
+      `MyComponent--${this.props.variant}`,
+    )} />
+  );
+}
+```
+The best solution allows you to search the source code for the entire class name in order to update it. Dynamic classnames are more difficult to locate.
+```javascript
+// best
+render () {
+  return (
+    <div className={classnames('MyComponent', {
+      'MyComponent--active': this.props.active,
+      'MyComponent--link': this.props.variant === 'link',
+   })} />
 }
 ```
 
