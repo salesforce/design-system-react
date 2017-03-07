@@ -57,6 +57,8 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 - <a name="avoid-dependencies" href="#avoid-dependencies">#</a> **Avoid external dependencies.** Do not add external dependencies _to production dependencies_ list unless absolutely necessary. Always consider the "total cost of ownership" for all dependencies.
 
+- <a name="use-is-required" href="#use-is-required">#</a> **Use isRequired as much as possible in PropTypes.** `isRequired` is explicit, determines the minimal API of each component, and simplifies a component's internal code. Similar to limiting state, this library prefers simple over flexible, so use `isRequired` as much as you can without over-burdening the consuming developer.
+
 - <a name="avoid-css" href="#avoid-css">#</a> **Avoid inline CSS style/custom classes.** We are blessed to have a team of great CSS developers working on our design system. Use their CSS or contribute code back to them.
 
 ### Be consistent
