@@ -172,7 +172,13 @@ const Lookup = React.createClass({
 		/**
 		 * Index of current selected item. To clear the selection, pass in -1.
 		 */
-		selectedItem: PropTypes.number
+		selectedItem: PropTypes.number,
+
+		/**
+		* If false, then the selected item won't be rendered. It will always show input box
+		* This is for the consumer who have its own custom render outside of the lookup component
+		*/
+		shouldRenderSelectedItem: PropTypes.bool
 	},
 
 	getDefaultProps () {
@@ -180,7 +186,8 @@ const Lookup = React.createClass({
 			constrainToScrollParent: true,
 			filterWith: defaultFilter,
 			iconPosition: 'right',
-			searchTerm: ''
+			searchTerm: '',
+			shouldRenderSelectedItem: true
 		};
 	},
 
@@ -639,7 +646,7 @@ const Lookup = React.createClass({
 	},
 
 	isSelected () {
-		const hasSelection = !isNaN(parseInt(this.state.selectedIndex, 10)) && this.state.selectedIndex >= 0;
+		const hasSelection = !isNaN(parseInt(this.state.selectedIndex, 10)) && this.state.selectedIndex >= 0 && this.props.shouldRenderSelectedItem;
 		return hasSelection;
 	},
 
