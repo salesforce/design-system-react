@@ -72,6 +72,8 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 - <a name="use-classnames" href="#use-classnames">#</a> **Use classNames library.** This library makes extensive use of the [classnames](https://github.com/JedWatson/classnames) library for feeding conditional CSS classes into `className` attributes and allows a variety of types such as `string`, `object`, and `arrays`. Although longer, static classname strings are preferred more than dynamic classnames (dynamic object keys) due to searchability when updating markup. See [Classnames](#classnames) section for more details.
 
+- <a name="classname-prop-consistent" href="#classname-prop-consistent">#</a> **The `className` prop should be on a consistent node.** The classes passed into `className` should be present on the `.slds-[COMPONENT]` node and not on a container node--nor on a child of `.slds-[COMPONENT]`. All other `className` props should be prefixed--such as `triggerClassName` or `containerClassName`.
+
 - <a name="boolean-prop-prefix" href="#boolean-prop-prefix">#</a> **Use boolean prefixes.** If a prop is a boolean, please prefix with `is` or `can` or suffix it with `-able`. Never default a prop to `true`.
 
 ### Use "the good parts"
