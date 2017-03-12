@@ -87,6 +87,10 @@ const Datepicker = React.createClass({
 		 */
 		disabled: PropTypes.bool,
 		/**
+		 * dateDisabled() takes a date as input argument, returns true if given date should be disabled, otherwise returns false.
+		 */
+		dateDisabled: PropTypes.func,
+		/**
 		 * Date formatting function. _Tested with snapshot testing._
 		 */
 		formatter: PropTypes.func,
@@ -236,7 +240,8 @@ const Datepicker = React.createClass({
 				'Thursday',
 				'Friday',
 				'Saturday'
-			]
+			],
+			dateDisabled: () => false
 		};
 	},
 
@@ -406,6 +411,7 @@ const Datepicker = React.createClass({
 			isIsoWeekday={this.props.isIsoWeekday}
 			monthLabels={this.props.monthLabels}
 			onCalendarFocus={this.props.onCalendarFocus}
+			dateDisabled={this.props.dateDisabled}
 			onRequestClose={this.handleRequestClose}
 			onSelectDate={this.handleCalendarChange}
 			ref={() => {
