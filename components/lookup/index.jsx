@@ -173,7 +173,7 @@ const Lookup = React.createClass({
 		/**
 		 * Index of current selected item. To clear the selection, pass in -1.
 		 */
-		selectedItem: PropTypes.number,
+		selectedItem: PropTypes.number
 
 	},
 
