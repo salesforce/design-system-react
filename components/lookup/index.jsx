@@ -18,6 +18,7 @@
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import escapeRegExp from 'lodash.escaperegexp';
+import isEqual from 'lodash.isequal';
 
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)
@@ -174,11 +175,6 @@ const Lookup = React.createClass({
 		 */
 		selectedItem: PropTypes.number,
 
-		/**
-		* If false, then the selected item won't be rendered. It will always show input box
-		* This is for the consumer who have its own custom render outside of the lookup component
-		*/
-		shouldRenderSelectedItem: PropTypes.bool
 	},
 
 	getDefaultProps () {
@@ -186,8 +182,7 @@ const Lookup = React.createClass({
 			constrainToScrollParent: true,
 			filterWith: defaultFilter,
 			iconPosition: 'right',
-			searchTerm: '',
-			shouldRenderSelectedItem: true
+			searchTerm: ''
 		};
 	},
 
@@ -220,7 +215,7 @@ const Lookup = React.createClass({
 		if (newProps.options) {
 			this.modifyItems(newProps.options);
 		}
-		if (newProps.selectedItem !== this.props.selectedItem) {
+		if (newProps.selectedItem !== this.props.selectedItem || !isEqual(newProps.options, this.props.options)) {
 			this.setState({ selectedIndex: newProps.selectedItem });
 		}
 	},
@@ -646,7 +641,7 @@ const Lookup = React.createClass({
 	},
 
 	isSelected () {
-		const hasSelection = !isNaN(parseInt(this.state.selectedIndex, 10)) && this.state.selectedIndex >= 0 && this.props.shouldRenderSelectedItem;
+		const hasSelection = !isNaN(parseInt(this.state.selectedIndex, 10)) && this.state.selectedIndex >= 0;
 		return hasSelection;
 	},
 
