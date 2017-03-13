@@ -18,6 +18,7 @@
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import escapeRegExp from 'lodash.escaperegexp';
+import isEqual from 'lodash.isequal';
 
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)
@@ -173,6 +174,7 @@ const Lookup = React.createClass({
 		 * Index of current selected item. To clear the selection, pass in -1.
 		 */
 		selectedItem: PropTypes.number
+
 	},
 
 	getDefaultProps () {
@@ -213,7 +215,7 @@ const Lookup = React.createClass({
 		if (newProps.options) {
 			this.modifyItems(newProps.options);
 		}
-		if (newProps.selectedItem !== this.props.selectedItem) {
+		if (newProps.selectedItem !== this.props.selectedItem || !isEqual(newProps.options, this.props.options)) {
 			this.setState({ selectedIndex: newProps.selectedItem });
 		}
 	},
