@@ -57,6 +57,8 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 - <a name="avoid-dependencies" href="#avoid-dependencies">#</a> **Avoid external dependencies.** Do not add external dependencies _to production dependencies_ list unless absolutely necessary. Always consider the "total cost of ownership" for all dependencies.
 
+- <a name="use-is-required" href="#use-is-required">#</a> **Use isRequired as much as possible in PropTypes.** `isRequired` is explicit, determines the minimal API of each component, and simplifies a component's internal code. Similar to limiting state, this library prefers simple over flexible, so use `isRequired` as much as you can without over-burdening the consuming developer.
+
 - <a name="avoid-css" href="#avoid-css">#</a> **Avoid inline CSS style/custom classes.** We are blessed to have a team of great CSS developers working on our design system. Use their CSS or contribute code back to them.
 
 ### Be consistent
@@ -69,6 +71,8 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 - <a name="event-callbacks" href="#event-callbacks">#</a> **Use consistent callback parameters.** Event callbacks should pass in the synthetic event, then a data object with contents that relate to the event.
 
 - <a name="use-classnames" href="#use-classnames">#</a> **Use classNames library.** This library makes extensive use of the [classnames](https://github.com/JedWatson/classnames) library for feeding conditional CSS classes into `className` attributes and allows a variety of types such as `string`, `object`, and `arrays`. Although longer, static classname strings are preferred more than dynamic classnames (dynamic object keys) due to searchability when updating markup. See [Classnames](#classnames) section for more details.
+
+- <a name="classname-prop-consistent" href="#classname-prop-consistent">#</a> **The `className` prop should be on a consistent node.** The classes passed into `className` should be present on the `.slds-[COMPONENT]` node and not on a container node--nor on a child of `.slds-[COMPONENT]`. All other `className` props should be prefixed--such as `triggerClassName` or `containerClassName`.
 
 - <a name="boolean-prop-prefix" href="#boolean-prop-prefix">#</a> **Use boolean prefixes.** If a prop is a boolean, please prefix with `is` or `can` or suffix it with `-able`. Never default a prop to `true`.
 

@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.com/salesforce-ux/design-system-react.svg?token=BMXxPFKR5GZuYsqAFsEf&branch=master)](https://travis-ci.com/salesforce-ux/design-system-react)
 
 ## Overview
-Welcome to the project! :wave: This is an internal open source project and contributions are expected from production teams consuming this library. There is only one engineer 100%-aligned to this project at this moment. All other contributors are on production teams that ship end-product with releases dates, too.
+Welcome to the project! :wave: This is an internal open source project and contributions are expected from production teams consuming this library. There is only one engineer that is partially-aligned to this project as part of their V2MOM. All other contributors are on production teams that ship end-product with releases dates, too.
 
 Please visit [Design System React](https://react.lightningdesignsystem.com/) for documentation and examples of using the Design System React components. The documentation site has a [Getting Started Guide](https://react.lightningdesignsystem.com/getting-started/) and a [FAQ](https://react.lightningdesignsystem.com/faq/) page. If you are new to this project or React, please review the [Concepts and Best Practices](https://react.lightningdesignsystem.com/contributing/#concepts-and-best-practices) section of the [Contributing](https://react.lightningdesignsystem.com/contributing/) page. It will help you with the approach of this library and offer some suggestions for your own components.
 
