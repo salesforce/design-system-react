@@ -1,0 +1,114 @@
+exports[`test Checkbox Base (error) Snapshot 1`] = `
+<div
+  className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
+  <div
+    className="slds-col--padded">
+    <SLDSCheckbox
+      assistiveText="Error state"
+      errorText="This field is required"
+      label="Checkbox Label"
+      variant="base" />
+  </div>
+  <div
+    className="slds-col--padded">
+    <SLDSCheckbox
+      assistiveText="Indeterminate"
+      indeterminate={true}
+      label="Indeterminate"
+      variant="base" />
+  </div>
+  <div
+    className="slds-col--padded">
+    <SLDSCheckbox
+      assistiveText="Indeterminate"
+      label="Required"
+      required={true}
+      variant="base" />
+  </div>
+  <div
+    className="slds-col--padded">
+    <SLDSCheckbox
+      assistiveText="Disabled"
+      disabled={true}
+      label="Disabled"
+      variant="base" />
+  </div>
+</div>
+`;
+
+exports[`test Checkbox Base Snapshot 1`] = `
+<div
+  className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
+  <div
+    className="slds-col--padded">
+    <SLDSCheckbox
+      assistiveText="Default"
+      label="Default"
+      variant="base" />
+  </div>
+  <div
+    className="slds-col--padded">
+    <SLDSCheckbox
+      assistiveText="Indeterminate"
+      indeterminate={true}
+      label="Indeterminate"
+      variant="base" />
+  </div>
+  <div
+    className="slds-col--padded">
+    <SLDSCheckbox
+      assistiveText="Indeterminate"
+      label="Required"
+      required={true}
+      variant="base" />
+  </div>
+  <div
+    className="slds-col--padded">
+    <SLDSCheckbox
+      assistiveText="Disabled"
+      disabled={true}
+      label="Disabled"
+      variant="base" />
+  </div>
+</div>
+`;
+
+exports[`test Checkbox Toggle Snapshot 1`] = `
+<div
+  className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
+  <div
+    className="slds-col--padded">
+    <SLDSCheckbox
+      label="Toggle"
+      variant="toggle" />
+  </div>
+  <div
+    className="slds-col--padded">
+    <SLDSCheckbox
+      assistiveText="Toggle (with assistive text)"
+      variant="toggle" />
+  </div>
+  <div
+    className="slds-col--padded">
+    <SLDSCheckbox
+      checked={true}
+      label="Toggle (checked)"
+      variant="toggle" />
+  </div>
+  <div
+    className="slds-col--padded">
+    <SLDSCheckbox
+      disabled={true}
+      label="Toggle (disabled)"
+      variant="toggle" />
+  </div>
+  <div
+    className="slds-col--padded">
+    <SLDSCheckbox
+      checked={true}
+      disabled={true}
+      label="Toggle (checked + disabled)"
+      variant="toggle" />
+  </div>
+</div>
+`;

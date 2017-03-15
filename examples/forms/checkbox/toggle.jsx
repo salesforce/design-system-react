@@ -9,29 +9,35 @@ const Example = React.createClass({
 			<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
 				<div className="slds-col--padded">
 					<Checkbox
-						assistiveText="Error state"
-						errorText="This field is required"
-						label="Checkbox Label"
+						label="Toggle"
+						variant="toggle"
 					/>
 				</div>
 				<div className="slds-col--padded">
 					<Checkbox
-						assistiveText="Indeterminate"
-						indeterminate
-						label="Indeterminate"
+						assistiveText="Toggle (with assistive text)"
+						variant="toggle"
 					/>
 				</div>
 				<div className="slds-col--padded">
 					<Checkbox
-						assistiveText="Indeterminate"
-						label="Required"
-						required
+						label="Toggle (checked)"
+						variant="toggle"
+						checked
 					/>
 				</div>
 				<div className="slds-col--padded">
 					<Checkbox
-						assistiveText="Disabled"
-						label="Disabled"
+						label="Toggle (disabled)"
+						variant="toggle"
+						disabled
+					/>
+				</div>
+				<div className="slds-col--padded">
+					<Checkbox
+						label="Toggle (checked + disabled)"
+						variant="toggle"
+						checked
 						disabled
 					/>
 				</div>
