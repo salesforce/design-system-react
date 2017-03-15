@@ -13,7 +13,7 @@ import { createMountNode, destroyMountNode } from '../enzyme-helpers';
 // Import your internal dependencies (for example):
 import Popover from '../../components/popover';
 import Button from '../../components/button';
-import Filter from '../../components/filter'
+import Filter from '../../components/filter';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme
@@ -77,7 +77,7 @@ describe('SLDSFilter', function () {
 
 	// BASIC STRUCTURE
 
-	describe('Filter popover props', function () {
+	describe('Add custom props to Filter Popover', function () {
 		beforeEach(() => {
 			mountNode = createMountNode({ context: this });
 		});
@@ -86,16 +86,15 @@ describe('SLDSFilter', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('Filter could take popover as prop and use the props of popover to render, verify the popovers heading, body, close button', (done) => {
+		it('Filter could take popover as a prop and use the props of popover to render, verifies the custom popover className', (done) => {
 			const demoPopover = (<DemoComponent
-				isOpen={true}
+				className="custom-filter-popover"
+				isOpen
 				portalMount={(reactElement, domContainerNode) => {
 					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
 				}}
 				onOpen={() => {
-					expect(portalWrapper.find(`#${defaultIds.heading}`)).to.exist;
-					expect(portalWrapper.find(`#${defaultIds.body}`)).to.exist;
-					expect(portalWrapper.find('.slds-popover__close')).to.exist;
+					expect(portalWrapper.find('.custom-filter-popover')).to.exist;
 					done();
 				}}
 			/>);
@@ -106,6 +105,4 @@ describe('SLDSFilter', function () {
 			/>, { attachTo: mountNode });
 		});
 	});
-
-
 });
