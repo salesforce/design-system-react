@@ -153,7 +153,7 @@ const Filter = React.createClass({
 		}
 	},
 
-	getMixinPopoverProps () {
+	getCustomPopoverProps () {
 		/*
 		 * Generate the popover props based on passed popover props. Using the default behavior if not provided by passed popover
 		 */
@@ -195,7 +195,7 @@ const Filter = React.createClass({
 	render () {
 
 		/* TODO: Button wrapper for property and predictate should be transitioned to `Button` component. `Button` needs to take custom children first though. */
-		const popoverProps = this.getMixinPopoverProps();
+		const popoverProps = this.getCustomPopoverProps();
 		return (
 			<div
 				className={classNames(
