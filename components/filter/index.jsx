@@ -94,18 +94,17 @@ const Filter = React.createClass({
 		 */
 		onRemove: PropTypes.func,
 		/**
+		 * A `Popover` component. The props from this popover will be merged and override any default props. This also allows a Filter's Popover dialog to be a controlled component. _Tested with Mocha framework._
+		 */
+		popover: PropTypes.node,
+		/**
 		 * The criteria you are filtering for. For instance, if "Hair Color is PURPLE" is your filter, "is PURPLE" is your filter predicate.
 		 */
 		predicate: PropTypes.node,
 		/**
 		 * The property you are filtering. For instance, if "Hair Color is PURPLE" is your filter, "Hair Color" is your filter property.
 		 */
-		property: PropTypes.node,
-
-		/**
-		 * The customize popover user could passed in. The props in this popover will mixin the default props if not provided.
-		 */
-		popover: PropTypes.node
+		property: PropTypes.node
 	},
 
 	getDefaultProps () {
@@ -155,7 +154,7 @@ const Filter = React.createClass({
 
 	getCustomPopoverProps () {
 		/*
-		 * Generate the popover props based on passed popover props. Using the default behavior if not provided by passed popover
+		 * Generate the popover props based on passed in popover props. Using the default behavior if not provided by passed in popover
 		 */
 		const popoverBody = (
 			<div>
@@ -175,7 +174,7 @@ const Filter = React.createClass({
 			ariaLabelledby: `${this.getId()}-popover-heading`,
 			align: this.props.align,
 			body: popoverBody,
-			heading: "",
+			heading: '',
 			id: this.getId(),
 			isOpen: this.state.popoverIsOpen,
 
@@ -183,7 +182,7 @@ const Filter = React.createClass({
 			offset: this.props.align === 'right' ? '0px -35px' : undefined,
 			onClose: this.handleClose,
 			onRequestClose: this.handleClose,
-			triggerClassName: "slds-grow"
+			triggerClassName: 'slds-grow'
 		};
 
 		/* Mixin passed popover's props if there is any to override the default popover props */
@@ -193,7 +192,6 @@ const Filter = React.createClass({
 	},
 
 	render () {
-
 		/* TODO: Button wrapper for property and predictate should be transitioned to `Button` component. `Button` needs to take custom children first though. */
 		const popoverProps = this.getCustomPopoverProps();
 		return (
