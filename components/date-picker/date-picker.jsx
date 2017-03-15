@@ -465,8 +465,8 @@ const Datepicker = React.createClass({
 
 	render () {
 		const clonedProps = {
-			disabled: this.props.children && !!this.props.children.props.disabled || this.props.disabled,
-			iconRight: this.props.children && !!this.props.children.props.iconRight || (<InputIcon
+			disabled: (this.props.children && !!this.props.children.props.disabled) || this.props.disabled,
+			iconRight: (this.props.children && !!this.props.children.props.iconRight) || (<InputIcon
 				assistiveText={this.props.assistiveTextOpenCalendar}
 				aria-haspopup
 				aria-expanded={this.getIsOpen()}
@@ -476,8 +476,8 @@ const Datepicker = React.createClass({
 			/>),
 			id: this.getId(),
 			inputRef: (component) => { this.inputRef = component; },
-			label: this.props.children && this.props.children.props.label || this.props.label, // eslint-disable-line react/prop-types
-			onBlur: this.props.children && this.props.children.props.onBlur || this.props.onBlur, // eslint-disable-line react/prop-types
+			label: (this.props.children && this.props.children.props.label) || this.props.label, // eslint-disable-line react/prop-types
+			onBlur: (this.props.children && this.props.children.props.onBlur) || this.props.onBlur, // eslint-disable-line react/prop-types
 			onChange: this.handleInputChange,
 			onClick: () => {
 				this.openDialog();
@@ -485,11 +485,11 @@ const Datepicker = React.createClass({
 					this.props.children.props.onClick();
 				}
 			},
-			onFocus: this.props.children && this.props.children.props.onFocus || this.props.onFocus, // eslint-disable-line react/prop-types
-			onKeyDown: this.props.children && this.props.children.props.onKeyDown || this.handleKeyDown,
-			placeholder: this.props.children && this.props.children.props.placeholder || this.props.placeholder,
-			required: this.props.children && this.props.children.props.required || this.props.required, // eslint-disable-line react/prop-types
-			value: this.props.children && this.props.children.props.value || this.state.inputValue
+			onFocus: (this.props.children && this.props.children.props.onFocus) || this.props.onFocus, // eslint-disable-line react/prop-types
+			onKeyDown: (this.props.children && this.props.children.props.onKeyDown) || this.handleKeyDown,
+			placeholder: (this.props.children && this.props.children.props.placeholder) || this.props.placeholder,
+			required: (this.props.children && this.props.children.props.required) || this.props.required, // eslint-disable-line react/prop-types
+			value: (this.props.children && this.props.children.props.value) || this.state.inputValue
 		};
 
 		const clonedInput = this.props.children ? React.cloneElement(this.props.children, {

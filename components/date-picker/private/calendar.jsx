@@ -156,7 +156,7 @@ const DatepickerCalendar = React.createClass({
 
 	render () {
 		const sunday = (
-			<th ref="Sunday">
+			<th>
 				<abbr title={this.props.weekDayLabels[0]}>{this.props.abbreviatedWeekDayLabels[0]}</abbr>
 			</th>
 		);
