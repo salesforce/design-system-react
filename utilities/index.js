@@ -11,7 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import DateUtil  from './date';
 import EventUtil from './event';
-import KEYS      from './keys';
+import KEYS      from './key-code';
 
 module.exports = {
 	DateUtil,

@@ -19,7 +19,8 @@ import React, { PropTypes } from 'react';
 // ### Children
 import Input from '../../forms/input';
 
-import { KEYS } from '../../../utilities';
+// ### Event Helpers
+import KEYS from '../../../utilities/key-code';
 
 // ## Constants
 import { MENU_DROPDOWN_TRIGGER } from '../../../utilities/constants';

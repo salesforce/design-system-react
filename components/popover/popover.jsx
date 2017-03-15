@@ -49,7 +49,7 @@ import { getMargin, getNubbinClassName } from '../../utilities/dialog-helpers';
 // #### KeyboardNavigable
 import keyboardNavigableDialog from '../../utilities/keyboard-navigable-dialog';
 
-import KEYS from '../../utilities/keys';
+import KEYS from '../../utilities/key-code';
 import { POPOVER } from '../../utilities/constants';
 
 // The overlay is an optional way to allow the popover to close on outside
