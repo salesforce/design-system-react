@@ -153,7 +153,10 @@ const Filter = React.createClass({
 		}
 	},
 
-	render () {
+	getMixinPopoverProps () {
+		/*
+		 * Generate the popover props based on passed popover props. Using the default behavior if not provided by passed popover
+		 */
 		const popoverBody = (
 			<div>
 				<h4 className="slds-assistive-text" id={`${this.getId()}-popover-heading`}>{this.props.assistiveTextEditFilterHeading}</h4>
@@ -184,10 +187,15 @@ const Filter = React.createClass({
 		};
 
 		/* Mixin passed popover's props if there is any to override the default popover props */
-		const popoverProps = assign(defaultPopoverProps, this.props.popover ? this.props.popover.props : {})
+		const popoverProps = assign(defaultPopoverProps, this.props.popover ? this.props.popover.props : {});
+		delete popoverProps.children;
+		return popoverProps;
+	},
+
+	render () {
 
 		/* TODO: Button wrapper for property and predictate should be transitioned to `Button` component. `Button` needs to take custom children first though. */
-
+		const popoverProps = this.getMixinPopoverProps();
 		return (
 			<div
 				className={classNames(

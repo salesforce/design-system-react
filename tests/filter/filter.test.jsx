@@ -93,7 +93,6 @@ describe('SLDSFilter', function () {
 					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
 				}}
 				onOpen={() => {
-					debugger
 					expect(portalWrapper.find(`#${defaultIds.heading}`)).to.exist;
 					expect(portalWrapper.find(`#${defaultIds.body}`)).to.exist;
 					expect(portalWrapper.find('.slds-popover__close')).to.exist;
