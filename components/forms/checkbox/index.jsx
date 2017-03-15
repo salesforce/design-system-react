@@ -53,11 +53,11 @@ const Checkbox = React.createClass({
 		'aria-describedby': PropTypes.string,
 		'aria-owns': PropTypes.string,
 		'aria-required': PropTypes.bool,
-		assistiveText: PropTypes.string,
 		/**
 		 * Text that is visually hidden but read aloud by screenreaders to tell the user what the Checkbox is for.
 		 * If the Checkbox has a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
 		 */
+		assistiveText: PropTypes.string,
 		/**
 		 * The Checkbox is a controlled component, and will always be in this state. If checked is not defined, the state of the uncontrolled native `input` component will be used.
 		 */
@@ -83,7 +83,7 @@ const Checkbox = React.createClass({
 		 */
 		id: PropTypes.string,
 		/**
-		 * The Checkbox will be indeterminate if its state can not be figured out or is partially checked. Once a checkbox is indeterminate, a click should cause it to be checked. Since a user cannot put a checkbox into an indeterminate state, it is assumed you are controlling the value of `checked` with the parent, also, and that this is a controlled component.
+		 * The Checkbox will be indeterminate if its state can not be figured out or is partially checked. Once a checkbox is indeterminate, a click should cause it to be checked. Since a user cannot put a checkbox into an indeterminate state, it is assumed you are controlling the value of `checked` with the parent, also, and that this is a controlled component. **Note:** `indeterminate` proptype does nothing in the `toggle` variant, as [SLDS does not support it](https://lightningdesignsystem.com/components/forms/#flavor-checkbox-toggle-checkbox-toggle).
 		 */
 		indeterminate: PropTypes.bool,
 		/**
@@ -124,6 +124,9 @@ const Checkbox = React.createClass({
 		 */
 		required: PropTypes.bool,
 		role: PropTypes.string,
+		/**
+		 * Renders the _Checkbox Toggle_ flavor. (**Note:** `toggle` variant does not support the `indeterminate` feature, because [SLDS does not support it](https://lightningdesignsystem.com/components/forms/#flavor-checkbox-toggle-checkbox-toggle).)
+		 */
 		variant: PropTypes.oneOf(['base', 'toggle'])
 	},
 
