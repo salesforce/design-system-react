@@ -62,14 +62,15 @@ const DatepickerCalendarDay = (props) => {
 	const isToday = DateUtil.isToday(props.date);
 	const isSelectedDay = DateUtil.isSameDay(props.date, props.selectedDate);
 	const isFirstDayOfMonth = DateUtil.isFirstDayOfMonth(props.date);
+	const isDisabled = !isCurrentMonth || props.disabled;
 
 	return (
 		<td
-			aria-disabled={!isCurrentMonth}
+			aria-disabled={isDisabled}
 			aria-selected={isSelectedDay}
 			className={classNames({
 				'slds-is-today': isToday,
-				'slds-disabled-text': !isCurrentMonth,
+				'slds-disabled-text': isDisabled,
 				'slds-is-selected': isSelectedDay
 			})}
 			onClick={(event) => {
@@ -115,6 +116,10 @@ DatepickerCalendarDay.propTypes = {
 	 * Date of day
 	 */
 	date: PropTypes.instanceOf(Date).isRequired,
+	/**
+	 * If date is disabled
+	 */
+	disabled: PropTypes.bool,
 	/**
    * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
    */

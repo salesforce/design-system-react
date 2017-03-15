@@ -68,7 +68,7 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 - <a name="react-create-class" href="#react-create-class">#</a> Use `React.createClass` and not ES6 classes/`extend`. This prevents class hierarchies and tight coupling being created beyond the basic `React.Component`. This completely avoids the gorilla-banana problem (“what you wanted was a banana, what you got was a gorilla holding the banana, and the entire jungle” - Joe Armstrong).
 
-- <a name="event-callbacks" href="#event-callbacks">#</a> **Use consistent callback parameters.** Event callbacks should pass in the synthetic event, then a data object with contents that relate to the event.
+- <a name="event-callbacks" href="#event-callbacks">#</a> **Use consistent callback parameters.** All render callbacks, that is callbacks that determine what to render, should pass a data object with named key/values. Event callbacks should pass in the synthetic event, then a data object with named key/values that relate to the event. If an event callback doesn't have a user event that triggered it, pass `undefined` as the event.
 
 - <a name="use-classnames" href="#use-classnames">#</a> **Use classNames library.** This library makes extensive use of the [classnames](https://github.com/JedWatson/classnames) library for feeding conditional CSS classes into `className` attributes and allows a variety of types such as `string`, `object`, and `arrays`. Although longer, static classname strings are preferred more than dynamic classnames (dynamic object keys) due to searchability when updating markup. See [Classnames](#classnames) section for more details.
 

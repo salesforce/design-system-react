@@ -42,6 +42,10 @@ const DatepickerCalendarWrapper = React.createClass({
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
+		 * dateDisabled() takes a date as input argument, returns true if given date should be disabled, otherwise returns false.
+		 */
+		dateDisabled: PropTypes.func,
+		/**
 		 * HTML id for component
 		 */
 		id: PropTypes.string,
@@ -196,6 +200,7 @@ const DatepickerCalendarWrapper = React.createClass({
 				/>
 				<Calendar
 					abbreviatedWeekDayLabels={this.props.abbreviatedWeekDayLabels}
+					dateDisabled={this.props.dateDisabled}
 					id={this.props.id}
 					initialDateForCalendarRender={this.state.initialDateForCalendarRender}
 					isIsoWeekday={this.props.isIsoWeekday}
