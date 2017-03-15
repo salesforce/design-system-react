@@ -33,7 +33,7 @@ import shortid from 'shortid';
 import checkProps from './check-props';
 
 import EventUtil from '../../utilities/event';
-import KEYS from '../../utilities/keys';
+import KEYS from '../../utilities/key-code';
 
 import { DATE_PICKER } from '../../utilities/constants';
 

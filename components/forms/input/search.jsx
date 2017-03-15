@@ -23,7 +23,8 @@ import Input from './index';
 import InputIcon from '../../icon/input-icon';
 
 // ### Event Helpers
-import { KEYS, EventUtil } from '../../../utilities';
+import KEYS from '../../../utilities/key-code';
+import EventUtil from '../../../utilities/event';
 
 // ## Constants
 import { FORMS_SEARCH } from '../../../utilities/constants';

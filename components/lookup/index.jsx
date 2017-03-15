@@ -33,7 +33,7 @@ import Input from '../forms/input';
 
 // ### Event Helpers
 import EventUtil from '../../utilities/event';
-import KEYS from '../../utilities/keys';
+import KEYS from '../../utilities/key-code';
 
 import Menu from './menu';
 import DefaultFooter from './menu/default-footer';

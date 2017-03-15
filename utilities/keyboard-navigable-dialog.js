@@ -27,7 +27,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import ReactDOM from 'react-dom';
 
 // ### Event Helpers
-import KEYS from './keys';
+import KEYS from './key-code';
 
 const internalHandleClick = ({
 				trigger,

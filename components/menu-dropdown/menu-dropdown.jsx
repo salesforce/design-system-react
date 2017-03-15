@@ -52,7 +52,7 @@ import checkProps from './check-props';
 import KeyboardNavigable from '../../utilities/keyboard-navigable-menu';
 
 import EventUtil from '../../utilities/event';
-import KEYS from '../../utilities/keys';
+import KEYS from '../../utilities/key-code';
 import { MENU_DROPDOWN, MENU_DROPDOWN_TRIGGER, LIST } from '../../utilities/constants';
 
 // The overlay is an optional way to allow the dropdown to close on outside

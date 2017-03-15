@@ -25,7 +25,8 @@ import isFunction from 'lodash.isfunction';
 import shortid from 'shortid';
 
 // ### Event Helpers
-import { KEYS, EventUtil } from '../../../utilities';
+import KEYS from '../../../utilities/key-code';
+import EventUtil from '../../../utilities/event';
 
 // ### classNames
 import classNames from 'classnames';
