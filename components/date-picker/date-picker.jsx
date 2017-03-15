@@ -87,7 +87,7 @@ const Datepicker = React.createClass({
 		 */
 		disabled: PropTypes.bool,
 		/**
-		 * dateDisabled() takes a date as input argument, returns true if given date should be disabled, otherwise returns false.
+		 * This function callback receives a data object with a key of `date`. Write your own validation and return `true` if the date should be disabled, otherwise please return `false`. The value of `date` is the day rendered in the calendar with the current local time and timezone.
 		 */
 		dateDisabled: PropTypes.func,
 		/**

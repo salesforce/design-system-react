@@ -8,7 +8,7 @@ const Example = React.createClass({
 	render () {
 		return (
 			<Datepicker
-				dateDisabled={date => date.getDay() > 5 || date.getDay() < 1}
+				dateDisabled={({ date }) => (date.getDay() > 5 || date.getDay() < 1)}
 			/>
 		);
 	}

@@ -21,7 +21,7 @@ const DatepickerWeek = (props) => {
 		days.push(<Day
 			calendarHasFocus={props.calendarHasFocus}
 			date={date}
-			disabled={props.dateDisabled(date)}
+			disabled={props.dateDisabled({ date })}
 			focusedDate={props.focusedDate}
 			initialDateForCalendarRender={props.initialDateForCalendarRender}
 			key={date.toString()}

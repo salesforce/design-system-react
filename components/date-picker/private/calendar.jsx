@@ -102,9 +102,10 @@ const DatepickerCalendar = React.createClass({
 	},
 
 	handleSelectDate (event, { date }) {
-		if (this.props.dateDisabled(date)) return;
-		this.setState({ selected: date });
-		this.props.onSelectDate(event, { date });
+		if (!this.props.dateDisabled({ date })) {
+			this.setState({ selected: date });
+			this.props.onSelectDate(event, { date });
+		}
 	},
 
 	handleRequestClose () {

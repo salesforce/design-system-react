@@ -373,7 +373,7 @@ describe('SLDSDatepicker', function () {
 			wrapper = mount(
 				<DemoComponent
 					value={new Date(2007, 0, 5)}
-					dateDisabled={date => date.getDay() > 5 || date.getDay() < 1}
+					dateDisabled={({ date }) => date.getDay() > 5 || date.getDay() < 1}
 					portalMount={(reactElement, domContainerNode) => {
 						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
 					}}
