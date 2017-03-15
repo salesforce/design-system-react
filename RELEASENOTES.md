@@ -27,6 +27,15 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ---
 
+## Release 0.6.5
+
+**Minor Changes**
+
+- `Datepicker` has a `dateDisabled` callback to allow disabling of arbitary dates.
+- `Filter` has a `popover` prop that allows custom props to be passed in and allows the `Filter`'s popover to be controlled by the developer instead of the `Filter`.
+- `Lookup` has an additional item compare to see if it should update its internal state. This is a temporary hack until state can be removed from `Lookup` and it can directly use props.
+- Inline icons are now [v7.7.0](https://github.com/salesforce-ux/icons/releases/tag/v7.7.0). Version was just updated in a prior release.
+
 ## Release 0.6.4
 
 **Major Changes**
