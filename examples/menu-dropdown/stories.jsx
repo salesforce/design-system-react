@@ -196,6 +196,19 @@ storiesOf(MENU_DROPDOWN, module)
 		},
 		options
 	}))
+	.add('Base with icon', () => getDropdown({
+		align: 'right',
+		label: 'Dropdown Click',
+		iconName: 'down',
+		iconPosition: 'right',
+		onClick: (...rest) => {
+			action('Clicked')(...rest);
+		},
+		onSelect: (...rest) => {
+			action('Selected')(...rest);
+		},
+		options
+	}))
 	.add('Render inline', () => getDropdown({
 		align: 'right',
 		isInline: true,
