@@ -74,7 +74,11 @@ const DataTableHeaderCell = React.createClass({
 		/**
 		 * The current sort direction.
 		 */
-		sortDirection: PropTypes.oneOf(['desc', 'asc'])
+		sortDirection: PropTypes.oneOf(['desc', 'asc']),
+		/**
+		 * Width of column. This is required for advanced/fixed layout tables. Please provide units. (`rems` are recommended)
+		 */
+		width: PropTypes.string
 	},
 
 	getInitialState () {
@@ -89,7 +93,8 @@ const DataTableHeaderCell = React.createClass({
 		const {
 			isSorted,
 			label,
-			sortable
+			sortable,
+			width
 		} = this.props;
 
 		const sortDirection = this.props.sortDirection || this.state.sortDirection;
@@ -107,6 +112,7 @@ const DataTableHeaderCell = React.createClass({
 				})}
 				focusable={sortable ? true : null}
 				scope="col"
+				style={width ? { width } : null}
 			>
 				{sortable
 						?	<a
