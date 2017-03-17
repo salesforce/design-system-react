@@ -168,6 +168,10 @@ const MenuDropdown = React.createClass({
 		 */
 		iconName: PropTypes.string,
 		/**
+		 * If omitted, icon position is centered.
+		 */
+		iconPosition: PropTypes.oneOf(['left', 'right']),
+		/**
 		 * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
 		 */
 		iconVariant: PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'small', 'more']),
@@ -787,6 +791,7 @@ const MenuDropdown = React.createClass({
 				hint={this.props.hint}
 				iconCategory={this.props.iconCategory}
 				iconName={this.props.iconName}
+				iconPosition={this.props.iconPosition}
 				iconSize={this.props.iconSize}
 				iconVariant={this.props.iconVariant}
 				id={this.getId()}
