@@ -6,9 +6,8 @@ import jsBeautify from 'js-beautify';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import CheckboxBase from '../../examples/forms/checkbox/default';
-import CheckboxToggle from '../../examples/forms/checkbox/toggle';
-import CheckboxError from '../../examples/forms/checkbox/error';
+import CheckboxBase from '../../examples/forms/checkbox/snapshot-base';
+import CheckboxToggle from '../../examples/forms/checkbox/snapshot-toggle';
 
 
 test('Checkbox Base DOM Snapshot', () => {

@@ -311,8 +311,8 @@ const Checkbox = React.createClass({
 						<span className="slds-checkbox--on">{labelToggleEnabled}</span>
 						<span className="slds-checkbox--off">{labelToggleDisabled}</span>
 					</span>
-					{errorText ? <div className="slds-form-element__help">{errorText}</div> : null}
 				</label>
+				{errorText ? <div className="slds-form-element__help">{errorText}</div> : null}
 			</div>
 		);
 	},
