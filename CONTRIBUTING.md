@@ -21,6 +21,13 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 - Prop description tables on the documentation site are generated from propType comments within the component. All props should have a _Tested with snapshot testing._ or _Tested with Mocha framework._ notice in them.
 - Introductory component descriptions are generated from the comment before the component declaration. 
 
+## The review process
+This is an internal open-source project. You may be asked to review code submitted by others. To do this:
+- `git clone` this repository
+- `npm install`
+- Pull down the pull requested branch. It will be within the contributor's forked repository. For instance, `git checkout -b interactivellama-data-table-width master` then `git pull git@github.com:interactivellama/design-system-react.git data-table-width`. You could also create an additional remote and pull down the branch directly.
+- `npm start` and review the appropriate React Story example at `http://localhost:9001/`. Open `http://localhost:8001/` and confirm that tests are passing in your environment.
+
 ## Concepts and Best Practices
 #### What we've learned about building React components for the enterprise
 
