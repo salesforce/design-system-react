@@ -47,8 +47,9 @@ import TabPanel        from './private/tab-panel';
 import { TABS }        from '../../utilities/constants';
 
 
-// ### Helpers         from Utilities
-import { KEYS, EventUtil }   from '../../utilities';
+// ### Event Helpers
+import KEYS from '../../utilities/key-code';
+import EventUtil from '../../utilities/event';
 
 
 // Determine if a node from event.target is a Tab element

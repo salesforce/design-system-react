@@ -13,7 +13,7 @@ import Calendar from './calendar';
 import CalendarNavigation from './navigation';
 
 import EventUtil from '../../../utilities/event';
-import KEYS from '../../../utilities/keys';
+import KEYS from '../../../utilities/key-code';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -41,6 +41,10 @@ const DatepickerCalendarWrapper = React.createClass({
 		 * CSS classes to be added to tag with `slds-datepicker`.
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		/**
+		 * dateDisabled() takes a date as input argument, returns true if given date should be disabled, otherwise returns false.
+		 */
+		dateDisabled: PropTypes.func,
 		/**
 		 * HTML id for component
 		 */
@@ -196,6 +200,7 @@ const DatepickerCalendarWrapper = React.createClass({
 				/>
 				<Calendar
 					abbreviatedWeekDayLabels={this.props.abbreviatedWeekDayLabels}
+					dateDisabled={this.props.dateDisabled}
 					id={this.props.id}
 					initialDateForCalendarRender={this.state.initialDateForCalendarRender}
 					isIsoWeekday={this.props.isIsoWeekday}

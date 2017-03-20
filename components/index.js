@@ -110,6 +110,8 @@ export MediaObject from './media-object';
 
 export SLDSMenuDropdown from './menu-dropdown';
 export Dropdown from './menu-dropdown';
+export SLDSDropdownTrigger from './menu-dropdown/button-trigger';
+export DropdownTrigger from './menu-dropdown/button-trigger';
 
 export SLDSMenuPicklist from './menu-picklist';
 export Picklist from './menu-picklist';

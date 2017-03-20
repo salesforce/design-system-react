@@ -8,6 +8,7 @@ import Default from './default';
 import IsoWeekdays from './iso-weekday';
 import CustomInput from './custom-input';
 import SnaphotDefault from './snapshot-default';
+import WeekdayPicker from './weekday-picker';
 
 storiesOf(DATE_PICKER, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
@@ -15,4 +16,5 @@ storiesOf(DATE_PICKER, module)
 	.add('ISO weekdays', () => (<IsoWeekdays action={action} />))
 	.add('Custom Input', () => (<CustomInput action={action} />))
 	.add('Inline menu', () => (<Datepicker isInline />))
-	.add('DOM Snapshot', () => (<SnaphotDefault />));
+	.add('DOM Snapshot', () => (<SnaphotDefault />))
+	.add('Weekday picker', () => (<WeekdayPicker />));

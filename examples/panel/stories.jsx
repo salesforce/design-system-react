@@ -8,7 +8,7 @@ import FilteringError from './filtering-error';
 
 storiesOf(PANEL, module)
 	.addDecorator((getStory) => (
-		<div className="slds-grid">
+		<div className="slds-grid" style={{ backgroundColor: '#ccc', padding: '20px' }}>
 			<div
 				className="slds-col--bump-left"
 				style={{ width: '420px' }}

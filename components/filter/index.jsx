@@ -21,6 +21,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ### React
 import React, { PropTypes } from 'react';
 
+// ### assign
+import assign from 'lodash.assign';
+
 // ### classNames
 import classNames from 'classnames';
 
@@ -91,6 +94,10 @@ const Filter = React.createClass({
 		 */
 		onRemove: PropTypes.func,
 		/**
+		 * A `Popover` component. The props from this popover will be merged and override any default props. This also allows a Filter's Popover dialog to be a controlled component. _Tested with Mocha framework._
+		 */
+		popover: PropTypes.node,
+		/**
 		 * The criteria you are filtering for. For instance, if "Hair Color is PURPLE" is your filter, "is PURPLE" is your filter predicate.
 		 */
 		predicate: PropTypes.node,
@@ -111,7 +118,7 @@ const Filter = React.createClass({
 
 	getInitialState () {
 		return {
-			popoverIsOpen: false
+			popoverIsOpen: this.props.popover ? this.props.popover.props.isOpen : false
 		};
 	},
 
@@ -145,7 +152,10 @@ const Filter = React.createClass({
 		}
 	},
 
-	render () {
+	getCustomPopoverProps () {
+		/*
+		 * Generate the popover props based on passed in popover props. Using the default behavior if not provided by passed in popover
+		 */
 		const popoverBody = (
 			<div>
 				<h4 className="slds-assistive-text" id={`${this.getId()}-popover-heading`}>{this.props.assistiveTextEditFilterHeading}</h4>
@@ -160,8 +170,30 @@ const Filter = React.createClass({
 			</div>
 		);
 
-		/* TODO: Button wrapper for property and predictate should be transitioned to `Button` component. `Button` needs to take custom children first though. */
+		const defaultPopoverProps = {
+			ariaLabelledby: `${this.getId()}-popover-heading`,
+			align: this.props.align,
+			body: popoverBody,
+			heading: '',
+			id: this.getId(),
+			isOpen: this.state.popoverIsOpen,
 
+			// MAGIC NUMBERS - REMOVE/REDESIGN WHEN DESIGN FOR RIGHT-ALIGNED FILTERS ARE ADDED TO SLDS
+			offset: this.props.align === 'right' ? '0px -35px' : undefined,
+			onClose: this.handleClose,
+			onRequestClose: this.handleClose,
+			triggerClassName: 'slds-grow'
+		};
+
+		/* Mixin passed popover's props if there is any to override the default popover props */
+		const popoverProps = assign(defaultPopoverProps, this.props.popover ? this.props.popover.props : {});
+		delete popoverProps.children;
+		return popoverProps;
+	},
+
+	render () {
+		/* TODO: Button wrapper for property and predictate should be transitioned to `Button` component. `Button` needs to take custom children first though. */
+		const popoverProps = this.getCustomPopoverProps();
 		return (
 			<div
 				className={classNames(
@@ -174,20 +206,9 @@ const Filter = React.createClass({
 					}
 				)}
 			>
-				{!this.props.isLocked && this.props.children
+				{!this.props.isLocked && (this.props.children || this.props.popover)
 				? <Popover
-					ariaLabelledby={`${this.getId()}-popover-heading`}
-					align={this.props.align}
-					body={popoverBody} // this is wrapped props.children essentially
-					heading=""
-					id={this.getId()}
-					isOpen={this.state.popoverIsOpen}
-
-					// MAGIC NUMBERS - REMOVE/REDESIGN WHEN DESIGN FOR RIGHT-ALIGNED FILTERS ARE ADDED TO SLDS
-					offset={this.props.align === 'right' ? '0px -35px' : undefined}
-					onClose={this.handleClose}
-					onRequestClose={this.handleClose}
-					triggerClassName="slds-grow"
+					{...popoverProps}
 				>
 					<button
 						className="slds-button--reset slds-grow slds-has-blur-focus"

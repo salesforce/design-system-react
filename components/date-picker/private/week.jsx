@@ -21,6 +21,7 @@ const DatepickerWeek = (props) => {
 		days.push(<Day
 			calendarHasFocus={props.calendarHasFocus}
 			date={date}
+			disabled={props.dateDisabled({ date })}
 			focusedDate={props.focusedDate}
 			initialDateForCalendarRender={props.initialDateForCalendarRender}
 			key={date.toString()}
@@ -55,6 +56,10 @@ DatepickerWeek.propTypes = {
    * Is true if calendar day has focus.
    */
 	calendarHasFocus: PropTypes.bool.isRequired,
+	/**
+	 * dateDisabled() takes a date as input argument, returns true if given date should be disabled, otherwise returns false.
+	 */
+	dateDisabled: PropTypes.func,
 	/**
    * First day of week.
    */

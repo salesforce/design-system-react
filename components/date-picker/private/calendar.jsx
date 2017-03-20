@@ -20,6 +20,10 @@ const DatepickerCalendar = React.createClass({
 		 */
 		abbreviatedWeekDayLabels: PropTypes.array.isRequired,
 		/**
+		 * dateDisabled() takes a date as input argument, returns true if given date should be disabled, otherwise returns false.
+		 */
+		dateDisabled: PropTypes.func,
+		/**
 		 * HTML id for component
 		 */
 		id: PropTypes.string.isRequired,
@@ -98,8 +102,10 @@ const DatepickerCalendar = React.createClass({
 	},
 
 	handleSelectDate (event, { date }) {
-		this.setState({ selected: date });
-		this.props.onSelectDate(event, { date });
+		if (!this.props.dateDisabled({ date })) {
+			this.setState({ selected: date });
+			this.props.onSelectDate(event, { date });
+		}
 	},
 
 	handleRequestClose () {
@@ -150,7 +156,7 @@ const DatepickerCalendar = React.createClass({
 
 	render () {
 		const sunday = (
-			<th ref="Sunday">
+			<th>
 				<abbr title={this.props.weekDayLabels[0]}>{this.props.abbreviatedWeekDayLabels[0]}</abbr>
 			</th>
 		);
@@ -233,6 +239,7 @@ const DatepickerCalendar = React.createClass({
 		while (!done) {
 			weeks.push(<Week
 				calendarHasFocus={this.state.calendarHasFocus}
+				dateDisabled={this.props.dateDisabled}
 				firstDayOfWeek={firstDayOfWeek}
 				key={firstDayOfWeek.toString()}
 				focusedDate={this.state.focusedDate}
