@@ -91,6 +91,14 @@ const Checkbox = React.createClass({
 		 */
 		label: PropTypes.string,
 		/**
+		 * Label for the _enabled_ state of the Toggle variant. Defaults to "Enabled".
+		 */
+		labelToggleEnabled: PropTypes.string,
+		/**
+		 * Label for the _disabled_ state of the Toggle variant. Defaults to "Disabled".
+		 */
+		labelToggleDisabled: PropTypes.string,
+		/**
 		 * Name of the submitted form parameter.
 		 */
 		name: PropTypes.string,
@@ -138,7 +146,9 @@ const Checkbox = React.createClass({
 
 	getDefaultProps () {
 		return {
-			variant: 'base'
+			variant: 'base',
+			labelToggleEnabled: 'Enabled',
+			labelToggleDisabled: 'Disabled'
 		};
 	},
 
@@ -235,6 +245,8 @@ const Checkbox = React.createClass({
 			errorText,
 			indeterminate,
 			label,
+			labelToggleEnabled,
+			labelToggleDisabled,
 			name,
 			onBlur,
 			onChange, // eslint-disable-line no-unused-vars
@@ -295,8 +307,8 @@ const Checkbox = React.createClass({
 					/>
 					<span id={id || this.generatedId} className="slds-checkbox--faux_container" aria-live="assertive">
 						<span className="slds-checkbox--faux" />
-						<span className="slds-checkbox--on">Enabled</span>
-						<span className="slds-checkbox--off">Disabled</span>
+						<span className="slds-checkbox--on">{labelToggleEnabled}</span>
+						<span className="slds-checkbox--off">{labelToggleDisabled}</span>
 					</span>
 					{errorText ? <div className="slds-form-element__help">{errorText}</div> : null}
 				</label>

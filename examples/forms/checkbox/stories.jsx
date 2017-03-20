@@ -81,82 +81,6 @@ const CheckboxIndeterminate = React.createClass({
 
 });
 
-const CheckboxToggleIndeterminate = React.createClass({
-	displayName: `${FORMS_CHECKBOX}_INDETERMINATE`,
-
-	getInitialState () {
-		return {
-			indeterminate: true,
-			checked: true,
-			currentStateHelper: 'Indeterminate'
-		};
-	},
-
-	handleChange (checked, event, data) {
-		const checkedLabel = data.checked ? 'Checked' : 'Unchecked';
-		this.setState({
-			checked: data.checked,
-			currentStateHelper: data.indeterminate ? 'Indeterminate' : checkedLabel,
-			indeterminate: data.indeterminate
-		});
-
-		action('handleChange')(
-			checked,
-			event,
-			`checked: ${data.checked},
-			indeterminate: ${data.indeterminate}`
-		);
-	},
-
-	changeToIndeterminate () {
-		this.setState({ currentStateHelper: 'Inderterminate', checked: true, indeterminate: true });
-		action('changeToIndeterminate')(event, 'checked: true, indeterminate: true');
-	},
-
-	changeToCheck () {
-		this.setState({ currentStateHelper: 'Checked', checked: true, indeterminate: false });
-		action('changeToCheck')(event, 'checked: true, indeterminate: false');
-	},
-
-	changeToUnChecked () {
-		this.setState({ currentStateHelper: 'Unchecked', checked: false, indeterminate: false });
-		action('changeToUnChecked')(event, 'checked: false, indeterminate: false');
-	},
-
-	render () {
-		return (
-			<div>
-				<Button onClick={this.changeToIndeterminate} label="Inderterminate" />
-				<Button onClick={this.changeToCheck} label="Check" />
-				<Button onClick={this.changeToUnChecked} label="Uncheck" />
-				<p>
-					<strong>Current State:</strong> {this.state.currentStateHelper}
-				</p>
-				<Checkbox
-					assistiveText="Checkbox (indeterminate)"
-					label="Checkbox Label"
-					name="checkbox-example-standard-indeterminate"
-					checked={this.state.checked}
-					indeterminate={this.state.indeterminate}
-					onChange={this.handleChange}
-					variant="toggle"
-				/>
-				<div className="slds-box slds-text-longform slds-m-top--large">
-					<p>
-						This example has an <em>indeterminate</em> checkbox.
-					</p>
-					<p>
-						It is set by providing the <code>indeterminate</code> prop as <code><strong>true</strong></code>.
-					</p>
-					<p>
-						Once it is clicked, there is no way to make it go <em>back</em> to the indeterminate state, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:indeterminate#Checkbox_radio_button">it must be done programatically, through JavaScript</a>.
-					</p>
-				</div>
-			</div>
-		);
-	}
-
-});
 
 storiesOf(FORMS_CHECKBOX, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
@@ -181,9 +105,6 @@ storiesOf(FORMS_CHECKBOX, module)
 	))
 	.add('Checkbox (indeterminate)', () => (
 		<CheckboxIndeterminate />
-	))
-	.add('Checkbox Toggle (indeterminate)', () => (
-		<CheckboxToggleIndeterminate />
 	))
 	.add('Checkbox (required)', () => (
 		<Checkbox
