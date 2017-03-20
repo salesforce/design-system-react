@@ -20,7 +20,7 @@ test('Checkbox Base DOM Snapshot', () => {
 
 test('Checkbox Base HTML Snapshot', () => {
 	const domTree = String(
-		jsBeautify.html(ReactDOMServer.renderToStaticMarkup(<CheckboxBase />), {}),
+		jsBeautify.html(ReactDOMServer.renderToStaticMarkup(<CheckboxBase />), { indent_size: 2 }),
 		'utf-8'
 	);
 	expect(domTree).toMatchSnapshot();
@@ -36,7 +36,7 @@ test('Checkbox Toggle DOM Snapshot', () => {
 
 test('Checkbox Toggle HTML Snapshot', () => {
 	const domTree = String(
-		jsBeautify.html(ReactDOMServer.renderToStaticMarkup(<CheckboxToggle />), {}),
+		jsBeautify.html(ReactDOMServer.renderToStaticMarkup(<CheckboxToggle />), { indent_size: 2 }),
 		'utf-8'
 	);
 	expect(domTree).toMatchSnapshot();
