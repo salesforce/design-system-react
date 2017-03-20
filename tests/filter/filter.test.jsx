@@ -105,4 +105,43 @@ describe('SLDSFilter', function () {
 			/>, { attachTo: mountNode });
 		});
 	});
+
+	describe('On click handler when clicking on filter', function () {
+		beforeEach(() => {
+			mountNode = createMountNode({ context: this });
+		});
+
+		afterEach(() => {
+			destroyMountNode({ wrapper, mountNode });
+		});
+
+		it('Filter could take onClick prop and trigger this callback during filter click', (done) => {
+			const demoPopover = (<DemoComponent
+				className="custom-filter-popover"
+				portalMount={(reactElement, domContainerNode) => {
+					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
+				}}
+			/>);
+
+			let onFilterClicked = false;
+
+			const onClick = () => {
+				onFilterClicked = true;
+			};
+
+			wrapper = mount(<Filter
+				property="Show Me"
+				predicate="All Opportunities"
+				popover={demoPopover}
+				onClick={onClick}
+			/>, { attachTo: mountNode });
+
+			setTimeout(() => {
+				const filterButton = wrapper.find('.slds-filters__item .slds-button--reset');
+				filterButton.simulate('click', {});
+				expect(onFilterClicked).to.be.true;
+				done();
+			}, 0);
+		});
+	});
 });
