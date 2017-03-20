@@ -95,7 +95,7 @@ const Checkbox = React.createClass({
 		 */
 		labelToggleEnabled: PropTypes.string,
 		/**
-		 * Label for the _disabled_ state of the Toggle variant. Defaults to "Disabled".
+		 * Label for the _disabled_ state of the Toggle variant. Defaults to "Disabled". Note that this uses SLDS language, and meaning, of "Enabled" and "Disabled"; referring to the state of whatever the checkbox is _toggling_, not whether the checkbox itself is enabled or disabled.
 		 */
 		labelToggleDisabled: PropTypes.string,
 		/**
