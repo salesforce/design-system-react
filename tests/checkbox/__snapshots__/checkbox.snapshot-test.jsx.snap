@@ -1,114 +1,493 @@
-exports[`test Checkbox Base (error) Snapshot 1`] = `
+exports[`test Checkbox Base DOM Snapshot 1`] = `
 <div
   className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
   <div
     className="slds-col--padded">
-    <SLDSCheckbox
-      assistiveText="Error state"
-      errorText="This field is required"
-      label="Checkbox Label"
-      variant="base" />
+    <div
+      className="slds-form-element">
+      <div
+        className="slds-form-element__control">
+        <span
+          className="slds-checkbox">
+          <input
+            aria-controls={undefined}
+            aria-describedby={undefined}
+            aria-owns={undefined}
+            aria-required={undefined}
+            checked={undefined}
+            disabled={undefined}
+            id="rJ7IfuTol"
+            name={undefined}
+            onBlur={undefined}
+            onChange={[Function]}
+            onFocus={undefined}
+            onKeyDown={undefined}
+            onKeyPress={undefined}
+            onKeyUp={undefined}
+            required={undefined}
+            role={undefined}
+            type="checkbox" />
+          <label
+            className="slds-checkbox__label"
+            htmlFor="rJ7IfuTol">
+            <span
+              className="slds-checkbox--faux" />
+            <span
+              className="slds-form-element__label">
+              Default
+            </span>
+            <span
+              className="slds-assistive-text">
+              Default
+            </span>
+          </label>
+        </span>
+      </div>
+    </div>
   </div>
   <div
     className="slds-col--padded">
-    <SLDSCheckbox
-      assistiveText="Indeterminate"
-      indeterminate={true}
-      label="Indeterminate"
-      variant="base" />
+    <div
+      className="slds-form-element">
+      <div
+        className="slds-form-element__control">
+        <span
+          className="slds-checkbox">
+          <input
+            aria-controls={undefined}
+            aria-describedby={undefined}
+            aria-owns={undefined}
+            aria-required={undefined}
+            checked={undefined}
+            disabled={undefined}
+            id="ryeXLz_pog"
+            name={undefined}
+            onBlur={undefined}
+            onChange={[Function]}
+            onFocus={undefined}
+            onKeyDown={undefined}
+            onKeyPress={undefined}
+            onKeyUp={undefined}
+            required={undefined}
+            role={undefined}
+            type="checkbox" />
+          <label
+            className="slds-checkbox__label"
+            htmlFor="ryeXLz_pog">
+            <span
+              className="slds-checkbox--faux" />
+            <span
+              className="slds-form-element__label">
+              Indeterminate
+            </span>
+            <span
+              className="slds-assistive-text">
+              Indeterminate
+            </span>
+          </label>
+        </span>
+      </div>
+    </div>
   </div>
   <div
     className="slds-col--padded">
-    <SLDSCheckbox
-      assistiveText="Indeterminate"
-      label="Required"
-      required={true}
-      variant="base" />
+    <div
+      className="slds-form-element is-required">
+      <div
+        className="slds-form-element__control">
+        <span
+          className="slds-checkbox">
+          <abbr
+            className="slds-required"
+            title="required">
+            *
+          </abbr>
+          <input
+            aria-controls={undefined}
+            aria-describedby={undefined}
+            aria-owns={undefined}
+            aria-required={undefined}
+            checked={undefined}
+            disabled={undefined}
+            id="rkbQIf_ajx"
+            name={undefined}
+            onBlur={undefined}
+            onChange={[Function]}
+            onFocus={undefined}
+            onKeyDown={undefined}
+            onKeyPress={undefined}
+            onKeyUp={undefined}
+            required={true}
+            role={undefined}
+            type="checkbox" />
+          <label
+            className="slds-checkbox__label"
+            htmlFor="rkbQIf_ajx">
+            <span
+              className="slds-checkbox--faux" />
+            <span
+              className="slds-form-element__label">
+              Required
+            </span>
+            <span
+              className="slds-assistive-text">
+              Indeterminate
+            </span>
+          </label>
+        </span>
+      </div>
+    </div>
   </div>
   <div
     className="slds-col--padded">
-    <SLDSCheckbox
-      assistiveText="Disabled"
-      disabled={true}
-      label="Disabled"
-      variant="base" />
+    <div
+      className="slds-form-element">
+      <div
+        className="slds-form-element__control">
+        <span
+          className="slds-checkbox">
+          <input
+            aria-controls={undefined}
+            aria-describedby={undefined}
+            aria-owns={undefined}
+            aria-required={undefined}
+            checked={undefined}
+            disabled={true}
+            id="BkMmLfupse"
+            name={undefined}
+            onBlur={undefined}
+            onChange={[Function]}
+            onFocus={undefined}
+            onKeyDown={undefined}
+            onKeyPress={undefined}
+            onKeyUp={undefined}
+            required={undefined}
+            role={undefined}
+            type="checkbox" />
+          <label
+            className="slds-checkbox__label"
+            htmlFor="BkMmLfupse">
+            <span
+              className="slds-checkbox--faux" />
+            <span
+              className="slds-form-element__label">
+              Disabled
+            </span>
+            <span
+              className="slds-assistive-text">
+              Disabled
+            </span>
+          </label>
+        </span>
+      </div>
+    </div>
   </div>
 </div>
 `;
 
-exports[`test Checkbox Base Snapshot 1`] = `
+exports[`test Checkbox Base HTML Snapshot 1`] = `
+"<div class=\"slds-grid slds-grid--pull-padded slds-grid--vertical-align-center\">
+    <div class=\"slds-col--padded\">
+        <div class=\"slds-form-element\">
+            <div class=\"slds-form-element__control\"><span class=\"slds-checkbox\"><input type=\"checkbox\" id=\"rJQ7Ifdaog\"/><label class=\"slds-checkbox__label\" for=\"rJQ7Ifdaog\"><span class=\"slds-checkbox--faux\"></span><span class=\"slds-form-element__label\">Default</span><span class=\"slds-assistive-text\">Default</span></label>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class=\"slds-col--padded\">
+        <div class=\"slds-form-element\">
+            <div class=\"slds-form-element__control\"><span class=\"slds-checkbox\"><input type=\"checkbox\" id=\"S1EXLM_asx\"/><label class=\"slds-checkbox__label\" for=\"S1EXLM_asx\"><span class=\"slds-checkbox--faux\"></span><span class=\"slds-form-element__label\">Indeterminate</span><span class=\"slds-assistive-text\">Indeterminate</span></label>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class=\"slds-col--padded\">
+        <div class=\"slds-form-element is-required\">
+            <div class=\"slds-form-element__control\"><span class=\"slds-checkbox\"><abbr class=\"slds-required\" title=\"required\">*</abbr><input type=\"checkbox\" id=\"r1HQLGOTix\" required=\"\"/><label class=\"slds-checkbox__label\" for=\"r1HQLGOTix\"><span class=\"slds-checkbox--faux\"></span><span class=\"slds-form-element__label\">Required</span>
+                <span
+                    class=\"slds-assistive-text\">Indeterminate</span>
+                    </label>
+                    </span>
+            </div>
+        </div>
+    </div>
+    <div class=\"slds-col--padded\">
+        <div class=\"slds-form-element\">
+            <div class=\"slds-form-element__control\"><span class=\"slds-checkbox\"><input type=\"checkbox\" disabled=\"\" id=\"By87If_aie\"/><label class=\"slds-checkbox__label\" for=\"By87If_aie\"><span class=\"slds-checkbox--faux\"></span><span class=\"slds-form-element__label\">Disabled</span><span class=\"slds-assistive-text\">Disabled</span></label>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>"
+`;
+
+exports[`test Checkbox Toggle DOM Snapshot 1`] = `
 <div
   className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
   <div
     className="slds-col--padded">
-    <SLDSCheckbox
-      assistiveText="Default"
-      label="Default"
-      variant="base" />
+    <div
+      className="slds-form-element">
+      <label
+        className="slds-checkbox--toggle slds-grid"
+        htmlFor="rJP7UGd6jg">
+        <span
+          className="slds-form-element__label slds-m-bottom--none">
+          Toggle
+        </span>
+        <span
+          className="slds-form-element__label slds-m-bottom--none" />
+        <input
+          aria-controls={undefined}
+          aria-describedby={undefined}
+          aria-owns={undefined}
+          aria-required={undefined}
+          checked={undefined}
+          disabled={undefined}
+          id="rJP7UGd6jg"
+          name={undefined}
+          onBlur={undefined}
+          onChange={[Function]}
+          onFocus={undefined}
+          onKeyDown={undefined}
+          onKeyPress={undefined}
+          onKeyUp={undefined}
+          required={undefined}
+          role={undefined}
+          type="checkbox" />
+        <span
+          aria-live="assertive"
+          className="slds-checkbox--faux_container"
+          id="rJP7UGd6jg">
+          <span
+            className="slds-checkbox--faux" />
+          <span
+            className="slds-checkbox--on">
+            Enabled
+          </span>
+          <span
+            className="slds-checkbox--off">
+            Disabled
+          </span>
+        </span>
+      </label>
+    </div>
   </div>
   <div
     className="slds-col--padded">
-    <SLDSCheckbox
-      assistiveText="Indeterminate"
-      indeterminate={true}
-      label="Indeterminate"
-      variant="base" />
+    <div
+      className="slds-form-element">
+      <label
+        className="slds-checkbox--toggle slds-grid"
+        htmlFor="BkOmIMd6il">
+        <span
+          className="slds-form-element__label slds-m-bottom--none" />
+        <span
+          className="slds-assistive-text">
+          Toggle (with assistive text)
+        </span>
+        <input
+          aria-controls={undefined}
+          aria-describedby={undefined}
+          aria-owns={undefined}
+          aria-required={undefined}
+          checked={undefined}
+          disabled={undefined}
+          id="BkOmIMd6il"
+          name={undefined}
+          onBlur={undefined}
+          onChange={[Function]}
+          onFocus={undefined}
+          onKeyDown={undefined}
+          onKeyPress={undefined}
+          onKeyUp={undefined}
+          required={undefined}
+          role={undefined}
+          type="checkbox" />
+        <span
+          aria-live="assertive"
+          className="slds-checkbox--faux_container"
+          id="BkOmIMd6il">
+          <span
+            className="slds-checkbox--faux" />
+          <span
+            className="slds-checkbox--on">
+            Enabled
+          </span>
+          <span
+            className="slds-checkbox--off">
+            Disabled
+          </span>
+        </span>
+      </label>
+    </div>
   </div>
   <div
     className="slds-col--padded">
-    <SLDSCheckbox
-      assistiveText="Indeterminate"
-      label="Required"
-      required={true}
-      variant="base" />
+    <div
+      className="slds-form-element">
+      <label
+        className="slds-checkbox--toggle slds-grid"
+        htmlFor="BkFQLMu6ix">
+        <span
+          className="slds-form-element__label slds-m-bottom--none">
+          Toggle (checked)
+        </span>
+        <span
+          className="slds-form-element__label slds-m-bottom--none" />
+        <input
+          aria-controls={undefined}
+          aria-describedby={undefined}
+          aria-owns={undefined}
+          aria-required={undefined}
+          checked={true}
+          disabled={undefined}
+          id="BkFQLMu6ix"
+          name={undefined}
+          onBlur={undefined}
+          onChange={[Function]}
+          onFocus={undefined}
+          onKeyDown={undefined}
+          onKeyPress={undefined}
+          onKeyUp={undefined}
+          required={undefined}
+          role={undefined}
+          type="checkbox" />
+        <span
+          aria-live="assertive"
+          className="slds-checkbox--faux_container"
+          id="BkFQLMu6ix">
+          <span
+            className="slds-checkbox--faux" />
+          <span
+            className="slds-checkbox--on">
+            Enabled
+          </span>
+          <span
+            className="slds-checkbox--off">
+            Disabled
+          </span>
+        </span>
+      </label>
+    </div>
   </div>
   <div
     className="slds-col--padded">
-    <SLDSCheckbox
-      assistiveText="Disabled"
-      disabled={true}
-      label="Disabled"
-      variant="base" />
+    <div
+      className="slds-form-element">
+      <label
+        className="slds-checkbox--toggle slds-grid"
+        htmlFor="r1cXIzO6oe">
+        <span
+          className="slds-form-element__label slds-m-bottom--none">
+          Toggle (disabled)
+        </span>
+        <span
+          className="slds-form-element__label slds-m-bottom--none" />
+        <input
+          aria-controls={undefined}
+          aria-describedby={undefined}
+          aria-owns={undefined}
+          aria-required={undefined}
+          checked={undefined}
+          disabled={true}
+          id="r1cXIzO6oe"
+          name={undefined}
+          onBlur={undefined}
+          onChange={[Function]}
+          onFocus={undefined}
+          onKeyDown={undefined}
+          onKeyPress={undefined}
+          onKeyUp={undefined}
+          required={undefined}
+          role={undefined}
+          type="checkbox" />
+        <span
+          aria-live="assertive"
+          className="slds-checkbox--faux_container"
+          id="r1cXIzO6oe">
+          <span
+            className="slds-checkbox--faux" />
+          <span
+            className="slds-checkbox--on">
+            Enabled
+          </span>
+          <span
+            className="slds-checkbox--off">
+            Disabled
+          </span>
+        </span>
+      </label>
+    </div>
+  </div>
+  <div
+    className="slds-col--padded">
+    <div
+      className="slds-form-element">
+      <label
+        className="slds-checkbox--toggle slds-grid"
+        htmlFor="rJiXLzOTil">
+        <span
+          className="slds-form-element__label slds-m-bottom--none">
+          Toggle (checked + disabled)
+        </span>
+        <span
+          className="slds-form-element__label slds-m-bottom--none" />
+        <input
+          aria-controls={undefined}
+          aria-describedby={undefined}
+          aria-owns={undefined}
+          aria-required={undefined}
+          checked={true}
+          disabled={true}
+          id="rJiXLzOTil"
+          name={undefined}
+          onBlur={undefined}
+          onChange={[Function]}
+          onFocus={undefined}
+          onKeyDown={undefined}
+          onKeyPress={undefined}
+          onKeyUp={undefined}
+          required={undefined}
+          role={undefined}
+          type="checkbox" />
+        <span
+          aria-live="assertive"
+          className="slds-checkbox--faux_container"
+          id="rJiXLzOTil">
+          <span
+            className="slds-checkbox--faux" />
+          <span
+            className="slds-checkbox--on">
+            Enabled
+          </span>
+          <span
+            className="slds-checkbox--off">
+            Disabled
+          </span>
+        </span>
+      </label>
+    </div>
   </div>
 </div>
 `;
 
-exports[`test Checkbox Toggle Snapshot 1`] = `
-<div
-  className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
-  <div
-    className="slds-col--padded">
-    <SLDSCheckbox
-      label="Toggle"
-      variant="toggle" />
-  </div>
-  <div
-    className="slds-col--padded">
-    <SLDSCheckbox
-      assistiveText="Toggle (with assistive text)"
-      variant="toggle" />
-  </div>
-  <div
-    className="slds-col--padded">
-    <SLDSCheckbox
-      checked={true}
-      label="Toggle (checked)"
-      variant="toggle" />
-  </div>
-  <div
-    className="slds-col--padded">
-    <SLDSCheckbox
-      disabled={true}
-      label="Toggle (disabled)"
-      variant="toggle" />
-  </div>
-  <div
-    className="slds-col--padded">
-    <SLDSCheckbox
-      checked={true}
-      disabled={true}
-      label="Toggle (checked + disabled)"
-      variant="toggle" />
-  </div>
-</div>
+exports[`test Checkbox Toggle HTML Snapshot 1`] = `
+"<div class=\"slds-grid slds-grid--pull-padded slds-grid--vertical-align-center\">
+    <div class=\"slds-col--padded\">
+        <div class=\"slds-form-element\"><label class=\"slds-checkbox--toggle slds-grid\" for=\"HJnm8fO6oe\"><span class=\"slds-form-element__label slds-m-bottom--none\">Toggle</span><span class=\"slds-form-element__label slds-m-bottom--none\"></span><input type=\"checkbox\" id=\"HJnm8fO6oe\"/><span id=\"HJnm8fO6oe\" class=\"slds-checkbox--faux_container\" aria-live=\"assertive\"><span class=\"slds-checkbox--faux\"></span><span class=\"slds-checkbox--on\">Enabled</span><span class=\"slds-checkbox--off\">Disabled</span></span></label></div>
+    </div>
+    <div class=\"slds-col--padded\">
+        <div class=\"slds-form-element\"><label class=\"slds-checkbox--toggle slds-grid\" for=\"r1Tm8zu6jx\"><span class=\"slds-form-element__label slds-m-bottom--none\"></span><span class=\"slds-assistive-text\">Toggle (with assistive text)</span><input type=\"checkbox\" id=\"r1Tm8zu6jx\"/><span id=\"r1Tm8zu6jx\" class=\"slds-checkbox--faux_container\" aria-live=\"assertive\"><span class=\"slds-checkbox--faux\"></span><span class=\"slds-checkbox--on\">Enabled</span><span class=\"slds-checkbox--off\">Disabled</span></span></label></div>
+    </div>
+    <div class=\"slds-col--padded\">
+        <div class=\"slds-form-element\"><label class=\"slds-checkbox--toggle slds-grid\" for=\"HJCmIzu6oe\"><span class=\"slds-form-element__label slds-m-bottom--none\">Toggle (checked)</span><span class=\"slds-form-element__label slds-m-bottom--none\"></span><input type=\"checkbox\" checked=\"\" id=\"HJCmIzu6oe\"/><span id=\"HJCmIzu6oe\" class=\"slds-checkbox--faux_container\" aria-live=\"assertive\"><span class=\"slds-checkbox--faux\"></span><span class=\"slds-checkbox--on\">Enabled</span><span class=\"slds-checkbox--off\">Disabled</span></span></label></div>
+    </div>
+    <div class=\"slds-col--padded\">
+        <div class=\"slds-form-element\"><label class=\"slds-checkbox--toggle slds-grid\" for=\"SyJgm8GOail\"><span class=\"slds-form-element__label slds-m-bottom--none\">Toggle (disabled)</span><span class=\"slds-form-element__label slds-m-bottom--none\"></span><input type=\"checkbox\" disabled=\"\" id=\"SyJgm8GOail\"/><span id=\"SyJgm8GOail\" class=\"slds-checkbox--faux_container\" aria-live=\"assertive\"><span class=\"slds-checkbox--faux\"></span><span class=\"slds-checkbox--on\">Enabled</span><span class=\"slds-checkbox--off\">Disabled</span></span></label></div>
+    </div>
+    <div class=\"slds-col--padded\">
+        <div class=\"slds-form-element\"><label class=\"slds-checkbox--toggle slds-grid\" for=\"rygxXIMd6og\"><span class=\"slds-form-element__label slds-m-bottom--none\">Toggle (checked + disabled)</span><span class=\"slds-form-element__label slds-m-bottom--none\"></span><input type=\"checkbox\" disabled=\"\" checked=\"\" id=\"rygxXIMd6og\"/><span id=\"rygxXIMd6og\" class=\"slds-checkbox--faux_container\" aria-live=\"assertive\"><span class=\"slds-checkbox--faux\"></span><span class=\"slds-checkbox--on\">Enabled</span><span class=\"slds-checkbox--off\">Disabled</span></span></label></div>
+    </div>
+</div>"
 `;
