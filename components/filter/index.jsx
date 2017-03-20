@@ -94,6 +94,10 @@ const Filter = React.createClass({
 		 */
 		onRemove: PropTypes.func,
 		/**
+		 * Will be triggered when Filter is clicked. This is the place to close/open popover if a custom popover is passed in
+		 */
+		onClick: PropTypes.func,
+		/**
 		 * A `Popover` component. The props from this popover will be merged and override any default props. This also allows a Filter's Popover dialog to be a controlled component. _Tested with Mocha framework._
 		 */
 		popover: PropTypes.node,
@@ -132,6 +136,10 @@ const Filter = React.createClass({
 
 	handleFilterClick () {
 		this.setState({ popoverIsOpen: true });
+
+		if (this.props.onClick) {
+			this.props.onClick();
+		}
 	},
 
 	handleClose () {
