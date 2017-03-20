@@ -118,14 +118,20 @@ const Checkbox = React.createClass({
 		 * This event fires when a pressed key is released.
 		 */
 		onKeyUp: PropTypes.func,
+		/**
+		 * Displays the value of the input, but does not allow changes.
+		 */
 		readOnly: PropTypes.bool,
 		/**
 		 * Highlights the Checkbox as a required field (does not perform any validation).
 		 */
 		required: PropTypes.bool,
+		/**
+		 * The aria-role of the checkbox.
+		 */
 		role: PropTypes.string,
 		/**
-		 * Renders the _Checkbox Toggle_ flavor. (**Note:** `toggle` variant does not support the `indeterminate` feature, because [SLDS does not support it](https://lightningdesignsystem.com/components/forms/#flavor-checkbox-toggle-checkbox-toggle).)
+		 * Which flavor of checkbox? Default is `base` while other option is `toggle`. (**Note:** `toggle` variant does not support the `indeterminate` feature, because [SLDS does not support it](https://lightningdesignsystem.com/components/forms/#flavor-checkbox-toggle-checkbox-toggle).)
 		 */
 		variant: PropTypes.oneOf(['base', 'toggle'])
 	},
@@ -158,15 +164,8 @@ const Checkbox = React.createClass({
 			onKeyDown,
 			onKeyPress,
 			onKeyUp,
-			readOnly,
 			required,
-			role,
-			variant,
-
-
-			// ### Additional properties
-			// Using [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx) to pass on any properties which are not explicitly defined.
-			...props  // eslint-disable-line no-unused-vars
+			role
 		} = this.props;
 
 		return (
@@ -243,15 +242,8 @@ const Checkbox = React.createClass({
 			onKeyDown,
 			onKeyPress,
 			onKeyUp,
-			readOnly,
 			required,
-			role,
-			variant,
-
-
-			// ### Additional properties
-			// Using [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx) to pass on any properties which are not explicitly defined.
-			...props  // eslint-disable-line no-unused-vars
+			role
 		} = this.props;
 
 		return (
