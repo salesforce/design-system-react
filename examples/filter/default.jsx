@@ -72,6 +72,7 @@ const Example = React.createClass({
 				onRemove={this.onRemove}
 				property="Show Me"
 				predicate={this.state['show-me'].selectedItem.label}
+				{...this.props}
 			>
 				<Picklist
 					isInline

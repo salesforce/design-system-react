@@ -66,6 +66,13 @@ const Filter = React.createClass({
 		 */
 		children: PropTypes.node,
 		/**
+		  * Custom CSS classes for `slds-filters__item` node. Uses `classNames` [API](https://github.com/JedWatson/classnames).
+		  */
+		className: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string]),
+		/**
 		 * Applies error state styling. Per filter error messages are outside this components.
 		 */
 		isError: PropTypes.bool,
@@ -211,7 +218,8 @@ const Filter = React.createClass({
 						'slds-is-locked': this.props.isLocked,
 						'slds-is-new': this.props.isNew,
 						'slds-has-error': this.props.isError
-					}
+					},
+					this.props.className
 				)}
 			>
 				{!this.props.isLocked && (this.props.children || this.props.popover)
