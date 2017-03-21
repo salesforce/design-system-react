@@ -48,4 +48,14 @@ storiesOf(MENU_PICKLIST, module)
 			action('Selected')(...rest);
 		},
 		options
+	}))
+	.add('Error state', () => getPicklist({
+		errorText: 'This field is required',
+		label: 'Contacts',
+		placeholder: 'Select a contact',
+		onSelect: (...rest) => {
+			action('Selected')(...rest);
+		},
+		options,
+		required: true
 	}));
