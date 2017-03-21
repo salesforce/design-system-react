@@ -175,7 +175,7 @@ const DatepickerCalendarWrapper = React.createClass({
 
 	render () {
 		return (
-			<div
+			<div // eslint-disable-line jsx-a11y/no-static-element-interactions
 				className={classNames({
 					'slds-datepicker': this.props.isolated
 				},
@@ -218,8 +218,6 @@ const DatepickerCalendarWrapper = React.createClass({
 					onLastFocusableNodeKeyDown={this.handleLastFocusableNodeKeyDown}
 					weekDayLabels={this.props.weekDayLabels}
 				/>
-				<span id="bn_prev-label" className="slds-assistive-text">{this.props.assistiveTextNextMonth}</span>
-				<span id="bn_next-label" className="slds-assistive-text">{this.props.assistiveTextPreviousMonth}</span>
 			</div>
 		);
 	}
