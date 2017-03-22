@@ -273,6 +273,14 @@ const MenuPicklist = React.createClass({
 		if (index === this.state.focusedIndex) this.handleKeyboardFocus(this.state.focusedIndex);
 	},
 
+	// Trigger opens, closes, and recieves focus on close
+	saveRefToTrigger (trigger) {
+		this.button = trigger;
+		if (this.props.buttonRef) {
+			this.props.buttonRef(this.button);
+		}
+	},
+
 	getMenu () {
 		return ReactDOM.findDOMNode(this.list);
 	},
@@ -372,13 +380,7 @@ const MenuPicklist = React.createClass({
 					disabled={this.props.disabled}
 					id={this.getId()}
 					onClick={!this.props.disabled && this.handleClick}
-					ref={(component) => {
-						this.button = component;
-
-						if (this.props.buttonRef) {
-							this.props.buttonRef(this.button);
-						}
-					}}
+					ref={this.saveRefToTrigger}
 					tabIndex={this.state.isOpen ? -1 : 0}
 				>
 					<span className="slds-truncate">{this.renderPlaceholder()}</span>
