@@ -185,6 +185,7 @@ exports[`test Datepicker
             onKeyDown={[Function]}
             onMouseDown={[Function]}>
             <button
+              aria-describedby={undefined}
               aria-expanded={undefined}
               aria-haspopup="true"
               className="slds-button slds-button--neutral slds-picklist__label"
@@ -951,6 +952,7 @@ exports[`test Datepicker
             onKeyDown={[Function]}
             onMouseDown={[Function]}>
             <button
+              aria-describedby={undefined}
               aria-expanded={undefined}
               aria-haspopup="true"
               className="slds-button slds-button--neutral slds-picklist__label"
@@ -1715,6 +1717,7 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
             onKeyDown={[Function]}
             onMouseDown={[Function]}>
             <button
+              aria-describedby={undefined}
               aria-expanded={undefined}
               aria-haspopup="true"
               className="slds-button slds-button--neutral slds-picklist__label"
