@@ -27,6 +27,17 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ---
 
+## Release 0.6.6
+
+**Minor Changes**
+
+- Fix focus transfer on close of "modal" `Picklist`
+- Remove title attribute on column header if `DataTable` column label is not a string
+- Pass `iconPosition` prop from `Dropdown` to a custom trigger
+- Add `onClick` callback prop to `Filter`
+- Add `DataTable` width prop to column header
+- Add `className` prop to `Filter`
+
 ## Release 0.6.5
 
 **Minor Changes**
