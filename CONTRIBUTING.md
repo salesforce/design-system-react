@@ -444,5 +444,6 @@ from the [Planning Center](https://github.com/planningcenter/react-patterns)
 1. Run `npm prune` and `npm install` to clean up node modules in preparation for build.
 1. **Choose one**: `npm run release-patch` or `npm run release-minor` This script pulls from upstream, bumps the version, commits changes, and publishes tags to your `upstream` repository (that is this repo).
 1. Copy and paste your release notes into the [Github Draft Release UI](https://github.com/salesforce-ux/design-system-react/releases) and publish.
+1. Update the version of Design System React in the documentation site's [package.json](https://github.com/salesforce-ux/design-system-react-site/blob/master/package.json#L51) and push to master. This is will build a Heroku application. Log into Heroku and promote the staged pull request to production. You will need promotion rights to the Heroku application.
 
 _If you are timid about releasing or need your pull request in review "pre-released," you can publish to origin (your fork) with `npm run publish-to-git` and then test and review the tag on your fork. This is just the publish step though, any other tasks you will need to do manually to test publishing._
