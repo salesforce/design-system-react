@@ -152,7 +152,7 @@
     "sinon-chai": "^2.8.0",
     "string-replace-webpack-plugin": "^0.1.2",
     "style-loader": "^0.16.0",
-    "webpack": "^1.13.3",
+    "webpack": "^2.3.2",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.13.2",
     "xml2json": "^0.11.0"
