@@ -26,6 +26,7 @@ exports[`test Datepicker
         aria-controls={undefined}
         aria-describedby={undefined}
         aria-expanded={undefined}
+        aria-labelledby={undefined}
         aria-owns={undefined}
         aria-required={undefined}
         className="slds-input"
@@ -792,6 +793,7 @@ exports[`test Datepicker
         aria-controls={undefined}
         aria-describedby={undefined}
         aria-expanded={undefined}
+        aria-labelledby={undefined}
         aria-owns={undefined}
         aria-required={undefined}
         className="slds-input"
@@ -1556,6 +1558,7 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
         aria-controls={undefined}
         aria-describedby={undefined}
         aria-expanded={undefined}
+        aria-labelledby={undefined}
         aria-owns={undefined}
         aria-required={undefined}
         className="slds-input"
