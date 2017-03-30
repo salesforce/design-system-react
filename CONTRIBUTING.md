@@ -27,6 +27,7 @@ This is an internal open-source project. You may be asked to review code submitt
 - `npm install`
 - Pull down the pull requested branch. It will be within the contributor's forked repository. For instance, `git checkout -b interactivellama-data-table-width master` then `git pull git@github.com:interactivellama/design-system-react.git data-table-width`. You could also create an additional remote and pull down the branch directly.
 - `npm start` and review the appropriate React Story example at `http://localhost:9001/`. Open `http://localhost:8001/` and confirm that tests are passing in your environment.
+- Check that any modified or added examples for the documentation site are working and are present in `examples/index.js`. See [Releasing](#Releasing) for instructions. 
 
 ## Concepts and Best Practices
 #### What we've learned about building React components for the enterprise
