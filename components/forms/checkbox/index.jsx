@@ -316,7 +316,7 @@ const Checkbox = React.createClass({
 			</div>
 		);
 	},
-	/* eslint-disable jsx-a11y/label-has-for */
+	/* eslint-enable jsx-a11y/label-has-for */
 
 	// ### Render
 	render () {
