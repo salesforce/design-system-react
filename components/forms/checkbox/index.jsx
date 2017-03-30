@@ -251,7 +251,6 @@ const Checkbox = React.createClass({
 			labelToggleDisabled,
 			name,
 			onBlur,
-			onChange, // eslint-disable-line no-unused-vars
 			onFocus,
 			onKeyDown,
 			onKeyPress,
