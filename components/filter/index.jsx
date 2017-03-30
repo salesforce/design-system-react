@@ -66,6 +66,13 @@ const Filter = React.createClass({
 		 */
 		children: PropTypes.node,
 		/**
+		  * Custom CSS classes for `slds-filters__item` node. Uses `classNames` [API](https://github.com/JedWatson/classnames).
+		  */
+		className: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string]),
+		/**
 		 * Applies error state styling. Per filter error messages are outside this components.
 		 */
 		isError: PropTypes.bool,
@@ -93,6 +100,10 @@ const Filter = React.createClass({
 		 * Will be triggered when "Remove Filter" button is clicked. Callback will recieve parameters: `clickEvent, { id }`. An index into your store may be a good setting for `id`, so that it will be passed back here.
 		 */
 		onRemove: PropTypes.func,
+		/**
+		 * Will be triggered when Filter is clicked. This is the place to close/open popover if a custom popover is passed in
+		 */
+		onClick: PropTypes.func,
 		/**
 		 * A `Popover` component. The props from this popover will be merged and override any default props. This also allows a Filter's Popover dialog to be a controlled component. _Tested with Mocha framework._
 		 */
@@ -132,6 +143,10 @@ const Filter = React.createClass({
 
 	handleFilterClick () {
 		this.setState({ popoverIsOpen: true });
+
+		if (this.props.onClick) {
+			this.props.onClick();
+		}
 	},
 
 	handleClose () {
@@ -203,7 +218,8 @@ const Filter = React.createClass({
 						'slds-is-locked': this.props.isLocked,
 						'slds-is-new': this.props.isNew,
 						'slds-has-error': this.props.isError
-					}
+					},
+					this.props.className
 				)}
 			>
 				{!this.props.isLocked && (this.props.children || this.props.popover)

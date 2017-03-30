@@ -21,6 +21,13 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 - Prop description tables on the documentation site are generated from propType comments within the component. All props should have a _Tested with snapshot testing._ or _Tested with Mocha framework._ notice in them.
 - Introductory component descriptions are generated from the comment before the component declaration. 
 
+## The review process
+This is an internal open-source project. You may be asked to review code submitted by others. To do this:
+- `git clone` this repository
+- `npm install`
+- Pull down the pull requested branch. It will be within the contributor's forked repository. For instance, `git checkout -b interactivellama-data-table-width master` then `git pull git@github.com:interactivellama/design-system-react.git data-table-width`. You could also create an additional remote and pull down the branch directly.
+- `npm start` and review the appropriate React Story example at `http://localhost:9001/`. Open `http://localhost:8001/` and confirm that tests are passing in your environment.
+
 ## Concepts and Best Practices
 #### What we've learned about building React components for the enterprise
 
@@ -39,6 +46,8 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 - <a name="private-child-components" href="#private-child-components">#</a> Place child components not intended to be part of the public API within a folder labelled `private`. All other React components should be considered public (and considered within the scope of Semantic Versioning), and can be used by developers in their own JSX within their application. See [Child component decorator pattern](#child-component-decorator-pattern)
 
+- <a name="code-design-choices" href="#code-design-choices">#</a> **Use loose coupling and weak connascence.** The goal should be that a contributor can understand one piece of code without understanding another and be able to easily make updates in the future. You want weak connascence between components or components and the application (such as events) and not strong connascence. This makes it easier to update one component when modifying another in the future. How easy it will be to change in the future depends on which of the nine [types of connascence](https://en.wikipedia.org/wiki/Connascence_(computer_programming)) is being used. For instance, _Connascence of Name_ can be simply updated with Find/Replace. PropTypes and type systems help with _Connascence of Type_.
+
 ### Limit side effects
 - <a name="limit-state" href="#limit-state">#</a> **Limit use of component state.** If the parent application's state engine can handle it with a `prop`, then don't use state. _New components should always start out as controlled by their parent and only be uncontrolled (that is have state) if a use case presents itself._ It's better to have a component that needs 20 props set and outputs the correct markup, than to have a component that works with no props set, yet maintains multiple internal states. We like to think of this project as design system templates with minimal logic that happen to work with the React framework. Let the library consumer create a simple _container component_ with state. Read more about [controlled components](#controlled-and-uncontrolled-components).
     - <a name="stateful-stateless-components" href="#stateful-stateless-components">#</a> Know how smart/stateful React components [work together](https://gist.github.com/trevordmiller/a7791c11228b48f0366b) with [pure/dumb stateless function components](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions).
@@ -48,6 +57,10 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
     - Frequently used items such as badges, pills, buttons or icons should probably not have state.
 
 - <a name="no-window-events" href="#no-window-events">#</a> **Encapsulate your components.** Global window events like `resize` or external DOM nodes should not be accessed from the component. `body` should be used for additional portal mounts. If a menu needs to be smaller to be responsive, consuming applications should listen for the resize event and change the correct props to make the component responsive--or a CSS solution should be found. The component should not be listening to window events directly. Global key press or mouse clicks are fine if used appropriately.
+
+- <a name="use-dom-refs" href="#use-dom-refs">#</a> **Avoid querying the DOM for nodes you do not own.** A `ref` callback is React's [link to a DOM node](https://facebook.github.io/react/docs/refs-and-the-dom.html). It is triggered on render and allows access to the DOM node asynchronously. In most cases within a component, you only need a `ref` for setting focus, but `refs` make testing easier. If you find yourself using `querySelectorAll()` to query parts of this library within your application tests, please stop and submit a contribution that surfaces the DOM node you are needing to test. If you control the contents or children yourself, please use a `ref` bound to your own JSX DOM node to test. For an example, review the `renderDialog` method of `Popover` and its `body` ref. Once surfaced, a DOM `ref` becomes part of the public API and will be treated as such.
+
+- <a name="breaking-changes" href="#breaking-changes">#</a> **Changes to a component's props or a new design system version are breaking changes.** SLDS markup alignment and class changes within the current design system release cycle are _not_ considered breaking changes in this library although they may break markup queries. See [Avoid querying the DOM for nodes you do not own.](#use-dom-refs).
 
 - <a name="approved-slds-patterns" href="#approved-slds-patterns">#</a> **Only submit approved design system patterns.** This library should include only components which have approved patterns in Salesforce's [design system](https://www.lightningdesignsystem.com/) or the latest internal beta releases. If there is a use case from a designer that conforms to a design pattern, that component should be able to be implemented with this library.
 
@@ -433,5 +446,6 @@ from the [Planning Center](https://github.com/planningcenter/react-patterns)
 1. Run `npm prune` and `npm install` to clean up node modules in preparation for build.
 1. **Choose one**: `npm run release-patch` or `npm run release-minor` This script pulls from upstream, bumps the version, commits changes, and publishes tags to your `upstream` repository (that is this repo).
 1. Copy and paste your release notes into the [Github Draft Release UI](https://github.com/salesforce-ux/design-system-react/releases) and publish.
+1. Update the version of Design System React in the documentation site's [package.json](https://github.com/salesforce-ux/design-system-react-site/blob/master/package.json#L51) and push to master. This is will build a Heroku application. Log into Heroku and promote the staged pull request to production. You will need promotion rights to the Heroku application.
 
 _If you are timid about releasing or need your pull request in review "pre-released," you can publish to origin (your fork) with `npm run publish-to-git` and then test and review the tag on your fork. This is just the publish step though, any other tasks you will need to do manually to test publishing._

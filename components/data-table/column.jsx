@@ -50,7 +50,7 @@ DataTableColumn.propTypes = {
 	 */
 	children: React.PropTypes.element,
 	/**
-	 * The column label.
+	 * The column label. If a `string` is not passed in, no `title` attribute will be rendered.
 	 */
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 	/**

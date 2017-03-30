@@ -84,14 +84,14 @@ const Example = React.createClass({
 						primaryColumn
 						property="opportunityName"
 						sortable
-						width="5rem"
+						width="10rem"
 					>
 						<CustomDataTableCell />
 					</DataTableColumn>
 					<DataTableColumn
 						label="Account Name"
 						property="accountName"
-						width="6rem"
+						width="8rem"
 					/>
 					<DataTableColumn
 						label="Close Date"
