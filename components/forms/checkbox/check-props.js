@@ -17,10 +17,14 @@ let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
-		onlyOneOfProperties(COMPONENT, {
-			variant: props.variant,
-			indeterminate: props.indeterminate
-		}, 'Currently SLDS does not support the `indeterminate` state in Checkbox Toggle. See SLDS documentation about [Checkbox Toggle](https://lightningdesignsystem.com/components/forms/#flavor-checkbox-toggle-checkbox-toggle) for more information.');
+		// console.log("props.variant", props.variant);
+		// console.log("props.indeterminate", props.indeterminate);
+		if (props.variant === 'toggle' && props.indeterminate === true) {
+			onlyOneOfProperties(COMPONENT, {
+				variant: props.variant,
+				indeterminate: props.indeterminate
+			}, 'Currently SLDS does not support the `indeterminate` state in Checkbox Toggle. See SLDS documentation about [Checkbox Toggle](https://lightningdesignsystem.com/components/forms/#flavor-checkbox-toggle-checkbox-toggle) for more information.');
+		}
 	};
 }
 

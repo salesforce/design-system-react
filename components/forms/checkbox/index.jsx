@@ -236,6 +236,7 @@ const Checkbox = React.createClass({
 		);
 	},
 
+	/* eslint-disable jsx-a11y/label-has-for */
 	renderToggleVariant () {
 		const {
 			assistiveText,
@@ -259,6 +260,7 @@ const Checkbox = React.createClass({
 			role
 		} = this.props;
 
+
 		return (
 			<div
 				className={classNames('slds-form-element', {
@@ -267,14 +269,13 @@ const Checkbox = React.createClass({
 				},
 				className)}
 			>
-				<label className="slds-checkbox--toggle slds-grid" htmlFor={id || this.generatedId}>
+				<label className="slds-checkbox--toggle slds-grid">
 					{required ? <abbr className="slds-required" title="required">*</abbr> : null}
 					{label
 						? <span className="slds-form-element__label slds-m-bottom--none">
 							{label}
 						</span>
 					: null}
-					<span className="slds-form-element__label slds-m-bottom--none" />
 					{assistiveText
 						? <span className="slds-assistive-text">
 							{assistiveText}
@@ -282,12 +283,11 @@ const Checkbox = React.createClass({
 					: null}
 					<input
 						aria-controls={this.props['aria-controls']}
-						aria-describedby={this.props['aria-describedby']}
+						aria-describedby={id || this.generatedId}
 						aria-owns={this.props['aria-owns']}
 						aria-required={this.props['aria-required']}
 						disabled={disabled}
 						checked={checked}
-						id={id || this.generatedId}
 						name={name}
 						onBlur={onBlur}
 						onChange={this.handleChange}
@@ -316,6 +316,7 @@ const Checkbox = React.createClass({
 			</div>
 		);
 	},
+	/* eslint-disable jsx-a11y/label-has-for */
 
 	// ### Render
 	render () {
