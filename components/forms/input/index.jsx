@@ -59,7 +59,7 @@ const Input = React.createClass({
 		'aria-describedby': PropTypes.string,
 		'aria-expanded': PropTypes.bool,
 		'aria-haspopup': PropTypes.bool,
-		'aria-labeledby': PropTypes.string,
+		'aria-labelledby': PropTypes.string,
 		/**
 		 * An HTML ID that is shared with ARIA-supported devices with the
 		 * `aria-controls` attribute in order to relate the input with
@@ -298,6 +298,7 @@ const Input = React.createClass({
 						aria-activedescendant={this.props['aria-activedescendant']}
 						aria-autocomplete={this.props['aria-autocomplete']}
 						aria-controls={this.props['aria-controls']}
+						aria-labelledby={this.props['aria-labelledby']}
 						aria-describedby={this.getErrorId()}
 						aria-expanded={this.props['aria-expanded']}
 						aria-owns={this.props['aria-owns']}
