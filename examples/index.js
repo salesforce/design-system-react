@@ -35,7 +35,8 @@ const documentationSiteLiveExamples = {
 	],
 	'forms-checkbox': [
 		require('raw-loader!design-system-react/examples/forms/checkbox/default.jsx'),
-		require('raw-loader!design-system-react/examples/forms/checkbox/error.jsx')
+		require('raw-loader!design-system-react/examples/forms/checkbox/error.jsx'),
+		require('raw-loader!design-system-react/examples/forms/checkbox/toggle.jsx')
 	],
 	'data-table': [
 		require('raw-loader!design-system-react/examples/data-table/basic.jsx'),

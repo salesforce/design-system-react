@@ -32,17 +32,17 @@ const CheckboxIndeterminate = React.createClass({
 		);
 	},
 
-	changeToIndeterminate () {
-		this.setState({ currentStateHelper: 'Inderterminate', checked: true, indeterminate: true });
+	changeToIndeterminate (event) {
+		this.setState({ currentStateHelper: 'Indeterminate', checked: true, indeterminate: true });
 		action('changeToIndeterminate')(event, 'checked: true, indeterminate: true');
 	},
 
-	changeToCheck () {
+	changeToCheck (event) {
 		this.setState({ currentStateHelper: 'Checked', checked: true, indeterminate: false });
 		action('changeToCheck')(event, 'checked: true, indeterminate: false');
 	},
 
-	changeToUnChecked () {
+	changeToUnChecked (event) {
 		this.setState({ currentStateHelper: 'Unchecked', checked: false, indeterminate: false });
 		action('changeToUnChecked')(event, 'checked: false, indeterminate: false');
 	},
@@ -50,7 +50,7 @@ const CheckboxIndeterminate = React.createClass({
 	render () {
 		return (
 			<div>
-				<Button onClick={this.changeToIndeterminate} label="Inderterminate" />
+				<Button onClick={this.changeToIndeterminate} label="Indeterminate" />
 				<Button onClick={this.changeToCheck} label="Check" />
 				<Button onClick={this.changeToUnChecked} label="Uncheck" />
 				<p>
@@ -81,27 +81,40 @@ const CheckboxIndeterminate = React.createClass({
 
 });
 
+
 storiesOf(FORMS_CHECKBOX, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Checkbox', () => (
 		<Checkbox
-			assistiveText="Checkbox"
 			label="Checkbox Label"
-			name="checkbox-example-standard"
+			name="checkbox-example-base"
 			onChange={action('change')}
 			onBlur={(e) => { console.log('bluring ', e.target); }}
 		/>
 	))
-	.add('Checkbox (indeterminate)', () => (
-		<CheckboxIndeterminate />
+	.add('Checkbox (with error)', () => (
+		<Checkbox
+			label="Checkbox Label"
+			name="checkbox-example-base-error"
+			errorText="This field has an error."
+			onChange={action('change')}
+			onBlur={(e) => { console.log('bluring ', e.target); }}
+		/>
 	))
 	.add('Checkbox (required)', () => (
 		<Checkbox
-			assistiveText="Checkbox (required)"
 			label="Checkbox Label"
-			name="checkbox-example-standard-required"
+			name="checkbox-example-base-required"
 			onChange={action('change')}
 			required
+		/>
+	))
+	.add('Checkbox (disabled)', () => (
+		<Checkbox
+			label="Checkbox Label"
+			name="checkbox-example-base-disabled"
+			onChange={action('change')}
+			disabled
 		/>
 	))
 	.add('Checkbox (assistive text)', () => (
@@ -116,7 +129,7 @@ storiesOf(FORMS_CHECKBOX, module)
 							I must make my checkbox true.
 							I must make it truer than my radio button who is trying to... `}
 				label="Checkbox Label"
-				name="checkbox-example-standard-assistiveText"
+				name="checkbox-example-base-assistiveText"
 				onChange={action('change')}
 			/>
 			<div className="slds-box slds-text-longform slds-m-top--large">
@@ -136,11 +149,92 @@ storiesOf(FORMS_CHECKBOX, module)
 	))
 	.add('Checkbox (checked)', () => (
 		<Checkbox
-			assistiveText="Checkbox (checked)"
 			checked
 			label="Checkbox Label"
-			name="checkbox-example-standard-checked"
+			name="checkbox-example-base-checked"
 			onChange={action('change')}
+		/>
+	))
+	.add('Checkbox (indeterminate)', () => (
+		<CheckboxIndeterminate />
+	))
+	.add('Checkbox Toggle', () => (
+		<Checkbox
+			label="Checkbox Toggle Label"
+			name="checkbox-example-toggle"
+			onChange={action('change')}
+			onBlur={(e) => { console.log('bluring ', e.target); }}
+			variant="toggle"
+		/>
+	))
+	.add('Checkbox Toggle (with error)', () => (
+		<Checkbox
+			label="Checkbox Toggle Label"
+			name="checkbox-example-toggle-error"
+			errorText="This field has an error."
+			onChange={action('change')}
+			onBlur={(e) => { console.log('bluring ', e.target); }}
+			variant="toggle"
+		/>
+	))
+	.add('Checkbox Toggle (required)', () => (
+		<Checkbox
+			label="Checkbox Toggle Label"
+			name="checkbox-example-toggle-required"
+			onChange={action('change')}
+			onBlur={(e) => { console.log('bluring ', e.target); }}
+			variant="toggle"
+			required
+		/>
+	))
+	.add('Checkbox Toggle (disabled)', () => (
+		<Checkbox
+			label="Checkbox Toggle Label"
+			name="checkbox-example-toggle-disabled"
+			onChange={action('change')}
+			onBlur={(e) => { console.log('bluring ', e.target); }}
+			variant="toggle"
+			disabled
+		/>
+	))
+	.add('Checkbox Toggle (assistive text)', () => (
+		<div>
+			<Checkbox
+				assistiveText={`This is my checkbox.
+							There are many like it, but this one is mine.
+							My checkbox is my best friend.
+							It is my life.
+							I must master it as I must master my life.
+							Without me, my checkbox is useless. Without my checkbox, I am useless.
+							I must make my checkbox true.
+							I must make it truer than my radio button who is trying to... `}
+				label="Checkbox Label"
+				name="checkbox-example-base-assistiveText"
+				onChange={action('change')}
+				variant="toggle"
+			/>
+			<div className="slds-box slds-text-longform slds-m-top--large">
+				<p>
+					This example has assistive text. In Safari on Mac you can
+					turn assistive text on by using the keyboard combination:
+					<strong>Command + F5</strong>.
+				</p>
+				<p>
+					Once you have enabled it, use your tab key to focus on the
+					checkbox input, and the system should read you what is
+					supplied to the checkbox as the <code>assistiveText</code>
+					property.
+				</p>
+			</div>
+		</div>
+	))
+	.add('Checkbox Toggle (checked)', () => (
+		<Checkbox
+			checked
+			label="Checkbox Label"
+			name="checkbox-example-toggle-checked"
+			onChange={action('change')}
+			variant="toggle"
 		/>
 	))
 ;
