@@ -33,7 +33,7 @@ const CheckboxIndeterminate = React.createClass({
 	},
 
 	changeToIndeterminate (event) {
-		this.setState({ currentStateHelper: 'Inderterminate', checked: true, indeterminate: true });
+		this.setState({ currentStateHelper: 'Indeterminate', checked: true, indeterminate: true });
 		action('changeToIndeterminate')(event, 'checked: true, indeterminate: true');
 	},
 
@@ -50,7 +50,7 @@ const CheckboxIndeterminate = React.createClass({
 	render () {
 		return (
 			<div>
-				<Button onClick={this.changeToIndeterminate} label="Inderterminate" />
+				<Button onClick={this.changeToIndeterminate} label="Indeterminate" />
 				<Button onClick={this.changeToCheck} label="Check" />
 				<Button onClick={this.changeToUnChecked} label="Uncheck" />
 				<p>

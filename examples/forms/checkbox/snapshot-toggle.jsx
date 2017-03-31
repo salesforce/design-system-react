@@ -1,7 +1,6 @@
 import React from 'react';
 
 
-// Higher Order Components such as `react-onclickoutside` use the DOM and Jest snapshot testing must be DOMless
 // `~` is replaced with design-system-react at runtime
 import Checkbox from '~/components/forms/checkbox';
 
