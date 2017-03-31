@@ -245,7 +245,6 @@ const Checkbox = React.createClass({
 			disabled,
 			id,
 			errorText,
-			indeterminate,
 			label,
 			labelToggleEnabled,
 			labelToggleDisabled,
@@ -298,9 +297,6 @@ const Checkbox = React.createClass({
 						onKeyUp={onKeyUp}
 						ref={
 							(component) => {
-								if (component) {
-									component.indeterminate = indeterminate;
-								}
 								this.input = component;
 							}}
 						role={role}
