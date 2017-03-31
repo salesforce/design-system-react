@@ -14,7 +14,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 
 import React, { PropTypes } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 
 import classNames from 'classnames';
 
@@ -123,19 +123,19 @@ class PopoverTooltip extends React.Component {
 		this.generatedId = shortid.generate();
 	}
 
-	componentDidMount () {
-		this.setState({
-			el: ReactDOM.findDOMNode(this)
-		});
-	}
+	// componentDidMount () {
+	// 	this.setState({
+	// 		el: ReactDOM.findDOMNode(this)
+	// 	});
+	// }
 
-	componentDidUpdate (prevProps) {
-		if (this.props.target && this.props.target !== prevProps.target) {
-			this.setState({
-				tooltipTarget: this.getTooltipTarget()
-			});
-		}
-	}
+	// componentDidUpdate (prevProps) {
+	// 	if (this.props.target && this.props.target !== prevProps.target) {
+	// 		this.setState({
+	// 			tooltipTarget: this.getTooltipTarget()
+	// 		});
+	// 	}
+	// }
 
 	componentWillUnmount () {
 		this.isUnmounting = true;
@@ -193,7 +193,7 @@ class PopoverTooltip extends React.Component {
 				marginRight={getMargin.right(align)}
 				marginTop={getMargin.top(align)}
 				onClose={this.handleCancel.bind(this)}
-				targetElement={this.getTooltipTarget()}
+				targetElement={this.props.target}
 				align={align}
 				horizontalAlign={getAlignment.horizontal(align)}
 				verticalAlign={getAlignment.vertical(align)}

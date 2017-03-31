@@ -21,7 +21,9 @@ import classNames from 'classnames';
 // Listen for clicks that occur somewhere in the document, outside of the element itself
 import onClickOutside from 'react-onclickoutside';
 
-import TetherDrop from 'tether-drop';
+// import TetherDrop from 'tether-drop';
+
+import { Manager, Target, Popper, Arrow } from 'react-popper';
 
 import EventUtil from '../../../utilities/event';
 import KEYS from '../../../utilities/key-code';
@@ -204,16 +206,14 @@ const Dialog = React.createClass({
 	},
 
 	componentWillMount () {
-		this.dialogElement = document.createElement('span');
-		document.querySelector('body').appendChild(this.dialogElement);
 	},
 
 	componentDidMount () {
-		this.renderDialog();
+
 	},
 
 	componentDidUpdate () {
-		this.renderDialog();
+
 	},
 
 	handleClickOutside () {
@@ -247,9 +247,9 @@ const Dialog = React.createClass({
 	},
 
 	renderDialogContents () {
-		if (!this.state.isOpen) {
-			return <span />;
-		}
+		// if (!this.state.isOpen) {
+		// 	return <span />;
+		// }
 
 		let style = {
 			transform: 'none',
@@ -270,7 +270,7 @@ const Dialog = React.createClass({
 		}
 
 		return (
-			<div
+			<div // eslint-disable-line jsx-a11y/no-static-element-interactions
 				className={classNames(this.props.contentsClassName, this.props.outsideClickIgnoreClass)}
 				style={style}
 				onKeyDown={this.handleKeyDown}
@@ -318,42 +318,42 @@ const Dialog = React.createClass({
 	},
 
 	getPosition () {
-		if (this.props.align) {
-			let align = [];
-			if (this.props.align) {
-				const splits = this.props.align.split(' ');
-				if (this.isHorizontalAlign(splits[0])) {
-					const verticalAlign = splits.length > 1 ? this.getVerticalAlign(splits[1]) : this.getVerticalAlign('');
-					align = [
-						this.getHorizontalAlign(splits[0]),
-						verticalAlign
-					];
-				} else {
-					const horizontalAlign = splits.length > 1 ? this.getHorizontalAlign(splits[1]) : this.getHorizontalAlign('');
-					align = [
-						this.getVerticalAlign(splits[0]),
-						horizontalAlign
-					];
-				}
-			}
+		// if (this.props.align) {
+		// 	let align = [];
+		// 	if (this.props.align) {
+		// 		const splits = this.props.align.split(' ');
+		// 		if (this.isHorizontalAlign(splits[0])) {
+		// 			const verticalAlign = splits.length > 1 ? this.getVerticalAlign(splits[1]) : this.getVerticalAlign('');
+		// 			align = [
+		// 				this.getHorizontalAlign(splits[0]),
+		// 				verticalAlign
+		// 			];
+		// 		} else {
+		// 			const horizontalAlign = splits.length > 1 ? this.getHorizontalAlign(splits[1]) : this.getHorizontalAlign('');
+		// 			align = [
+		// 				this.getVerticalAlign(splits[0]),
+		// 				horizontalAlign
+		// 			];
+		// 		}
+		// 	}
 
-			return align.join(' ');
-		}
+		// 	return align.join(' ');
+		// }
 
-		const positions = [];
-		if (this.props.verticalAlign === 'top' || this.props.verticalAlign === 'bottom') {
-			positions.push(this.props.verticalAlign);
-			positions.push(this.props.horizontalAlign);
-		} else {
-			positions.push(this.props.horizontalAlign);
-			positions.push(this.props.verticalAlign);
-		}
+		// const positions = [];
+		// if (this.props.verticalAlign === 'top' || this.props.verticalAlign === 'bottom') {
+		// 	positions.push(this.props.verticalAlign);
+		// 	positions.push(this.props.horizontalAlign);
+		// } else {
+		// 	positions.push(this.props.horizontalAlign);
+		// 	positions.push(this.props.verticalAlign);
+		// }
 
-		return positions.join(' ');
+		// return positions.join(' ');
 	},
 
 	target () {
-		return this.props.targetElement ? ReactDOM.findDOMNode(this.props.targetElement) : ReactDOM.findDOMNode(this).parentNode;
+		// return this.props.targetElement ? ReactDOM.findDOMNode(this.props.targetElement) : ReactDOM.findDOMNode(this).parentNode;
 	},
 
 	tetherDropOptions () {
@@ -361,31 +361,31 @@ const Dialog = React.createClass({
 		const position = this.getPosition();
 
 		return {
-			beforeClose: this.beforeClose,
-			constrainToWindow: this.props.flippable,
-			constrainToScrollParent: this.props.constrainToScrollParent,
-			content: this.dialogElement,
-			openOn: 'always',
-			position,
-			remove: true,
-			target: this.target(),
-			tetherOptions: {
-				offset: this.props.offset
-			}
+			// beforeClose: this.beforeClose,
+			// constrainToWindow: this.props.flippable,
+			// constrainToScrollParent: this.props.constrainToScrollParent,
+			// content: this.dialogElement,
+			// openOn: 'always',
+			// position,
+			// remove: true,
+			// target: this.target(),
+			// tetherOptions: {
+			// 	offset: this.props.offset
+			// }
 		};
 	},
 
 	handleOpen () {
-		this.setState({ isOpen: true });
+		// this.setState({ isOpen: true });
 
-		if (this.props.variant === 'popover') {
-			DOMElementFocus.storeActiveElement();
-			DOMElementFocus.setupScopedFocus({ ancestorElement: ReactDOM.findDOMNode(this.dialogElement).querySelector('.slds-popover') });
-			// Don't steal focus from inner elements
-			if (!DOMElementFocus.hasOrAncestorHasFocus()) {
-				DOMElementFocus.focusAncestor();
-			}
-		}
+		// if (this.props.variant === 'popover') {
+		// 	DOMElementFocus.storeActiveElement();
+		// 	DOMElementFocus.setupScopedFocus({ ancestorElement: ReactDOM.findDOMNode(this.dialogElement).querySelector('.slds-popover') });
+		// 	// Don't steal focus from inner elements
+		// 	if (!DOMElementFocus.hasOrAncestorHasFocus()) {
+		// 		DOMElementFocus.focusAncestor();
+		// 	}
+		// }
 
 		if (this.props.onOpen) {
 			this.props.onOpen(undefined, { portal: this.portal });
@@ -394,31 +394,31 @@ const Dialog = React.createClass({
 
 	renderDialog () {
 		// By default ReactDOM is used to create a portal mount on the `body` tag. This can be overridden with the `portalMount` prop.
-		let mount = ReactDOM.render;
+		// let mount = ReactDOM.render;
 
-		if (this.props.portalMount) {
-			mount = this.props.portalMount;
-		}
+		// if (this.props.portalMount) {
+		// 	mount = this.props.portalMount;
+		// }
 
-		// nextElement, container, callback
-		this.portal = mount(this.renderDialogContents(), this.dialogElement);
+		// // nextElement, container, callback
+		// this.portal = mount(this.renderDialogContents(), this.dialogElement);
 
-		if (this.dialogElement &&
-				this.dialogElement.parentNode &&
-				this.dialogElement.parentNode.parentNode &&
-				this.dialogElement.parentNode.parentNode.className &&
-				this.dialogElement.parentNode.parentNode.className.indexOf('drop ') > -1) {
-			this.dialogElement.parentNode.parentNode.style.zIndex = 10001;
-		}
+		// if (this.dialogElement &&
+		// 		this.dialogElement.parentNode &&
+		// 		this.dialogElement.parentNode.parentNode &&
+		// 		this.dialogElement.parentNode.parentNode.className &&
+		// 		this.dialogElement.parentNode.parentNode.className.indexOf('drop ') > -1) {
+		// 	this.dialogElement.parentNode.parentNode.style.zIndex = 10001;
+		// }
 
-		if (this.drop !== null && this.drop !== undefined) {
-			if (this.drop && this.drop) {
-				this.drop.position();
-			}
-		} else if (window && document) {
-			this.drop = new TetherDrop(this.tetherDropOptions());
-			this.drop.once('open', this.handleOpen);
-		}
+		// if (this.drop !== null && this.drop !== undefined) {
+		// 	if (this.drop && this.drop) {
+		// 		this.drop.position();
+		// 	}
+		// } else if (window && document) {
+		// 	this.drop = new TetherDrop(this.tetherDropOptions());
+		// 	this.drop.once('open', this.handleOpen);
+		// }
 	},
 
 	componentWillUnmount () {
@@ -427,19 +427,34 @@ const Dialog = React.createClass({
 			DOMElementFocus.returnFocusToStoredElement();
 		}
 
-		this.drop.destroy();
-		ReactDOM.unmountComponentAtNode(this.dialogElement);
+		// this.drop.destroy();
+		// ReactDOM.unmountComponentAtNode(this.dialogElement);
 
-		if (this.dialogElement.parentNode) {
-			this.dialogElement.parentNode.removeChild(this.dialogElement);
-		}
+		// if (this.dialogElement.parentNode) {
+		// 	this.dialogElement.parentNode.removeChild(this.dialogElement);
+		// }
 
 		this.handleClose(undefined, { componentWillUnmount: true });
 	},
 
 	render () {
 		// Must use `<noscript></noscript>` in order for `this.drop` to not be undefined when unmounting
-		return <noscript />;
+		return (
+			<Manager>
+				<Target>
+					{this.props.targetElement}
+				</Target>
+				<Popper
+					className={this.props.contentsClassName}
+					placement={this.props.align}
+					modifiers={{
+						offset: '0px'
+					}}
+				>
+					{this.props.children}
+				</Popper>
+			</Manager>
+		);
 	}
 });
 
