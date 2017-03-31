@@ -1,10 +1,6 @@
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
 import renderer from 'react-test-renderer';
-import jsBeautify from 'js-beautify';
-
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { renderMarkup } from '../snapshot-helpers';
 
 import CheckboxBase from '../../examples/forms/checkbox/snapshot-base';
 import CheckboxToggle from '../../examples/forms/checkbox/snapshot-toggle';
@@ -19,11 +15,7 @@ test('Checkbox Base DOM Snapshot', () => {
 
 
 test('Checkbox Base HTML Snapshot', () => {
-	const domTree = String(
-		jsBeautify.html(ReactDOMServer.renderToStaticMarkup(<CheckboxBase />), { indent_size: 2 }),
-		'utf-8'
-	);
-	expect(domTree).toMatchSnapshot();
+	expect(renderMarkup(CheckboxBase)).toMatchSnapshot();
 });
 
 test('Checkbox Toggle DOM Snapshot', () => {
@@ -35,10 +27,6 @@ test('Checkbox Toggle DOM Snapshot', () => {
 
 
 test('Checkbox Toggle HTML Snapshot', () => {
-	const domTree = String(
-		jsBeautify.html(ReactDOMServer.renderToStaticMarkup(<CheckboxToggle />), { indent_size: 2 }),
-		'utf-8'
-	);
-	expect(domTree).toMatchSnapshot();
+	expect(renderMarkup(CheckboxToggle)).toMatchSnapshot();
 });
 

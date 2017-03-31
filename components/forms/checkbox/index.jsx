@@ -80,7 +80,7 @@ const Checkbox = React.createClass({
 		 */
 		errorText: PropTypes.string,
 		/**
-		 * A unique ID is needed in order to support keyboard navigation and ARIA support.
+		 * A unique ID is needed in order to support keyboard navigation and ARIA support. This ID is added to the `input` element
 		 */
 		id: PropTypes.string,
 		/**
@@ -158,13 +158,16 @@ const Checkbox = React.createClass({
 		this.generatedId = shortid.generate();
 	},
 
+	getId () {
+		return this.props.id || this.generatedId;
+	},
+
 	renderBaseVariant () {
 		const {
 			assistiveText,
 			checked,
 			className,
 			disabled,
-			id,
 			errorText,
 			indeterminate,
 			label,
@@ -197,7 +200,7 @@ const Checkbox = React.createClass({
 							aria-required={this.props['aria-required']}
 							disabled={disabled}
 							checked={checked}
-							id={id || this.generatedId}
+							id={this.getId()}
 							name={name}
 							onBlur={onBlur}
 							onChange={this.handleChange}
@@ -216,7 +219,7 @@ const Checkbox = React.createClass({
 							required={required}
 							type="checkbox"
 						/>
-						<label className="slds-checkbox__label" htmlFor={id || this.generatedId}>
+						<label className="slds-checkbox__label" htmlFor={this.getId()}>
 							<span className="slds-checkbox--faux" />
 							{label
 								? <span className="slds-form-element__label">
@@ -243,9 +246,7 @@ const Checkbox = React.createClass({
 			checked,
 			className,
 			disabled,
-			id,
 			errorText,
-			indeterminate,
 			label,
 			labelToggleEnabled,
 			labelToggleDisabled,
@@ -259,7 +260,6 @@ const Checkbox = React.createClass({
 			role
 		} = this.props;
 
-
 		return (
 			<div
 				className={classNames('slds-form-element', {
@@ -268,7 +268,7 @@ const Checkbox = React.createClass({
 				},
 				className)}
 			>
-				<label className="slds-checkbox--toggle slds-grid">
+				<label className="slds-checkbox--toggle slds-grid" htmlFor={this.getId()}>
 					{required ? <abbr className="slds-required" title="required">*</abbr> : null}
 					{label
 						? <span className="slds-form-element__label slds-m-bottom--none">
@@ -282,10 +282,11 @@ const Checkbox = React.createClass({
 					: null}
 					<input
 						aria-controls={this.props['aria-controls']}
-						aria-describedby={id || this.generatedId}
+						aria-describedby={`${this.getId()}-desc`}
 						aria-owns={this.props['aria-owns']}
 						aria-required={this.props['aria-required']}
 						disabled={disabled}
+						id={this.getId()}
 						checked={checked}
 						name={name}
 						onBlur={onBlur}
@@ -296,16 +297,13 @@ const Checkbox = React.createClass({
 						onKeyUp={onKeyUp}
 						ref={
 							(component) => {
-								if (component) {
-									component.indeterminate = indeterminate;
-								}
 								this.input = component;
 							}}
 						role={role}
 						required={required}
 						type="checkbox"
 					/>
-					<span id={id || this.generatedId} className="slds-checkbox--faux_container" aria-live="assertive">
+					<span id={`${this.getId()}-desc`} className="slds-checkbox--faux_container" aria-live="assertive">
 						<span className="slds-checkbox--faux" />
 						<span className="slds-checkbox--on">{labelToggleEnabled}</span>
 						<span className="slds-checkbox--off">{labelToggleDisabled}</span>
