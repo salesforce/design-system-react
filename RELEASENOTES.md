@@ -24,7 +24,6 @@ These are changes that have backwards-compatible solutions present and that comp
     - menu-list/list
 - BreadCrumb is now Breadcrumb (bread-crumb -> breadcrumb)
 
-
 ---
 
 ## Release 0.6.7
