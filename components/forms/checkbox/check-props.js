@@ -17,8 +17,6 @@ let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
-		// console.log("props.variant", props.variant);
-		// console.log("props.indeterminate", props.indeterminate);
 		if (props.variant === 'toggle' && props.indeterminate === true) {
 			onlyOneOfProperties(COMPONENT, {
 				variant: props.variant,
