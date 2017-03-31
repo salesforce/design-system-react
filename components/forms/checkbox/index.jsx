@@ -259,6 +259,7 @@ const Checkbox = React.createClass({
 			role
 		} = this.props;
 
+		const inputId = 'input-for-' + (id || this.generatedId);
 
 		return (
 			<div
@@ -268,7 +269,7 @@ const Checkbox = React.createClass({
 				},
 				className)}
 			>
-				<label className="slds-checkbox--toggle slds-grid">
+				<label className="slds-checkbox--toggle slds-grid" htmlFor={inputId}>
 					{required ? <abbr className="slds-required" title="required">*</abbr> : null}
 					{label
 						? <span className="slds-form-element__label slds-m-bottom--none">
@@ -286,6 +287,7 @@ const Checkbox = React.createClass({
 						aria-owns={this.props['aria-owns']}
 						aria-required={this.props['aria-required']}
 						disabled={disabled}
+						id={inputId}
 						checked={checked}
 						name={name}
 						onBlur={onBlur}
