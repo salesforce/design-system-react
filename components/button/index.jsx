@@ -156,7 +156,10 @@ const Button = React.createClass({
 		const iconBorder = iconVariant === 'border';
 		const iconGlobalHeader = iconVariant === 'global-header';
 
-		const showButtonVariant = this.props.variant !== 'base' && !iconVariant && !this.props.inverse && this.props.variant !== 'link' || iconVariant === 'bare';
+		const showButtonVariant = (this.props.variant !== 'base'
+			&& !iconVariant
+			&& !this.props.inverse
+			&& this.props.variant !== 'link') || iconVariant === 'bare';
 		const plainInverseBtn = this.props.inverse && !isIcon;
 		const plainInverseIcon = this.props.inverse && isIcon && !iconMore && !iconBorder;
 		const moreInverseIcon = this.props.inverse && iconMore;
