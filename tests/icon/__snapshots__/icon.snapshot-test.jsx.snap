@@ -1,6 +1,6 @@
 exports[`test Icon Category Action HTML Snapshot 1`] = `"<span class=\"slds-icon_container slds-icon_container--circle slds-icon-action-description\"><svg aria-hidden=\"true\" class=\"slds-icon slds-icon--small\"><use xlink:href=\"/assets/icons/action-sprite/svg/symbols.svg#description\"></use></svg><span class=\"slds-assistive-text\">Description of icon</span></span>"`;
 
-exports[`test Icon Category Custom HTML Snapshot 1`] = `"<span class=\"slds-icon_container slds-icon-custom-custom5\"><svg aria-hidden=\"true\" class=\"slds-icon\"><use xlink:href=\"/assets/icons/custom-sprite/svg/symbols.svg#custom5\"></use></svg><span class=\"slds-assistive-text\">Description of icon</span></span>"`;
+exports[`test Icon Category Custom HTML Snapshot 1`] = `"<span class=\"slds-icon_container slds-icon-custom-custom5\" title=\"description of icon when needed\"><svg aria-hidden=\"true\" class=\"slds-icon\"><use xlink:href=\"/assets/icons/custom-sprite/svg/symbols.svg#custom5\"></use></svg><span class=\"slds-assistive-text\">Description of icon</span></span>"`;
 
 exports[`test Icon Category Doctype HTML Snapshot 1`] = `"<span class=\"slds-icon_container\"><svg aria-hidden=\"true\" class=\"slds-icon\"><use xlink:href=\"/assets/icons/doctype-sprite/svg/symbols.svg#xml\"></use></svg><span class=\"slds-assistive-text\">Description of icon</span></span>"`;
 
