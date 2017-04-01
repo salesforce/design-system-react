@@ -1,15 +1,9 @@
 /* eslint-env jest */
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
 import renderer from 'react-test-renderer';
-import jsBeautify from 'js-beautify';
-import { jsBeautify as jsBeautifySettings } from '../settings';
+import { renderMarkup } from '../snapshot-helpers';
 
 import SnapshotDefault from '../../examples/date-picker/snapshot-default';
-
-// import globalSettings from '../../components/settings';
-
-// globalSettings.setIconsPath('/assets/icons');
 
 test('Datepicker Default DOM Snapshot', () => {
 	const domTree = renderer.create(
@@ -19,12 +13,7 @@ test('Datepicker Default DOM Snapshot', () => {
 });
 
 test('Datepicker Default HTML Snapshot', () => {
-	const domTree = String(
-		jsBeautify.html(ReactDOMServer.renderToStaticMarkup(<SnapshotDefault />), {
-			jsBeautifySettings }),
-	'utf-8'
-	);
-	expect(domTree).toMatchSnapshot();
+	expect(renderMarkup(SnapshotDefault)).toMatchSnapshot();
 });
 
 const customProps = {

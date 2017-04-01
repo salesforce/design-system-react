@@ -1,6 +1,6 @@
 {
   "name": "design-system-react",
-  "version": "0.6.3",
+  "version": "0.6.7",
   "description": "Salesforce Lightning Design System React components",
   "license": "BSD-3-Clause",
   "engines": {
@@ -90,7 +90,7 @@
   },
   "devDependencies": {
     "@kadira/storybook": "^2.22.0",
-    "@salesforce-ux/design-system": "git+ssh://git@github.com/salesforce-ux/design-system-internal.git#v2.2.1-dist",
+    "@salesforce-ux/design-system": "git+ssh://git@github.com/salesforce-ux/design-system-internal.git#v2.3.0-beta.2-dist",
     "@salesforce-ux/icons": "^7.7.0",
     "async": "^2.0.0-rc.5",
     "babel": "^6.5.2",
@@ -109,12 +109,13 @@
     "chai": "^3.5.0",
     "chai-enzyme": "^0.6.1",
     "compression": "^1.6.2",
-    "css-loader": "^0.26.1",
+    "css-loader": "^0.28.0",
     "enzyme": "^2.5.1",
+    "enzyme-to-json": "^1.5.0",
     "eslint-config-slds": "git+ssh://git@github.com/salesforce-ux/eslint-config-slds.git#v3.0.1",
     "eslint-loader": "^1.6.0",
     "express": "^4.13.4",
-    "file-loader": "^0.10.0",
+    "file-loader": "^0.11.0",
     "fs-extra": "^2.0.0",
     "isparta-loader": "^2.0.0",
     "istanbul": "^1.0.0-alpha.2",
@@ -129,7 +130,7 @@
     "karma-mocha": "^1.0.1",
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-sourcemap-loader": "^0.3.5",
-    "karma-spec-reporter": "^0.0.26",
+    "karma-spec-reporter": "^0.0.30",
     "karma-webpack": "^2.0.2",
     "lint-staged": "^3.3.0",
     "lodash.isempty": "^4.2.1",
@@ -149,8 +150,8 @@
     "react-test-renderer": "^15.4.1",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
-    "string-replace-webpack-plugin": "^0.0.5",
-    "style-loader": "^0.13.1",
+    "string-replace-webpack-plugin": "^0.1.2",
+    "style-loader": "^0.16.0",
     "webpack": "^1.13.3",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.13.2",
@@ -253,6 +254,12 @@
       "status": "prod",
       "display-name": "Icons",
       "SLDS-component-path": "/components/icons"
+    },
+    {
+      "component": "filter",
+      "status": "prototype",
+      "display-name": "Filters",
+      "SLDS-component-path": "/components/panels"
     },
     {
       "component": "forms/input/inline",
@@ -366,6 +373,23 @@
       "status": "prod",
       "display-name": "Notifications",
       "SLDS-component-path": "/components/notifications"
+    },
+    {
+      "component": "panel",
+      "status": "prototype",
+      "display-name": "Panels",
+      "SLDS-component-path": "/components/panels",
+      "dependencies": [
+        {
+          "component": "filtering/group"
+        },
+        {
+          "component": "filtering/list-heading"
+        },
+        {
+          "component": "filtering/list"
+        }
+      ]
     },
     {
       "component": "popover",

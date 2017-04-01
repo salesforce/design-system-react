@@ -24,8 +24,51 @@ These are changes that have backwards-compatible solutions present and that comp
     - menu-list/list
 - BreadCrumb is now Breadcrumb (bread-crumb -> breadcrumb)
 
-
 ---
+
+## Release 0.6.7
+
+**Minor Changes**
+
+- `Checkbox` Toggle variant added
+
+**Minor Changes**
+
+- `MenuPicklist`: Add inline error state similar to `Input`
+- `Input`: correct spelling and usage of `aria-labelledby`
+
+## Release 0.6.6
+
+**Minor Changes**
+
+- Fix focus transfer on close of "modal" `Picklist`
+- Remove title attribute on column header if `DataTable` column label is not a string
+- Pass `iconPosition` prop from `Dropdown` to a custom trigger
+- Add `onClick` callback prop to `Filter`
+- Add `DataTable` width prop to column header
+- Add `className` prop to `Filter`
+
+## Release 0.6.5
+
+**Minor Changes**
+
+- `Datepicker` has a `dateDisabled` callback to allow disabling of arbitary dates.
+- `Filter` has a `popover` prop that allows custom props to be passed in and allows the `Filter`'s popover to be controlled by the developer instead of the `Filter`.
+- `Lookup` has an additional item compare to see if it should update its internal state. This is a temporary hack until state can be removed from `Lookup` and it can directly use props.
+- Inline icons are now [v7.7.0](https://github.com/salesforce-ux/icons/releases/tag/v7.7.0). Version was just updated in a prior release.
+- Add `DataTable` width to table headers
+
+## Release 0.6.4
+
+**Major Changes**
+
+- Filtering `Panel` component added with variants New, Error, and Locked.
+  - Filters component added.
+  - _Forward looking statement:_ `FilterGroup` may be broken out of `Panel` and into it's own component in the future so that it can be used outside of a `Panel`, but was not broken out in this release due to pattern not existing outside of Panel in SLDS.
+
+**MAINTENANCE**
+
+- Reference of `undefined` variable in `Tabs` removed.
 
 ## Release 0.6.3
 

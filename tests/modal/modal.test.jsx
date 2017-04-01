@@ -107,7 +107,7 @@ describe('SLDSModal: ', function () {
 
 		it('renders correct assistive text/title for close button', () => {
 			const closeBtn = modal.querySelector('.slds-modal__close');
-			expect(closeBtn.title).to.be('Exit');
+			expect(closeBtn.title).to.equal('Exit');
 		});
 
 		it('calls onRequestClose', () => {

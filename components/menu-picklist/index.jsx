@@ -15,7 +15,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND 
 
 // ### React
 import React, { PropTypes } from 'react';
-import ReactDOM from 'react-dom';
 
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)
@@ -44,7 +43,7 @@ import ListItemLabel from '../utilities/menu-list/item-label';
 import KeyboardNavigable from '../../utilities/keyboard-navigable-menu';
 
 import EventUtil from '../../utilities/event';
-import KEYS from '../../utilities/keys';
+import KEYS from '../../utilities/key-code';
 import { MENU_PICKLIST } from '../../utilities/constants';
 
 /**
@@ -69,6 +68,10 @@ const MenuPicklist = React.createClass({
 		 */
 		checkmark: PropTypes.bool,
 		disabled: PropTypes.bool,
+		/**
+		 * Message to display when the input is in an error state. When this is present, also visually highlights the component as in error.
+		 */
+		errorText: PropTypes.string,
 		/**
 		 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
 		 */
@@ -116,6 +119,9 @@ const MenuPicklist = React.createClass({
 		checkProps(MENU_PICKLIST, this.props);
 
 		this.generatedId = shortid.generate();
+		if (this.props.errorText) {
+			this.generatedErrorId = shortid.generate();
+		}
 
 		window.addEventListener('click', this.closeOnClick, false);
 
@@ -140,6 +146,10 @@ const MenuPicklist = React.createClass({
 
 	getId () {
 		return this.props.id || this.generatedId;
+	},
+
+	getErrorId () {
+		return this.props['aria-describedby'] || this.generatedErrorId;
 	},
 
 	getClickEventName () {
@@ -273,16 +283,12 @@ const MenuPicklist = React.createClass({
 		if (index === this.state.focusedIndex) this.handleKeyboardFocus(this.state.focusedIndex);
 	},
 
-	getMenu () {
-		return ReactDOM.findDOMNode(this.list);
-	},
-
-	getMenuItem (index) {
-		if (index !== undefined && this.listItems) {
-			return ReactDOM.findDOMNode(this.listItems[index]);
+	// Trigger opens, closes, and recieves focus on close
+	saveRefToTrigger (trigger) {
+		this.button = trigger;
+		if (this.props.buttonRef) {
+			this.props.buttonRef(this.button);
 		}
-
-		return undefined;
 	},
 
 	renderMenuContent () {
@@ -356,6 +362,7 @@ const MenuPicklist = React.createClass({
 
 		// TODO: make use of <Button>
 		return (
+			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
 			<div
 				className={classNames(
 						'slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click',
@@ -366,19 +373,14 @@ const MenuPicklist = React.createClass({
 				onMouseDown={this.handleMouseDown}
 			>
 				<button
+					aria-describedby={this.getErrorId()}
 					aria-expanded={this.state.isOpen}
 					aria-haspopup="true"
 					className="slds-button slds-button--neutral slds-picklist__label"
 					disabled={this.props.disabled}
 					id={this.getId()}
 					onClick={!this.props.disabled && this.handleClick}
-					ref={(component) => {
-						this.button = component;
-
-						if (this.props.buttonRef) {
-							this.props.buttonRef(this.button);
-						}
-					}}
+					ref={this.saveRefToTrigger}
 					tabIndex={this.state.isOpen ? -1 : 0}
 				>
 					<span className="slds-truncate">{this.renderPlaceholder()}</span>
@@ -390,20 +392,33 @@ const MenuPicklist = React.createClass({
 	},
 
 	render () {
-		if (this.props.label) {
-			const required = this.props.required ? <span style={{ color: 'red' }}>* </span> : null;
+		const {
+			className,
+			errorText,
+			label,
+			required
+		} = this.props;
+
+		if (label) {
+			const requiredElem = required ? <span style={{ color: 'red' }}>* </span> : null;
 
 			return (
-				<div className="slds-form-element">
+				<div
+					className={classNames('slds-form-element', {
+						'slds-has-error': errorText
+					},
+					className)}
+				>
 					<label
 						className="slds-form-element__label"
 						htmlFor={this.getId()}
 						// inline style override
 						style={{ width: '100%' }}
 					>
-						{required}{this.props.label}
+						{requiredElem}{label}
 					</label>
 					{this.renderTrigger()}
+					{errorText && <div id={this.getErrorId()} className="slds-form-element__help">{errorText}</div>}
 				</div>
 			);
 		}

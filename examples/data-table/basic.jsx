@@ -1,4 +1,4 @@
-import React, { PropTypes }  from 'react';
+import React from 'react';
 import DataTable from '~/components/data-table'; // `~` is replaced with design-system-react at runtime
 import DataTableColumn from '~/components/data-table/column';
 import DataTableCell from '~/components/data-table/cell';
@@ -14,12 +14,6 @@ const CustomDataTableCell = ({ children, ...props }) => (
 	</DataTableCell>
 );
 CustomDataTableCell.displayName = DataTableCell.displayName;
-CustomDataTableCell.propTypes = {
-	/**
-	 * Cell contents
-	 */
-	children: PropTypes.string
-};
 
 const columns = [
 	<DataTableColumn

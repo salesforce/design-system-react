@@ -52,7 +52,7 @@ import checkProps from './check-props';
 import KeyboardNavigable from '../../utilities/keyboard-navigable-menu';
 
 import EventUtil from '../../utilities/event';
-import KEYS from '../../utilities/keys';
+import KEYS from '../../utilities/key-code';
 import { MENU_DROPDOWN, MENU_DROPDOWN_TRIGGER, LIST } from '../../utilities/constants';
 
 // The overlay is an optional way to allow the dropdown to close on outside
@@ -167,6 +167,10 @@ const MenuDropdown = React.createClass({
 		 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
 		 */
 		iconName: PropTypes.string,
+		/**
+		 * If omitted, icon position is centered.
+		 */
+		iconPosition: PropTypes.oneOf(['left', 'right']),
 		/**
 		 * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
 		 */
@@ -787,6 +791,7 @@ const MenuDropdown = React.createClass({
 				hint={this.props.hint}
 				iconCategory={this.props.iconCategory}
 				iconName={this.props.iconName}
+				iconPosition={this.props.iconPosition}
 				iconSize={this.props.iconSize}
 				iconVariant={this.props.iconVariant}
 				id={this.getId()}

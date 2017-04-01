@@ -28,7 +28,7 @@ import Input from './index';
 import InputIcon from '../../icon/input-icon';
 
 // ### Event Helpers
-import { KEYS } from '../../../utilities';
+import KEYS from '../../../utilities/key-code';
 
 // ## Constants
 import { FORMS_INLINE_EDIT } from '../../../utilities/constants';

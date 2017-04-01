@@ -1,0 +1,163 @@
+exports[`test Panel Filtering Default HTML Snapshot 1`] = `
+"<div class=\"slds-panel slds-grid slds-grid--vertical slds-nowrap slds-panel--filters\">
+  <div class=\"slds-form--stacked slds-grow slds-scrollable--y slds-grid slds-grid--vertical\">
+    <div class=\"slds-filters\">
+      <div class=\"slds-filters__header slds-grid slds-has-divider--bottom-space\">
+        <h2 class=\"slds-align-middle slds-text-heading--small\">Filter</h2><button class=\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small slds-col--bump-left\" title=\"Close Filter Panel\"><svg aria-hidden=\"true\" class=\"slds-button__icon\" viewBox=\"0 0 24 24\" name=\"forward\"><path d=\"M1.6 13.4h15.3c.4 0 .6.5.3.8l-4.4 4.4c-.3.3-.3.7 0 1l1 1c.3.3.7.3 1 0l8-8.1c.3-.3.3-.7 0-1l-8-8.1c-.3-.3-.7-.3-1 0l-1 1c-.2.3-.2.7 0 1l4.5 4.4c.2.3.1.8-.4.8H1.6c-.4 0-.7.3-.7.7v1.3c0 .4.3.8.7.8z\"></path></svg><span class=\"slds-assistive-text\">Close Filter Panel</span></button></div>
+      <div
+        class=\"slds-filters__body\">
+        <ol class=\"slds-list--vertical slds-list--vertical-space\">
+          <li class=\"slds-item slds-hint-parent\">
+            <div class=\"slds-filters__item slds-grid slds-grid--vertical-align-center\">
+              <div class=\"slds-grow\" style=\"display:inline;\"><button class=\"slds-button--reset slds-grow slds-has-blur-focus\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"sample-panel-filtering-show-me\" tabindex=\"0\"><span class=\"slds-assistive-text\">Edit filter:</span><p class=\"slds-text-body--small\">Show Me</p><p>All Products</p></button></div>
+            </div>
+          </li>
+        </ol>
+        <h3 class=\"slds-text-body--small slds-m-vertical--x-small\">Matching all these filters</h3>
+        <ol class=\"slds-list--vertical slds-list--vertical-space\">
+          <li class=\"slds-item slds-hint-parent\">
+            <div class=\"slds-filters__item slds-grid slds-grid--vertical-align-center\">
+              <div class=\"slds-grow\" style=\"display:inline;\"><button class=\"slds-button--reset slds-grow slds-has-blur-focus\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"sample-panel-filtering-created-date\" tabindex=\"0\"><span class=\"slds-assistive-text\">Edit filter:</span><p class=\"slds-text-body--small\">Created Date</p><p>equals THIS WEEK</p></button></div>
+              <button
+                class=\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\" title=\"Remove Filter: Created Date equals THIS WEEK\"><svg aria-hidden=\"true\" class=\"slds-button__icon slds-button__icon--hint\" viewBox=\"0 0 24 24\" name=\"close\"><path d=\"M14.3 11.7l6-6c.3-.3.3-.7 0-1l-.9-1c-.3-.2-.7-.2-1 0l-6 6.1c-.2.2-.5.2-.7 0l-6-6.1c-.3-.3-.7-.3-1 0l-1 1c-.2.2-.2.7 0 .9l6.1 6.1c.2.2.2.4 0 .6l-6.1 6.1c-.3.3-.3.7 0 1l1 1c.2.2.7.2.9 0l6.1-6.1c.2-.2.4-.2.6 0l6.1 6.1c.2.2.7.2.9 0l1-1c.3-.3.3-.7 0-1l-6-6c-.2-.2-.2-.5 0-.7z\"></path></svg>
+                <span
+                  class=\"slds-assistive-text\">Remove Filter: Created Date equals THIS WEEK</span>
+                  </button>
+            </div>
+          </li>
+          <li class=\"slds-item slds-hint-parent\">
+            <div class=\"slds-filters__item slds-grid slds-grid--vertical-align-center\">
+              <div class=\"slds-grow\" style=\"display:inline;\"><button class=\"slds-button--reset slds-grow slds-has-blur-focus\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"sample-panel-filtering-list-price\" tabindex=\"0\"><span class=\"slds-assistive-text\">Edit filter:</span><p class=\"slds-text-body--small\">List Price</p><p>greater than &quot;500&quot;</p></button></div>
+              <button
+                class=\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\" title=\"Remove Filter: List Price greater than &quot;500&quot;\"><svg aria-hidden=\"true\" class=\"slds-button__icon slds-button__icon--hint\" viewBox=\"0 0 24 24\" name=\"close\"><path d=\"M14.3 11.7l6-6c.3-.3.3-.7 0-1l-.9-1c-.3-.2-.7-.2-1 0l-6 6.1c-.2.2-.5.2-.7 0l-6-6.1c-.3-.3-.7-.3-1 0l-1 1c-.2.2-.2.7 0 .9l6.1 6.1c.2.2.2.4 0 .6l-6.1 6.1c-.3.3-.3.7 0 1l1 1c.2.2.7.2.9 0l6.1-6.1c.2-.2.4-.2.6 0l6.1 6.1c.2.2.7.2.9 0l1-1c.3-.3.3-.7 0-1l-6-6c-.2-.2-.2-.5 0-.7z\"></path></svg>
+                <span
+                  class=\"slds-assistive-text\">Remove Filter: List Price greater than &quot;500&quot;</span>
+                  </button>
+            </div>
+          </li>
+        </ol>
+    </div>
+    <div class=\"slds-filters__footer slds-grid slds-shrink-none\"><button class=\"slds-button--reset slds-text-link\">Add Filter</button><button class=\"slds-button--reset slds-text-link slds-col--bump-left\">Remove All</button></div>
+  </div>
+</div>
+</div>"
+`;
+
+exports[`test Panel Filtering Default Snapshot 1`] = `
+<SLDSPanel
+  variant="filters">
+  <SLDSFilterGroup
+    addFilterLabel="Add Filter"
+    assistiveTextCloseFilterPanel="Close Filter Panel"
+    cancelLabel="Cancel"
+    heading="Filter"
+    modified={false}
+    onClickAdd={[Function]}
+    onClickRemoveAll={[Function]}
+    onRequestCancel={[Function]}
+    onRequestClose={[Function]}
+    onRequestSave={[Function]}
+    removeAllLabel="Remove All"
+    saveLabel="Save"
+    variant="panel">
+    <SLDSFilterList>
+      <SLDSFilter
+        align="left"
+        assistiveTextEditFilter="Edit filter:"
+        assistiveTextEditFilterHeading="Choose filter criteria"
+        id="sample-panel-filtering-show-me"
+        isPermanent={true}
+        onChange={[Function]}
+        predicate="All Products"
+        property="Show Me">
+        <SLDSMenuPicklist
+          checkmark={true}
+          inheritTargetWidth={true}
+          isInline={true}
+          label="Show Me"
+          onSelect={[Function]}
+          options={
+            Array [
+              Object {
+                "label": "All Products",
+                "value": "all-products",
+              },
+              Object {
+                "label": "All Wackamoles",
+                "value": "all-Wackamoles",
+              },
+            ]
+          }
+          placeholder="Select record type"
+          value="all-products" />
+      </SLDSFilter>
+    </SLDSFilterList>
+    <SLDSPanelFilterListHeading
+      heading="Matching all these filters"
+      label="Matching all these filters"
+      lockedLabel="Locked filters" />
+    <SLDSFilterList>
+      <SLDSFilter
+        align="left"
+        assistiveTextEditFilter="Edit filter:"
+        assistiveTextEditFilterHeading="Choose filter criteria"
+        id="sample-panel-filtering-created-date"
+        onChange={[Function]}
+        onRemove={[Function]}
+        predicate="equals THIS WEEK"
+        property="Created Date">
+        <SLDSMenuPicklist
+          checkmark={true}
+          inheritTargetWidth={true}
+          isInline={true}
+          label="Created Date EQUALS"
+          onSelect={[Function]}
+          options={
+            Array [
+              Object {
+                "label": "equals THIS WEEK",
+                "value": "this-week",
+              },
+              Object {
+                "label": "equals LAST WEEK",
+                "value": "last-week",
+              },
+            ]
+          }
+          placeholder="Select a time range"
+          value="this-week" />
+      </SLDSFilter>
+      <SLDSFilter
+        align="left"
+        assistiveTextEditFilter="Edit filter:"
+        assistiveTextEditFilterHeading="Choose filter criteria"
+        id="sample-panel-filtering-list-price"
+        onChange={[Function]}
+        onRemove={[Function]}
+        predicate="greater than \"500\""
+        property="List Price">
+        <SLDSMenuPicklist
+          checkmark={true}
+          inheritTargetWidth={true}
+          isInline={true}
+          label="List Price"
+          onSelect={[Function]}
+          options={
+            Array [
+              Object {
+                "label": "greater than \"500\"",
+                "value": "greater-than-500",
+              },
+              Object {
+                "label": "greater than \"100\"",
+                "value": "greater-than-100",
+              },
+            ]
+          }
+          placeholder="Select a price"
+          value="greater-than-500" />
+      </SLDSFilter>
+    </SLDSFilterList>
+  </SLDSFilterGroup>
+</SLDSPanel>
+`;

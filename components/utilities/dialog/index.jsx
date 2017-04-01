@@ -24,7 +24,7 @@ import onClickOutside from 'react-onclickoutside';
 import TetherDrop from 'tether-drop';
 
 import EventUtil from '../../../utilities/event';
-import KEYS from '../../../utilities/keys';
+import KEYS from '../../../utilities/key-code';
 import DOMElementFocus from '../../../utilities/dom-element-focus';
 
 import { DIALOG } from '../../../utilities/constants';

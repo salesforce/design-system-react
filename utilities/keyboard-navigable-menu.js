@@ -24,7 +24,7 @@ import isArray from 'lodash.isarray';
 import isFunction from 'lodash.isfunction';
 
 // ### Event Helpers
-import KEYS from './keys';
+import KEYS from './key-code';
 
 const noop = () => {};
 

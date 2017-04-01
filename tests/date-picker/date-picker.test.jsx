@@ -14,7 +14,7 @@ import { createMountNode, destroyMountNode } from '../enzyme-helpers';
 // Import your internal dependencies (for example):
 import Datepicker from '../../components/date-picker';
 import Input from '../../components/forms/input';
-import KEYS from '../../utilities/keys';
+import KEYS from '../../utilities/key-code';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme
@@ -357,6 +357,47 @@ describe('SLDSDatepicker', function () {
 				expect(dialogOpened.callCount).to.equal(0);
 				done();
 			}, 200);
+		});
+	});
+
+	describe('Disable dates', () => {
+		beforeEach(() => {
+			mountNode = createMountNode({ context: this });
+		});
+
+		afterEach(() => {
+			destroyMountNode({ wrapper, mountNode });
+		});
+
+		it('disable weekends', (done) => {
+			wrapper = mount(
+				<DemoComponent
+					value={new Date(2007, 0, 5)}
+					dateDisabled={({ date }) => date.getDay() > 5 || date.getDay() < 1}
+					portalMount={(reactElement, domContainerNode) => {
+						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
+					}}
+					onOpen={() => {
+						const input = wrapper.find('input');
+						expect(input.node.value).to.equal('1/5/2007');
+
+						const disabledDay = portalWrapper.find('.datepicker__month [aria-disabled=true]').first();
+						disabledDay.simulate('click', {});
+
+						expect(input.node.value).to.equal('1/5/2007');
+
+						const day = portalWrapper.find('.datepicker__month [aria-disabled=false]').first();
+						day.simulate('click', {});
+
+						expect(input.node.value).to.equal('1/1/2007');
+						done();
+					}}
+				/>,
+				{ attachTo: mountNode }
+			);
+
+			const trigger = wrapper.find(triggerClassSelector);
+			trigger.simulate('click', {});
 		});
 	});
 });
