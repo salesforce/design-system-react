@@ -22,6 +22,7 @@ import * as SLDS_ICONS_DOCTYPE from '../../../icons/doctype';
 import * as SLDS_ICONS_STANDARD from '../../../icons/standard';
 
 const UtilityIcon = ({ name = '',
+	assistiveText, // eslint-disable-line no-unused-vars
 	category,
 	icon,
 	path,
