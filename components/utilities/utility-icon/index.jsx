@@ -11,6 +11,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React, { PropTypes } from 'react';
 
+// This component's `checkProps` which issues warnings to developers about properties
+// when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+
 import Svg from './svg';
 
 import settings from '../../../components/settings';
@@ -60,6 +64,8 @@ const UtilityIcon = ({ name = '',
 
 	// Use icon path prop if set, then see if a global path is set, if not use inline icons
 	const modifiedPath = path || settings.getIconsPath();
+
+	checkProps('UtilityIcon', { name, category, path });
 
 	const output = modifiedPath && !icon
 		? (<svg {...rest}>
