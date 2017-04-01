@@ -90,7 +90,7 @@
   },
   "devDependencies": {
     "@kadira/storybook": "^2.22.0",
-    "@salesforce-ux/design-system": "git+ssh://git@github.com/salesforce-ux/design-system-internal.git#v2.2.1-dist",
+    "@salesforce-ux/design-system": "git+ssh://git@github.com/salesforce-ux/design-system-internal.git#v2.3.0-beta.2-dist",
     "@salesforce-ux/icons": "^7.7.0",
     "async": "^2.0.0-rc.5",
     "babel": "^6.5.2",
