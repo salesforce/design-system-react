@@ -39,9 +39,10 @@ describe('SLDSNotification: ', () => {
 		it('renders icon', (done) => {
 			const notification = generateNotification(<SLDSNotification variant="alert" theme="success" iconName="notification" isOpen texture content={'hi'} />);
 			setTimeout(() => {
-				const svgs = notification.querySelectorAll('svg');
-				expect(svgs[0].getAttribute('name')).to.equal('close');
-				expect(svgs[1].getAttribute('name')).to.equal('notification');
+				const close = notification.querySelectorAll('button');
+				const svgs = notification.querySelectorAll('[*|href="/assets/icons/utility-sprite/svg/symbols.svg#notification"]');
+				expect(close[0].className).to.include('slds-notify__close');
+				expect(svgs[0]).to.exist;
 				done();
 			}, 400);
 		});
