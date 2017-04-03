@@ -27,32 +27,42 @@ const UtilityIcon = ({ name = '',
 }) => {
 	let data;
 
-	// if the user passes in modified path, then we don't use data
 	if (!path) {
 		if (icon) {
 			data = icon;
 		} else {
 			switch (category) {
 				case 'action':
-					data = SLDS_ICONS_ACTION[name.toLowerCase()];
-					data.viewBox = SLDS_ICONS_ACTION.viewBox;
+					// Icons are no longer bundled with this library by default. See webpack.config.dist.js for information on how to add them back.
+					if (Object.keys(SLDS_ICONS_ACTION).length > 1) {
+						data = SLDS_ICONS_ACTION[name.toLowerCase()];
+						data.viewBox = SLDS_ICONS_ACTION.viewBox;
+					}
 					break;
 				case 'custom':
-					data = SLDS_ICONS_CUSTOM[name.toLowerCase()];
-					data.viewBox = SLDS_ICONS_CUSTOM.viewBox;
+					if (Object.keys(SLDS_ICONS_CUSTOM).length > 1) {
+						data = SLDS_ICONS_CUSTOM[name.toLowerCase()];
+						data.viewBox = SLDS_ICONS_CUSTOM.viewBox;
+					}
 					break;
 				case 'doctype':
-					data = SLDS_ICONS_DOCTYPE[name.toLowerCase()];
-					data.viewBox = SLDS_ICONS_DOCTYPE.viewBox;
+					if (Object.keys(SLDS_ICONS_DOCTYPE).length > 1) {
+						data = SLDS_ICONS_DOCTYPE[name.toLowerCase()];
+						data.viewBox = SLDS_ICONS_DOCTYPE.viewBox;
+					}
 					break;
 				case 'standard':
-					data = SLDS_ICONS_STANDARD[name.toLowerCase()];
-					data.viewBox = SLDS_ICONS_STANDARD.viewBox;
+					if (Object.keys(SLDS_ICONS_STANDARD).length > 1) {
+						data = SLDS_ICONS_STANDARD[name.toLowerCase()];
+						data.viewBox = SLDS_ICONS_STANDARD.viewBox;
+					}
 					break;
 				case 'utility':
 				default:
-					data = SLDS_ICONS_UTILITY[name.toLowerCase()];
-					data.viewBox = SLDS_ICONS_UTILITY.viewBox;
+					if (Object.keys(SLDS_ICONS_UTILITY).length > 1) {
+						data = SLDS_ICONS_UTILITY[name.toLowerCase()];
+						data.viewBox = SLDS_ICONS_UTILITY.viewBox;
+					}
 					break;
 			}
 		}
