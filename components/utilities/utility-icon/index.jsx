@@ -63,13 +63,13 @@ const UtilityIcon = ({ name = '',
 	}
 
 	// Use icon path prop if set, then see if a global path is set, if not use inline icons
-	const modifiedPath = path || settings.getIconsPath();
+	const modifiedPath = path || (settings.getIconsPath() && `${settings.getIconsPath()}/${category}-sprite/svg/symbols.svg#${name}`);
 
 	checkProps('UtilityIcon', { name, category, path });
 
 	const output = modifiedPath && !icon
 		? (<svg {...rest}>
-			<use xlinkHref={`${modifiedPath}/${category}-sprite/svg/symbols.svg#${name}`} />
+			<use xlinkHref={modifiedPath} />
 		</svg>)
 		: (<Svg data={data} name={name} {...rest} />);
 
@@ -89,7 +89,7 @@ UtilityIcon.propTypes = {
    */
 	name: PropTypes.string,
 	/**
-   * Path to SLDS icon folder
+   * Path to the icon. This will override any global icon settings.
    */
 	path: PropTypes.string
 };
