@@ -76,7 +76,7 @@ const propTypes = {
 	 */
 	name: PropTypes.string,
 	/**
-   * Path to SLDS icon folder
+   * Path to the icon. This will override any global icon settings.
    */
 	path: PropTypes.string,
 	/**

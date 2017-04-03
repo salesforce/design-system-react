@@ -1,9 +1,7 @@
 /* eslint-env jest */
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
 import renderer from 'react-test-renderer';
-import jsBeautify from 'js-beautify';
-import { jsBeautify as jsBeautifySettings } from '../settings';
+import { renderMarkup } from '../snapshot-helpers';
 
 import Icon from '../../components/icon';
 import download from '../../icons/utility/download';
@@ -27,12 +25,6 @@ import SizesLarge from '../../examples/icon/sizes-large';
 import globalSettings from '../../components/settings';
 
 globalSettings.setIconsPath('/assets/icons');
-
-const renderMarkup = (Component) => String(
-		jsBeautify.html(ReactDOMServer.renderToStaticMarkup(React.createElement(Component)), {
-			jsBeautifySettings }),
-	'utf-8'
-	);
 
 test('Icon Category Standard HTML Snapshot', () => {
 	expect(renderMarkup(Standard)).toMatchSnapshot();
