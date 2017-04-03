@@ -60,7 +60,10 @@ const Icon = ({
 				aria-hidden="true"
 				category={category}
 				className={classNames(className, 'slds-icon', {
-					[`slds-icon--${size}`]: size !== 'medium',
+					'slds-icon--x-small': size === 'x-small',
+					'slds-icon--small': size === 'small',
+					// medium intentially not present
+					'slds-icon--large': size === 'large',
 					// if category is `utility` and `inverse` is false (default), icon will be dark // return true
 					// if category is `utility` and `inverse` is true, icon will be light // return false
 					// if category is NOT `utility` and `inverse` is false (default), icon will be light // return false
@@ -118,7 +121,7 @@ Icon.propTypes = {
 	 */
 	name: PropTypes.string,
 	/**
-   * Path to SLDS icon folder
+   * Path to the icon. This will override any global icon settings
    */
 	path: PropTypes.string,
 	/**
