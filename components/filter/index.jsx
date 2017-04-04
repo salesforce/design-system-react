@@ -39,7 +39,7 @@ import shortid from 'shortid';
 import { FILTER } from '../../utilities/constants';
 
 /**
- * A Filter is a popover with custom trigger. It is used by Panel Filtering
+ * A Filter is a popover with custom trigger. It can be used by [Panel Filtering](/components/panels/). Menus within a Filter Popover will need to not have "portal mounts" and be inline.
  */
 const Filter = React.createClass({
 	displayName: FILTER,
@@ -62,7 +62,7 @@ const Filter = React.createClass({
 		 */
 		assistiveTextEditFilterHeading: PropTypes.string,
 		/**
-		 * Contents of popover. That is the dropdowns and inputs that set the filter criteria. Dropdowns, Picklists and other menus must use `isInline` to work properly within a Popover.
+		 * Contents of popover. That is the dropdowns and inputs that set the filter criteria. **Dropdowns, Picklists and other menus must use `isInline` to work properly within a Popover due to existence of portal mounts in menus that are not inline.**
 		 */
 		children: PropTypes.node,
 		/**
