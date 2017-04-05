@@ -324,3 +324,5 @@ storiesOf(GLOBAL_NAVIGATION_BAR, module)
 		)
 	)
 	.add('Hybrid Dropdown', () => getGlobalNavigationBar(propSets.hybrid.props, propSets.base.primaryRegionProps));
+
+export default getGlobalNavigationBar;

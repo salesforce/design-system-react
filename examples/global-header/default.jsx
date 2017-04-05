@@ -6,7 +6,7 @@ import GlobalHeaderProfile from '~/components/global-header/profile';
 import GlobalHeaderSearch from '~/components/global-header/search';
 
 const Example = React.createClass({
-	displayName: 'DataTableExample',
+	displayName: 'GlobalHeaderExample',
 
 	render () {
 		return (

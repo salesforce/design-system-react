@@ -8,49 +8,39 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+/* eslint-disable import/no-mutable-exports */
+/* global XMLHttpRequest, window */
 
-import Modal from 'react-modal';
+// This function does an "AJAX" request to warn users on how to setup their icon path.
+import warning from 'warning';
 
-/*
- * The following are component utility methods that aid in global settings.
-*/
+let urlExists = function () {};
 
-let assetsPath = 'assets/';
-let iconsPath;
-let appRoot;
+if (process.env.NODE_ENV !== 'production') {
+	const hasWarned = {};
+	let hasExecuted;
 
-module.exports = {
-	setAssetsPath: (path) => {
-		if (path) {
-			assetsPath = path;
+	// Using XMLHttpRequest can cause problems in non-browser environments. This should be completely removed in production environment and should not execute in a testing environment.
+	urlExists = function (control, url, comment) {
+		if (!hasExecuted
+			&& !hasWarned[`${control}-path`]
+			&& window
+			&& XMLHttpRequest
+			&& process.env.NODE_ENV !== 'test') {
+			const http = new XMLHttpRequest();
+			http.open('HEAD', url, false);
+			http.send();
+			hasExecuted = true;
+			
+			if (http.status === 404) {
+				const additionalComment = comment ? ` ${comment}` : '';
+				/* eslint-disable max-len */
+				warning(!url, `[Design System React] Icon file was not found. Try setting an icon path with \`setIconsPath([ICONPATH])\` from \`components/settings\`.${additionalComment}`);
+				/* eslint-enable max-len */
+				hasWarned[`${control}-path`] = !!url;
+			}
 		}
-	},
+	};
+}
 
-	getAssetsPath: () => String(assetsPath),
-
-	setIconsPath: (path) => {
-		if (path) {
-			iconsPath = path;
-		}
-	},
-
-	getIconsPath: () => iconsPath,
-
-	/*
-	 * The app element allows you to specify the portion of your app that should be hidden (via aria-hidden)
-	to prevent assistive technologies such as screenreaders from reading content outside of the content of
-	your modal.  It can be specified in the following ways:
-	 * element
-	Modal.setAppElement(appElement);
-	 * query selector - uses the first element found if you pass in a class.
-	Modal.setAppElement('#your-app-element');
-	*/
-	setAppElement: (el) => {
-		if (el) {
-			appRoot = el;
-			Modal.setAppElement(el);
-		}
-	},
-
-	getAppElement: () => appRoot
-};
+export default urlExists;

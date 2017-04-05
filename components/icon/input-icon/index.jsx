@@ -39,6 +39,7 @@ const InputIcon = (props) => {
 		category,
 		iconPosition,
 		name,
+		path,
 		onClick,
 		...rest
 	} = props;
@@ -48,6 +49,7 @@ const InputIcon = (props) => {
 		className={classNames('slds-input__icon', { [`slds-input__icon--${iconPosition}`]: iconPosition })}
 		iconCategory={category}
 		iconName={name}
+		iconPath={path}
 		onClick={onClick}
 		variant="icon"
 		{...rest}
@@ -57,6 +59,7 @@ const InputIcon = (props) => {
 		category={category}
 		className={classNames('slds-input__icon slds-icon-text-default', { [`slds-input__icon--${iconPosition}`]: iconPosition })}
 		name={name}
+		path={path}
 		{...rest}
 	/>;
 };
@@ -79,6 +82,10 @@ InputIcon.propTypes = {
 	 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
 	 */
 	name: PropTypes.string,
+	/**
+   * Path to the icon. This will override any global icon settings.
+   */
+	path: PropTypes.string,
 	/**
 	 * This event fires when the icon is clicked.
 	 */

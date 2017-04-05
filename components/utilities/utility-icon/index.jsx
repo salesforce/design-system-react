@@ -9,9 +9,15 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import React from 'react';
+import React, { PropTypes } from 'react';
+
+// This component's `checkProps` which issues warnings to developers about properties
+// when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
 
 import Svg from './svg';
+
+import settings from '../../../components/settings';
 
 import * as SLDS_ICONS_UTILITY from '../../../icons/utility';
 import * as SLDS_ICONS_ACTION from '../../../icons/action';
@@ -19,7 +25,13 @@ import * as SLDS_ICONS_CUSTOM from '../../../icons/custom';
 import * as SLDS_ICONS_DOCTYPE from '../../../icons/doctype';
 import * as SLDS_ICONS_STANDARD from '../../../icons/standard';
 
-const UtilityIcon = ({ name = '', category = 'utility', icon, ...rest }) => {
+const UtilityIcon = ({ name = '',
+	assistiveText, // eslint-disable-line no-unused-vars
+	category,
+	icon,
+	path,
+	...rest
+}) => {
 	let data;
 
 	if (icon) {
@@ -50,21 +62,40 @@ const UtilityIcon = ({ name = '', category = 'utility', icon, ...rest }) => {
 		}
 	}
 
-	return <Svg data={data} name={name} {...rest} />;
+	// Use icon path prop if set, then see if a global path is set, if not use inline icons
+	const modifiedPath = path || (settings.getIconsPath() && `${settings.getIconsPath()}/${category}-sprite/svg/symbols.svg#${name}`);
+
+	checkProps('UtilityIcon', { name, category, path });
+
+	const output = modifiedPath && !icon
+		? (<svg {...rest}>
+			<use xlinkHref={modifiedPath} />
+		</svg>)
+		: (<Svg data={data} name={name} {...rest} />);
+
+	return output;
 };
 
 UtilityIcon.displayName = 'UtilityIcon';
 
 UtilityIcon.propTypes = {
-	category: React.PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
+	category: PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
 	/**
    * An SVG object to use instead of name / category, look in `design-system-react/icons` for examples
    */
-	icon: React.PropTypes.object,
+	icon: PropTypes.object,
 	/**
    * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
    */
-	name: React.PropTypes.string
+	name: PropTypes.string,
+	/**
+   * Path to the icon. This will override any global icon settings.
+   */
+	path: PropTypes.string
+};
+
+UtilityIcon.defaultProps = {
+	category: 'utility'
 };
 
 module.exports = UtilityIcon;

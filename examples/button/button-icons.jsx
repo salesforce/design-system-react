@@ -12,7 +12,7 @@ const Example = React.createClass({
 					iconName="settings"
 					iconSize="small"
 					iconVariant="bare"
-					onClick={() => { alert('Icon Bare Clicked'); }} variant="icon"
+					onClick={() => { console.log('Icon Bare Clicked'); }} variant="icon"
 				/>
 
 				<Button

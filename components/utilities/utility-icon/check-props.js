@@ -8,49 +8,20 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+/* eslint-disable import/no-mutable-exports */
 
-import Modal from 'react-modal';
+import urlExists from '../../../utilities/warning/url-exists';
 
-/*
- * The following are component utility methods that aid in global settings.
-*/
+import settings from '../../../components/settings';
 
-let assetsPath = 'assets/';
-let iconsPath;
-let appRoot;
+let checkProps = function () {};
 
-module.exports = {
-	setAssetsPath: (path) => {
-		if (path) {
-			assetsPath = path;
-		}
-	},
+if (process.env.NODE_ENV !== 'production') {
+	checkProps = function (COMPONENT, props) {
+		const modifiedPath = props.path || settings.getIconsPath();
 
-	getAssetsPath: () => String(assetsPath),
+		urlExists(COMPONENT, `${modifiedPath}/${props.category}-sprite/svg/symbols.svg#${props.name}`);
+	};
+}
 
-	setIconsPath: (path) => {
-		if (path) {
-			iconsPath = path;
-		}
-	},
-
-	getIconsPath: () => iconsPath,
-
-	/*
-	 * The app element allows you to specify the portion of your app that should be hidden (via aria-hidden)
-	to prevent assistive technologies such as screenreaders from reading content outside of the content of
-	your modal.  It can be specified in the following ways:
-	 * element
-	Modal.setAppElement(appElement);
-	 * query selector - uses the first element found if you pass in a class.
-	Modal.setAppElement('#your-app-element');
-	*/
-	setAppElement: (el) => {
-		if (el) {
-			appRoot = el;
-			Modal.setAppElement(el);
-		}
-	},
-
-	getAppElement: () => appRoot
-};
+export default checkProps;

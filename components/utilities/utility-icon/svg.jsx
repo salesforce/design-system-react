@@ -11,7 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 
-module.exports = React.createClass({
+const Svg = React.createClass({
 	displayName: 'Svg',
 
 	getPaths (paths) {
@@ -91,3 +91,5 @@ module.exports = React.createClass({
 		);
 	}
 });
+
+module.exports = Svg;

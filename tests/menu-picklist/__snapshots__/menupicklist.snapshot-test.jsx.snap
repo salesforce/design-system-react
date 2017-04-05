@@ -31,13 +31,13 @@ exports[`test MenuPicklist
         Option C
       </span>
       <span
-        className=""
+        className={undefined}
         title={undefined}>
         <svg
           aria-hidden="true"
           className="slds-icon slds-icon-text-default"
           name="down"
-          style={Object {}}
+          style={undefined}
           viewBox="0 0 24 24">
           <path
             d="M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z" />
@@ -80,13 +80,13 @@ exports[`test MenuPicklist Default DOM Snapshot 1`] = `
         Option C
       </span>
       <span
-        className=""
+        className={undefined}
         title={undefined}>
         <svg
           aria-hidden="true"
           className="slds-icon slds-icon-text-default"
           name="down"
-          style={Object {}}
+          style={undefined}
           viewBox="0 0 24 24">
           <path
             d="M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z" />
@@ -100,6 +100,6 @@ exports[`test MenuPicklist Default DOM Snapshot 1`] = `
 
 exports[`test MenuPicklist Default HTML Snapshot 1`] = `
 "<div class=\"slds-form-element\"><label class=\"slds-form-element__label\" for=\"sample-menu-picklist\" style=\"width:100%;\">Contacts</label>
-    <div class=\"slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click\"><button aria-haspopup=\"true\" class=\"slds-button slds-button--neutral slds-picklist__label\" id=\"sample-menu-picklist\" tabindex=\"0\"><span class=\"slds-truncate\">Option C</span><span class=\"\"><svg aria-hidden=\"true\" class=\"slds-icon slds-icon-text-default\" viewBox=\"0 0 24 24\" name=\"down\"><path d=\"M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z\"></path></svg></span></button></div>
+    <div class=\"slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click\"><button aria-haspopup=\"true\" class=\"slds-button slds-button--neutral slds-picklist__label\" id=\"sample-menu-picklist\" tabindex=\"0\"><span class=\"slds-truncate\">Option C</span><span><svg aria-hidden=\"true\" class=\"slds-icon slds-icon-text-default\" viewBox=\"0 0 24 24\" name=\"down\"><path d=\"M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z\"></path></svg></span></button></div>
 </div>"
 `;
