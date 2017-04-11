@@ -11,7 +11,7 @@ const Example = React.createClass({
 					<Icon
 						assistiveText="Lead"
 						category="standard"
-						color="base"
+						colorVariant="base"
 						name="lead"
 					/>
 				</div>
@@ -19,7 +19,7 @@ const Example = React.createClass({
 					<Icon
 						assistiveText="Lock"
 						category="utility"
-						color="default"
+						colorVariant="default"
 						name="lock"
 					/>
 				</div>
@@ -27,7 +27,7 @@ const Example = React.createClass({
 					<Icon
 						assistiveText="Warning"
 						category="utility"
-						color="warning"
+						colorVariant="warning"
 						name="warning"
 					/>
 				</div>
@@ -35,7 +35,7 @@ const Example = React.createClass({
 					<Icon
 						assistiveText="Warning"
 						category="utility"
-						color="error"
+						colorVariant="error"
 						name="warning"
 					/>
 				</div>
@@ -43,6 +43,5 @@ const Example = React.createClass({
 		);
 	}
 });
-
 
 export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

@@ -1,8 +1,8 @@
 {
   "name": "design-system-react",
-  "version": "0.6.5",
-  "description": "Salesforce Lightning Design System React components",
-  "license": "BSD-3-Clause",
+  "version": "0.6.7",
+  "description": "Salesforce Lightning Design System for React",
+  "license": "SEE LICENSE IN README.md",
   "engines": {
     "node": "^4.4.0",
     "npm": "^3.9.0"
@@ -90,7 +90,7 @@
   },
   "devDependencies": {
     "@kadira/storybook": "^2.22.0",
-    "@salesforce-ux/design-system": "git+ssh://git@github.com/salesforce-ux/design-system-internal.git#v2.2.1-dist",
+    "@salesforce-ux/design-system": "git+ssh://git@github.com/salesforce-ux/design-system-internal.git#v2.3.0-beta.2-dist",
     "@salesforce-ux/icons": "^7.7.0",
     "async": "^2.0.0-rc.5",
     "babel": "^6.5.2",
@@ -109,13 +109,13 @@
     "chai": "^3.5.0",
     "chai-enzyme": "^0.6.1",
     "compression": "^1.6.2",
-    "css-loader": "^0.27.3",
+    "css-loader": "^0.28.0",
     "enzyme": "^2.5.1",
     "enzyme-to-json": "^1.5.0",
     "eslint-config-slds": "git+ssh://git@github.com/salesforce-ux/eslint-config-slds.git#v3.0.1",
     "eslint-loader": "^1.6.0",
     "express": "^4.13.4",
-    "file-loader": "^0.10.0",
+    "file-loader": "^0.11.0",
     "fs-extra": "^2.0.0",
     "isparta-loader": "^2.0.0",
     "istanbul": "^1.0.0-alpha.2",

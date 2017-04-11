@@ -1,8 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import ReactDOMServer from 'react-dom/server';
-import jsBeautify from 'js-beautify';
+import { renderMarkup } from '../snapshot-helpers';
 
 import Default from '../../examples/filter/default';
 import NewFilter from '../../examples/filter/new';
@@ -46,9 +45,6 @@ test('Error Filter Base Snapshot', () => {
 });
 
 test('Filter Base with custom className Snapshot', () => {
-	const domTree = String(
-		jsBeautify.html(ReactDOMServer.renderToStaticMarkup(<Default className="MY_CUSTOM_CLASS_NAME" />), { indent_size: 2 }),
-		'utf-8'
-	);
-	expect(domTree).toMatchSnapshot();
+	expect(renderMarkup(Default,
+		{ className: 'MY_CUSTOM_CLASS_NAME' })).toMatchSnapshot();
 });

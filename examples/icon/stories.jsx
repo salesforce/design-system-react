@@ -6,113 +6,54 @@ import { ICON } from '../../utilities/constants';
 import Icon from '../../components/icon';
 import download from '../../icons/utility/download';
 
+import Standard from './standard';
+import Utility from './utility';
+import Action from './action';
+import Doctype from './doctype';
+import Custom from './custom';
+
+import ColorBase from './color-base';
+import ColorDefault from './color-default';
+import ColorError from './color-error';
+import ColorWarning from './color-warning';
+
+import SizesExtraSmall from './sizes-extra-small';
+import SizesSmall from './sizes-small';
+import SizesMedium from './sizes-medium';
+import SizesLarge from './sizes-large';
+
+import globalSettings from '../../components/settings';
+
+globalSettings.setIconsPath('/assets/icons');
+
 storiesOf(ICON, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('Base: Standard', () => (
-		<Icon
-			assistiveText="Accounts"
-			category="standard"
-			name="account"
-			title="This is a title"
-		/>
+	.add('Category: Standard', () => (<Standard />))
+	.add('Category: Utility', () => (<Utility />))
+	.add('Category: Action', () => (<Action />))
+	.add('Category: Doctype', () => (<Doctype />))
+	.add('Category: Custom', () => (<Custom />))
+	.add('Size: X-Small', () => (<SizesExtraSmall />))
+	.add('Size: Small', () => (<SizesSmall />))
+	.add('Size: Medium (default)', () => (<SizesMedium />))
+	.add('Size: Large', () => (<SizesLarge />))
+	.add('Color: Base', () => (
+		<div style={{ backgroundColor: 'goldenrod', padding: '10px' }}>
+			<ColorBase />
+		</div>
 	))
-	.add('Base: Standard (inverse)', () => (
-		<Icon
-			assistiveText="Accounts"
-			category="standard"
-			name="account"
-			title="This is a title"
-			inverse
-		/>
-	))
+	.add('Color: Default', () => (<ColorDefault />))
 	.add('Base: Standard (custom styles)', () => (
 		<Icon
-			assistiveText="Accounts"
+			assistiveText="Account"
 			category="standard"
 			name="account"
 			style={{ backgroundColor: '#aceace', fill: 'orangered' }}
 			title="This is a title"
 		/>
 	))
-	.add('Base: Utility', () => (
-		<Icon
-			assistiveText="Announcement"
-			category="utility"
-			name="announcement"
-			title="Announcement Icon"
-		/>
-	))
-	.add('Base: Utility (inverse)', () => (
-		<div style={{ backgroundColor: 'goldenrod', padding: '10px' }}>
-			<Icon
-				assistiveText="Announcement"
-				category="utility"
-				name="announcement"
-				inverse
-			/>
-		</div>
-	))
-	.add('Base: Utility (no assistive)', () => (
-		<Icon
-			category="utility"
-			name="announcement"
-		/>
-	))
-	.add('Base: Action', () => (
-		<Icon
-			assistiveText="Description"
-			category="action"
-			name="description"
-			size="small"
-		/>
-	))
-	.add('Base: Doctype', () => (
-		<Icon
-			assistiveText="XML"
-			category="doctype"
-			name="xml"
-		/>
-	))
-	.add('Base: Custom', () => (
-		<Icon
-			assistiveText="I think it's a leaf"
-			category="custom"
-			name="custom5"
-		/>
-	))
 	.add('Base: Imported', () => <Icon
 		assistiveText="Download"
 		category="utility"
 		icon={download}
-	/>)
-	.add('Size: X-Small', () => (
-		<Icon
-			assistiveText="Warning Icon"
-			category="utility"
-			name="warning"
-			size="x-small"
-		/>
-	))
-	.add('Size: Small', () => (
-		<Icon
-			assistiveText="Case Icon"
-			category="standard"
-			name="case"
-			size="small"
-		/>
-	))
-	.add('Size: Medium (default)', () => (
-		<Icon
-			assistiveText="Case Icon"
-			category="standard"
-			name="case"
-		/>
-	))
-	.add('Size: Large', () => (
-		<Icon
-			assistiveText="Case Icon"
-			category="standard"
-			name="case"
-			size="large"
-		/>
-	));
+	/>);
