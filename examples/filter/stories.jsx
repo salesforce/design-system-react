@@ -7,6 +7,7 @@ import NewFilter from './new';
 import LockedFilter from './locked';
 import PermanantFilter from './permanant';
 import ErrorFilter from './error';
+import AssistiveTextFilter from './assistive-text';
 
 /* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
@@ -42,4 +43,8 @@ storiesOf(FILTER, module)
 	.add('Filter Align Right', () => (
 		<CustomAlignment align="right">
 			<Default align="right" />
+		</CustomAlignment>))
+	.add('AssistiveTextFilter', () => (
+		<CustomAlignment>
+			<AssistiveTextFilter />
 		</CustomAlignment>));
