@@ -8,6 +8,7 @@ import NewFilter from '../../examples/filter/new';
 import LockedFilter from '../../examples/filter/locked';
 import PermanantFilter from '../../examples/filter/permanant';
 import ErrorFilter from '../../examples/filter/error';
+import AssistiveTextFilter from '../../examples/filter/assistive-text';
 
 test('Filter Base Snapshot', () => {
 	const domTree = toJson(shallow(
@@ -44,7 +45,18 @@ test('Error Filter Base Snapshot', () => {
 	expect(domTree).toMatchSnapshot();
 });
 
+test('AssistiveText Filter', () => {
+	const domTree = toJson(shallow(
+		<AssistiveTextFilter />
+	));
+	expect(domTree).toMatchSnapshot();
+});
+
 test('Filter Base with custom className Snapshot', () => {
 	expect(renderMarkup(Default,
 		{ className: 'MY_CUSTOM_CLASS_NAME' })).toMatchSnapshot();
+});
+
+test('AssistiveText Filter HTML Snapshot', () => {
+	expect(renderMarkup(Default)).toMatchSnapshot();
 });

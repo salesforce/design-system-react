@@ -42,17 +42,16 @@ const Filter = React.createClass({
 		 */
 		align: PropTypes.oneOf(['left', 'right']),
 		/**
-		 * Assistive text for removing a filter. The default is `Remove Filter: ${this.props.property} ${this.props.predicate}`.
+		 * **Assistive text for accessibility**
+		 * * `removeFilter`: Assistive text for removing a filter. The default is `Remove Filter: this.props.property this.props.predicate`.
+		 * * `editFilter`: Assistive text for changing a filter.
+		 * * `editFilterHeading`: Assistive text for Popover heading.
 		 */
-		assistiveTextRemoveFilter: PropTypes.string,
-		/**
-		 * Assistive text for changing a filter.
-		 */
-		assistiveTextEditFilter: PropTypes.string,
-		/**
-		 * Assistive text for Popover heading.
-		 */
-		assistiveTextEditFilterHeading: PropTypes.string,
+		assistiveText: PropTypes.shape({
+			editFilter: PropTypes.string,
+			editFilterHeading: PropTypes.string,
+			removeFilter: PropTypes.string
+		}),
 		/**
 		 * Contents of popover. That is the dropdowns and inputs that set the filter criteria. **Dropdowns, Picklists and other menus must use `isInline` to work properly within a Popover due to existence of portal mounts in menus that are not inline.**
 		 */
@@ -113,8 +112,10 @@ const Filter = React.createClass({
 	getDefaultProps () {
 		return {
 			align: 'left',
-			assistiveTextEditFilter: 'Edit filter:',
-			assistiveTextEditFilterHeading: 'Choose filter criteria',
+			assistiveText: {
+				editFilter: 'Edit filter:',
+				editFilterHeading: 'Choose filter criteria'
+			},
 			predicate: 'New Filter'
 		};
 	},
@@ -159,13 +160,13 @@ const Filter = React.createClass({
 		}
 	},
 
-	getCustomPopoverProps () {
+	getCustomPopoverProps ({ assistiveText }) {
 		/*
 		 * Generate the popover props based on passed in popover props. Using the default behavior if not provided by passed in popover
 		 */
 		const popoverBody = (
 			<div>
-				<h4 className="slds-assistive-text" id={`${this.getId()}-popover-heading`}>{this.props.assistiveTextEditFilterHeading}</h4>
+				<h4 className="slds-assistive-text" id={`${this.getId()}-popover-heading`}>{assistiveText.editFilterHeading}</h4>
 				{this.props.children}
 				<div className="slds-m-top--small slds-text-align--right">
 					<Button
@@ -199,8 +200,19 @@ const Filter = React.createClass({
 	},
 
 	render () {
+		/* Remove at next breaking change */
+		const assistiveText = {
+			editFilter: this.props.assistiveTextEditFilter // eslint-disable-line react/prop-types
+				|| this.props.assistiveText.editFilter,
+			editFilterHeading: this.props.assistiveTextEditFilterHeading // eslint-disable-line react/prop-types
+				|| this.props.assistiveText.editFilterHeading,
+			removeFilter: this.props.assistiveTextRemoveFilter // eslint-disable-line react/prop-types
+				|| this.props.assistiveText.removeFilter
+				|| `Remove Filter: ${this.props.property} ${this.props.predicate}`
+		};
+
 		/* TODO: Button wrapper for property and predictate should be transitioned to `Button` component. `Button` needs to take custom children first though. */
-		const popoverProps = this.getCustomPopoverProps();
+		const popoverProps = this.getCustomPopoverProps({ assistiveText });
 		return (
 			<div
 				className={classNames(
@@ -223,7 +235,7 @@ const Filter = React.createClass({
 						onClick={this.handleFilterClick}
 						aria-describedby={this.props.isError ? `${this.getId()}-error` : undefined}
 					>
-						<span className="slds-assistive-text">{this.props.assistiveTextEditFilter}</span>
+						<span className="slds-assistive-text">{assistiveText.editFilter}</span>
 						{this.props.property ? <p className="slds-text-body--small">{this.props.property}</p> : null}
 						<p>{this.props.predicate}</p>
 					</button>
@@ -237,19 +249,17 @@ const Filter = React.createClass({
 					<p>{this.props.predicate}</p>
 				</button>
 				}
-				{// Close button
+				{// Remove button
 					!this.props.isPermanent && !this.props.isLocked
 					? <Button
-						assistiveText={this.props.assistiveTextRemoveFilter
-							|| `Remove Filter: ${this.props.property} ${this.props.predicate}`}
+						assistiveText={assistiveText.removeFilter}
 						hint
 						iconCategory="utility"
 						iconName="close"
 						iconSize="small"
 						iconVariant="bare"
 						onClick={this.handleRemove}
-						title={this.props.assistiveTextRemoveFilter
-							|| `Remove Filter: ${this.props.property} ${this.props.predicate}`}
+						title={assistiveText.removeFilter}
 						variant="icon"
 					/>
 				: null}

@@ -63,8 +63,12 @@ exports[`test Panel Filtering Default Snapshot 1`] = `
     <SLDSFilterList>
       <SLDSFilter
         align="left"
-        assistiveTextEditFilter="Edit filter:"
-        assistiveTextEditFilterHeading="Choose filter criteria"
+        assistiveText={
+          Object {
+            "editFilter": "Edit filter:",
+            "editFilterHeading": "Choose filter criteria",
+          }
+        }
         id="sample-panel-filtering-show-me"
         isPermanent={true}
         onChange={[Function]}
@@ -99,8 +103,12 @@ exports[`test Panel Filtering Default Snapshot 1`] = `
     <SLDSFilterList>
       <SLDSFilter
         align="left"
-        assistiveTextEditFilter="Edit filter:"
-        assistiveTextEditFilterHeading="Choose filter criteria"
+        assistiveText={
+          Object {
+            "editFilter": "Edit filter:",
+            "editFilterHeading": "Choose filter criteria",
+          }
+        }
         id="sample-panel-filtering-created-date"
         onChange={[Function]}
         onRemove={[Function]}
@@ -129,8 +137,12 @@ exports[`test Panel Filtering Default Snapshot 1`] = `
       </SLDSFilter>
       <SLDSFilter
         align="left"
-        assistiveTextEditFilter="Edit filter:"
-        assistiveTextEditFilterHeading="Choose filter criteria"
+        assistiveText={
+          Object {
+            "editFilter": "Edit filter:",
+            "editFilterHeading": "Choose filter criteria",
+          }
+        }
         id="sample-panel-filtering-list-price"
         onChange={[Function]}
         onRemove={[Function]}
