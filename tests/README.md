@@ -32,7 +32,7 @@ Pull requests should conform to our [ESLint style definitions](https://github.co
 ## Snapshot testing
 Most tests run within the Karma/Mocha/Chai test suite. This allows for interactive, real browser testing. DOM checking though is tedious even with jQuery-like transversal tools such as Enzyme. The following process uses Jest to take a snapshot of the state of the DOM when the component is rendered and save it as a string for future comparison. Please use this process to test the presence of CSS classes, styles, and DOM nodes. Reuse of code examples in `examples` folder is _highly recommended_ in your snapshot tests. This allows confirmation of the alignment of the documentation site examples with design system markup. Mouse/keyboard user interaction tests are still expected to be created in Mocha.
 
-**Potential Gotcha:** _You may need to pass the HTML id attribute in._ Many components have the optional `id` property but will generate a random id to use if not passed in. These randomly generated IDs will cause your snapshot tests to fail, because the rendered HTML output will be different every time it is run.
+**Potential Gotcha:** _You may need to pass the HTML id attribute in._ Many components have the optional `id` property but will generate a random id to use if not passed in. These randomly generated IDs will cause your snapshot tests to fail, because the rendered HTML output will be different every time it is run. Also, just like in unit tests, the markup text diff may be easier to debug if you change one component prop per snapshot and have many snapshots instead of changing many props in one snapshot.
 
 ### Compare markup with the design system
 - Copy markup from design system site
