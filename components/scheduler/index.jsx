@@ -22,6 +22,9 @@ import shortid from 'shortid';
 // ## Constants
 import { SCHEDULER } from '../../utilities/constants';
 
+// Temporary hack until included in SLDS
+import '!style!css!../../styles/scheduler/scheduler.scss'; // eslint-disable-line import/no-unresolved
+
 /**
  * A scheduler is a grouping of a datepicker, a timepicker, a timezone picklist, and a reoccurrence interface that allows the user to create a reoccurring event.
  */

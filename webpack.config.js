@@ -43,8 +43,8 @@ const config = {
 				loader: 'json-loader'
 			},
 			{
-				test: /\.css$/,
-				loaders: ['style', 'css']
+				test: /\.css|scss$/,
+				loaders: ['style', 'css', 'sass']
 			},
 			{
 				test: /\.(svg|gif|jpe?g|png)$/,
