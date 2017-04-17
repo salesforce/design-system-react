@@ -24,7 +24,7 @@ eval "MINIFY=1 $BUILD"
 echo "## Cloning additional files"
 
 cp .gitignore .tmp/.gitignore
-cp LICENSE .tmp/LICENSE
+cp LICENSE.txt .tmp/LICENSE.txt
 cp CONTRIBUTING.md .tmp/CONTRIBUTING.md
 cp package.json .tmp/package.json
 cp README-dist.md .tmp/README.md
