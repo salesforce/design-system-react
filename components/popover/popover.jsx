@@ -383,7 +383,8 @@ const Popover = React.createClass({
 	},
 
 	toggleOpenFromKeyboard (event) {
-		if (this.state.isOpen) {
+		const isOpen = this.getIsOpen();
+		if (isOpen) {
 			this.handleCancel(event);
 		} else {
 			this.handleOpen();
