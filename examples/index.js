@@ -116,6 +116,9 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!design-system-react/examples/popover/alternative-header.jsx'),
 		require('raw-loader!design-system-react/examples/popover/controlled-with-footer.jsx')
 	],
+	scheduler: [
+		require('raw-loader!design-system-react/examples/scheduler/default.jsx')
+	],
 	tabs: [
 		require('raw-loader!design-system-react/examples/tabs/default.jsx'),
 		require('raw-loader!design-system-react/examples/tabs/scoped.jsx')

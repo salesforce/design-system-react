@@ -66,6 +66,7 @@ export const PAGE_HEADER = 'SLDSPageHeader';
 export const POPOVER = 'SLDSPopover';
 export const POPOVER_TOOLTIP = 'SLDSPopoverTooltip';
 export const SPINNER = 'SLDSSpinner';
+export const SCHEDULER = 'SLDSScheduler';
 export const TAB = 'SLDSTab';
 export const TAB_ITEM = 'SLDSTabItem';
 export const TAB_PANEL = 'SLDSTabPanel';

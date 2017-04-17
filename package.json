@@ -404,6 +404,12 @@
       "SLDS-component-path": "/components/page-headers"
     },
     {
+      "component": "scheduler",
+      "status": "prod",
+      "display-name": "Schedulers",
+      "SLDS-component-path": "/components/schedulers"
+    },
+    {
       "component": "tooltip",
       "status": "prod",
       "display-name": "Tooltips",
