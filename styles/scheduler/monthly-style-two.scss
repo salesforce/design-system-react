@@ -1,0 +1,18 @@
+.scheduler-prototype__monthly {
+	.slds-picklist {
+		&.scheduler-prototype__monthly-on {
+			&-day-picklist {
+				width: 8rem;
+			}
+
+			&-date-picklist {
+				width: 4.375rem;
+			}
+
+			&-position-picklist {
+				width: 6rem;
+			}
+		}
+	}
+}
+

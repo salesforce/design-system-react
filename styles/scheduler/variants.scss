@@ -1,0 +1,24 @@
+@import "~@salesforce-ux/design-system/scss/_design-tokens.scss";
+
+.scheduler-prototype {
+	&__on-day, &__on-the {
+		padding: .375rem 0 0 0;
+	}
+
+	&__variant {
+		margin: 2rem;
+		width: 35rem;
+
+		.slds-picklist {
+			width: 100%;
+
+			&__label {
+				width: 100%;
+			}
+		}
+	}
+
+	.slds-datepicker__trigger {
+		width: 100%;
+	}
+}

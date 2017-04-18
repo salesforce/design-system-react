@@ -1,0 +1,79 @@
+@import "~@salesforce-ux/design-system/scss/_design-tokens.scss";
+
+.specific-date-picker {
+	position: relative;
+
+	&__circle {
+		background: $color-background-alt;
+		border: .0625rem solid transparent;
+		border-radius: 1rem;
+		color: $color-text-action-label;
+		font-size: .75rem;
+		height: 2rem;
+		padding: .375rem 0 0 0;
+		text-align: center;
+		width: 2rem;
+
+		&.--last-day {
+			width: 4.5rem;
+		}
+
+		&.--selected {
+			background: $color-border-brand;
+			border-color: $color-border-brand;
+			color: $color-text-inverse;
+		}
+	}
+
+	&__done-button {
+		margin-top: .25rem;
+		text-align: center;
+	}
+
+	&__instructions {
+		td {
+			color: $color-text-action-label;
+			padding: .25rem;
+			text-align: center;
+		}
+	}
+
+	&__dropdown {
+		background: $color-background-alt;
+		border: $border-width-thin solid $color-border;
+		border-radius: $border-radius-medium;
+		box-shadow: $shadow-drop-down;
+		left: 0;
+		margin-top: .125rem;
+		padding: .5rem;
+		position: absolute;
+		top: 100%;
+		z-index: 999;
+	}
+
+	&__date-row {
+		td {
+			cursor: pointer;
+			padding: .25rem;
+
+			&:hover {
+				.specific-date-picker__circle {
+					border-color: $color-border-brand;
+					color: $color-border-brand;
+
+					&.--selected {
+						background: $color-background-notification-badge-hover;
+						border-color: $color-background-notification-badge-hover;
+						color: $color-text-inverse;
+					}
+				}
+			}
+		}
+	}
+
+	.slds-input[disabled], .slds-input.slds-is-disabled {
+		background: $color-background-input;
+		border-color: $color-background-shade-dark;
+		color: $color-background-shade-dark;
+	}
+}

@@ -1,0 +1,35 @@
+.scheduler-prototype__yearly {
+	&-of {
+		padding: .375rem 1rem 0 0;
+	}
+
+	&-on, &-on-the {
+		padding: .375rem 0 0 0;
+	}
+
+	.slds-picklist {
+		&.scheduler-prototype__yearly-on {
+			&-date-picklist {
+				width: 4.375rem;
+			}
+
+			&-month-picklist {
+				width: 8rem;
+			}
+		}
+
+		&.scheduler-prototype__yearly-on-the {
+			&-days-picklist {
+				width: 8rem;
+			}
+
+			&-month-picklist {
+				width: 8rem;
+			}
+
+			&-position-picklist {
+				width: 6rem;
+			}
+		}
+	}
+}

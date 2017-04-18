@@ -1,0 +1,13 @@
+@import "~@salesforce-ux/design-system/scss/_design-tokens.scss";
+
+.scheduler-prototype__weekly {
+	.scheduler-prototype__weekly-button--selected {
+		background: $color-background-path-current;
+		color: $color-text-inverse;
+
+		&:hover, &:focus {
+			background-color: $color-background-path-current-hover;
+			color: $color-text-inverse;
+		}
+	}
+}

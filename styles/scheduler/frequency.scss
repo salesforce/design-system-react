@@ -1,0 +1,15 @@
+.scheduler-prototype {
+	&__frequency {
+		padding-top: 1.4375rem;
+		position: relative;
+
+		&-input-label {
+			position: absolute;
+			top: .0625rem;
+		}
+
+		&-unit {
+			padding: .375rem 0 0 .85rem;
+		}
+	}
+}
