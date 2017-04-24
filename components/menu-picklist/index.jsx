@@ -63,6 +63,10 @@ const MenuPicklist = React.createClass({
 		 */
 		checkmark: PropTypes.bool,
 		disabled: PropTypes.bool,
+
+		/**
+		 * Set to -1 if you don't want the user to tab to the button.
+		 */
 		tabIndex: PropTypes.number,
 		/**
 		 * Message to display when the input is in an error state. When this is present, also visually highlights the component as in error.
