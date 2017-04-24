@@ -63,6 +63,7 @@ const MenuPicklist = React.createClass({
 		 */
 		checkmark: PropTypes.bool,
 		disabled: PropTypes.bool,
+		tabIndex: PropTypes.number,
 		/**
 		 * Message to display when the input is in an error state. When this is present, also visually highlights the component as in error.
 		 */
@@ -376,7 +377,7 @@ const MenuPicklist = React.createClass({
 					id={this.getId()}
 					onClick={!this.props.disabled && this.handleClick}
 					ref={this.saveRefToTrigger}
-					tabIndex={this.state.isOpen ? -1 : 0}
+					tabIndex={this.state.isOpen ? -1 : (this.props.tabIndex || 0)}
 				>
 					<span className="slds-truncate">{this.renderPlaceholder()}</span>
 					<Icon name="down" category="utility" />
