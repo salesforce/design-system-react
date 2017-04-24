@@ -290,6 +290,10 @@ const MenuDropdown = React.createClass({
 		 */
 		options: PropTypes.array,
 		/**
+		 * If `true`, adds a transparent overlay when the menu is open to handle outside clicks. Allows clicks on iframes to be captured, but also forces a double-click to interact with other elements. If a function is passed, custom overlay logic may be defined by the app.
+		 */
+		overlay: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+		/**
 		 * An object of CSS styles that are applied to the triggering button.
 		 */
 		style: PropTypes.object,
@@ -297,10 +301,6 @@ const MenuDropdown = React.createClass({
 		 * Write "-1" if you don't want the user to tab to the button.
 		 */
 		tabIndex: PropTypes.string,
-		/**
-		 * If `true`, adds a transparent overlay when the menu is open to handle outside clicks. Allows clicks on iframes to be captured, but also forces a double-click to interact with other elements. If a function is passed, custom overlay logic may be defined by the app.
-		 */
-		overlay: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
 		/**
 		 * Current selected menu item.
 		 */
