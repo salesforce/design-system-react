@@ -89,7 +89,7 @@ const MenuPicklist = React.createClass({
 		placeholder: PropTypes.string,
 		required: PropTypes.bool,
 		/**
-		 * Set to -1 if you don't want the user to tab to the button.
+		 * Set to 1 or higher to change the order this element gets tab focus
 		 */
 		tabIndex: PropTypes.number,
 		/**
