@@ -265,8 +265,10 @@ const Dialog = React.createClass({
 		}
 
 		return (
+			// eslint-disable-next-line
 			<div
 				className={classNames(this.props.contentsClassName, this.props.outsideClickIgnoreClass)}
+				id={this.props.id}
 				style={style}
 				onKeyDown={this.handleKeyDown}
 				onMouseEnter={this.props.onMouseEnter}
@@ -348,6 +350,7 @@ const Dialog = React.createClass({
 	},
 
 	target () {
+			// eslint-disable-next-line
 		return this.props.targetElement ? ReactDOM.findDOMNode(this.props.targetElement) : ReactDOM.findDOMNode(this).parentNode;
 	},
 
@@ -375,6 +378,7 @@ const Dialog = React.createClass({
 
 		if (this.props.variant === 'popover') {
 			DOMElementFocus.storeActiveElement();
+			// eslint-disable-next-line
 			DOMElementFocus.setupScopedFocus({ ancestorElement: ReactDOM.findDOMNode(this.dialogElement).querySelector('.slds-popover') });
 			// Don't steal focus from inner elements
 			if (!DOMElementFocus.hasOrAncestorHasFocus()) {

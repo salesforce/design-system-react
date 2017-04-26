@@ -63,11 +63,7 @@ const List = React.createClass({
 		/**
 		 * The index of the currently selected item in the list.
 		 */
-		selectedIndex: PropTypes.number,
-		/**
-		 * The id of the element which triggered this list (in a menu context).
-		 */
-		triggerId: PropTypes.string
+		selectedIndex: PropTypes.number
 	},
 
 	getDefaultProps () {
@@ -86,9 +82,8 @@ const List = React.createClass({
 
 		return (
 			<ul
-				aria-labelledby={this.props.triggerId}
 				className={classNames('dropdown__list', lengthClassName, this.props.className)}
-				role="menu"
+				role="presentation"
 			>
 				{
 					this.props.options.map((option, index) => {

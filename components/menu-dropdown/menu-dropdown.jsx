@@ -9,7 +9,6 @@
 
 // ### React
 import React, { PropTypes } from 'react';
-import ReactDOM from 'react-dom';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -561,7 +560,7 @@ const MenuDropdown = React.createClass({
 
 	setFocus () {
 		if (!this.isHover && !this.isUnmounting && this.trigger) {
-			ReactDOM.findDOMNode(this.trigger).focus();
+			this.trigger.focus();
 		}
 	},
 
@@ -591,12 +590,12 @@ const MenuDropdown = React.createClass({
 	},
 
 	getMenu () {
-		return ReactDOM.findDOMNode(this.list);
+		return this.list;
 	},
 
 	getMenuItem (index) {
 		if (index !== undefined && this.listItems) {
-			return ReactDOM.findDOMNode(this.listItems[index]);
+			return this.listItems[index];
 		}
 
 		return undefined;
@@ -706,6 +705,7 @@ const MenuDropdown = React.createClass({
 						this.props.className)}
 					flippable={!this.props.hasStaticAlignment}
 					horizontalAlign={this.props.align}
+					id={this.getId()}
 					inheritTargetWidth={this.props.inheritTargetWidth}
 					marginTop={marginTop}
 					offset={offset}
@@ -816,7 +816,7 @@ const MenuDropdown = React.createClass({
 					|| this.props.openOn === 'hybrid'
 					? this.handleMouseLeave : null}
 				openOn={this.props.openOn}
-				ref={this.saveRefToTriggerContainer}
+				ref={(trigger) => { this.trigger = trigger; }}
 				style={this.props.style}
 				tabIndex={isOpen ? '-1' : '0'}
 				tooltip={this.props.tooltip}
