@@ -19,6 +19,11 @@ import React, { PropTypes } from 'react';
 // ### classNames
 import classNames from 'classnames';
 
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
+
 import InputIcon from '../../icon/input-icon';
 
 // ## Constants
@@ -44,10 +49,14 @@ const PicklistDropdownTrigger = React.createClass({
 		 */
 		activeBackgroundColor: PropTypes.string,
 		/**
+		 *  A unique ID that matches the error label to the trigger element for screen readers.
+		 */
+		'aria-describedby': React.PropTypes.string,
+		/**
 		 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
 		 * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
 		 */
-		assistiveText: PropTypes.string.isRequired,
+		assistiveText: PropTypes.string,
 		/**
 		 * CSS classes to be added to the 'li'.
 		 */
@@ -56,6 +65,10 @@ const PicklistDropdownTrigger = React.createClass({
 		 * Determines position of separating bar.
 		 */
 		dividerPosition: PropTypes.oneOf(['left', 'right']),
+		/**
+		 * Message to display when the input is in an error state. When this is present, also visually highlights the component as in error.
+		 */
+		errorText: PropTypes.string,
 		/**
 		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
 		*/
@@ -101,24 +114,40 @@ const PicklistDropdownTrigger = React.createClass({
 		 */
 		onMouseLeave: PropTypes.func,
 		/**
+		 * Placeholder value in Picklist
+		 */
+		placeholder: PropTypes.string,
+		/**
 		 * The ref of the actual triggering button.
 		 */
 		triggerRef: PropTypes.func
 	},
+
+	componentWillMount () {
+		if (this.props.errorText) {
+			this.errorId =  this.props['aria-describedby'] || shortid.generate();
+		}
+	},
+
 
 	// ### Render
 	render () {
 		const {
 			active,
 			activeBackgroundColor,
+			assistiveText,
 			className,
 			disabled,
+			dropdownId,
+			errorText,
 			id,
 			isOpen,
 			label,
 			menu,
 			onClick,
 			onKeyDown,
+			placeholder,
+			required,
 			triggerRef
 		} = this.props;
 
@@ -136,8 +165,6 @@ const PicklistDropdownTrigger = React.createClass({
 			listItemstyle.backgroundColor = hoverBackgroundColor;
 		}
 
-			// const required = this.props.required ? <span style={{ color: 'red' }}>* </span> : null;
-
 		return (
 			<div // eslint-disable-line jsx-a11y/no-static-element-interactions
 				aria-expanded={isOpen}
@@ -147,35 +174,41 @@ const PicklistDropdownTrigger = React.createClass({
 						{ 'slds-is-open': isOpen },
 						className
 					)}
-				id={id}
-				onClick={onClick}
-				onKeyDown={onKeyDown}
-				ref={triggerRef}
-				tabIndex="0"
 				role="combobox"
 			>
-				<div className="slds-form-element">
+				<div
+					className={classNames('slds-form-element', {
+						'slds-has-error': errorText
+					})}
+				>
 					<label
 						className="slds-form-element__label"
-						htmlFor="text-input-01"
-					>Categories</label>
+						htmlFor={id}
+					>
+						{required && <abbr className="slds-required" title="required">*</abbr>}
+						{label}
+					</label>
 					<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right slds-picklist__input">
 						<input
-							type="text"
 							aria-activedescendant=""
-							aria-controls="option-list-01"
+							aria-controls={dropdownId}
+							aria-describedby={this.errorId}
+							aria-required={this.props['aria-required']}
 							autoComplete="off"
 							className="slds-lookup__search-input slds-input"
-							id="text-input-01"
-							placeholder="Select an Option"
+							id={id}
+							onClick={onClick}
+							onKeyDown={onKeyDown}
 							readOnly
+							ref={triggerRef}
 							role="textbox"
-							value={label}
+							type="text"
+							value={placeholder || label}
 						/>
 						<InputIcon
 							aria-expanded={isOpen}
 							className="slds-button slds-button--icon slds-input__icon slds-text-color--default"
-							assistiveText="Expand category options"
+							assistiveText={assistiveText || 'Expand category options'}
 							name="down"
 							category="utility"
 							onClick={() => {}}
@@ -183,6 +216,7 @@ const PicklistDropdownTrigger = React.createClass({
 							title="Expand category options"
 							tabIndex="-1"
 						/>
+						{errorText && <div id={this.errorId} className="slds-form-element__help" style={{ position: 'absolute' }}>{errorText}</div>}
 						{menu}
 					</div>
 				</div>

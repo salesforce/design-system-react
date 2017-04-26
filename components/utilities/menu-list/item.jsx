@@ -173,6 +173,7 @@ const ListItem = React.createClass({
 							this.props.className)}
 						id={this.props.id}
 						onMouseDown={this.handleMouseDown}
+						ref={(listItem) => this.props.itemRefs(listItem, this.props.index)}
 						role="presentation"
 					>
 						<a

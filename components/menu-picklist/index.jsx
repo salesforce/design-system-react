@@ -11,6 +11,11 @@
 // ### React
 import React, { PropTypes } from 'react';
 
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
+
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
@@ -94,21 +99,33 @@ const MenuPicklist = React.createClass({
 	},
 
 	render () {
+		const {
+			checkmark,
+			errorText,
+			label,
+			onSelect,
+			options,
+			placeholder,
+			required
+		} = this.props;
+
 		return (<Dropdown
-			checkMark={this.props.checkmark}
+			checkMark={checkmark}
 			onSelect={(item) => {
 				this.setState({ selectedItem: item });
-				this.props.onSelect(item);
+				onSelect(item);
 			}}
 			id={this.dropdownId}
-			label={(this.state.selectedItem ? this.state.selectedItem.label : null) || this.props.placeholder}
-			options={this.props.options}
+			label={(this.state.selectedItem ? this.state.selectedItem.label : null) || placeholder}
+			options={options}
 		>
 			<PicklistTrigger
 				dropdownId={this.dropdownId}
-				errorText={this.props.errorText}
+				errorText={errorText}
 				id={this.triggerId}
-				required={this.props.required}
+				label={label || placeholder}
+				placeholder={placeholder}
+				required={required}
 			/>
 		</Dropdown>);
 	}
