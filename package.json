@@ -4,7 +4,7 @@
   "description": "Salesforce Lightning Design System for React",
   "license": "SEE LICENSE IN README.md",
   "engines": {
-    "node": "^4.4.0",
+    "node": ">=4.4.0",
     "npm": "^3.9.0"
   },
   "lint-staged": {
