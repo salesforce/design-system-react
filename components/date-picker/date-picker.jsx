@@ -1,8 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import Dialog from '../utilities/dialog';
 import CalendarWrapper from './private/calendar-wrapper';
@@ -46,21 +46,16 @@ const Datepicker = React.createClass({
 
 	propTypes: {
 		/**
-		 * Three letter abbreviations of the days of the week, starting on Sunday. _Tested with snapshot testing._
+		 * **Assistive text for accessibility**
+		 * * `nextMonth`: Label for button to go to the next month _Tested with snapshot testing._
+		 * * `openCalendar`: Call to action label for calendar dialog trigger _Tested with snapshot testing._
+		 * * `previousMonth`: Label for button to go to the previous month _Tested with snapshot testing._
 		 */
-		abbreviatedWeekDayLabels: PropTypes.array,
-		/**
-		 * Label for button to go to the next month _Tested with snapshot testing._
-		 */
-		assistiveTextNextMonth: PropTypes.string,
-		/**
-		 * Call to action label for calendar dialog trigger _Tested with snapshot testing._
-		 */
-		assistiveTextOpenCalendar: PropTypes.string,
-		/**
-		 * Label for button to go to the previous month _Tested with snapshot testing._
-		 */
-		assistiveTextPreviousMonth: PropTypes.string,
+		assistiveText: PropTypes.shape({
+			nextMonth: PropTypes.string,
+			openCalendar: PropTypes.string,
+			previousMonth: PropTypes.string
+		}),
 		/**
 		 * Aligns the right or left side of the menu with the respective side of the trigger. _Tested with snapshot testing._
 		 */
@@ -105,9 +100,24 @@ const Datepicker = React.createClass({
 		 */
 		isInline: PropTypes.bool,
 		/**
-		 * This label appears above the input.
+		 * This is the form label and it appears above the input.
 		 */
 		label: PropTypes.string,
+		/**
+		 * **Assistive text for accessibility**
+		 * * `abbreviatedWeekDays`: Three letter abbreviations of the days of the week, starting on Sunday. _Tested with snapshot testing._
+		 * * `months`: Names of the months. _Tested with snapshot testing._
+		 * * `placeholder`: Placeholder text for input. _Tested with snapshot testing._
+		 * * `today`: Label of shortcut to jump to today within the calendar. This is also used for assistive text on today's date. _Tested with snapshot testing._
+		 * * `weekDays`: Full names of the seven days of the week, starting on Sunday. _Tested with snapshot testing._
+		 */
+		labels: PropTypes.shape({
+			abbreviatedWeekDays: PropTypes.array,
+			months: PropTypes.array,
+			placeholder: PropTypes.string,
+			today: PropTypes.string,
+			weekDays: PropTypes.array
+		}),
 		/**
 		 * Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use view [Concepts and Best Practices](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices)
 		 */
@@ -116,10 +126,6 @@ const Datepicker = React.createClass({
 		 * Makes Monday the first day of the week. _Tested with snapshot testing._
 		 */
 		isIsoWeekday: PropTypes.bool,
-		/**
-		 * Names of the months. _Tested with snapshot testing._
-		 */
-		monthLabels: PropTypes.array,
 		/**
 		 * Triggered when the user wants to focus on a new day with the keyboard. If the target node is a day it will return the keyboard event a data object with the shape: `{date: [Date object]}`. Event will be `null` when new month is re-rendered.  _Tested with Mocha framework._
 		 */
@@ -167,10 +173,6 @@ const Datepicker = React.createClass({
 		 */
 		portalMount: PropTypes.func,
 		/**
-		 * Placeholder text for input. _Tested with snapshot testing._
-		 */
-		placeholder: PropTypes.string,
-		/**
 		 * Offset of year from current year that can be selected in the year selection dropdown. (2017 - 5 = 2012). _Tested with snapshot testing._
 		 */
 		relativeYearFrom: PropTypes.number,
@@ -179,63 +181,59 @@ const Datepicker = React.createClass({
 		 */
 		relativeYearTo: PropTypes.number,
 		/**
-		 * Label of shortcut to jump to today within the calendar. This is also used for assistive text on today's date. _Tested with snapshot testing._
-		 */
-		todayLabel: PropTypes.string,
-		/**
 		 * CSS classes to be added to tag with `slds-datepicker-trigger`. This is typically a wrapping `div` around the input. _Tested with snapshot testing._
 		 */
 		triggerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
      * Sets date with a `Date` ECMAScript object. _Tested with snapshot testing._
      */
-		value: PropTypes.instanceOf(Date),
-		/**
-		 * Full names of the seven days of the week, starting on Sunday. _Tested with snapshot testing._
-		 */
-		weekDayLabels: PropTypes.array
+		value: PropTypes.instanceOf(Date)
 	},
 
 	getDefaultProps () {
 		return {
 			align: 'left',
-			abbreviatedWeekDayLabels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-			assistiveTextOpenCalendar: 'Open Calendar',
-			assistiveTextNextMonth: 'Next month',
-			assistiveTextPreviousMonth: 'Previous month',
+			assistiveText: {
+				nextMonth: 'Next month',
+				openCalendar: 'Open Calendar',
+				previousMonth: 'Previous month'
+			},
 			formatter (date) {
 				return date ? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}` : '';
 			},
-			monthLabels: [
-				'January',
-				'February',
-				'March',
-				'April',
-				'May',
-				'June',
-				'July',
-				'August',
-				'September',
-				'October',
-				'November',
-				'December'
-			],
+			labels: {
+				abbreviatedWeekDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+				months: [
+					'January',
+					'February',
+					'March',
+					'April',
+					'May',
+					'June',
+					'July',
+					'August',
+					'September',
+					'October',
+					'November',
+					'December'
+				],
+				placeholder: 'Pick a Date',
+				today: 'Today',
+				weekDays: [
+					'Sunday',
+					'Monday',
+					'Tuesday',
+					'Wednesday',
+					'Thursday',
+					'Friday',
+					'Saturday'
+				]
+			},
 			parser (str) {
 				return new Date(str);
 			},
-			placeholder: 'Pick a Date',
 			relativeYearFrom: -5,
 			relativeYearTo: 5,
-			todayLabel: 'Today',
-			weekDayLabels: [
-				'Sunday',
-				'Monday',
-				'Tuesday',
-				'Wednesday',
-				'Thursday',
-				'Friday',
-				'Saturday'
-			],
 			dateDisabled: () => false
 		};
 	},
@@ -399,12 +397,20 @@ const Datepicker = React.createClass({
 
 		return (<CalendarWrapper
 			// Please remove `abbrWeekDayLabels` on the next breaking change.
-			abbreviatedWeekDayLabels={this.props.abbreviatedWeekDayLabels || this.props.abbrWeekDayLabels} // eslint-disable-line react/prop-types
-			assistiveTextNextMonth={this.props.assistiveTextNextMonth}
-			assistiveTextPreviousMonth={this.props.assistiveTextPreviousMonth}
+			abbreviatedWeekDayLabels={this.props.abbreviatedWeekDayLabels // eslint-disable-line react/prop-types
+				|| this.props.abbrWeekDayLabels // eslint-disable-line react/prop-types
+				|| this.props.labels.abbreviatedWeekDays}
+
+			/* Remove || for assistiveText at next breaking change */
+			assistiveTextNextMonth={this.props.assistiveTextNextMonth || // eslint-disable-line react/prop-types
+				this.props.assistiveText.nextMonth}
+			assistiveTextPreviousMonth={this.props.assistiveTextPreviousMonth || // eslint-disable-line react/prop-types
+				this.props.assistiveText.previousMonth}
+
 			id={this.getId()}
 			isIsoWeekday={this.props.isIsoWeekday}
-			monthLabels={this.props.monthLabels}
+			monthLabels={this.props.monthLabels // eslint-disable-line react/prop-types
+				|| this.props.labels.months}
 			onCalendarFocus={this.props.onCalendarFocus}
 			dateDisabled={this.props.dateDisabled}
 			onRequestClose={this.handleRequestClose}
@@ -419,8 +425,10 @@ const Datepicker = React.createClass({
 			relativeYearTo={this.props.relativeYearTo}
 			selectedDate={date || new Date()}
 			selectedDateRef={(component) => { this.selectedDateCell = component; }}
-			todayLabel={this.props.todayLabel}
-			weekDayLabels={this.props.weekDayLabels}
+			todayLabel={this.props.todayLabel // eslint-disable-line react/prop-types
+				|| this.props.labels.today}
+			weekDayLabels={this.props.weekDayLabels // eslint-disable-line react/prop-types
+				|| this.props.labels.weekDays}
 		/>);
 	},
 
@@ -459,10 +467,12 @@ const Datepicker = React.createClass({
 	},
 
 	render () {
-		const clonedProps = {
+		const clonedInputProps = {
 			disabled: (this.props.children && !!this.props.children.props.disabled) || this.props.disabled,
 			iconRight: (this.props.children && !!this.props.children.props.iconRight) || (<InputIcon
-				assistiveText={this.props.assistiveTextOpenCalendar}
+				// Remove || for assistiveText at next breaking change
+				assistiveText={this.props.assistiveTextOpenCalendar || // eslint-disable-line react/prop-types
+					this.props.assistiveText.openCalendar}
 				aria-haspopup
 				aria-expanded={this.getIsOpen()}
 				category="utility"
@@ -482,16 +492,18 @@ const Datepicker = React.createClass({
 			},
 			onFocus: (this.props.children && this.props.children.props.onFocus) || this.props.onFocus, // eslint-disable-line react/prop-types
 			onKeyDown: (this.props.children && this.props.children.props.onKeyDown) || this.handleKeyDown,
-			placeholder: (this.props.children && this.props.children.props.placeholder) || this.props.placeholder,
+			placeholder: (this.props.children && this.props.children.props.placeholder)
+				|| this.props.placeholder // eslint-disable-line react/prop-types
+				|| this.props.labels.placeholder,
 			required: (this.props.children && this.props.children.props.required) || this.props.required, // eslint-disable-line react/prop-types
 			value: (this.props.children && this.props.children.props.value) || this.state.inputValue
 		};
 
 		const clonedInput = this.props.children ? React.cloneElement(this.props.children, {
-			...clonedProps
+			...clonedInputProps
 		})
 		: (<Input
-			{...clonedProps}
+			{...clonedInputProps}
 		/>);
 
 		return (
