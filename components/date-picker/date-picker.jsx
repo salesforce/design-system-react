@@ -100,19 +100,17 @@ const Datepicker = React.createClass({
 		 */
 		isInline: PropTypes.bool,
 		/**
-		 * This is the form label and it appears above the input.
-		 */
-		label: PropTypes.string,
-		/**
 		 * **Assistive text for accessibility**
 		 * * `abbreviatedWeekDays`: Three letter abbreviations of the days of the week, starting on Sunday. _Tested with snapshot testing._
 		 * * `months`: Names of the months. _Tested with snapshot testing._
+		 * * `label`: This label appears above the input.
 		 * * `placeholder`: Placeholder text for input. _Tested with snapshot testing._
 		 * * `today`: Label of shortcut to jump to today within the calendar. This is also used for assistive text on today's date. _Tested with snapshot testing._
 		 * * `weekDays`: Full names of the seven days of the week, starting on Sunday. _Tested with snapshot testing._
 		 */
 		labels: PropTypes.shape({
 			abbreviatedWeekDays: PropTypes.array,
+			label: PropTypes.string,
 			months: PropTypes.array,
 			placeholder: PropTypes.string,
 			today: PropTypes.string,
@@ -481,7 +479,9 @@ const Datepicker = React.createClass({
 			/>),
 			id: this.getId(),
 			inputRef: (component) => { this.inputRef = component; },
-			label: (this.props.children && this.props.children.props.label) || this.props.label, // eslint-disable-line react/prop-types
+			label: (this.props.children && this.props.children.props.label)
+				|| this.props.label // eslint-disable-line react/prop-types
+				|| this.props.labels.label,
 			onBlur: (this.props.children && this.props.children.props.onBlur) || this.props.onBlur, // eslint-disable-line react/prop-types
 			onChange: this.handleInputChange,
 			onClick: () => {
