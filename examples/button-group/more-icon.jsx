@@ -13,6 +13,7 @@ const Example = React.createClass({
 				<Button label="Edit" />
 				<Button label="Save" />
 				<Dropdown
+					id="ButtonGroupExampleDropdown"
 					assistiveText="More Options"
 					buttonVariant="icon"
 					iconName="down"
