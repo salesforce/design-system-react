@@ -9,6 +9,8 @@ import CalendarWrapper from './private/calendar-wrapper';
 import InputIcon from '../icon/input-icon';
 import Input from '../forms/input';
 
+import { shape } from 'airbnb-prop-types';
+
 // ### isBoolean
 import isBoolean from 'lodash.isboolean';
 
@@ -47,11 +49,12 @@ class Datepicker extends React.Component {
 	static propTypes = {
 		/**
 		 * **Assistive text for accessibility**
+		 * This object is merged with the default props object on every render.
 		 * * `nextMonth`: Label for button to go to the next month _Tested with snapshot testing._
 		 * * `openCalendar`: Call to action label for calendar dialog trigger _Tested with snapshot testing._
 		 * * `previousMonth`: Label for button to go to the previous month _Tested with snapshot testing._
 		 */
-		assistiveText: PropTypes.shape({
+		assistiveText: shape({
 			nextMonth: PropTypes.string,
 			openCalendar: PropTypes.string,
 			previousMonth: PropTypes.string
@@ -100,7 +103,8 @@ class Datepicker extends React.Component {
 		 */
 		isInline: PropTypes.bool,
 		/**
-		 * **Assistive text for accessibility**
+		 * **Text labels for internationalization**
+		 * This object is merged with the default props object on every render.
 		 * * `abbreviatedWeekDays`: Three letter abbreviations of the days of the week, starting on Sunday. _Tested with snapshot testing._
 		 * * `months`: Names of the months. _Tested with snapshot testing._
 		 * * `label`: This label appears above the input.
@@ -334,7 +338,7 @@ class Datepicker extends React.Component {
 		return parsedDate;
 	};
 
-	getInlineMenu = () => (
+	getInlineMenu = ({ labels, assistiveText }) => (
 		!this.props.disabled && this.getIsOpen()
 		? <div
 			className={classNames('slds-datepicker',
@@ -342,7 +346,7 @@ class Datepicker extends React.Component {
 				`slds-dropdown--${this.props.align}`,
 			this.props.className)}
 		>
-			{this.getDatePicker()}
+			{this.getDatePicker({ labels, assistiveText })}
 		</div>
 		: null
 	);
@@ -363,7 +367,7 @@ class Datepicker extends React.Component {
 		}
 	};
 
-	getDialog = () => (
+	getDialog = ({ labels, assistiveText }) => (
 			!this.props.disabled && this.getIsOpen()
 			? <Dialog
 				contentsClassName="slds-datepicker slds-dropdown"
@@ -375,12 +379,12 @@ class Datepicker extends React.Component {
 				portalMount={this.props.portalMount}
 				targetElement={this.inputRef}
 			>
-				{this.getDatePicker()}
+				{this.getDatePicker({ labels, assistiveText })}
 			</Dialog>
 			: null
 	);
 
-	getDatePicker = () => {
+	getDatePicker = ({ labels, assistiveText }) => {
 		const date = this.state.formattedValue
 			? this.parseDate(this.state.formattedValue)
 			: this.state.value;
@@ -389,18 +393,18 @@ class Datepicker extends React.Component {
 			// Please remove `abbrWeekDayLabels` on the next breaking change.
 			abbreviatedWeekDayLabels={this.props.abbreviatedWeekDayLabels // eslint-disable-line react/prop-types
 				|| this.props.abbrWeekDayLabels // eslint-disable-line react/prop-types
-				|| this.props.labels.abbreviatedWeekDays}
+				|| labels.abbreviatedWeekDays}
 
 			/* Remove || for assistiveText at next breaking change */
 			assistiveTextNextMonth={this.props.assistiveTextNextMonth || // eslint-disable-line react/prop-types
-				this.props.assistiveText.nextMonth}
+				assistiveText.nextMonth}
 			assistiveTextPreviousMonth={this.props.assistiveTextPreviousMonth || // eslint-disable-line react/prop-types
-				this.props.assistiveText.previousMonth}
+				assistiveText.previousMonth}
 
 			id={this.getId()}
 			isIsoWeekday={this.props.isIsoWeekday}
 			monthLabels={this.props.monthLabels // eslint-disable-line react/prop-types
-				|| this.props.labels.months}
+				|| labels.months}
 			onCalendarFocus={this.props.onCalendarFocus}
 			dateDisabled={this.props.dateDisabled}
 			onRequestClose={this.handleRequestClose}
@@ -416,9 +420,9 @@ class Datepicker extends React.Component {
 			selectedDate={date || new Date()}
 			selectedDateRef={(component) => { this.selectedDateCell = component; }}
 			todayLabel={this.props.todayLabel // eslint-disable-line react/prop-types
-				|| this.props.labels.today}
+				|| labels.today}
 			weekDayLabels={this.props.weekDayLabels // eslint-disable-line react/prop-types
-				|| this.props.labels.weekDays}
+				|| labels.weekDays}
 		/>);
 	};
 
@@ -457,12 +461,16 @@ class Datepicker extends React.Component {
 	};
 
 	render () {
+		// Merge objects of strings with their default object
+		const labels = Object.assign({}, Datepicker.defaultProps.labels, this.props.labels);
+		const assistiveText = Object.assign({}, Datepicker.defaultProps.assistiveText, this.props.assistiveText);
+
 		const clonedInputProps = {
 			disabled: (this.props.children && !!this.props.children.props.disabled) || this.props.disabled,
 			iconRight: (this.props.children && !!this.props.children.props.iconRight) || (<InputIcon
 				// Remove || for assistiveText at next breaking change
 				assistiveText={this.props.assistiveTextOpenCalendar || // eslint-disable-line react/prop-types
-					this.props.assistiveText.openCalendar}
+					assistiveText.openCalendar}
 				aria-haspopup
 				aria-expanded={this.getIsOpen()}
 				category="utility"
@@ -473,7 +481,7 @@ class Datepicker extends React.Component {
 			inputRef: (component) => { this.inputRef = component; },
 			label: (this.props.children && this.props.children.props.label)
 				|| this.props.label // eslint-disable-line react/prop-types
-				|| this.props.labels.label,
+				|| labels.label,
 			onBlur: (this.props.children && this.props.children.props.onBlur) || this.props.onBlur, // eslint-disable-line react/prop-types
 			onChange: this.handleInputChange,
 			onClick: () => {
@@ -486,7 +494,7 @@ class Datepicker extends React.Component {
 			onKeyDown: (this.props.children && this.props.children.props.onKeyDown) || this.handleKeyDown,
 			placeholder: (this.props.children && this.props.children.props.placeholder)
 				|| this.props.placeholder // eslint-disable-line react/prop-types
-				|| this.props.labels.placeholder,
+				|| labels.placeholder,
 			required: (this.props.children && this.props.children.props.required) || this.props.required, // eslint-disable-line react/prop-types
 			value: (this.props.children && this.props.children.props.value) || this.state.inputValue
 		};
@@ -510,7 +518,9 @@ class Datepicker extends React.Component {
 				)}
 			>
 				{clonedInput}
-				{this.props.isInline ? this.getInlineMenu() : this.getDialog()}
+				{this.props.isInline
+					? this.getInlineMenu({ labels, assistiveText })
+					: this.getDialog({ labels, assistiveText })}
 			</div>
 		);
 	}
