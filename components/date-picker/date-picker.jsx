@@ -41,10 +41,10 @@ import { DATE_PICKER } from '../../utilities/constants';
  *
  * This component may use a portalMount (a disconnected React subtree mount) within an absolutely positioned DOM node created with [Drop](http://github.hubspot.com/drop/).
  */
-const Datepicker = React.createClass({
-	displayName: DATE_PICKER,
+class Datepicker extends React.Component {
+	static displayName = DATE_PICKER;
 
-	propTypes: {
+	static propTypes = {
 		/**
 		 * **Assistive text for accessibility**
 		 * * `nextMonth`: Label for button to go to the next month _Tested with snapshot testing._
@@ -108,7 +108,7 @@ const Datepicker = React.createClass({
 		 * * `today`: Label of shortcut to jump to today within the calendar. This is also used for assistive text on today's date. _Tested with snapshot testing._
 		 * * `weekDays`: Full names of the seven days of the week, starting on Sunday. _Tested with snapshot testing._
 		 */
-		labels: PropTypes.shape({
+		labels: shape({
 			abbreviatedWeekDays: PropTypes.array,
 			label: PropTypes.string,
 			months: PropTypes.array,
@@ -183,78 +183,78 @@ const Datepicker = React.createClass({
 		 */
 		triggerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
-     * Sets date with a `Date` ECMAScript object. _Tested with snapshot testing._
-     */
+		 * Sets date with a `Date` ECMAScript object. _Tested with snapshot testing._
+		 */
 		value: PropTypes.instanceOf(Date)
-	},
+	};
 
-	getDefaultProps () {
-		return {
-			align: 'left',
-			assistiveText: {
-				nextMonth: 'Next month',
-				openCalendar: 'Open Calendar',
-				previousMonth: 'Previous month'
-			},
-			formatter (date) {
-				return date ? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}` : '';
-			},
-			labels: {
-				abbreviatedWeekDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-				months: [
-					'January',
-					'February',
-					'March',
-					'April',
-					'May',
-					'June',
-					'July',
-					'August',
-					'September',
-					'October',
-					'November',
-					'December'
-				],
-				placeholder: 'Pick a Date',
-				today: 'Today',
-				weekDays: [
-					'Sunday',
-					'Monday',
-					'Tuesday',
-					'Wednesday',
-					'Thursday',
-					'Friday',
-					'Saturday'
-				]
-			},
-			parser (str) {
-				return new Date(str);
-			},
-			relativeYearFrom: -5,
-			relativeYearTo: 5,
-			dateDisabled: () => false
-		};
-	},
+	static defaultProps = {
+		align: 'left',
+		assistiveText: {
+			nextMonth: 'Next month',
+			openCalendar: 'Open Calendar',
+			previousMonth: 'Previous month'
+		},
+		formatter (date) {
+			return date ? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}` : '';
+		},
+		labels: {
+			abbreviatedWeekDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+			months: [
+				'January',
+				'February',
+				'March',
+				'April',
+				'May',
+				'June',
+				'July',
+				'August',
+				'September',
+				'October',
+				'November',
+				'December'
+			],
+			placeholder: 'Pick a Date',
+			today: 'Today',
+			weekDays: [
+				'Sunday',
+				'Monday',
+				'Tuesday',
+				'Wednesday',
+				'Thursday',
+				'Friday',
+				'Saturday'
+			]
+		},
+		parser (str) {
+			return new Date(str);
+		},
+		relativeYearFrom: -5,
+		relativeYearTo: 5,
+		dateDisabled: () => false
+	};
 
-	getInitialState () {
+	constructor (props) {
+		super(props);
 		// Please remove `strValue` on the next breaking change.
-		const formattedValue = this.props.formattedValue || this.props.strValue; // eslint-disable-line react/prop-types
-		const dateString = this.props.formatter(this.props.value);
-		const initDate = this.props.value ? dateString : formattedValue;
-		return {
+		const formattedValue = props.formattedValue || props.strValue; // eslint-disable-line react/prop-types
+		const dateString = props.formatter(props.value);
+		const initDate = props.value ? dateString : formattedValue;
+
+		this.state = {
 			isOpen: false,
-			value: this.props.value,
+			value: props.value,
 			formattedValue: initDate || '',
 			inputValue: initDate || ''
 		};
-	},
+	}
 
 	componentWillMount () {
 		this.generatedId = shortid.generate();
 
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(DATE_PICKER, this.props);
-	},
+	}
 
 	componentWillReceiveProps (nextProps) {
 		if (nextProps.value && this.props.value) {
@@ -268,17 +268,13 @@ const Datepicker = React.createClass({
 				});
 			}
 		}
-	},
+	}
 
-	getId () {
-		return this.props.id || this.generatedId;
-	},
+	getId = () => this.props.id || this.generatedId;
 
-	getIsOpen () {
-		return !!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
-	},
+	getIsOpen = () => !!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
 
-	handleCalendarChange (event, { date }) {
+	handleCalendarChange = (event, { date }) => {
 		this.setState({
 			value: date,
 			formattedValue: this.props.formatter(date),
@@ -301,13 +297,13 @@ const Datepicker = React.createClass({
 			this.props.onDateChange(date, this.props.formatter(date));
 		}
 		/* eslint-enable react/prop-types */
-	},
+	};
 
-	handleClickOutside () {
+	handleClickOutside = () => {
 		this.handleRequestClose();
-	},
+	};
 
-	handleRequestClose () {
+	handleRequestClose = () => {
 		if (this.props.onRequestClose) {
 			this.props.onRequestClose();
 		}
@@ -319,47 +315,45 @@ const Datepicker = React.createClass({
 		if (this.inputRef) {
 			this.inputRef.focus();
 		}
-	},
+	};
 
-	openDialog () {
+	openDialog = () => {
 		if (this.props.onRequestOpen) {
 			this.props.onRequestOpen();
 		} else {
 			this.setState({ isOpen: true });
 		}
-	},
+	};
 
-	parseDate (formattedValue) {
+	parseDate = (formattedValue) => {
 		let parsedDate = this.props.parser(formattedValue);
 		if (Object.prototype.toString.call(parsedDate) !== '[object Date]'
 			|| isNaN(parsedDate.getTime())) {
 			parsedDate = new Date();
 		}
 		return parsedDate;
-	},
+	};
 
-	getInlineMenu () {
-		return (
-			!this.props.disabled && this.getIsOpen()
-			? <div
-				className={classNames('slds-datepicker',
-					'slds-dropdown',
-					`slds-dropdown--${this.props.align}`,
-				this.props.className)}
-			>
-				{this.getDatePicker()}
-			</div>
-			: null
-		);
-	},
+	getInlineMenu = () => (
+		!this.props.disabled && this.getIsOpen()
+		? <div
+			className={classNames('slds-datepicker',
+				'slds-dropdown',
+				`slds-dropdown--${this.props.align}`,
+			this.props.className)}
+		>
+			{this.getDatePicker()}
+		</div>
+		: null
+	);
 
-	handleClose () {
+	handleClose = () => {
 		if (this.props.onClose) {
 			this.props.onClose();
 		}
-	},
+	};
 
-	handleOpen () {
+	handleOpen = () => {
 		if (this.props.onOpen) {
 			this.props.onOpen();
 		}
@@ -367,28 +361,26 @@ const Datepicker = React.createClass({
 		if (this.selectedDateCell) {
 			this.selectedDateCell.focus();
 		}
-	},
+	};
 
-	getDialog () {
-		return (
-				!this.props.disabled && this.getIsOpen()
-				? <Dialog
-					contentsClassName="slds-datepicker slds-dropdown"
-					constrainToScrollParent={this.props.constrainToScrollParent}
-					horizontalAlign={this.props.align}
-					flippable={!this.props.hasStaticAlignment}
-					onClose={this.handleClose}
-					onOpen={this.handleOpen}
-					portalMount={this.props.portalMount}
-					targetElement={this.inputRef}
-				>
-					{this.getDatePicker()}
-				</Dialog>
-				: null
-		);
-	},
+	getDialog = () => (
+			!this.props.disabled && this.getIsOpen()
+			? <Dialog
+				contentsClassName="slds-datepicker slds-dropdown"
+				constrainToScrollParent={this.props.constrainToScrollParent}
+				horizontalAlign={this.props.align}
+				flippable={!this.props.hasStaticAlignment}
+				onClose={this.handleClose}
+				onOpen={this.handleOpen}
+				portalMount={this.props.portalMount}
+				targetElement={this.inputRef}
+			>
+				{this.getDatePicker()}
+			</Dialog>
+			: null
+	);
 
-	getDatePicker () {
+	getDatePicker = () => {
 		const date = this.state.formattedValue
 			? this.parseDate(this.state.formattedValue)
 			: this.state.value;
@@ -428,9 +420,9 @@ const Datepicker = React.createClass({
 			weekDayLabels={this.props.weekDayLabels // eslint-disable-line react/prop-types
 				|| this.props.labels.weekDays}
 		/>);
-	},
+	};
 
-	handleInputChange (event) {
+	handleInputChange = (event) => {
 		this.setState({
 			formattedValue: event.target.value,
 			inputValue: event.target.value
@@ -445,9 +437,9 @@ const Datepicker = React.createClass({
 				timezoneOffset: date.getTimezoneOffset()
 			});
 		}
-	},
+	};
 
-	handleKeyDown (event) {
+	handleKeyDown = (event) => {
 		// Don't open if user is selecting text
 		if (event.keyCode
 				&& !event.shiftKey
@@ -462,7 +454,7 @@ const Datepicker = React.createClass({
 			this.props.onKeyDown(event);
 		}
 		/* eslint-enable react/prop-types */
-	},
+	};
 
 	render () {
 		const clonedInputProps = {
@@ -522,6 +514,6 @@ const Datepicker = React.createClass({
 			</div>
 		);
 	}
-});
+}
 
 export default Datepicker;
