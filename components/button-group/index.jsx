@@ -8,6 +8,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import assign from 'lodash.assign';
+
 import { shape } from 'airbnb-prop-types';
 
 import { BUTTON_GROUP } from '../../utilities/constants';
@@ -48,7 +50,7 @@ const defaultProps = { labels: {} };
  */
 const ButtonGroup = (props) => {
 	// Merge objects of strings with their default object
-	const labels = Object.assign({}, defaultProps.labels, props.labels);
+	const labels = props ? assign({}, defaultProps.labels, props.labels) : defaultProps.labels;
 	
 	let children = props.children;
 	const zeroIndexLength = React.Children.count(props.children) - 1;
@@ -72,9 +74,8 @@ const ButtonGroup = (props) => {
 		})));
 	}
 
-	return (
-		props.variant === 'checkbox'
-		? <fieldset
+	if (props.variant === 'checkbox') {
+		return (<fieldset
 			className={classNames('slds-form-element', {
 				'slds-has-error': labels.error
 			})}
@@ -90,11 +91,12 @@ const ButtonGroup = (props) => {
 				</div>
 				{labels.error ? <div className="slds-form-element__help">{labels.error}</div> : null}
 			</div>
-		</fieldset>
-		: <div className={classNames('slds-button-group', props.className)} role="group">
-			{children}
-		</div>
-	);
+		</fieldset>);
+	}
+	// default
+	return (<div className={classNames('slds-button-group', props.className)} role="group">
+		{children}
+	</div>);
 };
 
 ButtonGroup.displayName = BUTTON_GROUP;
