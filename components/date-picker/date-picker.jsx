@@ -9,6 +9,8 @@ import CalendarWrapper from './private/calendar-wrapper';
 import InputIcon from '../icon/input-icon';
 import Input from '../forms/input';
 
+import assign from 'lodash.assign';
+
 import { shape } from 'airbnb-prop-types';
 
 // ### isBoolean
@@ -479,8 +481,8 @@ class Datepicker extends React.Component {
 
 	render () {
 		// Merge objects of strings with their default object
-		const labels = Object.assign({}, defaultProps.labels, this.props.labels);
-		const assistiveText = Object.assign({}, defaultProps.assistiveText, this.props.assistiveText);
+		const labels = assign({}, defaultProps.labels, this.props.labels);
+		const assistiveText = assign({}, defaultProps.assistiveText, this.props.assistiveText);
 
 		const clonedInputProps = {
 			disabled: (this.props.children && !!this.props.children.props.disabled) || this.props.disabled,
