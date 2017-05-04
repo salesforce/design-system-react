@@ -16,10 +16,10 @@ import KEYS from '../../../utilities/key-code';
 // joining classNames together."
 import classNames from 'classnames';
 
-const DatepickerCalendarWrapper = React.createClass({
-	displayName: 'DatepickerCalendarWrapper',
+class DatepickerCalendarWrapper extends React.Component {
+	static displayName = 'DatepickerCalendarWrapper';
 
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Label for button to go to the next month
 		 */
@@ -92,27 +92,23 @@ const DatepickerCalendarWrapper = React.createClass({
 		 * Names of the seven days of the week, starting on Sunday.
 		 */
 		weekDayLabels: PropTypes.array.isRequired
-	},
+	};
 
-	getDefaultProps () {
-		return {
-			selectedDate: new Date(),
-			value: new Date()
-		};
-	},
+	static defaultProps = {
+		selectedDate: new Date(),
+		value: new Date()
+	};
 
-	getInitialState () {
-		return {
-			initialDateForCalendarRender: this.props.selectedDate,
-			isCalendarFocused: true
-		};
-	},
+	state = {
+		initialDateForCalendarRender: this.props.selectedDate,
+		isCalendarFocused: true
+	};
 
-	handleInitialDateForCalendarRenderChange (event, initialDateForCalendarRender) {
+	handleInitialDateForCalendarRenderChange = (event, initialDateForCalendarRender) => {
 		this.setState({ initialDateForCalendarRender });
-	},
+	};
 
-	handleCalendarBlur (event, { direction }) {
+	handleCalendarBlur = (event, { direction }) => {
 		if (direction === 'next' && this.previousMonthRef) {
 			this.setState({ isCalendarFocused: false });
 			if (this.props.onCalendarFocus) {
@@ -126,29 +122,29 @@ const DatepickerCalendarWrapper = React.createClass({
 			}
 			this.todayRef.focus();
 		}
-	},
+	};
 
-	handleRequestClose () {
+	handleRequestClose = () => {
 		if (this.props.onRequestClose) {
 			this.props.onRequestClose();
 		}
-	},
+	};
 
-	handleLastFocusableNodeKeyDown (event) {
+	handleLastFocusableNodeKeyDown = (event) => {
 		if (!event.shiftKey && event.keyCode === KEYS.TAB) {
 			EventUtil.trapEvent(event);
 			this.setState({ isCalendarFocused: true });
 		}
-	},
+	};
 
-	handleFirstFocusableNodeKeyDown (event) {
+	handleFirstFocusableNodeKeyDown = (event) => {
 		if (event.shiftKey && event.keyCode === KEYS.TAB) {
 			EventUtil.trapEvent(event);
 			this.setState({ isCalendarFocused: true });
 		}
-	},
+	};
 
-	handleRequestFocusDate (event, data) {
+	handleRequestFocusDate = (event, data) => {
 		// will be called three times, due to re-render
 		if (data.ref && this.state.isCalendarFocused) {
 			data.ref.focus();
@@ -159,14 +155,14 @@ const DatepickerCalendarWrapper = React.createClass({
 			const { triggerCallback, ...modifiedData } = data;	// eslint-disable-line no-unused-vars
 			this.props.onCalendarFocus(event, modifiedData);
 		}
-	},
+	};
 
-	handleKeyDown (event) {
+	handleKeyDown = (event) => {
 		if (event.keyCode === KEYS.ESCAPE) {
 			EventUtil.trapEvent(event);
 			this.props.onRequestClose(event);
 		}
-	},
+	};
 
 	render () {
 		return (
@@ -216,6 +212,6 @@ const DatepickerCalendarWrapper = React.createClass({
 			</div>
 		);
 	}
-});
+}
 
 module.exports = DatepickerCalendarWrapper;
