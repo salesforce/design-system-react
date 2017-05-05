@@ -1,0 +1,510 @@
+exports[`test Button Group Checkbox Error HTML Snapshot 1`] = `
+"<fieldset class=\"slds-form-element\">
+  <legend class=\"slds-form-element__legend slds-form-element__label\">Scheduled Day(s)</legend>
+  <div class=\"slds-form-element__control\">
+    <div class=\"slds-checkbox--button-group\"><span class=\"slds-button slds-checkbox--button\"><input type=\"checkbox\" id=\"ButtonGroupExampleMon\"/><label class=\"slds-checkbox--button__label\" for=\"ButtonGroupExampleMon\"><span class=\"slds-checkbox--faux\">Mon</span></label>
+      </span><span class=\"slds-button slds-checkbox--button\"><input type=\"checkbox\" id=\"ButtonGroupExampleTue\"/><label class=\"slds-checkbox--button__label\" for=\"ButtonGroupExampleTue\"><span class=\"slds-checkbox--faux\">Tue</span></label>
+      </span><span class=\"slds-button slds-checkbox--button\"><input type=\"checkbox\" id=\"ButtonGroupExampleWed\"/><label class=\"slds-checkbox--button__label\" for=\"ButtonGroupExampleWed\"><span class=\"slds-checkbox--faux\">Wed</span></label>
+      </span><span class=\"slds-button slds-checkbox--button\"><input type=\"checkbox\" id=\"ButtonGroupExampleThu\"/><label class=\"slds-checkbox--button__label\" for=\"ButtonGroupExampleThu\"><span class=\"slds-checkbox--faux\">Thu</span></label>
+      </span><span class=\"slds-button slds-checkbox--button\"><input type=\"checkbox\" id=\"ButtonGroupExampleFri\"/><label class=\"slds-checkbox--button__label\" for=\"ButtonGroupExampleFri\"><span class=\"slds-checkbox--faux\">Fri</span></label>
+      </span>
+    </div>
+  </div>
+</fieldset>"
+`;
+
+exports[`test Button Group Checkbox Error HTML Snapshot 2`] = `
+"<fieldset class=\"slds-form-element slds-has-error\">
+  <legend class=\"slds-form-element__legend slds-form-element__label\">Scheduled Day(s)</legend>
+  <div class=\"slds-form-element__control\">
+    <div class=\"slds-checkbox--button-group\"><span class=\"slds-button slds-checkbox--button\"><input type=\"checkbox\" id=\"ButtonGroupExampleMon\"/><label class=\"slds-checkbox--button__label\" for=\"ButtonGroupExampleMon\"><span class=\"slds-checkbox--faux\">Mon</span></label>
+      </span><span class=\"slds-button slds-checkbox--button\"><input type=\"checkbox\" id=\"ButtonGroupExampleTue\"/><label class=\"slds-checkbox--button__label\" for=\"ButtonGroupExampleTue\"><span class=\"slds-checkbox--faux\">Tue</span></label>
+      </span><span class=\"slds-button slds-checkbox--button\"><input type=\"checkbox\" id=\"ButtonGroupExampleWed\"/><label class=\"slds-checkbox--button__label\" for=\"ButtonGroupExampleWed\"><span class=\"slds-checkbox--faux\">Wed</span></label>
+      </span><span class=\"slds-button slds-checkbox--button\"><input type=\"checkbox\" id=\"ButtonGroupExampleThu\"/><label class=\"slds-checkbox--button__label\" for=\"ButtonGroupExampleThu\"><span class=\"slds-checkbox--faux\">Thu</span></label>
+      </span><span class=\"slds-button slds-checkbox--button\"><input type=\"checkbox\" id=\"ButtonGroupExampleFri\"/><label class=\"slds-checkbox--button__label\" for=\"ButtonGroupExampleFri\"><span class=\"slds-checkbox--faux\">Fri</span></label>
+      </span>
+    </div>
+    <div class=\"slds-form-element__help\">This field is required</div>
+  </div>
+</fieldset>"
+`;
+
+exports[`test Button Group Checkbox Error Snapshot 1`] = `
+<ButtonGroupExample>
+  <SLDSButtonGroup
+    labels={
+      Object {
+        "error": "This field is required",
+        "label": "Scheduled Day(s)",
+      }
+    }
+    variant="checkbox">
+    <fieldset
+      className="slds-form-element slds-has-error">
+      <legend
+        className="slds-form-element__legend slds-form-element__label">
+        Scheduled Day(s)
+      </legend>
+      <div
+        className="slds-form-element__control">
+        <div
+          className="slds-checkbox--button-group">
+          <SLDSCheckbox
+            id="ButtonGroupExampleMon"
+            label="Mon"
+            labelToggleDisabled="Disabled"
+            labelToggleEnabled="Enabled"
+            variant="button-group">
+            <span
+              className="slds-button slds-checkbox--button">
+              <input
+                id="ButtonGroupExampleMon"
+                onChange={[Function]}
+                type="checkbox" />
+              <label
+                className="slds-checkbox--button__label"
+                htmlFor="ButtonGroupExampleMon">
+                <span
+                  className="slds-checkbox--faux">
+                  Mon
+                </span>
+              </label>
+            </span>
+          </SLDSCheckbox>
+          <SLDSCheckbox
+            id="ButtonGroupExampleTue"
+            label="Tue"
+            labelToggleDisabled="Disabled"
+            labelToggleEnabled="Enabled"
+            variant="button-group">
+            <span
+              className="slds-button slds-checkbox--button">
+              <input
+                id="ButtonGroupExampleTue"
+                onChange={[Function]}
+                type="checkbox" />
+              <label
+                className="slds-checkbox--button__label"
+                htmlFor="ButtonGroupExampleTue">
+                <span
+                  className="slds-checkbox--faux">
+                  Tue
+                </span>
+              </label>
+            </span>
+          </SLDSCheckbox>
+          <SLDSCheckbox
+            id="ButtonGroupExampleWed"
+            label="Wed"
+            labelToggleDisabled="Disabled"
+            labelToggleEnabled="Enabled"
+            variant="button-group">
+            <span
+              className="slds-button slds-checkbox--button">
+              <input
+                id="ButtonGroupExampleWed"
+                onChange={[Function]}
+                type="checkbox" />
+              <label
+                className="slds-checkbox--button__label"
+                htmlFor="ButtonGroupExampleWed">
+                <span
+                  className="slds-checkbox--faux">
+                  Wed
+                </span>
+              </label>
+            </span>
+          </SLDSCheckbox>
+          <SLDSCheckbox
+            id="ButtonGroupExampleThu"
+            label="Thu"
+            labelToggleDisabled="Disabled"
+            labelToggleEnabled="Enabled"
+            variant="button-group">
+            <span
+              className="slds-button slds-checkbox--button">
+              <input
+                id="ButtonGroupExampleThu"
+                onChange={[Function]}
+                type="checkbox" />
+              <label
+                className="slds-checkbox--button__label"
+                htmlFor="ButtonGroupExampleThu">
+                <span
+                  className="slds-checkbox--faux">
+                  Thu
+                </span>
+              </label>
+            </span>
+          </SLDSCheckbox>
+          <SLDSCheckbox
+            id="ButtonGroupExampleFri"
+            label="Fri"
+            labelToggleDisabled="Disabled"
+            labelToggleEnabled="Enabled"
+            variant="button-group">
+            <span
+              className="slds-button slds-checkbox--button">
+              <input
+                id="ButtonGroupExampleFri"
+                onChange={[Function]}
+                type="checkbox" />
+              <label
+                className="slds-checkbox--button__label"
+                htmlFor="ButtonGroupExampleFri">
+                <span
+                  className="slds-checkbox--faux">
+                  Fri
+                </span>
+              </label>
+            </span>
+          </SLDSCheckbox>
+        </div>
+        <div
+          className="slds-form-element__help">
+          This field is required
+        </div>
+      </div>
+    </fieldset>
+  </SLDSButtonGroup>
+</ButtonGroupExample>
+`;
+
+exports[`test Button Group Checkbox Snapshot 1`] = `
+<ButtonGroupExample>
+  <SLDSButtonGroup
+    labels={
+      Object {
+        "label": "Scheduled Day(s)",
+      }
+    }
+    variant="checkbox">
+    <fieldset
+      className="slds-form-element">
+      <legend
+        className="slds-form-element__legend slds-form-element__label">
+        Scheduled Day(s)
+      </legend>
+      <div
+        className="slds-form-element__control">
+        <div
+          className="slds-checkbox--button-group">
+          <SLDSCheckbox
+            id="ButtonGroupExampleMon"
+            label="Mon"
+            labelToggleDisabled="Disabled"
+            labelToggleEnabled="Enabled"
+            variant="button-group">
+            <span
+              className="slds-button slds-checkbox--button">
+              <input
+                id="ButtonGroupExampleMon"
+                onChange={[Function]}
+                type="checkbox" />
+              <label
+                className="slds-checkbox--button__label"
+                htmlFor="ButtonGroupExampleMon">
+                <span
+                  className="slds-checkbox--faux">
+                  Mon
+                </span>
+              </label>
+            </span>
+          </SLDSCheckbox>
+          <SLDSCheckbox
+            id="ButtonGroupExampleTue"
+            label="Tue"
+            labelToggleDisabled="Disabled"
+            labelToggleEnabled="Enabled"
+            variant="button-group">
+            <span
+              className="slds-button slds-checkbox--button">
+              <input
+                id="ButtonGroupExampleTue"
+                onChange={[Function]}
+                type="checkbox" />
+              <label
+                className="slds-checkbox--button__label"
+                htmlFor="ButtonGroupExampleTue">
+                <span
+                  className="slds-checkbox--faux">
+                  Tue
+                </span>
+              </label>
+            </span>
+          </SLDSCheckbox>
+          <SLDSCheckbox
+            id="ButtonGroupExampleWed"
+            label="Wed"
+            labelToggleDisabled="Disabled"
+            labelToggleEnabled="Enabled"
+            variant="button-group">
+            <span
+              className="slds-button slds-checkbox--button">
+              <input
+                id="ButtonGroupExampleWed"
+                onChange={[Function]}
+                type="checkbox" />
+              <label
+                className="slds-checkbox--button__label"
+                htmlFor="ButtonGroupExampleWed">
+                <span
+                  className="slds-checkbox--faux">
+                  Wed
+                </span>
+              </label>
+            </span>
+          </SLDSCheckbox>
+          <SLDSCheckbox
+            id="ButtonGroupExampleThu"
+            label="Thu"
+            labelToggleDisabled="Disabled"
+            labelToggleEnabled="Enabled"
+            variant="button-group">
+            <span
+              className="slds-button slds-checkbox--button">
+              <input
+                id="ButtonGroupExampleThu"
+                onChange={[Function]}
+                type="checkbox" />
+              <label
+                className="slds-checkbox--button__label"
+                htmlFor="ButtonGroupExampleThu">
+                <span
+                  className="slds-checkbox--faux">
+                  Thu
+                </span>
+              </label>
+            </span>
+          </SLDSCheckbox>
+          <SLDSCheckbox
+            id="ButtonGroupExampleFri"
+            label="Fri"
+            labelToggleDisabled="Disabled"
+            labelToggleEnabled="Enabled"
+            variant="button-group">
+            <span
+              className="slds-button slds-checkbox--button">
+              <input
+                id="ButtonGroupExampleFri"
+                onChange={[Function]}
+                type="checkbox" />
+              <label
+                className="slds-checkbox--button__label"
+                htmlFor="ButtonGroupExampleFri">
+                <span
+                  className="slds-checkbox--faux">
+                  Fri
+                </span>
+              </label>
+            </span>
+          </SLDSCheckbox>
+        </div>
+      </div>
+    </fieldset>
+  </SLDSButtonGroup>
+</ButtonGroupExample>
+`;
+
+exports[`test Button Group MoreIcon Snapshot 1`] = `
+<ButtonGroupExample>
+  <SLDSButtonGroup
+    labels={Object {}}>
+    <div
+      className="slds-button-group"
+      role="group">
+      <SLDSButton
+        disabled={false}
+        hint={false}
+        iconCategory="utility"
+        iconSize="medium"
+        label="Refresh"
+        responsive={false}
+        variant="neutral">
+        <button
+          className="slds-button slds-button--neutral"
+          disabled={false}
+          onClick={[Function]}>
+          Refresh
+        </button>
+      </SLDSButton>
+      <SLDSButton
+        disabled={false}
+        hint={false}
+        iconCategory="utility"
+        iconSize="medium"
+        label="Edit"
+        responsive={false}
+        variant="neutral">
+        <button
+          className="slds-button slds-button--neutral"
+          disabled={false}
+          onClick={[Function]}>
+          Edit
+        </button>
+      </SLDSButton>
+      <SLDSButton
+        disabled={false}
+        hint={false}
+        iconCategory="utility"
+        iconSize="medium"
+        label="Save"
+        responsive={false}
+        variant="neutral">
+        <button
+          className="slds-button slds-button--neutral"
+          disabled={false}
+          onClick={[Function]}>
+          Save
+        </button>
+      </SLDSButton>
+      <OnClickOutside(SLDSMenuDropdown)
+        assistiveText="More Options"
+        buttonVariant="icon"
+        iconName="down"
+        iconVariant="border-filled"
+        id="ButtonGroupExampleDropdown"
+        onSelect={[Function]}
+        openOn="click"
+        options={
+          Array [
+            Object {
+              "label": "undo",
+              "value": "A0",
+            },
+            Object {
+              "label": "redo",
+              "value": "B0",
+            },
+            Object {
+              "label": "activate",
+              "value": "C0",
+            },
+          ]
+        }
+        triggerClassName="slds-button--last">
+        <SLDSMenuDropdown
+          align="left"
+          assistiveText="More Options"
+          buttonVariant="icon"
+          disableOnClickOutside={[Function]}
+          enableOnClickOutside={[Function]}
+          hoverCloseDelay={300}
+          iconName="down"
+          iconVariant="border-filled"
+          id="ButtonGroupExampleDropdown"
+          onSelect={[Function]}
+          openOn="click"
+          options={
+            Array [
+              Object {
+                "label": "undo",
+                "value": "A0",
+              },
+              Object {
+                "label": "redo",
+                "value": "B0",
+              },
+              Object {
+                "label": "activate",
+                "value": "C0",
+              },
+            ]
+          }
+          triggerClassName="slds-button--last">
+          <SLDSMenuDropdownTrigger
+            aria-haspopup={true}
+            assistiveText="More Options"
+            className="ignore-click-ButtonGroupExampleDropdown"
+            iconName="down"
+            iconVariant="border-filled"
+            id="ButtonGroupExampleDropdown"
+            isOpen={false}
+            menu={null}
+            onClick={[Function]}
+            onFocus={null}
+            onKeyDown={[Function]}
+            onMouseEnter={null}
+            onMouseLeave={null}
+            openOn="click"
+            tabIndex="0"
+            triggerClassName="slds-button--last"
+            triggerRef={[Function]}
+            variant="icon">
+            <div
+              className="slds-dropdown-trigger slds-dropdown-trigger--click slds-button--last"
+              id="ButtonGroupExampleDropdown"
+              onClick={[Function]}
+              onFocus={null}
+              onKeyDown={[Function]}
+              onMouseEnter={null}
+              onMouseLeave={null}>
+              <SLDSButton
+                aria-expanded={false}
+                aria-haspopup={true}
+                assistiveText="More Options"
+                className="ignore-click-ButtonGroupExampleDropdown"
+                disabled={false}
+                hint={false}
+                iconCategory="utility"
+                iconName="down"
+                iconSize="medium"
+                iconVariant="border-filled"
+                responsive={false}
+                tabIndex="0"
+                variant="icon">
+                <button
+                  aria-expanded={false}
+                  aria-haspopup={true}
+                  className="slds-button slds-button--icon-border-filled ignore-click-ButtonGroupExampleDropdown"
+                  disabled={false}
+                  onClick={[Function]}
+                  tabIndex="0">
+                  <SLDSButtonIcon
+                    category="utility"
+                    className=""
+                    hint={false}
+                    name="down"
+                    size={null}>
+                    <UtilityIcon
+                      aria-hidden="true"
+                      category="utility"
+                      className="slds-button__icon"
+                      name="down">
+                      <Svg
+                        aria-hidden="true"
+                        className="slds-button__icon"
+                        data={
+                          Object {
+                            "path": Object {
+                              "d": "M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z",
+                            },
+                            "viewBox": "0 0 24 24",
+                          }
+                        }
+                        name="down">
+                        <svg
+                          aria-hidden="true"
+                          className="slds-button__icon"
+                          name="down"
+                          viewBox="0 0 24 24">
+                          <path
+                            d="M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z" />
+                        </svg>
+                      </Svg>
+                    </UtilityIcon>
+                  </SLDSButtonIcon>
+                  <span
+                    className="slds-assistive-text">
+                    More Options
+                  </span>
+                </button>
+              </SLDSButton>
+            </div>
+          </SLDSMenuDropdownTrigger>
+        </SLDSMenuDropdown>
+      </OnClickOutside(SLDSMenuDropdown)>
+    </div>
+  </SLDSButtonGroup>
+</ButtonGroupExample>
+`;

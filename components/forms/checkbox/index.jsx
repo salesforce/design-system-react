@@ -134,7 +134,7 @@ const Checkbox = React.createClass({
 		/**
 		 * Which flavor of checkbox? Default is `base` while other option is `toggle`. (**Note:** `toggle` variant does not support the `indeterminate` feature, because [SLDS does not support it](https://lightningdesignsystem.com/components/forms/#flavor-checkbox-toggle-checkbox-toggle).)
 		 */
-		variant: PropTypes.oneOf(['base', 'toggle'])
+		variant: PropTypes.oneOf(['base', 'toggle', 'button-group'])
 	},
 
 	getDefaultProps () {
@@ -154,122 +154,121 @@ const Checkbox = React.createClass({
 		return this.props.id || this.generatedId;
 	},
 
-	renderBaseVariant () {
-		const {
-			assistiveText,
-			checked,
-			className,
-			disabled,
-			errorText,
-			indeterminate,
-			label,
-			name,
-			onBlur,
-			onChange, // eslint-disable-line no-unused-vars
-			onFocus,
-			onKeyDown,
-			onKeyPress,
-			onKeyUp,
-			required,
-			role
-		} = this.props;
+	renderButtonGroupVariant (props) {
+		return (
+			<span className="slds-button slds-checkbox--button">
+				<input
+					aria-controls={this.props['aria-controls']}
+					aria-describedby={this.props['aria-describedby']}
+					aria-owns={this.props['aria-owns']}
+					aria-required={this.props['aria-required']}
+					disabled={props.disabled}
+					checked={props.checked}
+					id={this.getId()}
+					name={props.name}
+					onBlur={props.onBlur}
+					onChange={this.handleChange}
+					onFocus={props.onFocus}
+					onKeyDown={props.onKeyDown}
+					onKeyPress={props.onKeyPress}
+					onKeyUp={props.onKeyUp}
+					ref={
+						(component) => {
+							this.input = component;
+						}}
+					role={props.role}
+					required={props.required}
+					type="checkbox"
+				/>
+				<label className="slds-checkbox--button__label" htmlFor={this.getId()}>
+					<span className="slds-checkbox--faux">{props.label}</span>
+					{props.assistiveText
+						? <span className="slds-assistive-text">
+							{props.assistiveText}
+						</span>
+					: null}
+				</label>
+			</span>
+		);
+	},
 
+	renderBaseVariant (props) {
 		return (
 			<div
 				className={classNames('slds-form-element', {
-					'is-required': required,
-					'slds-has-error': errorText
+					'is-required': props.required,
+					'slds-has-error': props.errorText
 				},
-				className)}
+				props.className)}
 			>
 				<div className="slds-form-element__control">
 					<span className="slds-checkbox">
-						{required ? <abbr className="slds-required" title="required">*</abbr> : null}
+						{props.required ? <abbr className="slds-required" title="required">*</abbr> : null}
 						<input
 							aria-controls={this.props['aria-controls']}
 							aria-describedby={this.props['aria-describedby']}
 							aria-owns={this.props['aria-owns']}
 							aria-required={this.props['aria-required']}
-							disabled={disabled}
-							checked={checked}
+							disabled={props.disabled}
+							checked={props.checked}
 							id={this.getId()}
-							name={name}
-							onBlur={onBlur}
+							name={props.name}
+							onBlur={props.onBlur}
 							onChange={this.handleChange}
-							onFocus={onFocus}
-							onKeyDown={onKeyDown}
-							onKeyPress={onKeyPress}
-							onKeyUp={onKeyUp}
+							onFocus={props.onFocus}
+							onKeyDown={props.onKeyDown}
+							onKeyPress={props.onKeyPress}
+							onKeyUp={props.onKeyUp}
 							ref={
 								(component) => {
 									if (component) {
-										component.indeterminate = indeterminate;
+										component.indeterminate = props.indeterminate;
 									}
 									this.input = component;
 								}}
-							role={role}
-							required={required}
+							role={props.role}
+							required={props.required}
 							type="checkbox"
 						/>
 						<label className="slds-checkbox__label" htmlFor={this.getId()}>
 							<span className="slds-checkbox--faux" />
-							{label
+							{props.label
 								? <span className="slds-form-element__label">
-									{label}
+									{props.label}
 								</span>
 							: null}
-							{assistiveText
+							{props.assistiveText
 								? <span className="slds-assistive-text">
-									{assistiveText}
+									{props.assistiveText}
 								</span>
 							: null}
 						</label>
 					</span>
 				</div>
-				{errorText ? <div className="slds-form-element__help">{errorText}</div> : null}
+				{props.errorText ? <div className="slds-form-element__help">{props.errorText}</div> : null}
 			</div>
 		);
 	},
 
-	/* eslint-disable jsx-a11y/label-has-for */
-	renderToggleVariant () {
-		const {
-			assistiveText,
-			checked,
-			className,
-			disabled,
-			errorText,
-			label,
-			labelToggleEnabled,
-			labelToggleDisabled,
-			name,
-			onBlur,
-			onFocus,
-			onKeyDown,
-			onKeyPress,
-			onKeyUp,
-			required,
-			role
-		} = this.props;
-
+	renderToggleVariant (props) {
 		return (
 			<div
 				className={classNames('slds-form-element', {
-					'is-required': required,
-					'slds-has-error': errorText
+					'is-required': props.required,
+					'slds-has-error': props.errorText
 				},
-				className)}
+				props.className)}
 			>
 				<label className="slds-checkbox--toggle slds-grid" htmlFor={this.getId()}>
-					{required ? <abbr className="slds-required" title="required">*</abbr> : null}
-					{label
+					{props.required ? <abbr className="slds-required" title="required">*</abbr> : null}
+					{props.label
 						? <span className="slds-form-element__label slds-m-bottom--none">
-							{label}
+							{props.label}
 						</span>
 					: null}
-					{assistiveText
+					{props.assistiveText
 						? <span className="slds-assistive-text">
-							{assistiveText}
+							{props.assistiveText}
 						</span>
 					: null}
 					<input
@@ -277,39 +276,49 @@ const Checkbox = React.createClass({
 						aria-describedby={`${this.getId()}-desc`}
 						aria-owns={this.props['aria-owns']}
 						aria-required={this.props['aria-required']}
-						disabled={disabled}
+						disabled={props.disabled}
 						id={this.getId()}
-						checked={checked}
-						name={name}
-						onBlur={onBlur}
+						checked={props.checked}
+						name={props.name}
+						onBlur={props.onBlur}
 						onChange={this.handleChange}
-						onFocus={onFocus}
-						onKeyDown={onKeyDown}
-						onKeyPress={onKeyPress}
-						onKeyUp={onKeyUp}
+						onFocus={props.onFocus}
+						onKeyDown={props.onKeyDown}
+						onKeyPress={props.onKeyPress}
+						onKeyUp={props.onKeyUp}
 						ref={
 							(component) => {
 								this.input = component;
 							}}
-						role={role}
-						required={required}
+						role={props.role}
+						required={props.required}
 						type="checkbox"
 					/>
 					<span id={`${this.getId()}-desc`} className="slds-checkbox--faux_container" aria-live="assertive">
 						<span className="slds-checkbox--faux" />
-						<span className="slds-checkbox--on">{labelToggleEnabled}</span>
-						<span className="slds-checkbox--off">{labelToggleDisabled}</span>
+						<span className="slds-checkbox--on">{props.labelToggleEnabled}</span>
+						<span className="slds-checkbox--off">{props.labelToggleDisabled}</span>
 					</span>
 				</label>
-				{errorText ? <div className="slds-form-element__help">{errorText}</div> : null}
+				{props.errorText ? <div className="slds-form-element__help">{props.errorText}</div> : null}
 			</div>
 		);
 	},
-	/* eslint-enable jsx-a11y/label-has-for */
 
 	// ### Render
 	render () {
-		return this.props.variant === 'toggle' ? this.renderToggleVariant() : this.renderBaseVariant();
+		let renderer;
+		switch (this.props.variant) {
+			case 'toggle':
+				renderer = this.renderToggleVariant(this.props);
+				break;
+			case 'button-group':
+				renderer = this.renderButtonGroupVariant(this.props);
+				break;
+			default:
+				renderer = this.renderBaseVariant(this.props);
+		}
+		return renderer;
 	},
 
 	handleChange (event) {
