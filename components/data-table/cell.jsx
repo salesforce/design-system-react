@@ -14,7 +14,7 @@ import { DATA_TABLE_CELL } from '../../utilities/constants';
  * The default Cell renderer for the DataTable. Pass in any React component with the same `displayName` which takes the same props to provide custom rendering.
  */
 const DataTableCell = (props) => {
-	const childText = typeof props.children === 'object' ? props.children.props.children : props.children;
+	const childText = React.isValidElement(props.children) ? props.children.props.children : props.children;
 	const contents = (
 		<div
 			className={classNames({
