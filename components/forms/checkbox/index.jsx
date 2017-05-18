@@ -7,6 +7,7 @@
 
 // ### React
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // ### isFunction
 import isFunction from 'lodash.isfunction';
@@ -25,10 +26,6 @@ import classNames from 'classnames';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-
-
-// Remove the need for `React.PropTypes`
-const { PropTypes } = React;
 
 import { FORMS_CHECKBOX } from '../../../utilities/constants';
 

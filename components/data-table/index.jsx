@@ -9,6 +9,7 @@
 
 // ### React
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
@@ -42,9 +43,6 @@ import DataTableRowActions from './row-actions';
 
 // ## Constants
 import { DATA_TABLE, DATA_TABLE_CELL, DATA_TABLE_HEAD, DATA_TABLE_ROW } from '../../utilities/constants';
-
-// Removes the need for `PropTypes`.
-const { PropTypes } = React;
 
 // Safely get the length of an array, returning 0 for invalid input.
 const count = (array) => (isArray(array) ? array.length : 0);

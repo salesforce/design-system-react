@@ -4,7 +4,8 @@
 // Implements the [Navigation design pattern](https://lightningdesignsystem.com/components/navigation/) in React.
 // Based on SLDS v2.2.1
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -52,7 +53,7 @@ const Navigation = React.createClass({
 		/**
 		 * Determines component style. _Tested with snapshot testing._
 		 */
-		variant: React.PropTypes.oneOf(['default', 'shade'])
+		variant: PropTypes.oneOf(['default', 'shade'])
 	},
 
 	getDefaultProps () {

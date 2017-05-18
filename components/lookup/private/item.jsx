@@ -1,8 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import Icon from '../../icon';
 import { EventUtil } from '../../../utilities';
@@ -11,18 +11,18 @@ import cx from 'classnames';
 
 const displayName = 'Lookup-Menu-Item';
 const propTypes = {
-	data: React.PropTypes.object,
-	handleItemFocus: React.PropTypes.func,
-	href: React.PropTypes.string,
-	iconCategory: React.PropTypes.string,
-	id: React.PropTypes.string,
-	index: React.PropTypes.number,
-	isActive: React.PropTypes.bool,
-	isDisabled: React.PropTypes.bool,
-	listItemLabelRenderer: React.PropTypes.func,
-	onSelect: React.PropTypes.func,
-	searchTerm: React.PropTypes.string,
-	setFocus: React.PropTypes.func
+	data: PropTypes.object,
+	handleItemFocus: PropTypes.func,
+	href: PropTypes.string,
+	iconCategory: PropTypes.string,
+	id: PropTypes.string,
+	index: PropTypes.number,
+	isActive: PropTypes.bool,
+	isDisabled: PropTypes.bool,
+	listItemLabelRenderer: PropTypes.func,
+	onSelect: PropTypes.func,
+	searchTerm: PropTypes.string,
+	setFocus: PropTypes.func
 };
 
 class Item extends React.Component {

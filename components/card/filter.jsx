@@ -2,14 +2,11 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 // ### React
-// React is an external dependency of the project.
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Input from '../forms/input';
 import InputIcon from '../icon/input-icon';
-
-// Removes the need for `PropTypes`.
-const { PropTypes } = React;
 
 import { CARD_FILTER } from '../../utilities/constants';
 

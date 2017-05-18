@@ -3,6 +3,7 @@
 
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import PopoverTooltip from '../../popover-tooltip';
 
@@ -11,26 +12,26 @@ const propTypes = {
 	/**
 	 * Optional class name
 	 */
-	className: React.PropTypes.string,
+	className: PropTypes.string,
 	/**
 	 * label
 	 */
-	label: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	label: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
 	/**
 	 * The content property can be a string or a React element
 	 */
-	content: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	content: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
 	/**
 	 * Sets whether the fields truncate
 	 */
-	truncate: React.PropTypes.bool,
-	flavor: React.PropTypes.string
+	truncate: PropTypes.bool,
+	flavor: PropTypes.string
 };
 
 const defaultProps = {

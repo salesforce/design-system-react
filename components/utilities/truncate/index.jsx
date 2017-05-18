@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import memoize from 'lodash.memoize';
 
@@ -20,14 +21,14 @@ const TextTruncate = React.createClass({
 	displayName: 'TextTruncate',
 
 	propTypes: {
-		containerClassName: React.PropTypes.string,
-		line: React.PropTypes.number,
-		prefix: React.PropTypes.string,
-		suffix: React.PropTypes.string,
-		text: React.PropTypes.string,
-		textTruncateChild: React.PropTypes.node,
-		truncateText: React.PropTypes.string,
-		wrapper: React.PropTypes.func
+		containerClassName: PropTypes.string,
+		line: PropTypes.number,
+		prefix: PropTypes.string,
+		suffix: PropTypes.string,
+		text: PropTypes.string,
+		textTruncateChild: PropTypes.node,
+		truncateText: PropTypes.string,
+		wrapper: PropTypes.func
 	},
 
 	getDefaultProps () {

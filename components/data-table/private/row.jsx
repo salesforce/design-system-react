@@ -3,6 +3,7 @@
 
 // ### React
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // ### classNames
 import classNames from 'classnames';
@@ -15,9 +16,6 @@ import Checkbox from '../../forms/checkbox';
 
 // ## Constants
 import { DATA_TABLE_ROW, DATA_TABLE_ROW_ACTIONS, DATA_TABLE_CELL } from '../../../utilities/constants';
-
-// Removes the need for `PropTypes`.
-const { PropTypes } = React;
 
 /**
  * Used internally, provides row rendering to the DataTable.
@@ -45,7 +43,7 @@ const DataTableRow = React.createClass({
 		 */
 		fixedLayout: PropTypes.bool,
 		id: PropTypes.string.isRequired,
-		item: React.PropTypes.object.isRequired,
+		item: PropTypes.object.isRequired,
 		onToggle: PropTypes.func,
 		rowActions: PropTypes.element,
 		selection: PropTypes.array

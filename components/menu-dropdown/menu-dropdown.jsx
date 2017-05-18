@@ -8,7 +8,8 @@
 // Based on SLDS v2.1.0-rc.2
 
 // ### React
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
 // ### classNames

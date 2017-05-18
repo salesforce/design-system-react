@@ -3,6 +3,7 @@
 
 // ### React
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // ## Children
 import Checkbox from '../../forms/checkbox';
@@ -10,9 +11,6 @@ import HeaderCell from './header-cell';
 
 // ## Constants
 import { DATA_TABLE_HEAD } from '../../../utilities/constants';
-
-// Removes the need for `PropTypes`.
-const { PropTypes } = React;
 
 /**
  * Used internally, provides header row rendering to the DataTable.
@@ -52,7 +50,7 @@ const DataTableHead = React.createClass({
 	},
 
 	componentWillMount () {
-		
+
 	},
 
 	// ### Render

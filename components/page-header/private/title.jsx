@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 const displayName = 'PageHeaderTitle';
@@ -9,19 +10,19 @@ const propTypes = {
   /**
    * Sets whether the title will truncate its content responsively.
    */
-	truncate: React.PropTypes.bool,
+	truncate: PropTypes.bool,
   /**
    * Sets the vertical alignment on the title
    */
-	align: React.PropTypes.oneOf(['top', 'middle', 'bottom']),
+	align: PropTypes.oneOf(['top', 'middle', 'bottom']),
   /**
    * The title string (required)
    */
-	title: React.PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
   /**
    * Optional class name
    */
-	className: React.PropTypes.string
+	className: PropTypes.string
 };
 const defaultProps = {
 	truncate: true,

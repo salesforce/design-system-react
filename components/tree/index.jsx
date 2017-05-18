@@ -8,7 +8,8 @@
 // ## Dependencies
 
 // ### React
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // Child components
 import Branch from './private/branch';
@@ -106,7 +107,7 @@ Tree.propTypes = {
 	/**
 	 * This is the tree's heading and describes its contents. It can be hidden, see `assistiveText`.
 	 * */
-	heading: React.PropTypes.string,
+	heading: PropTypes.string,
 	/**
 	 * HTML `id` of primary element that has `.slds-tree` on it. This component has a wrapping container element outside of `.slds-tree`.
 	 */

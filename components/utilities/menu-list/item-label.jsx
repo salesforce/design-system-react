@@ -8,6 +8,7 @@
 
 // ### React
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // ## Constants
 import { LIST_ITEM_LABEL } from '../../../utilities/constants';
@@ -25,13 +26,13 @@ const ListItemLabel = (props) => (
 ListItemLabel.displayName = LIST_ITEM_LABEL;
 
 ListItemLabel.propTypes = {
-	data: React.PropTypes.object,
-	icon: React.PropTypes.node,
-	index: React.PropTypes.number,
-	inverted: React.PropTypes.bool,
-	isSelected: React.PropTypes.bool,
-	label: React.PropTypes.string,
-	value: React.PropTypes.any
+	data: PropTypes.object,
+	icon: PropTypes.node,
+	index: PropTypes.number,
+	inverted: PropTypes.bool,
+	isSelected: PropTypes.bool,
+	label: PropTypes.string,
+	value: PropTypes.any
 };
 
 ListItemLabel.defaultProps = {

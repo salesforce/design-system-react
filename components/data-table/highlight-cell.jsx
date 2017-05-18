@@ -3,6 +3,7 @@
 
 // ### React
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // ## Children
 import DataTableCell from './cell';
@@ -10,9 +11,6 @@ import Highlighter from '../utilities/highlighter';
 
 // ## Constants
 import { DATA_TABLE_CELL } from '../../utilities/constants';
-
-// Removes the need for `PropTypes`.
-const { PropTypes } = React;
 
 /**
  * A Cell renderer for the DataTable that automatically highlights search text.
@@ -33,9 +31,9 @@ DataTableHighlightCell.propTypes = {
 	 * The contents of the cell. Equivalent to `props.item[props.property]`
 	 */
 	children: PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.number,
-		React.PropTypes.bool
+		PropTypes.string,
+		PropTypes.number,
+		PropTypes.bool
 	]),
 	/**
 	 * The string of text (or Regular Expression) to highlight.
