@@ -9,7 +9,8 @@
 // ## Dependencies
 
 // ### React
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import PanelFilteringFooter from './private/panel-footer';
 import PanelHeader from './private/panel-header';
@@ -159,7 +160,7 @@ PanelFilterGroup.propTypes = {
 	/**
 	 * Adds in default Panel header and footer
 	 */
-	variant: React.PropTypes.oneOf(['panel'])
+	variant: PropTypes.oneOf(['panel'])
 };
 
 PanelFilterGroup.defaultProps = {

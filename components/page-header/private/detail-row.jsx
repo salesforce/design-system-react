@@ -2,20 +2,21 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import DetailBlock from './detail-block';
 
 const displayName = 'PageHeaderDetailRow';
 const propTypes = {
-	children: React.PropTypes.node,
+	children: PropTypes.node,
 	/**
 	 * Optional class name
 	 */
-	className: React.PropTypes.string,
+	className: PropTypes.string,
 	/**
 	 * An array of detail blocks
 	 */
-	details: React.PropTypes.array
+	details: PropTypes.array
 };
 const defaultProps = {};
 

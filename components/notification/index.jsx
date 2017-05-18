@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
 import classNames from 'classnames';
@@ -13,34 +14,34 @@ const propTypes = {
 	/**
 	 * Custom classes applied to Notification element.
 	 */
-	className: React.PropTypes.string,
+	className: PropTypes.string,
 	/**
 	 * Message for Notification.
 	 */
-	content: React.PropTypes.node.isRequired,
+	content: PropTypes.node.isRequired,
 	/**
 	 * If true, close button appears for users to dismiss Notification.
 	 */
-	dismissible: React.PropTypes.bool,
+	dismissible: PropTypes.bool,
 	/**
 	 * If duration exists, the Notification will disappear after that amount of time.
 	 */
-	duration: React.PropTypes.number,
+	duration: PropTypes.number,
 	/**
 	 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lighning Design System Icons</a> to reference icon names.
 	 */
-	iconName: React.PropTypes.string,
-	isOpen: React.PropTypes.bool.isRequired,
-	onDismiss: React.PropTypes.func,
+	iconName: PropTypes.string,
+	isOpen: PropTypes.bool.isRequired,
+	onDismiss: PropTypes.func,
 	/**
 	 * Styling for Notification background.
 	 */
-	texture: React.PropTypes.bool,
+	texture: PropTypes.bool,
 	/**
 	 * Styling for Notification background color. Please reference <a href='http://www.lightningdesignsystem.com/components/utilities/themes/#color'>Lighning Design System Themes > Color</a>.
 	 */
-	theme: React.PropTypes.oneOf(['success', 'warning', 'error', 'offline']),
-	variant: React.PropTypes.oneOf(['alert', 'toast']).isRequired
+	theme: PropTypes.oneOf(['success', 'warning', 'error', 'offline']),
+	variant: PropTypes.oneOf(['alert', 'toast']).isRequired
 };
 
 const defaultProps = {

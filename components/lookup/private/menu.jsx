@@ -1,24 +1,24 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import Item from './item';
 
 const displayName = 'Lookup-Menu';
 const propTypes = {
-	boldRegex: React.PropTypes.instanceOf(RegExp),
-	emptyMessage: React.PropTypes.string,
-	filterWith: React.PropTypes.func,
-	focusIndex: React.PropTypes.number,
-	getListLength: React.PropTypes.func,
-	iconCategory: React.PropTypes.string,
-	items: React.PropTypes.array,
-	label: React.PropTypes.string,
-	listLength: React.PropTypes.number,
-	searchTerm: React.PropTypes.string,
-	setFocus: React.PropTypes.func
+	boldRegex: PropTypes.instanceOf(RegExp),
+	emptyMessage: PropTypes.string,
+	filterWith: PropTypes.func,
+	focusIndex: PropTypes.number,
+	getListLength: PropTypes.func,
+	iconCategory: PropTypes.string,
+	items: PropTypes.array,
+	label: PropTypes.string,
+	listLength: PropTypes.number,
+	searchTerm: PropTypes.string,
+	setFocus: PropTypes.func
 };
 const defaultProps = {
 	emptyMessage: 'No matches found.'

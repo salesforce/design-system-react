@@ -9,6 +9,7 @@
 // ## Dependencies
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Info from './private/info';
 import Title from './private/title';
@@ -28,75 +29,75 @@ const propTypes = {
 	/**
 	 * Optional class name
 	 */
-	className: React.PropTypes.string,
+	className: PropTypes.string,
 	/**
 	 * The type of component
 	 */
-	variant: React.PropTypes.string,
+	variant: PropTypes.string,
 	/**
 	 * The info property can be a string or a React element
 	 */
-	label: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	label: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
 	/**
 	 * The title property can be a string or a React element
 	 */
-	title: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	title: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
 	/**
 	 * The info property can be a string or a React element
 	 */
-	info: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	info: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
 	/**
 	 * The page header icon
 	 */
-	icon: React.PropTypes.element,
+	icon: PropTypes.element,
 	/**
 	 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
 	 */
-	iconName: React.PropTypes.string,
+	iconName: PropTypes.string,
 	/**
 	 * The icons category
 	 */
-	iconCategory: React.PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
+	iconCategory: PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
 	/**
 	 * If omitted, icon position is centered.
 	 */
-	iconPosition: React.PropTypes.oneOf(['left', 'right']),
-	iconSize: React.PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
+	iconPosition: PropTypes.oneOf(['left', 'right']),
+	iconSize: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
 	/**
 	 * For icon variants, please reference <a href='http://www.lightningdesignsystem.com/components/buttons/#icon'>Lightning Design System Icons</a>.
 	 */
-	iconVariant: React.PropTypes.oneOf(['container', 'border', 'border-filled', 'small', 'more']),
+	iconVariant: PropTypes.oneOf(['container', 'border', 'border-filled', 'small', 'more']),
 	/**
 	 * Content to appear on the right hand side of the page header
 	 */
-	contentRight: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	contentRight: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
 	/**
 	 * An array of buttons which appear on the component's right hand side.
 	 */
-	details: React.PropTypes.array,
+	details: PropTypes.array,
 	/**
 	 * Nav content which appears in the upper right hand corner.
 	 */
-	navRight: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	navRight: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
 	/**
 	 * An array of react elements presumably anchor <a> elements.
 	 */
-	trail: React.PropTypes.array
+	trail: PropTypes.array
 };
 
 const defaultProps = {

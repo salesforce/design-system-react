@@ -7,16 +7,13 @@
 // Implements the [Spinner design pattern - 2.1.0-beta.3 (204)](https://latest-204.lightningdesignsystem.com/components/spinners) in React.
 
 // ### React
-// React is an external dependency of the project.
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 
 // ## Constants
 import { SPINNER } from '../../utilities/constants';
-
-// Removes the need for `PropTypes`.
-const { PropTypes } = React;
 
 // ### Prop Types
 const PROP_TYPES = {

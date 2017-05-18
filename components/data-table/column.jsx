@@ -2,7 +2,8 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 // ### React
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // ## Constants
 import { DATA_TABLE_COLUMN } from '../../utilities/constants';
@@ -40,7 +41,7 @@ DataTableColumn.propTypes = {
 	 * </DataTable>
 	 * ```
 	 */
-	children: React.PropTypes.element,
+	children: PropTypes.element,
 	/**
 	 * The column label. If a `string` is not passed in, no `title` attribute will be rendered.
 	 */

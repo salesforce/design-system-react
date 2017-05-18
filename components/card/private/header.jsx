@@ -2,8 +2,8 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 // ### React
-// React is an external dependency of the project.
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -13,9 +13,6 @@ import classnames from 'classnames';
 
 // ## Children
 import MediaObject from '../../media-object';
-
-// Removes the need for `PropTypes`.
-const { PropTypes } = React;
 
 import { CARD_HEADER } from '../../../utilities/constants';
 

@@ -6,7 +6,8 @@
 // ## Dependencies
 
 // ### React
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // ### Dropdown
 import MenuDropdown from '../menu-dropdown';
@@ -58,7 +59,7 @@ GlobalNavigationBarDropdown.propTypes = {
 	/**
 	 * Whether the item is active or not.
 	 */
-	active: React.PropTypes.bool,
+	active: PropTypes.bool,
 	/**
 	 * Allows alignment of active item with active application background color.
 	 */

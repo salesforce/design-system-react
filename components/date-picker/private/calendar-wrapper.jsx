@@ -1,8 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import Calendar from './calendar';
 import CalendarNavigation from './navigation';
@@ -79,7 +79,7 @@ class DatepickerCalendarWrapper extends React.Component {
 		/**
 		 * Currently selected date
 		 */
-		selectedDate: React.PropTypes.instanceOf(Date),
+		selectedDate: PropTypes.instanceOf(Date),
 		/**
 		 * Component reference / DOM node for selected day.
 		 */

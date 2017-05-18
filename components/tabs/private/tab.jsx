@@ -6,7 +6,8 @@
 // ## Dependencies
 
 // ### React
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // ### classNames
 import classNames from 'classnames';
@@ -65,15 +66,15 @@ const Tab = React.createClass({
 		/**
 		 * The string or element that is shown as both the title and the label for this tab.
 		 */
-		children: React.PropTypes.oneOfType([
-			React.PropTypes.string,
-			React.PropTypes.element
+		children: PropTypes.oneOfType([
+			PropTypes.string,
+			PropTypes.element
 		]),
 
 		/**
 		 * If the Tabs should be scopped, defaults to false
 		 */
-		variant: React.PropTypes.oneOf(['default', 'scoped'])
+		variant: PropTypes.oneOf(['default', 'scoped'])
 	},
 
 	getDefaultProps () {

@@ -4,7 +4,8 @@
 // Implements the [Button design pattern](https://lightningdesignsystem.com/components/buttons/) in React.
 // Based on SLDS v2.2.1
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ButtonIcon from '../icon/button-icon';
 import PopoverTooltip from '../popover-tooltip';
@@ -113,7 +114,7 @@ const Button = React.createClass({
 		 * HTML title attribute
 		 */
 		title: PropTypes.string,
-		variant: React.PropTypes.oneOf(['base', 'link', 'neutral', 'brand', 'destructive', 'success', 'icon'])
+		variant: PropTypes.oneOf(['base', 'link', 'neutral', 'brand', 'destructive', 'success', 'icon'])
 	},
 
 	getDefaultProps () {

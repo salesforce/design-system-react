@@ -3,6 +3,7 @@
 
 // ### React
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // ### isFunction
 import isFunction from 'lodash.isfunction';
@@ -15,9 +16,6 @@ import EventUtil from '../../utilities/event';
 
 // ## Constants
 import { DATA_TABLE_ROW_ACTIONS } from '../../utilities/constants';
-
-// Removes the need for `PropTypes`.
-const { PropTypes } = React;
 
 /**
  * RowActions provide a mechanism for defining a menu to display alongside each row in the DataTable.

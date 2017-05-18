@@ -2,17 +2,14 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 // ### React
-// React is an external dependency of the project.
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
 // joining classNames together."
 import classnames from 'classnames';
-
-// Removes the need for `PropTypes`.
-const { PropTypes } = React;
 
 import { MEDIA_OBJECT } from '../../utilities/constants';
 

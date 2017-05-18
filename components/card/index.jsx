@@ -7,8 +7,8 @@
 // Based on SLDS v2.2.1
 
 // ### React
-// React is an external dependency of the project.
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -21,9 +21,6 @@ import Header from './private/header';
 import Body from './private/body';
 import Footer from './private/footer';
 import Empty from './empty';
-
-// Removes the need for `PropTypes`.
-const { PropTypes } = React;
 
 import { CARD } from '../../utilities/constants';
 

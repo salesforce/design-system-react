@@ -1,7 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import MediaObject from '../../../media-object';
 
 const displayName = 'PageHeaderObjectHome';
@@ -9,9 +10,9 @@ const propTypes = {
 	/**
 	 * Content to appear on the right hand side of the page header
 	 */
-	contentRight: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	contentRight: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
 	/**
 	 * Icon node passed by PageHeader
@@ -35,7 +36,7 @@ const propTypes = {
 	/**
 	 * Title node passed by PageHeader
 	 */
-	title: React.PropTypes.node
+	title: PropTypes.node
 };
 
 const ObjectHome = (props) => (<div>

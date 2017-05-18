@@ -2,34 +2,35 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 const displayName = 'PageHeaderRelatedList';
 const propTypes = {
   /**
    * Icon node passed by PageHeader
    */
-	icon: React.PropTypes.node,
+	icon: PropTypes.node,
   /**
    * Title node passed by PageHeader
    */
-	title: React.PropTypes.node,
+	title: PropTypes.node,
   /**
    * Info node passed by PageHeader
    */
-	info: React.PropTypes.node,
+	info: PropTypes.node,
   /**
    * Content to appear on the right hand side of the page header
    */
-	contentRight: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	contentRight: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
   /**
    * Nav content which appears in the upper right hand corner.
    */
-	navRight: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	navRight: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	])
 };
 const defaultProps = {};

@@ -2,8 +2,8 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 // ### React
-// React is an external dependency of the project.
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { CARD_FOOTER } from '../../../utilities/constants';
 
@@ -19,7 +19,7 @@ CardFooter.propTypes = {
 	/**
 	 * Elements to place in the footer.
 	 */
-	children: React.PropTypes.node
+	children: PropTypes.node
 };
 
 export default CardFooter;

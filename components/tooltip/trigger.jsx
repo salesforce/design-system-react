@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
 import classNames from 'classnames';
@@ -10,7 +11,7 @@ import omit from 'lodash.omit';
 
 const displayName = 'Tooltip.Trigger';
 const propTypes = {
-	tooltip: React.PropTypes.node
+	tooltip: PropTypes.node
 };
 const defaultProps = {
 };
@@ -107,7 +108,7 @@ class Trigger extends React.Component {
 					openByDefault: true
 				})];
 			}
-      
+
 			return this.getMouseEventTarget();
 		}
 	}

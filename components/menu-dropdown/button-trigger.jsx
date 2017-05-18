@@ -5,7 +5,8 @@
 
 // ### React
 // React is an external dependency of the project.
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Button from '../button';
 
 // ### classNames

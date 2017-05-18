@@ -7,7 +7,8 @@
 // Implements the [Popover design pattern](https://www.lightningdesignsystem.com/components/popovers) in React.
 
 // ### React
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // ### assign
 import assign from 'lodash.assign';

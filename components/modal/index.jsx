@@ -7,7 +7,8 @@
 // Implements the [Modal design pattern](https://lightningdesignsystem.com/components/modals/) in React.
 // Based on SLDS v2.2.1
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
 import Button from '../button';
@@ -53,7 +54,7 @@ const propTypes = {
 	/**
 	 * Custom styles for the modal's body. This is the element that has overflow rules and should be used to set a static height if desired.
 	 */
-	contentStyle: React.PropTypes.object,
+	contentStyle: PropTypes.object,
 	/**
 	 * If true, modal footer buttons render left and right. An example use case would be for "back" and "next" buttons.
 	 */

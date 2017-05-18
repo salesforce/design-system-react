@@ -10,6 +10,7 @@
 
 // ### React
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // ## Constants
 import { BREADCRUMB } from '../../utilities/constants';
@@ -43,11 +44,11 @@ Breadcrumb.propTypes = {
 	/**
 	 * The assistive text for the breadcrumb trail
 	 */
-	assistiveText: React.PropTypes.string,
+	assistiveText: PropTypes.string,
 	/**
 	 * An array of react elements presumably anchor elements.
 	 */
-	trail: React.PropTypes.array
+	trail: PropTypes.array
 };
 
 Breadcrumb.defaultProps = {
