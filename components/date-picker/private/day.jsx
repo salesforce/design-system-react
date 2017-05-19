@@ -60,6 +60,7 @@ const DatepickerCalendarDay = (props) => {
 	const isDisabled = !isCurrentMonth || props.disabled;
 
 	return (
+		/* eslint-disable jsx-a11y/no-static-element-interactions */
 		<td
 			aria-disabled={isDisabled}
 			aria-selected={isSelectedDay}
@@ -90,6 +91,7 @@ const DatepickerCalendarDay = (props) => {
 			role="gridcell"
 			tabIndex={!props.calendarHasFocus && isFirstDayOfMonth && isCurrentMonth ? 0 : -1}
 		>
+			{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 			<span className="slds-day">
 				{isToday
 					? <span className="slds-assistive-text">{props.todayLabel}: </span>
