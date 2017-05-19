@@ -19,9 +19,6 @@ import isBoolean from 'lodash.isboolean';
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
-// ### omit
-import omit from 'lodash.omit';
-
 // ## Children
 import ButtonIcon from '../icon/button-icon';
 import TooltipTrigger from '../popover-tooltip/trigger';
@@ -100,6 +97,10 @@ class ButtonStateful extends TooltipTrigger {
 	constructor (props) {
 		super(props);
 		this.state = { active: false };
+
+		// Bind handlers to this one time
+		this.boundHandleBlur = this.handleBlur.bind(this);
+		this.boundHandleClick = this.handleClick.bind(this);
 	}
 
 	componentDidMount () {
@@ -145,7 +146,7 @@ class ButtonStateful extends TooltipTrigger {
 			onKeyUp,
 			onMouseDown,
 			onMouseEnter,
-			onMouseLeave,
+			// onMouseLeave,  // This prop isn't used anywhere! But removing it would be a breaking change
 			stateOne,
 			stateTwo,
 			stateThree,
@@ -162,15 +163,15 @@ class ButtonStateful extends TooltipTrigger {
 					className={this.getClassName(isActive)}
 					disabled={disabled}
 					id={id}
-					onBlur={this.handleBlur.bind(this)}
-					onClick={this.handleClick.bind(this)}
+					onBlur={this.boundHandleBlur}
+					onClick={this.boundHandleClick}
 					onFocus={onFocus}
 					onKeyDown={onKeyDown}
 					onKeyPress={onKeyPress}
 					onKeyUp={onKeyUp}
 					onMouseDown={onMouseDown}
 					onMouseEnter={onMouseEnter}
-					onMouseLeave={this.handleBlur.bind(this)}
+					onMouseLeave={this.boundHandleClick}
 					tabIndex={tabIndex}
 				>
 					<ButtonIcon
@@ -191,14 +192,14 @@ class ButtonStateful extends TooltipTrigger {
 				className={this.getClassName(isActive)}
 				disabled={disabled}
 				id={id}
-				onBlur={this.handleBlur.bind(this)}
-				onClick={this.handleClick.bind(this)}
+				onBlur={this.boundHandleBlur}
+				onClick={this.boundHandleClick}
 				onFocus={onFocus}
 				onKeyDown={onKeyDown}
 				onKeyPress={onKeyPress}
 				onKeyUp={onKeyUp}
 				onMouseEnter={onMouseEnter}
-				onMouseLeave={this.handleBlur.bind(this)}
+				onMouseLeave={this.boundHandleBlur}
 				tabIndex={tabIndex}
 			>
 				<span className="slds-text-not-selected">
