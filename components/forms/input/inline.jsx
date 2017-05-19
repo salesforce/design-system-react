@@ -10,7 +10,6 @@
 // ### React
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 
 // ### isFunction
 import isFunction from 'lodash.isfunction';
@@ -141,17 +140,18 @@ const InlineEdit = React.createClass({
 				readOnly={!this.state.isEditing}
 				name={name}
 				value={this.state.isEditing ? this.state.value : value}
+				inputRef={(input) => { this.inputNode = input; }}
 			/>
 		);
 	},
 
 	componentDidUpdate () {
 		if (this.autoFocus) {
-			const input = ReactDOM.findDOMNode(this).getElementsByTagName('input')[0];
+			// const input = ReactDOM.findDOMNode(this).getElementsByTagName('input')[0];
 
-			if (input) {
-				input.focus();
-				input.select();
+			if (this.inputNode) {
+				this.inputNode.focus();
+				this.inputNode.select();
 			}
 
 			this.autoFocus = false;

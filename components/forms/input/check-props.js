@@ -4,7 +4,7 @@
 /* eslint-disable max-len */
 
 import deprecatedProperty from '../../../utilities/warning/deprecated-property';
-import oneOfRequiredProperty from '../../../utilities/warning/one-of-required-property';
+// import oneOfRequiredProperty from '../../../utilities/warning/one-of-required-property';
 import onlyOneOfProperties from '../../../utilities/warning/only-one-of-properties';
 
 let checkProps = function () {};
