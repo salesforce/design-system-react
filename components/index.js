@@ -91,6 +91,9 @@ export InlineEdit from './forms/input/inline';
 export SLDSInput from './forms/input';
 export Input from './forms/input';
 
+export SLDSSearch from './forms/input/search';
+export Search from './forms/input/search';
+
 export SLDSInputIcon from './icon/input-icon';
 export InputIcon from './icon/input-icon';
 

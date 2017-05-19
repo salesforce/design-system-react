@@ -8,7 +8,8 @@
 // Based on SLDS v2.1.0-rc.2
 
 // ### React
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -288,6 +289,10 @@ const MenuDropdown = React.createClass({
 		 * ```
 		 */
 		options: PropTypes.array,
+		/**
+		 * Role gets applied to containing div. Dropdown menu's typically get `role="menu"` and Lookups and Picklists get `role="listbox"`.
+		 */
+		role: PropTypes.string,
 		/**
 		 * An object of CSS styles that are applied to the triggering button.
 		 */
@@ -666,6 +671,7 @@ const MenuDropdown = React.createClass({
 					className={classNames('slds-dropdown', positionClassName, this.props.className)}
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
+					role={this.props.role}
 					style={this.props.menuStyle}
 				>
 					{this.renderMenuContent(customContent)}
@@ -714,6 +720,7 @@ const MenuDropdown = React.createClass({
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
 					outsideClickIgnoreClass={outsideClickIgnoreClass}
+					role={this.props.role}
 					style={this.props.menuStyle}
 					targetElement={this.triggerContainer}
 				>
@@ -816,7 +823,6 @@ const MenuDropdown = React.createClass({
 					|| this.props.openOn === 'hybrid'
 					? this.handleMouseLeave : null}
 				openOn={this.props.openOn}
-				ref={(trigger) => { this.trigger = trigger; }}
 				style={this.props.style}
 				tabIndex={isOpen ? '-1' : '0'}
 				tooltip={this.props.tooltip}

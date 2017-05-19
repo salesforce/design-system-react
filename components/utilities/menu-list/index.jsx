@@ -100,7 +100,7 @@ const List = React.createClass({
 								key={`${id}-${option.value}`}
 								labelRenderer={this.props.itemRenderer}
 								onSelect={this.props.onSelect}
-								ref={(listItem) => this.props.itemRefs(listItem, index)}
+								itemRefs={this.props.itemRefs}
 							/>
 						);
 					})

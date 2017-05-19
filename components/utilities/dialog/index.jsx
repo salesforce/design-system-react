@@ -274,6 +274,7 @@ const Dialog = React.createClass({
 				onMouseEnter={this.props.onMouseEnter}
 				onMouseLeave={this.props.onMouseLeave}
 				ref={(component) => { this.dialogContent = component; }}
+				role={this.props.role}
 			>
 				{this.props.children}
 			</div>

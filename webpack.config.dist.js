@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const packageJson = require('./package.json');
 
 const header = `${packageJson.name}\nv${packageJson.version}\n`;
-const license = fs.readFileSync('./LICENSE', 'utf8');
+const license = fs.readFileSync('./LICENSE.txt', 'utf8');
 
 const baseConfig = require('./webpack.config');
 

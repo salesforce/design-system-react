@@ -3,7 +3,7 @@ import Picklist from '~/components/menu-picklist'; // `~` is replaced with desig
 
 const Example = React.createClass({
 	displayName: 'PicklistExample',
-	
+
 	render () {
 		return (
 			<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">

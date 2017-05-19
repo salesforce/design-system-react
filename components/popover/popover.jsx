@@ -8,7 +8,6 @@
 
 // ### React
 import React, { PropTypes } from 'react';
-import ReactDOM from 'react-dom';
 
 // ### assign
 import assign from 'lodash.assign';
@@ -233,11 +232,11 @@ const Popover = React.createClass({
 
 	getMenu () {
 		// needed by keyboard navigation
-		return ReactDOM.findDOMNode(this.dialog);
+		return this.dialog;
 	},
 
 	handleDialogClose (event, data) {
-		const componentWillUnmount = data && data.componentWillUnmount || false;
+		const componentWillUnmount = (data && data.componentWillUnmount) || false;
 
 		if (currentOpenPopover === this) {
 			currentOpenPopover = undefined;
@@ -384,7 +383,8 @@ const Popover = React.createClass({
 	},
 
 	toggleOpenFromKeyboard (event) {
-		if (this.state.isOpen) {
+		const isOpen = this.getIsOpen();
+		if (isOpen) {
 			this.handleCancel(event);
 		} else {
 			this.handleOpen();
@@ -479,8 +479,6 @@ const Popover = React.createClass({
 		const outsideClickIgnoreClass = `ignore-click-${this.getId()}`;
 
 		const clonedTrigger = this.props.children ? React.cloneElement(this.props.children, {
-			'aria-haspopup': 'true',
-			'aria-expanded': this.getIsOpen(),
 			id: this.getId(),
 			onClick:
 				this.props.openOn === 'click'

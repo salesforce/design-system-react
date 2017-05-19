@@ -38,7 +38,7 @@ exports[`test AssistiveText Filter 1`] = `
 
 exports[`test AssistiveText Filter HTML Snapshot 1`] = `
 "<div class=\"slds-filters__item slds-grid slds-grid--vertical-align-center\">
-  <div class=\"slds-grow\" style=\"display:inline;\"><button class=\"slds-button--reset slds-grow slds-has-blur-focus\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"sample-panel-filtering-show-me\" tabindex=\"0\"><span class=\"slds-assistive-text\">Edit filter:</span><p class=\"slds-text-body--small\">Show Me</p><p>All Products</p></button></div>
+  <div class=\"slds-grow\" style=\"display:inline;\"><button class=\"slds-button--reset slds-grow slds-has-blur-focus\" id=\"sample-panel-filtering-show-me\" tabindex=\"0\"><span class=\"slds-assistive-text\">Edit filter:</span><p class=\"slds-text-body--small\">Show Me</p><p>All Products</p></button></div>
   <button
     class=\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\" title=\"Remove Filter: Show Me All Products\"><svg aria-hidden=\"true\" class=\"slds-button__icon slds-button__icon--hint\" viewBox=\"0 0 24 24\" name=\"close\"><path d=\"M14.3 11.7l6-6c.3-.3.3-.7 0-1l-.9-1c-.3-.2-.7-.2-1 0l-6 6.1c-.2.2-.5.2-.7 0l-6-6.1c-.3-.3-.7-.3-1 0l-1 1c-.2.2-.2.7 0 .9l6.1 6.1c.2.2.2.4 0 .6l-6.1 6.1c-.3.3-.3.7 0 1l1 1c.2.2.7.2.9 0l6.1-6.1c.2-.2.4-.2.6 0l6.1 6.1c.2.2.7.2.9 0l1-1c.3-.3.3-.7 0-1l-6-6c-.2-.2-.2-.5 0-.7z\"></path></svg>
     <span
@@ -124,7 +124,7 @@ exports[`test Filter Base Snapshot 1`] = `
 
 exports[`test Filter Base with custom className Snapshot 1`] = `
 "<div class=\"slds-filters__item slds-grid slds-grid--vertical-align-center MY_CUSTOM_CLASS_NAME\">
-  <div class=\"slds-grow\" style=\"display:inline;\"><button class=\"slds-button--reset slds-grow slds-has-blur-focus\" aria-haspopup=\"true\" aria-expanded=\"false\" id=\"sample-panel-filtering-show-me\" tabindex=\"0\"><span class=\"slds-assistive-text\">Edit filter:</span><p class=\"slds-text-body--small\">Show Me</p><p>All Products</p></button></div>
+  <div class=\"slds-grow\" style=\"display:inline;\"><button class=\"slds-button--reset slds-grow slds-has-blur-focus\" id=\"sample-panel-filtering-show-me\" tabindex=\"0\"><span class=\"slds-assistive-text\">Edit filter:</span><p class=\"slds-text-body--small\">Show Me</p><p>All Products</p></button></div>
   <button
     class=\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\" title=\"Remove Filter: Show Me All Products\"><svg aria-hidden=\"true\" class=\"slds-button__icon slds-button__icon--hint\" viewBox=\"0 0 24 24\" name=\"close\"><path d=\"M14.3 11.7l6-6c.3-.3.3-.7 0-1l-.9-1c-.3-.2-.7-.2-1 0l-6 6.1c-.2.2-.5.2-.7 0l-6-6.1c-.3-.3-.7-.3-1 0l-1 1c-.2.2-.2.7 0 .9l6.1 6.1c.2.2.2.4 0 .6l-6.1 6.1c-.3.3-.3.7 0 1l1 1c.2.2.7.2.9 0l6.1-6.1c.2-.2.4-.2.6 0l6.1 6.1c.2.2.7.2.9 0l1-1c.3-.3.3-.7 0-1l-6-6c-.2-.2-.2-.5 0-.7z\"></path></svg>
     <span
