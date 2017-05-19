@@ -27,9 +27,8 @@ const Breadcrumb = (props) => {
 	return (
 		<nav role="navigation" aria-label={assistiveText}>
 			<ol className="slds-breadcrumb slds-list--horizontal">
-				{trail.map((crumb, index) =>
+				{trail.map((crumb) =>
 					<li
-						key={`BreadCrumb.${index}`}
 						className="slds-breadcrumb__item slds-text-title--caps"
 					>{crumb}</li>
 				)}
