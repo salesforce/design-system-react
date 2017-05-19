@@ -2,8 +2,8 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 // ### React
-// React is an external dependency of the project.
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { CARD_BODY } from '../../../utilities/constants';
 
@@ -27,15 +27,15 @@ CardBody.propTypes = {
 	/**
 	 * Elements to place in the body.
 	 */
-	children: React.PropTypes.node,
+	children: PropTypes.node,
 	/**
 	 * CSS classes to be added to the card.
 	 */
-	className: React.PropTypes.oneOfType([React.PropTypes.array, React.PropTypes.object, React.PropTypes.string]),
+	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
 	 * Set the HTML `id` of the body.
 	 */
-	id: React.PropTypes.string
+	id: PropTypes.string
 };
 
 export default CardBody;

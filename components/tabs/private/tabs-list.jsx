@@ -8,7 +8,8 @@
 // ## Dependencies
 
 // ### React
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // ### classNames
 import classNames from 'classnames';
@@ -65,7 +66,7 @@ TabsList.propTypes = {
 	/**
 	 * If the Tabs should be scopped, defaults to false
 	 */
-	variant: React.PropTypes.oneOf(['default', 'scoped'])
+	variant: PropTypes.oneOf(['default', 'scoped'])
 };
 
 export default TabsList;

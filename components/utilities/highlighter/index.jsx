@@ -3,15 +3,13 @@
 
 // ### React
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // ### ReactHighlighter
 import ReactHighlighter from 'react-highlighter';
 
 // ## Constants
 import { HIGHLIGHTER } from '../../../utilities/constants';
-
-// Removes the need for `PropTypes`.
-const { PropTypes } = React;
 
 /**
  * A utility component that highlights occurrences of a particular pattern in its contents.
@@ -37,9 +35,9 @@ Highlighter.propTypes = {
 	 * The full string to display.
 	 */
 	children: PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.number,
-		React.PropTypes.bool
+		PropTypes.string,
+		PropTypes.number,
+		PropTypes.bool
 	]),
 	className: PropTypes.string,
 	/**

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Tree from '~/components/tree';
 
 const sampleNodes = {
@@ -268,11 +269,11 @@ const TreeExample = React.createClass({
 
 	// ### Prop Types
 	propTypes: {
-		exampleNodesIndex: React.PropTypes.string,
-		noBranchSelection: React.PropTypes.bool,
-		searchTerm: React.PropTypes.string,
-		searchable: React.PropTypes.bool,
-		singleSelection: React.PropTypes.bool
+		exampleNodesIndex: PropTypes.string,
+		noBranchSelection: PropTypes.bool,
+		searchTerm: PropTypes.string,
+		searchable: PropTypes.bool,
+		singleSelection: PropTypes.bool
 	},
 
 	getDefaultProps () {

@@ -8,9 +8,8 @@
 // ## Dependencies
 
 // ### React
-import React, {
-	PropTypes
-}                      from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // ### findDOMNode
 import { findDOMNode } from 'react-dom';
@@ -119,7 +118,7 @@ const Tabs = React.createClass({
 		/**
 		 * If the Tabs should be scopped, defaults to false
 		 */
-		variant: React.PropTypes.oneOf(['default', 'scoped']),
+		variant: PropTypes.oneOf(['default', 'scoped']),
 
 		/**
 		 * The Tab (and corresponding TabPanel) that is currently selected.

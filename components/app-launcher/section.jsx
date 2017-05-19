@@ -8,8 +8,7 @@
 // ### React
 import React from 'react';
 
-// Removes the need for `React.PropTypes.prop`
-const { PropTypes } = React;
+import PropTypes from 'prop-types';
 
 // ### isFunction
 import isFunction from 'lodash.isfunction';

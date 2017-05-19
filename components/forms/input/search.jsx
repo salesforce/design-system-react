@@ -8,7 +8,8 @@
 // ## Dependencies
 
 // ### React
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // ## Children
 import Input from './index';
@@ -71,7 +72,7 @@ Search.propTypes = {
 	/**
 	 * This event fires when enter is pressed in the `input` or the search button is clicked.
 	 */
-	onSearch: React.PropTypes.func,
+	onSearch: PropTypes.func,
 	/**
 	 * Placeholder for the input
 	 */

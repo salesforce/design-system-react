@@ -12,14 +12,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// This component's `checkProps` which issues warnings to developers about properties
+// when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
-
-// This component's `checkProps` which issues warnings to developers about properties
-// when in development mode (similar to React's built in development tools)
-import checkProps from './check-props';
 
 // ### Children
 import Dropdown from '../../components/menu-dropdown';
@@ -135,5 +135,5 @@ MenuPicklist.displayName = displayName;
 MenuPicklist.propTypes = propTypes;
 MenuPicklist.defaultProps = defaultProps;
 
-export default MenuPicklist;
+module.exports = MenuPicklist;
 

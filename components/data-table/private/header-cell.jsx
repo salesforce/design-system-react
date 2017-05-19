@@ -3,6 +3,7 @@
 
 // ### React
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // ### classNames
 import classNames from 'classnames';
@@ -15,9 +16,6 @@ import Icon from '../../icon';
 
 // ## Constants
 import { DATA_TABLE_HEADER_CELL } from '../../../utilities/constants';
-
-// Removes the need for `PropTypes`.
-const { PropTypes } = React;
 
 /**
  * Used internally, renders each individual column heading.

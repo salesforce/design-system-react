@@ -8,8 +8,8 @@
 //
 
 // ### React
-// React is an external dependency of the project.
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -26,9 +26,6 @@ import shortid from 'shortid';
 import InputIcon from '../../icon/input-icon';
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-
-// Remove the need for `React.PropTypes`
-const { PropTypes } = React;
 
 import { FORMS_INPUT } from '../../../utilities/constants';
 

@@ -9,7 +9,8 @@
 // ## Dependencies
 
 // ### React
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)

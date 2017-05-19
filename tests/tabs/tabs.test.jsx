@@ -1,5 +1,6 @@
 // Import your external dependencies
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import TestUtils from 'react-addons-test-utils';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
@@ -42,7 +43,7 @@ const COMPONENT_CSS_CLASSES = {
  */
 const TabsDemoComponent = React.createClass({
 	displayName: 'TabsDemoComponent',
-	
+
 	// ### Prop Types
 	propTypes: {
 		/**
@@ -56,7 +57,7 @@ const TabsDemoComponent = React.createClass({
 		/**
 		 * HTML `id` attribute of primary element that has `.slds-tabs--default` on it. Optional: If one is not supplied, a `shortid` will be created.
 		 */
-		id: React.PropTypes.string
+		id: PropTypes.string
 	},
 
 	render () {

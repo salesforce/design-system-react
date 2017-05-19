@@ -8,6 +8,7 @@
 
 // ### React
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // ### classNames
 import classNames from 'classnames';
@@ -17,9 +18,6 @@ import ListItem from './item';
 
 // ## Constants
 import { LIST } from '../../../utilities/constants';
-
-// Removes the need for `PropTypes`.
-const { PropTypes } = React;
 
 /**
  * Component description.

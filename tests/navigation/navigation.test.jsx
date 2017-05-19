@@ -12,7 +12,8 @@
 /* eslint-disable react/display-name */
 
 // Import your external dependencies
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 

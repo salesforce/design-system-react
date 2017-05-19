@@ -1,9 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { storiesOf, action } from '@kadira/storybook';
 
 import { APP_LAUNCHER } from '../../utilities/constants';
 
-const { PropTypes } = React;
 
 import AppLauncher from '../../components/app-launcher';
 import AppLauncherTile from '../../components/app-launcher/tile';

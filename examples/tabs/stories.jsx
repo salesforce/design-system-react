@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { storiesOf, action } from '@kadira/storybook';
 
 import { TABS } from '../../utilities/constants';
@@ -277,8 +278,8 @@ const DemoTabsOutsideControl = React.createClass({
 		/**
 		 * The Tab (and corresponding TabPanel) that is selected when the component renders. Defaults to `0`.
 		 */
-		whichOneSelectedYo: React.PropTypes.number,
-		prevOneSelectedYo: React.PropTypes.number
+		whichOneSelectedYo: PropTypes.number,
+		prevOneSelectedYo: PropTypes.number
 	},
 
 	getInitialState () {
