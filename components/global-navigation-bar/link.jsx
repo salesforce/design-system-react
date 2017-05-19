@@ -42,9 +42,6 @@ const GlobalNavigationBarLink = (props) => {
 		onFocus,
 		onKeyDown,
 		onKeyPress,
-		onKeyUp,
-		onMouseEnter,
-		onMouseLeave,
 		tabIndex
 	} = props;
 
