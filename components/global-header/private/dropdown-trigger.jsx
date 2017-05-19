@@ -123,6 +123,7 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 
 		// TODO: Add avatar component for use across multiple components
 		return (
+			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<li
 				aria-haspopup="true"
 				className={classnames(
@@ -143,6 +144,7 @@ const GlobalHeaderDropdownTrigger = React.createClass({
 				onMouseLeave={onMouseLeave}
 				ref={triggerRef}
 			>
+				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				<Button
 					className={classnames({ 'slds-global-header__button--icon-actions': globalAction })}
 					iconClassName={classnames({ 'slds-global-header__icon-actions': globalAction })}
