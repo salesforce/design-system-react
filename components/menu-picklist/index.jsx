@@ -116,7 +116,6 @@ class MenuPicklist extends React.Component {
 				onSelect(item);
 			}}
 			id={this.dropdownId}
-			label={(this.state.selectedItem ? this.state.selectedItem.label : null) || placeholder}
 			options={options}
 		>
 			<PicklistTrigger
@@ -126,6 +125,7 @@ class MenuPicklist extends React.Component {
 				label={label || placeholder}
 				placeholder={placeholder}
 				required={required}
+				value={(this.state.selectedItem ? this.state.selectedItem.label : null) || placeholder}
 			/>
 		</Dropdown>);
 	}

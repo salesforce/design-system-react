@@ -145,11 +145,12 @@ const PicklistDropdownTrigger = (props) => {
 						id={props.id}
 						onClick={props.onClick}
 						onKeyDown={props.onKeyDown}
+						placeholder={props.placeholder || props.label}
 						readOnly
 						ref={props.triggerRef}
 						role="textbox"
 						type="text"
-						value={props.placeholder || props.label}
+						value={props.value}
 					/>
 					<InputIcon
 						aria-expanded={props.isOpen}
