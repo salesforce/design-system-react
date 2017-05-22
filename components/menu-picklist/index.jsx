@@ -111,12 +111,13 @@ class MenuPicklist extends React.Component {
 
 		return (<Dropdown
 			checkMark={checkmark}
+			id={this.dropdownId}
+			listItemRole="option"
+			options={options}
 			onSelect={(item) => {
 				this.setState({ selectedItem: item });
 				onSelect(item);
 			}}
-			id={this.dropdownId}
-			options={options}
 		>
 			<PicklistTrigger
 				dropdownId={this.dropdownId}

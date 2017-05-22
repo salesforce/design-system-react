@@ -319,6 +319,7 @@ const MenuDropdown = React.createClass({
 		return {
 			align: 'left',
 			hoverCloseDelay: 300,
+			listItemRole: 'menuitem',
 			openOn: 'click'
 		};
 	},
@@ -609,18 +610,19 @@ const MenuDropdown = React.createClass({
 	renderDefaultMenuContent (customListProps) {
 		return (
 			<List
-				key={`${this.getId()}-dropdown-list`}
 				checkmark={this.props.checkmark}
 				getListItemId={this.getListItemId}
 				itemRefs={this.saveRefToListItem}
 				itemRenderer={this.getListItemRenderer()}
+				key={`${this.getId()}-dropdown-list`}
+				length={this.props.length}
+				itemRole={this.props.listItemRole}
 				onCancel={this.handleCancel}
 				onSelect={this.handleSelect}
 				options={this.props.options}
 				ref={this.saveRefToList}
 				selectedIndex={this.state.selectedIndex}
 				triggerId={this.getId()}
-				length={this.props.length}
 				{...customListProps}
 			/>
 		);

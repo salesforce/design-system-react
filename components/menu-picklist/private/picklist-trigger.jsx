@@ -99,7 +99,8 @@ const propTypes = {
 };
 
 const defaultProps = {
-	assistiveText: 'Open Menu'
+	assistiveText: 'Open Menu',
+	placeholder: 'Select option'
 };
 
 /**
@@ -136,7 +137,7 @@ const PicklistDropdownTrigger = (props) => {
 				</label>
 				<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right slds-picklist__input">
 					<input
-						aria-activedescendant=""
+						aria-activedescendant={props['aria-activedescendant']}
 						aria-controls={props.dropdownId}
 						aria-describedby={errorId}
 						aria-required={props['aria-required']}
@@ -145,7 +146,7 @@ const PicklistDropdownTrigger = (props) => {
 						id={props.id}
 						onClick={props.onClick}
 						onKeyDown={props.onKeyDown}
-						placeholder={props.placeholder || props.label}
+						placeholder={props.placeholder}
 						readOnly
 						ref={props.triggerRef}
 						role="textbox"
