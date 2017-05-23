@@ -345,6 +345,53 @@ render () {
   );
 }
 ```
+## Naming DOM `ref` callbacks
+
+Do not name a DOM callback prop of a library component `ref`. `ref` is a reserved prop name. This will return the component React object, _not_ the DOM node. It is best practice to create an object called `refs` with keys that are semantic names of DOM nodes: `refs: { triggerButton: ()=>{}, triggerInput: ()=>{} }`. If you use a `refs` object, you may need shallow merge the object with default props.
+
+```javascript
+// bad
+function CustomTextInput(props) {
+  return (
+    <div>
+      <input ref={props.ref} />
+    </div>
+  );
+}
+
+class Parent extends React.Component {
+  render() {
+    return (
+      <CustomTextInput
+        ref={el => this.inputElement = el}
+      />
+    );
+  }
+}
+```
+
+```javascript
+// good
+function CustomTextInput(props) {
+  return (
+    <div>
+      <input ref={props.refs.input} />
+    </div>
+  );
+}
+
+class Parent extends React.Component {
+  render() {
+    return (
+      <CustomTextInput
+        refs={{
+          input: (el) => { this.inputElement = el; }
+        }}
+      />
+    );
+  }
+}
+```
 
 ## Naming Handler Methods
 
