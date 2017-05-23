@@ -184,7 +184,7 @@ const getDropdownCustomContent = (props) => (
 );
 
 storiesOf(MENU_DROPDOWN, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium ">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium" style={{ textAlign: 'center' }}>{getStory()}</div>)
 	.add('Base', () => getDropdown({
 		align: 'right',
 		label: 'Dropdown Click',
