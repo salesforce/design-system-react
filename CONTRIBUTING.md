@@ -347,7 +347,7 @@ render () {
 ```
 ## Naming DOM `ref` callbacks
 
-Do not name a DOM callback prop of a library component `ref`. `ref` is a reserved prop name. This will return the component React object, _not_ the DOM node. It is best practice to create an object called `refs` with keys that are semantic names of DOM nodes: `refs: { triggerButton: ()=>{}, triggerInput: ()=>{} }`. If you use a `refs` object, you may need shallow merge the object with default props.
+Do not name a DOM callback prop of a library component `ref`. `ref` is a reserved prop name. This will return the component React object, _not_ the DOM node. It is best practice to create an object called `refs` with keys that are semantic names of DOM nodes: `refs: { triggerButton: ()=>{}, triggerInput: ()=>{} }`. If you use a `refs` object, you may need shallow merge the object with default props. For more information, please review [Exposing DOM Refs to Parent Components](https://facebook.github.io/react/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components).
 
 ```javascript
 // bad
