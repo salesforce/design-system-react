@@ -16,6 +16,7 @@ const defaultProps = {};
 class DefaultFooter extends React.Component {
 	constructor (props) {
 		super(props);
+		this.boundHandleClick = this.handleClick.bind(this);
 	}
 
 	componentWillReceiveProps (nextProps) {
@@ -30,17 +31,21 @@ class DefaultFooter extends React.Component {
 		}
 	}
 
-	handleMouseDown (event) {
-		EventUtil.trapImmediate(event);
-	}
-
 	render () {
 		let className = 'slds-lookup__item-action slds-lookup__item-action--label';
 		if (this.props.isActive) className += ' slds-theme--shade';
 
 		return (
-			<div className="js-slds-lookup__item" onClick={this.handleClick.bind(this)} onMouseDown={this.handleMouseDown.bind(this)}>
+			/* eslint-disable jsx-a11y/no-static-element-interactions */
+			<div
+				className="js-slds-lookup__item"
+				onClick={this.boundHandleClick}
+				onMouseDown={EventUtil.trapImmediate}
+			>
+				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
+				{/* eslint-disable no-script-url */}
 				<a id="newItem" href="javascript:void(0);" className={className}>
+					{/* eslint-enable no-script-url */}
 					<span className="lookup__item-action-label">
 						<Icon name="add" category="utility" size="x-small" className="slds-icon-text-default" />
 						<span className="slds-truncate">

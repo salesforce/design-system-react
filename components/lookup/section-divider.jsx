@@ -3,7 +3,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { EventUtil } from '../../utilities';
 
 const displayName = 'LookupDefaultSectionDivider';
 const propTypes = {
@@ -11,14 +10,6 @@ const propTypes = {
 };
 
 class DefaultSectionDivider extends React.Component {
-	constructor (props) {
-		super(props);
-	}
-
-	handleMouseDown (event) {
-		EventUtil.trapImmediate(event);
-	}
-
 	render () {
 		return (
 			<li className="slds-p-around--x-small slds-lookup__divider" tabIndex="-1">
