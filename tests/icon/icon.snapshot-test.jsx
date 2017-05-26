@@ -11,6 +11,7 @@ import Utility from '../../examples/icon/utility';
 import Action from '../../examples/icon/action';
 import Doctype from '../../examples/icon/doctype';
 import Custom from '../../examples/icon/custom';
+import ExternalPath from '../../examples/icon/external-path';
 
 import ColorBase from '../../examples/icon/color-base';
 import ColorDefault from '../../examples/icon/color-default';
@@ -46,6 +47,9 @@ test('Icon Category Custom HTML Snapshot', () => {
 	expect(renderMarkup(Custom)).toMatchSnapshot();
 });
 
+test('Icon Category External Path HTML Snapshot', () => {
+	expect(renderMarkup(ExternalPath)).toMatchSnapshot();
+});
 
 test('Icon Size X-Small HTML Snapshot', () => {
 	expect(renderMarkup(SizesExtraSmall)).toMatchSnapshot();

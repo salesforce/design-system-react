@@ -4,6 +4,8 @@ exports[`test Icon Category Custom HTML Snapshot 1`] = `"<span class=\"slds-icon
 
 exports[`test Icon Category Doctype HTML Snapshot 1`] = `"<span class=\"slds-icon_container\"><svg aria-hidden=\"true\" class=\"slds-icon\"><use xlink:href=\"/assets/icons/doctype-sprite/svg/symbols.svg#xml\"></use></svg><span class=\"slds-assistive-text\">Description of icon</span></span>"`;
 
+exports[`test Icon Category External Path HTML Snapshot 1`] = `"<span class=\"slds-icon_container\"><svg aria-hidden=\"true\" class=\"slds-icon slds-icon-text-default\"><use xlink:href=\"/assets/icons/utility-sprite/svg/symbols.svg#announcement\"></use></svg><span class=\"slds-assistive-text\">We got news!</span></span>"`;
+
 exports[`test Icon Category Standard HTML Snapshot 1`] = `"<span class=\"slds-icon_container slds-icon-standard-account\" title=\"description of icon\"><svg aria-hidden=\"true\" class=\"slds-icon\"><use xlink:href=\"/assets/icons/standard-sprite/svg/symbols.svg#account\"></use></svg><span class=\"slds-assistive-text\">Description of icon</span></span>"`;
 
 exports[`test Icon Category Utility HTML Snapshot 1`] = `"<span title=\"description of icon when needed\"><svg aria-hidden=\"true\" class=\"slds-icon slds-icon--small slds-icon-text-default\"><use xlink:href=\"/assets/icons/utility-sprite/svg/symbols.svg#announcement\"></use></svg><span class=\"slds-assistive-text\">Description of icon</span></span>"`;
