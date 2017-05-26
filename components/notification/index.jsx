@@ -3,7 +3,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 
 import classNames from 'classnames';
 import Button from '../button';
@@ -59,6 +58,7 @@ class Notification extends React.Component {
 		super(props);
 		this.state = {};
 		this.timeout = null;
+		this.boundOnDismiss = this.onDismiss.bind(this);
 	}
 
 	componentDidMount () {
@@ -87,7 +87,7 @@ class Notification extends React.Component {
 
 	componentDidUpdate (prevProps) {
 		if (prevProps.isOpen !== this.props.isOpen) {
-			const btn = ReactDOM.findDOMNode(this.refs.dismissNotificationBtn);
+			const btn = this.dismissBtnRef;
 			if (btn) btn.focus();
 		}
 	}
@@ -129,8 +129,8 @@ class Notification extends React.Component {
 					iconSize={size}
 					inverse
 					className="slds-notify__close"
-					onClick={this.onDismiss.bind(this)}
-					ref="dismissNotificationBtn"
+					onClick={this.boundOnDismiss}
+					ref={(dismissBtn) => { this.dismissBtnRef = dismissBtn; }}
 					variant="icon"
 				/>
 			);
@@ -195,7 +195,7 @@ class Notification extends React.Component {
 	 * Because React renders the entire element to the DOM, we must switch out a blank div for the real content.
 	 * Bummer, I know.
 	 */
-	blankContent () {
+	blankContent () { // eslint-disable-line class-methods-use-this
 		return (
 			<div />
 		);
