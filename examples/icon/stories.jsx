@@ -11,6 +11,7 @@ import Utility from './utility';
 import Action from './action';
 import Doctype from './doctype';
 import Custom from './custom';
+import ExternalPath from './external-path';
 
 import ColorBase from './color-base';
 import ColorDefault from './color-default';
@@ -33,6 +34,7 @@ storiesOf(ICON, module)
 	.add('Category: Action', () => (<Action />))
 	.add('Category: Doctype', () => (<Doctype />))
 	.add('Category: Custom', () => (<Custom />))
+	.add('Category: External Path', () => (<ExternalPath />))
 	.add('Size: X-Small', () => (<SizesExtraSmall />))
 	.add('Size: Small', () => (<SizesSmall />))
 	.add('Size: Medium (default)', () => (<SizesMedium />))

@@ -37,15 +37,13 @@ const Icon = ({
 	style,
 	title }) => {
 	const kababCaseName = name ? name.replace(/_/g, '-') : '';
-	
+
 	return (
 		<span
 			className={classNames({
 				'slds-icon_container': category !== 'utility',
 				'slds-icon_container--circle': category === 'action',
-				[`slds-icon-${category}-${kababCaseName}`]:
-					category !== 'utility'
-					&& category !== 'doctype'
+				[`slds-icon-${category}-${kababCaseName}`]: category !== 'utility' && category !== 'doctype' && !path
 			})}
 			title={title}
 		>
