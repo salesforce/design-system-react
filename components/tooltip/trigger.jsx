@@ -5,10 +5,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
-import classNames from 'classnames';
-
-import omit from 'lodash.omit';
-
 const displayName = 'Tooltip.Trigger';
 const propTypes = {
 	tooltip: PropTypes.node
@@ -27,6 +23,8 @@ class Trigger extends React.Component {
 			isTooltipClosing: false,
 			isTooltipOpen: false
 		};
+		this.boundHandleTooltipMouseEnter = this.handleTooltipMouseEnter.bind(this);
+		this.boundHandleTooltipMouseLeave = this.handleTooltipMouseLeave.bind(this);
 	}
 
 	componentDidMount () {
@@ -34,25 +32,25 @@ class Trigger extends React.Component {
 			this.addListeners();
 		}
 		const openByDefault = this.props && this.props.tooltip && this.props.tooltip.props && this.props.tooltip.props.openByDefault ? this.props.tooltip.props.openByDefault : false;
-		this.setState({
+		this.setState({		// eslint-disable-line react/no-did-mount-set-state
 			isTooltipOpen: openByDefault,
-			tooltipTarget: ReactDOM.findDOMNode(this)
+			tooltipTarget: ReactDOM.findDOMNode(this) // eslint-disable-line react/no-find-dom-node
 		});
 	}
 
 	addListeners () {
-		ReactDOM.findDOMNode(this).addEventListener('mouseenter', this.handleTooltipMouseEnter.bind(this));
-		ReactDOM.findDOMNode(this).addEventListener('focus', this.handleTooltipMouseEnter.bind(this));
-		ReactDOM.findDOMNode(this).addEventListener('mouseleave', this.handleTooltipMouseLeave.bind(this));
-		ReactDOM.findDOMNode(this).addEventListener('blur', this.handleTooltipMouseLeave.bind(this));
+		ReactDOM.findDOMNode(this).addEventListener('mouseenter', this.handleTooltipMouseEnter.bind(this)); // eslint-disable-line react/no-find-dom-node
+		ReactDOM.findDOMNode(this).addEventListener('focus', this.handleTooltipMouseEnter.bind(this)); // eslint-disable-line react/no-find-dom-node
+		ReactDOM.findDOMNode(this).addEventListener('mouseleave', this.handleTooltipMouseLeave.bind(this)); // eslint-disable-line react/no-find-dom-node
+		ReactDOM.findDOMNode(this).addEventListener('blur', this.handleTooltipMouseLeave.bind(this)); // eslint-disable-line react/no-find-dom-node
 	}
 
 	componentWillUnmount () {
 		this.isUnmounting = true;
-		ReactDOM.findDOMNode(this).removeEventListener('mouseenter', this.handleTooltipMouseEnter.bind(this));
-		ReactDOM.findDOMNode(this).removeEventListener('focus', this.handleTooltipMouseEnter.bind(this));
-		ReactDOM.findDOMNode(this).removeEventListener('mouseleave', this.handleTooltipMouseLeave.bind(this));
-		ReactDOM.findDOMNode(this).removeEventListener('blur', this.handleTooltipMouseLeave.bind(this));
+		ReactDOM.findDOMNode(this).removeEventListener('mouseenter', this.handleTooltipMouseEnter.bind(this)); // eslint-disable-line react/no-find-dom-node
+		ReactDOM.findDOMNode(this).removeEventListener('focus', this.handleTooltipMouseEnter.bind(this)); // eslint-disable-line react/no-find-dom-node
+		ReactDOM.findDOMNode(this).removeEventListener('mouseleave', this.handleTooltipMouseLeave.bind(this)); // eslint-disable-line react/no-find-dom-node
+		ReactDOM.findDOMNode(this).removeEventListener('blur', this.handleTooltipMouseLeave.bind(this)); // eslint-disable-line react/no-find-dom-node
 	}
 
 	handleTooltipMouseEnter () {
@@ -78,6 +76,7 @@ class Trigger extends React.Component {
 	}
 
 	getMouseEventTarget () {
+		/* eslint-disable no-script-url */
 		return this.props.disabled ? <a
 			key="MouseEventTarget"
 			href="javascript:void(0)"
@@ -92,14 +91,15 @@ class Trigger extends React.Component {
 				left: '0',
 				top: '0'
 			}}
-			onMouseOver={this.handleTooltipMouseEnter.bind(this)}
-			onFocus={this.handleTooltipMouseEnter.bind(this)}
-			onMouseOut={this.handleTooltipMouseLeave.bind(this)}
-			onBlur={this.handleTooltipMouseLeave.bind(this)}
+			onMouseOver={this.boundHandleTooltipMouseEnter}
+			onFocus={this.boundHandleTooltipMouseEnter}
+			onMouseOut={this.boundHandleTooltipMouseLeave}
+			onBlur={this.boundHandleTooltipMouseLeave}
 		><span className="slds-assistive-text">{this.props.label || this.props.assistiveText}</span></a> : null;
+		/* eslint-enable no-script-url */
 	}
 
-	getTooltip () {
+	getTooltip () { // eslint-disable-line consistent-return
 		if (this.props.tooltip) {
 			if (this.state.isTooltipOpen && this.state.tooltipTarget) {
 				return [this.getMouseEventTarget(), React.cloneElement(this.props.tooltip, {

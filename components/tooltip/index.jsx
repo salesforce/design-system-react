@@ -10,7 +10,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 
 import classNames from 'classnames';
 
@@ -110,6 +109,7 @@ class PopoverTooltip extends React.Component {
 			isClosing: false,
 			isOpen: false
 		};
+		this.boundHandleCancel = this.handleCancel.bind(this);
 	}
 
 	componentWillMount () {
@@ -117,20 +117,6 @@ class PopoverTooltip extends React.Component {
 		checkProps(POPOVER_TOOLTIP, this.props);
 
 		this.generatedId = shortid.generate();
-	}
-
-	componentDidMount () {
-		this.setState({
-			el: ReactDOM.findDOMNode(this)
-		});
-	}
-
-	componentDidUpdate (prevProps) {
-		if (this.props.target && this.props.target !== prevProps.target) {
-			this.setState({
-				tooltipTarget: this.getTooltipTarget()
-			});
-		}
 	}
 
 	componentWillUnmount () {
@@ -142,7 +128,7 @@ class PopoverTooltip extends React.Component {
 	}
 
 	getTooltipTarget () {
-		return this.props.target ? this.props.target : this.state.el;
+		return this.props.target ? this.props.target : this.node;
 	}
 
 	handleMouseEnter () {
@@ -188,7 +174,7 @@ class PopoverTooltip extends React.Component {
 				marginLeft={getMargin.left(align)}
 				marginRight={getMargin.right(align)}
 				marginTop={getMargin.top(align)}
-				onClose={this.handleCancel.bind(this)}
+				onClose={this.boundHandleCancel}
 				targetElement={this.getTooltipTarget()}
 				align={align}
 				horizontalAlign={getAlignment.horizontal(align)}
@@ -212,7 +198,7 @@ class PopoverTooltip extends React.Component {
 		return <span className="slds-assistive-text">{this.props.content}</span>;
 	}
 
-	decorateGrandKidsWithKeyToSilenceWarning (grandKids) {
+	decorateGrandKidsWithKeyToSilenceWarning (grandKids) { // eslint-disable-line class-methods-use-this
 		return React.Children.map(grandKids, (component, i) => {
 			const decoratedComponent = React.isValidElement(component)
 			? React.cloneElement(component, { key: i })
@@ -246,7 +232,7 @@ class PopoverTooltip extends React.Component {
 			<div
 				className={classNames('slds-tooltip-trigger', this.props.triggerClassName)}
 				style={containerStyles}
-				ref="tooltipTarget"
+				ref={(node) => { this.node = node; }}
 			>
 				{this.getContent()}
 				{this.getTooltip()}
