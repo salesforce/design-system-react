@@ -188,10 +188,10 @@ describe('SLDSIcon: ', function () {
 	});
 
 	describe('Icon with external path renders', function () {
-		let component;
-		let svg;
-		let iconContainer;
 		let asstText;
+		let component;
+		let iconContainer;
+		let use;
 
 		beforeEach(mountComponent(
 			<DemoIcon
@@ -209,8 +209,8 @@ describe('SLDSIcon: ', function () {
 		});
 
 		it('path prop is passed to svg', function () {
-			svg = this.wrapper.find('svg');
-			expect(svg.childAt(0)).to.equal('<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>');
+			use = this.wrapper.find('svg').node.firstChild.getAttributeNS('http://www.w3.org/1999/xlink', 'href');
+			expect(use).to.equal('/assets/icons/utility-sprite/svg/symbols.svg#announcement');
 		});
 	});
 });
