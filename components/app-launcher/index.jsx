@@ -210,17 +210,17 @@ const AppLauncher = React.createClass({
 						className="slds-button slds-icon-waffle_container slds-context-bar__button"
 						onClick={this.openAppLauncher}
 					>
-						<div className="slds-icon-waffle">
-							<div className="slds-r1" />
-							<div className="slds-r2" />
-							<div className="slds-r3" />
-							<div className="slds-r4" />
-							<div className="slds-r5" />
-							<div className="slds-r6" />
-							<div className="slds-r7" />
-							<div className="slds-r8" />
-							<div className="slds-r9" />
-						</div>
+						<span className="slds-icon-waffle">
+							<span className="slds-r1" />
+							<span className="slds-r2" />
+							<span className="slds-r3" />
+							<span className="slds-r4" />
+							<span className="slds-r5" />
+							<span className="slds-r6" />
+							<span className="slds-r7" />
+							<span className="slds-r8" />
+							<span className="slds-r9" />
+						</span>
 						{this.props.triggerAssistiveText && <span className="slds-assistive-text">{this.props.triggerAssistiveText}</span>}
 					</button>
 				</div>
