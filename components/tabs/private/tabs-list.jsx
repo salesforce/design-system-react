@@ -20,8 +20,7 @@ const TabsList = ({
 	id,
 	className,
 	children,
-	variant,
-	...attributes
+	variant
 }) => (
 	<ul
 		id={`${id}-slds-tabs__nav`}

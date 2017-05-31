@@ -14,7 +14,6 @@ import classNames from 'classnames';
 
 // ## Constants
 import { TAB } from '../../../utilities/constants';
-import { findDOMNode } from 'react-dom';
 
 // Temporary hack until included in SLDS
 import '!style!css!../../../styles/tabs/tab.css'; // eslint-disable-line import/no-unresolved
@@ -96,8 +95,8 @@ const Tab = React.createClass({
 	},
 
 	checkFocus () {
-		if (this.props.selected && this.props.focus) {
-			findDOMNode(this).focus();
+		if (this.props.selected && this.props.focus && this.node) {
+			this.node.focus();
 		}
 	},
 
@@ -111,8 +110,17 @@ const Tab = React.createClass({
 			className,
 			children,
 			id,
-			variant,
-			...attributes } = this.props;
+			variant
+		} = this.props;
+		let tabIndex;
+
+		if (selected) {
+			tabIndex = '0';
+		} else if (disabled) {
+			tabIndex = '-1';
+		} else {
+			tabIndex = null;
+		}
 
 		return (
 			<li
@@ -127,10 +135,11 @@ const Tab = React.createClass({
 					}
 				)}
 				role="tab"
+				ref={(node) => { this.node = node; }}
 				aria-selected={selected ? 'true' : 'false'}
 				aria-disabled={disabled}
 				aria-controls={panelId}
-				tabIndex={selected ? '0' : disabled ? '-1' : null}
+				tabIndex={tabIndex}
 				id={id}
 				title={typeof children === 'string' ? children : null}
 			>
