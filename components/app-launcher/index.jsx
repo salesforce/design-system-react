@@ -205,10 +205,9 @@ const AppLauncher = React.createClass({
 		return (
 			<div className="slds-context-bar__item slds-no-hover" style={style}>
 				<div className="slds-context-bar__icon-action">
-					<a
-						href="javascript:void(0);" // eslint-disable-line no-script-url
+					<button
 						aria-haspopup="true"
-						className="slds-icon-waffle_container slds-context-bar__button"
+						className="slds-button slds-icon-waffle_container slds-context-bar__button"
 						onClick={this.openAppLauncher}
 					>
 						<div className="slds-icon-waffle">
@@ -223,7 +222,7 @@ const AppLauncher = React.createClass({
 							<div className="slds-r9" />
 						</div>
 						{this.props.triggerAssistiveText && <span className="slds-assistive-text">{this.props.triggerAssistiveText}</span>}
-					</a>
+					</button>
 				</div>
 				<Modal
 					contentClassName="slds-modal__content slds-app-launcher__content slds-p-around--medium"
