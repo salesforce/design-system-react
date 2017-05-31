@@ -29,7 +29,7 @@ const internalHandleClick = ({
 				eventTarget,
 				handleClick
 			}) => {
-	if (trigger &&	ReactDOM.findDOMNode(trigger) === eventTarget) {
+	if (trigger &&	ReactDOM.findDOMNode(trigger) === eventTarget) { // eslint-disable-line react/no-find-dom-node
 		handleClick(event);
 	}
 };

@@ -12,25 +12,12 @@
 
 function focusable (element, isTabIndexNotNaN) {
 	const nodeName = element.nodeName.toLowerCase();
-	return (/input|select|textarea|button|object/.test(nodeName) ?
-		!element.disabled :
-		nodeName === 'a' ?
-			element.href || isTabIndexNotNaN :
-			isTabIndexNotNaN);
-}
-
-function hidden (el) {
-	return (el.offsetWidth <= 0 && el.offsetHeight <= 0) ||
-		el.style.display === 'none';
-}
-
-function visible (element) {
-	while (element) {
-		if (element === document.body) break;
-		if (hidden(element)) return false;
-		element = element.parentNode;
+	if (/input|select|textarea|button|object/.test(nodeName)) {
+		return !element.disabled;
+	} else if (nodeName === 'a') {
+		return element.href || isTabIndexNotNaN;
 	}
-	return true;
+	return isTabIndexNotNaN;
 }
 
 function tabbable (element) {

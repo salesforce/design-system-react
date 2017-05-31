@@ -3,15 +3,15 @@ import React from 'react';
 /**
  * Traverse all children
  */
-function flatMapChildren (children, f) {
+function flatMapChildren (children, iterator) {
 	const result = [];
-	function go (xs, f) {
-		return React.Children.map(xs, (c) => {
-			result.push(f(c));
-			if (c.type) go(c.props.children, f);
+	function go (xs) {
+		return React.Children.map(xs, (child) => {
+			result.push(iterator(child));
+			if (child.type) go(child.props.children);
 		});
 	}
-	go(children, f);
+	go(children);
 	return result;
 }
 
@@ -20,16 +20,16 @@ function flatMapChildren (children, f) {
  */
 function hasChild (children, name) {
 	let flag = false;
-	flatMapChildren(children, (c) => {
-		flag = flag || (c.type && c.type.name === name);
+	flatMapChildren(children, (child) => {
+		flag = flag || (child.type && child.type.name === name);
 	});
 	return flag;
 }
 
 // findDOMNode complains so filter out strings from virtual dom
 function textContent (children) {
-	return flatMapChildren(children, (c) => {
-		if (typeof c === 'string') return c;
+	return flatMapChildren(children, (child) => {	// eslint-disable-line consistent-return
+		if (typeof child === 'string') return child;
 	}).join(' ');
 }
 
