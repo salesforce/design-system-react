@@ -266,6 +266,7 @@ const Dialog = React.createClass({
 		}
 
 		return (
+			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<div
 				className={classNames(this.props.contentsClassName, this.props.outsideClickIgnoreClass)}
 				style={style}
@@ -274,6 +275,7 @@ const Dialog = React.createClass({
 				onMouseLeave={this.props.onMouseLeave}
 				ref={(component) => { this.dialogContent = component; }}
 			>
+				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				{this.props.children}
 			</div>
 		);
@@ -349,7 +351,7 @@ const Dialog = React.createClass({
 	},
 
 	target () {
-		return this.props.targetElement ? ReactDOM.findDOMNode(this.props.targetElement) : ReactDOM.findDOMNode(this).parentNode;
+		return this.props.targetElement ? ReactDOM.findDOMNode(this.props.targetElement) : ReactDOM.findDOMNode(this).parentNode; // eslint-disable-line react/no-find-dom-node
 	},
 
 	tetherDropOptions () {
@@ -376,7 +378,7 @@ const Dialog = React.createClass({
 
 		if (this.props.variant === 'popover') {
 			DOMElementFocus.storeActiveElement();
-			DOMElementFocus.setupScopedFocus({ ancestorElement: ReactDOM.findDOMNode(this.dialogElement).querySelector('.slds-popover') });
+			DOMElementFocus.setupScopedFocus({ ancestorElement: ReactDOM.findDOMNode(this.dialogElement).querySelector('.slds-popover') }); // eslint-disable-line react/no-find-dom-node
 			// Don't steal focus from inner elements
 			if (!DOMElementFocus.hasOrAncestorHasFocus()) {
 				DOMElementFocus.focusAncestor();

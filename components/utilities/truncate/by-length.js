@@ -8,7 +8,7 @@ export default function truncateByLength ({ inputString = '', maxLength = 140, t
 		outputString = inputString;
 	} else {
 		const words = inputString.split(' ');
-		let length = startingLength + truncationChars.length - 1;
+		let length = (startingLength + truncationChars.length) - 1;
 
 		outputString = words.reduce((combined, word) => {
 			length += word.length + 1;
