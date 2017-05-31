@@ -44,16 +44,16 @@ const Spinner = (props) => {
 		size
 	} = props;
 
-	const sizeClass = `slds-spinner--${props.size}`;
+	const sizeClass = `slds-spinner--${size}`;
 	const variants = {
 		brand: 'slds-spinner--brand',
 		inverse: 'slds-spinner--inverse'
 	};
 
 	return (
-		<div className={classNames(props.containerClassName, 'slds-spinner_container')}>
+		<div className={classNames(containerClassName, 'slds-spinner_container')}>
 			<div
-				className={classNames('slds-spinner', sizeClass, variants[props.variant])}
+				className={classNames('slds-spinner', sizeClass, variants[variant])}
 				aria-hidden="false"
 				role="alert"
 			>
