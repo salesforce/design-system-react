@@ -186,4 +186,31 @@ describe('SLDSIcon: ', function () {
 			expect(this.wrapper.hasClass('slds-icon-text-default')).to.be.false;
 		});
 	});
+
+	describe('Icon with external path renders', function () {
+		let asstText;
+		let component;
+		let iconContainer;
+		let use;
+
+		beforeEach(mountComponent(
+			<DemoIcon
+				assistiveText="New stuff!"
+				inverse
+				path="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+				size="medium"
+			/>
+		));
+
+		afterEach(unmountComponent);
+
+		it('does NOT render slds-icon-standard class', function () {
+			expect(this.wrapper.hasClass('slds-icon-standard-')).to.be.false;
+		});
+
+		it('path prop is passed to svg', function () {
+			use = this.wrapper.find('svg').node.firstChild.getAttributeNS('http://www.w3.org/1999/xlink', 'href');
+			expect(use).to.equal('/assets/icons/utility-sprite/svg/symbols.svg#announcement');
+		});
+	});
 });
