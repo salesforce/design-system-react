@@ -1,7 +1,5 @@
-
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
-
 
 // # Picklist Component
 
@@ -16,30 +14,10 @@ import PropTypes from 'prop-types';
 // when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 
-// ### classNames
-// [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
-// This project uses `classnames`, "a simple javascript utility for conditionally
-// joining classNames together."
-import classNames from 'classnames';
-
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
-
 // ### Children
-import Dialog from '../utilities/dialog';
-import Icon from '../icon';
-import List from '../utilities/menu-list';
-import ListItemLabel from '../utilities/menu-list/item-label';
+import Dropdown from '../../components/menu-dropdown';
+import PicklistTrigger from './private/picklist-trigger';
 
-// ### Traits
-
-// #### KeyboardNavigable
-import KeyboardNavigable from '../../utilities/keyboard-navigable-menu';
-
-import EventUtil from '../../utilities/event';
-import KEYS from '../../utilities/key-code';
 import { MENU_PICKLIST } from '../../utilities/constants';
 
 /**
@@ -49,8 +27,6 @@ const MenuPicklist = React.createClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: MENU_PICKLIST,
-
-	mixins: [KeyboardNavigable],
 
 	// ### Prop Types
 	propTypes: {
@@ -64,10 +40,6 @@ const MenuPicklist = React.createClass({
 		 */
 		checkmark: PropTypes.bool,
 		disabled: PropTypes.bool,
-		/**
-		 * Message to display when the input is in an error state. When this is present, also visually highlights the component as in error.
-		 */
-		errorText: PropTypes.string,
 		/**
 		 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
 		 */
@@ -105,323 +77,35 @@ const MenuPicklist = React.createClass({
 
 	getInitialState () {
 		return {
-			focusedIndex: -1,
-			selectedIndex: -1
+			selectedItem: null
 		};
 	},
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(MENU_PICKLIST, this.props);
-
-		this.generatedId = shortid.generate();
-		if (this.props.errorText) {
-			this.generatedErrorId = shortid.generate();
-		}
-
-		window.addEventListener('click', this.closeOnClick, false);
-
-		this.setState({
-			selectedIndex: this.getIndexByValue(this.props)
-		});
-	},
-
-	componentWillReceiveProps (nextProps) {
-		if (this.props.value !== nextProps.value || this.props.options.length !== nextProps.length) {
-			this.setState({
-				selectedIndex: this.getIndexByValue(nextProps)
-			});
-		}
-	},
-
-	componentWillUnmount () {
-		this.isUnmounting = true;
-
-		window.removeEventListener('click', this.closeOnClick, false);
 	},
 
 	getId () {
 		return this.props.id || this.generatedId;
 	},
 
-	getErrorId () {
-		return this.props['aria-describedby'] || this.generatedErrorId;
-	},
-
-	getClickEventName () {
-		return `SLDS${this.getId()}ClickEvent`;
-	},
-
-	getIndexByValue ({ value, options } = this.props) {
-		let foundIndex = -1;
-
-		if (options && options.length) {
-			options.some((element, index) => {
-				if (element && element.value === value) {
-					foundIndex = index;
-					return true;
-				}
-
-				return false;
-			});
-		}
-
-		return foundIndex;
-	},
-
-	getValueByIndex (index) {
-		return this.props.options[index];
-	},
-
-	getListItemRenderer () {
-		return this.props.listItemRenderer ? this.props.listItemRenderer : ListItemLabel;
-	},
-
-	handleSelect (index) {
-		this.setState({ selectedIndex: index });
-		this.handleClose();
-		this.setFocus();
-
-		if (this.props.onSelect) {
-			this.props.onSelect(this.getValueByIndex(index));
-		}
-	},
-
-	handleClose () {
-		this.setState({ isOpen: false });
-	},
-
-	handleClick (event) {
-		if (event) {
-			event.nativeEvent[this.getClickEventName()] = true;
-		}
-
-		if (!this.state.isOpen) {
-			this.setState({ isOpen: true });
-			this.setFocus();
-
-			if (this.props.onClick) {
-				this.props.onClick(event);
-			}
-		} else {
-			this.handleClose();
-		}
-	},
-
-	handleMouseDown (event) {
-		if (event) {
-			EventUtil.trapImmediate(event);
-			event.nativeEvent[this.getClickEventName()] = true;
-		}
-	},
-
-	setFocus () {
-		if (!this.isUnmounting && this.button) {
-			this.button.focus();
-		}
-	},
-
-	handleKeyDown (event) {
-		if (event.keyCode) {
-			if (event.keyCode === KEYS.ENTER ||
-				event.keyCode === KEYS.SPACE ||
-				event.keyCode === KEYS.DOWN ||
-				event.keyCode === KEYS.UP) {
-				EventUtil.trap(event);
-			}
-
-			if (event.keyCode !== KEYS.TAB) {
-				// The outer div with onKeyDown is overriding button onClick so we need to add it here.
-				const openMenuKeys = event.keyCode === KEYS.ENTER || event.keyCode === KEYS.DOWN || event.keyCode === KEYS.UP;
-				const isTrigger = event.target.tagName === 'BUTTON';
-				if (openMenuKeys && isTrigger && this.props.onClick) {
-					this.props.onClick(event);
-				}
-
-				this.handleKeyboardNavigate({
-					isOpen: this.state.isOpen || false,
-					keyCode: event.keyCode,
-					onSelect: this.handleSelect,
-					toggleOpen: this.toggleOpen
-				});
-			} else {
-				this.handleCancel();
-			}
-		}
-	},
-
-	handleCancel () {
-		this.setFocus();
-		this.handleClose();
-	},
-
-	closeOnClick (event) {
-		if (!event[this.getClickEventName()] && this.state.isOpen) {
-			this.handleClose();
-		}
-	},
-
-	toggleOpen () {
-		this.setState({ isOpen: !this.state.isOpen });
-	},
-
-	saveRefToList (list) {
-		this.list = list;
-	},
-
-	saveRefToListItem (listItem, index) {
-		if (!this.listItems) {
-			this.listItems = {};
-		}
-
-		this.listItems[index] = listItem;
-
-		if (index === this.state.focusedIndex) this.handleKeyboardFocus(this.state.focusedIndex);
-	},
-
-	// Trigger opens, closes, and recieves focus on close
-	saveRefToTrigger (trigger) {
-		this.button = trigger;
-		if (this.props.buttonRef) {
-			this.props.buttonRef(this.button);
-		}
-	},
-
-	renderMenuContent () {
-		return (
-			<List
-				checkmark={this.props.checkmark}
-				getListItemId={this.getListItemId}
-				itemRefs={this.saveRefToListItem}
-				itemRenderer={this.getListItemRenderer()}
-				onCancel={this.handleCancel}
-				onSelect={this.handleSelect}
-				options={this.props.options}
-				ref={this.saveRefToList}
-				selectedIndex={this.state.selectedIndex}
-				triggerId={this.getId()}
-			/>
-		);
-	},
-
-	renderInlineMenu () {
-		return (
-			!this.props.disabled && this.state.isOpen
-			? <div
-				className="slds-dropdown slds-dropdown--left"
-				// inline style override
-				style={{
-					maxHeight: '20em',
-					overflowX: 'hidden',
-					minWidth: '100%'
-				}}
-			>
-				{this.renderMenuContent()}
-			</div>
-			: null
-		);
-	},
-
-	renderDialog () {
-		return (
-			!this.props.disabled && this.state.isOpen && this.button
-			? <Dialog
-				closeOnTabKey
-				constrainToScrollParent={this.props.constrainToScrollParent}
-				contentsClassName="slds-dropdown slds-dropdown--left"
-				flippable
-				onClose={this.handleCancel}
-				onKeyDown={this.handleKeyDown}
-				targetElement={this.button}
-				inheritTargetWidth={this.props.inheritTargetWidth}
-			>
-				{this.renderMenuContent()}
-			</Dialog>
-			: null
-		);
-	},
-
-	renderPlaceholder () {
-		const option = this.props.options[this.state.selectedIndex];
-		return (option && option.label) ? option.label : this.props.placeholder;
-	},
-
-	renderTrigger () {
-		let isInline;
-		/* eslint-disable react/prop-types */
-		if (this.props.isInline) {
-			isInline = true;
-		} else if (this.props.modal !== undefined) {
-			isInline = !this.props.modal;
-		}
-		/* eslint-enable react/prop-types */
-
-		// TODO: make use of <Button>
-		return (
-			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
-			<div
-				className={classNames(
-						'slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click',
-						{ 'slds-is-open': this.state.isOpen },
-						this.props.className
-					)}
-				onKeyDown={this.handleKeyDown}
-				onMouseDown={this.handleMouseDown}
-			>
-				<button
-					aria-describedby={this.getErrorId()}
-					aria-expanded={this.state.isOpen}
-					aria-haspopup="true"
-					className="slds-button slds-button--neutral slds-picklist__label"
-					disabled={this.props.disabled}
-					id={this.getId()}
-					onClick={!this.props.disabled && this.handleClick}
-					ref={this.saveRefToTrigger}
-					tabIndex={this.state.isOpen ? -1 : 0}
-				>
-					<span className="slds-truncate">{this.renderPlaceholder()}</span>
-					<Icon name="down" category="utility" />
-				</button>
-				{isInline ? this.renderInlineMenu() : this.renderDialog()}
-			</div>
-		);
-	},
-
 	render () {
-		const {
-			className,
-			errorText,
-			label,
-			required
-		} = this.props;
-
-		if (label) {
-			const requiredElem = required ? <span style={{ color: 'red' }}>* </span> : null;
-
-			return (
-				<div
-					className={classNames('slds-form-element', {
-						'slds-has-error': errorText
-					},
-					className)}
-				>
-					<label
-						className="slds-form-element__label"
-						htmlFor={this.getId()}
-						// inline style override
-						style={{ width: '100%' }}
-					>
-						{requiredElem}{label}
-					</label>
-					{this.renderTrigger()}
-					{errorText && <div id={this.getErrorId()} className="slds-form-element__help">{errorText}</div>}
-				</div>
-			);
-		}
-
-		return this.renderTrigger();
+		return (<Dropdown
+			checkMark={this.props.checkmark}
+			onSelect={(item) => {
+				this.setState({ selectedItem: item });
+				this.props.onSelect(item);
+			}}
+			id={this.props.id}
+			label={(this.state.selectedItem ? this.state.selectedItem.label : null) || this.props.placeholder}
+			options={this.props.options}
+		>
+			<PicklistTrigger
+				required={this.props.required}
+			/>
+		</Dropdown>);
 	}
 });
 
-module.exports = MenuPicklist;
-module.exports.ListItemLabel = ListItemLabel;
+export default MenuPicklist;
