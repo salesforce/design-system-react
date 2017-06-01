@@ -153,10 +153,9 @@ class MyForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {value: 'Hello!'};
-    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     this.setState({value: event.target.value});
   }
 
@@ -175,7 +174,7 @@ class MyForm extends React.Component {
 In this example, we are accepting the value provided by the user and updating the `value` prop of the `<input>` component. This pattern makes it easy to implement interfaces that respond to or validate user interactions. For example:
 
 ```javascript
-  handleChange(event) {
+  handleChange = (event) => {
     this.setState({value: event.target.value.substr(0, 140)});
   }
 ```
@@ -191,52 +190,71 @@ _from [Controlled Components](https://facebook.github.io/react/docs/forms.html#c
 
 ## Component Organization
 
-* `createClass`
+* `extends React.Component`
+  * initial state within `constructor`
+  * life cycle methods
+  * sub-render methods (keep to a minimum)
+  * component render
+* Static class properties that should be added to the class variable after creation. `static` prefix is not currently compatible with our documentation site build.
   * display name
   * prop types
-  * defaults and initial state
-  * life cycle methods
-  * sub-render methods
-  * primary render
+  * defaults props 
 
 ```javascript
+import React from 'react';
+import PropTypes from 'prop-types';
+import shortid from 'shortid';
+import checkProps from './check-props';
 import { EXTERNAL_CONSTANT } from '../../utilities/constants';
+
+const propTypes = {
+	/**
+	 * The description of this prop (will appear in the documentation site).
+	 */
+	title: PropTypes.string.isRequired
+};
+
+// These values will also be visible in the documentation site.
+const defaultProps = {};
 
 /**
  * The description of this component (will appear in the documentation site).
  */
-const DemoComponent = React.createClass({
-  displayName: EXTERNAL_CONSTANT,
-  propTypes: {
-    /**
-     * The description of this prop (will appear in the documentation site).
-     */
-    title: PropTypes.string.isRequired
-  },
+class DemoComponent extends React.Component {
+	constructor (props) {
+		super(props);
 
-  // These values will also be visible in the documentation site.
-  getDefaultProps () {
-    return {
-    };
-  },
+		// initial state
+		this.state = {};
+	}
 
-  getInitialState () {
-    return {
-    };
-  },
+	componentWillMount () {
+		// useful for unique ids
+		this.generatedId = shortid.generate();
+		// issues warnings to developers about props
+		checkProps(EXTERNAL_CONSTANT, this.props);
+	}
 
-  toggleOpen (event) {
-  },
+	// Class property bound to instance
+	toggleOpen = (event, { eventDataKey }) => {
+		// you can use `this`
+	};
 
-  renderSubComponent () {
-  },
+	// Minimize use of multiple renders. More HTML-like JSX is preferred with ternary statements
+	renderSubComponent = () => null;
 
-  // Render should be last
-  render () {
-  }
-});
+	// Render should be last
+	render () {
+		return null;
+	}
+}
+
+DemoComponent.displayName = EXTERNAL_CONSTANT;
+DemoComponent.propTypes = propTypes;
+DemoComponent.defaultProps = defaultProps;
 
 export default DemoComponent;
+
 ```
 
 ## Formatting Props
