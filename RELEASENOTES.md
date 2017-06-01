@@ -26,6 +26,19 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ---
 
+## Release 0.6.8
+**New Components**
+- Checkbox button group
+- Exported SLDSSearch (`forms/input/search`)
+
+**Minor Changes**
+- Started using assistiveText prop object instead of individual prop strings
+- Added a11y html markup to Filter
+- Allow devs to pass in link to Icon for external icons
+
+**Bugs**
+- Fixed filter but where 'ESC' didn't close popover
+
 ## Release 0.6.7
 
 **Minor Changes**
@@ -125,7 +138,7 @@ These are changes that have backwards-compatible solutions present and that comp
 - Picklist bugfix where the value might be available before the options object is. This would make the active item index be incorrect.
 - Fix sort arrow bug in DataTable. Only one column can be actively sorted at a time. Column heading padding has also been updated.
 - Add `disabled` prop to Lookup.
-- Popover's `onRequestClose` and `onClose` now fire once when Dialog component closes. 
+- Popover's `onRequestClose` and `onClose` now fire once when Dialog component closes.
 - Popover spacing from target/trigger is correct.
 - `checkProp`'s `oneOfComponent` parses `displayName` properly
 
