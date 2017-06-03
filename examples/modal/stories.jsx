@@ -11,6 +11,9 @@ import Timepicker from '../../components/time-picker';
 import Datepicker from '../../components/date-picker';
 import Button from '../../components/button';
 
+import ModalCustomParentNode from './modal-custom-parent-node';
+
+
 import SLDSSettings from '../../components/SLDSSettings';
 
 SLDSSettings.setAppElement('#root');	// used by Modal component
@@ -134,6 +137,7 @@ const modalContent = (
 
 storiesOf(MODAL, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.add('Modal with Custom Parent Node', () => <ModalCustomParentNode />)
 	.add('Small', () => getModal({
 		closeButtonAssistiveText: 'Exit',
 		isOpen: true,

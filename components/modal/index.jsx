@@ -91,6 +91,10 @@ const propTypes = {
 	 */
 	isOpen: PropTypes.bool.isRequired,
 	/**
+	 * Function that returns parent node to contain Modal. Should return document.querySelector('#myModalContainer').
+	 */
+	parentSelector: PropTypes.func,
+	/**
 	 * Custom CSS classes for the portal DOM node. This node is a direct descendant of the `body` and is the parent of `ReactModal__Overlay`. Use `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
 	portalClassName: PropTypes.oneOfType([
@@ -387,6 +391,7 @@ class Modal extends React.Component {
 				isOpen={this.props.isOpen}
 				onRequestClose={this.closeModal}
 				style={customStyles}
+				parentSelector={this.props.parentSelector}
 				portalClassName={classNames('ReactModalPortal', this.props.portalClassName)}
 			>
 				{this.getModal()}
