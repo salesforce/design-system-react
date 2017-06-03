@@ -156,6 +156,15 @@ storiesOf(MODAL, module)
 		onRequestClose: action('modal closed'),
 		footer: modalFooter
 	}))
+	.add('Small with custom footer', () => getModal({
+		directional: true,
+		isOpen: true,
+		tagline: 'Enter in details below',
+		title: 'New Opportunity',
+		children: modalContent,
+		onRequestClose: action('modal closed'),
+		footer: <div><Button label="cancel" /> and some random text in here <Button label="update" /><Button label="run" /></div>
+	}))
 	.add('Small no header', () => getModal({
 		isOpen: true,
 		children: modalContent,

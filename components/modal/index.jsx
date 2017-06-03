@@ -72,9 +72,12 @@ const propTypes = {
 	*/
 	onRequestClose: PropTypes.func,
 	/**
-	 * Array of buttons to be placed in the footer. They render on the right side by default but are floated left and right if <code>directional</code> is true.
+	 * Accepts either a node or array of buttons to be placed in the footer. If array, the buttons render on the right side by default but are floated left and right if <code>directional</code> is true.
 	 */
-	footer: PropTypes.array,
+	footer: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.node
+	]),
 	/**
 	 * Allows for a custom modal header that does not scroll with modal content. If this is defined, `title` and `tagline` will be ignored. The close button will still be present.
 	 */
@@ -261,7 +264,7 @@ class Modal extends React.Component {
 
 	footerComponent () {
 		let footer = null;
-		const hasFooter = this.props.footer && this.props.footer.length > 0;
+		const hasFooter = this.props.footer;
 		const footerClass = {
 			'slds-modal__footer': true,
 			'slds-modal__footer--directional': this.props.directional,
@@ -270,7 +273,7 @@ class Modal extends React.Component {
 
 		if (hasFooter) {
 			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
-			footer = (<div className={classNames(footerClass)} onClick={this.handleModalClick}>{this.props.footer}</div>);
+			footer = (<footer className={classNames(footerClass)} onClick={this.handleModalClick}>{this.props.footer}</footer>);
 		}
 		return footer;
 	}
@@ -310,7 +313,7 @@ class Modal extends React.Component {
 
 		return (
 			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
-			<div
+			<header
 				className={classNames('slds-modal__header', {
 					'slds-modal__header--empty': headerEmpty,
 					[`slds-theme--${this.props.prompt}`]: this.isPrompt(),
@@ -321,7 +324,7 @@ class Modal extends React.Component {
 			>
 				{this.props.dismissible ? closeButton : null}
 				{headerContent}
-			</div>
+			</header>
 		);
 	}
 
