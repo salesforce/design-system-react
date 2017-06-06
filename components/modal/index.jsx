@@ -72,9 +72,12 @@ const propTypes = {
 	*/
 	onRequestClose: PropTypes.func,
 	/**
-	 * Array of buttons to be placed in the footer. They render on the right side by default but are floated left and right if <code>directional</code> is true.
+	 * Accepts either a node or array of buttons to be placed in the footer. If array, the buttons render on the right side by default but are floated left and right if <code>directional</code> is true.
 	 */
-	footer: PropTypes.array,
+	footer: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.node
+	]),
 	/**
 	 * Allows for a custom modal header that does not scroll with modal content. If this is defined, `title` and `tagline` will be ignored. The close button will still be present.
 	 */
@@ -90,6 +93,10 @@ const propTypes = {
 	 * Forces the modal to be open or closed.
 	 */
 	isOpen: PropTypes.bool.isRequired,
+	/**
+	 * Function that returns parent node to contain Modal. Should return document.querySelector('#myModalContainer').
+	 */
+	parentSelector: PropTypes.func,
 	/**
 	 * Custom CSS classes for the portal DOM node. This node is a direct descendant of the `body` and is the parent of `ReactModal__Overlay`. Use `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
@@ -257,7 +264,7 @@ class Modal extends React.Component {
 
 	footerComponent () {
 		let footer = null;
-		const hasFooter = this.props.footer && this.props.footer.length > 0;
+		const hasFooter = this.props.footer;
 		const footerClass = {
 			'slds-modal__footer': true,
 			'slds-modal__footer--directional': this.props.directional,
@@ -266,7 +273,7 @@ class Modal extends React.Component {
 
 		if (hasFooter) {
 			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
-			footer = (<div className={classNames(footerClass)} onClick={this.handleModalClick}>{this.props.footer}</div>);
+			footer = (<footer className={classNames(footerClass)} onClick={this.handleModalClick}>{this.props.footer}</footer>);
 		}
 		return footer;
 	}
@@ -306,7 +313,7 @@ class Modal extends React.Component {
 
 		return (
 			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
-			<div
+			<header
 				className={classNames('slds-modal__header', {
 					'slds-modal__header--empty': headerEmpty,
 					[`slds-theme--${this.props.prompt}`]: this.isPrompt(),
@@ -317,7 +324,7 @@ class Modal extends React.Component {
 			>
 				{this.props.dismissible ? closeButton : null}
 				{headerContent}
-			</div>
+			</header>
 		);
 	}
 
@@ -387,6 +394,7 @@ class Modal extends React.Component {
 				isOpen={this.props.isOpen}
 				onRequestClose={this.closeModal}
 				style={customStyles}
+				parentSelector={this.props.parentSelector}
 				portalClassName={classNames('ReactModalPortal', this.props.portalClassName)}
 			>
 				{this.getModal()}
