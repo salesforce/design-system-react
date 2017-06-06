@@ -9,17 +9,13 @@ const propTypes = {
 	data: PropTypes.object
 };
 
-class DefaultSectionDivider extends React.Component {
-	render () {
-		return (
-			<li className="slds-p-around--x-small slds-lookup__divider" tabIndex="-1">
-				<span className="slds-m-left--x-small">
-					<strong>{this.props.data.label}</strong>
-				</span>
-			</li>
-		);
-	}
-}
+const DefaultSectionDivider = (props) => (
+	<li className="slds-p-around--x-small slds-lookup__divider" tabIndex="-1">
+		<span className="slds-m-left--x-small">
+			<strong>{props.data.label}</strong>
+		</span>
+	</li>
+);
 
 DefaultSectionDivider.displayName = displayName;
 DefaultSectionDivider.propTypes = propTypes;
