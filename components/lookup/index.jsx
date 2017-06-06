@@ -238,8 +238,8 @@ const Lookup = React.createClass({
 		let nextFocusIndex = 0;
 		let filteredItem = this.state.items[0];
 
-		if (this.menuRef && this.menuRef.getFilteredItemForIndex) {
-			filteredItem = this.menuRef.getFilteredItemForIndex(nextFocusIndex);
+		if (this.menuComponent && this.menuComponent.getFilteredItemForIndex) {
+			filteredItem = this.menuComponent.getFilteredItemForIndex(nextFocusIndex);
 		}
 
 		if (filteredItem && filteredItem.data.type === 'section') {
@@ -255,7 +255,7 @@ const Lookup = React.createClass({
 	increaseIndex () {
 		const numFocusable = this.getNumFocusableItems();
 		let nextFocusIndex = this.state.focusIndex < numFocusable ? this.state.focusIndex + 1 : 0;
-		const filteredItem = this.menuRef.getFilteredItemForIndex(nextFocusIndex);
+		const filteredItem = this.menuComponent.getFilteredItemForIndex(nextFocusIndex);
 
 		if (filteredItem && filteredItem.data.type === 'section') {
 			nextFocusIndex++;
@@ -267,7 +267,7 @@ const Lookup = React.createClass({
 	decreaseIndex () {
 		const numFocusable = this.getNumFocusableItems();
 		let prevFocusIndex = this.state.focusIndex > 0 ? this.state.focusIndex - 1 : numFocusable;
-		const filteredItem = this.menuRef.getFilteredItemForIndex(prevFocusIndex);
+		const filteredItem = this.menuComponent.getFilteredItemForIndex(prevFocusIndex);
 
 		if (filteredItem && filteredItem.data.type === 'section') {
 			prevFocusIndex = prevFocusIndex === 0 ? numFocusable : prevFocusIndex - 1;
@@ -289,11 +289,11 @@ const Lookup = React.createClass({
 	getNumFocusableItems () {
 		let offset = 0;
 
-		if (this.footerRef) {
+		if (this.footerComponent) {
 			offset += 1;
 		}
 
-		if (this.headerRef) {
+		if (this.headerComponent) {
 			offset += 1;
 		}
 
@@ -415,11 +415,11 @@ const Lookup = React.createClass({
 				// If user hits enter, select current activedescendant item
 				EventUtil.trapImmediate(event);
 				// If the focus is on the first fixed Action Item in Menu, click it
-				if (this.headerRef && this.state.focusIndex === 0) {
-					this.headerRef.handleClick();
-				} else if (this.footerRef && this.state.focusIndex === (this.state.listLength + 1)) {
+				if (this.headerComponent && this.state.focusIndex === 0) {
+					this.headerComponent.handleClick();
+				} else if (this.footerComponent && this.state.focusIndex === (this.state.listLength + 1)) {
 					// If the focus is on the last fixed Action Item in Menu, click it
-					this.footerRef.handleClick();
+					this.footerComponent.handleClick();
 				} else {
 					// If not, then select menu item
 					this.selectItem(this.state.currentFocus);
@@ -443,7 +443,7 @@ const Lookup = React.createClass({
 
 		return (
 			<Header
-				ref={(header) => { this.headerRef = header; }}
+				ref={(header) => { this.headerComponent = header; }}
 				{...this.props}
 				focusIndex={this.state.focusIndex}
 				isActive={headerActive}
@@ -461,7 +461,7 @@ const Lookup = React.createClass({
 
 		return (
 			<Footer
-				ref={(footer) => { this.footerRef = footer; }}
+				ref={(footer) => { this.footerComponent = footer; }}
 				{... this.props}
 				focusIndex={this.state.focusIndex}
 				isActive={footerActive}
@@ -480,7 +480,7 @@ const Lookup = React.createClass({
 	renderMenuContent () {
 		return (
 			<Menu
-				ref={(menu) => { this.menuRef = menu; }}
+				ref={(menu) => { this.menuComponent = menu; }}
 				emptyMessage={this.props.emptyMessage}
 				filterWith={this.props.filterWith}
 				focusIndex={this.state.focusIndex}
