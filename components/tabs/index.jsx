@@ -135,8 +135,6 @@ class Tabs extends React.Component {
 	constructor (props) {
 		super(props);
 		this.tabs = [];
-		this.boundHandleKeyDown = this.handleKeyDown.bind(this);
-		this.boundHandleClick = this.handleClick.bind(this);
 	}
 
 	componentWillMount () {
@@ -152,7 +150,7 @@ class Tabs extends React.Component {
 		return this.props.variant === 'scoped' ? 'scoped' : 'default';
 	}
 
-	handleClick (e) {
+	handleClick = (e) => {
 		let node = e.target;
 		/* eslint-disable no-cond-assign */
 		do {
@@ -282,7 +280,7 @@ class Tabs extends React.Component {
 		return false;
 	}
 
-	handleKeyDown (event) {
+	handleKeyDown = (event) => {
 		if (this.isTabFromContainer(event.target)) {
 			let index = this.getSelectedIndex();
 			let preventDefault = false;
@@ -388,8 +386,8 @@ class Tabs extends React.Component {
 					},
 					className
 				)}
-				onClick={this.boundHandleClick}
-				onKeyDown={this.boundHandleKeyDown}
+				onClick={this.handleClick}
+				onKeyDown={this.handleKeyDown}
 				data-tabs
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}

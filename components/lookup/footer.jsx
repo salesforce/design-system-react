@@ -14,18 +14,13 @@ const propTypes = {};
 const defaultProps = {};
 
 class DefaultFooter extends React.Component {
-	constructor (props) {
-		super(props);
-		this.boundHandleClick = this.handleClick.bind(this);
-	}
-
 	componentWillReceiveProps (nextProps) {
 		if (nextProps.isActive !== this.props.isActive && nextProps.isActive === true) {
 			this.props.setFocus('newItem');
 		}
 	}
 
-	handleClick () {
+	handleClick = () => {
 		if (this.props.onClose) {
 			this.props.onClose();
 		}
@@ -39,7 +34,7 @@ class DefaultFooter extends React.Component {
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<div
 				className="js-slds-lookup__item"
-				onClick={this.boundHandleClick}
+				onClick={this.handleClick}
 				onMouseDown={EventUtil.trapImmediate}
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}

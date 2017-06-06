@@ -24,11 +24,6 @@ const propTypes = {
 };
 
 class Item extends React.Component {
-	constructor (props) {
-		super(props);
-		this.boundHandleClick = this.handleClick.bind(this);
-	}
-
 	componentWillReceiveProps (nextProps) {
 		if (nextProps.isActive !== this.props.isActive && nextProps.isActive === true) {
 			this.scrollFocus();
@@ -36,9 +31,7 @@ class Item extends React.Component {
 		}
 	}
 
-	handleClick () {
-		return this.props.onSelect(this.props.id, this.props.data);
-	}
+	handleClick = () => this.props.onSelect(this.props.id, this.props.data)
 
   // Scroll menu item based on up/down mouse keys (assumes all items are the same height)
 	scrollFocus () {
@@ -97,7 +90,7 @@ class Item extends React.Component {
 					className="slds-lookup__item-action slds-media slds-media--center"
 					href={this.props.href}
 					id={id}
-					onClick={this.boundHandleClick}
+					onClick={this.handleClick}
 					onMouseDown={EventUtil.trapImmediate}
 					ref={id}
 					role="option"

@@ -58,7 +58,6 @@ class Notification extends React.Component {
 		super(props);
 		this.state = {};
 		this.timeout = null;
-		this.boundOnDismiss = this.onDismiss.bind(this);
 	}
 
 	componentDidMount () {
@@ -129,7 +128,7 @@ class Notification extends React.Component {
 					iconSize={size}
 					inverse
 					className="slds-notify__close"
-					onClick={this.boundOnDismiss}
+					onClick={this.onDismiss}
 					ref={(dismissBtn) => { this.dismissBtnRef = dismissBtn; }}
 					variant="icon"
 				/>
@@ -139,7 +138,7 @@ class Notification extends React.Component {
 		return null;
 	}
 
-	onDismiss () {
+	onDismiss = () => {
 		if (this.timeout) {
 			clearTimeout(this.timeout);
 			this.timeout = null;

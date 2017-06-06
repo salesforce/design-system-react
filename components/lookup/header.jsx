@@ -14,18 +14,13 @@ const propTypes = {};
 const defaultProps = {};
 
 class DefaultHeader extends React.Component {
-	constructor (props) {
-		super(props);
-		this.boundHandleClick = this.handleClick.bind(this);
-	}
-
 	componentWillReceiveProps (nextProps) {
 		if (nextProps.isActive !== this.props.isActive && nextProps.isActive === true) {
 			this.props.setFocus('searchRecords');
 		}
 	}
 
-	handleClick () {
+	handleClick = () => {
 		if (this.props.onClose) {
 			this.props.onClose();
 		}
@@ -40,7 +35,7 @@ class DefaultHeader extends React.Component {
 			<div
 				className="js-slds-lookup__item"
 				onMouseDown={EventUtil.trapImmediate}
-				onClick={this.boundHandleClick}
+				onClick={this.handleClick}
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				{/* eslint-disable no-script-url */}

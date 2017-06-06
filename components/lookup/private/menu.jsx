@@ -26,7 +26,6 @@ class Menu extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = { filteredItems: this.filteredItems() };
-		this.boundHandleItemFocus = this.handleItemFocus.bind(this);
 	}
 
   // Set filtered list length in parent to determine active indexes for aria-activedescendent
@@ -75,7 +74,7 @@ class Menu extends React.Component {
 	}
 
   // Scroll menu up/down when using mouse keys
-	handleItemFocus (itemIndex, itemHeight) {
+	handleItemFocus = (itemIndex, itemHeight) => {
 		if (this.listRef) {
 			this.listRef.scrollTop = itemIndex * itemHeight;
 		}
@@ -124,7 +123,7 @@ class Menu extends React.Component {
 			return (<Item
 				boldRegex={this.props.boldRegex}
 				data={component.data}
-				handleItemFocus={this.boundHandleItemFocus}
+				handleItemFocus={this.handleItemFocus}
 				iconCategory={this.props.iconCategory}
 				iconInverse={this.props.iconInverse}
 				iconName={this.props.iconName}

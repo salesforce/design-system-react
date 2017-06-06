@@ -97,10 +97,6 @@ class ButtonStateful extends TooltipTrigger {
 	constructor (props) {
 		super(props);
 		this.state = { active: false };
-
-		// Bind handlers to this one time
-		this.boundHandleBlur = this.handleBlur.bind(this);
-		this.boundHandleClick = this.handleClick.bind(this);
 	}
 
 	componentDidMount () {
@@ -111,12 +107,12 @@ class ButtonStateful extends TooltipTrigger {
 		super.componentWillUnmount();
 	}
 
-	handleClick (e) {
+	handleClick = (e) => {
 		if (isFunction(this.props.onClick)) this.props.onClick(e);
 		if (!isBoolean(this.props.active)) this.setState({ active: !this.state.active });
 	}
 
-	handleBlur (e) {
+	handleBlur = (e) => {
 		if (this.props.onBlur) this.props.onBlur(e);
 		e.currentTarget.blur();
 	}
@@ -163,15 +159,15 @@ class ButtonStateful extends TooltipTrigger {
 					className={this.getClassName(isActive)}
 					disabled={disabled}
 					id={id}
-					onBlur={this.boundHandleBlur}
-					onClick={this.boundHandleClick}
+					onBlur={this.handleBlur}
+					onClick={this.handleClick}
 					onFocus={onFocus}
 					onKeyDown={onKeyDown}
 					onKeyPress={onKeyPress}
 					onKeyUp={onKeyUp}
 					onMouseDown={onMouseDown}
 					onMouseEnter={onMouseEnter}
-					onMouseLeave={this.boundHandleClick}
+					onMouseLeave={this.handleBlur}
 					tabIndex={tabIndex}
 				>
 					<ButtonIcon
@@ -192,14 +188,14 @@ class ButtonStateful extends TooltipTrigger {
 				className={this.getClassName(isActive)}
 				disabled={disabled}
 				id={id}
-				onBlur={this.boundHandleBlur}
-				onClick={this.boundHandleClick}
+				onBlur={this.handleBlur}
+				onClick={this.handleClick}
 				onFocus={onFocus}
 				onKeyDown={onKeyDown}
 				onKeyPress={onKeyPress}
 				onKeyUp={onKeyUp}
 				onMouseEnter={onMouseEnter}
-				onMouseLeave={this.boundHandleBlur}
+				onMouseLeave={this.handleBlur}
 				tabIndex={tabIndex}
 			>
 				<span className="slds-text-not-selected">

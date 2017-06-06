@@ -23,8 +23,6 @@ class Trigger extends React.Component {
 			isTooltipClosing: false,
 			isTooltipOpen: false
 		};
-		this.boundHandleTooltipMouseEnter = this.handleTooltipMouseEnter.bind(this);
-		this.boundHandleTooltipMouseLeave = this.handleTooltipMouseLeave.bind(this);
 	}
 
 	componentDidMount () {
@@ -53,14 +51,14 @@ class Trigger extends React.Component {
 		ReactDOM.findDOMNode(this).removeEventListener('blur', this.handleTooltipMouseLeave.bind(this)); // eslint-disable-line react/no-find-dom-node
 	}
 
-	handleTooltipMouseEnter () {
+	handleTooltipMouseEnter = () => {
 		this.setState({
 			isTooltipOpen: true,
 			isTooltipClosing: false
 		});
 	}
 
-	handleTooltipMouseLeave () {
+	handleTooltipMouseLeave = () => {
 		if (this.isUnmounting) return;
 		this.setState({ isTooltipClosing: true });
 		const delay = this.props.tooltip && this.props.tooltip.props && this.props.tooltip.props.hoverCloseDelay ? this.props.tooltip.props.hoverCloseDelay : 0;
@@ -91,10 +89,10 @@ class Trigger extends React.Component {
 				left: '0',
 				top: '0'
 			}}
-			onMouseOver={this.boundHandleTooltipMouseEnter}
-			onFocus={this.boundHandleTooltipMouseEnter}
-			onMouseOut={this.boundHandleTooltipMouseLeave}
-			onBlur={this.boundHandleTooltipMouseLeave}
+			onMouseOver={this.handleTooltipMouseEnter}
+			onFocus={this.handleTooltipMouseEnter}
+			onMouseOut={this.handleTooltipMouseLeave}
+			onBlur={this.handleTooltipMouseLeave}
 		><span className="slds-assistive-text">{this.props.label || this.props.assistiveText}</span></a> : null;
 		/* eslint-enable no-script-url */
 	}

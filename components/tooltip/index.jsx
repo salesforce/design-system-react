@@ -109,7 +109,6 @@ class PopoverTooltip extends React.Component {
 			isClosing: false,
 			isOpen: false
 		};
-		this.boundHandleCancel = this.handleCancel.bind(this);
 	}
 
 	componentWillMount () {
@@ -131,14 +130,14 @@ class PopoverTooltip extends React.Component {
 		return this.props.target ? this.props.target : this.node;
 	}
 
-	handleMouseEnter () {
+	handleMouseEnter = () => {
 		this.setState({
 			isOpen: true,
 			isClosing: false
 		});
 	}
 
-	handleMouseLeave () {
+	handleMouseLeave = () => {
 		this.setState({ isClosing: true });
 
 		setTimeout(() => {
@@ -155,7 +154,7 @@ class PopoverTooltip extends React.Component {
 		return <div className="slds-popover__body">{this.props.content}</div>;
 	}
 
-	handleCancel () {
+	handleCancel = () => {
 		this.setState({
 			isOpen: false,
 			isClosing: false
@@ -174,7 +173,7 @@ class PopoverTooltip extends React.Component {
 				marginLeft={getMargin.left(align)}
 				marginRight={getMargin.right(align)}
 				marginTop={getMargin.top(align)}
-				onClose={this.boundHandleCancel}
+				onClose={this.handleCancel}
 				targetElement={this.getTooltipTarget()}
 				align={align}
 				horizontalAlign={getAlignment.horizontal(align)}
@@ -218,10 +217,10 @@ class PopoverTooltip extends React.Component {
 			React.cloneElement(child, {
 				key: i,
 				'aria-describedby': this.getId(),
-				onBlur: this.handleMouseLeave.bind(this),
-				onFocus: this.handleMouseEnter.bind(this),
-				onMouseEnter: this.handleMouseEnter.bind(this),
-				onMouseLeave: this.handleMouseLeave.bind(this)
+				onBlur: this.handleMouseLeave,
+				onFocus: this.handleMouseEnter,
+				onMouseEnter: this.handleMouseEnter,
+				onMouseLeave: this.handleMouseLeave
 			}, this.grandKidsWithAsstText(child))
 		);
 	}
