@@ -166,7 +166,11 @@ const DataTable = React.createClass({
 		/**
 		 * A variant which removes horizontal padding. CSS class will be removed if `fixedLayout==true`.
 		 */
-		unbufferedCell: PropTypes.bool
+		unbufferedCell: PropTypes.bool,
+		/**
+		 * An element to be displayed when data table is empty
+		 */
+		emptyView: PropTypes.node
 	},
 
 	getDefaultProps () {
@@ -226,6 +230,9 @@ const DataTable = React.createClass({
 			}
 		});
 
+		const emptyView = this.props.emptyView ?
+			<tr><td colSpan={columns.length}>{this.props.emptyView}</td></tr> : null;
+
 		return (
 			<table
 				className={classNames('slds-table', {
@@ -276,8 +283,7 @@ const DataTable = React.createClass({
 								/>
 							);
 						})
-						// Someday this should be an element to render when the table is empty
-						: null
+						: emptyView
 					}
 				</tbody>
 			</table>

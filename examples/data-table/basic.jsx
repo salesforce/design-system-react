@@ -153,6 +153,14 @@ const Example = React.createClass({
 					{columns}
 				</DataTable>
 
+				<h3 className="slds-text-heading--medium slds-m-vertical--medium">Empty</h3>
+				<DataTable
+					items={[]}
+					emptyView={<span className="slds-text-color_error">No data.</span>}
+					id="DataTableExample-empty"
+				>
+					{columns}
+				</DataTable>
 
 			</div>
 		);
