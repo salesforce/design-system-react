@@ -14,6 +14,8 @@ import {
 	DATEPICKER,
 	FORMS_INPUT,
 	LOOKUP,
+	MENU_DROPDOWN,
+	MENU_PICKLIST,
 	TIME_PICKER
 } from '../../utilities/constants';
 
@@ -45,12 +47,15 @@ if (process.env.NODE_ENV !== 'production') {
 			&& trigger.type.displayName !== FORMS_INPUT
 			&& trigger.type.displayName !== LOOKUP
 			&& trigger.type.displayName !== TIME_PICKER) {
+			const tabDisabled = childTabIndex === '-1' || childTabIndex === -1;
+			const tabbableByDefault = trigger.type.displayName === MENU_PICKLIST
+				|| trigger.type.displayName === MENU_DROPDOWN;
 			// if it's not one of the above, then check to see if it has a tabIndex
-			if (childTabIndex === '-1' || childTabIndex === undefined) {
+			if (tabDisabled || (childTabIndex === undefined && !tabbableByDefault)) {
 				elementIsTabbable = false;
 				if (!hasWarned[COMPONENT]) {
 					/* eslint-disable max-len */
-					warning(elementIsTabbable, `[Design System React] The element that triggers ${COMPONENT} must be tabbable for  keyboard users. Elements such as anchor, button, input or a DOM element with tabIndex="0" specified are tabbable.${additionalComment}`);
+					warning(elementIsTabbable, `[Design System React] The element that triggers ${COMPONENT} must be tabbable for keyboard users. Elements such as anchor, button, input or a DOM element with tabIndex="0" specified are tabbable. ${additionalComment}`);
 					/* eslint-enable max-len */
 					hasWarned[COMPONENT] = !!elementIsTabbable;
 				}

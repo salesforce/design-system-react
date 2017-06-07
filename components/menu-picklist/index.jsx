@@ -90,6 +90,10 @@ const MenuPicklist = React.createClass({
 		placeholder: PropTypes.string,
 		required: PropTypes.bool,
 		/**
+		 * Set to 1 or higher to change the order this element gets tab focus
+		 */
+		tabIndex: PropTypes.number,
+		/**
 		 * Current selected item.
 		 */
 		value: PropTypes.node
@@ -377,7 +381,7 @@ const MenuPicklist = React.createClass({
 					id={this.getId()}
 					onClick={!this.props.disabled && this.handleClick}
 					ref={this.saveRefToTrigger}
-					tabIndex={this.state.isOpen ? -1 : 0}
+					tabIndex={this.state.isOpen ? -1 : (this.props.tabIndex || 0)}
 				>
 					<span className="slds-truncate">{this.renderPlaceholder()}</span>
 					<Icon name="down" category="utility" />
