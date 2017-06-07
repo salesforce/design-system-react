@@ -25,6 +25,25 @@ These are changes that have backwards-compatible solutions present and that comp
 - BreadCrumb is now Breadcrumb (bread-crumb -> breadcrumb)
 
 ---
+## Release 0.6.9
+**Minor Changes**
+- Modal: Allow Modal footer prop to accept either an arry or node
+- Modal: Allow Modal to be rendered inside of custom DOM node instead of `<body>` tag. Pass function to `parentSelector` prop - it should return the container DOM node (ie.`return document.querySelector('#myModalContainer');`).
+
+
+## Release 0.6.8
+**New Components**
+- Checkbox button group
+- Exported SLDSSearch (`forms/input/search`) in bundled package
+
+**Minor Changes**
+- Started using assistiveText prop object instead of individual prop strings (Datepicker). Will follow suit in other components.
+- Change React.PropTypes to prop-types in preparation for React upgrade
+- Added a11y html markup to Filter
+- Allow devs to pass in link to Icon for external icons
+
+**Bugs**
+- Fixed filter but where 'ESC' didn't close popover
 
 ## Release 0.6.7
 
@@ -125,7 +144,7 @@ These are changes that have backwards-compatible solutions present and that comp
 - Picklist bugfix where the value might be available before the options object is. This would make the active item index be incorrect.
 - Fix sort arrow bug in DataTable. Only one column can be actively sorted at a time. Column heading padding has also been updated.
 - Add `disabled` prop to Lookup.
-- Popover's `onRequestClose` and `onClose` now fire once when Dialog component closes. 
+- Popover's `onRequestClose` and `onClose` now fire once when Dialog component closes.
 - Popover spacing from target/trigger is correct.
 - `checkProp`'s `oneOfComponent` parses `displayName` properly
 
