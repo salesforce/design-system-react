@@ -47,6 +47,10 @@ const List = React.createClass({
 		 */
 		itemRenderer: PropTypes.func,
 		/**
+		 * Gets past down to the menu item and describes the menu item's for screen readers. Dropdown menus should use 'menuitem', and picklists and comboboxes should use 'option'.
+		 */
+		itemRole: PropTypes.oneOf(['menuitem', 'option']),
+		/**
 		 * Sets the height of the list based on the numeber of items.
 		 */
 		length: PropTypes.oneOf([null, '5', '7', '10']),
@@ -59,13 +63,13 @@ const List = React.createClass({
 		 */
 		options: PropTypes.array,
 		/**
+		 * Role describes the menu item for screen readers. Dropdown menus should use 'menuitem', and picklists and comboboxes should use 'option'.
+		 */
+		role: PropTypes.oneOf(['menuitem', 'option']),
+		/**
 		 * The index of the currently selected item in the list.
 		 */
-		selectedIndex: PropTypes.number,
-		/**
-		 * The id of the element which triggered this list (in a menu context).
-		 */
-		triggerId: PropTypes.string
+		selectedIndex: PropTypes.number
 	},
 
 	getDefaultProps () {
@@ -84,9 +88,8 @@ const List = React.createClass({
 
 		return (
 			<ul
-				aria-labelledby={this.props.triggerId}
 				className={classNames('dropdown__list', lengthClassName, this.props.className)}
-				role="menu"
+				role="presentation"
 			>
 				{
 					this.props.options.map((option, index) => {
@@ -100,10 +103,11 @@ const List = React.createClass({
 								id={id}
 								index={index}
 								isSelected={(index === this.props.selectedIndex)}
+								itemRefs={this.props.itemRefs}
+								itemRole={this.props.itemRole}
 								key={`${id}-${option.value}`}
 								labelRenderer={this.props.itemRenderer}
 								onSelect={this.props.onSelect}
-								ref={(listItem) => this.props.itemRefs(listItem, index)}
 							/>
 						);
 					})

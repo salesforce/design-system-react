@@ -52,6 +52,7 @@ const ListItem = React.createClass({
 			category: PropTypes.string,
 			name: PropTypes.string
 		}),
+		itemRole: PropTypes.oneOf(['menuitem', 'option']).isRequired,
 		type: PropTypes.string,
 		value: PropTypes.any
 	},
@@ -164,21 +165,21 @@ const ListItem = React.createClass({
 			default: {
 				return (
 					<li
-						aria-selected={this.props.isSelected}
 						className={classNames('slds-dropdown__item', {
 							'slds-is-selected': this.props.isSelected
 						},
 							this.props.className)}
-						id={this.props.id}
 						onMouseDown={this.handleMouseDown}
+						ref={(listItem) => this.props.itemRefs(listItem, this.props.index)}
 						role="presentation"
 					>
 						<a
-							href={this.props.href}
-							ref="link"
+							aria-selected={this.props.isSelected}
 							data-index={this.props.index}
+							href={this.props.href}
+							id={this.props.id}
 							onClick={this.handleClick}
-							role="menuitem"
+							role={this.props.itemRole}
 							tabIndex="-1"
 						>
 							{this.getLabel()}

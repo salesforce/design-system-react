@@ -10,7 +10,6 @@
 // ### React
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -291,6 +290,10 @@ const MenuDropdown = React.createClass({
 		 */
 		options: PropTypes.array,
 		/**
+		 * Role gets applied to containing div. Dropdown menu's typically get `role="menu"` and Lookups and Picklists get `role="listbox"`.
+		 */
+		role: PropTypes.string,
+		/**
 		 * An object of CSS styles that are applied to the triggering button.
 		 */
 		style: PropTypes.object,
@@ -316,6 +319,7 @@ const MenuDropdown = React.createClass({
 		return {
 			align: 'left',
 			hoverCloseDelay: 300,
+			listItemRole: 'menuitem',
 			openOn: 'click'
 		};
 	},
@@ -562,7 +566,7 @@ const MenuDropdown = React.createClass({
 
 	setFocus () {
 		if (!this.isHover && !this.isUnmounting && this.trigger) {
-			ReactDOM.findDOMNode(this.trigger).focus();
+			this.trigger.focus();
 		}
 	},
 
@@ -592,12 +596,12 @@ const MenuDropdown = React.createClass({
 	},
 
 	getMenu () {
-		return ReactDOM.findDOMNode(this.list);
+		return this.list;
 	},
 
 	getMenuItem (index) {
 		if (index !== undefined && this.listItems) {
-			return ReactDOM.findDOMNode(this.listItems[index]);
+			return this.listItems[index];
 		}
 
 		return undefined;
@@ -606,18 +610,19 @@ const MenuDropdown = React.createClass({
 	renderDefaultMenuContent (customListProps) {
 		return (
 			<List
-				key={`${this.getId()}-dropdown-list`}
 				checkmark={this.props.checkmark}
 				getListItemId={this.getListItemId}
 				itemRefs={this.saveRefToListItem}
 				itemRenderer={this.getListItemRenderer()}
+				key={`${this.getId()}-dropdown-list`}
+				length={this.props.length}
+				itemRole={this.props.listItemRole}
 				onCancel={this.handleCancel}
 				onSelect={this.handleSelect}
 				options={this.props.options}
 				ref={this.saveRefToList}
 				selectedIndex={this.state.selectedIndex}
 				triggerId={this.getId()}
-				length={this.props.length}
 				{...customListProps}
 			/>
 		);
@@ -668,6 +673,7 @@ const MenuDropdown = React.createClass({
 					className={classNames('slds-dropdown', positionClassName, this.props.className)}
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
+					role={this.props.role}
 					style={this.props.menuStyle}
 				>
 					{this.renderMenuContent(customContent)}
@@ -707,6 +713,7 @@ const MenuDropdown = React.createClass({
 						this.props.className)}
 					flippable={!this.props.hasStaticAlignment}
 					horizontalAlign={this.props.align}
+					id={this.getId()}
 					inheritTargetWidth={this.props.inheritTargetWidth}
 					marginTop={marginTop}
 					offset={offset}
@@ -715,6 +722,7 @@ const MenuDropdown = React.createClass({
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
 					outsideClickIgnoreClass={outsideClickIgnoreClass}
+					role={this.props.role}
 					style={this.props.menuStyle}
 					targetElement={this.triggerContainer}
 				>
@@ -817,7 +825,6 @@ const MenuDropdown = React.createClass({
 					|| this.props.openOn === 'hybrid'
 					? this.handleMouseLeave : null}
 				openOn={this.props.openOn}
-				ref={this.saveRefToTriggerContainer}
 				style={this.props.style}
 				tabIndex={isOpen ? '-1' : '0'}
 				tooltip={this.props.tooltip}

@@ -138,7 +138,7 @@ const Trigger = React.createClass({
 
 		// If Trigger has a Button child, then use the explicitly declared child's props layered on top of those passed down by dropdown's props to allow manual override
 		return (
-			<div
+			<div // eslint-disable-line jsx-a11y/no-static-element-interactions
 				className={classnames(
 				`slds-dropdown-trigger slds-dropdown-trigger--${openOn}`,
 					{
@@ -161,7 +161,7 @@ const Trigger = React.createClass({
 					aria-haspopup
 					{...deprecatedPropsFromMenuDropdown}
 					{...propsFromGrandchildButton}
-					ref={triggerRef}
+					buttonRef={triggerRef}
 				/>
 				{menu}
 			</div>
