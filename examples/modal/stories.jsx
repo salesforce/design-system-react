@@ -11,6 +11,9 @@ import Timepicker from '../../components/time-picker';
 import Datepicker from '../../components/date-picker';
 import Button from '../../components/button';
 
+import ModalCustomParentNode from './modal-custom-parent-node';
+
+
 import SLDSSettings from '../../components/SLDSSettings';
 
 SLDSSettings.setAppElement('#root');	// used by Modal component
@@ -134,6 +137,7 @@ const modalContent = (
 
 storiesOf(MODAL, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.add('Modal with Custom Parent Node', () => <ModalCustomParentNode />)
 	.add('Small', () => getModal({
 		closeButtonAssistiveText: 'Exit',
 		isOpen: true,
@@ -151,6 +155,15 @@ storiesOf(MODAL, module)
 		children: modalContent,
 		onRequestClose: action('modal closed'),
 		footer: modalFooter
+	}))
+	.add('Small with custom footer', () => getModal({
+		directional: true,
+		isOpen: true,
+		tagline: 'Enter in details below',
+		title: 'New Opportunity',
+		children: modalContent,
+		onRequestClose: action('modal closed'),
+		footer: <div><Button label="cancel" /> and some random text in here <Button label="update" /><Button label="run" /></div>
 	}))
 	.add('Small no header', () => getModal({
 		isOpen: true,

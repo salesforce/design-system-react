@@ -145,7 +145,7 @@ describe('SLDSModal: ', function () {
 		let modal;
 
 		beforeEach(() => {
-			const feet = [<div className="toes">Toes</div>];
+			const feet = <div className="toes">Toes</div>;
 			getModal({
 				isOpen: true,
 				prompt: 'warning',
@@ -177,7 +177,7 @@ describe('SLDSModal: ', function () {
 		let modal;
 
 		beforeEach(() => {
-			const feet = [<div className="toes">Toes</div>];
+			const feet = [<div className="toes">Toe 1</div>, <div className="toes">Toe 2</div>];
 			getModal({
 				isOpen: true,
 				directional: true,
