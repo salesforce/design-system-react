@@ -46,6 +46,18 @@ const	handleClick = (event, props) => {
 const Item = (props) => {
 	const isSelected = props.node.selected;
 
+	const itemIcon = ((props.iconCategory && props.iconName) || props.buttonLabel) ? (
+		<Button
+			label={props.buttonLabel}
+			iconName={props.iconName}
+			iconSize={props.iconSize}
+			iconVariant={props.iconVariant}
+			iconCategory={props.iconCategory}
+			variant={props.buttonVariant}
+			tabIndex="-1"
+		/>
+	) : null;
+
 	// TODO: Remove tabbing from anchor tag / add tabIndex={-1} when keyboard navigation is present.
 	return (
 		<li id={`${props.treeId}-${props.node.id}`} role="treeitem" aria-level={props.level}>
@@ -62,6 +74,7 @@ const Item = (props) => {
 					className="slds-m-right--small slds-is-disabled"
 					disabled
 				/>
+				{itemIcon}
 				<a href="#" role="presentation" className="slds-truncate">
 					<Highlighter search={props.searchTerm}>{props.label}</Highlighter>
 				</a>
@@ -107,7 +120,19 @@ Item.propTypes = {
 	/**
 	 * Location of node (zero index). First node is `0`. It's first child is `0-0`. This can be used to modify your nodes without searching for the node. This index is only valid if the `nodes` prop is the same as at the time of the event.
 	 */
-	treeIndex: PropTypes.string
+	treeIndex: PropTypes.string,
+
+	buttonLabel: PropTypes.string,
+
+	iconName: PropTypes.string,
+    
+	iconSize: PropTypes.string,
+
+	iconVariant: PropTypes.string,
+
+	iconCategory: PropTypes.string,
+
+	buttonVariant: PropTypes.string
 };
 
 Item.getDefaultProps = {

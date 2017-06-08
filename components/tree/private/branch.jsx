@@ -13,6 +13,8 @@ import PropTypes from 'prop-types';
 
 import Button from '../../button';
 
+import Icon from '../../icon';
+
 // Child components
 import Item from './item';
 
@@ -148,6 +150,14 @@ const renderBranch = (children, props) => {
 		/>
 	</div>);
 
+	const branchIcon = props.iconCategory && props.iconName ? (
+		<Icon
+			category={props.iconCategory}
+			name={props.iconName}
+			size="x-small"
+		/>
+	) : null;
+
 	// TODO: Remove tabbing from anchor tag AND button / add tabIndex={-1} when keyboard navigation is present.
 	return (
 		<li
@@ -169,6 +179,7 @@ const renderBranch = (children, props) => {
 					aria-controls={props.htmlId}
 					onClick={(event) => { handleExpandClick(event, props); }}
 				/>
+				{branchIcon}
 				<a
 					id={`${props.htmlId}__label`}
 					href="#"
@@ -224,7 +235,11 @@ renderBranch.propTypes = {
 	/**
 	 * Location of node (zero index). First node is `0`. It's first child is `0-0`. This can be used to modify your nodes without searching for the node. This index is only valid if the `nodes` prop is the same as at the time of the event.
 	 */
-	treeIndex: PropTypes.string
+	treeIndex: PropTypes.string,
+
+	iconCategory: PropTypes.string,
+
+	iconName: PropTypes.string
 };
 
 /**
@@ -265,6 +280,8 @@ const Branch = (props) => {
 						searchTerm={searchTerm}
 						treeId={treeId}
 						treeIndex={treeIndex}
+						iconCategory={node.iconCategory}
+						iconName={node.iconName}
 					/>
 				);
 			} else {
@@ -279,6 +296,12 @@ const Branch = (props) => {
 						searchTerm={searchTerm}
 						treeIndex={treeIndex}
 						treeId={treeId}
+						iconCategory={node.iconCategory}
+						iconName={node.iconName}
+						buttonLabel={node.buttonLabel}
+						iconSize={node.iconSize}
+						iconVariant={node.iconVariant}
+						buttonVariant={node.buttonVariant}
 					/>
 				);
 			}
@@ -353,7 +376,11 @@ Branch.propTypes = {
 	/**
 	 * Location of node (zero index). First node is `0`. It's first child is `0-0`. This can be used to modify your nodes without searching for the node. This index is only valid if the `nodes` prop is the same as at the time of the event.
 	 */
-	treeIndex: PropTypes.string
+	treeIndex: PropTypes.string,
+
+	iconCategory: PropTypes.string,
+
+	iconName: PropTypes.string
 };
 
 Branch.getDefaultProps = {
