@@ -10,7 +10,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 
 import classNames from 'classnames';
 
@@ -119,20 +118,6 @@ class PopoverTooltip extends React.Component {
 		this.generatedId = shortid.generate();
 	}
 
-	componentDidMount () {
-		this.setState({
-			el: ReactDOM.findDOMNode(this)
-		});
-	}
-
-	componentDidUpdate (prevProps) {
-		if (this.props.target && this.props.target !== prevProps.target) {
-			this.setState({
-				tooltipTarget: this.getTooltipTarget()
-			});
-		}
-	}
-
 	componentWillUnmount () {
 		this.isUnmounting = true;
 	}
@@ -142,17 +127,17 @@ class PopoverTooltip extends React.Component {
 	}
 
 	getTooltipTarget () {
-		return this.props.target ? this.props.target : this.state.el;
+		return this.props.target ? this.props.target : this.node;
 	}
 
-	handleMouseEnter () {
+	handleMouseEnter = () => {
 		this.setState({
 			isOpen: true,
 			isClosing: false
 		});
 	}
 
-	handleMouseLeave () {
+	handleMouseLeave = () => {
 		this.setState({ isClosing: true });
 
 		setTimeout(() => {
@@ -169,7 +154,7 @@ class PopoverTooltip extends React.Component {
 		return <div className="slds-popover__body">{this.props.content}</div>;
 	}
 
-	handleCancel () {
+	handleCancel = () => {
 		this.setState({
 			isOpen: false,
 			isClosing: false
@@ -188,7 +173,7 @@ class PopoverTooltip extends React.Component {
 				marginLeft={getMargin.left(align)}
 				marginRight={getMargin.right(align)}
 				marginTop={getMargin.top(align)}
-				onClose={this.handleCancel.bind(this)}
+				onClose={this.handleCancel}
 				targetElement={this.getTooltipTarget()}
 				align={align}
 				horizontalAlign={getAlignment.horizontal(align)}
@@ -212,7 +197,7 @@ class PopoverTooltip extends React.Component {
 		return <span className="slds-assistive-text">{this.props.content}</span>;
 	}
 
-	decorateGrandKidsWithKeyToSilenceWarning (grandKids) {
+	decorateGrandKidsWithKeyToSilenceWarning (grandKids) { // eslint-disable-line class-methods-use-this
 		return React.Children.map(grandKids, (component, i) => {
 			const decoratedComponent = React.isValidElement(component)
 			? React.cloneElement(component, { key: i })
@@ -232,10 +217,10 @@ class PopoverTooltip extends React.Component {
 			React.cloneElement(child, {
 				key: i,
 				'aria-describedby': this.getId(),
-				onBlur: this.handleMouseLeave.bind(this),
-				onFocus: this.handleMouseEnter.bind(this),
-				onMouseEnter: this.handleMouseEnter.bind(this),
-				onMouseLeave: this.handleMouseLeave.bind(this)
+				onBlur: this.handleMouseLeave,
+				onFocus: this.handleMouseEnter,
+				onMouseEnter: this.handleMouseEnter,
+				onMouseLeave: this.handleMouseLeave
 			}, this.grandKidsWithAsstText(child))
 		);
 	}
@@ -246,7 +231,7 @@ class PopoverTooltip extends React.Component {
 			<div
 				className={classNames('slds-tooltip-trigger', this.props.triggerClassName)}
 				style={containerStyles}
-				ref="tooltipTarget"
+				ref={(node) => { this.node = node; }}
 			>
 				{this.getContent()}
 				{this.getTooltip()}

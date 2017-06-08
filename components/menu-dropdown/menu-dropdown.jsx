@@ -562,7 +562,7 @@ const MenuDropdown = React.createClass({
 
 	setFocus () {
 		if (!this.isHover && !this.isUnmounting && this.trigger) {
-			ReactDOM.findDOMNode(this.trigger).focus();
+			ReactDOM.findDOMNode(this.trigger).focus(); // eslint-disable-line react/no-find-dom-node
 		}
 	},
 
@@ -592,12 +592,12 @@ const MenuDropdown = React.createClass({
 	},
 
 	getMenu () {
-		return ReactDOM.findDOMNode(this.list);
+		return ReactDOM.findDOMNode(this.list); // eslint-disable-line react/no-find-dom-node
 	},
 
 	getMenuItem (index) {
 		if (index !== undefined && this.listItems) {
-			return ReactDOM.findDOMNode(this.listItems[index]);
+			return ReactDOM.findDOMNode(this.listItems[index]); // eslint-disable-line react/no-find-dom-node
 		}
 
 		return undefined;

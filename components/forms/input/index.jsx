@@ -189,11 +189,11 @@ const Input = React.createClass({
 
 		/* eslint-disable react/prop-types */
 		const deprecatedProps = {
-			assistiveText: this.props[iconPositionProp] && this.props[iconPositionProp].props.assistiveText
+			assistiveText: (this.props[iconPositionProp] && this.props[iconPositionProp].props.assistiveText)
 				|| this.props.iconAssistiveText,
-			category: this.props[iconPositionProp] && this.props[iconPositionProp].props.category || this.props.iconCategory,
-			name: this.props[iconPositionProp] && this.props[iconPositionProp].props.name || this.props.iconName,
-			onClick: this.props[iconPositionProp] && this.props[iconPositionProp].props.onClick || this.props.onIconClick
+			category: (this.props[iconPositionProp] && this.props[iconPositionProp].props.category) || this.props.iconCategory,
+			name: (this.props[iconPositionProp] && this.props[iconPositionProp].props.name) || this.props.iconName,
+			onClick: (this.props[iconPositionProp] && this.props[iconPositionProp].props.onClick) || this.props.onIconClick
 		};
 		/* eslint-enable react/prop-types */
 
@@ -240,18 +240,18 @@ const Input = React.createClass({
 			required,
 			role,
 			type,
-			value,
+			value
 
 			// ### Additional properties
 			// Using [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx) to pass on any properties which are not explicitly defined.
-			...props
+			// ...props // Uncomment this if you actually need to send the rest of the props to other elements
 		} = this.props;
 
 		const labelText = label || assistiveText; // One of these is required to pass accessibility tests
 
 		// this is a hack to make left the default prop unless overwritten by `iconPosition="right"`
-		const hasLeftIcon = !!iconLeft || (this.props.iconPosition === 'left' || this.props.iconPosition === undefined) && !!this.props.iconName;
-		const hasRightIcon = !!iconRight || this.props.iconPosition === 'right' && !!this.props.iconName;
+		const hasLeftIcon = !!iconLeft || ((this.props.iconPosition === 'left' || this.props.iconPosition === undefined) && !!this.props.iconName);
+		const hasRightIcon = !!iconRight || (this.props.iconPosition === 'right' && !!this.props.iconName);
 
 		return (
 			<div
@@ -319,7 +319,9 @@ const Input = React.createClass({
 
 					{hasRightIcon ? this.getIconRender('right', 'iconRight') : null}
 
+					{/* eslint-disable jsx-a11y/no-static-element-interactions */}
 					{readOnly && <span className="slds-form-element__static" onClick={onClick}>
+						{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 						{value}
 						{inlineEditTrigger}
 					</span>}

@@ -45,7 +45,10 @@ import EventUtil from '../../utilities/event';
 
 // Determine if a node from event.target is a Tab element
 function isTabNode (node) {
-	return (node.nodeName === 'A' && node.getAttribute('role') === 'tab' || node.nodeName === 'LI' && node.getAttribute('role') === 'tab');
+	return (
+		(node.nodeName === 'A' && node.getAttribute('role') === 'tab') ||
+		(node.nodeName === 'LI' && node.getAttribute('role') === 'tab')
+	);
 }
 
 
@@ -57,85 +60,82 @@ function isTabDisabled (node) {
 /**
  * Tabs keeps related content in a single container that is shown and hidden through navigation.
  */
-const Tabs = React.createClass({
-	displayName: TABS,
-	propTypes: {
+const displayName = TABS;
+const propTypes = {
+	/**
+	 * HTML `id` attribute of primary element that has `.slds-tabs--default` on it. Optional: If one is not supplied, a `shortid` will be created.
+	 */
+	id: PropTypes.string,
 
-		/**
-		 * HTML `id` attribute of primary element that has `.slds-tabs--default` on it. Optional: If one is not supplied, a `shortid` will be created.
-		 */
-		id: PropTypes.string,
+	/**
+	 * The `children` are the actual tabs and panels to be displayed.
+	 *
+	 * Note that the structure of the `<Tabs />` component **does not** correspond to the DOM structure that is rendered. The `<Tabs />` component requires one or more children of type `<TabsPanel />`, which themselves require a `label` property which will be what shows in the `<Tab />` and has `children`, which end up being the _contents of the tab's corresponding panel_.
+	 *
+	 * The component iterates through each `<TabsPanel />` and rendering one `<Tab />` and one `<TabPanel />` for each of them. The tab(s) end up being children of the `<TabsList />`.
+	 *
+	 * ```
+	 * <Tabs>
+	 * 	<TabsPanel label="Tab 1">
+	 * 		<div>
+	 * 			<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
+	 * 			<p>They show when you click the first tab.</p>
+	 * 		</div>
+	 * 	</TabsPanel>
+	 * 	<TabsPanel label="Tab 2">
+	 * 		<div>
+	 * 			<h2 className="slds-text-heading--medium">This is my tab 2 contents!</h2>
+	 * 			<p>They show when you click the second tab.</p>
+	 * 		</div>
+	 * 	</TabsPanel>
+	 * </Tabs>
+	 * ```
+	 */
+	children: PropTypes.oneOfType([
+		PropTypes.arrayOf(PropTypes.node),
+		PropTypes.node,
+		PropTypes.element
+	]).isRequired,
 
-		/**
-		 * The `children` are the actual tabs and panels to be displayed.
-		 *
-		 * Note that the structure of the `<Tabs />` component **does not** correspond to the DOM structure that is rendered. The `<Tabs />` component requires one or more children of type `<TabsPanel />`, which themselves require a `label` property which will be what shows in the `<Tab />` and has `children`, which end up being the _contents of the tab's corresponding panel_.
-		 *
-		 * The component iterates through each `<TabsPanel />` and rendering one `<Tab />` and one `<TabPanel />` for each of them. The tab(s) end up being children of the `<TabsList />`.
-		 *
-		 * ```
-		 * <Tabs>
-		 * 	<TabsPanel label="Tab 1">
-		 * 		<div>
-		 * 			<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
-		 * 			<p>They show when you click the first tab.</p>
-		 * 		</div>
-		 * 	</TabsPanel>
-		 * 	<TabsPanel label="Tab 2">
-		 * 		<div>
-		 * 			<h2 className="slds-text-heading--medium">This is my tab 2 contents!</h2>
-		 * 			<p>They show when you click the second tab.</p>
-		 * 		</div>
-		 * 	</TabsPanel>
-		 * </Tabs>
-		 * ```
-		 */
-		children: PropTypes.oneOfType([
-			PropTypes.arrayOf(PropTypes.node),
-			PropTypes.node,
-			PropTypes.element
-		]).isRequired,
+	/**
+	 * Class names to be added to the container element and is passed along to its children.
+	 */
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string
+	]),
 
-		/**
-		 * Class names to be added to the container element and is passed along to its children.
-		 */
-		className: PropTypes.oneOfType([
-			PropTypes.array,
-			PropTypes.object,
-			PropTypes.string
-		]),
+	/**
+	 * The Tab (and corresponding TabPanel) that is selected when the component first renders. Defaults to `0`.
+	 */
+	defaultSelectedIndex: PropTypes.number,
 
-		/**
-		 * The Tab (and corresponding TabPanel) that is selected when the component first renders. Defaults to `0`.
-		 */
-		defaultSelectedIndex: PropTypes.number,
+	/**
+	 * This function triggers when a tab is selected
+	 */
+	onSelect: PropTypes.func,
 
-		/**
-		 * This function triggers when a tab is selected
-		 */
-		onSelect: PropTypes.func,
+	/**
+	 * If the Tabs should be scopped, defaults to false
+	 */
+	variant: PropTypes.oneOf(['default', 'scoped']),
 
-		/**
-		 * If the Tabs should be scopped, defaults to false
-		 */
-		variant: PropTypes.oneOf(['default', 'scoped']),
+	/**
+	 * The Tab (and corresponding TabPanel) that is currently selected.
+	 */
+	selectedIndex: PropTypes.number
+};
+const defaultProps = {
+	defaultSelectedIndex: 0,
+	variant: 'default'
+};
 
-		/**
-		 * The Tab (and corresponding TabPanel) that is currently selected.
-		 */
-		selectedIndex: PropTypes.number
-	},
-
-	getDefaultProps () {
-		return {
-			defaultSelectedIndex: 0,
-			variant: 'default'
-		};
-	},
-
-	getInitialState () {
-		return {};
-	},
+class Tabs extends React.Component {
+	constructor (props) {
+		super(props);
+		this.tabs = [];
+	}
 
 	componentWillMount () {
 		// If no `id` is supplied in the props we generate one. An HTML ID is _required_ for several elements in a tabs component in order to leverage ARIA attributes for accessibility.
@@ -144,13 +144,13 @@ const Tabs = React.createClass({
 		this.setState({
 			selectedIndex: this.props.defaultSelectedIndex
 		});
-	},
+	}
 
 	getVariant () {
 		return this.props.variant === 'scoped' ? 'scoped' : 'default';
-	},
+	}
 
-	handleClick (e) {
+	handleClick = (e) => {
 		let node = e.target;
 		/* eslint-disable no-cond-assign */
 		do {
@@ -165,7 +165,7 @@ const Tabs = React.createClass({
 			}
 		} while ((node = node.parentNode) !== null);
 		/* eslint-enable no-cond-assign */
-	},
+	}
 
 	setSelected (index, focus) {
 		// Check index boundary
@@ -185,7 +185,7 @@ const Tabs = React.createClass({
 		if (index !== this.state.selectedIndex) {
 			this.setState({ selectedIndex: index, focus: focus === true });
 		}
-	},
+	}
 
 	getNextTab (index) {
 		const count = this.getTabsCount();
@@ -209,7 +209,7 @@ const Tabs = React.createClass({
 
 		// No tabs are disabled, return index
 		return index;
-	},
+	}
 
 	getPrevTab (index) {
 		let i = index;
@@ -234,27 +234,27 @@ const Tabs = React.createClass({
 
 		// No tabs are disabled, return index
 		return index;
-	},
+	}
 
 	getTabsCount () {
 		return this.props.children ?
 			React.Children.count(this.props.children) :
 			0;
-	},
+	}
 
 	getPanelsCount () {
 		return this.props.children ?
 			React.Children.count(this.props.children) :
 			0;
-	},
+	}
 
 	getSelectedIndex () {
 		return isNumber(this.props.selectedIndex) ? this.props.selectedIndex : this.state.selectedIndex;
-	},
+	}
 
 	getTab (index) {
-		return this.refs[`tabs-${index}`];
-	},
+		return this.tabs[index];
+	}
 
 	/**
 	 * Determine if a node from event.target is a Tab element for the current Tabs container.
@@ -278,9 +278,9 @@ const Tabs = React.createClass({
 		} while (nodeAncestor);
 
 		return false;
-	},
+	}
 
-	handleKeyDown (event) {
+	handleKeyDown = (event) => {
 		if (this.isTabFromContainer(event.target)) {
 			let index = this.getSelectedIndex();
 			let preventDefault = false;
@@ -302,7 +302,7 @@ const Tabs = React.createClass({
 
 			this.setSelected(index, true);
 		}
-	},
+	}
 
 	renderTabsList (parentId) {
 		const children = React.Children.toArray(this.props.children);
@@ -311,7 +311,6 @@ const Tabs = React.createClass({
 			// `parentId` gets consumed by TabsList, adding a suffix of `-tabs__nav`
 			<TabsList id={parentId} variant={this.getVariant()}>
 				{children.map((child, index) => {
-					const ref = `tabs-${index}`;
 					const id = `${parentId}-slds-tabs--tab-${index}`;
 					const panelId = `${parentId}-slds-tabs--panel-${index}`;
 					const selected = this.getSelectedIndex() === index;
@@ -319,8 +318,8 @@ const Tabs = React.createClass({
 					const variant = this.getVariant();
 					return (
 						<Tab
-							key={index}
-							ref={ref}
+							key={child.key}
+							ref={(tab) => { this.tabs[index] = tab; }}
 							focus={focus}
 							selected={selected}
 							id={id}
@@ -334,7 +333,7 @@ const Tabs = React.createClass({
 				})}
 			</TabsList>
 		);
-	},
+	}
 
 	renderTabPanels (parentId) {
 		const children = React.Children.toArray(this.props.children);
@@ -349,7 +348,7 @@ const Tabs = React.createClass({
 
 			return (
 				<TabPanel
-					key={index}
+					key={child.key}
 					selected={selected}
 					id={id}
 					tabId={tabId}
@@ -360,15 +359,14 @@ const Tabs = React.createClass({
 			);
 		});
 		return result;
-	},
+	}
 
 
 	render () {
 		const {
 			className,
 			id = this.generatedId,
-			variant = this.getVariant,
-			...attributes
+			variant = this.getVariant
 			} = this.props;
 
 		if (this.state.focus) {
@@ -378,6 +376,7 @@ const Tabs = React.createClass({
 		}
 
 		return (
+			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<div
 				id={id}
 				className={classNames(
@@ -391,11 +390,15 @@ const Tabs = React.createClass({
 				onKeyDown={this.handleKeyDown}
 				data-tabs
 			>
+				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				{this.renderTabsList(id)}
 				{this.renderTabPanels(id)}
 			</div>
 		);
 	}
-});
+}
+Tabs.displayName = displayName;
+Tabs.propTypes = propTypes;
+Tabs.defaultProps = defaultProps;
 
 module.exports = Tabs;

@@ -138,17 +138,6 @@ class PageHeader extends Component {
 		const classes = this._getClassNames(className);
 
 		/**
-		 * Initialize component variables
-		 */
-		let labelElement;
-		let iconElement;
-		let titleElement;
-		let infoElement;
-		let contentRightElement;
-		let navRightElement;
-		let Variant;
-
-		/**
 		 * Render the icon
 		 */
 		const renderIcon = () => {
@@ -240,13 +229,7 @@ class PageHeader extends Component {
 			return contentRight;
 		};
 
-		labelElement = renderLabel();
-		iconElement = renderIcon();
-		titleElement = renderTitle();
-		infoElement = renderInfo();
-		navRightElement = renderNavRight();
-		contentRightElement = renderContentRight();
-
+		let Variant;
 		switch (variant) {
 			case 'objectHome':
 				Variant = ObjectHome;
@@ -264,12 +247,12 @@ class PageHeader extends Component {
 		return (
 			<div className={classes}>
 				<Variant
-					label={labelElement}
-					icon={iconElement}
-					title={titleElement}
-					info={infoElement}
-					contentRight={contentRightElement}
-					navRight={navRightElement}
+					label={renderLabel()}
+					icon={renderIcon()}
+					title={renderTitle()}
+					info={renderInfo()}
+					contentRight={renderContentRight()}
+					navRight={renderNavRight()}
 					details={details}
 				/>
 			</div>

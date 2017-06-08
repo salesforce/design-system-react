@@ -25,13 +25,11 @@ class DetailRow extends Component {
 		const { children, className, details } = this.props;
 		const classes = this._getClassNames(className);
 
-		let detailsElement;
-
 		/**
 		 * Render the deets
 		 */
 		const renderDetails = () => {
-			if (children !== void (0)) {
+			if (children !== undefined) {
 				return children;
 			}
 
@@ -50,16 +48,14 @@ class DetailRow extends Component {
 			});
 		};
 
-		detailsElement = renderDetails();
-
 		return (
 			<ul className={classes}>
-				{detailsElement}
+				{renderDetails()}
 			</ul>
 		);
 	}
 
-	_getClassNames (className) {
+	_getClassNames (className) { // eslint-disable-line class-methods-use-this
 		return classnames('slds-grid slds-page-header__detail-row', className);
 	}
 }

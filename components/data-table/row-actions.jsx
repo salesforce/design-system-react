@@ -51,11 +51,13 @@ const DataTableRowActions = React.createClass({
 	render () {
 		// i18n
 		return (
+			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<td
 				className="" data-label="Actions"
 				onClick={this.handleClick}
 				style={{ width: '3.25rem' }}
 			>
+				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				<Dropdown
 					align="right"
 					assistiveText={this.props.assistiveText}

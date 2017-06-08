@@ -163,6 +163,8 @@ const ListItem = React.createClass({
 			case 'item':
 			default: {
 				return (
+					/* eslint-disable jsx-a11y/role-supports-aria-props */
+					// disabled eslint, but using aria-selected on presentation role seems suspicious...
 					<li
 						aria-selected={this.props.isSelected}
 						className={classNames('slds-dropdown__item', {
@@ -173,9 +175,9 @@ const ListItem = React.createClass({
 						onMouseDown={this.handleMouseDown}
 						role="presentation"
 					>
+						{/* eslint-disable jsx-a11y/role-supports-aria-props */}
 						<a
 							href={this.props.href}
-							ref="link"
 							data-index={this.props.index}
 							onClick={this.handleClick}
 							role="menuitem"

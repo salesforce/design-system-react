@@ -138,6 +138,7 @@ const Trigger = React.createClass({
 
 		// If Trigger has a Button child, then use the explicitly declared child's props layered on top of those passed down by dropdown's props to allow manual override
 		return (
+			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<div
 				className={classnames(
 				`slds-dropdown-trigger slds-dropdown-trigger--${openOn}`,
@@ -155,6 +156,7 @@ const Trigger = React.createClass({
 				onMouseEnter={onMouseEnter}
 				onMouseLeave={onMouseLeave}
 			>
+				{/* eslint-disable jsx-a11y/no-static-element-interactions */}
 				<Button
 					className={className}
 					aria-expanded={isOpen}

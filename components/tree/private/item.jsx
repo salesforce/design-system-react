@@ -49,11 +49,13 @@ const Item = (props) => {
 	// TODO: Remove tabbing from anchor tag / add tabIndex={-1} when keyboard navigation is present.
 	return (
 		<li id={`${props.treeId}-${props.node.id}`} role="treeitem" aria-level={props.level}>
+			{/* eslint-disable jsx-a11y/no-static-element-interactions */}
 			<div
 				className={classNames('slds-tree__item', { 'slds-is-selected': isSelected })}
 				aria-selected={isSelected ? 'true' : 'false'}
 				onClick={(event) => { handleClick(event, props); }}
 			>
+				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				<Button
 					assistiveText=""
 					iconName="chevronright"
@@ -62,7 +64,9 @@ const Item = (props) => {
 					className="slds-m-right--small slds-is-disabled"
 					disabled
 				/>
-				<a href="#" role="presentation" className="slds-truncate">
+				{/* eslint-disable no-script-url */}
+				<a href="javascript:void(0)" role="presentation" className="slds-truncate">
+					{/* eslint-enable no-script-url */}
 					<Highlighter search={props.searchTerm}>{props.label}</Highlighter>
 				</a>
 			</div>

@@ -3,7 +3,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 import Item from './item';
 
 const displayName = 'Lookup-Menu';
@@ -32,16 +31,18 @@ class Menu extends React.Component {
   // Set filtered list length in parent to determine active indexes for aria-activedescendent
 	componentDidUpdate (prevProps) {
     // make an array of the children of the list but only count the actual items (but include section dividers)
-		const list = [].slice.call(ReactDOM.findDOMNode(this.refs.list).children)
-      .filter((child) => (child.className.indexOf('js-slds-lookup__item') > -1 || child.className.indexOf('slds-lookup__divider') > -1))
-      .length;
+		const childFilter = (child) => (
+			child.className.indexOf('js-slds-lookup__item') > -1 ||
+			child.className.indexOf('slds-lookup__divider') > -1
+		);
+		const list = [].slice.call(this.listRef.children).filter(childFilter).length;
 		this.props.getListLength(list);
 		if (
-        prevProps.items !== this.props.items ||
-        prevProps.filter !== this.props.filter ||
-        prevProps.searchTerm !== this.props.searchTerm
-      ) {
-			this.setState({
+			prevProps.items !== this.props.items ||
+			prevProps.filter !== this.props.filter ||
+			prevProps.searchTerm !== this.props.searchTerm
+		) {
+			this.setState({ // eslint-disable-line react/no-did-update-set-state
 				filteredItems: this.filteredItems()
 			});
 		}
@@ -55,7 +56,7 @@ class Menu extends React.Component {
 		return this.filterEmptySections(this.props.items.filter(this.filter, this));
 	}
 
-	filterEmptySections (items) {
+	filterEmptySections (items) { // eslint-disable-line class-methods-use-this
 		const result = [];
 		items.forEach((item, index) => {
 			if (item && item.data && item.data.type === 'section') {
@@ -73,9 +74,9 @@ class Menu extends React.Component {
 	}
 
   // Scroll menu up/down when using mouse keys
-	handleItemFocus (itemIndex, itemHeight) {
-		if (this.refs.list) {
-			ReactDOM.findDOMNode(this.refs.list).scrollTop = itemIndex * itemHeight;
+	handleItemFocus = (itemIndex, itemHeight) => {
+		if (this.listRef) {
+			this.listRef.scrollTop = itemIndex * itemHeight;
 		}
 	}
 
@@ -83,6 +84,7 @@ class Menu extends React.Component {
 		if (i > -1 && this.state.filteredItems && i < this.state.filteredItems.length) {
 			return this.state.filteredItems[i];
 		}
+		return null;
 	}
 
 	renderHeader () {
@@ -99,29 +101,29 @@ class Menu extends React.Component {
 
 	renderItems () {
 		const focusIndex = this.props.focusIndex;
-		return this.state.filteredItems.map((c, i) => {
+		return this.state.filteredItems.map((component, i) => {
       // isActive means it is aria-activedescendant
-			const id = c.id;
+			const id = component.id;
 			let isActive = false;
 			if (this.props.header) {
 				isActive = focusIndex === i + 1;
 			} else {
 				isActive = focusIndex === i;
 			}
-			if (c.data.type === 'section') {
+			if (component.data.type === 'section') {
 				if (this.props.sectionDividerRenderer) {
 					const SectionDivider = this.props.sectionDividerRenderer;
 					return (<SectionDivider
-						data={c.data}
-						key={`section_header_${i}`}
+						data={component.data}
+						key={`section_header_${id}`}
 						{... this.props}
 					/>);
 				}
 			}
 			return (<Item
 				boldRegex={this.props.boldRegex}
-				data={c.data}
-				handleItemFocus={this.handleItemFocus.bind(this)}
+				data={component.data}
+				handleItemFocus={this.handleItemFocus}
 				iconCategory={this.props.iconCategory}
 				iconInverse={this.props.iconInverse}
 				iconName={this.props.iconName}
@@ -134,7 +136,7 @@ class Menu extends React.Component {
 				searchTerm={this.props.searchTerm}
 				setFocus={this.props.setFocus}
 			>
-				{c}
+				{component}
 			</Item>);
 		});
 	}
@@ -155,7 +157,7 @@ class Menu extends React.Component {
 		return (
 			<section id="menuContainer" className="ignore-react-onclickoutside">
 				{this.renderHeader()}
-				<ul id="list" className="slds-lookup__list" role="presentation" ref="list">
+				<ul id="list" className="slds-lookup__list" role="presentation" ref={(list) => { this.listRef = list; }}>
 					{this.renderContent()}
 				</ul>
 				{this.renderFooter()}

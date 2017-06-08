@@ -11,7 +11,6 @@
 // ### React
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 import escapeRegExp from 'lodash.escaperegexp';
 import isEqual from 'lodash.isequal';
 
@@ -193,15 +192,13 @@ const Lookup = React.createClass({
 	},
 
 	componentDidUpdate (prevProps, prevState) {
-		const lookup = this.inputRefId();
 		if (!isNaN(parseInt(prevState.selectedIndex, 10)) && isNaN(parseInt(this.state.selectedIndex, 10))) {
-			if (this.refs[lookup]) {
-				ReactDOM.findDOMNode(this.refs[lookup]).focus();
+			if (this.input) {
+				this.input.focus();
 			}
 		} else if (isNaN(parseInt(prevState.selectedIndex, 10)) && !isNaN(parseInt(this.state.selectedIndex, 10))) {
-			const selectedItem = `pill-${this.state.selectedIndex}`;
-			if (this.refs[selectedItem]) {
-				ReactDOM.findDOMNode(this.refs[selectedItem]).focus();
+			if (this.pills[this.state.selectedIndex]) {
+				this.pills[this.state.selectedIndex].focus();
 			}
 		}
 	},
@@ -218,6 +215,9 @@ const Lookup = React.createClass({
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(LOOKUP, this.props);
+
+		// Keeps track of references of children for keyboard navigation
+		this.pills = [];
 	},
 
 	componentDidMount () {
@@ -238,8 +238,8 @@ const Lookup = React.createClass({
 		let nextFocusIndex = 0;
 		let filteredItem = this.state.items[0];
 
-		if (this.refs.menu && this.refs.menu.getFilteredItemForIndex) {
-			filteredItem = this.refs.menu.getFilteredItemForIndex(nextFocusIndex);
+		if (this.menuComponent && this.menuComponent.getFilteredItemForIndex) {
+			filteredItem = this.menuComponent.getFilteredItemForIndex(nextFocusIndex);
 		}
 
 		if (filteredItem && filteredItem.data.type === 'section') {
@@ -255,7 +255,7 @@ const Lookup = React.createClass({
 	increaseIndex () {
 		const numFocusable = this.getNumFocusableItems();
 		let nextFocusIndex = this.state.focusIndex < numFocusable ? this.state.focusIndex + 1 : 0;
-		const filteredItem = this.refs.menu.getFilteredItemForIndex(nextFocusIndex);
+		const filteredItem = this.menuComponent.getFilteredItemForIndex(nextFocusIndex);
 
 		if (filteredItem && filteredItem.data.type === 'section') {
 			nextFocusIndex++;
@@ -267,7 +267,7 @@ const Lookup = React.createClass({
 	decreaseIndex () {
 		const numFocusable = this.getNumFocusableItems();
 		let prevFocusIndex = this.state.focusIndex > 0 ? this.state.focusIndex - 1 : numFocusable;
-		const filteredItem = this.refs.menu.getFilteredItemForIndex(prevFocusIndex);
+		const filteredItem = this.menuComponent.getFilteredItemForIndex(prevFocusIndex);
 
 		if (filteredItem && filteredItem.data.type === 'section') {
 			prevFocusIndex = prevFocusIndex === 0 ? numFocusable : prevFocusIndex - 1;
@@ -289,11 +289,11 @@ const Lookup = React.createClass({
 	getNumFocusableItems () {
 		let offset = 0;
 
-		if (this.refs.footer) {
+		if (this.footerComponent) {
 			offset += 1;
 		}
 
-		if (this.refs.header) {
+		if (this.headerComponent) {
 			offset += 1;
 		}
 
@@ -415,11 +415,11 @@ const Lookup = React.createClass({
 				// If user hits enter, select current activedescendant item
 				EventUtil.trapImmediate(event);
 				// If the focus is on the first fixed Action Item in Menu, click it
-				if (this.refs.header && this.state.focusIndex === 0) {
-					ReactDOM.findDOMNode(this.refs.header).click();
-				} else if (this.refs.footer && this.state.focusIndex === (this.state.listLength + 1)) {
+				if (this.headerComponent && this.state.focusIndex === 0) {
+					this.headerComponent.handleClick();
+				} else if (this.footerComponent && this.state.focusIndex === (this.state.listLength + 1)) {
 					// If the focus is on the last fixed Action Item in Menu, click it
-					ReactDOM.findDOMNode(this.refs.footer).click();
+					this.footerComponent.handleClick();
 				} else {
 					// If not, then select menu item
 					this.selectItem(this.state.currentFocus);
@@ -443,7 +443,7 @@ const Lookup = React.createClass({
 
 		return (
 			<Header
-				ref="header"
+				ref={(header) => { this.headerComponent = header; }}
 				{...this.props}
 				focusIndex={this.state.focusIndex}
 				isActive={headerActive}
@@ -461,7 +461,7 @@ const Lookup = React.createClass({
 
 		return (
 			<Footer
-				ref="footer"
+				ref={(footer) => { this.footerComponent = footer; }}
 				{... this.props}
 				focusIndex={this.state.focusIndex}
 				isActive={footerActive}
@@ -480,7 +480,7 @@ const Lookup = React.createClass({
 	renderMenuContent () {
 		return (
 			<Menu
-				ref="menu"
+				ref={(menu) => { this.menuComponent = menu; }}
 				emptyMessage={this.props.emptyMessage}
 				filterWith={this.props.filterWith}
 				focusIndex={this.state.focusIndex}
@@ -504,7 +504,7 @@ const Lookup = React.createClass({
 
 	renderInlineMenu () {
 		return (this.state.isOpen
-			? <div className="ignore-react-onclickoutside slds-lookup__menu" role="listbox" ref="scroll">
+			? <div className="ignore-react-onclickoutside slds-lookup__menu" role="listbox">
 				{this.renderMenuContent()}
 			</div>
 			: null
@@ -555,7 +555,7 @@ const Lookup = React.createClass({
 				inputRef={(component) => {
 					this.input = component;
 					if (this.focusOnRender) {
-						ReactDOM.findDOMNode(this.input).focus();
+						this.input.focus();
 						this.focusOnRender = false;
 					}
 				}}
@@ -582,12 +582,14 @@ const Lookup = React.createClass({
 		// i18n
 		return (
 			<div className="slds-pill__container">
+				{/* eslint-disable no-script-url */}
 				<a
 					href="javascript:void(0)"
 					className="slds-pill"
-					ref={`pill-${this.state.selectedIndex}`}
+					ref={(pill) => { this.pills[this.state.selectedIndex] = pill; }}
 					onKeyDown={this.handlePillKeyDown}
 				>
+					{/* eslint-enable no-script-url */}
 					{renderIcon}
 					<span className={labelClassName}>
 						{selectedItem}
@@ -597,7 +599,6 @@ const Lookup = React.createClass({
 						className="slds-pill__remove slds-button--icon-bare"
 						iconName="close"
 						onClick={this.handleDeleteSelected}
-						ref="clearSelectedItemButton"
 						tabIndex="-1"
 						variant="icon"
 					/>

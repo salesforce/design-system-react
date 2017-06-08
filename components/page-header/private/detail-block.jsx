@@ -56,7 +56,7 @@ class DetailBlock extends Component {
 	}
 
 	_renderFieldTruncation () {
-		const fieldContent = this.refs.fieldContent;
+		const fieldContent = this.fieldContentRef;
 		const isTruncated = fieldContent && fieldContent.scrollWidth > fieldContent.offsetWidth;
 		if (isTruncated) {
 			this.setState({ showTooltip: true });
@@ -65,7 +65,7 @@ class DetailBlock extends Component {
 		}
 	}
 
-	_getClassNames (className, flavor) {
+	_getClassNames (className, flavor) { // eslint-disable-line class-methods-use-this
 		return classnames('slds-page-header__detail-block', className, {
 			[`slds-size--${flavor}`]: flavor
 		});
@@ -81,8 +81,6 @@ class DetailBlock extends Component {
 		} = this.props;
 
 		const classes = this._getClassNames(className, flavor);
-		let labelElement;
-		let contentElement;
 
 		/**
 		 * Render the label
@@ -108,7 +106,7 @@ class DetailBlock extends Component {
 				const labelClasses = classnames('slds-text-body--regular', {
 					'slds-truncate': truncate
 				});
-				return <p ref="fieldContent" className={labelClasses} content={content}>{content}</p>;
+				return <p ref={(field) => { this.fieldContentRef = field; }} className={labelClasses} content={content}>{content}</p>;
 			}
 			return content;
 		};
@@ -132,13 +130,10 @@ class DetailBlock extends Component {
 			);
 		};
 
-		labelElement = renderLabel();
-		contentElement = this.state.showTooltip ? renderContentWithTooltip() : renderContent();
-
 		return (
 			<li className={classes}>
-				{labelElement}
-				{contentElement}
+				{renderLabel()}
+				{this.state.showTooltip ? renderContentWithTooltip() : renderContent()}
 			</li>
 		);
 	}

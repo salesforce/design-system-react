@@ -60,7 +60,7 @@ const handleClick = (event, props) => {
 };
 
 const handleScroll = (event, props) => {
-	const percentage = (event.target.scrollTop) / (event.target.scrollHeight - event.target.clientHeight) * 100;
+	const percentage = ((event.target.scrollTop) / (event.target.scrollHeight - event.target.clientHeight)) * 100;
 
 	if (isFunction(props.onScroll)) {
 		props.onScroll(event, {
@@ -116,7 +116,7 @@ const renderBranch = (children, props) => {
 	const loader = (<div
 		style={{
 			display: 'block',
-			paddingLeft: `${1.5 * props.level + 1.5}rem`,
+			paddingLeft: `${(1.5 * props.level) + 1.5}rem`,
 			marginTop: '.5rem' }}
 	>
 		<div
@@ -156,10 +156,12 @@ const renderBranch = (children, props) => {
 			aria-level={props.level}
 			aria-expanded={isExpanded ? 'true' : 'false'}
 		>
+			{/* eslint-disable jsx-a11y/no-static-element-interactions */}
 			<div
 				className={classNames('slds-tree__item', { 'slds-is-selected': isSelected })}
 				onClick={(event) => { handleClick(event, props); }}
 			>
+				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				<Button
 					assistiveText="Toggle"
 					iconName="chevronright"
@@ -169,12 +171,15 @@ const renderBranch = (children, props) => {
 					aria-controls={props.htmlId}
 					onClick={(event) => { handleExpandClick(event, props); }}
 				/>
+				{/* eslint-disable no-script-url */}
 				<a
 					id={`${props.htmlId}__label`}
-					href="#"
+					href="javascript:void(0)"
 					role="presentation"
 					className="slds-truncate"
-				>{<Highlighter search={props.searchTerm}>{props.label}</Highlighter>}
+				>
+					{/* eslint-enable no-script-url */}
+					{<Highlighter search={props.searchTerm}>{props.label}</Highlighter>}
 				</a>
 			</div>{isLoading ? loader : null}<ul
 				className={classNames({

@@ -89,12 +89,14 @@ const TimepickerDropdownTrigger = React.createClass({
 		} = this.props;
 
 		return (
+			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<div
 				onBlur={onBlur}
 				onFocus={onFocus}
 				onKeyDown={this.handleKeyDown}
 				onMouseDown={onMouseDown}
 			>
+				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				<Input iconRight={iconRight} {...props} inputRef={triggerRef}>
 					{menu}
 				</Input>

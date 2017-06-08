@@ -14,24 +14,16 @@ const propTypes = {};
 const defaultProps = {};
 
 class DefaultHeader extends React.Component {
-	constructor (props) {
-		super(props);
-	}
-
 	componentWillReceiveProps (nextProps) {
 		if (nextProps.isActive !== this.props.isActive && nextProps.isActive === true) {
 			this.props.setFocus('searchRecords');
 		}
 	}
 
-	handleClick () {
+	handleClick = () => {
 		if (this.props.onClose) {
 			this.props.onClose();
 		}
-	}
-
-	handleMouseDown (event) {
-		EventUtil.trapImmediate(event);
 	}
 
 	render () {
@@ -39,8 +31,16 @@ class DefaultHeader extends React.Component {
 		if (this.props.isActive) className += ' slds-theme--shade';
 
 		return (
-			<div className="js-slds-lookup__item" onMouseDown={this.handleMouseDown} onClick={this.handleClick.bind(this)}>
+			/* eslint-disable jsx-a11y/no-static-element-interactions */
+			<div
+				className="js-slds-lookup__item"
+				onMouseDown={EventUtil.trapImmediate}
+				onClick={this.handleClick}
+			>
+				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
+				{/* eslint-disable no-script-url */}
 				<a id="searchRecords" href="javascript:void(0);" className={className}>
+					{/* eslint-enable no-script-url */}
 					<span className="lookup__item-action-label">
 						<Icon name="search" category="utility" size="x-small" className="slds-icon-text-default" />
 						<span className="slds-truncate">

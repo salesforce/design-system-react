@@ -19,9 +19,6 @@ import isBoolean from 'lodash.isboolean';
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
-// ### omit
-import omit from 'lodash.omit';
-
 // ## Children
 import ButtonIcon from '../icon/button-icon';
 import TooltipTrigger from '../popover-tooltip/trigger';
@@ -110,12 +107,12 @@ class ButtonStateful extends TooltipTrigger {
 		super.componentWillUnmount();
 	}
 
-	handleClick (e) {
+	handleClick = (e) => {
 		if (isFunction(this.props.onClick)) this.props.onClick(e);
 		if (!isBoolean(this.props.active)) this.setState({ active: !this.state.active });
 	}
 
-	handleBlur (e) {
+	handleBlur = (e) => {
 		if (this.props.onBlur) this.props.onBlur(e);
 		e.currentTarget.blur();
 	}
@@ -145,7 +142,7 @@ class ButtonStateful extends TooltipTrigger {
 			onKeyUp,
 			onMouseDown,
 			onMouseEnter,
-			onMouseLeave,
+			// onMouseLeave,  // This prop isn't used anywhere! But removing it would be a breaking change
 			stateOne,
 			stateTwo,
 			stateThree,
@@ -162,15 +159,15 @@ class ButtonStateful extends TooltipTrigger {
 					className={this.getClassName(isActive)}
 					disabled={disabled}
 					id={id}
-					onBlur={this.handleBlur.bind(this)}
-					onClick={this.handleClick.bind(this)}
+					onBlur={this.handleBlur}
+					onClick={this.handleClick}
 					onFocus={onFocus}
 					onKeyDown={onKeyDown}
 					onKeyPress={onKeyPress}
 					onKeyUp={onKeyUp}
 					onMouseDown={onMouseDown}
 					onMouseEnter={onMouseEnter}
-					onMouseLeave={this.handleBlur.bind(this)}
+					onMouseLeave={this.handleBlur}
 					tabIndex={tabIndex}
 				>
 					<ButtonIcon
@@ -191,14 +188,14 @@ class ButtonStateful extends TooltipTrigger {
 				className={this.getClassName(isActive)}
 				disabled={disabled}
 				id={id}
-				onBlur={this.handleBlur.bind(this)}
-				onClick={this.handleClick.bind(this)}
+				onBlur={this.handleBlur}
+				onClick={this.handleClick}
 				onFocus={onFocus}
 				onKeyDown={onKeyDown}
 				onKeyPress={onKeyPress}
 				onKeyUp={onKeyUp}
 				onMouseEnter={onMouseEnter}
-				onMouseLeave={this.handleBlur.bind(this)}
+				onMouseLeave={this.handleBlur}
 				tabIndex={tabIndex}
 			>
 				<span className="slds-text-not-selected">

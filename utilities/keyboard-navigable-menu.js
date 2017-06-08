@@ -101,7 +101,7 @@ export function keyboardNavigate ({
 		if (openMenuKeys || ch) {
 			toggleOpen();
 		}
-		if (openMenuKeys && componentContext.trigger &&	ReactDOM.findDOMNode(componentContext.trigger) === target) {
+		if (openMenuKeys && componentContext.trigger &&	ReactDOM.findDOMNode(componentContext.trigger) === target) { // eslint-disable-line react/no-find-dom-node
 			componentContext.handleClick(event);
 		}
 	} else if (keyCode === KEYS.ENTER || keyCode === KEYS.SPACE) {
@@ -147,7 +147,7 @@ export function keyboardNavigate ({
 }
 
 function getMenu (componentRef) {
-	return ReactDOM.findDOMNode(componentRef).querySelector('ul.dropdown__list');
+	return ReactDOM.findDOMNode(componentRef).querySelector('ul.dropdown__list'); // eslint-disable-line react/no-find-dom-node
 }
 
 function getMenuItem (menuItemId, context = document) {

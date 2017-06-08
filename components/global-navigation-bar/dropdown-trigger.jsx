@@ -136,6 +136,7 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 		}
 
 		return (
+			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<li
 				aria-haspopup="true"
 				className={classNames(
@@ -158,6 +159,7 @@ const GlobalNavigationDropdownTrigger = React.createClass({
 				ref={triggerRef}
 				style={listItemstyle}
 			>
+				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				<a className="slds-context-bar__label-action">{label}</a>
 				<div className="slds-context-bar__icon-action slds-p-left--none">
 					<Button
