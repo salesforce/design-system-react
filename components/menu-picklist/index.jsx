@@ -92,14 +92,16 @@ const MenuPicklist = React.createClass({
 		/**
 		 * Current selected item.
 		 */
-		value: PropTypes.node
+		value: PropTypes.node,
+		variant: PropTypes.oneOf(['base','multiselect'])
 	},
 
 	getDefaultProps () {
 		return {
 			inheritTargetWidth: true,
 			placeholder: 'Select an Option',
-			checkmark: true
+			checkmark: true,
+			variant: 'base'
 		};
 	},
 
@@ -178,9 +180,11 @@ const MenuPicklist = React.createClass({
 	},
 
 	handleSelect (index) {
-		this.setState({ selectedIndex: index });
-		this.handleClose();
-		this.setFocus();
+		if (this.props.variant === 'base'){
+			this.setState({ selectedIndex: index });
+			this.handleClose();
+			this.setFocus();
+		}
 
 		if (this.props.onSelect) {
 			this.props.onSelect(this.getValueByIndex(index));
