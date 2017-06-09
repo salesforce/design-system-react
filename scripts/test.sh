@@ -4,5 +4,11 @@
 # Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license
 
 NODE_ENV=test node_modules/.bin/karma start --single-run "$@"
-NODE_ENV=test npm run snapshot-test
-NODE_ENV=test npm run build-docs
+if [ $? -eq 0 ]
+then
+	NODE_ENV=test npm run snapshot-test
+	if [ $? -eq 0 ]
+	then
+		NODE_ENV=test npm run build-docs
+	fi
+fi
