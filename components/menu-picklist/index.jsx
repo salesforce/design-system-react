@@ -93,7 +93,7 @@ const MenuPicklist = React.createClass({
 		 * Current selected item.
 		 */
 		value: PropTypes.node,
-		variant: PropTypes.oneOf(['base','multiselect'])
+		variant: PropTypes.oneOf(['base', 'multiselect'])
 	},
 
 	getDefaultProps () {
@@ -180,7 +180,7 @@ const MenuPicklist = React.createClass({
 	},
 
 	handleSelect (index) {
-		if (this.props.variant === 'base'){
+		if (this.props.variant === 'base') {
 			this.setState({ selectedIndex: index });
 			this.handleClose();
 			this.setFocus();
@@ -391,6 +391,21 @@ const MenuPicklist = React.createClass({
 		);
 	},
 
+	renderPills () {
+		return (
+			<div id="listbox-selections-unique-id" role="listbox" aria-orientation="horizontal">
+      		<ul className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small" role="group" aria-label="Selected Options:">
+        		<li role="presentation" className="slds-listbox__item">
+          			<span className="slds-pill" role="option" tabindex="0" aria-selected="true">
+            			<span className="slds-pill__label" title="Option A">Option A</span>
+            			<Icon assistiveText="delete Pill" category="utility" name="close" size="x-small"/>
+          			</span>
+        		</li>
+      		</ul>
+    		</div>
+		)
+	},
+
 	render () {
 		const {
 			className,
@@ -418,6 +433,7 @@ const MenuPicklist = React.createClass({
 						{requiredElem}{label}
 					</label>
 					{this.renderTrigger()}
+					{this.renderPills()}
 					{errorText && <div id={this.getErrorId()} className="slds-form-element__help">{errorText}</div>}
 				</div>
 			);
