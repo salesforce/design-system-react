@@ -1,11 +1,6 @@
-/*
-Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
+/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
 
 // # Popover - tooltip variant
 
@@ -13,8 +8,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // Based on SLDS v2.1.0-rc3
 
 
-import React, { PropTypes } from 'react';
-// import ReactDOM from 'react-dom';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 
@@ -146,17 +141,17 @@ class PopoverTooltip extends React.Component {
 	}
 
 	getTooltipTarget () {
-		return this.props.target ? this.props.target : this.state.el;
+		return this.props.target ? this.props.target : this.node;
 	}
 
-	handleMouseEnter () {
+	handleMouseEnter = () => {
 		this.setState({
 			isOpen: true,
 			isClosing: false
 		});
 	}
 
-	handleMouseLeave () {
+	handleMouseLeave = () => {
 		this.setState({ isClosing: true });
 
 		setTimeout(() => {
@@ -173,7 +168,7 @@ class PopoverTooltip extends React.Component {
 		return <div className="slds-popover__body">{this.props.content}</div>;
 	}
 
-	handleCancel () {
+	handleCancel = () => {
 		this.setState({
 			isOpen: false,
 			isClosing: false
@@ -193,7 +188,7 @@ class PopoverTooltip extends React.Component {
 				marginRight={getMargin.right(align)}
 				marginTop={getMargin.top(align)}
 				onClose={this.handleCancel.bind(this)}
-				targetElement={this.props.target}
+				targetElement={this.getTooltipTarget()}
 				align={align}
 				horizontalAlign={getAlignment.horizontal(align)}
 				verticalAlign={getAlignment.vertical(align)}
@@ -216,7 +211,7 @@ class PopoverTooltip extends React.Component {
 		return <span className="slds-assistive-text">{this.props.content}</span>;
 	}
 
-	decorateGrandKidsWithKeyToSilenceWarning (grandKids) {
+	decorateGrandKidsWithKeyToSilenceWarning (grandKids) { // eslint-disable-line class-methods-use-this
 		return React.Children.map(grandKids, (component, i) => {
 			const decoratedComponent = React.isValidElement(component)
 			? React.cloneElement(component, { key: i })
@@ -236,10 +231,10 @@ class PopoverTooltip extends React.Component {
 			React.cloneElement(child, {
 				key: i,
 				'aria-describedby': this.getId(),
-				onBlur: this.handleMouseLeave.bind(this),
-				onFocus: this.handleMouseEnter.bind(this),
-				onMouseEnter: this.handleMouseEnter.bind(this),
-				onMouseLeave: this.handleMouseLeave.bind(this)
+				onBlur: this.handleMouseLeave,
+				onFocus: this.handleMouseEnter,
+				onMouseEnter: this.handleMouseEnter,
+				onMouseLeave: this.handleMouseLeave
 			}, this.grandKidsWithAsstText(child))
 		);
 	}
@@ -250,7 +245,7 @@ class PopoverTooltip extends React.Component {
 			<div
 				className={classNames('slds-tooltip-trigger', this.props.triggerClassName)}
 				style={containerStyles}
-				ref="tooltipTarget"
+				ref={(node) => { this.node = node; }}
 			>
 				{this.getContent()}
 				{this.getTooltip()}

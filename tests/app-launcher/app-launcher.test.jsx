@@ -158,29 +158,29 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 
 		it('renders all App Launcher dots', () => {
 			expect(handles.appLauncherIcon.find('.slds-icon-waffle').containsAllMatchingElements([
-				<div className="slds-r1" />,
-				<div className="slds-r2" />,
-				<div className="slds-r3" />,
-				<div className="slds-r4" />,
-				<div className="slds-r5" />,
-				<div className="slds-r6" />,
-				<div className="slds-r7" />,
-				<div className="slds-r8" />,
-				<div className="slds-r9" />
+				<span className="slds-r1" />,
+				<span className="slds-r2" />,
+				<span className="slds-r3" />,
+				<span className="slds-r4" />,
+				<span className="slds-r5" />,
+				<span className="slds-r6" />,
+				<span className="slds-r7" />,
+				<span className="slds-r8" />,
+				<span className="slds-r9" />
 			])).to.equal(true);
 		});
 
 		it('App Launcher Icon link has proper classes', () => {
-			expect(handles.appLauncherIcon.find('a').node.className).to.include('slds-icon-waffle_container slds-context-bar__button');
+			expect(handles.appLauncherIcon.find('button').node.className).to.include('slds-icon-waffle_container slds-context-bar__button');
 		});
 
 		it('clicking App Launcher Icon fires callback', () => {
-			Simulate.click(handles.appLauncherIcon.find('a').node);
+			Simulate.click(handles.appLauncherIcon.find('button').node);
 			expect(triggerOnClick.calledOnce).to.be.true; // eslint-disable-line no-unused-expressions
 		});
 
 		it('App Launcher Icon callback receives original event as arg', () => {
-			Simulate.click(handles.appLauncherIcon.find('a').node);
+			Simulate.click(handles.appLauncherIcon.find('button').node);
 			expect(triggerOnClick.args.length).to.equal(1);
 		});
 

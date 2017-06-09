@@ -1,9 +1,10 @@
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
 import renderer from 'react-test-renderer';
-import jsBeautify from 'js-beautify';
+import { renderMarkup } from '../snapshot-helpers';
 
 import SnapshotDefault from '../../examples/navigation/snapshot-default';
+
+import globalSettings from '../../components/settings';
 
 test('Navigation Default DOM Snapshot', () => {
 	const domTree = renderer.create(
@@ -13,11 +14,7 @@ test('Navigation Default DOM Snapshot', () => {
 });
 
 test('Navigation Default HTML Snapshot', () => {
-	const domTree = String(
-		jsBeautify.html(ReactDOMServer.renderToStaticMarkup(<SnapshotDefault />)),
-		'utf-8'
-	);
-	expect(domTree).toMatchSnapshot();
+	expect(renderMarkup(SnapshotDefault)).toMatchSnapshot();
 });
 
 const customProps = {

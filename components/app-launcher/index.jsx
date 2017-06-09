@@ -1,13 +1,5 @@
-/*
-Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
+/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 // # App Launcher Component
 
@@ -16,7 +8,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ## Dependencies
 
 // ### React
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // ### classNames
 import classNames from 'classnames';
@@ -212,25 +205,24 @@ const AppLauncher = React.createClass({
 		return (
 			<div className="slds-context-bar__item slds-no-hover" style={style}>
 				<div className="slds-context-bar__icon-action">
-					<a
-						href="javascript:void(0);" // eslint-disable-line no-script-url
+					<button
 						aria-haspopup="true"
-						className="slds-icon-waffle_container slds-context-bar__button"
+						className="slds-button slds-icon-waffle_container slds-context-bar__button"
 						onClick={this.openAppLauncher}
 					>
-						<div className="slds-icon-waffle">
-							<div className="slds-r1" />
-							<div className="slds-r2" />
-							<div className="slds-r3" />
-							<div className="slds-r4" />
-							<div className="slds-r5" />
-							<div className="slds-r6" />
-							<div className="slds-r7" />
-							<div className="slds-r8" />
-							<div className="slds-r9" />
-						</div>
+						<span className="slds-icon-waffle">
+							<span className="slds-r1" />
+							<span className="slds-r2" />
+							<span className="slds-r3" />
+							<span className="slds-r4" />
+							<span className="slds-r5" />
+							<span className="slds-r6" />
+							<span className="slds-r7" />
+							<span className="slds-r8" />
+							<span className="slds-r9" />
+						</span>
 						{this.props.triggerAssistiveText && <span className="slds-assistive-text">{this.props.triggerAssistiveText}</span>}
-					</a>
+					</button>
 				</div>
 				<Modal
 					contentClassName="slds-modal__content slds-app-launcher__content slds-p-around--medium"

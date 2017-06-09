@@ -76,9 +76,8 @@ describe('PageHeader: ', function () {
 	describe('Renders basic props', function () {
 		it('renders correct Icon prop', function () {
 			const wrapper = mount(<PageHeader {...defaultPropsRecordHome} />);
-			const svg = wrapper.find('.slds-icon');
-			const svgClass = svg.node.className.baseVal;
-			svgClass.should.include('slds-icon-standard-user');
+			const svg = wrapper.find('.slds-media__figure .slds-icon-standard-user');
+			expect(svg).to.exist;
 		});
 
 		it('renders correct Label prop', () => {

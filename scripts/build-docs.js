@@ -60,7 +60,8 @@ components.map((node) => {
 		plugins: [
 			// enable jsx and flow syntax
 			'jsx',
-			'objectRestSpread'
+			'objectRestSpread',
+			'classProperties'
 		]
 	});
 	const cleanRoute = kebabCase(node['display-name']);

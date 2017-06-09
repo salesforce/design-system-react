@@ -1,18 +1,14 @@
-/*
-Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
+/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
 
 /* eslint-disable react/prefer-es6-class */
 
 // Implements the [Modal design pattern](https://lightningdesignsystem.com/components/modals/) in React.
 // Based on SLDS v2.2.1
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
 import Button from '../button';
@@ -58,7 +54,7 @@ const propTypes = {
 	/**
 	 * Custom styles for the modal's body. This is the element that has overflow rules and should be used to set a static height if desired.
 	 */
-	contentStyle: React.PropTypes.object,
+	contentStyle: PropTypes.object,
 	/**
 	 * If true, modal footer buttons render left and right. An example use case would be for "back" and "next" buttons.
 	 */
@@ -76,9 +72,12 @@ const propTypes = {
 	*/
 	onRequestClose: PropTypes.func,
 	/**
-	 * Array of buttons to be placed in the footer. They render on the right side by default but are floated left and right if <code>directional</code> is true.
+	 * Accepts either a node or array of buttons to be placed in the footer. If array, the buttons render on the right side by default but are floated left and right if <code>directional</code> is true.
 	 */
-	footer: PropTypes.array,
+	footer: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.node
+	]),
 	/**
 	 * Allows for a custom modal header that does not scroll with modal content. If this is defined, `title` and `tagline` will be ignored. The close button will still be present.
 	 */
@@ -94,6 +93,10 @@ const propTypes = {
 	 * Forces the modal to be open or closed.
 	 */
 	isOpen: PropTypes.bool.isRequired,
+	/**
+	 * Function that returns parent node to contain Modal. Should return document.querySelector('#myModalContainer').
+	 */
+	parentSelector: PropTypes.func,
 	/**
 	 * Custom CSS classes for the portal DOM node. This node is a direct descendant of the `body` and is the parent of `ReactModal__Overlay`. Use `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
@@ -261,7 +264,7 @@ class Modal extends React.Component {
 
 	footerComponent () {
 		let footer = null;
-		const hasFooter = this.props.footer && this.props.footer.length > 0;
+		const hasFooter = this.props.footer;
 		const footerClass = {
 			'slds-modal__footer': true,
 			'slds-modal__footer--directional': this.props.directional,
@@ -270,7 +273,7 @@ class Modal extends React.Component {
 
 		if (hasFooter) {
 			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
-			footer = (<div className={classNames(footerClass)} onClick={this.handleModalClick}>{this.props.footer}</div>);
+			footer = (<footer className={classNames(footerClass)} onClick={this.handleModalClick}>{this.props.footer}</footer>);
 		}
 		return footer;
 	}
@@ -310,7 +313,7 @@ class Modal extends React.Component {
 
 		return (
 			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
-			<div
+			<header
 				className={classNames('slds-modal__header', {
 					'slds-modal__header--empty': headerEmpty,
 					[`slds-theme--${this.props.prompt}`]: this.isPrompt(),
@@ -321,7 +324,7 @@ class Modal extends React.Component {
 			>
 				{this.props.dismissible ? closeButton : null}
 				{headerContent}
-			</div>
+			</header>
 		);
 	}
 
@@ -391,6 +394,7 @@ class Modal extends React.Component {
 				isOpen={this.props.isOpen}
 				onRequestClose={this.closeModal}
 				style={customStyles}
+				parentSelector={this.props.parentSelector}
 				portalClassName={classNames('ReactModalPortal', this.props.portalClassName)}
 			>
 				{this.getModal()}

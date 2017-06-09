@@ -61,24 +61,24 @@ Then, in your React code, import each Lightning Design System component you need
 For example to import the Tooltip and Icon components:
 
 ```
-import SLDSPopoverTooltip from 'design-system-react/components/popover-tooltip';
-import SLDSIcon from 'design-system-react/components/icon';
+import Tooltip from 'design-system-react/components/popover-tooltip';
+import Icon from 'design-system-react/components/icon';
 ```
 
-You can then use the components in your JSX markup, e.g. SLDSPopoverTooltip, or SLDSIcon.
+You can then use the components in your JSX markup, e.g. `Tooltip` or `Icon`.
 
 Here is an example for building a tooltip over an info icon:
 
 ```
-Note: the SLDSPopoverTooltip requires a focusable element as a child (ie. either a button or anchor) so that keyboard users can navigate to it.
+Note: the Tooltip requires a focusable element as a child (ie. either a button or anchor) so that keyboard users can navigate to it.
 
-<SLDSPopoverTooltip
+<Tooltip
   align="top"
   content={<span>Here is more information.</span>}>
     <a href="javascript:void(0)">
-      <SLDSIcon assistiveText="More Info" category="utility" name="info" className="slds-icon-text-default" />
+      <Icon assistiveText="More Info" category="utility" name="info" className="slds-icon-text-default" />
     </a>
-</SLDSPopoverTooltip>
+</Tooltip>
 ```
 
 ## FAQ
@@ -90,9 +90,9 @@ Please read the [CONTRIBUTING.md](CONTRIBUTING.md) first. If you'd like to meet 
 
 ## Licenses
 
-* Source code is licensed under [BSD License Clause 2](http://opensource.org/licenses/BSD-2-Clause)
-* All icons and images are licensed under [Creative Commons Attribution-NoDerivatives 4.0](http://creativecommons.org/licenses/by-nd/4.0/)
-* The font is licensed under our [font license](https://www.lightningdesignsystem.com/assets/licenses/License-for-font.txt)
+* Source code is licensed under [BSD 3-Clause](https://git.io/sfdc-license)
+* All icons and images are licensed under [Creative Commons Attribution-NoDerivatives 4.0](https://github.com/salesforce-ux/licenses/blob/master/LICENSE-icons-images.txt)
+* The Salesforce Sans font is licensed under our [font license](https://github.com/salesforce-ux/licenses/blob/master/LICENSE-font.txt)
 
 ## Got feedback?
 

@@ -1,16 +1,9 @@
-/*
- *
- Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
+/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
- Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
- Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
- Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
- Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import PopoverTooltip from '../../popover-tooltip';
 
@@ -19,26 +12,26 @@ const propTypes = {
 	/**
 	 * Optional class name
 	 */
-	className: React.PropTypes.string,
+	className: PropTypes.string,
 	/**
 	 * label
 	 */
-	label: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	label: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
 	/**
 	 * The content property can be a string or a React element
 	 */
-	content: React.PropTypes.oneOfType([
-		React.PropTypes.string,
-		React.PropTypes.element
+	content: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.element
 	]),
 	/**
 	 * Sets whether the fields truncate
 	 */
-	truncate: React.PropTypes.bool,
-	flavor: React.PropTypes.string
+	truncate: PropTypes.bool,
+	flavor: PropTypes.string
 };
 
 const defaultProps = {
@@ -63,7 +56,7 @@ class DetailBlock extends Component {
 	}
 
 	_renderFieldTruncation () {
-		const fieldContent = this.refs.fieldContent;
+		const fieldContent = this.fieldContentRef;
 		const isTruncated = fieldContent && fieldContent.scrollWidth > fieldContent.offsetWidth;
 		if (isTruncated) {
 			this.setState({ showTooltip: true });
@@ -72,7 +65,7 @@ class DetailBlock extends Component {
 		}
 	}
 
-	_getClassNames (className, flavor) {
+	_getClassNames (className, flavor) { // eslint-disable-line class-methods-use-this
 		return classnames('slds-page-header__detail-block', className, {
 			[`slds-size--${flavor}`]: flavor
 		});
@@ -88,8 +81,6 @@ class DetailBlock extends Component {
 		} = this.props;
 
 		const classes = this._getClassNames(className, flavor);
-		let labelElement;
-		let contentElement;
 
 		/**
 		 * Render the label
@@ -115,7 +106,7 @@ class DetailBlock extends Component {
 				const labelClasses = classnames('slds-text-body--regular', {
 					'slds-truncate': truncate
 				});
-				return <p ref="fieldContent" className={labelClasses} content={content}>{content}</p>;
+				return <p ref={(field) => { this.fieldContentRef = field; }} className={labelClasses} content={content}>{content}</p>;
 			}
 			return content;
 		};
@@ -139,13 +130,10 @@ class DetailBlock extends Component {
 			);
 		};
 
-		labelElement = renderLabel();
-		contentElement = this.state.showTooltip ? renderContentWithTooltip() : renderContent();
-
 		return (
 			<li className={classes}>
-				{labelElement}
-				{contentElement}
+				{renderLabel()}
+				{this.state.showTooltip ? renderContentWithTooltip() : renderContent()}
 			</li>
 		);
 	}

@@ -19,7 +19,7 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 - All new props / features need tests to prevent regressions in the future. Please review the [testing readme](/tests/README.md)
 - Stories are stored in [examples folder](/examples) along with Documentation site examples. To add a story to the interactive examples on the [documentation site](https://react.lightningdesignsystem.com/components/), add the JSX file to [examples/index.js](/examples/index.js). All examples that are present for a component in the [SLDS website](https://www.lightningdesignsystem.com/) or it's internal site should be created as a Storybook story _and_ listed in `examples/index.js`.
 - Prop description tables on the documentation site are generated from propType comments within the component. All props should have a _Tested with snapshot testing._ or _Tested with Mocha framework._ notice in them.
-- Introductory component descriptions are generated from the comment before the component declaration. 
+- Introductory component descriptions are generated from the comment before the component declaration.
 
 ## The review process
 This is an internal open-source project. You may be asked to review code submitted by others. To do this:
@@ -27,7 +27,7 @@ This is an internal open-source project. You may be asked to review code submitt
 - `npm install`
 - Pull down the pull requested branch. It will be within the contributor's forked repository. For instance, `git checkout -b interactivellama-data-table-width master` then `git pull git@github.com:interactivellama/design-system-react.git data-table-width`. You could also create an additional remote and pull down the branch directly.
 - `npm start` and review the appropriate React Story example at `http://localhost:9001/`. Open `http://localhost:8001/` and confirm that tests are passing in your environment.
-- Check that any modified or added examples for the documentation site are working and are present in `examples/index.js`. See [Releasing](#Releasing) for instructions. 
+- Check that any modified or added examples for the documentation site are working and are present in `examples/index.js`. See [Releasing](#Releasing) for instructions.
 
 ## Concepts and Best Practices
 #### What we've learned about building React components for the enterprise
@@ -43,6 +43,8 @@ This is an internal open-source project. You may be asked to review code submitt
 
 - <a name="all-text-can-be-internationalized" href="#all-text-can-be-internationalized">#</a> Any text the user can read (including text for screenreaders) should be able to be set via a prop for internationalization.
 
+- <a name="group-assistive-text" href="#group-assistive-text">#</a> All assistive text for accessibility should be grouped in an object and passed in with an `assistiveText` prop.
+
 - <a name="different-react-component-hierarchy" href="#different-react-component-hierarchy">#</a> React component hierarchy doesn't always mean HTML tag hierarchy. Sometimes children become the wrapping component.
 
 - <a name="private-child-components" href="#private-child-components">#</a> Place child components not intended to be part of the public API within a folder labelled `private`. All other React components should be considered public (and considered within the scope of Semantic Versioning), and can be used by developers in their own JSX within their application. See [Child component decorator pattern](#child-component-decorator-pattern)
@@ -52,7 +54,7 @@ This is an internal open-source project. You may be asked to review code submitt
 ### Limit side effects
 - <a name="limit-state" href="#limit-state">#</a> **Limit use of component state.** If the parent application's state engine can handle it with a `prop`, then don't use state. _New components should always start out as controlled by their parent and only be uncontrolled (that is have state) if a use case presents itself._ It's better to have a component that needs 20 props set and outputs the correct markup, than to have a component that works with no props set, yet maintains multiple internal states. We like to think of this project as design system templates with minimal logic that happen to work with the React framework. Let the library consumer create a simple _container component_ with state. Read more about [controlled components](#controlled-and-uncontrolled-components).
     - <a name="stateful-stateless-components" href="#stateful-stateless-components">#</a> Know how smart/stateful React components [work together](https://gist.github.com/trevordmiller/a7791c11228b48f0366b) with [pure/dumb stateless function components](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions).
-    - <a name="stateful-top-level-component" href="#stateful-top-level-component">#</a> It is preferable to only have one stateful top-level class per component in this library. For these top-level components, it’s preferable to leave them stateful (that is, to use `React.createClass`). It's much easier to get the DOM node reference if you need it for such things as measurements. Then, you don't have to go through a lot of hassle to work around not having lifecycle methods. It also allows components to follow the controlled / uncontrolled pattern mentioned below. All sub-components should be stateless and manipulated with props if possible.
+    - <a name="stateful-top-level-component" href="#stateful-top-level-component">#</a> It is preferable to only have one stateful top-level class per component in this library. For these top-level components, it’s preferable to leave them stateful (that is, to use `class`). It's much easier to get the DOM node reference if you need it for such things as measurements. Then, you don't have to go through a lot of hassle to work around not having lifecycle methods. It also allows components to follow the controlled / uncontrolled pattern mentioned below. All sub-components should be stateless and manipulated with props if possible.
     - A `Tree` should have state. A `TreeNode` should not.
     - A `DataTable` should have state, a `TableColumn` should not.
     - Frequently used items such as badges, pills, buttons or icons should probably not have state.
@@ -67,7 +69,7 @@ This is an internal open-source project. You may be asked to review code submitt
 
 - <a name="limit-extra-div" href="#limit-extra-div">#</a> **Limit the use of grouping `div` elements.** React components can only have one HTML node / JSX / function return value. A component's render function should have one HTML node as its parent JSX element. Please limit use of extra wrapping `div` elements in order to align with SLDS markup. Other options include creating additional sub-components or passing an array of components to the parent component to render.
 
-- <a name="avoid-mixins" href="#avoid-mixins">#</a> **Avoid implied mixins.** Instead, import and use shared code and external libraries as libraries, or use higher-order components in order to more easily trace the code execution. 
+- <a name="avoid-mixins" href="#avoid-mixins">#</a> **Avoid implied mixins.** Instead, import and use shared code and external libraries as libraries, or use higher-order components in order to more easily trace the code execution.
 
 - <a name="avoid-dependencies" href="#avoid-dependencies">#</a> **Avoid external dependencies.** Do not add external dependencies _to production dependencies_ list unless absolutely necessary. Always consider the "total cost of ownership" for all dependencies.
 
@@ -80,7 +82,7 @@ This is an internal open-source project. You may be asked to review code submitt
 
 - <a name="familiarize" href="#familiarize">#</a>**Do not create in a vaccuum.** Familiarize yourself with concepts used in the rest of the library.
 
-- <a name="react-create-class" href="#react-create-class">#</a> Use `React.createClass` and not ES6 classes/`extend`. This prevents class hierarchies and tight coupling being created beyond the basic `React.Component`. This completely avoids the gorilla-banana problem (“what you wanted was a banana, what you got was a gorilla holding the banana, and the entire jungle” - Joe Armstrong).
+- <a name="react-create-class" href="#react-create-class">#</a> Use `class/extend`, but only extend from `React.Component` and never another `class`. This prevents class hierarchies and tight coupling being created beyond the basic `React.Component`. This completely avoids the gorilla-banana problem (“what you wanted was a banana, what you got was a gorilla holding the banana, and the entire jungle” - Joe Armstrong).
 
 - <a name="event-callbacks" href="#event-callbacks">#</a> **Use consistent callback parameters.** All render callbacks, that is callbacks that determine what to render, should pass a data object with named key/values. Event callbacks should pass in the synthetic event, then a data object with named key/values that relate to the event. If an event callback doesn't have a user event that triggered it, pass `undefined` as the event.
 
@@ -91,7 +93,7 @@ This is an internal open-source project. You may be asked to review code submitt
 - <a name="boolean-prop-prefix" href="#boolean-prop-prefix">#</a> **Use boolean prefixes.** If a prop is a boolean, please prefix with `is` or `can` or suffix it with `-able`. Never default a prop to `true`.
 
 ### Use "the good parts"
-- <a name="rest-operators-with-jsx" href="#rest-operators-with-jsx">#</a> Be careful with [rest operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters) when passively applying unnamed and unknown props to JSX nodes. This concept allows flexibility to the consuming developer, but is difficult to track for maintainers. If rest operators should be used, be sure to deconstruct each one that is actually needed by the JSX nodes, so that the rest operator only handles "unknown props" passed in from the outside developer. In short, don't utilize any properties in the `...props` object within the component. After using `const { active, className, ...rest } = props;` do not go back to using `this.prop.*` anywhere in the render function. 
+- <a name="rest-operators-with-jsx" href="#rest-operators-with-jsx">#</a> Be careful with [rest operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters) when passively applying unnamed and unknown props to JSX nodes. This concept allows flexibility to the consuming developer, but is difficult to track for maintainers. If rest operators should be used, be sure to deconstruct each one that is actually needed by the JSX nodes, so that the rest operator only handles "unknown props" passed in from the outside developer. In short, don't utilize any properties in the `...props` object within the component. After using `const { active, className, ...rest } = props;` do not go back to using `this.prop.*` anywhere in the render function.
 
 - <a name="rest-operators-with-jsx-delete" href="#rest-operators-with-jsx-delete">#</a> If a rest operator is already present in your render function and you need to remove additional props so that they do not get passed to a JSX node, use the rest operator along with `// eslint-disable-line no-unused-vars` to remove the prop from `...rest`.
 
@@ -117,21 +119,21 @@ Unless you have an accessiblity guru in your department (knowledge of implementi
 - [ARIA 1.1](https://www.w3.org/TR/wai-aria-1.1/) - Recommendation Candidate for the new ARIA Spec.
 - [ARIA in HTML](http://w3c.github.io/html-aria/) - Super useful reference to answer the question "Should I put ARIA on this?". Often a native HTML element will have an implicit role, so it's not required, _nor recommended_ to be added.
 - [HTML 5.1](https://www.w3.org/TR/html51/) - This is at the Recommendation Candidate stage, so it is very unlikely to change. Please notice the places where it informs of ARIA role for each element, the implicit roles, may not be 100% accurate. The document authors state that the ARIA in HTML spec above is the definitive source of truth for that bit and they'll fix up 5.1 when they find stuff that's not correct.
-- [eBay MIND patterns](https://ebay.gitbooks.io/mindpatterns/content/) - Nice to digest content. Most up to date functional base components our team has found so far with [examples](http://ianmcburnie.github.io/mindpatterns/). This does not mean they are correct, though. 
+- [eBay MIND patterns](https://ebay.gitbooks.io/mindpatterns/content/) - Nice to digest content. Most up to date functional base components our team has found so far with [examples](http://ianmcburnie.github.io/mindpatterns/). This does not mean they are correct, though.
 
 ### Be kind to future contributors and write tests
 
 - All external APIs should be tested, so that breaking changes can be detected. If a breaking change doesn't cause at least one test to fail, then add a test.
     - All `props` should be tested. It is OK to test multiple props in the same test for optmization as long as they are isolated and do not affect each other (for instance `id`, `classname`, and `style`).
-    - All event callbacks should be tested along with any data object keys outside of the synthetic event to confirm the data. The data object, if present, is typically the second parameter of an event callback. 
+    - All event callbacks should be tested along with any data object keys outside of the synthetic event to confirm the data. The data object, if present, is typically the second parameter of an event callback.
     - All mouse and keyboard interactions should be tested.
-- Components should have 90%+ test coverage. Coverage can be determined by reviewing the coverage summary at the end of `npm test`. High test coverage does not imply correct logic, but low coverage implies low test quality/quantity. 
+- Components should have 90%+ test coverage. Coverage can be determined by reviewing the coverage summary at the end of `npm test`. High test coverage does not imply correct logic, but low coverage implies low test quality/quantity.
 - Test should run correctly in headless browsers (`npm test`) and within a "real" browser (`npm start` -> `http://localhost:8001/`)
 - For more specifics about testing please review the [testing module walkthough](tests/README.md).
 
 ## Controlled and Uncontrolled Components
-- All new components should be controlled at first and then uncontrolled support added later if needed. 
-- All Design System React components should be able to be "controlled"--that is expose a callback and expect their parent to control them with props. 
+- All new components should be controlled at first and then uncontrolled support added later if needed.
+- All Design System React components should be able to be "controlled"--that is expose a callback and expect their parent to control them with props.
 - Prefix callbacks that occur before an event with `onRequest`. Prefix callbacks that occur as a result of an event with `on`. The close button in a Popover will call `onRequestClose` while the Popover will call `onClose` after the Popover has been closed. This is because closing isn't guarenteed with `onRequestClose`, since the parent component will decide.
 - Please note that if controlled by its parent, a component will appear broken if just copied and pasted into an application without a parent to control its props.
 - Controlled components can be stateless components, but entirely stateless components do complicate DOM selectors for the consuming applications.
@@ -149,15 +151,15 @@ User input will have no effect on the rendered element because React has declare
 ```javascript
 class MyForm extends React.Component {
   constructor(props) {
-    super(props);    
+    super(props);
     this.state = {value: 'Hello!'};
     this.handleChange = this.handleChange.bind(this);
   }
-  
+
   handleChange(event) {
     this.setState({value: event.target.value});
   }
-  
+
   render() {
     return (
       <input
@@ -209,7 +211,7 @@ const DemoComponent = React.createClass({
     /**
      * The description of this prop (will appear in the documentation site).
      */
-    title: React.PropTypes.string.isRequired
+    title: PropTypes.string.isRequired
   },
 
   // These values will also be visible in the documentation site.
@@ -343,6 +345,53 @@ render () {
   );
 }
 ```
+## Naming DOM `ref` callbacks
+
+Do not name a DOM callback prop of a library component `ref`. `ref` is a reserved prop name. This will return the component React object, _not_ the DOM node. It is best practice to create an object called `refs` with keys that are semantic names of DOM nodes: `refs: { triggerButton: ()=>{}, triggerInput: ()=>{} }`. If you use a `refs` object, you may need shallow merge the object with default props. For more information, please review [Exposing DOM Refs to Parent Components](https://facebook.github.io/react/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components).
+
+```javascript
+// bad
+function CustomTextInput(props) {
+  return (
+    <div>
+      <input ref={props.ref} />
+    </div>
+  );
+}
+
+class Parent extends React.Component {
+  render() {
+    return (
+      <CustomTextInput
+        ref={el => this.inputElement = el}
+      />
+    );
+  }
+}
+```
+
+```javascript
+// good
+function CustomTextInput(props) {
+  return (
+    <div>
+      <input ref={props.refs.input} />
+    </div>
+  );
+}
+
+class Parent extends React.Component {
+  render() {
+    return (
+      <CustomTextInput
+        refs={{
+          input: (el) => { this.inputElement = el; }
+        }}
+      />
+    );
+  }
+}
+```
 
 ## Naming Handler Methods
 
@@ -402,7 +451,7 @@ render () {
 // better
 render () {
   return (
-    <div className={classnames('MyComponent', 
+    <div className={classnames('MyComponent',
       `MyComponent--${this.props.active}`,
       `MyComponent--${this.props.variant}`,
     )} />

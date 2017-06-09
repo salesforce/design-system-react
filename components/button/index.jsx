@@ -1,18 +1,11 @@
-/*
-Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
+/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 // Implements the [Button design pattern](https://lightningdesignsystem.com/components/buttons/) in React.
 // Based on SLDS v2.2.1
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ButtonIcon from '../icon/button-icon';
 import PopoverTooltip from '../popover-tooltip';
@@ -70,6 +63,10 @@ const Button = React.createClass({
 		 */
 		iconName: PropTypes.string,
 		/**
+	   * Path to the icon. This will override any global icon settings.
+	   */
+		iconPath: PropTypes.string,
+		/**
 		 * If omitted, icon position is centered.
 		 */
 		iconPosition: PropTypes.oneOf(['left', 'right']),
@@ -117,7 +114,7 @@ const Button = React.createClass({
 		 * HTML title attribute
 		 */
 		title: PropTypes.string,
-		variant: React.PropTypes.oneOf(['base', 'link', 'neutral', 'brand', 'destructive', 'success', 'icon'])
+		variant: PropTypes.oneOf(['base', 'link', 'neutral', 'brand', 'destructive', 'success', 'icon'])
 	},
 
 	getDefaultProps () {
@@ -152,7 +149,10 @@ const Button = React.createClass({
 		const iconBorder = iconVariant === 'border';
 		const iconGlobalHeader = iconVariant === 'global-header';
 
-		const showButtonVariant = this.props.variant !== 'base' && !iconVariant && !this.props.inverse && this.props.variant !== 'link' || iconVariant === 'bare';
+		const showButtonVariant = (this.props.variant !== 'base'
+			&& !iconVariant
+			&& !this.props.inverse
+			&& this.props.variant !== 'link') || iconVariant === 'bare';
 		const plainInverseBtn = this.props.inverse && !isIcon;
 		const plainInverseIcon = this.props.inverse && isIcon && !iconMore && !iconBorder;
 		const moreInverseIcon = this.props.inverse && iconMore;
@@ -190,6 +190,7 @@ const Button = React.createClass({
 				hint={this.props.hint}
 				inverse={this.props.inverse}
 				name={name}
+				path={this.props.iconPath}
 				position={this.props.iconPosition}
 				size={iconSize}
 			/>);

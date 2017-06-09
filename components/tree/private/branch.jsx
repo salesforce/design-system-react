@@ -1,13 +1,5 @@
-/*
-Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
+/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 // # Tree Branch Component
 
@@ -16,7 +8,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ## Dependencies
 
 // ### React
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import Button from '../../button';
 
@@ -67,7 +60,7 @@ const handleClick = (event, props) => {
 };
 
 const handleScroll = (event, props) => {
-	const percentage = (event.target.scrollTop) / (event.target.scrollHeight - event.target.clientHeight) * 100;
+	const percentage = ((event.target.scrollTop) / (event.target.scrollHeight - event.target.clientHeight)) * 100;
 
 	if (isFunction(props.onScroll)) {
 		props.onScroll(event, {
@@ -123,7 +116,7 @@ const renderBranch = (children, props) => {
 	const loader = (<div
 		style={{
 			display: 'block',
-			paddingLeft: `${1.5 * props.level + 1.5}rem`,
+			paddingLeft: `${(1.5 * props.level) + 1.5}rem`,
 			marginTop: '.5rem' }}
 	>
 		<div
@@ -163,10 +156,12 @@ const renderBranch = (children, props) => {
 			aria-level={props.level}
 			aria-expanded={isExpanded ? 'true' : 'false'}
 		>
+			{/* eslint-disable jsx-a11y/no-static-element-interactions */}
 			<div
 				className={classNames('slds-tree__item', { 'slds-is-selected': isSelected })}
 				onClick={(event) => { handleClick(event, props); }}
 			>
+				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				<Button
 					assistiveText="Toggle"
 					iconName="chevronright"
@@ -176,12 +171,15 @@ const renderBranch = (children, props) => {
 					aria-controls={props.htmlId}
 					onClick={(event) => { handleExpandClick(event, props); }}
 				/>
+				{/* eslint-disable no-script-url */}
 				<a
 					id={`${props.htmlId}__label`}
-					href="#"
+					href="javascript:void(0)"
 					role="presentation"
 					className="slds-truncate"
-				>{<Highlighter search={props.searchTerm}>{props.label}</Highlighter>}
+				>
+					{/* eslint-enable no-script-url */}
+					{<Highlighter search={props.searchTerm}>{props.label}</Highlighter>}
 				</a>
 			</div>{isLoading ? loader : null}<ul
 				className={classNames({

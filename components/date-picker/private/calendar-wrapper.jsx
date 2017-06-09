@@ -1,13 +1,8 @@
-/*
-Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
+/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import Calendar from './calendar';
 import CalendarNavigation from './navigation';
@@ -21,10 +16,10 @@ import KEYS from '../../../utilities/key-code';
 // joining classNames together."
 import classNames from 'classnames';
 
-const DatepickerCalendarWrapper = React.createClass({
-	displayName: 'DatepickerCalendarWrapper',
+class DatepickerCalendarWrapper extends React.Component {
+	static displayName = 'DatepickerCalendarWrapper';
 
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Label for button to go to the next month
 		 */
@@ -84,7 +79,7 @@ const DatepickerCalendarWrapper = React.createClass({
 		/**
 		 * Currently selected date
 		 */
-		selectedDate: React.PropTypes.instanceOf(Date),
+		selectedDate: PropTypes.instanceOf(Date),
 		/**
 		 * Component reference / DOM node for selected day.
 		 */
@@ -97,27 +92,23 @@ const DatepickerCalendarWrapper = React.createClass({
 		 * Names of the seven days of the week, starting on Sunday.
 		 */
 		weekDayLabels: PropTypes.array.isRequired
-	},
+	};
 
-	getDefaultProps () {
-		return {
-			selectedDate: new Date(),
-			value: new Date()
-		};
-	},
+	static defaultProps = {
+		selectedDate: new Date(),
+		value: new Date()
+	};
 
-	getInitialState () {
-		return {
-			initialDateForCalendarRender: this.props.selectedDate,
-			isCalendarFocused: true
-		};
-	},
+	state = {
+		initialDateForCalendarRender: this.props.selectedDate,
+		isCalendarFocused: true
+	};
 
-	handleInitialDateForCalendarRenderChange (event, initialDateForCalendarRender) {
+	handleInitialDateForCalendarRenderChange = (event, initialDateForCalendarRender) => {
 		this.setState({ initialDateForCalendarRender });
-	},
+	};
 
-	handleCalendarBlur (event, { direction }) {
+	handleCalendarBlur = (event, { direction }) => {
 		if (direction === 'next' && this.previousMonthRef) {
 			this.setState({ isCalendarFocused: false });
 			if (this.props.onCalendarFocus) {
@@ -131,29 +122,29 @@ const DatepickerCalendarWrapper = React.createClass({
 			}
 			this.todayRef.focus();
 		}
-	},
+	};
 
-	handleRequestClose () {
+	handleRequestClose = () => {
 		if (this.props.onRequestClose) {
 			this.props.onRequestClose();
 		}
-	},
+	};
 
-	handleLastFocusableNodeKeyDown (event) {
+	handleLastFocusableNodeKeyDown = (event) => {
 		if (!event.shiftKey && event.keyCode === KEYS.TAB) {
 			EventUtil.trapEvent(event);
 			this.setState({ isCalendarFocused: true });
 		}
-	},
+	};
 
-	handleFirstFocusableNodeKeyDown (event) {
+	handleFirstFocusableNodeKeyDown = (event) => {
 		if (event.shiftKey && event.keyCode === KEYS.TAB) {
 			EventUtil.trapEvent(event);
 			this.setState({ isCalendarFocused: true });
 		}
-	},
+	};
 
-	handleRequestFocusDate (event, data) {
+	handleRequestFocusDate = (event, data) => {
 		// will be called three times, due to re-render
 		if (data.ref && this.state.isCalendarFocused) {
 			data.ref.focus();
@@ -164,14 +155,14 @@ const DatepickerCalendarWrapper = React.createClass({
 			const { triggerCallback, ...modifiedData } = data;	// eslint-disable-line no-unused-vars
 			this.props.onCalendarFocus(event, modifiedData);
 		}
-	},
+	};
 
-	handleKeyDown (event) {
+	handleKeyDown = (event) => {
 		if (event.keyCode === KEYS.ESCAPE) {
 			EventUtil.trapEvent(event);
 			this.props.onRequestClose(event);
 		}
-	},
+	};
 
 	render () {
 		return (
@@ -221,6 +212,6 @@ const DatepickerCalendarWrapper = React.createClass({
 			</div>
 		);
 	}
-});
+}
 
 module.exports = DatepickerCalendarWrapper;

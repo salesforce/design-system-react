@@ -9,6 +9,6 @@
       }
     },
     "plugins": [
-      ["babel-plugin-root-import"]
+      ["babel-plugin-root-import", "transform-class-properties"]
     ]
 }

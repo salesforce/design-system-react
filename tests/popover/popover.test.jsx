@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import { mount } from 'enzyme';
@@ -118,7 +119,7 @@ describe('SLDSPopover', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('has aria-haspopup, correct aria-expanded on trigger, aria-labelledby/aria-describedby on popover', function (done) {
+		it('has aria-labelledby/aria-describedby on popover', function (done) {
 			wrapper = mount(<DemoComponent
 				isOpen
 				portalMount={(reactElement, domContainerNode) => {
@@ -127,10 +128,6 @@ describe('SLDSPopover', function () {
 				onOpen={() => {
 					const trigger = wrapper.find('#sample-popover');
 					
-					expect(trigger.node.getAttribute('aria-haspopup')).to.equal('true');
-					const ariaExpanded = trigger.find('button').node.getAttribute('aria-expanded');
-					expect(ariaExpanded).to.equal('true');
-
 					const popover = portalWrapper.find(`#${defaultIds.popover}`);
 					expect(popover.node.getAttribute('aria-labelledby')).to.equal(`${defaultIds.heading}`);
 					expect(popover.node.getAttribute('aria-describedby')).to.equal(`${defaultIds.body}`);

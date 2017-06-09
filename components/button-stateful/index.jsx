@@ -1,13 +1,5 @@
-/*
-Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
+/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 // Implements the [Button Stateful design pattern](https://lightningdesignsystem.com/components/buttons/#flavor-stateful) in React.
 // Based on SLDS v2.1.1
@@ -15,7 +7,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND 
 // ## Dependencies
 
 // ### React
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // ### classNames
 import classNames from 'classnames';
@@ -25,9 +18,6 @@ import isBoolean from 'lodash.isboolean';
 
 // ### isFunction
 import isFunction from 'lodash.isfunction';
-
-// ### omit
-import omit from 'lodash.omit';
 
 // ## Children
 import ButtonIcon from '../icon/button-icon';
@@ -117,12 +107,12 @@ class ButtonStateful extends TooltipTrigger {
 		super.componentWillUnmount();
 	}
 
-	handleClick (e) {
+	handleClick = (e) => {
 		if (isFunction(this.props.onClick)) this.props.onClick(e);
 		if (!isBoolean(this.props.active)) this.setState({ active: !this.state.active });
 	}
 
-	handleBlur (e) {
+	handleBlur = (e) => {
 		if (this.props.onBlur) this.props.onBlur(e);
 		e.currentTarget.blur();
 	}
@@ -152,7 +142,7 @@ class ButtonStateful extends TooltipTrigger {
 			onKeyUp,
 			onMouseDown,
 			onMouseEnter,
-			onMouseLeave,
+			// onMouseLeave,  // This prop isn't used anywhere! But removing it would be a breaking change
 			stateOne,
 			stateTwo,
 			stateThree,
@@ -169,15 +159,15 @@ class ButtonStateful extends TooltipTrigger {
 					className={this.getClassName(isActive)}
 					disabled={disabled}
 					id={id}
-					onBlur={this.handleBlur.bind(this)}
-					onClick={this.handleClick.bind(this)}
+					onBlur={this.handleBlur}
+					onClick={this.handleClick}
 					onFocus={onFocus}
 					onKeyDown={onKeyDown}
 					onKeyPress={onKeyPress}
 					onKeyUp={onKeyUp}
 					onMouseDown={onMouseDown}
 					onMouseEnter={onMouseEnter}
-					onMouseLeave={this.handleBlur.bind(this)}
+					onMouseLeave={this.handleBlur}
 					tabIndex={tabIndex}
 				>
 					<ButtonIcon
@@ -198,14 +188,14 @@ class ButtonStateful extends TooltipTrigger {
 				className={this.getClassName(isActive)}
 				disabled={disabled}
 				id={id}
-				onBlur={this.handleBlur.bind(this)}
-				onClick={this.handleClick.bind(this)}
+				onBlur={this.handleBlur}
+				onClick={this.handleClick}
 				onFocus={onFocus}
 				onKeyDown={onKeyDown}
 				onKeyPress={onKeyPress}
 				onKeyUp={onKeyUp}
 				onMouseEnter={onMouseEnter}
-				onMouseLeave={this.handleBlur.bind(this)}
+				onMouseLeave={this.handleBlur}
 				tabIndex={tabIndex}
 			>
 				<span className="slds-text-not-selected">

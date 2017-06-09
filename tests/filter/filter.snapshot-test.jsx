@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import ReactDOMServer from 'react-dom/server';
-import jsBeautify from 'js-beautify';
+import { renderMarkup } from '../snapshot-helpers';
 
 import Default from '../../examples/filter/default';
 import NewFilter from '../../examples/filter/new';
 import LockedFilter from '../../examples/filter/locked';
 import PermanantFilter from '../../examples/filter/permanant';
 import ErrorFilter from '../../examples/filter/error';
+import AssistiveTextFilter from '../../examples/filter/assistive-text';
 
 test('Filter Base Snapshot', () => {
 	const domTree = toJson(shallow(
@@ -45,10 +45,18 @@ test('Error Filter Base Snapshot', () => {
 	expect(domTree).toMatchSnapshot();
 });
 
-test('Filter Base with custom className Snapshot', () => {
-	const domTree = String(
-		jsBeautify.html(ReactDOMServer.renderToStaticMarkup(<Default className="MY_CUSTOM_CLASS_NAME" />), { indent_size: 2 }),
-		'utf-8'
-	);
+test('AssistiveText Filter', () => {
+	const domTree = toJson(shallow(
+		<AssistiveTextFilter />
+	));
 	expect(domTree).toMatchSnapshot();
+});
+
+test('Filter Base with custom className Snapshot', () => {
+	expect(renderMarkup(Default,
+		{ className: 'MY_CUSTOM_CLASS_NAME' })).toMatchSnapshot();
+});
+
+test('AssistiveText Filter HTML Snapshot', () => {
+	expect(renderMarkup(Default)).toMatchSnapshot();
 });

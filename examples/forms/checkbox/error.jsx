@@ -1,5 +1,5 @@
 import React from 'react';
-import Checkbox from '~/components/checkbox'; // `~` is replaced with design-system-react at runtime
+import Checkbox from '~/components/forms/checkbox'; // `~` is replaced with design-system-react at runtime
 
 const Example = React.createClass({
 	displayName: 'CheckboxExample',
