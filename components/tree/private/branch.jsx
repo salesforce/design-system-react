@@ -205,7 +205,9 @@ renderBranch.propTypes = {
 	/**
 	 * The text of the tree item.
 	 */
-	label: PropTypes.string,
+	label: PropTypes.oneOfType([
+		PropTypes.node,
+		PropTypes.string]),
 	/**
 	 * The number of nestings. Determines the ARIA level and style alignment.
 	 */
@@ -330,7 +332,9 @@ Branch.propTypes = {
 	/**
 	 * The text of the tree item.
 	 */
-	label: PropTypes.string,
+	label: PropTypes.oneOfType([
+		PropTypes.node,
+		PropTypes.string]),
 	/**
 	 * The number of nestings. Determines the ARIA level and style alignment.
 	 */

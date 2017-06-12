@@ -87,7 +87,9 @@ Item.propTypes = {
 	/**
 	 * The text of the tree item.
 	 */
-	label: PropTypes.string.isRequired,
+	label: PropTypes.oneOfType([
+		PropTypes.node,
+		PropTypes.string]).isRequired,
 	/**
 	 * The number of nestings. Determines the ARIA level and style alignment.
 	 */
