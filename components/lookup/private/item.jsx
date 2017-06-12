@@ -41,14 +41,17 @@ class Item extends React.Component {
 
 	getIcon () {
 		if (this.props.iconName && !this.props.listItemLabelRenderer) {
-			return (<Icon
-				category={this.props.iconCategory}
-				className="slds-media__figure"
-				inverse={this.props.iconInverse}
-				key={this.props.iconName}
-				name={this.props.iconName}
-				size="small"
-			/>);
+			return (
+				<span className="slds-media__figure">
+					<Icon
+						category={this.props.iconCategory}
+						inverse={this.props.iconInverse}
+						key={this.props.iconName}
+						name={this.props.iconName}
+						size="small"
+					/>
+				</span>
+			);
 		}
 		return null;
 	}
