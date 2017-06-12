@@ -193,9 +193,10 @@ _from [Controlled Components](https://facebook.github.io/react/docs/forms.html#c
 * `extends React.Component`
   * initial state within `constructor`
   * life cycle methods
-  * sub-render methods (keep to a minimum)
+  * sub-render methods (keep to a minimum, only use to stay "DRY")
   * component render
-* Static class properties that should be added to the class variable after creation. `static` prefix is not currently compatible with our documentation site build.
+
+* Static class properties that should be added to the class variable after creation. ES7's `static` prefix is not currently compatible with our documentation site build.
   * display name
   * prop types
   * defaults props 
@@ -208,10 +209,10 @@ import checkProps from './check-props';
 import { EXTERNAL_CONSTANT } from '../../utilities/constants';
 
 const propTypes = {
-	/**
-	 * The description of this prop (will appear in the documentation site).
-	 */
-	title: PropTypes.string.isRequired
+  /**
+   * The description of this prop (will appear in the documentation site).
+   */
+  title: PropTypes.string.isRequired
 };
 
 // These values will also be visible in the documentation site.
@@ -221,32 +222,33 @@ const defaultProps = {};
  * The description of this component (will appear in the documentation site).
  */
 class DemoComponent extends React.Component {
-	constructor (props) {
-		super(props);
+  constructor (props) {
+    super(props);
 
-		// initial state
-		this.state = {};
-	}
+    // useful for unique DOM IDs
+    this.generatedId = shortid.generate();
+    
+    // initial state
+    this.state = {};
+  }
 
-	componentWillMount () {
-		// useful for unique ids
-		this.generatedId = shortid.generate();
-		// issues warnings to developers about props
-		checkProps(EXTERNAL_CONSTANT, this.props);
-	}
+  componentWillMount () {
+    // Not required. This function issues console warnings to developers about props and is helpful in upgrading. All breaking changes to props must have a warning for developers when they upgrade.
+    checkProps(EXTERNAL_CONSTANT, this.props);
+  }
 
-	// Class property bound to instance
-	toggleOpen = (event, { eventDataKey }) => {
-		// you can use `this`
-	};
+  // Class property bound to instance. Class methods that are not React lifecycle methods should use "fat-arrow" syntax if `this` binding is needed.
+  toggleOpen = (event, { eventDataKey }) => {
+    // you can use `this` here
+  };
 
-	// Minimize use of multiple renders. More HTML-like JSX is preferred with ternary statements
-	renderSubComponent = () => null;
+  // Minimize use of multiple renders. More HTML-like JSX is preferred with ternary statements
+  renderSubComponent = () => null;
 
-	// Render should be last
-	render () {
-		return null;
-	}
+  // Render should be last
+  render () {
+    return null;
+  }
 }
 
 DemoComponent.displayName = EXTERNAL_CONSTANT;
@@ -296,7 +298,7 @@ The following is a simple example of the cloning process within the parent.
 
 
 ```javascript
-const CleverParent = React.createClass({
+class CleverParent extends React.Component {
   render() {
     const children = React.Children.map(this.props.children, (child) => {
       return React.cloneElement(child, {
@@ -305,9 +307,9 @@ const CleverParent = React.createClass({
     })
     return <div>{children}</div>
   }
-})
+}
 
-const SimpleChild = React.createClass({
+class SimpleChild extends React.Component {
   render() {
     return (
       <div onClick={this.props.onClick}>
@@ -315,9 +317,9 @@ const SimpleChild = React.createClass({
       </div>
     )
   }
-})
+}
 
-const App = React.createClass({
+class App extends React.Component {
   render() {
     return (
       <CleverParent>
@@ -329,7 +331,7 @@ const App = React.createClass({
       </CleverParent>
     )
   }
-})
+}
 ```
 Example taken from [React Composability Patterns](http://www.zhubert.com/blog/2016/02/05/react-composability-patterns/)
 
