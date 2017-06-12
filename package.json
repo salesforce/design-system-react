@@ -18,7 +18,7 @@
     "heroku-postbuild": "./scripts/heroku-postbuild.sh",
     "icons": "./node_modules/.bin/babel-node scripts/inline-icons.js",
     "link": "./scripts/npm-link.sh",
-    "lint": "npm run lint-non-prod && eslint --config=./.eslintrc \"!(examples|tests)/**/*.{js,jsx}\"",
+    "lint": "eslint --config=./.eslintrc \"**/*.{js,jsx}\"",
     "lint-non-prod": "eslint \"{examples,tests}/**/*.{js,jsx}\"",
     "lint-prod": "eslint --config=./.eslintrc \"{components,utilities}/**/*.{js,jsx}\"",
     "lint-staged": "lint-staged",
