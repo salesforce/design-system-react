@@ -18,7 +18,9 @@ const Highlighter = (props) => {
 	if (props.search) {
 		let children;
 		if (typeof props.children  === 'string') {
-			children = props.children;
+			children = <ReactHighlighter className={props.className} matchClass={null} matchElement="mark" search={props.search}>
+							{props.children}
+						</ReactHighlighter>;
 		} else {
 			const findString = (nodeArr) => {
 				return nodeArr.map(element => {
