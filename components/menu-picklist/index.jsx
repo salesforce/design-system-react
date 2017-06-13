@@ -108,7 +108,8 @@ const MenuPicklist = React.createClass({
 	getInitialState () {
 		return {
 			focusedIndex: -1,
-			selectedIndex: -1
+			selectedIndex: -1,
+			selectedIndices: []
 		};
 	},
 
@@ -120,20 +121,41 @@ const MenuPicklist = React.createClass({
 		if (this.props.errorText) {
 			this.generatedErrorId = shortid.generate();
 		}
-
 		window.addEventListener('click', this.closeOnClick, false);
-
-		this.setState({
+		if (this.props.variant === 'base') {
+			this.setState({
 			selectedIndex: this.getIndexByValue(this.props)
 		});
+		}
+		else {
+			let currentSelectedIndex = this.getIndexByValue(this.props);
+			let currentIndices = this.state.selectedIndices;
+			if (currentSelectedIndex !== -1)
+				currentIndices.push(currentSelectedIndex);
+			this.setState({
+				selectedIndices: currentIndices
+			});	
+		}
 	},
 
 	componentWillReceiveProps (nextProps) {
 		if (this.props.value !== nextProps.value || this.props.options.length !== nextProps.length) {
+		if (this.props.variant === 'base') {
 			this.setState({
-				selectedIndex: this.getIndexByValue(nextProps)
-			});
+			selectedIndex: this.getIndexByValue(nextProps)
+		});
 		}
+		else {
+			let currentSelectedIndex = this.getIndexByValue(nextProps);
+			let currentIndices = this.state.selectedIndices;
+			if (currentSelectedIndex !== -1) 
+				currentIndices.push(currentSelectedIndex);
+			this.setState({
+				selectedIndices: currentIndices
+			});	
+		}
+		}
+
 	},
 
 	componentWillUnmount () {
@@ -183,6 +205,13 @@ const MenuPicklist = React.createClass({
 		if (this.props.variant === 'base') {
 			this.setState({ selectedIndex: index });
 			this.handleClose();
+			this.setFocus();
+		} else if (this.props.variant === 'multiselect') {
+			let currentIndices = this.state.selectedIndices;
+			currentIndices.push(index);
+			this.setState({
+				selectedIndices: currentIndices
+			});	
 			this.setFocus();
 		}
 
@@ -391,19 +420,49 @@ const MenuPicklist = React.createClass({
 		);
 	},
 
-	renderPills () {
+	renderPills (indices) {
+		var selectedPills = indices.map(function(selectedPill) {
+		this.getValueByIndex.bind(this);
 		return (
-			<div id="listbox-selections-unique-id" role="listbox" aria-orientation="horizontal">
-      		<ul className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small" role="group" aria-label="Selected Options:">
-        		<li role="presentation" className="slds-listbox__item">
-          			<span className="slds-pill" role="option" tabindex="0" aria-selected="true">
-            			<span className="slds-pill__label" title="Option A">Option A</span>
-            			<Icon assistiveText="delete Pill" category="utility" name="close" size="x-small"/>
-          			</span>
-        		</li>
-      		</ul>
-    		</div>
-		)
+			<div
+				id="listbox-selections-unique-id"
+				role="listbox"
+				// aria-orientation="horizontal"
+			>
+				<ul
+					className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
+					role="group"
+					aria-label="Selected Options:"
+				>
+					<li
+						role="presentation"
+						className="slds-listbox__item"
+					>
+						<span
+							className="slds-pill"
+							role="option"
+							tabIndex="0"
+							aria-selected="true"
+						>
+							<span
+								className="slds-pill__label"
+								title="Option A"
+							>
+							{this.getValuebyIndex(selectedPill)}
+							</span>
+							<Icon
+								assistiveText="delete Pill"
+								category="utility"
+								name="close"
+								size="x-small"
+							/>
+						</span>
+					</li>
+				</ul>
+			</div>
+		);
+		})
+		return <div>{selectedPills}</div>
 	},
 
 	render () {
@@ -433,7 +492,7 @@ const MenuPicklist = React.createClass({
 						{requiredElem}{label}
 					</label>
 					{this.renderTrigger()}
-					{this.renderPills()}
+					{this.renderPills(this.state.selectedIndices)}
 					{errorText && <div id={this.getErrorId()} className="slds-form-element__help">{errorText}</div>}
 				</div>
 			);
