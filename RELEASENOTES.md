@@ -1,7 +1,8 @@
 # Release notes
 _Salesforce Lightning Design System :: React Components :: design-system-react_
+All releases must use a level two heading.
 
-## Future Breaking Changes
+### Future Breaking Changes
 
 These are changes that have backwards-compatible solutions present and that compatibility will be removed at a breaking change release in the future.
 
@@ -24,7 +25,8 @@ These are changes that have backwards-compatible solutions present and that comp
     - menu-list/list
 - BreadCrumb is now Breadcrumb (bread-crumb -> breadcrumb)
 
----
+### Latest Release
+
 ## Release 0.6.9
 **Minor Changes**
 - Modal: Allow Modal footer prop to accept either an arry or node
