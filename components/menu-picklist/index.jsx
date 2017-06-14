@@ -28,6 +28,7 @@ import classNames from 'classnames';
 import shortid from 'shortid';
 
 // ### Children
+import Button from '../button';
 import Dialog from '../utilities/dialog';
 import Icon from '../icon';
 import List from '../utilities/menu-list';
@@ -247,6 +248,12 @@ const MenuPicklist = React.createClass({
 		}
 	},
 
+	handlePillClose (event) {
+		if (event) {
+			alert('Icon Bare Clicked');
+		}
+	},
+
 	setFocus () {
 		if (!this.isUnmounting && this.button) {
 			this.button.focus();
@@ -419,7 +426,8 @@ const MenuPicklist = React.createClass({
 		);
 	},
 
-	renderPills (indices) {
+	renderPills () {
+		const indices = this.state.selectedIndices;
 		const selectedPills = indices.map(function (selectedPill) {
 			return (
 				<div
@@ -446,20 +454,22 @@ const MenuPicklist = React.createClass({
 									className="slds-pill__label"
 									title="Option A"
 								>
-									{this.getValuebyIndex(selectedPill)}
+									{ this.getValueByIndex({ selectedPill }) }
 								</span>
-								<Icon
+								<Button
 									assistiveText="delete Pill"
-									category="utility"
-									name="close"
-									size="x-small"
+									iconCategory="utility"
+									iconName="close"
+									iconSize="x-small"
+									onClick={this.handlePillClose}
+									variant="icon"
 								/>
 							</span>
 						</li>
 					</ul>
 				</div>
 			);
-		});
+		}, this);
 		return <div>{selectedPills}</div>;
 	},
 
@@ -490,7 +500,7 @@ const MenuPicklist = React.createClass({
 						{requiredElem}{label}
 					</label>
 					{this.renderTrigger()}
-					{this.renderPills(this.state.selectedIndices)}
+					{this.renderPills()}
 					{errorText && <div id={this.getErrorId()} className="slds-form-element__help">{errorText}</div>}
 				</div>
 			);
