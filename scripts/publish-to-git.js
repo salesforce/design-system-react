@@ -48,30 +48,30 @@ const publish = (done, type) => {
 	}
 
 	let actions = [
-		['git init', tmpDir],
-		[`cp ${gitDir}/config ${tmpDir}/.git`],
-		['git add -A', tmpDir]
+		['git init', tmpDir, rootPath],
+		[`cp ${gitDir}/config ${tmpDir}/.git`, undefined, rootPath],
+		['git add -A', tmpDir, rootPath]
 	];
 
 	if (argv.tag) {
 		actions = [
 			...actions,
-			[`git commit -m "Release commit for ${argv.tag}-${type} [ci skip]"`, tmpDir],
-			[`git tag ${argv.tag}${typeSuffix}`, tmpDir, true],
-			[`git push ${remote} -f --tags ${argv.tag}${typeSuffix}`, tmpDir]
+			[`git commit -m "Release commit for ${argv.tag}-${type} [ci skip]"`, tmpDir, rootPath],
+			[`git tag ${argv.tag}${typeSuffix}`, tmpDir, rootPath],
+			[`git push ${remote} -f --tags ${argv.tag}${typeSuffix}`, tmpDir, rootPath]
 		];
 	} else {
 		actions = [
 			...actions,
-			[`git commit -m "Release commit for ${version}-${type} [ci skip]"`, tmpDir],
-			[`git tag v${version}${typeSuffix}`, tmpDir],
-			[`git push ${remote} --tags v${version}${typeSuffix}`, tmpDir]
+			[`git commit -m "Release commit for ${version}-${type} [ci skip]"`, tmpDir, rootPath],
+			[`git tag v${version}${typeSuffix}`, tmpDir, rootPath],
+			[`git push ${remote} --tags v${version}${typeSuffix}`, tmpDir, rootPath]
 		];
 	}
 
 	actions = [
 		...actions,
-		[`rm -r ${tmpDir}`]
+		[`rm -r ${tmpDir}`, undefined, rootPath]
 	];
 
 	async.eachSeries(actions, exec, (err) => {
@@ -84,7 +84,7 @@ const publish = (done, type) => {
 };
 
 async.series([
-	(done) => exec(['npm run dist'], done, rootPath),
+	(done) => exec(['npm run dist', rootPath], done),
 
 	(done) => cleanPackageJson(done, 'es'),
 	(done) => publish(done, 'es'),

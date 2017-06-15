@@ -32,7 +32,6 @@ These are changes that have backwards-compatible solutions present and that comp
 - Modal: Allow Modal footer prop to accept either an arry or node
 - Modal: Allow Modal to be rendered inside of custom DOM node instead of `<body>` tag. Pass function to `parentSelector` prop - it should return the container DOM node (ie.`return document.querySelector('#myModalContainer');`).
 
-
 ## Release 0.6.8
 **New Components**
 - Checkbox button group

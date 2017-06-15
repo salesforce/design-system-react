@@ -24,6 +24,11 @@ const executeTasks = () => {
 			console.log('Checking to see if an upstream remote exists');
 			exec(['git ls-remote upstream --exit-code --quiet', rootPath], done);
 		},
+		// Checkout master branch
+		(done) => {
+			console.log('Checking out master branch. Please ignore "RELEASENOTES.md - Your branch and \'upstream/master\' have diverged."');
+			exec(['git checkout master', rootPath], done);
+		},
 		// Remove libraries not in package.json
 		(done) => {
 			console.log('Pruning NPM dependencies');
@@ -57,7 +62,7 @@ const executeTasks = () => {
 			done();
 		},
 		(done) => {
-			console.log('Please add the following to your release notes at https://github.com/salesforce-ux/design-system-react/releases');
+			console.log('\n\nPlease add the following to your release notes at https://github.com/salesforce-ux/design-system-react/releases');
 			console.log(currentVersionReleaseNotes);
 			done();
 		}
@@ -80,7 +85,7 @@ prompt.start();
 prompt.get(releaseNotesSchema, (err, releaseNotesResult) => {
 	if (releaseNotesResult.releasenotes.toUpperCase() === 'N') {
 		exec(['open RELEASENOTES.MD', rootPath], () => {});
-		console.log('Please do not commit changes to RELEASENOTES.MD. Changes will be versioned for you. Please run script again.');
+		console.log('Please do not commit changes to RELEASENOTES.MD. Unversioned changes must be present in RELEASENOTES.MD or release will fail. Changes will be versioned for you. Please run script again.');
 		process.exit();
 	} else {
 		fs.readFile(path.resolve(rootPath, 'RELEASENOTES.MD'), 'utf8', (err2, contents) => {
