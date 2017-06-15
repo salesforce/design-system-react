@@ -57,7 +57,11 @@ const TabsDemoComponent = React.createClass({
 		/**
 		 * HTML `id` attribute of primary element that has `.slds-tabs--default` on it. Optional: If one is not supplied, a `shortid` will be created.
 		 */
-		id: PropTypes.string
+		id: PropTypes.string,
+		/**
+		 * Function that triggers when a tab is selected.
+		 */
+		onSelect: PropTypes.func
 	},
 
 	render () {
@@ -351,6 +355,42 @@ describe('Tabs', () => {
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(false);
 			expect(myFirstPanel.hasClass('slds-hide')).to.equal(true);
+
+			expect(mySecondPanel.hasClass('slds-show')).to.equal(false);
+			expect(mySecondPanel.hasClass('slds-hide')).to.equal(true);
+		});
+	});
+
+	describe('Interactions intercept tab selection', () => {
+		const id = 'this-is-an-id-for-testing--tab-intercept';
+
+		function interceptTabSelect () {
+			return false;
+		}
+
+		before(mountComponent(
+			<TabsDemoComponent
+				id={id}
+				onSelect={interceptTabSelect}
+			/>
+		));
+		after(unmountComponent);
+
+		it('Maintains the same tab selection when onSelect function returns false', function () {
+			const myTabsListItems = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.item}`);
+			const myFirstPanel = this.wrapper.find(`#${id}-slds-tabs--panel-0`);
+			const mySecondPanel = this.wrapper.find(`#${id}-slds-tabs--panel-1`);
+
+			expect(myFirstPanel.hasClass('slds-show')).to.equal(true);
+			expect(myFirstPanel.hasClass('slds-hide')).to.equal(false);
+
+			expect(mySecondPanel.hasClass('slds-show')).to.equal(false);
+			expect(mySecondPanel.hasClass('slds-hide')).to.equal(true);
+
+			Simulate.click(myTabsListItems.nodes[1], {});
+
+			expect(myFirstPanel.hasClass('slds-show')).to.equal(true);
+			expect(myFirstPanel.hasClass('slds-hide')).to.equal(false);
 
 			expect(mySecondPanel.hasClass('slds-show')).to.equal(false);
 			expect(mySecondPanel.hasClass('slds-hide')).to.equal(true);
