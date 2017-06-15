@@ -112,7 +112,7 @@ const propTypes = {
 	defaultSelectedIndex: PropTypes.number,
 
 	/**
-	 * This function triggers when a tab is selected.  Synchronously return `false` from this function to prevent tab selection from completing.
+	 * This function triggers when a tab is selected.
 	 */
 	onSelect: PropTypes.func,
 
@@ -176,6 +176,12 @@ class Tabs extends React.Component {
 		// Keep reference to last index for event handler
 		const last = this.getSelectedIndex();
 
+		/**
+		* This is a temporary solution that could be broken in the future without notification,
+		* since this component is not a controlled component and only relies on internal state.
+		* If this breaks in the future an alternative way to control the state from outside the
+		* component should be present.
+		* */
 		let shouldContinue;
 		// Call change event handler
 		if (isFunction(this.props.onSelect)) {
