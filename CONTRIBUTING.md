@@ -507,15 +507,16 @@ from the [Planning Center](https://github.com/planningcenter/react-patterns)
   * [David Woodward](https://github.com/futuremint)
 4. Get your component/feature approved by the UX Accessibility Team (refer to the link above).
 
-
-## Releasing
+## Test the documentation site
 1. Pull down the documentation site and place in the same parent folder as this library: `git clone git@github.com:salesforce-ux/design-system-react-site.git` and run `npm install`.
 `.
 1. Run `npm run local-update` from within `design-system-react-site` to build, copy, and serve a local version of this library into the site. You should be able to now view the updated site at `http://localhost:8080/` and resolve any issues with updated documentation.
-1. [Write the release notes](https://github.com/salesforce-ux/design-system-react/blob/master/RELEASENOTES.md) that cover everything that has changed since the last release. You don't have to commit your release notes changes though. The following script will do that for you.
-1. Run `npm prune` and `npm install` to clean up node modules in preparation for build.
-1. **Choose one**: `npm run release-patch` or `npm run release-minor` This script pulls from upstream, bumps the version, commits changes, and publishes tags to your `upstream` repository (that is this repo).
+
+## Release
+1. **Choose one**: `npm run release-patch` or `npm run release-minor`. This script pulls from upstream, bumps the version, commits changes, and publishes tags to your `upstream` repository (that is this repo).
 1. Copy and paste your release notes into the [Github Draft Release UI](https://github.com/salesforce-ux/design-system-react/releases) and publish.
+
+## Update documentation site
 1. Update the version of Design System React in the documentation site's [package.json](https://github.com/salesforce-ux/design-system-react-site/blob/master/package.json#L51) and push to master. This is will build a Heroku application. Log into Heroku and promote the staged pull request to production. You will need promotion rights to the Heroku application.
 
 _If you are timid about releasing or need your pull request in review "pre-released," you can publish to origin (your fork) with `npm run publish-to-git` and then test and review the tag on your fork. This is just the publish step though, any other tasks you will need to do manually to test publishing._
