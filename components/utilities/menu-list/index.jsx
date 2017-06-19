@@ -72,7 +72,8 @@ const List = React.createClass({
 		return {
 			length: '5',
 			options: [],
-			selectedIndex: -1
+			selectedIndex: -1,
+			selectedIndices: []
 		};
 	},
 
@@ -81,6 +82,8 @@ const List = React.createClass({
 		if (this.props.length) {
 			lengthClassName = `slds-dropdown--length-${this.props.length}`;
 		}
+
+		console.log(this.props.selectedIndices);
 
 		return (
 			<ul
@@ -95,11 +98,11 @@ const List = React.createClass({
 						return (
 							<ListItem
 								{...option}
-								checkmark={this.props.checkmark}
+								checkmark={(index === this.props.selectedIndex) || this.props.selectedIndices.includes(index)}
 								data={option}
 								id={id}
 								index={index}
-								isSelected={(index === this.props.selectedIndex)}
+								isSelected={(index === this.props.selectedIndex) || this.props.selectedIndices.includes(index)}
 								key={`${id}-${option.value}`}
 								labelRenderer={this.props.itemRenderer}
 								onSelect={this.props.onSelect}

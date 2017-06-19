@@ -28,11 +28,11 @@ import classNames from 'classnames';
 import shortid from 'shortid';
 
 // ### Children
-import Button from '../button';
 import Dialog from '../utilities/dialog';
 import Icon from '../icon';
 import List from '../utilities/menu-list';
 import ListItemLabel from '../utilities/menu-list/item-label';
+import Pill from './private/pill';
 
 // ### Traits
 
@@ -110,7 +110,8 @@ const MenuPicklist = React.createClass({
 		return {
 			focusedIndex: -1,
 			selectedIndex: -1,
-			selectedIndices: []
+			selectedIndices: [],
+			currentPillLabel: ''
 		};
 	},
 
@@ -207,11 +208,16 @@ const MenuPicklist = React.createClass({
 			this.handleClose();
 			this.setFocus();
 		} else if (this.props.variant === 'multiselect') {
-			const currentIndices = this.state.selectedIndices;
-			currentIndices.push(index);
-			this.setState({
-				selectedIndices: currentIndices
-			});
+			if (!this.state.selectedIndices.includes(index)) {
+				const currentIndices = this.state.selectedIndices.concat(index);
+				this.setState({
+					selectedIndices: currentIndices
+				});
+			} else {
+				const deselectIndex = this.state.selectedIndices.indexOf(index);
+				this.state.selectedIndices.splice(deselectIndex, 1);
+				this.setState({ checkmark: false });
+			}
 			this.setFocus();
 		}
 
@@ -245,12 +251,6 @@ const MenuPicklist = React.createClass({
 		if (event) {
 			EventUtil.trapImmediate(event);
 			event.nativeEvent[this.getClickEventName()] = true;
-		}
-	},
-
-	handlePillClose (event) {
-		if (event) {
-			alert('Icon Bare Clicked');
 		}
 	},
 
@@ -337,7 +337,8 @@ const MenuPicklist = React.createClass({
 				onSelect={this.handleSelect}
 				options={this.props.options}
 				ref={this.saveRefToList}
-				selectedIndex={this.state.selectedIndex}
+				selectedIndex={this.props.variant === 'multiselect' ? undefined : this.state.selectedIndex}
+				selectedIndices={this.props.variant === 'multiselect' ? this.state.selectedIndices : undefined}
 				triggerId={this.getId()}
 			/>
 		);
@@ -381,8 +382,13 @@ const MenuPicklist = React.createClass({
 	},
 
 	renderPlaceholder () {
-		const option = this.props.options[this.state.selectedIndex];
-		return (option && option.label) ? option.label : this.props.placeholder;
+		if (this.props.variant === 'base') {
+			const option = this.props.options[this.state.selectedIndex];
+			return (option && option.label) ? option.label : this.props.placeholder;
+		} else if (this.props.variant === 'multiselect') {
+			return this.state.selectedIndices.length + ' ' + this.props.placeholder;
+		}
+		return undefined;
 	},
 
 	renderTrigger () {
@@ -427,13 +433,14 @@ const MenuPicklist = React.createClass({
 	},
 
 	renderPills () {
-		const indices = this.state.selectedIndices;
-		const selectedPills = indices.map(function (selectedPill) {
+		const selectedPills = this.state.selectedIndices.map(function (
+		selectedPill) {
+			const pillLabel = this.getValueByIndex(selectedPill).label;
 			return (
 				<div
 					id="listbox-selections-unique-id"
 					role="listbox"
-					// aria-orientation="horizontal"
+					orientation="vertical"
 				>
 					<ul
 						className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
@@ -444,27 +451,22 @@ const MenuPicklist = React.createClass({
 							role="presentation"
 							className="slds-listbox__item"
 						>
-							<span
-								className="slds-pill"
-								role="option"
-								tabIndex="0"
-								aria-selected="true"
-							>
-								<span
-									className="slds-pill__label"
-									title="Option A"
-								>
-									{ this.getValueByIndex({ selectedPill }) }
-								</span>
-								<Button
-									assistiveText="delete Pill"
-									iconCategory="utility"
-									iconName="close"
-									iconSize="x-small"
-									onClick={this.handlePillClose}
-									variant="icon"
-								/>
-							</span>
+							<Pill
+											eventData={{
+												item: this.props.options[selectedPill],
+												index: selectedPill
+											}}
+											labels={{
+												label: pillLabel
+											}}
+											events={{
+												onRequestRemove: (event, data) => {
+													const newData = this.state.selectedIndices;
+													newData.splice(this.state.selectedIndices.indexOf(data.eventData.index), 1);
+													this.setState({ selectedIndices: newData });
+												}
+											}}
+							/>
 						</li>
 					</ul>
 				</div>

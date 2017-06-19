@@ -61,7 +61,7 @@ storiesOf(MENU_PICKLIST, module)
 	}))
 	.add('Multiselect', () => getPicklist({
 		label: 'Contacts',
-		placeholder: 'Select a contact',
+		placeholder: 'Columns Selected',
 		onSelect: (...rest) => {
 			action('Selected')(...rest);
 		},
