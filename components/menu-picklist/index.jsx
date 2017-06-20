@@ -437,42 +437,42 @@ const MenuPicklist = React.createClass({
 		selectedPill) {
 			const pillLabel = this.getValueByIndex(selectedPill).label;
 			return (
-				<div
-					id="listbox-selections-unique-id"
-					role="listbox"
-					orientation="vertical"
+				<ul
+					className="slds-listbox slds-listbox_inline slds-p-top_xxx-small"
+					role="group"
+					aria-label="Selected Options:"
 				>
-					<ul
-						className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
-						role="group"
-						aria-label="Selected Options:"
+					<li
+						role="presentation"
+						className="slds-listbox__item"
 					>
-						<li
-							role="presentation"
-							className="slds-listbox__item"
-						>
-							<Pill
-											eventData={{
-												item: this.props.options[selectedPill],
-												index: selectedPill
-											}}
-											labels={{
-												label: pillLabel
-											}}
-											events={{
-												onRequestRemove: (event, data) => {
-													const newData = this.state.selectedIndices;
-													newData.splice(this.state.selectedIndices.indexOf(data.eventData.index), 1);
-													this.setState({ selectedIndices: newData });
-												}
-											}}
-							/>
-						</li>
-					</ul>
-				</div>
+						<Pill
+										eventData={{
+											item: this.props.options[selectedPill],
+											index: selectedPill
+										}}
+										labels={{
+											label: pillLabel
+										}}
+										events={{
+											onRequestRemove: (event, data) => {
+												const newData = this.state.selectedIndices;
+												newData.splice(this.state.selectedIndices.indexOf(data.eventData.index), 1);
+												this.setState({ selectedIndices: newData });
+											}
+										}}
+						/>
+					</li>
+				</ul>
 			);
 		}, this);
-		return <div>{selectedPills}</div>;
+		return (
+			<div
+				id="listbox-selections-unique-id"
+				role="listbox"
+				orientation="horizontal"
+			>{selectedPills}
+			</div>);
 	},
 
 	render () {
