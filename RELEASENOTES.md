@@ -27,6 +27,11 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.6.11
+**Minor Changes**
+
+- Update inline icons to v7.20.0
+
 ## Release 0.6.10
 **Minor Changes**
 
