@@ -52,13 +52,13 @@ const executeTasks = () => {
 		// Builds three disconnected git trees based on package.json version and publishes as tags on upstream remote
 		(done) => {
 			console.log('Building and publishing tag to upstream remote');
-			// exec(['npm run publish-to-upstream', rootPath], done);
+			exec(['npm run publish-to-upstream', rootPath], done);
 			done();
 		},
 		// Push to master the package.json and release notes
 		(done) => {
 			console.log('Pushing local master branch to upstream remote');
-			// exec(['git push master upstream', rootPath], done);
+			exec(['git push master upstream', rootPath], done);
 			done();
 		},
 		(done) => {
