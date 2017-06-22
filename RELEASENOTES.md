@@ -27,23 +27,41 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.6.10
+**Minor Changes**
+
+- Move icons repository to looser major version. This should keep the SLDS website and the inline JS icons within this library in-sync with each other better.
+- Fix app launcher button markup and testing code
+- Allow non-strings in tree item labels (such as icons elements)
+
+**MAINTENANCE**
+
+- Release process updated
+- Lint errors removed from production code
+- Fix Lookup Item style bug
+- Update test command to prevent false positives in TravisCI
+
 ## Release 0.6.9
 **Minor Changes**
+
 - Modal: Allow Modal footer prop to accept either an arry or node
 - Modal: Allow Modal to be rendered inside of custom DOM node instead of `<body>` tag. Pass function to `parentSelector` prop - it should return the container DOM node (ie.`return document.querySelector('#myModalContainer');`).
 
 ## Release 0.6.8
 **New Components**
+
 - Checkbox button group
 - Exported SLDSSearch (`forms/input/search`) in bundled package
 
 **Minor Changes**
+
 - Started using assistiveText prop object instead of individual prop strings (Datepicker). Will follow suit in other components.
 - Change React.PropTypes to prop-types in preparation for React upgrade
 - Added a11y html markup to Filter
 - Allow devs to pass in link to Icon for external icons
 
 **Bugs**
+
 - Fixed filter but where 'ESC' didn't close popover
 
 ## Release 0.6.7
