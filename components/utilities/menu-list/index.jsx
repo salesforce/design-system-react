@@ -83,8 +83,6 @@ const List = React.createClass({
 			lengthClassName = `slds-dropdown--length-${this.props.length}`;
 		}
 
-		console.log(this.props.selectedIndices);
-
 		return (
 			<ul
 				aria-labelledby={this.props.triggerId}

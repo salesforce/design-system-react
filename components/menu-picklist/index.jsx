@@ -93,8 +93,7 @@ const MenuPicklist = React.createClass({
 		/**
 		 * Current selected item.
 		 */
-		value: PropTypes.node,
-		variant: PropTypes.oneOf(['base', 'multiselect'])
+		value: PropTypes.node
 	},
 
 	getDefaultProps () {
@@ -102,7 +101,7 @@ const MenuPicklist = React.createClass({
 			inheritTargetWidth: true,
 			placeholder: 'Select an Option',
 			checkmark: true,
-			variant: 'base'
+			multiple: false
 		};
 	},
 
@@ -124,7 +123,7 @@ const MenuPicklist = React.createClass({
 			this.generatedErrorId = shortid.generate();
 		}
 		window.addEventListener('click', this.closeOnClick, false);
-		if (this.props.variant === 'base') {
+		if (!this.props.multiple) {
 			this.setState({
 				selectedIndex: this.getIndexByValue(this.props)
 			});
@@ -203,11 +202,11 @@ const MenuPicklist = React.createClass({
 	},
 
 	handleSelect (index) {
-		if (this.props.variant === 'base') {
+		if (!this.props.multiple) {
 			this.setState({ selectedIndex: index });
 			this.handleClose();
 			this.setFocus();
-		} else if (this.props.variant === 'multiselect') {
+		} else {
 			if (!this.state.selectedIndices.includes(index)) {
 				const currentIndices = this.state.selectedIndices.concat(index);
 				this.setState({
@@ -337,8 +336,8 @@ const MenuPicklist = React.createClass({
 				onSelect={this.handleSelect}
 				options={this.props.options}
 				ref={this.saveRefToList}
-				selectedIndex={this.props.variant === 'multiselect' ? undefined : this.state.selectedIndex}
-				selectedIndices={this.props.variant === 'multiselect' ? this.state.selectedIndices : undefined}
+				selectedIndex={!this.props.multiple ? this.state.selectedIndex : undefined}
+				selectedIndices={this.props.multiple ? this.state.selectedIndices : undefined}
 				triggerId={this.getId()}
 			/>
 		);
@@ -382,13 +381,14 @@ const MenuPicklist = React.createClass({
 	},
 
 	renderPlaceholder () {
-		if (this.props.variant === 'base') {
+		let placeholder;
+		if (!this.props.multiple) {
 			const option = this.props.options[this.state.selectedIndex];
-			return (option && option.label) ? option.label : this.props.placeholder;
-		} else if (this.props.variant === 'multiselect') {
-			return this.state.selectedIndices.length + ' ' + this.props.placeholder;
+			placeholder = (option && option.label) ? option.label : this.props.placeholder;
+		} else {
+			placeholder = this.state.selectedIndices.length + ' ' + this.props.placeholder;
 		}
-		return undefined;
+		return placeholder;
 	},
 
 	renderTrigger () {
@@ -433,46 +433,48 @@ const MenuPicklist = React.createClass({
 	},
 
 	renderPills () {
-		const selectedPills = this.state.selectedIndices.map(function (
-		selectedPill) {
+		const selectedPills = this.state.selectedIndices.map(selectedPill => {
 			const pillLabel = this.getValueByIndex(selectedPill).label;
 			return (
+				<li
+					className="slds-listbox__item"
+					key={`pill-${selectedPill}`}
+					role="presentation"
+				>
+					<Pill
+						eventData={{
+							item: this.props.options[selectedPill],
+							index: selectedPill
+						}}
+						events={{
+							onRequestRemove: (event, data) => {
+								const newData = this.state.selectedIndices;
+								newData.splice(this.state.selectedIndices.indexOf(data.eventData.index), 1);
+								this.setState({ selectedIndices: newData });
+							}
+						}}
+						labels={{
+							label: pillLabel
+						}}
+					/>
+				</li>
+			);
+		});
+		return (
+			<div
+				id="listbox-selections-unique-id"
+				orientation="horizontal"
+				role="listbox"
+			>
 				<ul
 					className="slds-listbox slds-listbox_inline slds-p-top_xxx-small"
 					role="group"
 					aria-label="Selected Options:"
 				>
-					<li
-						role="presentation"
-						className="slds-listbox__item"
-					>
-						<Pill
-										eventData={{
-											item: this.props.options[selectedPill],
-											index: selectedPill
-										}}
-										labels={{
-											label: pillLabel
-										}}
-										events={{
-											onRequestRemove: (event, data) => {
-												const newData = this.state.selectedIndices;
-												newData.splice(this.state.selectedIndices.indexOf(data.eventData.index), 1);
-												this.setState({ selectedIndices: newData });
-											}
-										}}
-						/>
-					</li>
+					{selectedPills}
 				</ul>
-			);
-		}, this);
-		return (
-			<div
-				id="listbox-selections-unique-id"
-				role="listbox"
-				orientation="horizontal"
-			>{selectedPills}
-			</div>);
+			</div>
+		);
 	},
 
 	render () {
