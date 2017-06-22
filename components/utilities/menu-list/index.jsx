@@ -82,7 +82,6 @@ const List = React.createClass({
 		if (this.props.length) {
 			lengthClassName = `slds-dropdown--length-${this.props.length}`;
 		}
-
 		return (
 			<ul
 				aria-labelledby={this.props.triggerId}
@@ -92,15 +91,16 @@ const List = React.createClass({
 				{
 					this.props.options.map((option, index) => {
 						const id = this.props.getListItemId(index);
-
+						const isSingleSelected = index === this.props.selectedIndex;
+						const isMultipleSelected = this.props.selectedIndices && this.props.selectedIndices.includes(index);
 						return (
 							<ListItem
 								{...option}
-								checkmark={(index === this.props.selectedIndex) || this.props.selectedIndices.includes(index)}
+								checkmark={isSingleSelected || isMultipleSelected}
 								data={option}
 								id={id}
 								index={index}
-								isSelected={(index === this.props.selectedIndex) || this.props.selectedIndices.includes(index)}
+								isSelected={isSingleSelected || isMultipleSelected}
 								key={`${id}-${option.value}`}
 								labelRenderer={this.props.itemRenderer}
 								onSelect={this.props.onSelect}

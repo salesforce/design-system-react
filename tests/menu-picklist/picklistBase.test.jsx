@@ -261,7 +261,7 @@ describe('SLDSMenuPicklist: ',	function () {
 
 		beforeEach(() => {
 			selected = false;
-			cmp = getPicklist({variant: 'multiselect',placeholder: 'Columns Selected', onSelect: (i) => { selected = i; }});
+			cmp = getPicklist({ multiple: true, placeholder: 'Columns Selected', onSelect: (i) => { selected = i; } });
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
 
@@ -277,9 +277,11 @@ describe('SLDSMenuPicklist: ',	function () {
 			Simulate.click(btn, {});
 			expect(selected).to.be.false;
 			const items = getMenu(body).querySelectorAll('.slds-dropdown__item');
+			Simulate.click(items[0].querySelector('a'), {});
 			Simulate.click(items[1].querySelector('a'), {});
-			expect(selected.value).to.equal('B0');
+			expect(btn.textContent).to.equal('2 Columns Selected');
+			const pills = getMenu(body).querySelectorAll('.slds-listbox')[0];
+			expect(pills).to.have(2);
 		});
-
 	});
 });
