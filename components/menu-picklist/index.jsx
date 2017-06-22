@@ -208,16 +208,19 @@ const MenuPicklist = React.createClass({
 			this.handleClose();
 			this.setFocus();
 		} else if (this.props.variant === 'multiselect') {
-			if (!this.state.selectedIndices.includes(index)) {
-				const currentIndices = this.state.selectedIndices.concat(index);
-				this.setState({
-					selectedIndices: currentIndices
-				});
-			} else {
-				const deselectIndex = this.state.selectedIndices.indexOf(index);
-				this.state.selectedIndices.splice(deselectIndex, 1);
-				this.setState({ checkmark: false });
+			if(index !== undefined) {
+				if (!this.state.selectedIndices.includes(index)) {
+					const currentIndices = this.state.selectedIndices.concat(index);
+					this.setState({
+						selectedIndices: currentIndices
+					});
+				} else {
+					const deselectIndex = this.state.selectedIndices.indexOf(index);
+					this.state.selectedIndices.splice(deselectIndex, 1);
+					this.setState({ checkmark: false });
+				}
 			}
+			
 			this.setFocus();
 		}
 

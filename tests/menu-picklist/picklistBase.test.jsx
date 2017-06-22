@@ -253,4 +253,33 @@ describe('SLDSMenuPicklist: ',	function () {
 			expect(getMenu(body)).to.equal(null);
 		});
 	});
+
+	describe.only('MultiSelect behavior', () => {
+		let cmp;
+		let	btn;
+		let selected;
+
+		beforeEach(() => {
+			selected = false;
+			cmp = getPicklist({variant: 'multiselect',placeholder: 'Columns Selected', onSelect: (i) => { selected = i; }});
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+		});
+
+		afterEach(() => {
+			removePicklist();
+		});
+
+		it('multiselect placeholder', () => {
+			expect(btn.textContent).to.equal('0 Columns Selected');
+		});
+
+		it('multiselect selected items', () => {
+			Simulate.click(btn, {});
+			expect(selected).to.be.false;
+			const items = getMenu(body).querySelectorAll('.slds-dropdown__item');
+			Simulate.click(items[1].querySelector('a'), {});
+			expect(selected.value).to.equal('B0');
+		});
+
+	});
 });
