@@ -81,7 +81,7 @@ const DemoLookupAccounts = React.createClass({
 
 storiesOf(LOOKUP, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('Standard', () => <DemoLookup
+	.add('Base > singleselect (Folders)', () => <DemoLookup
 		emptyMessage="No Files found"
 		hasError={false}
 		iconCategory="utility"
@@ -89,10 +89,19 @@ storiesOf(LOOKUP, module)
 		isInline
 		label="Files"
 	/>)
+	.add('Base > multiselect', () => <DemoLookup
+		emptyMessage="No Files found"
+		hasError={false}
+		iconCategory="utility"
+		iconName="open_folder"
+		isInline
+		label="Files"
+		multiple
+	/>)
 	.add('Disabled', () => <DemoLookup
 		disabled
 	/>)
-	.add('Standard with Accounts', () => <DemoLookupAccounts
+	.add('Base > Single Select (Accounts)', () => <DemoLookupAccounts
 		emptyMessage="No Accounts found"
 		hasError={false}
 		iconCategory="standard"

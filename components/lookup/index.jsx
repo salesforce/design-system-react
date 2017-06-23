@@ -24,6 +24,7 @@ import Button from '../button';
 import Icon from '../icon';
 import InputIcon from '../icon/input-icon';
 import Input from '../forms/input';
+import Pill from './private/pill';
 
 // ### Event Helpers
 import EventUtil from '../../utilities/event';
@@ -129,6 +130,10 @@ const Lookup = React.createClass({
 		 */
 		listItemLabelRenderer: PropTypes.func,
 		/**
+		 * If true, allows user to select more than one item. Selected items render as pills below <input />.
+		 */
+		multiple: PropTypes.bool,
+		/**
 		 * Triggered when input focus is removed.
 		 */
 		onBlur: PropTypes.func,
@@ -168,7 +173,6 @@ const Lookup = React.createClass({
 		 * Index of current selected item. To clear the selection, pass in -1.
 		 */
 		selectedItem: PropTypes.number
-
 	},
 
 	getDefaultProps () {
@@ -176,6 +180,7 @@ const Lookup = React.createClass({
 			constrainToScrollParent: true,
 			filterWith: defaultFilter,
 			iconPosition: 'right',
+			multiple: false,
 			searchTerm: ''
 		};
 	},
@@ -187,7 +192,8 @@ const Lookup = React.createClass({
 			items: [],
 			listLength: this.props.options.length,
 			searchTerm: this.normalizeSearchTerm(this.props.searchTerm),
-			selectedIndex: this.props.selectedItem
+			selectedIndex: this.props.selectedItem,
+			selectedIndices: []
 		};
 	},
 
@@ -288,17 +294,15 @@ const Lookup = React.createClass({
 
 	getNumFocusableItems () {
 		let offset = 0;
-
-		if (this.footerComponent) {
-			offset += 1;
-		}
-
-		if (this.headerComponent) {
-			offset += 1;
-		}
-
+		if (this.footerComponent) offset += 1;
+		if (this.headerComponent) offset += 1;
 		return (this.state.listLength - 1) + offset;
 	},
+
+	getValueByIndex (index) {
+		return this.props.options[index];
+	},
+
 
 	// =================================================
 	// Select menu item (onClick or on key enter/space)
@@ -311,15 +315,35 @@ const Lookup = React.createClass({
 
 	selectItemByIndex (index) {
 		if (index >= 0 && index < this.state.items.length) {
-			this.setState({
-				isOpen: false,
-				selectedIndex: index,
-				searchTerm: ''
-			});
+			if (this.props.multiple) {
+				this.handleMultiSelect(index);
+			} else {
+				this.handleSingleSelect(index);
+			}
 			const data = this.state.items[index].data;
 			if (this.props.onSelect) {
 				this.props.onSelect(data);
 			}
+		}
+	},
+
+	handleSingleSelect (index) {
+		this.setState({
+			isOpen: false,
+			selectedIndex: index,
+			searchTerm: ''
+		});
+	},
+
+	handleMultiSelect (index) {
+		if (!this.state.selectedIndices.includes(index)) {
+			const currentIndices = this.state.selectedIndices.concat(index);
+			this.setState({
+				selectedIndices: currentIndices
+			});
+		} else {
+			const deselectIndex = this.state.selectedIndices.indexOf(index);
+			this.state.selectedIndices.splice(deselectIndex, 1);
 		}
 	},
 
@@ -612,7 +636,7 @@ const Lookup = React.createClass({
 		const required = this.props.required
 			? <span className="slds-required">*</span>
 			: null;
-		if (this.isSelected()) {
+		if (this.hasSingleSelection()) {
 			// inline style override
 			inputLabel = (<span
 				className="slds-form-element__label"
@@ -628,6 +652,52 @@ const Lookup = React.createClass({
 		return inputLabel;
 	},
 
+	renderPills () {
+		const selectedPills = this.state.selectedIndices.map(selectedPill => {
+			const pillLabel = this.getValueByIndex(selectedPill).label;
+			return (
+				<li
+					className="slds-listbox__item"
+					key={`pill-${selectedPill}`}
+					role="presentation"
+				>
+					<Pill
+						eventData={{
+							item: this.props.options[selectedPill],
+							index: selectedPill
+						}}
+						events={{
+							onRequestRemove: (event, data) => {
+								const newData = this.state.selectedIndices;
+								newData.splice(this.state.selectedIndices.indexOf(data.index), 1);
+								this.setState({ selectedIndices: newData });
+							}
+						}}
+						labels={{
+							label: pillLabel
+						}}
+						variant="option"
+					/>
+				</li>
+			);
+		});
+		return (
+			<div
+				id="listbox-selections-unique-id"
+				orientation="horizontal"
+				role="listbox"
+			>
+				<ul
+					className="slds-listbox slds-listbox_inline slds-p-top_xxx-small"
+					role="group"
+					aria-label="Selected Options:"
+				>
+					{selectedPills}
+				</ul>
+			</div>
+		);
+	},
+
 	inputRefId () {
 		return `${this.props.label}Lookup`;
 	},
@@ -636,14 +706,19 @@ const Lookup = React.createClass({
 		this.focusOnRender = true;
 	},
 
-	isSelected () {
-		const hasSelection = !isNaN(parseInt(this.state.selectedIndex, 10)) && this.state.selectedIndex >= 0;
+	hasSingleSelection () {
+		const hasSelection = !this.props.multiple && !isNaN(parseInt(this.state.selectedIndex, 10)) && this.state.selectedIndex >= 0;
+		return hasSelection;
+	},
+
+	hasMultipleSelection () {
+		const hasSelection = this.props.multiple && !isNaN(parseInt(this.state.selectedIndex, 10)) && this.state.selectedIndices.length > 0;
 		return hasSelection;
 	},
 
 	getClassName () {
 		return classNames(this.props.className, 'slds-form-element slds-lookup', {
-			'slds-has-selection': this.isSelected(),
+			'slds-has-selection': this.hasSingleSelection(),
 			'slds-is-open': this.state.isOpen
 		});
 	},
@@ -660,17 +735,17 @@ const Lookup = React.createClass({
 
 		const formElementControlClasses = {
 			'slds-form-element__control': true,
-			[`slds-input-has-icon slds-input-has-icon--${this.props.iconPosition}`]: !this.isSelected()
+			[`slds-input-has-icon slds-input-has-icon--${this.props.iconPosition}`]: !this.hasSingleSelection()
 		};
 
 		return (
 			<div className={this.getClassName()} data-select="single" data-scope="single">
 				{this.props.label ? this.renderLabel() : null}
 				<div className={classNames(formElementControlClasses)}>
-					{this.isSelected() ? this.renderSelectedItem() : null}
-					{!this.isSelected() ? this.renderInput() : null}
+					{this.hasSingleSelection() ? this.renderSelectedItem() : this.renderInput()}
 				</div>
 				{isInline ? this.renderInlineMenu() : this.renderSeparateMenu()}
+				{this.hasMultipleSelection() ? this.renderPills() : null}
 			</div>
 		);
 	}
