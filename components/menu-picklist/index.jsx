@@ -207,7 +207,7 @@ const MenuPicklist = React.createClass({
 			this.handleClose();
 			this.setFocus();
 		} else {
-			if (!this.state.selectedIndices.includes(index)) {
+			if (this.state.selectedIndices.indexOf(index) === -1) {
 				const currentIndices = this.state.selectedIndices.concat(index);
 				this.setState({
 					selectedIndices: currentIndices
@@ -217,7 +217,7 @@ const MenuPicklist = React.createClass({
 				this.state.selectedIndices.splice(deselectIndex, 1);
 				this.setState({ checkmark: false });
 			}
-			
+
 			this.setFocus();
 		}
 

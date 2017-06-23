@@ -12,7 +12,7 @@ const { Simulate,
 				scryRenderedDOMComponentsWithTag,
 				findRenderedDOMComponentWithClass } = TestUtils;
 
-describe('SLDSMenuPicklist: ',	function () {
+describe.only('SLDSMenuPicklist: ', function () {
 	let body;
 
 	const options = [
@@ -254,34 +254,31 @@ describe('SLDSMenuPicklist: ',	function () {
 		});
 	});
 
-	describe.only('MultiSelect behavior', () => {
+	describe('multiple select', () => {
 		let cmp;
-		let	btn;
-		let selected;
+		let 	btn;
 
 		beforeEach(() => {
-			selected = false;
-			cmp = getPicklist({ multiple: true, placeholder: 'Columns Selected', onSelect: (i) => { selected = i; } });
+			cmp = getPicklist({
+				multiple: true,
+				onSelect: () => { console.log('hi'); },
+				placeholder: 'Columns Selected'
+			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+			Simulate.click(btn, {});
 		});
 
 		afterEach(() => {
 			removePicklist();
 		});
 
-		it('multiselect placeholder', () => {
-			expect(btn.textContent).to.equal('0 Columns Selected');
-		});
-
-		it('multiselect selected items', () => {
-			Simulate.click(btn, {});
-			expect(selected).to.be.false;
-			const items = getMenu(body).querySelectorAll('.slds-dropdown__item');
-			Simulate.click(items[0].querySelector('a'), {});
-			Simulate.click(items[1].querySelector('a'), {});
+		it('selects multiple items and renders pills', () => {
+			clickOnItem(cmp, 0);
+			clickOnItem(cmp, 1);
 			expect(btn.textContent).to.equal('2 Columns Selected');
-			const pills = getMenu(body).querySelectorAll('.slds-listbox')[0];
-			expect(pills).to.have(2);
+
+			const pills = findRenderedDOMComponentWithClass(cmp, 'slds-pill');
+			expect(pills.length).to.be(2);
 		});
 	});
 });

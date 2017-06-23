@@ -72,8 +72,7 @@ const List = React.createClass({
 		return {
 			length: '5',
 			options: [],
-			selectedIndex: -1,
-			selectedIndices: []
+			selectedIndex: -1
 		};
 	},
 
@@ -92,7 +91,7 @@ const List = React.createClass({
 					this.props.options.map((option, index) => {
 						const id = this.props.getListItemId(index);
 						const isSingleSelected = index === this.props.selectedIndex;
-						const isMultipleSelected = this.props.selectedIndices && this.props.selectedIndices.includes(index);
+						const isMultipleSelected = !!this.props.selectedIndices && this.props.selectedIndices.indexOf(index) !== -1;
 						return (
 							<ListItem
 								{...option}
