@@ -1,35 +1,37 @@
-exports[`test Button Group Checkbox Error HTML Snapshot 1`] = `
-"<fieldset class=\"slds-form-element\">
-  <legend class=\"slds-form-element__legend slds-form-element__label\">Scheduled Day(s)</legend>
-  <div class=\"slds-form-element__control\">
-    <div class=\"slds-checkbox--button-group\"><span class=\"slds-button slds-checkbox--button\"><input type=\"checkbox\" id=\"ButtonGroupExampleMon\"/><label class=\"slds-checkbox--button__label\" for=\"ButtonGroupExampleMon\"><span class=\"slds-checkbox--faux\">Mon</span></label>
-      </span><span class=\"slds-button slds-checkbox--button\"><input type=\"checkbox\" id=\"ButtonGroupExampleTue\"/><label class=\"slds-checkbox--button__label\" for=\"ButtonGroupExampleTue\"><span class=\"slds-checkbox--faux\">Tue</span></label>
-      </span><span class=\"slds-button slds-checkbox--button\"><input type=\"checkbox\" id=\"ButtonGroupExampleWed\"/><label class=\"slds-checkbox--button__label\" for=\"ButtonGroupExampleWed\"><span class=\"slds-checkbox--faux\">Wed</span></label>
-      </span><span class=\"slds-button slds-checkbox--button\"><input type=\"checkbox\" id=\"ButtonGroupExampleThu\"/><label class=\"slds-checkbox--button__label\" for=\"ButtonGroupExampleThu\"><span class=\"slds-checkbox--faux\">Thu</span></label>
-      </span><span class=\"slds-button slds-checkbox--button\"><input type=\"checkbox\" id=\"ButtonGroupExampleFri\"/><label class=\"slds-checkbox--button__label\" for=\"ButtonGroupExampleFri\"><span class=\"slds-checkbox--faux\">Fri</span></label>
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Group Checkbox Error HTML Snapshot 1`] = `
+"<fieldset class=\\"slds-form-element\\">
+  <legend class=\\"slds-form-element__legend slds-form-element__label\\">Scheduled Day(s)</legend>
+  <div class=\\"slds-form-element__control\\">
+    <div class=\\"slds-checkbox--button-group\\"><span class=\\"slds-button slds-checkbox--button\\"><input type=\\"checkbox\\" id=\\"ButtonGroupExampleMon\\"/><label class=\\"slds-checkbox--button__label\\" for=\\"ButtonGroupExampleMon\\"><span class=\\"slds-checkbox--faux\\">Mon</span></label>
+      </span><span class=\\"slds-button slds-checkbox--button\\"><input type=\\"checkbox\\" id=\\"ButtonGroupExampleTue\\"/><label class=\\"slds-checkbox--button__label\\" for=\\"ButtonGroupExampleTue\\"><span class=\\"slds-checkbox--faux\\">Tue</span></label>
+      </span><span class=\\"slds-button slds-checkbox--button\\"><input type=\\"checkbox\\" id=\\"ButtonGroupExampleWed\\"/><label class=\\"slds-checkbox--button__label\\" for=\\"ButtonGroupExampleWed\\"><span class=\\"slds-checkbox--faux\\">Wed</span></label>
+      </span><span class=\\"slds-button slds-checkbox--button\\"><input type=\\"checkbox\\" id=\\"ButtonGroupExampleThu\\"/><label class=\\"slds-checkbox--button__label\\" for=\\"ButtonGroupExampleThu\\"><span class=\\"slds-checkbox--faux\\">Thu</span></label>
+      </span><span class=\\"slds-button slds-checkbox--button\\"><input type=\\"checkbox\\" id=\\"ButtonGroupExampleFri\\"/><label class=\\"slds-checkbox--button__label\\" for=\\"ButtonGroupExampleFri\\"><span class=\\"slds-checkbox--faux\\">Fri</span></label>
       </span>
     </div>
   </div>
 </fieldset>"
 `;
 
-exports[`test Button Group Checkbox Error HTML Snapshot 2`] = `
-"<fieldset class=\"slds-form-element slds-has-error\">
-  <legend class=\"slds-form-element__legend slds-form-element__label\">Scheduled Day(s)</legend>
-  <div class=\"slds-form-element__control\">
-    <div class=\"slds-checkbox--button-group\"><span class=\"slds-button slds-checkbox--button\"><input type=\"checkbox\" id=\"ButtonGroupExampleMon\"/><label class=\"slds-checkbox--button__label\" for=\"ButtonGroupExampleMon\"><span class=\"slds-checkbox--faux\">Mon</span></label>
-      </span><span class=\"slds-button slds-checkbox--button\"><input type=\"checkbox\" id=\"ButtonGroupExampleTue\"/><label class=\"slds-checkbox--button__label\" for=\"ButtonGroupExampleTue\"><span class=\"slds-checkbox--faux\">Tue</span></label>
-      </span><span class=\"slds-button slds-checkbox--button\"><input type=\"checkbox\" id=\"ButtonGroupExampleWed\"/><label class=\"slds-checkbox--button__label\" for=\"ButtonGroupExampleWed\"><span class=\"slds-checkbox--faux\">Wed</span></label>
-      </span><span class=\"slds-button slds-checkbox--button\"><input type=\"checkbox\" id=\"ButtonGroupExampleThu\"/><label class=\"slds-checkbox--button__label\" for=\"ButtonGroupExampleThu\"><span class=\"slds-checkbox--faux\">Thu</span></label>
-      </span><span class=\"slds-button slds-checkbox--button\"><input type=\"checkbox\" id=\"ButtonGroupExampleFri\"/><label class=\"slds-checkbox--button__label\" for=\"ButtonGroupExampleFri\"><span class=\"slds-checkbox--faux\">Fri</span></label>
+exports[`Button Group Checkbox Error HTML Snapshot 2`] = `
+"<fieldset class=\\"slds-form-element slds-has-error\\">
+  <legend class=\\"slds-form-element__legend slds-form-element__label\\">Scheduled Day(s)</legend>
+  <div class=\\"slds-form-element__control\\">
+    <div class=\\"slds-checkbox--button-group\\"><span class=\\"slds-button slds-checkbox--button\\"><input type=\\"checkbox\\" id=\\"ButtonGroupExampleMon\\"/><label class=\\"slds-checkbox--button__label\\" for=\\"ButtonGroupExampleMon\\"><span class=\\"slds-checkbox--faux\\">Mon</span></label>
+      </span><span class=\\"slds-button slds-checkbox--button\\"><input type=\\"checkbox\\" id=\\"ButtonGroupExampleTue\\"/><label class=\\"slds-checkbox--button__label\\" for=\\"ButtonGroupExampleTue\\"><span class=\\"slds-checkbox--faux\\">Tue</span></label>
+      </span><span class=\\"slds-button slds-checkbox--button\\"><input type=\\"checkbox\\" id=\\"ButtonGroupExampleWed\\"/><label class=\\"slds-checkbox--button__label\\" for=\\"ButtonGroupExampleWed\\"><span class=\\"slds-checkbox--faux\\">Wed</span></label>
+      </span><span class=\\"slds-button slds-checkbox--button\\"><input type=\\"checkbox\\" id=\\"ButtonGroupExampleThu\\"/><label class=\\"slds-checkbox--button__label\\" for=\\"ButtonGroupExampleThu\\"><span class=\\"slds-checkbox--faux\\">Thu</span></label>
+      </span><span class=\\"slds-button slds-checkbox--button\\"><input type=\\"checkbox\\" id=\\"ButtonGroupExampleFri\\"/><label class=\\"slds-checkbox--button__label\\" for=\\"ButtonGroupExampleFri\\"><span class=\\"slds-checkbox--faux\\">Fri</span></label>
       </span>
     </div>
-    <div class=\"slds-form-element__help\">This field is required</div>
+    <div class=\\"slds-form-element__help\\">This field is required</div>
   </div>
 </fieldset>"
 `;
 
-exports[`test Button Group Checkbox Error Snapshot 1`] = `
+exports[`Button Group Checkbox Error Snapshot 1`] = `
 <ButtonGroupExample>
   <SLDSButtonGroup
     labels={
@@ -38,34 +40,44 @@ exports[`test Button Group Checkbox Error Snapshot 1`] = `
         "label": "Scheduled Day(s)",
       }
     }
-    variant="checkbox">
+    variant="checkbox"
+  >
     <fieldset
-      className="slds-form-element slds-has-error">
+      className="slds-form-element slds-has-error"
+    >
       <legend
-        className="slds-form-element__legend slds-form-element__label">
+        className="slds-form-element__legend slds-form-element__label"
+      >
         Scheduled Day(s)
       </legend>
       <div
-        className="slds-form-element__control">
+        className="slds-form-element__control"
+      >
         <div
-          className="slds-checkbox--button-group">
+          className="slds-checkbox--button-group"
+        >
           <SLDSCheckbox
             id="ButtonGroupExampleMon"
             label="Mon"
             labelToggleDisabled="Disabled"
             labelToggleEnabled="Enabled"
-            variant="button-group">
+            variant="button-group"
+          >
             <span
-              className="slds-button slds-checkbox--button">
+              className="slds-button slds-checkbox--button"
+            >
               <input
                 id="ButtonGroupExampleMon"
                 onChange={[Function]}
-                type="checkbox" />
+                type="checkbox"
+              />
               <label
                 className="slds-checkbox--button__label"
-                htmlFor="ButtonGroupExampleMon">
+                htmlFor="ButtonGroupExampleMon"
+              >
                 <span
-                  className="slds-checkbox--faux">
+                  className="slds-checkbox--faux"
+                >
                   Mon
                 </span>
               </label>
@@ -76,18 +88,23 @@ exports[`test Button Group Checkbox Error Snapshot 1`] = `
             label="Tue"
             labelToggleDisabled="Disabled"
             labelToggleEnabled="Enabled"
-            variant="button-group">
+            variant="button-group"
+          >
             <span
-              className="slds-button slds-checkbox--button">
+              className="slds-button slds-checkbox--button"
+            >
               <input
                 id="ButtonGroupExampleTue"
                 onChange={[Function]}
-                type="checkbox" />
+                type="checkbox"
+              />
               <label
                 className="slds-checkbox--button__label"
-                htmlFor="ButtonGroupExampleTue">
+                htmlFor="ButtonGroupExampleTue"
+              >
                 <span
-                  className="slds-checkbox--faux">
+                  className="slds-checkbox--faux"
+                >
                   Tue
                 </span>
               </label>
@@ -98,18 +115,23 @@ exports[`test Button Group Checkbox Error Snapshot 1`] = `
             label="Wed"
             labelToggleDisabled="Disabled"
             labelToggleEnabled="Enabled"
-            variant="button-group">
+            variant="button-group"
+          >
             <span
-              className="slds-button slds-checkbox--button">
+              className="slds-button slds-checkbox--button"
+            >
               <input
                 id="ButtonGroupExampleWed"
                 onChange={[Function]}
-                type="checkbox" />
+                type="checkbox"
+              />
               <label
                 className="slds-checkbox--button__label"
-                htmlFor="ButtonGroupExampleWed">
+                htmlFor="ButtonGroupExampleWed"
+              >
                 <span
-                  className="slds-checkbox--faux">
+                  className="slds-checkbox--faux"
+                >
                   Wed
                 </span>
               </label>
@@ -120,18 +142,23 @@ exports[`test Button Group Checkbox Error Snapshot 1`] = `
             label="Thu"
             labelToggleDisabled="Disabled"
             labelToggleEnabled="Enabled"
-            variant="button-group">
+            variant="button-group"
+          >
             <span
-              className="slds-button slds-checkbox--button">
+              className="slds-button slds-checkbox--button"
+            >
               <input
                 id="ButtonGroupExampleThu"
                 onChange={[Function]}
-                type="checkbox" />
+                type="checkbox"
+              />
               <label
                 className="slds-checkbox--button__label"
-                htmlFor="ButtonGroupExampleThu">
+                htmlFor="ButtonGroupExampleThu"
+              >
                 <span
-                  className="slds-checkbox--faux">
+                  className="slds-checkbox--faux"
+                >
                   Thu
                 </span>
               </label>
@@ -142,18 +169,23 @@ exports[`test Button Group Checkbox Error Snapshot 1`] = `
             label="Fri"
             labelToggleDisabled="Disabled"
             labelToggleEnabled="Enabled"
-            variant="button-group">
+            variant="button-group"
+          >
             <span
-              className="slds-button slds-checkbox--button">
+              className="slds-button slds-checkbox--button"
+            >
               <input
                 id="ButtonGroupExampleFri"
                 onChange={[Function]}
-                type="checkbox" />
+                type="checkbox"
+              />
               <label
                 className="slds-checkbox--button__label"
-                htmlFor="ButtonGroupExampleFri">
+                htmlFor="ButtonGroupExampleFri"
+              >
                 <span
-                  className="slds-checkbox--faux">
+                  className="slds-checkbox--faux"
+                >
                   Fri
                 </span>
               </label>
@@ -161,7 +193,8 @@ exports[`test Button Group Checkbox Error Snapshot 1`] = `
           </SLDSCheckbox>
         </div>
         <div
-          className="slds-form-element__help">
+          className="slds-form-element__help"
+        >
           This field is required
         </div>
       </div>
@@ -170,7 +203,7 @@ exports[`test Button Group Checkbox Error Snapshot 1`] = `
 </ButtonGroupExample>
 `;
 
-exports[`test Button Group Checkbox Snapshot 1`] = `
+exports[`Button Group Checkbox Snapshot 1`] = `
 <ButtonGroupExample>
   <SLDSButtonGroup
     labels={
@@ -178,34 +211,44 @@ exports[`test Button Group Checkbox Snapshot 1`] = `
         "label": "Scheduled Day(s)",
       }
     }
-    variant="checkbox">
+    variant="checkbox"
+  >
     <fieldset
-      className="slds-form-element">
+      className="slds-form-element"
+    >
       <legend
-        className="slds-form-element__legend slds-form-element__label">
+        className="slds-form-element__legend slds-form-element__label"
+      >
         Scheduled Day(s)
       </legend>
       <div
-        className="slds-form-element__control">
+        className="slds-form-element__control"
+      >
         <div
-          className="slds-checkbox--button-group">
+          className="slds-checkbox--button-group"
+        >
           <SLDSCheckbox
             id="ButtonGroupExampleMon"
             label="Mon"
             labelToggleDisabled="Disabled"
             labelToggleEnabled="Enabled"
-            variant="button-group">
+            variant="button-group"
+          >
             <span
-              className="slds-button slds-checkbox--button">
+              className="slds-button slds-checkbox--button"
+            >
               <input
                 id="ButtonGroupExampleMon"
                 onChange={[Function]}
-                type="checkbox" />
+                type="checkbox"
+              />
               <label
                 className="slds-checkbox--button__label"
-                htmlFor="ButtonGroupExampleMon">
+                htmlFor="ButtonGroupExampleMon"
+              >
                 <span
-                  className="slds-checkbox--faux">
+                  className="slds-checkbox--faux"
+                >
                   Mon
                 </span>
               </label>
@@ -216,18 +259,23 @@ exports[`test Button Group Checkbox Snapshot 1`] = `
             label="Tue"
             labelToggleDisabled="Disabled"
             labelToggleEnabled="Enabled"
-            variant="button-group">
+            variant="button-group"
+          >
             <span
-              className="slds-button slds-checkbox--button">
+              className="slds-button slds-checkbox--button"
+            >
               <input
                 id="ButtonGroupExampleTue"
                 onChange={[Function]}
-                type="checkbox" />
+                type="checkbox"
+              />
               <label
                 className="slds-checkbox--button__label"
-                htmlFor="ButtonGroupExampleTue">
+                htmlFor="ButtonGroupExampleTue"
+              >
                 <span
-                  className="slds-checkbox--faux">
+                  className="slds-checkbox--faux"
+                >
                   Tue
                 </span>
               </label>
@@ -238,18 +286,23 @@ exports[`test Button Group Checkbox Snapshot 1`] = `
             label="Wed"
             labelToggleDisabled="Disabled"
             labelToggleEnabled="Enabled"
-            variant="button-group">
+            variant="button-group"
+          >
             <span
-              className="slds-button slds-checkbox--button">
+              className="slds-button slds-checkbox--button"
+            >
               <input
                 id="ButtonGroupExampleWed"
                 onChange={[Function]}
-                type="checkbox" />
+                type="checkbox"
+              />
               <label
                 className="slds-checkbox--button__label"
-                htmlFor="ButtonGroupExampleWed">
+                htmlFor="ButtonGroupExampleWed"
+              >
                 <span
-                  className="slds-checkbox--faux">
+                  className="slds-checkbox--faux"
+                >
                   Wed
                 </span>
               </label>
@@ -260,18 +313,23 @@ exports[`test Button Group Checkbox Snapshot 1`] = `
             label="Thu"
             labelToggleDisabled="Disabled"
             labelToggleEnabled="Enabled"
-            variant="button-group">
+            variant="button-group"
+          >
             <span
-              className="slds-button slds-checkbox--button">
+              className="slds-button slds-checkbox--button"
+            >
               <input
                 id="ButtonGroupExampleThu"
                 onChange={[Function]}
-                type="checkbox" />
+                type="checkbox"
+              />
               <label
                 className="slds-checkbox--button__label"
-                htmlFor="ButtonGroupExampleThu">
+                htmlFor="ButtonGroupExampleThu"
+              >
                 <span
-                  className="slds-checkbox--faux">
+                  className="slds-checkbox--faux"
+                >
                   Thu
                 </span>
               </label>
@@ -282,18 +340,23 @@ exports[`test Button Group Checkbox Snapshot 1`] = `
             label="Fri"
             labelToggleDisabled="Disabled"
             labelToggleEnabled="Enabled"
-            variant="button-group">
+            variant="button-group"
+          >
             <span
-              className="slds-button slds-checkbox--button">
+              className="slds-button slds-checkbox--button"
+            >
               <input
                 id="ButtonGroupExampleFri"
                 onChange={[Function]}
-                type="checkbox" />
+                type="checkbox"
+              />
               <label
                 className="slds-checkbox--button__label"
-                htmlFor="ButtonGroupExampleFri">
+                htmlFor="ButtonGroupExampleFri"
+              >
                 <span
-                  className="slds-checkbox--faux">
+                  className="slds-checkbox--faux"
+                >
                   Fri
                 </span>
               </label>
@@ -306,13 +369,15 @@ exports[`test Button Group Checkbox Snapshot 1`] = `
 </ButtonGroupExample>
 `;
 
-exports[`test Button Group MoreIcon Snapshot 1`] = `
+exports[`Button Group MoreIcon Snapshot 1`] = `
 <ButtonGroupExample>
   <SLDSButtonGroup
-    labels={Object {}}>
+    labels={Object {}}
+  >
     <div
       className="slds-button-group"
-      role="group">
+      role="group"
+    >
       <SLDSButton
         disabled={false}
         hint={false}
@@ -320,11 +385,13 @@ exports[`test Button Group MoreIcon Snapshot 1`] = `
         iconSize="medium"
         label="Refresh"
         responsive={false}
-        variant="neutral">
+        variant="neutral"
+      >
         <button
           className="slds-button slds-button--neutral"
           disabled={false}
-          onClick={[Function]}>
+          onClick={[Function]}
+        >
           Refresh
         </button>
       </SLDSButton>
@@ -335,11 +402,13 @@ exports[`test Button Group MoreIcon Snapshot 1`] = `
         iconSize="medium"
         label="Edit"
         responsive={false}
-        variant="neutral">
+        variant="neutral"
+      >
         <button
           className="slds-button slds-button--neutral"
           disabled={false}
-          onClick={[Function]}>
+          onClick={[Function]}
+        >
           Edit
         </button>
       </SLDSButton>
@@ -350,11 +419,13 @@ exports[`test Button Group MoreIcon Snapshot 1`] = `
         iconSize="medium"
         label="Save"
         responsive={false}
-        variant="neutral">
+        variant="neutral"
+      >
         <button
           className="slds-button slds-button--neutral"
           disabled={false}
-          onClick={[Function]}>
+          onClick={[Function]}
+        >
           Save
         </button>
       </SLDSButton>
@@ -382,7 +453,8 @@ exports[`test Button Group MoreIcon Snapshot 1`] = `
             },
           ]
         }
-        triggerClassName="slds-button--last">
+        triggerClassName="slds-button--last"
+      >
         <SLDSMenuDropdown
           align="left"
           assistiveText="More Options"
@@ -411,7 +483,8 @@ exports[`test Button Group MoreIcon Snapshot 1`] = `
               },
             ]
           }
-          triggerClassName="slds-button--last">
+          triggerClassName="slds-button--last"
+        >
           <SLDSMenuDropdownTrigger
             aria-haspopup={true}
             assistiveText="More Options"
@@ -430,7 +503,8 @@ exports[`test Button Group MoreIcon Snapshot 1`] = `
             tabIndex="0"
             triggerClassName="slds-button--last"
             triggerRef={[Function]}
-            variant="icon">
+            variant="icon"
+          >
             <div
               className="slds-dropdown-trigger slds-dropdown-trigger--click slds-button--last"
               id="ButtonGroupExampleDropdown"
@@ -438,7 +512,8 @@ exports[`test Button Group MoreIcon Snapshot 1`] = `
               onFocus={null}
               onKeyDown={[Function]}
               onMouseEnter={null}
-              onMouseLeave={null}>
+              onMouseLeave={null}
+            >
               <SLDSButton
                 aria-expanded={false}
                 aria-haspopup={true}
@@ -452,25 +527,29 @@ exports[`test Button Group MoreIcon Snapshot 1`] = `
                 iconVariant="border-filled"
                 responsive={false}
                 tabIndex="0"
-                variant="icon">
+                variant="icon"
+              >
                 <button
                   aria-expanded={false}
                   aria-haspopup={true}
                   className="slds-button slds-button--icon-border-filled ignore-click-ButtonGroupExampleDropdown"
                   disabled={false}
                   onClick={[Function]}
-                  tabIndex="0">
+                  tabIndex="0"
+                >
                   <SLDSButtonIcon
                     category="utility"
                     className=""
                     hint={false}
                     name="down"
-                    size={null}>
+                    size={null}
+                  >
                     <UtilityIcon
                       aria-hidden="true"
                       category="utility"
                       className="slds-button__icon"
-                      name="down">
+                      name="down"
+                    >
                       <Svg
                         aria-hidden="true"
                         className="slds-button__icon"
@@ -482,20 +561,24 @@ exports[`test Button Group MoreIcon Snapshot 1`] = `
                             "viewBox": "0 0 24 24",
                           }
                         }
-                        name="down">
+                        name="down"
+                      >
                         <svg
                           aria-hidden="true"
                           className="slds-button__icon"
                           name="down"
-                          viewBox="0 0 24 24">
+                          viewBox="0 0 24 24"
+                        >
                           <path
-                            d="M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z" />
+                            d="M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z"
+                          />
                         </svg>
                       </Svg>
                     </UtilityIcon>
                   </SLDSButtonIcon>
                   <span
-                    className="slds-assistive-text">
+                    className="slds-assistive-text"
+                  >
                     More Options
                   </span>
                 </button>

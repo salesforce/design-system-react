@@ -1,4 +1,6 @@
-exports[`test Datepicker
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Datepicker
 		abbreviatedWeekDayLabels,
 		assistiveTextNextMonth,
 		assistiveTextOpenCalendar,
@@ -15,11 +17,14 @@ exports[`test Datepicker
 		weekDayLabels
 	DOM Snapshot 1`] = `
 <div
-  className="slds-dropdown-trigger slds-dropdown-trigger--click ignore-react-onclickoutside slds-is-open CUSTOM-TRIGGER-CLASSNAME">
+  className="slds-dropdown-trigger slds-dropdown-trigger--click ignore-react-onclickoutside slds-is-open CUSTOM-TRIGGER-CLASSNAME"
+>
   <div
-    className="slds-form-element">
+    className="slds-form-element"
+  >
     <div
-      className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+      className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right"
+    >
       <input
         aria-activedescendant={undefined}
         aria-autocomplete={undefined}
@@ -50,7 +55,8 @@ exports[`test Datepicker
         required={undefined}
         role={undefined}
         type="text"
-        value="Llama and Lamb\'s epiphany of love" />
+        value="Llama and Lamb's epiphany of love"
+      />
       <button
         aria-describedby={undefined}
         aria-expanded={true}
@@ -68,33 +74,42 @@ exports[`test Datepicker
         onMouseEnter={undefined}
         onMouseLeave={undefined}
         tabIndex={undefined}
-        title={undefined}>
+        title={undefined}
+      >
         <svg
           aria-hidden="true"
-          className="slds-button__icon">
+          className="slds-button__icon"
+        >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#event" />
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#event"
+          />
         </svg>
         <span
-          className="slds-assistive-text">
+          className="slds-assistive-text"
+        >
           CUSTOM open Calendar
         </span>
       </button>
     </div>
   </div>
   <div
-    className="slds-datepicker slds-dropdown slds-dropdown--right CUSTOM-CLASSNAME">
+    className="slds-datepicker slds-dropdown slds-dropdown--right CUSTOM-CLASSNAME"
+  >
     <div
       aria-hidden="false"
       className=""
       data-selection="single"
-      onKeyDown={[Function]}>
+      onKeyDown={[Function]}
+    >
       <div
-        className="slds-datepicker__filter slds-grid">
+        className="slds-datepicker__filter slds-grid"
+      >
         <div
-          className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow">
+          className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow"
+        >
           <div
-            className="slds-align-middle">
+            className="slds-align-middle"
+          >
             <button
               aria-describedby={undefined}
               aria-expanded={undefined}
@@ -112,15 +127,19 @@ exports[`test Datepicker
               onMouseEnter={undefined}
               onMouseLeave={undefined}
               tabIndex={undefined}
-              title={undefined}>
+              title={undefined}
+            >
               <svg
                 aria-hidden="true"
-                className="slds-button__icon">
+                className="slds-button__icon"
+              >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left" />
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left"
+                />
               </svg>
               <span
-                className="slds-assistive-text">
+                className="slds-assistive-text"
+              >
                 CUSTOM previous month
               </span>
             </button>
@@ -129,16 +148,19 @@ exports[`test Datepicker
             aria-atomic={true}
             aria-live="assertive"
             className="slds-align-middle"
-            id="CUSTOM-ID-month">
+            id="CUSTOM-ID-month"
+          >
             MONTH 1
              
             <span
-              className="slds-assistive-text">
+              className="slds-assistive-text"
+            >
               2007
             </span>
           </h2>
           <div
-            className="slds-align-middle">
+            className="slds-align-middle"
+          >
             <button
               aria-describedby={undefined}
               aria-expanded={undefined}
@@ -156,26 +178,32 @@ exports[`test Datepicker
               onMouseEnter={undefined}
               onMouseLeave={undefined}
               tabIndex={undefined}
-              title={undefined}>
+              title={undefined}
+            >
               <svg
                 aria-hidden="true"
-                className="slds-button__icon">
+                className="slds-button__icon"
+              >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right" />
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right"
+                />
               </svg>
               <span
-                className="slds-assistive-text">
+                className="slds-assistive-text"
+              >
                 CUSTOM next month
               </span>
             </button>
           </div>
         </div>
         <div
-          className="slds-form-element">
+          className="slds-form-element"
+        >
           <div
             className="slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click slds-picklist--fluid slds-shrink-none"
             onKeyDown={[Function]}
-            onMouseDown={[Function]}>
+            onMouseDown={[Function]}
+          >
             <button
               aria-describedby={undefined}
               aria-expanded={undefined}
@@ -184,20 +212,25 @@ exports[`test Datepicker
               disabled={undefined}
               id="CUSTOM-ID-year-picklist"
               onClick={[Function]}
-              tabIndex={0}>
+              tabIndex={0}
+            >
               <span
-                className="slds-truncate">
+                className="slds-truncate"
+              >
                 2007
               </span>
               <span
                 className={undefined}
-                title={undefined}>
+                title={undefined}
+              >
                 <svg
                   aria-hidden="true"
                   className="slds-icon slds-icon-text-default"
-                  style={undefined}>
+                  style={undefined}
+                >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down" />
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  />
                 </svg>
                 
               </span>
@@ -206,58 +239,73 @@ exports[`test Datepicker
         </div>
       </div>
       <div
-        className="calendar">
+        className="calendar"
+      >
         <table
           aria-labelledby="CUSTOM-ID-month"
           className="datepicker__month"
-          role="grid">
+          role="grid"
+        >
           <thead>
             <tr>
               <th>
                 <abbr
-                  title="Day 1">
+                  title="Day 1"
+                >
                   ONE
                 </abbr>
               </th>
               <th
-                scope="col">
+                scope="col"
+              >
                 <abbr
-                  title="Day 2">
+                  title="Day 2"
+                >
                   TWO
                 </abbr>
               </th>
               <th
-                scope="col">
+                scope="col"
+              >
                 <abbr
-                  title="Day 3">
+                  title="Day 3"
+                >
                   THR
                 </abbr>
               </th>
               <th
-                scope="col">
+                scope="col"
+              >
                 <abbr
-                  title="Day 4">
+                  title="Day 4"
+                >
                   FOU
                 </abbr>
               </th>
               <th
-                scope="col">
+                scope="col"
+              >
                 <abbr
-                  title="Day 5">
+                  title="Day 5"
+                >
                   FIV
                 </abbr>
               </th>
               <th
-                scope="col">
+                scope="col"
+              >
                 <abbr
-                  title="Day 6">
+                  title="Day 6"
+                >
                   SIX
                 </abbr>
               </th>
               <th
-                scope="col">
+                scope="col"
+              >
                 <abbr
-                  title="Day 7">
+                  title="Day 7"
+                >
                   SEV
                 </abbr>
               </th>
@@ -265,7 +313,8 @@ exports[`test Datepicker
           </thead>
           <tbody>
             <tr
-              className="week">
+              className="week"
+            >
               <td
                 aria-disabled={true}
                 aria-selected={false}
@@ -273,9 +322,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   31
                 </span>
               </td>
@@ -286,9 +337,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   1
                 </span>
               </td>
@@ -299,9 +352,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   2
                 </span>
               </td>
@@ -312,9 +367,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   3
                 </span>
               </td>
@@ -325,9 +382,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   4
                 </span>
               </td>
@@ -338,9 +397,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   5
                 </span>
               </td>
@@ -351,15 +412,18 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   6
                 </span>
               </td>
             </tr>
             <tr
-              className="week">
+              className="week"
+            >
               <td
                 aria-disabled={false}
                 aria-selected={false}
@@ -367,9 +431,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   7
                 </span>
               </td>
@@ -380,9 +446,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   8
                 </span>
               </td>
@@ -393,9 +461,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   9
                 </span>
               </td>
@@ -406,9 +476,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   10
                 </span>
               </td>
@@ -419,9 +491,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   11
                 </span>
               </td>
@@ -432,9 +506,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   12
                 </span>
               </td>
@@ -445,15 +521,18 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   13
                 </span>
               </td>
             </tr>
             <tr
-              className="week">
+              className="week"
+            >
               <td
                 aria-disabled={false}
                 aria-selected={false}
@@ -461,9 +540,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   14
                 </span>
               </td>
@@ -474,9 +555,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   15
                 </span>
               </td>
@@ -487,9 +570,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   16
                 </span>
               </td>
@@ -500,9 +585,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   17
                 </span>
               </td>
@@ -513,9 +600,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   18
                 </span>
               </td>
@@ -526,9 +615,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   19
                 </span>
               </td>
@@ -539,15 +630,18 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   20
                 </span>
               </td>
             </tr>
             <tr
-              className="week">
+              className="week"
+            >
               <td
                 aria-disabled={false}
                 aria-selected={false}
@@ -555,9 +649,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   21
                 </span>
               </td>
@@ -568,9 +664,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   22
                 </span>
               </td>
@@ -581,9 +679,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   23
                 </span>
               </td>
@@ -594,9 +694,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   24
                 </span>
               </td>
@@ -607,9 +709,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   25
                 </span>
               </td>
@@ -620,9 +724,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   26
                 </span>
               </td>
@@ -633,15 +739,18 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   27
                 </span>
               </td>
             </tr>
             <tr
-              className="week">
+              className="week"
+            >
               <td
                 aria-disabled={false}
                 aria-selected={false}
@@ -649,9 +758,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   28
                 </span>
               </td>
@@ -662,9 +773,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   29
                 </span>
               </td>
@@ -675,9 +788,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   30
                 </span>
               </td>
@@ -688,9 +803,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   31
                 </span>
               </td>
@@ -701,9 +818,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   1
                 </span>
               </td>
@@ -714,9 +833,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   2
                 </span>
               </td>
@@ -727,21 +848,26 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   3
                 </span>
               </td>
             </tr>
             <tr
-              className="week">
+              className="week"
+            >
               <td
                 aria-disabled="true"
                 aria-selected="false"
-                className="slds-disabled-text">
+                className="slds-disabled-text"
+              >
                 <span
-                  className="slds-day ">
+                  className="slds-day "
+                >
                    
                 </span>
               </td>
@@ -749,13 +875,15 @@ exports[`test Datepicker
             <tr>
               <td
                 colSpan="7"
-                role="gridcell">
+                role="gridcell"
+              >
                 <a
                   className="slds-show--inline-block slds-p-bottom--x-small"
                   href="javascript:void(0)"
                   onClick={[Function]}
                   onKeyDown={[Function]}
-                  tabIndex="0">
+                  tabIndex="0"
+                >
                   TODAY YOU ARE YOU!
                 </a>
               </td>
@@ -768,15 +896,18 @@ exports[`test Datepicker
 </div>
 `;
 
-exports[`test Datepicker
+exports[`Datepicker
 	isIsoWeekday
 	DOM Snapshot 1`] = `
 <div
-  className="slds-dropdown-trigger slds-dropdown-trigger--click ignore-react-onclickoutside slds-is-open">
+  className="slds-dropdown-trigger slds-dropdown-trigger--click ignore-react-onclickoutside slds-is-open"
+>
   <div
-    className="slds-form-element">
+    className="slds-form-element"
+  >
     <div
-      className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+      className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right"
+    >
       <input
         aria-activedescendant={undefined}
         aria-autocomplete={undefined}
@@ -807,7 +938,8 @@ exports[`test Datepicker
         required={undefined}
         role={undefined}
         type="text"
-        value="7/23/2014" />
+        value="7/23/2014"
+      />
       <button
         aria-describedby={undefined}
         aria-expanded={true}
@@ -825,33 +957,42 @@ exports[`test Datepicker
         onMouseEnter={undefined}
         onMouseLeave={undefined}
         tabIndex={undefined}
-        title={undefined}>
+        title={undefined}
+      >
         <svg
           aria-hidden="true"
-          className="slds-button__icon">
+          className="slds-button__icon"
+        >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#event" />
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#event"
+          />
         </svg>
         <span
-          className="slds-assistive-text">
+          className="slds-assistive-text"
+        >
           Open Calendar
         </span>
       </button>
     </div>
   </div>
   <div
-    className="slds-datepicker slds-dropdown slds-dropdown--left">
+    className="slds-datepicker slds-dropdown slds-dropdown--left"
+  >
     <div
       aria-hidden="false"
       className=""
       data-selection="single"
-      onKeyDown={[Function]}>
+      onKeyDown={[Function]}
+    >
       <div
-        className="slds-datepicker__filter slds-grid">
+        className="slds-datepicker__filter slds-grid"
+      >
         <div
-          className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow">
+          className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow"
+        >
           <div
-            className="slds-align-middle">
+            className="slds-align-middle"
+          >
             <button
               aria-describedby={undefined}
               aria-expanded={undefined}
@@ -869,15 +1010,19 @@ exports[`test Datepicker
               onMouseEnter={undefined}
               onMouseLeave={undefined}
               tabIndex={undefined}
-              title={undefined}>
+              title={undefined}
+            >
               <svg
                 aria-hidden="true"
-                className="slds-button__icon">
+                className="slds-button__icon"
+              >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left" />
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left"
+                />
               </svg>
               <span
-                className="slds-assistive-text">
+                className="slds-assistive-text"
+              >
                 Previous month
               </span>
             </button>
@@ -886,16 +1031,19 @@ exports[`test Datepicker
             aria-atomic={true}
             aria-live="assertive"
             className="slds-align-middle"
-            id="sample-datepicker-month">
+            id="sample-datepicker-month"
+          >
             July
              
             <span
-              className="slds-assistive-text">
+              className="slds-assistive-text"
+            >
               2014
             </span>
           </h2>
           <div
-            className="slds-align-middle">
+            className="slds-align-middle"
+          >
             <button
               aria-describedby={undefined}
               aria-expanded={undefined}
@@ -913,26 +1061,32 @@ exports[`test Datepicker
               onMouseEnter={undefined}
               onMouseLeave={undefined}
               tabIndex={undefined}
-              title={undefined}>
+              title={undefined}
+            >
               <svg
                 aria-hidden="true"
-                className="slds-button__icon">
+                className="slds-button__icon"
+              >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right" />
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right"
+                />
               </svg>
               <span
-                className="slds-assistive-text">
+                className="slds-assistive-text"
+              >
                 Next month
               </span>
             </button>
           </div>
         </div>
         <div
-          className="slds-form-element">
+          className="slds-form-element"
+        >
           <div
             className="slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click slds-picklist--fluid slds-shrink-none"
             onKeyDown={[Function]}
-            onMouseDown={[Function]}>
+            onMouseDown={[Function]}
+          >
             <button
               aria-describedby={undefined}
               aria-expanded={undefined}
@@ -941,20 +1095,25 @@ exports[`test Datepicker
               disabled={undefined}
               id="sample-datepicker-year-picklist"
               onClick={[Function]}
-              tabIndex={0}>
+              tabIndex={0}
+            >
               <span
-                className="slds-truncate">
+                className="slds-truncate"
+              >
                 2014
               </span>
               <span
                 className={undefined}
-                title={undefined}>
+                title={undefined}
+              >
                 <svg
                   aria-hidden="true"
                   className="slds-icon slds-icon-text-default"
-                  style={undefined}>
+                  style={undefined}
+                >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down" />
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  />
                 </svg>
                 
               </span>
@@ -963,58 +1122,73 @@ exports[`test Datepicker
         </div>
       </div>
       <div
-        className="calendar">
+        className="calendar"
+      >
         <table
           aria-labelledby="sample-datepicker-month"
           className="datepicker__month"
-          role="grid">
+          role="grid"
+        >
           <thead>
             <tr>
               <th
-                scope="col">
+                scope="col"
+              >
                 <abbr
-                  title="Monday">
+                  title="Monday"
+                >
                   Mon
                 </abbr>
               </th>
               <th
-                scope="col">
+                scope="col"
+              >
                 <abbr
-                  title="Tuesday">
+                  title="Tuesday"
+                >
                   Tue
                 </abbr>
               </th>
               <th
-                scope="col">
+                scope="col"
+              >
                 <abbr
-                  title="Wednesday">
+                  title="Wednesday"
+                >
                   Wed
                 </abbr>
               </th>
               <th
-                scope="col">
+                scope="col"
+              >
                 <abbr
-                  title="Thursday">
+                  title="Thursday"
+                >
                   Thu
                 </abbr>
               </th>
               <th
-                scope="col">
+                scope="col"
+              >
                 <abbr
-                  title="Friday">
+                  title="Friday"
+                >
                   Fri
                 </abbr>
               </th>
               <th
-                scope="col">
+                scope="col"
+              >
                 <abbr
-                  title="Saturday">
+                  title="Saturday"
+                >
                   Sat
                 </abbr>
               </th>
               <th>
                 <abbr
-                  title="Sunday">
+                  title="Sunday"
+                >
                   Sun
                 </abbr>
               </th>
@@ -1022,7 +1196,8 @@ exports[`test Datepicker
           </thead>
           <tbody>
             <tr
-              className="week">
+              className="week"
+            >
               <td
                 aria-disabled={true}
                 aria-selected={false}
@@ -1030,9 +1205,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   30
                 </span>
               </td>
@@ -1043,9 +1220,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   1
                 </span>
               </td>
@@ -1056,9 +1235,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   2
                 </span>
               </td>
@@ -1069,9 +1250,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   3
                 </span>
               </td>
@@ -1082,9 +1265,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   4
                 </span>
               </td>
@@ -1095,9 +1280,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   5
                 </span>
               </td>
@@ -1108,15 +1295,18 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   6
                 </span>
               </td>
             </tr>
             <tr
-              className="week">
+              className="week"
+            >
               <td
                 aria-disabled={false}
                 aria-selected={false}
@@ -1124,9 +1314,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   7
                 </span>
               </td>
@@ -1137,9 +1329,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   8
                 </span>
               </td>
@@ -1150,9 +1344,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   9
                 </span>
               </td>
@@ -1163,9 +1359,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   10
                 </span>
               </td>
@@ -1176,9 +1374,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   11
                 </span>
               </td>
@@ -1189,9 +1389,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   12
                 </span>
               </td>
@@ -1202,15 +1404,18 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   13
                 </span>
               </td>
             </tr>
             <tr
-              className="week">
+              className="week"
+            >
               <td
                 aria-disabled={false}
                 aria-selected={false}
@@ -1218,9 +1423,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   14
                 </span>
               </td>
@@ -1231,9 +1438,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   15
                 </span>
               </td>
@@ -1244,9 +1453,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   16
                 </span>
               </td>
@@ -1257,9 +1468,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   17
                 </span>
               </td>
@@ -1270,9 +1483,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   18
                 </span>
               </td>
@@ -1283,9 +1498,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   19
                 </span>
               </td>
@@ -1296,15 +1513,18 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   20
                 </span>
               </td>
             </tr>
             <tr
-              className="week">
+              className="week"
+            >
               <td
                 aria-disabled={false}
                 aria-selected={false}
@@ -1312,9 +1532,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   21
                 </span>
               </td>
@@ -1325,9 +1547,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   22
                 </span>
               </td>
@@ -1338,9 +1562,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   23
                 </span>
               </td>
@@ -1351,9 +1577,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   24
                 </span>
               </td>
@@ -1364,9 +1592,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   25
                 </span>
               </td>
@@ -1377,9 +1607,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   26
                 </span>
               </td>
@@ -1390,15 +1622,18 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   27
                 </span>
               </td>
             </tr>
             <tr
-              className="week">
+              className="week"
+            >
               <td
                 aria-disabled={false}
                 aria-selected={false}
@@ -1406,9 +1641,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   28
                 </span>
               </td>
@@ -1419,9 +1656,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   29
                 </span>
               </td>
@@ -1432,9 +1671,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   30
                 </span>
               </td>
@@ -1445,9 +1686,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   31
                 </span>
               </td>
@@ -1458,9 +1701,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   1
                 </span>
               </td>
@@ -1471,9 +1716,11 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   2
                 </span>
               </td>
@@ -1484,21 +1731,26 @@ exports[`test Datepicker
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   3
                 </span>
               </td>
             </tr>
             <tr
-              className="week">
+              className="week"
+            >
               <td
                 aria-disabled="true"
                 aria-selected="false"
-                className="slds-disabled-text">
+                className="slds-disabled-text"
+              >
                 <span
-                  className="slds-day ">
+                  className="slds-day "
+                >
                    
                 </span>
               </td>
@@ -1506,13 +1758,15 @@ exports[`test Datepicker
             <tr>
               <td
                 colSpan="7"
-                role="gridcell">
+                role="gridcell"
+              >
                 <a
                   className="slds-show--inline-block slds-p-bottom--x-small"
                   href="javascript:void(0)"
                   onClick={[Function]}
                   onKeyDown={[Function]}
-                  tabIndex="0">
+                  tabIndex="0"
+                >
                   Today
                 </a>
               </td>
@@ -1525,13 +1779,16 @@ exports[`test Datepicker
 </div>
 `;
 
-exports[`test Datepicker Default DOM Snapshot 1`] = `
+exports[`Datepicker Default DOM Snapshot 1`] = `
 <div
-  className="slds-dropdown-trigger slds-dropdown-trigger--click ignore-react-onclickoutside slds-is-open">
+  className="slds-dropdown-trigger slds-dropdown-trigger--click ignore-react-onclickoutside slds-is-open"
+>
   <div
-    className="slds-form-element">
+    className="slds-form-element"
+  >
     <div
-      className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+      className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right"
+    >
       <input
         aria-activedescendant={undefined}
         aria-autocomplete={undefined}
@@ -1562,7 +1819,8 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
         required={undefined}
         role={undefined}
         type="text"
-        value="7/23/2014" />
+        value="7/23/2014"
+      />
       <button
         aria-describedby={undefined}
         aria-expanded={true}
@@ -1580,33 +1838,42 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
         onMouseEnter={undefined}
         onMouseLeave={undefined}
         tabIndex={undefined}
-        title={undefined}>
+        title={undefined}
+      >
         <svg
           aria-hidden="true"
-          className="slds-button__icon">
+          className="slds-button__icon"
+        >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#event" />
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#event"
+          />
         </svg>
         <span
-          className="slds-assistive-text">
+          className="slds-assistive-text"
+        >
           Open Calendar
         </span>
       </button>
     </div>
   </div>
   <div
-    className="slds-datepicker slds-dropdown slds-dropdown--left">
+    className="slds-datepicker slds-dropdown slds-dropdown--left"
+  >
     <div
       aria-hidden="false"
       className=""
       data-selection="single"
-      onKeyDown={[Function]}>
+      onKeyDown={[Function]}
+    >
       <div
-        className="slds-datepicker__filter slds-grid">
+        className="slds-datepicker__filter slds-grid"
+      >
         <div
-          className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow">
+          className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow"
+        >
           <div
-            className="slds-align-middle">
+            className="slds-align-middle"
+          >
             <button
               aria-describedby={undefined}
               aria-expanded={undefined}
@@ -1624,15 +1891,19 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
               onMouseEnter={undefined}
               onMouseLeave={undefined}
               tabIndex={undefined}
-              title={undefined}>
+              title={undefined}
+            >
               <svg
                 aria-hidden="true"
-                className="slds-button__icon">
+                className="slds-button__icon"
+              >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left" />
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left"
+                />
               </svg>
               <span
-                className="slds-assistive-text">
+                className="slds-assistive-text"
+              >
                 Previous month
               </span>
             </button>
@@ -1641,16 +1912,19 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
             aria-atomic={true}
             aria-live="assertive"
             className="slds-align-middle"
-            id="sample-datepicker-month">
+            id="sample-datepicker-month"
+          >
             July
              
             <span
-              className="slds-assistive-text">
+              className="slds-assistive-text"
+            >
               2014
             </span>
           </h2>
           <div
-            className="slds-align-middle">
+            className="slds-align-middle"
+          >
             <button
               aria-describedby={undefined}
               aria-expanded={undefined}
@@ -1668,26 +1942,32 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
               onMouseEnter={undefined}
               onMouseLeave={undefined}
               tabIndex={undefined}
-              title={undefined}>
+              title={undefined}
+            >
               <svg
                 aria-hidden="true"
-                className="slds-button__icon">
+                className="slds-button__icon"
+              >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right" />
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right"
+                />
               </svg>
               <span
-                className="slds-assistive-text">
+                className="slds-assistive-text"
+              >
                 Next month
               </span>
             </button>
           </div>
         </div>
         <div
-          className="slds-form-element">
+          className="slds-form-element"
+        >
           <div
             className="slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click slds-picklist--fluid slds-shrink-none"
             onKeyDown={[Function]}
-            onMouseDown={[Function]}>
+            onMouseDown={[Function]}
+          >
             <button
               aria-describedby={undefined}
               aria-expanded={undefined}
@@ -1696,20 +1976,25 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
               disabled={undefined}
               id="sample-datepicker-year-picklist"
               onClick={[Function]}
-              tabIndex={0}>
+              tabIndex={0}
+            >
               <span
-                className="slds-truncate">
+                className="slds-truncate"
+              >
                 2014
               </span>
               <span
                 className={undefined}
-                title={undefined}>
+                title={undefined}
+              >
                 <svg
                   aria-hidden="true"
                   className="slds-icon slds-icon-text-default"
-                  style={undefined}>
+                  style={undefined}
+                >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down" />
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  />
                 </svg>
                 
               </span>
@@ -1718,58 +2003,73 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
         </div>
       </div>
       <div
-        className="calendar">
+        className="calendar"
+      >
         <table
           aria-labelledby="sample-datepicker-month"
           className="datepicker__month"
-          role="grid">
+          role="grid"
+        >
           <thead>
             <tr>
               <th>
                 <abbr
-                  title="Sunday">
+                  title="Sunday"
+                >
                   Sun
                 </abbr>
               </th>
               <th
-                scope="col">
+                scope="col"
+              >
                 <abbr
-                  title="Monday">
+                  title="Monday"
+                >
                   Mon
                 </abbr>
               </th>
               <th
-                scope="col">
+                scope="col"
+              >
                 <abbr
-                  title="Tuesday">
+                  title="Tuesday"
+                >
                   Tue
                 </abbr>
               </th>
               <th
-                scope="col">
+                scope="col"
+              >
                 <abbr
-                  title="Wednesday">
+                  title="Wednesday"
+                >
                   Wed
                 </abbr>
               </th>
               <th
-                scope="col">
+                scope="col"
+              >
                 <abbr
-                  title="Thursday">
+                  title="Thursday"
+                >
                   Thu
                 </abbr>
               </th>
               <th
-                scope="col">
+                scope="col"
+              >
                 <abbr
-                  title="Friday">
+                  title="Friday"
+                >
                   Fri
                 </abbr>
               </th>
               <th
-                scope="col">
+                scope="col"
+              >
                 <abbr
-                  title="Saturday">
+                  title="Saturday"
+                >
                   Sat
                 </abbr>
               </th>
@@ -1777,7 +2077,8 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
           </thead>
           <tbody>
             <tr
-              className="week">
+              className="week"
+            >
               <td
                 aria-disabled={true}
                 aria-selected={false}
@@ -1785,9 +2086,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   29
                 </span>
               </td>
@@ -1798,9 +2101,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   30
                 </span>
               </td>
@@ -1811,9 +2116,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   1
                 </span>
               </td>
@@ -1824,9 +2131,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   2
                 </span>
               </td>
@@ -1837,9 +2146,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   3
                 </span>
               </td>
@@ -1850,9 +2161,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   4
                 </span>
               </td>
@@ -1863,15 +2176,18 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   5
                 </span>
               </td>
             </tr>
             <tr
-              className="week">
+              className="week"
+            >
               <td
                 aria-disabled={false}
                 aria-selected={false}
@@ -1879,9 +2195,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   6
                 </span>
               </td>
@@ -1892,9 +2210,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   7
                 </span>
               </td>
@@ -1905,9 +2225,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   8
                 </span>
               </td>
@@ -1918,9 +2240,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   9
                 </span>
               </td>
@@ -1931,9 +2255,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   10
                 </span>
               </td>
@@ -1944,9 +2270,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   11
                 </span>
               </td>
@@ -1957,15 +2285,18 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   12
                 </span>
               </td>
             </tr>
             <tr
-              className="week">
+              className="week"
+            >
               <td
                 aria-disabled={false}
                 aria-selected={false}
@@ -1973,9 +2304,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   13
                 </span>
               </td>
@@ -1986,9 +2319,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   14
                 </span>
               </td>
@@ -1999,9 +2334,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   15
                 </span>
               </td>
@@ -2012,9 +2349,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   16
                 </span>
               </td>
@@ -2025,9 +2364,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   17
                 </span>
               </td>
@@ -2038,9 +2379,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   18
                 </span>
               </td>
@@ -2051,15 +2394,18 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   19
                 </span>
               </td>
             </tr>
             <tr
-              className="week">
+              className="week"
+            >
               <td
                 aria-disabled={false}
                 aria-selected={false}
@@ -2067,9 +2413,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   20
                 </span>
               </td>
@@ -2080,9 +2428,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   21
                 </span>
               </td>
@@ -2093,9 +2443,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   22
                 </span>
               </td>
@@ -2106,9 +2458,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   23
                 </span>
               </td>
@@ -2119,9 +2473,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   24
                 </span>
               </td>
@@ -2132,9 +2488,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   25
                 </span>
               </td>
@@ -2145,15 +2503,18 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   26
                 </span>
               </td>
             </tr>
             <tr
-              className="week">
+              className="week"
+            >
               <td
                 aria-disabled={false}
                 aria-selected={false}
@@ -2161,9 +2522,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   27
                 </span>
               </td>
@@ -2174,9 +2537,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   28
                 </span>
               </td>
@@ -2187,9 +2552,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   29
                 </span>
               </td>
@@ -2200,9 +2567,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   30
                 </span>
               </td>
@@ -2213,9 +2582,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   31
                 </span>
               </td>
@@ -2226,9 +2597,11 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   1
                 </span>
               </td>
@@ -2239,21 +2612,26 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
-                tabIndex={-1}>
+                tabIndex={-1}
+              >
                 <span
-                  className="slds-day">
+                  className="slds-day"
+                >
                   2
                 </span>
               </td>
             </tr>
             <tr
-              className="week">
+              className="week"
+            >
               <td
                 aria-disabled="true"
                 aria-selected="false"
-                className="slds-disabled-text">
+                className="slds-disabled-text"
+              >
                 <span
-                  className="slds-day ">
+                  className="slds-day "
+                >
                    
                 </span>
               </td>
@@ -2261,13 +2639,15 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
             <tr>
               <td
                 colSpan="7"
-                role="gridcell">
+                role="gridcell"
+              >
                 <a
                   className="slds-show--inline-block slds-p-bottom--x-small"
                   href="javascript:void(0)"
                   onClick={[Function]}
                   onKeyDown={[Function]}
-                  tabIndex="0">
+                  tabIndex="0"
+                >
                   Today
                 </a>
               </td>
@@ -2280,88 +2660,88 @@ exports[`test Datepicker Default DOM Snapshot 1`] = `
 </div>
 `;
 
-exports[`test Datepicker Default HTML Snapshot 1`] = `
-"<div class=\"slds-dropdown-trigger slds-dropdown-trigger--click ignore-react-onclickoutside slds-is-open\">
-  <div class=\"slds-form-element\">
-    <div class=\"slds-form-element__control slds-input-has-icon slds-input-has-icon--right\"><input type=\"text\" class=\"slds-input\" id=\"sample-datepicker\" placeholder=\"Pick a Date\" value=\"7/23/2014\" /><button aria-expanded=\"true\" aria-haspopup=\"true\" class=\"slds-button slds-button--icon slds-input__icon slds-input__icon--right\"><svg aria-hidden=\"true\" class=\"slds-button__icon\"><use xlink:href=\"/assets/icons/utility-sprite/svg/symbols.svg#event\"></use></svg><span class=\"slds-assistive-text\">Open Calendar</span></button></div>
+exports[`Datepicker Default HTML Snapshot 1`] = `
+"<div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click ignore-react-onclickoutside slds-is-open\\">
+  <div class=\\"slds-form-element\\">
+    <div class=\\"slds-form-element__control slds-input-has-icon slds-input-has-icon--right\\"><input type=\\"text\\" class=\\"slds-input\\" id=\\"sample-datepicker\\" placeholder=\\"Pick a Date\\" value=\\"7/23/2014\\" /><button aria-expanded=\\"true\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon slds-input__icon slds-input__icon--right\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#event\\"></use></svg><span class=\\"slds-assistive-text\\">Open Calendar</span></button></div>
   </div>
-  <div class=\"slds-datepicker slds-dropdown slds-dropdown--left\">
-    <div class=\"\" aria-hidden=\"false\" data-selection=\"single\">
-      <div class=\"slds-datepicker__filter slds-grid\">
-        <div class=\"slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow\">
-          <div class=\"slds-align-middle\"><button class=\"slds-button slds-button--icon-container\"><svg aria-hidden=\"true\" class=\"slds-button__icon\"><use xlink:href=\"/assets/icons/utility-sprite/svg/symbols.svg#left\"></use></svg><span class=\"slds-assistive-text\">Previous month</span></button></div>
+  <div class=\\"slds-datepicker slds-dropdown slds-dropdown--left\\">
+    <div class=\\"\\" aria-hidden=\\"false\\" data-selection=\\"single\\">
+      <div class=\\"slds-datepicker__filter slds-grid\\">
+        <div class=\\"slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow\\">
+          <div class=\\"slds-align-middle\\"><button class=\\"slds-button slds-button--icon-container\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Previous month</span></button></div>
           <h2
-            id=\"sample-datepicker-month\" class=\"slds-align-middle\" aria-live=\"assertive\" aria-atomic=\"true\">July <span class=\"slds-assistive-text\">2014</span></h2>
-            <div class=\"slds-align-middle\"><button class=\"slds-button slds-button--icon-container\"><svg aria-hidden=\"true\" class=\"slds-button__icon\"><use xlink:href=\"/assets/icons/utility-sprite/svg/symbols.svg#right\"></use></svg><span class=\"slds-assistive-text\">Next month</span></button></div>
+            id=\\"sample-datepicker-month\\" class=\\"slds-align-middle\\" aria-live=\\"assertive\\" aria-atomic=\\"true\\">July <span class=\\"slds-assistive-text\\">2014</span></h2>
+            <div class=\\"slds-align-middle\\"><button class=\\"slds-button slds-button--icon-container\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#right\\"></use></svg><span class=\\"slds-assistive-text\\">Next month</span></button></div>
         </div>
-        <div class=\"slds-form-element\">
-          <div class=\"slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click slds-picklist--fluid slds-shrink-none\"><button aria-haspopup=\"true\" class=\"slds-button slds-button--neutral slds-picklist__label\" id=\"sample-datepicker-year-picklist\" tabindex=\"0\"><span class=\"slds-truncate\">2014</span><span><svg aria-hidden=\"true\" class=\"slds-icon slds-icon-text-default\"><use xlink:href=\"/assets/icons/utility-sprite/svg/symbols.svg#down\"></use></svg></span></button></div>
+        <div class=\\"slds-form-element\\">
+          <div class=\\"slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click slds-picklist--fluid slds-shrink-none\\"><button aria-haspopup=\\"true\\" class=\\"slds-button slds-button--neutral slds-picklist__label\\" id=\\"sample-datepicker-year-picklist\\" tabindex=\\"0\\"><span class=\\"slds-truncate\\">2014</span><span><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span></button></div>
         </div>
       </div>
-      <div class=\"calendar\">
-        <table class=\"datepicker__month\" role=\"grid\" aria-labelledby=\"sample-datepicker-month\">
+      <div class=\\"calendar\\">
+        <table class=\\"datepicker__month\\" role=\\"grid\\" aria-labelledby=\\"sample-datepicker-month\\">
           <thead>
             <tr>
-              <th><abbr title=\"Sunday\">Sun</abbr></th>
-              <th scope=\"col\"><abbr title=\"Monday\">Mon</abbr></th>
-              <th scope=\"col\"><abbr title=\"Tuesday\">Tue</abbr></th>
-              <th scope=\"col\"><abbr title=\"Wednesday\">Wed</abbr></th>
-              <th scope=\"col\"><abbr title=\"Thursday\">Thu</abbr></th>
-              <th scope=\"col\"><abbr title=\"Friday\">Fri</abbr></th>
-              <th scope=\"col\"><abbr title=\"Saturday\">Sat</abbr></th>
+              <th><abbr title=\\"Sunday\\">Sun</abbr></th>
+              <th scope=\\"col\\"><abbr title=\\"Monday\\">Mon</abbr></th>
+              <th scope=\\"col\\"><abbr title=\\"Tuesday\\">Tue</abbr></th>
+              <th scope=\\"col\\"><abbr title=\\"Wednesday\\">Wed</abbr></th>
+              <th scope=\\"col\\"><abbr title=\\"Thursday\\">Thu</abbr></th>
+              <th scope=\\"col\\"><abbr title=\\"Friday\\">Fri</abbr></th>
+              <th scope=\\"col\\"><abbr title=\\"Saturday\\">Sat</abbr></th>
             </tr>
           </thead>
           <tbody>
-            <tr class=\"week\">
-              <td aria-disabled=\"true\" aria-selected=\"false\" class=\"slds-disabled-text\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">29</span></td>
-              <td aria-disabled=\"true\" aria-selected=\"false\" class=\"slds-disabled-text\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">30</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">1</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">2</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">3</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">4</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">5</span></td>
+            <tr class=\\"week\\">
+              <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">29</span></td>
+              <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">30</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">1</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">2</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">3</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">4</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">5</span></td>
             </tr>
-            <tr class=\"week\">
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">6</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">7</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">8</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">9</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">10</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">11</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">12</span></td>
+            <tr class=\\"week\\">
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">6</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">7</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">8</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">9</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">10</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">11</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">12</span></td>
             </tr>
-            <tr class=\"week\">
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">13</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">14</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">15</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">16</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">17</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">18</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">19</span></td>
+            <tr class=\\"week\\">
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">13</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">14</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">15</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">16</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">17</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">18</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">19</span></td>
             </tr>
-            <tr class=\"week\">
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">20</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">21</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">22</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"true\" class=\"slds-is-selected\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">23</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">24</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">25</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">26</span></td>
+            <tr class=\\"week\\">
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">20</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">21</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">22</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"true\\" class=\\"slds-is-selected\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">23</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">24</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">25</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">26</span></td>
             </tr>
-            <tr class=\"week\">
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">27</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">28</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">29</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">30</span></td>
-              <td aria-disabled=\"false\" aria-selected=\"false\" class=\"\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">31</span></td>
-              <td aria-disabled=\"true\" aria-selected=\"false\" class=\"slds-disabled-text\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">1</span></td>
-              <td aria-disabled=\"true\" aria-selected=\"false\" class=\"slds-disabled-text\" role=\"gridcell\" tabindex=\"-1\"><span class=\"slds-day\">2</span></td>
+            <tr class=\\"week\\">
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">27</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">28</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">29</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">30</span></td>
+              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">31</span></td>
+              <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">1</span></td>
+              <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">2</span></td>
             </tr>
-            <tr class=\"week\">
-              <td aria-disabled=\"true\" aria-selected=\"false\" class=\"slds-disabled-text\"><span class=\"slds-day \"> </span></td>
+            <tr class=\\"week\\">
+              <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\"><span class=\\"slds-day \\"> </span></td>
             </tr>
             <tr>
-              <td colspan=\"7\" role=\"gridcell\"><a href=\"javascript:void(0)\" tabindex=\"0\" class=\"slds-show--inline-block slds-p-bottom--x-small\">Today</a></td>
+              <td colspan=\\"7\\" role=\\"gridcell\\"><a href=\\"javascript:void(0)\\" tabindex=\\"0\\" class=\\"slds-show--inline-block slds-p-bottom--x-small\\">Today</a></td>
             </tr>
           </tbody>
         </table>
