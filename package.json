@@ -119,7 +119,7 @@
     "eslint-loader": "^1.6.0",
     "express": "^4.13.4",
     "file-loader": "^0.11.0",
-    "fs-extra": "^2.0.0",
+    "fs-extra": "^3.0.0",
     "isparta-loader": "^2.0.0",
     "istanbul": "^1.0.0-alpha.2",
     "jest": "^18.1.0",
