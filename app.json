@@ -1,5 +1,6 @@
 {
   "name": "design-system-react",
+  "stack": "heroku-16",
   "scripts": {
   },
   "env": {
