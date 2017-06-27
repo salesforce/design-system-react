@@ -9,6 +9,7 @@ _site/*
 
 # Editors / IDEs
 .idea
+.vscode
 *.sublime-project
 *.sublime-workspace
 
