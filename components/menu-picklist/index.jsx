@@ -82,13 +82,29 @@ const MenuPicklist = React.createClass({
 		 * Custom element that overrides the default Menu Item component.
 		 */
 		listItemRenderer: PropTypes.func,
+		/**
+		 * Allows multiple items to be selected. Items will be shown in pills. Clicking the item does not close the menu.
+		 */
+		multiple: PropTypes.bool,
+		/**
+		 * Triggered when the trigger button is clicked to open.
+		 */
 		onClick: PropTypes.func,
+		/**
+		 * Triggered when an item is selected.
+		 */
 		onSelect: PropTypes.func,
 		/**
 		 * Menu item data.
 		 */
 		options: PropTypes.array.isRequired,
+		/**
+		 * Text present in trigger button if no items are selected.
+		 */
 		placeholder: PropTypes.string,
+		/**
+		 * Add styling of a required form element.
+		 */
 		required: PropTypes.bool,
 		/**
 		 * Current selected item.
@@ -100,8 +116,7 @@ const MenuPicklist = React.createClass({
 		return {
 			inheritTargetWidth: true,
 			placeholder: 'Select an Option',
-			checkmark: true,
-			multiple: false
+			checkmark: true
 		};
 	},
 
@@ -122,7 +137,9 @@ const MenuPicklist = React.createClass({
 		if (this.props.errorText) {
 			this.generatedErrorId = shortid.generate();
 		}
+
 		window.addEventListener('click', this.closeOnClick, false);
+
 		if (!this.props.multiple) {
 			this.setState({
 				selectedIndex: this.getIndexByValue(this.props)
@@ -141,7 +158,7 @@ const MenuPicklist = React.createClass({
 
 	componentWillReceiveProps (nextProps) {
 		if (this.props.value !== nextProps.value || this.props.options.length !== nextProps.length) {
-			if (this.props.variant === 'base') {
+			if (this.props.multiple !== true) {
 				this.setState({
 					selectedIndex: this.getIndexByValue(nextProps)
 				});
@@ -160,7 +177,6 @@ const MenuPicklist = React.createClass({
 
 	componentWillUnmount () {
 		this.isUnmounting = true;
-
 		window.removeEventListener('click', this.closeOnClick, false);
 	},
 
@@ -206,19 +222,15 @@ const MenuPicklist = React.createClass({
 			this.setState({ selectedIndex: index });
 			this.handleClose();
 			this.setFocus();
+		} else if (this.state.selectedIndices.indexOf(index) === -1) {
+			const currentIndices = this.state.selectedIndices.concat(index);
+			this.setState({
+				selectedIndices: currentIndices
+			});
 		} else {
-			if (this.state.selectedIndices.indexOf(index) === -1) {
-				const currentIndices = this.state.selectedIndices.concat(index);
-				this.setState({
-					selectedIndices: currentIndices
-				});
-			} else {
-				const deselectIndex = this.state.selectedIndices.indexOf(index);
-				this.state.selectedIndices.splice(deselectIndex, 1);
-				this.setState({ checkmark: false });
-			}
-
-			this.setFocus();
+			const deselectIndex = this.state.selectedIndices.indexOf(index);
+			this.state.selectedIndices.splice(deselectIndex, 1);
+			this.setState({ checkmark: false });
 		}
 
 		if (this.props.onSelect) {
@@ -434,7 +446,8 @@ const MenuPicklist = React.createClass({
 	},
 
 	renderPills () {
-		const selectedPills = this.state.selectedIndices.map(selectedPill => {
+		console.log('pills');
+		const selectedPills = this.state.selectedIndices.map((selectedPill) => {
 			const pillLabel = this.getValueByIndex(selectedPill).label;
 			return (
 				<li
@@ -486,17 +499,17 @@ const MenuPicklist = React.createClass({
 			required
 		} = this.props;
 
-		if (label) {
-			const requiredElem = required ? <span style={{ color: 'red' }}>* </span> : null;
+		const requiredElem = required ? <span style={{ color: 'red' }}>* </span> : null;
 
-			return (
-				<div
-					className={classNames('slds-form-element', {
-						'slds-has-error': errorText
-					},
-					className)}
-				>
-					<label
+		return (
+			<div
+				className={classNames('slds-form-element', {
+					'slds-has-error': errorText
+				},
+				className)}
+			>
+				{this.props.label
+					? <label
 						className="slds-form-element__label"
 						htmlFor={this.getId()}
 						// inline style override
@@ -504,14 +517,12 @@ const MenuPicklist = React.createClass({
 					>
 						{requiredElem}{label}
 					</label>
-					{this.renderTrigger()}
-					{this.renderPills()}
-					{errorText && <div id={this.getErrorId()} className="slds-form-element__help">{errorText}</div>}
-				</div>
-			);
-		}
-
-		return this.renderTrigger();
+				: null}
+				{this.renderTrigger()}
+				{this.renderPills()}
+				{errorText && <div id={this.getErrorId()} className="slds-form-element__help">{errorText}</div>}
+			</div>
+		);
 	}
 });
 
