@@ -6,13 +6,14 @@ import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 
-import { SLDSMenuPicklist } from '../../components';
+import SLDSMenuPicklist from '../../components/menu-picklist';
 
 const { Simulate,
 				scryRenderedDOMComponentsWithTag,
-				findRenderedDOMComponentWithClass } = TestUtils;
+				findRenderedDOMComponentWithClass
+			} = TestUtils;
 
-describe.only('SLDSMenuPicklist: ', function () {
+describe('SLDSMenuPicklist: ', function () {
 	let body;
 
 	const options = [
@@ -254,15 +255,13 @@ describe.only('SLDSMenuPicklist: ', function () {
 		});
 	});
 
-	describe('multiple select', () => {
+	describe('multiple selection', () => {
 		let cmp;
-		let 	btn;
+		let btn;
 
 		beforeEach(() => {
 			cmp = getPicklist({
-				multiple: true,
-				onSelect: () => { console.log('hi'); },
-				placeholder: 'Columns Selected'
+				multiple: true
 			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 			Simulate.click(btn, {});
@@ -275,10 +274,10 @@ describe.only('SLDSMenuPicklist: ', function () {
 		it('selects multiple items and renders pills', () => {
 			clickOnItem(cmp, 0);
 			clickOnItem(cmp, 1);
-			expect(btn.textContent).to.equal('2 Columns Selected');
+			expect(btn.textContent).to.equal('Multiple Options Selected');
 
-			const pills = findRenderedDOMComponentWithClass(cmp, 'slds-pill');
-			expect(pills.length).to.be(2);
+			const listbox = findRenderedDOMComponentWithClass(cmp, 'slds-listbox');
+			expect(listbox.childNodes.length).to.equal(2);
 		});
 	});
 });
