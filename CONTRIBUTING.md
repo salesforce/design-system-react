@@ -41,7 +41,7 @@ This is an internal open-source project. You may be asked to review code submitt
     - Require one of multiple prop, but not both or only one of specified properties
     - Warnings of property deprecation, sunsetting, and future changes
 
-- <a name="all-text-can-be-internationalized" href="#all-text-can-be-internationalized">#</a> Any text the user can read (including text for screenreaders) should be able to be set via a prop for internationalization.
+- <a name="all-text-can-be-internationalized" href="#all-text-can-be-internationalized">#</a> Any text the user can read (including text for screenreaders) should be able to be set via a prop for internationalization purposes. _Within the component, do not concatenate strings._ This assumes that you know the word order of all languages. Strings should be passed into props in their entirety.
 
 - <a name="group-assistive-text" href="#group-assistive-text">#</a> All assistive text for accessibility should be grouped in an object and passed in with an `assistiveText` prop.
 
