@@ -69,7 +69,6 @@
     "lodash.escaperegexp": "^4.1.1",
     "lodash.find": "^4.3.0",
     "lodash.flatten": "^4.2.0",
-    "lodash.isarray": "^4.0.0",
     "lodash.isboolean": "^3.0.3",
     "lodash.isdate": "^4.0.1",
     "lodash.isequal": "^4.2.0",

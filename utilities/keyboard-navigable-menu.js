@@ -12,9 +12,6 @@ import ReactDOM from 'react-dom';
 // ### escapeRegExp
 import escapeRegExp from 'lodash.escaperegexp';
 
-// ### isArray
-import isArray from 'lodash.isarray';
-
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
@@ -50,7 +47,7 @@ export function getNavigableItems (items) {
 	navigableItems.indexes = [];
 	navigableItems.keyBuffer = new KeyBuffer();
 
-	if (isArray(items)) {
+	if (Array.isArray(items)) {
 		items.forEach((item, index) => {
 			if (itemIsSelectable(item)) {
 				navigableItems.push({
