@@ -1,8 +1,11 @@
-exports[`test MenuPicklist
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuPicklist
 	errorText
 	DOM Snapshot 1`] = `
 <div
-  className="slds-form-element">
+  className="slds-form-element"
+>
   <label
     className="slds-form-element__label"
     htmlFor="sample-menu-picklist"
@@ -10,13 +13,15 @@ exports[`test MenuPicklist
       Object {
         "width": "100%",
       }
-    }>
+    }
+  >
     Contacts
   </label>
   <div
     className="slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click"
     onKeyDown={[Function]}
-    onMouseDown={[Function]}>
+    onMouseDown={[Function]}
+  >
     <button
       aria-describedby={undefined}
       aria-expanded={undefined}
@@ -25,22 +30,27 @@ exports[`test MenuPicklist
       disabled={undefined}
       id="sample-menu-picklist"
       onClick={[Function]}
-      tabIndex={0}>
+      tabIndex={0}
+    >
       <span
-        className="slds-truncate">
+        className="slds-truncate"
+      >
         Option C
       </span>
       <span
         className={undefined}
-        title={undefined}>
+        title={undefined}
+      >
         <svg
           aria-hidden="true"
           className="slds-icon slds-icon-text-default"
           name="down"
           style={undefined}
-          viewBox="0 0 24 24">
+          viewBox="0 0 24 24"
+        >
           <path
-            d="M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z" />
+            d="M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z"
+          />
         </svg>
         
       </span>
@@ -49,9 +59,10 @@ exports[`test MenuPicklist
 </div>
 `;
 
-exports[`test MenuPicklist Default DOM Snapshot 1`] = `
+exports[`MenuPicklist Default DOM Snapshot 1`] = `
 <div
-  className="slds-form-element">
+  className="slds-form-element"
+>
   <label
     className="slds-form-element__label"
     htmlFor="sample-menu-picklist"
@@ -59,13 +70,15 @@ exports[`test MenuPicklist Default DOM Snapshot 1`] = `
       Object {
         "width": "100%",
       }
-    }>
+    }
+  >
     Contacts
   </label>
   <div
     className="slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click"
     onKeyDown={[Function]}
-    onMouseDown={[Function]}>
+    onMouseDown={[Function]}
+  >
     <button
       aria-describedby={undefined}
       aria-expanded={undefined}
@@ -74,22 +87,27 @@ exports[`test MenuPicklist Default DOM Snapshot 1`] = `
       disabled={undefined}
       id="sample-menu-picklist"
       onClick={[Function]}
-      tabIndex={0}>
+      tabIndex={0}
+    >
       <span
-        className="slds-truncate">
+        className="slds-truncate"
+      >
         Option C
       </span>
       <span
         className={undefined}
-        title={undefined}>
+        title={undefined}
+      >
         <svg
           aria-hidden="true"
           className="slds-icon slds-icon-text-default"
           name="down"
           style={undefined}
-          viewBox="0 0 24 24">
+          viewBox="0 0 24 24"
+        >
           <path
-            d="M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z" />
+            d="M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z"
+          />
         </svg>
         
       </span>
@@ -98,8 +116,8 @@ exports[`test MenuPicklist Default DOM Snapshot 1`] = `
 </div>
 `;
 
-exports[`test MenuPicklist Default HTML Snapshot 1`] = `
-"<div class=\"slds-form-element\"><label class=\"slds-form-element__label\" for=\"sample-menu-picklist\" style=\"width:100%;\">Contacts</label>
-    <div class=\"slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click\"><button aria-haspopup=\"true\" class=\"slds-button slds-button--neutral slds-picklist__label\" id=\"sample-menu-picklist\" tabindex=\"0\"><span class=\"slds-truncate\">Option C</span><span><svg aria-hidden=\"true\" class=\"slds-icon slds-icon-text-default\" viewBox=\"0 0 24 24\" name=\"down\"><path d=\"M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z\"></path></svg></span></button></div>
+exports[`MenuPicklist Default HTML Snapshot 1`] = `
+"<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"sample-menu-picklist\\" style=\\"width:100%;\\">Contacts</label>
+    <div class=\\"slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click\\"><button aria-haspopup=\\"true\\" class=\\"slds-button slds-button--neutral slds-picklist__label\\" id=\\"sample-menu-picklist\\" tabindex=\\"0\\"><span class=\\"slds-truncate\\">Option C</span><span><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon-text-default\\" viewBox=\\"0 0 24 24\\" name=\\"down\\"><path d=\\"M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z\\"></path></svg></span></button></div>
 </div>"
 `;

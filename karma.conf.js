@@ -1,6 +1,5 @@
 /* eslint-env node */
 const webpackConfig = require('./webpack.config');
-const path = require('path');
 const karmaWebpack = require('karma-webpack');
 const karmaMocha = require('karma-mocha');
 const karmaChaiSinon = require('karma-chai-sinon');
@@ -16,26 +15,6 @@ webpackConfig.externals = {
 	'react/lib/ExecutionEnvironment': true,
 	'react/addons': true,
 	cheerio: 'window'
-};
-
-webpackConfig.module.preLoaders = webpackConfig.module.preLoaders || [];
-const ispartaPreLoaderWebpackConfig = [
-	// Transpile and instrument only testing sources with Isparta instrumenting.
-	{
-		test: /\.jsx?$/,
-		include: [
-			path.resolve('components/')
-		],
-		loader: 'isparta'
-	}
-];
-
-webpackConfig.module.preLoaders = webpackConfig.module.preLoaders.concat(ispartaPreLoaderWebpackConfig);
-
-// istanbul settings
-webpackConfig.isparta = {
-	embedSource: true,
-	noAutoWrap: true
 };
 
 // Karma configuration

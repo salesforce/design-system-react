@@ -1,21 +1,29 @@
-exports[`test Breadcrumb Base Snapshot 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumb Base Snapshot 1`] = `
 <nav
   aria-label="Breadcrumbs"
-  role="navigation">
+  role="navigation"
+>
   <ol
-    className="slds-breadcrumb slds-list--horizontal">
+    className="slds-breadcrumb slds-list--horizontal"
+  >
     <li
-      className="slds-breadcrumb__item slds-text-title--caps">
+      className="slds-breadcrumb__item slds-text-title--caps"
+    >
       <a
         href="javascript:void(0);"
-        id="parent-entity">
+        id="parent-entity"
+      >
         Parent Entity
       </a>
     </li>
     <li
-      className="slds-breadcrumb__item slds-text-title--caps">
+      className="slds-breadcrumb__item slds-text-title--caps"
+    >
       <a
-        href="javascript:void(0);">
+        href="javascript:void(0);"
+      >
         Parent Record Name
       </a>
     </li>
