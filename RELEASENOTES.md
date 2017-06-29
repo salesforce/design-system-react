@@ -27,6 +27,20 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.6.12
+**Minor Changes**
+
+- Add Multiselect Picklist variant (Pills paired with Picklist)
+
+**Maintenance**
+
+- Update package.json dependencies
+- Switches to newest Heroku stack for deployment pipeline.
+- Fixes missing icons on Heroku PR apps. 
+- Updates Jest and snapshots
+- Updates sinon and sinon-chai
+- Removes babel-eslint as a dependency
+
 ## Release 0.6.11
 **Minor Changes**
 
