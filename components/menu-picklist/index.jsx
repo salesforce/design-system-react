@@ -34,6 +34,8 @@ import List from '../utilities/menu-list';
 import ListItemLabel from '../utilities/menu-list/item-label';
 import Pill from './private/pill';
 
+import { shape } from 'airbnb-prop-types';
+
 // ### Traits
 
 // #### KeyboardNavigable
@@ -77,7 +79,18 @@ const MenuPicklist = React.createClass({
 		 * Renders menu within the wrapping trigger as a sibling of the button. By default, you will have an absolutely positioned container at an elevated z-index.
 		 */
 		isInline: PropTypes.bool,
+		/**
+		 * Form element label
+		 */
 		label: PropTypes.string,
+		/**
+		 * **Text labels for internationalization**
+		 * This object is merged with the default props object on every render.
+		 * * `multipleOptionsSelected`: Text to be used when multiple items are selected. "2 Options Selected" is a good pattern to use.
+		 */
+		labels: shape({
+			multipleOptionsSelected: PropTypes.string
+		}),
 		/**
 		 * Custom element that overrides the default Menu Item component.
 		 */
@@ -91,7 +104,7 @@ const MenuPicklist = React.createClass({
 		 */
 		onClick: PropTypes.func,
 		/**
-		 * Triggered when an item is selected.
+		 * Triggered when an item is selected. Passes in the option object that has been selected and a data object in the format: `{ option, optionIndex }`. The first parameter may be deprecated in the future and changed to an event for consistency. Please use the data object.
 		 */
 		onSelect: PropTypes.func,
 		/**
@@ -116,7 +129,10 @@ const MenuPicklist = React.createClass({
 		return {
 			inheritTargetWidth: true,
 			placeholder: 'Select an Option',
-			checkmark: true
+			checkmark: true,
+			labels: {
+				multipleOptionsSelected: 'Multiple Options Selected'
+			}
 		};
 	},
 
@@ -164,13 +180,12 @@ const MenuPicklist = React.createClass({
 				});
 			} else {
 				const currentSelectedIndex = this.getIndexByValue(nextProps);
-				const currentIndices = this.state.selectedIndices;
 				if (currentSelectedIndex !== -1) {
-					currentIndices.push(currentSelectedIndex);
+					const currentIndices = this.state.selectedIndices.concat(currentSelectedIndex);
+					this.setState({
+						selectedIndices: currentIndices
+					});
 				}
-				this.setState({
-					selectedIndices: currentIndices
-				});
 			}
 		}
 	},
@@ -222,19 +237,19 @@ const MenuPicklist = React.createClass({
 			this.setState({ selectedIndex: index });
 			this.handleClose();
 			this.setFocus();
-		} else if (this.state.selectedIndices.indexOf(index) === -1) {
+		} else if (this.props.multiple && this.state.selectedIndices.indexOf(index) === -1) {
 			const currentIndices = this.state.selectedIndices.concat(index);
 			this.setState({
 				selectedIndices: currentIndices
 			});
-		} else {
+		} else if (this.props.multiple) {
 			const deselectIndex = this.state.selectedIndices.indexOf(index);
 			this.state.selectedIndices.splice(deselectIndex, 1);
-			this.setState({ checkmark: false });
 		}
 
 		if (this.props.onSelect) {
-			this.props.onSelect(this.getValueByIndex(index));
+			const option = this.getValueByIndex(index);
+			this.props.onSelect(option, { option, optionIndex: index });
 		}
 	},
 
@@ -393,17 +408,6 @@ const MenuPicklist = React.createClass({
 		);
 	},
 
-	renderPlaceholder () {
-		let placeholder;
-		if (!this.props.multiple) {
-			const option = this.props.options[this.state.selectedIndex];
-			placeholder = (option && option.label) ? option.label : this.props.placeholder;
-		} else {
-			placeholder = this.state.selectedIndices.length + ' ' + this.props.placeholder;
-		}
-		return placeholder;
-	},
-
 	renderTrigger () {
 		let isInline;
 		/* eslint-disable react/prop-types */
@@ -413,6 +417,19 @@ const MenuPicklist = React.createClass({
 			isInline = !this.props.modal;
 		}
 		/* eslint-enable react/prop-types */
+
+		let inputValue;
+		if (this.props.multiple && this.state.selectedIndices.length === 0) {
+			inputValue = this.props.placeholder;
+		}	else if (this.props.multiple && this.state.selectedIndices.length === 1) {
+			const option = this.props.options[this.state.selectedIndices];
+			inputValue = option.label;
+		} else if (this.props.multiple && this.state.selectedIndices.length > 1) {
+			inputValue = this.props.labels.multipleOptionsSelected;
+		} else {
+			const option = this.props.options[this.state.selectedIndex];
+			inputValue = (option && option.label) ? option.label : this.props.placeholder;
+		}
 
 		// TODO: make use of <Button>
 		return (
@@ -437,7 +454,7 @@ const MenuPicklist = React.createClass({
 					ref={this.saveRefToTrigger}
 					tabIndex={this.state.isOpen ? -1 : 0}
 				>
-					<span className="slds-truncate">{this.renderPlaceholder()}</span>
+					<span className="slds-truncate">{inputValue}</span>
 					<Icon name="down" category="utility" />
 				</button>
 				{isInline ? this.renderInlineMenu() : this.renderDialog()}
@@ -446,7 +463,6 @@ const MenuPicklist = React.createClass({
 	},
 
 	renderPills () {
-		console.log('pills');
 		const selectedPills = this.state.selectedIndices.map((selectedPill) => {
 			const pillLabel = this.getValueByIndex(selectedPill).label;
 			return (
