@@ -89,7 +89,7 @@ const executeTasks = () => {
 		(done) => {
 			console.log('# Pushing local master branch to upstream remote');
 			exec({
-				command: 'git push upstream master',
+				command: 'git push upstream master --no-verify',
 				rootPath
 			}, done);
 		},
