@@ -17,6 +17,10 @@ then
 		then
 			# React DocGen library build of source comments into a JSON file for documentation site
 			NODE_ENV=test npm run build-docs
+		else exit $?
 		fi
+	else exit $?
 	fi
+else exit $?
 fi
+
