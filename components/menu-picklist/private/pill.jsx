@@ -4,7 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import UtilityIcon from '~/components/utilities/utility-icon';
+import UtilityIcon from '../../../components/utilities/utility-icon';
 
 import assign from 'lodash.assign';
 
