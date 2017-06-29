@@ -144,8 +144,8 @@ class Menu extends React.Component {
 	renderContent () {
 		if (this.state.filteredItems.length === 0) {
 			return (
-				<li className="slds-lookup__message" aria-live="polite">
-					<span className="slds-m-left--x-large slds-p-vertical--medium">{this.props.emptyMessage}</span>
+				<li className="slds-listbox__item" aria-live="polite" role="presentation">
+					<span className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">{this.props.emptyMessage}</span>
 				</li>
 			);
 		}
@@ -155,13 +155,13 @@ class Menu extends React.Component {
 
 	render () {
 		return (
-			<section id="menuContainer" className="ignore-react-onclickoutside">
+			<div id={this.props.id} className={this.props.className} role={this.props.role}>
 				{this.renderHeader()}
-				<ul id="list" className="slds-lookup__list" role="presentation" ref={(list) => { this.listRef = list; }}>
+				<ul id="list" className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid" role="presentation" ref={(list) => { this.listRef = list; }}>
 					{this.renderContent()}
 				</ul>
 				{this.renderFooter()}
-			</section>
+			</div>
 		);
 	}
 }

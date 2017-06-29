@@ -3,16 +3,22 @@
 
 // # Lookup Component
 
-// Implements the [Lookup design pattern](https://latest-204.lightningdesignsystem.com/components/lookups) in React.
-// Based on SLDS v2.1.0-dev
+// Implements the [Lookup design pattern](https://core-210.lightningdesignsystem.com/components/lookups) in React.
+// Based on SLDS v2.4.0-dev
 
 // ## Dependencies
 
 // ### React
 import React from 'react';
 import PropTypes from 'prop-types';
+import { shape } from 'airbnb-prop-types';
 import escapeRegExp from 'lodash.escaperegexp';
 import isEqual from 'lodash.isequal';
+
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
 
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)
@@ -117,6 +123,10 @@ const Lookup = React.createClass({
 			'left',
 			'right'
 		]),
+		uniqueIds: shape({
+			input: PropTypes.string,
+			menu: PropTypes.string
+		}),
 		/**
 		 * Renders menu within the wrapping trigger as a sibling of the button. By default, you will have an absolutely positioned container at an elevated z-index.
 		 */
@@ -181,7 +191,9 @@ const Lookup = React.createClass({
 			filterWith: defaultFilter,
 			iconPosition: 'right',
 			multiple: false,
-			searchTerm: ''
+			searchTerm: '',
+			selectedItem: null,
+			selectedItems: [],
 		};
 	},
 
@@ -190,10 +202,11 @@ const Lookup = React.createClass({
 			currentFocus: null,
 			focusIndex: null,
 			items: [],
+			isOpen: true,
 			listLength: this.props.options.length,
 			searchTerm: this.normalizeSearchTerm(this.props.searchTerm),
 			selectedIndex: this.props.selectedItem,
-			selectedIndices: []
+			selectedIndices: this.props.selectedItems
 		};
 	},
 
@@ -215,6 +228,8 @@ const Lookup = React.createClass({
 		}
 		if (newProps.selectedItem !== this.props.selectedItem || !isEqual(newProps.options, this.props.options)) {
 			this.setState({ selectedIndex: newProps.selectedItem });
+		} else if (newProps.selectedItems !== this.props.selectedItems || !isEqual(newProps.options, this.props.options)) {
+			this.setState({ selectedIndices: newProps.selectedItems });
 		}
 	},
 
@@ -224,10 +239,28 @@ const Lookup = React.createClass({
 
 		// Keeps track of references of children for keyboard navigation
 		this.pills = [];
+
+		// Generate unique id for Combobox and Listbox (menu)
+		this.generatedInputId = this.props.uniqueIds && this.props.uniqueIds.input || shortid.generate();
+		this.generatedMenuId = this.props.uniqueIds && this.props.uniqueIds.menu || shortid.generate();
 	},
 
 	componentDidMount () {
 		this.modifyItems(this.props.options);
+	},
+
+	focusInput () {
+		this.focusOnRender = true;
+	},
+
+	hasSingleSelection () {
+		const hasSelection = !this.props.multiple && !isNaN(parseInt(this.state.selectedIndex, 10)) && this.state.selectedIndex >= 0;
+		return hasSelection;
+	},
+
+	hasMultipleSelection () {
+		const hasSelection = this.props.multiple && !isNaN(parseInt(this.state.selectedIndex, 10)) && this.state.selectedIndices.length > 0;
+		return hasSelection;
 	},
 
 	modifyItems (itemsToModify) {
@@ -514,11 +547,13 @@ const Lookup = React.createClass({
 				iconCategory={this.props.iconCategory}
 				iconInverse={this.props.iconInverse}
 				iconName={this.props.iconName}
+				id={this.generatedMenuId}
 				items={this.state.items}
 				label={this.props.label}
 				listItemLabelRenderer={this.props.listItemLabelRenderer}
 				listLength={this.state.listLength}
 				onSelect={this.selectItem}
+				role="listbox"
 				searchTerm={this.state.searchTerm}
 				sectionDividerRenderer={this.props.sectionDividerRenderer}
 				setFocus={this.setFocus}
@@ -527,12 +562,7 @@ const Lookup = React.createClass({
 	},
 
 	renderInlineMenu () {
-		return (this.state.isOpen
-			? <div className="ignore-react-onclickoutside slds-lookup__menu" role="listbox">
-				{this.renderMenuContent()}
-			</div>
-			: null
-		);
+		return this.state.isOpen ? this.renderMenuContent() : null;
 	},
 
 	renderSeparateMenu () {
@@ -556,27 +586,21 @@ const Lookup = React.createClass({
 
 	renderInput () {
 		return (
-			<Input
+			<input
 				aria-activedescendant={this.state.currentFocus ? this.state.currentFocus : ''}
 				aria-autocomplete="list"
+				aria-controls={this.generatedMenuId}
 				aria-describedby={this.props.describedById}
-				aria-expanded={!!this.state.isOpen}
-				assistiveText={this.props.assistiveText}
-				className="slds-lookup__search-input"
+				autocomplete="off"
+				className="slds-input slds-combobox__input"
 				disabled={this.props.disabled}
-				iconRight={
-					<InputIcon
-						assistiveText="Search"
-						category="utility"
-						name="search"
-					/>}
-				id={this.inputRefId()}
+				id={this.generatedInputId}
 				onBlur={this.handleBlur}
 				onChange={this.handleChange}
 				onClick={this.handleClick}
 				onFocus={this.handleFocus}
 				onKeyDown={this.handleKeyDown}
-				inputRef={(component) => {
+				ref={(component) => {
 					this.input = component;
 					if (this.focusOnRender) {
 						this.input.focus();
@@ -584,9 +608,9 @@ const Lookup = React.createClass({
 					}
 				}}
 				placeholder={this.props.placeholder}
-				role="combobox"
+				role="textbox"
 				type="text"
-				value={this.state.searchTerm}
+				value={this.state.searchTerm === "" ? null : this.state.searchTerm }
 			/>
 		);
 	},
@@ -632,24 +656,16 @@ const Lookup = React.createClass({
 	},
 
 	renderLabel () {
-		let inputLabel;
-		const required = this.props.required
-			? <span className="slds-required">*</span>
-			: null;
-		if (this.hasSingleSelection()) {
-			// inline style override
-			inputLabel = (<span
-				className="slds-form-element__label"
-				style={{ width: '100%' }}
-			>{required}{this.props.label}</span>);
-		} else {
-			inputLabel = (<label
-				className="slds-form-element__label"
-				htmlFor={this.inputRefId()}
-				style={{ width: '100%' }}
-			>{required}{this.props.label}</label>);
-		}
-		return inputLabel;
+		const required = this.props.required ? <span className="slds-required">*</span> : null;
+		return (
+			<label
+				className="slds-form-element__label slds-size_12-of-12"
+				htmlFor={this.generatedInputId}
+			>
+				{required}
+				{this.props.label}
+			</label>
+		)
 	},
 
 	renderPills () {
@@ -666,6 +682,8 @@ const Lookup = React.createClass({
 							item: this.props.options[selectedPill],
 							index: selectedPill
 						}}
+						iconName={this.props.iconName}
+						iconCategory={this.props.iconCategory}
 						events={{
 							onRequestRemove: (event, data) => {
 								const newData = this.state.selectedIndices;
@@ -698,24 +716,6 @@ const Lookup = React.createClass({
 		);
 	},
 
-	inputRefId () {
-		return `${this.props.label}Lookup`;
-	},
-
-	focusInput () {
-		this.focusOnRender = true;
-	},
-
-	hasSingleSelection () {
-		const hasSelection = !this.props.multiple && !isNaN(parseInt(this.state.selectedIndex, 10)) && this.state.selectedIndex >= 0;
-		return hasSelection;
-	},
-
-	hasMultipleSelection () {
-		const hasSelection = this.props.multiple && !isNaN(parseInt(this.state.selectedIndex, 10)) && this.state.selectedIndices.length > 0;
-		return hasSelection;
-	},
-
 	getClassName () {
 		return classNames(this.props.className, 'slds-form-element slds-lookup', {
 			'slds-has-selection': this.hasSingleSelection(),
@@ -733,19 +733,42 @@ const Lookup = React.createClass({
 		}
 		/* eslint-enable react/prop-types */
 
-		const formElementControlClasses = {
-			'slds-form-element__control': true,
-			[`slds-input-has-icon slds-input-has-icon--${this.props.iconPosition}`]: !this.hasSingleSelection()
+		const comboboxContainerClassName = {
+			'slds-combobox_container': true,
+			'slds-has-inline-listbox': !this.props.multiple,
+			'slds-has-input-focus': this.state.isOpen
+		};
+
+		const comboboxClassName = {
+			'slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click': true,
+			'slds-combobox-lookup': !this.state.isOpen,
+			'slds-is-open': this.state.isOpen
 		};
 
 		return (
-			<div className={this.getClassName()} data-select="single" data-scope="single">
+			<div className="slds-form-element">
 				{this.props.label ? this.renderLabel() : null}
-				<div className={classNames(formElementControlClasses)}>
-					{this.hasSingleSelection() ? this.renderSelectedItem() : this.renderInput()}
+				<div className="slds-form-element__control">
+					<div className={classNames(comboboxContainerClassName)}>
+						<div
+							className={classNames(comboboxClassName)}
+							aria-expanded={!!this.state.isOpen}
+							aria-haspopup="listbox"
+							role="combobox"
+						>
+							<div className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right">
+								{this.renderInput()}
+								<InputIcon
+									assistiveText="Search"
+									category="utility"
+									name="search"
+								/>
+							</div>
+							{isInline ? this.renderInlineMenu() : this.renderSeparateMenu()}
+						</div>
+					</div>
+					{this.hasMultipleSelection() ? this.renderPills() : null}
 				</div>
-				{isInline ? this.renderInlineMenu() : this.renderSeparateMenu()}
-				{this.hasMultipleSelection() ? this.renderPills() : null}
 			</div>
 		);
 	}

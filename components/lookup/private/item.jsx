@@ -62,46 +62,39 @@ class Item extends React.Component {
 	}
 
 	getLabel () {
-		let label;
-		if (this.props.children.data.subTitle) {
-			label = (<div className="slds-media__body">
-				<div className="slds-lookup__result-text">{this.props.children.label}</div>
-				<span className="slds-lookup__result-meta slds-text-body--small">{this.props.children.data.subTitle}</span>
-			</div>);
-		} else {
-			const labelClassName = cx('slds-lookup__result-text', {
-				'slds-m-left--x-small': !this.props.iconName
-			});
-
-			label = (<div className="slds-media__body">
-				<div className={labelClassName}>{this.props.children.label}</div>
-			</div>);
-		}
-		return label;
+		return this.props.children.data.subTitle
+			? (
+				<span className="slds-media__body">
+					<span className="slds-listbox__option-text slds-listbox__option-text_entity">{this.props.children.label}</span>
+					<span className="slds-listbox__option-meta slds-listbox__option-meta_entity">{this.props.children.data.subTitle}</span>
+				</span>
+			)
+			: (
+				<span className="slds-media__body" style={{ 'alignSelf': 'center'}}>
+					<span className="slds-listbox__option-text slds-listbox__option-text_entity">{this.props.children.label}</span>
+				</span>
+			);
 	}
 
 	render () {
-		let itemClassName = 'js-slds-lookup__item';
-		const id = this.props.id;
+		let itemClassName = 'js-slds-lookup__item slds-listbox__item';
 		if (this.props.isActive) itemClassName += ' slds-theme--shade';
 
 		return (
       // IMPORTANT: anchor id is used to set lookup's input's aria-activedescendant
-			<li className={itemClassName} ref={(li) => { this.itemRef = li; }}>
-				<a
+			<li className={itemClassName} ref={(li) => { this.itemRef = li; }} role="presentation">
+				<span
 					aria-disabled={this.props.isDisabled}
-					className="slds-lookup__item-action slds-media slds-media--center"
-					href={this.props.href}
-					id={id}
+					className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+					id={this.props.id}
 					onClick={this.handleClick}
 					onMouseDown={EventUtil.trapImmediate}
-					ref={id}
+					ref={this.props.id}
 					role="option"
-					tabIndex="-1"
 				>
-					{this.getIcon()}
+					{ this.getIcon() }
 					{ this.props.listItemLabelRenderer ? this.getCustomLabel() : this.getLabel() }
-				</a>
+				</span>
 			</li>
     );
 	}

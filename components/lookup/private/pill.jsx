@@ -8,6 +8,7 @@ import classNames from 'classnames';
 import { shape } from 'airbnb-prop-types';
 
 import Button from '~/components/button';
+import Icon from '~/components/icon';
 import KEYS from '../../../utilities/key-code';
 import mapKeyEventCallbacks from '../../../utilities/key-callbacks';
 
@@ -74,6 +75,15 @@ const Pill = (props) => {
 		'slds-pill_link': !isOption
 	});
 
+	const renderIcon = props.iconName
+		? (<Icon
+			category={props.iconCategory}
+			className="slds-icon slds-pill__icon"
+			inverse={props.iconInverse}
+			name={props.iconName}
+		/>)
+		: null;
+
 	return (
 		<span
 			className={pillClassName}
@@ -88,8 +98,12 @@ const Pill = (props) => {
 			}}
 		>
 			{isOption
-					? <span className="slds-pill__label" title={labels.title}>{labels.label}</span>
+					? <span className="slds-pill__label" title={labels.title}>
+						{renderIcon}
+						{labels.label}
+					</span>
 					: <a href="javascript:void(0);" class="slds-pill__action" style={{width: "100%"}} title={labels.title}>
+							{renderIcon}
 							<span class="slds-pill__label">{labels.label}</span>
 						</a>
 			}
@@ -105,6 +119,7 @@ const Pill = (props) => {
 								eventData: props.eventData
 							});
 						}}
+						tabIndex="-1"
 						variant="icon"
 					/>
 					: null}
