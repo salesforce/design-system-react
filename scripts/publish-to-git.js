@@ -10,21 +10,12 @@ import fs from 'fs';
 import path from 'path';
 import minimist from 'minimist';
 import { version } from '../package.json';
+import exec from './command-line-utilities';
 
 const argv = minimist(process.argv.slice(2));
 const rootPath = path.resolve(__dirname, '../');
 const getTmpPath = (type) => path.resolve.bind(path, path.resolve(rootPath, `.tmp-${type}`));
 const gitDir = '.git';
-
-const exec = ([command, dir = '.'], callback) => {
-	const child = require('child_process').exec(command, {
-		cwd: path.resolve(rootPath, dir)
-	}, (err) => {
-		callback(err);
-	});
-
-	child.stdout.on('data', (data) => process.stdout.write(data.toString()));
-};
 
 // /////////////////////////////////////////////////////////////
 // Tasks
@@ -57,30 +48,30 @@ const publish = (done, type) => {
 	}
 
 	let actions = [
-		['git init', tmpDir],
-		[`cp ${gitDir}/config ${tmpDir}/.git`],
-		['git add -A', tmpDir]
+		{ command: 'git init', dir: tmpDir, rootPath },
+		{ command: `cp ${gitDir}/config ${tmpDir}/.git`, rootPath },
+		{ command: 'git add -A', dir: tmpDir, rootPath }
 	];
 
 	if (argv.tag) {
 		actions = [
 			...actions,
-			[`git commit -m "Release commit for ${argv.tag}-${type} [ci skip]"`, tmpDir],
-			[`git tag ${argv.tag}${typeSuffix}`, tmpDir, true],
-			[`git push ${remote} -f --tags ${argv.tag}${typeSuffix}`, tmpDir]
+			{ command: `git commit -m "Release commit for ${argv.tag}-${type} [ci skip]"`, dir: tmpDir, rootPath },
+			{ command: `git tag ${argv.tag}${typeSuffix}`, dir: tmpDir, rootPath },
+			{ command: `git push ${remote} -f --tags ${argv.tag}${typeSuffix}`, dir: tmpDir, rootPath }
 		];
 	} else {
 		actions = [
 			...actions,
-			[`git commit -m "Release commit for ${version}-${type} [ci skip]"`, tmpDir],
-			[`git tag v${version}${typeSuffix}`, tmpDir],
-			[`git push ${remote} --tags v${version}${typeSuffix}`, tmpDir]
+			{ command: `git commit -m "Release commit for ${version}-${type} [ci skip]"`, dir: tmpDir, rootPath },
+			{ command: `git tag v${version}${typeSuffix}`, dir: tmpDir, rootPath },
+			{ command: `git push ${remote} --tags v${version}${typeSuffix}`, dir: tmpDir, rootPath }
 		];
 	}
 
 	actions = [
 		...actions,
-		[`rm -r ${tmpDir}`]
+		{ command: `rm -r ${tmpDir}`, rootPath }
 	];
 
 	async.eachSeries(actions, exec, (err) => {
@@ -93,7 +84,11 @@ const publish = (done, type) => {
 };
 
 async.series([
-	(done) => exec(['npm run dist'], done),
+	(done) => exec({
+		command: 'npm run dist',
+		rootPath,
+		verbose: false
+	}, done),
 
 	(done) => cleanPackageJson(done, 'es'),
 	(done) => publish(done, 'es'),

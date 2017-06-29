@@ -41,7 +41,7 @@ This is an internal open-source project. You may be asked to review code submitt
     - Require one of multiple prop, but not both or only one of specified properties
     - Warnings of property deprecation, sunsetting, and future changes
 
-- <a name="all-text-can-be-internationalized" href="#all-text-can-be-internationalized">#</a> Any text the user can read (including text for screenreaders) should be able to be set via a prop for internationalization.
+- <a name="all-text-can-be-internationalized" href="#all-text-can-be-internationalized">#</a> Any text the user can read (including text for screenreaders) should be able to be set via a prop for internationalization purposes. _Within the component, do not concatenate strings._ This assumes that you know the word order of all languages. Strings should be passed into props in their entirety.
 
 - <a name="group-assistive-text" href="#group-assistive-text">#</a> All assistive text for accessibility should be grouped in an object and passed in with an `assistiveText` prop.
 
@@ -63,7 +63,7 @@ This is an internal open-source project. You may be asked to review code submitt
 
 - <a name="use-dom-refs" href="#use-dom-refs">#</a> **Avoid querying the DOM for nodes you do not own.** A `ref` callback is React's [link to a DOM node](https://facebook.github.io/react/docs/refs-and-the-dom.html). It is triggered on render and allows access to the DOM node asynchronously. In most cases within a component, you only need a `ref` for setting focus, but `refs` make testing easier. If you find yourself using `querySelectorAll()` to query parts of this library within your application tests, please stop and submit a contribution that surfaces the DOM node you are needing to test. If you control the contents or children yourself, please use a `ref` bound to your own JSX DOM node to test. For an example, review the `renderDialog` method of `Popover` and its `body` ref. Once surfaced, a DOM `ref` becomes part of the public API and will be treated as such.
 
-- <a name="breaking-changes" href="#breaking-changes">#</a> **Changes to a component's props or a new design system version are breaking changes.** SLDS markup alignment and class changes within the current design system release cycle are _not_ considered breaking changes in this library although they may break markup queries. See [Avoid querying the DOM for nodes you do not own.](#use-dom-refs).
+- <a name="breaking-changes" href="#breaking-changes">#</a> **Non-backward compatible changes to component props or a new design system version that has breaking changes within it _is_ a breaking change and this library should release a major version.** SLDS markup alignment and class changes within the current design system release cycle are _not_ considered breaking changes in this library although they may break markup queries. See [Avoid querying the DOM for nodes you do not own.](#use-dom-refs). The master branch of this library should be aligned to the code line that is open. When upgrading the design system CSS, please create a archive/stale branch labelled similar to `spring-17-2.2.x`, except use the correct Salesforce release date and SLDS version that the code was intended to support.
 
 - <a name="approved-slds-patterns" href="#approved-slds-patterns">#</a> **Only submit approved design system patterns.** This library should include only components which have approved patterns in Salesforce's [design system](https://www.lightningdesignsystem.com/) or the latest internal beta releases. If there is a use case from a designer that conforms to a design pattern, that component should be able to be implemented with this library.
 
@@ -153,10 +153,9 @@ class MyForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {value: 'Hello!'};
-    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     this.setState({value: event.target.value});
   }
 
@@ -175,7 +174,7 @@ class MyForm extends React.Component {
 In this example, we are accepting the value provided by the user and updating the `value` prop of the `<input>` component. This pattern makes it easy to implement interfaces that respond to or validate user interactions. For example:
 
 ```javascript
-  handleChange(event) {
+  handleChange = (event) => {
     this.setState({value: event.target.value.substr(0, 140)});
   }
 ```
@@ -191,52 +190,73 @@ _from [Controlled Components](https://facebook.github.io/react/docs/forms.html#c
 
 ## Component Organization
 
-* `createClass`
+* `extends React.Component`
+  * initial state within `constructor`
+  * life cycle methods
+  * sub-render methods (keep to a minimum, only use to stay "DRY")
+  * component render
+
+* Static class properties that should be added to the class variable after creation. ES7's `static` prefix is not currently compatible with our documentation site build.
   * display name
   * prop types
-  * defaults and initial state
-  * life cycle methods
-  * sub-render methods
-  * primary render
+  * defaults props 
 
 ```javascript
+import React from 'react';
+import PropTypes from 'prop-types';
+import shortid from 'shortid';
+import checkProps from './check-props';
 import { EXTERNAL_CONSTANT } from '../../utilities/constants';
+
+const propTypes = {
+  /**
+   * The description of this prop (will appear in the documentation site).
+   */
+  title: PropTypes.string.isRequired
+};
+
+// These values will also be visible in the documentation site.
+const defaultProps = {};
 
 /**
  * The description of this component (will appear in the documentation site).
  */
-const DemoComponent = React.createClass({
-  displayName: EXTERNAL_CONSTANT,
-  propTypes: {
-    /**
-     * The description of this prop (will appear in the documentation site).
-     */
-    title: PropTypes.string.isRequired
-  },
+class DemoComponent extends React.Component {
+  constructor (props) {
+    super(props);
 
-  // These values will also be visible in the documentation site.
-  getDefaultProps () {
-    return {
-    };
-  },
+    // useful for unique DOM IDs
+    this.generatedId = shortid.generate();
+    
+    // initial state
+    this.state = {};
+  }
 
-  getInitialState () {
-    return {
-    };
-  },
+  componentWillMount () {
+    // Not required. This function issues console warnings to developers about props and is helpful in upgrading. All breaking changes to props must have a warning for developers when they upgrade.
+    checkProps(EXTERNAL_CONSTANT, this.props);
+  }
 
-  toggleOpen (event) {
-  },
+  // Class property bound to instance. Class methods that are not React lifecycle methods should use "fat-arrow" syntax if `this` binding is needed.
+  toggleOpen = (event, { eventDataKey }) => {
+    // you can use `this` here
+  };
 
-  renderSubComponent () {
-  },
+  // Minimize use of multiple renders. More HTML-like JSX is preferred with ternary statements
+  renderSubComponent = () => null;
 
   // Render should be last
   render () {
+    return null;
   }
-});
+}
+
+DemoComponent.displayName = EXTERNAL_CONSTANT;
+DemoComponent.propTypes = propTypes;
+DemoComponent.defaultProps = defaultProps;
 
 export default DemoComponent;
+
 ```
 
 ## Formatting Props
@@ -278,7 +298,7 @@ The following is a simple example of the cloning process within the parent.
 
 
 ```javascript
-const CleverParent = React.createClass({
+class CleverParent extends React.Component {
   render() {
     const children = React.Children.map(this.props.children, (child) => {
       return React.cloneElement(child, {
@@ -287,9 +307,9 @@ const CleverParent = React.createClass({
     })
     return <div>{children}</div>
   }
-})
+}
 
-const SimpleChild = React.createClass({
+class SimpleChild extends React.Component {
   render() {
     return (
       <div onClick={this.props.onClick}>
@@ -297,9 +317,9 @@ const SimpleChild = React.createClass({
       </div>
     )
   }
-})
+}
 
-const App = React.createClass({
+class App extends React.Component {
   render() {
     return (
       <CleverParent>
@@ -311,7 +331,7 @@ const App = React.createClass({
       </CleverParent>
     )
   }
-})
+}
 ```
 Example taken from [React Composability Patterns](http://www.zhubert.com/blog/2016/02/05/react-composability-patterns/)
 
@@ -487,15 +507,16 @@ from the [Planning Center](https://github.com/planningcenter/react-patterns)
   * [David Woodward](https://github.com/futuremint)
 4. Get your component/feature approved by the UX Accessibility Team (refer to the link above).
 
-
-## Releasing
+## Test the documentation site
 1. Pull down the documentation site and place in the same parent folder as this library: `git clone git@github.com:salesforce-ux/design-system-react-site.git` and run `npm install`.
 `.
 1. Run `npm run local-update` from within `design-system-react-site` to build, copy, and serve a local version of this library into the site. You should be able to now view the updated site at `http://localhost:8080/` and resolve any issues with updated documentation.
-1. [Write the release notes](https://github.com/salesforce-ux/design-system-react/blob/master/RELEASENOTES.md) that cover everything that has changed since the last release. You don't have to commit your release notes changes though. The following script will do that for you.
-1. Run `npm prune` and `npm install` to clean up node modules in preparation for build.
-1. **Choose one**: `npm run release-patch` or `npm run release-minor` This script pulls from upstream, bumps the version, commits changes, and publishes tags to your `upstream` repository (that is this repo).
+
+## Release
+1. **Choose one**: `npm run release-patch` or `npm run release-minor`. This script pulls from upstream, bumps the version, commits changes, and publishes tags to your `upstream` repository (that is this repo).
 1. Copy and paste your release notes into the [Github Draft Release UI](https://github.com/salesforce-ux/design-system-react/releases) and publish.
+
+## Update documentation site
 1. Update the version of Design System React in the documentation site's [package.json](https://github.com/salesforce-ux/design-system-react-site/blob/master/package.json#L51) and push to master. This is will build a Heroku application. Log into Heroku and promote the staged pull request to production. You will need promotion rights to the Heroku application.
 
 _If you are timid about releasing or need your pull request in review "pre-released," you can publish to origin (your fork) with `npm run publish-to-git` and then test and review the tag on your fork. This is just the publish step though, any other tasks you will need to do manually to test publishing._

@@ -496,6 +496,50 @@ const getCustomContentTabs = () => {
 };
 /* eslint-enable react/display-name */
 
+const DemoTabsInterceptSelect = React.createClass({
+	displayName: 'DemoTabsInterceptSelect',
+
+	getInitialState () {
+		return { intercepts: 0 };
+	},
+
+	handleTabSelect (next, last) {
+		action('handleTabSelect')(next, last);
+		const intercepts = this.state.intercepts + 1;
+		this.setState({ intercepts });
+		return false;
+	},
+
+	render () {
+		return (
+			<div>
+				<Tabs onSelect={this.handleTabSelect}>
+					<Panel label="Panel with intercept" >
+						<p>Default Panel</p>
+						{this.state.intercepts > 0 &&
+							<p>{`We've intercepted navigation ${this.state.intercepts} time(s)`}</p>
+						}
+					</Panel>
+					<Panel label="Unreachable panel">
+						<p>You should never see this message</p>
+					</Panel>
+				</Tabs>
+
+				<div style={{ height: '20px' }} />
+
+				<Tabs>
+					<Panel label="Panel still working as intended" >
+						<p>Default Panel</p>
+					</Panel>
+					<Panel label="Destination panel">
+						<p>You should be able to reach this panel</p>
+					</Panel>
+				</Tabs>
+			</div>
+		);
+	}
+});
+
 storiesOf(TABS, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Base', () => getTabs())
@@ -505,4 +549,5 @@ storiesOf(TABS, module)
 	.add('Conditional', () => <DemoTabsConditional className="conditional-yo" />)
 	.add('Unique Generated IDs', () => getTabsMoreThanOneAllowGeneratedID())
 	.add('Scoped', () => getTabsScoped())
-	.add('Custom Tab Contents', () => getCustomContentTabs());
+	.add('Custom Tab Contents', () => getCustomContentTabs())
+	.add('Tab Intercept Panel Select', () => <DemoTabsInterceptSelect />);
