@@ -18,9 +18,6 @@ import Item from './item';
 
 import Highlighter from '../../utilities/highlighter';
 
-// ### isArray
-import isArray from 'lodash.isarray';
-
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
@@ -248,7 +245,7 @@ const Branch = (props) => {
 		searchTerm
 	} = props;
 
-	if (isArray(props.getNodes(props.node))) {
+	if (Array.isArray(props.getNodes(props.node))) {
 		children = props.node.nodes.map((node, index) => {
 			let child;
 			const htmlId = `${props.treeId}-${node.id}`;
