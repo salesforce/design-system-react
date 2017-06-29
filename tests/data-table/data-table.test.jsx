@@ -174,8 +174,6 @@ describe('DataTable: ', function () {
 
 		it('can deselect a row', function (done) {
 			this.onChange = (newSelection, ...rest) => {
-				console.log('newSelection', newSelection);
-				console.log('...rest', ...rest);
 				newSelection.should.have.length(0);
 				done();
 			};
@@ -193,9 +191,6 @@ describe('DataTable: ', function () {
 			const tbody = getTable(this.dom).querySelectorAll('tbody')[0];
 			const selectedRow = tbody.querySelectorAll('tr.slds-is-selected')[0];
 			const checkbox = selectedRow.querySelectorAll('.slds-checkbox input')[0];
-			console.log('tbody', tbody);
-			console.log('selectedRow', selectedRow);
-			console.log('checkbox', checkbox);
 			Simulate.change(checkbox, { target: { checked: false } });
 		});
 
@@ -286,14 +281,9 @@ describe('DataTable: ', function () {
 				</DataTable>
 			).call(this);
 
-			console.log(getTable(this.dom).querySelectorAll('thead a'));
-
 			const thead = getTable(this.dom).querySelectorAll('thead')[0];
 			const thirdColumn = thead.querySelectorAll('th')[2];
 			const sortButton = thead.querySelectorAll('a')[0];
-
-			console.log(sortButton);
-
 
 			Simulate.click(sortButton, {});
 		});
