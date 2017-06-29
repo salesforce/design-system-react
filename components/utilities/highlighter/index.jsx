@@ -17,27 +17,29 @@ import { HIGHLIGHTER } from '../../../utilities/constants';
 const Highlighter = (props) => {
 	if (props.search) {
 		let children;
-		if (typeof props.children  === 'string') {
-			children = <ReactHighlighter className={props.className} matchClass={null} matchElement="mark" search={props.search}>
-							{props.children}
-						</ReactHighlighter>;
+		if (typeof props.children === 'string') {
+			children = (<ReactHighlighter className={props.className} matchClass={null} matchElement="mark" search={props.search}>
+				{props.children}
+			</ReactHighlighter>);
 		} else {
-			const findString = (nodeArr) => {
-				return nodeArr.map(element => {
+			const findString = (nodeArr) =>
+				nodeArr.map((element) => {
+					let newElement;
 					if (typeof element === 'string') {
-						return (<ReactHighlighter key={element} className={props.className} matchClass={null} matchElement="mark" search={props.search}>
+						newElement = (<ReactHighlighter key={element} className={props.className} matchClass={null} matchElement="mark" search={props.search}>
 							{element}
 						</ReactHighlighter>);
 					} else {
-						return element;
+						newElement = element;
 					}
+					return newElement;
 				});
-			};
 
-			const node = props.children.props.children;
-			children = node instanceof Array ? findString(node) : node;
+			if (props.children.props) {
+				const node = props.children.props.children;
+				children = node instanceof Array ? findString(node) : node;
+			}
 		}
-
 
 		return (
 			<span>

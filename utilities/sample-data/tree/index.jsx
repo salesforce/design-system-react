@@ -11,17 +11,17 @@ const sampleNodesDefault = [
 		id: 1
 	},
 	{
-		label: <span><Icon name="delete" category="utility" size="x-small"/> Fruits</span>,
+		label: <span><Icon name="delete" category="utility" size="x-small" /> Fruits</span>,
 		type: 'branch',
 		id: 2,
 		nodes: [
 			{
-				label: <span>Ground Fruits<Icon name="sort" category="utility" size="x-small"/></span>,
+				label: <span>Ground Fruits<Icon name="sort" category="utility" size="x-small" /></span>,
 				type: 'branch',
 				id: 4,
 				nodes: [
 					{
-						label: <span><Icon name="filter" category="utility" size="x-small"/>Watermelon<Icon name="list" category="utility" size="x-small"/></span>, type: 'item', id: 12
+						label: <span><Icon name="filter" category="utility" size="x-small" />Watermelon<Icon name="list" category="utility" size="x-small" /></span>, type: 'item', id: 12
 					},
 					{
 						label: 'Canteloupe', type: 'item', _iconClass: 'glyphicon-file', id: 13
@@ -108,7 +108,7 @@ const sampleNodesDefault = [
 		]
 	},
 	{
-		label: <span><Icon name="event" category="utility" size="x-small"/></span>,
+		label: <span><Icon name="event" category="utility" size="x-small" /></span>,
 		type: 'branch',
 		_iconClass: 'glyphicon-file',
 		id: 3,
