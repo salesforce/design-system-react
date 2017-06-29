@@ -4,7 +4,7 @@
   "description": "Salesforce Lightning Design System for React",
   "license": "SEE LICENSE IN README.md",
   "engines": {
-    "node": ">=4.4.0",
+    "node": "6.x",
     "npm": "^3.9.0"
   },
   "lint-staged": {
@@ -120,7 +120,7 @@
     "file-loader": "^0.11.0",
     "fs-extra": "^3.0.0",
     "istanbul-instrumenter-loader": "^2.0.0",
-    "jest": "^18.1.0",
+    "jest": "^20.0.4",
     "js-beautify": "^1.6.8",
     "json-loader": "^0.5.3",
     "karma": "^1.7.0",
