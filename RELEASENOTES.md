@@ -27,6 +27,11 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.6.13
+**Bugfix Changes**
+
+- Picklist child component Pill had a bad import that was only discoverable in production.
+
 ## Release 0.6.12
 **Minor Changes**
 
