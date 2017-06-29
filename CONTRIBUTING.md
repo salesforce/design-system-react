@@ -43,7 +43,7 @@ This is an internal open-source project. You may be asked to review code submitt
 
 - <a name="all-text-can-be-internationalized" href="#all-text-can-be-internationalized">#</a> Any text the user can read (including text for screenreaders) should be able to be set via a prop for internationalization purposes. _Within the component, do not concatenate strings._ This assumes that you know the word order of all languages. Strings should be passed into props in their entirety.
 
-- <a name="group-assistive-text" href="#group-assistive-text">#</a> All assistive text for accessibility should be grouped in an object and passed in with an `assistiveText` prop.
+- <a name="group-assistive-text-and-labels" href="#group-assistive-text-and-labels">#</a> All assistive text for accessibility and visible text should be grouped in an object and passed in with a prop, `assistiveText` and `labels` respectively. This will allow consuming developers to easily find and map text to localize it.
 
 - <a name="different-react-component-hierarchy" href="#different-react-component-hierarchy">#</a> React component hierarchy doesn't always mean HTML tag hierarchy. Sometimes children become the wrapping component.
 
