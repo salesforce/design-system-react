@@ -156,11 +156,11 @@ class Menu extends React.Component {
 	render () {
 		return (
 			<div id={this.props.id} className={this.props.className} role={this.props.role}>
-				{this.renderHeader()}
 				<ul id="list" className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid" role="presentation" ref={(list) => { this.listRef = list; }}>
+					{this.renderHeader()}
 					{this.renderContent()}
+					{this.renderFooter()}
 				</ul>
-				{this.renderFooter()}
 			</div>
 		);
 	}

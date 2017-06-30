@@ -29,6 +29,7 @@ const Icon = ({
 	assistiveText,
 	category,
 	className,
+	containerClassName,
 	icon,
 	inverse,
 	name,
@@ -40,7 +41,7 @@ const Icon = ({
 
 	return (
 		<span
-			className={classNames({
+			className={classNames(containerClassName, {
 				'slds-icon_container': category !== 'utility',
 				'slds-icon_container--circle': category === 'action',
 				[`slds-icon-${category}-${kababCaseName}`]: category !== 'utility' && category !== 'doctype' && !path

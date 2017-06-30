@@ -27,28 +27,30 @@ class DefaultHeader extends React.Component {
 	}
 
 	render () {
-		let className = 'slds-lookup__item-action slds-lookup__item-action--label';
-		if (this.props.isActive) className += ' slds-theme--shade';
+		let className = 'slds-media slds-listbox__option slds-listbox__option_entity';
+		if (this.props.isActive) className += ' slds-has-focus';
 
 		return (
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
-			<div
-				className="js-slds-lookup__item"
+			<li
+				className="js-slds-lookup__item slds-listbox__item slds-p-vertical_xx-small"
 				onMouseDown={EventUtil.trapImmediate}
 				onClick={this.handleClick}
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				{/* eslint-disable no-script-url */}
-				<a id="searchRecords" href="javascript:void(0);" className={className}>
+				<span id="searchRecords" href="javascript:void(0);" className={className}>
 					{/* eslint-enable no-script-url */}
-					<span className="lookup__item-action-label">
+					<span className="slds-media__figure">
 						<Icon name="search" category="utility" size="x-small" className="slds-icon-text-default" />
+					</span>
+					<span className="slds-media__body">
 						<span className="slds-truncate">
 							{this.props.searchTerm}
 						</span>
 					</span>
-				</a>
-			</div>
+				</span>
+			</li>
 		);
 	}
 }
