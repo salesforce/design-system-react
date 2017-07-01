@@ -84,6 +84,11 @@ exports[`Panel Filtering Default Snapshot 1`] = `
           inheritTargetWidth={true}
           isInline={true}
           label="Show Me"
+          labels={
+            Object {
+              "multipleOptionsSelected": "Multiple Options Selected",
+            }
+          }
           onSelect={[Function]}
           options={
             Array [
@@ -127,6 +132,11 @@ exports[`Panel Filtering Default Snapshot 1`] = `
           inheritTargetWidth={true}
           isInline={true}
           label="Created Date EQUALS"
+          labels={
+            Object {
+              "multipleOptionsSelected": "Multiple Options Selected",
+            }
+          }
           onSelect={[Function]}
           options={
             Array [
@@ -163,6 +173,11 @@ exports[`Panel Filtering Default Snapshot 1`] = `
           inheritTargetWidth={true}
           isInline={true}
           label="List Price"
+          labels={
+            Object {
+              "multipleOptionsSelected": "Multiple Options Selected",
+            }
+          }
           onSelect={[Function]}
           options={
             Array [

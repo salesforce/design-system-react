@@ -200,41 +200,56 @@ exports[`Datepicker
           className="slds-form-element"
         >
           <div
-            className="slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click slds-picklist--fluid slds-shrink-none"
-            onKeyDown={[Function]}
-            onMouseDown={[Function]}
+            className="slds-form-element slds-picklist--fluid slds-shrink-none"
           >
-            <button
-              aria-describedby={undefined}
-              aria-expanded={undefined}
-              aria-haspopup="true"
-              className="slds-button slds-button--neutral slds-picklist__label"
-              disabled={undefined}
-              id="CUSTOM-ID-year-picklist"
-              onClick={[Function]}
-              tabIndex={0}
+            <div
+              className="slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click slds-picklist--fluid slds-shrink-none"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
             >
-              <span
-                className="slds-truncate"
+              <button
+                aria-describedby={undefined}
+                aria-expanded={undefined}
+                aria-haspopup="true"
+                className="slds-button slds-button--neutral slds-picklist__label"
+                disabled={undefined}
+                id="CUSTOM-ID-year-picklist"
+                onClick={[Function]}
+                tabIndex={0}
               >
-                2007
-              </span>
-              <span
-                className={undefined}
-                title={undefined}
-              >
-                <svg
-                  aria-hidden="true"
-                  className="slds-icon slds-icon-text-default"
-                  style={undefined}
+                <span
+                  className="slds-truncate"
                 >
-                  <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-                  />
-                </svg>
-                
-              </span>
-            </button>
+                  2007
+                </span>
+                <span
+                  className={undefined}
+                  title={undefined}
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-icon slds-icon-text-default"
+                    style={undefined}
+                  >
+                    <use
+                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                    />
+                  </svg>
+                  
+                </span>
+              </button>
+            </div>
+            <div
+              id="listbox-selections-unique-id"
+              orientation="horizontal"
+              role="listbox"
+            >
+              <ul
+                aria-label="Selected Options:"
+                className="slds-listbox slds-listbox_inline slds-p-top_xxx-small"
+                role="group"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -1083,41 +1098,56 @@ exports[`Datepicker
           className="slds-form-element"
         >
           <div
-            className="slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click slds-picklist--fluid slds-shrink-none"
-            onKeyDown={[Function]}
-            onMouseDown={[Function]}
+            className="slds-form-element slds-picklist--fluid slds-shrink-none"
           >
-            <button
-              aria-describedby={undefined}
-              aria-expanded={undefined}
-              aria-haspopup="true"
-              className="slds-button slds-button--neutral slds-picklist__label"
-              disabled={undefined}
-              id="sample-datepicker-year-picklist"
-              onClick={[Function]}
-              tabIndex={0}
+            <div
+              className="slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click slds-picklist--fluid slds-shrink-none"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
             >
-              <span
-                className="slds-truncate"
+              <button
+                aria-describedby={undefined}
+                aria-expanded={undefined}
+                aria-haspopup="true"
+                className="slds-button slds-button--neutral slds-picklist__label"
+                disabled={undefined}
+                id="sample-datepicker-year-picklist"
+                onClick={[Function]}
+                tabIndex={0}
               >
-                2014
-              </span>
-              <span
-                className={undefined}
-                title={undefined}
-              >
-                <svg
-                  aria-hidden="true"
-                  className="slds-icon slds-icon-text-default"
-                  style={undefined}
+                <span
+                  className="slds-truncate"
                 >
-                  <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-                  />
-                </svg>
-                
-              </span>
-            </button>
+                  2014
+                </span>
+                <span
+                  className={undefined}
+                  title={undefined}
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-icon slds-icon-text-default"
+                    style={undefined}
+                  >
+                    <use
+                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                    />
+                  </svg>
+                  
+                </span>
+              </button>
+            </div>
+            <div
+              id="listbox-selections-unique-id"
+              orientation="horizontal"
+              role="listbox"
+            >
+              <ul
+                aria-label="Selected Options:"
+                className="slds-listbox slds-listbox_inline slds-p-top_xxx-small"
+                role="group"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -1964,41 +1994,56 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
           className="slds-form-element"
         >
           <div
-            className="slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click slds-picklist--fluid slds-shrink-none"
-            onKeyDown={[Function]}
-            onMouseDown={[Function]}
+            className="slds-form-element slds-picklist--fluid slds-shrink-none"
           >
-            <button
-              aria-describedby={undefined}
-              aria-expanded={undefined}
-              aria-haspopup="true"
-              className="slds-button slds-button--neutral slds-picklist__label"
-              disabled={undefined}
-              id="sample-datepicker-year-picklist"
-              onClick={[Function]}
-              tabIndex={0}
+            <div
+              className="slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click slds-picklist--fluid slds-shrink-none"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
             >
-              <span
-                className="slds-truncate"
+              <button
+                aria-describedby={undefined}
+                aria-expanded={undefined}
+                aria-haspopup="true"
+                className="slds-button slds-button--neutral slds-picklist__label"
+                disabled={undefined}
+                id="sample-datepicker-year-picklist"
+                onClick={[Function]}
+                tabIndex={0}
               >
-                2014
-              </span>
-              <span
-                className={undefined}
-                title={undefined}
-              >
-                <svg
-                  aria-hidden="true"
-                  className="slds-icon slds-icon-text-default"
-                  style={undefined}
+                <span
+                  className="slds-truncate"
                 >
-                  <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-                  />
-                </svg>
-                
-              </span>
-            </button>
+                  2014
+                </span>
+                <span
+                  className={undefined}
+                  title={undefined}
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-icon slds-icon-text-default"
+                    style={undefined}
+                  >
+                    <use
+                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                    />
+                  </svg>
+                  
+                </span>
+              </button>
+            </div>
+            <div
+              id="listbox-selections-unique-id"
+              orientation="horizontal"
+              role="listbox"
+            >
+              <ul
+                aria-label="Selected Options:"
+                className="slds-listbox slds-listbox_inline slds-p-top_xxx-small"
+                role="group"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -2675,78 +2720,84 @@ exports[`Datepicker Default HTML Snapshot 1`] = `
             <div class=\\"slds-align-middle\\"><button class=\\"slds-button slds-button--icon-container\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#right\\"></use></svg><span class=\\"slds-assistive-text\\">Next month</span></button></div>
         </div>
         <div class=\\"slds-form-element\\">
-          <div class=\\"slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click slds-picklist--fluid slds-shrink-none\\"><button aria-haspopup=\\"true\\" class=\\"slds-button slds-button--neutral slds-picklist__label\\" id=\\"sample-datepicker-year-picklist\\" tabindex=\\"0\\"><span class=\\"slds-truncate\\">2014</span><span><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span></button></div>
+          <div class=\\"slds-form-element slds-picklist--fluid slds-shrink-none\\">
+            <div class=\\"slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click slds-picklist--fluid slds-shrink-none\\"><button aria-haspopup=\\"true\\" class=\\"slds-button slds-button--neutral slds-picklist__label\\" id=\\"sample-datepicker-year-picklist\\" tabindex=\\"0\\"><span class=\\"slds-truncate\\">2014</span><span><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span></button></div>
+            <div
+              id=\\"listbox-selections-unique-id\\" orientation=\\"horizontal\\" role=\\"listbox\\">
+              <ul class=\\"slds-listbox slds-listbox_inline slds-p-top_xxx-small\\" role=\\"group\\" aria-label=\\"Selected Options:\\"></ul>
+          </div>
         </div>
       </div>
-      <div class=\\"calendar\\">
-        <table class=\\"datepicker__month\\" role=\\"grid\\" aria-labelledby=\\"sample-datepicker-month\\">
-          <thead>
-            <tr>
-              <th><abbr title=\\"Sunday\\">Sun</abbr></th>
-              <th scope=\\"col\\"><abbr title=\\"Monday\\">Mon</abbr></th>
-              <th scope=\\"col\\"><abbr title=\\"Tuesday\\">Tue</abbr></th>
-              <th scope=\\"col\\"><abbr title=\\"Wednesday\\">Wed</abbr></th>
-              <th scope=\\"col\\"><abbr title=\\"Thursday\\">Thu</abbr></th>
-              <th scope=\\"col\\"><abbr title=\\"Friday\\">Fri</abbr></th>
-              <th scope=\\"col\\"><abbr title=\\"Saturday\\">Sat</abbr></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class=\\"week\\">
-              <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">29</span></td>
-              <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">30</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">1</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">2</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">3</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">4</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">5</span></td>
-            </tr>
-            <tr class=\\"week\\">
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">6</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">7</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">8</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">9</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">10</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">11</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">12</span></td>
-            </tr>
-            <tr class=\\"week\\">
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">13</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">14</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">15</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">16</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">17</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">18</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">19</span></td>
-            </tr>
-            <tr class=\\"week\\">
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">20</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">21</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">22</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"true\\" class=\\"slds-is-selected\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">23</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">24</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">25</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">26</span></td>
-            </tr>
-            <tr class=\\"week\\">
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">27</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">28</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">29</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">30</span></td>
-              <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">31</span></td>
-              <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">1</span></td>
-              <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">2</span></td>
-            </tr>
-            <tr class=\\"week\\">
-              <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\"><span class=\\"slds-day \\"> </span></td>
-            </tr>
-            <tr>
-              <td colspan=\\"7\\" role=\\"gridcell\\"><a href=\\"javascript:void(0)\\" tabindex=\\"0\\" class=\\"slds-show--inline-block slds-p-bottom--x-small\\">Today</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    </div>
+    <div class=\\"calendar\\">
+      <table class=\\"datepicker__month\\" role=\\"grid\\" aria-labelledby=\\"sample-datepicker-month\\">
+        <thead>
+          <tr>
+            <th><abbr title=\\"Sunday\\">Sun</abbr></th>
+            <th scope=\\"col\\"><abbr title=\\"Monday\\">Mon</abbr></th>
+            <th scope=\\"col\\"><abbr title=\\"Tuesday\\">Tue</abbr></th>
+            <th scope=\\"col\\"><abbr title=\\"Wednesday\\">Wed</abbr></th>
+            <th scope=\\"col\\"><abbr title=\\"Thursday\\">Thu</abbr></th>
+            <th scope=\\"col\\"><abbr title=\\"Friday\\">Fri</abbr></th>
+            <th scope=\\"col\\"><abbr title=\\"Saturday\\">Sat</abbr></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class=\\"week\\">
+            <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">29</span></td>
+            <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">30</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">1</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">2</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">3</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">4</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">5</span></td>
+          </tr>
+          <tr class=\\"week\\">
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">6</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">7</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">8</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">9</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">10</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">11</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">12</span></td>
+          </tr>
+          <tr class=\\"week\\">
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">13</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">14</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">15</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">16</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">17</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">18</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">19</span></td>
+          </tr>
+          <tr class=\\"week\\">
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">20</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">21</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">22</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"true\\" class=\\"slds-is-selected\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">23</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">24</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">25</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">26</span></td>
+          </tr>
+          <tr class=\\"week\\">
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">27</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">28</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">29</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">30</span></td>
+            <td aria-disabled=\\"false\\" aria-selected=\\"false\\" class=\\"\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">31</span></td>
+            <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">1</span></td>
+            <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\" role=\\"gridcell\\" tabindex=\\"-1\\"><span class=\\"slds-day\\">2</span></td>
+          </tr>
+          <tr class=\\"week\\">
+            <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\"><span class=\\"slds-day \\"> </span></td>
+          </tr>
+          <tr>
+            <td colspan=\\"7\\" role=\\"gridcell\\"><a href=\\"javascript:void(0)\\" tabindex=\\"0\\" class=\\"slds-show--inline-block slds-p-bottom--x-small\\">Today</a></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
+</div>
 </div>"
 `;
