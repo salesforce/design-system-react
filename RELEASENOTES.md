@@ -25,6 +25,9 @@ These are changes that have backwards-compatible solutions present and that comp
     - menu-list/list
 - BreadCrumb is now Breadcrumb (bread-crumb -> breadcrumb)
 
+## Upcoming release
+- You can know check this library's dependency on SLDS to make sure you have the CSS that this library is being developed with. The NPM git URL can be found in the published `package.json`. `SLDS: { gitURL: [URL]}`.
+
 ### Latest Release
 
 ## Release 0.6.13
