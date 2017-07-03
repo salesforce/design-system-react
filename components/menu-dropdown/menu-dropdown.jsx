@@ -695,6 +695,8 @@ const MenuDropdown = React.createClass({
 			positionClassName = `slds-dropdown--${this.props.align}`;
 		}
 
+		console.log(this.triggerContainer);
+
 		return (
 			isOpen ?
 				<Dialog
@@ -773,59 +775,99 @@ const MenuDropdown = React.createClass({
 		}
 		/* eslint-enable react/prop-types */
 
+		let positionClassName;
+		let marginTop;
+		const offset = this.props.offset;
+
+		if (this.props.nubbinPosition) {
+			const positions = this.props.nubbinPosition.split(' ');
+			positionClassName = classNames(
+				`slds-nubbin--${positions.join('-')}`,
+				positions.map((position) => `slds-dropdown--${position}`)
+			);
+			marginTop = 0;
+			// TODO: allow nubbinPosition prop to set the offset automatically
+			// if (this.props.nubbinPosition === 'top right') {
+			// 	offset = '-12px -24px';
+			// }
+		} else if (this.props.align) {
+			positionClassName = `slds-dropdown--${this.props.align}`;
+		}
+
+		const currentTrigger = (<CurrentTrigger
+			aria-haspopup
+			assistiveText={this.props.assistiveText}
+			className={classNames(outsideClickIgnoreClass, this.props.buttonClassName)}
+			disabled={this.props.disabled}
+			hint={this.props.hint}
+			iconCategory={this.props.iconCategory}
+			iconName={this.props.iconName}
+			iconPosition={this.props.iconPosition}
+			iconSize={this.props.iconSize}
+			iconVariant={this.props.iconVariant}
+			id={this.getId()}
+			inverse={this.props.buttonInverse}
+			isInline={isInline}
+			isOpen={isOpen}
+			label={this.props.label}
+			onBlur={this.props.onBlur}
+			onClick={
+				this.props.openOn === 'click'
+				|| this.props.openOn === 'hybrid'
+				? this.handleClick : this.props.onClick
+			}
+			onFocus={this.props.openOn === 'hover' ? this.handleFocus : null}
+			onKeyDown={this.handleKeyDown}
+			onMouseDown={this.props.onMouseDown}
+			onMouseEnter={(this.props.openOn === 'hover' || this.props.openOn === 'hybrid')
+				? this.handleMouseEnter
+				: null
+			}
+			onMouseLeave={
+				this.props.openOn === 'hover'
+				|| this.props.openOn === 'hybrid'
+				? this.handleMouseLeave : null}
+			openOn={this.props.openOn}
+			ref={this.saveRefToTriggerContainer}
+			style={this.props.style}
+			tabIndex={isOpen ? '-1' : '0'}
+			tooltip={this.props.tooltip}
+			triggerClassName={this.props.triggerClassName}
+			triggerRef={this.saveRefToTrigger}
+			variant={this.props.buttonVariant}
+			{...CustomTriggerChildProps}
+		/>);
+
 		/* Below are three sections of props:
 		 - The first are the props that may be given by the dropdown component. These may get deprecated in the future.
 		 - The next set of props (`CustomTriggerChildProps`) are props that can be overwritten by the end developer.
 		 - The final set are props that should not be overwritten, since they are ones that tie the trigger to the dropdown menu.
 		*/
 		return (
-			<CurrentTrigger
-				aria-haspopup
-				assistiveText={this.props.assistiveText}
-				className={classNames(outsideClickIgnoreClass, this.props.buttonClassName)}
-				disabled={this.props.disabled}
-				hint={this.props.hint}
-				iconCategory={this.props.iconCategory}
-				iconName={this.props.iconName}
-				iconPosition={this.props.iconPosition}
-				iconSize={this.props.iconSize}
-				iconVariant={this.props.iconVariant}
-				id={this.getId()}
-				inverse={this.props.buttonInverse}
-				isInline={isInline}
-				isOpen={isOpen}
-				label={this.props.label}
-				menu={isInline ?
-					this.renderInlineMenu(customContent, isOpen) :
-					this.renderDialog(customContent, isOpen, outsideClickIgnoreClass)
-				}
-				onBlur={this.props.onBlur}
-				onClick={
-					this.props.openOn === 'click'
-					|| this.props.openOn === 'hybrid'
-					? this.handleClick : this.props.onClick
-				}
-				onFocus={this.props.openOn === 'hover' ? this.handleFocus : null}
-				onKeyDown={this.handleKeyDown}
-				onMouseDown={this.props.onMouseDown}
-				onMouseEnter={(this.props.openOn === 'hover' || this.props.openOn === 'hybrid')
-					? this.handleMouseEnter
-					: null
-				}
-				onMouseLeave={
-					this.props.openOn === 'hover'
-					|| this.props.openOn === 'hybrid'
-					? this.handleMouseLeave : null}
-				openOn={this.props.openOn}
-				ref={this.saveRefToTriggerContainer}
-				style={this.props.style}
-				tabIndex={isOpen ? '-1' : '0'}
-				tooltip={this.props.tooltip}
-				triggerClassName={this.props.triggerClassName}
-				triggerRef={this.saveRefToTrigger}
-				variant={this.props.buttonVariant}
-				{...CustomTriggerChildProps}
-			/>
+			isOpen ?
+				<Dialog
+					className={classNames(this.props.containerClassName)}
+					closeOnTabKey
+					constrainToScrollParent={this.props.constrainToScrollParent}
+					contentsClassName={classNames('slds-dropdown',
+						'ignore-react-onclickoutside',
+						positionClassName,
+						this.props.className)}
+					flippable={!this.props.hasStaticAlignment}
+					horizontalAlign={this.props.align}
+					inheritTargetWidth={this.props.inheritTargetWidth}
+					marginTop={marginTop}
+					offset={offset}
+					onClose={this.handleClose}
+					onKeyDown={this.handleKeyDown}
+					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
+					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
+					outsideClickIgnoreClass={outsideClickIgnoreClass}
+					style={this.props.menuStyle}
+					targetElement={currentTrigger}
+				>
+					{this.renderMenuContent(customContent)}
+				</Dialog> : currentTrigger
 		);
 	}
 });

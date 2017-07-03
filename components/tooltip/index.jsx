@@ -118,6 +118,20 @@ class PopoverTooltip extends React.Component {
 		this.generatedId = shortid.generate();
 	}
 
+	// componentDidMount () {
+	// 	this.setState({
+	// 		el: ReactDOM.findDOMNode(this)
+	// 	});
+	// }
+
+	// componentDidUpdate (prevProps) {
+	// 	if (this.props.target && this.props.target !== prevProps.target) {
+	// 		this.setState({
+	// 			tooltipTarget: this.getTooltipTarget()
+	// 		});
+	// 	}
+	// }
+
 	componentWillUnmount () {
 		this.isUnmounting = true;
 	}
@@ -173,7 +187,7 @@ class PopoverTooltip extends React.Component {
 				marginLeft={getMargin.left(align)}
 				marginRight={getMargin.right(align)}
 				marginTop={getMargin.top(align)}
-				onClose={this.handleCancel}
+				onClose={this.handleCancel.bind(this)}
 				targetElement={this.getTooltipTarget()}
 				align={align}
 				horizontalAlign={getAlignment.horizontal(align)}
