@@ -155,3 +155,6 @@ export TabsPanel from './tabs/panel';
 
 export SLDSUtilityIcon from './utilities/utility-icon';
 export UtilityIcon from './utilities/utility-icon';
+
+export SLDSTree from './tree';
+export Tree from './tree';

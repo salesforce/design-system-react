@@ -18,9 +18,6 @@ import Item from './item';
 
 import Highlighter from '../../utilities/highlighter';
 
-// ### isArray
-import isArray from 'lodash.isarray';
-
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
@@ -205,7 +202,9 @@ renderBranch.propTypes = {
 	/**
 	 * The text of the tree item.
 	 */
-	label: PropTypes.string,
+	label: PropTypes.oneOfType([
+		PropTypes.node,
+		PropTypes.string]),
 	/**
 	 * The number of nestings. Determines the ARIA level and style alignment.
 	 */
@@ -246,7 +245,7 @@ const Branch = (props) => {
 		searchTerm
 	} = props;
 
-	if (isArray(props.getNodes(props.node))) {
+	if (Array.isArray(props.getNodes(props.node))) {
 		children = props.node.nodes.map((node, index) => {
 			let child;
 			const htmlId = `${props.treeId}-${node.id}`;
@@ -330,7 +329,9 @@ Branch.propTypes = {
 	/**
 	 * The text of the tree item.
 	 */
-	label: PropTypes.string,
+	label: PropTypes.oneOfType([
+		PropTypes.node,
+		PropTypes.string]),
 	/**
 	 * The number of nestings. Determines the ARIA level and style alignment.
 	 */

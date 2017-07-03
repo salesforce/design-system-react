@@ -10,7 +10,7 @@ const Example = React.createClass({
 				<div className="slds-col--padded">
 					<Picklist
 						label="Contacts"
-						onSelect={(value) => { console.log('selected: ', value); }}
+						onSelect={(option, data) => { console.log('selected: ', data.option); }}
 						options={[
 							{ label: 'Option A', value: 'A0' },
 							{ label: 'Option B', value: 'B0' },
@@ -25,7 +25,7 @@ const Example = React.createClass({
 				<div className="slds-col--padded">
 					<Picklist
 						label="Option selected"
-						onSelect={(value) => { console.log('selected: ', value); }}
+						onSelect={(option, data) => { console.log('selected: ', data.option); }}
 						options={[
 							{ label: 'Option A', value: 'A0' },
 							{ label: 'Option B', value: 'B0' },
@@ -42,7 +42,7 @@ const Example = React.createClass({
 					<Picklist
 						disabled
 						label="Disabled"
-						onSelect={(value) => { console.log('selected: ', value); }}
+						onSelect={(option, data) => { console.log('selected: ', data.option); }}
 						options={[
 							{ label: 'Option A', value: 'A0' },
 							{ label: 'Option B', value: 'B0' },

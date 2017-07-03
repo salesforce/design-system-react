@@ -155,9 +155,6 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 			// Enzyme is unable to find React inserted `<span>` tags due to text wrapping. Therefore the DOM transversal.
 
 			const clonedNode = handles.more.node.cloneNode();
-			console.log(handles.more.node);
-			console.log(clonedNode);
-
 			// const clonedNodeWithoutSpan = clonedNode.firstChild.remove();
 			// console.log(clonedNode);
 

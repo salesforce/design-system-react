@@ -32,6 +32,9 @@ import Dialog from '../utilities/dialog';
 import Icon from '../icon';
 import List from '../utilities/menu-list';
 import ListItemLabel from '../utilities/menu-list/item-label';
+import Pill from './private/pill';
+
+import { shape } from 'airbnb-prop-types';
 
 // ### Traits
 
@@ -76,18 +79,45 @@ const MenuPicklist = React.createClass({
 		 * Renders menu within the wrapping trigger as a sibling of the button. By default, you will have an absolutely positioned container at an elevated z-index.
 		 */
 		isInline: PropTypes.bool,
+		/**
+		 * Form element label
+		 */
 		label: PropTypes.string,
+		/**
+		 * **Text labels for internationalization**
+		 * This object is merged with the default props object on every render.
+		 * * `multipleOptionsSelected`: Text to be used when multiple items are selected. "2 Options Selected" is a good pattern to use.
+		 */
+		labels: shape({
+			multipleOptionsSelected: PropTypes.string
+		}),
 		/**
 		 * Custom element that overrides the default Menu Item component.
 		 */
 		listItemRenderer: PropTypes.func,
+		/**
+		 * Allows multiple items to be selected. Items will be shown in pills. Clicking the item does not close the menu.
+		 */
+		multiple: PropTypes.bool,
+		/**
+		 * Triggered when the trigger button is clicked to open.
+		 */
 		onClick: PropTypes.func,
+		/**
+		 * Triggered when an item is selected. Passes in the option object that has been selected and a data object in the format: `{ option, optionIndex }`. The first parameter may be deprecated in the future and changed to an event for consistency. Please use the data object.
+		 */
 		onSelect: PropTypes.func,
 		/**
 		 * Menu item data.
 		 */
 		options: PropTypes.array.isRequired,
+		/**
+		 * Text present in trigger button if no items are selected.
+		 */
 		placeholder: PropTypes.string,
+		/**
+		 * Add styling of a required form element.
+		 */
 		required: PropTypes.bool,
 		/**
 		 * Current selected item.
@@ -99,14 +129,19 @@ const MenuPicklist = React.createClass({
 		return {
 			inheritTargetWidth: true,
 			placeholder: 'Select an Option',
-			checkmark: true
+			checkmark: true,
+			labels: {
+				multipleOptionsSelected: 'Multiple Options Selected'
+			}
 		};
 	},
 
 	getInitialState () {
 		return {
 			focusedIndex: -1,
-			selectedIndex: -1
+			selectedIndex: -1,
+			selectedIndices: [],
+			currentPillLabel: ''
 		};
 	},
 
@@ -121,22 +156,42 @@ const MenuPicklist = React.createClass({
 
 		window.addEventListener('click', this.closeOnClick, false);
 
-		this.setState({
-			selectedIndex: this.getIndexByValue(this.props)
-		});
+		if (!this.props.multiple) {
+			this.setState({
+				selectedIndex: this.getIndexByValue(this.props)
+			});
+		} else {
+			const currentSelectedIndex = this.getIndexByValue(this.props);
+			const currentIndices = this.state.selectedIndices;
+			if (currentSelectedIndex !== -1) {
+				currentIndices.push(currentSelectedIndex);
+			}
+			this.setState({
+				selectedIndices: currentIndices
+			});
+		}
 	},
 
 	componentWillReceiveProps (nextProps) {
 		if (this.props.value !== nextProps.value || this.props.options.length !== nextProps.length) {
-			this.setState({
-				selectedIndex: this.getIndexByValue(nextProps)
-			});
+			if (this.props.multiple !== true) {
+				this.setState({
+					selectedIndex: this.getIndexByValue(nextProps)
+				});
+			} else {
+				const currentSelectedIndex = this.getIndexByValue(nextProps);
+				if (currentSelectedIndex !== -1) {
+					const currentIndices = this.state.selectedIndices.concat(currentSelectedIndex);
+					this.setState({
+						selectedIndices: currentIndices
+					});
+				}
+			}
 		}
 	},
 
 	componentWillUnmount () {
 		this.isUnmounting = true;
-
 		window.removeEventListener('click', this.closeOnClick, false);
 	},
 
@@ -178,12 +233,23 @@ const MenuPicklist = React.createClass({
 	},
 
 	handleSelect (index) {
-		this.setState({ selectedIndex: index });
-		this.handleClose();
-		this.setFocus();
+		if (!this.props.multiple) {
+			this.setState({ selectedIndex: index });
+			this.handleClose();
+			this.setFocus();
+		} else if (this.props.multiple && this.state.selectedIndices.indexOf(index) === -1) {
+			const currentIndices = this.state.selectedIndices.concat(index);
+			this.setState({
+				selectedIndices: currentIndices
+			});
+		} else if (this.props.multiple) {
+			const deselectIndex = this.state.selectedIndices.indexOf(index);
+			this.state.selectedIndices.splice(deselectIndex, 1);
+		}
 
 		if (this.props.onSelect) {
-			this.props.onSelect(this.getValueByIndex(index));
+			const option = this.getValueByIndex(index);
+			this.props.onSelect(option, { option, optionIndex: index });
 		}
 	},
 
@@ -298,7 +364,8 @@ const MenuPicklist = React.createClass({
 				onSelect={this.handleSelect}
 				options={this.props.options}
 				ref={this.saveRefToList}
-				selectedIndex={this.state.selectedIndex}
+				selectedIndex={!this.props.multiple ? this.state.selectedIndex : undefined}
+				selectedIndices={this.props.multiple ? this.state.selectedIndices : undefined}
 				triggerId={this.getId()}
 			/>
 		);
@@ -341,11 +408,6 @@ const MenuPicklist = React.createClass({
 		);
 	},
 
-	renderPlaceholder () {
-		const option = this.props.options[this.state.selectedIndex];
-		return (option && option.label) ? option.label : this.props.placeholder;
-	},
-
 	renderTrigger () {
 		let isInline;
 		/* eslint-disable react/prop-types */
@@ -355,6 +417,19 @@ const MenuPicklist = React.createClass({
 			isInline = !this.props.modal;
 		}
 		/* eslint-enable react/prop-types */
+
+		let inputValue;
+		if (this.props.multiple && this.state.selectedIndices.length === 0) {
+			inputValue = this.props.placeholder;
+		}	else if (this.props.multiple && this.state.selectedIndices.length === 1) {
+			const option = this.props.options[this.state.selectedIndices];
+			inputValue = option.label;
+		} else if (this.props.multiple && this.state.selectedIndices.length > 1) {
+			inputValue = this.props.labels.multipleOptionsSelected;
+		} else {
+			const option = this.props.options[this.state.selectedIndex];
+			inputValue = (option && option.label) ? option.label : this.props.placeholder;
+		}
 
 		// TODO: make use of <Button>
 		return (
@@ -379,10 +454,55 @@ const MenuPicklist = React.createClass({
 					ref={this.saveRefToTrigger}
 					tabIndex={this.state.isOpen ? -1 : 0}
 				>
-					<span className="slds-truncate">{this.renderPlaceholder()}</span>
+					<span className="slds-truncate">{inputValue}</span>
 					<Icon name="down" category="utility" />
 				</button>
 				{isInline ? this.renderInlineMenu() : this.renderDialog()}
+			</div>
+		);
+	},
+
+	renderPills () {
+		const selectedPills = this.state.selectedIndices.map((selectedPill) => {
+			const pillLabel = this.getValueByIndex(selectedPill).label;
+			return (
+				<li
+					className="slds-listbox__item"
+					key={`pill-${selectedPill}`}
+					role="presentation"
+				>
+					<Pill
+						eventData={{
+							item: this.props.options[selectedPill],
+							index: selectedPill
+						}}
+						events={{
+							onRequestRemove: (event, data) => {
+								const newData = this.state.selectedIndices;
+								newData.splice(this.state.selectedIndices.indexOf(data.eventData.index), 1);
+								this.setState({ selectedIndices: newData });
+							}
+						}}
+						labels={{
+							label: pillLabel
+						}}
+					/>
+				</li>
+			);
+		});
+		return (
+			<div
+				id="listbox-selections-unique-id"
+				orientation="horizontal"
+				role="listbox"
+			>
+				<ul
+					className="slds-listbox slds-listbox_inline slds-p-top_xxx-small"
+					role="group"
+					aria-label="Selected Options:"
+				>
+					{selectedPills}
+				</ul>
 			</div>
 		);
 	},
@@ -395,17 +515,17 @@ const MenuPicklist = React.createClass({
 			required
 		} = this.props;
 
-		if (label) {
-			const requiredElem = required ? <span style={{ color: 'red' }}>* </span> : null;
+		const requiredElem = required ? <span style={{ color: 'red' }}>* </span> : null;
 
-			return (
-				<div
-					className={classNames('slds-form-element', {
-						'slds-has-error': errorText
-					},
-					className)}
-				>
-					<label
+		return (
+			<div
+				className={classNames('slds-form-element', {
+					'slds-has-error': errorText
+				},
+				className)}
+			>
+				{this.props.label
+					? <label
 						className="slds-form-element__label"
 						htmlFor={this.getId()}
 						// inline style override
@@ -413,13 +533,12 @@ const MenuPicklist = React.createClass({
 					>
 						{requiredElem}{label}
 					</label>
-					{this.renderTrigger()}
-					{errorText && <div id={this.getErrorId()} className="slds-form-element__help">{errorText}</div>}
-				</div>
-			);
-		}
-
-		return this.renderTrigger();
+				: null}
+				{this.renderTrigger()}
+				{this.renderPills()}
+				{errorText && <div id={this.getErrorId()} className="slds-form-element__help">{errorText}</div>}
+			</div>
+		);
 	}
 });
 

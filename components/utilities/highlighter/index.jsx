@@ -16,10 +16,35 @@ import { HIGHLIGHTER } from '../../../utilities/constants';
  */
 const Highlighter = (props) => {
 	if (props.search) {
-		return (
-			<ReactHighlighter className={props.className} matchClass={null} matchElement="mark" search={props.search}>
+		let children;
+		if (typeof props.children === 'string') {
+			children = (<ReactHighlighter className={props.className} matchClass={null} matchElement="mark" search={props.search}>
 				{props.children}
-			</ReactHighlighter>
+			</ReactHighlighter>);
+		} else {
+			const findString = (nodeArr) =>
+				nodeArr.map((element) => {
+					let newElement;
+					if (typeof element === 'string') {
+						newElement = (<ReactHighlighter key={element} className={props.className} matchClass={null} matchElement="mark" search={props.search}>
+							{element}
+						</ReactHighlighter>);
+					} else {
+						newElement = element;
+					}
+					return newElement;
+				});
+
+			if (props.children.props) {
+				const node = props.children.props.children;
+				children = node instanceof Array ? findString(node) : node;
+			}
+		}
+
+		return (
+			<span>
+				{children}
+			</span>
 		);
 	}
 
@@ -37,7 +62,8 @@ Highlighter.propTypes = {
 	children: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number,
-		PropTypes.bool
+		PropTypes.bool,
+		PropTypes.node
 	]),
 	className: PropTypes.string,
 	/**
