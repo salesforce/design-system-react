@@ -18,9 +18,8 @@ const Example = React.createClass({
 	render () {
 		return (
 			<div>
-				<Button label="Open Modal with tagline (top aligned)" onClick={this.toggleOpen} />
+				<Button label="Open Modal with tagline" onClick={this.toggleOpen} />
 				<Modal
-					align="top"
 					isOpen={this.state.isOpen}
 					onRequestClose={this.toggleOpen}
 					tagline={<span>Here’s a tagline if you need it. It is allowed to extend across mulitple lines, so I’m making up content to show that to you. It is allowed to <a href="javascript:void(0);">contain links or be a link.</a></span>}
