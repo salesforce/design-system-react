@@ -5,7 +5,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../../icon';
 import { EventUtil } from '../../../utilities';
-import cx from 'classnames';
 
 const displayName = 'Lookup-Menu-Item';
 const propTypes = {
@@ -70,8 +69,10 @@ class Item extends React.Component {
 				</span>
 			)
 			: (
-				<span className="slds-media__body" style={{ 'alignSelf': 'center'}}>
-					<span className="slds-listbox__option-text slds-listbox__option-text_entity">{this.props.children.label}</span>
+				<span className="slds-media__body" style={{ alignSelf: 'center' }}>
+					<span className="slds-listbox__option-text slds-listbox__option-text_entity">
+						{this.props.children.label}
+					</span>
 				</span>
 			);
 	}
@@ -81,9 +82,8 @@ class Item extends React.Component {
 		if (this.props.isActive) itemClassName += ' slds-theme--shade';
 
 		return (
-      // IMPORTANT: anchor id is used to set lookup's input's aria-activedescendant
 			<li className={itemClassName} ref={(li) => { this.itemRef = li; }} role="presentation">
-				<span
+				<span // eslint-disable-line jsx-a11y/no-static-element-interactions
 					aria-disabled={this.props.isDisabled}
 					className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
 					id={this.props.id}
@@ -96,7 +96,7 @@ class Item extends React.Component {
 					{ this.props.listItemLabelRenderer ? this.getCustomLabel() : this.getLabel() }
 				</span>
 			</li>
-    );
+		);
 	}
 }
 

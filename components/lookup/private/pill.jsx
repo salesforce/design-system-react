@@ -85,11 +85,12 @@ const Pill = (props) => {
 		: null;
 
 	return (
+		// eslint-disable-next-line jsx-a11y/no-static-element-interactions
 		<span
 			className={pillClassName}
-			role={isOption ? "option" : null}
+			role={isOption ? 'option' : null}
 			tabIndex={isOption ? 0 : null}
-			aria-selected={isOption ? "true" : null}
+			aria-selected={isOption ? 'true' : null}
 			onKeyDown={(event) => {
 				handleKeyDown(event, {
 					events: props.events,
@@ -102,10 +103,11 @@ const Pill = (props) => {
 						{renderIcon}
 						{labels.label}
 					</span>
-					: <a href="javascript:void(0);" class="slds-pill__action" style={{width: "100%"}} title={labels.title}>
-							{renderIcon}
-							<span class="slds-pill__label">{labels.label}</span>
-						</a>
+					// eslint-disable-next-line no-script-url
+					: <a href="javascript:void(0);" className="slds-pill__action" style={{ width: '100%' }} title={labels.title}>
+						{renderIcon}
+						<span className="slds-pill__label">{labels.label}</span>
+					</a>
 			}
 
 			{props.events.onRequestRemove

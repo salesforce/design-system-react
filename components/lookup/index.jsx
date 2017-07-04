@@ -625,7 +625,7 @@ const Lookup = React.createClass({
 		if (this.props.assistiveText && this.props.assistiveText.label) {
 			return <span>{this.props.assistiveText.label}</span>;
 		}
-		const required = this.props.required ? <span className="slds-required">*</span> : null;
+		const required = this.props.required ? <abbr className="slds-required" title="required">*</abbr> : null;
 		return (
 			<label
 				className="slds-form-element__label slds-size_12-of-12"
@@ -756,7 +756,7 @@ const Lookup = React.createClass({
 					<div className={classNames(comboboxContainerClassName)}>
 						<div
 							className={classNames(comboboxClassName)}
-							aria-expanded={!!this.state.isOpen}
+							aria-expanded={this.state.isOpen}
 							aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
 							role="combobox"
 						>

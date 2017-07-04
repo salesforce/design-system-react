@@ -14,7 +14,7 @@ const Header = SLDSLookup.DefaultHeader;
 const Footer = SLDSLookup.DefaultFooter;
 const { Simulate, scryRenderedDOMComponentsWithClass, scryRenderedDOMComponentsWithTag } = TestUtils;
 
-describe('SLDSLookup: ', () => {
+describe.only('SLDSLookup: ', () => {
 	const generateLookup = function (lookupInstance) {
 		const reactCmp = TestUtils.renderIntoDocument(lookupInstance);
 		return ReactDOM.findDOMNode(reactCmp);
@@ -56,12 +56,7 @@ describe('SLDSLookup: ', () => {
 		it('renders label', () => {
 			const lookup = generateLookup(getLookup());
 			const label = lookup.getElementsByTagName('label')[0];
-			expect(label.textContent).to.equal('Account');
-		});
-		it('LookupWithSelection - renders label', () => {
-			const lookup = generateLookup(getLookupWithSelection());
-			const label = lookup.getElementsByTagName('span')[0];
-			expect(label.textContent).to.equal('Account');
+			expect(label.innerHTML).to.equal('<!-- react-text: 3 -->Account<!-- /react-text -->');
 		});
 	});
 
@@ -72,12 +67,10 @@ describe('SLDSLookup: ', () => {
 			const inputId = lookup.getElementsByTagName('input')[0].getAttribute('id');
 			expect(labelFor).to.equal(inputId);
 		});
-	});
 
-	describe('accessibility aria attributes pass', () => {
 		it('aria-expanded is false initally', () => {
 			const lookup = generateLookup(getLookup());
-			const ariaExpanded = lookup.getElementsByTagName('input')[0].getAttribute('aria-expanded');
+			const ariaExpanded = lookup.getElementsByClassName('slds-combobox')[0].getAttribute('aria-expanded');
 			expect(ariaExpanded).to.equal('false');
 		});
 
@@ -85,15 +78,15 @@ describe('SLDSLookup: ', () => {
 			const lookup = generateLookup(getLookup());
 			const input = lookup.getElementsByTagName('input')[0];
 			TestUtils.Simulate.click(input);
-			const ariaExpanded = lookup.getElementsByTagName('input')[0].getAttribute('aria-expanded');
+			const ariaExpanded = lookup.getElementsByClassName('slds-combobox')[0].getAttribute('aria-expanded');
 			expect(ariaExpanded).to.equal('true');
 		});
 
 		it('LookupWithSelection - aria-expanded is true when deleting selection', () => {
 			const lookup = generateLookup(getLookupWithSelection());
 			const deleteBtn = lookup.getElementsByTagName('button')[0];
-			TestUtils.Simulate.keyDown(deleteBtn, { key: 'Down', keyCode: 46, which: 46 });
-			const ariaExpanded = lookup.getElementsByTagName('input')[0].getAttribute('aria-expanded');
+			TestUtils.Simulate.click(deleteBtn);
+			const ariaExpanded = lookup.getElementsByClassName('slds-combobox')[0].getAttribute('aria-expanded');
 			expect(ariaExpanded).to.equal('true');
 		});
 	});
@@ -128,7 +121,7 @@ describe('SLDSLookup: ', () => {
 			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
 			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
 			TestUtils.Simulate.keyDown(input, { key: 'Enter', keyCode: 13, which: 13 });
-			const selected = lookup.getElementsByTagName('a')[0].getElementsByClassName('slds-pill__label')[0].textContent;
+			const selected = input.getAttribute('value');
 			expect(selected).to.equal('Paper St. Soap Company');
 		});
 
@@ -140,7 +133,7 @@ describe('SLDSLookup: ', () => {
 			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
 			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
 			TestUtils.Simulate.keyDown(input, { key: 'Enter', keyCode: 13, which: 13 });
-			const selected = lookup.getElementsByTagName('a')[0].getElementsByClassName('slds-pill__label')[0].textContent;
+			const selected = input.getAttribute('value');
 			expect(selected).to.equal('Tyrell Corp');
 		});
 
@@ -150,7 +143,7 @@ describe('SLDSLookup: ', () => {
 			TestUtils.Simulate.click(input);
 			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
 			TestUtils.Simulate.keyDown(input, { key: 'Esc', keyCode: 27, which: 27 });
-			const ariaExpanded = input.getAttribute('aria-expanded');
+			const ariaExpanded = lookup.getElementsByClassName('slds-combobox')[0].getAttribute('aria-expanded');
 			expect(ariaExpanded).to.equal('false');
 		});
 
@@ -200,10 +193,9 @@ describe('SLDSLookup: ', () => {
 		});
 
 		it('displays no items when item count is 0', () => {
-			expect(lookup.getElementsByClassName('slds-lookup__message').length).to.equal(0);
 			Simulate.change(input, { target: { value: 'kdjfksjdf' } });
 			expect(getItems(lookup).length).to.equal(1); // add item
-			expect(lookup.getElementsByClassName('slds-lookup__message').length).to.equal(1);
+			expect(lookup.getElementsByClassName('slds-listbox__option')[0].innerHTML).to.equal('No items found');
 		});
 	});
 
