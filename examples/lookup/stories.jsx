@@ -11,10 +11,12 @@ const DemoLookup = React.createClass({
 	getInitialState () {
 		return {
 			options: [
-				{ label: 'File 1' },
-				{ label: 'File 2' },
-				{ label: 'File 3' },
-				{ label: 'File 4' }
+				{ label: 'Paddy\'s Pub', subTitle: 'Boston, MA' },
+				{ label: 'Tyrell Corp', subTitle: 'San Francisco, CA' },
+				{ label: 'Paper St. Soap Company', subTitle: 'Beloit, WI' },
+				{ label: 'Nakatomi Investments', subTitle: 'Chicago, IL' },
+				{ label: 'Acme Landscaping' },
+				{ label: 'Acme Construction', subTitle: 'Grand Marais, MN' }
 			]
 		};
 	},
@@ -120,12 +122,12 @@ const DemoLookupMultipleSelected = React.createClass({
 storiesOf(LOOKUP, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Base > singleselect', () => <DemoLookup
-		emptyMessage="No Files found"
+		emptyMessage="No accounts found"
 		hasError={false}
-		iconCategory="utility"
-		iconName="open_folder"
+		iconCategory="standard"
+		iconName="account"
 		isInline
-		label="Files"
+		label="Accounts"
 	/>)
 	.add('Base > Single Select (preselected item)', () => <DemoLookupSingleSelected
 		emptyMessage="No Files found"

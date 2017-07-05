@@ -756,8 +756,8 @@ const Lookup = React.createClass({
 
 		const inputContainerClassName = {
 			'slds-combobox__form-element slds-input-has-icon': true,
-			'slds-input-has-icon_right': !this.hasSingleSelection(),
-			'slds-input-has-icon_left-right': this.hasSingleSelection()
+			'slds-input-has-icon_right': (!this.props.iconName && this.hasSingleSelection()) || !this.hasSingleSelection(),
+			'slds-input-has-icon_left-right': this.props.iconName && this.hasSingleSelection()
 		};
 
 		return (
