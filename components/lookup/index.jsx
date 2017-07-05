@@ -389,7 +389,7 @@ const Lookup = React.createClass({
 	},
 
 	handleMultiSelect (index) {
-		if (!this.state.selectedIndices.includes(index)) {
+		if (this.state.selectedIndices.indexOf(index) === -1) {
 			const currentIndices = this.state.selectedIndices.concat(index);
 			this.setState({
 				selectedIndices: currentIndices

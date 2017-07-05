@@ -14,7 +14,7 @@ const Header = SLDSLookup.DefaultHeader;
 const Footer = SLDSLookup.DefaultFooter;
 const { Simulate, scryRenderedDOMComponentsWithClass, scryRenderedDOMComponentsWithTag } = TestUtils;
 
-describe.only('SLDSLookup: ', () => {
+describe('SLDSLookup: ', () => {
 	const generateLookup = function (lookupInstance) {
 		const reactCmp = TestUtils.renderIntoDocument(lookupInstance);
 		return ReactDOM.findDOMNode(reactCmp);
@@ -92,7 +92,7 @@ describe.only('SLDSLookup: ', () => {
 	});
 
 
-	describe('selecting item works', () => {
+	describe('Single Select - selecting item works', () => {
 		it('no fixed header: focuses correct item', () => {
 			const lookup = generateLookup(getLookup());
 			const input = lookup.getElementsByTagName('input')[0];
@@ -164,6 +164,47 @@ describe.only('SLDSLookup: ', () => {
 			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
 			const focusedItem = lookup.getElementsByTagName('ul')[0].getElementsByTagName('li')[0];
 			expect(focusedItem.className).to.have.string('slds-theme--shade');
+		});
+	});
+
+	describe('Multiple Select - selecting items work', () => {
+		let lookup;
+		let input;
+
+		beforeEach(() => {
+			lookup = generateLookup(getLookup({ multiple: true }));
+			input = lookup.getElementsByTagName('input')[0];
+			TestUtils.Simulate.click(input);
+			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
+			TestUtils.Simulate.keyDown(input, { key: 'Enter', keyCode: 13, which: 13 });
+		});
+
+		afterEach(() => {
+			lookup = null;
+		});
+
+		it('renders pills', () => {
+			const pills = lookup.getElementsByClassName('slds-pill');
+			expect(pills.length).to.equal(1);
+		});
+
+		it('deletes pill when clicking remove button', () => {
+			const pills = lookup.getElementsByClassName('slds-pill');
+			expect(pills.length).to.equal(1);
+
+			const deleteBtn = pills[0].getElementsByTagName('button')[0];
+			TestUtils.Simulate.click(deleteBtn);
+			expect(pills.length).to.equal(0);
+		});
+
+		it('deletes pill on delete/backspace key', () => {
+			const pills = lookup.getElementsByClassName('slds-pill');
+			const pill1 = lookup.getElementsByClassName('slds-pill')[0];
+			expect(pills.length).to.equal(1);
+
+			TestUtils.Simulate.keyDown(input, { key: 'Tab', keyCode: 9, which: 9 });
+			TestUtils.Simulate.keyDown(pill1, { key: 'Backspace', keyCode: 8, which: 8 });
+			expect(pills.length).to.equal(0);
 		});
 	});
 
