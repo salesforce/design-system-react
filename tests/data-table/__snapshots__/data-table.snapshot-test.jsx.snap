@@ -1,151 +1,153 @@
-exports[`test DataTable Advanced HTML Snapshot 1`] = `
-"<div style=\"overflow:auto;\">
-  <table class=\"slds-table slds-table--fixed-layout slds-table--bordered\" id=\"DataTableExample-2\" role=\"grid\">
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataTable Advanced HTML Snapshot 1`] = `
+"<div style=\\"overflow:auto;\\">
+  <table class=\\"slds-table slds-table--fixed-layout slds-table--bordered\\" id=\\"DataTableExample-2\\" role=\\"grid\\">
     <thead>
-      <tr class=\"slds-text-title--caps\">
-        <th class=\"slds-text-align--right\" scope=\"col\" style=\"width:3.25rem;\">
-          <div class=\"slds-th__action slds-th__action--form\">
-            <div class=\"slds-form-element\">
-              <div class=\"slds-form-element__control\"><span class=\"slds-checkbox\"><input type=\"checkbox\" id=\"DataTableExample-2-SLDSDataTableHead-SelectAll\" name=\"SelectAll\"/><label class=\"slds-checkbox__label\" for=\"DataTableExample-2-SLDSDataTableHead-SelectAll\"><span class=\"slds-checkbox--faux\"></span>
+      <tr class=\\"slds-text-title--caps\\">
+        <th class=\\"slds-text-align--right\\" scope=\\"col\\" style=\\"width:3.25rem;\\">
+          <div class=\\"slds-th__action slds-th__action--form\\">
+            <div class=\\"slds-form-element\\">
+              <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" id=\\"DataTableExample-2-SLDSDataTableHead-SelectAll\\" name=\\"SelectAll\\"/><label class=\\"slds-checkbox__label\\" for=\\"DataTableExample-2-SLDSDataTableHead-SelectAll\\"><span class=\\"slds-checkbox--faux\\"></span>
                 <span
-                  class=\"slds-assistive-text\">Select all rows</span>
+                  class=\\"slds-assistive-text\\">Select all rows</span>
                   </label>
                   </span>
               </div>
             </div>
           </div>
         </th>
-        <th aria-sort=\"ascending\" class=\"slds-is-sortable slds-is-sorted\" focusable=\"true\" scope=\"col\" style=\"width:10rem;\"><a href=\"javascript:void(0)\" class=\"slds-th__action slds-text-link--reset\" tabindex=\"0\"><span class=\"slds-assistive-text\">Sort </span><span class=\"slds-truncate\" title=\"Name\">Name</span><span><svg aria-hidden=\"true\" class=\"slds-is-sortable__icon slds-icon slds-icon--x-small slds-icon-text-default\" viewBox=\"0 0 24 24\" name=\"arrowup\"><path d=\"M19.1 9.7c.4-.4.4-.9 0-1.3l-6.9-6.7c-.4-.4-.9-.4-1.3 0L4 8.4c-.4.4-.4.9 0 1.3l1.3 1.2c.3.4.9.4 1.3 0l2.1-2.1c.4-.4 1-.1 1 .4v12.5c0 .5.5.9 1 .9h1.8c.5 0 .9-.5.9-.9V9.2c0-.5.7-.8 1-.4l2.2 2.1c.4.4.9.4 1.3 0l1.2-1.2z\"></path></svg></span><span class=\"slds-assistive-text\" aria-live=\"assertive\" aria-atomic=\"true\">Sorted Ascending</span></a></th>
+        <th aria-sort=\\"ascending\\" class=\\"slds-is-sortable slds-is-sorted\\" focusable=\\"true\\" scope=\\"col\\" style=\\"width:10rem;\\"><a href=\\"javascript:void(0)\\" class=\\"slds-th__action slds-text-link--reset\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Sort </span><span class=\\"slds-truncate\\" title=\\"Name\\">Name</span><span><svg aria-hidden=\\"true\\" class=\\"slds-is-sortable__icon slds-icon slds-icon--x-small slds-icon-text-default\\" viewBox=\\"0 0 24 24\\" name=\\"arrowup\\"><path d=\\"M19.1 9.7c.4-.4.4-.9 0-1.3l-6.9-6.7c-.4-.4-.9-.4-1.3 0L4 8.4c-.4.4-.4.9 0 1.3l1.3 1.2c.3.4.9.4 1.3 0l2.1-2.1c.4-.4 1-.1 1 .4v12.5c0 .5.5.9 1 .9h1.8c.5 0 .9-.5.9-.9V9.2c0-.5.7-.8 1-.4l2.2 2.1c.4.4.9.4 1.3 0l1.2-1.2z\\"></path></svg></span><span class=\\"slds-assistive-text\\" aria-live=\\"assertive\\" aria-atomic=\\"true\\">Sorted Ascending</span></a></th>
         <th
-          class=\"\" scope=\"col\" style=\"width:8rem;\">
-          <div class=\"slds-truncate\">Account Name</div>
+          class=\\"\\" scope=\\"col\\" style=\\"width:8rem;\\">
+          <div class=\\"slds-truncate\\">Account Name</div>
           </th>
-          <th class=\"\" scope=\"col\">
-            <div class=\"slds-truncate\">Close Date</div>
+          <th class=\\"\\" scope=\\"col\\">
+            <div class=\\"slds-truncate\\">Close Date</div>
           </th>
-          <th class=\"\" scope=\"col\">
-            <div class=\"slds-truncate\">Stage</div>
+          <th class=\\"\\" scope=\\"col\\">
+            <div class=\\"slds-truncate\\">Stage</div>
           </th>
-          <th class=\"slds-is-sortable\" focusable=\"true\" scope=\"col\"><a href=\"javascript:void(0)\" class=\"slds-th__action slds-text-link--reset\" tabindex=\"0\"><span class=\"slds-assistive-text\">Sort </span><span class=\"slds-truncate\" title=\"Confidence\">Confidence</span><span><svg aria-hidden=\"true\" class=\"slds-is-sortable__icon slds-icon slds-icon--x-small slds-icon-text-default\" viewBox=\"0 0 24 24\" name=\"arrowup\"><path d=\"M19.1 9.7c.4-.4.4-.9 0-1.3l-6.9-6.7c-.4-.4-.9-.4-1.3 0L4 8.4c-.4.4-.4.9 0 1.3l1.3 1.2c.3.4.9.4 1.3 0l2.1-2.1c.4-.4 1-.1 1 .4v12.5c0 .5.5.9 1 .9h1.8c.5 0 .9-.5.9-.9V9.2c0-.5.7-.8 1-.4l2.2 2.1c.4.4.9.4 1.3 0l1.2-1.2z\"></path></svg></span><span class=\"slds-assistive-text\" aria-live=\"assertive\" aria-atomic=\"true\">Sorted Ascending</span></a></th>
+          <th class=\\"slds-is-sortable\\" focusable=\\"true\\" scope=\\"col\\"><a href=\\"javascript:void(0)\\" class=\\"slds-th__action slds-text-link--reset\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Sort </span><span class=\\"slds-truncate\\" title=\\"Confidence\\">Confidence</span><span><svg aria-hidden=\\"true\\" class=\\"slds-is-sortable__icon slds-icon slds-icon--x-small slds-icon-text-default\\" viewBox=\\"0 0 24 24\\" name=\\"arrowup\\"><path d=\\"M19.1 9.7c.4-.4.4-.9 0-1.3l-6.9-6.7c-.4-.4-.9-.4-1.3 0L4 8.4c-.4.4-.4.9 0 1.3l1.3 1.2c.3.4.9.4 1.3 0l2.1-2.1c.4-.4 1-.1 1 .4v12.5c0 .5.5.9 1 .9h1.8c.5 0 .9-.5.9-.9V9.2c0-.5.7-.8 1-.4l2.2 2.1c.4.4.9.4 1.3 0l1.2-1.2z\\"></path></svg></span><span class=\\"slds-assistive-text\\" aria-live=\\"assertive\\" aria-atomic=\\"true\\">Sorted Ascending</span></a></th>
           <th
-            class=\"\" scope=\"col\">
-            <div class=\"slds-truncate\">Amount</div>
+            class=\\"\\" scope=\\"col\\">
+            <div class=\\"slds-truncate\\">Amount</div>
             </th>
-            <th class=\"\" scope=\"col\">
-              <div class=\"slds-truncate\">Contact</div>
+            <th class=\\"\\" scope=\\"col\\">
+              <div class=\\"slds-truncate\\">Contact</div>
             </th>
-            <th scope=\"col\" style=\"width:3.25rem;\">
-              <div class=\"slds-th__action\"><span class=\"slds-assistive-text\">Actions</span></div>
+            <th scope=\\"col\\" style=\\"width:3.25rem;\\">
+              <div class=\\"slds-th__action\\"><span class=\\"slds-assistive-text\\">Actions</span></div>
             </th>
       </tr>
     </thead>
     <tbody>
-      <tr class=\"slds-hint-parent\">
-        <td role=\"gridcell\" class=\"slds-text-align--right\" data-label=\"Select Row\" style=\"width:3.25rem;\">
-          <div class=\"slds-form-element\">
-            <div class=\"slds-form-element__control\"><span class=\"slds-checkbox\"><input type=\"checkbox\" id=\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow\" name=\"SelectRow\"/><label class=\"slds-checkbox__label\" for=\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow\"><span class=\"slds-checkbox--faux\"></span>
+      <tr class=\\"slds-hint-parent\\">
+        <td role=\\"gridcell\\" class=\\"slds-text-align--right\\" data-label=\\"Select Row\\" style=\\"width:3.25rem;\\">
+          <div class=\\"slds-form-element\\">
+            <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" id=\\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow\\" name=\\"SelectRow\\"/><label class=\\"slds-checkbox__label\\" for=\\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow\\"><span class=\\"slds-checkbox--faux\\"></span>
               <span
-                class=\"slds-assistive-text\">Select row</span>
+                class=\\"slds-assistive-text\\">Select row</span>
                 </label>
                 </span>
             </div>
           </div>
         </td>
-        <th role=\"gridcell\" style=\"width:10rem;\">
-          <div class=\"slds-truncate\" title=\"Acme - 1,200 Widgets\"><a href=\"javascript:void(0);\">Acme - 1,200 Widgets</a></div>
+        <th role=\\"gridcell\\" style=\\"width:10rem;\\">
+          <div class=\\"slds-truncate\\" title=\\"Acme - 1,200 Widgets\\"><a href=\\"javascript:void(0);\\">Acme - 1,200 Widgets</a></div>
         </th>
-        <td role=\"gridcell\" style=\"width:8rem;\">
-          <div class=\"slds-truncate\" title=\"Acme\">Acme</div>
+        <td role=\\"gridcell\\" style=\\"width:8rem;\\">
+          <div class=\\"slds-truncate\\" title=\\"Acme\\">Acme</div>
         </td>
-        <td role=\"gridcell\">
-          <div class=\"slds-truncate\" title=\"4/10/15\">4/10/15</div>
+        <td role=\\"gridcell\\">
+          <div class=\\"slds-truncate\\" title=\\"4/10/15\\">4/10/15</div>
         </td>
-        <td role=\"gridcell\">
-          <div class=\"slds-truncate\" title=\"Value Proposition\">Value Proposition</div>
+        <td role=\\"gridcell\\">
+          <div class=\\"slds-truncate\\" title=\\"Value Proposition\\">Value Proposition</div>
         </td>
-        <td role=\"gridcell\">
-          <div class=\"slds-truncate\" title=\"30%\">30%</div>
+        <td role=\\"gridcell\\">
+          <div class=\\"slds-truncate\\" title=\\"30%\\">30%</div>
         </td>
-        <td role=\"gridcell\">
-          <div class=\"slds-truncate\" title=\"$25,000,000\">$25,000,000</div>
+        <td role=\\"gridcell\\">
+          <div class=\\"slds-truncate\\" title=\\"$25,000,000\\">$25,000,000</div>
         </td>
-        <td role=\"gridcell\">
-          <div class=\"slds-truncate\" title=\"jrogers@acme.com\"><a href=\"javascript:void(0);\">jrogers@acme.com</a></div>
+        <td role=\\"gridcell\\">
+          <div class=\\"slds-truncate\\" title=\\"jrogers@acme.com\\"><a href=\\"javascript:void(0);\\">jrogers@acme.com</a></div>
         </td>
-        <td class=\"\" data-label=\"Actions\" style=\"width:3.25rem;\">
-          <div class=\"slds-dropdown-trigger slds-dropdown-trigger--click\" id=\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions\"><button aria-expanded=\"false\" aria-haspopup=\"true\" class=\"slds-button slds-button--icon-border-filled slds-button--icon-small ignore-click-DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions slds-button--icon-x-small\" tabindex=\"0\"><svg aria-hidden=\"true\" class=\"slds-button__icon slds-button__icon--hint\" viewBox=\"0 0 24 24\" name=\"down\"><path d=\"M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z\"></path></svg><span class=\"slds-assistive-text\">Actions</span></button></div>
+        <td class=\\"\\" data-label=\\"Actions\\" style=\\"width:3.25rem;\\">
+          <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-border-filled slds-button--icon-small ignore-click-DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions slds-button--icon-x-small\\" tabindex=\\"0\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\" viewBox=\\"0 0 24 24\\" name=\\"down\\"><path d=\\"M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z\\"></path></svg><span class=\\"slds-assistive-text\\">Actions</span></button></div>
         </td>
       </tr>
-      <tr class=\"slds-hint-parent\">
-        <td role=\"gridcell\" class=\"slds-text-align--right\" data-label=\"Select Row\" style=\"width:3.25rem;\">
-          <div class=\"slds-form-element\">
-            <div class=\"slds-form-element__control\"><span class=\"slds-checkbox\"><input type=\"checkbox\" id=\"DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow\" name=\"SelectRow\"/><label class=\"slds-checkbox__label\" for=\"DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow\"><span class=\"slds-checkbox--faux\"></span>
+      <tr class=\\"slds-hint-parent\\">
+        <td role=\\"gridcell\\" class=\\"slds-text-align--right\\" data-label=\\"Select Row\\" style=\\"width:3.25rem;\\">
+          <div class=\\"slds-form-element\\">
+            <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" id=\\"DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow\\" name=\\"SelectRow\\"/><label class=\\"slds-checkbox__label\\" for=\\"DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow\\"><span class=\\"slds-checkbox--faux\\"></span>
               <span
-                class=\"slds-assistive-text\">Select row</span>
+                class=\\"slds-assistive-text\\">Select row</span>
                 </label>
                 </span>
             </div>
           </div>
         </td>
-        <th role=\"gridcell\" style=\"width:10rem;\">
-          <div class=\"slds-truncate\" title=\"Acme - 200 Widgets\"><a href=\"javascript:void(0);\">Acme - 200 Widgets</a></div>
+        <th role=\\"gridcell\\" style=\\"width:10rem;\\">
+          <div class=\\"slds-truncate\\" title=\\"Acme - 200 Widgets\\"><a href=\\"javascript:void(0);\\">Acme - 200 Widgets</a></div>
         </th>
-        <td role=\"gridcell\" style=\"width:8rem;\">
-          <div class=\"slds-truncate\" title=\"Acme\">Acme</div>
+        <td role=\\"gridcell\\" style=\\"width:8rem;\\">
+          <div class=\\"slds-truncate\\" title=\\"Acme\\">Acme</div>
         </td>
-        <td role=\"gridcell\">
-          <div class=\"slds-truncate\" title=\"1/31/15\">1/31/15</div>
+        <td role=\\"gridcell\\">
+          <div class=\\"slds-truncate\\" title=\\"1/31/15\\">1/31/15</div>
         </td>
-        <td role=\"gridcell\">
-          <div class=\"slds-truncate\" title=\"Prospecting\">Prospecting</div>
+        <td role=\\"gridcell\\">
+          <div class=\\"slds-truncate\\" title=\\"Prospecting\\">Prospecting</div>
         </td>
-        <td role=\"gridcell\">
-          <div class=\"slds-truncate\" title=\"60%\">60%</div>
+        <td role=\\"gridcell\\">
+          <div class=\\"slds-truncate\\" title=\\"60%\\">60%</div>
         </td>
-        <td role=\"gridcell\">
-          <div class=\"slds-truncate\" title=\"$5,000,000\">$5,000,000</div>
+        <td role=\\"gridcell\\">
+          <div class=\\"slds-truncate\\" title=\\"$5,000,000\\">$5,000,000</div>
         </td>
-        <td role=\"gridcell\">
-          <div class=\"slds-truncate\" title=\"bob@acme.com\"><a href=\"javascript:void(0);\">bob@acme.com</a></div>
+        <td role=\\"gridcell\\">
+          <div class=\\"slds-truncate\\" title=\\"bob@acme.com\\"><a href=\\"javascript:void(0);\\">bob@acme.com</a></div>
         </td>
-        <td class=\"\" data-label=\"Actions\" style=\"width:3.25rem;\">
-          <div class=\"slds-dropdown-trigger slds-dropdown-trigger--click\" id=\"DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions\"><button aria-expanded=\"false\" aria-haspopup=\"true\" class=\"slds-button slds-button--icon-border-filled slds-button--icon-small ignore-click-DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions slds-button--icon-x-small\" tabindex=\"0\"><svg aria-hidden=\"true\" class=\"slds-button__icon slds-button__icon--hint\" viewBox=\"0 0 24 24\" name=\"down\"><path d=\"M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z\"></path></svg><span class=\"slds-assistive-text\">Actions</span></button></div>
+        <td class=\\"\\" data-label=\\"Actions\\" style=\\"width:3.25rem;\\">
+          <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-border-filled slds-button--icon-small ignore-click-DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions slds-button--icon-x-small\\" tabindex=\\"0\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\" viewBox=\\"0 0 24 24\\" name=\\"down\\"><path d=\\"M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z\\"></path></svg><span class=\\"slds-assistive-text\\">Actions</span></button></div>
         </td>
       </tr>
-      <tr class=\"slds-hint-parent slds-is-selected\">
-        <td role=\"gridcell\" class=\"slds-text-align--right\" data-label=\"Select Row\" style=\"width:3.25rem;\">
-          <div class=\"slds-form-element\">
-            <div class=\"slds-form-element__control\"><span class=\"slds-checkbox\"><input type=\"checkbox\" checked=\"\" id=\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SelectRow\" name=\"SelectRow\"/><label class=\"slds-checkbox__label\" for=\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SelectRow\"><span class=\"slds-checkbox--faux\"></span>
+      <tr class=\\"slds-hint-parent slds-is-selected\\">
+        <td role=\\"gridcell\\" class=\\"slds-text-align--right\\" data-label=\\"Select Row\\" style=\\"width:3.25rem;\\">
+          <div class=\\"slds-form-element\\">
+            <div class=\\"slds-form-element__control\\"><span class=\\"slds-checkbox\\"><input type=\\"checkbox\\" checked=\\"\\" id=\\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SelectRow\\" name=\\"SelectRow\\"/><label class=\\"slds-checkbox__label\\" for=\\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SelectRow\\"><span class=\\"slds-checkbox--faux\\"></span>
               <span
-                class=\"slds-assistive-text\">Select row</span>
+                class=\\"slds-assistive-text\\">Select row</span>
                 </label>
                 </span>
             </div>
           </div>
         </td>
-        <th role=\"gridcell\" style=\"width:10rem;\">
-          <div class=\"slds-truncate\" title=\"salesforce.com - 1,000 Widgets\"><a href=\"javascript:void(0);\">salesforce.com - 1,000 Widgets</a></div>
+        <th role=\\"gridcell\\" style=\\"width:10rem;\\">
+          <div class=\\"slds-truncate\\" title=\\"salesforce.com - 1,000 Widgets\\"><a href=\\"javascript:void(0);\\">salesforce.com - 1,000 Widgets</a></div>
         </th>
-        <td role=\"gridcell\" style=\"width:8rem;\">
-          <div class=\"slds-truncate\" title=\"salesforce.com\">salesforce.com</div>
+        <td role=\\"gridcell\\" style=\\"width:8rem;\\">
+          <div class=\\"slds-truncate\\" title=\\"salesforce.com\\">salesforce.com</div>
         </td>
-        <td role=\"gridcell\">
-          <div class=\"slds-truncate\" title=\"1/31/15 3:45PM\">1/31/15 3:45PM</div>
+        <td role=\\"gridcell\\">
+          <div class=\\"slds-truncate\\" title=\\"1/31/15 3:45PM\\">1/31/15 3:45PM</div>
         </td>
-        <td role=\"gridcell\">
-          <div class=\"slds-truncate\" title=\"Id. Decision Makers\">Id. Decision Makers</div>
+        <td role=\\"gridcell\\">
+          <div class=\\"slds-truncate\\" title=\\"Id. Decision Makers\\">Id. Decision Makers</div>
         </td>
-        <td role=\"gridcell\">
-          <div class=\"slds-truncate\" title=\"70%\">70%</div>
+        <td role=\\"gridcell\\">
+          <div class=\\"slds-truncate\\" title=\\"70%\\">70%</div>
         </td>
-        <td role=\"gridcell\">
-          <div class=\"slds-truncate\" title=\"$25,000\">$25,000</div>
+        <td role=\\"gridcell\\">
+          <div class=\\"slds-truncate\\" title=\\"$25,000\\">$25,000</div>
         </td>
-        <td role=\"gridcell\">
-          <div class=\"slds-truncate\" title=\"nathan@salesforce.com\"><a href=\"javascript:void(0);\">nathan@salesforce.com</a></div>
+        <td role=\\"gridcell\\">
+          <div class=\\"slds-truncate\\" title=\\"nathan@salesforce.com\\"><a href=\\"javascript:void(0);\\">nathan@salesforce.com</a></div>
         </td>
-        <td class=\"\" data-label=\"Actions\" style=\"width:3.25rem;\">
-          <div class=\"slds-dropdown-trigger slds-dropdown-trigger--click\" id=\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions\"><button aria-expanded=\"false\" aria-haspopup=\"true\" class=\"slds-button slds-button--icon-border-filled slds-button--icon-small ignore-click-DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions slds-button--icon-x-small\" tabindex=\"0\"><svg aria-hidden=\"true\" class=\"slds-button__icon slds-button__icon--hint\" viewBox=\"0 0 24 24\" name=\"down\"><path d=\"M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z\"></path></svg><span class=\"slds-assistive-text\">Actions</span></button></div>
+        <td class=\\"\\" data-label=\\"Actions\\" style=\\"width:3.25rem;\\">
+          <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-border-filled slds-button--icon-small ignore-click-DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions slds-button--icon-x-small\\" tabindex=\\"0\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\" viewBox=\\"0 0 24 24\\" name=\\"down\\"><path d=\\"M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z\\"></path></svg><span class=\\"slds-assistive-text\\">Actions</span></button></div>
         </td>
       </tr>
     </tbody>
@@ -153,499 +155,499 @@ exports[`test DataTable Advanced HTML Snapshot 1`] = `
 </div>"
 `;
 
-exports[`test DataTable Basic HTML Snapshot 1`] = `
-"<div style=\"overflow:auto;\">
-  <h3 class=\"slds-text-heading--medium slds-m-vertical--medium\">Default Fluid Layout</h3>
-  <table class=\"slds-table slds-table--bordered slds-table--cell-buffer\" id=\"DataTableExample-1-default\">
+exports[`DataTable Basic HTML Snapshot 1`] = `
+"<div style=\\"overflow:auto;\\">
+  <h3 class=\\"slds-text-heading--medium slds-m-vertical--medium\\">Default Fluid Layout</h3>
+  <table class=\\"slds-table slds-table--bordered slds-table--cell-buffer\\" id=\\"DataTableExample-1-default\\">
     <thead>
-      <tr class=\"slds-text-title--caps\">
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Opportunity Name</div>
+      <tr class=\\"slds-text-title--caps\\">
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Opportunity Name</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Account Name</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Account Name</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Close Date</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Close Date</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Stage</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Stage</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Confidence</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Confidence</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Amount</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Amount</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Contact</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Contact</div>
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr class=\"\">
+      <tr class=\\"\\">
         <td>
-          <div class=\"\" title=\"Cloudhub\"><a href=\"javascript:void(0);\">Cloudhub</a></div>
+          <div class=\\"\\" title=\\"Cloudhub\\"><a href=\\"javascript:void(0);\\">Cloudhub</a></div>
         </td>
         <td>
-          <div class=\"\" title=\"Cloudhub\">Cloudhub</div>
+          <div class=\\"\\" title=\\"Cloudhub\\">Cloudhub</div>
         </td>
         <td>
-          <div class=\"\" title=\"4/14/2015\">4/14/2015</div>
+          <div class=\\"\\" title=\\"4/14/2015\\">4/14/2015</div>
         </td>
         <td>
-          <div class=\"\" title=\"Prospecting\">Prospecting</div>
+          <div class=\\"\\" title=\\"Prospecting\\">Prospecting</div>
         </td>
         <td>
-          <div class=\"\" title=\"20%\">20%</div>
+          <div class=\\"\\" title=\\"20%\\">20%</div>
         </td>
         <td>
-          <div class=\"\" title=\"$25k\">$25k</div>
+          <div class=\\"\\" title=\\"$25k\\">$25k</div>
         </td>
         <td>
-          <div class=\"\" title=\"jrogers@cloudhub.com\"><a href=\"javascript:void(0);\">jrogers@cloudhub.com</a></div>
-        </td>
-      </tr>
-      <tr class=\"\">
-        <td>
-          <div class=\"\" title=\"Cloudhub + Anypoint Connectors\"><a href=\"javascript:void(0);\">Cloudhub + Anypoint Connectors</a></div>
-        </td>
-        <td>
-          <div class=\"\" title=\"Cloudhub\">Cloudhub</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"4/14/2015\">4/14/2015</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"Prospecting\">Prospecting</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"20%\">20%</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"$25k\">$25k</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"jrogers@cloudhub.com\"><a href=\"javascript:void(0);\">jrogers@cloudhub.com</a></div>
+          <div class=\\"\\" title=\\"jrogers@cloudhub.com\\"><a href=\\"javascript:void(0);\\">jrogers@cloudhub.com</a></div>
         </td>
       </tr>
-      <tr class=\"\">
+      <tr class=\\"\\">
         <td>
-          <div class=\"\" title=\"Cloudhub\"><a href=\"javascript:void(0);\">Cloudhub</a></div>
+          <div class=\\"\\" title=\\"Cloudhub + Anypoint Connectors\\"><a href=\\"javascript:void(0);\\">Cloudhub + Anypoint Connectors</a></div>
         </td>
         <td>
-          <div class=\"\" title=\"Cloudhub\">Cloudhub</div>
+          <div class=\\"\\" title=\\"Cloudhub\\">Cloudhub</div>
         </td>
         <td>
-          <div class=\"\" title=\"4/14/2015\">4/14/2015</div>
+          <div class=\\"\\" title=\\"4/14/2015\\">4/14/2015</div>
         </td>
         <td>
-          <div class=\"\" title=\"Prospecting\">Prospecting</div>
+          <div class=\\"\\" title=\\"Prospecting\\">Prospecting</div>
         </td>
         <td>
-          <div class=\"\" title=\"20%\">20%</div>
+          <div class=\\"\\" title=\\"20%\\">20%</div>
         </td>
         <td>
-          <div class=\"\" title=\"$25k\">$25k</div>
+          <div class=\\"\\" title=\\"$25k\\">$25k</div>
         </td>
         <td>
-          <div class=\"\" title=\"jrogers@cloudhub.com\"><a href=\"javascript:void(0);\">jrogers@cloudhub.com</a></div>
+          <div class=\\"\\" title=\\"jrogers@cloudhub.com\\"><a href=\\"javascript:void(0);\\">jrogers@cloudhub.com</a></div>
+        </td>
+      </tr>
+      <tr class=\\"\\">
+        <td>
+          <div class=\\"\\" title=\\"Cloudhub\\"><a href=\\"javascript:void(0);\\">Cloudhub</a></div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"Cloudhub\\">Cloudhub</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"4/14/2015\\">4/14/2015</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"Prospecting\\">Prospecting</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"20%\\">20%</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"$25k\\">$25k</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"jrogers@cloudhub.com\\"><a href=\\"javascript:void(0);\\">jrogers@cloudhub.com</a></div>
         </td>
       </tr>
     </tbody>
   </table>
-  <h3 class=\"slds-text-heading--medium slds-m-vertical--medium\">Striped</h3>
-  <table class=\"slds-table slds-table--bordered slds-table--cell-buffer slds-table--striped\" id=\"DataTableExample-1-striped\">
+  <h3 class=\\"slds-text-heading--medium slds-m-vertical--medium\\">Striped</h3>
+  <table class=\\"slds-table slds-table--bordered slds-table--cell-buffer slds-table--striped\\" id=\\"DataTableExample-1-striped\\">
     <thead>
-      <tr class=\"slds-text-title--caps\">
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Opportunity Name</div>
+      <tr class=\\"slds-text-title--caps\\">
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Opportunity Name</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Account Name</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Account Name</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Close Date</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Close Date</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Stage</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Stage</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Confidence</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Confidence</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Amount</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Amount</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Contact</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Contact</div>
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr class=\"\">
+      <tr class=\\"\\">
         <td>
-          <div class=\"\" title=\"Cloudhub\"><a href=\"javascript:void(0);\">Cloudhub</a></div>
+          <div class=\\"\\" title=\\"Cloudhub\\"><a href=\\"javascript:void(0);\\">Cloudhub</a></div>
         </td>
         <td>
-          <div class=\"\" title=\"Cloudhub\">Cloudhub</div>
+          <div class=\\"\\" title=\\"Cloudhub\\">Cloudhub</div>
         </td>
         <td>
-          <div class=\"\" title=\"4/14/2015\">4/14/2015</div>
+          <div class=\\"\\" title=\\"4/14/2015\\">4/14/2015</div>
         </td>
         <td>
-          <div class=\"\" title=\"Prospecting\">Prospecting</div>
+          <div class=\\"\\" title=\\"Prospecting\\">Prospecting</div>
         </td>
         <td>
-          <div class=\"\" title=\"20%\">20%</div>
+          <div class=\\"\\" title=\\"20%\\">20%</div>
         </td>
         <td>
-          <div class=\"\" title=\"$25k\">$25k</div>
+          <div class=\\"\\" title=\\"$25k\\">$25k</div>
         </td>
         <td>
-          <div class=\"\" title=\"jrogers@cloudhub.com\"><a href=\"javascript:void(0);\">jrogers@cloudhub.com</a></div>
-        </td>
-      </tr>
-      <tr class=\"\">
-        <td>
-          <div class=\"\" title=\"Cloudhub + Anypoint Connectors\"><a href=\"javascript:void(0);\">Cloudhub + Anypoint Connectors</a></div>
-        </td>
-        <td>
-          <div class=\"\" title=\"Cloudhub\">Cloudhub</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"4/14/2015\">4/14/2015</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"Prospecting\">Prospecting</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"20%\">20%</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"$25k\">$25k</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"jrogers@cloudhub.com\"><a href=\"javascript:void(0);\">jrogers@cloudhub.com</a></div>
+          <div class=\\"\\" title=\\"jrogers@cloudhub.com\\"><a href=\\"javascript:void(0);\\">jrogers@cloudhub.com</a></div>
         </td>
       </tr>
-      <tr class=\"\">
+      <tr class=\\"\\">
         <td>
-          <div class=\"\" title=\"Cloudhub\"><a href=\"javascript:void(0);\">Cloudhub</a></div>
+          <div class=\\"\\" title=\\"Cloudhub + Anypoint Connectors\\"><a href=\\"javascript:void(0);\\">Cloudhub + Anypoint Connectors</a></div>
         </td>
         <td>
-          <div class=\"\" title=\"Cloudhub\">Cloudhub</div>
+          <div class=\\"\\" title=\\"Cloudhub\\">Cloudhub</div>
         </td>
         <td>
-          <div class=\"\" title=\"4/14/2015\">4/14/2015</div>
+          <div class=\\"\\" title=\\"4/14/2015\\">4/14/2015</div>
         </td>
         <td>
-          <div class=\"\" title=\"Prospecting\">Prospecting</div>
+          <div class=\\"\\" title=\\"Prospecting\\">Prospecting</div>
         </td>
         <td>
-          <div class=\"\" title=\"20%\">20%</div>
+          <div class=\\"\\" title=\\"20%\\">20%</div>
         </td>
         <td>
-          <div class=\"\" title=\"$25k\">$25k</div>
+          <div class=\\"\\" title=\\"$25k\\">$25k</div>
         </td>
         <td>
-          <div class=\"\" title=\"jrogers@cloudhub.com\"><a href=\"javascript:void(0);\">jrogers@cloudhub.com</a></div>
+          <div class=\\"\\" title=\\"jrogers@cloudhub.com\\"><a href=\\"javascript:void(0);\\">jrogers@cloudhub.com</a></div>
+        </td>
+      </tr>
+      <tr class=\\"\\">
+        <td>
+          <div class=\\"\\" title=\\"Cloudhub\\"><a href=\\"javascript:void(0);\\">Cloudhub</a></div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"Cloudhub\\">Cloudhub</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"4/14/2015\\">4/14/2015</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"Prospecting\\">Prospecting</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"20%\\">20%</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"$25k\\">$25k</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"jrogers@cloudhub.com\\"><a href=\\"javascript:void(0);\\">jrogers@cloudhub.com</a></div>
         </td>
       </tr>
     </tbody>
   </table>
-  <h3 class=\"slds-text-heading--medium slds-m-vertical--medium\">No Row Hover</h3>
-  <table class=\"slds-table slds-table--bordered slds-table--cell-buffer slds-no-row-hover\" id=\"DataTableExample-noRowHover\">
+  <h3 class=\\"slds-text-heading--medium slds-m-vertical--medium\\">No Row Hover</h3>
+  <table class=\\"slds-table slds-table--bordered slds-table--cell-buffer slds-no-row-hover\\" id=\\"DataTableExample-noRowHover\\">
     <thead>
-      <tr class=\"slds-text-title--caps\">
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Opportunity Name</div>
+      <tr class=\\"slds-text-title--caps\\">
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Opportunity Name</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Account Name</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Account Name</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Close Date</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Close Date</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Stage</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Stage</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Confidence</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Confidence</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Amount</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Amount</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Contact</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Contact</div>
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr class=\"\">
+      <tr class=\\"\\">
         <td>
-          <div class=\"\" title=\"Cloudhub\"><a href=\"javascript:void(0);\">Cloudhub</a></div>
+          <div class=\\"\\" title=\\"Cloudhub\\"><a href=\\"javascript:void(0);\\">Cloudhub</a></div>
         </td>
         <td>
-          <div class=\"\" title=\"Cloudhub\">Cloudhub</div>
+          <div class=\\"\\" title=\\"Cloudhub\\">Cloudhub</div>
         </td>
         <td>
-          <div class=\"\" title=\"4/14/2015\">4/14/2015</div>
+          <div class=\\"\\" title=\\"4/14/2015\\">4/14/2015</div>
         </td>
         <td>
-          <div class=\"\" title=\"Prospecting\">Prospecting</div>
+          <div class=\\"\\" title=\\"Prospecting\\">Prospecting</div>
         </td>
         <td>
-          <div class=\"\" title=\"20%\">20%</div>
+          <div class=\\"\\" title=\\"20%\\">20%</div>
         </td>
         <td>
-          <div class=\"\" title=\"$25k\">$25k</div>
+          <div class=\\"\\" title=\\"$25k\\">$25k</div>
         </td>
         <td>
-          <div class=\"\" title=\"jrogers@cloudhub.com\"><a href=\"javascript:void(0);\">jrogers@cloudhub.com</a></div>
-        </td>
-      </tr>
-      <tr class=\"\">
-        <td>
-          <div class=\"\" title=\"Cloudhub + Anypoint Connectors\"><a href=\"javascript:void(0);\">Cloudhub + Anypoint Connectors</a></div>
-        </td>
-        <td>
-          <div class=\"\" title=\"Cloudhub\">Cloudhub</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"4/14/2015\">4/14/2015</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"Prospecting\">Prospecting</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"20%\">20%</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"$25k\">$25k</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"jrogers@cloudhub.com\"><a href=\"javascript:void(0);\">jrogers@cloudhub.com</a></div>
+          <div class=\\"\\" title=\\"jrogers@cloudhub.com\\"><a href=\\"javascript:void(0);\\">jrogers@cloudhub.com</a></div>
         </td>
       </tr>
-      <tr class=\"\">
+      <tr class=\\"\\">
         <td>
-          <div class=\"\" title=\"Cloudhub\"><a href=\"javascript:void(0);\">Cloudhub</a></div>
+          <div class=\\"\\" title=\\"Cloudhub + Anypoint Connectors\\"><a href=\\"javascript:void(0);\\">Cloudhub + Anypoint Connectors</a></div>
         </td>
         <td>
-          <div class=\"\" title=\"Cloudhub\">Cloudhub</div>
+          <div class=\\"\\" title=\\"Cloudhub\\">Cloudhub</div>
         </td>
         <td>
-          <div class=\"\" title=\"4/14/2015\">4/14/2015</div>
+          <div class=\\"\\" title=\\"4/14/2015\\">4/14/2015</div>
         </td>
         <td>
-          <div class=\"\" title=\"Prospecting\">Prospecting</div>
+          <div class=\\"\\" title=\\"Prospecting\\">Prospecting</div>
         </td>
         <td>
-          <div class=\"\" title=\"20%\">20%</div>
+          <div class=\\"\\" title=\\"20%\\">20%</div>
         </td>
         <td>
-          <div class=\"\" title=\"$25k\">$25k</div>
+          <div class=\\"\\" title=\\"$25k\\">$25k</div>
         </td>
         <td>
-          <div class=\"\" title=\"jrogers@cloudhub.com\"><a href=\"javascript:void(0);\">jrogers@cloudhub.com</a></div>
+          <div class=\\"\\" title=\\"jrogers@cloudhub.com\\"><a href=\\"javascript:void(0);\\">jrogers@cloudhub.com</a></div>
+        </td>
+      </tr>
+      <tr class=\\"\\">
+        <td>
+          <div class=\\"\\" title=\\"Cloudhub\\"><a href=\\"javascript:void(0);\\">Cloudhub</a></div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"Cloudhub\\">Cloudhub</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"4/14/2015\\">4/14/2015</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"Prospecting\\">Prospecting</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"20%\\">20%</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"$25k\\">$25k</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"jrogers@cloudhub.com\\"><a href=\\"javascript:void(0);\\">jrogers@cloudhub.com</a></div>
         </td>
       </tr>
     </tbody>
   </table>
-  <h3 class=\"slds-text-heading--medium slds-m-vertical--medium\">Column Bordered</h3>
-  <table class=\"slds-table slds-table--bordered slds-table--cell-buffer slds-table--col-bordered\" id=\"DataTableExample-columnBordered\">
+  <h3 class=\\"slds-text-heading--medium slds-m-vertical--medium\\">Column Bordered</h3>
+  <table class=\\"slds-table slds-table--bordered slds-table--cell-buffer slds-table--col-bordered\\" id=\\"DataTableExample-columnBordered\\">
     <thead>
-      <tr class=\"slds-text-title--caps\">
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Opportunity Name</div>
+      <tr class=\\"slds-text-title--caps\\">
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Opportunity Name</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Account Name</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Account Name</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Close Date</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Close Date</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Stage</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Stage</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Confidence</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Confidence</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Amount</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Amount</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Contact</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Contact</div>
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr class=\"\">
+      <tr class=\\"\\">
         <td>
-          <div class=\"\" title=\"Cloudhub\"><a href=\"javascript:void(0);\">Cloudhub</a></div>
+          <div class=\\"\\" title=\\"Cloudhub\\"><a href=\\"javascript:void(0);\\">Cloudhub</a></div>
         </td>
         <td>
-          <div class=\"\" title=\"Cloudhub\">Cloudhub</div>
+          <div class=\\"\\" title=\\"Cloudhub\\">Cloudhub</div>
         </td>
         <td>
-          <div class=\"\" title=\"4/14/2015\">4/14/2015</div>
+          <div class=\\"\\" title=\\"4/14/2015\\">4/14/2015</div>
         </td>
         <td>
-          <div class=\"\" title=\"Prospecting\">Prospecting</div>
+          <div class=\\"\\" title=\\"Prospecting\\">Prospecting</div>
         </td>
         <td>
-          <div class=\"\" title=\"20%\">20%</div>
+          <div class=\\"\\" title=\\"20%\\">20%</div>
         </td>
         <td>
-          <div class=\"\" title=\"$25k\">$25k</div>
+          <div class=\\"\\" title=\\"$25k\\">$25k</div>
         </td>
         <td>
-          <div class=\"\" title=\"jrogers@cloudhub.com\"><a href=\"javascript:void(0);\">jrogers@cloudhub.com</a></div>
-        </td>
-      </tr>
-      <tr class=\"\">
-        <td>
-          <div class=\"\" title=\"Cloudhub + Anypoint Connectors\"><a href=\"javascript:void(0);\">Cloudhub + Anypoint Connectors</a></div>
-        </td>
-        <td>
-          <div class=\"\" title=\"Cloudhub\">Cloudhub</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"4/14/2015\">4/14/2015</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"Prospecting\">Prospecting</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"20%\">20%</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"$25k\">$25k</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"jrogers@cloudhub.com\"><a href=\"javascript:void(0);\">jrogers@cloudhub.com</a></div>
+          <div class=\\"\\" title=\\"jrogers@cloudhub.com\\"><a href=\\"javascript:void(0);\\">jrogers@cloudhub.com</a></div>
         </td>
       </tr>
-      <tr class=\"\">
+      <tr class=\\"\\">
         <td>
-          <div class=\"\" title=\"Cloudhub\"><a href=\"javascript:void(0);\">Cloudhub</a></div>
+          <div class=\\"\\" title=\\"Cloudhub + Anypoint Connectors\\"><a href=\\"javascript:void(0);\\">Cloudhub + Anypoint Connectors</a></div>
         </td>
         <td>
-          <div class=\"\" title=\"Cloudhub\">Cloudhub</div>
+          <div class=\\"\\" title=\\"Cloudhub\\">Cloudhub</div>
         </td>
         <td>
-          <div class=\"\" title=\"4/14/2015\">4/14/2015</div>
+          <div class=\\"\\" title=\\"4/14/2015\\">4/14/2015</div>
         </td>
         <td>
-          <div class=\"\" title=\"Prospecting\">Prospecting</div>
+          <div class=\\"\\" title=\\"Prospecting\\">Prospecting</div>
         </td>
         <td>
-          <div class=\"\" title=\"20%\">20%</div>
+          <div class=\\"\\" title=\\"20%\\">20%</div>
         </td>
         <td>
-          <div class=\"\" title=\"$25k\">$25k</div>
+          <div class=\\"\\" title=\\"$25k\\">$25k</div>
         </td>
         <td>
-          <div class=\"\" title=\"jrogers@cloudhub.com\"><a href=\"javascript:void(0);\">jrogers@cloudhub.com</a></div>
+          <div class=\\"\\" title=\\"jrogers@cloudhub.com\\"><a href=\\"javascript:void(0);\\">jrogers@cloudhub.com</a></div>
+        </td>
+      </tr>
+      <tr class=\\"\\">
+        <td>
+          <div class=\\"\\" title=\\"Cloudhub\\"><a href=\\"javascript:void(0);\\">Cloudhub</a></div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"Cloudhub\\">Cloudhub</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"4/14/2015\\">4/14/2015</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"Prospecting\\">Prospecting</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"20%\\">20%</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"$25k\\">$25k</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"jrogers@cloudhub.com\\"><a href=\\"javascript:void(0);\\">jrogers@cloudhub.com</a></div>
         </td>
       </tr>
     </tbody>
   </table>
-  <h3 class=\"slds-text-heading--medium slds-m-vertical--medium\">Compact</h3>
-  <table class=\"slds-table slds-table--compact slds-table--bordered slds-table--cell-buffer\" id=\"DataTableExample-compact\">
+  <h3 class=\\"slds-text-heading--medium slds-m-vertical--medium\\">Compact</h3>
+  <table class=\\"slds-table slds-table--compact slds-table--bordered slds-table--cell-buffer\\" id=\\"DataTableExample-compact\\">
     <thead>
-      <tr class=\"slds-text-title--caps\">
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Opportunity Name</div>
+      <tr class=\\"slds-text-title--caps\\">
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Opportunity Name</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Account Name</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Account Name</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Close Date</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Close Date</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Stage</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Stage</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Confidence</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Confidence</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Amount</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Amount</div>
         </th>
-        <th class=\"\" scope=\"col\">
-          <div class=\"slds-truncate\">Contact</div>
+        <th class=\\"\\" scope=\\"col\\">
+          <div class=\\"slds-truncate\\">Contact</div>
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr class=\"\">
+      <tr class=\\"\\">
         <td>
-          <div class=\"\" title=\"Cloudhub\"><a href=\"javascript:void(0);\">Cloudhub</a></div>
+          <div class=\\"\\" title=\\"Cloudhub\\"><a href=\\"javascript:void(0);\\">Cloudhub</a></div>
         </td>
         <td>
-          <div class=\"\" title=\"Cloudhub\">Cloudhub</div>
+          <div class=\\"\\" title=\\"Cloudhub\\">Cloudhub</div>
         </td>
         <td>
-          <div class=\"\" title=\"4/14/2015\">4/14/2015</div>
+          <div class=\\"\\" title=\\"4/14/2015\\">4/14/2015</div>
         </td>
         <td>
-          <div class=\"\" title=\"Prospecting\">Prospecting</div>
+          <div class=\\"\\" title=\\"Prospecting\\">Prospecting</div>
         </td>
         <td>
-          <div class=\"\" title=\"20%\">20%</div>
+          <div class=\\"\\" title=\\"20%\\">20%</div>
         </td>
         <td>
-          <div class=\"\" title=\"$25k\">$25k</div>
+          <div class=\\"\\" title=\\"$25k\\">$25k</div>
         </td>
         <td>
-          <div class=\"\" title=\"jrogers@cloudhub.com\"><a href=\"javascript:void(0);\">jrogers@cloudhub.com</a></div>
-        </td>
-      </tr>
-      <tr class=\"\">
-        <td>
-          <div class=\"\" title=\"Cloudhub + Anypoint Connectors\"><a href=\"javascript:void(0);\">Cloudhub + Anypoint Connectors</a></div>
-        </td>
-        <td>
-          <div class=\"\" title=\"Cloudhub\">Cloudhub</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"4/14/2015\">4/14/2015</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"Prospecting\">Prospecting</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"20%\">20%</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"$25k\">$25k</div>
-        </td>
-        <td>
-          <div class=\"\" title=\"jrogers@cloudhub.com\"><a href=\"javascript:void(0);\">jrogers@cloudhub.com</a></div>
+          <div class=\\"\\" title=\\"jrogers@cloudhub.com\\"><a href=\\"javascript:void(0);\\">jrogers@cloudhub.com</a></div>
         </td>
       </tr>
-      <tr class=\"\">
+      <tr class=\\"\\">
         <td>
-          <div class=\"\" title=\"Cloudhub\"><a href=\"javascript:void(0);\">Cloudhub</a></div>
+          <div class=\\"\\" title=\\"Cloudhub + Anypoint Connectors\\"><a href=\\"javascript:void(0);\\">Cloudhub + Anypoint Connectors</a></div>
         </td>
         <td>
-          <div class=\"\" title=\"Cloudhub\">Cloudhub</div>
+          <div class=\\"\\" title=\\"Cloudhub\\">Cloudhub</div>
         </td>
         <td>
-          <div class=\"\" title=\"4/14/2015\">4/14/2015</div>
+          <div class=\\"\\" title=\\"4/14/2015\\">4/14/2015</div>
         </td>
         <td>
-          <div class=\"\" title=\"Prospecting\">Prospecting</div>
+          <div class=\\"\\" title=\\"Prospecting\\">Prospecting</div>
         </td>
         <td>
-          <div class=\"\" title=\"20%\">20%</div>
+          <div class=\\"\\" title=\\"20%\\">20%</div>
         </td>
         <td>
-          <div class=\"\" title=\"$25k\">$25k</div>
+          <div class=\\"\\" title=\\"$25k\\">$25k</div>
         </td>
         <td>
-          <div class=\"\" title=\"jrogers@cloudhub.com\"><a href=\"javascript:void(0);\">jrogers@cloudhub.com</a></div>
+          <div class=\\"\\" title=\\"jrogers@cloudhub.com\\"><a href=\\"javascript:void(0);\\">jrogers@cloudhub.com</a></div>
+        </td>
+      </tr>
+      <tr class=\\"\\">
+        <td>
+          <div class=\\"\\" title=\\"Cloudhub\\"><a href=\\"javascript:void(0);\\">Cloudhub</a></div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"Cloudhub\\">Cloudhub</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"4/14/2015\\">4/14/2015</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"Prospecting\\">Prospecting</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"20%\\">20%</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"$25k\\">$25k</div>
+        </td>
+        <td>
+          <div class=\\"\\" title=\\"jrogers@cloudhub.com\\"><a href=\\"javascript:void(0);\\">jrogers@cloudhub.com</a></div>
         </td>
       </tr>
     </tbody>

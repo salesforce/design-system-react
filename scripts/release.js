@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-/* eslint-disable no-console */
+/* eslint-disable no-console, max-len */
 
 import async from 'async';
 import fs from 'fs';
@@ -21,48 +21,80 @@ const executeTasks = () => {
 	async.series([
 		// Does a remote named upstream exist? Origin should point to fork.
 		(done) => {
-			console.log('Checking to see if an upstream remote exists');
-			exec(['git ls-remote upstream --exit-code --quiet', rootPath], done);
+			console.log('# Checking to see if an upstream remote exists');
+			exec({
+				command: 'git ls-remote upstream --exit-code --quiet',
+				rootPath
+			}, done);
 		},
 		// Checkout master branch
 		(done) => {
-			console.log('Checking out master branch. Please ignore "RELEASENOTES.md - Your branch and \'upstream/master\' have diverged."');
-			exec(['git checkout master', rootPath], done);
+			console.log('# Checking out master branch. Please ignore "RELEASENOTES.md - Your branch and \'upstream/master\' have diverged."');
+			exec({
+				command: 'git checkout master',
+				rootPath
+			}, done);
 		},
 		// Remove libraries not in package.json
 		(done) => {
-			console.log('Pruning NPM dependencies');
-			exec(['npm prune', rootPath], done);
+			console.log('# Pruning NPM dependencies');
+			exec({
+				command: 'npm prune',
+				rootPath
+			}, done);
 		},
 		// npm install
 		(done) => {
-			console.log('Running NPM install');
-			exec(['npm install', rootPath], done);
+			console.log('# Running NPM install');
+			exec({
+				command: 'npm install',
+				rootPath
+			}, done);
+		},
+		// Update inline icons
+		(done) => {
+			console.log('# Build icons from latest icon module');
+			exec({
+				command: 'npm run icons',
+				rootPath
+			}, done);
 		},
 		// Run tests
 		(done) => {
-			console.log('Running test suite');
-			exec(['npm test', rootPath], done);
+			console.log('# Running test suite');
+			exec({
+				command: 'npm test',
+				rootPath,
+				verbose: false
+			}, done);
 		},
 		// Update package.json version
 		(done) => {
-			console.log('Bumping version in package.json, committing RELEASENOTES.md, and checking that there are no files in local working copy. Published package is based on current state of local files, not versioned files.');
-			exec([`npm --no-git-tag-version version ${argv.release}`, rootPath], done, rootPath);
+			console.log('# Bumping version in package.json, committing RELEASENOTES.md, and checking that there are no files in local working copy. Published package is based on current state of local files, not versioned files.');
+			exec({
+				command: `npm --no-git-tag-version version ${argv.release}`,
+				rootPath
+			}, done);
 		},
 		// Builds three disconnected git trees based on package.json version and publishes as tags on upstream remote
 		(done) => {
-			console.log('Building and publishing tag to upstream remote');
-			// exec(['npm run publish-to-upstream', rootPath], done);
-			done();
+			console.log('# Building and publishing tag to upstream remote');
+			exec({
+				command: 'npm run publish-to-upstream',
+				rootPath,
+				verbose: false
+			}, done);
 		},
 		// Push to master the package.json and release notes
 		(done) => {
-			console.log('Pushing local master branch to upstream remote');
-			// exec(['git push master upstream', rootPath], done);
-			done();
+			console.log('# Pushing local master branch to upstream remote');
+			exec({
+				command: 'git push upstream master --no-verify',
+				rootPath
+			}, done);
 		},
 		(done) => {
-			console.log('\n\nPlease add the following to your release notes at https://github.com/salesforce-ux/design-system-react/releases');
+			console.log('\n\n# Please add the following to your release notes at https://github.com/salesforce-ux/design-system-react/releases');
 			console.log(currentVersionReleaseNotes);
 			done();
 		}
@@ -84,8 +116,11 @@ prompt.start();
 
 prompt.get(releaseNotesSchema, (err, releaseNotesResult) => {
 	if (releaseNotesResult.releasenotes.toUpperCase() === 'N') {
-		exec(['open RELEASENOTES.MD', rootPath], () => {});
-		console.log('Please do not commit changes to RELEASENOTES.MD. Unversioned changes must be present in RELEASENOTES.MD or release will fail. Changes will be versioned for you. Please run script again.');
+		exec({
+			command: 'open RELEASENOTES.MD',
+			rootPath
+		}, () => {});
+		console.log('# Please do not commit changes to RELEASENOTES.MD. Unversioned changes must be present in RELEASENOTES.MD or release will fail. Changes will be versioned for you. Please run script again.');
 		process.exit();
 	} else {
 		fs.readFile(path.resolve(rootPath, 'RELEASENOTES.MD'), 'utf8', (err2, contents) => {

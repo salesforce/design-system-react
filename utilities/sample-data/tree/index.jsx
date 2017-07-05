@@ -16,7 +16,7 @@ const sampleNodesDefault = [
 		id: 2,
 		nodes: [
 			{
-				label: <span>Ground Fruits <Icon name="sort" category="utility" size="x-small" /></span>,
+				label: <span>Ground Fruits<Icon name="sort" category="utility" size="x-small" /></span>,
 				type: 'branch',
 				id: 4,
 				nodes: [

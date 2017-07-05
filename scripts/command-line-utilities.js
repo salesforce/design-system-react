@@ -5,14 +5,21 @@
 
 import path from 'path';
 
-const exec = ([command, dir = '.', rootPath], callback) => {
+const exec = ({
+	command,
+	dir = '.',
+	rootPath,
+	verbose = true
+}, callback) => {
 	const child = require('child_process').exec(command, {
 		cwd: path.resolve(rootPath, dir)
 	}, (err) => {
 		callback(err);
 	});
 
-	child.stdout.on('data', (data) => process.stdout.write(data.toString()));
+	if (verbose === true) {
+		child.stdout.on('data', (data) => process.stdout.write(data.toString()));
+	}
 };
 
 export { exec as default };

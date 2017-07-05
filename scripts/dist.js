@@ -25,9 +25,13 @@ async.series([
 		console.log('### Cleaning up the package.json');
 
 		const packageJSON = JSON.parse(fs.readFileSync(distPath('package.json')).toString());
+		// Used by documentation site
+		// Can be used for CI tests by consuming applications
+		packageJSON.SLDS = { gitURL: packageJSON.devDependencies['@salesforce-ux/design-system'] };
 		delete packageJSON.scripts;
 		delete packageJSON.devDependencies;
 		delete packageJSON['pre-push'];
+		delete packageJSON['pre-commit'];
 		fs.writeFile(
 			distPath('package.json'),
 			JSON.stringify(packageJSON, null, 2),

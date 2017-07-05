@@ -22,9 +22,6 @@ import classNames from 'classnames';
 // ### assign
 import assign from 'lodash.assign';
 
-// ### isArray
-import isArray from 'lodash.isarray';
-
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
@@ -45,7 +42,7 @@ import DataTableRowActions from './row-actions';
 import { DATA_TABLE, DATA_TABLE_CELL, DATA_TABLE_HEAD, DATA_TABLE_ROW } from '../../utilities/constants';
 
 // Safely get the length of an array, returning 0 for invalid input.
-const count = (array) => (isArray(array) ? array.length : 0);
+const count = (array) => (Array.isArray(array) ? array.length : 0);
 
 /**
  * DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.

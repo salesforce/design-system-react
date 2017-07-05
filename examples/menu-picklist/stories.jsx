@@ -27,6 +27,40 @@ const getPicklist = (props) => (
 	</div>
 );
 
+const MultipleExample = React.createClass({
+	displayName: 'MultiplePicklistExample',
+
+	getInitialState () {
+		return {
+			selectedIndexes: new Set()
+		};
+	},
+
+	handleSelect (selectedItem, data) {
+		this.setState((prevState, props) => ({
+			selectedItems: prevState.selectedIndexes.has(data.optionIndex)
+				? Array.from(prevState.selectedIndexes.delete(data.optionIndex))
+				:	Array.from(prevState.selectedIndexes.add(data.optionIndex))
+		}));
+	},
+
+	render () {
+		console.log(this.state.selectedIndexes);
+
+		return (
+			<Picklist
+				label="Contacts"
+				labels={{
+					multipleOptionsSelected: `${this.state.selectedIndexes.size} Contacts Selected`
+				}}
+				multiple
+				onSelect={this.handleSelect}
+				options={options}
+			/>
+		);
+	}
+});
+
 storiesOf(MENU_PICKLIST, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
 	.add('Modal', () => getPicklist({
@@ -58,4 +92,5 @@ storiesOf(MENU_PICKLIST, module)
 		},
 		options,
 		required: true
-	}));
+	}))
+	.add('Multiselect', () => (<MultipleExample />));
