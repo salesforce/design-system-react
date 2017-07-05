@@ -504,10 +504,6 @@ const Lookup = React.createClass({
 					// If not, then select menu item
 					this.selectItem(this.state.currentFocus);
 				}
-				// If there is a selection, then you can use delete/backspace to remove it.
-			} else if (this.hasSingleSelection && (event.keyCode === KEYS.DELETE || event.keyCode === KEYS.BACKSPACE)) {
-				EventUtil.trapImmediate(event);
-				this.handleDeleteSelected();
 			}
 		}
 	},
@@ -626,6 +622,7 @@ const Lookup = React.createClass({
 				readOnly={this.hasSingleSelection()}
 				role="textbox"
 				style={!this.hasSingleSelection() ? noSelectionStyles : null}
+				tabIndex={this.hasSingleSelection() ? -1 : 0 }
 				type="text"
 				value={this.state.searchTerm}
 			/>
@@ -722,7 +719,6 @@ const Lookup = React.createClass({
 				className="slds-input__icon slds-input__icon_right"
 				iconName="close"
 				onClick={this.handleDeleteSelected}
-				tabIndex="-1"
 				variant="icon"
 			/>
 			: <InputIcon
