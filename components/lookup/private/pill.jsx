@@ -76,12 +76,16 @@ const Pill = (props) => {
 	});
 
 	const renderIcon = props.iconName
-		? (<Icon
-			category={props.iconCategory}
-			className="slds-icon slds-pill__icon"
-			inverse={props.iconInverse}
-			name={props.iconName}
-		/>)
+		? (
+			<span className="slds-avatar slds-avatar_x-small slds-pill__icon_container">
+				<Icon
+					category={props.iconCategory}
+					className="slds-pill__icon"
+					inverse={props.iconInverse}
+					name={props.iconName}
+				/>
+			</span>
+		)
 		: null;
 
 	return (
@@ -99,15 +103,21 @@ const Pill = (props) => {
 			}}
 		>
 			{isOption
-					? <span className="slds-pill__label" title={labels.title}>
-						{renderIcon}
-						{labels.label}
-					</span>
-					// eslint-disable-next-line no-script-url
-					: <a href="javascript:void(0);" className="slds-pill__action" style={{ width: '100%' }} title={labels.title}>
-						{renderIcon}
-						<span className="slds-pill__label">{labels.label}</span>
-					</a>
+					? (
+						<span>
+							{renderIcon}
+							<span className="slds-pill__label" title={labels.title}>
+								{labels.label}
+							</span>
+						</span>
+					)
+					: (
+						// eslint-disable-next-line no-script-url
+						<a href="javascript:void(0);" className="slds-pill__action" style={{ width: '100%' }} title={labels.title}>
+							{renderIcon}
+							<span className="slds-pill__label">{labels.label}</span>
+						</a>
+					)
 			}
 
 			{props.events.onRequestRemove

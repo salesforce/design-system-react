@@ -197,7 +197,11 @@ const Lookup = React.createClass({
 		/**
 		 * Index of current selected item. To clear the selection, pass in null or -1.
 		 */
-		selectedItem: PropTypes.number
+		selectedItem: PropTypes.number,
+		/**
+		 * Array of current selected items' indicies. To clear the selection, pass an empty array.
+		 */
+		selectedItems: PropTypes.array
 	},
 
 	getDefaultProps () {
@@ -217,15 +221,25 @@ const Lookup = React.createClass({
 	},
 
 	getInitialState () {
+		// Single select and has a default selected item on load.
+		const value = (
+			!this.props.multiple
+			&& !isNaN(this.props.selectedItem) && this.props.selectedItem >= 0
+			&& !!this.props.options[this.props.selectedItem])
+			? this.props.options[this.props.selectedItem].label
+			: this.normalizeSearchTerm(this.props.searchTerm);
+
+		const items = this.props.selectedItems ? this.props.selectedItems : [];
+
 		return {
 			currentFocus: null,
 			focusIndex: null,
 			items: [],
 			isOpen: false,
 			listLength: this.props.options.length,
-			searchTerm: this.normalizeSearchTerm(this.props.searchTerm),
+			searchTerm: value,
 			selectedIndex: this.props.selectedItem,
-			selectedIndices: this.props.selectedItems
+			selectedIndices: items
 		};
 	},
 
@@ -250,9 +264,6 @@ const Lookup = React.createClass({
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(LOOKUP, this.props);
 
-		// Keeps track of references of children for keyboard navigation
-		this.pills = [];
-
 		// Generate unique id for Combobox and Listbox (menu)
 		this.generatedInputId = (this.props.uniqueIds && this.props.uniqueIds.input) || shortid.generate();
 		this.generatedMenuId = (this.props.uniqueIds && this.props.uniqueIds.menu) || shortid.generate();
@@ -268,7 +279,7 @@ const Lookup = React.createClass({
 	},
 
 	hasMultipleSelection () {
-		const hasSelection = this.props.multiple && !isNaN(parseInt(this.state.selectedIndex, 10)) && this.state.selectedIndices.length >= 0;
+		const hasSelection = this.props.multiple && this.state.selectedIndices.length >= 0;
 		return hasSelection;
 	},
 
@@ -638,7 +649,7 @@ const Lookup = React.createClass({
 	},
 
 	renderPills () {
-		const selectedPills = this.state.selectedIndices.map(selectedPill => {
+		const selectedPills = this.state.selectedIndices.map((selectedPill) => {
 			const pillLabel = this.getValueByIndex(selectedPill).label;
 			return (
 				<li

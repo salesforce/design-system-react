@@ -18,19 +18,23 @@ const Highlighter = (props) => {
 	if (props.search) {
 		let children;
 		if (typeof props.children  === 'string') {
-			children = <ReactHighlighter className={props.className} matchClass={null} matchElement="mark" search={props.search}>
-							{props.children}
-						</ReactHighlighter>;
+			children = (
+				<ReactHighlighter className={props.className} matchClass={null} matchElement="mark" search={props.search}>
+					{props.children}
+				</ReactHighlighter>
+			);
 		} else {
-			const findString = (nodeArr) => {
-				return nodeArr.map(element => {
+			const findString = nodeArr => {
+				nodeArr.map(element => {
 					if (typeof element === 'string') {
-						return (<ReactHighlighter key={element} className={props.className} matchClass={null} matchElement="mark" search={props.search}>
-							{element}
-						</ReactHighlighter>);
-					} else {
-						return element;
+						return (
+							<ReactHighlighter key={element} className={props.className} matchClass={null} matchElement="mark" search={props.search}>
+								{element}
+							</ReactHighlighter>
+						);
 					}
+
+					return element;
 				});
 			};
 

@@ -8,10 +8,7 @@
 import React from 'react';
 import Icon from '../icon';
 import { EventUtil } from '../../utilities';
-
-const displayName = 'LookupDefaultHeader';
-const propTypes = {};
-const defaultProps = {};
+import PropTypes from 'prop-types';
 
 class DefaultHeader extends React.Component {
 	componentWillReceiveProps (nextProps) {
@@ -55,8 +52,27 @@ class DefaultHeader extends React.Component {
 	}
 }
 
+const propTypes = {
+	/**
+	 * Bool to indicate if item has focus.
+	 */
+	isActive: PropTypes.bool,
+	/**
+	 * Callback on set focus for header item.
+	 */
+	setFocus: PropTypes.func,
+	/**
+	 * Callback on click for header item.
+	 */
+	onClose: PropTypes.func,
+	/**
+	 * Label for current search term.
+	 */
+	searchTerm: PropTypes.string
+};
+
+const displayName = 'LookupDefaultHeader';
 DefaultHeader.displayName = displayName;
 DefaultHeader.propTypes = propTypes;
-DefaultHeader.defaultProps = defaultProps;
 
 module.exports = DefaultHeader;

@@ -8,10 +8,7 @@
 import React from 'react';
 import Icon from '../icon';
 import { EventUtil } from '../../utilities';
-
-const displayName = 'LookupDefaultFooter';
-const propTypes = {};
-const defaultProps = {};
+import PropTypes from 'prop-types';
 
 class DefaultFooter extends React.Component {
 	componentWillReceiveProps (nextProps) {
@@ -55,8 +52,27 @@ class DefaultFooter extends React.Component {
 	}
 }
 
+const propTypes = {
+	/**
+	 * Bool to indicate if item has focus.
+	 */
+	isActive: PropTypes.bool,
+	/**
+	 * Callback on set focus for footer item.
+	 */
+	setFocus: PropTypes.func,
+	/**
+	 * Callback on click for footer item.
+	 */
+	onClose: PropTypes.func,
+	/**
+	 * Label for footer item.
+	 */
+	newItemLabel: PropTypes.string
+};
+
+const displayName = 'LookupDefaultFooter';
 DefaultFooter.displayName = displayName;
 DefaultFooter.propTypes = propTypes;
-DefaultFooter.defaultProps = defaultProps;
 
 module.exports = DefaultFooter;
