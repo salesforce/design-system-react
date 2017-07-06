@@ -151,7 +151,9 @@ storiesOf(LOOKUP, module)
 		iconCategory="standard"
 		iconName="account"
 		isInline
-		label="Accounts"
+		labels={{
+			label: 'Accounts'
+		}}
 		multiple
 	/>)
 	.add('Base > multiselect (preselected items & no icon)', () => <DemoLookupMultipleSelected

@@ -14,7 +14,6 @@ const propTypes = {
 	getListLength: PropTypes.func,
 	iconCategory: PropTypes.string,
 	items: PropTypes.array,
-	label: PropTypes.string,
 	listLength: PropTypes.number,
 	searchTerm: PropTypes.string,
 	selectedIndices: PropTypes.array,

@@ -147,15 +147,13 @@ const Lookup = React.createClass({
 		 */
 		isInline: PropTypes.bool,
 		/**
-		 * Form label for input.
-		 */
-		label: PropTypes.string,
-		/**
 		 * **Text labels for internationalization**
 		 * This object is merged with the default props object on every render.
+		 * * `label`: Form element label.
 		 * * `multipleOptionsSelected`: Text to be used when multiple items are selected. "2 Options Selected" is a good pattern to use.
 		 */
 		labels: shape({
+			label: PropTypes.string,
 			multipleOptionsSelected: PropTypes.string
 		}),
 		/**
@@ -577,7 +575,6 @@ const Lookup = React.createClass({
 				iconName={this.props.iconName}
 				id={this.generatedMenuId}
 				items={this.state.items}
-				label={this.props.label}
 				listItemLabelRenderer={this.props.listItemLabelRenderer}
 				listLength={this.state.listLength}
 				onSelect={this.selectItem}
@@ -648,16 +645,18 @@ const Lookup = React.createClass({
 
 	renderLabel () {
 		if (this.props.assistiveText && this.props.assistiveText.label) {
-			return <span>{this.props.assistiveText.label}</span>;
+			return <span className="slds-assistive-text">{this.props.assistiveText.label}</span>;
 		}
 		const required = this.props.required ? <abbr className="slds-required" title="required">*</abbr> : null;
+		// eslint-disable-next-line react/prop-types
+		const label = this.props.labels && this.props.labels.label ? this.props.labels.label : this.props.label;
 		return (
 			<label
 				className="slds-form-element__label slds-size_12-of-12"
 				htmlFor={this.generatedInputId}
 			>
 				{required}
-				{this.props.label}
+				{label}
 			</label>
 		);
 	},
@@ -775,7 +774,7 @@ const Lookup = React.createClass({
 
 		return (
 			<div className="slds-form-element">
-				{this.props.label ? this.renderLabel() : null}
+				{this.renderLabel()}
 				<div className="slds-form-element__control">
 					<div className={classNames(comboboxContainerClassName)}>
 						<div
