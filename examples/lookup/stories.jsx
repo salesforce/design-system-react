@@ -45,6 +45,10 @@ const DemoLookupSingleSelected = React.createClass({
 		this.setState({ selectedItem: -1 });
 	},
 
+	selectFile2 () {
+		this.setState({ selectedItem: 1 });
+	},
+
 	getInitialState () {
 		return {
 			selectedItem: 0,
@@ -61,6 +65,7 @@ const DemoLookupSingleSelected = React.createClass({
 		return (
 			<div>
 				<SLDSButton onClick={this.clearSelected}>Clear Selected</SLDSButton>
+				<SLDSButton onClick={this.selectFile2}>Select File 2</SLDSButton>
 				<Lookup
 					{...this.props}
 					onChange={action('change')}
@@ -114,8 +119,7 @@ const DemoLookupMultipleSelected = React.createClass({
 	},
 
 	handleSelect (selectedItem, ...rest) {
-		action('select')(selectedItems, ...rest);
-		this.setState({ selectedItems });
+		action('select')(selectedItem, ...rest);
 	}
 });
 

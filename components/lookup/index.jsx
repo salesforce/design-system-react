@@ -151,6 +151,14 @@ const Lookup = React.createClass({
 		 */
 		label: PropTypes.string,
 		/**
+		 * **Text labels for internationalization**
+		 * This object is merged with the default props object on every render.
+		 * * `multipleOptionsSelected`: Text to be used when multiple items are selected. "2 Options Selected" is a good pattern to use.
+		 */
+		labels: shape({
+			multipleOptionsSelected: PropTypes.string
+		}),
+		/**
 		 * Custom component that overrides the default Lookup Item component.
 		 */
 		listItemLabelRenderer: PropTypes.func,
@@ -229,8 +237,6 @@ const Lookup = React.createClass({
 			? this.props.options[this.props.selectedItem].label
 			: this.normalizeSearchTerm(this.props.searchTerm);
 
-		const items = this.props.selectedItems ? this.props.selectedItems : [];
-
 		return {
 			currentFocus: null,
 			focusIndex: null,
@@ -239,7 +245,7 @@ const Lookup = React.createClass({
 			listLength: this.props.options.length,
 			searchTerm: value,
 			selectedIndex: this.props.selectedItem,
-			selectedIndices: items
+			selectedIndices: this.props.selectedItems
 		};
 	},
 
@@ -253,8 +259,19 @@ const Lookup = React.createClass({
 		if (newProps.options) {
 			this.modifyItems(newProps.options);
 		}
+
 		if (newProps.selectedItem !== this.props.selectedItem || !isEqual(newProps.options, this.props.options)) {
-			this.setState({ selectedIndex: newProps.selectedItem });
+			// Single select and has a default selected item on load.
+			const value = (
+				!isNaN(newProps.selectedItem) && newProps.selectedItem >= 0
+				&& !!newProps.options[newProps.selectedItem])
+				? newProps.options[newProps.selectedItem].label
+				: this.normalizeSearchTerm(this.props.searchTerm);
+
+			this.setState({
+				selectedIndex: newProps.selectedItem,
+				searchTerm: value
+			});
 		} else if (newProps.selectedItems !== this.props.selectedItems || !isEqual(newProps.options, this.props.options)) {
 			this.setState({ selectedIndices: newProps.selectedItems });
 		}
@@ -279,7 +296,7 @@ const Lookup = React.createClass({
 	},
 
 	hasMultipleSelection () {
-		const hasSelection = this.props.multiple && this.state.selectedIndices.length >= 0;
+		const hasSelection = this.props.multiple && this.state.selectedIndices.length > 0;
 		return hasSelection;
 	},
 
@@ -600,6 +617,8 @@ const Lookup = React.createClass({
 
 	renderInput () {
 		const noSelectionStyles = { boxShadow: 'none' };
+		const multipleLabel = this.props.labels && this.props.labels.multipleOptionsSelected ? this.props.labels.multipleOptionsSelected : `${this.state.selectedIndices.length} Option(s) Selected`;
+		const inputValue = this.hasMultipleSelection() ? multipleLabel : this.state.searchTerm;
 		return (
 			<input
 				aria-activedescendant={this.state.currentFocus ? this.state.currentFocus : ''}
@@ -622,9 +641,9 @@ const Lookup = React.createClass({
 				readOnly={this.hasSingleSelection()}
 				role="textbox"
 				style={!this.hasSingleSelection() ? noSelectionStyles : null}
-				tabIndex={this.hasSingleSelection() ? -1 : 0 }
+				tabIndex={this.hasSingleSelection() ? -1 : 0}
 				type="text"
-				value={this.state.searchTerm}
+				value={inputValue}
 			/>
 		);
 	},

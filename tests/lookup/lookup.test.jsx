@@ -188,6 +188,11 @@ describe('SLDSLookup: ', () => {
 			expect(pills.length).to.equal(1);
 		});
 
+		it('renders correct input value', () => {
+			const value = input.getAttribute('value');
+			expect(value).to.equal('1 Option(s) Selected');
+		});
+
 		it('deletes pill when clicking remove button', () => {
 			const pills = lookup.getElementsByClassName('slds-pill');
 			expect(pills.length).to.equal(1);
