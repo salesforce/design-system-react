@@ -9,6 +9,7 @@ import React from 'react';
 import Icon from '../icon';
 import { EventUtil } from '../../utilities';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 class DefaultFooter extends React.Component {
 	componentWillReceiveProps (nextProps) {
@@ -24,8 +25,10 @@ class DefaultFooter extends React.Component {
 	}
 
 	render () {
-		let className = 'slds-media slds-listbox__option slds-listbox__option_entity';
-		if (this.props.isActive) className += ' slds-has-focus';
+		const className = {
+			'slds-media slds-listbox__option slds-listbox__option_entity': true,
+			'slds-has-focus': this.props.isActive
+		};
 
 		return (
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -36,7 +39,7 @@ class DefaultFooter extends React.Component {
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				{/* eslint-disable no-script-url */}
-				<span id="newItem" href="javascript:void(0);" className={className}>
+				<span id="newItem" href="javascript:void(0);" className={classNames(className)}>
 					{/* eslint-enable no-script-url */}
 					<span className="slds-media__figure">
 						<Icon name="add" category="utility" size="x-small" className="slds-icon-text-default" />

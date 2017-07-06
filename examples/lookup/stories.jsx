@@ -23,14 +23,13 @@ const DemoLookup = React.createClass({
 
 	render () {
 		return (
-			<div>
-				<Lookup
-					{...this.props}
-					onChange={action('change')}
-					onSelect={this.handleSelect}
-					options={this.state.options}
-				/>
-			</div>
+			<Lookup
+				{...this.props}
+				footerRenderer={Lookup.DefaultFooter}
+				onChange={action('change')}
+				onSelect={this.handleSelect}
+				options={this.state.options}
+			/>
 		);
 	},
 
@@ -115,8 +114,6 @@ const DemoLookupMultipleSelected = React.createClass({
 				<SLDSButton onClick={this.select2and3}>Select index 2 and 3</SLDSButton>
 				<Lookup
 					{...this.props}
-					footerRenderer={Lookup.DefaultFooter}
-					headerRenderer={Lookup.DefaultHeader}
 					onChange={action('change')}
 					onSelect={this.handleSelect}
 					options={this.state.options}
