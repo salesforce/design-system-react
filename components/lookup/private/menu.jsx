@@ -17,6 +17,7 @@ const propTypes = {
 	label: PropTypes.string,
 	listLength: PropTypes.number,
 	searchTerm: PropTypes.string,
+	selectedIndices: PropTypes.array,
 	setFocus: PropTypes.func
 };
 const defaultProps = {
@@ -120,6 +121,8 @@ class Menu extends React.Component {
 					/>);
 				}
 			}
+
+			const isSelected = this.props.selectedIndices.indexOf(i) !== -1 || this.props.selectedIndices.indexOf(i.toString()) !== -1;
 			return (<Item
 				boldRegex={this.props.boldRegex}
 				data={component.data}
@@ -130,6 +133,7 @@ class Menu extends React.Component {
 				id={id}
 				index={i}
 				isActive={isActive}
+				isSelected={isSelected}
 				key={id}
 				listItemLabelRenderer={this.props.listItemLabelRenderer}
 				onSelect={this.props.onSelect}

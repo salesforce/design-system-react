@@ -47,6 +47,7 @@ const DemoLookupSingleSelected = React.createClass({
 
 	selectFile2 () {
 		this.setState({ selectedItem: 1 });
+		this.handleSelect(this.state.options[1]);
 	},
 
 	getInitialState () {
@@ -75,8 +76,11 @@ const DemoLookupSingleSelected = React.createClass({
 				/>
 			</div>
 		);
-	}
+	},
 
+	handleSelect (selectedItem, ...rest) {
+		action('select')(selectedItem, ...rest);
+	}
 });
 
 const DemoLookupMultipleSelected = React.createClass({
@@ -84,6 +88,10 @@ const DemoLookupMultipleSelected = React.createClass({
 
 	clearSelected () {
 		this.setState({ selectedItems: [] });
+	},
+
+	select2and3 () {
+		this.setState({ selectedItems: [2, 3] });
 	},
 
 	getInitialState () {
@@ -104,6 +112,7 @@ const DemoLookupMultipleSelected = React.createClass({
 		return (
 			<div>
 				<SLDSButton onClick={this.clearSelected}>Clear Selected</SLDSButton>
+				<SLDSButton onClick={this.select2and3}>Select index 2 and 3</SLDSButton>
 				<Lookup
 					{...this.props}
 					footerRenderer={Lookup.DefaultFooter}
@@ -133,11 +142,9 @@ storiesOf(LOOKUP, module)
 		isInline
 		label="Accounts"
 	/>)
-	.add('Base > Single Select (preselected item)', () => <DemoLookupSingleSelected
+	.add('Base > Single Select (preselected item & no icon)', () => <DemoLookupSingleSelected
 		emptyMessage="No Files found"
 		hasError={false}
-		iconCategory="utility"
-		iconName="open_folder"
 		isInline
 		label="Files"
 	/>)
@@ -150,11 +157,9 @@ storiesOf(LOOKUP, module)
 		label="Accounts"
 		multiple
 	/>)
-	.add('Base > multiselect (preselected items)', () => <DemoLookupMultipleSelected
+	.add('Base > multiselect (preselected items & no icon)', () => <DemoLookupMultipleSelected
 		emptyMessage="No Files found"
 		hasError={false}
-		iconCategory="utility"
-		iconName="open_folder"
 		isInline
 		label="Files"
 		placeholder="Search files"

@@ -587,6 +587,7 @@ const Lookup = React.createClass({
 				role="listbox"
 				searchTerm={this.state.searchTerm}
 				sectionDividerRenderer={this.props.sectionDividerRenderer}
+				selectedIndices={this.state.selectedIndices}
 				setFocus={this.setFocus}
 			/>
 		);

@@ -16,6 +16,7 @@ const propTypes = {
 	index: PropTypes.number,
 	isActive: PropTypes.bool,
 	isDisabled: PropTypes.bool,
+	isSelected: PropTypes.bool,
 	listItemLabelRenderer: PropTypes.func,
 	onSelect: PropTypes.func,
 	searchTerm: PropTypes.string,
@@ -39,7 +40,17 @@ class Item extends React.Component {
 	}
 
 	getIcon () {
-		if (this.props.iconName && !this.props.listItemLabelRenderer) {
+		if (this.props.isSelected) {
+			return (
+				<span className="slds-media__figure">
+					<Icon
+						category="utility"
+						name="check"
+						size="x-small"
+					/>
+				</span>
+			);
+		} else if (this.props.iconName && !this.props.listItemLabelRenderer) {
 			return (
 				<span className="slds-media__figure">
 					<Icon
