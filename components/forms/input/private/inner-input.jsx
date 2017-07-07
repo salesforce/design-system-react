@@ -115,7 +115,10 @@ const propTypes = {
 	/**
 	 * Specifies `tabIndex` for `input` node
 	 */
-	tabIndex: PropTypes.string,
+	tabIndex: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string
+	]),
 	/**
 	 * The `<Input>` element includes support for all HTML5 types.
 	 */

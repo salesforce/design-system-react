@@ -28,6 +28,7 @@ import checkProps from './check-props';
 import Dialog from '../utilities/dialog';
 import Button from '../button';
 import Icon from '../icon';
+import InnerInput from '../forms/input/private/inner-input';
 import InputIcon from '../icon/input-icon';
 import Pill from './private/pill';
 
@@ -615,7 +616,7 @@ const Lookup = React.createClass({
 		const multipleLabel = this.props.labels && this.props.labels.multipleOptionsSelected ? this.props.labels.multipleOptionsSelected : `${this.state.selectedIndices.length} Option(s) Selected`;
 		const inputValue = this.hasMultipleSelection() ? multipleLabel : this.state.searchTerm;
 		return (
-			<input
+			<InnerInput
 				aria-activedescendant={this.state.currentFocus ? this.state.currentFocus : ''}
 				aria-autocomplete="list"
 				aria-controls={this.generatedMenuId}
@@ -629,7 +630,9 @@ const Lookup = React.createClass({
 				onClick={this.handleClick}
 				onFocus={this.handleFocus}
 				onKeyDown={this.handleKeyDown}
-				ref={(component) => {
+				iconLeft={this.hasSingleSelection() && this.props.iconName ? this.renderSelectedItemIcon() : null}
+				iconRight={this.renderInputIcon()}
+				inputRef={(component) => {
 					this.input = component;
 				}}
 				placeholder={this.props.placeholder}
@@ -784,14 +787,8 @@ const Lookup = React.createClass({
 							role="combobox"
 						>
 							<div className={classNames(inputContainerClassName)}>
-								{/* Single select - if selected item has icon, render it. */}
-								{this.hasSingleSelection() && this.props.iconName ? this.renderSelectedItemIcon() : null}
-
 								{this.renderInput()}
 
-								{/* Single select - Right side has search icon by default but is a delete icon button item is selected. */}
-								{/* Multi select - Right side has search icon */}
-								{this.renderInputIcon()}
 							</div>
 							{isInline ? this.renderInlineMenu() : this.renderSeparateMenu()}
 						</div>
