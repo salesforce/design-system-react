@@ -97,13 +97,25 @@ const propTypes = {
 	 */
 	name: PropTypes.string,
 	/**
-	 * Displays the value of the input statically.
+	 * Specifies `readOnly` for `input` node. For the read-only input UX pattern, see `variant` prop.
 	 */
 	readOnly: PropTypes.bool,
 	/**
 	 * Highlights the input as a required field (does not perform any validation).
 	 */
 	required: PropTypes.bool,
+	/**
+	 * `role` to be added to `input` node
+	 */
+	role: PropTypes.string,
+	/**
+	 * Style object to be added to `input` node
+	 */
+	style: PropTypes.object,
+	/**
+	 * Specifies `tabIndex` for `input` node
+	 */
+	tabIndex: PropTypes.string,
 	/**
 	 * The `<Input>` element includes support for all HTML5 types.
 	 */
@@ -126,11 +138,16 @@ const propTypes = {
 	/**
 	 * The input is a controlled component, and will always display this value.
 	 */
-	value: PropTypes.string
+	value: PropTypes.string,
+	/**
+	 * UX pattern variants. `inputReadOnly` is for the read-only input UX pattern.
+	 */
+	variant: PropTypes.oneOf(['base', 'inputReadOnly'])
 };
 
 const defaultProps = {
-	type: 'text'
+	type: 'text',
+	variant: 'base'
 };
 
 /*
@@ -143,12 +160,12 @@ const InnerInput = (props) => (
 			'slds-input-has-icon--left': props.iconLeft && !props.iconRight,
 			'slds-input-has-icon--right': !props.iconLeft && props.iconRight,
 			'slds-input-has-icon--left-right': props.iconLeft && props.iconRight,
-			'slds-has-divider--bottom': props.readOnly && !props.inlineEditTrigger
+			'slds-has-divider--bottom': props.variant === 'inputReadOnly' && !props.inlineEditTrigger
 		})}
 	>
 		{props.iconLeft ? props.iconLeft : null}
 
-		{!props.readOnly && <input
+		{props.variant !== 'inputReadOnly' && <input
 			aria-activedescendant={props['aria-activedescendant']}
 			aria-autocomplete={props['aria-autocomplete']}
 			aria-controls={props['aria-controls']}
@@ -178,6 +195,8 @@ const InnerInput = (props) => (
 			ref={props.inputRef}
 			role={props.role}
 			required={props.required}
+			style={props.style}
+			tabIndex={props.tabIndex}
 			type={props.type}
 			value={props.value}
 		/>}
@@ -185,7 +204,7 @@ const InnerInput = (props) => (
 		{props.iconRight ? props.iconRight : null}
 
 		{/* eslint-disable jsx-a11y/no-static-element-interactions */}
-		{props.readOnly && <span className="slds-form-element__static" onClick={props.onClick}>
+		{props.variant === 'inputReadOnly' && <span className="slds-form-element__static" onClick={props.onClick}>
 			{props.value}
 			{props.inlineEditTrigger}
 		</span>}
