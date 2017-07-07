@@ -129,7 +129,7 @@ const Input = React.createClass({
 		 */
 		name: PropTypes.string,
 		/**
-		 * Displays the value of the input statically.
+		 * Displays the value of the input statically. This follows the read only input UX pattern.
 		 */
 		readOnly: PropTypes.bool,
 		/**
@@ -277,11 +277,11 @@ const Input = React.createClass({
 					onSubmit={props.onSubmit}
 					placeholder={props.placeholder}
 					inputRef={props.inputRef}
-					readOnly={props.readOnly}
 					role={props.role}
 					required={props.required}
 					type={props.type}
 					value={props.value}
+					variant={props.readOnly ? 'inputReadOnly' : null}
 				/>
 				{props.errorText && <div id={this.getErrorId()} className="slds-form-element__help">{props.errorText}</div>}
 				{props.children}
