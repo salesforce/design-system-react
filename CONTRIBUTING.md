@@ -32,6 +32,12 @@ This is an internal open-source project. You may be asked to review code submitt
 ## Concepts and Best Practices
 #### What we've learned about building React components for the enterprise
 
+### Introduction to presentational components
+If you are new to React, you may be trained to design components in a more complicated way than they need to be. Please prioritize the simple and the flexible. The gist of presentational components is to be a template that takes in data and passes out user events and related data to callback functions. One over-simplified way to approach it is to consider these components as [Handlebars templates](http://handlebarsjs.com/) with event listeners. The goal is for engineers to not have to think about markup and stylesheets.
+* Take data and UI data, such as disabled buttons, from parent via props to display data and UI state correctly. Don't manipulate props with string concatenations, array pushes, and sorting within components.
+* Pass mouse and keyboard events and related event data, such as the item data for the item that was clicked, up to parent state machine, so it can decide how to manipulate it's child components' props.
+* Parent component should be the only component that changes data. Components should be data stateless. Only UI state, such as "is this dialog open?" should be within components.
+
 ### Think of others first
 - <a name="not-bootstrap" href="#not-bootstrap">#</a> **Consider your audience.** This project is not Bootstrap, and we've built [frameworks on top of Bootstrap](https://github.com/ExactTarget/fuelux). The primary audience for this project is software engineers yearning to easily implement the design artifact handed to them. Yes, contributors should over-document and explain much as you need to, but you do _not_ need to have components just work when you drop them on the page. Read on for more about limiting internal component state.
 
