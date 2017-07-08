@@ -30,6 +30,11 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.7.0-alpha
+- Rewrite Lookup Component to match SLDS Combobox markup
+- Add multiple selection with pills rendering under the input
+- Alpha release because the next one will have breaking changes for the Lookup Component. We are planning on updating it so that it no longer maintains its own state, and rather just updates based external props updating.
+
 ## Release 0.6.13
 **Bugfix Changes**
 
@@ -44,7 +49,7 @@ These are changes that have backwards-compatible solutions present and that comp
 
 - Update package.json dependencies
 - Switches to newest Heroku stack for deployment pipeline.
-- Fixes missing icons on Heroku PR apps. 
+- Fixes missing icons on Heroku PR apps.
 - Updates Jest and snapshots
 - Updates sinon and sinon-chai
 - Removes babel-eslint as a dependency
