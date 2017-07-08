@@ -24,6 +24,8 @@ import shortid from 'shortid';
 
 // ## Children
 import InputIcon from '../../icon/input-icon';
+import InnerInput from './private/inner-input';
+
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 
@@ -127,7 +129,7 @@ const Input = React.createClass({
 		 */
 		name: PropTypes.string,
 		/**
-		 * Displays the value of the input statically.
+		 * Displays the value of the input statically. This follows the read only input UX pattern.
 		 */
 		readOnly: PropTypes.bool,
 		/**
@@ -210,124 +212,79 @@ const Input = React.createClass({
 
 	// ### Render
 	render () {
-		const {
-			assistiveText,
-			children,
-			className,
-			disabled,
-			errorText,
-			iconLeft,
-			iconRight,
-			inlineEditTrigger, // eslint-disable-line react/prop-types
-			inputRef, // eslint-disable-line react/prop-types
-			label,
-			onBlur,
-			onChange,
-			onClick,
-			onFocus,
-			onInput,
-			onInvalid,
-			onKeyDown,
-			onKeyPress,
-			onKeyUp,
-			onSelect,
-			onSubmit,
-			minLength,
-			maxLength,
-			name,
-			placeholder,
-			readOnly,
-			required,
-			role,
-			type,
-			value
+		const props = this.props;
 
-			// ### Additional properties
-			// Using [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx) to pass on any properties which are not explicitly defined.
-			// ...props // Uncomment this if you actually need to send the rest of the props to other elements
-		} = this.props;
-
-		const labelText = label || assistiveText; // One of these is required to pass accessibility tests
+		const labelText = props.label
+			|| props.assistiveText; // One of these is required to pass accessibility tests
 
 		// this is a hack to make left the default prop unless overwritten by `iconPosition="right"`
-		const hasLeftIcon = !!iconLeft || ((this.props.iconPosition === 'left' || this.props.iconPosition === undefined) && !!this.props.iconName);
-		const hasRightIcon = !!iconRight || (this.props.iconPosition === 'right' && !!this.props.iconName);
+		const hasLeftIcon = !!props.iconLeft || ((props.iconPosition === 'left' || props.iconPosition === undefined) && !!props.iconName);
+		const hasRightIcon = !!props.iconRight || (props.iconPosition === 'right' && !!props.iconName);
 
 		return (
 			<div
 				className={classNames('slds-form-element', {
-					'slds-has-error': errorText
+					'slds-has-error': props.errorText
 				},
-				className)}
+				props.className)}
 			>
-				{labelText && (readOnly
-					? <span className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText && !label })}>
+				{labelText && (props.readOnly
+					? <span
+						className={classNames('slds-form-element__label', {
+							'slds-assistive-text': props.assistiveText && !props.label
+						})}
+					>
 						{labelText}
 					</span>
 					: <label
-						className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText && !label })}
+						className={classNames('slds-form-element__label', {
+							'slds-assistive-text': props.assistiveText && !props.label
+						})}
 						htmlFor={this.getId()}
 					>
-						{required && <abbr className="slds-required" title="required">*</abbr>}
+						{props.required && <abbr className="slds-required" title="required">*</abbr>}
 						{labelText}
 					</label>
 				)}
-				<div
-					className={classNames('slds-form-element__control', {
-						'slds-input-has-icon': hasLeftIcon || hasRightIcon,
-						'slds-input-has-icon--left': hasLeftIcon && !hasRightIcon,
-						'slds-input-has-icon--right': !hasLeftIcon && hasRightIcon,
-						'slds-input-has-icon--left-right': hasLeftIcon && hasRightIcon,
-						'slds-has-divider--bottom': readOnly && !inlineEditTrigger
-					})}
-				>
-					{hasLeftIcon ? this.getIconRender('left', 'iconLeft') : null}
-
-					{!readOnly && <input
-						aria-activedescendant={this.props['aria-activedescendant']}
-						aria-autocomplete={this.props['aria-autocomplete']}
-						aria-controls={this.props['aria-controls']}
-						aria-labelledby={this.props['aria-labelledby']}
-						aria-describedby={this.getErrorId()}
-						aria-expanded={this.props['aria-expanded']}
-						aria-owns={this.props['aria-owns']}
-						aria-required={this.props['aria-required']}
-						className="slds-input"
-						disabled={disabled}
-						id={this.getId()}
-						minLength={minLength}
-						maxLength={maxLength}
-						name={name}
-						onBlur={onBlur}
-						onChange={onChange}
-						onClick={onClick}
-						onFocus={onFocus}
-						onInput={onInput}
-						onInvalid={onInvalid}
-						onKeyDown={onKeyDown}
-						onKeyPress={onKeyPress}
-						onKeyUp={onKeyUp}
-						onSelect={onSelect}
-						onSubmit={onSubmit}
-						placeholder={placeholder}
-						ref={inputRef}
-						role={role}
-						required={required}
-						type={type}
-						value={value}
-					/>}
-
-					{hasRightIcon ? this.getIconRender('right', 'iconRight') : null}
-
-					{/* eslint-disable jsx-a11y/no-static-element-interactions */}
-					{readOnly && <span className="slds-form-element__static" onClick={onClick}>
-						{/* eslint-enable jsx-a11y/no-static-element-interactions */}
-						{value}
-						{inlineEditTrigger}
-					</span>}
-				</div>
-				{errorText && <div id={this.getErrorId()} className="slds-form-element__help">{errorText}</div>}
-				{children}
+				<InnerInput
+					aria-activedescendant={this.props['aria-activedescendant']}
+					aria-autocomplete={this.props['aria-autocomplete']}
+					aria-controls={this.props['aria-controls']}
+					aria-labelledby={this.props['aria-labelledby']}
+					aria-describedby={this.getErrorId()}
+					aria-expanded={this.props['aria-expanded']}
+					aria-owns={this.props['aria-owns']}
+					aria-required={this.props['aria-required']}
+					containerClassName="slds-form-element__control"
+					disabled={props.disabled}
+					id={this.getId()}
+					iconLeft={hasLeftIcon ? this.getIconRender('left', 'iconLeft') : null}
+					iconRight={hasRightIcon ? this.getIconRender('right', 'iconRight') : null}
+					inlineEditTrigger={props.inlineEditTrigger}
+					minLength={props.minLength}
+					maxLength={props.maxLength}
+					name={props.name}
+					onBlur={props.onBlur}
+					onChange={props.onChange}
+					onClick={props.onClick}
+					onFocus={props.onFocus}
+					onInput={props.onInput}
+					onInvalid={props.onInvalid}
+					onKeyDown={props.onKeyDown}
+					onKeyPress={props.onKeyPress}
+					onKeyUp={props.onKeyUp}
+					onSelect={props.onSelect}
+					onSubmit={props.onSubmit}
+					placeholder={props.placeholder}
+					inputRef={props.inputRef}
+					role={props.role}
+					required={props.required}
+					type={props.type}
+					value={props.value}
+					variant={props.readOnly ? 'inputReadOnly' : null}
+				/>
+				{props.errorText && <div id={this.getErrorId()} className="slds-form-element__help">{props.errorText}</div>}
+				{props.children}
 			</div>
 		);
 	}
