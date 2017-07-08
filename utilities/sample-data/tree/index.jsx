@@ -21,7 +21,7 @@ const sampleNodesDefault = [
 				id: 4,
 				nodes: [
 					{
-						label: <span><Icon name="filter" category="utility" size="x-small" /> Watermelon <Icon name="list" category="utility" size="x-small" /></span>, type: 'item', id: 12
+						label: <span><Icon name="filter" category="utility" size="x-small" />Watermelon<Icon name="list" category="utility" size="x-small" /></span>, type: 'item', id: 12
 					},
 					{
 						label: 'Canteloupe', type: 'item', _iconClass: 'glyphicon-file', id: 13

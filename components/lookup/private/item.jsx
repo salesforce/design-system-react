@@ -5,6 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../../icon';
 import { EventUtil } from '../../../utilities';
+import cx from 'classnames';
 
 const displayName = 'Lookup-Menu-Item';
 const propTypes = {
@@ -16,7 +17,6 @@ const propTypes = {
 	index: PropTypes.number,
 	isActive: PropTypes.bool,
 	isDisabled: PropTypes.bool,
-	isSelected: PropTypes.bool,
 	listItemLabelRenderer: PropTypes.func,
 	onSelect: PropTypes.func,
 	searchTerm: PropTypes.string,
@@ -40,17 +40,7 @@ class Item extends React.Component {
 	}
 
 	getIcon () {
-		if (this.props.isSelected) {
-			return (
-				<span className="slds-media__figure">
-					<Icon
-						category="utility"
-						name="check"
-						size="x-small"
-					/>
-				</span>
-			);
-		} else if (this.props.iconName && !this.props.listItemLabelRenderer) {
+		if (this.props.iconName && !this.props.listItemLabelRenderer) {
 			return (
 				<span className="slds-media__figure">
 					<Icon
@@ -72,42 +62,48 @@ class Item extends React.Component {
 	}
 
 	getLabel () {
-		return this.props.children.data.subTitle
-			? (
-				<span className="slds-media__body">
-					<span className="slds-listbox__option-text slds-listbox__option-text_entity">{this.props.children.label}</span>
-					<span className="slds-listbox__option-meta slds-listbox__option-meta_entity">{this.props.children.data.subTitle}</span>
-				</span>
-			)
-			: (
-				<span className="slds-media__body" style={{ alignSelf: 'center' }}>
-					<span className="slds-listbox__option-text slds-listbox__option-text_entity">
-						{this.props.children.label}
-					</span>
-				</span>
-			);
+		let label;
+		if (this.props.children.data.subTitle) {
+			label = (<div className="slds-media__body">
+				<div className="slds-lookup__result-text">{this.props.children.label}</div>
+				<span className="slds-lookup__result-meta slds-text-body--small">{this.props.children.data.subTitle}</span>
+			</div>);
+		} else {
+			const labelClassName = cx('slds-lookup__result-text', {
+				'slds-m-left--x-small': !this.props.iconName
+			});
+
+			label = (<div className="slds-media__body">
+				<div className={labelClassName}>{this.props.children.label}</div>
+			</div>);
+		}
+		return label;
 	}
 
 	render () {
-		let itemClassName = 'js-slds-lookup__item slds-listbox__item';
+		let itemClassName = 'js-slds-lookup__item';
+		const id = this.props.id;
 		if (this.props.isActive) itemClassName += ' slds-theme--shade';
 
 		return (
-			<li className={itemClassName} ref={(li) => { this.itemRef = li; }} role="presentation">
-				<span // eslint-disable-line jsx-a11y/no-static-element-interactions
+      // IMPORTANT: anchor id is used to set lookup's input's aria-activedescendant
+			<li className={itemClassName} ref={(li) => { this.itemRef = li; }}>
+				<a
 					aria-disabled={this.props.isDisabled}
-					className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
-					id={this.props.id}
+					className="slds-lookup__item-action slds-media slds-media--center"
+					href={this.props.href}
+					id={id}
 					onClick={this.handleClick}
 					onMouseDown={EventUtil.trapImmediate}
-					ref={this.props.id}
+					ref={id}
 					role="option"
+					tabIndex="-1"
 				>
-					{ this.getIcon() }
+					{this.getIcon()}
 					{ this.props.listItemLabelRenderer ? this.getCustomLabel() : this.getLabel() }
-				</span>
+				</a>
 			</li>
-		);
+    );
 	}
 }
 
