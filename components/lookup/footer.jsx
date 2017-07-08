@@ -8,8 +8,10 @@
 import React from 'react';
 import Icon from '../icon';
 import { EventUtil } from '../../utilities';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+
+const displayName = 'LookupDefaultFooter';
+const propTypes = {};
+const defaultProps = {};
 
 class DefaultFooter extends React.Component {
 	componentWillReceiveProps (nextProps) {
@@ -25,57 +27,34 @@ class DefaultFooter extends React.Component {
 	}
 
 	render () {
-		const className = {
-			'slds-media slds-listbox__option slds-listbox__option_entity': true,
-			'slds-has-focus': this.props.isActive
-		};
+		let className = 'slds-lookup__item-action slds-lookup__item-action--label';
+		if (this.props.isActive) className += ' slds-theme--shade';
 
 		return (
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
-			<li
-				className="js-slds-lookup__item slds-listbox__item"
+			<div
+				className="js-slds-lookup__item"
 				onClick={this.handleClick}
 				onMouseDown={EventUtil.trapImmediate}
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				{/* eslint-disable no-script-url */}
-				<span id="newItem" href="javascript:void(0);" className={classNames(className)}>
+				<a id="newItem" href="javascript:void(0);" className={className}>
 					{/* eslint-enable no-script-url */}
-					<span className="slds-media__figure">
+					<span className="lookup__item-action-label">
 						<Icon name="add" category="utility" size="x-small" className="slds-icon-text-default" />
-					</span>
-					<span className="slds-media__body">
 						<span className="slds-truncate">
 							{this.props.newItemLabel ? this.props.newItemLabel : 'Add New Item' }
 						</span>
 					</span>
-				</span>
-			</li>
+				</a>
+			</div>
 		);
 	}
 }
 
-const propTypes = {
-	/**
-	 * Bool to indicate if item has focus.
-	 */
-	isActive: PropTypes.bool,
-	/**
-	 * Callback on set focus for footer item.
-	 */
-	setFocus: PropTypes.func,
-	/**
-	 * Callback on click for footer item.
-	 */
-	onClose: PropTypes.func,
-	/**
-	 * Label for footer item.
-	 */
-	newItemLabel: PropTypes.string
-};
-
-const displayName = 'LookupDefaultFooter';
 DefaultFooter.displayName = displayName;
 DefaultFooter.propTypes = propTypes;
+DefaultFooter.defaultProps = defaultProps;
 
 module.exports = DefaultFooter;

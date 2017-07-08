@@ -29,7 +29,6 @@ const Icon = ({
 	assistiveText,
 	category,
 	className,
-	containerClassName,
 	icon,
 	inverse,
 	name,
@@ -41,7 +40,7 @@ const Icon = ({
 
 	return (
 		<span
-			className={classNames(containerClassName, {
+			className={classNames({
 				'slds-icon_container': category !== 'utility',
 				'slds-icon_container--circle': category === 'action',
 				[`slds-icon-${category}-${kababCaseName}`]: category !== 'utility' && category !== 'doctype' && !path
@@ -100,10 +99,6 @@ Icon.propTypes = {
 	 * Icon color variants
 	 */
 	colorVariant: PropTypes.oneOf(['base', 'default', 'error', 'warning']),
-	/**
-	 * CSS classes applied to span containing SVG.
-	 */
-	containerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
 	 * A custom SVG object to use instead of the supplied SLDS icons, look in `design-system-react/icons` for examples and syntax.
 	 */

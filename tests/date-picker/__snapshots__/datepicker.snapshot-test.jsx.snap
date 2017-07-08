@@ -54,8 +54,6 @@ exports[`Datepicker
         placeholder="SWIPE RIGHT :-)"
         required={undefined}
         role={undefined}
-        style={undefined}
-        tabIndex={undefined}
         type="text"
         value="Llama and Lamb's epiphany of love"
       />
@@ -954,8 +952,6 @@ exports[`Datepicker
         placeholder="Pick a Date"
         required={undefined}
         role={undefined}
-        style={undefined}
-        tabIndex={undefined}
         type="text"
         value="7/23/2014"
       />
@@ -1852,8 +1848,6 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
         placeholder="Pick a Date"
         required={undefined}
         role={undefined}
-        style={undefined}
-        tabIndex={undefined}
         type="text"
         value="7/23/2014"
       />

@@ -14,9 +14,9 @@ const propTypes = {
 	getListLength: PropTypes.func,
 	iconCategory: PropTypes.string,
 	items: PropTypes.array,
+	label: PropTypes.string,
 	listLength: PropTypes.number,
 	searchTerm: PropTypes.string,
-	selectedIndices: PropTypes.array,
 	setFocus: PropTypes.func
 };
 const defaultProps = {
@@ -120,8 +120,6 @@ class Menu extends React.Component {
 					/>);
 				}
 			}
-
-			const isSelected = this.props.selectedIndices.indexOf(i) !== -1 || this.props.selectedIndices.indexOf(i.toString()) !== -1;
 			return (<Item
 				boldRegex={this.props.boldRegex}
 				data={component.data}
@@ -132,7 +130,6 @@ class Menu extends React.Component {
 				id={id}
 				index={i}
 				isActive={isActive}
-				isSelected={isSelected}
 				key={id}
 				listItemLabelRenderer={this.props.listItemLabelRenderer}
 				onSelect={this.props.onSelect}
@@ -147,8 +144,8 @@ class Menu extends React.Component {
 	renderContent () {
 		if (this.state.filteredItems.length === 0) {
 			return (
-				<li className="slds-listbox__item" aria-live="polite" role="presentation">
-					<span className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">{this.props.emptyMessage}</span>
+				<li className="slds-lookup__message" aria-live="polite">
+					<span className="slds-m-left--x-large slds-p-vertical--medium">{this.props.emptyMessage}</span>
 				</li>
 			);
 		}
@@ -158,13 +155,13 @@ class Menu extends React.Component {
 
 	render () {
 		return (
-			<div id={this.props.id} className={this.props.className} role={this.props.role}>
-				<ul id="list" className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid" role="presentation" ref={(list) => { this.listRef = list; }}>
-					{this.renderHeader()}
+			<section id="menuContainer" className="ignore-react-onclickoutside">
+				{this.renderHeader()}
+				<ul id="list" className="slds-lookup__list" role="presentation" ref={(list) => { this.listRef = list; }}>
 					{this.renderContent()}
-					{this.renderFooter()}
 				</ul>
-			</div>
+				{this.renderFooter()}
+			</section>
 		);
 	}
 }
