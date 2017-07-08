@@ -8,10 +8,8 @@
 import React from 'react';
 import Icon from '../icon';
 import { EventUtil } from '../../utilities';
-
-const displayName = 'LookupDefaultHeader';
-const propTypes = {};
-const defaultProps = {};
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 class DefaultHeader extends React.Component {
 	componentWillReceiveProps (nextProps) {
@@ -27,34 +25,57 @@ class DefaultHeader extends React.Component {
 	}
 
 	render () {
-		let className = 'slds-lookup__item-action slds-lookup__item-action--label';
-		if (this.props.isActive) className += ' slds-theme--shade';
+		const className = {
+			'slds-media slds-listbox__option slds-listbox__option_entity': true,
+			'slds-has-focus': this.props.isActive
+		};
 
 		return (
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
-			<div
-				className="js-slds-lookup__item"
+			<li
+				className="js-slds-lookup__item slds-listbox__item slds-p-vertical_xx-small"
 				onMouseDown={EventUtil.trapImmediate}
 				onClick={this.handleClick}
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				{/* eslint-disable no-script-url */}
-				<a id="searchRecords" href="javascript:void(0);" className={className}>
+				<span id="searchRecords" href="javascript:void(0);" className={classNames(className)}>
 					{/* eslint-enable no-script-url */}
-					<span className="lookup__item-action-label">
+					<span className="slds-media__figure">
 						<Icon name="search" category="utility" size="x-small" className="slds-icon-text-default" />
+					</span>
+					<span className="slds-media__body">
 						<span className="slds-truncate">
 							{this.props.searchTerm}
 						</span>
 					</span>
-				</a>
-			</div>
+				</span>
+			</li>
 		);
 	}
 }
 
+const propTypes = {
+	/**
+	 * Bool to indicate if item has focus.
+	 */
+	isActive: PropTypes.bool,
+	/**
+	 * Callback on set focus for header item.
+	 */
+	setFocus: PropTypes.func,
+	/**
+	 * Callback on click for header item.
+	 */
+	onClose: PropTypes.func,
+	/**
+	 * Label for current search term.
+	 */
+	searchTerm: PropTypes.string
+};
+
+const displayName = 'LookupDefaultHeader';
 DefaultHeader.displayName = displayName;
 DefaultHeader.propTypes = propTypes;
-DefaultHeader.defaultProps = defaultProps;
 
 module.exports = DefaultHeader;
