@@ -56,12 +56,7 @@ describe('SLDSLookup: ', () => {
 		it('renders label', () => {
 			const lookup = generateLookup(getLookup());
 			const label = lookup.getElementsByTagName('label')[0];
-			expect(label.textContent).to.equal('Account');
-		});
-		it('LookupWithSelection - renders label', () => {
-			const lookup = generateLookup(getLookupWithSelection());
-			const label = lookup.getElementsByTagName('span')[0];
-			expect(label.textContent).to.equal('Account');
+			expect(label.innerHTML).to.equal('<!-- react-text: 3 -->Account<!-- /react-text -->');
 		});
 	});
 
@@ -72,12 +67,10 @@ describe('SLDSLookup: ', () => {
 			const inputId = lookup.getElementsByTagName('input')[0].getAttribute('id');
 			expect(labelFor).to.equal(inputId);
 		});
-	});
 
-	describe('accessibility aria attributes pass', () => {
 		it('aria-expanded is false initally', () => {
 			const lookup = generateLookup(getLookup());
-			const ariaExpanded = lookup.getElementsByTagName('input')[0].getAttribute('aria-expanded');
+			const ariaExpanded = lookup.getElementsByClassName('slds-combobox')[0].getAttribute('aria-expanded');
 			expect(ariaExpanded).to.equal('false');
 		});
 
@@ -85,21 +78,21 @@ describe('SLDSLookup: ', () => {
 			const lookup = generateLookup(getLookup());
 			const input = lookup.getElementsByTagName('input')[0];
 			TestUtils.Simulate.click(input);
-			const ariaExpanded = lookup.getElementsByTagName('input')[0].getAttribute('aria-expanded');
+			const ariaExpanded = lookup.getElementsByClassName('slds-combobox')[0].getAttribute('aria-expanded');
 			expect(ariaExpanded).to.equal('true');
 		});
 
 		it('LookupWithSelection - aria-expanded is true when deleting selection', () => {
 			const lookup = generateLookup(getLookupWithSelection());
 			const deleteBtn = lookup.getElementsByTagName('button')[0];
-			TestUtils.Simulate.keyDown(deleteBtn, { key: 'Down', keyCode: 46, which: 46 });
-			const ariaExpanded = lookup.getElementsByTagName('input')[0].getAttribute('aria-expanded');
+			TestUtils.Simulate.click(deleteBtn);
+			const ariaExpanded = lookup.getElementsByClassName('slds-combobox')[0].getAttribute('aria-expanded');
 			expect(ariaExpanded).to.equal('true');
 		});
 	});
 
 
-	describe('selecting item works', () => {
+	describe('Single Select - selecting item works', () => {
 		it('no fixed header: focuses correct item', () => {
 			const lookup = generateLookup(getLookup());
 			const input = lookup.getElementsByTagName('input')[0];
@@ -128,7 +121,7 @@ describe('SLDSLookup: ', () => {
 			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
 			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
 			TestUtils.Simulate.keyDown(input, { key: 'Enter', keyCode: 13, which: 13 });
-			const selected = lookup.getElementsByTagName('a')[0].getElementsByClassName('slds-pill__label')[0].textContent;
+			const selected = input.getAttribute('value');
 			expect(selected).to.equal('Paper St. Soap Company');
 		});
 
@@ -140,7 +133,7 @@ describe('SLDSLookup: ', () => {
 			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
 			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
 			TestUtils.Simulate.keyDown(input, { key: 'Enter', keyCode: 13, which: 13 });
-			const selected = lookup.getElementsByTagName('a')[0].getElementsByClassName('slds-pill__label')[0].textContent;
+			const selected = input.getAttribute('value');
 			expect(selected).to.equal('Tyrell Corp');
 		});
 
@@ -150,7 +143,7 @@ describe('SLDSLookup: ', () => {
 			TestUtils.Simulate.click(input);
 			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
 			TestUtils.Simulate.keyDown(input, { key: 'Esc', keyCode: 27, which: 27 });
-			const ariaExpanded = input.getAttribute('aria-expanded');
+			const ariaExpanded = lookup.getElementsByClassName('slds-combobox')[0].getAttribute('aria-expanded');
 			expect(ariaExpanded).to.equal('false');
 		});
 
@@ -171,6 +164,52 @@ describe('SLDSLookup: ', () => {
 			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
 			const focusedItem = lookup.getElementsByTagName('ul')[0].getElementsByTagName('li')[0];
 			expect(focusedItem.className).to.have.string('slds-theme--shade');
+		});
+	});
+
+	describe('Multiple Select - selecting items work', () => {
+		let lookup;
+		let input;
+
+		beforeEach(() => {
+			lookup = generateLookup(getLookup({ multiple: true }));
+			input = lookup.getElementsByTagName('input')[0];
+			TestUtils.Simulate.click(input);
+			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
+			TestUtils.Simulate.keyDown(input, { key: 'Enter', keyCode: 13, which: 13 });
+		});
+
+		afterEach(() => {
+			lookup = null;
+		});
+
+		it('renders pills', () => {
+			const pills = lookup.getElementsByClassName('slds-pill');
+			expect(pills.length).to.equal(1);
+		});
+
+		it('renders correct input value', () => {
+			const value = input.getAttribute('value');
+			expect(value).to.equal('1 Option(s) Selected');
+		});
+
+		it('deletes pill when clicking remove button', () => {
+			const pills = lookup.getElementsByClassName('slds-pill');
+			expect(pills.length).to.equal(1);
+
+			const deleteBtn = pills[0].getElementsByTagName('button')[0];
+			TestUtils.Simulate.click(deleteBtn);
+			expect(pills.length).to.equal(0);
+		});
+
+		it('deletes pill on delete/backspace key', () => {
+			const pills = lookup.getElementsByClassName('slds-pill');
+			const pill1 = lookup.getElementsByClassName('slds-pill')[0];
+			expect(pills.length).to.equal(1);
+
+			TestUtils.Simulate.keyDown(input, { key: 'Tab', keyCode: 9, which: 9 });
+			TestUtils.Simulate.keyDown(pill1, { key: 'Backspace', keyCode: 8, which: 8 });
+			expect(pills.length).to.equal(0);
 		});
 	});
 
@@ -200,10 +239,9 @@ describe('SLDSLookup: ', () => {
 		});
 
 		it('displays no items when item count is 0', () => {
-			expect(lookup.getElementsByClassName('slds-lookup__message').length).to.equal(0);
 			Simulate.change(input, { target: { value: 'kdjfksjdf' } });
 			expect(getItems(lookup).length).to.equal(1); // add item
-			expect(lookup.getElementsByClassName('slds-lookup__message').length).to.equal(1);
+			expect(lookup.getElementsByClassName('slds-listbox__option')[0].innerHTML).to.equal('No items found');
 		});
 	});
 
