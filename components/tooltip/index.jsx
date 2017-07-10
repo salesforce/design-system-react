@@ -79,10 +79,6 @@ const propTypes = {
 	*/
 	isOpen: PropTypes.bool,
 	/**
-	* This sets the location of the tooltip, if that location is different from the triggering node.
-	*/
-	target: PropTypes.node,
-	/**
 	 * CSS classes to be added to tag with `slds-tooltip-trigger`.
 	 */
 	triggerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
