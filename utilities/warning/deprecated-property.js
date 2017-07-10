@@ -14,9 +14,10 @@ if (process.env.NODE_ENV !== 'production') {
 	deprecated = function (control, propValue, oldProp, newProp, comment) {
 		const additionalComment = comment ? ` ${comment}` : '';
 		const newProperty = newProp ? `Use \`${newProp}\`` : '';
+		const newPropertySentence = newProp ? ` ${newProperty} instead.` : '';
 		if (!hasWarned[control + oldProp]) {
 			/* eslint-disable max-len */
-			warning(propValue === undefined, `[Design System React] \`${oldProp}\` will be removed in the next major version of ${control}. ${newProperty} instead.${additionalComment}`);
+			warning(propValue === undefined, `[Design System React] \`${oldProp}\` will be removed in the next major version of ${control}.${newPropertySentence}${additionalComment}`);
 			/* eslint-enable max-len */
 			hasWarned[control + oldProp] = propValue !== undefined;
 		}
