@@ -30,6 +30,7 @@ export const FILTER = 'SLDSFilter';
 export const FORMS_CHECKBOX = 'SLDSCheckbox';
 export const FORMS_INLINE_EDIT = 'SLDSInlineEdit';
 export const FORMS_INPUT = 'SLDSInput';
+export const FORMS_TEXTAREA = 'SLDSTextarea';
 export const FORMS_SEARCH = 'SLDSSearch';
 export const GLOBAL_HEADER = 'SLDSGlobalHeader';
 export const GLOBAL_HEADER_PROFILE = 'SLDSGlobalHeaderProfile';

@@ -60,6 +60,9 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!design-system-react/examples/forms/input/disabled.jsx'),
 		require('raw-loader!design-system-react/examples/forms/input/read-only.jsx')
 	],
+	'forms-textarea': [
+		require('raw-loader!design-system-react/examples/forms/textarea/default.jsx'),
+	],
 	'global-header': [
 		require('raw-loader!design-system-react/examples/global-header/default.jsx')
 	],
