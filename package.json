@@ -368,7 +368,7 @@
     },
     {
       "component": "navigation",
-      "status": "prototype",
+      "status": "prod",
       "display-name": "Navigation",
       "SLDS-component-path": "/components/navigation"
     },
