@@ -30,252 +30,247 @@ import { FORMS_TEXTAREA } from '../../../utilities/constants';
 
 // ## TextareaDefinition
 const Textarea = React.createClass({
-    // ### Display Name
-    // Always use the canonical component name as the React display name.
-    displayName: FORMS_TEXTAREA,
-    // ### Prop Types
-    propTypes: {
-        'aria-activedescendant': PropTypes.string,
-        /**
-         * An HTML ID that is shared with ARIA-supported devices with the
-         * `aria-controls` attribute in order to relate the textarea with
-         * another region of the page. An example would be a select box
-         * that shows or hides a panel.
-         */
-        'aria-controls': PropTypes.string,
-        'aria-describedby': PropTypes.string,
-        'aria-expanded': PropTypes.bool,
-        'aria-haspopup': PropTypes.bool,
-        'aria-labelledby': PropTypes.string,
-        /**
-         * An HTML ID that is shared with ARIA-supported devices with the
-         * `aria-controls` attribute in order to relate the textarea with
-         * another region of the page. An example would be a search field
-         * that shows search results.
-         */
-        'aria-owns': PropTypes.string,
-        'aria-required': PropTypes.bool,
-        /**
-         * Specifies is the textarea should automatically get focus when the page loads.
-         */
-        autoFocus: PropTypes.bool,
-        /**
-         * If present, the label associated with this `textarea` is overwritten
-         * by this text and is visually not shown.
-         */
-        assistiveText: PropTypes.string,
-        children: PropTypes.node,
-        /**
-         * Class names to be added to the outer container of the textarea.
-         */
-        className: PropTypes.oneOfType([
-            PropTypes.array,
-            PropTypes.object,
-            PropTypes.string
-        ]),
+	// ### Display Name
+	// Always use the canonical component name as the React display name.
+	displayName: FORMS_TEXTAREA,
+	// ### Prop Types
+	propTypes: {
+		'aria-activedescendant': PropTypes.string,
+		/**
+		 * An HTML ID that is shared with ARIA-supported devices with the
+		 * `aria-controls` attribute in order to relate the textarea with
+		 * another region of the page. An example would be a select box
+		 * that shows or hides a panel.
+		 */
+		'aria-controls': PropTypes.string,
+		'aria-describedby': PropTypes.string,
+		'aria-expanded': PropTypes.bool,
+		'aria-haspopup': PropTypes.bool,
+		'aria-labelledby': PropTypes.string,
+		/**
+		 * An HTML ID that is shared with ARIA-supported devices with the
+		 * `aria-controls` attribute in order to relate the textarea with
+		 * another region of the page. An example would be a search field
+		 * that shows search results.
+		 */
+		'aria-owns': PropTypes.string,
+		'aria-required': PropTypes.bool,
+		/**
+		 * Specifies is the textarea should automatically get focus when the page loads.
+		 */
+		autoFocus: PropTypes.bool,
+		/**
+		 * If present, the label associated with this `textarea` is overwritten
+		 * by this text and is visually not shown.
+		 */
+		assistiveText: PropTypes.string,
+		children: PropTypes.node,
+		/**
+		 * Class names to be added to the outer container of the textarea.
+		 */
+		className: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string
+		]),
 
-        /**
-         * Message to display when the textarea is in an error state. When this is present, also visually highlights the component as in error.
-         */
-        errorText: PropTypes.string,
-        /**
-         * Every textarea must have a unique ID in order to support keyboard navigation and ARIA support.
-         */
-        id: PropTypes.string,
-        /**
-         * This callback exposes the textarea reference / DOM node to parent components. `<Parent textareaRef={(textareaComponent) => this.textarea = textareaComponent} />
-         */
-        textareaRef: PropTypes.func,
-        /**
-         * This label appears above the textarea.
-         */
-        label: PropTypes.string,
-        onBlur: PropTypes.func,
-        /**
-         * This callback fires when the textarea changes. The synthetic React event will be the first parameter to the callback. You will probably want to reference `event.target.value` in your callback. No custom data object is provided.
-         */
-        onChange: PropTypes.func,
-        /**
-         * This event fires when the textarea is clicked.
-         */
-        onClick: PropTypes.func,
-        onFocus: PropTypes.func,
-        onInput: PropTypes.func,
-        onInvalid: PropTypes.func,
-        onKeyDown: PropTypes.func,
-        onKeyPress: PropTypes.func,
-        onKeyUp: PropTypes.func,
-        onSelect: PropTypes.func,
-        onSubmit: PropTypes.func,
+		/**
+		 * Message to display when the textarea is in an error state. When this is present, also visually highlights the component as in error.
+		 */
+		errorText: PropTypes.string,
+		/**
+		 * Every textarea must have a unique ID in order to support keyboard navigation and ARIA support.
+		 */
+		id: PropTypes.string,
+		/**
+		 * This callback exposes the textarea reference / DOM node to parent components. `<Parent textareaRef={(textareaComponent) => this.textarea = textareaComponent} />
+		 */
+		textareaRef: PropTypes.func,
+		/**
+		 * This label appears above the textarea.
+		 */
+		label: PropTypes.string,
+		onBlur: PropTypes.func,
+		/**
+		 * This callback fires when the textarea changes. The synthetic React event will be the first parameter to the callback. You will probably want to reference `event.target.value` in your callback. No custom data object is provided.
+		 */
+		onChange: PropTypes.func,
+		/**
+		 * This event fires when the textarea is clicked.
+		 */
+		onClick: PropTypes.func,
+		onFocus: PropTypes.func,
+		onInput: PropTypes.func,
+		onInvalid: PropTypes.func,
+		onKeyDown: PropTypes.func,
+		onKeyPress: PropTypes.func,
+		onKeyUp: PropTypes.func,
+		onSelect: PropTypes.func,
+		onSubmit: PropTypes.func,
 
-        /**
-         * Disables the textarea and prevents editing the contents.
-         */
-        disabled: PropTypes.bool,
-        /**
-         * Maximum number of characters allowed.
-         */
-        maxLength: PropTypes.string,
-        /**
-         * Name of the submitted form parameter.
-         */
-        name: PropTypes.string,
-        /**
-         * Text that will appear in an empty textarea.
-         */
-        placeholder: PropTypes.string,
-        /**
-         * Displays the value of the textarea statically.
-         */
-        readOnly: PropTypes.bool,
-        /**
-         * Highlights the textarea as a required field (does not perform any validation).
-         */
-        required: PropTypes.bool,
-        /**
-         * The textarea is a controlled component, and will always display this value.
-         */
-        value: PropTypes.string,
-        /**
-         * Specifies how the text in a text area is to be wrapped when submitted in a form.
-         */
-        wrap: PropTypes.oneOf([
-            'soft',
-            'hard'
-        ]),
-    },
+		/**
+		 * Disables the textarea and prevents editing the contents.
+		 */
+		disabled: PropTypes.bool,
+		/**
+		 * Maximum number of characters allowed.
+		 */
+		maxLength: PropTypes.string,
+		/**
+		 * Name of the submitted form parameter.
+		 */
+		name: PropTypes.string,
+		/**
+		 * Text that will appear in an empty textarea.
+		 */
+		placeholder: PropTypes.string,
+		/**
+		 * Displays the value of the textarea statically.
+		 */
+		readOnly: PropTypes.bool,
+		/**
+		 * Highlights the textarea as a required field (does not perform any validation).
+		 */
+		required: PropTypes.bool,
+		/**
+		 * The textarea is a controlled component, and will always display this value.
+		 */
+		value: PropTypes.string,
+		/**
+		 * Specifies how the text in a text area is to be wrapped when submitted in a form.
+		 */
+		wrap: PropTypes.oneOf([
+			'soft',
+			'hard'
+		])
+	},
 
-    getDefaultProps () {
-        return {};
-    },
+	getDefaultProps () {
+		return {};
+	},
 
-    componentWillMount () {
-        // `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-        checkProps(FORMS_TEXTAREA, this.props);
+	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(FORMS_TEXTAREA, this.props);
 
-        this.generatedId = shortid.generate();
-        if (this.props.errorText) {
-            this.generatedErrorId = shortid.generate();
-        }
-    },
+		this.generatedId = shortid.generate();
+		if (this.props.errorText) {
+			this.generatedErrorId = shortid.generate();
+		}
+	},
 
-    getId () {
-        return this.props.id || this.generatedId;
-    },
+	getId () {
+		return this.props.id || this.generatedId;
+	},
 
-    getErrorId () {
-        return this.props['aria-describedby'] || this.generatedErrorId;
-    },
+	getErrorId () {
+		return this.props['aria-describedby'] || this.generatedErrorId;
+	},
 
 
-    // ### Render
-    render () {
-        const {
-            autoFocus,
-            assistiveText,
-            children,
-            className,
-            disabled,
-            errorText,
-            textareaRef, // eslint-disable-line react/prop-types
-            label,
-            onBlur,
-            onChange,
-            onClick,
-            onFocus,
-            onInput,
-            onInvalid,
-            onKeyDown,
-            onKeyPress,
-            onKeyUp,
-            onSelect,
-            onSubmit,
-            maxLength,
-            name,
-            placeholder,
-            readOnly,
-            required,
-            role,
-            value,
-            wrap
+	// ### Render
+	render () {
+		const {
+			autoFocus,
+			assistiveText,
+			children,
+			className,
+			disabled,
+			errorText,
+			textareaRef, // eslint-disable-line react/prop-types
+			label,
+			onBlur,
+			onChange,
+			onClick,
+			onFocus,
+			onInput,
+			onInvalid,
+			onKeyDown,
+			onKeyPress,
+			onKeyUp,
+			onSelect,
+			onSubmit,
+			maxLength,
+			name,
+			placeholder,
+			readOnly,
+			required,
+			role,
+			value,
+			wrap
 
-            // ### Additional properties
-            // Using [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx) to pass on any properties which are not explicitly defined.
-            // ...props // Uncomment this if you actually need to send the rest of the props to other elements
-        } = this.props;
+			// ### Additional properties
+			// Using [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx) to pass on any properties which are not explicitly defined.
+			// ...props // Uncomment this if you actually need to send the rest of the props to other elements
+		} = this.props;
 
-        const labelText = label || assistiveText; // One of these is required to pass accessibility tests
+		const labelText = label || assistiveText; // One of these is required to pass accessibility tests
 
-        return (
-            <div
-                className={classNames('slds-form-element', {
-                        'slds-has-error': errorText
-                    },
-                    className)}
-            >
-                {labelText && (readOnly
-                        ? <span
-                            className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText && !label })}>
+		return (
+			<div
+				className={classNames('slds-form-element', {
+					'slds-has-error': errorText
+				},
+				className)}
+			>
+				{labelText && (readOnly ?
+					<span className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText && !label })}>
 						{labelText}
-					</span>
-                        : <label
-                            className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText && !label })}
-                            htmlFor={this.getId()}
-                        >
-                            {required && <abbr className="slds-required" title="required">*</abbr>}
-                            {labelText}
-                        </label>
-                )}
-                <div
-                    className={classNames('slds-form-element__control', {
-                        'slds-has-divider--bottom': readOnly
-                    })}
-                >
+					</span> : <label className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText && !label })} htmlFor={this.getId()}>
+						{required && <abbr className="slds-required" title="required">*</abbr>}
+						{labelText}
+					</label>
+				)}
+				<div
+					className={classNames('slds-form-element__control', {
+						'slds-has-divider--bottom': readOnly
+					})}
+				>
 
-                    {!readOnly && <textarea
-                        aria-activedescendant={this.props['aria-activedescendant']}
-                        aria-controls={this.props['aria-controls']}
-                        aria-labelledby={this.props['aria-labelledby']}
-                        aria-describedby={this.getErrorId()}
-                        aria-expanded={this.props['aria-expanded']}
-                        aria-owns={this.props['aria-owns']}
-                        aria-required={this.props['aria-required']}
-                        className={classNames("slds-textarea", className)}
-                        autoFocus={autoFocus}
-                        disabled={disabled}
-                        id={this.getId()}
-                        maxLength={maxLength}
-                        name={name}
-                        onBlur={onBlur}
-                        onChange={onChange}
-                        onClick={onClick}
-                        onFocus={onFocus}
-                        onInput={onInput}
-                        onInvalid={onInvalid}
-                        onKeyDown={onKeyDown}
-                        onKeyPress={onKeyPress}
-                        onKeyUp={onKeyUp}
-                        onSelect={onSelect}
-                        onSubmit={onSubmit}
-                        placeholder={placeholder}
-                        ref={textareaRef}
-                        role={role}
-                        required={required}
-                        wrap={wrap}
-                        value={value}
-                    />}
+					{!readOnly && <textarea
+						aria-activedescendant={this.props['aria-activedescendant']}
+						aria-controls={this.props['aria-controls']}
+						aria-labelledby={this.props['aria-labelledby']}
+						aria-describedby={this.getErrorId()}
+						aria-expanded={this.props['aria-expanded']}
+						aria-owns={this.props['aria-owns']}
+						aria-required={this.props['aria-required']}
+						className={classNames('slds-textarea', className)}
+						autoFocus={autoFocus}
+						disabled={disabled}
+						id={this.getId()}
+						maxLength={maxLength}
+						name={name}
+						onBlur={onBlur}
+						onChange={onChange}
+						onClick={onClick}
+						onFocus={onFocus}
+						onInput={onInput}
+						onInvalid={onInvalid}
+						onKeyDown={onKeyDown}
+						onKeyPress={onKeyPress}
+						onKeyUp={onKeyUp}
+						onSelect={onSelect}
+						onSubmit={onSubmit}
+						placeholder={placeholder}
+						ref={textareaRef}
+						role={role}
+						required={required}
+						wrap={wrap}
+						value={value}
+					/>}
 
-                    {/* eslint-disable jsx-a11y/no-static-element-interactions */}
-                    {readOnly && <span className="slds-form-element__static" onClick={onClick}>
+					{/* eslint-disable jsx-a11y/no-static-element-interactions */}
+					{readOnly && <span className="slds-form-element__static" onClick={onClick}>
 						{/* eslint-enable jsx-a11y/no-static-element-interactions */}
-                        {value}
+						{value}
 					</span>}
-                </div>
-                {errorText && <div id={this.getErrorId()} className="slds-form-element__help">{errorText}</div>}
-                {children}
-            </div>
-        );
-    }
+				</div>
+				{errorText && <div id={this.getErrorId()} className="slds-form-element__help">{errorText}</div>}
+				{children}
+			</div>
+		);
+	}
 });
 
 module.exports = Textarea;
