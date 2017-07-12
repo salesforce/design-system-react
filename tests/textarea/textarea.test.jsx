@@ -98,30 +98,6 @@ describe('SLDS TEXTAREA **************************************************', () 
 		});
 	});
 
-	describe('Read Only Textarea', () => {
-		let component;
-		let label;
-		let textarea;
-
-		beforeEach(() => {
-			component = getTextarea({ label: 'Textarea Label', readOnly: true });
-			label = scryRenderedDOMComponentsWithTag(component, 'span')[0];
-			textarea = scryRenderedDOMComponentsWithTag(component, 'span')[1];
-		});
-
-		afterEach(() => {
-			removeTextarea();
-		});
-
-		it('label is a span and has class "slds-form-element__label"', () => {
-			expect(label.className).to.include('slds-form-element__label');
-		});
-
-		it('textarea is a span and has class "slds-form-element__static"', () => {
-			expect(textarea.className).to.include('slds-form-element__static');
-		});
-	});
-
 	describe('Multiple Textareas', () => {
 		let component1;
 		let component2;

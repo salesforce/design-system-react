@@ -125,10 +125,6 @@ const Textarea = React.createClass({
 		 */
 		placeholder: PropTypes.string,
 		/**
-		 * Displays the value of the textarea statically.
-		 */
-		readOnly: PropTypes.bool,
-		/**
 		 * Highlights the textarea as a required field (does not perform any validation).
 		 */
 		required: PropTypes.bool,
@@ -143,10 +139,6 @@ const Textarea = React.createClass({
 			'soft',
 			'hard'
 		])
-	},
-
-	getDefaultProps () {
-		return {};
 	},
 
 	componentWillMount () {
@@ -193,7 +185,6 @@ const Textarea = React.createClass({
 			maxLength,
 			name,
 			placeholder,
-			readOnly,
 			required,
 			role,
 			value,
@@ -213,21 +204,14 @@ const Textarea = React.createClass({
 				},
 				className)}
 			>
-				{labelText && (readOnly ?
-					<span className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText && !label })}>
-						{labelText}
-					</span> : <label className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText && !label })} htmlFor={this.getId()}>
+				{labelText && (<label className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText && !label })} htmlFor={this.getId()}>
 						{required && <abbr className="slds-required" title="required">*</abbr>}
 						{labelText}
 					</label>
 				)}
-				<div
-					className={classNames('slds-form-element__control', {
-						'slds-has-divider--bottom': readOnly
-					})}
-				>
+				<div className={classNames('slds-form-element__control')}>
 
-					{!readOnly && <textarea
+					<textarea
 						aria-activedescendant={this.props['aria-activedescendant']}
 						aria-controls={this.props['aria-controls']}
 						aria-labelledby={this.props['aria-labelledby']}
@@ -258,13 +242,8 @@ const Textarea = React.createClass({
 						required={required}
 						wrap={wrap}
 						value={value}
-					/>}
+					/>
 
-					{/* eslint-disable jsx-a11y/no-static-element-interactions */}
-					{readOnly && <span className="slds-form-element__static" onClick={onClick}>
-						{/* eslint-enable jsx-a11y/no-static-element-interactions */}
-						{value}
-					</span>}
 				</div>
 				{errorText && <div id={this.getErrorId()} className="slds-form-element__help">{errorText}</div>}
 				{children}

@@ -3,17 +3,12 @@
 /* eslint-disable import/no-mutable-exports */
 /* eslint-disable max-len */
 
-// import deprecatedProperty from '../../../utilities/warning/deprecated-property';
-// import oneOfRequiredProperty from '../../../utilities/warning/one-of-required-property';
 import onlyOneOfProperties from '../../../utilities/warning/only-one-of-properties';
 
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
-		// Deprecated and changed to another property
-
-
 		onlyOneOfProperties(COMPONENT, {
 			assistiveText: props.assistiveText,
 			label: props.label

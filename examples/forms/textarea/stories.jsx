@@ -18,7 +18,7 @@ storiesOf(FORMS_TEXTAREA, module)
         <Textarea
             name="disabled"
             label="Textarea Label"
-            disabled="true"
+            disabled
             placeholder="Placeholder Text"
         />
     ))
@@ -28,7 +28,7 @@ storiesOf(FORMS_TEXTAREA, module)
             name="required-textarea"
             label="Textarea Label"
             required
-            value="This is my text"
+            placeholder="Placeholder Text"
         />
     ))
     .add('Error', () => (
@@ -39,13 +39,5 @@ storiesOf(FORMS_TEXTAREA, module)
             required
             errorText="Error Message"
             placeholder="Placeholder Text"
-        />
-    ))
-    .add('Read Only', () => (
-        <Textarea
-            name="read-only"
-            label="Textarea Label"
-            readOnly
-            value="Read Only Value"
         />
     ));
