@@ -278,6 +278,12 @@
       "SLDS-component-path": "/components/forms#flavor-input"
     },
     {
+      "component": "forms/textarea",
+      "status": "prod",
+      "display-name": "Textareas",
+      "SLDS-component-path": "/components/forms#flavor-textarea"
+    },
+    {
       "component": "global-header",
       "status": "prod",
       "display-name": "Global Header",
