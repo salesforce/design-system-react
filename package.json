@@ -22,7 +22,7 @@
     "lint-non-prod": "./node_modules/.bin/eslint \"{examples,tests}/**/*.{js,jsx}\"",
     "lint-prod": "./node_modules/.bin/eslint --config=./.eslintrc \"{components,utilities}/**/*.{js,jsx}\"",
     "lint-staged": "lint-staged",
-    "preversion": "git add RELEASENOTES.md && git add icons/* && git commit -m \"Update release notes and inline icons (if needed)\" && git pull upstream master && git diff --exit-code",
+    "preversion": "git add RELEASENOTES.md && git add icons/* && npm run build-docs && git add examples/component-docs.json && git commit -m \"Update release notes, inline icons (if needed), and site component documentation\" && git pull upstream master && git diff --exit-code",
     "publish-to-git": "./node_modules/.bin/babel-node scripts/publish-to-git.js",
     "publish-to-edge": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge",
     "publish-to-upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
