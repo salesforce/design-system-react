@@ -73,16 +73,10 @@ const Step = React.createClass({
                     </svg>)
                     : null; 
         return (
-            <PopoverTooltip 
-                align='top' 
-                id={'progressIndicatorTooltip' + (this.props.id+1) } 
-                content={this.props.description}
-                variant= { showError ? 'error' : 'info'}>
-            <button className={spanClassName} onClick={handleClick} tabIndex={0}>
+            <button className={spanClassName} onClick={handleClick} onFocus={handleFocus}>
                 { content }     
                 <span className="slds-assistive-text">Step {props.id + 1}</span>
             </button>
-            </PopoverTooltip>
         )
     },
 
@@ -95,17 +89,17 @@ const Step = React.createClass({
         const renderIcon = showComplete || showError;
 
         return (
-
+            <PopoverTooltip align='top' id={'progressIndicatorTooltip' + (this.props.id+1) } 
+                            content={this.props.description}
+                            variant= { showError ? 'error' : 'info'} >
             <li className={classNames('slds-progress__item', {   
                         'slds-is-completed': showComplete,
                         'slds-is-active': showActive,
                         'slds-has-error': showError  
                     },   this.props.className )} >
-
                 {this.buttonIcon(renderIcon, showError, this.props)} 
-                     
             </li>
-
+            </PopoverTooltip>
         );
     }
 });

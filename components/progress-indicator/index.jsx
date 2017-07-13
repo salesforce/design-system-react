@@ -34,8 +34,6 @@ const ProgressIndicator = React.createClass({
          * HTML id for component. 
          */
         id: PropTypes.string,
-
-
         /**
          * Determines the behaviors of step buttons 
          * It is an array of JSON objects in the following form:
@@ -140,16 +138,8 @@ const ProgressIndicator = React.createClass({
                              hasError={this.props.hasError} 
                              description={step.description} 
                              onStepClick={this.props.onStepClick} 
-                             onStepFocus={this.props.onStepFocus}
-                             // ref={(component) => {
-                             //     if (this.props.stepRefs) {
-                             //         this.props.stepRefs = [...this.props.stepRefs, component];
-                             //         console.log(step.id)
-                             //         console.log(this.props.stepRefs);
-
-                             //     }}} 
-                             >
-                        Step {i}</Step>)
+                             onStepFocus={this.props.onStepFocus}>
+                         Step {i}</Step>)
                     )
                 }
             </Progress>

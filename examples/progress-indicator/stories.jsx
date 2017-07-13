@@ -8,7 +8,7 @@ import Modal from './modal';
 import StepError from './stepError';
 
 const modalStepsBasic = [
-	{ id: 'step1', 'description' : ("tooltip description #1") },
+	{ 'description' : ("tooltip description #1") },
 	{ 'description' : ("tooltip description #2") },
 	{ 'description' : ("tooltip description #3") },
 	{ 'description' : ("tooltip description #4") },
@@ -28,9 +28,8 @@ const manySteps = [
 ]
 
 const handleStepEvent = function(event, data) {
-	if(data.id === 0) {
-		alert("sorry can't go forward")
-	}
+	event.preventDefault();
+	console.log( event.isDefaultPrevented());
 	console.log(data);
 }
 
