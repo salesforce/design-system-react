@@ -98,7 +98,6 @@ const Step = React.createClass({
 		} else if (showActive) {
 			status = 'Active';
 		} else status = 'Uncompleted';
-		
 
 		return (
 			<PopoverTooltip

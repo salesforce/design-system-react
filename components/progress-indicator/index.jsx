@@ -147,15 +147,3 @@ const ProgressIndicator = React.createClass({
 });
 
 export default ProgressIndicator;
-
-/**
- * Assistive Technology:
- *  <progress.jsx>
- *      - progress indicator has role="progress-indicator"
- *      - progress bar has assistive-text (Progress: xx %)
- *  <step.jsx>
- *      - buttons have assistive-text (Step {id} : {status})
- *      - Tooltips container div has role="tooltip"
- *      - all step buttons have aria-describedby
- */
-

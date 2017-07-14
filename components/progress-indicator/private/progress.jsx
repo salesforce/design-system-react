@@ -71,7 +71,6 @@ const Progress = React.createClass({
 			<div
 				id={this.getId()}
 				className={classNames('slds-progress', { 'slds-progress_shade': this.props.variant === 'modal' }, this.props.className)}
-				role="progressbar"
 			>
 				<ol className="slds-progress__list">
 					{ this.props.children }

@@ -62,20 +62,6 @@ const DemoComponent = React.createClass({
 });
 
 describe('SLDSProgressIndicator: ', () => {
-	// const renderPI = (inst) => {
-	// 	body = document.createElement('div');
-	// 	document.body.appendChild(body);
-	// 	return ReactDOM.render(inst, body);
-	// };
-
-	// function removePI () {
-	// 	ReactDOM.unmountComponentAtNode(body);
-	// 	document.body.removeChild(body);
-	// }
-
-	// const createPI = (props) => React.createElement(SLDSProgressIndicator, assign({}, defaultProps, props));
-	// const getPI = (props) => renderPI(createPI(props));
-
 	describe('Basic Props Render', () => {
 		const currentStep = 2;
 
@@ -251,9 +237,18 @@ describe('SLDSProgressIndicator: ', () => {
 			expect(progressbarRole).to.have.length(1);
 		});
 
-		it('specifies the role for progress indicator', function () {
-			const progressbarRole = this.wrapper.find('div[role="progress-indicator"]');
-			expect(progressbarRole).to.have.length(1);
+		it('renders assistive text for progress bar', function () {
+			const item = this.wrapper.find('.slds-progress-bar').find('.slds-assistive-text').first();
+			expect(item.text()).to.include('Progress:');
+			expect(item.text()).to.include('%');
+		});
+
+		it('renders assistive text for steps', function () {
+			const item = this.wrapper.find('.slds-progress').find('.slds-tooltip-trigger').find('li')
+                                    .find('.slds-button')
+                                    .find('.slds-assistive-text')
+                                    .first();
+			expect(item.text()).to.include('Step');
 		});
 
 		// EVENTS
@@ -271,19 +266,6 @@ describe('SLDSProgressIndicator: ', () => {
 			expect(item).to.have.length(0);
 		});
 
-		it('renders assistive text for progress bar', function () {
-			const item = this.wrapper.find('.slds-progress-bar').find('.slds-assistive-text').first();
-			expect(item.text()).to.include('Progress:');
-			expect(item.text()).to.include('%');
-		});
-
-		it('renders assistive text for progress indicator', function () {
-			const item = this.wrapper.find('.slds-progress').find('.slds-tooltip-trigger').find('li')
-                                    .find('.slds-button')
-                                    .find('.slds-assistive-text')
-                                    .first();
-			expect(item.text()).to.include('Step');
-		});
 
 		it('calls onStepFocus()', function () {
 			const step = this.wrapper.find('.slds-progress').find('li').find('button').first();

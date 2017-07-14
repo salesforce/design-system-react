@@ -12,12 +12,18 @@ const getModal = (props) => (
 
 const modalFooter = (props) => [
 	<Button key="modalBCancel" label="Cancel" />,
-	<ProgressIndicator key="modalPI" steps={props.steps} variant="modal" hasError={props.hasError} 
-					   onStepClick={props.onStepClick} onStepFocus={props.onStepFocus} />,
+	<ProgressIndicator
+		key="modalPI"
+		steps={props.steps}
+		variant="modal"
+		hasError={props.hasError}
+		onStepClick={props.onStepClick}
+		onStepFocus={props.onStepFocus}
+	/>,
 	<Button key="modalBSave" label="Save" variant="brand" />
 ];
 const modalContent = (
-	<div className="slds-modal__content slds-grow slds-p-around_medium" id="modal-content-id-1" style={{"height": "640px"}}></div>
+	<div className="slds-modal__content slds-grow slds-p-around_medium" id="modal-content-id-1" style={{ height: '640px' }} />
 );
 
 const Example = React.createClass({
@@ -25,8 +31,7 @@ const Example = React.createClass({
 
 	render () {
 		return (
-			<div data-reactroot="" className="demo-only" 
-				style={{ "height": "640px" }} >
+			<div data-reactroot="" className="demo-only" style={{ height: '640px' }} >
 				{
 					getModal({
 						isOpen: true,
