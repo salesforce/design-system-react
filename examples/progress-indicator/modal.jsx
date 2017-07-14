@@ -26,9 +26,9 @@ const Example = React.createClass({
 	render () {
 		return (
 			<div data-reactroot="" className="demo-only" 
-                style={{ "height": "640px" }} >
-                {
-                	getModal({
+				style={{ "height": "640px" }} >
+				{
+					getModal({
 						isOpen: true,
 						title: 'Modal Header',
 						children: modalContent,
@@ -37,7 +37,7 @@ const Example = React.createClass({
 						size: 'large',
 						footerClassNames: 'slds-grid slds-grid_align-spread'
 					})
-                }
+				}
 			</div>
 		);
 	}

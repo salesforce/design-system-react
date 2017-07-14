@@ -34,7 +34,7 @@ const handleStepEvent = function(event, data) {
 }
 
 storiesOf(PROGRESS_INDICATOR, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium">{ getStory()}</div>)
 	.add('Base', () => (<Default currentStep={0} onStepClick={handleStepEvent} onStepFocus={handleStepEvent} />))
 	.add('Base With Many Steps', () => (<Default currentStep={4} steps={manySteps} onStepClick={handleStepEvent} onStepFocus={handleStepEvent}/>))
 	.add('Step Error', () => (<StepError onStepClick={handleStepEvent} onStepFocus={handleStepEvent}/>))

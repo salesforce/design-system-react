@@ -96,7 +96,7 @@ const ProgressIndicator = React.createClass({
 
 		// prepare default steps data
 		for (let i = 0; i < numOfSteps; ++i) {
-			allSteps.push({ description: ('tooltip description #' + (i + 1)) });
+			allSteps.push({ id: i, description: ('tooltip description #' + (i + 1)) });
 		}
 
 		return {
@@ -113,6 +113,12 @@ const ProgressIndicator = React.createClass({
 		// calculate the completion percentage of progress bar as follows:
 		// percentage of progress = 100 * (current step index) / (total number of steps - 1)
 		const progressBarVal = this.props.currentStep === 0 ? '0' : (100 * (this.props.currentStep / (this.props.steps.length - 1))) + '';
+		// check if this.props.steps contain 'id'
+		for (let i = 0; i < this.props.steps.length; ++i) {
+			if (this.props.steps[i].id === undefined) {
+				this.props.steps[i].id = i;
+			}
+		}
 
 		return (
 			<Progress
@@ -124,7 +130,7 @@ const ProgressIndicator = React.createClass({
 				{
 					this.props.steps.map((step, i) =>
 						(<Step
-							key={step.id}
+							key={this.getId() + '-child-' + step.id}
 							id={i}
 							currentStep={this.props.currentStep}
 							hasError={this.props.hasError}
@@ -143,15 +149,13 @@ const ProgressIndicator = React.createClass({
 export default ProgressIndicator;
 
 /**
- * Accessibility:
- *  <index.jsx>
+ * Assistive Technology:
  *  <progress.jsx>
  *      - progress indicator has role="progress-indicator"
  *      - progress bar has assistive-text (Progress: xx %)
- *
  *  <step.jsx>
- *      - buttons have assistive-text (Step {id})
+ *      - buttons have assistive-text (Step {id} : {status})
  *      - Tooltips container div has role="tooltip"
- *      - direct children of Tooltips (button icons <li>) all have aria-describedby
+ *      - all step buttons have aria-describedby
  */
 

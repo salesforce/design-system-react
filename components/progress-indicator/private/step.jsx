@@ -16,7 +16,7 @@ import { PROGRESS_INDICATOR_STEP } from '../../../utilities/constants';
 /**
  * Step renders a button icon and its tooltip if applied.
  * The button is applied with different css classes under different conditions.
- * Button icons have 4 types of status: complete (success), active (in progress), error (warning) and incomplete (not approached)
+ * Button icons have 4 types of status: completed (success), active (in progress), error (warning) and uncompleted (not approached)
  */
 const Step = React.createClass({
 	// ### Display Name
@@ -53,7 +53,7 @@ const Step = React.createClass({
 	 * buttonIcon represents the button icon used for each step.
 	 * the button is applied with different css classes under different conditions.
 	 */
-	buttonIcon (renderIcon, showError, props) {
+	buttonIcon (renderIcon, showError, status, props) {
 		const data = {
 			id: props.id,
 			currentStep: props.currentStep,
@@ -76,9 +76,10 @@ const Step = React.createClass({
 					onClick={handleClick}
 					onFocus={handleFocus}
 					style={{ bottom: !renderIcon ? '3px' : '' }}
+					aria-describedby={'progressIndicatorTooltip' + (this.props.id + 1)}
 			>
 				{ content }
-				<span className="slds-assistive-text">Step { props.id + 1 }</span>
+				<span className="slds-assistive-text">Step { props.id + 1 }: { status }</span>
 			</button>);
 		return stepButton;
 	},
@@ -88,6 +89,16 @@ const Step = React.createClass({
 		const showActive = this.props.id === this.props.currentStep && !this.props.hasError;
 		const showError = this.props.id === this.props.currentStep && this.props.hasError;
 		const renderIcon = showComplete || showError;
+		// step status (one of ['Error', 'Completed', 'Active', 'Uncompleted'])
+		let status = '';
+		if (showError) {
+			status = 'Error';
+		} else if (showComplete) {
+			status = 'Completed';
+		} else if (showActive) {
+			status = 'Active';
+		} else status = 'Uncompleted';
+		
 
 		return (
 			<PopoverTooltip
@@ -103,7 +114,7 @@ const Step = React.createClass({
 						'slds-has-error': showError
 					}, this.props.className)}
 				>
-					{this.buttonIcon(renderIcon, showError, this.props)}
+					{this.buttonIcon(renderIcon, showError, status, this.props)}
 				</li>
 			</PopoverTooltip>
 		);
