@@ -30,10 +30,12 @@ const ProgressIndicator = React.createClass({
 		 * Determines the behaviors of step buttons
 		 * It is an array of JSON objects in the following form:
 		 *  [{
-		 *      'description'   : <PropTypes.string>
-		 *  }]
-		 * The reason for making stpes an array of JSON objects is to ensure the flexibility of
-		 * extending props in the future, despite the fact that currently we only have one attribute ('description')
+		 *      description: <PropTypes.string>,
+		 *		isDisabled: <PropTypes.bool>
+		 *  }],
+		 * `description` represents the tooltip content
+		 * `isDisabled` determines if the step will be disabled (still clickable/focusable, 
+		 *				just disables cursor change and removes onClick & onFocus callbacks)
 		 */
 		steps: PropTypes.array.isRequired,
 		/**
@@ -41,7 +43,7 @@ const ProgressIndicator = React.createClass({
 		 */
 		hasError: PropTypes.bool,
 		/**
-		 * tracks the index of current step, ranging from 0 (inclusive) to steps.length (exclusive)
+		 * Tracks the index of current step, ranging from 0 (inclusive) to steps.length (exclusive)
 		 * i.e. range: [0, steps.length)
 		 */
 		currentStep: PropTypes.number.isRequired,
@@ -96,7 +98,7 @@ const ProgressIndicator = React.createClass({
 
 		// prepare default steps data
 		for (let i = 0; i < numOfSteps; ++i) {
-			allSteps.push({ id: i, description: ('tooltip description #' + (i + 1)) });
+			allSteps.push({ id: i, description: ('tooltip description #' + (i + 1)), isDisabled: undefined });
 		}
 
 		return {
@@ -140,6 +142,7 @@ const ProgressIndicator = React.createClass({
 							description={step.description}
 							onStepClick={this.props.onStepClick}
 							onStepFocus={this.props.onStepFocus}
+							isDisabled={step.isDisabled}
 						>
 						Step {i}</Step>)
 					)

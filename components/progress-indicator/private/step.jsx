@@ -58,7 +58,8 @@ const Step = React.createClass({
 			id: props.id,
 			currentStep: props.currentStep,
 			hasError: props.hasError,
-			description: props.description
+			description: props.description,
+			isDisabled: props.isDisabled
 		};
 		const spanClassName = classNames('slds-button', { 'slds-button_icon': renderIcon }, 'slds-progress__marker', { 'slds-progress__marker_icon': renderIcon });
 		const handleClick = (event) => props.onStepClick(event, data);
@@ -70,8 +71,18 @@ const Step = React.createClass({
 			</svg>)
 			: null;
 
-		const stepButton = (
-			<button
+		const stepButton = props.isDisabled ?
+			(<span
+					className={spanClassName}
+					aria-describedby={'progressIndicatorTooltip' + (this.props.id + 1)}
+					tabIndex={0}
+					role="button"
+			>
+				{ content }
+				<span className="slds-assistive-text">Step { props.id + 1 }: { status }</span>
+			</span>)
+			:
+			(<button
 					className={spanClassName}
 					onClick={handleClick}
 					onFocus={handleFocus}

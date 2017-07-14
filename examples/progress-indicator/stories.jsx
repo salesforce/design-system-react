@@ -15,6 +15,14 @@ const modalStepsBasic = [
 	{ description: 'tooltip description #5' }
 ];
 
+const modalStepsDisabled = [
+	{ description: 'tooltip description #1', isDisabled: false },
+	{ description: 'tooltip description #2', isDisabled: false },
+	{ description: 'tooltip description #3', isDisabled: false },
+	{ description: 'tooltip description #4', isDisabled: true },
+	{ description: 'tooltip description #5', isDisabled: true }
+];
+
 const manySteps = [
 	{ description: 'tooltip description #1' },
 	{ description: 'tooltip description #2' },
@@ -35,10 +43,10 @@ const handleStepEvent = function (event, data) {
 
 storiesOf(PROGRESS_INDICATOR, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('Base', () => (<Default currentStep={0} onStepClick={handleStepEvent} onStepFocus={handleStepEvent} />))
+	.add('Base', () => (<Default currentStep={0} />))
 	.add('Base With Many Steps', () => (<Default currentStep={4} steps={manySteps} onStepClick={handleStepEvent} onStepFocus={handleStepEvent} />))
+	.add('Base With Disabled Steps', () => (<Default currentStep={2} steps={modalStepsDisabled} onStepClick={handleStepEvent} onStepFocus={handleStepEvent} />))
 	.add('Step Error', () => (<StepError onStepClick={handleStepEvent} onStepFocus={handleStepEvent} />))
-	.add('Next Step', () => (<Default currentStep={1} onStepClick={handleStepEvent} onStepFocus={handleStepEvent} />))
 	.add('On A Gray Background', () => (<Default currentStep={1} variant="modal" onStepClick={handleStepEvent} onStepFocus={handleStepEvent} />))
 	.add('In A Modal', () => (<Modal steps={modalStepsBasic} onStepClick={handleStepEvent} onStepFocus={handleStepEvent} />))
 	.add('In A Modal (With Step Error)', () => (<Modal hasError steps={modalStepsBasic} onStepClick={handleStepEvent} onStepFocus={handleStepEvent} />));
