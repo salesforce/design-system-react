@@ -13,6 +13,7 @@ export DataTable from './data-table/stories';
 export DatePicker from './date-picker/stories';
 export Dropdown from './menu-dropdown/stories';
 export Input from './forms/input/stories';
+export Teaxtarea from './forms/textarea/stories';
 export InlineInput from './forms/input/inline/stories';
 export Search from './forms/input/search/stories';
 export GlobalHeader from './global-header/stories';
