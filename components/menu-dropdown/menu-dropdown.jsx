@@ -301,7 +301,7 @@ const MenuDropdown = React.createClass({
 		/**
 		 * Current selected menu item.
 		 */
-		value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+		value: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
 		/**
 		 * This prop is passed onto the triggering `Button`. It creates a tooltip with the content of the `node` provided.
 		 */
@@ -309,7 +309,11 @@ const MenuDropdown = React.createClass({
 		/**
 		 * CSS classes to be added to wrapping trigger `div` around the button.
 		 */
-		triggerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string])
+		triggerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		/**
+		 * Whether this dropdown supports multi select.
+		 */
+		multiple: PropTypes.bool
 	},
 
 	getDefaultProps () {
@@ -323,7 +327,8 @@ const MenuDropdown = React.createClass({
 	getInitialState () {
 		return {
 			focusedIndex: -1,
-			selectedIndex: -1
+			selectedIndex: -1,
+			selectedIndices: []
 		};
 	},
 
@@ -333,16 +338,59 @@ const MenuDropdown = React.createClass({
 
 		this.generatedId = shortid.generate();
 
-		this.setState({
-			selectedIndex: this.getIndexByValue(this.props.value)
-		});
+		if (!this.props.multiple) {
+			this.setState({
+				selectedIndex: this.getIndexByValue(this.props.value)
+			});
+		} else {
+			var values = [];
+			const currentIndices = this.state.selectedIndices;
+			var currentSelectedIndex;
+			if (!Array.isArray(this.props.value)) {
+				values.push(this.props.value)
+			} else {
+				values = this.props.value
+			}
+			for (var i=0; i<values.length; i++) {
+				currentSelectedIndex = this.getIndexByValue(values[i]);
+				if (currentSelectedIndex !== -1) {
+					currentIndices.push(currentSelectedIndex);
+				}
+			}
+						
+			this.setState({
+				selectedIndices: currentIndices
+			});
+		}
 	},
 
 	componentWillReceiveProps (nextProps, prevProps) {
 		if (prevProps.value !== nextProps.value) {
-			this.setState({
-				selectedIndex: this.getIndexByValue(nextProps.value)
-			});
+			if (this.props.multiple !== true) {
+				this.setState({
+					selectedIndex: this.getIndexByValue(nextProps.value)
+				});
+			} else {				
+				var values = [];
+				const currentIndices = [];
+				var currentSelectedIndex = -1;
+				if (!Array.isArray(nextProps.value)) {
+					values.push(nextProps.value);
+				} else {
+					values = nextProps.value;
+				}
+				var i = 0;
+				for (; i<values.length; i++) {
+					currentSelectedIndex = this.getIndexByValue(values[i]);
+					if (currentSelectedIndex !== -1) {
+						currentIndices.push(currentSelectedIndex);
+					}
+				}
+
+				this.setState({
+					selectedIndices: currentIndices
+				});
+			}
 		}
 
 		if (prevProps.isOpen !== nextProps.isOpen) {
@@ -499,13 +547,23 @@ const MenuDropdown = React.createClass({
 	},
 
 	handleSelect (index) {
-		this.setState({ selectedIndex: index });
-
-		this.setFocus();
-		this.handleClose();
+		if (!this.props.multiple) {
+			this.setState({ selectedIndex: index });
+			this.handleClose();
+			this.setFocus();
+		} else if (this.props.multiple && this.state.selectedIndices.indexOf(index) === -1) {
+			const currentIndices = this.state.selectedIndices.concat(index);
+			this.setState({
+				selectedIndices: currentIndices
+			});
+		} else if (this.props.multiple) {
+			const deselectIndex = this.state.selectedIndices.indexOf(index);
+			this.state.selectedIndices.splice(deselectIndex, 1);
+		}
 
 		if (this.props.onSelect) {
-			this.props.onSelect(this.getValueByIndex(index));
+			const option = this.getValueByIndex(index);
+			this.props.onSelect(option, { option, optionIndex: index });
 		}
 	},
 
@@ -615,7 +673,8 @@ const MenuDropdown = React.createClass({
 				onSelect={this.handleSelect}
 				options={this.props.options}
 				ref={this.saveRefToList}
-				selectedIndex={this.state.selectedIndex}
+				selectedIndex={!this.props.multiple ? this.state.selectedIndex : undefined}
+				selectedIndices={this.props.multiple ? this.state.selectedIndices : undefined}
 				triggerId={this.getId()}
 				length={this.props.length}
 				{...customListProps}
