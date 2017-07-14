@@ -30,6 +30,15 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.6.14
+**Minor Changes**
+
+- Adds Textarea component
+
+**Bugfix Changes**
+
+- Fix icon when tree branch is expanded
+
 ## Release 0.6.13
 **Bugfix Changes**
 
