@@ -101,7 +101,10 @@ const ProgressIndicator = React.createClass({
 
 		return {
 			steps: allSteps,
-			currentStep: 2
+			currentStep: 2,
+			// click/focus callbacks by default do nothing
+			onStepClick: () => {},
+			onStepFocus: () => {}
 		};
 	},
 

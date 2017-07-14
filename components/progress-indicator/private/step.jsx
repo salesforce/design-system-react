@@ -75,7 +75,6 @@ const Step = React.createClass({
 					className={spanClassName}
 					onClick={handleClick}
 					onFocus={handleFocus}
-					style={{ bottom: !renderIcon ? '3px' : '' }}
 					aria-describedby={'progressIndicatorTooltip' + (this.props.id + 1)}
 			>
 				{ content }
@@ -105,6 +104,7 @@ const Step = React.createClass({
 							id={'progressIndicatorTooltip' + (this.props.id + 1)}
 							content={this.props.description}
 							variant={showError ? 'error' : 'info'}
+							triggerStyle={{ display: !renderIcon ? 'flex' : '' }}
 			>
 				<li
 					className={classNames('slds-progress__item', {
