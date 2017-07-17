@@ -5,15 +5,23 @@ import EventUtil from './event';
 /*
  * Helper function that has callbacks passed into it with the key being the keycode of the event
  */
-const mapKeyEventCallbacks = (event, { callbacks = {}, shiftCallbacks = {} }) => {
+const mapKeyEventCallbacks = (event, {
+	callbacks = {},
+	shiftCallbacks = {},
+	stopPropagation = true
+	}) => {
 	if (event.shiftKey
 		&& event.keyCode
 		&& shiftCallbacks[event.keyCode]) {
-		EventUtil.trapEvent(event);
+		if (stopPropagation) {
+			EventUtil.trapEvent(event);
+		}
 		shiftCallbacks[event.keyCode].callback(event, shiftCallbacks[event.keyCode].data);
 	}	else if (event.keyCode
 		&& callbacks[event.keyCode]) {
-		EventUtil.trapEvent(event);
+		if (stopPropagation) {
+			EventUtil.trapEvent(event);
+		}
 		callbacks[event.keyCode].callback(event, callbacks[event.keyCode].data);
 	}
 };
