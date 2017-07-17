@@ -3,10 +3,19 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import isEqual from 'lodash.isequal';
 
 import MenuItem from './menu-item';
 
 const propTypes = {
+	/*
+	 * Active descendant in menu
+	 */
+	activeOption: PropTypes.object,
+	/*
+	 * Index of active descendant in menu
+	 */
+	activeOptionIndex: PropTypes.number,
 	/*
 	 * Id used for assistive technology
 	 */
@@ -15,6 +24,10 @@ const propTypes = {
 	 * Menu options
 	 */
 	options: PropTypes.array,
+	/*
+	 * Callback to remove active descendent
+	 */
+	resetActiveOption: PropTypes.func,
 	/*
 	 * Callback when item is selected with keyboard or mouse
 	 */
@@ -31,7 +44,13 @@ const defaultProps = {
 };
 
 const Menu = (props) => {
-	const menuItems = props.options.map((optionData) => {
+	let hasAValidActiveDescendent;
+
+	const menuItems = props.options.map((optionData, index) => {
+		const active = index === props.activeOptionIndex && isEqual(optionData, props.activeOption);
+		if (!hasAValidActiveDescendent) {
+			hasAValidActiveDescendent = active;
+		}
 		return (
 			<li
 				className="slds-listbox__item"
@@ -39,6 +58,7 @@ const Menu = (props) => {
 				role="presentation"
 			>
 				<MenuItem
+					active={active}
 					option={optionData}
 					onSelect={props.onSelect}
 					selection={props.selection}
@@ -46,6 +66,10 @@ const Menu = (props) => {
 			</li>
 		);
 	});
+
+	if (props.activeOption && !hasAValidActiveDescendent) {
+		props.clearActiveOption();
+	}
 
 	return (
 		<div id={`listbox-${props.id}`} role="listbox">

@@ -11,6 +11,8 @@ import Icon from '../icon';
 import Menu from './private/menu';
 
 import assign from 'lodash.assign';
+import find from 'lodash.find';
+import reject from 'lodash.reject';
 
 import { shape } from 'airbnb-prop-types';
 
@@ -131,20 +133,21 @@ const defaultProps = {
 	assistiveText: {},
 	labels: {},
 	filterWith: defaultFilter,
-	focusedOption: null,
 	selection: [],
 	variant: 'base'
 };
 
 /**
- * A widget that provides a user with an input field that is either an autocomplete or readonly, accompanied with a listbox of pre-defined options.
+ * A widget that provides a user with an input field that is either an autocomplete or readonly, accompanied with a listbox of pre-definfined options.
  */
 class Combobox extends React.Component {
 	constructor (props) {
 		super(props);
 
 		this.state = {
-			isOpen: false
+			isOpen: false,
+			activeOption: undefined,
+			activeOptionIndex: -1
 		};
 	}
 
@@ -155,6 +158,8 @@ class Combobox extends React.Component {
 	getId = () => this.props.id || this.generatedId;
 	
 	getIsOpen = () => !!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
+
+	getIsActiveOption = () => this.state.activeOption && this.state.activeOptionIndex !== -1;
 
 	handleClickOutside = () => {
 		this.handleRequestClose();
@@ -174,10 +179,6 @@ class Combobox extends React.Component {
 		if (this.getIsOpen()) {
 			this.setState({ isOpen: false });
 		}
-
-		if (this.inputRef) {
-			this.inputRef.focus();
-		}
 	}
 
 	openDialog = () => {
@@ -190,13 +191,6 @@ class Combobox extends React.Component {
 		}
 	}
 
-	handleSelectDay = (event, data) => {
-		const newDaysInMonth = data.selected
-			? this.state.selectedDaysInMonthFromCalendar.filter((item) => item.day !== data.day)
-			: this.state.selectedDaysInMonthFromCalendar.concat(data);
-		this.setState({ selectedDaysInMonthFromCalendar: newDaysInMonth });
-	};
-
 	handleClose = () => {
 		const isOpen = this.getIsOpen();
 
@@ -206,6 +200,8 @@ class Combobox extends React.Component {
 			}
 
 			this.setState({
+				activeOption: undefined,
+				activeOptionIndex: -1,
 				isOpen: false
 			});
 
@@ -238,7 +234,7 @@ class Combobox extends React.Component {
 			this.props.onOpen();
 		}
 
-		// this.selectedDayCell.focus();
+		// highlight first option
 	}
 
 	getInlineMenu ({ menuRenderer }) {
@@ -273,10 +269,20 @@ class Combobox extends React.Component {
 		// Helper function that takes an object literal of callbacks that are triggered with a key event
 		mapKeyEventCallbacks(event, {
 			callbacks: {
+				[KEYS.DOWN]: { callback: this.handleKeyDownDown },
 				[KEYS.ENTER]: { callback: this.handleInputSubmit },
-				[KEYS.DOWN]: { callback: this.handleKeyDownDown }
+				[KEYS.ESCAPE]: { callback: this.handleClose },
+				[KEYS.UP]: { callback: this.handleKeyDownUp }
 			}
 		});
+	}
+
+	getNewActiveOptionIndex = ({ activeOptionIndex,
+		offset,
+		options }) => {
+		const newIndex = activeOptionIndex + offset;
+		const hasNewIndex = options.length > newIndex && newIndex >= 0;
+		return hasNewIndex ? newIndex : activeOptionIndex;
 	}
 
 	handleKeyDownDown = (event) => {
@@ -284,40 +290,121 @@ class Combobox extends React.Component {
 		if (!event.shiftKey) {
 			this.openDialog();
 		}
+
+		this.setState((prevState) => {
+			return {
+				activeOption: this.props.options[this.getNewActiveOptionIndex({
+					activeOptionIndex: prevState.activeOptionIndex,
+					offset: 1,
+					options: this.props.options
+				})],
+				activeOptionIndex: this.getNewActiveOptionIndex({
+					activeOptionIndex: prevState.activeOptionIndex,
+					offset: 1,
+					options: this.props.options
+				}) };
+		});
+	}
+
+	handleKeyDownUp = (event) => {
+		// Don't open if user is selecting text
+		if (!event.shiftKey && this.state.isOpen) {
+			this.setState(
+				(prevState) => ({
+					activeOption: this.props.options[this.getNewActiveOptionIndex({
+						activeOptionIndex: prevState.activeOptionIndex,
+						offset: -1,
+						options: this.props.options
+					})],
+					activeOptionIndex: this.getNewActiveOptionIndex({
+						activeOptionIndex: prevState.activeOptionIndex,
+						offset: -1,
+						options: this.props.options
+					})
+				})
+			);
+		}
 	}
 
 	handleInputSubmit = (event) => {
-		// test if valid number
-		if (this.props.onInputSubmit) {
-			this.props.onInputSubmit(event, {
+		if (this.getIsActiveOption()) {
+			this.handleSelect(event, { selectedOption: this.state.activeOption });
+			// needs testing
+		} else if (this.props.onSubmit) {
+			this.props.onSubmit(event, {
 				value: event.target.value
 			});
 		}
-		// clear input
-		this.inputRef.value = '';
 	}
 
-	handleSelect = (event, data) => {
+	isSelected = ({ selection, option }) => {
+		return !!find(selection, option);
+	}
+
+	handleSelect = (event, { selectedOption }) => {
 		this.handleClose();
 
-		if (this.props.onSelect) {
-			this.props.onSelect(event, data);
+		let selection;
+
+		if (!this.isSelected({ selection, option: selectedOption })) {
+			selection = [...this.props.selection, selectedOption];
+		} else {
+			selection = reject(this.props.selection, selectedOption);
 		}
+
+		if (this.props.onSelect) {
+			this.props.onSelect(event, { selection });
+		}
+	}
+
+	handleInputFocus = (event) => {
+		this.openDialog();
+
+		if (this.props.onFocus) {
+			this.props.onFocus(event);
+		}
+	}
+
+	handleInputBlur = (event) => {
+		// If menu is open when the input's onBlur event fires, it will close before the onClick of the menu item can fire.
+		setTimeout(() => { this.handleClose(); }, 100);
+
+		if (this.props.onBlur) {
+			this.props.onBlur(event);
+		}
+	}
+
+	clearActiveOption = () => {
+		this.setState(
+			(prevState) => {
+				return	(!prevState.activeOption && prevState.activeOptionIndex !== -1
+				? { activeOption: undefined, activeOptionIndex: -1 }
+				: {});
+			}
+		);
 	}
 
 	renderMenu = () => {
 		return (
 			<Menu
+				activeOption={this.state.activeOption}
+				activeOptionIndex={this.state.activeOptionIndex}
 				emptyMessage={this.props.emptyMessage}
+				id={this.getId()}
 				options={this.props.options}
 				optionsRenderer={this.props.optionsRenderer}
 				onSelect={this.handleSelect}
+				clearActiveOption={this.clearActiveOption}
 				selection={this.props.selection}
 			/>
 		);
 	}
 
 	handleRemoveSelectedOption = (event) => {
+		if (this.inputRef) {
+			this.inputRef.focus();
+		}
+
 		if (this.props.onRequestRemoveSelectedOption) {
 			this.props.onRequestRemoveSelectedOption(event, { option: this.props.selection[0] });
 		}
@@ -376,6 +463,7 @@ class Combobox extends React.Component {
 								iconRight={this.props.selection.length
 									? <InputIcon
 										assistiveText={assistiveText.removeSelectedOption}
+										buttonRef={(component) => { this.buttonRef = component; }}
 										category="utility"
 										iconPosition="right"
 										name="close"
@@ -383,15 +471,14 @@ class Combobox extends React.Component {
 									/>
 									: <InputIcon
 										assistiveText={assistiveText.openMenu}
-										aria-haspopup
-										aria-expanded={this.getIsOpen()}
 										category="utility"
 										name="search"
-										onClick={this.openDialog}
 									/>}
 								iconLeft={iconLeft}
 								id={this.getId()}
 								placeholder={labels.placeholder}
+								onFocus={this.handleInputFocus}
+								onBlur={this.handleInputBlur}
 								onKeyDown={this.handleKeyDown}
 								inputRef={(component) => { this.inputRef = component; }}
 								onClick={() => {

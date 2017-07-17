@@ -45,7 +45,18 @@ class Example extends React.Component {
 						selection: []
 					});
 				}}
+				onSubmit={(event, { value }) => {
+					console.log('onSubmit', value);
+					this.setState({ selection: [{
+						label: value,
+						icon: <Icon
+							assistiveText="Account"
+							category="standard"
+							name="account"
+						/> }] });
+				}}
 				onSelect={(event, data) => {
+					console.log('onSelect', data);
 					this.setState({ selection: data.selection });
 				}}
 				options={accountsWithIcon}

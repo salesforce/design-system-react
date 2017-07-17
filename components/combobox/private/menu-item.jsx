@@ -5,14 +5,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import find from 'lodash.find';
-import reject from 'lodash.reject';
 
 const propTypes = {
 	/*
-	 * Item is focussed
+	 * Item is active
 	 */
-	focused: PropTypes.bool,
+	active: PropTypes.bool,
 	/*
 	 * Id used for assistive technology
 	 */
@@ -36,26 +34,15 @@ const defaultProps = {
 	events: {}
 };
 
-const isSelected = ({ selection, option }) => {
-	return !!find(selection, option);
-};
 
 const MenuItem = (props) => {
 	return (
 		<span
 			id="listbox-option-unique-id-01"
 			className={classNames('slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta',
-				{ 'slds-has-focus': props.focused })}
+				{ 'slds-has-focus': props.active })}
 			onClick={(event) => {
-				let selection;
-
-				if (!isSelected({ selection, option: props.option })) {
-					selection = [...props.selection, props.option];
-				} else {
-					selection = reject(props.selection, props.option);
-				}
-
-				props.onSelect(event, { selection });
+				props.onSelect(event, { selectedOption: props.option });
 			}}
 			role="option"
 		>
