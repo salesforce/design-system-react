@@ -343,15 +343,16 @@ const MenuDropdown = React.createClass({
 				selectedIndex: this.getIndexByValue(this.props.value)
 			});
 		} else {
-			var values = [];
+			let values = [];
 			const currentIndices = this.state.selectedIndices;
-			var currentSelectedIndex;
+			let currentSelectedIndex;
 			if (!Array.isArray(this.props.value)) {
-				values.push(this.props.value)
+				values.push(this.props.value);
 			} else {
-				values = this.props.value
+				values = this.props.value;
 			}
-			for (var i=0; i<values.length; i++) {
+			let i = 0;
+			for (; i < values.length; i++) {
 				currentSelectedIndex = this.getIndexByValue(values[i]);
 				if (currentSelectedIndex !== -1) {
 					currentIndices.push(currentSelectedIndex);
@@ -370,17 +371,17 @@ const MenuDropdown = React.createClass({
 				this.setState({
 					selectedIndex: this.getIndexByValue(nextProps.value)
 				});
-			} else {				
-				var values = [];
+			} else {
+				let values = [];
 				const currentIndices = [];
-				var currentSelectedIndex = -1;
+				let currentSelectedIndex = -1;
 				if (!Array.isArray(nextProps.value)) {
 					values.push(nextProps.value);
 				} else {
 					values = nextProps.value;
 				}
-				var i = 0;
-				for (; i<values.length; i++) {
+				let i = 0;
+				for (; i < values.length; i++) {
 					currentSelectedIndex = this.getIndexByValue(values[i]);
 					if (currentSelectedIndex !== -1) {
 						currentIndices.push(currentSelectedIndex);
