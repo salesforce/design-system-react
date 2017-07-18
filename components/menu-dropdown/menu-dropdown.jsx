@@ -338,60 +338,12 @@ const MenuDropdown = React.createClass({
 
 		this.generatedId = shortid.generate();
 
-		if (!this.props.multiple) {
-			this.setState({
-				selectedIndex: this.getIndexByValue(this.props.value)
-			});
-		} else {
-			let values = [];
-			const currentIndices = this.state.selectedIndices;
-			let currentSelectedIndex;
-			if (!Array.isArray(this.props.value)) {
-				values.push(this.props.value);
-			} else {
-				values = this.props.value;
-			}
-			let i = 0;
-			for (; i < values.length; i++) {
-				currentSelectedIndex = this.getIndexByValue(values[i]);
-				if (currentSelectedIndex !== -1) {
-					currentIndices.push(currentSelectedIndex);
-				}
-			}
-						
-			this.setState({
-				selectedIndices: currentIndices
-			});
-		}
+		this.setCurrentSelectedIndices(this.props);
 	},
 
 	componentWillReceiveProps (nextProps, prevProps) {
 		if (prevProps.value !== nextProps.value) {
-			if (this.props.multiple !== true) {
-				this.setState({
-					selectedIndex: this.getIndexByValue(nextProps.value)
-				});
-			} else {
-				let values = [];
-				const currentIndices = [];
-				let currentSelectedIndex = -1;
-				if (!Array.isArray(nextProps.value)) {
-					values.push(nextProps.value);
-				} else {
-					values = nextProps.value;
-				}
-				let i = 0;
-				for (; i < values.length; i++) {
-					currentSelectedIndex = this.getIndexByValue(values[i]);
-					if (currentSelectedIndex !== -1) {
-						currentIndices.push(currentSelectedIndex);
-					}
-				}
-
-				this.setState({
-					selectedIndices: currentIndices
-				});
-			}
+			this.setCurrentSelectedIndices(nextProps);
 		}
 
 		if (prevProps.isOpen !== nextProps.isOpen) {
@@ -559,7 +511,11 @@ const MenuDropdown = React.createClass({
 			});
 		} else if (this.props.multiple) {
 			const deselectIndex = this.state.selectedIndices.indexOf(index);
-			this.state.selectedIndices.splice(deselectIndex, 1);
+			const currentSelected = this.state.selectedIndices;
+			currentSelected.splice(deselectIndex, 1);
+			this.setState({
+				selectedIndices: currentSelected
+			});
 		}
 
 		if (this.props.onSelect) {
@@ -660,6 +616,28 @@ const MenuDropdown = React.createClass({
 		}
 
 		return undefined;
+	},
+
+	setCurrentSelectedIndices (nextProps) {
+		if (this.props.multiple !== true) {
+			this.setState({
+				selectedIndex: this.getIndexByValue(nextProps.value)
+			});
+		} else {
+			let values = [];
+			let currentIndices = [];
+			if (!Array.isArray(nextProps.value)) {
+				values.push(nextProps.value);
+			} else {
+				values = nextProps.value;
+			}
+			values = values.filter((value) => this.getIndexByValue(value) !== -1);
+			currentIndices = values.map((value) => this.getIndexByValue(value));
+
+			this.setState({
+				selectedIndices: currentIndices
+			});
+		}
 	},
 
 	renderDefaultMenuContent (customListProps) {
