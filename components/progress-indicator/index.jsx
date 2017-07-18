@@ -12,144 +12,186 @@ import PropTypes from 'prop-types';
 import shortid from 'shortid';
 import { PROGRESS_INDICATOR } from '../../utilities/constants';
 
+// ### find
+import find from 'lodash.find';
+
 // Child components
 import Step from './private/step';
 import Progress from './private/progress';
 
+const displayName = PROGRESS_INDICATOR;
+
+const propTypes = {
+	/**
+	 * CSS class names to be added to the container element.
+	 */
+	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	/**
+	 * Stores all completed steps. It is an array of JSON objects.
+	 */
+	completedSteps: PropTypes.array,
+	/**
+	 * Stores all error steps. It is an array of JSON objects and usually there is only one error step (current step).
+	 */
+	errorSteps: PropTypes.array,
+	/**
+	 * HTML id for component.
+	 */
+	id: PropTypes.string,
+	/**
+	 * Triggered when click on individual steps. By default, it receives an event and returns all info passed to that step.
+	 * users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the
+	 * callback result.
+	 *
+	 * eg. const handleStepClick = function(event, data) { console.log(data); };
+	 *     <ProgressIndicator onStepClick={handleStepClick} />
+	 */
+	onStepClick: PropTypes.func,
+	/**
+	 * Triggered when focus on individual steps. By default, it receives an event and returns all info passed to that step.
+	 * users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the
+	 * callback result.
+	 *
+	 * eg. const handleStepFocus = function(event, data) { console.log(data); };
+	 *     <ProgressIndicator onStepFocus={handleStepFocus} />
+	 */
+	onStepFocus: PropTypes.func,
+	/**
+	 * Represents the currently selected step. It is a JSON object representing a step.
+	 */
+	selectedStep: PropTypes.object.isRequired,
+	/**
+	 * Determines the behaviors of step buttons
+	 * It is an array of JSON objects in the following form:
+	 *  [{
+	 *		id: <PropTypes.number> or <PropTypes.string>, has to be unique
+	 *      label: <PropTypes.string>,
+	 *		isDisabled: <PropTypes.bool>
+	 *  }],
+	 * `label` represents the tooltip content
+	 * `isDisabled` determines if the step will be disabled (still clickable/focusable,
+	 *				just disables cursor change and removes onClick & onFocus callbacks;
+	 *				undefined by default)
+	 */
+	steps: PropTypes.array.isRequired,
+	/**
+	 * Determines component style
+	 */
+	variant: PropTypes.oneOf(['basic', 'modal'])
+};
+
+const defaultSteps = [
+	{ id: 0, label: ('tooltip label #1') },
+	{ id: 1, label: ('tooltip label #2') },
+	{ id: 2, label: ('tooltip label #3') },
+	{ id: 3, label: ('tooltip label #4') },
+	{ id: 4, label: ('tooltip label #5') }
+];
+
+const defaultProps = {
+	errorSteps: [],
+	completedSteps: [],
+	selectedStep: defaultSteps[0],
+	variant: 'basic',
+	// click/focus callbacks by default do nothing
+	onStepClick: () => {},
+	onStepFocus: () => {}
+};
+
+/**
+ * Check if the passed steps are valid
+ */
+function checkSteps (steps) {
+	if (steps === undefined) return false;
+	for (let i = 0; i < steps.length; ++i) {
+		if (steps[i].label === undefined) return false;
+	}
+	return true;
+}
+
+/**
+ * Check if an item is from an array of items when 'items' is an array;
+ * Check if an item is equal to the other item after being stringified when 'items' is a JSON object
+ */
+function isSelected (item, items) {
+	if (Array.isArray(items)) {
+		return !!find(items, item);
+	}
+	return (JSON.stringify(item) === JSON.stringify(items));
+}
+
 /**
  * Progress Indicator is a component that communicates to the user the progress of a particular process.
  */
-const ProgressIndicator = React.createClass({
-	displayName: PROGRESS_INDICATOR,
-	propTypes: {
-		/**
-		 * HTML id for component.
-		 */
-		id: PropTypes.string,
-		/**
-		 * Determines the behaviors of step buttons
-		 * It is an array of JSON objects in the following form:
-		 *  [{
-		 *      description: <PropTypes.string>,
-		 *		isDisabled: <PropTypes.bool>
-		 *  }],
-		 * `description` represents the tooltip content
-		 * `isDisabled` determines if the step will be disabled (still clickable/focusable, 
-		 *				just disables cursor change and removes onClick & onFocus callbacks)
-		 */
-		steps: PropTypes.array.isRequired,
-		/**
-		 * Determines if there is an error occured in the current step
-		 */
-		hasError: PropTypes.bool,
-		/**
-		 * Tracks the index of current step, ranging from 0 (inclusive) to steps.length (exclusive)
-		 * i.e. range: [0, steps.length)
-		 */
-		currentStep: PropTypes.number.isRequired,
-		/**
-		 * CSS class names to be added to the container element.
-		 */
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-		/**
-		 * Determines component style
-		 */
-		variant: PropTypes.oneOf(['basic', 'modal']),
-		/**
-		 * Triggered when click on individual steps. By default, it receives an event and returns all info passed to that step.
-		 * users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the
-		 * callback result.
-		 *
-		 * eg. const handleStepClick = function(event, data) { console.log(data); };
-		 *     <ProgressIndicator onStepClick={handleStepClick} />
-		 */
-		onStepClick: PropTypes.func,
-		/**
-		 * Triggered when focus on individual steps. By default, it receives an event and returns all info passed to that step.
-		 * users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the
-		 * callback result.
-		 *
-		 * eg. const handleStepFocus = function(event, data) { console.log(data); };
-		 *     <ProgressIndicator onStepFocus={handleStepFocus} />
-		 */
-		onStepFocus: PropTypes.func
-	},
+class ProgressIndicator extends React.Component {
+
+
+	componentWillMount () {
+		this.generatedId = shortid.generate();
+	}
+
+	componentWillUnmount () {
+		this.isUnmounting = true;
+	}
+
 	/**
 	 * Get the progress indicator's HTML id. Generate a new one if no ID present.
 	 */
 	getId () {
 		return this.props.id || this.generatedId;
-	},
-	/**
-	 * Get the progress indicator's variant (either 'modal' or 'basic')
-	 */
-	getVariant () {
-		return this.props.variant === 'modal' ? 'modal' : 'basic';
-	},
-	/**
-	 * Get the default props
-	 * By default, all booleans are undefined; current step index is 2; total number of steps is 5.
-	 * Users do not need to pass total number of steps. This value is determined by <steps.length> if
-	 * a customized array of steps is passed in
-	 */
-	getDefaultProps () {
-		const numOfSteps = 5;
-		const allSteps = [];
+	}
 
-		// prepare default steps data
-		for (let i = 0; i < numOfSteps; ++i) {
-			allSteps.push({ id: i, description: ('tooltip description #' + (i + 1)), isDisabled: undefined });
-		}
-
-		return {
-			steps: allSteps,
-			currentStep: 2,
-			// click/focus callbacks by default do nothing
-			onStepClick: () => {},
-			onStepFocus: () => {}
-		};
-	},
-
-	componentWillMount () {
-		this.generatedId = shortid.generate();
-	},
+	getSteps () {
+		// check if passed steps are valid
+		return (checkSteps(this.props.steps) ? this.props.steps : defaultSteps);
+	}
 
 	render () {
-		// calculate the completion percentage of progress bar as follows:
-		// percentage of progress = 100 * (current step index) / (total number of steps - 1)
-		const progressBarVal = this.props.currentStep === 0 ? '0' : (100 * (this.props.currentStep / (this.props.steps.length - 1))) + '';
-		// check if this.props.steps contain 'id'
-		for (let i = 0; i < this.props.steps.length; ++i) {
-			if (this.props.steps[i].id === undefined) {
-				this.props.steps[i].id = i;
+		/** 1. preparing data */
+		const allSteps = this.getSteps();
+
+		let currentStep = 0;
+		// find index for the current step
+		for (let i = 0; i < allSteps.length; ++i) {
+			// assign step an id if it does not have one
+			if (allSteps[i].id === undefined) {
+				allSteps[i].id = i;
+			}
+			if (isSelected(allSteps[i], this.props.selectedStep)) {
+				currentStep = i;
 			}
 		}
 
+		/** 2. return DOM */
 		return (
 			<Progress
 					id={this.getId()}
-					value={progressBarVal}
-					variant={this.getVariant()}
+					value={currentStep === 0 ? '0' : `${(100 * (currentStep / (allSteps.length - 1)))}`}
+					variant={this.props.variant}
 					className={this.props.className}
 			>
 				{
-					this.props.steps.map((step, i) =>
+					allSteps.map((step, i) =>
 						(<Step
-							key={this.getId() + '-child-' + step.id}
+							key={`${this.getId()}-${step.id}`}
 							id={i}
-							currentStep={this.props.currentStep}
-							hasError={this.props.hasError}
-							description={step.description}
-							onStepClick={this.props.onStepClick}
-							onStepFocus={this.props.onStepFocus}
+							isSelected={isSelected(step, this.props.selectedStep)}
+							isError={isSelected(step, this.props.errorSteps)}
+							isCompleted={isSelected(step, this.props.completedSteps)}
 							isDisabled={step.isDisabled}
-						>
-						Step {i}</Step>)
+							label={step.label}
+							onClick={this.props.onStepClick}
+							onFocus={this.props.onStepFocus}
+						/>)
 					)
 				}
 			</Progress>
 		);
 	}
-});
+}
+
+ProgressIndicator.displayName = displayName;
+ProgressIndicator.propTypes = propTypes;
+ProgressIndicator.defaultProps = defaultProps;
 
 export default ProgressIndicator;

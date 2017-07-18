@@ -61,12 +61,27 @@ const DemoComponent = React.createClass({
 	}
 });
 
+const steps = [
+	{ id: 0, label: 'tooltip label #1' },
+	{ id: 1, label: 'tooltip label #2' },
+	{ id: 2, label: 'tooltip label #3' },
+	{ id: 3, label: 'tooltip label #4' },
+	{ id: 4, label: 'tooltip label #5' }
+];
+
+const sixSteps = [
+	{ id: 0, label: 'tooltip label #1' },
+	{ id: 1, label: 'tooltip label #2' },
+	{ id: 2, label: 'tooltip label #3' },
+	{ id: 3, label: 'tooltip label #4' },
+	{ id: 4, label: 'tooltip label #5' },
+	{ id: 5, label: 'tooltip label #6' }
+];
+
 describe('SLDSProgressIndicator: ', () => {
 	describe('Basic Props Render', () => {
-		const currentStep = 2;
-
 		beforeEach(mountComponent(
-			<DemoComponent currentStep={currentStep} />
+			<DemoComponent steps={steps} selectedStep={steps[2]} completedSteps={steps.slice(0, 2)} />
 		));
 
 		afterEach(unmountComponent);
@@ -89,7 +104,7 @@ describe('SLDSProgressIndicator: ', () => {
 
 		it('has correct number of completed steps', function () {
 			const item = this.wrapper.find('.slds-progress').find('li.slds-is-completed');
-			expect(item).to.have.length(currentStep);
+			expect(item).to.have.length(2);
 		});
 
 		it('has a white background', function () {
@@ -99,10 +114,8 @@ describe('SLDSProgressIndicator: ', () => {
 	});
 
 	describe('Within-Modal Props Render (Without Error)', () => {
-		const currentStep = 2;
-
 		beforeEach(mountComponent(
-			<DemoComponent currentStep={currentStep} variant="modal" />
+			<DemoComponent steps={steps} selectedStep={steps[2]} completedSteps={steps.slice(0, 2)} variant="modal" />
 		));
 
 		afterEach(unmountComponent);
@@ -125,7 +138,7 @@ describe('SLDSProgressIndicator: ', () => {
 
 		it('has correct number of completed steps', function () {
 			const item = this.wrapper.find('.slds-progress').find('li.slds-is-completed');
-			expect(item).to.have.length(currentStep);
+			expect(item).to.have.length(2);
 		});
 
 		it('has a gray background', function () {
@@ -135,10 +148,8 @@ describe('SLDSProgressIndicator: ', () => {
 	});
 
 	describe('Within-Modal Props Render (With Error)', () => {
-		const currentStep = 2;
-
 		beforeEach(mountComponent(
-			<DemoComponent currentStep={currentStep} variant="modal" hasError />
+			<DemoComponent steps={steps} selectedStep={steps[2]} errorSteps={steps.slice(2, 3)} completedSteps={steps.slice(0, 2)} variant="modal" />
 		));
 
 		afterEach(unmountComponent);
@@ -156,21 +167,13 @@ describe('SLDSProgressIndicator: ', () => {
 
 		it('has correct number of completed steps', function () {
 			const item = this.wrapper.find('.slds-progress').find('li.slds-is-completed');
-			expect(item).to.have.length(currentStep);
+			expect(item).to.have.length(2);
 		});
 	});
 
 	describe('Tooltip Props Render', () => {
-		const currentStep = 2;
-		const steps = [{ description: 'tooltip test #1' },
-						{ description: 'tooltip test #2' },
-						{ description: 'tooltip test #3' },
-						{ description: 'tooltip test #4' },
-						{ description: 'tooltip test #5' },
-						{ description: 'tooltip test #6' }];
-
 		beforeEach(mountComponent(
-			<DemoComponent currentStep={currentStep} hasError steps={steps} />
+			<DemoComponent steps={sixSteps} selectedStep={sixSteps[2]} errorSteps={sixSteps.slice(2, 3)} completedSteps={sixSteps.slice(0, 2)} />
 		));
 
 		afterEach(unmountComponent);
@@ -206,7 +209,7 @@ describe('SLDSProgressIndicator: ', () => {
 		const clickHandler = sinon.spy();
 		
 		beforeEach(mountComponent(
-			<DemoComponent onStepClick={clickHandler} />
+			<DemoComponent steps={steps} selectedStep={steps[2]} completedSteps={steps.slice(0, 2)} onStepClick={clickHandler} />
 		));
 
 		afterEach(unmountComponent);
@@ -226,7 +229,7 @@ describe('SLDSProgressIndicator: ', () => {
 		const focusHandler = sinon.spy();
 		
 		beforeEach(mountComponent(
-			<DemoComponent onStepFocus={focusHandler} />
+			<DemoComponent steps={steps} selectedStep={steps[2]} completedSteps={steps.slice(0, 2)} onStepFocus={focusHandler} />
 		));
 
 		afterEach(unmountComponent);
@@ -245,9 +248,9 @@ describe('SLDSProgressIndicator: ', () => {
 
 		it('renders assistive text for steps', function () {
 			const item = this.wrapper.find('.slds-progress').find('.slds-tooltip-trigger').find('li')
-                                    .find('.slds-button')
-                                    .find('.slds-assistive-text')
-                                    .first();
+									.find('.slds-button')
+									.find('.slds-assistive-text')
+									.first();
 			expect(item.text()).to.include('Step');
 		});
 

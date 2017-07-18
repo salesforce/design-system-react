@@ -12,14 +12,7 @@ const getModal = (props) => (
 
 const modalFooter = (props) => [
 	<Button key="modalBCancel" label="Cancel" />,
-	<ProgressIndicator
-		key="modalPI"
-		steps={props.steps}
-		variant="modal"
-		hasError={props.hasError}
-		onStepClick={props.onStepClick}
-		onStepFocus={props.onStepFocus}
-	/>,
+	<ProgressIndicator key="modal-progress-indicator" variant="modal" {...props} />,
 	<Button key="modalBSave" label="Save" variant="brand" />
 ];
 const modalContent = (

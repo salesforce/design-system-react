@@ -12,123 +12,131 @@ import classNames from 'classnames';
 // Child component
 import PopoverTooltip from '~/components/popover-tooltip';
 import { PROGRESS_INDICATOR_STEP } from '../../../utilities/constants';
+import ButtonIcon from '~/components/icon/button-icon';
+
+// ### Display Name
+const displayName = PROGRESS_INDICATOR_STEP;
+
+// ### Prop Types
+const propTypes = {
+	/**
+	 * Id for Steps, ranging in [0, steps.length).
+	 */
+	id: PropTypes.number,
+	/**
+	 * Determines if the step has been completed
+	 */
+	isCompleted: PropTypes.bool,
+	/**
+	 * Determines if the step contains an error
+	 */
+	isError: PropTypes.bool,
+	/**
+	 * Determines if the step is currently selected (active)
+	 */
+	isSelected: PropTypes.bool,
+	/**
+	 * Label of tooltip attached to the step if applicable.
+	 */
+	label: PropTypes.node,
+	/**
+	 * Triggered when click on individual steps. By default, it receives an event and returns all info passed to that step.
+	 * users are able to re-define it by passing a function as a prop
+	 */
+	onClick: PropTypes.func,
+	/**
+	 * Triggered when focus on individual steps. By default, it receives an event and returns all info passed to that step.
+	 * users are able to re-define it by passing a function as a prop
+	 */
+	onFocus: PropTypes.func
+};
 
 /**
  * Step renders a button icon and its tooltip if applied.
  * The button is applied with different css classes under different conditions.
  * Button icons have 4 types of status: completed (success), active (in progress), error (warning) and uncompleted (not approached)
  */
-const Step = React.createClass({
-	// ### Display Name
-	displayName: PROGRESS_INDICATOR_STEP,
-
-	// ### Prop Types
-	propTypes: {
-		id: PropTypes.number,
-		/**
-		 * tracks the index of current step
-		 */
-		currentStep: PropTypes.number.isRequired,
-		/**
-		 * Determines if there is an error occured in the current step
-		 */
-		hasError: PropTypes.bool,
-		/**
-		 * Description of tooltip attached to the step if applicable.
-		 */
-		description: PropTypes.string,
-		/**
-		 * Triggered when click on individual steps. By default, it receives an event and returns all info passed to that step.
-		 * users are able to re-define it by passing a function as a prop
-		 */
-		onStepClick: PropTypes.func,
-		/**
-		 * Triggered when focus on individual steps. By default, it receives an event and returns all info passed to that step.
-		 * users are able to re-define it by passing a function as a prop
-		 */
-		onStepFocus: PropTypes.func
-	},
-
+class Step extends React.Component {
 	/**
 	 * buttonIcon represents the button icon used for each step.
 	 * the button is applied with different css classes under different conditions.
 	 */
-	buttonIcon (renderIcon, showError, status, props) {
+	buttonIcon (renderIcon, status, props) {
 		const data = {
+			isSelected: props.isSelected,
+			isError: props.isError,
+			isCompleted: props.isCompleted,
 			id: props.id,
-			currentStep: props.currentStep,
-			hasError: props.hasError,
-			description: props.description,
-			isDisabled: props.isDisabled
+			isDisabled: props.isDisabled,
+			label: props.label
 		};
-		const spanClassName = classNames('slds-button', { 'slds-button_icon': renderIcon }, 'slds-progress__marker', { 'slds-progress__marker_icon': renderIcon });
-		const handleClick = (event) => props.onStepClick(event, data);
-		const handleFocus = (event) => props.onStepFocus(event, data);
 
-		const content = renderIcon ?
-			(<svg className="slds-button__icon" aria-hidden="true">
-				<use xlinkHref={'/assets/icons/utility-sprite/svg/symbols.svg#' + (showError ? 'warning' : 'success')} />
-			</svg>)
+		const icon = renderIcon ?
+			(<ButtonIcon category="utility" name={this.props.isError ? 'warning' : 'success'} />)
 			: null;
+
+		const handleClick = (event) => props.onClick(event, data);
+		const handleFocus = (event) => props.onFocus(event, data);
 
 		const stepButton = props.isDisabled ?
 			(<span
-					className={spanClassName}
-					aria-describedby={'progressIndicatorTooltip' + (this.props.id + 1)}
+					className={classNames('slds-button', { 'slds-button_icon': renderIcon }, 'slds-progress__marker', { 'slds-progress__marker_icon': renderIcon })}
+					aria-describedby={`progress-indicator-tooltip-${(this.props.id + 1)}`}
 					tabIndex={0}
 					role="button"
 			>
-				{ content }
+				{ icon }
 				<span className="slds-assistive-text">Step { props.id + 1 }: { status }</span>
 			</span>)
 			:
 			(<button
-					className={spanClassName}
+					className={classNames('slds-button', { 'slds-button_icon': renderIcon }, 'slds-progress__marker', { 'slds-progress__marker_icon': renderIcon })}
 					onClick={handleClick}
 					onFocus={handleFocus}
-					aria-describedby={'progressIndicatorTooltip' + (this.props.id + 1)}
+					aria-describedby={`progress-indicator-tooltip-${(this.props.id + 1)}`}
 			>
-				{ content }
+				{ icon }
 				<span className="slds-assistive-text">Step { props.id + 1 }: { status }</span>
 			</button>);
+
 		return stepButton;
-	},
+	}
 
 	render () {
-		const showComplete = this.props.id < this.props.currentStep;
-		const showActive = this.props.id === this.props.currentStep && !this.props.hasError;
-		const showError = this.props.id === this.props.currentStep && this.props.hasError;
-		const renderIcon = showComplete || showError;
+		const renderIcon = this.props.isCompleted || this.props.isError;
 		// step status (one of ['Error', 'Completed', 'Active', 'Uncompleted'])
 		let status = '';
-		if (showError) {
+		if (this.props.isError) {
 			status = 'Error';
-		} else if (showComplete) {
+		} else if (this.props.isCompleted) {
 			status = 'Completed';
-		} else if (showActive) {
+		} else if (this.props.isSelected) {
 			status = 'Active';
 		} else status = 'Uncompleted';
 
 		return (
 			<PopoverTooltip
 							align="top"
-							id={'progressIndicatorTooltip' + (this.props.id + 1)}
-							content={this.props.description}
-							variant={showError ? 'error' : 'info'}
+							id={`progress-indicator-tooltip-${(this.props.id + 1)}`}
+							content={this.props.label}
+							variant={this.props.isError ? 'error' : 'info'}
 							triggerStyle={{ display: !renderIcon ? 'flex' : '' }}
 			>
 				<li
 					className={classNames('slds-progress__item', {
-						'slds-is-completed': showComplete,
-						'slds-is-active': showActive,
-						'slds-has-error': showError
+						'slds-is-completed': this.props.isCompleted,
+						'slds-is-active': this.props.isSelected && !this.props.isError,
+						'slds-has-error': this.props.isError
 					}, this.props.className)}
 				>
-					{this.buttonIcon(renderIcon, showError, status, this.props)}
+					{this.buttonIcon(renderIcon, status, this.props)}
 				</li>
 			</PopoverTooltip>
 		);
 	}
-});
+}
+
+Step.propTypes = propTypes;
+Step.displayName = displayName;
 
 export default Step;    // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

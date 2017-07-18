@@ -12,59 +12,60 @@ import classNames from 'classnames';
 
 import { PROGRESS_INDICATOR_PROGRESS } from '../../../utilities/constants';
 
+const propTypesPB = {
+	/**
+	 * Percentage of progress completion, with range of [0, 100]
+	 */
+	value: PropTypes.string.isRequired
+};
 /**
  * ProgressBar renders the blue/gray progress bar and dynamically updates its completion percentage
  */
-const ProgressBar = React.createClass({
-	propTypes: {
-		/**
-		 * percentage of progress completion, with range of [0, 100]
-		 */
-		value: PropTypes.string.isRequired
-	},
-
+class ProgressBar extends React.Component {
 	render () {
 		return (<div className="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100" aria-valuenow={this.props.value} role="progressbar" tabIndex={0}>
-			<span className="slds-progress-bar__value" style={{ width: this.props.value + '%' }}>
+			<span className="slds-progress-bar__value" style={{ width: `${this.props.value}%` }}>
 				<span className="slds-assistive-text">Progress: {this.props.value}%</span>
 			</span>
 		</div>);
 	}
-});
+}
+
+ProgressBar.propTypes = propTypesPB;
+
+// ### Display Name
+const displayName = PROGRESS_INDICATOR_PROGRESS;
+
+// ### Prop Types
+const propTypes = {
+	/**
+	 * CSS class names to be added to the container element.
+	 */
+	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	/**
+	 * HTML id for component.
+	 */
+	id: PropTypes.string.isRequired,
+	/**
+	 * Percentage of progress completion, ranging [0, 100]
+	 */
+	value: PropTypes.string.isRequired,
+	/**
+	 * Determines component style
+	 */
+	variant: PropTypes.oneOf(['basic', 'modal'])
+};
 
 /**
  * Progress renders all step buttons and a container wrapping these buttongs and a progress bar
  */
-const Progress = React.createClass({
-	// ### Display Name
-	displayName: PROGRESS_INDICATOR_PROGRESS,
-
-	// ### Prop Types
-	propTypes: {
-		/**
-		 * HTML id for component.
-		 */
-		id: PropTypes.string.isRequired,
-		/**
-		 * CSS class names to be added to the container element.
-		 */
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-		/**
-		 * percentage of progress completion, ranging [0, 100]
-		 */
-		value: PropTypes.string.isRequired,
-		/**
-		 * Determines component style
-		 */
-		variant: PropTypes.oneOf(['basic', 'modal'])
-	},
-
+class Progress extends React.Component {
 	/**
 	 * Get the progress's HTML id. Generate a new one if no ID present.
 	 */
 	getId () {
 		return this.props.id;
-	},
+	}
 
 	render () {
 		return (
@@ -79,5 +80,9 @@ const Progress = React.createClass({
 			</div>
 		);
 	}
-});
+}
+
+Progress.propTypes = propTypes;
+Progress.displayName = displayName;
+
 export default Progress;

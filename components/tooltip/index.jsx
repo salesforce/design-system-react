@@ -91,7 +91,7 @@ const propTypes = {
 	 */
 	triggerStyle: PropTypes.object,
 	/**
-	 * determines the variant of tooltip: for informative purpose (blue background) or warning purpose (red background)
+	 * Determines the variant of tooltip: for informative purpose (blue background) or warning purpose (red background)
 	 */
 	variant: PropTypes.oneOf(['info', 'error'])
 };
@@ -190,7 +190,7 @@ class PopoverTooltip extends React.Component {
 					className={classNames(
 					'slds-popover',
 					'slds-popover--tooltip',
-					{ 'slds-theme_error' : this.props.variant === 'error' },
+					{ 'slds-theme_error': this.props.variant === 'error' },
 					getNubbinClassName(align))} role="tooltip"
 				>
 					{this.getTooltipContent()}
