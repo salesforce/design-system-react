@@ -30,9 +30,6 @@ import EventUtil from '../../utilities/event';
 import KEYS from '../../utilities/key-code';
 
 import Menu from './menu';
-import DefaultFooter from './menu/default-footer';
-import DefaultHeader from './menu/default-header';
-import DefaultSectionDivider from './menu/default-section-divider';
 import classNames from 'classnames';
 
 import { LOOKUP } from '../../utilities/constants';
@@ -681,6 +678,4 @@ const Lookup = React.createClass({
 });
 
 module.exports = Lookup;
-module.exports.DefaultHeader = DefaultHeader;
-module.exports.DefaultSectionDivider = DefaultSectionDivider;
-module.exports.DefaultFooter = DefaultFooter;
+
