@@ -32,11 +32,6 @@ const { Simulate,
 
 import { SLDSProgressIndicator } from '../../components';
 
-/* Set Chai to use chaiEnzyme for enzyme compatible assertions:
- * https://github.com/producthunt/chai-enzyme
- */
-chai.use(chaiEnzyme());
-
 const defaultProps = {
 	id: 'sample-progress-indicator'
 };
