@@ -367,7 +367,6 @@ const Lookup = React.createClass({
 	},
 
 	handleBlur (event) {
-		// this.handleClose();
 		if (this.props.onBlur) {
 			const target = event.target || event.currentTarget;
 			this.props.onBlur(target.value);
