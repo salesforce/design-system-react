@@ -283,7 +283,8 @@ class Datepicker extends React.Component {
 			if (currentDate !== nextDate) {
 				this.setState({
 					value: nextProps.value,
-					formattedValue: this.props.formatter(nextProps.value)
+					formattedValue: this.props.formatter(nextProps.value),
+					inputValue: this.props.formatter(nextProps.value)
 				});
 			}
 		}
