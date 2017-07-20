@@ -5610,6 +5610,18 @@
                 "returns": null
             },
             {
+                "name": "setCurrentSelectedIndices",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "nextProps",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "renderDefaultMenuContent",
                 "docblock": null,
                 "modifiers": [],
@@ -6198,6 +6210,9 @@
                         },
                         {
                             "name": "string"
+                        },
+                        {
+                            "name": "array"
                         }
                     ]
                 },
@@ -6228,6 +6243,13 @@
                 },
                 "required": false,
                 "description": "CSS classes to be added to wrapping trigger `div` around the button."
+            },
+            "multiple": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Whether this dropdown supports multi select."
             }
         },
         "route": "dropdown-menus",

@@ -30,6 +30,15 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.6.15
+**Minor Changes**
+
+- Adds Multiselect Dropdown variant
+
+**Bugfix Changes**
+
+- Fix datepicker input value bug
+
 ## Release 0.6.14
 **Minor Changes**
 
