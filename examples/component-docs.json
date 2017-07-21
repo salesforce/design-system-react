@@ -4866,6 +4866,13 @@
                 "returns": null
             },
             {
+                "name": "handleClickOutside",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "handleEscape",
                 "docblock": null,
                 "modifiers": [],
