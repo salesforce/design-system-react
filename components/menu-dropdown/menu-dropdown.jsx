@@ -190,7 +190,7 @@ const MenuDropdown = React.createClass({
 		/**
 		* This prop is passed onto the triggering `Button`. Text within the trigger button.
 		*/
-		label: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.node]),
+		label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 		/**
 		 * Custom element that overrides the default Menu Item component.
 		 */
