@@ -94,6 +94,7 @@ const executeTasks = () => {
 			}, done);
 		},
 		(done) => {
+			console.log(`The final step is to \`npm run release\` in the https://github.com/salesforce-ux/design-system-react-site repositoary and enter the version of ${argv.release}. You will then need to promote the pushed branch on Heroku from staging to production.`);
 			console.log('\n\n# Please add the following to your release notes at https://github.com/salesforce-ux/design-system-react/releases');
 			console.log(currentVersionReleaseNotes);
 			done();
