@@ -30,6 +30,11 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.6.16
+**Bugfix Changes**
+
+- Add react-onclickoutside events to Lookup to prevent scrollbar from closing the menu
+
 ## Release 0.6.15
 **Minor Changes**
 
