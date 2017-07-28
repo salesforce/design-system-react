@@ -1,0 +1,197 @@
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
+/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+// Implements the [Progress Indicator design pattern](https://lightningdesignsystem.com/components/progress-indicator/) in React.
+// Based on SLDS v2.4.0
+import React from 'react';
+import PropTypes from 'prop-types';
+
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
+import { PROGRESS_INDICATOR } from '../../utilities/constants';
+
+// ### find
+import find from 'lodash.find';
+
+// Child components
+import Step from './private/step';
+import Progress from './private/progress';
+
+const displayName = PROGRESS_INDICATOR;
+
+const propTypes = {
+	/**
+	 * CSS class names to be added to the container element.
+	 */
+	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	/**
+	 * Stores all completed steps. It is an array of JSON objects.
+	 */
+	completedSteps: PropTypes.array,
+	/**
+	 * Stores all error steps. It is an array of JSON objects and usually there is only one error step (current step).
+	 */
+	errorSteps: PropTypes.array,
+	/**
+	 * HTML id for component.
+	 */
+	id: PropTypes.string,
+	/**
+	 * Triggered when click on individual steps. By default, it receives an event and returns all info passed to that step.
+	 * users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the
+	 * callback result.
+	 *
+	 * eg. const handleStepClick = function(event, data) { console.log(data); };
+	 *     <ProgressIndicator onStepClick={handleStepClick} />
+	 */
+	onStepClick: PropTypes.func,
+	/**
+	 * Triggered when focus on individual steps. By default, it receives an event and returns all info passed to that step.
+	 * users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the
+	 * callback result.
+	 *
+	 * eg. const handleStepFocus = function(event, data) { console.log(data); };
+	 *     <ProgressIndicator onStepFocus={handleStepFocus} />
+	 */
+	onStepFocus: PropTypes.func,
+	/**
+	 * Represents the currently selected step. It is a JSON object representing a step.
+	 */
+	selectedStep: PropTypes.object.isRequired,
+	/**
+	 * Determines the behaviors of step buttons
+	 * It is an array of JSON objects in the following form:
+	 *  [{
+	 *		id: <PropTypes.number> or <PropTypes.string>, has to be unique
+	 *      label: <PropTypes.string>,
+	 *		isDisabled: <PropTypes.bool>
+	 *  }],
+	 * `label` represents the tooltip content
+	 * `isDisabled` determines if the step will be disabled (still clickable/focusable,
+	 *				just disables cursor change and removes onClick & onFocus callbacks;
+	 *				undefined by default)
+	 */
+	steps: PropTypes.array.isRequired,
+	/**
+	 * Determines component style
+	 */
+	variant: PropTypes.oneOf(['basic', 'modal'])
+};
+
+const defaultSteps = [
+	{ id: 0, label: ('tooltip label #1') },
+	{ id: 1, label: ('tooltip label #2') },
+	{ id: 2, label: ('tooltip label #3') },
+	{ id: 3, label: ('tooltip label #4') },
+	{ id: 4, label: ('tooltip label #5') }
+];
+
+const defaultProps = {
+	errorSteps: [],
+	completedSteps: [],
+	selectedStep: defaultSteps[0],
+	variant: 'basic',
+	// click/focus callbacks by default do nothing
+	onStepClick: () => {},
+	onStepFocus: () => {}
+};
+
+/**
+ * Check if the passed steps are valid
+ */
+function checkSteps (steps) {
+	if (steps === undefined) return false;
+	for (let i = 0; i < steps.length; ++i) {
+		if (steps[i].label === undefined) return false;
+	}
+	return true;
+}
+
+/**
+ * Check if an item is from an array of items when 'items' is an array;
+ * Check if an item is equal to the other item after being stringified when 'items' is a JSON object
+ */
+function isSelected (item, items) {
+	if (Array.isArray(items)) {
+		return !!find(items, item);
+	}
+	return (JSON.stringify(item) === JSON.stringify(items));
+}
+
+/**
+ * Progress Indicator is a component that communicates to the user the progress of a particular process.
+ */
+class ProgressIndicator extends React.Component {
+
+
+	componentWillMount () {
+		this.generatedId = shortid.generate();
+	}
+
+	componentWillUnmount () {
+		this.isUnmounting = true;
+	}
+
+	/**
+	 * Get the progress indicator's HTML id. Generate a new one if no ID present.
+	 */
+	getId () {
+		return this.props.id || this.generatedId;
+	}
+
+	getSteps () {
+		// check if passed steps are valid
+		return (checkSteps(this.props.steps) ? this.props.steps : defaultSteps);
+	}
+
+	render () {
+		/** 1. preparing data */
+		const allSteps = this.getSteps();
+
+		let currentStep = 0;
+		// find index for the current step
+		for (let i = 0; i < allSteps.length; ++i) {
+			// assign step an id if it does not have one
+			if (allSteps[i].id === undefined) {
+				allSteps[i].id = i;
+			}
+			if (isSelected(allSteps[i], this.props.selectedStep)) {
+				currentStep = i;
+			}
+		}
+
+		/** 2. return DOM */
+		return (
+			<Progress
+					id={this.getId()}
+					value={currentStep === 0 ? '0' : `${(100 * (currentStep / (allSteps.length - 1)))}`}
+					variant={this.props.variant}
+					className={this.props.className}
+			>
+				{
+					allSteps.map((step, i) =>
+						(<Step
+							key={`${this.getId()}-${step.id}`}
+							id={i}
+							isSelected={isSelected(step, this.props.selectedStep)}
+							isError={isSelected(step, this.props.errorSteps)}
+							isCompleted={isSelected(step, this.props.completedSteps)}
+							isDisabled={step.isDisabled}
+							label={step.label}
+							onClick={this.props.onStepClick}
+							onFocus={this.props.onStepFocus}
+						/>)
+					)
+				}
+			</Progress>
+		);
+	}
+}
+
+ProgressIndicator.displayName = displayName;
+ProgressIndicator.propTypes = propTypes;
+ProgressIndicator.defaultProps = defaultProps;
+
+export default ProgressIndicator;
