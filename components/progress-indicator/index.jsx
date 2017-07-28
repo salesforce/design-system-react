@@ -27,11 +27,16 @@ const propTypes = {
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
-	 * Stores all completed steps. It is an array of JSON objects.
+	 * Stores all completed steps. It is an array of objects.
 	 */
 	completedSteps: PropTypes.array,
 	/**
-	 * Stores all error steps. It is an array of JSON objects and usually there is only one error step (current step).
+	 * Stores all disabled steps. It is an array of step objects. Steps are still clickable/focusable,
+	 * this only disables cursor change and removes onClick and onFocus event callbacks.
+	 */
+	disabledSteps: PropTypes.array,
+	/**
+	 * Stores all error steps. It is an array of objects and usually there is only one error step (current step).
 	 */
 	errorSteps: PropTypes.array,
 	/**
@@ -65,19 +70,16 @@ const propTypes = {
 	 * It is an array of JSON objects in the following form:
 	 *  [{
 	 *		id: <PropTypes.number> or <PropTypes.string>, has to be unique
-	 *      label: <PropTypes.string>,
-	 *		isDisabled: <PropTypes.bool>
+	 *    label: <PropTypes.string>
+	 *    assistiveText: <PropTypes.string>, The default is `Step ${props.index + 1}: ${status}`
 	 *  }],
 	 * `label` represents the tooltip content
-	 * `isDisabled` determines if the step will be disabled (still clickable/focusable,
-	 *				just disables cursor change and removes onClick & onFocus callbacks;
-	 *				undefined by default)
 	 */
 	steps: PropTypes.array.isRequired,
 	/**
 	 * Determines component style
 	 */
-	variant: PropTypes.oneOf(['basic', 'modal'])
+	variant: PropTypes.oneOf(['base', 'modal'])
 };
 
 const defaultSteps = [
@@ -91,8 +93,9 @@ const defaultSteps = [
 const defaultProps = {
 	errorSteps: [],
 	completedSteps: [],
+	disabledSteps: [],
 	selectedStep: defaultSteps[0],
-	variant: 'basic',
+	variant: 'base',
 	// click/focus callbacks by default do nothing
 	onStepClick: () => {},
 	onStepFocus: () => {}
@@ -113,7 +116,7 @@ function checkSteps (steps) {
  * Check if an item is from an array of items when 'items' is an array;
  * Check if an item is equal to the other item after being stringified when 'items' is a JSON object
  */
-function isSelected (item, items) {
+function findStep (item, items) {
 	if (Array.isArray(items)) {
 		return !!find(items, item);
 	}
@@ -157,7 +160,7 @@ class ProgressIndicator extends React.Component {
 			if (allSteps[i].id === undefined) {
 				allSteps[i].id = i;
 			}
-			if (isSelected(allSteps[i], this.props.selectedStep)) {
+			if (findStep(allSteps[i], this.props.selectedStep)) {
 				currentStep = i;
 			}
 		}
@@ -165,23 +168,24 @@ class ProgressIndicator extends React.Component {
 		/** 2. return DOM */
 		return (
 			<Progress
-					id={this.getId()}
-					value={currentStep === 0 ? '0' : `${(100 * (currentStep / (allSteps.length - 1)))}`}
-					variant={this.props.variant}
-					className={this.props.className}
+				id={this.getId()}
+				value={currentStep === 0 ? '0' : `${(100 * (currentStep / (allSteps.length - 1)))}`}
+				variant={this.props.variant}
+				className={this.props.className}
 			>
 				{
 					allSteps.map((step, i) =>
 						(<Step
 							key={`${this.getId()}-${step.id}`}
-							id={i}
-							isSelected={isSelected(step, this.props.selectedStep)}
-							isError={isSelected(step, this.props.errorSteps)}
-							isCompleted={isSelected(step, this.props.completedSteps)}
-							isDisabled={step.isDisabled}
-							label={step.label}
+							id={this.getId()}
+							index={i}
+							isSelected={findStep(step, this.props.selectedStep)}
+							isDisabled={findStep(step, this.props.disabledSteps)}
+							isError={findStep(step, this.props.errorSteps)}
+							isCompleted={findStep(step, this.props.completedSteps)}
 							onClick={this.props.onStepClick}
 							onFocus={this.props.onStepFocus}
+							step={step}
 						/>)
 					)
 				}

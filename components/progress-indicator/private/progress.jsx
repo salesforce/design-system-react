@@ -4,6 +4,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import ProgressBar from './progress-bar';
+
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, 'a simple javascript utility for conditionally
@@ -12,32 +14,12 @@ import classNames from 'classnames';
 
 import { PROGRESS_INDICATOR_PROGRESS } from '../../../utilities/constants';
 
-const propTypesPB = {
-	/**
-	 * Percentage of progress completion, with range of [0, 100]
-	 */
-	value: PropTypes.string.isRequired
-};
-/**
- * ProgressBar renders the blue/gray progress bar and dynamically updates its completion percentage
- */
-class ProgressBar extends React.Component {
-	render () {
-		return (<div className="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100" aria-valuenow={this.props.value} role="progressbar" tabIndex={0}>
-			<span className="slds-progress-bar__value" style={{ width: `${this.props.value}%` }}>
-				<span className="slds-assistive-text">Progress: {this.props.value}%</span>
-			</span>
-		</div>);
-	}
-}
-
-ProgressBar.propTypes = propTypesPB;
-
-// ### Display Name
-const displayName = PROGRESS_INDICATOR_PROGRESS;
-
 // ### Prop Types
 const propTypes = {
+	/**
+	 * Steps in the component
+	 */
+	children: PropTypes.node,
 	/**
 	 * CSS class names to be added to the container element.
 	 */
@@ -53,7 +35,7 @@ const propTypes = {
 	/**
 	 * Determines component style
 	 */
-	variant: PropTypes.oneOf(['basic', 'modal'])
+	variant: PropTypes.oneOf(['base', 'modal'])
 };
 
 /**
@@ -83,6 +65,6 @@ class Progress extends React.Component {
 }
 
 Progress.propTypes = propTypes;
-Progress.displayName = displayName;
+Progress.displayName = PROGRESS_INDICATOR_PROGRESS;
 
 export default Progress;
