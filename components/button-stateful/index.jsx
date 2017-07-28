@@ -32,7 +32,7 @@ const propTypes = {
 	 */
 	active: PropTypes.bool,
 	/**
-	 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+	 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. This should also include the state of the button.
 	 * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
 	 */
 	assistiveText: PropTypes.string,
@@ -177,7 +177,7 @@ class ButtonStateful extends TooltipTrigger {
 						className="slds-button__icon--stateful"
 					/>
 					{this.getTooltip()}
-					<span className="slds-assistive-text">{isActive ? `${assistiveText} selected` : assistiveText}</span>
+					{assistiveText ? <span className="slds-assistive-text">{assistiveText}</span> : null}
 				</button>
 			);
 		}
