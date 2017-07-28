@@ -171,13 +171,13 @@ class ButtonStateful extends TooltipTrigger {
 					tabIndex={tabIndex}
 				>
 					<ButtonIcon
-						assistiveText={isActive ? `${assistiveText} selected` : assistiveText}
 						disabled={disabled}
 						name={iconName}
 						size={iconSize}
 						className="slds-button__icon--stateful"
 					/>
 					{this.getTooltip()}
+					<span className="slds-assistive-text">{isActive ? `${assistiveText} selected` : assistiveText}</span>
 				</button>
 			);
 		}
