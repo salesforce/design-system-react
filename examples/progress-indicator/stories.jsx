@@ -44,6 +44,7 @@ storiesOf(PROGRESS_INDICATOR, module)
 		steps={stepsBasic}
 		selectedStep={stepsBasic[0]}
 		onStepClick={handleStepEvent}
+		// tooltipIsOpenSteps={stepsBasic.slice(0, 2)}
 	/>))
 	.add('Base With Many Steps', () => (<Default
 		steps={manySteps}

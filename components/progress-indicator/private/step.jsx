@@ -60,7 +60,13 @@ const propTypes = {
 	/**
 	 * Step object. This is passed into event callbacks.
 	 */
-	step: PropTypes.object
+	step: PropTypes.object,
+	/**
+	 * Determines if the tooltip attached to step is always open.
+	 * This is mainly for dev test purpose.
+	 * Usually the tooltip should only show when hover.
+	 */
+	tooltipIsOpen: PropTypes.bool
 };
 
 /**
@@ -125,14 +131,24 @@ class Step extends React.Component {
 			status = 'Active';
 		} else status = 'Uncompleted';
 
+		const tooltipProps = {
+			align: 'top',
+			id: `progress-indicator-tooltip-${this.props.step.id || this.props.index}`,
+			content: this.props.step.label,
+			variant: this.props.isError ? 'error' : 'info',
+			triggerStyle: { display: !renderIcon ? 'flex' : '' }
+		};
+
+		// This is mainly for dev test purpose.
+		// `isOpen` is only set to true if tooltip is specified to be open
+		// Do not set isOpen to false or undefined otherwise, because that will
+		// disable any interaction with tooltips
+		if (this.props.tooltipIsOpen) {
+			tooltipProps.isOpen = true;
+		}
+
 		return (
-			<PopoverTooltip
-				align="top"
-				id={`progress-indicator-tooltip-${this.props.step.id || this.props.index}`}
-				content={this.props.step.label}
-				variant={this.props.isError ? 'error' : 'info'}
-				triggerStyle={{ display: !renderIcon ? 'flex' : '' }}
-			>
+			<PopoverTooltip {...tooltipProps} >
 				<li
 					className={classNames('slds-progress__item', {
 						'slds-is-completed': this.props.isCompleted,

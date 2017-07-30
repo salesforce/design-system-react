@@ -65,7 +65,7 @@ const steps = [
 ];
 
 const sixSteps = [
-	{ id: 0, label: 'tooltip label #1' },
+	{ id: 0, label: 'custom tooltip #1' },
 	{ id: 1, label: 'tooltip label #2' },
 	{ id: 2, label: 'tooltip label #3' },
 	{ id: 3, label: 'tooltip label #4' },
@@ -168,7 +168,12 @@ describe('SLDSProgressIndicator: ', () => {
 
 	describe('Tooltip Props Render', () => {
 		beforeEach(mountComponent(
-			<DemoComponent steps={sixSteps} selectedStep={sixSteps[2]} errorSteps={sixSteps.slice(2, 3)} completedSteps={sixSteps.slice(0, 2)} />
+			<DemoComponent
+				steps={sixSteps}
+				selectedStep={sixSteps[2]}
+				errorSteps={sixSteps.slice(2, 3)}
+				completedSteps={sixSteps.slice(0, 2)}
+			/>
 		));
 
 		afterEach(unmountComponent);
@@ -183,16 +188,15 @@ describe('SLDSProgressIndicator: ', () => {
 			const item = this.wrapper.find('.slds-progress').find('.slds-tooltip-trigger');
 			expect(item).to.have.length(6);
 		});
-
-		// EVENTS. - commented this test case as it *very occasionally*
-		//           causes tests for other components to fail
-
-		// it('shows tooltip on hover', function () {
-		// 	const step = this.wrapper.find('.slds-progress').find('.slds-tooltip-trigger').find('li').first().node;
-		// 	Simulate.mouseEnter(step, {});
-		// 	const item = this.wrapper.find('.slds-progress').find('.drop-target');
-		// 	expect(item).to.have.length(1);
-		// });
+		
+		it('renders correct assistive text', function () {
+			const item = this.wrapper.find('.slds-progress')
+									.find('.slds-tooltip-trigger')
+									.find('li > span')
+									.find('.slds-assistive-text')
+									.first();
+			expect(item.text()).to.include('custom tooltip #1');
+		});
 	});
 
 	describe('Click Event', () => {
@@ -244,30 +248,5 @@ describe('SLDSProgressIndicator: ', () => {
 									.first();
 			expect(item.text()).to.include('Step');
 		});
-
-
-		// simulations of focus and blur *occasionally* cause tests of other components to fail
-
-		// EVENTS
-		// it('shows tooltip on focus', function () {
-		// 	const step = this.wrapper.find('.slds-progress').find('.slds-tooltip-trigger').find('li').first().node;
-		// 	Simulate.focus(step);
-		// 	const item = this.wrapper.find('.slds-progress').find('.drop-target');
-		// 	expect(item).to.have.length(1);
-		// });
-
-		// it('hides tooltip on blur', function () {
-		// 	const step = this.wrapper.find('.slds-progress').find('.slds-tooltip-trigger').find('li').first().node;
-		// 	// step.simulate('focus');
-		// 	Simulate.blur(step);
-		// 	const item = this.wrapper.find('.slds-progress').find('.drop-target');
-		// 	expect(item).to.have.length(0);
-		// });
-
-		// it('calls onStepFocus()', function () {
-		// 	const step = this.wrapper.find('.slds-progress').find('li').find('button').first().node;
-		// 	Simulate.focus(step);
-		// 	expect(focusHandler.callCount).to.equal(1);
-		// });
 	});
 });

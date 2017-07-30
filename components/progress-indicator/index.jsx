@@ -70,12 +70,16 @@ const propTypes = {
 	 * It is an array of JSON objects in the following form:
 	 *  [{
 	 *		id: <PropTypes.number> or <PropTypes.string>, has to be unique
-	 *    label: <PropTypes.string>
-	 *    assistiveText: <PropTypes.string>, The default is `Step ${props.index + 1}: ${status}`
+	 *		label: <PropTypes.string>, representing the tooltip content
+	 *		assistiveText: <PropTypes.string>, The default is `Step ${props.index + 1}: ${status}`
 	 *  }],
-	 * `label` represents the tooltip content
 	 */
 	steps: PropTypes.array.isRequired,
+	/**
+	 * Stores all steps with opened tooltips. This property is mainly for dev test purpose.
+	 * Usually, the tooltip should only show on hover.
+	 */
+	tooltipIsOpenSteps: PropTypes.array,
 	/**
 	 * Determines component style
 	 */
@@ -186,6 +190,7 @@ class ProgressIndicator extends React.Component {
 							onClick={this.props.onStepClick}
 							onFocus={this.props.onStepFocus}
 							step={step}
+							tooltipIsOpen={findStep(step, this.props.tooltipIsOpenSteps)}
 						/>)
 					)
 				}
