@@ -7,6 +7,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
+import Popper from 'popper.js';
+import isEqual from 'lodash.isequal';
+
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
@@ -16,8 +19,6 @@ import classNames from 'classnames';
 // ### onClickOutside
 // Listen for clicks that occur somewhere in the document, outside of the element itself
 import onClickOutside from 'react-onclickoutside';
-
-import TetherDrop from 'tether-drop';
 
 import EventUtil from '../../../utilities/event';
 import KEYS from '../../../utilities/key-code';
@@ -200,16 +201,58 @@ const Dialog = React.createClass({
 	},
 
 	componentWillMount () {
-		this.dialogElement = document.createElement('span');
-		document.querySelector('body').appendChild(this.dialogElement);
 	},
 
 	componentDidMount () {
-		this.renderDialog();
+		/* Instantiate a _popper instance here */
+		this._createPopper();
 	},
 
 	componentDidUpdate () {
-		this.renderDialog();
+		/* Schedule an update to _popper here */
+		/* Do something else from popper here maybe? */
+	},
+
+	componentWillUnmount () {
+		this._destroyPopper();
+	},
+
+	_createPopper () {
+		const reference = this.target();
+		const popper = this.dialogContent;
+		const placement = 'top'; // one of Popper.placements
+		const eventsEnabled = true; // a boolean
+		const modifiers = {
+			applyStyle: { enabled: false },
+			updateState: {
+				enabled: true,
+				order: 900,
+				fn: data => {
+					if (
+						(this.state.data && !isEqual(data.offsets, this.state.data.offsets)) ||
+						!this.state.data
+					) {
+						this.setState({ data });
+					}
+					return data;
+				}
+			}
+			// arrow property can also point to an element
+		};
+		if (!reference || !popper) {
+			console.error('Target node not found!', reference);
+			console.error('Popper node not found!', popper);
+		}
+		this._popper = new Popper(reference, popper, {
+			placement,
+			eventsEnabled,
+			modifiers
+		});
+		this._popper.scheduleUpdate();
+	},
+
+	_destroyPopper () {
+		if (this._popper) this._popper.destroy();
 	},
 
 	handleClickOutside () {
@@ -243,9 +286,9 @@ const Dialog = React.createClass({
 	},
 
 	renderDialogContents () {
-		if (!this.state.isOpen) {
-			return <span />;
-		}
+		// if (!this.state.isOpen) {
+		// 	return <span />;
+		// }
 
 		let style = {
 			transform: 'none',
@@ -281,96 +324,8 @@ const Dialog = React.createClass({
 		);
 	},
 
-	getHorizontalAlign (align) {
-		if (align.indexOf('left') > -1) {
-			return 'left';
-		} else if (align.indexOf('right') > -1) {
-			return 'right';
-		}
-		return 'center';
-	},
-
-	getVerticalAlign (align) {
-		if (align.indexOf('bottom') > -1) {
-			return 'bottom';
-		} else if (align.indexOf('top') > -1) {
-			return 'top';
-		}
-		return 'middle';
-	},
-
-	isHorizontalAlign (align) {
-		return (
-			align === 'left' ||
-			align === 'right' ||
-			align === 'center'
-		);
-	},
-
-	isVerticalAlign (align) {
-		return (
-			align === 'bottom' ||
-			align === 'top' ||
-			align === 'middle'
-		);
-	},
-
-	getPosition () {
-		if (this.props.align) {
-			let align = [];
-			if (this.props.align) {
-				const splits = this.props.align.split(' ');
-				if (this.isHorizontalAlign(splits[0])) {
-					const verticalAlign = splits.length > 1 ? this.getVerticalAlign(splits[1]) : this.getVerticalAlign('');
-					align = [
-						this.getHorizontalAlign(splits[0]),
-						verticalAlign
-					];
-				} else {
-					const horizontalAlign = splits.length > 1 ? this.getHorizontalAlign(splits[1]) : this.getHorizontalAlign('');
-					align = [
-						this.getVerticalAlign(splits[0]),
-						horizontalAlign
-					];
-				}
-			}
-
-			return align.join(' ');
-		}
-
-		const positions = [];
-		if (this.props.verticalAlign === 'top' || this.props.verticalAlign === 'bottom') {
-			positions.push(this.props.verticalAlign);
-			positions.push(this.props.horizontalAlign);
-		} else {
-			positions.push(this.props.horizontalAlign);
-			positions.push(this.props.verticalAlign);
-		}
-
-		return positions.join(' ');
-	},
-
 	target () {
 		return this.props.targetElement ? ReactDOM.findDOMNode(this.props.targetElement) : ReactDOM.findDOMNode(this).parentNode; // eslint-disable-line react/no-find-dom-node
-	},
-
-	tetherDropOptions () {
-		// Please reference http://github.hubspot.com/drop/ for options.
-		const position = this.getPosition();
-
-		return {
-			beforeClose: this.beforeClose,
-			constrainToWindow: this.props.flippable,
-			constrainToScrollParent: this.props.constrainToScrollParent,
-			content: this.dialogElement,
-			openOn: 'always',
-			position,
-			remove: true,
-			target: this.target(),
-			tetherOptions: {
-				offset: this.props.offset
-			}
-		};
 	},
 
 	handleOpen () {
@@ -392,52 +347,33 @@ const Dialog = React.createClass({
 
 	renderDialog () {
 		// By default ReactDOM is used to create a portal mount on the `body` tag. This can be overridden with the `portalMount` prop.
-		let mount = ReactDOM.render;
+		// let mount = ReactDOM.render;
 
 		if (this.props.portalMount) {
 			mount = this.props.portalMount;
 		}
 
 		// nextElement, container, callback
-		this.portal = mount(this.renderDialogContents(), this.dialogElement);
+		// this.portal = mount(this.renderDialogContents(), this.dialogElement);
+		return this.renderDialogContents();
 
-		if (this.dialogElement &&
-				this.dialogElement.parentNode &&
-				this.dialogElement.parentNode.parentNode &&
-				this.dialogElement.parentNode.parentNode.className &&
-				this.dialogElement.parentNode.parentNode.className.indexOf('drop ') > -1) {
-			this.dialogElement.parentNode.parentNode.style.zIndex = 10001;
-		}
+		// This used to set the zindex of the dialog element to 10001
 
-		if (this.drop !== null && this.drop !== undefined) {
-			if (this.drop && this.drop) {
-				this.drop.position();
-			}
-		} else if (window && document) {
-			this.drop = new TetherDrop(this.tetherDropOptions());
-			this.drop.once('open', this.handleOpen);
-		}
+		/* Probably position stuff using popper here? */
 	},
 
-	componentWillUnmount () {
-		if (this.props.variant === 'popover') {
-			DOMElementFocus.teardownScopedFocus();
-			DOMElementFocus.returnFocusToStoredElement();
-		}
+	// componentWillUnmount () {
+	// 	if (this.props.variant === 'popover') {
+	// 		DOMElementFocus.teardownScopedFocus();
+	// 		DOMElementFocus.returnFocusToStoredElement();
+	// 	}
 
-		this.drop.destroy();
-		ReactDOM.unmountComponentAtNode(this.dialogElement);
-
-		if (this.dialogElement.parentNode) {
-			this.dialogElement.parentNode.removeChild(this.dialogElement);
-		}
-
-		this.handleClose(undefined, { componentWillUnmount: true });
-	},
+	// 	this.handleClose(undefined, { componentWillUnmount: true });
+	// },
 
 	render () {
 		// Must use `<noscript></noscript>` in order for `this.drop` to not be undefined when unmounting
-		return <noscript />;
+		return this.renderDialog();
 	}
 });
 
