@@ -249,4 +249,12 @@ describe('SLDSProgressIndicator: ', () => {
 			expect(item.text()).to.include('Step');
 		});
 	});
+
+	/**
+	 * TODO in the future:
+	 * we may want to extend test cases when TetherJS is removed for future dev
+	 * The following cases may be considered:
+	 *    1. test tooltips behave properly (show/hide/with correct label) *on hover*
+	 *    2. test tooltips behave properly *on focus/blur*
+	 */
 });
