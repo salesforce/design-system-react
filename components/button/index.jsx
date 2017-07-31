@@ -89,7 +89,7 @@ const Button = React.createClass({
 		/**
 		 * Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText</code> prop.
 		 */
-		label: PropTypes.string,
+		label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 		onBlur: PropTypes.func,
 		/**
 		 * Triggered when the button is clicked.
