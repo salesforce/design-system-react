@@ -5,6 +5,9 @@
 // Based on SLDS v2.4.0
 import React from 'react';
 import PropTypes from 'prop-types';
+import { shape } from 'airbnb-prop-types';
+
+import assign from 'lodash.assign';
 
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
@@ -22,6 +25,12 @@ import Progress from './private/progress';
 const displayName = PROGRESS_INDICATOR;
 
 const propTypes = {
+	/**
+	 * Assistive text for percentage
+	 */
+	assistiveText: shape({
+		percentage: PropTypes.string
+	}),
 	/**
 	 * CSS class names to be added to the container element.
 	 */
@@ -91,6 +100,7 @@ const defaultSteps = [
 ];
 
 const defaultProps = {
+	assistiveText: {},
 	errorSteps: [],
 	completedSteps: [],
 	disabledSteps: [],
@@ -150,6 +160,9 @@ class ProgressIndicator extends React.Component {
 	}
 
 	render () {
+		// Merge objects of strings with their default object
+		const assistiveText = this.props ? assign({}, defaultProps.assistiveText, this.props.assistiveText) : defaultProps.assistiveText;
+
 		/** 1. preparing data */
 		const allSteps = this.getSteps();
 
@@ -168,6 +181,7 @@ class ProgressIndicator extends React.Component {
 		/** 2. return DOM */
 		return (
 			<Progress
+				assistiveText={assistiveText}
 				id={this.getId()}
 				value={currentStep === 0 ? '0' : `${(100 * (currentStep / (allSteps.length - 1)))}`}
 				variant={this.props.variant}

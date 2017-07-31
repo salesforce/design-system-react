@@ -3,6 +3,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { shape } from 'airbnb-prop-types';
 
 import ProgressBar from './progress-bar';
 
@@ -16,6 +17,12 @@ import { PROGRESS_INDICATOR_PROGRESS } from '../../../utilities/constants';
 
 // ### Prop Types
 const propTypes = {
+	/**
+	 * Assistive text for percentage
+	 */
+	assistiveText: shape({
+		percentage: PropTypes.string
+	}),
 	/**
 	 * Steps in the component
 	 */
@@ -58,7 +65,7 @@ class Progress extends React.Component {
 				<ol className="slds-progress__list">
 					{ this.props.children }
 				</ol>
-				<ProgressBar value={this.props.value} />
+				<ProgressBar value={this.props.value} assistiveText={this.props.assistiveText} />
 			</div>
 		);
 	}

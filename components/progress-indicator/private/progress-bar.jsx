@@ -3,8 +3,15 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { shape } from 'airbnb-prop-types';
 
 const propTypes = {
+	/**
+	 * Assistive text for percentage
+	 */
+	assistiveText: shape({
+		percentage: PropTypes.string
+	}),
 	/**
 	 * Percentage of progress completion, with range of [0, 100]
 	 */
@@ -28,12 +35,13 @@ class ProgressBar extends React.Component {
 					className="slds-progress-bar__value"
 					style={{ width: `${this.props.value}%` }}
 				>
-					<span className="slds-assistive-text">Progress: {this.props.value}%</span>
+					<span className="slds-assistive-text">{this.props.assistiveText.percentage || `Progress: ${this.props.value}%`}</span>
 				</span>
 			</div>);
 	}
 }
 
+ProgressBar.displayName = 'ProgressBar';
 ProgressBar.propTypes = propTypes;
 
 export default ProgressBar;
