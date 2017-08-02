@@ -6,13 +6,33 @@ import Modal from '../../components/modal';
 
 import Button from '../../components/button';
 
+const steps = [
+	{ id: 0, label: <i>tooltip label #1</i>, assistiveText: 'This is custom text in the assistive text key' },
+	{ id: 1, label: 'tooltip label #2' },
+	{ id: 2, label: <strong>tooltip label #3</strong> },
+	{ id: 3, label: 'tooltip label #4' },
+	{ id: 4, label: 'tooltip label #5' }
+];
+
+const handleStepEvent = function (event, data) {
+	console.log(data);
+};
+
 const getModal = (props) => (
 	<Modal {...props} />
 );
 
 const modalFooter = (props) => [
 	<Button key="modalBCancel" label="Cancel" />,
-	<ProgressIndicator key="modal-progress-indicator" variant="modal" {...props} />,
+	<ProgressIndicator
+		key="modal-progress-indicator"
+		variant="modal"
+		steps={steps}
+		selectedStep={steps[2]}
+		completedSteps={steps.slice(0, 2)}
+		errorSteps={steps.slice(2, 3)}
+		onStepClick={handleStepEvent}
+	/>,
 	<Button key="modalBSave" label="Save" variant="brand" />
 ];
 const modalContent = (
