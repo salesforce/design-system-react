@@ -28,7 +28,7 @@ const propTypes = {
 	/**
 	 * **Assistive text for accessibility**
 	 * This object is merged with the default props object on every render.
-	 * * `percentage`: Label for Progress Bar. The default is `Progress: ${this.props.value}%`
+	 * * `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`
 	 */
 	assistiveText: shape({
 		percentage: PropTypes.string
@@ -56,16 +56,18 @@ const propTypes = {
 	id: PropTypes.string,
 	/**
 	 * Triggered when an individual step is clicked. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.
-	 *
-	 * eg. const handleStepClick = function(event, data) { console.log(data); };
+	 * ```
+	 * const handleStepClick = function(event, data) { console.log(data); };
 	 *     <ProgressIndicator onStepClick={handleStepClick} />
+	 * ```
 	 */
 	onStepClick: PropTypes.func,
 	/**
 	 * Triggered when an individual step is focused. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.
-	 *
-	 * eg. const handleStepFocus = function(event, data) { console.log(data); };
+	 * ```
+	 * const handleStepFocus = function(event, data) { console.log(data); };
 	 *     <ProgressIndicator onStepFocus={handleStepFocus} />
+	 * ```
 	 */
 	onStepFocus: PropTypes.func,
 	/**
@@ -73,13 +75,14 @@ const propTypes = {
 	 */
 	selectedStep: PropTypes.object.isRequired,
 	/**
-	 * Determines the behaviors of step buttons
-	 * It is an array of JSON objects in the following form:
+	 * It is an array of step objects in the following form:
+	 * ```
 	 *  [{
 	 *		id: <PropTypes.number> or <PropTypes.string>, has to be unique
 	 *		label: <PropTypes.string>, representing the tooltip content
-	 *		assistiveText: <PropTypes.string>, The default is `Step ${props.index + 1}: ${status}`. Status is if the step has been completed or in an error state.
+	 *		assistiveText: <PropTypes.string>, The default is `[Step props.index + 1]: [status]`. Status is if the step has been completed or in an error state.
 	 *  }],
+	 *  ```
 	 */
 	steps: PropTypes.array.isRequired,
 	/**
