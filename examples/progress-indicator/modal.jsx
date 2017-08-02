@@ -44,7 +44,7 @@ const Example = React.createClass({
 
 	render () {
 		return (
-			<div data-reactroot="" className="demo-only" style={{ height: '640px' }} >
+			<div style={{ height: '640px' }} >
 				{
 					getModal({
 						isOpen: true,

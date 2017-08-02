@@ -7,8 +7,6 @@ const Example = React.createClass({
 	render () {
 		return (
 			<div
-				data-reactroot=""
-				className="demo-only"
 				style={{ padding: '2rem 1rem 0px' }}
 			>
 				<ProgressIndicator {...this.props} />

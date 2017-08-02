@@ -19,8 +19,6 @@ const Example = React.createClass({
 	render () {
 		return (
 			<div
-				data-reactroot=""
-				className="demo-only"
 				style={{ padding: '2rem 1rem 0px',
 					background: this.props.variant === 'modal'
 						? 'rgb(244, 246, 249)'
