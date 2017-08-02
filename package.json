@@ -417,7 +417,7 @@
       "component": "progress-indicator",
       "status": "prod",
       "display-name": "Progress Indicators",
-      "SLDS-component-path": "/components/progess-indicator"
+      "SLDS-component-path": "/components/progress-indicator"
     },
     {
       "component": "tooltip",

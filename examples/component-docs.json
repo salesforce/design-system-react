@@ -645,7 +645,15 @@
             },
             "label": {
                 "type": {
-                    "name": "string"
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "node"
+                        }
+                    ]
                 },
                 "required": false,
                 "description": "Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText</code> prop."
@@ -814,7 +822,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop."
+                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. This should also include the state of the button.\nIf the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop."
             },
             "disabled": {
                 "type": {
@@ -3382,7 +3390,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Displays the value of the input statically."
+                "description": "Displays the value of the input statically. This follows the read only input UX pattern."
             },
             "required": {
                 "type": {
@@ -6000,7 +6008,15 @@
             },
             "label": {
                 "type": {
-                    "name": "string"
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "node"
+                        }
+                    ]
                 },
                 "required": false,
                 "description": "This prop is passed onto the triggering `Button`. Text within the trigger button."
@@ -8410,6 +8426,170 @@
         "SLDS-component-path": "/components/page-headers",
         "dependencies": []
     },
+    "progress-indicator": {
+        "description": "Progress Indicator is a component that communicates to the user the progress of a particular process.",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": "Get the progress indicator's HTML id. Generate a new one if no ID present.",
+                "modifiers": [],
+                "params": [],
+                "returns": null,
+                "description": "Get the progress indicator's HTML id. Generate a new one if no ID present."
+            },
+            {
+                "name": "getSteps",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "custom",
+                    "raw": "shape({\n    percentage: PropTypes.string\n})"
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `percentage`: Label for Progress Bar. Deafult is `Progress: ${this.props.value}%`",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS class names to be added to the container element. `array`, `object`, or `string` are accepted."
+            },
+            "completedSteps": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "Stores all completed steps. It is an array of step objects.",
+                "defaultValue": {
+                    "value": "[]",
+                    "computed": false
+                }
+            },
+            "disabledSteps": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "Stores all disabled steps. It is an array of step objects. Steps are still clickable/focusable,\nthis only disables cursor change and removes onClick and onFocus event callbacks.",
+                "defaultValue": {
+                    "value": "[]",
+                    "computed": false
+                }
+            },
+            "errorSteps": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "Stores all error steps. It is an array of step objects and usually there is only one error step, the current step.",
+                "defaultValue": {
+                    "value": "[]",
+                    "computed": false
+                }
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component."
+            },
+            "onStepClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when an individual step is clicked. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.\n\neg. const handleStepClick = function(event, data) { console.log(data); };\n    <ProgressIndicator onStepClick={handleStepClick} />",
+                "defaultValue": {
+                    "value": "() => {}",
+                    "computed": false
+                }
+            },
+            "onStepFocus": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when an individual step is focused. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.\n\neg. const handleStepFocus = function(event, data) { console.log(data); };\n    <ProgressIndicator onStepFocus={handleStepFocus} />",
+                "defaultValue": {
+                    "value": "() => {}",
+                    "computed": false
+                }
+            },
+            "selectedStep": {
+                "type": {
+                    "name": "object"
+                },
+                "required": true,
+                "description": "Represents the currently selected or active step. It is a step object.",
+                "defaultValue": {
+                    "value": "defaultSteps[0]",
+                    "computed": true
+                }
+            },
+            "steps": {
+                "type": {
+                    "name": "array"
+                },
+                "required": true,
+                "description": "Determines the behaviors of step buttons\nIt is an array of JSON objects in the following form:\n [{\n\tid: <PropTypes.number> or <PropTypes.string>, has to be unique\n\tlabel: <PropTypes.string>, representing the tooltip content\n\tassistiveText: <PropTypes.string>, The default is `Step ${props.index + 1}: ${status}`. Status is if the step has been completed or in an error state.\n }],"
+            },
+            "tooltipIsOpenSteps": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "Stores all steps with opened tooltips. This property is mainly for development purposes. The tooltip should only show on hover for the user."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'modal'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines component style.",
+                "defaultValue": {
+                    "value": "'base'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "progress-indicators",
+        "display-name": "Progress Indicators",
+        "SLDS-component-path": "/components/progess-indicator",
+        "dependencies": []
+    },
     "tooltip": {
         "description": "The PopoverTooltip component is variant of the Lightning Design System Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or an anchor), so that keyboard users can navigate to it.",
         "methods": [
@@ -8623,6 +8803,27 @@
                 },
                 "required": false,
                 "description": "Custom styles to be added to wrapping triggering `div`."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'info'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'error'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines the variant of tooltip: for informative purpose (blue background) or warning purpose (red background)",
+                "defaultValue": {
+                    "value": "'info'",
+                    "computed": false
+                }
             }
         },
         "route": "tooltips",

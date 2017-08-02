@@ -26,17 +26,19 @@ const displayName = PROGRESS_INDICATOR;
 
 const propTypes = {
 	/**
-	 * Assistive text for percentage
+	 * **Assistive text for accessibility**
+	 * This object is merged with the default props object on every render.
+	 * * `percentage`: Label for Progress Bar. The default is `Progress: ${this.props.value}%`
 	 */
 	assistiveText: shape({
 		percentage: PropTypes.string
 	}),
 	/**
-	 * CSS class names to be added to the container element.
+	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
-	 * Stores all completed steps. It is an array of objects.
+	 * Stores all completed steps. It is an array of step objects.
 	 */
 	completedSteps: PropTypes.array,
 	/**
@@ -45,7 +47,7 @@ const propTypes = {
 	 */
 	disabledSteps: PropTypes.array,
 	/**
-	 * Stores all error steps. It is an array of objects and usually there is only one error step (current step).
+	 * Stores all error steps. It is an array of step objects and usually there is only one error step, the current step.
 	 */
 	errorSteps: PropTypes.array,
 	/**
@@ -53,25 +55,21 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
-	 * Triggered when click on individual steps. By default, it receives an event and returns all info passed to that step.
-	 * users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the
-	 * callback result.
+	 * Triggered when an individual step is clicked. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.
 	 *
 	 * eg. const handleStepClick = function(event, data) { console.log(data); };
 	 *     <ProgressIndicator onStepClick={handleStepClick} />
 	 */
 	onStepClick: PropTypes.func,
 	/**
-	 * Triggered when focus on individual steps. By default, it receives an event and returns all info passed to that step.
-	 * users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the
-	 * callback result.
+	 * Triggered when an individual step is focused. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.
 	 *
 	 * eg. const handleStepFocus = function(event, data) { console.log(data); };
 	 *     <ProgressIndicator onStepFocus={handleStepFocus} />
 	 */
 	onStepFocus: PropTypes.func,
 	/**
-	 * Represents the currently selected step. It is a JSON object representing a step.
+	 * Represents the currently selected or active step. It is a step object.
 	 */
 	selectedStep: PropTypes.object.isRequired,
 	/**
@@ -80,17 +78,16 @@ const propTypes = {
 	 *  [{
 	 *		id: <PropTypes.number> or <PropTypes.string>, has to be unique
 	 *		label: <PropTypes.string>, representing the tooltip content
-	 *		assistiveText: <PropTypes.string>, The default is `Step ${props.index + 1}: ${status}`
+	 *		assistiveText: <PropTypes.string>, The default is `Step ${props.index + 1}: ${status}`. Status is if the step has been completed or in an error state.
 	 *  }],
 	 */
 	steps: PropTypes.array.isRequired,
 	/**
-	 * Stores all steps with opened tooltips. This property is mainly for dev test purpose.
-	 * Usually, the tooltip should only show on hover.
+	 * Stores all steps with opened tooltips. This property is mainly for development purposes. The tooltip should only show on hover for the user.
 	 */
 	tooltipIsOpenSteps: PropTypes.array,
 	/**
-	 * Determines component style
+	 * Determines component style.
 	 */
 	variant: PropTypes.oneOf(['base', 'modal'])
 };
