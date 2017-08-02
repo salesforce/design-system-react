@@ -30,6 +30,15 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.6.17
+**Minor Changes**
+- Add Progress Indicator
+
+**Bugfix Changes**
+
+- Remove occurrence of assistiveText prop from ButtonIcon. ButtonStateful creates a ButtonIcon with assistiveText. Change this so that the assistiveText is put in this component.
+- Allow variable type of `node` in dropdown menu label
+
 ## Release 0.6.16
 **Bugfix Changes**
 
