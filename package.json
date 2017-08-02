@@ -414,6 +414,12 @@
       "SLDS-component-path": "/components/page-headers"
     },
     {
+      "component": "progress-indicator",
+      "status": "prod",
+      "display-name": "Progress Indicators",
+      "SLDS-component-path": "/components/progess-indicator"
+    },
+    {
       "component": "tooltip",
       "status": "prod",
       "display-name": "Tooltips",
