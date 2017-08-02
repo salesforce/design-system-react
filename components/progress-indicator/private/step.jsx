@@ -10,9 +10,9 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 // Child component
-import PopoverTooltip from '~/components/popover-tooltip';
+import PopoverTooltip from '../../popover-tooltip';
 import { PROGRESS_INDICATOR_STEP } from '../../../utilities/constants';
-import ButtonIcon from '~/components/icon/button-icon';
+import ButtonIcon from '../../icon/button-icon';
 
 // ### Display Name
 const displayName = PROGRESS_INDICATOR_STEP;
