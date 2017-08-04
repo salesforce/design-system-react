@@ -20,9 +20,9 @@ if [ "$GIT_SSH_KEY" != "" ]; then
 
 	npm install --unsafe-perm
 
-	if [ "$BUILD_SERVER" = "true" ]; then
+	if [ "$IS_BUILD_SERVER" = "true" ]; then
 		# setup git environment
-		git clone git@github.com:salesforce-ux/design-system-react.git
+		git clone "${ORIGIN:-git@github.com:salesforce-ux/design-system-react.git}"
 		cd design-system-react
 		git config --global user.email "sjames@salesforce.com"
 		git config --global user.name "Build Server"
