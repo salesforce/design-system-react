@@ -99,4 +99,8 @@ storiesOf(LOOKUP, module)
 		iconName="account"
 		isInline
 		label="Account"
+	/>)
+	.add('Custom Empty Message Content', () => <DemoLookup
+		emptyMessage={<span>No matches.</span>}
+		isInline
 	/>);
