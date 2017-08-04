@@ -101,6 +101,6 @@ storiesOf(LOOKUP, module)
 		label="Account"
 	/>)
 	.add('Custom Empty Message Content', () => <DemoLookup
-		emptyMessage={<span>No matches. <a>Click here.</a></span>}
+		emptyMessage={<span>No matches.</span>}
 		isInline
 	/>);
