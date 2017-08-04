@@ -8,7 +8,7 @@ import Item from './item';
 const displayName = 'Lookup-Menu';
 const propTypes = {
 	boldRegex: PropTypes.instanceOf(RegExp),
-	emptyMessage: PropTypes.string,
+	emptyMessage: PropTypes.oneOfType(PropTypes.string, PropTypes.element),
 	filterWith: PropTypes.func,
 	focusIndex: PropTypes.number,
 	getListLength: PropTypes.func,
