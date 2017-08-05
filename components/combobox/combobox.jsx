@@ -13,6 +13,7 @@ import Menu from './private/menu';
 import assign from 'lodash.assign';
 import find from 'lodash.find';
 import reject from 'lodash.reject';
+import isEqual from 'lodash.isequal';
 
 import { shape } from 'airbnb-prop-types';
 
@@ -29,14 +30,6 @@ import mapKeyEventCallbacks from '../../utilities/key-callbacks';
 import { COMBOBOX } from '../../utilities/constants';
 
 let currentOpenDropdown;
-
-/**
- * A function that takes a term string and an item and returns a truthy value if the item should be kept.
- */
-const defaultFilter = (term, item) => {
-	if (!term) return true;
-	return (item.data && item.data.type === 'section') || item.label.match(new RegExp(escapeRegExp(term), 'ig'));
-};
 
 const propTypes = {
 	/**
@@ -58,10 +51,6 @@ const propTypes = {
 	 * Disable input and calendar.
 	 */
 	disabled: PropTypes.bool,
-	/**
-	 * Custom function to filter the Lookup items when typing into input field. The default function is case-insensitive and uses the searchTerm to filter Lookup items on their labels.
-	 */
-	filterWith: PropTypes.func,
 	/**
 	 * HTML id for component
 	 */
@@ -132,7 +121,6 @@ const propTypes = {
 const defaultProps = {
 	assistiveText: {},
 	labels: {},
-	filterWith: defaultFilter,
 	selection: [],
 	variant: 'base'
 };
@@ -153,6 +141,20 @@ class Combobox extends React.Component {
 
 	componentWillMount () {
 		this.generatedId = shortid.generate();
+	}
+
+	componentWillReceiveProps (nextProps, prevProps) {
+		// clears activeOption if it is no longer in the options list
+		// if it's in the options list then find the index and set activeOptionIndex
+		// this will maintain the active highlight even when the options change
+		if (!isEqual(prevProps.options, nextProps.options)) {
+			const index = nextProps.options.findIndex((item) => isEqual(item, this.state.activeOption));
+			if (index !== -1) {
+				this.setState({ activeOptionIndex: index });
+			} else {
+				this.setState({ activeOption: undefined, activeOptionIndex: -1 });
+			}
+		}
 	}
 
 	getId = () => this.props.id || this.generatedId;
@@ -374,16 +376,6 @@ class Combobox extends React.Component {
 		}
 	}
 
-	clearActiveOption = () => {
-		this.setState(
-			(prevState) => {
-				return	(!prevState.activeOption && prevState.activeOptionIndex !== -1
-				? { activeOption: undefined, activeOptionIndex: -1 }
-				: {});
-			}
-		);
-	}
-
 	renderMenu = () => {
 		return (
 			<Menu
@@ -391,6 +383,7 @@ class Combobox extends React.Component {
 				activeOptionIndex={this.state.activeOptionIndex}
 				emptyMessage={this.props.emptyMessage}
 				id={this.getId()}
+				inputValue={this.props.value}
 				options={this.props.options}
 				optionsRenderer={this.props.optionsRenderer}
 				onSelect={this.handleSelect}

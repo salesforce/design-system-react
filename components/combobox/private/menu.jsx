@@ -44,13 +44,11 @@ const defaultProps = {
 };
 
 const Menu = (props) => {
-	let hasAValidActiveDescendent;
+	// let hasAValidActiveDescendent;
 
 	const menuItems = props.options.map((optionData, index) => {
-		const active = index === props.activeOptionIndex && isEqual(optionData, props.activeOption);
-		if (!hasAValidActiveDescendent) {
-			hasAValidActiveDescendent = active;
-		}
+		const active = (index === props.activeOptionIndex
+			&& isEqual(optionData, props.activeOption));
 		return (
 			<li
 				className="slds-listbox__item"
@@ -66,10 +64,6 @@ const Menu = (props) => {
 			</li>
 		);
 	});
-
-	if (props.activeOption && !hasAValidActiveDescendent) {
-		props.clearActiveOption();
-	}
 
 	return (
 		<div id={`listbox-${props.id}`} role="listbox">
