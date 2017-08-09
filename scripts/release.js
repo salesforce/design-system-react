@@ -13,7 +13,7 @@ import exec from './command-line-utilities';
 const argv = minimist(process.argv.slice(2));
 const rootPath = path.resolve(__dirname, '../');
 const remote = argv.remote || 'upstream';
-const buildServer = argv.buildserver || false;
+const isBuildServer = argv.buildserver || false;
 
 let currentVersionReleaseNotes = '';
 
@@ -23,17 +23,17 @@ const tasks = ({ release, done }) => {
 		command: `git ls-remote ${remote} --exit-code --quiet`
 	},
 	{
-		stopExecution: buildServer,
+		stopExecution: isBuildServer,
 		message: '# Checking out master branch. Please ignore "RELEASENOTES.md - Your branch and \'upstream/master\' have diverged."',
 		command: 'git checkout master'
 	},
 	{
-		stopExecution: buildServer,
+		stopExecution: isBuildServer,
 		message: '# Pruning NPM dependencies',
 		command: 'npm prune'
 	},
 	{
-		stopExecution: buildServer,
+		stopExecution: isBuildServer,
 		message: '# Running NPM install',
 		command: 'npm install',
 		verbose: false
@@ -43,13 +43,13 @@ const tasks = ({ release, done }) => {
 		command: 'npm run icons'
 	},
 	{
-		stopExecution: buildServer,
+		stopExecution: isBuildServer,
 		message: '# Running test suite',
 		command: 'npm test',
 		verbose: false
 	},
 	{
-		stopExecution: buildServer,
+		stopExecution: isBuildServer,
 		message: '# Update release notes, inline icons (if needed), and site component documentation',
 		command: 'git add RELEASENOTES.md'
 	},
@@ -62,11 +62,11 @@ const tasks = ({ release, done }) => {
 		command: 'git commit -m "Update release notes, inline icons (if needed), and site component documentation"'
 	},
 	{
-		stopExecution: buildServer,
+		stopExecution: isBuildServer,
 		command: 'git pull upstream master'
 	},
 	{
-		stopExecution: buildServer,
+		stopExecution: isBuildServer,
 		command: 'git diff --exit-code'
 	},
 	{
@@ -87,7 +87,7 @@ const tasks = ({ release, done }) => {
 	async.eachSeries(commands, exec, (err) => {
 		if (err) throw err;
 
-		if (!buildServer) {
+		if (!isBuildServer) {
 			console.log(`The final step is to \`npm run release\` in the https://github.com/salesforce-ux/design-system-react-site repositoary and enter the version of ${release}. You will then need to promote the pushed branch on Heroku from staging to production.`);
 			console.log('\n\n# Please add the following to your release notes at https://github.com/salesforce-ux/design-system-react/releases');
 			console.log(currentVersionReleaseNotes);
@@ -116,7 +116,7 @@ const releaseNotesSchema = {
 };
 
 // START HERE
-if (buildServer) {
+if (isBuildServer) {
 	// determine semvar release type
 	fs.open('patch.md', 'r', (err, fileDescriptor) => {
 		if (!err) {
