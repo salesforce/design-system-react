@@ -520,7 +520,12 @@ from the [Planning Center](https://github.com/planningcenter/react-patterns)
 `.
 1. Run `npm run local-update` from within `design-system-react-site` to build, copy, and serve a local version of this library into the site. You should be able to now view the updated site at `http://localhost:8080/` and resolve any issues with updated documentation.
 
-## Release
+## Release with build server (preferred)
+1. Add release notes for your version to [RELEASENOTES.md](RELEASENOTES.md) under Latest Release heading.
+1. Commit and push a blank text file name `patch.md` or `minor.md` to the `master` branch. In the future, this will contain the release notes. The build server will detect this, delete the file, create a release for you,  push back to the library repository. 
+1. Copy and paste your release notes into the [Github Draft Release UI](https://github.com/salesforce-ux/design-system-react/releases) and publish.
+
+### Manual release
 1. **Choose one**: `npm run release-patch` or `npm run release-minor`. This script pulls from upstream, bumps the version, commits changes, and publishes tags to your `upstream` repository (that is this repo).
 1. Copy and paste your release notes into the [Github Draft Release UI](https://github.com/salesforce-ux/design-system-react/releases) and publish.
 
