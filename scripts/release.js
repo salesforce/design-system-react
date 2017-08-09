@@ -56,10 +56,10 @@ const tasks = ({ release, done }) => {
 	{ command: 'git add icons/*' },
 	{ command: 'npm run build-docs' },
 	{ command: 'git add examples/component-docs.json' },
-	{ command: 'git add examples/component-docs.json' },
 	{ command: `rm -f ${release}.md && git add ${release}.md` },
 	{
-		command: 'git commit -m "Update release notes, inline icons (if needed), and site component documentation"'
+		// test if any files have changed, if they have then commit them
+		command: 'git diff --quiet && git diff --staged --quiet || git commit -m "Update release notes, inline icons (if needed), and site component documentation"'
 	},
 	{
 		stopExecution: isBuildServer,
