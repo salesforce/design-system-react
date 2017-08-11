@@ -31,6 +31,9 @@ import shortid from 'shortid';
 // when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 
+// #### Dialog doesn't pass down <IconSettings> context so repassing it here.
+import IconSettings from '../iconSettings';
+
 import EventUtil from '../../utilities/event';
 import KEYS from '../../utilities/key-code';
 
@@ -293,7 +296,7 @@ class Datepicker extends React.Component {
 	getId () {
 		return this.props.id || this.generatedId;
 	}
-	
+
 	getIsOpen () {
 		return !!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
 	}
@@ -399,7 +402,9 @@ class Datepicker extends React.Component {
 				portalMount={this.props.portalMount}
 				targetElement={this.inputRef}
 			>
-				{this.getDatePicker({ labels, assistiveText })}
+				<IconSettings iconPath={this.context.iconPath}>
+					{this.getDatePicker({ labels, assistiveText })}
+				</IconSettings>
 			</Dialog>
 			: null;
 	}
@@ -545,6 +550,10 @@ class Datepicker extends React.Component {
 		);
 	}
 }
+
+Datepicker.contextTypes = {
+	iconPath: PropTypes.string
+};
 
 Datepicker.displayName = DATE_PICKER;
 Datepicker.propTypes = propTypes;

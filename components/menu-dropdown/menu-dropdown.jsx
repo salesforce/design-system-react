@@ -47,6 +47,9 @@ import checkProps from './check-props';
 // #### KeyboardNavigable
 import KeyboardNavigable from '../../utilities/keyboard-navigable-menu';
 
+// #### Dialog doesn't pass down <IconSettings> context so repassing it here.
+import IconSettings from '../iconSettings';
+
 import EventUtil from '../../utilities/event';
 import KEYS from '../../utilities/key-code';
 import { MENU_DROPDOWN, MENU_DROPDOWN_TRIGGER, LIST } from '../../utilities/constants';
@@ -756,7 +759,9 @@ const MenuDropdown = React.createClass({
 					style={this.props.menuStyle}
 					targetElement={this.triggerContainer}
 				>
-					{this.renderMenuContent(customContent)}
+					<IconSettings iconPath={this.context.iconPath}>
+						{this.renderMenuContent(customContent)}
+					</IconSettings>
 				</Dialog> : null
 		);
 	},
@@ -867,6 +872,10 @@ const MenuDropdown = React.createClass({
 		);
 	}
 });
+
+MenuDropdown.contextTypes = {
+	iconPath: PropTypes.string
+};
 
 module.exports = MenuDropdown;
 module.exports.ListItem = ListItem;

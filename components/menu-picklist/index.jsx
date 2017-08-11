@@ -41,6 +41,9 @@ import { shape } from 'airbnb-prop-types';
 // #### KeyboardNavigable
 import KeyboardNavigable from '../../utilities/keyboard-navigable-menu';
 
+// #### Dialog doesn't pass down <IconSettings> context so repassing it here.
+import IconSettings from '../iconSettings';
+
 import EventUtil from '../../utilities/event';
 import KEYS from '../../utilities/key-code';
 import { MENU_PICKLIST } from '../../utilities/constants';
@@ -402,7 +405,9 @@ const MenuPicklist = React.createClass({
 				targetElement={this.button}
 				inheritTargetWidth={this.props.inheritTargetWidth}
 			>
-				{this.renderMenuContent()}
+				<IconSettings iconPath={this.context.iconPath}>
+					{this.renderMenuContent()}
+				</IconSettings>
 			</Dialog>
 			: null
 		);
@@ -541,6 +546,10 @@ const MenuPicklist = React.createClass({
 		);
 	}
 });
+
+MenuPicklist.contextTypes = {
+	iconPath: PropTypes.string
+};
 
 module.exports = MenuPicklist;
 module.exports.ListItemLabel = ListItemLabel;
