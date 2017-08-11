@@ -532,4 +532,12 @@ from the [Planning Center](https://github.com/planningcenter/react-patterns)
 ## Update documentation site
 1. Update the version of Design System React in the documentation site's [package.json](https://github.com/salesforce-ux/design-system-react-site/blob/master/package.json#L51) and push to master. This is will build a Heroku application. Log into Heroku and promote the staged pull request to production. You will need promotion rights to the Heroku application.
 
+## Create a build server
+1. Create a Heroku app.
+1. Connect your App GitHub to the Github branch you wish to deploy and turn on automatic deploys for `master` branch.
+1. Create environment variable, `IS_BUILD_SERVER` and set to `true`.
+1. Create environment variable, `NPM_CONFIG_PRODUCTION` and set to `false`.
+1. Create environment variable, `ORIGIN` and set to `[git@github.com:[your username]/design-system-react.git]`
+1. Create environment variable, `GIT_SSH_KEY` and set to a user's private key (base64 encoded) that has access to your repository. `openssl base64 < [PRIVATE_KEY_FILENAME] | tr -d '\n' | pbcopy`
+
 _If you are timid about releasing or need your pull request in review "pre-released," you can publish to origin (your fork) with `npm run publish-to-git` and then test and review the tag on your fork. This is just the publish step though, any other tasks you will need to do manually to test publishing._
