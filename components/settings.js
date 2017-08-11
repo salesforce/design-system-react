@@ -8,7 +8,7 @@ import Modal from 'react-modal';
 */
 
 let assetsPath = 'assets/';
-let iconsPath;
+let iconsPath; // eslint-disable-line no-unused-vars
 let appRoot;
 
 module.exports = {
@@ -25,8 +25,6 @@ module.exports = {
 			iconsPath = path;
 		}
 	},
-
-	getIconsPath: () => iconsPath,
 
 	/*
 	 * The app element allows you to specify the portion of your app that should be hidden (via aria-hidden)

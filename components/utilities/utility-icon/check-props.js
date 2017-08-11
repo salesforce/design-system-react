@@ -4,13 +4,11 @@
 
 import urlExists from '../../../utilities/warning/url-exists';
 
-import settings from '../../../components/settings';
-
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
-		const modifiedPath = props.path || settings.getIconsPath();
+		const modifiedPath = props.path;
 
 		// only check if user passes in external path for SLDS sprite
 		if (modifiedPath && props.name) {

@@ -24,11 +24,11 @@ if (process.env.NODE_ENV !== 'production') {
 			http.open('HEAD', url, false);
 			http.send();
 			hasExecuted = true;
-			
+
 			if (http.status === 404) {
 				const additionalComment = comment ? ` ${comment}` : '';
 				/* eslint-disable max-len */
-				warning(!url, `[Design System React] Icon file was not found. Try setting an icon path with \`setIconsPath([ICONPATH])\` from \`components/settings\`.${additionalComment}`);
+				warning(!url, `[Design System React] Icon file was not found. Try setting an icon path with \`<IconSettings iconPath=[ICONPATH] />\` from \`components/settings\`.${additionalComment}`);
 				/* eslint-enable max-len */
 				hasWarned[`${control}-path`] = !!url;
 			}

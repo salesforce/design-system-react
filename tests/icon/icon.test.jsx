@@ -14,9 +14,7 @@ import { mountComponent, unmountComponent } from '../enzyme-helpers';
 chai.use(chaiEnzyme());
 
 import Icon from '../../components/icon';
-import globalSettings from '../../components/settings';
-
-globalSettings.setIconsPath('/assets/icons');
+import IconSettings from '../../components/iconSettings';
 
 const DemoIcon = React.createClass({
 	displayName: 'DemoIcon',
@@ -36,13 +34,15 @@ describe('SLDSIcon: ', function () {
 		let asstText;
 
 		beforeEach(mountComponent(
-			<DemoIcon
-				assistiveText="Log a Call"
-				category="standard"
-				name="log_a_call"
-				style={{ backgroundColor: 'rgb(218, 165, 32)' }}
-				size="large"
-			/>
+			<IconSettings iconPath="/assets/icons">
+				<DemoIcon
+					assistiveText="Log a Call"
+					category="standard"
+					name="log_a_call"
+					style={{ backgroundColor: 'rgb(218, 165, 32)' }}
+					size="large"
+				/>
+			</IconSettings>
 		));
 
 		afterEach(unmountComponent);
