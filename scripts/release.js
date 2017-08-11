@@ -23,17 +23,17 @@ const tasks = ({ release, done }) => {
 		command: `git ls-remote ${remote} --exit-code --quiet`
 	},
 	{
-		stopExecution: isBuildServer,
+		ignoreCommand: isBuildServer,
 		message: '# Checking out master branch. Please ignore "RELEASENOTES.md - Your branch and \'upstream/master\' have diverged."',
 		command: 'git checkout master'
 	},
 	{
-		stopExecution: isBuildServer,
+		ignoreCommand: isBuildServer,
 		message: '# Pruning NPM dependencies',
 		command: 'npm prune'
 	},
 	{
-		stopExecution: isBuildServer,
+		ignoreCommand: isBuildServer,
 		message: '# Running NPM install',
 		command: 'npm install',
 		verbose: false
@@ -43,13 +43,13 @@ const tasks = ({ release, done }) => {
 		command: 'npm run icons'
 	},
 	{
-		stopExecution: isBuildServer,
+		ignoreCommand: isBuildServer,
 		message: '# Running test suite',
 		command: 'npm test',
 		verbose: false
 	},
 	{
-		stopExecution: isBuildServer,
+		ignoreCommand: isBuildServer,
 		message: '# Update release notes, inline icons (if needed), and site component documentation',
 		command: 'git add RELEASENOTES.md'
 	},
@@ -62,11 +62,11 @@ const tasks = ({ release, done }) => {
 		command: 'git diff --quiet && git diff --staged --quiet || git commit -m "Update release notes, inline icons (if needed), and site component documentation"'
 	},
 	{
-		stopExecution: isBuildServer,
+		ignoreCommand: isBuildServer,
 		command: 'git pull upstream master'
 	},
 	{
-		stopExecution: isBuildServer,
+		ignoreCommand: isBuildServer,
 		command: 'git diff --exit-code'
 	},
 	{
@@ -81,7 +81,7 @@ const tasks = ({ release, done }) => {
 	{
 		message: `# Pushing local master branch to ${remote} remote`,
 		command: `git push ${remote} master --no-verify`
-	}].filter((item) => (!item.stopExecution))
+	}].filter((item) => (!item.ignoreCommand))
 		.map((item) => ({ ...item, rootPath }));
 
 	async.eachSeries(commands, exec, (err) => {
