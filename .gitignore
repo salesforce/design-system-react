@@ -25,3 +25,6 @@ server/public/assets/bundle
 scripts/pre-commit.sh
 coverage/
 storybook/
+
+# For build server
+design-system-react
