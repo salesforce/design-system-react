@@ -10,8 +10,6 @@ import checkProps from './check-props';
 
 import Svg from './svg';
 
-import settings from '../../../components/settings';
-
 import * as SLDS_ICONS_UTILITY from '../../../icons/utility';
 import * as SLDS_ICONS_ACTION from '../../../icons/action';
 import * as SLDS_ICONS_CUSTOM from '../../../icons/custom';
@@ -24,7 +22,7 @@ const UtilityIcon = ({ name = '',
 	icon,
 	path,
 	...rest
-}) => {
+}, context) => {
 	let data;
 
 	if (!path) {
@@ -69,7 +67,7 @@ const UtilityIcon = ({ name = '',
 	}
 
 	// Use icon path prop if set, then see if a global path is set, if not use inline icons
-	const modifiedPath = path || (settings.getIconsPath() && `${settings.getIconsPath()}/${category}-sprite/svg/symbols.svg#${name}`);
+	const modifiedPath = path || (context.iconPath && `${context.iconPath}/${category}-sprite/svg/symbols.svg#${name}`);
 
 	checkProps('UtilityIcon', { name, category, path });
 
@@ -102,6 +100,10 @@ UtilityIcon.propTypes = {
 
 UtilityIcon.defaultProps = {
 	category: 'utility'
+};
+
+UtilityIcon.contextTypes = {
+	iconPath: PropTypes.string
 };
 
 module.exports = UtilityIcon;
