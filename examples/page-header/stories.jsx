@@ -3,6 +3,7 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 import { PAGE_HEADER } from '../../utilities/constants';
+import IconSettings from '../../components/iconSettings';
 
 import SLDSPageHeader from '../../components/page-header';
 import SLDSButtonStateful from '../../components/button-stateful';
@@ -273,7 +274,7 @@ const relatedListTrail = [
 
 
 storiesOf(PAGE_HEADER, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Base', () => getPageHeader({
 		iconAssistiveText: 'Opportunity',
 		iconCategory: 'standard',

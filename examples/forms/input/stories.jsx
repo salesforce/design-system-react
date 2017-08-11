@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
+import IconSettings from '../../../components/iconSettings';
 
 import { FORMS_INPUT } from '../../../utilities/constants';
 import Input from '../../../components/forms/input';
@@ -13,7 +14,7 @@ const searchIcon = <InputIcon name="search" category="utility" />;
 const searchIconClickable = <InputIcon name="search" category="utility" onClick={iconClicked('Search icon clicked')} />;
 
 storiesOf(FORMS_INPUT, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Standard', () => (
 		<Input
 			label="Input Label"

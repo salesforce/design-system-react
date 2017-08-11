@@ -3,6 +3,7 @@
 
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
+import IconSettings from '../../components/iconSettings';
 
 import { POPOVER } from '../../utilities/constants';
 import Header from './header';
@@ -74,7 +75,7 @@ storiesOf(POPOVER, module)
 			margin: '300px auto',
 			textAlign: 'center',
 			width: '500px' }}
-	>{getStory()}</div>)
+	><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Header', () => <Header />)
 	.add('Controlled w/ Footer', () => <ControlledWithFooter log={action} />)
 	.add('AlternativeHeader', () => <AlternativeHeader />)

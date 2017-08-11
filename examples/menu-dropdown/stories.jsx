@@ -3,6 +3,7 @@
 
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
+import IconSettings from '../../components/iconSettings';
 
 import { MENU_DROPDOWN } from '../../utilities/constants';
 import Dropdown from '../../components/menu-dropdown';
@@ -184,7 +185,7 @@ const getDropdownCustomContent = (props) => (
 );
 
 storiesOf(MENU_DROPDOWN, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium slds-text-align--center">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium slds-text-align--center"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Base', () => getDropdown({
 		align: 'right',
 		label: 'Dropdown Click',

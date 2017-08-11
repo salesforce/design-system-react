@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
+import IconSettings from '../../components/iconSettings';
 
 import Navigation from '~/components/navigation';
 import { NAVIGATION } from '../../utilities/constants';
@@ -9,7 +10,7 @@ import Shade from './shade';
 import SnaphotDefault from './snapshot-default';
 
 storiesOf(NAVIGATION, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Default', () => (<Default action={action} />))
 	.add('Inverse', () => (<Shade action={action} />))
 	.add('DOM Snapshot', () => (<SnaphotDefault />));

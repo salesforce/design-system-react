@@ -20,12 +20,6 @@ module.exports = {
 
 	getAssetsPath: () => String(assetsPath),
 
-	setIconsPath: (path) => {
-		if (path) {
-			iconsPath = path;
-		}
-	},
-
 	/*
 	 * The app element allows you to specify the portion of your app that should be hidden (via aria-hidden)
 	to prevent assistive technologies such as screenreaders from reading content outside of the content of
