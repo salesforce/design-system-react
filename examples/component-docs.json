@@ -797,6 +797,30 @@
         "description": "The ButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nFor icon buttons, use <code>variant='icon'</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: 'add', label: 'Join'}}</code>).",
         "methods": [
             {
+                "name": "handleClick",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "e",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleBlur",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "e",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "getClassName",
                 "docblock": null,
                 "modifiers": [],
@@ -5111,7 +5135,9 @@
             },
             "emptyMessage": {
                 "type": {
-                    "name": "string"
+                    "name": "union",
+                    "computed": true,
+                    "value": "PropTypes.string"
                 },
                 "required": false,
                 "description": "Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'."
@@ -5294,7 +5320,15 @@
                 "footer": {
                     "description": "",
                     "displayName": "LookupDefaultFooter",
-                    "methods": [],
+                    "methods": [
+                        {
+                            "name": "handleClick",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null
+                        }
+                    ],
                     "name": "footer",
                     "source": "/components/lookup/footer.jsx"
                 }
@@ -5303,7 +5337,15 @@
                 "header": {
                     "description": "",
                     "displayName": "LookupDefaultHeader",
-                    "methods": [],
+                    "methods": [
+                        {
+                            "name": "handleClick",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null
+                        }
+                    ],
                     "name": "header",
                     "source": "/components/lookup/header.jsx"
                 }
@@ -7282,6 +7324,13 @@
                 "returns": null
             },
             {
+                "name": "onDismiss",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "renderAlertContent",
                 "docblock": null,
                 "modifiers": [],
@@ -8452,7 +8501,7 @@
                     "raw": "shape({\n    percentage: PropTypes.string\n})"
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `percentage`: Label for Progress Bar. The default is `Progress: ${this.props.value}%`",
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
@@ -8521,7 +8570,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Triggered when an individual step is clicked. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.\n\neg. const handleStepClick = function(event, data) { console.log(data); };\n    <ProgressIndicator onStepClick={handleStepClick} />",
+                "description": "Triggered when an individual step is clicked. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.\n```\nconst handleStepClick = function(event, data) { console.log(data); };\n    <ProgressIndicator onStepClick={handleStepClick} />\n```",
                 "defaultValue": {
                     "value": "() => {}",
                     "computed": false
@@ -8532,7 +8581,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Triggered when an individual step is focused. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.\n\neg. const handleStepFocus = function(event, data) { console.log(data); };\n    <ProgressIndicator onStepFocus={handleStepFocus} />",
+                "description": "Triggered when an individual step is focused. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.\n```\nconst handleStepFocus = function(event, data) { console.log(data); };\n    <ProgressIndicator onStepFocus={handleStepFocus} />\n```",
                 "defaultValue": {
                     "value": "() => {}",
                     "computed": false
@@ -8554,7 +8603,7 @@
                     "name": "array"
                 },
                 "required": true,
-                "description": "Determines the behaviors of step buttons\nIt is an array of JSON objects in the following form:\n [{\n\tid: <PropTypes.number> or <PropTypes.string>, has to be unique\n\tlabel: <PropTypes.string>, representing the tooltip content\n\tassistiveText: <PropTypes.string>, The default is `Step ${props.index + 1}: ${status}`. Status is if the step has been completed or in an error state.\n }],"
+                "description": "It is an array of step objects in the following form:\n```\n [{\n\tid: <PropTypes.number> or <PropTypes.string>, has to be unique\n\tlabel: <PropTypes.string>, representing the tooltip content\n\tassistiveText: <PropTypes.string>, The default is `[Step props.index + 1]: [status]`. Status is if the step has been completed or in an error state.\n }],\n ```"
             },
             "tooltipIsOpenSteps": {
                 "type": {
@@ -8608,7 +8657,28 @@
                 "returns": null
             },
             {
+                "name": "handleMouseEnter",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleMouseLeave",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "getTooltipContent",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleCancel",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -8842,6 +8912,18 @@
                 "returns": null
             },
             {
+                "name": "handleClick",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "e",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "setSelected",
                 "docblock": null,
                 "modifiers": [],
@@ -8925,6 +9007,18 @@
                 ],
                 "returns": null,
                 "description": "Determine if a node from event.target is a Tab element for the current Tabs container.\nIf the clicked element is not a Tab, it returns false.\nIf it finds another Tabs container between the Tab and `this`, it returns false."
+            },
+            {
+                "name": "handleKeyDown",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
             },
             {
                 "name": "renderTabsList",
