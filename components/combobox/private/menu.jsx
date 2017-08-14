@@ -19,7 +19,7 @@ const propTypes = {
 	/*
 	 * Id used for assistive technology
 	 */
-	id: PropTypes.string,
+	inputId: PropTypes.string,
 	/*
 	 * Menu options
 	 */
@@ -52,10 +52,11 @@ const Menu = (props) => {
 		return (
 			<li
 				className="slds-listbox__item"
-				key={`pill-${optionData.label}`}
+				key={`menu-item-${optionData.id}`}
 				role="presentation"
 			>
 				<MenuItem
+					inputId={props.inputId}
 					active={active}
 					option={optionData}
 					onSelect={props.onSelect}
@@ -66,7 +67,7 @@ const Menu = (props) => {
 	});
 
 	return (
-		<div id={`listbox-${props.id}`} role="listbox">
+		<div id={`${props.inputId}-listbox`} role="listbox">
 			<ul className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid" role="presentation">
 				{menuItems}
 			</ul>

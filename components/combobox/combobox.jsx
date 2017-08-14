@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import Dialog from '../utilities/dialog';
 import InnerInput from '../../components/forms/input/private/inner-input';
 import InputIcon from '../icon/input-icon';
-import Icon from '../icon';
 import Menu from './private/menu';
 
 import assign from 'lodash.assign';
@@ -37,14 +36,15 @@ const propTypes = {
 	 * This object is merged with the default props object on every render.
 	 * * ``:
 	 */
-	// assistiveText: shape({
-	// }),
+	assistiveText: shape({
+		search: PropTypes.string
+	}),
 	/**
 	 * Pass in an `<Input />` component to customize it. Event handlers for the input (if needed) should be added here and not to this component. `<Input onKeyDown... />`.` _Tested with Mocha framework._
 	 */
 	children: PropTypes.node,
 	/**
-	 * CSS classes to be added to tag with `slds-datepicker`. If you are looking for the outer DOM node (slds-dropdown-trigger), please review `triggerClassName`.
+	 * CSS classes to be added to tag with `slds-combobox`. If you are looking for the outer DOM node (slds-dropdown-trigger), please review `triggerClassName`.
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
@@ -60,12 +60,17 @@ const propTypes = {
 	 */
 	isInline: PropTypes.bool,
 	/**
+	 * Renders selected listbox items within the `input`.
+	 */
+	isInlineListbox: PropTypes.bool,
+	/**
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
 	 * * `label`: This label appears above the input.
 	 */
 	labels: shape({
-		label: PropTypes.string
+		label: PropTypes.string,
+		inputIconTitle: PropTypes.string
 	}),
 	/**
 	 * Allows multiple selections
@@ -105,13 +110,17 @@ const propTypes = {
 	 */
 	options: PropTypes.array.isRequired,
 	/**
-	 * This prevents typing in the input. The default is auto-complete (or not read-only). Setting to true will creata a Picklist.
+	 * Setting to true will creata a `Picklist`.
 	 */
 	readOnlyInput: PropTypes.bool,
 	/**
 	 * Accepts an array of item objects. For single selection, pass in an array of one object.
 	 */
 	selection: PropTypes.array,
+	/**
+	 * Value of input. This is a controlled component, so you will need to control the input value.
+	 */
+	value: PropTypes.string,
 	/**
 	 * Changes styles of the input. Currently `entity` is not supported.
 	 */
@@ -120,7 +129,9 @@ const propTypes = {
 
 const defaultProps = {
 	assistiveText: {},
-	labels: {},
+	labels: {
+		inputIconTitle: 'Search'
+	},
 	selection: [],
 	variant: 'base'
 };
@@ -241,13 +252,7 @@ class Combobox extends React.Component {
 
 	getInlineMenu ({ menuRenderer }) {
 		return !this.props.disabled && this.getIsOpen()
-		? <div
-			className={classNames('slds-datepicker',
-				'slds-dropdown',
-				'slds-dropdown--left')}
-		>
-			{menuRenderer}
-		</div>
+		? menuRenderer
 		: null;
 	}
 
@@ -293,19 +298,19 @@ class Combobox extends React.Component {
 			this.openDialog();
 		}
 
-		this.setState((prevState) => {
-			return {
-				activeOption: this.props.options[this.getNewActiveOptionIndex({
-					activeOptionIndex: prevState.activeOptionIndex,
-					offset: 1,
-					options: this.props.options
-				})],
-				activeOptionIndex: this.getNewActiveOptionIndex({
-					activeOptionIndex: prevState.activeOptionIndex,
-					offset: 1,
-					options: this.props.options
-				}) };
-		});
+		// takes current/previous state and returns an object with the new state
+		this.setState((prevState) => ({
+			activeOption: this.props.options[this.getNewActiveOptionIndex({
+				activeOptionIndex: prevState.activeOptionIndex,
+				offset: 1,
+				options: this.props.options
+			})],
+			activeOptionIndex: this.getNewActiveOptionIndex({
+				activeOptionIndex: prevState.activeOptionIndex,
+				offset: 1,
+				options: this.props.options
+			})
+		}));
 	}
 
 	handleKeyDownUp = (event) => {
@@ -339,9 +344,7 @@ class Combobox extends React.Component {
 		}
 	}
 
-	isSelected = ({ selection, option }) => {
-		return !!find(selection, option);
-	}
+	isSelected = ({ selection, option }) => !!find(selection, option);
 
 	handleSelect = (event, { selectedOption }) => {
 		this.handleClose();
@@ -376,22 +379,20 @@ class Combobox extends React.Component {
 		}
 	}
 
-	renderMenu = () => {
-		return (
-			<Menu
-				activeOption={this.state.activeOption}
-				activeOptionIndex={this.state.activeOptionIndex}
-				emptyMessage={this.props.emptyMessage}
-				id={this.getId()}
-				inputValue={this.props.value}
-				options={this.props.options}
-				optionsRenderer={this.props.optionsRenderer}
-				onSelect={this.handleSelect}
-				clearActiveOption={this.clearActiveOption}
-				selection={this.props.selection}
-			/>
-		);
-	}
+	renderMenu = () => (
+		<Menu
+			activeOption={this.state.activeOption}
+			activeOptionIndex={this.state.activeOptionIndex}
+			emptyMessage={this.props.emptyMessage}
+			inputId={this.getId()}
+			inputValue={this.props.value}
+			options={this.props.options}
+			optionsRenderer={this.props.optionsRenderer}
+			onSelect={this.handleSelect}
+			clearActiveOption={this.clearActiveOption}
+			selection={this.props.selection}
+		/>
+	);
 
 	handleRemoveSelectedOption = (event) => {
 		if (this.inputRef) {
@@ -438,7 +439,7 @@ class Combobox extends React.Component {
 							className={classNames(
 								'slds-combobox',
 								'slds-dropdown-trigger',
-								'slds-dropdown-trigger--click',
+								'slds-dropdown-trigger_click',
 								'ignore-react-onclickoutside', {
 									'slds-is-open': this.getIsOpen()
 								},
@@ -449,7 +450,12 @@ class Combobox extends React.Component {
 							role="combobox"
 						>
 							<InnerInput
-								aria-controls="listbox-unique-id"
+								aria-autocomplete="list"
+								aria-controls={`${this.getId()}-listbox`}
+								aria-activedescendant={this.state.activeOption
+									? `${this.getId()}-listbox-option-${this.state.activeOption.id}`
+									:	null}
+								autoComplete="off"
 								className="slds-combobox__input"
 								containerClassName="slds-combobox__form-element"
 								disabled={props.disabled}
@@ -463,13 +469,12 @@ class Combobox extends React.Component {
 										onClick={this.handleRemoveSelectedOption}
 									/>
 									: <InputIcon
-										assistiveText={assistiveText.openMenu}
 										category="utility"
 										name="search"
+										title={labels.inputIconTitle}
 									/>}
 								iconLeft={iconLeft}
 								id={this.getId()}
-								placeholder={labels.placeholder}
 								onFocus={this.handleInputFocus}
 								onBlur={this.handleInputBlur}
 								onKeyDown={this.handleKeyDown}
@@ -478,15 +483,20 @@ class Combobox extends React.Component {
 									this.openDialog();
 								}}
 								onChange={(event) => {
-									this.props.onChange(event, { value: event.target.value });
+									if (!this.props.multiple && !this.props.selection.length) {
+										this.props.onChange(event, { value: event.target.value });
+									}
 								}}
+								placeholder={labels.placeholder}
+								readOnly
+								role="textbox"
 								value={value}
 							/>
+							{this.props.isInline
+								? this.getInlineMenu({ menuRenderer: this.renderMenu({ labels }) })
+								: this.getDialog({ menuRenderer: this.renderMenu({ labels }) })}
 						</div>
 					</div>
-					{this.props.isInline
-						? this.getInlineMenu({ menuRenderer: this.renderMenu({ labels }) })
-						: this.getDialog({ menuRenderer: this.renderMenu({ labels }) })}
 				</div>
 			</div>
 		);
