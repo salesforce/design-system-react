@@ -30,6 +30,10 @@ const propTypes = {
 	'aria-owns': PropTypes.string,
 	'aria-required': PropTypes.bool,
 	/**
+	 * Disabled brower's autocomplete when "off" is used.
+	 */
+	autoComplete: PropTypes.string,
+	/**
 	 * Class names to be added to the `input` element.
 	 */
 	className: PropTypes.oneOfType([
@@ -174,6 +178,7 @@ const InnerInput = (props) => (
 			aria-expanded={props['aria-expanded']}
 			aria-owns={props['aria-owns']}
 			aria-required={props['aria-required']}
+			autoComplete={props.autoComplete}
 			className={classNames('slds-input', props.className)}
 			disabled={props.disabled}
 			id={props.id}
