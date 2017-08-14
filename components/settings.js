@@ -8,7 +8,6 @@ import Modal from 'react-modal';
 */
 
 let assetsPath = 'assets/';
-let iconsPath; // eslint-disable-line no-unused-vars
 let appRoot;
 
 module.exports = {
