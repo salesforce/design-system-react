@@ -16,13 +16,22 @@ import * as SLDS_ICONS_CUSTOM from '../../../icons/custom';
 import * as SLDS_ICONS_DOCTYPE from '../../../icons/doctype';
 import * as SLDS_ICONS_STANDARD from '../../../icons/standard';
 
-const UtilityIcon = ({ name = '',
+const UtilityIcon = ({
+	name = '',
 	assistiveText, // eslint-disable-line no-unused-vars
 	category,
 	icon,
 	path,
 	...rest
 }, context) => {
+	checkProps('UtilityIcon', { name, category, path, context });
+
+	// Icons are no longer bundled with this library by default. See webpack.config.dist.js for information on how to add them back.
+	// If the user does not pass in a path to the Icon asset, return null so that the entire component/app doesn't break.
+	if ((path === undefined) && (context.iconPath === undefined)) {
+		return null;
+	}
+
 	let data;
 
 	if (!path) {
@@ -31,7 +40,6 @@ const UtilityIcon = ({ name = '',
 		} else {
 			switch (category) {
 				case 'action':
-					// Icons are no longer bundled with this library by default. See webpack.config.dist.js for information on how to add them back.
 					if (Object.keys(SLDS_ICONS_ACTION).length > 1) {
 						data = SLDS_ICONS_ACTION[name.toLowerCase()];
 						data.viewBox = SLDS_ICONS_ACTION.viewBox;
@@ -68,8 +76,6 @@ const UtilityIcon = ({ name = '',
 
 	// Use icon path prop if set, then see if a global path is set, if not use inline icons
 	const modifiedPath = path || (context.iconPath && `${context.iconPath}/${category}-sprite/svg/symbols.svg#${name}`);
-
-	checkProps('UtilityIcon', { name, category, path });
 
 	const output = modifiedPath && !icon
 		? (<svg {...rest}>
