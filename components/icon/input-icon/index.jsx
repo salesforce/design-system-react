@@ -14,7 +14,7 @@ import classNames from 'classnames';
 import isFunction from 'lodash.isfunction';
 
 // ## Children
-import SLDSUtilityIcon from '../../utilities/utility-icon';
+import UtilityIcon from '../../utilities/utility-icon';
 import Button from '../../button';
 
 // ## Constants
@@ -47,7 +47,7 @@ const InputIcon = (props) => {
 		variant="icon"
 		{...rest}
 	/>
-	: <SLDSUtilityIcon
+	: <UtilityIcon
 		aria-hidden
 		category={category}
 		className={classNames('slds-input__icon slds-icon-text-default', { [`slds-input__icon--${iconPosition}`]: iconPosition })}
