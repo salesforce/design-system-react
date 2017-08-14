@@ -1,0 +1,304 @@
+exports[`test Combobox AutoComplete Single Select Open DOM Snapshot 1`] = `
+<div
+  className="slds-form-element">
+  <label
+    className="slds-form-element__label"
+    htmlFor="combobox-unique-id">
+    Search
+  </label>
+  <div
+    className="slds-form-element__control">
+    <div
+      className="slds-combobox_container">
+      <div
+        aria-expanded={true}
+        aria-haspopup="listbox"
+        className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
+        role="combobox">
+        <div
+          className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right">
+          <input
+            aria-activedescendant="listbox-option-unique-id-01"
+            aria-autocomplete="list"
+            aria-controls="combobox-unique-id-listbox"
+            aria-describedby={undefined}
+            aria-expanded={undefined}
+            aria-labelledby={undefined}
+            aria-owns={undefined}
+            aria-required={undefined}
+            autoComplete="off"
+            className="slds-input slds-combobox__input"
+            disabled={undefined}
+            id="combobox-unique-id"
+            maxLength={undefined}
+            minLength={undefined}
+            name={undefined}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onInput={undefined}
+            onInvalid={undefined}
+            onKeyDown={[Function]}
+            onKeyPress={undefined}
+            onKeyUp={undefined}
+            onSelect={undefined}
+            onSubmit={undefined}
+            placeholder="Search Salesforce"
+            required={undefined}
+            role="textbox"
+            style={undefined}
+            tabIndex={undefined}
+            type="text"
+            value="" />
+          <svg
+            aria-hidden={true}
+            className="slds-input__icon slds-icon-text-default"
+            title="Search">
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search" />
+          </svg>
+        </div>
+        <div
+          id="combobox-unique-id-listbox"
+          role="listbox">
+          <ul
+            className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid"
+            role="presentation">
+            <li
+              className="slds-listbox__item"
+              role="presentation">
+              <span
+                className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                id="listbox-option-unique-id-01"
+                onClick={[Function]}
+                role="option">
+                <span
+                  className="slds-media__figure">
+                  <span
+                    className="slds-icon_container slds-icon-standard-account"
+                    title={undefined}>
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon"
+                      style={undefined}>
+                      <use
+                        xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account" />
+                    </svg>
+                    <span
+                      className="slds-assistive-text">
+                      Account
+                    </span>
+                  </span>
+                </span>
+                <span
+                  className="slds-media__body">
+                  <span
+                    className="slds-listbox__option-text slds-listbox__option-text_entity">
+                    Acme
+                  </span>
+                  <span
+                    className="slds-listbox__option-meta slds-listbox__option-meta_entity">
+                    Account • San Francisco
+                  </span>
+                </span>
+              </span>
+            </li>
+            <li
+              className="slds-listbox__item"
+              role="presentation">
+              <span
+                className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                id="listbox-option-unique-id-01"
+                onClick={[Function]}
+                role="option">
+                <span
+                  className="slds-media__figure">
+                  <span
+                    className="slds-icon_container slds-icon-standard-account"
+                    title={undefined}>
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon"
+                      style={undefined}>
+                      <use
+                        xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account" />
+                    </svg>
+                    <span
+                      className="slds-assistive-text">
+                      Account
+                    </span>
+                  </span>
+                </span>
+                <span
+                  className="slds-media__body">
+                  <span
+                    className="slds-listbox__option-text slds-listbox__option-text_entity">
+                    Salesforce.com, Inc.
+                  </span>
+                  <span
+                    className="slds-listbox__option-meta slds-listbox__option-meta_entity">
+                    Account • San Francisco
+                  </span>
+                </span>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test Combobox AutoComplete Single Select Open HTML Snapshot 1`] = `
+"<div class=\"slds-form-element\"><label class=\"slds-form-element__label\" for=\"combobox-unique-id\">Search</label>
+  <div class=\"slds-form-element__control\">
+    <div class=\"slds-combobox_container\">
+      <div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open\" aria-expanded=\"true\" aria-haspopup=\"listbox\" role=\"combobox\">
+        <div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\"><input type=\"text\" aria-activedescendant=\"listbox-option-unique-id-01\" aria-autocomplete=\"list\" aria-controls=\"combobox-unique-id-listbox\" autocomplete=\"off\" class=\"slds-input slds-combobox__input\" id=\"combobox-unique-id\" placeholder=\"Search Salesforce\"
+            role=\"textbox\" value=\"\" /><svg aria-hidden=\"true\" class=\"slds-input__icon slds-icon-text-default\" title=\"Search\"><use xlink:href=\"/assets/icons/utility-sprite/svg/symbols.svg#search\"></use></svg></div>
+        <div id=\"combobox-unique-id-listbox\" role=\"listbox\">
+          <ul class=\"slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid\" role=\"presentation\">
+            <li class=\"slds-listbox__item\" role=\"presentation\"><span id=\"listbox-option-unique-id-01\" class=\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\" role=\"option\"><span class=\"slds-media__figure\"><span class=\"slds-icon_container slds-icon-standard-account\"><svg aria-hidden=\"true\" class=\"slds-icon\"><use xlink:href=\"/assets/icons/standard-sprite/svg/symbols.svg#account\"></use></svg><span class=\"slds-assistive-text\">Account</span></span>
+              </span><span class=\"slds-media__body\"><span class=\"slds-listbox__option-text slds-listbox__option-text_entity\">Acme</span><span class=\"slds-listbox__option-meta slds-listbox__option-meta_entity\">Account • San Francisco</span></span>
+              </span>
+            </li>
+            <li class=\"slds-listbox__item\" role=\"presentation\"><span id=\"listbox-option-unique-id-01\" class=\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\" role=\"option\"><span class=\"slds-media__figure\"><span class=\"slds-icon_container slds-icon-standard-account\"><svg aria-hidden=\"true\" class=\"slds-icon\"><use xlink:href=\"/assets/icons/standard-sprite/svg/symbols.svg#account\"></use></svg><span class=\"slds-assistive-text\">Account</span></span>
+              </span><span class=\"slds-media__body\"><span class=\"slds-listbox__option-text slds-listbox__option-text_entity\">Salesforce.com, Inc.</span><span class=\"slds-listbox__option-meta slds-listbox__option-meta_entity\">Account • San Francisco</span></span>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`test Combobox AutoComplete Single Select Selected DOM Snapshot 1`] = `
+<div
+  className="slds-form-element">
+  <label
+    className="slds-form-element__label"
+    htmlFor="combobox-unique-id">
+    Search
+  </label>
+  <div
+    className="slds-form-element__control">
+    <div
+      className="slds-combobox_container slds-has-inline-listbox">
+      <div
+        aria-expanded={false}
+        aria-haspopup="listbox"
+        className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+        role="combobox">
+        <div
+          className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right">
+          <span
+            className="slds-icon_container slds-icon-standard-account slds-combobox__input-entity-icon"
+            title={undefined}>
+            <svg
+              aria-hidden="true"
+              className="slds-icon"
+              style={undefined}>
+              <use
+                xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account" />
+            </svg>
+            <span
+              className="slds-assistive-text">
+              Account
+            </span>
+          </span>
+          <input
+            aria-activedescendant="listbox-option-unique-id-01"
+            aria-autocomplete="list"
+            aria-controls="combobox-unique-id-listbox"
+            aria-describedby={undefined}
+            aria-expanded={undefined}
+            aria-labelledby={undefined}
+            aria-owns={undefined}
+            aria-required={undefined}
+            autoComplete="off"
+            className="slds-input slds-combobox__input"
+            disabled={undefined}
+            id="combobox-unique-id"
+            maxLength={undefined}
+            minLength={undefined}
+            name={undefined}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onInput={undefined}
+            onInvalid={undefined}
+            onKeyDown={[Function]}
+            onKeyPress={undefined}
+            onKeyUp={undefined}
+            onSelect={undefined}
+            onSubmit={undefined}
+            placeholder="Search Salesforce"
+            required={undefined}
+            role="textbox"
+            style={undefined}
+            tabIndex={undefined}
+            type="text"
+            value="Salesforce.com, Inc." />
+          <button
+            aria-describedby={undefined}
+            aria-expanded={undefined}
+            aria-haspopup={undefined}
+            className="slds-button slds-button--icon slds-input__icon slds-input__icon--right"
+            disabled={false}
+            id={undefined}
+            onBlur={undefined}
+            onClick={[Function]}
+            onFocus={undefined}
+            onKeyDown={undefined}
+            onKeyPress={undefined}
+            onKeyUp={undefined}
+            onMouseDown={undefined}
+            onMouseEnter={undefined}
+            onMouseLeave={undefined}
+            tabIndex={undefined}
+            title={undefined}>
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon">
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test Combobox AutoComplete Single Select Selected HTML Snapshot 1`] = `
+"<div class="slds-form-element">
+    <label class="slds-form-element__label" for="combobox-unique-id">Search</label>
+    <div class="slds-form-element__control">
+      <div class="slds-combobox_container slds-has-inline-listbox">
+        <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right">
+            <span class="slds-icon_container slds-icon-standard-account slds-combobox__input-entity-icon" title="account">
+              <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
+              </svg>
+              <span class="slds-assistive-text">account Salesforce.com, Inc.</span>
+            </span>
+            <input type="text" class="slds-input slds-combobox__input" id="combobox-unique-id" aria-autocomplete="list" aria-controls="listbox-unique-id" autocomplete="off" role="textbox" placeholder="Search Salesforce" value="Salesforce.com, Inc." readonly="">
+            <button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" title="Remove selected option">
+              <svg class="slds-button__icon" aria-hidden="true">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+              </svg>
+              <span class="slds-assistive-text">Remove selected option</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>"
+`;
