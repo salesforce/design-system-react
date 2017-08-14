@@ -195,7 +195,7 @@ const DataTable = React.createClass({
 		let RowActions = null;
 
 		React.Children.forEach(this.props.children, (child) => {
-			if (child && child.type === DataTableColumn) {
+			if (child && child.type.displayName === DataTableColumn.displayName) {
 				const {
 					children,
 					...columnProps
