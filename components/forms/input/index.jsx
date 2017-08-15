@@ -255,7 +255,9 @@ const Input = React.createClass({
 					aria-expanded={this.props['aria-expanded']}
 					aria-owns={this.props['aria-owns']}
 					aria-required={this.props['aria-required']}
-					containerClassName="slds-form-element__control"
+					containerProps={{
+						className: 'slds-combobox__form-element'
+					}}
 					disabled={props.disabled}
 					id={this.getId()}
 					iconLeft={hasLeftIcon ? this.getIconRender('left', 'iconLeft') : null}

@@ -437,7 +437,7 @@ class Combobox extends React.Component {
 							}
 						)}
 					>
-						<div
+						<div // aria attributes have been moved to the `div` wrapping `input` to comply with ARIA 1.1.
 							className={classNames(
 								'slds-combobox',
 								'slds-dropdown-trigger',
@@ -456,8 +456,12 @@ class Combobox extends React.Component {
 									:	null}
 								autoComplete="off"
 								className="slds-combobox__input"
-								containerClassName="slds-combobox__form-element"
-								isOpen={this.getIsOpen()}
+								containerProps={{
+									'aria-expanded': this.getIsOpen(),
+									'aria-haspopup': 'listbox',
+									className: 'slds-combobox__form-element',
+									role: 'combobox'
+								}}
 								disabled={props.disabled}
 								iconRight={this.props.selection.length
 									? <InputIcon

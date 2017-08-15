@@ -157,69 +157,71 @@ const defaultProps = {
 /*
  * This component was created to allow the DIV wrapped input to be used within other components such as combobox. This components API is not public.
  */
-const InnerInput = (props) => (
-	<div
-		className={classNames(props.containerClassName, {
-			'slds-input-has-icon': props.iconLeft || props.iconRight,
-			'slds-input-has-icon--left': props.iconLeft && !props.iconRight,
-			'slds-input-has-icon--right': !props.iconLeft && props.iconRight,
-			'slds-input-has-icon--left-right': props.iconLeft && props.iconRight,
-			'slds-has-divider--bottom': props.variant === 'inputReadOnly' && !props.inlineEditTrigger
-		})}
-		aria-expanded={props.isOpen}
-		aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
-		role="combobox"
-	>
-		{props.iconLeft ? props.iconLeft : null}
+const InnerInput = (props) => {
+	const { className: containerClassName, ...containerProps } = props.containerProps;
 
-		{props.variant !== 'inputReadOnly' && <input
-			aria-activedescendant={props['aria-activedescendant']}
-			aria-autocomplete={props['aria-autocomplete']}
-			aria-controls={props['aria-controls']}
-			aria-labelledby={props['aria-labelledby']}
-			aria-describedby={props['aria-describedby']}
-			aria-expanded={props['aria-expanded']}
-			aria-owns={props['aria-owns']}
-			aria-required={props['aria-required']}
-			autoComplete={props.autoComplete}
-			className={classNames('slds-input', props.className)}
-			disabled={props.disabled}
-			id={props.id}
-			minLength={props.minLength}
-			maxLength={props.maxLength}
-			name={props.name}
-			onBlur={props.onBlur}
-			onChange={props.onChange}
-			onClick={props.onClick}
-			onFocus={props.onFocus}
-			onInput={props.onInput}
-			onInvalid={props.onInvalid}
-			onKeyDown={props.onKeyDown}
-			onKeyPress={props.onKeyPress}
-			onKeyUp={props.onKeyUp}
-			onSelect={props.onSelect}
-			onSubmit={props.onSubmit}
-			placeholder={props.placeholder}
-			ref={props.inputRef}
-			role={props.role}
-			required={props.required}
-			style={props.style}
-			tabIndex={props.tabIndex}
-			type={props.type}
-			value={props.value}
-		/>}
+	return (
+		<div
+			className={classNames(containerClassName, {
+				'slds-input-has-icon': props.iconLeft || props.iconRight,
+				'slds-input-has-icon--left': props.iconLeft && !props.iconRight,
+				'slds-input-has-icon--right': !props.iconLeft && props.iconRight,
+				'slds-input-has-icon--left-right': props.iconLeft && props.iconRight,
+				'slds-has-divider--bottom': props.variant === 'inputReadOnly' && !props.inlineEditTrigger
+			})}
+			{...containerProps}
+		>
+			{props.iconLeft ? props.iconLeft : null}
 
-		{props.iconRight ? props.iconRight : null}
+			{props.variant !== 'inputReadOnly' && <input
+				aria-activedescendant={props['aria-activedescendant']}
+				aria-autocomplete={props['aria-autocomplete']}
+				aria-controls={props['aria-controls']}
+				aria-labelledby={props['aria-labelledby']}
+				aria-describedby={props['aria-describedby']}
+				aria-expanded={props['aria-expanded']}
+				aria-owns={props['aria-owns']}
+				aria-required={props['aria-required']}
+				autoComplete={props.autoComplete}
+				className={classNames('slds-input', props.className)}
+				disabled={props.disabled}
+				id={props.id}
+				minLength={props.minLength}
+				maxLength={props.maxLength}
+				name={props.name}
+				onBlur={props.onBlur}
+				onChange={props.onChange}
+				onClick={props.onClick}
+				onFocus={props.onFocus}
+				onInput={props.onInput}
+				onInvalid={props.onInvalid}
+				onKeyDown={props.onKeyDown}
+				onKeyPress={props.onKeyPress}
+				onKeyUp={props.onKeyUp}
+				onSelect={props.onSelect}
+				onSubmit={props.onSubmit}
+				placeholder={props.placeholder}
+				ref={props.inputRef}
+				role={props.role}
+				required={props.required}
+				style={props.style}
+				tabIndex={props.tabIndex}
+				type={props.type}
+				value={props.value}
+			/>}
 
-		{/* eslint-disable jsx-a11y/no-static-element-interactions */}
-		{props.variant === 'inputReadOnly' && <span className="slds-form-element__static" onClick={props.onClick}>
-			{props.value}
-			{props.inlineEditTrigger}
-		</span>}
-		{/* eslint-enable jsx-a11y/no-static-element-interactions */}
+			{props.iconRight ? props.iconRight : null}
 
-	</div>
-);
+			{/* eslint-disable jsx-a11y/no-static-element-interactions */}
+			{props.variant === 'inputReadOnly' && <span className="slds-form-element__static" onClick={props.onClick}>
+				{props.value}
+				{props.inlineEditTrigger}
+			</span>}
+			{/* eslint-enable jsx-a11y/no-static-element-interactions */}
+
+		</div>
+	);
+};
 
 InnerInput.displayName = 'SLDSInnerInput';
 InnerInput.propTypes = propTypes;
