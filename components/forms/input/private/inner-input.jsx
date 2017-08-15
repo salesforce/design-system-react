@@ -166,6 +166,9 @@ const InnerInput = (props) => (
 			'slds-input-has-icon--left-right': props.iconLeft && props.iconRight,
 			'slds-has-divider--bottom': props.variant === 'inputReadOnly' && !props.inlineEditTrigger
 		})}
+		aria-expanded={props.isOpen}
+		aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
+		role="combobox"
 	>
 		{props.iconLeft ? props.iconLeft : null}
 

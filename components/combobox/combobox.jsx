@@ -447,9 +447,6 @@ class Combobox extends React.Component {
 								},
 								props.className
 							)}
-							aria-expanded={this.getIsOpen()}
-							aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
-							role="combobox"
 						>
 							<InnerInput
 								aria-autocomplete="list"
@@ -460,6 +457,7 @@ class Combobox extends React.Component {
 								autoComplete="off"
 								className="slds-combobox__input"
 								containerClassName="slds-combobox__form-element"
+								isOpen={this.getIsOpen()}
 								disabled={props.disabled}
 								iconRight={this.props.selection.length
 									? <InputIcon
