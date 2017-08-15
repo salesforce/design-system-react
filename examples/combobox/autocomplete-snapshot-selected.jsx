@@ -8,8 +8,8 @@ import globalSettings from '../../components/settings';
 globalSettings.setIconsPath('/assets/icons');
 
 const accounts = [
-	{ label: 'Acme', subTitle: 'Account • San Francisco', type: 'account' },
-	{ label: 'Salesforce.com, Inc.', subTitle: 'Account • San Francisco', type: 'account' }
+	{ id: '1', label: 'Acme', subTitle: 'Account • San Francisco', type: 'account' },
+	{ id: '2', label: 'Salesforce.com, Inc.', subTitle: 'Account • San Francisco', type: 'account' }
 ];
 
 const defaultFilter = (term, item) => {

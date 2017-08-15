@@ -128,7 +128,9 @@ const propTypes = {
 };
 
 const defaultProps = {
-	assistiveText: {},
+	assistiveText: {
+		removeSelectedOption: 'Remove selected item'
+	},
 	labels: {
 		inputIconTitle: 'Search'
 	},
