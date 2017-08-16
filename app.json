@@ -1,6 +1,6 @@
 {
   "name": "design-system-react",
-  "stack": "heroku-16",
+  "stack": "cedar-14",
   "scripts": {
   },
   "env": {
