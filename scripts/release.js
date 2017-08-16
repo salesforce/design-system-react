@@ -58,7 +58,13 @@ const tasks = ({ release, done }) => {
 	{ command: 'git add examples/component-docs.json' },
 	{ command: `rm -f ${release}.md && git add ${release}.md` },
 	{
+		// always commit because ${release}.md just got deleted if it is a release commit
+		ignoreCommand: !isBuildServer,
+		command: 'git commit -m "Clean up for release" -m "Update release notes, commit inline icons (if needed), site component documentation (if needed). Remove patch.md or minor.md"'
+	},
+	{
 		// test if any files have changed, if they have then commit them
+		ignoreCommand: isBuildServer,
 		command: 'git diff-index --quiet HEAD || git commit -m "Update release notes, inline icons (if needed), and site component documentation"'
 	},
 	{
