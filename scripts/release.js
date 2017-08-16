@@ -56,7 +56,13 @@ const tasks = ({ release, done }) => {
 	{ command: 'git add icons/*' },
 	{ command: 'npm run build-docs' },
 	{ command: 'git add examples/component-docs.json' },
-	{ command: `rm -f ${release}.md && git add ${release}.md` },
+	{
+		ignoreCommand: !isBuildServer,
+		command: `rm -f ${release}.md`
+	},
+	{ ignoreCommand: !isBuildServer,
+		command: `git add ${release}.md`
+	},
 	{
 		// always commit because ${release}.md just got deleted if it is a release commit
 		ignoreCommand: !isBuildServer,
