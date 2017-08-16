@@ -59,7 +59,7 @@ const tasks = ({ release, done }) => {
 	{ command: `rm -f ${release}.md && git add ${release}.md` },
 	{
 		// test if any files have changed, if they have then commit them
-		command: 'git diff --quiet && git diff --staged --quiet || git commit -m "Update release notes, inline icons (if needed), and site component documentation"'
+		command: 'git diff-index --quiet HEAD || git commit -m "Update release notes, inline icons (if needed), and site component documentation"'
 	},
 	{
 		ignoreCommand: isBuildServer,
