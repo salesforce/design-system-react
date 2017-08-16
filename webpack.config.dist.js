@@ -17,7 +17,7 @@ const config = Object.assign({}, baseConfig, {
 	}
 });
 
-let FILENAME = '[name].js';
+let FILENAME = process.env.INCLUDE_ICONS ? '[name].js' : '[name]-components.js';
 if (process.env.MINIFY) {
 	config.plugins.push(
 		new webpack.optimize.UglifyJsPlugin({
@@ -26,23 +26,28 @@ if (process.env.MINIFY) {
 			}
 		})
 	);
-	FILENAME = '[name].min.js';
+	FILENAME = process.env.INCLUDE_ICONS ? '[name].min.js' : '[name]-components.min.js';
 }
 
 config.output.filename = FILENAME;
 config.output.library = '[name]';
 config.output.libraryTarget = 'umd';
 
-config.module.loaders[0].loaders = ['babel', StringReplacePlugin.replace({
-	replacements: [{
-		pattern: /__VERSION__/g,
-		replacement: () => packageJson.version
-	},
-	// This string replacement includes icons in the bundle and affects `icons/**/index.js` which are built by `npm run icons`. The default condition is an equality comparison of two constants, `'__EXCLUDE_SLDS_ICONS__' === '__INCLUDE_SLDS_ICONS__'`, which will allow minification to remove the inline icons and save 100KBs in size when bundling for production. The following makes the condition equal.
-	{
+const replacementsArr = [{
+	pattern: /__VERSION__/g,
+	replacement: () => packageJson.version
+}];
+
+// This string replacement includes icons in the bundle and affects `icons/**/index.js` which are built by `npm run icons`. The default condition is an equality comparison of two constants, `'__EXCLUDE_SLDS_ICONS__' === '__INCLUDE_SLDS_ICONS__'`, which will allow minification to remove the inline icons and save 100KBs in size when bundling for production. The following makes the condition equal.
+if (process.env.INCLUDE_ICONS) {
+	replacementsArr.push({
 		pattern: /__EXCLUDE_SLDS_ICONS__/g,
 		replacement: () => '__INCLUDE_SLDS_ICONS__'
-	}]
+	});
+}
+
+config.module.loaders[0].loaders = ['babel', StringReplacePlugin.replace({
+	replacements: replacementsArr
 })];
 
 config.plugins.push(new webpack.BannerPlugin(header + license));

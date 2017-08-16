@@ -3,6 +3,16 @@
 
 /* eslint-disable no-console, max-len */
 
+/*
+## You normally wouldn't need to do this but if you needed to create your own isolated build server, below are the steps:
+1. Create a Heroku app.
+2. Connect your App GitHub to the Github branch you wish to deploy and turn on automatic deploys for `master` branch.
+3. Create environment variable, `IS_BUILD_SERVER` and set to `true`.
+4. Create environment variable, `NPM_CONFIG_PRODUCTION` and set to `false`.
+5. Create environment variable, `ORIGIN` and set to `[git@github.com:[your username]/design-system-react.git]`
+6. Create environment variable, `GIT_SSH_KEY` and set to a user's private key (base64 encoded) that has access to your repository. `openssl base64 < [PRIVATE_KEY_FILENAME] | tr -d '\n' | pbcopy`
+*/
+
 import async from 'async';
 import fs from 'fs';
 import path from 'path';
