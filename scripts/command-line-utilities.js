@@ -14,6 +14,8 @@ const exec = ({
 }, callback) => {
 	if (message) {
 		console.log(message);
+	} else {
+		console.log(command);
 	}
 	const child = require('child_process').exec(command, {
 		cwd: path.resolve(rootPath, dir),
