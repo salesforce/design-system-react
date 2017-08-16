@@ -79,6 +79,7 @@ class Example extends React.Component {
 				options={this.filter(accountsWithIcon, this.state.inputValue)}
 				selection={this.state.selection}
 				value={this.state.selectedOption ? this.state.selectedOption.label : this.state.inputValue}
+				variant="inline-listbox"
 			/>
 		);
 	}

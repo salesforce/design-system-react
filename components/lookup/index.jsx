@@ -185,6 +185,7 @@ const Lookup = React.createClass({
 			currentFocus: null,
 			focusIndex: null,
 			items: [],
+			isOpen: true,
 			listLength: this.props.options.length,
 			searchTerm: this.normalizeSearchTerm(this.props.searchTerm),
 			selectedIndex: this.props.selectedItem
@@ -312,7 +313,7 @@ const Lookup = React.createClass({
 	selectItemByIndex (index) {
 		if (index >= 0 && index < this.state.items.length) {
 			this.setState({
-				isOpen: false,
+				isOpen: true,
 				selectedIndex: index,
 				searchTerm: ''
 			});
@@ -340,7 +341,7 @@ const Lookup = React.createClass({
 	// Event Listeners on Input
 	handleClose () {
 		this.setState({
-			isOpen: false,
+			isOpen: true,
 			focusIndex: null,
 			currentFocus: null
 		});
@@ -355,7 +356,7 @@ const Lookup = React.createClass({
 
 	handleCancel () {
 		this.setState({
-			isOpen: false,
+			isOpen: true,
 			focusIndex: null,
 			currentFocus: null
 		});

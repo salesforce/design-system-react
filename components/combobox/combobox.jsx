@@ -8,6 +8,7 @@ import Dialog from '../utilities/dialog';
 import InnerInput from '../../components/forms/input/private/inner-input';
 import InputIcon from '../icon/input-icon';
 import Menu from './private/menu';
+import Label from '../forms/private/label';
 
 import assign from 'lodash.assign';
 import find from 'lodash.find';
@@ -34,10 +35,10 @@ const propTypes = {
 	/**
 	 * **Assistive text for accessibility**
 	 * This object is merged with the default props object on every render.
-	 * * ``:
+	 * * `label`: This is used as a visually hidden label if, no `labels.label` is provided.
 	 */
 	assistiveText: shape({
-		search: PropTypes.string
+		label: PropTypes.string
 	}),
 	/**
 	 * Pass in an `<Input />` component to customize it. Event handlers for the input (if needed) should be added here and not to this component. `<Input onKeyDown... />`.` _Tested with Mocha framework._
@@ -70,16 +71,18 @@ const propTypes = {
 	 */
 	labels: shape({
 		label: PropTypes.string,
-		inputIconTitle: PropTypes.string
+		inputIconTitle: PropTypes.string,
+		placeholder: PropTypes.string
 	}),
-	/**
-	 * Allows multiple selections
-	 */
-	multiple: PropTypes.bool,
 	/**
 	 * Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use view [Concepts and Best Practices](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices)
 	 */
 	isOpen: PropTypes.bool,
+	menuVisibleLength: PropTypes.oneOf([null, '5', '7', '10']),
+	/**
+	 * Allows multiple selections
+	 */
+	multiple: PropTypes.bool,
 	onChange: PropTypes.func,
 	/**
 	 * Triggered when the menu is closed.
@@ -110,10 +113,6 @@ const propTypes = {
 	 */
 	options: PropTypes.array.isRequired,
 	/**
-	 * Setting to true will creata a `Picklist`.
-	 */
-	readOnlyInput: PropTypes.bool,
-	/**
 	 * Accepts an array of item objects. For single selection, pass in an array of one object.
 	 */
 	selection: PropTypes.array,
@@ -124,7 +123,7 @@ const propTypes = {
 	/**
 	 * Changes styles of the input. Currently `entity` is not supported.
 	 */
-	variant: PropTypes.oneOf(['base'])
+	variant: PropTypes.oneOf(['base', 'readonly', 'inline-listbox'])
 };
 
 const defaultProps = {
@@ -406,34 +405,36 @@ class Combobox extends React.Component {
 		}
 	}
 
-	render () {
-		const props = this.props;
-
-		// Merge objects of strings with their default object
-		const assistiveText = assign({}, defaultProps.assistiveText, props.assistiveText);
-		const labels = assign({}, defaultProps.labels, props.labels);
-
-		const iconLeft = this.props.selection[0] && this.props.selection[0].icon
-			? React.cloneElement(this.props.selection[0].icon, {
+	renderInlineSingle = ({
+		assistiveText,
+		labels,
+		props
+	}) => {
+		const iconLeft = props.selection[0] && props.selection[0].icon
+			? React.cloneElement(props.selection[0].icon, {
 				containerClassName: 'slds-combobox__input-entity-icon'
 			})
 			: null;
 
-		const value = this.props.selection[0] && this.props.selection[0].label
-									? this.props.selection[0].label
-									: this.props.value;
+		const value = props.selection[0] && props.selection[0].label
+									? props.selection[0].label
+									: props.value;
 
 		/* eslint-disable jsx-a11y/role-supports-aria-props */
 		return (
 			<div
 				className="slds-form-element"
 			>
-				<label className="slds-form-element__label" htmlFor="combobox-unique-id">Search</label>
+				<Label
+					assistiveText={props.assistiveText.label}
+					htmlFor={this.getId()}
+					label={labels.label}
+				/>
 				<div className="slds-form-element__control">
 					<div
 						className={classNames(
 							'slds-combobox_container', {
-								'slds-has-inline-listbox': this.props.selection.length
+								'slds-has-inline-listbox': props.selection.length
 							}
 						)}
 					>
@@ -463,7 +464,7 @@ class Combobox extends React.Component {
 									role: 'combobox'
 								}}
 								disabled={props.disabled}
-								iconRight={this.props.selection.length
+								iconRight={props.selection.length
 									? <InputIcon
 										assistiveText={assistiveText.removeSelectedOption}
 										buttonRef={(component) => { this.buttonRef = component; }}
@@ -487,8 +488,8 @@ class Combobox extends React.Component {
 									this.openDialog();
 								}}
 								onChange={(event) => {
-									if (!this.props.multiple && !this.props.selection.length) {
-										this.props.onChange(event, { value: event.target.value });
+									if (!props.multiple && !props.selection.length) {
+										props.onChange(event, { value: event.target.value });
 									}
 								}}
 								placeholder={labels.placeholder}
@@ -496,7 +497,7 @@ class Combobox extends React.Component {
 								role="textbox"
 								value={value}
 							/>
-							{this.props.isInline
+							{props.isInline
 								? this.getInlineMenu({ menuRenderer: this.renderMenu({ labels }) })
 								: this.getDialog({ menuRenderer: this.renderMenu({ labels }) })}
 						</div>
@@ -504,6 +505,41 @@ class Combobox extends React.Component {
 				</div>
 			</div>
 		);
+	}
+
+	render () {
+		const props = this.props;
+
+		// Merge objects of strings with their default object
+		const assistiveText = assign({}, defaultProps.assistiveText, props.assistiveText);
+		const labels = assign({}, defaultProps.labels, props.labels);
+
+		const subRenders = {
+			base: {
+				single: this.renderBaseMultiple,
+				multiple: this.renderBaseMultiple
+			},
+			'inline-listbox': {
+				single: this.renderInlineSingle,
+				multiple: this.renderInlineMultiple
+			},
+			readonly: {
+				single: this.renderReadOnlySingle,
+				multiple: this.renderReadOnlyMultiple
+			}
+		};
+
+		return subRenders[this.props.variant][this.props.multiple ? 'multiple' : 'single']
+			? subRenders[this.props.variant][this.props.multiple ? 'multiple' : 'single']({
+				assistiveText,
+				labels,
+				props
+			})
+			: subRenders['inline-listbox'].single({
+				assistiveText,
+				labels,
+				props
+			});
 	}
 }
 /* eslint-enable jsx-a11y/role-supports-aria-props */
