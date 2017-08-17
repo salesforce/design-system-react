@@ -2,7 +2,7 @@ import React from 'react';
 import ButtonGroup from '~/components/button-group';
 import ButtonStateful from '~/components/button-stateful';
 import Dropdown from '~/components/menu-dropdown';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '~/components/iconSettings';
 
 const Example = React.createClass({
 	displayName: 'ButtonGroupExample',

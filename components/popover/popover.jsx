@@ -44,9 +44,6 @@ import { getMargin, getNubbinClassName } from '../../utilities/dialog-helpers';
 // #### KeyboardNavigable
 import keyboardNavigableDialog from '../../utilities/keyboard-navigable-dialog';
 
-// #### Dialog doesn't pass down <IconSettings> context so repassing it here.
-import IconSettings from '../iconSettings';
-
 import KEYS from '../../utilities/key-code';
 import { POPOVER } from '../../utilities/constants';
 
@@ -406,6 +403,7 @@ const Popover = React.createClass({
 					align={props.align}
 					contentsClassName={classNames(this.props.contentsClassName, 'ignore-react-onclickoutside')}
 					constrainToScrollParent={props.constrainToScrollParent}
+					context={this.context}
 					flippable={!props.hasStaticAlignment}
 					marginBottom={getMargin.bottom(props.align)}
 					marginLeft={getMargin.left(props.align)}
@@ -422,49 +420,47 @@ const Popover = React.createClass({
 					portalMount={this.props.portalMount}
 					variant="popover"
 				>
-					<IconSettings iconPath={this.context.iconPath}>
-						<div
-							aria-labelledby={this.props.ariaLabelledby ? this.props.ariaLabelledby : `${this.getId()}-dialog-heading`}
-							aria-describedby={`${this.getId()}-dialog-body`}
-							className={classNames(
-								'slds-popover',
-								getNubbinClassName(props.align),
-								props.className,
-							)}
-							id={`${this.getId()}-popover`}
-							role="dialog"
-							style={assign({ outline: '0' }, style)}
-							tabIndex="-1"
-							ref={(component) => { this.dialog = component; }}
-						>
-							<Button
-								assistiveText={props.closeButtonAssistiveText}
-								iconName="close"
-								iconSize="small"
-								className="slds-float--right slds-popover__close"
-								onClick={this.handleCancel}
-								variant="icon"
-							/>
-							{this.props.heading
-								? <header
-									className="slds-popover__header"
-								>
-									<h2 id={`${this.getId()}-dialog-heading`} className="slds-text-heading--small">{this.props.heading}</h2>
-								</header>
-								: null}
-							<div
-								id={`${this.getId()}-dialog-body`}
-								className="slds-popover__body"
+					<div
+						aria-labelledby={this.props.ariaLabelledby ? this.props.ariaLabelledby : `${this.getId()}-dialog-heading`}
+						aria-describedby={`${this.getId()}-dialog-body`}
+						className={classNames(
+						'slds-popover',
+						getNubbinClassName(props.align),
+						props.className,
+						)}
+						id={`${this.getId()}-popover`}
+						role="dialog"
+						style={assign({ outline: '0' }, style)}
+						tabIndex="-1"
+						ref={(component) => { this.dialog = component; }}
+					>
+						<Button
+							assistiveText={props.closeButtonAssistiveText}
+							iconName="close"
+							iconSize="small"
+							className="slds-float--right slds-popover__close"
+							onClick={this.handleCancel}
+							variant="icon"
+						/>
+						{this.props.heading
+							? <header
+								className="slds-popover__header"
 							>
-								{props.body}
-							</div>
-							{this.props.footer
-								? <footer className="slds-popover__footer">
-									{this.props.footer}
-								</footer>
-								: null}
+								<h2 id={`${this.getId()}-dialog-heading`} className="slds-text-heading--small">{this.props.heading}</h2>
+							</header>
+							: null}
+						<div
+							id={`${this.getId()}-dialog-body`}
+							className="slds-popover__body"
+						>
+							{props.body}
 						</div>
-					</IconSettings>
+						{this.props.footer
+							? <footer className="slds-popover__footer">
+								{this.props.footer}
+							</footer>
+							: null}
+					</div>
 				</Dialog> : null
 		);
 	},

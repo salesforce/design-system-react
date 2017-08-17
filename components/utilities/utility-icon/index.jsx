@@ -26,12 +26,6 @@ const UtilityIcon = ({
 }, context) => {
 	checkProps('UtilityIcon', { name, category, path, context });
 
-	// Icons are no longer bundled with this library by default. See webpack.config.dist.js for information on how to add them back.
-	// If the user does not pass in a path to the Icon asset, return null so that the entire component/app doesn't break.
-	if ((path === undefined) && (context.iconPath === undefined)) {
-		return null;
-	}
-
 	let data;
 
 	if (!path) {

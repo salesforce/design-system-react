@@ -31,9 +31,6 @@ import shortid from 'shortid';
 // when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 
-// #### Dialog doesn't pass down <IconSettings> context so repassing it here.
-import IconSettings from '../iconSettings';
-
 import EventUtil from '../../utilities/event';
 import KEYS from '../../utilities/key-code';
 
@@ -395,6 +392,7 @@ class Datepicker extends React.Component {
 			? <Dialog
 				contentsClassName="slds-datepicker slds-dropdown"
 				constrainToScrollParent={this.props.constrainToScrollParent}
+				context={this.context}
 				horizontalAlign={this.props.align}
 				flippable={!this.props.hasStaticAlignment}
 				onClose={this.handleClose}
@@ -402,9 +400,7 @@ class Datepicker extends React.Component {
 				portalMount={this.props.portalMount}
 				targetElement={this.inputRef}
 			>
-				<IconSettings iconPath={this.context.iconPath}>
-					{this.getDatePicker({ labels, assistiveText })}
-				</IconSettings>
+				{this.getDatePicker({ labels, assistiveText })}
 			</Dialog>
 			: null;
 	}

@@ -41,9 +41,6 @@ import { shape } from 'airbnb-prop-types';
 // #### KeyboardNavigable
 import KeyboardNavigable from '../../utilities/keyboard-navigable-menu';
 
-// #### Dialog doesn't pass down <IconSettings> context so repassing it here.
-import IconSettings from '../iconSettings';
-
 import EventUtil from '../../utilities/event';
 import KEYS from '../../utilities/key-code';
 import { MENU_PICKLIST } from '../../utilities/constants';
@@ -399,15 +396,14 @@ const MenuPicklist = React.createClass({
 				closeOnTabKey
 				constrainToScrollParent={this.props.constrainToScrollParent}
 				contentsClassName="slds-dropdown slds-dropdown--left"
+				context={this.context}
 				flippable
 				onClose={this.handleCancel}
 				onKeyDown={this.handleKeyDown}
 				targetElement={this.button}
 				inheritTargetWidth={this.props.inheritTargetWidth}
 			>
-				<IconSettings iconPath={this.context.iconPath}>
-					{this.renderMenuContent()}
-				</IconSettings>
+				{this.renderMenuContent()}
 			</Dialog>
 			: null
 		);

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '~/components/iconSettings';
 
 import Panel from '~/components/panel'; // `~` is replaced with design-system-react at runtime
 import FilterGroup from '~/components/panel/filtering/group';

@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from '~/components/icon'; // `~` is replaced with design-system-react at runtime
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '~/components/iconSettings';
 
 const Example = React.createClass({
 	displayName: 'IconExample',

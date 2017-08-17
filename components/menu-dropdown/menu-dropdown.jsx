@@ -47,9 +47,6 @@ import checkProps from './check-props';
 // #### KeyboardNavigable
 import KeyboardNavigable from '../../utilities/keyboard-navigable-menu';
 
-// #### Dialog doesn't pass down <IconSettings> context so repassing it here.
-import IconSettings from '../iconSettings';
-
 import EventUtil from '../../utilities/event';
 import KEYS from '../../utilities/key-code';
 import { MENU_DROPDOWN, MENU_DROPDOWN_TRIGGER, LIST } from '../../utilities/constants';
@@ -746,6 +743,7 @@ const MenuDropdown = React.createClass({
 						'ignore-react-onclickoutside',
 						positionClassName,
 						this.props.className)}
+					context={this.context}
 					flippable={!this.props.hasStaticAlignment}
 					horizontalAlign={this.props.align}
 					inheritTargetWidth={this.props.inheritTargetWidth}
@@ -759,9 +757,7 @@ const MenuDropdown = React.createClass({
 					style={this.props.menuStyle}
 					targetElement={this.triggerContainer}
 				>
-					<IconSettings iconPath={this.context.iconPath}>
-						{this.renderMenuContent(customContent)}
-					</IconSettings>
+					{this.renderMenuContent(customContent)}
 				</Dialog> : null
 		);
 	},
