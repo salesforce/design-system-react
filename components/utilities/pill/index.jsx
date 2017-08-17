@@ -8,6 +8,9 @@ import UtilityIcon from '../../../components/utilities/utility-icon';
 
 import assign from 'lodash.assign';
 
+import KEYS from '../../../utilities/key-code';
+import mapKeyEventCallbacks from '../../../utilities/key-callbacks';
+
 import { shape } from 'airbnb-prop-types';
 
 const propTypes = {
@@ -44,7 +47,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-	assistiveText: /* eslint-disable jsx-a11y/no-static-element-interactions */shape({
+	assistiveText: shape({
 		pressDeleteOrBackspace: 'Press delete or backspace to remove'
 	}),
 	labels: {
@@ -53,20 +56,37 @@ const defaultProps = {
 	events: {}
 };
 
+const handleKeyDown = (event, { events, data }) => {
+	// Helper function that takes an object literal of callbacks that are triggered with a key event
+	mapKeyEventCallbacks(event, {
+		callbacks: {
+			[KEYS.DELETE]: { callback: events.onRequestRemove, data },
+			[KEYS.BACKSPACE]: { callback: events.onRequestRemove, data }
+		}
+	});
+};
+
 const Pill = (props) => {
 	const assistiveText = assign({}, defaultProps.assistiveText, props.assistiveText);
 	const labels = assign({}, defaultProps.labels, props.labels);
 
 	return (
-		<span
+		<span // eslint-disable-line jsx-a11y/no-static-element-interactions
 			className="slds-pill"
 			role="option"
 			tabIndex={0}
 			aria-selected="true"
+			onKeyDown={(event) => {
+				handleKeyDown(event, {
+					events: props.events,
+					data: props.eventData
+				});
+			}}
 		>
+			{props.icon}
 			<span className="slds-pill__label" title={labels.title}>{labels.label}</span>
 			{props.events.onRequestRemove
-				? <span
+				? <span // eslint-disable-line jsx-a11y/no-static-element-interactions
 					className="slds-icon_container slds-pill__remove"
 					title={labels.remove}
 					onClick={(event) => {
@@ -77,6 +97,7 @@ const Pill = (props) => {
 					}}
 				>
 					<UtilityIcon
+						style={{ cursor: 'pointer' }}	// remove when fixed by SLDS CSS
 						aria-hidden="true"
 						category="utility"
 						className="slds-icon slds-icon--x-small slds-icon-text-default"

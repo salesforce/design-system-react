@@ -34,7 +34,7 @@ class Example extends React.Component {
 
 		this.state = {
 			inputValue: '',
-			selection: []
+			selection: [accountsWithIcon[0], accountsWithIcon[1]]
 		};
 	}
 
@@ -52,6 +52,7 @@ class Example extends React.Component {
 					label: 'Search',
 					placeholder: 'Search Salesforce'
 				}}
+				multiple
 				onChange={(event, { value }) => {
 					console.log('onChange', value);
 					this.setState({	inputValue: value });
@@ -65,7 +66,8 @@ class Example extends React.Component {
 				onSubmit={(event, { value }) => {
 					console.log('onSubmit', value);
 					this.setState({
-						selection: [{
+						inputValue: '',
+						selection: [...this.state.selection, {
 							label: value,
 							icon: <Icon
 								assistiveText="Account"
@@ -79,7 +81,7 @@ class Example extends React.Component {
 				}}
 				options={this.filter(accountsWithIcon, this.state.inputValue)}
 				selection={this.state.selection}
-				value={this.state.selectedOption ? this.state.selectedOption.label : this.state.inputValue}
+				value={this.state.inputValue}
 				variant="inline-listbox"
 			/>
 		);
