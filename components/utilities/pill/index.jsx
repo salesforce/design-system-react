@@ -20,19 +20,22 @@ const propTypes = {
 	 * * `pressDeleteOrBackspace`: Informs user of keyboard keys to press in order to remove a pill
 	 */
 	assistiveText: shape({
-		pressDeleteOrBackspace: PropTypes.string
+		remove: PropTypes.string
 	}),
 	/*
 	 * Pills are often used for selection of a type of entity such as days in a daypicker. This prop allows you to pass in data that will be passed back to the event handler.
 	 */
 	eventData: PropTypes.object,
 	/*
+	 * The icon next to the pill label.
+	 */
+	icon: PropTypes.element,
+	/*
 	 * Pill Label
 	 */
 	labels: shape({
 		label: PropTypes.string,
-		remove: PropTypes.string,
-		title: PropTypes.string
+		removeTitle: PropTypes.string
 	}),
 	/*
 	 * Pill Title
@@ -48,7 +51,7 @@ const propTypes = {
 
 const defaultProps = {
 	assistiveText: shape({
-		pressDeleteOrBackspace: 'Press delete or backspace to remove'
+		remove: ', Press delete or backspace to remove'
 	}),
 	labels: {
 		remove: 'Remove'
@@ -88,7 +91,7 @@ const Pill = (props) => {
 			{props.events.onRequestRemove
 				? <span // eslint-disable-line jsx-a11y/no-static-element-interactions
 					className="slds-icon_container slds-pill__remove"
-					title={labels.remove}
+					title={labels.removeTitle}
 					onClick={(event) => {
 						props.events.onRequestRemove(event, {
 							events: props.events,
@@ -103,7 +106,7 @@ const Pill = (props) => {
 						className="slds-icon slds-icon--x-small slds-icon-text-default"
 						name="close"
 					/>
-					<span className="slds-assistive-text">{assistiveText.pressDeleteOrBackspace}</span>
+					<span className="slds-assistive-text">{assistiveText.remove}</span>
 				</span>
 			: null}
 		</span>

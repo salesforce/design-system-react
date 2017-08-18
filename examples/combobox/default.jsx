@@ -15,11 +15,6 @@ const accounts = [
 	{ id: '8', label: 'Acme Construction', subTitle: 'Account • Grand Marais, MN', type: 'account' }
 ];
 
-const defaultFilter = (term, item) => {
-	if (!term) return true;
-	return (item.data && item.data.type === 'section') || item.label.match(new RegExp(escapeRegExp(term), 'ig'));
-};
-
 const accountsWithIcon = accounts.map((elem) => Object.assign(elem, {
 	icon: <Icon
 		assistiveText="Account"
@@ -34,51 +29,69 @@ class Example extends React.Component {
 
 		this.state = {
 			inputValue: '',
-			selection: []
+			selection: [accountsWithIcon[0], accountsWithIcon[1]]
 		};
 	}
 
-	filter = (options, inputValue) => options.filter((item) => {
-		if (!inputValue) return true;
-		return (item.data && item.data.type === 'section')
-			|| item.label.match(new RegExp(escapeRegExp(inputValue), 'ig'));
-	});
+	filter = ({ options, inputValue }) =>
+		options.filter((option) => {
+			const searchTermFound = option.label.match(new RegExp(escapeRegExp(inputValue), 'ig'));
+			const isSection = option.data && option.data.type === 'section';
+			const notAlreadySelected = !this.state.selection.includes(option);
+
+			return (
+				!inputValue
+				|| isSection
+				|| searchTermFound
+			)
+				&& notAlreadySelected;
+		});
 
 	render () {
 		return (
 			<Combobox
 				id="combobox-unique-id"
+				events={{
+					onChange: (event, { value }) => {
+						console.log('onChange', value);
+						this.setState({	inputValue: value });
+					},
+					onRequestRemoveSelectedOption: (event, data) => {
+						this.setState({
+							inputValue: '',
+							selection: data.selection
+						});
+					},
+					onSubmit: (event, { value }) => {
+						console.log('onSubmit', value);
+						this.setState({
+							inputValue: '',
+							selection: [...this.state.selection, {
+								label: value,
+								icon: <Icon
+									assistiveText="Account"
+									category="standard"
+									name="account"
+								/> }] });
+					},
+					onSelect: (event, data) => {
+						console.log('onSelect', data);
+						this.setState({
+							inputValue: '',
+							selection: data.selection
+						});
+					}
+				}}
 				labels={{
 					label: 'Search',
 					placeholder: 'Search Salesforce'
 				}}
-				onChange={(event, { value }) => {
-					console.log('onChange', value);
-					this.setState({	inputValue: value });
-				}}
-				onRequestRemoveSelectedOption={(event, data) => {
-					this.setState({
-						inputValue: '',
-						selection: []
-					});
-				}}
-				onSubmit={(event, { value }) => {
-					console.log('onSubmit', value);
-					this.setState({ selection: [{
-						label: value,
-						icon: <Icon
-							assistiveText="Account"
-							category="standard"
-							name="account"
-						/> }] });
-				}}
-				onSelect={(event, data) => {
-					console.log('onSelect', data);
-					this.setState({ selection: data.selection });
-				}}
-				options={this.filter(accountsWithIcon, this.state.inputValue)}
+				multiple
+				options={this.filter({
+					options: accountsWithIcon,
+					inputValue: this.state.inputValue })}
 				selection={this.state.selection}
-				value={this.state.selectedOption ? this.state.selectedOption.label : this.state.inputValue}
+				value={this.state.inputValue}
 			/>
 		);
 	}

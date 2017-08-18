@@ -71,7 +71,7 @@ const Pill = (props) => {
 	const labels = assign({}, defaultProps.labels, props.labels);
 
 	return (
-		<span
+		<span // eslint-disable-line jsx-a11y/no-static-element-interactions
 			className="slds-pill"
 			role="option"
 			tabIndex={0}

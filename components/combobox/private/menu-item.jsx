@@ -41,7 +41,7 @@ const MenuItem = (props) => (
 		className={classNames('slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta',
 			{ 'slds-has-focus': props.active })}
 		onClick={(event) => {
-			props.onSelect(event, { selectedOption: props.option });
+			props.onSelect(event, { option: props.option });
 		}}
 		role="option"
 	>
