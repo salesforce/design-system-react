@@ -59,6 +59,7 @@ If you are new to React, you may be trained to design components in a more compl
 
 ### Limit side effects
 - <a name="limit-state" href="#limit-state">#</a> **Limit use of component state.** If the parent application's state engine can handle it with a `prop`, then don't use state. _New components should always start out as controlled by their parent and only be uncontrolled (that is have state) if a use case presents itself._ It's better to have a component that needs 20 props set and outputs the correct markup, than to have a component that works with no props set, yet maintains multiple internal states. We like to think of this project as design system templates with minimal logic that happen to work with the React framework. Let the library consumer create a simple _container component_ with state. Read more about [controlled components](#controlled-and-uncontrolled-components).
+    - <a name="ids-should-be-controlled" href="#ids-should-be-controlled">#</a> All `id` attributes in the component HTML should be unique to the page, especially if the same component is used. They should be able to be controlled by the consuming developer (not just `shortid` generated). Most `id` attributes are used for accessbility or for React `key`.
     - <a name="stateful-stateless-components" href="#stateful-stateless-components">#</a> Know how smart/stateful React components [work together](https://gist.github.com/trevordmiller/a7791c11228b48f0366b) with [pure/dumb stateless function components](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions).
     - <a name="stateful-top-level-component" href="#stateful-top-level-component">#</a> It is preferable to only have one stateful top-level class per component in this library. For these top-level components, it’s preferable to leave them stateful (that is, to use `class`). It's much easier to get the DOM node reference if you need it for such things as measurements. Then, you don't have to go through a lot of hassle to work around not having lifecycle methods. It also allows components to follow the controlled / uncontrolled pattern mentioned below. All sub-components should be stateless and manipulated with props if possible.
     - A `Tree` should have state. A `TreeNode` should not.
@@ -234,7 +235,7 @@ class DemoComponent extends React.Component {
     super(props);
 
     // useful for unique DOM IDs
-    this.generatedId = shortid.generate();
+    this.generatedId = this.props.id || shortid.generate();
     
     // initial state
     this.state = {};
