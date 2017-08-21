@@ -35,13 +35,14 @@ const propTypes = {
 	/*
 	 * Selected options
 	 */
-	selection: PropTypes.array
+	selection: PropTypes.array,
+	/**
+	 * Changes styles of the menu option
+	 */
+	variant: PropTypes.oneOf(['combobox-base', 'combobox-readonly'])
 };
 
-const defaultProps = {
-	labels: {},
-	events: {}
-};
+const defaultProps = {};
 
 const Menu = (props) => {
 	// let hasAValidActiveDescendent;
@@ -61,6 +62,7 @@ const Menu = (props) => {
 					option={optionData}
 					onSelect={props.onSelect}
 					selection={props.selection}
+					variant={props.variant}
 				/>
 			</li>
 		);

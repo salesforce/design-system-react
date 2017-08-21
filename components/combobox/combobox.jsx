@@ -103,6 +103,7 @@ const propTypes = {
 	 */
 	labels: shape({
 		label: PropTypes.string,
+		placeholderReadOnly: PropTypes.string,
 		placeholder: PropTypes.string,
 		removePillTitle: PropTypes.string
 	}),
@@ -129,7 +130,7 @@ const propTypes = {
 	/**
 	 * Changes styles of the input. Currently `entity` is not supported.
 	 */
-	variant: PropTypes.oneOf(['base', 'readonly', 'inline-listbox'])
+	variant: PropTypes.oneOf(['base', 'inline-listbox', 'readonly'])
 };
 
 const defaultProps = {
@@ -140,6 +141,7 @@ const defaultProps = {
 	},
 	events: {},
 	labels: {
+		placeholderReadOnly: 'Select an Option',
 		removePillTitle: 'Remove'
 	},
 	selection: [],
@@ -406,6 +408,7 @@ class Combobox extends React.Component {
 			onSelect={this.handleSelect}
 			clearActiveOption={this.clearActiveOption}
 			selection={this.props.selection}
+			variant={`combobox-${this.props.variant}`}
 		/>
 	);
 
@@ -663,6 +666,74 @@ class Combobox extends React.Component {
 			/>
 		</div>
 	);
+
+	renderReadOnlySingle = ({
+		labels,
+		props
+	}) => {
+		const value = (props.selection[0] && props.selection[0].label) || '';
+
+		/* eslint-disable jsx-a11y/role-supports-aria-props */
+		return (
+			<div className="slds-form-element__control">
+				<div className="slds-combobox_container">
+					<div // aria attributes have been moved to the `div` wrapping `input` to comply with ARIA 1.1.
+						className={classNames(
+							'slds-combobox',
+							'slds-dropdown-trigger',
+							'slds-dropdown-trigger_click',
+							'ignore-react-onclickoutside', {
+								'slds-is-open': this.getIsOpen()
+							},
+							props.className
+						)}
+					>
+						<InnerInput
+							aria-autocomplete="list"
+							aria-controls={`${this.getId()}-listbox`}
+							aria-activedescendant={this.state.activeOption
+								? `${this.getId()}-listbox-option-${this.state.activeOption.id}`
+								:	null}
+							autoComplete="off"
+							className="slds-combobox__input"
+							containerProps={{
+								'aria-expanded': this.getIsOpen(),
+								'aria-haspopup': 'listbox',
+								className: 'slds-combobox__form-element',
+								role: 'combobox'
+							}}
+							disabled={props.disabled}
+							iconRight={<InputIcon
+								category="utility"
+								name="down"
+								variant="combobox"
+							/>}
+							id={this.getId()}
+							onFocus={this.handleInputFocus}
+							onBlur={this.handleInputBlur}
+							onKeyDown={this.handleKeyDown}
+							inputRef={(component) => { this.inputRef = component; }}
+							onClick={() => {
+								this.requestOpenMenu();
+							}}
+							onChange={(event) => {
+								if (!props.selection.length) {
+									this.handleInputChange(event);
+								}
+							}}
+							placeholder={labels.placeholderReadOnly}
+							readOnly
+							role="textbox"
+							value={value}
+						/>
+						{props.isInline
+							? this.getInlineMenu({ menuRenderer: this.renderMenu({ labels }) })
+							: this.getDialog({ menuRenderer: this.renderMenu({ labels }) })}
+					</div>
+				</div>
+			</div>
+		);
+	}
 
 	render () {
 		const props = this.props;

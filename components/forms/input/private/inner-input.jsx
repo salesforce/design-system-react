@@ -201,6 +201,7 @@ const InnerInput = (props) => {
 				onSelect={props.onSelect}
 				onSubmit={props.onSubmit}
 				placeholder={props.placeholder}
+				readOnly={props.readOnly}
 				ref={props.inputRef}
 				role={props.role}
 				required={props.required}

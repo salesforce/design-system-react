@@ -26,14 +26,14 @@ const propTypes = {
 	/*
 	 * Selected options
 	 */
-	selection: PropTypes.array
+	selection: PropTypes.array,
+	/**
+	 * Changes styles of the menu option
+	 */
+	variant: PropTypes.oneOf(['combobox-base', 'combobox-readonly'])
 };
 
-const defaultProps = {
-	labels: {},
-	events: {}
-};
-
+const defaultProps = {};
 
 const MenuItem = (props) => (
 	<span // eslint-disable-line jsx-a11y/no-static-element-interactions
