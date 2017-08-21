@@ -374,6 +374,38 @@ render () {
   );
 }
 ```
+
+## Preferred ways to render
+Once your data is in a correct structure, your rendering should just respond to changes in your data. Here is list of ways to render:
+1. Inline ternary operator
+    * Preferred more than a simple if-else statement
+    * It is more concise than if-else and can be used within JSX since it’s an expression
+1. Logical `&&` operator
+    * Alternative to ternary. Use when one side of the ternary operation would return null
+    * Be careful that you don’t run into bugs when using multiple conditions (truthy/falsey values, especially array length of zero)
+1. Enums
+    * Great to map different states
+    * Great to map nested conditions (renders[prop1][prop2])
+    * This is sadly a sub-render
+1. Higher Order Components
+    * Create another stateless component and use it to shield away conditional rendering
+    * Components can focus on their main purpose
+    * This is an abstraction and can only return one node (in React 15)
+1. Switch case
+    * Verbose (break!)
+    * Can only be JSX-inlined with self invoking function
+    * Avoid it,  enums are preferred
+1. If-else
+    * Is the most basic conditional rendering
+    * Beginner friendly
+    * Cannot be inlined in JSX (needs variables)
+1. Multi-level/nested conditional renderings
+    * Avoid them for the sake of readability
+    * Split up components into stateless components with their own simple conditional rendering
+    * Use HOCs instead
+1. External templating components
+    * Avoid them and be comfortable with JSX and JavaScript
+
 ## Naming DOM `ref` callbacks
 
 Do not name a DOM callback prop of a library component `ref`. `ref` is a reserved prop name. This will return the component React object, _not_ the DOM node. It is best practice to create an object called `refs` with keys that are semantic names of DOM nodes: `refs: { triggerButton: ()=>{}, triggerInput: ()=>{} }`. If you use a `refs` object, you may need shallow merge the object with default props. For more information, please review [Exposing DOM Refs to Parent Components](https://facebook.github.io/react/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components).
