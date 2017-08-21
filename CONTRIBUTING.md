@@ -383,14 +383,14 @@ Once your data is in a correct structure, your rendering should just respond to 
 1. Logical `&&` operator
     * Alternative to ternary. Use when one side of the ternary operation would return null
     * Be careful that you don’t run into bugs when using multiple conditions (truthy/falsey values, especially array length of zero)
+1. Higher Order Components
+    * Create another stateless component and use it to shield away complex conditional rendering
+    * Components can focus on their main purpose
+    * This is an abstraction and can only return one node (in React 15)
 1. Enums
     * Great to map different states
     * Great to map nested conditions (renders[prop1][prop2])
     * This is sadly a sub-render
-1. Higher Order Components
-    * Create another stateless component and use it to shield away conditional rendering
-    * Components can focus on their main purpose
-    * This is an abstraction and can only return one node (in React 15)
 1. Switch case
     * Verbose (break!)
     * Can only be JSX-inlined with self invoking function
