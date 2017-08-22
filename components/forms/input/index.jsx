@@ -98,6 +98,10 @@ const Input = React.createClass({
 		 */
 		inputRef: PropTypes.func,
 		/**
+		 * Displays the value of the input statically. This follows the static input UX pattern.
+		 */
+		isStatic: PropTypes.bool,
+		/**
 		 * This label appears above the input.
 		 */
 		label: PropTypes.string,
@@ -129,7 +133,7 @@ const Input = React.createClass({
 		 */
 		name: PropTypes.string,
 		/**
-		 * Displays the value of the input statically. This follows the read only input UX pattern.
+		 * Displays the value of the input as readOnly.
 		 */
 		readOnly: PropTypes.bool,
 		/**
@@ -228,7 +232,7 @@ const Input = React.createClass({
 				},
 				props.className)}
 			>
-				{labelText && (props.readOnly
+				{labelText && (props.isStatic
 					? <span
 						className={classNames('slds-form-element__label', {
 							'slds-assistive-text': props.assistiveText && !props.label
@@ -257,10 +261,14 @@ const Input = React.createClass({
 					aria-required={this.props['aria-required']}
 					containerClassName="slds-form-element__control"
 					disabled={props.disabled}
+					fixedTextLeft={props.fixedTextLeft}
+					fixedTextRight={props.fixedTextRight}
+					hasSpinner={props.hasSpinner}
 					id={this.getId()}
 					iconLeft={hasLeftIcon ? this.getIconRender('left', 'iconLeft') : null}
 					iconRight={hasRightIcon ? this.getIconRender('right', 'iconRight') : null}
 					inlineEditTrigger={props.inlineEditTrigger}
+					isStatic={props.isStatic}
 					minLength={props.minLength}
 					maxLength={props.maxLength}
 					name={props.name}
@@ -277,11 +285,11 @@ const Input = React.createClass({
 					onSubmit={props.onSubmit}
 					placeholder={props.placeholder}
 					inputRef={props.inputRef}
-					role={props.role}
+					readOnly={props.readOnly}
 					required={props.required}
+					role={props.role}
 					type={props.type}
 					value={props.value}
-					variant={props.readOnly ? 'inputReadOnly' : null}
 				/>
 				{props.errorText && <div id={this.getErrorId()} className="slds-form-element__help">{props.errorText}</div>}
 				{props.children}
