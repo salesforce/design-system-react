@@ -4,8 +4,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash.isequal';
+import classNames from 'classnames';
 
-import MenuItem from './menu-item';
+import Icon from '../../icon';
 
 const propTypes = {
 	/*
@@ -29,7 +30,7 @@ const propTypes = {
 	 */
 	resetActiveOption: PropTypes.func,
 	/*
-	 * Callback when item is selected with keyboard or mouse
+	 * Callback when option is selected with keyboard or mouse
 	 */
 	onSelect: PropTypes.func,
 	/*
@@ -39,31 +40,73 @@ const propTypes = {
 	/**
 	 * Changes styles of the menu option
 	 */
-	variant: PropTypes.oneOf(['combobox-base', 'combobox-readonly'])
+	variant: PropTypes.oneOf(['icon-title-subtitle', 'checkbox'])
 };
 
 const defaultProps = {};
 
 const Menu = (props) => {
-	// let hasAValidActiveDescendent;
-
-	const menuItems = props.options.map((optionData, index) => {
+	const menuOptions = props.options.map((optionData, index) => {
 		const active = (index === props.activeOptionIndex
 			&& isEqual(optionData, props.activeOption));
+
 		return (
 			<li
 				className="slds-listbox__item"
-				key={`menu-item-${optionData.id}`}
+				key={`menu-option-${optionData.id}`}
 				role="presentation"
 			>
-				<MenuItem
-					inputId={props.inputId}
-					active={active}
-					option={optionData}
-					onSelect={props.onSelect}
-					selection={props.selection}
-					variant={props.variant}
-				/>
+				{{
+					'icon-title-subtitle': (
+						<span // eslint-disable-line jsx-a11y/no-static-element-interactions
+							id={`${props.inputId}-listbox-option-${optionData.id}`}
+							className={classNames('slds-media slds-listbox__option',
+								'slds-listbox__option_entity slds-listbox__option_has-meta',
+								{ 'slds-has-focus': active })}
+							onClick={(event) => {
+								props.onSelect(event, { option: optionData });
+							}}
+							role="option"
+						>
+							{optionData.icon
+							? <span className="slds-media__figure">
+								{optionData.icon}
+							</span>
+							: null}
+							<span className="slds-media__body">
+								<span className="slds-listbox__option-text slds-listbox__option-text_entity">{optionData.label}</span>
+								<span className="slds-listbox__option-meta slds-listbox__option-meta_entity">{optionData.subTitle}</span>
+							</span>
+						</span>
+					),
+					checkbox: (
+						<span // eslint-disable-line jsx-a11y/no-static-element-interactions
+							id={`${props.inputId}-listbox-option-${optionData.id}`}
+							className={classNames('slds-media slds-listbox__option',
+								' slds-listbox__option_plain slds-media_small slds-media_center',
+								{
+									'slds-has-focus': active,
+									'slds-is-selected': props.isSelected({ selection: props.selection, option: optionData })
+								})}
+							onClick={(event) => {
+								props.onSelect(event, { selection: props.selection, option: optionData });
+							}}
+							role="option"
+						>
+							<span className="slds-media__figure">
+								<Icon
+									className="slds-listbox__icon-selected"
+									category="utility"
+									name="check"
+									size="x-small"
+								/>
+							</span>
+							<span className="slds-media__body">
+								<span className="slds-truncate" title="Option A"> {optionData.label}</span>
+							</span>
+						</span>
+				)
+				}[props.variant]}
 			</li>
 		);
 	});
@@ -71,7 +114,7 @@ const Menu = (props) => {
 	return (
 		<div id={`${props.inputId}-listbox`} role="listbox">
 			<ul className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid" role="presentation">
-				{menuItems}
+				{menuOptions}
 			</ul>
 		</div>
 	);

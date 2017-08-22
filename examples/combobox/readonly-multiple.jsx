@@ -15,14 +15,6 @@ const accounts = [
 	{ id: '8', label: 'Acme Construction', subTitle: 'Account • Grand Marais, MN', type: 'account' }
 ];
 
-const accountsWithIcon = accounts.map((elem) => Object.assign(elem, {
-	icon: <Icon
-		assistiveText="Account"
-		category="standard"
-		name={elem.type}
-	/> })
-);
-
 class Example extends React.Component {
 	constructor (props) {
 		super(props);
@@ -50,6 +42,12 @@ class Example extends React.Component {
 			<Combobox
 				id="combobox-unique-id"
 				events={{
+					onRequestRemoveSelectedOption: (event, data) => {
+						this.setState({
+							inputValue: '',
+							selection: data.selection
+						});
+					},
 					onSelect: (event, data) => {
 						console.log('onSelect', data);
 						this.setState({
@@ -62,8 +60,9 @@ class Example extends React.Component {
 					label: 'Search',
 					placeholder: 'Search Salesforce'
 				}}
+				multiple
 				options={this.filter({
-					options: accountsWithIcon,
+					options: accounts,
 					inputValue: this.state.inputValue })}
 				selection={this.state.selection}
 				value={this.state.inputValue}

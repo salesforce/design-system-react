@@ -69,9 +69,11 @@ const SelectedListBox = (props) => (
 			aria-label={props.assistiveText.listboxLabel}
 		>
 			{props.selection.map((item) => {
-				const icon = React.cloneElement(item.icon, {
-					containerClassName: 'slds-pill__icon_container'
-				});
+				const icon = item.icon
+					? React.cloneElement(item.icon, {
+						containerClassName: 'slds-pill__icon_container'
+					})
+					: null;
 
 				return (
 					<li
