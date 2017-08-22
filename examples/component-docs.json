@@ -3297,6 +3297,13 @@
                 "required": false,
                 "description": "This callback exposes the input reference / DOM node to parent components. `<Parent inputRef={(inputComponent) => this.input = inputComponent} />"
             },
+            "isStatic": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Displays the value of the input statically. This follows the static input UX pattern."
+            },
             "label": {
                 "type": {
                     "name": "string"
@@ -3414,7 +3421,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Displays the value of the input statically. This follows the read only input UX pattern."
+                "description": "Displays the value of the input as readOnly."
             },
             "required": {
                 "type": {
