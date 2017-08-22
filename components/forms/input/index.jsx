@@ -82,6 +82,20 @@ const Input = React.createClass({
 		 */
 		errorText: PropTypes.string,
 		/**
+		 * Displays text or node to the left of the input. This follows the fixed text input UX pattern.
+		 */
+		fixedTextLeft: PropTypes.oneOfType([
+			PropTypes.node,
+			PropTypes.string
+		]),
+		/**
+		 * Displays text or node to the right of the input. This follows the fixed text input UX pattern.
+		 */
+		fixedTextRight: PropTypes.oneOfType([
+			PropTypes.node,
+			PropTypes.string
+		]),
+		/**
 		 * Left aligned icon, must be instace of `design-system-react/components/icon/input-icon`
 		 */
 		iconLeft: PropTypes.node,
