@@ -200,15 +200,13 @@ _from [Controlled Components](https://facebook.github.io/react/docs/forms.html#c
 ## Component Organization
 
 * `extends React.Component`
+  * display name
+  * prop types
+  * defaults props 
   * initial state within `constructor`
   * life cycle methods
   * sub-render methods (keep to a minimum, only use to stay "DRY")
   * component render
-
-* Static class properties that should be added to the class variable after creation. ES7's `static` prefix is not currently compatible with our documentation site build.
-  * display name
-  * prop types
-  * defaults props 
 
 ```javascript
 import React from 'react';
@@ -232,8 +230,8 @@ const defaultProps = {};
  */
 class DemoComponent extends React.Component {
   static displayName = EXTERNAL_CONSTANT_NAME;
-	static propTypes = propTypes;
-	static defaultProps = defaultProps;
+  static propTypes = propTypes;
+  static defaultProps = defaultProps;
 
   constructor (props) {
     super(props);
