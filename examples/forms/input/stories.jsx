@@ -10,7 +10,7 @@ const iconClicked = action;
 const clearIcon = <InputIcon assistiveText="clear" name="clear" category="utility" />;
 const clearIconClickable = <InputIcon assistiveText="clear" name="clear" category="utility" onClick={iconClicked('Clear icon clicked')} />;
 const searchIcon = <InputIcon name="search" category="utility" />;
-const searchIconClickable = <InputIcon name="search" category="utility" onClick={iconClicked('Search icon clicked')} />;
+const searchIconClickable = <InputIcon assistiveText="Search" name="search" category="utility" onClick={iconClicked('Search icon clicked')} />;
 
 storiesOf(FORMS_INPUT, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
@@ -28,12 +28,30 @@ storiesOf(FORMS_INPUT, module)
 			placeholder="Placeholder Text"
 		/>
 	))
+	.add('w/ Left (non-clickable)', () => (
+		<Input
+			name="non-clickable-icon"
+			id="unique-id-123"
+			label="Input Label"
+			iconLeft={searchIcon}
+			placeholder="Placeholder Text"
+		/>
+	))
 	.add('w/ Left Clickable Icon', () => (
 		<Input
 			id="unique-id-123"
 			name="left-clickable-icon"
 			label="Input Label"
 			iconLeft={searchIconClickable}
+			placeholder="Placeholder Text"
+		/>
+	))
+	.add('w/ Right (non-clickable)', () => (
+		<Input
+			name="non-clickable-icon"
+			id="unique-id-123"
+			label="Input Label"
+			iconRight={searchIcon}
 			placeholder="Placeholder Text"
 		/>
 	))
@@ -72,12 +90,21 @@ storiesOf(FORMS_INPUT, module)
 			placeholder="Placeholder Text"
 		/>
 	))
-	.add('w/ Left (non-clickable)', () => (
+	.add('w/ Right (clickable) Icon & Spinner', () => (
 		<Input
-			name="non-clickable-icon"
-			id="unique-id-123"
+			name="right-clickable-icon"
 			label="Input Label"
+			hasSpinner
 			iconLeft={searchIcon}
+			iconRight={clearIconClickable}
+			placeholder="Placeholder Text"
+		/>
+	))
+	.add('Fixed Text', () => (
+		<Input
+			name="fixed-text"
+			label="Input Label"
+			fixedTextLeft="$"
 			placeholder="Placeholder Text"
 		/>
 	))
@@ -87,6 +114,14 @@ storiesOf(FORMS_INPUT, module)
 			label="Input Label"
 			readOnly
 			value="Read Only Value"
+		/>
+	))
+	.add('Static Input', () => (
+		<Input
+			name="static-input"
+			label="Input Label"
+			isStatic
+			value="Static value"
 		/>
 	))
 	.add('Required Input in Error State', () => (

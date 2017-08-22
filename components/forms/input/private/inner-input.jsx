@@ -6,6 +6,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
+import Spinner from '../../../../components/spinner';
 
 const propTypes = {
 	'aria-activedescendant': PropTypes.string,
@@ -138,16 +139,11 @@ const propTypes = {
 	/**
 	 * The input is a controlled component, and will always display this value.
 	 */
-	value: PropTypes.string,
-	/**
-	 * UX pattern variants. `inputReadOnly` is for the read-only input UX pattern.
-	 */
-	variant: PropTypes.oneOf(['base', 'inputReadOnly'])
+	value: PropTypes.string
 };
 
 const defaultProps = {
-	type: 'text',
-	variant: 'base'
+	type: 'text'
 };
 
 /*
@@ -157,15 +153,16 @@ const InnerInput = (props) => (
 	<div
 		className={classNames(props.containerClassName, {
 			'slds-input-has-icon': props.iconLeft || props.iconRight,
-			'slds-input-has-icon--left': props.iconLeft && !props.iconRight,
-			'slds-input-has-icon--right': !props.iconLeft && props.iconRight,
-			'slds-input-has-icon--left-right': props.iconLeft && props.iconRight,
-			'slds-has-divider--bottom': props.variant === 'inputReadOnly' && !props.inlineEditTrigger
+			'slds-input-has-icon_left': props.iconLeft && !props.iconRight,
+			'slds-input-has-icon_right': !props.iconLeft && props.iconRight,
+			'slds-input-has-icon_left-right': props.iconLeft && props.iconRight,
+			'slds-input-has-fixed-addon': props.fixedTextLeft || props.fixedTextRight
 		})}
 	>
-		{props.iconLeft ? props.iconLeft : null}
+		{props.iconLeft && props.iconLeft}
+		{props.fixedTextLeft && <span className="slds-form-element__addon">{props.fixedTextLeft}</span>}
 
-		{props.variant !== 'inputReadOnly' && <input
+		{!props.isStatic && <input
 			aria-activedescendant={props['aria-activedescendant']}
 			aria-autocomplete={props['aria-autocomplete']}
 			aria-controls={props['aria-controls']}
@@ -192,19 +189,30 @@ const InnerInput = (props) => (
 			onSelect={props.onSelect}
 			onSubmit={props.onSubmit}
 			placeholder={props.placeholder}
+			readOnly={props.readOnly}
 			ref={props.inputRef}
-			role={props.role}
 			required={props.required}
+			role={props.role}
 			style={props.style}
 			tabIndex={props.tabIndex}
 			type={props.type}
 			value={props.value}
 		/>}
 
-		{props.iconRight ? props.iconRight : null}
+		{ props.hasSpinner
+				? (
+					<div className="slds-input__icon-group slds-input__icon-group_right">
+						{props.hasSpinner && <Spinner isInput size="x-small" variant="brand" />}
+						{props.iconRight && props.iconRight}
+					</div>
+				)
+				: props.iconRight && props.iconRight
+		}
+
+		{props.fixedTextRight && <span className="slds-form-element__addon">{props.fixedTextRight}</span>}
 
 		{/* eslint-disable jsx-a11y/no-static-element-interactions */}
-		{props.variant === 'inputReadOnly' && <span className="slds-form-element__static" onClick={props.onClick}>
+		{props.isStatic && <span className="slds-form-element__static" onClick={props.onClick}>
 			{props.value}
 			{props.inlineEditTrigger}
 		</span>}
