@@ -51,6 +51,20 @@ const propTypes = {
 	 */
 	disabled: PropTypes.bool,
 	/**
+	 * Displays text or node to the left of the input. This follows the fixed text input UX pattern.
+	 */
+	fixedTextLeft: PropTypes.oneOfType([
+		PropTypes.node,
+		PropTypes.string
+	]),
+	/**
+	 * Displays text or node to the right of the input. This follows the fixed text input UX pattern.
+	 */
+	fixedTextRight: PropTypes.oneOfType([
+		PropTypes.node,
+		PropTypes.string
+	]),
+	/**
 	 * Left aligned icon, must be instace of `design-system-react/components/icon/input-icon`
 	 */
 	iconLeft: PropTypes.node,
@@ -66,6 +80,10 @@ const propTypes = {
 	 * This callback exposes the input reference / DOM node to parent components. `<Parent inputRef={(inputComponent) => this.input = inputComponent} />
 	 */
 	inputRef: PropTypes.func,
+	/**
+	 * Displays the value of the input statically. This follows the static input UX pattern.
+	 */
+	isStatic: PropTypes.bool,
 	/**
 	 * This label appears above the input.
 	 */
@@ -98,7 +116,7 @@ const propTypes = {
 	 */
 	name: PropTypes.string,
 	/**
-	 * Specifies `readOnly` for `input` node. For the read-only input UX pattern, see `variant` prop.
+	 * Specifies `readOnly` for `input` node.
 	 */
 	readOnly: PropTypes.bool,
 	/**

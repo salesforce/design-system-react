@@ -3269,6 +3269,36 @@
                 "required": false,
                 "description": "Message to display when the input is in an error state. When this is present, also visually highlights the component as in error."
             },
+            "fixedTextLeft": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "node"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Displays text or node to the left of the input. This follows the fixed text input UX pattern."
+            },
+            "fixedTextRight": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "node"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Displays text or node to the right of the input. This follows the fixed text input UX pattern."
+            },
             "iconLeft": {
                 "type": {
                     "name": "node"
