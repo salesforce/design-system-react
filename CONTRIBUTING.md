@@ -231,6 +231,10 @@ const defaultProps = {};
  * The description of this component (will appear in the documentation site).
  */
 class DemoComponent extends React.Component {
+  static displayName = EXTERNAL_CONSTANT_NAME;
+	static propTypes = propTypes;
+	static defaultProps = defaultProps;
+
   constructor (props) {
     super(props);
 
@@ -259,10 +263,6 @@ class DemoComponent extends React.Component {
     return null;
   }
 }
-
-DemoComponent.displayName = EXTERNAL_CONSTANT;
-DemoComponent.propTypes = propTypes;
-DemoComponent.defaultProps = defaultProps;
 
 export default DemoComponent;
 
