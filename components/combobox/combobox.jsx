@@ -124,6 +124,10 @@ const propTypes = {
 	 */
 	options: PropTypes.array.isRequired,
 	/**
+	 * Limits auto-complete input submission to one of the provided options.
+	 */
+	predefinedOptionsOnly: PropTypes.bool,
+	/**
 	 * Accepts an array of item objects. For single selection, pass in an array of one object.
 	 */
 	selection: PropTypes.array,
@@ -530,9 +534,12 @@ class Combobox extends React.Component {
 								}
 							}}
 							placeholder={labels.placeholder}
-							readOnly={!!props.selection.length}
+							readOnly={!!(props.predefinedOptionsOnly && this.state.activeOption) || !!props.selection.length}
 							role="textbox"
-							value={value}
+							value={props.predefinedOptionsOnly
+								? (this.state.activeOption && this.state.activeOption.label)
+									|| props.value
+								: value}
 						/>
 						{props.isInline
 							? this.getInlineMenu({ menuRenderer: this.renderMenu({
@@ -618,8 +625,12 @@ class Combobox extends React.Component {
 						}}
 						onChange={this.handleInputChange}
 						placeholder={labels.placeholder}
+						readOnly={!!(props.predefinedOptionsOnly && this.state.activeOption)}
 						role="textbox"
-						value={props.value}
+						value={props.predefinedOptionsOnly
+							? (this.state.activeOption && this.state.activeOption.label)
+								|| props.value
+							: props.value}
 					/>
 					{props.isInline
 						? this.getInlineMenu({ menuRenderer: this.renderMenu({ assistiveText, labels }) })
@@ -680,8 +691,12 @@ class Combobox extends React.Component {
 						}}
 						onChange={this.handleInputChange}
 						placeholder={labels.placeholder}
+						readOnly={!!(props.predefinedOptionsOnly && this.state.activeOption)}
 						role="textbox"
-						value={props.value}
+						value={props.predefinedOptionsOnly
+							? (this.state.activeOption && this.state.activeOption.label)
+								|| props.value
+							: props.value}
 					/>
 					{props.isInline
 						? this.getInlineMenu({ menuRenderer: this.renderMenu({ assistiveText, labels }) })
