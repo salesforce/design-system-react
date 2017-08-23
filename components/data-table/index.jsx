@@ -218,7 +218,7 @@ const DataTable = React.createClass({
 					props,
 					dataTableProps: this.props
 				});
-			} else if (child && child.type === DataTableRowActions) {
+			} else if (child && child.type.displayName === DataTableRowActions.displayName) {
 				RowActions = child;
 			}
 		});

@@ -130,6 +130,10 @@ const Lookup = React.createClass({
 		 */
 		onBlur: PropTypes.func,
 		/**
+		 * Triggered when input is focused.
+		 */
+		onFocus: PropTypes.func,
+		/**
 		 * Triggered when the contents of the input changes.
 		 */
 		onChange: PropTypes.func,
@@ -373,7 +377,11 @@ const Lookup = React.createClass({
 		}
 	},
 
-	handleFocus () {
+	handleFocus (event) {
+		if (this.props.onFocus) {
+			const target = event.target || event.currentTarget;
+			this.props.onFocus(target.value);
+		}
 		this.setState({ isOpen: true });
 	},
 

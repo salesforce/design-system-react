@@ -30,6 +30,11 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.6.19
+**Bugfix Changes**
+
+- DataTable: Change child component (action row) validation to use `displayName` instead of type/function compare.
+
 ## Release 0.6.18
 **Bugfix Changes**
 
