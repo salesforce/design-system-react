@@ -49,6 +49,7 @@ const Menu = (props) => {
 	const menuOptions = props.options.map((optionData, index) => {
 		const active = (index === props.activeOptionIndex
 			&& isEqual(optionData, props.activeOption));
+		const selected = props.isSelected({ selection: props.selection, option: optionData });
 
 		return (
 			<li
@@ -59,6 +60,7 @@ const Menu = (props) => {
 				{{
 					'icon-title-subtitle': (
 						<span // eslint-disable-line jsx-a11y/no-static-element-interactions
+							aria-selected={active}
 							id={`${props.inputId}-listbox-option-${optionData.id}`}
 							className={classNames('slds-media slds-listbox__option',
 								'slds-listbox__option_entity slds-listbox__option_has-meta',
@@ -81,12 +83,13 @@ const Menu = (props) => {
 					),
 					checkbox: (
 						<span // eslint-disable-line jsx-a11y/no-static-element-interactions
+							aria-selected={active}
 							id={`${props.inputId}-listbox-option-${optionData.id}`}
 							className={classNames('slds-media slds-listbox__option',
 								' slds-listbox__option_plain slds-media_small slds-media_center',
 								{
 									'slds-has-focus': active,
-									'slds-is-selected': props.isSelected({ selection: props.selection, option: optionData })
+									'slds-is-selected': selected
 								})}
 							onClick={(event) => {
 								props.onSelect(event, { selection: props.selection, option: optionData });
@@ -102,7 +105,10 @@ const Menu = (props) => {
 								/>
 							</span>
 							<span className="slds-media__body">
-								<span className="slds-truncate" title="Option A"> {optionData.label}</span>
+								<span className="slds-truncate" title={optionData.label}>
+									{selected
+										? <span className="slds-assistive-text">{props.assistiveText.optionSelectedInMenu}</span>
+										: null} {optionData.label}</span>
 							</span>
 						</span>
 				)

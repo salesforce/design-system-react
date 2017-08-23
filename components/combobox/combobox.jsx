@@ -42,6 +42,7 @@ const propTypes = {
 	assistiveText: shape({
 		listboxLabel: PropTypes.string,
 		label: PropTypes.string,
+		optionSelectedInMenu: PropTypes.string,
 		removeSingleSelectedOption: PropTypes.string,
 		removePill: PropTypes.string
 	}),
@@ -139,6 +140,7 @@ const propTypes = {
 const defaultProps = {
 	assistiveText: {
 		listboxLabel: 'Selected Options:',
+		optionSelectedInMenu: 'Current Selection:',
 		removeSingleSelectedOption: 'Remove selected option',
 		removePill: ', Press delete or backspace to remove'
 	},
@@ -404,7 +406,7 @@ class Combobox extends React.Component {
 		}
 	}
 
-	renderMenu = () => {
+	renderMenu = ({ assistiveText }) => {
 		const menuVariant = {
 			base: 'icon-title-subtitle',
 			'inline-listbox': 'icon-title-subtitle',
@@ -413,14 +415,15 @@ class Combobox extends React.Component {
 
 		return (
 			<Menu
+				assistiveText={assistiveText}
 				activeOption={this.state.activeOption}
 				activeOptionIndex={this.state.activeOptionIndex}
-				emptyMessage={this.props.emptyMessage}
+				// emptyMessage={this.props.emptyMessage}
 				inputId={this.getId()}
 				inputValue={this.props.value}
 				isSelected={this.isSelected}
 				options={this.props.options}
-				optionsRenderer={this.props.optionsRenderer}
+				// optionsRenderer={this.props.optionsRenderer}
 				onSelect={this.handleSelect}
 				clearActiveOption={this.clearActiveOption}
 				selection={this.props.selection}
@@ -532,8 +535,14 @@ class Combobox extends React.Component {
 							value={value}
 						/>
 						{props.isInline
-							? this.getInlineMenu({ menuRenderer: this.renderMenu({ labels }) })
-							: this.getDialog({ menuRenderer: this.renderMenu({ labels }) })}
+							? this.getInlineMenu({ menuRenderer: this.renderMenu({
+								assistiveText,
+								labels
+							}) })
+							: this.getDialog({ menuRenderer: this.renderMenu({ assistiveText,
+								labels
+							}) })
+						}
 					</div>
 				</div>
 			</div>
@@ -613,8 +622,8 @@ class Combobox extends React.Component {
 						value={props.value}
 					/>
 					{props.isInline
-						? this.getInlineMenu({ menuRenderer: this.renderMenu({ labels }) })
-						: this.getDialog({ menuRenderer: this.renderMenu({ labels }) })}
+						? this.getInlineMenu({ menuRenderer: this.renderMenu({ assistiveText, labels }) })
+						: this.getDialog({ menuRenderer: this.renderMenu({ assistiveText, labels }) })}
 				</div>
 			</div>
 		</div>
@@ -675,8 +684,8 @@ class Combobox extends React.Component {
 						value={props.value}
 					/>
 					{props.isInline
-						? this.getInlineMenu({ menuRenderer: this.renderMenu({ labels }) })
-						: this.getDialog({ menuRenderer: this.renderMenu({ labels }) })}
+						? this.getInlineMenu({ menuRenderer: this.renderMenu({ assistiveText, labels }) })
+						: this.getDialog({ menuRenderer: this.renderMenu({ assistiveText, labels }) })}
 				</div>
 			</div>
 			<SelectedListBox
@@ -692,6 +701,7 @@ class Combobox extends React.Component {
 	);
 
 	renderReadOnlySingle = ({
+		assistiveText,
 		labels,
 		props
 	}) => {
@@ -751,11 +761,12 @@ class Combobox extends React.Component {
 							placeholder={labels.placeholderReadOnly}
 							readOnly
 							role="textbox"
-							value={value}
+							value={(this.state.activeOption && this.state.activeOption.label)
+								|| value}
 						/>
 						{props.isInline
-							? this.getInlineMenu({ menuRenderer: this.renderMenu({ labels }) })
-							: this.getDialog({ menuRenderer: this.renderMenu({ labels }) })}
+							? this.getInlineMenu({ menuRenderer: this.renderMenu({ assistiveText, labels }) })
+							: this.getDialog({ menuRenderer: this.renderMenu({ assistiveText, labels }) })}
 					</div>
 				</div>
 			</div>
@@ -828,8 +839,8 @@ class Combobox extends React.Component {
 							value={value}
 						/>
 						{props.isInline
-							? this.getInlineMenu({ menuRenderer: this.renderMenu({ labels }) })
-							: this.getDialog({ menuRenderer: this.renderMenu({ labels }) })}
+							? this.getInlineMenu({ menuRenderer: this.renderMenu({ assistiveText, labels }) })
+							: this.getDialog({ menuRenderer: this.renderMenu({ assistiveText, labels }) })}
 					</div>
 				</div>
 				{props.selection.length > 1 ? <SelectedListBox
