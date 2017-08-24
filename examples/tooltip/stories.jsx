@@ -91,7 +91,7 @@ storiesOf(POPOVER_TOOLTIP, module)
 	.add('Alignment (icon)', () => getPopoverTooltipAlign({
 		id: 'myPopoverId',
 		isOpen: true,
-		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
+		content: <span><Icon category="utility" inverse name="close" size="x-small" />wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie</span>, // react/no-unescaped-entities
 		trigger: (<Icon
 			assistiveText="Case Icon"
 			category="standard"
