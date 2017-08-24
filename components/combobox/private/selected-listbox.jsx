@@ -7,10 +7,12 @@ import PropTypes from 'prop-types';
 import Pill from '../../utilities/pill';
 
 import classNames from 'classnames';
+import isEqual from 'lodash.isequal';
 
 import { shape } from 'airbnb-prop-types';
 
 const propTypes = {
+	activeOption: PropTypes.object,
 	/**
 	 * **Assistive text for accessibility**
 	 * This object is merged with the default props object on every render.
@@ -20,6 +22,16 @@ const propTypes = {
 	assistiveText: shape({
 		label: PropTypes.string,
 		removePill: PropTypes.string
+	}),
+	/*
+	 * Callback called when pill is clicked, delete is pressed, or backspace is pressed.
+	 */
+	events: shape({
+		onClickPill: PropTypes.func.isRequired,
+		onRequestFocus: PropTypes.func.isRequired,
+		onRequestFocusOnNextPill: PropTypes.func.isRequired,
+		onRequestFocusOnPreviousPill: PropTypes.func.isRequired,
+		onRequestRemove: PropTypes.func.isRequired
 	}),
 	/**
 	 * HTML id for Combobox
@@ -37,16 +49,18 @@ const propTypes = {
 		remove: PropTypes.string,
 		title: PropTypes.string
 	}),
-	/*
-	 * Callback called when pill is clicked, delete is pressed, or backspace is pressed.
-	 */
-	events: shape({
-		onRequestRemove: PropTypes.func
-	}),
 	/**
 	 * Accepts an array of item objects.
 	 */
-	selection: PropTypes.array
+	selection: PropTypes.array,
+	/**
+	 * Requests that the active option set focus on render
+	 */
+	willSetFocus: PropTypes.bool,
+	/**
+		 * Changes styles of the input. Currently `entity` is not supported.
+		 */
+	variant: PropTypes.oneOf(['base', 'inline-listbox', 'readonly'])
 };
 
 const defaultProps = {};
@@ -68,9 +82,16 @@ const SelectedListBox = (props) => (
 			role="group"
 			aria-label={props.assistiveText.listboxLabel}
 		>
-			{props.selection.map((item) => {
-				const icon = item.icon
-					? React.cloneElement(item.icon, {
+			{props.selection.map((option, index) => {
+				const setActiveBasedOnstateFromParent = index === props.activeOptionIndex
+					&& isEqual(option, props.activeOption);
+				const listboxRenderedForFirstTime = props.selection.length === 1
+				|| (props.variant === 'readonly'
+					&& props.selection.length === 2
+					&& index === 0);
+				const active = setActiveBasedOnstateFromParent || listboxRenderedForFirstTime;
+				const icon = option.icon
+					? React.cloneElement(option.icon, {
 						containerClassName: 'slds-pill__icon_container'
 					})
 					: null;
@@ -79,23 +100,33 @@ const SelectedListBox = (props) => (
 					<li
 						role="presentation"
 						className="slds-listbox__item"
-						key={`${props.id}-list-item-${item.label}`}
+						key={`${props.id}-list-item-${option.label}`}
 					>
 						<Pill
+							active={active}
 							assistiveText={{
 								remove: props.assistiveText.removePill
 							}}
 							events={{
-								onRequestRemove: (event) => {
-									props.events.onRequestRemove(event, { option: item });
-								}
+								onBlur: props.events.onBlurPill,
+								onClick: (event, data) => {
+									props.events.onClickPill(event, { ...data, index });
+								},
+								onRequestFocusOnNextPill: props.events.onRequestFocusOnNextPill,
+								onRequestFocusOnPreviousPill: props.events.onRequestFocusOnPreviousPill,
+								onRequestRemove: (event, data) => {
+									props.events.onRequestRemove(event, { ...data, index });
+								},
+								onRequestFocus: props.events.onRequestFocus
 							}}
-							eventData={{ item }}
+							eventData={{ option }}
 							icon={icon}
 							labels={{
-								label: item.label,
+								label: option.label,
 								removeTitle: props.labels.removePillTitle
 							}}
+							requestFocus={props.willSetFocus}
+							tabIndex={active ? 0 : -1}
 						/>
 					</li>
 				);

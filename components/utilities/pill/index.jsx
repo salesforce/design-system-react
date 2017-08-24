@@ -10,10 +10,15 @@ import assign from 'lodash.assign';
 
 import KEYS from '../../../utilities/key-code';
 import mapKeyEventCallbacks from '../../../utilities/key-callbacks';
+import EventUtil from '../../../utilities/event';
 
 import { shape } from 'airbnb-prop-types';
 
 const propTypes = {
+	/**
+	 * Pill is the active pill within a listbox of pills. This will request focus on the DOM node.
+	 */
+	active: PropTypes.bool,
 	/**
 	 * **Assistive text for accessibility**
 	 * This object is merged with the default props object on every render.
@@ -27,6 +32,16 @@ const propTypes = {
 	 */
 	eventData: PropTypes.object,
 	/*
+	 * Callback called when pill is clicked, delete is pressed, or backspace is pressed.
+	 */
+	events: shape({
+		onClick: PropTypes.func,
+		onRequestFocus: PropTypes.func.isRequired,
+		onRequestFocusOnNextPill: PropTypes.func.isRequired,
+		onRequestFocusOnPreviousPill: PropTypes.func.isRequired,
+		onRequestRemove: PropTypes.func.isRequired
+	}),
+	/*
 	 * The icon next to the pill label.
 	 */
 	icon: PropTypes.element,
@@ -38,15 +53,17 @@ const propTypes = {
 		removeTitle: PropTypes.string
 	}),
 	/*
+	 * If true and is active pill in listbox, will trigger `events.onRequestFocus`
+	 */
+	requestFocus: PropTypes.bool,
+	/*
 	 * Pill Title
 	 */
 	title: PropTypes.string,
 	/*
-	 * Callback called when pill is clicked, delete is pressed, or backspace is pressed.
+	 * Allows the user to tab to the node
 	 */
-	events: shape({
-		onRequestRemove: PropTypes.func
-	})
+	tabIndex: PropTypes.number
 };
 
 const defaultProps = {
@@ -63,10 +80,18 @@ const handleKeyDown = (event, { events, data }) => {
 	// Helper function that takes an object literal of callbacks that are triggered with a key event
 	mapKeyEventCallbacks(event, {
 		callbacks: {
+			[KEYS.BACKSPACE]: { callback: events.onRequestRemove, data },
 			[KEYS.DELETE]: { callback: events.onRequestRemove, data },
-			[KEYS.BACKSPACE]: { callback: events.onRequestRemove, data }
+			[KEYS.LEFT]: { callback: events.onRequestFocusOnPreviousPill,
+				data: { ...data, direction: 'previous' } },
+			[KEYS.RIGHT]: { callback: events.onRequestFocusOnNextPill,
+				data: { ...data, direction: 'next' } }
 		}
 	});
+};
+
+const handleClickRemove = (event, { events, eventData }) => {
+	events.onRequestRemove(event, eventData);
 };
 
 const Pill = (props) => {
@@ -77,13 +102,29 @@ const Pill = (props) => {
 		<span // eslint-disable-line jsx-a11y/no-static-element-interactions
 			className="slds-pill"
 			role="option"
-			tabIndex={0}
+			tabIndex={props.tabIndex || '0'}
 			aria-selected="true"
+			onBlur={(event) => {
+				console.log('test');
+				props.events.onBlur(event);
+			}}
+			onClick={(event) => {
+				if (props.events.onClick) {
+					props.events.onClick(event, {
+						option: props.eventData
+					});
+				}
+			}}
 			onKeyDown={(event) => {
 				handleKeyDown(event, {
 					events: props.events,
 					data: props.eventData
 				});
+			}}
+			ref={(component) => {
+				if (props.requestFocus && props.active) {
+					props.events.onRequestFocus(undefined, { ref: component });
+				}
 			}}
 		>
 			{props.icon}
@@ -93,7 +134,8 @@ const Pill = (props) => {
 					className="slds-icon_container slds-pill__remove"
 					title={labels.removeTitle}
 					onClick={(event) => {
-						props.events.onRequestRemove(event, {
+						EventUtil.trap(event);
+						handleClickRemove(event, {
 							events: props.events,
 							eventData: props.eventData
 						});
