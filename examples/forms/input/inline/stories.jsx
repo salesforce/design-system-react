@@ -16,6 +16,16 @@ const DemoInlineEdit = React.createClass({
 		};
 	},
 
+	handleChange (eventProps, ...rest) {
+		action('change')(rest);
+
+		if (eventProps.value === '') {
+			this.setState({ value: 'Edit me inline' });
+		} else {
+			this.setState({ value: eventProps.value });
+		}
+	},
+
 	render () {
 		return (
 			<InlineEdit
@@ -24,12 +34,6 @@ const DemoInlineEdit = React.createClass({
 				onChange={this.handleChange}
 			/>
 		);
-	},
-
-	handleChange (eventProps, ...rest) {
-		action('change')(rest);
-
-		this.setState({ value: eventProps.value });
 	}
 });
 
