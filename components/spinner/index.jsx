@@ -26,6 +26,10 @@ const PROP_TYPES = {
    */
 	containerClassName: PropTypes.string,
   /**
+   * Unique html id placed on div with role="status".
+   */
+	id: PropTypes.string,
+  /**
    * Determines if spinner is inside input field
    */
 	isInput: PropTypes.bool,
@@ -40,7 +44,7 @@ const PROP_TYPES = {
 };
 
 const DEFAULT_PROPS = {
-	assistiveText: 'Loading',
+	assistiveText: 'Loading...',
 	size: 'medium',
 	variant: 'base'
 };
@@ -50,6 +54,7 @@ const Spinner = (props) => {
 	const {
 		assistiveText,
 		containerClassName,
+		id,
 		isInput,
 		size,
 		variant
@@ -65,8 +70,9 @@ const Spinner = (props) => {
 	return (
 		<div className={classNames(containerClassName, 'slds-spinner_container')}>
 			<div
-				className={spinnerClassName}
 				aria-hidden="false"
+				className={spinnerClassName}
+				id={id}
 				role="status"
 			>
 				{assistiveText && <span className="slds-assistive-text">{assistiveText}</span>}
