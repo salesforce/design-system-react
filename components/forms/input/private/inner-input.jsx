@@ -161,6 +161,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+	spinnerAssistiveText: 'Loading ...',
 	type: 'text'
 };
 
@@ -174,7 +175,8 @@ const InnerInput = (props) => (
 			'slds-input-has-icon_left': props.iconLeft && !props.iconRight,
 			'slds-input-has-icon_right': !props.iconLeft && props.iconRight,
 			'slds-input-has-icon_left-right': props.iconLeft && props.iconRight,
-			'slds-input-has-fixed-addon': props.fixedTextLeft || props.fixedTextRight
+			'slds-input-has-fixed-addon': props.fixedTextLeft || props.fixedTextRight,
+			'slds-has-divider--bottom': props.isStatic
 		})}
 	>
 		{props.iconLeft && props.iconLeft}
@@ -185,7 +187,7 @@ const InnerInput = (props) => (
 			aria-autocomplete={props['aria-autocomplete']}
 			aria-controls={props['aria-controls']}
 			aria-labelledby={props['aria-labelledby']}
-			aria-describedby={props['aria-describedby']}
+			aria-describedby={props.hasSpinner ? `loading-status-icon ${props['aria-describedby']}` : props['aria-describedby']}
 			aria-expanded={props['aria-expanded']}
 			aria-owns={props['aria-owns']}
 			aria-required={props['aria-required']}
@@ -220,7 +222,14 @@ const InnerInput = (props) => (
 		{ props.hasSpinner
 				? (
 					<div className="slds-input__icon-group slds-input__icon-group_right">
-						{props.hasSpinner && <Spinner isInput size="x-small" variant="brand" />}
+						{props.hasSpinner && (
+							<Spinner
+								assistiveText={props.spinnerAssistiveText}
+								id="loading-status-icon"
+								isInput size="x-small"
+								variant="brand"
+							/>
+						)}
 						{props.iconRight && props.iconRight}
 					</div>
 				)
@@ -230,10 +239,12 @@ const InnerInput = (props) => (
 		{props.fixedTextRight && <span className="slds-form-element__addon">{props.fixedTextRight}</span>}
 
 		{/* eslint-disable jsx-a11y/no-static-element-interactions */}
-		{props.isStatic && <span className="slds-form-element__static" onClick={props.onClick}>
-			{props.value}
-			{props.inlineEditTrigger}
-		</span>}
+		{props.isStatic && (
+			<span className="slds-form-element__static" onClick={props.onClick}>
+				{props.value}
+				{props.inlineEditTrigger}
+			</span>
+		)}
 		{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 
 	</div>

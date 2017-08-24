@@ -83,7 +83,7 @@ describe('SLDS INPUT **************************************************', () => 
 		let label;
 
 		beforeEach(() => {
-			component = getInput({ assistiveText: 'Assistive Label' });
+			component = getInput({ assistiveText: { label: 'Assistive Label' } });
 			label = findRenderedDOMComponentWithClass(component, 'slds-form-element__label');
 		});
 
