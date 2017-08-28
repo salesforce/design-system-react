@@ -26,6 +26,40 @@ import DOMElementFocus from '../../../utilities/dom-element-focus';
 
 import { DIALOG } from '../../../utilities/constants';
 
+// Translates the prop into a string pooper can use
+function mapPropToPopperPlacement (propString) {
+	let placement;
+	switch (propString) {
+		case 'top left':
+			placement = 'top-start';
+			break;
+		case 'top right':
+			placement = 'top-end';
+			break;
+		case 'right top':
+			placement = 'right-start';
+			break;
+		case 'right bottom':
+			placement = 'right-end';
+			break;
+		case 'bottom left':
+			placement = 'bottom-start';
+			break;
+		case 'bottom right':
+			placement = 'bottom-end';
+			break;
+		case 'left top':
+			placement = 'left-start';
+			break;
+		case 'left bottom':
+			placement = 'left-end';
+			break;
+		default:
+			placement = propString;
+	}
+	return placement;
+}
+
 /* Dialog creates a new top-level React tree and injects its child into it. This is necessary for proper styling (especially positioning). A dialog is a non-modal container that separates content from the rest of the web application. This library uses the Drop library (https://github.com/HubSpot/drop which is based on TetherJS) to absolutely position and align content to another item on the page. This component is not meant for external consumption or part of the published component API.
 */
 const Dialog = React.createClass({
@@ -220,10 +254,12 @@ const Dialog = React.createClass({
 	_createPopper () {
 		const reference = this.target();
 		const popper = this.dialogContent;
-		const placement = 'top'; // one of Popper.placements
-		const eventsEnabled = true; // a boolean
+		const placement = mapPropToPopperPlacement(this.props.align);
+		const eventsEnabled = true; // Lets popper listen to events (resize, scroll, etc.)
 		const modifiers = {
 			applyStyle: { enabled: false },
+			preventOverflow: { enabled: false },
+			flip: { enabled: false },
 			updateState: {
 				enabled: true,
 				order: 900,
@@ -249,6 +285,22 @@ const Dialog = React.createClass({
 			modifiers
 		});
 		this._popper.scheduleUpdate();
+	},
+
+	_getPopperStyles () {
+		const { data } = this.state;
+		if (!this._popper || !data) {
+			return {
+				position: 'absolute',
+				pointerEvents: 'none',
+				opacity: 0
+			};
+		}
+
+		const { position } = data.offsets.popper;
+		const left = `${data.offsets.popper.left}px`;
+		const top = `${data.offsets.popper.top}px`;
+		return { ...data.style, left, top, position };
 	},
 
 	_destroyPopper () {
@@ -286,20 +338,12 @@ const Dialog = React.createClass({
 	},
 
 	renderDialogContents () {
-		// if (!this.state.isOpen) {
-		// 	return <span />;
-		// }
-
-		let style = {
-			transform: 'none',
-			WebkitTransform: 'none',
+		let style = Object.assign(this._getPopperStyles(), {
 			marginTop: this.props.marginTop,
 			marginBottom: this.props.marginBottom,
 			marginLeft: this.props.marginLeft,
-			marginRight: this.props.marginRight,
-			float: 'inherit',
-			position: 'inherit'
-		};
+			marginRight: this.props.marginRight
+		});
 
 		if (this.props.inheritTargetWidth) {
 			style.width = this.target().getBoundingClientRect().width;
