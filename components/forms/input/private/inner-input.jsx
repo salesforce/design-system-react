@@ -161,6 +161,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+	spinnerAssistiveText: 'Loading ...',
 	type: 'text'
 };
 
@@ -185,7 +186,7 @@ const InnerInput = (props) => (
 			aria-autocomplete={props['aria-autocomplete']}
 			aria-controls={props['aria-controls']}
 			aria-labelledby={props['aria-labelledby']}
-			aria-describedby={props['aria-describedby']}
+			aria-describedby={props.hasSpinner ? `loading-status-icon ${props['aria-describedby']}` : props['aria-describedby']}
 			aria-expanded={props['aria-expanded']}
 			aria-owns={props['aria-owns']}
 			aria-required={props['aria-required']}
@@ -220,7 +221,14 @@ const InnerInput = (props) => (
 		{ props.hasSpinner
 				? (
 					<div className="slds-input__icon-group slds-input__icon-group_right">
-						{props.hasSpinner && <Spinner isInput size="x-small" variant="brand" />}
+						{props.hasSpinner && (
+							<Spinner
+								assistiveText={props.spinnerAssistiveText}
+								id="loading-status-icon"
+								isInput size="x-small"
+								variant="brand"
+							/>
+						)}
 						{props.iconRight && props.iconRight}
 					</div>
 				)

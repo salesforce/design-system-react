@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 
 import { FORMS_INPUT } from '../../../utilities/constants';
+import Button from '../../../components/button';
 import Input from '../../../components/forms/input';
 import InputIcon from '../../../components/icon/input-icon';
 
@@ -28,7 +29,7 @@ storiesOf(FORMS_INPUT, module)
 				<li className="slds-p-bottom--large">
 					<h1 className="slds-text-title_caps slds-p-vertical--medium">2. Base Input with hidden label (assistive text)</h1>
 					<Input
-						assistiveText="My label"
+						assistiveText={{ label: 'My label' }}
 						id="assistiveLabel-id"
 						placeholder="My placeholder"
 					/>
@@ -105,11 +106,12 @@ storiesOf(FORMS_INPUT, module)
 				<li className="slds-p-bottom--large">
 					<h1 className="slds-text-title_caps slds-p-vertical--medium">8. Base Input with left, clickable right icon, and loading spinner</h1>
 					<Input
-						name="right-clickable-icon"
-						label="My Label"
+						assistiveText={{ spinner: 'Field data is loading' }}
 						hasSpinner
 						iconLeft={searchIcon}
 						iconRight={clearIconClickable}
+						label="My Label"
+						name="right-clickable-icon"
 						placeholder="My placeholder"
 					/>
 				</li>
@@ -162,13 +164,18 @@ storiesOf(FORMS_INPUT, module)
 	))
 	.add('Required Input in Error State', () => (
 		<section>
+			<h1 className="slds-text-title_caps slds-p-vertical--medium">Example Button</h1>
+			<Button
+				label="Test"
+			/>
+
 			<h1 className="slds-text-title_caps slds-p-vertical--medium">Required Input with Error</h1>
 			<Input
 				aria-describedby="error-1"
 				name="required-input-error"
 				label="My Label"
 				required
-				errorText="Error Message"
+				errorText="This field is required."
 				placeholder="My placeholder"
 			/>
 		</section>

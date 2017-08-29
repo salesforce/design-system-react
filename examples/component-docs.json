@@ -2997,6 +2997,17 @@
             }
         ],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\nText that is visually hidden but read aloud on the Edit Icon button",
+                "defaultValue": {
+                    "value": "'Edit text'",
+                    "computed": false
+                }
+            },
             "className": {
                 "type": {
                     "name": "union",
@@ -3225,10 +3236,11 @@
             },
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "custom",
+                    "raw": "shape({\n    label: PropTypes.string,\n    spinner: PropTypes.string\n})"
                 },
                 "required": false,
-                "description": "If present, the label associated with this `input` is overwritten\nby this text and is visually not shown."
+                "description": "**Assistive text for accessibility**\n* `label`: Visually hidden label but read out loud by screen readers.\n* `spinner`: Text for loading spinner icon."
             },
             "children": {
                 "type": {
