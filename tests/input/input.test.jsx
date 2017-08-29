@@ -82,7 +82,7 @@ describe('SLDS INPUT **************************************************', () => 
 		let label;
 
 		beforeEach(() => {
-			component = getInput({ assistiveText: 'Assistive Label' });
+			component = getInput({ assistiveText: { label: 'Assistive Label' } });
 			label = findRenderedDOMComponentWithClass(component, 'slds-form-element__label');
 		});
 
@@ -106,6 +106,30 @@ describe('SLDS INPUT **************************************************', () => 
 
 		beforeEach(() => {
 			component = getInput({ label: 'Input Label', readOnly: true });
+			label = findRenderedDOMComponentWithTag(component, 'label');
+			input = findRenderedDOMComponentWithTag(component, 'input');
+		});
+
+		afterEach(() => {
+			removeInput();
+		});
+
+		it('label is a span and has class "slds-form-element__label"', () => {
+			expect(label.className).to.include('slds-form-element__label');
+		});
+
+		it('input is a span and has attribute "readonly"', () => {
+			expect(input.getAttribute('readonly')).to.equal('');
+		});
+	});
+
+	describe('Static Input', () => {
+		let component;
+		let label;
+		let input;
+
+		beforeEach(() => {
+			component = getInput({ label: 'Input Label', isStatic: true });
 			label = scryRenderedDOMComponentsWithTag(component, 'span')[0];
 			input = scryRenderedDOMComponentsWithTag(component, 'span')[1];
 		});
