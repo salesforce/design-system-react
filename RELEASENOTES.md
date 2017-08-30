@@ -30,6 +30,16 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.6.20
+**Bugfix Changes**
+
+- Notification: ref to the Button component returned an obj but fixed it so that it returns the actual ref.
+
+**Misc.**
+
+- Update CONTRIBUTING doc
+
+
 ## Release 0.6.19
 **Bugfix Changes**
 
@@ -86,7 +96,7 @@ These are changes that have backwards-compatible solutions present and that comp
 
 - Update package.json dependencies
 - Switches to newest Heroku stack for deployment pipeline.
-- Fixes missing icons on Heroku PR apps. 
+- Fixes missing icons on Heroku PR apps.
 - Updates Jest and snapshots
 - Updates sinon and sinon-chai
 - Removes babel-eslint as a dependency
