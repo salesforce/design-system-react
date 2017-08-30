@@ -77,7 +77,7 @@ const Lookup = React.createClass({
 		/**
 		 * Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.
 		 */
-		emptyMessage: PropTypes.oneOfType(PropTypes.string, PropTypes.element),
+		emptyMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 		/**
 		 * Custom function to filter the Lookup items when typing into input field. The default function is case-insensitive and uses the searchTerm to filter Lookup items on their labels.
 		 */
