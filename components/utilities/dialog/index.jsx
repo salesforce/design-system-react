@@ -213,6 +213,7 @@ const Dialog = React.createClass({
 
 	getDefaultProps () {
 		return {
+			align: 'bottom left',
 			verticalAlign: 'bottom',
 			horizontalAlign: 'left',
 			closeOnTabKey: false,
@@ -292,8 +293,7 @@ const Dialog = React.createClass({
 		if (!this._popper || !data) {
 			return {
 				position: 'absolute',
-				pointerEvents: 'none',
-				opacity: 0
+				pointerEvents: 'none'
 			};
 		}
 
