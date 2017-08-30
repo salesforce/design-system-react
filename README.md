@@ -42,18 +42,16 @@ npm run dist
 
 `design-system-react` should be paired with React 15.x. This library and it's markup will be updated to the next version of the Lightning Design System at "core" release freeze. Releases with critical production bugfixes can be made for older versions of Lightning Design System upon request. You can find the specific version of SLDS in use, and a more complete [getting started guide](https://react.lightningdesignsystem.com/getting-started/) on the documentation site.
 
-### SLDS Icons in design system react
-Starting in version 0.7x, design-system-react will not automatically include SLDS icons which will bring the minified library from 751KB to 392KB. If you use the bundled files (not recommended), `design-system-react.min.js` includes icons and `design-system-react-components.min.js` does not.
+### SLDS Icons
+Starting in version 0.7.x, this library will not include SLDS icons by default due to the size of the icons. The bundled file `design-system-react.min.js` (700KB+) still includes icons. The bundled file `design-system-react-components.min.js` (~400KB) does not include icons.
 
-In prior versions, SLDS icons "just worked" out of the box in design-system-react. However, now you will need to host the icons yourself (if you don't use the bundled `design-system-react.min.js`). You'll also need to set the path to the icon assets using the component `<IconSettings>` which you can either wrap around the entire app or individual components. The `iconPath` prop is set as React `context` and passed down to componenets in the subtree. Here is an example:
+In prior versions, SLDS icons "just worked" out of the box. However, now you will need to host the icons yourself. You'll also need to set the path to the icon assets using the component `<IconSettings>` which you can either wrap around the entire app or individual components. The `iconPath` prop is set as React `context` and passed down to componenets in its subtree where it will place the correct path in the SVG tag. Here is an example:
 
 ```
-import IconSettings from '~components/iconSettings';
-
-...
+import IconSettings from 'design-system-react/components/iconSettings';
 
 ReactDOM.render(
-	<IconSettings iconPath='/assets/icons'>
+	<IconSettings iconPath="/assets/icons">
 		<MyApp />
 	</IconSettings>,
 	document.getElementById('app')
