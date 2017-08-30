@@ -17,9 +17,6 @@ const Example = React.createClass({
 				<TabsPanel label="Item Three">
 					Item Three Content
 				</TabsPanel>
-				<TabsPanel disabled label="Disabled">
-					Disabled Content
-				</TabsPanel>
 			</Tabs>
 		);
 	}

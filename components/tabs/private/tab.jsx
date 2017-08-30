@@ -15,9 +15,6 @@ import classNames from 'classnames';
 // ## Constants
 import { TAB } from '../../../utilities/constants';
 
-// Temporary hack until included in SLDS
-import '!style!css!../../../styles/tabs/tab.css'; // eslint-disable-line import/no-unresolved
-
 const Tab = React.createClass({
 	displayName: TAB,
 
@@ -41,11 +38,6 @@ const Tab = React.createClass({
 		 * When `true`, the class `.slds-active` is applied.
 		 */
 		selected: PropTypes.bool,
-
-		/**
-		 * When `true`, the HTML attribute `aria-disabled` will be applied.
-		 */
-		disabled: PropTypes.bool,
 
 		/**
 		 * The CSS class to be applied when this tab is selected. Defaults to `.slds-active`. If another class is desired, it should be passed in _along with_ `.slds-active`, not _instead_ of it.
