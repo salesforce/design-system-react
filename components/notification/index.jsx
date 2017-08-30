@@ -129,7 +129,7 @@ class Notification extends React.Component {
 					inverse
 					className="slds-notify__close"
 					onClick={this.onDismiss}
-					ref={(dismissBtn) => { this.dismissBtnRef = dismissBtn; }}
+					buttonRef={(dismissBtn) => { this.dismissBtnRef = dismissBtn; }}
 					variant="icon"
 				/>
 			);
