@@ -202,7 +202,7 @@ _from [Controlled Components](https://facebook.github.io/react/docs/forms.html#c
 * `extends React.Component`
   * display name
   * prop types
-  * defaults props 
+  * defaults props
   * initial state within `constructor`
   * life cycle methods
   * sub-render methods (keep to a minimum, only use to stay "DRY")
@@ -238,7 +238,7 @@ class DemoComponent extends React.Component {
 
     // useful for unique DOM IDs
     this.generatedId = this.props.id || shortid.generate();
-    
+
     // initial state
     this.state = {};
   }
@@ -552,7 +552,7 @@ from the [Planning Center](https://github.com/planningcenter/react-patterns)
 
 ## Release with build server (preferred)
 1. Add release notes for your version to [RELEASENOTES.md](RELEASENOTES.md) under Latest Release heading.
-1. Commit and push a blank text file name `patch.md` or `minor.md` to the `master` branch. In the future, this will contain the release notes. The build server will detect this, delete the file, create a release for you,  push back to the library repository. 
+1. Commit and push a blank text file name `patch.md` or `minor.md` to the `master` branch. In the future, this will contain the release notes. The build server will detect this, delete the file, create a release for you,  push back to the library repository.
 1. Copy and paste your release notes into the [Github Draft Release UI](https://github.com/salesforce-ux/design-system-react/releases) and publish.
 
 ### Manual release

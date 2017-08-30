@@ -172,6 +172,7 @@ class PopoverTooltip extends React.Component {
 
 		return isOpen
 			? <Dialog
+				context={this.context}
 				closeOnTabKey
 				flippable={false}
 				marginBottom={getMargin.bottom(align)}
@@ -247,6 +248,9 @@ class PopoverTooltip extends React.Component {
 
 }
 
+PopoverTooltip.contextTypes = {
+	iconPath: PropTypes.string
+};
 
 PopoverTooltip.displayName = displayName;
 PopoverTooltip.propTypes = propTypes;

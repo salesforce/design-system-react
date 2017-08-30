@@ -743,6 +743,7 @@ const MenuDropdown = React.createClass({
 						'ignore-react-onclickoutside',
 						positionClassName,
 						this.props.className)}
+					context={this.context}
 					flippable={!this.props.hasStaticAlignment}
 					horizontalAlign={this.props.align}
 					inheritTargetWidth={this.props.inheritTargetWidth}
@@ -867,6 +868,10 @@ const MenuDropdown = React.createClass({
 		);
 	}
 });
+
+MenuDropdown.contextTypes = {
+	iconPath: PropTypes.string
+};
 
 module.exports = MenuDropdown;
 module.exports.ListItem = ListItem;

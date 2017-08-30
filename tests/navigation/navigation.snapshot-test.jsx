@@ -4,8 +4,6 @@ import { renderMarkup } from '../snapshot-helpers';
 
 import SnapshotDefault from '../../examples/navigation/snapshot-default';
 
-import globalSettings from '../../components/settings';
-
 test('Navigation Default DOM Snapshot', () => {
 	const domTree = renderer.create(
 		<SnapshotDefault />,

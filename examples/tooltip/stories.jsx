@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
+import IconSettings from '../../components/iconSettings';
 
 import { POPOVER_TOOLTIP } from '../../utilities/constants';
 import PopoverTooltip from '../../components/popover-tooltip';
@@ -61,7 +62,7 @@ storiesOf(POPOVER_TOOLTIP, module)
 			margin: '100px auto',
 			textAlign: 'center',
 			width: '500px' }}
-	>{getStory()}</div>)
+	><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Base', () => getPopoverTooltip({
 		align: 'bottom',
 		id: 'myPopoverId',
@@ -90,7 +91,7 @@ storiesOf(POPOVER_TOOLTIP, module)
 	.add('Alignment (icon)', () => getPopoverTooltipAlign({
 		id: 'myPopoverId',
 		isOpen: true,
-		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
+		content: <span><Icon category="utility" inverse name="close" size="x-small" />wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie</span>, // react/no-unescaped-entities
 		trigger: (<Icon
 			assistiveText="Case Icon"
 			category="standard"

@@ -1,11 +1,12 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
+import IconSettings from '../../components/iconSettings';
 
 import { NOTIFICATION } from '../../utilities/constants';
 import Notification from '../../components/notification';
 
 storiesOf(NOTIFICATION, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Base: Alert', () => (
 		<Notification
 			content={['Your new contact ', <a href="javascript:void(0);" key="0123">Sara Smith</a>, ' was successfully created.']}

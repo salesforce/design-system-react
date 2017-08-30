@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
+import IconSettings from '../../components/iconSettings';
 
 import Datepicker from '~/components/date-picker';
 import { DATE_PICKER } from '../../utilities/constants';
@@ -11,7 +12,7 @@ import SnaphotDefault from './snapshot-default';
 import WeekdayPicker from './weekday-picker';
 
 storiesOf(DATE_PICKER, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Default', () => (<Default action={action} />))
 	.add('ISO weekdays', () => (<IsoWeekdays action={action} />))
 	.add('Custom Input', () => (<CustomInput action={action} />))

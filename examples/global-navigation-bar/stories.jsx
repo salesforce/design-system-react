@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
+import IconSettings from '../../components/iconSettings';
 
 import { GLOBAL_NAVIGATION_BAR } from '../../utilities/constants';
 
@@ -308,7 +309,7 @@ const getGlobalNavigationBarNoNav = (props, primaryRegionProps) => (
 );
 
 storiesOf(GLOBAL_NAVIGATION_BAR, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Base', () => getGlobalNavigationBar(propSets.base.props, propSets.base.primaryRegionProps))
 	.add('Custom Cloud', () => getGlobalNavigationBarCustomCloud(propSets.customCloud.props, propSets.customCloud.primaryRegionProps))
 	.add('Custom Cloud (Multiple active and white)', () =>

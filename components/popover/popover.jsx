@@ -403,6 +403,7 @@ const Popover = React.createClass({
 					align={props.align}
 					contentsClassName={classNames(this.props.contentsClassName, 'ignore-react-onclickoutside')}
 					constrainToScrollParent={props.constrainToScrollParent}
+					context={this.context}
 					flippable={!props.hasStaticAlignment}
 					marginBottom={getMargin.bottom(props.align)}
 					marginLeft={getMargin.left(props.align)}
@@ -423,9 +424,9 @@ const Popover = React.createClass({
 						aria-labelledby={this.props.ariaLabelledby ? this.props.ariaLabelledby : `${this.getId()}-dialog-heading`}
 						aria-describedby={`${this.getId()}-dialog-body`}
 						className={classNames(
-							'slds-popover',
-							getNubbinClassName(props.align),
-							props.className,
+						'slds-popover',
+						getNubbinClassName(props.align),
+						props.className,
 						)}
 						id={`${this.getId()}-popover`}
 						role="dialog"
@@ -512,6 +513,10 @@ const Popover = React.createClass({
 		);
 	}
 });
+
+Popover.contextTypes = {
+	iconPath: PropTypes.string
+};
 
 module.exports = Popover;
 module.exports.PopoverNubbinPositions = PopoverNubbinPositions;

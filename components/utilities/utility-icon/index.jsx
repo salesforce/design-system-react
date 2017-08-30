@@ -10,58 +10,66 @@ import checkProps from './check-props';
 
 import Svg from './svg';
 
-import settings from '../../../components/settings';
-
 import * as SLDS_ICONS_UTILITY from '../../../icons/utility';
 import * as SLDS_ICONS_ACTION from '../../../icons/action';
 import * as SLDS_ICONS_CUSTOM from '../../../icons/custom';
 import * as SLDS_ICONS_DOCTYPE from '../../../icons/doctype';
 import * as SLDS_ICONS_STANDARD from '../../../icons/standard';
 
-const UtilityIcon = ({ name = '',
+const UtilityIcon = ({
+	name = '',
 	assistiveText, // eslint-disable-line no-unused-vars
 	category,
 	icon,
 	path,
 	...rest
-}) => {
+}, context) => {
+	checkProps('UtilityIcon', { name, category, path, context });
+
 	let data;
 
-	// if the user passes in modified path, then we don't use data
 	if (!path) {
 		if (icon) {
 			data = icon;
 		} else {
 			switch (category) {
 				case 'action':
-					data = SLDS_ICONS_ACTION[name.toLowerCase()];
-					data.viewBox = SLDS_ICONS_ACTION.viewBox;
+					if (Object.keys(SLDS_ICONS_ACTION).length > 1) {
+						data = SLDS_ICONS_ACTION[name.toLowerCase()];
+						data.viewBox = SLDS_ICONS_ACTION.viewBox;
+					}
 					break;
 				case 'custom':
-					data = SLDS_ICONS_CUSTOM[name.toLowerCase()];
-					data.viewBox = SLDS_ICONS_CUSTOM.viewBox;
+					if (Object.keys(SLDS_ICONS_CUSTOM).length > 1) {
+						data = SLDS_ICONS_CUSTOM[name.toLowerCase()];
+						data.viewBox = SLDS_ICONS_CUSTOM.viewBox;
+					}
 					break;
 				case 'doctype':
-					data = SLDS_ICONS_DOCTYPE[name.toLowerCase()];
-					data.viewBox = SLDS_ICONS_DOCTYPE.viewBox;
+					if (Object.keys(SLDS_ICONS_DOCTYPE).length > 1) {
+						data = SLDS_ICONS_DOCTYPE[name.toLowerCase()];
+						data.viewBox = SLDS_ICONS_DOCTYPE.viewBox;
+					}
 					break;
 				case 'standard':
-					data = SLDS_ICONS_STANDARD[name.toLowerCase()];
-					data.viewBox = SLDS_ICONS_STANDARD.viewBox;
+					if (Object.keys(SLDS_ICONS_STANDARD).length > 1) {
+						data = SLDS_ICONS_STANDARD[name.toLowerCase()];
+						data.viewBox = SLDS_ICONS_STANDARD.viewBox;
+					}
 					break;
 				case 'utility':
 				default:
-					data = SLDS_ICONS_UTILITY[name.toLowerCase()];
-					data.viewBox = SLDS_ICONS_UTILITY.viewBox;
+					if (Object.keys(SLDS_ICONS_UTILITY).length > 1) {
+						data = SLDS_ICONS_UTILITY[name.toLowerCase()];
+						data.viewBox = SLDS_ICONS_UTILITY.viewBox;
+					}
 					break;
 			}
 		}
 	}
 
 	// Use icon path prop if set, then see if a global path is set, if not use inline icons
-	const modifiedPath = path || (settings.getIconsPath() && `${settings.getIconsPath()}/${category}-sprite/svg/symbols.svg#${name}`);
-
-	checkProps('UtilityIcon', { name, category, path });
+	const modifiedPath = path || (context.iconPath && `${context.iconPath}/${category}-sprite/svg/symbols.svg#${name}`);
 
 	const output = modifiedPath && !icon
 		? (<svg {...rest}>
@@ -92,6 +100,10 @@ UtilityIcon.propTypes = {
 
 UtilityIcon.defaultProps = {
 	category: 'utility'
+};
+
+UtilityIcon.contextTypes = {
+	iconPath: PropTypes.string
 };
 
 module.exports = UtilityIcon;

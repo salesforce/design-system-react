@@ -23,10 +23,6 @@ import SizesSmall from '../../examples/icon/sizes-small';
 import SizesMedium from '../../examples/icon/sizes-medium';
 import SizesLarge from '../../examples/icon/sizes-large';
 
-import globalSettings from '../../components/settings';
-
-globalSettings.setIconsPath('/assets/icons');
-
 test('Icon Category Standard HTML Snapshot', () => {
 	expect(renderMarkup(Standard)).toMatchSnapshot();
 });

@@ -42,6 +42,24 @@ npm run dist
 
 `design-system-react` should be paired with React 15.x. This library and it's markup will be updated to the next version of the Lightning Design System at "core" release freeze. Releases with critical production bugfixes can be made for older versions of Lightning Design System upon request. You can find the specific version of SLDS in use, and a more complete [getting started guide](https://react.lightningdesignsystem.com/getting-started/) on the documentation site.
 
+### SLDS Icons in design system react
+Starting in version 0.7x, design-system-react will not automatically include SLDS icons which will bring the minified library from 751KB to 392KB. If you use the bundled files (not recommended), `design-system-react.min.js` includes icons and `design-system-react-components.min.js` does not.
+
+In prior versions, SLDS icons "just worked" out of the box in design-system-react. However, now you will need to host the icons yourself (if you don't use the bundled `design-system-react.min.js`). You'll also need to set the path to the icon assets using the component `<IconSettings>` which you can either wrap around the entire app or individual components. The `iconPath` prop is set as React `context` and passed down to componenets in the subtree. Here is an example:
+
+```
+import IconSettings from '~components/iconSettings';
+
+...
+
+ReactDOM.render(
+	<IconSettings iconPath='/assets/icons'>
+		<MyApp />
+	</IconSettings>,
+	document.getElementById('app')
+	)
+```
+
 ### New to React?
 
 Take a look at our [recommended reading list](https://react.lightningdesignsystem.com/resources/) on the documentation site and level up on your knowledge. The reading list also includes helpful articles on Redux, Webpack, ES6, and structuring your app. The [Concepts and Best Practices](https://react.lightningdesignsystem.com/contributing/#concepts-and-best-practices) section of the [Contributing](https://react.lightningdesignsystem.com/contributing/) page will help you understand the approach of this library and offer some suggestions for your own components, too.

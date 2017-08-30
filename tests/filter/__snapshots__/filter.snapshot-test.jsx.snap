@@ -1,292 +1,310 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AssistiveText Filter 1`] = `
-<SLDSFilter
-  align="left"
-  assistiveText={
-    Object {
-      "editFilter": "editFilter-TEST",
-      "editFilterHeading": "editFilterHeading-TEST",
-      "removeFilter": "removeFilter-TEST",
-    }
-  }
-  id="sample-panel-filtering-show-me"
-  onChange={[Function]}
-  onRemove={[Function]}
-  predicate="All Products"
-  property="Show Me"
+<IconSettings
+  iconPath="/assets/icons"
 >
-  <SLDSMenuPicklist
-    checkmark={true}
-    inheritTargetWidth={true}
-    isInline={true}
-    label="Show Me"
-    labels={
+  <SLDSFilter
+    align="left"
+    assistiveText={
       Object {
-        "multipleOptionsSelected": "Multiple Options Selected",
+        "editFilter": "editFilter-TEST",
+        "editFilterHeading": "editFilterHeading-TEST",
+        "removeFilter": "removeFilter-TEST",
       }
     }
-    onSelect={[Function]}
-    options={
-      Array [
+    id="sample-panel-filtering-show-me"
+    onChange={[Function]}
+    onRemove={[Function]}
+    predicate="All Products"
+    property="Show Me"
+  >
+    <SLDSMenuPicklist
+      checkmark={true}
+      inheritTargetWidth={true}
+      isInline={true}
+      label="Show Me"
+      labels={
         Object {
-          "label": "All Products",
-          "value": "all-products",
-        },
-        Object {
-          "label": "All Wackamoles",
-          "value": "all-Wackamoles",
-        },
-      ]
-    }
-    placeholder="Select record type"
-    value="all-products"
-  />
-</SLDSFilter>
+          "multipleOptionsSelected": "Multiple Options Selected",
+        }
+      }
+      onSelect={[Function]}
+      options={
+        Array [
+          Object {
+            "label": "All Products",
+            "value": "all-products",
+          },
+          Object {
+            "label": "All Wackamoles",
+            "value": "all-Wackamoles",
+          },
+        ]
+      }
+      placeholder="Select record type"
+      value="all-products"
+    />
+  </SLDSFilter>
+</IconSettings>
 `;
 
 exports[`AssistiveText Filter HTML Snapshot 1`] = `
 "<div class=\\"slds-filters__item slds-grid slds-grid--vertical-align-center\\">
   <div class=\\"slds-grow\\" style=\\"display:inline;\\"><button class=\\"slds-button--reset slds-grow slds-has-blur-focus\\" id=\\"sample-panel-filtering-show-me\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body--small\\">Show Me</p><p>All Products</p></button></div>
   <button
-    class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\\" title=\\"Remove Filter: Show Me All Products\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\" viewBox=\\"0 0 24 24\\" name=\\"close\\"><path d=\\"M14.3 11.7l6-6c.3-.3.3-.7 0-1l-.9-1c-.3-.2-.7-.2-1 0l-6 6.1c-.2.2-.5.2-.7 0l-6-6.1c-.3-.3-.7-.3-1 0l-1 1c-.2.2-.2.7 0 .9l6.1 6.1c.2.2.2.4 0 .6l-6.1 6.1c-.3.3-.3.7 0 1l1 1c.2.2.7.2.9 0l6.1-6.1c.2-.2.4-.2.6 0l6.1 6.1c.2.2.7.2.9 0l1-1c.3-.3.3-.7 0-1l-6-6c-.2-.2-.2-.5 0-.7z\\"></path></svg>
-    <span
-      class=\\"slds-assistive-text\\">Remove Filter: Show Me All Products</span>
-      </button>
+    class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\\" title=\\"Remove Filter: Show Me All Products\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove Filter: Show Me All Products</span></button>
 </div>"
 `;
 
 exports[`Error Filter Base Snapshot 1`] = `
-<SLDSFilter
-  align="left"
-  assistiveText={
-    Object {
-      "editFilter": "Edit filter:",
-      "editFilterHeading": "Choose filter criteria",
-    }
-  }
-  id="sample-panel-filtering-show-me"
-  isError={true}
-  onChange={[Function]}
-  onRemove={[Function]}
-  predicate="All Products"
-  property="Show Me"
+<IconSettings
+  iconPath="/assets/icons"
 >
-  <SLDSMenuPicklist
-    checkmark={true}
-    inheritTargetWidth={true}
-    isInline={true}
-    label="Show Me"
-    labels={
+  <SLDSFilter
+    align="left"
+    assistiveText={
       Object {
-        "multipleOptionsSelected": "Multiple Options Selected",
+        "editFilter": "Edit filter:",
+        "editFilterHeading": "Choose filter criteria",
       }
     }
-    onSelect={[Function]}
-    options={
-      Array [
+    id="sample-panel-filtering-show-me"
+    isError={true}
+    onChange={[Function]}
+    onRemove={[Function]}
+    predicate="All Products"
+    property="Show Me"
+  >
+    <SLDSMenuPicklist
+      checkmark={true}
+      inheritTargetWidth={true}
+      isInline={true}
+      label="Show Me"
+      labels={
         Object {
-          "label": "All Products",
-          "value": "all-products",
-        },
-        Object {
-          "label": "All Wackamoles",
-          "value": "all-Wackamoles",
-        },
-      ]
-    }
-    placeholder="Select record type"
-    value="all-products"
-  />
-</SLDSFilter>
+          "multipleOptionsSelected": "Multiple Options Selected",
+        }
+      }
+      onSelect={[Function]}
+      options={
+        Array [
+          Object {
+            "label": "All Products",
+            "value": "all-products",
+          },
+          Object {
+            "label": "All Wackamoles",
+            "value": "all-Wackamoles",
+          },
+        ]
+      }
+      placeholder="Select record type"
+      value="all-products"
+    />
+  </SLDSFilter>
+</IconSettings>
 `;
 
 exports[`Filter Base Snapshot 1`] = `
-<SLDSFilter
-  align="left"
-  assistiveText={
-    Object {
-      "editFilter": "Edit filter:",
-      "editFilterHeading": "Choose filter criteria",
-    }
-  }
-  id="sample-panel-filtering-show-me"
-  onChange={[Function]}
-  onRemove={[Function]}
-  predicate="All Products"
-  property="Show Me"
+<IconSettings
+  iconPath="/assets/icons"
 >
-  <SLDSMenuPicklist
-    checkmark={true}
-    inheritTargetWidth={true}
-    isInline={true}
-    label="Show Me"
-    labels={
+  <SLDSFilter
+    align="left"
+    assistiveText={
       Object {
-        "multipleOptionsSelected": "Multiple Options Selected",
+        "editFilter": "Edit filter:",
+        "editFilterHeading": "Choose filter criteria",
       }
     }
-    onSelect={[Function]}
-    options={
-      Array [
+    id="sample-panel-filtering-show-me"
+    onChange={[Function]}
+    onRemove={[Function]}
+    predicate="All Products"
+    property="Show Me"
+  >
+    <SLDSMenuPicklist
+      checkmark={true}
+      inheritTargetWidth={true}
+      isInline={true}
+      label="Show Me"
+      labels={
         Object {
-          "label": "All Products",
-          "value": "all-products",
-        },
-        Object {
-          "label": "All Wackamoles",
-          "value": "all-Wackamoles",
-        },
-      ]
-    }
-    placeholder="Select record type"
-    value="all-products"
-  />
-</SLDSFilter>
+          "multipleOptionsSelected": "Multiple Options Selected",
+        }
+      }
+      onSelect={[Function]}
+      options={
+        Array [
+          Object {
+            "label": "All Products",
+            "value": "all-products",
+          },
+          Object {
+            "label": "All Wackamoles",
+            "value": "all-Wackamoles",
+          },
+        ]
+      }
+      placeholder="Select record type"
+      value="all-products"
+    />
+  </SLDSFilter>
+</IconSettings>
 `;
 
 exports[`Filter Base with custom className Snapshot 1`] = `
 "<div class=\\"slds-filters__item slds-grid slds-grid--vertical-align-center MY_CUSTOM_CLASS_NAME\\">
   <div class=\\"slds-grow\\" style=\\"display:inline;\\"><button class=\\"slds-button--reset slds-grow slds-has-blur-focus\\" id=\\"sample-panel-filtering-show-me\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body--small\\">Show Me</p><p>All Products</p></button></div>
   <button
-    class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\\" title=\\"Remove Filter: Show Me All Products\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\" viewBox=\\"0 0 24 24\\" name=\\"close\\"><path d=\\"M14.3 11.7l6-6c.3-.3.3-.7 0-1l-.9-1c-.3-.2-.7-.2-1 0l-6 6.1c-.2.2-.5.2-.7 0l-6-6.1c-.3-.3-.7-.3-1 0l-1 1c-.2.2-.2.7 0 .9l6.1 6.1c.2.2.2.4 0 .6l-6.1 6.1c-.3.3-.3.7 0 1l1 1c.2.2.7.2.9 0l6.1-6.1c.2-.2.4-.2.6 0l6.1 6.1c.2.2.7.2.9 0l1-1c.3-.3.3-.7 0-1l-6-6c-.2-.2-.2-.5 0-.7z\\"></path></svg>
-    <span
-      class=\\"slds-assistive-text\\">Remove Filter: Show Me All Products</span>
-      </button>
+    class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\\" title=\\"Remove Filter: Show Me All Products\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove Filter: Show Me All Products</span></button>
 </div>"
 `;
 
 exports[`LockedFilter Base Snapshot 1`] = `
-<SLDSFilter
-  align="left"
-  assistiveText={
-    Object {
-      "editFilter": "Edit filter:",
-      "editFilterHeading": "Choose filter criteria",
-    }
-  }
-  id="sample-panel-filtering-show-me"
-  isLocked={true}
-  onChange={[Function]}
-  onRemove={[Function]}
-  predicate="All Products"
-  property="Show Me"
+<IconSettings
+  iconPath="/assets/icons"
 >
-  <SLDSMenuPicklist
-    checkmark={true}
-    inheritTargetWidth={true}
-    isInline={true}
-    label="Show Me"
-    labels={
+  <SLDSFilter
+    align="left"
+    assistiveText={
       Object {
-        "multipleOptionsSelected": "Multiple Options Selected",
+        "editFilter": "Edit filter:",
+        "editFilterHeading": "Choose filter criteria",
       }
     }
-    onSelect={[Function]}
-    options={
-      Array [
+    id="sample-panel-filtering-show-me"
+    isLocked={true}
+    onChange={[Function]}
+    onRemove={[Function]}
+    predicate="All Products"
+    property="Show Me"
+  >
+    <SLDSMenuPicklist
+      checkmark={true}
+      inheritTargetWidth={true}
+      isInline={true}
+      label="Show Me"
+      labels={
         Object {
-          "label": "All Products",
-          "value": "all-products",
-        },
-        Object {
-          "label": "All Wackamoles",
-          "value": "all-Wackamoles",
-        },
-      ]
-    }
-    placeholder="Select record type"
-    value="all-products"
-  />
-</SLDSFilter>
+          "multipleOptionsSelected": "Multiple Options Selected",
+        }
+      }
+      onSelect={[Function]}
+      options={
+        Array [
+          Object {
+            "label": "All Products",
+            "value": "all-products",
+          },
+          Object {
+            "label": "All Wackamoles",
+            "value": "all-Wackamoles",
+          },
+        ]
+      }
+      placeholder="Select record type"
+      value="all-products"
+    />
+  </SLDSFilter>
+</IconSettings>
 `;
 
 exports[`NewFilter Base Snapshot 1`] = `
-<SLDSFilter
-  align="left"
-  assistiveText={
-    Object {
-      "editFilter": "Edit filter:",
-      "editFilterHeading": "Choose filter criteria",
-    }
-  }
-  id="sample-panel-filtering-show-me"
-  isNew={true}
-  onChange={[Function]}
-  onRemove={[Function]}
-  predicate="All Products"
-  property="Show Me"
+<IconSettings
+  iconPath="/assets/icons"
 >
-  <SLDSMenuPicklist
-    checkmark={true}
-    inheritTargetWidth={true}
-    isInline={true}
-    label="Show Me"
-    labels={
+  <SLDSFilter
+    align="left"
+    assistiveText={
       Object {
-        "multipleOptionsSelected": "Multiple Options Selected",
+        "editFilter": "Edit filter:",
+        "editFilterHeading": "Choose filter criteria",
       }
     }
-    onSelect={[Function]}
-    options={
-      Array [
+    id="sample-panel-filtering-show-me"
+    isNew={true}
+    onChange={[Function]}
+    onRemove={[Function]}
+    predicate="All Products"
+    property="Show Me"
+  >
+    <SLDSMenuPicklist
+      checkmark={true}
+      inheritTargetWidth={true}
+      isInline={true}
+      label="Show Me"
+      labels={
         Object {
-          "label": "All Products",
-          "value": "all-products",
-        },
-        Object {
-          "label": "All Wackamoles",
-          "value": "all-Wackamoles",
-        },
-      ]
-    }
-    placeholder="Select record type"
-    value="all-products"
-  />
-</SLDSFilter>
+          "multipleOptionsSelected": "Multiple Options Selected",
+        }
+      }
+      onSelect={[Function]}
+      options={
+        Array [
+          Object {
+            "label": "All Products",
+            "value": "all-products",
+          },
+          Object {
+            "label": "All Wackamoles",
+            "value": "all-Wackamoles",
+          },
+        ]
+      }
+      placeholder="Select record type"
+      value="all-products"
+    />
+  </SLDSFilter>
+</IconSettings>
 `;
 
 exports[`Permanant Filter Base Snapshot 1`] = `
-<SLDSFilter
-  align="left"
-  assistiveText={
-    Object {
-      "editFilter": "Edit filter:",
-      "editFilterHeading": "Choose filter criteria",
-    }
-  }
-  id="sample-panel-filtering-show-me"
-  isPermanent={true}
-  onChange={[Function]}
-  onRemove={[Function]}
-  predicate="All Products"
-  property="Show Me"
+<IconSettings
+  iconPath="/assets/icons"
 >
-  <SLDSMenuPicklist
-    checkmark={true}
-    inheritTargetWidth={true}
-    isInline={true}
-    label="Show Me"
-    labels={
+  <SLDSFilter
+    align="left"
+    assistiveText={
       Object {
-        "multipleOptionsSelected": "Multiple Options Selected",
+        "editFilter": "Edit filter:",
+        "editFilterHeading": "Choose filter criteria",
       }
     }
-    onSelect={[Function]}
-    options={
-      Array [
+    id="sample-panel-filtering-show-me"
+    isPermanent={true}
+    onChange={[Function]}
+    onRemove={[Function]}
+    predicate="All Products"
+    property="Show Me"
+  >
+    <SLDSMenuPicklist
+      checkmark={true}
+      inheritTargetWidth={true}
+      isInline={true}
+      label="Show Me"
+      labels={
         Object {
-          "label": "All Products",
-          "value": "all-products",
-        },
-        Object {
-          "label": "All Wackamoles",
-          "value": "all-Wackamoles",
-        },
-      ]
-    }
-    placeholder="Select record type"
-    value="all-products"
-  />
-</SLDSFilter>
+          "multipleOptionsSelected": "Multiple Options Selected",
+        }
+      }
+      onSelect={[Function]}
+      options={
+        Array [
+          Object {
+            "label": "All Products",
+            "value": "all-products",
+          },
+          Object {
+            "label": "All Wackamoles",
+            "value": "all-Wackamoles",
+          },
+        ]
+      }
+      placeholder="Select record type"
+      value="all-products"
+    />
+  </SLDSFilter>
+</IconSettings>
 `;

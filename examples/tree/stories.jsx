@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf, action } from '@kadira/storybook';
+import IconSettings from '../../components/iconSettings';
 
 import { TREE } from '../../utilities/constants';
 import sampleNodes from '../../utilities/sample-data/tree';
@@ -103,7 +104,7 @@ const DemoTree = React.createClass({
 });
 
 storiesOf(TREE, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Base', () => <DemoTree heading="Miscellaneous Foods" />)
 	.add('Initial Expanded/Selection', () => <DemoTree
 		heading="Miscellaneous Foods"
