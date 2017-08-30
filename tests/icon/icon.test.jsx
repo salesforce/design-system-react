@@ -26,7 +26,7 @@ const DemoIcon = React.createClass({
 	}
 });
 
-describe.only('SLDSIcon: ', function () {
+describe('SLDSIcon: ', function () {
 	describe('Standard Icon Props Render', function () {
 		let component;
 		let svg;
