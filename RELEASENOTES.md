@@ -31,14 +31,16 @@ These are changes that have backwards-compatible solutions present and that comp
 ### Latest Release
 
 ## Release 0.6.20
+**Minor Changes**
+
+- Lookup: Add `onFocus` callback
+- Notification: Add icon category prop
+
 **Bugfix Changes**
 
-- Notification: ref to the Button component returned an obj but fixed it so that it returns the actual ref.
-
-**Misc.**
-
-- Update CONTRIBUTING doc
-
+- Update Webpack loader for Tab CSS
+- Notification: `ref` to the Button component returned an object and now returns DOM node.
+- Popover: Update close button style
 
 ## Release 0.6.19
 **Bugfix Changes**
