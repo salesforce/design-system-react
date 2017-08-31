@@ -2,7 +2,7 @@
 import React from 'react';
 import Combobox from '~/components/combobox';
 import Icon from '~/components/icon';
-import escapeRegExp from 'lodash.escaperegexp';
+import filter from '~/components/combobox/filter';
 
 const accounts = [
 	{ id: '1', label: 'Acme', subTitle: 'Account • San Francisco', type: 'account' },
@@ -32,20 +32,6 @@ class Example extends React.Component {
 			selection: [accountsWithIcon[0], accountsWithIcon[1]]
 		};
 	}
-
-	filter = ({ options, inputValue }) =>
-		options.filter((option) => {
-			const searchTermFound = option.label.match(new RegExp(escapeRegExp(inputValue), 'ig'));
-			const isSection = option.data && option.data.type === 'section';
-			const notAlreadySelected = !this.state.selection.includes(option);
-
-			return (
-				!inputValue
-				|| isSection
-				|| searchTermFound
-			)
-				&& notAlreadySelected;
-		});
 
 	render () {
 		return (
@@ -87,9 +73,11 @@ class Example extends React.Component {
 					placeholder: 'Search Salesforce'
 				}}
 				multiple
-				options={this.filter({
+				options={filter({
+					inputValue: this.state.inputValue,
 					options: accountsWithIcon,
-					inputValue: this.state.inputValue })}
+					selection: this.state.selection
+				})}
 				selection={this.state.selection}
 				value={this.state.inputValue}
 			/>

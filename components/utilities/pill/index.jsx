@@ -104,10 +104,7 @@ const Pill = (props) => {
 			role="option"
 			tabIndex={props.tabIndex || '0'}
 			aria-selected="true"
-			onBlur={(event) => {
-				console.log('test');
-				props.events.onBlur(event);
-			}}
+			onBlur={props.events.onBlur}
 			onClick={(event) => {
 				if (props.events.onClick) {
 					props.events.onClick(event, {

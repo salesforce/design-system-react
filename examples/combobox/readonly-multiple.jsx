@@ -25,18 +25,6 @@ class Example extends React.Component {
 		};
 	}
 
-	filter = ({ options, inputValue }) =>
-		options.filter((option) => {
-			const searchTermFound = option.label.match(new RegExp(escapeRegExp(inputValue), 'ig'));
-			const isSection = option.data && option.data.type === 'section';
-
-			return (
-				!inputValue
-				|| isSection
-				|| searchTermFound
-			);
-		});
-
 	render () {
 		return (
 			<Combobox
@@ -61,9 +49,7 @@ class Example extends React.Component {
 					placeholder: 'Search Salesforce'
 				}}
 				multiple
-				options={this.filter({
-					options: accounts,
-					inputValue: this.state.inputValue })}
+				options={accounts}
 				selection={this.state.selection}
 				value={this.state.inputValue}
 				variant="readonly"

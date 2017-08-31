@@ -15,14 +15,6 @@ const accounts = [
 	{ id: '8', label: 'Acme Construction', subTitle: 'Account • Grand Marais, MN', type: 'account' }
 ];
 
-const accountsWithIcon = accounts.map((elem) => Object.assign(elem, {
-	icon: <Icon
-		assistiveText="Account"
-		category="standard"
-		name={elem.type}
-	/> })
-);
-
 class Example extends React.Component {
 	constructor (props) {
 		super(props);
@@ -32,18 +24,6 @@ class Example extends React.Component {
 			selection: []
 		};
 	}
-
-	filter = ({ options, inputValue }) =>
-		options.filter((option) => {
-			const searchTermFound = option.label.match(new RegExp(escapeRegExp(inputValue), 'ig'));
-			const isSection = option.data && option.data.type === 'section';
-
-			return (
-				!inputValue
-				|| isSection
-				|| searchTermFound
-			);
-		});
 
 	render () {
 		return (
@@ -62,9 +42,7 @@ class Example extends React.Component {
 					label: 'Search',
 					placeholder: 'Search Salesforce'
 				}}
-				options={this.filter({
-					options: accountsWithIcon,
-					inputValue: this.state.inputValue })}
+				options={accounts}
 				selection={this.state.selection}
 				value={this.state.inputValue}
 				variant="readonly"

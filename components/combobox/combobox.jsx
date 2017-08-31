@@ -47,10 +47,6 @@ const propTypes = {
 		removePill: PropTypes.string
 	}),
 	/**
-	 * Pass in an `<Input />` component to customize it. Event handlers for the input (if needed) should be added here and not to this component. `<Input onKeyDown... />`.` _Tested with Mocha framework._
-	 */
-	children: PropTypes.node,
-	/**
 	 * CSS classes to be added to tag with `slds-combobox`. If you are looking for the outer DOM node (slds-dropdown-trigger), please review `triggerClassName`.
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
@@ -92,14 +88,11 @@ const propTypes = {
 	 */
 	isInline: PropTypes.bool,
 	/**
-	 * Renders selected listbox items within the `input`.
-	 */
-	isInlineListbox: PropTypes.bool,
-	/**
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
 	 * * `label`: This label appears above the input.
 	 * * `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.
+	 * * `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.
 	 * * `placeholder`: Input placeholder
 	 * * `placeholderReadOnly`: Placeholder for Picklist-like Combobox
 	 * * `removePillTitle`: Title on `X` icon
@@ -107,6 +100,7 @@ const propTypes = {
 	labels: shape({
 		label: PropTypes.string,
 		multipleOptionsSelected: PropTypes.string,
+		noOptionsFound: PropTypes.string,
 		placeholder: PropTypes.string,
 		placeholderReadOnly: PropTypes.string,
 		removePillTitle: PropTypes.string
@@ -150,6 +144,7 @@ const defaultProps = {
 	},
 	events: {},
 	labels: {
+		noOptionsFound: 'No matches found.',
 		placeholderReadOnly: 'Select an Option',
 		removePillTitle: 'Remove'
 	},
@@ -330,7 +325,7 @@ class Combobox extends React.Component {
 			: null;
 	}
 
-	renderMenu = ({ assistiveText }) => {
+	renderMenu = ({ assistiveText, labels }) => {
 		const menuVariant = {
 			base: 'icon-title-subtitle',
 			'inline-listbox': 'icon-title-subtitle',
@@ -342,7 +337,7 @@ class Combobox extends React.Component {
 				assistiveText={assistiveText}
 				activeOption={this.state.activeOption}
 				activeOptionIndex={this.state.activeOptionIndex}
-				// emptyMessage={this.props.emptyMessage}
+				labels={labels}
 				inputId={this.getId()}
 				inputValue={this.props.value}
 				isSelected={this.isSelected}
@@ -477,14 +472,14 @@ class Combobox extends React.Component {
 			this.setState({
 				activeSelectedOption: this.props.selection[index - 1],
 				activeSelectedOptionIndex: index - 1,
-				listboxWillSetFocus: true
+				listboxHasFocus: true
 			});
 		} else {
 			// set focus to next option, but same index
 			this.setState({
 				activeSelectedOption: this.props.selection[index + 1],
 				activeSelectedOptionIndex: index,
-				listboxWillSetFocus: true
+				listboxHasFocus: true
 			});
 		}
 
@@ -500,7 +495,7 @@ class Combobox extends React.Component {
 		this.setState({
 			activeSelectedOption: option,
 			activeSelectedOptionIndex: index,
-			listboxWillSetFocus: true
+			listboxHasFocus: true
 		});
 	}
 
@@ -519,13 +514,13 @@ class Combobox extends React.Component {
 				newState = {
 					activeSelectedOption: this.props.selection[0],
 					activeSelectedOptionIndex: 0,
-					listboxWillSetFocus: true
+					listboxHasFocus: true
 				};
 			} else if (isFirstOptionAndLeftIsPressed) {
 				newState = {
 					activeSelectedOption: this.props.selection[this.props.selection.length - 1],
 					activeSelectedOptionIndex: this.props.selection.length - 1,
-					listboxWillSetFocus: true
+					listboxHasFocus: true
 				};
 			} else {
 				const newIndex = this.getNewActiveOptionIndex({
@@ -536,7 +531,7 @@ class Combobox extends React.Component {
 				newState = {
 					activeSelectedOption: this.props.selection[newIndex],
 					activeSelectedOptionIndex: newIndex,
-					listboxWillSetFocus: true
+					listboxHasFocus: true
 				};
 			}
 
@@ -552,7 +547,7 @@ class Combobox extends React.Component {
 	};
 
 	handleBlurPill = () => {
-		this.setState({ listboxWillSetFocus: false });
+		this.setState({ listboxHasFocus: false });
 	}
 
 	/**
@@ -633,7 +628,7 @@ class Combobox extends React.Component {
 				id={this.getId()}
 				labels={labels}
 				selection={props.selection}
-				willSetFocus={this.state.listboxWillSetFocus}
+				listboxHasFocus={this.state.listboxHasFocus}
 			/>
 		</div>
 	);
@@ -763,7 +758,7 @@ class Combobox extends React.Component {
 						id={this.getId()}
 						labels={labels}
 						selection={props.selection}
-						willSetFocus={this.state.listboxWillSetFocus}
+						listboxHasFocus={this.state.listboxHasFocus}
 					/>
 					: null}
 				<div
@@ -975,7 +970,7 @@ class Combobox extends React.Component {
 					id={this.getId()}
 					labels={labels}
 					selection={props.selection}
-					willSetFocus={this.state.listboxWillSetFocus}
+					listboxHasFocus={this.state.listboxHasFocus}
 					variant={this.props.variant}
 				/>
 				: null}
@@ -993,16 +988,16 @@ class Combobox extends React.Component {
 		const multipleOrSingle = this.props.multiple ? 'multiple' : 'single';
 		const subRenders = {
 			base: {
-				single: this.renderBase,
-				multiple: this.renderBase	// same
+				multiple: this.renderBase,	// same
+				single: this.renderBase
 			},
 			'inline-listbox': {
-				single: this.renderInlineSingle,
-				multiple: this.renderInlineMultiple
+				multiple: this.renderInlineMultiple,
+				single: this.renderInlineSingle
 			},
 			readonly: {
-				single: this.renderReadOnlySingle,
-				multiple: this.renderReadOnlyMultiple
+				multiple: this.renderReadOnlyMultiple,
+				single: this.renderReadOnlySingle
 			}
 		};
 		const variantExists = subRenders[this.props.variant][multipleOrSingle];

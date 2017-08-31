@@ -56,7 +56,7 @@ const propTypes = {
 	/**
 	 * Requests that the active option set focus on render
 	 */
-	willSetFocus: PropTypes.bool,
+	listboxHasFocus: PropTypes.bool,
 	/**
 		 * Changes styles of the input. Currently `entity` is not supported.
 		 */
@@ -125,7 +125,7 @@ const SelectedListBox = (props) => (
 								label: option.label,
 								removeTitle: props.labels.removePillTitle
 							}}
-							requestFocus={props.willSetFocus}
+							requestFocus={props.listboxHasFocus}
 							tabIndex={active ? 0 : -1}
 						/>
 					</li>

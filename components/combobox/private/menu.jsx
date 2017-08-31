@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import isEqual from 'lodash.isequal';
 import classNames from 'classnames';
 
+import { shape } from 'airbnb-prop-types';
+
 import Icon from '../../icon';
 
 const propTypes = {
@@ -21,6 +23,14 @@ const propTypes = {
 	 * Id used for assistive technology
 	 */
 	inputId: PropTypes.string,
+	/**
+	 * **Text labels for internationalization**
+	 * This object is merged with the default props object on every render.
+	 * * `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.
+	 */
+	labels: shape({
+		noOptionsFound: PropTypes.string.isRequired
+	}),
 	/*
 	 * Menu options
 	 */
@@ -120,7 +130,15 @@ const Menu = (props) => {
 	return (
 		<div id={`${props.inputId}-listbox`} role="listbox">
 			<ul className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid" role="presentation">
-				{menuOptions}
+				{menuOptions.length
+					? menuOptions
+					:	<li
+						className="slds-listbox__item slds-listbox__status"
+						role="status"
+						aria-live="polite"
+					>
+						<span className="slds-m-left--x-large slds-p-vertical--medium">{props.labels.noOptionsFound}</span>
+					</li>}
 			</ul>
 		</div>
 	);
