@@ -12,12 +12,25 @@ const Example = React.createClass({
 
 	render () {
 		return (
-			<InlineEdit
-				name="inline-edit-example-1"
-				id="inline-edit-example-1"
-				value={this.state.value}
-				onChange={this.handleChange}
-			/>
+			<section className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
+				<div className="slds-col--padded">
+					<h1 className="slds-text-title_caps slds-p-vertical--medium">Base Input with visible label</h1>
+					<InlineEdit
+						id="inline-edit-example-1"
+						value={this.state.value}
+						onChange={this.handleChange}
+					/>
+				</div>
+				<div className="slds-col--padded">
+					<h1 className="slds-text-title_caps slds-p-vertical--medium">Disabled Base Input</h1>
+					<InlineEdit
+						disabled
+						id="inline-edit-example-2"
+						value={this.state.value}
+						onChange={this.handleChange}
+					/>
+				</div>
+			</section>
 		);
 	},
 

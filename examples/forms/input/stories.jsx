@@ -123,6 +123,7 @@ storiesOf(FORMS_INPUT, module)
 		<section>
 			<h1 className="slds-text-title_caps slds-p-vertical--medium">Input with Fixed Text</h1>
 			<Input
+				assistiveText={{ label: 'My Label' }}
 				name="fixed-text"
 				label="My Label"
 				fixedTextLeft="$"
