@@ -240,7 +240,7 @@ const InnerInput = (props) => (
 
 		{/* eslint-disable jsx-a11y/no-static-element-interactions */}
 		{props.isStatic && (
-			<span className="slds-form-element__static" onClick={props.onClick}>
+			<span className="slds-form-element__static slds-grid slds-grid_align-spread" onClick={props.onClick}>
 				{props.value}
 				{props.inlineEditTrigger}
 			</span>

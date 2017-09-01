@@ -23,6 +23,16 @@ if (process.env.NODE_ENV !== 'production') {
 			sunsetProperty(COMPONENT, props.assistiveText, 'assistiveText', 'AssistiveText as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use either assistiveText.label or assistiveText.spinner');
 		}
 
+		onlyOneOfProperties(COMPONENT, {
+			assistiveText: props.assistiveText,
+			label: props.label
+		});
+
+		onlyOneOfProperties(COMPONENT, {
+			fixedTextLeft: props.fixedTextLeft,
+			fixedTextRight: props.fixedTextRight
+		});
+
 		/*
 		 * Once we support horizontal labels, then I think we can enable this check
 		 *
@@ -33,11 +43,6 @@ if (process.env.NODE_ENV !== 'production') {
 			});
 		}
 		*/
-
-		onlyOneOfProperties(COMPONENT, {
-			assistiveText: props.assistiveText,
-			label: props.label
-		});
 	};
 }
 

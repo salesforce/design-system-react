@@ -3311,6 +3311,13 @@
                 "required": false,
                 "description": "Displays text or node to the right of the input. This follows the fixed text input UX pattern."
             },
+            "hasSpinner": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, loading spinner appears inside input on right hand side."
+            },
             "iconLeft": {
                 "type": {
                     "name": "node"
