@@ -10,6 +10,7 @@ import Icon from '../icon';
 
 const displayName = 'Notification';
 const propTypes = {
+	iconCategory: PropTypes.string,
 	/**
 	 * Custom classes applied to Notification element.
 	 */
@@ -44,6 +45,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+	iconCategory: 'utility',
 	dismissible: true,
 	isOpen: false,
 	texture: false
@@ -103,7 +105,7 @@ class Notification extends React.Component {
 
 			return (
 				<Icon
-					category="utility"
+					category={this.props.iconCategory}
 					className={classes}
 					inverse
 					name={this.props.iconName}
