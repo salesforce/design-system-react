@@ -5,12 +5,14 @@ const Example = React.createClass({
 	displayName: 'AvatarExample',
 
 	render () {
-		return (<Avatar
-			baseImgSrc="https://lightningdesignsystem.com/assets/images/avatar2.jpg"
-			title="Acme Communications"
-			value="AC"
-			variant="base"
-		/>);
+		return (
+			<Avatar
+				title="Annie Wilson"
+				type="user" value="AW"
+				variant="initials"
+				size="medium"
+			/>
+		);
 	}
 });
 
