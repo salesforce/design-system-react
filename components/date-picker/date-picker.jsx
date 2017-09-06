@@ -341,7 +341,8 @@ class Datepicker extends React.Component {
 		}
 	}
 
-	openDialog () {
+	openDialog (evt) {
+		evt.preventDefault();
 		if (this.props.onRequestOpen) {
 			this.props.onRequestOpen();
 		} else {
