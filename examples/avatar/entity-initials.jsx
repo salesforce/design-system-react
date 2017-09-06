@@ -9,7 +9,7 @@ const Example = React.createClass({
 			<Avatar
 				title="Acme Communications"
 				type="entity"
-				value="AC"
+				label="AC"
 				variant="initials"
 				size="medium"
 			/>

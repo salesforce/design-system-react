@@ -7,9 +7,10 @@ const Example = React.createClass({
 	render () {
 		return (
 			<Avatar
+				assistiveText="Avatar user icon"
 				iconCategory="standard"
 				iconName="user"
-				title="Annie Wilson"
+				title="Avatar user icon"
 				type="user"
 				variant="icon"
 				size="medium"

@@ -7,12 +7,12 @@ const Example = React.createClass({
 	render () {
 		return (
 			<Avatar
+				assistiveText="Avatar entity icon"
 				iconCategory="standard"
 				iconName="account"
-				title="Acme Communications"
+				title="Avatar entity icon"
 				type="entity"
 				variant="icon"
-				size="medium"
 			/>
 		);
 	}
