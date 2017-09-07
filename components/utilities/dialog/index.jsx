@@ -9,6 +9,7 @@ import ReactDOM from 'react-dom';
 
 import Popper from 'popper.js';
 import isEqual from 'lodash.isequal';
+import assign from 'lodash.assign';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -250,6 +251,7 @@ const Dialog = React.createClass({
 
 	componentWillUnmount () {
 		this._destroyPopper();
+		this.handleClose(undefined, { componentWillUnmount: true });
 	},
 
 	_createPopper () {
@@ -283,7 +285,8 @@ const Dialog = React.createClass({
 		this._popper = new Popper(reference, popper, {
 			placement,
 			eventsEnabled,
-			modifiers
+			modifiers,
+			onCreate: this.props.onOpen
 		});
 		this._popper.scheduleUpdate();
 	},
@@ -338,7 +341,7 @@ const Dialog = React.createClass({
 	},
 
 	renderDialogContents () {
-		let style = Object.assign(this._getPopperStyles(), {
+		let style = assign(this._getPopperStyles(), {
 			marginTop: this.props.marginTop,
 			marginBottom: this.props.marginBottom,
 			marginLeft: this.props.marginLeft,
@@ -349,7 +352,7 @@ const Dialog = React.createClass({
 			style.width = this.target().getBoundingClientRect().width;
 		}
 		if (this.props.style) {
-			style = Object.assign({}, style, this.props.style);
+			style = assign({}, style, this.props.style);
 		}
 
 		return (
@@ -391,11 +394,9 @@ const Dialog = React.createClass({
 
 	renderDialog () {
 		// By default ReactDOM is used to create a portal mount on the `body` tag. This can be overridden with the `portalMount` prop.
-		// let mount = ReactDOM.render;
-
-		if (this.props.portalMount) {
-			mount = this.props.portalMount;
-		}
+		// if (this.props.portalMount) {
+		// 	mount = this.props.portalMount;
+		// }
 
 		// nextElement, container, callback
 		// this.portal = mount(this.renderDialogContents(), this.dialogElement);
@@ -405,15 +406,6 @@ const Dialog = React.createClass({
 
 		/* Probably position stuff using popper here? */
 	},
-
-	// componentWillUnmount () {
-	// 	if (this.props.variant === 'popover') {
-	// 		DOMElementFocus.teardownScopedFocus();
-	// 		DOMElementFocus.returnFocusToStoredElement();
-	// 	}
-
-	// 	this.handleClose(undefined, { componentWillUnmount: true });
-	// },
 
 	render () {
 		// Must use `<noscript></noscript>` in order for `this.drop` to not be undefined when unmounting
