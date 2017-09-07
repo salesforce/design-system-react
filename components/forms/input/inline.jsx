@@ -165,6 +165,9 @@ const InlineEdit = React.createClass({
 				isEditing: true,
 				value: this.props.value
 			});
+			if(isFunction(this.props.onEnterEditMode)) {
+				this.props.onEnterEditMode();
+			}
 		}
 	},
 
