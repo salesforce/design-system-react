@@ -165,7 +165,7 @@ const InlineEdit = React.createClass({
 				isEditing: true,
 				value: this.props.value
 			});
-			if(isFunction(this.props.onEnterEditMode)) {
+			if (isFunction(this.props.onEnterEditMode)) {
 				this.props.onEnterEditMode();
 			}
 		}
@@ -196,6 +196,9 @@ const InlineEdit = React.createClass({
 	handleBlur () {
 		if (!this.willSave) {
 			this.willSave = setTimeout(this.saveEdits, 200);
+		}
+		if (isFunction(this.props.onLeaveEditMode)) {
+			this.props.onLeaveEditMode();
 		}
 	},
 
