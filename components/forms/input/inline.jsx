@@ -193,7 +193,7 @@ const InlineEdit = React.createClass({
 		});
 
 		if (isFunction(this.props.onLeaveEditMode)) {
-				this.props.onLeaveEditMode();
+			this.props.onLeaveEditMode();
 		}
 	},
 
