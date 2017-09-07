@@ -191,6 +191,10 @@ const InlineEdit = React.createClass({
 			isEditing: false,
 			value: null
 		});
+
+		if (isFunction(this.props.onLeaveEditMode)) {
+				this.props.onLeaveEditMode();
+		}
 	},
 
 	handleBlur () {
