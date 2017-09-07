@@ -8,9 +8,8 @@ const Example = React.createClass({
 		return (
 			<Avatar
 				title="Annie Wilson"
-				type="user"
+				modifier="user"
 				label="AW"
-				variant="initials"
 				size="medium"
 			/>
 		);

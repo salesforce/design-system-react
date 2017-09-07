@@ -8,9 +8,8 @@ const Example = React.createClass({
 		return (
 			<Avatar
 				title="Acme Communications"
-				type="entity"
-				label="AC"
-				variant="initials"
+				modifier="entity"
+				label="Salesforce"
 				size="medium"
 			/>
 		);

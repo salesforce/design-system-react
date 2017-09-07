@@ -6,9 +6,10 @@ const Example = React.createClass({
 
 	render () {
 		return (<Avatar
-			assistiveText="Avatar base image"
-			baseImgSrc="https://lightningdesignsystem.com/assets/images/avatar2.jpg"
-			variant="base"
+			assistiveText="Avatar image"
+			imgSrc="https://lightningdesignsystem.com/assets/images/avatar2.jpg"
+			imgAlt="Person Name"
+			title="User Avatar"
 		/>);
 	}
 });
