@@ -4946,7 +4946,12 @@
                 "name": "handleFocus",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
@@ -5136,8 +5141,14 @@
             "emptyMessage": {
                 "type": {
                     "name": "union",
-                    "computed": true,
-                    "value": "PropTypes.string"
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "element"
+                        }
+                    ]
                 },
                 "required": false,
                 "description": "Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'."
@@ -5243,6 +5254,13 @@
                 },
                 "required": false,
                 "description": "Triggered when input focus is removed."
+            },
+            "onFocus": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when input is focused."
             },
             "onChange": {
                 "type": {
@@ -8841,13 +8859,6 @@
                 },
                 "required": false,
                 "description": "Forces tooltip to be open. A value of `false` will disable any interaction with the tooltip."
-            },
-            "target": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "This sets the location of the tooltip, if that location is different from the triggering node."
             },
             "triggerClassName": {
                 "type": {

@@ -6,6 +6,7 @@ import { mountComponent, unmountComponent } from '../enzyme-helpers';
 
 import MediaObject from '../../components/media-object';
 import Icon from '../../components/icon';
+import IconSettings from '../../components/iconSettings';
 
 import { MEDIA_OBJECT } from '../../utilities/constants';
 
@@ -18,7 +19,9 @@ const COMPONENT_CSS_CLASSES = {
 };
 
 const DemoComponent = (props) => (
-	<MediaObject {...props} />
+	<IconSettings iconPath="/assets/icons">
+		<MediaObject {...props} />
+	</IconSettings>
 );
 DemoComponent.displayName = 'DemoMediaObject';
 

@@ -7,6 +7,7 @@ import TestUtils from 'react-addons-test-utils';
 
 import Input from '../../components/forms/input';
 import InputIcon from '../../components/icon/input-icon';
+import IconSettings from '../../components/iconSettings';
 
 const {
 	findRenderedDOMComponentWithTag,
@@ -24,7 +25,7 @@ describe('SLDS INPUT **************************************************', () => 
 	const renderInput = (instance) => {
 		body = document.createElement('div');
 		document.body.appendChild(body);
-		return ReactDOM.render(instance, body);
+		return ReactDOM.render(<IconSettings iconPath="/assets/icons">{instance}</IconSettings>, body);
 	};
 
 	function removeInput () {

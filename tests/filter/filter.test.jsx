@@ -15,6 +15,7 @@ import { createMountNode, destroyMountNode } from '../enzyme-helpers';
 import Popover from '../../components/popover';
 import Button from '../../components/button';
 import Filter from '../../components/filter';
+import IconSettings from '../../components/iconSettings';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme
@@ -99,11 +100,13 @@ describe('SLDSFilter', function () {
 					done();
 				}}
 			/>);
-			wrapper = mount(<Filter
-				property="Show Me"
-				predicate="All Opportunities"
-				popover={demoPopover}
-			/>, { attachTo: mountNode });
+			wrapper = mount(<IconSettings iconPath="/assets/icons">
+				<Filter
+					property="Show Me"
+					predicate="All Opportunities"
+					popover={demoPopover}
+				/>
+			</IconSettings>, { attachTo: mountNode });
 		});
 	});
 
@@ -130,12 +133,13 @@ describe('SLDSFilter', function () {
 				onFilterClicked = true;
 			};
 
-			wrapper = mount(<Filter
-				property="Show Me"
-				predicate="All Opportunities"
-				popover={demoPopover}
-				onClick={onClick}
-			/>, { attachTo: mountNode });
+			wrapper = mount(<IconSettings iconPath="/assets/icons">
+				<Filter
+					property="Show Me"
+					predicate="All Opportunities"
+					popover={demoPopover}
+					onClick={onClick}
+				/></IconSettings>, { attachTo: mountNode });
 
 			setTimeout(() => {
 				const filterButton = wrapper.find('.slds-filters__item .slds-button--reset');

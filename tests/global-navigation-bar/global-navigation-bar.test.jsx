@@ -9,6 +9,7 @@ import { mountComponent, unmountComponent } from '../enzyme-helpers';
 // sample props and children
 import { dropdownCollection, propSets } from '../../utilities/sample-data/global-navigation-bar';
 
+import IconSettings from '../../components/iconSettings';
 import GlobalNavigationBar from '../../components/global-navigation-bar';
 import GlobalNavigationBarRegion from '../../components/global-navigation-bar/region';
 import GlobalNavigationBarDropdown from '../../components/global-navigation-bar/dropdown';
@@ -39,11 +40,13 @@ describe('Global Navigation Bar: ', () => {
 	 */
 	describe('Default Structure', () => {
 		beforeEach(mountComponent(
-			<GlobalNavigationBar>
-				<GlobalNavigationBarRegion
-					region="primary"
-				/>
-			</GlobalNavigationBar>
+			<IconSettings iconPath="/assets/icons">
+				<GlobalNavigationBar>
+					<GlobalNavigationBarRegion
+						region="primary"
+					/>
+				</GlobalNavigationBar>
+			</IconSettings>
 		));
 
 		afterEach(unmountComponent);
@@ -67,7 +70,9 @@ describe('Global Navigation Bar: ', () => {
 		const customThemeProps = propSets.lightTheme.props;
 
 		beforeEach(mountComponent(
-			<GlobalNavigationBar {...customCloudProps} {...customThemeProps} />
+			<IconSettings iconPath="/assets/icons">
+				<GlobalNavigationBar {...customCloudProps} {...customThemeProps} />
+			</IconSettings>
 		));
 
 		afterEach(unmountComponent);
@@ -87,55 +92,57 @@ describe('Global Navigation Bar: ', () => {
 		const dropdownItemClicked = () => {};
 
 		beforeEach(mountComponent(
-			<GlobalNavigationBar {...props}>
-				<GlobalNavigationBarRegion
-					region="primary"
-				/>
-				<GlobalNavigationBarRegion region="secondary" navigation dividerPosition="right">
-					<GlobalNavigationBarLink
-						label="Home"
-						id="home-link"
-						onClick={linkClicked('Home link clicked')}
+			<IconSettings iconPath="/assets/icons">
+				<GlobalNavigationBar {...props}>
+					<GlobalNavigationBarRegion
+						region="primary"
 					/>
-					<GlobalNavigationBarDropdown
-						assistiveText="Open Menu"
-						id="primaryDropdown"
-						label="Global Navigation Menu Item 1"
-						onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
-						options={dropdownCollection}
-					/>
-					<GlobalNavigationBarLink
-						active
-						id="menu-item-2"
-						label="Global Navigation Menu Item 2"
-						onClick={linkClicked('Link clicked')}
-					/>
-					<GlobalNavigationBarDropdown
-						active
-						assistiveText="Open Menu"
-						id="primaryDropdownActive"
-						label="Global Navigation Menu Item 3"
-						onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
-						options={dropdownCollection}
-					/>
-				</GlobalNavigationBarRegion>
-				<GlobalNavigationBarRegion region="tertiary">
-					<GlobalNavigationBarLink
-						label="Actions"
-						onClick={linkClicked('Link clicked')}
-					/>
-					<GlobalNavigationBarButton
-						active
-						label="Button"
-						id="global-nav__button"
-						onClick={buttonClicked('Button clicked')}
-					/>
-					<GlobalNavigationBarLabel
-						dividerPosition="left"
-						label="Vandelay Enterprises"
-					/>
-				</GlobalNavigationBarRegion>
-			</GlobalNavigationBar>
+					<GlobalNavigationBarRegion region="secondary" navigation dividerPosition="right">
+						<GlobalNavigationBarLink
+							label="Home"
+							id="home-link"
+							onClick={linkClicked('Home link clicked')}
+						/>
+						<GlobalNavigationBarDropdown
+							assistiveText="Open Menu"
+							id="primaryDropdown"
+							label="Global Navigation Menu Item 1"
+							onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
+							options={dropdownCollection}
+						/>
+						<GlobalNavigationBarLink
+							active
+							id="menu-item-2"
+							label="Global Navigation Menu Item 2"
+							onClick={linkClicked('Link clicked')}
+						/>
+						<GlobalNavigationBarDropdown
+							active
+							assistiveText="Open Menu"
+							id="primaryDropdownActive"
+							label="Global Navigation Menu Item 3"
+							onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
+							options={dropdownCollection}
+						/>
+					</GlobalNavigationBarRegion>
+					<GlobalNavigationBarRegion region="tertiary">
+						<GlobalNavigationBarLink
+							label="Actions"
+							onClick={linkClicked('Link clicked')}
+						/>
+						<GlobalNavigationBarButton
+							active
+							label="Button"
+							id="global-nav__button"
+							onClick={buttonClicked('Button clicked')}
+						/>
+						<GlobalNavigationBarLabel
+							dividerPosition="left"
+							label="Vandelay Enterprises"
+						/>
+					</GlobalNavigationBarRegion>
+				</GlobalNavigationBar>
+			</IconSettings>
 		));
 
 		afterEach(unmountComponent);
@@ -170,7 +177,9 @@ describe('Global Navigation Bar: ', () => {
 
 	describe('Secondary Region', () => {
 		beforeEach(mountComponent(
-			<GlobalNavigationBarRegion region="secondary" />
+			<IconSettings iconPath="/assets/icons">
+				<GlobalNavigationBarRegion region="secondary" />
+			</IconSettings>
 		));
 
 		afterEach(unmountComponent);

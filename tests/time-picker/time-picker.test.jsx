@@ -9,6 +9,7 @@ import assign from 'lodash.assign';
 const { Simulate, findRenderedDOMComponentWithTag, findRenderedDOMComponentWithClass } = TestUtils;
 
 import { SLDSTimepicker } from '../../components';
+import IconSettings from '../../components/iconSettings';
 
 const mockCallback = sinon.spy();
 
@@ -38,7 +39,11 @@ describe('SLDSTimepicker: ', () => {
 						};
 					},
 					render () {
-						return <SLDSTimepicker ref="timePicker" {...defaultProps} />;
+						return (
+							<IconSettings iconPath="/assets/icons">
+								<SLDSTimepicker ref="timePicker" {...defaultProps} />
+							</IconSettings>
+						);
 					}
 				})
 						);
