@@ -52,11 +52,11 @@ describe('DataTable: ', function () {
 			should.exist(trigger);
 		});
 
-		it('renders the correct value', function () {
+		it.only('renders the correct value', function () {
 			const staticElement = getStatic(this.dom);
-			const value = staticElement.querySelector('span').innerHTML;
+			const value = staticElement.textContent;
 
-			value.should.be(sampleValue);
+			value.should.equal('Sample value'+'Edit');
 		});
 	});
 
@@ -81,6 +81,48 @@ describe('DataTable: ', function () {
 				should.exist(input);
 				should.not.exist(staticElement);
 			}, 100);
+		});
+	});
+
+	describe('Custom Handler Function', function () {
+		const enterEditModeHanlder = sinon.spy();
+		const leaveEditModeHanlder = sinon.spy();
+
+		beforeEach(renderInlineEdit(
+			<InlineEdit 
+				id="inline-edit-standard" 
+				value={sampleValue} 
+				onEnterEditMode={enterEditModeHanlder}
+                onLeaveEditMode={leaveEditModeHanlder}/>
+		));
+
+		afterEach(removeInlineEdit);
+
+		it('enterEditMode and leaveEditMode handler get called', function () {
+			const trigger = getTrigger(this.dom);
+
+			should.exist(trigger);
+
+			Simulate.click(trigger, {});
+
+			setTimeout(() => {
+				const input = getInput(this.dom);
+				
+				should.exist(input);
+
+				expect(enterEditModeHanlder.callCount).to.equal(1);
+			}, 100);
+
+			Simulate.click(trigger, {});
+
+			setTimeout(() => {
+				const input = getInput(this.dom);
+
+				should.not.exist(input);
+
+				expect(leaveEditModeHanlder.callCount).to.equal(1);
+			}, 100);
+			
 		});
 	});
 });

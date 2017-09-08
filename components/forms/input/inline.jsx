@@ -60,6 +60,14 @@ const InlineEdit = React.createClass({
 		 */
 		onChange: PropTypes.func,
 		/**
+		* Function will run when we enter edit mode
+		*/
+		onEnterEditMode: PropTypes.func,
+		/**
+		* Function will run when we leave edit mode
+		*/
+		onLeaveEditMode: PropTypes.func,
+		/**
 		 * Typically an Inline Edit component will be of the type text, but like the Input element it includes support for all HTML5 types.
 		 */
 		type: PropTypes.oneOf([
@@ -192,7 +200,7 @@ const InlineEdit = React.createClass({
 			value: null
 		});
 
-		if (isFunction(this.props.onLeaveEditMode)) {
+		if (this.props.onLeaveEditMode && isFunction(this.props.onLeaveEditMode)) {
 			this.props.onLeaveEditMode();
 		}
 	},
@@ -201,7 +209,7 @@ const InlineEdit = React.createClass({
 		if (!this.willSave) {
 			this.willSave = setTimeout(this.saveEdits, 200);
 		}
-		if (isFunction(this.props.onLeaveEditMode)) {
+		if (this.props.onLeaveEditMode && isFunction(this.props.onLeaveEditMode)) {
 			this.props.onLeaveEditMode();
 		}
 	},

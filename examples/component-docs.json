@@ -3043,6 +3043,20 @@
                 "required": false,
                 "description": "This event fires when the input changes."
             },
+            "onEnterEditMode": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Function will run when we enter edit mode"
+            },
+            "onLeaveEditMode": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Function will run when we leave edit mode"
+            },
             "type": {
                 "type": {
                     "name": "enum",
