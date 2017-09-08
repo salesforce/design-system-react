@@ -52,11 +52,11 @@ describe('DataTable: ', function () {
 			should.exist(trigger);
 		});
 
-		it.only('renders the correct value', function () {
+		it('renders the correct value', function () {
 			const staticElement = getStatic(this.dom);
 			const value = staticElement.textContent;
 
-			value.should.equal('Sample value'+'Edit');
+			value.should.equal('Sample valueEdit');
 		});
 	});
 
@@ -88,12 +88,7 @@ describe('DataTable: ', function () {
 		const enterEditModeHanlder = sinon.spy();
 		const leaveEditModeHanlder = sinon.spy();
 
-		beforeEach(renderInlineEdit(
-			<InlineEdit 
-				id="inline-edit-standard" 
-				value={sampleValue} 
-				onEnterEditMode={enterEditModeHanlder}
-                onLeaveEditMode={leaveEditModeHanlder}/>
+		beforeEach(renderInlineEdit(<InlineEdit id="inline-edit-standard" value={sampleValue} onEnterEditMode={enterEditModeHanlder} onLeaveEditMode={leaveEditModeHanlder} />
 		));
 
 		afterEach(removeInlineEdit);
@@ -122,7 +117,6 @@ describe('DataTable: ', function () {
 
 				expect(leaveEditModeHanlder.callCount).to.equal(1);
 			}, 100);
-			
 		});
 	});
 });
