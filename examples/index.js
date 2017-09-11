@@ -63,7 +63,7 @@ const documentationSiteLiveExamples = {
 	'forms-textarea': [
 		require('raw-loader!design-system-react/examples/forms/textarea/default.jsx'),
 		require('raw-loader!design-system-react/examples/forms/textarea/error.jsx'),
-		require('raw-loader!design-system-react/examples/forms/textarea/disabled.jsx'),
+		require('raw-loader!design-system-react/examples/forms/textarea/disabled.jsx')
 	],
 	'global-header': [
 		require('raw-loader!design-system-react/examples/global-header/default.jsx')
@@ -120,6 +120,9 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!design-system-react/examples/popover/header.jsx'),
 		require('raw-loader!design-system-react/examples/popover/alternative-header.jsx'),
 		require('raw-loader!design-system-react/examples/popover/controlled-with-footer.jsx')
+	],
+	'progress-indicator': [
+		require('raw-loader!design-system-react/examples/progress-indicator/default.jsx')
 	],
 	tabs: [
 		require('raw-loader!design-system-react/examples/tabs/default.jsx'),

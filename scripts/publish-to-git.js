@@ -86,8 +86,7 @@ const publish = (done, type) => {
 async.series([
 	(done) => exec({
 		command: 'npm run dist',
-		rootPath,
-		verbose: false
+		rootPath
 	}, done),
 
 	(done) => cleanPackageJson(done, 'es'),

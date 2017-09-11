@@ -55,10 +55,11 @@ If you are new to React, you may be trained to design components in a more compl
 
 - <a name="private-child-components" href="#private-child-components">#</a> Place child components not intended to be part of the public API within a folder labelled `private`. All other React components should be considered public (and considered within the scope of Semantic Versioning), and can be used by developers in their own JSX within their application. See [Child component decorator pattern](#child-component-decorator-pattern)
 
-- <a name="code-design-choices" href="#code-design-choices">#</a> **Use loose coupling and weak connascence.** The goal should be that a contributor can understand one piece of code without understanding another and be able to easily make updates in the future. You want weak connascence between components or components and the application (such as events) and not strong connascence. This makes it easier to update one component when modifying another in the future. How easy it will be to change in the future depends on which of the nine [types of connascence](https://en.wikipedia.org/wiki/Connascence_(computer_programming)) is being used. For instance, _Connascence of Name_ can be simply updated with Find/Replace. PropTypes and type systems help with _Connascence of Type_.
+- <a name="code-design-choices" href="#code-design-choices">#</a> **Use loose coupling and weak connascence.** The goal should be that a contributor can understand one piece of code without understanding another and be able to easily make updates in the future. You want weak connascence between components or components and the application (such as events) and not strong connascence. This makes it easier to update one component when modifying another in the future. How easy it will be to change in the future depends on which of the nine [types of connascence](https://en.wikipedia.org/wiki/Connascence_(computer_programming)) is being used. For instance, _Connascence of Name_ can be simply updated with Find/Replace. PropTypes and type systems help with _Connascence of Type_. _Connascence of Position_ with parameters is bad because it relies on the correct order of parameters. Objects with named keys should be used to avoid Connascence of Position.
 
 ### Limit side effects
 - <a name="limit-state" href="#limit-state">#</a> **Limit use of component state.** If the parent application's state engine can handle it with a `prop`, then don't use state. _New components should always start out as controlled by their parent and only be uncontrolled (that is have state) if a use case presents itself._ It's better to have a component that needs 20 props set and outputs the correct markup, than to have a component that works with no props set, yet maintains multiple internal states. We like to think of this project as design system templates with minimal logic that happen to work with the React framework. Let the library consumer create a simple _container component_ with state. Read more about [controlled components](#controlled-and-uncontrolled-components).
+    - <a name="ids-should-be-controlled" href="#ids-should-be-controlled">#</a> All `id` attributes in the component HTML should be unique to the page, especially if the same component is used. They should be able to be controlled by the consuming developer (not just `shortid` generated). Most `id` attributes are used for accessbility or for React `key`.
     - <a name="stateful-stateless-components" href="#stateful-stateless-components">#</a> Know how smart/stateful React components [work together](https://gist.github.com/trevordmiller/a7791c11228b48f0366b) with [pure/dumb stateless function components](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions).
     - <a name="stateful-top-level-component" href="#stateful-top-level-component">#</a> It is preferable to only have one stateful top-level class per component in this library. For these top-level components, it’s preferable to leave them stateful (that is, to use `class`). It's much easier to get the DOM node reference if you need it for such things as measurements. Then, you don't have to go through a lot of hassle to work around not having lifecycle methods. It also allows components to follow the controlled / uncontrolled pattern mentioned below. All sub-components should be stateless and manipulated with props if possible.
     - A `Tree` should have state. A `TreeNode` should not.
@@ -199,15 +200,13 @@ _from [Controlled Components](https://facebook.github.io/react/docs/forms.html#c
 ## Component Organization
 
 * `extends React.Component`
+  * display name
+  * prop types
+  * defaults props 
   * initial state within `constructor`
   * life cycle methods
   * sub-render methods (keep to a minimum, only use to stay "DRY")
   * component render
-
-* Static class properties that should be added to the class variable after creation. ES7's `static` prefix is not currently compatible with our documentation site build.
-  * display name
-  * prop types
-  * defaults props 
 
 ```javascript
 import React from 'react';
@@ -230,11 +229,15 @@ const defaultProps = {};
  * The description of this component (will appear in the documentation site).
  */
 class DemoComponent extends React.Component {
+  static displayName = EXTERNAL_CONSTANT_NAME;
+  static propTypes = propTypes;
+  static defaultProps = defaultProps;
+
   constructor (props) {
     super(props);
 
     // useful for unique DOM IDs
-    this.generatedId = shortid.generate();
+    this.generatedId = this.props.id || shortid.generate();
     
     // initial state
     this.state = {};
@@ -258,10 +261,6 @@ class DemoComponent extends React.Component {
     return null;
   }
 }
-
-DemoComponent.displayName = EXTERNAL_CONSTANT;
-DemoComponent.propTypes = propTypes;
-DemoComponent.defaultProps = defaultProps;
 
 export default DemoComponent;
 
@@ -373,6 +372,37 @@ render () {
   );
 }
 ```
+
+## Preferred ways to render
+Once your data is in a correct structure, your rendering should just respond to changes in your data. Here is list of ways to render:
+1. Inline ternary operator
+    * Preferred more than a simple if-else statement
+    * It is more concise than if-else and can be used within JSX since it’s an expression
+1. Logical `&&` operator
+    * Alternative to ternary. Use when one side of the ternary operation would return null
+    * Be careful that you don’t run into bugs when using multiple conditions (truthy/falsey values, especially array length of zero)
+1. Inline Enum objects
+    * Great to map different states
+    * Great to map nested conditions ({prop1: { }}[prop1][prop2])
+1. Higher Order Components or Sub-components
+    * Create another stateless component and use it to shield away complex conditional rendering
+    * Components can focus on their main purpose
+    * This is an abstraction and can only return one node (in React 15)
+1. Switch case
+    * Verbose (break!)
+    * Can only be JSX-inlined with self invoking function
+    * Avoid it,  enums are preferred
+1. If-else
+    * Is the most basic conditional rendering
+    * Beginner friendly
+    * Cannot be inlined in JSX (needs variables)
+1. Multi-level/nested conditional renderings
+    * Avoid them for the sake of readability
+    * Split up components into stateless components with their own simple conditional rendering
+    * Use HOCs instead
+1. External templating components
+    * Avoid them and be comfortable with JSX and JavaScript
+
 ## Naming DOM `ref` callbacks
 
 Do not name a DOM callback prop of a library component `ref`. `ref` is a reserved prop name. This will return the component React object, _not_ the DOM node. It is best practice to create an object called `refs` with keys that are semantic names of DOM nodes: `refs: { triggerButton: ()=>{}, triggerInput: ()=>{} }`. If you use a `refs` object, you may need shallow merge the object with default props. For more information, please review [Exposing DOM Refs to Parent Components](https://facebook.github.io/react/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components).
@@ -520,11 +550,24 @@ from the [Planning Center](https://github.com/planningcenter/react-patterns)
 `.
 1. Run `npm run local-update` from within `design-system-react-site` to build, copy, and serve a local version of this library into the site. You should be able to now view the updated site at `http://localhost:8080/` and resolve any issues with updated documentation.
 
-## Release
+## Release with build server (preferred)
+1. Add release notes for your version to [RELEASENOTES.md](RELEASENOTES.md) under Latest Release heading.
+1. Commit and push a blank text file name `patch.md` or `minor.md` to the `master` branch. In the future, this will contain the release notes. The build server will detect this, delete the file, create a release for you,  push back to the library repository. 
+1. Copy and paste your release notes into the [Github Draft Release UI](https://github.com/salesforce-ux/design-system-react/releases) and publish.
+
+### Manual release
 1. **Choose one**: `npm run release-patch` or `npm run release-minor`. This script pulls from upstream, bumps the version, commits changes, and publishes tags to your `upstream` repository (that is this repo).
 1. Copy and paste your release notes into the [Github Draft Release UI](https://github.com/salesforce-ux/design-system-react/releases) and publish.
 
 ## Update documentation site
 1. Update the version of Design System React in the documentation site's [package.json](https://github.com/salesforce-ux/design-system-react-site/blob/master/package.json#L51) and push to master. This is will build a Heroku application. Log into Heroku and promote the staged pull request to production. You will need promotion rights to the Heroku application.
+
+## Create a build server
+1. Create a Heroku app.
+1. Connect your App GitHub to the Github branch you wish to deploy and turn on automatic deploys for `master` branch.
+1. Create environment variable, `IS_BUILD_SERVER` and set to `true`.
+1. Create environment variable, `NPM_CONFIG_PRODUCTION` and set to `false`.
+1. Create environment variable, `ORIGIN` and set to `[git@github.com:[your username]/design-system-react.git]`
+1. Create environment variable, `GIT_SSH_KEY` and set to a user's private key (base64 encoded) that has access to your repository. `openssl base64 < [PRIVATE_KEY_FILENAME] | tr -d '\n' | pbcopy`
 
 _If you are timid about releasing or need your pull request in review "pre-released," you can publish to origin (your fork) with `npm run publish-to-git` and then test and review the tag on your fork. This is just the publish step though, any other tasks you will need to do manually to test publishing._

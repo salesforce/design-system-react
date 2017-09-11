@@ -79,23 +79,24 @@ const propTypes = {
 	*/
 	isOpen: PropTypes.bool,
 	/**
-	* This sets the location of the tooltip, if that location is different from the triggering node.
-	*/
-	target: PropTypes.node,
-	/**
 	 * CSS classes to be added to tag with `slds-tooltip-trigger`.
 	 */
 	triggerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
 	 * Custom styles to be added to wrapping triggering `div`.
 	 */
-	triggerStyle: PropTypes.object
+	triggerStyle: PropTypes.object,
+	/**
+	 * Determines the variant of tooltip: for informative purpose (blue background) or warning purpose (red background)
+	 */
+	variant: PropTypes.oneOf(['info', 'error'])
 };
 
 const defaultProps = {
 	align: 'top',
 	content: <span>Tooltip</span>,
-	hoverCloseDelay: 50
+	hoverCloseDelay: 50,
+	variant: 'info'
 };
 
 /**
@@ -185,6 +186,7 @@ class PopoverTooltip extends React.Component {
 					className={classNames(
 					'slds-popover',
 					'slds-popover--tooltip',
+					{ 'slds-theme_error': this.props.variant === 'error' },
 					getNubbinClassName(align))} role="tooltip"
 				>
 					{this.getTooltipContent()}

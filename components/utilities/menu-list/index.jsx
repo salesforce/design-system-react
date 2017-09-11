@@ -95,7 +95,7 @@ const List = React.createClass({
 						return (
 							<ListItem
 								{...option}
-								checkmark={isSingleSelected || isMultipleSelected}
+								checkmark={this.props.checkmark && (isSingleSelected || isMultipleSelected)}
 								data={option}
 								id={id}
 								index={index}

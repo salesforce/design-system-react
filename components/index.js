@@ -145,6 +145,9 @@ export SLDSPopoverTooltip from './tooltip';
 export PopoverTooltip from './tooltip';
 export SLDSTooltip from './tooltip';
 
+export SLDSProgressIndicator from './progress-indicator';
+export ProgressIndicator from './progress-indicator';
+
 export SLDSSpinner from './spinner';
 export Spinner from './spinner';
 

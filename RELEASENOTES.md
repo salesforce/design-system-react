@@ -30,6 +30,51 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.6.20
+**Minor Changes**
+
+- Lookup: Add `onFocus` callback
+- Notification: Add icon category prop
+
+**Bugfix Changes**
+
+- Update Webpack loader for Tab CSS
+- Notification: `ref` to the Button component returned an object and now returns DOM node.
+- Popover: Update close button style
+
+## Release 0.6.19
+**Bugfix Changes**
+
+- DataTable: Change child component (action row) validation to use `displayName` instead of type/function compare.
+
+## Release 0.6.18
+**Bugfix Changes**
+
+- DataTable: Change child component validation to use `displayName` instead of type/function compare.
+
+## Release 0.6.17
+**Minor Changes**
+- Add Progress Indicator
+
+**Bugfix Changes**
+
+- Remove occurrence of assistiveText prop from ButtonIcon. ButtonStateful creates a ButtonIcon with assistiveText. Change this so that the assistiveText is put in this component.
+- Allow variable type of `node` in dropdown menu label
+
+## Release 0.6.16
+**Bugfix Changes**
+
+- Add react-onclickoutside events to Lookup to prevent scrollbar from closing the menu
+
+## Release 0.6.15
+**Minor Changes**
+
+- Adds Multiselect Dropdown variant
+
+**Bugfix Changes**
+
+- Fix datepicker input value bug
+
 ## Release 0.6.14
 **Minor Changes**
 
@@ -53,7 +98,7 @@ These are changes that have backwards-compatible solutions present and that comp
 
 - Update package.json dependencies
 - Switches to newest Heroku stack for deployment pipeline.
-- Fixes missing icons on Heroku PR apps. 
+- Fixes missing icons on Heroku PR apps.
 - Updates Jest and snapshots
 - Updates sinon and sinon-chai
 - Removes babel-eslint as a dependency
