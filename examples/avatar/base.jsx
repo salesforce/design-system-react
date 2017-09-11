@@ -7,8 +7,9 @@ const Example = React.createClass({
 	render () {
 		return (<Avatar
 			assistiveText="Avatar image"
-			imgSrc="https://lightningdesignsystem.com/assets/images/avatar2.jpg"
+			imgSrc="https://lightningdesignsystem.com/assets/images/avat"
 			imgAlt="Person Name"
+			label="Lexis Hanson"
 			title="User Avatar"
 		/>);
 	}

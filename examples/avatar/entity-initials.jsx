@@ -9,7 +9,7 @@ const Example = React.createClass({
 			<Avatar
 				title="Acme Communications"
 				modifier="entity"
-				label="Salesforce"
+				label="     Sales force       inc     "
 				size="medium"
 			/>
 		);

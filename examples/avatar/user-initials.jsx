@@ -9,7 +9,7 @@ const Example = React.createClass({
 			<Avatar
 				title="Annie Wilson"
 				modifier="user"
-				label="AW"
+				label="Annie Wilson"
 				size="medium"
 			/>
 		);
