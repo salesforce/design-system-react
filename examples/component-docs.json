@@ -741,7 +741,21 @@
             },
             "type": {
                 "type": {
-                    "name": "string"
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'reset'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'submit'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'button'",
+                            "computed": false
+                        }
+                    ]
                 },
                 "required": false,
                 "description": "Button type"

@@ -113,7 +113,7 @@ const Button = React.createClass({
 		/**
 		 * Button type
 		 */
-		type: PropTypes.string,
+		type: PropTypes.oneOf(['reset', 'submit', 'button']),
 		/**
 		 * HTML title attribute
 		 */
