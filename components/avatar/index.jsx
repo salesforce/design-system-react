@@ -37,13 +37,9 @@ const propTypes = {
 const defaultProps = {
 	iconCategory: 'standard',
 	iconName: 'user',
+	modifier: 'user',
 	size: 'medium'
 };
-
-// if an image is passed, then render the image, if no image, check record name
-// (or initials prop)to apply initials if no record name or initials are passed,
-// render fallback icons. PROPS iconCategory, iconName, imgAlt, imgSrc,
-// modifier, label, size,
 
 class Avatar extends React.Component {
 	constructor (props) {
@@ -54,8 +50,31 @@ class Avatar extends React.Component {
 	}
 
 	handleImageError () {
-		console.log('error happened');
 		this.setState(() => ({ imgLoadError: true }));
+	}
+
+	buildInitials () {
+		const { label } = this.props;
+		const name = label.trim();
+		let firstChar = '';
+		let secondChar = '';
+		const nameArray = name.split(' '); // ["Victor", "Brouk"]
+
+		if (nameArray.length === 1) {
+			firstChar = name[0].toUpperCase();
+			secondChar = name[1]
+				? name[1].toLowerCase()
+				: '';
+		}
+
+		if (nameArray.length > 1) {
+			const first = () => nameArray[0].charAt(0);
+			const last = () => nameArray[nameArray.length - 1].charAt(0);
+			firstChar = first(nameArray).toUpperCase();
+			secondChar = last(nameArray).toUpperCase();
+		}
+
+		return firstChar + secondChar;
 	}
 
 	render () {
@@ -82,55 +101,26 @@ class Avatar extends React.Component {
 			/>
 		);
 
-		const renderInitialsAvatar = () => {
-			const buildInitials = () => {
-				const name = label.trim();
-				let firstChar = '';
-				let secondChar = '';
-				const nameArray = name.split(' '); // ["Victor", "Brouk"]
-
-				if (nameArray.length === 1) {
-					firstChar = name[0].toUpperCase();
-					secondChar = name[1]
-						? name[1].toLowerCase()
-						: '';
-				}
-
-				if (nameArray.length > 1) {
-					const first = () => nameArray[0].charAt(0);
-					const last = () => nameArray[nameArray.length - 1].charAt(0);
-					firstChar = first(nameArray).toUpperCase();
-					secondChar = last(nameArray).toUpperCase();
-				}
-
-				return firstChar + secondChar;
-			};
-
-			return (
-				<abbr
-					className={classNames(
-						'slds-avatar__initials', {
-							'slds-icon-standard-account': modifier === 'entity',
-							'slds-icon-standard-user': modifier === 'user'
-						}
-					)}
-					title={title}
-				>
-					{buildInitials()}
-				</abbr>
-			);
-		};
+		const renderInitialsAvatar = () => (
+			<abbr
+				className={classNames(
+					'slds-avatar__initials', {
+						'slds-icon-standard-account': modifier === 'entity',
+						'slds-icon-standard-user': modifier === 'user'
+					}
+				)}
+				title={title}
+			>
+				{this.buildInitials()}
+			</abbr>
+		);
 
 		const renderAvatar = () => {
-			console.log('label', label.length, label, 'imageError', this.state.imgLoadError);
 			if (!this.state.imgLoadError && imgSrc && imgSrc.length > 0) {
 				return renderBaseAvatar();
 			}
 			if (label && label.length > 0) {
-				console.log('initials avatar rendered?');
-				const initialsTest = renderInitialsAvatar();
-				console.log(initialsTest);
-				return initialsTest;
+				return renderInitialsAvatar();
 			}
 			return renderIconAvatar();
 		};
