@@ -242,13 +242,7 @@ const Dialog = React.createClass({
 	},
 
 	componentDidMount () {
-		/* Instantiate a _popper instance here */
 		this._createPopper();
-	},
-
-	componentDidUpdate () {
-		/* Schedule an update to _popper here */
-		/* Do something else from popper here maybe? */
 	},
 
 	componentWillUnmount () {
@@ -261,10 +255,11 @@ const Dialog = React.createClass({
 		const popper = this.dialogContent;
 		const placement = mapPropToPopperPlacement(this.props.align);
 		const eventsEnabled = true; // Lets popper listen to events (resize, scroll, etc.)
+		// FIXME: how does props.constrainToScrollParent map to Popper's options?
 		const modifiers = {
 			applyStyle: { enabled: false },
-			preventOverflow: { enabled: false },
-			flip: { enabled: false },
+			preventOverflow: { enabled: this.props.flippable },
+			flip: { enabled: this.props.flippable },
 			updateState: {
 				enabled: true,
 				order: 900,
@@ -403,14 +398,9 @@ const Dialog = React.createClass({
 		// nextElement, container, callback
 		// this.portal = mount(this.renderDialogContents(), this.dialogElement);
 		return this.renderDialogContents();
-
-		// This used to set the zindex of the dialog element to 10001
-
-		/* Probably position stuff using popper here? */
 	},
 
 	render () {
-		// Must use `<noscript></noscript>` in order for `this.drop` to not be undefined when unmounting
 		return this.renderDialog();
 	}
 });
