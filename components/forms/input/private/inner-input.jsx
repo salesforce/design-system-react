@@ -226,7 +226,8 @@ const InnerInput = (props) => (
 							<Spinner
 								assistiveText={props.spinnerAssistiveText}
 								id="loading-status-icon"
-								isInput size="x-small"
+								isInput
+								size="x-small"
 								variant="brand"
 							/>
 						)}
