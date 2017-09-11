@@ -237,7 +237,8 @@ const Dialog = React.createClass({
 	},
 
 	componentWillMount () {
-		this.boundOnOpen = this.props.onOpen.bind(this);
+		const onOpen = this.props.onOpen;
+		this.boundOnOpen = onOpen ? onOpen.bind(this) : () => {};
 	},
 
 	componentDidMount () {
