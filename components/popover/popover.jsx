@@ -438,7 +438,7 @@ const Popover = React.createClass({
 							assistiveText={props.closeButtonAssistiveText}
 							iconName="close"
 							iconSize="small"
-							className="slds-float--right slds-popover__close"
+							className="slds-button slds-button--icon-small slds-float--right slds-popover__close slds-button--icon"
 							onClick={this.handleCancel}
 							variant="icon"
 						/>

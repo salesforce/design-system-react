@@ -7385,6 +7385,17 @@
             }
         ],
         "props": {
+            "iconCategory": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "'utility'",
+                    "computed": false
+                }
+            },
             "className": {
                 "type": {
                     "name": "string"
