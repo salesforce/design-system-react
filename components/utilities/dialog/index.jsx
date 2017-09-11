@@ -27,7 +27,7 @@ import DOMElementFocus from '../../../utilities/dom-element-focus';
 
 import { DIALOG } from '../../../utilities/constants';
 
-// Translates the prop into a string pooper can use
+// Translates the prop into a string popper can use https://popper.js.org/popper-documentation.html#Popper.placements
 function mapPropToPopperPlacement (propString) {
 	let placement;
 	switch (propString) {
