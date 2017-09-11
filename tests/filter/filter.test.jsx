@@ -91,11 +91,8 @@ describe('SLDSFilter', function () {
 			const demoPopover = (<DemoComponent
 				className="custom-filter-popover"
 				isOpen
-				portalMount={(reactElement, domContainerNode) => {
-					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-				}}
 				onOpen={() => {
-					expect(portalWrapper.find('.custom-filter-popover')).to.exist;
+					expect(wrapper.find('.custom-filter-popover')).to.exist;
 					done();
 				}}
 			/>);
@@ -119,9 +116,6 @@ describe('SLDSFilter', function () {
 		it('Filter could take onClick prop and trigger this callback during filter click', (done) => {
 			const demoPopover = (<DemoComponent
 				className="custom-filter-popover"
-				portalMount={(reactElement, domContainerNode) => {
-					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-				}}
 			/>);
 
 			let onFilterClicked = false;
