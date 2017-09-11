@@ -66,7 +66,6 @@ const DemoComponent = React.createClass({
  */
 describe('SLDSDatepicker', function () {
 	let mountNode;
-	let portalWrapper;
 	let wrapper;
 
 	const triggerClassSelector = '.slds-input__icon';
@@ -86,9 +85,6 @@ describe('SLDSDatepicker', function () {
 		it('has aria-haspopup, correct aria-expanded on input trigger. also tests portalMount.', function (done) {
 			wrapper = mount(<DemoComponent
 				isOpen
-				portalMount={(reactElement, domContainerNode) => {
-					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-				}}
 				onOpen={() => {
 					const inputTrigger = wrapper.find(triggerClassSelector);
 					expect(inputTrigger.node.getAttribute('aria-haspopup')).to.equal('true');
@@ -139,22 +135,19 @@ describe('SLDSDatepicker', function () {
 
 		it('onOpen is executed when trigger is clicked, onClose is executed when date is selected', function (done) {
 			wrapper = mount(<DemoComponent
-				portalMount={(reactElement, domContainerNode) => {
-					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-				}}
 				onClose={() => {
 					setTimeout(() => {
-						const month = portalWrapper.find('.datepicker__month');
+						const month = wrapper.find('.datepicker__month');
 						expect(month.node).to.not.exist;
 						done();
 					}, 0);
 				}}
 				onRequestClose={() => {
-					const month = portalWrapper.find('.datepicker__month');
+					const month = wrapper.find('.datepicker__month');
 					expect(month.node).to.exist;
 				}}
 				onOpen={() => {
-					const firstDayOfMonth = portalWrapper.find('.datepicker__month [aria-disabled=false]').first();
+					const firstDayOfMonth = wrapper.find('.datepicker__month [aria-disabled=false]').first();
 					expect(firstDayOfMonth).to.exist;
 					firstDayOfMonth.simulate('click', {});
 				}}
@@ -166,9 +159,6 @@ describe('SLDSDatepicker', function () {
 
 		it('onChange is triggered when date is selected', function (done) {
 			wrapper = mount(<DemoComponent
-				portalMount={(reactElement, domContainerNode) => {
-					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-				}}
 				onChange={(event, data) => {
 					setTimeout(() => {
 						const input = wrapper.find('input');
@@ -182,7 +172,7 @@ describe('SLDSDatepicker', function () {
 					}, 0);
 				}}
 				onOpen={() => {
-					const firstDayOfMonth = portalWrapper.find('.datepicker__month [aria-disabled=false]').first();
+					const firstDayOfMonth = wrapper.find('.datepicker__month [aria-disabled=false]').first();
 					expect(firstDayOfMonth).to.exist;
 					firstDayOfMonth.simulate('click', {});
 				}}
@@ -208,18 +198,15 @@ describe('SLDSDatepicker', function () {
 
 			it('opens on trigger click, closes on ESC', function (done) {
 				wrapper = mount(<DemoComponent
-					portalMount={(reactElement, domContainerNode) => {
-						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-					}}
 					onClose={() => {
 						setTimeout(() => {
-							const month = portalWrapper.find('.datepicker__month');
+							const month = wrapper.find('.datepicker__month');
 							expect(month.node).to.not.exist;
 							done();
 						}, 0);
 					}}
 					onOpen={() => {
-						const firstDayOfMonth = portalWrapper.find('.datepicker__month [aria-disabled=false]').first();
+						const firstDayOfMonth = wrapper.find('.datepicker__month [aria-disabled=false]').first();
 						firstDayOfMonth.simulate('keyDown', { key: 'Esc', keyCode: KEYS.ESCAPE, which: KEYS.ESCAPE });
 					}}
 				/>, { attachTo: mountNode });
@@ -231,11 +218,8 @@ describe('SLDSDatepicker', function () {
 			it('navigates to next week', function (done) {
 				wrapper = mount(<DemoComponent
 					isOpen
-					portalMount={(reactElement, domContainerNode) => {
-						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-					}}
 					onOpen={() => {
-						const selectedDay = portalWrapper.find('.datepicker__month [aria-selected=true]');
+						const selectedDay = wrapper.find('.datepicker__month [aria-selected=true]');
 						selectedDay.simulate('keyDown', { key: 'Down', keyCode: KEYS.DOWN, which: KEYS.DOWN });
 					}}
 					onCalendarFocus={(event, data) => {
@@ -248,11 +232,8 @@ describe('SLDSDatepicker', function () {
 			it('navigates to next day', function (done) {
 				wrapper = mount(<DemoComponent
 					isOpen
-					portalMount={(reactElement, domContainerNode) => {
-						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-					}}
 					onOpen={() => {
-						const selectedDay = portalWrapper.find('.datepicker__month [aria-selected=true]');
+						const selectedDay = wrapper.find('.datepicker__month [aria-selected=true]');
 						selectedDay.simulate('keyDown', { key: 'Right', keyCode: KEYS.RIGHT, which: KEYS.RIGHT });
 					}}
 					onCalendarFocus={(event, data) => {
@@ -265,11 +246,8 @@ describe('SLDSDatepicker', function () {
 			it('navigates to previous week (that is of a previous month)', function (done) {
 				wrapper = mount(<DemoComponent
 					isOpen
-					portalMount={(reactElement, domContainerNode) => {
-						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-					}}
 					onOpen={() => {
-						const selectedDay = portalWrapper.find('.datepicker__month [aria-selected=true]');
+						const selectedDay = wrapper.find('.datepicker__month [aria-selected=true]');
 						selectedDay.simulate('keyDown', { key: 'Up', keyCode: KEYS.UP, which: KEYS.UP });
 					}}
 					onCalendarFocus={(event, data) => {
@@ -282,11 +260,8 @@ describe('SLDSDatepicker', function () {
 			it('navigates to previous day', function (done) {
 				wrapper = mount(<DemoComponent
 					isOpen
-					portalMount={(reactElement, domContainerNode) => {
-						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-					}}
 					onOpen={() => {
-						const selectedDay = portalWrapper.find('.datepicker__month [aria-selected=true]');
+						const selectedDay = wrapper.find('.datepicker__month [aria-selected=true]');
 						selectedDay.simulate('keyDown', { key: 'Left', keyCode: KEYS.LEFT, which: KEYS.LEFT });
 					}}
 					onCalendarFocus={(event, data) => {
@@ -299,11 +274,8 @@ describe('SLDSDatepicker', function () {
 			it('calendar blur, focus on previous month button', function (done) {
 				wrapper = mount(<DemoComponent
 					isOpen
-					portalMount={(reactElement, domContainerNode) => {
-						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-					}}
 					onOpen={() => {
-						const selectedDay = portalWrapper.find('.datepicker__month [aria-selected=true]');
+						const selectedDay = wrapper.find('.datepicker__month [aria-selected=true]');
 						selectedDay.simulate('keyDown', { key: 'Tab', keyCode: KEYS.TAB, which: KEYS.TAB });
 					}}
 					onCalendarFocus={(event, data) => {
@@ -316,11 +288,8 @@ describe('SLDSDatepicker', function () {
 			it('calendar blur, focus on today', function (done) {
 				wrapper = mount(<DemoComponent
 					isOpen
-					portalMount={(reactElement, domContainerNode) => {
-						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-					}}
 					onOpen={() => {
-						const selectedDay = portalWrapper.find('.datepicker__month [aria-selected=true]');
+						const selectedDay = wrapper.find('.datepicker__month [aria-selected=true]');
 						selectedDay.simulate('keyDown', { key: 'Tab', keyCode: KEYS.TAB, shiftKey: true, which: KEYS.TAB });
 					}}
 					onCalendarFocus={(event, data) => {
@@ -375,19 +344,16 @@ describe('SLDSDatepicker', function () {
 				<DemoComponent
 					value={new Date(2007, 0, 5)}
 					dateDisabled={({ date }) => date.getDay() > 5 || date.getDay() < 1}
-					portalMount={(reactElement, domContainerNode) => {
-						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-					}}
 					onOpen={() => {
 						const input = wrapper.find('input');
 						expect(input.node.value).to.equal('1/5/2007');
 
-						const disabledDay = portalWrapper.find('.datepicker__month [aria-disabled=true]').first();
+						const disabledDay = wrapper.find('.datepicker__month [aria-disabled=true]').first();
 						disabledDay.simulate('click', {});
 
 						expect(input.node.value).to.equal('1/5/2007');
 
-						const day = portalWrapper.find('.datepicker__month [aria-disabled=false]').first();
+						const day = wrapper.find('.datepicker__month [aria-disabled=false]').first();
 						day.simulate('click', {});
 
 						expect(input.node.value).to.equal('1/1/2007');
