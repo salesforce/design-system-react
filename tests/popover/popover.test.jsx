@@ -77,7 +77,6 @@ const DemoComponent = React.createClass({
  */
 describe('SLDSPopover', function () {
 	let mountNode;
-	let portalWrapper;
 	let wrapper;
 
 	// BASIC STRUCTURE
@@ -94,13 +93,10 @@ describe('SLDSPopover', function () {
 		it('is open, has heading, body, close button', (done) => {
 			wrapper = mount(<DemoComponent
 				isOpen
-				portalMount={(reactElement, domContainerNode) => {
-					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-				}}
 				onOpen={() => {
-					expect(portalWrapper.find(`#${defaultIds.heading}`)).to.exist;
-					expect(portalWrapper.find(`#${defaultIds.body}`)).to.exist;
-					expect(portalWrapper.find('.slds-popover__close')).to.exist;
+					expect(wrapper.find(`#${defaultIds.heading}`)).to.exist;
+					expect(wrapper.find(`#${defaultIds.body}`)).to.exist;
+					expect(wrapper.find('.slds-popover__close')).to.exist;
 					done();
 				}}
 			/>, { attachTo: mountNode });
@@ -122,13 +118,10 @@ describe('SLDSPopover', function () {
 		it('has aria-labelledby/aria-describedby on popover', function (done) {
 			wrapper = mount(<DemoComponent
 				isOpen
-				portalMount={(reactElement, domContainerNode) => {
-					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-				}}
 				onOpen={() => {
 					const trigger = wrapper.find('#sample-popover');
 					
-					const popover = portalWrapper.find(`#${defaultIds.popover}`);
+					const popover = wrapper.find(`#${defaultIds.popover}`);
 					expect(popover.node.getAttribute('aria-labelledby')).to.equal(`${defaultIds.heading}`);
 					expect(popover.node.getAttribute('aria-describedby')).to.equal(`${defaultIds.body}`);
 					done();
@@ -164,11 +157,8 @@ describe('SLDSPopover', function () {
 			wrapper = mount(<DemoComponent
 				{...optionalProps}
 				isOpen
-				portalMount={(reactElement, domContainerNode) => {
-					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-				}}
 				onOpen={() => {
-					const popover = portalWrapper.find(`#${defaultIds.popover}`);
+					const popover = wrapper.find(`#${defaultIds.popover}`);
 
 					expect(popover.node.classList.contains(optionalProps.className)).to.be.true;
 					expect(popover.find('.slds-popover__close').node.textContent).to.equal(optionalProps.closeButtonAssistiveText);
@@ -200,18 +190,15 @@ describe('SLDSPopover', function () {
 			it('calls onClick handler on trigger, click on popover close closes', function (done) {
 				wrapper = mount(<DemoComponent
 					onClick={triggerClicked}
-					portalMount={(reactElement, domContainerNode) => {
-						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-					}}
 					onClose={() => {
 						setTimeout(() => {
-							const popover = portalWrapper.find(`#${defaultIds.popover}`);
+							const popover = wrapper.find(`#${defaultIds.popover}`);
 							expect(popover.node).to.not.exist;
 							done();
 						}, 0);
 					}}
 					onOpen={() => {
-						const popover = portalWrapper.find(`#${defaultIds.popover}`);
+						const popover = wrapper.find(`#${defaultIds.popover}`);
 
 						expect(popover).to.exist;
 						expect(triggerClicked.callCount).to.equal(1);
@@ -226,18 +213,15 @@ describe('SLDSPopover', function () {
 
 			it('opens on click, closes on ESC', function (done) {
 				wrapper = mount(<DemoComponent
-					portalMount={(reactElement, domContainerNode) => {
-						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-					}}
 					onClose={() => {
 						setTimeout(() => {
-							const popover = portalWrapper.find(`#${defaultIds.popover}`);
+							const popover = wrapper.find(`#${defaultIds.popover}`);
 							expect(popover.node).to.not.exist;
 							done();
 						}, 0);
 					}}
 					onOpen={() => {
-						const popover = portalWrapper.find(`#${defaultIds.popover}`);
+						const popover = wrapper.find(`#${defaultIds.popover}`);
 						popover.simulate('keyDown', { key: 'Esc', keyCode: 27, which: 27 });
 					}}
 				/>, { attachTo: mountNode });

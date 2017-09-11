@@ -237,6 +237,7 @@ const Dialog = React.createClass({
 	},
 
 	componentWillMount () {
+		this.boundOnOpen = this.props.onOpen.bind(this);
 	},
 
 	componentDidMount () {
@@ -286,7 +287,7 @@ const Dialog = React.createClass({
 			placement,
 			eventsEnabled,
 			modifiers,
-			onCreate: this.props.onOpen
+			onCreate: this.boundOnOpen
 		});
 		this._popper.scheduleUpdate();
 	},
