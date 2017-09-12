@@ -296,9 +296,11 @@ class Combobox extends React.Component {
 	requestOpenMenu = () => {
 		const isInlineSingleSelectionAndIsNotSelected = !this.props.multiple
 			&& this.props.selection.length === 0
-			&& this.props.variant !== 'readonly';
+			&& this.props.variant === 'inline-listbox';
 
-		if (isInlineSingleSelectionAndIsNotSelected || this.props.multiple) {
+		if (isInlineSingleSelectionAndIsNotSelected
+			|| this.props.multiple
+			|| this.props.variant === 'readonly') {
 			this.openDialog();
 		}
 	}
