@@ -60,6 +60,10 @@ const InlineEdit = React.createClass({
 		 */
 		onChange: PropTypes.func,
 		/**
+		*
+		*/
+		onKeyUp: PropTypes.func,
+		/**
 		* Function will run when we enter edit mode
 		*/
 		onEnterEditMode: PropTypes.func,
@@ -145,6 +149,7 @@ const InlineEdit = React.createClass({
 				onChange={this.handleChange}
 				onClick={!this.state.isEditing ? this.triggerEditMode : null}
 				onKeyDown={this.handleKeyDown}
+				onKeyUp={this.props.handleKeyUp}
 				readOnly={!this.state.isEditing}
 				name={name}
 				value={this.state.isEditing ? this.state.value : value}
@@ -226,6 +231,14 @@ const InlineEdit = React.createClass({
 				this.endEditMode();
 			} else if (event.keyCode === KEYS.ENTER) {
 				this.saveEdits();
+			}
+		}
+	},
+
+	handleKeyUp (event) {
+		if (event.keyCode) {
+			if (this.props.onKeyUp && isFunction(this.props.onKeyUp)) {
+				this.props.onKeyUp();
 			}
 		}
 	}
