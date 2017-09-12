@@ -105,7 +105,8 @@ const InlineEdit = React.createClass({
 	getInitialState () {
 		return {
 			isEditing: false,
-			value: null
+			value: null,
+			oldValue: null
 		};
 	},
 
@@ -176,7 +177,8 @@ const InlineEdit = React.createClass({
 			this.autoFocus = true;
 			this.setState({
 				isEditing: true,
-				value: this.props.value
+				value: this.props.value,
+				oldValue: this.props.value
 			});
 			if (isFunction(this.props.onEnterEditMode)) {
 				this.props.onEnterEditMode();
@@ -184,10 +186,10 @@ const InlineEdit = React.createClass({
 		}
 	},
 
-	saveEdits () {
+	saveEdits (undo) {
 		if (isFunction(this.props.onChange)) {
 			this.props.onChange({
-				value: this.state.value
+				value: undo?this.state.oldValue:this.state.value
 			});
 		}
 
@@ -202,7 +204,8 @@ const InlineEdit = React.createClass({
 
 		this.setState({
 			isEditing: false,
-			value: null
+			value: null,
+			oldValue: null
 		});
 
 		if (this.props.onLeaveEditMode && isFunction(this.props.onLeaveEditMode)) {
@@ -228,7 +231,7 @@ const InlineEdit = React.createClass({
 	handleKeyDown (event) {
 		if (event.keyCode) {
 			if (event.keyCode === KEYS.ESCAPE) {
-				this.endEditMode();
+				this.saveEdits(true);
 			} else if (event.keyCode === KEYS.ENTER) {
 				this.saveEdits();
 			}
