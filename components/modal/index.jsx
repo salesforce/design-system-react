@@ -140,7 +140,6 @@ const defaultProps = {
  * settings.setAppElement('#mount');
  * ```
  *
- * This component uses a portalMount (a disconnected React subtree mount) to create a modal as a child of `body`.
  */
 class Modal extends React.Component {
 

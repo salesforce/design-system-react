@@ -181,23 +181,6 @@ const Dialog = React.createClass({
 		 */
 		outsideClickIgnoreClass: PropTypes.string,
 		/**
-		 * Absolutely positioned DOM nodes, such as a popover dialog, may need their own React DOM tree root. They may need their alignment "flipped" if extended beyond the window or outside the bounds of an overflow-hidden scrolling modal. This library's portal mounts are added as a child node of `body`. This prop will be triggered instead of the default `ReactDOM.mount()` when this dialog is mounted. This prop is useful for testing and simliar to a "callback ref." Two arguments,`reactElement` and `domContainerNode` are passed in. Consider the following code that bypasses the internal mount and uses an Enzyme wrapper to mount the React root tree to the DOM.
-		 *
-		 * ```
-		 * <Popover
-				isOpen
-				portalMount={(reactElement, domContainerNode) => {
-					portalWrapper = Enzyme.mount(reactElement, { attachTo: domContainerNode });
-				}}
-				onOpen={() => {
-					expect(portalWrapper.find(`#my-heading`)).to.exist;
-					done();
-				}}
-			/>
-			```
-		 */
-		portalMount: PropTypes.func,
-		/**
 		 * An object of CSS styles that are applied to the immediate parent `div` of the contents.
 		 */
 		style: PropTypes.object,
@@ -251,6 +234,10 @@ const Dialog = React.createClass({
 	componentWillUnmount () {
 		this._destroyPopper();
 		this.handleClose(undefined, { componentWillUnmount: true });
+	},
+
+	target () {
+		return this.props.targetElement ? ReactDOM.findDOMNode(this.props.targetElement) : ReactDOM.findDOMNode(this).parentNode; // eslint-disable-line react/no-find-dom-node
 	},
 
 	_createPopper () {
@@ -340,7 +327,24 @@ const Dialog = React.createClass({
 		}
 	},
 
-	renderDialogContents () {
+	handleOpen () {
+		this.setState({ isOpen: true });
+
+		if (this.props.variant === 'popover') {
+			DOMElementFocus.storeActiveElement();
+			DOMElementFocus.setupScopedFocus({ ancestorElement: ReactDOM.findDOMNode(this.dialogElement).querySelector('.slds-popover') }); // eslint-disable-line react/no-find-dom-node
+			// Don't steal focus from inner elements
+			if (!DOMElementFocus.hasOrAncestorHasFocus()) {
+				DOMElementFocus.focusAncestor();
+			}
+		}
+
+		if (this.props.onOpen) {
+			this.props.onOpen(undefined, { portal: this.portal });
+		}
+	},
+
+	render () {
 		let style = assign(this._getPopperStyles(), {
 			marginTop: this.props.marginTop,
 			marginBottom: this.props.marginBottom,
@@ -371,42 +375,6 @@ const Dialog = React.createClass({
 				</IconSettings>
 			</div>
 		);
-	},
-
-	target () {
-		return this.props.targetElement ? ReactDOM.findDOMNode(this.props.targetElement) : ReactDOM.findDOMNode(this).parentNode; // eslint-disable-line react/no-find-dom-node
-	},
-
-	handleOpen () {
-		this.setState({ isOpen: true });
-
-		if (this.props.variant === 'popover') {
-			DOMElementFocus.storeActiveElement();
-			DOMElementFocus.setupScopedFocus({ ancestorElement: ReactDOM.findDOMNode(this.dialogElement).querySelector('.slds-popover') }); // eslint-disable-line react/no-find-dom-node
-			// Don't steal focus from inner elements
-			if (!DOMElementFocus.hasOrAncestorHasFocus()) {
-				DOMElementFocus.focusAncestor();
-			}
-		}
-
-		if (this.props.onOpen) {
-			this.props.onOpen(undefined, { portal: this.portal });
-		}
-	},
-
-	renderDialog () {
-		// By default ReactDOM is used to create a portal mount on the `body` tag. This can be overridden with the `portalMount` prop.
-		// if (this.props.portalMount) {
-		// 	mount = this.props.portalMount;
-		// }
-
-		// nextElement, container, callback
-		// this.portal = mount(this.renderDialogContents(), this.dialogElement);
-		return this.renderDialogContents();
-	},
-
-	render () {
-		return this.renderDialog();
 	}
 });
 

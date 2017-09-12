@@ -147,24 +147,6 @@ const propTypes = {
 	 */
 	parser: PropTypes.func,
 	/**
-	 * Absolutely positioned DOM nodes, such as a datepicker dialog, may need their own React DOM tree root. They may need their alignment "flipped" if extended beyond the window or outside the bounds of an overflow-hidden scrolling modal. This library's portal mounts are added as a child node of `body`. This prop will be triggered instead of the default `ReactDOM.mount()` when this dialog is mounted. This prop is useful for testing and simliar to a "callback ref." Two arguments,`reactElement` and `domContainerNode` are passed in. Consider the following code that bypasses the internal mount and uses an Enzyme wrapper to mount the React root tree to the DOM.
-	 *
-	 * ```
-	 * <Datepicker
-			isOpen
-			portalMount={(reactElement, domContainerNode) => {
-				portalWrapper = Enzyme.mount(reactElement, { attachTo: domContainerNode });
-			}}
-			onOpen={() => {
-				expect(portalWrapper.find(`#my-heading`)).to.exist;
-				done();
-			}}
-		/>
-		```
-	 * _Tested with Mocha framework._
-	 */
-	portalMount: PropTypes.func,
-	/**
 	 * Offset of year from current year that can be selected in the year selection dropdown. (2017 - 5 = 2012). _Tested with snapshot testing._
 	 */
 	relativeYearFrom: PropTypes.number,
@@ -234,8 +216,6 @@ const defaultProps = {
  * The calendar is rendered with time/dates based on local browser time of the client. All dates are in local user timezones. Another way to put it is if a user selects a date, they are selecting midnight their time on that day and not mightnight in UTC. If this component is being used in conjuction with a timezone input, you may want to convert dates provided to UTC in that timezone.
  *
  * This component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.
- *
- * This component may use a portalMount (a disconnected React subtree mount) within an absolutely positioned DOM node created with [Drop](http://github.hubspot.com/drop/).
  */
 class Datepicker extends React.Component {
 	constructor (props) {
@@ -397,7 +377,6 @@ class Datepicker extends React.Component {
 				flippable={!this.props.hasStaticAlignment}
 				onClose={this.handleClose}
 				onOpen={this.handleOpen}
-				portalMount={this.props.portalMount}
 				targetElement={this.inputRef}
 			>
 				{this.getDatePicker({ labels, assistiveText })}

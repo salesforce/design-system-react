@@ -85,7 +85,7 @@ describe('SLDSDatepicker', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('has aria-haspopup, correct aria-expanded on input trigger. also tests portalMount.', function (done) {
+		it('has aria-haspopup, correct aria-expanded on input trigger.', function (done) {
 			wrapper = mount(<DemoComponent
 				isOpen
 				onOpen={() => {

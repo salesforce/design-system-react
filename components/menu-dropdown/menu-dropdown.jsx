@@ -80,9 +80,6 @@ const DropdownNubbinPositions = [
  * support is needed.
  *
  * This component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.
- *
- * This component may use a portalMount (a disconnected React subtree mount) within an absolutely positioned DOM node created with [Drop](http://github.hubspot.com/drop/).
-
  */
 const MenuDropdown = React.createClass({
 	// ### Display Name

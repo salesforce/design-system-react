@@ -164,23 +164,6 @@ const Popover = React.createClass({
 		 */
 		onRequestClose: PropTypes.func,
 		/**
-		 * Absolutely positioned DOM nodes, such as a popover dialog, may need their own React DOM tree root. They may need their alignment "flipped" if extended beyond the window or outside the bounds of an overflow-hidden scrolling modal. This library's portal mounts are added as a child node of `body`. This prop will be triggered instead of the default `ReactDOM.mount()` when this dialog is mounted. This prop is useful for testing and simliar to a "callback ref." Two arguments,`reactElement` and `domContainerNode` are passed in. Consider the following code that bypasses the internal mount and uses an Enzyme wrapper to mount the React root tree to the DOM.
-		 *
-		 * ```
-		 * <Popover
-				isOpen
-				portalMount={(reactElement, domContainerNode) => {
-					portalWrapper = Enzyme.mount(reactElement, { attachTo: domContainerNode });
-				}}
-				onOpen={() => {
-					expect(portalWrapper.find(`#my-heading`)).to.exist;
-					done();
-				}}
-			/>
-			```
-		 */
-		portalMount: PropTypes.func,
-		/**
 		 * An object of CSS styles that are applied to the `slds-popover` DOM element.
 		 */
 		style: PropTypes.object,
@@ -417,7 +400,6 @@ const Popover = React.createClass({
 					onMouseEnter={(props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(props.openOn === 'hover') ? this.handleMouseLeave : null}
 					outsideClickIgnoreClass={outsideClickIgnoreClass}
-					portalMount={this.props.portalMount}
 					variant="popover"
 				>
 					<div
