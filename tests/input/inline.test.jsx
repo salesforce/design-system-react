@@ -90,7 +90,7 @@ describe('DataTable: ', function () {
 		const keyDownHandler = sinon.spy();
 		const keyUpHandler = sinon.spy();
 
-		beforeEach(renderInlineEdit(<InlineEdit id="inline-edit-standard" value={sampleValue} onEnterEditMode={enterEditModeHanlder} onLeaveEditMode={leaveEditModeHanlder} onKeyDown={keyDownHandler} onKeyUp={keyUpHandler}/>
+		beforeEach(renderInlineEdit(<InlineEdit id="inline-edit-standard" value={sampleValue} onEnterEditMode={enterEditModeHanlder} onLeaveEditMode={leaveEditModeHanlder} onKeyDown={keyDownHandler} onKeyUp={keyUpHandler} />
 		));
 
 		afterEach(removeInlineEdit);
@@ -112,18 +112,16 @@ describe('DataTable: ', function () {
 				Simulate.click(trigger, {});
 
 				setTimeout(() => {
-					const input = getInput(this.dom);
+					const input2 = getInput(this.dom);
 
-					should.not.exist(input);
+					should.not.exist(input2);
 
 					expect(leaveEditModeHanlder.callCount).to.equal(1);
 				}, 100);
 			}, 100);
-
-			
 		});
 
-		it('keyup and keydown handler get called', function() {
+		it('keyup and keydown handler get called', function () {
 			const trigger = getTrigger(this.dom);
 
 			should.exist(trigger);
@@ -139,7 +137,7 @@ describe('DataTable: ', function () {
 				
 				Simulate.change(input);
 				
-				Simulate.keyDown(input, {key: "Enter", keyCode: 13, which: 13});
+				Simulate.keyDown(input, { key: 'Enter', keyCode: 13, which: 13 });
 
 				setTimeout(() => {
 					const input2 = getInput(this.dom);

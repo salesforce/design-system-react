@@ -189,7 +189,7 @@ const InlineEdit = React.createClass({
 	saveEdits (undo) {
 		if (isFunction(this.props.onChange)) {
 			this.props.onChange({
-				value: undo?this.state.oldValue:this.state.value
+				value: undo ? this.state.oldValue : this.state.value
 			});
 		}
 
