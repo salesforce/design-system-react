@@ -29,10 +29,7 @@ const renderMarkup = (Component, props) => String(
 
 const testDOMandHTML = ({ name, test, Component }) => {
 	test(`${name} DOM Snapshot`, () => {
-		const domTree = renderer.create(
-			<Component />,
-		).toJSON();
-		expect(domTree).toMatchSnapshot();
+		expect(renderDOM(Component)).toMatchSnapshot();
 	});
 
 	test(`${name} HTML Snapshot`, () => {

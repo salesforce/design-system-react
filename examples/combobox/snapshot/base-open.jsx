@@ -3,7 +3,7 @@ import React from 'react';
 import Combobox from '~/components/combobox/combobox';
 import Icon from '~/components/icon';
 import escapeRegExp from 'lodash.escaperegexp';
-import globalSettings from '../../components/settings';
+import globalSettings from '../../../components/settings';
 
 globalSettings.setIconsPath('/assets/icons');
 
@@ -11,11 +11,6 @@ const accounts = [
 	{ id: '1', label: 'Acme', subTitle: 'Account • San Francisco', type: 'account' },
 	{ id: '2', label: 'Salesforce.com, Inc.', subTitle: 'Account • San Francisco', type: 'account' }
 ];
-
-const defaultFilter = (term, item) => {
-	if (!term) return true;
-	return (item.data && item.data.type === 'section') || item.label.match(new RegExp(escapeRegExp(term), 'ig'));
-};
 
 const accountsWithIcon = accounts.map((elem) => Object.assign(elem, {
 	icon: <Icon
@@ -31,7 +26,7 @@ class Example extends React.Component {
 
 		this.state = {
 			inputValue: '',
-			selection: [accounts[1]]
+			selection: []
 		};
 	}
 
@@ -40,6 +35,7 @@ class Example extends React.Component {
 			<Combobox
 				id="combobox-unique-id"
 				isInline
+				isOpen
 				labels={{
 					placeholder: 'Search Salesforce'
 				}}
