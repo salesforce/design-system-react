@@ -4,6 +4,7 @@ import assign from 'lodash.assign';
 
 import chai from 'chai';
 
+import IconSettings from '../../components/iconSettings';
 import Icon from '../../components/icon';
 import { ButtonStateful } from '../../components';
 
@@ -23,7 +24,7 @@ describe('Button Stateful: ', () => {
 	const renderButton = (instance) => function () {
 		this.dom = document.createElement('div');
 		document.body.appendChild(this.dom);
-		this.component = ReactDOM.render(instance, this.dom);
+		this.component = ReactDOM.render(<IconSettings iconPath="/assets/icons">{instance}</IconSettings>, this.dom);
 	};
 	function removeButton () {
 		ReactDOM.unmountComponentAtNode(this.dom);

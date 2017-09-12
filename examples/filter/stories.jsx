@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
+import IconSettings from '../../components/iconSettings';
 
 import { FILTER } from '../../utilities/constants';
 import Default from './default';
@@ -24,6 +25,7 @@ const CustomAlignment = ({ children, align }) => (<div className="slds-grid slds
 CustomAlignment.defaultProps = { align: 'left' };
 
 storiesOf(FILTER, module)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Filter', () => (
 		<CustomAlignment>
 			<Default />

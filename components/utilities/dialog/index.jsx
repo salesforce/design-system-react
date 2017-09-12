@@ -27,6 +27,9 @@ import DOMElementFocus from '../../../utilities/dom-element-focus';
 
 import { DIALOG } from '../../../utilities/constants';
 
+// #### Dialog doesn't pass down <IconSettings> context so repassing it here.
+import IconSettings from '../../iconSettings';
+
 // Translates the prop into a string popper can use https://popper.js.org/popper-documentation.html#Popper.placements
 function mapPropToPopperPlacement (propString) {
 	let placement;
@@ -362,8 +365,10 @@ const Dialog = React.createClass({
 				onMouseLeave={this.props.onMouseLeave}
 				ref={(component) => { this.dialogContent = component; }}
 			>
-				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
-				{this.props.children}
+				<IconSettings iconPath={this.props.context.iconPath}>
+					{/* eslint-enable jsx-a11y/no-static-element-interactions */}
+					{this.props.children}
+				</IconSettings>
 			</div>
 		);
 	},

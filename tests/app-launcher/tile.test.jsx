@@ -3,6 +3,7 @@ import { mount } from 'enzyme';
 import chai from 'chai';
 import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
+import IconSettings from '../../components/iconSettings';
 
 const expect = chai.expect;
 const should = chai.should();
@@ -38,7 +39,7 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		div.style.cssText = 'width: 300px';
 		document.body.appendChild(div);
 
-		handles.tile = mount(createTile(props), { attachTo: div });
+		handles.tile = mount(<IconSettings iconPath="/assets/icons">{createTile(props)}</IconSettings>, { attachTo: div });
 
 		handles.body = handles.tile.find('.slds-app-launcher__tile-body');
 		handles.description = handles.body.find('div').at(1);
@@ -113,7 +114,9 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		});
 
 		it('tile can be passed a search string', () => {
-			expect(handles.tile.prop('search')).to.equal('upport');
+			const searchStr = handles.tile;
+			const childrenProps = searchStr.component.props.props.children.props;
+			expect(childrenProps.search).to.equal('upport');
 		});
 
 		it('search string highlights title', () => {

@@ -11,6 +11,7 @@ import chaiEnzyme from 'chai-enzyme';
 // `this.wrapper` and `this.dom` is set in the helpers file
 import { mountComponent, unmountComponent } from '../enzyme-helpers';
 
+import IconSettings from '../../components/iconSettings';
 import Dropdown from '../../components/menu-dropdown';
 import List from '../../components/utilities/menu-list';
 
@@ -30,7 +31,7 @@ describe('SLDSMenuDropdown: ', () => {
 	const renderDropdown = (inst) => {
 		body = document.createElement('div');
 		document.body.appendChild(body);
-		return ReactDOM.render(inst, body);
+		return ReactDOM.render(<IconSettings iconPath="/assets/icons">{inst}</IconSettings>, body);
 	};
 
 	function removeDropdownTrigger () {
@@ -276,7 +277,7 @@ describe('SLDSMenuDropdown: ', () => {
 			expect(getMenu(body)).to.equal(null);
 			Simulate.click(btn, {});
 			expect(getMenu(body).className).to.include('slds-dropdown');
-			
+
 			// close
 			Simulate.mouseEnter(btn, {});
 			Simulate.mouseLeave(btn);
@@ -454,7 +455,7 @@ describe('SLDSMenuDropdown: ', () => {
 			expect(selected).to.be.false;
 			const checkItemLengthBefore = getMenu(body).querySelectorAll('.slds-dropdown__item svg').length;
 			expect(checkItemLengthBefore).to.equal(1);
-			
+
 			const items = getMenu(body).querySelectorAll('.slds-dropdown__item');
 			Simulate.click(items[0].querySelector('a'), {});
 			Simulate.click(items[1].querySelector('a'), {});

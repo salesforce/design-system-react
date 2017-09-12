@@ -19,7 +19,10 @@ echo "## Running webpack"
 BUILD="./node_modules/.bin/webpack --config webpack.config.dist.js"
 
 eval $BUILD
-eval "MINIFY=1 $BUILD"
+eval "MINIFY=true $BUILD"
+
+eval "INCLUDE_ICONS=true $BUILD"
+eval "INCLUDE_ICONS=true MINIFY=true $BUILD"
 
 echo "## Cloning additional files"
 

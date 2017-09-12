@@ -371,97 +371,70 @@ exports[`Button Group Checkbox Snapshot 1`] = `
 
 exports[`Button Group MoreIcon Snapshot 1`] = `
 <ButtonGroupExample>
-  <SLDSButtonGroup
-    labels={Object {}}
+  <IconSettings
+    iconPath="/assets/icons"
   >
-    <div
-      className="slds-button-group"
-      role="group"
+    <SLDSButtonGroup
+      labels={Object {}}
     >
-      <SLDSButton
-        disabled={false}
-        hint={false}
-        iconCategory="utility"
-        iconSize="medium"
-        label="Refresh"
-        responsive={false}
-        variant="neutral"
+      <div
+        className="slds-button-group"
+        role="group"
       >
-        <button
-          className="slds-button slds-button--neutral"
+        <SLDSButton
           disabled={false}
-          onClick={[Function]}
+          hint={false}
+          iconCategory="utility"
+          iconSize="medium"
+          label="Refresh"
+          responsive={false}
+          variant="neutral"
         >
-          Refresh
-        </button>
-      </SLDSButton>
-      <SLDSButton
-        disabled={false}
-        hint={false}
-        iconCategory="utility"
-        iconSize="medium"
-        label="Edit"
-        responsive={false}
-        variant="neutral"
-      >
-        <button
-          className="slds-button slds-button--neutral"
+          <button
+            className="slds-button slds-button--neutral"
+            disabled={false}
+            onClick={[Function]}
+          >
+            Refresh
+          </button>
+        </SLDSButton>
+        <SLDSButton
           disabled={false}
-          onClick={[Function]}
+          hint={false}
+          iconCategory="utility"
+          iconSize="medium"
+          label="Edit"
+          responsive={false}
+          variant="neutral"
         >
-          Edit
-        </button>
-      </SLDSButton>
-      <SLDSButton
-        disabled={false}
-        hint={false}
-        iconCategory="utility"
-        iconSize="medium"
-        label="Save"
-        responsive={false}
-        variant="neutral"
-      >
-        <button
-          className="slds-button slds-button--neutral"
+          <button
+            className="slds-button slds-button--neutral"
+            disabled={false}
+            onClick={[Function]}
+          >
+            Edit
+          </button>
+        </SLDSButton>
+        <SLDSButton
           disabled={false}
-          onClick={[Function]}
+          hint={false}
+          iconCategory="utility"
+          iconSize="medium"
+          label="Save"
+          responsive={false}
+          variant="neutral"
         >
-          Save
-        </button>
-      </SLDSButton>
-      <OnClickOutside(SLDSMenuDropdown)
-        assistiveText="More Options"
-        buttonVariant="icon"
-        iconName="down"
-        iconVariant="border-filled"
-        id="ButtonGroupExampleDropdown"
-        onSelect={[Function]}
-        openOn="click"
-        options={
-          Array [
-            Object {
-              "label": "undo",
-              "value": "A0",
-            },
-            Object {
-              "label": "redo",
-              "value": "B0",
-            },
-            Object {
-              "label": "activate",
-              "value": "C0",
-            },
-          ]
-        }
-        triggerClassName="slds-button--last"
-      >
-        <SLDSMenuDropdown
-          align="left"
+          <button
+            className="slds-button slds-button--neutral"
+            disabled={false}
+            onClick={[Function]}
+          >
+            Save
+          </button>
+        </SLDSButton>
+        <OnClickOutside(SLDSMenuDropdown)
           assistiveText="More Options"
           buttonVariant="icon"
-          disableOnClickOutside={[Function]}
-          enableOnClickOutside={[Function]}
-          hoverCloseDelay={300}
           iconName="down"
           iconVariant="border-filled"
           id="ButtonGroupExampleDropdown"
@@ -485,109 +458,124 @@ exports[`Button Group MoreIcon Snapshot 1`] = `
           }
           triggerClassName="slds-button--last"
         >
-          <SLDSMenuDropdownTrigger
-            aria-haspopup={true}
+          <SLDSMenuDropdown
+            align="left"
             assistiveText="More Options"
-            className="ignore-click-ButtonGroupExampleDropdown"
+            buttonVariant="icon"
+            disableOnClickOutside={[Function]}
+            enableOnClickOutside={[Function]}
+            hoverCloseDelay={300}
             iconName="down"
             iconVariant="border-filled"
             id="ButtonGroupExampleDropdown"
-            isOpen={false}
-            menu={null}
-            onClick={[Function]}
-            onFocus={null}
-            onKeyDown={[Function]}
-            onMouseEnter={null}
-            onMouseLeave={null}
+            onSelect={[Function]}
             openOn="click"
-            tabIndex="0"
+            options={
+              Array [
+                Object {
+                  "label": "undo",
+                  "value": "A0",
+                },
+                Object {
+                  "label": "redo",
+                  "value": "B0",
+                },
+                Object {
+                  "label": "activate",
+                  "value": "C0",
+                },
+              ]
+            }
             triggerClassName="slds-button--last"
-            triggerRef={[Function]}
-            variant="icon"
           >
-            <div
-              className="slds-dropdown-trigger slds-dropdown-trigger--click slds-button--last"
+            <SLDSMenuDropdownTrigger
+              aria-haspopup={true}
+              assistiveText="More Options"
+              className="ignore-click-ButtonGroupExampleDropdown"
+              iconName="down"
+              iconVariant="border-filled"
               id="ButtonGroupExampleDropdown"
+              isOpen={false}
+              menu={null}
               onClick={[Function]}
               onFocus={null}
               onKeyDown={[Function]}
               onMouseEnter={null}
               onMouseLeave={null}
+              openOn="click"
+              tabIndex="0"
+              triggerClassName="slds-button--last"
+              triggerRef={[Function]}
+              variant="icon"
             >
-              <SLDSButton
-                aria-expanded={false}
-                aria-haspopup={true}
-                assistiveText="More Options"
-                className="ignore-click-ButtonGroupExampleDropdown"
-                disabled={false}
-                hint={false}
-                iconCategory="utility"
-                iconName="down"
-                iconSize="medium"
-                iconVariant="border-filled"
-                responsive={false}
-                tabIndex="0"
-                variant="icon"
+              <div
+                className="slds-dropdown-trigger slds-dropdown-trigger--click slds-button--last"
+                id="ButtonGroupExampleDropdown"
+                onClick={[Function]}
+                onFocus={null}
+                onKeyDown={[Function]}
+                onMouseEnter={null}
+                onMouseLeave={null}
               >
-                <button
+                <SLDSButton
                   aria-expanded={false}
                   aria-haspopup={true}
-                  className="slds-button slds-button--icon-border-filled ignore-click-ButtonGroupExampleDropdown"
+                  assistiveText="More Options"
+                  className="ignore-click-ButtonGroupExampleDropdown"
                   disabled={false}
-                  onClick={[Function]}
+                  hint={false}
+                  iconCategory="utility"
+                  iconName="down"
+                  iconSize="medium"
+                  iconVariant="border-filled"
+                  responsive={false}
                   tabIndex="0"
+                  variant="icon"
                 >
-                  <SLDSButtonIcon
-                    category="utility"
-                    className=""
-                    hint={false}
-                    name="down"
-                    size={null}
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button--icon-border-filled ignore-click-ButtonGroupExampleDropdown"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
                   >
-                    <UtilityIcon
-                      aria-hidden="true"
+                    <SLDSButtonIcon
                       category="utility"
-                      className="slds-button__icon"
+                      className=""
+                      hint={false}
                       name="down"
+                      size={null}
                     >
-                      <Svg
+                      <UtilityIcon
                         aria-hidden="true"
+                        category="utility"
                         className="slds-button__icon"
-                        data={
-                          Object {
-                            "path": Object {
-                              "d": "M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z",
-                            },
-                            "viewBox": "0 0 24 24",
-                          }
-                        }
                         name="down"
                       >
                         <svg
                           aria-hidden="true"
                           className="slds-button__icon"
-                          name="down"
-                          viewBox="0 0 24 24"
                         >
-                          <path
-                            d="M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z"
+                          <use
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
                           />
                         </svg>
-                      </Svg>
-                    </UtilityIcon>
-                  </SLDSButtonIcon>
-                  <span
-                    className="slds-assistive-text"
-                  >
-                    More Options
-                  </span>
-                </button>
-              </SLDSButton>
-            </div>
-          </SLDSMenuDropdownTrigger>
-        </SLDSMenuDropdown>
-      </OnClickOutside(SLDSMenuDropdown)>
-    </div>
-  </SLDSButtonGroup>
+                      </UtilityIcon>
+                    </SLDSButtonIcon>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      More Options
+                    </span>
+                  </button>
+                </SLDSButton>
+              </div>
+            </SLDSMenuDropdownTrigger>
+          </SLDSMenuDropdown>
+        </OnClickOutside(SLDSMenuDropdown)>
+      </div>
+    </SLDSButtonGroup>
+  </IconSettings>
 </ButtonGroupExample>
 `;

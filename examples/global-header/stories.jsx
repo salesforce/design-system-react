@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
+import IconSettings from '../../components/iconSettings';
 
 import logo from './logo.svg';
 
@@ -99,7 +100,7 @@ const GlobalHeaderDemo = (props) => (
 );
 
 storiesOf(GLOBAL_HEADER, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Search + Navigation', () => (<GlobalHeaderDemo />))
 	.add('Open on Hybrid', () => (<GlobalHeaderDemo openOn="hybrid" />))
 	.add('Fewer Elements', () => (

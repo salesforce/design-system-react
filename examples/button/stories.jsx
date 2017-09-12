@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
+import IconSettings from '../../components/iconSettings';
 
 import { BUTTON } from '../../utilities/constants';
 import Button from '../../components/button';
@@ -16,7 +17,7 @@ const getButton = (props) => (
 const getIconButton = (props) => getButton({ variant: 'icon', ...props });
 
 storiesOf(BUTTON, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Base', () => getButton({ label: 'Base', variant: 'base' }))
 	.add('Neutral', () => getButton({ label: 'Neutral' }))
 	.add('Neutral with id', () => getButton({ label: 'Neutral', id: 'custom-id' }))

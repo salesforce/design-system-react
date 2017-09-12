@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import ReactModal from 'react-modal';
 import { expect } from 'chai';
 import { mount, ReactWrapper } from 'enzyme';
 import assign from 'lodash.assign';
@@ -6,6 +8,7 @@ import TestUtils from 'react-addons-test-utils';
 
 const should = chai.should();
 
+import IconSettings from '../../components/iconSettings';
 import AppLauncher from '../../components/app-launcher';
 import AppLauncherTile from '../../components/app-launcher/tile';
 import AppLauncherSection from '../../components/app-launcher/section';
@@ -37,15 +40,20 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 	);
 
 	function mountAppLauncher (props) {
-		handles.appLauncher = mount(createAppLauncher(props));
+		handles.appLauncher = mount(<IconSettings iconPath="/assets/icons">{createAppLauncher(props)}</IconSettings>);
 
 		handles.appLauncherIcon = handles.appLauncher.find('.slds-context-bar__icon-action');
 
-		// https://www.dropbox.com/s/0a5lukwoxbatx8l/Screenshot%202016-08-10%2012.57.59.png?dl=0
-		const portal = handles.appLauncher.node._reactInternalInstance._renderedComponent._renderedChildren['.1']._renderedComponent._instance.portal; // eslint-disable-line no-underscore-dangle
+		/*
+		 * How to write tests for react-modal using portal
+		 * http://remarkablemark.org/blog/2017/05/17/testing-react-modal/
+		 */
+		const portalNode = ReactDOM.findDOMNode(handles.appLauncher.find(ReactModal).node.portal); // eslint-disable-line react/no-find-dom-node
 
 		// Wrap the modal portal in an Enzyme wrapper
-		handles.modal = new ReactWrapper(portal, portal);
+		handles.modal = new ReactWrapper(
+			handles.appLauncher.find(ReactModal).node.portal, true
+		);
 	}
 
 

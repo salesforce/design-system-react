@@ -9,6 +9,7 @@ import CardFilter from '../../components/card/filter';
 import { cssClasses as mediaObjectCssClasses } from '../../components/media-object';
 
 import Icon from '../../components/icon';
+import IconSettings from '../../components/iconSettings';
 
 chai.should();
 
@@ -47,7 +48,7 @@ describe('Card: ', () => {
 	const renderCard = (instance) => function () {
 		this.dom = document.createElement('div');
 		document.body.appendChild(this.dom);
-		this.component = ReactDOM.render(instance, this.dom);
+		this.component = ReactDOM.render(<IconSettings iconPath="/assets/icons">{instance}</IconSettings>, this.dom);
 	};
 
 	function removeCard () {

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
+import IconSettings from '../../components/iconSettings';
 
 import { SPINNER } from '../../utilities/constants';
 import Spinner from '../../components/spinner';
@@ -18,7 +19,7 @@ const inverseContainer = {
 };
 
 storiesOf(SPINNER, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Small', () => getSpinner({ size: 'small', variant: 'base' }))
 	.add('Medium', () => getSpinner({ size: 'medium', variant: 'base' }))
 	.add('Large', () => getSpinner({ size: 'large', variant: 'base' }))

@@ -1,6 +1,6 @@
 {
   "name": "design-system-react",
-  "version": "0.6.20",
+  "version": "0.7.0",
   "description": "Salesforce Lightning Design System for React",
   "license": "SEE LICENSE IN README.md",
   "engines": {
@@ -90,7 +90,7 @@
   },
   "devDependencies": {
     "@kadira/storybook": "^2.22.0",
-    "@salesforce-ux/design-system": "git+ssh://git@github.com/salesforce-ux/design-system-internal.git#v2.4.0-alpha.1-dist",
+    "@salesforce-ux/design-system": "git+ssh://git@github.com/salesforce-ux/design-system-internal.git#v2.4.0-rc.3-dist",
     "@salesforce-ux/icons": "7.x",
     "async": "^2.0.0-rc.5",
     "babel-cli": "^6.24.1",

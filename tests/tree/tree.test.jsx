@@ -16,6 +16,7 @@ import isFunction from 'lodash.isfunction';
 
 import sampleNodes from '../../utilities/sample-data/tree';
 
+import IconSettings from '../../components/iconSettings';
 import Tree from '../../components/tree';
 import Search from '../../components/forms/input/search';
 
@@ -106,25 +107,27 @@ const DemoTree = React.createClass({
 
 	render () {
 		return (
-			<div>{
-				this.props.searchable
-				? <div>
-					<Search assistiveText="Search Tree" value={this.state.searchTerm} onChange={this.handleSearchChange} />
-					<br />
+			<IconSettings iconPath="/assets/icons">
+				<div>{
+					this.props.searchable
+						? <div>
+							<Search assistiveText="Search Tree" value={this.state.searchTerm} onChange={this.handleSearchChange} />
+							<br />
+						</div>
+						: null
+				}
+					<Tree
+						id="example-tree"
+						getNodes={this.props.getNodes}
+						nodes={this.state.nodes}
+						onExpandClick={this.handleExpandClick}
+						onClick={this.handleClick}
+						onScroll={this.handleScroll}
+						searchTerm={this.state.searchTerm}
+						{...this.props}
+					/>
 				</div>
-				: null
-			}
-				<Tree
-					id="example-tree"
-					getNodes={this.props.getNodes}
-					nodes={this.state.nodes}
-					onExpandClick={this.handleExpandClick}
-					onClick={this.handleClick}
-					onScroll={this.handleScroll}
-					searchTerm={this.state.searchTerm}
-					{...this.props}
-				/>
-			</div>
+			</IconSettings>
 		);
 	}
 });

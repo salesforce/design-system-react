@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
+import IconSettings from '../../components/iconSettings';
 
 import ProgressIndicator from '~/components/progress-indicator';
 import { PROGRESS_INDICATOR } from '../../utilities/constants';
@@ -53,7 +54,7 @@ const ExampleProgressIndicator = React.createClass({
 });
 
 storiesOf(PROGRESS_INDICATOR, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Base', () => (<Default />))
 	.add('Base With Many Steps', () => (<ExampleProgressIndicator
 		steps={manySteps}

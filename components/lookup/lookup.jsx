@@ -525,6 +525,7 @@ const Lookup = React.createClass({
 				className="slds-lookup__menu slds-show"
 				closeOnTabKey
 				contentsClassName="slds-lookup__menu slds-show"
+				context={this.context}
 				inheritTargetWidth
 				onClose={this.handleCancel}
 				flippable={this.props.flippable}
@@ -683,6 +684,10 @@ const Lookup = React.createClass({
 		);
 	}
 });
+
+Lookup.contextTypes = {
+	iconPath: PropTypes.string
+};
 
 module.exports = Lookup;
 
