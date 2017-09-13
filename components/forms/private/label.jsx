@@ -25,6 +25,9 @@ const propTypes = {
 	required: PropTypes.string
 };
 
+/*
+ * Form label. This returns null if there is no label text (hidden or shown)
+ */
 const Label = (props) => {
 	const anyLabelText = props.label
 		|| props.assistiveText; // One of these is required to pass accessibility tests
