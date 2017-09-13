@@ -283,7 +283,8 @@ class Datepicker extends React.Component {
 			if (currentDate !== nextDate) {
 				this.setState({
 					value: nextProps.value,
-					formattedValue: this.props.formatter(nextProps.value)
+					formattedValue: this.props.formatter(nextProps.value),
+					inputValue: this.props.formatter(nextProps.value)
 				});
 			}
 		}
@@ -292,7 +293,7 @@ class Datepicker extends React.Component {
 	getId () {
 		return this.props.id || this.generatedId;
 	}
-	
+
 	getIsOpen () {
 		return !!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
 	}
@@ -495,6 +496,7 @@ class Datepicker extends React.Component {
 				category="utility"
 				name="event"
 				onClick={this.openDialog}
+				type="button"
 			/>),
 			id: this.getId(),
 			inputRef: (component) => { this.inputRef = component; },

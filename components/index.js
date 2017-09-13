@@ -91,6 +91,9 @@ export InlineEdit from './forms/input/inline';
 export SLDSInput from './forms/input';
 export Input from './forms/input';
 
+export SLDSTextarea from './forms/textarea';
+export Textarea from './forms/textarea';
+
 export SLDSSearch from './forms/input/search';
 export Search from './forms/input/search';
 
@@ -141,6 +144,9 @@ export Popover from './popover';
 export SLDSPopoverTooltip from './tooltip';
 export PopoverTooltip from './tooltip';
 export SLDSTooltip from './tooltip';
+
+export SLDSProgressIndicator from './progress-indicator';
+export ProgressIndicator from './progress-indicator';
 
 export SLDSSpinner from './spinner';
 export Spinner from './spinner';

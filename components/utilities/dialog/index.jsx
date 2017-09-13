@@ -67,11 +67,11 @@ const Dialog = React.createClass({
 		),
 		/**
 		 * Contents of dialog
-		**/
+		 */
 		children: PropTypes.node,
 		/**
 		 * Closes dialog when tab key is pressed
-		**/
+		 */
 		closeOnTabKey: PropTypes.bool,
 		/**
 		 * If true, the dialog is constrained to the scrolling parent and may be flipped up instead of down. This is helpful for use within modals.
@@ -79,7 +79,7 @@ const Dialog = React.createClass({
 		constrainToScrollParent: PropTypes.bool,
 		/**
 		 * Positions the dialog horizontally.
-		**/
+		 */
 		horizontalAlign: PropTypes.oneOf([
 			'left',
 			'right',
@@ -168,11 +168,11 @@ const Dialog = React.createClass({
 		targetElement: PropTypes.object,
 		/**
 		 * Informs the component on how to handle focus. Popovers trap focus and must be exited to regain focus.
-		**/
+		 */
 		variant: PropTypes.oneOf(['dropdown', 'popover', 'tooltip']),
 		/**
 		 * Positions the dialog vertically.
-		**/
+		 */
 		verticalAlign: PropTypes.oneOf(['bottom', 'middle', 'top'])
 	},
 

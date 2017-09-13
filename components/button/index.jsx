@@ -89,7 +89,7 @@ const Button = React.createClass({
 		/**
 		 * Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText</code> prop.
 		 */
-		label: PropTypes.string,
+		label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 		onBlur: PropTypes.func,
 		/**
 		 * Triggered when the button is clicked.
@@ -110,6 +110,10 @@ const Button = React.createClass({
 		 * Write <code>"-1"</code> if you don't want the user to tab to the button.
 		 */
 		tabIndex: PropTypes.string,
+		/**
+		 * Button type
+		 */
+		type: PropTypes.oneOf(['reset', 'submit', 'button']),
 		/**
 		 * HTML title attribute
 		 */
@@ -229,10 +233,11 @@ const Button = React.createClass({
 				}}
 				tabIndex={this.props.tabIndex}
 				title={this.props.title}
+				type={this.props.type}
 			>
 				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
 
-				{this.props.iconName ? this.renderIcon(this.props.iconName) : null}
+				{this.props.iconName || this.props.iconPath ? this.renderIcon(this.props.iconName) : null}
 				{this.props.iconVariant === 'more'
 				? <ButtonIcon	category="utility" name="down" size="x-small" />
 				: null}

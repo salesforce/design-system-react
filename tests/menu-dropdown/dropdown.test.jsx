@@ -429,4 +429,39 @@ describe('SLDSMenuDropdown: ', () => {
 			expect(getMenu(body)).to.equal(null);
 		});
 	});
+
+	describe('multiple selection', () => {
+		let cmp;
+		let btn;
+		let selected = false;
+		beforeEach(() => {
+			cmp = dropItDown({
+				openOn: 'click',
+				multiple: true,
+				checkmark: true,
+				onSelect: (i) => {
+					selected = i;
+				} });
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+		});
+
+		afterEach(() => {
+			removeDropdownTrigger(btn);
+		});
+
+		it('selects multiple items and renders pills', () => {
+			Simulate.click(btn, {});
+			expect(selected).to.be.false;
+			const checkItemLengthBefore = getMenu(body).querySelectorAll('.slds-dropdown__item svg').length;
+			expect(checkItemLengthBefore).to.equal(1);
+			
+			const items = getMenu(body).querySelectorAll('.slds-dropdown__item');
+			Simulate.click(items[0].querySelector('a'), {});
+			Simulate.click(items[1].querySelector('a'), {});
+			Simulate.click(items[2].querySelector('a'), {});
+
+			const checkItemLengthAfter = getMenu(body).querySelectorAll('.slds-dropdown__item svg').length;
+			expect(checkItemLengthAfter).to.equal(2);
+		});
+	});
 });

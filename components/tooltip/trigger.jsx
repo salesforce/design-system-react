@@ -14,7 +14,7 @@ const defaultProps = {
 
 /**
  * The Trigger component
-**/
+ */
 class Trigger extends React.Component {
 
 	constructor (props) {
