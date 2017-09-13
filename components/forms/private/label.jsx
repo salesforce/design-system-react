@@ -22,32 +22,46 @@ const propTypes = {
 	/*
 	 * Applies label styling for a required form element
 	 */
-	required: PropTypes.string
+	required: PropTypes.string,
+	/**
+	 * Changes markup of label.
+	 */
+	variant: PropTypes.oneOf(['base', 'static'])
+};
+
+const defaultProps = {
+	variant: 'base'
 };
 
 /*
  * Form label. This returns null if there is no label text (hidden or shown)
  */
 const Label = (props) => {
-	const anyLabelText = props.label
+	const labelText = props.label
 		|| props.assistiveText; // One of these is required to pass accessibility tests
 
+	const subRenders = {
+		base: (<label
+			className={classNames('slds-form-element__label', {
+				'slds-assistive-text': props.assistiveText && !props.label
+			})}
+			htmlFor={props.htmlFor}
+		>
+			{props.required && <abbr className="slds-required" title="required">*</abbr>}
+			{labelText}
+		</label>),
+		static: (<span className="slds-form-element__label">{labelText}</span>)
+	};
+
 	return (
-		anyLabelText
-			?	<label
-				className={classNames('slds-form-element__label', {
-					'slds-assistive-text': props.assistiveText && !props.label
-				})}
-				htmlFor={props.htmlFor}
-			>
-				{props.required && <abbr className="slds-required" title="required">*</abbr>}
-				{anyLabelText}
-			</label>
+		labelText
+		? subRenders[props.variant]
 		: null
 	);
 };
 
 Label.displayName = 'Label';
 Label.propTypes = propTypes;
+Label.defaultProps = defaultProps;
 
 export default Label;

@@ -230,6 +230,8 @@ const Input = React.createClass({
 					assistiveText={props.assistiveText}
 					htmlFor={props.readOnly ? undefined : this.getId()}
 					label={props.label}
+					required={props.required}
+					variant={props.readOnly ? 'static' : 'base'}
 				/>
 				<InnerInput
 					aria-activedescendant={this.props['aria-activedescendant']}
