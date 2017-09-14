@@ -117,7 +117,7 @@ describe('DataTable: ', function () {
 					should.not.exist(input2);
 
 					expect(leaveEditModeHanlder.callCount).to.equal(1);
-					expect(leaveEditModeHanlder).to.have.been.called.with(true);
+					expect(leaveEditModeHanlder).to.have.been.called.with(undefined, { cancel: true });
 				}, 100);
 			}, 100);
 		});
