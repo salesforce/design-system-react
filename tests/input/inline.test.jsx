@@ -109,7 +109,8 @@ describe('DataTable: ', function () {
 
 				expect(enterEditModeHanlder.callCount).to.equal(1);
 
-				Simulate.click(trigger, {});
+				//Simulate.click(trigger, {});
+				Simulate.keyDown(input, { key: 'Escape', keyCode: 27, which: 27 });
 
 				setTimeout(() => {
 					const input2 = getInput(this.dom);
@@ -117,6 +118,7 @@ describe('DataTable: ', function () {
 					should.not.exist(input2);
 
 					expect(leaveEditModeHanlder.callCount).to.equal(1);
+					expect(leaveEditModeHanlder).to.have.been.called.with(true);
 				}, 100);
 			}, 100);
 		});
@@ -148,7 +150,6 @@ describe('DataTable: ', function () {
 					expect(keyDownHandler.callCount).to.equal(1);
 				}, 100);
 			}, 100);
-		}
-		);
+		});
 	});
 });
