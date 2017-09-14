@@ -1,9 +1,9 @@
 /* eslint-disable react/no-render-return-value */
 /* eslint-disable react/no-find-dom-node */
 
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-
+import { shallow } from 'enzyme';
 import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
@@ -11,74 +11,103 @@ import { expect } from 'chai';
 import { SLDSAvatar } from '../../components';
 
 describe('SLDSAvatar: ', () => {
-	const generateAvatar = function (avatarInstance) {
-		const reactCmp = TestUtils.renderIntoDocument(avatarInstance);
-		return ReactDOM.findDOMNode(reactCmp);
-	};
+	describe('Default Structure', () => {
+		let wrapper;
 
-	describe('component renders', () => {
-		it('avatar renders', () => {
-			const avatar = generateAvatar(<SLDSAvatar
-				imgSrc="https://lightningdesignsystem.com/assets/images/avatar2.jpg"
-				imgAlt="Name of person"
-			/>);
-			expect(avatar).to.not.equal(undefined);
+		beforeEach(() => {
+			wrapper = shallow(<SLDSAvatar />);
 		});
-		it('avatar renders span with \'slds-avatar\' className and other proper classNames', () => {
-			const avatar = generateAvatar(<SLDSAvatar
-				imgSrc="https://lightningdesignsystem.com/assets/images/avatar2.jpg"
-				imgAlt="Name of person"
-			/>);
-			expect(avatar).to.not.equal(undefined);
+
+		it('avatar renders with image', () => {
+			const expectedSrc = 'success';
+			wrapper.setProps({ imgSrc: expectedSrc });
+			const img = wrapper.find('img');
+			const src = img.prop('src');
+			expect(src).to.equal(expectedSrc);
+			// expect(avatar).ton.not.equal(undefined);
+		});
+
+		it('renders proper icon size class', function () {
+			wrapper.setProps({ size: 'large' });
+			const avatar = wrapper.find('.slds-avatar .slds-avatar_large');
+			expect(avatar).to.not.be.undefined;
+		});
+
+		describe('variant is a user', () => {
+			beforeEach(() => {
+				wrapper.setProps({ variant: 'user' });
+			});
+
+			it('displays as a circle', () => {
+				const avatar = wrapper.find('.slds-avatar .slds-avatar_circle');
+				expect(avatar).to.not.be.undefined;
+			});
+		});
+
+		describe('variant is an entity', () => {
+			beforeEach(() => {
+				wrapper.setProps({ variant: 'entity' });
+			});
+
+			it('displays as an account', () => {
+				const avatar = wrapper.find('.slds-avatar .slds-avatar_account');
+				expect(avatar).to.not.be.undefined;
+			});
 		});
 	});
-	});
 
-	// describe('component renders', () => {
-	// 	it('avatar renders', () => {
-	// 		const avatar = generateAvatar(<SLDSAvatar
-	// 			imgSrc="https://lightningdesignsystem.com/assets/images/avatar2.jpg"
-	// 			imgAlt="Name of person"
-	// 		/>);
-	// 		expect(avatar).to.not.equal(undefined);
-	// 	});
+	describe('Avatar fallback check', () => {
+		it('calls error handler if image is not valid', () => {
+			const avatar = shallow(<SLDSAvatar
+				imgSrc="invalid-url"
+			/>);
+			const img = avatar.find('img');
+			img.simulate('error');
+			console.log(avatar.state('imgLoadError'));
+			expect(avatar.state('imgLoadError')).to.be.true;
+		});
+	});
+	// it('invokes renderInitialsAvatar fallback if label is passed', () => {
+	//   Simulate.{eventName}(
+	//   element,
+	//   [eventData]
+	// )
+	// 	expect();
+	// });
+	// it('invokes renderInitialsAvatar if no label is passed', () => {
+	// 	expect();
 	// });
 	//
-	// describe('component basic props render', () => {
-	// 	it('renders variant', () => {
-	// 		const notification = generateNotification(<SLDSNotification variant="toast" theme="success" icon="notification" isOpen texture animated />);
-	// 		const alert = notification.getElementsByTagName('div')[0];
-	// 		expect(alert.className).to.include('slds-notify--toast');
-	// 	});
-	//
-	// 	it('renders theme', () => {
-	// 		const notification = generateNotification(<SLDSNotification variant="toast" theme="error" isOpen />);
-	// 		const alert = notification.getElementsByTagName('div')[0];
-	// 		expect(alert.className).to.include('slds-theme--error');
-	// 	});
-	//
-	// 	it('renders icon', (done) => {
-	// 		const notification = generateNotification(<SLDSNotification variant="alert" theme="success" iconName="notification" isOpen texture content={'hi'} />);
-	// 		setTimeout(() => {
-	// 			const close = notification.querySelectorAll('button');
-	// 			const svgs = notification.querySelectorAll('[*|href="/assets/icons/utility-sprite/svg/symbols.svg#notification"]');
-	// 			expect(close[0].className).to.include('slds-notify__close');
-	// 			expect(svgs[0]).to.exist;
-	// 			done();
-	// 		}, 400);
+	// describe('Initals avatar fallback', () => {
+	// 	it('builds expected initials', () => {
+	// 		expect();
 	// 	});
 	// });
-	//
-	// describe('dismiss notification click', () => {
-	// 	it('button onClick invokes method from props', (done) => {
-	// 		const onClick = sinon.spy();
-	// 		const notification = generateNotification(<SLDSNotification variant="toast" theme="success" iconName="notification" onDismiss={onClick} isOpen />);
-	// 		setTimeout(() => {
-	// 			const dismissBtn = notification.getElementsByTagName('button')[0];
-	// 			TestUtils.Simulate.click(dismissBtn);
-	// 			expect(onClick.calledOnce).to.be.true;
-	// 			done();
-	// 		}, 400);
+	// describe('Icon avatar fallback', () => {
+	// 	it('reners w/ aria and assistiveText', () => {
+	// 		expect();
+	// 	});
+	// });
+	// 	it('renders entity modifier', () => {
+	// 		// const notification = generateNotification(<SLDSNotification variant="toast" theme="success" icon="notification" isOpen texture animated />);
+	// 		// const alert = notification.getElementsByTagName('div')[0];
+	// 		// expect(alert.className).to.include('slds-notify--toast');
+	// 	});
+	// 	it('renders assistive text', function () {
+	// 		// asstText = this.wrapper.find('.slds-assistive-text');
+	// 		// expect(asstText.text()).to.equal('Log a Call');
+	// 	});
+	// 	it('builds expected initals based on label', function() {
+	// 		// expect();
+	// 	})
+	// 	it('renders base avatar', function () {
+	// 		// expect();
+	// 	})
+	// 	it('base fallback renders initials avatar', function() {
+	// 		// expect();
+	// 	});
+	// 	it('initials fallback renders icon avatar', function() {
+	// 		// expect();
 	// 	});
 	// });
 });

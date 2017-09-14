@@ -16,9 +16,7 @@ const propTypes = {
 	/**
 	 * CSS classes that are applied to the SVG.
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-	iconCategory: PropTypes.string,
-	iconName: PropTypes.string,
+	className: PropTypes.string,
 	imgAlt: PropTypes.string,
 
 	imgSrc: PropTypes.string,
@@ -26,7 +24,7 @@ const propTypes = {
 	 * Label attibute to display inside variant: 'initial' avatars
 	 */
 	label: PropTypes.string,
-	modifier: PropTypes.string,
+	variant: PropTypes.oneOf(['entity', 'user']).isRequired,
 	size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']).isRequired,
 	/**
 	 * Title attribute for the icon container
@@ -35,9 +33,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-	iconCategory: 'standard',
-	iconName: 'user',
-	modifier: 'user',
+	variant: 'user',
 	size: 'medium'
 };
 
@@ -50,7 +46,7 @@ class Avatar extends React.Component {
 	}
 
 	handleImageError () {
-		this.setState(() => ({ imgLoadError: true }));
+		return this.setState(() => ({ imgLoadError: true }));
 	}
 
 	buildInitials () {
@@ -77,36 +73,30 @@ class Avatar extends React.Component {
 		return firstChar + secondChar;
 	}
 
-	render () {
-		const {
-			iconCategory,
-			iconName,
-			imgAlt,
-			imgSrc,
-			modifier,
-			label,
-			size,
-			title
-		} = this.props;
+	renderBaseAvatar () {
+		const { imgAlt, imgSrc, title } = this.props;
+		return <img alt={imgAlt} src={imgSrc} onError={() => this.handleImageError()} title={title} />;
+	}
 
-		const renderBaseAvatar = () => (
-			<img alt={imgAlt} src={imgSrc} onError={() => this.handleImageError()} title={title} />
-		);
-
-		const renderIconAvatar = () => (
+	renderIconAvatar () {
+		const { variant } = this.props;
+		return (
 			<UtilityIcon
-				assistiveText={title}
-				category={iconCategory}
-				name={iconName}
+				assistiveText={`${variant} icon avatar`}
+				category={'standard'}
+				name={variant === 'entity' ? 'account' : 'user'}
 			/>
 		);
+	}
 
-		const renderInitialsAvatar = () => (
+	renderInitialsAvatar () {
+		const { title, variant } = this.props;
+		return (
 			<abbr
 				className={classNames(
 					'slds-avatar__initials', {
-						'slds-icon-standard-account': modifier === 'entity',
-						'slds-icon-standard-user': modifier === 'user'
+						'slds-icon-standard-account': variant === 'entity',
+						'slds-icon-standard-user': variant === 'user'
 					}
 				)}
 				title={title}
@@ -114,22 +104,32 @@ class Avatar extends React.Component {
 				{this.buildInitials()}
 			</abbr>
 		);
+	}
+
+	render () {
+		const {
+			imgSrc,
+			variant,
+			label,
+			size
+		} = this.props;
+
 
 		const renderAvatar = () => {
 			if (!this.state.imgLoadError && imgSrc && imgSrc.length > 0) {
-				return renderBaseAvatar();
+				return this.renderBaseAvatar();
 			}
 			if (label && label.length > 0) {
-				return renderInitialsAvatar();
+				return this.renderInitialsAvatar();
 			}
-			return renderIconAvatar();
+			return this.renderIconAvatar();
 		};
 
 		return (
 			<div>
 				<span
 					className={classNames('slds-avatar', {
-						'slds-avatar_circle': modifier === 'user',
+						'slds-avatar_circle': variant === 'user',
 						'slds-avatar_x-small': size === 'x-small',
 						'slds-avatar_small': size === 'small',
 						'slds-avatar_medium': size === 'medium',

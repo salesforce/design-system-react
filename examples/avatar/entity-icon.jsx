@@ -8,10 +8,8 @@ const Example = React.createClass({
 		return (
 			<Avatar
 				assistiveText="Account icon avatar"
-				iconCategory="standard"
-				iconName="account"
-				title="Account icon avatar"
-				modifier="entity"
+				title="Avatar entity icon"
+				variant="entity"
 			/>
 		);
 	}
