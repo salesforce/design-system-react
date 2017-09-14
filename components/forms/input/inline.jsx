@@ -176,8 +176,7 @@ const InlineEdit = React.createClass({
 			this.autoFocus = true;
 			this.setState({
 				isEditing: true,
-				value: this.props.value,
-				oldValue: this.props.value
+				value: this.props.value
 			});
 			if (isFunction(this.props.onEnterEditMode)) {
 				this.props.onEnterEditMode();
