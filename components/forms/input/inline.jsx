@@ -239,7 +239,9 @@ const InlineEdit = React.createClass({
 	handleKeyUp (event) {
 		if (event.keyCode) {
 			if (this.props.onKeyUp && isFunction(this.props.onKeyUp)) {
-				this.props.onKeyUp(event, {value: this.state.value});
+				this.props.onKeyUp(event, {
+					value: this.state.value
+				});
 			}
 		}
 	}
