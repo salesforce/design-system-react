@@ -207,7 +207,7 @@ const InlineEdit = React.createClass({
 		});
 
 		if (this.props.onLeaveEditMode && isFunction(this.props.onLeaveEditMode)) {
-			this.props.onLeaveEditMode(undo);
+			this.props.onLeaveEditMode(undefined, { cancel: undo });
 		}
 	},
 
@@ -239,7 +239,7 @@ const InlineEdit = React.createClass({
 	handleKeyUp (event) {
 		if (event.keyCode) {
 			if (this.props.onKeyUp && isFunction(this.props.onKeyUp)) {
-				this.props.onKeyUp();
+				this.props.onKeyUp(event, {value: this.state.value});
 			}
 		}
 	}
