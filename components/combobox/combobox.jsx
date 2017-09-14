@@ -286,11 +286,7 @@ class Combobox extends React.Component {
 			}
 		}
 
-		if (this.props.events.onOpen) {
-			this.props.events.onOpen();
-		}
-
-		// highlight first option
+		// highlight first option?
 	}
 
 	requestOpenMenu = () => {
@@ -541,7 +537,8 @@ class Combobox extends React.Component {
 		});
 	};
 
-	handleOnRequestFocusListboxOfPills = (event, { ref }) => {
+	handleRequestFocusListboxOfPills = (event, { ref }) => {
+		this.props.onPillFocus(event, { ref });
 		if (ref) {
 			this.activeSelectedOptionRef = ref;
 			this.activeSelectedOptionRef.focus();
@@ -622,7 +619,7 @@ class Combobox extends React.Component {
 				events={{
 					onBlurPill: this.handleBlurPill,
 					onClickPill: this.handlePillClickListboxOfPills,
-					onRequestFocus: this.handleOnRequestFocusListboxOfPills,
+					onRequestFocus: this.handleRequestFocusListboxOfPills,
 					onRequestFocusOnNextPill: this.handleNavigateListboxOfPills,
 					onRequestFocusOnPreviousPill: this.handleNavigateListboxOfPills,
 					onRequestRemove: this.handleRemoveSelectedOption
@@ -964,7 +961,7 @@ class Combobox extends React.Component {
 					events={{
 						onBlurPill: this.handleBlurPill,
 						onClickPill: this.handlePillClickListboxOfPills,
-						onRequestFocus: this.handleOnRequestFocusListboxOfPills,
+						onRequestFocus: this.handleRequestFocusListboxOfPills,
 						onRequestFocusOnNextPill: this.handleNavigateListboxOfPills,
 						onRequestFocusOnPreviousPill: this.handleNavigateListboxOfPills,
 						onRequestRemove: this.handleRemoveSelectedOption
