@@ -105,8 +105,7 @@ const InlineEdit = React.createClass({
 	getInitialState () {
 		return {
 			isEditing: false,
-			value: null,
-			oldValue: null
+			value: null
 		};
 	},
 
@@ -187,16 +186,17 @@ const InlineEdit = React.createClass({
 	},
 
 	saveEdits (undo) {
-		if (isFunction(this.props.onChange)) {
-			this.props.onChange({
-				value: undo ? this.state.oldValue : this.state.value
-			});
+		if (!undo) {
+			if (isFunction(this.props.onChange)) {
+				this.props.onChange({
+					value: this.state.value
+				});
+			}
 		}
-
-		this.endEditMode();
+		this.endEditMode(undo);
 	},
 
-	endEditMode () {
+	endEditMode (undo) {
 		if (this.willSave) {
 			clearTimeout(this.willSave);
 			delete this.willSave;
@@ -204,12 +204,11 @@ const InlineEdit = React.createClass({
 
 		this.setState({
 			isEditing: false,
-			value: null,
-			oldValue: null
+			value: null
 		});
 
 		if (this.props.onLeaveEditMode && isFunction(this.props.onLeaveEditMode)) {
-			this.props.onLeaveEditMode();
+			this.props.onLeaveEditMode(undo);
 		}
 	},
 
