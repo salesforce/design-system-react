@@ -60,7 +60,7 @@ const InlineEdit = React.createClass({
 		 */
 		onChange: PropTypes.func,
 		/**
-		*
+		* Function will run when keyup during text edit
 		*/
 		onKeyUp: PropTypes.func,
 		/**

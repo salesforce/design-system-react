@@ -109,7 +109,6 @@ describe('DataTable: ', function () {
 
 				expect(enterEditModeHanlder.callCount).to.equal(1);
 
-				//Simulate.click(trigger, {});
 				Simulate.keyDown(input, { key: 'Escape', keyCode: 27, which: 27 });
 
 				setTimeout(() => {
