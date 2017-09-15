@@ -78,9 +78,6 @@ exports[`Base Open HTML Snapshot 1`] = `
         </div>
       </div>
     </div>
-    <div id=\\"combobox-unique-id-selected-listbox\\" role=\\"listbox\\" aria-orientation=\\"horizontal\\">
-      <ul class=\\"slds-listbox slds-listbox_horizontal slds-p-top_xxx-small\\" role=\\"group\\" aria-label=\\"Selected Options:\\"></ul>
-    </div>
   </div>
 </div>"
 `;

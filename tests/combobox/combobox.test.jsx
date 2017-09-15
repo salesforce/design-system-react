@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import { mount } from 'enzyme';
+import assign from 'lodash.assign';
 
 /* Enzyme Helpers that can mount and unmount React component instances to
  * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`
@@ -35,7 +36,7 @@ const accounts = [
 	{ id: '8', label: 'Acme Construction', subTitle: 'Account • Grand Marais, MN', type: 'account' }
 ];
 
-const accountsWithIcon = accounts.map((elem) => Object.assign(elem, {
+const accountsWithIcon = accounts.map((elem) => assign(elem, {
 	icon: <Icon
 		assistiveText="Account"
 		category="standard"
@@ -60,7 +61,7 @@ const defaultProps = {
 const DemoComponent = React.createClass({
 	displayName: 'ComboboxDemoComponent',
 	propTypes: {
-		isOpen: PropTypes.bool
+		initialSelection: PropTypes.array
 	},
 
 	getDefaultProps () {
@@ -70,7 +71,7 @@ const DemoComponent = React.createClass({
 	getInitialState () {
 		return {
 			inputValue: '',
-			selection: []
+			selection: this.props.initialSelection || []
 		};
 	},
 
@@ -85,6 +86,7 @@ const DemoComponent = React.createClass({
 						console.log('testonPillFocus');
 					},
 					onRequestRemoveSelectedOption: (event, data) => {
+						console.log(data);
 						this.setState({
 							inputValue: '',
 							selection: data.selection
@@ -181,19 +183,20 @@ describe('SLDSCombobox', function () {
 		});
 
 
-		// it('Selected Listbox: remove initial first pill, remove third initial item, cycles focus (first to last), removes last and initial fifth pill, cycles focus (last to first), remove inital second and fourth pill', function () {
-		// 	wrapper = mount(<DemoComponent
-		// 		multiple
-		// 		selection={[accounts[0], accounts[1], accounts[2], accounts[3], accounts[4]]}
-		// 	/>, { attachTo: mountNode });
-		// 	const nodes = getNodes({ wrapper });
-		// 	nodes.input.simulate('focus');
-		// 	nodes.input.simulate('keyDown', keyObjects.TAB);
+		it('Selected Listbox: remove initial first pill, remove third initial item, cycles focus (first to last), removes last and initial fifth pill, cycles focus (last to first), remove inital second and fourth pill', function () {
+			wrapper = mount(<DemoComponent
+				multiple
+				initialSelection={[accounts[0], accounts[1], accounts[2], accounts[3], accounts[4]]}
+			/>, { attachTo: mountNode });
+			const nodes = getNodes({ wrapper });
+//			nodes.input.simulate('focus');
+			// nodes.input.simulate('keyDown', keyObjects.TAB);
+			console.log(document.activeElement);
 	
-		// 	nodes.selectedListbox.children().at(0).childAt(0).simulate('keyDown', keyObjects.DELETE);
+			nodes.selectedListbox.children().at(0).childAt(0).simulate('keyDown', keyObjects.DELETE);
 
-		// 	expect('test').to.equal('test');
-		// });
+			expect('test').to.equal('test');
+		});
 	});
 
 	describe('Variant-specific', () => {
