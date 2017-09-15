@@ -23,7 +23,7 @@ storiesOf(AVATAR, module)
 			<h1 style={{ marginBottom: '10px' }}>Entity Icon Avatar</h1>
 			<EntityIcon />
 		</div>
-  ))
+	))
 	.add('Entity Initials', () => (
 		<div>
 			<h1 style={{ marginBottom: '10px' }}>Entity Initials Avatar</h1>

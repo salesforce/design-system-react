@@ -21,7 +21,7 @@ const propTypes = {
 
 	imgSrc: PropTypes.string,
 	/**
-	 * Label attibute to display inside variant: 'initial' avatars
+	 * Label attibute to display inside variant: 'initial' avatars. Will be passed as title prop in initials
 	 */
 	label: PropTypes.string,
 	variant: PropTypes.oneOf(['entity', 'user']).isRequired,
@@ -33,8 +33,9 @@ const propTypes = {
 };
 
 const defaultProps = {
-	variant: 'user',
-	size: 'medium'
+	size: 'medium',
+	title: 'user avatar',
+	variant: 'user'
 };
 
 class Avatar extends React.Component {
@@ -90,7 +91,7 @@ class Avatar extends React.Component {
 	}
 
 	renderInitialsAvatar () {
-		const { title, variant } = this.props;
+		const { label, variant } = this.props;
 		return (
 			<abbr
 				className={classNames(
@@ -99,7 +100,7 @@ class Avatar extends React.Component {
 						'slds-icon-standard-user': variant === 'user'
 					}
 				)}
-				title={title}
+				title={label}
 			>
 				{this.buildInitials()}
 			</abbr>

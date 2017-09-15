@@ -9,7 +9,6 @@ const Example = React.createClass({
 			assistiveText="Avatar image"
 			imgSrc="https://lightningdesignsystem.com/assets/images/avatar2.jpg"
 			imgAlt="Person Name"
-			title="User Avatar"
 		/>);
 	}
 });

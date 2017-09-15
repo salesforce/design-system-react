@@ -7,7 +7,6 @@ const Example = React.createClass({
 	render () {
 		return (
 			<Avatar
-				title="Annie Wilson"
 				variant="user"
 				label="Annie Wilson"
 				size="medium"

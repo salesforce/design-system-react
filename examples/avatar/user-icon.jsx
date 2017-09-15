@@ -10,7 +10,6 @@ const Example = React.createClass({
 				assistiveText="User Icon Avatar"
 				title="User Icon Avatar"
 				variant="user"
-				size="medium"
 			/>
 		);
 	}
