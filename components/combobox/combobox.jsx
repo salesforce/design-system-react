@@ -749,7 +749,7 @@ class Combobox extends React.Component {
 						events={{
 							onBlurPill: this.handleBlurPill,
 							onClickPill: this.handlePillClickListboxOfPills,
-							onRequestFocus: this.handleOnRequestFocusListboxOfPills,
+							onRequestFocus: this.handleRequestFocusListboxOfPills,
 							onRequestFocusOnNextPill: this.handleNavigateListboxOfPills,
 							onRequestFocusOnPreviousPill: this.handleNavigateListboxOfPills,
 							onRequestRemove: this.handleRemoveSelectedOption
