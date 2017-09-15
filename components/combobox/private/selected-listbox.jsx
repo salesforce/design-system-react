@@ -66,7 +66,7 @@ const propTypes = {
 const defaultProps = {};
 
 const SelectedListBox = (props) => (
-	<div // eslint-disable-line jsx-a11y/role-supports-aria-props
+	props.selection.length ? <div // eslint-disable-line jsx-a11y/role-supports-aria-props
 		id={`${props.id}-selected-listbox`}
 		role="listbox"
 		aria-orientation="horizontal"
@@ -133,7 +133,8 @@ const SelectedListBox = (props) => (
 			})}
 
 		</ul>
-	</div>);
+	</div>
+	: null);
 
 SelectedListBox.displayName = 'SelectedListBox';
 SelectedListBox.propTypes = propTypes;

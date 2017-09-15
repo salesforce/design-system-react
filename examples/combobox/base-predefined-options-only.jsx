@@ -1,6 +1,7 @@
 /* eslint-disable no-console, react/prop-types */
 import React from 'react';
 import Combobox from '~/components/combobox';
+import filter from '~/components/combobox/filter';
 import Icon from '~/components/icon';
 import escapeRegExp from 'lodash.escaperegexp';
 
@@ -33,20 +34,6 @@ class Example extends React.Component {
 		};
 	}
 
-	filter = ({ options, inputValue }) =>
-		options.filter((option) => {
-			const searchTermFound = option.label.match(new RegExp(escapeRegExp(inputValue), 'ig'));
-			const isSection = option.data && option.data.type === 'section';
-			const notAlreadySelected = !this.state.selection.includes(option);
-
-			return (
-				!inputValue
-				|| isSection
-				|| searchTermFound
-			)
-				&& notAlreadySelected;
-		});
-
 	render () {
 		return (
 			<Combobox
@@ -75,9 +62,11 @@ class Example extends React.Component {
 					placeholder: 'Search Salesforce'
 				}}
 				multiple
-				options={this.filter({
+				options={filter({
+					inputValue: this.state.inputValue,
 					options: accountsWithIcon,
-					inputValue: this.state.inputValue })}
+					selection: this.state.selection
+				})}
 				predefinedOptionsOnly
 				selection={this.state.selection}
 				value={this.state.inputValue}

@@ -17,6 +17,7 @@ import Combobox from '../../components/combobox';
 import Icon from '../../components/icon';
 import filter from '~/components/combobox/filter';
 import KEYS, { keyObjects } from '../../utilities/key-code';
+import LETTERKEYS, { keyObjects as letterKeyObjects } from '../../utilities/letter-key-code';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme
@@ -107,7 +108,6 @@ const DemoComponent = React.createClass({
 						});
 					}
 				}}
-				multiple
 				options={filter({
 					inputValue: this.state.inputValue,
 					options: accountsWithIcon,
@@ -125,6 +125,7 @@ const getNodes = ({ wrapper }) => ({
 	combobox: wrapper.find('.slds-combobox'),
 	input: wrapper.find('.slds-combobox input'),
 	menuListbox: wrapper.find('.slds-combobox .slds-listbox.slds-dropdown'),
+	removeSingleItem: wrapper.find('.slds-combobox .slds-input__icon'),
 	selectedListbox: wrapper.find(`#${defaultProps.id}-selected-listbox .slds-listbox`)
 });
 
@@ -141,11 +142,6 @@ describe('SLDSCombobox', function () {
 	let mountNode;
 	let wrapper;
 
-	// const comboboxSelector = '.slds-combobox';
-	// const inputSelector = '.slds-combobox input';
-	// const menuListboxSelector = '.slds-combobox .slds-listbox.slds-dropdown';
-	// const selectedListboxSelector = `.slds-combobox #${defaultProps.id}-selected-listbox .slds-listbox`;
-
 	describe('Assistive technology and keyboard interactions', () => {
 		/* Detect if presence of accessibility features such as ARIA
 		 * roles and screen reader text is present in the DOM.
@@ -159,7 +155,7 @@ describe('SLDSCombobox', function () {
 		});
 
 		it('has aria-haspopup, aria-expanded is false when closed, aria-expanded is true when open, ', function () {
-			wrapper = mount(<DemoComponent />, { attachTo: mountNode });
+			wrapper = mount(<DemoComponent multiple />, { attachTo: mountNode });
 			const nodes = getNodes({ wrapper });
 			expect(nodes.combobox.node.getAttribute('aria-haspopup')).to.equal('listbox');
 			// closed
@@ -170,7 +166,7 @@ describe('SLDSCombobox', function () {
 		});
 
 		it('menu filters to second item, menu listbox menu item 2 aria-selected is true, input activedescendent has item 2 id, after pressing down arrow, enter selects item 2', function () {
-			wrapper = mount(<DemoComponent isOpen />, { attachTo: mountNode });
+			wrapper = mount(<DemoComponent multiple isOpen />, { attachTo: mountNode });
 			let nodes = getNodes({ wrapper });
 			nodes.input.simulate('focus');
 			nodes.input.simulate('change', { target: { value: accounts[1].label } });
@@ -184,11 +180,11 @@ describe('SLDSCombobox', function () {
 			expect(nodes.selectedListbox.find('.slds-pill__label').text()).to.equal(accounts[1].label);
 		});
 
-		// NOT IMPLEMENTED
+
 		// it('Selected Listbox: remove initial first pill, remove third initial item, cycles focus (first to last), removes last and initial fifth pill, cycles focus (last to first), remove inital second and fourth pill', function () {
 		// 	wrapper = mount(<DemoComponent
+		// 		multiple
 		// 		selection={[accounts[0], accounts[1], accounts[2], accounts[3], accounts[4]]}
-
 		// 	/>, { attachTo: mountNode });
 		// 	const nodes = getNodes({ wrapper });
 		// 	nodes.input.simulate('focus');
@@ -198,5 +194,62 @@ describe('SLDSCombobox', function () {
 
 		// 	expect('test').to.equal('test');
 		// });
+	});
+
+	describe('Variant-specific', () => {
+		beforeEach(() => {
+			mountNode = createMountNode({ context: this });
+		});
+
+		afterEach(() => {
+			destroyMountNode({ wrapper, mountNode });
+		});
+
+		it('Limit to pre-defined choices', function () {
+			wrapper = mount(<DemoComponent multiple predefinedOptionsOnly />, { attachTo: mountNode });
+			let nodes = getNodes({ wrapper });
+			nodes.input.simulate('focus');
+			nodes.input.simulate('keyDown', letterKeyObjects.A);
+			nodes.input.simulate('keyDown', keyObjects.ENTER);
+			nodes = getNodes({ wrapper });
+			expect(nodes.selectedListbox.node).to.be.an('undefined');
+		});
+
+		it('Inline Single Selection Remove selection', function () {
+			wrapper = mount(<DemoComponent variant="inline-listbox" />, { attachTo: mountNode });
+			let nodes = getNodes({ wrapper });
+
+			// add selection
+			nodes.input.simulate('focus');
+			nodes.input.simulate('change', { target: { value: accounts[1].label } });
+			nodes.input.simulate('keyDown', keyObjects.ENTER);
+			expect(nodes.input.node.value).to.equal('Salesforce.com, Inc.');
+			nodes = getNodes({ wrapper });
+
+			// remove selection
+			nodes.removeSingleItem.simulate('click');
+			nodes = getNodes({ wrapper });
+			expect(nodes.input.node.value).to.equal('');
+		});
+	});
+
+	describe('Optional Props', () => {
+		beforeEach(() => {
+			mountNode = createMountNode({ context: this });
+		});
+
+		afterEach(() => {
+			destroyMountNode({ wrapper, mountNode });
+		});
+
+		it('Displays No match found', function () {
+			wrapper = mount(<DemoComponent isOpen />, { attachTo: mountNode });
+			let nodes = getNodes({ wrapper });
+			nodes.input.simulate('focus');
+			nodes.input.simulate('change', { target: { value: 'Random text' } });
+			// nodes.input.simulate('keyDown', keyObjects.ENTER);
+			nodes = getNodes({ wrapper });
+			expect(nodes.menuListbox.find('.slds-listbox__item.slds-listbox__status').text()).to.equal('No matches found.');
+		});
 	});
 });

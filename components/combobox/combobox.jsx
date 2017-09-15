@@ -179,9 +179,11 @@ class Combobox extends React.Component {
 	}
 
 	componentWillReceiveProps (nextProps, prevProps) {
-		// clears activeOption if it is no longer in the options list
-		// if it's in the options list then find the index and set activeOptionIndex
-		// this will maintain the active highlight even when the options change
+		// This logic will maintain the active highlight even when the
+		// options change. One example would be the server pushes
+		// data out as the user has the menu open. This logic clears
+		// `activeOption` if it is no longer in the options list. If
+		// it's in the options list, then find the index and set `activeOptionIndex`
 		if (!isEqual(prevProps.options, nextProps.options)) {
 			const index = nextProps.options.findIndex((item) => isEqual(item, this.state.activeOption));
 			if (index !== -1) {
@@ -285,8 +287,6 @@ class Combobox extends React.Component {
 				this.props.events.onOpen();
 			}
 		}
-
-		// highlight first option?
 	}
 
 	requestOpenMenu = () => {
@@ -421,10 +421,11 @@ class Combobox extends React.Component {
 	}
 
 	handleInputSubmit = (event) => {
+		// use menu options
 		if (this.getIsActiveOption()) {
 			this.handleSelect(event, { option: this.state.activeOption });
-			// needs testing
-		} else if (this.props.events.onSubmit) {
+			// use input value, if not limited to predefined options (in the menu)
+		} else if (!this.props.predefinedOptionsOnly && this.props.events.onSubmit) {
 			this.props.events.onSubmit(event, {
 				value: event.target.value
 			});
@@ -538,7 +539,6 @@ class Combobox extends React.Component {
 	};
 
 	handleRequestFocusListboxOfPills = (event, { ref }) => {
-		this.props.onPillFocus(event, { ref });
 		if (ref) {
 			this.activeSelectedOptionRef = ref;
 			this.activeSelectedOptionRef.focus();
@@ -550,7 +550,7 @@ class Combobox extends React.Component {
 	}
 
 	/**
- 	 * Combobox variant renders
+ 	 * Combobox variant subrenders
    */
 
 	renderBase = ({ assistiveText, labels, props }) => (
