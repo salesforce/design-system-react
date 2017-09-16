@@ -53,27 +53,31 @@ const defaultProps = {
 	}
 };
 
+const propTypes = {
+	componentWillUpdate: PropTypes.func,
+	initialSelection: PropTypes.array
+};
+
 /* A re-usable demo component fixture outside of `describe` sections
  * can accept props within each test and be unmounted after each tests.
  * This wrapping component will be similar to your wrapping component
  * you will create in the React Storybook for manual testing.
  */
-const DemoComponent = React.createClass({
-	displayName: 'ComboboxDemoComponent',
-	propTypes: {
-		initialSelection: PropTypes.array
-	},
+class DemoComponent extends React.Component {
+	constructor (props) {
+		super(props);
 
-	getDefaultProps () {
-		return defaultProps;
-	},
-
-	getInitialState () {
-		return {
+		this.state = {
 			inputValue: '',
 			selection: this.props.initialSelection || []
 		};
-	},
+	}
+
+	componentWillUpdate (nextProps, nextState) {
+		if (this.props.componentWillUpdate) {
+			this.props.componentWillUpdate(nextState);
+		}
+	}
 
 	render () {
 		return (
@@ -81,9 +85,6 @@ const DemoComponent = React.createClass({
 				events={{
 					onChange: (event, { value }) => {
 						this.setState({	inputValue: value });
-					},
-					onPillFocus: (event, data) => {
-						console.log('testonPillFocus');
 					},
 					onRequestRemoveSelectedOption: (event, data) => {
 						console.log(data);
@@ -121,7 +122,11 @@ const DemoComponent = React.createClass({
 			/>
 		);
 	}
-});
+}
+
+DemoComponent.displayName = 'ComboboxDemoComponent';
+DemoComponent.propTypes = propTypes;
+DemoComponent.defaultProps = defaultProps;
 
 const getNodes = ({ wrapper }) => ({
 	combobox: wrapper.find('.slds-combobox'),
@@ -182,20 +187,51 @@ describe('SLDSCombobox', function () {
 			expect(nodes.selectedListbox.find('.slds-pill__label').text()).to.equal(accounts[1].label);
 		});
 
+		it('Selected Listbox: remove initial first pill, remove third initial item, cycles focus (first to last), removes last and initial fifth pill, cycles focus (last to first), remove inital second and fourth pill', function (done) {
+			const getSelectedListboxPills = ({ nodes, index }) =>
+				nodes.selectedListbox.children().at(index).childAt(0);
+			const getFocusedPillLabel = () => document.activeElement.querySelector('.slds-pill__label').innerText;
+			const selectionKeyedStates = {
+				removeInitialFirstPill: [accountsWithIcon[1], accountsWithIcon[2], accountsWithIcon[3], accountsWithIcon[4]],
+				removeThirdInitialItem: [accountsWithIcon[1], accountsWithIcon[3], accountsWithIcon[4]],
+				removesLastAndInitialFifthPill: [accountsWithIcon[1], accountsWithIcon[3]],
+				removeInitalSecondAndFourthPill: [accountsWithIcon[3]],
+				allPillsRemoved: []
+			};
+			const selectionIndexedStates = Object.keys(selectionKeyedStates).map((key, index) =>
+				(selectionKeyedStates[key]));
 
-		it('Selected Listbox: remove initial first pill, remove third initial item, cycles focus (first to last), removes last and initial fifth pill, cycles focus (last to first), remove inital second and fourth pill', function () {
+			let counter = 0;
 			wrapper = mount(<DemoComponent
-				multiple
+				componentWillUpdate={(prevState) => {
+					expect(prevState.selection).to.have.members(selectionIndexedStates[counter]);
+					if (counter === 4) {
+						done();
+					}
+					counter++;
+				}}
 				initialSelection={[accounts[0], accounts[1], accounts[2], accounts[3], accounts[4]]}
+				multiple
 			/>, { attachTo: mountNode });
 			const nodes = getNodes({ wrapper });
-//			nodes.input.simulate('focus');
-			// nodes.input.simulate('keyDown', keyObjects.TAB);
-			console.log(document.activeElement);
-	
-			nodes.selectedListbox.children().at(0).childAt(0).simulate('keyDown', keyObjects.DELETE);
-
-			expect('test').to.equal('test');
+			nodes.input.simulate('focus');
+			nodes.input.simulate('keyDown', keyObjects.TAB);
+			getSelectedListboxPills({ nodes, index: 0 }).simulate('keyDown', keyObjects.DELETE);
+			expect(getFocusedPillLabel()).to.equal(accountsWithIcon[1].label);
+			console.log(document.activeElement.querySelector('.slds-pill__label').innerText);
+			getSelectedListboxPills({ nodes, index: 0 }).simulate('keyDown', keyObjects.RIGHT);
+			expect(getFocusedPillLabel()).to.equal(accountsWithIcon[2].label);
+			getSelectedListboxPills({ nodes, index: 1 }).simulate('keyDown', keyObjects.DELETE);
+			expect(getFocusedPillLabel()).to.equal(accountsWithIcon[3].label);
+			getSelectedListboxPills({ nodes, index: 1 }).simulate('keyDown', keyObjects.LEFT);
+			getSelectedListboxPills({ nodes, index: 0 }).simulate('keyDown', keyObjects.LEFT);
+			expect(getFocusedPillLabel()).to.equal(accountsWithIcon[4].label);
+			getSelectedListboxPills({ nodes, index: 2 }).simulate('keyDown', keyObjects.DELETE);
+			expect(getFocusedPillLabel()).to.equal(accountsWithIcon[3].label);
+			getSelectedListboxPills({ nodes, index: 1 }).simulate('keyDown', keyObjects.RIGHT);
+			expect(getFocusedPillLabel()).to.equal(accountsWithIcon[1].label);
+			getSelectedListboxPills({ nodes, index: 0 }).simulate('keyDown', keyObjects.DELETE);
+			getSelectedListboxPills({ nodes, index: 0 }).simulate('keydown', keyObjects.DELETE);
 		});
 	});
 

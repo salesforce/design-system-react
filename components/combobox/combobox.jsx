@@ -38,6 +38,7 @@ const propTypes = {
 	 * This object is merged with the default props object on every render.
 	 * * `label`: This is used as a visually hidden label if, no `labels.label` is provided.
 	 * * `removePill`: Aids in keyboard interaction with Pills.
+	 * _Tested with snapshot testing._
 	 */
 	assistiveText: shape({
 		listboxLabel: PropTypes.string,
@@ -51,7 +52,7 @@ const propTypes = {
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
-	 * Disable input and calendar.
+	 * Disable input.
 	 */
 	disabled: PropTypes.bool,
 	/**
@@ -80,11 +81,11 @@ const propTypes = {
 		onSubmit: PropTypes.func
 	}),
 	/**
-	 * HTML id for component
+	 * HTML id for component. _Tested with snapshot testing._
 	 */
 	id: PropTypes.string,
 	/**
-	 * Renders menu within the wrapping trigger as a sibling of the input. By default, you will have an absolutely positioned container at an elevated z-index.
+	 * Renders menu within the wrapping trigger as a sibling of the input. By default, you will have an absolutely positioned container at an elevated z-index. _Tested with snapshot testing._
 	 */
 	isInline: PropTypes.bool,
 	/**
@@ -96,6 +97,7 @@ const propTypes = {
 	 * * `placeholder`: Input placeholder
 	 * * `placeholderReadOnly`: Placeholder for Picklist-like Combobox
 	 * * `removePillTitle`: Title on `X` icon
+	 * _Tested with snapshot testing._
 	 */
 	labels: shape({
 		label: PropTypes.string,
@@ -106,31 +108,31 @@ const propTypes = {
 		removePillTitle: PropTypes.string
 	}),
 	/**
-	 * Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use view [Concepts and Best Practices](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices)
+	 * Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use view [Concepts and Best Practices](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices) _Tested with snapshot testing._
 	 */
 	isOpen: PropTypes.bool,
 	/**
-	 * Allows multiple selections
+	 * Allows multiple selections _Tested with mocha testing._
 	 */
 	multiple: PropTypes.bool,
 	/**
-	 * Item added to the dropdown menu.
+	 * Item added to the dropdown menu. _Tested with snapshot testing._
 	 */
 	options: PropTypes.array.isRequired,
 	/**
-	 * Limits auto-complete input submission to one of the provided options.
+	 * Limits auto-complete input submission to one of the provided options. _Tested with mocha testing._
 	 */
 	predefinedOptionsOnly: PropTypes.bool,
 	/**
-	 * Accepts an array of item objects. For single selection, pass in an array of one object.
+	 * Accepts an array of item objects. For single selection, pass in an array of one object. _Tested with snapshot testing._
 	 */
 	selection: PropTypes.array,
 	/**
-	 * Value of input. This is a controlled component, so you will need to control the input value.
+	 * Value of input. This is a controlled component, so you will need to control the input value. _Tested with snapshot testing._
 	 */
 	value: PropTypes.string,
 	/**
-	 * Changes styles of the input. Currently `entity` is not supported.
+	 * Changes styles of the input. Currently `entity` is not supported. _Tested with snapshot testing._
 	 */
 	variant: PropTypes.oneOf(['base', 'inline-listbox', 'readonly'])
 };
