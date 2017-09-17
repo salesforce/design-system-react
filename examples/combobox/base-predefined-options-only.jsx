@@ -1,7 +1,7 @@
 /* eslint-disable no-console, react/prop-types */
 import React from 'react';
 import Combobox from '~/components/combobox';
-import filter from '~/components/combobox/filter';
+import comboboxFilter from '~/components/combobox/filter';
 import Icon from '~/components/icon';
 import escapeRegExp from 'lodash.escaperegexp';
 
@@ -62,7 +62,7 @@ class Example extends React.Component {
 					placeholder: 'Search Salesforce'
 				}}
 				multiple
-				options={filter({
+				options={comboboxFilter({
 					inputValue: this.state.inputValue,
 					options: accountsWithIcon,
 					selection: this.state.selection

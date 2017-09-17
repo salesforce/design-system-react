@@ -230,7 +230,7 @@
     },
     {
       "component": "combobox",
-      "status": "prototype",
+      "status": "prod",
       "display-name": "Comboboxes",
       "SLDS-component-path": "/components/comboboxes"
     },

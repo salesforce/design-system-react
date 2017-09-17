@@ -20,7 +20,6 @@ export BreadCrumb from './breadcrumb';
 export SLDSBreadcrumb from './breadcrumb';
 export Breadcrumb from './breadcrumb';
 
-
 export SLDSCard from './card';
 export Card from './card';
 
@@ -32,6 +31,12 @@ export CardFilter from './card/filter';
 
 export SLDSCheckbox from './forms/checkbox';
 export Checkbox from './forms/checkbox';
+
+export SLDSCombobox from './combobox';
+export Combobox from './combobox';
+
+export SLDSComboboxFilter from './combobox/filter';
+export comboboxFilter from './combobox/filter';
 
 export SLDSGlobalHeader from './global-header';
 export GlobalHeader from './global-header';
