@@ -1,3 +1,11 @@
+/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
+/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+// # Avatar Component
+
+// Implements the [Avatar design pattern](https://lightningdesignsystem.com/components/avatar/) in React.
+
+// ### React
 import React from 'react';
 import PropTypes from 'prop-types';
 // ### classNames
@@ -14,20 +22,31 @@ const displayName = AVATAR;
 // ### Prop Types
 const propTypes = {
 	/**
-	 * CSS classes that are applied to the SVG.
+	 * Class names to be applied to Avatar component.
 	 */
 	className: PropTypes.string,
+	/**
+	 * Alt attribute to be applied to image (base case) avatar element.
+	 */
 	imgAlt: PropTypes.string,
-
+	/**
+	 * Source attribute to be applied to image (base case) avatar element.
+	 */
 	imgSrc: PropTypes.string,
 	/**
-	 * Label attibute to display inside variant: 'initial' avatars. Will be passed as title prop in initials
+	 * Label attibute to display inside "initial" fallback avatar case. Will be passed as title prop in `abbr` element to provide more specificity.
 	 */
 	label: PropTypes.string,
+	/**
+	 * Avatar variants to apply relevant styling (circle: user, square: entity) and icon rendering if applicable.
+	 */
 	variant: PropTypes.oneOf(['entity', 'user']).isRequired,
+	/**
+	 * Size of the icon in "icon" fallback avatar case.
+	 */
 	size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']).isRequired,
 	/**
-	 * Title attribute for the icon container
+	 * Title attribute for the avatar container.
 	 */
 	title: PropTypes.string
 };
@@ -37,6 +56,13 @@ const defaultProps = {
 	title: 'user avatar',
 	variant: 'user'
 };
+
+/**
+ * The avatar component represents an object or entity. An image is the preferred format for an avatar.
+ If an image is unavailble, and if a `label` prop is available, the fallback avatar will render with initials of the user name or entity name.
+ If no label is available, the fallback avatar will render a standard icon. If `variant='user'`, a user icon will
+ render. If `variant='entity'`, an account icon will render.
+ */
 
 class Avatar extends React.Component {
 	constructor (props) {
