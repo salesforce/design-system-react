@@ -185,7 +185,7 @@ const InlineEdit = React.createClass({
 	},
 
 	saveEdits (option) {
-		if (option && cancel.undo === true) {
+		if (option && option.undo === true) {
 			if (isFunction(this.props.onChange)) {
 				this.props.onChange({
 					value: this.state.value
