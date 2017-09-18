@@ -1,10 +1,11 @@
 import findTabbableElement from './tabbable';
+import KEYS from './key-code';
 
 let ancestor = null;
 let focusLaterElement = null;
 
 const handleScopedKeyDown = (event) => {
-	if (!ancestor || event.keyCode !== 9) { // tab key
+	if (!ancestor || event.keyCode !== KEYS.TAB) {
 		return;
 	}
 	const tabbableElements = findTabbableElement(ancestor);
