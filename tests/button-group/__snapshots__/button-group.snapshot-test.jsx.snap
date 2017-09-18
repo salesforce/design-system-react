@@ -385,12 +385,14 @@ exports[`Button Group MoreIcon Snapshot 1`] = `
         iconSize="medium"
         label="Refresh"
         responsive={false}
+        type="button"
         variant="neutral"
       >
         <button
           className="slds-button slds-button--neutral"
           disabled={false}
           onClick={[Function]}
+          type="button"
         >
           Refresh
         </button>
@@ -402,12 +404,14 @@ exports[`Button Group MoreIcon Snapshot 1`] = `
         iconSize="medium"
         label="Edit"
         responsive={false}
+        type="button"
         variant="neutral"
       >
         <button
           className="slds-button slds-button--neutral"
           disabled={false}
           onClick={[Function]}
+          type="button"
         >
           Edit
         </button>
@@ -419,12 +423,14 @@ exports[`Button Group MoreIcon Snapshot 1`] = `
         iconSize="medium"
         label="Save"
         responsive={false}
+        type="button"
         variant="neutral"
       >
         <button
           className="slds-button slds-button--neutral"
           disabled={false}
           onClick={[Function]}
+          type="button"
         >
           Save
         </button>
@@ -527,6 +533,7 @@ exports[`Button Group MoreIcon Snapshot 1`] = `
                 iconVariant="border-filled"
                 responsive={false}
                 tabIndex="0"
+                type="button"
                 variant="icon"
               >
                 <button
@@ -536,6 +543,7 @@ exports[`Button Group MoreIcon Snapshot 1`] = `
                   disabled={false}
                   onClick={[Function]}
                   tabIndex="0"
+                  type="button"
                 >
                   <SLDSButtonIcon
                     category="utility"
