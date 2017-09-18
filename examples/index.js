@@ -57,8 +57,7 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!design-system-react/examples/forms/input/default.jsx'),
 		require('raw-loader!design-system-react/examples/forms/input/icons.jsx'),
 		require('raw-loader!design-system-react/examples/forms/input/error.jsx'),
-		require('raw-loader!design-system-react/examples/forms/input/disabled.jsx'),
-		require('raw-loader!design-system-react/examples/forms/input/read-only.jsx')
+		require('raw-loader!design-system-react/examples/forms/input/inactiveInputs.jsx')
 	],
 	'forms-textarea': [
 		require('raw-loader!design-system-react/examples/forms/textarea/default.jsx'),

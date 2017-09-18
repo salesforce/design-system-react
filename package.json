@@ -268,6 +268,8 @@
       "component": "forms/input/inline",
       "status": "prod",
       "display-name": "Inline Edit Inputs",
+      "last-a11y-review": {"date": "08/21/2017", "commit": "" },
+      "last-sldsMarkup-review": {"date": "08/21/2017", "commit": "" },
       "SLDS-component-path": "/components/forms#flavor-input"
     },
     {

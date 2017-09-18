@@ -37,7 +37,7 @@ describe('Spinner: ', () => {
 
 		it('renders default classes when no props passed in', function () {
 			const spinner = getSpinner(this.dom);
-			spinner.className.should.equal('slds-spinner slds-spinner--medium');
+			spinner.className.should.equal('slds-spinner slds-spinner_medium');
 		});
 	});
 
@@ -50,7 +50,7 @@ describe('Spinner: ', () => {
 
 		it('renders correct classes when props passed in', function () {
 			const spinner = getSpinner(this.dom);
-			spinner.className.should.include('slds-spinner--small slds-spinner--brand');
+			spinner.className.should.include('slds-spinner_brand slds-spinner_small');
 		});
 	});
 });

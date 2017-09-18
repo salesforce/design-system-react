@@ -18,13 +18,25 @@ import { SPINNER } from '../../utilities/constants';
 // ### Prop Types
 const PROP_TYPES = {
   /**
+   * Assistive text that is read out loud to screen readers.
+   */
+	assistiveText: PropTypes.string,
+  /**
    * Custom css classes applied to Spinner container
    */
 	containerClassName: PropTypes.string,
   /**
+   * Unique html id placed on div with role="status".
+   */
+	id: PropTypes.string,
+  /**
+   * Determines if spinner is inside input field
+   */
+	isInput: PropTypes.bool,
+  /**
    * Determines the size of the spinner
    */
-	size: PropTypes.oneOf(['small', 'medium', 'large']),
+	size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
   /**
    * Determines the color of the spinner: `base` is gray, `brand` is blue, and `inverse` is white.
    */
@@ -32,6 +44,7 @@ const PROP_TYPES = {
 };
 
 const DEFAULT_PROPS = {
+	assistiveText: 'Loading...',
 	size: 'medium',
 	variant: 'base'
 };
@@ -39,24 +52,30 @@ const DEFAULT_PROPS = {
 // ## Spinner
 const Spinner = (props) => {
 	const {
+		assistiveText,
 		containerClassName,
-		variant,
-		size
+		id,
+		isInput,
+		size,
+		variant
 	} = props;
 
-	const sizeClass = `slds-spinner--${size}`;
-	const variants = {
-		brand: 'slds-spinner--brand',
-		inverse: 'slds-spinner--inverse'
-	};
+	const spinnerClassName = classNames('slds-spinner', {
+		'slds-input__spinner': isInput,
+		'slds-spinner_brand': variant === 'brand',
+		'slds-spinner_inverse': variant === 'inverse',
+		[`slds-spinner_${size}`]: size
+	});
 
 	return (
 		<div className={classNames(containerClassName, 'slds-spinner_container')}>
 			<div
-				className={classNames('slds-spinner', sizeClass, variants[variant])}
 				aria-hidden="false"
-				role="alert"
+				className={spinnerClassName}
+				id={id}
+				role="status"
 			>
+				{assistiveText && <span className="slds-assistive-text">{assistiveText}</span>}
 				<div className="slds-spinner__dot-a" />
 				<div className="slds-spinner__dot-b" />
 			</div>
