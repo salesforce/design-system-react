@@ -4,7 +4,7 @@ let ancestor = null;
 let focusLaterElement = null;
 
 const handleScopedKeyDown = (event) => {
-	if (!ancestor) {
+	if (!ancestor || event.keyCode !== 9) { // tab key
 		return;
 	}
 	const tabbableElements = findTabbableElement(ancestor);
