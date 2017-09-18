@@ -2,34 +2,36 @@ import React from 'react';
 import Input from '~/components/forms/input'; // `~` is replaced with design-system-react at runtime
 
 const Example = React.createClass({
-	displayName: 'BaseInputExample',
+	displayName: 'InactiveInputExamples',
 
 	render () {
 		return (
 			<section className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
 				<div className="slds-col--padded">
-					<h1 className="slds-text-title_caps slds-p-vertical--medium">Base Input with visible label</h1>
+					<h1 className="slds-text-title_caps slds-p-vertical--medium">Disabled Input</h1>
 					<Input
-						id="base-id"
+						id="disabled-input-id"
 						label="My Label"
-						placeholder="My placeholder"
+						disabled
+						value="Disabled value"
 					/>
 				</div>
 				<div className="slds-col--padded">
-					<h1 className="slds-text-title_caps slds-p-vertical--medium">Base Input with hidden label (assistive text)</h1>
+					<h1 className="slds-text-title_caps slds-p-vertical--medium">ReadOnly Input</h1>
 					<Input
-						assistiveText={{ label: 'My label' }}
-						id="assistiveLabel-id"
-						placeholder="My placeholder"
+						id="unique-id-3"
+						label="Input Label"
+						readOnly
+						value="Read Only Value"
 					/>
 				</div>
 				<div className="slds-col--padded">
-					<h1 className="slds-text-title_caps slds-p-vertical--medium">Base Input with Fixed Text</h1>
+					<h1 className="slds-text-title_caps slds-p-vertical--medium">Static Input</h1>
 					<Input
-						id="fixed-text-id"
-						fixedTextLeft="$"
-						label="Total amount"
-						placeholder="Enter amount in USD"
+						id="unique-id-3"
+						label="Input Label"
+						isStatic
+						value="Read Only Value"
 					/>
 				</div>
 			</section>

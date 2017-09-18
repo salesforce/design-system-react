@@ -6,6 +6,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
+import Spinner from '../../../../components/spinner';
 
 const propTypes = {
 	'aria-activedescendant': PropTypes.string,
@@ -50,6 +51,20 @@ const propTypes = {
 	 */
 	disabled: PropTypes.bool,
 	/**
+	 * Displays text or node to the left of the input. This follows the fixed text input UX pattern.
+	 */
+	fixedTextLeft: PropTypes.oneOfType([
+		PropTypes.node,
+		PropTypes.string
+	]),
+	/**
+	 * Displays text or node to the right of the input. This follows the fixed text input UX pattern.
+	 */
+	fixedTextRight: PropTypes.oneOfType([
+		PropTypes.node,
+		PropTypes.string
+	]),
+	/**
 	 * Left aligned icon, must be instace of `design-system-react/components/icon/input-icon`
 	 */
 	iconLeft: PropTypes.node,
@@ -65,6 +80,10 @@ const propTypes = {
 	 * This callback exposes the input reference / DOM node to parent components. `<Parent inputRef={(inputComponent) => this.input = inputComponent} />
 	 */
 	inputRef: PropTypes.func,
+	/**
+	 * Displays the value of the input statically. This follows the static input UX pattern.
+	 */
+	isStatic: PropTypes.bool,
 	/**
 	 * This label appears above the input.
 	 */
@@ -97,7 +116,7 @@ const propTypes = {
 	 */
 	name: PropTypes.string,
 	/**
-	 * Specifies `readOnly` for `input` node. For the read-only input UX pattern, see `variant` prop.
+	 * Specifies `readOnly` for `input` node.
 	 */
 	readOnly: PropTypes.bool,
 	/**
@@ -138,16 +157,12 @@ const propTypes = {
 	/**
 	 * The input is a controlled component, and will always display this value.
 	 */
-	value: PropTypes.string,
-	/**
-	 * UX pattern variants. `inputReadOnly` is for the read-only input UX pattern.
-	 */
-	variant: PropTypes.oneOf(['base', 'inputReadOnly'])
+	value: PropTypes.string
 };
 
 const defaultProps = {
-	type: 'text',
-	variant: 'base'
+	spinnerAssistiveText: 'Loading ...',
+	type: 'text'
 };
 
 /*
@@ -157,20 +172,22 @@ const InnerInput = (props) => (
 	<div
 		className={classNames(props.containerClassName, {
 			'slds-input-has-icon': props.iconLeft || props.iconRight,
-			'slds-input-has-icon--left': props.iconLeft && !props.iconRight,
-			'slds-input-has-icon--right': !props.iconLeft && props.iconRight,
-			'slds-input-has-icon--left-right': props.iconLeft && props.iconRight,
-			'slds-has-divider--bottom': props.variant === 'inputReadOnly' && !props.inlineEditTrigger
+			'slds-input-has-icon_left': props.iconLeft && !props.iconRight,
+			'slds-input-has-icon_right': !props.iconLeft && props.iconRight,
+			'slds-input-has-icon_left-right': props.iconLeft && props.iconRight,
+			'slds-input-has-fixed-addon': props.fixedTextLeft || props.fixedTextRight,
+			'slds-has-divider--bottom': props.isStatic
 		})}
 	>
-		{props.iconLeft ? props.iconLeft : null}
+		{props.iconLeft && props.iconLeft}
+		{props.fixedTextLeft && <span className="slds-form-element__addon">{props.fixedTextLeft}</span>}
 
-		{props.variant !== 'inputReadOnly' && <input
+		{!props.isStatic && <input
 			aria-activedescendant={props['aria-activedescendant']}
 			aria-autocomplete={props['aria-autocomplete']}
 			aria-controls={props['aria-controls']}
 			aria-labelledby={props['aria-labelledby']}
-			aria-describedby={props['aria-describedby']}
+			aria-describedby={props.hasSpinner ? `loading-status-icon ${props['aria-describedby']}` : props['aria-describedby']}
 			aria-expanded={props['aria-expanded']}
 			aria-owns={props['aria-owns']}
 			aria-required={props['aria-required']}
@@ -192,22 +209,43 @@ const InnerInput = (props) => (
 			onSelect={props.onSelect}
 			onSubmit={props.onSubmit}
 			placeholder={props.placeholder}
+			readOnly={props.readOnly}
 			ref={props.inputRef}
-			role={props.role}
 			required={props.required}
+			role={props.role}
 			style={props.style}
 			tabIndex={props.tabIndex}
 			type={props.type}
 			value={props.value}
 		/>}
 
-		{props.iconRight ? props.iconRight : null}
+		{ props.hasSpinner
+				? (
+					<div className="slds-input__icon-group slds-input__icon-group_right">
+						{props.hasSpinner && (
+							<Spinner
+								assistiveText={props.spinnerAssistiveText}
+								id="loading-status-icon"
+								isInput
+								size="x-small"
+								variant="brand"
+							/>
+						)}
+						{props.iconRight && props.iconRight}
+					</div>
+				)
+				: props.iconRight && props.iconRight
+		}
+
+		{props.fixedTextRight && <span className="slds-form-element__addon">{props.fixedTextRight}</span>}
 
 		{/* eslint-disable jsx-a11y/no-static-element-interactions */}
-		{props.variant === 'inputReadOnly' && <span className="slds-form-element__static" onClick={props.onClick}>
-			{props.value}
-			{props.inlineEditTrigger}
-		</span>}
+		{props.isStatic && (
+			<span className="slds-form-element__static slds-grid slds-grid_align-spread" onClick={props.onClick}>
+				{props.value}
+				{props.inlineEditTrigger}
+			</span>
+		)}
 		{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 
 	</div>

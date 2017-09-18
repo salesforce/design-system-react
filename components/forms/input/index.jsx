@@ -10,6 +10,7 @@
 // ### React
 import React from 'react';
 import PropTypes from 'prop-types';
+import { shape } from 'airbnb-prop-types';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -60,10 +61,14 @@ const Input = React.createClass({
 		'aria-owns': PropTypes.string,
 		'aria-required': PropTypes.bool,
 		/**
-		 * If present, the label associated with this `input` is overwritten
-		 * by this text and is visually not shown.
+		 * **Assistive text for accessibility**
+		 * * `label`: Visually hidden label but read out loud by screen readers.
+		 * * `spinner`: Text for loading spinner icon.
 		 */
-		assistiveText: PropTypes.string,
+		assistiveText: shape({
+			label: PropTypes.string,
+			spinner: PropTypes.string
+		}),
 		children: PropTypes.node,
 		/**
 		 * Class names to be added to the outer container of the input.
@@ -82,6 +87,24 @@ const Input = React.createClass({
 		 */
 		errorText: PropTypes.string,
 		/**
+		 * Displays text or node to the left of the input. This follows the fixed text input UX pattern.
+		 */
+		fixedTextLeft: PropTypes.oneOfType([
+			PropTypes.node,
+			PropTypes.string
+		]),
+		/**
+		 * Displays text or node to the right of the input. This follows the fixed text input UX pattern.
+		 */
+		fixedTextRight: PropTypes.oneOfType([
+			PropTypes.node,
+			PropTypes.string
+		]),
+		/**
+		 * If true, loading spinner appears inside input on right hand side.
+		 */
+		hasSpinner: PropTypes.bool,
+		/**
 		 * Left aligned icon, must be instace of `design-system-react/components/icon/input-icon`
 		 */
 		iconLeft: PropTypes.node,
@@ -97,6 +120,10 @@ const Input = React.createClass({
 		 * This callback exposes the input reference / DOM node to parent components. `<Parent inputRef={(inputComponent) => this.input = inputComponent} />
 		 */
 		inputRef: PropTypes.func,
+		/**
+		 * Displays the value of the input statically. This follows the static input UX pattern.
+		 */
+		isStatic: PropTypes.bool,
 		/**
 		 * This label appears above the input.
 		 */
@@ -129,7 +156,7 @@ const Input = React.createClass({
 		 */
 		name: PropTypes.string,
 		/**
-		 * Displays the value of the input statically. This follows the read only input UX pattern.
+		 * Displays the value of the input as readOnly.
 		 */
 		readOnly: PropTypes.bool,
 		/**
@@ -215,7 +242,7 @@ const Input = React.createClass({
 		const props = this.props;
 
 		const labelText = props.label
-			|| props.assistiveText; // One of these is required to pass accessibility tests
+			|| (props.assistiveText && props.assistiveText.label); // One of these is required to pass accessibility tests
 
 		// this is a hack to make left the default prop unless overwritten by `iconPosition="right"`
 		const hasLeftIcon = !!props.iconLeft || ((props.iconPosition === 'left' || props.iconPosition === undefined) && !!props.iconName);
@@ -228,17 +255,17 @@ const Input = React.createClass({
 				},
 				props.className)}
 			>
-				{labelText && (props.readOnly
+				{labelText && (props.isStatic
 					? <span
 						className={classNames('slds-form-element__label', {
-							'slds-assistive-text': props.assistiveText && !props.label
+							'slds-assistive-text': (props.assistiveText && props.assistiveText.label) && !props.label
 						})}
 					>
 						{labelText}
 					</span>
 					: <label
 						className={classNames('slds-form-element__label', {
-							'slds-assistive-text': props.assistiveText && !props.label
+							'slds-assistive-text': (props.assistiveText && props.assistiveText.label) && !props.label
 						})}
 						htmlFor={this.getId()}
 					>
@@ -257,10 +284,14 @@ const Input = React.createClass({
 					aria-required={this.props['aria-required']}
 					containerClassName="slds-form-element__control"
 					disabled={props.disabled}
+					fixedTextLeft={props.fixedTextLeft}
+					fixedTextRight={props.fixedTextRight}
+					hasSpinner={props.hasSpinner}
 					id={this.getId()}
 					iconLeft={hasLeftIcon ? this.getIconRender('left', 'iconLeft') : null}
 					iconRight={hasRightIcon ? this.getIconRender('right', 'iconRight') : null}
 					inlineEditTrigger={props.inlineEditTrigger}
+					isStatic={props.isStatic}
 					minLength={props.minLength}
 					maxLength={props.maxLength}
 					name={props.name}
@@ -277,11 +308,12 @@ const Input = React.createClass({
 					onSubmit={props.onSubmit}
 					placeholder={props.placeholder}
 					inputRef={props.inputRef}
-					role={props.role}
+					readOnly={props.readOnly}
 					required={props.required}
+					role={props.role}
+					spinnerAssistiveText={props.assistiveText && props.assistiveText.spinner}
 					type={props.type}
 					value={props.value}
-					variant={props.readOnly ? 'inputReadOnly' : null}
 				/>
 				{props.errorText && <div id={this.getErrorId()} className="slds-form-element__help">{props.errorText}</div>}
 				{props.children}
