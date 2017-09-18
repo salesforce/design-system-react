@@ -37,7 +37,8 @@ class Example extends React.Component {
 						});
 					},
 					onSelect: (event, data) => {
-						console.log('onSelect', data);
+						const dataAsArray = Object.keys(data).map((key) => data[key]);
+						this.props.action('onSelect')(event, ...dataAsArray);
 						this.setState({
 							inputValue: '',
 							selection: data.selection

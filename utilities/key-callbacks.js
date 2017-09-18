@@ -3,7 +3,10 @@
 import EventUtil from './event';
 
 /*
- * Helper function that has callbacks passed into it with the key being the keycode of the event
+ * Helper function that has callbacks passed into it with the key
+ * being the keycode of the event. This allows an object literal to
+ * control key event callback mapping and avoids a long conditional
+ * if statement and uses an enumeration pattern instead.
  */
 const mapKeyEventCallbacks = (event, {
 	callbacks = {},

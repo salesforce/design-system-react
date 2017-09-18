@@ -39,7 +39,7 @@ class Example extends React.Component {
 				id="combobox-unique-id"
 				events={{
 					onChange: (event, { value }) => {
-						console.log('onChange', value);
+						this.props.action('onChange')(event, value);
 						this.setState({	inputValue: value });
 					},
 					onRequestRemoveSelectedOption: (event, data) => {
@@ -49,7 +49,7 @@ class Example extends React.Component {
 						});
 					},
 					onSubmit: (event, { value }) => {
-						console.log('onSubmit', value);
+						this.props.action('onSubmit')(event, value);
 						this.setState({
 							inputValue: '',
 							selection: [...this.state.selection, {
@@ -61,7 +61,8 @@ class Example extends React.Component {
 								/> }] });
 					},
 					onSelect: (event, data) => {
-						console.log('onSelect', data);
+						const dataAsArray = Object.keys(data).map((key) => data[key]);
+						this.props.action('onSelect')(event, ...dataAsArray);
 						this.setState({
 							inputValue: '',
 							selection: data.selection

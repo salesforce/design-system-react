@@ -218,7 +218,6 @@ describe('SLDSCombobox', function () {
 			nodes.input.simulate('keyDown', keyObjects.TAB);
 			getSelectedListboxPills({ nodes, index: 0 }).simulate('keyDown', keyObjects.DELETE);
 			expect(getFocusedPillLabel()).to.equal(accountsWithIcon[1].label);
-			console.log(document.activeElement.querySelector('.slds-pill__label').innerText);
 			getSelectedListboxPills({ nodes, index: 0 }).simulate('keyDown', keyObjects.RIGHT);
 			expect(getFocusedPillLabel()).to.equal(accountsWithIcon[2].label);
 			getSelectedListboxPills({ nodes, index: 1 }).simulate('keyDown', keyObjects.DELETE);

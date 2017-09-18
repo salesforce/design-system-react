@@ -37,24 +37,23 @@ const propTypes = {
 	 * **Assistive text for accessibility**
 	 * This object is merged with the default props object on every render.
 	 * * `label`: This is used as a visually hidden label if, no `labels.label` is provided.
-	 * * `removePill`: Aids in keyboard interaction with Pills.
+	 * * `optionSelectedInMenu`: Added before selected menu items in Read-only variants (Picklists). The default is `Current Selection:`.
+	 * * `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.
+	 * * `removePill`: Used by multiple selection Comboboxes to remove a selected item (pill). Focus is on the pill. This is not a button. The default  is `, Press delete or backspace to remove`.
+	 * * `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.
 	 * _Tested with snapshot testing._
 	 */
 	assistiveText: shape({
-		listboxLabel: PropTypes.string,
 		label: PropTypes.string,
 		optionSelectedInMenu: PropTypes.string,
 		removeSingleSelectedOption: PropTypes.string,
-		removePill: PropTypes.string
+		removePill: PropTypes.string,
+		selectedListboxLabel: PropTypes.string
 	}),
 	/**
-	 * CSS classes to be added to tag with `slds-combobox`. If you are looking for the outer DOM node (slds-dropdown-trigger), please review `triggerClassName`.
+	 * CSS classes to be added to tag with `slds-combobox`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
-	/**
-	 * Disable input.
-	 */
-	disabled: PropTypes.bool,
 	/**
 	 * Event Callbacks
 	 * * `onBlur`: Called when `input` removes focus.
@@ -67,6 +66,7 @@ const propTypes = {
 	 * * `onRequestRemoveSelectedOption`: Function called when a single selection option is to be removed.
 	 * * `onSelect`: Function called when a menu item is selected
 	 * * `onSubmit`: Function called when user presses enter or submits the `input`
+	 * _Tested with Mocha testing._
 	 */
 	events: shape({
 		onBlur: PropTypes.func,
@@ -100,9 +100,9 @@ const propTypes = {
 	 * _Tested with snapshot testing._
 	 */
 	labels: shape({
-		label: PropTypes.string,
+		label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 		multipleOptionsSelected: PropTypes.string,
-		noOptionsFound: PropTypes.string,
+		noOptionsFound: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 		placeholder: PropTypes.string,
 		placeholderReadOnly: PropTypes.string,
 		removePillTitle: PropTypes.string
@@ -139,10 +139,10 @@ const propTypes = {
 
 const defaultProps = {
 	assistiveText: {
-		listboxLabel: 'Selected Options:',
 		optionSelectedInMenu: 'Current Selection:',
 		removeSingleSelectedOption: 'Remove selected option',
-		removePill: ', Press delete or backspace to remove'
+		removePill: ', Press delete or backspace to remove',
+		selectedListboxLabel: 'Selected Options:'
 	},
 	events: {},
 	labels: {
@@ -182,10 +182,11 @@ class Combobox extends React.Component {
 
 	componentWillReceiveProps (nextProps, prevProps) {
 		// This logic will maintain the active highlight even when the
-		// options change. One example would be the server pushes
+		// option order changes. One example would be the server pushes
 		// data out as the user has the menu open. This logic clears
-		// `activeOption` if it is no longer in the options list. If
-		// it's in the options list, then find the index and set `activeOptionIndex`
+		// `activeOption` if the active option is no longer in the options
+		// list. If it's in the options list, then find the new index and
+		// set `activeOptionIndex`
 		if (!isEqual(prevProps.options, nextProps.options)) {
 			const index = nextProps.options.findIndex((item) => isEqual(item, this.state.activeOption));
 			if (index !== -1) {
@@ -203,7 +204,7 @@ class Combobox extends React.Component {
 	}
 
 	/**
- 	 * Shared class getter methods
+ 	 * Shared class peropty getter methods
    */
 
 	getId = () => this.props.id || this.generatedId;
@@ -304,13 +305,13 @@ class Combobox extends React.Component {
 	}
 
 	getInlineMenu ({ menuRenderer }) {
-		return !this.props.disabled && this.getIsOpen()
+		return !this.props.disabled && this.getIsOpen() // eslint-disable-line react/prop-types
 		? menuRenderer
 		: null;
 	}
 
 	getDialog ({ menuRenderer }) {
-		return !this.props.disabled && this.getIsOpen()
+		return !this.props.disabled && this.getIsOpen() // eslint-disable-line react/prop-types
 			? <Dialog
 				constrainToScrollParent
 				flippable
@@ -342,7 +343,6 @@ class Combobox extends React.Component {
 				inputValue={this.props.value}
 				isSelected={this.isSelected}
 				options={this.props.options}
-				// optionsRenderer={this.props.optionsRenderer}
 				onSelect={this.handleSelect}
 				clearActiveOption={this.clearActiveOption}
 				selection={this.props.selection}
@@ -553,6 +553,8 @@ class Combobox extends React.Component {
 
 	/**
  	 * Combobox variant subrenders
+ 	 * (these can probably be broken into function components
+ 	 * if state is passed in as a prop)
    */
 
 	renderBase = ({ assistiveText, labels, props }) => (
@@ -586,7 +588,6 @@ class Combobox extends React.Component {
 							className: 'slds-combobox__form-element',
 							role: 'none'
 						}}
-						disabled={props.disabled}
 						iconRight={<InputIcon
 							category="utility"
 							name="search"
@@ -681,7 +682,6 @@ class Combobox extends React.Component {
 								className: 'slds-combobox__form-element',
 								role: 'none'
 							}}
-							disabled={props.disabled}
 							iconRight={props.selection.length
 								? <InputIcon
 									assistiveText={assistiveText.removeSingleSelectedOption}
@@ -790,7 +790,6 @@ class Combobox extends React.Component {
 							className: 'slds-combobox__form-element',
 							role: 'none'
 						}}
-						disabled={props.disabled}
 						iconRight={<InputIcon
 							category="utility"
 							name="search"
@@ -856,7 +855,6 @@ class Combobox extends React.Component {
 								className: 'slds-combobox__form-element',
 								role: 'none'
 							}}
-							disabled={props.disabled}
 							iconRight={<InputIcon
 								category="utility"
 								name="down"
@@ -927,7 +925,6 @@ class Combobox extends React.Component {
 								className: 'slds-combobox__form-element',
 								role: 'none'
 							}}
-							disabled={props.disabled}
 							iconRight={<InputIcon
 								category="utility"
 								name="down"
