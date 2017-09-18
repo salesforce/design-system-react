@@ -5,7 +5,7 @@ exports[`Panel Filtering Default HTML Snapshot 1`] = `
   <div class=\\"slds-form--stacked slds-grow slds-scrollable--y slds-grid slds-grid--vertical\\">
     <div class=\\"slds-filters\\">
       <div class=\\"slds-filters__header slds-grid slds-has-divider--bottom-space\\">
-        <h2 class=\\"slds-align-middle slds-text-heading--small\\">Filter</h2><button class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small slds-col--bump-left\\" title=\\"Close Filter Panel\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#forward\\"></use></svg><span class=\\"slds-assistive-text\\">Close Filter Panel</span></button></div>
+        <h2 class=\\"slds-align-middle slds-text-heading--small\\">Filter</h2><button class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small slds-col--bump-left\\" title=\\"Close Filter Panel\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#forward\\"></use></svg><span class=\\"slds-assistive-text\\">Close Filter Panel</span></button></div>
       <div
         class=\\"slds-filters__body\\">
         <ol class=\\"slds-list--vertical slds-list--vertical-space\\">
@@ -21,19 +21,19 @@ exports[`Panel Filtering Default HTML Snapshot 1`] = `
             <div class=\\"slds-filters__item slds-grid slds-grid--vertical-align-center\\">
               <div class=\\"slds-grow\\" style=\\"display:inline;\\"><button class=\\"slds-button--reset slds-grow slds-has-blur-focus\\" id=\\"sample-panel-filtering-created-date\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body--small\\">Created Date</p><p>equals THIS WEEK</p></button></div>
               <button
-                class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\\" title=\\"Remove Filter: Created Date equals THIS WEEK\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove Filter: Created Date equals THIS WEEK</span></button>
+                class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\\" title=\\"Remove Filter: Created Date equals THIS WEEK\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove Filter: Created Date equals THIS WEEK</span></button>
             </div>
           </li>
           <li class=\\"slds-item slds-hint-parent\\">
             <div class=\\"slds-filters__item slds-grid slds-grid--vertical-align-center\\">
               <div class=\\"slds-grow\\" style=\\"display:inline;\\"><button class=\\"slds-button--reset slds-grow slds-has-blur-focus\\" id=\\"sample-panel-filtering-list-price\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body--small\\">List Price</p><p>greater than &quot;500&quot;</p></button></div>
               <button
-                class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\\" title=\\"Remove Filter: List Price greater than &quot;500&quot;\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove Filter: List Price greater than &quot;500&quot;</span></button>
+                class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\\" title=\\"Remove Filter: List Price greater than &quot;500&quot;\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove Filter: List Price greater than &quot;500&quot;</span></button>
             </div>
           </li>
         </ol>
     </div>
-    <div class=\\"slds-filters__footer slds-grid slds-shrink-none\\"><button class=\\"slds-button--reset slds-text-link\\">Add Filter</button><button class=\\"slds-button--reset slds-text-link slds-col--bump-left\\">Remove All</button></div>
+    <div class=\\"slds-filters__footer slds-grid slds-shrink-none\\"><button class=\\"slds-button--reset slds-text-link\\" type=\\"button\\">Add Filter</button><button class=\\"slds-button--reset slds-text-link slds-col--bump-left\\" type=\\"button\\">Remove All</button></div>
   </div>
 </div>
 </div>"
