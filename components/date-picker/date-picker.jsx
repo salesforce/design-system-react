@@ -497,6 +497,7 @@ class Datepicker extends React.Component {
 				category="utility"
 				name="event"
 				onClick={this.openDialog}
+				type="button"
 			/>),
 			id: this.getId(),
 			inputRef: (component) => { this.inputRef = component; },

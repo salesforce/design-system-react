@@ -454,6 +454,7 @@ const MenuPicklist = React.createClass({
 					onClick={!this.props.disabled && this.handleClick}
 					ref={this.saveRefToTrigger}
 					tabIndex={this.state.isOpen ? -1 : 0}
+					type="button"
 				>
 					<span className="slds-truncate">{inputValue}</span>
 					<Icon name="down" category="utility" />
