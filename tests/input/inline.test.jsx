@@ -11,7 +11,7 @@ const should = chai.should();
 const { Simulate
 			} = TestUtils;
 
-describe('DataTable: ', function () {
+describe('Inline Edit: ', function () {
 	const sampleValue = 'Sample value';
 
 	const renderInlineEdit = (instance) => function () {

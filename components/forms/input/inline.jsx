@@ -184,18 +184,18 @@ const InlineEdit = React.createClass({
 		}
 	},
 
-	saveEdits (undo) {
-		if (!undo) {
+	saveEdits (option) {
+		if (option && cancel.undo === true) {
 			if (isFunction(this.props.onChange)) {
 				this.props.onChange({
 					value: this.state.value
 				});
 			}
 		}
-		this.endEditMode(undo);
+		this.endEditMode(option);
 	},
 
-	endEditMode (undo) {
+	endEditMode (option) {
 		if (this.willSave) {
 			clearTimeout(this.willSave);
 			delete this.willSave;
@@ -207,7 +207,7 @@ const InlineEdit = React.createClass({
 		});
 
 		if (this.props.onLeaveEditMode && isFunction(this.props.onLeaveEditMode)) {
-			this.props.onLeaveEditMode(undefined, { cancel: undo });
+			this.props.onLeaveEditMode(undefined, option);
 		}
 	},
 
@@ -229,7 +229,7 @@ const InlineEdit = React.createClass({
 	handleKeyDown (event) {
 		if (event.keyCode) {
 			if (event.keyCode === KEYS.ESCAPE) {
-				this.saveEdits(true);
+				this.saveEdits({ cancel: true });
 			} else if (event.keyCode === KEYS.ENTER) {
 				this.saveEdits();
 			}
