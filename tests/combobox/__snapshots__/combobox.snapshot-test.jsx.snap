@@ -4,10 +4,10 @@ exports[`Base Open DOM Snapshot 1`] = `
 <SLDSCombobox
   assistiveText={
     Object {
-      "listboxLabel": "Selected Options:",
       "optionSelectedInMenu": "Current Selection:",
       "removePill": ", Press delete or backspace to remove",
       "removeSingleSelectedOption": "Remove selected option",
+      "selectedListboxLabel": "Selected Options:",
     }
   }
   events={Object {}}
@@ -86,10 +86,10 @@ exports[`Base Selected DOM Snapshot 1`] = `
 <SLDSCombobox
   assistiveText={
     Object {
-      "listboxLabel": "Selected Options:",
       "optionSelectedInMenu": "Current Selection:",
       "removePill": ", Press delete or backspace to remove",
       "removeSingleSelectedOption": "Remove selected option",
+      "selectedListboxLabel": "Selected Options:",
     }
   }
   events={Object {}}

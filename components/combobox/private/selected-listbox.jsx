@@ -80,7 +80,7 @@ const SelectedListBox = (props) => (
 				}
 			)}
 			role="group"
-			aria-label={props.assistiveText.listboxLabel}
+			aria-label={props.assistiveText.selectedListboxLabel}
 		>
 			{props.selection.map((option, index) => {
 				const setActiveBasedOnstateFromParent = index === props.activeOptionIndex
