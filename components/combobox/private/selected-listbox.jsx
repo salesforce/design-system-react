@@ -12,7 +12,14 @@ import isEqual from 'lodash.isequal';
 import { shape } from 'airbnb-prop-types';
 
 const propTypes = {
+	/*
+	 * The option object within the selection prop that should have focus.
+	 */
 	activeOption: PropTypes.object,
+	/*
+	 * The index of the option object within the selection prop that should have focus.
+	 */
+	activeOptionIndex: PropTypes.object,
 	/**
 	 * **Assistive text for accessibility**
 	 * This object is merged with the default props object on every render.
