@@ -419,6 +419,17 @@
       "SLDS-component-path": "/components/progress-indicator"
     },
     {
+      "component": "radio-button-group",
+      "status": "prod",
+      "display-name": "Radio Button Groups",
+      "SLDS-component-path": "/components/radio-button-group",
+      "dependencies": [
+        {
+          "component": "radio"
+        }
+      ]
+    },
+    {
       "component": "tooltip",
       "status": "prod",
       "display-name": "Tooltips",
