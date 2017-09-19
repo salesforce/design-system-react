@@ -58,18 +58,5 @@ storiesOf(RADIO_BUTTON_GROUP, module)
 	.add('Base', () => <RadioButtonGroupExample heading="Base" />)
 	.add('Disabled', () => <RadioButtonGroupExample heading="Disabled" disabled />)
 	.add('Required', () => <RadioButtonGroupExample heading="Required" required />)
-	.add('Error', () => <RadioButtonGroupExample heading="Error" labels={{ label: 'Day of week', error: 'There is an error' }} />)
-	.add('Report Builder', () =>
-		<RadioButtonGroup
-			labels={{ label: 'Data types' }}
-			onChange={(event) => console.log(event.target.value)}
-		>
-			<Radio label={<span style={{ fontSize: '18px', position: 'relative', top: '3px' }}>All</span>} value="all" />
-			<Radio label={<Icon assistiveText="Text" name="type_tool" variant="border-filled" category="utility" size="x-small" style={{ fill: 'currentColor' }} />} value="text" />
-			<Radio label={<span style={{ fontSize: '22px', position: 'relative', top: '1px' }}>#<span className="slds-assistive-text">Number</span></span>} value="number" />
-			<Radio label={<Icon assistiveText="Boolean" name="check" variant="border-filled" category="utility" size="x-small" style={{ fill: 'currentColor' }} />} value="boolean" />
-			<Radio label={<Icon assistiveText="Date" name="event" variant="border-filled" category="utility" size="x-small" style={{ fill: 'currentColor' }} />} value="date" />
-			<Radio label={<Icon assistiveText="Picklist" name="list" variant="border-filled" category="utility" size="x-small" style={{ fill: 'currentColor' }} />} value="picklist" />
-		</RadioButtonGroup>
-	);
+	.add('Error', () => <RadioButtonGroupExample heading="Error" labels={{ label: 'Day of week', error: 'There is an error' }} />);
 
