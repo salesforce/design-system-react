@@ -63,6 +63,10 @@ const Lookup = React.createClass({
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/**
+		 * Whether or not the lookup dropdown menu stays open when the component props are updated.
+		 */
+		closeOnRerender: PropTypes.bool,
+		/**
 		 * If true, constrains the menu to the scroll parent. Has no effect if `isInline` is `true`.
 		 */
 		constrainToScrollParent: PropTypes.bool,
@@ -138,6 +142,10 @@ const Lookup = React.createClass({
 		 */
 		onChange: PropTypes.func,
 		/**
+		 * Triggered when the user scrolls in the dropdown menu.
+		 */
+		onScroll: PropTypes.func,
+		/**
 		 * Triggered when an item is selected from the dropdown menu.
 		 */
 		onSelect: PropTypes.func,
@@ -174,6 +182,7 @@ const Lookup = React.createClass({
 
 	getDefaultProps () {
 		return {
+			closeOnRerender: false,
 			constrainToScrollParent: true,
 			filterWith: defaultFilter,
 			iconPosition: 'right',
@@ -210,6 +219,9 @@ const Lookup = React.createClass({
 		}
 		if (newProps.selectedItem !== this.props.selectedItem || !isEqual(newProps.options, this.props.options)) {
 			this.setState({ selectedIndex: newProps.selectedItem });
+		}
+		if (newProps.closeOnRerender) {
+			this.setState({ isOpen: false });
 		}
 	},
 
@@ -676,7 +688,7 @@ const Lookup = React.createClass({
 		};
 
 		return (
-			<div className={this.getClassName()} data-select="single" data-scope="single">
+			<div className={this.getClassName()} data-select="single" data-scope="single" onScroll={this.props.onScroll}>
 				{this.props.label ? this.renderLabel() : null}
 				<div className={classNames(formElementControlClasses)}>
 					{this.isSelected() ? this.renderSelectedItem() : null}
