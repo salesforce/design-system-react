@@ -20,8 +20,10 @@ class Example extends React.Component {
 					onChange={(event) => this.setState({ checked: event.target.value })}
 					disabled={this.props.disabled}
 					required={this.props.required}
+					name={this.props.name}
+					errorId={this.props.errorId}
 				>
-					{days.map((day) => <Radio key={day} label={day} value={day} checked={this.state.checked === day} />)}
+					{days.map((day) => <Radio key={day} id={day} label={day} value={day} checked={this.state.checked === day} />)}
 				</RadioButtonGroup>
 			</div>
 		);
@@ -31,7 +33,9 @@ class Example extends React.Component {
 
 Example.propTypes = {
 	disabled: PropTypes.bool,
-	required: PropTypes.bool
+	required: PropTypes.bool,
+	name: PropTypes.string,
+	errorId: PropTypes.string
 };
 
 Example.displayName = 'RadioButtonGroupExample';

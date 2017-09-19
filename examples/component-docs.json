@@ -2975,14 +2975,24 @@
                 "name": "saveEdits",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "option",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
                 "name": "endEditMode",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "option",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
@@ -3006,6 +3016,18 @@
             },
             {
                 "name": "handleKeyDown",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleKeyUp",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
@@ -3063,6 +3085,13 @@
                 },
                 "required": false,
                 "description": "This event fires when the input changes."
+            },
+            "onKeyUp": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Function will run when keyup during text edit"
             },
             "onEnterEditMode": {
                 "type": {
@@ -8705,7 +8734,22 @@
     },
     "radio-button-group": {
         "description": "A styled select list that can have a single entry checked at any one time.\nThe RadioButtonGroup component wraps Radio components.",
-        "methods": [],
+        "methods": [
+            {
+                "name": "getName",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getErrorId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
         "props": {
             "children": {
                 "type": {
@@ -8764,6 +8808,20 @@
                 },
                 "required": false,
                 "description": "Adds an indicator that this field is required."
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The name of this radio group."
+            },
+            "errorId": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The ID of the error message, for linking to radio inputs with aria-describedby."
             }
         },
         "route": "radio-button-groups",

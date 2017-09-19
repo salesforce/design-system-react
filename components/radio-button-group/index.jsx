@@ -48,7 +48,15 @@ const propTypes = {
 	/**
 	 * Adds an indicator that this field is required.
 	 */
-	required: PropTypes.bool
+	required: PropTypes.bool,
+	/**
+	 * The name of this radio group.
+	 */
+	name: PropTypes.string,
+	/**
+	 * The ID of the error message, for linking to radio inputs with aria-describedby.
+	 */
+	errorId: PropTypes.string
 };
 
 const defaultProps = { labels: {} };
@@ -65,19 +73,24 @@ class RadioButtonGroup extends React.Component {
 		// Merge objects of strings with their default object
 		this.labels = this.props ? assign({}, defaultProps.labels, this.props.labels) : defaultProps.labels;
 
-		// The name of this radio group
 		this.generatedName = shortid.generate();
-
-		// The ID of the error message, for linking to radio inputs with aria-describedby
 		this.generatedErrorId = this.labels.error ? shortid.generate() : null;
+	}
+
+	getName () {
+		return this.props.name || this.generatedName;
+	}
+
+	getErrorId () {
+		return this.props.errorId || this.generatedErrorId;
 	}
 
 	render () {
 		const children = React.Children.map(this.props.children, (child) =>
 			React.cloneElement(child, {
-				name: this.generatedName,
+				name: this.getName(),
 				onChange: this.props.onChange,
-				'aria-describedby': this.generatedErrorId,
+				'aria-describedby': this.getErrorId(),
 				disabled: this.props.disabled
 			})
 		);
@@ -97,7 +110,7 @@ class RadioButtonGroup extends React.Component {
 						{children}
 					</div>
 					{this.labels.error ?
-						<div id={this.generatedErrorId} className="slds-form-element__help">
+						<div id={this.getErrorId()} className="slds-form-element__help">
 							{this.labels.error}
 						</div> : null}
 				</div>
