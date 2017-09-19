@@ -79,25 +79,13 @@ class Avatar extends React.Component {
 	buildInitials () {
 		const { label } = this.props;
 		const name = label.trim();
-		let firstChar = '';
-		let secondChar = '';
-		const nameArray = name.split(' '); // ["Victor", "Brouk"]
-
-		if (nameArray.length === 1) {
-			firstChar = name[0].toUpperCase();
-			secondChar = name[1]
-				? name[1].toLowerCase()
-				: '';
+		const nameParts = name.split(' ');
+		if (nameParts.length > 1) {
+			return nameParts[0].charAt(0).toUpperCase() +
+				nameParts[nameParts.length - 1].charAt(0).toUpperCase();
 		}
-
-		if (nameArray.length > 1) {
-			const first = () => nameArray[0].charAt(0);
-			const last = () => nameArray[nameArray.length - 1].charAt(0);
-			firstChar = first(nameArray).toUpperCase();
-			secondChar = last(nameArray).toUpperCase();
-		}
-
-		return firstChar + secondChar;
+		return (name[0] || '').toUpperCase()
+			+ (name[1] || '').toLowerCase();
 	}
 
 	renderBaseAvatar () {
@@ -140,7 +128,6 @@ class Avatar extends React.Component {
 			label,
 			size
 		} = this.props;
-
 
 		const renderAvatar = () => {
 			if (!this.state.imgLoadError && imgSrc && imgSrc.length > 0) {

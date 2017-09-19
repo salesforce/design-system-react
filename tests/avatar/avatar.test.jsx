@@ -31,7 +31,6 @@ describe('SLDSAvatar: ', () => {
 			wrapper.setProps({ imgSrc: expectedSrc });
 			const img = wrapper.find('img');
 			img.simulate('error');
-			console.log(wrapper.state('imgLoadError'));
 			expect(wrapper.state('imgLoadError')).to.be.true;
 		});
 
