@@ -395,9 +395,13 @@ const Lookup = React.createClass({
 
 	handleKeyDown (event) {
 		if (event.keyCode) {
-			// If user hits esc key, close menu
+			// If user hits esc key or tab key, close menu
 			if (event.keyCode === KEYS.ESCAPE) {
 				this.handleEscape(event);
+			} else if (event.keyCode === KEYS.TAB) {
+				// remove the focus on input, tab focus shoud move to next tabbale elemnt
+				setTimeout(() => { this.handleClose(); }, 200);
+				this.handleBlur(event);
 			} else {
 				this.handleClick();
 			}

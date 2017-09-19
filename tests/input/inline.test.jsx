@@ -11,7 +11,7 @@ const should = chai.should();
 const { Simulate
 			} = TestUtils;
 
-describe('DataTable: ', function () {
+describe('Inline Edit: ', function () {
 	const sampleValue = 'Sample value';
 
 	const renderInlineEdit = (instance) => function () {
@@ -54,9 +54,9 @@ describe('DataTable: ', function () {
 
 		it('renders the correct value', function () {
 			const staticElement = getStatic(this.dom);
-			const value = staticElement.querySelector('span').innerHTML;
+			const value = staticElement.textContent;
 
-			value.should.be(sampleValue);
+			value.should.equal('Sample valueEdit');
 		});
 	});
 
@@ -80,6 +80,74 @@ describe('DataTable: ', function () {
 
 				should.exist(input);
 				should.not.exist(staticElement);
+			}, 100);
+		});
+	});
+
+	describe('Custom Handler Function', function () {
+		const enterEditModeHanlder = sinon.spy();
+		const leaveEditModeHanlder = sinon.spy();
+		const keyDownHandler = sinon.spy();
+		const keyUpHandler = sinon.spy();
+
+		beforeEach(renderInlineEdit(<InlineEdit id="inline-edit-standard" value={sampleValue} onEnterEditMode={enterEditModeHanlder} onLeaveEditMode={leaveEditModeHanlder} onKeyDown={keyDownHandler} onKeyUp={keyUpHandler} />
+		));
+
+		afterEach(removeInlineEdit);
+
+		it('enterEditMode and leaveEditMode handler get called', function () {
+			const trigger = getTrigger(this.dom);
+
+			should.exist(trigger);
+
+			Simulate.click(trigger, {});
+
+			setTimeout(() => {
+				const input = getInput(this.dom);
+				
+				should.exist(input);
+
+				expect(enterEditModeHanlder.callCount).to.equal(1);
+
+				Simulate.keyDown(input, { key: 'Escape', keyCode: 27, which: 27 });
+
+				setTimeout(() => {
+					const input2 = getInput(this.dom);
+
+					should.not.exist(input2);
+
+					expect(leaveEditModeHanlder.callCount).to.equal(1);
+					expect(leaveEditModeHanlder).to.have.been.called.with(undefined, { cancel: true });
+				}, 100);
+			}, 100);
+		});
+
+		it('keyup and keydown handler get called', function () {
+			const trigger = getTrigger(this.dom);
+
+			should.exist(trigger);
+
+			Simulate.click(trigger, {});
+
+			setTimeout(() => {
+				const input = getInput(this.dom);
+				
+				should.exist(input);
+				
+				input.value = '1';
+				
+				Simulate.change(input);
+				
+				Simulate.keyDown(input, { key: 'Enter', keyCode: 13, which: 13 });
+
+				setTimeout(() => {
+					const input2 = getInput(this.dom);
+
+					should.not.exist(input2);
+
+					expect(keyUpHandler.callCount).to.equal(1);
+					expect(keyDownHandler.callCount).to.equal(1);
+				}, 100);
 			}, 100);
 		});
 	});

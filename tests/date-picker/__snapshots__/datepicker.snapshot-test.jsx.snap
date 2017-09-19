@@ -77,6 +77,7 @@ exports[`Datepicker
         onMouseLeave={undefined}
         tabIndex={undefined}
         title={undefined}
+        type="button"
       >
         <svg
           aria-hidden="true"
@@ -130,6 +131,7 @@ exports[`Datepicker
               onMouseLeave={undefined}
               tabIndex={undefined}
               title={undefined}
+              type="button"
             >
               <svg
                 aria-hidden="true"
@@ -181,6 +183,7 @@ exports[`Datepicker
               onMouseLeave={undefined}
               tabIndex={undefined}
               title={undefined}
+              type="button"
             >
               <svg
                 aria-hidden="true"
@@ -218,6 +221,7 @@ exports[`Datepicker
                 id="CUSTOM-ID-year-picklist"
                 onClick={[Function]}
                 tabIndex={0}
+                type="button"
               >
                 <span
                   className="slds-truncate"
@@ -977,6 +981,7 @@ exports[`Datepicker
         onMouseLeave={undefined}
         tabIndex={undefined}
         title={undefined}
+        type="button"
       >
         <svg
           aria-hidden="true"
@@ -1030,6 +1035,7 @@ exports[`Datepicker
               onMouseLeave={undefined}
               tabIndex={undefined}
               title={undefined}
+              type="button"
             >
               <svg
                 aria-hidden="true"
@@ -1081,6 +1087,7 @@ exports[`Datepicker
               onMouseLeave={undefined}
               tabIndex={undefined}
               title={undefined}
+              type="button"
             >
               <svg
                 aria-hidden="true"
@@ -1118,6 +1125,7 @@ exports[`Datepicker
                 id="sample-datepicker-year-picklist"
                 onClick={[Function]}
                 tabIndex={0}
+                type="button"
               >
                 <span
                   className="slds-truncate"
@@ -1875,6 +1883,7 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
         onMouseLeave={undefined}
         tabIndex={undefined}
         title={undefined}
+        type="button"
       >
         <svg
           aria-hidden="true"
@@ -1928,6 +1937,7 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
               onMouseLeave={undefined}
               tabIndex={undefined}
               title={undefined}
+              type="button"
             >
               <svg
                 aria-hidden="true"
@@ -1979,6 +1989,7 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
               onMouseLeave={undefined}
               tabIndex={undefined}
               title={undefined}
+              type="button"
             >
               <svg
                 aria-hidden="true"
@@ -2016,6 +2027,7 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
                 id="sample-datepicker-year-picklist"
                 onClick={[Function]}
                 tabIndex={0}
+                type="button"
               >
                 <span
                   className="slds-truncate"
@@ -2714,20 +2726,20 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
 exports[`Datepicker Default HTML Snapshot 1`] = `
 "<div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click ignore-react-onclickoutside slds-is-open\\">
   <div class=\\"slds-form-element\\">
-    <div class=\\"slds-form-element__control slds-input-has-icon slds-input-has-icon--right\\"><input type=\\"text\\" class=\\"slds-input\\" id=\\"sample-datepicker\\" placeholder=\\"Pick a Date\\" value=\\"7/23/2014\\" /><button aria-expanded=\\"true\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon slds-input__icon slds-input__icon--right\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#event\\"></use></svg><span class=\\"slds-assistive-text\\">Open Calendar</span></button></div>
+    <div class=\\"slds-form-element__control slds-input-has-icon slds-input-has-icon--right\\"><input type=\\"text\\" class=\\"slds-input\\" id=\\"sample-datepicker\\" placeholder=\\"Pick a Date\\" value=\\"7/23/2014\\" /><button aria-expanded=\\"true\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon slds-input__icon slds-input__icon--right\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#event\\"></use></svg><span class=\\"slds-assistive-text\\">Open Calendar</span></button></div>
   </div>
   <div class=\\"slds-datepicker slds-dropdown slds-dropdown--left\\">
     <div class=\\"\\" aria-hidden=\\"false\\" data-selection=\\"single\\">
       <div class=\\"slds-datepicker__filter slds-grid\\">
         <div class=\\"slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-grow\\">
-          <div class=\\"slds-align-middle\\"><button class=\\"slds-button slds-button--icon-container\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Previous month</span></button></div>
+          <div class=\\"slds-align-middle\\"><button class=\\"slds-button slds-button--icon-container\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg><span class=\\"slds-assistive-text\\">Previous month</span></button></div>
           <h2
             id=\\"sample-datepicker-month\\" class=\\"slds-align-middle\\" aria-live=\\"assertive\\" aria-atomic=\\"true\\">July <span class=\\"slds-assistive-text\\">2014</span></h2>
-            <div class=\\"slds-align-middle\\"><button class=\\"slds-button slds-button--icon-container\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#right\\"></use></svg><span class=\\"slds-assistive-text\\">Next month</span></button></div>
+            <div class=\\"slds-align-middle\\"><button class=\\"slds-button slds-button--icon-container\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#right\\"></use></svg><span class=\\"slds-assistive-text\\">Next month</span></button></div>
         </div>
         <div class=\\"slds-form-element\\">
           <div class=\\"slds-form-element slds-picklist--fluid slds-shrink-none\\">
-            <div class=\\"slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click slds-picklist--fluid slds-shrink-none\\"><button aria-haspopup=\\"true\\" class=\\"slds-button slds-button--neutral slds-picklist__label\\" id=\\"sample-datepicker-year-picklist\\" tabindex=\\"0\\"><span class=\\"slds-truncate\\">2014</span><span><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span></button></div>
+            <div class=\\"slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click slds-picklist--fluid slds-shrink-none\\"><button aria-haspopup=\\"true\\" class=\\"slds-button slds-button--neutral slds-picklist__label\\" id=\\"sample-datepicker-year-picklist\\" tabindex=\\"0\\" type=\\"button\\"><span class=\\"slds-truncate\\">2014</span><span><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span></button></div>
             <div
               id=\\"listbox-selections-unique-id\\" orientation=\\"horizontal\\" role=\\"listbox\\">
               <ul class=\\"slds-listbox slds-listbox_inline slds-p-top_xxx-small\\" role=\\"group\\" aria-label=\\"Selected Options:\\"></ul>

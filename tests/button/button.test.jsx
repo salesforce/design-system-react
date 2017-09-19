@@ -128,6 +128,28 @@ describe('SLDSButton: ', () => {
 		});
 	});
 
+	describe('External Path Icon Button renders', () => {
+		let cmp;
+		let use;
+		let svgHref;
+
+		before(() => {
+			cmp = getButton({
+				assistiveText: 'announcement',
+				variant: 'icon',
+				iconPath: '/assets/icons/utility-sprite/svg/symbols.svg#announcement',
+				iconSize: 'large',
+				iconVariant: 'bare'
+			});
+			use = findRenderedDOMComponentWithTag(cmp, 'use');
+			svgHref = use.getAttribute('xlink:href');
+		});
+
+		it('renders svg', () => {
+			expect(svgHref).to.equal('/assets/icons/utility-sprite/svg/symbols.svg#announcement');
+		});
+	});
+
 	describe('Button Clickable', () => {
 		let cmp;
 		let btn;
