@@ -2,7 +2,7 @@
 import React from 'react';
 import Combobox from '~/components/combobox';
 import Icon from '~/components/icon';
-import comboboxFilter from '~/components/combobox/filter';
+import comboboxFilterAndLimit from '~/components/combobox/filter';
 
 const accounts = [
 	{ id: '1', label: 'Acme', subTitle: 'Account • San Francisco', type: 'account' },
@@ -73,7 +73,7 @@ class Example extends React.Component {
 					label: 'Search',
 					placeholder: 'Search Salesforce'
 				}}
-				options={comboboxFilter({
+				options={comboboxFilterAndLimit({
 					inputValue: this.state.inputValue,
 					options: accountsWithIcon,
 					selection: this.state.selection

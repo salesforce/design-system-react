@@ -35,8 +35,8 @@ export Checkbox from './forms/checkbox';
 export SLDSCombobox from './combobox';
 export Combobox from './combobox';
 
-export SLDSComboboxFilter from './combobox/filter';
-export comboboxFilter from './combobox/filter';
+export SLDSComboboxFilterAndLimit from './combobox/filter';
+export comboboxFilterAndLimit from './combobox/filter';
 
 export SLDSGlobalHeader from './global-header';
 export GlobalHeader from './global-header';

@@ -51,9 +51,13 @@ const propTypes = {
 		selectedListboxLabel: PropTypes.string
 	}),
 	/**
-	 * CSS classes to be added to tag with `slds-combobox`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
+	 * CSS classes to be added to tag with `.slds-combobox`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	/**
+	 * CSS classes to be added to tag with `.slds-dropdown`. Uses `classNames` [API](https://github.com/JedWatson/classnames). Autocomplete/bass variant menu height should not scroll and should be determined by number items which should be no more than 10.
+	 */
+	classNameMenu: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
 	 * Event Callbacks
 	 * * `onBlur`: Called when `input` removes focus.
@@ -120,6 +124,10 @@ const propTypes = {
 	 */
 	options: PropTypes.array.isRequired,
 	/**
+	 * Determines the height of the menu based on SLDS CSS classes. This only applies to the readonly variant. This is a `number`.
+	 */
+	readOnlyMenuItemVisibleLength: PropTypes.oneOf([5, 7, 10]),
+	/**
 	 * Limits auto-complete input submission to one of the provided options. _Tested with mocha testing._
 	 */
 	predefinedOptionsOnly: PropTypes.bool,
@@ -150,6 +158,7 @@ const defaultProps = {
 		placeholderReadOnly: 'Select an Option',
 		removePillTitle: 'Remove'
 	},
+	readOnlyMenuItemVisibleLength: 5,
 	selection: [],
 	variant: 'base'
 };
@@ -338,10 +347,14 @@ class Combobox extends React.Component {
 				assistiveText={assistiveText}
 				activeOption={this.state.activeOption}
 				activeOptionIndex={this.state.activeOptionIndex}
-				labels={labels}
+				className={this.props.classNameMenu}
 				inputId={this.getId()}
 				inputValue={this.props.value}
 				isSelected={this.isSelected}
+				itemVisibleLength={this.props.variant === 'readonly'
+					? this.props.readOnlyMenuItemVisibleLength
+					: null}
+				labels={labels}
 				options={this.props.options}
 				onSelect={this.handleSelect}
 				clearActiveOption={this.clearActiveOption}
@@ -386,10 +399,13 @@ class Combobox extends React.Component {
 
 	handleSelect = (event, { selection, option }) => {
 		let newSelection;
+		const isSelected = this.isSelected({ selection, option });
+		const singleSelectAndSelectedWasNotClicked = !this.props.multiple && !isSelected;
+		const multiSelectAndSelectedWasNotClicked = this.props.multiple && !isSelected;
 
-		if (!this.props.multiple) {
+		if (singleSelectAndSelectedWasNotClicked) {
 			newSelection = [option];
-		} else if (!this.isSelected({ selection, option })) {
+		} else if (multiSelectAndSelectedWasNotClicked) {
 			newSelection = [...this.props.selection, option];
 		} else {
 			newSelection = reject(this.props.selection, option);
@@ -425,7 +441,7 @@ class Combobox extends React.Component {
 	handleInputSubmit = (event) => {
 		// use menu options
 		if (this.getIsActiveOption()) {
-			this.handleSelect(event, { option: this.state.activeOption });
+			this.handleSelect(event, { option: this.state.activeOption, selection: this.props.selection });
 			// use input value, if not limited to predefined options (in the menu)
 		} else if (!this.props.predefinedOptionsOnly
 				&& event.target.value !== ''
@@ -585,8 +601,6 @@ class Combobox extends React.Component {
 						autoComplete="off"
 						className="slds-combobox__input"
 						containerProps={{
-							'aria-expanded': this.getIsOpen(),
-							'aria-haspopup': 'listbox',
 							className: 'slds-combobox__form-element',
 							role: 'none'
 						}}
@@ -955,7 +969,7 @@ class Combobox extends React.Component {
 							: this.getDialog({ menuRenderer: this.renderMenu({ assistiveText, labels }) })}
 					</div>
 				</div>
-				{props.selection.length > 1 ? <SelectedListBox
+				<SelectedListBox
 					activeOption={this.state.activeSelectedOption}
 					activeOptionIndex={this.state.activeSelectedOptionIndex}
 					assistiveText={assistiveText}
@@ -972,8 +986,8 @@ class Combobox extends React.Component {
 					selection={props.selection}
 					listboxHasFocus={this.state.listboxHasFocus}
 					variant={this.props.variant}
+					renderAtSelectionLength={2}
 				/>
-				: null}
 			</div>
 		);
 	}

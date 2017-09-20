@@ -57,6 +57,10 @@ const propTypes = {
 		title: PropTypes.string
 	}),
 	/**
+	 * Changes styles of the input. Currently `entity` is not supported.
+	 */
+	renderAtSelectionLength: PropTypes.number,
+	/**
 	 * Accepts an array of item objects.
 	 */
 	selection: PropTypes.array,
@@ -65,15 +69,17 @@ const propTypes = {
 	 */
 	listboxHasFocus: PropTypes.bool,
 	/**
-		 * Changes styles of the input. Currently `entity` is not supported.
-		 */
+	 * Changes styles of the input. Currently `entity` is not supported.
+	 */
 	variant: PropTypes.oneOf(['base', 'inline-listbox', 'readonly'])
 };
 
-const defaultProps = {};
+const defaultProps = {
+	renderAtSelectionLength: 1
+};
 
 const SelectedListBox = (props) => (
-	props.selection.length ? <div // eslint-disable-line jsx-a11y/role-supports-aria-props
+	props.selection.length >= props.renderAtSelectionLength ? <div // eslint-disable-line jsx-a11y/role-supports-aria-props
 		id={`${props.id}-selected-listbox`}
 		role="listbox"
 		aria-orientation="horizontal"

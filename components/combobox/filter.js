@@ -2,7 +2,10 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 import escapeRegExp from 'lodash.escaperegexp';
 
-const	filter = ({ options, inputValue, selection }) =>
+/**
+ * SLDS recommends auto-complete/search inputs menus have a limit of 10 items.
+ */
+const	filter = ({ inputValue, limit = 10, options, selection }) =>
 	options.filter((option) => {
 		const searchTermFound = option.label.match(new RegExp(escapeRegExp(inputValue), 'ig'));
 		const isSection = option.data && option.data.type === 'section';
@@ -14,6 +17,6 @@ const	filter = ({ options, inputValue, selection }) =>
 			|| searchTermFound
 		)
 			&& notAlreadySelected;
-	});
+	}).splice(0, limit);
 
 export default filter;
