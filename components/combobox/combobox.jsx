@@ -427,7 +427,9 @@ class Combobox extends React.Component {
 		if (this.getIsActiveOption()) {
 			this.handleSelect(event, { option: this.state.activeOption });
 			// use input value, if not limited to predefined options (in the menu)
-		} else if (!this.props.predefinedOptionsOnly && this.props.events.onSubmit) {
+		} else if (!this.props.predefinedOptionsOnly
+				&& event.target.value !== ''
+				&& this.props.events.onSubmit) {
 			this.props.events.onSubmit(event, {
 				value: event.target.value
 			});

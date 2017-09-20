@@ -19,7 +19,7 @@ const propTypes = {
 	/*
 	 * The index of the option object within the selection prop that should have focus.
 	 */
-	activeOptionIndex: PropTypes.object,
+	activeOptionIndex: PropTypes.number,
 	/**
 	 * **Assistive text for accessibility**
 	 * This object is merged with the default props object on every render.

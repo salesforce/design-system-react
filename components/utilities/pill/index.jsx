@@ -49,7 +49,7 @@ const propTypes = {
 	 * Pill Label
 	 */
 	labels: shape({
-		label: PropTypes.string,
+		label: PropTypes.string.isRequired,
 		removeTitle: PropTypes.string
 	}),
 	/*
