@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 import Panel from '~/components/panel'; // `~` is replaced with design-system-react at runtime
@@ -16,7 +17,7 @@ const options = {
 	]
 };
 
-const Example = React.createClass({
+const Example = createReactClass({
 	displayName: 'FilterExample',
 
 	propTypes () {

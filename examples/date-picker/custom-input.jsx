@@ -1,9 +1,10 @@
 /* eslint-disable no-console, react/prop-types */
 import React from 'react';
+import createReactClass from 'create-react-class';
 import Datepicker from '~/components/date-picker';
 import Input from '~/components/forms/input';
 
-const Example = React.createClass({
+const Example = createReactClass({
 	displayName: 'DatepickerExample',
 
 	getInitialState () {

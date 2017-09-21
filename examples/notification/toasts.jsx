@@ -1,8 +1,9 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import Notification from '~/components/notification';  // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 
-const Example = React.createClass({
+const Example = createReactClass({
 	displayName: 'NotificationExample',
 	
 	getInitialState () {

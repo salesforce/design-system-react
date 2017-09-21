@@ -12,6 +12,7 @@
 
 // ### React
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### assign
@@ -34,7 +35,7 @@ import { FILTER } from '../../utilities/constants';
 /**
  * A Filter is a popover with custom trigger. It can be used by [Panel Filtering](/components/panels/). Menus within a Filter Popover will need to not have "portal mounts" and be inline.
  */
-const Filter = React.createClass({
+const Filter = createReactClass({
 	displayName: FILTER,
 
 	propTypes: {

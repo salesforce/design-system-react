@@ -9,6 +9,7 @@
 
 // ### React
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### isFunction
@@ -28,7 +29,7 @@ import { FORMS_INLINE_EDIT } from '../../../utilities/constants';
 /**
  * An inline input is rendered as a label by default. When clicked (or tabbed in), it's rendered as an input. When the focus is lost, the current input value is saved and the input is rendered as a label again.
  */
-const InlineEdit = React.createClass({
+const InlineEdit = createReactClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: FORMS_INLINE_EDIT,

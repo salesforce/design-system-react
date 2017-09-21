@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import { storiesOf, action } from '@kadira/storybook';
 
@@ -153,7 +154,7 @@ const getTabsScoped = () => (
 );
 /* eslint-enable react/display-name */
 
-const DemoTabsConditional = React.createClass({
+const DemoTabsConditional = createReactClass({
 	displayName: 'DemoTabsConditional',
 
 	// ### Prop Types
@@ -262,7 +263,7 @@ const DemoTabsConditional = React.createClass({
 	}
 });
 
-const DemoTabsOutsideControl = React.createClass({
+const DemoTabsOutsideControl = createReactClass({
 	displayName: 'DemoTabsOutsideControl',
 
 	// ### Prop Types
@@ -496,7 +497,7 @@ const getCustomContentTabs = () => {
 };
 /* eslint-enable react/display-name */
 
-const DemoTabsInterceptSelect = React.createClass({
+const DemoTabsInterceptSelect = createReactClass({
 	displayName: 'DemoTabsInterceptSelect',
 
 	getInitialState () {

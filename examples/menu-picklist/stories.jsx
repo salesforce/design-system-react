@@ -2,6 +2,7 @@
 /* eslint-disable react/display-name */
 
 import React from 'react';
+import createReactClass from 'create-react-class';
 import { storiesOf, action } from '@kadira/storybook';
 
 import { MENU_PICKLIST } from '../../utilities/constants';
@@ -27,7 +28,7 @@ const getPicklist = (props) => (
 	</div>
 );
 
-const MultipleExample = React.createClass({
+const MultipleExample = createReactClass({
 	displayName: 'MultiplePicklistExample',
 
 	getInitialState () {
