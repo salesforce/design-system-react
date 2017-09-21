@@ -100,7 +100,7 @@ const SelectedListBox = (props) => (
 					&& isEqual(option, props.activeOption);
 				const listboxRenderedForFirstTime = props.selection.length === 1
 				|| (props.variant === 'readonly'
-					&& props.selection.length === 2
+					&& props.selection.length !== 1
 					&& index === 0);
 				const active = setActiveBasedOnstateFromParent || listboxRenderedForFirstTime;
 				const icon = option.icon
