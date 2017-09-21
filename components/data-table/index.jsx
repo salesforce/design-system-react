@@ -257,7 +257,11 @@ const DataTable = React.createClass({
 				<tbody>
 					{numRows > 0
 						? this.props.items.map((item) => {
-							const rowId = `${this.props.id}-${DATA_TABLE_ROW}-${item.id}` || shortid.generate();
+							const rowId = item.id ?
+								`${this.props.id}-${DATA_TABLE_ROW}-${item.id}` :
+								`${DATA_TABLE_ROW}-${shortid.generate()}`;
+							console.log(rowId);
+
 							return (
 								<DataTableRow
 									assistiveTextForSelectRow={this.props.assistiveTextForSelectRow}
