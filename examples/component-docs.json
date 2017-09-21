@@ -739,6 +739,27 @@
                 "required": false,
                 "description": "Write <code>\"-1\"</code> if you don't want the user to tab to the button."
             },
+            "type": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'reset'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'submit'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'button'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Button type"
+            },
             "title": {
                 "type": {
                     "name": "string"
@@ -3053,6 +3074,20 @@
                 },
                 "required": false,
                 "description": "This event fires when the input changes."
+            },
+            "onEnterEditMode": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Function will run when we enter edit mode"
+            },
+            "onLeaveEditMode": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Function will run when we leave edit mode"
             },
             "type": {
                 "type": {

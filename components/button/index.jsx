@@ -111,6 +111,10 @@ const Button = React.createClass({
 		 */
 		tabIndex: PropTypes.string,
 		/**
+		 * Button type
+		 */
+		type: PropTypes.oneOf(['reset', 'submit', 'button']),
+		/**
 		 * HTML title attribute
 		 */
 		title: PropTypes.string,
@@ -124,6 +128,7 @@ const Button = React.createClass({
 			iconSize: 'medium',
 			iconCategory: 'utility',
 			responsive: false,
+			type: 'button',
 			variant: 'neutral'
 		};
 	},
@@ -229,10 +234,11 @@ const Button = React.createClass({
 				}}
 				tabIndex={this.props.tabIndex}
 				title={this.props.title}
+				type={this.props.type}
 			>
 				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
 
-				{this.props.iconName ? this.renderIcon(this.props.iconName) : null}
+				{this.props.iconName || this.props.iconPath ? this.renderIcon(this.props.iconName) : null}
 				{this.props.iconVariant === 'more'
 				? <ButtonIcon	category="utility" name="down" size="x-small" />
 				: null}

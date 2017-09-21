@@ -95,6 +95,7 @@ const DatepickerMonthNavigation = React.createClass({
 								this.props.previousMonthRef(component);
 							}}
 							variant="icon"
+							type="button"
 						/>
 					</div>
 					<h2
@@ -111,6 +112,7 @@ const DatepickerMonthNavigation = React.createClass({
 							iconVariant="container"
 							onClick={this.nextMonthClicked}
 							variant="icon"
+							type="button"
 						/>
 					</div>
 				</div>

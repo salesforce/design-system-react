@@ -35,6 +35,12 @@ storiesOf(BUTTON, module)
 		iconName: 'answer',
 		title: 'chat'
 	}))
+	.add('Icon with external path', () => getIconButton({
+		assistiveText: 'Icon',
+		iconSize: 'large',
+		iconPath: '/assets/icons/utility-sprite/svg/symbols.svg#announcement',
+		title: 'announcement'
+	}))
 	.addDecorator((getStory) => (
 		<div className="slds-p-around--medium slds-hint-parent" style={{ backgroundColor: '#16325c' }}>
 			{getStory()}

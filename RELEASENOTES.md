@@ -30,6 +30,11 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.6.21
+**Bugfix Changes**
+
+- Allow Button Icon to accept external path for Icon
+
 ## Release 0.6.20
 **Minor Changes**
 

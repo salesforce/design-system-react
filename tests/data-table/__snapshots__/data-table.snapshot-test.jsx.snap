@@ -75,7 +75,8 @@ exports[`DataTable Advanced HTML Snapshot 1`] = `
           <div class=\\"slds-truncate\\" title=\\"jrogers@acme.com\\"><a href=\\"javascript:void(0);\\">jrogers@acme.com</a></div>
         </td>
         <td class=\\"\\" data-label=\\"Actions\\" style=\\"width:3.25rem;\\">
-          <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-border-filled slds-button--icon-small ignore-click-DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions slds-button--icon-x-small\\" tabindex=\\"0\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Actions</span></button></div>
+          <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-border-filled slds-button--icon-small ignore-click-DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions slds-button--icon-x-small\\" tabindex=\\"0\\"
+              type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Actions</span></button></div>
         </td>
       </tr>
       <tr class=\\"slds-hint-parent\\">
@@ -111,7 +112,8 @@ exports[`DataTable Advanced HTML Snapshot 1`] = `
           <div class=\\"slds-truncate\\" title=\\"bob@acme.com\\"><a href=\\"javascript:void(0);\\">bob@acme.com</a></div>
         </td>
         <td class=\\"\\" data-label=\\"Actions\\" style=\\"width:3.25rem;\\">
-          <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-border-filled slds-button--icon-small ignore-click-DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions slds-button--icon-x-small\\" tabindex=\\"0\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Actions</span></button></div>
+          <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-border-filled slds-button--icon-small ignore-click-DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions slds-button--icon-x-small\\" tabindex=\\"0\\"
+              type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Actions</span></button></div>
         </td>
       </tr>
       <tr class=\\"slds-hint-parent slds-is-selected\\">
@@ -147,7 +149,8 @@ exports[`DataTable Advanced HTML Snapshot 1`] = `
           <div class=\\"slds-truncate\\" title=\\"nathan@salesforce.com\\"><a href=\\"javascript:void(0);\\">nathan@salesforce.com</a></div>
         </td>
         <td class=\\"\\" data-label=\\"Actions\\" style=\\"width:3.25rem;\\">
-          <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-border-filled slds-button--icon-small ignore-click-DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions slds-button--icon-x-small\\" tabindex=\\"0\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Actions</span></button></div>
+          <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-border-filled slds-button--icon-small ignore-click-DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions slds-button--icon-x-small\\" tabindex=\\"0\\"
+              type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Actions</span></button></div>
         </td>
       </tr>
     </tbody>
