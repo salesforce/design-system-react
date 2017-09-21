@@ -52,7 +52,7 @@ const defaultProps = {
 };
 
 /**
- * A radio input that is nested inside a RadioButtonGroup.
+ * A radio input, usually part of a group that can have a single input checked at any one time.
  */
 class Radio extends React.Component {
 
