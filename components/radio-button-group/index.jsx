@@ -71,7 +71,7 @@ class RadioButtonGroup extends React.Component {
 		super(props);
 
 		// Merge objects of strings with their default object
-		this.labels = this.props ? assign({}, defaultProps.labels, this.props.labels) : defaultProps.labels;
+		this.labels = this.props.labels ? assign({}, defaultProps.labels, this.props.labels) : defaultProps.labels;
 
 		this.generatedName = shortid.generate();
 		this.generatedErrorId = this.labels.error ? shortid.generate() : null;

@@ -1629,6 +1629,109 @@
         "SLDS-component-path": "/components/forms/#flavor-checkbox",
         "dependencies": []
     },
+    "radio": {
+        "description": "A radio input that is nested inside a RadioButtonGroup.",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "aria-describedby": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The ID of an element that describes this radio input. Often used for error messages."
+            },
+            "checked": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "This is a controlled component. This radio is checked according to this value."
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disable this radio input."
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "A unique ID that is used to associating a label to the `input` element. This ID is added to the `input` element."
+            },
+            "label": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "element"
+                        }
+                    ]
+                },
+                "required": true,
+                "description": "The string or element that is shown as both the title and the label for this radio input."
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The name of the radio input group."
+            },
+            "onChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This event fires when the radio selection changes."
+            },
+            "value": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The value of this radio input."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'button-group'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Variant of the Radio button. Base is the default and button-group makes the radio button look like a normal button (should be a child of <RadioButtonGroup>).",
+                "defaultValue": {
+                    "value": "'base'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "radios",
+        "display-name": "Radios",
+        "SLDS-component-path": "/components/forms/#flavor-radio",
+        "dependencies": []
+    },
     "data-table": {
         "description": "DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.",
         "methods": [
@@ -8827,90 +8930,7 @@
         "route": "radio-button-groups",
         "display-name": "Radio Button Groups",
         "SLDS-component-path": "/components/radio-button-group",
-        "dependencies": [
-            {
-                "radio": {
-                    "description": "A radio input that is nested inside a RadioButtonGroup.",
-                    "methods": [
-                        {
-                            "name": "getId",
-                            "docblock": null,
-                            "modifiers": [],
-                            "params": [],
-                            "returns": null
-                        }
-                    ],
-                    "props": {
-                        "id": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "A unique ID that is used to associating a label to the `input` element. This ID is added to the `input` element."
-                        },
-                        "label": {
-                            "type": {
-                                "name": "union",
-                                "value": [
-                                    {
-                                        "name": "string"
-                                    },
-                                    {
-                                        "name": "element"
-                                    }
-                                ]
-                            },
-                            "required": false,
-                            "description": "The string or element that is shown as both the title and the label for this radio input."
-                        },
-                        "value": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "The value of this radio input."
-                        },
-                        "name": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "The name of the radio input group."
-                        },
-                        "checked": {
-                            "type": {
-                                "name": "bool"
-                            },
-                            "required": false,
-                            "description": "This is a controlled component. This radio is checked according to this value."
-                        },
-                        "onChange": {
-                            "type": {
-                                "name": "func"
-                            },
-                            "required": false,
-                            "description": "This event fires when the radio selection changes."
-                        },
-                        "aria-describedby": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "The ID of an element that describe this radio input."
-                        },
-                        "disabled": {
-                            "type": {
-                                "name": "bool"
-                            },
-                            "required": false,
-                            "description": "Disable this radio input."
-                        }
-                    },
-                    "name": "radio",
-                    "source": "/components/radio-button-group/radio.jsx"
-                }
-            }
-        ]
+        "dependencies": []
     },
     "tooltip": {
         "description": "The PopoverTooltip component is variant of the Lightning Design System Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or an anchor), so that keyboard users can navigate to it.",

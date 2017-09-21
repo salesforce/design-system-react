@@ -20,7 +20,6 @@ export BreadCrumb from './breadcrumb';
 export SLDSBreadcrumb from './breadcrumb';
 export Breadcrumb from './breadcrumb';
 
-
 export SLDSCard from './card';
 export Card from './card';
 
@@ -148,8 +147,9 @@ export SLDSTooltip from './tooltip';
 export SLDSProgressIndicator from './progress-indicator';
 export ProgressIndicator from './progress-indicator';
 
-export SLDSRadio from './radio-button-group/radio';
-export Radio from './radio-button-group/radio';
+export SLDSRadio from './forms/radio';
+export Radio from './forms/radio';
+
 export SLDSRadioButtonGroup from './radio-button-group';
 export RadioButtonGroup from './radio-button-group';
 

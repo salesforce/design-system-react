@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RadioButtonGroup from '~/components/radio-button-group'; // `~` is replaced with design-system-react at runtime
-import Radio from '~/components/radio-button-group/radio'; // `~` is replaced with design-system-react at runtime
+import Radio from '~/components/forms/radio'; // `~` is replaced with design-system-react at runtime
 
 class Example extends React.Component {
 
@@ -23,7 +23,7 @@ class Example extends React.Component {
 					name={this.props.name}
 					errorId={this.props.errorId}
 				>
-					{days.map((day) => <Radio key={day} id={day} label={day} value={day} checked={this.state.checked === day} />)}
+					{days.map((day) => <Radio key={day} id={day} label={day} value={day} checked={this.state.checked === day} variant="button-group" />)}
 				</RadioButtonGroup>
 			</div>
 		);

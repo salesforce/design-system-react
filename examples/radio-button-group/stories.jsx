@@ -6,7 +6,7 @@ import { storiesOf } from '@kadira/storybook';
 import { shape } from 'airbnb-prop-types';
 
 import RadioButtonGroup from '../../components/radio-button-group';
-import Radio from '../../components/radio-button-group/radio';
+import Radio from '../../components/forms/radio';
 import Icon from '../../components/icon';
 
 import { RADIO_BUTTON_GROUP } from '../../utilities/constants';
@@ -31,7 +31,7 @@ class RadioButtonGroupExample extends React.Component {
 					disabled={this.props.disabled}
 					required={this.props.required}
 				>
-					{days.map((day) => <Radio key={day} label={day} value={day} checked={this.state.checked === day} />)}
+					{days.map((day) => <Radio key={day} label={day} value={day} checked={this.state.checked === day} variant="button-group" />)}
 				</RadioButtonGroup>
 			</div>
 		);

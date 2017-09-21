@@ -13,7 +13,7 @@ import { shape } from 'airbnb-prop-types';
 import { createMountNode, destroyMountNode } from '../enzyme-helpers';
 
 import RadioButtonGroup from '../../components/radio-button-group';
-import Radio from '../../components/radio-button-group/radio';
+import Radio from '../../components/forms/radio';
 
 chai.use(chaiEnzyme());
 
@@ -35,7 +35,7 @@ class RadioButtonGroupExample extends React.Component {
 				disabled={this.props.disabled}
 				required={this.props.required}
 			>
-				{days.map((day) => <Radio key={day} label={day} value={day} checked={this.state.checked === day} />)}
+				{days.map((day) => <Radio key={day} label={day} value={day} checked={this.state.checked === day} variant="button-group" />)}
 			</RadioButtonGroup>
 		);
 	}

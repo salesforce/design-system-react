@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Datepicker Base DOM Snapshot 1`] = `
+exports[`Radio Button Group Base DOM Snapshot 1`] = `
 <div>
   <fieldset
     className="slds-form-element"
@@ -142,7 +142,7 @@ exports[`Datepicker Base DOM Snapshot 1`] = `
 </div>
 `;
 
-exports[`Datepicker Base HTML Snapshot 1`] = `
+exports[`Radio Button Group Base HTML Snapshot 1`] = `
 "<div>
   <fieldset class=\\"slds-form-element\\">
     <legend class=\\"slds-form-element__legend slds-form-element__label\\">Day of week</legend>
@@ -159,7 +159,7 @@ exports[`Datepicker Base HTML Snapshot 1`] = `
 </div>"
 `;
 
-exports[`Datepicker Disabled DOM Snapshot 1`] = `
+exports[`Radio Button Group Disabled DOM Snapshot 1`] = `
 <div>
   <fieldset
     className="slds-form-element"
@@ -301,7 +301,7 @@ exports[`Datepicker Disabled DOM Snapshot 1`] = `
 </div>
 `;
 
-exports[`Datepicker Required DOM Snapshot 1`] = `
+exports[`Radio Button Group Required DOM Snapshot 1`] = `
 <div>
   <fieldset
     className="slds-form-element"

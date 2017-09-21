@@ -227,6 +227,12 @@
       "SLDS-component-path": "/components/forms/#flavor-checkbox"
     },
     {
+      "component": "forms/radio",
+      "status": "prod",
+      "display-name": "Radios",
+      "SLDS-component-path": "/components/forms/#flavor-radio"
+    },
+    {
       "component": "data-table",
       "status": "prod",
       "display-name": "Data Tables",
@@ -422,12 +428,7 @@
       "component": "radio-button-group",
       "status": "prod",
       "display-name": "Radio Button Groups",
-      "SLDS-component-path": "/components/radio-button-group",
-      "dependencies": [
-        {
-          "component": "radio"
-        }
-      ]
+      "SLDS-component-path": "/components/radio-button-group"
     },
     {
       "component": "tooltip",
