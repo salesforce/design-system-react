@@ -124,6 +124,9 @@ const documentationSiteLiveExamples = {
 	'progress-indicator': [
 		require('raw-loader!design-system-react/examples/progress-indicator/default.jsx')
 	],
+	'radio-button-group': [
+		require('raw-loader!design-system-react/examples/radio-button-group/base.jsx')
+	],
 	tabs: [
 		require('raw-loader!design-system-react/examples/tabs/default.jsx'),
 		require('raw-loader!design-system-react/examples/tabs/scoped.jsx')
