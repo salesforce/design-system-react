@@ -56,6 +56,10 @@ const MultipleExample = React.createClass({
 				multiple
 				onSelect={this.handleSelect}
 				options={options}
+				onPillRemove={(removedItem, data) => {
+					console.log("data.option.label: '" + data.option.label + "' data.option.value: '" + data.option.value + "'");
+					this.handleSelect(removedItem, data);
+				}}
 			/>
 		);
 	}
