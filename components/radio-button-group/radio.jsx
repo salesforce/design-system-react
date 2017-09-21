@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import shortid from 'shortid';
 import classNames from 'classnames';
 
-import { RADIO } from '../../../utilities/constants';
+import { RADIO } from '../../utilities/constants';
 
 const propTypes = {
 	/**

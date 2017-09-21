@@ -6,7 +6,7 @@ import { storiesOf } from '@kadira/storybook';
 import { shape } from 'airbnb-prop-types';
 
 import RadioButtonGroup from '../../components/radio-button-group';
-import Radio from '../../components/forms/radio';
+import Radio from '../../components/radio-button-group/radio';
 import Icon from '../../components/icon';
 
 import { RADIO_BUTTON_GROUP } from '../../utilities/constants';

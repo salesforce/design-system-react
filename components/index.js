@@ -147,8 +147,8 @@ export SLDSTooltip from './tooltip';
 export SLDSProgressIndicator from './progress-indicator';
 export ProgressIndicator from './progress-indicator';
 
-export SLDSRadio from './forms/radio';
-export Radio from './forms/radio';
+export SLDSRadio from './radio-button-group/radio';
+export Radio from './radio-button-group/radio';
 
 export SLDSRadioButtonGroup from './radio-button-group';
 export RadioButtonGroup from './radio-button-group';

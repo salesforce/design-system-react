@@ -13,7 +13,7 @@ import { shape } from 'airbnb-prop-types';
 import { createMountNode, destroyMountNode } from '../enzyme-helpers';
 
 import RadioButtonGroup from '../../components/radio-button-group';
-import Radio from '../../components/forms/radio';
+import Radio from '../../components/radio-button-group/radio';
 
 chai.use(chaiEnzyme());
 
