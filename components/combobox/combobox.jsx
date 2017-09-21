@@ -590,6 +590,8 @@ class Combobox extends React.Component {
 					)}
 					aria-expanded={this.getIsOpen()}
 					aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
+					// used on menu's listbox
+					aria-owns={`${this.getId()}-listbox`} // eslint-disable-line jsx-a11y/aria-proptypes
 					role="combobox"
 				>
 					<InnerInput
