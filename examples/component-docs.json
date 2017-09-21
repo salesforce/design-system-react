@@ -6883,6 +6883,13 @@
                 "required": false,
                 "description": "Triggered when an item is selected. Passes in the option object that has been selected and a data object in the format: `{ option, optionIndex }`. The first parameter may be deprecated in the future and changed to an event for consistency. Please use the data object."
             },
+            "onPillRemove": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when a pill is removed. Passes in the option object that has been removed and a data object in the format: `{ option, optionIndex }`. The first parameter may be deprecated in the future and changed to an event for consistency. Please use the data object."
+            },
             "options": {
                 "type": {
                     "name": "array"
