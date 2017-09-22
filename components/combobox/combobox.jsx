@@ -189,20 +189,28 @@ class Combobox extends React.Component {
 		this.generatedId = shortid.generate();
 	}
 
-	componentWillReceiveProps (nextProps, prevProps) {
+	componentWillReceiveProps (nextProps) {
 		// This logic will maintain the active highlight even when the
 		// option order changes. One example would be the server pushes
 		// data out as the user has the menu open. This logic clears
 		// `activeOption` if the active option is no longer in the options
 		// list. If it's in the options list, then find the new index and
 		// set `activeOptionIndex`
-		if (!isEqual(prevProps.options, nextProps.options)) {
+		if (!isEqual(this.props.options, nextProps.options)) {
 			const index = nextProps.options.findIndex((item) => isEqual(item, this.state.activeOption));
 			if (index !== -1) {
 				this.setState({ activeOptionIndex: index });
 			} else {
 				this.setState({ activeOption: undefined, activeOptionIndex: -1 });
 			}
+		}
+
+		// there may be issues with tabindex/focus if the app removes an item
+		// from selection while the user is using the listbox
+		const selectedOptionsRenderIsInitialRender = this.props.selection && this.props.selection.length === 0
+						&& nextProps.selection.length > 0;
+		if (selectedOptionsRenderIsInitialRender) {
+			this.setState({ activeSelectedOption: nextProps.selection[0], activeSelectedOptionIndex: 0 });
 		}
 	}
 

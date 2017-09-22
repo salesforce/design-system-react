@@ -95,13 +95,14 @@ const SelectedListBox = (props) => (
 			role="group"
 			aria-label={props.assistiveText.selectedListboxLabel}
 		>
-			{props.selection.map((option, index) => {
-				const setActiveBasedOnstateFromParent = index === props.activeOptionIndex
+			{props.selection.map((option, renderIndex) => {
+				const setActiveBasedOnstateFromParent = renderIndex === props.activeOptionIndex
 					&& isEqual(option, props.activeOption);
-				const listboxRenderedForFirstTime = props.selection.length === 1
+				const listboxRenderedForFirstTime =
+				(props.activeOptionIndex === -1 && renderIndex === 0)
 				|| (props.variant === 'readonly'
 					&& props.selection.length !== 1
-					&& index === 0);
+					&& renderIndex === 0);
 				const active = setActiveBasedOnstateFromParent || listboxRenderedForFirstTime;
 				const icon = option.icon
 					? React.cloneElement(option.icon, {
@@ -123,12 +124,12 @@ const SelectedListBox = (props) => (
 							events={{
 								onBlur: props.events.onBlurPill,
 								onClick: (event, data) => {
-									props.events.onClickPill(event, { ...data, index });
+									props.events.onClickPill(event, { ...data, index: renderIndex });
 								},
 								onRequestFocusOnNextPill: props.events.onRequestFocusOnNextPill,
 								onRequestFocusOnPreviousPill: props.events.onRequestFocusOnPreviousPill,
 								onRequestRemove: (event, data) => {
-									props.events.onRequestRemove(event, { ...data, index });
+									props.events.onRequestRemove(event, { ...data, index: renderIndex });
 								},
 								onRequestFocus: props.events.onRequestFocus
 							}}
