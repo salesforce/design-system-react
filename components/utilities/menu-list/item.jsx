@@ -32,6 +32,7 @@ const ListItem = React.createClass({
 	displayName: LIST_ITEM,
 
 	propTypes: {
+		'aria-disabled': PropTypes.bool,
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		checkmark: PropTypes.bool,
 		data: PropTypes.object,
@@ -177,6 +178,7 @@ const ListItem = React.createClass({
 					>
 						{/* eslint-disable jsx-a11y/role-supports-aria-props */}
 						<a
+							aria-disabled={this.props['aria-disabled']}
 							href={this.props.href}
 							data-index={this.props.index}
 							onClick={this.handleClick}

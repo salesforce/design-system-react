@@ -17,7 +17,7 @@ const options = [
 		label: 'A Header',
 		type: 'header'
 	},
-	{ label: 'An option that is Super Super Long', value: 'A0' },
+	{ disabled: true, label: 'An option that is Super Super Long', value: 'A0' },
 	{ label: 'Custom Class', className: 'custom-item-class', value: 'classssss' },
 	{
 		href: 'http://sfdc.co/',
@@ -59,7 +59,8 @@ const DropdownControlled = React.createClass({
 
 	getInitialState () {
 		return {
-			forcedState: undefined
+			forcedState: undefined,
+			menuOptions: options
 		};
 	},
 
@@ -77,6 +78,13 @@ const DropdownControlled = React.createClass({
 		this.setState({ forcedState: false });
 	},
 
+	toggleDisabledOption () {
+			this.setState((prevState, props) => {
+				prevState.menuOptions.splice(1, 1, { disabled: false, label: 'An option that is Super Super Long', value: 'A0' });
+				return { options: prevState.menuOptions };
+			});
+	},
+
 	render () {
 		return (
 			<div className="slds-grid">
@@ -88,13 +96,14 @@ const DropdownControlled = React.createClass({
 						isOpen={this.state.forcedState}
 						onClose={action('Attempt Close')}
 						onOpen={action('Attempt Open')}
-						options={options}
+						options={this.state.menuOptions}
 					/>
 				</div>
 				<div className="slds-col">
 					<Button label="Force Open Dropdown" onClick={this.handleOpen} />
 					<Button label="Force Close Dropdown" onClick={this.handleClose} />
 					<Button label="Reset Dropdown" onClick={this.handleButtonClickReset} />
+					<Button label="Toggle Option A disabled" onClick={this.toggleDisabledOption} />
 				</div>
 			</div>
 		);

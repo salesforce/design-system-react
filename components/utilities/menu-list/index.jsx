@@ -95,6 +95,7 @@ const List = React.createClass({
 						return (
 							<ListItem
 								{...option}
+								aria-disabled={option.disabled}
 								checkmark={this.props.checkmark && (isSingleSelected || isMultipleSelected)}
 								data={option}
 								id={id}
