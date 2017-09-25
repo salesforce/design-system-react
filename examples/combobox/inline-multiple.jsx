@@ -49,7 +49,11 @@ class Example extends React.Component {
 						});
 					},
 					onSubmit: (event, { value }) => {
-						this.props.action('onSubmit')(event, value);
+						if (this.props.action) {
+							this.props.action('onChange')(event, value);
+						} else if (console) {
+							console.log('onChange', event, value);
+						}
 						this.setState({
 							inputValue: '',
 							selection: [...this.state.selection, {
@@ -61,8 +65,11 @@ class Example extends React.Component {
 								/> }] });
 					},
 					onSelect: (event, data) => {
-						const dataAsArray = Object.keys(data).map((key) => data[key]);
-						this.props.action('onSelect')(event, ...dataAsArray);
+						if (this.props.action) {
+							this.props.action('onSelect')(event, ...Object.keys(data).map((key) => data[key]));
+						} else if (console) {
+							console.log('onSelect', event, data);
+						}
 						this.setState({
 							inputValue: '',
 							selection: data.selection

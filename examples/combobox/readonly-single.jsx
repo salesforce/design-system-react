@@ -31,8 +31,11 @@ class Example extends React.Component {
 				id="combobox-unique-id"
 				events={{
 					onSelect: (event, data) => {
-						const dataAsArray = Object.keys(data).map((key) => data[key]);
-						this.props.action('onSelect')(event, ...dataAsArray);
+						if (this.props.action) {
+							this.props.action('onSelect')(event, ...Object.keys(data).map((key) => data[key]));
+						} else if (console) {
+							console.log('onSelect', event, data);
+						}
 						this.setState({
 							inputValue: '',
 							selection: data.selection
