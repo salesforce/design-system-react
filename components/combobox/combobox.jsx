@@ -221,7 +221,7 @@ class Combobox extends React.Component {
 	}
 
 	/**
- 	 * Shared class peropty getter methods
+ 	 * Shared class property getter methods
    */
 
 	getId = () => this.props.id || this.generatedId;
