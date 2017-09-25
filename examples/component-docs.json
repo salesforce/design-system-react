@@ -1634,11 +1634,11 @@
         "methods": [
             {
                 "name": "getId",
-                "docblock": "Shared class getter methods",
+                "docblock": "Shared class property getter methods",
                 "modifiers": [],
                 "params": [],
                 "returns": null,
-                "description": "Shared class getter methods"
+                "description": "Shared class property getter methods"
             },
             {
                 "name": "getIsOpen",
@@ -1945,7 +1945,7 @@
             },
             {
                 "name": "renderBase",
-                "docblock": "Combobox variant subrenders",
+                "docblock": "Combobox variant subrenders\n(these can probably be broken into function components\nif state is passed in as a prop)",
                 "modifiers": [],
                 "params": [
                     {
@@ -1953,7 +1953,7 @@
                     }
                 ],
                 "returns": null,
-                "description": "Combobox variant subrenders"
+                "description": "Combobox variant subrenders\n(these can probably be broken into function components\nif state is passed in as a prop)"
             },
             {
                 "name": "renderInlineSingle",
@@ -2008,12 +2008,12 @@
             "assistiveText": {
                 "type": {
                     "name": "custom",
-                    "raw": "shape({\n    listboxLabel: PropTypes.string,\n    label: PropTypes.string,\n    optionSelectedInMenu: PropTypes.string,\n    removeSingleSelectedOption: PropTypes.string,\n    removePill: PropTypes.string\n})"
+                    "raw": "shape({\n    label: PropTypes.string,\n    optionSelectedInMenu: PropTypes.string,\n    removeSingleSelectedOption: PropTypes.string,\n    removePill: PropTypes.string,\n    selectedListboxLabel: PropTypes.string\n})"
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.\n* `removePill`: Aids in keyboard interaction with Pills.\n_Tested with snapshot testing._",
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.\n* `optionSelectedInMenu`: Added before selected menu items in Read-only variants (Picklists). The default is `Current Selection:`.\n* `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.\n* `removePill`: Used by multiple selection Comboboxes to remove a selected item (pill). Focus is on the pill. This is not a button. The default  is `, Press delete or backspace to remove`.\n* `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    listboxLabel: 'Selected Options:',\n    optionSelectedInMenu: 'Current Selection:',\n    removeSingleSelectedOption: 'Remove selected option',\n    removePill: ', Press delete or backspace to remove'\n}",
+                    "value": "{\n    optionSelectedInMenu: 'Current Selection:',\n    removeSingleSelectedOption: 'Remove selected option',\n    removePill: ', Press delete or backspace to remove',\n    selectedListboxLabel: 'Selected Options:'\n}",
                     "computed": false
                 }
             },
@@ -2033,14 +2033,25 @@
                     ]
                 },
                 "required": false,
-                "description": "CSS classes to be added to tag with `slds-combobox`. If you are looking for the outer DOM node (slds-dropdown-trigger), please review `triggerClassName`."
+                "description": "CSS classes to be added to tag with `.slds-combobox`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
             },
-            "disabled": {
+            "classNameMenu": {
                 "type": {
-                    "name": "bool"
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
                 },
                 "required": false,
-                "description": "Disable input."
+                "description": "CSS classes to be added to tag with `.slds-dropdown`. Uses `classNames` [API](https://github.com/JedWatson/classnames). Autocomplete/bass variant menu height should not scroll and should be determined by number items which should be no more than 10."
             },
             "events": {
                 "type": {
@@ -2048,7 +2059,7 @@
                     "raw": "shape({\n    onBlur: PropTypes.func,\n    onChange: PropTypes.func,\n    onClose: PropTypes.func,\n    onFocus: PropTypes.func,\n    onOpen: PropTypes.func,\n    onRequestClose: PropTypes.func,\n    onRequestOpen: PropTypes.func,\n    onRequestRemoveSelectedOption: PropTypes.func,\n    onSelect: PropTypes.func,\n    onSubmit: PropTypes.func\n})"
                 },
                 "required": false,
-                "description": "Event Callbacks\n* `onBlur`: Called when `input` removes focus.\n* `onChange`: Called when keyboard events occur within `input`\n* `onClose`: Triggered when the menu has closed.\n* `onFocus`: Called when `input` receives focus.\n* `onOpen`: Triggered when the menu has opened.\n* `onRequestClose`: Function called when the menu would like to hide. Please use with `isOpen`.\n* `onRequestOpen`:  Function called when the menu would like to show. Please use with `isOpen`.\n* `onRequestRemoveSelectedOption`: Function called when a single selection option is to be removed.\n* `onSelect`: Function called when a menu item is selected\n* `onSubmit`: Function called when user presses enter or submits the `input`",
+                "description": "Event Callbacks\n* `onBlur`: Called when `input` removes focus.\n* `onChange`: Called when keyboard events occur within `input`\n* `onClose`: Triggered when the menu has closed.\n* `onFocus`: Called when `input` receives focus.\n* `onOpen`: Triggered when the menu has opened.\n* `onRequestClose`: Function called when the menu would like to hide. Please use with `isOpen`.\n* `onRequestOpen`:  Function called when the menu would like to show. Please use with `isOpen`.\n* `onRequestRemoveSelectedOption`: Function called when a single selection option is to be removed.\n* `onSelect`: Function called when a menu item is selected\n* `onSubmit`: Function called when user presses enter or submits the `input`\n_Tested with Mocha testing._",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
@@ -2071,7 +2082,7 @@
             "labels": {
                 "type": {
                     "name": "custom",
-                    "raw": "shape({\n    label: PropTypes.string,\n    multipleOptionsSelected: PropTypes.string,\n    noOptionsFound: PropTypes.string,\n    placeholder: PropTypes.string,\n    placeholderReadOnly: PropTypes.string,\n    removePillTitle: PropTypes.string\n})"
+                    "raw": "shape({\n    label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),\n    multipleOptionsSelected: PropTypes.string,\n    noOptionsFound: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),\n    placeholder: PropTypes.string,\n    placeholderReadOnly: PropTypes.string,\n    removePillTitle: PropTypes.string\n})"
                 },
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: This label appears above the input.\n* `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.\n* `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.\n* `placeholder`: Input placeholder\n* `placeholderReadOnly`: Placeholder for Picklist-like Combobox\n* `removePillTitle`: Title on `X` icon\n_Tested with snapshot testing._",
@@ -2100,6 +2111,31 @@
                 },
                 "required": true,
                 "description": "Item added to the dropdown menu. _Tested with snapshot testing._"
+            },
+            "readOnlyMenuItemVisibleLength": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "5",
+                            "computed": false
+                        },
+                        {
+                            "value": "7",
+                            "computed": false
+                        },
+                        {
+                            "value": "10",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines the height of the menu based on SLDS CSS classes. This only applies to the readonly variant. This is a `number`.",
+                "defaultValue": {
+                    "value": "5",
+                    "computed": false
+                }
             },
             "predefinedOptionsOnly": {
                 "type": {
