@@ -34,6 +34,7 @@ exports[`Datepicker
         aria-labelledby={undefined}
         aria-owns={undefined}
         aria-required={undefined}
+        autoComplete={undefined}
         className="slds-input"
         disabled={undefined}
         id="CUSTOM-ID"
@@ -52,6 +53,7 @@ exports[`Datepicker
         onSelect={undefined}
         onSubmit={undefined}
         placeholder="SWIPE RIGHT :-)"
+        readOnly={undefined}
         required={undefined}
         role={undefined}
         style={undefined}
@@ -938,6 +940,7 @@ exports[`Datepicker
         aria-labelledby={undefined}
         aria-owns={undefined}
         aria-required={undefined}
+        autoComplete={undefined}
         className="slds-input"
         disabled={undefined}
         id="sample-datepicker"
@@ -956,6 +959,7 @@ exports[`Datepicker
         onSelect={undefined}
         onSubmit={undefined}
         placeholder="Pick a Date"
+        readOnly={undefined}
         required={undefined}
         role={undefined}
         style={undefined}
@@ -1840,6 +1844,7 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
         aria-labelledby={undefined}
         aria-owns={undefined}
         aria-required={undefined}
+        autoComplete={undefined}
         className="slds-input"
         disabled={undefined}
         id="sample-datepicker"
@@ -1858,6 +1863,7 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
         onSelect={undefined}
         onSubmit={undefined}
         placeholder="Pick a Date"
+        readOnly={undefined}
         required={undefined}
         role={undefined}
         style={undefined}

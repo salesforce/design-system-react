@@ -7,6 +7,7 @@ export ButtonGroup from './button-group/stories';
 export ButtonStateful from './button-stateful/stories';
 export Card from './card/stories';
 export Checkbox from './forms/checkbox/stories';
+export Combobox from './combobox/stories';
 export Filter from './filter/stories';
 export GlobalNavigationBar from './global-navigation-bar/stories';
 export DataTable from './data-table/stories';

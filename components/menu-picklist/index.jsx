@@ -32,7 +32,7 @@ import Dialog from '../utilities/dialog';
 import Icon from '../icon';
 import List from '../utilities/menu-list';
 import ListItemLabel from '../utilities/menu-list/item-label';
-import Pill from './private/pill';
+import Pill from '../utilities/pill';
 
 import { shape } from 'airbnb-prop-types';
 

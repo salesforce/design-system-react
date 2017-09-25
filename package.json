@@ -146,6 +146,8 @@
     "mocha": "^3.1.2",
     "node-sass": "^4.5.0",
     "object.entries": "^1.0.4",
+    "phantomjs-polyfill-find-index": "^1.0.1",
+    "phantomjs-polyfill-includes": "^1.0.2",
     "phantomjs-prebuilt": "^2.1.7",
     "pre-commit": "^1.2.2",
     "prompt": "^1.0.0",
@@ -229,6 +231,12 @@
       "status": "prod",
       "display-name": "Checkboxes",
       "SLDS-component-path": "/components/forms/#flavor-checkbox"
+    },
+    {
+      "component": "combobox",
+      "status": "prod",
+      "display-name": "Comboboxes",
+      "SLDS-component-path": "/components/comboboxes"
     },
     {
       "component": "data-table",

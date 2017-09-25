@@ -32,6 +32,12 @@ export CardFilter from './card/filter';
 export SLDSCheckbox from './forms/checkbox';
 export Checkbox from './forms/checkbox';
 
+export SLDSCombobox from './combobox';
+export Combobox from './combobox';
+
+export SLDSComboboxFilterAndLimit from './combobox/filter';
+export comboboxFilterAndLimit from './combobox/filter';
+
 export SLDSGlobalHeader from './global-header';
 export GlobalHeader from './global-header';
 

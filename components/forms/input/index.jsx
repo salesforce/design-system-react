@@ -25,6 +25,7 @@ import shortid from 'shortid';
 // ## Children
 import InputIcon from '../../icon/input-icon';
 import InnerInput from './private/inner-input';
+import Label from '../private/label';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
@@ -214,9 +215,6 @@ const Input = React.createClass({
 	render () {
 		const props = this.props;
 
-		const labelText = props.label
-			|| props.assistiveText; // One of these is required to pass accessibility tests
-
 		// this is a hack to make left the default prop unless overwritten by `iconPosition="right"`
 		const hasLeftIcon = !!props.iconLeft || ((props.iconPosition === 'left' || props.iconPosition === undefined) && !!props.iconName);
 		const hasRightIcon = !!props.iconRight || (props.iconPosition === 'right' && !!props.iconName);
@@ -228,24 +226,13 @@ const Input = React.createClass({
 				},
 				props.className)}
 			>
-				{labelText && (props.readOnly
-					? <span
-						className={classNames('slds-form-element__label', {
-							'slds-assistive-text': props.assistiveText && !props.label
-						})}
-					>
-						{labelText}
-					</span>
-					: <label
-						className={classNames('slds-form-element__label', {
-							'slds-assistive-text': props.assistiveText && !props.label
-						})}
-						htmlFor={this.getId()}
-					>
-						{props.required && <abbr className="slds-required" title="required">*</abbr>}
-						{labelText}
-					</label>
-				)}
+				<Label
+					assistiveText={props.assistiveText}
+					htmlFor={props.readOnly ? undefined : this.getId()}
+					label={props.label}
+					required={props.required}
+					variant={props.readOnly ? 'static' : 'base'}
+				/>
 				<InnerInput
 					aria-activedescendant={this.props['aria-activedescendant']}
 					aria-autocomplete={this.props['aria-autocomplete']}
@@ -255,7 +242,9 @@ const Input = React.createClass({
 					aria-expanded={this.props['aria-expanded']}
 					aria-owns={this.props['aria-owns']}
 					aria-required={this.props['aria-required']}
-					containerClassName="slds-form-element__control"
+					containerProps={{
+						className: 'slds-form-element__control'
+					}}
 					disabled={props.disabled}
 					id={this.getId()}
 					iconLeft={hasLeftIcon ? this.getIconRender('left', 'iconLeft') : null}
