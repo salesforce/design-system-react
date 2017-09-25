@@ -30,6 +30,11 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.6.23
+Major features
+
+- Add [Combobox](https://react.lightningdesignsystem.com/components/comboboxes/) component
+
 ## Release 0.6.22
 Major features
 
