@@ -21,6 +21,7 @@ const displayName = AVATAR;
 
 // ### Prop Types
 const propTypes = {
+	assistiveText: PropTypes.string,
 	/**
 	 * Class names to be applied to Avatar component.
 	 */
@@ -33,6 +34,7 @@ const propTypes = {
 	 * Source attribute to be applied to image (base case) avatar element.
 	 */
 	imgSrc: PropTypes.string,
+	initials: PropTypes.string,
 	/**
 	 * Label attibute to display inside "initial" fallback avatar case. Will be passed as title prop in `abbr` element to provide more specificity.
 	 */
@@ -52,6 +54,8 @@ const propTypes = {
 };
 
 const defaultProps = {
+	assistiveText: 'icon avatar',
+	imgSrc: '',
 	size: 'medium',
 	title: 'user avatar',
 	variant: 'user'
@@ -59,7 +63,7 @@ const defaultProps = {
 
 /**
  * The avatar component represents an object or entity. An image is the preferred format for an avatar.
- If an image is unavailble, and if a `label` prop is available, the fallback avatar will render with initials of the user name or entity name.
+ If the `imgSrc` prop is undefined, and if a `label` prop is available, the fallback avatar will render with initials of the user name or entity name.
  If no label is available, the fallback avatar will render a standard icon. If `variant='user'`, a user icon will
  render. If `variant='entity'`, an account icon will render.
  */
@@ -94,18 +98,18 @@ class Avatar extends React.Component {
 	}
 
 	renderIconAvatar () {
-		const { variant } = this.props;
+		const { variant, assistiveText } = this.props;
 		return (
 			<UtilityIcon
-				assistiveText={`${variant} icon avatar`}
-				category={'standard'}
+				assistiveText={assistiveText}
+				category="standard"
 				name={variant === 'entity' ? 'account' : 'user'}
 			/>
 		);
 	}
 
 	renderInitialsAvatar () {
-		const { label, variant } = this.props;
+		const { initials, label, variant } = this.props;
 		return (
 			<abbr
 				className={classNames(
@@ -116,7 +120,7 @@ class Avatar extends React.Component {
 				)}
 				title={label}
 			>
-				{this.buildInitials()}
+				{initials ? initials.toUpperCase() : this.buildInitials()}
 			</abbr>
 		);
 	}
@@ -130,10 +134,11 @@ class Avatar extends React.Component {
 		} = this.props;
 
 		const renderAvatar = () => {
-			if (!this.state.imgLoadError && imgSrc && imgSrc.length > 0) {
+			/* eslint no-unneeded-ternary: */
+			if (!this.state.imgLoadError && imgSrc) {
 				return this.renderBaseAvatar();
 			}
-			if (label && label.length > 0) {
+			if (label) {
 				return this.renderInitialsAvatar();
 			}
 			return this.renderIconAvatar();
