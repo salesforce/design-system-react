@@ -161,7 +161,7 @@ const renderBranch = (children, props) => {
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				<Button
 					assistiveText="Toggle"
-					iconName={props.node.expanded ? 'chevrondown' : 'chevronright'}
+					iconName="chevronright"
 					iconSize="small"
 					variant="icon"
 					className="slds-m-right--small"
