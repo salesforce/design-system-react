@@ -3,6 +3,7 @@
 
 
 import React from 'react';
+import createReactClass from 'create-react-class';
 import ReactDOM from 'react-dom';
 
 import Button from '../../button';
@@ -32,7 +33,7 @@ const customStyles = {
 	}
 };
 
-const Manager = React.createClass({
+const Manager = createReactClass({
 	getDefaultProps () {
 		return {
 			title: '',

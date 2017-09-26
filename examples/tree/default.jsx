@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import Tree from '~/components/tree';
 
@@ -264,7 +265,7 @@ const sampleNodes = {
 };
 
 
-const TreeExample = React.createClass({
+const TreeExample = createReactClass({
 	displayName: 'TreeExample',
 
 	// ### Prop Types

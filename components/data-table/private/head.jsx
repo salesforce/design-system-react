@@ -3,6 +3,7 @@
 
 // ### React
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ## Children
@@ -15,7 +16,7 @@ import { DATA_TABLE_HEAD } from '../../../utilities/constants';
 /**
  * Used internally, provides header row rendering to the DataTable.
  */
-const DataTableHead = React.createClass({
+const DataTableHead = createReactClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: DATA_TABLE_HEAD,

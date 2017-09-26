@@ -4,6 +4,7 @@
 /* eslint-disable no-unused-expressions */
 
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 import chai, { expect } from 'chai';
@@ -18,7 +19,7 @@ import globalSettings from '../../components/settings';
 
 globalSettings.setIconsPath('/assets/icons');
 
-const DemoIcon = React.createClass({
+const DemoIcon = createReactClass({
 	displayName: 'DemoIcon',
 
 	render () {

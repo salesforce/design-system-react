@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import ProgressIndicator from '~/components/progress-indicator'; // `~` is replaced with design-system-react at runtime
 
 const steps = [
@@ -13,7 +14,7 @@ const handleStepEvent = function (event, data) {
 	console.log(data);
 };
 
-const Example = React.createClass({
+const Example = createReactClass({
 	displayName: 'ProgressIndicatorDefault',
 
 	render () {

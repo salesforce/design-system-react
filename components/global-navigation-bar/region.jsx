@@ -7,6 +7,7 @@
 
 // ### React
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -63,7 +64,7 @@ const renderTertiary = (dividerClass, className, children) =>
 /**
  * Regions make up a GlobalNavigation Bar and typically contain links and dropdowns. The Primary region contains the AppSwitcher, Application Name, and Object Switcher. The secondary region typically has navigation betweens sections of the application. The tertiary region is aligned to the right side of the screen and contains shortcuts or actions.
  */
-const Region = React.createClass({
+const Region = createReactClass({
 	displayName: GLOBAL_NAVIGATION_BAR_REGION,
 
 	propTypes: {
