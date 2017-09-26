@@ -24,7 +24,7 @@ describe('SLDSMenuDropdown: ', () => {
 		{ label: 'A super short', value: 'A0' },
 		{ label: 'B Option Super Super Long', value: 'B0' },
 		{ label: 'C Option', value: 'C0' },
-		{ label: 'D Option', value: 'D0' }
+		{ disabled: true, label: 'D Option', value: 'D0' }
 	];
 
 	const renderDropdown = (inst) => {
@@ -276,7 +276,7 @@ describe('SLDSMenuDropdown: ', () => {
 			expect(getMenu(body)).to.equal(null);
 			Simulate.click(btn, {});
 			expect(getMenu(body).className).to.include('slds-dropdown');
-			
+
 			// close
 			Simulate.mouseEnter(btn, {});
 			Simulate.mouseLeave(btn);
@@ -343,6 +343,13 @@ describe('SLDSMenuDropdown: ', () => {
 			const anchorRole = items[1].getAttribute('role');
 			const match = (anchorRole === 'menuitem' || anchorRole === 'menuitemradio' || anchorRole === 'menuitemcheckbox');
 			expect(match).to.be.true;
+		});
+
+		it('if option.disabled, add aria-disabled to <a> that has role menuitem', () => {
+			Simulate.click(btn, {});
+			const items = getMenu(body).querySelectorAll('.slds-dropdown__item a');
+			const lastItemAriaDisabledRole = items[3].getAttribute('aria-disabled');
+			expect(lastItemAriaDisabledRole).to.equal('true');
 		});
 	});
 
@@ -454,7 +461,7 @@ describe('SLDSMenuDropdown: ', () => {
 			expect(selected).to.be.false;
 			const checkItemLengthBefore = getMenu(body).querySelectorAll('.slds-dropdown__item svg').length;
 			expect(checkItemLengthBefore).to.equal(1);
-			
+
 			const items = getMenu(body).querySelectorAll('.slds-dropdown__item');
 			Simulate.click(items[0].querySelector('a'), {});
 			Simulate.click(items[1].querySelector('a'), {});
