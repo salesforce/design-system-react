@@ -491,7 +491,7 @@ const MenuPicklist = createReactClass({
 						events={{
 							onRequestRemove: (event, data) => {
 								const newData = this.state.selectedIndices;
-								const index = data.eventData.index;
+								const index = data.index;
 								newData.splice(this.state.selectedIndices.indexOf(index), 1);
 								this.setState({ selectedIndices: newData });
 
