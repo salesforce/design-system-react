@@ -10,6 +10,7 @@
 
 // ### React
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### shortid
@@ -23,7 +24,7 @@ import { PANEL_FILTER_LIST } from '../../../utilities/constants';
 /**
  * A list of Filters. This is a higher order component for filters that decorates the filter to work within a Filtering Panel. It also adds support for a Filter error label.
  */
-const PanelFilterList = React.createClass({
+const PanelFilterList = createReactClass({
 	displayName: PANEL_FILTER_LIST,
 
 	propTypes () {

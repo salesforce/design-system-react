@@ -1,10 +1,11 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import Modal from '~/components/modal'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 import Lookup from '~/components/lookup';
 import Picklist from '~/components/menu-picklist';
 
-const Example = React.createClass({
+const Example = createReactClass({
 	displayName: 'ModalExample',
 
 	getInitialState () {

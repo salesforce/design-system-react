@@ -4,6 +4,7 @@
 /* eslint-disable no-unused-expressions */
 
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 import chai, { expect } from 'chai';
@@ -16,7 +17,7 @@ chai.use(chaiEnzyme());
 import Icon from '../../components/icon';
 import IconSettings from '../../components/iconSettings';
 
-const DemoIcon = React.createClass({
+const DemoIcon = createReactClass({
 	displayName: 'DemoIcon',
 
 	render () {

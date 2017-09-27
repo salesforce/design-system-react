@@ -31,6 +31,10 @@ const propTypes = {
 	'aria-owns': PropTypes.string,
 	'aria-required': PropTypes.bool,
 	/**
+	 * Disabled brower's autocomplete when "off" is used.
+	 */
+	autoComplete: PropTypes.string,
+	/**
 	 * Class names to be added to the `input` element.
 	 */
 	className: PropTypes.oneOfType([
@@ -39,13 +43,17 @@ const propTypes = {
 		PropTypes.string
 	]),
 	/**
-	 * Class names to be added to the outer container of the input.
+	 * Class names to be added to the outer container `div` of the input.
 	 */
 	containerClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
 		PropTypes.string
 	]),
+	/**
+	 * Props to be added to the outer container `div` of the input (excluding `containerClassName`).
+	 */
+	containerProps: PropTypes.object,
 	/**
 	 * Disables the input and prevents editing the contents.
 	 */
@@ -65,11 +73,15 @@ const propTypes = {
 		PropTypes.string
 	]),
 	/**
-	 * Left aligned icon, must be instace of `design-system-react/components/icon/input-icon`
+	 * If true, loading spinner appears inside input on right hand side.
+	 */
+	hasSpinner: PropTypes.bool,
+	/**
+	 * Left aligned icon, must be instance of `design-system-react/components/icon/input-icon`
 	 */
 	iconLeft: PropTypes.node,
 	/**
-	 * Right aligned icon, must be instace of `design-system-react/components/icon/input-icon`
+	 * Right aligned icon, must be instance of `design-system-react/components/icon/input-icon`
 	 */
 	iconRight: PropTypes.node,
 	/**
@@ -128,6 +140,10 @@ const propTypes = {
 	 */
 	role: PropTypes.string,
 	/**
+	 * Assistive text on the spinner
+	 */
+	spinnerAssistiveText: PropTypes.string,
+	/**
 	 * Style object to be added to `input` node
 	 */
 	style: PropTypes.object,
@@ -168,88 +184,93 @@ const defaultProps = {
 /*
  * This component was created to allow the DIV wrapped input to be used within other components such as combobox. This components API is not public.
  */
-const InnerInput = (props) => (
-	<div
-		className={classNames(props.containerClassName, {
-			'slds-input-has-icon': props.iconLeft || props.iconRight,
-			'slds-input-has-icon_left': props.iconLeft && !props.iconRight,
-			'slds-input-has-icon_right': !props.iconLeft && props.iconRight,
-			'slds-input-has-icon_left-right': props.iconLeft && props.iconRight,
-			'slds-input-has-fixed-addon': props.fixedTextLeft || props.fixedTextRight,
-			'slds-has-divider--bottom': props.isStatic
-		})}
-	>
-		{props.iconLeft && props.iconLeft}
-		{props.fixedTextLeft && <span className="slds-form-element__addon">{props.fixedTextLeft}</span>}
+const InnerInput = (props) => {
+	const { className: containerClassName, ...containerProps } = props.containerProps;
 
-		{!props.isStatic && <input
-			aria-activedescendant={props['aria-activedescendant']}
-			aria-autocomplete={props['aria-autocomplete']}
-			aria-controls={props['aria-controls']}
-			aria-labelledby={props['aria-labelledby']}
-			aria-describedby={props.hasSpinner ? `loading-status-icon ${props['aria-describedby']}` : props['aria-describedby']}
-			aria-expanded={props['aria-expanded']}
-			aria-owns={props['aria-owns']}
-			aria-required={props['aria-required']}
-			className={classNames('slds-input', props.className)}
-			disabled={props.disabled}
-			id={props.id}
-			minLength={props.minLength}
-			maxLength={props.maxLength}
-			name={props.name}
-			onBlur={props.onBlur}
-			onChange={props.onChange}
-			onClick={props.onClick}
-			onFocus={props.onFocus}
-			onInput={props.onInput}
-			onInvalid={props.onInvalid}
-			onKeyDown={props.onKeyDown}
-			onKeyPress={props.onKeyPress}
-			onKeyUp={props.onKeyUp}
-			onSelect={props.onSelect}
-			onSubmit={props.onSubmit}
-			placeholder={props.placeholder}
-			readOnly={props.readOnly}
-			ref={props.inputRef}
-			required={props.required}
-			role={props.role}
-			style={props.style}
-			tabIndex={props.tabIndex}
-			type={props.type}
-			value={props.value}
-		/>}
+	return (
+		<div
+			className={classNames(containerClassName, {
+				'slds-input-has-icon': props.iconLeft || props.iconRight,
+				'slds-input-has-icon_left': props.iconLeft && !props.iconRight,
+				'slds-input-has-icon_right': !props.iconLeft && props.iconRight,
+				'slds-input-has-icon_left-right': props.iconLeft && props.iconRight,
+				'slds-input-has-fixed-addon': props.fixedTextLeft || props.fixedTextRight,
+				'slds-has-divider--bottom': props.isStatic
+			})}
+			{...containerProps}
+		>
+			{props.iconLeft && props.iconLeft}
+			{props.fixedTextLeft && <span className="slds-form-element__addon">{props.fixedTextLeft}</span>}
 
-		{ props.hasSpinner
-				? (
-					<div className="slds-input__icon-group slds-input__icon-group_right">
-						{props.hasSpinner && (
-							<Spinner
-								assistiveText={props.spinnerAssistiveText}
-								id="loading-status-icon"
-								isInput
-								size="x-small"
-								variant="brand"
-							/>
-						)}
-						{props.iconRight && props.iconRight}
-					</div>
-				)
-				: props.iconRight && props.iconRight
-		}
+			{!props.isStatic && <input
+				aria-activedescendant={props['aria-activedescendant']}
+				aria-autocomplete={props['aria-autocomplete']}
+				aria-controls={props['aria-controls']}
+				aria-labelledby={props['aria-labelledby']}
+				aria-describedby={props.hasSpinner ? `loading-status-icon ${props['aria-describedby']}` : props['aria-describedby']}
+				aria-expanded={props['aria-expanded']}
+				aria-owns={props['aria-owns']}
+				aria-required={props['aria-required']}
+				autoComplete={props.autoComplete}
+				className={classNames('slds-input', props.className)}
+				disabled={props.disabled}
+				id={props.id}
+				minLength={props.minLength}
+				maxLength={props.maxLength}
+				name={props.name}
+				onBlur={props.onBlur}
+				onChange={props.onChange}
+				onClick={props.onClick}
+				onFocus={props.onFocus}
+				onInput={props.onInput}
+				onInvalid={props.onInvalid}
+				onKeyDown={props.onKeyDown}
+				onKeyPress={props.onKeyPress}
+				onKeyUp={props.onKeyUp}
+				onSelect={props.onSelect}
+				onSubmit={props.onSubmit}
+				placeholder={props.placeholder}
+				readOnly={props.readOnly}
+				ref={props.inputRef}
+				required={props.required}
+				role={props.role}
+				style={props.style}
+				tabIndex={props.tabIndex}
+				type={props.type}
+				value={props.value}
+			/>}
 
-		{props.fixedTextRight && <span className="slds-form-element__addon">{props.fixedTextRight}</span>}
+			{ props.hasSpinner
+					? (
+						<div className="slds-input__icon-group slds-input__icon-group_right">
+							{props.hasSpinner && (
+								<Spinner
+									assistiveText={props.spinnerAssistiveText}
+									id="loading-status-icon"
+									isInput
+									size="x-small"
+									variant="brand"
+								/>
+							)}
+							{props.iconRight && props.iconRight}
+						</div>
+					)
+					: props.iconRight && props.iconRight
+			}
 
-		{/* eslint-disable jsx-a11y/no-static-element-interactions */}
-		{props.isStatic && (
-			<span className="slds-form-element__static slds-grid slds-grid_align-spread" onClick={props.onClick}>
-				{props.value}
-				{props.inlineEditTrigger}
-			</span>
-		)}
-		{/* eslint-enable jsx-a11y/no-static-element-interactions */}
+			{props.fixedTextRight && <span className="slds-form-element__addon">{props.fixedTextRight}</span>}
 
-	</div>
-);
+			{/* eslint-disable jsx-a11y/no-static-element-interactions */}
+			{props.isStatic && (
+				<span className="slds-form-element__static slds-grid slds-grid_align-spread" onClick={props.onClick}>
+					{props.value}
+					{props.inlineEditTrigger}
+				</span>
+			)}
+			{/* eslint-enable jsx-a11y/no-static-element-interactions */}
+		</div>
+	);
+};
 
 InnerInput.displayName = 'SLDSInnerInput';
 InnerInput.propTypes = propTypes;

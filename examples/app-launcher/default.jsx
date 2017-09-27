@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import AppLauncher from '~/components/app-launcher'; // `~` is replaced with design-system-react at runtime
 import AppLauncherTile from '~/components/app-launcher/tile';
 import AppLauncherSection from '~/components/app-launcher/section';
@@ -10,7 +11,7 @@ import Icon from '~/components/icon';
 import Button from '~/components/button';
 import Search from '~/components/forms/input/search';
 
-const Example = React.createClass({
+const Example = createReactClass({
 	displayName: 'AppLauncherExample',
 
 	render () {

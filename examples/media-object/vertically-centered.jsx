@@ -1,8 +1,9 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import MediaObject from '~/components/media-object'; // `~` is replaced with design-system-react at runtime
 import Icon from '~/components/icon';
 
-const Example = React.createClass({
+const Example = createReactClass({
 	displayName: 'MediaObjectExample',
 
 	render () {

@@ -2,6 +2,7 @@
 /* eslint-disable react/display-name */
 
 import React from 'react';
+import createReactClass from 'create-react-class';
 import { storiesOf, action } from '@kadira/storybook';
 import IconSettings from '../../components/iconSettings';
 
@@ -28,7 +29,7 @@ const getPicklist = (props) => (
 	</div>
 );
 
-const MultipleExample = React.createClass({
+const MultipleExample = createReactClass({
 	displayName: 'MultiplePicklistExample',
 
 	getInitialState () {
@@ -57,6 +58,10 @@ const MultipleExample = React.createClass({
 				multiple
 				onSelect={this.handleSelect}
 				options={options}
+				onPillRemove={(removedItem, data) => {
+					console.log("data.option.label: '" + data.option.label + "' data.option.value: '" + data.option.value + "'");
+					this.handleSelect(removedItem, data);
+				}}
 			/>
 		);
 	}

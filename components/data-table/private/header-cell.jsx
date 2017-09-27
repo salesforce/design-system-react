@@ -3,6 +3,7 @@
 
 // ### React
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -20,7 +21,7 @@ import { DATA_TABLE_HEADER_CELL } from '../../../utilities/constants';
 /**
  * Used internally, renders each individual column heading.
  */
-const DataTableHeaderCell = React.createClass({
+const DataTableHeaderCell = createReactClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: DATA_TABLE_HEADER_CELL,

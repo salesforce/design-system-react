@@ -10,6 +10,7 @@
 
 // ### React
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // This component's `checkProps` which issues warnings to developers about properties
@@ -32,7 +33,7 @@ import Dialog from '../utilities/dialog';
 import Icon from '../icon';
 import List from '../utilities/menu-list';
 import ListItemLabel from '../utilities/menu-list/item-label';
-import Pill from './private/pill';
+import Pill from '../utilities/pill';
 
 import { shape } from 'airbnb-prop-types';
 
@@ -48,7 +49,7 @@ import { MENU_PICKLIST } from '../../utilities/constants';
 /**
  * The MenuPicklist component is a variant of the Lightning Design System Menu component.
  */
-const MenuPicklist = React.createClass({
+const MenuPicklist = createReactClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: MENU_PICKLIST,
@@ -107,6 +108,10 @@ const MenuPicklist = React.createClass({
 		 * Triggered when an item is selected. Passes in the option object that has been selected and a data object in the format: `{ option, optionIndex }`. The first parameter may be deprecated in the future and changed to an event for consistency. Please use the data object.
 		 */
 		onSelect: PropTypes.func,
+		/**
+		 * Triggered when a pill is removed. Passes in the option object that has been removed and a data object in the format: `{ option, optionIndex }`. The first parameter may be deprecated in the future and changed to an event for consistency. Please use the data object.
+		 */
+		onPillRemove: PropTypes.func,
 		/**
 		 * Menu item data.
 		 */
@@ -237,14 +242,20 @@ const MenuPicklist = React.createClass({
 			this.setState({ selectedIndex: index });
 			this.handleClose();
 			this.setFocus();
-		} else if (this.props.multiple && this.state.selectedIndices.indexOf(index) === -1) {
-			const currentIndices = this.state.selectedIndices.concat(index);
+		} else {
+			let currentIndices;
+
+			if (this.state.selectedIndices.indexOf(index) === -1) {
+				currentIndices = this.state.selectedIndices.concat(index);
+			} else {
+				const deselectIndex = this.state.selectedIndices.indexOf(index);
+				currentIndices = this.state.selectedIndices;
+				currentIndices.splice(deselectIndex, 1);
+			}
+
 			this.setState({
 				selectedIndices: currentIndices
 			});
-		} else if (this.props.multiple) {
-			const deselectIndex = this.state.selectedIndices.indexOf(index);
-			this.state.selectedIndices.splice(deselectIndex, 1);
 		}
 
 		if (this.props.onSelect) {
@@ -481,8 +492,14 @@ const MenuPicklist = React.createClass({
 						events={{
 							onRequestRemove: (event, data) => {
 								const newData = this.state.selectedIndices;
-								newData.splice(this.state.selectedIndices.indexOf(data.eventData.index), 1);
+								const index = data.index;
+								newData.splice(this.state.selectedIndices.indexOf(index), 1);
 								this.setState({ selectedIndices: newData });
+
+								if (this.props.onPillRemove) {
+									const option = this.getValueByIndex(index);
+									this.props.onPillRemove(option, { option, optionIndex: index });
+								}
 							}
 						}}
 						labels={{
