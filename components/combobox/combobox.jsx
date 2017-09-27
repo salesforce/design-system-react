@@ -485,6 +485,7 @@ class Combobox extends React.Component {
    */
 
 	handleRemoveSelectedOption = (event, { option, index }) => {
+		event.preventDefault();
 		const onlyOnePillAndInputExists = this.props.selection.length === 1;
 		const isReadOnlyAndTwoPillsExists = this.props.selection.length === 2
 			&& this.props.variant === 'readonly'
