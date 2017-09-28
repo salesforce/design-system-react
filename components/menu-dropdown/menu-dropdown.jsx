@@ -875,6 +875,8 @@ MenuDropdown.contextTypes = {
 };
 
 export default MenuDropdown;
-export { ListItem };
-export { ListItemLabel };
-export { DropdownNubbinPositions };
+export {
+	ListItem,
+	ListItemLabel,
+	DropdownNubbinPositions
+};

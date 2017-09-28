@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom';
 
 import Button from '../../button';
 import Icon from '../../icon';
-import { EventUtil } from '../../../utilities';
+import EventUtil from '../../../utilities/event';
 
 
 import Modal from 'react-modal';

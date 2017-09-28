@@ -21,7 +21,7 @@ import Icon from '../../icon';
 import ListItemLabelRenderer from './item-label';
 
 // ### Event Helpers
-import { EventUtil } from '../../../utilities';
+import EventUtil from '../../../utilities/event';
 
 // ## Constants
 import { LIST_ITEM } from '../../../utilities/constants';

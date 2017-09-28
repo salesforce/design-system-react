@@ -10,7 +10,7 @@ import Modal from 'react-modal';
 let assetsPath = 'assets/';
 let appRoot;
 
-export default {
+const settings = {
 	setAssetsPath: (path) => {
 		if (path) {
 			assetsPath = path;
@@ -37,3 +37,5 @@ export default {
 
 	getAppElement: () => appRoot
 };
+
+export default settings;
