@@ -1,7 +1,8 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import Dropdown from '~/components/menu-dropdown'; // `~` is replaced with design-system-react at runtime
 
-const Example = React.createClass({
+const Example = createReactClass({
 	displayName: 'MediaObjectExample',
 
 	render () {

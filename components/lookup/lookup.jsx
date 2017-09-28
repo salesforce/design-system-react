@@ -10,6 +10,7 @@
 
 // ### React
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import escapeRegExp from 'lodash.escaperegexp';
 import isEqual from 'lodash.isequal';
@@ -49,7 +50,7 @@ const defaultFilter = (term, item) => {
  *
  * This component may use a portalMount (a disconnected React subtree mount) within an absolutely positioned DOM node created with [Drop](http://github.hubspot.com/drop/).
  */
-const Lookup = React.createClass({
+const Lookup = createReactClass({
 	displayName: LOOKUP,
 
 	propTypes: {

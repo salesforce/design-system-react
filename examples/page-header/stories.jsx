@@ -1,6 +1,7 @@
 /* eslint-disable indent */
 
 import React from 'react';
+import createReactClass from 'create-react-class';
 import { storiesOf, action } from '@kadira/storybook';
 import { PAGE_HEADER } from '../../utilities/constants';
 import IconSettings from '../../components/iconSettings';
@@ -26,7 +27,7 @@ const recordHomeDetails2 = [
 	{ label: 'Field 3', content: 'Description (2-line truncation)' }
 ];
 
-const DemoPageHeader = React.createClass({
+const DemoPageHeader = createReactClass({
 	displayName: 'DemoPageHeader',
 
 	getInitialState () {

@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import { storiesOf, action } from '@kadira/storybook';
 import IconSettings from '../../components/iconSettings';
@@ -13,7 +14,7 @@ const branchExpandClicked = action;
 const itemClicked = action;
 const treeScrolled = action;
 
-const DemoTree = React.createClass({
+const DemoTree = createReactClass({
 	displayName: 'DemoTree',
 
 	// ### Prop Types

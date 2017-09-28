@@ -66,6 +66,7 @@ Here is a well-commented sample test file which you can copy/paste into a new fi
 
 // Import your external dependencies
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
@@ -90,7 +91,7 @@ chai.use(chaiEnzyme());
  * This wrapping component will be similar to your wrapping component 
  * you will create in the React Storybook for manual testing.
  */
-const DemoComponent = React.createClass({
+const DemoComponent = createReactClass({
   displayName: 'DemoComponent',
   propTypes: {
     sampleProp: PropTypes.string

@@ -1629,6 +1629,570 @@
         "SLDS-component-path": "/components/forms/#flavor-checkbox",
         "dependencies": []
     },
+    "combobox": {
+        "description": "A widget that provides a user with an input field that is either an autocomplete or readonly, accompanied with a listbox of pre-definfined options.",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": "Shared class property getter methods",
+                "modifiers": [],
+                "params": [],
+                "returns": null,
+                "description": "Shared class property getter methods"
+            },
+            {
+                "name": "getIsOpen",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getIsActiveOption",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getNewActiveOptionIndex",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ activeOptionIndex,\n    offset,\n    options }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "isSelected",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ selection, option }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleClickOutside",
+                "docblock": "Menu open/close and sub-render methods",
+                "modifiers": [],
+                "params": [],
+                "returns": null,
+                "description": "Menu open/close and sub-render methods"
+            },
+            {
+                "name": "handleRequestClose",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "openDialog",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleClose",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleOpen",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "requestOpenMenu",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getInlineMenu",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ menuRenderer }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "getDialog",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ menuRenderer }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "renderMenu",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ assistiveText, labels }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDown",
+                "docblock": "Input and menu keyboard event methods",
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event"
+                    }
+                ],
+                "returns": null,
+                "description": "Input and menu keyboard event methods"
+            },
+            {
+                "name": "handleNavigateListboxMenu",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ direction }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleSelect",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ selection, option }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDownDown",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDownUp",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleInputSubmit",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleInputChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleInputFocus",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleInputBlur",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleRemoveSelectedOption",
+                "docblock": "Selected options with listbox of pills event methods",
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event"
+                    },
+                    {
+                        "name": "{ option, index }"
+                    }
+                ],
+                "returns": null,
+                "description": "Selected options with listbox of pills event methods"
+            },
+            {
+                "name": "handlePillClickListboxOfPills",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ option, index }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleNavigateListboxOfPills",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ direction }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleRequestFocusListboxOfPills",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ ref }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleBlurPill",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "renderBase",
+                "docblock": "Combobox variant subrenders\n(these can probably be broken into function components\nif state is passed in as a prop)",
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ assistiveText, labels, props }"
+                    }
+                ],
+                "returns": null,
+                "description": "Combobox variant subrenders\n(these can probably be broken into function components\nif state is passed in as a prop)"
+            },
+            {
+                "name": "renderInlineSingle",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ assistiveText, labels, props }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "renderInlineMultiple",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{\tassistiveText, labels, props }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "renderReadOnlySingle",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{\tassistiveText, labels, props }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "renderReadOnlyMultiple",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ assistiveText, labels, props }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "custom",
+                    "raw": "shape({\n    label: PropTypes.string,\n    optionSelectedInMenu: PropTypes.string,\n    removeSingleSelectedOption: PropTypes.string,\n    removePill: PropTypes.string,\n    selectedListboxLabel: PropTypes.string\n})"
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.\n* `optionSelectedInMenu`: Added before selected menu items in Read-only variants (Picklists). The default is `Current Selection:`.\n* `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.\n* `removePill`: Used by multiple selection Comboboxes to remove a selected item (pill). Focus is on the pill. This is not a button. The default  is `, Press delete or backspace to remove`.\n* `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{\n    optionSelectedInMenu: 'Current Selection:',\n    removeSingleSelectedOption: 'Remove selected option',\n    removePill: ', Press delete or backspace to remove',\n    selectedListboxLabel: 'Selected Options:'\n}",
+                    "computed": false
+                }
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-combobox`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "classNameMenu": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-dropdown`. Uses `classNames` [API](https://github.com/JedWatson/classnames). Autocomplete/bass variant menu height should not scroll and should be determined by number items which should be no more than 10."
+            },
+            "events": {
+                "type": {
+                    "name": "custom",
+                    "raw": "shape({\n    onBlur: PropTypes.func,\n    onChange: PropTypes.func,\n    onClose: PropTypes.func,\n    onFocus: PropTypes.func,\n    onOpen: PropTypes.func,\n    onRequestClose: PropTypes.func,\n    onRequestOpen: PropTypes.func,\n    onRequestRemoveSelectedOption: PropTypes.func,\n    onSelect: PropTypes.func,\n    onSubmit: PropTypes.func\n})"
+                },
+                "required": false,
+                "description": "Event Callbacks\n* `onBlur`: Called when `input` removes focus.\n* `onChange`: Called when keyboard events occur within `input`\n* `onClose`: Triggered when the menu has closed.\n* `onFocus`: Called when `input` receives focus.\n* `onOpen`: Triggered when the menu has opened.\n* `onRequestClose`: Function called when the menu would like to hide. Please use with `isOpen`.\n* `onRequestOpen`:  Function called when the menu would like to show. Please use with `isOpen`.\n* `onRequestRemoveSelectedOption`: Function called when a single selection option is to be removed.\n* `onSelect`: Function called when a menu item is selected\n* `onSubmit`: Function called when user presses enter or submits the `input`\n_Tested with Mocha testing._",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component. _Tested with snapshot testing._"
+            },
+            "isInline": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Renders menu within the wrapping trigger as a sibling of the input. By default, you will have an absolutely positioned container at an elevated z-index. _Tested with snapshot testing._"
+            },
+            "labels": {
+                "type": {
+                    "name": "custom",
+                    "raw": "shape({\n    label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),\n    multipleOptionsSelected: PropTypes.string,\n    noOptionsFound: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),\n    placeholder: PropTypes.string,\n    placeholderReadOnly: PropTypes.string,\n    removePillTitle: PropTypes.string\n})"
+                },
+                "required": false,
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: This label appears above the input.\n* `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.\n* `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.\n* `placeholder`: Input placeholder\n* `placeholderReadOnly`: Placeholder for Picklist-like Combobox\n* `removePillTitle`: Title on `X` icon\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{\n    noOptionsFound: 'No matches found.',\n    placeholderReadOnly: 'Select an Option',\n    removePillTitle: 'Remove'\n}",
+                    "computed": false
+                }
+            },
+            "isOpen": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use view [Concepts and Best Practices](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices) _Tested with snapshot testing._"
+            },
+            "multiple": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Allows multiple selections _Tested with mocha testing._"
+            },
+            "options": {
+                "type": {
+                    "name": "array"
+                },
+                "required": true,
+                "description": "Item added to the dropdown menu. _Tested with snapshot testing._"
+            },
+            "readOnlyMenuItemVisibleLength": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "5",
+                            "computed": false
+                        },
+                        {
+                            "value": "7",
+                            "computed": false
+                        },
+                        {
+                            "value": "10",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines the height of the menu based on SLDS CSS classes. This only applies to the readonly variant. This is a `number`.",
+                "defaultValue": {
+                    "value": "5",
+                    "computed": false
+                }
+            },
+            "predefinedOptionsOnly": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Limits auto-complete input submission to one of the provided options. _Tested with mocha testing._"
+            },
+            "selection": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "Accepts an array of item objects. For single selection, pass in an array of one object. _Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "[]",
+                    "computed": false
+                }
+            },
+            "value": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Value of input. This is a controlled component, so you will need to control the input value. _Tested with snapshot testing._"
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'inline-listbox'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'readonly'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Changes styles of the input. Currently `entity` is not supported. _Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "'base'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "comboboxes",
+        "display-name": "Comboboxes",
+        "SLDS-component-path": "/components/comboboxes",
+        "dependencies": []
+    },
     "data-table": {
         "description": "DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.",
         "methods": [
@@ -2639,6 +3203,24 @@
                 "required": false,
                 "description": "CSS classes that are applied to the SVG."
             },
+            "containerClassName": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes that are applied to the span."
+            },
             "colorVariant": {
                 "type": {
                     "name": "enum",
@@ -2975,14 +3557,24 @@
                 "name": "saveEdits",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "option",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
                 "name": "endEditMode",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "option",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
@@ -3006,6 +3598,18 @@
             },
             {
                 "name": "handleKeyDown",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleKeyUp",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
@@ -3074,6 +3678,13 @@
                 },
                 "required": false,
                 "description": "This event fires when the input changes."
+            },
+            "onKeyUp": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Function will run when keyup during text edit"
             },
             "onEnterEditMode": {
                 "type": {
@@ -6910,6 +7521,13 @@
                 "required": false,
                 "description": "Triggered when an item is selected. Passes in the option object that has been selected and a data object in the format: `{ option, optionIndex }`. The first parameter may be deprecated in the future and changed to an event for consistency. Please use the data object."
             },
+            "onPillRemove": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when a pill is removed. Passes in the option object that has been removed and a data object in the format: `{ option, optionIndex }`. The first parameter may be deprecated in the future and changed to an event for consistency. Please use the data object."
+            },
             "options": {
                 "type": {
                     "name": "array"
@@ -8758,6 +9376,207 @@
         "display-name": "Progress Indicators",
         "SLDS-component-path": "/components/progress-indicator",
         "dependencies": []
+    },
+    "radio-button-group": {
+        "description": "A styled select list that can have a single entry checked at any one time.\nThe RadioButtonGroup component wraps Radio components.",
+        "methods": [
+            {
+                "name": "getName",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getErrorId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": true,
+                "description": "Children are expected to be Radio components."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Custom CSS classes added to `slds-radio_button-group` node."
+            },
+            "labels": {
+                "type": {
+                    "name": "custom",
+                    "raw": "shape({\n    error: PropTypes.string,\n    label: PropTypes.string\n})"
+                },
+                "required": false,
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `error`: Message to display when any of Checkboxes are in an error state.\n* `label`: This label appears above the button group.",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
+            "onChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This event fires when the radio selection changes."
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disable all radio inputs."
+            },
+            "required": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Adds an indicator that this field is required."
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The name of this radio group."
+            },
+            "errorId": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The ID of the error message, for linking to radio inputs with aria-describedby."
+            }
+        },
+        "route": "radio-button-groups",
+        "display-name": "Radio Button Groups",
+        "SLDS-component-path": "/components/radio-button-group",
+        "dependencies": [
+            {
+                "radio": {
+                    "description": "A radio input, usually part of a group that can have a single input checked at any one time.",
+                    "methods": [
+                        {
+                            "name": "getId",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null
+                        }
+                    ],
+                    "props": {
+                        "aria-describedby": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "The ID of an element that describes this radio input. Often used for error messages."
+                        },
+                        "checked": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "This is a controlled component. This radio is checked according to this value."
+                        },
+                        "disabled": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Disable this radio input."
+                        },
+                        "id": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "A unique ID that is used to associating a label to the `input` element. This ID is added to the `input` element."
+                        },
+                        "label": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "string"
+                                    },
+                                    {
+                                        "name": "element"
+                                    }
+                                ]
+                            },
+                            "required": true,
+                            "description": "The string or element that is shown as both the title and the label for this radio input."
+                        },
+                        "name": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "The name of the radio input group."
+                        },
+                        "onChange": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "This event fires when the radio selection changes."
+                        },
+                        "value": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "The value of this radio input."
+                        },
+                        "variant": {
+                            "type": {
+                                "name": "enum",
+                                "value": [
+                                    {
+                                        "value": "'base'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'button-group'",
+                                        "computed": false
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "Variant of the Radio button. Base is the default and button-group makes the radio button look like a normal button (should be a child of <RadioButtonGroup>).",
+                            "defaultValue": {
+                                "value": "'base'",
+                                "computed": false
+                            }
+                        }
+                    },
+                    "name": "radio",
+                    "source": "/components/radio-button-group/radio.jsx"
+                }
+            }
+        ]
     },
     "tooltip": {
         "description": "The PopoverTooltip component is variant of the Lightning Design System Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or an anchor), so that keyboard users can navigate to it.",

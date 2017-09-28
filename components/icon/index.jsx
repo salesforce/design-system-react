@@ -29,6 +29,7 @@ const Icon = ({
 	assistiveText,
 	category,
 	className,
+	containerClassName,
 	icon,
 	inverse,
 	name,
@@ -44,7 +45,7 @@ const Icon = ({
 				'slds-icon_container': category !== 'utility',
 				'slds-icon_container--circle': category === 'action',
 				[`slds-icon-${category}-${kababCaseName}`]: category !== 'utility' && category !== 'doctype' && !path
-			})}
+			}, containerClassName)}
 			title={title}
 		>
 			<UtilityIcon
@@ -95,6 +96,10 @@ Icon.propTypes = {
 	 * CSS classes that are applied to the SVG.
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	/**
+	 * CSS classes that are applied to the span.
+	 */
+	containerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
 	 * Icon color variants
 	 */

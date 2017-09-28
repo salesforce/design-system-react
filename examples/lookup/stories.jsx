@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import { storiesOf, action } from '@kadira/storybook';
 import IconSettings from '../../components/iconSettings';
 
@@ -6,7 +7,7 @@ import { LOOKUP } from '../../utilities/constants';
 import Lookup from '../../components/lookup';
 import SLDSButton from '../../components/button';
 
-const DemoLookup = React.createClass({
+const DemoLookup = createReactClass({
 	displayName: 'DemoLookup',
 
 	getInitialState () {
@@ -45,7 +46,7 @@ const DemoLookup = React.createClass({
 	}
 });
 
-const DemoLookupAccounts = React.createClass({
+const DemoLookupAccounts = createReactClass({
 	displayName: 'DemoLookupAccounts',
 
 	getInitialState () {

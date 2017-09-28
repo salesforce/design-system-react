@@ -8,6 +8,7 @@
 
 // ### React
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -22,7 +23,7 @@ import { LIST } from '../../../utilities/constants';
 /**
  * Component description.
  */
-const List = React.createClass({
+const List = createReactClass({
 	displayName: LIST,
 
 	propTypes: {
@@ -95,6 +96,7 @@ const List = React.createClass({
 						return (
 							<ListItem
 								{...option}
+								aria-disabled={option.disabled}
 								checkmark={this.props.checkmark && (isSingleSelected || isMultipleSelected)}
 								data={option}
 								id={id}

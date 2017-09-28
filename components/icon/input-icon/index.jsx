@@ -14,7 +14,7 @@ import classNames from 'classnames';
 import isFunction from 'lodash.isfunction';
 
 // ## Children
-import SLDSUtilityIcon from '../../utilities/utility-icon';
+import UtilityIcon from '../../utilities/utility-icon';
 import Button from '../../button';
 
 // ## Constants
@@ -34,12 +34,36 @@ const InputIcon = (props) => {
 		name,
 		path,
 		onClick,
+		variant,
 		...rest
 	} = props;
 
+	// need to pass click event up on SVG
+
+	const variants = {
+		combobox: (<span className="slds-icon_container slds-input__icon slds-input__icon_right">
+			<UtilityIcon
+				aria-hidden
+				category={category}
+				className={classNames('slds-icon slds-icon_x-small slds-icon-text-default')}
+				name={name}
+				path={path}
+				{...rest}
+			/>
+		</span>),
+		base: (<UtilityIcon
+			aria-hidden
+			category={category}
+			className={classNames('slds-input__icon slds-icon-text-default', { [`slds-input__icon--${iconPosition}`]: iconPosition })}
+			name={name}
+			path={path}
+			{...rest}
+		/>)
+	};
+
 	return isFunction(onClick)
 	? <Button
-		className={classNames('slds-icon slds-input__icon', { [`slds-input__icon_${iconPosition}`]: iconPosition })}
+		className={classNames('slds-input__icon', { [`slds-input__icon_${iconPosition}`]: iconPosition })}
 		iconCategory={category}
 		iconName={name}
 		iconPath={path}
@@ -47,14 +71,7 @@ const InputIcon = (props) => {
 		variant="icon"
 		{...rest}
 	/>
-	: <SLDSUtilityIcon
-		aria-hidden
-		category={category}
-		className={classNames('slds-icon slds-input__icon slds-icon-text-default', { [`slds-input__icon_${iconPosition}`]: iconPosition })}
-		name={name}
-		path={path}
-		{...rest}
-	/>;
+	: variants[variant];
 };
 
 InputIcon.displayName = ICON_INPUT;
@@ -76,17 +93,22 @@ InputIcon.propTypes = {
 	 */
 	name: PropTypes.string,
 	/**
-   * Path to the icon. This will override any global icon settings.
-   */
+	 * Path to the icon. This will override any global icon settings.
+	 */
 	path: PropTypes.string,
 	/**
 	 * This event fires when the icon is clicked.
 	 */
-	onClick: PropTypes.func
+	onClick: PropTypes.func,
+	/**
+	 * Changes styles of the InputIcon.
+	 */
+	variant: PropTypes.oneOf(['base', 'combobox'])
 };
 
 InputIcon.defaultProps = {
-	category: 'utility'
+	category: 'utility',
+	variant: 'base'
 };
 
 module.exports = InputIcon;

@@ -9,6 +9,7 @@
 
 // ### React
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import { shape } from 'airbnb-prop-types';
 
@@ -26,6 +27,7 @@ import shortid from 'shortid';
 // ## Children
 import InputIcon from '../../icon/input-icon';
 import InnerInput from './private/inner-input';
+import Label from '../private/label';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
@@ -33,7 +35,7 @@ import checkProps from './check-props';
 import { FORMS_INPUT } from '../../../utilities/constants';
 
 // ## InputDefinition
-const Input = React.createClass({
+const Input = createReactClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: FORMS_INPUT,
@@ -239,40 +241,24 @@ const Input = React.createClass({
 
 	// ### Render
 	render () {
-		const props = this.props;
-
-		const labelText = props.label
-			|| (props.assistiveText && props.assistiveText.label); // One of these is required to pass accessibility tests
-
 		// this is a hack to make left the default prop unless overwritten by `iconPosition="right"`
-		const hasLeftIcon = !!props.iconLeft || ((props.iconPosition === 'left' || props.iconPosition === undefined) && !!props.iconName);
-		const hasRightIcon = !!props.iconRight || (props.iconPosition === 'right' && !!props.iconName);
+		const hasLeftIcon = !!this.props.iconLeft || ((this.props.iconPosition === 'left' || this.props.iconPosition === undefined) && !!this.props.iconName);
+		const hasRightIcon = !!this.props.iconRight || (this.props.iconPosition === 'right' && !!this.props.iconName);
 
 		return (
 			<div
 				className={classNames('slds-form-element', {
-					'slds-has-error': props.errorText
+					'slds-has-error': this.props.errorText
 				},
-				props.className)}
+				this.props.className)}
 			>
-				{labelText && (props.isStatic
-					? <span
-						className={classNames('slds-form-element__label', {
-							'slds-assistive-text': (props.assistiveText && props.assistiveText.label) && !props.label
-						})}
-					>
-						{labelText}
-					</span>
-					: <label
-						className={classNames('slds-form-element__label', {
-							'slds-assistive-text': (props.assistiveText && props.assistiveText.label) && !props.label
-						})}
-						htmlFor={this.getId()}
-					>
-						{props.required && <abbr className="slds-required" title="required">*</abbr>}
-						{labelText}
-					</label>
-				)}
+				<Label
+					assistiveText={this.props.assistiveText}
+					htmlFor={this.props.isStatic ? undefined : this.getId()}
+					label={this.props.label}
+					required={this.props.required}
+					variant={this.props.isStatic ? 'static' : 'base'}
+				/>
 				<InnerInput
 					aria-activedescendant={this.props['aria-activedescendant']}
 					aria-autocomplete={this.props['aria-autocomplete']}
@@ -282,41 +268,43 @@ const Input = React.createClass({
 					aria-expanded={this.props['aria-expanded']}
 					aria-owns={this.props['aria-owns']}
 					aria-required={this.props['aria-required']}
-					containerClassName="slds-form-element__control"
-					disabled={props.disabled}
-					fixedTextLeft={props.fixedTextLeft}
-					fixedTextRight={props.fixedTextRight}
-					hasSpinner={props.hasSpinner}
+					containerProps={{
+						className: 'slds-form-element__control'
+					}}
+					disabled={this.props.disabled}
+					fixedTextLeft={this.props.fixedTextLeft}
+					fixedTextRight={this.props.fixedTextRight}
+					hasSpinner={this.props.hasSpinner}
 					id={this.getId()}
 					iconLeft={hasLeftIcon ? this.getIconRender('left', 'iconLeft') : null}
 					iconRight={hasRightIcon ? this.getIconRender('right', 'iconRight') : null}
-					inlineEditTrigger={props.inlineEditTrigger}
-					isStatic={props.isStatic}
-					minLength={props.minLength}
-					maxLength={props.maxLength}
-					name={props.name}
-					onBlur={props.onBlur}
-					onChange={props.onChange}
-					onClick={props.onClick}
-					onFocus={props.onFocus}
-					onInput={props.onInput}
-					onInvalid={props.onInvalid}
-					onKeyDown={props.onKeyDown}
-					onKeyPress={props.onKeyPress}
-					onKeyUp={props.onKeyUp}
-					onSelect={props.onSelect}
-					onSubmit={props.onSubmit}
-					placeholder={props.placeholder}
-					inputRef={props.inputRef}
-					readOnly={props.readOnly}
-					required={props.required}
-					role={props.role}
-					spinnerAssistiveText={props.assistiveText && props.assistiveText.spinner}
-					type={props.type}
-					value={props.value}
+					inlineEditTrigger={this.props.inlineEditTrigger}
+					isStatic={this.props.isStatic}
+					minLength={this.props.minLength}
+					maxLength={this.props.maxLength}
+					name={this.props.name}
+					onBlur={this.props.onBlur}
+					onChange={this.props.onChange}
+					onClick={this.props.onClick}
+					onFocus={this.props.onFocus}
+					onInput={this.props.onInput}
+					onInvalid={this.props.onInvalid}
+					onKeyDown={this.props.onKeyDown}
+					onKeyPress={this.props.onKeyPress}
+					onKeyUp={this.props.onKeyUp}
+					onSelect={this.props.onSelect}
+					onSubmit={this.props.onSubmit}
+					placeholder={this.props.placeholder}
+					inputRef={this.props.inputRef}
+					readOnly={this.props.readOnly}
+					required={this.props.required}
+					role={this.props.role}
+					spinnerAssistiveText={this.props.assistiveText && this.props.assistiveText.spinner}
+					type={this.props.type}
+					value={this.props.value}
 				/>
-				{props.errorText && <div id={this.getErrorId()} className="slds-form-element__help">{props.errorText}</div>}
-				{props.children}
+				{this.props.errorText && <div id={this.getErrorId()} className="slds-form-element__help">{this.props.errorText}</div>}
+				{this.props.children}
 			</div>
 		);
 	}

@@ -1,0 +1,1419 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Base Open DOM Snapshot 1`] = `
+<IconSettings
+  iconPath="/assets/icons"
+>
+  <SLDSCombobox
+    assistiveText={
+      Object {
+        "optionSelectedInMenu": "Current Selection:",
+        "removePill": ", Press delete or backspace to remove",
+        "removeSingleSelectedOption": "Remove selected option",
+        "selectedListboxLabel": "Selected Options:",
+      }
+    }
+    events={Object {}}
+    id="combobox-unique-id"
+    isInline={true}
+    isOpen={true}
+    labels={
+      Object {
+        "placeholder": "Search Salesforce",
+      }
+    }
+    onChange={[Function]}
+    onRequestRemoveSelectedOption={[Function]}
+    onSelect={[Function]}
+    onSubmit={[Function]}
+    options={
+      Array [
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "1",
+          "label": "Acme",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "2",
+          "label": "Salesforce.com, Inc.",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+      ]
+    }
+    readOnlyMenuItemVisibleLength={5}
+    selection={Array []}
+    value=""
+    variant="base"
+  />
+</IconSettings>
+`;
+
+exports[`Base Open HTML Snapshot 1`] = `
+"<div class=\\"slds-form-element\\">
+  <div class=\\"slds-form-element__control\\">
+    <div class=\\"slds-combobox_container\\">
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\" role=\\"combobox\\">
+        <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\" role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\"
+            class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
+        <div id=\\"combobox-unique-id-listbox\\" role=\\"listbox\\">
+          <ul class=\\"slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid\\" role=\\"presentation\\">
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-1\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+              </span><span class=\\"slds-media__body\\"><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Acme</span><span class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • San Francisco</span></span>
+              </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-2\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+              </span><span class=\\"slds-media__body\\"><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Salesforce.com, Inc.</span><span class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • San Francisco</span></span>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Base Selected DOM Snapshot 1`] = `
+<IconSettings
+  iconPath="/assets/icons"
+>
+  <SLDSCombobox
+    assistiveText={
+      Object {
+        "optionSelectedInMenu": "Current Selection:",
+        "removePill": ", Press delete or backspace to remove",
+        "removeSingleSelectedOption": "Remove selected option",
+        "selectedListboxLabel": "Selected Options:",
+      }
+    }
+    events={Object {}}
+    id="combobox-unique-id"
+    isInline={true}
+    labels={
+      Object {
+        "placeholder": "Search Salesforce",
+      }
+    }
+    onChange={[Function]}
+    onRequestRemoveSelectedOption={[Function]}
+    onSelect={[Function]}
+    onSubmit={[Function]}
+    options={
+      Array [
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "1",
+          "label": "Acme",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "2",
+          "label": "Salesforce.com, Inc.",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+      ]
+    }
+    readOnlyMenuItemVisibleLength={5}
+    selection={
+      Array [
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "2",
+          "label": "Salesforce.com, Inc.",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+      ]
+    }
+    value=""
+    variant="base"
+  />
+</IconSettings>
+`;
+
+exports[`Base Selected HTML Snapshot 1`] = `
+"<div class=\\"slds-form-element\\">
+  <div class=\\"slds-form-element__control\\">
+    <div class=\\"slds-combobox_container\\">
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\" role=\\"combobox\\">
+        <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\" role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\"
+            class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
+      </div>
+    </div>
+    <div id=\\"combobox-unique-id-selected-listbox\\" role=\\"listbox\\" aria-orientation=\\"horizontal\\">
+      <ul class=\\"slds-listbox slds-listbox_horizontal slds-p-top_xxx-small\\" role=\\"group\\" aria-label=\\"Selected Options:\\">
+        <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span class=\\"slds-pill\\" role=\\"option\\" tabindex=\\"0\\" aria-selected=\\"true\\"><span class=\\"slds-icon_container slds-icon-standard-account slds-pill__icon_container\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+          <span
+            class=\\"slds-pill__label\\">Salesforce.com, Inc.</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\"><svg style=\\"cursor:pointer;\\" aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
+            </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Inline Multiple Selection DOM Snapshot 1`] = `
+<IconSettings
+  iconPath="/assets/icons"
+>
+  <OnClickOutside(SLDSCombobox)
+    events={
+      Object {
+        "onChange": [Function],
+        "onRequestRemoveSelectedOption": [Function],
+        "onSelect": [Function],
+        "onSubmit": [Function],
+      }
+    }
+    id="combobox-unique-id"
+    isInline={true}
+    labels={
+      Object {
+        "label": "Search",
+        "placeholder": "Search Salesforce",
+      }
+    }
+    multiple={true}
+    options={
+      Array [
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "1",
+          "label": "Acme",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "2",
+          "label": "Salesforce.com, Inc.",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "3",
+          "label": "Paddy's Pub",
+          "subTitle": "Account • Boston, MA",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "4",
+          "label": "Tyrell Corp",
+          "subTitle": "Account • San Francisco, CA",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "5",
+          "label": "Paper St. Soap Company",
+          "subTitle": "Account • Beloit, WI",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "6",
+          "label": "Nakatomi Investments",
+          "subTitle": "Account • Chicago, IL",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "7",
+          "label": "Acme Landscaping",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "8",
+          "label": "Acme Construction",
+          "subTitle": "Account • Grand Marais, MN",
+          "type": "account",
+        },
+      ]
+    }
+    selection={Array []}
+    value=""
+    variant="inline-listbox"
+  />
+</IconSettings>
+`;
+
+exports[`Inline Multiple Selection HTML Snapshot 1`] = `
+"<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
+  <div class=\\"slds-form-element__control\\">
+    <div class=\\"slds-combobox_container\\">
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"combobox\\">
+        <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\" role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\"
+            class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Inline Multiple Selection Selected DOM Snapshot 1`] = `
+<IconSettings
+  iconPath="/assets/icons"
+>
+  <OnClickOutside(SLDSCombobox)
+    events={
+      Object {
+        "onChange": [Function],
+        "onRequestRemoveSelectedOption": [Function],
+        "onSelect": [Function],
+        "onSubmit": [Function],
+      }
+    }
+    id="combobox-unique-id"
+    isInline={true}
+    labels={
+      Object {
+        "label": "Search",
+        "placeholder": "Search Salesforce",
+      }
+    }
+    multiple={true}
+    options={
+      Array [
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "3",
+          "label": "Paddy's Pub",
+          "subTitle": "Account • Boston, MA",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "4",
+          "label": "Tyrell Corp",
+          "subTitle": "Account • San Francisco, CA",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "5",
+          "label": "Paper St. Soap Company",
+          "subTitle": "Account • Beloit, WI",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "6",
+          "label": "Nakatomi Investments",
+          "subTitle": "Account • Chicago, IL",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "7",
+          "label": "Acme Landscaping",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "8",
+          "label": "Acme Construction",
+          "subTitle": "Account • Grand Marais, MN",
+          "type": "account",
+        },
+      ]
+    }
+    selection={
+      Array [
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "1",
+          "label": "Acme",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "2",
+          "label": "Salesforce.com, Inc.",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+      ]
+    }
+    value=""
+    variant="inline-listbox"
+  />
+</IconSettings>
+`;
+
+exports[`Inline Multiple Selection Selected HTML Snapshot 1`] = `
+"<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
+  <div class=\\"slds-form-element__control\\">
+    <div class=\\"slds-combobox_container slds-has-inline-listbox\\">
+      <div id=\\"combobox-unique-id-selected-listbox\\" role=\\"listbox\\" aria-orientation=\\"horizontal\\">
+        <ul class=\\"slds-listbox slds-listbox_horizontal slds-p-top_xxx-small\\" role=\\"group\\" aria-label=\\"Selected Options:\\">
+          <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span class=\\"slds-pill\\" role=\\"option\\" tabindex=\\"0\\" aria-selected=\\"true\\"><span class=\\"slds-icon_container slds-icon-standard-account slds-pill__icon_container\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+            <span
+              class=\\"slds-pill__label\\">Acme</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\"><svg style=\\"cursor:pointer;\\" aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
+              </span>
+          </li>
+          <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span class=\\"slds-pill\\" role=\\"option\\" tabindex=\\"-1\\" aria-selected=\\"true\\"><span class=\\"slds-icon_container slds-icon-standard-account slds-pill__icon_container\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+            <span
+              class=\\"slds-pill__label\\">Salesforce.com, Inc.</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\"><svg style=\\"cursor:pointer;\\" aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
+              </span>
+          </li>
+        </ul>
+      </div>
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"combobox\\">
+        <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\" role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\"
+            class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Inline Single Selection DOM Snapshot 1`] = `
+<IconSettings
+  iconPath="/assets/icons"
+>
+  <OnClickOutside(SLDSCombobox)
+    events={
+      Object {
+        "onChange": [Function],
+        "onRequestRemoveSelectedOption": [Function],
+        "onSelect": [Function],
+        "onSubmit": [Function],
+      }
+    }
+    id="combobox-unique-id"
+    isInline={true}
+    labels={
+      Object {
+        "label": "Search",
+        "placeholder": "Search Salesforce",
+      }
+    }
+    options={
+      Array [
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "1",
+          "label": "Acme",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "2",
+          "label": "Salesforce.com, Inc.",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "3",
+          "label": "Paddy's Pub",
+          "subTitle": "Account • Boston, MA",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "4",
+          "label": "Tyrell Corp",
+          "subTitle": "Account • San Francisco, CA",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "5",
+          "label": "Paper St. Soap Company",
+          "subTitle": "Account • Beloit, WI",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "6",
+          "label": "Nakatomi Investments",
+          "subTitle": "Account • Chicago, IL",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "7",
+          "label": "Acme Landscaping",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "8",
+          "label": "Acme Construction",
+          "subTitle": "Account • Grand Marais, MN",
+          "type": "account",
+        },
+      ]
+    }
+    selection={Array []}
+    value=""
+    variant="inline-listbox"
+  />
+</IconSettings>
+`;
+
+exports[`Inline Single Selection HTML Snapshot 1`] = `
+"<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
+  <div class=\\"slds-form-element__control\\">
+    <div class=\\"slds-combobox_container\\">
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"combobox\\">
+        <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\" role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\"
+            class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Inline Single Selection Selected DOM Snapshot 1`] = `
+<IconSettings
+  iconPath="/assets/icons"
+>
+  <OnClickOutside(SLDSCombobox)
+    events={
+      Object {
+        "onChange": [Function],
+        "onRequestRemoveSelectedOption": [Function],
+        "onSelect": [Function],
+        "onSubmit": [Function],
+      }
+    }
+    id="combobox-unique-id"
+    isInline={true}
+    labels={
+      Object {
+        "label": "Search",
+        "placeholder": "Search Salesforce",
+      }
+    }
+    options={
+      Array [
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "2",
+          "label": "Salesforce.com, Inc.",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "3",
+          "label": "Paddy's Pub",
+          "subTitle": "Account • Boston, MA",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "4",
+          "label": "Tyrell Corp",
+          "subTitle": "Account • San Francisco, CA",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "5",
+          "label": "Paper St. Soap Company",
+          "subTitle": "Account • Beloit, WI",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "6",
+          "label": "Nakatomi Investments",
+          "subTitle": "Account • Chicago, IL",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "7",
+          "label": "Acme Landscaping",
+          "type": "account",
+        },
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "8",
+          "label": "Acme Construction",
+          "subTitle": "Account • Grand Marais, MN",
+          "type": "account",
+        },
+      ]
+    }
+    selection={
+      Array [
+        Object {
+          "icon": <SLDSIcon
+            assistiveText="Account"
+            category="standard"
+            name="account"
+            size="medium"
+      />,
+          "id": "1",
+          "label": "Acme",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+      ]
+    }
+    value=""
+    variant="inline-listbox"
+  />
+</IconSettings>
+`;
+
+exports[`Inline Single Selection Selected HTML Snapshot 1`] = `
+"<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
+  <div class=\\"slds-form-element__control\\">
+    <div class=\\"slds-combobox_container slds-has-inline-listbox\\">
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"combobox\\">
+        <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right\\" role=\\"none\\"><span class=\\"slds-icon_container slds-icon-standard-account slds-combobox__input-entity-icon\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span><input
+            type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\" readonly=\\"\\" role=\\"textbox\\" value=\\"Acme\\" />
+          <button
+            class=\\"slds-button slds-button--icon slds-input__icon slds-input__icon_right\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove selected option</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Readonly Multiple Selection DOM Snapshot 1`] = `
+<IconSettings
+  iconPath="/assets/icons"
+>
+  <OnClickOutside(SLDSCombobox)
+    events={
+      Object {
+        "onRequestRemoveSelectedOption": [Function],
+        "onSelect": [Function],
+      }
+    }
+    id="combobox-unique-id"
+    isInline={true}
+    labels={
+      Object {
+        "label": "Search",
+        "placeholder": "Search Salesforce",
+      }
+    }
+    multiple={true}
+    options={
+      Array [
+        Object {
+          "id": "1",
+          "label": "Acme",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+        Object {
+          "id": "2",
+          "label": "Salesforce.com, Inc.",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+        Object {
+          "id": "3",
+          "label": "Paddy's Pub",
+          "subTitle": "Account • Boston, MA",
+          "type": "account",
+        },
+        Object {
+          "id": "4",
+          "label": "Tyrell Corp",
+          "subTitle": "Account • San Francisco, CA",
+          "type": "account",
+        },
+        Object {
+          "id": "5",
+          "label": "Paper St. Soap Company",
+          "subTitle": "Account • Beloit, WI",
+          "type": "account",
+        },
+        Object {
+          "id": "6",
+          "label": "Nakatomi Investments",
+          "subTitle": "Account • Chicago, IL",
+          "type": "account",
+        },
+        Object {
+          "id": "7",
+          "label": "Acme Landscaping",
+          "type": "account",
+        },
+        Object {
+          "id": "8",
+          "label": "Acme Construction",
+          "subTitle": "Account • Grand Marais, MN",
+          "type": "account",
+        },
+      ]
+    }
+    selection={Array []}
+    value=""
+    variant="readonly"
+  />
+</IconSettings>
+`;
+
+exports[`Readonly Multiple Selection HTML Snapshot 1`] = `
+"<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
+  <div class=\\"slds-form-element__control\\">
+    <div class=\\"slds-combobox_container\\">
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"combobox\\">
+        <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Select an Option\\" readonly=\\"\\" role=\\"textbox\\" value=\\"\\" />
+          <span
+            class=\\"slds-icon_container slds-input__icon slds-input__icon_right\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Readonly Multiple Selection Multiple Items Selected DOM Snapshot 1`] = `
+<IconSettings
+  iconPath="/assets/icons"
+>
+  <OnClickOutside(SLDSCombobox)
+    events={
+      Object {
+        "onRequestRemoveSelectedOption": [Function],
+        "onSelect": [Function],
+      }
+    }
+    id="combobox-unique-id"
+    isInline={true}
+    labels={
+      Object {
+        "label": "Search",
+        "placeholder": "Search Salesforce",
+      }
+    }
+    multiple={true}
+    options={
+      Array [
+        Object {
+          "id": "1",
+          "label": "Acme",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+        Object {
+          "id": "2",
+          "label": "Salesforce.com, Inc.",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+        Object {
+          "id": "3",
+          "label": "Paddy's Pub",
+          "subTitle": "Account • Boston, MA",
+          "type": "account",
+        },
+        Object {
+          "id": "4",
+          "label": "Tyrell Corp",
+          "subTitle": "Account • San Francisco, CA",
+          "type": "account",
+        },
+        Object {
+          "id": "5",
+          "label": "Paper St. Soap Company",
+          "subTitle": "Account • Beloit, WI",
+          "type": "account",
+        },
+        Object {
+          "id": "6",
+          "label": "Nakatomi Investments",
+          "subTitle": "Account • Chicago, IL",
+          "type": "account",
+        },
+        Object {
+          "id": "7",
+          "label": "Acme Landscaping",
+          "type": "account",
+        },
+        Object {
+          "id": "8",
+          "label": "Acme Construction",
+          "subTitle": "Account • Grand Marais, MN",
+          "type": "account",
+        },
+      ]
+    }
+    selection={
+      Array [
+        Object {
+          "id": "1",
+          "label": "Acme",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+        Object {
+          "id": "2",
+          "label": "Salesforce.com, Inc.",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+      ]
+    }
+    value=""
+    variant="readonly"
+  />
+</IconSettings>
+`;
+
+exports[`Readonly Multiple Selection Multiple Items Selected HTML Snapshot 1`] = `
+"<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
+  <div class=\\"slds-form-element__control\\">
+    <div class=\\"slds-combobox_container\\">
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"combobox\\">
+        <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Select an Option\\" readonly=\\"\\" role=\\"textbox\\" value=\\"2 options selected\\"
+          /><span class=\\"slds-icon_container slds-input__icon slds-input__icon_right\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span></div>
+      </div>
+    </div>
+    <div id=\\"combobox-unique-id-selected-listbox\\" role=\\"listbox\\" aria-orientation=\\"horizontal\\">
+      <ul class=\\"slds-listbox slds-listbox_horizontal slds-p-top_xxx-small\\" role=\\"group\\" aria-label=\\"Selected Options:\\">
+        <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span class=\\"slds-pill\\" role=\\"option\\" tabindex=\\"0\\" aria-selected=\\"true\\"><span class=\\"slds-pill__label\\">Acme</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\"><svg style=\\"cursor:pointer;\\" aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
+          </span>
+        </li>
+        <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span class=\\"slds-pill\\" role=\\"option\\" tabindex=\\"-1\\" aria-selected=\\"true\\"><span class=\\"slds-pill__label\\">Salesforce.com, Inc.</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\"><svg style=\\"cursor:pointer;\\" aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Readonly Multiple Selection Single Item Selected DOM Snapshot 1`] = `
+<IconSettings
+  iconPath="/assets/icons"
+>
+  <OnClickOutside(SLDSCombobox)
+    events={
+      Object {
+        "onRequestRemoveSelectedOption": [Function],
+        "onSelect": [Function],
+      }
+    }
+    id="combobox-unique-id"
+    isInline={true}
+    labels={
+      Object {
+        "label": "Search",
+        "placeholder": "Search Salesforce",
+      }
+    }
+    multiple={true}
+    options={
+      Array [
+        Object {
+          "id": "1",
+          "label": "Acme",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+        Object {
+          "id": "2",
+          "label": "Salesforce.com, Inc.",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+        Object {
+          "id": "3",
+          "label": "Paddy's Pub",
+          "subTitle": "Account • Boston, MA",
+          "type": "account",
+        },
+        Object {
+          "id": "4",
+          "label": "Tyrell Corp",
+          "subTitle": "Account • San Francisco, CA",
+          "type": "account",
+        },
+        Object {
+          "id": "5",
+          "label": "Paper St. Soap Company",
+          "subTitle": "Account • Beloit, WI",
+          "type": "account",
+        },
+        Object {
+          "id": "6",
+          "label": "Nakatomi Investments",
+          "subTitle": "Account • Chicago, IL",
+          "type": "account",
+        },
+        Object {
+          "id": "7",
+          "label": "Acme Landscaping",
+          "type": "account",
+        },
+        Object {
+          "id": "8",
+          "label": "Acme Construction",
+          "subTitle": "Account • Grand Marais, MN",
+          "type": "account",
+        },
+      ]
+    }
+    selection={
+      Array [
+        Object {
+          "id": "1",
+          "label": "Acme",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+      ]
+    }
+    value=""
+    variant="readonly"
+  />
+</IconSettings>
+`;
+
+exports[`Readonly Multiple Selection Single Item Selected HTML Snapshot 1`] = `
+"<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
+  <div class=\\"slds-form-element__control\\">
+    <div class=\\"slds-combobox_container\\">
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"combobox\\">
+        <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Select an Option\\" readonly=\\"\\" role=\\"textbox\\" value=\\"Acme\\" />
+          <span
+            class=\\"slds-icon_container slds-input__icon slds-input__icon_right\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Readonly Single Selection DOM Snapshot 1`] = `
+<IconSettings
+  iconPath="/assets/icons"
+>
+  <OnClickOutside(SLDSCombobox)
+    events={
+      Object {
+        "onSelect": [Function],
+      }
+    }
+    id="combobox-unique-id"
+    isInline={true}
+    labels={
+      Object {
+        "label": "Search",
+        "placeholder": "Search Salesforce",
+      }
+    }
+    options={
+      Array [
+        Object {
+          "id": "1",
+          "label": "Acme",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+        Object {
+          "id": "2",
+          "label": "Salesforce.com, Inc.",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+        Object {
+          "id": "3",
+          "label": "Paddy's Pub",
+          "subTitle": "Account • Boston, MA",
+          "type": "account",
+        },
+        Object {
+          "id": "4",
+          "label": "Tyrell Corp",
+          "subTitle": "Account • San Francisco, CA",
+          "type": "account",
+        },
+        Object {
+          "id": "5",
+          "label": "Paper St. Soap Company",
+          "subTitle": "Account • Beloit, WI",
+          "type": "account",
+        },
+        Object {
+          "id": "6",
+          "label": "Nakatomi Investments",
+          "subTitle": "Account • Chicago, IL",
+          "type": "account",
+        },
+        Object {
+          "id": "7",
+          "label": "Acme Landscaping",
+          "type": "account",
+        },
+        Object {
+          "id": "8",
+          "label": "Acme Construction",
+          "subTitle": "Account • Grand Marais, MN",
+          "type": "account",
+        },
+      ]
+    }
+    selection={Array []}
+    value=""
+    variant="readonly"
+  />
+</IconSettings>
+`;
+
+exports[`Readonly Single Selection HTML Snapshot 1`] = `
+"<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
+  <div class=\\"slds-form-element__control\\">
+    <div class=\\"slds-combobox_container\\">
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"combobox\\">
+        <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Select an Option\\" readonly=\\"\\" role=\\"textbox\\" value=\\"\\" />
+          <span
+            class=\\"slds-icon_container slds-input__icon slds-input__icon_right\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Readonly Single Selection Selected DOM Snapshot 1`] = `
+<IconSettings
+  iconPath="/assets/icons"
+>
+  <OnClickOutside(SLDSCombobox)
+    events={
+      Object {
+        "onSelect": [Function],
+      }
+    }
+    id="combobox-unique-id"
+    isInline={true}
+    labels={
+      Object {
+        "label": "Search",
+        "placeholder": "Search Salesforce",
+      }
+    }
+    options={
+      Array [
+        Object {
+          "id": "1",
+          "label": "Acme",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+        Object {
+          "id": "2",
+          "label": "Salesforce.com, Inc.",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+        Object {
+          "id": "3",
+          "label": "Paddy's Pub",
+          "subTitle": "Account • Boston, MA",
+          "type": "account",
+        },
+        Object {
+          "id": "4",
+          "label": "Tyrell Corp",
+          "subTitle": "Account • San Francisco, CA",
+          "type": "account",
+        },
+        Object {
+          "id": "5",
+          "label": "Paper St. Soap Company",
+          "subTitle": "Account • Beloit, WI",
+          "type": "account",
+        },
+        Object {
+          "id": "6",
+          "label": "Nakatomi Investments",
+          "subTitle": "Account • Chicago, IL",
+          "type": "account",
+        },
+        Object {
+          "id": "7",
+          "label": "Acme Landscaping",
+          "type": "account",
+        },
+        Object {
+          "id": "8",
+          "label": "Acme Construction",
+          "subTitle": "Account • Grand Marais, MN",
+          "type": "account",
+        },
+      ]
+    }
+    selection={
+      Array [
+        Object {
+          "id": "1",
+          "label": "Acme",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+      ]
+    }
+    value=""
+    variant="readonly"
+  />
+</IconSettings>
+`;
+
+exports[`Readonly Single Selection Selected HTML Snapshot 1`] = `
+"<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
+  <div class=\\"slds-form-element__control\\">
+    <div class=\\"slds-combobox_container\\">
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"combobox\\">
+        <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Select an Option\\" readonly=\\"\\" role=\\"textbox\\" value=\\"Acme\\" />
+          <span
+            class=\\"slds-icon_container slds-input__icon slds-input__icon_right\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
+<IconSettings
+  iconPath="/assets/icons"
+>
+  <OnClickOutside(SLDSCombobox)
+    events={
+      Object {
+        "onSelect": [Function],
+      }
+    }
+    id="combobox-unique-id"
+    isInline={true}
+    isOpen={true}
+    labels={
+      Object {
+        "label": "Search",
+        "placeholder": "Search Salesforce",
+      }
+    }
+    options={
+      Array [
+        Object {
+          "id": "1",
+          "label": "Acme",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+        Object {
+          "id": "2",
+          "label": "Salesforce.com, Inc.",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+        Object {
+          "id": "3",
+          "label": "Paddy's Pub",
+          "subTitle": "Account • Boston, MA",
+          "type": "account",
+        },
+        Object {
+          "id": "4",
+          "label": "Tyrell Corp",
+          "subTitle": "Account • San Francisco, CA",
+          "type": "account",
+        },
+        Object {
+          "id": "5",
+          "label": "Paper St. Soap Company",
+          "subTitle": "Account • Beloit, WI",
+          "type": "account",
+        },
+        Object {
+          "id": "6",
+          "label": "Nakatomi Investments",
+          "subTitle": "Account • Chicago, IL",
+          "type": "account",
+        },
+        Object {
+          "id": "7",
+          "label": "Acme Landscaping",
+          "type": "account",
+        },
+        Object {
+          "id": "8",
+          "label": "Acme Construction",
+          "subTitle": "Account • Grand Marais, MN",
+          "type": "account",
+        },
+      ]
+    }
+    selection={
+      Array [
+        Object {
+          "id": "1",
+          "label": "Acme",
+          "subTitle": "Account • San Francisco",
+          "type": "account",
+        },
+      ]
+    }
+    value=""
+    variant="readonly"
+  />
+</IconSettings>
+`;
+
+exports[`Readonly Single Selection Selected Open HTML Snapshot 1`] = `
+"<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
+  <div class=\\"slds-form-element__control\\">
+    <div class=\\"slds-combobox_container\\">
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" role=\\"combobox\\">
+        <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Select an Option\\" readonly=\\"\\" role=\\"textbox\\" value=\\"Acme\\" />
+          <span
+            class=\\"slds-icon_container slds-input__icon slds-input__icon_right\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span>
+        </div>
+        <div id=\\"combobox-unique-id-listbox\\" role=\\"listbox\\">
+          <ul class=\\"slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-dropdown_length-with-icon-5\\" role=\\"presentation\\">
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"true\\" id=\\"combobox-unique-id-listbox-option-1\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center slds-is-selected\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+              <span
+                class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Acme\\"><span class=\\"slds-assistive-text\\">Current Selection:</span> Acme</span>
+                </span>
+                </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-2\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+              <span
+                class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Salesforce.com, Inc.\\"> Salesforce.com, Inc.</span></span>
+                </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-3\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+              <span
+                class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Paddy&#x27;s Pub\\"> Paddy&#x27;s Pub</span></span>
+                </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-4\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+              <span
+                class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Tyrell Corp\\"> Tyrell Corp</span></span>
+                </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-5\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+              <span
+                class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Paper St. Soap Company\\"> Paper St. Soap Company</span></span>
+                </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-6\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+              <span
+                class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Nakatomi Investments\\"> Nakatomi Investments</span></span>
+                </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-7\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+              <span
+                class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Acme Landscaping\\"> Acme Landscaping</span></span>
+                </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-8\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+              <span
+                class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Acme Construction\\"> Acme Construction</span></span>
+                </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;

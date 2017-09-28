@@ -7,6 +7,7 @@
 
 // ### React
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -18,7 +19,7 @@ import { TAB } from '../../../utilities/constants';
 // Temporary hack until included in SLDS
 import '!style-loader!css-loader!../../../styles/tabs/tab.css'; // eslint-disable-line import/no-unresolved
 
-const Tab = React.createClass({
+const Tab = createReactClass({
 	displayName: TAB,
 
 	propTypes: {

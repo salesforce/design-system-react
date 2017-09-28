@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 
 import Panel from '~/components/panel'; // `~` is replaced with design-system-react at runtime
 import PanelFilterGroup from '~/components/panel/filtering/group';
@@ -28,7 +29,7 @@ const options = {
 	]
 };
 
-const Example = React.createClass({
+const Example = createReactClass({
 	displayName: 'PanelExample',
 
 	getInitialState () {
