@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf, action } from '@storybook/react';
 import IconSettings from '../../components/iconSettings';
 
 import { BUTTON_STATEFUL } from '../../utilities/constants';

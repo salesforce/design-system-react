@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 import IconSettings from '../../components/iconSettings';
 
 import { POPOVER_TOOLTIP } from '../../utilities/constants';
@@ -56,13 +56,13 @@ const getPopoverTooltipAlign = (props) => {
 };
 
 storiesOf(POPOVER_TOOLTIP, module)
-	.addDecorator((getStory) => <div
+	.addDecorator((getStory) => (<div
 		className="slds-p-around--medium slds-m-horizontal--x-large"
 		style={{
 			margin: '100px auto',
 			textAlign: 'center',
 			width: '500px' }}
-	><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
+	><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>))
 	.add('Base', () => getPopoverTooltip({
 		align: 'bottom',
 		id: 'myPopoverId',
