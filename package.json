@@ -118,10 +118,10 @@
     "enzyme-to-json": "^1.5.0",
     "eslint-loader": "^1.6.0",
     "eslint": "^3.13.0",
-    "eslint-config-airbnb": "14.0.0",
+    "eslint-config-airbnb": "15.1.0",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^3.0.2",
-    "eslint-plugin-react": "^6.9.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.1.0",
     "express": "^4.13.4",
     "file-loader": "^0.11.0",
     "fs-extra": "^3.0.0",
@@ -281,8 +281,14 @@
       "component": "forms/input/inline",
       "status": "prod",
       "display-name": "Inline Edit Inputs",
-      "last-a11y-review": {"date": "08/21/2017", "commit": "" },
-      "last-sldsMarkup-review": {"date": "08/21/2017", "commit": "" },
+      "last-a11y-review": {
+        "date": "08/21/2017",
+        "commit": ""
+      },
+      "last-sldsMarkup-review": {
+        "date": "08/21/2017",
+        "commit": ""
+      },
       "SLDS-component-path": "/components/forms#flavor-input"
     },
     {

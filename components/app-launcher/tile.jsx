@@ -86,7 +86,7 @@ const AppLauncherTile = (props) => {
 							</PopoverTooltip>
 						}
 						wrapper={(text, textTruncateChild) =>
-							<div>
+							(<div>
 								{props.descriptionHeading
 									// inline style override
 									&& <span
@@ -98,7 +98,7 @@ const AppLauncherTile = (props) => {
 								</Highlighter>
 								{textTruncateChild && ' '}
 								{textTruncateChild}
-							</div>
+							</div>)
 						}
 					/>
 				</div>

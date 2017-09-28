@@ -115,7 +115,7 @@ const TabsDemoComponent = createReactClass({
 });
 
 
-describe('Tabs', () => {
+describe.only('Tabs', () => {
 	// BASIC STRUCTURE
 
 	describe('Default structure and CSS', () => {

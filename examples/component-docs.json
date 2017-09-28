@@ -758,7 +758,11 @@
                     ]
                 },
                 "required": false,
-                "description": "Button type"
+                "description": "Button type",
+                "defaultValue": {
+                    "value": "'button'",
+                    "computed": false
+                }
             },
             "title": {
                 "type": {
@@ -807,6 +811,31 @@
                     "value": "'neutral'",
                     "computed": false
                 }
+            },
+            "iconClassName": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
+            },
+            "tooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": ""
             }
         },
         "route": "buttons",
@@ -3622,17 +3651,6 @@
             }
         ],
         "props": {
-            "assistiveText": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "**Assistive text for accessibility**\nText that is visually hidden but read aloud on the Edit Icon button",
-                "defaultValue": {
-                    "value": "'Edit text'",
-                    "computed": false
-                }
-            },
             "className": {
                 "type": {
                     "name": "union",
@@ -3775,6 +3793,12 @@
                 },
                 "required": true,
                 "description": "Inline Edit is a controlled component, and will always display this value."
+            },
+            "assistiveText": {
+                "defaultValue": {
+                    "value": "'Edit text'",
+                    "computed": false
+                }
             }
         },
         "route": "inline-edit-inputs",
@@ -4200,6 +4224,27 @@
                 },
                 "required": false,
                 "description": "The input is a controlled component, and will always display this value."
+            },
+            "iconPosition": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "inlineEditTrigger": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "role": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
             }
         },
         "route": "inputs",
@@ -9918,6 +9963,18 @@
             },
             {
                 "name": "getTab",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "index",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "getTabNode",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
