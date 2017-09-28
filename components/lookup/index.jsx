@@ -9,10 +9,10 @@ import DefaultHeader from './menu/default-header';
 import DefaultSectionDivider from './menu/default-section-divider';
 import Lookup from './lookup';
 
-module.exports = onClickOutside(Lookup, {
+export default onClickOutside(Lookup, {
 	excludeScrollbar: true
 });
 
-module.exports.DefaultHeader = DefaultHeader;
-module.exports.DefaultSectionDivider = DefaultSectionDivider;
-module.exports.DefaultFooter = DefaultFooter;
+export { DefaultHeader };
+export { DefaultSectionDivider };
+export { DefaultFooter };

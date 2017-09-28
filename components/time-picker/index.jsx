@@ -240,4 +240,4 @@ const Timepicker = createReactClass({
 	}
 });
 
-module.exports = Timepicker;
+export default Timepicker;

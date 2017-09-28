@@ -519,5 +519,5 @@ Popover.contextTypes = {
 	iconPath: PropTypes.string
 };
 
-module.exports = Popover;
-module.exports.PopoverNubbinPositions = PopoverNubbinPositions;
+export default Popover;
+export { PopoverNubbinPositions };

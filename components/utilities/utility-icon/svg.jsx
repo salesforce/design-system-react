@@ -85,4 +85,4 @@ const Svg = createReactClass({
 	}
 });
 
-module.exports = Svg;
+export default Svg;

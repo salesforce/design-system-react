@@ -124,4 +124,4 @@ const AppLauncherSection = createReactClass({
 	}
 });
 
-module.exports = AppLauncherSection;
+export default AppLauncherSection;

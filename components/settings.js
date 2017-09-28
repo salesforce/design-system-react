@@ -10,7 +10,7 @@ import Modal from 'react-modal';
 let assetsPath = 'assets/';
 let appRoot;
 
-module.exports = {
+export default {
 	setAssetsPath: (path) => {
 		if (path) {
 			assetsPath = path;

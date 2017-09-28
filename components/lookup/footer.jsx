@@ -57,4 +57,4 @@ DefaultFooter.displayName = displayName;
 DefaultFooter.propTypes = propTypes;
 DefaultFooter.defaultProps = defaultProps;
 
-module.exports = DefaultFooter;
+export default DefaultFooter;

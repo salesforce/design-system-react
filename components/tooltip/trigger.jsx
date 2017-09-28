@@ -122,4 +122,4 @@ Trigger.displayName = displayName;
 Trigger.propTypes = propTypes;
 Trigger.defaultProps = defaultProps;
 
-module.exports = Trigger;
+export default Trigger;
