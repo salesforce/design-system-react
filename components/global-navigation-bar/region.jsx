@@ -112,5 +112,5 @@ const Region = createReactClass({
 	}
 });
 
-module.exports = Region;
-module.exports.regions = regions;
+export default Region;
+export { regions };

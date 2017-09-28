@@ -88,4 +88,4 @@ DataTableCell.propTypes = {
 	width: PropTypes.string
 };
 
-module.exports = DataTableCell;
+export default DataTableCell;

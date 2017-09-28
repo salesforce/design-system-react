@@ -407,6 +407,7 @@ const MenuPicklist = createReactClass({
 				closeOnTabKey
 				constrainToScrollParent={this.props.constrainToScrollParent}
 				contentsClassName="slds-dropdown slds-dropdown--left"
+				context={this.context}
 				flippable
 				onClose={this.handleCancel}
 				onKeyDown={this.handleKeyDown}
@@ -560,5 +561,9 @@ const MenuPicklist = createReactClass({
 	}
 });
 
-module.exports = MenuPicklist;
-module.exports.ListItemLabel = ListItemLabel;
+MenuPicklist.contextTypes = {
+	iconPath: PropTypes.string
+};
+
+export default MenuPicklist;
+export { ListItemLabel };

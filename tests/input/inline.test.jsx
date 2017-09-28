@@ -5,6 +5,7 @@ import TestUtils from 'react-addons-test-utils';
 import chai from 'chai';
 
 import InlineEdit from '../../components/forms/input/inline';
+import IconSettings from '../../components/iconSettings';
 
 const should = chai.should();
 
@@ -17,7 +18,7 @@ describe('Inline Edit: ', function () {
 	const renderInlineEdit = (instance) => function () {
 		this.dom = document.createElement('div');
 		document.body.appendChild(this.dom);
-		this.component = ReactDOM.render(instance, this.dom);
+		this.component = ReactDOM.render(<IconSettings iconPath="/assets/icons">{instance}</IconSettings>, this.dom);
 	};
 
 	function removeInlineEdit () {
@@ -56,7 +57,7 @@ describe('Inline Edit: ', function () {
 			const staticElement = getStatic(this.dom);
 			const value = staticElement.textContent;
 
-			value.should.equal('Sample valueEdit');
+			value.should.equal('Sample valueEdit text');
 		});
 	});
 

@@ -5,4 +5,4 @@
 // Alias
 import Tooltip from '../tooltip';
 
-module.exports = Tooltip;
+export default Tooltip;

@@ -9,6 +9,7 @@ import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 
 import { SLDSLookup } from '../../components';
+import IconSettings from '../../components/iconSettings';
 
 const Header = SLDSLookup.DefaultHeader;
 const Footer = SLDSLookup.DefaultFooter;
@@ -16,7 +17,7 @@ const { Simulate, scryRenderedDOMComponentsWithClass, scryRenderedDOMComponentsW
 
 describe('SLDSLookup: ', () => {
 	const generateLookup = function (lookupInstance) {
-		const reactCmp = TestUtils.renderIntoDocument(lookupInstance);
+		const reactCmp = TestUtils.renderIntoDocument(<IconSettings iconPath="/assets/icons">{lookupInstance}</IconSettings>);
 		return ReactDOM.findDOMNode(reactCmp);
 	};
 

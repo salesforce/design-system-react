@@ -7,4 +7,4 @@
 import onClickOutside from 'react-onclickoutside';
 import Combobox from './combobox';
 
-module.exports = onClickOutside(Combobox);
+export default onClickOutside(Combobox);

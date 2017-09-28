@@ -57,4 +57,4 @@ DefaultHeader.displayName = displayName;
 DefaultHeader.propTypes = propTypes;
 DefaultHeader.defaultProps = defaultProps;
 
-module.exports = DefaultHeader;
+export default DefaultHeader;

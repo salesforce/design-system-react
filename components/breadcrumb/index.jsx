@@ -56,4 +56,4 @@ Breadcrumb.defaultProps = {
 	assistiveText: 'Breadcrumbs'
 };
 
-module.exports = Breadcrumb;
+export default Breadcrumb;

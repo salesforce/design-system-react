@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
+import IconSettings from '../../components/iconSettings';
 
 import { PANEL } from '../../utilities/constants';
 import Filtering from './filtering';
@@ -13,7 +14,7 @@ storiesOf(PANEL, module)
 				className="slds-col--bump-left"
 				style={{ width: '420px' }}
 			>
-				{getStory()}
+				<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 			</div>
 		</div>
 	))

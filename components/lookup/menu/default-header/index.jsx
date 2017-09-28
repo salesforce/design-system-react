@@ -1,4 +1,4 @@
 // Alias
 import DefaultFooter from '../../footer';
 
-module.exports = DefaultFooter;
+export default DefaultFooter;

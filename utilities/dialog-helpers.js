@@ -69,6 +69,6 @@ getMargin.bottom = (align) => {
 	return '1rem';
 };
 
-module.exports.getMargin = getMargin;
-module.exports.getAlignment = getAlignment;
-module.exports.getNubbinClassName = getNubbinClassName;
+export { getMargin };
+export { getAlignment };
+export { getNubbinClassName };

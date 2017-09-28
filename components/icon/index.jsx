@@ -139,4 +139,4 @@ Icon.defaultProps = {
 	size: 'medium'
 };
 
-module.exports = Icon;
+export default Icon;

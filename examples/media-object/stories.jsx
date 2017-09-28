@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
+import IconSettings from '../../components/iconSettings';
 
 import MediaObject from '../../components/media-object';
 import Icon from '../../components/icon';
@@ -12,7 +13,7 @@ const DemoMediaObject = (props) => (
 DemoMediaObject.displayName = 'DemoMediaObject';
 
 storiesOf(MEDIA_OBJECT, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Base', () => (<DemoMediaObject
 		body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda."
 		figure={<Icon category="standard" name="user" size="medium" />}

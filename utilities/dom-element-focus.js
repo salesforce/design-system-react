@@ -54,7 +54,7 @@ const teardownScopedFocus = () => {
 	window.removeEventListener('keydown', handleScopedKeyDown);
 };
 
-module.exports = {
+export default {
 	focusAncestor,
 	hasOrAncestorHasFocus,
 	returnFocusToStoredElement,

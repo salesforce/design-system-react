@@ -270,8 +270,8 @@ PageHeader.displayName = displayName;
 PageHeader.propTypes = propTypes;
 PageHeader.defaultProps = defaultProps;
 
-module.exports = PageHeader;
-module.exports.Info = Info;
-module.exports.Title = Title;
-module.exports.DetailRow = DetailRow;
-module.exports.DetailBlock = DetailBlock;
+export default PageHeader;
+export { Info };
+export { Title };
+export { DetailRow };
+export { DetailBlock };

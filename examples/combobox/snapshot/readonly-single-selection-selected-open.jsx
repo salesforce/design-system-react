@@ -3,6 +3,7 @@ import React from 'react';
 import Combobox from '~/components/combobox';
 import Icon from '~/components/icon';
 import escapeRegExp from 'lodash.escaperegexp';
+import IconSettings from '~/components/iconSettings';
 
 const accounts = [
 	{ id: '1', label: 'Acme', subTitle: 'Account • San Francisco', type: 'account' },
@@ -27,28 +28,30 @@ class Example extends React.Component {
 
 	render () {
 		return (
-			<Combobox
-				id="combobox-unique-id"
-				isInline
-				isOpen
-				events={{
-					onSelect: (event, data) => {
-						console.log('onSelect', data);
-						this.setState({
-							inputValue: '',
-							selection: data.selection
-						});
-					}
-				}}
-				labels={{
-					label: 'Search',
-					placeholder: 'Search Salesforce'
-				}}
-				options={accounts}
-				selection={this.state.selection}
-				value={this.state.inputValue}
-				variant="readonly"
-			/>
+			<IconSettings iconPath="/assets/icons">
+				<Combobox
+					id="combobox-unique-id"
+					isInline
+					isOpen
+					events={{
+						onSelect: (event, data) => {
+							console.log('onSelect', data);
+							this.setState({
+								inputValue: '',
+								selection: data.selection
+							});
+						}
+					}}
+					labels={{
+						label: 'Search',
+						placeholder: 'Search Salesforce'
+					}}
+					options={accounts}
+					selection={this.state.selection}
+					value={this.state.inputValue}
+					variant="readonly"
+				/>
+			</IconSettings>
 		);
 	}
 }

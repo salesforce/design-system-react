@@ -1,6 +1,7 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import { storiesOf, action } from '@kadira/storybook';
+import IconSettings from '../../components/iconSettings';
 
 import { LOOKUP } from '../../utilities/constants';
 import Lookup from '../../components/lookup';
@@ -81,7 +82,7 @@ const DemoLookupAccounts = createReactClass({
 });
 
 storiesOf(LOOKUP, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Standard', () => <DemoLookup
 		emptyMessage="No Files found"
 		hasError={false}

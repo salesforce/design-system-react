@@ -9,10 +9,11 @@ import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 
 import { SLDSNotification } from '../../components';
+import IconSettings from '../../components/iconSettings';
 
 describe('SLDSNotification: ', () => {
 	const generateNotification = function (notificationInstance) {
-		const reactCmp = TestUtils.renderIntoDocument(notificationInstance);
+		const reactCmp = TestUtils.renderIntoDocument(<IconSettings iconPath="/assets/icons">{notificationInstance}</IconSettings>);
 		return ReactDOM.findDOMNode(reactCmp);
 	};
 

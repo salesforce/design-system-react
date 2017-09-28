@@ -196,4 +196,4 @@ const ListItem = createReactClass({
 	}
 });
 
-module.exports = ListItem;
+export default ListItem;

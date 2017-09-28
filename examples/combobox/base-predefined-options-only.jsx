@@ -4,6 +4,7 @@ import Combobox from '~/components/combobox';
 import comboboxFilterAndLimit from '~/components/combobox/filter';
 import Icon from '~/components/icon';
 import escapeRegExp from 'lodash.escaperegexp';
+import IconSettings from '~/components/iconSettings';
 
 const accounts = [
 	{ id: '1', label: 'Acme', subTitle: 'Account • San Francisco', type: 'account' },
@@ -36,49 +37,51 @@ class Example extends React.Component {
 
 	render () {
 		return (
-			<Combobox
-				id="combobox-unique-id"
-				events={{
-					onChange: (event, { value }) => {
-						if (this.props.action) {
-							this.props.action('onChange')(event, value);
-						} else if (console) {
-							console.log('onChange', event, value);
+			<IconSettings iconPath="/assets/icons">
+				<Combobox
+					id="combobox-unique-id"
+					events={{
+						onChange: (event, { value }) => {
+							if (this.props.action) {
+								this.props.action('onChange')(event, value);
+							} else if (console) {
+								console.log('onChange', event, value);
+							}
+							this.setState({	inputValue: value });
+						},
+						onRequestRemoveSelectedOption: (event, data) => {
+							this.setState({
+								inputValue: '',
+								selection: data.selection
+							});
+						},
+						onSelect: (event, data) => {
+							if (this.props.action) {
+								this.props.action('onSelect')(event, ...Object.keys(data).map((key) => data[key]));
+							} else if (console) {
+								console.log('onSelect', event, data);
+							}
+							this.setState({
+								inputValue: '',
+								selection: data.selection
+							});
 						}
-						this.setState({	inputValue: value });
-					},
-					onRequestRemoveSelectedOption: (event, data) => {
-						this.setState({
-							inputValue: '',
-							selection: data.selection
-						});
-					},
-					onSelect: (event, data) => {
-						if (this.props.action) {
-							this.props.action('onSelect')(event, ...Object.keys(data).map((key) => data[key]));
-						} else if (console) {
-							console.log('onSelect', event, data);
-						}
-						this.setState({
-							inputValue: '',
-							selection: data.selection
-						});
-					}
-				}}
-				labels={{
-					label: 'Search',
-					placeholder: 'Search Salesforce'
-				}}
-				multiple
-				options={comboboxFilterAndLimit({
-					inputValue: this.state.inputValue,
-					options: accountsWithIcon,
-					selection: this.state.selection
-				})}
-				predefinedOptionsOnly
-				selection={this.state.selection}
-				value={this.state.inputValue}
-			/>
+					}}
+					labels={{
+						label: 'Search',
+						placeholder: 'Search Salesforce'
+					}}
+					multiple
+					options={comboboxFilterAndLimit({
+						inputValue: this.state.inputValue,
+						options: accountsWithIcon,
+						selection: this.state.selection
+					})}
+					predefinedOptionsOnly
+					selection={this.state.selection}
+					value={this.state.inputValue}
+				/>
+			</IconSettings>
 		);
 	}
 }

@@ -129,6 +129,7 @@ const Button = createReactClass({
 			iconSize: 'medium',
 			iconCategory: 'utility',
 			responsive: false,
+			type: 'button',
 			variant: 'neutral'
 		};
 	},

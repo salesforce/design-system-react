@@ -3,9 +3,7 @@ import React from 'react';
 import Combobox from '~/components/combobox/combobox';
 import Icon from '~/components/icon';
 import escapeRegExp from 'lodash.escaperegexp';
-import globalSettings from '../../../components/settings';
-
-globalSettings.setIconsPath('/assets/icons');
+import IconSettings from '~/components/iconSettings';
 
 const accounts = [
 	{ id: '1', label: 'Acme', subTitle: 'Account • San Francisco', type: 'account' },
@@ -32,41 +30,43 @@ class Example extends React.Component {
 
 	render () {
 		return (
-			<Combobox
-				id="combobox-unique-id"
-				isInline
-				isOpen
-				labels={{
-					placeholder: 'Search Salesforce'
-				}}
-				onChange={(event, { value }) => {
-					console.log('onChange', value);
-					this.setState({	inputValue: value });
-				}}
-				onRequestRemoveSelectedOption={(event, data) => {
-					this.setState({
-						inputValue: '',
-						selection: []
-					});
-				}}
-				onSubmit={(event, { value }) => {
-					console.log('onSubmit', value);
-					this.setState({ selection: [{
-						label: value,
-						icon: <Icon
-							assistiveText="Account"
-							category="standard"
-							name="account"
-						/> }] });
-				}}
-				onSelect={(event, data) => {
-					console.log('onSelect', data);
-					this.setState({ selection: data.selection });
-				}}
-				options={accountsWithIcon}
-				selection={this.state.selection}
-				value={this.state.selectedOption ? this.state.selectedOption.label : this.state.inputValue}
-			/>
+			<IconSettings iconPath="/assets/icons">
+				<Combobox
+					id="combobox-unique-id"
+					isInline
+					isOpen
+					labels={{
+						placeholder: 'Search Salesforce'
+					}}
+					onChange={(event, { value }) => {
+						console.log('onChange', value);
+						this.setState({	inputValue: value });
+					}}
+					onRequestRemoveSelectedOption={(event, data) => {
+						this.setState({
+							inputValue: '',
+							selection: []
+						});
+					}}
+					onSubmit={(event, { value }) => {
+						console.log('onSubmit', value);
+						this.setState({ selection: [{
+							label: value,
+							icon: <Icon
+								assistiveText="Account"
+								category="standard"
+								name="account"
+							/> }] });
+					}}
+					onSelect={(event, data) => {
+						console.log('onSelect', data);
+						this.setState({ selection: data.selection });
+					}}
+					options={accountsWithIcon}
+					selection={this.state.selection}
+					value={this.state.selectedOption ? this.state.selectedOption.label : this.state.inputValue}
+				/>
+			</IconSettings>
 		);
 	}
 }
