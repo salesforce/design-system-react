@@ -1,7 +1,8 @@
 import React from 'react';
 import Input from '~/components/forms/input'; // `~` is replaced with design-system-react at runtime
+import createReactClass from 'create-react-class';
 
-const Example = React.createClass({
+const Example = createReactClass({
 	displayName: 'BaseInputExample',
 
 	render () {
