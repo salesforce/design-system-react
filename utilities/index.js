@@ -6,8 +6,10 @@ import DateUtil  from './date';
 import EventUtil from './event';
 import KEYS      from './key-code';
 
-module.exports = {
+const utilities = {
 	DateUtil,
 	EventUtil,
 	KEYS
 };
+
+export default utilities;

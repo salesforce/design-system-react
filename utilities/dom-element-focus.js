@@ -23,42 +23,32 @@ const handleScopedKeyDown = (event) => {
 
 // PUBLIC methods
 
-const focusAncestor = () => {
-	ancestor.focus();
-};
-
-const hasOrAncestorHasFocus = () =>
-	document.activeElement === ancestor
-	|| ancestor.contains(document.activeElement);
-
-const returnFocusToStoredElement = () => {
-	try {
-		focusLaterElement.focus();
-	}	catch (e) {
-		console.warn(`You tried to return focus to ${focusLaterElement} but it is not in the DOM anymore`); // eslint-disable-line no-console
+const ElementFocus = {
+	focusAncestor: () => {
+		ancestor.focus();
+	},
+	hasOrAncestorHasFocus: () =>
+		document.activeElement === ancestor
+		|| ancestor.contains(document.activeElement),
+	returnFocusToStoredElement: () => {
+		try {
+			focusLaterElement.focus();
+		}	catch (e) {
+			console.warn(`You tried to return focus to ${focusLaterElement} but it is not in the DOM anymore`); // eslint-disable-line no-console
+		}
+		focusLaterElement = null;
+	},
+	setupScopedFocus: ({ ancestorElement }) => {
+		ancestor = ancestorElement;
+		window.addEventListener('keydown', handleScopedKeyDown, false);
+	},
+	storeActiveElement: () => {
+		focusLaterElement = document.activeElement;
+	},
+	teardownScopedFocus: () => {
+		ancestor = null;
+		window.removeEventListener('keydown', handleScopedKeyDown);
 	}
-	focusLaterElement = null;
 };
 
-const setupScopedFocus = ({ ancestorElement }) => {
-	ancestor = ancestorElement;
-	window.addEventListener('keydown', handleScopedKeyDown, false);
-};
-
-const storeActiveElement = () => {
-	focusLaterElement = document.activeElement;
-};
-
-const teardownScopedFocus = () => {
-	ancestor = null;
-	window.removeEventListener('keydown', handleScopedKeyDown);
-};
-
-module.exports = {
-	focusAncestor,
-	hasOrAncestorHasFocus,
-	returnFocusToStoredElement,
-	setupScopedFocus,
-	storeActiveElement,
-	teardownScopedFocus
-};
+export default ElementFocus;

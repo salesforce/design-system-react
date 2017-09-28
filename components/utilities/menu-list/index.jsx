@@ -115,4 +115,4 @@ const List = createReactClass({
 	}
 });
 
-module.exports = List;
+export default List;

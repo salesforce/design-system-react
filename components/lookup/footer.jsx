@@ -7,7 +7,7 @@
 
 import React from 'react';
 import Icon from '../icon';
-import { EventUtil } from '../../utilities';
+import EventUtil from '../../utilities/event';
 
 const displayName = 'LookupDefaultFooter';
 const propTypes = {};
@@ -57,4 +57,4 @@ DefaultFooter.displayName = displayName;
 DefaultFooter.propTypes = propTypes;
 DefaultFooter.defaultProps = defaultProps;
 
-module.exports = DefaultFooter;
+export default DefaultFooter;

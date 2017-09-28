@@ -565,5 +565,5 @@ MenuPicklist.contextTypes = {
 	iconPath: PropTypes.string
 };
 
-module.exports = MenuPicklist;
-module.exports.ListItemLabel = ListItemLabel;
+export default MenuPicklist;
+export { ListItemLabel };

@@ -447,4 +447,4 @@ const Dialog = createReactClass({
 	}
 });
 
-module.exports = onClickOutside(Dialog);
+export default onClickOutside(Dialog);

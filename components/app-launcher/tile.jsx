@@ -167,4 +167,4 @@ AppLauncherTile.propTypes = {
 	// TODO: add Highlighter to Truncate text (https://github.com/ShinyChang/React-Text-Truncate/issues/32)
 };
 
-module.exports = AppLauncherTile;
+export default AppLauncherTile;

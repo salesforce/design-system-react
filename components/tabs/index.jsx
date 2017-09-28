@@ -408,4 +408,4 @@ Tabs.displayName = displayName;
 Tabs.propTypes = propTypes;
 Tabs.defaultProps = defaultProps;
 
-module.exports = Tabs;
+export default Tabs;

@@ -4,15 +4,8 @@
 // ### onClickOutside
 // Listen for clicks that occur somewhere in the document, outside of the element itself
 import onClickOutside from 'react-onclickoutside';
-import DefaultFooter from './menu/default-footer';
-import DefaultHeader from './menu/default-header';
-import DefaultSectionDivider from './menu/default-section-divider';
 import Lookup from './lookup';
 
-module.exports = onClickOutside(Lookup, {
+export default onClickOutside(Lookup, {
 	excludeScrollbar: true
 });
-
-module.exports.DefaultHeader = DefaultHeader;
-module.exports.DefaultSectionDivider = DefaultSectionDivider;
-module.exports.DefaultFooter = DefaultFooter;

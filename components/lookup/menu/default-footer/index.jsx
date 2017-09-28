@@ -1,4 +1,4 @@
 // Alias
 import DefaultHeader from '../../header';
 
-module.exports = DefaultHeader;
+export default DefaultHeader;

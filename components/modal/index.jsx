@@ -409,4 +409,4 @@ Modal.displayName = displayName;
 Modal.propTypes = propTypes;
 Modal.defaultProps = defaultProps;
 
-module.exports = Modal;
+export default Modal;

@@ -6,4 +6,4 @@
 import onClickOutside from 'react-onclickoutside';
 import Popover from './popover';
 
-module.exports = onClickOutside(Popover);
+export default onClickOutside(Popover);

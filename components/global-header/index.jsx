@@ -14,7 +14,7 @@ import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### Event Helpers
-import { EventUtil } from '../../utilities';
+import EventUtil from '../../utilities/event';
 
 // ## Constants
 import { GLOBAL_HEADER, GLOBAL_HEADER_PROFILE, GLOBAL_HEADER_SEARCH, GLOBAL_HEADER_TOOL } from '../../utilities/constants';

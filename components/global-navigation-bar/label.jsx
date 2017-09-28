@@ -66,4 +66,4 @@ GlobalNavigationBarLabel.propTypes = {
 	label: PropTypes.string
 };
 
-module.exports = GlobalNavigationBarLabel;
+export default GlobalNavigationBarLabel;
