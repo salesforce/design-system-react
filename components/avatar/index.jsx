@@ -27,16 +27,19 @@ const propTypes = {
 	 */
 	className: PropTypes.string,
 	/**
-	 * Alt attribute to be applied to image (base case) avatar element.
+	 * Alt attribute to be applied to image (base case) element.
 	 */
 	imgAlt: PropTypes.string,
 	/**
-	 * Source attribute to be applied to image (base case) avatar element.
+	 * Source attribute to be applied to image (base case) element.
 	 */
 	imgSrc: PropTypes.string,
+	/**
+	 * Initials attribute to optionally pass in initials directly in case of "initials" fallback case.
+	 */
 	initials: PropTypes.string,
 	/**
-	 * Label attibute to display inside "initial" fallback avatar case. Will be passed as title prop in `abbr` element to provide more specificity.
+	 * Label attibute to display inside "initials" fallback case. Will be passed as title prop in `abbr` element to provide more specificity.
 	 */
 	label: PropTypes.string,
 	/**
@@ -44,7 +47,7 @@ const propTypes = {
 	 */
 	variant: PropTypes.oneOf(['entity', 'user']).isRequired,
 	/**
-	 * Size of the icon in "icon" fallback avatar case.
+	 * Size of the icon in "icon" fallback case.
 	 */
 	size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']).isRequired,
 	/**
@@ -54,8 +57,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-	assistiveText: 'icon avatar',
-	imgSrc: '',
+	imgAlt: '',
 	size: 'medium',
 	title: 'user avatar',
 	variant: 'user'
@@ -63,8 +65,11 @@ const defaultProps = {
 
 /**
  * The avatar component represents an object or entity. An image is the preferred format for an avatar.
- If the `imgSrc` prop is undefined, and if a `label` prop is available, the fallback avatar will render with initials of the user name or entity name.
- If no label is available, the fallback avatar will render a standard icon. If `variant='user'`, a user icon will
+ If the `imgSrc` prop is undefined, and if a `label` or `initials` prop is available, the fallback avatar will render with initials. If initals are passed in directly in the `initials` prop, this will render in the fallback avatar. If `initals` prop is unavailable but a `label` prop is available, the fallback avatar will render with built initials of the user name or entity name.
+
+ Intials built from the `label` prop will apply the following logic: If the label name contains two words, like first and last name, the first letter of each will be capitalized and returned. For labels that only have a single word name, the first two letters of that word, using one capital and one lower case letter, will be returned. For labels that contain three or more words, the first character of the first and last words will be capitalized and returned.
+
+ If `initials` or `label` are not available, the fallback avatar will render a standard icon. If `variant='user'`, a user icon will
  render. If `variant='entity'`, an account icon will render.
  */
 
@@ -98,10 +103,10 @@ class Avatar extends React.Component {
 	}
 
 	renderIconAvatar () {
-		const { variant, assistiveText } = this.props;
+		const { assistiveText, variant } = this.props;
 		return (
 			<UtilityIcon
-				assistiveText={assistiveText}
+				assistiveText={assistiveText || 'User or Account Icon'}
 				category="standard"
 				name={variant === 'entity' ? 'account' : 'user'}
 			/>
@@ -120,7 +125,7 @@ class Avatar extends React.Component {
 				)}
 				title={label}
 			>
-				{initials ? initials.toUpperCase() : this.buildInitials()}
+				{initials ? initials : this.buildInitials()}
 			</abbr>
 		);
 	}
@@ -128,6 +133,7 @@ class Avatar extends React.Component {
 	render () {
 		const {
 			imgSrc,
+			initials,
 			variant,
 			label,
 			size
@@ -138,7 +144,7 @@ class Avatar extends React.Component {
 			if (!this.state.imgLoadError && imgSrc) {
 				return this.renderBaseAvatar();
 			}
-			if (label) {
+			if (initials || (label && label.trim())) {
 				return this.renderInitialsAvatar();
 			}
 			return this.renderIconAvatar();

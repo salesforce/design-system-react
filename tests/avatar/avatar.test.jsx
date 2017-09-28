@@ -15,7 +15,7 @@ describe('SLDSAvatar: ', () => {
 		let wrapper;
 
 		beforeEach(() => {
-			wrapper = mount(<SLDSAvatar />);
+			wrapper = shallow(<SLDSAvatar />);
 		});
 
 		it('avatar renders with image', () => {
@@ -70,13 +70,19 @@ describe('SLDSAvatar: ', () => {
 			wrapper = shallow(<SLDSAvatar />);
 		});
 
-		it('renders fallback initials abbr node if label exists', () => {
+		it('renders "iniitals prop" initials if they are passed in directly', () => {
+			const avatar = wrapper.setProps({ initials: 'AW' });
+			const abbr = wrapper.find('abbr');
+			expect(abbr.node.props.children).to.equal('AW');
+		});
+
+		it('renders fallback initials abbr node if initials or label prop exists', () => {
 			const avatar = wrapper.setProps({ label: 'test' });
 			const abbr = !!wrapper.find('abbr');
 			expect(abbr).to.be.true;
 		});
 
-		it('calls buildInitials in abbr node', () => {
+		it('calls buildInitials in abbr node if no initials prop', () => {
 			const spy = sinon.spy(SLDSAvatar.prototype, 'buildInitials');
 			wrapper.setProps({ label: 'Jane Doe' });
 			const abbr = wrapper.find('abbr');
@@ -109,7 +115,7 @@ describe('SLDSAvatar: ', () => {
 		});
 
 		it('renders expected assistiveText', () => {
-			wrapper.setProps({ variant: 'entity', assistiveText: `${wrapper.variant} icon avatar` });
+			wrapper.setProps({ variant: 'entity', assistiveText: 'entity icon avatar' });
 			const span = wrapper.find('.slds-assistive-text');
 			expect(span.node.innerHTML).to.equal('entity icon avatar');
 		});
