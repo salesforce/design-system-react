@@ -7,7 +7,7 @@
 
 import React from 'react';
 import Icon from '../icon';
-import { EventUtil } from '../../utilities';
+import EventUtil from '../../utilities/event';
 
 const displayName = 'LookupDefaultHeader';
 const propTypes = {};
@@ -57,4 +57,4 @@ DefaultHeader.displayName = displayName;
 DefaultHeader.propTypes = propTypes;
 DefaultHeader.defaultProps = defaultProps;
 
-module.exports = DefaultHeader;
+export default DefaultHeader;

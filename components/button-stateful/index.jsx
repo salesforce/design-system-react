@@ -238,4 +238,4 @@ ButtonStateful.displayName = BUTTON_STATEFUL;
 ButtonStateful.propTypes = propTypes;
 ButtonStateful.defaultProps = defaultProps;
 
-module.exports = ButtonStateful;
+export default ButtonStateful;

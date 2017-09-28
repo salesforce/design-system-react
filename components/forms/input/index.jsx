@@ -187,7 +187,10 @@ const Input = createReactClass({
 		/**
 		 * The input is a controlled component, and will always display this value.
 		 */
-		value: PropTypes.string
+		value: PropTypes.string,
+		iconPosition: PropTypes.string,
+		inlineEditTrigger: PropTypes.func,
+		role: PropTypes.string
 	},
 
 	getDefaultProps () {
@@ -242,8 +245,10 @@ const Input = createReactClass({
 	// ### Render
 	render () {
 		// this is a hack to make left the default prop unless overwritten by `iconPosition="right"`
-		const hasLeftIcon = !!this.props.iconLeft || ((this.props.iconPosition === 'left' || this.props.iconPosition === undefined) && !!this.props.iconName);
-		const hasRightIcon = !!this.props.iconRight || (this.props.iconPosition === 'right' && !!this.props.iconName);
+		const hasLeftIcon = !!this.props.iconLeft ||
+			((this.props.iconPosition === 'left' || this.props.iconPosition === undefined) && !!this.props.iconName);
+		const hasRightIcon = !!this.props.iconRight ||
+			(this.props.iconPosition === 'right' && !!this.props.iconName);
 
 		return (
 			<div
@@ -310,4 +315,4 @@ const Input = createReactClass({
 	}
 });
 
-module.exports = Input;
+export default Input;

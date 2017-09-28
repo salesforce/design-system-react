@@ -57,4 +57,4 @@ Filter.defaultProps = {
 	placeholder: 'Find in List'
 };
 
-module.exports = Filter;
+export default Filter;

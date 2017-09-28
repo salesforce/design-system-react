@@ -79,4 +79,4 @@ Search.propTypes = {
 	placeholder: PropTypes.string
 };
 
-module.exports = Search;
+export default Search;

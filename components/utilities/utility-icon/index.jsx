@@ -106,4 +106,4 @@ UtilityIcon.contextTypes = {
 	iconPath: PropTypes.string
 };
 
-module.exports = UtilityIcon;
+export default UtilityIcon;

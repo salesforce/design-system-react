@@ -72,4 +72,4 @@ Highlighter.propTypes = {
 	search: PropTypes.any
 };
 
-module.exports = Highlighter;
+export default Highlighter;

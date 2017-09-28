@@ -33,4 +33,6 @@ function textContent (children) {
 	}).join(' ');
 }
 
-export default { textContent, hasChild };
+const helpers = { textContent, hasChild };
+
+export default helpers;

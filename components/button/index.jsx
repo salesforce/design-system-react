@@ -119,7 +119,9 @@ const Button = createReactClass({
 		 * HTML title attribute
 		 */
 		title: PropTypes.string,
-		variant: PropTypes.oneOf(['base', 'link', 'neutral', 'brand', 'destructive', 'success', 'icon'])
+		variant: PropTypes.oneOf(['base', 'link', 'neutral', 'brand', 'destructive', 'success', 'icon']),
+		iconClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		tooltip: PropTypes.node
 	},
 
 	getDefaultProps () {
@@ -245,7 +247,9 @@ const Button = createReactClass({
 				: null}
 
 				{(this.props.iconPosition === 'left' || !this.props.iconPosition) ? this.renderLabel() : null}
-				{this.props.children}
+				{
+					this.props.children // eslint-disable-line react/prop-types
+				}
 			</button>
 		);
 	},

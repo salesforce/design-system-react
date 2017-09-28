@@ -188,7 +188,8 @@ class PopoverTooltip extends React.Component {
 					'slds-popover',
 					'slds-popover--tooltip',
 					{ 'slds-theme_error': this.props.variant === 'error' },
-					getNubbinClassName(align))} role="tooltip"
+					getNubbinClassName(align))}
+					role="tooltip"
 				>
 					{this.getTooltipContent()}
 				</div>
@@ -252,5 +253,5 @@ PopoverTooltip.displayName = displayName;
 PopoverTooltip.propTypes = propTypes;
 PopoverTooltip.defaultProps = defaultProps;
 
-module.exports = PopoverTooltip;
+export default PopoverTooltip;
 
