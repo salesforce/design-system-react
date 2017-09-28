@@ -48,7 +48,7 @@ const inlineIcons = (spriteType, done) => {
 
 		const icon = [
 			license,
-			`module.exports = ${JSON.stringify(data)};`,
+			`export default ${JSON.stringify(data)};`,
 			''
 		];
 
@@ -62,7 +62,7 @@ const inlineIcons = (spriteType, done) => {
 	});
 
 	index.push(`viewBox:'${viewBox}'`);
-	index.push('}; } module.exports = icons;');
+	index.push('}; } export default icons;');
 	index.push('');
 	outputFile(`${spriteType}/index`, index, done);
 };
