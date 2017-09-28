@@ -310,4 +310,4 @@ const Input = createReactClass({
 	}
 });
 
-module.exports = Input;
+export default Input;

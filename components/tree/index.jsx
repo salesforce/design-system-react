@@ -138,4 +138,4 @@ Tree.propTypes = {
 	listStyle: PropTypes.object
 };
 
-module.exports = Tree;
+export default Tree;

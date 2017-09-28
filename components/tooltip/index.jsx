@@ -252,5 +252,5 @@ PopoverTooltip.displayName = displayName;
 PopoverTooltip.propTypes = propTypes;
 PopoverTooltip.defaultProps = defaultProps;
 
-module.exports = PopoverTooltip;
+export default PopoverTooltip;
 

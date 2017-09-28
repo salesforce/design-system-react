@@ -88,4 +88,4 @@ const DataTableRowActions = createReactClass({
 	}
 });
 
-module.exports = DataTableRowActions;
+export default DataTableRowActions;

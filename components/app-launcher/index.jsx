@@ -253,4 +253,4 @@ const AppLauncher = createReactClass({
 	}
 });
 
-module.exports = AppLauncher;
+export default AppLauncher;

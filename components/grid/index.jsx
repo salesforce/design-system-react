@@ -37,4 +37,4 @@ class Grid extends React.Component {
 
 Grid.Column = GridColumn;
 
-module.exports = Grid;
+export default Grid;

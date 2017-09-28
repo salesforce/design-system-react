@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import jsBeautify from 'js-beautify';
-import * as Settings from './settings';
+import Settings from './settings';
 import renderer from 'react-test-renderer';
 
 import { shallow } from 'enzyme';
@@ -23,7 +23,7 @@ const renderDOM = (Component, props) => (toJson(shallow(React.createElement(Comp
 
 const renderMarkup = (Component, props) => String(
 		jsBeautify.html(ReactDOMServer.renderToStaticMarkup(React.createElement(Component, props)),
-			Settings.default.jsBeautify),
+			Settings.jsBeautify),
 	'utf-8'
 	);
 

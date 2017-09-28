@@ -91,4 +91,4 @@ ButtonIcon.displayName = BUTTON_ICON;
 ButtonIcon.propTypes = propTypes;
 ButtonIcon.defaultProps = defaultProps;
 
-module.exports = ButtonIcon;
+export default ButtonIcon;

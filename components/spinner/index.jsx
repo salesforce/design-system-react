@@ -86,5 +86,5 @@ Spinner.displayName = SPINNER;
 Spinner.propTypes = PROP_TYPES;
 Spinner.defaultProps = DEFAULT_PROPS;
 
-module.exports = Spinner;
+export default Spinner;
 

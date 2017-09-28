@@ -41,4 +41,4 @@ DataTableHighlightCell.propTypes = {
 	search: PropTypes.any
 };
 
-module.exports = DataTableHighlightCell;
+export default DataTableHighlightCell;

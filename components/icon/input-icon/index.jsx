@@ -111,4 +111,4 @@ InputIcon.defaultProps = {
 	variant: 'base'
 };
 
-module.exports = InputIcon;
+export default InputIcon;

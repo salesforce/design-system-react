@@ -143,5 +143,5 @@ Card.propTypes = {
 	style: PropTypes.object
 };
 
-module.exports = Card;
-module.exports.idSuffixes = idSuffixes;
+export default Card;
+export { idSuffixes };

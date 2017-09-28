@@ -874,7 +874,9 @@ MenuDropdown.contextTypes = {
 	iconPath: PropTypes.string
 };
 
-module.exports = MenuDropdown;
-module.exports.ListItem = ListItem;
-module.exports.ListItemLabel = ListItemLabel;
-module.exports.DropdownNubbinPositions = DropdownNubbinPositions;
+export default MenuDropdown;
+export {
+	ListItem,
+	ListItemLabel,
+	DropdownNubbinPositions
+};

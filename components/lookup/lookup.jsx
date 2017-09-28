@@ -694,5 +694,5 @@ Lookup.contextTypes = {
 	iconPath: PropTypes.string
 };
 
-module.exports = Lookup;
+export default Lookup;
 

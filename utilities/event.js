@@ -3,7 +3,7 @@
 
 
 const EventUtil = {
-	trapEvent (event) {
+	trapEvent: (event) => {
 		if (!event) return;
 		event.preventDefault();
 		event.stopPropagation();
@@ -16,11 +16,9 @@ const EventUtil = {
 		}
 	},
 
-	trap (event) {
-		return EventUtil.trapEvent(event);
-	},
+	trap: (event) => EventUtil.trapEvent(event),
 
-	trapImmediate (event) {
+	trapImmediate: (event) => {
 		if (event.stopImmediatePropagation) {
 			event.stopImmediatePropagation();
 		}
@@ -34,4 +32,4 @@ const EventUtil = {
 
 };
 
-module.exports = EventUtil;
+export default EventUtil;

@@ -5,4 +5,4 @@
 // Alias
 import Breadcrumb from '../breadcrumb';
 
-module.exports = Breadcrumb;
+export default Breadcrumb;

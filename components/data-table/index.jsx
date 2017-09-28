@@ -305,4 +305,4 @@ const DataTable = createReactClass({
 	}
 });
 
-module.exports = DataTable;
+export default DataTable;
