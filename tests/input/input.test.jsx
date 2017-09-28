@@ -6,6 +6,7 @@ import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
 
 import Input from '../../components/forms/input';
+import Icon from '../../components/icon';
 import InputIcon from '../../components/icon/input-icon';
 import IconSettings from '../../components/iconSettings';
 
@@ -15,7 +16,7 @@ const {
 	findRenderedDOMComponentWithClass
 } = TestUtils;
 
-describe('SLDS INPUT **************************************************', () => {
+describe('SLDSInput', () => {
 	const defaultProps = {
 		placeholder: 'Placeholder Text'
 	};
@@ -251,9 +252,8 @@ describe('SLDS INPUT **************************************************', () => 
 				iconLeft: <InputIcon
 					assistiveText="Passed assistive text to icon"
 					name="search"
-					nategory="utility"
+					category="utility"
 					onClick={clickCallback}
-					position="left"
 				/>
 			});
 			leftButton = findRenderedDOMComponentWithTag(component, 'button');
@@ -296,9 +296,8 @@ describe('SLDS INPUT **************************************************', () => 
 				iconRight: <InputIcon
 					assistiveText="Passed assistive text to icon"
 					name="search"
-					nategory="utility"
+					category="utility"
 					onClick={clickCallback}
-					position="right"
 				/>
 			});
 			leftButton = findRenderedDOMComponentWithTag(component, 'button');
@@ -330,7 +329,7 @@ describe('SLDS INPUT **************************************************', () => 
 		let elementControl;
 
 		beforeEach(() => {
-			component = getInput({ iconName: 'search', iconCategory: 'utility', iconPosition: 'right' });
+			component = getInput({ iconRight: <Icon name="search" category="utility" /> });
 			elementControl = findRenderedDOMComponentWithClass(component, 'slds-form-element__control');
 		});
 
@@ -350,13 +349,12 @@ describe('SLDS INPUT **************************************************', () => 
 
 		beforeEach(() => {
 			component = getInput({
-				assistiveText: 'Passed assistive text to icon',
+				assistiveText: { label: 'Passed assistive text to icon' },
 				hasSpinner: true,
 				iconRight: <InputIcon
 					assistiveText="Passed assistive text to icon"
 					name="search"
-					nategory="utility"
-					position="right"
+					category="utility"
 				/>,
 				id: 'unique-id-4',
 				label: 'Input Label'
@@ -394,15 +392,14 @@ describe('SLDS INPUT **************************************************', () => 
 
 		beforeEach(() => {
 			component = getInput({
-				assistiveText: 'Passed assistive text to icon',
+				assistiveText: { label: 'Passed assistive text to icon' },
 				required: true,
 				errorText: 'Error Message',
 				hasSpinner: true,
 				iconRight: <InputIcon
 					assistiveText="Passed assistive text to icon"
 					name="search"
-					nategory="utility"
-					position="right"
+					category="utility"
 				/>,
 				id: 'unique-id-4',
 				label: 'Input Label'

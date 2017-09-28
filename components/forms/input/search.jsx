@@ -34,7 +34,7 @@ const handleKeyDown = (event, onSearch) => {
  */
 const Search = ({ assistiveText, clearable, onClear, onSearch, placeholder, ...props }) => (
 	<Input
-		assistiveText={assistiveText}
+		assistiveText={{ label: assistiveText }}
 		iconLeft={
 			<InputIcon
 				assistiveText="Search"

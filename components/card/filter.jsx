@@ -24,7 +24,7 @@ const Filter = (props) => {
 	return (
 		<Input
 			{...rest}
-			assistiveText={placeholder}
+			assistiveText={{ label: placeholder }}
 			iconLeft={<InputIcon name="search" category="utility" />}
 			id={id}
 			onChange={onChange}
