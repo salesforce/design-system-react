@@ -50,5 +50,7 @@ const sampleSearchCategories = [
 	}
 ];
 
-export { sampleReportCategories };
-export { sampleSearchCategories };
+export {
+	sampleReportCategories,
+	sampleSearchCategories
+};

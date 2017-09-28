@@ -271,7 +271,9 @@ PageHeader.propTypes = propTypes;
 PageHeader.defaultProps = defaultProps;
 
 export default PageHeader;
-export { Info };
-export { Title };
-export { DetailRow };
-export { DetailBlock };
+export {
+	Info,
+	Title,
+	DetailRow,
+	DetailBlock
+};
