@@ -8,6 +8,7 @@ import DataTable from '../../components/data-table';
 import DataTableColumn from '../../components/data-table/column';
 import DataTableRowActions from '../../components/data-table/row-actions';
 import DataTableHighlightCell from '../../components/data-table/highlight-cell';
+import IconSettings from '../../components/iconSettings';
 
 chai.should();
 
@@ -73,7 +74,7 @@ describe('DataTable: ', function () {
 	const renderTable = (instance) => function () {
 		this.dom = document.createElement('div');
 		document.body.appendChild(this.dom);
-		this.component = ReactDOM.render(instance, this.dom);
+		this.component = ReactDOM.render(<IconSettings iconPath="/assets/icons">{instance}</IconSettings>, this.dom);
 	};
 
 	function removeTable () {

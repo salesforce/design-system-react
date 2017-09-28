@@ -58,7 +58,9 @@ const propTypes = {
 	/**
 	 * Changes styles of the menu option
 	 */
-	variant: PropTypes.oneOf(['icon-title-subtitle', 'checkbox'])
+	variant: PropTypes.oneOf(['icon-title-subtitle', 'checkbox']),
+	isSelected: PropTypes.func,
+	assistiveText: PropTypes.object
 };
 
 const defaultProps = {};

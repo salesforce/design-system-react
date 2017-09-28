@@ -11,6 +11,7 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
+import { shape } from 'airbnb-prop-types';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -62,10 +63,14 @@ const Input = createReactClass({
 		'aria-owns': PropTypes.string,
 		'aria-required': PropTypes.bool,
 		/**
-		 * If present, the label associated with this `input` is overwritten
-		 * by this text and is visually not shown.
+		 * **Assistive text for accessibility**
+		 * * `label`: Visually hidden label but read out loud by screen readers.
+		 * * `spinner`: Text for loading spinner icon.
 		 */
-		assistiveText: PropTypes.string,
+		assistiveText: shape({
+			label: PropTypes.string,
+			spinner: PropTypes.string
+		}),
 		children: PropTypes.node,
 		/**
 		 * Class names to be added to the outer container of the input.
@@ -84,6 +89,24 @@ const Input = createReactClass({
 		 */
 		errorText: PropTypes.string,
 		/**
+		 * Displays text or node to the left of the input. This follows the fixed text input UX pattern.
+		 */
+		fixedTextLeft: PropTypes.oneOfType([
+			PropTypes.node,
+			PropTypes.string
+		]),
+		/**
+		 * Displays text or node to the right of the input. This follows the fixed text input UX pattern.
+		 */
+		fixedTextRight: PropTypes.oneOfType([
+			PropTypes.node,
+			PropTypes.string
+		]),
+		/**
+		 * If true, loading spinner appears inside input on right hand side.
+		 */
+		hasSpinner: PropTypes.bool,
+		/**
 		 * Left aligned icon, must be instace of `design-system-react/components/icon/input-icon`
 		 */
 		iconLeft: PropTypes.node,
@@ -99,6 +122,10 @@ const Input = createReactClass({
 		 * This callback exposes the input reference / DOM node to parent components. `<Parent inputRef={(inputComponent) => this.input = inputComponent} />
 		 */
 		inputRef: PropTypes.func,
+		/**
+		 * Displays the value of the input statically. This follows the static input UX pattern.
+		 */
+		isStatic: PropTypes.bool,
 		/**
 		 * This label appears above the input.
 		 */
@@ -131,7 +158,7 @@ const Input = createReactClass({
 		 */
 		name: PropTypes.string,
 		/**
-		 * Displays the value of the input statically. This follows the read only input UX pattern.
+		 * Displays the value of the input as readOnly.
 		 */
 		readOnly: PropTypes.bool,
 		/**
@@ -160,7 +187,10 @@ const Input = createReactClass({
 		/**
 		 * The input is a controlled component, and will always display this value.
 		 */
-		value: PropTypes.string
+		value: PropTypes.string,
+		iconPosition: PropTypes.string,
+		inlineEditTrigger: PropTypes.func,
+		role: PropTypes.string
 	},
 
 	getDefaultProps () {
@@ -214,25 +244,25 @@ const Input = createReactClass({
 
 	// ### Render
 	render () {
-		const props = this.props;
-
 		// this is a hack to make left the default prop unless overwritten by `iconPosition="right"`
-		const hasLeftIcon = !!props.iconLeft || ((props.iconPosition === 'left' || props.iconPosition === undefined) && !!props.iconName);
-		const hasRightIcon = !!props.iconRight || (props.iconPosition === 'right' && !!props.iconName);
+		const hasLeftIcon = !!this.props.iconLeft ||
+			((this.props.iconPosition === 'left' || this.props.iconPosition === undefined) && !!this.props.iconName);
+		const hasRightIcon = !!this.props.iconRight ||
+			(this.props.iconPosition === 'right' && !!this.props.iconName);
 
 		return (
 			<div
 				className={classNames('slds-form-element', {
-					'slds-has-error': props.errorText
+					'slds-has-error': this.props.errorText
 				},
-				props.className)}
+				this.props.className)}
 			>
 				<Label
-					assistiveText={props.assistiveText}
-					htmlFor={props.readOnly ? undefined : this.getId()}
-					label={props.label}
-					required={props.required}
-					variant={props.readOnly ? 'static' : 'base'}
+					assistiveText={this.props.assistiveText}
+					htmlFor={this.props.isStatic ? undefined : this.getId()}
+					label={this.props.label}
+					required={this.props.required}
+					variant={this.props.isStatic ? 'static' : 'base'}
 				/>
 				<InnerInput
 					aria-activedescendant={this.props['aria-activedescendant']}
@@ -246,38 +276,43 @@ const Input = createReactClass({
 					containerProps={{
 						className: 'slds-form-element__control'
 					}}
-					disabled={props.disabled}
+					disabled={this.props.disabled}
+					fixedTextLeft={this.props.fixedTextLeft}
+					fixedTextRight={this.props.fixedTextRight}
+					hasSpinner={this.props.hasSpinner}
 					id={this.getId()}
 					iconLeft={hasLeftIcon ? this.getIconRender('left', 'iconLeft') : null}
 					iconRight={hasRightIcon ? this.getIconRender('right', 'iconRight') : null}
-					inlineEditTrigger={props.inlineEditTrigger}
-					minLength={props.minLength}
-					maxLength={props.maxLength}
-					name={props.name}
-					onBlur={props.onBlur}
-					onChange={props.onChange}
-					onClick={props.onClick}
-					onFocus={props.onFocus}
-					onInput={props.onInput}
-					onInvalid={props.onInvalid}
-					onKeyDown={props.onKeyDown}
-					onKeyPress={props.onKeyPress}
-					onKeyUp={props.onKeyUp}
-					onSelect={props.onSelect}
-					onSubmit={props.onSubmit}
-					placeholder={props.placeholder}
-					inputRef={props.inputRef}
-					role={props.role}
-					required={props.required}
-					type={props.type}
-					value={props.value}
-					variant={props.readOnly ? 'inputReadOnly' : null}
+					inlineEditTrigger={this.props.inlineEditTrigger}
+					isStatic={this.props.isStatic}
+					minLength={this.props.minLength}
+					maxLength={this.props.maxLength}
+					name={this.props.name}
+					onBlur={this.props.onBlur}
+					onChange={this.props.onChange}
+					onClick={this.props.onClick}
+					onFocus={this.props.onFocus}
+					onInput={this.props.onInput}
+					onInvalid={this.props.onInvalid}
+					onKeyDown={this.props.onKeyDown}
+					onKeyPress={this.props.onKeyPress}
+					onKeyUp={this.props.onKeyUp}
+					onSelect={this.props.onSelect}
+					onSubmit={this.props.onSubmit}
+					placeholder={this.props.placeholder}
+					inputRef={this.props.inputRef}
+					readOnly={this.props.readOnly}
+					required={this.props.required}
+					role={this.props.role}
+					spinnerAssistiveText={this.props.assistiveText && this.props.assistiveText.spinner}
+					type={this.props.type}
+					value={this.props.value}
 				/>
-				{props.errorText && <div id={this.getErrorId()} className="slds-form-element__help">{props.errorText}</div>}
-				{props.children}
+				{this.props.errorText && <div id={this.getErrorId()} className="slds-form-element__help">{this.props.errorText}</div>}
+				{this.props.children}
 			</div>
 		);
 	}
 });
 
-module.exports = Input;
+export default Input;

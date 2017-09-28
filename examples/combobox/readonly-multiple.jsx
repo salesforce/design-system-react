@@ -3,6 +3,7 @@ import React from 'react';
 import Combobox from '~/components/combobox';
 import Icon from '~/components/icon';
 import escapeRegExp from 'lodash.escaperegexp';
+import IconSettings from '~/components/iconSettings';
 
 const accounts = [
 	{ id: '1', label: 'Acme', subTitle: 'Account • San Francisco', type: 'account' },
@@ -27,37 +28,39 @@ class Example extends React.Component {
 
 	render () {
 		return (
-			<Combobox
-				id="combobox-unique-id"
-				events={{
-					onRequestRemoveSelectedOption: (event, data) => {
-						this.setState({
-							inputValue: '',
-							selection: data.selection
-						});
-					},
-					onSelect: (event, data) => {
-						if (this.props.action) {
-							this.props.action('onSelect')(event, ...Object.keys(data).map((key) => data[key]));
-						} else if (console) {
-							console.log('onSelect', event, data);
+			<IconSettings iconPath="/assets/icons">
+				<Combobox
+					id="combobox-unique-id"
+					events={{
+						onRequestRemoveSelectedOption: (event, data) => {
+							this.setState({
+								inputValue: '',
+								selection: data.selection
+							});
+						},
+						onSelect: (event, data) => {
+							if (this.props.action) {
+								this.props.action('onSelect')(event, ...Object.keys(data).map((key) => data[key]));
+							} else if (console) {
+								console.log('onSelect', event, data);
+							}
+							this.setState({
+								inputValue: '',
+								selection: data.selection
+							});
 						}
-						this.setState({
-							inputValue: '',
-							selection: data.selection
-						});
-					}
-				}}
-				labels={{
-					label: 'Search',
-					placeholder: 'Search Salesforce'
-				}}
-				multiple
-				options={accounts}
-				selection={this.state.selection}
-				value={this.state.inputValue}
-				variant="readonly"
-			/>
+					}}
+					labels={{
+						label: 'Search',
+						placeholder: 'Search Salesforce'
+					}}
+					multiple
+					options={accounts}
+					selection={this.state.selection}
+					value={this.state.inputValue}
+					variant="readonly"
+				/>
+			</IconSettings>
 		);
 	}
 }

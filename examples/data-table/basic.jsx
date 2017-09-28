@@ -3,6 +3,7 @@ import createReactClass from 'create-react-class';
 import DataTable from '~/components/data-table'; // `~` is replaced with design-system-react at runtime
 import DataTableColumn from '~/components/data-table/column';
 import DataTableCell from '~/components/data-table/cell';
+import IconSettings from '~/components/iconSettings';
 
 const CustomDataTableCell = ({ children, ...props }) => (
 	<DataTableCell {...props} >
@@ -105,57 +106,57 @@ const Example = createReactClass({
 
 	render () {
 		return (
-			<div style={{ overflow: 'auto' }}>
-				<h3 className="slds-text-heading--medium slds-m-vertical--medium">Default Fluid Layout</h3>
-				<DataTable
-					items={this.state.items}
-					id="DataTableExample-1-default"
-				>
-					{columns}
-				</DataTable>
+			<IconSettings iconPath="/assets/icons">
+				<div style={{ overflow: 'auto' }}>
+					<h3 className="slds-text-heading--medium slds-m-vertical--medium">Default Fluid Layout</h3>
+					<DataTable
+						items={this.state.items}
+						id="DataTableExample-1-default"
+					>
+						{columns}
+					</DataTable>
 
-				<h3 className="slds-text-heading--medium slds-m-vertical--medium">Striped</h3>
+					<h3 className="slds-text-heading--medium slds-m-vertical--medium">Striped</h3>
 
-				<DataTable
-					items={this.state.items}
-					id="DataTableExample-1-striped"
-					striped
-				>
-					{columns}
-				</DataTable>
+					<DataTable
+						items={this.state.items}
+						id="DataTableExample-1-striped"
+						striped
+					>
+						{columns}
+					</DataTable>
 
-				<h3 className="slds-text-heading--medium slds-m-vertical--medium">No Row Hover</h3>
+					<h3 className="slds-text-heading--medium slds-m-vertical--medium">No Row Hover</h3>
 
-				<DataTable
-					items={this.state.items}
-					id="DataTableExample-noRowHover"
-					noRowHover
-				>
-					{columns}
-				</DataTable>
+					<DataTable
+						items={this.state.items}
+						id="DataTableExample-noRowHover"
+						noRowHover
+					>
+						{columns}
+					</DataTable>
 
-				<h3 className="slds-text-heading--medium slds-m-vertical--medium">Column Bordered</h3>
+					<h3 className="slds-text-heading--medium slds-m-vertical--medium">Column Bordered</h3>
 
-				<DataTable
-					columnBordered
-					items={this.state.items}
-					id="DataTableExample-columnBordered"
-				>
-					{columns}
-				</DataTable>
+					<DataTable
+						columnBordered
+						items={this.state.items}
+						id="DataTableExample-columnBordered"
+					>
+						{columns}
+					</DataTable>
 
-				<h3 className="slds-text-heading--medium slds-m-vertical--medium">Compact</h3>
+					<h3 className="slds-text-heading--medium slds-m-vertical--medium">Compact</h3>
 
-				<DataTable
-					compact
-					items={this.state.items}
-					id="DataTableExample-compact"
-				>
-					{columns}
-				</DataTable>
-
-
-			</div>
+					<DataTable
+						compact
+						items={this.state.items}
+						id="DataTableExample-compact"
+					>
+						{columns}
+					</DataTable>
+				</div>
+			</IconSettings>
 		);
 	}
 });

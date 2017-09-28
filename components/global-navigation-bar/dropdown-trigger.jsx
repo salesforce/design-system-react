@@ -181,4 +181,4 @@ const GlobalNavigationDropdownTrigger = createReactClass({
 	}
 });
 
-module.exports = GlobalNavigationDropdownTrigger;
+export default GlobalNavigationDropdownTrigger;

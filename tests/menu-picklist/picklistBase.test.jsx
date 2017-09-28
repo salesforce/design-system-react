@@ -7,6 +7,7 @@ import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 
 import SLDSMenuPicklist from '../../components/menu-picklist';
+import IconSettings from '../../components/iconSettings';
 
 const { Simulate,
 				scryRenderedDOMComponentsWithTag,
@@ -31,7 +32,7 @@ describe('SLDSMenuPicklist: ', function () {
 	const renderPicklist = (inst) => {
 		body = document.createElement('div');
 		document.body.appendChild(body);
-		return ReactDOM.render(inst, body);
+		return ReactDOM.render(<IconSettings iconPath="/assets/icons">{inst}</IconSettings>, body);
 	};
 
 	function removePicklist () {

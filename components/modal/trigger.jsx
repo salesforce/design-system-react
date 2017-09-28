@@ -23,4 +23,4 @@ const ModalTrigger = {
 	}
 };
 
-module.exports = ModalTrigger;
+export default ModalTrigger;

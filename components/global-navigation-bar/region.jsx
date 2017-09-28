@@ -25,9 +25,9 @@ const regions = [
 
 /* eslint-disable react/display-name */
 const renderPrimary = (dividerClass, className, children) =>
-	<div className={classNames('slds-context-bar__primary', dividerClass, className)}>
+	(<div className={classNames('slds-context-bar__primary', dividerClass, className)}>
 		{children}
-	</div>;
+	</div>);
 
 
 const renderSecondary = (dividerClass, className, children, navigation) => {
@@ -54,11 +54,11 @@ const renderSecondary = (dividerClass, className, children, navigation) => {
 };
 
 const renderTertiary = (dividerClass, className, children) =>
-	<div className={classNames('slds-context-bar__tertiary', 'slds-col--bump-left', dividerClass, className)}>
+	(<div className={classNames('slds-context-bar__tertiary', 'slds-col--bump-left', dividerClass, className)}>
 		<ul className="slds-grid">
 			{children}
 		</ul>
-	</div>;
+	</div>);
 /* eslint-enable react/display-name */
 
 /**
@@ -112,5 +112,5 @@ const Region = createReactClass({
 	}
 });
 
-module.exports = Region;
-module.exports.regions = regions;
+export default Region;
+export { regions };

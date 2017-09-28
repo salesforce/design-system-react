@@ -331,6 +331,7 @@ class Combobox extends React.Component {
 		return !this.props.disabled && this.getIsOpen() // eslint-disable-line react/prop-types
 			? <Dialog
 				constrainToScrollParent
+				context={this.context}
 				flippable
 				horizontalAlign="left"
 				inheritTargetWidth
@@ -1045,6 +1046,10 @@ class Combobox extends React.Component {
 	}
 }
 /* eslint-enable jsx-a11y/role-supports-aria-props */
+
+Combobox.contextTypes = {
+	iconPath: PropTypes.string
+};
 
 Combobox.displayName = COMBOBOX;
 Combobox.propTypes = propTypes;

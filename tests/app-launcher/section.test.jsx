@@ -7,6 +7,7 @@ import TestUtils from 'react-addons-test-utils';
 const expect = chai.expect;
 const should = chai.should();
 
+import IconSettings from '../../components/iconSettings';
 import AppLauncherTile from '../../components/app-launcher/tile';
 import AppLauncherSection from '../../components/app-launcher/section';
 
@@ -32,7 +33,7 @@ describe('SLDS APP LAUNCHER SECTION *******************************************'
 	);
 
 	function mountSection (props, children = defaultChildren) {
-		handles.section = mount(createSection(props, children));
+		handles.section = mount(<IconSettings iconPath="/assets/icons">{createSection(props, children)}</IconSettings>);
 	}
 
 	describe('App Launcher Section (toggleable)', () => {

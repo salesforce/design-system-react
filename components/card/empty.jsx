@@ -40,4 +40,4 @@ CardEmpty.defaultProps = {
 	heading: 'No Related Items'
 };
 
-module.exports = CardEmpty;
+export default CardEmpty;

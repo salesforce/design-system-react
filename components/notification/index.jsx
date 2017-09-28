@@ -227,4 +227,4 @@ Notification.displayName = displayName;
 Notification.propTypes = propTypes;
 Notification.defaultProps = defaultProps;
 
-module.exports = Notification;
+export default Notification;

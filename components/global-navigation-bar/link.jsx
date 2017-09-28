@@ -126,4 +126,4 @@ GlobalNavigationBarLink.defaultProps = {
 	href: 'javascript:void(0);' // eslint-disable-line no-script-url
 };
 
-module.exports = GlobalNavigationBarLink;
+export default GlobalNavigationBarLink;

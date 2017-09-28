@@ -16,8 +16,10 @@ import classNames from 'classnames';
 // ## Constants
 import { TAB } from '../../../utilities/constants';
 
-// Temporary hack until included in SLDS
-import '!style-loader!css-loader!../../../styles/tabs/tab.css'; // eslint-disable-line import/no-unresolved
+/*
+ * Disabled Tab CSS has been removed. If you'd like to use the styling, please import it in your module bundler.
+ */
+// import '!style-loader!css-loader!../../../styles/tabs/tab.css'; // eslint-disable-line import/no-unresolved
 
 const Tab = createReactClass({
 	displayName: TAB,
@@ -44,7 +46,7 @@ const Tab = createReactClass({
 		selected: PropTypes.bool,
 
 		/**
-		 * When `true`, the HTML attribute `aria-disabled` will be applied.
+		 * When `true`, the HTML attribute `aria-disabled` will be applied. Disabled Tab CSS has been removed. If you'd like to use the styling, please import it in your module bundler. `import 'css-loader!/node_modules/design-system-react/styles/tabs/tab.css';` This feature may be removed in the future due to disabled tabs being inaccessible.
 		 */
 		disabled: PropTypes.bool,
 

@@ -3,7 +3,8 @@
 
 import React from 'react';
 import createReactClass from 'create-react-class';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf, action } from '@storybook/react';
+import IconSettings from '../../components/iconSettings';
 
 import { MENU_PICKLIST } from '../../utilities/constants';
 import Picklist from '../../components/menu-picklist';
@@ -67,7 +68,7 @@ const MultipleExample = createReactClass({
 });
 
 storiesOf(MENU_PICKLIST, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Modal', () => getPicklist({
 		label: 'Contacts',
 		placeholder: 'Select a contact',

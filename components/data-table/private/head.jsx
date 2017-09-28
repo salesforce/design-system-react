@@ -75,13 +75,13 @@ const DataTableHead = createReactClass({
 						: null
 					}
 					{this.props.columns.map((column) =>
-						<HeaderCell
+						(<HeaderCell
 							assistiveTextForColumnSort={this.props.assistiveTextForColumnSort}
 							id={`${this.props.id}-${column.props.property}`}
 							key={`${this.props.id}-${column.props.property}`}
 							onSort={this.props.onSort}
 							{...column.props}
-						/>
+						/>)
 					)}
 					{this.props.showRowActions
 						? <th scope="col" style={{ width: '3.25rem' }}>

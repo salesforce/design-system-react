@@ -758,7 +758,11 @@
                     ]
                 },
                 "required": false,
-                "description": "Button type"
+                "description": "Button type",
+                "defaultValue": {
+                    "value": "'button'",
+                    "computed": false
+                }
             },
             "title": {
                 "type": {
@@ -807,6 +811,31 @@
                     "value": "'neutral'",
                     "computed": false
                 }
+            },
+            "iconClassName": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
+            },
+            "tooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": ""
             }
         },
         "route": "buttons",
@@ -3764,6 +3793,12 @@
                 },
                 "required": true,
                 "description": "Inline Edit is a controlled component, and will always display this value."
+            },
+            "assistiveText": {
+                "defaultValue": {
+                    "value": "'Edit text'",
+                    "computed": false
+                }
             }
         },
         "route": "inline-edit-inputs",
@@ -3871,10 +3906,11 @@
             },
             "assistiveText": {
                 "type": {
-                    "name": "string"
+                    "name": "custom",
+                    "raw": "shape({\n    label: PropTypes.string,\n    spinner: PropTypes.string\n})"
                 },
                 "required": false,
-                "description": "If present, the label associated with this `input` is overwritten\nby this text and is visually not shown."
+                "description": "**Assistive text for accessibility**\n* `label`: Visually hidden label but read out loud by screen readers.\n* `spinner`: Text for loading spinner icon."
             },
             "children": {
                 "type": {
@@ -3915,6 +3951,43 @@
                 "required": false,
                 "description": "Message to display when the input is in an error state. When this is present, also visually highlights the component as in error."
             },
+            "fixedTextLeft": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "node"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Displays text or node to the left of the input. This follows the fixed text input UX pattern."
+            },
+            "fixedTextRight": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "node"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Displays text or node to the right of the input. This follows the fixed text input UX pattern."
+            },
+            "hasSpinner": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, loading spinner appears inside input on right hand side."
+            },
             "iconLeft": {
                 "type": {
                     "name": "node"
@@ -3942,6 +4015,13 @@
                 },
                 "required": false,
                 "description": "This callback exposes the input reference / DOM node to parent components. `<Parent inputRef={(inputComponent) => this.input = inputComponent} />"
+            },
+            "isStatic": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Displays the value of the input statically. This follows the static input UX pattern."
             },
             "label": {
                 "type": {
@@ -4060,7 +4140,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Displays the value of the input statically. This follows the read only input UX pattern."
+                "description": "Displays the value of the input as readOnly."
             },
             "required": {
                 "type": {
@@ -4144,6 +4224,27 @@
                 },
                 "required": false,
                 "description": "The input is a controlled component, and will always display this value."
+            },
+            "iconPosition": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "inlineEditTrigger": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "role": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
             }
         },
         "route": "inputs",
@@ -9862,6 +9963,18 @@
             },
             {
                 "name": "getTab",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "index",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "getTabNode",
                 "docblock": null,
                 "modifiers": [],
                 "params": [

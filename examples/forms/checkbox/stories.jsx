@@ -1,6 +1,7 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf, action } from '@storybook/react';
+import IconSettings from '../../../components/iconSettings';
 
 import { FORMS_CHECKBOX } from '../../../utilities/constants';
 import Checkbox from '../../../components/forms/checkbox';
@@ -84,7 +85,7 @@ const CheckboxIndeterminate = createReactClass({
 
 
 storiesOf(FORMS_CHECKBOX, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Checkbox', () => (
 		<Checkbox
 			label="Checkbox Label"

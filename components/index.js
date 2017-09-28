@@ -4,6 +4,9 @@
 export SLDSSettings from './settings';
 export Settings from './settings';
 
+export SLDSIconSettings from './iconSettings';
+export IconSettings from './iconSettings';
+
 export SLDSButton from './button';
 export Button from './button';
 

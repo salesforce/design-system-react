@@ -8,15 +8,17 @@ import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 
-import { SLDSLookup } from '../../components';
+import SLDSLookup from '../../components/lookup';
+import IconSettings from '../../components/iconSettings';
 
-const Header = SLDSLookup.DefaultHeader;
-const Footer = SLDSLookup.DefaultFooter;
+import Header from '../../components/lookup/header';
+import Footer from '../../components/lookup/footer';
+
 const { Simulate, scryRenderedDOMComponentsWithClass, scryRenderedDOMComponentsWithTag } = TestUtils;
 
 describe('SLDSLookup: ', () => {
 	const generateLookup = function (lookupInstance) {
-		const reactCmp = TestUtils.renderIntoDocument(lookupInstance);
+		const reactCmp = TestUtils.renderIntoDocument(<IconSettings iconPath="/assets/icons">{lookupInstance}</IconSettings>);
 		return ReactDOM.findDOMNode(reactCmp);
 	};
 

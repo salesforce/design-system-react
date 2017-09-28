@@ -214,4 +214,4 @@ class DatepickerCalendarWrapper extends React.Component {
 	}
 }
 
-module.exports = DatepickerCalendarWrapper;
+export default DatepickerCalendarWrapper;

@@ -253,4 +253,4 @@ const Textarea = createReactClass({
 	}
 });
 
-module.exports = Textarea;
+export default Textarea;

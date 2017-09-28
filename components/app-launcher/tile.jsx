@@ -86,7 +86,7 @@ const AppLauncherTile = (props) => {
 							</PopoverTooltip>
 						}
 						wrapper={(text, textTruncateChild) =>
-							<div>
+							(<div>
 								{props.descriptionHeading
 									// inline style override
 									&& <span
@@ -98,7 +98,7 @@ const AppLauncherTile = (props) => {
 								</Highlighter>
 								{textTruncateChild && ' '}
 								{textTruncateChild}
-							</div>
+							</div>)
 						}
 					/>
 				</div>
@@ -167,4 +167,4 @@ AppLauncherTile.propTypes = {
 	// TODO: add Highlighter to Truncate text (https://github.com/ShinyChang/React-Text-Truncate/issues/32)
 };
 
-module.exports = AppLauncherTile;
+export default AppLauncherTile;

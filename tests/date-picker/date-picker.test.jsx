@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import { mount } from 'enzyme';
+import IconSettings from '../../components/iconSettings';
 
 /* Enzyme Helpers that can mount and unmount React component instances to
  * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`
@@ -51,7 +52,9 @@ const DemoComponent = createReactClass({
 
 	render () {
 		return (
-			<Datepicker {...this.props} />
+			<IconSettings iconPath="/assets/icons">
+				<Datepicker {...this.props} />
+			</IconSettings>
 		);
 	}
 });

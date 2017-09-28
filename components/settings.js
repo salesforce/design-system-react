@@ -8,10 +8,9 @@ import Modal from 'react-modal';
 */
 
 let assetsPath = 'assets/';
-let iconsPath;
 let appRoot;
 
-module.exports = {
+const settings = {
 	setAssetsPath: (path) => {
 		if (path) {
 			assetsPath = path;
@@ -19,14 +18,6 @@ module.exports = {
 	},
 
 	getAssetsPath: () => String(assetsPath),
-
-	setIconsPath: (path) => {
-		if (path) {
-			iconsPath = path;
-		}
-	},
-
-	getIconsPath: () => iconsPath,
 
 	/*
 	 * The app element allows you to specify the portion of your app that should be hidden (via aria-hidden)
@@ -46,3 +37,5 @@ module.exports = {
 
 	getAppElement: () => appRoot
 };
+
+export default settings;

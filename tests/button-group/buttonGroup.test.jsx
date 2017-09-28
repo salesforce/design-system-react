@@ -7,11 +7,12 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 
+import IconSettings from '../../components/iconSettings';
 import { SLDSButtonGroup, SLDSButton } from '../../components';
 
 describe('SLDSButtonGroup: ', () => {
 	const generateButtonGroup = function (buttonGroupInstance) {
-		const reactCmp = TestUtils.renderIntoDocument(<div>{buttonGroupInstance}</div>);
+		const reactCmp = TestUtils.renderIntoDocument(<IconSettings iconPath="/assets/icons"><div>{buttonGroupInstance}</div></IconSettings>);
 		return ReactDOM.findDOMNode(reactCmp).children[0];
 	};
 
