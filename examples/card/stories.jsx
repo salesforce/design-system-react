@@ -2,7 +2,7 @@ import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import uniqueId from 'lodash.uniqueid';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf, action } from '@storybook/react';
 import IconSettings from '../../components/iconSettings';
 
 import { CARD } from '../../utilities/constants';
@@ -162,7 +162,7 @@ storiesOf(CARD, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('w/ Items', () => <DemoCard items={sampleItems} />)
 	.add('Empty', () => <DemoCard items={[]} />)
-	.add('Custom Header', () =>
+	.add('Custom Header', () => (
 		<DemoCard
 			header={<MediaObject
 				body={<InlineEdit
@@ -173,7 +173,7 @@ storiesOf(CARD, module)
 				/>}
 			/>}
 			items={sampleItems}
-		/>)
+		/>))
 	.add('Custom Heading', () => (
 		<DemoCard
 			items={sampleItems}

@@ -441,6 +441,13 @@ exports[`Button Group MoreIcon Snapshot 1`] = `
         <OnClickOutside(SLDSMenuDropdown)
           assistiveText="More Options"
           buttonVariant="icon"
+          eventTypes={
+            Array [
+              "mousedown",
+              "touchstart",
+            ]
+          }
+          excludeScrollbar={false}
           iconName="down"
           iconVariant="border-filled"
           id="ButtonGroupExampleDropdown"
@@ -462,6 +469,9 @@ exports[`Button Group MoreIcon Snapshot 1`] = `
               },
             ]
           }
+          outsideClickIgnoreClass="ignore-react-onclickoutside"
+          preventDefault={false}
+          stopPropagation={false}
           triggerClassName="slds-button--last"
         >
           <SLDSMenuDropdown
@@ -470,6 +480,12 @@ exports[`Button Group MoreIcon Snapshot 1`] = `
             buttonVariant="icon"
             disableOnClickOutside={[Function]}
             enableOnClickOutside={[Function]}
+            eventTypes={
+              Array [
+                "mousedown",
+                "touchstart",
+              ]
+            }
             hoverCloseDelay={300}
             iconName="down"
             iconVariant="border-filled"
@@ -492,6 +508,9 @@ exports[`Button Group MoreIcon Snapshot 1`] = `
                 },
               ]
             }
+            outsideClickIgnoreClass="ignore-react-onclickoutside"
+            preventDefault={false}
+            stopPropagation={false}
             triggerClassName="slds-button--last"
           >
             <SLDSMenuDropdownTrigger

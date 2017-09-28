@@ -2,7 +2,7 @@
 
 import React from 'react';
 import createReactClass from 'create-react-class';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf, action } from '@storybook/react';
 import { PAGE_HEADER } from '../../utilities/constants';
 import IconSettings from '../../components/iconSettings';
 

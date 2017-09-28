@@ -1,7 +1,7 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf, action } from '@storybook/react';
 import IconSettings from '../../components/iconSettings';
 
 import { TREE } from '../../utilities/constants';
@@ -107,34 +107,32 @@ const DemoTree = createReactClass({
 storiesOf(TREE, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Base', () => <DemoTree heading="Miscellaneous Foods" />)
-	.add('Initial Expanded/Selection', () => <DemoTree
+	.add('Initial Expanded/Selection', () => (<DemoTree
 		heading="Miscellaneous Foods"
 		exampleNodesIndex="sampleNodesWithInitialState"
-	/>)
-	.add('No Branch Select', () => <DemoTree
+	/>))
+	.add('No Branch Select', () => (<DemoTree
 		heading="Miscellaneous Foods"
 		noBranchSelection
-	/>)
-	.add('Single Selection', () => <DemoTree
+	/>))
+	.add('Single Selection', () => (<DemoTree
 		heading="Miscellaneous Foods"
 		singleSelection
-	/>)
+	/>))
 	.add('Assistive Heading', () => <DemoTree assistiveText="Miscellaneous Foods" />)
-	.add('Overflow Hidden', () =>
-		<DemoTree
-			heading="Miscellaneous Foods"
-			exampleNodesIndex="sampleNodesWithLargeDataset"
-			listStyle={{
-				height: '300px',
-				overflowY: 'auto'
-			}}
-		/>
-	)
-	.add('Large dataset (300+)', () => <DemoTree
+	.add('Overflow Hidden', () => (<DemoTree
 		heading="Miscellaneous Foods"
 		exampleNodesIndex="sampleNodesWithLargeDataset"
-	/>)
-	.add('Highlighted Search', () => <DemoTree
+		listStyle={{
+			height: '300px',
+			overflowY: 'auto'
+		}}
+	/>))
+	.add('Large dataset (300+)', () => (<DemoTree
+		heading="Miscellaneous Foods"
+		exampleNodesIndex="sampleNodesWithLargeDataset"
+	/>))
+	.add('Highlighted Search', () => (<DemoTree
 		heading="Results for fruit"
 		searchable
-	/>);
+	/>));

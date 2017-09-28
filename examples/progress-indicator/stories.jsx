@@ -1,6 +1,6 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf, action } from '@storybook/react';
 import IconSettings from '../../components/iconSettings';
 
 import ProgressIndicator from '~/components/progress-indicator';

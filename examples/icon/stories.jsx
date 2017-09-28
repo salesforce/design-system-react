@@ -1,5 +1,5 @@
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 
 import { ICON } from '../../utilities/constants';
 
@@ -53,8 +53,8 @@ storiesOf(ICON, module)
 			title="This is a title"
 		/>
 	))
-	.add('Base: Imported', () => <Icon
+	.add('Base: Imported', () => (<Icon
 		assistiveText="Download"
 		category="utility"
 		icon={download}
-	/>);
+	/>));

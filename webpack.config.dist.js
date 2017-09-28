@@ -46,7 +46,7 @@ if (process.env.INCLUDE_ICONS) {
 	});
 }
 
-config.module.loaders[0].loaders = ['babel', StringReplacePlugin.replace({
+config.module.rules[0].loaders = ['babel-loader', StringReplacePlugin.replace({
 	replacements: replacementsArr
 })];
 

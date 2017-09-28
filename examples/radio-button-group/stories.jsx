@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 import { shape } from 'airbnb-prop-types';
 
 import RadioButtonGroup from '../../components/radio-button-group';

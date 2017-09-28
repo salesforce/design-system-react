@@ -1,5 +1,5 @@
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 import IconSettings from '../../components/iconSettings';
 
 import MediaObject from '../../components/media-object';

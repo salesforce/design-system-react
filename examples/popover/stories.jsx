@@ -2,7 +2,7 @@
 /* eslint-disable no-script-url */
 
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf, action } from '@storybook/react';
 import IconSettings from '../../components/iconSettings';
 
 import { POPOVER } from '../../utilities/constants';
@@ -69,13 +69,13 @@ const popoverBackgroundColor = 'rgb(255, 80, 121)';
 const containerBackgroundColor = 'rgb(255, 127, 80)';
 
 storiesOf(POPOVER, module)
-	.addDecorator((getStory) => <div
+	.addDecorator((getStory) => (<div
 		className="slds-p-around--medium slds-m-horizontal--x-large"
 		style={{
 			margin: '300px auto',
 			textAlign: 'center',
 			width: '500px' }}
-	><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
+	><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>))
 	.add('Header', () => <Header />)
 	.add('Controlled w/ Footer', () => <ControlledWithFooter log={action} />)
 	.add('AlternativeHeader', () => <AlternativeHeader />)
