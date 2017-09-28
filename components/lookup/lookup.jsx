@@ -143,6 +143,14 @@ const Lookup = React.createClass({
 		 */
 		onFocus: PropTypes.func,
 		/**
+		 * Function called when the lookup dropdown would like hide. This will turn the Lookup into into a controlled component. Please use with `isOpen`.
+		 */
+		onRequestClose: PropTypes.func,
+		/**
+		 * Function called when the lookup dropdown would like show. This will turn the Lookup into into a controlled component. Please use with `isOpen`.
+		 */
+		onRequestOpen: PropTypes.func,
+		/**
 		 * Triggered when the user scrolls in the dropdown menu.
 		 */
 		onScroll: PropTypes.func,
@@ -194,7 +202,6 @@ const Lookup = React.createClass({
 		return {
 			currentFocus: null,
 			focusIndex: null,
-			isOpen: !!this.props.isOpen,
 			items: [],
 			listLength: this.props.options.length,
 			searchTerm: this.normalizeSearchTerm(this.props.searchTerm),
@@ -326,6 +333,9 @@ const Lookup = React.createClass({
 
 	selectItemByIndex (index) {
 		if (index >= 0 && index < this.state.items.length) {
+			if (this.props.onRequestClose) {
+				this.props.onRequestClose();
+			}
 			this.setState({
 				isOpen: false,
 				selectedIndex: index,
@@ -339,6 +349,9 @@ const Lookup = React.createClass({
 	},
 
 	handleDeleteSelected () {
+		if (this.props.onRequestOpen) {
+			this.props.onRequestOpen();
+		}
 		this.setState({
 			selectedIndex: null,
 			isOpen: true
@@ -354,6 +367,9 @@ const Lookup = React.createClass({
 	// =================================================
 	// Event Listeners on Input
 	handleClose () {
+		if (this.props.onRequestClose) {
+			this.props.onRequestClose();
+		}
 		this.setState({
 			isOpen: false,
 			focusIndex: null,
@@ -366,21 +382,20 @@ const Lookup = React.createClass({
 	},
 
 	handleEscape (event) {
-		if (this.state.isOpen && event) {
+		if (this.getIsOpen() && event) {
 			EventUtil.trap(event);
 		}
 		this.handleClose();
 	},
 
 	handleCancel () {
-		this.setState({
-			isOpen: false,
-			focusIndex: null,
-			currentFocus: null
-		});
+		this.handleClose();
 	},
 
 	handleClick () {
+		if (this.props.onRequestOpen) {
+			this.props.onRequestOpen();
+		}
 		this.setState({ isOpen: true });
 	},
 
@@ -395,6 +410,9 @@ const Lookup = React.createClass({
 		if (this.props.onFocus) {
 			const target = event.target || event.currentTarget;
 			this.props.onFocus(target.value);
+		}
+		if (this.props.onRequestOpen) {
+			this.props.onRequestOpen();
 		}
 		this.setState({ isOpen: true });
 	},
