@@ -4,7 +4,10 @@ import { storiesOf, action } from '@storybook/react';
 import IconSettings from '../../components/iconSettings';
 
 import { LOOKUP } from '../../utilities/constants';
-import Lookup, { DefaultFooter, DefaultHeader } from '../../components/lookup';
+import Lookup from '../../components/lookup';
+import Header from '../../components/lookup/header';
+import Footer from '../../components/lookup/footer';
+
 import SLDSButton from '../../components/button';
 
 const DemoLookup = createReactClass({
