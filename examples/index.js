@@ -7,6 +7,14 @@ const documentationSiteLiveExamples = {
 	'app-launcher': [
 		require('raw-loader!design-system-react/examples/app-launcher/default.jsx')
 	],
+	avatar: [
+		require('raw-loader!design-system-react/examples/avatar/base.jsx'),
+		require('raw-loader!design-system-react/examples/avatar/user-initials.jsx'),
+		require('raw-loader!design-system-react/examples/avatar/user-icon.jsx'),
+		require('raw-loader!design-system-react/examples/avatar/entity-initials.jsx'),
+		require('raw-loader!design-system-react/examples/avatar/entity-icon.jsx')
+
+	],
 	breadcrumb: [
 		require('raw-loader!design-system-react/examples/breadcrumb/base.jsx'),
 		require('raw-loader!design-system-react/examples/breadcrumb/one-item.jsx')

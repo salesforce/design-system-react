@@ -4,6 +4,9 @@
 export SLDSSettings from './settings';
 export Settings from './settings';
 
+export SLDSAvatar from './avatar';
+export Avatar from './avatar';
+
 export SLDSButton from './button';
 export Button from './button';
 
