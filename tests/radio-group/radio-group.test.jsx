@@ -23,7 +23,7 @@ class RadioGroupExample extends React.Component {
 
 	constructor (props) {
 		super(props);
-		this.state = { checked : 'Radio Label One' };
+		this.state = { checked: 'Radio Label One' };
 	}
 
 	render () {
