@@ -60,10 +60,18 @@ describe('SLDSLookup: ', () => {
 			const label = lookup.getElementsByTagName('label')[0];
 			expect(label.textContent).to.equal('Account');
 		});
+
 		it('LookupWithSelection - renders label', () => {
 			const lookup = generateLookup(getLookupWithSelection());
 			const label = lookup.getElementsByTagName('span')[0];
 			expect(label.textContent).to.equal('Account');
+		});
+
+		it('isOpen=true renders open dropdown', () => {
+			const lookup = generateLookup(getLookup({ isOpen: true }));
+			const input = lookup.getElementsByTagName('input')[0];
+			const ariaExpanded = input.getAttribute('aria-expanded');
+			expect(ariaExpanded).to.equal('true');
 		});
 	});
 
@@ -173,6 +181,14 @@ describe('SLDSLookup: ', () => {
 			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
 			const focusedItem = lookup.getElementsByTagName('ul')[0].getElementsByTagName('li')[0];
 			expect(focusedItem.className).to.have.string('slds-theme--shade');
+		});
+
+		it('isOpen=false prevents dropdown from opening', () => {
+			const lookup = generateLookup(getLookup({ isOpen: false }));
+			const input = lookup.getElementsByTagName('input')[0];
+			expect(input.getAttribute('aria-expanded')).to.equal('false');
+			Simulate.click(input);
+			expect(input.getAttribute('aria-expanded')).to.equal('false');
 		});
 	});
 

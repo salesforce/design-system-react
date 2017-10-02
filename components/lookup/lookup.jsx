@@ -13,6 +13,7 @@ import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import escapeRegExp from 'lodash.escaperegexp';
+import isBoolean from 'lodash.isboolean';
 import isEqual from 'lodash.isequal';
 
 // This component's `checkProps` which issues warnings to developers about properties
@@ -119,6 +120,10 @@ const Lookup = createReactClass({
 		 */
 		isInline: PropTypes.bool,
 		/**
+		 * Whether or not the dropdown menu is open. This overrides the default behavior.
+		 */
+		isOpen: PropTypes.bool,
+		/**
 		 * Form label for input.
 		 */
 		label: PropTypes.string,
@@ -131,13 +136,25 @@ const Lookup = createReactClass({
 		 */
 		onBlur: PropTypes.func,
 		/**
+		 * Triggered when the contents of the input changes.
+		 */
+		onChange: PropTypes.func,
+		/**
 		 * Triggered when input is focused.
 		 */
 		onFocus: PropTypes.func,
 		/**
-		 * Triggered when the contents of the input changes.
+		 * Function called when the lookup dropdown would like hide. This will turn the Lookup into into a controlled component. Please use with `isOpen`.
 		 */
-		onChange: PropTypes.func,
+		onRequestClose: PropTypes.func,
+		/**
+		 * Function called when the lookup dropdown would like show. This will turn the Lookup into into a controlled component. Please use with `isOpen`.
+		 */
+		onRequestOpen: PropTypes.func,
+		/**
+		 * Triggered when the user scrolls in the dropdown menu.
+		 */
+		onScroll: PropTypes.func,
 		/**
 		 * Triggered when an item is selected from the dropdown menu.
 		 */
@@ -282,6 +299,10 @@ const Lookup = createReactClass({
 		this.setState({ currentFocus: id });
 	},
 
+	getIsOpen () {
+		return !!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
+	},
+
 	getListLength (qty) {
 		if (qty !== this.state.listLength) {
 			this.setState({ listLength: qty });
@@ -313,6 +334,9 @@ const Lookup = createReactClass({
 
 	selectItemByIndex (index) {
 		if (index >= 0 && index < this.state.items.length) {
+			if (this.props.onRequestClose) {
+				this.props.onRequestClose();
+			}
 			this.setState({
 				isOpen: false,
 				selectedIndex: index,
@@ -326,6 +350,9 @@ const Lookup = createReactClass({
 	},
 
 	handleDeleteSelected () {
+		if (this.props.onRequestOpen) {
+			this.props.onRequestOpen();
+		}
 		this.setState({
 			selectedIndex: null,
 			isOpen: true
@@ -341,6 +368,9 @@ const Lookup = createReactClass({
 	// =================================================
 	// Event Listeners on Input
 	handleClose () {
+		if (this.props.onRequestClose) {
+			this.props.onRequestClose();
+		}
 		this.setState({
 			isOpen: false,
 			focusIndex: null,
@@ -353,21 +383,20 @@ const Lookup = createReactClass({
 	},
 
 	handleEscape (event) {
-		if (this.state.isOpen && event) {
+		if (this.getIsOpen() && event) {
 			EventUtil.trap(event);
 		}
 		this.handleClose();
 	},
 
 	handleCancel () {
-		this.setState({
-			isOpen: false,
-			focusIndex: null,
-			currentFocus: null
-		});
+		this.handleClose();
 	},
 
 	handleClick () {
+		if (this.props.onRequestOpen) {
+			this.props.onRequestOpen();
+		}
 		this.setState({ isOpen: true });
 	},
 
@@ -382,6 +411,9 @@ const Lookup = createReactClass({
 		if (this.props.onFocus) {
 			const target = event.target || event.currentTarget;
 			this.props.onFocus(target.value);
+		}
+		if (this.props.onRequestOpen) {
+			this.props.onRequestOpen();
 		}
 		this.setState({ isOpen: true });
 	},
@@ -516,7 +548,7 @@ const Lookup = createReactClass({
 	},
 
 	renderInlineMenu () {
-		return (this.state.isOpen
+		return (this.getIsOpen()
 			? <div className="ignore-react-onclickoutside slds-lookup__menu" role="listbox">
 				{this.renderMenuContent()}
 			</div>
@@ -525,7 +557,7 @@ const Lookup = createReactClass({
 	},
 
 	renderSeparateMenu () {
-		return (this.state.isOpen
+		return (this.getIsOpen()
 			? <Dialog
 				className="slds-lookup__menu slds-show"
 				closeOnTabKey
@@ -550,7 +582,7 @@ const Lookup = createReactClass({
 				aria-activedescendant={this.state.currentFocus ? this.state.currentFocus : ''}
 				aria-autocomplete="list"
 				aria-describedby={this.props.describedById}
-				aria-expanded={!!this.state.isOpen}
+				aria-expanded={!!this.getIsOpen()}
 				assistiveText={this.props.assistiveText}
 				className="slds-lookup__search-input"
 				disabled={this.props.disabled}
@@ -658,7 +690,7 @@ const Lookup = createReactClass({
 	getClassName () {
 		return classNames(this.props.className, 'slds-form-element slds-lookup', {
 			'slds-has-selection': this.isSelected(),
-			'slds-is-open': this.state.isOpen
+			'slds-is-open': this.getIsOpen()
 		});
 	},
 
@@ -678,7 +710,7 @@ const Lookup = createReactClass({
 		};
 
 		return (
-			<div className={this.getClassName()} data-select="single" data-scope="single">
+			<div className={this.getClassName()} data-select="single" data-scope="single" onScroll={this.props.onScroll}>
 				{this.props.label ? this.renderLabel() : null}
 				<div className={classNames(formElementControlClasses)}>
 					{this.isSelected() ? this.renderSelectedItem() : null}
