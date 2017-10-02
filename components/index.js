@@ -153,6 +153,9 @@ export Radio from './radio-button-group/radio';
 export SLDSRadioButtonGroup from './radio-button-group';
 export RadioButtonGroup from './radio-button-group';
 
+export SLDSRadioGroup from './radio-group';
+export RadioGroup from './radio-group';
+
 export SLDSSpinner from './spinner';
 export Spinner from './spinner';
 

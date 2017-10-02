@@ -1,22 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RadioButtonGroup from '~/components/radio-button-group'; // `~` is replaced with design-system-react at runtime
-import Radio from '~/components/radio-button-group/radio'; // `~` is replaced with design-system-react at runtime
+import RadioGroup from '~/components/radio-group'; // `~` is replaced with design-system-react at runtime
+import Radio from '~/components/radio-group/radio'; // `~` is replaced with design-system-react at runtime
 import { shape } from 'airbnb-prop-types';
 
 class Example extends React.Component {
 
 	constructor (props) {
 		super(props);
-		this.state = { checked: 'Tue' };
+		this.state = {};
 	}
 
 	render () {
-		const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
-		const labels = { label: 'Day of week' };
+		const values = ['Radio Label One', 'Radio Label Two'];
+		const labels = { label: 'Radio Group Label' };
 		return (
 			<div>
-				<RadioButtonGroup
+				<RadioGroup
 					labels={this.props.labels || labels}
 					onChange={(event) => this.setState({ checked: event.target.value })}
 					disabled={this.props.disabled}
@@ -24,8 +24,16 @@ class Example extends React.Component {
 					name={this.props.name}
 					errorId={this.props.errorId}
 				>
-					{days.map((day) => <Radio key={day} id={day} label={day} value={day} checked={this.state.checked === day} variant="button-group" />)}
-				</RadioButtonGroup>
+					{values.map((value) =>
+						<Radio
+							key={value}
+							id={value}
+							label={value}
+							value={value}
+							checked={this.state.checked === value}
+							variant="base"
+						/>)}
+				</RadioGroup>
 			</div>
 		);
 	}
@@ -43,6 +51,6 @@ Example.propTypes = {
 	})
 };
 
-Example.displayName = 'RadioButtonGroupExample';
+Example.displayName = 'RadioGroupExample';
 
 export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

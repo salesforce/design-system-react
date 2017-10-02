@@ -109,15 +109,15 @@
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-1": "^6.22.0",
     "basic-auth": "^1.0.4",
-    "chai": "^4.0.1",
+    "chai": "^3.5.0",
     "chai-enzyme": "^0.6.1",
     "compression": "^1.6.2",
     "css-loader": "^0.28.0",
     "enzyme": "^2.5.1",
     "enzyme-to-json": "^1.5.0",
-    "eslint-loader": "^1.6.0",
     "eslint": "^3.13.0",
     "eslint-config-airbnb": "14.0.0",
+    "eslint-loader": "^1.6.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.9.0",
@@ -426,12 +426,13 @@
       "component": "radio-button-group",
       "status": "prod",
       "display-name": "Radio Button Groups",
-      "SLDS-component-path": "/components/radio-button-group",
-      "dependencies": [
-        {
-          "component": "radio"
-        }
-      ]
+      "SLDS-component-path": "/components/radio-button-group"
+    },
+    {
+      "component": "radio-group",
+      "status": "prod",
+      "display-name": "Radio Groups",
+      "SLDS-component-path": "/components/radio-group"
     },
     {
       "component": "tooltip",
