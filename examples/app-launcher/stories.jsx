@@ -1,7 +1,7 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf, action } from '@storybook/react';
 
 import { APP_LAUNCHER } from '../../utilities/constants';
 
@@ -16,6 +16,7 @@ import Search from '../../components/forms/input/search';
 import GlobalNavigationBar from '../../components/global-navigation-bar';
 import GlobalNavigationBarRegion from '../../components/global-navigation-bar/region';
 
+import IconSettings from '../../components/iconSettings';
 import SLDSSettings from '../../components/SLDSSettings';
 
 SLDSSettings.setAppElement('#root');	// used by Modal component
@@ -465,7 +466,7 @@ const DemoAppLauncherWithSeveralSections = createReactClass({
 
 
 storiesOf(APP_LAUNCHER, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('App Launcher (open)', () => <DemoAppLauncher isOpen />)
 	.add('App Launcher', () => <DemoAppLauncher />)
 	.add('App Launcher no header button', () => <DemoAppLauncherNoHeaderButton />)

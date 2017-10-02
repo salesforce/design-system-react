@@ -4,7 +4,7 @@ import Input from '~/components/forms/input'; // `~` is replaced with design-sys
 import InputIcon from '~/components/icon/input-icon'; // `~` is replaced with design-system-react at runtime
 
 const Example = createReactClass({
-	displayName: 'InputExample',
+	displayName: 'ErrorInputExample',
 
 	render () {
 		return (

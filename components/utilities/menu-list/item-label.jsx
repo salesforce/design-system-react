@@ -44,4 +44,4 @@ ListItemLabel.defaultProps = {
 	value: null
 };
 
-module.exports = ListItemLabel;
+export default ListItemLabel;

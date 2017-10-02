@@ -22,7 +22,7 @@ import Highlighter from '../../utilities/highlighter';
 import isFunction from 'lodash.isfunction';
 
 // ### Event Helpers
-import { EventUtil } from '../../../utilities';
+import EventUtil from '../../../utilities/event';
 
 // ## Constants
 import { TREE_ITEM } from '../../../utilities/constants';

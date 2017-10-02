@@ -4,18 +4,12 @@
 
 import urlExists from '../../../utilities/warning/url-exists';
 
-import settings from '../../../components/settings';
-
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
-		const modifiedPath = props.path || settings.getIconsPath();
-
-		// only check if user passes in external path for SLDS sprite
-		if (modifiedPath && props.name) {
-			urlExists(COMPONENT, `${modifiedPath}/${props.category}-sprite/svg/symbols.svg#${props.name}`);
-		}
+		const modifiedPath = props.path || props.context.iconPath;
+		urlExists(COMPONENT, `${modifiedPath}/${props.category}-sprite/svg/symbols.svg#${props.name}`);
 	};
 }
 

@@ -50,5 +50,7 @@ const sampleSearchCategories = [
 	}
 ];
 
-module.exports.sampleReportCategories = sampleReportCategories;
-module.exports.sampleSearchCategories = sampleSearchCategories;
+export {
+	sampleReportCategories,
+	sampleSearchCategories
+};

@@ -10,6 +10,7 @@ const { Simulate,
 	findRenderedDOMComponentWithClass } = TestUtils;
 
 import { SLDSButton } from '../../components';
+import IconSettings from '../../components/iconSettings';
 
 const mockCallback = sinon.spy();
 
@@ -25,7 +26,7 @@ describe('SLDSButton: ', () => {
 	const renderButton = (inst) => {
 		body = document.createElement('div');
 		document.body.appendChild(body);
-		return ReactDOM.render(inst, body);
+		return ReactDOM.render(<IconSettings iconPath="/assets/icons">{inst}</IconSettings>, body);
 	};
 
 	function removeButton () {

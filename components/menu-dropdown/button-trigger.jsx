@@ -172,4 +172,4 @@ const Trigger = createReactClass({
 	}
 });
 
-module.exports = Trigger;
+export default Trigger;

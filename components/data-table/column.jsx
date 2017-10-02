@@ -76,4 +76,4 @@ DataTableColumn.propTypes = {
 	width: PropTypes.string
 };
 
-module.exports = DataTableColumn;
+export default DataTableColumn;

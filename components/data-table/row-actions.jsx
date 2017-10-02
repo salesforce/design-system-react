@@ -54,7 +54,8 @@ const DataTableRowActions = createReactClass({
 		return (
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<td
-				className="" data-label="Actions"
+				className=""
+				data-label="Actions"
 				onClick={this.handleClick}
 				style={{ width: '3.25rem' }}
 			>
@@ -88,4 +89,4 @@ const DataTableRowActions = createReactClass({
 	}
 });
 
-module.exports = DataTableRowActions;
+export default DataTableRowActions;

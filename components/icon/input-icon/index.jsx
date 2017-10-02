@@ -63,7 +63,7 @@ const InputIcon = (props) => {
 
 	return isFunction(onClick)
 	? <Button
-		className={classNames('slds-input__icon', { [`slds-input__icon--${iconPosition}`]: iconPosition })}
+		className={classNames('slds-input__icon', { [`slds-input__icon_${iconPosition}`]: iconPosition })}
 		iconCategory={category}
 		iconName={name}
 		iconPath={path}
@@ -111,4 +111,4 @@ InputIcon.defaultProps = {
 	variant: 'base'
 };
 
-module.exports = InputIcon;
+export default InputIcon;

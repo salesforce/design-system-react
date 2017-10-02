@@ -1,7 +1,8 @@
 /* eslint-disable react/display-name */
 
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
+import IconSettings from '../../components/iconSettings';
 
 import { POPOVER_TOOLTIP } from '../../utilities/constants';
 import PopoverTooltip from '../../components/popover-tooltip';
@@ -55,13 +56,13 @@ const getPopoverTooltipAlign = (props) => {
 };
 
 storiesOf(POPOVER_TOOLTIP, module)
-	.addDecorator((getStory) => <div
+	.addDecorator((getStory) => (<div
 		className="slds-p-around--medium slds-m-horizontal--x-large"
 		style={{
 			margin: '100px auto',
 			textAlign: 'center',
 			width: '500px' }}
-	>{getStory()}</div>)
+	><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>))
 	.add('Base', () => getPopoverTooltip({
 		align: 'bottom',
 		id: 'myPopoverId',
@@ -90,7 +91,7 @@ storiesOf(POPOVER_TOOLTIP, module)
 	.add('Alignment (icon)', () => getPopoverTooltipAlign({
 		id: 'myPopoverId',
 		isOpen: true,
-		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
+		content: <span><Icon category="utility" inverse name="close" size="x-small" />wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie</span>, // react/no-unescaped-entities
 		trigger: (<Icon
 			assistiveText="Case Icon"
 			category="standard"

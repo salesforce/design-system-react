@@ -93,4 +93,4 @@ GlobalNavigationBar.defaultProps = {
 
 GlobalNavigationBar.displayName = GLOBAL_NAVIGATION_BAR;
 
-module.exports = GlobalNavigationBar;
+export default GlobalNavigationBar;

@@ -7,4 +7,4 @@
 import onClickOutside from 'react-onclickoutside';
 import Datepicker from './date-picker';
 
-module.exports = onClickOutside(Datepicker);
+export default onClickOutside(Datepicker);

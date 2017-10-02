@@ -3,6 +3,7 @@ import React from 'react';
 import Combobox from '~/components/combobox';
 import Icon from '~/components/icon';
 import filter from '~/components/combobox/filter';
+import IconSettings from '~/components/iconSettings';
 
 const accounts = [
 	{ id: '1', label: 'Acme', subTitle: 'Account • San Francisco', type: 'account' },
@@ -35,54 +36,56 @@ class Example extends React.Component {
 
 	render () {
 		return (
-			<Combobox
-				id="combobox-unique-id"
-				isInline
-				events={{
-					onChange: (event, { value }) => {
-						console.log('onChange', value);
-						this.setState({	inputValue: value });
-					},
-					onRequestRemoveSelectedOption: (event, data) => {
-						this.setState({
-							inputValue: '',
-							selection: data.selection
-						});
-					},
-					onSubmit: (event, { value }) => {
-						console.log('onSubmit', value);
-						this.setState({
-							inputValue: '',
-							selection: [...this.state.selection, {
-								label: value,
-								icon: <Icon
-									assistiveText="Account"
-									category="standard"
-									name="account"
-								/> }] });
-					},
-					onSelect: (event, data) => {
-						console.log('onSelect', data);
-						this.setState({
-							inputValue: '',
-							selection: data.selection
-						});
-					}
-				}}
-				labels={{
-					label: 'Search',
-					placeholder: 'Search Salesforce'
-				}}
-				multiple
-				options={filter({
-					inputValue: this.state.inputValue,
-					options: accountsWithIcon,
-					selection: this.state.selection
-				})}
-				selection={this.state.selection}
-				value={this.state.inputValue}
-				variant="inline-listbox"
-			/>
+			<IconSettings iconPath="/assets/icons">
+				<Combobox
+					id="combobox-unique-id"
+					isInline
+					events={{
+						onChange: (event, { value }) => {
+							console.log('onChange', value);
+							this.setState({	inputValue: value });
+						},
+						onRequestRemoveSelectedOption: (event, data) => {
+							this.setState({
+								inputValue: '',
+								selection: data.selection
+							});
+						},
+						onSubmit: (event, { value }) => {
+							console.log('onSubmit', value);
+							this.setState({
+								inputValue: '',
+								selection: [...this.state.selection, {
+									label: value,
+									icon: <Icon
+										assistiveText="Account"
+										category="standard"
+										name="account"
+									/> }] });
+						},
+						onSelect: (event, data) => {
+							console.log('onSelect', data);
+							this.setState({
+								inputValue: '',
+								selection: data.selection
+							});
+						}
+					}}
+					labels={{
+						label: 'Search',
+						placeholder: 'Search Salesforce'
+					}}
+					multiple
+					options={filter({
+						inputValue: this.state.inputValue,
+						options: accountsWithIcon,
+						selection: this.state.selection
+					})}
+					selection={this.state.selection}
+					value={this.state.inputValue}
+					variant="inline-listbox"
+				/>
+			</IconSettings>
 		);
 	}
 }

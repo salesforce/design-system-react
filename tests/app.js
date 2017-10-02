@@ -21,6 +21,7 @@ app.use(webpackHotMiddleware(compiler, {
 
 // Provide access to Design System CSS
 app.use('/assets', express.static(path.join(__dirname, '../node_modules/@salesforce-ux/design-system/assets')));
+app.use('/assets/icons', express.static(path.join(__dirname, '../node_modules/@salesforce-ux/design-system/assets/icons')));
 
 // Provide access to node_modules for JS libraries
 app.use('/node_modules', express.static(path.join(__dirname, '../node_modules')));

@@ -1,7 +1,8 @@
 /* eslint-disable react/display-name */
 
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf, action } from '@storybook/react';
+import IconSettings from '../../components/iconSettings';
 
 import { MODAL } from '../../utilities/constants';
 import Modal from '../../components/modal';
@@ -136,7 +137,7 @@ const modalContent = (
 );
 
 storiesOf(MODAL, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Modal with Custom Parent Node', () => <ModalCustomParentNode />)
 	.add('Small', () => getModal({
 		closeButtonAssistiveText: 'Exit',

@@ -19,6 +19,7 @@ import Icon from '../../components/icon';
 import filter from '~/components/combobox/filter';
 import KEYS, { keyObjects } from '../../utilities/key-code';
 import LETTERKEYS, { keyObjects as letterKeyObjects } from '../../utilities/letter-key-code';
+import IconSettings from '~/components/iconSettings';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme
@@ -81,45 +82,47 @@ class DemoComponent extends React.Component {
 
 	render () {
 		return (
-			<Combobox
-				events={{
-					onChange: (event, { value }) => {
-						this.setState({	inputValue: value });
-					},
-					onRequestRemoveSelectedOption: (event, data) => {
-						console.log(data);
-						this.setState({
-							inputValue: '',
-							selection: data.selection
-						});
-					},
-					onSubmit: (event, { value }) => {
-						this.setState({
-							inputValue: '',
-							selection: [...this.state.selection, {
-								label: value,
-								icon: <Icon
-									assistiveText="Account"
-									category="standard"
-									name="account"
-								/> }] });
-					},
-					onSelect: (event, data) => {
-						this.setState({
-							inputValue: '',
-							selection: data.selection
-						});
-					}
-				}}
-				options={filter({
-					inputValue: this.state.inputValue,
-					options: accountsWithIcon,
-					selection: this.state.selection
-				})}
-				selection={this.state.selection}
-				value={this.state.inputValue}
-				{...this.props}
-			/>
+			<IconSettings iconPath="/assets/icons">
+				<Combobox
+					events={{
+						onChange: (event, { value }) => {
+							this.setState({	inputValue: value });
+						},
+						onRequestRemoveSelectedOption: (event, data) => {
+							console.log(data);
+							this.setState({
+								inputValue: '',
+								selection: data.selection
+							});
+						},
+						onSubmit: (event, { value }) => {
+							this.setState({
+								inputValue: '',
+								selection: [...this.state.selection, {
+									label: value,
+									icon: <Icon
+										assistiveText="Account"
+										category="standard"
+										name="account"
+									/> }] });
+						},
+						onSelect: (event, data) => {
+							this.setState({
+								inputValue: '',
+								selection: data.selection
+							});
+						}
+					}}
+					options={filter({
+						inputValue: this.state.inputValue,
+						options: accountsWithIcon,
+						selection: this.state.selection
+					})}
+					selection={this.state.selection}
+					value={this.state.inputValue}
+					{...this.props}
+				/>
+			</IconSettings>
 		);
 	}
 }

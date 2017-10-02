@@ -10,7 +10,7 @@ const propTypes = {
 	/*
 	 * Assistive Text to use instead of a visible label
 	 */
-	assistiveText: PropTypes.string,
+	assistiveText: PropTypes.object,
 	/*
 	 * Id of the input associated with this label
 	 */
@@ -22,7 +22,7 @@ const propTypes = {
 	/*
 	 * Applies label styling for a required form element
 	 */
-	required: PropTypes.string,
+	required: PropTypes.bool,
 	/**
 	 * Changes markup of label.
 	 */
@@ -38,7 +38,7 @@ const defaultProps = {
  */
 const Label = (props) => {
 	const labelText = props.label
-		|| props.assistiveText; // One of these is required to pass accessibility tests
+		|| (props.assistiveText && props.assistiveText.label); // One of these is required to pass accessibility tests
 
 	const subRenders = {
 		base: (<label

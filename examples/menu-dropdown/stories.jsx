@@ -3,7 +3,8 @@
 
 import React from 'react';
 import createReactClass from 'create-react-class';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf, action } from '@storybook/react';
+import IconSettings from '../../components/iconSettings';
 
 import { MENU_DROPDOWN } from '../../utilities/constants';
 import Dropdown from '../../components/menu-dropdown';
@@ -194,7 +195,7 @@ const getDropdownCustomContent = (props) => (
 );
 
 storiesOf(MENU_DROPDOWN, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium slds-text-align--center">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium slds-text-align--center"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Base', () => getDropdown({
 		align: 'right',
 		label: 'Dropdown Click',
@@ -263,7 +264,7 @@ storiesOf(MENU_DROPDOWN, module)
 		openOn: 'hover',
 		options
 	}))
-	.add('Two Hovers', () => <div>
+	.add('Two Hovers', () => (<div>
 		{getDropdown({
 			assistiveText: 'Icon More large',
 			buttonVariant: 'icon',
@@ -287,7 +288,7 @@ storiesOf(MENU_DROPDOWN, module)
 			openOn: 'hover',
 			options
 		})}
-	</div>)
+	</div>))
 	.add('Hover with Checkmark', () => getDropdown({
 		assistiveText: 'More Options',
 		buttonVariant: 'icon',
@@ -303,8 +304,8 @@ storiesOf(MENU_DROPDOWN, module)
 		options,
 		value: 'C0'
 	}))
-	.add('Controled w/ isOpen', () => <DropdownControlled
+	.add('Controled w/ isOpen', () => (<DropdownControlled
 		align="right"
 		label="Dropdown Click"
 		options={options}
-	/>);
+	/>));

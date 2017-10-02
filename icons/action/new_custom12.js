@@ -2,4 +2,4 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 
-module.exports = {"viewBox":"0 0 24 24","circle":{"cx":"12","cy":"12","r":"11.077"}};
+export default {"viewBox":"0 0 24 24","circle":{"cx":"12","cy":"12","r":"11.077"}};

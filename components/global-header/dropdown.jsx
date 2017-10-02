@@ -116,4 +116,4 @@ GlobalHeaderDropdown.defaultProps = {
 	offset: '-12px -16px'
 };
 
-module.exports = GlobalHeaderDropdown;
+export default GlobalHeaderDropdown;
