@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import IconSettings from '../../../components/iconSettings';
+import IconSettings from '../../../components/icon-settings';
 
 import { FORMS_TEXTAREA } from '../../../utilities/constants';
 import Textarea from '../../../components/forms/textarea';

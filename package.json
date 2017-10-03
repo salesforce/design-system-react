@@ -235,6 +235,12 @@
       "display-name": "Checkboxes",
       "SLDS-component-path": "/components/forms/#flavor-checkbox"
     },
+     {
+      "component": "avatar",
+      "status": "prod",
+      "display-name": "Avatars",
+      "SLDS-component-path": "/components/avatars"
+    },
     {
       "component": "combobox",
       "status": "prod",

@@ -13,7 +13,7 @@ import { createMountNode, destroyMountNode } from '../enzyme-helpers';
 chai.use(chaiEnzyme());
 
 import { SLDSAvatar } from '../../components';
-import IconSettings from '~/components/iconSettings';
+import IconSettings from '~/components/icon-settings';
 
 describe('SLDSAvatar: ', function () {
 	let mountNode;

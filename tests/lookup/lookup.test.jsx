@@ -9,7 +9,7 @@ import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 
 import SLDSLookup from '../../components/lookup';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 
 import Header from '../../components/lookup/header';
 import Footer from '../../components/lookup/footer';

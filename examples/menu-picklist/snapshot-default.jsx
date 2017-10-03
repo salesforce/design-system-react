@@ -1,7 +1,7 @@
 /* eslint-disable no-console, react/prop-types */
 import React from 'react';
 import createReactClass from 'create-react-class';
-import IconSettings from '~/components/iconSettings';
+import IconSettings from '~/components/icon-settings';
 
 // Higher Order Components such as `react-onclickoutside` use the DOM and Jest snapshot testing must be DOMless
 import MenuPicklist from '~/components/menu-picklist';

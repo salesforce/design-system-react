@@ -4,7 +4,7 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import { storiesOf, action } from '@storybook/react';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 
 import { MENU_DROPDOWN } from '../../utilities/constants';
 import Dropdown from '../../components/menu-dropdown';

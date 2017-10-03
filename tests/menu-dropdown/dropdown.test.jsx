@@ -11,7 +11,7 @@ import chaiEnzyme from 'chai-enzyme';
 // `this.wrapper` and `this.dom` is set in the helpers file
 import { mountComponent, unmountComponent } from '../enzyme-helpers';
 
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 import Dropdown from '../../components/menu-dropdown';
 import List from '../../components/utilities/menu-list';
 

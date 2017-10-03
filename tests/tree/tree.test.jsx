@@ -17,7 +17,7 @@ import isFunction from 'lodash.isfunction';
 
 import sampleNodes from '../../utilities/sample-data/tree';
 
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 import Tree from '../../components/tree';
 import Search from '../../components/forms/input/search';
 

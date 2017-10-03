@@ -8,7 +8,7 @@ import TestUtils from 'react-addons-test-utils';
 import Input from '../../components/forms/input';
 import Icon from '../../components/icon';
 import InputIcon from '../../components/icon/input-icon';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 
 const {
 	findRenderedDOMComponentWithTag,

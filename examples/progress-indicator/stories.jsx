@@ -1,7 +1,7 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import { storiesOf, action } from '@storybook/react';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 
 import ProgressIndicator from '~/components/progress-indicator';
 import { PROGRESS_INDICATOR } from '../../utilities/constants';

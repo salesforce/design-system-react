@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 
 import { POPOVER_TOOLTIP } from '../../utilities/constants';
 import PopoverTooltip from '../../components/popover-tooltip';

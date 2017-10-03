@@ -4,7 +4,7 @@ import DataTable from '~/components/data-table'; // `~` is replaced with design-
 import DataTableColumn from '~/components/data-table/column';
 import DataTableCell from '~/components/data-table/cell';
 import DataTableRowActions from '~/components/data-table/row-actions';
-import IconSettings from '~/components/iconSettings';
+import IconSettings from '~/components/icon-settings';
 
 const CustomDataTableCell = ({ children, ...props }) => (
 	<DataTableCell title={children} {...props} >

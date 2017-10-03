@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 import PageHeader from '../../components/page-header';
 import SLDSButtonStateful from '../../components/button-stateful';
 import SLDSButtonGroup from '../../components/button-group';

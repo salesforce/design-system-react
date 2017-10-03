@@ -4,7 +4,7 @@ import createReactClass from 'create-react-class';
 
 // Higher Order Components such as `react-onclickoutside` use the DOM and Jest snapshot testing must be DOMless
 import Datepicker from '~/components/date-picker/date-picker';
-import IconSettings from '~/components/iconSettings';
+import IconSettings from '~/components/icon-settings';
 
 const Example = createReactClass({
 	displayName: 'DatepickerExample',

@@ -10,7 +10,7 @@ const { Simulate,
 	findRenderedDOMComponentWithClass } = TestUtils;
 
 import { SLDSButton } from '../../components';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 
 const mockCallback = sinon.spy();
 

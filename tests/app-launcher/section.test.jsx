@@ -7,7 +7,7 @@ import TestUtils from 'react-addons-test-utils';
 const expect = chai.expect;
 const should = chai.should();
 
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 import AppLauncherTile from '../../components/app-launcher/tile';
 import AppLauncherSection from '../../components/app-launcher/section';
 

@@ -9,7 +9,7 @@ import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 
 import { SLDSNotification } from '../../components';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 
 describe('SLDSNotification: ', () => {
 	const generateNotification = function (notificationInstance) {

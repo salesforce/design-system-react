@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { storiesOf, action } from '@storybook/react';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 
 import { POPOVER } from '../../utilities/constants';
 import Header from './header';

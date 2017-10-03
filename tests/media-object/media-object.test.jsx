@@ -6,7 +6,7 @@ import { mountComponent, unmountComponent } from '../enzyme-helpers';
 
 import MediaObject from '../../components/media-object';
 import Icon from '../../components/icon';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 
 import { MEDIA_OBJECT } from '../../utilities/constants';
 
