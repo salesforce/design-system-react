@@ -164,7 +164,7 @@ exports[`Radio Group Error DOM Snapshot 1`] = `
     <legend
       className="slds-form-element__legend slds-form-element__label"
     >
-      Radio Group Error Example
+      Radio Group Label
     </legend>
     <div
       className="slds-form-element__control"

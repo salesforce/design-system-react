@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RadioButtonGroup from '~/components/radio-button-group'; // `~` is replaced with design-system-react at runtime
 import Radio from '~/components/radio-button-group/radio'; // `~` is replaced with design-system-react at runtime
-import { shape } from 'airbnb-prop-types';
 
 class Example extends React.Component {
 
@@ -14,10 +13,13 @@ class Example extends React.Component {
 	render () {
 		const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
 		const labels = { label: 'Day of week' };
+		if (this.props.errorLabel) {
+			labels.error = this.props.errorLabel;
+		}
 		return (
 			<div>
 				<RadioButtonGroup
-					labels={this.props.labels || labels}
+					labels={labels}
 					onChange={(event) => this.setState({ checked: event.target.value })}
 					disabled={this.props.disabled}
 					required={this.props.required}
@@ -37,10 +39,7 @@ Example.propTypes = {
 	required: PropTypes.bool,
 	name: PropTypes.string,
 	errorId: PropTypes.string,
-	labels: shape({
-		error: PropTypes.string,
-		label: PropTypes.string
-	})
+	errorLabel: PropTypes.string
 };
 
 Example.displayName = 'RadioButtonGroupExample';

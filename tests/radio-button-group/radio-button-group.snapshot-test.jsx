@@ -31,12 +31,8 @@ test('Radio Button Group Required DOM Snapshot', () => {
 });
 
 test('Radio Button Group Error DOM Snapshot', () => {
-	const labels = {
-		label: 'Radio Button Group Error Example',
-		error: 'error message'
-	};
 	const domTree = renderer.create(
-		<SnapshotExample name="radioGroup" labels={labels} errorId="radioGroupError" />,
+		<SnapshotExample name="radioGroup" errorLabel="error message" errorId="radioGroupError" />,
 	).toJSON();
 	expect(domTree).toMatchSnapshot();
 });

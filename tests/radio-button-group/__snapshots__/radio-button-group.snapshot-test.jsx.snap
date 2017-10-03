@@ -309,7 +309,7 @@ exports[`Radio Button Group Error DOM Snapshot 1`] = `
     <legend
       className="slds-form-element__legend slds-form-element__label"
     >
-      Radio Button Group Error Example
+      Day of week
     </legend>
     <div
       className="slds-form-element__control"

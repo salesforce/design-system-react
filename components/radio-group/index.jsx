@@ -63,7 +63,7 @@ const defaultProps = { labels: {} };
 
 /**
  * A styled select list that can have a single entry checked at any one time.
- * The RadioGroup component wraps Radio components.
+ * The RadioGroup component wraps [Radio](/components/radios) components, which should be used as children.
  */
 class RadioGroup extends React.Component {
 

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RadioGroup from '~/components/radio-group'; // `~` is replaced with design-system-react at runtime
 import Radio from '~/components/radio-group/radio'; // `~` is replaced with design-system-react at runtime
-import { shape } from 'airbnb-prop-types';
 
 class Example extends React.Component {
 
@@ -14,10 +13,13 @@ class Example extends React.Component {
 	render () {
 		const values = ['Radio Label One', 'Radio Label Two'];
 		const labels = { label: 'Radio Group Label' };
+		if (this.props.errorLabel) {
+			labels.error = this.props.errorLabel;
+		}
 		return (
 			<div>
 				<RadioGroup
-					labels={this.props.labels || labels}
+					labels={labels}
 					onChange={(event) => this.setState({ checked: event.target.value })}
 					disabled={this.props.disabled}
 					required={this.props.required}
@@ -45,10 +47,7 @@ Example.propTypes = {
 	required: PropTypes.bool,
 	name: PropTypes.string,
 	errorId: PropTypes.string,
-	labels: shape({
-		error: PropTypes.string,
-		label: PropTypes.string
-	})
+	errorLabel: PropTypes.string
 };
 
 Example.displayName = 'RadioGroupExample';

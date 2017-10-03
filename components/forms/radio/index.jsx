@@ -52,7 +52,8 @@ const defaultProps = {
 };
 
 /**
- * A radio input, usually part of a group that can have a single input checked at any one time.
+ * A radio input that can have a single input checked at any one time. Radios should be wrapped with
+ * a [RadioGroup](/components/radio-group) or [RadioButtonGroup](/components/radio-button-group)
  */
 class Radio extends React.Component {
 
