@@ -371,6 +371,11 @@ describe('SLDSMenuDropdown: ', () => {
 			removeDropdownTrigger(btn);
 		});
 
+		it('<button> has assistiveText', () => {
+			const asstText = btn.getElementsByClassName('slds-assistive-text')[0].textContent;
+			expect(asstText).to.equal('more options');
+		});
+
 		it('<ul> has role menu & aria-labelledby', () => {
 			Simulate.click(btn, {});
 			const ulRole = getMenu(body).querySelector('ul').getAttribute('role');
