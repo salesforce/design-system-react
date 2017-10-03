@@ -1,6 +1,7 @@
 /* eslint-disable react/no-string-refs */
 
-import React, { createFactory, createClass } from 'react';
+import React, { createFactory } from 'react';
+import createReactClass from 'create-react-class';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
@@ -9,6 +10,7 @@ import assign from 'lodash.assign';
 const { Simulate, findRenderedDOMComponentWithTag, findRenderedDOMComponentWithClass } = TestUtils;
 
 import { SLDSTimepicker } from '../../components';
+import IconSettings from '../../components/iconSettings';
 
 const mockCallback = sinon.spy();
 
@@ -28,7 +30,7 @@ describe('SLDSTimepicker: ', () => {
 			const futureDateTime = new Date(new Date().getTime() + (24 * 60 * 60 * 1000));
 
 			const TestTimepicker = createFactory(
-				createClass({
+				createReactClass({
 					getInitialState () {
 						// force the state to have a future dateTime...
 						return {
@@ -38,7 +40,11 @@ describe('SLDSTimepicker: ', () => {
 						};
 					},
 					render () {
-						return <SLDSTimepicker ref="timePicker" {...defaultProps} />;
+						return (
+							<IconSettings iconPath="/assets/icons">
+								<SLDSTimepicker ref="timePicker" {...defaultProps} />
+							</IconSettings>
+						);
 					}
 				})
 						);

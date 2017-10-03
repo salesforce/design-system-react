@@ -293,7 +293,7 @@ class Datepicker extends React.Component {
 	getId () {
 		return this.props.id || this.generatedId;
 	}
-	
+
 	getIsOpen () {
 		return !!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
 	}
@@ -392,6 +392,7 @@ class Datepicker extends React.Component {
 			? <Dialog
 				contentsClassName="slds-datepicker slds-dropdown"
 				constrainToScrollParent={this.props.constrainToScrollParent}
+				context={this.context}
 				horizontalAlign={this.props.align}
 				flippable={!this.props.hasStaticAlignment}
 				onClose={this.handleClose}
@@ -496,6 +497,7 @@ class Datepicker extends React.Component {
 				category="utility"
 				name="event"
 				onClick={this.openDialog}
+				type="button"
 			/>),
 			id: this.getId(),
 			inputRef: (component) => { this.inputRef = component; },
@@ -545,6 +547,10 @@ class Datepicker extends React.Component {
 		);
 	}
 }
+
+Datepicker.contextTypes = {
+	iconPath: PropTypes.string
+};
 
 Datepicker.displayName = DATE_PICKER;
 Datepicker.propTypes = propTypes;

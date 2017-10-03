@@ -273,7 +273,7 @@ class Modal extends React.Component {
 
 		if (hasFooter) {
 			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
-			footer = (<footer className={classNames(footerClass)} onClick={this.handleModalClick}>{this.props.footer}</footer>);
+			footer = (<footer className={classNames(footerClass, this.props.footerClassNames)} onClick={this.handleModalClick}>{this.props.footer}</footer>);
 		}
 		return footer;
 	}
@@ -409,4 +409,4 @@ Modal.displayName = displayName;
 Modal.propTypes = propTypes;
 Modal.defaultProps = defaultProps;
 
-module.exports = Modal;
+export default Modal;

@@ -4,6 +4,7 @@
 /* eslint-disable no-unused-expressions */
 
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 import chai, { expect } from 'chai';
@@ -14,11 +15,9 @@ import { mountComponent, unmountComponent } from '../enzyme-helpers';
 chai.use(chaiEnzyme());
 
 import Icon from '../../components/icon';
-import globalSettings from '../../components/settings';
+import IconSettings from '../../components/iconSettings';
 
-globalSettings.setIconsPath('/assets/icons');
-
-const DemoIcon = React.createClass({
+const DemoIcon = createReactClass({
 	displayName: 'DemoIcon',
 
 	render () {
@@ -36,13 +35,15 @@ describe('SLDSIcon: ', function () {
 		let asstText;
 
 		beforeEach(mountComponent(
-			<DemoIcon
-				assistiveText="Log a Call"
-				category="standard"
-				name="log_a_call"
-				style={{ backgroundColor: 'rgb(218, 165, 32)' }}
-				size="large"
-			/>
+			<IconSettings iconPath="/assets/icons">
+				<DemoIcon
+					assistiveText="Log a Call"
+					category="standard"
+					name="log_a_call"
+					style={{ backgroundColor: 'rgb(218, 165, 32)' }}
+					size="large"
+				/>
+			</IconSettings>
 		));
 
 		afterEach(unmountComponent);
@@ -79,12 +80,14 @@ describe('SLDSIcon: ', function () {
 		let asstText;
 
 		beforeEach(mountComponent(
-			<DemoIcon
-				assistiveText="Heart"
-				category="custom"
-				name="custom1"
-				size="small"
-			/>
+			<IconSettings iconPath="/assets/icons">
+				<DemoIcon
+					assistiveText="Heart"
+					category="custom"
+					name="custom1"
+					size="small"
+				/>
+			</IconSettings>
 		));
 
 		afterEach(unmountComponent);
@@ -116,14 +119,16 @@ describe('SLDSIcon: ', function () {
 		let asstText;
 
 		beforeEach(mountComponent(
-			<DemoIcon
-				assistiveText="Announcements"
-				category="action"
-				name="announcement"
-				size="large"
-				title="custom title"
-				className="slds-m-around--x-small"
-			/>
+			<IconSettings iconPath="/assets/icons">
+				<DemoIcon
+					assistiveText="Announcements"
+					category="action"
+					name="announcement"
+					size="large"
+					title="custom title"
+					className="slds-m-around--x-small"
+				/>
+			</IconSettings>
 		));
 
 		afterEach(unmountComponent);
@@ -163,11 +168,13 @@ describe('SLDSIcon: ', function () {
 		let asstText;
 
 		beforeEach(mountComponent(
-			<DemoIcon
-				category="utility"
-				name="open_folder"
-				size="medium"
-			/>
+			<IconSettings iconPath="/assets/icons">
+				<DemoIcon
+					category="utility"
+					name="open_folder"
+					size="medium"
+				/>
+			</IconSettings>
 		));
 
 		afterEach(unmountComponent);
@@ -194,12 +201,14 @@ describe('SLDSIcon: ', function () {
 		let use;
 
 		beforeEach(mountComponent(
-			<DemoIcon
-				assistiveText="New stuff!"
-				inverse
-				path="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
-				size="medium"
-			/>
+			<IconSettings iconPath="/assets/icons">
+				<DemoIcon
+					assistiveText="New stuff!"
+					inverse
+					path="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+					size="medium"
+				/>
+			</IconSettings>
 		));
 
 		afterEach(unmountComponent);

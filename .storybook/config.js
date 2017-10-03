@@ -1,4 +1,4 @@
-import { configure } from '@kadira/storybook';
+import { configure } from '@storybook/react';
 
 function loadStories () {
 	require('../examples/stories'); // eslint-disable-line global-require

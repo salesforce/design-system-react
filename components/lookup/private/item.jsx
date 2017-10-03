@@ -4,7 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../../icon';
-import { EventUtil } from '../../../utilities';
+import EventUtil from '../../../utilities/event';
 import cx from 'classnames';
 
 const displayName = 'Lookup-Menu-Item';

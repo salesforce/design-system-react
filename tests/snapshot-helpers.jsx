@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import jsBeautify from 'js-beautify';
-import * as Settings from './settings';
+import Settings from './settings';
+import renderer from 'react-test-renderer';
 
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
@@ -22,11 +23,22 @@ const renderDOM = (Component, props) => (toJson(shallow(React.createElement(Comp
 
 const renderMarkup = (Component, props) => String(
 		jsBeautify.html(ReactDOMServer.renderToStaticMarkup(React.createElement(Component, props)),
-			Settings.default.jsBeautify),
+			Settings.jsBeautify),
 	'utf-8'
 	);
 
+const testDOMandHTML = ({ name, test, Component }) => {
+	test(`${name} DOM Snapshot`, () => {
+		expect(renderDOM(Component)).toMatchSnapshot();
+	});
+
+	test(`${name} HTML Snapshot`, () => {
+		expect(renderMarkup(Component)).toMatchSnapshot();
+	});
+};
+
 export {
 	renderDOM, // eslint-disable-line import/prefer-default-export
-	renderMarkup // eslint-disable-line import/prefer-default-export
+	renderMarkup, // eslint-disable-line import/prefer-default-export
+	testDOMandHTML // eslint-disable-line import/prefer-default-export
 };

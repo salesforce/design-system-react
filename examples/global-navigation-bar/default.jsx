@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import GlobalNavigationBar from '~/components/global-navigation-bar'; // `~` is replaced with design-system-react at runtime
 import GlobalNavigationBarRegion from '~/components/global-navigation-bar/region';
 import GlobalNavigationBarDropdown from '~/components/global-navigation-bar/dropdown';
@@ -11,7 +12,7 @@ import AppLauncher from '~/components/app-launcher';
 import AppLauncherSection from '~/components/app-launcher/section';
 import AppLauncherTile from '~/components/app-launcher/tile';
 
-const Example = React.createClass({
+const Example = createReactClass({
 	displayName: 'GlobalNavigationBarExample',
 
 	render () {

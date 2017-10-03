@@ -1,9 +1,10 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import Input from '~/components/forms/input'; // `~` is replaced with design-system-react at runtime
 import InputIcon from '~/components/icon/input-icon'; // `~` is replaced with design-system-react at runtime
 
-const Example = React.createClass({
-	displayName: 'InputExample',
+const Example = createReactClass({
+	displayName: 'ErrorInputExample',
 
 	render () {
 		return (

@@ -25,9 +25,8 @@
 // ## Dependencies
 
 // ### React
-import React, {
-	PropTypes
-} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // ## Constants
 import { TABS_PANEL } from '../../utilities/constants';
@@ -57,4 +56,4 @@ Panel.propTypes = {
 	]).isRequired
 };
 
-module.exports = Panel;
+export default Panel;

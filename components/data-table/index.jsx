@@ -9,6 +9,7 @@
 
 // ### React
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### shortid
@@ -48,7 +49,7 @@ const count = (array) => (Array.isArray(array) ? array.length : 0);
  * DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
  *
  */
-const DataTable = React.createClass({
+const DataTable = createReactClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: DATA_TABLE,
@@ -195,7 +196,7 @@ const DataTable = React.createClass({
 		let RowActions = null;
 
 		React.Children.forEach(this.props.children, (child) => {
-			if (child && child.type === DataTableColumn) {
+			if (child && child.type.displayName === DataTableColumn.displayName) {
 				const {
 					children,
 					...columnProps
@@ -218,7 +219,7 @@ const DataTable = React.createClass({
 					props,
 					dataTableProps: this.props
 				});
-			} else if (child && child.type === DataTableRowActions) {
+			} else if (child && child.type.displayName === DataTableRowActions.displayName) {
 				RowActions = child;
 			}
 		});
@@ -304,4 +305,4 @@ const DataTable = React.createClass({
 	}
 });
 
-module.exports = DataTable;
+export default DataTable;

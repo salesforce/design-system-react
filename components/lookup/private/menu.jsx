@@ -8,7 +8,7 @@ import Item from './item';
 const displayName = 'Lookup-Menu';
 const propTypes = {
 	boldRegex: PropTypes.instanceOf(RegExp),
-	emptyMessage: PropTypes.string,
+	emptyMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	filterWith: PropTypes.func,
 	focusIndex: PropTypes.number,
 	getListLength: PropTypes.func,
@@ -157,7 +157,7 @@ class Menu extends React.Component {
 		return (
 			<section id="menuContainer" className="ignore-react-onclickoutside">
 				{this.renderHeader()}
-				<ul id="list" className="slds-lookup__list" role="presentation" ref={(list) => { this.listRef = list; }}>
+				<ul id="list" className="slds-lookup__list" role="presentation" ref={(list) => { if (list) { this.listRef = list; } }}>
 					{this.renderContent()}
 				</ul>
 				{this.renderFooter()}

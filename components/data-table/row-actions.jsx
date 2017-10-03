@@ -3,6 +3,7 @@
 
 // ### React
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### isFunction
@@ -20,7 +21,7 @@ import { DATA_TABLE_ROW_ACTIONS } from '../../utilities/constants';
 /**
  * RowActions provide a mechanism for defining a menu to display alongside each row in the DataTable.
  */
-const DataTableRowActions = React.createClass({
+const DataTableRowActions = createReactClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: DATA_TABLE_ROW_ACTIONS,
@@ -53,7 +54,8 @@ const DataTableRowActions = React.createClass({
 		return (
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<td
-				className="" data-label="Actions"
+				className=""
+				data-label="Actions"
 				onClick={this.handleClick}
 				style={{ width: '3.25rem' }}
 			>
@@ -87,4 +89,4 @@ const DataTableRowActions = React.createClass({
 	}
 });
 
-module.exports = DataTableRowActions;
+export default DataTableRowActions;

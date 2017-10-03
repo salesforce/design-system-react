@@ -2,7 +2,9 @@
 /* eslint-disable react/display-name */
 
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
+import createReactClass from 'create-react-class';
+import { storiesOf, action } from '@storybook/react';
+import IconSettings from '../../components/iconSettings';
 
 import { MENU_PICKLIST } from '../../utilities/constants';
 import Picklist from '../../components/menu-picklist';
@@ -27,7 +29,7 @@ const getPicklist = (props) => (
 	</div>
 );
 
-const MultipleExample = React.createClass({
+const MultipleExample = createReactClass({
 	displayName: 'MultiplePicklistExample',
 
 	getInitialState () {
@@ -56,13 +58,17 @@ const MultipleExample = React.createClass({
 				multiple
 				onSelect={this.handleSelect}
 				options={options}
+				onPillRemove={(removedItem, data) => {
+					console.log("data.option.label: '" + data.option.label + "' data.option.value: '" + data.option.value + "'");
+					this.handleSelect(removedItem, data);
+				}}
 			/>
 		);
 	}
 });
 
 storiesOf(MENU_PICKLIST, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Modal', () => getPicklist({
 		label: 'Contacts',
 		placeholder: 'Select a contact',

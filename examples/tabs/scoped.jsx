@@ -1,8 +1,9 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import Tabs from '~/components/tabs'; // `~` is replaced with design-system-react at runtime
 import TabsPanel from '~/components/tabs/panel';
 
-const Example = React.createClass({
+const Example = createReactClass({
 	displayName: 'TabsExample',
 	
 	render () {

@@ -4,6 +4,7 @@
 /* eslint-disable no-unused-expressions */
 
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 import chai, { expect } from 'chai';
@@ -16,6 +17,7 @@ import isFunction from 'lodash.isfunction';
 
 import sampleNodes from '../../utilities/sample-data/tree';
 
+import IconSettings from '../../components/iconSettings';
 import Tree from '../../components/tree';
 import Search from '../../components/forms/input/search';
 
@@ -25,7 +27,7 @@ const COMPONENT_CSS_CLASSES = {
 	base: 'slds-tree'
 };
 
-const DemoTree = React.createClass({
+const DemoTree = createReactClass({
 	displayName: 'DemoTree',
 
 	// ### Prop Types
@@ -106,25 +108,27 @@ const DemoTree = React.createClass({
 
 	render () {
 		return (
-			<div>{
-				this.props.searchable
-				? <div>
-					<Search assistiveText="Search Tree" value={this.state.searchTerm} onChange={this.handleSearchChange} />
-					<br />
+			<IconSettings iconPath="/assets/icons">
+				<div>{
+					this.props.searchable
+						? <div>
+							<Search assistiveText="Search Tree" value={this.state.searchTerm} onChange={this.handleSearchChange} />
+							<br />
+						</div>
+						: null
+				}
+					<Tree
+						id="example-tree"
+						getNodes={this.props.getNodes}
+						nodes={this.state.nodes}
+						onExpandClick={this.handleExpandClick}
+						onClick={this.handleClick}
+						onScroll={this.handleScroll}
+						searchTerm={this.state.searchTerm}
+						{...this.props}
+					/>
 				</div>
-				: null
-			}
-				<Tree
-					id="example-tree"
-					getNodes={this.props.getNodes}
-					nodes={this.state.nodes}
-					onExpandClick={this.handleExpandClick}
-					onClick={this.handleClick}
-					onScroll={this.handleScroll}
-					searchTerm={this.state.searchTerm}
-					{...this.props}
-				/>
-			</div>
+			</IconSettings>
 		);
 	}
 });

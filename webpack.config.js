@@ -9,7 +9,6 @@ const config = {
 	},
 	resolve: {
 		extensions: [
-			'',
 			'.js',
 			'.jsx'
 		]
@@ -21,10 +20,10 @@ const config = {
 		publicPath: '/'
 	},
 	module: {
-		loaders: [
+		rules: [
 			{
 				test: /\.jsx?$/,
-				loaders: ['babel', StringReplacePlugin.replace({
+				loaders: ['babel-loader', StringReplacePlugin.replace({
 					replacements: [{
 						pattern: /__VERSION__/g,
 						replacement: () => packageJson.version
@@ -44,15 +43,15 @@ const config = {
 			},
 			{
 				test: /\.css$/,
-				loaders: ['style', 'css']
+				loaders: ['style-loader', 'css-loader']
 			},
 			{
 				test: /\.(svg|gif|jpe?g|png)$/,
-				loader: 'file?limit=10000'
+				loader: 'file-loader?limit=10000'
 			},
 			{
 				test: /\.(eot|woff|woff2|ttf)$/,
-				loader: 'file?limit=30&name=fonts/webfonts/[name].[ext]'
+				loader: 'file-loader?limit=30&name=fonts/webfonts/[name].[ext]'
 			}
 		]
 	},

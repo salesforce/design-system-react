@@ -2,12 +2,14 @@ import '@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-s
 
 export Accordion from './accordion/stories';
 export AppLauncher from './app-launcher/stories';
+export Avatar from './avatar/stories';
 export Breadcrumb from './breadcrumb/stories';
 export Button from './button/stories';
 export ButtonGroup from './button-group/stories';
 export ButtonStateful from './button-stateful/stories';
 export Card from './card/stories';
 export Checkbox from './forms/checkbox/stories';
+export Combobox from './combobox/stories';
 export Filter from './filter/stories';
 export GlobalNavigationBar from './global-navigation-bar/stories';
 export DataTable from './data-table/stories';
@@ -27,7 +29,9 @@ export Notification from './notification/stories';
 export PageHeader from './page-header/stories';
 export Panel from './panel/stories';
 export Popover from './popover/stories';
+export ProgressIndicator from './progress-indicator/stories';
 export Picklist from './menu-picklist/stories';
+export RadioButtonGroup from './radio-button-group/stories';
 export Spinner from './spinner/stories';
 export Tabs from './tabs/stories';
 export TimePicker from './time-picker/stories';

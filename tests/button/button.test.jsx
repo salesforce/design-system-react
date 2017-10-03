@@ -10,6 +10,7 @@ const { Simulate,
 	findRenderedDOMComponentWithClass } = TestUtils;
 
 import { SLDSButton } from '../../components';
+import IconSettings from '../../components/iconSettings';
 
 const mockCallback = sinon.spy();
 
@@ -25,7 +26,7 @@ describe('SLDSButton: ', () => {
 	const renderButton = (inst) => {
 		body = document.createElement('div');
 		document.body.appendChild(body);
-		return ReactDOM.render(inst, body);
+		return ReactDOM.render(<IconSettings iconPath="/assets/icons">{inst}</IconSettings>, body);
 	};
 
 	function removeButton () {
@@ -125,6 +126,28 @@ describe('SLDSButton: ', () => {
 
 		it('renders icon styles', () => {
 			expect(svg.className.baseVal).to.include('slds-button__icon');
+		});
+	});
+
+	describe('External Path Icon Button renders', () => {
+		let cmp;
+		let use;
+		let svgHref;
+
+		before(() => {
+			cmp = getButton({
+				assistiveText: 'announcement',
+				variant: 'icon',
+				iconPath: '/assets/icons/utility-sprite/svg/symbols.svg#announcement',
+				iconSize: 'large',
+				iconVariant: 'bare'
+			});
+			use = findRenderedDOMComponentWithTag(cmp, 'use');
+			svgHref = use.getAttribute('xlink:href');
+		});
+
+		it('renders svg', () => {
+			expect(svgHref).to.equal('/assets/icons/utility-sprite/svg/symbols.svg#announcement');
 		});
 	});
 

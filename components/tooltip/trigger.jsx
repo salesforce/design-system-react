@@ -14,7 +14,7 @@ const defaultProps = {
 
 /**
  * The Trigger component
-**/
+ */
 class Trigger extends React.Component {
 
 	constructor (props) {
@@ -122,4 +122,4 @@ Trigger.displayName = displayName;
 Trigger.propTypes = propTypes;
 Trigger.defaultProps = defaultProps;
 
-module.exports = Trigger;
+export default Trigger;

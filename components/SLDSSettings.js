@@ -1,4 +1,4 @@
 // Alias
 import settings from './settings';
 
-module.exports = settings;
+export default settings;

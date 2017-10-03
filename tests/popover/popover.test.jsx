@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
@@ -14,6 +15,7 @@ import { createMountNode, destroyMountNode } from '../enzyme-helpers';
 // Import your internal dependencies (for example):
 import Popover from '../../components/popover';
 import Button from '../../components/button';
+import IconSettings from '../../components/iconSettings';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme
@@ -38,7 +40,7 @@ const defaultIds = {
  * This wrapping component will be similar to your wrapping component
  * you will create in the React Storybook for manual testing.
  */
-const DemoComponent = React.createClass({
+const DemoComponent = createReactClass({
 	displayName: 'PopoverDemoComponent',
 	propTypes: {
 		isOpen: PropTypes.bool
@@ -56,12 +58,14 @@ const DemoComponent = React.createClass({
 
 	render () {
 		return (
-			<div>
-				<Popover {...this.props}>
-					<Button label="Trigger Popover" />
-				</Popover>
-				<Button id="not-the-trigger" label="Not Trigger Popover" />
-			</div>
+			<IconSettings iconPath="/assets/icons">
+				<div>
+					<Popover {...this.props}>
+						<Button label="Trigger Popover" />
+					</Popover>
+					<Button id="not-the-trigger" label="Not Trigger Popover" />
+				</div>
+			</IconSettings>
 		);
 	}
 });
@@ -127,7 +131,7 @@ describe('SLDSPopover', function () {
 				}}
 				onOpen={() => {
 					const trigger = wrapper.find('#sample-popover');
-					
+
 					const popover = portalWrapper.find(`#${defaultIds.popover}`);
 					expect(popover.node.getAttribute('aria-labelledby')).to.equal(`${defaultIds.heading}`);
 					expect(popover.node.getAttribute('aria-describedby')).to.equal(`${defaultIds.body}`);

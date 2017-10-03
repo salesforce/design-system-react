@@ -11,10 +11,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// ### findDOMNode
-import { findDOMNode } from 'react-dom';
-
-
 // ### shortid
 // `shortid` is a short, non-sequential, url-friendly, unique id generator. It is used here to provide unique strings for the HTML attribute `id` on the Tabs components. It is only used if the `id` prop is not provided on the man <Tabs /> component.
 import shortid         from 'shortid';
@@ -54,7 +50,11 @@ function isTabNode (node) {
 
 // Determine if a tab node is disabled
 function isTabDisabled (node) {
-	return node.getAttribute('aria-disabled') === 'true';
+	if (node.getAttribute) {
+		return node.getAttribute('aria-disabled') === 'true';
+	}
+
+	return !!node.props.disabled;
 }
 
 /**
@@ -201,7 +201,7 @@ class Tabs extends React.Component {
 		// Look for non-disabled tab from index to the last tab on the right
 		for (let i = index + 1; i < count; i++) {
 			const tab = this.getTab(i);
-			if (!isTabDisabled(findDOMNode(tab))) {
+			if (!isTabDisabled(tab)) {
 				return i;
 			}
 		}
@@ -209,7 +209,7 @@ class Tabs extends React.Component {
 		// If no tab found, continue searching from first on left to index
 		for (let i = 0; i < index; i++) {
 			const tab = this.getTab(i);
-			if (!isTabDisabled(findDOMNode(tab))) {
+			if (!isTabDisabled(tab)) {
 				return i;
 			}
 		}
@@ -225,7 +225,7 @@ class Tabs extends React.Component {
 		// Look for non-disabled tab from index to first tab on the left
 		while (i--) {
 			const tab = this.getTab(i);
-			if (!isTabDisabled(findDOMNode(tab))) {
+			if (!isTabDisabled(tab)) {
 				return i;
 			}
 		}
@@ -234,7 +234,7 @@ class Tabs extends React.Component {
 		i = this.getTabsCount();
 		while (i-- > index) {
 			const tab = this.getTab(i);
-			if (!isTabDisabled(findDOMNode(tab))) {
+			if (!isTabDisabled(tab)) {
 				return i;
 			}
 		}
@@ -260,7 +260,11 @@ class Tabs extends React.Component {
 	}
 
 	getTab (index) {
-		return this.tabs[index];
+		return this.tabs[index].tab;
+	}
+
+	getTabNode (index) {
+		return this.tabs[index].node;
 	}
 
 	/**
@@ -276,9 +280,8 @@ class Tabs extends React.Component {
 
 		// Check if the first occurrence of a Tabs container is `this` one.
 		let nodeAncestor = node.parentElement;
-		const tabsNode = findDOMNode(this);
 		do {
-			if (nodeAncestor === tabsNode) return true;
+			if (nodeAncestor === this.tabsNode) return true;
 			else if (nodeAncestor.getAttribute('data-tabs')) break;
 
 			nodeAncestor = nodeAncestor.parentElement;
@@ -326,7 +329,7 @@ class Tabs extends React.Component {
 					return (
 						<Tab
 							key={child.key}
-							ref={(tab) => { this.tabs[index] = tab; }}
+							ref={(node) => { this.tabs[index] = { tab: child, node }; }}
 							focus={focus}
 							selected={selected}
 							id={id}
@@ -396,6 +399,7 @@ class Tabs extends React.Component {
 				onClick={this.handleClick}
 				onKeyDown={this.handleKeyDown}
 				data-tabs
+				ref={((node) => { this.tabsNode = node; })}
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				{this.renderTabsList(id)}
@@ -408,4 +412,4 @@ Tabs.displayName = displayName;
 Tabs.propTypes = propTypes;
 Tabs.defaultProps = defaultProps;
 
-module.exports = Tabs;
+export default Tabs;

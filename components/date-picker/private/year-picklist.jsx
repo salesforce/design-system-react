@@ -2,10 +2,11 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import MenuPicklist from '../../menu-picklist';
 
-const DatepickerYearSelector = React.createClass({
+const DatepickerYearSelector = createReactClass({
 	displayName: 'SLDSDatepickerYearSelector',
 
 	propTypes: {

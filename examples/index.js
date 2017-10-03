@@ -7,6 +7,14 @@ const documentationSiteLiveExamples = {
 	'app-launcher': [
 		require('raw-loader!design-system-react/examples/app-launcher/default.jsx')
 	],
+	avatar: [
+		require('raw-loader!design-system-react/examples/avatar/base.jsx'),
+		require('raw-loader!design-system-react/examples/avatar/user-initials.jsx'),
+		require('raw-loader!design-system-react/examples/avatar/user-icon.jsx'),
+		require('raw-loader!design-system-react/examples/avatar/entity-initials.jsx'),
+		require('raw-loader!design-system-react/examples/avatar/entity-icon.jsx')
+
+	],
 	breadcrumb: [
 		require('raw-loader!design-system-react/examples/breadcrumb/base.jsx'),
 		require('raw-loader!design-system-react/examples/breadcrumb/one-item.jsx')
@@ -26,6 +34,14 @@ const documentationSiteLiveExamples = {
 	],
 	card: [
 		require('raw-loader!design-system-react/examples/card/related-list-with-table.jsx')
+	],
+	combobox: [
+		require('raw-loader!design-system-react/examples/combobox/base.jsx'),
+		require('raw-loader!design-system-react/examples/combobox/base-predefined-options-only.jsx'),
+		require('raw-loader!design-system-react/examples/combobox/inline-multiple.jsx'),
+		require('raw-loader!design-system-react/examples/combobox/inline-single.jsx'),
+		require('raw-loader!design-system-react/examples/combobox/readonly-single.jsx'),
+		require('raw-loader!design-system-react/examples/combobox/readonly-multiple.jsx')
 	],
 	filter: [
 		require('raw-loader!design-system-react/examples/filter/default.jsx'),
@@ -57,13 +73,12 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!design-system-react/examples/forms/input/default.jsx'),
 		require('raw-loader!design-system-react/examples/forms/input/icons.jsx'),
 		require('raw-loader!design-system-react/examples/forms/input/error.jsx'),
-		require('raw-loader!design-system-react/examples/forms/input/disabled.jsx'),
-		require('raw-loader!design-system-react/examples/forms/input/read-only.jsx')
+		require('raw-loader!design-system-react/examples/forms/input/inactiveInputs.jsx')
 	],
 	'forms-textarea': [
 		require('raw-loader!design-system-react/examples/forms/textarea/default.jsx'),
 		require('raw-loader!design-system-react/examples/forms/textarea/error.jsx'),
-		require('raw-loader!design-system-react/examples/forms/textarea/disabled.jsx'),
+		require('raw-loader!design-system-react/examples/forms/textarea/disabled.jsx')
 	],
 	'global-header': [
 		require('raw-loader!design-system-react/examples/global-header/default.jsx')
@@ -120,6 +135,12 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!design-system-react/examples/popover/header.jsx'),
 		require('raw-loader!design-system-react/examples/popover/alternative-header.jsx'),
 		require('raw-loader!design-system-react/examples/popover/controlled-with-footer.jsx')
+	],
+	'progress-indicator': [
+		require('raw-loader!design-system-react/examples/progress-indicator/default.jsx')
+	],
+	'radio-button-group': [
+		require('raw-loader!design-system-react/examples/radio-button-group/base.jsx')
 	],
 	tabs: [
 		require('raw-loader!design-system-react/examples/tabs/default.jsx'),
