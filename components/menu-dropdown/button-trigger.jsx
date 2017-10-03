@@ -107,6 +107,7 @@ const Trigger = createReactClass({
 	render () {
 		// The following are required for use with dropdown. Any other custom props for `Button` should be set with a `Button` child of this component, and are technically just here for backwards compatibility. See `children` prop description for more information.
 		const {
+			assistiveText,
 			children,	// eslint-disable-line no-unused-vars
 			className,
 			id,
@@ -159,6 +160,7 @@ const Trigger = createReactClass({
 			>
 				{/* eslint-disable jsx-a11y/no-static-element-interactions */}
 				<Button
+					assistiveText={assistiveText}
 					className={className}
 					aria-expanded={isOpen}
 					aria-haspopup

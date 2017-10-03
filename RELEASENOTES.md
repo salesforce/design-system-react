@@ -30,6 +30,53 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.7.0
+
+###Breaking Changes###
+
+1. **Icons removed which brings DSR from 749KB down to somewhere around 430KB**
+- Icon JS objects have been removed except for the original `design-system-react.js` bundle. An additional bundle has been added `design-system-react-components.js` without bundled icons.
+- Devs now need to do two things if they're not using DSR with icons:
+1. You need to host your own icons (`npm install @salesforce-ux/icons` OR download them from SLDS website: https://core-210.lightningdesignsystem.com/downloads)
+2. You'll need to use the `<IconSettings />` higher order component and pass in the path to where you are hosting your own icons. It might look something like this:
+```
+import IconSettings from 'design-system-react/components/iconSettings';
+
+ReactDOM.render(
+	<IconSettings iconPath="/assets/icons">
+		<MyApp />
+	</IconSettings>,
+	document.getElementById('app')
+)
+
+# This component can be wrapped around the entire app and/or individual components using Icons.
+```
+
+2. Removed disabled styles from Tabs. You'll now have to provide your own css for that.
+
+
+###Additional Changes###
+
+- Added [SLDS Avatar](https://latest-212.lightningdesignsystem.com/components/avatar)
+- All CommonJS's `module.exports` have been removed.
+- Some initial compatibility testing with React 16 has been completed, but library is not fully tested.
+- Add `type="button"` to `Button` as default (markup change)
+- Lookup
+	- Added new props isOpen, onRequestOpen, and onRequestClose to Lookup.
+- Dropdown
+	- Added new prop `disabled` to Menu Item which gets passed to `aria-disabled` on `role="option"`. Pass it down through options like so:
+	```
+	<MenuDropdown
+		options={[
+			{ disabled: true, label: 'Option A', value: 'A0' },
+			{ label: 'Option B', value: 'B0' },
+			{ label: 'Custom Class', className: 'custom-item-class', value: 'custom0' }
+		]}
+		...
+	/>
+	```
+
+
 ## Release 0.6.23
 Major features
 
@@ -43,7 +90,7 @@ Major features
 Minor features
 
 - Picklist with multiselect: Add onPillRemove
-- Inline edit: Add onEnterEditMode, onLeaveEditMode, onKeyUp (for input) 
+- Inline edit: Add onEnterEditMode, onLeaveEditMode, onKeyUp (for input)
 
 Bugfix
 
