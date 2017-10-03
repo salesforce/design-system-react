@@ -202,13 +202,12 @@ const Textarea = createReactClass({
 			<div
 				className={classNames('slds-form-element', {
 					'slds-has-error': errorText
-				},
-				className)}
+				})}
 			>
 				{labelText && (<label className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText && !label })} htmlFor={this.getId()}>
-						{required && <abbr className="slds-required" title="required">*</abbr>}
-						{labelText}
-					</label>
+					{required && <abbr className="slds-required" title="required">*</abbr>}
+					{labelText}
+				</label>
 				)}
 				<div className={classNames('slds-form-element__control')}>
 
