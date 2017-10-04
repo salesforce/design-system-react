@@ -1,6 +1,6 @@
 {
   "name": "design-system-react",
-  "version": "0.6.24",
+  "version": "0.7.0",
   "description": "Salesforce Lightning Design System for React",
   "license": "SEE LICENSE IN README.md",
   "engines": {
@@ -235,7 +235,7 @@
       "display-name": "Checkboxes",
       "SLDS-component-path": "/components/forms/#flavor-checkbox"
     },
-     {
+    {
       "component": "avatar",
       "status": "prod",
       "display-name": "Avatars",
