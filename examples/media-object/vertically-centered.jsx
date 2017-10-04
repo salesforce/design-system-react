@@ -1,5 +1,6 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
+import IconSettings from '~/components/icon-settings';
 import MediaObject from '~/components/media-object'; // `~` is replaced with design-system-react at runtime
 import Icon from '~/components/icon';
 
@@ -8,11 +9,13 @@ const Example = createReactClass({
 
 	render () {
 		return (
-			<MediaObject
-				body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda."
-				figure={<Icon category="standard" name="user" size="large" />}
-				verticalCenter
-			/>
+			<IconSettings iconPath="/assets/icons">
+				<MediaObject
+					body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda."
+					figure={<Icon category="standard" name="user" size="large" />}
+					verticalCenter
+				/>
+			</IconSettings>
 		);
 	}
 });

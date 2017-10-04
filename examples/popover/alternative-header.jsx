@@ -1,5 +1,6 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
+import IconSettings from '~/components/icon-settings';
 import Popover from '~/components/popover'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 import Icon from '../../components/icon';
@@ -51,14 +52,16 @@ const Example = createReactClass({
 
 	render () {
 		return (
-			<div>
-				<Popover
-					ariaLabelledby="ALTERNATIVE-HEADING"
-					body={panelContent}
-				>
-					<Button label="Trigger Popover" />
-				</Popover>
-			</div>
+			<IconSettings iconPath="/assets/icons">
+				<div>
+					<Popover
+						ariaLabelledby="ALTERNATIVE-HEADING"
+						body={panelContent}
+					>
+						<Button label="Trigger Popover" />
+					</Popover>
+				</div>
+			</IconSettings>
 		);
 	}
 });

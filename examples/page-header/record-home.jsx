@@ -1,5 +1,6 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
+import IconSettings from '~/components/icon-settings';
 import PageHeader from '~/components/page-header'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 import ButtonGroup from '~/components/button-group';
@@ -54,16 +55,18 @@ const Example = createReactClass({
 		];
 
 		return (
-			<PageHeader
-				contentRight={contentRight}
-				details={details}
-				iconAssistiveText="User"
-				iconCategory="standard"
-				iconName="user"
-				label="Record Type"
-				title="Record Title"
-				variant="recordHome"
-			/>
+			<IconSettings iconPath="/assets/icons">
+				<PageHeader
+					contentRight={contentRight}
+					details={details}
+					iconAssistiveText="User"
+					iconCategory="standard"
+					iconName="user"
+					label="Record Type"
+					title="Record Title"
+					variant="recordHome"
+				/>
+			</IconSettings>
 		);
 	}
 });

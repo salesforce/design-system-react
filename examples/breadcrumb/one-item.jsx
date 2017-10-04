@@ -1,5 +1,6 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
+import IconSettings from '~/components/icon-settings';
 import BreadCrumb from '~/components/breadcrumb'; // `~` is replaced with design-system-react at runtime
 
 const Example = createReactClass({
@@ -11,7 +12,9 @@ const Example = createReactClass({
 		];
 
 		return (
-			<BreadCrumb trail={trail} />
+			<IconSettings iconPath="/assets/icons">
+				<BreadCrumb trail={trail} />
+			</IconSettings>
 		);
 	}
 });
