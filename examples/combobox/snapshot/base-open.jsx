@@ -3,7 +3,7 @@ import React from 'react';
 import Combobox from '~/components/combobox/combobox';
 import Icon from '~/components/icon';
 import escapeRegExp from 'lodash.escaperegexp';
-import IconSettings from '~/components/iconSettings';
+import IconSettings from '~/components/icon-settings';
 
 const accounts = [
 	{ id: '1', label: 'Acme', subTitle: 'Account • San Francisco', type: 'account' },

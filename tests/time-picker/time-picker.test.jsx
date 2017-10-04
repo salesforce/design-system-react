@@ -10,7 +10,7 @@ import assign from 'lodash.assign';
 const { Simulate, findRenderedDOMComponentWithTag, findRenderedDOMComponentWithClass } = TestUtils;
 
 import { SLDSTimepicker } from '../../components';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 
 const mockCallback = sinon.spy();
 

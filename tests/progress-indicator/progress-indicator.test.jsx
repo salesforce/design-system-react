@@ -32,7 +32,7 @@ const { Simulate,
 	findRenderedDOMComponentWithClass } = TestUtils;
 
 import { SLDSProgressIndicator } from '../../components';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 
 const defaultProps = {
 	id: 'sample-progress-indicator'

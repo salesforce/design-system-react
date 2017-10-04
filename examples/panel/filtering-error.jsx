@@ -1,5 +1,6 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
+import IconSettings from '~/components/icon-settings';
 
 import Panel from '~/components/panel'; // `~` is replaced with design-system-react at runtime
 import PanelFilterGroup from '~/components/panel/filtering/group';
@@ -82,99 +83,101 @@ const Example = createReactClass({
 			|| this.state['list-price'].isActive
 			|| this.state.new.isActive;
 		return (
-			<Panel
-				variant="filters"
-			>
-				<PanelFilterGroup
-					errorLabel="Filters could not be applied. Please fix the validation errors below."
-					modified={this.state.modifiedPanel}
-					onClickAdd={() => {
-						this.setState({ modifiedPanel: true, new: { isActive: true, new: true } });
-					}}
-					onClickRemoveAll={() => {
-						this.onRemove(null, { id: 'sample-panel-filtering-created-date' });
-						this.onRemove(null, { id: 'sample-panel-filtering-list-price' });
-						this.onRemove(null, { id: 'sample-panel-filtering-new' });
-					}}
-					onRequestCancel={() => { this.setState({ modifiedPanel: false }); }}
-					onRequestClose={() => { console.log('Request filtering panel to close'); }}
-					onRequestSave={() => { this.setState({ modifiedPanel: false }); }}
-					variant="panel"
+			<IconSettings iconPath="/assets/icons">
+				<Panel
+					variant="filters"
 				>
-					<PanelFilterList>
-						<Filter
-							id="sample-panel-filtering-show-me"
-							isPermanent
-							onChange={this.onChangePredicate}
-							property="Show Me"
-							predicate={this.state['show-me'].selectedItem.label}
-						>
-							<Picklist
-								isInline
-								label="Show Me"
-								onSelect={(selectedItem) => {
-									this.onSelectPicklist(selectedItem, 'show-me');
-								}}
-								options={options['show-me']}
-								placeholder="Select record type"
-								value={this.state['show-me'].selectedPicklistItem.value}
-							/>
-						</Filter>
-					</PanelFilterList>
-
-					{hasActiveFilters ? <PanelFilterListHeading label="Matching all these filters" /> : null}
-					{hasActiveFilters ? <PanelFilterList>
-						{this.state['created-date'].isActive
-							? <Filter
-								id="sample-panel-filtering-created-date"
+					<PanelFilterGroup
+						errorLabel="Filters could not be applied. Please fix the validation errors below."
+						modified={this.state.modifiedPanel}
+						onClickAdd={() => {
+							this.setState({ modifiedPanel: true, new: { isActive: true, new: true } });
+						}}
+						onClickRemoveAll={() => {
+							this.onRemove(null, { id: 'sample-panel-filtering-created-date' });
+							this.onRemove(null, { id: 'sample-panel-filtering-list-price' });
+							this.onRemove(null, { id: 'sample-panel-filtering-new' });
+						}}
+						onRequestCancel={() => { this.setState({ modifiedPanel: false }); }}
+						onRequestClose={() => { console.log('Request filtering panel to close'); }}
+						onRequestSave={() => { this.setState({ modifiedPanel: false }); }}
+						variant="panel"
+					>
+						<PanelFilterList>
+							<Filter
+								id="sample-panel-filtering-show-me"
+								isPermanent
 								onChange={this.onChangePredicate}
-								onRemove={this.onRemove}
-								predicate={this.state['created-date'].selectedItem.label}
-								property="Created Date"
+								property="Show Me"
+								predicate={this.state['show-me'].selectedItem.label}
 							>
 								<Picklist
 									isInline
-									label="Created Date EQUALS"
+									label="Show Me"
 									onSelect={(selectedItem) => {
-										this.onSelectPicklist(selectedItem, 'created-date');
+										this.onSelectPicklist(selectedItem, 'show-me');
 									}}
-									options={options['created-date']}
-									placeholder="Select a time range"
-									value={this.state['created-date'].selectedPicklistItem.value}
+									options={options['show-me']}
+									placeholder="Select record type"
+									value={this.state['show-me'].selectedPicklistItem.value}
 								/>
 							</Filter>
-						: null}
-						
-						{this.state['list-price'].isActive
-						?	<Filter
-							id="sample-panel-filtering-list-price"
-							onChange={this.onChangePredicate}
-							onRemove={this.onRemove}
-							predicate={this.state['list-price'].selectedItem.label}
-							property="List Price"
-						>
-							<Picklist
-								isInline
-								label="List Price"
-								onSelect={(selectedItem) => {
-									this.onSelectPicklist(selectedItem, 'list-price');
-								}}
-								options={options['list-price']}
-								placeholder="Select a price"
-								value={this.state['list-price'].selectedPicklistItem.value}
+						</PanelFilterList>
+
+						{hasActiveFilters ? <PanelFilterListHeading label="Matching all these filters" /> : null}
+						{hasActiveFilters ? <PanelFilterList>
+							{this.state['created-date'].isActive
+								? <Filter
+									id="sample-panel-filtering-created-date"
+									onChange={this.onChangePredicate}
+									onRemove={this.onRemove}
+									predicate={this.state['created-date'].selectedItem.label}
+									property="Created Date"
+								>
+									<Picklist
+										isInline
+										label="Created Date EQUALS"
+										onSelect={(selectedItem) => {
+											this.onSelectPicklist(selectedItem, 'created-date');
+										}}
+										options={options['created-date']}
+										placeholder="Select a time range"
+										value={this.state['created-date'].selectedPicklistItem.value}
+									/>
+								</Filter>
+							: null}
+							
+							{this.state['list-price'].isActive
+							?	<Filter
+								id="sample-panel-filtering-list-price"
+								onChange={this.onChangePredicate}
+								onRemove={this.onRemove}
+								predicate={this.state['list-price'].selectedItem.label}
+								property="List Price"
+							>
+								<Picklist
+									isInline
+									label="List Price"
+									onSelect={(selectedItem) => {
+										this.onSelectPicklist(selectedItem, 'list-price');
+									}}
+									options={options['list-price']}
+									placeholder="Select a price"
+									value={this.state['list-price'].selectedPicklistItem.value}
+								/>
+							</Filter>
+							: null}
+							<Filter
+								errorLabel="Error Message"
+								id="sample-panel-filtering-error"
+								predicate={'equals "Red"'}
+								property="Stage"
 							/>
-						</Filter>
+						</PanelFilterList>
 						: null}
-						<Filter
-							errorLabel="Error Message"
-							id="sample-panel-filtering-error"
-							predicate={'equals "Red"'}
-							property="Stage"
-						/>
-					</PanelFilterList>
-					: null}
-				</PanelFilterGroup>
-			</Panel>
+					</PanelFilterGroup>
+				</Panel>
+			</IconSettings>
 		);
 	}
 });

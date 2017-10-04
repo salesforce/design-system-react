@@ -1658,6 +1658,159 @@
         "SLDS-component-path": "/components/forms/#flavor-checkbox",
         "dependencies": []
     },
+    "avatar": {
+        "description": "The avatar component represents an object or entity. An image is the preferred format for an avatar.\n If the `imgSrc` prop is undefined, and if a `label` or `initials` prop is available, the fallback avatar will render with initials. If initals are passed in directly in the `initials` prop, this will render in the fallback avatar. If `initals` prop is unavailable but a `label` prop is available, the fallback avatar will render with built initials of the user name or entity name.\n\n Intials built from the `label` prop will apply the following logic: If the label name contains two words, like first and last name, the first letter of each will be capitalized and returned. For labels that only have a single word name, the first two letters of that word, using one capital and one lower case letter, will be returned. For labels that contain three or more words, the first character of the first and last words will be capitalized and returned.\n\n If `initials` or `label` are not available, the fallback avatar will render a standard icon. If `variant='user'`, a user icon will\n render. If `variant='entity'`, an account icon will render.",
+        "methods": [
+            {
+                "name": "handleImageError",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "buildInitials",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "renderBaseAvatar",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "renderIconAvatar",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "renderInitialsAvatar",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "className": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Class names to be applied to Avatar component."
+            },
+            "imgAlt": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Alt attribute to be applied to image (base case) element.",
+                "defaultValue": {
+                    "value": "''",
+                    "computed": false
+                }
+            },
+            "imgSrc": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Source attribute to be applied to image (base case) element."
+            },
+            "initials": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Initials attribute to optionally pass in initials directly in case of \"initials\" fallback case."
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Label attibute to display inside \"initials\" fallback case. Will be passed as title prop in `abbr` element to provide more specificity."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'entity'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'user'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": true,
+                "description": "Avatar variants to apply relevant styling (circle: user, square: entity) and icon rendering if applicable.",
+                "defaultValue": {
+                    "value": "'user'",
+                    "computed": false
+                }
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": true,
+                "description": "Size of the icon in \"icon\" fallback case.",
+                "defaultValue": {
+                    "value": "'medium'",
+                    "computed": false
+                }
+            },
+            "title": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Title attribute for the avatar container.",
+                "defaultValue": {
+                    "value": "'user avatar'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "avatars",
+        "display-name": "Avatars",
+        "SLDS-component-path": "/components/avatars",
+        "dependencies": []
+    },
     "combobox": {
         "description": "A widget that provides a user with an input field that is either an autocomplete or readonly, accompanied with a listbox of pre-definfined options.",
         "methods": [
@@ -5588,6 +5741,13 @@
                 "returns": null
             },
             {
+                "name": "getIsOpen",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "getListLength",
                 "docblock": null,
                 "modifiers": [],
@@ -5981,6 +6141,13 @@
                 "required": false,
                 "description": "Renders menu within the wrapping trigger as a sibling of the button. By default, you will have an absolutely positioned container at an elevated z-index."
             },
+            "isOpen": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Whether or not the dropdown menu is open. This overrides the default behavior."
+            },
             "label": {
                 "type": {
                     "name": "string"
@@ -6002,6 +6169,13 @@
                 "required": false,
                 "description": "Triggered when input focus is removed."
             },
+            "onChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when the contents of the input changes."
+            },
             "onFocus": {
                 "type": {
                     "name": "func"
@@ -6009,12 +6183,26 @@
                 "required": false,
                 "description": "Triggered when input is focused."
             },
-            "onChange": {
+            "onRequestClose": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "Triggered when the contents of the input changes."
+                "description": "Function called when the lookup dropdown would like hide. This will turn the Lookup into into a controlled component. Please use with `isOpen`."
+            },
+            "onRequestOpen": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Function called when the lookup dropdown would like show. This will turn the Lookup into into a controlled component. Please use with `isOpen`."
+            },
+            "onScroll": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when the user scrolls in the dropdown menu."
             },
             "onSelect": {
                 "type": {

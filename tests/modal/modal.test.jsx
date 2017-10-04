@@ -7,7 +7,7 @@ import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 
 import { SLDSModal } from '../../components';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 
 const { Simulate } = TestUtils;
 

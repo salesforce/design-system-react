@@ -16,7 +16,7 @@ import Search from '../../components/forms/input/search';
 import GlobalNavigationBar from '../../components/global-navigation-bar';
 import GlobalNavigationBarRegion from '../../components/global-navigation-bar/region';
 
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 import SLDSSettings from '../../components/SLDSSettings';
 
 SLDSSettings.setAppElement('#root');	// used by Modal component

@@ -9,7 +9,7 @@ import CardFilter from '../../components/card/filter';
 import { cssClasses as mediaObjectCssClasses } from '../../components/media-object';
 
 import Icon from '../../components/icon';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 
 chai.should();
 

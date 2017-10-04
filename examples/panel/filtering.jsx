@@ -6,7 +6,7 @@ import PanelFilterGroup from '~/components/panel/filtering/group';
 import PanelFilterList from '~/components/panel/filtering/list';
 import PanelFilterListHeading from '~/components/panel/filtering/list-heading';
 import Filter from '~/components/filter';
-import IconSettings from '~/components/iconSettings';
+import IconSettings from '~/components/icon-settings';
 
 import Picklist from '~/components/menu-picklist';
 

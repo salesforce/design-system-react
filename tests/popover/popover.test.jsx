@@ -15,7 +15,7 @@ import { createMountNode, destroyMountNode } from '../enzyme-helpers';
 // Import your internal dependencies (for example):
 import Popover from '../../components/popover';
 import Button from '../../components/button';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme

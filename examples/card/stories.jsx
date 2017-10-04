@@ -3,7 +3,7 @@ import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import uniqueId from 'lodash.uniqueid';
 import { storiesOf, action } from '@storybook/react';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 
 import { CARD } from '../../utilities/constants';
 import Button from '../../components/button';

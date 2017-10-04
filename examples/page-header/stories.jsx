@@ -4,7 +4,7 @@ import React from 'react';
 import createReactClass from 'create-react-class';
 import { storiesOf, action } from '@storybook/react';
 import { PAGE_HEADER } from '../../utilities/constants';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 
 import SLDSPageHeader from '../../components/page-header';
 import SLDSButtonStateful from '../../components/button-stateful';

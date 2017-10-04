@@ -3,7 +3,7 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import { storiesOf, action } from '@storybook/react';
-import IconSettings from '../../../../components/iconSettings';
+import IconSettings from '../../../../components/icon-settings';
 
 import { FORMS_INLINE_EDIT } from '../../../../utilities/constants';
 import InlineEdit from '../../../../components/forms/input/inline';

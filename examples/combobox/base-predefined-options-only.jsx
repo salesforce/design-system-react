@@ -4,7 +4,7 @@ import Combobox from '~/components/combobox';
 import comboboxFilterAndLimit from '~/components/combobox/filter';
 import Icon from '~/components/icon';
 import escapeRegExp from 'lodash.escaperegexp';
-import IconSettings from '~/components/iconSettings';
+import IconSettings from '~/components/icon-settings';
 
 const accounts = [
 	{ id: '1', label: 'Acme', subTitle: 'Account • San Francisco', type: 'account' },

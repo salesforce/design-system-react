@@ -1,5 +1,6 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
+import IconSettings from '~/components/icon-settings';
 import ButtonStateful from '~/components/button-stateful'; // `~` is replaced with design-system-react at runtime
 
 const Example = createReactClass({
@@ -7,12 +8,14 @@ const Example = createReactClass({
 
 	render () {
 		return (
-			<ButtonStateful
-				assistiveText="like"
-				iconName="like"
-				iconSize="large"
-				variant="icon"
-			/>
+			<IconSettings iconPath="/assets/icons">
+				<ButtonStateful
+					assistiveText="like"
+					iconName="like"
+					iconSize="large"
+					variant="icon"
+				/>
+			</IconSettings>
 		);
 	}
 });

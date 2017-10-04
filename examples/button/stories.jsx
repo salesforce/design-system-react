@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { storiesOf, action } from '@storybook/react';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 
 import { BUTTON } from '../../utilities/constants';
 import Button from '../../components/button';

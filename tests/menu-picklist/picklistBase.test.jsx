@@ -7,7 +7,7 @@ import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 
 import SLDSMenuPicklist from '../../components/menu-picklist';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 
 const { Simulate,
 				scryRenderedDOMComponentsWithTag,

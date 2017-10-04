@@ -1,5 +1,6 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
+import IconSettings from '~/components/icon-settings';
 import Checkbox from '~/components/forms/checkbox'; // `~` is replaced with design-system-react at runtime
 
 const Example = createReactClass({
@@ -7,35 +8,37 @@ const Example = createReactClass({
 
 	render () {
 		return (
-			<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
-				<div className="slds-col--padded">
-					<Checkbox
-						assistiveText="Default"
-						label="Default"
-					/>
+			<IconSettings iconPath="/assets/icons">
+				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
+					<div className="slds-col--padded">
+						<Checkbox
+							assistiveText="Default"
+							label="Default"
+						/>
+					</div>
+					<div className="slds-col--padded">
+						<Checkbox
+							assistiveText="Indeterminate"
+							indeterminate
+							label="Indeterminate"
+						/>
+					</div>
+					<div className="slds-col--padded">
+						<Checkbox
+							assistiveText="Indeterminate"
+							label="Required"
+							required
+						/>
+					</div>
+					<div className="slds-col--padded">
+						<Checkbox
+							assistiveText="Disabled"
+							label="Disabled"
+							disabled
+						/>
+					</div>
 				</div>
-				<div className="slds-col--padded">
-					<Checkbox
-						assistiveText="Indeterminate"
-						indeterminate
-						label="Indeterminate"
-					/>
-				</div>
-				<div className="slds-col--padded">
-					<Checkbox
-						assistiveText="Indeterminate"
-						label="Required"
-						required
-					/>
-				</div>
-				<div className="slds-col--padded">
-					<Checkbox
-						assistiveText="Disabled"
-						label="Disabled"
-						disabled
-					/>
-				</div>
-			</div>
+			</IconSettings>
 		);
 	}
 });

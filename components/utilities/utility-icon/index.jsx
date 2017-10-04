@@ -71,11 +71,11 @@ const UtilityIcon = ({
 	// Use icon path prop if set, then see if a global path is set, if not use inline icons
 	const modifiedPath = path || (context.iconPath && `${context.iconPath}/${category}-sprite/svg/symbols.svg#${name}`);
 
-	const output = modifiedPath && !icon
-		? (<svg {...rest}>
+	const output = SLDS_ICONS_UTILITY[name.toLowerCase()] || icon
+		? (<Svg data={data} name={name} {...rest} />)
+		: (<svg {...rest}>
 			<use xlinkHref={modifiedPath} />
-		</svg>)
-		: (<Svg data={data} name={name} {...rest} />);
+		</svg>);
 
 	return output;
 };

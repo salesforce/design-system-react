@@ -4,7 +4,7 @@ import createReactClass from 'create-react-class';
 
 // Higher Order Components such as `react-onclickoutside` use the DOM and Jest snapshot testing must be DOMless
 import Navigation from '~/components/navigation';
-import IconSettings from '~/components/iconSettings';
+import IconSettings from '~/components/icon-settings';
 
 import { sampleReportCategories } from '../../utilities/sample-data/navigation';
 

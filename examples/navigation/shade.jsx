@@ -1,6 +1,7 @@
 /* eslint-disable no-console, react/prop-types */
 import React from 'react';
 import createReactClass from 'create-react-class';
+import IconSettings from '~/components/icon-settings';
 import Navigation from '~/components/navigation';
 
 const sampleSearchCategories = [
@@ -42,23 +43,25 @@ const Example = createReactClass({
 
 	render () {
 		return (
-			<div style={{ width: '320px', backgroundColor: '#FAFAFB' }}>
-				<Navigation
-					id="sample-navigation"
-					variant="shade"
-					categories={sampleSearchCategories}
-					selectedId={this.state.selectedId}
-					onSelect={(event, data) => {
-						this.setState({ selectedId: data.item.id });
-						if (this.props.action) {
-							const dataAsArray = Object.keys(data).map((key) => data[key]);
-							this.props.action('onSelect')(event, data, ...dataAsArray);
-						} else if (console) {
-							console.log('[onSelect] (event, data)', event, data);
-						}
-					}}
-				/>
-			</div>
+			<IconSettings iconPath="/assets/icons">
+				<div style={{ width: '320px', backgroundColor: '#FAFAFB' }}>
+					<Navigation
+						id="sample-navigation"
+						variant="shade"
+						categories={sampleSearchCategories}
+						selectedId={this.state.selectedId}
+						onSelect={(event, data) => {
+							this.setState({ selectedId: data.item.id });
+							if (this.props.action) {
+								const dataAsArray = Object.keys(data).map((key) => data[key]);
+								this.props.action('onSelect')(event, data, ...dataAsArray);
+							} else if (console) {
+								console.log('[onSelect] (event, data)', event, data);
+							}
+						}}
+					/>
+				</div>
+			</IconSettings>
 		);
 	}
 });

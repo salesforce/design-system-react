@@ -48,7 +48,7 @@ Starting in version 0.7.x, this library will not include SLDS icons by default d
 In prior versions, SLDS icons "just worked" out of the box. However, now you will need to host the icons yourself. You'll also need to set the path to the icon assets using the component `<IconSettings>` which you can either wrap around the entire app or individual components. The `iconPath` prop is set as React `context` and passed down to componenets in its subtree where it will place the correct path in the SVG tag. Here is an example:
 
 ```
-import IconSettings from 'design-system-react/components/iconSettings';
+import IconSettings from 'design-system-react/components/icon-settings';
 
 ReactDOM.render(
 	<IconSettings iconPath="/assets/icons">

@@ -4,8 +4,8 @@
 export SLDSSettings from './settings';
 export Settings from './settings';
 
-export SLDSIconSettings from './iconSettings';
-export IconSettings from './iconSettings';
+export SLDSIconSettings from './icon-settings';
+export IconSettings from './icon-settings';
 
 export SLDSAvatar from './avatar';
 export Avatar from './avatar';

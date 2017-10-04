@@ -1,5 +1,6 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
+import IconSettings from '~/components/icon-settings';
 import Textarea from '~/components/forms/textarea'; // `~` is replaced with design-system-react at runtime
 
 const Example = createReactClass({
@@ -7,10 +8,12 @@ const Example = createReactClass({
 
 	render () {
 		return (
-			<Textarea
-				id="unique-id-1"
-				label="Textarea Label"
-			/>
+			<IconSettings iconPath="/assets/icons">
+				<Textarea
+					id="unique-id-1"
+					label="Textarea Label"
+				/>
+			</IconSettings>
 		);
 	}
 });

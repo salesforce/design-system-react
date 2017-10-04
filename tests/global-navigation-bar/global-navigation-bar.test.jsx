@@ -9,7 +9,7 @@ import { mountComponent, unmountComponent } from '../enzyme-helpers';
 // sample props and children
 import { dropdownCollection, propSets } from '../../utilities/sample-data/global-navigation-bar';
 
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 import GlobalNavigationBar from '../../components/global-navigation-bar';
 import GlobalNavigationBarRegion from '../../components/global-navigation-bar/region';
 import GlobalNavigationBarDropdown from '../../components/global-navigation-bar/dropdown';

@@ -1,5 +1,6 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
+import IconSettings from '~/components/icon-settings';
 import PageHeader from '~/components/page-header'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 import ButtonGroup from '~/components/button-group';
@@ -88,15 +89,17 @@ const Example = createReactClass({
 		];
 
 		return (
-			<PageHeader
-				title="Contacts (will truncate)"
-				navRight={navRight}
-				contentRight={contentRight}
-				variant="objectHome"
-				truncate
-				trail={trail}
-				info="10 items • sorted by name"
-			/>
+			<IconSettings iconPath="/assets/icons">
+				<PageHeader
+					title="Contacts (will truncate)"
+					navRight={navRight}
+					contentRight={contentRight}
+					variant="objectHome"
+					truncate
+					trail={trail}
+					info="10 items • sorted by name"
+				/>
+			</IconSettings>
 		);
 	}
 });

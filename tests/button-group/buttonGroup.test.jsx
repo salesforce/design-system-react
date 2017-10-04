@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 import { SLDSButtonGroup, SLDSButton } from '../../components';
 
 describe('SLDSButtonGroup: ', () => {

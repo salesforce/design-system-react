@@ -10,6 +10,7 @@ import GlobalNavigationBarRegion from '~/components/global-navigation-bar/region
 import Icon from '~/components/icon';
 import Button from '~/components/button';
 import Search from '~/components/forms/input/search';
+import IconSettings from '~/components/icon-settings';
 
 const Example = createReactClass({
 	displayName: 'AppLauncherExample',
@@ -19,43 +20,45 @@ const Example = createReactClass({
 		const headerButton = <Button label="App Exchange" />;
 
 		return (
-			<GlobalNavigationBar>
-				<GlobalNavigationBarRegion
-					region="primary"
-				>
-					<AppLauncher
-						triggerName="App Name"
-						search={search}
-						modalHeaderButton={headerButton}
+			<IconSettings iconPath="/assets/icons">
+				<GlobalNavigationBar>
+					<GlobalNavigationBarRegion
+						region="primary"
 					>
-						<AppLauncherSection title="Tile Section">
-							<AppLauncherTile
-								title="Marketing Cloud"
-								iconText="MC"
-								description="Send emails, track emails, read emails! Emails!"
-							/>
-							<AppLauncherTile
-								title="Call Center"
-								description="The key to call center and contact center is not to use too many words!"
-								descriptionHeading="Call Center"
-								iconText="CC"
-							/>
-						</AppLauncherSection>
-						<AppLauncherSection title="Small Tile Section">
-							<AppLauncherTile
-								title="Journey Builder"
-								iconText="JB"
-								size="small"
-							/>
-							<AppLauncherTile
-								title="Sales Cloud"
-								iconNode={<Icon name="campaign" category="standard" size="large" />}
-								size="small"
-							/>
-						</AppLauncherSection>
-					</AppLauncher>
-				</GlobalNavigationBarRegion>
-			</GlobalNavigationBar>
+						<AppLauncher
+							triggerName="App Name"
+							search={search}
+							modalHeaderButton={headerButton}
+						>
+							<AppLauncherSection title="Tile Section">
+								<AppLauncherTile
+									title="Marketing Cloud"
+									iconText="MC"
+									description="Send emails, track emails, read emails! Emails!"
+								/>
+								<AppLauncherTile
+									title="Call Center"
+									description="The key to call center and contact center is not to use too many words!"
+									descriptionHeading="Call Center"
+									iconText="CC"
+								/>
+							</AppLauncherSection>
+							<AppLauncherSection title="Small Tile Section">
+								<AppLauncherTile
+									title="Journey Builder"
+									iconText="JB"
+									size="small"
+								/>
+								<AppLauncherTile
+									title="Sales Cloud"
+									iconNode={<Icon name="campaign" category="standard" size="large" />}
+									size="small"
+								/>
+							</AppLauncherSection>
+						</AppLauncher>
+					</GlobalNavigationBarRegion>
+				</GlobalNavigationBar>
+			</IconSettings>
 		);
 	}
 });

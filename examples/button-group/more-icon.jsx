@@ -3,7 +3,7 @@ import createReactClass from 'create-react-class';
 import ButtonGroup from '~/components/button-group';
 import Button from '~/components/button';
 import Dropdown from '~/components/menu-dropdown';
-import IconSettings from '~/components/iconSettings';
+import IconSettings from '~/components/icon-settings';
 
 const Example = createReactClass({
 	displayName: 'ButtonGroupExample',

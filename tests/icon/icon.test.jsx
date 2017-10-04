@@ -15,7 +15,7 @@ import { mountComponent, unmountComponent } from '../enzyme-helpers';
 chai.use(chaiEnzyme());
 
 import Icon from '../../components/icon';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 
 const DemoIcon = createReactClass({
 	displayName: 'DemoIcon',

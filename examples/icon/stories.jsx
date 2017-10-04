@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { ICON } from '../../utilities/constants';
 
 import Icon from '../../components/icon';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 
 import download from '../../icons/utility/download';
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
+import IconSettings from '~/components/icon-settings';
 import Popover from '~/components/popover'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 
@@ -35,22 +36,24 @@ const Example = createReactClass({
 
 	render () {
 		return (
-			<div>
-				<Popover
-					isOpen={this.state.isOpen}
-					body="Are you sure you want to continue with your action?"
-					footer={
-						<div className="slds-text-align--right">
-							<Button label="Cancel" onClick={this.handleCancel} />
-							<Button variant="brand" label="Apply" onClick={this.handleApply} />
-						</div>}
-					heading="Confirmation"
-					onClose={this.handleClose}
-					onRequestClose={this.handleRequestClose}
-				>
-					<Button label="Trigger Popover" onClick={this.handleOpen} />
-				</Popover>
-			</div>
+			<IconSettings iconPath="/assets/icons">
+				<div>
+					<Popover
+						isOpen={this.state.isOpen}
+						body="Are you sure you want to continue with your action?"
+						footer={
+							<div className="slds-text-align--right">
+								<Button label="Cancel" onClick={this.handleCancel} />
+								<Button variant="brand" label="Apply" onClick={this.handleApply} />
+							</div>}
+						heading="Confirmation"
+						onClose={this.handleClose}
+						onRequestClose={this.handleRequestClose}
+					>
+						<Button label="Trigger Popover" onClick={this.handleOpen} />
+					</Popover>
+				</div>
+			</IconSettings>
 		);
 	}
 });

@@ -8,7 +8,7 @@ import DataTable from '../../components/data-table';
 import DataTableColumn from '../../components/data-table/column';
 import DataTableRowActions from '../../components/data-table/row-actions';
 import DataTableHighlightCell from '../../components/data-table/highlight-cell';
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 
 chai.should();
 

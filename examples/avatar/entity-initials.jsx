@@ -1,6 +1,6 @@
 import React from 'react';
 import Avatar from '~/components/avatar'; // `~` is replaced with design-system-react at runtime
-import IconSettings from '~/components/iconSettings';
+import IconSettings from '~/components/icon-settings';
 
 const Example = React.createClass({
 	displayName: 'AvatarExample',

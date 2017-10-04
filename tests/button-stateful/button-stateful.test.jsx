@@ -4,7 +4,7 @@ import assign from 'lodash.assign';
 
 import chai from 'chai';
 
-import IconSettings from '../../components/iconSettings';
+import IconSettings from '../../components/icon-settings';
 import Icon from '../../components/icon';
 import { ButtonStateful } from '../../components';
 

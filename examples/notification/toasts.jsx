@@ -1,5 +1,6 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
+import IconSettings from '~/components/icon-settings';
 import Notification from '~/components/notification';  // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 
@@ -21,56 +22,58 @@ const Example = createReactClass({
 
 	render () {
 		return (
-			<div>
-				<Button
-					label="Open base toast"
-					onClick={(event) => { this.toggleOpen(event, 'base'); }}
-				/>
-				<Notification
-					content={['Base Toast']}
-					isOpen={this.state.baseIsOpen}
-					onDismiss={(event) => { this.toggleOpen(event, 'base'); }}
-					variant="toast"
-				/>
-				<span />
-				<Button
-					label="Open success toast"
-					onClick={(event) => { this.toggleOpen(event, 'success'); }}
-				/>
-				<Notification
-					content={[<span key="new-contact">Your new contact <a href="javascript:void(0);">Sara Smith</a> was successfully created.</span>]}
-					iconName="notification"
-					isOpen={this.state.successIsOpen}
-					onDismiss={(event) => { this.toggleOpen(event, 'success'); }}
-					theme="success"
-					variant="toast"
-				/>
-				<span />
-				<Button
-					label="Open warning toast"
-					onClick={(event) => { this.toggleOpen(event, 'warning'); }}
-				/>
-				<Notification
-					content={[<span key="required-fields">Oops, you&quot;ve missed some required form inputs.</span>]}
-					isOpen={this.state.warningIsOpen}
-					onDismiss={(event) => { this.toggleOpen(event, 'warning'); }}
-					theme="warning"
-					variant="toast"
-				/>
-				<span />
-				<Button
-					label="Open error toast"
-					onClick={(event) => { this.toggleOpen(event, 'error'); }}
-				/>
-				<Notification
-					content={[<span key="required-fields">You encountered some errors when trying to save edits to Samuel Smith.</span>]}
-					iconName="warning"
-					isOpen={this.state.errorIsOpen}
-					onDismiss={(event) => { this.toggleOpen(event, 'error'); }}
-					theme="error"
-					variant="toast"
-				/>
-			</div>
+			<IconSettings iconPath="/assets/icons">
+				<div>
+					<Button
+						label="Open base toast"
+						onClick={(event) => { this.toggleOpen(event, 'base'); }}
+					/>
+					<Notification
+						content={['Base Toast']}
+						isOpen={this.state.baseIsOpen}
+						onDismiss={(event) => { this.toggleOpen(event, 'base'); }}
+						variant="toast"
+					/>
+					<span />
+					<Button
+						label="Open success toast"
+						onClick={(event) => { this.toggleOpen(event, 'success'); }}
+					/>
+					<Notification
+						content={[<span key="new-contact">Your new contact <a href="javascript:void(0);">Sara Smith</a> was successfully created.</span>]}
+						iconName="notification"
+						isOpen={this.state.successIsOpen}
+						onDismiss={(event) => { this.toggleOpen(event, 'success'); }}
+						theme="success"
+						variant="toast"
+					/>
+					<span />
+					<Button
+						label="Open warning toast"
+						onClick={(event) => { this.toggleOpen(event, 'warning'); }}
+					/>
+					<Notification
+						content={[<span key="required-fields">Oops, you&quot;ve missed some required form inputs.</span>]}
+						isOpen={this.state.warningIsOpen}
+						onDismiss={(event) => { this.toggleOpen(event, 'warning'); }}
+						theme="warning"
+						variant="toast"
+					/>
+					<span />
+					<Button
+						label="Open error toast"
+						onClick={(event) => { this.toggleOpen(event, 'error'); }}
+					/>
+					<Notification
+						content={[<span key="required-fields">You encountered some errors when trying to save edits to Samuel Smith.</span>]}
+						iconName="warning"
+						isOpen={this.state.errorIsOpen}
+						onDismiss={(event) => { this.toggleOpen(event, 'error'); }}
+						theme="error"
+						variant="toast"
+					/>
+				</div>
+			</IconSettings>
 		);
 	}
 });
