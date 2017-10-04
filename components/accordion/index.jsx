@@ -12,53 +12,34 @@ import { ACCORDION } from '../../utilities/constants';
 import Item from './private/Item';
 
 const propTypes = {
-
 	className: PropTypes.string,
 	id: PropTypes.string.isRequired,
-
+	onTogglePanel: PropTypes.func.isRequired,
 	items: PropTypes.arrayOf(PropTypes.shape({
+		details: PropTypes.node,
+		isOpen: PropTypes.bool.isRequired,
 		key: PropTypes.string.isRequired,
 		summary: PropTypes.string.isRequired,
-		title: PropTypes.string,
-		details: PropTypes.node
+		title: PropTypes.string
 	})).isRequired
 };
 
-export default class Accordion extends React.Component {
-	constructor (props) {
-		super(props);
-
-		this.state = {
-			expandedItem: undefined
-		};
-
-		this.toggleItem = this.toggleItem.bind(this);
-	}
-
-	toggleItem (key) {
-		if (this.state.expandedItem === key) {
-			this.setState({ expandedItem: undefined });
-		} else {
-			this.setState({ expandedItem: key });
-		}
-	}
-
-	render () {
-		const items = this.props.items.map((item) =>
-			<Item
+const Accordion = ({ className, id, items, onTogglePanel }) =>
+	(<ul className={classNames('slds-accordion', className)}>
+		{items.map((item, i) =>
+			(<Item
+				onTogglePanel={() => onTogglePanel(i)}
 				key={item.key}
-				htmlId={`${this.props.id}_${item.key}`}
+				htmlId={`${id}_${item.key}`}
 				summary={item.summary}
-				expanded={this.state.expandedItem === item.key}
-				onClick={() => this.toggleItem(item.key)}
+				expanded={item.isOpen}
 			>
 				{item.details}
-			</Item>);
-		return (<ul className={classNames('slds-accordion', this.props.className)}>
-			{items}
-		</ul>);
-	}
-}
+			</Item>)
+		)}
+	</ul>);
+
+export default Accordion;
 
 Accordion.displayName = ACCORDION;
 Accordion.propTypes = propTypes;

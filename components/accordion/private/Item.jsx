@@ -16,35 +16,33 @@ const propTypes = {
 	children: PropTypes.node,
 	expanded: PropTypes.bool.isRequired,
 	htmlId: PropTypes.string.isRequired,
-	onClick: PropTypes.func,
+	onTogglePanel: PropTypes.func.isRequired,
 	summary: PropTypes.string.isRequired,
 	title: PropTypes.string
 };
 
-const Item = (props) => (<li className="slds-accordion__list-item">
-	<section className={classNames('slds-accordion__section', { 'slds-is-open': props.expanded })}>
+const Item = ({ children, expanded, htmlId, summary, title, onTogglePanel }) => (<li className="slds-accordion__list-item">
+	<section className={classNames('slds-accordion__section', { 'slds-is-open': expanded })}>
 		<div className="slds-accordion__summary">
 			<h3 className="slds-text-heading_small slds-accordion__summary-heading">
 				<Button
 					variant="base"
-					iconName="switch"
-					iconClassName="slds-accordion__summary-action-icon"
 					className="slds-button_reset slds-accordion__summary-action"
-					aria-controls={props.htmlId}
-					aria-expanded={props.expanded}
-					onClick={props.onClick}
+					aria-controls={htmlId}
+					aria-expanded={expanded}
+					onClick={onTogglePanel}
 				>
 					<span
 						className="slds-truncate"
-						title={props.title ? props.title : props.summary}
+						title={title || summary}
 					>
-						{props.summary}
+						{summary}
 					</span>
 				</Button>
 			</h3>
 		</div>
-		<div aria-hidden={!props.expanded} className="slds-accordion__content" id={props.htmlId}>
-			{props.children}
+		<div aria-hidden={!expanded} className="slds-accordion__content" id={htmlId}>
+			{children}
 		</div>
 	</section>
 </li>);

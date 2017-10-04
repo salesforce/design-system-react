@@ -7,6 +7,9 @@ const documentationSiteLiveExamples = {
 	'app-launcher': [
 		require('raw-loader!design-system-react/examples/app-launcher/default.jsx')
 	],
+	accordion: [
+		require('raw-loader!design-system-react/examples/accordion/base.jsx')
+	],
 	avatar: [
 		require('raw-loader!design-system-react/examples/avatar/base.jsx'),
 		require('raw-loader!design-system-react/examples/avatar/user-initials.jsx'),
