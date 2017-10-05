@@ -79,6 +79,7 @@ For example to import the Tooltip and Icon components:
 ```
 import Tooltip from 'design-system-react/components/popover-tooltip';
 import Icon from 'design-system-react/components/icon';
+import IconSettings from 'design-system-react/components/icon-settings';
 ```
 
 You can then use the components in your JSX markup, e.g. `Tooltip` or `Icon`.
@@ -88,13 +89,16 @@ Here is an example for building a tooltip over an info icon:
 ```
 Note: the Tooltip requires a focusable element as a child (ie. either a button or anchor) so that keyboard users can navigate to it.
 
-<Tooltip
-  align="top"
-  content={<span>Here is more information.</span>}>
+<IconSettings iconPath="/assets/icons">
+  <Tooltip
+    align="top"
+    content={<span>Here is more information.</span>}
+  >
     <a href="javascript:void(0)">
       <Icon assistiveText="More Info" category="utility" name="info" className="slds-icon-text-default" />
     </a>
-</Tooltip>
+  </Tooltip>
+</IconSettings>
 ```
 
 ## FAQ
@@ -102,7 +106,7 @@ Read our [FAQ](https://react.lightningdesignsystem.com/faq/) on the documentatio
 
 ## Contributing to the code base
 
-Please read the [CONTRIBUTING.md](CONTRIBUTING.md) first. If you'd like to meet or discuss this project, please contact @interactivellama, so you can be invited to the Slack channel and/or the weekly Cross-Cloud Office Hours.
+Please read the [CONTRIBUTING.md](CONTRIBUTING.md) and [Test README](/tests/README.md) first. If you'd like to meet or discuss this project, please contact [@interactivellama](https://github.com/interactivellama), so you can be invited to the Slack channel and/or the weekly Cross-Cloud Office Hours.
 
 ## Licenses
 
