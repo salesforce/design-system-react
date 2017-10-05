@@ -67,14 +67,20 @@ const Textarea = createReactClass({
 		assistiveText: PropTypes.string,
 		children: PropTypes.node,
 		/**
-		 * Class names to be added to the outer container of the textarea.
+		 * Class names to be added to the textarea component.
 		 */
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
 			PropTypes.string
 		]),
-
+		/** Allows for ability to apply classNames to outer textarea div.
+		*/
+		classNameContainer: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string
+		]),
 		/**
 		 * Message to display when the textarea is in an error state. When this is present, also visually highlights the component as in error.
 		 */
@@ -168,6 +174,7 @@ const Textarea = createReactClass({
 			assistiveText,
 			children,
 			className,
+			classNameContainer,
 			disabled,
 			errorText,
 			textareaRef, // eslint-disable-line react/prop-types
@@ -202,13 +209,12 @@ const Textarea = createReactClass({
 			<div
 				className={classNames('slds-form-element', {
 					'slds-has-error': errorText
-				},
-				className)}
+				}, classNameContainer)}
 			>
 				{labelText && (<label className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText && !label })} htmlFor={this.getId()}>
-						{required && <abbr className="slds-required" title="required">*</abbr>}
-						{labelText}
-					</label>
+					{required && <abbr className="slds-required" title="required">*</abbr>}
+					{labelText}
+				</label>
 				)}
 				<div className={classNames('slds-form-element__control')}>
 
