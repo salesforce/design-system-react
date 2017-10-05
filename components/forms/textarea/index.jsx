@@ -74,7 +74,7 @@ const Textarea = createReactClass({
 			PropTypes.object,
 			PropTypes.string
 		]),
-		/** Allows for ability to apply classNames to outer textarea container.
+		/** Allows for ability to apply classNames to outer textarea div.
 		*/
 		classNameContainer: PropTypes.oneOfType([
 			PropTypes.array,
