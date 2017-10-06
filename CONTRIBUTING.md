@@ -15,7 +15,8 @@
 
 We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
-- All new props / features need tests. Please review the [testing readme](/tests/README.md)
+- UX pattern / design must exist in [SLDS](https://www.lightningdesignsystem.com/). Components in the process of being added to SLDS will be considered as prototypes.
+- All new props and components need tests. Please review the [testing readme](/tests/README.md)
 - If you are adding a feature, [add a story](https://getstorybook.io/docs/react-storybook/basics/writing-stories) to the React Storybook that uses your feature, so that reviewers can test it.
 - Stories are stored in [examples folder](/examples) along with Documentation site examples. To add a story to the interactive examples on the [documentation site](https://react.lightningdesignsystem.com/components/), add the JSX file to [examples/index.js](/examples/index.js). All examples that are present for a component in the [SLDS website](https://www.lightningdesignsystem.com/) or it's internal site should be created as a Storybook story _and_ listed in `examples/index.js`.
 - Prop description tables on the documentation site are generated from propType comments within the component. All props should have a _Tested with snapshot testing._ or _Tested with Mocha framework._ notice in them.
