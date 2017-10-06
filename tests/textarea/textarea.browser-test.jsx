@@ -147,5 +147,4 @@ describe('SLDS TEXTAREA **************************************************', () 
 			expect(error.textContent).to.equal('Error Message');
 		});
 	});
-
 });
