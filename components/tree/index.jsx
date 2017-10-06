@@ -26,51 +26,40 @@ import { TREE } from '../../utilities/constants';
 /**
  * A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed. This is a controlled component, since visual state is present in the `nodes` data.
  */
-const Tree = (props) => {
-	// TODO: This may need to be cleaned up to alert a developer when they do both that the heading is hidden.
-	checkProps(TREE, props);
+class Tree extends React.Component {
+	componentWillMount () {
+		checkProps(TREE, this.props);
+	}
 
-	const {
-		assistiveText,
-		className,
-		heading,
-		id,
-		listClassName,
-		nodes,
-		onClick,
-		onExpandClick,
-		onScroll,
-		searchTerm,
-		listStyle
-	} = props;
+	render () {
+		// One of these is required to pass accessibility tests
+		const headingText = this.props.assistiveText || this.props.heading;
 
-	// One of these is required to pass accessibility tests
-	const headingText = assistiveText || heading;
-
-	// Start the zero level branch--that is the tree root. There is no label for
-	// the tree root, but is required by all other nodes
-	return (
-		<div id={id} className={classNames('slds-tree_container', className)} /* role="application" */>
-			<h4
-				className={classNames('slds-text-title--caps', { 'slds-assistive-text': assistiveText })}
-				id={`${id}__heading`}
-			>{headingText}</h4>
-			<Branch
-				getNodes={props.getNodes}
-				initalClassName={listClassName}
-				htmlId={id}
-				initialStyle={listStyle}
-				level={0}
-				node={{ nodes }}
-				onClick={onClick}
-				onExpandClick={onExpandClick}
-				onScroll={onScroll}
-				searchTerm={searchTerm}
-				treeId={id}
-			/>
-		</div>
-	);
-};
+		// Start the zero level branch--that is the tree root. There is no label for
+		// the tree root, but is required by all other nodes
+		return (
+			<div id={this.props.id} className={classNames('slds-tree_container', this.props.className)} /* role="application" */>
+				<h4
+					className={classNames('slds-text-title--caps', { 'slds-assistive-text': this.props.assistiveText })}
+					id={`${this.props.id}__heading`}
+				>{headingText}</h4>
+				<Branch
+					getNodes={this.props.getNodes}
+					initalClassName={this.props.listClassName}
+					htmlId={this.props.id}
+					initialStyle={this.props.listStyle}
+					level={0}
+					node={{ nodes: this.props.nodes }}
+					onClick={this.props.onClick}
+					onExpandClick={this.props.onExpandClick}
+					onScroll={this.props.onScroll}
+					searchTerm={this.props.searchTerm}
+					treeId={this.props.id}
+				/>
+			</div>
+		);
+	}
+ }
 
 Tree.defaultProps = {
 	getNodes: (node) => node.nodes

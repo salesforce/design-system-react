@@ -21,6 +21,9 @@ import assign from 'lodash.assign';
 // ### classNames
 import classNames from 'classnames';
 
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+
 import Button from '../button';
 import Popover from '../popover';
 
@@ -130,6 +133,7 @@ const Filter = createReactClass({
 
 	componentWillMount () {
 		this.generatedId = shortid.generate();
+		checkProps(FILTER);
 	},
 
 	getId () {
