@@ -15,9 +15,9 @@ import { ACCORDION_ITEM } from '../../../utilities/constants';
 
 const propTypes = {
 	children: PropTypes.node,
-	dropdownOptions: PropTypes.object,
+	dropdownOptions: PropTypes.array,
 	expanded: PropTypes.bool.isRequired,
-	htmlId: PropTypes.string.isRequired,
+	htmlId: PropTypes.string,
 	onTogglePanel: PropTypes.func.isRequired,
 	summary: PropTypes.string.isRequired,
 	title: PropTypes.string
@@ -44,10 +44,12 @@ const Item = ({ children, dropdownOptions, expanded, htmlId, summary, title, onT
 					</span>
 				</Button>
 			</h3>
+			{/* If statement here for options to render Dropdown */}
 			<Dropdown
 				id="ButtonGroupExampleDropdown"
 				assistiveText="More Options"
 				buttonVariant="icon"
+				buttonClassName="slds-shrink-none"
 				iconName="down"
 				iconVariant="border-filled"
 				onSelect={function (item) { console.log(item.label, 'selected'); }}

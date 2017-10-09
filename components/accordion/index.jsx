@@ -14,17 +14,18 @@ import Item from './private/Item';
 const propTypes = {
 	className: PropTypes.string,
 	id: PropTypes.string.isRequired,
-	onTogglePanel: PropTypes.func.isRequired,
 	items: PropTypes.arrayOf(PropTypes.shape({
 		details: PropTypes.node,
 		isOpen: PropTypes.bool.isRequired,
 		key: PropTypes.string.isRequired,
 		summary: PropTypes.string.isRequired,
 		title: PropTypes.string
-	})).isRequired
+	})).isRequired,
+	onTogglePanel: PropTypes.func.isRequired,
+	dropdownOptions: PropTypes.array
 };
 
-const Accordion = ({ className, id, items, onTogglePanel }) =>
+const Accordion = ({ className, dropdownOptions, id, items, onTogglePanel }) =>
 	(<ul className={classNames('slds-accordion', className)}>
 		{items.map((item, i) =>
 			(<Item
@@ -33,6 +34,7 @@ const Accordion = ({ className, id, items, onTogglePanel }) =>
 				htmlId={`${id}_${item.key}`}
 				summary={item.summary}
 				expanded={item.isOpen}
+				dropdownOptions={dropdownOptions}
 			>
 				{item.details}
 			</Item>)

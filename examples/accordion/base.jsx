@@ -61,7 +61,7 @@ export default class Example extends React.Component {
 					items={this.state.items}
 					id="base-example-accordion"
 					openOn="click"
-					options={[
+					dropdownOptions={[
 						{ label: 'undo', value: 'A0' },
 						{ label: 'redo', value: 'B0' },
 						{ label: 'activate', value: 'C0' }
