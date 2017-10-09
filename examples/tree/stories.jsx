@@ -60,7 +60,7 @@ const DemoTree = createReactClass({
 		if (this.props.singleSelection) {
 			data.node.selected = data.select;
 			this.setState({ selectedNode: data.node });
-			if (this.state.selectedNode) {
+			if (this.state.selectedNode && this.state.selectedNode.label !== data.node.label) {
 				this.state.selectedNode.selected = undefined;
 			}
 			this.forceUpdate();
