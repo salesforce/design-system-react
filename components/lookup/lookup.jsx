@@ -45,6 +45,8 @@ const defaultFilter = (term, item) => {
 };
 
 /**
+ * ** Lookup is deprecated. Please use an auto-complete Combobox instead.**
+ *
  * Lookup is an advanced inline search form. The lookup can parse through single or multi scoped datasets. The parsed dataset can be filtered by single or multi option selects.
  *
  * This component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.
