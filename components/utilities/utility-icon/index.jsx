@@ -10,12 +10,15 @@ import checkProps from './check-props';
 
 import Svg from './svg';
 
-import * as SLDS_ICONS_UTILITY from '../../../icons/utility';
-import * as SLDS_ICONS_ACTION from '../../../icons/action';
-import * as SLDS_ICONS_CUSTOM from '../../../icons/custom';
-import * as SLDS_ICONS_DOCTYPE from '../../../icons/doctype';
-import * as SLDS_ICONS_STANDARD from '../../../icons/standard';
+import SLDS_ICONS_UTILITY from '../../../icons/utility';
+import SLDS_ICONS_ACTION from '../../../icons/action';
+import SLDS_ICONS_CUSTOM from '../../../icons/custom';
+import SLDS_ICONS_DOCTYPE from '../../../icons/doctype';
+import SLDS_ICONS_STANDARD from '../../../icons/standard';
 
+/*
+ * If inline icons are present and icon bundle imports are not just an empty object, then inline icons will be used instead of external icons that require HTTP access.
+ */
 const UtilityIcon = ({
 	name = '',
 	assistiveText, // eslint-disable-line no-unused-vars
@@ -26,63 +29,36 @@ const UtilityIcon = ({
 }, context) => {
 	checkProps('UtilityIcon', { name, category, path, context });
 
-	let data;
+	const inlineIcons = {
+		action: SLDS_ICONS_ACTION,
+		custom: SLDS_ICONS_CUSTOM,
+		doctype: SLDS_ICONS_DOCTYPE,
+		standard: SLDS_ICONS_STANDARD,
+		utility: SLDS_ICONS_UTILITY
+	};
+	let inlineData;
 
-	if (!path) {
-		if (icon) {
-			data = icon;
-		} else {
-			switch (category) {
-				case 'action':
-					if (Object.keys(SLDS_ICONS_ACTION).length > 1) {
-						data = SLDS_ICONS_ACTION[name.toLowerCase()];
-						data.viewBox = SLDS_ICONS_ACTION.viewBox;
-					}
-					break;
-				case 'custom':
-					if (Object.keys(SLDS_ICONS_CUSTOM).length > 1) {
-						data = SLDS_ICONS_CUSTOM[name.toLowerCase()];
-						data.viewBox = SLDS_ICONS_CUSTOM.viewBox;
-					}
-					break;
-				case 'doctype':
-					if (Object.keys(SLDS_ICONS_DOCTYPE).length > 1) {
-						data = SLDS_ICONS_DOCTYPE[name.toLowerCase()];
-						data.viewBox = SLDS_ICONS_DOCTYPE.viewBox;
-					}
-					break;
-				case 'standard':
-					if (Object.keys(SLDS_ICONS_STANDARD).length > 1) {
-						data = SLDS_ICONS_STANDARD[name.toLowerCase()];
-						data.viewBox = SLDS_ICONS_STANDARD.viewBox;
-					}
-					break;
-				case 'utility':
-				default:
-					if (Object.keys(SLDS_ICONS_UTILITY).length > 1) {
-						data = SLDS_ICONS_UTILITY[name.toLowerCase()];
-						data.viewBox = SLDS_ICONS_UTILITY.viewBox;
-					}
-					break;
-			}
-		}
+	if (icon) {
+		inlineData = icon;
+	} else if (Object.keys(inlineIcons[category]).length) {
+		inlineData = inlineIcons[category][name.toLowerCase()];
+		inlineData.viewBox = inlineIcons[category].viewBox;
 	}
 
-	// Use icon path prop if set, then see if a global path is set, if not use inline icons
+	// Use inline icons if the icon object is present, otherwise use external URLs for icons.
 	const modifiedPath = path || (context.iconPath && `${context.iconPath}/${category}-sprite/svg/symbols.svg#${name}`);
 
-	const output = SLDS_ICONS_UTILITY[name.toLowerCase()] || icon
-		? (<Svg data={data} name={name} {...rest} />)
+	return inlineData
+		? (<Svg data={inlineData} name={name} {...rest} />)
 		: (<svg {...rest}>
 			<use xlinkHref={modifiedPath} />
 		</svg>);
-
-	return output;
 };
 
 UtilityIcon.displayName = 'UtilityIcon';
 
 UtilityIcon.propTypes = {
+	assistiveText: PropTypes.string,
 	category: PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
 	/**
    * An SVG object to use instead of name / category, look in `design-system-react/icons` for examples
