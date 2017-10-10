@@ -1,6 +1,7 @@
 import React from 'react';
 import Accordion from '../../components/accordion';
 import IconSettings from '~/components/iconSettings';
+import Dropdown from '../../components/menu-dropdown';
 
 export default class Example extends React.Component {
 	constructor () {
@@ -43,6 +44,37 @@ export default class Example extends React.Component {
 			]
 		};
 	}
+
+	menuDropdown (accordion) {
+		return (
+			<Dropdown
+				align="right"
+				id="ButtonGroupExampleDropdown"
+				assistiveText="More Options"
+				buttonVariant="icon"
+				buttonClassName="slds-shrink-none"
+				iconName="down"
+				iconVariant="border-filled"
+				onSelect={(action) => {
+					if (action.label === 'delete') {
+						this.setState((state) => ({
+							...state,
+							items: state.items.filter((item) => (item.key !== accordion.key))
+						}));
+					}
+					console.log(action.label, 'selected');
+				}}
+				openOn="click"
+				options={[
+					{ label: 'delete', value: 'A0' },
+					{ label: 'redo', value: 'B0' },
+					{ label: 'activate', value: 'C0' }
+				]}
+				iconSize="x-small"
+			/>
+		);
+	}
+
 	render () {
 		return (
 			<IconSettings iconPath="/assets/icons">
@@ -58,14 +90,10 @@ export default class Example extends React.Component {
 								: item)
 						)
 					}))}
-					items={this.state.items}
+					items={this.state.items.map((item) => ({ ...item,
+						rightHeaderContent: this.menuDropdown(item) }))}
 					id="base-example-accordion"
 					openOn="click"
-					dropdownOptions={[
-						{ label: 'undo', value: 'A0' },
-						{ label: 'redo', value: 'B0' },
-						{ label: 'activate', value: 'C0' }
-					]}
 				/>
 			</IconSettings>
 		);
