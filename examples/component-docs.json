@@ -4517,7 +4517,25 @@
                     ]
                 },
                 "required": false,
-                "description": "Class names to be added to the outer container of the textarea."
+                "description": "Class names to be added to the textarea component."
+            },
+            "classNameContainer": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Allows for ability to apply classNames to outer textarea div."
             },
             "errorText": {
                 "type": {
