@@ -1,4 +1,4 @@
-# Salesforce Lightning Design System for JavaScript
+# Design System for React
 ### Accessible, localization-friendly, presentational React components
 
 [![Build Status](https://travis-ci.com/salesforce-ux/design-system-react.svg?token=BMXxPFKR5GZuYsqAFsEf&branch=master)](https://travis-ci.com/salesforce-ux/design-system-react)
@@ -13,7 +13,7 @@ Welcome to the project! :wave: This library is the [React](https://facebook.gith
 
 #### ECMAScript 6 and CommonJS modules
 
-It is highly recommended that you `npm install` the `-es` suffixed package tag and import the individual [ECMAScript 6](https://github.com/lukehoban/es6features/blob/master/README.md) source files in `./components/`. You will need a [stage-1 and higher proposed features](https://babeljs.io/docs/plugins/preset-stage-1/) transpiler such as the [stage-1 Babel preset](https://www.npmjs.com/package/babel-preset-stage-1) or review our `.babelrc`. The non-suffixed package is a [CommonJS](https://nodejs.org/docs/latest/api/modules.html) build.
+It is highly recommended that you `npm install` the `-es` suffixed tag and import individual components. You will need a [stage-1 and higher proposed features](https://babeljs.io/docs/plugins/preset-stage-1/) transpiler ([stage-1 Babel preset](https://www.npmjs.com/package/babel-preset-stage-1) or review our `.babelrc`). The non-suffixed package is a [CommonJS](https://nodejs.org/docs/latest/api/modules.html) build.
 
 ### Local development Storybook and in-browser test server
 
