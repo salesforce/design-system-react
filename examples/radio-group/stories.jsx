@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf, action } from '@kadira/storybook';
 import { shape } from 'airbnb-prop-types';
 
 import RadioGroup from '../../components/radio-group';
@@ -16,6 +16,12 @@ class RadioGroupExample extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {};
+		this.onChange = this.onChange.bind(this);
+	}
+
+	onChange (event) {
+		this.setState({ checked: event.target.value });
+		action('onChange')(event);
 	}
 
 	render () {
@@ -27,7 +33,7 @@ class RadioGroupExample extends React.Component {
 				</h1>
 				<RadioGroup
 					labels={this.props.labels}
-					onChange={(event) => this.setState({ checked: event.target.value })}
+					onChange={this.onChange}
 					disabled={this.props.disabled}
 					required={this.props.required}
 				>
