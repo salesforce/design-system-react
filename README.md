@@ -25,7 +25,7 @@ open http://localhost:9001 http://localhost:8001
 
 ## Getting Started
 
-`design-system-react` is compatible with React >=15.4.1 <16 and may work with React 16. This library and it's markup will be updated to the next version of SLDS styles at release freeze. You can find the current SLDS version, a [getting started](https://react.lightningdesignsystem.com/getting-started/) and a [Concepts and Best Practices] (https://react.lightningdesignsystem.com/contributing/#concepts-and-best-practices) guide on the documentation site.
+`design-system-react` is compatible with React >=15.4.1 <16 and may work with React 16. This library and it's markup will be updated to the next version of SLDS styles at release freeze. You can find the current SLDS version, a [getting started](https://react.lightningdesignsystem.com/getting-started/) and a [Concepts and Best Practices](https://react.lightningdesignsystem.com/contributing/#concepts-and-best-practices) guide on the documentation site.
 
 ### SLDS Icons
 
