@@ -3,7 +3,8 @@
 
 // Implements the [Accordion design
 // pattern](https://www.lightningdesignsystem.com/components/accordion/) in
-// React. Based on SLDS v2.3.2
+// React. Based on SLDS v2.4.3
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -14,35 +15,38 @@ import { ACCORDION } from '../../utilities/constants';
 import Item from './private/Item';
 
 const propTypes = {
-	className: PropTypes.oneOfType([
-		PropTypes.array,
-		PropTypes.object,
-		PropTypes.string
-	]),
+	/**
+* Custom CSS classes added to `slds-accordion` node.
+*/
+	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	id: PropTypes.string,
 	items: PropTypes.arrayOf(PropTypes.shape({
 		details: PropTypes.node,
-		isOpen: PropTypes.bool.isRequired,
 		id: PropTypes.string,
+		isOpen: PropTypes.bool.isRequired,
 		itemContentRight: PropTypes.node,
 		summary: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 		title: PropTypes.string
 	})).isRequired,
-	onTogglePanel: PropTypes.func.isRequired
+	onToggleSection: PropTypes.func.isRequired
 };
-
+/**
+ * An accordion allows a user to toggle the display of sections of content.
+ * The accordion component wraps accordion items that can be selected and expanded.
+ */
 class Accordion extends Component {
 	constructor (props) {
 		super(props);
+		// should this be lifecycle method? why htmlId & key?
 		this.generatedId = shortid.generate();
 	}
 	render () {
-		const { className, id, items, onTogglePanel } = this.props;
+		const { className, id, items, onToggleSection } = this.props;
 		return (
 			<ul className={classNames('slds-accordion', className)}>
 				{items.map((item, i) => (
 					<Item
-						onTogglePanel={() => onTogglePanel(i)}
+						onToggleSection={() => onToggleSection(i)}
 						key={item.id || this.generatedId}
 						htmlId={id && item.id ? `${id}_${item.id}` : this.generatedId}
 						summary={item.summary}

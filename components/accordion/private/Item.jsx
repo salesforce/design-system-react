@@ -19,8 +19,8 @@ const propTypes = {
 	expanded: PropTypes.bool.isRequired,
 	htmlId: PropTypes.string.isRequired,
 	itemContentRight: PropTypes.node,
-	onTogglePanel: PropTypes.func.isRequired,
-	summary: PropTypes.string.isRequired,
+	onToggleSection: PropTypes.func.isRequired,
+	summary: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 	title: PropTypes.string
 };
 
@@ -31,7 +31,7 @@ const Item = ({
 	itemContentRight,
 	summary,
 	title,
-	onTogglePanel
+	onToggleSection
 }) => (
 	<li className="slds-accordion__list-item">
 		<section
@@ -45,7 +45,7 @@ const Item = ({
 						className="slds-button_reset slds-accordion__summary-action"
 						iconClassName="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
 						iconName="switch"
-						onClick={onTogglePanel}
+						onClick={onToggleSection}
 						variant="base"
 					>
 						<span className="slds-truncate" title={title || summary}>
