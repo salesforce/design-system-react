@@ -17,9 +17,9 @@ const propTypes = {
 	children: PropTypes.node,
 	dropdownOptions: PropTypes.array,
 	expanded: PropTypes.bool.isRequired,
-	htmlId: PropTypes.string,
+	htmlId: PropTypes.string.isRequired,
+	itemContentRight: PropTypes.node,
 	onTogglePanel: PropTypes.func.isRequired,
-	rightHeaderContent: PropTypes.node,
 	summary: PropTypes.string.isRequired,
 	title: PropTypes.string
 };
@@ -28,7 +28,7 @@ const Item = ({
 	children,
 	expanded,
 	htmlId,
-	rightHeaderContent,
+	itemContentRight,
 	summary,
 	title,
 	onTogglePanel
@@ -53,8 +53,7 @@ const Item = ({
 						</span>
 					</Button>
 				</h3>
-				{/* 'If statement' here for options to render Dropdown */}
-				{rightHeaderContent}
+				{itemContentRight}
 			</div>
 			<div aria-hidden={!expanded} className="slds-accordion__content" id={htmlId}>
 				{children}

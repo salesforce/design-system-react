@@ -9,7 +9,7 @@ export default class Example extends React.Component {
 		this.state = {
 			items: [
 				{
-					key: '1',
+					id: '1',
 					isOpen: false,
 					summary: 'The first Item',
 					details: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod ' +
@@ -17,7 +17,7 @@ export default class Example extends React.Component {
 							'ero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, ' +
 							'no sea takimata sanctus est Lorem ipsum dolor sit amet.'
 				}, {
-					key: '2',
+					id: '2',
 					isOpen: false,
 					summary: 'The second Item',
 					details: <div>
@@ -30,7 +30,7 @@ export default class Example extends React.Component {
 						<p>no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
 					</div>
 				}, {
-					key: '3',
+					id: '3',
 					isOpen: false,
 					summary: 'The third Item',
 					details: <div>
@@ -45,7 +45,7 @@ export default class Example extends React.Component {
 		};
 	}
 
-	menuDropdown (accordion) {
+	menuDropdown (selectedItem) {
 		return (
 			<Dropdown
 				align="right"
@@ -59,7 +59,11 @@ export default class Example extends React.Component {
 					if (action.label === 'delete') {
 						this.setState((state) => ({
 							...state,
-							items: state.items.filter((item) => (item.key !== accordion.key))
+							items: state.items.filter((item) => {
+								console.log('accordddddion', selectedItem);
+								console.log('item.id', item.id, 'accordion.id', selectedItem.id);
+								return (item.id !== selectedItem.id);
+							})
 						}));
 					}
 					console.log(action.label, 'selected');
@@ -79,10 +83,10 @@ export default class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Accordion
-					onTogglePanel={(index) => this.setState((state) => ({
+					onTogglePanel={(selectedItem) => this.setState((state) => ({
 						...state,
 						items: state.items.map((item, i) =>
-							(i === index
+							(i === selectedItem
 								? {
 									...item,
 									isOpen: !item.isOpen
@@ -91,7 +95,7 @@ export default class Example extends React.Component {
 						)
 					}))}
 					items={this.state.items.map((item) => ({ ...item,
-						rightHeaderContent: this.menuDropdown(item) }))}
+						itemContentRight: this.menuDropdown(item) }))}
 					id="base-example-accordion"
 					openOn="click"
 				/>
