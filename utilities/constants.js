@@ -73,6 +73,7 @@ export const PROGRESS_INDICATOR_PROGRESS = 'SLDSProgressIndicatorProgress';
 export const PROGRESS_INDICATOR_STEP = 'SLDSProgressIndicatorStep';
 export const SPINNER = 'SLDSSpinner';
 export const RADIO = 'SLDSRadio';
+export const RADIO_GROUP = 'SLDSRadioGroup';
 export const RADIO_BUTTON_GROUP = 'SLDSRadioButtonGroup';
 export const TAB = 'SLDSTab';
 export const TAB_ITEM = 'SLDSTabItem';

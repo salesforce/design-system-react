@@ -30,6 +30,7 @@ export Panel from './panel/stories';
 export Popover from './popover/stories';
 export ProgressIndicator from './progress-indicator/stories';
 export Picklist from './menu-picklist/stories';
+export RadioGroup from './radio-group/stories';
 export RadioButtonGroup from './radio-button-group/stories';
 export Spinner from './spinner/stories';
 export Tabs from './tabs/stories';

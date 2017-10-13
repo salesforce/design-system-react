@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-// Implements the [Radio Button Group design pattern](https://lightningdesignsystem.com/components/radio-button-group/) in React.
+// Implements the [Radio Group design pattern](https://lightningdesignsystem.com/components/radio-group/) in React.
 // Based on SLDS v2.5.0
 
 import React from 'react';
@@ -12,7 +12,7 @@ import shortid from 'shortid';
 import assign from 'lodash.assign';
 import { shape } from 'airbnb-prop-types';
 
-import { RADIO_BUTTON_GROUP } from '../../utilities/constants';
+import { RADIO_GROUP } from '../../utilities/constants';
 
 const propTypes = {
 	/**
@@ -20,7 +20,7 @@ const propTypes = {
 	 */
 	children: PropTypes.node.isRequired,
 	/**
-	* Custom CSS classes added to `slds-radio_button-group` node.
+	* Custom CSS classes added to the node.
 	*/
 	className: PropTypes.oneOfType([
 		PropTypes.array,
@@ -31,7 +31,7 @@ const propTypes = {
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
 	 * * `error`: Message to display when any of Checkboxes are in an error state.
-	 * * `label`: This label appears above the button group.
+	 * * `label`: This label appears above the radio group.
 	 */
 	labels: shape({
 		error: PropTypes.string,
@@ -63,9 +63,9 @@ const defaultProps = { labels: {} };
 
 /**
  * A styled select list that can have a single entry checked at any one time.
- * The RadioButtonGroup component wraps [Radio](/components/radios) components, which should be used as children.
+ * The RadioGroup component wraps [Radio](/components/radios) components, which should be used as children.
  */
-class RadioButtonGroup extends React.Component {
+class RadioGroup extends React.Component {
 
 	constructor (props) {
 		super(props);
@@ -113,9 +113,7 @@ class RadioButtonGroup extends React.Component {
 					{this.labels.label}
 				</legend>
 				<div className={classNames('slds-form-element__control', this.props.className)}>
-					<div className="slds-radio_button-group">
-						{children}
-					</div>
+					{children}
 					{this.labels.error ?
 						<div id={this.getErrorId()} className="slds-form-element__help">
 							{this.labels.error}
@@ -126,8 +124,8 @@ class RadioButtonGroup extends React.Component {
 
 }
 
-RadioButtonGroup.displayName = RADIO_BUTTON_GROUP;
-RadioButtonGroup.propTypes = propTypes;
-RadioButtonGroup.defaultProps = defaultProps;
+RadioGroup.displayName = RADIO_GROUP;
+RadioGroup.propTypes = propTypes;
+RadioGroup.defaultProps = defaultProps;
 
-export default RadioButtonGroup;
+module.exports = RadioGroup;

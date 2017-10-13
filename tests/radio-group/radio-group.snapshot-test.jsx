@@ -3,37 +3,36 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { renderMarkup } from '../snapshot-helpers';
 
-import SnapshotExample from '../../examples/radio-button-group/base';
+import SnapshotExample from '../../examples/radio-group/base';
 
-test('Radio Button Group Base DOM Snapshot', () => {
+test('Radio Group Base DOM Snapshot', () => {
 	const domTree = renderer.create(
-		<SnapshotExample name="dayOfWeek" />,
+		<SnapshotExample name="radioGroup" />,
 	).toJSON();
 	expect(domTree).toMatchSnapshot();
 });
 
-test('Radio Button Group Base HTML Snapshot', () => {
-	expect(renderMarkup(SnapshotExample, { name: 'dayOfWeek' })).toMatchSnapshot();
+test('Radio Group Base HTML Snapshot', () => {
+	expect(renderMarkup(SnapshotExample, { name: 'radioGroup' })).toMatchSnapshot();
 });
 
-test('Radio Button Group Disabled DOM Snapshot', () => {
+test('Radio Group Disabled DOM Snapshot', () => {
 	const domTree = renderer.create(
-		<SnapshotExample name="dayOfWeek" disabled />,
+		<SnapshotExample name="radioGroup" disabled />,
 	).toJSON();
 	expect(domTree).toMatchSnapshot();
 });
 
-test('Radio Button Group Required DOM Snapshot', () => {
+test('Radio Group Required DOM Snapshot', () => {
 	const domTree = renderer.create(
-		<SnapshotExample name="dayOfWeek" required />,
+		<SnapshotExample name="radioGroup" required />,
 	).toJSON();
 	expect(domTree).toMatchSnapshot();
 });
 
-test('Radio Button Group Error DOM Snapshot', () => {
+test('Radio Group Error DOM Snapshot', () => {
 	const domTree = renderer.create(
 		<SnapshotExample name="radioGroup" errorLabel="error message" errorId="radioGroupError" />,
 	).toJSON();
 	expect(domTree).toMatchSnapshot();
 });
-

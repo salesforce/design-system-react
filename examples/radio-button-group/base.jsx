@@ -14,6 +14,9 @@ class Example extends React.Component {
 	render () {
 		const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
 		const labels = { label: 'Day of week' };
+		if (this.props.errorLabel) {
+			labels.error = this.props.errorLabel;
+		}
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div>
@@ -38,7 +41,8 @@ Example.propTypes = {
 	disabled: PropTypes.bool,
 	required: PropTypes.bool,
 	name: PropTypes.string,
-	errorId: PropTypes.string
+	errorId: PropTypes.string,
+	errorLabel: PropTypes.string
 };
 
 Example.displayName = 'RadioButtonGroupExample';

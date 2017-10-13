@@ -9628,8 +9628,111 @@
         "SLDS-component-path": "/components/progress-indicator",
         "dependencies": []
     },
-    "radio-button-group": {
-        "description": "A styled select list that can have a single entry checked at any one time.\nThe RadioButtonGroup component wraps Radio components.",
+    "radio": {
+        "description": "A radio input that can have a single input checked at any one time. Radios should be wrapped with\na [RadioGroup](/components/radio-group) or [RadioButtonGroup](/components/radio-button-group)",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "aria-describedby": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The ID of an element that describes this radio input. Often used for error messages."
+            },
+            "checked": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "This is a controlled component. This radio is checked according to this value."
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disable this radio input."
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "A unique ID that is used to associating a label to the `input` element. This ID is added to the `input` element."
+            },
+            "label": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "element"
+                        }
+                    ]
+                },
+                "required": true,
+                "description": "The string or element that is shown as both the title and the label for this radio input."
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The name of the radio input group."
+            },
+            "onChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This event fires when the radio selection changes."
+            },
+            "value": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The value of this radio input."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'button-group'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Variant of the Radio button. Base is the default and button-group makes the radio button look like a normal button (should be a child of <RadioButtonGroup>).",
+                "defaultValue": {
+                    "value": "'base'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "radios",
+        "display-name": "Radios",
+        "SLDS-component-path": "/components/forms/#flavor-radio",
+        "dependencies": []
+    },
+    "radio-group": {
+        "description": "A styled select list that can have a single entry checked at any one time.\nThe RadioGroup component wraps [Radio](/components/radios) components, which should be used as children.",
         "methods": [
             {
                 "name": "getName",
@@ -9640,6 +9743,117 @@
             },
             {
                 "name": "getErrorId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "hasError",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": true,
+                "description": "Children are expected to be Radio components."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Custom CSS classes added to the node."
+            },
+            "labels": {
+                "type": {
+                    "name": "custom",
+                    "raw": "shape({\n    error: PropTypes.string,\n    label: PropTypes.string\n})"
+                },
+                "required": false,
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `error`: Message to display when any of Checkboxes are in an error state.\n* `label`: This label appears above the radio group.",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
+            "onChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This event fires when the radio selection changes."
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disable all radio inputs."
+            },
+            "required": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Adds an indicator that this field is required."
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The name of this radio group."
+            },
+            "errorId": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The ID of the error message, for linking to radio inputs with aria-describedby."
+            }
+        },
+        "route": "radio-groups",
+        "display-name": "Radio Groups",
+        "SLDS-component-path": "/components/radio-group",
+        "dependencies": []
+    },
+    "radio-button-group": {
+        "description": "A styled select list that can have a single entry checked at any one time.\nThe RadioButtonGroup component wraps [Radio](/components/radios) components, which should be used as children.",
+        "methods": [
+            {
+                "name": "getName",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getErrorId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "hasError",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -9723,111 +9937,7 @@
         "route": "radio-button-groups",
         "display-name": "Radio Button Groups",
         "SLDS-component-path": "/components/radio-button-group",
-        "dependencies": [
-            {
-                "radio": {
-                    "description": "A radio input, usually part of a group that can have a single input checked at any one time.",
-                    "methods": [
-                        {
-                            "name": "getId",
-                            "docblock": null,
-                            "modifiers": [],
-                            "params": [],
-                            "returns": null
-                        }
-                    ],
-                    "props": {
-                        "aria-describedby": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "The ID of an element that describes this radio input. Often used for error messages."
-                        },
-                        "checked": {
-                            "type": {
-                                "name": "bool"
-                            },
-                            "required": false,
-                            "description": "This is a controlled component. This radio is checked according to this value."
-                        },
-                        "disabled": {
-                            "type": {
-                                "name": "bool"
-                            },
-                            "required": false,
-                            "description": "Disable this radio input."
-                        },
-                        "id": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "A unique ID that is used to associating a label to the `input` element. This ID is added to the `input` element."
-                        },
-                        "label": {
-                            "type": {
-                                "name": "union",
-                                "value": [
-                                    {
-                                        "name": "string"
-                                    },
-                                    {
-                                        "name": "element"
-                                    }
-                                ]
-                            },
-                            "required": true,
-                            "description": "The string or element that is shown as both the title and the label for this radio input."
-                        },
-                        "name": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "The name of the radio input group."
-                        },
-                        "onChange": {
-                            "type": {
-                                "name": "func"
-                            },
-                            "required": false,
-                            "description": "This event fires when the radio selection changes."
-                        },
-                        "value": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "The value of this radio input."
-                        },
-                        "variant": {
-                            "type": {
-                                "name": "enum",
-                                "value": [
-                                    {
-                                        "value": "'base'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'button-group'",
-                                        "computed": false
-                                    }
-                                ]
-                            },
-                            "required": false,
-                            "description": "Variant of the Radio button. Base is the default and button-group makes the radio button look like a normal button (should be a child of <RadioButtonGroup>).",
-                            "defaultValue": {
-                                "value": "'base'",
-                                "computed": false
-                            }
-                        }
-                    },
-                    "name": "radio",
-                    "source": "/components/radio-button-group/radio.jsx"
-                }
-            }
-        ]
+        "dependencies": []
     },
     "tooltip": {
         "description": "The PopoverTooltip component is variant of the Lightning Design System Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or an anchor), so that keyboard users can navigate to it.",

@@ -1,0 +1,313 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio Group Base DOM Snapshot 1`] = `
+<div>
+  <fieldset
+    className="slds-form-element"
+  >
+    <legend
+      className="slds-form-element__legend slds-form-element__label"
+    >
+      Radio Group Label
+    </legend>
+    <div
+      className="slds-form-element__control"
+    >
+      <span
+        className="slds-radio"
+      >
+        <input
+          aria-describedby={undefined}
+          checked={false}
+          disabled={undefined}
+          id="Radio Label One"
+          name="radioGroup"
+          onChange={[Function]}
+          type="radio"
+          value="Radio Label One"
+        />
+        <label
+          className="slds-radio__label"
+          htmlFor="Radio Label One"
+        >
+          <span
+            className="slds-radio_faux"
+          />
+          <span
+            className="slds-form-element__label"
+          >
+            Radio Label One
+          </span>
+        </label>
+      </span>
+      <span
+        className="slds-radio"
+      >
+        <input
+          aria-describedby={undefined}
+          checked={false}
+          disabled={undefined}
+          id="Radio Label Two"
+          name="radioGroup"
+          onChange={[Function]}
+          type="radio"
+          value="Radio Label Two"
+        />
+        <label
+          className="slds-radio__label"
+          htmlFor="Radio Label Two"
+        >
+          <span
+            className="slds-radio_faux"
+          />
+          <span
+            className="slds-form-element__label"
+          >
+            Radio Label Two
+          </span>
+        </label>
+      </span>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`Radio Group Base HTML Snapshot 1`] = `
+"<div>
+  <fieldset class=\\"slds-form-element\\">
+    <legend class=\\"slds-form-element__legend slds-form-element__label\\">Radio Group Label</legend>
+    <div class=\\"slds-form-element__control\\"><span class=\\"slds-radio\\"><input type=\\"radio\\" id=\\"Radio Label One\\" name=\\"radioGroup\\" value=\\"Radio Label One\\"/><label class=\\"slds-radio__label\\" for=\\"Radio Label One\\"><span class=\\"slds-radio_faux\\"></span><span class=\\"slds-form-element__label\\">Radio Label One</span></label>
+      </span><span class=\\"slds-radio\\"><input type=\\"radio\\" id=\\"Radio Label Two\\" name=\\"radioGroup\\" value=\\"Radio Label Two\\"/><label class=\\"slds-radio__label\\" for=\\"Radio Label Two\\"><span class=\\"slds-radio_faux\\"></span><span class=\\"slds-form-element__label\\">Radio Label Two</span></label>
+      </span>
+    </div>
+  </fieldset>
+</div>"
+`;
+
+exports[`Radio Group Disabled DOM Snapshot 1`] = `
+<div>
+  <fieldset
+    className="slds-form-element"
+  >
+    <legend
+      className="slds-form-element__legend slds-form-element__label"
+    >
+      Radio Group Label
+    </legend>
+    <div
+      className="slds-form-element__control"
+    >
+      <span
+        className="slds-radio"
+      >
+        <input
+          aria-describedby={undefined}
+          checked={false}
+          disabled={true}
+          id="Radio Label One"
+          name="radioGroup"
+          onChange={[Function]}
+          type="radio"
+          value="Radio Label One"
+        />
+        <label
+          className="slds-radio__label"
+          htmlFor="Radio Label One"
+        >
+          <span
+            className="slds-radio_faux"
+          />
+          <span
+            className="slds-form-element__label"
+          >
+            Radio Label One
+          </span>
+        </label>
+      </span>
+      <span
+        className="slds-radio"
+      >
+        <input
+          aria-describedby={undefined}
+          checked={false}
+          disabled={true}
+          id="Radio Label Two"
+          name="radioGroup"
+          onChange={[Function]}
+          type="radio"
+          value="Radio Label Two"
+        />
+        <label
+          className="slds-radio__label"
+          htmlFor="Radio Label Two"
+        >
+          <span
+            className="slds-radio_faux"
+          />
+          <span
+            className="slds-form-element__label"
+          >
+            Radio Label Two
+          </span>
+        </label>
+      </span>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`Radio Group Error DOM Snapshot 1`] = `
+<div>
+  <fieldset
+    className="slds-form-element slds-has-error"
+  >
+    <legend
+      className="slds-form-element__legend slds-form-element__label"
+    >
+      Radio Group Label
+    </legend>
+    <div
+      className="slds-form-element__control"
+    >
+      <span
+        className="slds-radio"
+      >
+        <input
+          aria-describedby="radioGroupError"
+          checked={false}
+          disabled={undefined}
+          id="Radio Label One"
+          name="radioGroup"
+          onChange={[Function]}
+          type="radio"
+          value="Radio Label One"
+        />
+        <label
+          className="slds-radio__label"
+          htmlFor="Radio Label One"
+        >
+          <span
+            className="slds-radio_faux"
+          />
+          <span
+            className="slds-form-element__label"
+          >
+            Radio Label One
+          </span>
+        </label>
+      </span>
+      <span
+        className="slds-radio"
+      >
+        <input
+          aria-describedby="radioGroupError"
+          checked={false}
+          disabled={undefined}
+          id="Radio Label Two"
+          name="radioGroup"
+          onChange={[Function]}
+          type="radio"
+          value="Radio Label Two"
+        />
+        <label
+          className="slds-radio__label"
+          htmlFor="Radio Label Two"
+        >
+          <span
+            className="slds-radio_faux"
+          />
+          <span
+            className="slds-form-element__label"
+          >
+            Radio Label Two
+          </span>
+        </label>
+      </span>
+      <div
+        className="slds-form-element__help"
+        id="radioGroupError"
+      >
+        error message
+      </div>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`Radio Group Required DOM Snapshot 1`] = `
+<div>
+  <fieldset
+    className="slds-form-element"
+  >
+    <legend
+      className="slds-form-element__legend slds-form-element__label"
+    >
+      <abbr
+        className="slds-required"
+        title="required"
+      >
+        *
+      </abbr>
+      Radio Group Label
+    </legend>
+    <div
+      className="slds-form-element__control"
+    >
+      <span
+        className="slds-radio"
+      >
+        <input
+          aria-describedby={undefined}
+          checked={false}
+          disabled={undefined}
+          id="Radio Label One"
+          name="radioGroup"
+          onChange={[Function]}
+          type="radio"
+          value="Radio Label One"
+        />
+        <label
+          className="slds-radio__label"
+          htmlFor="Radio Label One"
+        >
+          <span
+            className="slds-radio_faux"
+          />
+          <span
+            className="slds-form-element__label"
+          >
+            Radio Label One
+          </span>
+        </label>
+      </span>
+      <span
+        className="slds-radio"
+      >
+        <input
+          aria-describedby={undefined}
+          checked={false}
+          disabled={undefined}
+          id="Radio Label Two"
+          name="radioGroup"
+          onChange={[Function]}
+          type="radio"
+          value="Radio Label Two"
+        />
+        <label
+          className="slds-radio__label"
+          htmlFor="Radio Label Two"
+        >
+          <span
+            className="slds-radio_faux"
+          />
+          <span
+            className="slds-form-element__label"
+          >
+            Radio Label Two
+          </span>
+        </label>
+      </span>
+    </div>
+  </fieldset>
+</div>
+`;

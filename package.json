@@ -448,15 +448,22 @@
       "SLDS-component-path": "/components/progress-indicator"
     },
     {
+      "component": "forms/radio",
+      "status": "prod",
+      "display-name": "Radios",
+      "SLDS-component-path": "/components/forms/#flavor-radio"
+    },
+    {
+      "component": "radio-group",
+      "status": "prod",
+      "display-name": "Radio Groups",
+      "SLDS-component-path": "/components/radio-group"
+    },
+    {
       "component": "radio-button-group",
       "status": "prod",
       "display-name": "Radio Button Groups",
-      "SLDS-component-path": "/components/radio-button-group",
-      "dependencies": [
-        {
-          "component": "radio"
-        }
-      ]
+      "SLDS-component-path": "/components/radio-button-group"
     },
     {
       "component": "tooltip",

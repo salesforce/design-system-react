@@ -20,7 +20,7 @@ exports[`Radio Button Group Base DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby="dayOfWeekError"
+            aria-describedby={undefined}
             checked={false}
             disabled={undefined}
             id="Mon"
@@ -44,7 +44,7 @@ exports[`Radio Button Group Base DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby="dayOfWeekError"
+            aria-describedby={undefined}
             checked={true}
             disabled={undefined}
             id="Tue"
@@ -68,7 +68,7 @@ exports[`Radio Button Group Base DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby="dayOfWeekError"
+            aria-describedby={undefined}
             checked={false}
             disabled={undefined}
             id="Wed"
@@ -92,7 +92,7 @@ exports[`Radio Button Group Base DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby="dayOfWeekError"
+            aria-describedby={undefined}
             checked={false}
             disabled={undefined}
             id="Thu"
@@ -116,7 +116,7 @@ exports[`Radio Button Group Base DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby="dayOfWeekError"
+            aria-describedby={undefined}
             checked={false}
             disabled={undefined}
             id="Fri"
@@ -147,11 +147,11 @@ exports[`Radio Button Group Base HTML Snapshot 1`] = `
   <fieldset class=\\"slds-form-element\\">
     <legend class=\\"slds-form-element__legend slds-form-element__label\\">Day of week</legend>
     <div class=\\"slds-form-element__control\\">
-      <div class=\\"slds-radio_button-group\\"><span class=\\"slds-button slds-radio_button\\"><input type=\\"radio\\" id=\\"Mon\\" name=\\"dayOfWeek\\" value=\\"Mon\\" aria-describedby=\\"dayOfWeekError\\"/><label class=\\"slds-radio_button__label\\" for=\\"Mon\\"><span class=\\"slds-radio_faux\\">Mon</span></label>
-        </span><span class=\\"slds-button slds-radio_button\\"><input type=\\"radio\\" id=\\"Tue\\" name=\\"dayOfWeek\\" value=\\"Tue\\" checked=\\"\\" aria-describedby=\\"dayOfWeekError\\"/><label class=\\"slds-radio_button__label\\" for=\\"Tue\\"><span class=\\"slds-radio_faux\\">Tue</span></label>
-        </span><span class=\\"slds-button slds-radio_button\\"><input type=\\"radio\\" id=\\"Wed\\" name=\\"dayOfWeek\\" value=\\"Wed\\" aria-describedby=\\"dayOfWeekError\\"/><label class=\\"slds-radio_button__label\\" for=\\"Wed\\"><span class=\\"slds-radio_faux\\">Wed</span></label>
-        </span><span class=\\"slds-button slds-radio_button\\"><input type=\\"radio\\" id=\\"Thu\\" name=\\"dayOfWeek\\" value=\\"Thu\\" aria-describedby=\\"dayOfWeekError\\"/><label class=\\"slds-radio_button__label\\" for=\\"Thu\\"><span class=\\"slds-radio_faux\\">Thu</span></label>
-        </span><span class=\\"slds-button slds-radio_button\\"><input type=\\"radio\\" id=\\"Fri\\" name=\\"dayOfWeek\\" value=\\"Fri\\" aria-describedby=\\"dayOfWeekError\\"/><label class=\\"slds-radio_button__label\\" for=\\"Fri\\"><span class=\\"slds-radio_faux\\">Fri</span></label>
+      <div class=\\"slds-radio_button-group\\"><span class=\\"slds-button slds-radio_button\\"><input type=\\"radio\\" id=\\"Mon\\" name=\\"dayOfWeek\\" value=\\"Mon\\"/><label class=\\"slds-radio_button__label\\" for=\\"Mon\\"><span class=\\"slds-radio_faux\\">Mon</span></label>
+        </span><span class=\\"slds-button slds-radio_button\\"><input type=\\"radio\\" id=\\"Tue\\" name=\\"dayOfWeek\\" value=\\"Tue\\" checked=\\"\\"/><label class=\\"slds-radio_button__label\\" for=\\"Tue\\"><span class=\\"slds-radio_faux\\">Tue</span></label>
+        </span><span class=\\"slds-button slds-radio_button\\"><input type=\\"radio\\" id=\\"Wed\\" name=\\"dayOfWeek\\" value=\\"Wed\\"/><label class=\\"slds-radio_button__label\\" for=\\"Wed\\"><span class=\\"slds-radio_faux\\">Wed</span></label>
+        </span><span class=\\"slds-button slds-radio_button\\"><input type=\\"radio\\" id=\\"Thu\\" name=\\"dayOfWeek\\" value=\\"Thu\\"/><label class=\\"slds-radio_button__label\\" for=\\"Thu\\"><span class=\\"slds-radio_faux\\">Thu</span></label>
+        </span><span class=\\"slds-button slds-radio_button\\"><input type=\\"radio\\" id=\\"Fri\\" name=\\"dayOfWeek\\" value=\\"Fri\\"/><label class=\\"slds-radio_button__label\\" for=\\"Fri\\"><span class=\\"slds-radio_faux\\">Fri</span></label>
         </span>
       </div>
     </div>
@@ -179,7 +179,7 @@ exports[`Radio Button Group Disabled DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby="dayOfWeekError"
+            aria-describedby={undefined}
             checked={false}
             disabled={true}
             id="Mon"
@@ -203,7 +203,7 @@ exports[`Radio Button Group Disabled DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby="dayOfWeekError"
+            aria-describedby={undefined}
             checked={false}
             disabled={true}
             id="Tue"
@@ -227,7 +227,7 @@ exports[`Radio Button Group Disabled DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby="dayOfWeekError"
+            aria-describedby={undefined}
             checked={false}
             disabled={true}
             id="Wed"
@@ -251,7 +251,7 @@ exports[`Radio Button Group Disabled DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby="dayOfWeekError"
+            aria-describedby={undefined}
             checked={false}
             disabled={true}
             id="Thu"
@@ -275,7 +275,7 @@ exports[`Radio Button Group Disabled DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby="dayOfWeekError"
+            aria-describedby={undefined}
             checked={false}
             disabled={true}
             id="Fri"
@@ -295,6 +295,154 @@ exports[`Radio Button Group Disabled DOM Snapshot 1`] = `
             </span>
           </label>
         </span>
+      </div>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`Radio Button Group Error DOM Snapshot 1`] = `
+<div>
+  <fieldset
+    className="slds-form-element slds-has-error"
+  >
+    <legend
+      className="slds-form-element__legend slds-form-element__label"
+    >
+      Day of week
+    </legend>
+    <div
+      className="slds-form-element__control"
+    >
+      <div
+        className="slds-radio_button-group"
+      >
+        <span
+          className="slds-button slds-radio_button"
+        >
+          <input
+            aria-describedby="radioGroupError"
+            checked={false}
+            disabled={undefined}
+            id="Mon"
+            name="radioGroup"
+            onChange={[Function]}
+            type="radio"
+            value="Mon"
+          />
+          <label
+            className="slds-radio_button__label"
+            htmlFor="Mon"
+          >
+            <span
+              className="slds-radio_faux"
+            >
+              Mon
+            </span>
+          </label>
+        </span>
+        <span
+          className="slds-button slds-radio_button"
+        >
+          <input
+            aria-describedby="radioGroupError"
+            checked={true}
+            disabled={undefined}
+            id="Tue"
+            name="radioGroup"
+            onChange={[Function]}
+            type="radio"
+            value="Tue"
+          />
+          <label
+            className="slds-radio_button__label"
+            htmlFor="Tue"
+          >
+            <span
+              className="slds-radio_faux"
+            >
+              Tue
+            </span>
+          </label>
+        </span>
+        <span
+          className="slds-button slds-radio_button"
+        >
+          <input
+            aria-describedby="radioGroupError"
+            checked={false}
+            disabled={undefined}
+            id="Wed"
+            name="radioGroup"
+            onChange={[Function]}
+            type="radio"
+            value="Wed"
+          />
+          <label
+            className="slds-radio_button__label"
+            htmlFor="Wed"
+          >
+            <span
+              className="slds-radio_faux"
+            >
+              Wed
+            </span>
+          </label>
+        </span>
+        <span
+          className="slds-button slds-radio_button"
+        >
+          <input
+            aria-describedby="radioGroupError"
+            checked={false}
+            disabled={undefined}
+            id="Thu"
+            name="radioGroup"
+            onChange={[Function]}
+            type="radio"
+            value="Thu"
+          />
+          <label
+            className="slds-radio_button__label"
+            htmlFor="Thu"
+          >
+            <span
+              className="slds-radio_faux"
+            >
+              Thu
+            </span>
+          </label>
+        </span>
+        <span
+          className="slds-button slds-radio_button"
+        >
+          <input
+            aria-describedby="radioGroupError"
+            checked={false}
+            disabled={undefined}
+            id="Fri"
+            name="radioGroup"
+            onChange={[Function]}
+            type="radio"
+            value="Fri"
+          />
+          <label
+            className="slds-radio_button__label"
+            htmlFor="Fri"
+          >
+            <span
+              className="slds-radio_faux"
+            >
+              Fri
+            </span>
+          </label>
+        </span>
+      </div>
+      <div
+        className="slds-form-element__help"
+        id="radioGroupError"
+      >
+        error message
       </div>
     </div>
   </fieldset>
@@ -327,7 +475,7 @@ exports[`Radio Button Group Required DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby="dayOfWeekError"
+            aria-describedby={undefined}
             checked={false}
             disabled={undefined}
             id="Mon"
@@ -351,7 +499,7 @@ exports[`Radio Button Group Required DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby="dayOfWeekError"
+            aria-describedby={undefined}
             checked={true}
             disabled={undefined}
             id="Tue"
@@ -375,7 +523,7 @@ exports[`Radio Button Group Required DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby="dayOfWeekError"
+            aria-describedby={undefined}
             checked={false}
             disabled={undefined}
             id="Wed"
@@ -399,7 +547,7 @@ exports[`Radio Button Group Required DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby="dayOfWeekError"
+            aria-describedby={undefined}
             checked={false}
             disabled={undefined}
             id="Thu"
@@ -423,7 +571,7 @@ exports[`Radio Button Group Required DOM Snapshot 1`] = `
           className="slds-button slds-radio_button"
         >
           <input
-            aria-describedby="dayOfWeekError"
+            aria-describedby={undefined}
             checked={false}
             disabled={undefined}
             id="Fri"

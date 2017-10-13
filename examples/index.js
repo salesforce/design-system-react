@@ -142,6 +142,13 @@ const documentationSiteLiveExamples = {
 	'radio-button-group': [
 		require('raw-loader!design-system-react/examples/radio-button-group/base.jsx')
 	],
+	'radio-group': [
+		require('raw-loader!design-system-react/examples/radio-group/base.jsx')
+	],
+	'forms-radio': [
+		require('raw-loader!design-system-react/examples/forms/radio/default.jsx'),
+		require('raw-loader!design-system-react/examples/forms/radio/disabled.jsx')
+	],
 	tabs: [
 		require('raw-loader!design-system-react/examples/tabs/default.jsx'),
 		require('raw-loader!design-system-react/examples/tabs/scoped.jsx')
