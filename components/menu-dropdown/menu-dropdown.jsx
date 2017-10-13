@@ -9,6 +9,7 @@
 
 // ### React
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
@@ -84,7 +85,7 @@ const DropdownNubbinPositions = [
  * This component may use a portalMount (a disconnected React subtree mount) within an absolutely positioned DOM node created with [Drop](http://github.hubspot.com/drop/).
 
  */
-const MenuDropdown = React.createClass({
+const MenuDropdown = createReactClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: MENU_DROPDOWN,
@@ -743,6 +744,7 @@ const MenuDropdown = React.createClass({
 						'ignore-react-onclickoutside',
 						positionClassName,
 						this.props.className)}
+					context={this.context}
 					flippable={!this.props.hasStaticAlignment}
 					horizontalAlign={this.props.align}
 					inheritTargetWidth={this.props.inheritTargetWidth}
@@ -868,7 +870,13 @@ const MenuDropdown = React.createClass({
 	}
 });
 
-module.exports = MenuDropdown;
-module.exports.ListItem = ListItem;
-module.exports.ListItemLabel = ListItemLabel;
-module.exports.DropdownNubbinPositions = DropdownNubbinPositions;
+MenuDropdown.contextTypes = {
+	iconPath: PropTypes.string
+};
+
+export default MenuDropdown;
+export {
+	ListItem,
+	ListItemLabel,
+	DropdownNubbinPositions
+};

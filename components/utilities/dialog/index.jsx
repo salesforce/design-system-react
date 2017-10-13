@@ -4,6 +4,7 @@
 
 // Dialog
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
@@ -25,9 +26,12 @@ import DOMElementFocus from '../../../utilities/dom-element-focus';
 
 import { DIALOG } from '../../../utilities/constants';
 
+// #### Dialog doesn't pass down <IconSettings> context so repassing it here.
+import IconSettings from '../../icon-settings';
+
 /* Dialog creates a new top-level React tree and injects its child into it. This is necessary for proper styling (especially positioning). A dialog is a non-modal container that separates content from the rest of the web application. This library uses the Drop library (https://github.com/HubSpot/drop which is based on TetherJS) to absolutely position and align content to another item on the page. This component is not meant for external consumption or part of the published component API.
 */
-const Dialog = React.createClass({
+const Dialog = createReactClass({
 
 	displayName: DIALOG,
 
@@ -275,8 +279,10 @@ const Dialog = React.createClass({
 				onMouseLeave={this.props.onMouseLeave}
 				ref={(component) => { this.dialogContent = component; }}
 			>
-				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
-				{this.props.children}
+				<IconSettings iconPath={this.props.context.iconPath}>
+					{/* eslint-enable jsx-a11y/no-static-element-interactions */}
+					{this.props.children}
+				</IconSettings>
 			</div>
 		);
 	},
@@ -441,4 +447,4 @@ const Dialog = React.createClass({
 	}
 });
 
-module.exports = onClickOutside(Dialog);
+export default onClickOutside(Dialog);

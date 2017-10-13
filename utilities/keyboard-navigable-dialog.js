@@ -62,4 +62,4 @@ const KeyboardNavigableDialog = ({
 	}
 };
 
-module.exports = KeyboardNavigableDialog;
+export default KeyboardNavigableDialog;

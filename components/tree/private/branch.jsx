@@ -22,7 +22,7 @@ import Highlighter from '../../utilities/highlighter';
 import isFunction from 'lodash.isfunction';
 
 // ### Event Helpers
-import { EventUtil } from '../../../utilities';
+import EventUtil from '../../../utilities/event';
 
 // ### classNames
 import classNames from 'classnames';
@@ -161,7 +161,7 @@ const renderBranch = (children, props) => {
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				<Button
 					assistiveText="Toggle"
-					iconName={props.node.expanded ? 'chevrondown' : 'chevronright'}
+					iconName="chevronright"
 					iconSize="small"
 					variant="icon"
 					className="slds-m-right--small"

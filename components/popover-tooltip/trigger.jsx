@@ -5,4 +5,4 @@
 // Alias
 import Trigger from '../tooltip/trigger';
 
-module.exports = Trigger;
+export default Trigger;

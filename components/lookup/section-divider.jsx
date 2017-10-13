@@ -20,5 +20,5 @@ const DefaultSectionDivider = (props) => (
 DefaultSectionDivider.displayName = displayName;
 DefaultSectionDivider.propTypes = propTypes;
 
-module.exports = DefaultSectionDivider;
+export default DefaultSectionDivider;
 

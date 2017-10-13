@@ -1,11 +1,13 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
+import IconSettings from '~/components/icon-settings';
 import PageHeader from '~/components/page-header'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 import ButtonGroup from '~/components/button-group';
 import Dropdown from '~/components/menu-dropdown';
 import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
 
-const Example = React.createClass({
+const Example = createReactClass({
 	displayName: 'PageHeaderExample',
 
 	render () {
@@ -111,39 +113,41 @@ const Example = React.createClass({
 		);
 
 		return (
-			<PageHeader
-				contentRight={contentRight}
-				iconAssistiveText="User"
-				iconCategory="standard"
-				iconName="lead"
-				info="10 items • sorted by name"
-				label="Leads"
-				navRight={navRight}
-				title={<h1 className="slds-page-header__title slds-p-right--x-small">
-					<Dropdown
-						options={[
-							{ label: 'Menu Item One', value: 'A0' },
-							{ label: 'Menu Item Two', value: 'B0' },
-							{ label: 'Menu Item Three', value: 'C0' },
-							{ type: 'divider' },
-							{ label: 'Menu Item Four', value: 'D0' }
-						]}
-					>
-						<DropdownTrigger>
-							<Button
-								className="slds-button--reset slds-type-focus"
-								iconName="down"
-								iconPosition="right"
-								label="Dropdown"
-								responsive
-								variant="base"
-							/>
-						</DropdownTrigger>
-					</Dropdown>
-				</h1>}
-				truncate
-				variant="objectHome"
-			/>
+			<IconSettings iconPath="/assets/icons">
+				<PageHeader
+					contentRight={contentRight}
+					iconAssistiveText="User"
+					iconCategory="standard"
+					iconName="lead"
+					info="10 items • sorted by name"
+					label="Leads"
+					navRight={navRight}
+					title={<h1 className="slds-page-header__title slds-p-right--x-small">
+						<Dropdown
+							options={[
+								{ label: 'Menu Item One', value: 'A0' },
+								{ label: 'Menu Item Two', value: 'B0' },
+								{ label: 'Menu Item Three', value: 'C0' },
+								{ type: 'divider' },
+								{ label: 'Menu Item Four', value: 'D0' }
+							]}
+						>
+							<DropdownTrigger>
+								<Button
+									className="slds-button--reset slds-type-focus"
+									iconName="down"
+									iconPosition="right"
+									label="Dropdown"
+									responsive
+									variant="base"
+								/>
+							</DropdownTrigger>
+						</Dropdown>
+					</h1>}
+					truncate
+					variant="objectHome"
+				/>
+			</IconSettings>
 		);
 	}
 });

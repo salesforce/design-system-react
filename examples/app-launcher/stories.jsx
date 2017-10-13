@@ -1,6 +1,7 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf, action } from '@storybook/react';
 
 import { APP_LAUNCHER } from '../../utilities/constants';
 
@@ -15,6 +16,7 @@ import Search from '../../components/forms/input/search';
 import GlobalNavigationBar from '../../components/global-navigation-bar';
 import GlobalNavigationBarRegion from '../../components/global-navigation-bar/region';
 
+import IconSettings from '../../components/icon-settings';
 import SLDSSettings from '../../components/SLDSSettings';
 
 SLDSSettings.setAppElement('#root');	// used by Modal component
@@ -31,7 +33,7 @@ const smallTileDemoStyles = {
 	paddingRight: '.5rem'
 };
 
-const DemoAppLauncherTile = React.createClass({
+const DemoAppLauncherTile = createReactClass({
 	displayName: 'DemoAppLauncherTile',
 
 	propTypes: {
@@ -54,7 +56,7 @@ const DemoAppLauncherTile = React.createClass({
 	}
 });
 
-const DemoAppLauncherSmallTile = React.createClass({
+const DemoAppLauncherSmallTile = createReactClass({
 	displayName: 'DemoAppLauncherSmallTile',
 
 	render () {
@@ -69,7 +71,7 @@ const DemoAppLauncherSmallTile = React.createClass({
 	}
 });
 
-const DemoAppLauncherTileWithIconNode = React.createClass({
+const DemoAppLauncherTileWithIconNode = createReactClass({
 	displayName: 'DemoAppLauncherTileWithIconNode',
 
 	propTypes: {
@@ -94,7 +96,7 @@ const DemoAppLauncherTileWithIconNode = React.createClass({
 	}
 });
 
-const DemoAppLauncherTileWithIconText = React.createClass({
+const DemoAppLauncherTileWithIconText = createReactClass({
 	displayName: 'DemoAppLauncherTileWithIconText',
 
 	propTypes: {
@@ -116,7 +118,7 @@ const DemoAppLauncherTileWithIconText = React.createClass({
 	}
 });
 
-const DemoAppLauncherTileWithTruncatedText = React.createClass({
+const DemoAppLauncherTileWithTruncatedText = createReactClass({
 	displayName: 'DemoAppLauncherTileWithTruncatedText',
 
 	propTypes: {
@@ -138,7 +140,7 @@ const DemoAppLauncherTileWithTruncatedText = React.createClass({
 	}
 });
 
-const DemoAppLauncherTileWithDescriptionHeading = React.createClass({
+const DemoAppLauncherTileWithDescriptionHeading = createReactClass({
 	displayName: 'DemoAppLauncherTileWithDescriptionHeading',
 
 	propTypes: {
@@ -167,7 +169,7 @@ const DemoAppLauncherTileWithDescriptionHeading = React.createClass({
 	}
 });
 
-const DemoAppLauncherTileWithSearchText = React.createClass({
+const DemoAppLauncherTileWithSearchText = createReactClass({
 	displayName: 'DemoAppLauncherTileWithSearchText',
 
 	propTypes: {
@@ -191,7 +193,7 @@ const DemoAppLauncherTileWithSearchText = React.createClass({
 	}
 });
 
-const DemoAppLauncherSection = React.createClass({
+const DemoAppLauncherSection = createReactClass({
 	displayName: 'DemoAppLauncherSection',
 
 	render () {
@@ -211,7 +213,7 @@ const DemoAppLauncherSection = React.createClass({
 	}
 });
 
-const DemoAppLauncherSectionWithSmallTiles = React.createClass({
+const DemoAppLauncherSectionWithSmallTiles = createReactClass({
 	displayName: 'DemoAppLauncherSectionWithSmallTiles',
 
 	render () {
@@ -231,7 +233,7 @@ const DemoAppLauncherSectionWithSmallTiles = React.createClass({
 	}
 });
 
-const DemoAppLauncher = React.createClass({
+const DemoAppLauncher = createReactClass({
 	displayName: 'DemoAppLauncher',
 
 	getInitialState () {
@@ -314,7 +316,7 @@ const DemoAppLauncher = React.createClass({
 	}
 });
 
-const DemoAppLauncherNoHeaderButton = React.createClass({
+const DemoAppLauncherNoHeaderButton = createReactClass({
 	displayName: 'DemoAppLauncherNoHeaderButton',
 
 	getInitialState () {
@@ -365,7 +367,7 @@ const DemoAppLauncherNoHeaderButton = React.createClass({
 	}
 });
 
-const DemoAppLauncherNoSearch = React.createClass({
+const DemoAppLauncherNoSearch = createReactClass({
 	displayName: 'DemoAppLauncherNoSearch',
 
 	getInitialState () {
@@ -411,7 +413,7 @@ const DemoAppLauncherNoSearch = React.createClass({
 	}
 });
 
-const DemoAppLauncherWithSeveralSections = React.createClass({
+const DemoAppLauncherWithSeveralSections = createReactClass({
 	displayName: 'DemoAppLauncherWithSeveralSections',
 
 	onSearch () {
@@ -464,7 +466,7 @@ const DemoAppLauncherWithSeveralSections = React.createClass({
 
 
 storiesOf(APP_LAUNCHER, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('App Launcher (open)', () => <DemoAppLauncher isOpen />)
 	.add('App Launcher', () => <DemoAppLauncher />)
 	.add('App Launcher no header button', () => <DemoAppLauncherNoHeaderButton />)

@@ -1,8 +1,10 @@
 /* eslint-disable indent */
 
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
+import createReactClass from 'create-react-class';
+import { storiesOf, action } from '@storybook/react';
 import { PAGE_HEADER } from '../../utilities/constants';
+import IconSettings from '../../components/icon-settings';
 
 import SLDSPageHeader from '../../components/page-header';
 import SLDSButtonStateful from '../../components/button-stateful';
@@ -25,7 +27,7 @@ const recordHomeDetails2 = [
 	{ label: 'Field 3', content: 'Description (2-line truncation)' }
 ];
 
-const DemoPageHeader = React.createClass({
+const DemoPageHeader = createReactClass({
 	displayName: 'DemoPageHeader',
 
 	getInitialState () {
@@ -273,7 +275,7 @@ const relatedListTrail = [
 
 
 storiesOf(PAGE_HEADER, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Base', () => getPageHeader({
 		iconAssistiveText: 'Opportunity',
 		iconCategory: 'standard',

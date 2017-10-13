@@ -1,5 +1,7 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
+import IconSettings from '~/components/icon-settings';
 
 import Panel from '~/components/panel'; // `~` is replaced with design-system-react at runtime
 import FilterGroup from '~/components/panel/filtering/group';
@@ -16,7 +18,7 @@ const options = {
 	]
 };
 
-const Example = React.createClass({
+const Example = createReactClass({
 	displayName: 'FilterExample',
 
 	propTypes () {
@@ -66,26 +68,28 @@ const Example = React.createClass({
 
 	render () {
 		return this.state['show-me'].isActive && (
-			<Filter
-				align={this.props.align}
-				id="sample-panel-filtering-show-me"
-				isPermanent
-				onChange={this.onChangePredicate}
-				onRemove={this.onRemove}
-				property="Show Me"
-				predicate={this.state['show-me'].selectedItem.label}
-			>
-				<Picklist
-					isInline
-					label="Show Me"
-					onSelect={(selectedItem) => {
-						this.onSelectPicklist(selectedItem, 'show-me');
-					}}
-					options={options['show-me']}
-					placeholder="Select record type"
-					value={this.state['show-me'].selectedPicklistItem.value}
-				/>
-			</Filter>
+			<IconSettings iconPath="/assets/icons">
+				<Filter
+					align={this.props.align}
+					id="sample-panel-filtering-show-me"
+					isPermanent
+					onChange={this.onChangePredicate}
+					onRemove={this.onRemove}
+					property="Show Me"
+					predicate={this.state['show-me'].selectedItem.label}
+				>
+					<Picklist
+						isInline
+						label="Show Me"
+						onSelect={(selectedItem) => {
+							this.onSelectPicklist(selectedItem, 'show-me');
+						}}
+						options={options['show-me']}
+						placeholder="Select record type"
+						value={this.state['show-me'].selectedPicklistItem.value}
+					/>
+				</Filter>
+			</IconSettings>
 		);
 	}
 });

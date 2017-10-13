@@ -7,6 +7,7 @@
 
 // ### React
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -24,9 +25,9 @@ const regions = [
 
 /* eslint-disable react/display-name */
 const renderPrimary = (dividerClass, className, children) =>
-	<div className={classNames('slds-context-bar__primary', dividerClass, className)}>
+	(<div className={classNames('slds-context-bar__primary', dividerClass, className)}>
 		{children}
-	</div>;
+	</div>);
 
 
 const renderSecondary = (dividerClass, className, children, navigation) => {
@@ -53,17 +54,17 @@ const renderSecondary = (dividerClass, className, children, navigation) => {
 };
 
 const renderTertiary = (dividerClass, className, children) =>
-	<div className={classNames('slds-context-bar__tertiary', 'slds-col--bump-left', dividerClass, className)}>
+	(<div className={classNames('slds-context-bar__tertiary', 'slds-col--bump-left', dividerClass, className)}>
 		<ul className="slds-grid">
 			{children}
 		</ul>
-	</div>;
+	</div>);
 /* eslint-enable react/display-name */
 
 /**
  * Regions make up a GlobalNavigation Bar and typically contain links and dropdowns. The Primary region contains the AppSwitcher, Application Name, and Object Switcher. The secondary region typically has navigation betweens sections of the application. The tertiary region is aligned to the right side of the screen and contains shortcuts or actions.
  */
-const Region = React.createClass({
+const Region = createReactClass({
 	displayName: GLOBAL_NAVIGATION_BAR_REGION,
 
 	propTypes: {
@@ -111,5 +112,5 @@ const Region = React.createClass({
 	}
 });
 
-module.exports = Region;
-module.exports.regions = regions;
+export default Region;
+export { regions };

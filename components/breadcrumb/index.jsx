@@ -29,10 +29,10 @@ const Breadcrumb = (props) => {
 			<ol className="slds-breadcrumb slds-list--horizontal">
 				{trail.map((crumb, index) =>
 					/* eslint-disable react/no-array-index-key */
-					<li
+					(<li
 						key={index}  // There isn't any better reasonable way to identity these
 						className="slds-breadcrumb__item slds-text-title--caps"
-					>{crumb}</li>
+					>{crumb}</li>)
 				)}
 			</ol>
 		</nav>
@@ -56,4 +56,4 @@ Breadcrumb.defaultProps = {
 	assistiveText: 'Breadcrumbs'
 };
 
-module.exports = Breadcrumb;
+export default Breadcrumb;

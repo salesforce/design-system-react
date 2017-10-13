@@ -15,8 +15,9 @@
 
 We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
+- UX pattern / design must exist in [SLDS](https://www.lightningdesignsystem.com/). Components in the process of being added to SLDS will be considered as prototypes.
+- All new props and components need tests. **Please review the [testing readme](/tests/README.md)**
 - If you are adding a feature, [add a story](https://getstorybook.io/docs/react-storybook/basics/writing-stories) to the React Storybook that uses your feature, so that reviewers can test it.
-- All new props / features need tests to prevent regressions in the future. Please review the [testing readme](/tests/README.md)
 - Stories are stored in [examples folder](/examples) along with Documentation site examples. To add a story to the interactive examples on the [documentation site](https://react.lightningdesignsystem.com/components/), add the JSX file to [examples/index.js](/examples/index.js). All examples that are present for a component in the [SLDS website](https://www.lightningdesignsystem.com/) or it's internal site should be created as a Storybook story _and_ listed in `examples/index.js`.
 - Prop description tables on the documentation site are generated from propType comments within the component. All props should have a _Tested with snapshot testing._ or _Tested with Mocha framework._ notice in them.
 - Introductory component descriptions are generated from the comment before the component declaration.
@@ -202,7 +203,7 @@ _from [Controlled Components](https://facebook.github.io/react/docs/forms.html#c
 * `extends React.Component`
   * display name
   * prop types
-  * defaults props 
+  * defaults props
   * initial state within `constructor`
   * life cycle methods
   * sub-render methods (keep to a minimum, only use to stay "DRY")
@@ -238,7 +239,7 @@ class DemoComponent extends React.Component {
 
     // useful for unique DOM IDs
     this.generatedId = this.props.id || shortid.generate();
-    
+
     // initial state
     this.state = {};
   }
@@ -552,7 +553,7 @@ from the [Planning Center](https://github.com/planningcenter/react-patterns)
 
 ## Release with build server (preferred)
 1. Add release notes for your version to [RELEASENOTES.md](RELEASENOTES.md) under Latest Release heading.
-1. Commit and push a blank text file name `patch.md` or `minor.md` to the `master` branch. In the future, this will contain the release notes. The build server will detect this, delete the file, create a release for you,  push back to the library repository. 
+1. Commit and push a blank text file name `patch.md` or `minor.md` to the `master` branch. In the future, this will contain the release notes. The build server will detect this, delete the file, create a release for you,  push back to the library repository.
 1. Copy and paste your release notes into the [Github Draft Release UI](https://github.com/salesforce-ux/design-system-react/releases) and publish.
 
 ### Manual release

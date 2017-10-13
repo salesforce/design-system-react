@@ -1,7 +1,8 @@
 /* eslint-disable react/display-name */
 
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf, action } from '@storybook/react';
+import IconSettings from '../../components/icon-settings';
 
 import { BUTTON_STATEFUL } from '../../utilities/constants';
 import ButtonStateful from '../../components/button-stateful';
@@ -14,7 +15,7 @@ const getButtonStateful = (props) => (
 );
 
 storiesOf(BUTTON_STATEFUL, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Base', () => getButtonStateful())
 	.add('Disabled', () => getButtonStateful({ disabled: true }))
 	.add('Icon', () => getButtonStateful({

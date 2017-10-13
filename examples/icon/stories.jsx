@@ -1,9 +1,11 @@
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 
 import { ICON } from '../../utilities/constants';
 
 import Icon from '../../components/icon';
+import IconSettings from '../../components/icon-settings';
+
 import download from '../../icons/utility/download';
 
 import Standard from './standard';
@@ -23,12 +25,9 @@ import SizesSmall from './sizes-small';
 import SizesMedium from './sizes-medium';
 import SizesLarge from './sizes-large';
 
-import globalSettings from '../../components/settings';
-
-globalSettings.setIconsPath('/assets/icons');
 
 storiesOf(ICON, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Category: Standard', () => (<Standard />))
 	.add('Category: Utility', () => (<Utility />))
 	.add('Category: Action', () => (<Action />))
@@ -54,8 +53,8 @@ storiesOf(ICON, module)
 			title="This is a title"
 		/>
 	))
-	.add('Base: Imported', () => <Icon
+	.add('Base: Imported', () => (<Icon
 		assistiveText="Download"
 		category="utility"
 		icon={download}
-	/>);
+	/>));

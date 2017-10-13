@@ -1,8 +1,10 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import DataTable from '~/components/data-table'; // `~` is replaced with design-system-react at runtime
 import DataTableColumn from '~/components/data-table/column';
 import DataTableCell from '~/components/data-table/cell';
 import DataTableRowActions from '~/components/data-table/row-actions';
+import IconSettings from '~/components/icon-settings';
 
 const CustomDataTableCell = ({ children, ...props }) => (
 	<DataTableCell title={children} {...props} >
@@ -16,7 +18,7 @@ const CustomDataTableCell = ({ children, ...props }) => (
 );
 CustomDataTableCell.displayName = DataTableCell.displayName;
 
-const Example = React.createClass({
+const Example = createReactClass({
 	displayName: 'DataTableExample',
 
 	getInitialState () {
@@ -69,69 +71,71 @@ const Example = React.createClass({
 	render () {
 		return (
 			<div style={{ overflow: 'auto' }}>
-				<DataTable
-					fixedLayout
-					items={this.state.items}
-					id="DataTableExample-2"
-					onChange={this.handleChanged}
-					onSort={this.handleSort}
-					selection={this.state.selection}
-					selectRows
-				>
-					<DataTableColumn
-						isSorted={this.state.sortColumn === 'opportunityName'}
-						label="Name"
-						primaryColumn
-						property="opportunityName"
-						sortable
-						width="10rem"
+				<IconSettings iconPath="/assets/icons">
+					<DataTable
+						fixedLayout
+						items={this.state.items}
+						id="DataTableExample-2"
+						onChange={this.handleChanged}
+						onSort={this.handleSort}
+						selection={this.state.selection}
+						selectRows
 					>
-						<CustomDataTableCell />
-					</DataTableColumn>
-					<DataTableColumn
-						label="Account Name"
-						property="accountName"
-						width="8rem"
-					/>
-					<DataTableColumn
-						label="Close Date"
-						property="closeDate"
-					/>
-					<DataTableColumn
-						label="Stage"
-						property="stage"
-					/>
-					<DataTableColumn
-						isSorted={this.state.sortColumn === 'confidence'}
-						label="Confidence"
-						property="confidence"
-						sortable
-					/>
-					<DataTableColumn
-						label="Amount"
-						property="amount"
-					/>
-					<DataTableColumn
-						label="Contact"
-						property="contact"
-					>
-						<CustomDataTableCell />
-					</DataTableColumn>
-					<DataTableRowActions
-						options={[
-							{
-								id: 0,
-								label: 'Add to Group',
-								value: '1'
-							}, {
-								id: 1,
-								label: 'Publish',
-								value: '2'
-							}
-						]}
-						onAction={this.handleRowAction}
-					/>
-				</DataTable>
+						<DataTableColumn
+							isSorted={this.state.sortColumn === 'opportunityName'}
+							label="Name"
+							primaryColumn
+							property="opportunityName"
+							sortable
+							width="10rem"
+						>
+							<CustomDataTableCell />
+						</DataTableColumn>
+						<DataTableColumn
+							label="Account Name"
+							property="accountName"
+							width="8rem"
+						/>
+						<DataTableColumn
+							label="Close Date"
+							property="closeDate"
+						/>
+						<DataTableColumn
+							label="Stage"
+							property="stage"
+						/>
+						<DataTableColumn
+							isSorted={this.state.sortColumn === 'confidence'}
+							label="Confidence"
+							property="confidence"
+							sortable
+						/>
+						<DataTableColumn
+							label="Amount"
+							property="amount"
+						/>
+						<DataTableColumn
+							label="Contact"
+							property="contact"
+						>
+							<CustomDataTableCell />
+						</DataTableColumn>
+						<DataTableRowActions
+							options={[
+								{
+									id: 0,
+									label: 'Add to Group',
+									value: '1'
+								}, {
+									id: 1,
+									label: 'Publish',
+									value: '2'
+								}
+							]}
+							onAction={this.handleRowAction}
+						/>
+					</DataTable>
+				</IconSettings>
 			</div>
 		);
 	},

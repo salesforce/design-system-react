@@ -10,6 +10,7 @@
 
 // ### React
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // This component's `checkProps` which issues warnings to developers about properties
@@ -32,7 +33,7 @@ import Dialog from '../utilities/dialog';
 import Icon from '../icon';
 import List from '../utilities/menu-list';
 import ListItemLabel from '../utilities/menu-list/item-label';
-import Pill from './private/pill';
+import Pill from '../utilities/pill';
 
 import { shape } from 'airbnb-prop-types';
 
@@ -48,7 +49,7 @@ import { MENU_PICKLIST } from '../../utilities/constants';
 /**
  * The MenuPicklist component is a variant of the Lightning Design System Menu component.
  */
-const MenuPicklist = React.createClass({
+const MenuPicklist = createReactClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: MENU_PICKLIST,
@@ -406,6 +407,7 @@ const MenuPicklist = React.createClass({
 				closeOnTabKey
 				constrainToScrollParent={this.props.constrainToScrollParent}
 				contentsClassName="slds-dropdown slds-dropdown--left"
+				context={this.context}
 				flippable
 				onClose={this.handleCancel}
 				onKeyDown={this.handleKeyDown}
@@ -490,7 +492,7 @@ const MenuPicklist = React.createClass({
 						events={{
 							onRequestRemove: (event, data) => {
 								const newData = this.state.selectedIndices;
-								const index = data.eventData.index;
+								const index = data.index;
 								newData.splice(this.state.selectedIndices.indexOf(index), 1);
 								this.setState({ selectedIndices: newData });
 
@@ -559,5 +561,9 @@ const MenuPicklist = React.createClass({
 	}
 });
 
-module.exports = MenuPicklist;
-module.exports.ListItemLabel = ListItemLabel;
+MenuPicklist.contextTypes = {
+	iconPath: PropTypes.string
+};
+
+export default MenuPicklist;
+export { ListItemLabel };

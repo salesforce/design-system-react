@@ -3,6 +3,7 @@
 
 // ### React
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -20,7 +21,7 @@ import { DATA_TABLE_ROW, DATA_TABLE_ROW_ACTIONS, DATA_TABLE_CELL } from '../../.
 /**
  * Used internally, provides row rendering to the DataTable.
  */
-const DataTableRow = React.createClass({
+const DataTableRow = createReactClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: DATA_TABLE_ROW,

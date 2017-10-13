@@ -103,4 +103,4 @@ ButtonGroup.displayName = BUTTON_GROUP;
 ButtonGroup.propTypes = propTypes;
 ButtonGroup.defaultProps = defaultProps;
 
-module.exports = ButtonGroup;
+export default ButtonGroup;

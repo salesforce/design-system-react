@@ -8,6 +8,7 @@
 
 // ### React
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### assign
@@ -72,7 +73,7 @@ const PopoverNubbinPositions = [
 /**
  * The Popover component is a non-modal dialog. It should be paired with a clickable trigger such as a `Button`. It traps focus from the page and must be exited if focus needs to be outside the Popover. Use a `Tooltip` if there are no call to actions within the dialog. A `Tooltip` does not need to be clicked.
  */
-const Popover = React.createClass({
+const Popover = createReactClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: POPOVER,
@@ -403,6 +404,7 @@ const Popover = React.createClass({
 					align={props.align}
 					contentsClassName={classNames(this.props.contentsClassName, 'ignore-react-onclickoutside')}
 					constrainToScrollParent={props.constrainToScrollParent}
+					context={this.context}
 					flippable={!props.hasStaticAlignment}
 					marginBottom={getMargin.bottom(props.align)}
 					marginLeft={getMargin.left(props.align)}
@@ -423,9 +425,9 @@ const Popover = React.createClass({
 						aria-labelledby={this.props.ariaLabelledby ? this.props.ariaLabelledby : `${this.getId()}-dialog-heading`}
 						aria-describedby={`${this.getId()}-dialog-body`}
 						className={classNames(
-							'slds-popover',
-							getNubbinClassName(props.align),
-							props.className,
+						'slds-popover',
+						getNubbinClassName(props.align),
+						props.className,
 						)}
 						id={`${this.getId()}-popover`}
 						role="dialog"
@@ -513,5 +515,9 @@ const Popover = React.createClass({
 	}
 });
 
-module.exports = Popover;
-module.exports.PopoverNubbinPositions = PopoverNubbinPositions;
+Popover.contextTypes = {
+	iconPath: PropTypes.string
+};
+
+export default Popover;
+export { PopoverNubbinPositions };

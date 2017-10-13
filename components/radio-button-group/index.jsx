@@ -130,4 +130,4 @@ RadioButtonGroup.displayName = RADIO_BUTTON_GROUP;
 RadioButtonGroup.propTypes = propTypes;
 RadioButtonGroup.defaultProps = defaultProps;
 
-module.exports = RadioButtonGroup;
+export default RadioButtonGroup;

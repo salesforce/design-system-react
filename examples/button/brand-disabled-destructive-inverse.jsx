@@ -1,44 +1,48 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
+import IconSettings from '~/components/icon-settings';
 import Button from '~/components/button'; // `~` is replaced with design-system-react at runtime
 
-const Example = React.createClass({
+const Example = createReactClass({
 	displayName: 'ButtonExample',
 
 	render () {
 		return (
-			<div className="-x-small-buttons--horizontal">
-				<Button
-					label="Brand"
-					variant="brand"
-				/>
-
-				<Button
-					disabled
-					label="Disabled"
-					onClick={() => { alert('Disabled Button Clicked'); }}
-					variant="brand"
-				/>
-
-				<Button
-					label="Destructive"
-					variant="destructive"
-				/>
-
-				<div
-					style={{
-						backgroundColor: '#16325c',
-						padding: '10px',
-						display: 'inline-block'
-					}}
-					className="-m-horizontal--small"
-				>
+			<IconSettings iconPath="/assets/icons">
+				<div className="-x-small-buttons--horizontal">
 					<Button
-						inverse
-						label="Inverse"
-						variant="base"
+						label="Brand"
+						variant="brand"
 					/>
+
+					<Button
+						disabled
+						label="Disabled"
+						onClick={() => { alert('Disabled Button Clicked'); }}
+						variant="brand"
+					/>
+
+					<Button
+						label="Destructive"
+						variant="destructive"
+					/>
+
+					<div
+						style={{
+							backgroundColor: '#16325c',
+							padding: '10px',
+							display: 'inline-block'
+						}}
+						className="-m-horizontal--small"
+					>
+						<Button
+							inverse
+							label="Inverse"
+							variant="base"
+						/>
+					</div>
 				</div>
-			</div>
+			</IconSettings>
 		);
 	}
 });
