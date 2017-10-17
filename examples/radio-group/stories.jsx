@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf, action } from '@storybook/react';
 import { shape } from 'airbnb-prop-types';
 
 import RadioGroup from '../../components/radio-group';
@@ -37,7 +37,7 @@ class RadioGroupExample extends React.Component {
 					disabled={this.props.disabled}
 					required={this.props.required}
 				>
-					{values.map((value) =>
+					{values.map((value) => (
 						<Radio
 							key={value}
 							id={value}
@@ -45,12 +45,12 @@ class RadioGroupExample extends React.Component {
 							value={value}
 							checked={this.state.checked === value}
 							variant="base"
-						/>)}
+						/>
+					))}
 				</RadioGroup>
 			</div>
 		);
 	}
-
 }
 
 RadioGroupExample.propTypes = {
@@ -73,4 +73,3 @@ storiesOf(RADIO_GROUP, module)
 	.add('Disabled', () => <RadioGroupExample heading="Disabled" disabled />)
 	.add('Required', () => <RadioGroupExample heading="Required" required />)
 	.add('Error', () => <RadioGroupExample heading="Error" labels={{ label: 'Radio Group Label', error: 'There is an error' }} />);
-
