@@ -8,7 +8,7 @@ Welcome to the project! :wave: This library is the [React](https://facebook.gith
 
 * [Getting Started](https://react.lightningdesignsystem.com/getting-started/)
 * [Documentation and examples](https://react.lightningdesignsystem.com/)
-* [Component Best Practices](https://react.lightningdesignsystem.com/contributing/#concepts-and-best-practices)
+* [Component Best Practices](CONTRIBUTING.md)
 * [FAQ](https://react.lightningdesignsystem.com/faq/)
 
 #### ECMAScript 6 and CommonJS modules
