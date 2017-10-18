@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.com/salesforce/design-system-react.svg?token=BMXxPFKR5GZuYsqAFsEf&branch=master)](https://travis-ci.com/salesforce/design-system-react)
 
 ## Overview
-Welcome to the project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Lightning Design System](https://www.lightningdesignsystem.com/). It is an internal open source project and contributions are expected from production teams consuming this library. There is only one engineer that is partially-aligned to this project as part of their V2MOM. All other contributors are on production teams that ship end-product with releases dates, too.
+Welcome to the project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/).
 
 * [Getting Started](https://react.lightningdesignsystem.com/getting-started/)
 * [Documentation and examples](https://react.lightningdesignsystem.com/)
