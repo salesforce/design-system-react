@@ -47,6 +47,8 @@ import KEYS from '../../utilities/key-code';
 import { MENU_PICKLIST } from '../../utilities/constants';
 
 /**
+ * ** MenuPicklist is deprecated. Please use a read-only Combobox instead.**
+ *
  * The MenuPicklist component is a variant of the Lightning Design System Menu component.
  */
 const MenuPicklist = createReactClass({

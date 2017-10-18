@@ -3,20 +3,12 @@
 /* eslint-disable import/no-mutable-exports */
 
 import isPrototype from '../../utilities/warning/component-is-prototype';
-import oneOfRequiredProperty from '../../utilities/warning/one-of-required-property';
 
 let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function (COMPONENT, props) {
+	checkProps = function (COMPONENT) {
 		isPrototype(COMPONENT);
-
-		/* eslint-disable max-len */
-		oneOfRequiredProperty(COMPONENT, {
-			assistiveText: props.assistiveText,
-			heading: props.heading
-		});
-		/* eslint-enable max-len */
 	};
 }
 

@@ -494,5 +494,10 @@
       "display-name": "Timepickers",
       "SLDS-component-path": "/components/datepickers"
     }
-  ]
+  ],
+  "documentation": {
+    "prototype": {
+      "description": "The following components are prototypes. (a) Props may change within a minor release. (b) Web Content Accessibility Guidelines may not be met. (c) CSS imports may be required, since it is being added to SLDS."
+    }
+  }
 }
