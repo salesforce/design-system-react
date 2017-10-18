@@ -78,7 +78,7 @@ import IconSettings from 'design-system-react/components/icon-settings';
 
 ## Contributing to the code base
 
-Please read the [CONTRIBUTING.md](CONTRIBUTING.md) and [Test README](/tests/README.md) first. If you'd like to meet or discuss this project, please contact [@interactivellama](https://github.com/interactivellama), so you can be invited to the Slack channel and/or the weekly Cross-Cloud Office Hours.
+Please read the [CONTRIBUTING.md](CONTRIBUTING.md) and [Test README](/tests/README.md) first. Then, creact an issue to tell others you are working on a bug. If you would like to contribute a new component, create an issue with a list of proposed props to discuss with maintainers.  
 
 ## Licenses
 
@@ -88,4 +88,4 @@ Please read the [CONTRIBUTING.md](CONTRIBUTING.md) and [Test README](/tests/READ
 
 ## Got feedback?
 
-Please create a [GitHub Issue](https://github.com/salesforce/design-system-react/issues)
+Create an [issue](https://github.com/salesforce/design-system-react/issues) for bugs. Support questions should be asked on [StackOverflow](https://stackoverflow.com/).
