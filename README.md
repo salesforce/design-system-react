@@ -1,7 +1,7 @@
 # Design System for React
 ### Accessible, localization-friendly, presentational React components
 
-[![Build Status](https://travis-ci.com/salesforce-ux/design-system-react.svg?token=BMXxPFKR5GZuYsqAFsEf&branch=master)](https://travis-ci.com/salesforce-ux/design-system-react)
+[![Build Status](https://travis-ci.com/salesforce/design-system-react.svg?token=BMXxPFKR5GZuYsqAFsEf&branch=master)](https://travis-ci.com/salesforce/design-system-react)
 
 ## Overview
 Welcome to the project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Lightning Design System](https://www.lightningdesignsystem.com/). It is an internal open source project and contributions are expected from production teams consuming this library. There is only one engineer that is partially-aligned to this project as part of their V2MOM. All other contributors are on production teams that ship end-product with releases dates, too.
@@ -49,7 +49,7 @@ Add the following line to your `package.json` devDependencies and run `npm insta
 ```
 # package.json
 
-"design-system-react": "git+ssh://git@github.com:salesforce-ux/design-system-react.git#v[VERSION]",
+"design-system-react": "git+ssh://git@github.com:salesforce/design-system-react.git#v[VERSION]",
 ```
 
 The bundled files are provided only for convenience. 
@@ -83,9 +83,9 @@ Please read the [CONTRIBUTING.md](CONTRIBUTING.md) and [Test README](/tests/READ
 ## Licenses
 
 * Source code is licensed under [BSD 3-Clause](https://git.io/sfdc-license)
-* All icons and images are licensed under [Creative Commons Attribution-NoDerivatives 4.0](https://github.com/salesforce-ux/licenses/blob/master/LICENSE-icons-images.txt)
-* The Salesforce Sans font is licensed under our [font license](https://github.com/salesforce-ux/licenses/blob/master/LICENSE-font.txt)
+* All icons and images are licensed under [Creative Commons Attribution-NoDerivatives 4.0](https://github.com/salesforce/licenses/blob/master/LICENSE-icons-images.txt)
+* The Salesforce Sans font is licensed under our [font license](https://github.com/salesforce/licenses/blob/master/LICENSE-font.txt)
 
 ## Got feedback?
 
-Please create a [GitHub Issue](https://github.com/salesforce-ux/design-system-react/issues)
+Please create a [GitHub Issue](https://github.com/salesforce/design-system-react/issues)
