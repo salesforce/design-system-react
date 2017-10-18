@@ -59,9 +59,9 @@ const DemoTree = createReactClass({
 	handleClick (event, data) {
 		if (this.props.singleSelection) {
 			data.node.selected = data.select;
-			this.setState({ singleSelection: data.node });
-			if (this.state.singleSelection) {
-				this.state.singleSelection.selected = undefined;
+			this.setState({ selectedNode: data.node });
+			if (this.state.selectedNode && this.state.selectedNode.id !== data.node.id) {
+				this.state.selectedNode.selected = undefined;
 			}
 			this.forceUpdate();
 			itemClicked('Node Clicked')(event, data);
