@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon Category Action HTML Snapshot 1`] = `"<span class=\\"slds-icon_container slds-icon_container--circle slds-icon-action-description\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/action-sprite/svg/symbols.svg#description\\"></use></svg><span class=\\"slds-assistive-text\\">Description of icon</span></span>"`;
+
+exports[`Icon Category Custom HTML Snapshot 1`] = `"<span class=\\"slds-icon_container slds-icon-custom-custom5\\" title=\\"description of icon when needed\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/custom-sprite/svg/symbols.svg#custom5\\"></use></svg><span class=\\"slds-assistive-text\\">Description of icon</span></span>"`;
+
+exports[`Icon Category Doctype HTML Snapshot 1`] = `"<span class=\\"slds-icon_container\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/doctype-sprite/svg/symbols.svg#xml\\"></use></svg><span class=\\"slds-assistive-text\\">Description of icon</span></span>"`;
+
+exports[`Icon Category External Path HTML Snapshot 1`] = `"<span class=\\"slds-icon_container\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#announcement\\"></use></svg><span class=\\"slds-assistive-text\\">We got news!</span></span>"`;
+
+exports[`Icon Category Standard HTML Snapshot 1`] = `"<span class=\\"slds-icon_container slds-icon-standard-account\\" title=\\"description of icon\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Description of icon</span></span>"`;
+
+exports[`Icon Category Utility HTML Snapshot 1`] = `"<span title=\\"description of icon when needed\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#announcement\\"></use></svg><span class=\\"slds-assistive-text\\">Description of icon</span></span>"`;
+
+exports[`Icon Size Large HTML Snapshot 1`] = `"<span class=\\"slds-icon_container slds-icon-standard-case\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--large\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#case\\"></use></svg><span class=\\"slds-assistive-text\\">Description of icon</span></span>"`;
+
+exports[`Icon Size Medium HTML Snapshot 1`] = `"<span class=\\"slds-icon_container slds-icon-standard-case\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#case\\"></use></svg><span class=\\"slds-assistive-text\\">Description of icon</span></span>"`;
+
+exports[`Icon Size Small HTML Snapshot 1`] = `"<span class=\\"slds-icon_container slds-icon-standard-case\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#case\\"></use></svg><span class=\\"slds-assistive-text\\">Description of icon</span></span>"`;
+
+exports[`Icon Size X-Small HTML Snapshot 1`] = `"<span><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#warning\\"></use></svg><span class=\\"slds-assistive-text\\">Description of icon</span></span>"`;

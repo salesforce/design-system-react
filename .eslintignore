@@ -1,0 +1,8 @@
+.git/
+.imdone/
+.storybook/
+coverage/
+node_modules/
+storybook/
+
+icons/
