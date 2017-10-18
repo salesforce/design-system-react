@@ -6,10 +6,10 @@
 ## Overview
 Welcome to the project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/).
 
-* [Getting Started](https://react.lightningdesignsystem.com/getting-started/)
-* [Documentation and examples](https://react.lightningdesignsystem.com/)
-* [Component Best Practices](https://react.lightningdesignsystem.com/contributing/#concepts-and-best-practices)
-* [FAQ](https://react.lightningdesignsystem.com/faq/)
+* [Getting Started](https://react.lightningdesignsystem.com/getting-started/) (Salesforce Employees)
+* [Documentation and examples](https://react.lightningdesignsystem.com/) (Salesforce Employees)
+* [Component Best Practices](CONTRIBUTING.md#concepts-and-best-practices)
+* [FAQ](https://react.lightningdesignsystem.com/faq/) (Salesforce Employees)
 
 #### ECMAScript 6 and CommonJS modules
 
