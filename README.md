@@ -6,10 +6,11 @@
 ## Overview
 Welcome to the project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/).
 
-* [Getting Started](https://react.lightningdesignsystem.com/getting-started/)
-* [Documentation and examples](https://react.lightningdesignsystem.com/)
-* [Component Best Practices](https://react.lightningdesignsystem.com/contributing/#concepts-and-best-practices)
-* [FAQ](https://react.lightningdesignsystem.com/faq/)
+* [Getting Started](getting-started.md)
+* [Documentation and examples](https://react.lightningdesignsystem.com/) (Salesforce Employees)
+* [Component Best Practices](https://react.lightningdesignsystem.com/contributing/#concepts-and-best-practices) (Salesforce Employees)
+* [FAQ](faq.md)
+* [Resources](resources.md)
 
 #### ECMAScript 6 and CommonJS modules
 
@@ -52,7 +53,7 @@ Add the following line to your `package.json` devDependencies and run `npm insta
 "design-system-react": "git+ssh://git@github.com:salesforce/design-system-react.git#v[VERSION]",
 ```
 
-The bundled files are provided only for convenience. 
+The bundled files are provided only for convenience.
 
 * `design-system-react.min.js` (700KB+) - includes icons in the JavaScript
 * `design-system-react-components.min.js` (~400KB) - no icons.
@@ -78,7 +79,7 @@ import IconSettings from 'design-system-react/components/icon-settings';
 
 ## Contributing to the code base
 
-Please read the [CONTRIBUTING.md](CONTRIBUTING.md) and [Test README](/tests/README.md) first. Then, creact an issue to tell others you are working on a bug. If you would like to contribute a new component, create an issue with a list of proposed props to discuss with maintainers.  
+Please read the [CONTRIBUTING.md](CONTRIBUTING.md) and [Test README](/tests/README.md) first. Then, create an issue to tell others you are working on a bug. If you would like to contribute a new component, create an issue with a list of proposed props to discuss with maintainers.  
 
 ## Licenses
 
