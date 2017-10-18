@@ -90,7 +90,7 @@
     "warning": "^3.0.0"
   },
   "devDependencies": {
-    "@salesforce-ux/design-system": "git+ssh://git@github.com/salesforce-ux/design-system-internal.git#v2.4.0-rc.3-dist",
+    "@salesforce-ux/design-system": "2.4.3",
     "@salesforce-ux/icons": "7.x",
     "@storybook/addon-info": "^3.2.10",
     "@storybook/react": "~3.2.0",
