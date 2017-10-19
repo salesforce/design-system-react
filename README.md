@@ -8,7 +8,8 @@ Welcome to the project! :wave: This library is the [React](https://facebook.gith
 
 * [Getting Started](https://design-system-react.herokuapp.com/getting-started/)
 * [Documentation and examples](https://design-system-react.herokuapp.com/)
-* [Component Best Practices](CONTRIBUTING.md#concepts-and-best-practices)
+* [Contributing](CONTRIBUTING.md)
+* [Codebase Overview](docs/codebase-overview.md)
 
 #### ECMAScript 6 and CommonJS modules
 
