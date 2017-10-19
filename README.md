@@ -3,13 +3,12 @@
 
 [![Build Status](https://travis-ci.com/salesforce/design-system-react.svg?token=erkizBStRxre5p3S1xij&branch=master)](https://travis-ci.com/salesforce/design-system-react)
 
-## Overview
-Welcome to the project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/).
+## Getting Started
+Welcome to the project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/). It is compatible with React >=15.4.1 <16.
 
-* [Getting Started](https://react.lightningdesignsystem.com/getting-started/) (Salesforce Employees)
-* [Documentation and examples](https://react.lightningdesignsystem.com/) (Salesforce Employees)
+* [Getting Started](https://design-system-react.herokuapp.com/getting-started/)
+* [Documentation and examples](https://design-system-react.herokuapp.com/)
 * [Component Best Practices](CONTRIBUTING.md#concepts-and-best-practices)
-* [FAQ](https://react.lightningdesignsystem.com/faq/) (Salesforce Employees)
 
 #### ECMAScript 6 and CommonJS modules
 
@@ -22,11 +21,6 @@ npm install
 npm start
 open http://localhost:9001 http://localhost:8001
 ```
-
-## Getting Started
-
-`design-system-react` is compatible with React >=15.4.1 <16 and may work with React 16. This library and it's markup will be updated to the next version of SLDS styles at release freeze. You can find the current SLDS version, a [getting started](https://react.lightningdesignsystem.com/getting-started/) (Salesforce Employees) and a [Concepts and Best Practices](CONTRIBUTING.md) guide on the documentation site.
-
 ### SLDS Icons
 
 Prior to v0.7.0, SLDS icons were inlined and just worked. Now you will need to host the icons and set a path `context` for all child components with `<IconSettings>`:
@@ -78,7 +72,7 @@ import IconSettings from 'design-system-react/components/icon-settings';
 
 ## Contributing to the code base
 
-Please read the [CONTRIBUTING.md](CONTRIBUTING.md) and [Test README](/tests/README.md) first. Then, create an issue to tell others you are working on a bug. If you would like to contribute a new component, create an issue with a list of proposed props to discuss with maintainers.  
+Please read the [CONTRIBUTING.md](CONTRIBUTING.md) and [Test README](/tests/README.md) first. Then, create an issue to tell others you are working on a bug. If you would like to contribute a new component, create an issue with a list of proposed props to discuss with maintainers.  Issues not addressed with pull requests may be closed eventually.
 
 ## Licenses
 
@@ -88,4 +82,4 @@ Please read the [CONTRIBUTING.md](CONTRIBUTING.md) and [Test README](/tests/READ
 
 ## Got feedback?
 
-Create an [issue](https://github.com/salesforce/design-system-react/issues) for bugs. Support questions should be asked on [StackOverflow](https://stackoverflow.com/).
+If you have support questions, please post a question to [StackOverflow](https://stackoverflow.com/questions/tagged/design-system-react) and tag with `design-system-react`. If you find any bugs, create a [GitHub Issue](https://github.com/salesforce/design-system-react/issues).
