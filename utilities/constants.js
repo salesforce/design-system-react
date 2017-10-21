@@ -1,6 +1,6 @@
 // ## Components
 export const ACCORDION = 'SLDSAccordion';
-export const ACCORDION_SECTION = 'SLDSAccordionSection';
+export const ACCORDION_PANEL = 'SLDSAccordionPanel';
 export const APP_LAUNCHER = 'SLDSAppLauncher';
 export const APP_LAUNCHER_SECTION = 'SLDSAppLauncherSection';
 export const APP_LAUNCHER_TILE = 'SLDSAppLauncherTile';

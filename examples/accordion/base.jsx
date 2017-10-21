@@ -1,6 +1,6 @@
 import React from 'react';
 import Accordion from '../../components/accordion'; // `~` is replaced with design-system-react at runtime
-import Section from '~/components/accordion/private/section'; // `~` is replaced with design-system-react at runtime
+import Panel from '~/components/accordion/private/panel'; // `~` is replaced with design-system-react at runtime
 import IconSettings from '~/components/icon-settings'; // `~` is replaced with design-system-react at runtime
 import Dropdown from '../../components/menu-dropdown'; // `~` is replaced with design-system-react at runtime
 
@@ -99,7 +99,8 @@ export default class Example extends React.Component {
 		);
 	}
 
-	toggleSection (id) {
+	togglePanel (id) {
+		console.log('togglePanel triggered', id);
 		this.setState((state) => ({
 			...state,
 			expandedPanels: {
@@ -114,16 +115,16 @@ export default class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<Accordion id="base-example-accordion" openOn="click">
 					{this.state.items.map((item) => (
-						<Section
+						<Panel
 							expanded={!!this.state.expandedPanels[item.id]}
 							id={item.id}
-							itemContentActions={this.menuDropdown(item)}
+							panelContentActions={this.menuDropdown(item)}
 							key={item.id}
-							onToggleSection={() => this.toggleSection(item.id)}
+							onTogglePanel={() => this.togglePanel(item.id)}
 							summary={item.summary}
 						>
 							{item.details}
-						</Section>
+						</Panel>
 					))}
 				</Accordion>
 			</IconSettings>
@@ -131,12 +132,4 @@ export default class Example extends React.Component {
 	}
 }
 
-// accordion prop:
-// onToggleSection={(selectedItem) => this.toggleSelection(selectedItem)}
-
-//
-// items={this.state.items.map((item) => ({
-// 	...item,
-// 	itemContentActions: this.menuDropdown(item)
-// }))}
 Example.displayName = 'AccordionExample'; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

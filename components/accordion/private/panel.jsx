@@ -11,19 +11,19 @@ import classNames from 'classnames';
 
 import Button from '../../button';
 
-import { ACCORDION_SECTION } from '../../../utilities/constants';
+import { ACCORDION_PANEL } from '../../../utilities/constants';
 
 const propTypes = {
 	children: PropTypes.node,
 	expanded: PropTypes.bool.isRequired,
 	id: PropTypes.string.isRequired,
-	itemContentActions: PropTypes.node,
-	onToggleSection: PropTypes.func.isRequired,
+	panelContentActions: PropTypes.node,
+	onTogglePanel: PropTypes.func.isRequired,
 	summary: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 	title: PropTypes.string
 };
 
-const Section = ({ children, expanded, id, itemContentActions, summary, title, onToggleSection }) => (
+const Panel = ({ children, expanded, id, panelContentActions, summary, title, onTogglePanel }) => (
 	<li className="slds-accordion__list-item">
 		<section className={classNames('slds-accordion__section', { 'slds-is-open': expanded })}>
 			<div className="slds-accordion__summary">
@@ -34,7 +34,7 @@ const Section = ({ children, expanded, id, itemContentActions, summary, title, o
 						className="slds-button_reset slds-accordion__summary-action"
 						iconClassName="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
 						iconName="switch"
-						onClick={onToggleSection}
+						onClick={onTogglePanel}
 						variant="base"
 					>
 						<span className="slds-truncate" title={title || summary}>
@@ -42,7 +42,7 @@ const Section = ({ children, expanded, id, itemContentActions, summary, title, o
 						</span>
 					</Button>
 				</h3>
-				{itemContentActions}
+				{panelContentActions}
 			</div>
 			<div aria-hidden={!expanded} className="slds-accordion__content" id={id}>
 				{children}
@@ -51,7 +51,7 @@ const Section = ({ children, expanded, id, itemContentActions, summary, title, o
 	</li>
 );
 
-export default Section;
+export default Panel;
 
-Section.propTypes = propTypes;
-Section.displayName = ACCORDION_SECTION;
+Panel.propTypes = propTypes;
+Panel.displayName = ACCORDION_PANEL;
