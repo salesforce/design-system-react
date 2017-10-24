@@ -126,7 +126,6 @@ class AccordionExample extends React.Component {
 	}
 
 	togglePanel (id) {
-		console.log('togglePanel triggered', id);
 		this.setState((state) => ({
 			...state,
 			expandedPanels: {
@@ -192,7 +191,7 @@ describe('Accordion', function () {
 			expect(panels).to.have.lengthOf(3, 'there are three panels');
 		});
 
-		it('renders with aria-controls and aria-expanded attributes on summary button ', () => {});
+		it('renders with aria-controls and aria-expanded attributes on "summary" button ', () => {});
 
 		it('renders summary text on accordion panel', () => {
 			wrapper = mount(<AccordionExample />, { attachTo: mountNode });
@@ -231,7 +230,7 @@ describe('Accordion', function () {
 			expect(panel.props().expanded).to.be.true;
 		});
 
-		it('toggles `slds-is-open` class and `aria-expanded` on panel select', () => {
+		it('toggles `slds-is-open` class and `aria-expanded` attribute value on panel select', () => {
 			wrapper = mount(<AccordionExample />, { attachTo: mountNode });
 			const panel = wrapper.find('SLDSAccordionPanel').first();
 			const button = panel.find('.slds-accordion__summary-action');
@@ -242,7 +241,5 @@ describe('Accordion', function () {
 			expect(openPanelSection, 'panel changes from closed to open').to.exist;
 			expect(button.props()['aria-expanded']).to.be.true;
 		});
-
-		it('toggles section content on panel select', () => {});
 	});
 });

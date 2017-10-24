@@ -14,7 +14,7 @@ import { ACCORDION } from '../../utilities/constants';
 
 const propTypes = {
 	/**
-	 * CSS class names to be added to the accordion container element. _Tested with snapshot testing._
+	 * CSS class names to be added to the accordion component. _Tested with snapshot testing._
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
@@ -22,7 +22,7 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
-	 * The panel content for the Accordion component. Event handler for the accordion panels should be added here. Optional `panelContentActions` component may be passed as prop. _Tested with Mocha framework.
+	 * The panel content for the Accordion component. Event handler for the accordion panels should be added here. Optional `panelContentActions` component may be passed as prop. _Tested with Mocha framework._
 	 */
 	children: PropTypes.node.isRequired
 };

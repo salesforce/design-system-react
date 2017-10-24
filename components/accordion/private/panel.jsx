@@ -15,28 +15,31 @@ import { ACCORDION_PANEL } from '../../../utilities/constants';
 
 const propTypes = {
 	/**
-	 * The panel content for the Accordion component. Event handler for the accordion panels should be added here `<Panel onTogglePanel.../>`. Optional `panelContentActions` component may be passed as prop. _Tested with Mocha framework.
+	 * The panel content for the Accordion component. Event handler for the accordion panels should be added here `<Panel onTogglePanel.../>`. Optional `panelContentActions` component may be passed as prop. _Tested with Mocha framework._
 	 */
 	children: PropTypes.node,
 	/**
-	 * Indicates whether item is expanded or not, which should be handled by `onTogglePanel`. _Tested with Mocha framework.
+	 * Indicates whether item is expanded or not, which should be handled by `onTogglePanel`. _Tested with Mocha framework._
 	 */
 	expanded: PropTypes.bool.isRequired,
 	/**
-	 * ID of the item belonging to this panel
+	 * ID of the item belonging to this panel. _Tested with snapshot testing._
 	 */
 	id: PropTypes.string.isRequired,
+	/**
+	 * Optional component that can be passed as prop to `<Panel />`. As an example, a menu dropdown could be used here to handle additional actions for each accordion panel. _Tested with Mocha framework._
+	 */
 	panelContentActions: PropTypes.node,
 	/**
-	 * Callback that will run whenever a panel is toggled. Function should toggle state to handle `expanded` prop. _Tested with Mocha framework.
+	 * Callback that will run whenever a panel is toggled. Function should handle state to toggle `expanded` prop. _Tested with Mocha framework._
 	 */
 	onTogglePanel: PropTypes.func.isRequired,
 	/**
-	 * Summary header of the item belonging to this panel. _Tested with Mocha framework.
+	 * Summary header of the item belonging to this panel. _Tested with Mocha framework._
 	 */
 	summary: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 	/**
-	 * HTML title attribute.
+	 * HTML title attribute. _Tested with snapshot testing._
 	 */
 	title: PropTypes.string
 };
