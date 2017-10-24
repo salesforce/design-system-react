@@ -25,6 +25,7 @@ Although we strive to make this library functional, controlled, presentational c
 * Pull requests should conform to [ESLint style definition](https://github.com/salesforce-ux/eslint-config-slds). Use `eslint-disable-line` within tests for exceptions.
 * Always pass HTML IDs in - Many components have the optional `id` property but will generate a random id to use if not passed in. These randomly generated IDs will cause your snapshot tests to fail. The markup text diff may be easier to debug if you change one prop per snapshot and have many snapshots instead of changing many props in one snapshot.
 * Tests must unmount and clean up the test fixture after each test or grouping of related tests. Do not allow unrelated tests to "bleed" into each other.
+* When creating Mocha tests, be careful of the function scope (`() => {}` vs `function () {}`) and the value of `this`.
 
 ## Testing Suite Overview
 - **[Mocha](http://mochajs.org/)** - Test framework ([getting started primer](http://mochajs.org/#getting-started))
