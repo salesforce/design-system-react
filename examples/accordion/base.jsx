@@ -13,11 +13,15 @@ export default class Example extends React.Component {
 				{
 					id: '1',
 					summary: 'The first Item',
-					details:
-						'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod ' +
-						'tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At v' +
-						'ero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, ' +
-						'no sea takimata sanctus est Lorem ipsum dolor sit amet.'
+					details: (
+						<div>
+							Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+							nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+							erat, sed diam voluptua. At vero eos et accusam et justo duo
+							dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+							sanctus est Lorem ipsum dolor sit amet.
+						</div>
+					)
 				},
 				{
 					id: '2',
@@ -99,15 +103,20 @@ export default class Example extends React.Component {
 		);
 	}
 
-	togglePanel (id) {
-		console.log('togglePanel triggered', id);
+	togglePanel (event, data) {
 		this.setState((state) => ({
 			...state,
 			expandedPanels: {
 				...state.expandedPanels,
-				[id]: !state.expandedPanels[id]
+				[data.id]: !state.expandedPanels[data.id]
 			}
 		}));
+		if (this.props.action) {
+			const dataAsArray = Object.keys(data).map((id) => data[id]);
+			this.props.action('onClick')(event, ...dataAsArray);
+		} else if (console) {
+			console.log('[onSelect] (event, data)', event, data);
+		}
 	}
 
 	render () {
@@ -120,7 +129,7 @@ export default class Example extends React.Component {
 							id={item.id}
 							panelContentActions={this.menuDropdown(item)}
 							key={item.id}
-							onTogglePanel={() => this.togglePanel(item.id)}
+							onTogglePanel={() => this.togglePanel(event, item)}
 							summary={item.summary}
 						>
 							{item.details}

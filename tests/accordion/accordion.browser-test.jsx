@@ -164,55 +164,12 @@ AccordionExample.defaultProps = defaultProps;
 
 /* Accordion rendering tests
  */
+
 describe('Accordion', function () {
-	let mountNode;
-	let wrapper;
+	describe('Renders Accordion', () => {
+		let mountNode;
+		let wrapper;
 
-	beforeEach(() => {
-		mountNode = createMountNode({ context: this });
-	});
-
-	afterEach(() => {
-		destroyMountNode({ wrapper, mountNode });
-	});
-
-	it('renders an accordion', () => {
-		wrapper = mount(<AccordionExample />, { attachTo: mountNode });
-		const accordion = wrapper.find(Accordion);
-		expect();
-	});
-
-	it('renders expected number of accordion panels', () => {
-		wrapper = mount(<AccordionExample />, {
-			attachTo: mountNode
-		});
-		const panels = wrapper.find('SLDSAccordionPanel');
-		expect(panels).to.have.lengthOf(3, 'there are three panels');
-	});
-
-	it('renders summary text on accordion panel', () => {
-		wrapper = mount(<AccordionExample />, { attachTo: mountNode });
-		const panel = wrapper.find('SLDSAccordionPanel').first();
-		const span = panel.find('.slds-truncate');
-		// const contentDiv = panel.find('slds-accordion__content');
-		// console.log('contentDiv', contentDiv);
-		expect(span.text()).to.equal('The first item');
-		// expect(contentDiv).to.have.text('Lorem ipsum dolor sit amet');
-	});
-
-	// `panel content actions` can have anything passed to it, in theory. In this test,
-	// I'm passing a dropdown. Should I be testing whether the dropdown id or classes are true?
-	it('renders `panelContentActions` component, if passed', () => {
-		wrapper = mount(<AccordionExample />, {
-			attachTo: mountNode
-		});
-		const panelContentActions = wrapper.find(
-			'div .slds-dropdown-trigger .slds-dropdown-trigger--click'
-		);
-		expect(panelContentActions, 'panel dropdown component exists').to.exist;
-	});
-
-	describe('Expanded Accordion panel', () => {
 		beforeEach(() => {
 			mountNode = createMountNode({ context: this });
 		});
@@ -221,25 +178,71 @@ describe('Accordion', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('triggers a change callback on panel select and panel expands', () => {
+		it('renders an accordion', () => {
 			wrapper = mount(<AccordionExample />, { attachTo: mountNode });
-			const panel = wrapper.find('SLDSAccordionPanel').first();
-			expect(panel.props().expanded).to.be.false;
-			panel.find('.slds-accordion__summary-action').simulate('click');
-			expect(panel.props().expanded, 'panel changes from closed to expanded').to
-				.be.true;
-			const openPanelSection = panel.find('.slds-is-open');
-			const panelDiv = openPanelSection.find('.slds-accordion__content');
-			expect(openPanelSection, '`is-open` className applied').to.exist;
+			const accordion = wrapper.find(Accordion);
+			expect();
 		});
 
-		it('renders panel content when panel is expanded', () => {
+		it('renders expected number of accordion panels', () => {
+			wrapper = mount(<AccordionExample />, {
+				attachTo: mountNode
+			});
+			const panels = wrapper.find('SLDSAccordionPanel');
+			expect(panels).to.have.lengthOf(3, 'there are three panels');
+		});
+
+		it('renders with aria-controls and aria-expanded attributes on summary button ', () => {});
+
+		it('renders summary text on accordion panel', () => {
+			wrapper = mount(<AccordionExample />, { attachTo: mountNode });
+			const panel = wrapper.find('SLDSAccordionPanel').first();
+			const span = panel.find('.slds-truncate');
+			expect(span.text()).to.equal('The first item');
+		});
+
+		it('renders `panelContentActions` component, if passed', () => {
+			wrapper = mount(<AccordionExample />, {
+				attachTo: mountNode
+			});
+			const panelContentActions = wrapper.find(
+				'div .slds-dropdown-trigger .slds-dropdown-trigger--click'
+			);
+			expect(panelContentActions, 'panel dropdown component exists').to.exist;
+		});
+	});
+
+	describe('Open panel', () => {
+		let mountNode;
+		let wrapper;
+		beforeEach(() => {
+			mountNode = createMountNode({ context: this });
+		});
+
+		afterEach(() => {
+			destroyMountNode({ wrapper, mountNode });
+		});
+
+		it('triggers a change callback on panel select', () => {
 			wrapper = mount(<AccordionExample />, { attachTo: mountNode });
 			const panel = wrapper.find('SLDSAccordionPanel').first();
 			expect(panel.props().expanded).to.be.false;
 			panel.find('.slds-accordion__summary-action').simulate('click');
-			expect(panel.props().expanded, 'panel changes from closed to expanded').to
-				.be.true;
+			expect(panel.props().expanded).to.be.true;
 		});
+
+		it('toggles `slds-is-open` class and `aria-expanded` on panel select', () => {
+			wrapper = mount(<AccordionExample />, { attachTo: mountNode });
+			const panel = wrapper.find('SLDSAccordionPanel').first();
+			const button = panel.find('.slds-accordion__summary-action');
+			let openPanelSection = panel.find('.slds-is-open');
+			expect(openPanelSection).to.not.exist;
+			panel.find('.slds-accordion__summary-action').simulate('click');
+			openPanelSection = panel.find('.slds-is-open');
+			expect(openPanelSection, 'panel changes from closed to open').to.exist;
+			expect(button.props()['aria-expanded']).to.be.true;
+		});
+
+		it('toggles section content on panel select', () => {});
 	});
 });

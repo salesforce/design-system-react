@@ -14,15 +14,22 @@ import { ACCORDION } from '../../utilities/constants';
 
 const propTypes = {
 	/**
-* Custom CSS classes added to `slds-accordion` node.
-*/
+	 * CSS class names to be added to the accordion container element. _Tested with snapshot testing._
+	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	/**
+	 * HTML id for accordion component. _Tested with snapshot testing._
+	 */
 	id: PropTypes.string,
+	/**
+	 * The panel content for the Accordion component. Event handler for the accordion panels should be added here. Optional `panelContentActions` component may be passed as prop. _Tested with Mocha framework.
+	 */
 	children: PropTypes.node.isRequired
 };
+
 /**
  * An accordion allows a user to toggle the display of sections of content.
- * The accordion component wraps accordion items that can be selected and expanded.
+ * The accordion component wraps accordion panels that can be selected and expanded.
  */
 class Accordion extends Component {
 	componentWillMount () {

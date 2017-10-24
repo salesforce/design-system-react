@@ -14,12 +14,30 @@ import Button from '../../button';
 import { ACCORDION_PANEL } from '../../../utilities/constants';
 
 const propTypes = {
+	/**
+	 * The panel content for the Accordion component. Event handler for the accordion panels should be added here `<Panel onTogglePanel.../>`. Optional `panelContentActions` component may be passed as prop. _Tested with Mocha framework.
+	 */
 	children: PropTypes.node,
+	/**
+	 * Indicates whether item is expanded or not, which should be handled by `onTogglePanel`. _Tested with Mocha framework.
+	 */
 	expanded: PropTypes.bool.isRequired,
+	/**
+	 * ID of the item belonging to this panel
+	 */
 	id: PropTypes.string.isRequired,
 	panelContentActions: PropTypes.node,
+	/**
+	 * Callback that will run whenever a panel is toggled. Function should toggle state to handle `expanded` prop. _Tested with Mocha framework.
+	 */
 	onTogglePanel: PropTypes.func.isRequired,
+	/**
+	 * Summary header of the item belonging to this panel. _Tested with Mocha framework.
+	 */
 	summary: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+	/**
+	 * HTML title attribute.
+	 */
 	title: PropTypes.string
 };
 
