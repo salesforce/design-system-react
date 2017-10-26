@@ -5,7 +5,7 @@
 1. Create a new issue before starting your solution to keep track of what you are trying to contribute. That way, we can also offer suggestions or let you know if there is already an effort in progress.
 1. Fork this repository, clone your fork locally.
 1. Create a topic branch locally for the issue that you are addressing.
-1. Edit the code locally and push to your username's forked repository. Be sure to [add a Storybook story](https://getstorybook.io/docs/react-storybook/basics/writing-stories) for new features.
+1. Edit the code locally and push to your username's forked repository. Be sure to [add a Storybook story](https://storybook.js.org/basics/writing-stories/) for new features.
 1. Send us a well-documented pull request based on `master` from your forked repository. GitHub pull requests should have a descriptive title, a brief summary, @mention several relevant people to review the code, add helpful GitHub comments on lines where you have questions or concerns.
 1. We'll review your code, suggest any needed changes, and hopefully merge it in. Thank you!
 
@@ -13,7 +13,7 @@
 - UX pattern / design must exist in [SLDS](https://www.lightningdesignsystem.com/). Components in the process of being added to SLDS will be considered as prototypes.
 - All new props and components need tests. **Please review the [testing readme](/tests/README.md)**
 - Follow Eslint settings.
-- If you are adding a feature, [add a story](https://getstorybook.io/docs/react-storybook/basics/writing-stories) to the React Storybook that uses your feature, so that reviewers can test it.
+- If you are adding a feature, [add a story](https://storybook.js.org/basics/writing-stories/) to the React Storybook that uses your feature, so that reviewers can test it.
 - Stories are stored in [examples folder](/examples) along with Documentation site examples. To add a story to the interactive examples on the [documentation site](https://react.lightningdesignsystem.com/components/), add the JSX file to [examples/index.js](/examples/index.js). All examples that are present for a component in the [SLDS website](https://www.lightningdesignsystem.com/) or it's internal site should be created as a Storybook story _and_ listed in `examples/index.js`.
 - Prop description tables on the documentation site are generated from propType comments within the component. All props descriptions should have a _Tested with snapshot testing._ or _Tested with Mocha framework._ notice in them.
 - Introductory component descriptions are generated from the comment directly before the component declaration with [react-docgen](https://github.com/reactjs/react-docgen).
