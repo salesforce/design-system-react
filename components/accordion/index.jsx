@@ -20,7 +20,7 @@ const propTypes = {
 	/**
 	 * HTML id for accordion component. _Tested with snapshot testing._
 	 */
-	id: PropTypes.string,
+	id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	/**
 	 * The panel content for the Accordion component. Event handler for the accordion panels should be added here. Optional `panelContentActions` component may be passed as prop. _Tested with Mocha framework._
 	 */
@@ -35,14 +35,10 @@ class Accordion extends Component {
 	componentWillMount () {
 		this.generatedId = shortid.generate();
 	}
-	/**
-	 * Get the accordion's HTML id. Generate a new one if no id present.
-	 */
-	getId = () => this.props.id || this.generatedId;
 
 	render () {
 		return (
-			<ul name={this.getId()} className={classNames('slds-accordion', this.props.className)}>
+			<ul name={this.props.id || this.generatedId} className={classNames('slds-accordion', this.props.className)}>
 				{this.props.children}
 			</ul>
 		);

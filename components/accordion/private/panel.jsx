@@ -25,7 +25,7 @@ const propTypes = {
 	/**
 	 * ID of the item belonging to this panel. _Tested with snapshot testing._
 	 */
-	id: PropTypes.string.isRequired,
+	id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 	/**
 	 * Optional component that can be passed as prop to `<Panel />`. As an example, a menu dropdown could be used here to handle additional actions for each accordion panel. _Tested with Mocha framework._
 	 */
@@ -35,7 +35,7 @@ const propTypes = {
 	 */
 	onTogglePanel: PropTypes.func.isRequired,
 	/**
-	 * Summary header of the item belonging to this panel. _Tested with Mocha framework._
+	 * Summary header of the item belonging to this panel. _Tested with Mocha framework and snapshot testing._
 	 */
 	summary: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 	/**
@@ -50,7 +50,7 @@ const Panel = ({ children, expanded, id, panelContentActions, summary, title, on
 			<div className="slds-accordion__summary">
 				<h3 className="slds-text-heading_small slds-accordion__summary-heading">
 					<Button
-						aria-controls={id}
+						aria-controls={`${id}-accordion-panel`}
 						aria-expanded={expanded}
 						className="slds-button_reset slds-accordion__summary-action"
 						iconClassName="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
@@ -65,7 +65,7 @@ const Panel = ({ children, expanded, id, panelContentActions, summary, title, on
 				</h3>
 				{panelContentActions}
 			</div>
-			<div aria-hidden={!expanded} className="slds-accordion__content" id={id}>
+			<div aria-hidden={!expanded} className="slds-accordion__content" id={`${id}-accordion-panel`}>
 				{children}
 			</div>
 		</section>

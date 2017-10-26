@@ -191,8 +191,6 @@ describe('Accordion', function () {
 			expect(panels).to.have.lengthOf(3, 'there are three panels');
 		});
 
-		it('renders with aria-controls and aria-expanded attributes on "summary" button ', () => {});
-
 		it('renders summary text on accordion panel', () => {
 			wrapper = mount(<AccordionExample />, { attachTo: mountNode });
 			const panel = wrapper.find('SLDSAccordionPanel').first();
@@ -240,6 +238,12 @@ describe('Accordion', function () {
 			openPanelSection = panel.find('.slds-is-open');
 			expect(openPanelSection, 'panel changes from closed to open').to.exist;
 			expect(button.props()['aria-expanded']).to.be.true;
+		});
+		it('renders panel content', () => {
+			wrapper = mount(<AccordionExample />, { attachTo: mountNode });
+			const panel = wrapper.find('SLDSAccordionPanel').first();
+			const content = panel.find('.slds-accordion__content');
+			expect(content.text()).to.exist;
 		});
 	});
 });
