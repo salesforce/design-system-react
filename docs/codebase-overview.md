@@ -119,7 +119,8 @@ Unless you have an accessiblity guru in your department (knowledge of implementi
     - All mouse and keyboard interactions should be tested.
 - Components should have 90%+ test coverage. Coverage can be determined by reviewing the coverage summary at the end of `npm test`. High test coverage does not imply correct logic, but low coverage implies low test quality/quantity.
 - Test should run correctly in headless browsers (`npm test`) and within a "real" browser (`npm start` -> `http://localhost:8001/`)
-- For more specifics about testing please review the [testing module walkthough](tests/README.md).
+- Components should be able to be rendered without a `DOM`. Test for the existence of `document` and `window` before using them.
+- For more specifics about testing please review the [testing module walkthough](../tests/README.md).
 
 ## Controlled and Uncontrolled Components
 - All new components should be controlled at first and then uncontrolled support added later if needed.
