@@ -162,7 +162,9 @@ const MenuPicklist = createReactClass({
 			this.generatedErrorId = shortid.generate();
 		}
 
-		window.addEventListener('click', this.closeOnClick, false);
+		if (typeof (window) !== 'undefined') {
+			window.addEventListener('click', this.closeOnClick, false);
+		}
 
 		if (!this.props.multiple) {
 			this.setState({

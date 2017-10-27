@@ -58,7 +58,7 @@ import { MENU_DROPDOWN, MENU_DROPDOWN_TRIGGER, LIST } from '../../utilities/cons
 // clicks even when those clicks are over areas that wouldn't normally fire
 // click or touch events (for example, iframes). A single overlay is shared
 // between all dropdowns in the app.
-const overlay = document.createElement('span');
+const overlay = typeof (document) !== 'undefined' ? document.createElement('span') : { style: {} };
 overlay.style.top = 0;
 overlay.style.left = 0;
 overlay.style.width = '100%';
@@ -773,9 +773,9 @@ const MenuDropdown = createReactClass({
 	},
 
 	renderOverlay (isOpen) {
-		if (isFunction(overlay)) {
+		if (isFunction(overlay) && typeof (document) !== 'undefined') {
 			overlay(isOpen, overlay);
-		} else if (this.props.overlay && isOpen && !this.overlay) {
+		} else if (this.props.overlay && isOpen && !this.overlay && typeof (document) !== 'undefined') {
 			this.overlay = overlay;
 			document.querySelector('body').appendChild(this.overlay);
 		} else if (!isOpen && this.overlay && this.overlay.parentNode) {
