@@ -39,7 +39,8 @@
     "url": "https://github.com/salesforce-ux/design-system-react"
   },
   "jest": {
-    "testRegex": "/tests/.*\\.snapshot-test\\.jsx?$"
+    "testRegex": "/tests/.*\\.snapshot-test\\.jsx?$",
+    "testEnvironment": "node"
   },
   "keywords": [
     "react",
