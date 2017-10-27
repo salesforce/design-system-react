@@ -30,6 +30,7 @@ const Example = createReactClass({
 						checkmark
 						iconName="sort"
 						iconVariant="more"
+						id="icon-dropdown-example"
 						onSelect={function (item) { console.log(item.label, 'selected'); }}
 						openOn="click"
 						options={[
