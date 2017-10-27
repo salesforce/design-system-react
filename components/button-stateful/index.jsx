@@ -21,7 +21,6 @@ import isFunction from 'lodash.isfunction';
 
 // ## Children
 import ButtonIcon from '../icon/button-icon';
-import TooltipTrigger from '../popover-tooltip/trigger';
 
 import { BUTTON_STATEFUL } from '../../utilities/constants';
 
@@ -93,18 +92,10 @@ const defaultProps = {
  * The ButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.
  * For icon buttons, use <code>variant='icon'</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: 'add', label: 'Join'}}</code>).
  */
-class ButtonStateful extends TooltipTrigger {
+class ButtonStateful extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = { active: false };
-	}
-
-	componentDidMount () {
-		super.componentDidMount();
-	}
-
-	componentWillUnmount () {
-		super.componentWillUnmount();
 	}
 
 	handleClick = (e) => {
@@ -176,7 +167,6 @@ class ButtonStateful extends TooltipTrigger {
 						size={iconSize}
 						className="slds-button__icon--stateful"
 					/>
-					{this.getTooltip()}
 					{assistiveText ? <span className="slds-assistive-text">{assistiveText}</span> : null}
 				</button>
 			);
@@ -228,7 +218,6 @@ class ButtonStateful extends TooltipTrigger {
 					/>
 					{stateThree.label}
 				</span>
-				{this.getTooltip()}
 			</button>
 		);
 	}
