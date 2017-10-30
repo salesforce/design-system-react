@@ -29,18 +29,16 @@ const accountsWithIcon = accounts.map((elem) => Object.assign(elem, {
 	/> })
 );
 
-const Example = createReactClass({
-	displayName: 'ModalExample',
+class Example extends React.Component {
+	static displayName = 'ModalExample';
 
-	getInitialState () {
-		return {
-			isOpen: false
-		};
-	},
+	state = {
+		isOpen: false
+	};
 
-	toggleOpen () {
+	toggleOpen = () => {
 		this.setState({ isOpen: !this.state.isOpen });
-	},
+	};
 
 	render () {
 		return (
@@ -149,6 +147,6 @@ const Example = createReactClass({
 			</IconSettings>
 		);
 	}
-});
+}
 
 export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

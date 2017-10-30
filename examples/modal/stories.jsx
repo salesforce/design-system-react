@@ -8,8 +8,12 @@ import { MODAL } from '../../utilities/constants';
 import Button from '../../components/button';
 import Modal from '../../components/modal';
 
-import MenuContentsModal from './menu-contents';
-import ModalCustomParentNode from './modal-custom-parent-node';
+import HeaderFooter from './header-footer';
+import MenuContents from './menu-contents';
+import CustomParentNode from './modal-custom-parent-node';
+import Prompt from './prompt';
+import Sizes from './sizes';
+import Taglines from './taglines';
 
 import SLDSSettings from '../../components/SLDSSettings';
 
@@ -17,11 +21,13 @@ SLDSSettings.setAppElement('#root');	// used by Modal component
 
 storiesOf(MODAL, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
-	.add('Base', () => (
-		<MenuContentsModal />))
-	.add('Modal with Custom Parent Node', () => <ModalCustomParentNode />)
+	.add('Base', () => (<MenuContents isOpen />))
+	.add('Header Footer', () => (<HeaderFooter isOpen />))
+	.add('Prompt', () => (<Prompt isOpen />))
+	.add('Taglines', () => (<Taglines isOpen />))
+	.add('Modal with Custom Parent Node', () => <CustomParentNode isOpen />)
 	.add('Small', () => (
-		<MenuContentsModal
+		<MenuContents
 			closeButtonAssistiveText="Exit"
 			isOpen
 			tagline="Enter in details below"
@@ -31,7 +37,7 @@ storiesOf(MODAL, module)
 			footer={undefined}
 		/>))
 	.add('Small with footer, not dismissible', () => (
-		<MenuContentsModal
+		<MenuContents
 			dismissible={false}
 			closeButtonAssistiveText="Exit"
 			isOpen
@@ -40,7 +46,7 @@ storiesOf(MODAL, module)
 			onRequestClose={action('modal closed')}
 		/>))
 	.add('Small with custom footer', () => (
-		<MenuContentsModal
+		<MenuContents
 			directional
 			isOpen
 			tagline="Enter in details below"
@@ -49,25 +55,15 @@ storiesOf(MODAL, module)
 			footer={<div><Button label="Cancel" /> and some random text in here <Button label="Update" /><Button label="Run" variant="brand" /></div>}
 		/>))
 	.add('Small no header', () => (
-		<MenuContentsModal
+		<MenuContents
 			isOpen
 			onRequestClose={action('modal closed')}
 			footer={undefined}
 		/>))
 	.add('Large with directional footer', () => (
-		<MenuContentsModal
+		<MenuContents
 			directional
 			isOpen
 			onRequestClose={action('modal closed')}
 			size="large"
-		/>))
-	.add('Prompt', () => (
-		<Modal
-			isOpen
-			title="Delete state - Default"
-			prompt="error"
-			onRequestClose={action('modal closed')}
-		>
-			<div className="slds-p-around--medium">Are you sure you want to delete the Default State? This action cannot be undone. Are you sure you want to delete the Default State? This action cannot be undone. Are you sure you want to delete the Default State? This action cannot be undone. <Button className="slds-m-around--medium">Ok, got it!</Button></div>
-		</Modal>
-	));
+		/>));
