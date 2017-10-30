@@ -4,6 +4,7 @@ import renderer from 'react-test-renderer';
 import { renderMarkup, testDOMandHTML } from '../snapshot-helpers';
 
 import SnapshotBaseOpen from '../../examples/combobox/snapshot/base-open';
+import SnapshotBaseOpenClassName from '../../examples/combobox/snapshot/base-open-class-name';
 import SnapshotBaseSelected from '../../examples/combobox/snapshot/base-selected';
 import SnapshotInlineSingleSelection from '../../examples/combobox/snapshot/inline-single-selection';
 import SnapshotInlineSingleSelectionSelected from '../../examples/combobox/snapshot/inline-single-selection-selected';
@@ -20,6 +21,12 @@ testDOMandHTML({
 	name: 'Base Open',
 	test,
 	Component: SnapshotBaseOpen
+});
+
+testDOMandHTML({
+	name: 'Base Open with Custom Class Names',
+	test,
+	Component: SnapshotBaseOpenClassName
 });
 
 testDOMandHTML({
