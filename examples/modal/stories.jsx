@@ -7,10 +7,13 @@ import IconSettings from '../../components/icon-settings';
 import { MODAL } from '../../utilities/constants';
 import Modal from '../../components/modal';
 import Lookup from '../../components/lookup';
-import MenuPicklist from '../../components/menu-picklist';
+import Combobox from '../../components/combobox';
 import Timepicker from '../../components/time-picker';
+import Textarea from '../../components/forms/textarea';
+import Input from '../../components/forms/input';
 import Datepicker from '../../components/date-picker';
 import Button from '../../components/button';
+import Icon from '../../components/icon';
 
 import ModalCustomParentNode from './modal-custom-parent-node';
 
@@ -28,112 +31,113 @@ const modalFooter = [
 	<Button key="modalBSave" label="Save" variant="brand" />
 ];
 
+const accounts = [
+	{ id: '1', label: 'Acme', subTitle: 'Account • San Francisco', type: 'account' },
+	{ id: '2', label: 'Salesforce.com, Inc.', subTitle: 'Account • San Francisco', type: 'account' },
+	{ id: '3', label: 'Paddy\'s Pub', subTitle: 'Account • Boston, MA', type: 'account' },
+	{ id: '4', label: 'Tyrell Corp', subTitle: 'Account • San Francisco, CA', type: 'account' },
+	{ id: '5', label: 'Paper St. Soap Company', subTitle: 'Account • Beloit, WI', type: 'account' },
+	{ id: '6', label: 'Nakatomi Investments', subTitle: 'Account • Chicago, IL', type: 'account' },
+	{ id: '7', label: 'Acme Landscaping', type: 'account' },
+	{ id: '8', label: 'Acme Construction', subTitle: 'Account • Grand Marais, MN', type: 'account' }
+];
+
+const accountsWithIcon = accounts.map((elem) => Object.assign(elem, {
+	icon: <Icon
+		assistiveText="Account"
+		category="standard"
+		name={elem.type}
+	/> })
+);
+
 const modalContent = (
-	<section className="slds-p-around--large">
-		<div className="slds-form-element slds-m-bottom--large">
-			<label className="slds-form-element__label" htmlFor="opptyName">Opportunity Name</label>
-			<div className="slds-form-element__control">
-				<input id="opptyName" className="slds-input" type="text" placeholder="Enter name" />
-			</div>
-		</div>
-		<div className="slds-form-element slds-m-bottom--large">
-			<label className="slds-form-element__label" htmlFor="description">Opportunity Description</label>
-			<div className="slds-form-element__control">
-				<textarea id="description" className="slds-textarea" placeholder="Enter description" />
-			</div>
-		</div>
-
-		{/*
-		*/}
-		<Lookup
-			className="slds-m-bottom--large"
-			emptyMessage="No Accounts Found"
-			hasError={false}
-			iconName="account"
-			label="Account Name"
-			onChange={action('change')}
-			onSelect={action('selected')}
-			options={[
-				{ label: 'Paddy\'s Pub' },
-				{ label: 'Tyrell Corp' },
-				{ label: 'Paper St. Soap Company' },
-				{ label: 'Nakatomi Investments' },
-				{ label: 'Acme Landscaping' },
-				{ label: 'Acme Construction' }
-			]}
+	<div className="slds-form_stacked slds-p-around_medium">
+		<Input
+			id="unique-id-1"
+			label="Opportunity Name"
+			placeholder="Enter name"
 		/>
-
-		<MenuPicklist
-			className="slds-m-bottom--large"
-			label="Lead Source"
-			onSelect={(option) => { action('selected: ', option.label); }}
-			options={[
-				{ label: 'Third Party Program', value: 'A0' },
-				{ label: 'Cold Call', value: 'B0' },
-				{ label: 'LinkedIn', value: 'C0' },
-				{ label: 'Direct Mail', value: 'D0' },
-				{ label: 'Other', value: 'E0' }
-			]}
-			placeholder="Select Lead Source"
-			value="B0"
+		<Textarea
+			id="unique-id-1"
+			label="Opportunity Description"
+			placeholder="Enter description"
 		/>
-
-		<div className="slds-form-element slds-m-vertical--large">
-			<label className="slds-form-element__label" htmlFor="amount">Amount</label>
-			<div className="slds-form-element__control">
-				<input id="amount" className="slds-input" type="text" placeholder="Enter Amount" />
-			</div>
-		</div>
-		<div className="slds-form-element slds-m-vertical--large">
-			<label className="slds-form-element__label" htmlFor="amount">Amount</label>
-			<div className="slds-form-element__control">
-				<input id="amount" className="slds-input" type="text" placeholder="Enter Amount" />
-			</div>
-		</div>
-		<div className="slds-m-bottom--large">
+		<Combobox
+			id="combobox-autocomplete-unique-id"
+			labels={{
+				label: 'Account Name',
+				placeholderReadOnly: 'Select account'
+			}}
+			options={accountsWithIcon}
+			variant="base"
+		/>
+		<Combobox
+			id="combobox-readonly-unique-id"
+			labels={{
+				label: 'Lead Source',
+				placeholderReadOnly: 'Select source'
+			}}
+			options={[
+				{ id: 1, label: 'Third Party Program' },
+				{ id: 2, label: 'Cold Call' },
+				{ id: 3, label: 'LinkedIn' },
+				{ id: 4, label: 'Direct Mail' },
+				{ id: 5, label: 'Other' }
+			]}
+			variant="readonly"
+		/>
+		<Input
+			fixedTextLeft="$"
+			id="unique-id-1"
+			label="Amount"
+			placeholder="Enter amount"
+		/>
+		<div className="slds-form-element">
 			<Datepicker
-				onDateChange={() => { action('date is selected'); }}
+				label="Start Date"
 			/>
 		</div>
-
-		<div className="slds-m-bottom--large">
+		<div className="slds-form-element">
 			<Timepicker
-				onDateChange={() => { action('time is selected'); }}
+				label="Start Time"
 			/>
 		</div>
-
-		<div className="slds-form-element slds-m-vertical--large">
-			<label className="slds-form-element__label" htmlFor="amount">Amount</label>
-			<div className="slds-form-element__control">
-				<input id="amount" className="slds-input" type="text" placeholder="Enter Amount" />
-			</div>
-		</div>
-
-		<div className="slds-form-element slds-m-vertical--large">
-			<label className="slds-form-element__label" htmlFor="amount">Amount</label>
-			<div className="slds-form-element__control">
-				<input id="amount" className="slds-input" type="text" placeholder="Enter Amount" />
-			</div>
-		</div>
-		<div className="slds-form-element slds-m-vertical--large">
-			<label className="slds-form-element__label" htmlFor="amount">Amount</label>
-			<div className="slds-form-element__control">
-				<input id="amount" className="slds-input" type="text" placeholder="Enter Amount" />
-			</div>
-		</div>
-		<div className="slds-form-element slds-m-vertical--large">
-			<label className="slds-form-element__label" htmlFor="amount">Amount</label>
-			<div className="slds-form-element__control">
-				<input id="amount" className="slds-input" type="text" placeholder="Enter Amount" />
-			</div>
-		</div>
-		<div className="slds-form-element slds-m-vertical--large">
-			<label className="slds-form-element__label" htmlFor="amount">Amount</label>
-			<div className="slds-form-element__control">
-				<input id="amount" className="slds-input" type="text" placeholder="Enter Amount" />
-			</div>
-		</div>
-	</section>
+		<Input
+			id="unique-id-1"
+			label="Additional Input"
+			placeholder="To create scrolling modal"
+		/>
+		<Input
+			id="unique-id-1"
+			label="Additional Input"
+			placeholder="To create scrolling modal"
+		/>
+		<Input
+			id="unique-id-1"
+			label="Additional Input"
+			placeholder="To create scrolling modal"
+		/>
+		<Input
+			id="unique-id-1"
+			label="Additional Input"
+			placeholder="To create scrolling modal"
+		/>
+		<Input
+			id="unique-id-1"
+			label="Additional Input"
+			placeholder="To create scrolling modal"
+		/>
+		<Input
+			id="unique-id-1"
+			label="Additional Input"
+			placeholder="To create scrolling modal"
+		/>
+		<Input
+			id="unique-id-1"
+			label="Additional Input"
+			placeholder="To create scrolling modal"
+		/>
+	</div>
 );
 
 storiesOf(MODAL, module)
