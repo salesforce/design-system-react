@@ -118,8 +118,7 @@ const documentationSiteLiveExamples = {
 	],
 	notification: [
 		require('raw-loader!design-system-react/examples/notification/alerts.jsx'),
-		require('raw-loader!design-system-react/examples/notification/toasts.jsx'),
-		require('raw-loader!design-system-react/examples/notification/within-modal.jsx')
+		require('raw-loader!design-system-react/examples/notification/toasts.jsx')
 	],
 	'page-header': [
 		require('raw-loader!design-system-react/examples/page-header/record-home.jsx'),
