@@ -19,30 +19,33 @@ const propTypes = {
 	 * **Assistive text for accessibility**
 	 * This object is merged with the default props object on every render.
 	 * * `closeButton`: This is used as a visually hidden label if, no `labels.label` is provided.
+	 * _Tested with snapshot testing._
 	 */
 	assistiveText: PropTypes.object,
 	/**
 	 * CSS classes to be added to tag with `.slds-notify_alert`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
+	 * _Tested with snapshot testing._
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
 	 * Allows user to click a close button. Banners should be dismissible only if they communicate future impact to the system,
+	 * _Tested with snapshot testing._
 	 */
 	dismissible: PropTypes.bool,
 	/**
-	 * Icon of type `~/components/icon`. Additional props will be added for formatting by this component.
+	 * Icon of type `~/components/icon`. Additional props will be added for formatting by this component. _Tested with snapshot testing._
 	 */
 	icon: PropTypes.node.isRequired,
 	/**
-	 * Contents of alert.
+	 * Contents of alert. _Tested with snapshot testing._
 	 */
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 	/**
-	 * Triggered by close button.
+	 * Triggered by close button. _Tested with Mocha testing._
 	 */
 	onRequestClose: PropTypes.func,
 	/**
-	 * The type of alert.
+	 * The type of alert. _Tested with snapshot testing._
 	 */
 	variant: PropTypes.oneOf(['error', 'info', 'offline', 'warning']).isRequired
 };
