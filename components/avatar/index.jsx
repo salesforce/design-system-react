@@ -162,4 +162,4 @@ Avatar.defaultProps = defaultProps;
 Avatar.displayName = displayName;
 Avatar.propTypes = propTypes;
 
-module.exports = Avatar;
+export default Avatar;
