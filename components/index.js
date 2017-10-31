@@ -7,6 +7,9 @@ export Settings from './settings';
 export SLDSIconSettings from './icon-settings';
 export IconSettings from './icon-settings';
 
+export SLDSAlert from './alert';
+export Alert from './alert';
+
 export SLDSAvatar from './avatar';
 export Avatar from './avatar';
 
