@@ -40,6 +40,9 @@ Although we strive to make this library functional, controlled, presentational c
 - **[Istanbul](https://github.com/gotwarlost/istanbul)** - Measures code coverage
 - **Visual Recognition Tests (COMING SOON)** - Captures an image and compares it to previously captured images
 
+## Mocha Tests or Jest Snaphots?
+Are you visually testing markup or interactively testing events? If a simple `wrapper.find('[class]')` will do, you’ll probably better understand the markup's context if the snapshot fails or changes. Anything that requires `wrapper.simulate(“click”)`, or a `wrapper.simulate('onKeyDown')`, you’ll probably want in a Mocha browser test in order to step through code to observe issues while they happen. If markup changes over time or you want to check the state of a single attribute, you’ll probably want to use Mocha.
+
 ## Running Tests
 - Run Karma/PhantomJS environment tests with `npm test`
 - Test interactively in your browser. Start server from terminal with `npm start` and browse to [http://localhost:8001](http://localhost:8001)

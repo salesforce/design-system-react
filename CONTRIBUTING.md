@@ -3,9 +3,13 @@
 ## The process
 1. Read the [Codebase Overview](docs/codebase-overview.md) to learn concepts and best practices for the codebase and to confirm it is within project scope.
 1. Create a new issue before starting your solution to keep track of what you are trying to contribute. That way, we can also offer suggestions or let you know if there is already an effort in progress.
-1. Fork this repository, clone your fork locally.
-1. Create a topic branch locally for the issue that you are addressing.
-1. Edit the code locally and push to your username's forked repository. Be sure to [add a Storybook story](https://storybook.js.org/basics/writing-stories/) for new features.
+1. Fork this repository, clone your fork locally. Create a topic branch locally.
+1. Add the component to `/components` folder
+1. Add the component name to `constants.js`
+1. Add Storybook examples to `/examples`
+1. Add documentation site examples to `/examples/index.js`
+1. Add tests to `/tests`.
+1. Push to your username's forked repository.
 1. Send us a well-documented pull request based on `master` from your forked repository. GitHub pull requests should have a descriptive title, a brief summary, @mention several relevant people to review the code, add helpful GitHub comments on lines where you have questions or concerns.
 1. We'll review your code, suggest any needed changes, and hopefully merge it in. Thank you!
 
