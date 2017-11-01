@@ -15,13 +15,13 @@ exports[`Base Open DOM Snapshot 1`] = `
     }
     events={Object {}}
     id="combobox-unique-id"
-    isInline={true}
     isOpen={true}
     labels={
       Object {
         "placeholder": "Search Salesforce",
       }
     }
+    menuPosition="relative"
     onChange={[Function]}
     onRequestRemoveSelectedOption={[Function]}
     onSelect={[Function]}
@@ -102,12 +102,12 @@ exports[`Base Selected DOM Snapshot 1`] = `
     }
     events={Object {}}
     id="combobox-unique-id"
-    isInline={true}
     labels={
       Object {
         "placeholder": "Search Salesforce",
       }
     }
+    menuPosition="relative"
     onChange={[Function]}
     onRequestRemoveSelectedOption={[Function]}
     onSelect={[Function]}
@@ -206,13 +206,13 @@ exports[`Inline Multiple Selection DOM Snapshot 1`] = `
     }
     excludeScrollbar={false}
     id="combobox-unique-id"
-    isInline={true}
     labels={
       Object {
         "label": "Search",
         "placeholder": "Search Salesforce",
       }
     }
+    menuPosition="relative"
     multiple={true}
     options={
       Array [
@@ -357,13 +357,13 @@ exports[`Inline Multiple Selection Selected DOM Snapshot 1`] = `
     }
     excludeScrollbar={false}
     id="combobox-unique-id"
-    isInline={true}
     labels={
       Object {
         "label": "Search",
         "placeholder": "Search Salesforce",
       }
     }
+    menuPosition="relative"
     multiple={true}
     options={
       Array [
@@ -525,13 +525,13 @@ exports[`Inline Single Selection DOM Snapshot 1`] = `
     }
     excludeScrollbar={false}
     id="combobox-unique-id"
-    isInline={true}
     labels={
       Object {
         "label": "Search",
         "placeholder": "Search Salesforce",
       }
     }
+    menuPosition="relative"
     options={
       Array [
         Object {
@@ -675,13 +675,13 @@ exports[`Inline Single Selection Selected DOM Snapshot 1`] = `
     }
     excludeScrollbar={false}
     id="combobox-unique-id"
-    isInline={true}
     labels={
       Object {
         "label": "Search",
         "placeholder": "Search Salesforce",
       }
     }
+    menuPosition="relative"
     options={
       Array [
         Object {
@@ -829,13 +829,13 @@ exports[`Readonly Multiple Selection DOM Snapshot 1`] = `
     }
     excludeScrollbar={false}
     id="combobox-unique-id"
-    isInline={true}
     labels={
       Object {
         "label": "Search",
         "placeholder": "Search Salesforce",
       }
     }
+    menuPosition="relative"
     multiple={true}
     options={
       Array [
@@ -932,13 +932,13 @@ exports[`Readonly Multiple Selection Multiple Items Selected DOM Snapshot 1`] = 
     }
     excludeScrollbar={false}
     id="combobox-unique-id"
-    isInline={true}
     labels={
       Object {
         "label": "Search",
         "placeholder": "Search Salesforce",
       }
     }
+    menuPosition="relative"
     multiple={true}
     options={
       Array [
@@ -1058,13 +1058,13 @@ exports[`Readonly Multiple Selection Single Item Selected DOM Snapshot 1`] = `
     }
     excludeScrollbar={false}
     id="combobox-unique-id"
-    isInline={true}
     labels={
       Object {
         "label": "Search",
         "placeholder": "Search Salesforce",
       }
     }
+    menuPosition="relative"
     multiple={true}
     options={
       Array [
@@ -1169,13 +1169,13 @@ exports[`Readonly Single Selection DOM Snapshot 1`] = `
     }
     excludeScrollbar={false}
     id="combobox-unique-id"
-    isInline={true}
     labels={
       Object {
         "label": "Search",
         "placeholder": "Search Salesforce",
       }
     }
+    menuPosition="relative"
     options={
       Array [
         Object {
@@ -1270,13 +1270,13 @@ exports[`Readonly Single Selection Selected DOM Snapshot 1`] = `
     }
     excludeScrollbar={false}
     id="combobox-unique-id"
-    isInline={true}
     labels={
       Object {
         "label": "Search",
         "placeholder": "Search Salesforce",
       }
     }
+    menuPosition="relative"
     options={
       Array [
         Object {
@@ -1380,7 +1380,6 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
     }
     excludeScrollbar={false}
     id="combobox-unique-id"
-    isInline={true}
     isOpen={true}
     labels={
       Object {
@@ -1388,6 +1387,7 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
         "placeholder": "Search Salesforce",
       }
     }
+    menuPosition="relative"
     options={
       Array [
         Object {

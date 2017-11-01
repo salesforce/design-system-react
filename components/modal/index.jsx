@@ -139,15 +139,7 @@ const defaultProps = {
  * import settings from 'design-system-react/components/settings';
  * settings.setAppElement('#mount');
  * ```
- *
  * This component uses a portalMount (a disconnected React subtree mount) to create a modal as a child of `body`.
- * When dynamically generating a `Button` that will be used to toggle a `Modal`, you may see the parent page scroll down. If `parentSelector` points to the `Button`, the `Modal` will display, but will not be clickable. The `Modal` has been rendered inside the `Button` and its event listeners. To fix these issues, define a DOM element with an ID along with the `Button`. Set the `Modal`'s `parentSelector` to that DOM element's `id`.
- * ```
- * <div id={`toggleButtonFor-${modalId}`} style={{zIndex: '2'}} />
- * <Button onClick={this.toggleModal} />
- * ...
- * <Modal parentSelector={() => document.querySelector(`#toggleButtonFor-${modalId}`)} />
- * ```
  */
 class Modal extends React.Component {
 

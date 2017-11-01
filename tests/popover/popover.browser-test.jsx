@@ -94,16 +94,14 @@ describe('SLDSPopover', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('is open, has heading, body, close button', (done) => {
+		it('is open, has heading, body, close button', () => {
 			wrapper = mount(<DemoComponent
 				isOpen
-				onOpen={() => {
-					expect(wrapper.find(`#${defaultIds.heading}`)).to.exist;
-					expect(wrapper.find(`#${defaultIds.body}`)).to.exist;
-					expect(wrapper.find('.slds-popover__close')).to.exist;
-					done();
-				}}
 			/>, { attachTo: mountNode });
+
+			expect(wrapper.find(`#${defaultIds.heading}`)).to.exist;
+			expect(wrapper.find(`#${defaultIds.body}`)).to.exist;
+			expect(wrapper.find('.slds-popover__close')).to.exist;
 		});
 	});
 
@@ -119,17 +117,15 @@ describe('SLDSPopover', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('has aria-labelledby/aria-describedby on popover', function (done) {
+		it('has aria-labelledby/aria-describedby on popover', function () {
 			wrapper = mount(<DemoComponent
 				isOpen
-				onOpen={() => {
-					const trigger = wrapper.find('#sample-popover');
-          const popover = wrapper.find(`#${defaultIds.popover}`);
-					expect(popover.node.getAttribute('aria-labelledby')).to.equal(`${defaultIds.heading}`);
-					expect(popover.node.getAttribute('aria-describedby')).to.equal(`${defaultIds.body}`);
-					done();
-				}}
 			/>, { attachTo: mountNode });
+
+			const trigger = wrapper.find('#sample-popover');
+			const popover = wrapper.find(`#${defaultIds.popover}`);
+			expect(popover.node.getAttribute('aria-labelledby')).to.equal(`${defaultIds.heading}`);
+			expect(popover.node.getAttribute('aria-describedby')).to.equal(`${defaultIds.body}`);
 		});
 	});
 
@@ -156,20 +152,18 @@ describe('SLDSPopover', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('has correct className, closeButtonAssistiveText, style, and footer', function (done) {
+		it('has correct className, closeButtonAssistiveText, style, and footer', function () {
 			wrapper = mount(<DemoComponent
 				{...optionalProps}
 				isOpen
-				onOpen={() => {
-					const popover = wrapper.find(`#${defaultIds.popover}`);
-
-					expect(popover.node.classList.contains(optionalProps.className)).to.be.true;
-					expect(popover.find('.slds-popover__close').node.textContent).to.equal(optionalProps.closeButtonAssistiveText);
-					expect(popover.find('#footer')).to.exist;
-					expect(popover.node.style.background).to.equal(popoverBackgroundColor);
-					done();
-				}}
 			/>, { attachTo: mountNode });
+
+			const popover = wrapper.find(`#${defaultIds.popover}`);
+
+			expect(popover.node.classList.contains(optionalProps.className)).to.be.true;
+			expect(popover.find('.slds-popover__close').node.textContent).to.equal(optionalProps.closeButtonAssistiveText);
+			expect(popover.find('#footer')).to.exist;
+			expect(popover.node.style.background).to.equal(popoverBackgroundColor);
 		});
 	});
 

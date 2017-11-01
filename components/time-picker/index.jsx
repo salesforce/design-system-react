@@ -13,10 +13,6 @@ import PropTypes from 'prop-types';
 // ### isDate
 import isDate from 'lodash.isdate';
 
-// This component's `checkProps` which issues warnings to developers about properties
-// when in development mode (similar to React's built in development tools)
-import checkProps from './check-props';
-
 // ### Dropdown
 import InputIcon from '../icon/input-icon';
 import MenuDropdown from '../menu-dropdown';
@@ -46,10 +42,6 @@ const Timepicker = createReactClass({
 		formatter: PropTypes.func,
 		inheritTargetWidth: PropTypes.bool,
 		/**
-		 * Renders menu within the wrapping trigger as a sibling of the button. By default, you will have an absolutely positioned container at an elevated z-index.
-		 */
-		isInline: PropTypes.bool,
-		/**
 		 * This label appears above the input.
 		 */
 		label: PropTypes.string,
@@ -57,6 +49,13 @@ const Timepicker = createReactClass({
 		 * Custom element that overrides the default Menu Item component.
 		 */
 		listItemRenderer: PropTypes.func,
+		/**
+		 * Please select one of the following:
+		 * * `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
+		 * * `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.
+		 * * `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.
+		 */
+		menuPosition: PropTypes.oneOf(['absolute', 'overflowBoundaryElement', 'relative']),
 		/**
 		 * Receives the props `(dateValue, stringValue)`
 		 */
@@ -95,6 +94,7 @@ const Timepicker = createReactClass({
 				const dateStr = date.toLocaleString(navigator.language, { year: 'numeric', month: 'numeric', day: 'numeric' });
 				return new Date(`${dateStr} ${timeStr}`);
 			},
+			menuPosition: 'absolute',
 			placeholder: 'Pick Time',
 			value: null,
 			stepInMinutes: 30
@@ -107,11 +107,6 @@ const Timepicker = createReactClass({
 			strValue: this.props.strValue,
 			options: this.getOptions()
 		};
-	},
-
-	componentWillMount () {
-		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(TIME_PICKER, this.props);
 	},
 
 	componentWillReceiveProps (nextProps) {
@@ -167,15 +162,6 @@ const Timepicker = createReactClass({
 
 	// ### Render
 	render () {
-		let isInline;
-		/* eslint-disable react/prop-types */
-		if (this.props.isInline) {
-			isInline = true;
-		} else if (this.props.modal !== undefined) {
-			isInline = !this.props.modal;
-		}
-		/* eslint-enable react/prop-types */
-
 		return (
 			<MenuDropdown
 				checkmark={false}
@@ -190,7 +176,7 @@ const Timepicker = createReactClass({
 					overflowX: 'hidden',
 					minWidth: '100%'
 				}}
-				isInline={isInline}
+				menuPosition={this.props.menuPosition}
 				onSelect={this.handleSelect}
 				options={this.state.options}
 			>

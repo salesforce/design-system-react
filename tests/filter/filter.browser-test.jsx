@@ -89,14 +89,10 @@ describe('SLDSFilter', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('Filter could take popover as a prop and use the props of popover to render, verifies the custom popover className', (done) => {
+		it('Filter could take popover as a prop and use the props of popover to render, verifies the custom popover className', () => {
 			const demoPopover = (<DemoComponent
 				className="custom-filter-popover"
 				isOpen
-				onOpen={() => {
-					expect(wrapper.find('.custom-filter-popover')).to.exist;
-					done();
-				}}
 			/>);
 			wrapper = mount(<IconSettings iconPath="/assets/icons">
 				<Filter
@@ -105,6 +101,8 @@ describe('SLDSFilter', function () {
 					popover={demoPopover}
 				/>
 			</IconSettings>, { attachTo: mountNode });
+
+			expect(wrapper.find('.custom-filter-popover')).to.exist;
 		});
 	});
 

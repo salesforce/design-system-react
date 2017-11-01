@@ -47,11 +47,11 @@ const accountsWithIcon = accounts.map((elem) => assign(elem, {
 
 const defaultProps = {
 	id: 'combobox-unique-id',
-	isInline: true,
 	labels: {
 		label: 'Search',
 		placeholder: 'Search Salesforce'
-	}
+	},
+	menuPosition: 'relative'
 };
 
 const propTypes = {

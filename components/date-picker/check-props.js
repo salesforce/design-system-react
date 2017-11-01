@@ -9,9 +9,6 @@ let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
-		// Deprecated and changed to another property
-		deprecatedProperty(COMPONENT, props.modal, 'modal', 'isInline', 'In an effort to add clarity to the meaning of the modal prop and to make more props default to false, `isInline` has replaced `modal` and is the reverse of modal.');
-
 		deprecatedProperty(COMPONENT, props.onFocus, 'onFocus', undefined, 'Please see children prop description and add your own `Input` with this prop as a child of Datepicker.');
 
 		deprecatedProperty(COMPONENT, props.onBlur, 'onBlur', undefined, 'Please see children prop description and add your own `Input` with this prop as a child of Datepicker.');

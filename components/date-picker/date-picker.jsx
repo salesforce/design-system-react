@@ -62,10 +62,6 @@ const propTypes = {
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
-	 * If true, constrains the menu to the scroll parent. Has no effect if `isInline` is `true`. _Not tested._
-	 */
-	constrainToScrollParent: PropTypes.bool,
-	/**
 	 * Disable input and calendar. _Tested with Mocha framework._
 	 */
 	disabled: PropTypes.bool,
@@ -88,10 +84,6 @@ const propTypes = {
 	 * HTML id for component _Tested with snapshot testing._
 	 */
 	id: PropTypes.string,
-	/**
-	 * Renders menu within the wrapping trigger as a sibling of the input. By default, you will have an absolutely positioned container at an elevated z-index.
-	 */
-	isInline: PropTypes.bool,
 	/**
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
@@ -118,6 +110,13 @@ const propTypes = {
 	 * Makes Monday the first day of the week. _Tested with snapshot testing._
 	 */
 	isIsoWeekday: PropTypes.bool,
+	/**
+	 * Please select one of the following:
+	 * * `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
+	 * * `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.
+	 * * `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.
+	 */
+	menuPosition: PropTypes.oneOf(['absolute', 'overflowBoundaryElement', 'relative']),
 	/**
 	 * Triggered when the user wants to focus on a new day with the keyboard. If the target node is a day it will return the keyboard event a data object with the shape: `{date: [Date object]}`. Event will be `null` when new month is re-rendered.  _Tested with Mocha framework._
 	 */
@@ -202,6 +201,7 @@ const defaultProps = {
 			'Saturday'
 		]
 	},
+	menuPosition: 'absolute',
 	parser (str) {
 		return new Date(str);
 	},
@@ -232,7 +232,6 @@ class Datepicker extends React.Component {
 		this.handleRequestClose = this.handleRequestClose.bind(this);
 		this.openDialog = this.openDialog.bind(this);
 		this.parseDate = this.parseDate.bind(this);
-		this.getInlineMenu = this.getInlineMenu.bind(this);
 		this.handleClose = this.handleClose.bind(this);
 		this.handleOpen = this.handleOpen.bind(this);
 		this.getDialog = this.getDialog.bind(this);
@@ -338,28 +337,15 @@ class Datepicker extends React.Component {
 		return parsedDate;
 	}
 
-	getInlineMenu ({ labels, assistiveText }) {
-		return !this.props.disabled && this.getIsOpen()
-		? <div
-			className={classNames('slds-datepicker',
-				'slds-dropdown',
-				`slds-dropdown--${this.props.align}`,
-			this.props.className)}
-		>
-			{this.getDatePicker({ labels, assistiveText })}
-		</div>
-		: null;
-	}
-
 	handleClose () {
 		if (this.props.onClose) {
 			this.props.onClose();
 		}
 	}
 
-	handleOpen () {
+	handleOpen (event, { portal }) {
 		if (this.props.onOpen) {
-			this.props.onOpen();
+			this.props.onOpen(event, { portal });
 		}
 
 		if (this.selectedDateCell) {
@@ -368,16 +354,30 @@ class Datepicker extends React.Component {
 	}
 
 	getDialog ({ labels, assistiveText }) {
+		// FOR BACKWARDS COMPATIBILITY
+		const menuPosition = this.props.isInline ? 'relative' : this.props.menuPosition; // eslint-disable-line react/prop-types
+
+		// SLDS override
+		const style = this.props.menuPosition !== 'relative'
+		? { transform: 'none' }
+		: {};
+
 		return !this.props.disabled && this.getIsOpen()
 			? <Dialog
-				contentsClassName="slds-datepicker slds-dropdown"
-				constrainToScrollParent={this.props.constrainToScrollParent}
+				align={`bottom ${this.props.align}`}
+				contentsClassName={classNames('slds-datepicker slds-dropdown',
+					{ 'slds-dropdown--right': this.props.menuPosition === 'relative'
+						&& this.props.align === 'right',
+						'slds-dropdown--left': this.props.menuPosition === 'relative'
+							&& this.props.align === 'left' }, this.props.className)}
 				context={this.context}
-				horizontalAlign={this.props.align}
-				flippable={!this.props.hasStaticAlignment}
+				hasStaticAlignment={this.props.hasStaticAlignment}
+				style={style}
 				onClose={this.handleClose}
 				onOpen={this.handleOpen}
-				targetElement={this.inputRef}
+				onRequestTargetElement={() => this.inputRef}
+				position={menuPosition}
+				portalMount={this.props.portalMount}
 			>
 				{this.getDatePicker({ labels, assistiveText })}
 			</Dialog>
@@ -409,12 +409,6 @@ class Datepicker extends React.Component {
 			dateDisabled={this.props.dateDisabled}
 			onRequestClose={this.handleRequestClose}
 			onSelectDate={this.handleCalendarChange}
-			ref={() => {
-				// since it's inline, there is no callback except on render
-				if (this.props.isInline) {
-					this.handleOpen();
-				}
-			}}
 			relativeYearFrom={this.props.relativeYearFrom}
 			relativeYearTo={this.props.relativeYearTo}
 			selectedDate={date || new Date()}
@@ -460,6 +454,18 @@ class Datepicker extends React.Component {
 		/* eslint-enable react/prop-types */
 	}
 
+	setInputRef (component) {
+		this.inputRef = component;
+		// yes, this is a re-render triggered by a render.
+		// Dialog/Popper.js cannot place the popover until
+		// the trigger/target DOM node is mounted. This
+		// way `findDOMNode` is not called and parent
+		// DOM nodes are not queried.
+		if (!this.state.inputRendered) {
+			this.setState({ inputRendered: true });
+		}
+	}
+
 	render () {
 		// Merge objects of strings with their default object
 		const labels = assign({}, defaultProps.labels, this.props.labels);
@@ -479,7 +485,7 @@ class Datepicker extends React.Component {
 				type="button"
 			/>),
 			id: this.getId(),
-			inputRef: (component) => { this.inputRef = component; },
+			inputRef: (component) => { this.setInputRef(component); },
 			label: (this.props.children && this.props.children.props.label)
 				|| this.props.label // eslint-disable-line react/prop-types
 				|| labels.label,
@@ -519,9 +525,7 @@ class Datepicker extends React.Component {
 				)}
 			>
 				{clonedInput}
-				{this.props.isInline
-					? this.getInlineMenu({ labels, assistiveText })
-					: this.getDialog({ labels, assistiveText })}
+				{this.getDialog({ labels, assistiveText })}
 			</div>
 		);
 	}

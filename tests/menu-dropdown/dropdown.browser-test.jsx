@@ -1,169 +1,369 @@
-/* eslint-disable react/no-render-return-value */
-
+// Import your external dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
-import assign from 'lodash.assign';
-import TestUtils from 'react-addons-test-utils';
-
+import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
+import { mount } from 'enzyme';
+import assign from 'lodash.assign';
+import { Simulate, findRenderedDOMComponentWithClass } from 'react-addons-test-utils';
 
-// `this.wrapper` and `this.dom` is set in the helpers file
+/* Enzyme Helpers that can mount and unmount React component instances to
+ * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`
+ * context [full source here](tests/enzyme-helpers.js). `this` can
+ * only be referenced if inside `function () {}`.
+ */
 import { mountComponent, unmountComponent } from '../enzyme-helpers';
 
-import IconSettings from '../../components/icon-settings';
+// Import your internal dependencies (for example):
 import Dropdown from '../../components/menu-dropdown';
+import IconSettings from '~/components/icon-settings';
 import List from '../../components/utilities/menu-list';
+import KEYS, { keyObjects } from '../../utilities/key-code';
 
-const { Simulate,	findRenderedDOMComponentWithClass } = TestUtils;
-
+/* Set Chai to use chaiEnzyme for enzyme compatible assertions:
+ * https://github.com/producthunt/chai-enzyme
+ */
 chai.use(chaiEnzyme());
 
-describe('SLDSMenuDropdown: ', () => {
-	let body;
-	const options = [
-		{ label: 'A super short', value: 'A0' },
-		{ label: 'B Option Super Super Long', value: 'B0' },
-		{ label: 'C Option', value: 'C0' },
-		{ disabled: true, label: 'D Option', value: 'D0' }
-	];
+const menuOptions = [
+	{ label: 'A super short', value: 'A0' },
+	{ label: 'B Option Super Super Long', value: 'B0' },
+	{ label: 'C Option', value: 'C0' },
+	{ disabled: true, label: 'D Option', value: 'D0' }
+];
 
-	const renderDropdown = (inst) => {
-		body = document.createElement('div');
-		document.body.appendChild(body);
-		return ReactDOM.render(<IconSettings iconPath="/assets/icons">{inst}</IconSettings>, body);
-	};
+const defaultProps = {
+	id: 'sample-dropdown',
+	label: 'Test',
+	menuPosition: 'relative',
+	openOn: 'click',
+	options: menuOptions,
+	placeholder: 'Select a contact',
+	value: 'B0'
+};
 
-	function removeDropdownTrigger () {
-		ReactDOM.unmountComponentAtNode(body);
-		document.body.removeChild(body);
-	}
-
-	const defaultProps = {
-		label: 'Contacts',
-		openOn: 'click',
-		isInline: true,
-		options,
-		placeholder: 'Select a contact',
-		value: 'B0'
-	};
-
-	const iconOnlyProps = {
-		assistiveText: 'more options',
-		buttonVariant: 'icon',
-		checkmark: true,
-		iconName: 'down',
-		iconVariant: 'border-filled',
-		openOn: 'click',
-		isInline: true,
-		options,
-		placeholder: 'Select an Action',
-		value: 'C0'
-	};
-
-	const createDropdown = (props) => React.createElement(Dropdown, assign({}, defaultProps, props));
-	createDropdown.displayName = 'createDropdown';
-	const createDropdownIcon = (props) => React.createElement(Dropdown, assign({}, iconOnlyProps, props));
-	createDropdownIcon.displayName = 'createDropdownIcon';
-
-	/* eslint-disable react/prop-types */
-	const DropdownCustomContent = (props) => (
-		<div id="custom-dropdown-menu-content">
-			<div className="slds-m-around--medium">
-				<div className="slds-tile slds-tile--board slds-m-horizontal--small">
-					<p className="tile__title slds-text-heading--small">Art Vandelay</p>
-					<div className="slds-tile__detail">
-						<p className="slds-truncate">
-							<a id="custom-dropdown-menu-content-link" className="slds-m-right--medium" href="javascript:void(0);" onClick={props.onClick}>Settings</a>
-							<a href="javascript:void(0);" onClick={props.onClick}>Log Out</a>
-						</p>
-					</div>
+/* eslint-disable react/prop-types */
+const DropdownCustomContent = (props) => (
+	<div id="custom-dropdown-menu-content">
+		<div className="slds-m-around--medium">
+			<div className="slds-tile slds-tile--board slds-m-horizontal--small">
+				<p className="tile__title slds-text-heading--small">Art Vandelay</p>
+				<div className="slds-tile__detail">
+					<p className="slds-truncate">
+						<a id="custom-dropdown-menu-content-link" className="slds-m-right--medium" href="javascript:void(0);" onClick={props.onClick}>Settings</a>
+						<a href="javascript:void(0);" onClick={props.onClick}>Log Out</a>
+					</p>
 				</div>
 			</div>
 		</div>
-	);
-	DropdownCustomContent.displayName = 'DropdownCustomContent';
+	</div>
+);
+DropdownCustomContent.displayName = 'DropdownCustomContent';
 
-	const createDropdownWithCustomChildren = (props) => (
-		<Dropdown {...assign({}, defaultProps, props)} >
-			<DropdownCustomContent />
-			<List options={[{ label: 'Custom Content Option' }, ...options]} />
-		</Dropdown>
-	);
+/* A re-usable demo component fixture outside of `describe` sections
+ * can accept props within each test and be unmounted after each tests.
+ * This wrapping component will be similar to your wrapping component
+ * you will create in the React Storybook for manual testing.
+ */
+class DemoComponent extends React.Component {
+	render () {
+		return (
+			<IconSettings iconPath="/assets/icons">
+				<Dropdown
+					{...defaultProps}
+					{...this.props}
+				>
+					{this.props.children}
+				</Dropdown>
+			</IconSettings>
+		);
+	}
+}
 
-	createDropdownWithCustomChildren.displayName = 'createDropdownWithCustomChildren';
+DemoComponent.displayName = 'DropdownDemoComponent';
+DemoComponent.defaultProps = defaultProps;
 
-	const dropItDown = (props, children) => renderDropdown(createDropdown(props, children));
-	const dropItDownWithCustomChildren = (props) => renderDropdown(createDropdownWithCustomChildren(props));
-	const dropItDownIconOnly = (props) => renderDropdown(createDropdownIcon(props));
+const getNodes = ({ wrapper }) => ({
+	trigger: wrapper.find('.slds-dropdown-trigger'),
+	button: wrapper.find('.slds-dropdown-trigger button'),
+	menu: wrapper.find('.slds-dropdown'),
+	customContent: wrapper.find('#custom-dropdown-menu-content'),
+	customContentLink: wrapper.find('#custom-dropdown-menu-content #custom-dropdown-menu-content-link')
+});
 
-	const getMenu = (dom) => dom.querySelector('.slds-dropdown');
+/* All tests for component being tested should be wrapped in a root `describe`,
+ * which should be named after the component being tested.
+ * When read aloud, the cumulative `describe` and `it` names should form a coherent
+ * sentence, eg "Date Picker default structure and css is present with expected
+ * attributes set". If you are having trouble constructing a cumulative short
+ * sentence, this may be an indicator that your test is poorly structured.
+ * String provided as first parameter names the `describe` section. Limit to nouns
+ * as much as possible/appropriate.`
+ */
+describe('SLDSMenuDropdown', function () {
+	let wrapper;
 
 	describe('Styling', () => {
 		beforeEach(mountComponent(
-			<Dropdown
-				className="this-is-the-menu"
-				isInline
-				nubbinPosition="top left"
-				modal={false}
-				label="Test"
+			<DemoComponent
 				menuStyle={{ height: '500px' }}
-				openOn="click"
-				options={options}
 			/>
 		));
 
 		afterEach(unmountComponent);
 
 		it('has correct CSS classes and style', function () {
-			const btn = this.wrapper.find('.slds-button').node;
-			Simulate.click(btn);
-			const componentNode = this.wrapper.find('.slds-dropdown');
-			expect(componentNode).to.exist;
-			expect(componentNode).to.have.style('height', '500px');
+			const nodes = getNodes({ wrapper: this.wrapper });
+			nodes.button.simulate('click', {});
+			const openNodes = getNodes({ wrapper: this.wrapper });
+			expect(openNodes.menu).to.exist;
+			expect(openNodes.menu).to.have.style('height', '500px');
 		});
 	});
 
 	describe('Custom Content Present', () => {
-		let cmp;
-		let btn;
-		beforeEach(() => {
-			/* eslint-disable no-unused-vars */
-			let selected = false;
-			/* eslint-enable no-unused-vars */
-			cmp = dropItDownWithCustomChildren({ onSelect: (i) => {
-				selected = i;
-			} },
-			);
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+		beforeEach(mountComponent(
+			<DemoComponent
+				nubbinPosition="top left"
+				openOn="click"
+			>
+				<DropdownCustomContent />
+				<List options={[{ label: 'Custom Content Option' }, ...menuOptions]} />
+			</DemoComponent>
+		));
+
+		afterEach(unmountComponent);
+
+		it('has content with custom ID is present', function () {
+			const nodes = getNodes({ wrapper: this.wrapper });
+			nodes.button.simulate('click', {});
+			const openNodes = getNodes({ wrapper: this.wrapper });
+			expect(openNodes.customContent.nodes.length).to.equal(1);
 		});
 
-		afterEach(() => {
-			removeDropdownTrigger(btn);
+		it('closes when custom content is clicked', function () {
+			const nodes = getNodes({ wrapper: this.wrapper });
+			nodes.button.simulate('click', {});
+			const openNodes = getNodes({ wrapper: this.wrapper });
+			openNodes.customContentLink.simulate('click', {});
+			const closedNodes = getNodes({ wrapper: this.wrapper });
+			expect(closedNodes.customContent.nodes.length).to.equal(0);
 		});
 
-		it('has content with custom ID is present', () => {
-			Simulate.click(btn, {});
-			const customContent = getMenu(body).querySelector('#custom-dropdown-menu-content');
-			expect(customContent).to.not.equal(undefined);
-		});
-
-		it('closes when custom content is clicked', () => {
-			Simulate.click(btn, {});
-			const customContentLink = getMenu(body).querySelector('#custom-dropdown-menu-content').querySelector('#custom-dropdown-menu-content-link');
-			Simulate.click(customContentLink, {});
-			expect(getMenu(body)).to.equal(null);
-		});
-
-		it('has additional ListItem from list child\'s options prop', () => {
-			const buttonId = body.querySelector('.slds-dropdown-trigger').id;
-			Simulate.click(btn, {});
-			const customContentFirstItemText = getMenu(body).querySelector(`#${buttonId}-item-0`).firstChild.firstChild.textContent;
-			expect(customContentFirstItemText).to.equal('Custom Content Option');
+		it('has additional ListItem from list child\'s options prop', function () {
+			const nodes = getNodes({ wrapper: this.wrapper });
+			const buttonId = nodes.trigger.node.id;
+			nodes.button.simulate('click', {});
+			const openNodes = getNodes({ wrapper: this.wrapper });
+			expect(openNodes.menu.find(`#${buttonId}-item-0`).text()).to.equal('Custom Content Option');
 		});
 	});
 
+	describe('Clickable', () => {
+		const onClick = sinon.spy();
+
+		beforeEach(mountComponent(
+			<DemoComponent
+				onClick={onClick}
+			/>
+		));
+
+		afterEach(unmountComponent);
+
+		it('does not expand on hover', function () {
+			const nodes = getNodes({ wrapper: this.wrapper });
+			expect(nodes.menu.nodes.length).to.equal(0);
+			nodes.trigger.simulate('mouseEnter', {});
+			const hoverNodes = getNodes({ wrapper: this.wrapper });
+			expect(hoverNodes.menu.nodes.length).to.equal(0);
+		});
+
+		it('expands/contracts on click', function () {
+			const nodes = getNodes({ wrapper: this.wrapper });
+			expect(nodes.menu.nodes.length).to.equal(0);
+			nodes.trigger.simulate('click', {});
+			const openNodes = getNodes({ wrapper: this.wrapper });
+			expect(openNodes.menu.nodes.length).to.equal(1);
+			openNodes.trigger.simulate('click', {});
+			const closedNodes = getNodes({ wrapper: this.wrapper });
+			expect(closedNodes.menu.nodes.length).to.equal(0);
+		});
+
+		it('preserves click behavior', function () {
+			onClick.reset();
+			const nodes = getNodes({ wrapper: this.wrapper });
+			nodes.trigger.simulate('click', {});
+			expect(onClick.calledOnce);
+		});
+	});
+
+	describe('Expanded', () => {
+		let selected;
+
+		beforeEach(mountComponent(
+			<DemoComponent
+				onSelect={(selectedOption) => { selected = selectedOption; }}
+			/>
+		));
+
+		afterEach(unmountComponent);
+
+		it('selects an item on click', function () {
+			const nodes = getNodes({ wrapper: this.wrapper });
+			expect(nodes.menu.nodes.length).to.equal(0);
+			nodes.trigger.simulate('click', {});
+			const openNodes = getNodes({ wrapper: this.wrapper });
+			openNodes.menu.find('li a').first().simulate('click', {});
+			expect(selected.value).to.equal('A0');
+		});
+	});
+
+	describe('accessible markup for label Dropdowns', () => {
+		beforeEach(mountComponent(
+			<DemoComponent />
+		));
+
+		afterEach(unmountComponent);
+
+		it('<ul> has role menu & aria-labelledby', function () {
+			const nodes = getNodes({ wrapper: this.wrapper });
+			nodes.trigger.simulate('click', {});
+			const openNodes = getNodes({ wrapper: this.wrapper });
+			expect(openNodes.menu.find('ul').node.getAttribute('role')).to.equal('menu');
+			expect(openNodes.menu.find('ul').node.getAttribute('aria-labelledby')).to.equal(openNodes.trigger.node.getAttribute('id'));
+		});
+
+		it('<a> inside <li> has role menuitem', function () {
+			const nodes = getNodes({ wrapper: this.wrapper });
+			nodes.trigger.simulate('click', {});
+			const openNodes = getNodes({ wrapper: this.wrapper });
+			const anchorRole = openNodes.menu.find('li a').first().node.getAttribute('role');
+			const match = (anchorRole === 'menuitem' || anchorRole === 'menuitemradio' || anchorRole === 'menuitemcheckbox');
+			expect(match).to.be.true;
+		});
+
+		it('if option.disabled, add aria-disabled to <a> that has role menuitem', function () {
+			const nodes = getNodes({ wrapper: this.wrapper });
+			nodes.trigger.simulate('click', {});
+			const openNodes = getNodes({ wrapper: this.wrapper });
+			const lastItemAriaDisabledRole = openNodes.menu.find('li a').get(3).getAttribute('aria-disabled');
+			expect(lastItemAriaDisabledRole).to.equal('true');
+		});
+	});
+
+	describe('accessible markup for Icon Only Dropdowns', () => {
+		beforeEach(mountComponent(
+			<DemoComponent
+				assistiveText="more options"
+				buttonVariant="icon"
+				checkmark
+				iconName="down"
+				iconVariant="border-filled"
+			/>
+		));
+
+		afterEach(unmountComponent);
+
+		it('<button> has assistiveText', function () {
+			const nodes = getNodes({ wrapper: this.wrapper });
+			console.log(nodes.button);
+			expect(nodes.button.find('.slds-assistive-text').text()).to.equal('more options');
+		});
+	});
+
+	describe('Keyboard behavior', () => {
+		let selected;
+
+		beforeEach(mountComponent(
+			<DemoComponent
+				onSelect={(selectedOption) => { selected = selectedOption; }}
+			/>
+		));
+
+		afterEach(unmountComponent);
+
+		it('opens menu with enter', function () {
+			const nodes = getNodes({ wrapper: this.wrapper });
+			expect(nodes.menu.nodes.length).to.equal(0);
+			nodes.button.simulate('keyDown', keyObjects.ENTER);
+			const openNodes = getNodes({ wrapper: this.wrapper });
+			expect(openNodes.menu.nodes.length).to.equal(1);
+		});
+
+		it('opens menu with down arrow key', function () {
+			const nodes = getNodes({ wrapper: this.wrapper });
+			expect(nodes.menu.nodes.length).to.equal(0);
+			nodes.button.simulate('keyDown', keyObjects.DOWN);
+			const openNodes = getNodes({ wrapper: this.wrapper });
+			expect(openNodes.menu.nodes.length).to.equal(1);
+		});
+
+		it('selects an item with keyboard', function () {
+			const nodes = getNodes({ wrapper: this.wrapper });
+			nodes.trigger.simulate('click', {});
+			const openNodes = getNodes({ wrapper: this.wrapper });
+			openNodes.menu.simulate('keyDown', keyObjects.DOWN);
+			openNodes.menu.simulate('keyDown', keyObjects.DOWN);
+			openNodes.menu.simulate('keyDown', keyObjects.ENTER);
+			expect(selected.value).to.equal('B0');
+		});
+
+		it('closes Menu on esc', function () {
+			const nodes = getNodes({ wrapper: this.wrapper });
+			expect(nodes.menu.nodes.length).to.equal(0);
+			nodes.trigger.simulate('click', {});
+			const openNodes = getNodes({ wrapper: this.wrapper });
+			expect(openNodes.menu.nodes.length).to.equal(1);
+			openNodes.menu.find('.slds-dropdown__item a').first().simulate('keyDown', keyObjects.ESCAPE);
+			const closedNodes = getNodes({ wrapper: this.wrapper });
+			expect(closedNodes.menu.nodes.length).to.equal(0);
+		});
+	});
+
+	describe('multiple selection', function () {
+		beforeEach(mountComponent(
+			<DemoComponent
+				multiple
+				checkmark
+			/>
+		));
+
+		afterEach(unmountComponent);
+
+		it('selects multiple items and renders checkmarks', function () {
+			const nodes = getNodes({ wrapper: this.wrapper });
+			nodes.trigger.simulate('click', {});
+			const openNodes = getNodes({ wrapper: this.wrapper });
+			expect(openNodes.menu.find('.slds-dropdown__item svg').nodes.length).to.equal(1);
+			openNodes.menu.find('.slds-dropdown__item a').first().simulate('click', {});
+			expect(openNodes.menu.find('.slds-dropdown__item svg').nodes.length).to.equal(2);
+		});
+	});
+
+	// Hover and hybrid hover UX patterns are not approved UX patterns due to accessibility concerns
+
 	describe('Hoverable', () => {
+		let body;
+
+		const renderDropdown = (inst) => {
+			body = document.createElement('div');
+			document.body.appendChild(body);
+			return ReactDOM.render(<IconSettings iconPath="/assets/icons">{inst}</IconSettings>, body); // eslint-disable-line react/no-render-return-value
+		};
+
+		function removeDropdownTrigger () {
+			ReactDOM.unmountComponentAtNode(body);
+			document.body.removeChild(body);
+		}
+
+		const createDropdown = (props) => React.createElement(Dropdown, assign({}, defaultProps, props));
+		createDropdown.displayName = 'createDropdown';
+
+		const dropItDown = (props, children) => renderDropdown(createDropdown(props, children));
+
+		const getMenu = (dom) => dom.querySelector('.slds-dropdown');
+
 		let cmp;
 		let btn;
 
@@ -181,7 +381,7 @@ describe('SLDSMenuDropdown: ', () => {
 		});
 
 		it('sets the label', () => {
-			expect(btn.textContent).to.equal('Contacts');
+			expect(btn.textContent).to.equal('Test');
 		});
 
 		it('expands the dropdown on hover', () => {
@@ -216,43 +416,27 @@ describe('SLDSMenuDropdown: ', () => {
 		});
 	});
 
-	describe('Clickable', () => {
-		let cmp;
-		let btn;
-		const onClick = sinon.spy();
-
-		beforeEach(() => {
-			cmp = dropItDown({ openOn: 'click', onClick });
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
-		});
-
-		afterEach(() => {
-			removeDropdownTrigger(btn);
-		});
-
-		it('doesnt expand on hover', () => {
-			expect(getMenu(body)).to.equal(null);
-			Simulate.mouseEnter(btn, {});
-			expect(getMenu(body)).to.equal(null);
-		});
-
-		it('expands/contracts on click', () => {
-			expect(getMenu(body)).to.equal(null);
-			Simulate.click(btn, {});
-			expect(getMenu(body).className).to.include('slds-dropdown');
-			Simulate.click(btn, {});
-			expect(getMenu(body)).to.equal(null);
-		});
-
-		it('preserves click behavior', () => {
-			onClick.reset();
-			Simulate.click(btn, {});
-			expect(onClick.calledOnce);
-			Simulate.click(btn, {});
-		});
-	});
-
 	describe('Hybrid-able', () => {
+		let body;
+
+		const renderDropdown = (inst) => {
+			body = document.createElement('div');
+			document.body.appendChild(body);
+			return ReactDOM.render(<IconSettings iconPath="/assets/icons">{inst}</IconSettings>, body); // eslint-disable-line react/no-render-return-value
+		};
+
+		function removeDropdownTrigger () {
+			ReactDOM.unmountComponentAtNode(body);
+			document.body.removeChild(body);
+		}
+
+		const createDropdown = (props) => React.createElement(Dropdown, assign({}, defaultProps, props));
+		createDropdown.displayName = 'createDropdown';
+
+		const dropItDown = (props, children) => renderDropdown(createDropdown(props, children));
+
+		const getMenu = (dom) => dom.querySelector('.slds-dropdown');
+
 		let cmp;
 		let btn;
 		const onClick = sinon.spy();
@@ -286,195 +470,6 @@ describe('SLDSMenuDropdown: ', () => {
 				expect(getMenu(body)).to.equal(null);
 				done();
 			}, 600);
-		});
-	});
-
-	describe('Expanded', () => {
-		let cmp;
-		let btn;
-		let selected;
-
-		beforeEach(() => {
-			selected = false;
-			cmp = dropItDown({ openOn: 'click', onSelect: (i) => { selected = i; } });
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
-		});
-
-		afterEach(() => {
-			removeDropdownTrigger(btn);
-		});
-
-		it('selects an item on click', () => {
-			Simulate.click(btn, {});
-			expect(selected).to.be.false;
-			const items = getMenu(body).querySelectorAll('.slds-dropdown__item');
-			Simulate.click(items[1].querySelector('a'), {});
-			expect(selected.value).to.equal('B0');
-		});
-	});
-
-	describe('accessible markup for label Dropdowns', () => {
-		let cmp;
-		let btn;
-		beforeEach(() => {
-			/* eslint-disable no-unused-vars */
-			let selected = false;
-			/* eslint-enable no-unused-vars */
-			cmp = dropItDown({ onSelect: (i) => {
-				selected = i;
-			} });
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
-		});
-
-		afterEach(() => {
-			removeDropdownTrigger(btn);
-		});
-
-		it('<ul> has role menu & aria-labelledby', () => {
-			Simulate.click(btn, {});
-			const ulRole = getMenu(body).querySelector('ul').getAttribute('role');
-			const ulAria = getMenu(body).querySelector('ul').getAttribute('aria-labelledby');
-			expect(ulRole).to.equal('menu');
-			expect(ulAria).to.equal(btn.getAttribute('id'));
-		});
-
-		it('<a> inside <li> has role menuitem', () => {
-			Simulate.click(btn, {});
-			const items = getMenu(body).querySelectorAll('.slds-dropdown__item a');
-			const anchorRole = items[1].getAttribute('role');
-			const match = (anchorRole === 'menuitem' || anchorRole === 'menuitemradio' || anchorRole === 'menuitemcheckbox');
-			expect(match).to.be.true;
-		});
-
-		it('if option.disabled, add aria-disabled to <a> that has role menuitem', () => {
-			Simulate.click(btn, {});
-			const items = getMenu(body).querySelectorAll('.slds-dropdown__item a');
-			const lastItemAriaDisabledRole = items[3].getAttribute('aria-disabled');
-			expect(lastItemAriaDisabledRole).to.equal('true');
-		});
-	});
-
-	describe('accessible markup for Icon Only Dropdowns', () => {
-		let cmp;
-		let btn;
-		beforeEach(() => {
-			/* eslint-disable no-unused-vars */
-			let selected = false;
-			/* eslint-enable no-unused-vars */
-			cmp = dropItDownIconOnly({ onSelect: (i) => {
-				selected = i;
-			} });
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
-		});
-
-		afterEach(() => {
-			removeDropdownTrigger(btn);
-		});
-
-		it('<button> has assistiveText', () => {
-			const asstText = btn.getElementsByClassName('slds-assistive-text')[0].textContent;
-			expect(asstText).to.equal('more options');
-		});
-
-		it('<ul> has role menu & aria-labelledby', () => {
-			Simulate.click(btn, {});
-			const ulRole = getMenu(body).querySelector('ul').getAttribute('role');
-			const ulAria = getMenu(body).querySelector('ul').getAttribute('aria-labelledby');
-			expect(ulRole).to.equal('menu');
-			expect(ulAria).to.equal(btn.getAttribute('id'));
-		});
-
-		it('<a> inside <li> has role menuitem', () => {
-			Simulate.click(btn, {});
-			const items = getMenu(body).querySelectorAll('.slds-dropdown__item a');
-			const anchorRole = items[1].getAttribute('role');
-			const match = (anchorRole === 'menuitem' || anchorRole === 'menuitemradio' || anchorRole === 'menuitemcheckbox');
-			expect(match).to.be.true;
-		});
-	});
-
-	describe('Keyboard behavior', () => {
-		let cmp;
-		let btn;
-		let selected = false;
-		beforeEach(() => {
-			cmp = dropItDown({
-				openOn: 'click',
-				onSelect: (i) => {
-					selected = i;
-				} });
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
-		});
-
-		afterEach(() => {
-			removeDropdownTrigger(btn);
-		});
-
-		it('opens menu with enter', () => {
-			expect(getMenu(body)).to.equal(null);
-			Simulate.keyDown(btn, { key: 'Enter', keyCode: 13, which: 13 });
-			expect(getMenu(body)).to.not.equal(null);
-		});
-
-		it('opens menu with down arrow key', () => {
-			expect(getMenu(body)).to.equal(null);
-			Simulate.keyDown(btn, { key: 'Down', keyCode: 40, which: 40 });
-			expect(getMenu(body)).to.not.equal(null);
-		});
-
-		it('selects an item with keyboard', () => {
-			Simulate.click(btn, {});
-			expect(selected).to.be.false;
-
-			const menu = getMenu(body);
-			Simulate.keyDown(menu, { key: 'Down', keyCode: 40, which: 40 });
-			Simulate.keyDown(menu, { key: 'Down', keyCode: 40, which: 40 });
-			Simulate.keyDown(menu, { key: 'Enter', keyCode: 13, which: 13 });
-			expect(selected.value).to.equal('B0');
-		});
-
-		it('closes Menu on esc', () => {
-			expect(getMenu(body)).to.equal(null);
-			Simulate.click(btn, {});
-			expect(getMenu(body)).to.not.equal(null);
-			const menuItems = getMenu(body).querySelectorAll('.slds-dropdown__item');
-			Simulate.keyDown(menuItems[1].querySelector('a'), { key: 'Esc', keyCode: 27, which: 27 });
-			expect(getMenu(body)).to.equal(null);
-		});
-	});
-
-	describe('multiple selection', () => {
-		let cmp;
-		let btn;
-		let selected = false;
-		beforeEach(() => {
-			cmp = dropItDown({
-				openOn: 'click',
-				multiple: true,
-				checkmark: true,
-				onSelect: (i) => {
-					selected = i;
-				} });
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
-		});
-
-		afterEach(() => {
-			removeDropdownTrigger(btn);
-		});
-
-		it('selects multiple items and renders pills', () => {
-			Simulate.click(btn, {});
-			expect(selected).to.be.false;
-			const checkItemLengthBefore = getMenu(body).querySelectorAll('.slds-dropdown__item svg').length;
-			expect(checkItemLengthBefore).to.equal(1);
-
-			const items = getMenu(body).querySelectorAll('.slds-dropdown__item');
-			Simulate.click(items[0].querySelector('a'), {});
-			Simulate.click(items[1].querySelector('a'), {});
-			Simulate.click(items[2].querySelector('a'), {});
-
-			const checkItemLengthAfter = getMenu(body).querySelectorAll('.slds-dropdown__item svg').length;
-			expect(checkItemLengthAfter).to.equal(2);
 		});
 	});
 });

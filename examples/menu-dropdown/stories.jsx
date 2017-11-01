@@ -119,7 +119,7 @@ const getDropdownPositioned = (props) => {
 			<div className="slds-col slds-size--1-of-3" style={{ minHeight: '500px' }}>
 				<Dropdown
 					{...props}
-					forceOpen
+					isOpen
 					nubbinPosition={position}
 					onClose={action('Closed')}
 					onOpen={action('Opened')}
@@ -160,7 +160,10 @@ const getDropdownCustomTrigger = (props) => (
 		onOpen={action('Opened')}
 	>
 		<Trigger>
-			<Button iconCategory="utility" iconName="settings" />
+			<Button
+				iconCategory="utility"
+				iconName="settings"
+			/>
 		</Trigger>
 	</Dropdown>
 );
@@ -222,8 +225,8 @@ storiesOf(MENU_DROPDOWN, module)
 	}))
 	.add('Render inline', () => getDropdown({
 		align: 'right',
-		isInline: true,
 		label: 'Dropdown Click',
+		menuPosition: 'relative',
 		onClick: (...rest) => {
 			action('Clicked')(...rest);
 		},
@@ -233,7 +236,7 @@ storiesOf(MENU_DROPDOWN, module)
 		options
 	}))
 	.add('Render inline w/ Nubbins', () => getDropdownPositioned({
-		isInline: true,
+		menuPosition: 'relative',
 		onSelect: (...rest) => {
 			action('Selected')(...rest);
 		},

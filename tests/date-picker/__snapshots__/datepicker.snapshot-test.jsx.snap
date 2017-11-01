@@ -99,6 +99,10 @@ exports[`Datepicker
   </div>
   <div
     className="slds-datepicker slds-dropdown slds-dropdown--right CUSTOM-CLASSNAME"
+    onKeyDown={[Function]}
+    onMouseEnter={undefined}
+    onMouseLeave={undefined}
+    style={Object {}}
   >
     <div
       aria-hidden="false"
@@ -1005,6 +1009,10 @@ exports[`Datepicker
   </div>
   <div
     className="slds-datepicker slds-dropdown slds-dropdown--left"
+    onKeyDown={[Function]}
+    onMouseEnter={undefined}
+    onMouseLeave={undefined}
+    style={Object {}}
   >
     <div
       aria-hidden="false"
@@ -1909,6 +1917,10 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
   </div>
   <div
     className="slds-datepicker slds-dropdown slds-dropdown--left"
+    onKeyDown={[Function]}
+    onMouseEnter={undefined}
+    onMouseLeave={undefined}
+    style={Object {}}
   >
     <div
       aria-hidden="false"

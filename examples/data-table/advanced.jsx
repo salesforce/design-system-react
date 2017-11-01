@@ -70,7 +70,7 @@ const Example = createReactClass({
 
 	render () {
 		return (
-			<div style={{ overflow: 'auto' }}>
+			<div>
 				<IconSettings iconPath="/assets/icons">
 					<DataTable
 						fixedLayout

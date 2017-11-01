@@ -33,7 +33,6 @@ const GlobalHeaderDropdown = (props) => {
 
 	return (
 		<MenuDropdown
-			isInline
 			nubbinPosition="top right"
 			{...rest}
 		>
@@ -113,7 +112,7 @@ GlobalHeaderDropdown.defaultProps = {
 	iconVariant: 'global-header',
 	nubbinPosition: 'top right',
 	// TODO: Use design tokens to remove "magic numbers" that center nubbin under button
-	offset: '-12px -16px'
+	offset: '12px 16px'
 };
 
 export default GlobalHeaderDropdown;

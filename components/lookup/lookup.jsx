@@ -85,7 +85,7 @@ const Lookup = createReactClass({
 		 */
 		filterWith: PropTypes.func,
 		/**
-		 * If true, the menu is constrained to the window and may be flipped up. Has no effect if `isInline` is `true`.
+		 * If true, the menu is constrained to the window and may be flipped up. Has no effect if `isInline` is `true`. In other components, its opposite is used `hasStaticAlignment`.
 		 */
 		flippable: PropTypes.bool,
 		/**
@@ -559,16 +559,16 @@ const Lookup = createReactClass({
 	renderSeparateMenu () {
 		return (this.getIsOpen()
 			? <Dialog
+				align="bottom"
 				className="slds-lookup__menu slds-show"
 				closeOnTabKey
 				contentsClassName="slds-lookup__menu slds-show"
 				context={this.context}
 				inheritTargetWidth
 				onClose={this.handleCancel}
-				flippable={this.props.flippable}
+				hasStaticAlignement={!this.props.flippable}
 				constrainToScrollParent={this.props.constrainToScrollParent}
-				targetElement={this.input}
-				verticalAlign="bottom"
+				onRequestTargetElement={() => this.input}
 			>
 				{this.renderMenuContent()}
 			</Dialog>

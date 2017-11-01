@@ -4,6 +4,8 @@ import IconSettings from '~/components/icon-settings';
 import Popover from '~/components/popover'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 
+import { action, decorateAction } from '@storybook/addon-actions';
+
 const Example = createReactClass({
 	displayName: 'PopoverExample',
 
@@ -26,7 +28,7 @@ const Example = createReactClass({
 	},
 
 	handleRequestClose (event, data) {
-		if (this.props.log) { this.props.log('onRequestClose')(event, data); }
+		if (this.props.log) { this.props.log('onRequestClose'); }
 		this.setState({ isOpen: false });
 	},
 

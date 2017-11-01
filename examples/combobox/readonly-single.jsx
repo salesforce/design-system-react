@@ -46,7 +46,7 @@ class Example extends React.Component {
 					}}
 					labels={{
 						label: 'Search',
-						placeholderReadOnly: 'Select company'
+						placeholder: 'Search Salesforce'
 					}}
 					options={accounts}
 					selection={this.state.selection}

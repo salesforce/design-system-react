@@ -166,7 +166,8 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		it('long descriptions use Tooltip activated by hover', () => {
 			// this test causes the tooltip to 'flash' on the testing page http://localhost:8001/
 			Simulate.mouseEnter(handles.more.node, {});
-			should.exist(handles.tile.find('.slds-popover--tooltip'));
+			// uses portal mount
+			should.exist(document.querySelector('.slds-popover--tooltip'));
 			Simulate.mouseLeave(handles.more.node, {});
 		});
 

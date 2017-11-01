@@ -39,7 +39,6 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
 					id="combobox-unique-id"
-					isInline
 					events={{
 						onChange: (event, { value }) => {
 							console.log('onChange', value);
@@ -75,6 +74,7 @@ class Example extends React.Component {
 						label: 'Search',
 						placeholder: 'Search Salesforce'
 					}}
+					menuPosition="relative"
 					options={filter({
 						inputValue: this.state.inputValue,
 						options: accountsWithIcon,

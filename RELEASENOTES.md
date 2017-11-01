@@ -10,7 +10,6 @@ These are changes that have backwards-compatible solutions present and that comp
 - `TabsPane` has been replaced with `TabsPanel`.
 - `Input`'s props: `iconPosition`, `iconAssistiveText`, `iconCategory`, `iconName`, `onIconClick` are deprecated. An `Icon` component should be used instead.
 - `DataTable`'s `collection`, `onSelect`, `onDeselect` are deprecated.
-- The prop `modal` in `DatePicker`, `Lookup`, `MenuDropdown`, `MenuPicklist`, `TimePicker` is deprecated
 - Remove `openByDefault` from `PopoverTooltip`.
 - Remove alias component files. Please update the following removed files to their new file name.
     - tabs/pane

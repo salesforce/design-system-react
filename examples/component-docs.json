@@ -5711,7 +5711,7 @@
         ]
     },
     "lookup": {
-        "description": "Lookup is an advanced inline search form. The lookup can parse through single or multi scoped datasets. The parsed dataset can be filtered by single or multi option selects.\n\nThis component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.\n\nThis component may use a portalMount (a disconnected React subtree mount) within an absolutely positioned DOM node created with [Drop](http://github.hubspot.com/drop/).",
+        "description": "** Lookup is deprecated. Please use an auto-complete Combobox instead.**\n\nLookup is an advanced inline search form. The lookup can parse through single or multi scoped datasets. The parsed dataset can be filtered by single or multi option selects.\n\nThis component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.\n\nThis component may use a portalMount (a disconnected React subtree mount) within an absolutely positioned DOM node created with [Drop](http://github.hubspot.com/drop/).",
         "methods": [
             {
                 "name": "modifyItems",
@@ -7453,7 +7453,7 @@
         ]
     },
     "menu-picklist": {
-        "description": "The MenuPicklist component is a variant of the Lightning Design System Menu component.",
+        "description": "** MenuPicklist is deprecated. Please use a read-only Combobox instead.**\n\nThe MenuPicklist component is a variant of the Lightning Design System Menu component.",
         "methods": [
             {
                 "name": "getId",
@@ -7824,7 +7824,7 @@
         "dependencies": []
     },
     "modal": {
-        "description": "The Modal component is used for the Lightning Design System Modal and Notification > Prompt components. The Modal opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop). For more details on the Prompt markup, please review the <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">Notifications > Prompt</a>.\n\nBy default, `Modal` will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```\n\nThis component uses a portalMount (a disconnected React subtree mount) to create a modal as a child of `body`.",
+        "description": "The Modal component is used for the Lightning Design System Modal and Notification > Prompt components. The Modal opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop). For more details on the Prompt markup, please review the <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">Notifications > Prompt</a>.\n\nBy default, `Modal` will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```\n\nThis component uses a portalMount (a disconnected React subtree mount) to create a modal as a child of `body`.\nWhen dynamically generating a `Button` that will be used to toggle a `Modal`, you may see the parent page scroll down. If `parentSelector` points to the `Button`, the `Modal` will display, but will not be clickable. The `Modal` has been rendered inside the `Button` and its event listeners. To fix these issues, define a DOM element with an ID along with the `Button`. Set the `Modal`'s `parentSelector` to that DOM element's `id`.\n```\n<div id={`toggleButtonFor-${modalId}`} style={{zIndex: '2'}} />\n<Button onClick={this.toggleModal} />\n...\n<Modal parentSelector={() => document.querySelector(`#toggleButtonFor-${modalId}`)} />\n```",
         "displayName": "Modal",
         "methods": [
             {

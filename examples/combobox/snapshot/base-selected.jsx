@@ -33,10 +33,10 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
 					id="combobox-unique-id"
-					isInline
 					labels={{
 						placeholder: 'Search Salesforce'
 					}}
+					menuPosition="relative"
 					onChange={(event, { value }) => {
 						console.log('onChange', value);
 						this.setState({	inputValue: value });

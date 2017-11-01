@@ -86,18 +86,16 @@ describe('SLDSDatepicker', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('has aria-haspopup, correct aria-expanded on input trigger.', function (done) {
+		it('has aria-haspopup, correct aria-expanded on input trigger.', function () {
 			wrapper = mount(<DemoComponent
 				isOpen
-				onOpen={() => {
-					const inputTrigger = wrapper.find(triggerClassSelector);
-					expect(inputTrigger.node.getAttribute('aria-haspopup')).to.equal('true');
-
-					const ariaExpanded = inputTrigger.find('button').node.getAttribute('aria-expanded');
-					expect(ariaExpanded).to.equal('true');
-					done();
-				}}
 			/>, { attachTo: mountNode });
+
+			const inputTrigger = wrapper.find(triggerClassSelector);
+			expect(inputTrigger.node.getAttribute('aria-haspopup')).to.equal('true');
+
+			const ariaExpanded = inputTrigger.find('button').node.getAttribute('aria-expanded');
+			expect(ariaExpanded).to.equal('true');
 		});
 	});
 
@@ -164,6 +162,7 @@ describe('SLDSDatepicker', function () {
 		it('onChange is triggered when date is selected', function (done) {
 			wrapper = mount(<DemoComponent
 				onChange={(event, data) => {
+					console.log('onChange');
 					setTimeout(() => {
 						const input = wrapper.find('input');
 						expect(input.node.value).to.equal('1/1/2007');
@@ -222,85 +221,79 @@ describe('SLDSDatepicker', function () {
 			it('navigates to next week', function (done) {
 				wrapper = mount(<DemoComponent
 					isOpen
-					onOpen={() => {
-						const selectedDay = wrapper.find('.datepicker__month [aria-selected=true]');
-						selectedDay.simulate('keyDown', { key: 'Down', keyCode: KEYS.DOWN, which: KEYS.DOWN });
-					}}
 					onCalendarFocus={(event, data) => {
 						expect(data.date.getTime()).to.equal(new Date(2007, 0, 13).getTime());
 						done();
 					}}
 				/>, { attachTo: mountNode });
+
+				const selectedDay = wrapper.find('.datepicker__month [aria-selected=true]');
+				selectedDay.simulate('keyDown', { key: 'Down', keyCode: KEYS.DOWN, which: KEYS.DOWN });
 			});
 
 			it('navigates to next day', function (done) {
 				wrapper = mount(<DemoComponent
 					isOpen
-					onOpen={() => {
-						const selectedDay = wrapper.find('.datepicker__month [aria-selected=true]');
-						selectedDay.simulate('keyDown', { key: 'Right', keyCode: KEYS.RIGHT, which: KEYS.RIGHT });
-					}}
 					onCalendarFocus={(event, data) => {
 						expect(data.date.getTime()).to.equal(new Date(2007, 0, 7).getTime());
 						done();
 					}}
 				/>, { attachTo: mountNode });
+
+				const selectedDay = wrapper.find('.datepicker__month [aria-selected=true]');
+				selectedDay.simulate('keyDown', { key: 'Right', keyCode: KEYS.RIGHT, which: KEYS.RIGHT });
 			});
 
 			it('navigates to previous week (that is of a previous month)', function (done) {
 				wrapper = mount(<DemoComponent
 					isOpen
-					onOpen={() => {
-						const selectedDay = wrapper.find('.datepicker__month [aria-selected=true]');
-						selectedDay.simulate('keyDown', { key: 'Up', keyCode: KEYS.UP, which: KEYS.UP });
-					}}
 					onCalendarFocus={(event, data) => {
 						expect(data.date.getTime()).to.equal(new Date(2006, 11, 30).getTime());
 						done();
 					}}
 				/>, { attachTo: mountNode });
+
+				const selectedDay = wrapper.find('.datepicker__month [aria-selected=true]');
+				selectedDay.simulate('keyDown', { key: 'Up', keyCode: KEYS.UP, which: KEYS.UP });
 			});
 
 			it('navigates to previous day', function (done) {
 				wrapper = mount(<DemoComponent
 					isOpen
-					onOpen={() => {
-						const selectedDay = wrapper.find('.datepicker__month [aria-selected=true]');
-						selectedDay.simulate('keyDown', { key: 'Left', keyCode: KEYS.LEFT, which: KEYS.LEFT });
-					}}
 					onCalendarFocus={(event, data) => {
 						expect(data.date.getTime()).to.equal(new Date(2007, 0, 5).getTime());
 						done();
 					}}
 				/>, { attachTo: mountNode });
+
+				const selectedDay = wrapper.find('.datepicker__month [aria-selected=true]');
+				selectedDay.simulate('keyDown', { key: 'Left', keyCode: KEYS.LEFT, which: KEYS.LEFT });
 			});
 
 			it('calendar blur, focus on previous month button', function (done) {
 				wrapper = mount(<DemoComponent
 					isOpen
-					onOpen={() => {
-						const selectedDay = wrapper.find('.datepicker__month [aria-selected=true]');
-						selectedDay.simulate('keyDown', { key: 'Tab', keyCode: KEYS.TAB, which: KEYS.TAB });
-					}}
 					onCalendarFocus={(event, data) => {
 						expect(data.ref.textContent).to.equal('Previous month');
 						done();
 					}}
 				/>, { attachTo: mountNode });
+
+				const selectedDay = wrapper.find('.datepicker__month [aria-selected=true]');
+				selectedDay.simulate('keyDown', { key: 'Tab', keyCode: KEYS.TAB, which: KEYS.TAB });
 			});
 
 			it('calendar blur, focus on today', function (done) {
 				wrapper = mount(<DemoComponent
 					isOpen
-					onOpen={() => {
-						const selectedDay = wrapper.find('.datepicker__month [aria-selected=true]');
-						selectedDay.simulate('keyDown', { key: 'Tab', keyCode: KEYS.TAB, shiftKey: true, which: KEYS.TAB });
-					}}
 					onCalendarFocus={(event, data) => {
 						expect(data.ref.textContent).to.equal('Today');
 						done();
 					}}
 				/>, { attachTo: mountNode });
+
+				const selectedDay = wrapper.find('.datepicker__month [aria-selected=true]');
+				selectedDay.simulate('keyDown', { key: 'Tab', keyCode: KEYS.TAB, shiftKey: true, which: KEYS.TAB });
 			});
 		});
 	});
@@ -346,26 +339,26 @@ describe('SLDSDatepicker', function () {
 		it('disable weekends', (done) => {
 			wrapper = mount(
 				<DemoComponent
+					isOpen
 					value={new Date(2007, 0, 5)}
 					dateDisabled={({ date }) => date.getDay() > 5 || date.getDay() < 1}
-					onOpen={() => {
-						const input = wrapper.find('input');
-						expect(input.node.value).to.equal('1/5/2007');
-
-						const disabledDay = wrapper.find('.datepicker__month [aria-disabled=true]').first();
-						disabledDay.simulate('click', {});
-
-						expect(input.node.value).to.equal('1/5/2007');
-
-						const day = wrapper.find('.datepicker__month [aria-disabled=false]').first();
-						day.simulate('click', {});
-
-						expect(input.node.value).to.equal('1/1/2007');
-						done();
-					}}
 				/>,
 				{ attachTo: mountNode }
 			);
+
+			const input = wrapper.find('input');
+			expect(input.node.value).to.equal('1/5/2007');
+
+			const disabledDay = wrapper.find('.datepicker__month [aria-disabled=true]').first();
+			disabledDay.simulate('click', {});
+
+			expect(input.node.value).to.equal('1/5/2007');
+
+			const day = wrapper.find('.datepicker__month [aria-disabled=false]').first();
+			day.simulate('click', {});
+
+			expect(input.node.value).to.equal('1/1/2007');
+			done();
 
 			const trigger = wrapper.find(triggerClassSelector);
 			trigger.simulate('click', {});

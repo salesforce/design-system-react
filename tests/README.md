@@ -25,7 +25,6 @@ Although we strive to make this library functional, controlled, presentational c
 * Pull requests should conform to [ESLint style definition](https://github.com/salesforce-ux/eslint-config-slds). Use `eslint-disable-line` within tests for exceptions.
 * Always pass HTML IDs in - Many components have the optional `id` property but will generate a random id to use if not passed in. These randomly generated IDs will cause your snapshot tests to fail. The markup text diff may be easier to debug if you change one prop per snapshot and have many snapshots instead of changing many props in one snapshot.
 * Tests must unmount and clean up the test fixture after each test or grouping of related tests. Do not allow unrelated tests to "bleed" into each other.
-* When creating Mocha tests, be careful of the function scope (`() => {}` vs `function () {}`) and the value of `this`.
 
 ## Testing Suite Overview
 - **[Mocha](http://mochajs.org/)** - Test framework ([getting started primer](http://mochajs.org/#getting-started))
@@ -39,9 +38,6 @@ Although we strive to make this library functional, controlled, presentational c
 - **[react-docgen](https://github.com/reactjs/react-docgen)** - Generates JSON used by this library's documentation site.
 - **[Istanbul](https://github.com/gotwarlost/istanbul)** - Measures code coverage
 - **Visual Recognition Tests (COMING SOON)** - Captures an image and compares it to previously captured images
-
-## Mocha Tests or Jest Snaphots?
-Are you visually testing markup or interactively testing events? If a simple `wrapper.find('[class]')` will do, you’ll probably better understand the markup's context if the snapshot fails or changes. Anything that requires `wrapper.simulate(“click”)`, or a `wrapper.simulate('onKeyDown')`, you’ll probably want in a Mocha browser test in order to step through code to observe issues while they happen. If markup changes over time or you want to check the state of a single attribute, you’ll probably want to use Mocha.
 
 ## Running Tests
 - Run Karma/PhantomJS environment tests with `npm test`

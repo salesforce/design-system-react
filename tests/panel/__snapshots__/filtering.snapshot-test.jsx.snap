@@ -86,6 +86,7 @@ exports[`Panel Filtering Default Snapshot 1`] = `
                 "multipleOptionsSelected": "Multiple Options Selected",
               }
             }
+            menuPosition="absolute"
             onSelect={[Function]}
             options={
               Array [
@@ -134,6 +135,7 @@ exports[`Panel Filtering Default Snapshot 1`] = `
                 "multipleOptionsSelected": "Multiple Options Selected",
               }
             }
+            menuPosition="absolute"
             onSelect={[Function]}
             options={
               Array [
@@ -175,6 +177,7 @@ exports[`Panel Filtering Default Snapshot 1`] = `
                 "multipleOptionsSelected": "Multiple Options Selected",
               }
             }
+            menuPosition="absolute"
             onSelect={[Function]}
             options={
               Array [
