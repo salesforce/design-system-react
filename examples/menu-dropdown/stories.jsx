@@ -2,8 +2,9 @@
 /* eslint-disable react/display-name */
 
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
-import IconSettings from '../../components/iconSettings';
+import createReactClass from 'create-react-class';
+import { storiesOf, action } from '@storybook/react';
+import IconSettings from '../../components/icon-settings';
 
 import { MENU_DROPDOWN } from '../../utilities/constants';
 import Dropdown from '../../components/menu-dropdown';
@@ -18,7 +19,7 @@ const options = [
 		label: 'A Header',
 		type: 'header'
 	},
-	{ label: 'An option that is Super Super Long', value: 'A0' },
+	{ disabled: true, label: 'An option that is Super Super Long', value: 'A0' },
 	{ label: 'Custom Class', className: 'custom-item-class', value: 'classssss' },
 	{
 		href: 'http://sfdc.co/',
@@ -55,12 +56,13 @@ const getDropdown = (props) => (
 	/>
 );
 
-const DropdownControlled = React.createClass({
+const DropdownControlled = createReactClass({
 	displayName: 'DropdownControlled',
 
 	getInitialState () {
 		return {
-			forcedState: undefined
+			forcedState: undefined,
+			menuOptions: options
 		};
 	},
 
@@ -78,6 +80,13 @@ const DropdownControlled = React.createClass({
 		this.setState({ forcedState: false });
 	},
 
+	toggleDisabledOption () {
+			this.setState((prevState, props) => {
+				prevState.menuOptions.splice(1, 1, { disabled: false, label: 'An option that is Super Super Long', value: 'A0' });
+				return { options: prevState.menuOptions };
+			});
+	},
+
 	render () {
 		return (
 			<div className="slds-grid">
@@ -89,13 +98,14 @@ const DropdownControlled = React.createClass({
 						isOpen={this.state.forcedState}
 						onClose={action('Attempt Close')}
 						onOpen={action('Attempt Open')}
-						options={options}
+						options={this.state.menuOptions}
 					/>
 				</div>
 				<div className="slds-col">
 					<Button label="Force Open Dropdown" onClick={this.handleOpen} />
 					<Button label="Force Close Dropdown" onClick={this.handleClose} />
 					<Button label="Reset Dropdown" onClick={this.handleButtonClickReset} />
+					<Button label="Toggle Option A disabled" onClick={this.toggleDisabledOption} />
 				</div>
 			</div>
 		);
@@ -254,7 +264,7 @@ storiesOf(MENU_DROPDOWN, module)
 		openOn: 'hover',
 		options
 	}))
-	.add('Two Hovers', () => <div>
+	.add('Two Hovers', () => (<div>
 		{getDropdown({
 			assistiveText: 'Icon More large',
 			buttonVariant: 'icon',
@@ -278,7 +288,7 @@ storiesOf(MENU_DROPDOWN, module)
 			openOn: 'hover',
 			options
 		})}
-	</div>)
+	</div>))
 	.add('Hover with Checkmark', () => getDropdown({
 		assistiveText: 'More Options',
 		buttonVariant: 'icon',
@@ -294,8 +304,8 @@ storiesOf(MENU_DROPDOWN, module)
 		options,
 		value: 'C0'
 	}))
-	.add('Controled w/ isOpen', () => <DropdownControlled
+	.add('Controled w/ isOpen', () => (<DropdownControlled
 		align="right"
 		label="Dropdown Click"
 		options={options}
-	/>);
+	/>));

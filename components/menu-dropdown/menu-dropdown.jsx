@@ -9,6 +9,7 @@
 
 // ### React
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
@@ -81,7 +82,7 @@ const DropdownNubbinPositions = [
  *
  * This component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.
  */
-const MenuDropdown = React.createClass({
+const MenuDropdown = createReactClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: MENU_DROPDOWN,
@@ -870,7 +871,9 @@ MenuDropdown.contextTypes = {
 	iconPath: PropTypes.string
 };
 
-module.exports = MenuDropdown;
-module.exports.ListItem = ListItem;
-module.exports.ListItemLabel = ListItemLabel;
-module.exports.DropdownNubbinPositions = DropdownNubbinPositions;
+export default MenuDropdown;
+export {
+	ListItem,
+	ListItemLabel,
+	DropdownNubbinPositions
+};

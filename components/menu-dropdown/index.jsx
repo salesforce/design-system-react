@@ -6,4 +6,4 @@
 import onClickOutside from 'react-onclickoutside';
 import MenuDropdown from './menu-dropdown';
 
-module.exports = onClickOutside(MenuDropdown);
+export default onClickOutside(MenuDropdown);

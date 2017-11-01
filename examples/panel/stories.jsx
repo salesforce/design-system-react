@@ -1,6 +1,6 @@
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
-import IconSettings from '../../components/iconSettings';
+import { storiesOf } from '@storybook/react';
+import IconSettings from '../../components/icon-settings';
 
 import { PANEL } from '../../utilities/constants';
 import Filtering from './filtering';

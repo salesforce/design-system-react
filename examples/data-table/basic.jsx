@@ -1,8 +1,9 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import DataTable from '~/components/data-table'; // `~` is replaced with design-system-react at runtime
 import DataTableColumn from '~/components/data-table/column';
 import DataTableCell from '~/components/data-table/cell';
-import IconSettings from '~/components/iconSettings';
+import IconSettings from '~/components/icon-settings';
 
 const CustomDataTableCell = ({ children, ...props }) => (
 	<DataTableCell {...props} >
@@ -64,7 +65,7 @@ const columns = [
 	</DataTableColumn>
 ];
 
-const Example = React.createClass({
+const Example = createReactClass({
 	displayName: 'DataTableExample',
 
 	getInitialState () {

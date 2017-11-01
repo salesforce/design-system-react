@@ -1,12 +1,16 @@
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
-import IconSettings from '../../components/iconSettings';
+import createReactClass from 'create-react-class';
+import { storiesOf, action } from '@storybook/react';
+import IconSettings from '../../components/icon-settings';
 
 import { LOOKUP } from '../../utilities/constants';
 import Lookup from '../../components/lookup';
+import Header from '../../components/lookup/header';
+import Footer from '../../components/lookup/footer';
+
 import SLDSButton from '../../components/button';
 
-const DemoLookup = React.createClass({
+const DemoLookup = createReactClass({
 	displayName: 'DemoLookup',
 
 	getInitialState () {
@@ -45,7 +49,7 @@ const DemoLookup = React.createClass({
 	}
 });
 
-const DemoLookupAccounts = React.createClass({
+const DemoLookupAccounts = createReactClass({
 	displayName: 'DemoLookupAccounts',
 
 	getInitialState () {
@@ -65,8 +69,8 @@ const DemoLookupAccounts = React.createClass({
 		return (
 			<Lookup
 				{...this.props}
-				footerRenderer={Lookup.DefaultFooter}
-				headerRenderer={Lookup.DefaultHeader}
+				footerRenderer={DefaultFooter}
+				headerRenderer={DefaultHeader}
 				onChange={action('change')}
 				onSelect={this.handleSelect}
 				options={this.state.options}
@@ -82,26 +86,26 @@ const DemoLookupAccounts = React.createClass({
 
 storiesOf(LOOKUP, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
-	.add('Standard', () => <DemoLookup
+	.add('Standard', () => (<DemoLookup
 		emptyMessage="No Files found"
 		hasError={false}
 		iconCategory="utility"
 		iconName="open_folder"
 		isInline
 		label="Files"
-	/>)
-	.add('Disabled', () => <DemoLookup
+	/>))
+	.add('Disabled', () => (<DemoLookup
 		disabled
-	/>)
-	.add('Standard with Accounts', () => <DemoLookupAccounts
+	/>))
+	.add('Standard with Accounts', () => (<DemoLookupAccounts
 		emptyMessage="No Accounts found"
 		hasError={false}
 		iconCategory="standard"
 		iconName="account"
 		isInline
 		label="Account"
-	/>)
-	.add('Custom Empty Message Content', () => <DemoLookup
+	/>))
+	.add('Custom Empty Message Content', () => (<DemoLookup
 		emptyMessage={<span>No matches.</span>}
 		isInline
-	/>);
+	/>));

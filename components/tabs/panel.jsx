@@ -56,4 +56,4 @@ Panel.propTypes = {
 	]).isRequired
 };
 
-module.exports = Panel;
+export default Panel;

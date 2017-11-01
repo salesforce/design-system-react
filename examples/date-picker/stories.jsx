@@ -1,6 +1,6 @@
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
-import IconSettings from '../../components/iconSettings';
+import { storiesOf, action } from '@storybook/react';
+import IconSettings from '../../components/icon-settings';
 
 import Datepicker from '~/components/date-picker';
 import { DATE_PICKER } from '../../utilities/constants';

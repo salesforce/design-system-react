@@ -1,9 +1,6 @@
 import sampleNodesWithLargeDataset from './sample-nodes-with-large-dataset';
 import sampleNodesWithInitialState from './sample-nodes-with-initial-state';
 
-import React from 'react';
-import Icon from '../../../components/icon';
-
 const sampleNodesDefault = [
 	{
 		label: 'Grains',
@@ -11,17 +8,17 @@ const sampleNodesDefault = [
 		id: 1
 	},
 	{
-		label: <span><Icon name="delete" category="utility" size="x-small" /> Fruits</span>,
+		label: 'Fruits',
 		type: 'branch',
 		id: 2,
 		nodes: [
 			{
-				label: <span>Ground Fruits<Icon name="sort" category="utility" size="x-small" /></span>,
+				label: 'Ground Fruits',
 				type: 'branch',
 				id: 4,
 				nodes: [
 					{
-						label: <span><Icon name="filter" category="utility" size="x-small" />Watermelon<Icon name="list" category="utility" size="x-small" /></span>, type: 'item', id: 12
+						label: 'Watermelon', type: 'item', id: 12
 					},
 					{
 						label: 'Canteloupe', type: 'item', _iconClass: 'glyphicon-file', id: 13
@@ -108,7 +105,7 @@ const sampleNodesDefault = [
 		]
 	},
 	{
-		label: <span><Icon name="event" category="utility" size="x-small" /></span>,
+		label: 'Nuts',
 		type: 'branch',
 		_iconClass: 'glyphicon-file',
 		id: 3,

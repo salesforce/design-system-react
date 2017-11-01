@@ -7,6 +7,7 @@
 
 // ### React
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -24,7 +25,7 @@ import { MENU_DROPDOWN_TRIGGER } from '../../../utilities/constants';
 /**
 *  The Dropdown Button Trigger renders the default trigger button for the dropdown menu. If this component has children, it does not render itself to the DOM. Instead, it renders its child element, `Button`, and all that child's properties. This component may be used as a template to create custom triggers that do not use `Button`.
 */
-const GlobalHeaderDropdownTrigger = React.createClass({
+const GlobalHeaderDropdownTrigger = createReactClass({
 	// TODO: Make this a stateless component, however dropdowns break when this component becomes stateless.
 
 	// ### Display Name

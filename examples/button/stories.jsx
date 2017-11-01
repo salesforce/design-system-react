@@ -1,8 +1,8 @@
 /* eslint-disable react/display-name */
 
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
-import IconSettings from '../../components/iconSettings';
+import { storiesOf, action } from '@storybook/react';
+import IconSettings from '../../components/icon-settings';
 
 import { BUTTON } from '../../utilities/constants';
 import Button from '../../components/button';
@@ -34,6 +34,12 @@ storiesOf(BUTTON, module)
 		iconSize: 'large',
 		iconName: 'answer',
 		title: 'chat'
+	}))
+	.add('Icon with external path', () => getIconButton({
+		assistiveText: 'Icon',
+		iconSize: 'large',
+		iconPath: '/assets/icons/utility-sprite/svg/symbols.svg#announcement',
+		title: 'announcement'
 	}))
 	.addDecorator((getStory) => (
 		<div className="slds-p-around--medium slds-hint-parent" style={{ backgroundColor: '#16325c' }}>

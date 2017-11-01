@@ -112,4 +112,4 @@ GlobalNavigationBarDropdown.defaultProps = {
 	length: null
 };
 
-module.exports = GlobalNavigationBarDropdown;
+export default GlobalNavigationBarDropdown;

@@ -2,8 +2,9 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React from 'react';
+import createReactClass from 'create-react-class';
 
-const Svg = React.createClass({
+const Svg = createReactClass({
 	displayName: 'Svg',
 
 	getPaths (paths) {
@@ -78,10 +79,10 @@ const Svg = React.createClass({
 			...props
 		} = this.props;
 
-		return (
-			this.getSVG(data, props)
-		);
+		return data
+			? this.getSVG(data, props)
+			: null;
 	}
 });
 
-module.exports = Svg;
+export default Svg;

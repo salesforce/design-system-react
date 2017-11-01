@@ -2,13 +2,14 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import YearPicklist from './year-picklist';
 import Button from '../../button';
 
 import DateUtil from '../../../utilities/date';
 
-const DatepickerMonthNavigation = React.createClass({
+const DatepickerMonthNavigation = createReactClass({
 	displayName: 'SLDSDatepickerMonthNavigation',
 
 	propTypes: {
@@ -95,6 +96,7 @@ const DatepickerMonthNavigation = React.createClass({
 								this.props.previousMonthRef(component);
 							}}
 							variant="icon"
+							type="button"
 						/>
 					</div>
 					<h2
@@ -111,6 +113,7 @@ const DatepickerMonthNavigation = React.createClass({
 							iconVariant="container"
 							onClick={this.nextMonthClicked}
 							variant="icon"
+							type="button"
 						/>
 					</div>
 				</div>

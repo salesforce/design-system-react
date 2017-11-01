@@ -30,7 +30,10 @@ const configExport = function (config) {
 
 		// list of files / patterns to load in the browser
 		files: [
+			require.resolve('babel-polyfill/dist/polyfill.js'),
 			'tests/fixtures/phantomjs-shims.js',
+			'./node_modules/phantomjs-polyfill-find-index/findIndex-polyfill.js',
+			'./node_modules/phantomjs-polyfill-includes/includes-polyfill.js',
 			'tests/tests-bundle.js'
 		],
 

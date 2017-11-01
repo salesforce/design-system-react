@@ -5,6 +5,7 @@
 // Based on SLDS v2.2.1
 
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ButtonIcon from '../icon/button-icon';
@@ -17,7 +18,7 @@ import { BUTTON } from '../../utilities/constants';
  * Either a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.
  * For buttons that maintain selected/unselected states, use the <a href="#/button-stateful">ButtonStateful</a> component.
  */
-const Button = React.createClass({
+const Button = createReactClass({
 	displayName: BUTTON,
 
 	propTypes: {
@@ -111,10 +112,16 @@ const Button = React.createClass({
 		 */
 		tabIndex: PropTypes.string,
 		/**
+		 * Button type
+		 */
+		type: PropTypes.oneOf(['reset', 'submit', 'button']),
+		/**
 		 * HTML title attribute
 		 */
 		title: PropTypes.string,
-		variant: PropTypes.oneOf(['base', 'link', 'neutral', 'brand', 'destructive', 'success', 'icon'])
+		variant: PropTypes.oneOf(['base', 'link', 'neutral', 'brand', 'destructive', 'success', 'icon']),
+		iconClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		tooltip: PropTypes.node
 	},
 
 	getDefaultProps () {
@@ -124,6 +131,7 @@ const Button = React.createClass({
 			iconSize: 'medium',
 			iconCategory: 'utility',
 			responsive: false,
+			type: 'button',
 			variant: 'neutral'
 		};
 	},
@@ -229,16 +237,19 @@ const Button = React.createClass({
 				}}
 				tabIndex={this.props.tabIndex}
 				title={this.props.title}
+				type={this.props.type}
 			>
 				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
 
-				{this.props.iconName ? this.renderIcon(this.props.iconName) : null}
+				{this.props.iconName || this.props.iconPath ? this.renderIcon(this.props.iconName) : null}
 				{this.props.iconVariant === 'more'
 				? <ButtonIcon	category="utility" name="down" size="x-small" />
 				: null}
 
 				{(this.props.iconPosition === 'left' || !this.props.iconPosition) ? this.renderLabel() : null}
-				{this.props.children}
+				{
+					this.props.children // eslint-disable-line react/prop-types
+				}
 			</button>
 		);
 	},

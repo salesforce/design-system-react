@@ -1,11 +1,12 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 
 import Panel from '~/components/panel'; // `~` is replaced with design-system-react at runtime
 import PanelFilterGroup from '~/components/panel/filtering/group';
 import PanelFilterList from '~/components/panel/filtering/list';
 import PanelFilterListHeading from '~/components/panel/filtering/list-heading';
 import Filter from '~/components/filter';
-import IconSettings from '~/components/iconSettings';
+import IconSettings from '~/components/icon-settings';
 
 import Picklist from '~/components/menu-picklist';
 
@@ -28,7 +29,7 @@ const options = {
 	]
 };
 
-const Example = React.createClass({
+const Example = createReactClass({
 	displayName: 'PanelExample',
 
 	getInitialState () {

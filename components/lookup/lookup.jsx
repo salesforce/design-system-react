@@ -10,8 +10,10 @@
 
 // ### React
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import escapeRegExp from 'lodash.escaperegexp';
+import isBoolean from 'lodash.isboolean';
 import isEqual from 'lodash.isequal';
 
 // This component's `checkProps` which issues warnings to developers about properties
@@ -43,11 +45,13 @@ const defaultFilter = (term, item) => {
 };
 
 /**
+ * ** Lookup is deprecated. Please use an auto-complete Combobox instead.**
+ *
  * Lookup is an advanced inline search form. The lookup can parse through single or multi scoped datasets. The parsed dataset can be filtered by single or multi option selects.
  *
  * This component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.
  */
-const Lookup = React.createClass({
+const Lookup = createReactClass({
 	displayName: LOOKUP,
 
 	propTypes: {
@@ -116,6 +120,10 @@ const Lookup = React.createClass({
 		 */
 		isInline: PropTypes.bool,
 		/**
+		 * Whether or not the dropdown menu is open. This overrides the default behavior.
+		 */
+		isOpen: PropTypes.bool,
+		/**
 		 * Form label for input.
 		 */
 		label: PropTypes.string,
@@ -128,13 +136,25 @@ const Lookup = React.createClass({
 		 */
 		onBlur: PropTypes.func,
 		/**
+		 * Triggered when the contents of the input changes.
+		 */
+		onChange: PropTypes.func,
+		/**
 		 * Triggered when input is focused.
 		 */
 		onFocus: PropTypes.func,
 		/**
-		 * Triggered when the contents of the input changes.
+		 * Function called when the lookup dropdown would like hide. This will turn the Lookup into into a controlled component. Please use with `isOpen`.
 		 */
-		onChange: PropTypes.func,
+		onRequestClose: PropTypes.func,
+		/**
+		 * Function called when the lookup dropdown would like show. This will turn the Lookup into into a controlled component. Please use with `isOpen`.
+		 */
+		onRequestOpen: PropTypes.func,
+		/**
+		 * Triggered when the user scrolls in the dropdown menu.
+		 */
+		onScroll: PropTypes.func,
 		/**
 		 * Triggered when an item is selected from the dropdown menu.
 		 */
@@ -279,6 +299,10 @@ const Lookup = React.createClass({
 		this.setState({ currentFocus: id });
 	},
 
+	getIsOpen () {
+		return !!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
+	},
+
 	getListLength (qty) {
 		if (qty !== this.state.listLength) {
 			this.setState({ listLength: qty });
@@ -310,6 +334,9 @@ const Lookup = React.createClass({
 
 	selectItemByIndex (index) {
 		if (index >= 0 && index < this.state.items.length) {
+			if (this.props.onRequestClose) {
+				this.props.onRequestClose();
+			}
 			this.setState({
 				isOpen: false,
 				selectedIndex: index,
@@ -323,6 +350,9 @@ const Lookup = React.createClass({
 	},
 
 	handleDeleteSelected () {
+		if (this.props.onRequestOpen) {
+			this.props.onRequestOpen();
+		}
 		this.setState({
 			selectedIndex: null,
 			isOpen: true
@@ -338,6 +368,9 @@ const Lookup = React.createClass({
 	// =================================================
 	// Event Listeners on Input
 	handleClose () {
+		if (this.props.onRequestClose) {
+			this.props.onRequestClose();
+		}
 		this.setState({
 			isOpen: false,
 			focusIndex: null,
@@ -350,21 +383,20 @@ const Lookup = React.createClass({
 	},
 
 	handleEscape (event) {
-		if (this.state.isOpen && event) {
+		if (this.getIsOpen() && event) {
 			EventUtil.trap(event);
 		}
 		this.handleClose();
 	},
 
 	handleCancel () {
-		this.setState({
-			isOpen: false,
-			focusIndex: null,
-			currentFocus: null
-		});
+		this.handleClose();
 	},
 
 	handleClick () {
+		if (this.props.onRequestOpen) {
+			this.props.onRequestOpen();
+		}
 		this.setState({ isOpen: true });
 	},
 
@@ -380,6 +412,9 @@ const Lookup = React.createClass({
 			const target = event.target || event.currentTarget;
 			this.props.onFocus(target.value);
 		}
+		if (this.props.onRequestOpen) {
+			this.props.onRequestOpen();
+		}
 		this.setState({ isOpen: true });
 	},
 
@@ -393,9 +428,13 @@ const Lookup = React.createClass({
 
 	handleKeyDown (event) {
 		if (event.keyCode) {
-			// If user hits esc key, close menu
+			// If user hits esc key or tab key, close menu
 			if (event.keyCode === KEYS.ESCAPE) {
 				this.handleEscape(event);
+			} else if (event.keyCode === KEYS.TAB) {
+				// remove the focus on input, tab focus shoud move to next tabbale elemnt
+				setTimeout(() => { this.handleClose(); }, 200);
+				this.handleBlur(event);
 			} else {
 				this.handleClick();
 			}
@@ -509,7 +548,7 @@ const Lookup = React.createClass({
 	},
 
 	renderInlineMenu () {
-		return (this.state.isOpen
+		return (this.getIsOpen()
 			? <div className="ignore-react-onclickoutside slds-lookup__menu" role="listbox">
 				{this.renderMenuContent()}
 			</div>
@@ -518,7 +557,7 @@ const Lookup = React.createClass({
 	},
 
 	renderSeparateMenu () {
-		return (this.state.isOpen
+		return (this.getIsOpen()
 			? <Dialog
 				className="slds-lookup__menu slds-show"
 				closeOnTabKey
@@ -543,7 +582,7 @@ const Lookup = React.createClass({
 				aria-activedescendant={this.state.currentFocus ? this.state.currentFocus : ''}
 				aria-autocomplete="list"
 				aria-describedby={this.props.describedById}
-				aria-expanded={!!this.state.isOpen}
+				aria-expanded={!!this.getIsOpen()}
 				assistiveText={this.props.assistiveText}
 				className="slds-lookup__search-input"
 				disabled={this.props.disabled}
@@ -651,7 +690,7 @@ const Lookup = React.createClass({
 	getClassName () {
 		return classNames(this.props.className, 'slds-form-element slds-lookup', {
 			'slds-has-selection': this.isSelected(),
-			'slds-is-open': this.state.isOpen
+			'slds-is-open': this.getIsOpen()
 		});
 	},
 
@@ -671,7 +710,7 @@ const Lookup = React.createClass({
 		};
 
 		return (
-			<div className={this.getClassName()} data-select="single" data-scope="single">
+			<div className={this.getClassName()} data-select="single" data-scope="single" onScroll={this.props.onScroll}>
 				{this.props.label ? this.renderLabel() : null}
 				<div className={classNames(formElementControlClasses)}>
 					{this.isSelected() ? this.renderSelectedItem() : null}
@@ -687,5 +726,5 @@ Lookup.contextTypes = {
 	iconPath: PropTypes.string
 };
 
-module.exports = Lookup;
+export default Lookup;
 

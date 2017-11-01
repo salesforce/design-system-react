@@ -1,5 +1,6 @@
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
+import createReactClass from 'create-react-class';
+import { storiesOf, action } from '@storybook/react';
 
 import ProgressIndicator from '~/components/progress-indicator'; // `~` is replaced with design-system-react at runtime
 import Modal from '../../components/modal';
@@ -39,7 +40,7 @@ const modalContent = (
 	<div className="slds-modal__content slds-grow slds-p-around_medium" id="modal-content-id-1" style={{ height: '640px' }} />
 );
 
-const Example = React.createClass({
+const Example = createReactClass({
 	displayName: 'ProgressIndicatorModal',
 
 	render () {

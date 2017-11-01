@@ -12,6 +12,7 @@
 
 // ### React
 import React from 'react';
+import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### assign
@@ -19,6 +20,9 @@ import assign from 'lodash.assign';
 
 // ### classNames
 import classNames from 'classnames';
+
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
 
 import Button from '../button';
 import Popover from '../popover';
@@ -34,7 +38,7 @@ import { FILTER } from '../../utilities/constants';
 /**
  * A Filter is a popover with custom trigger. It can be used by [Panel Filtering](/components/panels/). Menus within a Filter Popover will need to not have "portal mounts" and be inline.
  */
-const Filter = React.createClass({
+const Filter = createReactClass({
 	displayName: FILTER,
 
 	propTypes: {
@@ -129,6 +133,7 @@ const Filter = React.createClass({
 
 	componentWillMount () {
 		this.generatedId = shortid.generate();
+		checkProps(FILTER);
 	},
 
 	getId () {

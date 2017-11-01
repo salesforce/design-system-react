@@ -53,7 +53,7 @@ exports[`AssistiveText Filter HTML Snapshot 1`] = `
 "<div class=\\"slds-filters__item slds-grid slds-grid--vertical-align-center\\">
   <div class=\\"slds-grow\\" style=\\"display:inline;\\"><button class=\\"slds-button--reset slds-grow slds-has-blur-focus\\" id=\\"sample-panel-filtering-show-me\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body--small\\">Show Me</p><p>All Products</p></button></div>
   <button
-    class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\\" title=\\"Remove Filter: Show Me All Products\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove Filter: Show Me All Products</span></button>
+    class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\\" title=\\"Remove Filter: Show Me All Products\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove Filter: Show Me All Products</span></button>
 </div>"
 `;
 
@@ -158,7 +158,7 @@ exports[`Filter Base with custom className Snapshot 1`] = `
 "<div class=\\"slds-filters__item slds-grid slds-grid--vertical-align-center MY_CUSTOM_CLASS_NAME\\">
   <div class=\\"slds-grow\\" style=\\"display:inline;\\"><button class=\\"slds-button--reset slds-grow slds-has-blur-focus\\" id=\\"sample-panel-filtering-show-me\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body--small\\">Show Me</p><p>All Products</p></button></div>
   <button
-    class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\\" title=\\"Remove Filter: Show Me All Products\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove Filter: Show Me All Products</span></button>
+    class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\\" title=\\"Remove Filter: Show Me All Products\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove Filter: Show Me All Products</span></button>
 </div>"
 `;
 

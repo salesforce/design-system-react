@@ -1,4 +1,6 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
+import IconSettings from '~/components/icon-settings';
 import PropTypes from 'prop-types';
 import Tree from '~/components/tree';
 
@@ -264,7 +266,7 @@ const sampleNodes = {
 };
 
 
-const TreeExample = React.createClass({
+const TreeExample = createReactClass({
 	displayName: 'TreeExample',
 
 	// ### Prop Types
@@ -333,16 +335,18 @@ const TreeExample = React.createClass({
 
 	render () {
 		return (
-			<div>
-				<Tree
-					nodes={this.state.nodes}
-					onExpandClick={this.handleExpandClick}
-					onClick={this.handleClick}
-					onScroll={this.handleScroll}
-					searchTerm={this.state.searchTerm}
-					{...this.props}
-				/>
-			</div>
+			<IconSettings iconPath="/assets/icons">
+				<div>
+					<Tree
+						nodes={this.state.nodes}
+						onExpandClick={this.handleExpandClick}
+						onClick={this.handleClick}
+						onScroll={this.handleScroll}
+						searchTerm={this.state.searchTerm}
+						{...this.props}
+					/>
+				</div>
+			</IconSettings>
 		);
 	}
 });

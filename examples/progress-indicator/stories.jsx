@@ -1,6 +1,7 @@
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
-import IconSettings from '../../components/iconSettings';
+import createReactClass from 'create-react-class';
+import { storiesOf, action } from '@storybook/react';
+import IconSettings from '../../components/icon-settings';
 
 import ProgressIndicator from '~/components/progress-indicator';
 import { PROGRESS_INDICATOR } from '../../utilities/constants';
@@ -33,7 +34,7 @@ const manySteps = [
 	{ id: 'i', label: 'tooltip label #9' }
 ];
 
-const ExampleProgressIndicator = React.createClass({
+const ExampleProgressIndicator = createReactClass({
 	displayName: 'ProgressIndicatorDefault',
 
 	render () {
