@@ -12,7 +12,13 @@ class Example extends React.Component {
 					<Alert
 						className="this-is-the-alert"
 						icon={<Icon category="utility" name="user" />}
-						label={<span>Logged in as John Smith (johnsmith@acme.com). <a href="javascript:void(0);">Log out</a></span>}
+						labels={{
+							heading: 'Logged in as John Smith (johnsmith@acme.com).',
+							headingLink: 'Log out'
+						}}
+						onClickHeadingLink={() => {
+							console.log('Link clicked.');
+						}}
 					/>
 				</AlertContainer>
 			</IconSettings>

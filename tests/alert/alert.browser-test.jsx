@@ -33,7 +33,11 @@ class DemoComponent extends React.Component {
 							? <Alert
 								dismissible
 								icon={<Icon category="utility" name="user" />}
-								label={<span>Logged in as John Smith (johnsmith@acme.com). <a href="javascript:void(0);">Log out</a></span>}
+								labels={{
+									heading: 'Logged in as John Smith (johnsmith@acme.com).',
+									headingLink: 'Log out'
+								}}
+								onClickHeadingLink={this.props.onClickHeadingLink}
 								onRequestClose={() => { this.setState({ isOpen: false }); }}
 							/>
 							: null }
@@ -48,23 +52,30 @@ DemoComponent.displayName = 'AlertExample';
 
 describe('SLDSAlert: ', function () {
 	let wrapper;
+	const onClickHeadingLink = sinon.spy();
 
 	describe('Dismiss alert', () => {
 		beforeEach(mountComponent(
-			<DemoComponent />
+			<DemoComponent onClickHeadingLink={onClickHeadingLink} />
 		));
 
-		// afterEach(unmountComponent);
+		afterEach(unmountComponent);
 
 		/* Please notice the of `function () {}` and not () => {}.
 		 * It allows access to the Mocha test context via `this`.
 		 */
-		it('calls event handler', function () {
+		it('calls onRequestClose handler', function () {
 			const button = this.wrapper.find('.slds-notify__close');
 			// If applicable, use second parameter to pass the data object
 			expect(this.wrapper.find('.slds-notify').length).to.equal(1);
 			button.simulate('click', {});
 			expect(this.wrapper.find('.slds-notify').length).to.equal(0);
+		});
+		it('calls onClickHeadingLink handler', function () {
+			const link = this.wrapper.find('a');
+			// If applicable, use second parameter to pass the data object
+			link.simulate('click', {});
+			expect(onClickHeadingLink.calledOnce).to.be.true;
 		});
 	});
 });

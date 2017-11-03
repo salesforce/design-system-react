@@ -9,10 +9,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from '../../utilities/class-names';
 import Button from '../button';
+import Icon from '../icon';
 import checkProps from './check-props';
 import { ALERT } from '../../utilities/constants';
 import assign from 'lodash.assign';
 import DOMElementFocus from '../../utilities/dom-element-focus';
+import { shape } from 'airbnb-prop-types';
 
 const propTypes = {
 	/**
@@ -21,7 +23,9 @@ const propTypes = {
 	 * * `closeButton`: This is used as a visually hidden label if, no `labels.label` is provided.
 	 * _Tested with snapshot testing._
 	 */
-	assistiveText: PropTypes.object,
+	assistiveText: shape({
+		closeButton: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+	}),
 	/**
 	 * CSS classes to be added to tag with `.slds-notify_alert`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 * _Tested with snapshot testing._
@@ -33,13 +37,29 @@ const propTypes = {
 	 */
 	dismissible: PropTypes.bool,
 	/**
-	 * Icon of type `~/components/icon`. Additional props will be added for formatting by this component. _Tested with snapshot testing._
+	 * Icon of type `~/components/icon`. This icon will be cloned nad additional props appended. The default icons are:
+	 * * info variant: `utility:info`
+	 * * error variant: `utility:error`
+	 * * offline variant: `utility:offline`
+	 * * warning variant: `utility:warning`
+	 * _Tested with snapshot testing._
 	 */
-	icon: PropTypes.node.isRequired,
+	icon: PropTypes.node,
 	/**
-	 * Contents of alert. _Tested with snapshot testing._
+	 * **Text labels for internationalization**
+	 * This object is merged with the default props object on every render.
+	 * * `heading`: text within heading tag
+	 * * `headingLink`: Text of link that triggers `onClickHeadingLink`
+	 * _Tested with snapshot testing._
 	 */
-	label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+	labels: shape({
+		heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+		headingLink: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+	}),
+	/**
+	 * Triggered by link. _Tested with Mocha testing._
+	 */
+	onClickHeadingLink: PropTypes.func,
 	/**
 	 * Triggered by close button. _Tested with Mocha testing._
 	 */
@@ -54,6 +74,7 @@ const defaultProps = {
 	assistiveText: {
 		closeButton: 'Close'
 	},
+	labels: {},
 	variant: 'info'
 };
 
@@ -90,6 +111,11 @@ class Alert extends React.Component {
 	render () {
 		// Merge objects of strings with their default object
 		const assistiveText = assign({}, defaultProps.assistiveText, this.props.assistiveText);
+		const labels = assign({}, defaultProps.labels, this.props.labels);
+
+		// BACKWARD COMPATIBILITY WITH NOTIFICATION
+		const heading = labels.heading || this.props.content; // eslint-disable-line react/prop-types
+		const onRequestClose = this.props.onRequestClose || this.props.onDismiss; // eslint-disable-line react/prop-types
 
 		const assistiveTextVariant = {
 			info: 'info',
@@ -98,12 +124,27 @@ class Alert extends React.Component {
 			offline: 'offline'
 		};
 
-		const clonedIcon = React.cloneElement(this.props.icon, {
-			className: 'slds-m-right--x-small',
+		const defaultIcons = {
+			info: <Icon category="utility" name="info" />,
+			offline: <Icon category="utility" name="offline" />,
+			warning: <Icon category="utility" name="warning" />,
+			error: <Icon category="utility" name="error" />
+		};
+
+		let icon = this.props.icon ? this.props.icon : defaultIcons[this.props.variant];
+
+		// BACKWARD COMPATIBILITY WITH NOTIFICATION
+		if (this.props.iconName && this.props.iconCategory) { // eslint-disable-line react/prop-types
+			icon = <Icon category={this.props.iconCategory} name={this.props.iconName} />;
+		}
+
+		const clonedIcon = React.cloneElement(icon, {
+			containerClassName: 'slds-m-right--x-small',
 			inverse: true,
 			size: 'x-small'
 		});
 
+		/* eslint-disable no-script-url */
 		return (
 			<div
 				className={classNames('slds-notify slds-notify_alert slds-theme_alert-texture', {
@@ -117,7 +158,9 @@ class Alert extends React.Component {
 			>
 				<span className="slds-assistive-text">{assistiveTextVariant[this.props.variant]}</span>
 				{clonedIcon}
-				<h2>{this.props.label}</h2>
+				<h2>{heading}{' '}{labels.headingLink
+					? <a onClick={this.props.onClickHeadingLink} href="javascript:void(0);">{labels.headingLink}</a>
+					: null}</h2>
 				{this.props.dismissible
 					? <Button
 						assistiveText={assistiveText.closeButton}
@@ -125,8 +168,9 @@ class Alert extends React.Component {
 						className="slds-notify__close"
 						iconCategory="utility"
 						iconName="close"
+						iconSize="medium"
 						inverse
-						onClick={this.props.onRequestClose}
+						onClick={onRequestClose}
 						title={assistiveText.closeButton}
 						variant="icon"
 					/>

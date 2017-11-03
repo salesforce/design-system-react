@@ -10,8 +10,13 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<AlertContainer>
 					<Alert
-						icon={<Icon category="utility" name="warning" />}
-						label={<span>Your browser is outdated. Your Salesforce experience may be degraded. <a href="javascript:void(0);">More Information</a></span>}
+						labels={{
+							heading: 'Your browser is outdated. Your Salesforce experience may be degraded.',
+							headingLink: 'More Information'
+						}}
+						onClickHeadingLink={() => {
+							console.log('Link clicked.');
+						}}
 						variant="warning"
 					/>
 				</AlertContainer>

@@ -10,8 +10,13 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<AlertContainer>
 					<Alert
-						icon={<Icon category="utility" name="offline" />}
-						label={<span>You are in offline mode. <a href="javascript:void(0);">More Information</a></span>}
+						labels={{
+							heading: 'You are in offline mode.',
+							headingLink: 'More information'
+						}}
+						onClickHeadingLink={() => {
+							console.log('Link clicked.');
+						}}
 						variant="offline"
 					/>
 				</AlertContainer>

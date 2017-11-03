@@ -11,7 +11,13 @@ class Example extends React.Component {
 				<AlertContainer>
 					<Alert
 						icon={<Icon category="utility" name="ban" />}
-						label={<span>Your browser is currently not supported. Your Salesforce may be degraded. <a href="javascript:void(0);">More Information</a></span>}
+						labels={{
+							heading: 'Your browser is currently not supported. Your Salesforce may be degraded.',
+							headingLink: 'More Information'
+						}}
+						onClickHeadingLink={() => {
+							console.log('Link clicked.');
+						}}
 						variant="error"
 					/>
 				</AlertContainer>

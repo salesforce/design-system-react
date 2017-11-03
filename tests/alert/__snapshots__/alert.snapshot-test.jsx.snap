@@ -21,16 +21,13 @@ exports[`Alert Custom Class Name DOM Snapshot 1`] = `
           size="medium"
         />
       }
-      label={
-        <span>
-          Logged in as John Smith (johnsmith@acme.com). 
-          <a
-            href="javascript:void(0);"
-          >
-            Log out
-          </a>
-        </span>
+      labels={
+        Object {
+          "heading": "Logged in as John Smith (johnsmith@acme.com).",
+          "headingLink": "Log out",
+        }
       }
+      onClickHeadingLink={[Function]}
       variant="info"
     />
   </SLDSAlertContainer>
@@ -39,8 +36,8 @@ exports[`Alert Custom Class Name DOM Snapshot 1`] = `
 
 exports[`Alert Custom Class Name HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container this-is-the-container\\">
-  <div class=\\"slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_info this-is-the-alert\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">info</span><span><svg aria-hidden=\\"true\\" class=\\"slds-m-right--x-small slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#user\\"></use></svg></span>
-    <h2><span>Logged in as John Smith (johnsmith@acme.com). <a href=\\"javascript:void(0);\\">Log out</a></span></h2>
+  <div class=\\"slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_info this-is-the-alert\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">info</span><span class=\\"slds-m-right--x-small\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#user\\"></use></svg></span>
+    <h2>Logged in as John Smith (johnsmith@acme.com). <a href=\\"javascript:void(0);\\">Log out</a></h2>
   </div>
 </div>"
 `;
@@ -64,16 +61,13 @@ exports[`Alert Dismissable DOM Snapshot 1`] = `
           size="medium"
         />
       }
-      label={
-        <span>
-          Logged in as John Smith (johnsmith@acme.com). 
-          <a
-            href="javascript:void(0);"
-          >
-            Log out
-          </a>
-        </span>
+      labels={
+        Object {
+          "heading": "Logged in as John Smith (johnsmith@acme.com).",
+          "headingLink": "Log out",
+        }
       }
+      onClickHeadingLink={[Function]}
       onRequestClose={[Function]}
       variant="info"
     />
@@ -83,8 +77,8 @@ exports[`Alert Dismissable DOM Snapshot 1`] = `
 
 exports[`Alert Dismissable HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container\\">
-  <div class=\\"slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_info\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">info</span><span><svg aria-hidden=\\"true\\" class=\\"slds-m-right--x-small slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#user\\"></use></svg></span>
-    <h2><span>Logged in as John Smith (johnsmith@acme.com). <a href=\\"javascript:void(0);\\">Log out</a></span></h2><button class=\\"slds-button slds-button--icon-inverse slds-notify__close\\" title=\\"Close\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Close</span></button></div>
+  <div class=\\"slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_info\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">info</span><span class=\\"slds-m-right--x-small\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#user\\"></use></svg></span>
+    <h2>Logged in as John Smith (johnsmith@acme.com). <a href=\\"javascript:void(0);\\">Log out</a></h2><button class=\\"slds-button slds-button--icon-inverse slds-notify__close\\" title=\\"Close\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Close</span></button></div>
 </div>"
 `;
 
@@ -106,16 +100,13 @@ exports[`Alert Error DOM Snapshot 1`] = `
           size="medium"
         />
       }
-      label={
-        <span>
-          Your browser is currently not supported. Your Salesforce may be degraded. 
-          <a
-            href="javascript:void(0);"
-          >
-            More Information
-          </a>
-        </span>
+      labels={
+        Object {
+          "heading": "Your browser is currently not supported. Your Salesforce may be degraded.",
+          "headingLink": "More Information",
+        }
       }
+      onClickHeadingLink={[Function]}
       variant="error"
     />
   </SLDSAlertContainer>
@@ -124,8 +115,8 @@ exports[`Alert Error DOM Snapshot 1`] = `
 
 exports[`Alert Error HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container\\">
-  <div class=\\"slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">error</span><span><svg aria-hidden=\\"true\\" class=\\"slds-m-right--x-small slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#ban\\"></use></svg></span>
-    <h2><span>Your browser is currently not supported. Your Salesforce may be degraded. <a href=\\"javascript:void(0);\\">More Information</a></span></h2>
+  <div class=\\"slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">error</span><span class=\\"slds-m-right--x-small\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#ban\\"></use></svg></span>
+    <h2>Your browser is currently not supported. Your Salesforce may be degraded. <a href=\\"javascript:void(0);\\">More Information</a></h2>
   </div>
 </div>"
 `;
@@ -148,16 +139,13 @@ exports[`Alert Info DOM Snapshot 1`] = `
           size="medium"
         />
       }
-      label={
-        <span>
-          Logged in as John Smith (johnsmith@acme.com). 
-          <a
-            href="javascript:void(0);"
-          >
-            Log out
-          </a>
-        </span>
+      labels={
+        Object {
+          "heading": "Logged in as John Smith (johnsmith@acme.com).",
+          "headingLink": "Log out",
+        }
       }
+      onClickHeadingLink={[Function]}
       variant="info"
     />
   </SLDSAlertContainer>
@@ -166,8 +154,8 @@ exports[`Alert Info DOM Snapshot 1`] = `
 
 exports[`Alert Info HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container\\">
-  <div class=\\"slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_info\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">info</span><span><svg aria-hidden=\\"true\\" class=\\"slds-m-right--x-small slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#user\\"></use></svg></span>
-    <h2><span>Logged in as John Smith (johnsmith@acme.com). <a href=\\"javascript:void(0);\\">Log out</a></span></h2>
+  <div class=\\"slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_info\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">info</span><span class=\\"slds-m-right--x-small\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#user\\"></use></svg></span>
+    <h2>Logged in as John Smith (johnsmith@acme.com). <a href=\\"javascript:void(0);\\">Log out</a></h2>
   </div>
 </div>"
 `;
@@ -183,23 +171,13 @@ exports[`Alert Offline DOM Snapshot 1`] = `
           "closeButton": "Close",
         }
       }
-      icon={
-        <SLDSIcon
-          category="utility"
-          name="offline"
-          size="medium"
-        />
+      labels={
+        Object {
+          "heading": "You are in offline mode.",
+          "headingLink": "More information",
+        }
       }
-      label={
-        <span>
-          You are in offline mode. 
-          <a
-            href="javascript:void(0);"
-          >
-            More Information
-          </a>
-        </span>
-      }
+      onClickHeadingLink={[Function]}
       variant="offline"
     />
   </SLDSAlertContainer>
@@ -208,8 +186,8 @@ exports[`Alert Offline DOM Snapshot 1`] = `
 
 exports[`Alert Offline HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container\\">
-  <div class=\\"slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_offline\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">offline</span><span><svg aria-hidden=\\"true\\" class=\\"slds-m-right--x-small slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#offline\\"></use></svg></span>
-    <h2><span>You are in offline mode. <a href=\\"javascript:void(0);\\">More Information</a></span></h2>
+  <div class=\\"slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_offline\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">offline</span><span class=\\"slds-m-right--x-small\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#offline\\"></use></svg></span>
+    <h2>You are in offline mode. <a href=\\"javascript:void(0);\\">More information</a></h2>
   </div>
 </div>"
 `;
@@ -225,23 +203,13 @@ exports[`Alert Warning DOM Snapshot 1`] = `
           "closeButton": "Close",
         }
       }
-      icon={
-        <SLDSIcon
-          category="utility"
-          name="warning"
-          size="medium"
-        />
+      labels={
+        Object {
+          "heading": "Your browser is outdated. Your Salesforce experience may be degraded.",
+          "headingLink": "More Information",
+        }
       }
-      label={
-        <span>
-          Your browser is outdated. Your Salesforce experience may be degraded. 
-          <a
-            href="javascript:void(0);"
-          >
-            More Information
-          </a>
-        </span>
-      }
+      onClickHeadingLink={[Function]}
       variant="warning"
     />
   </SLDSAlertContainer>
@@ -250,8 +218,8 @@ exports[`Alert Warning DOM Snapshot 1`] = `
 
 exports[`Alert Warning HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container\\">
-  <div class=\\"slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_warning\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">warning</span><span><svg aria-hidden=\\"true\\" class=\\"slds-m-right--x-small slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#warning\\"></use></svg></span>
-    <h2><span>Your browser is outdated. Your Salesforce experience may be degraded. <a href=\\"javascript:void(0);\\">More Information</a></span></h2>
+  <div class=\\"slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_warning\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">warning</span><span class=\\"slds-m-right--x-small\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#warning\\"></use></svg></span>
+    <h2>Your browser is outdated. Your Salesforce experience may be degraded. <a href=\\"javascript:void(0);\\">More Information</a></h2>
   </div>
 </div>"
 `;
