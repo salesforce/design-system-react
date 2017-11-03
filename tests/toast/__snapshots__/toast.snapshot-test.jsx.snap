@@ -106,7 +106,7 @@ exports[`Alert Info DOM Snapshot 1`] = `
 <IconSettings
   iconPath="/assets/icons"
 >
-  <SLDSAlertContainer>
+  <SLDSToastContainer>
     <SLDSToast
       assistiveText={
         Object {
@@ -122,7 +122,7 @@ exports[`Alert Info DOM Snapshot 1`] = `
       onClickHeadingLink={[Function]}
       variant="info"
     />
-  </SLDSAlertContainer>
+  </SLDSToastContainer>
 </IconSettings>
 `;
 
@@ -140,7 +140,7 @@ exports[`Alert Success DOM Snapshot 1`] = `
 <IconSettings
   iconPath="/assets/icons"
 >
-  <SLDSAlertContainer>
+  <SLDSToastContainer>
     <SLDSToast
       assistiveText={
         Object {
@@ -162,7 +162,7 @@ exports[`Alert Success DOM Snapshot 1`] = `
       }
       variant="success"
     />
-  </SLDSAlertContainer>
+  </SLDSToastContainer>
 </IconSettings>
 `;
 

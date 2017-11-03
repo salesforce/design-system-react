@@ -32,7 +32,7 @@ const propTypes = {
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
-	 * If duration exists, the Toast will disappear after that amount of time.
+	 * If duration exists, the Toast will disappear after that amount of time. Time in milliseconds. _Tested with Mocha testing._
 	 */
 	duration: PropTypes.number,
 	/**
