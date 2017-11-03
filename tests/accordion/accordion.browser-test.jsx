@@ -10,11 +10,12 @@ import { shape } from 'airbnb-prop-types';
  * context [full source here](tests/enzyme-helpers.js). `this` can
  * only be referenced if inside `function () {}`.
  */
+
 import { createMountNode, destroyMountNode } from '../enzyme-helpers';
 
 import Accordion from '../../components/accordion';
 import IconSettings from '~/components/icon-settings';
-import Panel from '../../components/accordion/private/panel';
+import Panel from '../../components/accordion/panel';
 import Dropdown from '../../components/menu-dropdown';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
@@ -38,48 +39,18 @@ class AccordionExample extends React.Component {
 			items: [
 				{
 					id: '1',
-					summary: 'The first item',
-					details:
-						'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod ' +
-						'tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At v' +
-						'ero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, ' +
-						'no sea takimata sanctus est Lorem ipsum dolor sit amet.'
+					summary: 'Accordion Summary',
+					details: 'Accordion details - A'
 				},
 				{
 					id: '2',
-					summary: 'The second item',
-					details: (
-						<div>
-							<p>Lorem ipsum dolor sit amet,</p>
-							<p>consetetur sadipscing elitr,</p>
-							<p>
-								sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-								aliquyam erat,
-							</p>
-							<p>sed diam voluptua.</p>
-							<p>At vero eos et accusam et justo duo dolores et ea rebum.</p>
-							<p>Stet clita kasd gubergren,</p>
-							<p>no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-						</div>
-					)
+					summary: 'Accordion Summary',
+					details: 'Accordion details - B'
 				},
 				{
 					id: '3',
-					summary: 'The third item',
-					details: (
-						<div>
-							<p>
-								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-								diam nonumy eirmod tempor invidunt ut labore et dolore magna
-								aliquyam erat, sed diam voluptua.
-							</p>
-							<p>
-								At vero eos et accusam et justo duo dolores et ea rebum. Stet
-								clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-								dolor sit amet.
-							</p>
-						</div>
-					)
+					summary: 'Accordion Summary',
+					details: 'Accordion details - C'
 				}
 			]
 		};
@@ -105,7 +76,6 @@ class AccordionExample extends React.Component {
 						console.log('onSelect', event, option);
 					}
 				}}
-				openOn="click"
 				options={[
 					{
 						label: 'delete',
@@ -138,7 +108,7 @@ class AccordionExample extends React.Component {
 	render () {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<Accordion id="base-example-accordion" openOn="click">
+				<Accordion id="base-example-accordion">
 					{this.state.items.map((item) => (
 						<Panel
 							expanded={!!this.state.expandedPanels[item.id]}
@@ -183,21 +153,6 @@ describe('Accordion', function () {
 			expect();
 		});
 
-		it('renders expected number of accordion panels', () => {
-			wrapper = mount(<AccordionExample />, {
-				attachTo: mountNode
-			});
-			const panels = wrapper.find('SLDSAccordionPanel');
-			expect(panels).to.have.lengthOf(3, 'there are three panels');
-		});
-
-		it('renders summary text on accordion panel', () => {
-			wrapper = mount(<AccordionExample />, { attachTo: mountNode });
-			const panel = wrapper.find('SLDSAccordionPanel').first();
-			const span = panel.find('.slds-truncate');
-			expect(span.text()).to.equal('The first item');
-		});
-
 		it('renders `panelContentActions` component, if passed', () => {
 			wrapper = mount(<AccordionExample />, {
 				attachTo: mountNode
@@ -228,22 +183,12 @@ describe('Accordion', function () {
 			expect(panel.props().expanded).to.be.true;
 		});
 
-		it('toggles `slds-is-open` class and `aria-expanded` attribute value on panel select', () => {
+		it('`aria-expanded` set to true on panel select', () => {
 			wrapper = mount(<AccordionExample />, { attachTo: mountNode });
 			const panel = wrapper.find('SLDSAccordionPanel').first();
 			const button = panel.find('.slds-accordion__summary-action');
-			let openPanelSection = panel.find('.slds-is-open');
-			expect(openPanelSection).to.not.exist;
 			panel.find('.slds-accordion__summary-action').simulate('click');
-			openPanelSection = panel.find('.slds-is-open');
-			expect(openPanelSection, 'panel changes from closed to open').to.exist;
 			expect(button.props()['aria-expanded']).to.be.true;
-		});
-		it('renders panel content', () => {
-			wrapper = mount(<AccordionExample />, { attachTo: mountNode });
-			const panel = wrapper.find('SLDSAccordionPanel').first();
-			const content = panel.find('.slds-accordion__content');
-			expect(content.text()).to.exist;
 		});
 	});
 });

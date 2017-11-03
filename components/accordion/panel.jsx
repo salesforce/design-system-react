@@ -9,9 +9,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import Button from '../../button';
+import Button from '../button';
 
-import { ACCORDION_PANEL } from '../../../utilities/constants';
+import { ACCORDION_PANEL } from '../../utilities/constants';
 
 const propTypes = {
 	/**
@@ -35,7 +35,7 @@ const propTypes = {
 	 */
 	onTogglePanel: PropTypes.func.isRequired,
 	/**
-	 * Summary header of the item belonging to this panel. _Tested with Mocha framework and snapshot testing._
+	 * Summary in the span element in the header of this panel. The summary is truncated, so the title element should contain the full text so that it is accessible on hover. _Tested with Mocha framework and snapshot testing._
 	 */
 	summary: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 	/**
@@ -48,7 +48,7 @@ const Panel = ({ children, expanded, id, panelContentActions, summary, title, on
 	<li className="slds-accordion__list-item">
 		<section className={classNames('slds-accordion__section', { 'slds-is-open': expanded })}>
 			<div className="slds-accordion__summary">
-				<h3 className="slds-text-heading_small slds-accordion__summary-heading">
+				<h3 className="slds-text-heading_small slds-accordion__summary-heading slds-has-flexi-truncate">
 					<Button
 						aria-controls={`${id}-accordion-panel`}
 						aria-expanded={expanded}

@@ -1,8 +1,8 @@
 import React from 'react';
-import Accordion from '../../components/accordion'; // `~` is replaced with design-system-react at runtime
-import Panel from '~/components/accordion/private/panel'; // `~` is replaced with design-system-react at runtime
+import Accordion from '~/components/accordion'; // `~` is replaced with design-system-react at runtime
+import Panel from '~/components/accordion/panel'; // `~` is replaced with design-system-react at runtime
 import IconSettings from '~/components/icon-settings'; // `~` is replaced with design-system-react at runtime
-import Dropdown from '../../components/menu-dropdown'; // `~` is replaced with design-system-react at runtime
+import Dropdown from '~/components/menu-dropdown'; // `~` is replaced with design-system-react at runtime
 
 export default class Example extends React.Component {
 	constructor (props) {
@@ -12,52 +12,19 @@ export default class Example extends React.Component {
 			items: [
 				{
 					id: '1',
-					summary: 'The first Item',
-					details: (
-						<div>
-							Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-							nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-							erat, sed diam voluptua. At vero eos et accusam et justo duo
-							dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-							sanctus est Lorem ipsum dolor sit amet.
-						</div>
-					)
+					summary:
+						'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+					details: 'Accordion details - A'
 				},
 				{
 					id: '2',
-					summary: 'The second Item',
-					details: (
-						<div>
-							<p>Lorem ipsum dolor sit amet,</p>
-							<p>consetetur sadipscing elitr,</p>
-							<p>
-								sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-								aliquyam erat,
-							</p>
-							<p>sed diam voluptua.</p>
-							<p>At vero eos et accusam et justo duo dolores et ea rebum.</p>
-							<p>Stet clita kasd gubergren,</p>
-							<p>no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-						</div>
-					)
+					summary: 'Accordion Summary',
+					details: 'Accordion details - B'
 				},
 				{
 					id: '3',
-					summary: 'The third Item',
-					details: (
-						<div>
-							<p>
-								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-								diam nonumy eirmod tempor invidunt ut labore et dolore magna
-								aliquyam erat, sed diam voluptua.
-							</p>
-							<p>
-								At vero eos et accusam et justo duo dolores et ea rebum. Stet
-								clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-								dolor sit amet.
-							</p>
-						</div>
-					)
+					summary: 'Accordion Summary',
+					details: 'Accordion details - C'
 				}
 			]
 		};
@@ -83,7 +50,6 @@ export default class Example extends React.Component {
 						console.log('onSelect', event, option);
 					}
 				}}
-				openOn="click"
 				options={[
 					{
 						label: 'delete',
@@ -122,8 +88,8 @@ export default class Example extends React.Component {
 	render () {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<Accordion id="base-example-accordion" openOn="click">
-					{this.state.items.map((item) => (
+				<Accordion id="base-example-accordion">
+					{this.state.items.map((item, i) => (
 						<Panel
 							expanded={!!this.state.expandedPanels[item.id]}
 							id={item.id}
