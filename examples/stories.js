@@ -35,5 +35,6 @@ export RadioButtonGroup from './radio-button-group/stories';
 export Spinner from './spinner/stories';
 export Tabs from './tabs/stories';
 export TimePicker from './time-picker/stories';
+export Toast from './toast/stories';
 export Tooltip from './tooltip/stories';
 export Tree from './tree/stories';
