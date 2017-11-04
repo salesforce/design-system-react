@@ -15,7 +15,7 @@ import { ACCORDION_PANEL } from '../../utilities/constants';
 
 const propTypes = {
 	/**
-	 * The panel content for the Accordion component. Event handler for the accordion panels should be added here `<Panel onTogglePanel.../>`. Optional `panelContentActions` component may be passed as prop. _Tested with Mocha framework and snapshot testing._
+	 * The panel content for the Accordion component. Accordion panels should be added as <AccordionPanel />. Event handler for the accordion panels should be added to `<AccordionPanel />`. Optional `panelContentActions` component may be passed as prop. _Tested with Mocha framework and snapshot testing._
 	 */
 	children: PropTypes.node,
 	/**
@@ -23,7 +23,7 @@ const propTypes = {
 	 */
 	expanded: PropTypes.bool.isRequired,
 	/**
-	 * ID of the item belonging to this panel. _Tested with snapshot testing._
+	 * Id of the item belonging to this panel. _Tested with snapshot testing._
 	 */
 	id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 	/**
