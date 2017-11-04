@@ -22,7 +22,7 @@ const propTypes = {
 	 */
 	id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	/**
-	 * The panel content for the Accordion component. Event handler for the accordion panels should be added here. Optional `panelContentActions` component may be passed as prop. _Tested with Mocha framework._
+	 * The panel content for the Accordion component. Event handler for the accordion panels should be added here. Optional `panelContentActions` component may be passed as prop. _Tested with Mocha framework and snapshot testing._
 	 */
 	children: PropTypes.node.isRequired
 };

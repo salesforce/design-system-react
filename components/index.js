@@ -7,6 +7,12 @@ export Settings from './settings';
 export SLDSIconSettings from './icon-settings';
 export IconSettings from './icon-settings';
 
+export SLDSAccordion from './accordion';
+export Accordion from './accordion';
+
+export SLDSAccordionPanel from './accordion/panel';
+export AccordionPanel from './accordion/panel';
+
 export SLDSAvatar from './avatar';
 export Avatar from './avatar';
 

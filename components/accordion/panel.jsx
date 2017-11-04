@@ -15,11 +15,11 @@ import { ACCORDION_PANEL } from '../../utilities/constants';
 
 const propTypes = {
 	/**
-	 * The panel content for the Accordion component. Event handler for the accordion panels should be added here `<Panel onTogglePanel.../>`. Optional `panelContentActions` component may be passed as prop. _Tested with Mocha framework._
+	 * The panel content for the Accordion component. Event handler for the accordion panels should be added here `<Panel onTogglePanel.../>`. Optional `panelContentActions` component may be passed as prop. _Tested with Mocha framework and snapshot testing._
 	 */
 	children: PropTypes.node,
 	/**
-	 * Indicates whether item is expanded or not, which should be handled by `onTogglePanel`. _Tested with Mocha framework._
+	 * Indicates whether item is expanded or not, which should be handled by `onTogglePanel`. _Tested with Mocha framework and snapshot testing._
 	 */
 	expanded: PropTypes.bool.isRequired,
 	/**
@@ -27,7 +27,7 @@ const propTypes = {
 	 */
 	id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 	/**
-	 * Optional component that can be passed as prop to `<Panel />`. As an example, a menu dropdown could be used here to handle additional actions for each accordion panel. _Tested with Mocha framework._
+	 * Component that can be passed as prop to `<Panel />`. As an example, a menu dropdown could be used here to handle additional actions for each accordion panel. _Tested with Mocha framework._
 	 */
 	panelContentActions: PropTypes.node,
 	/**
@@ -35,7 +35,7 @@ const propTypes = {
 	 */
 	onTogglePanel: PropTypes.func.isRequired,
 	/**
-	 * Summary in the span element in the header of this panel. The summary is truncated, so the title element should contain the full text so that it is accessible on hover. _Tested with Mocha framework and snapshot testing._
+	 * Summary in the span element in the header of this panel. The summary is truncated and so the title element should contain the full text so that it is accessible on hover. _Tested with snapshot testing._
 	 */
 	summary: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
 	/**
@@ -44,7 +44,7 @@ const propTypes = {
 	title: PropTypes.string
 };
 
-const Panel = ({ children, expanded, id, panelContentActions, summary, title, onTogglePanel }) => (
+const AccordionPanel = ({ children, expanded, id, panelContentActions, summary, title, onTogglePanel }) => (
 	<li className="slds-accordion__list-item">
 		<section className={classNames('slds-accordion__section', { 'slds-is-open': expanded })}>
 			<div className="slds-accordion__summary">
@@ -72,7 +72,7 @@ const Panel = ({ children, expanded, id, panelContentActions, summary, title, on
 	</li>
 );
 
-export default Panel;
+export default AccordionPanel;
 
-Panel.propTypes = propTypes;
-Panel.displayName = ACCORDION_PANEL;
+AccordionPanel.propTypes = propTypes;
+AccordionPanel.displayName = ACCORDION_PANEL;
