@@ -64,7 +64,7 @@ const Example = createReactClass({
 				accountName: 'salesforce.com',
 				closeDate: '1/31/15 3:45PM',
 				stage: 'Id. Decision Makers',
-				confidence: '70%',
+				confidence: '60%',
 				amount: '$25,000',
 				contact: 'nathan@salesforce.com'
 			}]
