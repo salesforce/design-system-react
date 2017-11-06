@@ -1,5 +1,6 @@
 import '@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.css';
 
+export Accordion from './accordion/stories';
 export AppLauncher from './app-launcher/stories';
 export Avatar from './avatar/stories';
 export Breadcrumb from './breadcrumb/stories';
