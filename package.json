@@ -188,6 +188,12 @@
       ]
     },
     {
+      "component": "alert",
+      "status": "prod",
+      "display-name": "Alerts",
+      "SLDS-component-path": "/components/alerts"
+    },
+    {
       "component": "app-launcher",
       "status": "prod",
       "display-name": "App Launcher",

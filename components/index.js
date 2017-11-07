@@ -13,6 +13,12 @@ export Accordion from './accordion';
 export SLDSAccordionPanel from './accordion/panel';
 export AccordionPanel from './accordion/panel';
 
+export SLDSAlert from './alert';
+export Alert from './alert';
+
+export SLDSAlertContainer from './alert/container';
+export AlertContainer from './alert/container';
+
 export SLDSAvatar from './avatar';
 export Avatar from './avatar';
 
