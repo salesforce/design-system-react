@@ -4,6 +4,9 @@
 /* eslint-disable global-require */
 
 const documentationSiteLiveExamples = {
+	accordion: [
+		require('raw-loader!design-system-react/examples/accordion/base.jsx')
+	],
 	'app-launcher': [
 		require('raw-loader!design-system-react/examples/app-launcher/default.jsx')
 	],
@@ -13,7 +16,6 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!design-system-react/examples/avatar/user-icon.jsx'),
 		require('raw-loader!design-system-react/examples/avatar/entity-initials.jsx'),
 		require('raw-loader!design-system-react/examples/avatar/entity-icon.jsx')
-
 	],
 	breadcrumb: [
 		require('raw-loader!design-system-react/examples/breadcrumb/base.jsx'),
@@ -160,9 +162,7 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!design-system-react/examples/tooltip/button.jsx'),
 		require('raw-loader!design-system-react/examples/tooltip/button-group.jsx')
 	],
-	tree: [
-		require('raw-loader!design-system-react/examples/tree/default.jsx')
-	]
+	tree: [require('raw-loader!design-system-react/examples/tree/default.jsx')]
 };
 
 module.exports = documentationSiteLiveExamples;

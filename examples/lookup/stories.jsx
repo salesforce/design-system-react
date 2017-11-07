@@ -69,8 +69,8 @@ const DemoLookupAccounts = createReactClass({
 		return (
 			<Lookup
 				{...this.props}
-				footerRenderer={DefaultFooter}
-				headerRenderer={DefaultHeader}
+				footerRenderer={Footer}
+				headerRenderer={Header}
 				onChange={action('change')}
 				onSelect={this.handleSelect}
 				options={this.state.options}
