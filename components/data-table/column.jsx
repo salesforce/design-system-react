@@ -43,6 +43,10 @@ DataTableColumn.propTypes = {
 	 */
 	children: PropTypes.element,
 	/**
+	 * Selects this column as the currently sorted column.
+	 */
+	isSorted: PropTypes.bool,
+	/**
 	 * The column label. If a `string` is not passed in, no `title` attribute will be rendered.
 	 */
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -59,7 +63,7 @@ DataTableColumn.propTypes = {
 	 */
 	sortable: PropTypes.bool,
 	/**
-	 * The current sort direction. If left out the component will track this internally.
+	 * The current sort direction. If left out the component will track this internally. Required if `isSorted` is true.
 	 */
 	sortDirection: PropTypes.oneOf(['desc', 'asc']),
 	/**

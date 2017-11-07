@@ -1,4 +1,130 @@
 {
+    "accordion": {
+        "description": "An accordion allows a user to toggle the display of sections of content.\nThe accordion component wraps accordion panels that can be selected and expanded. It accepts children to define the content displayed within.\n\nExample:\n```\n<SLDSAccordion>\n  <SLDSAccordionpanel />\n  <SLDSAccordionpanel />\n  <SLDSAccordionpanel />\n</SLDSAccordion>\n```",
+        "methods": [],
+        "props": {
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS class names to be added to the accordion component. _Tested with snapshot testing._"
+            },
+            "id": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "number"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "HTML id for accordion component. _Tested with snapshot testing._"
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": true,
+                "description": "The panel content for the Accordion component. Accordion panels should be added as <AccordionPanel />. Event handler for the accordion panels should be added to `<AccordionPanel />`. Optional `panelContentActions` component may be passed as prop. _Tested with Mocha framework and snapshot testing._"
+            }
+        },
+        "route": "accordions",
+        "display-name": "Accordions",
+        "SLDS-component-path": "/components/accordions",
+        "dependencies": [
+            {
+                "panel": {
+                    "description": "",
+                    "methods": [],
+                    "props": {
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "The panel content for the Accordion component. Accordion panels should be added as <AccordionPanel />. Event handler for the accordion panels should be added to `<AccordionPanel />`. Optional `panelContentActions` component may be passed as prop. _Tested with Mocha framework and snapshot testing._"
+                        },
+                        "expanded": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": true,
+                            "description": "Indicates whether item is expanded or not, which should be handled by `onTogglePanel`. _Tested with Mocha framework and snapshot testing._"
+                        },
+                        "id": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "number"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": true,
+                            "description": "Id of the item belonging to this panel. _Tested with snapshot testing._"
+                        },
+                        "panelContentActions": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Component that can be passed as prop to `<Panel />`. As an example, a menu dropdown could be used here to handle additional actions for each accordion panel. _Tested with Mocha framework._"
+                        },
+                        "onTogglePanel": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": true,
+                            "description": "Callback that will run whenever a panel is toggled. Function should handle state to toggle `expanded` prop. _Tested with Mocha framework._"
+                        },
+                        "summary": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "string"
+                                    },
+                                    {
+                                        "name": "node"
+                                    }
+                                ]
+                            },
+                            "required": true,
+                            "description": "Summary in the span element in the header of this panel. The summary is truncated and so the title element should contain the full text so that it is accessible on hover. _Tested with snapshot testing._"
+                        },
+                        "title": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "HTML title attribute. _Tested with snapshot testing._"
+                        }
+                    },
+                    "name": "panel",
+                    "source": "/components/accordion/panel.jsx"
+                }
+            }
+        ]
+    },
     "app-launcher": {
         "description": "The App Launcher allows the user to quickly access all the apps and functionality with their organization.\nThe App Launcher should generally only be used as a sub-component of the [Global Navigation Bar](/components/global-navigation-bar)\n\nAlso note: App Launcher is not included in the standard component export. To import it, you must reference it directly via its path.\nExample:\n```\nimport AppLauncher from 'design-system-react/components/app-launcher';\nimport AppLauncherTile from 'design-system-react/components/app-launcher/tile';\nimport AppLauncherSection from 'design-system-react/components/app-launcher/section';\n```\n\nUSAGE EXAMPLE:\n```\n<AppLauncher>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n</AppLauncher>\n```\n\nBy default, `Modal`, a child component of App Launcher, will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```",
         "methods": [
@@ -418,6 +544,13 @@
                 },
                 "required": false,
                 "description": "Used if the Button triggers a tooltip. The value should match the `id` of the element with `role=\"tooltip\"`."
+            },
+            "aria-controls": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Establishes a relationship between an interactive parent element and a child element to indicate which child element a parent element affects. Frequently used in cases where buttons or tabs are associated with exposing expandable regions."
             },
             "aria-expanded": {
                 "type": {
@@ -5711,7 +5844,7 @@
         ]
     },
     "lookup": {
-        "description": "Lookup is an advanced inline search form. The lookup can parse through single or multi scoped datasets. The parsed dataset can be filtered by single or multi option selects.\n\nThis component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.\n\nThis component may use a portalMount (a disconnected React subtree mount) within an absolutely positioned DOM node created with [Drop](http://github.hubspot.com/drop/).",
+        "description": "** Lookup is deprecated. Please use an auto-complete Combobox instead.**\n\nLookup is an advanced inline search form. The lookup can parse through single or multi scoped datasets. The parsed dataset can be filtered by single or multi option selects.\n\nThis component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.\n\nThis component may use a portalMount (a disconnected React subtree mount) within an absolutely positioned DOM node created with [Drop](http://github.hubspot.com/drop/).",
         "methods": [
             {
                 "name": "modifyItems",
@@ -7453,7 +7586,7 @@
         ]
     },
     "menu-picklist": {
-        "description": "The MenuPicklist component is a variant of the Lightning Design System Menu component.",
+        "description": "** MenuPicklist is deprecated. Please use a read-only Combobox instead.**\n\nThe MenuPicklist component is a variant of the Lightning Design System Menu component.",
         "methods": [
             {
                 "name": "getId",
@@ -8729,6 +8862,15 @@
                             "returns": null
                         }
                     ],
+                    "props": {
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Pass in `Filter` components"
+                        }
+                    },
                     "name": "filtering/list",
                     "source": "/components/panel/filtering/list.jsx"
                 }

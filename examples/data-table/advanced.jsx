@@ -24,6 +24,9 @@ const Example = createReactClass({
 	getInitialState () {
 		return {
 			sortColumn: 'opportunityName',
+			sortColumnDirection: {
+				opportunityName: 'asc'
+			},
 			items: [
 				{
 					id: '8IKZHZZV80',
@@ -31,7 +34,7 @@ const Example = createReactClass({
 					accountName: 'Acme',
 					closeDate: '4/10/15',
 					stage: 'Value Proposition',
-					confidence: '30%',
+					confidence: '70%',
 					amount: '$25,000,000',
 					contact: 'jrogers@acme.com'
 				}, {
@@ -40,7 +43,7 @@ const Example = createReactClass({
 					accountName: 'Acme',
 					closeDate: '1/31/15',
 					stage: 'Prospecting',
-					confidence: '60%',
+					confidence: '30%',
 					amount: '$5,000,000',
 					contact: 'bob@acme.com'
 				},
@@ -50,7 +53,7 @@ const Example = createReactClass({
 					accountName: 'salesforce.com',
 					closeDate: '1/31/15 3:45PM',
 					stage: 'Id. Decision Makers',
-					confidence: '70%',
+					confidence: '60%',
 					amount: '$25,000',
 					contact: 'nathan@salesforce.com'
 				}
@@ -61,7 +64,7 @@ const Example = createReactClass({
 				accountName: 'salesforce.com',
 				closeDate: '1/31/15 3:45PM',
 				stage: 'Id. Decision Makers',
-				confidence: '70%',
+				confidence: '60%',
 				amount: '$25,000',
 				contact: 'nathan@salesforce.com'
 			}]
@@ -87,6 +90,7 @@ const Example = createReactClass({
 							primaryColumn
 							property="opportunityName"
 							sortable
+							sortDirection={this.state.sortColumnDirection.opportunityName}
 							width="10rem"
 						>
 							<CustomDataTableCell />
@@ -109,6 +113,7 @@ const Example = createReactClass({
 							label="Confidence"
 							property="confidence"
 							sortable
+							sortDirection={this.state.sortColumnDirection.confidence}
 						/>
 						<DataTableColumn
 							label="Amount"
@@ -155,11 +160,13 @@ const Example = createReactClass({
 		const sortDirection = sortColumn.sortDirection;
 		const newState = {
 			sortColumn: sortProperty,
+			sortColumnDirection: {
+				[sortProperty]: sortDirection
+			},
 			items: [...this.state.items]
 		};
 
 		// needs to work in both directions
-
 		newState.items = newState.items.sort((a, b) => {
 			let val = 0;
 
@@ -170,7 +177,9 @@ const Example = createReactClass({
 				val = -1;
 			}
 
-			if (sortDirection === 'desc') val *= -1;
+			if (sortDirection === 'desc') {
+				val *= -1;
+			}
 
 			return val;
 		});
