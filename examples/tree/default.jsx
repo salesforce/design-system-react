@@ -311,16 +311,18 @@ const TreeExample = createReactClass({
 	handleClick (event, data) {
 		if (this.props.singleSelection) {
 			data.node.selected = data.select;
-			this.setState({ singleSelection: data.node });
-			if (this.state.singleSelection) {
-				this.state.singleSelection.selected = undefined;
-			}
-			this.forceUpdate();
+			this.setState((prevState) => {
+				if (this.state.selectedNode && this.state.selectedNode.id !== data.node.id) {
+					this.state.selectedNode.selected = false;
+				}
+				return { selectedNode: data.node };
+			});
 			console.log('[handleClick] (event, data)', event, data);
 		} else if (!this.props.noBranchSelection ||
 				(this.props.noBranchSelection && data.node.type !== 'branch')) {
 			data.node.selected = data.select;
-			this.forceUpdate();
+			// trigger render
+			this.setState((prevState) => ({ ...prevState }));
 			console.log('[handleClick] (event, data)', event, data);
 		}
 	},

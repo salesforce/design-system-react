@@ -173,14 +173,26 @@
     "webpack-hot-middleware": "^2.18.2",
     "xml2json": "^0.11.0"
   },
-  "pre-commit": [
-    "lint-staged"
-  ],
-  "pre-push": [
-    "validate",
-    "test"
-  ],
+  "pre-commit": ["lint-staged"],
+  "pre-push": ["validate", "test"],
   "components": [
+    {
+      "component": "accordion",
+      "status": "prod",
+      "display-name": "Accordions",
+      "SLDS-component-path": "/components/accordions",
+      "dependencies": [
+        {
+          "component": "panel"
+        }
+      ]
+    },
+    {
+      "component": "alert",
+      "status": "prod",
+      "display-name": "Alerts",
+      "SLDS-component-path": "/components/alerts"
+    },
     {
       "component": "app-launcher",
       "status": "prod",
@@ -411,12 +423,6 @@
       "SLDS-component-path": "/components/navigation"
     },
     {
-      "component": "notification",
-      "status": "prod",
-      "display-name": "Notifications",
-      "SLDS-component-path": "/components/notifications"
-    },
-    {
       "component": "panel",
       "status": "prototype",
       "display-name": "Panels",
@@ -487,6 +493,12 @@
       ]
     },
     {
+      "component": "toast",
+      "status": "prod",
+      "display-name": "Toasts",
+      "SLDS-component-path": "/components/toasts"
+    },
+    {
       "component": "tree",
       "status": "prototype",
       "display-name": "Tree",
@@ -501,7 +513,8 @@
   ],
   "documentation": {
     "prototype": {
-      "description": "The following components are prototypes. (a) Props may change within a minor release. (b) Web Content Accessibility Guidelines may not be met. (c) CSS imports may be required, since it is being added to SLDS."
+      "description":
+        "The following components are prototypes. (a) Props may change within a minor release. (b) Web Content Accessibility Guidelines may not be met. (c) CSS imports may be required, since it is being added to SLDS."
     }
   }
 }
