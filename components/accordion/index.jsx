@@ -23,6 +23,15 @@ const propTypes = {
 	id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	/**
 	 * The panel content for the Accordion component. Accordion panels should be added as <AccordionPanel />. Event handler for the accordion panels should be added to `<AccordionPanel />`. Optional `panelContentActions` component may be passed as prop. _Tested with Mocha framework and snapshot testing._
+	 *
+	 * Example:
+	 * ```
+	 * <SLDSAccordion>
+	 *   <SLDSAccordionpanel />
+	 *   <SLDSAccordionpanel />
+	 *   <SLDSAccordionpanel />
+	 * </SLDSAccordion>
+	 * ```
 	 */
 	children: PropTypes.node.isRequired
 };
@@ -30,15 +39,6 @@ const propTypes = {
 /**
  * An accordion allows a user to toggle the display of sections of content.
  * The accordion component wraps accordion panels that can be selected and expanded. It accepts children to define the content displayed within.
- *
- * Example:
- * ```
- * <SLDSAccordion>
- *   <SLDSAccordionpanel />
-*   <SLDSAccordionpanel />
- *   <SLDSAccordionpanel />
- * </SLDSAccordion>
- * ```
  */
 class Accordion extends Component {
 	componentWillMount () {
