@@ -20,7 +20,7 @@ const propTypes = {
 	/**
 	 * **Assistive text for accessibility**
 	 * This object is merged with the default props object on every render.
-	 * * `closeButton`: This is used as a visually hidden label if, no `labels.label` is provided.
+	 * * `closeButton`: This is a visually hidden label for the close button.
 	 * _Tested with snapshot testing._
 	 */
 	assistiveText: shape({
@@ -40,7 +40,7 @@ const propTypes = {
 	 * This object is merged with the default props object on every render.
 	 * * `details`: Secondary text below heading
 	 * * `heading`: text within heading tag
-	 * * `headingLink`: Text of link that triggers `onClickHeadingLink`
+	 * * `headingLink`: Text of link that triggers `onClickHeadingLink`. Inline links should pass a keyed array of React components into `labels.heading`.
 	 * _Tested with snapshot testing._
 	 */
 	labels: shape({
@@ -53,7 +53,7 @@ const propTypes = {
 	 */
 	onClickHeadingLink: PropTypes.func,
 	/**
-	 * Icon of type `~/components/icon`. This icon will be cloned nad additional props appended. The default icons are:
+	 * Icon of type `~/components/icon`. This icon will be cloned and additional props appended. The default icons are:
 	 * * info variant: `utility:info`
 	 * * error variant: `utility:error`
 	 * * success variant: `utility:success`
@@ -163,8 +163,7 @@ class Toast extends React.Component {
 					'slds-theme_info': this.props.variant === 'info',
 					'slds-theme_success': this.props.variant === 'success',
 					'slds-theme_warning': this.props.variant === 'warning',
-					'slds-theme_error': this.props.variant === 'error',
-					'slds-theme_offline': this.props.variant === 'offline'
+					'slds-theme_error': this.props.variant === 'error'
 				},
 				this.props.className)}
 				role="alert"

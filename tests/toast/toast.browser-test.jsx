@@ -48,13 +48,13 @@ class DemoComponent extends React.Component {
 	}
 }
 
-DemoComponent.displayName = 'AlertExample';
+DemoComponent.displayName = 'ToastExample';
 
 describe('SLDSToast: ', function () {
 	let wrapper;
 	const onClickHeadingLink = sinon.spy();
 
-	describe('Dismiss alert', () => {
+	describe('Dismiss Toast', () => {
 		beforeEach(mountComponent(
 			<DemoComponent onClickHeadingLink={onClickHeadingLink} />
 		));

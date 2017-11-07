@@ -24,6 +24,6 @@ class Example extends React.Component {
 	}
 }
 
-Example.displayName = 'AlertExample';
+Example.displayName = 'ToastExample';
 
 export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

@@ -34,7 +34,7 @@ class Example extends React.Component {
 							: null }
 					</ToastContainer>
 					<Button
-						label="Toggle alert"
+						label="Toggle toast"
 						onClick={() => {
 							this.setState((prevState) => ({ isOpen: !prevState.isOpen }));
 						}}
@@ -45,6 +45,6 @@ class Example extends React.Component {
 	}
 }
 
-Example.displayName = 'AlertExample';
+Example.displayName = 'ToastExample';
 
 export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
