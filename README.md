@@ -35,6 +35,11 @@ ReactDOM.render(
 	</IconSettings>,
 	document.getElementById('app')
 	)
+
+// `/assets/icons` wil be prepended to `/standard-sprite/svg/symbols.svg#account` within the SVG
+<svg aria-hidden="true" class="slds-icon">
+   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
+</svg>
 ```
 
 ### Example
