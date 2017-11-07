@@ -15,8 +15,11 @@ import isFunction from 'lodash.isfunction';
 // ## Children
 import Icon from '../../icon';
 
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from '../column-check-props';
+
 // ## Constants
-import { DATA_TABLE_HEADER_CELL } from '../../../utilities/constants';
+import { DATA_TABLE_HEADER_CELL, DATA_TABLE_COLUMN } from '../../../utilities/constants';
 
 /**
  * Used internally, renders each individual column heading.
@@ -74,8 +77,19 @@ const DataTableHeaderCell = createReactClass({
 
 	getInitialState () {
 		return {
-			sortDirection: 'asc'
+			sortDirection: null
 		};
+	},
+
+	componentDidMount () {
+		checkProps(DATA_TABLE_COLUMN, this.props);
+	},
+
+	componentDidUpdate (prevProps) {
+		// reset sort state when another column is sorted
+		if (prevProps.isSorted === true && this.props.isSorted === false) {
+			this.setState({ sortDirection: null }); // eslint-disable-line react/no-did-update-set-state
+		}
 	},
 
 	// ### Render
@@ -118,7 +132,7 @@ const DataTableHeaderCell = createReactClass({
 							<Icon
 								className="slds-is-sortable__icon"
 								category="utility"
-								name={sortDirection === 'desc' || !sortDirection ? 'arrowdown' : 'arrowup'}
+								name={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
 								size="x-small"
 							/>
 							{sortDirection
