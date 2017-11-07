@@ -1,6 +1,6 @@
 {
     "accordion": {
-        "description": "An accordion allows a user to toggle the display of sections of content.\nThe accordion component wraps accordion panels that can be selected and expanded. It accepts children to define the content displayed within.\n\nExample:\n```\n<SLDSAccordion>\n  <SLDSAccordionpanel />\n  <SLDSAccordionpanel />\n  <SLDSAccordionpanel />\n</SLDSAccordion>\n```",
+        "description": "An accordion allows a user to toggle the display of sections of content.\nThe accordion component wraps accordion panels that can be selected and expanded. It accepts children to define the content displayed within.",
         "methods": [],
         "props": {
             "className": {
@@ -41,7 +41,7 @@
                     "name": "node"
                 },
                 "required": true,
-                "description": "The panel content for the Accordion component. Accordion panels should be added as <AccordionPanel />. Event handler for the accordion panels should be added to `<AccordionPanel />`. Optional `panelContentActions` component may be passed as prop. _Tested with Mocha framework and snapshot testing._"
+                "description": "The panel content for the Accordion component. Accordion panels should be added as <AccordionPanel />. Event handler for the accordion panels should be added to `<AccordionPanel />`. Optional `panelContentActions` component may be passed as prop. _Tested with Mocha framework and snapshot testing._\n\nExample:\n```\n<SLDSAccordion>\n  <SLDSAccordionpanel />\n  <SLDSAccordionpanel />\n  <SLDSAccordionpanel />\n</SLDSAccordion>\n```"
             }
         },
         "route": "accordions",
@@ -124,6 +124,128 @@
                 }
             }
         ]
+    },
+    "alert": {
+        "description": "Alert banners communicate a state that affects the entire system, not just a feature or page. It persists over a session and appears without the user initiating the action. View [banner guidelines](https://www.lightningdesignsystem.com/guidelines/messaging/components/banners/).",
+        "methods": [
+            {
+                "name": "saveButtonRef",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "component",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "custom",
+                    "raw": "shape({\n    closeButton: PropTypes.oneOfType([PropTypes.string, PropTypes.node])\n})"
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `closeButton`: This is a visually hidden label for the close button.\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{\n    closeButton: 'Close'\n}",
+                    "computed": false
+                }
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-notify_alert`. Uses `classNames` [API](https://github.com/JedWatson/classnames).\n_Tested with snapshot testing._"
+            },
+            "dismissible": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Allows user to click a close button. Banners should be dismissible only if they communicate future impact to the system,\n_Tested with snapshot testing._"
+            },
+            "icon": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Icon of type `~/components/icon`. This icon will be cloned and additional props appended. The default icons are:\n* info variant: `utility:info`\n* error variant: `utility:error`\n* offline variant: `utility:offline`\n* warning variant: `utility:warning`\n_Tested with snapshot testing._"
+            },
+            "labels": {
+                "type": {
+                    "name": "custom",
+                    "raw": "shape({\n    heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),\n    headingLink: PropTypes.oneOfType([PropTypes.string, PropTypes.node])\n})"
+                },
+                "required": false,
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `heading`: text within heading tag\n* `headingLink`: Text of link that triggers `onClickHeadingLink`. Inline links should pass a keyed array of React components into `labels.heading`.\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
+            "onClickHeadingLink": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered by link. _Tested with Mocha testing._"
+            },
+            "onRequestClose": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered by close button. This is a controlled component. _Tested with Mocha testing._"
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'error'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'info'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'offline'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'warning'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": true,
+                "description": "The type of alert. _Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "'info'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "alerts",
+        "display-name": "Alerts",
+        "SLDS-component-path": "/components/alerts",
+        "dependencies": []
     },
     "app-launcher": {
         "description": "The App Launcher allows the user to quickly access all the apps and functionality with their organization.\nThe App Launcher should generally only be used as a sub-component of the [Global Navigation Bar](/components/global-navigation-bar)\n\nAlso note: App Launcher is not included in the standard component export. To import it, you must reference it directly via its path.\nExample:\n```\nimport AppLauncher from 'design-system-react/components/app-launcher';\nimport AppLauncherTile from 'design-system-react/components/app-launcher/tile';\nimport AppLauncherSection from 'design-system-react/components/app-launcher/section';\n```\n\nUSAGE EXAMPLE:\n```\n<AppLauncher>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n</AppLauncher>\n```\n\nBy default, `Modal`, a child component of App Launcher, will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```",
@@ -2855,6 +2977,13 @@
                             "required": false,
                             "description": "Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.\n```\nimport DataTableCell from 'design-system-react/data-table/cell';\nconst CustomDataTableCell = ({ children, ...props }) => (\n  <DataTableCell {...props} >\n    <a href=\"javascript:void(0);\">{children}</a>\n  </DataTableCell>\n);\nCustomDataTableCell.displayName = DataTableCell.displayName;\n\n<DataTable>\n  <DataTableColumn />\n  <DataTableColumn>\n    <DataTableCustomCell />\n  </DataTableColumn>\n  <DataTableRowActions />\n</DataTable>\n```"
                         },
+                        "isSorted": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Selects this column as the currently sorted column."
+                        },
                         "label": {
                             "type": {
                                 "name": "union",
@@ -2906,7 +3035,7 @@
                                 ]
                             },
                             "required": false,
-                            "description": "The current sort direction. If left out the component will track this internally."
+                            "description": "The current sort direction. If left out the component will track this internally. Required if `isSorted` is true."
                         },
                         "title": {
                             "type": {
@@ -7957,7 +8086,7 @@
         "dependencies": []
     },
     "modal": {
-        "description": "The Modal component is used for the Lightning Design System Modal and Notification > Prompt components. The Modal opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop). For more details on the Prompt markup, please review the <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">Notifications > Prompt</a>.\n\nBy default, `Modal` will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```\n\nThis component uses a portalMount (a disconnected React subtree mount) to create a modal as a child of `body`.",
+        "description": "The Modal component is used for the Lightning Design System Modal and Notification > Prompt components. The Modal opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop). For more details on the Prompt markup, please review the <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">Notifications > Prompt</a>.\n\nBy default, `Modal` will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```\n\nThis component uses a portalMount (a disconnected React subtree mount) to create a modal as a child of `body`.\nWhen dynamically generating a `Button` that will be used to toggle a `Modal`, you may see the parent page scroll down. If `parentSelector` points to the `Button`, the `Modal` will display, but will not be clickable. The `Modal` has been rendered inside the `Button` and its event listeners. To fix these issues, define a DOM element with an ID along with the `Button`. Set the `Modal`'s `parentSelector` to that DOM element's `id`.\n```\n<div id={`toggleButtonFor-${modalId}`} style={{zIndex: '2'}} />\n<Button onClick={this.toggleModal} />\n...\n<Modal parentSelector={() => document.querySelector(`#toggleButtonFor-${modalId}`)} />\n```",
         "displayName": "Modal",
         "methods": [
             {
@@ -8416,195 +8545,6 @@
         "SLDS-component-path": "/components/navigation",
         "dependencies": []
     },
-    "notification": {
-        "description": "The Notification component is the Alert and Toast variants of the Lightning Design System Notification component. For prompt notifications, use the <a href='#/modal'>Modal</a> component with <code>prompt={true}</code>.\nThe Notification opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).",
-        "displayName": "Notification",
-        "methods": [
-            {
-                "name": "renderIcon",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "renderClose",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "onDismiss",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "renderAlertContent",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "renderToastContent",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getClassName",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "renderContent",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "blankContent",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
-        "props": {
-            "iconCategory": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "'utility'",
-                    "computed": false
-                }
-            },
-            "className": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Custom classes applied to Notification element."
-            },
-            "content": {
-                "type": {
-                    "name": "node"
-                },
-                "required": true,
-                "description": "Message for Notification."
-            },
-            "dismissible": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "If true, close button appears for users to dismiss Notification.",
-                "defaultValue": {
-                    "value": "true",
-                    "computed": false
-                }
-            },
-            "duration": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "If duration exists, the Notification will disappear after that amount of time."
-            },
-            "iconName": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lighning Design System Icons</a> to reference icon names."
-            },
-            "isOpen": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": true,
-                "description": "",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "onDismiss": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": ""
-            },
-            "texture": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Styling for Notification background.",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "theme": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'success'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'warning'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'error'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'offline'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Styling for Notification background color. Please reference <a href='http://www.lightningdesignsystem.com/components/utilities/themes/#color'>Lighning Design System Themes > Color</a>."
-            },
-            "variant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'alert'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'toast'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": true,
-                "description": ""
-            }
-        },
-        "route": "notifications",
-        "display-name": "Notifications",
-        "SLDS-component-path": "/components/notifications",
-        "dependencies": []
-    },
     "panel": {
         "description": "A panel provides detailed contextual information or contextual filtering options. [Filter](/components/filters/) component should be used as children. Menus within a Filter Popover will need to not have \"portal mounts\" and be inline.",
         "methods": [],
@@ -8862,15 +8802,6 @@
                             "returns": null
                         }
                     ],
-                    "props": {
-                        "children": {
-                            "type": {
-                                "name": "node"
-                            },
-                            "required": false,
-                            "description": "Pass in `Filter` components"
-                        }
-                    },
                     "name": "filtering/list",
                     "source": "/components/panel/filtering/list.jsx"
                 }
@@ -10637,6 +10568,131 @@
                 }
             }
         ]
+    },
+    "toast": {
+        "description": "Toast serves as a feedback & confirmation mechanism after the user takes an action. View [banner guidelines](https://www.lightningdesignsystem.com/guidelines/messaging/components/banners/).",
+        "methods": [
+            {
+                "name": "saveButtonRef",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "component",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "onClose",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "custom",
+                    "raw": "shape({\n    closeButton: PropTypes.oneOfType([PropTypes.string, PropTypes.node])\n})"
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `closeButton`: This is a visually hidden label for the close button.\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{\n    closeButton: 'Close'\n}",
+                    "computed": false
+                }
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-notify_toast`. Uses `classNames` [API](https://github.com/JedWatson/classnames).\n_Tested with snapshot testing._"
+            },
+            "duration": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "If duration exists, the Toast will disappear after that amount of time. Time in milliseconds. _Tested with Mocha testing._"
+            },
+            "labels": {
+                "type": {
+                    "name": "custom",
+                    "raw": "shape({\n    details: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),\n    heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),\n    headingLink: PropTypes.oneOfType([PropTypes.string, PropTypes.node])\n})"
+                },
+                "required": false,
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `details`: Secondary text below heading\n* `heading`: text within heading tag\n* `headingLink`: Text of link that triggers `onClickHeadingLink`. Inline links should pass a keyed array of React components into `labels.heading`.\n_Tested with snapshot testing._"
+            },
+            "onClickHeadingLink": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered by link. _Tested with Mocha testing._"
+            },
+            "icon": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Icon of type `~/components/icon`. This icon will be cloned and additional props appended. The default icons are:\n* info variant: `utility:info`\n* error variant: `utility:error`\n* success variant: `utility:success`\n* warning variant: `utility:warning`\n_Tested with snapshot testing._"
+            },
+            "onRequestClose": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered by close button. _Tested with Mocha testing._"
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'error'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'info'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'success'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'warning'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": true,
+                "description": "The type of Toast. _Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "'info'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "toasts",
+        "display-name": "Toasts",
+        "SLDS-component-path": "/components/toasts",
+        "dependencies": []
     },
     "tree": {
         "description": "A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed. This is a controlled component, since visual state is present in the `nodes` data.",
