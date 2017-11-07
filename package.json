@@ -423,12 +423,6 @@
       "SLDS-component-path": "/components/navigation"
     },
     {
-      "component": "notification",
-      "status": "prod",
-      "display-name": "Notifications",
-      "SLDS-component-path": "/components/notifications"
-    },
-    {
       "component": "panel",
       "status": "prototype",
       "display-name": "Panels",
@@ -497,6 +491,12 @@
           "component": "panel"
         }
       ]
+    },
+    {
+      "component": "toast",
+      "status": "prod",
+      "display-name": "Toasts",
+      "SLDS-component-path": "/components/toasts"
     },
     {
       "component": "tree",
