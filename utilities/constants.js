@@ -1,4 +1,6 @@
 // ## Components
+export const ALERT = 'SLDSAlert';
+export const ALERT_CONTAINER = 'SLDSAlertContainer';
 export const APP_LAUNCHER = 'SLDSAppLauncher';
 export const APP_LAUNCHER_SECTION = 'SLDSAppLauncherSection';
 export const APP_LAUNCHER_TILE = 'SLDSAppLauncherTile';
