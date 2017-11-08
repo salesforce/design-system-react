@@ -42,6 +42,7 @@ const propTypes = {
 	 * * error variant: `utility:error`
 	 * * offline variant: `utility:offline`
 	 * * warning variant: `utility:warning`
+	 *
 	 * _Tested with snapshot testing._
 	 */
 	icon: PropTypes.node,
@@ -50,6 +51,7 @@ const propTypes = {
 	 * This object is merged with the default props object on every render.
 	 * * `heading`: text within heading tag
 	 * * `headingLink`: Text of link that triggers `onClickHeadingLink`. Inline links should pass a keyed array of React components into `labels.heading`.
+	 *
 	 * _Tested with snapshot testing._
 	 */
 	labels: shape({

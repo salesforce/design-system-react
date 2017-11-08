@@ -41,6 +41,7 @@ const propTypes = {
 	 * * `details`: Secondary text below heading
 	 * * `heading`: text within heading tag
 	 * * `headingLink`: Text of link that triggers `onClickHeadingLink`. Inline links should pass a keyed array of React components into `labels.heading`.
+	 *
 	 * _Tested with snapshot testing._
 	 */
 	labels: shape({
@@ -58,6 +59,7 @@ const propTypes = {
 	 * * error variant: `utility:error`
 	 * * success variant: `utility:success`
 	 * * warning variant: `utility:warning`
+	 *
 	 * _Tested with snapshot testing._
 	 */
 	icon: PropTypes.node,
