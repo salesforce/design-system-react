@@ -2,4 +2,4 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 
-export default {"viewBox":"0 0 24 24","xmlns":"http://www.w3.org/2000/svg","circle":{"cx":"12","cy":"12","r":"11.077"}};
+export default {"viewBox":"0 0 24 24","circle":{"cx":"12","cy":"12","r":"11.077"}};
