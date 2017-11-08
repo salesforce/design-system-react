@@ -1,0 +1,8 @@
+define(["exports"], function (exports) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = { "viewBox": "0 0 24 24", "xmlns": "http://www.w3.org/2000/svg", "path": { "d": "M5.3 10l6.2-6.4c.3-.2.7-.2 1 0l6.2 6.4c.3.2.3.7 0 1l-1 1c-.3.3-.7.3-1 0l-4.2-4.3c-.3-.3-.7-.3-1 0L7.3 12c-.3.2-.7.2-1 0l-1-1.1c-.3-.2-.3-.7 0-.9zm0 8.3l6.2-6.3c.3-.3.7-.3 1 0l6.2 6.3c.3.3.3.8 0 1l-1 1.1c-.3.2-.7.2-1 0L12.5 16c-.3-.3-.7-.3-1 0l-4.2 4.3c-.3.3-.7.3-1 0l-1-1c-.3-.3-.3-.7 0-1z" } };
+});
