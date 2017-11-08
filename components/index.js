@@ -191,6 +191,11 @@ export Tabs from './tabs';
 export SLDSTabsPanel from './tabs/panel';
 export TabsPanel from './tabs/panel';
 
+export SLDSToast from './toast';
+export Toast from './toast';
+export SLDSToastContainer from './toast/container';
+export ToastContainer from './toast/container';
+
 export SLDSUtilityIcon from './utilities/utility-icon';
 export UtilityIcon from './utilities/utility-icon';
 
