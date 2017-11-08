@@ -376,23 +376,6 @@
       ]
     },
     {
-      "component": "lookup",
-      "status": "prod",
-      "display-name": "Lookups",
-      "SLDS-component-path": "/components/lookups",
-      "dependencies": [
-        {
-          "component": "footer"
-        },
-        {
-          "component": "header"
-        },
-        {
-          "component": "section-divider"
-        }
-      ]
-    },
-    {
       "component": "media-object",
       "status": "prod",
       "display-name": "Media Objects",
@@ -408,12 +391,6 @@
           "component": "button-trigger"
         }
       ]
-    },
-    {
-      "component": "menu-picklist",
-      "status": "prod",
-      "display-name": "Picklist Menus",
-      "SLDS-component-path": "/components/menus#flavor-picklist"
     },
     {
       "component": "modal",
