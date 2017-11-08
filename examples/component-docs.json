@@ -184,7 +184,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Icon of type `~/components/icon`. This icon will be cloned and additional props appended. The default icons are:\n* info variant: `utility:info`\n* error variant: `utility:error`\n* offline variant: `utility:offline`\n* warning variant: `utility:warning`\n_Tested with snapshot testing._"
+                "description": "Icon of type `~/components/icon`. This icon will be cloned and additional props appended. The default icons are:\n* info variant: `utility:info`\n* error variant: `utility:error`\n* offline variant: `utility:offline`\n* warning variant: `utility:warning`\n\n_Tested with snapshot testing._"
             },
             "labels": {
                 "type": {
@@ -192,7 +192,7 @@
                     "raw": "shape({\n    heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),\n    headingLink: PropTypes.oneOfType([PropTypes.string, PropTypes.node])\n})"
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `heading`: text within heading tag\n* `headingLink`: Text of link that triggers `onClickHeadingLink`. Inline links should pass a keyed array of React components into `labels.heading`.\n_Tested with snapshot testing._",
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `heading`: text within heading tag\n* `headingLink`: Text of link that triggers `onClickHeadingLink`. Inline links should pass a keyed array of React components into `labels.heading`.\n\n_Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
@@ -245,7 +245,43 @@
         "route": "alerts",
         "display-name": "Alerts",
         "SLDS-component-path": "/components/alerts",
-        "dependencies": []
+        "dependencies": [
+            {
+                "container": {
+                    "description": "A fixed container for alert banners.",
+                    "methods": [],
+                    "props": {
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "CSS classes to be added to tag with `.slds-notify_alert`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+                        },
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Alert components"
+                        }
+                    },
+                    "name": "container",
+                    "source": "/components/alert/container.jsx"
+                }
+            }
+        ]
     },
     "app-launcher": {
         "description": "The App Launcher allows the user to quickly access all the apps and functionality with their organization.\nThe App Launcher should generally only be used as a sub-component of the [Global Navigation Bar](/components/global-navigation-bar)\n\nAlso note: App Launcher is not included in the standard component export. To import it, you must reference it directly via its path.\nExample:\n```\nimport AppLauncher from 'design-system-react/components/app-launcher';\nimport AppLauncherTile from 'design-system-react/components/app-launcher/tile';\nimport AppLauncherSection from 'design-system-react/components/app-launcher/section';\n```\n\nUSAGE EXAMPLE:\n```\n<AppLauncher>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n</AppLauncher>\n```\n\nBy default, `Modal`, a child component of App Launcher, will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```",
@@ -10636,7 +10672,7 @@
                     "raw": "shape({\n    details: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),\n    heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),\n    headingLink: PropTypes.oneOfType([PropTypes.string, PropTypes.node])\n})"
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `details`: Secondary text below heading\n* `heading`: text within heading tag\n* `headingLink`: Text of link that triggers `onClickHeadingLink`. Inline links should pass a keyed array of React components into `labels.heading`.\n_Tested with snapshot testing._"
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `details`: Secondary text below heading\n* `heading`: text within heading tag\n* `headingLink`: Text of link that triggers `onClickHeadingLink`. Inline links should pass a keyed array of React components into `labels.heading`.\n\n_Tested with snapshot testing._"
             },
             "onClickHeadingLink": {
                 "type": {
@@ -10650,7 +10686,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Icon of type `~/components/icon`. This icon will be cloned and additional props appended. The default icons are:\n* info variant: `utility:info`\n* error variant: `utility:error`\n* success variant: `utility:success`\n* warning variant: `utility:warning`\n_Tested with snapshot testing._"
+                "description": "Icon of type `~/components/icon`. This icon will be cloned and additional props appended. The default icons are:\n* info variant: `utility:info`\n* error variant: `utility:error`\n* success variant: `utility:success`\n* warning variant: `utility:warning`\n\n_Tested with snapshot testing._"
             },
             "onRequestClose": {
                 "type": {
@@ -10692,7 +10728,43 @@
         "route": "toasts",
         "display-name": "Toasts",
         "SLDS-component-path": "/components/toasts",
-        "dependencies": []
+        "dependencies": [
+            {
+                "container": {
+                    "description": "A fixed container for toast banners.",
+                    "methods": [],
+                    "props": {
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "CSS classes to be added to tag with `.slds-notify-container`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+                        },
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Toast components"
+                        }
+                    },
+                    "name": "container",
+                    "source": "/components/toast/container.jsx"
+                }
+            }
+        ]
     },
     "tree": {
         "description": "A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed. This is a controlled component, since visual state is present in the `nodes` data.",

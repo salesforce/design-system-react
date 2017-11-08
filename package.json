@@ -191,7 +191,12 @@
       "component": "alert",
       "status": "prod",
       "display-name": "Alerts",
-      "SLDS-component-path": "/components/alerts"
+      "SLDS-component-path": "/components/alerts",
+      "dependencies": [
+        {
+          "component": "container"
+        }
+      ]
     },
     {
       "component": "app-launcher",
@@ -496,7 +501,12 @@
       "component": "toast",
       "status": "prod",
       "display-name": "Toasts",
-      "SLDS-component-path": "/components/toasts"
+      "SLDS-component-path": "/components/toasts",
+      "dependencies": [
+        {
+          "component": "container"
+        }
+      ]
     },
     {
       "component": "tree",
