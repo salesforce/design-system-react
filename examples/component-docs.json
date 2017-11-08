@@ -7836,6 +7836,15 @@
                             "returns": null
                         }
                     ],
+                    "props": {
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Pass in `Filter` components"
+                        }
+                    },
                     "name": "filtering/list",
                     "source": "/components/panel/filtering/list.jsx"
                 }
