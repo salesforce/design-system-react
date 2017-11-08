@@ -196,7 +196,7 @@ describe('SLDSProgressIndicator: ', () => {
 		it('renders correct assistive text', function () {
 			const item = this.wrapper.find('.slds-progress')
 									.find('.slds-tooltip-trigger')
-									.find('li > span')
+									.find('button > span')
 									.find('.slds-assistive-text')
 									.first();
 			expect(item.text()).to.include('custom tooltip #1');
@@ -246,11 +246,17 @@ describe('SLDSProgressIndicator: ', () => {
 		});
 
 		it('renders assistive text for steps', function () {
-			const item = this.wrapper.find('.slds-progress').find('.slds-tooltip-trigger').find('li')
+			const firstItem = this.wrapper.find('.slds-progress').find('li').find('.slds-tooltip-trigger')
 									.find('.slds-button')
 									.find('.slds-assistive-text')
 									.first();
-			expect(item.text()).to.include('Step');
+			expect(firstItem.text()).to.include('tooltip label');
+
+			const secondItem = this.wrapper.find('.slds-progress').find('li').find('.slds-tooltip-trigger')
+									.find('.slds-button')
+									.find('.slds-assistive-text')
+									.at(1);
+			expect(secondItem.text()).to.include('Step');
 		});
 	});
 
