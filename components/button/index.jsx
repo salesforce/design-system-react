@@ -27,6 +27,10 @@ const Button = createReactClass({
 		 */
 		'aria-describedby': PropTypes.string,
 		/**
+		* Establishes a relationship between an interactive parent element and a child element to indicate which child element a parent element affects. Frequently used in cases where buttons or tabs are associated with exposing expandable regions.
+		*/
+		'aria-controls': PropTypes.string,
+		/**
 		 * Used if the Button triggers a menu or popup. Bool indicates if the menu or popup is open or closed.
 		 */
 		'aria-expanded': PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
@@ -215,6 +219,7 @@ const Button = createReactClass({
 	renderButton () {
 		return (
 			<button
+				aria-controls={this.props['aria-controls']}
 				aria-describedby={this.props['aria-describedby']}
 				aria-expanded={this.props['aria-expanded']}
 				aria-haspopup={this.props['aria-haspopup']}

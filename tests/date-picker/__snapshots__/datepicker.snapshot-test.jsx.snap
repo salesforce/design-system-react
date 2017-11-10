@@ -62,6 +62,7 @@ exports[`Datepicker
         value="Llama and Lamb's epiphany of love"
       />
       <button
+        aria-controls={undefined}
         aria-describedby={undefined}
         aria-expanded={true}
         aria-haspopup={true}
@@ -120,6 +121,7 @@ exports[`Datepicker
             className="slds-align-middle"
           >
             <button
+              aria-controls={undefined}
               aria-describedby={undefined}
               aria-expanded={undefined}
               aria-haspopup={undefined}
@@ -172,6 +174,7 @@ exports[`Datepicker
             className="slds-align-middle"
           >
             <button
+              aria-controls={undefined}
               aria-describedby={undefined}
               aria-expanded={undefined}
               aria-haspopup={undefined}
@@ -972,6 +975,7 @@ exports[`Datepicker
         value="7/23/2014"
       />
       <button
+        aria-controls={undefined}
         aria-describedby={undefined}
         aria-expanded={true}
         aria-haspopup={true}
@@ -1030,6 +1034,7 @@ exports[`Datepicker
             className="slds-align-middle"
           >
             <button
+              aria-controls={undefined}
               aria-describedby={undefined}
               aria-expanded={undefined}
               aria-haspopup={undefined}
@@ -1082,6 +1087,7 @@ exports[`Datepicker
             className="slds-align-middle"
           >
             <button
+              aria-controls={undefined}
               aria-describedby={undefined}
               aria-expanded={undefined}
               aria-haspopup={undefined}
@@ -1880,6 +1886,7 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
         value="7/23/2014"
       />
       <button
+        aria-controls={undefined}
         aria-describedby={undefined}
         aria-expanded={true}
         aria-haspopup={true}
@@ -1938,6 +1945,7 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
             className="slds-align-middle"
           >
             <button
+              aria-controls={undefined}
               aria-describedby={undefined}
               aria-expanded={undefined}
               aria-haspopup={undefined}
@@ -1990,6 +1998,7 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
             className="slds-align-middle"
           >
             <button
+              aria-controls={undefined}
               aria-describedby={undefined}
               aria-expanded={undefined}
               aria-haspopup={undefined}

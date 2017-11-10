@@ -4,6 +4,16 @@
 /* eslint-disable global-require */
 
 const documentationSiteLiveExamples = {
+	accordion: [
+		require('raw-loader!design-system-react/examples/accordion/base.jsx')
+	],
+	alert: [
+		require('raw-loader!design-system-react/examples/alert/info.jsx'),
+		require('raw-loader!design-system-react/examples/alert/warning.jsx'),
+		require('raw-loader!design-system-react/examples/alert/offline.jsx'),
+		require('raw-loader!design-system-react/examples/alert/error.jsx'),
+		require('raw-loader!design-system-react/examples/alert/dismissable.jsx')
+	],
 	'app-launcher': [
 		require('raw-loader!design-system-react/examples/app-launcher/default.jsx')
 	],
@@ -13,7 +23,6 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!design-system-react/examples/avatar/user-icon.jsx'),
 		require('raw-loader!design-system-react/examples/avatar/entity-initials.jsx'),
 		require('raw-loader!design-system-react/examples/avatar/entity-icon.jsx')
-
 	],
 	breadcrumb: [
 		require('raw-loader!design-system-react/examples/breadcrumb/base.jsx'),
@@ -156,14 +165,19 @@ const documentationSiteLiveExamples = {
 	'time-picker': [
 		require('raw-loader!design-system-react/examples/time-picker/default.jsx')
 	],
+	toast: [
+		require('raw-loader!design-system-react/examples/toast/info.jsx'),
+		require('raw-loader!design-system-react/examples/toast/success.jsx'),
+		require('raw-loader!design-system-react/examples/toast/warning.jsx'),
+		require('raw-loader!design-system-react/examples/toast/error.jsx'),
+		require('raw-loader!design-system-react/examples/toast/error-with-details.jsx')
+	],
 	tooltip: [
 		require('raw-loader!design-system-react/examples/tooltip/base.jsx'),
 		require('raw-loader!design-system-react/examples/tooltip/button.jsx'),
 		require('raw-loader!design-system-react/examples/tooltip/button-group.jsx')
 	],
-	tree: [
-		require('raw-loader!design-system-react/examples/tree/default.jsx')
-	]
+	tree: [require('raw-loader!design-system-react/examples/tree/default.jsx')]
 };
 
 module.exports = documentationSiteLiveExamples;

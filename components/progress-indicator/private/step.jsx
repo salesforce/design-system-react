@@ -148,17 +148,17 @@ class Step extends React.Component {
 		}
 
 		return (
-			<PopoverTooltip {...tooltipProps} >
-				<li
-					className={classNames('slds-progress__item', {
-						'slds-is-completed': this.props.isCompleted,
-						'slds-is-active': this.props.isSelected && !this.props.isError,
-						'slds-has-error': this.props.isError
-					})}
-				>
+			<li
+				className={classNames('slds-progress__item', {
+					'slds-is-completed': this.props.isCompleted,
+					'slds-is-active': this.props.isSelected && !this.props.isError,
+					'slds-has-error': this.props.isError
+				})}
+			>
+				<PopoverTooltip {...tooltipProps} >
 					{this.buttonIcon(renderIcon, status, this.props)}
-				</li>
-			</PopoverTooltip>
+				</PopoverTooltip>
+			</li>
 		);
 	}
 }

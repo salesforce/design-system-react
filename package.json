@@ -1,6 +1,6 @@
 {
   "name": "design-system-react",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "Salesforce Lightning Design System for React",
   "license": "SEE LICENSE IN README.md",
   "engines": {
@@ -182,6 +182,28 @@
   ],
   "components": [
     {
+      "component": "accordion",
+      "status": "prod",
+      "display-name": "Accordions",
+      "SLDS-component-path": "/components/accordions",
+      "dependencies": [
+        {
+          "component": "panel"
+        }
+      ]
+    },
+    {
+      "component": "alert",
+      "status": "prod",
+      "display-name": "Alerts",
+      "SLDS-component-path": "/components/alerts",
+      "dependencies": [
+        {
+          "component": "container"
+        }
+      ]
+    },
+    {
       "component": "app-launcher",
       "status": "prod",
       "display-name": "App Launcher",
@@ -359,23 +381,6 @@
       ]
     },
     {
-      "component": "lookup",
-      "status": "prod",
-      "display-name": "Lookups",
-      "SLDS-component-path": "/components/lookups",
-      "dependencies": [
-        {
-          "component": "footer"
-        },
-        {
-          "component": "header"
-        },
-        {
-          "component": "section-divider"
-        }
-      ]
-    },
-    {
       "component": "media-object",
       "status": "prod",
       "display-name": "Media Objects",
@@ -393,12 +398,6 @@
       ]
     },
     {
-      "component": "menu-picklist",
-      "status": "prod",
-      "display-name": "Picklist Menus",
-      "SLDS-component-path": "/components/menus#flavor-picklist"
-    },
-    {
       "component": "modal",
       "status": "prod",
       "display-name": "Modals",
@@ -409,12 +408,6 @@
       "status": "prod",
       "display-name": "Navigation",
       "SLDS-component-path": "/components/navigation"
-    },
-    {
-      "component": "notification",
-      "status": "prod",
-      "display-name": "Notifications",
-      "SLDS-component-path": "/components/notifications"
     },
     {
       "component": "panel",
@@ -483,6 +476,17 @@
       "dependencies": [
         {
           "component": "panel"
+        }
+      ]
+    },
+    {
+      "component": "toast",
+      "status": "prod",
+      "display-name": "Toasts",
+      "SLDS-component-path": "/components/toasts",
+      "dependencies": [
+        {
+          "component": "container"
         }
       ]
     },

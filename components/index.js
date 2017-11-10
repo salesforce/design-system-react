@@ -7,6 +7,18 @@ export Settings from './settings';
 export SLDSIconSettings from './icon-settings';
 export IconSettings from './icon-settings';
 
+export SLDSAccordion from './accordion';
+export Accordion from './accordion';
+
+export SLDSAccordionPanel from './accordion/panel';
+export AccordionPanel from './accordion/panel';
+
+export SLDSAlert from './alert';
+export Alert from './alert';
+
+export SLDSAlertContainer from './alert/container';
+export AlertContainer from './alert/container';
+
 export SLDSAvatar from './avatar';
 export Avatar from './avatar';
 
@@ -178,6 +190,11 @@ export SLDSTabs from './tabs';
 export Tabs from './tabs';
 export SLDSTabsPanel from './tabs/panel';
 export TabsPanel from './tabs/panel';
+
+export SLDSToast from './toast';
+export Toast from './toast';
+export SLDSToastContainer from './toast/container';
+export ToastContainer from './toast/container';
 
 export SLDSUtilityIcon from './utilities/utility-icon';
 export UtilityIcon from './utilities/utility-icon';

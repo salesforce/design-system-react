@@ -39,6 +39,7 @@ const DemoTree = createReactClass({
 		: sampleNodes.sampleNodesDefault;
 		return {
 			nodes: initalNodes,
+			selectedNode: undefined,
 			searchTerm: this.props.searchable ? 'fruit' : undefined
 		};
 	},
@@ -59,16 +60,19 @@ const DemoTree = createReactClass({
 	handleClick (event, data) {
 		if (this.props.singleSelection) {
 			data.node.selected = data.select;
-			this.setState({ singleSelection: data.node });
-			if (this.state.singleSelection) {
-				this.state.singleSelection.selected = undefined;
-			}
-			this.forceUpdate();
+			this.setState((prevState) => {
+				if (this.state.selectedNode && this.state.selectedNode.id !== data.node.id) {
+					this.state.selectedNode.selected = false;
+				}
+
+				return { selectedNode: data.node };
+			});
 			itemClicked('Node Clicked')(event, data);
 		} else if (!this.props.noBranchSelection ||
 				(this.props.noBranchSelection && data.node.type !== 'branch')) {
 			data.node.selected = data.select;
-			this.forceUpdate();
+			// trigger render
+			this.setState((prevState) => ({ ...prevState }));
 			itemClicked('Node Clicked')(event, data);
 		}
 	},
