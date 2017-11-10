@@ -247,6 +247,8 @@ class Combobox extends React.Component {
 		return hasNewIndex ? newIndex : activeOptionIndex;
 	}
 
+	getTargetElement = () => this.inputRef;
+
 	isSelected = ({ selection, option }) => !!find(selection, option);
 
 	/**
@@ -341,7 +343,7 @@ class Combobox extends React.Component {
 				inheritTargetWidth
 				onClose={this.handleClose}
 				onOpen={this.handleOpen}
-				onRequestTargetElement={() => this.inputRef}
+				onRequestTargetElement={this.getTargetElement}
 				position={menuPosition}
 				containerProps={{
 					id: `${this.getId()}-listbox`,
@@ -749,7 +751,7 @@ class Combobox extends React.Component {
 							onFocus={this.handleInputFocus}
 							onBlur={this.handleInputBlur}
 							onKeyDown={this.handleKeyDown}
-							inputRef={(component) => { this.inputRef = component; }}
+							inputRef={this.setInputRef}
 							onClick={() => {
 								this.requestOpenMenu();
 							}}
@@ -838,7 +840,7 @@ class Combobox extends React.Component {
 						onFocus={this.handleInputFocus}
 						onBlur={this.handleInputBlur}
 						onKeyDown={this.handleKeyDown}
-						inputRef={(component) => { this.inputRef = component; }}
+						inputRef={this.setInputRef}
 						onClick={() => {
 							this.openDialog();
 						}}
@@ -901,7 +903,7 @@ class Combobox extends React.Component {
 							onFocus={this.handleInputFocus}
 							onBlur={this.handleInputBlur}
 							onKeyDown={this.handleKeyDown}
-							inputRef={(component) => { this.inputRef = component; }}
+							inputRef={this.setInputRef}
 							onClick={() => {
 								this.requestOpenMenu();
 							}}
@@ -969,7 +971,7 @@ class Combobox extends React.Component {
 							onFocus={this.handleInputFocus}
 							onBlur={this.handleInputBlur}
 							onKeyDown={this.handleKeyDown}
-							inputRef={(component) => { this.inputRef = component; }}
+							inputRef={this.setInputRef}
 							onClick={() => {
 								this.requestOpenMenu();
 							}}
