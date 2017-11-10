@@ -114,7 +114,7 @@ const SelectedListBox = (props) => (
 					<li
 						role="presentation"
 						className="slds-listbox__item"
-						key={`${props.id}-list-item-${option.label}`}
+						key={`${props.id}-list-item-${option.id}`}
 					>
 						<Pill
 							active={active}
