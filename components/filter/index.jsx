@@ -195,6 +195,7 @@ const Filter = createReactClass({
 			offset: this.props.align === 'right' ? '0px -35px' : undefined,
 			onClose: this.handleClose,
 			onRequestClose: this.handleClose,
+			position: 'overflowBoundaryElement',
 			triggerClassName: 'slds-grow'
 		};
 
