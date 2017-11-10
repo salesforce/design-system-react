@@ -90,6 +90,7 @@ class Example extends React.Component {
 					multiple
 					options={comboboxFilterAndLimit({
 						inputValue: this.state.inputValue,
+						limit: 10,
 						options: accountsWithIcon,
 						selection: this.state.selection
 					})}
