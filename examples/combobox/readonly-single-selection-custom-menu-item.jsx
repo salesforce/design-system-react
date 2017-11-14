@@ -2,7 +2,7 @@
 import React from 'react';
 import Combobox from '~/components/combobox';
 import Icon from '~/components/icon';
-import comboboxFilterAndLimit from '~/components/combobox/filter';
+import escapeRegExp from 'lodash.escaperegexp';
 import IconSettings from '~/components/icon-settings';
 
 const accounts = [
@@ -12,7 +12,7 @@ const accounts = [
 	{ id: '4', label: 'Tyrell Corp', subTitle: 'Account • San Francisco, CA', type: 'account' },
 	{ id: '5', label: 'Paper St. Soap Company', subTitle: 'Account • Beloit, WI', type: 'account' },
 	{ id: '6', label: 'Nakatomi Investments', subTitle: 'Account • Chicago, IL', type: 'account' },
-	{ id: '7', label: 'Acme Landscaping', subTitle: '\u00A0', type: 'account' },
+	{ id: '7', label: 'Acme Landscaping', type: 'account' },
 	{ id: '8', label: 'Acme Construction', subTitle: 'Account • Grand Marais, MN', type: 'account' }
 ];
 
@@ -20,9 +20,24 @@ const accountsWithIcon = accounts.map((elem) => Object.assign(elem, {
 	icon: <Icon
 		assistiveText="Account"
 		category="standard"
+		size="x-small"
 		name={elem.type}
 	/> })
 );
+
+const CustomMenuItem = (props) => (<span className="slds-media">
+	<span className="slds-m-left--x-small slds-m-right--x-small">
+		{props.option.icon}
+	</span>
+	<span className="slds-media__body">
+		<span className="slds-truncate" title={props.option.label}>
+			{props.selected
+				? <span className="slds-assistive-text">{props.assistiveText.optionSelectedInMenu}</span>
+				: null} {props.option.label}
+		</span>
+	</span>
+</span>);
+CustomMenuItem.displayName = 'CustomMenuItem';
 
 class Example extends React.Component {
 	constructor (props) {
@@ -30,7 +45,7 @@ class Example extends React.Component {
 
 		this.state = {
 			inputValue: '',
-			selection: [accountsWithIcon[0], accountsWithIcon[1]]
+			selection: []
 		};
 	}
 
@@ -39,38 +54,7 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
 					id="combobox-unique-id"
-					disabled={this.props.disabled}
 					events={{
-						onChange: (event, { value }) => {
-							if (this.props.action) {
-								this.props.action('onChange')(event, value);
-							} else if (console) {
-								console.log('onChange', event, value);
-							}
-							this.setState({	inputValue: value });
-						},
-						onRequestRemoveSelectedOption: (event, data) => {
-							this.setState({
-								inputValue: '',
-								selection: data.selection
-							});
-						},
-						onSubmit: (event, { value }) => {
-							if (this.props.action) {
-								this.props.action('onChange')(event, value);
-							} else if (console) {
-								console.log('onChange', event, value);
-							}
-							this.setState({
-								inputValue: '',
-								selection: [...this.state.selection, {
-									label: value,
-									icon: <Icon
-										assistiveText="Account"
-										category="standard"
-										name="account"
-									/> }] });
-						},
 						onSelect: (event, data) => {
 							if (this.props.action) {
 								this.props.action('onSelect')(event, ...Object.keys(data).map((key) => data[key]));
@@ -85,16 +69,14 @@ class Example extends React.Component {
 					}}
 					labels={{
 						label: 'Search',
-						placeholder: 'Search Salesforce'
+						placeholderReadOnly: 'Select company'
 					}}
-					multiple
-					options={comboboxFilterAndLimit({
-						inputValue: this.state.inputValue,
-						options: accountsWithIcon,
-						selection: this.state.selection
-					})}
+					menuItem={CustomMenuItem}
+					options={accountsWithIcon}
 					selection={this.state.selection}
 					value={this.state.inputValue}
+					variant="readonly"
+					{...this.props}
 				/>
 			</IconSettings>
 		);
