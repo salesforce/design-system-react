@@ -228,7 +228,10 @@ const Dialog = createReactClass({
 		const modifiers = {
 			applyStyle: { enabled: false },
 			// moves dialog in order to not extend a boundary element such as a scrolling parent or a window/viewpoint.
-			preventOverflow: { enabled: true },
+			preventOverflow: {
+				enabled: true,
+				boundariesElement: this.props.position === 'absolute' ? 'scrollParent' : 'viewport'
+			},
 			// By default, dialogs will flip their alignment if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint
 			removeOnDestroy: true,
 			updateState: {
