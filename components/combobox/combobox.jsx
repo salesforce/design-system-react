@@ -116,6 +116,15 @@ const propTypes = {
 	 */
 	isOpen: PropTypes.bool,
 	/**
+	 * Accepts a custom menu item rendering function that becomes a custom component. The checkmark is still rendered in readonly variants. This function is passed the following props:
+	 * * `assistiveText`: Object, `assistiveText` prop that is passed into Combobox
+	 * * `option`: Object, option data for item being rendered that is passed into Combobox
+	 * * `selected`: Boolean, allows rendering of `assistiveText.optionSelectedInMenu` in Readonly Combobox
+	 *
+	 * _Tested with snapshot testing._
+	 */
+	menuItem: PropTypes.func,
+	/**
 	 * Allows multiple selections _Tested with mocha testing._
 	 */
 	multiple: PropTypes.bool,
@@ -364,6 +373,7 @@ class Combobox extends React.Component {
 					? this.props.readOnlyMenuItemVisibleLength
 					: null}
 				labels={labels}
+				menuItem={this.props.menuItem}
 				options={this.props.options}
 				onSelect={this.handleSelect}
 				clearActiveOption={this.clearActiveOption}

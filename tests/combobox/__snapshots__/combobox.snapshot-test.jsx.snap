@@ -1,5 +1,77 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Base Custom Menu Item Open DOM Snapshot 1`] = `
+<ComboboxExample
+  isInline={true}
+  isOpen={true}
+/>
+`;
+
+exports[`Base Custom Menu Item Open HTML Snapshot 1`] = `
+"<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
+  <div class=\\"slds-form-element__control\\">
+    <div class=\\"slds-combobox_container\\">
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\" role=\\"combobox\\">
+        <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\" role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\"
+            class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
+        <div id=\\"combobox-unique-id-listbox\\" role=\\"listbox\\">
+          <ul class=\\"slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid\\" role=\\"presentation\\">
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-1\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Acme</span>
+              <span
+                class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • San Francisco</span>
+                </span>
+                </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-2\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Salesforce.com, Inc.</span>
+              <span
+                class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • San Francisco</span>
+                </span>
+                </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-3\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Paddy&#x27;s Pub</span>
+              <span
+                class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • Boston, MA</span>
+                </span>
+                </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-4\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Tyrell Corp</span>
+              <span
+                class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • San Francisco, CA</span>
+                </span>
+                </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-5\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Paper St. Soap Company</span>
+              <span
+                class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • Beloit, WI</span>
+                </span>
+                </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-6\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Nakatomi Investments</span>
+              <span
+                class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • Chicago, IL</span>
+                </span>
+                </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-7\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Acme Landscaping</span>
+              <span
+                class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\"> </span>
+                </span>
+                </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-8\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Acme Construction</span>
+              <span
+                class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • Grand Marais, MN</span>
+                </span>
+                </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
 exports[`Base Open DOM Snapshot 1`] = `
 <IconSettings
   iconPath="/assets/icons"
@@ -1144,6 +1216,96 @@ exports[`Readonly Multiple Selection Single Item Selected HTML Snapshot 1`] = `
         <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Select an Option\\" readonly=\\"\\" role=\\"textbox\\" value=\\"Acme\\" />
           <span
             class=\\"slds-icon_container slds-input__icon slds-input__icon_right\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
+<ComboboxExample
+  isInline={true}
+  isOpen={true}
+/>
+`;
+
+exports[`Readonly Single Selection Custom Menu Item Open HTML Snapshot 1`] = `
+"<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
+  <div class=\\"slds-form-element__control\\">
+    <div class=\\"slds-combobox_container\\">
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" role=\\"combobox\\">
+        <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Select company\\" readonly=\\"\\" role=\\"textbox\\" value=\\"\\" />
+          <span
+            class=\\"slds-icon_container slds-input__icon slds-input__icon_right\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span>
+        </div>
+        <div id=\\"combobox-unique-id-listbox\\" role=\\"listbox\\">
+          <ul class=\\"slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-dropdown_length-with-icon-5\\" role=\\"presentation\\">
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-1\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+              <span
+                class=\\"slds-media__body\\"><span class=\\"slds-media\\"><span class=\\"slds-m-left--x-small slds-m-right--x-small\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+                </span><span class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Acme\\"> Acme</span></span>
+                </span>
+                </span>
+                </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-2\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+              <span
+                class=\\"slds-media__body\\"><span class=\\"slds-media\\"><span class=\\"slds-m-left--x-small slds-m-right--x-small\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+                </span><span class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Salesforce.com, Inc.\\"> Salesforce.com, Inc.</span></span>
+                </span>
+                </span>
+                </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-3\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+              <span
+                class=\\"slds-media__body\\"><span class=\\"slds-media\\"><span class=\\"slds-m-left--x-small slds-m-right--x-small\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+                </span><span class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Paddy&#x27;s Pub\\"> Paddy&#x27;s Pub</span></span>
+                </span>
+                </span>
+                </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-4\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+              <span
+                class=\\"slds-media__body\\"><span class=\\"slds-media\\"><span class=\\"slds-m-left--x-small slds-m-right--x-small\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+                </span><span class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Tyrell Corp\\"> Tyrell Corp</span></span>
+                </span>
+                </span>
+                </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-5\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+              <span
+                class=\\"slds-media__body\\"><span class=\\"slds-media\\"><span class=\\"slds-m-left--x-small slds-m-right--x-small\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+                </span><span class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Paper St. Soap Company\\"> Paper St. Soap Company</span></span>
+                </span>
+                </span>
+                </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-6\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+              <span
+                class=\\"slds-media__body\\"><span class=\\"slds-media\\"><span class=\\"slds-m-left--x-small slds-m-right--x-small\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+                </span><span class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Nakatomi Investments\\"> Nakatomi Investments</span></span>
+                </span>
+                </span>
+                </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-7\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+              <span
+                class=\\"slds-media__body\\"><span class=\\"slds-media\\"><span class=\\"slds-m-left--x-small slds-m-right--x-small\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+                </span><span class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Acme Landscaping\\"> Acme Landscaping</span></span>
+                </span>
+                </span>
+                </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-8\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
+              <span
+                class=\\"slds-media__body\\"><span class=\\"slds-media\\"><span class=\\"slds-m-left--x-small slds-m-right--x-small\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+                </span><span class=\\"slds-media__body\\"><span class=\\"slds-truncate\\" title=\\"Acme Construction\\"> Acme Construction</span></span>
+                </span>
+                </span>
+                </span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

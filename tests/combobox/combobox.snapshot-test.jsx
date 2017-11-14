@@ -16,6 +16,9 @@ import SnapshotReadonlyMultipleSelection from '../../examples/combobox/snapshot/
 import SnapshotReadonlyMultipleSelectionSingleItemSelected from '../../examples/combobox/snapshot/readonly-multiple-selection-single-item-selected';
 import SnapshotReadonlyMultipleSelectionMultipleItemsSelected from '../../examples/combobox/snapshot/readonly-multiple-selection-multiple-items-selected';
 
+import SnapshotBaseCustomMenuItemOpen from '../../examples/combobox/snapshot/base-custom-menu-item-open';
+import SnapshotReadonlySingleSelectionCustomMenuItemOpen from '../../examples/combobox/snapshot/readonly-single-selection-custom-menu-item';
+
 testDOMandHTML({
 	name: 'Base Open',
 	test,
@@ -53,6 +56,12 @@ testDOMandHTML({
 });
 
 testDOMandHTML({
+	name: 'Base Custom Menu Item Open',
+	test,
+	Component: SnapshotBaseCustomMenuItemOpen
+});
+
+testDOMandHTML({
 	name: 'Readonly Single Selection',
 	test,
 	Component: SnapshotReadonlySingleSelection
@@ -86,4 +95,10 @@ testDOMandHTML({
 	name: 'Readonly Multiple Selection Multiple Items Selected',
 	test,
 	Component: SnapshotReadonlyMultipleSelectionMultipleItemsSelected
+});
+
+testDOMandHTML({
+	name: 'Readonly Single Selection Custom Menu Item Open',
+	test,
+	Component: SnapshotReadonlySingleSelectionCustomMenuItemOpen
 });

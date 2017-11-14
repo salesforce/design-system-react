@@ -1,6 +1,6 @@
 {
   "name": "design-system-react",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "Salesforce Lightning Design System for React",
   "license": "SEE LICENSE IN README.md",
   "engines": {
@@ -173,8 +173,13 @@
     "webpack-hot-middleware": "^2.18.2",
     "xml2json": "^0.11.0"
   },
-  "pre-commit": ["lint-staged"],
-  "pre-push": ["validate", "test"],
+  "pre-commit": [
+    "lint-staged"
+  ],
+  "pre-push": [
+    "validate",
+    "test"
+  ],
   "components": [
     {
       "component": "accordion",
@@ -500,8 +505,7 @@
   ],
   "documentation": {
     "prototype": {
-      "description":
-        "The following components are prototypes. (a) Props may change within a minor release. (b) Web Content Accessibility Guidelines may not be met. (c) CSS imports may be required, since it is being added to SLDS."
+      "description": "The following components are prototypes. (a) Props may change within a minor release. (b) Web Content Accessibility Guidelines may not be met. (c) CSS imports may be required, since it is being added to SLDS."
     }
   }
 }
