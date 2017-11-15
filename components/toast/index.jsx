@@ -114,7 +114,9 @@ class Toast extends React.Component {
 		this.closeButton = component;
 		if (this.state.isInitialRender) {
 			DOMElementFocus.storeActiveElement();
-			this.closeButton.focus();
+			if (this.closeButton) {
+				this.closeButton.focus();
+			}
 			this.setState({ isInitialRender: false });
 		}
 	}
