@@ -30,6 +30,12 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.7.3
+
+**Minor features**
+
+* Custom menu items renders are available with `menuItem` prop for Combobox.
+
 ## Release 0.7.2
 
 **Major features**
