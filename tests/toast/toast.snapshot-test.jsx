@@ -9,37 +9,37 @@ import Success from '../../examples/toast/success';
 import CustomClassNames from '../../examples/toast/custom-class-name';
 
 testDOMandHTML({
-	name: 'Alert Info',
+	name: 'Toast Info',
 	test,
 	Component: Info
 });
 
 testDOMandHTML({
-	name: 'Alert Warning',
+	name: 'Toast Warning',
 	test,
 	Component: Warning
 });
 
 testDOMandHTML({
-	name: 'Alert Error',
+	name: 'Toast Error',
 	test,
 	Component: ErrorAlert
 });
 
 testDOMandHTML({
-	name: 'Alert Error With details',
+	name: 'Toast Error With details',
 	test,
 	Component: ErrorWithDetailsAlert
 });
 
 testDOMandHTML({
-	name: 'Alert Success',
+	name: 'Toast Success',
 	test,
 	Component: Success
 });
 
 testDOMandHTML({
-	name: 'Alert Custom Class Name',
+	name: 'Toast Custom Class Name',
 	test,
 	Component: CustomClassNames
 });

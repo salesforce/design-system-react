@@ -1,10 +1,297 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Base Custom Menu Item Open DOM Snapshot 1`] = `
-<ComboboxExample
-  isInline={true}
-  isOpen={true}
-/>
+<div
+  className="slds-form-element"
+>
+  <label
+    className="slds-form-element__label"
+    htmlFor="combobox-unique-id"
+  >
+    Search
+  </label>
+  <div
+    className="slds-form-element__control"
+  >
+    <div
+      className="slds-combobox_container"
+    >
+      <div
+        aria-expanded={true}
+        aria-haspopup="listbox"
+        aria-owns="combobox-unique-id-listbox"
+        className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
+        role="combobox"
+      >
+        <div
+          className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+          role="none"
+        >
+          <input
+            aria-activedescendant={null}
+            aria-autocomplete="list"
+            aria-controls="combobox-unique-id-listbox"
+            aria-describedby={undefined}
+            aria-expanded={undefined}
+            aria-labelledby={undefined}
+            aria-owns={undefined}
+            aria-required={undefined}
+            autoComplete="off"
+            className="slds-input slds-combobox__input"
+            disabled={undefined}
+            id="combobox-unique-id"
+            maxLength={undefined}
+            minLength={undefined}
+            name={undefined}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onInput={undefined}
+            onInvalid={undefined}
+            onKeyDown={[Function]}
+            onKeyPress={undefined}
+            onKeyUp={undefined}
+            onSelect={undefined}
+            onSubmit={undefined}
+            placeholder="Search Salesforce"
+            readOnly={false}
+            required={undefined}
+            role="textbox"
+            style={undefined}
+            tabIndex={undefined}
+            type="text"
+            value=""
+          />
+          <svg
+            aria-hidden={true}
+            className="slds-input__icon slds-icon-text-default"
+            title={undefined}
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+            />
+          </svg>
+        </div>
+        <div
+          className={undefined}
+          id="combobox-unique-id-listbox"
+          onKeyDown={[Function]}
+          onMouseEnter={undefined}
+          onMouseLeave={undefined}
+          role="listbox"
+          style={Object {}}
+        >
+          <ul
+            className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid"
+            role="presentation"
+          >
+            <li
+              className="slds-listbox__item"
+              role="presentation"
+            >
+              <span
+                aria-selected={false}
+                className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                id="combobox-unique-id-listbox-option-1"
+                onClick={[Function]}
+                role="option"
+              >
+                <span>
+                  <span
+                    className="slds-listbox__option-text slds-listbox__option-text_entity"
+                  >
+                    Acme
+                  </span>
+                  <span
+                    className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                  >
+                    Account • San Francisco
+                  </span>
+                </span>
+              </span>
+            </li>
+            <li
+              className="slds-listbox__item"
+              role="presentation"
+            >
+              <span
+                aria-selected={false}
+                className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                id="combobox-unique-id-listbox-option-2"
+                onClick={[Function]}
+                role="option"
+              >
+                <span>
+                  <span
+                    className="slds-listbox__option-text slds-listbox__option-text_entity"
+                  >
+                    Salesforce.com, Inc.
+                  </span>
+                  <span
+                    className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                  >
+                    Account • San Francisco
+                  </span>
+                </span>
+              </span>
+            </li>
+            <li
+              className="slds-listbox__item"
+              role="presentation"
+            >
+              <span
+                aria-selected={false}
+                className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                id="combobox-unique-id-listbox-option-3"
+                onClick={[Function]}
+                role="option"
+              >
+                <span>
+                  <span
+                    className="slds-listbox__option-text slds-listbox__option-text_entity"
+                  >
+                    Paddy's Pub
+                  </span>
+                  <span
+                    className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                  >
+                    Account • Boston, MA
+                  </span>
+                </span>
+              </span>
+            </li>
+            <li
+              className="slds-listbox__item"
+              role="presentation"
+            >
+              <span
+                aria-selected={false}
+                className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                id="combobox-unique-id-listbox-option-4"
+                onClick={[Function]}
+                role="option"
+              >
+                <span>
+                  <span
+                    className="slds-listbox__option-text slds-listbox__option-text_entity"
+                  >
+                    Tyrell Corp
+                  </span>
+                  <span
+                    className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                  >
+                    Account • San Francisco, CA
+                  </span>
+                </span>
+              </span>
+            </li>
+            <li
+              className="slds-listbox__item"
+              role="presentation"
+            >
+              <span
+                aria-selected={false}
+                className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                id="combobox-unique-id-listbox-option-5"
+                onClick={[Function]}
+                role="option"
+              >
+                <span>
+                  <span
+                    className="slds-listbox__option-text slds-listbox__option-text_entity"
+                  >
+                    Paper St. Soap Company
+                  </span>
+                  <span
+                    className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                  >
+                    Account • Beloit, WI
+                  </span>
+                </span>
+              </span>
+            </li>
+            <li
+              className="slds-listbox__item"
+              role="presentation"
+            >
+              <span
+                aria-selected={false}
+                className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                id="combobox-unique-id-listbox-option-6"
+                onClick={[Function]}
+                role="option"
+              >
+                <span>
+                  <span
+                    className="slds-listbox__option-text slds-listbox__option-text_entity"
+                  >
+                    Nakatomi Investments
+                  </span>
+                  <span
+                    className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                  >
+                    Account • Chicago, IL
+                  </span>
+                </span>
+              </span>
+            </li>
+            <li
+              className="slds-listbox__item"
+              role="presentation"
+            >
+              <span
+                aria-selected={false}
+                className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                id="combobox-unique-id-listbox-option-7"
+                onClick={[Function]}
+                role="option"
+              >
+                <span>
+                  <span
+                    className="slds-listbox__option-text slds-listbox__option-text_entity"
+                  >
+                    Acme Landscaping
+                  </span>
+                  <span
+                    className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                  >
+                     
+                  </span>
+                </span>
+              </span>
+            </li>
+            <li
+              className="slds-listbox__item"
+              role="presentation"
+            >
+              <span
+                aria-selected={false}
+                className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                id="combobox-unique-id-listbox-option-8"
+                onClick={[Function]}
+                role="option"
+              >
+                <span>
+                  <span
+                    className="slds-listbox__option-text slds-listbox__option-text_entity"
+                  >
+                    Acme Construction
+                  </span>
+                  <span
+                    className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                  >
+                    Account • Grand Marais, MN
+                  </span>
+                </span>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Base Custom Menu Item Open HTML Snapshot 1`] = `
@@ -968,6 +1255,7 @@ exports[`Inline Single Selection Selected DOM Snapshot 1`] = `
             value="Acme"
           />
           <button
+            aria-controls={undefined}
             aria-describedby={undefined}
             aria-expanded={undefined}
             aria-haspopup={undefined}
@@ -1429,10 +1717,693 @@ exports[`Readonly Multiple Selection Single Item Selected HTML Snapshot 1`] = `
 `;
 
 exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
-<ComboboxExample
-  isInline={true}
-  isOpen={true}
-/>
+<div
+  className="slds-form-element"
+>
+  <label
+    className="slds-form-element__label"
+    htmlFor="combobox-unique-id"
+  >
+    Search
+  </label>
+  <div
+    className="slds-form-element__control"
+  >
+    <div
+      className="slds-combobox_container"
+    >
+      <div
+        aria-expanded={true}
+        aria-haspopup="listbox"
+        className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
+        role="combobox"
+      >
+        <div
+          aria-expanded={true}
+          aria-haspopup="listbox"
+          className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+          role="none"
+        >
+          <input
+            aria-activedescendant={null}
+            aria-autocomplete="list"
+            aria-controls="combobox-unique-id-listbox"
+            aria-describedby={undefined}
+            aria-expanded={undefined}
+            aria-labelledby={undefined}
+            aria-owns={undefined}
+            aria-required={undefined}
+            autoComplete="off"
+            className="slds-input slds-combobox__input"
+            disabled={undefined}
+            id="combobox-unique-id"
+            maxLength={undefined}
+            minLength={undefined}
+            name={undefined}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onInput={undefined}
+            onInvalid={undefined}
+            onKeyDown={[Function]}
+            onKeyPress={undefined}
+            onKeyUp={undefined}
+            onSelect={undefined}
+            onSubmit={undefined}
+            placeholder="Select company"
+            readOnly={true}
+            required={undefined}
+            role="textbox"
+            style={undefined}
+            tabIndex={undefined}
+            type="text"
+            value=""
+          />
+          <span
+            className="slds-icon_container slds-input__icon slds-input__icon_right"
+          >
+            <svg
+              aria-hidden={true}
+              className="slds-icon slds-icon_x-small slds-icon-text-default"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+              />
+            </svg>
+          </span>
+        </div>
+        <div
+          className={undefined}
+          id="combobox-unique-id-listbox"
+          onKeyDown={[Function]}
+          onMouseEnter={undefined}
+          onMouseLeave={undefined}
+          role="listbox"
+          style={Object {}}
+        >
+          <ul
+            className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-dropdown_length-with-icon-5"
+            role="presentation"
+          >
+            <li
+              className="slds-listbox__item"
+              role="presentation"
+            >
+              <span
+                aria-selected={false}
+                className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                id="combobox-unique-id-listbox-option-1"
+                onClick={[Function]}
+                role="option"
+              >
+                <span
+                  className="slds-media__figure"
+                >
+                  <span
+                    className={undefined}
+                    title={undefined}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
+                      style={undefined}
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                    
+                  </span>
+                </span>
+                <span
+                  className="slds-media__body"
+                >
+                  <span
+                    className="slds-media"
+                  >
+                    <span
+                      className="slds-m-left--x-small slds-m-right--x-small"
+                    >
+                      <span
+                        className="slds-icon_container slds-icon-standard-account"
+                        title={undefined}
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon slds-icon--x-small"
+                          style={undefined}
+                        >
+                          <use
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          />
+                        </svg>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Account
+                        </span>
+                      </span>
+                    </span>
+                    <span
+                      className="slds-media__body"
+                    >
+                      <span
+                        className="slds-truncate"
+                        title="Acme"
+                      >
+                         
+                        Acme
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </span>
+            </li>
+            <li
+              className="slds-listbox__item"
+              role="presentation"
+            >
+              <span
+                aria-selected={false}
+                className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                id="combobox-unique-id-listbox-option-2"
+                onClick={[Function]}
+                role="option"
+              >
+                <span
+                  className="slds-media__figure"
+                >
+                  <span
+                    className={undefined}
+                    title={undefined}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
+                      style={undefined}
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                    
+                  </span>
+                </span>
+                <span
+                  className="slds-media__body"
+                >
+                  <span
+                    className="slds-media"
+                  >
+                    <span
+                      className="slds-m-left--x-small slds-m-right--x-small"
+                    >
+                      <span
+                        className="slds-icon_container slds-icon-standard-account"
+                        title={undefined}
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon slds-icon--x-small"
+                          style={undefined}
+                        >
+                          <use
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          />
+                        </svg>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Account
+                        </span>
+                      </span>
+                    </span>
+                    <span
+                      className="slds-media__body"
+                    >
+                      <span
+                        className="slds-truncate"
+                        title="Salesforce.com, Inc."
+                      >
+                         
+                        Salesforce.com, Inc.
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </span>
+            </li>
+            <li
+              className="slds-listbox__item"
+              role="presentation"
+            >
+              <span
+                aria-selected={false}
+                className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                id="combobox-unique-id-listbox-option-3"
+                onClick={[Function]}
+                role="option"
+              >
+                <span
+                  className="slds-media__figure"
+                >
+                  <span
+                    className={undefined}
+                    title={undefined}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
+                      style={undefined}
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                    
+                  </span>
+                </span>
+                <span
+                  className="slds-media__body"
+                >
+                  <span
+                    className="slds-media"
+                  >
+                    <span
+                      className="slds-m-left--x-small slds-m-right--x-small"
+                    >
+                      <span
+                        className="slds-icon_container slds-icon-standard-account"
+                        title={undefined}
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon slds-icon--x-small"
+                          style={undefined}
+                        >
+                          <use
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          />
+                        </svg>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Account
+                        </span>
+                      </span>
+                    </span>
+                    <span
+                      className="slds-media__body"
+                    >
+                      <span
+                        className="slds-truncate"
+                        title="Paddy's Pub"
+                      >
+                         
+                        Paddy's Pub
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </span>
+            </li>
+            <li
+              className="slds-listbox__item"
+              role="presentation"
+            >
+              <span
+                aria-selected={false}
+                className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                id="combobox-unique-id-listbox-option-4"
+                onClick={[Function]}
+                role="option"
+              >
+                <span
+                  className="slds-media__figure"
+                >
+                  <span
+                    className={undefined}
+                    title={undefined}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
+                      style={undefined}
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                    
+                  </span>
+                </span>
+                <span
+                  className="slds-media__body"
+                >
+                  <span
+                    className="slds-media"
+                  >
+                    <span
+                      className="slds-m-left--x-small slds-m-right--x-small"
+                    >
+                      <span
+                        className="slds-icon_container slds-icon-standard-account"
+                        title={undefined}
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon slds-icon--x-small"
+                          style={undefined}
+                        >
+                          <use
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          />
+                        </svg>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Account
+                        </span>
+                      </span>
+                    </span>
+                    <span
+                      className="slds-media__body"
+                    >
+                      <span
+                        className="slds-truncate"
+                        title="Tyrell Corp"
+                      >
+                         
+                        Tyrell Corp
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </span>
+            </li>
+            <li
+              className="slds-listbox__item"
+              role="presentation"
+            >
+              <span
+                aria-selected={false}
+                className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                id="combobox-unique-id-listbox-option-5"
+                onClick={[Function]}
+                role="option"
+              >
+                <span
+                  className="slds-media__figure"
+                >
+                  <span
+                    className={undefined}
+                    title={undefined}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
+                      style={undefined}
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                    
+                  </span>
+                </span>
+                <span
+                  className="slds-media__body"
+                >
+                  <span
+                    className="slds-media"
+                  >
+                    <span
+                      className="slds-m-left--x-small slds-m-right--x-small"
+                    >
+                      <span
+                        className="slds-icon_container slds-icon-standard-account"
+                        title={undefined}
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon slds-icon--x-small"
+                          style={undefined}
+                        >
+                          <use
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          />
+                        </svg>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Account
+                        </span>
+                      </span>
+                    </span>
+                    <span
+                      className="slds-media__body"
+                    >
+                      <span
+                        className="slds-truncate"
+                        title="Paper St. Soap Company"
+                      >
+                         
+                        Paper St. Soap Company
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </span>
+            </li>
+            <li
+              className="slds-listbox__item"
+              role="presentation"
+            >
+              <span
+                aria-selected={false}
+                className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                id="combobox-unique-id-listbox-option-6"
+                onClick={[Function]}
+                role="option"
+              >
+                <span
+                  className="slds-media__figure"
+                >
+                  <span
+                    className={undefined}
+                    title={undefined}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
+                      style={undefined}
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                    
+                  </span>
+                </span>
+                <span
+                  className="slds-media__body"
+                >
+                  <span
+                    className="slds-media"
+                  >
+                    <span
+                      className="slds-m-left--x-small slds-m-right--x-small"
+                    >
+                      <span
+                        className="slds-icon_container slds-icon-standard-account"
+                        title={undefined}
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon slds-icon--x-small"
+                          style={undefined}
+                        >
+                          <use
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          />
+                        </svg>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Account
+                        </span>
+                      </span>
+                    </span>
+                    <span
+                      className="slds-media__body"
+                    >
+                      <span
+                        className="slds-truncate"
+                        title="Nakatomi Investments"
+                      >
+                         
+                        Nakatomi Investments
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </span>
+            </li>
+            <li
+              className="slds-listbox__item"
+              role="presentation"
+            >
+              <span
+                aria-selected={false}
+                className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                id="combobox-unique-id-listbox-option-7"
+                onClick={[Function]}
+                role="option"
+              >
+                <span
+                  className="slds-media__figure"
+                >
+                  <span
+                    className={undefined}
+                    title={undefined}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
+                      style={undefined}
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                    
+                  </span>
+                </span>
+                <span
+                  className="slds-media__body"
+                >
+                  <span
+                    className="slds-media"
+                  >
+                    <span
+                      className="slds-m-left--x-small slds-m-right--x-small"
+                    >
+                      <span
+                        className="slds-icon_container slds-icon-standard-account"
+                        title={undefined}
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon slds-icon--x-small"
+                          style={undefined}
+                        >
+                          <use
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          />
+                        </svg>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Account
+                        </span>
+                      </span>
+                    </span>
+                    <span
+                      className="slds-media__body"
+                    >
+                      <span
+                        className="slds-truncate"
+                        title="Acme Landscaping"
+                      >
+                         
+                        Acme Landscaping
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </span>
+            </li>
+            <li
+              className="slds-listbox__item"
+              role="presentation"
+            >
+              <span
+                aria-selected={false}
+                className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                id="combobox-unique-id-listbox-option-8"
+                onClick={[Function]}
+                role="option"
+              >
+                <span
+                  className="slds-media__figure"
+                >
+                  <span
+                    className={undefined}
+                    title={undefined}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default"
+                      style={undefined}
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                    
+                  </span>
+                </span>
+                <span
+                  className="slds-media__body"
+                >
+                  <span
+                    className="slds-media"
+                  >
+                    <span
+                      className="slds-m-left--x-small slds-m-right--x-small"
+                    >
+                      <span
+                        className="slds-icon_container slds-icon-standard-account"
+                        title={undefined}
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon slds-icon--x-small"
+                          style={undefined}
+                        >
+                          <use
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          />
+                        </svg>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Account
+                        </span>
+                      </span>
+                    </span>
+                    <span
+                      className="slds-media__body"
+                    >
+                      <span
+                        className="slds-truncate"
+                        title="Acme Construction"
+                      >
+                         
+                        Acme Construction
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Readonly Single Selection Custom Menu Item Open HTML Snapshot 1`] = `

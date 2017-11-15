@@ -483,6 +483,7 @@ exports[`Button Group IconGroup DOM Snapshot 1`] = `
     onMouseLeave={null}
   >
     <button
+      aria-controls={undefined}
       aria-describedby={undefined}
       aria-expanded={false}
       aria-haspopup={true}
@@ -538,6 +539,7 @@ exports[`Button Group MoreIcon DOM Snapshot 1`] = `
   role="group"
 >
   <button
+    aria-controls={undefined}
     aria-describedby={undefined}
     aria-expanded={undefined}
     aria-haspopup={undefined}
@@ -560,6 +562,7 @@ exports[`Button Group MoreIcon DOM Snapshot 1`] = `
     Refresh
   </button>
   <button
+    aria-controls={undefined}
     aria-describedby={undefined}
     aria-expanded={undefined}
     aria-haspopup={undefined}
@@ -582,6 +585,7 @@ exports[`Button Group MoreIcon DOM Snapshot 1`] = `
     Edit
   </button>
   <button
+    aria-controls={undefined}
     aria-describedby={undefined}
     aria-expanded={undefined}
     aria-haspopup={undefined}
@@ -615,6 +619,7 @@ exports[`Button Group MoreIcon DOM Snapshot 1`] = `
     onMouseLeave={null}
   >
     <button
+      aria-controls={undefined}
       aria-describedby={undefined}
       aria-expanded={false}
       aria-haspopup={true}
