@@ -19,31 +19,53 @@ exports[`AssistiveText Filter 1`] = `
     predicate="All Products"
     property="Show Me"
   >
-    <SLDSMenuPicklist
-      checkmark={true}
-      inheritTargetWidth={true}
-      isInline={true}
-      label="Show Me"
-      labels={
+    <OnClickOutside(SLDSCombobox)
+      eventTypes={
+        Array [
+          "mousedown",
+          "touchstart",
+        ]
+      }
+      events={
         Object {
-          "multipleOptionsSelected": "Multiple Options Selected",
+          "onSelect": [Function],
         }
       }
-      onSelect={[Function]}
+      excludeScrollbar={false}
+      labels={
+        Object {
+          "label": "Show Me",
+          "placeholder": "Select record type",
+        }
+      }
+      menuPosition="relative"
       options={
         Array [
           Object {
+            "id": 1,
             "label": "All Products",
             "value": "all-products",
           },
           Object {
+            "id": 2,
             "label": "All Wackamoles",
             "value": "all-Wackamoles",
           },
         ]
       }
-      placeholder="Select record type"
-      value="all-products"
+      outsideClickIgnoreClass="ignore-react-onclickoutside"
+      preventDefault={false}
+      selection={
+        Array [
+          Object {
+            "id": 1,
+            "label": "All Products",
+            "value": "all-products",
+          },
+        ]
+      }
+      stopPropagation={false}
+      variant="readonly"
     />
   </SLDSFilter>
 </IconSettings>
@@ -86,6 +108,7 @@ exports[`Error Filter Base Snapshot 1`] = `
           "multipleOptionsSelected": "Multiple Options Selected",
         }
       }
+      menuPosition="absolute"
       onSelect={[Function]}
       options={
         Array [
@@ -124,31 +147,53 @@ exports[`Filter Base Snapshot 1`] = `
     predicate="All Products"
     property="Show Me"
   >
-    <SLDSMenuPicklist
-      checkmark={true}
-      inheritTargetWidth={true}
-      isInline={true}
-      label="Show Me"
-      labels={
+    <OnClickOutside(SLDSCombobox)
+      eventTypes={
+        Array [
+          "mousedown",
+          "touchstart",
+        ]
+      }
+      events={
         Object {
-          "multipleOptionsSelected": "Multiple Options Selected",
+          "onSelect": [Function],
         }
       }
-      onSelect={[Function]}
+      excludeScrollbar={false}
+      labels={
+        Object {
+          "label": "Show Me",
+          "placeholder": "Select record type",
+        }
+      }
+      menuPosition="relative"
       options={
         Array [
           Object {
+            "id": 1,
             "label": "All Products",
             "value": "all-products",
           },
           Object {
+            "id": 2,
             "label": "All Wackamoles",
             "value": "all-Wackamoles",
           },
         ]
       }
-      placeholder="Select record type"
-      value="all-products"
+      outsideClickIgnoreClass="ignore-react-onclickoutside"
+      preventDefault={false}
+      selection={
+        Array [
+          Object {
+            "id": 1,
+            "label": "All Products",
+            "value": "all-products",
+          },
+        ]
+      }
+      stopPropagation={false}
+      variant="readonly"
     />
   </SLDSFilter>
 </IconSettings>
@@ -191,6 +236,7 @@ exports[`LockedFilter Base Snapshot 1`] = `
           "multipleOptionsSelected": "Multiple Options Selected",
         }
       }
+      menuPosition="absolute"
       onSelect={[Function]}
       options={
         Array [
@@ -240,6 +286,7 @@ exports[`NewFilter Base Snapshot 1`] = `
           "multipleOptionsSelected": "Multiple Options Selected",
         }
       }
+      menuPosition="absolute"
       onSelect={[Function]}
       options={
         Array [
@@ -289,6 +336,7 @@ exports[`Permanant Filter Base Snapshot 1`] = `
           "multipleOptionsSelected": "Multiple Options Selected",
         }
       }
+      menuPosition="absolute"
       onSelect={[Function]}
       options={
         Array [

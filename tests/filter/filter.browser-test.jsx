@@ -89,17 +89,11 @@ describe('SLDSFilter', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('Filter could take popover as a prop and use the props of popover to render, verifies the custom popover className', (done) => {
+		it('Filter could take popover as a prop and use the props of popover to render, verifies the custom popover className', () => {
 			const demoPopover = (<DemoComponent
 				className="custom-filter-popover"
 				isOpen
-				portalMount={(reactElement, domContainerNode) => {
-					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-				}}
-				onOpen={() => {
-					expect(portalWrapper.find('.custom-filter-popover')).to.exist;
-					done();
-				}}
+				position="absolute"
 			/>);
 			wrapper = mount(<IconSettings iconPath="/assets/icons">
 				<Filter
@@ -108,6 +102,8 @@ describe('SLDSFilter', function () {
 					popover={demoPopover}
 				/>
 			</IconSettings>, { attachTo: mountNode });
+
+			expect(wrapper.find('.custom-filter-popover')).to.exist;
 		});
 	});
 
@@ -123,9 +119,6 @@ describe('SLDSFilter', function () {
 		it('Filter could take onClick prop and trigger this callback during filter click', (done) => {
 			const demoPopover = (<DemoComponent
 				className="custom-filter-popover"
-				portalMount={(reactElement, domContainerNode) => {
-					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-				}}
 			/>);
 
 			let onFilterClicked = false;

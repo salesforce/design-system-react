@@ -16,7 +16,7 @@ import classNames from 'classnames';
 import { POPOVER_TOOLTIP } from '../../utilities/constants';
 
 import Dialog from '../utilities/dialog';
-import { getAlignment, getMargin, getNubbinClassName } from '../../utilities/dialog-helpers';
+import { getMargin, getNubbinClassName } from '../../utilities/dialog-helpers';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
@@ -63,9 +63,9 @@ const propTypes = {
 	 */
 	content: PropTypes.node.isRequired,
 	/**
-	 * Constrains tooltip to window. If the tooltip is near the bottom, then it may appear about the trigger, despite the value of `align`.
+	 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. This is the opposite of "flippable."
 	 */
-	flippable: PropTypes.bool,
+	hasStaticAlignment: PropTypes.bool,
 	/**
 	 * Delay on Tooltip closing.
 	 */
@@ -83,6 +83,13 @@ const propTypes = {
 	 */
 	triggerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
+	 * Please select one of the following:
+	 * * `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
+	 * * `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.
+	 * * `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.
+	 */
+	position: PropTypes.oneOf(['absolute', 'overflowBoundaryElement', 'relative']),
+	/**
 	 * Custom styles to be added to wrapping triggering `div`.
 	 */
 	triggerStyle: PropTypes.object,
@@ -96,6 +103,7 @@ const defaultProps = {
 	align: 'top',
 	content: <span>Tooltip</span>,
 	hoverCloseDelay: 50,
+	position: 'absolute',
 	variant: 'info'
 };
 
@@ -103,9 +111,9 @@ const defaultProps = {
  * The PopoverTooltip component is variant of the Lightning Design System Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or an anchor), so that keyboard users can navigate to it.
  */
 class PopoverTooltip extends React.Component {
-
 	constructor (props) {
 		super(props);
+
 		this.state = {
 			isClosing: false,
 			isOpen: false
@@ -128,7 +136,7 @@ class PopoverTooltip extends React.Component {
 	}
 
 	getTooltipTarget () {
-		return this.props.target ? this.props.target : this.node;
+		return this.props.target ? this.props.target : this.trigger;
 	}
 
 	handleMouseEnter = () => {
@@ -168,18 +176,19 @@ class PopoverTooltip extends React.Component {
 
 		return isOpen
 			? <Dialog
+				align={align}
 				context={this.context}
 				closeOnTabKey
-				flippable={false}
-				marginBottom={getMargin.bottom(align)}
-				marginLeft={getMargin.left(align)}
-				marginRight={getMargin.right(align)}
-				marginTop={getMargin.top(align)}
+				hasStaticAlignment={this.props.hasStaticAlignment}
 				onClose={this.handleCancel}
-				targetElement={this.getTooltipTarget()}
-				align={align}
-				horizontalAlign={getAlignment.horizontal(align)}
-				verticalAlign={getAlignment.vertical(align)}
+				onRequestTargetElement={() => this.getTooltipTarget()}
+				position={this.props.position}
+				style={{
+					marginBottom: getMargin.bottom(align),
+					marginLeft: getMargin.left(align),
+					marginRight: getMargin.right(align),
+					marginTop: getMargin.top(align)
+				}}
 				variant="tooltip"
 			>
 				<div
@@ -229,13 +238,26 @@ class PopoverTooltip extends React.Component {
 		);
 	}
 
+	saveTriggerRef = (component) => {
+		this.trigger = component;
+		// yes, this is a re-render triggered by a render.
+		// Dialog/Popper.js cannot place the popover until
+		// the trigger/target DOM node is mounted. This
+		// way `findDOMNode` is not called and parent
+		// DOM nodes are not queried.
+		if (!this.state.triggerRendered) {
+			this.setState({ triggerRendered: true });
+		}
+	}
+
 	render () {
 		const containerStyles = { display: 'inline', ...this.props.triggerStyle };
+
 		return (
 			<div
 				className={classNames('slds-tooltip-trigger', this.props.triggerClassName)}
 				style={containerStyles}
-				ref={(node) => { this.node = node; }}
+				ref={this.saveTriggerRef}
 			>
 				{this.getContent()}
 				{this.getTooltip()}

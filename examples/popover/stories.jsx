@@ -2,7 +2,8 @@
 /* eslint-disable no-script-url */
 
 import React from 'react';
-import { storiesOf, action } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import IconSettings from '../../components/icon-settings';
 
 import { POPOVER } from '../../utilities/constants';
@@ -17,8 +18,6 @@ const getPopover = (props) => (
 	<div>
 		<Popover {...props}>
 			<Button label="Trigger Popover" />
-			<br />
-			<a href="javascript:void(0);"> Focusable Not Trigger Popover</a>
 		</Popover>
 	</div>
 );
@@ -48,6 +47,7 @@ const getPopoverNubbins = (props) => {
 					hasStaticAlignment
 					heading="My Popover"
 					isOpen
+					position="overflowBoundaryElement"
 					{...props}
 				>
 					{props.trigger}

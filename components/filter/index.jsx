@@ -58,7 +58,7 @@ const Filter = createReactClass({
 			removeFilter: PropTypes.string
 		}),
 		/**
-		 * Contents of popover. That is the dropdowns and inputs that set the filter criteria. **Dropdowns, Picklists and other menus must use `isInline` to work properly within a Popover due to existence of portal mounts in menus that are not inline.**
+		 * Contents of popover. That is the dropdowns and inputs that set the filter criteria.
 		 */
 		children: PropTypes.node,
 		/**
@@ -191,11 +191,11 @@ const Filter = createReactClass({
 			heading: '',
 			id: this.getId(),
 			isOpen: this.state.popoverIsOpen,
-
 			// MAGIC NUMBERS - REMOVE/REDESIGN WHEN DESIGN FOR RIGHT-ALIGNED FILTERS ARE ADDED TO SLDS
 			offset: this.props.align === 'right' ? '0px -35px' : undefined,
 			onClose: this.handleClose,
 			onRequestClose: this.handleClose,
+			position: 'overflowBoundaryElement',
 			triggerClassName: 'slds-grow'
 		};
 

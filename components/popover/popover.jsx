@@ -71,7 +71,7 @@ const PopoverNubbinPositions = [
 ];
 
 /**
- * The Popover component is a non-modal dialog. It should be paired with a clickable trigger such as a `Button`. It traps focus from the page and must be exited if focus needs to be outside the Popover. Use a `Tooltip` if there are no call to actions within the dialog. A `Tooltip` does not need to be clicked.
+ * The Popover component is a non-modal dialog. It should be paired with a clickable trigger such as a `Button`. It traps focus from the page and must be exited if focus needs to be outside the Popover. Use a `Tooltip` if there are no call to actions within the dialog. A `Tooltip` does not need to be clicked. Multiple popovers open at the same time, each with focus trap is not supported.
  */
 const Popover = createReactClass({
 	// ### Display Name
@@ -165,22 +165,12 @@ const Popover = createReactClass({
 		 */
 		onRequestClose: PropTypes.func,
 		/**
-		 * Absolutely positioned DOM nodes, such as a popover dialog, may need their own React DOM tree root. They may need their alignment "flipped" if extended beyond the window or outside the bounds of an overflow-hidden scrolling modal. This library's portal mounts are added as a child node of `body`. This prop will be triggered instead of the default `ReactDOM.mount()` when this dialog is mounted. This prop is useful for testing and simliar to a "callback ref." Two arguments,`reactElement` and `domContainerNode` are passed in. Consider the following code that bypasses the internal mount and uses an Enzyme wrapper to mount the React root tree to the DOM.
-		 *
-		 * ```
-		 * <Popover
-				isOpen
-				portalMount={(reactElement, domContainerNode) => {
-					portalWrapper = Enzyme.mount(reactElement, { attachTo: domContainerNode });
-				}}
-				onOpen={() => {
-					expect(portalWrapper.find(`#my-heading`)).to.exist;
-					done();
-				}}
-			/>
-			```
+		 * Please select one of the following:
+		 * * `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
+		 * * `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.
+		 * * `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.
 		 */
-		portalMount: PropTypes.func,
+		position: PropTypes.oneOf(['absolute', 'overflowBoundaryElement', 'relative']),
 		/**
 		 * An object of CSS styles that are applied to the `slds-popover` DOM element.
 		 */
@@ -200,7 +190,8 @@ const Popover = createReactClass({
 			align: 'right',
 			closeButtonAssistiveText: 'Close dialog',
 			hoverCloseDelay: 300,
-			openOn: 'click'
+			openOn: 'click',
+			position: 'absolute'
 		};
 	},
 
@@ -246,7 +237,8 @@ const Popover = createReactClass({
 
 		if (this.props.onClose) {
 			this.props.onClose(event, {
-				component: this,
+				// Breaking change: component object reference has been
+				// removed (`this`), due to endless loop creation.
 				componentWillUnmount
 			});
 		}
@@ -393,6 +385,10 @@ const Popover = createReactClass({
 		}
 	},
 
+	setMenuRef (component) {
+		this.dialog = component;
+	},
+
 	renderDialog (isOpen, outsideClickIgnoreClass) {
 		const props = this.props;
 		const offset = props.offset;
@@ -403,13 +399,8 @@ const Popover = createReactClass({
 				<Dialog
 					align={props.align}
 					contentsClassName={classNames(this.props.contentsClassName, 'ignore-react-onclickoutside')}
-					constrainToScrollParent={props.constrainToScrollParent}
 					context={this.context}
-					flippable={!props.hasStaticAlignment}
-					marginBottom={getMargin.bottom(props.align)}
-					marginLeft={getMargin.left(props.align)}
-					marginRight={getMargin.right(props.align)}
-					marginTop={getMargin.top(props.align)}
+					hasStaticAlignment={props.hasStaticAlignment}
 					offset={offset}
 					onCancel={this.handleClose}
 					onClose={this.handleDialogClose}
@@ -418,7 +409,14 @@ const Popover = createReactClass({
 					onMouseEnter={(props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(props.openOn === 'hover') ? this.handleMouseLeave : null}
 					outsideClickIgnoreClass={outsideClickIgnoreClass}
-					portalMount={this.props.portalMount}
+					onRequestTargetElement={() => this.trigger}
+					position={this.props.position}
+					style={{
+						marginBottom: getMargin.bottom(props.align),
+						marginLeft: getMargin.left(props.align),
+						marginRight: getMargin.right(props.align),
+						marginTop: getMargin.top(props.align)
+					}}
 					variant="popover"
 				>
 					<div
@@ -433,7 +431,7 @@ const Popover = createReactClass({
 						role="dialog"
 						style={assign({ outline: '0' }, style)}
 						tabIndex="-1"
-						ref={(component) => { this.dialog = component; }}
+						ref={this.setMenuRef}
 					>
 						<Button
 							assistiveText={props.closeButtonAssistiveText}
@@ -478,6 +476,18 @@ const Popover = createReactClass({
 		}
 	},
 
+	setContainerRef (component) {
+		this.trigger = component;
+		// yes, this is a re-render triggered by a render.
+		// Dialog/Popper.js cannot place the popover until
+		// the trigger/target DOM node is mounted. This
+		// way `findDOMNode` is not called and parent
+		// DOM nodes are not queried.
+		if (!this.state.inputRendered) {
+			this.setState({ inputRendered: true });
+		}
+	},
+
 	render () {
 		const outsideClickIgnoreClass = `ignore-click-${this.getId()}`;
 
@@ -507,6 +517,7 @@ const Popover = createReactClass({
 			<div
 				className={this.props.triggerClassName}
 				style={containerStyles}
+				ref={this.setContainerRef}
 			>
 				{clonedTrigger}
 				{this.renderDialog(this.getIsOpen(), outsideClickIgnoreClass)}

@@ -14,8 +14,8 @@ const Example = createReactClass({
 			<IconSettings iconPath="/assets/icons">
 				<Datepicker
 					id="sample-datepicker"
-					isInline
 					isOpen
+					menuPosition="relative"
 					value={new Date(2014, 6, 23)}
 					{...this.props}
 				/>

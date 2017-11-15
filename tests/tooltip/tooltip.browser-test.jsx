@@ -23,6 +23,7 @@ describe('SLDSTooltip: ', function () {
 				className="tooltip-content"
 				style={{ width: 30 }}
 			>{defaultTextContent}</span>),
+		hasStaticAlignment: true,
 		id: 'myTooltip123'
 	};
 
@@ -39,6 +40,8 @@ describe('SLDSTooltip: ', function () {
 		const target = document.createElement('h1');
 		target.textContent = 'Tooltip Tip Target';
 		body = document.createElement('div');
+		body.style.height = '300px';
+		body.style.width = '300px';
 		body.appendChild(target);
 		document.body.appendChild(body);
 	};
@@ -58,7 +61,7 @@ describe('SLDSTooltip: ', function () {
 			createBody();
 			rootNode = generateTooltip({
 				...defaultProps,
-				align: 'bottom'
+				align: 'top'
 			}, defaultTrigger);
 		});
 
@@ -89,12 +92,12 @@ describe('SLDSTooltip: ', function () {
 				const tooltipOffset = 46;
 				const tipBounds = tip.getBoundingClientRect();
 				const triggerBounds = trigger.getBoundingClientRect();
-				expect(tipBounds.bottom).to.be.within(triggerBounds.bottom, triggerBounds.bottom + tooltipOffset);
+				expect(tipBounds.top).to.be.within(triggerBounds.top - tooltipOffset, triggerBounds.top);
 				done();
 			});
 
 			it('adds nubbin', () => {
-				expect(tip.className).to.include('slds-nubbin--top');
+				expect(tip.className).to.include('slds-nubbin--bottom');
 			});
 
 			it('closes', (done) => {

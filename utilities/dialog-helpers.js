@@ -1,8 +1,41 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-
 import classNames from 'classnames';
+
+// Translates the prop into a string popper can use https://popper.js.org/popper-documentation.html#Popper.placements
+const mapPropToPopperPlacement = (propString) => {
+	let placement;
+	switch (propString) {
+		case 'top left':
+			placement = 'top-start';
+			break;
+		case 'top right':
+			placement = 'top-end';
+			break;
+		case 'right top':
+			placement = 'right-start';
+			break;
+		case 'right bottom':
+			placement = 'right-end';
+			break;
+		case 'bottom left':
+			placement = 'bottom-start';
+			break;
+		case 'bottom right':
+			placement = 'bottom-end';
+			break;
+		case 'left top':
+			placement = 'left-start';
+			break;
+		case 'left bottom':
+			placement = 'left-end';
+			break;
+		default:
+			placement = propString;
+	}
+	return placement;
+};
 
 const getMargin = {};
 
@@ -72,5 +105,6 @@ getMargin.bottom = (align) => {
 export {
 	getMargin,
 	getAlignment,
-	getNubbinClassName
+	getNubbinClassName,
+	mapPropToPopperPlacement
 };

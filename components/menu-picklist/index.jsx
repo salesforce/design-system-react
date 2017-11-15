@@ -139,7 +139,8 @@ const MenuPicklist = createReactClass({
 			checkmark: true,
 			labels: {
 				multipleOptionsSelected: 'Multiple Options Selected'
-			}
+			},
+			menuPosition: 'absolute'
 		};
 	},
 
@@ -364,6 +365,10 @@ const MenuPicklist = createReactClass({
 		if (this.props.buttonRef) {
 			this.props.buttonRef(this.button);
 		}
+
+		if (!this.state.triggerRendered) {
+			this.setState({ triggerRendered: true });
+		}
 	},
 
 	renderMenuContent () {
@@ -404,7 +409,7 @@ const MenuPicklist = createReactClass({
 
 	renderDialog () {
 		return (
-			!this.props.disabled && this.state.isOpen && this.button
+			!this.props.disabled && this.state.isOpen
 			? <Dialog
 				closeOnTabKey
 				constrainToScrollParent={this.props.constrainToScrollParent}
@@ -413,8 +418,9 @@ const MenuPicklist = createReactClass({
 				flippable
 				onClose={this.handleCancel}
 				onKeyDown={this.handleKeyDown}
-				targetElement={this.button}
+				onRequestTargetElement={() => this.button}
 				inheritTargetWidth={this.props.inheritTargetWidth}
+				position={this.props.menuPosition}
 			>
 				{this.renderMenuContent()}
 			</Dialog>

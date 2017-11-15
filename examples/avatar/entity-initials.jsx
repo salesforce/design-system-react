@@ -9,10 +9,14 @@ const Example = createReactClass({
 	render () {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<Avatar variant="entity" label="Acme Communications" size="medium" />
+				<Avatar
+					variant="entity"
+					label="Acme Communications"
+					size="medium"
+				/>
 			</IconSettings>
 		);
 	}
 });
 
-export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

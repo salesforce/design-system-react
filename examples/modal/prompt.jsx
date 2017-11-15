@@ -4,16 +4,18 @@ import IconSettings from '~/components/icon-settings';
 import Modal from '~/components/modal'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 
-class Example extends React.Component {
-	static displayName = 'ModalExample';
+const Example = createReactClass({
+	displayName: 'ModalExample',
 
-	state = {
-		isOpen: false
-	};
+	getInitialState () {
+		return {
+			isOpen: false
+		};
+	},
 
-	toggleOpen = () => {
+	toggleOpen () {
 		this.setState({ isOpen: !this.state.isOpen });
-	};
+	},
 
 	render () {
 		return (
@@ -28,15 +30,14 @@ class Example extends React.Component {
 						prompt="error"
 						size="medium"
 						title={<span>Service Unavailable</span>}
-						{...this.props}
 					>
-						<div className="slds-m-around_small">The service you&quot;re trying to reach is unavailable due to limited conectivity. Please restart the application or contact your system administrator for assistance.
+						<div className="slds-m-around--medium">The service you&quot;re trying to reach is unavailable due to limited conectivity. Please restart the application or contact your system administrator for assistance.
 						</div>
 					</Modal>
 				</div>
 			</IconSettings>
 		);
 	}
-}
+});
 
 export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

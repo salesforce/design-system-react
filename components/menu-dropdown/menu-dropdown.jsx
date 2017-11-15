@@ -13,6 +13,8 @@ import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
+import assign from 'lodash.assign';
+
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
@@ -81,9 +83,6 @@ const DropdownNubbinPositions = [
  * support is needed.
  *
  * This component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.
- *
- * This component may use a portalMount (a disconnected React subtree mount) within an absolutely positioned DOM node created with [Drop](http://github.hubspot.com/drop/).
-
  */
 const MenuDropdown = createReactClass({
 	// ### Display Name
@@ -181,10 +180,6 @@ const MenuDropdown = createReactClass({
 		*/
 		id: PropTypes.string,
 		/**
-		 * Renders menu within the wrapping trigger as a sibling of the button. By default, you will have an absolutely positioned container at an elevated z-index.
-		 */
-		isInline: PropTypes.bool,
-		/**
 		 * Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use view [Concepts and Best Practices](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices)
 		 */
 		isOpen: PropTypes.bool,
@@ -200,6 +195,13 @@ const MenuDropdown = createReactClass({
 		 * This prop is passed into the List for the menu. Pass null to make it the size of the content, or a string with an integer from here: https://www.lightningdesignsystem.com/components/menus/#flavor-dropdown-height
 		 */
 		length: PropTypes.oneOf([null, '5', '7', '10']),
+		/**
+		 * Please select one of the following:
+		 * * `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
+		 * * `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.
+		 * * `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.
+		 */
+		menuPosition: PropTypes.oneOf(['absolute', 'overflowBoundaryElement', 'relative']),
 		/**
 		 * Style applied to menu element (that is the `.slds-dropdown` element)
 		 */
@@ -321,6 +323,7 @@ const MenuDropdown = createReactClass({
 		return {
 			align: 'left',
 			hoverCloseDelay: 300,
+			menuPosition: 'absolute',
 			openOn: 'click'
 		};
 	},
@@ -585,6 +588,10 @@ const MenuDropdown = createReactClass({
 	// Trigger opens, closes, and recieves focus on close
 	saveRefToTrigger (trigger) {
 		this.trigger = trigger;
+
+		if (!this.state.triggerRendered) {
+			this.setState({ triggerRendered: true });
+		}
 	},
 
 	// TriggerContainer is the wrapping outer DOM element which may differ from the actual trigger which is most likely a `button`.
@@ -734,29 +741,31 @@ const MenuDropdown = createReactClass({
 			positionClassName = `slds-dropdown--${this.props.align}`;
 		}
 
+		// FOR BACKWARDS COMPATIBILITY
+		const menuPosition = this.props.isInline ? 'relative' : this.props.menuPosition; // eslint-disable-line react/prop-types
+
 		return (
 			isOpen ?
 				<Dialog
+					align={`bottom ${this.props.align}`}
 					className={classNames(this.props.containerClassName)}
 					closeOnTabKey
-					constrainToScrollParent={this.props.constrainToScrollParent}
 					contentsClassName={classNames('slds-dropdown',
 						'ignore-react-onclickoutside',
 						positionClassName,
 						this.props.className)}
 					context={this.context}
-					flippable={!this.props.hasStaticAlignment}
-					horizontalAlign={this.props.align}
+					hasStaticAlignment={this.props.hasStaticAlignment}
 					inheritTargetWidth={this.props.inheritTargetWidth}
-					marginTop={marginTop}
 					offset={offset}
 					onClose={this.handleClose}
 					onKeyDown={this.handleKeyDown}
 					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
 					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
 					outsideClickIgnoreClass={outsideClickIgnoreClass}
-					style={this.props.menuStyle}
-					targetElement={this.triggerContainer}
+					position={menuPosition}
+					style={this.props.menuStyle || assign({}, this.props.menuStyle, { marginTop })}
+					onRequestTargetElement={() => this.trigger}
 				>
 					{this.renderMenuContent(customContent)}
 				</Dialog> : null
@@ -804,20 +813,12 @@ const MenuDropdown = createReactClass({
 
 		this.renderOverlay(isOpen);
 
-		let isInline;
-		/* eslint-disable react/prop-types */
-		if (this.props.isInline) {
-			isInline = true;
-		} else if (this.props.modal !== undefined) {
-			isInline = !this.props.modal;
-		}
-		/* eslint-enable react/prop-types */
-
 		/* Below are three sections of props:
 		 - The first are the props that may be given by the dropdown component. These may get deprecated in the future.
 		 - The next set of props (`CustomTriggerChildProps`) are props that can be overwritten by the end developer.
 		 - The final set are props that should not be overwritten, since they are ones that tie the trigger to the dropdown menu.
 		*/
+	
 		return (
 			<CurrentTrigger
 				aria-haspopup
@@ -832,13 +833,9 @@ const MenuDropdown = createReactClass({
 				iconVariant={this.props.iconVariant}
 				id={this.getId()}
 				inverse={this.props.buttonInverse}
-				isInline={isInline}
 				isOpen={isOpen}
 				label={this.props.label}
-				menu={isInline ?
-					this.renderInlineMenu(customContent, isOpen) :
-					this.renderDialog(customContent, isOpen, outsideClickIgnoreClass)
-				}
+				menu={this.renderDialog(customContent, isOpen, outsideClickIgnoreClass)}
 				onBlur={this.props.onBlur}
 				onClick={
 					this.props.openOn === 'click'

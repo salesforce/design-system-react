@@ -63,8 +63,8 @@ const DatepickerYearSelector = createReactClass({
 					checkmark={false}
 					className="slds-picklist--fluid slds-shrink-none"
 					initialFocus
-					isInline
 					id={`${this.props.id}-year-picklist`}
+					menuPosition="relative"
 					onSelect={this.handleSelect}
 					options={this.getOptions()}
 					placeholder="Year"

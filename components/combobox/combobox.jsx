@@ -85,13 +85,13 @@ const propTypes = {
 		onSubmit: PropTypes.func
 	}),
 	/**
+	 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. This is the opposite of "flippable."
+	 */
+	hasStaticAlignment: PropTypes.bool,
+	/**
 	 * HTML id for component. _Tested with snapshot testing._
 	 */
 	id: PropTypes.string,
-	/**
-	 * Renders menu within the wrapping trigger as a sibling of the input. By default, you will have an absolutely positioned container at an elevated z-index. _Tested with snapshot testing._
-	 */
-	isInline: PropTypes.bool,
 	/**
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
@@ -124,6 +124,13 @@ const propTypes = {
 	 * _Tested with snapshot testing._
 	 */
 	menuItem: PropTypes.func,
+	/**
+	 * Please select one of the following:
+	 * * `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
+	 * * `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.
+	 * * `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.
+	 */
+	menuPosition: PropTypes.oneOf(['absolute', 'overflowBoundaryElement', 'relative']),
 	/**
 	 * Allows multiple selections _Tested with mocha testing._
 	 */
@@ -167,6 +174,7 @@ const defaultProps = {
 		placeholderReadOnly: 'Select an Option',
 		removePillTitle: 'Remove'
 	},
+	menuPosition: 'absolute',
 	readOnlyMenuItemVisibleLength: 5,
 	selection: [],
 	variant: 'base'
@@ -247,6 +255,8 @@ class Combobox extends React.Component {
 		const hasNewIndex = options.length > newIndex && newIndex >= 0;
 		return hasNewIndex ? newIndex : activeOptionIndex;
 	}
+
+	getTargetElement = () => this.inputRef;
 
 	isSelected = ({ selection, option }) => !!find(selection, option);
 
@@ -330,23 +340,24 @@ class Combobox extends React.Component {
 		}
 	}
 
-	getInlineMenu ({ menuRenderer }) {
-		return !this.props.disabled && this.getIsOpen() // eslint-disable-line react/prop-types
-		? menuRenderer
-		: null;
-	}
-
 	getDialog ({ menuRenderer }) {
-		return !this.props.disabled && this.getIsOpen() // eslint-disable-line react/prop-types
+		// FOR BACKWARDS COMPATIBILITY
+		const menuPosition = this.props.isInline ? 'relative' : this.props.menuPosition; // eslint-disable-line react/prop-types
+
+		return !this.props.disabled && this.getIsOpen()
 			? <Dialog
-				constrainToScrollParent
+				align="bottom left"
 				context={this.context}
-				flippable
-				horizontalAlign="left"
+				hasStaticAlignment={this.props.hasStaticAlignment}
 				inheritTargetWidth
 				onClose={this.handleClose}
 				onOpen={this.handleOpen}
-				targetElement={this.inputRef}
+				onRequestTargetElement={this.getTargetElement}
+				position={menuPosition}
+				containerProps={{
+					id: `${this.getId()}-listbox`,
+					role: 'listbox'
+				}}
 			>
 				{menuRenderer}
 			</Dialog>
@@ -365,7 +376,7 @@ class Combobox extends React.Component {
 				assistiveText={assistiveText}
 				activeOption={this.state.activeOption}
 				activeOptionIndex={this.state.activeOptionIndex}
-				className={this.props.classNameMenu}
+				classNameMenu={this.props.classNameMenu}
 				inputId={this.getId()}
 				inputValue={this.props.value}
 				isSelected={this.isSelected}
@@ -589,6 +600,18 @@ class Combobox extends React.Component {
 		this.setState({ listboxHasFocus: false });
 	}
 
+	setInputRef = (component) => {
+		this.inputRef = component;
+		// yes, this is a render triggered by a render.
+		// Dialog/Popper.js cannot place the menu until
+		// the trigger/target DOM node is mounted. This
+		// way `findDOMNode` is not called and parent
+		// DOM nodes are not queried.
+		if (!this.state.inputRendered) {
+			this.setState({ inputRendered: true });
+		}
+	}
+
 	/**
  	 * Combobox variant subrenders
  	 * (these can probably be broken into function components
@@ -635,7 +658,7 @@ class Combobox extends React.Component {
 						onFocus={this.handleInputFocus}
 						onBlur={this.handleInputBlur}
 						onKeyDown={this.handleKeyDown}
-						inputRef={(component) => { this.inputRef = component; }}
+						inputRef={this.setInputRef}
 						onClick={() => {
 							this.openDialog();
 						}}
@@ -648,9 +671,7 @@ class Combobox extends React.Component {
 								|| props.value
 							: props.value}
 					/>
-					{props.isInline
-						? this.getInlineMenu({ menuRenderer: this.renderMenu({ assistiveText, labels }) })
-						: this.getDialog({ menuRenderer: this.renderMenu({ assistiveText, labels }) })}
+					{this.getDialog({ menuRenderer: this.renderMenu({ assistiveText, labels }) })}
 				</div>
 			</div>
 			<SelectedListBox
@@ -740,7 +761,7 @@ class Combobox extends React.Component {
 							onFocus={this.handleInputFocus}
 							onBlur={this.handleInputBlur}
 							onKeyDown={this.handleKeyDown}
-							inputRef={(component) => { this.inputRef = component; }}
+							inputRef={this.setInputRef}
 							onClick={() => {
 								this.requestOpenMenu();
 							}}
@@ -757,15 +778,7 @@ class Combobox extends React.Component {
 									|| props.value
 								: value}
 						/>
-						{props.isInline
-							? this.getInlineMenu({ menuRenderer: this.renderMenu({
-								assistiveText,
-								labels
-							}) })
-							: this.getDialog({ menuRenderer: this.renderMenu({ assistiveText,
-								labels
-							}) })
-						}
+						{this.getDialog({ menuRenderer: this.renderMenu({ assistiveText, labels }) })}
 					</div>
 				</div>
 			</div>
@@ -837,7 +850,7 @@ class Combobox extends React.Component {
 						onFocus={this.handleInputFocus}
 						onBlur={this.handleInputBlur}
 						onKeyDown={this.handleKeyDown}
-						inputRef={(component) => { this.inputRef = component; }}
+						inputRef={this.setInputRef}
 						onClick={() => {
 							this.openDialog();
 						}}
@@ -850,9 +863,7 @@ class Combobox extends React.Component {
 								|| props.value
 							: props.value}
 					/>
-					{props.isInline
-						? this.getInlineMenu({ menuRenderer: this.renderMenu({ assistiveText, labels }) })
-						: this.getDialog({ menuRenderer: this.renderMenu({ assistiveText, labels }) })}
+					{this.getDialog({ menuRenderer: this.renderMenu({ assistiveText, labels }) })}
 				</div>
 			</div>
 		</div>
@@ -902,7 +913,7 @@ class Combobox extends React.Component {
 							onFocus={this.handleInputFocus}
 							onBlur={this.handleInputBlur}
 							onKeyDown={this.handleKeyDown}
-							inputRef={(component) => { this.inputRef = component; }}
+							inputRef={this.setInputRef}
 							onClick={() => {
 								this.requestOpenMenu();
 							}}
@@ -917,9 +928,7 @@ class Combobox extends React.Component {
 							value={(this.state.activeOption && this.state.activeOption.label)
 								|| value}
 						/>
-						{props.isInline
-							? this.getInlineMenu({ menuRenderer: this.renderMenu({ assistiveText, labels }) })
-							: this.getDialog({ menuRenderer: this.renderMenu({ assistiveText, labels }) })}
+						{this.getDialog({ menuRenderer: this.renderMenu({ assistiveText, labels }) })}
 					</div>
 				</div>
 			</div>
@@ -972,7 +981,7 @@ class Combobox extends React.Component {
 							onFocus={this.handleInputFocus}
 							onBlur={this.handleInputBlur}
 							onKeyDown={this.handleKeyDown}
-							inputRef={(component) => { this.inputRef = component; }}
+							inputRef={this.setInputRef}
 							onClick={() => {
 								this.requestOpenMenu();
 							}}
@@ -986,9 +995,7 @@ class Combobox extends React.Component {
 							role="textbox"
 							value={value}
 						/>
-						{props.isInline
-							? this.getInlineMenu({ menuRenderer: this.renderMenu({ assistiveText, labels }) })
-							: this.getDialog({ menuRenderer: this.renderMenu({ assistiveText, labels }) })}
+						{this.getDialog({ menuRenderer: this.renderMenu({ assistiveText, labels }) })}
 					</div>
 				</div>
 				<SelectedListBox

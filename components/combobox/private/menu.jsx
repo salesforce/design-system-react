@@ -20,9 +20,13 @@ const propTypes = {
 	 */
 	activeOptionIndex: PropTypes.number,
 	/**
-	 * CSS classes to be added to tag with `.slds-dropdown`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
+	 * CSS classes to be added to container `div` tag. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	/**
+	 * CSS classes to be added to tag with `.slds-dropdown`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
+	 */
+	classNameMenu: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/*
 	 * Id used for assistive technology
 	 */
@@ -166,28 +170,26 @@ const Menu = (props) => {
 	});
 
 	return (
-		<div id={`${props.inputId}-listbox`} role="listbox">
-			<ul
-				className={classNames('slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid',
-					{
-						'slds-dropdown_length-with-icon-5': props.itemVisibleLength === 5,
-						'slds-dropdown_length-with-icon-7': props.itemVisibleLength === 7,
-						'slds-dropdown_length-with-icon-10': props.itemVisibleLength === 10
-					},
-					props.className)}
-				role="presentation"
-			>
-				{menuOptions.length
-					? menuOptions
-					:	<li
-						className="slds-listbox__item slds-listbox__status"
-						role="status"
-						aria-live="polite"
-					>
-						<span className="slds-m-left--x-large slds-p-vertical--medium">{props.labels.noOptionsFound}</span>
-					</li>}
-			</ul>
-		</div>
+		<ul
+			className={classNames('slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid',
+				{
+					'slds-dropdown_length-with-icon-5': props.itemVisibleLength === 5,
+					'slds-dropdown_length-with-icon-7': props.itemVisibleLength === 7,
+					'slds-dropdown_length-with-icon-10': props.itemVisibleLength === 10
+				},
+				props.classNameMenu)}
+			role="presentation"
+		>
+			{menuOptions.length
+				? menuOptions
+				:	<li
+					className="slds-listbox__item slds-listbox__status"
+					role="status"
+					aria-live="polite"
+				>
+					<span className="slds-m-left--x-large slds-p-vertical--medium">{props.labels.noOptionsFound}</span>
+				</li>}
+		</ul>
 	);
 };
 

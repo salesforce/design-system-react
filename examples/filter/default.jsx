@@ -9,12 +9,12 @@ import FilterList from '~/components/panel/filtering/list';
 import FilterListHeading from '~/components/panel/filtering/list-heading';
 import Filter from '~/components/filter';
 
-import Picklist from '~/components/menu-picklist';
+import Combobox from '~/components/combobox';
 
 const options = {
 	'show-me': [
-		{ label: 'All Products', value: 'all-products' },
-		{ label: 'All Wackamoles', value: 'all-Wackamoles' }
+		{ id: 1, label: 'All Products', value: 'all-products' },
+		{ id: 2, label: 'All Wackamoles', value: 'all-Wackamoles' }
 	]
 };
 
@@ -30,9 +30,9 @@ const Example = createReactClass({
 	getInitialState () {
 		return {
 			'show-me': {
-				selectedPicklistItem: options['show-me'][0],
 				selectedItem: options['show-me'][0],
-				isActive: true
+				isActive: true,
+				comboboxSelection: [options['show-me'][0]]
 			}
 		};
 	},
@@ -42,16 +42,7 @@ const Example = createReactClass({
 		this.setState({
 			[idSuffix]: {
 				...this.state[idSuffix],
-				selectedItem: this.state[idSuffix].selectedPicklistItem
-			}
-		});
-	},
-
-	onSelectPicklist (selectedItem, id) {
-		this.setState({
-			[id]: {
-				...this.state[id],
-				selectedPicklistItem: selectedItem
+				selectedItem: this.state[idSuffix].comboboxSelection[0]
 			}
 		});
 	},
@@ -78,15 +69,23 @@ const Example = createReactClass({
 					predicate={this.state['show-me'].selectedItem.label}
 					{...this.props}
 				>
-					<Picklist
-						isInline
-						label="Show Me"
-						onSelect={(selectedItem) => {
-							this.onSelectPicklist(selectedItem, 'show-me');
+					<Combobox
+						events={{
+							onSelect: (event, data) => {
+								this.setState({ 'show-me': {
+									...this.state['show-me'],
+									comboboxSelection: data.selection
+								} });
+							}
 						}}
+						labels={{
+							label: 'Show Me',
+							placeholder: 'Select record type'
+						}}
+						menuPosition="relative"
 						options={options['show-me']}
-						placeholder="Select record type"
-						value={this.state['show-me'].selectedPicklistItem.value}
+						selection={this.state['show-me'].comboboxSelection}
+						variant="readonly"
 					/>
 				</Filter>
 			</IconSettings>

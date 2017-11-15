@@ -31,7 +31,6 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
 					id="combobox-unique-id"
-					isInline
 					events={{
 						onRequestRemoveSelectedOption: (event, data) => {
 							this.setState({
@@ -51,6 +50,7 @@ class Example extends React.Component {
 						label: 'Search',
 						placeholder: 'Search Salesforce'
 					}}
+					menuPosition="relative"
 					multiple
 					options={accounts}
 					selection={this.state.selection}

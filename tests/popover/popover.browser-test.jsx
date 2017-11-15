@@ -81,7 +81,6 @@ const DemoComponent = createReactClass({
  */
 describe('SLDSPopover', function () {
 	let mountNode;
-	let portalWrapper;
 	let wrapper;
 
 	// BASIC STRUCTURE
@@ -95,19 +94,14 @@ describe('SLDSPopover', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('is open, has heading, body, close button', (done) => {
+		it('is open, has heading, body, close button', () => {
 			wrapper = mount(<DemoComponent
 				isOpen
-				portalMount={(reactElement, domContainerNode) => {
-					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-				}}
-				onOpen={() => {
-					expect(portalWrapper.find(`#${defaultIds.heading}`)).to.exist;
-					expect(portalWrapper.find(`#${defaultIds.body}`)).to.exist;
-					expect(portalWrapper.find('.slds-popover__close')).to.exist;
-					done();
-				}}
 			/>, { attachTo: mountNode });
+
+			expect(wrapper.find(`#${defaultIds.heading}`)).to.exist;
+			expect(wrapper.find(`#${defaultIds.body}`)).to.exist;
+			expect(wrapper.find('.slds-popover__close')).to.exist;
 		});
 	});
 
@@ -123,21 +117,15 @@ describe('SLDSPopover', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('has aria-labelledby/aria-describedby on popover', function (done) {
+		it('has aria-labelledby/aria-describedby on popover', function () {
 			wrapper = mount(<DemoComponent
 				isOpen
-				portalMount={(reactElement, domContainerNode) => {
-					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-				}}
-				onOpen={() => {
-					const trigger = wrapper.find('#sample-popover');
-
-					const popover = portalWrapper.find(`#${defaultIds.popover}`);
-					expect(popover.node.getAttribute('aria-labelledby')).to.equal(`${defaultIds.heading}`);
-					expect(popover.node.getAttribute('aria-describedby')).to.equal(`${defaultIds.body}`);
-					done();
-				}}
 			/>, { attachTo: mountNode });
+
+			const trigger = wrapper.find('#sample-popover');
+			const popover = wrapper.find(`#${defaultIds.popover}`);
+			expect(popover.node.getAttribute('aria-labelledby')).to.equal(`${defaultIds.heading}`);
+			expect(popover.node.getAttribute('aria-describedby')).to.equal(`${defaultIds.body}`);
 		});
 	});
 
@@ -164,23 +152,18 @@ describe('SLDSPopover', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('has correct className, closeButtonAssistiveText, style, and footer', function (done) {
+		it('has correct className, closeButtonAssistiveText, style, and footer', function () {
 			wrapper = mount(<DemoComponent
 				{...optionalProps}
 				isOpen
-				portalMount={(reactElement, domContainerNode) => {
-					portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-				}}
-				onOpen={() => {
-					const popover = portalWrapper.find(`#${defaultIds.popover}`);
-
-					expect(popover.node.classList.contains(optionalProps.className)).to.be.true;
-					expect(popover.find('.slds-popover__close').node.textContent).to.equal(optionalProps.closeButtonAssistiveText);
-					expect(popover.find('#footer')).to.exist;
-					expect(popover.node.style.background).to.equal(popoverBackgroundColor);
-					done();
-				}}
 			/>, { attachTo: mountNode });
+
+			const popover = wrapper.find(`#${defaultIds.popover}`);
+
+			expect(popover.node.classList.contains(optionalProps.className)).to.be.true;
+			expect(popover.find('.slds-popover__close').node.textContent).to.equal(optionalProps.closeButtonAssistiveText);
+			expect(popover.find('#footer')).to.exist;
+			expect(popover.node.style.background).to.equal(popoverBackgroundColor);
 		});
 	});
 
@@ -204,18 +187,15 @@ describe('SLDSPopover', function () {
 			it('calls onClick handler on trigger, click on popover close closes', function (done) {
 				wrapper = mount(<DemoComponent
 					onClick={triggerClicked}
-					portalMount={(reactElement, domContainerNode) => {
-						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-					}}
 					onClose={() => {
 						setTimeout(() => {
-							const popover = portalWrapper.find(`#${defaultIds.popover}`);
+							const popover = wrapper.find(`#${defaultIds.popover}`);
 							expect(popover.node).to.not.exist;
 							done();
 						}, 0);
 					}}
 					onOpen={() => {
-						const popover = portalWrapper.find(`#${defaultIds.popover}`);
+						const popover = wrapper.find(`#${defaultIds.popover}`);
 
 						expect(popover).to.exist;
 						expect(triggerClicked.callCount).to.equal(1);
@@ -230,18 +210,15 @@ describe('SLDSPopover', function () {
 
 			it('opens on click, closes on ESC', function (done) {
 				wrapper = mount(<DemoComponent
-					portalMount={(reactElement, domContainerNode) => {
-						portalWrapper = mount(reactElement, { attachTo: domContainerNode });
-					}}
 					onClose={() => {
 						setTimeout(() => {
-							const popover = portalWrapper.find(`#${defaultIds.popover}`);
+							const popover = wrapper.find(`#${defaultIds.popover}`);
 							expect(popover.node).to.not.exist;
 							done();
 						}, 0);
 					}}
 					onOpen={() => {
-						const popover = portalWrapper.find(`#${defaultIds.popover}`);
+						const popover = wrapper.find(`#${defaultIds.popover}`);
 						popover.simulate('keyDown', { key: 'Esc', keyCode: 27, which: 27 });
 					}}
 				/>, { attachTo: mountNode });

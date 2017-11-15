@@ -156,8 +156,7 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 
 		it('renders custom more link', () => {
 			// Enzyme is unable to find React inserted `<span>` tags due to text wrapping. Therefore the DOM transversal.
-
-			const clonedNode = handles.more.node.cloneNode();
+			// const clonedNode = handles.more.node.cloneNode();
 			// const clonedNodeWithoutSpan = clonedNode.firstChild.remove();
 			// console.log(clonedNode);
 
@@ -167,7 +166,8 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		it('long descriptions use Tooltip activated by hover', () => {
 			// this test causes the tooltip to 'flash' on the testing page http://localhost:8001/
 			Simulate.mouseEnter(handles.more.node, {});
-			should.exist(handles.tile.find('.drop-target'));
+			// uses portal mount
+			should.exist(document.querySelector('.slds-popover--tooltip'));
 			Simulate.mouseLeave(handles.more.node, {});
 		});
 

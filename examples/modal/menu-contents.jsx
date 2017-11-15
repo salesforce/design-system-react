@@ -1,44 +1,23 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
-import IconSettings from '~/components/icon-settings';  // `~` is replaced with design-system-react at runtime
+import IconSettings from '~/components/icon-settings';
 import Modal from '~/components/modal'; // `~` is replaced with design-system-react at runtime
-import Button from '~/components/button'; // `~` is replaced with design-system-react at runtime
-import Combobox from '~/components/combobox'; // `~` is replaced with design-system-react at runtime
-import Datepicker from '~/components/date-picker'; // `~` is replaced with design-system-react at runtime
-import Icon from '~/components/icon'; // `~` is replaced with design-system-react at runtime
-import Input from '~/components/forms/input'; // `~` is replaced with design-system-react at runtime
-import Textarea from '~/components/forms/textarea'; // `~` is replaced with design-system-react at runtime
-import Timepicker from '~/components/time-picker'; // `~` is replaced with design-system-react at runtime
+import Button from '~/components/button';
+import Lookup from '~/components/lookup';
+import Picklist from '~/components/menu-picklist';
 
-const accounts = [
-	{ id: '1', label: 'Acme', subTitle: 'Account • San Francisco', type: 'account' },
-	{ id: '2', label: 'Salesforce.com, Inc.', subTitle: 'Account • San Francisco', type: 'account' },
-	{ id: '3', label: 'Paddy\'s Pub', subTitle: 'Account • Boston, MA', type: 'account' },
-	{ id: '4', label: 'Tyrell Corp', subTitle: 'Account • San Francisco, CA', type: 'account' },
-	{ id: '5', label: 'Paper St. Soap Company', subTitle: 'Account • Beloit, WI', type: 'account' },
-	{ id: '6', label: 'Nakatomi Investments', subTitle: 'Account • Chicago, IL', type: 'account' },
-	{ id: '7', label: 'Acme Landscaping', type: 'account' },
-	{ id: '8', label: 'Acme Construction', subTitle: 'Account • Grand Marais, MN', type: 'account' }
-];
+const Example = createReactClass({
+	displayName: 'ModalExample',
 
-const accountsWithIcon = accounts.map((elem) => Object.assign(elem, {
-	icon: <Icon
-		assistiveText="Account"
-		category="standard"
-		name={elem.type}
-	/> })
-);
+	getInitialState () {
+		return {
+			isOpen: false
+		};
+	},
 
-class Example extends React.Component {
-	static displayName = 'ModalExample';
-
-	state = {
-		isOpen: false
-	};
-
-	toggleOpen = () => {
+	toggleOpen () {
 		this.setState({ isOpen: !this.state.isOpen });
-	};
+	},
 
 	render () {
 		return (
@@ -48,105 +27,86 @@ class Example extends React.Component {
 					<Modal
 						isOpen={this.state.isOpen}
 						footer={[
-							<Button key="cancel" label="Cancel" onClick={this.toggleOpen} />,
-							<Button key="save" label="Save" variant="brand" onClick={this.toggleOpen} />
+							<Button label="Cancel" onClick={this.toggleOpen} />,
+							<Button label="Save" variant="brand" onClick={this.toggleOpen} />
 						]}
 						onRequestClose={this.toggleOpen}
 						title="New Opportunity"
-						{...this.props}
 					>
-						<div className="slds-form_stacked slds-p-around_medium">
-							<Input
-								id="unique-id-1"
-								label="Opportunity Name"
-								placeholder="Enter name"
-							/>
-							<Textarea
-								id="unique-id-1"
-								label="Opportunity Description"
-								placeholder="Enter description"
-							/>
-							<Combobox
-								id="combobox-autocomplete-unique-id"
-								labels={{
-									label: 'Account Name',
-									placeholderReadOnly: 'Select account'
-								}}
-								options={accountsWithIcon}
-								variant="base"
-							/>
-							<Combobox
-								id="combobox-readonly-unique-id"
-								labels={{
-									label: 'Lead Source',
-									placeholderReadOnly: 'Select source'
-								}}
+						<section className="slds-p-around--large">
+							<div className="slds-form-element slds-m-bottom--large">
+								<label className="slds-form-element__label" htmlFor="opptyName">Opportunity Name</label>
+								<div className="slds-form-element__control">
+									<input id="opptyName" className="-input" type="text" placeholder="Enter name" />
+								</div>
+							</div>
+							<div className="slds-form-element slds-m-bottom--large">
+								<label className="slds-form-element__label" htmlFor="description">Opportunity Description</label>
+								<div className="slds-form-element__control">
+									<textarea id="description" className="-textarea" placeholder="Enter description" />
+								</div>
+							</div>
+							<div className="slds-form-element slds-m-bottom--large">
+								<Lookup
+									emptyMessage="No items found"
+									hasError={false}
+									label="Account"
+									onChange={(newValue) => { console.log('New search term: ', newValue); }}
+									onSelect={(item) => { console.log(item, ' Selected'); }}
+									options={[
+										{ type: 'section', label: 'SECTION 1' },
+										{ label: 'Paddy\'s Pub' },
+										{ label: 'Tyrell Corp' },
+										{ type: 'section', label: 'SECTION 2' },
+										{ label: 'Paper St. Soap Company' },
+										{ label: 'Nakatomi Investments' },
+										{ label: 'Acme Landscaping' },
+										{ type: 'section', label: 'SECTION 3' },
+										{ label: 'Acme Construction' }
+									]}
+									sectionDividerRenderer={Lookup.DefaultSectionDivider}
+								/>
+							</div>
+							<Picklist
+								className="slds-m-bottom--large"
+								label="Lead Source"
+								onSelect={(option) => { console.log('selected: ', option.label); }}
 								options={[
-									{ id: 1, label: 'Third Party Program' },
-									{ id: 2, label: 'Cold Call' },
-									{ id: 3, label: 'LinkedIn' },
-									{ id: 4, label: 'Direct Mail' },
-									{ id: 5, label: 'Other' }
+									{ label: 'Third Party Program', value: 'A0' },
+									{ label: 'Cold Call', value: 'B0' },
+									{ label: 'LinkedIn', value: 'C0' },
+									{ label: 'Direct Mail', value: 'D0' },
+									{ label: 'Other', value: 'E0' }
 								]}
-								variant="readonly"
+								placeholder="Select Lead Source"
+								value="B0"
 							/>
-							<Input
-								fixedTextLeft="$"
-								id="unique-id-1"
-								label="Amount"
-								placeholder="Enter amount"
+							<Picklist
+								className="slds-m-bottom--large"
+								label="Type"
+								onSelect={(option) => { console.log('selected: ', option.label); }}
+								options={[
+									{ label: 'Add on Business', value: 'A0' },
+									{ label: 'Courtesy', value: 'B0' },
+									{ label: 'New Business', value: 'C0' },
+									{ label: 'Renewal', value: 'D0' },
+									{ label: 'Upgrade', value: 'E0' }
+								]}
+								placeholder="Select Opportunity Type"
+								value="C0"
 							/>
-							<div className="slds-form-element">
-								<Datepicker
-									label="Start Date"
-								/>
+							<div className="slds-form-element slds-m-bottom--large">
+								<label className="slds-form-element__label" htmlFor="amount">Amount</label>
+								<div className="slds-form-element__control">
+									<input id="amount" className="-input" type="text" placeholder="Enter Amount" />
+								</div>
 							</div>
-							<div className="slds-form-element">
-								<Timepicker
-									label="Start Time"
-								/>
-							</div>
-							<Input
-								id="unique-id-1"
-								label="Additional Input"
-								placeholder="To create scrolling modal"
-							/>
-							<Input
-								id="unique-id-1"
-								label="Additional Input"
-								placeholder="To create scrolling modal"
-							/>
-							<Input
-								id="unique-id-1"
-								label="Additional Input"
-								placeholder="To create scrolling modal"
-							/>
-							<Input
-								id="unique-id-1"
-								label="Additional Input"
-								placeholder="To create scrolling modal"
-							/>
-							<Input
-								id="unique-id-1"
-								label="Additional Input"
-								placeholder="To create scrolling modal"
-							/>
-							<Input
-								id="unique-id-1"
-								label="Additional Input"
-								placeholder="To create scrolling modal"
-							/>
-							<Input
-								id="unique-id-1"
-								label="Additional Input"
-								placeholder="To create scrolling modal"
-							/>
-						</div>
+						</section>
 					</Modal>
 				</div>
 			</IconSettings>
 		);
 	}
-}
+});
 
 export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
