@@ -1,5 +1,7 @@
 import '@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.css';
 
+export Accordion from './accordion/stories';
+export Alert from './alert/stories';
 export AppLauncher from './app-launcher/stories';
 export Avatar from './avatar/stories';
 export Breadcrumb from './breadcrumb/stories';
@@ -35,5 +37,6 @@ export RadioButtonGroup from './radio-button-group/stories';
 export Spinner from './spinner/stories';
 export Tabs from './tabs/stories';
 export TimePicker from './time-picker/stories';
+export Toast from './toast/stories';
 export Tooltip from './tooltip/stories';
 export Tree from './tree/stories';

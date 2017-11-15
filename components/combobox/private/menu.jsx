@@ -43,6 +43,15 @@ const propTypes = {
 	labels: shape({
 		noOptionsFound: PropTypes.string.isRequired
 	}),
+	/**
+	 * Accepts a custom menu item rendering function that becomes a custom component and is passed in the following props:
+	 * * `assistiveText`: Object, `assistiveText` prop that is passed into Combobox
+	 * * `option`: Object, option data for item being rendered that is passed into Combobox
+	 * * `selected`: Boolean, allows rendering of `assistiveText.optionSelectedInMenu` in Readonly Combobox
+	 *
+	 * _Tested with snapshot testing._
+	 */
+	menuItem: PropTypes.func,
 	/*
 	 * Menu options
 	 */
@@ -74,6 +83,7 @@ const Menu = (props) => {
 		const active = (index === props.activeOptionIndex
 			&& isEqual(optionData, props.activeOption));
 		const selected = props.isSelected({ selection: props.selection, option: optionData });
+		const MenuItem = props.menuItem;
 
 		return (
 			<li
@@ -94,15 +104,26 @@ const Menu = (props) => {
 							}}
 							role="option"
 						>
-							{optionData.icon
+							{optionData.icon && !props.menuItem
 							? <span className="slds-media__figure">
 								{optionData.icon}
 							</span>
 							: null}
-							<span className="slds-media__body">
-								<span className="slds-listbox__option-text slds-listbox__option-text_entity">{optionData.label}</span>
-								<span className="slds-listbox__option-meta slds-listbox__option-meta_entity">{optionData.subTitle}</span>
-							</span>
+							{props.menuItem
+								? <MenuItem
+									assistiveText={props.assistiveText}
+									selected={selected}
+									option={optionData}
+								/>
+								: <span className="slds-media__body">
+									<span
+										className="slds-listbox__option-text slds-listbox__option-text_entity"
+									>{optionData.label}</span>
+									<span
+										className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+									>{optionData.subTitle}</span>
+								</span>
+							}
 						</span>
 					),
 					checkbox: (
@@ -129,10 +150,17 @@ const Menu = (props) => {
 								/>
 							</span>
 							<span className="slds-media__body">
-								<span className="slds-truncate" title={optionData.label}>
-									{selected
-										? <span className="slds-assistive-text">{props.assistiveText.optionSelectedInMenu}</span>
-										: null} {optionData.label}</span>
+								{props.menuItem
+									? <MenuItem
+										assistiveText={props.assistiveText}
+										selected={selected}
+										option={optionData}
+									/>
+									:	<span className="slds-truncate" title={optionData.label}>
+										{selected
+											? <span className="slds-assistive-text">{props.assistiveText.optionSelectedInMenu}</span>
+											: null} {optionData.label}</span>
+									}
 							</span>
 						</span>
 				)

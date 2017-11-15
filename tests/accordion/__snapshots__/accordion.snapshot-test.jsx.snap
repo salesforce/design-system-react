@@ -1,0 +1,236 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Base DOM Snapshot 1`] = `
+<IconSettings
+  iconPath="/assets/icons"
+>
+  <SLDSAccordion
+    id="base-example-accordion"
+  >
+    <SLDSAccordionPanel
+      expanded={false}
+      id="1"
+      onTogglePanel={[Function]}
+      panelContentActions={
+        <OnClickOutside(SLDSMenuDropdown)
+          align="right"
+          assistiveText="More Options"
+          buttonClassName="slds-shrink-none"
+          buttonVariant="icon"
+          eventTypes={
+            Array [
+              "mousedown",
+              "touchstart",
+            ]
+          }
+          excludeScrollbar={false}
+          iconName="down"
+          iconSize="x-small"
+          iconVariant="border-filled"
+          id="ButtonGroupExampleDropdown"
+          onSelect={[Function]}
+          options={
+            Array [
+              Object {
+                "label": "delete",
+                "value": "A0",
+              },
+              Object {
+                "label": "redo",
+                "value": "B0",
+              },
+              Object {
+                "label": "activate",
+                "value": "C0",
+              },
+            ]
+          }
+          outsideClickIgnoreClass="ignore-react-onclickoutside"
+          preventDefault={false}
+          stopPropagation={false}
+        />
+      }
+      summary="Accordion Summary"
+    >
+      Accordion details - A
+    </SLDSAccordionPanel>
+    <SLDSAccordionPanel
+      expanded={false}
+      id="2"
+      onTogglePanel={[Function]}
+      panelContentActions={
+        <OnClickOutside(SLDSMenuDropdown)
+          align="right"
+          assistiveText="More Options"
+          buttonClassName="slds-shrink-none"
+          buttonVariant="icon"
+          eventTypes={
+            Array [
+              "mousedown",
+              "touchstart",
+            ]
+          }
+          excludeScrollbar={false}
+          iconName="down"
+          iconSize="x-small"
+          iconVariant="border-filled"
+          id="ButtonGroupExampleDropdown"
+          onSelect={[Function]}
+          options={
+            Array [
+              Object {
+                "label": "delete",
+                "value": "A0",
+              },
+              Object {
+                "label": "redo",
+                "value": "B0",
+              },
+              Object {
+                "label": "activate",
+                "value": "C0",
+              },
+            ]
+          }
+          outsideClickIgnoreClass="ignore-react-onclickoutside"
+          preventDefault={false}
+          stopPropagation={false}
+        />
+      }
+      summary="Accordion Summary"
+    >
+      Accordion details - B
+    </SLDSAccordionPanel>
+    <SLDSAccordionPanel
+      expanded={false}
+      id="3"
+      onTogglePanel={[Function]}
+      panelContentActions={
+        <OnClickOutside(SLDSMenuDropdown)
+          align="right"
+          assistiveText="More Options"
+          buttonClassName="slds-shrink-none"
+          buttonVariant="icon"
+          eventTypes={
+            Array [
+              "mousedown",
+              "touchstart",
+            ]
+          }
+          excludeScrollbar={false}
+          iconName="down"
+          iconSize="x-small"
+          iconVariant="border-filled"
+          id="ButtonGroupExampleDropdown"
+          onSelect={[Function]}
+          options={
+            Array [
+              Object {
+                "label": "delete",
+                "value": "A0",
+              },
+              Object {
+                "label": "redo",
+                "value": "B0",
+              },
+              Object {
+                "label": "activate",
+                "value": "C0",
+              },
+            ]
+          }
+          outsideClickIgnoreClass="ignore-react-onclickoutside"
+          preventDefault={false}
+          stopPropagation={false}
+        />
+      }
+      summary="Accordion Summary"
+    >
+      Accordion details - C
+    </SLDSAccordionPanel>
+  </SLDSAccordion>
+</IconSettings>
+`;
+
+exports[`Base HTML Snapshot 1`] = `
+"<ul name=\\"base-example-accordion\\" class=\\"slds-accordion\\">
+  <li class=\\"slds-accordion__list-item\\">
+    <section class=\\"slds-accordion__section\\">
+      <div class=\\"slds-accordion__summary\\">
+        <h3 class=\\"slds-text-heading_small slds-accordion__summary-heading slds-has-flexi-truncate\\"><button aria-controls=\\"1-accordion-panel\\" aria-expanded=\\"false\\" class=\\"slds-button slds-button_reset slds-accordion__summary-action\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#switch\\"></use></svg><span class=\\"slds-truncate\\" title=\\"Accordion Summary\\">Accordion Summary</span></button></h3>
+        <div
+          class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"ButtonGroupExampleDropdown\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-border-filled slds-button--icon-x-small ignore-click-ButtonGroupExampleDropdown slds-shrink-none\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">More Options</span></button></div>
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"slds-accordion__content\\" id=\\"1-accordion-panel\\">Accordion details - A</div>
+    </section>
+  </li>
+  <li class=\\"slds-accordion__list-item\\">
+    <section class=\\"slds-accordion__section\\">
+      <div class=\\"slds-accordion__summary\\">
+        <h3 class=\\"slds-text-heading_small slds-accordion__summary-heading slds-has-flexi-truncate\\"><button aria-controls=\\"2-accordion-panel\\" aria-expanded=\\"false\\" class=\\"slds-button slds-button_reset slds-accordion__summary-action\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#switch\\"></use></svg><span class=\\"slds-truncate\\" title=\\"Accordion Summary\\">Accordion Summary</span></button></h3>
+        <div
+          class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"ButtonGroupExampleDropdown\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-border-filled slds-button--icon-x-small ignore-click-ButtonGroupExampleDropdown slds-shrink-none\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">More Options</span></button></div>
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"slds-accordion__content\\" id=\\"2-accordion-panel\\">Accordion details - B</div>
+    </section>
+  </li>
+  <li class=\\"slds-accordion__list-item\\">
+    <section class=\\"slds-accordion__section\\">
+      <div class=\\"slds-accordion__summary\\">
+        <h3 class=\\"slds-text-heading_small slds-accordion__summary-heading slds-has-flexi-truncate\\"><button aria-controls=\\"3-accordion-panel\\" aria-expanded=\\"false\\" class=\\"slds-button slds-button_reset slds-accordion__summary-action\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#switch\\"></use></svg><span class=\\"slds-truncate\\" title=\\"Accordion Summary\\">Accordion Summary</span></button></h3>
+        <div
+          class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"ButtonGroupExampleDropdown\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-border-filled slds-button--icon-x-small ignore-click-ButtonGroupExampleDropdown slds-shrink-none\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">More Options</span></button></div>
+      </div>
+      <div aria-hidden=\\"true\\" class=\\"slds-accordion__content\\" id=\\"3-accordion-panel\\">Accordion details - C</div>
+    </section>
+  </li>
+</ul>"
+`;
+
+exports[`Base Open DOM Snapshot 1`] = `
+<IconSettings
+  iconPath="/assets/icons"
+>
+  <SLDSAccordion
+    id="base-example-accordion"
+  >
+    <SLDSAccordionPanel
+      expanded={true}
+      id="1"
+      onTogglePanel={[Function]}
+      summary="Accordion Summary"
+    >
+      Accordion details - A
+    </SLDSAccordionPanel>
+    <SLDSAccordionPanel
+      expanded={true}
+      id="2"
+      onTogglePanel={[Function]}
+      summary="Accordion Summary"
+    >
+      Accordion details - B
+    </SLDSAccordionPanel>
+  </SLDSAccordion>
+</IconSettings>
+`;
+
+exports[`Base Open HTML Snapshot 1`] = `
+"<ul name=\\"base-example-accordion\\" class=\\"slds-accordion\\">
+  <li class=\\"slds-accordion__list-item\\">
+    <section class=\\"slds-accordion__section slds-is-open\\">
+      <div class=\\"slds-accordion__summary\\">
+        <h3 class=\\"slds-text-heading_small slds-accordion__summary-heading slds-has-flexi-truncate\\"><button aria-controls=\\"1-accordion-panel\\" aria-expanded=\\"true\\" class=\\"slds-button slds-button_reset slds-accordion__summary-action\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#switch\\"></use></svg><span class=\\"slds-truncate\\" title=\\"Accordion Summary\\">Accordion Summary</span></button></h3>
+      </div>
+      <div aria-hidden=\\"false\\" class=\\"slds-accordion__content\\" id=\\"1-accordion-panel\\">Accordion details - A</div>
+    </section>
+  </li>
+  <li class=\\"slds-accordion__list-item\\">
+    <section class=\\"slds-accordion__section slds-is-open\\">
+      <div class=\\"slds-accordion__summary\\">
+        <h3 class=\\"slds-text-heading_small slds-accordion__summary-heading slds-has-flexi-truncate\\"><button aria-controls=\\"2-accordion-panel\\" aria-expanded=\\"true\\" class=\\"slds-button slds-button_reset slds-accordion__summary-action\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#switch\\"></use></svg><span class=\\"slds-truncate\\" title=\\"Accordion Summary\\">Accordion Summary</span></button></h3>
+      </div>
+      <div aria-hidden=\\"false\\" class=\\"slds-accordion__content\\" id=\\"2-accordion-panel\\">Accordion details - B</div>
+    </section>
+  </li>
+</ul>"
+`;

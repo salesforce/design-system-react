@@ -28,7 +28,7 @@ exports[`DataTable Advanced HTML Snapshot 1`] = `
           <th class=\\"\\" scope=\\"col\\">
             <div class=\\"slds-truncate\\">Stage</div>
           </th>
-          <th class=\\"slds-is-sortable\\" focusable=\\"true\\" scope=\\"col\\"><a href=\\"javascript:void(0)\\" class=\\"slds-th__action slds-text-link--reset\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Sort </span><span class=\\"slds-truncate\\" title=\\"Confidence\\">Confidence</span><span><svg aria-hidden=\\"true\\" class=\\"slds-is-sortable__icon slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#arrowup\\"></use></svg></span><span class=\\"slds-assistive-text\\" aria-live=\\"assertive\\" aria-atomic=\\"true\\">Sorted Ascending</span></a></th>
+          <th class=\\"slds-is-sortable\\" focusable=\\"true\\" scope=\\"col\\"><a href=\\"javascript:void(0)\\" class=\\"slds-th__action slds-text-link--reset\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Sort </span><span class=\\"slds-truncate\\" title=\\"Confidence\\">Confidence</span><span><svg aria-hidden=\\"true\\" class=\\"slds-is-sortable__icon slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#arrowup\\"></use></svg></span></a></th>
           <th
             class=\\"\\" scope=\\"col\\">
             <div class=\\"slds-truncate\\">Amount</div>
@@ -66,7 +66,7 @@ exports[`DataTable Advanced HTML Snapshot 1`] = `
           <div class=\\"slds-truncate\\" title=\\"Value Proposition\\">Value Proposition</div>
         </td>
         <td role=\\"gridcell\\">
-          <div class=\\"slds-truncate\\" title=\\"30%\\">30%</div>
+          <div class=\\"slds-truncate\\" title=\\"70%\\">70%</div>
         </td>
         <td role=\\"gridcell\\">
           <div class=\\"slds-truncate\\" title=\\"$25,000,000\\">$25,000,000</div>
@@ -103,7 +103,7 @@ exports[`DataTable Advanced HTML Snapshot 1`] = `
           <div class=\\"slds-truncate\\" title=\\"Prospecting\\">Prospecting</div>
         </td>
         <td role=\\"gridcell\\">
-          <div class=\\"slds-truncate\\" title=\\"60%\\">60%</div>
+          <div class=\\"slds-truncate\\" title=\\"30%\\">30%</div>
         </td>
         <td role=\\"gridcell\\">
           <div class=\\"slds-truncate\\" title=\\"$5,000,000\\">$5,000,000</div>
@@ -140,7 +140,7 @@ exports[`DataTable Advanced HTML Snapshot 1`] = `
           <div class=\\"slds-truncate\\" title=\\"Id. Decision Makers\\">Id. Decision Makers</div>
         </td>
         <td role=\\"gridcell\\">
-          <div class=\\"slds-truncate\\" title=\\"70%\\">70%</div>
+          <div class=\\"slds-truncate\\" title=\\"60%\\">60%</div>
         </td>
         <td role=\\"gridcell\\">
           <div class=\\"slds-truncate\\" title=\\"$25,000\\">$25,000</div>

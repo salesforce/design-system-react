@@ -265,10 +265,10 @@ describe('DataTable: ', function () {
 	describe('Sortable', function () {
 		afterEach(removeTable);
 
-		it('calls onSort when a sortable column is clicked', function (done) {
+		it('first clicked on sortable column header should result in ascending sort', function (done) {
 			this.onSort = (data) => {
 				data.property.should.equal('count');
-				data.sortDirection.should.equal('desc');
+				data.sortDirection.should.equal('asc');
 				done();
 			};
 

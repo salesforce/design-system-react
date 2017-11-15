@@ -93,6 +93,7 @@ describe('SLDSFilter', function () {
 			const demoPopover = (<DemoComponent
 				className="custom-filter-popover"
 				isOpen
+				position="absolute"
 			/>);
 			wrapper = mount(<IconSettings iconPath="/assets/icons">
 				<Filter

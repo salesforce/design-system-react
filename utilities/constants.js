@@ -1,4 +1,8 @@
 // ## Components
+export const ACCORDION = 'SLDSAccordion';
+export const ACCORDION_PANEL = 'SLDSAccordionPanel';
+export const ALERT = 'SLDSAlert';
+export const ALERT_CONTAINER = 'SLDSAlertContainer';
 export const APP_LAUNCHER = 'SLDSAppLauncher';
 export const APP_LAUNCHER_SECTION = 'SLDSAppLauncherSection';
 export const APP_LAUNCHER_TILE = 'SLDSAppLauncherTile';
@@ -11,7 +15,7 @@ export const BREADCRUMB = 'SLDSBreadcrumb';
 export const BUTTON = 'SLDSButton';
 export const BUTTON_GROUP = 'SLDSButtonGroup';
 export const BUTTON_STATEFUL = 'SLDSButtonStateful';
-export const BUTTON_ICON = 'SLDSButtonIcon';	// a non-interctive icon wrapper for SLDSUtilityIcon
+export const BUTTON_ICON = 'SLDSButtonIcon'; // a non-interctive icon wrapper for SLDSUtilityIcon
 export const CARD = 'SLDSCard';
 export const CARD_BODY = 'SLDSCardBody';
 export const CARD_EMPTY = 'SLDSCardEmpty';
@@ -82,6 +86,8 @@ export const TABS = 'SLDSTabs';
 export const TABS_LIST = 'SLDSTabsList';
 export const TABS_PANEL = 'SLDSTabsPanel';
 export const TIME_PICKER = 'SLDSTimepicker';
+export const TOAST = 'SLDSToast';
+export const TOAST_CONTAINER = 'SLDSToastContainer';
 export const TREE = 'SLDSTree';
 export const TREE_BRANCH = 'SLDSTreeBranch';
 export const TREE_ITEM = 'SLDSTreeItem';

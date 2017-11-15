@@ -12,6 +12,8 @@ import Timepicker from '../../components/time-picker';
 import Datepicker from '../../components/date-picker';
 import Button from '../../components/button';
 
+import ComboboxBase from '../combobox/base';
+
 import ModalCustomParentNode from './modal-custom-parent-node';
 
 
@@ -43,41 +45,6 @@ const modalContent = (
 			</div>
 		</div>
 
-		{/*
-		*/}
-		<Lookup
-			className="slds-m-bottom--large"
-			emptyMessage="No Accounts Found"
-			hasError={false}
-			iconName="account"
-			label="Account Name"
-			onChange={action('change')}
-			onSelect={action('selected')}
-			options={[
-				{ label: 'Paddy\'s Pub' },
-				{ label: 'Tyrell Corp' },
-				{ label: 'Paper St. Soap Company' },
-				{ label: 'Nakatomi Investments' },
-				{ label: 'Acme Landscaping' },
-				{ label: 'Acme Construction' }
-			]}
-		/>
-
-		<MenuPicklist
-			className="slds-m-bottom--large"
-			label="Lead Source"
-			onSelect={(option) => { action('selected: ', option.label); }}
-			options={[
-				{ label: 'Third Party Program', value: 'A0' },
-				{ label: 'Cold Call', value: 'B0' },
-				{ label: 'LinkedIn', value: 'C0' },
-				{ label: 'Direct Mail', value: 'D0' },
-				{ label: 'Other', value: 'E0' }
-			]}
-			placeholder="Select Lead Source"
-			value="B0"
-		/>
-
 		<div className="slds-form-element slds-m-vertical--large">
 			<label className="slds-form-element__label" htmlFor="amount">Amount</label>
 			<div className="slds-form-element__control">
@@ -95,6 +62,25 @@ const modalContent = (
 				onDateChange={() => { action('date is selected'); }}
 			/>
 		</div>
+
+		<div className="slds-form-element slds-m-bottom--large">
+			<ComboboxBase />
+		</div>
+
+		<MenuPicklist
+			className="slds-m-bottom--large"
+			label="Lead Source"
+			onSelect={(option) => { action('selected: ', option.label); }}
+			options={[
+				{ label: 'Third Party Program', value: 'A0' },
+				{ label: 'Cold Call', value: 'B0' },
+				{ label: 'LinkedIn', value: 'C0' },
+				{ label: 'Direct Mail', value: 'D0' },
+				{ label: 'Other', value: 'E0' }
+			]}
+			placeholder="Select Lead Source"
+			value="B0"
+		/>
 
 		<div className="slds-m-bottom--large">
 			<Timepicker
