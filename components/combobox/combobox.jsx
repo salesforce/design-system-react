@@ -116,6 +116,15 @@ const propTypes = {
 	 */
 	isOpen: PropTypes.bool,
 	/**
+	 * Accepts a custom menu item rendering function that becomes a custom component. The checkmark is still rendered in readonly variants. This function is passed the following props:
+	 * * `assistiveText`: Object, `assistiveText` prop that is passed into Combobox
+	 * * `option`: Object, option data for item being rendered that is passed into Combobox
+	 * * `selected`: Boolean, allows rendering of `assistiveText.optionSelectedInMenu` in Readonly Combobox
+	 *
+	 * _Tested with snapshot testing._
+	 */
+	menuItem: PropTypes.func,
+	/**
 	 * Please select one of the following:
 	 * * `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
 	 * * `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.
@@ -375,6 +384,7 @@ class Combobox extends React.Component {
 					? this.props.readOnlyMenuItemVisibleLength
 					: null}
 				labels={labels}
+				menuItem={this.props.menuItem}
 				options={this.props.options}
 				onSelect={this.handleSelect}
 				clearActiveOption={this.clearActiveOption}

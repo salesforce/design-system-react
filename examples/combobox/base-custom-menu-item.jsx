@@ -12,7 +12,7 @@ const accounts = [
 	{ id: '4', label: 'Tyrell Corp', subTitle: 'Account • San Francisco, CA', type: 'account' },
 	{ id: '5', label: 'Paper St. Soap Company', subTitle: 'Account • Beloit, WI', type: 'account' },
 	{ id: '6', label: 'Nakatomi Investments', subTitle: 'Account • Chicago, IL', type: 'account' },
-	{ id: '7', label: 'Acme Landscaping', subTitle: '\u00A0', type: 'account' },
+	{ id: '7', label: 'Acme Landscaping', type: 'account' },
 	{ id: '8', label: 'Acme Construction', subTitle: 'Account • Grand Marais, MN', type: 'account' }
 ];
 
@@ -20,9 +20,20 @@ const accountsWithIcon = accounts.map((elem) => Object.assign(elem, {
 	icon: <Icon
 		assistiveText="Account"
 		category="standard"
+		size="x-small"
 		name={elem.type}
 	/> })
 );
+
+const CustomMenuItem = (props) => (<span>
+	<span
+		className="slds-listbox__option-text slds-listbox__option-text_entity"
+	>{props.option.label}</span>
+	<span
+		className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+	>{props.option.subTitle || '\u00A0'}</span>
+</span>);
+CustomMenuItem.displayName = 'CustomMenuItem';
 
 class Example extends React.Component {
 	constructor (props) {
@@ -30,7 +41,7 @@ class Example extends React.Component {
 
 		this.state = {
 			inputValue: '',
-			selection: [accountsWithIcon[0], accountsWithIcon[1]]
+			selection: []
 		};
 	}
 
@@ -87,15 +98,16 @@ class Example extends React.Component {
 						label: 'Search',
 						placeholder: 'Search Salesforce'
 					}}
+					menuItem={CustomMenuItem}
 					multiple
 					options={comboboxFilterAndLimit({
 						inputValue: this.state.inputValue,
-						limit: 10,
 						options: accountsWithIcon,
 						selection: this.state.selection
 					})}
 					selection={this.state.selection}
 					value={this.state.inputValue}
+					{...this.props}
 				/>
 			</IconSettings>
 		);
