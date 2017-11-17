@@ -27,7 +27,7 @@
     "publish-to-upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
     "release-patch": "./node_modules/.bin/babel-node scripts/release.js --release=patch",
     "release-minor": "./node_modules/.bin/babel-node scripts/release.js --release=minor",
-    "snapshot-test": "jest",
+    "snapshot-test": "./node_modules/.bin/jest",
     "start": "./node_modules/.bin/start-storybook -p 9001 -s ./node_modules & node tests/app",
     "storybook": "start-storybook -p 9001 -s ./node_modules",
     "test": "scripts/test.sh",
@@ -39,7 +39,7 @@
     "url": "https://github.com/salesforce-ux/design-system-react"
   },
   "jest": {
-    "testRegex": "/tests/.*\\.snapshot-test\\.jsx?$",
+    "testRegex": "/components/.*\\.snapshot-test\\.jsx?$",
     "testEnvironment": "node"
   },
   "keywords": [
