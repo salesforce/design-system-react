@@ -204,18 +204,6 @@ class InlineEdit extends React.Component {
 			...rest
 		} = this.props;
 
-		const inlineEditTrigger = (
-			<Button
-				assistiveText={assistiveText}
-				className="slds-m-left_x-small"
-				disabled={disabled}
-				iconName="edit"
-				iconPosition="right"
-				iconSize="small"
-				variant="icon"
-			/>
-		);
-
 		return (
 			<Input
 				{...rest}
@@ -229,7 +217,15 @@ class InlineEdit extends React.Component {
 					/>
 					: null}
 				disabled={disabled}
-				inlineEditTrigger={inlineEditTrigger}
+				inlineEditTrigger={<Button
+					assistiveText={assistiveText}
+					className="slds-m-left_x-small"
+					disabled={disabled}
+					iconName="edit"
+					iconPosition="right"
+					iconSize="small"
+					variant="icon"
+				/>}
 				onBlur={this.handleBlur}
 				onChange={this.handleChange}
 				onClick={!this.state.isEditing ? this.triggerEditMode : null}

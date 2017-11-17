@@ -124,7 +124,7 @@ components.map((node) => {
 	return true;
 });
 
-const outputPath = path.join(__dirname, '../examples/component-docs.json');
+const outputPath = path.join(__dirname, '../components/component-docs.json');
 
 fs.writeFile(outputPath, JSON.stringify(output, null, 4), (err) => {
 	if (err) {
