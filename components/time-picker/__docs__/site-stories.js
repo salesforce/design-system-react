@@ -4,11 +4,7 @@
 /* eslint-disable global-require */
 
 const siteStories = [
-	require('raw-loader!design-system-react/components/__examples__/avatar/base.jsx'),
-	require('raw-loader!design-system-react/components/__examples__/avatar/user-initials.jsx'),
-	require('raw-loader!design-system-react/components/__examples__/avatar/user-icon.jsx'),
-	require('raw-loader!design-system-react/components/__examples__/avatar/entity-initials.jsx'),
-	require('raw-loader!design-system-react/components/__examples__/avatar/entity-icon.jsx')
+	require('raw-loader!design-system-react/components/time-picker/__examples__/default.jsx')
 ];
 
 module.exports = siteStories;

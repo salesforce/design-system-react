@@ -4,7 +4,7 @@
 /* eslint-disable global-require */
 
 const siteStories = [
-	require('raw-loader!design-system-react/examples/app-launcher/default.jsx')
+	require('raw-loader!design-system-react/components/app-launcher/__examples__/default.jsx')
 ];
 
 module.exports = siteStories;
