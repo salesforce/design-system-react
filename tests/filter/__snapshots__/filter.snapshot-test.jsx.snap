@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AssistiveText Filter 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSFilter
@@ -68,7 +68,7 @@ exports[`AssistiveText Filter 1`] = `
       variant="readonly"
     />
   </SLDSFilter>
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`AssistiveText Filter HTML Snapshot 1`] = `
@@ -80,7 +80,7 @@ exports[`AssistiveText Filter HTML Snapshot 1`] = `
 `;
 
 exports[`Error Filter Base Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSFilter
@@ -126,11 +126,11 @@ exports[`Error Filter Base Snapshot 1`] = `
       value="all-products"
     />
   </SLDSFilter>
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Filter Base Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSFilter
@@ -196,7 +196,7 @@ exports[`Filter Base Snapshot 1`] = `
       variant="readonly"
     />
   </SLDSFilter>
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Filter Base with custom className Snapshot 1`] = `
@@ -208,7 +208,7 @@ exports[`Filter Base with custom className Snapshot 1`] = `
 `;
 
 exports[`LockedFilter Base Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSFilter
@@ -254,11 +254,11 @@ exports[`LockedFilter Base Snapshot 1`] = `
       value="all-products"
     />
   </SLDSFilter>
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`NewFilter Base Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSFilter
@@ -304,11 +304,11 @@ exports[`NewFilter Base Snapshot 1`] = `
       value="all-products"
     />
   </SLDSFilter>
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Permanant Filter Base Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSFilter
@@ -354,5 +354,5 @@ exports[`Permanant Filter Base Snapshot 1`] = `
       value="all-products"
     />
   </SLDSFilter>
-</IconSettings>
+</SLDSIconSettings>
 `;

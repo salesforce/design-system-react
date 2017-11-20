@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Base DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSAccordion
@@ -149,7 +149,7 @@ exports[`Base DOM Snapshot 1`] = `
       Accordion details - C
     </SLDSAccordionPanel>
   </SLDSAccordion>
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Base HTML Snapshot 1`] = `
@@ -188,7 +188,7 @@ exports[`Base HTML Snapshot 1`] = `
 `;
 
 exports[`Base Open DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSAccordion
@@ -211,7 +211,7 @@ exports[`Base Open DOM Snapshot 1`] = `
       Accordion details - B
     </SLDSAccordionPanel>
   </SLDSAccordion>
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Base Open HTML Snapshot 1`] = `

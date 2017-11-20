@@ -24,7 +24,30 @@ open http://localhost:9001 http://localhost:8001
 ```
 ### SLDS Icons
 
-Prior to v0.7.0, SLDS icons were inlined and just worked. Now you will need to host the icons and set a path `context` for all child components with `<IconSettings>`:
+Prior to v0.7.0, SLDS icons were inlined and just worked. You now will need to specify where the icons are located.
+
+You can either:
+ - import the individual `sprite` files and assign them to the `<IconSettings>` sprite properties (recommended for webpack).
+
+```
+import IconSettings from 'design-system-react/components/icon-settings';
+
+import standardSprite from '@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg';
+import actionSprite from '@salesforce-ux/design-system/assets/icons/action-sprite/svg/symbols.svg';
+...
+...
+
+ReactDOM.render(
+	<IconSettings standardSprite={standardSprite} actionSprite={actionSprite}>
+		<MyApp />
+	</IconSettings>,
+	document.getElementById('app')
+	)
+```
+
+
+**OR**
+- host the icons and set a path `context` for all child components with `<IconSettings>`:
 
 ```
 import IconSettings from 'design-system-react/components/icon-settings';
@@ -42,6 +65,8 @@ ReactDOM.render(
 </svg>
 ```
 
+
+
 ### Example
 
 Add the following line to your `package.json` devDependencies and run `npm install`.
@@ -52,7 +77,7 @@ Add the following line to your `package.json` devDependencies and run `npm insta
 "design-system-react": "git+ssh://git@github.com:salesforce/design-system-react.git#v[VERSION]",
 ```
 
-The bundled files are provided only for convenience. 
+The bundled files are provided only for convenience.
 
 * `design-system-react.min.js` (700KB+) - includes icons in the JavaScript
 * `design-system-react-components.min.js` (~400KB) - no icons.

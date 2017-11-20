@@ -371,7 +371,7 @@ exports[`Button Group Checkbox Snapshot 1`] = `
 
 exports[`Button Group MoreIcon Snapshot 1`] = `
 <ButtonGroupExample>
-  <IconSettings
+  <SLDSIconSettings
     iconPath="/assets/icons"
   >
     <SLDSButtonGroup
@@ -605,6 +605,6 @@ exports[`Button Group MoreIcon Snapshot 1`] = `
         </OnClickOutside(SLDSMenuDropdown)>
       </div>
     </SLDSButtonGroup>
-  </IconSettings>
+  </SLDSIconSettings>
 </ButtonGroupExample>
 `;

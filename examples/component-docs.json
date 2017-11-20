@@ -2140,6 +2140,13 @@
                 "returns": null
             },
             {
+                "name": "getTargetElement",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "isSelected",
                 "docblock": null,
                 "modifiers": [],
@@ -2192,18 +2199,6 @@
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
-                "returns": null
-            },
-            {
-                "name": "getInlineMenu",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "{ menuRenderer }",
-                        "type": null
-                    }
-                ],
                 "returns": null
             },
             {
@@ -2417,6 +2412,18 @@
                 "returns": null
             },
             {
+                "name": "setInputRef",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "component",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "renderBase",
                 "docblock": "Combobox variant subrenders\n(these can probably be broken into function components\nif state is passed in as a prop)",
                 "modifiers": [],
@@ -2538,19 +2545,19 @@
                     "computed": false
                 }
             },
+            "hasStaticAlignment": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. This is the opposite of \"flippable.\""
+            },
             "id": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
                 "description": "HTML id for component. _Tested with snapshot testing._"
-            },
-            "isInline": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Renders menu within the wrapping trigger as a sibling of the input. By default, you will have an absolutely positioned container at an elevated z-index. _Tested with snapshot testing._"
             },
             "labels": {
                 "type": {
@@ -2577,6 +2584,31 @@
                 },
                 "required": false,
                 "description": "Accepts a custom menu item rendering function that becomes a custom component. The checkmark is still rendered in readonly variants. This function is passed the following props:\n* `assistiveText`: Object, `assistiveText` prop that is passed into Combobox\n* `option`: Object, option data for item being rendered that is passed into Combobox\n* `selected`: Boolean, allows rendering of `assistiveText.optionSelectedInMenu` in Readonly Combobox\n\n_Tested with snapshot testing._"
+            },
+            "menuPosition": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'absolute'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'overflowBoundaryElement'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'relative'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Please select one of the following:\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
+                "defaultValue": {
+                    "value": "'absolute'",
+                    "computed": false
+                }
             },
             "multiple": {
                 "type": {
@@ -3225,7 +3257,7 @@
         ]
     },
     "date-picker": {
-        "description": "A date picker is a non text input form element. You can select a single date from a popup or inline calendar. The date picker supplied by this library comes with an input by default, but other components could be passed in as children--however, pairing with other components is untested.\n\nThe calendar is rendered with time/dates based on local browser time of the client. All dates are in local user timezones. Another way to put it is if a user selects a date, they are selecting midnight their time on that day and not mightnight in UTC. If this component is being used in conjuction with a timezone input, you may want to convert dates provided to UTC in that timezone.\n\nThis component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.\n\nThis component may use a portalMount (a disconnected React subtree mount) within an absolutely positioned DOM node created with [Drop](http://github.hubspot.com/drop/).",
+        "description": "A date picker is a non text input form element. You can select a single date from a popup or inline calendar. The date picker supplied by this library comes with an input by default, but other components could be passed in as children--however, pairing with other components is untested.\n\nThe calendar is rendered with time/dates based on local browser time of the client. All dates are in local user timezones. Another way to put it is if a user selects a date, they are selecting midnight their time on that day and not mightnight in UTC. If this component is being used in conjuction with a timezone input, you may want to convert dates provided to UTC in that timezone.\n\nThis component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.",
         "methods": [
             {
                 "name": "getId",
@@ -3291,18 +3323,6 @@
                 "returns": null
             },
             {
-                "name": "getInlineMenu",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "{ labels, assistiveText }",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
                 "name": "handleClose",
                 "docblock": null,
                 "modifiers": [],
@@ -3313,7 +3333,16 @@
                 "name": "handleOpen",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ portal }",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
@@ -3359,6 +3388,18 @@
                 "params": [
                     {
                         "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "setInputRef",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "component",
                         "type": null
                     }
                 ],
@@ -3424,13 +3465,6 @@
                 "required": false,
                 "description": "CSS classes to be added to tag with `slds-datepicker`. If you are looking for the outer DOM node (slds-dropdown-trigger), please review `triggerClassName`. _Tested with snapshot testing._"
             },
-            "constrainToScrollParent": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "If true, constrains the menu to the scroll parent. Has no effect if `isInline` is `true`. _Not tested._"
-            },
             "disabled": {
                 "type": {
                     "name": "bool"
@@ -3481,13 +3515,6 @@
                 "required": false,
                 "description": "HTML id for component _Tested with snapshot testing._"
             },
-            "isInline": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Renders menu within the wrapping trigger as a sibling of the input. By default, you will have an absolutely positioned container at an elevated z-index."
-            },
             "labels": {
                 "type": {
                     "name": "custom",
@@ -3513,6 +3540,31 @@
                 },
                 "required": false,
                 "description": "Makes Monday the first day of the week. _Tested with snapshot testing._"
+            },
+            "menuPosition": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'absolute'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'overflowBoundaryElement'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'relative'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Please select one of the following:\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
+                "defaultValue": {
+                    "value": "'absolute'",
+                    "computed": false
+                }
             },
             "onCalendarFocus": {
                 "type": {
@@ -3566,13 +3618,6 @@
                     "value": "function(str) {\n    return new Date(str);\n}",
                     "computed": false
                 }
-            },
-            "portalMount": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Absolutely positioned DOM nodes, such as a datepicker dialog, may need their own React DOM tree root. They may need their alignment \"flipped\" if extended beyond the window or outside the bounds of an overflow-hidden scrolling modal. This library's portal mounts are added as a child node of `body`. This prop will be triggered instead of the default `ReactDOM.mount()` when this dialog is mounted. This prop is useful for testing and simliar to a \"callback ref.\" Two arguments,`reactElement` and `domContainerNode` are passed in. Consider the following code that bypasses the internal mount and uses an Enzyme wrapper to mount the React root tree to the DOM.\n\n```\n<Datepicker\n            isOpen\n            portalMount={(reactElement, domContainerNode) => {\n                portalWrapper = Enzyme.mount(reactElement, { attachTo: domContainerNode });\n            }}\n            onOpen={() => {\n                expect(portalWrapper.find(`#my-heading`)).to.exist;\n                done();\n            }}\n        />\n        ```\n_Tested with Mocha framework._"
             },
             "relativeYearFrom": {
                 "type": {
@@ -3810,6 +3855,58 @@
         "SLDS-component-path": "/components/icons",
         "dependencies": []
     },
+    "icon-settings": {
+        "description": "The Icon Settings component allows for the path to the icons to be specified.\nThis should be used at the root of the application.\n\n**Individual sprites**\nIf you are using webpack it is advised to use the sprite properties\n{actionSprite, standardSprite...} to specify the individual sprite paths so that webpack can\neasily re-write the paths.\n```\nimport actionSprite from '......';\n\n<IconSettings actionSprite={actionSprite} ......>\n```\n**Root icon path**\nOtherwise use the iconPath to specify the root path to where the icon files will be located in you application\nsuch as `/assets/icons`.",
+        "methods": [],
+        "props": {
+            "iconPath": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the root icon folder\nexample: `/assets/icons`"
+            },
+            "actionSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the action sprite\nexample: '@salesforce-ux/design-system/assets/icons/action-sprite/svg/symbols.svg';"
+            },
+            "customSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the custom sprite\nexample: '@salesforce-ux/design-system/assets/icons/custom-sprite/svg/symbols.svg';"
+            },
+            "doctypeSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the doctype sprite\nexample: '@salesforce-ux/design-system/assets/icons/doctype-sprite/svg/symbols.svg';"
+            },
+            "standardSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the standard sprite\nexample: '@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg';"
+            },
+            "utilitySprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the utility sprite\nexample: '@salesforce-ux/design-system/assets/icons/utility-sprite/svg/symbols.svg';"
+            }
+        },
+        "route": "icon-settings",
+        "display-name": "Icon Settings",
+        "SLDS-component-path": "/components/icons-settings",
+        "dependencies": []
+    },
     "filter": {
         "description": "A Filter is a popover with custom trigger. It can be used by [Panel Filtering](/components/panels/). Menus within a Filter Popover will need to not have \"portal mounts\" and be inline.",
         "methods": [
@@ -3923,7 +4020,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Contents of popover. That is the dropdowns and inputs that set the filter criteria. **Dropdowns, Picklists and other menus must use `isInline` to work properly within a Popover due to existence of portal mounts in menus that are not inline.**"
+                "description": "Contents of popover. That is the dropdowns and inputs that set the filter criteria."
             },
             "className": {
                 "type": {
@@ -5268,7 +5365,7 @@
                             "required": false,
                             "description": "Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px).",
                             "defaultValue": {
-                                "value": "'-12px -16px'",
+                                "value": "'12px 16px'",
                                 "computed": false
                             }
                         },
@@ -6072,7 +6169,7 @@
         "dependencies": []
     },
     "menu-dropdown": {
-        "description": "The MenuDropdown component is a variant of the Lightning Design System Menu component. This component\nmay require a polyfill such as [classList](https://github.com/yola/classlist-polyfill) due to\n[react-onclickoutside](https://github.com/Pomax/react-onclickoutside) if Internet Explorer 11\nsupport is needed.\n\nThis component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.\n\nThis component may use a portalMount (a disconnected React subtree mount) within an absolutely positioned DOM node created with [Drop](http://github.hubspot.com/drop/).",
+        "description": "The MenuDropdown component is a variant of the Lightning Design System Menu component. This component\nmay require a polyfill such as [classList](https://github.com/yola/classlist-polyfill) due to\n[react-onclickoutside](https://github.com/Pomax/react-onclickoutside) if Internet Explorer 11\nsupport is needed.\n\nThis component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.",
         "methods": [
             {
                 "name": "getId",
@@ -6679,13 +6776,6 @@
                 "required": false,
                 "description": "A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button."
             },
-            "isInline": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Renders menu within the wrapping trigger as a sibling of the button. By default, you will have an absolutely positioned container at an elevated z-index."
-            },
             "isOpen": {
                 "type": {
                     "name": "bool"
@@ -6739,6 +6829,31 @@
                 },
                 "required": false,
                 "description": "This prop is passed into the List for the menu. Pass null to make it the size of the content, or a string with an integer from here: https://www.lightningdesignsystem.com/components/menus/#flavor-dropdown-height"
+            },
+            "menuPosition": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'absolute'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'overflowBoundaryElement'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'relative'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Please select one of the following:\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
+                "defaultValue": {
+                    "value": "'absolute'",
+                    "computed": false
+                }
             },
             "menuStyle": {
                 "type": {
@@ -7003,13 +7118,6 @@
                             "required": false,
                             "description": "A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button. This is provided by the `MenuDropdown`. Please use `MenuDropdown` to set."
                         },
-                        "isInline": {
-                            "type": {
-                                "name": "bool"
-                            },
-                            "required": false,
-                            "description": "Renders menu within the wrapping trigger as a sibling of the button. By default, you will have an absolutely positioned container at an elevated z-index."
-                        },
                         "isOpen": {
                             "type": {
                                 "name": "bool"
@@ -7127,7 +7235,7 @@
         ]
     },
     "modal": {
-        "description": "The Modal component is used for the Lightning Design System Modal and Notification > Prompt components. The Modal opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop). For more details on the Prompt markup, please review the <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">Notifications > Prompt</a>.\n\nBy default, `Modal` will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```\n\nThis component uses a portalMount (a disconnected React subtree mount) to create a modal as a child of `body`.\nWhen dynamically generating a `Button` that will be used to toggle a `Modal`, you may see the parent page scroll down. If `parentSelector` points to the `Button`, the `Modal` will display, but will not be clickable. The `Modal` has been rendered inside the `Button` and its event listeners. To fix these issues, define a DOM element with an ID along with the `Button`. Set the `Modal`'s `parentSelector` to that DOM element's `id`.\n```\n<div id={`toggleButtonFor-${modalId}`} style={{zIndex: '2'}} />\n<Button onClick={this.toggleModal} />\n...\n<Modal parentSelector={() => document.querySelector(`#toggleButtonFor-${modalId}`)} />\n```",
+        "description": "The Modal component is used for the Lightning Design System Modal and Notification > Prompt components. The Modal opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop). For more details on the Prompt markup, please review the <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">Notifications > Prompt</a>.\n\nBy default, `Modal` will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```\nThis component uses a portalMount (a disconnected React subtree mount) to create a modal as a child of `body`.",
         "displayName": "Modal",
         "methods": [
             {
@@ -7859,7 +7967,7 @@
         ]
     },
     "popover": {
-        "description": "The Popover component is a non-modal dialog. It should be paired with a clickable trigger such as a `Button`. It traps focus from the page and must be exited if focus needs to be outside the Popover. Use a `Tooltip` if there are no call to actions within the dialog. A `Tooltip` does not need to be clicked.",
+        "description": "The Popover component is a non-modal dialog. It should be paired with a clickable trigger such as a `Button`. It traps focus from the page and must be exited if focus needs to be outside the Popover. Use a `Tooltip` if there are no call to actions within the dialog. A `Tooltip` does not need to be clicked. Multiple popovers open at the same time, each with focus trap is not supported.",
         "methods": [
             {
                 "name": "getId",
@@ -8022,6 +8130,18 @@
                 "returns": null
             },
             {
+                "name": "setMenuRef",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "component",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "renderDialog",
                 "docblock": null,
                 "modifiers": [],
@@ -8044,6 +8164,18 @@
                 "params": [
                     {
                         "name": "isOpen",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "setContainerRef",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "component",
                         "type": null
                     }
                 ],
@@ -8258,12 +8390,30 @@
                 "required": false,
                 "description": "This function is triggered when the user clicks outside the Popover or clicks the close button. You will want to define this if Popover is to be a controlled component. Most of the time you will want wnat to set `isOpen` to `false` when this is triggered unless you need to validate something."
             },
-            "portalMount": {
+            "position": {
                 "type": {
-                    "name": "func"
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'absolute'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'overflowBoundaryElement'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'relative'",
+                            "computed": false
+                        }
+                    ]
                 },
                 "required": false,
-                "description": "Absolutely positioned DOM nodes, such as a popover dialog, may need their own React DOM tree root. They may need their alignment \"flipped\" if extended beyond the window or outside the bounds of an overflow-hidden scrolling modal. This library's portal mounts are added as a child node of `body`. This prop will be triggered instead of the default `ReactDOM.mount()` when this dialog is mounted. This prop is useful for testing and simliar to a \"callback ref.\" Two arguments,`reactElement` and `domContainerNode` are passed in. Consider the following code that bypasses the internal mount and uses an Enzyme wrapper to mount the React root tree to the DOM.\n\n```\n<Popover\n                isOpen\n                portalMount={(reactElement, domContainerNode) => {\n                    portalWrapper = Enzyme.mount(reactElement, { attachTo: domContainerNode });\n                }}\n                onOpen={() => {\n                    expect(portalWrapper.find(`#my-heading`)).to.exist;\n                    done();\n                }}\n            />\n            ```"
+                "description": "Please select one of the following:\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
+                "defaultValue": {
+                    "value": "'absolute'",
+                    "computed": false
+                }
             },
             "style": {
                 "type": {
@@ -9151,6 +9301,18 @@
                 "modifiers": [],
                 "params": [],
                 "returns": null
+            },
+            {
+                "name": "saveTriggerRef",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "component",
+                        "type": null
+                    }
+                ],
+                "returns": null
             }
         ],
         "props": {
@@ -9233,12 +9395,12 @@
                     "computed": false
                 }
             },
-            "flippable": {
+            "hasStaticAlignment": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Constrains tooltip to window. If the tooltip is near the bottom, then it may appear about the trigger, despite the value of `align`."
+                "description": "By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. This is the opposite of \"flippable.\""
             },
             "hoverCloseDelay": {
                 "type": {
@@ -9282,6 +9444,31 @@
                 },
                 "required": false,
                 "description": "CSS classes to be added to tag with `slds-tooltip-trigger`."
+            },
+            "position": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'absolute'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'overflowBoundaryElement'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'relative'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Please select one of the following:\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
+                "defaultValue": {
+                    "value": "'absolute'",
+                    "computed": false
+                }
             },
             "triggerStyle": {
                 "type": {
@@ -9996,13 +10183,6 @@
                 "required": false,
                 "description": ""
             },
-            "isInline": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Renders menu within the wrapping trigger as a sibling of the button. By default, you will have an absolutely positioned container at an elevated z-index."
-            },
             "label": {
                 "type": {
                     "name": "string"
@@ -10016,6 +10196,31 @@
                 },
                 "required": false,
                 "description": "Custom element that overrides the default Menu Item component."
+            },
+            "menuPosition": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'absolute'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'overflowBoundaryElement'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'relative'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Please select one of the following:\n* `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.\n* `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.\n* `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.",
+                "defaultValue": {
+                    "value": "'absolute'",
+                    "computed": false
+                }
             },
             "onDateChange": {
                 "type": {

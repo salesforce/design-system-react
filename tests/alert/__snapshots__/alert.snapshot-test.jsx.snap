@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Alert Custom Class Name DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSAlertContainer
@@ -31,7 +31,7 @@ exports[`Alert Custom Class Name DOM Snapshot 1`] = `
       variant="info"
     />
   </SLDSAlertContainer>
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Alert Custom Class Name HTML Snapshot 1`] = `
@@ -43,7 +43,7 @@ exports[`Alert Custom Class Name HTML Snapshot 1`] = `
 `;
 
 exports[`Alert Dismissable DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSAlertContainer>
@@ -72,7 +72,7 @@ exports[`Alert Dismissable DOM Snapshot 1`] = `
       variant="info"
     />
   </SLDSAlertContainer>
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Alert Dismissable HTML Snapshot 1`] = `
@@ -83,7 +83,7 @@ exports[`Alert Dismissable HTML Snapshot 1`] = `
 `;
 
 exports[`Alert Error DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSAlertContainer>
@@ -110,7 +110,7 @@ exports[`Alert Error DOM Snapshot 1`] = `
       variant="error"
     />
   </SLDSAlertContainer>
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Alert Error HTML Snapshot 1`] = `
@@ -122,7 +122,7 @@ exports[`Alert Error HTML Snapshot 1`] = `
 `;
 
 exports[`Alert Info DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSAlertContainer>
@@ -149,7 +149,7 @@ exports[`Alert Info DOM Snapshot 1`] = `
       variant="info"
     />
   </SLDSAlertContainer>
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Alert Info HTML Snapshot 1`] = `
@@ -161,7 +161,7 @@ exports[`Alert Info HTML Snapshot 1`] = `
 `;
 
 exports[`Alert Offline DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSAlertContainer>
@@ -181,7 +181,7 @@ exports[`Alert Offline DOM Snapshot 1`] = `
       variant="offline"
     />
   </SLDSAlertContainer>
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Alert Offline HTML Snapshot 1`] = `
@@ -193,7 +193,7 @@ exports[`Alert Offline HTML Snapshot 1`] = `
 `;
 
 exports[`Alert Warning DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSAlertContainer>
@@ -213,7 +213,7 @@ exports[`Alert Warning DOM Snapshot 1`] = `
       variant="warning"
     />
   </SLDSAlertContainer>
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Alert Warning HTML Snapshot 1`] = `
