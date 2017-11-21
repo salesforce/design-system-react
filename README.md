@@ -10,6 +10,7 @@ Welcome to the project! :wave: This library is the [React](https://facebook.gith
 * [Documentation and examples](https://design-system-react.herokuapp.com/)
 * [Contributing](CONTRIBUTING.md)
 * [Codebase Overview](docs/codebase-overview.md)
+* [Webpack](docs/webpack.md)
 
 #### ECMAScript 6 and CommonJS modules
 
@@ -52,7 +53,7 @@ Add the following line to your `package.json` devDependencies and run `npm insta
 "design-system-react": "git+ssh://git@github.com:salesforce/design-system-react.git#v[VERSION]",
 ```
 
-The bundled files are provided only for convenience. 
+The bundled files are provided only for convenience.
 
 * `design-system-react.min.js` (700KB+) - includes icons in the JavaScript
 * `design-system-react-components.min.js` (~400KB) - no icons.
