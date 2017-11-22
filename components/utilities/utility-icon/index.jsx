@@ -39,8 +39,10 @@ const UtilityIcon = ({
 	let inlineData;
 
 	if (icon) {
+		// Use SVG data passed in with `icon` prop
 		inlineData = icon;
 	} else if (Object.keys(inlineIcons[category]).length) {
+		// Use inline icon data if it exists. ENV variables will have to set to allow this.
 		inlineData = inlineIcons[category][name.toLowerCase()];
 		inlineData.viewBox = inlineIcons[category].viewBox;
 	}
@@ -48,13 +50,13 @@ const UtilityIcon = ({
 	let modifiedPath;
 
 	if (path) {
-		// Use inline icons if the icon object is present
+		// Use `path` prop of Icon if present
 		modifiedPath = path;
 	} else if (context[`${category}Sprite`]) {
-		// Use specified sprite file from the icon settings
+		// Use category sprite file from IconSettings if present
 		modifiedPath = `${context[`${category}Sprite`]}#${name}`;
 	} else {
-		// Otherwise use external URLs for icons.
+		// Otherwise, use external URLs for icons
 		modifiedPath = context.iconPath && `${context.iconPath}/${category}-sprite/svg/symbols.svg#${name}`;
 	}
 

@@ -24,30 +24,11 @@ open http://localhost:9001 http://localhost:8001
 ```
 ### SLDS Icons
 
-Prior to v0.7.0, SLDS icons were inlined and just worked. You now will need to specify where the icons are located.
+Prior to v0.7.0, SLDS icons were bundled with the JavaScript. The 400KB+ icons bundle from [SLDS](https://www.lightningdesignsystem.com/) is no longer included. You will need to download the SLDS CSS and icons separately.
 
-You can either:
- - import the individual `sprite` files and assign them to the `<IconSettings>` sprite properties (recommended for webpack).
+#### Serve icons publically
 
-```
-import IconSettings from 'design-system-react/components/icon-settings';
-
-import standardSprite from '@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg';
-import actionSprite from '@salesforce-ux/design-system/assets/icons/action-sprite/svg/symbols.svg';
-...
-...
-
-ReactDOM.render(
-	<IconSettings standardSprite={standardSprite} actionSprite={actionSprite}>
-		<MyApp />
-	</IconSettings>,
-	document.getElementById('app')
-	)
-```
-
-
-**OR**
-- host the icons and set a path `context` for all child components with `<IconSettings>`:
+Typically, scripts should be downloaded in the background without blocking the DOM. With React, this works best with [server side rendering](https://reactjs.org/docs/react-dom-server.html#rendertostaticmarkup). SLDS recommends placeholder stencils while scripts are initializing if the HTML cannot be served immediately. If you can serve the HTML, then icon SVGs should not be bundled and served like any other file. Set a path `context` for all child components with `<IconSettings>` at the top of your render tree:
 
 ```
 import IconSettings from 'design-system-react/components/icon-settings';
@@ -59,13 +40,30 @@ ReactDOM.render(
 	document.getElementById('app')
 	)
 
-// `/assets/icons` wil be prepended to `/standard-sprite/svg/symbols.svg#account` within the SVG
+// `/assets/icons` wil be prepended to `/standard-sprite/svg/symbols.svg#account` within the SVG path
 <svg aria-hidden="true" class="slds-icon">
    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
 </svg>
 ```
 
+#### Bundle icons
 
+If you use a module bundler, like Webpack, you can import the individual `sprite` files and assign them to the `<IconSettings>` sprite properties. Your SVG images will be bundled with your scripts and block the DOM from rendering until the script file is loaded.
+
+```
+import IconSettings from 'design-system-react/components/icon-settings';
+
+import standardSprite from '@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg';
+...
+...
+
+ReactDOM.render(
+	<IconSettings standardSprite={standardSprite}>
+		<MyApp />
+	</IconSettings>,
+	document.getElementById('app')
+	)
+```
 
 ### Example
 
