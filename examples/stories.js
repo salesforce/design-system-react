@@ -22,6 +22,7 @@ export InlineInput from './forms/input/inline/stories';
 export Search from './forms/input/search/stories';
 export GlobalHeader from './global-header/stories';
 export Icon from './icon/stories';
+export IconSettings from './icon-settings/stories';
 export Lookup from './lookup/stories';
 export MediaObject from './media-object/stories';
 export Modal from './modal/stories';

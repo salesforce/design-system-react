@@ -73,7 +73,7 @@ exports[`Base Custom Menu Item Open HTML Snapshot 1`] = `
 `;
 
 exports[`Base Open DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSCombobox
@@ -131,7 +131,7 @@ exports[`Base Open DOM Snapshot 1`] = `
     value=""
     variant="base"
   />
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Base Open HTML Snapshot 1`] = `
@@ -160,7 +160,7 @@ exports[`Base Open HTML Snapshot 1`] = `
 `;
 
 exports[`Base Selected DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSCombobox
@@ -232,7 +232,7 @@ exports[`Base Selected DOM Snapshot 1`] = `
     value=""
     variant="base"
   />
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Base Selected HTML Snapshot 1`] = `
@@ -258,7 +258,7 @@ exports[`Base Selected HTML Snapshot 1`] = `
 `;
 
 exports[`Inline Multiple Selection DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <OnClickOutside(SLDSCombobox)
@@ -392,7 +392,7 @@ exports[`Inline Multiple Selection DOM Snapshot 1`] = `
     value=""
     variant="inline-listbox"
   />
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Inline Multiple Selection HTML Snapshot 1`] = `
@@ -409,7 +409,7 @@ exports[`Inline Multiple Selection HTML Snapshot 1`] = `
 `;
 
 exports[`Inline Multiple Selection Selected DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <OnClickOutside(SLDSCombobox)
@@ -546,7 +546,7 @@ exports[`Inline Multiple Selection Selected DOM Snapshot 1`] = `
     value=""
     variant="inline-listbox"
   />
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Inline Multiple Selection Selected HTML Snapshot 1`] = `
@@ -577,7 +577,7 @@ exports[`Inline Multiple Selection Selected HTML Snapshot 1`] = `
 `;
 
 exports[`Inline Single Selection DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <OnClickOutside(SLDSCombobox)
@@ -710,7 +710,7 @@ exports[`Inline Single Selection DOM Snapshot 1`] = `
     value=""
     variant="inline-listbox"
   />
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Inline Single Selection HTML Snapshot 1`] = `
@@ -727,7 +727,7 @@ exports[`Inline Single Selection HTML Snapshot 1`] = `
 `;
 
 exports[`Inline Single Selection Selected DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <OnClickOutside(SLDSCombobox)
@@ -863,7 +863,7 @@ exports[`Inline Single Selection Selected DOM Snapshot 1`] = `
     value=""
     variant="inline-listbox"
   />
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Inline Single Selection Selected HTML Snapshot 1`] = `
@@ -883,7 +883,7 @@ exports[`Inline Single Selection Selected HTML Snapshot 1`] = `
 `;
 
 exports[`Readonly Multiple Selection DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <OnClickOutside(SLDSCombobox)
@@ -967,7 +967,7 @@ exports[`Readonly Multiple Selection DOM Snapshot 1`] = `
     value=""
     variant="readonly"
   />
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Readonly Multiple Selection HTML Snapshot 1`] = `
@@ -986,7 +986,7 @@ exports[`Readonly Multiple Selection HTML Snapshot 1`] = `
 `;
 
 exports[`Readonly Multiple Selection Multiple Items Selected DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <OnClickOutside(SLDSCombobox)
@@ -1085,7 +1085,7 @@ exports[`Readonly Multiple Selection Multiple Items Selected DOM Snapshot 1`] = 
     value=""
     variant="readonly"
   />
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Readonly Multiple Selection Multiple Items Selected HTML Snapshot 1`] = `
@@ -1112,7 +1112,7 @@ exports[`Readonly Multiple Selection Multiple Items Selected HTML Snapshot 1`] =
 `;
 
 exports[`Readonly Multiple Selection Single Item Selected DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <OnClickOutside(SLDSCombobox)
@@ -1205,7 +1205,7 @@ exports[`Readonly Multiple Selection Single Item Selected DOM Snapshot 1`] = `
     value=""
     variant="readonly"
   />
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Readonly Multiple Selection Single Item Selected HTML Snapshot 1`] = `
@@ -1314,7 +1314,7 @@ exports[`Readonly Single Selection Custom Menu Item Open HTML Snapshot 1`] = `
 `;
 
 exports[`Readonly Single Selection DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <OnClickOutside(SLDSCombobox)
@@ -1396,7 +1396,7 @@ exports[`Readonly Single Selection DOM Snapshot 1`] = `
     value=""
     variant="readonly"
   />
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Readonly Single Selection HTML Snapshot 1`] = `
@@ -1415,7 +1415,7 @@ exports[`Readonly Single Selection HTML Snapshot 1`] = `
 `;
 
 exports[`Readonly Single Selection Selected DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <OnClickOutside(SLDSCombobox)
@@ -1506,7 +1506,7 @@ exports[`Readonly Single Selection Selected DOM Snapshot 1`] = `
     value=""
     variant="readonly"
   />
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Readonly Single Selection Selected HTML Snapshot 1`] = `
@@ -1525,7 +1525,7 @@ exports[`Readonly Single Selection Selected HTML Snapshot 1`] = `
 `;
 
 exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <OnClickOutside(SLDSCombobox)
@@ -1617,7 +1617,7 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
     value=""
     variant="readonly"
   />
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Readonly Single Selection Selected Open HTML Snapshot 1`] = `

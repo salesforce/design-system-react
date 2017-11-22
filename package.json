@@ -305,6 +305,12 @@
       "display-name": "Icons",
       "SLDS-component-path": "/components/icons"
     },
+	{
+	  "component": "icon-settings",
+	  "status": "prod",
+	  "display-name": "Icon Settings",
+	  "SLDS-component-path": "/components/icons-settings"
+	},
     {
       "component": "filter",
       "status": "prototype",

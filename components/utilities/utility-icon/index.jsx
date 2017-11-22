@@ -44,9 +44,19 @@ const UtilityIcon = ({
 		inlineData = inlineIcons[category][name.toLowerCase()];
 		inlineData.viewBox = inlineIcons[category].viewBox;
 	}
+	
+	let modifiedPath;
 
-	// Use inline icons if the icon object is present, otherwise use external URLs for icons.
-	const modifiedPath = path || (context.iconPath && `${context.iconPath}/${category}-sprite/svg/symbols.svg#${name}`);
+	if (path) {
+		// Use inline icons if the icon object is present
+		modifiedPath = path;
+	} else if (context[`${category}Sprite`]) {
+		// Use specified sprite file from the icon settings
+		modifiedPath = `${context[`${category}Sprite`]}#${name}`;
+	} else {
+		// Otherwise use external URLs for icons.
+		modifiedPath = context.iconPath && `${context.iconPath}/${category}-sprite/svg/symbols.svg#${name}`;
+	}
 
 	return inlineData
 		? (<Svg data={inlineData} name={name} {...rest} />)
@@ -79,7 +89,12 @@ UtilityIcon.defaultProps = {
 };
 
 UtilityIcon.contextTypes = {
-	iconPath: PropTypes.string
+	iconPath: PropTypes.string,
+	actionSprite: PropTypes.string,
+	customSprite: PropTypes.string,
+	doctypeSprite: PropTypes.string,
+	standardSprite: PropTypes.string,
+	utilitySprite: PropTypes.string
 };
 
 export default UtilityIcon;

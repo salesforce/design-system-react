@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Alert Custom Class Name DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSToastContainer
@@ -23,7 +23,7 @@ exports[`Alert Custom Class Name DOM Snapshot 1`] = `
       variant="info"
     />
   </SLDSToastContainer>
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Alert Custom Class Name HTML Snapshot 1`] = `
@@ -37,7 +37,7 @@ exports[`Alert Custom Class Name HTML Snapshot 1`] = `
 `;
 
 exports[`Alert Error DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSToastContainer>
@@ -55,7 +55,7 @@ exports[`Alert Error DOM Snapshot 1`] = `
       variant="error"
     />
   </SLDSToastContainer>
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Alert Error HTML Snapshot 1`] = `
@@ -69,7 +69,7 @@ exports[`Alert Error HTML Snapshot 1`] = `
 `;
 
 exports[`Alert Error With details DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSToastContainer>
@@ -88,7 +88,7 @@ exports[`Alert Error With details DOM Snapshot 1`] = `
       variant="error"
     />
   </SLDSToastContainer>
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Alert Error With details HTML Snapshot 1`] = `
@@ -103,7 +103,7 @@ exports[`Alert Error With details HTML Snapshot 1`] = `
 `;
 
 exports[`Alert Info DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSToastContainer>
@@ -123,7 +123,7 @@ exports[`Alert Info DOM Snapshot 1`] = `
       variant="info"
     />
   </SLDSToastContainer>
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Alert Info HTML Snapshot 1`] = `
@@ -137,7 +137,7 @@ exports[`Alert Info HTML Snapshot 1`] = `
 `;
 
 exports[`Alert Success DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSToastContainer>
@@ -163,7 +163,7 @@ exports[`Alert Success DOM Snapshot 1`] = `
       variant="success"
     />
   </SLDSToastContainer>
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Alert Success HTML Snapshot 1`] = `
@@ -177,7 +177,7 @@ exports[`Alert Success HTML Snapshot 1`] = `
 `;
 
 exports[`Alert Warning DOM Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSToastContainer>
@@ -195,7 +195,7 @@ exports[`Alert Warning DOM Snapshot 1`] = `
       variant="warning"
     />
   </SLDSToastContainer>
-</IconSettings>
+</SLDSIconSettings>
 `;
 
 exports[`Alert Warning HTML Snapshot 1`] = `
