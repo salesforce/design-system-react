@@ -1,12 +1,12 @@
 # Usage with Webpack
 
-Design System React has a peerDependency on [Lightning Design System (LDS)](https://github.com/salesforce-ux/design-system). `Design System React` has kept this as a peer dependency for giving flexibility for developers to choose the different versions of LDS.
+Design System React has a peerDependency on [Salesforce Lightning Design System (SLDS)](https://github.com/salesforce-ux/design-system). Design System React has kept this as a peer dependency for giving flexibility for developers to choose different versions of SLDS.
 
-If you are planning to use `Design System React` in a standalone application you need to bring in the stylesheets provided by `Lightning Design System (LDS)`.
+If you are planning to use Design System React in a standalone application you need to bring in the stylesheets provided by SLDS.
 
 ## Option 1: Include stylesheet directly
 
-The classic way to do this is [download](https://www.lightningdesignsystem.com/downloads) the LDS stylesheets and serve it up in your `public` static assets folder and include the stylesheet using
+The classic way to do this is [download](https://www.lightningdesignsystem.com/downloads) the SLDS stylesheets and serve it up in your `public` static assets folder and include the stylesheet:
 
 ```
 <link rel="stylesheet" href="your/public/assets/salesforce-lightning-design-system.min.css">
@@ -14,9 +14,9 @@ The classic way to do this is [download](https://www.lightningdesignsystem.com/d
 
 This has a disadvantage of maintaining the versions later.
 
-## Option 2: Import CSS using style-loader
+## Option 2: Import CSS using Webpack style-loader
 
-These are the relevant portions of the changes you will need to do in order to wire up `Design System React` in a standalone application.
+These are the relevant portions of the changes you will need to do in order to wire up Design System React in a standalone application.
 
 #### package.json
 
@@ -29,8 +29,8 @@ These are the relevant portions of the changes you will need to do in order to w
   },
  "devDependencies": {
     ...,
-    "@salesforce-ux/design-system": "^2.4.5",
-    "design-system-react": "git+ssh://git@github.com:salesforce/design-system-react.git#v0.7.3",
+    "@salesforce-ux/design-system": "^[VERSION]",
+    "design-system-react": "git+ssh://git@github.com:salesforce/design-system-react.git#v[VERSION]",
     "fs-extra": "^4.0.2",
     "style-loader": "^0.18.2",
     "webpack": "^3.8.1",
@@ -70,7 +70,7 @@ These are the relevant portions of the changes you will need to do in order to w
 
 #### postinstall.sh
 
-Create symlinks from node_modules to your public folder
+Create symlinks from `node_modules` to your public folder in order to serve static assets
 
 ```
 // Code to run post npm install
