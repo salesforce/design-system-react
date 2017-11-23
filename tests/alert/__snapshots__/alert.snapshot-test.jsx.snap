@@ -1,37 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Alert Custom Class Name DOM Snapshot 1`] = `
-<SLDSIconSettings
-  iconPath="/assets/icons"
+<div
+  className="slds-notify-container this-is-the-container"
 >
-  <SLDSAlertContainer
-    className="this-is-the-container"
+  <div
+    className="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_info this-is-the-alert"
+    role="alert"
   >
-    <SLDSAlert
-      assistiveText={
-        Object {
-          "closeButton": "Close",
-        }
-      }
-      className="this-is-the-alert"
-      icon={
-        <SLDSIcon
-          category="utility"
-          name="user"
-          size="medium"
+    <span
+      className="slds-assistive-text"
+    >
+      info
+    </span>
+    <span
+      className="slds-m-right--x-small"
+      title={undefined}
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon slds-icon--x-small"
+        style={undefined}
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#user"
         />
-      }
-      labels={
-        Object {
-          "heading": "Logged in as John Smith (johnsmith@acme.com).",
-          "headingLink": "Log out",
-        }
-      }
-      onClickHeadingLink={[Function]}
-      variant="info"
-    />
-  </SLDSAlertContainer>
-</SLDSIconSettings>
+      </svg>
+      
+    </span>
+    <h2>
+      Logged in as John Smith (johnsmith@acme.com).
+       
+      <a
+        href="javascript:void(0);"
+        onClick={[Function]}
+      >
+        Log out
+      </a>
+    </h2>
+  </div>
+</div>
 `;
 
 exports[`Alert Custom Class Name HTML Snapshot 1`] = `
@@ -43,36 +51,80 @@ exports[`Alert Custom Class Name HTML Snapshot 1`] = `
 `;
 
 exports[`Alert Dismissable DOM Snapshot 1`] = `
-<SLDSIconSettings
-  iconPath="/assets/icons"
+<div
+  className="slds-notify-container"
 >
-  <SLDSAlertContainer>
-    <SLDSAlert
-      assistiveText={
-        Object {
-          "closeButton": "Close",
-        }
-      }
-      dismissible={true}
-      icon={
-        <SLDSIcon
-          category="utility"
-          name="user"
-          size="medium"
+  <div
+    className="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_info"
+    role="alert"
+  >
+    <span
+      className="slds-assistive-text"
+    >
+      info
+    </span>
+    <span
+      className="slds-m-right--x-small"
+      title={undefined}
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon slds-icon--x-small"
+        style={undefined}
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#user"
         />
-      }
-      labels={
-        Object {
-          "heading": "Logged in as John Smith (johnsmith@acme.com).",
-          "headingLink": "Log out",
-        }
-      }
-      onClickHeadingLink={[Function]}
-      onRequestClose={[Function]}
-      variant="info"
-    />
-  </SLDSAlertContainer>
-</SLDSIconSettings>
+      </svg>
+      
+    </span>
+    <h2>
+      Logged in as John Smith (johnsmith@acme.com).
+       
+      <a
+        href="javascript:void(0);"
+        onClick={[Function]}
+      >
+        Log out
+      </a>
+    </h2>
+    <button
+      aria-controls={undefined}
+      aria-describedby={undefined}
+      aria-expanded={undefined}
+      aria-haspopup={undefined}
+      className="slds-button slds-button--icon-inverse slds-notify__close"
+      disabled={false}
+      id={undefined}
+      onBlur={undefined}
+      onClick={[Function]}
+      onFocus={undefined}
+      onKeyDown={undefined}
+      onKeyPress={undefined}
+      onKeyUp={undefined}
+      onMouseDown={undefined}
+      onMouseEnter={undefined}
+      onMouseLeave={undefined}
+      tabIndex={undefined}
+      title="Close"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Close
+      </span>
+    </button>
+  </div>
+</div>
 `;
 
 exports[`Alert Dismissable HTML Snapshot 1`] = `
@@ -83,34 +135,45 @@ exports[`Alert Dismissable HTML Snapshot 1`] = `
 `;
 
 exports[`Alert Error DOM Snapshot 1`] = `
-<SLDSIconSettings
-  iconPath="/assets/icons"
+<div
+  className="slds-notify-container"
 >
-  <SLDSAlertContainer>
-    <SLDSAlert
-      assistiveText={
-        Object {
-          "closeButton": "Close",
-        }
-      }
-      icon={
-        <SLDSIcon
-          category="utility"
-          name="ban"
-          size="medium"
+  <div
+    className="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error"
+    role="alert"
+  >
+    <span
+      className="slds-assistive-text"
+    >
+      error
+    </span>
+    <span
+      className="slds-m-right--x-small"
+      title={undefined}
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon slds-icon--x-small"
+        style={undefined}
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
         />
-      }
-      labels={
-        Object {
-          "heading": "Your browser is currently not supported. Your Salesforce may be degraded.",
-          "headingLink": "More Information",
-        }
-      }
-      onClickHeadingLink={[Function]}
-      variant="error"
-    />
-  </SLDSAlertContainer>
-</SLDSIconSettings>
+      </svg>
+      
+    </span>
+    <h2>
+      Your browser is currently not supported. Your Salesforce may be degraded.
+       
+      <a
+        href="javascript:void(0);"
+        onClick={[Function]}
+      >
+        More Information
+      </a>
+    </h2>
+  </div>
+</div>
 `;
 
 exports[`Alert Error HTML Snapshot 1`] = `
@@ -122,34 +185,45 @@ exports[`Alert Error HTML Snapshot 1`] = `
 `;
 
 exports[`Alert Info DOM Snapshot 1`] = `
-<SLDSIconSettings
-  iconPath="/assets/icons"
+<div
+  className="slds-notify-container"
 >
-  <SLDSAlertContainer>
-    <SLDSAlert
-      assistiveText={
-        Object {
-          "closeButton": "Close",
-        }
-      }
-      icon={
-        <SLDSIcon
-          category="utility"
-          name="user"
-          size="medium"
+  <div
+    className="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_info"
+    role="alert"
+  >
+    <span
+      className="slds-assistive-text"
+    >
+      info
+    </span>
+    <span
+      className="slds-m-right--x-small"
+      title={undefined}
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon slds-icon--x-small"
+        style={undefined}
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#user"
         />
-      }
-      labels={
-        Object {
-          "heading": "Logged in as John Smith (johnsmith@acme.com).",
-          "headingLink": "Log out",
-        }
-      }
-      onClickHeadingLink={[Function]}
-      variant="info"
-    />
-  </SLDSAlertContainer>
-</SLDSIconSettings>
+      </svg>
+      
+    </span>
+    <h2>
+      Logged in as John Smith (johnsmith@acme.com).
+       
+      <a
+        href="javascript:void(0);"
+        onClick={[Function]}
+      >
+        Log out
+      </a>
+    </h2>
+  </div>
+</div>
 `;
 
 exports[`Alert Info HTML Snapshot 1`] = `
@@ -161,27 +235,45 @@ exports[`Alert Info HTML Snapshot 1`] = `
 `;
 
 exports[`Alert Offline DOM Snapshot 1`] = `
-<SLDSIconSettings
-  iconPath="/assets/icons"
+<div
+  className="slds-notify-container"
 >
-  <SLDSAlertContainer>
-    <SLDSAlert
-      assistiveText={
-        Object {
-          "closeButton": "Close",
-        }
-      }
-      labels={
-        Object {
-          "heading": "You are in offline mode.",
-          "headingLink": "More information",
-        }
-      }
-      onClickHeadingLink={[Function]}
-      variant="offline"
-    />
-  </SLDSAlertContainer>
-</SLDSIconSettings>
+  <div
+    className="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_offline"
+    role="alert"
+  >
+    <span
+      className="slds-assistive-text"
+    >
+      offline
+    </span>
+    <span
+      className="slds-m-right--x-small"
+      title={undefined}
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon slds-icon--x-small"
+        style={undefined}
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#offline"
+        />
+      </svg>
+      
+    </span>
+    <h2>
+      You are in offline mode.
+       
+      <a
+        href="javascript:void(0);"
+        onClick={[Function]}
+      >
+        More information
+      </a>
+    </h2>
+  </div>
+</div>
 `;
 
 exports[`Alert Offline HTML Snapshot 1`] = `
@@ -193,27 +285,45 @@ exports[`Alert Offline HTML Snapshot 1`] = `
 `;
 
 exports[`Alert Warning DOM Snapshot 1`] = `
-<SLDSIconSettings
-  iconPath="/assets/icons"
+<div
+  className="slds-notify-container"
 >
-  <SLDSAlertContainer>
-    <SLDSAlert
-      assistiveText={
-        Object {
-          "closeButton": "Close",
-        }
-      }
-      labels={
-        Object {
-          "heading": "Your browser is outdated. Your Salesforce experience may be degraded.",
-          "headingLink": "More Information",
-        }
-      }
-      onClickHeadingLink={[Function]}
-      variant="warning"
-    />
-  </SLDSAlertContainer>
-</SLDSIconSettings>
+  <div
+    className="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_warning"
+    role="alert"
+  >
+    <span
+      className="slds-assistive-text"
+    >
+      warning
+    </span>
+    <span
+      className="slds-m-right--x-small"
+      title={undefined}
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon slds-icon--x-small"
+        style={undefined}
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+        />
+      </svg>
+      
+    </span>
+    <h2>
+      Your browser is outdated. Your Salesforce experience may be degraded.
+       
+      <a
+        href="javascript:void(0);"
+        onClick={[Function]}
+      >
+        More Information
+      </a>
+    </h2>
+  </div>
+</div>
 `;
 
 exports[`Alert Warning HTML Snapshot 1`] = `
