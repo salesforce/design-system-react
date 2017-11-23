@@ -49,7 +49,7 @@ const calculateD = (fillPercent) => {
 };
 
 /**
- * Progress Indicator is a component that communicates to the user the progress of a particular process.
+ * Displays the progress ring shape.
  */
 const ProgressRingShape = (props) => (
 	<div id={props.id} className={classNames(props.className, 'slds-progress-ring')}>
