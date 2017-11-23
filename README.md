@@ -10,6 +10,7 @@ Welcome to the project! :wave: This library is the [React](https://facebook.gith
 * [Documentation and examples](https://design-system-react.herokuapp.com/)
 * [Contributing](CONTRIBUTING.md)
 * [Codebase Overview](docs/codebase-overview.md)
+* [Webpack](docs/webpack.md)
 
 #### ECMAScript 6 and CommonJS modules
 
