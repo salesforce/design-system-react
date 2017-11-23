@@ -40,7 +40,7 @@ exports[`Panel Filtering Default HTML Snapshot 1`] = `
 `;
 
 exports[`Panel Filtering Default Snapshot 1`] = `
-<IconSettings
+<SLDSIconSettings
   iconPath="/assets/icons"
 >
   <SLDSPanel
@@ -198,5 +198,5 @@ exports[`Panel Filtering Default Snapshot 1`] = `
       </SLDSFilterList>
     </SLDSFilterGroup>
   </SLDSPanel>
-</IconSettings>
+</SLDSIconSettings>
 `;

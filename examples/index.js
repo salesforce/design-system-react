@@ -75,6 +75,10 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!design-system-react/examples/icon/colors.jsx'),
 		require('raw-loader!design-system-react/examples/icon/sizes.jsx')
 	],
+	'icon-settings': [
+		require('raw-loader!design-system-react/examples/icon-settings/iconPath.jsx'),
+		require('raw-loader!design-system-react/examples/icon-settings/sprite.jsx')
+	],
 	'forms-input-inline': [
 		require('raw-loader!design-system-react/examples/forms/input/inline/default.jsx')
 	],
