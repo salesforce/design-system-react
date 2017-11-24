@@ -313,10 +313,10 @@ class Datepicker extends React.Component {
 
 		if (this.getIsOpen()) {
 			this.setState({ isOpen: false });
-		}
-
-		if (this.inputRef) {
-			this.inputRef.focus();
+			
+			if (this.inputRef) {
+				this.inputRef.focus();
+			}
 		}
 	}
 
