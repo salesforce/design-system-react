@@ -48,11 +48,13 @@ import keyboardNavigableDialog from '../../utilities/keyboard-navigable-dialog';
 import KEYS from '../../utilities/key-code';
 import { POPOVER } from '../../utilities/constants';
 
+const documentDefined = typeof (document) !== 'undefined';
+
 // The overlay is an optional way to allow the popover to close on outside
 // clicks even when those clicks are over areas that wouldn't normally fire
 // click or touch events (for example, iframes). A single overlay is shared
 // between all popovers in the app.
-const overlay = document.createElement('span');
+const overlay = documentDefined ? document.createElement('span') : { style: {} };
 overlay.style.top = 0;
 overlay.style.left = 0;
 overlay.style.width = '100%';
@@ -465,9 +467,9 @@ const Popover = createReactClass({
 	},
 
 	renderOverlay (isOpen) {
-		if (isFunction(overlay)) {
+		if (isFunction(overlay) && documentDefined) {
 			overlay(isOpen, overlay);
-		} else if (this.props.overlay && isOpen && !this.overlay) {
+		} else if (this.props.overlay && isOpen && !this.overlay && documentDefined) {
 			this.overlay = overlay;
 			document.querySelector('body').appendChild(this.overlay);
 		} else if (!isOpen && this.overlay && this.overlay.parentNode) {

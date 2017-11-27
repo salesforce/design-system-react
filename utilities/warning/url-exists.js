@@ -17,7 +17,7 @@ if (process.env.NODE_ENV !== 'production') {
 	urlExists = function (control, url, comment) {
 		if (!hasExecuted
 			&& !hasWarned[`${control}-path`]
-			&& window
+			&& typeof (window) !== 'undefined'
 			&& XMLHttpRequest
 			&& process.env.NODE_ENV !== 'test') {
 			const http = new XMLHttpRequest();

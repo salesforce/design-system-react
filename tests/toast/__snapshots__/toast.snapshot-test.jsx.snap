@@ -1,32 +1,89 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Alert Custom Class Name DOM Snapshot 1`] = `
-<SLDSIconSettings
-  iconPath="/assets/icons"
+exports[`Toast Custom Class Name DOM Snapshot 1`] = `
+<div
+  className="slds-notify-container this-is-the-container"
 >
-  <SLDSToastContainer
-    className="this-is-the-container"
+  <div
+    className="slds-notify slds-notify_toast slds-theme_info this-is-the-alert"
+    role="alert"
   >
-    <SLDSToast
-      assistiveText={
-        Object {
-          "closeButton": "Close",
-        }
-      }
-      className="this-is-the-alert"
-      labels={
-        Object {
-          "heading": "26 potential duplicate leads were found.",
-          "headingLink": "Select Leads to Merge",
-        }
-      }
-      variant="info"
-    />
-  </SLDSToastContainer>
-</SLDSIconSettings>
+    <span
+      className="slds-assistive-text"
+    >
+      info
+    </span>
+    <span
+      className="slds-m-right_small slds-no-flex slds-align-top"
+      title={undefined}
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon slds-icon--small"
+        style={undefined}
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+        />
+      </svg>
+      
+    </span>
+    <div
+      className="slds-notify__content"
+    >
+      <h2
+        className="slds-text-heading_small"
+      >
+        26 potential duplicate leads were found.
+         
+        <a
+          href="javascript:void(0);"
+          onClick={undefined}
+        >
+          Select Leads to Merge
+        </a>
+      </h2>
+    </div>
+    <button
+      aria-controls={undefined}
+      aria-describedby={undefined}
+      aria-expanded={undefined}
+      aria-haspopup={undefined}
+      className="slds-button slds-button--icon-inverse slds-notify__close"
+      disabled={false}
+      id={undefined}
+      onBlur={undefined}
+      onClick={[Function]}
+      onFocus={undefined}
+      onKeyDown={undefined}
+      onKeyPress={undefined}
+      onKeyUp={undefined}
+      onMouseDown={undefined}
+      onMouseEnter={undefined}
+      onMouseLeave={undefined}
+      tabIndex={undefined}
+      title="Close"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon slds-button__icon--large"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Close
+      </span>
+    </button>
+  </div>
+</div>
 `;
 
-exports[`Alert Custom Class Name HTML Snapshot 1`] = `
+exports[`Toast Custom Class Name HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container this-is-the-container\\">
   <div class=\\"slds-notify slds-notify_toast slds-theme_info this-is-the-alert\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">info</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#info\\"></use></svg></span>
     <div
@@ -36,29 +93,84 @@ exports[`Alert Custom Class Name HTML Snapshot 1`] = `
 </div>"
 `;
 
-exports[`Alert Error DOM Snapshot 1`] = `
-<SLDSIconSettings
-  iconPath="/assets/icons"
+exports[`Toast Error DOM Snapshot 1`] = `
+<div
+  className="slds-notify-container"
 >
-  <SLDSToastContainer>
-    <SLDSToast
-      assistiveText={
-        Object {
-          "closeButton": "Close",
-        }
-      }
-      labels={
-        Object {
-          "heading": "Can’t save lead “Sally Wong” because another lead has the same name.",
-        }
-      }
-      variant="error"
-    />
-  </SLDSToastContainer>
-</SLDSIconSettings>
+  <div
+    className="slds-notify slds-notify_toast slds-theme_error"
+    role="alert"
+  >
+    <span
+      className="slds-assistive-text"
+    >
+      error
+    </span>
+    <span
+      className="slds-m-right_small slds-no-flex slds-align-top"
+      title={undefined}
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon slds-icon--small"
+        style={undefined}
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
+        />
+      </svg>
+      
+    </span>
+    <div
+      className="slds-notify__content"
+    >
+      <h2
+        className="slds-text-heading_small"
+      >
+        Can’t save lead “Sally Wong” because another lead has the same name.
+         
+      </h2>
+    </div>
+    <button
+      aria-controls={undefined}
+      aria-describedby={undefined}
+      aria-expanded={undefined}
+      aria-haspopup={undefined}
+      className="slds-button slds-button--icon-inverse slds-notify__close"
+      disabled={false}
+      id={undefined}
+      onBlur={undefined}
+      onClick={[Function]}
+      onFocus={undefined}
+      onKeyDown={undefined}
+      onKeyPress={undefined}
+      onKeyUp={undefined}
+      onMouseDown={undefined}
+      onMouseEnter={undefined}
+      onMouseLeave={undefined}
+      tabIndex={undefined}
+      title="Close"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon slds-button__icon--large"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Close
+      </span>
+    </button>
+  </div>
+</div>
 `;
 
-exports[`Alert Error HTML Snapshot 1`] = `
+exports[`Toast Error HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container\\">
   <div class=\\"slds-notify slds-notify_toast slds-theme_error\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">error</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#error\\"></use></svg></span>
     <div
@@ -68,30 +180,87 @@ exports[`Alert Error HTML Snapshot 1`] = `
 </div>"
 `;
 
-exports[`Alert Error With details DOM Snapshot 1`] = `
-<SLDSIconSettings
-  iconPath="/assets/icons"
+exports[`Toast Error With details DOM Snapshot 1`] = `
+<div
+  className="slds-notify-container"
 >
-  <SLDSToastContainer>
-    <SLDSToast
-      assistiveText={
-        Object {
-          "closeButton": "Close",
-        }
-      }
-      labels={
-        Object {
-          "details": "Here's some detail of what happened, being very descriptive and transparent.",
-          "heading": "You've encountered some errors when trying to save edits to Samuel Smith.",
-        }
-      }
-      variant="error"
-    />
-  </SLDSToastContainer>
-</SLDSIconSettings>
+  <div
+    className="slds-notify slds-notify_toast slds-theme_error"
+    role="alert"
+  >
+    <span
+      className="slds-assistive-text"
+    >
+      error
+    </span>
+    <span
+      className="slds-m-right_small slds-no-flex slds-align-top"
+      title={undefined}
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon slds-icon--small"
+        style={undefined}
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
+        />
+      </svg>
+      
+    </span>
+    <div
+      className="slds-notify__content"
+    >
+      <h2
+        className="slds-text-heading_small"
+      >
+        You've encountered some errors when trying to save edits to Samuel Smith.
+         
+      </h2>
+      <p>
+        Here's some detail of what happened, being very descriptive and transparent.
+      </p>
+    </div>
+    <button
+      aria-controls={undefined}
+      aria-describedby={undefined}
+      aria-expanded={undefined}
+      aria-haspopup={undefined}
+      className="slds-button slds-button--icon-inverse slds-notify__close"
+      disabled={false}
+      id={undefined}
+      onBlur={undefined}
+      onClick={[Function]}
+      onFocus={undefined}
+      onKeyDown={undefined}
+      onKeyPress={undefined}
+      onKeyUp={undefined}
+      onMouseDown={undefined}
+      onMouseEnter={undefined}
+      onMouseLeave={undefined}
+      tabIndex={undefined}
+      title="Close"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon slds-button__icon--large"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Close
+      </span>
+    </button>
+  </div>
+</div>
 `;
 
-exports[`Alert Error With details HTML Snapshot 1`] = `
+exports[`Toast Error With details HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container\\">
   <div class=\\"slds-notify slds-notify_toast slds-theme_error\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">error</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#error\\"></use></svg></span>
     <div
@@ -102,31 +271,90 @@ exports[`Alert Error With details HTML Snapshot 1`] = `
 </div>"
 `;
 
-exports[`Alert Info DOM Snapshot 1`] = `
-<SLDSIconSettings
-  iconPath="/assets/icons"
+exports[`Toast Info DOM Snapshot 1`] = `
+<div
+  className="slds-notify-container"
 >
-  <SLDSToastContainer>
-    <SLDSToast
-      assistiveText={
-        Object {
-          "closeButton": "Close",
-        }
-      }
-      labels={
-        Object {
-          "heading": "26 potential duplicate leads were found.",
-          "headingLink": "Select Leads to Merge",
-        }
-      }
-      onClickHeadingLink={[Function]}
-      variant="info"
-    />
-  </SLDSToastContainer>
-</SLDSIconSettings>
+  <div
+    className="slds-notify slds-notify_toast slds-theme_info"
+    role="alert"
+  >
+    <span
+      className="slds-assistive-text"
+    >
+      info
+    </span>
+    <span
+      className="slds-m-right_small slds-no-flex slds-align-top"
+      title={undefined}
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon slds-icon--small"
+        style={undefined}
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+        />
+      </svg>
+      
+    </span>
+    <div
+      className="slds-notify__content"
+    >
+      <h2
+        className="slds-text-heading_small"
+      >
+        26 potential duplicate leads were found.
+         
+        <a
+          href="javascript:void(0);"
+          onClick={[Function]}
+        >
+          Select Leads to Merge
+        </a>
+      </h2>
+    </div>
+    <button
+      aria-controls={undefined}
+      aria-describedby={undefined}
+      aria-expanded={undefined}
+      aria-haspopup={undefined}
+      className="slds-button slds-button--icon-inverse slds-notify__close"
+      disabled={false}
+      id={undefined}
+      onBlur={undefined}
+      onClick={[Function]}
+      onFocus={undefined}
+      onKeyDown={undefined}
+      onKeyPress={undefined}
+      onKeyUp={undefined}
+      onMouseDown={undefined}
+      onMouseEnter={undefined}
+      onMouseLeave={undefined}
+      tabIndex={undefined}
+      title="Close"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon slds-button__icon--large"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Close
+      </span>
+    </button>
+  </div>
+</div>
 `;
 
-exports[`Alert Info HTML Snapshot 1`] = `
+exports[`Toast Info HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container\\">
   <div class=\\"slds-notify slds-notify_toast slds-theme_info\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">info</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#info\\"></use></svg></span>
     <div
@@ -136,37 +364,90 @@ exports[`Alert Info HTML Snapshot 1`] = `
 </div>"
 `;
 
-exports[`Alert Success DOM Snapshot 1`] = `
-<SLDSIconSettings
-  iconPath="/assets/icons"
+exports[`Toast Success DOM Snapshot 1`] = `
+<div
+  className="slds-notify-container"
 >
-  <SLDSToastContainer>
-    <SLDSToast
-      assistiveText={
-        Object {
-          "closeButton": "Close",
-        }
-      }
-      labels={
-        Object {
-          "heading": Array [
-            "Account ",
-            <a
-              href="javascript:void(0);"
-            >
-              ACME - 100
-            </a>,
-            " widgets was created.",
-          ],
-        }
-      }
-      variant="success"
-    />
-  </SLDSToastContainer>
-</SLDSIconSettings>
+  <div
+    className="slds-notify slds-notify_toast slds-theme_success"
+    role="alert"
+  >
+    <span
+      className="slds-assistive-text"
+    >
+      success
+    </span>
+    <span
+      className="slds-m-right_small slds-no-flex slds-align-top"
+      title={undefined}
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon slds-icon--small"
+        style={undefined}
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+        />
+      </svg>
+      
+    </span>
+    <div
+      className="slds-notify__content"
+    >
+      <h2
+        className="slds-text-heading_small"
+      >
+        Account 
+        <a
+          href="javascript:void(0);"
+        >
+          ACME - 100
+        </a>
+         widgets was created.
+         
+      </h2>
+    </div>
+    <button
+      aria-controls={undefined}
+      aria-describedby={undefined}
+      aria-expanded={undefined}
+      aria-haspopup={undefined}
+      className="slds-button slds-button--icon-inverse slds-notify__close"
+      disabled={false}
+      id={undefined}
+      onBlur={undefined}
+      onClick={[Function]}
+      onFocus={undefined}
+      onKeyDown={undefined}
+      onKeyPress={undefined}
+      onKeyUp={undefined}
+      onMouseDown={undefined}
+      onMouseEnter={undefined}
+      onMouseLeave={undefined}
+      tabIndex={undefined}
+      title="Close"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon slds-button__icon--large"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Close
+      </span>
+    </button>
+  </div>
+</div>
 `;
 
-exports[`Alert Success HTML Snapshot 1`] = `
+exports[`Toast Success HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container\\">
   <div class=\\"slds-notify slds-notify_toast slds-theme_success\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">success</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#success\\"></use></svg></span>
     <div
@@ -176,29 +457,84 @@ exports[`Alert Success HTML Snapshot 1`] = `
 </div>"
 `;
 
-exports[`Alert Warning DOM Snapshot 1`] = `
-<SLDSIconSettings
-  iconPath="/assets/icons"
+exports[`Toast Warning DOM Snapshot 1`] = `
+<div
+  className="slds-notify-container"
 >
-  <SLDSToastContainer>
-    <SLDSToast
-      assistiveText={
-        Object {
-          "closeButton": "Close",
-        }
-      }
-      labels={
-        Object {
-          "heading": "Can’t share file “report-q3.pdf” with the selected users.",
-        }
-      }
-      variant="warning"
-    />
-  </SLDSToastContainer>
-</SLDSIconSettings>
+  <div
+    className="slds-notify slds-notify_toast slds-theme_warning"
+    role="alert"
+  >
+    <span
+      className="slds-assistive-text"
+    >
+      warning
+    </span>
+    <span
+      className="slds-m-right_small slds-no-flex slds-align-top"
+      title={undefined}
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon slds-icon--small"
+        style={undefined}
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+        />
+      </svg>
+      
+    </span>
+    <div
+      className="slds-notify__content"
+    >
+      <h2
+        className="slds-text-heading_small"
+      >
+        Can’t share file “report-q3.pdf” with the selected users.
+         
+      </h2>
+    </div>
+    <button
+      aria-controls={undefined}
+      aria-describedby={undefined}
+      aria-expanded={undefined}
+      aria-haspopup={undefined}
+      className="slds-button slds-button--icon-inverse slds-notify__close"
+      disabled={false}
+      id={undefined}
+      onBlur={undefined}
+      onClick={[Function]}
+      onFocus={undefined}
+      onKeyDown={undefined}
+      onKeyPress={undefined}
+      onKeyUp={undefined}
+      onMouseDown={undefined}
+      onMouseEnter={undefined}
+      onMouseLeave={undefined}
+      tabIndex={undefined}
+      title="Close"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon slds-button__icon--large"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Close
+      </span>
+    </button>
+  </div>
+</div>
 `;
 
-exports[`Alert Warning HTML Snapshot 1`] = `
+exports[`Toast Warning HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container\\">
   <div class=\\"slds-notify slds-notify_toast slds-theme_warning\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">warning</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#warning\\"></use></svg></span>
     <div
