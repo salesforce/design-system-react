@@ -1,11 +1,8 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
 import * as examples from './examples';
 
-const Example = createReactClass({
-	displayName: 'ProgressRingDefault',
-
+class Example extends React.Component {
 	render () {
 		return (
 			<IconSettings iconPath="/assets/icons">
@@ -21,6 +18,8 @@ const Example = createReactClass({
 			</IconSettings>
 		);
 	}
-});
+}
+
+Example.displayName = 'ProgressRingDefault';
 
 export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

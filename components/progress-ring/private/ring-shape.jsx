@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { PROGRESS_RING_SHAPE } from '../../utilities/constants';
+const PROGRESS_RING_SHAPE = 'SLDSProgressRingShape';
 
 const propTypes = {
 	/**
@@ -52,7 +52,7 @@ const calculateD = (fillPercent) => {
  * Displays the progress ring shape.
  */
 const ProgressRingShape = (props) => (
-	<div id={props.id} className={classNames(props.className, 'slds-progress-ring')}>
+	<div id={props.id} className={classNames('slds-progress-ring', props.className)}>
 		<div
 			className="slds-progress-ring__progress"
 			role="progressbar"

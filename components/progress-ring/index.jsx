@@ -9,7 +9,7 @@ import classNames from 'classnames';
 
 import { PROGRESS_RING } from '../../utilities/constants';
 import Icon from '../icon';
-import ProgressRingShape from './ring-shape';
+import ProgressRingShape from './private/ring-shape';
 
 /**
  * The themes available for the progress ring
@@ -35,7 +35,7 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
-	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
+	 * CSS classes to be added to tag with `.slds-progress-ring`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
@@ -49,7 +49,7 @@ const propTypes = {
 	/**
 	 * Display the icon associated with the theme.
 	 */
-	showIcon: PropTypes.bool,
+	hasIcon: PropTypes.bool,
 	/**
 	 * Percentage of progress completion, ranging [0, 100].
 	 */
@@ -57,7 +57,6 @@ const propTypes = {
 };
 
 const defaultProps = {
-	showIcon: false
 };
 
 
@@ -81,7 +80,7 @@ class ProgressRing extends React.Component {
 	icon () {
 		let icon = '';
 
-		if (this.props.showIcon) {
+		if (this.props.hasIcon) {
 			if (this.props.icon) {
 				icon = this.props.icon;
 			} else if (this.props.theme === THEME_OPTIONS.WARNING) {

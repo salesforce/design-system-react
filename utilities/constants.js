@@ -76,7 +76,6 @@ export const PROGRESS_INDICATOR = 'SLDSProgressIndicator';
 export const PROGRESS_INDICATOR_PROGRESS = 'SLDSProgressIndicatorProgress';
 export const PROGRESS_INDICATOR_STEP = 'SLDSProgressIndicatorStep';
 export const PROGRESS_RING = 'SLDSProgressRing';
-export const PROGRESS_RING_SHAPE = 'SLDSProgressRingShape';
 export const SPINNER = 'SLDSSpinner';
 export const RADIO = 'SLDSRadio';
 export const RADIO_GROUP = 'SLDSRadioGroup';
