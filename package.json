@@ -451,6 +451,12 @@
       "display-name": "Progress Indicators",
       "SLDS-component-path": "/components/progress-indicator"
     },
+	{
+      "component": "progress-ring",
+      "status": "prod",
+      "display-name": "Progress Ring",
+      "SLDS-component-path": "/components/progress-ring"
+    },
     {
       "component": "forms/radio",
       "status": "prod",

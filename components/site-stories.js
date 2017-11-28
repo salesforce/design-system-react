@@ -36,6 +36,7 @@ const documentationSiteLiveExamples = {
 	panel: require('design-system-react/components/panel/__docs__/site-stories.js'),
 	popover: require('design-system-react/components/popover/__docs__/site-stories.js'),
 	'progress-indicator': require('design-system-react/components/progress-indicator/__docs__/site-stories.js'),
+	'progress-ring': require('design-system-react/components/progress-ring/__docs__/site-stories.js'),
 	'radio-button-group': require('design-system-react/components/radio-button-group/__docs__/site-stories.js'),
 	'radio-group': require('design-system-react/components/radio-group/__docs__/site-stories.js'),
 	'forms-radio': require('design-system-react/components/radio-group/__docs__/site-stories.js'),

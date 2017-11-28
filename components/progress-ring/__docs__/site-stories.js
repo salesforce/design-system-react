@@ -4,8 +4,11 @@
 /* eslint-disable global-require */
 
 const siteStories = [
-	require('raw-loader!design-system-react/components/icon-settings/__examples__/icon-path.jsx'),
-	require('raw-loader!design-system-react/components/icon-settings/__examples__/sprite.jsx')
+	require('raw-loader!design-system-react/components/progress-ring/__examples__/base.jsx'),
+	require('raw-loader!design-system-react/components/progress-ring/__examples__/complete.jsx'),
+	require('raw-loader!design-system-react/components/progress-ring/__examples__/warning.jsx'),
+	require('raw-loader!design-system-react/components/progress-ring/__examples__/expired.jsx'),
+	require('raw-loader!design-system-react/components/progress-ring/__examples__/customIcon.jsx')
 ];
 
 module.exports = siteStories;
