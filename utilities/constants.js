@@ -52,6 +52,7 @@ export const GLOBAL_NAVIGATION_BAR_APP_LAUNCHER = 'SLDSGlobalNavigationBarAppLau
 export const GRID = 'SLDSGrid';
 export const HIGHLIGHTER = 'SLDSHighlighter';
 export const ICON = 'SLDSIcon';
+export const ICON_SETTINGS = 'SLDSIconSettings';
 export const ICON_INPUT = 'SLDSIconInput';
 export const LIST = 'SLDSList';
 export const LIST_ITEM = 'SLDSListItem';

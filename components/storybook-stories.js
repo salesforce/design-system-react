@@ -16,6 +16,7 @@ export GlobalNavigationBar from '../components/global-navigation-bar/__docs__/st
 export DataTable from '../components/data-table/__docs__/storybook-stories';
 export DatePicker from '../components/date-picker/__docs__/storybook-stories';
 export Dropdown from '../components/menu-dropdown/__docs__/storybook-stories';
+export IconSettings from '../components/icon-settings/__docs__/storybook-stories';
 export Input from '../components/forms/input/__docs__/storybook-stories';
 export Teaxtarea from '../components/forms/textarea/__docs__/storybook-stories';
 export InlineInput from '../components/forms/input/__docs__/inline/storybook-stories';

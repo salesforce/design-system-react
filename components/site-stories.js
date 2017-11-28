@@ -24,6 +24,7 @@ const documentationSiteLiveExamples = {
 	'forms-textarea': require('design-system-react/components/forms/textarea/__docs__/site-stories.js'),
 	'global-header': require('design-system-react/components/global-header/__docs__/site-stories.js'),
 	'global-navigation-bar': require('design-system-react/components/global-navigation-bar/__docs__/site-stories.js'),
+	'icon-settings': require('design-system-react/components/icon-settings/__docs__/site-stories.js'),
 	lookup: require('design-system-react/components/lookup/__docs__/site-stories.js'),
 	'media-object': require('design-system-react/components/media-object/__docs__/site-stories.js'),
 	'menu-dropdown': require('design-system-react/components/menu-dropdown/__docs__/site-stories.js'),
