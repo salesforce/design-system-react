@@ -32,6 +32,7 @@ export PageHeader from './page-header/stories';
 export Panel from './panel/stories';
 export Popover from './popover/stories';
 export ProgressIndicator from './progress-indicator/stories';
+export ProgressRing from './progress-ring/stories';
 export Picklist from './menu-picklist/stories';
 export RadioGroup from './radio-group/stories';
 export RadioButtonGroup from './radio-button-group/stories';

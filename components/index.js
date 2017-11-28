@@ -171,6 +171,9 @@ export SLDSTooltip from './tooltip';
 export SLDSProgressIndicator from './progress-indicator';
 export ProgressIndicator from './progress-indicator';
 
+export SLDSProgressRing from './progress-ring';
+export ProgressRing from './progress-ring';
+
 export SLDSRadio from './forms/radio';
 export Radio from './forms/radio';
 

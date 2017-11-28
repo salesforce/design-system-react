@@ -152,6 +152,13 @@ const documentationSiteLiveExamples = {
 	'progress-indicator': [
 		require('raw-loader!design-system-react/examples/progress-indicator/default.jsx')
 	],
+	'progress-ring': [
+		require('raw-loader!design-system-react/examples/progress-ring/base.jsx'),
+		require('raw-loader!design-system-react/examples/progress-ring/complete.jsx'),
+		require('raw-loader!design-system-react/examples/progress-ring/warning.jsx'),
+		require('raw-loader!design-system-react/examples/progress-ring/expired.jsx'),
+		require('raw-loader!design-system-react/examples/progress-ring/customIcon.jsx')
+	],
 	'radio-button-group': [
 		require('raw-loader!design-system-react/examples/radio-button-group/base.jsx')
 	],
