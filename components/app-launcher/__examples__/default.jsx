@@ -16,7 +16,7 @@ const Example = createReactClass({
 	displayName: 'AppLauncherExample',
 
 	render () {
-		const search = <Search onChange={function (event) { console.log('Search term:', event.target.value); }} placeholder="Find an app" assistiveText="Find an app" />;
+		const search = <Search onChange={() => { console.log('Search term:', event.target.value); }} placeholder="Find an app" assistiveText="Find an app" />;
 		const headerButton = <Button label="App Exchange" />;
 
 		return (

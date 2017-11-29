@@ -21,7 +21,7 @@ const Example = createReactClass({
 						buttonVariant="icon"
 						iconName="down"
 						iconVariant="border-filled"
-						onSelect={function (item) { console.log(item.label, 'selected'); }}
+						onSelect={() => { console.log(item.label, 'selected'); }}
 						openOn="click"
 						options={[
 							{ label: 'undo', value: 'A0' },

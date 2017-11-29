@@ -15,12 +15,12 @@ const Example = createReactClass({
 			<IconSettings iconPath="/assets/icons">
 				<GlobalHeader
 					logoSrc="/images/logo.svg"
-					onSkipToContent={function () { console.log('>>> Skip to Content Clicked'); }}
-					onSkipToNav={function () { console.log('>>> Skip to Nav Clicked'); }}
+					onSkipToContent={() => { console.log('>>> Skip to Content Clicked'); }}
+					onSkipToNav={() => { console.log('>>> Skip to Nav Clicked'); }}
 				>
 					<GlobalHeaderSearch
 						placeholder="Search Salesforce"
-						onSelect={function () { console.log('>>> onSelect'); }}
+						onSelect={() => { console.log('>>> onSelect'); }}
 						options={[
 							{ label: 'Email' },
 							{ label: 'Mobile' }
@@ -30,14 +30,14 @@ const Example = createReactClass({
 						className="slds-m-right--small"
 						iconVariant={null}
 						label="Feedback"
-						onClick={function () { console.log('>>> onClick'); }}
+						onClick={() => { console.log('>>> onClick'); }}
 						variant="neutral"
 					/>
 					<GlobalHeaderDropdown
 						assistiveText="Global Actions"
 						iconCategory="utility"
 						iconName="add"
-						onSelect={function () { console.log('>>> onSelect'); }}
+						onSelect={() => { console.log('>>> onSelect'); }}
 						options={[
 							{ label: 'New Note' },
 							{ label: 'Log a Call' }
@@ -46,17 +46,17 @@ const Example = createReactClass({
 					<GlobalHeaderButton
 						assistiveText="Help and Training"
 						iconName="question"
-						onClick={function () { console.log('>>> onClick'); }}
+						onClick={() => { console.log('>>> onClick'); }}
 					/>
 					<GlobalHeaderButton
 						assistiveText="Setup"
 						iconName="settings"
-						onClick={function () { console.log('>>> onClick'); }}
+						onClick={() => { console.log('>>> onClick'); }}
 					/>
 					<GlobalHeaderProfile
 						avatar="/images/avatar2.jpg"
-						onClick={function () { console.log('>>> onClick'); }}
-						onSelect={function () { console.log('>>> onSelect'); }}
+						onClick={() => { console.log('>>> onClick'); }}
+						onSelect={() => { console.log('>>> onSelect'); }}
 						options={[
 							{ label: 'Profile Menu' }
 						]}

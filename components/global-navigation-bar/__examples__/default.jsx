@@ -45,7 +45,7 @@ const Example = createReactClass({
 					>
 						<AppLauncher
 							triggerName="App Name"
-							onSearch={function (event) { console.log('Search term:', event.target.value); }}
+							onSearch={() => { console.log('Search term:', event.target.value); }}
 							modalHeaderButton={<Button label="App Exchange" />}
 						>
 							<AppLauncherSection title="Tile Section">
