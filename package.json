@@ -18,16 +18,16 @@
     "heroku-postbuild": "./scripts/heroku-postbuild.sh",
     "icons": "./node_modules/.bin/babel-node scripts/inline-icons.js",
     "link": "./scripts/npm-link.sh",
-    "lint": "./node_modules/.bin/eslint --config=./.eslintrc \"**/*.{js,jsx}\"",
+    "lint": "./node_modules/.bin/eslint \"**/*.{js,jsx}\"",
     "lint-non-prod": "./node_modules/.bin/eslint \"{examples,tests}/**/*.{js,jsx}\"",
-    "lint-prod": "./node_modules/.bin/eslint --config=./.eslintrc \"{components,utilities}/**/*.{js,jsx}\"",
+    "lint-prod": "./node_modules/.bin/eslint \"{components,utilities}/**/*.{js,jsx}\"",
     "lint-staged": "lint-staged",
     "publish-to-git": "./node_modules/.bin/babel-node scripts/publish-to-git.js",
     "publish-to-edge": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge",
     "publish-to-upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
     "release-patch": "./node_modules/.bin/babel-node scripts/release.js --release=patch",
     "release-minor": "./node_modules/.bin/babel-node scripts/release.js --release=minor",
-    "snapshot-test": "jest",
+    "snapshot-test": "./node_modules/.bin/jest",
     "start": "./node_modules/.bin/start-storybook -p 9001 -s ./node_modules & node tests/app",
     "storybook": "start-storybook -p 9001 -s ./node_modules",
     "test": "scripts/test.sh",
@@ -39,7 +39,7 @@
     "url": "https://github.com/salesforce-ux/design-system-react"
   },
   "jest": {
-    "testRegex": "/tests/.*\\.snapshot-test\\.jsx?$",
+    "testRegex": "/components/.*\\.snapshot-test\\.jsx?$",
     "testEnvironment": "node"
   },
   "keywords": [

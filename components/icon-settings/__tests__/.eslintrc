@@ -1,0 +1,22 @@
+{
+  "env": {
+    "browser": true,
+    "jest": true,
+    "mocha": true
+  },
+  "globals": {
+    "chai": true,
+    "jest": true,
+    "sinon": true
+  },
+  "rules": {
+    "max-len": "off",
+    "no-script-url": "off",
+    "no-alert": "off",
+    "no-console": "off",
+    "no-unused-expressions": "off",
+    "no-unused-vars": "off",
+    "prefer-arrow-callback": "off",
+    "react/display-name": "off"
+  }
+}

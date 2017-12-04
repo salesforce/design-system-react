@@ -189,7 +189,7 @@ const Input = createReactClass({
 		 */
 		value: PropTypes.string,
 		iconPosition: PropTypes.string,
-		inlineEditTrigger: PropTypes.func,
+		inlineEditTrigger: PropTypes.node,
 		role: PropTypes.string
 	},
 

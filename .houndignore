@@ -1,9 +1,0 @@
-tests/*
-examples/*
-.git/*
-.storybook/*
-coverage/*
-node_modules/*
-storybook/*
-
-icons/*
