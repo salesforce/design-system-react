@@ -1,6 +1,7 @@
 import React from 'react';
 import IconSettings from '~/components/icon-settings';
-import * as examples from './examples';
+import Icon from '~/components/icon';
+import ProgressRing from '~/components/progress-ring';
 
 class Example extends React.Component {
 	render () {
@@ -8,13 +9,13 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
 					<div className="slds-col--padded">
-						{examples.EXPIRED_PARTIAL()}
+						<ProgressRing value={20} theme="expired" />
 					</div>
 					<div className="slds-col--padded">
-						{examples.EXPIRED_WITH_ICON()}
+						<ProgressRing value={20} theme="expired" hasIcon />
 					</div>
 					<div className="slds-col--padded">
-						{examples.EXPIRED_100()}
+						<ProgressRing value={100} theme="expired" />
 					</div>
 				</div>
 			</IconSettings>

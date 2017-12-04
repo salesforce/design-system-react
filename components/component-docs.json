@@ -4789,7 +4789,7 @@
             },
             "inlineEditTrigger": {
                 "type": {
-                    "name": "func"
+                    "name": "node"
                 },
                 "required": false,
                 "description": ""
@@ -8899,6 +8899,123 @@
         "route": "progress-indicators",
         "display-name": "Progress Indicators",
         "SLDS-component-path": "/components/progress-indicator",
+        "dependencies": []
+    },
+    "progress-ring": {
+        "description": "Customizable and configurable progress ring. Will display progress in a circular progress bar factor, and is capable of displaying iconography inside of the ring structure.",
+        "methods": [
+            {
+                "name": "themeClass",
+                "docblock": "Gets the theme CSS class\n@returns {string} Class name",
+                "modifiers": [],
+                "params": [],
+                "returns": {
+                    "description": "Class name",
+                    "type": {
+                        "name": "string"
+                    }
+                },
+                "description": "Gets the theme CSS class"
+            },
+            {
+                "name": "icon",
+                "docblock": "Gets the icon to display\n@returns {node} Icon",
+                "modifiers": [],
+                "params": [],
+                "returns": {
+                    "description": "Icon",
+                    "type": {
+                        "name": "node"
+                    }
+                },
+                "description": "Gets the icon to display"
+            },
+            {
+                "name": "percentDecimal",
+                "docblock": "Percentage as a decimal\n@returns {decimal} Percentage",
+                "modifiers": [],
+                "params": [],
+                "returns": {
+                    "description": "Percentage",
+                    "type": {
+                        "name": "decimal"
+                    }
+                },
+                "description": "Percentage as a decimal"
+            }
+        ],
+        "props": {
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-progress-ring`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "theme": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "THEME_OPTIONS.WARNING",
+                            "computed": true
+                        },
+                        {
+                            "value": "THEME_OPTIONS.EXPIRED",
+                            "computed": true
+                        },
+                        {
+                            "value": "THEME_OPTIONS.COMPLETE",
+                            "computed": true
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "The theme applied to the ring."
+            },
+            "icon": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Overrides the icon to be displayed."
+            },
+            "hasIcon": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Display the icon associated with the theme."
+            },
+            "value": {
+                "type": {
+                    "name": "number"
+                },
+                "required": true,
+                "description": "Percentage of progress completion, ranging [0, 100]."
+            }
+        },
+        "route": "progress-ring",
+        "display-name": "Progress Ring",
+        "SLDS-component-path": "/components/progress-ring",
         "dependencies": []
     },
     "radio": {
