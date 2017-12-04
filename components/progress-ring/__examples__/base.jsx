@@ -1,6 +1,6 @@
 import React from 'react';
 import IconSettings from '~/components/icon-settings';
-import * as examples from './examples';
+import ProgressRing from '~/components/progress-ring';
 
 class Example extends React.Component {
 	render () {
@@ -8,13 +8,13 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
 					<div className="slds-col--padded">
-						{examples.BASE_0()}
+						<ProgressRing value={0} />
 					</div>
 					<div className="slds-col--padded">
-						{examples.BASE_PARTIAL()}
+						<ProgressRing value={20} />
 					</div>
 					<div className="slds-col--padded">
-						{examples.BASE_100()}
+						<ProgressRing value={100} />
 					</div>
 				</div>
 			</IconSettings>
