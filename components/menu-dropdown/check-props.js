@@ -5,6 +5,7 @@
 import oneOfRequiredProperty from '../../utilities/warning/one-of-required-property';
 import hasChildrenWithoutDisplayNameOf from '../../utilities/warning/has-children-without-display-name-of';
 import sunsetProperty from '../../utilities/warning/sunset-property';
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 
 import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
 
@@ -26,6 +27,8 @@ if (process.env.NODE_ENV !== 'production') {
 				MENU_DROPDOWN_TRIGGER
 			);
 		}
+
+		deprecatedProperty(COMPONENT, props.isInline, 'isInline', 'menuPosition="relative"');
 	};
 }
 

@@ -28,6 +28,8 @@ import shortid from 'shortid';
 import KEYS from '../../utilities/key-code';
 import mapKeyEventCallbacks from '../../utilities/key-callbacks';
 
+import checkProps from './check-props';
+
 import { COMBOBOX } from '../../utilities/constants';
 
 let currentOpenDropdown;
@@ -203,6 +205,9 @@ class Combobox extends React.Component {
    */
 
 	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(COMBOBOX, this.props);
+
 		this.generatedId = shortid.generate();
 	}
 

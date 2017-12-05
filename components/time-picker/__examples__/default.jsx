@@ -4,7 +4,7 @@ import IconSettings from '~/components/icon-settings';
 import Timepicker from '~/components/time-picker'; // `~` is replaced with design-system-react at runtime
 
 const Example = createReactClass({
-	displayName: 'TabsExample',
+	displayName: 'TimepickerExample',
 	
 	render () {
 		return (
