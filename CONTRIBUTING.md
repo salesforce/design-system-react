@@ -1,6 +1,8 @@
 # Contributing to Design System React
 
-## The process
+First, on behalf of the core maintainers, I'd like to thank you for wanting to contribute and make the user experience for your end-users better and improve the developer experience of this library. -- @interactivellama
+
+## Contributing process
 1. Read the [Codebase Overview](docs/codebase-overview.md) to learn concepts and best practices for the codebase and to confirm it is within project scope.
 1. Create a new issue before starting your solution to keep track of what you are trying to contribute. That way, we can also offer suggestions or let you know if there is already an effort in progress.
 1. Fork this repository, clone your fork locally. Create a topic branch locally.
@@ -19,9 +21,9 @@
 - All new props and components need tests. **Please review the [testing readme](/tests/README.md)**
 - Follow Eslint settings.
 - If you are adding a feature, [add a story](https://storybook.js.org/basics/writing-stories/) to the React Storybook that uses your feature, so that reviewers can test it.
-- Stories are stored in [examples folder](/examples) along with Documentation site examples. To add a story to the interactive examples on the [documentation site](https://react.lightningdesignsystem.com/components/), add the JSX file to [examples/index.js](/examples/index.js). All examples that are present for a component in the [SLDS website](https://www.lightningdesignsystem.com/) or it's internal site should be created as a Storybook story _and_ listed in `examples/index.js`.
-- Prop description tables on the documentation site are generated from propType comments within the component. All props descriptions should have a _Tested with snapshot testing._ or _Tested with Mocha framework._ notice in them.
-- Introductory component descriptions are generated from the comment directly before the component declaration with [react-docgen](https://github.com/reactjs/react-docgen).
+- Add enough Storybook stories and testing examples to show use of all component prop and values--if they are enumerated. All examples that are present for a component in the [SLDS website](https://www.lightningdesignsystem.com/) should be created as a Storybook story _and_ imported into the documentaiton site examples.
+- Prop description tables on the documentation site are generated from propType comments within the component. Use `npm run build-docs` to confirm comment compatibility. Introductory component descriptions are generated from the comment directly before the component declaration with [react-docgen](https://github.com/reactjs/react-docgen).
+- All props descriptions should have a _Tested with snapshot testing._ or _Tested with Mocha framework._ notice in them.
 
 ## The review process (internal)
 - `git clone` this repository
@@ -32,6 +34,6 @@
 4. Request a review of the new component/feature by the Salesforce UX Accessibility Team.
 
 ## Testing the documentation site (internal)
-1. Pull down the documentation site and place in the same parent folder as this library: `git clone git@github.com:salesforce-ux/design-system-react-site.git` and run `npm install`.
+1. Pull down the documentation site (currenly private) and place in the same parent folder as this library: `git clone git@github.com:salesforce-ux/design-system-react-site.git` and run `npm install`.
 `.
 1. Run `npm run local-update` from within `design-system-react-site` to build, copy, and serve a local version of this library into the site. You should be able to now view the updated site at `http://localhost:8080/` and resolve any issues with updated documentation.
