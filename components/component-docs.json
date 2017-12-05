@@ -8975,16 +8975,16 @@
                     "name": "enum",
                     "value": [
                         {
-                            "value": "THEME_OPTIONS.WARNING",
-                            "computed": true
+                            "value": "'warning'",
+                            "computed": false
                         },
                         {
-                            "value": "THEME_OPTIONS.EXPIRED",
-                            "computed": true
+                            "value": "'expired'",
+                            "computed": false
                         },
                         {
-                            "value": "THEME_OPTIONS.COMPLETE",
-                            "computed": true
+                            "value": "'complete'",
+                            "computed": false
                         }
                     ]
                 },

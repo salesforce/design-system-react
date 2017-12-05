@@ -5,7 +5,7 @@ import ReadonlySingleSelectionCustomMenuItem from '../readonly-single-selection-
 class Example extends React.Component {
 	render () {
 		return (
-			<ReadonlySingleSelectionCustomMenuItem isInline isOpen />
+			<ReadonlySingleSelectionCustomMenuItem menuPosition="relative" isOpen />
 		);
 	}
 }

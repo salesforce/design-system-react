@@ -5,7 +5,7 @@ import BaseCustomMenuItem from '../base-custom-menu-item';
 class Example extends React.Component {
 	render () {
 		return (
-			<BaseCustomMenuItem isInline isOpen />
+			<BaseCustomMenuItem menuPosition="relative" isOpen />
 		);
 	}
 }
