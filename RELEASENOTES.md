@@ -29,6 +29,19 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.8.0
+
+**Major features**
+
+* Add Progress Ring Component
+* Make icons settings webpack friendly. Allows sprite file strings to be imported.
+
+**Maintenance**
+
+* Group like files: Move all component files into same folder to make library more modular
+* Remove node engine version from published package
+* Improve documentation: Usage with webpack
+
 ## Release 0.7.3
 
 **Minor features**
