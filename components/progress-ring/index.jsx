@@ -41,7 +41,7 @@ const propTypes = {
 	/**
 	 * The theme applied to the ring.
 	 */
-	theme: PropTypes.oneOf([THEME_OPTIONS.WARNING, THEME_OPTIONS.EXPIRED, THEME_OPTIONS.COMPLETE]),
+	theme: PropTypes.oneOf(['warning', 'expired', 'complete']),
 	/**
 	 * Overrides the icon to be displayed.
 	 */
