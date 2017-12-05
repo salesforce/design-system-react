@@ -13,7 +13,7 @@ First, on behalf of the core maintainers, I'd like to thank you for wanting to c
 1. Hook up site and storybook examples in `/components/[COMPONENT]/__docs__/`
 1. Hook up documentation site examples in `/components/site-stories.js`. Site examples only have access to variables exported in `/components/index.js`, so you should limit your imports to these within site examples.
 1. Push to your username's forked repository.
-1. Send us a well-documented pull request targeting `master` from your forked repository. GitHub pull requests should have a descriptive title, a brief summary, @mention several relevant people to review the code, add helpful GitHub comments on lines where you have questions or concerns.
+1. Send us a well-documented pull request targeting `master` from your forked repository. GitHub pull requests should have a descriptive title, a brief summary, @mention several relevant people to review the code, add helpful GitHub comments on lines where you have questions or concerns. All contributors must sign a [Contributor License Agreement](https://cla.salesforce.com/sign-cla).
 1. We'll review your code, suggest any needed changes, and hopefully merge it in. Thank you!
 
 ## Contributing Guidelines
