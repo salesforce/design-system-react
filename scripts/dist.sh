@@ -47,7 +47,6 @@ cp -r components .tmp-es/components
 cp -r styles .tmp-es/styles
 cp -r icons .tmp-es/icons
 cp -r utilities .tmp-es/utilities
-cp -r examples .tmp-es/examples
 
 echo "## Transpiling with Babel"
 
