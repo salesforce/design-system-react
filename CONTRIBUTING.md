@@ -25,13 +25,31 @@ First, on behalf of the core maintainers, I'd like to thank you for wanting to c
 - Prop description tables on the documentation site are generated from propType comments within the component. Use `npm run build-docs` to confirm comment compatibility. Introductory component descriptions are generated from the comment directly before the component declaration with [react-docgen](https://github.com/reactjs/react-docgen).
 - All props descriptions should have a _Tested with snapshot testing._ or _Tested with Mocha framework._ notice in them.
 
-## The review process (internal)
-- `git clone` this repository
-- `npm install`
-- Pull down the pull requested branch. It will be within the contributor's forked repository. For instance, `git checkout -b interactivellama-data-table-width master` then `git pull git@github.com:interactivellama/design-system-react.git data-table-width`. You could also create an additional remote and pull down the branch directly.
-- `npm start` and review the appropriate React Story example at `http://localhost:9001/`. Open `http://localhost:8001/` and confirm that tests are passing in your environment.
-- Check that any modified or added examples for the documentation site are working and are present in `examples/index.js`.
-4. Request a review of the new component/feature by the Salesforce UX Accessibility Team.
+## The review process
+1. Read through the modified/added code in the pull request. 
+1. `git clone` this repository. Pull down the pull requested branch. It will be within the contributor's forked repository. For instance, `git checkout -b interactivellama-data-table-width master` then `git pull git@github.com:interactivellama/design-system-react.git data-table-width`. You could also create an additional remote and pull down the branch directly.
+1. Run `npm install` and `npm start`.
+1. Review the appropriate Storybook stories at `http://localhost:9001/`.
+1. Review tests. Open `http://localhost:8001/` and confirm that tests are passing in your browser.
+1. Compare component markup to SLDS markup. Reviewing the snapshot strings is the easiest way. Add year-first date and commit SHA to `last-slds-markup-review` in package.json and push to pull request branch.
+1. Request a review of the new component/feature by the Salesforce UX Accessibility Team. Add year-first review date, and commit SHA, `last-accessibility-review`, to `package.json` and push to pull request branch.
+    ```js
+    {
+      "component": "",
+      "status": "prod",
+      "display-name": "",
+      "last-accessibility-review": {
+        "date-iso-8601": "2017/12/31",
+        "commit-sha": ""
+      },
+      "last-slds-markup-review": {
+        "date-iso-8601": "2017/12/30",
+        "commit-sha": ""
+      },
+      "SLDS-component-path": ""
+    },
+    ```
+1. While the contributor's branch is checked out, run `npm run local-update` within locally cloned [site repo](https://github.com/salesforce-ux/design-system-react-site) to confirm the site will function correctly at the next release. This will also build the bundle (`npm run dist`) and use the bundle in the documentation site and confirm that the bundle works.
 
 ## Testing the documentation site (internal)
 1. Pull down the documentation site (currenly private) and place in the same parent folder as this library: `git clone git@github.com:salesforce-ux/design-system-react-site.git` and run `npm install`.
