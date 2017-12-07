@@ -18,7 +18,7 @@ const Highlighter = (props) => {
 	if (props.search) {
 		let children;
 		if (typeof props.children === 'string') {
-			children = (<ReactHighlighter className={props.className} matchClass={null} matchElement="mark" search={props.search}>
+			children = (<ReactHighlighter className={props.className} matchClass={null} matchElement="mark" search={props.search} title={props.children}>
 				{props.children}
 			</ReactHighlighter>);
 		} else {
@@ -26,7 +26,7 @@ const Highlighter = (props) => {
 				nodeArr.map((element) => {
 					let newElement;
 					if (typeof element === 'string') {
-						newElement = (<ReactHighlighter key={element} className={props.className} matchClass={null} matchElement="mark" search={props.search}>
+						newElement = (<ReactHighlighter key={element} className={props.className} matchClass={null} matchElement="mark" search={props.search} title={element}>
 							{element}
 						</ReactHighlighter>);
 					} else {
@@ -46,6 +46,10 @@ const Highlighter = (props) => {
 				{children}
 			</span>
 		);
+	}
+
+	if (typeof props.children === 'string') {
+		return <span className={props.className} title={props.children}>{props.children}</span>;
 	}
 
 	return <span className={props.className}>{props.children}</span>;
