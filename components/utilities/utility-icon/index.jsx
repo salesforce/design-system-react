@@ -39,14 +39,26 @@ const UtilityIcon = ({
 	let inlineData;
 
 	if (icon) {
+		// Use SVG data passed in with `icon` prop
 		inlineData = icon;
 	} else if (Object.keys(inlineIcons[category]).length) {
+		// Use inline icon data if it exists. ENV variables will have to set to allow this.
 		inlineData = inlineIcons[category][name.toLowerCase()];
 		inlineData.viewBox = inlineIcons[category].viewBox;
 	}
+	
+	let modifiedPath;
 
-	// Use inline icons if the icon object is present, otherwise use external URLs for icons.
-	const modifiedPath = path || (context.iconPath && `${context.iconPath}/${category}-sprite/svg/symbols.svg#${name}`);
+	if (path) {
+		// Use `path` prop of Icon if present
+		modifiedPath = path;
+	} else if (context[`${category}Sprite`]) {
+		// Use category sprite file from IconSettings if present
+		modifiedPath = `${context[`${category}Sprite`]}#${name}`;
+	} else {
+		// Otherwise, use external URLs for icons
+		modifiedPath = context.iconPath && `${context.iconPath}/${category}-sprite/svg/symbols.svg#${name}`;
+	}
 
 	return inlineData
 		? (<Svg data={inlineData} name={name} {...rest} />)
@@ -79,7 +91,12 @@ UtilityIcon.defaultProps = {
 };
 
 UtilityIcon.contextTypes = {
-	iconPath: PropTypes.string
+	iconPath: PropTypes.string,
+	actionSprite: PropTypes.string,
+	customSprite: PropTypes.string,
+	doctypeSprite: PropTypes.string,
+	standardSprite: PropTypes.string,
+	utilitySprite: PropTypes.string
 };
 
 export default UtilityIcon;

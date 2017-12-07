@@ -1,11 +1,12 @@
 import findTabbableElement from './tabbable';
 import KEYS from './key-code';
+import { canUseDOM } from './execution-environment';
 
 let ancestor = null;
 let focusLaterElement = null;
 
 const handleScopedKeyDown = (event) => {
-	if (!ancestor || event.keyCode !== KEYS.TAB) {
+	if (!canUseDOM || !ancestor || event.keyCode !== KEYS.TAB) {
 		return;
 	}
 	const tabbableElements = findTabbableElement(ancestor);
@@ -25,29 +26,35 @@ const handleScopedKeyDown = (event) => {
 
 const ElementFocus = {
 	focusAncestor: () => {
-		ancestor.focus();
-	},
-	hasOrAncestorHasFocus: () =>
-		document.activeElement === ancestor
-		|| ancestor.contains(document.activeElement),
-	returnFocusToStoredElement: () => {
-		try {
-			focusLaterElement.focus();
-		}	catch (e) {
-			console.warn(`You tried to return focus to ${focusLaterElement} but it is not in the DOM anymore`); // eslint-disable-line no-console
+		if (canUseDOM) {
+			ancestor.focus();
 		}
-		focusLaterElement = null;
+	},
+	hasOrAncestorHasFocus: () => canUseDOM &&
+		(document.activeElement === ancestor
+		|| ancestor.contains(document.activeElement)),
+	returnFocusToStoredElement: () => {
+		if (canUseDOM) {
+			try {
+				focusLaterElement.focus();
+			}	catch (e) {
+				console.warn(`You tried to return focus to ${focusLaterElement} but it is not in the DOM anymore`); // eslint-disable-line no-console
+			}
+			focusLaterElement = null;
+		}
 	},
 	setupScopedFocus: ({ ancestorElement }) => {
 		ancestor = ancestorElement;
 		window.addEventListener('keydown', handleScopedKeyDown, false);
 	},
 	storeActiveElement: () => {
-		focusLaterElement = document.activeElement;
+		focusLaterElement = canUseDOM ? document.activeElement : null;
 	},
 	teardownScopedFocus: () => {
 		ancestor = null;
-		window.removeEventListener('keydown', handleScopedKeyDown);
+		if (canUseDOM) {
+			window.removeEventListener('keydown', handleScopedKeyDown);
+		}
 	}
 };
 

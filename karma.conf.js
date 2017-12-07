@@ -34,7 +34,7 @@ const configExport = function (config) {
 			'tests/fixtures/phantomjs-shims.js',
 			'./node_modules/phantomjs-polyfill-find-index/findIndex-polyfill.js',
 			'./node_modules/phantomjs-polyfill-includes/includes-polyfill.js',
-			'tests/tests-bundle.js'
+			'components/tests-bundle.js'
 		],
 
 		// list of files to exclude
@@ -44,7 +44,7 @@ const configExport = function (config) {
 		// preprocess matching files before serving them to the browser
 		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 		preprocessors: {
-			'tests/tests-bundle.js': ['webpack', 'sourcemap']
+			'components/tests-bundle.js': ['webpack', 'sourcemap']
 		},
 
 		// test results reporter to use

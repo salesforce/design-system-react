@@ -28,3 +28,5 @@ storybook/
 
 # For build server
 design-system-react
+
+package-lock.json

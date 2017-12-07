@@ -28,6 +28,8 @@ import shortid from 'shortid';
 import KEYS from '../../utilities/key-code';
 import mapKeyEventCallbacks from '../../utilities/key-callbacks';
 
+import checkProps from './check-props';
+
 import { COMBOBOX } from '../../utilities/constants';
 
 let currentOpenDropdown;
@@ -120,6 +122,15 @@ const propTypes = {
 	 */
 	isOpen: PropTypes.bool,
 	/**
+	 * Accepts a custom menu item rendering function that becomes a custom component. The checkmark is still rendered in readonly variants. This function is passed the following props:
+	 * * `assistiveText`: Object, `assistiveText` prop that is passed into Combobox
+	 * * `option`: Object, option data for item being rendered that is passed into Combobox
+	 * * `selected`: Boolean, allows rendering of `assistiveText.optionSelectedInMenu` in Readonly Combobox
+	 *
+	 * _Tested with snapshot testing._
+	 */
+	menuItem: PropTypes.func,
+	/**
 	 * Please select one of the following:
 	 * * `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
 	 * * `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.
@@ -198,6 +209,9 @@ class Combobox extends React.Component {
    */
 
 	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(COMBOBOX, this.props);
+
 		this.generatedId = shortid.generate();
 	}
 
@@ -250,6 +264,8 @@ class Combobox extends React.Component {
 		const hasNewIndex = options.length > newIndex && newIndex >= 0;
 		return hasNewIndex ? newIndex : activeOptionIndex;
 	}
+
+	getTargetElement = () => this.inputRef;
 
 	isSelected = ({ selection, option }) => !!find(selection, option);
 
@@ -345,7 +361,7 @@ class Combobox extends React.Component {
 				inheritTargetWidth
 				onClose={this.handleClose}
 				onOpen={this.handleOpen}
-				onRequestTargetElement={() => this.inputRef}
+				onRequestTargetElement={this.getTargetElement}
 				position={menuPosition}
 				containerProps={{
 					id: `${this.getId()}-listbox`,
@@ -377,6 +393,7 @@ class Combobox extends React.Component {
 					? this.props.readOnlyMenuItemVisibleLength
 					: null}
 				labels={labels}
+				menuItem={this.props.menuItem}
 				options={this.props.options}
 				onSelect={this.handleSelect}
 				clearActiveOption={this.clearActiveOption}
@@ -753,7 +770,7 @@ class Combobox extends React.Component {
 							onFocus={this.handleInputFocus}
 							onBlur={this.handleInputBlur}
 							onKeyDown={this.handleKeyDown}
-							inputRef={(component) => { this.inputRef = component; }}
+							inputRef={this.setInputRef}
 							onClick={() => {
 								this.requestOpenMenu();
 							}}
@@ -842,7 +859,7 @@ class Combobox extends React.Component {
 						onFocus={this.handleInputFocus}
 						onBlur={this.handleInputBlur}
 						onKeyDown={this.handleKeyDown}
-						inputRef={(component) => { this.inputRef = component; }}
+						inputRef={this.setInputRef}
 						onClick={() => {
 							this.openDialog();
 						}}
@@ -905,7 +922,7 @@ class Combobox extends React.Component {
 							onFocus={this.handleInputFocus}
 							onBlur={this.handleInputBlur}
 							onKeyDown={this.handleKeyDown}
-							inputRef={(component) => { this.inputRef = component; }}
+							inputRef={this.setInputRef}
 							onClick={() => {
 								this.requestOpenMenu();
 							}}
@@ -973,7 +990,7 @@ class Combobox extends React.Component {
 							onFocus={this.handleInputFocus}
 							onBlur={this.handleInputBlur}
 							onKeyDown={this.handleKeyDown}
-							inputRef={(component) => { this.inputRef = component; }}
+							inputRef={this.setInputRef}
 							onClick={() => {
 								this.requestOpenMenu();
 							}}

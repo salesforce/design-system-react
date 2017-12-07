@@ -22,6 +22,8 @@ if (process.env.NODE_ENV !== 'production') {
 		deprecatedProperty(COMPONENT, props.onFocus, 'required', undefined, 'Please see children prop description and add your own `Input` as a child of Datepicker.');
 
 		deprecatedProperty(COMPONENT, props.strValue, 'strValue', 'formattedValue');
+
+		deprecatedProperty(COMPONENT, props.isInline, 'isInline', 'menuPosition="relative"');
 	};
 }
 

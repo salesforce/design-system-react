@@ -8,6 +8,7 @@ console.log('# Publishing to git');
 import async from 'async';
 import fs from 'fs';
 import path from 'path';
+import findRemoveSync from 'find-remove';
 import minimist from 'minimist';
 import { version } from '../package.json';
 import exec from './command-line-utilities';
@@ -47,6 +48,10 @@ const publish = (done, type) => {
 		typeSuffix = `-${type}`;
 	}
 
+	const result = findRemoveSync(`${tmpDir}/components`, { dir: '__tests__' });
+	console.log('Removed the following test files:');
+	console.log(result);
+
 	let actions = [
 		{ command: 'git init', dir: tmpDir, rootPath },
 		{ command: `cp ${gitDir}/config ${tmpDir}/.git`, rootPath },
@@ -70,14 +75,14 @@ const publish = (done, type) => {
 	}
 
 	actions = [
-		...actions,
-		{ command: `rm -r ${tmpDir}`, rootPath }
+		...actions
+		// { command: `rm -r ${tmpDir}`, rootPath }
 	];
 
 	async.eachSeries(actions, exec, (err) => {
 		if (err) throw err;
 
-		console.log(`## Successfully published ${type} to git`);
+		// console.log(`## Successfully published ${type} to git`);
 
 		done();
 	});

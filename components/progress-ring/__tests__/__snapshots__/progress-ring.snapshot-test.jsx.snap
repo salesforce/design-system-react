@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BASE_0 DOM Snapshot 1`] = `
+"<div class=\\"slds-progress-ring\\">
+  <div class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"0\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 0 1 1 0 L 0 0\\"></path></svg></div>
+  <div class=\\"slds-progress-ring__content\\"></div>
+</div>"
+`;
+
+exports[`BASE_100 DOM Snapshot 1`] = `
+"<div class=\\"slds-progress-ring\\">
+  <div class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"100\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 1 1 1 -2.4492935982947064e-16 L 0 0\\"></path></svg></div>
+  <div class=\\"slds-progress-ring__content\\"></div>
+</div>"
+`;
+
+exports[`BASE_PARTIAL DOM Snapshot 1`] = `
+"<div class=\\"slds-progress-ring\\">
+  <div class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"20\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 0 1 0.30901699437494745 0.9510565162951535 L 0 0\\"></path></svg></div>
+  <div class=\\"slds-progress-ring__content\\"></div>
+</div>"
+`;
+
+exports[`COMPLETE_100 DOM Snapshot 1`] = `
+"<div class=\\"slds-progress-ring slds-progress-ring_complete\\">
+  <div class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"100\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 1 1 1 -2.4492935982947064e-16 L 0 0\\"></path></svg></div>
+  <div class=\\"slds-progress-ring__content\\"></div>
+</div>"
+`;
+
+exports[`COMPLETE_WITH_ICON DOM Snapshot 1`] = `
+"<div class=\\"slds-progress-ring slds-progress-ring_complete\\">
+  <div class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"100\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 1 1 1 -2.4492935982947064e-16 L 0 0\\"></path></svg></div>
+  <div class=\\"slds-progress-ring__content\\"><span title=\\"complete\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></div>
+</div>"
+`;
+
+exports[`EXPIRED_100 DOM Snapshot 1`] = `
+"<div class=\\"slds-progress-ring slds-progress-ring_expired\\">
+  <div class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"100\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 1 1 1 -2.4492935982947064e-16 L 0 0\\"></path></svg></div>
+  <div class=\\"slds-progress-ring__content\\"></div>
+</div>"
+`;
+
+exports[`EXPIRED_PARTIAL DOM Snapshot 1`] = `
+"<div class=\\"slds-progress-ring slds-progress-ring_expired\\">
+  <div class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"20\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 0 1 0.30901699437494745 0.9510565162951535 L 0 0\\"></path></svg></div>
+  <div class=\\"slds-progress-ring__content\\"></div>
+</div>"
+`;
+
+exports[`EXPIRED_WITH_CUSTOM_ICON DOM Snapshot 1`] = `
+"<div class=\\"slds-progress-ring slds-progress-ring_expired\\">
+  <div class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"20\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 0 1 0.30901699437494745 0.9510565162951535 L 0 0\\"></path></svg></div>
+  <div class=\\"slds-progress-ring__content\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#lock\\"></use></svg></span></div>
+</div>"
+`;
+
+exports[`EXPIRED_WITH_ICON DOM Snapshot 1`] = `
+"<div class=\\"slds-progress-ring slds-progress-ring_expired\\">
+  <div class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"20\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 0 1 0.30901699437494745 0.9510565162951535 L 0 0\\"></path></svg></div>
+  <div class=\\"slds-progress-ring__content\\"><span title=\\"Expired\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#error\\"></use></svg></span></div>
+</div>"
+`;
+
+exports[`WARNING_100 DOM Snapshot 1`] = `
+"<div class=\\"slds-progress-ring slds-progress-ring_warning\\">
+  <div class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"100\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 1 1 1 -2.4492935982947064e-16 L 0 0\\"></path></svg></div>
+  <div class=\\"slds-progress-ring__content\\"></div>
+</div>"
+`;
+
+exports[`WARNING_PARTIAL DOM Snapshot 1`] = `
+"<div class=\\"slds-progress-ring slds-progress-ring_warning\\">
+  <div class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"20\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 0 1 0.30901699437494745 0.9510565162951535 L 0 0\\"></path></svg></div>
+  <div class=\\"slds-progress-ring__content\\"></div>
+</div>"
+`;
+
+exports[`WARNING_WITH_ICON DOM Snapshot 1`] = `
+"<div class=\\"slds-progress-ring slds-progress-ring_warning\\">
+  <div class=\\"slds-progress-ring__progress\\" role=\\"progressbar\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-valuenow=\\"20\\"><svg viewBox=\\"-1 -1 2 2\\"><path class=\\"slds-progress-ring__path\\" d=\\"M 1 0 A 1 1 0 0 1 0.30901699437494745 0.9510565162951535 L 0 0\\"></path></svg></div>
+  <div class=\\"slds-progress-ring__content\\"><span title=\\"Warning\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#warning\\"></use></svg></span></div>
+</div>"
+`;

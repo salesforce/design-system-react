@@ -14,6 +14,8 @@ if (process.env.NODE_ENV !== 'production') {
 		// Deprecated and changed to another property
 		deprecatedProperty(COMPONENT, props.openByDefault, 'openByDefault', 'isOpen');
 		deprecatedProperty(COMPONENT, props.target, 'target', undefined, 'A new positioning library is being implmented under the hood. Please trigger tooltips to appear on their triggers with `isOpen` and not on other DOM elements.');
+
+		deprecatedProperty(COMPONENT, props.isInline, 'isInline', 'position="relative"');
 	};
 }
 

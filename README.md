@@ -4,12 +4,13 @@
 [![Build Status](https://travis-ci.com/salesforce/design-system-react.svg?token=erkizBStRxre5p3S1xij&branch=master)](https://travis-ci.com/salesforce/design-system-react)
 
 ## Getting Started
-Welcome to the project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/). It is compatible with React >=15.4.1 <16.
+Welcome to the project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/). It has been tested with React >=15.4.1 <16 and is stable despite its version numbers. A 1.0 will be released soon.
 
 * [Getting Started](https://design-system-react.herokuapp.com/getting-started/)
 * [Documentation and examples](https://design-system-react.herokuapp.com/)
 * [Contributing](CONTRIBUTING.md)
 * [Codebase Overview](docs/codebase-overview.md)
+* [Usage with Webpack](docs/webpack.md)
 
 #### ECMAScript 6 and CommonJS modules
 
@@ -24,13 +25,41 @@ open http://localhost:9001 http://localhost:8001
 ```
 ### SLDS Icons
 
-Prior to v0.7.0, SLDS icons were inlined and just worked. Now you will need to host the icons and set a path `context` for all child components with `<IconSettings>`:
+Prior to v0.7.0, SLDS icons were bundled with the JavaScript. The 400KB+ icons bundle from [SLDS](https://www.lightningdesignsystem.com/) is no longer included. You will need to download the SLDS CSS and icons separately.
+
+#### Serve icons publically
+
+Typically, scripts should be downloaded in the background without blocking the DOM. With React, this works best with [server side rendering](https://reactjs.org/docs/react-dom-server.html#rendertostaticmarkup). SLDS recommends placeholder stencils while scripts are initializing if the HTML cannot be served immediately. If you can serve the HTML, then icon SVGs should not be bundled and served like any other file. Set a path `context` for all child components with `<IconSettings>` at the top of your render tree:
 
 ```
 import IconSettings from 'design-system-react/components/icon-settings';
 
 ReactDOM.render(
 	<IconSettings iconPath="/assets/icons">
+		<MyApp />
+	</IconSettings>,
+	document.getElementById('app')
+	)
+
+// `/assets/icons` wil be prepended to `/standard-sprite/svg/symbols.svg#account` within the SVG path
+<svg aria-hidden="true" class="slds-icon">
+   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
+</svg>
+```
+
+#### Bundle icons
+
+If you use a module bundler, like Webpack, you can import the individual `sprite` files and assign them to the `<IconSettings>` sprite properties. Your SVG images will be bundled with your scripts and block the DOM from rendering until the script file is loaded.
+
+```
+import IconSettings from 'design-system-react/components/icon-settings';
+
+import standardSprite from '@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg';
+...
+...
+
+ReactDOM.render(
+	<IconSettings standardSprite={standardSprite}>
 		<MyApp />
 	</IconSettings>,
 	document.getElementById('app')
@@ -47,7 +76,7 @@ Add the following line to your `package.json` devDependencies and run `npm insta
 "design-system-react": "git+ssh://git@github.com:salesforce/design-system-react.git#v[VERSION]",
 ```
 
-The bundled files are provided only for convenience. 
+The bundled files are provided only for convenience.
 
 * `design-system-react.min.js` (700KB+) - includes icons in the JavaScript
 * `design-system-react-components.min.js` (~400KB) - no icons.
@@ -73,7 +102,7 @@ import IconSettings from 'design-system-react/components/icon-settings';
 
 ## Contributing to the code base
 
-Please read the [CONTRIBUTING.md](CONTRIBUTING.md) and [Test README](/tests/README.md) first. Then, create an issue to tell others you are working on a bug. If you would like to contribute a new component, create an issue with a list of proposed props to discuss with maintainers.  Issues not addressed with pull requests may be closed eventually.
+Please read the [CONTRIBUTING.md](CONTRIBUTING.md) and [Test README](/tests/README.md) first. Then, create an issue to tell others you are working on a bug. If you would like to contribute a new component, create an issue with a list of proposed props to discuss with maintainers. Issues not addressed with pull requests may be closed eventually. Check out [who's contributing](https://github.com/salesforce/design-system-react/graphs/contributors) to the project.
 
 ## Licenses
 

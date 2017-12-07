@@ -1,6 +1,6 @@
 {
   "name": "design-system-react",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "Salesforce Lightning Design System for React",
   "license": "SEE LICENSE IN README.md",
   "engines": {
@@ -18,16 +18,16 @@
     "heroku-postbuild": "./scripts/heroku-postbuild.sh",
     "icons": "./node_modules/.bin/babel-node scripts/inline-icons.js",
     "link": "./scripts/npm-link.sh",
-    "lint": "./node_modules/.bin/eslint --config=./.eslintrc \"**/*.{js,jsx}\"",
+    "lint": "./node_modules/.bin/eslint \"**/*.{js,jsx}\"",
     "lint-non-prod": "./node_modules/.bin/eslint \"{examples,tests}/**/*.{js,jsx}\"",
-    "lint-prod": "./node_modules/.bin/eslint --config=./.eslintrc \"{components,utilities}/**/*.{js,jsx}\"",
+    "lint-prod": "./node_modules/.bin/eslint \"{components,utilities}/**/*.{js,jsx}\"",
     "lint-staged": "lint-staged",
     "publish-to-git": "./node_modules/.bin/babel-node scripts/publish-to-git.js",
     "publish-to-edge": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge",
     "publish-to-upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
     "release-patch": "./node_modules/.bin/babel-node scripts/release.js --release=patch",
     "release-minor": "./node_modules/.bin/babel-node scripts/release.js --release=minor",
-    "snapshot-test": "jest",
+    "snapshot-test": "./node_modules/.bin/jest",
     "start": "./node_modules/.bin/start-storybook -p 9001 -s ./node_modules & node tests/app",
     "storybook": "start-storybook -p 9001 -s ./node_modules",
     "test": "scripts/test.sh",
@@ -39,7 +39,7 @@
     "url": "https://github.com/salesforce-ux/design-system-react"
   },
   "jest": {
-    "testRegex": "/tests/.*\\.snapshot-test\\.jsx?$",
+    "testRegex": "/components/.*\\.snapshot-test\\.jsx?$",
     "testEnvironment": "node"
   },
   "keywords": [
@@ -131,6 +131,7 @@
     "eslint-plugin-react": "^7.1.0",
     "express": "^4.15.5",
     "file-loader": "^0.11.0",
+    "find-remove": "^1.1.0",
     "fs-extra": "^3.0.0",
     "istanbul-instrumenter-loader": "^2.0.0",
     "jest": "^21.2.1",
@@ -182,6 +183,28 @@
     "test"
   ],
   "components": [
+    {
+      "component": "accordion",
+      "status": "prod",
+      "display-name": "Accordions",
+      "SLDS-component-path": "/components/accordions",
+      "dependencies": [
+        {
+          "component": "panel"
+        }
+      ]
+    },
+    {
+      "component": "alert",
+      "status": "prod",
+      "display-name": "Alerts",
+      "SLDS-component-path": "/components/alerts",
+      "dependencies": [
+        {
+          "component": "container"
+        }
+      ]
+    },
     {
       "component": "app-launcher",
       "status": "prod",
@@ -285,6 +308,12 @@
       "SLDS-component-path": "/components/icons"
     },
     {
+      "component": "icon-settings",
+      "status": "prod",
+      "display-name": "Icon Settings",
+      "SLDS-component-path": "/components/icons-settings"
+    },
+    {
       "component": "filter",
       "status": "prototype",
       "display-name": "Filters",
@@ -360,23 +389,6 @@
       ]
     },
     {
-      "component": "lookup",
-      "status": "prod",
-      "display-name": "Lookups",
-      "SLDS-component-path": "/components/lookups",
-      "dependencies": [
-        {
-          "component": "footer"
-        },
-        {
-          "component": "header"
-        },
-        {
-          "component": "section-divider"
-        }
-      ]
-    },
-    {
       "component": "media-object",
       "status": "prod",
       "display-name": "Media Objects",
@@ -394,12 +406,6 @@
       ]
     },
     {
-      "component": "menu-picklist",
-      "status": "prod",
-      "display-name": "Picklist Menus",
-      "SLDS-component-path": "/components/menus#flavor-picklist"
-    },
-    {
       "component": "modal",
       "status": "prod",
       "display-name": "Modals",
@@ -410,12 +416,6 @@
       "status": "prod",
       "display-name": "Navigation",
       "SLDS-component-path": "/components/navigation"
-    },
-    {
-      "component": "notification",
-      "status": "prod",
-      "display-name": "Notifications",
-      "SLDS-component-path": "/components/notifications"
     },
     {
       "component": "panel",
@@ -453,6 +453,12 @@
       "SLDS-component-path": "/components/progress-indicator"
     },
     {
+      "component": "progress-ring",
+      "status": "prod",
+      "display-name": "Progress Ring",
+      "SLDS-component-path": "/components/progress-ring"
+    },
+    {
       "component": "forms/radio",
       "status": "prod",
       "display-name": "Radios",
@@ -484,6 +490,17 @@
       "dependencies": [
         {
           "component": "panel"
+        }
+      ]
+    },
+    {
+      "component": "toast",
+      "status": "prod",
+      "display-name": "Toasts",
+      "SLDS-component-path": "/components/toasts",
+      "dependencies": [
+        {
+          "component": "container"
         }
       ]
     },

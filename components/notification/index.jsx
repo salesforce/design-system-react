@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Button from '../button';
 import Icon from '../icon';
+import checkProps from './check-props';
 
 const displayName = 'Notification';
 const propTypes = {
@@ -63,6 +64,8 @@ class Notification extends React.Component {
 	}
 
 	componentDidMount () {
+		checkProps('Notification', this.props);
+
 		if (this.props.duration) {
 			this.timeout = setTimeout(() => {
 				this.onDismiss();
