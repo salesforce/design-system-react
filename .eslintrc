@@ -102,6 +102,9 @@
     // THE FOLLOWING RULES NEED REVIEW IN THE FUTURE (and hopefully removed)
     //
 
+    // static class properties/method is still too low of a babel stage
+    "class-methods-use-this": "warn",
+    // We are open to changing this to always use a trailing comma
     "comma-dangle": [2, "never"],
     // currently used in older files
     "no-param-reassign": [1, {

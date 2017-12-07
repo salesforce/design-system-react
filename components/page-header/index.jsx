@@ -18,6 +18,7 @@ import DetailBlock from './private/detail-block';
 import Base from './private/base';
 import RecordHome from './private/record-home';
 import ObjectHome from './private/object-home';
+import RelatedList from './private/related-list';
 import Icon from '../icon';
 import Breadcrumb from '../breadcrumb';
 

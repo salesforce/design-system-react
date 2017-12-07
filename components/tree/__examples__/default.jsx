@@ -266,7 +266,7 @@ const sampleNodes = {
 };
 
 
-const TreeExample = createReactClass({
+const Example = createReactClass({
 	displayName: 'TreeExample',
 
 	// ### Prop Types
@@ -340,12 +340,12 @@ const TreeExample = createReactClass({
 			<IconSettings iconPath="/assets/icons">
 				<div>
 					<Tree
+						heading="Miscellaneous Foods"
 						nodes={this.state.nodes}
 						onExpandClick={this.handleExpandClick}
 						onClick={this.handleClick}
 						onScroll={this.handleScroll}
 						searchTerm={this.state.searchTerm}
-						{...this.props}
 					/>
 				</div>
 			</IconSettings>
@@ -353,4 +353,4 @@ const TreeExample = createReactClass({
 	}
 });
 
-ReactDOM.render(<TreeExample heading="Miscellaneous Foods" />, mountNode);
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

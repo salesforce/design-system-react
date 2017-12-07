@@ -12,7 +12,7 @@ const Example = createReactClass({
 				<div className="-x-small-buttons--horizontal">
 					<Button
 						label="Base"
-						onClick={() => { console.log('Base Button e.target:', e.target); }}
+						onClick={(e) => { console.log('Base Button e.target:', e.target); }}
 						variant="base"
 					/>
 

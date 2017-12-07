@@ -31,7 +31,7 @@ const Example = createReactClass({
 						iconName="sort"
 						iconVariant="more"
 						id="icon-dropdown-example"
-						onSelect={() => { console.log(item.label, 'selected'); }}
+						onSelect={(item) => { console.log(item.label, 'selected'); }}
 						openOn="click"
 						options={[
 							{ label: 'Sort ascending', value: 'A0' },
