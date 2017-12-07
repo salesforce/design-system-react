@@ -1,9 +1,0 @@
-{
-  "rules": {
-    "max-len": "off",
-    "no-script-url": "off",
-    "no-alert": "off",
-    "no-console": "off",
-    "no-unused-vars": "off"
-  }
-}
