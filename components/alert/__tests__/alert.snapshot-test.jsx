@@ -8,38 +8,47 @@ import Offline from '../__examples__/offline';
 import Dismissable from '../__examples__/dismissable';
 import CustomClassNames from '../__examples__/custom-class-name';
 
+import { ALERT } from '../../../utilities/constants';
+
+
 testDOMandHTML({
 	name: 'Alert Info',
 	test,
-	Component: Info
+	Component: Info,
+	ComponentKind: ALERT
 });
 
 testDOMandHTML({
 	name: 'Alert Warning',
 	test,
-	Component: Warning
+	Component: Warning,
+	ComponentKind: ALERT
 });
 
 testDOMandHTML({
 	name: 'Alert Error',
 	test,
-	Component: ErrorAlert
+	Component: ErrorAlert,
+	ComponentKind: ALERT
 });
 
 testDOMandHTML({
 	name: 'Alert Offline',
 	test,
-	Component: Offline
+	Component: Offline,
+	ComponentKind: ALERT
 });
 
 testDOMandHTML({
 	name: 'Alert Dismissable',
 	test,
-	Component: Dismissable
+	Component: Dismissable,
+	ComponentKind: ALERT
 });
 
 testDOMandHTML({
 	name: 'Alert Custom Class Name',
 	test,
-	Component: CustomClassNames
+	Component: CustomClassNames,
+	ComponentKind: ALERT
 });
