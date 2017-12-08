@@ -39,6 +39,10 @@ const testDOMandHTML = ({ name, test, Component, ComponentKind }) => {
 	});
 
 	describe(`${name} Visual Snapshot`, () => {
+		if (ComponentKind === undefined) {
+			return;
+		}
+
 		let chrome = null;
 
 		beforeEach(() => {
