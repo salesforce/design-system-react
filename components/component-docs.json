@@ -7966,6 +7966,219 @@
             }
         ]
     },
+    "pill": {
+        "description": "",
+        "methods": [
+            {
+                "name": "renderIcon",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "renderLabel",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "renderRemoveIcon",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "focus",
+                "docblock": "Give focus to the Pill component.",
+                "modifiers": [],
+                "params": [],
+                "returns": null,
+                "description": "Give focus to the Pill component."
+            },
+            {
+                "name": "blur",
+                "docblock": "Removes focus from the component.",
+                "modifiers": [],
+                "params": [],
+                "returns": null,
+                "description": "Removes focus from the component."
+            },
+            {
+                "name": "handleKeyUp",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "...rest",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleRef",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "root",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "renderAsLink",
+                "docblock": "Indicates if the pill should be styled as a link. The link styling is applied if either of the following is true:\n1) href property is set\n2) onClick property is set to a function\n3) the value of the link property is true\nThe link styling is not if neither of the above is true or if the link property is set to false.\n@returns {boolean}",
+                "modifiers": [],
+                "params": [],
+                "returns": {
+                    "description": null,
+                    "type": {
+                        "name": "boolean"
+                    }
+                },
+                "description": "Indicates if the pill should be styled as a link. The link styling is applied if either of the following is true:\n1) href property is set\n2) onClick property is set to a function\n3) the value of the link property is true\nThe link styling is not if neither of the above is true or if the link property is set to false."
+            },
+            {
+                "name": "getHref",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "restProps",
+                "docblock": "Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component.",
+                "modifiers": [],
+                "params": [],
+                "returns": null,
+                "description": "Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component."
+            }
+        ],
+        "props": {
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Pill's label\n_Tested with Mocha framework._"
+            },
+            "title": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Pill's title\n_Tested with Mocha framework._"
+            },
+            "className": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "A set of additional styles.\n_Tested with Mocha framework._"
+            },
+            "href": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "An href to use if the pill is shown as a link.\n_Tested with Mocha framework._"
+            },
+            "bare": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Applies the bare style to the component.\n_Tested with Mocha framework._"
+            },
+            "hasError": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Applies the error style to the component.\n_Tested with Mocha framework._"
+            },
+            "link": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "The component applies the link style if either of the href or onClick properties are set. If this behavior is not desirable,\nthe link property forces the component to apply (true) or remove (false) the link style, regardless of whether\nthe href or onClick are set.\n_Tested with Mocha framework._"
+            },
+            "icon": {
+                "type": {
+                    "name": "element"
+                },
+                "required": false,
+                "description": "SLDSIcon component to show on the left of the pill.\n_Tested with Mocha framework._"
+            },
+            "avatar": {
+                "type": {
+                    "name": "element"
+                },
+                "required": false,
+                "description": "SLDSAvatar component to show on the left of the pill.\n_Tested with Mocha framework._"
+            },
+            "onClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "onClick callback executes when a user clicks on the pill or presses the Enter key.\n_Tested with Mocha framework._\n@callback"
+            },
+            "onRemove": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "onRemove callback executes when a user clicks on the pill's remove icon or presses the delete or the backspace keys.\n_Tested with Mocha framework._\n@callback"
+            },
+            "removeTitle": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "A title to use for the remove icon.\n_Tested with Mocha framework._"
+            },
+            "removeAssistiveText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Assistive text to use in the remove icon. Uses removeTitle, if not specified.\n_Tested with Mocha framework._"
+            },
+            "role": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Role to use for the pill. Default role: button.\n_Tested with Mocha framework._",
+                "defaultValue": {
+                    "value": "'button'",
+                    "computed": false
+                }
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "This is a way to specify custom contents for the pill in the case a simple text label is not enough.\n_Tested with Mocha framework._"
+            }
+        },
+        "route": "pills",
+        "display-name": "Pills",
+        "SLDS-component-path": "/components/pills",
+        "dependencies": []
+    },
     "popover": {
         "description": "The Popover component is a non-modal dialog. It should be paired with a clickable trigger such as a `Button`. It traps focus from the page and must be exited if focus needs to be outside the Popover. Use a `Tooltip` if there are no call to actions within the dialog. A `Tooltip` does not need to be clicked. Multiple popovers open at the same time, each with focus trap is not supported.",
         "methods": [

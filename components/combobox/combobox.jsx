@@ -247,7 +247,7 @@ class Combobox extends React.Component {
    */
 
 	getId = () => this.props.id || this.generatedId;
-	
+
 	getIsOpen = () => !!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
 
 	getIsActiveOption = () => this.state.activeOption && this.state.activeOptionIndex !== -1;
