@@ -5,43 +5,81 @@
     "ecmaVersion": 7,
     "sourceType": "module",
     "ecmaFeatures": {
+      "classes": true,
       "experimentalObjectRestSpread": true,
-      "jsx": true,
       "impliedStrict": true,
+      "jsx": true,
       "modules": true
     }
   },
   "env": {
     "browser": true
   },
+  "overrides": [
+    {
+      "files": [
+        "*.{js,jsx}",
+        "**/__tests__/*.{js,jsx}",
+        "**/__docs__/*.{js,jsx}",
+        "tests/*.{js,jsx}",
+        "scripts/*.js",
+        "**/site-stories.js"
+      ],
+      "rules": {
+        "import/no-extraneous-dependencies": "off",
+        "import/no-webpack-loader-syntax": "off",
+        "max-len": "off",
+        "no-script-url": "off",
+        "no-console": "off",
+        "no-unused-vars": "off"
+      }
+    },
+    {
+      "files": [
+        "*.{js,jsx}",
+        "**/__tests__/*.{js,jsx}",
+        "**/__docs__/*.{js,jsx}",
+        "tests/*.{js,jsx}",
+        "scripts/*.js",
+        "**/site-stories.js"
+      ],
+      "env": {
+        "browser": true,
+        "jest": true,
+        "mocha": true
+      },
+      "globals": {
+        "chai": true,
+        "jest": true,
+        "sinon": true
+      },
+      "rules": {
+        "max-len": "off",
+        "no-script-url": "off",
+        "no-alert": "off",
+        "no-console": "off",
+        "no-unused-expressions": "off",
+        "no-unused-vars": "off",
+        "prefer-arrow-callback": "off",
+        "react/display-name": "off"
+      }
+    }
+  ],
   "rules": {
-    "import/no-unresolved": [2, { "ignore": ["^[~]"] }],
     "arrow-parens": [1, "always"],
     "import/extensions": "off",
-    "no-underscore-dangle": ["error", { "allowAfterThis": true }],
-    "comma-dangle": [2, "never"],
-    "id-length": [2, {
-      "min": 2,
-      "properties": "never",
-      "exceptions": ["$", "_", "e", "i", "j", "a", "b", "n"]
-    }],
-    "import/first": 0,
-    "import/no-extraneous-dependencies": 0,
-    "import/no-webpack-loader-syntax": 0,
+    "import/first": 1,
+    "import/no-unresolved": [2, { "ignore": ["^[~]"] }],
     "indent": [2, "tab", {
       "SwitchCase": 1
     }],
-    "func-names": 0,
     "max-len": [1, 140, 4, {
       "ignoreUrls": true,
       "ignoreComments": true,
       "ignorePattern": "^(\\s*)<([^\"{}();])+$"
     }],
-    "no-bitwise": 0,
-    "no-case-declarations": 1,
-    "no-console": 1,
     "no-multi-spaces": [1, {
-      // Object keys are Abstract Syntax Tree types
+      // allows "column spacing." Following key names are Abstract Syntax Tree types
       "exceptions": {
         "VariableDeclarator": true,
         "Property": true,
@@ -50,65 +88,51 @@
         "JSXAttribute": true
       }
     }],
-    "no-param-reassign": [1, {
-      "props": false
-    }],
-    "no-plusplus": 0,
     "no-tabs": 0,
-    "no-trailing-spaces": [2, {
-      "skipBlankLines": true
-    }],
-    "no-undef": 1,
-    "prefer-template": 1,
+    "no-underscore-dangle": ["error", { "allowAfterThis": true }],
     "space-before-function-paren": [2, "always"],
-    "vars-on-top": 1,
+
+    // Can't be used because it doesn't currently recognize props used in functions
+    "react/no-unused-prop-types": 0,
+    "react/jsx-indent": [2, "tab"],
+    // indent props passed into React component
+    "react/jsx-indent-props": [1, "tab"],
 
     //
-    // eslint-plugin-react
-    // https://github.com/yannickcr/eslint-plugin-react
+    // THE FOLLOWING RULES NEED REVIEW IN THE FUTURE (and hopefully removed)
     //
-    // Prevent missing displayName in a React component definition
-    "react/display-name": [1, {
-      "ignoreTranspilerName": true
+
+    "comma-dangle": [2, "never"],
+    // currently used in older files
+    "no-param-reassign": [1, {
+      "props": true
     }],
-    // Used to prevent usage of any, array, and object but may be too strict currently
-    "react/forbid-prop-types": 0,
-    "react/jsx-indent": [2, "tab"],
-    // indent props passed to React component
-    "react/jsx-indent-props": [1, "tab"],
-    // Enforce event handler naming conventions in JSX
-    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md
-    "react/jsx-handler-names": [0, {
-      "eventHandlerPrefix": "_handle",
-      "eventHandlerPropPrefix": "on"
-    }],
-    // Disallow undeclared variables in JSX
-    "react/jsx-no-undef": 2,
-    // Prevent multiple component definition per file
-    "react/no-multi-comp": 0,
-    // Prevent usage of unknown DOM property
-    "react/no-unknown-property": 2,
-    // Can"t be used because it doesn"t currently recognize props used in functions
-    "react/no-unused-prop-types": 0,
-    // ES6 classes vs React"s createClass method - disabled while we consider migrating to classes
-    "react/prefer-es6-class": 0,
-    // Don"t enforce stateless React Components to be written as a pure function (for now)
-    "react/prefer-stateless-function": 0,
+    // currently used in older files
+    "no-plusplus": 1,
+    "no-mixed-operators": ["error", {"allowSamePrecedence": true}],
+
     // Prevent missing props validation in a React component definition
     "react/prop-types": 1,
-    // Don"t throw errors when explicit defaults aren"t set
+    // We are migrating to classes
+    "react/prefer-es6-class": 1,
+    // Used to prevent usage of any, array, and object but may be too strict currently
+    "react/forbid-prop-types": 0,
+    // Don't throw errors when explicit defaults aren't set
     "react/require-default-props": 0,
+    // Components that are top-level should be classes, so the DOM ref exists
+    "react/prefer-stateless-function": 1,
+    // Prevent multiple component definition per file
+    "react/no-multi-comp": 1,
     // Prevent sorting of props or propTypes
-    "react/sort-comp": 0,
+    "react/sort-comp": 1,
 
-    // New rules temporarily disabled
-    "jsx-a11y/aria-activedescendant-has-tabindex": 0,
-    "jsx-a11y/interactive-supports-focus": 0,
-    "jsx-a11y/no-autofocus": 0,
-    "jsx-a11y/no-interactive-element-to-noninteractive-role": 0,
-    "jsx-a11y/no-noninteractive-element-interactions": 0,
-    "jsx-a11y/no-noninteractive-tabindex": 0,
-    "jsx-a11y/no-redundant-roles": 0,
-    "jsx-a11y/role-has-required-aria-props": 0
+    "jsx-a11y/aria-activedescendant-has-tabindex": 1,
+    "jsx-a11y/interactive-supports-focus": 1,
+    "jsx-a11y/no-autofocus": 1,
+    "jsx-a11y/no-interactive-element-to-noninteractive-role": 1,
+    "jsx-a11y/no-noninteractive-element-interactions": 1,
+    "jsx-a11y/no-noninteractive-tabindex": 1,
+    "jsx-a11y/no-redundant-roles": 1,
+    "jsx-a11y/role-has-required-aria-props": 1
   }
 }

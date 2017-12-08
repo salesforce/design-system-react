@@ -1,6 +1,4 @@
 /* eslint-disable no-console, max-len */
-console.log('# Generating docs based on `components` object in `package.json`. Please add any public components to this object.');
-
 import { parse } from 'react-docgen';
 import fs from 'fs';
 import path from 'path';
@@ -11,6 +9,10 @@ import util from 'util';
 import { parse as bParse } from 'babylon';
 import { components } from '../package.json';
 
+console.log(
+	'# Generating docs based on `components` object in `package.json`. Please add any public components to this object.'
+);
+
 const output = {};
 const outputAst = {};
 
@@ -20,11 +22,7 @@ components.map((node) => {
 	dirName.pop();
 	dirName = dirName.join('/');
 
-	let inputPath = path.join(
-		__dirname,
-		'../components',
-		node.component
-	);
+	let inputPath = path.join(__dirname, '../components', node.component);
 
 	// If index.jsx is just a wrapping of the component, then use the [COMPONENT_NAME].jsx file for props.
 
