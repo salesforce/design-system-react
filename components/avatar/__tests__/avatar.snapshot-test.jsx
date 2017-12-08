@@ -1,6 +1,5 @@
 /* eslint-env jest */
-import React from 'react';
-import renderer from 'react-test-renderer';
+import { testDOMandHTML } from '../../../tests/snapshot-helpers';
 
 import SnapshotBase from '../__examples__/base';
 import SnapshotEntityIcon from '../__examples__/entity-icon';
@@ -8,37 +7,39 @@ import SnapshotEntityInitials from '../__examples__/entity-initials';
 import SnapshotUserIcon from '../__examples__/user-icon';
 import SnapshotUserInitials from '../__examples__/user-initials';
 
-test('Avatar Base DOM Snapshot', () => {
-	const domTree = renderer.create(
-		<SnapshotBase />
-	).toJSON();
-	expect(domTree).toMatchSnapshot();
+import { AVATAR } from '../../../utilities/constants';
+
+testDOMandHTML({
+	name: 'Avatar Base',
+	test,
+	Component: SnapshotBase,
+	ComponentKind: AVATAR
 });
 
-test('Avatar Entity Icon Snapshot', () => {
-	const domTree = renderer.create(
-		<SnapshotEntityIcon />
-	).toJSON();
-	expect(domTree).toMatchSnapshot();
+testDOMandHTML({
+	name: 'Avatar Entity Icon Snapshot',
+	test,
+	Component: SnapshotEntityIcon,
+	ComponentKind: AVATAR
 });
 
-test('Avatar Entity Initials Snapshot', () => {
-	const domTree = renderer.create(
-		<SnapshotEntityInitials />
-	).toJSON();
-	expect(domTree).toMatchSnapshot();
+testDOMandHTML({
+	name: 'Avatar Entity Initials Snapshot',
+	test,
+	Component: SnapshotEntityInitials,
+	ComponentKind: AVATAR
 });
 
-test('Avatar User Icon Snapshot', () => {
-	const domTree = renderer.create(
-		<SnapshotUserIcon />
-	).toJSON();
-	expect(domTree).toMatchSnapshot();
+testDOMandHTML({
+	name: 'Avatar User Icon Snapshot',
+	test,
+	Component: SnapshotUserIcon,
+	ComponentKind: AVATAR
 });
 
-test('Avatar User Initials Snapshot', () => {
-	const domTree = renderer.create(
-		<SnapshotUserInitials />
-	).toJSON();
-	expect(domTree).toMatchSnapshot();
+testDOMandHTML({
+	name: 'Avatar User Initials Snapshot',
+	test,
+	Component: SnapshotUserInitials,
+	ComponentKind: AVATAR
 });

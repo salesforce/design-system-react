@@ -15,6 +15,8 @@ exports[`Avatar Base DOM Snapshot 1`] = `
 </div>
 `;
 
+exports[`Avatar Base HTML Snapshot 1`] = `"<div><span class=\\"slds-avatar slds-avatar_circle slds-avatar_medium\\"><img alt=\\"Person Name\\" src=\\"https://lightningdesignsystem.com/assets/images/avatar2.jpg\\" title=\\"user avatar\\"/></span></div>"`;
+
 exports[`Avatar Entity Icon Snapshot 1`] = `
 <div>
   <span
@@ -43,6 +45,40 @@ exports[`Avatar Entity Icon Snapshot 1`] = `
 </div>
 `;
 
+exports[`Avatar Entity Icon Snapshot DOM Snapshot 1`] = `
+<div>
+  <span
+    className="slds-avatar slds-avatar_medium"
+  >
+    <span
+      className="slds-icon_container slds-icon-standard-account"
+      title={undefined}
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon"
+        style={undefined}
+      >
+        <use
+          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Account icon avatar
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Avatar Entity Icon Snapshot HTML Snapshot 1`] = `
+"<div><span class=\\"slds-avatar slds-avatar_medium\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account icon avatar</span></span>
+  </span>
+</div>"
+`;
+
 exports[`Avatar Entity Initials Snapshot 1`] = `
 <div>
   <span
@@ -57,6 +93,23 @@ exports[`Avatar Entity Initials Snapshot 1`] = `
   </span>
 </div>
 `;
+
+exports[`Avatar Entity Initials Snapshot DOM Snapshot 1`] = `
+<div>
+  <span
+    className="slds-avatar slds-avatar_medium"
+  >
+    <abbr
+      className="slds-avatar__initials slds-icon-standard-account"
+      title="Acme Communications"
+    >
+      AC
+    </abbr>
+  </span>
+</div>
+`;
+
+exports[`Avatar Entity Initials Snapshot HTML Snapshot 1`] = `"<div><span class=\\"slds-avatar slds-avatar_medium\\"><abbr class=\\"slds-avatar__initials slds-icon-standard-account\\" title=\\"Acme Communications\\">AC</abbr></span></div>"`;
 
 exports[`Avatar User Icon Snapshot 1`] = `
 <div>
@@ -86,6 +139,40 @@ exports[`Avatar User Icon Snapshot 1`] = `
 </div>
 `;
 
+exports[`Avatar User Icon Snapshot DOM Snapshot 1`] = `
+<div>
+  <span
+    className="slds-avatar slds-avatar_circle slds-avatar_medium"
+  >
+    <span
+      className="slds-icon_container slds-icon-standard-user"
+      title={undefined}
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon"
+        style={undefined}
+      >
+        <use
+          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#user"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        User Icon Avatar
+      </span>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Avatar User Icon Snapshot HTML Snapshot 1`] = `
+"<div><span class=\\"slds-avatar slds-avatar_circle slds-avatar_medium\\"><span class=\\"slds-icon_container slds-icon-standard-user\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#user\\"></use></svg><span class=\\"slds-assistive-text\\">User Icon Avatar</span></span>
+  </span>
+</div>"
+`;
+
 exports[`Avatar User Initials Snapshot 1`] = `
 <div>
   <span
@@ -100,3 +187,20 @@ exports[`Avatar User Initials Snapshot 1`] = `
   </span>
 </div>
 `;
+
+exports[`Avatar User Initials Snapshot DOM Snapshot 1`] = `
+<div>
+  <span
+    className="slds-avatar slds-avatar_circle slds-avatar_medium"
+  >
+    <abbr
+      className="slds-avatar__initials slds-icon-standard-user"
+      title="Annie Wilson"
+    >
+      AW
+    </abbr>
+  </span>
+</div>
+`;
+
+exports[`Avatar User Initials Snapshot HTML Snapshot 1`] = `"<div><span class=\\"slds-avatar slds-avatar_circle slds-avatar_medium\\"><abbr class=\\"slds-avatar__initials slds-icon-standard-user\\" title=\\"Annie Wilson\\">AW</abbr></span></div>"`;
