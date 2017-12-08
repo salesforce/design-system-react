@@ -8,7 +8,9 @@ Testing is done using Mocha, Jest, and Storybook. Roughly speaking: Jest tests H
 
 ### Running Tests
 - Run Karma/PhantomJS environment tests with `npm test`
-- Test interactively in your browser. Start server from terminal with `npm start` and browse to [http://localhost:8001](http://localhost:8001)
+- Test interactively in your browser. 
+  - Start server from terminal with `npm start` 
+  - browse to [http://localhost:8001](http://localhost:8001)
 
 ### Tools Used
 - **PhantomJS
@@ -90,7 +92,10 @@ Files ending in `.browser-test.jsx` will be run by CI server and in browser.
   * Because they are often easier to debug in the browser, mouse/keyboard user interaction testing should be done using Mocha.
 
 ### Storybook
-* Add each Jest snapshot as a story to Storybook for manual testing.
+
+Add each Jest snapshot as a story to Storybook for manual testing.
+
+`npm start` and browse to [http://localhost:9001](http://localhost:9001) to view Storybooks.
 
 
 ## Sample Mocha Test File
