@@ -5,9 +5,7 @@ import { renderMarkup } from '../../../tests/snapshot-helpers';
 import SnapshotDefault from '../__examples__/snapshot-default';
 
 test('Navigation Default DOM Snapshot', () => {
-	const domTree = renderer.create(
-		<SnapshotDefault />,
-	).toJSON();
+	const domTree = renderer.create(<SnapshotDefault />).toJSON();
 	expect(domTree).toMatchSnapshot();
 });
 
@@ -27,10 +25,8 @@ test(`Navigation
 		id,
 		variant
 	DOM Snapshot`, () => {
-	const domTree = renderer.create(
-		<SnapshotDefault
-			{...customProps}
-		/>,
-	).toJSON();
-	expect(domTree).toMatchSnapshot();
-});
+		const domTree = renderer
+			.create(<SnapshotDefault {...customProps} />)
+			.toJSON();
+		expect(domTree).toMatchSnapshot();
+	});

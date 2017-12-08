@@ -10,22 +10,18 @@ const Example = createReactClass({
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div className="-x-small-buttons--horizontal">
-					<Button
-						label="Brand"
-						variant="brand"
-					/>
+					<Button label="Brand" variant="brand" />
 
 					<Button
 						disabled
 						label="Disabled"
-						onClick={() => { alert('Disabled Button Clicked'); }}
+						onClick={() => {
+							alert('Disabled Button Clicked');
+						}}
 						variant="brand"
 					/>
 
-					<Button
-						label="Destructive"
-						variant="destructive"
-					/>
+					<Button label="Destructive" variant="destructive" />
 
 					<div
 						style={{
@@ -35,11 +31,7 @@ const Example = createReactClass({
 						}}
 						className="-m-horizontal--small"
 					>
-						<Button
-							inverse
-							label="Inverse"
-							variant="base"
-						/>
+						<Button inverse label="Inverse" variant="base" />
 					</div>
 				</div>
 			</IconSettings>
@@ -47,5 +39,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
-
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

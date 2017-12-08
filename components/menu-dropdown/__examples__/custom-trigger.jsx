@@ -22,11 +22,7 @@ const Example = createReactClass({
 					]}
 				>
 					<DropdownTrigger>
-						<Button
-							iconName="down"
-							iconPosition="right"
-							label="Dropdown"
-						/>
+						<Button iconName="down" iconPosition="right" label="Dropdown" />
 					</DropdownTrigger>
 				</Dropdown>
 			</IconSettings>
@@ -34,4 +30,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

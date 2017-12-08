@@ -20,8 +20,8 @@ const propTypes = {
 	 */
 	children: PropTypes.node.isRequired,
 	/**
-	* Custom CSS classes added to the node.
-	*/
+	 * Custom CSS classes added to the node.
+	 */
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
@@ -66,12 +66,13 @@ const defaultProps = { labels: {} };
  * The RadioGroup component wraps [Radio](/components/radios) components, which should be used as children.
  */
 class RadioGroup extends React.Component {
-
 	constructor (props) {
 		super(props);
 
 		// Merge objects of strings with their default object
-		this.labels = this.props.labels ? assign({}, defaultProps.labels, this.props.labels) : defaultProps.labels;
+		this.labels = this.props.labels
+			? assign({}, defaultProps.labels, this.props.labels)
+			: defaultProps.labels;
 
 		this.generatedName = shortid.generate();
 		this.generatedErrorId = this.labels.error ? shortid.generate() : null;
@@ -109,19 +110,29 @@ class RadioGroup extends React.Component {
 				})}
 			>
 				<legend className="slds-form-element__legend slds-form-element__label">
-					{this.props.required ? <abbr className="slds-required" title="required">*</abbr> : null}
+					{this.props.required ? (
+						<abbr className="slds-required" title="required">
+							*
+						</abbr>
+					) : null}
 					{this.labels.label}
 				</legend>
-				<div className={classNames('slds-form-element__control', this.props.className)}>
+				<div
+					className={classNames(
+						'slds-form-element__control',
+						this.props.className
+					)}
+				>
 					{children}
-					{this.labels.error ?
+					{this.labels.error ? (
 						<div id={this.getErrorId()} className="slds-form-element__help">
 							{this.labels.error}
-						</div> : null}
+						</div>
+					) : null}
 				</div>
-			</fieldset>);
+			</fieldset>
+		);
 	}
-
 }
 
 RadioGroup.displayName = RADIO_GROUP;

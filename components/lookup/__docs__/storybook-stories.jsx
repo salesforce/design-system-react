@@ -31,7 +31,9 @@ const DemoLookup = createReactClass({
 	render () {
 		return (
 			<div>
-				<div><SLDSButton onClick={this.clearSelected}>Clear Selected</SLDSButton></div>
+				<div>
+					<SLDSButton onClick={this.clearSelected}>Clear Selected</SLDSButton>
+				</div>
 				<Lookup
 					{...this.props}
 					onChange={action('change')}
@@ -45,7 +47,9 @@ const DemoLookup = createReactClass({
 
 	handleSelect (selectedItem, ...rest) {
 		action('select')(selectedItem, ...rest);
-		this.setState({ currentSelected: this.state.options.indexOf(selectedItem) });
+		this.setState({
+			currentSelected: this.state.options.indexOf(selectedItem)
+		});
 	}
 });
 
@@ -55,7 +59,7 @@ const DemoLookupAccounts = createReactClass({
 	getInitialState () {
 		return {
 			options: [
-				{ label: 'Paddy\'s Pub', subTitle: 'Boston, MA' },
+				{ label: "Paddy's Pub", subTitle: 'Boston, MA' },
 				{ label: 'Tyrell Corp', subTitle: 'San Francisco, CA' },
 				{ label: 'Paper St. Soap Company', subTitle: 'Beloit, WI' },
 				{ label: 'Nakatomi Investments', subTitle: 'Chicago, IL' },
@@ -85,27 +89,32 @@ const DemoLookupAccounts = createReactClass({
 });
 
 storiesOf(LOOKUP, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
-	.add('Standard', () => (<DemoLookup
-		emptyMessage="No Files found"
-		hasError={false}
-		iconCategory="utility"
-		iconName="open_folder"
-		isInline
-		label="Files"
-	/>))
-	.add('Disabled', () => (<DemoLookup
-		disabled
-	/>))
-	.add('Standard with Accounts', () => (<DemoLookupAccounts
-		emptyMessage="No Accounts found"
-		hasError={false}
-		iconCategory="standard"
-		iconName="account"
-		isInline
-		label="Account"
-	/>))
-	.add('Custom Empty Message Content', () => (<DemoLookup
-		emptyMessage={<span>No matches.</span>}
-		isInline
-	/>));
+	.addDecorator((getStory) => (
+		<div className="slds-p-around--medium">
+			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+		</div>
+	))
+	.add('Standard', () => (
+		<DemoLookup
+			emptyMessage="No Files found"
+			hasError={false}
+			iconCategory="utility"
+			iconName="open_folder"
+			isInline
+			label="Files"
+		/>
+	))
+	.add('Disabled', () => <DemoLookup disabled />)
+	.add('Standard with Accounts', () => (
+		<DemoLookupAccounts
+			emptyMessage="No Accounts found"
+			hasError={false}
+			iconCategory="standard"
+			iconName="account"
+			isInline
+			label="Account"
+		/>
+	))
+	.add('Custom Empty Message Content', () => (
+		<DemoLookup emptyMessage={<span>No matches.</span>} isInline />
+	));

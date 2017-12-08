@@ -11,9 +11,7 @@ const should = chai.should();
 import AppLauncherTile from '../../app-launcher/tile';
 import Icon from '../../icon';
 
-const {
-	Simulate
-} = TestUtils;
+const { Simulate } = TestUtils;
 
 describe('SLDS APP LAUNCHER TILE *******************************************', () => {
 	let div;
@@ -31,7 +29,8 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		title: 'Marketing Cloud'
 	};
 
-	const createTile = (props) => React.createElement(AppLauncherTile, assign({}, defaultTileProps, props));
+	const createTile = (props) =>
+		React.createElement(AppLauncherTile, assign({}, defaultTileProps, props));
 
 	function mountTile (props) {
 		// This div is needed for Truncate to properly determine the description width
@@ -39,13 +38,20 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		div.style.cssText = 'width: 300px';
 		document.body.appendChild(div);
 
-		handles.tile = mount(<IconSettings iconPath="/assets/icons">{createTile(props)}</IconSettings>, { attachTo: div });
+		handles.tile = mount(
+			<IconSettings iconPath="/assets/icons">{createTile(props)}</IconSettings>,
+			{ attachTo: div }
+		);
 
 		handles.body = handles.tile.find('.slds-app-launcher__tile-body');
 		handles.description = handles.body.find('div').at(1);
 		handles.icon = handles.tile.find('.slds-app-launcher__tile-figure');
-		handles.more = handles.tile.find('.slds-app-launcher__tile-body .slds-app-launcher__tile-more');
-		handles.title = handles.tile.find('.slds-app-launcher__tile-body').childAt(0);
+		handles.more = handles.tile.find(
+			'.slds-app-launcher__tile-body .slds-app-launcher__tile-more'
+		);
+		handles.title = handles.tile
+			.find('.slds-app-launcher__tile-body')
+			.childAt(0);
 	}
 
 	function cleanDom () {
@@ -76,7 +82,9 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		});
 
 		it('renders tile with proper classes', () => {
-			should.exist(handles.tile.find('.slds-app-launcher__tile .slds-text-link--reset'));
+			should.exist(
+				handles.tile.find('.slds-app-launcher__tile .slds-text-link--reset')
+			);
 		});
 
 		it('renders tile body', () => {
@@ -92,16 +100,25 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		});
 
 		it('renders description heading', () => {
-			expect(handles.tile.find('.slds-text-heading--label').text()).to.equal('Sub Heading ');
+			expect(handles.tile.find('.slds-text-heading--label').text()).to.equal(
+				'Sub Heading '
+			);
 		});
 
 		it('renders custom app description', () => {
 			// the .at(1) would only apply when descriptionHeading is set
-			expect(handles.description.find('span').at(1).text()).to.equal('Fluffy support');
+			expect(
+				handles.description
+					.find('span')
+					.at(1)
+					.text()
+			).to.equal('Fluffy support');
 		});
 
 		it('has an href attribute', () => {
-			expect(handles.tile.find('a').node.href).to.equal('https://www.marketingcloud.com/');
+			expect(handles.tile.find('a').node.href).to.equal(
+				'https://www.marketingcloud.com/'
+			);
 		});
 
 		it('clicking tile fires callback', () => {
@@ -120,20 +137,27 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		});
 
 		it('search string highlights title', () => {
-			expect(handles.title.containsAllMatchingElements(  // eslint-disable-line no-unused-expressions
-				[<span>S</span>, <mark>upport</mark>, <span> Cloud</span>]
-			)).to.be.true;
+			expect(
+				handles.title.containsAllMatchingElements(
+					// eslint-disable-line no-unused-expressions
+					[<span>S</span>, <mark>upport</mark>, <span> Cloud</span>]
+				)
+			).to.be.true;
 		});
 
 		it('search string highlights description', () => {
-			expect(handles.description.containsAllMatchingElements( // eslint-disable-line no-unused-expressions
-				[<span>Fluffy s</span>, <mark>upport</mark>]
-			)).to.be.true;
+			expect(
+				handles.description.containsAllMatchingElements(
+					// eslint-disable-line no-unused-expressions
+					[<span>Fluffy s</span>, <mark>upport</mark>]
+				)
+			).to.be.true;
 		});
 	});
 
 	describe('App Launcher Tile (truncated)', () => {
-		const description = 'The key to call center and contact center is not to use too many words! And we will add some more words until we reach the limit.';
+		const description =
+			'The key to call center and contact center is not to use too many words! And we will add some more words until we reach the limit.';
 
 		const moreLabel = 'MORE!';
 
@@ -160,7 +184,9 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 			// const clonedNodeWithoutSpan = clonedNode.firstChild.remove();
 			// console.log(clonedNode);
 
-			expect(handles.more.node.textContent).to.equal(`${description}${moreLabel}`);
+			expect(handles.more.node.textContent).to.equal(
+				`${description}${moreLabel}`
+			);
 		});
 
 		it('long descriptions use Tooltip activated by hover', () => {
@@ -172,7 +198,12 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		});
 
 		it('search string highlights tooltip content', () => {
-			expect(handles.more.find('mark').at(0).text()).to.equal('enter');
+			expect(
+				handles.more
+					.find('mark')
+					.at(0)
+					.text()
+			).to.equal('enter');
 		});
 	});
 
@@ -190,7 +221,9 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		});
 
 		it('renders text icon with proper classes', () => {
-			expect(handles.icon.find('span').node.className).to.include('slds-avatar slds-avatar--large slds-align--absolute-center slds-icon-custom-27');
+			expect(handles.icon.find('span').node.className).to.include(
+				'slds-avatar slds-avatar--large slds-align--absolute-center slds-icon-custom-27'
+			);
 		});
 
 		it('tile can be passed a custom text icon', () => {
@@ -214,7 +247,9 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		});
 
 		it('renders <Icon> node', () => {
-			expect(handles.icon.find('span').node.className).to.include('slds-icon_container');
+			expect(handles.icon.find('span').node.className).to.include(
+				'slds-icon_container'
+			);
 		});
 
 		it('renders <svg>', () => {
@@ -254,13 +289,18 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		});
 
 		it('search string highlights title', () => {
-			expect(handles.title.containsAllMatchingElements(  // eslint-disable-line no-unused-expressions
-				[<span>S</span>, <mark>upport</mark>, <span> Cloud</span>]
-			)).to.be.true;
+			expect(
+				handles.title.containsAllMatchingElements(
+					// eslint-disable-line no-unused-expressions
+					[<span>S</span>, <mark>upport</mark>, <span> Cloud</span>]
+				)
+			).to.be.true;
 		});
 
 		it('small tile does not have app description', () => {
-			expect(handles.tile.text().indexOf('This is the app description')).to.equal(-1);
+			expect(
+				handles.tile.text().indexOf('This is the app description')
+			).to.equal(-1);
 		});
 	});
 });

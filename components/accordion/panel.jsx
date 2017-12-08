@@ -44,9 +44,21 @@ const propTypes = {
 	title: PropTypes.string
 };
 
-const AccordionPanel = ({ children, expanded, id, panelContentActions, summary, title, onTogglePanel }) => (
+const AccordionPanel = ({
+	children,
+	expanded,
+	id,
+	panelContentActions,
+	summary,
+	title,
+	onTogglePanel
+}) => (
 	<li className="slds-accordion__list-item">
-		<section className={classNames('slds-accordion__section', { 'slds-is-open': expanded })}>
+		<section
+			className={classNames('slds-accordion__section', {
+				'slds-is-open': expanded
+			})}
+		>
 			<div className="slds-accordion__summary">
 				<h3 className="slds-text-heading_small slds-accordion__summary-heading slds-has-flexi-truncate">
 					<Button
@@ -65,7 +77,11 @@ const AccordionPanel = ({ children, expanded, id, panelContentActions, summary, 
 				</h3>
 				{panelContentActions}
 			</div>
-			<div aria-hidden={!expanded} className="slds-accordion__content" id={`${id}-accordion-panel`}>
+			<div
+				aria-hidden={!expanded}
+				className="slds-accordion__content"
+				id={`${id}-accordion-panel`}
+			>
 				{children}
 			</div>
 		</section>

@@ -17,7 +17,11 @@ const propTypes = {
 	/**
 	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string
+	]),
 	/**
 	 * Decimal percentage drain of the ring [0.0 - 1.0]
 	 */
@@ -34,7 +38,8 @@ const defaultProps = {
  * @param arcX {decimal} the arc's x position
  * @param arcY {decimal} the arc's y position
  */
-const getD = (isLong, arcX, arcY) => `M 1 0 A 1 1 0 ${isLong} 1 ${arcX} ${arcY} L 0 0`;
+const getD = (isLong, arcX, arcY) =>
+	`M 1 0 A 1 1 0 ${isLong} 1 ${arcX} ${arcY} L 0 0`;
 
 /**
  * Calculates the fill part of the ring
@@ -52,7 +57,10 @@ const calculateD = (fillPercent) => {
  * Displays the progress ring shape.
  */
 const ProgressRingShape = (props) => (
-	<div id={props.id} className={classNames('slds-progress-ring', props.className)}>
+	<div
+		id={props.id}
+		className={classNames('slds-progress-ring', props.className)}
+	>
 		<div
 			className="slds-progress-ring__progress"
 			role="progressbar"
@@ -67,9 +75,7 @@ const ProgressRingShape = (props) => (
 				/>
 			</svg>
 		</div>
-		<div className="slds-progress-ring__content">
-			{props.children}
-		</div>
+		<div className="slds-progress-ring__content">{props.children}</div>
 	</div>
 );
 

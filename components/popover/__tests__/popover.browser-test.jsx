@@ -10,7 +10,10 @@ import { mount } from 'enzyme';
  * context [full source here](tests/enzyme-helpers.js). `this` can
  * only be referenced if inside `function () {}`.
  */
-import { createMountNode, destroyMountNode } from '../../../tests/enzyme-helpers';
+import {
+	createMountNode,
+	destroyMountNode
+} from '../../../tests/enzyme-helpers';
 
 // Import your internal dependencies (for example):
 import Popover from '../../popover';
@@ -95,9 +98,7 @@ describe('SLDSPopover', function () {
 		});
 
 		it('is open, has heading, body, close button', () => {
-			wrapper = mount(<DemoComponent
-				isOpen
-			/>, { attachTo: mountNode });
+			wrapper = mount(<DemoComponent isOpen />, { attachTo: mountNode });
 
 			expect(wrapper.find(`#${defaultIds.heading}`)).to.exist;
 			expect(wrapper.find(`#${defaultIds.body}`)).to.exist;
@@ -118,14 +119,16 @@ describe('SLDSPopover', function () {
 		});
 
 		it('has aria-labelledby/aria-describedby on popover', function () {
-			wrapper = mount(<DemoComponent
-				isOpen
-			/>, { attachTo: mountNode });
+			wrapper = mount(<DemoComponent isOpen />, { attachTo: mountNode });
 
 			const trigger = wrapper.find('#sample-popover');
 			const popover = wrapper.find(`#${defaultIds.popover}`);
-			expect(popover.node.getAttribute('aria-labelledby')).to.equal(`${defaultIds.heading}`);
-			expect(popover.node.getAttribute('aria-describedby')).to.equal(`${defaultIds.body}`);
+			expect(popover.node.getAttribute('aria-labelledby')).to.equal(
+				`${defaultIds.heading}`
+			);
+			expect(popover.node.getAttribute('aria-describedby')).to.equal(
+				`${defaultIds.body}`
+			);
 		});
 	});
 
@@ -153,15 +156,17 @@ describe('SLDSPopover', function () {
 		});
 
 		it('has correct className, closeButtonAssistiveText, style, and footer', function () {
-			wrapper = mount(<DemoComponent
-				{...optionalProps}
-				isOpen
-			/>, { attachTo: mountNode });
+			wrapper = mount(<DemoComponent {...optionalProps} isOpen />, {
+				attachTo: mountNode
+			});
 
 			const popover = wrapper.find(`#${defaultIds.popover}`);
 
-			expect(popover.node.classList.contains(optionalProps.className)).to.be.true;
-			expect(popover.find('.slds-popover__close').node.textContent).to.equal(optionalProps.closeButtonAssistiveText);
+			expect(popover.node.classList.contains(optionalProps.className)).to.be
+				.true;
+			expect(popover.find('.slds-popover__close').node.textContent).to.equal(
+				optionalProps.closeButtonAssistiveText
+			);
 			expect(popover.find('#footer')).to.exist;
 			expect(popover.node.style.background).to.equal(popoverBackgroundColor);
 		});
@@ -185,43 +190,53 @@ describe('SLDSPopover', function () {
 			});
 
 			it('calls onClick handler on trigger, click on popover close closes', function (done) {
-				wrapper = mount(<DemoComponent
-					onClick={triggerClicked}
-					onClose={() => {
-						setTimeout(() => {
+				wrapper = mount(
+					<DemoComponent
+						onClick={triggerClicked}
+						onClose={() => {
+							setTimeout(() => {
+								const popover = wrapper.find(`#${defaultIds.popover}`);
+								expect(popover.node).to.not.exist;
+								done();
+							}, 0);
+						}}
+						onOpen={() => {
 							const popover = wrapper.find(`#${defaultIds.popover}`);
-							expect(popover.node).to.not.exist;
-							done();
-						}, 0);
-					}}
-					onOpen={() => {
-						const popover = wrapper.find(`#${defaultIds.popover}`);
 
-						expect(popover).to.exist;
-						expect(triggerClicked.callCount).to.equal(1);
+							expect(popover).to.exist;
+							expect(triggerClicked.callCount).to.equal(1);
 
-						popover.find('.slds-popover__close').simulate('click', {});
-					}}
-				/>, { attachTo: mountNode });
+							popover.find('.slds-popover__close').simulate('click', {});
+						}}
+					/>,
+					{ attachTo: mountNode }
+				);
 
 				const trigger = wrapper.find(`#${defaultIds.trigger}`);
 				trigger.simulate('click', {});
 			});
 
 			it('opens on click, closes on ESC', function (done) {
-				wrapper = mount(<DemoComponent
-					onClose={() => {
-						setTimeout(() => {
+				wrapper = mount(
+					<DemoComponent
+						onClose={() => {
+							setTimeout(() => {
+								const popover = wrapper.find(`#${defaultIds.popover}`);
+								expect(popover.node).to.not.exist;
+								done();
+							}, 0);
+						}}
+						onOpen={() => {
 							const popover = wrapper.find(`#${defaultIds.popover}`);
-							expect(popover.node).to.not.exist;
-							done();
-						}, 0);
-					}}
-					onOpen={() => {
-						const popover = wrapper.find(`#${defaultIds.popover}`);
-						popover.simulate('keyDown', { key: 'Esc', keyCode: 27, which: 27 });
-					}}
-				/>, { attachTo: mountNode });
+							popover.simulate('keyDown', {
+								key: 'Esc',
+								keyCode: 27,
+								which: 27
+							});
+						}}
+					/>,
+					{ attachTo: mountNode }
+				);
 
 				const trigger = wrapper.find(`#${defaultIds.trigger}`);
 				trigger.simulate('click', {});
@@ -242,11 +257,14 @@ describe('SLDSPopover', function () {
 		});
 
 		it('onOpen is not called when disabled', function (done) {
-			wrapper = mount(<DemoComponent
-				disabled
-				onClick={triggerClicked}
-				onOpen={popoverOpened}
-			/>, { attachTo: mountNode });
+			wrapper = mount(
+				<DemoComponent
+					disabled
+					onClick={triggerClicked}
+					onOpen={popoverOpened}
+				/>,
+				{ attachTo: mountNode }
+			);
 
 			const trigger = wrapper.find(`#${defaultIds.trigger}`);
 			trigger.simulate('click', {});

@@ -24,13 +24,20 @@ const sampleNodes = {
 					id: 4,
 					nodes: [
 						{
-							label: 'Watermelon', type: 'item', id: 12
+							label: 'Watermelon',
+							type: 'item',
+							id: 12
 						},
 						{
-							label: 'Canteloupe', type: 'item', _iconClass: 'glyphicon-file', id: 13
+							label: 'Canteloupe',
+							type: 'item',
+							_iconClass: 'glyphicon-file',
+							id: 13
 						},
 						{
-							label: 'Strawberries', type: 'item', id: 14
+							label: 'Strawberries',
+							type: 'item',
+							id: 14
 						}
 					]
 				},
@@ -55,15 +62,27 @@ const sampleNodes = {
 							label: 'Citrus',
 							type: 'branch',
 							id: 17,
-							nodes: [{
-								label: 'Orange', type: 'item', id: 20
-							}, {
-								label: 'Grapefruit', type: 'item', id: 21
-							}, {
-								label: 'Lemon', type: 'item', id: 22
-							}, {
-								label: 'Lime', type: 'item', id: 23
-							}
+							nodes: [
+								{
+									label: 'Orange',
+									type: 'item',
+									id: 20
+								},
+								{
+									label: 'Grapefruit',
+									type: 'item',
+									id: 21
+								},
+								{
+									label: 'Lemon',
+									type: 'item',
+									id: 22
+								},
+								{
+									label: 'Lime',
+									type: 'item',
+									id: 23
+								}
 							]
 						},
 						{
@@ -72,13 +91,25 @@ const sampleNodes = {
 							id: 18,
 							nodes: [
 								{
-									label: 'Granny Smith', type: 'item', id: 24
-								}, {
-									label: 'Pinklady', type: 'item', _iconClass: 'glyphicon-file', id: 25
-								}, {
-									label: 'Rotten', type: 'item', id: 26
-								}, {
-									label: 'Jonathan', type: 'item', id: 27
+									label: 'Granny Smith',
+									type: 'item',
+									id: 24
+								},
+								{
+									label: 'Pinklady',
+									type: 'item',
+									_iconClass: 'glyphicon-file',
+									id: 25
+								},
+								{
+									label: 'Rotten',
+									type: 'item',
+									id: 26
+								},
+								{
+									label: 'Jonathan',
+									type: 'item',
+									id: 27
 								}
 							]
 						},
@@ -88,17 +119,34 @@ const sampleNodes = {
 							id: 19,
 							nodes: [
 								{
-									label: 'Balaton', type: 'item', id: 28
-								}, {
-									label: 'Erdi Botermo', type: 'item', id: 29
-								}, {
-									label: 'Montmorency', type: 'item', id: 30
-								}, {
-									label: 'Queen Ann', type: 'item', id: 31
-								}, {
-									label: 'Ulster', type: 'item', id: 32
-								}, {
-									label: 'Viva', type: 'item', id: 33
+									label: 'Balaton',
+									type: 'item',
+									id: 28
+								},
+								{
+									label: 'Erdi Botermo',
+									type: 'item',
+									id: 29
+								},
+								{
+									label: 'Montmorency',
+									type: 'item',
+									id: 30
+								},
+								{
+									label: 'Queen Ann',
+									type: 'item',
+									id: 31
+								},
+								{
+									label: 'Ulster',
+									type: 'item',
+									id: 32
+								},
+								{
+									label: 'Viva',
+									type: 'item',
+									id: 33
 								}
 							]
 						},
@@ -118,13 +166,24 @@ const sampleNodes = {
 			id: 3,
 			nodes: [
 				{
-					label: 'Almonds', type: 'item', id: 8
-				}, {
-					label: 'Cashews', type: 'item', id: 9
-				}, {
-					label: 'Pecans', type: 'item', id: 10
-				}, {
-					label: 'Walnuts', type: 'item', id: 11
+					label: 'Almonds',
+					type: 'item',
+					id: 8
+				},
+				{
+					label: 'Cashews',
+					type: 'item',
+					id: 9
+				},
+				{
+					label: 'Pecans',
+					type: 'item',
+					id: 10
+				},
+				{
+					label: 'Walnuts',
+					type: 'item',
+					id: 11
 				}
 			]
 		},
@@ -135,7 +194,6 @@ const sampleNodes = {
 			expanded: true
 		}
 	],
-
 
 	sampleNodesDefault: [
 		{
@@ -154,13 +212,20 @@ const sampleNodes = {
 					id: 4,
 					nodes: [
 						{
-							label: 'Watermelon', type: 'item', id: 12
+							label: 'Watermelon',
+							type: 'item',
+							id: 12
 						},
 						{
-							label: 'Canteloupe', type: 'item', _iconClass: 'glyphicon-file', id: 13
+							label: 'Canteloupe',
+							type: 'item',
+							_iconClass: 'glyphicon-file',
+							id: 13
 						},
 						{
-							label: 'Strawberries', type: 'item', id: 14
+							label: 'Strawberries',
+							type: 'item',
+							id: 14
 						}
 					]
 				},
@@ -184,15 +249,27 @@ const sampleNodes = {
 							label: 'Citrus',
 							type: 'branch',
 							id: 17,
-							nodes: [{
-								label: 'Orange', type: 'item', id: 20
-							}, {
-								label: 'Grapefruit', type: 'item', id: 21
-							}, {
-								label: 'Lemon', type: 'item', id: 22
-							}, {
-								label: 'Lime', type: 'item', id: 23
-							}
+							nodes: [
+								{
+									label: 'Orange',
+									type: 'item',
+									id: 20
+								},
+								{
+									label: 'Grapefruit',
+									type: 'item',
+									id: 21
+								},
+								{
+									label: 'Lemon',
+									type: 'item',
+									id: 22
+								},
+								{
+									label: 'Lime',
+									type: 'item',
+									id: 23
+								}
 							]
 						},
 						{
@@ -201,13 +278,25 @@ const sampleNodes = {
 							id: 18,
 							nodes: [
 								{
-									label: 'Granny Smith', type: 'item', id: 24
-								}, {
-									label: 'Pinklady', type: 'item', _iconClass: 'glyphicon-file', id: 25
-								}, {
-									label: 'Rotten', type: 'item', id: 26
-								}, {
-									label: 'Jonathan', type: 'item', id: 27
+									label: 'Granny Smith',
+									type: 'item',
+									id: 24
+								},
+								{
+									label: 'Pinklady',
+									type: 'item',
+									_iconClass: 'glyphicon-file',
+									id: 25
+								},
+								{
+									label: 'Rotten',
+									type: 'item',
+									id: 26
+								},
+								{
+									label: 'Jonathan',
+									type: 'item',
+									id: 27
 								}
 							]
 						},
@@ -217,17 +306,34 @@ const sampleNodes = {
 							id: 19,
 							nodes: [
 								{
-									label: 'Balaton', type: 'item', id: 28
-								}, {
-									label: 'Erdi Botermo', type: 'item', id: 29
-								}, {
-									label: 'Montmorency', type: 'item', id: 30
-								}, {
-									label: 'Queen Ann', type: 'item', id: 31
-								}, {
-									label: 'Ulster', type: 'item', id: 32
-								}, {
-									label: 'Viva', type: 'item', id: 33
+									label: 'Balaton',
+									type: 'item',
+									id: 28
+								},
+								{
+									label: 'Erdi Botermo',
+									type: 'item',
+									id: 29
+								},
+								{
+									label: 'Montmorency',
+									type: 'item',
+									id: 30
+								},
+								{
+									label: 'Queen Ann',
+									type: 'item',
+									id: 31
+								},
+								{
+									label: 'Ulster',
+									type: 'item',
+									id: 32
+								},
+								{
+									label: 'Viva',
+									type: 'item',
+									id: 33
 								}
 							]
 						},
@@ -247,13 +353,24 @@ const sampleNodes = {
 			id: 3,
 			nodes: [
 				{
-					label: 'Almonds', type: 'item', id: 8
-				}, {
-					label: 'Cashews', type: 'item', id: 9
-				}, {
-					label: 'Pecans', type: 'item', id: 10
-				}, {
-					label: 'Walnuts', type: 'item', id: 11
+					label: 'Almonds',
+					type: 'item',
+					id: 8
+				},
+				{
+					label: 'Cashews',
+					type: 'item',
+					id: 9
+				},
+				{
+					label: 'Pecans',
+					type: 'item',
+					id: 10
+				},
+				{
+					label: 'Walnuts',
+					type: 'item',
+					id: 11
 				}
 			]
 		},
@@ -264,7 +381,6 @@ const sampleNodes = {
 		}
 	]
 };
-
 
 const Example = createReactClass({
 	displayName: 'TreeExample',
@@ -287,8 +403,8 @@ const Example = createReactClass({
 
 	getInitialState () {
 		const initalNodes = this.props.exampleNodesIndex
-		? sampleNodes[this.props.exampleNodesIndex]
-		: sampleNodes.sampleNodesDefault;
+			? sampleNodes[this.props.exampleNodesIndex]
+			: sampleNodes.sampleNodesDefault;
 		return {
 			nodes: initalNodes,
 			searchTerm: this.props.searchable ? 'fruit' : undefined
@@ -301,10 +417,14 @@ const Example = createReactClass({
 		data.node.loading = data.expand ? true : undefined;
 
 		// Fake delay to demonstrate use of loading node attibute
-		setTimeout((node) => {
-			node.loading = false;
-			this.forceUpdate();
-		}, 500, data.node);
+		setTimeout(
+			(node) => {
+				node.loading = false;
+				this.forceUpdate();
+			},
+			500,
+			data.node
+		);
 		data.node.expanded = data.expand;
 	},
 
@@ -312,14 +432,19 @@ const Example = createReactClass({
 		if (this.props.singleSelection) {
 			data.node.selected = data.select;
 			this.setState((prevState) => {
-				if (this.state.selectedNode && this.state.selectedNode.id !== data.node.id) {
+				if (
+					this.state.selectedNode &&
+					this.state.selectedNode.id !== data.node.id
+				) {
 					this.state.selectedNode.selected = false;
 				}
 				return { selectedNode: data.node };
 			});
 			console.log('[handleClick] (event, data)', event, data);
-		} else if (!this.props.noBranchSelection ||
-				(this.props.noBranchSelection && data.node.type !== 'branch')) {
+		} else if (
+			!this.props.noBranchSelection ||
+			(this.props.noBranchSelection && data.node.type !== 'branch')
+		) {
 			data.node.selected = data.select;
 			// trigger render
 			this.setState((prevState) => ({ ...prevState }));

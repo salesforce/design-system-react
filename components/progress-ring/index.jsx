@@ -37,7 +37,11 @@ const propTypes = {
 	/**
 	 * CSS classes to be added to tag with `.slds-progress-ring`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string
+	]),
 	/**
 	 * The theme applied to the ring.
 	 */
@@ -56,15 +60,12 @@ const propTypes = {
 	value: PropTypes.number.isRequired
 };
 
-const defaultProps = {
-};
-
+const defaultProps = {};
 
 /**
  * Customizable and configurable progress ring. Will display progress in a circular progress bar factor, and is capable of displaying iconography inside of the ring structure.
  */
 class ProgressRing extends React.Component {
-
 	/**
 	 * Gets the theme CSS class
 	 * @returns {string} Class name
@@ -84,17 +85,11 @@ class ProgressRing extends React.Component {
 			if (this.props.icon) {
 				icon = this.props.icon;
 			} else if (this.props.theme === THEME_OPTIONS.WARNING) {
-				icon = (
-					<Icon category={'utility'} name={'warning'} title={'Warning'} />
-				);
+				icon = <Icon category={'utility'} name={'warning'} title={'Warning'} />;
 			} else if (this.props.theme === THEME_OPTIONS.EXPIRED) {
-				icon = (
-					<Icon category={'utility'} name={'error'} title={'Expired'} />
-				);
+				icon = <Icon category={'utility'} name={'error'} title={'Expired'} />;
 			} else if (this.props.theme === THEME_OPTIONS.COMPLETE) {
-				icon = (
-					<Icon category={'utility'} name={'check'} title={'complete'} />
-				);
+				icon = <Icon category={'utility'} name={'check'} title={'complete'} />;
 			}
 		}
 

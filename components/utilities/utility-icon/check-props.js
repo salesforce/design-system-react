@@ -10,7 +10,10 @@ if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
 		if (!props.context[`${props.category}Sprite`]) {
 			const modifiedPath = props.path || props.context.iconPath;
-			urlExists(COMPONENT, `${modifiedPath}/${props.category}-sprite/svg/symbols.svg#${props.name}`);
+			urlExists(
+				COMPONENT,
+				`${modifiedPath}/${props.category}-sprite/svg/symbols.svg#${props.name}`
+			);
 		}
 	};
 }

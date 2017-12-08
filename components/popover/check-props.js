@@ -17,10 +17,19 @@ if (process.env.NODE_ENV !== 'production') {
 		});
 
 		if (props.children !== undefined) {
-			oneOfComponent(COMPONENT, props, 'children', ['SLDSButton', 'a', 'button']);
+			oneOfComponent(COMPONENT, props, 'children', [
+				'SLDSButton',
+				'a',
+				'button'
+			]);
 		}
 
-		deprecatedProperty(COMPONENT, props.isInline, 'isInline', 'position="relative"');
+		deprecatedProperty(
+			COMPONENT,
+			props.isInline,
+			'isInline',
+			'position="relative"'
+		);
 	};
 }
 

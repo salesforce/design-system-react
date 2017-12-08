@@ -7,15 +7,16 @@ import jsBeautify from 'js-beautify';
 import SnapshotDefault from '../__examples__/snapshot-default';
 
 test('MenuPicklist Default DOM Snapshot', () => {
-	const domTree = renderer.create(
-		<SnapshotDefault />,
-	).toJSON();
+	const domTree = renderer.create(<SnapshotDefault />).toJSON();
 	expect(domTree).toMatchSnapshot();
 });
 
 test('MenuPicklist Default HTML Snapshot', () => {
 	const domTree = String(
-		jsBeautify.html(ReactDOMServer.renderToStaticMarkup(<SnapshotDefault />), {}),
+		jsBeautify.html(
+			ReactDOMServer.renderToStaticMarkup(<SnapshotDefault />),
+			{}
+		),
 		'utf-8'
 	);
 	expect(domTree).toMatchSnapshot();
@@ -24,12 +25,8 @@ test('MenuPicklist Default HTML Snapshot', () => {
 test(`MenuPicklist
 	errorText
 	DOM Snapshot`, () => {
-	const domTree = renderer.create(
-		<SnapshotDefault
-			errorText="This field is required."
-			required
-		/>,
-	).toJSON();
-	expect(domTree).toMatchSnapshot();
-});
-
+		const domTree = renderer
+			.create(<SnapshotDefault errorText="This field is required." required />)
+			.toJSON();
+		expect(domTree).toMatchSnapshot();
+	});

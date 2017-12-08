@@ -1,7 +1,6 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-
 // # Dropdown Component
 
 // Implements the [Dropdown design pattern](https://www.lightningdesignsystem.com/components/menus/#flavor-dropdown) in React. Child elements that do not have the display name of the value of `MENU_DROPDOWN_TRIGGER` in `components/constants.js` will be considered custom content and rendered in the popover.
@@ -52,15 +51,21 @@ import KeyboardNavigable from '../../utilities/keyboard-navigable-menu';
 
 import EventUtil from '../../utilities/event';
 import KEYS from '../../utilities/key-code';
-import { MENU_DROPDOWN, MENU_DROPDOWN_TRIGGER, LIST } from '../../utilities/constants';
+import {
+	MENU_DROPDOWN,
+	MENU_DROPDOWN_TRIGGER,
+	LIST
+} from '../../utilities/constants';
 
-const documentDefined = typeof (document) !== 'undefined';
+const documentDefined = typeof document !== 'undefined';
 
 // The overlay is an optional way to allow the dropdown to close on outside
 // clicks even when those clicks are over areas that wouldn't normally fire
 // click or touch events (for example, iframes). A single overlay is shared
 // between all dropdowns in the app.
-const overlay = documentDefined ? document.createElement('span') : { style: {} };
+const overlay = documentDefined
+	? document.createElement('span')
+	: { style: {} };
 overlay.style.top = 0;
 overlay.style.left = 0;
 overlay.style.width = '100%';
@@ -106,7 +111,11 @@ const MenuDropdown = createReactClass({
 		/**
 		 * CSS classes to be added to triggering button.
 		 */
-		buttonClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		buttonClassName: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string
+		]),
 		/**
 		 * If true, button/icon is white. Meant for buttons or utility icons on dark backgrounds.
 		 */
@@ -114,7 +123,13 @@ const MenuDropdown = createReactClass({
 		/**
 		 * This prop is passed onto the triggering `Button`. Determines variant of the Button component that triggers dropdown.
 		 */
-		buttonVariant: PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon']),
+		buttonVariant: PropTypes.oneOf([
+			'base',
+			'neutral',
+			'brand',
+			'destructive',
+			'icon'
+		]),
 		/**
 		 * If true, renders checkmark icon on the selected Menu Item.
 		 */
@@ -137,11 +152,19 @@ const MenuDropdown = createReactClass({
 		/**
 		 * CSS classes to be added to dropdown menu.
 		 */
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		className: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string
+		]),
 		/**
 		 * By default, these class names will be added to the absolutely-positioned `Dialog` component.
 		 */
-		containerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		containerClassName: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string
+		]),
 		/**
 		 * This prop is passed onto the triggering `Button`. Prevent dropdown menu from opening. Also applies disabled styling to trigger button.
 		 */
@@ -160,7 +183,13 @@ const MenuDropdown = createReactClass({
 		/**
 		 * Name of the icon category. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon categories.
 		 */
-		iconCategory: PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
+		iconCategory: PropTypes.oneOf([
+			'action',
+			'custom',
+			'doctype',
+			'standard',
+			'utility'
+		]),
 		/**
 		 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
 		 */
@@ -172,22 +201,29 @@ const MenuDropdown = createReactClass({
 		/**
 		 * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
 		 */
-		iconVariant: PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'small', 'more']),
+		iconVariant: PropTypes.oneOf([
+			'bare',
+			'container',
+			'border',
+			'border-filled',
+			'small',
+			'more'
+		]),
 		/**
 		 * Determines the size of the icon.
 		 */
 		iconSize: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
 		/**
-		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
-		*/
+		 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
+		 */
 		id: PropTypes.string,
 		/**
 		 * Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use view [Concepts and Best Practices](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices)
 		 */
 		isOpen: PropTypes.bool,
 		/**
-		* This prop is passed onto the triggering `Button`. Text within the trigger button.
-		*/
+		 * This prop is passed onto the triggering `Button`. Text within the trigger button.
+		 */
 		label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 		/**
 		 * Custom element that overrides the default Menu Item component.
@@ -203,7 +239,11 @@ const MenuDropdown = createReactClass({
 		 * * `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.
 		 * * `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.
 		 */
-		menuPosition: PropTypes.oneOf(['absolute', 'overflowBoundaryElement', 'relative']),
+		menuPosition: PropTypes.oneOf([
+			'absolute',
+			'overflowBoundaryElement',
+			'relative'
+		]),
 		/**
 		 * Style applied to menu element (that is the `.slds-dropdown` element)
 		 */
@@ -306,7 +346,11 @@ const MenuDropdown = createReactClass({
 		/**
 		 * Current selected menu item.
 		 */
-		value: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.array]),
+		value: PropTypes.oneOfType([
+			PropTypes.number,
+			PropTypes.string,
+			PropTypes.array
+		]),
 		/**
 		 * This prop is passed onto the triggering `Button`. It creates a tooltip with the content of the `node` provided.
 		 */
@@ -314,7 +358,11 @@ const MenuDropdown = createReactClass({
 		/**
 		 * CSS classes to be added to wrapping trigger `div` around the button.
 		 */
-		triggerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		triggerClassName: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string
+		]),
 		/**
 		 * Whether this dropdown supports multi select.
 		 */
@@ -370,7 +418,9 @@ const MenuDropdown = createReactClass({
 	},
 
 	getIsOpen () {
-		return !!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
+		return !!(isBoolean(this.props.isOpen)
+			? this.props.isOpen
+			: this.state.isOpen);
 	},
 
 	getIndexByValue (value) {
@@ -395,7 +445,9 @@ const MenuDropdown = createReactClass({
 	},
 
 	getListItemRenderer () {
-		return this.props.listItemRenderer ? this.props.listItemRenderer : ListItemLabel;
+		return this.props.listItemRenderer
+			? this.props.listItemRenderer
+			: ListItemLabel;
 	},
 
 	handleClose () {
@@ -510,7 +562,10 @@ const MenuDropdown = createReactClass({
 			this.setState({ selectedIndex: index });
 			this.handleClose();
 			this.setFocus();
-		} else if (this.props.multiple && this.state.selectedIndices.indexOf(index) === -1) {
+		} else if (
+			this.props.multiple &&
+			this.state.selectedIndices.indexOf(index) === -1
+		) {
 			const currentIndices = this.state.selectedIndices.concat(index);
 			this.setState({
 				selectedIndices: currentIndices
@@ -532,10 +587,12 @@ const MenuDropdown = createReactClass({
 
 	handleKeyDown (event) {
 		if (event.keyCode) {
-			if (event.keyCode === KEYS.ENTER ||
-					event.keyCode === KEYS.SPACE ||
-					event.keyCode === KEYS.DOWN ||
-					event.keyCode === KEYS.UP) {
+			if (
+				event.keyCode === KEYS.ENTER ||
+				event.keyCode === KEYS.SPACE ||
+				event.keyCode === KEYS.DOWN ||
+				event.keyCode === KEYS.UP
+			) {
 				EventUtil.trap(event);
 			}
 
@@ -613,7 +670,7 @@ const MenuDropdown = createReactClass({
 
 		this.listItems[index] = listItem;
 
-		if (index === this.state.focusedIndex) this.handleKeyboardFocus(this.state.focusedIndex);
+		if (index === this.state.focusedIndex) { this.handleKeyboardFocus(this.state.focusedIndex); }
 	},
 
 	getMenu () {
@@ -662,8 +719,12 @@ const MenuDropdown = createReactClass({
 				onSelect={this.handleSelect}
 				options={this.props.options}
 				ref={this.saveRefToList}
-				selectedIndex={!this.props.multiple ? this.state.selectedIndex : undefined}
-				selectedIndices={this.props.multiple ? this.state.selectedIndices : undefined}
+				selectedIndex={
+					!this.props.multiple ? this.state.selectedIndex : undefined
+				}
+				selectedIndices={
+					this.props.multiple ? this.state.selectedIndices : undefined
+				}
 				triggerId={this.getId()}
 				length={this.props.length}
 				{...customListProps}
@@ -676,7 +737,9 @@ const MenuDropdown = createReactClass({
 		// Dropdown can take a Trigger component as a child and then return it as the parent DOM element.
 		React.Children.forEach(customContent, (child) => {
 			if (child && child.type.displayName === LIST) {
-				customContentWithListPropInjection.push(this.renderDefaultMenuContent(child.props));
+				customContentWithListPropInjection.push(
+					this.renderDefaultMenuContent(child.props)
+				);
 			} else {
 				const clonedCustomContent = React.cloneElement(child, {
 					onClick: this.handleClickCustomContent,
@@ -689,7 +752,9 @@ const MenuDropdown = createReactClass({
 			customContentWithListPropInjection = null;
 		}
 
-		return customContentWithListPropInjection || this.renderDefaultMenuContent();
+		return (
+			customContentWithListPropInjection || this.renderDefaultMenuContent()
+		);
 	},
 
 	renderInlineMenu (customContent, isOpen) {
@@ -710,17 +775,24 @@ const MenuDropdown = createReactClass({
 			positionClassName = `slds-dropdown--${this.props.align}`;
 		}
 
-		return (
-			isOpen ?
-				<div
-					className={classNames('slds-dropdown', positionClassName, this.props.className)}
-					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
-					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
-					style={this.props.menuStyle}
-				>
-					{this.renderMenuContent(customContent)}
-				</div> : null
-		);
+		return isOpen ? (
+			<div
+				className={classNames(
+					'slds-dropdown',
+					positionClassName,
+					this.props.className
+				)}
+				onMouseEnter={
+					this.props.openOn === 'hover' ? this.handleMouseEnter : null
+				}
+				onMouseLeave={
+					this.props.openOn === 'hover' ? this.handleMouseLeave : null
+				}
+				style={this.props.menuStyle}
+			>
+				{this.renderMenuContent(customContent)}
+			</div>
+		) : null;
 	},
 
 	renderDialog (customContent, isOpen, outsideClickIgnoreClass) {
@@ -744,40 +816,55 @@ const MenuDropdown = createReactClass({
 		}
 
 		// FOR BACKWARDS COMPATIBILITY
-		const menuPosition = this.props.isInline ? 'relative' : this.props.menuPosition; // eslint-disable-line react/prop-types
+		const menuPosition = this.props.isInline
+			? 'relative'
+			: this.props.menuPosition; // eslint-disable-line react/prop-types
 
-		return (
-			isOpen ?
-				<Dialog
-					align={`bottom ${this.props.align}`}
-					className={classNames(this.props.containerClassName)}
-					closeOnTabKey
-					contentsClassName={classNames('slds-dropdown',
-						'ignore-react-onclickoutside',
-						positionClassName,
-						this.props.className)}
-					context={this.context}
-					hasStaticAlignment={this.props.hasStaticAlignment}
-					inheritTargetWidth={this.props.inheritTargetWidth}
-					offset={offset}
-					onClose={this.handleClose}
-					onKeyDown={this.handleKeyDown}
-					onMouseEnter={(this.props.openOn === 'hover') ? this.handleMouseEnter : null}
-					onMouseLeave={(this.props.openOn === 'hover') ? this.handleMouseLeave : null}
-					outsideClickIgnoreClass={outsideClickIgnoreClass}
-					position={menuPosition}
-					style={this.props.menuStyle || assign({}, this.props.menuStyle, { marginTop })}
-					onRequestTargetElement={() => this.trigger}
-				>
-					{this.renderMenuContent(customContent)}
-				</Dialog> : null
-		);
+		return isOpen ? (
+			<Dialog
+				align={`bottom ${this.props.align}`}
+				className={classNames(this.props.containerClassName)}
+				closeOnTabKey
+				contentsClassName={classNames(
+					'slds-dropdown',
+					'ignore-react-onclickoutside',
+					positionClassName,
+					this.props.className
+				)}
+				context={this.context}
+				hasStaticAlignment={this.props.hasStaticAlignment}
+				inheritTargetWidth={this.props.inheritTargetWidth}
+				offset={offset}
+				onClose={this.handleClose}
+				onKeyDown={this.handleKeyDown}
+				onMouseEnter={
+					this.props.openOn === 'hover' ? this.handleMouseEnter : null
+				}
+				onMouseLeave={
+					this.props.openOn === 'hover' ? this.handleMouseLeave : null
+				}
+				outsideClickIgnoreClass={outsideClickIgnoreClass}
+				position={menuPosition}
+				style={
+					this.props.menuStyle ||
+					assign({}, this.props.menuStyle, { marginTop })
+				}
+				onRequestTargetElement={() => this.trigger}
+			>
+				{this.renderMenuContent(customContent)}
+			</Dialog>
+		) : null;
 	},
 
 	renderOverlay (isOpen) {
 		if (isFunction(overlay) && documentDefined) {
 			overlay(isOpen, overlay);
-		} else if (this.props.overlay && isOpen && !this.overlay && documentDefined) {
+		} else if (
+			this.props.overlay &&
+			isOpen &&
+			!this.overlay &&
+			documentDefined
+		) {
 			this.overlay = overlay;
 			document.querySelector('body').appendChild(this.overlay);
 		} else if (!isOpen && this.overlay && this.overlay.parentNode) {
@@ -820,12 +907,15 @@ const MenuDropdown = createReactClass({
 		 - The next set of props (`CustomTriggerChildProps`) are props that can be overwritten by the end developer.
 		 - The final set are props that should not be overwritten, since they are ones that tie the trigger to the dropdown menu.
 		*/
-	
+
 		return (
 			<CurrentTrigger
 				aria-haspopup
 				assistiveText={this.props.assistiveText}
-				className={classNames(outsideClickIgnoreClass, this.props.buttonClassName)}
+				className={classNames(
+					outsideClickIgnoreClass,
+					this.props.buttonClassName
+				)}
 				disabled={this.props.disabled}
 				hint={this.props.hint}
 				iconCategory={this.props.iconCategory}
@@ -840,21 +930,23 @@ const MenuDropdown = createReactClass({
 				menu={this.renderDialog(customContent, isOpen, outsideClickIgnoreClass)}
 				onBlur={this.props.onBlur}
 				onClick={
-					this.props.openOn === 'click'
-					|| this.props.openOn === 'hybrid'
-					? this.handleClick : this.props.onClick
+					this.props.openOn === 'click' || this.props.openOn === 'hybrid'
+						? this.handleClick
+						: this.props.onClick
 				}
 				onFocus={this.props.openOn === 'hover' ? this.handleFocus : null}
 				onKeyDown={this.handleKeyDown}
 				onMouseDown={this.props.onMouseDown}
-				onMouseEnter={(this.props.openOn === 'hover' || this.props.openOn === 'hybrid')
-					? this.handleMouseEnter
-					: null
+				onMouseEnter={
+					this.props.openOn === 'hover' || this.props.openOn === 'hybrid'
+						? this.handleMouseEnter
+						: null
 				}
 				onMouseLeave={
-					this.props.openOn === 'hover'
-					|| this.props.openOn === 'hybrid'
-					? this.handleMouseLeave : null}
+					this.props.openOn === 'hover' || this.props.openOn === 'hybrid'
+						? this.handleMouseLeave
+						: null
+				}
 				openOn={this.props.openOn}
 				ref={this.saveRefToTriggerContainer}
 				style={this.props.style}
@@ -874,8 +966,4 @@ MenuDropdown.contextTypes = {
 };
 
 export default MenuDropdown;
-export {
-	ListItem,
-	ListItemLabel,
-	DropdownNubbinPositions
-};
+export { ListItem, ListItemLabel, DropdownNubbinPositions };

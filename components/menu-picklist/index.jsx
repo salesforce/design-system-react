@@ -1,7 +1,5 @@
-
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
-
 
 // # Picklist Component
 
@@ -162,7 +160,7 @@ const MenuPicklist = createReactClass({
 			this.generatedErrorId = shortid.generate();
 		}
 
-		if (typeof (window) !== 'undefined') {
+		if (typeof window !== 'undefined') {
 			window.addEventListener('click', this.closeOnClick, false);
 		}
 
@@ -183,7 +181,10 @@ const MenuPicklist = createReactClass({
 	},
 
 	componentWillReceiveProps (nextProps) {
-		if (this.props.value !== nextProps.value || this.props.options.length !== nextProps.length) {
+		if (
+			this.props.value !== nextProps.value ||
+			this.props.options.length !== nextProps.length
+		) {
 			if (this.props.multiple !== true) {
 				this.setState({
 					selectedIndex: this.getIndexByValue(nextProps)
@@ -191,7 +192,9 @@ const MenuPicklist = createReactClass({
 			} else {
 				const currentSelectedIndex = this.getIndexByValue(nextProps);
 				if (currentSelectedIndex !== -1) {
-					const currentIndices = this.state.selectedIndices.concat(currentSelectedIndex);
+					const currentIndices = this.state.selectedIndices.concat(
+						currentSelectedIndex
+					);
 					this.setState({
 						selectedIndices: currentIndices
 					});
@@ -239,7 +242,9 @@ const MenuPicklist = createReactClass({
 	},
 
 	getListItemRenderer () {
-		return this.props.listItemRenderer ? this.props.listItemRenderer : ListItemLabel;
+		return this.props.listItemRenderer
+			? this.props.listItemRenderer
+			: ListItemLabel;
 	},
 
 	handleSelect (index) {
@@ -305,16 +310,21 @@ const MenuPicklist = createReactClass({
 
 	handleKeyDown (event) {
 		if (event.keyCode) {
-			if (event.keyCode === KEYS.ENTER ||
+			if (
+				event.keyCode === KEYS.ENTER ||
 				event.keyCode === KEYS.SPACE ||
 				event.keyCode === KEYS.DOWN ||
-				event.keyCode === KEYS.UP) {
+				event.keyCode === KEYS.UP
+			) {
 				EventUtil.trap(event);
 			}
 
 			if (event.keyCode !== KEYS.TAB) {
 				// The outer div with onKeyDown is overriding button onClick so we need to add it here.
-				const openMenuKeys = event.keyCode === KEYS.ENTER || event.keyCode === KEYS.DOWN || event.keyCode === KEYS.UP;
+				const openMenuKeys =
+					event.keyCode === KEYS.ENTER ||
+					event.keyCode === KEYS.DOWN ||
+					event.keyCode === KEYS.UP;
 				const isTrigger = event.target.tagName === 'BUTTON';
 				if (openMenuKeys && isTrigger && this.props.onClick) {
 					this.props.onClick(event);
@@ -358,7 +368,7 @@ const MenuPicklist = createReactClass({
 
 		this.listItems[index] = listItem;
 
-		if (index === this.state.focusedIndex) this.handleKeyboardFocus(this.state.focusedIndex);
+		if (index === this.state.focusedIndex) { this.handleKeyboardFocus(this.state.focusedIndex); }
 	},
 
 	// Trigger opens, closes, and recieves focus on close
@@ -384,17 +394,20 @@ const MenuPicklist = createReactClass({
 				onSelect={this.handleSelect}
 				options={this.props.options}
 				ref={this.saveRefToList}
-				selectedIndex={!this.props.multiple ? this.state.selectedIndex : undefined}
-				selectedIndices={this.props.multiple ? this.state.selectedIndices : undefined}
+				selectedIndex={
+					!this.props.multiple ? this.state.selectedIndex : undefined
+				}
+				selectedIndices={
+					this.props.multiple ? this.state.selectedIndices : undefined
+				}
 				triggerId={this.getId()}
 			/>
 		);
 	},
 
 	renderInlineMenu () {
-		return (
-			!this.props.disabled && this.state.isOpen
-			? <div
+		return !this.props.disabled && this.state.isOpen ? (
+			<div
 				className="slds-dropdown slds-dropdown--left"
 				// inline style override
 				style={{
@@ -405,14 +418,12 @@ const MenuPicklist = createReactClass({
 			>
 				{this.renderMenuContent()}
 			</div>
-			: null
-		);
+		) : null;
 	},
 
 	renderDialog () {
-		return (
-			!this.props.disabled && this.state.isOpen
-			? <Dialog
+		return !this.props.disabled && this.state.isOpen ? (
+			<Dialog
 				closeOnTabKey
 				constrainToScrollParent={this.props.constrainToScrollParent}
 				contentsClassName="slds-dropdown slds-dropdown--left"
@@ -426,8 +437,7 @@ const MenuPicklist = createReactClass({
 			>
 				{this.renderMenuContent()}
 			</Dialog>
-			: null
-		);
+		) : null;
 	},
 
 	renderTrigger () {
@@ -443,14 +453,15 @@ const MenuPicklist = createReactClass({
 		let inputValue;
 		if (this.props.multiple && this.state.selectedIndices.length === 0) {
 			inputValue = this.props.placeholder;
-		}	else if (this.props.multiple && this.state.selectedIndices.length === 1) {
+		} else if (this.props.multiple && this.state.selectedIndices.length === 1) {
 			const option = this.props.options[this.state.selectedIndices];
 			inputValue = option.label;
 		} else if (this.props.multiple && this.state.selectedIndices.length > 1) {
 			inputValue = this.props.labels.multipleOptionsSelected;
 		} else {
 			const option = this.props.options[this.state.selectedIndex];
-			inputValue = (option && option.label) ? option.label : this.props.placeholder;
+			inputValue =
+				option && option.label ? option.label : this.props.placeholder;
 		}
 
 		// TODO: make use of <Button>
@@ -458,10 +469,10 @@ const MenuPicklist = createReactClass({
 			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
 			<div
 				className={classNames(
-						'slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click',
-						{ 'slds-is-open': this.state.isOpen },
-						this.props.className
-					)}
+					'slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click',
+					{ 'slds-is-open': this.state.isOpen },
+					this.props.className
+				)}
 				onKeyDown={this.handleKeyDown}
 				onMouseDown={this.handleMouseDown}
 			>
@@ -508,7 +519,10 @@ const MenuPicklist = createReactClass({
 
 								if (this.props.onPillRemove) {
 									const option = this.getValueByIndex(index);
-									this.props.onPillRemove(option, { option, optionIndex: index });
+									this.props.onPillRemove(option, {
+										option,
+										optionIndex: index
+									});
 								}
 							}
 						}}
@@ -537,35 +551,40 @@ const MenuPicklist = createReactClass({
 	},
 
 	render () {
-		const {
-			className,
-			errorText,
-			label,
-			required
-		} = this.props;
+		const { className, errorText, label, required } = this.props;
 
-		const requiredElem = required ? <span style={{ color: 'red' }}>* </span> : null;
+		const requiredElem = required ? (
+			<span style={{ color: 'red' }}>* </span>
+		) : null;
 
 		return (
 			<div
-				className={classNames('slds-form-element', {
-					'slds-has-error': errorText
-				},
-				className)}
+				className={classNames(
+					'slds-form-element',
+					{
+						'slds-has-error': errorText
+					},
+					className
+				)}
 			>
-				{this.props.label
-					? <label
+				{this.props.label ? (
+					<label
 						className="slds-form-element__label"
 						htmlFor={this.getId()}
 						// inline style override
 						style={{ width: '100%' }}
 					>
-						{requiredElem}{label}
+						{requiredElem}
+						{label}
 					</label>
-				: null}
+				) : null}
 				{this.renderTrigger()}
 				{this.renderPills()}
-				{errorText && <div id={this.getErrorId()} className="slds-form-element__help">{errorText}</div>}
+				{errorText && (
+					<div id={this.getErrorId()} className="slds-form-element__help">
+						{errorText}
+					</div>
+				)}
 			</div>
 		);
 	}

@@ -13,8 +13,8 @@ import Combobox from '~/components/combobox';
 
 const options = {
 	'show-me': [
-	{ id: 1, label: 'All Products', value: 'all-products' },
-	{ id: 2, label: 'All Wackamoles', value: 'all-Wackamoles' }
+		{ id: 1, label: 'All Products', value: 'all-products' },
+		{ id: 2, label: 'All Wackamoles', value: 'all-Wackamoles' }
 	]
 };
 
@@ -58,42 +58,48 @@ const Example = createReactClass({
 	},
 
 	render () {
-		return this.state['show-me'].isActive && (
-			<IconSettings iconPath="/assets/icons">
-				<Filter
-					assistiveText={{ editFilter: 'editFilter-TEST',
-						editFilterHeading: 'editFilterHeading-TEST',
-						removeFilter: 'removeFilter-TEST' }}
-					align={this.props.align}
-					id="sample-panel-filtering-show-me"
-					onChange={this.onChangePredicate}
-					onRemove={this.onRemove}
-					property="Show Me"
-					predicate={this.state['show-me'].selectedItem.label}
-					{...this.props}
-				>
-					<Combobox
-						events={{
-							onSelect: (event, data) => {
-								this.setState({ 'show-me': {
-									...this.state['show-me'],
-									comboboxSelection: data.selection
-								} });
-							}
+		return (
+			this.state['show-me'].isActive && (
+				<IconSettings iconPath="/assets/icons">
+					<Filter
+						assistiveText={{
+							editFilter: 'editFilter-TEST',
+							editFilterHeading: 'editFilterHeading-TEST',
+							removeFilter: 'removeFilter-TEST'
 						}}
-						labels={{
-							label: 'Show Me',
-							placeholder: 'Select record type'
-						}}
-						menuPosition="relative"
-						options={options['show-me']}
-						selection={this.state['show-me'].comboboxSelection}
-						variant="readonly"
-					/>
-				</Filter>
-			</IconSettings>
+						align={this.props.align}
+						id="sample-panel-filtering-show-me"
+						onChange={this.onChangePredicate}
+						onRemove={this.onRemove}
+						property="Show Me"
+						predicate={this.state['show-me'].selectedItem.label}
+						{...this.props}
+					>
+						<Combobox
+							events={{
+								onSelect: (event, data) => {
+									this.setState({
+										'show-me': {
+											...this.state['show-me'],
+											comboboxSelection: data.selection
+										}
+									});
+								}
+							}}
+							labels={{
+								label: 'Show Me',
+								placeholder: 'Select record type'
+							}}
+							menuPosition="relative"
+							options={options['show-me']}
+							selection={this.state['show-me'].comboboxSelection}
+							variant="readonly"
+						/>
+					</Filter>
+				</IconSettings>
+			)
 		);
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

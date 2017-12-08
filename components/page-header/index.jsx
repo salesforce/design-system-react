@@ -38,24 +38,15 @@ const propTypes = {
 	/**
 	 * The info property can be a string or a React element
 	 */
-	label: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]),
+	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	/**
 	 * The title property can be a string or a React element
 	 */
-	title: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]),
+	title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	/**
 	 * The info property can be a string or a React element
 	 */
-	info: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]),
+	info: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	/**
 	 * The page header icon
 	 */
@@ -67,7 +58,13 @@ const propTypes = {
 	/**
 	 * The icons category
 	 */
-	iconCategory: PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
+	iconCategory: PropTypes.oneOf([
+		'action',
+		'custom',
+		'doctype',
+		'standard',
+		'utility'
+	]),
 	/**
 	 * If omitted, icon position is centered.
 	 */
@@ -76,14 +73,17 @@ const propTypes = {
 	/**
 	 * For icon variants, please reference <a href='http://www.lightningdesignsystem.com/components/buttons/#icon'>Lightning Design System Icons</a>.
 	 */
-	iconVariant: PropTypes.oneOf(['container', 'border', 'border-filled', 'small', 'more']),
+	iconVariant: PropTypes.oneOf([
+		'container',
+		'border',
+		'border-filled',
+		'small',
+		'more'
+	]),
 	/**
 	 * Content to appear on the right hand side of the page header
 	 */
-	contentRight: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]),
+	contentRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	/**
 	 * An array of buttons which appear on the component's right hand side.
 	 */
@@ -91,10 +91,7 @@ const propTypes = {
 	/**
 	 * Nav content which appears in the upper right hand corner.
 	 */
-	navRight: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]),
+	navRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	/**
 	 * An array of react elements presumably anchor <a> elements.
 	 */
@@ -134,7 +131,8 @@ class PageHeader extends Component {
 			navRight,
 			title,
 			trail,
-			variant } = this.props;
+			variant
+		} = this.props;
 
 		const classes = this._getClassNames(className);
 
@@ -150,7 +148,7 @@ class PageHeader extends Component {
 						position={iconPosition}
 						size={iconSize}
 						variant={iconVariant}
-     />
+					/>
 				);
 			}
 			return icon;
@@ -170,7 +168,11 @@ class PageHeader extends Component {
 				);
 			}
 			if (type === 'string') {
-				return <p className="slds-text-title--caps slds-line-height--reset">{label}</p>;
+				return (
+					<p className="slds-text-title--caps slds-line-height--reset">
+						{label}
+					</p>
+				);
 			}
 			return label;
 		};
@@ -210,7 +212,7 @@ class PageHeader extends Component {
 					<div
 						className="slds-col slds-no-flex slds-grid slds-align-top"
 						{...navRight.props}
-     />
+					/>
 				);
 			}
 			return navRight;
@@ -223,9 +225,7 @@ class PageHeader extends Component {
 			const type = typeof contentRight;
 
 			if (type !== 'string') {
-				return (
-					<div className="slds-grid" {...contentRight.props} />
-				);
+				return <div className="slds-grid" {...contentRight.props} />;
 			}
 			return contentRight;
 		};
@@ -261,9 +261,13 @@ class PageHeader extends Component {
 	}
 
 	_getClassNames (className) {
-		return classnames('slds-page-header', {
-			'slds-page-header--object-home': this.props.variant === 'objectHome'
-		}, className);
+		return classnames(
+			'slds-page-header',
+			{
+				'slds-page-header--object-home': this.props.variant === 'objectHome'
+			},
+			className
+		);
 	}
 }
 
@@ -272,9 +276,4 @@ PageHeader.propTypes = propTypes;
 PageHeader.defaultProps = defaultProps;
 
 export default PageHeader;
-export {
-	Info,
-	Title,
-	DetailRow,
-	DetailBlock
-};
+export { Info, Title, DetailRow, DetailBlock };

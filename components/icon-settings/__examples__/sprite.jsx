@@ -14,7 +14,13 @@ const Example = createReactClass({
 
 	render () {
 		return (
-			<IconSettings standardSprite={standardSprite} utilitySprite={utilitySprite} actionSprite={actionSprite} doctypeSprite={doctypeSprite} customSprite={customSprite}>
+			<IconSettings
+				standardSprite={standardSprite}
+				utilitySprite={utilitySprite}
+				actionSprite={actionSprite}
+				doctypeSprite={doctypeSprite}
+				customSprite={customSprite}
+			>
 				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
 					<div className="slds-col--padded">
 						<Icon
@@ -62,5 +68,4 @@ const Example = createReactClass({
 	}
 });
 
-
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

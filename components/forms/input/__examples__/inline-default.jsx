@@ -17,7 +17,9 @@ const Example = createReactClass({
 			<IconSettings iconPath="/assets/icons">
 				<section className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
 					<div className="slds-col--padded">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">Base Input with visible label</h1>
+						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+							Base Input with visible label
+						</h1>
 						<InlineEdit
 							id="inline-edit-example-1"
 							value={this.state.value}
@@ -25,7 +27,9 @@ const Example = createReactClass({
 						/>
 					</div>
 					<div className="slds-col--padded">
-						<h1 className="slds-text-title_caps slds-p-vertical--medium">Disabled Base Input</h1>
+						<h1 className="slds-text-title_caps slds-p-vertical--medium">
+							Disabled Base Input
+						</h1>
 						<InlineEdit
 							disabled
 							id="inline-edit-example-2"
@@ -43,4 +47,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

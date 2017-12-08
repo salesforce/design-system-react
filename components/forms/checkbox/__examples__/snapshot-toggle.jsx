@@ -1,7 +1,6 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 
-
 // `~` is replaced with design-system-react at runtime
 import Checkbox from '~/components/forms/checkbox';
 
@@ -71,4 +70,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

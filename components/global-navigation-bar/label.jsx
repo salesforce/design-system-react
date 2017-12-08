@@ -20,12 +20,7 @@ import { GLOBAL_NAVIGATION_BAR_LABEL } from '../../utilities/constants';
  */
 const GlobalNavigationBarLabel = (props) => {
 	// Separate props we care about in order to pass others along passively to the `span` tag
-	const {
-		className,
-		dividerPosition,
-		id,
-		label
-	} = props;
+	const { className, dividerPosition, id, label } = props;
 
 	return (
 		<li className="slds-context-bar__item slds-no-hover">
@@ -35,8 +30,11 @@ const GlobalNavigationBarLabel = (props) => {
 				style={{ color: '#16325c' }}
 				className={classNames(
 					'slds-context-bar__label-action',
-					{ [`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition },
-					className)}
+					{
+						[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition
+					},
+					className
+				)}
 			>
 				<span className="slds-truncate">{label}</span>
 			</span>
@@ -51,7 +49,11 @@ GlobalNavigationBarLabel.propTypes = {
 	/**
 	 * Class names to be added to the `span` element
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string
+	]),
 	/**
 	 * Determines position of separating bar.
 	 */

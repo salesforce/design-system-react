@@ -30,7 +30,10 @@ if (!Object.entries) {
  * context [full source here](tests/enzyme-helpers.js). `this` can
  * only be referenced if inside `function () {}`.
  */
-import { mountComponent, unmountComponent } from '../../../tests/enzyme-helpers';
+import {
+	mountComponent,
+	unmountComponent
+} from '../../../tests/enzyme-helpers';
 
 import { sampleReportCategories } from '../../../utilities/sample-data/navigation';
 import Navigation from '../../navigation';
@@ -67,9 +70,7 @@ const DemoComponent = createReactClass({
 	// event handlers
 
 	render () {
-		return (
-			<Navigation {...this.props} />
-		);
+		return <Navigation {...this.props} />;
 	}
 });
 
@@ -78,9 +79,7 @@ describe('SLDSNavigation', () => {
 		/* Detect if presence of accessibility features such as ARIA
 		 * roles and screen reader text is present in the DOM.
 		 */
-		beforeEach(mountComponent(
-			<DemoComponent />
-		));
+		beforeEach(mountComponent(<DemoComponent />));
 
 		afterEach(unmountComponent);
 
@@ -89,7 +88,9 @@ describe('SLDSNavigation', () => {
 			Object.entries(structure).forEach(([categoryId, itemCount]) => {
 				const header = this.wrapper.find(`#sample-navigation-${categoryId}`);
 				expect(header).to.have.length(1);
-				const ariaDescribedbyId = this.wrapper.find(`a[aria-describedby="sample-navigation-${categoryId}"]`);
+				const ariaDescribedbyId = this.wrapper.find(
+					`a[aria-describedby="sample-navigation-${categoryId}"]`
+				);
 				expect(ariaDescribedbyId).to.have.length(itemCount);
 			});
 		});
@@ -100,14 +101,15 @@ describe('SLDSNavigation', () => {
 	describe('selectedId prop', () => {
 		const selectedId = 'my_folders';
 
-		beforeEach(mountComponent(
-			<DemoComponent selectedId={selectedId} />
-		));
+		beforeEach(mountComponent(<DemoComponent selectedId={selectedId} />));
 
 		afterEach(unmountComponent);
 
 		it('is used to select an item', function () {
-			const item = this.wrapper.find('.sample-navigation').find('li.slds-is-active').find('a[data-id="my_folders"]');
+			const item = this.wrapper
+				.find('.sample-navigation')
+				.find('li.slds-is-active')
+				.find('a[data-id="my_folders"]');
 			expect(item).to.have.length(1);
 		});
 	});
@@ -117,14 +119,14 @@ describe('SLDSNavigation', () => {
 	describe('Item', () => {
 		const clickHandler = sinon.spy();
 
-		beforeEach(mountComponent(
-			<DemoComponent onSelect={clickHandler} />
-		));
+		beforeEach(mountComponent(<DemoComponent onSelect={clickHandler} />));
 
 		afterEach(unmountComponent);
 
 		it('calls onSelect', function () {
-			const item = this.wrapper.find('.sample-navigation').find('a[data-id="my_folders"]');
+			const item = this.wrapper
+				.find('.sample-navigation')
+				.find('a[data-id="my_folders"]');
 			item.simulate('click');
 			expect(clickHandler.callCount).to.equal(1);
 		});

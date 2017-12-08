@@ -25,18 +25,21 @@ const propTypes = {
 
 class Item extends React.Component {
 	componentWillReceiveProps (nextProps) {
-		if (nextProps.isActive !== this.props.isActive && nextProps.isActive === true) {
+		if (
+			nextProps.isActive !== this.props.isActive &&
+			nextProps.isActive === true
+		) {
 			this.scrollFocus();
 			this.props.setFocus(this.props.id);
 		}
 	}
 
-	handleClick = () => this.props.onSelect(this.props.id, this.props.data)
+	handleClick = () => this.props.onSelect(this.props.id, this.props.data);
 
-  // Scroll menu item based on up/down mouse keys (assumes all items are the same height)
+	// Scroll menu item based on up/down mouse keys (assumes all items are the same height)
 	scrollFocus () {
 		const height = this.itemRef.offsetHeight;
-		if (height && this.props.handleItemFocus) this.props.handleItemFocus(this.props.index, height);
+		if (height && this.props.handleItemFocus) { this.props.handleItemFocus(this.props.index, height); }
 	}
 
 	getIcon () {
@@ -58,24 +61,32 @@ class Item extends React.Component {
 
 	getCustomLabel () {
 		const ListItemLabel = this.props.listItemLabelRenderer;
-		return <ListItemLabel {... this.props} />;
+		return <ListItemLabel {...this.props} />;
 	}
 
 	getLabel () {
 		let label;
 		if (this.props.children.data.subTitle) {
-			label = (<div className="slds-media__body">
-				<div className="slds-lookup__result-text">{this.props.children.label}</div>
-				<span className="slds-lookup__result-meta slds-text-body--small">{this.props.children.data.subTitle}</span>
-			</div>);
+			label = (
+				<div className="slds-media__body">
+					<div className="slds-lookup__result-text">
+						{this.props.children.label}
+					</div>
+					<span className="slds-lookup__result-meta slds-text-body--small">
+						{this.props.children.data.subTitle}
+					</span>
+				</div>
+			);
 		} else {
 			const labelClassName = cx('slds-lookup__result-text', {
 				'slds-m-left--x-small': !this.props.iconName
 			});
 
-			label = (<div className="slds-media__body">
-				<div className={labelClassName}>{this.props.children.label}</div>
-			</div>);
+			label = (
+				<div className="slds-media__body">
+					<div className={labelClassName}>{this.props.children.label}</div>
+				</div>
+			);
 		}
 		return label;
 	}
@@ -86,8 +97,13 @@ class Item extends React.Component {
 		if (this.props.isActive) itemClassName += ' slds-theme--shade';
 
 		return (
-      // IMPORTANT: anchor id is used to set lookup's input's aria-activedescendant
-			<li className={itemClassName} ref={(li) => { this.itemRef = li; }}>
+			// IMPORTANT: anchor id is used to set lookup's input's aria-activedescendant
+			<li
+				className={itemClassName}
+				ref={(li) => {
+					this.itemRef = li;
+				}}
+			>
 				<a
 					aria-disabled={this.props.isDisabled}
 					className="slds-lookup__item-action slds-media slds-media--center"
@@ -100,10 +116,12 @@ class Item extends React.Component {
 					tabIndex="-1"
 				>
 					{this.getIcon()}
-					{ this.props.listItemLabelRenderer ? this.getCustomLabel() : this.getLabel() }
+					{this.props.listItemLabelRenderer
+						? this.getCustomLabel()
+						: this.getLabel()}
 				</a>
 			</li>
-    );
+		);
 	}
 }
 

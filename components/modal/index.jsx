@@ -1,7 +1,6 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-
 /* eslint-disable react/prefer-es6-class */
 
 // Implements the [Modal design pattern](https://lightningdesignsystem.com/components/modals/) in React.
@@ -34,23 +33,25 @@ const propTypes = {
 	 */
 	children: PropTypes.node.isRequired,
 	/**
-	  * Text read aloud by screen readers when the user focuses on the Close Button.
-	  */
+	 * Text read aloud by screen readers when the user focuses on the Close Button.
+	 */
 	closeButtonAssistiveText: PropTypes.string,
 	/**
-	  * Custom CSS classes for the modal's container. This is the element with `.slds-modal__container`. Use `classNames` [API](https://github.com/JedWatson/classnames).
-	  */
+	 * Custom CSS classes for the modal's container. This is the element with `.slds-modal__container`. Use `classNames` [API](https://github.com/JedWatson/classnames).
+	 */
 	containerClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string]),
+		PropTypes.string
+	]),
 	/**
 	 * Custom CSS classes for the modal's body. This is the element that has overflow rules and should be used to set a static height if desired. Use `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
 	contentClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string]),
+		PropTypes.string
+	]),
 	/**
 	 * Custom styles for the modal's body. This is the element that has overflow rules and should be used to set a static height if desired.
 	 */
@@ -69,15 +70,12 @@ const propTypes = {
 	dismissOnClickOutside: PropTypes.bool,
 	/**
 	 * Callback to fire with Modal is dismissed
-	*/
+	 */
 	onRequestClose: PropTypes.func,
 	/**
 	 * Accepts either a node or array of buttons to be placed in the footer. If array, the buttons render on the right side by default but are floated left and right if <code>directional</code> is true.
 	 */
-	footer: PropTypes.oneOfType([
-		PropTypes.array,
-		PropTypes.node
-	]),
+	footer: PropTypes.oneOfType([PropTypes.array, PropTypes.node]),
 	/**
 	 * Allows for a custom modal header that does not scroll with modal content. If this is defined, `title` and `tagline` will be ignored. The close button will still be present.
 	 */
@@ -88,7 +86,8 @@ const propTypes = {
 	headerClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string]),
+		PropTypes.string
+	]),
 	/**
 	 * Forces the modal to be open or closed.
 	 */
@@ -103,11 +102,19 @@ const propTypes = {
 	portalClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string]),
+		PropTypes.string
+	]),
 	/**
 	 * Styles the modal as a prompt.
 	 */
-	prompt: PropTypes.oneOf(['success', 'warning', 'error', 'wrench', 'offline', 'info']),
+	prompt: PropTypes.oneOf([
+		'success',
+		'warning',
+		'error',
+		'wrench',
+		'offline',
+		'info'
+	]),
 	/**
 	 * Specifiies the modal's width. May be deprecated in favor of `width` in the future.
 	 */
@@ -142,7 +149,6 @@ const defaultProps = {
  * This component uses a portalMount (a disconnected React subtree mount) to create a modal as a child of `body`.
  */
 class Modal extends React.Component {
-
 	constructor (props) {
 		super(props);
 		this.state = {
@@ -153,7 +159,9 @@ class Modal extends React.Component {
 		// Bind
 		this.handleModalClick = this.handleModalClick.bind(this);
 		this.closeModal = this.closeModal.bind(this);
-		this.dismissModalOnClickOutside = this.dismissModalOnClickOutside.bind(this);
+		this.dismissModalOnClickOutside = this.dismissModalOnClickOutside.bind(
+			this
+		);
 	}
 
 	setReturnFocus () {
@@ -245,13 +253,15 @@ class Modal extends React.Component {
 		}
 	}
 
-	clearBodyScroll () { // eslint-disable-line class-methods-use-this
+	clearBodyScroll () {
+		// eslint-disable-line class-methods-use-this
 		if (window && document && document.body) {
 			document.body.style.overflow = 'inherit';
 		}
 	}
 
-	handleModalClick (event) { // eslint-disable-line class-methods-use-this
+	handleModalClick (event) {
+		// eslint-disable-line class-methods-use-this
 		if (event && event.stopPropagation) {
 			event.stopPropagation();
 		}
@@ -272,15 +282,24 @@ class Modal extends React.Component {
 
 		if (hasFooter) {
 			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
-			footer = (<footer className={classNames(footerClass, this.props.footerClassNames)} onClick={this.handleModalClick}>{this.props.footer}</footer>);
+			footer = (
+				<footer
+					className={classNames(footerClass, this.props.footerClassNames)}
+					onClick={this.handleModalClick}
+				>
+					{this.props.footer}
+				</footer>
+			);
 		}
 		return footer;
 	}
 
 	headerComponent () {
 		let headerContent = this.props.header;
-		const headerEmpty = !headerContent && !this.props.title && !this.props.tagline;
-		const closeButtonAssistiveText = this.props.closeButtonAssistiveText || 'Close';
+		const headerEmpty =
+			!headerContent && !this.props.title && !this.props.tagline;
+		const closeButtonAssistiveText =
+			this.props.closeButtonAssistiveText || 'Close';
 		const closeButton = (
 			<Button
 				assistiveText={closeButtonAssistiveText}
@@ -304,8 +323,12 @@ class Modal extends React.Component {
 							'slds-text-heading--medium': !this.isPrompt()
 						})}
 						id={this.getId()}
-					>{this.props.title}</h2>
-					{this.props.tagline ? <p className="slds-m-top--x-small">{this.props.tagline}</p> : null}
+					>
+						{this.props.title}
+					</h2>
+					{this.props.tagline ? (
+						<p className="slds-m-top--x-small">{this.props.tagline}</p>
+					) : null}
 				</div>
 			);
 		}
@@ -313,12 +336,15 @@ class Modal extends React.Component {
 		return (
 			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
 			<header
-				className={classNames('slds-modal__header', {
-					'slds-modal__header--empty': headerEmpty,
-					[`slds-theme--${this.props.prompt}`]: this.isPrompt(),
-					'slds-theme--alert-texture': this.isPrompt()
-				},
-				this.props.headerClassName)}
+				className={classNames(
+					'slds-modal__header',
+					{
+						'slds-modal__header--empty': headerEmpty,
+						[`slds-theme--${this.props.prompt}`]: this.isPrompt(),
+						'slds-theme--alert-texture': this.isPrompt()
+					},
+					this.props.headerClassName
+				)}
 				onClick={this.handleModalClick}
 			>
 				{this.props.dismissible ? closeButton : null}
@@ -328,10 +354,12 @@ class Modal extends React.Component {
 	}
 
 	getModal () {
-		const modalStyle = this.props.align === 'top' ? { justifyContent: 'flex-start' } : null;
-		const borderRadius = this.props.title || this.props.header ? {} : { borderRadius: '.25rem' };
+		const modalStyle =
+			this.props.align === 'top' ? { justifyContent: 'flex-start' } : null;
+		const borderRadius =
+			this.props.title || this.props.header ? {} : { borderRadius: '.25rem' };
 		const contentStyleFromProps = this.props.contentStyle || {};
-		const contentStyle =  {
+		const contentStyle = {
 			...borderRadius,
 			...contentStyleFromProps
 		};
@@ -349,10 +377,19 @@ class Modal extends React.Component {
 				onClick={this.dismissModalOnClickOutside}
 				role="dialog"
 			>
-				<div className={classNames('slds-modal__container', this.props.containerClassName)} style={modalStyle}>
+				<div
+					className={classNames(
+						'slds-modal__container',
+						this.props.containerClassName
+					)}
+					style={modalStyle}
+				>
 					{this.headerComponent()}
 					<div
-						className={classNames('slds-modal__content', this.props.contentClassName)}
+						className={classNames(
+							'slds-modal__content',
+							this.props.contentClassName
+						)}
 						style={contentStyle}
 						onClick={this.handleModalClick}
 					>
@@ -394,14 +431,16 @@ class Modal extends React.Component {
 				onRequestClose={this.closeModal}
 				style={customStyles}
 				parentSelector={this.props.parentSelector}
-				portalClassName={classNames('ReactModalPortal', this.props.portalClassName)}
+				portalClassName={classNames(
+					'ReactModalPortal',
+					this.props.portalClassName
+				)}
 			>
 				{this.getModal()}
 				<div className="slds-backdrop slds-backdrop--open" />
 			</ReactModal>
 		);
 	}
-
 }
 
 Modal.displayName = displayName;

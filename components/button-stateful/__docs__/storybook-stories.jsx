@@ -8,20 +8,25 @@ import { BUTTON_STATEFUL } from '../../../utilities/constants';
 import ButtonStateful from '../../button-stateful';
 
 const getButtonStateful = (props) => (
-	<ButtonStateful
-		{...props}
-		onClick={action('click')}
-	/>
+	<ButtonStateful {...props} onClick={action('click')} />
 );
 
 storiesOf(BUTTON_STATEFUL, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
+	.addDecorator((getStory) => (
+		<div className="slds-p-around--medium">
+			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+		</div>
+	))
 	.add('Base', () => getButtonStateful())
 	.add('Disabled', () => getButtonStateful({ disabled: true }))
-	.add('Icon', () => getButtonStateful({
-		variant: 'icon',
-		label: 'Neutral Icon',
-		iconName: 'check',
-		onFocus: action('hover'),
-		onMouseEnter: (e) => { console.log('target is ', e.target); }
-	}));
+	.add('Icon', () =>
+		getButtonStateful({
+			variant: 'icon',
+			label: 'Neutral Icon',
+			iconName: 'check',
+			onFocus: action('hover'),
+			onMouseEnter: (e) => {
+				console.log('target is ', e.target);
+			}
+		})
+	);

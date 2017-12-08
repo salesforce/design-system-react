@@ -6,32 +6,26 @@ import PropTypes from 'prop-types';
 
 const displayName = 'PageHeaderRelatedList';
 const propTypes = {
-  /**
-   * Icon node passed by PageHeader
-   */
+	/**
+	 * Icon node passed by PageHeader
+	 */
 	icon: PropTypes.node,
-  /**
-   * Title node passed by PageHeader
-   */
+	/**
+	 * Title node passed by PageHeader
+	 */
 	title: PropTypes.node,
-  /**
-   * Info node passed by PageHeader
-   */
+	/**
+	 * Info node passed by PageHeader
+	 */
 	info: PropTypes.node,
-  /**
-   * Content to appear on the right hand side of the page header
-   */
-	contentRight: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]),
-  /**
-   * Nav content which appears in the upper right hand corner.
-   */
-	navRight: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	])
+	/**
+	 * Content to appear on the right hand side of the page header
+	 */
+	contentRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	/**
+	 * Nav content which appears in the upper right hand corner.
+	 */
+	navRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
 };
 const defaultProps = {};
 
@@ -41,19 +35,17 @@ class RelatedList extends Component {
 			<div>
 				<div className="slds-grid">
 					<div className="slds-col slds-has-flexi-truncate">
-						{ this.props.label }
-						{ this.props.title }
+						{this.props.label}
+						{this.props.title}
 					</div>
 					<div className="slds-col slds-no-flex slds-grid slds-align-top">
-						{ this.props.navRight }
+						{this.props.navRight}
 					</div>
 				</div>
 				<div className="slds-grid">
-					<div className="slds-col slds-align-bottom">
-						{ this.props.info }
-					</div>
+					<div className="slds-col slds-align-bottom">{this.props.info}</div>
 					<div className="slds-col slds-no-flex slds-grid slds-align-bottom">
-						{ this.props.contentRight }
+						{this.props.contentRight}
 					</div>
 				</div>
 			</div>

@@ -13,31 +13,28 @@ import PropTypes from 'prop-types';
 
 // ### shortid
 // `shortid` is a short, non-sequential, url-friendly, unique id generator. It is used here to provide unique strings for the HTML attribute `id` on the Tabs components. It is only used if the `id` prop is not provided on the man <Tabs /> component.
-import shortid         from 'shortid';
+import shortid from 'shortid';
 
 // ### classNames
-import classNames      from 'classnames';
+import classNames from 'classnames';
 
 // ### isFunction
-import isFunction      from 'lodash.isfunction';
+import isFunction from 'lodash.isfunction';
 
 // ### isNumber
-import isNumber      from 'lodash.isnumber';
-
+import isNumber from 'lodash.isnumber';
 
 // Child components
-import TabsList        from './private/tabs-list';
-import Tab             from './private/tab';
-import TabPanel        from './private/tab-panel';
+import TabsList from './private/tabs-list';
+import Tab from './private/tab';
+import TabPanel from './private/tab-panel';
 
 // ## Constants
-import { TABS }        from '../../utilities/constants';
-
+import { TABS } from '../../utilities/constants';
 
 // ### Event Helpers
 import KEYS from '../../utilities/key-code';
 import EventUtil from '../../utilities/event';
-
 
 // Determine if a node from event.target is a Tab element
 function isTabNode (node) {
@@ -46,7 +43,6 @@ function isTabNode (node) {
 		(node.nodeName === 'LI' && node.getAttribute('role') === 'tab')
 	);
 }
-
 
 // Determine if a tab node is disabled
 function isTabDisabled (node) {
@@ -165,7 +161,7 @@ class Tabs extends React.Component {
 			}
 		} while ((node = node.parentNode) !== null);
 		/* eslint-enable no-cond-assign */
-	}
+	};
 
 	setSelected (index, focus) {
 		// Check index boundary
@@ -177,11 +173,11 @@ class Tabs extends React.Component {
 		const last = this.getSelectedIndex();
 
 		/**
-		* This is a temporary solution that could be broken in the future without notification,
-		* since this component is not a controlled component and only relies on internal state.
-		* If this breaks in the future an alternative way to control the state from outside the
-		* component should be present.
-		* */
+		 * This is a temporary solution that could be broken in the future without notification,
+		 * since this component is not a controlled component and only relies on internal state.
+		 * If this breaks in the future an alternative way to control the state from outside the
+		 * component should be present.
+		 * */
 		let shouldContinue;
 		// Call change event handler
 		if (isFunction(this.props.onSelect)) {
@@ -196,7 +192,6 @@ class Tabs extends React.Component {
 
 	getNextTab (index) {
 		const count = this.getTabsCount();
-
 
 		// Look for non-disabled tab from index to the last tab on the right
 		for (let i = index + 1; i < count; i++) {
@@ -221,7 +216,6 @@ class Tabs extends React.Component {
 	getPrevTab (index) {
 		let i = index;
 
-
 		// Look for non-disabled tab from index to first tab on the left
 		while (i--) {
 			const tab = this.getTab(i);
@@ -244,19 +238,17 @@ class Tabs extends React.Component {
 	}
 
 	getTabsCount () {
-		return this.props.children ?
-			React.Children.count(this.props.children) :
-			0;
+		return this.props.children ? React.Children.count(this.props.children) : 0;
 	}
 
 	getPanelsCount () {
-		return this.props.children ?
-			React.Children.count(this.props.children) :
-			0;
+		return this.props.children ? React.Children.count(this.props.children) : 0;
 	}
 
 	getSelectedIndex () {
-		return isNumber(this.props.selectedIndex) ? this.props.selectedIndex : this.state.selectedIndex;
+		return isNumber(this.props.selectedIndex)
+			? this.props.selectedIndex
+			: this.state.selectedIndex;
 	}
 
 	getTab (index) {
@@ -312,7 +304,7 @@ class Tabs extends React.Component {
 
 			this.setSelected(index, true);
 		}
-	}
+	};
 
 	renderTabsList (parentId) {
 		const children = React.Children.toArray(this.props.children);
@@ -329,7 +321,9 @@ class Tabs extends React.Component {
 					return (
 						<Tab
 							key={child.key}
-							ref={(node) => { this.tabs[index] = { tab: child, node }; }}
+							ref={(node) => {
+								this.tabs[index] = { tab: child, node };
+							}}
 							focus={focus}
 							selected={selected}
 							id={id}
@@ -371,13 +365,12 @@ class Tabs extends React.Component {
 		return result;
 	}
 
-
 	render () {
 		const {
 			className,
 			id = this.generatedId,
 			variant = this.getVariant
-			} = this.props;
+		} = this.props;
 
 		if (this.state.focus) {
 			setTimeout(() => {
@@ -399,7 +392,9 @@ class Tabs extends React.Component {
 				onClick={this.handleClick}
 				onKeyDown={this.handleKeyDown}
 				data-tabs
-				ref={((node) => { this.tabsNode = node; })}
+				ref={(node) => {
+					this.tabsNode = node;
+				}}
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				{this.renderTabsList(id)}

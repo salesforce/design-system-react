@@ -21,15 +21,9 @@ const Example = createReactClass({
 					stateThree={{ iconName: 'close', label: 'Unfollow' }}
 				/>
 				<ButtonGroup>
-					<Button
-						label="Edit"
-					/>
-					<Button
-						label="Delete"
-					/>
-					<Button
-						label="Clone"
-					/>
+					<Button label="Edit" />
+					<Button label="Delete" />
+					<Button label="Clone" />
 					<Dropdown
 						align="right"
 						assistiveText="More Options"
@@ -48,10 +42,22 @@ const Example = createReactClass({
 		);
 
 		const details = [
-			{ label: 'Field 1', content: 'Description that demonstrates truncation with content. Description that demonstrates truncation with content.', truncate: true },
+			{
+				label: 'Field 1',
+				content:
+					'Description that demonstrates truncation with content. Description that demonstrates truncation with content.',
+				truncate: true
+			},
 			{ label: 'Field 2', content: 'Multiple Values' },
-			{ label: 'Field 3', content: <a href="javascript:void(0);">Hyperlink</a> },
-			{ label: 'Field 4', content: 'Description (2-line truncation)', truncate: true }
+			{
+				label: 'Field 3',
+				content: <a href="javascript:void(0);">Hyperlink</a>
+			},
+			{
+				label: 'Field 4',
+				content: 'Description (2-line truncation)',
+				truncate: true
+			}
 		];
 
 		return (
@@ -71,4 +77,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

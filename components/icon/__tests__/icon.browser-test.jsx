@@ -10,7 +10,10 @@ import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 // `this.wrapper` and `this.dom` is set in the helpers file
-import { mountComponent, unmountComponent } from '../../../tests/enzyme-helpers';
+import {
+	mountComponent,
+	unmountComponent
+} from '../../../tests/enzyme-helpers';
 
 chai.use(chaiEnzyme());
 
@@ -21,9 +24,7 @@ const DemoIcon = createReactClass({
 	displayName: 'DemoIcon',
 
 	render () {
-		return (
-			<Icon {...this.props} />
-		);
+		return <Icon {...this.props} />;
 	}
 });
 
@@ -34,17 +35,19 @@ describe('SLDSIcon: ', function () {
 		let iconContainer;
 		let asstText;
 
-		beforeEach(mountComponent(
-			<IconSettings iconPath="/assets/icons">
-				<DemoIcon
-					assistiveText="Log a Call"
-					category="standard"
-					name="log_a_call"
-					style={{ backgroundColor: 'rgb(218, 165, 32)' }}
-					size="large"
-				/>
-			</IconSettings>
-		));
+		beforeEach(
+			mountComponent(
+				<IconSettings iconPath="/assets/icons">
+					<DemoIcon
+						assistiveText="Log a Call"
+						category="standard"
+						name="log_a_call"
+						style={{ backgroundColor: 'rgb(218, 165, 32)' }}
+						size="large"
+					/>
+				</IconSettings>
+			)
+		);
 
 		afterEach(unmountComponent);
 
@@ -79,16 +82,18 @@ describe('SLDSIcon: ', function () {
 		let iconContainer;
 		let asstText;
 
-		beforeEach(mountComponent(
-			<IconSettings iconPath="/assets/icons">
-				<DemoIcon
-					assistiveText="Heart"
-					category="custom"
-					name="custom1"
-					size="small"
-				/>
-			</IconSettings>
-		));
+		beforeEach(
+			mountComponent(
+				<IconSettings iconPath="/assets/icons">
+					<DemoIcon
+						assistiveText="Heart"
+						category="custom"
+						name="custom1"
+						size="small"
+					/>
+				</IconSettings>
+			)
+		);
 
 		afterEach(unmountComponent);
 
@@ -118,18 +123,20 @@ describe('SLDSIcon: ', function () {
 		let iconContainer;
 		let asstText;
 
-		beforeEach(mountComponent(
-			<IconSettings iconPath="/assets/icons">
-				<DemoIcon
-					assistiveText="Announcements"
-					category="action"
-					name="announcement"
-					size="large"
-					title="custom title"
-					className="slds-m-around--x-small"
-				/>
-			</IconSettings>
-		));
+		beforeEach(
+			mountComponent(
+				<IconSettings iconPath="/assets/icons">
+					<DemoIcon
+						assistiveText="Announcements"
+						category="action"
+						name="announcement"
+						size="large"
+						title="custom title"
+						className="slds-m-around--x-small"
+					/>
+				</IconSettings>
+			)
+		);
 
 		afterEach(unmountComponent);
 
@@ -167,15 +174,13 @@ describe('SLDSIcon: ', function () {
 		let iconContainer;
 		let asstText;
 
-		beforeEach(mountComponent(
-			<IconSettings iconPath="/assets/icons">
-				<DemoIcon
-					category="utility"
-					name="open_folder"
-					size="medium"
-				/>
-			</IconSettings>
-		));
+		beforeEach(
+			mountComponent(
+				<IconSettings iconPath="/assets/icons">
+					<DemoIcon category="utility" name="open_folder" size="medium" />
+				</IconSettings>
+			)
+		);
 
 		afterEach(unmountComponent);
 
@@ -200,16 +205,18 @@ describe('SLDSIcon: ', function () {
 		let iconContainer;
 		let use;
 
-		beforeEach(mountComponent(
-			<IconSettings iconPath="/assets/icons">
-				<DemoIcon
-					assistiveText="New stuff!"
-					inverse
-					path="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
-					size="medium"
-				/>
-			</IconSettings>
-		));
+		beforeEach(
+			mountComponent(
+				<IconSettings iconPath="/assets/icons">
+					<DemoIcon
+						assistiveText="New stuff!"
+						inverse
+						path="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+						size="medium"
+					/>
+				</IconSettings>
+			)
+		);
 
 		afterEach(unmountComponent);
 
@@ -218,8 +225,12 @@ describe('SLDSIcon: ', function () {
 		});
 
 		it('path prop is passed to svg', function () {
-			use = this.wrapper.find('svg').node.firstChild.getAttributeNS('http://www.w3.org/1999/xlink', 'href');
-			expect(use).to.equal('/assets/icons/utility-sprite/svg/symbols.svg#announcement');
+			use = this.wrapper
+				.find('svg')
+				.node.firstChild.getAttributeNS('http://www.w3.org/1999/xlink', 'href');
+			expect(use).to.equal(
+				'/assets/icons/utility-sprite/svg/symbols.svg#announcement'
+			);
 		});
 	});
 });

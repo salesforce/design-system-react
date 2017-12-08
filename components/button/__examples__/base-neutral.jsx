@@ -12,13 +12,13 @@ const Example = createReactClass({
 				<div className="-x-small-buttons--horizontal">
 					<Button
 						label="Base"
-						onClick={(e) => { console.log('Base Button e.target:', e.target); }}
+						onClick={(e) => {
+							console.log('Base Button e.target:', e.target);
+						}}
 						variant="base"
 					/>
 
-					<Button
-						label="Neutral"
-					/>
+					<Button label="Neutral" />
 
 					<Button
 						iconName="download"
@@ -26,14 +26,11 @@ const Example = createReactClass({
 						label="Neutral Icon"
 					/>
 
-					<Button
-						label="Responsive"
-						responsive
-					/>
+					<Button label="Responsive" responsive />
 				</div>
 			</IconSettings>
 		);
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

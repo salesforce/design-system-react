@@ -48,7 +48,12 @@ components.map((node) => {
 		}
 	}
 
-	console.log(`\n================================================================================\n[ ${inputPath.replace(dirName, '.')} ] `);
+	console.log(
+		`\n================================================================================\n[ ${inputPath.replace(
+			dirName,
+			'.'
+		)} ] `
+	);
 
 	const src = fs.readFileSync(inputPath, 'utf8');
 	const doc = parse(src);
@@ -81,7 +86,8 @@ components.map((node) => {
 
 			console.log(
 				'  dependency input path:\n  ',
-				util.inspect(depInputPathToUse.replace(dirName, '.'), { showHidden: true,
+				util.inspect(depInputPathToUse.replace(dirName, '.'), {
+					showHidden: true,
 					depth: null,
 					colors: true
 				})
@@ -95,7 +101,18 @@ components.map((node) => {
 				toReturn[dependency.component] = depDoc;
 			} catch (err) {
 				if (err) {
-					console.log('\n\n  ERROR: ./scripts/build-docs.js:106\n ', util.inspect(err.message, { showHidden: true, depth: null, colors: true }), `\n  ${depInputPathToUse.replace(dirName, '.')} is apparently not a valid JSX file...? This library uses https://github.com/reactjs/react-docgen to create its documentation. Please conform to code that is compatible with that library.\n\n`);
+					console.log(
+						'\n\n  ERROR: ./scripts/build-docs.js:106\n ',
+						util.inspect(err.message, {
+							showHidden: true,
+							depth: null,
+							colors: true
+						}),
+						`\n  ${depInputPathToUse.replace(
+							dirName,
+							'.'
+						)} is apparently not a valid JSX file...? This library uses https://github.com/reactjs/react-docgen to create its documentation. Please conform to code that is compatible with that library.\n\n`
+					);
 					process.exit(1);
 				}
 			}
@@ -108,7 +125,7 @@ components.map((node) => {
 	doc['SLDS-component-path'] = node['SLDS-component-path'];
 
 	// Clean the dependencies
-	const cleanDependencies = filter(dependencies, (object) => (!isEmpty(object)));
+	const cleanDependencies = filter(dependencies, (object) => !isEmpty(object));
 
 	doc.dependencies = cleanDependencies;
 
@@ -126,7 +143,10 @@ const outputPath = path.join(__dirname, '../components/component-docs.json');
 
 fs.writeFile(outputPath, JSON.stringify(output, null, 4), (err) => {
 	if (err) {
-		console.log('  [ ERROR AT ./scripts/build-docs.js:139 ] err: ', util.inspect(err, { showHidden: true, depth: null, colors: true }));
+		console.log(
+			'  [ ERROR AT ./scripts/build-docs.js:139 ] err: ',
+			util.inspect(err, { showHidden: true, depth: null, colors: true })
+		);
 	}
 });
 

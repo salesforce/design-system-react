@@ -11,10 +11,7 @@ const propTypes = {
 	/**
 	 * Content to appear on the right hand side of the page header
 	 */
-	contentRight: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]),
+	contentRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	/**
 	 * An array of detail blocks
 	 */
@@ -42,9 +39,13 @@ const RecordHome = (props) => (
 		<div className="slds-grid">
 			<div className="slds-col slds-has-flexi-truncate">
 				<MediaObject
-					body={<div>{props.label}
-						{props.title}
-						{props.info}</div>}
+					body={
+						<div>
+							{props.label}
+							{props.title}
+							{props.info}
+						</div>
+					}
 					className="slds-no-space slds-grow"
 					figure={props.icon}
 				/>

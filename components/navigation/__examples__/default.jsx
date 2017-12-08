@@ -5,7 +5,8 @@ import IconSettings from '~/components/icon-settings';
 import Navigation from '~/components/navigation';
 
 const sampleReportCategories = [
-	{ id: 'reports',
+	{
+		id: 'reports',
 		label: 'Reports',
 		items: [
 			{ id: 'recent_reports', label: 'Recent' },
@@ -15,7 +16,8 @@ const sampleReportCategories = [
 			{ id: 'all_reports', label: 'All Reports' }
 		]
 	},
-	{ id: 'folders',
+	{
+		id: 'folders',
 		label: 'Folders',
 		items: [
 			{ id: 'my_folders', label: 'Created by Me' },
@@ -58,4 +60,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

@@ -32,7 +32,14 @@ const handleKeyDown = (event, onSearch) => {
 /**
  * A `Search` is an `Input` which renders the search icon by default. It can be cleared, too. All `Input` props not specified as props already may be used with this component and will override defaults.
  */
-const Search = ({ assistiveText, clearable, onClear, onSearch, placeholder, ...props }) => (
+const Search = ({
+	assistiveText,
+	clearable,
+	onClear,
+	onSearch,
+	placeholder,
+	...props
+}) => (
 	<Input
 		assistiveText={{ label: assistiveText }}
 		iconLeft={
@@ -41,13 +48,18 @@ const Search = ({ assistiveText, clearable, onClear, onSearch, placeholder, ...p
 				category="utility"
 				name="search"
 				onClick={onSearch}
-			/>}
-		iconRight={clearable ? <InputIcon
-			assistiveText="Clear"
-			category="utility"
-			name="clear"
-			onClick={onClear}
-		/> : null}
+			/>
+		}
+		iconRight={
+			clearable ? (
+				<InputIcon
+					assistiveText="Clear"
+					category="utility"
+					name="clear"
+					onClick={onClear}
+				/>
+			) : null
+		}
 		onKeyDown={onSearch ? (event) => handleKeyDown(event, onSearch) : null}
 		placeholder={placeholder}
 		{...props}

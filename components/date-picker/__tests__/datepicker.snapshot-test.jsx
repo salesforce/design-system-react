@@ -6,9 +6,7 @@ import { renderMarkup } from '../../../tests/snapshot-helpers';
 import SnapshotDefault from '../__examples__/snapshot-default';
 
 test('Datepicker Default DOM Snapshot', () => {
-	const domTree = renderer.create(
-		<SnapshotDefault />,
-	).toJSON();
+	const domTree = renderer.create(<SnapshotDefault />).toJSON();
 	expect(domTree).toMatchSnapshot();
 });
 
@@ -25,7 +23,7 @@ const customProps = {
 	},
 	className: 'CUSTOM-CLASSNAME',
 	formatter () {
-		return 'Llama and Lamb\'s epiphany of love';
+		return "Llama and Lamb's epiphany of love";
 	},
 	id: 'CUSTOM-ID',
 	labels: {
@@ -46,15 +44,7 @@ const customProps = {
 		],
 		placeholder: 'SWIPE RIGHT :-)',
 		today: 'TODAY YOU ARE YOU!',
-		weekDays: [
-			'Day 1',
-			'Day 2',
-			'Day 3',
-			'Day 4',
-			'Day 5',
-			'Day 6',
-			'Day 7'
-		]
+		weekDays: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7']
 	},
 	parser () {
 		return new Date(2007, 0, 6);
@@ -80,22 +70,15 @@ test(`Datepicker
 		triggerClassName,
 		weekDayLabels
 	DOM Snapshot`, () => {
-	const domTree = renderer.create(
-		<SnapshotDefault
-			{...customProps}
-		/>,
-	).toJSON();
-	expect(domTree).toMatchSnapshot();
-});
+		const domTree = renderer
+			.create(<SnapshotDefault {...customProps} />)
+			.toJSON();
+		expect(domTree).toMatchSnapshot();
+	});
 
 test(`Datepicker
 	isIsoWeekday
 	DOM Snapshot`, () => {
-	const domTree = renderer.create(
-		<SnapshotDefault
-			isIsoWeekday
-		/>,
-	).toJSON();
-	expect(domTree).toMatchSnapshot();
-});
-
+		const domTree = renderer.create(<SnapshotDefault isIsoWeekday />).toJSON();
+		expect(domTree).toMatchSnapshot();
+	});

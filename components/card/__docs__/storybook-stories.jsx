@@ -30,10 +30,7 @@ const DemoCard = createReactClass({
 	propTypes: {
 		items: PropTypes.array,
 		header: PropTypes.node,
-		heading: PropTypes.oneOfType([
-			PropTypes.node,
-			PropTypes.string
-		])
+		heading: PropTypes.oneOfType([PropTypes.node, PropTypes.string])
 	},
 
 	getInitialState () {
@@ -49,51 +46,46 @@ const DemoCard = createReactClass({
 			items = items.filter((item) => this.state.filter.test(item.name));
 		}
 
-		const isEmpty = (items.length === 0);
+		const isEmpty = items.length === 0;
 
 		let heading = this.props.heading;
 
 		if (!this.props.heading) {
-			heading = items.length > 0
-			? `Related Items (${items.length})`
-			: 'Related Items';
+			heading =
+				items.length > 0 ? `Related Items (${items.length})` : 'Related Items';
 		}
 
 		return (
 			<div className="slds-grid slds-grid--vertical">
 				<Card
 					id="ExampleCard"
-					filter={(!isEmpty || this.state.filter)
-						? <CardFilter onChange={this.handleFilterChange} />
-						: null
+					filter={
+						!isEmpty || this.state.filter ? (
+							<CardFilter onChange={this.handleFilterChange} />
+						) : null
 					}
 					header={this.props.header}
-					headerActions={!isEmpty
-						? <Button label="Delete All Items" onClick={this.handleDeleteAllItems} />
-						: <Button label="New" onClick={this.handleAddItem} />
+					headerActions={
+						!isEmpty ? (
+							<Button
+								label="Delete All Items"
+								onClick={this.handleDeleteAllItems}
+							/>
+						) : (
+							<Button label="New" onClick={this.handleAddItem} />
+						)
 					}
 					footer="Card Footer"
 					heading={heading}
 					icon={<Icon category="standard" name="document" size="small" />}
-					empty={isEmpty
-						? <CardEmpty heading="No Related Items" />
-						: null}
+					empty={isEmpty ? <CardEmpty heading="No Related Items" /> : null}
 				>
-					<DataTable
-						id="SLDSDataTableExample-1"
-						items={items}
-						bordered
-					>
-						<DataTableColumn
-							label="Opportunity Name"
-							property="name"
-							truncate
-						>
+					<DataTable id="SLDSDataTableExample-1" items={items} bordered>
+						<DataTableColumn label="Opportunity Name" property="name" truncate>
 							<DataTableHighlightCell search={this.state.filter} />
 						</DataTableColumn>
 					</DataTable>
 				</Card>
-
 			</div>
 		);
 	},
@@ -101,7 +93,8 @@ const DemoCard = createReactClass({
 	handleFilterChange (event, ...rest) {
 		action('filter')(event, ...rest);
 
-		const filter = event.target.value !== '' ? RegExp(event.target.value, 'i') : null;
+		const filter =
+			event.target.value !== '' ? RegExp(event.target.value, 'i') : null;
 
 		this.setState({
 			filter
@@ -121,10 +114,7 @@ const DemoCard = createReactClass({
 		action('add')(...rest);
 
 		this.setState({
-			items: [
-				{ name: uniqueId('New item #') },
-				...this.state.items
-			]
+			items: [{ name: uniqueId('New item #') }, ...this.state.items]
 		});
 	}
 });
@@ -159,26 +149,34 @@ const SetHeightCard = () => (
 SetHeightCard.displayName = 'SET_HEIGHT_CARD';
 
 storiesOf(CARD, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
+	.addDecorator((getStory) => (
+		<div className="slds-p-around--medium">
+			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+		</div>
+	))
 	.add('w/ Items', () => <DemoCard items={sampleItems} />)
 	.add('Empty', () => <DemoCard items={[]} />)
 	.add('Custom Header', () => (
 		<DemoCard
-			header={<MediaObject
-				body={<InlineEdit
-					className="slds-text-heading--small slds-truncate"
-					name="inline-edit-standard"
-					value="Write your own heading"
-					id="inline-edit-standard"
-				/>}
-			/>}
+			header={
+				<MediaObject
+					body={
+						<InlineEdit
+							className="slds-text-heading--small slds-truncate"
+							name="inline-edit-standard"
+							value="Write your own heading"
+							id="inline-edit-standard"
+						/>
+					}
+				/>
+			}
 			items={sampleItems}
-		/>))
+		/>
+	))
 	.add('Custom Heading', () => (
 		<DemoCard
 			items={sampleItems}
-			heading={<span
-				style={{ color: 'red' }}
-			>To Wanda! This is custom!</span>}
-		/>))
+			heading={<span style={{ color: 'red' }}>To Wanda! This is custom!</span>}
+		/>
+	))
 	.add('Set height card', () => <SetHeightCard />);

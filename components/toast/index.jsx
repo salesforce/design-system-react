@@ -30,7 +30,11 @@ const propTypes = {
 	 * CSS classes to be added to tag with `.slds-notify_toast`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 * _Tested with snapshot testing._
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string
+	]),
 	/**
 	 * If duration exists, the Toast will disappear after that amount of time. Time in milliseconds. _Tested with Mocha testing._
 	 */
@@ -119,7 +123,7 @@ class Toast extends React.Component {
 			}
 			this.setState({ isInitialRender: false });
 		}
-	}
+	};
 
 	onClose = () => {
 		if (this.timeout) {
@@ -130,11 +134,15 @@ class Toast extends React.Component {
 		if (this.props.onRequestClose) {
 			this.props.onRequestClose();
 		}
-	}
+	};
 
 	render () {
 		// Merge objects of strings with their default object
-		const assistiveText = assign({}, defaultProps.assistiveText, this.props.assistiveText);
+		const assistiveText = assign(
+			{},
+			defaultProps.assistiveText,
+			this.props.assistiveText
+		);
 		const labels = assign({}, defaultProps.labels, this.props.labels);
 		const heading = labels.heading || this.props.content; // eslint-disable-line react/prop-types
 
@@ -152,7 +160,9 @@ class Toast extends React.Component {
 			error: <Icon category="utility" name="error" />
 		};
 
-		const icon = this.props.icon ? this.props.icon : defaultIcons[this.props.variant];
+		const icon = this.props.icon
+			? this.props.icon
+			: defaultIcons[this.props.variant];
 
 		const clonedIcon = React.cloneElement(icon, {
 			containerClassName: 'slds-m-right_small slds-no-flex slds-align-top',
@@ -163,25 +173,35 @@ class Toast extends React.Component {
 		/* eslint-disable no-script-url */
 		return (
 			<div
-				className={classNames('slds-notify slds-notify_toast', {
-					'slds-theme_info': this.props.variant === 'info',
-					'slds-theme_success': this.props.variant === 'success',
-					'slds-theme_warning': this.props.variant === 'warning',
-					'slds-theme_error': this.props.variant === 'error'
-				},
-				this.props.className)}
+				className={classNames(
+					'slds-notify slds-notify_toast',
+					{
+						'slds-theme_info': this.props.variant === 'info',
+						'slds-theme_success': this.props.variant === 'success',
+						'slds-theme_warning': this.props.variant === 'warning',
+						'slds-theme_error': this.props.variant === 'error'
+					},
+					this.props.className
+				)}
 				role="alert"
 			>
-				<span className="slds-assistive-text">{assistiveTextVariant[this.props.variant]}</span>
+				<span className="slds-assistive-text">
+					{assistiveTextVariant[this.props.variant]}
+				</span>
 				{clonedIcon}
 				<div className="slds-notify__content">
-					<h2 className="slds-text-heading_small">{heading}{' '}{labels.headingLink
-						? <a onClick={this.props.onClickHeadingLink} href="javascript:void(0);">{labels.headingLink}</a>
-						: null}</h2>
-					{labels.details
-						? <p>{labels.details}</p>
-						: null
-					}
+					<h2 className="slds-text-heading_small">
+						{heading}{' '}
+						{labels.headingLink ? (
+							<a
+								onClick={this.props.onClickHeadingLink}
+								href="javascript:void(0);"
+							>
+								{labels.headingLink}
+							</a>
+						) : null}
+					</h2>
+					{labels.details ? <p>{labels.details}</p> : null}
 				</div>
 				<Button
 					assistiveText={assistiveText.closeButton}

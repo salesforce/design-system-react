@@ -91,17 +91,11 @@ const Input = createReactClass({
 		/**
 		 * Displays text or node to the left of the input. This follows the fixed text input UX pattern.
 		 */
-		fixedTextLeft: PropTypes.oneOfType([
-			PropTypes.node,
-			PropTypes.string
-		]),
+		fixedTextLeft: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 		/**
 		 * Displays text or node to the right of the input. This follows the fixed text input UX pattern.
 		 */
-		fixedTextRight: PropTypes.oneOfType([
-			PropTypes.node,
-			PropTypes.string
-		]),
+		fixedTextRight: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 		/**
 		 * If true, loading spinner appears inside input on right hand side.
 		 */
@@ -223,15 +217,30 @@ const Input = createReactClass({
 
 		/* eslint-disable react/prop-types */
 		const deprecatedProps = {
-			assistiveText: (this.props[iconPositionProp] && this.props[iconPositionProp].props.assistiveText)
-				|| this.props.iconAssistiveText,
-			category: (this.props[iconPositionProp] && this.props[iconPositionProp].props.category) || this.props.iconCategory,
-			name: (this.props[iconPositionProp] && this.props[iconPositionProp].props.name) || this.props.iconName,
-			onClick: (this.props[iconPositionProp] && this.props[iconPositionProp].props.onClick) || this.props.onIconClick
+			assistiveText:
+				(this.props[iconPositionProp] &&
+					this.props[iconPositionProp].props.assistiveText) ||
+				this.props.iconAssistiveText,
+			category:
+				(this.props[iconPositionProp] &&
+					this.props[iconPositionProp].props.category) ||
+				this.props.iconCategory,
+			name:
+				(this.props[iconPositionProp] &&
+					this.props[iconPositionProp].props.name) ||
+				this.props.iconName,
+			onClick:
+				(this.props[iconPositionProp] &&
+					this.props[iconPositionProp].props.onClick) ||
+				this.props.onIconClick
 		};
 		/* eslint-enable react/prop-types */
 
-		if (this.props[iconPositionProp] && position && this.props[iconPositionProp]) {
+		if (
+			this.props[iconPositionProp] &&
+			position &&
+			this.props[iconPositionProp]
+		) {
 			icon = React.cloneElement(this.props[iconPositionProp], {
 				iconPosition: `${position}`
 			});
@@ -245,17 +254,24 @@ const Input = createReactClass({
 	// ### Render
 	render () {
 		// this is a hack to make left the default prop unless overwritten by `iconPosition="right"`
-		const hasLeftIcon = !!this.props.iconLeft ||
-			((this.props.iconPosition === 'left' || this.props.iconPosition === undefined) && !!this.props.iconName);
-		const hasRightIcon = !!this.props.iconRight ||
+		const hasLeftIcon =
+			!!this.props.iconLeft ||
+			((this.props.iconPosition === 'left' ||
+				this.props.iconPosition === undefined) &&
+				!!this.props.iconName);
+		const hasRightIcon =
+			!!this.props.iconRight ||
 			(this.props.iconPosition === 'right' && !!this.props.iconName);
 
 		return (
 			<div
-				className={classNames('slds-form-element', {
-					'slds-has-error': this.props.errorText
-				},
-				this.props.className)}
+				className={classNames(
+					'slds-form-element',
+					{
+						'slds-has-error': this.props.errorText
+					},
+					this.props.className
+				)}
 			>
 				<Label
 					assistiveText={this.props.assistiveText}
@@ -282,7 +298,9 @@ const Input = createReactClass({
 					hasSpinner={this.props.hasSpinner}
 					id={this.getId()}
 					iconLeft={hasLeftIcon ? this.getIconRender('left', 'iconLeft') : null}
-					iconRight={hasRightIcon ? this.getIconRender('right', 'iconRight') : null}
+					iconRight={
+						hasRightIcon ? this.getIconRender('right', 'iconRight') : null
+					}
 					inlineEditTrigger={this.props.inlineEditTrigger}
 					isStatic={this.props.isStatic}
 					minLength={this.props.minLength}
@@ -304,11 +322,17 @@ const Input = createReactClass({
 					readOnly={this.props.readOnly}
 					required={this.props.required}
 					role={this.props.role}
-					spinnerAssistiveText={this.props.assistiveText && this.props.assistiveText.spinner}
+					spinnerAssistiveText={
+						this.props.assistiveText && this.props.assistiveText.spinner
+					}
 					type={this.props.type}
 					value={this.props.value}
 				/>
-				{this.props.errorText && <div id={this.getErrorId()} className="slds-form-element__help">{this.props.errorText}</div>}
+				{this.props.errorText && (
+					<div id={this.getErrorId()} className="slds-form-element__help">
+						{this.props.errorText}
+					</div>
+				)}
 				{this.props.children}
 			</div>
 		);

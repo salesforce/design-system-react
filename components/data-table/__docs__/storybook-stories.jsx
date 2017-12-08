@@ -8,6 +8,10 @@ import Advanced from '../__examples__/advanced';
 import Basic from '../__examples__/basic';
 
 storiesOf(DATA_TABLE, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
+	.addDecorator((getStory) => (
+		<div className="slds-p-around--medium">
+			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+		</div>
+	))
 	.add('Basic (Fluid Layout)', () => <Basic />)
 	.add('Advanced (Fixed Layout)', () => <Advanced log={action} />);

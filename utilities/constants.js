@@ -48,7 +48,8 @@ export const GLOBAL_NAVIGATION_BAR_DROPDOWN = 'SLDSGlobalNavigationBarDropdown';
 export const GLOBAL_NAVIGATION_BAR_LABEL = 'SLDSGlobalNavigationBarLabel';
 export const GLOBAL_NAVIGATION_BAR_LINK = 'SLDSGlobalNavigationBarLink';
 export const GLOBAL_NAVIGATION_BAR_REGION = 'SLDSGlobalNavigationBarRegion';
-export const GLOBAL_NAVIGATION_BAR_APP_LAUNCHER = 'SLDSGlobalNavigationBarAppLauncher';
+export const GLOBAL_NAVIGATION_BAR_APP_LAUNCHER =
+	'SLDSGlobalNavigationBarAppLauncher';
 export const GRID = 'SLDSGrid';
 export const HIGHLIGHTER = 'SLDSHighlighter';
 export const ICON = 'SLDSIcon';

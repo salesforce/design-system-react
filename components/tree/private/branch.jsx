@@ -57,7 +57,10 @@ const handleClick = (event, props) => {
 };
 
 const handleScroll = (event, props) => {
-	const percentage = ((event.target.scrollTop) / (event.target.scrollHeight - event.target.clientHeight)) * 100;
+	const percentage =
+		event.target.scrollTop /
+		(event.target.scrollHeight - event.target.clientHeight) *
+		100;
 
 	if (isFunction(props.onScroll)) {
 		props.onScroll(event, {
@@ -73,7 +76,9 @@ const renderInitialNode = (children, props) => (
 		// TODO
 		// aria-activedescendant=""
 		className={classNames('slds-tree', props.initalClassName)}
-		onScroll={(event) => { handleScroll(event, props); }}
+		onScroll={(event) => {
+			handleScroll(event, props);
+		}}
 		role="tree"
 		style={props.initialStyle}
 		// tabIndex="0"
@@ -88,16 +93,15 @@ renderInitialNode.propTypes = {
 	/**
 	 * HTML `id` of the wrapping container element.
 	 */
-	htmlId: PropTypes.oneOfType([
-		PropTypes.number,
-		PropTypes.string]).isRequired,
+	htmlId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 	/*
 	 * Class names to be added to the top-level `ul` element.
 	 */
 	initalClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string]),
+		PropTypes.string
+	]),
 	/*
 	 * Styles to be added to the top-level `ul` element. Useful for `overflow:hidden`.
 	 */
@@ -110,40 +114,46 @@ const renderBranch = (children, props) => {
 	const isSelected = props.node.selected;
 	const isLoading = props.node.loading;
 
-	const loader = (<div
-		style={{
-			display: 'block',
-			paddingLeft: `${(1.5 * props.level) + 1.5}rem`,
-			marginTop: '.5rem' }}
-	>
+	const loader = (
 		<div
 			style={{
-				borderRadius: '15rem',
 				display: 'block',
-				marginBottom: '.75rem',
-				height: '.5rem',
-				backgroundColor: 'rgb(224, 229, 238)',
-				width: '40%' }}
-		/>
-		<div
-			style={{
-				borderRadius: '15rem',
-				display: 'block',
-				marginBottom: '.75rem',
-				height: '.5rem',
-				backgroundColor: 'rgb(224, 229, 238)',
-				width: '80%' }}
-		/>
-		<div
-			style={{
-				borderRadius: '15rem',
-				display: 'block',
-				marginBottom: '.75rem',
-				height: '.5rem',
-				backgroundColor: 'rgb(224, 229, 238)',
-				width: '60%' }}
-		/>
-	</div>);
+				paddingLeft: `${(1.5 * props.level) + 1.5}rem`,
+				marginTop: '.5rem'
+			}}
+		>
+			<div
+				style={{
+					borderRadius: '15rem',
+					display: 'block',
+					marginBottom: '.75rem',
+					height: '.5rem',
+					backgroundColor: 'rgb(224, 229, 238)',
+					width: '40%'
+				}}
+			/>
+			<div
+				style={{
+					borderRadius: '15rem',
+					display: 'block',
+					marginBottom: '.75rem',
+					height: '.5rem',
+					backgroundColor: 'rgb(224, 229, 238)',
+					width: '80%'
+				}}
+			/>
+			<div
+				style={{
+					borderRadius: '15rem',
+					display: 'block',
+					marginBottom: '.75rem',
+					height: '.5rem',
+					backgroundColor: 'rgb(224, 229, 238)',
+					width: '60%'
+				}}
+			/>
+		</div>
+	);
 
 	// TODO: Remove tabbing from anchor tag AND button / add tabIndex={-1} when keyboard navigation is present.
 	return (
@@ -155,8 +165,12 @@ const renderBranch = (children, props) => {
 		>
 			{/* eslint-disable jsx-a11y/no-static-element-interactions */}
 			<div
-				className={classNames('slds-tree__item', { 'slds-is-selected': isSelected })}
-				onClick={(event) => { handleClick(event, props); }}
+				className={classNames('slds-tree__item', {
+					'slds-is-selected': isSelected
+				})}
+				onClick={(event) => {
+					handleClick(event, props);
+				}}
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				<Button
@@ -166,7 +180,9 @@ const renderBranch = (children, props) => {
 					variant="icon"
 					className="slds-m-right--small"
 					aria-controls={props.htmlId}
-					onClick={(event) => { handleExpandClick(event, props); }}
+					onClick={(event) => {
+						handleExpandClick(event, props);
+					}}
 				/>
 				{/* eslint-disable no-script-url */}
 				<a
@@ -178,14 +194,18 @@ const renderBranch = (children, props) => {
 					{/* eslint-enable no-script-url */}
 					{<Highlighter search={props.searchTerm}>{props.label}</Highlighter>}
 				</a>
-			</div>{isLoading ? loader : null}<ul
+			</div>
+			{isLoading ? loader : null}
+			<ul
 				className={classNames({
 					'slds-is-expanded': isExpanded,
 					'slds-is-collapsed': !isExpanded
 				})}
 				role="group"
 				aria-labelledby={`${props.htmlId}__label`}
-			>{isExpanded && !isLoading ? children : null}</ul>
+			>
+				{isExpanded && !isLoading ? children : null}
+			</ul>
 		</li>
 	);
 };
@@ -196,15 +216,11 @@ renderBranch.propTypes = {
 	/**
 	 * HTML `id` of primary element that has `.slds-tree` on it. This component has a wrapping container element outside of `.slds-tree`.
 	 */
-	htmlId: PropTypes.oneOfType([
-		PropTypes.number,
-		PropTypes.string]).isRequired,
+	htmlId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 	/**
 	 * The text of the tree item.
 	 */
-	label: PropTypes.oneOfType([
-		PropTypes.node,
-		PropTypes.string]),
+	label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	/**
 	 * The number of nestings. Determines the ARIA level and style alignment.
 	 */
@@ -238,12 +254,7 @@ const Branch = (props) => {
 	let treeIndex = '';
 	let children;
 
-	const {
-		treeId,
-		level,
-		onExpandClick,
-		searchTerm
-	} = props;
+	const { treeId, level, onExpandClick, searchTerm } = props;
 
 	if (Array.isArray(props.getNodes(props.node))) {
 		children = props.node.nodes.map((node, index) => {
@@ -272,7 +283,7 @@ const Branch = (props) => {
 					/>
 				);
 			} else {
-				child =  (
+				child = (
 					<Item
 						label={node.label}
 						htmlId={htmlId}
@@ -290,7 +301,10 @@ const Branch = (props) => {
 		});
 	}
 
-	const branch = props.level === 0 ? renderInitialNode(children, props) : renderBranch(children, props);
+	const branch =
+		props.level === 0
+			? renderInitialNode(children, props)
+			: renderBranch(children, props);
 	return branch;
 };
 
@@ -307,9 +321,7 @@ Branch.propTypes = {
 	/**
 	 * HTML `id` of the wrapping container element joined with the `id` of the node. This will recursively increase as the tree depth increases.
 	 */
-	htmlId: PropTypes.oneOfType([
-		PropTypes.number,
-		PropTypes.string]).isRequired,
+	htmlId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 	/**
 	 * All tree nodes must have a unique HTML `id` for users of assistive technology. If no `id` key is present in the  is provided, one will be generated.
 	 */
@@ -324,14 +336,13 @@ Branch.propTypes = {
 	initalClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string]),
+		PropTypes.string
+	]),
 	initialStyle: PropTypes.object,
 	/**
 	 * The text of the tree item.
 	 */
-	label: PropTypes.oneOfType([
-		PropTypes.node,
-		PropTypes.string]),
+	label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	/**
 	 * The number of nestings. Determines the ARIA level and style alignment.
 	 */

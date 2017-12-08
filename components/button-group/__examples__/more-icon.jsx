@@ -21,7 +21,9 @@ const Example = createReactClass({
 						buttonVariant="icon"
 						iconName="down"
 						iconVariant="border-filled"
-						onSelect={(item) => { console.log(item.label, 'selected'); }}
+						onSelect={(item) => {
+							console.log(item.label, 'selected');
+						}}
 						openOn="click"
 						options={[
 							{ label: 'undo', value: 'A0' },
@@ -35,4 +37,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

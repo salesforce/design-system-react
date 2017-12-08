@@ -4,11 +4,9 @@ import BaseCustomMenuItem from '../base-custom-menu-item';
 
 class Example extends React.Component {
 	render () {
-		return (
-			<BaseCustomMenuItem menuPosition="relative" isOpen />
-		);
+		return <BaseCustomMenuItem menuPosition="relative" isOpen />;
 	}
 }
 
 Example.displayName = 'ComboboxExample';
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

@@ -10,7 +10,11 @@ import Modal from '../__examples__/modal';
 import StepError from '../__examples__/stepError';
 
 const steps = [
-	{ id: 0, label: <i>tooltip label #1</i>, assistiveText: 'This is custom text in the assistive text key' },
+	{
+		id: 0,
+		label: <i>tooltip label #1</i>,
+		assistiveText: 'This is custom text in the assistive text key'
+	},
 	{ id: 1, label: 'tooltip label #2' },
 	{ id: 2, label: <strong>tooltip label #3</strong> },
 	{ id: 3, label: 'tooltip label #4' },
@@ -39,9 +43,7 @@ const ExampleProgressIndicator = createReactClass({
 
 	render () {
 		return (
-			<div
-				style={{ padding: '2rem 1rem 0px' }}
-			>
+			<div style={{ padding: '2rem 1rem 0px' }}>
 				<ProgressIndicator
 					steps={this.props.steps}
 					selectedStep={this.props.selectedStep}
@@ -55,24 +57,34 @@ const ExampleProgressIndicator = createReactClass({
 });
 
 storiesOf(PROGRESS_INDICATOR, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
-	.add('Base', () => (<Default />))
-	.add('Base With Many Steps', () => (<ExampleProgressIndicator
-		steps={manySteps}
-		selectedStep={manySteps[4]}
-		completedSteps={manySteps.slice(0, 4)}
-		// tooltipIsOpenSteps={stepsBasic.slice(0, 2)}
-	/>))
-	.add('Base With Disabled Steps', () => (<ExampleProgressIndicator
-		steps={steps}
-		disabledSteps={stepsDisabled}
-		selectedStep={steps[2]}
-		completedSteps={steps.slice(0, 2)}
-	/>))
-	.add('Step Error', () => (<StepError
-		steps={steps}
-		selectedStep={steps[1]}
-		completedSteps={steps.slice(0, 1)}
-		errorSteps={steps.slice(1, 2)}
-	/>))
-	.add('In A Modal (With Step Error)', () => (<Modal />));
+	.addDecorator((getStory) => (
+		<div className="slds-p-around--medium">
+			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+		</div>
+	))
+	.add('Base', () => <Default />)
+	.add('Base With Many Steps', () => (
+		<ExampleProgressIndicator
+			steps={manySteps}
+			selectedStep={manySteps[4]}
+			completedSteps={manySteps.slice(0, 4)}
+			// tooltipIsOpenSteps={stepsBasic.slice(0, 2)}
+		/>
+	))
+	.add('Base With Disabled Steps', () => (
+		<ExampleProgressIndicator
+			steps={steps}
+			disabledSteps={stepsDisabled}
+			selectedStep={steps[2]}
+			completedSteps={steps.slice(0, 2)}
+		/>
+	))
+	.add('Step Error', () => (
+		<StepError
+			steps={steps}
+			selectedStep={steps[1]}
+			completedSteps={steps.slice(0, 1)}
+			errorSteps={steps.slice(1, 2)}
+		/>
+	))
+	.add('In A Modal (With Step Error)', () => <Modal />);

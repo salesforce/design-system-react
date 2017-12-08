@@ -15,7 +15,9 @@ const Example = createReactClass({
 						iconName="settings"
 						iconSize="small"
 						iconVariant="bare"
-						onClick={() => { console.log('Icon Bare Clicked'); }}
+						onClick={() => {
+							console.log('Icon Bare Clicked');
+						}}
 						variant="icon"
 					/>
 
@@ -28,7 +30,11 @@ const Example = createReactClass({
 					/>
 
 					<div
-						style={{ backgroundColor: '#4BC076', padding: '10px', display: 'inline-block' }}
+						style={{
+							backgroundColor: '#4BC076',
+							padding: '10px',
+							display: 'inline-block'
+						}}
 						className="-m-horizontal--small"
 					>
 						<Button
@@ -55,7 +61,11 @@ const Example = createReactClass({
 					/>
 
 					<div
-						style={{ backgroundColor: '#16325c', padding: '10px', display: 'inline-block' }}
+						style={{
+							backgroundColor: '#16325c',
+							padding: '10px',
+							display: 'inline-block'
+						}}
 						className="-m-horizontal--small"
 					>
 						<Button
@@ -68,7 +78,11 @@ const Example = createReactClass({
 					</div>
 
 					<div
-						style={{ backgroundColor: '#FFB75D', padding: '10px 50px', display: 'inline-block' }}
+						style={{
+							backgroundColor: '#FFB75D',
+							padding: '10px 50px',
+							display: 'inline-block'
+						}}
 						className="-hint-parent -m-horizontal--small"
 					>
 						<Button
@@ -85,4 +99,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

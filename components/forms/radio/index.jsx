@@ -56,7 +56,6 @@ const defaultProps = {
  * a [RadioGroup](/components/radio-group) or [RadioButtonGroup](/components/radio-button-group)
  */
 class Radio extends React.Component {
-
 	constructor (props) {
 		super(props);
 		this.generatedId = shortid.generate();
@@ -84,19 +83,19 @@ class Radio extends React.Component {
 					aria-describedby={this.props['aria-describedby']}
 					disabled={this.props.disabled}
 				/>
-				{ this.props.variant === 'button-group'
-						? <label className="slds-radio_button__label" htmlFor={this.getId()}>
-							<span className="slds-radio_faux">{this.props.label}</span>
-						</label>
-						: <label className="slds-radio__label" htmlFor={this.getId()}>
-							<span className="slds-radio_faux" />
-							<span className="slds-form-element__label">{this.props.label}</span>
-						</label>
-				}
+				{this.props.variant === 'button-group' ? (
+					<label className="slds-radio_button__label" htmlFor={this.getId()}>
+						<span className="slds-radio_faux">{this.props.label}</span>
+					</label>
+				) : (
+					<label className="slds-radio__label" htmlFor={this.getId()}>
+						<span className="slds-radio_faux" />
+						<span className="slds-form-element__label">{this.props.label}</span>
+					</label>
+				)}
 			</span>
 		);
 	}
-
 }
 
 Radio.displayName = RADIO;

@@ -24,11 +24,7 @@ const PanelFilterFooter = ({
 	removeAllLabel
 }) => (
 	<div className="slds-filters__footer slds-grid slds-shrink-none">
-		<Button
-			label={addFilterLabel}
-			onClick={onClickAdd}
-			variant="link"
-		/>
+		<Button label={addFilterLabel} onClick={onClickAdd} variant="link" />
 		<Button
 			className="slds-col--bump-left"
 			label={removeAllLabel}
@@ -57,7 +53,6 @@ PanelFilterFooter.propTypes = {
 	 * Localized description of the "Remove All" button in the footer
 	 */
 	removeAllLabel: PropTypes.node.isRequired
-
 };
 
 export default PanelFilterFooter;

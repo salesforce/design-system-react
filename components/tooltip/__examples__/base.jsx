@@ -6,7 +6,7 @@ import Icon from '~/components/icon';
 
 const Example = createReactClass({
 	displayName: 'TooltipExample',
-	
+
 	render () {
 		return (
 			<IconSettings iconPath="/assets/icons">
@@ -28,4 +28,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

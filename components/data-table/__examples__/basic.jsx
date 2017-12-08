@@ -6,13 +6,15 @@ import DataTableCell from '~/components/data-table/cell';
 import IconSettings from '~/components/icon-settings';
 
 const CustomDataTableCell = ({ children, ...props }) => (
-	<DataTableCell {...props} >
+	<DataTableCell {...props}>
 		<a
 			href="javascript:void(0);"
 			onClick={(event) => {
 				event.preventDefault();
 			}}
-		>{children}</a>
+		>
+			{children}
+		</a>
 	</DataTableCell>
 );
 CustomDataTableCell.displayName = DataTableCell.displayName;
@@ -32,35 +34,15 @@ const columns = [
 		property="accountName"
 	/>,
 
-	<DataTableColumn
-		key="close-date"
-		label="Close Date"
-		property="closeDate"
-	/>,
+	<DataTableColumn key="close-date" label="Close Date" property="closeDate" />,
 
-	<DataTableColumn
-		key="stage"
-		label="Stage"
-		property="stage"
-	/>,
+	<DataTableColumn key="stage" label="Stage" property="stage" />,
 
-	<DataTableColumn
-		key="confidence"
-		label="Confidence"
-		property="confidence"
-	/>,
+	<DataTableColumn key="confidence" label="Confidence" property="confidence" />,
 
-	<DataTableColumn
-		key="amount"
-		label="Amount"
-		property="amount"
-	/>,
+	<DataTableColumn key="amount" label="Amount" property="amount" />,
 
-	<DataTableColumn
-		key="contact"
-		label="Contact"
-		property="contact"
-	>
+	<DataTableColumn key="contact" label="Contact" property="contact">
 		<CustomDataTableCell />
 	</DataTableColumn>
 ];
@@ -80,7 +62,8 @@ const Example = createReactClass({
 					confidence: '20%',
 					amount: '$25k',
 					contact: 'jrogers@cloudhub.com'
-				}, {
+				},
+				{
 					id: '5GJOOOPWU7',
 					opportunityName: 'Cloudhub + Anypoint Connectors',
 					accountName: 'Cloudhub',
@@ -108,15 +91,16 @@ const Example = createReactClass({
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div style={{ overflow: 'auto' }}>
-					<h3 className="slds-text-heading--medium slds-m-vertical--medium">Default Fluid Layout</h3>
-					<DataTable
-						items={this.state.items}
-						id="DataTableExample-1-default"
-					>
+					<h3 className="slds-text-heading--medium slds-m-vertical--medium">
+						Default Fluid Layout
+					</h3>
+					<DataTable items={this.state.items} id="DataTableExample-1-default">
 						{columns}
 					</DataTable>
 
-					<h3 className="slds-text-heading--medium slds-m-vertical--medium">Striped</h3>
+					<h3 className="slds-text-heading--medium slds-m-vertical--medium">
+						Striped
+					</h3>
 
 					<DataTable
 						items={this.state.items}
@@ -126,7 +110,9 @@ const Example = createReactClass({
 						{columns}
 					</DataTable>
 
-					<h3 className="slds-text-heading--medium slds-m-vertical--medium">No Row Hover</h3>
+					<h3 className="slds-text-heading--medium slds-m-vertical--medium">
+						No Row Hover
+					</h3>
 
 					<DataTable
 						items={this.state.items}
@@ -136,7 +122,9 @@ const Example = createReactClass({
 						{columns}
 					</DataTable>
 
-					<h3 className="slds-text-heading--medium slds-m-vertical--medium">Column Bordered</h3>
+					<h3 className="slds-text-heading--medium slds-m-vertical--medium">
+						Column Bordered
+					</h3>
 
 					<DataTable
 						columnBordered
@@ -146,7 +134,9 @@ const Example = createReactClass({
 						{columns}
 					</DataTable>
 
-					<h3 className="slds-text-heading--medium slds-m-vertical--medium">Compact</h3>
+					<h3 className="slds-text-heading--medium slds-m-vertical--medium">
+						Compact
+					</h3>
 
 					<DataTable
 						compact
@@ -161,4 +151,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

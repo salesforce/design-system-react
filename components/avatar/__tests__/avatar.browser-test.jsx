@@ -5,7 +5,10 @@ import React from 'react';
 import { mount } from 'enzyme';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import { createMountNode, destroyMountNode } from '../../../tests/enzyme-helpers';
+import {
+	createMountNode,
+	destroyMountNode
+} from '../../../tests/enzyme-helpers';
 
 chai.use(chaiEnzyme());
 
@@ -27,7 +30,9 @@ describe('SLDSAvatar: ', function () {
 
 		it('avatar renders with image', () => {
 			const expectedSrc = 'success';
-			wrapper = mount(<SLDSAvatar imgSrc={expectedSrc} />, { attachTo: mountNode });
+			wrapper = mount(<SLDSAvatar imgSrc={expectedSrc} />, {
+				attachTo: mountNode
+			});
 
 			const img = wrapper.find('img');
 			const src = img.prop('src');
@@ -38,19 +43,22 @@ describe('SLDSAvatar: ', function () {
 			wrapper = mount(
 				<IconSettings iconPath="/assets/icons">
 					<SLDSAvatar size="large" />
-				</IconSettings>, { attachTo: mountNode });
+				</IconSettings>,
+				{ attachTo: mountNode }
+			);
 
 			const avatar = wrapper.find('.slds-avatar_large');
 			expect(avatar.node).to.not.be.undefined;
 		});
-
 
 		describe('variant is a user', () => {
 			beforeEach(() => {
 				wrapper = mount(
 					<IconSettings iconPath="/assets/icons">
 						<SLDSAvatar variant="user" />
-					</IconSettings>, { attachTo: mountNode });
+					</IconSettings>,
+					{ attachTo: mountNode }
+				);
 			});
 
 			it('displays as a circle', () => {
@@ -64,7 +72,9 @@ describe('SLDSAvatar: ', function () {
 				wrapper = mount(
 					<IconSettings iconPath="/assets/icons">
 						<SLDSAvatar variant="entity" />
-					</IconSettings>, { attachTo: mountNode });
+					</IconSettings>,
+					{ attachTo: mountNode }
+				);
 			});
 
 			it('displays as a square (no circle class)', () => {
@@ -87,7 +97,9 @@ describe('SLDSAvatar: ', function () {
 			const avatar = mount(
 				<IconSettings iconPath="/assets/icons">
 					<SLDSAvatar initials="AW" />
-				</IconSettings>, { attachTo: mountNode });
+				</IconSettings>,
+				{ attachTo: mountNode }
+			);
 
 			const abbr = avatar.find('abbr');
 			expect(abbr.node.textContent).to.equal('AW');
@@ -97,7 +109,9 @@ describe('SLDSAvatar: ', function () {
 			const avatar = mount(
 				<IconSettings iconPath="/assets/icons">
 					<SLDSAvatar label="test" />
-				</IconSettings>, { attachTo: mountNode });
+				</IconSettings>,
+				{ attachTo: mountNode }
+			);
 			const abbr = !!avatar.find('abbr');
 			expect(abbr).to.be.true;
 		});
@@ -106,7 +120,9 @@ describe('SLDSAvatar: ', function () {
 			const avatar = mount(
 				<IconSettings iconPath="/assets/icons">
 					<SLDSAvatar label="Jane Doe" />
-				</IconSettings>, { attachTo: mountNode });
+				</IconSettings>,
+				{ attachTo: mountNode }
+			);
 			const abbr = avatar.find('abbr');
 			expect(abbr.node.textContent).to.equal('JD');
 		});
@@ -115,7 +131,9 @@ describe('SLDSAvatar: ', function () {
 			const avatar = mount(
 				<IconSettings iconPath="/assets/icons">
 					<SLDSAvatar label="Acme" />
-				</IconSettings>, { attachTo: mountNode });
+				</IconSettings>,
+				{ attachTo: mountNode }
+			);
 			const abbr = avatar.find('abbr');
 			expect(abbr.node.textContent).to.equal('Ac');
 		});
@@ -124,7 +142,9 @@ describe('SLDSAvatar: ', function () {
 			const avatar = mount(
 				<IconSettings iconPath="/assets/icons">
 					<SLDSAvatar label="Acme Communications" />
-				</IconSettings>, { attachTo: mountNode });
+				</IconSettings>,
+				{ attachTo: mountNode }
+			);
 			const abbr = avatar.find('abbr');
 			expect(abbr.node.textContent).to.equal('AC');
 		});
@@ -133,7 +153,9 @@ describe('SLDSAvatar: ', function () {
 			const avatar = mount(
 				<IconSettings iconPath="/assets/icons">
 					<SLDSAvatar label="Acme Communications Inc." />
-				</IconSettings>, { attachTo: mountNode });
+				</IconSettings>,
+				{ attachTo: mountNode }
+			);
 			const abbr = avatar.find('abbr');
 			expect(abbr.node.textContent).to.equal('AI');
 		});
@@ -151,11 +173,10 @@ describe('SLDSAvatar: ', function () {
 		it('renders expected assistiveText', () => {
 			const avatar = mount(
 				<IconSettings iconPath="/assets/icons">
-					<SLDSAvatar
-						variant="entity"
-						assistiveText="entity icon avatar"
-					/>
-				</IconSettings>, { attachTo: mountNode });
+					<SLDSAvatar variant="entity" assistiveText="entity icon avatar" />
+				</IconSettings>,
+				{ attachTo: mountNode }
+			);
 			const span = avatar.find('.slds-assistive-text');
 			expect(span.node.innerHTML).to.equal('entity icon avatar');
 		});
@@ -163,8 +184,10 @@ describe('SLDSAvatar: ', function () {
 		it('renders account icon', () => {
 			const avatar = mount(
 				<IconSettings iconPath="/assets/icons">
-					<SLDSAvatar	variant="entity" />
-				</IconSettings>, { attachTo: mountNode });
+					<SLDSAvatar variant="entity" />
+				</IconSettings>,
+				{ attachTo: mountNode }
+			);
 			const span = !!avatar.find('.slds-icon-standard-account').node;
 			expect(span).to.be.true;
 		});
@@ -172,8 +195,10 @@ describe('SLDSAvatar: ', function () {
 		it('renders user icon', () => {
 			const avatar = mount(
 				<IconSettings iconPath="/assets/icons">
-					<SLDSAvatar	variant="user" />
-				</IconSettings>, { attachTo: mountNode });
+					<SLDSAvatar variant="user" />
+				</IconSettings>,
+				{ attachTo: mountNode }
+			);
 			const span = !!avatar.find('.slds-icon-standard-user').node;
 			expect(span).to.be.true;
 		});

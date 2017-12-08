@@ -16,18 +16,23 @@ import classNames from 'classnames';
 import { TAB_PANEL } from '../../../utilities/constants';
 
 /* eslint-disable no-unused-vars */
-const TabPanel = ({ className, children, variant, selected, id, tabId, ...attributes }) => (
+const TabPanel = ({
+	className,
+	children,
+	variant,
+	selected,
+	id,
+	tabId,
+	...attributes
+}) => (
 	<div
 		aria-labelledby={tabId}
-		className={classNames(
-			className,
-			{
-				'slds-show': selected,
-				'slds-hide': !selected,
-				'slds-tabs--default__content': variant === 'default',
-				'slds-tabs--scoped__content': variant === 'scoped'
-			}
-		)}
+		className={classNames(className, {
+			'slds-show': selected,
+			'slds-hide': !selected,
+			'slds-tabs--default__content': variant === 'default',
+			'slds-tabs--scoped__content': variant === 'scoped'
+		})}
 		id={id}
 		role="tabpanel"
 	>

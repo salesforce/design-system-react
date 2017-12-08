@@ -91,7 +91,6 @@ const TextTruncate = createReactClass({
 			...props
 		} = propsToRender;
 
-
 		const scopeWidth = this.scope.getBoundingClientRect().width;
 		const style = window.getComputedStyle(this.scope);
 		const font = [
@@ -129,7 +128,7 @@ const TextTruncate = createReactClass({
 				if (prefix && displayLine === line - 1) {
 					ext += ` ${prefix}`;
 					// MAGIC NUMBER: (width at letter-spacing of 0.25rems - width at normal) / number of letters
-					extraWidthDueToPrefixStyle = (prefix.length * 0.66);
+					extraWidthDueToPrefixStyle = prefix.length * 0.66;
 				}
 
 				if (!displayLine) {
@@ -142,7 +141,9 @@ const TextTruncate = createReactClass({
 
 				while (currentPos <= maxTextLength) {
 					truncatedText = text.substr(startPos, currentPos);
-					width = measureWidth(truncatedText + ext, font) + extraWidthDueToPrefixStyle;
+					width =
+						measureWidth(truncatedText + ext, font) +
+						extraWidthDueToPrefixStyle;
 
 					if (width < scopeWidth) {
 						splitPos = text.indexOf(' ', currentPos + 1);
@@ -168,7 +169,9 @@ const TextTruncate = createReactClass({
 									truncatedText = text.substr(startPos, currentPos);
 								}
 							}
-							width = measureWidth(truncatedText + ext, font) + extraWidthDueToPrefixStyle;
+							width =
+								measureWidth(truncatedText + ext, font) +
+								extraWidthDueToPrefixStyle;
 							if (width === lastWidth) {
 								currentPos = 0;
 								break;
@@ -209,13 +212,15 @@ const TextTruncate = createReactClass({
 	},
 
 	render () {
-		const {
-			containerClassName
-		} = this.props;
+		const { containerClassName } = this.props;
 
 		// inline style override
 		return (
-			<div ref={this.getRenderText} className={containerClassName} style={{ overflow: 'hidden' }}>
+			<div
+				ref={this.getRenderText}
+				className={containerClassName}
+				style={{ overflow: 'hidden' }}
+			>
 				{this.state.renderText}
 			</div>
 		);

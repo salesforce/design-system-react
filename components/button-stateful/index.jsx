@@ -24,7 +24,6 @@ import ButtonIcon from '../icon/button-icon';
 
 import { BUTTON_STATEFUL } from '../../utilities/constants';
 
-
 const propTypes = {
 	/**
 	 * Specifies the current state of the button. If set, the button will act as a ['controlled' component](https://facebook.github.io/react/docs/forms.html#controlled-components).
@@ -100,13 +99,13 @@ class ButtonStateful extends React.Component {
 
 	handleClick = (e) => {
 		if (isFunction(this.props.onClick)) this.props.onClick(e);
-		if (!isBoolean(this.props.active)) this.setState({ active: !this.state.active });
-	}
+		if (!isBoolean(this.props.active)) { this.setState({ active: !this.state.active }); }
+	};
 
 	handleBlur = (e) => {
 		if (this.props.onBlur) this.props.onBlur(e);
 		e.currentTarget.blur();
-	}
+	};
 
 	getClassName (active) {
 		return classNames(this.props.className, 'slds-button', {
@@ -167,7 +166,9 @@ class ButtonStateful extends React.Component {
 						size={iconSize}
 						className="slds-button__icon--stateful"
 					/>
-					{assistiveText ? <span className="slds-assistive-text">{assistiveText}</span> : null}
+					{assistiveText ? (
+						<span className="slds-assistive-text">{assistiveText}</span>
+					) : null}
 				</button>
 			);
 		}

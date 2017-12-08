@@ -27,8 +27,8 @@ const Button = createReactClass({
 		 */
 		'aria-describedby': PropTypes.string,
 		/**
-		* Establishes a relationship between an interactive parent element and a child element to indicate which child element a parent element affects. Frequently used in cases where buttons or tabs are associated with exposing expandable regions.
-		*/
+		 * Establishes a relationship between an interactive parent element and a child element to indicate which child element a parent element affects. Frequently used in cases where buttons or tabs are associated with exposing expandable regions.
+		 */
 		'aria-controls': PropTypes.string,
 		/**
 		 * Used if the Button triggers a menu or popup. Bool indicates if the menu or popup is open or closed.
@@ -50,7 +50,11 @@ const Button = createReactClass({
 		/**
 		 * CSS classes to be added to button.
 		 */
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		className: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string
+		]),
 		/**
 		 * Disables the button and adds disabled styling.
 		 */
@@ -62,14 +66,20 @@ const Button = createReactClass({
 		/**
 		 * Name of the icon category. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon categories.
 		 */
-		iconCategory: PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
+		iconCategory: PropTypes.oneOf([
+			'action',
+			'custom',
+			'doctype',
+			'standard',
+			'utility'
+		]),
 		/**
 		 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
 		 */
 		iconName: PropTypes.string,
 		/**
-	   * Path to the icon. This will override any global icon settings.
-	   */
+		 * Path to the icon. This will override any global icon settings.
+		 */
 		iconPath: PropTypes.string,
 		/**
 		 * If omitted, icon position is centered.
@@ -82,13 +92,20 @@ const Button = createReactClass({
 		/**
 		 * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
 		 */
-		iconVariant: PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'more', 'global-header']),
+		iconVariant: PropTypes.oneOf([
+			'bare',
+			'container',
+			'border',
+			'border-filled',
+			'more',
+			'global-header'
+		]),
 		/**
 		 * Id string applied to button node.
 		 */
 		id: PropTypes.string,
 		/**
-			* If true, button/icon is white. Meant for buttons or utility icons on dark backgrounds.
+		 * If true, button/icon is white. Meant for buttons or utility icons on dark backgrounds.
 		 */
 		inverse: PropTypes.bool,
 		/**
@@ -123,8 +140,20 @@ const Button = createReactClass({
 		 * HTML title attribute
 		 */
 		title: PropTypes.string,
-		variant: PropTypes.oneOf(['base', 'link', 'neutral', 'brand', 'destructive', 'success', 'icon']),
-		iconClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		variant: PropTypes.oneOf([
+			'base',
+			'link',
+			'neutral',
+			'brand',
+			'destructive',
+			'success',
+			'icon'
+		]),
+		iconClassName: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string
+		]),
 		tooltip: PropTypes.node
 	},
 
@@ -161,12 +190,15 @@ const Button = createReactClass({
 		const iconBorder = iconVariant === 'border';
 		const iconGlobalHeader = iconVariant === 'global-header';
 
-		const showButtonVariant = (this.props.variant !== 'base'
-			&& !iconVariant
-			&& !this.props.inverse
-			&& this.props.variant !== 'link') || iconVariant === 'bare';
+		const showButtonVariant =
+			(this.props.variant !== 'base' &&
+				!iconVariant &&
+				!this.props.inverse &&
+				this.props.variant !== 'link') ||
+			iconVariant === 'bare';
 		const plainInverseBtn = this.props.inverse && !isIcon;
-		const plainInverseIcon = this.props.inverse && isIcon && !iconMore && !iconBorder;
+		const plainInverseIcon =
+			this.props.inverse && isIcon && !iconMore && !iconBorder;
 		const moreInverseIcon = this.props.inverse && iconMore;
 		const borderInverseIcon = this.props.inverse && iconBorder;
 
@@ -175,45 +207,58 @@ const Button = createReactClass({
 			iconVariant = 'container';
 		}
 
-		return classNames({
-			'slds-button': this.props.variant !== 'link',
-			[`slds-button--${this.props.variant}`]: showButtonVariant,
-			'slds-button--inverse': plainInverseBtn,
-			'slds-button--icon-inverse': plainInverseIcon || moreInverseIcon,
-			'slds-button--icon-border-inverse': borderInverseIcon,
-			[`slds-button--icon-${iconVariant}`]: iconVariant && !borderInverseIcon,
-			'slds-global-header__button--icon': iconGlobalHeader,
-			// If icon has a container, then we apply the icon size to the container not the svg. Icon size is medium by default, so we don't need to explicitly render it here.
-			[`slds-button--icon-${this.props.iconSize}`]: iconVariant && this.props.iconSize !== 'medium',
-			'slds-button--reset': this.props.variant === 'link',
-			'slds-text-link': this.props.variant === 'link'
-		}, this.props.className);
+		return classNames(
+			{
+				'slds-button': this.props.variant !== 'link',
+				[`slds-button--${this.props.variant}`]: showButtonVariant,
+				'slds-button--inverse': plainInverseBtn,
+				'slds-button--icon-inverse': plainInverseIcon || moreInverseIcon,
+				'slds-button--icon-border-inverse': borderInverseIcon,
+				[`slds-button--icon-${iconVariant}`]: iconVariant && !borderInverseIcon,
+				'slds-global-header__button--icon': iconGlobalHeader,
+				// If icon has a container, then we apply the icon size to the container not the svg. Icon size is medium by default, so we don't need to explicitly render it here.
+				[`slds-button--icon-${this.props.iconSize}`]:
+					iconVariant && this.props.iconSize !== 'medium',
+				'slds-button--reset': this.props.variant === 'link',
+				'slds-text-link': this.props.variant === 'link'
+			},
+			this.props.className
+		);
 	},
 
 	renderIcon (name) {
-		const iconSize = this.props.iconSize === '' || this.props.iconVariant ? null : this.props.iconSize;
+		const iconSize =
+			this.props.iconSize === '' || this.props.iconVariant
+				? null
+				: this.props.iconSize;
 		return (
 			<ButtonIcon
 				category={this.props.iconCategory}
-				className={classNames({
-					'slds-global-header__icon': this.props.iconVariant === 'global-header'
-				},
-				this.props.iconClassName)}
+				className={classNames(
+					{
+						'slds-global-header__icon':
+							this.props.iconVariant === 'global-header'
+					},
+					this.props.iconClassName
+				)}
 				hint={this.props.hint}
 				inverse={this.props.inverse}
 				name={name}
 				path={this.props.iconPath}
 				position={this.props.iconPosition}
 				size={iconSize}
-			/>);
+			/>
+		);
 	},
 
 	renderLabel () {
 		const iconOnly = this.props.variant === 'icon';
 
-		return iconOnly && this.props.assistiveText
-			? <span className="slds-assistive-text">{this.props.assistiveText}</span>
-			: this.props.label;
+		return iconOnly && this.props.assistiveText ? (
+			<span className="slds-assistive-text">{this.props.assistiveText}</span>
+		) : (
+			this.props.label
+		);
 	},
 
 	renderButton () {
@@ -246,12 +291,16 @@ const Button = createReactClass({
 			>
 				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
 
-				{this.props.iconName || this.props.iconPath ? this.renderIcon(this.props.iconName) : null}
-				{this.props.iconVariant === 'more'
-				? <ButtonIcon	category="utility" name="down" size="x-small" />
-				: null}
+				{this.props.iconName || this.props.iconPath
+					? this.renderIcon(this.props.iconName)
+					: null}
+				{this.props.iconVariant === 'more' ? (
+					<ButtonIcon category="utility" name="down" size="x-small" />
+				) : null}
 
-				{(this.props.iconPosition === 'left' || !this.props.iconPosition) ? this.renderLabel() : null}
+				{this.props.iconPosition === 'left' || !this.props.iconPosition
+					? this.renderLabel()
+					: null}
 				{
 					this.props.children // eslint-disable-line react/prop-types
 				}
@@ -262,9 +311,7 @@ const Button = createReactClass({
 	// This is present for backwards compatibility and should be removed at a future breaking change release. Please wrap a `Button` in a `PopoverTooltip` to achieve the same result. There will be an extra trigger `div` wrapping the `Button` though.
 	renderTooltip () {
 		return (
-			<PopoverTooltip
-				content={this.props.tooltip}
-			>
+			<PopoverTooltip content={this.props.tooltip}>
 				{this.renderButton}
 			</PopoverTooltip>
 		);

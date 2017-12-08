@@ -12,10 +12,14 @@ import SnaphotDefault from '../__examples__/snapshot-default';
 import WeekdayPicker from '../__examples__/weekday-picker';
 
 storiesOf(DATE_PICKER, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
-	.add('Default', () => (<Default action={action} />))
-	.add('ISO weekdays', () => (<IsoWeekdays action={action} />))
-	.add('Custom Input', () => (<CustomInput action={action} />))
-	.add('Inline menu', () => (<Datepicker 	menuPosition="relative" />))
-	.add('DOM Snapshot', () => (<SnaphotDefault />))
-	.add('Weekday picker', () => (<WeekdayPicker />));
+	.addDecorator((getStory) => (
+		<div className="slds-p-around--medium">
+			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+		</div>
+	))
+	.add('Default', () => <Default action={action} />)
+	.add('ISO weekdays', () => <IsoWeekdays action={action} />)
+	.add('Custom Input', () => <CustomInput action={action} />)
+	.add('Inline menu', () => <Datepicker menuPosition="relative" />)
+	.add('DOM Snapshot', () => <SnaphotDefault />)
+	.add('Weekday picker', () => <WeekdayPicker />);

@@ -82,10 +82,14 @@ const handleKeyDown = (event, { events, data }) => {
 		callbacks: {
 			[KEYS.BACKSPACE]: { callback: events.onRequestRemove, data },
 			[KEYS.DELETE]: { callback: events.onRequestRemove, data },
-			[KEYS.LEFT]: { callback: events.onRequestFocusOnPreviousPill,
-				data: { ...data, direction: 'previous' } },
-			[KEYS.RIGHT]: { callback: events.onRequestFocusOnNextPill,
-				data: { ...data, direction: 'next' } }
+			[KEYS.LEFT]: {
+				callback: events.onRequestFocusOnPreviousPill,
+				data: { ...data, direction: 'previous' }
+			},
+			[KEYS.RIGHT]: {
+				callback: events.onRequestFocusOnNextPill,
+				data: { ...data, direction: 'next' }
+			}
 		}
 	});
 };
@@ -95,7 +99,11 @@ const handleClickRemove = (event, { events, eventData }) => {
 };
 
 const Pill = (props) => {
-	const assistiveText = assign({}, defaultProps.assistiveText, props.assistiveText);
+	const assistiveText = assign(
+		{},
+		defaultProps.assistiveText,
+		props.assistiveText
+	);
 	const labels = assign({}, defaultProps.labels, props.labels);
 
 	return (
@@ -125,9 +133,11 @@ const Pill = (props) => {
 			}}
 		>
 			{props.icon}
-			<span className="slds-pill__label" title={labels.title}>{labels.label}</span>
-			{props.events.onRequestRemove
-				? <span // eslint-disable-line jsx-a11y/no-static-element-interactions
+			<span className="slds-pill__label" title={labels.title}>
+				{labels.label}
+			</span>
+			{props.events.onRequestRemove ? (
+				<span // eslint-disable-line jsx-a11y/no-static-element-interactions
 					className="slds-icon_container slds-pill__remove"
 					title={labels.removeTitle}
 					onClick={(event) => {
@@ -139,7 +149,7 @@ const Pill = (props) => {
 					}}
 				>
 					<UtilityIcon
-						style={{ cursor: 'pointer' }}	// remove when fixed by SLDS CSS
+						style={{ cursor: 'pointer' }} // remove when fixed by SLDS CSS
 						aria-hidden="true"
 						category="utility"
 						className="slds-icon slds-icon--x-small slds-icon-text-default"
@@ -147,7 +157,7 @@ const Pill = (props) => {
 					/>
 					<span className="slds-assistive-text">{assistiveText.remove}</span>
 				</span>
-			: null}
+			) : null}
 		</span>
 	);
 };

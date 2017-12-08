@@ -14,7 +14,12 @@ if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
 
 	// TODO: allow `displayName` to be an array of displayNames
-	hasChildrenWithoutDisplayNameOf = function (control, children, displayName, comment) {
+	hasChildrenWithoutDisplayNameOf = function (
+		control,
+		children,
+		displayName,
+		comment
+	) {
 		const additionalComment = comment ? ` ${comment}` : '';
 		const childrenWithoutSelectedDisplayName = [];
 
@@ -25,9 +30,13 @@ if (process.env.NODE_ENV !== 'production') {
 		});
 
 		if (!hasWarned[control]) {
-			const hasChildrenWithoutSelectedDisplayName = childrenWithoutSelectedDisplayName.length > 0;
+			const hasChildrenWithoutSelectedDisplayName =
+				childrenWithoutSelectedDisplayName.length > 0;
 			/* eslint-disable max-len */
-			warning(hasChildrenWithoutSelectedDisplayName, `[Design System React] Unable to use child components specified within ${control}. Please use a child component with a \`displayName\` class property value of ${displayName}. Children without that class property are ignored. Please review \`children\` prop documentation.${additionalComment}`);
+			warning(
+				hasChildrenWithoutSelectedDisplayName,
+				`[Design System React] Unable to use child components specified within ${control}. Please use a child component with a \`displayName\` class property value of ${displayName}. Children without that class property are ignored. Please review \`children\` prop documentation.${additionalComment}`
+			);
 			/* eslint-enable max-len */
 			hasWarned[control] = !!hasChildrenWithoutSelectedDisplayName;
 		}

@@ -10,15 +10,16 @@ const handleScopedKeyDown = (event) => {
 		return;
 	}
 	const tabbableElements = findTabbableElement(ancestor);
-	const finalTabbable = tabbableElements[event.shiftKey ? 0 : tabbableElements.length - 1];
-	const leavingFinalTabbable = (
+	const finalTabbable =
+		tabbableElements[event.shiftKey ? 0 : tabbableElements.length - 1];
+	const leavingFinalTabbable =
 		finalTabbable === document.activeElement ||
 		// handle immediate shift+tab after opening with mouse
-		ancestor === document.activeElement
-	);
+		ancestor === document.activeElement;
 	if (!leavingFinalTabbable) return;
 	event.preventDefault();
-	const target = tabbableElements[event.shiftKey ? tabbableElements.length - 1 : 0];
+	const target =
+		tabbableElements[event.shiftKey ? tabbableElements.length - 1 : 0];
 	target.focus();
 };
 
@@ -30,15 +31,18 @@ const ElementFocus = {
 			ancestor.focus();
 		}
 	},
-	hasOrAncestorHasFocus: () => canUseDOM &&
-		(document.activeElement === ancestor
-		|| ancestor.contains(document.activeElement)),
+	hasOrAncestorHasFocus: () =>
+		canUseDOM &&
+		(document.activeElement === ancestor ||
+			ancestor.contains(document.activeElement)),
 	returnFocusToStoredElement: () => {
 		if (canUseDOM) {
 			try {
 				focusLaterElement.focus();
-			}	catch (e) {
-				console.warn(`You tried to return focus to ${focusLaterElement} but it is not in the DOM anymore`); // eslint-disable-line no-console
+			} catch (e) {
+				console.warn(
+					`You tried to return focus to ${focusLaterElement} but it is not in the DOM anymore`
+				); // eslint-disable-line no-console
 			}
 			focusLaterElement = null;
 		}

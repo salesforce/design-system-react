@@ -23,18 +23,23 @@ describe('SLDSModal: ', function () {
 
 	const defaultProps = {
 		align: 'top',
-		children: (<div>hello</div>)
+		children: <div>hello</div>
 	};
 
 	const renderModal = (modalInstance) => {
 		container = document.createElement('div');
-		const opener = <button><IconSettings iconPath="/assets/icons">{modalInstance}</IconSettings></button>;
+		const opener = (
+			<button>
+				<IconSettings iconPath="/assets/icons">{modalInstance}</IconSettings>
+			</button>
+		);
 		document.body.appendChild(container);
 		renderedNode = ReactDOM.render(opener, container);
 		return renderedNode;
 	};
 
-	const createModal = (props) => React.createElement(SLDSModal, assign({}, defaultProps, props));
+	const createModal = (props) =>
+		React.createElement(SLDSModal, assign({}, defaultProps, props));
 
 	const getModal = (props) => renderModal(createModal(props));
 
@@ -52,12 +57,18 @@ describe('SLDSModal: ', function () {
 		});
 
 		it('has correct containerClassName, contentClassName, contentStyle, and portalClassName', () => {
-			const modalContainer = getModalNode(document.body).querySelector('.slds-modal__container.container-class-name-test');
+			const modalContainer = getModalNode(document.body).querySelector(
+				'.slds-modal__container.container-class-name-test'
+			);
 			expect(modalContainer).to.exist;
-			const modalContent = getModalNode(document.body).querySelector('.slds-modal__content.content-class-name-test');
+			const modalContent = getModalNode(document.body).querySelector(
+				'.slds-modal__content.content-class-name-test'
+			);
 			expect(modalContent).to.exist;
 			expect(modalContent.style.height).to.equal('500px');
-			const modalPortal = document.querySelector('body > .portal-class-name-test');
+			const modalPortal = document.querySelector(
+				'body > .portal-class-name-test'
+			);
 			expect(modalPortal).to.exist;
 		});
 	});
@@ -88,7 +99,9 @@ describe('SLDSModal: ', function () {
 				isOpen: true,
 				size: 'large',
 				containerClassName: 'my-custom-class',
-				onRequestClose: () => { closed = true; }
+				onRequestClose: () => {
+					closed = true;
+				}
 			});
 			modal = getModalNode(document.body);
 		});
@@ -137,10 +150,11 @@ describe('SLDSModal: ', function () {
 		});
 
 		it('adds the custom header class', () => {
-			expect(modal.querySelector('.slds-modal__header').className).to.include('art-vandelay');
+			expect(modal.querySelector('.slds-modal__header').className).to.include(
+				'art-vandelay'
+			);
 		});
 	});
-
 
 	describe('Open with Prompt and Footer', () => {
 		let modal;
@@ -166,7 +180,9 @@ describe('SLDSModal: ', function () {
 		});
 
 		it('adds the prompt theme class', () => {
-			expect(modal.querySelector('.slds-modal__header').className).to.include('slds-theme--warning');
+			expect(modal.querySelector('.slds-modal__header').className).to.include(
+				'slds-theme--warning'
+			);
 		});
 
 		it('adds the footer html content', () => {
@@ -178,7 +194,10 @@ describe('SLDSModal: ', function () {
 		let modal;
 
 		beforeEach(() => {
-			const feet = [<div className="toes">Toe 1</div>, <div className="toes">Toe 2</div>];
+			const feet = [
+				<div className="toes">Toe 1</div>,
+				<div className="toes">Toe 2</div>
+			];
 			getModal({
 				isOpen: true,
 				directional: true,
@@ -211,12 +230,15 @@ describe('SLDSModal: ', function () {
 
 		it('first tab focuses close button', (done) => {
 			setTimeout(() => {
-				Simulate.keyDown(modal, { key: 'Tab',
+				Simulate.keyDown(modal, {
+					key: 'Tab',
 					keyCode: 9,
 					which: 9
 				});
 				setTimeout(() => {
-					expect(document.activeElement.className).to.include('slds-modal__close');
+					expect(document.activeElement.className).to.include(
+						'slds-modal__close'
+					);
 					done();
 				}, 200);
 			}, 200);
@@ -231,4 +253,3 @@ describe('SLDSModal: ', function () {
 		});
 	});
 });
-

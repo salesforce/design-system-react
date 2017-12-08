@@ -45,11 +45,15 @@ describe('Card: ', () => {
 		heading: 'Lots of Related Items'
 	};
 
-	const renderCard = (instance) => function () {
-		this.dom = document.createElement('div');
-		document.body.appendChild(this.dom);
-		this.component = ReactDOM.render(<IconSettings iconPath="/assets/icons">{instance}</IconSettings>, this.dom);
-	};
+	const renderCard = (instance) =>
+		function () {
+			this.dom = document.createElement('div');
+			document.body.appendChild(this.dom);
+			this.component = ReactDOM.render(
+				<IconSettings iconPath="/assets/icons">{instance}</IconSettings>,
+				this.dom
+			);
+		};
 
 	function removeCard () {
 		ReactDOM.unmountComponentAtNode(this.dom);
@@ -58,20 +62,25 @@ describe('Card: ', () => {
 
 	// DOM queries, [0] present due to test framework, not because it returns a DOM collection
 	const getCard = (dom) => dom.querySelector(`.${cssClasses.base}`);
-	const getHeader = (dom) => getCard(dom).querySelectorAll(`.${headerCssClasses.base}`)[0];
-	const getHeaderActions = (dom) => getHeader(dom).querySelectorAll(`#${requiredProps.id}${headerIdSuffixes.headerActions}`)[0];
-	const getFilter = (dom) => getHeader(dom).querySelectorAll('.slds-form-element')[0];
-	const getBody = (dom) => getCard(dom).querySelectorAll(`#${requiredProps.id}${cardIdSuffixes.body}`)[0];
-	const getFooter = (dom) => getCard(dom).querySelectorAll(`.${footerCssClasses.base}`)[0];
+	const getHeader = (dom) =>
+		getCard(dom).querySelectorAll(`.${headerCssClasses.base}`)[0];
+	const getHeaderActions = (dom) =>
+		getHeader(dom).querySelectorAll(
+			`#${requiredProps.id}${headerIdSuffixes.headerActions}`
+		)[0];
+	const getFilter = (dom) =>
+		getHeader(dom).querySelectorAll('.slds-form-element')[0];
+	const getBody = (dom) =>
+		getCard(dom).querySelectorAll(
+			`#${requiredProps.id}${cardIdSuffixes.body}`
+		)[0];
+	const getFooter = (dom) =>
+		getCard(dom).querySelectorAll(`.${footerCssClasses.base}`)[0];
 	const getEmptyBodyHeading = (dom) => getBody(dom).querySelectorAll('h3')[0];
 
 	// Tests
 	describe('Default Structure', () => {
-		beforeEach(renderCard(
-			<Card
-				{...requiredProps}
-			/>
-		));
+		beforeEach(renderCard(<Card {...requiredProps} />));
 
 		afterEach(removeCard);
 
@@ -86,14 +95,20 @@ describe('Card: ', () => {
 		});
 
 		it('has the correct heading text', function () {
-			const heading = getHeader(this.dom).querySelectorAll(`#${requiredProps.id}${cardIdSuffixes.heading}`)[0];
+			const heading = getHeader(this.dom).querySelectorAll(
+				`#${requiredProps.id}${cardIdSuffixes.heading}`
+			)[0];
 			heading.textContent = requiredProps.heading;
 		});
 	});
 
 	// Optional props
-	const renderFooterContents = React.createElement('span', { id: 'sampleFooter' });
-	const renderHeaderActions = React.createElement('span', { id: 'sampleHeaderActions' });
+	const renderFooterContents = React.createElement('span', {
+		id: 'sampleFooter'
+	});
+	const renderHeaderActions = React.createElement('span', {
+		id: 'sampleHeaderActions'
+	});
 	const renderFilter = React.createElement(CardFilter);
 	const renderIcon = React.createElement(Icon, {
 		category: 'standard',
@@ -112,11 +127,7 @@ describe('Card: ', () => {
 	});
 
 	describe('Optional Structure', () => {
-		beforeEach(renderCard(
-			<Card
-				{...optionalProps}
-			/>
-		));
+		beforeEach(renderCard(<Card {...optionalProps} />));
 
 		afterEach(removeCard);
 
@@ -147,7 +158,9 @@ describe('Card: ', () => {
 
 		it('has an icon', function () {
 			const header = getHeader(this.dom);
-			const icon = header.querySelectorAll(`.${mediaObjectCssClasses.figure}`)[0];
+			const icon = header.querySelectorAll(
+				`.${mediaObjectCssClasses.figure}`
+			)[0];
 			icon.should.not.be.undefined;
 		});
 
@@ -166,7 +179,9 @@ describe('Card: ', () => {
 		it('has header actions and correct child ID', function () {
 			const headerActions = getHeaderActions(this.dom);
 			headerActions.should.not.be.undefined;
-			const headerActionsChildren = headerActions.querySelectorAll('#sampleHeaderActions')[0];
+			const headerActionsChildren = headerActions.querySelectorAll(
+				'#sampleHeaderActions'
+			)[0];
 			headerActionsChildren.should.not.be.undefined;
 		});
 	});
@@ -174,18 +189,18 @@ describe('Card: ', () => {
 	describe('Accepts a custom node as heading', () => {
 		const props = {
 			id: 'ExampleCard',
-			heading: (<span
-				id="custom-heading"
-				className="slds-text-heading--small slds-truncate"
-				style={{ color: 'red' }}
-			>To Wanda! This is custom!</span>)
+			heading: (
+				<span
+					id="custom-heading"
+					className="slds-text-heading--small slds-truncate"
+					style={{ color: 'red' }}
+				>
+					To Wanda! This is custom!
+				</span>
+			)
 		};
 
-		beforeEach(renderCard(
-			<Card
-				{...props}
-			/>
-		));
+		beforeEach(renderCard(<Card {...props} />));
 
 		afterEach(removeCard);
 
@@ -200,11 +215,7 @@ describe('Card: ', () => {
 			empty: true
 		});
 
-		beforeEach(renderCard(
-			<Card
-				{...props}
-			/>
-		));
+		beforeEach(renderCard(<Card {...props} />));
 
 		afterEach(removeCard);
 

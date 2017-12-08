@@ -6,7 +6,11 @@ const keyObjects = {};
 
 for (let i = 65; i <= 122; i++) {
 	keys[String.fromCharCode(i)] = i;
-	keyObjects[`${String.fromCharCode(i)}`] = { key: `${String.fromCharCode(i)}`, keyCode: i, which: i };
+	keyObjects[`${String.fromCharCode(i)}`] = {
+		key: `${String.fromCharCode(i)}`,
+		keyCode: i,
+		which: i
+	};
 }
 
 export default keys;

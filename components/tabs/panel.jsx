@@ -39,10 +39,7 @@ Panel.propTypes = {
 	/**
 	 * The string or element that is handed off to the `<Tab />` component, ends up being the title and the label for the tab associated with its tab panel.
 	 */
-	label: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]).isRequired,
+	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
 
 	/**
 	 * The `children` are the actual tab panels to be rendered. They get created by [tabs/index.jsx](./index.jsx) in the `renderTabPanels` function.

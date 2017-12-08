@@ -8,9 +8,11 @@ import Expired from '../__examples__/expired';
 import CustomIcon from '../__examples__/customIcon';
 
 storiesOf(PROGRESS_RING, module)
-.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
-.add('Base', () => (<Base />))
-.add('Theme: Complete', () => (<Complete />))
-.add('Theme: Warning', () => (<Warning />))
-.add('Theme: Expired', () => (<Expired />))
-.add('Custom Icon', () => (<CustomIcon />));
+	.addDecorator((getStory) => (
+		<div className="slds-p-around--medium">{getStory()}</div>
+	))
+	.add('Base', () => <Base />)
+	.add('Theme: Complete', () => <Complete />)
+	.add('Theme: Warning', () => <Warning />)
+	.add('Theme: Expired', () => <Expired />)
+	.add('Custom Icon', () => <CustomIcon />);
