@@ -19,86 +19,102 @@ import SnapshotReadonlyMultipleSelectionMultipleItemsSelected from '../__example
 import SnapshotBaseCustomMenuItemOpen from '../__examples__/snapshot/base-custom-menu-item-open';
 import SnapshotReadonlySingleSelectionCustomMenuItemOpen from '../__examples__/snapshot/readonly-single-selection-custom-menu-item';
 
+import { COMBOBOX } from '../../../utilities/constants';
+
 testDOMandHTML({
 	name: 'Base Open',
 	test,
-	Component: SnapshotBaseOpen
+	Component: SnapshotBaseOpen,
+	ComponentKind: COMBOBOX
 });
 
 testDOMandHTML({
 	name: 'Base Selected',
 	test,
-	Component: SnapshotBaseSelected
+	Component: SnapshotBaseSelected,
+	ComponentKind: COMBOBOX
 });
 
 testDOMandHTML({
 	name: 'Inline Single Selection',
 	test,
-	Component: SnapshotInlineSingleSelection
+	Component: SnapshotInlineSingleSelection,
+	ComponentKind: COMBOBOX
 });
 
 testDOMandHTML({
 	name: 'Inline Single Selection Selected',
 	test,
-	Component: SnapshotInlineSingleSelectionSelected
+	Component: SnapshotInlineSingleSelectionSelected,
+	ComponentKind: COMBOBOX
 });
 
 testDOMandHTML({
 	name: 'Inline Multiple Selection',
 	test,
-	Component: SnapshotInlineMultipleSelection
+	Component: SnapshotInlineMultipleSelection,
+	ComponentKind: COMBOBOX
 });
 
 testDOMandHTML({
 	name: 'Inline Multiple Selection Selected',
 	test,
-	Component: SnapshotInlineMultipleSelectionSelected
+	Component: SnapshotInlineMultipleSelectionSelected,
+	ComponentKind: COMBOBOX
 });
 
 testDOMandHTML({
 	name: 'Base Custom Menu Item Open',
 	test,
-	Component: SnapshotBaseCustomMenuItemOpen
+	Component: SnapshotBaseCustomMenuItemOpen,
+	ComponentKind: COMBOBOX
 });
 
 testDOMandHTML({
 	name: 'Readonly Single Selection',
 	test,
-	Component: SnapshotReadonlySingleSelection
+	Component: SnapshotReadonlySingleSelection,
+	ComponentKind: COMBOBOX
 });
 
 testDOMandHTML({
 	name: 'Readonly Single Selection Selected',
 	test,
-	Component: SnapshotReadonlySingleSelectionSelected
+	Component: SnapshotReadonlySingleSelectionSelected,
+	ComponentKind: COMBOBOX
 });
 
 testDOMandHTML({
 	name: 'Readonly Single Selection Selected Open',
 	test,
-	Component: SnapshotReadonlySingleSelectionSelectedOpen
+	Component: SnapshotReadonlySingleSelectionSelectedOpen,
+	ComponentKind: COMBOBOX
 });
 
 testDOMandHTML({
 	name: 'Readonly Multiple Selection',
 	test,
-	Component: SnapshotReadonlyMultipleSelection
+	Component: SnapshotReadonlyMultipleSelection,
+	ComponentKind: COMBOBOX
 });
 
 testDOMandHTML({
 	name: 'Readonly Multiple Selection Single Item Selected',
 	test,
-	Component: SnapshotReadonlyMultipleSelectionSingleItemSelected
+	Component: SnapshotReadonlyMultipleSelectionSingleItemSelected,
+	ComponentKind: COMBOBOX
 });
 
 testDOMandHTML({
 	name: 'Readonly Multiple Selection Multiple Items Selected',
 	test,
-	Component: SnapshotReadonlyMultipleSelectionMultipleItemsSelected
+	Component: SnapshotReadonlyMultipleSelectionMultipleItemsSelected,
+	ComponentKind: COMBOBOX
 });
 
 testDOMandHTML({
 	name: 'Readonly Single Selection Custom Menu Item Open',
 	test,
-	Component: SnapshotReadonlySingleSelectionCustomMenuItemOpen
+	Component: SnapshotReadonlySingleSelectionCustomMenuItemOpen,
+	ComponentKind: COMBOBOX
 });
