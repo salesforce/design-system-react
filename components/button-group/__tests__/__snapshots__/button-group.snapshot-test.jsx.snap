@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button Group Checkbox DOM Snapshot 1`] = `
+exports[`Checkbox DOM Snapshot 1`] = `
 <fieldset
   className="slds-form-element"
 >
@@ -185,7 +185,7 @@ exports[`Button Group Checkbox DOM Snapshot 1`] = `
 </fieldset>
 `;
 
-exports[`Button Group Checkbox Error DOM Snapshot 1`] = `
+exports[`Checkbox Error DOM Snapshot 1`] = `
 <fieldset
   className="slds-form-element slds-has-error"
 >
@@ -375,7 +375,7 @@ exports[`Button Group Checkbox Error DOM Snapshot 1`] = `
 </fieldset>
 `;
 
-exports[`Button Group Checkbox Error HTML Snapshot 1`] = `
+exports[`Checkbox Error HTML Snapshot 1`] = `
 "<fieldset class=\\"slds-form-element slds-has-error\\">
   <legend class=\\"slds-form-element__legend slds-form-element__label\\">Scheduled Day(s)</legend>
   <div class=\\"slds-form-element__control\\">
@@ -391,7 +391,7 @@ exports[`Button Group Checkbox Error HTML Snapshot 1`] = `
 </fieldset>"
 `;
 
-exports[`Button Group Checkbox HTML Snapshot 1`] = `
+exports[`Checkbox HTML Snapshot 1`] = `
 "<fieldset class=\\"slds-form-element\\">
   <legend class=\\"slds-form-element__legend slds-form-element__label\\">Scheduled Day(s)</legend>
   <div class=\\"slds-form-element__control\\">
@@ -406,7 +406,7 @@ exports[`Button Group Checkbox HTML Snapshot 1`] = `
 </fieldset>"
 `;
 
-exports[`Button Group IconGroup DOM Snapshot 1`] = `
+exports[`Icon Group DOM Snapshot 1`] = `
 <div
   className="slds-button-group"
   role="group"
@@ -524,7 +524,7 @@ exports[`Button Group IconGroup DOM Snapshot 1`] = `
 </div>
 `;
 
-exports[`Button Group IconGroup HTML Snapshot 1`] = `
+exports[`Icon Group HTML Snapshot 1`] = `
 "<div class=\\"slds-button-group\\" role=\\"group\\"><button aria-live=\\"polite\\" class=\\"slds-button slds-not-selected slds-button--icon-border\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--stateful\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#chart\\"></use></svg><span class=\\"slds-assistive-text\\">Show Chart</span></button>
   <button
     aria-live=\\"polite\\" class=\\"slds-button slds-not-selected slds-button--icon-border\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--stateful\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#filter\\"></use></svg><span class=\\"slds-assistive-text\\">Filter</span></button>
@@ -533,7 +533,7 @@ exports[`Button Group IconGroup HTML Snapshot 1`] = `
 </div>"
 `;
 
-exports[`Button Group MoreIcon DOM Snapshot 1`] = `
+exports[`More Icon DOM Snapshot 1`] = `
 <div
   className="slds-button-group"
   role="group"
@@ -657,7 +657,7 @@ exports[`Button Group MoreIcon DOM Snapshot 1`] = `
 </div>
 `;
 
-exports[`Button Group MoreIcon HTML Snapshot 1`] = `
+exports[`More Icon HTML Snapshot 1`] = `
 "<div class=\\"slds-button-group\\" role=\\"group\\"><button class=\\"slds-button slds-button--neutral\\" type=\\"button\\">Refresh</button><button class=\\"slds-button slds-button--neutral\\" type=\\"button\\">Edit</button><button class=\\"slds-button slds-button--neutral\\" type=\\"button\\">Save</button>
   <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click slds-button--last\\"
     id=\\"ButtonGroupExampleDropdown\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-border-filled ignore-click-ButtonGroupExampleDropdown\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">More Options</span></button></div>

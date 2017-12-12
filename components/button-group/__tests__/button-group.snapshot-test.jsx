@@ -8,26 +8,32 @@ import MoreIcon from '../__examples__/more-icon';
 import Checkbox from '../__examples__/checkbox';
 import CheckboxError from '../__examples__/checkbox-error';
 
+import { BUTTON_GROUP } from '../../../utilities/constants';
+
 testDOMandHTML({
-	name: 'Button Group IconGroup',
+	name: 'Icon Group',
 	test,
-	Component: IconGroup
+	Component: IconGroup,
+	ComponentKind: BUTTON_GROUP
 });
 
 testDOMandHTML({
-	name: 'Button Group MoreIcon',
+	name: 'More Icon',
 	test,
-	Component: MoreIcon
+	Component: MoreIcon,
+	ComponentKind: BUTTON_GROUP
 });
 
 testDOMandHTML({
-	name: 'Button Group Checkbox',
+	name: 'Checkbox',
 	test,
-	Component: Checkbox
+	Component: Checkbox,
+	ComponentKind: BUTTON_GROUP
 });
 
 testDOMandHTML({
-	name: 'Button Group Checkbox Error',
+	name: 'Checkbox Error',
 	test,
-	Component: CheckboxError
+	Component: CheckboxError,
+	ComponentKind: BUTTON_GROUP
 });
