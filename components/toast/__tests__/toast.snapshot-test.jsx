@@ -8,38 +8,46 @@ import ErrorWithDetailsAlert from '../__examples__/error-with-details';
 import Success from '../__examples__/success';
 import CustomClassNames from '../__examples__/custom-class-name';
 
+import { TOAST } from '../../../utilities/constants';
+
 testDOMandHTML({
-	name: 'Toast Info',
+	name: 'Info',
 	test,
-	Component: Info
+	Component: Info,
+	ComponentKind: TOAST
 });
 
 testDOMandHTML({
-	name: 'Toast Warning',
+	name: 'Warning',
 	test,
-	Component: Warning
+	Component: Warning,
+	ComponentKind: TOAST
 });
 
 testDOMandHTML({
-	name: 'Toast Error',
+	name: 'Error',
 	test,
-	Component: ErrorAlert
+	Component: ErrorAlert,
+	ComponentKind: TOAST
 });
 
 testDOMandHTML({
-	name: 'Toast Error With details',
+	name: 'Error With details',
 	test,
-	Component: ErrorWithDetailsAlert
+	Component: ErrorWithDetailsAlert,
+	ComponentKind: TOAST
 });
 
 testDOMandHTML({
-	name: 'Toast Success',
+	name: 'Success',
 	test,
-	Component: Success
+	Component: Success,
+	ComponentKind: TOAST
 });
 
 testDOMandHTML({
-	name: 'Toast Custom Class Name',
+	name: 'Custom Class Name',
 	test,
-	Component: CustomClassNames
+	Component: CustomClassNames,
+	ComponentKind: TOAST
 });

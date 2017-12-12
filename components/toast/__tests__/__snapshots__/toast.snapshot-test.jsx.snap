@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Toast Custom Class Name DOM Snapshot 1`] = `
+exports[`Custom Class Name DOM Snapshot 1`] = `
 <div
   className="slds-notify-container this-is-the-container"
 >
@@ -83,7 +83,7 @@ exports[`Toast Custom Class Name DOM Snapshot 1`] = `
 </div>
 `;
 
-exports[`Toast Custom Class Name HTML Snapshot 1`] = `
+exports[`Custom Class Name HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container this-is-the-container\\">
   <div class=\\"slds-notify slds-notify_toast slds-theme_info this-is-the-alert\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">info</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#info\\"></use></svg></span>
     <div
@@ -93,7 +93,7 @@ exports[`Toast Custom Class Name HTML Snapshot 1`] = `
 </div>"
 `;
 
-exports[`Toast Error DOM Snapshot 1`] = `
+exports[`Error DOM Snapshot 1`] = `
 <div
   className="slds-notify-container"
 >
@@ -170,7 +170,7 @@ exports[`Toast Error DOM Snapshot 1`] = `
 </div>
 `;
 
-exports[`Toast Error HTML Snapshot 1`] = `
+exports[`Error HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container\\">
   <div class=\\"slds-notify slds-notify_toast slds-theme_error\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">error</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#error\\"></use></svg></span>
     <div
@@ -180,7 +180,7 @@ exports[`Toast Error HTML Snapshot 1`] = `
 </div>"
 `;
 
-exports[`Toast Error With details DOM Snapshot 1`] = `
+exports[`Error With details DOM Snapshot 1`] = `
 <div
   className="slds-notify-container"
 >
@@ -260,7 +260,7 @@ exports[`Toast Error With details DOM Snapshot 1`] = `
 </div>
 `;
 
-exports[`Toast Error With details HTML Snapshot 1`] = `
+exports[`Error With details HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container\\">
   <div class=\\"slds-notify slds-notify_toast slds-theme_error\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">error</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#error\\"></use></svg></span>
     <div
@@ -271,7 +271,7 @@ exports[`Toast Error With details HTML Snapshot 1`] = `
 </div>"
 `;
 
-exports[`Toast Info DOM Snapshot 1`] = `
+exports[`Info DOM Snapshot 1`] = `
 <div
   className="slds-notify-container"
 >
@@ -354,7 +354,7 @@ exports[`Toast Info DOM Snapshot 1`] = `
 </div>
 `;
 
-exports[`Toast Info HTML Snapshot 1`] = `
+exports[`Info HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container\\">
   <div class=\\"slds-notify slds-notify_toast slds-theme_info\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">info</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#info\\"></use></svg></span>
     <div
@@ -364,7 +364,7 @@ exports[`Toast Info HTML Snapshot 1`] = `
 </div>"
 `;
 
-exports[`Toast Success DOM Snapshot 1`] = `
+exports[`Success DOM Snapshot 1`] = `
 <div
   className="slds-notify-container"
 >
@@ -447,7 +447,7 @@ exports[`Toast Success DOM Snapshot 1`] = `
 </div>
 `;
 
-exports[`Toast Success HTML Snapshot 1`] = `
+exports[`Success HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container\\">
   <div class=\\"slds-notify slds-notify_toast slds-theme_success\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">success</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#success\\"></use></svg></span>
     <div
@@ -457,7 +457,7 @@ exports[`Toast Success HTML Snapshot 1`] = `
 </div>"
 `;
 
-exports[`Toast Warning DOM Snapshot 1`] = `
+exports[`Warning DOM Snapshot 1`] = `
 <div
   className="slds-notify-container"
 >
@@ -534,7 +534,7 @@ exports[`Toast Warning DOM Snapshot 1`] = `
 </div>
 `;
 
-exports[`Toast Warning HTML Snapshot 1`] = `
+exports[`Warning HTML Snapshot 1`] = `
 "<div class=\\"slds-notify-container\\">
   <div class=\\"slds-notify slds-notify_toast slds-theme_warning\\" role=\\"alert\\"><span class=\\"slds-assistive-text\\">warning</span><span class=\\"slds-m-right_small slds-no-flex slds-align-top\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#warning\\"></use></svg></span>
     <div
