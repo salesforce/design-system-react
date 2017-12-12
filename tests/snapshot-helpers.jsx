@@ -56,10 +56,14 @@ const testDOMandHTML = ({ name, test, Component, ComponentKind }) => {
 
 		const url = `http://localhost:9001/?selectedKind=${encodeURIComponent(ComponentKind)}&selectedStory=${encodeURIComponent(name)}&full=0&down=1&left=1&panelRight=0&downPanel=storybook%2Factions%2Factions-panel`;
 		console.log('url', url);
+
+		const customConfig = { threshold: 0.5 };
 		it('should still look the same', () =>
 			chrome.goto(url)
 				.then(() => chrome.screenshot())
-				.then((image) => expect(image).toMatchImageSnapshot())
+				.then((image) => expect(image).toMatchImageSnapshot({
+					customDiffConfig: customConfig
+				}))
 		);
 	});
 };
