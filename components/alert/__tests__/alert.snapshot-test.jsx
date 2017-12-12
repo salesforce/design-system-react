@@ -12,42 +12,42 @@ import { ALERT } from '../../../utilities/constants';
 
 
 testDOMandHTML({
-	name: 'Alert Info',
+	name: 'Info',
 	test,
 	Component: Info,
 	ComponentKind: ALERT
 });
 
 testDOMandHTML({
-	name: 'Alert Warning',
+	name: 'Warning',
 	test,
 	Component: Warning,
 	ComponentKind: ALERT
 });
 
 testDOMandHTML({
-	name: 'Alert Error',
+	name: 'Error',
 	test,
 	Component: ErrorAlert,
 	ComponentKind: ALERT
 });
 
 testDOMandHTML({
-	name: 'Alert Offline',
+	name: 'Offline',
 	test,
 	Component: Offline,
 	ComponentKind: ALERT
 });
 
 testDOMandHTML({
-	name: 'Alert Dismissable',
+	name: 'Dismissable',
 	test,
 	Component: Dismissable,
 	ComponentKind: ALERT
 });
 
 testDOMandHTML({
-	name: 'Alert Custom Class Name',
+	name: 'Custom Class Name',
 	test,
 	Component: CustomClassNames,
 	ComponentKind: ALERT
