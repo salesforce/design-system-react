@@ -46,6 +46,7 @@ const testDOMandHTML = ({ name, test, Component, ComponentKind }) => {
 		let chrome = null;
 
 		beforeEach(() => {
+			jasmine.DEFAULT_TIMEOUT_INTERVAL = 999999;
 			chrome = new Chrome();
 		});
 
