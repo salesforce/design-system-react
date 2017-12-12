@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Base DOM Snapshot 1`] = `
+exports[`1 Item DOM Snapshot 1`] = `
 <nav
   aria-label="Breadcrumbs"
   role="navigation"
@@ -31,7 +31,7 @@ exports[`Base DOM Snapshot 1`] = `
 </nav>
 `;
 
-exports[`Base HTML Snapshot 1`] = `
+exports[`1 Item HTML Snapshot 1`] = `
 "<nav role=\\"navigation\\" aria-label=\\"Breadcrumbs\\">
   <ol class=\\"slds-breadcrumb slds-list--horizontal\\">
     <li class=\\"slds-breadcrumb__item slds-text-title--caps\\"><a id=\\"parent-entity\\" href=\\"javascript:void(0);\\">Parent Entity</a></li>
@@ -40,7 +40,7 @@ exports[`Base HTML Snapshot 1`] = `
 </nav>"
 `;
 
-exports[`Breadcrumb Base Snapshot 1`] = `
+exports[`2 Items DOM Snapshot 1`] = `
 <nav
   aria-label="Breadcrumbs"
   role="navigation"
@@ -69,4 +69,13 @@ exports[`Breadcrumb Base Snapshot 1`] = `
     </li>
   </ol>
 </nav>
+`;
+
+exports[`2 Items HTML Snapshot 1`] = `
+"<nav role=\\"navigation\\" aria-label=\\"Breadcrumbs\\">
+  <ol class=\\"slds-breadcrumb slds-list--horizontal\\">
+    <li class=\\"slds-breadcrumb__item slds-text-title--caps\\"><a id=\\"parent-entity\\" href=\\"javascript:void(0);\\">Parent Entity</a></li>
+    <li class=\\"slds-breadcrumb__item slds-text-title--caps\\"><a href=\\"javascript:void(0);\\">Parent Record Name</a></li>
+  </ol>
+</nav>"
 `;
