@@ -10,35 +10,35 @@ import SnapshotUserInitials from '../__examples__/user-initials';
 import { AVATAR } from '../../../utilities/constants';
 
 testDOMandHTML({
-	name: 'Avatar Base',
+	name: 'Base',
 	test,
 	Component: SnapshotBase,
 	ComponentKind: AVATAR
 });
 
 testDOMandHTML({
-	name: 'Avatar Entity Icon Snapshot',
+	name: 'Entity Icon',
 	test,
 	Component: SnapshotEntityIcon,
 	ComponentKind: AVATAR
 });
 
 testDOMandHTML({
-	name: 'Avatar Entity Initials Snapshot',
+	name: 'Entity Initials',
 	test,
 	Component: SnapshotEntityInitials,
 	ComponentKind: AVATAR
 });
 
 testDOMandHTML({
-	name: 'Avatar User Icon Snapshot',
+	name: 'User Icon',
 	test,
 	Component: SnapshotUserIcon,
 	ComponentKind: AVATAR
 });
 
 testDOMandHTML({
-	name: 'Avatar User Initials Snapshot',
+	name: 'User Initials',
 	test,
 	Component: SnapshotUserInitials,
 	ComponentKind: AVATAR
