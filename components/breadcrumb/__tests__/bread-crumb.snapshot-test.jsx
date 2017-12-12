@@ -1,11 +1,20 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+/* eslint-env jest */
+import { testDOMandHTML } from '../../../tests/snapshot-helpers';
+
+import { BREADCRUMB } from '../../../utilities/constants';
 
 import BreadcrumbBase from '../__examples__/base';
 
-test('Breadcrumb Base Snapshot', () => {
-	const domTree = renderer.create(
-		<BreadcrumbBase />
-	).toJSON();
-	expect(domTree).toMatchSnapshot();
+testDOMandHTML({
+	name: '2 Items',
+	test,
+	Component: BreadcrumbBase,
+	ComponentKind: BREADCRUMB
+});
+
+testDOMandHTML({
+	name: '1 Item',
+	test,
+	Component: BreadcrumbBase,
+	ComponentKind: BREADCRUMB
 });
