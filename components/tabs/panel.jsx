@@ -43,6 +43,10 @@ Panel.propTypes = {
 		PropTypes.string,
 		PropTypes.element
 	]).isRequired,
+	/**
+	 * Todo: add description here...
+	 */
+	popover: PropTypes.node,
 
 	/**
 	 * The `children` are the actual tab panels to be rendered. They get created by [tabs/index.jsx](./index.jsx) in the `renderTabPanels` function.

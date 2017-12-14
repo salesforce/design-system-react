@@ -336,6 +336,7 @@ class Tabs extends React.Component {
 							panelId={panelId}
 							disabled={child.props.disabled}
 							variant={variant}
+							popover={child.props.popover}
 						>
 							{child.props.label}
 						</Tab>

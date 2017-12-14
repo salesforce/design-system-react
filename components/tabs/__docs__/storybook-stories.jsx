@@ -9,6 +9,8 @@ import { TABS } from '../../../utilities/constants';
 import Tabs from '../../tabs';
 import Panel from '../../tabs/panel';
 
+import Popover from '../../../components/popover';
+
 // Used in the Nested story
 import Input from '../../forms/input';
 import InputIcon from '../../icon/input-icon';
@@ -30,6 +32,33 @@ const getTabs = () => (
 		<h2 className="slds-text-heading--large">Base Tabs Demo</h2>
 		<Tabs id="main-tabs-demo" className="custom-class-is-custom" foo="baz">
 			<Panel label="Tab 1">
+				<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
+				<p>And they&rsquo;re amazing.</p>
+				<p>It&quot;s awesome.</p>
+				<p>You can use your <var>TAB</var> and <var>ARROW</var> keys to navigate around. Try it!</p>
+				<p className="slds-box slds-theme--info slds-m-top--large">
+					(You might have to hit shift+tab to put the focus onto the tab bar ;)
+				</p>
+			</Panel>
+			<Panel label="Tab 2">
+				<h2 className="slds-text-heading--medium">This is my tab 2 contents!</h2>
+				<p>And they&rsquo;re also amazing.</p>
+			</Panel>
+			<Panel label="Tab 3">
+				<h2 className="slds-text-heading--medium">This is my tab 3 contents!</h2>
+				<p>And they&rsquo;re quite spectacular.</p>
+			</Panel>
+		</Tabs>
+	</div>
+);
+/* eslint-enable react/display-name */
+
+/* eslint-disable react/display-name */
+const getTabsPopover = () => (
+	<div>
+		<h2 className="slds-text-heading--large">Popover Tabs Demo</h2>
+		<Tabs id="main-tabs-demo" className="custom-class-is-custom" foo="baz">
+			<Panel label="Tab 1" popover={<Popover body={'This is a sample popover'} heading="Popover"><a>Close</a></Popover>}>
 				<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 				<p>And they&rsquo;re amazing.</p>
 				<p>It&quot;s awesome.</p>
@@ -546,6 +575,7 @@ storiesOf(TABS, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
 	.add('Base', () => getTabs())
 	.add('With disabled tab', () => getTabsDisabled())
+	.add('With popover tab', () => getTabsPopover())
 	.add('Nested', () => getTabsNested())
 	.add('Outside Control', () => <DemoTabsOutsideControl className="controlled-yo" />)
 	.add('Conditional', () => <DemoTabsConditional className="conditional-yo" />)

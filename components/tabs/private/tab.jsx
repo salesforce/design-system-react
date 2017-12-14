@@ -65,6 +65,7 @@ const Tab = createReactClass({
 		 */
 		panelId: PropTypes.string,
 
+
 		/**
 		 * The string or element that is shown as both the title and the label for this tab.
 		 */
@@ -76,7 +77,8 @@ const Tab = createReactClass({
 		/**
 		 * If the Tabs should be scopped, defaults to false
 		 */
-		variant: PropTypes.oneOf(['default', 'scoped'])
+		variant: PropTypes.oneOf(['default', 'scoped']),
+		popover: PropTypes.node
 	},
 
 	getDefaultProps () {
@@ -113,7 +115,8 @@ const Tab = createReactClass({
 			className,
 			children,
 			id,
-			variant
+			variant,
+			popover
 		} = this.props;
 		let tabIndex;
 
@@ -124,6 +127,25 @@ const Tab = createReactClass({
 		} else {
 			tabIndex = null;
 		}
+
+		const tabContent = (
+			<a
+				className={classNames(
+					{
+						[activeTabClassName]: selected,
+						[disabledTabClassName]: disabled,
+						'slds-tabs--default__link': variant === 'default',
+						'slds-tabs--scoped__link': variant === 'scoped'
+					}
+				)}
+				href="javascript:void(0);" // eslint-disable-line no-script-url
+				role="presentation"
+				tabIndex="-1"
+				aria-disabled={disabled}
+			>
+				{children}
+			</a>
+		);
 
 		return (
 			<li
@@ -146,22 +168,7 @@ const Tab = createReactClass({
 				id={id}
 				title={typeof children === 'string' ? children : null}
 			>
-				<a
-					className={classNames(
-						{
-							[activeTabClassName]: selected,
-							[disabledTabClassName]: disabled,
-							'slds-tabs--default__link': variant === 'default',
-							'slds-tabs--scoped__link': variant === 'scoped'
-						}
-					)}
-					href="javascript:void(0);" // eslint-disable-line no-script-url
-					role="presentation"
-					tabIndex="-1"
-					aria-disabled={disabled}
-				>
-					{children}
-				</a>
+				{ popover ? React.cloneElement(popover, { children: tabContent }) : tabContent }
 			</li>
 		);
 	}
