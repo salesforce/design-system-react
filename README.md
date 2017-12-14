@@ -12,9 +12,11 @@ Welcome to the project! :wave: This library is the [React](https://facebook.gith
 * [Codebase Overview](docs/codebase-overview.md)
 * [Usage with Webpack](docs/webpack.md)
 
-#### ECMAScript 6 and CommonJS modules
+#### ECMAScript 6, CommonJS and `create-react-app`
 
-It is highly recommended that you `npm install` the `-es` suffixed tag and import individual components. You will need a [stage-1 and higher proposed features](https://babeljs.io/docs/plugins/preset-stage-1/) transpiler ([stage-1 Babel preset](https://www.npmjs.com/package/babel-preset-stage-1) or review our `.babelrc`). The non-suffixed package is a [CommonJS](https://nodejs.org/docs/latest/api/modules.html) build.
+It is highly recommended that you `npm install` the `-es` suffixed tag and import individual components. You will need a [stage-1 and higher proposed features](https://babeljs.io/docs/plugins/preset-stage-1/) transpiler ([stage-1 Babel preset](https://www.npmjs.com/package/babel-preset-stage-1) or review our `.babelrc`) and include transpiling the `node_modules/design-system-react` folder in your configuration. The non-suffixed package is a [CommonJS](https://nodejs.org/docs/latest/api/modules.html) build that should allow dropping dead code, but not tree-shaking.
+
+_`create-react-app` and any environment that does not transpile or let you transpile ES6 code within the `node_modules` folder is not compatible with the `-es` suffixed tag. Please use the non-suffixed CommonJS tag until an NPM module is published that is compatible with `create-react-app`._
 
 ### Local development Storybook and in-browser test server
 
