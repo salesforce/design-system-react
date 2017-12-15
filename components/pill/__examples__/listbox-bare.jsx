@@ -6,7 +6,7 @@ import IconSettings from '~/components/icon-settings';
 
 
 const Example = createReactClass({
-	displayName: 'PillListboxExample',
+	displayName: 'BarePillListboxExample',
 
 	propTypes: {
 		action: PropTypes.func
@@ -43,12 +43,12 @@ const Example = createReactClass({
 										assistiveText={{
 											remove: 'Press delete or backspace to remove'
 										}}
+										bare
 										role="option"
 										tabIndex="0"
-										onClick={this.onClick}
+										aria-selected="true"
 										onRemove={this.onRemove}
 									/>
-
 								</li>
 								<li className="slds-listbox-item" role="presentation">
 									<Pill
@@ -60,8 +60,9 @@ const Example = createReactClass({
 										assistiveText={{
 											remove: 'Press delete or backspace to remove'
 										}}
+										bare
 										role="option"
-										onClick={this.onClick}
+										aria-selected="true"
 										onRemove={this.onRemove}
 									/>
 								</li>
@@ -71,10 +72,6 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-
-	onClick (event) {
-		this.props.action('onClick')(event);
 	},
 
 	onRemove (event) {

@@ -2,11 +2,12 @@ import React, { PropTypes } from 'react';
 import createReactClass from 'create-react-class';
 
 import Pill from '~/components/pill';
+import Avatar from '~/components/avatar';
 import IconSettings from '~/components/icon-settings';
 
 
 const Example = createReactClass({
-	displayName: 'PillListboxExample',
+	displayName: 'PillWithAvatarListboxExample',
 
 	propTypes: {
 		action: PropTypes.func
@@ -45,6 +46,13 @@ const Example = createReactClass({
 										}}
 										role="option"
 										tabIndex="0"
+										avatar={
+											<Avatar
+												variant="user"
+												title="User avatar"
+												imgSrc="https://lightningdesignsystem.com/assets/images/avatar2.jpg"
+											/>
+										}
 										onClick={this.onClick}
 										onRemove={this.onRemove}
 									/>
@@ -61,6 +69,13 @@ const Example = createReactClass({
 											remove: 'Press delete or backspace to remove'
 										}}
 										role="option"
+										avatar={
+											<Avatar
+												variant="user"
+												title="User avatar"
+												imgSrc="https://lightningdesignsystem.com/assets/images/avatar2.jpg"
+											/>
+										}
 										onClick={this.onClick}
 										onRemove={this.onRemove}
 									/>

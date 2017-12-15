@@ -12,6 +12,7 @@ import { shape } from 'airbnb-prop-types';
 import { PILL } from '../../utilities/constants';
 import UtilityIcon from '../utilities/utility-icon';
 import KEYS from '../../utilities/key-code';
+import EventUtil from '../../utilities/event';
 
 
 const Pill = createReactClass({
@@ -19,37 +20,40 @@ const Pill = createReactClass({
 	displayName: PILL,
 
 	propTypes: {
+		/**
+		 * **Text labels for internationalization**
+		 * This object is merged with the default props object on every render.
+		 * * `label`: Pill's label.
+		 * * `title`: Pill's title.
+		 * * `removeTitle`: A title to use for the remove icon.
+		 *
+		 * _Tested with snapshot testing._
+		 */
 		labels: shape({
-			/**
-			 * Pill's label
-			 * _Tested with Mocha framework._
-			 */
 			label: PropTypes.string,
-			/**
-			 * Pill's title
-			 * _Tested with Mocha framework._
-			 */
 			title: PropTypes.string,
-			/**
-			 * A title to use for the remove icon.
-			 * _Tested with Mocha framework._
-			 */
 			removeTitle: PropTypes.string
 		}),
 
+		/**
+		 * **Assistive text for accessibility**
+		 * This object is merged with the default props object on every render.
+		 * * `remove`: This is a visually hidden label for the close button.
+		 * _Tested with snapshot testing._
+		 */
 		assistiveText: shape({
 			/**
-			 * Assistive text to use in the remove icon. Uses removeTitle, if not specified.
+			 *
 			 * _Tested with Mocha framework._
 			 */
 			remove: PropTypes.string
 		}),
 
 		/**
-		 * A set of additional styles.
+		 * CSS classes to be added to tag with `.slds-pill`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 		 * _Tested with Mocha framework._
 		 */
-		className: PropTypes.string,
+		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 
 		/**
 		 * An href to use if the pill is shown as a link.
@@ -104,6 +108,27 @@ const Pill = createReactClass({
 		onRemove: PropTypes.func,
 
 		/**
+		 * onKeyDown callback executes when a user presses a key.
+		 * _Tested with Mocha framework._
+		 * @callback
+		 */
+		onKeyDown: PropTypes.func,
+
+		/**
+		 * onFocus callback executes when the component receives focus.
+		 * _Tested with Mocha framework._
+		 * @callback
+		 */
+		onFocus: PropTypes.func,
+
+		/**
+		 * onBlur callback executes when the component loses focus.
+		 * _Tested with Mocha framework._
+		 * @callback
+		 */
+		onBlur: PropTypes.func,
+
+		/**
 		 * Role to use for the pill. Default role: button.
 		 * _Tested with Mocha framework._
 		 */
@@ -126,6 +151,7 @@ const Pill = createReactClass({
 
 	render () {
 		const role = this.props.role || (typeof this.props.onClick === 'function' ? 'button' : null);
+		const linkifySpan = this.renderAsLink() && !this.props.labels.label;
 		return (
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<span
@@ -140,8 +166,8 @@ const Pill = createReactClass({
 					},
 					this.props.className
 				)}
-				onClick={this.props.onClick}
-				onKeyUp={this.props.onRemove ? this.handleKeyUp : null}
+				onClick={linkifySpan ? this.props.onClick : null}
+				onKeyDown={typeof this.props.onRemove === 'function' ? this.handleKeyDown : null}
 				ref={this.handleRef}
 			>
 				{this.renderIcon()}
@@ -161,12 +187,13 @@ const Pill = createReactClass({
 
 	renderLabel () {
 		if (this.props.labels.label) {
-			if (this.renderAsLink() || this.props.href) {
+			if (this.renderAsLink()) {
 				return (
 					<a
 						href={this.getHref()}
 						className="slds-pill__action"
 						title={this.props.labels.title || this.props.labels.label}
+						onClick={this.props.onClick}
 					>
 						<span className="slds-pill__label">
 							{this.props.labels.label}
@@ -191,7 +218,6 @@ const Pill = createReactClass({
 					title={this.props.labels.removeTitle}
 					role="button"
 					onClick={this.props.onRemove}
-					onKeyUp={this.handleKeyUp}
 				>
 					<UtilityIcon
 						style={{ cursor: 'pointer' }}	// remove when fixed by SLDS CSS
@@ -221,11 +247,12 @@ const Pill = createReactClass({
 		this.root.blur();
 	},
 
-	handleKeyUp (event, ...rest) {
-		// Make a callback to onKeyUp. Cancel default handling if the callback returns false or
-		// if the default handling for the event was prevented.
-		if (typeof this.props.onKeyUp === 'function') {
-			if (this.props.onKeyUp.call(null, event, ...rest) === false || event.defaultPrevented) {
+	handleKeyDown (event, ...rest) {
+		if (typeof this.props.onKeyDown === 'function') {
+			// Make a callback to onKeyDown.
+			this.props.onKeyDown.call(null, event, ...rest);
+			// Cancel further handling if the default handling for the event was prevented.
+			if (event.defaultPrevented) {
 				return;
 			}
 		}
@@ -233,6 +260,7 @@ const Pill = createReactClass({
 		switch (event.keyCode) {
 			case KEYS.ENTER:
 				if (typeof this.props.onClick === 'function') {
+					EventUtil.trap(event);
 					this.props.onClick();
 				}
 				break;
@@ -240,6 +268,7 @@ const Pill = createReactClass({
 			case KEYS.BACKSPACE:
 			case KEYS.DELETE:
 				if (typeof this.props.onRemove === 'function') {
+					EventUtil.trap(event);
 					this.props.onRemove();
 				}
 				break;
@@ -276,7 +305,7 @@ const Pill = createReactClass({
 	 */
 	restProps () {
 		const { role, bare, hasError, link, className, onClick, onRemove, labels, assistiveText, children, href,
-			icon, avatar, onKeyUp, ...other } = this.props;
+			icon, avatar, onKeyDown, ...other } = this.props;
 		return other;
 	}
 });

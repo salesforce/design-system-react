@@ -659,9 +659,8 @@ exports[`Base Selected DOM Snapshot 1`] = `
             aria-selected={true}
             className="slds-pill"
             onBlur={[Function]}
-            onClick={[Function]}
+            onClick={null}
             onKeyDown={[Function]}
-            onKeyUp={[Function]}
             role="option"
             tabIndex="0"
           >
@@ -697,7 +696,6 @@ exports[`Base Selected DOM Snapshot 1`] = `
             <span
               className="slds-icon_container slds-pill__remove"
               onClick={[Function]}
-              onKeyUp={[Function]}
               role="button"
               title="Remove"
             >
@@ -875,9 +873,8 @@ exports[`Inline Multiple Selection Selected DOM Snapshot 1`] = `
               aria-selected={true}
               className="slds-pill"
               onBlur={[Function]}
-              onClick={[Function]}
+              onClick={null}
               onKeyDown={[Function]}
-              onKeyUp={[Function]}
               role="option"
               tabIndex="0"
             >
@@ -913,7 +910,6 @@ exports[`Inline Multiple Selection Selected DOM Snapshot 1`] = `
               <span
                 className="slds-icon_container slds-pill__remove"
                 onClick={[Function]}
-                onKeyUp={[Function]}
                 role="button"
                 title="Remove"
               >
@@ -945,9 +941,8 @@ exports[`Inline Multiple Selection Selected DOM Snapshot 1`] = `
               aria-selected={false}
               className="slds-pill"
               onBlur={[Function]}
-              onClick={[Function]}
+              onClick={null}
               onKeyDown={[Function]}
-              onKeyUp={[Function]}
               role="option"
               tabIndex={-1}
             >
@@ -983,7 +978,6 @@ exports[`Inline Multiple Selection Selected DOM Snapshot 1`] = `
               <span
                 className="slds-icon_container slds-pill__remove"
                 onClick={[Function]}
-                onKeyUp={[Function]}
                 role="button"
                 title="Remove"
               >
@@ -1522,9 +1516,8 @@ exports[`Readonly Multiple Selection Multiple Items Selected DOM Snapshot 1`] = 
             aria-selected={true}
             className="slds-pill"
             onBlur={[Function]}
-            onClick={[Function]}
+            onClick={null}
             onKeyDown={[Function]}
-            onKeyUp={[Function]}
             role="option"
             tabIndex="0"
           >
@@ -1537,7 +1530,6 @@ exports[`Readonly Multiple Selection Multiple Items Selected DOM Snapshot 1`] = 
             <span
               className="slds-icon_container slds-pill__remove"
               onClick={[Function]}
-              onKeyUp={[Function]}
               role="button"
               title="Remove"
             >
@@ -1569,9 +1561,8 @@ exports[`Readonly Multiple Selection Multiple Items Selected DOM Snapshot 1`] = 
             aria-selected={false}
             className="slds-pill"
             onBlur={[Function]}
-            onClick={[Function]}
+            onClick={null}
             onKeyDown={[Function]}
-            onKeyUp={[Function]}
             role="option"
             tabIndex={-1}
           >
@@ -1584,7 +1575,6 @@ exports[`Readonly Multiple Selection Multiple Items Selected DOM Snapshot 1`] = 
             <span
               className="slds-icon_container slds-pill__remove"
               onClick={[Function]}
-              onKeyUp={[Function]}
               role="button"
               title="Remove"
             >

@@ -130,8 +130,6 @@ const Pill = (props) => {
 					data: props.eventData
 				});
 			}}
-			/* block pill removal on key up by cancelling default onKeyUp handler */
-			onKeyUp={() => false}
 			ref={(component) => {
 				if (props.requestFocus && props.active) {
 					props.events.onRequestFocus(undefined, { ref: component });

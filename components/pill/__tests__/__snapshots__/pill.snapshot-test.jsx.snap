@@ -9,13 +9,14 @@ exports[`Pill DOM Snapshot 1`] = `
   >
     <span
       className="slds-pill slds-pill_link"
-      onClick={[Function]}
-      onKeyUp={[Function]}
+      onClick={null}
+      onKeyDown={[Function]}
       role="button"
     >
       <a
         className="slds-pill__action"
         href="javascript:void(0);"
+        onClick={[Function]}
         title="Full pill label verbiage mirrored here"
       >
         <span
@@ -27,7 +28,6 @@ exports[`Pill DOM Snapshot 1`] = `
       <span
         className="slds-icon_container slds-pill__remove"
         onClick={[Function]}
-        onKeyUp={[Function]}
         role="button"
         title="Remove"
       >
@@ -56,8 +56,8 @@ exports[`Pill DOM Snapshot 1`] = `
   >
     <span
       className="slds-pill"
-      onClick={undefined}
-      onKeyUp={[Function]}
+      onClick={null}
+      onKeyDown={[Function]}
       role="button"
     >
       <span
@@ -69,7 +69,6 @@ exports[`Pill DOM Snapshot 1`] = `
       <span
         className="slds-icon_container slds-pill__remove"
         onClick={[Function]}
-        onKeyUp={[Function]}
         role="button"
         title="Remove"
       >
@@ -98,8 +97,8 @@ exports[`Pill DOM Snapshot 1`] = `
   >
     <span
       className="slds-pill slds-pill_link"
-      onClick={[Function]}
-      onKeyUp={[Function]}
+      onClick={null}
+      onKeyDown={[Function]}
       role="button"
     >
       <span
@@ -124,6 +123,7 @@ exports[`Pill DOM Snapshot 1`] = `
       <a
         className="slds-pill__action"
         href="javascript:void(0);"
+        onClick={[Function]}
         title="Full pill label verbiage mirrored here"
       >
         <span
@@ -135,7 +135,6 @@ exports[`Pill DOM Snapshot 1`] = `
       <span
         className="slds-icon_container slds-pill__remove"
         onClick={[Function]}
-        onKeyUp={[Function]}
         role="button"
         title="Remove"
       >
@@ -164,8 +163,8 @@ exports[`Pill DOM Snapshot 1`] = `
   >
     <span
       className="slds-pill slds-pill_link"
-      onClick={[Function]}
-      onKeyUp={[Function]}
+      onClick={null}
+      onKeyDown={[Function]}
       role="button"
     >
       <span
@@ -187,6 +186,7 @@ exports[`Pill DOM Snapshot 1`] = `
       <a
         className="slds-pill__action"
         href="javascript:void(0);"
+        onClick={[Function]}
         title="Full pill label verbiage mirrored here"
       >
         <span
@@ -198,7 +198,6 @@ exports[`Pill DOM Snapshot 1`] = `
       <span
         className="slds-icon_container slds-pill__remove"
         onClick={[Function]}
-        onKeyUp={[Function]}
         role="button"
         title="Remove"
       >
@@ -227,8 +226,8 @@ exports[`Pill DOM Snapshot 1`] = `
   >
     <span
       className="slds-pill slds-pill_link slds-has-error"
-      onClick={[Function]}
-      onKeyUp={[Function]}
+      onClick={null}
+      onKeyDown={[Function]}
       role="button"
     >
       <span
@@ -253,6 +252,7 @@ exports[`Pill DOM Snapshot 1`] = `
       <a
         className="slds-pill__action"
         href="javascript:void(0);"
+        onClick={[Function]}
         title="Full pill label verbiage mirrored here"
       >
         <span
@@ -264,7 +264,6 @@ exports[`Pill DOM Snapshot 1`] = `
       <span
         className="slds-icon_container slds-pill__remove"
         onClick={[Function]}
-        onKeyUp={[Function]}
         role="button"
         title="Remove"
       >
@@ -294,8 +293,8 @@ exports[`Pill DOM Snapshot 1`] = `
     <span
       aria-selected="true"
       className="slds-pill slds-pill_bare"
-      onClick={undefined}
-      onKeyUp={[Function]}
+      onClick={null}
+      onKeyDown={[Function]}
       role="option"
       tabIndex="0"
     >
@@ -308,7 +307,6 @@ exports[`Pill DOM Snapshot 1`] = `
       <span
         className="slds-icon_container slds-pill__remove"
         onClick={[Function]}
-        onKeyUp={[Function]}
         role="button"
         title="Remove"
       >

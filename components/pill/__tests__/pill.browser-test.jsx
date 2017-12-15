@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-expressions */
+/* eslint-disable react/no-find-dom-node */
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import SLDSPill from '~/components/pill';
@@ -80,7 +80,7 @@ describe('SLDSPill', () => {
 		});
 
 		it('reponds to link clicks', function () {
-			const pillLink = this.wrapper.find('.slds-pill');
+			const pillLink = this.wrapper.find('.slds-pill__action');
 			expect(pillLink.getNode()).to.exist;
 			Simulate.click(pillLink.getNode());
 			expect(onClick.calledOnce).to.be.true;
