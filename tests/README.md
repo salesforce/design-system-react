@@ -55,7 +55,7 @@ const propTypes = {
 ```
 
 ### Jest Snapshot Testing
-Jest is DOM and markup snapshot testing.
+Jest is DOM and markup snapshot testing. Our Jest test runner also utilizes Jest Image Snapshot to test the visual rendering of pages against previously correct versions for visual regression testing.
 
 Files ending in `.snapshot-test.jsx` will be run by Jest. Snapshot testing uses the Jest framework to take a snapshot of the state of the DOM when the component is rendered and save it as a string for future comparison. 
 
