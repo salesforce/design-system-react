@@ -140,17 +140,10 @@ const Button = createReactClass({
 		};
 	},
 
-	getInitialState () {
-		return {
-			active: false
-		};
-	},
-
 	handleClick (event) {
 		if (this.props.onClick) {
 			this.props.onClick(event);
 		}
-		this.setState({ active: !this.state.active });
 	},
 
 	getClassName () {
