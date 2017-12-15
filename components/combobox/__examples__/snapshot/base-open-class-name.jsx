@@ -36,11 +36,11 @@ class Example extends React.Component {
 					classNameContainer="this-is-the-container"
 					classNameMenu="this-is-the-menu"
 					id="combobox-unique-id"
-					isInline
 					isOpen
 					labels={{
 						placeholder: 'Search Salesforce'
 					}}
+					menuPosition="relative"
 					onChange={(event, { value }) => {
 						console.log('onChange', value);
 						this.setState({	inputValue: value });
