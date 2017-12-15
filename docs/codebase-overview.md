@@ -17,7 +17,7 @@ If you want to [contribute](CONTRIBUTING.md), we hope that this overview will he
 If you are new to React, you may be trained to design components in a more complicated way than they need to be. Please prioritize the simple and the flexible. The gist of presentational components is to be a template that takes in data and passes out user events and related data to callback functions. One over-simplified way to approach it is to consider these components as [Handlebars templates](http://handlebarsjs.com/) with event listeners. The goal is for engineers to not have to think about markup and stylesheets.
 * Take data and UI data, such as disabled buttons, from parent via props to display data and UI state correctly. Don't manipulate props with string concatenations, array pushes, and sorting within components.
 * Pass mouse and keyboard events and related event data, such as the item data for the item that was clicked, up to parent state machine, so it can decide how to manipulate it's child components' props.
-* Parent component should be the only component that changes data. Components should be data stateless. Only UI state, such as "is this dialog open?" should be within components.
+* Parent components should be the only components that changes data. Components should be data stateless and only reflect the data they have been given. Only UI state, such as "is this dialog open?" or "is this option active/focused" should be within components. Focus and active state should be maintained internally in order to not introduce these into your state engine store (e.g.- Redux).
 
 ### Think of others first
 - <a name="not-bootstrap" href="#not-bootstrap">#</a> **Consider your audience.** This project is not Bootstrap, and we've built [frameworks on top of Bootstrap](https://github.com/ExactTarget/fuelux). The primary audience for this project is software engineers yearning to easily implement the design artifact handed to them. Yes, contributors should over-document and explain much as you need to, but you do _not_ need to have components just work when you drop them on the page. Read on for more about limiting internal component state.
@@ -123,6 +123,18 @@ Unless you have an accessiblity guru in your department (knowledge of implementi
 - Test should run correctly in headless browsers (`npm test`) and within a "real" browser (`npm start` -> `http://localhost:8001/`)
 - Components should be able to be rendered without a `DOM`. Test for the existence of `document` and `window` before using them.
 - For more specifics about testing please review the [testing module walkthough](../tests/README.md).
+
+## Notes on Converting SLDS to Design System React
+
+- `variant` should be used for significant structure and markup or UX pattern changes that cannot exist at the same time. This may include examples, modifiers, but are usually labelled variants in SLDS. In order to clear, never make the presense of an event callback imply a markup change, other than the event attribute specified. Example: Do not make the addition of `onClick` turn a `span` into an `a` tag.
+- `theme` should be used for a single `className` change that cannot exist at the same time as another `className`. These are typically SLDS states or themes, but could be modifiers. Examples: `warning`, `error`, `offline`, `success`.
+- Modifiers and states that can exist at the same time and should be props by themselves, so that any combination of them are possible.
+- `isOpen` on dialogs and menus should be able to be controlled by their parent component, but _also_ work with internal state if it is value is `undefined`
+- SLDS uses styling to hide hidden elements. Please do not render these elements. Exampes: menus, dialogs, tab and accordion content panels.
+- In order to promote best practices, if components are used in a wrong or suboptimal way, the component should error. For instance, if `id` is a required key in option items, then the component should error out and not fallback to an array index. Custom `checkProps` warnings are the best way to provide a clear error to consuming developers.
+- `propType` comments are used in the property tables on the documentation site. Please write in markdown paragraphs.
+- ESlint may find errors in SLDS markup. Feel free to ask questions to the SLDS team or core maintainers of this library, but most likely the markup is intentional and well-tested. You may need to disable the error with `eslint-disable-line` or `eslint-disable-next-line`. Consider ESlint lint there to catch the rule, but not the well thought-out exception.
+- All filenames should be "kabob case," `this-is-the-file`. Spaces and camel-case should be converted to hyphens.
 
 ## Controlled and Uncontrolled Components
 - All new components should be controlled at first and then uncontrolled support added later if needed.
