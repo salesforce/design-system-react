@@ -44,20 +44,20 @@ const testDOMandHTML = ({ name, test, Component, ComponentKind }) => {
 		}
 
 		let chrome = null;
+		jasmine.DEFAULT_TIMEOUT_INTERVAL = 999999;
 
-		beforeEach(() => {
-			jasmine.DEFAULT_TIMEOUT_INTERVAL = 999999;
+		beforeAll(() => {
 			chrome = new Chrome();
 		});
 
-		afterEach(() => {
+		afterAll(() => {
 			chrome.done();
 		});
 
-		const url = `http://localhost:9001/?selectedKind=${encodeURIComponent(ComponentKind)}&selectedStory=${encodeURIComponent(name)}&full=0&down=1&left=1&panelRight=0&downPanel=storybook%2Factions%2Factions-panel`;
+		const url = `http://localhost:9002/?selectedKind=${encodeURIComponent(ComponentKind)}&selectedStory=${encodeURIComponent(name)}&full=0&down=1&left=1&panelRight=0&downPanel=storybook%2Factions%2Factions-panel`;
 		console.log('url', url);
 
-		const customConfig = { threshold: 0.5 };
+		const customConfig = { threshold: 1 };
 		it('should still look the same', () =>
 			chrome.goto(url)
 				.then(() => chrome.screenshot())
