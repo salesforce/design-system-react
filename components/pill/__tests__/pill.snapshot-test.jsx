@@ -1,20 +1,54 @@
 /* eslint-env jest */
 import React from 'react';
-import renderer from 'react-test-renderer';
-import { renderMarkup } from '../../../tests/snapshot-helpers';
+import { renderMarkup, testDOMandHTML } from '../../../tests/snapshot-helpers';
 
-import Default from '../__examples__/snapshot';
+import BaseExample from '../__examples__/base';
+import IconExample from '../__examples__/icon';
+import ContainerExample from '../__examples__/container';
+import BarePillListboxExample from '../__examples__/listbox-bare';
+import ListboxExample from '../__examples__/listbox';
+import IconListboxExample from '../__examples__/listbox-icon';
+import AvatarListboxExample from '../__examples__/listbox-avatar';
 
 
-test('Pill DOM Snapshot', () => {
-	const domTree = renderer.create(
-		<Default />,
-	).toJSON();
-	expect(domTree).toMatchSnapshot();
+testDOMandHTML({
+	name: 'Linked, Unlinked, Truncated',
+	test,
+	Component: BaseExample
 });
 
-
-test('Pill HTML Snapshot', () => {
-	expect(renderMarkup(Default)).toMatchSnapshot();
+testDOMandHTML({
+	name: 'Icon, Avatar, Error',
+	test,
+	Component: IconExample
 });
 
+testDOMandHTML({
+	name: 'Bare',
+	test,
+	Component: BarePillListboxExample
+});
+
+testDOMandHTML({
+	name: 'Pill Container',
+	test,
+	Component: ContainerExample
+});
+
+testDOMandHTML({
+	name: 'Listbox Of Pill Options',
+	test,
+	Component: ListboxExample
+});
+
+testDOMandHTML({
+	name: 'Listbox Of Pill Options With Icon',
+	test,
+	Component: IconListboxExample
+});
+
+testDOMandHTML({
+	name: 'Listbox Of Pill Options With Avatar',
+	test,
+	Component: AvatarListboxExample
+});

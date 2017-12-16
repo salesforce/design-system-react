@@ -32,6 +32,7 @@ describe('SLDSPill', () => {
 					remove: 'Remove assistive text'
 				}}
 				className="extra-class"
+				link
 				onClick={onClick}
 				onRemove={onRemove}
 				onFocus={onFocus}
@@ -102,6 +103,7 @@ describe('SLDSPill', () => {
 				labels={{
 					label: LABEL
 				}}
+				link
 				href={HREF}
 			/>
 		));
@@ -144,7 +146,6 @@ describe('SLDSPill', () => {
 					label: LABEL
 				}}
 				onClick={onClick}
-				link={false}
 			/>
 		));
 
@@ -164,6 +165,7 @@ describe('SLDSPill', () => {
 					label: LABEL
 				}}
 				bare
+				link
 				role="option"
 			/>
 		));
@@ -183,6 +185,7 @@ describe('SLDSPill', () => {
 				labels={{
 					label: LABEL
 				}}
+				link
 				hasError
 			/>
 		));
@@ -202,6 +205,7 @@ describe('SLDSPill', () => {
 				labels={{
 					label: LABEL
 				}}
+				link
 				onClick={onClick}
 				icon={
 					<SLDSIcon
@@ -230,6 +234,7 @@ describe('SLDSPill', () => {
 				labels={{
 					label: LABEL
 				}}
+				link
 				avatar={
 					<SLDSAvatar
 						variant="user"
@@ -281,6 +286,7 @@ describe('SLDSPill', () => {
 			<SLDSPill
 				onClick={onClick}
 				onRemove={onRemove}
+				link
 			>
 				<div className="abc">this is a custom label</div>
 			</SLDSPill>

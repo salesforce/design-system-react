@@ -151,7 +151,6 @@ const Pill = createReactClass({
 
 	render () {
 		const role = this.props.role || (typeof this.props.onClick === 'function' ? 'button' : null);
-		const linkifySpan = this.renderAsLink() && !this.props.labels.label;
 		return (
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<span
@@ -160,13 +159,13 @@ const Pill = createReactClass({
 				className={classNames(
 					'slds-pill',
 					{
-						'slds-pill_link': this.renderAsLink(),
+						'slds-pill_link': this.props.link,
 						'slds-has-error': this.props.hasError,
 						'slds-pill_bare': this.props.bare
 					},
 					this.props.className
 				)}
-				onClick={linkifySpan ? this.props.onClick : null}
+				onClick={!this.props.labels.label || !this.props.link ? this.props.onClick : null}
 				onKeyDown={typeof this.props.onRemove === 'function' ? this.handleKeyDown : null}
 				ref={this.handleRef}
 			>
@@ -187,7 +186,7 @@ const Pill = createReactClass({
 
 	renderLabel () {
 		if (this.props.labels.label) {
-			if (this.renderAsLink()) {
+			if (this.props.link) {
 				return (
 					<a
 						href={this.getHref()}
@@ -281,19 +280,6 @@ const Pill = createReactClass({
 	handleRef (root) {
 		// Keeping the top-most element to support focus() and blur()
 		this.root = root;
-	},
-
-	/**
-	 * Indicates if the pill should be styled as a link. The link styling is applied if either of the following is true:
-	 * 1) href property is set
-	 * 2) onClick property is set to a function
-	 * 3) the value of the link property is true
-	 * The link styling is not if neither of the above is true or if the link property is set to false.
-	 * @returns {boolean}
-	 */
-	renderAsLink () {
-		return this.props.link === true || ((typeof this.props.onClick === 'function' || typeof this.props.href === 'string')
-			&& (!!this.props.labels.label || !!this.props.children) && this.props.link !== false);
 	},
 
 	getHref () {

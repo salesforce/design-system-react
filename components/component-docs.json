@@ -8035,19 +8035,6 @@
                 "returns": null
             },
             {
-                "name": "renderAsLink",
-                "docblock": "Indicates if the pill should be styled as a link. The link styling is applied if either of the following is true:\n1) href property is set\n2) onClick property is set to a function\n3) the value of the link property is true\nThe link styling is not if neither of the above is true or if the link property is set to false.\n@returns {boolean}",
-                "modifiers": [],
-                "params": [],
-                "returns": {
-                    "description": null,
-                    "type": {
-                        "name": "boolean"
-                    }
-                },
-                "description": "Indicates if the pill should be styled as a link. The link styling is applied if either of the following is true:\n1) href property is set\n2) onClick property is set to a function\n3) the value of the link property is true\nThe link styling is not if neither of the above is true or if the link property is set to false."
-            },
-            {
                 "name": "getHref",
                 "docblock": null,
                 "modifiers": [],
