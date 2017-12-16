@@ -4,7 +4,7 @@ First, on behalf of the core maintainers, I'd like to thank you for wanting to c
 
 ## Contributing process
 1. Read the [Codebase Overview](docs/codebase-overview.md) to learn concepts and best practices for the codebase and to confirm it is within project scope.
-1. Create a new issue before starting your solution to keep track of what you are trying to contribute. That way, we can also offer suggestions or let you know if there is already an effort in progress.
+1. Create a new issue before starting your solution to keep track of what you are trying to contribute. That way, we can offer suggestions, collaborate on a public API (props), or let you know if there is already an effort in progress.
 1. Fork this repository, clone your fork locally. Create a topic branch locally.
 1. Add the new component to the `/components` folder
 1. Add the component name to `/components/constants.js`
