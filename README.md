@@ -49,6 +49,11 @@ ReactDOM.render(
 </svg>
 ```
 
+```
+// ExpressJS example
+app.use('/assets/icons', express.static('node_modules/@salesforce-ux/icons/dist/salesforce-lightning-design-system-icons/'));
+```
+
 #### Bundle icons
 
 If you use a module bundler, like Webpack, you can import the individual `sprite` files and assign them to the `<IconSettings>` sprite properties. Your SVG images will be bundled with your scripts and block the DOM from rendering until the script file is loaded.
