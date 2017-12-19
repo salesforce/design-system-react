@@ -32,6 +32,7 @@ export const DATA_TABLE_ROW_ACTIONS = 'SLDSDataTableRowActions';
 export const DATA_TABLE_ROW = 'SLDSDataTableRow';
 export const DATE_PICKER = 'SLDSDatePicker';
 export const DIALOG = 'SLDSDialog';
+export const DYNAMIC_MENU = 'SLDSDynamicMenu';
 export const FILTER = 'SLDSFilter';
 export const FORMS_CHECKBOX = 'SLDSCheckbox';
 export const FORMS_INLINE_EDIT = 'SLDSInlineEdit';
