@@ -100,10 +100,9 @@ const Pill = (props) => {
 
 	return (
 		<SLDSPill
-			role="option"
 			tabIndex={props.tabIndex || '0'}
 			icon={props.icon}
-			link={false}
+			variant="option"
 			labels={labels}
 			assistiveText={{
 				remove: assistiveText.remove

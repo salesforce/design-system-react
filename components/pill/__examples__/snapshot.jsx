@@ -103,7 +103,7 @@ const Example = createReactClass({
 								remove: 'Press delete or backspace to remove'
 							}}
 							bare
-							role="option"
+							variant="option"
 							tabIndex="0"
 							aria-selected="true"
 							onRemove={noop}

@@ -36,6 +36,8 @@ const PILLS = [{
 	name: 'custom31'
 }];
 
+function noop () {}
+
 const Example = createReactClass({
 	displayName: 'PillWithIconListboxExample',
 
@@ -45,7 +47,7 @@ const Example = createReactClass({
 
 	getDefaultProps () {
 		return {
-			action: () => {}
+			action: () => noop
 		};
 	},
 
@@ -91,7 +93,7 @@ const Example = createReactClass({
 						assistiveText={{
 							remove: 'Press delete or backspace to remove'
 						}}
-						role="option"
+						variant="option"
 						icon={
 							<Icon
 								title="Title"

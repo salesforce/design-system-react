@@ -6,6 +6,7 @@ import Icon from '~/components/icon';
 import Avatar from '~/components/avatar';
 import IconSettings from '~/components/icon-settings';
 
+function noop () {}
 
 const Example = createReactClass({
 	displayName: 'PillWithIconExample',
@@ -16,7 +17,7 @@ const Example = createReactClass({
 
 	getDefaultProps () {
 		return {
-			action: () => {}
+			action: () => noop
 		};
 	},
 

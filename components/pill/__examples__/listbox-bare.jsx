@@ -5,6 +5,8 @@ import Pill from '~/components/pill';
 import IconSettings from '~/components/icon-settings';
 
 
+function noop () {}
+
 const Example = createReactClass({
 	displayName: 'BarePillListboxExample',
 
@@ -14,7 +16,7 @@ const Example = createReactClass({
 
 	getDefaultProps () {
 		return {
-			action: () => {}
+			action: () => noop
 		};
 	},
 
@@ -44,7 +46,7 @@ const Example = createReactClass({
 											remove: 'Press delete or backspace to remove'
 										}}
 										bare
-										role="option"
+										variant="option"
 										tabIndex="0"
 										aria-selected="true"
 										onRemove={this.onRemove}
@@ -61,7 +63,8 @@ const Example = createReactClass({
 											remove: 'Press delete or backspace to remove'
 										}}
 										bare
-										role="option"
+										variant="option"
+										tabIndex="0"
 										aria-selected="true"
 										onRemove={this.onRemove}
 									/>

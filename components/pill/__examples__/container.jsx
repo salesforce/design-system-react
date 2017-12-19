@@ -4,6 +4,7 @@ import createReactClass from 'create-react-class';
 import Pill from '~/components/pill';
 import IconSettings from '~/components/icon-settings';
 
+function noop () {}
 
 const Example = createReactClass({
 	displayName: 'PillContainerExample',
@@ -14,7 +15,7 @@ const Example = createReactClass({
 
 	getDefaultProps () {
 		return {
-			action: () => {}
+			action: () => noop
 		};
 	},
 
@@ -70,7 +71,7 @@ const Example = createReactClass({
 											assistiveText={{
 												remove: 'Press delete or backspace to remove'
 											}}
-											role="option"
+											variant="option"
 											aria-selected="true"
 										/>
 									</li>
@@ -84,7 +85,7 @@ const Example = createReactClass({
 											assistiveText={{
 												remove: 'Press delete or backspace to remove'
 											}}
-											role="option"
+											variant="option"
 										/>
 									</li>
 								</ul>

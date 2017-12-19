@@ -4,6 +4,7 @@ import createReactClass from 'create-react-class';
 import Pill from '~/components/pill';
 import IconSettings from '~/components/icon-settings';
 
+function noop () {}
 
 const Example = createReactClass({
 	displayName: 'BasePillExample',
@@ -14,7 +15,7 @@ const Example = createReactClass({
 
 	getDefaultProps () {
 		return {
-			action: () => {}
+			action: () => noop
 		};
 	},
 

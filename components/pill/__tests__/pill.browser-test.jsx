@@ -32,7 +32,6 @@ describe('SLDSPill', () => {
 					remove: 'Remove assistive text'
 				}}
 				className="extra-class"
-				link
 				onClick={onClick}
 				onRemove={onRemove}
 				onFocus={onFocus}
@@ -46,7 +45,7 @@ describe('SLDSPill', () => {
 			expect(this.wrapper.hasClass('slds-pill')).to.be.true;
 			expect(this.wrapper.hasClass('slds-pill_link')).to.be.true;
 			expect(this.wrapper.hasClass('extra-class')).to.be.true;
-			expect(this.wrapper.prop('role')).to.equal('button');
+			expect(this.wrapper.find('.slds-pill[role="button"]').exists());
 		});
 
 		it('renders label as a link', function () {
@@ -103,7 +102,6 @@ describe('SLDSPill', () => {
 				labels={{
 					label: LABEL
 				}}
-				link
 				href={HREF}
 			/>
 		));
@@ -124,7 +122,6 @@ describe('SLDSPill', () => {
 				labels={{
 					label: LABEL
 				}}
-				link
 			/>
 		));
 
@@ -137,27 +134,6 @@ describe('SLDSPill', () => {
 		});
 	});
 
-	describe('Link style off', () => {
-		const onClick = sinon.stub();
-
-		beforeEach(mountComponent(
-			<SLDSPill
-				labels={{
-					label: LABEL
-				}}
-				onClick={onClick}
-			/>
-		));
-
-		afterEach(unmountComponent);
-
-		it('removes link style', function () {
-			expect(this.wrapper.hasClass('slds-pill_link')).to.be.false;
-			const anchor = this.wrapper.find('.slds-pill__action');
-			expect(anchor.exists()).to.be.false;
-		});
-	});
-
 	describe('Bare Linked With Role', () => {
 		beforeEach(mountComponent(
 			<SLDSPill
@@ -165,8 +141,6 @@ describe('SLDSPill', () => {
 					label: LABEL
 				}}
 				bare
-				link
-				role="option"
 			/>
 		));
 
@@ -175,7 +149,7 @@ describe('SLDSPill', () => {
 		it('has correct style and attributes', function () {
 			expect(this.wrapper.hasClass('slds-pill')).to.be.true;
 			expect(this.wrapper.hasClass('slds-pill_bare')).to.be.true;
-			expect(this.wrapper.prop('role')).to.equal('option');
+			expect(this.wrapper.find('.slds-pill[role="button"]').exists()).to.be.true;
 		});
 	});
 
@@ -185,7 +159,6 @@ describe('SLDSPill', () => {
 				labels={{
 					label: LABEL
 				}}
-				link
 				hasError
 			/>
 		));
@@ -205,7 +178,6 @@ describe('SLDSPill', () => {
 				labels={{
 					label: LABEL
 				}}
-				link
 				onClick={onClick}
 				icon={
 					<SLDSIcon
@@ -234,7 +206,6 @@ describe('SLDSPill', () => {
 				labels={{
 					label: LABEL
 				}}
-				link
 				avatar={
 					<SLDSAvatar
 						variant="user"
@@ -256,7 +227,7 @@ describe('SLDSPill', () => {
 		});
 	});
 
-	describe('Unlinked', () => {
+	describe('Option', () => {
 		const onRemove = sinon.stub();
 
 		beforeEach(mountComponent(
@@ -265,6 +236,7 @@ describe('SLDSPill', () => {
 					label: LABEL,
 					title: LABEL_TITLE
 				}}
+				variant="option"
 				removeTitle="Remove"
 				onRemove={onRemove}
 			/>
@@ -275,6 +247,8 @@ describe('SLDSPill', () => {
 		it('has correct style', function () {
 			expect(this.wrapper.hasClass('slds-pill')).to.be.true;
 			expect(this.wrapper.hasClass('slds-pill_link')).to.be.false;
+			const anchor = this.wrapper.find('.slds-pill__action');
+			expect(anchor.exists()).to.be.false;
 		});
 	});
 
@@ -286,7 +260,6 @@ describe('SLDSPill', () => {
 			<SLDSPill
 				onClick={onClick}
 				onRemove={onRemove}
-				link
 			>
 				<div className="abc">this is a custom label</div>
 			</SLDSPill>

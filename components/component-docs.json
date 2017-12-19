@@ -8075,6 +8075,27 @@
                     "computed": false
                 }
             },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'link'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'option'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "A variant of a pill\n_Tested with Mocha framework._",
+                "defaultValue": {
+                    "value": "'link'",
+                    "computed": false
+                }
+            },
             "className": {
                 "type": {
                     "name": "union",
@@ -8113,13 +8134,6 @@
                 },
                 "required": false,
                 "description": "Applies the error style to the component.\n_Tested with Mocha framework._"
-            },
-            "link": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "The component applies the link style if either of the href or onClick properties are set. If this behavior is not desirable,\nthe link property forces the component to apply (true) or remove (false) the link style, regardless of whether\nthe href or onClick are set.\n_Tested with Mocha framework._"
             },
             "icon": {
                 "type": {
@@ -8169,17 +8183,6 @@
                 },
                 "required": false,
                 "description": "onBlur callback executes when the component loses focus.\n_Tested with Mocha framework._\n@callback"
-            },
-            "role": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Role to use for the pill. Default role: button.\n_Tested with Mocha framework._",
-                "defaultValue": {
-                    "value": "'button'",
-                    "computed": false
-                }
             },
             "children": {
                 "type": {

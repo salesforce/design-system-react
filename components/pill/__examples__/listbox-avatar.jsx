@@ -6,6 +6,8 @@ import Avatar from '~/components/avatar';
 import IconSettings from '~/components/icon-settings';
 
 
+function noop () {}
+
 const Example = createReactClass({
 	displayName: 'PillWithAvatarListboxExample',
 
@@ -15,7 +17,7 @@ const Example = createReactClass({
 
 	getDefaultProps () {
 		return {
-			action: () => {}
+			action: () => noop
 		};
 	},
 
@@ -44,8 +46,8 @@ const Example = createReactClass({
 										assistiveText={{
 											remove: 'Press delete or backspace to remove'
 										}}
-										role="option"
 										tabIndex="0"
+										variant="option"
 										avatar={
 											<Avatar
 												variant="user"
@@ -68,7 +70,8 @@ const Example = createReactClass({
 										assistiveText={{
 											remove: 'Press delete or backspace to remove'
 										}}
-										role="option"
+										tabIndex="0"
+										variant="option"
 										avatar={
 											<Avatar
 												variant="user"

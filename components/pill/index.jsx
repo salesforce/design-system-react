@@ -50,6 +50,12 @@ const Pill = createReactClass({
 		}),
 
 		/**
+		 * A variant of a pill
+		 * _Tested with Mocha framework._
+		 */
+		variant: PropTypes.oneOf(['link', 'option']),
+
+		/**
 		 * CSS classes to be added to tag with `.slds-pill`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 		 * _Tested with Mocha framework._
 		 */
@@ -72,14 +78,6 @@ const Pill = createReactClass({
 		 * _Tested with Mocha framework._
 		 */
 		hasError: PropTypes.bool,
-
-		/**
-		 * The component applies the link style if either of the href or onClick properties are set. If this behavior is not desirable,
-		 * the link property forces the component to apply (true) or remove (false) the link style, regardless of whether
-		 * the href or onClick are set.
-		 * _Tested with Mocha framework._
-		 */
-		link: PropTypes.bool,
 
 		/**
 		 * SLDSIcon component to show on the left of the pill.
@@ -129,12 +127,6 @@ const Pill = createReactClass({
 		onBlur: PropTypes.func,
 
 		/**
-		 * Role to use for the pill. Default role: button.
-		 * _Tested with Mocha framework._
-		 */
-		role: PropTypes.string,
-
-		/**
 		 * This is a way to specify custom contents for the pill in the case a simple text label is not enough.
 		 * _Tested with Mocha framework._
 		 */
@@ -143,14 +135,24 @@ const Pill = createReactClass({
 
 	getDefaultProps () {
 		return {
-			role: 'button',
+			variant: 'link',
 			labels: {},
 			assistiveText: {}
 		};
 	},
 
 	render () {
-		const role = this.props.role || (typeof this.props.onClick === 'function' ? 'button' : null);
+		let role;
+		switch (this.props.variant) {
+			case 'link':
+				role = 'button';
+				break;
+			case 'option':
+				role = 'option';
+				break;
+			default:
+		}
+
 		return (
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<span
@@ -159,13 +161,13 @@ const Pill = createReactClass({
 				className={classNames(
 					'slds-pill',
 					{
-						'slds-pill_link': this.props.link,
+						'slds-pill_link': this.props.variant === 'link',
 						'slds-has-error': this.props.hasError,
 						'slds-pill_bare': this.props.bare
 					},
 					this.props.className
 				)}
-				onClick={!this.props.labels.label || !this.props.link ? this.props.onClick : null}
+				onClick={!this.props.labels.label || this.props.variant !== 'link' ? this.props.onClick : null}
 				onKeyDown={typeof this.props.onRemove === 'function' ? this.handleKeyDown : null}
 				ref={this.handleRef}
 			>
@@ -186,7 +188,7 @@ const Pill = createReactClass({
 
 	renderLabel () {
 		if (this.props.labels.label) {
-			if (this.props.link) {
+			if (this.props.variant === 'link') {
 				return (
 					<a
 						href={this.getHref()}
@@ -290,7 +292,7 @@ const Pill = createReactClass({
 	 * Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component.
 	 */
 	restProps () {
-		const { role, bare, hasError, link, className, onClick, onRemove, labels, assistiveText, children, href,
+		const { bare, hasError, variant, className, onClick, onRemove, labels, assistiveText, children, href,
 			icon, avatar, onKeyDown, ...other } = this.props;
 		return other;
 	}
