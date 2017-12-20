@@ -2513,7 +2513,25 @@
                     ]
                 },
                 "required": false,
-                "description": "CSS classes to be added to tag with `.slds-combobox`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+                "description": "CSS classes to be added to tag with `.slds-combobox`. Uses `classNames` [API](https://github.com/JedWatson/classnames). _Tested with snapshot testing._"
+            },
+            "classNameContainer": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to top level tag with `.slds-form-element` and not on `.slds-combobox_container`. Uses `classNames` [API](https://github.com/JedWatson/classnames). _Tested with snapshot testing._"
             },
             "classNameMenu": {
                 "type": {
@@ -2531,7 +2549,7 @@
                     ]
                 },
                 "required": false,
-                "description": "CSS classes to be added to tag with `.slds-dropdown`. Uses `classNames` [API](https://github.com/JedWatson/classnames). Autocomplete/bass variant menu height should not scroll and should be determined by number items which should be no more than 10."
+                "description": "CSS classes to be added to tag with `.slds-dropdown`. Uses `classNames` [API](https://github.com/JedWatson/classnames). Autocomplete/bass variant menu height should not scroll and should be determined by number items which should be no more than 10. _Tested with snapshot testing._"
             },
             "events": {
                 "type": {
@@ -7965,6 +7983,237 @@
                 }
             }
         ]
+    },
+    "pill": {
+        "description": "",
+        "methods": [
+            {
+                "name": "renderIcon",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "renderLabel",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "renderRemoveIcon",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "focus",
+                "docblock": "Give focus to the Pill component.",
+                "modifiers": [],
+                "params": [],
+                "returns": null,
+                "description": "Give focus to the Pill component."
+            },
+            {
+                "name": "blur",
+                "docblock": "Removes focus from the component.",
+                "modifiers": [],
+                "params": [],
+                "returns": null,
+                "description": "Removes focus from the component."
+            },
+            {
+                "name": "handleKeyDown",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "...rest",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleRef",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "root",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "getHref",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "restProps",
+                "docblock": "Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component.",
+                "modifiers": [],
+                "params": [],
+                "returns": null,
+                "description": "Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component."
+            }
+        ],
+        "props": {
+            "labels": {
+                "type": {
+                    "name": "custom",
+                    "raw": "shape({\n    label: PropTypes.string,\n    title: PropTypes.string,\n    removeTitle: PropTypes.string\n})"
+                },
+                "required": false,
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: Pill's label.\n* `title`: Pill's title.\n* `removeTitle`: A title to use for the remove icon.\n\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
+            "assistiveText": {
+                "type": {
+                    "name": "custom",
+                    "raw": "shape({\n    /**\n     *\n     * _Tested with Mocha framework._\n     */\n    remove: PropTypes.string\n})"
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `remove`: This is a visually hidden label for the close button.\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'link'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'option'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "A variant of a pill\n_Tested with Mocha framework._",
+                "defaultValue": {
+                    "value": "'link'",
+                    "computed": false
+                }
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-pill`. Uses `classNames` [API](https://github.com/JedWatson/classnames).\n_Tested with Mocha framework._"
+            },
+            "href": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "An href to use if the pill is shown as a link.\n_Tested with Mocha framework._"
+            },
+            "bare": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Applies the bare style to the component.\n_Tested with Mocha framework._"
+            },
+            "hasError": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Applies the error style to the component.\n_Tested with Mocha framework._"
+            },
+            "icon": {
+                "type": {
+                    "name": "element"
+                },
+                "required": false,
+                "description": "SLDSIcon component to show on the left of the pill.\n_Tested with Mocha framework._"
+            },
+            "avatar": {
+                "type": {
+                    "name": "element"
+                },
+                "required": false,
+                "description": "SLDSAvatar component to show on the left of the pill.\n_Tested with Mocha framework._"
+            },
+            "onClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "onClick callback executes when a user clicks on the pill or presses the Enter key.\n_Tested with Mocha framework._\n@callback"
+            },
+            "onRemove": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "onRemove callback executes when a user clicks on the pill's remove icon or presses the delete or the backspace keys.\n_Tested with Mocha framework._\n@callback"
+            },
+            "onKeyDown": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "onKeyDown callback executes when a user presses a key.\n_Tested with Mocha framework._\n@callback"
+            },
+            "onFocus": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "onFocus callback executes when the component receives focus.\n_Tested with Mocha framework._\n@callback"
+            },
+            "onBlur": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "onBlur callback executes when the component loses focus.\n_Tested with Mocha framework._\n@callback"
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "This is a way to specify custom contents for the pill in the case a simple text label is not enough.\n_Tested with Mocha framework._"
+            }
+        },
+        "route": "pills",
+        "display-name": "Pills",
+        "SLDS-component-path": "/components/pills",
+        "dependencies": []
     },
     "popover": {
         "description": "The Popover component is a non-modal dialog. It should be paired with a clickable trigger such as a `Button`. It traps focus from the page and must be exited if focus needs to be outside the Popover. Use a `Tooltip` if there are no call to actions within the dialog. A `Tooltip` does not need to be clicked. Multiple popovers open at the same time, each with focus trap is not supported.",

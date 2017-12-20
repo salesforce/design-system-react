@@ -72,6 +72,7 @@ export const PANEL_FILTER_GROUP = 'SLDSFilterGroup';
 export const PANEL_FILTER_LIST = 'SLDSFilterList';
 export const PANEL_FILTER_LIST_HEADING = 'SLDSPanelFilterListHeading';
 export const PAGE_HEADER = 'SLDSPageHeader';
+export const PILL = 'SLDSPill';
 export const POPOVER = 'SLDSPopover';
 export const POPOVER_TOOLTIP = 'SLDSPopoverTooltip';
 export const PROGRESS_INDICATOR = 'SLDSProgressIndicator';

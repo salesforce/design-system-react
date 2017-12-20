@@ -161,6 +161,9 @@ export PanelFilterListHeading from './panel/filtering/list-heading';
 export SLDSPageHeader from './page-header';
 export PageHeader from './page-header';
 
+export SLDSPill from './pill';
+export Pill from './pill';
+
 export SLDSPopover from './popover';
 export Popover from './popover';
 

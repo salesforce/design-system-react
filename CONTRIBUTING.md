@@ -1,10 +1,10 @@
 # Contributing to Design System React
 
-First, on behalf of the core maintainers, I'd like to thank you for wanting to contribute and make the user experience for your end-users better and improve the developer experience of this library. :+1::tada: -- @interactivellama
+First, on behalf of the core maintainers, I'd like to thank you for wanting to contribute and make the user experience for your end-users better and improve the developer experience of this library. :+1::tada: -- [@interactivellama](https://github.com/interactivellama/)
 
 ## Contributing process
 1. Read the [Codebase Overview](docs/codebase-overview.md) to learn concepts and best practices for the codebase and to confirm it is within project scope.
-1. Create a new issue before starting your solution to keep track of what you are trying to contribute. That way, we can also offer suggestions or let you know if there is already an effort in progress.
+1. Create a new issue before starting your solution to keep track of what you are trying to contribute. That way, we can offer suggestions, collaborate on a public API (props), or let you know if there is already an effort in progress.
 1. Fork this repository, clone your fork locally. Create a topic branch locally.
 1. Add the new component to the `/components` folder
 1. Add the component name to `/components/constants.js`
@@ -17,6 +17,7 @@ First, on behalf of the core maintainers, I'd like to thank you for wanting to c
 1. We'll review your code, suggest any needed changes, and hopefully merge it in. Thank you!
 
 ## Contributing Guidelines
+- Are you a first-time contributor? If you would like a simple task to start out with, you might consider [these issues](https://deepscan.io/dashboard/#view=project&pid=1475&bid=4666&subview=issues) or run `npm run lint` and fix a few warnings.
 - UX pattern / design must exist in [SLDS](https://www.lightningdesignsystem.com/). Components in the process of being added to SLDS will be considered as prototypes.
 - All new props and components need tests. **Please review the [testing readme](/tests/README.md)**
 - Follow Eslint settings.

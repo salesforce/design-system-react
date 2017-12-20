@@ -1,7 +1,7 @@
 # Design System for React
 ### Accessible, localization-friendly, presentational React components
 
-[![Build Status](https://travis-ci.com/salesforce/design-system-react.svg?token=erkizBStRxre5p3S1xij&branch=master)](https://travis-ci.com/salesforce/design-system-react)
+[![Build Status](https://travis-ci.com/salesforce/design-system-react.svg?token=erkizBStRxre5p3S1xij&branch=master)](https://travis-ci.com/salesforce/design-system-react) [![DeepScan Grade](https://deepscan.io/api/projects/1475/branches/4666/badge/grade.svg)](https://deepscan.io/dashboard/#view=project&pid=1475&bid=4666)
 
 ## Getting Started
 Welcome to the project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/). It has been tested with React >=15.4.1 <16 and is stable despite its version numbers. A 1.0 will be released soon.
@@ -12,9 +12,11 @@ Welcome to the project! :wave: This library is the [React](https://facebook.gith
 * [Codebase Overview](docs/codebase-overview.md)
 * [Usage with Webpack](docs/webpack.md)
 
-#### ECMAScript 6 and CommonJS modules
+#### ECMAScript 6, CommonJS and `create-react-app`
 
-It is highly recommended that you `npm install` the `-es` suffixed tag and import individual components. You will need a [stage-1 and higher proposed features](https://babeljs.io/docs/plugins/preset-stage-1/) transpiler ([stage-1 Babel preset](https://www.npmjs.com/package/babel-preset-stage-1) or review our `.babelrc`). The non-suffixed package is a [CommonJS](https://nodejs.org/docs/latest/api/modules.html) build.
+It is highly recommended that you `npm install` the `-es` suffixed tag and import individual components. You will need a [stage-1 and higher proposed features](https://babeljs.io/docs/plugins/preset-stage-1/) transpiler ([stage-1 Babel preset](https://www.npmjs.com/package/babel-preset-stage-1) or review our `.babelrc`) and include transpiling the `node_modules/design-system-react` folder in your configuration. The non-suffixed package is a [CommonJS](https://nodejs.org/docs/latest/api/modules.html) build that should allow dropping dead code, but not tree-shaking.
+
+_`create-react-app` and any environment that does not transpile or let you transpile ES6 code within the `node_modules` folder is not compatible with the `-es` suffixed tag. Please use the non-suffixed CommonJS tag until an NPM module is published that is compatible with `create-react-app`._
 
 ### Local development Storybook and in-browser test server
 
@@ -45,6 +47,11 @@ ReactDOM.render(
 <svg aria-hidden="true" class="slds-icon">
    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
 </svg>
+```
+
+```
+// ExpressJS example
+app.use('/assets/icons', express.static('node_modules/@salesforce-ux/icons/dist/salesforce-lightning-design-system-icons/'));
 ```
 
 #### Bundle icons

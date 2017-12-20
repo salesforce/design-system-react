@@ -39,7 +39,9 @@ class Item extends React.Component {
 	// Scroll menu item based on up/down mouse keys (assumes all items are the same height)
 	scrollFocus () {
 		const height = this.itemRef.offsetHeight;
-		if (height && this.props.handleItemFocus) { this.props.handleItemFocus(this.props.index, height); }
+		if (height && this.props.handleItemFocus) {
+			this.props.handleItemFocus(this.props.index, height);
+		}
 	}
 
 	getIcon () {

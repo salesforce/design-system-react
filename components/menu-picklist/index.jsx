@@ -368,7 +368,9 @@ const MenuPicklist = createReactClass({
 
 		this.listItems[index] = listItem;
 
-		if (index === this.state.focusedIndex) { this.handleKeyboardFocus(this.state.focusedIndex); }
+		if (index === this.state.focusedIndex) {
+			this.handleKeyboardFocus(this.state.focusedIndex);
+		}
 	},
 
 	// Trigger opens, closes, and recieves focus on close

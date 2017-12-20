@@ -99,7 +99,9 @@ class ButtonStateful extends React.Component {
 
 	handleClick = (e) => {
 		if (isFunction(this.props.onClick)) this.props.onClick(e);
-		if (!isBoolean(this.props.active)) { this.setState({ active: !this.state.active }); }
+		if (!isBoolean(this.props.active)) {
+			this.setState({ active: !this.state.active });
+		}
 	};
 
 	handleBlur = (e) => {

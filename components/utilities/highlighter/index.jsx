@@ -24,6 +24,7 @@ const Highlighter = (props) => {
 					matchClass={null}
 					matchElement="mark"
 					search={props.search}
+					title={props.children}
 				>
 					{props.children}
 				</ReactHighlighter>
@@ -40,6 +41,7 @@ const Highlighter = (props) => {
 								matchClass={null}
 								matchElement="mark"
 								search={props.search}
+								title={element}
 							>
 								{element}
 							</ReactHighlighter>
@@ -57,6 +59,14 @@ const Highlighter = (props) => {
 		}
 
 		return <span>{children}</span>;
+	}
+
+	if (typeof props.children === 'string') {
+		return (
+			<span className={props.className} title={props.children}>
+				{props.children}
+			</span>
+		);
 	}
 
 	return <span className={props.className}>{props.children}</span>;

@@ -36,6 +36,7 @@ const documentationSiteLiveExamples = {
 	notification: require('design-system-react/components/notification/__docs__/site-stories.js'),
 	'page-header': require('design-system-react/components/page-header/__docs__/site-stories.js'),
 	panel: require('design-system-react/components/panel/__docs__/site-stories.js'),
+	pill: require('design-system-react/components/pill/__docs__/site-stories.js'),
 	popover: require('design-system-react/components/popover/__docs__/site-stories.js'),
 	'progress-indicator': require('design-system-react/components/progress-indicator/__docs__/site-stories.js'),
 	'progress-ring': require('design-system-react/components/progress-ring/__docs__/site-stories.js'),

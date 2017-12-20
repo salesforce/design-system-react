@@ -4,8 +4,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import UtilityIcon from '../../../components/utilities/utility-icon';
-
 import assign from 'lodash.assign';
 
 import KEYS from '../../../utilities/key-code';
@@ -13,6 +11,7 @@ import mapKeyEventCallbacks from '../../../utilities/key-callbacks';
 import EventUtil from '../../../utilities/event';
 
 import { shape } from 'airbnb-prop-types';
+import SLDSPill from '../../../components/pill';
 
 const propTypes = {
 	/**
@@ -95,6 +94,7 @@ const handleKeyDown = (event, { events, data }) => {
 };
 
 const handleClickRemove = (event, { events, eventData }) => {
+	EventUtil.trap(event);
 	events.onRequestRemove(event, eventData);
 };
 
@@ -107,18 +107,33 @@ const Pill = (props) => {
 	const labels = assign({}, defaultProps.labels, props.labels);
 
 	return (
-		<span // eslint-disable-line jsx-a11y/no-static-element-interactions
-			className="slds-pill"
-			role="option"
+		<SLDSPill
 			tabIndex={props.tabIndex || '0'}
-			aria-selected="true"
+			icon={props.icon}
+			variant="option"
+			labels={labels}
+			assistiveText={{
+				remove: assistiveText.remove
+			}}
+			aria-selected={props.active}
 			onBlur={props.events.onBlur}
-			onClick={(event) => {
-				if (props.events.onClick) {
-					props.events.onClick(event, {
-						option: props.eventData
-					});
-				}
+			onClick={
+				typeof props.events.onClick === 'function'
+					? (event) => {
+						if (props.events.onClick) {
+							props.events.onClick(event, {
+								option: props.eventData
+							});
+						}
+					}
+					: null
+			}
+			onRemove={(event) => {
+				EventUtil.trap(event);
+				handleClickRemove(event, {
+					events: props.events,
+					eventData: props.eventData
+				});
 			}}
 			onKeyDown={(event) => {
 				handleKeyDown(event, {
@@ -131,34 +146,7 @@ const Pill = (props) => {
 					props.events.onRequestFocus(undefined, { ref: component });
 				}
 			}}
-		>
-			{props.icon}
-			<span className="slds-pill__label" title={labels.title}>
-				{labels.label}
-			</span>
-			{props.events.onRequestRemove ? (
-				<span // eslint-disable-line jsx-a11y/no-static-element-interactions
-					className="slds-icon_container slds-pill__remove"
-					title={labels.removeTitle}
-					onClick={(event) => {
-						EventUtil.trap(event);
-						handleClickRemove(event, {
-							events: props.events,
-							eventData: props.eventData
-						});
-					}}
-				>
-					<UtilityIcon
-						style={{ cursor: 'pointer' }} // remove when fixed by SLDS CSS
-						aria-hidden="true"
-						category="utility"
-						className="slds-icon slds-icon--x-small slds-icon-text-default"
-						name="close"
-					/>
-					<span className="slds-assistive-text">{assistiveText.remove}</span>
-				</span>
-			) : null}
-		</span>
+		/>
 	);
 };
 

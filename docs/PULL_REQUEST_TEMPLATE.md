@@ -4,7 +4,7 @@ Fixes issue #
 
 
 ---
-### Reviewer checklist
+### Pull Request Review checklist (do not remove)
 - [ ] Review the appropriate Storybook stories. Open [http://localhost:9001/](http://localhost:9001/).
 - [ ] Review tests are passing in the browser. Open [http://localhost:8001/](http://localhost:8001/).
 - [ ] Review markup conforms to [SLDS](https://www.lightningdesignsystem.com/) by looking at snapshot strings.
