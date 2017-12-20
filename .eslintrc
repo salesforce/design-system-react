@@ -112,7 +112,16 @@
     }],
     // currently used in older files
     "no-plusplus": 1,
-    "no-mixed-operators": ["error", {"allowSamePrecedence": true}],
+    "no-mixed-operators": ["error", {
+      "groups": [
+          // ["+", "-", "*", "/", "%", "**"], // imcompatible with prettier
+          ["&", "|", "^", "~", "<<", ">>", ">>>"],
+          ["==", "!=", "===", "!==", ">", ">=", "<", "<="],
+          ["&&", "||"],
+          ["in", "instanceof"]
+      ],
+      "allowSamePrecedence": true
+    }],
 
     // Prevent missing props validation in a React component definition
     "react/prop-types": 1,

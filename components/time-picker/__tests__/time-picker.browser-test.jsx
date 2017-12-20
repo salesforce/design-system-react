@@ -33,7 +33,7 @@ describe('SLDSTimepicker: ', () => {
 	describe('Timepicker Value Prop Change', () => {
 		it('displays a modified state upon changing props', () => {
 			const futureDateTime = new Date(
-				new Date().getTime() + (24 * 60 * 60 * 1000)
+				new Date().getTime() + 24 * 60 * 60 * 1000
 			);
 
 			const TestTimepicker = createFactory(

@@ -118,7 +118,7 @@ const renderBranch = (children, props) => {
 		<div
 			style={{
 				display: 'block',
-				paddingLeft: `${(1.5 * props.level) + 1.5}rem`,
+				paddingLeft: `${1.5 * props.level + 1.5}rem`,
 				marginTop: '.5rem'
 			}}
 		>
