@@ -7,7 +7,7 @@ import ProgressIndicator from '~/components/progress-indicator';
 import { PROGRESS_INDICATOR } from '../../../utilities/constants';
 import Default from '../__examples__/default';
 import Modal from '../__examples__/modal';
-import StepError from '../__examples__/stepError';
+import StepError from '../__examples__/step-error';
 
 const steps = [
 	{
