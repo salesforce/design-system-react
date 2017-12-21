@@ -5,7 +5,6 @@
 // Implements the [Pill design pattern](https://lightningdesignsystem.com/components/pills/) in React.
 
 import React from 'react';
-import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { shape } from 'airbnb-prop-types';
@@ -13,6 +12,9 @@ import { PILL } from '../../utilities/constants';
 import UtilityIcon from '../utilities/utility-icon';
 import KEYS from '../../utilities/key-code';
 import EventUtil from '../../utilities/event';
+
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
 
 const propTypes = {
 	/**
@@ -110,6 +112,10 @@ const propTypes = {
 };
 
 class Pill extends React.Component {
+	componentWillMount () {
+		checkProps(PILL);
+	}
+
 	getHref = () => (typeof this.props.href === 'string'
 		? this.props.href
 		: 'javascript:void(0);' // eslint-disable-line no-script-url
