@@ -7,8 +7,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import SearchBox from './search-box';
-import ListBox from './list-box';
+import IconSettings from '../icon-settings';
+import Popover from '../popover';
 
 import { DYNAMIC_MENU } from '../../utilities/constants';
 
@@ -21,44 +21,40 @@ const displayName = DYNAMIC_MENU;
 // TODO: Add propType descriptions for documentation
 const propTypes = {
 	availableItems: PropTypes.array,
-	searchValue: PropTypes.string,
-	selectedItem: PropTypes.object,
-	onSearchKeyUp: PropTypes.func,
-	onSelectItem: PropTypes.func,
+	children: PropTypes.node,
 	onRemoveSelection: PropTypes.func,
-	searchBoxPlaceholder: PropTypes.string
+	searchBoxPlaceholder: PropTypes.string,
+	popoverOptions: PropTypes.arrayOf(PropTypes.node),
+	popoverTriggerElement: PropTypes.node
 };
 
 const DynamicMenu = (props) => {
 	const {
-		availableItems,
-		onSearchKeyUp,
-		onSelectItem,
-		onRemoveSelection,
-		searchBoxPlaceholder,
-		searchValue,
-		selectedItem
+		children,
+		popoverTriggerElement,
+		popoverOptions
 	} = props;
 
 	return (
-		<div className="slds-form-element">
-			<div className="slds-form-element__control">
-				<div className="slds-combobox_container">
-					<SearchBox
-						searchValue={searchValue}
-						selectedItem={selectedItem}
-						onKeyUp={onSearchKeyUp}
-						onRemoveSelection={onRemoveSelection}
-						placeholder={searchBoxPlaceholder}
-					/>
-					<ListBox
-						searchValue={searchValue}
-						allObjects={availableItems}
-						onSelectItem={onSelectItem}
-					/>
-				</div>
-			</div>
-		</div>
+		<IconSettings iconPath="/assets/icons">
+			<Popover
+				align="bottom left"
+				isOpen
+				body={<div className="slds-form-element">
+					<div className="slds-form-element__control">
+						<div className="slds-combobox_container">
+							{children}
+						</div>
+						<div>
+							{popoverOptions.map((option) => option)}
+						</div>
+					</div>
+				</div>}
+				heading="Confirmation"
+			>
+				{popoverTriggerElement}
+			</Popover>
+		</IconSettings>
 	);
 };
 

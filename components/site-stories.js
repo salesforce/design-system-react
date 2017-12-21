@@ -14,6 +14,7 @@ const documentationSiteLiveExamples = {
 	'button-stateful': require('design-system-react/components/button-stateful/__docs__/site-stories.js'),
 	card: require('design-system-react/components/card/__docs__/site-stories.js'),
 	combobox: require('design-system-react/components/combobox/__docs__/site-stories.js'),
+	'dynamic-menu': require('design-system-react/components/dynamic-menu/docs/site-stories.js'),
 	filter: require('design-system-react/components/filter/__docs__/site-stories.js'),
 	'forms-checkbox': require('design-system-react/components/forms/checkbox/__docs__/site-stories.js'),
 	'data-table': require('design-system-react/components/data-table/__docs__/site-stories.js'),

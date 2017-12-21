@@ -56,6 +56,16 @@ export Combobox from './combobox';
 export SLDSComboboxFilterAndLimit from './combobox/filter';
 export comboboxFilterAndLimit from './combobox/filter';
 
+// TODO: take out other Dynamic Menu references?
+export SLDSDynamicMenu from './dynamic-menu';
+export DynamicMenu from './dynamic-menu';
+
+export SLDSDynamicMenuListBox from './dynamic-menu/list-box';
+export DynamicMenuListBox from './dynamic-menu/list-box';
+
+export SDLSDynamicMenuListItem from './dynamic-menu/list-item';
+export DynamicMenuListItem from './dynamic-menu/list-item';
+
 export SLDSGlobalHeader from './global-header';
 export GlobalHeader from './global-header';
 
