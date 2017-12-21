@@ -2133,7 +2133,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "{ activeOptionIndex,\n    offset,\n    options }",
+                        "name": "{ activeOptionIndex, offset, options }",
                         "type": null
                     }
                 ],
@@ -2453,7 +2453,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "{\tassistiveText, labels, props }",
+                        "name": "{ assistiveText, labels, props }",
                         "type": null
                     }
                 ],
@@ -2465,7 +2465,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "{\tassistiveText, labels, props }",
+                        "name": "{ assistiveText, labels, props }",
                         "type": null
                     }
                 ],
@@ -3508,7 +3508,7 @@
                 "required": false,
                 "description": "Date formatting function. _Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "function(date) {\n    return date ? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}` : '';\n}",
+                    "value": "function(date) {\n    return date\n        ? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`\n        : '';\n}",
                     "computed": false
                 }
             },
@@ -7988,25 +7988,19 @@
         "description": "",
         "methods": [
             {
-                "name": "renderIcon",
+                "name": "getHref",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
                 "returns": null
             },
             {
-                "name": "renderLabel",
-                "docblock": null,
+                "name": "restProps",
+                "docblock": "Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component.",
                 "modifiers": [],
                 "params": [],
-                "returns": null
-            },
-            {
-                "name": "renderRemoveIcon",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
+                "returns": null,
+                "description": "Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component."
             },
             {
                 "name": "focus",
@@ -8053,22 +8047,100 @@
                 "returns": null
             },
             {
-                "name": "getHref",
+                "name": "renderIcon",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
                 "returns": null
             },
             {
-                "name": "restProps",
-                "docblock": "Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component.",
+                "name": "renderLabel",
+                "docblock": null,
                 "modifiers": [],
                 "params": [],
-                "returns": null,
-                "description": "Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component."
+                "returns": null
+            },
+            {
+                "name": "renderRemoveIcon",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
             }
         ],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "custom",
+                    "raw": "shape({\n    remove: PropTypes.string\n})"
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `remove`: This is a visually hidden label for the close button.\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
+            "avatar": {
+                "type": {
+                    "name": "element"
+                },
+                "required": false,
+                "description": "SLDSAvatar component to show on the left of the pill.\n_Tested with Mocha framework._"
+            },
+            "bare": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Applies the bare style to the component.\n_Tested with Mocha framework._"
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "This is a way to specify custom contents for the pill in the case a simple text label is not enough.\n_Tested with Mocha framework._"
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-pill`. Uses `classNames` [API](https://github.com/JedWatson/classnames).\n_Tested with Mocha framework._"
+            },
+            "hasError": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Applies the error style to the component.\n_Tested with Mocha framework._"
+            },
+            "href": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "An href to use if the pill is shown as a link.\n_Tested with Mocha framework._"
+            },
+            "icon": {
+                "type": {
+                    "name": "element"
+                },
+                "required": false,
+                "description": "SLDSIcon component to show on the left of the pill.\n_Tested with Mocha framework._"
+            },
             "labels": {
                 "type": {
                     "name": "custom",
@@ -8081,17 +8153,40 @@
                     "computed": false
                 }
             },
-            "assistiveText": {
+            "onBlur": {
                 "type": {
-                    "name": "custom",
-                    "raw": "shape({\n    /**\n     *\n     * _Tested with Mocha framework._\n     */\n    remove: PropTypes.string\n})"
+                    "name": "func"
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `remove`: This is a visually hidden label for the close button.\n_Tested with snapshot testing._",
-                "defaultValue": {
-                    "value": "{}",
-                    "computed": false
-                }
+                "description": "`onBlur` callback executes when the component loses focus.\n_Tested with Mocha framework._"
+            },
+            "onClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "`onClick` callback executes when a user clicks on the pill or presses the Enter key.\n_Tested with Mocha framework._"
+            },
+            "onFocus": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "`onFocus` callback executes when the component receives focus.\n_Tested with Mocha framework._"
+            },
+            "onKeyDown": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "`onKeyDown` callback executes when a user presses a key.\n_Tested with Mocha framework._"
+            },
+            "onRemove": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "`onRemove` callback executes when a user clicks on the pill's remove icon or presses the delete or the backspace keys.\n_Tested with Mocha framework._"
             },
             "variant": {
                 "type": {
@@ -8113,101 +8208,6 @@
                     "value": "'link'",
                     "computed": false
                 }
-            },
-            "className": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "CSS classes to be added to tag with `.slds-pill`. Uses `classNames` [API](https://github.com/JedWatson/classnames).\n_Tested with Mocha framework._"
-            },
-            "href": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "An href to use if the pill is shown as a link.\n_Tested with Mocha framework._"
-            },
-            "bare": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Applies the bare style to the component.\n_Tested with Mocha framework._"
-            },
-            "hasError": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Applies the error style to the component.\n_Tested with Mocha framework._"
-            },
-            "icon": {
-                "type": {
-                    "name": "element"
-                },
-                "required": false,
-                "description": "SLDSIcon component to show on the left of the pill.\n_Tested with Mocha framework._"
-            },
-            "avatar": {
-                "type": {
-                    "name": "element"
-                },
-                "required": false,
-                "description": "SLDSAvatar component to show on the left of the pill.\n_Tested with Mocha framework._"
-            },
-            "onClick": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "onClick callback executes when a user clicks on the pill or presses the Enter key.\n_Tested with Mocha framework._\n@callback"
-            },
-            "onRemove": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "onRemove callback executes when a user clicks on the pill's remove icon or presses the delete or the backspace keys.\n_Tested with Mocha framework._\n@callback"
-            },
-            "onKeyDown": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "onKeyDown callback executes when a user presses a key.\n_Tested with Mocha framework._\n@callback"
-            },
-            "onFocus": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "onFocus callback executes when the component receives focus.\n_Tested with Mocha framework._\n@callback"
-            },
-            "onBlur": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "onBlur callback executes when the component loses focus.\n_Tested with Mocha framework._\n@callback"
-            },
-            "children": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "This is a way to specify custom contents for the pill in the case a simple text label is not enough.\n_Tested with Mocha framework._"
             }
         },
         "route": "pills",
@@ -9262,8 +9262,8 @@
                 "description": "Percentage of progress completion, ranging [0, 100]."
             }
         },
-        "route": "progress-ring",
-        "display-name": "Progress Ring",
+        "route": "progress-rings",
+        "display-name": "Progress Rings",
         "SLDS-component-path": "/components/progress-ring",
         "dependencies": []
     },
@@ -10538,7 +10538,7 @@
                 "required": false,
                 "description": "Time formatting function",
                 "defaultValue": {
-                    "value": "function(date) {\n    if (date) {\n        return date.toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit' });\n    }\n\n    return null;\n}",
+                    "value": "function(date) {\n    if (date) {\n        return date.toLocaleTimeString(navigator.language, {\n            hour: '2-digit',\n            minute: '2-digit'\n        });\n    }\n\n    return null;\n}",
                     "computed": false
                 }
             },
@@ -10602,7 +10602,7 @@
                 "required": false,
                 "description": "Parsing date string into Date",
                 "defaultValue": {
-                    "value": "function(timeStr) {\n    const date = new Date();\n    const dateStr = date.toLocaleString(navigator.language, { year: 'numeric', month: 'numeric', day: 'numeric' });\n    return new Date(`${dateStr} ${timeStr}`);\n}",
+                    "value": "function(timeStr) {\n    const date = new Date();\n    const dateStr = date.toLocaleString(navigator.language, {\n        year: 'numeric',\n        month: 'numeric',\n        day: 'numeric'\n    });\n    return new Date(`${dateStr} ${timeStr}`);\n}",
                     "computed": false
                 }
             },
