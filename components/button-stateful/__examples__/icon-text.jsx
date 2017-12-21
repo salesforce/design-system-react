@@ -12,7 +12,14 @@ const Example = createReactClass({
 				<div className="slds-x-small-buttons--horizontal">
 					<ButtonStateful />
 
-					<div style={{ backgroundColor: '#16325c', padding: '10px', display: 'inline-block' }} className="slds-m-horizontal--small">
+					<div
+						style={{
+							backgroundColor: '#16325c',
+							padding: '10px',
+							display: 'inline-block'
+						}}
+						className="slds-m-horizontal--small"
+					>
 						<ButtonStateful
 							inverse
 							stateOne={{ iconName: 'add', label: 'Join' }}
@@ -26,4 +33,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

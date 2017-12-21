@@ -34,7 +34,7 @@ const Example = createReactClass({
 			<IconSettings iconPath="/assets/icons">
 				<div className="slds-grid slds-grid_pull-padded-medium">
 					<div className="slds-p-horizontal_medium">
-						{this.state.pill1 ?
+						{this.state.pill1 ? (
 							<Pill
 								labels={{
 									label: 'Pill Label',
@@ -42,20 +42,15 @@ const Example = createReactClass({
 									removeTitle: 'Remove'
 								}}
 								icon={
-									<Icon
-										title="Account"
-										category="standard"
-										name="account"
-									/>
+									<Icon title="Account" category="standard" name="account" />
 								}
 								onClick={this.onClick}
 								onRemove={(event) => this.onRemove(event, 'pill1')}
 							/>
-							: null
-						}
+						) : null}
 					</div>
 					<div className="slds-p-horizontal_medium">
-						{this.state.pill2 ?
+						{this.state.pill2 ? (
 							<Pill
 								labels={{
 									label: 'Pill Label',
@@ -72,11 +67,10 @@ const Example = createReactClass({
 								onClick={this.onClick}
 								onRemove={(event) => this.onRemove(event, 'pill2')}
 							/>
-							: null
-						}
+						) : null}
 					</div>
 					<div className="slds-p-horizontal_medium">
-						{this.state.pill3 ?
+						{this.state.pill3 ? (
 							<Pill
 								labels={{
 									label: 'Pill Label',
@@ -95,8 +89,7 @@ const Example = createReactClass({
 								onClick={this.onClick}
 								onRemove={(event) => this.onRemove(event, 'pill3')}
 							/>
-							: null
-						}
+						) : null}
 					</div>
 				</div>
 			</IconSettings>
@@ -115,4 +108,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

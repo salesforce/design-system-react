@@ -10,7 +10,6 @@ import ListboxExample from '../__examples__/listbox';
 import IconListboxExample from '../__examples__/listbox-icon';
 import AvatarListboxExample from '../__examples__/listbox-avatar';
 
-
 testDOMandHTML({
 	name: 'Linked, Unlinked, Truncated',
 	test,

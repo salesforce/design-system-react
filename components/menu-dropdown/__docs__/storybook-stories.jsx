@@ -14,7 +14,8 @@ import Button from '../../button';
 import Trigger from '../../menu-dropdown/button-trigger';
 
 const options = [
-	{ className: 'custom-li-class',
+	{
+		className: 'custom-li-class',
 		divider: 'bottom',
 		label: 'A Header',
 		type: 'header'
@@ -30,12 +31,13 @@ const options = [
 			category: 'utility'
 		},
 		rightIcon: {
-				name: 'settings',
-				category: 'utility'
+			name: 'settings',
+			category: 'utility'
 		},
 		type: 'item',
 		value: 'B0'
-	}, {
+	},
+	{
 		type: 'divider'
 	},
 	{ label: 'C Option', value: 'C0' },
@@ -49,11 +51,7 @@ const options = [
 ];
 
 const getDropdown = (props) => (
-	<Dropdown
-		{...props}
-		onClose={action('Closed')}
-		onOpen={action('Opened')}
-	/>
+	<Dropdown {...props} onClose={action('Closed')} onOpen={action('Opened')} />
 );
 
 const DropdownControlled = createReactClass({
@@ -81,16 +79,19 @@ const DropdownControlled = createReactClass({
 	},
 
 	toggleDisabledOption () {
-			this.setState((prevState, props) => {
-				prevState.menuOptions.splice(1, 1, { disabled: false, label: 'An option that is Super Super Long', value: 'A0' });
-				return { options: prevState.menuOptions };
+		this.setState((prevState, props) => {
+			prevState.menuOptions.splice(1, 1, {
+				disabled: false,
+				label: 'An option that is Super Super Long',
+				value: 'A0'
 			});
+			return { options: prevState.menuOptions };
+		});
 	},
 
 	render () {
 		return (
 			<div className="slds-grid">
-
 				<div className="slds-col">
 					<Dropdown
 						{...this.props}
@@ -104,8 +105,14 @@ const DropdownControlled = createReactClass({
 				<div className="slds-col">
 					<Button label="Force Open Dropdown" onClick={this.handleOpen} />
 					<Button label="Force Close Dropdown" onClick={this.handleClose} />
-					<Button label="Reset Dropdown" onClick={this.handleButtonClickReset} />
-					<Button label="Toggle Option A disabled" onClick={this.toggleDisabledOption} />
+					<Button
+						label="Reset Dropdown"
+						onClick={this.handleButtonClickReset}
+					/>
+					<Button
+						label="Toggle Option A disabled"
+						onClick={this.toggleDisabledOption}
+					/>
 				</div>
 			</div>
 		);
@@ -116,7 +123,10 @@ const getDropdownPositioned = (props) => {
 	const positionedDropdowns = [];
 	DropdownNubbinPositions.forEach((position) => {
 		positionedDropdowns.push(
-			<div className="slds-col slds-size--1-of-3" style={{ minHeight: '500px' }}>
+			<div
+				className="slds-col slds-size--1-of-3"
+				style={{ minHeight: '500px' }}
+			>
 				<Dropdown
 					{...props}
 					isOpen
@@ -125,7 +135,11 @@ const getDropdownPositioned = (props) => {
 					onOpen={action('Opened')}
 				>
 					<Trigger>
-						<Button iconVariant="container" iconName="settings" label={position} />
+						<Button
+							iconVariant="container"
+							iconName="settings"
+							label={position}
+						/>
 					</Trigger>
 				</Dropdown>
 			</div>
@@ -134,9 +148,7 @@ const getDropdownPositioned = (props) => {
 
 	return (
 		<div>
-			<div className="slds-grid slds-wrap">
-				{positionedDropdowns}
-			</div>
+			<div className="slds-grid slds-wrap">{positionedDropdowns}</div>
 			<div className="slds-col" style={{ minHeight: '500px' }}>
 				<Dropdown
 					{...props}
@@ -145,7 +157,11 @@ const getDropdownPositioned = (props) => {
 					onOpen={action('Opened')}
 				>
 					<Trigger>
-						<Button iconVariant="container" iconName="settings" assistiveText="top right" />
+						<Button
+							iconVariant="container"
+							iconName="settings"
+							assistiveText="top right"
+						/>
 					</Trigger>
 				</Dropdown>
 			</div>
@@ -154,16 +170,9 @@ const getDropdownPositioned = (props) => {
 };
 
 const getDropdownCustomTrigger = (props) => (
-	<Dropdown
-		{...props}
-		onClose={action('Closed')}
-		onOpen={action('Opened')}
-	>
+	<Dropdown {...props} onClose={action('Closed')} onOpen={action('Opened')}>
 		<Trigger>
-			<Button
-				iconCategory="utility"
-				iconName="settings"
-			/>
+			<Button iconCategory="utility" iconName="settings" />
 		</Trigger>
 	</Dropdown>
 );
@@ -177,8 +186,16 @@ const DropdownCustomContent = (props) => (
 				<p className="tile__title slds-text-heading--small">Art Vandelay</p>
 				<div className="slds-tile__detail">
 					<p className="slds-truncate">
-						<a className="slds-m-right--medium" href="javascript:void(0)" onClick={props.onClick}>Settings</a>
-						<a href="javascript:void(0)" onClick={props.onClick}>Log Out</a>
+						<a
+							className="slds-m-right--medium"
+							href="javascript:void(0)"
+							onClick={props.onClick}
+						>
+							Settings
+						</a>
+						<a href="javascript:void(0)" onClick={props.onClick}>
+							Log Out
+						</a>
 					</p>
 				</div>
 			</div>
@@ -187,88 +204,89 @@ const DropdownCustomContent = (props) => (
 );
 
 const getDropdownCustomContent = (props) => (
-	<Dropdown
-		{...props}
-		onClose={action('Closed')}
-		onOpen={action('Opened')}
-	>
+	<Dropdown {...props} onClose={action('Closed')} onOpen={action('Opened')}>
 		<DropdownCustomContent />
 		<List options={[{ label: 'Custom Content Option' }, ...options]} />
 	</Dropdown>
 );
 
 storiesOf(MENU_DROPDOWN, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium slds-text-align--center"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
-	.add('Base', () => getDropdown({
-		align: 'right',
-		label: 'Dropdown Click',
-		onClick: (...rest) => {
-			action('Clicked')(...rest);
-		},
-		onSelect: (...rest) => {
-			action('Selected')(...rest);
-		},
-		options
-	}))
-	.add('Base with icon', () => getDropdown({
-		align: 'right',
-		label: 'Dropdown Click',
-		iconName: 'down',
-		iconPosition: 'right',
-		onClick: (...rest) => {
-			action('Clicked')(...rest);
-		},
-		onSelect: (...rest) => {
-			action('Selected')(...rest);
-		},
-		options
-	}))
-	.add('Render inline', () => getDropdown({
-		align: 'right',
-		label: 'Dropdown Click',
-		menuPosition: 'relative',
-		onClick: (...rest) => {
-			action('Clicked')(...rest);
-		},
-		onSelect: (...rest) => {
-			action('Selected')(...rest);
-		},
-		options
-	}))
-	.add('Render inline w/ Nubbins', () => getDropdownPositioned({
-		menuPosition: 'relative',
-		onSelect: (...rest) => {
-			action('Selected')(...rest);
-		},
-		options
-	}))
-	.add('Custom Trigger', () => getDropdownCustomTrigger({
-		assistiveText: 'Custom Dropdown Trigger',
-		onSelect: (...rest) => {
-			action('Selected')(...rest);
-		},
-		options
-	}))
-	.add('Custom Content', () => getDropdownCustomContent({
-		label: 'Custom Content Dropdown Click',
-		onSelect: (...rest) => {
-			action('Selected')(...rest);
-		},
-		options
-	}))
-	.add('Hover', () => getDropdown({
-		assistiveText: 'Icon More large',
-		buttonVariant: 'icon',
-		iconName: 'settings',
-		iconVariant: 'more',
-		onSelect: (...rest) => {
-			action('Selected')(...rest);
-		},
-		openOn: 'hover',
-		options
-	}))
-	.add('Two Hovers', () => (<div>
-		{getDropdown({
+	.addDecorator((getStory) => (
+		<div className="slds-p-around--medium slds-text-align--center">
+			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+		</div>
+	))
+	.add('Base', () =>
+		getDropdown({
+			align: 'right',
+			label: 'Dropdown Click',
+			onClick: (...rest) => {
+				action('Clicked')(...rest);
+			},
+			onSelect: (...rest) => {
+				action('Selected')(...rest);
+			},
+			options
+		})
+	)
+	.add('Base with icon', () =>
+		getDropdown({
+			align: 'right',
+			label: 'Dropdown Click',
+			iconName: 'down',
+			iconPosition: 'right',
+			onClick: (...rest) => {
+				action('Clicked')(...rest);
+			},
+			onSelect: (...rest) => {
+				action('Selected')(...rest);
+			},
+			options
+		})
+	)
+	.add('Render inline', () =>
+		getDropdown({
+			align: 'right',
+			label: 'Dropdown Click',
+			menuPosition: 'relative',
+			onClick: (...rest) => {
+				action('Clicked')(...rest);
+			},
+			onSelect: (...rest) => {
+				action('Selected')(...rest);
+			},
+			options
+		})
+	)
+	.add('Render inline w/ Nubbins', () =>
+		getDropdownPositioned({
+			menuPosition: 'relative',
+			onSelect: (...rest) => {
+				action('Selected')(...rest);
+			},
+			options
+		})
+	)
+	.add('Custom Trigger', () =>
+		getDropdownCustomTrigger({
+			assistiveText: 'Custom Dropdown Trigger',
+			onSelect: (...rest) => {
+				action('Selected')(...rest);
+			},
+			options
+		})
+	)
+	.add('Custom Content', () =>
+		getDropdownCustomContent({
+			label: 'Custom Content Dropdown Click',
+			onSelect: (...rest) => {
+				action('Selected')(...rest);
+			},
+			options
+		})
+	)
+	.add('Hover', () =>
+		getDropdown({
 			assistiveText: 'Icon More large',
 			buttonVariant: 'icon',
 			iconName: 'settings',
@@ -278,37 +296,55 @@ storiesOf(MENU_DROPDOWN, module)
 			},
 			openOn: 'hover',
 			options
-		})}
-		{' '}
-		{getDropdown({
-			assistiveText: 'Icon More large',
+		})
+	)
+	.add('Two Hovers', () => (
+		<div>
+			{getDropdown({
+				assistiveText: 'Icon More large',
+				buttonVariant: 'icon',
+				iconName: 'settings',
+				iconVariant: 'more',
+				onSelect: (...rest) => {
+					action('Selected')(...rest);
+				},
+				openOn: 'hover',
+				options
+			})}{' '}
+			{getDropdown({
+				assistiveText: 'Icon More large',
+				buttonVariant: 'icon',
+				iconName: 'settings',
+				iconVariant: 'more',
+				onSelect: (...rest) => {
+					action('Selected')(...rest);
+				},
+				openOn: 'hover',
+				options
+			})}
+		</div>
+	))
+	.add('Hover with Checkmark', () =>
+		getDropdown({
+			assistiveText: 'More Options',
 			buttonVariant: 'icon',
-			iconName: 'settings',
-			iconVariant: 'more',
+			checkmark: true,
+			iconName: 'down',
+			iconVariant: 'border-filled',
+			onMouseEnter: action('Mouse enter'),
+			onMouseLeave: action('Mouse leave'),
 			onSelect: (...rest) => {
 				action('Selected')(...rest);
 			},
 			openOn: 'hover',
-			options
-		})}
-	</div>))
-	.add('Hover with Checkmark', () => getDropdown({
-		assistiveText: 'More Options',
-		buttonVariant: 'icon',
-		checkmark: true,
-		iconName: 'down',
-		iconVariant: 'border-filled',
-		onMouseEnter: action('Mouse enter'),
-		onMouseLeave: action('Mouse leave'),
-		onSelect: (...rest) => {
-			action('Selected')(...rest);
-		},
-		openOn: 'hover',
-		options,
-		value: 'C0'
-	}))
-	.add('Controled w/ isOpen', () => (<DropdownControlled
-		align="right"
-		label="Dropdown Click"
-		options={options}
-	/>));
+			options,
+			value: 'C0'
+		})
+	)
+	.add('Controled w/ isOpen', () => (
+		<DropdownControlled
+			align="right"
+			label="Dropdown Click"
+			options={options}
+		/>
+	));

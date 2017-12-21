@@ -4,7 +4,6 @@ import createReactClass from 'create-react-class';
 import Pill from '~/components/pill';
 import IconSettings from '~/components/icon-settings';
 
-
 function noop () {}
 
 const Example = createReactClass({
@@ -82,4 +81,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

@@ -12,10 +12,11 @@ import IconSettings from '../../icon-settings';
 
 chai.should();
 
-const { Simulate,
-				scryRenderedComponentsWithType,
-				findRenderedDOMComponentWithClass
-			} = TestUtils;
+const {
+	Simulate,
+	scryRenderedComponentsWithType,
+	findRenderedDOMComponentWithClass
+} = TestUtils;
 
 describe('DataTable: ', function () {
 	const items = [
@@ -24,27 +25,32 @@ describe('DataTable: ', function () {
 			name: 'Cloudhub',
 			count: 100976,
 			lastModified: 'Yesterday'
-		}, {
+		},
+		{
 			id: '5GJOOOPWU7',
 			name: 'Cloudhub + Anypoint Connectors',
 			count: 54976,
 			lastModified: 'Today'
-		}, {
+		},
+		{
 			id: 'Q8Z71ZUCEZ',
 			name: 'Cloud City',
 			count: 101280,
 			lastModified: 'Today'
-		}, {
+		},
+		{
 			id: '2FSH2DP0LY',
 			name: 'IoT',
 			count: 976,
 			lastModified: 'Yesterday'
-		}, {
+		},
+		{
 			id: '8NE888QKV1',
 			name: 'IoT + Anypoint Connectors',
 			count: 54976,
 			lastModified: 'Today'
-		}, {
+		},
+		{
 			id: 'M4D37GW83H',
 			name: 'Salesforce Tower',
 			count: 101280,
@@ -71,11 +77,15 @@ describe('DataTable: ', function () {
 		selectRows: true
 	};
 
-	const renderTable = (instance) => function () {
-		this.dom = document.createElement('div');
-		document.body.appendChild(this.dom);
-		this.component = ReactDOM.render(<IconSettings iconPath="/assets/icons">{instance}</IconSettings>, this.dom);
-	};
+	const renderTable = (instance) =>
+		function () {
+			this.dom = document.createElement('div');
+			document.body.appendChild(this.dom);
+			this.component = ReactDOM.render(
+				<IconSettings iconPath="/assets/icons">{instance}</IconSettings>,
+				this.dom
+			);
+		};
 
 	function removeTable () {
 		ReactDOM.unmountComponentAtNode(this.dom);
@@ -97,13 +107,15 @@ describe('DataTable: ', function () {
 	const getMenu = (dom) => dom.querySelector('.slds-dropdown');
 
 	describe('Structure', function () {
-		beforeEach(renderTable(
-			<DataTable
-				{...defaultProps}
-			>
-				{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
-			</DataTable>
-		));
+		beforeEach(
+			renderTable(
+				<DataTable {...defaultProps}>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			)
+		);
 
 		afterEach(removeTable);
 
@@ -121,9 +133,13 @@ describe('DataTable: ', function () {
 
 		it('renders the correct contents in each cell', function () {
 			const firstName = getCell(this.dom, 1, 1);
-			firstName.innerHTML.should.equal('<div class="" title="Cloudhub">Cloudhub</div>');
+			firstName.innerHTML.should.equal(
+				'<div class="" title="Cloudhub">Cloudhub</div>'
+			);
 			const secondCount = getCell(this.dom, 2, 2);
-			secondCount.innerHTML.should.equal('<div class="" title="54976">54976</div>');
+			secondCount.innerHTML.should.equal(
+				'<div class="" title="54976">54976</div>'
+			);
 		});
 
 		it('has checkboxes only when selectRows is true', function () {
@@ -132,11 +148,10 @@ describe('DataTable: ', function () {
 			removeTable.call(this);
 
 			renderTable(
-				<DataTable
-					{...defaultProps}
-					selectRows={false}
-				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+				<DataTable {...defaultProps} selectRows={false}>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
 				</DataTable>
 			).call(this);
 			checkboxes = getTable(this.dom).querySelectorAll('.slds-checkbox');
@@ -158,18 +173,19 @@ describe('DataTable: ', function () {
 
 		it('can start with a row selected', function () {
 			renderTable(
-				<DataTable
-					{...defaultProps}
-					selection={defaultSelection}
-				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+				<DataTable {...defaultProps} selection={defaultSelection}>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
 				</DataTable>
 			).call(this);
 
 			const tbody = getTable(this.dom).querySelectorAll('tbody')[0];
 			const selectedRows = tbody.querySelectorAll('tr.slds-is-selected');
 			selectedRows.should.have.length(1);
-			const checkedBoxes = tbody.querySelectorAll('.slds-checkbox input:checked');
+			const checkedBoxes = tbody.querySelectorAll(
+				'.slds-checkbox input:checked'
+			);
 			checkedBoxes.should.have.length(1);
 		});
 
@@ -185,7 +201,9 @@ describe('DataTable: ', function () {
 					selection={defaultSelection}
 					onChange={this.onChange}
 				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
 				</DataTable>
 			).call(this);
 
@@ -208,7 +226,9 @@ describe('DataTable: ', function () {
 					selection={defaultSelection}
 					onChange={this.onChange}
 				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
 				</DataTable>
 			).call(this);
 
@@ -225,11 +245,10 @@ describe('DataTable: ', function () {
 			};
 
 			renderTable(
-				<DataTable
-					{...defaultProps}
-					onChange={this.onChange}
-				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+				<DataTable {...defaultProps} onChange={this.onChange}>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
 				</DataTable>
 			).call(this);
 
@@ -246,12 +265,10 @@ describe('DataTable: ', function () {
 			};
 
 			renderTable(
-				<DataTable
-					{...defaultProps}
-					selection={items}
-					onChange={this.onChange}
-				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+				<DataTable {...defaultProps} selection={items} onChange={this.onChange}>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
 				</DataTable>
 			).call(this);
 
@@ -273,12 +290,10 @@ describe('DataTable: ', function () {
 			};
 
 			renderTable(
-				<DataTable
-					{...defaultProps}
-					fixedLayout
-					onSort={this.onSort}
-				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+				<DataTable {...defaultProps} fixedLayout onSort={this.onSort}>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
 				</DataTable>
 			).call(this);
 
@@ -295,11 +310,10 @@ describe('DataTable: ', function () {
 			};
 
 			renderTable(
-				<DataTable
-					{...defaultProps}
-					onSort={this.onSort}
-				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+				<DataTable {...defaultProps} onSort={this.onSort}>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
 				</DataTable>
 			).call(this);
 
@@ -316,17 +330,18 @@ describe('DataTable: ', function () {
 
 		it('renders the RowActions', function () {
 			renderTable(
-				<DataTable
-					{...defaultProps}
-				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+				<DataTable {...defaultProps}>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
 					<DataTableRowActions
 						options={[
 							{
 								id: 0,
 								label: 'Add to Group',
 								value: '1'
-							}, {
+							},
+							{
 								id: 1,
 								label: 'Publish',
 								value: '2'
@@ -336,7 +351,10 @@ describe('DataTable: ', function () {
 				</DataTable>
 			).call(this);
 
-			const rowActionMenus = scryRenderedComponentsWithType(this.component, DataTableRowActions);
+			const rowActionMenus = scryRenderedComponentsWithType(
+				this.component,
+				DataTableRowActions
+			);
 			rowActionMenus.should.have.length(6);
 		});
 
@@ -348,17 +366,18 @@ describe('DataTable: ', function () {
 			};
 
 			renderTable(
-				<DataTable
-					{...defaultProps}
-				>
-					{columns.map((columnProps) => <DataTableColumn {...columnProps} key={columnProps.property} />)}
+				<DataTable {...defaultProps}>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
 					<DataTableRowActions
 						options={[
 							{
 								id: 0,
 								label: 'Add to Group',
 								value: '1'
-							}, {
+							},
+							{
 								id: 1,
 								label: 'Publish',
 								value: '2'
@@ -369,8 +388,14 @@ describe('DataTable: ', function () {
 				</DataTable>
 			).call(this);
 
-			const rowActionMenu = scryRenderedComponentsWithType(this.component, DataTableRowActions)[0];
-			const trigger = findRenderedDOMComponentWithClass(rowActionMenu, 'slds-button');
+			const rowActionMenu = scryRenderedComponentsWithType(
+				this.component,
+				DataTableRowActions
+			)[0];
+			const trigger = findRenderedDOMComponentWithClass(
+				rowActionMenu,
+				'slds-button'
+			);
 			Simulate.click(trigger, {});
 
 			setTimeout(() => {
@@ -386,10 +411,7 @@ describe('DataTable: ', function () {
 
 		it('marks the appropriate text in a cell', function () {
 			renderTable(
-				<DataTable
-					{...defaultProps}
-					search="Cloud"
-				>
+				<DataTable {...defaultProps} search="Cloud">
 					{columns.map((columnProps) => (
 						<DataTableColumn {...columnProps} key={columnProps.property}>
 							<DataTableHighlightCell />

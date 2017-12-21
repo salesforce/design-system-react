@@ -5,36 +5,44 @@ import Pill from '~/components/pill';
 import Icon from '~/components/icon';
 import IconSettings from '~/components/icon-settings';
 
-
-const PILLS = [{
-	category: 'standard',
-	name: 'account'
-
-}, {
-	category: 'standard',
-	name: 'case'
-}, {
-	category: 'utility',
-	name: 'retweet'
-}, {
-	category: 'standard',
-	name: 'solution'
-}, {
-	category: 'standard',
-	name: 'custom_notification'
-}, {
-	category: 'standard',
-	name: 'email'
-}, {
-	category: 'standard',
-	name: 'endorsement'
-}, {
-	category: 'standard',
-	name: 'recent'
-}, {
-	category: 'custom',
-	name: 'custom31'
-}];
+const PILLS = [
+	{
+		category: 'standard',
+		name: 'account'
+	},
+	{
+		category: 'standard',
+		name: 'case'
+	},
+	{
+		category: 'utility',
+		name: 'retweet'
+	},
+	{
+		category: 'standard',
+		name: 'solution'
+	},
+	{
+		category: 'standard',
+		name: 'custom_notification'
+	},
+	{
+		category: 'standard',
+		name: 'email'
+	},
+	{
+		category: 'standard',
+		name: 'endorsement'
+	},
+	{
+		category: 'standard',
+		name: 'recent'
+	},
+	{
+		category: 'custom',
+		name: 'custom31'
+	}
+];
 
 function noop () {}
 
@@ -79,11 +87,7 @@ const Example = createReactClass({
 	renderListItem (icon, index) {
 		if (this.state['pill' + index]) {
 			return (
-				<li
-					className="slds-listbox-item"
-					role="presentation"
-					key={index}
-				>
+				<li className="slds-listbox-item" role="presentation" key={index}>
 					<Pill
 						labels={{
 							label: 'Pill Label',
@@ -95,16 +99,11 @@ const Example = createReactClass({
 						}}
 						variant="option"
 						icon={
-							<Icon
-								title="Title"
-								category={icon.category}
-								name={icon.name}
-							/>
+							<Icon title="Title" category={icon.category} name={icon.name} />
 						}
 						onClick={this.onClick}
 						onRemove={() => this.onRemove(event, 'pill' + index)}
 					/>
-
 				</li>
 			);
 		}
@@ -130,4 +129,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

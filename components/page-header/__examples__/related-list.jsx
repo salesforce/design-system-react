@@ -13,7 +13,9 @@ const Example = createReactClass({
 	render () {
 		const navRight = (
 			<div className="slds-button-group" role="group">
-				<button className="slds-button slds-button--neutral">Add Contact</button>
+				<button className="slds-button slds-button--neutral">
+					Add Contact
+				</button>
 				<div className="slds-button--last">
 					<Button
 						iconName="down"
@@ -84,8 +86,8 @@ const Example = createReactClass({
 		);
 
 		const trail = [
-			(<a href="javascript:void(0);">Accounts</a>),
-			(<a href="javascript:void(0);">Company One</a>)
+			<a href="javascript:void(0);">Accounts</a>,
+			<a href="javascript:void(0);">Company One</a>
 		];
 
 		return (
@@ -104,4 +106,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

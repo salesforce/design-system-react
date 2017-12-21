@@ -26,7 +26,7 @@ const Example = createReactClass({
 	},
 
 	render () {
-		const isEmpty = (this.state.items.length === 0);
+		const isEmpty = this.state.items.length === 0;
 
 		return (
 			<IconSettings iconPath="/assets/icons">
@@ -34,18 +34,33 @@ const Example = createReactClass({
 					<Card
 						id="ExampleCard"
 						filter={
-							(!isEmpty || this.state.isFiltering) && <CardFilter onChange={this.handleFilterChange} />
+							(!isEmpty || this.state.isFiltering) && (
+								<CardFilter onChange={this.handleFilterChange} />
+							)
 						}
 						headerActions={
-							!isEmpty && <Button label="Delete All Items" onClick={this.handleDeleteAllItems} />
+							!isEmpty && (
+								<Button
+									label="Delete All Items"
+									onClick={this.handleDeleteAllItems}
+								/>
+							)
 						}
 						heading="Releated Items"
 						icon={<Icon category="standard" name="document" size="small" />}
-						empty={isEmpty ? <CardEmpty heading="No Related Items">
-							<Button label="Add Item" onClick={this.handleAddItem} />
-						</CardEmpty> : null}
+						empty={
+							isEmpty ? (
+								<CardEmpty heading="No Related Items">
+									<Button label="Add Item" onClick={this.handleAddItem} />
+								</CardEmpty>
+							) : null
+						}
 					>
-						<DataTable items={this.state.items} id="DataTableExample-1" bordered>
+						<DataTable
+							items={this.state.items}
+							id="DataTableExample-1"
+							bordered
+						>
 							<DataTableColumn
 								label="Opportunity Name"
 								property="name"
@@ -59,7 +74,9 @@ const Example = createReactClass({
 	},
 
 	handleFilterChange (event) {
-		const filteredItems = sampleItems.filter((item) => RegExp(event.target.value, 'i').test(item.name));
+		const filteredItems = sampleItems.filter((item) =>
+			RegExp(event.target.value, 'i').test(item.name)
+		);
 		this.setState({ isFiltering: true, items: filteredItems });
 	},
 
@@ -72,4 +89,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

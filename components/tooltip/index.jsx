@@ -1,12 +1,10 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-
 // # Popover - tooltip variant
 
 // Implements the [Popover design pattern](https://core-204.lightningdesignsystem.com/components/popovers#flavor-tooltips) in React.
 // Based on SLDS v2.1.0-rc3
-
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -30,11 +28,9 @@ import compact from 'lodash.compact';
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 
-
 // ### Display Name
 // Always use the canonical component name as the React display name.
 const displayName = POPOVER_TOOLTIP;
-
 
 const propTypes = {
 	/**
@@ -71,24 +67,32 @@ const propTypes = {
 	 */
 	hoverCloseDelay: PropTypes.number,
 	/**
-	* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the popover to the triggering element.
-	*/
+	 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the popover to the triggering element.
+	 */
 	id: PropTypes.string,
 	/**
-	* Forces tooltip to be open. A value of `false` will disable any interaction with the tooltip.
-	*/
+	 * Forces tooltip to be open. A value of `false` will disable any interaction with the tooltip.
+	 */
 	isOpen: PropTypes.bool,
 	/**
 	 * CSS classes to be added to tag with `slds-tooltip-trigger`.
 	 */
-	triggerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	triggerClassName: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string
+	]),
 	/**
 	 * Please select one of the following:
 	 * * `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
 	 * * `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.
 	 * * `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.
 	 */
-	position: PropTypes.oneOf(['absolute', 'overflowBoundaryElement', 'relative']),
+	position: PropTypes.oneOf([
+		'absolute',
+		'overflowBoundaryElement',
+		'relative'
+	]),
 	/**
 	 * Custom styles to be added to wrapping triggering `div`.
 	 */
@@ -144,7 +148,7 @@ class PopoverTooltip extends React.Component {
 			isOpen: true,
 			isClosing: false
 		});
-	}
+	};
 
 	handleMouseLeave = () => {
 		this.setState({ isClosing: true });
@@ -157,7 +161,7 @@ class PopoverTooltip extends React.Component {
 				});
 			}
 		}, this.props.hoverCloseDelay);
-	}
+	};
 
 	getTooltipContent () {
 		return <div className="slds-popover__body">{this.props.content}</div>;
@@ -168,14 +172,15 @@ class PopoverTooltip extends React.Component {
 			isOpen: false,
 			isClosing: false
 		});
-	}
+	};
 
 	getTooltip () {
-		const isOpen = this.props.isOpen === undefined ? this.state.isOpen : this.props.isOpen;
+		const isOpen =
+			this.props.isOpen === undefined ? this.state.isOpen : this.props.isOpen;
 		const align = this.props.align;
 
-		return isOpen
-			? <Dialog
+		return isOpen ? (
+			<Dialog
 				align={align}
 				context={this.context}
 				closeOnTabKey
@@ -194,47 +199,57 @@ class PopoverTooltip extends React.Component {
 				<div
 					id={this.getId()}
 					className={classNames(
-					'slds-popover',
-					'slds-popover--tooltip',
-					{ 'slds-theme_error': this.props.variant === 'error' },
-					getNubbinClassName(align))}
+						'slds-popover',
+						'slds-popover--tooltip',
+						{ 'slds-theme_error': this.props.variant === 'error' },
+						getNubbinClassName(align)
+					)}
 					role="tooltip"
 				>
 					{this.getTooltipContent()}
 				</div>
 			</Dialog>
-			: <span />;
+		) : (
+			<span />
+		);
 	}
 
 	renderAssistantText () {
 		return <span className="slds-assistive-text">{this.props.content}</span>;
 	}
 
-	decorateGrandKidsWithKeyToSilenceWarning (grandKids) { // eslint-disable-line class-methods-use-this
+	decorateGrandKidsWithKeyToSilenceWarning (grandKids) {
+		// eslint-disable-line class-methods-use-this
 		return React.Children.map(grandKids, (component, i) => {
 			const decoratedComponent = React.isValidElement(component)
-			? React.cloneElement(component, { key: i })
-			: component;
+				? React.cloneElement(component, { key: i })
+				: component;
 			return decoratedComponent;
 		});
 	}
 
 	grandKidsWithAsstText (child) {
 		const { props = {} } = child;
-		const grandKids = compact(flatten([this.renderAssistantText()].concat(props.children)));
+		const grandKids = compact(
+			flatten([this.renderAssistantText()].concat(props.children))
+		);
 		return this.decorateGrandKidsWithKeyToSilenceWarning(grandKids);
 	}
 
 	getContent () {
 		return React.Children.map(this.props.children, (child, i) =>
-			React.cloneElement(child, {
-				key: i,
-				'aria-describedby': this.getId(),
-				onBlur: this.handleMouseLeave,
-				onFocus: this.handleMouseEnter,
-				onMouseEnter: this.handleMouseEnter,
-				onMouseLeave: this.handleMouseLeave
-			}, this.grandKidsWithAsstText(child))
+			React.cloneElement(
+				child,
+				{
+					key: i,
+					'aria-describedby': this.getId(),
+					onBlur: this.handleMouseLeave,
+					onFocus: this.handleMouseEnter,
+					onMouseEnter: this.handleMouseEnter,
+					onMouseLeave: this.handleMouseLeave
+				},
+				this.grandKidsWithAsstText(child)
+			)
 		);
 	}
 
@@ -248,14 +263,17 @@ class PopoverTooltip extends React.Component {
 		if (!this.state.triggerRendered) {
 			this.setState({ triggerRendered: true });
 		}
-	}
+	};
 
 	render () {
 		const containerStyles = { display: 'inline', ...this.props.triggerStyle };
 
 		return (
 			<div
-				className={classNames('slds-tooltip-trigger', this.props.triggerClassName)}
+				className={classNames(
+					'slds-tooltip-trigger',
+					this.props.triggerClassName
+				)}
 				style={containerStyles}
 				ref={this.saveTriggerRef}
 			>
@@ -264,7 +282,6 @@ class PopoverTooltip extends React.Component {
 			</div>
 		);
 	}
-
 }
 
 PopoverTooltip.contextTypes = {
@@ -276,4 +293,3 @@ PopoverTooltip.propTypes = propTypes;
 PopoverTooltip.defaultProps = defaultProps;
 
 export default PopoverTooltip;
-

@@ -5,9 +5,11 @@ import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 import assign from 'lodash.assign';
 
-const { Simulate,
+const {
+	Simulate,
 	findRenderedDOMComponentWithTag,
-	findRenderedDOMComponentWithClass } = TestUtils;
+	findRenderedDOMComponentWithClass
+} = TestUtils;
 
 import SLDSButton from '../../button';
 import IconSettings from '../../icon-settings';
@@ -26,7 +28,10 @@ describe('SLDSButton: ', () => {
 	const renderButton = (inst) => {
 		body = document.createElement('div');
 		document.body.appendChild(body);
-		return ReactDOM.render(<IconSettings iconPath="/assets/icons">{inst}</IconSettings>, body);
+		return ReactDOM.render(
+			<IconSettings iconPath="/assets/icons">{inst}</IconSettings>,
+			body
+		);
 	};
 
 	function removeButton () {
@@ -34,7 +39,8 @@ describe('SLDSButton: ', () => {
 		document.body.removeChild(body);
 	}
 
-	const createButton = (props) => React.createElement(SLDSButton, assign({}, defaultProps, props));
+	const createButton = (props) =>
+		React.createElement(SLDSButton, assign({}, defaultProps, props));
 	const getButton = (props) => renderButton(createButton(props));
 
 	describe('Basic Button Props Render', () => {
@@ -147,7 +153,9 @@ describe('SLDSButton: ', () => {
 		});
 
 		it('renders svg', () => {
-			expect(svgHref).to.equal('/assets/icons/utility-sprite/svg/symbols.svg#announcement');
+			expect(svgHref).to.equal(
+				'/assets/icons/utility-sprite/svg/symbols.svg#announcement'
+			);
 		});
 	});
 

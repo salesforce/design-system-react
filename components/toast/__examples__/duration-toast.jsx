@@ -19,8 +19,8 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<div>
 					<ToastContainer>
-						{this.state.isOpen
-							? <Toast
+						{this.state.isOpen ? (
+							<Toast
 								duration={1000}
 								labels={{
 									heading: '26 potential duplicate leads were found.',
@@ -29,9 +29,11 @@ class Example extends React.Component {
 								onClickHeadingLink={() => {
 									console.log('Link clicked.');
 								}}
-								onRequestClose={() => { this.setState({ isOpen: false }); }}
+								onRequestClose={() => {
+									this.setState({ isOpen: false });
+								}}
 							/>
-							: null }
+						) : null}
 					</ToastContainer>
 					<Button
 						label="Toggle toast"
@@ -47,4 +49,4 @@ class Example extends React.Component {
 
 Example.displayName = 'ToastExample';
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

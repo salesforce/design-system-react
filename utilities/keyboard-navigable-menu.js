@@ -1,7 +1,6 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-
 // # Keyboard Navigable Trait
 
 // ## Dependencies
@@ -17,6 +16,8 @@ import isFunction from 'lodash.isfunction';
 
 // ### Event Helpers
 import KEYS from './key-code';
+
+/* eslint-disable react/no-find-dom-node */
 
 const noop = () => {};
 
@@ -52,7 +53,7 @@ export function getNavigableItems (items) {
 			if (itemIsSelectable(item)) {
 				navigableItems.push({
 					index,
-					text: (`${item.label}`).toLowerCase()
+					text: `${item.label}`.toLowerCase()
 				});
 
 				navigableItems.indexes.push(index);
@@ -75,7 +76,7 @@ export function keyboardNavigate ({
 	onSelect,
 	target,
 	toggleOpen
-	}) {
+}) {
 	const indexes = navigableItems.indexes;
 	const lastIndex = indexes.length - 1;
 	let focusedIndex;
@@ -87,9 +88,8 @@ export function keyboardNavigate ({
 		ch = null;
 	}
 
-	const openMenuKeys = keyCode === KEYS.ENTER ||
-		keyCode === KEYS.SPACE ||
-		keyCode === KEYS.UP;
+	const openMenuKeys =
+		keyCode === KEYS.ENTER || keyCode === KEYS.SPACE || keyCode === KEYS.UP;
 
 	if (keyCode === KEYS.ESCAPE) {
 		if (isOpen) toggleOpen();
@@ -98,7 +98,12 @@ export function keyboardNavigate ({
 		if (openMenuKeys || ch) {
 			toggleOpen();
 		}
-		if (openMenuKeys && componentContext.trigger &&	ReactDOM.findDOMNode(componentContext.trigger) === target) { // eslint-disable-line react/no-find-dom-node
+		if (
+			openMenuKeys &&
+			componentContext.trigger &&
+			ReactDOM.findDOMNode(componentContext.trigger) === target
+		) {
+			// eslint-disable-line react/no-find-dom-node
 			componentContext.handleClick(event);
 		}
 	} else if (keyCode === KEYS.ENTER || keyCode === KEYS.SPACE) {
@@ -124,13 +129,19 @@ export function keyboardNavigate ({
 			let consecutive = 0;
 
 			// Support for navigating to the next option of the same letter with repeated presses of the same key
-			if (pattern.length > 1 && new RegExp(`^[${escapeRegExp(ch)}]+$`).test(pattern)) {
+			if (
+				pattern.length > 1 &&
+				new RegExp(`^[${escapeRegExp(ch)}]+$`).test(pattern)
+			) {
 				consecutive = pattern.length;
 			}
 
 			navigableItems.forEach((item) => {
-				if ((focusedIndex === undefined && item.text.substr(0, pattern.length) === pattern) ||
-					(consecutive > 0 && item.text.substr(0, 1) === ch)) {
+				if (
+					(focusedIndex === undefined &&
+						item.text.substr(0, pattern.length) === pattern) ||
+					(consecutive > 0 && item.text.substr(0, 1) === ch)
+				) {
 					consecutive--;
 					focusedIndex = item.index;
 				}
@@ -177,7 +188,7 @@ export const KeyboardNavigableMixin = {
 		onSelect,
 		target,
 		toggleOpen = noop
-		}) {
+	}) {
 		keyboardNavigate({
 			componentContext: this,
 			currentFocusedIndex: this.state.focusedIndex,
@@ -194,7 +205,9 @@ export const KeyboardNavigableMixin = {
 
 	// This is a bit of an anti-pattern, but it has the upside of being a nice default. Component authors can always override to only set state and do their own focusing in their subcomponents.
 	handleKeyboardFocus (focusedIndex) {
-		if (this.state.focusedIndex !== focusedIndex) this.setState({ focusedIndex });
+		if (this.state.focusedIndex !== focusedIndex) {
+			this.setState({ focusedIndex });
+		}
 
 		const menu = isFunction(this.getMenu) ? this.getMenu() : getMenu(this);
 
@@ -234,7 +247,8 @@ export const KeyboardNavigableMixin = {
 				menu.scrollTop = menuItemTop;
 			} else {
 				const menuBottom = menuTop + menuHeight + menu.offsetTop;
-				const menuItemBottom = menuItemTop + menuItem.offsetHeight + menu.offsetTop;
+				const menuItemBottom =
+					menuItemTop + menuItem.offsetHeight + menu.offsetTop;
 
 				if (menuItemBottom > menuBottom) {
 					menu.scrollTop = menuItemBottom - menuHeight - menu.offsetTop;

@@ -19,14 +19,17 @@ import SLDS_ICONS_STANDARD from '../../../icons/standard';
 /*
  * If inline icons are present and icon bundle imports are not just an empty object, then inline icons will be used instead of external icons that require HTTP access.
  */
-const UtilityIcon = ({
-	name = '',
-	assistiveText, // eslint-disable-line no-unused-vars
-	category,
-	icon,
-	path,
-	...rest
-}, context) => {
+const UtilityIcon = (
+	{
+		name = '',
+		assistiveText, // eslint-disable-line no-unused-vars
+		category,
+		icon,
+		path,
+		...rest
+	},
+	context
+) => {
 	checkProps('UtilityIcon', { name, category, path, context });
 
 	const inlineIcons = {
@@ -46,7 +49,7 @@ const UtilityIcon = ({
 		inlineData = inlineIcons[category][name.toLowerCase()];
 		inlineData.viewBox = inlineIcons[category].viewBox;
 	}
-	
+
 	let modifiedPath;
 
 	if (path) {
@@ -57,32 +60,42 @@ const UtilityIcon = ({
 		modifiedPath = `${context[`${category}Sprite`]}#${name}`;
 	} else {
 		// Otherwise, use external URLs for icons
-		modifiedPath = context.iconPath && `${context.iconPath}/${category}-sprite/svg/symbols.svg#${name}`;
+		modifiedPath =
+			context.iconPath &&
+			`${context.iconPath}/${category}-sprite/svg/symbols.svg#${name}`;
 	}
 
-	return inlineData
-		? (<Svg data={inlineData} name={name} {...rest} />)
-		: (<svg {...rest}>
+	return inlineData ? (
+		<Svg data={inlineData} name={name} {...rest} />
+	) : (
+		<svg {...rest}>
 			<use xlinkHref={modifiedPath} />
-		</svg>);
+		</svg>
+	);
 };
 
 UtilityIcon.displayName = 'UtilityIcon';
 
 UtilityIcon.propTypes = {
 	assistiveText: PropTypes.string,
-	category: PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),
+	category: PropTypes.oneOf([
+		'action',
+		'custom',
+		'doctype',
+		'standard',
+		'utility'
+	]),
 	/**
-   * An SVG object to use instead of name / category, look in `design-system-react/icons` for examples
-   */
+	 * An SVG object to use instead of name / category, look in `design-system-react/icons` for examples
+	 */
 	icon: PropTypes.object,
 	/**
-   * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
-   */
+	 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
+	 */
 	name: PropTypes.string,
 	/**
-   * Path to the icon. This will override any global icon settings.
-   */
+	 * Path to the icon. This will override any global icon settings.
+	 */
 	path: PropTypes.string
 };
 

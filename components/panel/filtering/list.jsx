@@ -42,9 +42,10 @@ const PanelFilterList = createReactClass({
 
 	render () {
 		const children = React.Children.map(this.props.children, (child, index) => {
-			const id = child && child.props.id
-			? child.props.id
-			: `${this.generatedId}-${index}`;
+			const id =
+				child && child.props.id
+					? child.props.id
+					: `${this.generatedId}-${index}`;
 
 			let clonedChild;
 
@@ -54,12 +55,19 @@ const PanelFilterList = createReactClass({
 				});
 			}
 
-			return (
-				child ? <li className="slds-item slds-hint-parent">
+			return child ? (
+				<li className="slds-item slds-hint-parent">
 					{clonedChild || child}
-					{child.props.errorLabel ? <p id={`${id}-error`} className="slds-text-color--error slds-m-top--xx-small">{child.props.errorLabel}</p> : null}
-				</li> : null
-			);
+					{child.props.errorLabel ? (
+						<p
+							id={`${id}-error`}
+							className="slds-text-color--error slds-m-top--xx-small"
+						>
+							{child.props.errorLabel}
+						</p>
+					) : null}
+				</li>
+			) : null;
 		});
 
 		return (

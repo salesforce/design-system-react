@@ -15,8 +15,8 @@ const DatepickerYearSelector = createReactClass({
 		 */
 		id: PropTypes.string,
 		/**
-     * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
-     */
+		 * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
+		 */
 		initialDateForCalendarRender: PropTypes.instanceOf(Date).isRequired,
 		/**
 		 * Displayed calendar has changed or re-rendered
@@ -50,14 +50,19 @@ const DatepickerYearSelector = createReactClass({
 
 	handleSelect (selectedValue) {
 		if (selectedValue) {
-			this.props.onChangeMonth(new Date(this.props.initialDateForCalendarRender.setFullYear(parseInt(selectedValue.value, 10))));
+			this.props.onChangeMonth(
+				new Date(
+					this.props.initialDateForCalendarRender.setFullYear(
+						parseInt(selectedValue.value, 10)
+					)
+				)
+			);
 		}
 	},
 
 	render () {
 		return (
 			<div className="slds-form-element">
-
 				<MenuPicklist
 					buttonRef={this.props.yearPicklistButtonRef}
 					checkmark={false}

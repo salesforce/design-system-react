@@ -14,7 +14,6 @@ import UtilityIcon from '../utilities/utility-icon';
 import KEYS from '../../utilities/key-code';
 import EventUtil from '../../utilities/event';
 
-
 const Pill = createReactClass({
 	// ### Display Name
 	displayName: PILL,
@@ -59,7 +58,11 @@ const Pill = createReactClass({
 		 * CSS classes to be added to tag with `.slds-pill`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 		 * _Tested with Mocha framework._
 		 */
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		className: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string
+		]),
 
 		/**
 		 * An href to use if the pill is shown as a link.
@@ -167,8 +170,14 @@ const Pill = createReactClass({
 					},
 					this.props.className
 				)}
-				onClick={!this.props.labels.label || this.props.variant !== 'link' ? this.props.onClick : null}
-				onKeyDown={typeof this.props.onRemove === 'function' ? this.handleKeyDown : null}
+				onClick={
+					!this.props.labels.label || this.props.variant !== 'link'
+						? this.props.onClick
+						: null
+				}
+				onKeyDown={
+					typeof this.props.onRemove === 'function' ? this.handleKeyDown : null
+				}
 				ref={this.handleRef}
 			>
 				{this.renderIcon()}
@@ -196,14 +205,15 @@ const Pill = createReactClass({
 						title={this.props.labels.title || this.props.labels.label}
 						onClick={this.props.onClick}
 					>
-						<span className="slds-pill__label">
-							{this.props.labels.label}
-						</span>
+						<span className="slds-pill__label">{this.props.labels.label}</span>
 					</a>
 				);
 			}
 			return (
-				<span className="slds-pill__label" title={this.props.labels.title || this.props.labels.label}>
+				<span
+					className="slds-pill__label"
+					title={this.props.labels.title || this.props.labels.label}
+				>
 					{this.props.labels.label}
 				</span>
 			);
@@ -221,12 +231,14 @@ const Pill = createReactClass({
 					onClick={this.props.onRemove}
 				>
 					<UtilityIcon
-						style={{ cursor: 'pointer' }}	// remove when fixed by SLDS CSS
+						style={{ cursor: 'pointer' }} // remove when fixed by SLDS CSS
 						category="utility"
 						className="slds-icon slds-icon--x-small slds-icon-text-default"
 						name="close"
 					/>
-					<span className="slds-assistive-text">{this.props.assistiveText.remove || this.props.labels.removeTitle}</span>
+					<span className="slds-assistive-text">
+						{this.props.assistiveText.remove || this.props.labels.removeTitle}
+					</span>
 				</span>
 			);
 		}
@@ -285,15 +297,31 @@ const Pill = createReactClass({
 	},
 
 	getHref () {
-		return typeof this.props.href === 'string' ? this.props.href : 'javascript:void(0);'; // eslint-disable-line no-script-url
+		return typeof this.props.href === 'string'
+			? this.props.href
+			: 'javascript:void(0);'; // eslint-disable-line no-script-url
 	},
 
 	/**
 	 * Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component.
 	 */
 	restProps () {
-		const { bare, hasError, variant, className, onClick, onRemove, labels, assistiveText, children, href,
-			icon, avatar, onKeyDown, ...other } = this.props;
+		const {
+			bare,
+			hasError,
+			variant,
+			className,
+			onClick,
+			onRemove,
+			labels,
+			assistiveText,
+			children,
+			href,
+			icon,
+			avatar,
+			onKeyDown,
+			...other
+		} = this.props;
 		return other;
 	}
 });

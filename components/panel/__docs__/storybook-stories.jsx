@@ -9,11 +9,11 @@ import FilteringError from '../__examples__/filtering-error';
 
 storiesOf(PANEL, module)
 	.addDecorator((getStory) => (
-		<div className="slds-grid" style={{ backgroundColor: '#ccc', padding: '20px' }}>
-			<div
-				className="slds-col--bump-left"
-				style={{ width: '420px' }}
-			>
+		<div
+			className="slds-grid"
+			style={{ backgroundColor: '#ccc', padding: '20px' }}
+		>
+			<div className="slds-col--bump-left" style={{ width: '420px' }}>
 				<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 			</div>
 		</div>

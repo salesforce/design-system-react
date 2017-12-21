@@ -28,7 +28,9 @@ function tabbable (element) {
 }
 
 function findTabbableDescendants (element) {
-	return [].slice.call(element.querySelectorAll('*'), 0).filter((el) => tabbable(el));
+	return [].slice
+		.call(element.querySelectorAll('*'), 0)
+		.filter((el) => tabbable(el));
 }
 
 export default findTabbableDescendants;

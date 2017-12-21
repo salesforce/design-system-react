@@ -7,13 +7,11 @@ const Example = createReactClass({
 
 	render () {
 		return (
-			<div
-				style={{ padding: '2rem 1rem 0px' }}
-			>
+			<div style={{ padding: '2rem 1rem 0px' }}>
 				<ProgressIndicator {...this.props} />
 			</div>
 		);
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

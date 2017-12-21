@@ -10,7 +10,10 @@ import { shape } from 'airbnb-prop-types';
  * context [full source here](tests/enzyme-helpers.js). `this` can
  * only be referenced if inside `function () {}`.
  */
-import { createMountNode, destroyMountNode } from '../../../tests/enzyme-helpers';
+import {
+	createMountNode,
+	destroyMountNode
+} from '../../../tests/enzyme-helpers';
 
 import RadioGroup from '../../radio-group';
 import Radio from '../../radio-group/radio';
@@ -20,7 +23,6 @@ chai.use(chaiEnzyme());
 /* Re-usable demo component.
  */
 class RadioGroupExample extends React.Component {
-
 	constructor (props) {
 		super(props);
 		this.state = { checked: 'Radio Label One' };
@@ -42,11 +44,11 @@ class RadioGroupExample extends React.Component {
 						value={value}
 						checked={this.state.checked === value}
 						variant="base"
-					/>))}
+					/>
+				))}
 			</RadioGroup>
 		);
 	}
-
 }
 
 RadioGroupExample.propTypes = {
@@ -82,7 +84,10 @@ describe('RadioGroup', function () {
 		expect(radios).to.have.lengthOf(2, 'there are 2 radio inputs');
 		for (let index = 0; index < radios.length; index++) {
 			const radio = radios.get(index);
-			expect(radio.props.checked).to.equal(radio.props.label === 'Radio Label One', 'the second radio input is checked');
+			expect(radio.props.checked).to.equal(
+				radio.props.label === 'Radio Label One',
+				'the second radio input is checked'
+			);
 		}
 		const legend = wrapper.find('legend');
 		expect(legend.text()).to.equal('Radio Group Label', 'there is a label');
@@ -108,6 +113,9 @@ describe('RadioGroup', function () {
 		const radio = wrapper.find({ value: 'Radio Label Two' });
 		expect(radio.props().checked).to.be.false;
 		radio.simulate('change', { event: { target: 'Radio Label Two' } });
-		expect(radio.props().checked, 'radio button changes from unchecked to checked').to.be.true;
+		expect(
+			radio.props().checked,
+			'radio button changes from unchecked to checked'
+		).to.be.true;
 	});
 });

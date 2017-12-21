@@ -5,7 +5,6 @@ import Pill from '~/components/pill';
 import Avatar from '~/components/avatar';
 import IconSettings from '~/components/icon-settings';
 
-
 function noop () {}
 
 const Example = createReactClass({
@@ -58,7 +57,6 @@ const Example = createReactClass({
 										onClick={this.onClick}
 										onRemove={this.onRemove}
 									/>
-
 								</li>
 								<li className="slds-listbox-item" role="presentation">
 									<Pill
@@ -100,4 +98,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

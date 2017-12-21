@@ -11,7 +11,6 @@ import Radio from '../../radio-button-group/radio';
 import { RADIO_BUTTON_GROUP } from '../../../utilities/constants';
 
 class RadioButtonGroupExample extends React.Component {
-
 	constructor (props) {
 		super(props);
 		this.state = { checked: 'Tue' };
@@ -36,12 +35,19 @@ class RadioButtonGroupExample extends React.Component {
 					disabled={this.props.disabled}
 					required={this.props.required}
 				>
-					{days.map((day) => <Radio key={day} label={day} value={day} checked={this.state.checked === day} variant="button-group" />)}
+					{days.map((day) => (
+						<Radio
+							key={day}
+							label={day}
+							value={day}
+							checked={this.state.checked === day}
+							variant="button-group"
+						/>
+					))}
 				</RadioButtonGroup>
 			</div>
 		);
 	}
-
 }
 
 RadioButtonGroupExample.propTypes = {
@@ -59,9 +65,19 @@ RadioButtonGroupExample.defaultProps = {
 };
 
 storiesOf(RADIO_BUTTON_GROUP, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => (
+		<div className="slds-p-around--medium">{getStory()}</div>
+	))
 	.add('Base', () => <RadioButtonGroupExample heading="Base" />)
-	.add('Disabled', () => <RadioButtonGroupExample heading="Disabled" disabled />)
-	.add('Required', () => <RadioButtonGroupExample heading="Required" required />)
-	.add('Error', () => <RadioButtonGroupExample heading="Error" labels={{ label: 'Day of week', error: 'There is an error' }} />);
-
+	.add('Disabled', () => (
+		<RadioButtonGroupExample heading="Disabled" disabled />
+	))
+	.add('Required', () => (
+		<RadioButtonGroupExample heading="Required" required />
+	))
+	.add('Error', () => (
+		<RadioButtonGroupExample
+			heading="Error"
+			labels={{ label: 'Day of week', error: 'There is an error' }}
+		/>
+	));

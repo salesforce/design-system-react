@@ -14,12 +14,27 @@ if (process.env.NODE_ENV !== 'production') {
 		deprecatedProperty(COMPONENT, props.collection, 'collection', 'items');
 		deprecatedProperty(COMPONENT, props.onSelect, 'onSelect', 'onChange');
 		deprecatedProperty(COMPONENT, props.onDeselect, 'onDeselect', 'onChange');
-		sunsetProperty(COMPONENT, props.sortable, 'sortable', 'The table is sortable if one or more of its columns are sortable.');
+		sunsetProperty(
+			COMPONENT,
+			props.sortable,
+			'sortable',
+			'The table is sortable if one or more of its columns are sortable.'
+		);
 
 		// Deprecated and moved to a child
-		sunsetProperty(COMPONENT, props.columns, 'columns', 'Please provide one or more children of the type <Column /> instead.');
+		sunsetProperty(
+			COMPONENT,
+			props.columns,
+			'columns',
+			'Please provide one or more children of the type <Column /> instead.'
+		);
 
-		sunsetProperty(COMPONENT, props.bordered, 'bordered', 'All SLDS DataTables have row borders by default now. If you do not want row borders, please use `unborderedRow`');
+		sunsetProperty(
+			COMPONENT,
+			props.bordered,
+			'bordered',
+			'All SLDS DataTables have row borders by default now. If you do not want row borders, please use `unborderedRow`'
+		);
 		/* eslint-enable max-len */
 	};
 }

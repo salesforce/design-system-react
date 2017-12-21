@@ -16,29 +16,29 @@ import { SPINNER } from '../../utilities/constants';
 
 // ### Prop Types
 const PROP_TYPES = {
-  /**
-   * Assistive text that is read out loud to screen readers.
-   */
+	/**
+	 * Assistive text that is read out loud to screen readers.
+	 */
 	assistiveText: PropTypes.string,
-  /**
-   * Custom css classes applied to Spinner container
-   */
+	/**
+	 * Custom css classes applied to Spinner container
+	 */
 	containerClassName: PropTypes.string,
-  /**
-   * Unique html id placed on div with role="status".
-   */
+	/**
+	 * Unique html id placed on div with role="status".
+	 */
 	id: PropTypes.string,
-  /**
-   * Determines if spinner is inside input field
-   */
+	/**
+	 * Determines if spinner is inside input field
+	 */
 	isInput: PropTypes.bool,
-  /**
-   * Determines the size of the spinner
-   */
+	/**
+	 * Determines the size of the spinner
+	 */
 	size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
-  /**
-   * Determines the color of the spinner: `base` is gray, `brand` is blue, and `inverse` is white.
-   */
+	/**
+	 * Determines the color of the spinner: `base` is gray, `brand` is blue, and `inverse` is white.
+	 */
 	variant: PropTypes.oneOf(['base', 'brand', 'inverse'])
 };
 
@@ -74,7 +74,9 @@ const Spinner = (props) => {
 				id={id}
 				role="status"
 			>
-				{assistiveText && <span className="slds-assistive-text">{assistiveText}</span>}
+				{assistiveText && (
+					<span className="slds-assistive-text">{assistiveText}</span>
+				)}
 				<div className="slds-spinner__dot-a" />
 				<div className="slds-spinner__dot-b" />
 			</div>
@@ -87,4 +89,3 @@ Spinner.propTypes = PROP_TYPES;
 Spinner.defaultProps = DEFAULT_PROPS;
 
 export default Spinner;
-

@@ -1,7 +1,6 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-
 // # List Item Component
 
 // ## Dependencies
@@ -34,7 +33,11 @@ const ListItem = createReactClass({
 
 	propTypes: {
 		'aria-disabled': PropTypes.bool,
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		className: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string
+		]),
 		checkmark: PropTypes.bool,
 		data: PropTypes.object,
 		divider: PropTypes.oneOf(['top', 'bottom']),
@@ -71,7 +74,11 @@ const ListItem = createReactClass({
 	},
 
 	handleClick (event) {
-		if (this.props.type !== 'link' || this.props.href === 'javascript:void(0);') { // eslint-disable-line no-script-url
+		if (
+			this.props.type !== 'link' ||
+			this.props.href === 'javascript:void(0);'
+		) {
+			// eslint-disable-line no-script-url
 			EventUtil.trapImmediate(event);
 		}
 
@@ -141,7 +148,8 @@ const ListItem = createReactClass({
 							'slds-dropdown__header',
 							{
 								'slds-has-divider--top-space': this.props.divider === 'top',
-								'slds-has-divider--bottom-space': this.props.divider === 'bottom'
+								'slds-has-divider--bottom-space':
+									this.props.divider === 'bottom'
 							},
 							this.props.className
 						)}
@@ -169,10 +177,13 @@ const ListItem = createReactClass({
 					// disabled eslint, but using aria-selected on presentation role seems suspicious...
 					<li
 						aria-selected={this.props.isSelected}
-						className={classNames('slds-dropdown__item', {
-							'slds-is-selected': this.props.isSelected
-						},
-							this.props.className)}
+						className={classNames(
+							'slds-dropdown__item',
+							{
+								'slds-is-selected': this.props.isSelected
+							},
+							this.props.className
+						)}
 						id={this.props.id}
 						onMouseDown={this.handleMouseDown}
 						role="presentation"

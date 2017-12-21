@@ -16,15 +16,21 @@ const Example = createReactClass({
 	displayName: 'AppLauncherExample',
 
 	render () {
-		const search = <Search onChange={() => { console.log('Search term:', event.target.value); }} placeholder="Find an app" assistiveText="Find an app" />;
+		const search = (
+			<Search
+				onChange={() => {
+					console.log('Search term:', event.target.value);
+				}}
+				placeholder="Find an app"
+				assistiveText="Find an app"
+			/>
+		);
 		const headerButton = <Button label="App Exchange" />;
 
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<GlobalNavigationBar>
-					<GlobalNavigationBarRegion
-						region="primary"
-					>
+					<GlobalNavigationBarRegion region="primary">
 						<AppLauncher
 							triggerName="App Name"
 							search={search}
@@ -51,7 +57,9 @@ const Example = createReactClass({
 								/>
 								<AppLauncherTile
 									title="Sales Cloud"
-									iconNode={<Icon name="campaign" category="standard" size="large" />}
+									iconNode={
+										<Icon name="campaign" category="standard" size="large" />
+									}
 									size="small"
 								/>
 							</AppLauncherSection>
@@ -63,4 +71,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

@@ -9,7 +9,8 @@ import renderer from 'react-test-renderer';
  * Please note, Component is the non-JSX component object.
  */
 
-const renderDOM = (Component, props) => renderer.create(React.createElement(Component, props), null).toJSON();
+const renderDOM = (Component, props) =>
+	renderer.create(React.createElement(Component, props), null).toJSON();
 
 /*
  * Render React components to markup in order to compare to a Jest Snapshot.
@@ -17,10 +18,15 @@ const renderDOM = (Component, props) => renderer.create(React.createElement(Comp
  * Please note, Component is the non-JSX component object.
  */
 
-const renderMarkup = (Component, props) => String(
-		jsBeautify.html(ReactDOMServer.renderToStaticMarkup(React.createElement(Component, props)),
-			Settings.jsBeautify),
-	'utf-8'
+const renderMarkup = (Component, props) =>
+	String(
+		jsBeautify.html(
+			ReactDOMServer.renderToStaticMarkup(
+				React.createElement(Component, props)
+			),
+			Settings.jsBeautify
+		),
+		'utf-8'
 	);
 
 const testDOMandHTML = ({ name, test, Component }) => {
@@ -33,8 +39,7 @@ const testDOMandHTML = ({ name, test, Component }) => {
 	});
 };
 
-export {
-	renderDOM, // eslint-disable-line import/prefer-default-export
-	renderMarkup, // eslint-disable-line import/prefer-default-export
-	testDOMandHTML // eslint-disable-line import/prefer-default-export
-};
+// eslint-disable-line import/prefer-default-export
+// eslint-disable-line import/prefer-default-export
+// eslint-disable-line import/prefer-default-export
+export { renderDOM, renderMarkup, testDOMandHTML };

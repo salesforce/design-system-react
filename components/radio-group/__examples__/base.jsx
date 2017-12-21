@@ -4,7 +4,6 @@ import RadioGroup from '~/components/radio-group'; // `~` is replaced with desig
 import Radio from '~/components/radio-group/radio'; // `~` is replaced with design-system-react at runtime
 
 class Example extends React.Component {
-
 	constructor (props) {
 		super(props);
 		this.state = {};
@@ -34,12 +33,12 @@ class Example extends React.Component {
 							value={value}
 							checked={this.state.checked === value}
 							variant="base"
-						/>))}
+						/>
+					))}
 				</RadioGroup>
 			</div>
 		);
 	}
-
 }
 
 Example.propTypes = {
@@ -52,4 +51,4 @@ Example.propTypes = {
 
 Example.displayName = 'RadioGroupExample';
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

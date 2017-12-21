@@ -9,17 +9,20 @@ import IconSettings from '../../../icon-settings';
 
 const should = chai.should();
 
-const { Simulate
-			} = TestUtils;
+const { Simulate } = TestUtils;
 
 describe('Inline Edit: ', function () {
 	const sampleValue = 'Sample value';
 
-	const renderInlineEdit = (instance) => function () {
-		this.dom = document.createElement('div');
-		document.body.appendChild(this.dom);
-		this.component = ReactDOM.render(<IconSettings iconPath="/assets/icons">{instance}</IconSettings>, this.dom);
-	};
+	const renderInlineEdit = (instance) =>
+		function () {
+			this.dom = document.createElement('div');
+			document.body.appendChild(this.dom);
+			this.component = ReactDOM.render(
+				<IconSettings iconPath="/assets/icons">{instance}</IconSettings>,
+				this.dom
+			);
+		};
 
 	function removeInlineEdit () {
 		ReactDOM.unmountComponentAtNode(this.dom);
@@ -35,9 +38,11 @@ describe('Inline Edit: ', function () {
 	const getTrigger = (dom) => getStatic(dom).querySelector('.slds-button');
 
 	describe('Structure', function () {
-		beforeEach(renderInlineEdit(
-			<InlineEdit id="inline-edit-standard" value={sampleValue} />
-		));
+		beforeEach(
+			renderInlineEdit(
+				<InlineEdit id="inline-edit-standard" value={sampleValue} />
+			)
+		);
 
 		afterEach(removeInlineEdit);
 
@@ -105,7 +110,7 @@ describe('Inline Edit: ', function () {
 
 	// 		setTimeout(() => {
 	// 			const input = getInput(this.dom);
-				
+
 	// 			should.exist(input);
 
 	// 			expect(enterEditModeHanlder.callCount).to.equal(1);
@@ -132,13 +137,13 @@ describe('Inline Edit: ', function () {
 
 	// 		setTimeout(() => {
 	// 			const input = getInput(this.dom);
-				
+
 	// 			should.exist(input);
-				
+
 	// 			input.value = '1';
-				
+
 	// 			Simulate.change(input);
-				
+
 	// 			Simulate.keyDown(input, { key: 'Enter', keyCode: 13, which: 13 });
 
 	// 			setTimeout(() => {

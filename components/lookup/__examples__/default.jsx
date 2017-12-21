@@ -13,11 +13,15 @@ const Example = createReactClass({
 					emptyMessage="No items found"
 					hasError={false}
 					label="Account"
-					onChange={(newValue) => { console.log('New search term: ', newValue); }}
-					onSelect={(item) => { console.log(item, ' Selected'); }}
+					onChange={(newValue) => {
+						console.log('New search term: ', newValue);
+					}}
+					onSelect={(item) => {
+						console.log(item, ' Selected');
+					}}
 					options={[
 						{ type: 'section', label: 'SECTION 1' },
-						{ label: 'Paddy\'s Pub' },
+						{ label: "Paddy's Pub" },
 						{ label: 'Tyrell Corp' },
 						{ type: 'section', label: 'SECTION 2' },
 						{ label: 'Paper St. Soap Company' },
@@ -33,4 +37,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

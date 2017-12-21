@@ -9,10 +9,10 @@ const Example = createReactClass({
 	render () {
 		return (
 			<Datepicker
-				dateDisabled={({ date }) => (date.getDay() > 5 || date.getDay() < 1)}
+				dateDisabled={({ date }) => date.getDay() > 5 || date.getDay() < 1}
 			/>
 		);
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

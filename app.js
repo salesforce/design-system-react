@@ -12,7 +12,12 @@ const app = express();
 app.use(compression());
 
 // Static directories
-app.use('/assets/icons', express.static(`${__dirname}/node_modules/@salesforce-ux/icons/dist/salesforce-lightning-design-system-icons/`));
+app.use(
+	'/assets/icons',
+	express.static(
+		`${__dirname}/node_modules/@salesforce-ux/icons/dist/salesforce-lightning-design-system-icons/`
+	)
+);
 app.use(express.static(`${__dirname}/storybook`));
 
 // Listen

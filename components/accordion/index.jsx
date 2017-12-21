@@ -16,7 +16,11 @@ const propTypes = {
 	/**
 	 * CSS class names to be added to the accordion component. _Tested with snapshot testing._
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string
+	]),
 	/**
 	 * HTML id for accordion component. _Tested with snapshot testing._
 	 */
@@ -47,7 +51,10 @@ class Accordion extends Component {
 
 	render () {
 		return (
-			<ul name={this.props.id || this.generatedId} className={classNames('slds-accordion', this.props.className)}>
+			<ul
+				name={this.props.id || this.generatedId}
+				className={classNames('slds-accordion', this.props.className)}
+			>
 				{this.props.children}
 			</ul>
 		);

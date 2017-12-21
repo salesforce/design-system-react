@@ -19,13 +19,16 @@ describe('Button Stateful: ', () => {
 		variant: 'icon'
 	};
 
-
 	// Setup and takedown
-	const renderButton = (instance) => function () {
-		this.dom = document.createElement('div');
-		document.body.appendChild(this.dom);
-		this.component = ReactDOM.render(<IconSettings iconPath="/assets/icons">{instance}</IconSettings>, this.dom);
-	};
+	const renderButton = (instance) =>
+		function () {
+			this.dom = document.createElement('div');
+			document.body.appendChild(this.dom);
+			this.component = ReactDOM.render(
+				<IconSettings iconPath="/assets/icons">{instance}</IconSettings>,
+				this.dom
+			);
+		};
 	function removeButton () {
 		ReactDOM.unmountComponentAtNode(this.dom);
 		document.body.removeChild(this.dom);
@@ -35,11 +38,7 @@ describe('Button Stateful: ', () => {
 
 	// Tests
 	describe('Default Structure', () => {
-		beforeEach(renderButton(
-			<ButtonStateful
-				{...requiredProps}
-			/>
-		));
+		beforeEach(renderButton(<ButtonStateful {...requiredProps} />));
 		afterEach(removeButton);
 
 		it('button exists - is not undefined', function () {
@@ -56,11 +55,7 @@ describe('Button Stateful: ', () => {
 	describe('External active props works', () => {
 		const propsWithActive = assign(requiredProps, { active: true });
 
-		beforeEach(renderButton(
-			<ButtonStateful
-				{...propsWithActive}
-			/>
-		));
+		beforeEach(renderButton(<ButtonStateful {...propsWithActive} />));
 		afterEach(removeButton);
 
 		it('renders active prop', function () {

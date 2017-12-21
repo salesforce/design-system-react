@@ -13,7 +13,7 @@ import { DATA_TABLE_COLUMN } from '../../utilities/constants';
 /**
  * Columns define the structure of the data displayed in the DataTable.
  */
-class DataTableColumn extends React.Component { }
+class DataTableColumn extends React.Component {}
 
 // ### Display Name
 // Always use the canonical component name as the React display name.

@@ -31,9 +31,7 @@ const Example = createReactClass({
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div className="slds-grid slds-grid_pull-padded-medium">
-					<div className="slds-p-horizontal_medium">
-						{this.renderLinked()}
-					</div>
+					<div className="slds-p-horizontal_medium">{this.renderLinked()}</div>
 					<div className="slds-p-horizontal_medium">
 						{this.renderUnlinked()}
 					</div>
@@ -85,7 +83,8 @@ const Example = createReactClass({
 					<div className="slds-pill_container">
 						<Pill
 							labels={{
-								label: 'Pill label that is longer than the area that contains it',
+								label:
+									'Pill label that is longer than the area that contains it',
 								removeTitle: 'Remove'
 							}}
 							onClick={this.onClick}

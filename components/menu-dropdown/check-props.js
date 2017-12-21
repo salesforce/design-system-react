@@ -13,7 +13,12 @@ let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
-		sunsetProperty(COMPONENT, props.forceOpen, 'forceOpen', 'Please use isOpen instead. It provides a consistent prop that aligns with other componenents.');
+		sunsetProperty(
+			COMPONENT,
+			props.forceOpen,
+			'forceOpen',
+			'Please use isOpen instead. It provides a consistent prop that aligns with other componenents.'
+		);
 
 		oneOfRequiredProperty(COMPONENT, {
 			options: props.options,
@@ -28,7 +33,12 @@ if (process.env.NODE_ENV !== 'production') {
 			);
 		}
 
-		deprecatedProperty(COMPONENT, props.isInline, 'isInline', 'menuPosition="relative"');
+		deprecatedProperty(
+			COMPONENT,
+			props.isInline,
+			'isInline',
+			'menuPosition="relative"'
+		);
 	};
 }
 

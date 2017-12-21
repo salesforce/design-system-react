@@ -13,14 +13,49 @@ let checkProps = function () {};
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
 		// Deprecated and changed to another property
-		deprecatedProperty(COMPONENT, props.iconCategory, 'iconCategory', undefined, 'Please use `iconLeft` and `iconRight` to pass in a customized <Icon> component.');
-		deprecatedProperty(COMPONENT, props.iconName, 'iconName', undefined, 'Please use `iconLeft` and `iconRight` to pass in a customized <Icon> component');
-		deprecatedProperty(COMPONENT, props.iconPosition, 'iconPosition', undefined, 'Please use `iconLeft` and `iconRight` to pass in a customized <Icon> component');
-		deprecatedProperty(COMPONENT, props.iconAssistiveText, 'iconAssistiveText', undefined, 'Please use `iconLeft` and `iconRight` to pass in a customized <Icon> component');
-		deprecatedProperty(COMPONENT, props.onIconClick, 'onIconClick', undefined, 'Please use `iconLeft` and `iconRight` to pass in a customized <Icon> component');
+		deprecatedProperty(
+			COMPONENT,
+			props.iconCategory,
+			'iconCategory',
+			undefined,
+			'Please use `iconLeft` and `iconRight` to pass in a customized <Icon> component.'
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.iconName,
+			'iconName',
+			undefined,
+			'Please use `iconLeft` and `iconRight` to pass in a customized <Icon> component'
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.iconPosition,
+			'iconPosition',
+			undefined,
+			'Please use `iconLeft` and `iconRight` to pass in a customized <Icon> component'
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.iconAssistiveText,
+			'iconAssistiveText',
+			undefined,
+			'Please use `iconLeft` and `iconRight` to pass in a customized <Icon> component'
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.onIconClick,
+			'onIconClick',
+			undefined,
+			'Please use `iconLeft` and `iconRight` to pass in a customized <Icon> component'
+		);
 
-		if (typeof (props.assistiveText) === 'string') {
-			sunsetProperty(COMPONENT, props.assistiveText, 'assistiveText', 'AssistiveText as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use either assistiveText.label or assistiveText.spinner');
+		if (typeof props.assistiveText === 'string') {
+			sunsetProperty(
+				COMPONENT,
+				props.assistiveText,
+				'assistiveText',
+				'AssistiveText as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use either assistiveText.label or assistiveText.spinner'
+			);
 		}
 
 		onlyOneOfProperties(COMPONENT, {

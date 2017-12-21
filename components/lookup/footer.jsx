@@ -1,7 +1,6 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-
 // Implements the [Lookup design pattern](https://latest-204.lightningdesignsystem.com/components/lookups) in React.
 // Based on SLDS v2.1.0-dev
 
@@ -15,7 +14,10 @@ const defaultProps = {};
 
 class DefaultFooter extends React.Component {
 	componentWillReceiveProps (nextProps) {
-		if (nextProps.isActive !== this.props.isActive && nextProps.isActive === true) {
+		if (
+			nextProps.isActive !== this.props.isActive &&
+			nextProps.isActive === true
+		) {
 			this.props.setFocus('newItem');
 		}
 	}
@@ -24,7 +26,7 @@ class DefaultFooter extends React.Component {
 		if (this.props.onClose) {
 			this.props.onClose();
 		}
-	}
+	};
 
 	render () {
 		let className = 'slds-lookup__item-action slds-lookup__item-action--label';
@@ -42,9 +44,16 @@ class DefaultFooter extends React.Component {
 				<a id="newItem" href="javascript:void(0);" className={className}>
 					{/* eslint-enable no-script-url */}
 					<span className="lookup__item-action-label">
-						<Icon name="add" category="utility" size="x-small" className="slds-icon-text-default" />
+						<Icon
+							name="add"
+							category="utility"
+							size="x-small"
+							className="slds-icon-text-default"
+						/>
 						<span className="slds-truncate">
-							{this.props.newItemLabel ? this.props.newItemLabel : 'Add New Item' }
+							{this.props.newItemLabel
+								? this.props.newItemLabel
+								: 'Add New Item'}
 						</span>
 					</span>
 				</a>

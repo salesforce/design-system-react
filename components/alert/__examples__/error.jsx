@@ -12,7 +12,8 @@ class Example extends React.Component {
 					<Alert
 						icon={<Icon category="utility" name="ban" />}
 						labels={{
-							heading: 'Your browser is currently not supported. Your Salesforce may be degraded.',
+							heading:
+								'Your browser is currently not supported. Your Salesforce may be degraded.',
 							headingLink: 'More Information'
 						}}
 						onClickHeadingLink={() => {
@@ -28,4 +29,4 @@ class Example extends React.Component {
 
 Example.displayName = 'AlertExample';
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

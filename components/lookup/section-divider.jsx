@@ -21,4 +21,3 @@ DefaultSectionDivider.displayName = displayName;
 DefaultSectionDivider.propTypes = propTypes;
 
 export default DefaultSectionDivider;
-

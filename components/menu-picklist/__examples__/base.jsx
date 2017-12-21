@@ -5,7 +5,7 @@ import Picklist from '~/components/menu-picklist'; // `~` is replaced with desig
 
 const Example = createReactClass({
 	displayName: 'PicklistExample',
-	
+
 	render () {
 		return (
 			<IconSettings iconPath="/assets/icons">
@@ -13,7 +13,9 @@ const Example = createReactClass({
 					<div className="slds-col--padded">
 						<Picklist
 							label="Contacts"
-							onSelect={(option, data) => { console.log('selected: ', data.option); }}
+							onSelect={(option, data) => {
+								console.log('selected: ', data.option);
+							}}
 							options={[
 								{ label: 'Option A', value: 'A0' },
 								{ label: 'Option B', value: 'B0' },
@@ -28,7 +30,9 @@ const Example = createReactClass({
 					<div className="slds-col--padded">
 						<Picklist
 							label="Option selected"
-							onSelect={(option, data) => { console.log('selected: ', data.option); }}
+							onSelect={(option, data) => {
+								console.log('selected: ', data.option);
+							}}
 							options={[
 								{ label: 'Option A', value: 'A0' },
 								{ label: 'Option B', value: 'B0' },
@@ -45,7 +49,9 @@ const Example = createReactClass({
 						<Picklist
 							disabled
 							label="Disabled"
-							onSelect={(option, data) => { console.log('selected: ', data.option); }}
+							onSelect={(option, data) => {
+								console.log('selected: ', data.option);
+							}}
 							options={[
 								{ label: 'Option A', value: 'A0' },
 								{ label: 'Option B', value: 'B0' },
@@ -64,4 +70,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

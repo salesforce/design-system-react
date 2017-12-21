@@ -61,7 +61,6 @@ const AppLauncherSection = createReactClass({
 		onToggleClick: PropTypes.func
 	},
 
-
 	getDefaultProps () {
 		return {
 			collapseSectionAssistiveText: 'Toggle visibility of section'
@@ -83,35 +82,41 @@ const AppLauncherSection = createReactClass({
 	},
 
 	render () {
-		const isOpen = this.props.isOpen !== undefined ? this.props.isOpen : this.state.isOpen;
+		const isOpen =
+			this.props.isOpen !== undefined ? this.props.isOpen : this.state.isOpen;
 		const iconIsOpenClass = isOpen ? 'slds-is-open' : 'slds-is-close';
-		const sectionIsOpenClass = isOpen ? 'slds-is-expanded' : 'slds-is-collapsed';
+		const sectionIsOpenClass = isOpen
+			? 'slds-is-expanded'
+			: 'slds-is-collapsed';
 
 		return (
 			<div className={classNames('slds-section', iconIsOpenClass)}>
 				<div className="slds-section__title">
-
-					{this.props.toggleable || this.props.onToggleClick
-						?	<Button
+					{this.props.toggleable || this.props.onToggleClick ? (
+						<Button
 							assistiveText={this.props.collapseSectionAssistiveText}
 							iconName="switch"
 							onClick={this.toggleOpen}
 							className="slds-m-right--small"
 							variant="icon"
 						/>
-						: null
-					}
+					) : null}
 					<h3>{this.props.title}</h3>
 				</div>
 				<div className="slds-section__content">
-					<ul className={classNames('slds-grid slds-grid--pull-padded slds-wrap', sectionIsOpenClass)}>
+					<ul
+						className={classNames(
+							'slds-grid slds-grid--pull-padded slds-wrap',
+							sectionIsOpenClass
+						)}
+					>
 						{React.Children.map(this.props.children, (child) => (
 							<li
 								className={classNames(
 									'slds-col--padded slds-grow-none',
 									child.props.size === 'small'
-									? 'slds-size--xx-small'
-									: 'slds-size--1-of-1 slds-medium-size--1-of-3'
+										? 'slds-size--xx-small'
+										: 'slds-size--1-of-1 slds-medium-size--1-of-3'
 								)}
 							>
 								{child}

@@ -12,7 +12,6 @@ import ListboxExample from '../__examples__/listbox';
 import IconListboxExample from '../__examples__/listbox-icon';
 import AvatarListboxExample from '../__examples__/listbox-avatar';
 
-
 storiesOf(PILL, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around--medium">
@@ -24,5 +23,9 @@ storiesOf(PILL, module)
 	.add('Bare', () => <BarePillListboxExample action={action} />)
 	.add('Pill Container', () => <ContainerExample action={action} />)
 	.add('Listbox Of Pill Options', () => <ListboxExample action={action} />)
-	.add('Listbox Of Pill Options With Icon', () => <IconListboxExample action={action} />)
-	.add('Listbox Of Pill Options With Avatar', () => <AvatarListboxExample action={action} />);
+	.add('Listbox Of Pill Options With Icon', () => (
+		<IconListboxExample action={action} />
+	))
+	.add('Listbox Of Pill Options With Avatar', () => (
+		<AvatarListboxExample action={action} />
+	));

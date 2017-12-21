@@ -8,9 +8,7 @@ import PropTypes from 'prop-types';
 import { CARD_FOOTER } from '../../../utilities/constants';
 
 const CardFooter = (props) => (
-	<div className="slds-card__footer">
-		{props.children}
-	</div>
+	<div className="slds-card__footer">{props.children}</div>
 );
 
 CardFooter.displayName = CARD_FOOTER;

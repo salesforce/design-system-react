@@ -17,8 +17,12 @@ const Example = createReactClass({
 		return (
 			<Datepicker
 				isOpen={this.state.isOpen}
-				onRequestClose={() => { this.setState({ isOpen: false }); }}
-				onRequestOpen={() => { this.setState({ isOpen: true }); }}
+				onRequestClose={() => {
+					this.setState({ isOpen: false });
+				}}
+				onRequestOpen={() => {
+					this.setState({ isOpen: true });
+				}}
 				onChange={(event, data) => {
 					if (this.props.action) {
 						const dataAsArray = Object.keys(data).map((key) => data[key]);
@@ -34,4 +38,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

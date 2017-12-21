@@ -23,8 +23,8 @@ import Button from '../button';
 import { MENU_DROPDOWN_TRIGGER } from '../../../utilities/constants';
 
 /**
-*  The Dropdown Button Trigger renders the default trigger button for the dropdown menu. If this component has children, it does not render itself to the DOM. Instead, it renders its child element, `Button`, and all that child's properties. This component may be used as a template to create custom triggers that do not use `Button`.
-*/
+ *  The Dropdown Button Trigger renders the default trigger button for the dropdown menu. If this component has children, it does not render itself to the DOM. Instead, it renders its child element, `Button`, and all that child's properties. This component may be used as a template to create custom triggers that do not use `Button`.
+ */
 const GlobalHeaderDropdownTrigger = createReactClass({
 	// TODO: Make this a stateless component, however dropdowns break when this component becomes stateless.
 
@@ -42,18 +42,22 @@ const GlobalHeaderDropdownTrigger = createReactClass({
 		/**
 		 * CSS classes to be added to `li` element.
 		 */
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		className: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string
+		]),
 		/**
-		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
-		*/
+		 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
+		 */
 		id: PropTypes.string,
 		/**
 		 * Informs the trigger on the open/close state of the dropdown menu
 		 */
 		isOpen: PropTypes.bool,
 		/**
-		* Adds custom styling such as inverse fill and special sizing/spacing
-		*/
+		 * Adds custom styling such as inverse fill and special sizing/spacing
+		 */
 		globalAction: PropTypes.bool,
 		/**
 		 * The dropdown menu.
@@ -128,7 +132,7 @@ const GlobalHeaderDropdownTrigger = createReactClass({
 			<li
 				aria-haspopup="true"
 				className={classnames(
-				'slds-dropdown-trigger slds-dropdown-trigger--click',
+					'slds-dropdown-trigger slds-dropdown-trigger--click',
 					{
 						'slds-is-open': isOpen,
 						'slds-p-around--xx-small': globalAction
@@ -147,14 +151,20 @@ const GlobalHeaderDropdownTrigger = createReactClass({
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				<Button
-					className={classnames({ 'slds-global-header__button--icon-actions': globalAction })}
-					iconClassName={classnames({ 'slds-global-header__icon-actions': globalAction })}
+					className={classnames({
+						'slds-global-header__button--icon-actions': globalAction
+					})}
+					iconClassName={classnames({
+						'slds-global-header__icon-actions': globalAction
+					})}
 					aria-haspopup="true"
 					{...rest}
 				>
-					{avatar ? <span className="slds-avatar slds-avatar--circle slds-avatar--medium">
-						<img src={avatar} alt="" />
-					</span> : null}
+					{avatar ? (
+						<span className="slds-avatar slds-avatar--circle slds-avatar--medium">
+							<img src={avatar} alt="" />
+						</span>
+					) : null}
 				</Button>
 				{menu}
 			</li>

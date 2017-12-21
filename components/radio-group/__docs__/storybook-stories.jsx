@@ -11,7 +11,6 @@ import Radio from '../../radio-group/radio';
 import { RADIO_GROUP } from '../../../utilities/constants';
 
 class RadioGroupExample extends React.Component {
-
 	constructor (props) {
 		super(props);
 		this.state = {};
@@ -67,8 +66,15 @@ RadioGroupExample.defaultProps = {
 };
 
 storiesOf(RADIO_GROUP, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => (
+		<div className="slds-p-around--medium">{getStory()}</div>
+	))
 	.add('Base', () => <RadioGroupExample heading="Base" />)
 	.add('Disabled', () => <RadioGroupExample heading="Disabled" disabled />)
 	.add('Required', () => <RadioGroupExample heading="Required" required />)
-	.add('Error', () => <RadioGroupExample heading="Error" labels={{ label: 'Radio Group Label', error: 'There is an error' }} />);
+	.add('Error', () => (
+		<RadioGroupExample
+			heading="Error"
+			labels={{ label: 'Radio Group Label', error: 'There is an error' }}
+		/>
+	));

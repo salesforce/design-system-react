@@ -20,8 +20,8 @@ const propTypes = {
 	 */
 	children: PropTypes.node.isRequired,
 	/**
-	* Custom CSS classes added to `slds-radio_button-group` node.
-	*/
+	 * Custom CSS classes added to `slds-radio_button-group` node.
+	 */
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
@@ -66,12 +66,13 @@ const defaultProps = { labels: {} };
  * The RadioButtonGroup component wraps [Radio](/components/radios) components, which should be used as children.
  */
 class RadioButtonGroup extends React.Component {
-
 	constructor (props) {
 		super(props);
 
 		// Merge objects of strings with their default object
-		this.labels = this.props.labels ? assign({}, defaultProps.labels, this.props.labels) : defaultProps.labels;
+		this.labels = this.props.labels
+			? assign({}, defaultProps.labels, this.props.labels)
+			: defaultProps.labels;
 
 		this.generatedName = shortid.generate();
 		this.generatedErrorId = this.labels.error ? shortid.generate() : null;
@@ -109,21 +110,29 @@ class RadioButtonGroup extends React.Component {
 				})}
 			>
 				<legend className="slds-form-element__legend slds-form-element__label">
-					{this.props.required ? <abbr className="slds-required" title="required">*</abbr> : null}
+					{this.props.required ? (
+						<abbr className="slds-required" title="required">
+							*
+						</abbr>
+					) : null}
 					{this.labels.label}
 				</legend>
-				<div className={classNames('slds-form-element__control', this.props.className)}>
-					<div className="slds-radio_button-group">
-						{children}
-					</div>
-					{this.labels.error ?
+				<div
+					className={classNames(
+						'slds-form-element__control',
+						this.props.className
+					)}
+				>
+					<div className="slds-radio_button-group">{children}</div>
+					{this.labels.error ? (
 						<div id={this.getErrorId()} className="slds-form-element__help">
 							{this.labels.error}
-						</div> : null}
+						</div>
+					) : null}
 				</div>
-			</fieldset>);
+			</fieldset>
+		);
 	}
-
 }
 
 RadioButtonGroup.displayName = RADIO_BUTTON_GROUP;

@@ -26,8 +26,8 @@ const DatepickerMonthNavigation = createReactClass({
 		 */
 		id: PropTypes.string,
 		/**
-     * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
-     */
+		 * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
+		 */
 		initialDateForCalendarRender: PropTypes.instanceOf(Date).isRequired,
 		/**
 		 * Displayed calendar has changed or re-rendered
@@ -61,11 +61,17 @@ const DatepickerMonthNavigation = createReactClass({
 	},
 
 	previousMonthClicked () {
-		this.props.onChangeMonth(undefined, DateUtil.addMonths(this.props.initialDateForCalendarRender, -1));
+		this.props.onChangeMonth(
+			undefined,
+			DateUtil.addMonths(this.props.initialDateForCalendarRender, -1)
+		);
 	},
 
 	nextMonthClicked () {
-		this.props.onChangeMonth(undefined, DateUtil.addMonths(this.props.initialDateForCalendarRender, 1));
+		this.props.onChangeMonth(
+			undefined,
+			DateUtil.addMonths(this.props.initialDateForCalendarRender, 1)
+		);
 	},
 
 	handleYearSelect (initialDateForCalendarRender) {
@@ -73,7 +79,9 @@ const DatepickerMonthNavigation = createReactClass({
 	},
 
 	getMonthLabel () {
-		return this.props.monthLabels[new Date(this.props.initialDateForCalendarRender).getMonth()];
+		return this.props.monthLabels[
+			new Date(this.props.initialDateForCalendarRender).getMonth()
+		];
 	},
 
 	getYearLabel () {
@@ -104,7 +112,10 @@ const DatepickerMonthNavigation = createReactClass({
 						className="slds-align-middle"
 						aria-live="assertive"
 						aria-atomic
-					>{this.getMonthLabel()} <span className="slds-assistive-text">{this.getYearLabel()}</span></h2>
+					>
+						{this.getMonthLabel()}{' '}
+						<span className="slds-assistive-text">{this.getYearLabel()}</span>
+					</h2>
 					<div className="slds-align-middle">
 						<Button
 							assistiveText={this.props.assistiveTextNextMonth}

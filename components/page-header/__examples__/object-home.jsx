@@ -14,12 +14,8 @@ const Example = createReactClass({
 		const navRight = (
 			<div>
 				<ButtonGroup>
-					<Button
-						label="New Lead"
-					/>
-					<Button
-						label="Import Leads"
-					/>
+					<Button label="New Lead" />
+					<Button label="Import Leads" />
 					<Dropdown
 						align="right"
 						assistiveText="More Options"
@@ -122,28 +118,30 @@ const Example = createReactClass({
 					info="10 items • sorted by name"
 					label="Leads"
 					navRight={navRight}
-					title={<h1 className="slds-page-header__title slds-p-right--x-small">
-						<Dropdown
-							options={[
-								{ label: 'Menu Item One', value: 'A0' },
-								{ label: 'Menu Item Two', value: 'B0' },
-								{ label: 'Menu Item Three', value: 'C0' },
-								{ type: 'divider' },
-								{ label: 'Menu Item Four', value: 'D0' }
-							]}
-						>
-							<DropdownTrigger>
-								<Button
-									className="slds-button--reset slds-type-focus"
-									iconName="down"
-									iconPosition="right"
-									label="Dropdown"
-									responsive
-									variant="base"
-								/>
-							</DropdownTrigger>
-						</Dropdown>
-					</h1>}
+					title={
+						<h1 className="slds-page-header__title slds-p-right--x-small">
+							<Dropdown
+								options={[
+									{ label: 'Menu Item One', value: 'A0' },
+									{ label: 'Menu Item Two', value: 'B0' },
+									{ label: 'Menu Item Three', value: 'C0' },
+									{ type: 'divider' },
+									{ label: 'Menu Item Four', value: 'D0' }
+								]}
+							>
+								<DropdownTrigger>
+									<Button
+										className="slds-button--reset slds-type-focus"
+										iconName="down"
+										iconPosition="right"
+										label="Dropdown"
+										responsive
+										variant="base"
+									/>
+								</DropdownTrigger>
+							</Dropdown>
+						</h1>
+					}
 					truncate
 					variant="objectHome"
 				/>
@@ -152,4 +150,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

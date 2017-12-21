@@ -9,7 +9,6 @@ import { expect } from 'chai';
 
 const { Simulate } = TestUtils;
 
-
 describe('SLDSPill', () => {
 	const LABEL = 'Pill Label';
 	const LABEL_TITLE = 'Full pill label verbiage mirrored here';
@@ -20,24 +19,26 @@ describe('SLDSPill', () => {
 		const onFocus = sinon.stub();
 		const onBlur = sinon.stub();
 
-		beforeEach(mountComponent(
-			<SLDSPill
-				tabIndex="0"
-				labels={{
-					label: LABEL,
-					title: LABEL_TITLE,
-					removeTitle: 'Remove'
-				}}
-				assistiveText={{
-					remove: 'Remove assistive text'
-				}}
-				className="extra-class"
-				onClick={onClick}
-				onRemove={onRemove}
-				onFocus={onFocus}
-				onBlur={onBlur}
-			/>
-		));
+		beforeEach(
+			mountComponent(
+				<SLDSPill
+					tabIndex="0"
+					labels={{
+						label: LABEL,
+						title: LABEL_TITLE,
+						removeTitle: 'Remove'
+					}}
+					assistiveText={{
+						remove: 'Remove assistive text'
+					}}
+					className="extra-class"
+					onClick={onClick}
+					onRemove={onRemove}
+					onFocus={onFocus}
+					onBlur={onBlur}
+				/>
+			)
+		);
 
 		afterEach(unmountComponent);
 
@@ -72,10 +73,16 @@ describe('SLDSPill', () => {
 		it('focuses and blurs', function () {
 			this.wrapper.instance().focus();
 			const pill = this.wrapper.find('.slds-pill');
-			expect(pill.matchesElement(document.activeElement)).to.be.equal(true, 'Pill was not focused');
+			expect(pill.matchesElement(document.activeElement)).to.be.equal(
+				true,
+				'Pill was not focused'
+			);
 			expect(onFocus.calledOnce).to.be.true;
 			this.wrapper.instance().blur();
-			expect(pill.matchesElement(document.activeElement)).to.be.equal(false, 'Pill was not blurred');
+			expect(pill.matchesElement(document.activeElement)).to.be.equal(
+				false,
+				'Pill was not blurred'
+			);
 			expect(onBlur.calledOnce).to.be.true;
 		});
 
@@ -97,14 +104,16 @@ describe('SLDSPill', () => {
 	describe('Linked With Href', () => {
 		const HREF = 'https://www.salesforce.com';
 
-		beforeEach(mountComponent(
-			<SLDSPill
-				labels={{
-					label: LABEL
-				}}
-				href={HREF}
-			/>
-		));
+		beforeEach(
+			mountComponent(
+				<SLDSPill
+					labels={{
+						label: LABEL
+					}}
+					href={HREF}
+				/>
+			)
+		);
 
 		afterEach(unmountComponent);
 
@@ -117,13 +126,15 @@ describe('SLDSPill', () => {
 	});
 
 	describe('Link style on', () => {
-		beforeEach(mountComponent(
-			<SLDSPill
-				labels={{
-					label: LABEL
-				}}
-			/>
-		));
+		beforeEach(
+			mountComponent(
+				<SLDSPill
+					labels={{
+						label: LABEL
+					}}
+				/>
+			)
+		);
 
 		afterEach(unmountComponent);
 
@@ -135,33 +146,38 @@ describe('SLDSPill', () => {
 	});
 
 	describe('Bare Linked With Role', () => {
-		beforeEach(mountComponent(
-			<SLDSPill
-				labels={{
-					label: LABEL
-				}}
-				bare
-			/>
-		));
+		beforeEach(
+			mountComponent(
+				<SLDSPill
+					labels={{
+						label: LABEL
+					}}
+					bare
+				/>
+			)
+		);
 
 		afterEach(unmountComponent);
 
 		it('has correct style and attributes', function () {
 			expect(this.wrapper.hasClass('slds-pill')).to.be.true;
 			expect(this.wrapper.hasClass('slds-pill_bare')).to.be.true;
-			expect(this.wrapper.find('.slds-pill[role="button"]').exists()).to.be.true;
+			expect(this.wrapper.find('.slds-pill[role="button"]').exists()).to.be
+				.true;
 		});
 	});
 
 	describe('Linked With Error', () => {
-		beforeEach(mountComponent(
-			<SLDSPill
-				labels={{
-					label: LABEL
-				}}
-				hasError
-			/>
-		));
+		beforeEach(
+			mountComponent(
+				<SLDSPill
+					labels={{
+						label: LABEL
+					}}
+					hasError
+				/>
+			)
+		);
 
 		afterEach(unmountComponent);
 
@@ -173,21 +189,17 @@ describe('SLDSPill', () => {
 	describe('Linked With Icon', () => {
 		const onClick = sinon.stub();
 
-		beforeEach(mountComponent(
-			<SLDSPill
-				labels={{
-					label: LABEL
-				}}
-				onClick={onClick}
-				icon={
-					<SLDSIcon
-						title="Account"
-						category="standard"
-						name="account"
-					/>
-				}
-			/>
-		));
+		beforeEach(
+			mountComponent(
+				<SLDSPill
+					labels={{
+						label: LABEL
+					}}
+					onClick={onClick}
+					icon={<SLDSIcon title="Account" category="standard" name="account" />}
+				/>
+			)
+		);
 
 		afterEach(unmountComponent);
 
@@ -201,20 +213,22 @@ describe('SLDSPill', () => {
 	});
 
 	describe('Linked With Avatar', () => {
-		beforeEach(mountComponent(
-			<SLDSPill
-				labels={{
-					label: LABEL
-				}}
-				avatar={
-					<SLDSAvatar
-						variant="user"
-						title="User avatar"
-						imgSrc="https://lightningdesignsystem.com/assets/images/avatar2.jpg"
-					/>
-				}
-			/>
-		));
+		beforeEach(
+			mountComponent(
+				<SLDSPill
+					labels={{
+						label: LABEL
+					}}
+					avatar={
+						<SLDSAvatar
+							variant="user"
+							title="User avatar"
+							imgSrc="https://lightningdesignsystem.com/assets/images/avatar2.jpg"
+						/>
+					}
+				/>
+			)
+		);
 
 		afterEach(unmountComponent);
 
@@ -223,24 +237,28 @@ describe('SLDSPill', () => {
 			expect(avatar.exists()).to.be.true;
 			expect(avatar.prop('title')).to.equal('User avatar');
 			expect(avatar.prop('variant')).to.equal('user');
-			expect(avatar.prop('imgSrc')).to.equal('https://lightningdesignsystem.com/assets/images/avatar2.jpg');
+			expect(avatar.prop('imgSrc')).to.equal(
+				'https://lightningdesignsystem.com/assets/images/avatar2.jpg'
+			);
 		});
 	});
 
 	describe('Option', () => {
 		const onRemove = sinon.stub();
 
-		beforeEach(mountComponent(
-			<SLDSPill
-				labels={{
-					label: LABEL,
-					title: LABEL_TITLE
-				}}
-				variant="option"
-				removeTitle="Remove"
-				onRemove={onRemove}
-			/>
-		));
+		beforeEach(
+			mountComponent(
+				<SLDSPill
+					labels={{
+						label: LABEL,
+						title: LABEL_TITLE
+					}}
+					variant="option"
+					removeTitle="Remove"
+					onRemove={onRemove}
+				/>
+			)
+		);
 
 		afterEach(unmountComponent);
 
@@ -256,14 +274,13 @@ describe('SLDSPill', () => {
 		const onClick = sinon.stub();
 		const onRemove = sinon.stub();
 
-		beforeEach(mountComponent(
-			<SLDSPill
-				onClick={onClick}
-				onRemove={onRemove}
-			>
-				<div className="abc">this is a custom label</div>
-			</SLDSPill>
-		));
+		beforeEach(
+			mountComponent(
+				<SLDSPill onClick={onClick} onRemove={onRemove}>
+					<div className="abc">this is a custom label</div>
+				</SLDSPill>
+			)
+		);
 
 		afterEach(unmountComponent);
 

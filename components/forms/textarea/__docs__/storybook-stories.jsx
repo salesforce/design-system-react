@@ -5,9 +5,12 @@ import IconSettings from '../../../icon-settings';
 import { FORMS_TEXTAREA } from '../../../../utilities/constants';
 import Textarea from '../';
 
-
 storiesOf(FORMS_TEXTAREA, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
+	.addDecorator((getStory) => (
+		<div className="slds-p-around--medium">
+			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+		</div>
+	))
 	.add('Standard', () => (
 		<Textarea
 			label="Textarea Label"

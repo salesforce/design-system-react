@@ -81,10 +81,14 @@ const handleKeyDown = (event, { events, data }) => {
 		callbacks: {
 			[KEYS.BACKSPACE]: { callback: events.onRequestRemove, data },
 			[KEYS.DELETE]: { callback: events.onRequestRemove, data },
-			[KEYS.LEFT]: { callback: events.onRequestFocusOnPreviousPill,
-				data: { ...data, direction: 'previous' } },
-			[KEYS.RIGHT]: { callback: events.onRequestFocusOnNextPill,
-				data: { ...data, direction: 'next' } }
+			[KEYS.LEFT]: {
+				callback: events.onRequestFocusOnPreviousPill,
+				data: { ...data, direction: 'previous' }
+			},
+			[KEYS.RIGHT]: {
+				callback: events.onRequestFocusOnNextPill,
+				data: { ...data, direction: 'next' }
+			}
 		}
 	});
 };
@@ -95,7 +99,11 @@ const handleClickRemove = (event, { events, eventData }) => {
 };
 
 const Pill = (props) => {
-	const assistiveText = assign({}, defaultProps.assistiveText, props.assistiveText);
+	const assistiveText = assign(
+		{},
+		defaultProps.assistiveText,
+		props.assistiveText
+	);
 	const labels = assign({}, defaultProps.labels, props.labels);
 
 	return (
@@ -109,13 +117,17 @@ const Pill = (props) => {
 			}}
 			aria-selected={props.active}
 			onBlur={props.events.onBlur}
-			onClick={typeof props.events.onClick === 'function' ? (event) => {
-				if (props.events.onClick) {
-					props.events.onClick(event, {
-						option: props.eventData
-					});
-				}
-			} : null}
+			onClick={
+				typeof props.events.onClick === 'function'
+					? (event) => {
+						if (props.events.onClick) {
+							props.events.onClick(event, {
+								option: props.eventData
+							});
+						}
+					}
+					: null
+			}
 			onRemove={(event) => {
 				EventUtil.trap(event);
 				handleClickRemove(event, {

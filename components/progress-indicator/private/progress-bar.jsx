@@ -35,9 +35,13 @@ class ProgressBar extends React.Component {
 					className="slds-progress-bar__value"
 					style={{ width: `${this.props.value}%` }}
 				>
-					<span className="slds-assistive-text">{this.props.assistiveText.percentage || `Progress: ${this.props.value}%`}</span>
+					<span className="slds-assistive-text">
+						{this.props.assistiveText.percentage ||
+							`Progress: ${this.props.value}%`}
+					</span>
 				</span>
-			</div>);
+			</div>
+		);
 	}
 }
 

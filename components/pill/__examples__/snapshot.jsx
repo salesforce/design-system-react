@@ -5,8 +5,7 @@ import Pill from '~/components/pill'; // `~` is replaced with design-system-reac
 import Icon from '~/components/icon';
 import Avatar from '~/components/avatar';
 
-function noop () {
-}
+function noop () {}
 
 const Example = createReactClass({
 	displayName: 'PillExample',
@@ -43,13 +42,7 @@ const Example = createReactClass({
 								title: 'Full pill label verbiage mirrored here',
 								removeTitle: 'Remove'
 							}}
-							icon={
-								<Icon
-									title="Account"
-									category="standard"
-									name="account"
-								/>
-							}
+							icon={<Icon title="Account" category="standard" name="account" />}
 							onClick={noop}
 							onRemove={noop}
 						/>
@@ -115,4 +108,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

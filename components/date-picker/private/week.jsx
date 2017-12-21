@@ -13,25 +13,29 @@ const DatepickerWeek = (props) => {
 	let date = props.firstDayOfWeek;
 
 	for (let i = 0; i < 7; i++) {
-		days.push(<Day
-			calendarHasFocus={props.calendarHasFocus}
-			date={date}
-			disabled={props.dateDisabled({ date })}
-			focusedDate={props.focusedDate}
-			initialDateForCalendarRender={props.initialDateForCalendarRender}
-			key={date.toString()}
-			onKeyboardNavigateToNextDay={props.onKeyboardNavigateToNextDay}
-			onKeyboardNavigateToNextWeek={props.onKeyboardNavigateToNextWeek}
-			onKeyboardNavigateToPreviousDay={props.onKeyboardNavigateToPreviousDay}
-			onKeyboardNavigateToPreviousWeek={props.onKeyboardNavigateToPreviousWeek}
-			onCalendarBlur={props.onCalendarBlur}
-			onRequestClose={props.onRequestClose}
-			onRequestInternalFocusDate={props.onRequestInternalFocusDate}
-			onSelectDate={props.onSelectDate}
-			selectedDate={props.selectedDate}
-			selectedDateRef={props.selectedDateRef}
-			todayLabel={props.todayLabel}
-		/>);
+		days.push(
+			<Day
+				calendarHasFocus={props.calendarHasFocus}
+				date={date}
+				disabled={props.dateDisabled({ date })}
+				focusedDate={props.focusedDate}
+				initialDateForCalendarRender={props.initialDateForCalendarRender}
+				key={date.toString()}
+				onKeyboardNavigateToNextDay={props.onKeyboardNavigateToNextDay}
+				onKeyboardNavigateToNextWeek={props.onKeyboardNavigateToNextWeek}
+				onKeyboardNavigateToPreviousDay={props.onKeyboardNavigateToPreviousDay}
+				onKeyboardNavigateToPreviousWeek={
+					props.onKeyboardNavigateToPreviousWeek
+				}
+				onCalendarBlur={props.onCalendarBlur}
+				onRequestClose={props.onRequestClose}
+				onRequestInternalFocusDate={props.onRequestInternalFocusDate}
+				onSelectDate={props.onSelectDate}
+				selectedDate={props.selectedDate}
+				selectedDateRef={props.selectedDateRef}
+				todayLabel={props.todayLabel}
+			/>
+		);
 		date = DateUtil.addDays(date, 1);
 	}
 
@@ -44,24 +48,24 @@ const DatepickerWeek = (props) => {
 
 DatepickerWeek.propTypes = {
 	/**
-   * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
-   */
+	 * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
+	 */
 	initialDateForCalendarRender: PropTypes.instanceOf(Date).isRequired,
 	/**
-   * Is true if calendar day has focus.
-   */
+	 * Is true if calendar day has focus.
+	 */
 	calendarHasFocus: PropTypes.bool.isRequired,
 	/**
 	 * dateDisabled() takes a date as input argument, returns true if given date should be disabled, otherwise returns false.
 	 */
 	dateDisabled: PropTypes.func,
 	/**
-   * First day of week.
-   */
+	 * First day of week.
+	 */
 	firstDayOfWeek: PropTypes.instanceOf(Date).isRequired,
 	/**
-   * Date that has focus.
-   */
+	 * Date that has focus.
+	 */
 	focusedDate: PropTypes.instanceOf(Date).isRequired,
 	/**
 	 * Triggered when the keyboard moves focus off the calendar.

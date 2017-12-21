@@ -7,21 +7,21 @@ import classnames from 'classnames';
 
 const displayName = 'PageHeaderTitle';
 const propTypes = {
-  /**
-   * Sets whether the title will truncate its content responsively.
-   */
+	/**
+	 * Sets whether the title will truncate its content responsively.
+	 */
 	truncate: PropTypes.bool,
-  /**
-   * Sets the vertical alignment on the title
-   */
+	/**
+	 * Sets the vertical alignment on the title
+	 */
 	align: PropTypes.oneOf(['top', 'middle', 'bottom']),
-  /**
-   * The title string (required)
-   */
+	/**
+	 * The title string (required)
+	 */
 	title: PropTypes.string.isRequired,
-  /**
-   * Optional class name
-   */
+	/**
+	 * Optional class name
+	 */
 	className: PropTypes.string
 };
 const defaultProps = {
@@ -44,11 +44,16 @@ class Title extends Component {
 		);
 	}
 
-	_getClassNames (truncate, align, className) { // eslint-disable-line class-methods-use-this
-		return classnames('slds-page-header__title slds-m-right--small', className, {
-			'slds-truncate': truncate,
-			[`slds-align-${align}`]: align
-		});
+	_getClassNames (truncate, align, className) {
+		// eslint-disable-line class-methods-use-this
+		return classnames(
+			'slds-page-header__title slds-m-right--small',
+			className,
+			{
+				'slds-truncate': truncate,
+				[`slds-align-${align}`]: align
+			}
+		);
 	}
 }
 

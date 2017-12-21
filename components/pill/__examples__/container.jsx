@@ -60,7 +60,12 @@ const Example = createReactClass({
 						</div>
 						<div className="slds-p-horizontal_medium">
 							<div className="slds-pill_container">
-								<ul className="slds-listbox slds-listbox_horizontal slds-listbox_inline" role="listbox" aria-label="Selected Options:" aria-orientation="horizontal">
+								<ul
+									className="slds-listbox slds-listbox_horizontal slds-listbox_inline"
+									role="listbox"
+									aria-label="Selected Options:"
+									aria-orientation="horizontal"
+								>
 									<li className="slds-listbox-item" role="presentation">
 										<Pill
 											labels={{

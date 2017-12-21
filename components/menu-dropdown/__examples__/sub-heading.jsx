@@ -13,7 +13,9 @@ const Example = createReactClass({
 					assistiveText="More Options"
 					iconName="down"
 					iconVariant="border-filled"
-					onSelect={(value) => { console.log('selected: ', value); }}
+					onSelect={(value) => {
+						console.log('selected: ', value);
+					}}
 					options={[
 						{ label: 'Menu Sub Heading', type: 'header' },
 						{ label: 'Menu Item One', value: 'A0' },
@@ -28,4 +30,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
