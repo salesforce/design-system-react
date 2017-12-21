@@ -118,6 +118,8 @@ class Example extends React.Component {
 							label: 'Search',
 							placeholder: 'Search Salesforce'
 						}}
+						menuPosition="relative"
+						multiple
 						options={comboboxFilterAndLimit({
 							inputValue: this.state.inputValue,
 							options: accountsWithIcon,
@@ -125,7 +127,7 @@ class Example extends React.Component {
 						})}
 						selection={this.state.selection}
 						value={this.state.selectedOption ? this.state.selectedOption.label : this.state.inputValue}
-						variant="inline-listbox"
+						variant="dynamic-menu"
 					/>
 					{/* <Button icon={<Icon category="standard" name="account" variant="icon" />} /> */}
 				</DynamicMenu>

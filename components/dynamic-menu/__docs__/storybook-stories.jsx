@@ -10,4 +10,4 @@ import DynamicMenu10ItemsExample from '../__examples__/dynamic-menu-10-items';
 
 storiesOf(DYNAMIC_MENU, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
-	.add('Base', () => (<DynamicMenu10ItemsExample availableItems={[1, 2, 3]} />));
+	.add('Base', () => (<DynamicMenu10ItemsExample />));
