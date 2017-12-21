@@ -1,6 +1,6 @@
 {
   "name": "design-system-react",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Salesforce Lightning Design System for React",
   "license": "SEE LICENSE IN README.md",
   "engines": {
@@ -447,12 +447,12 @@
         }
       ]
     },
-	{
-	  "component": "pill",
-	  "status": "prototype",
-	  "display-name": "Pills",
-	  "SLDS-component-path": "/components/pills"
-	},
+    {
+      "component": "pill",
+      "status": "prototype",
+      "display-name": "Pills",
+      "SLDS-component-path": "/components/pills"
+    },
     {
       "component": "popover",
       "status": "prod",
