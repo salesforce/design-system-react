@@ -67,9 +67,9 @@ These are changes that have backwards-compatible solutions present and that comp
 
 **Major features**
 
-* Add [Accordion](https://design-system-react.herokuapp.com/components/accordions/) component 
-* Add [Alert](https://design-system-react.herokuapp.com/components/alerts/) component 
-* Add [Toast](https://design-system-react.herokuapp.com/components/toasts/) component 
+* Add [Accordion](https://design-system-react.herokuapp.com/components/accordions/) component
+* Add [Alert](https://design-system-react.herokuapp.com/components/alerts/) component
+* Add [Toast](https://design-system-react.herokuapp.com/components/toasts/) component
 
 **Bugfix Changes**
 
@@ -92,7 +92,7 @@ These are changes that have backwards-compatible solutions present and that comp
 ## Release 0.7.1
 - Allow inline icons and `icon` prop data passed directly in to work properly again.
 - Rename internal constant bugs having to do with component names
-- Pass `assistiveText` from MenuDropdown to trigger button 
+- Pass `assistiveText` from MenuDropdown to trigger button
 - Replace `classname` with `classnameContainer` on TextArea container
 - Clarify test readme
 
@@ -308,7 +308,7 @@ ReactDOM.render(
 
 **Minor Changes**
 
-- `Datepicker` has a `dateDisabled` callback to allow disabling of arbitary dates.
+- `Datepicker` has a `dateDisabled` callback to allow disabling of arbitrary dates.
 - `Filter` has a `popover` prop that allows custom props to be passed in and allows the `Filter`'s popover to be controlled by the developer instead of the `Filter`.
 - `Lookup` has an additional item compare to see if it should update its internal state. This is a temporary hack until state can be removed from `Lookup` and it can directly use props.
 - Inline icons are now [v7.7.0](https://github.com/salesforce-ux/icons/releases/tag/v7.7.0). Version was just updated in a prior release.
@@ -372,7 +372,7 @@ ReactDOM.render(
     - `onChange` (formerly onDateChange) now provides callback with event and a data object in the shape: `{date: [Date object], formattedDate: [string], timezoneOffset: [number]}`
     - Many new props and features: calendar alignment, assistive text props, accepts custom input, supports ISO weekday (Monday first), new props to allow calendar to be controlled (onClose, onOpen, onRequestClose, onRequestOpen), `portalMount` prop for testing React root nodes, more alignment with other menu/dialog components
     - Additional accessiblity and testing
-    - See [Date Picker documentation](https://react.lightningdesignsystem.com/components/datepickers/) for fullset of changes
+    - See [Date Picker documentation](https://react.lightningdesignsystem.com/components/datepickers/) for the full set of changes
 - `id` on GlobalNav Link move to list item instead of `a` *[BREAKING CHANGE]*
 - In Button, `aria-*` props now use hyphen instead of camelCase. Use `aria-expanded` and not `ariaExpanded`. *[BREAKING CHANGE]*
 
@@ -411,7 +411,7 @@ ReactDOM.render(
 
 **DOCUMENTATION**
 
-- Adds mention of setting `AppElement` for `Modal` and `AppLauncher` to component documenation, so that the entire `body` is not hidden for assistive technology users.
+- Adds mention of setting `AppElement` for `Modal` and `AppLauncher` to component documentation, so that the entire `body` is not hidden for assistive technology users.
 
 ## Release 0.5.0
 
