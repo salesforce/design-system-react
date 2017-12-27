@@ -148,7 +148,7 @@ const SelectedListBox = (props) => (
 
 		</ul>
 	</div>
-	: null);
+		: null);
 
 SelectedListBox.displayName = 'SelectedListBox';
 SelectedListBox.propTypes = propTypes;

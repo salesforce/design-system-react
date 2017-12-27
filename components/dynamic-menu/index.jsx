@@ -12,7 +12,6 @@ import Popover from '../popover';
 
 import { DYNAMIC_MENU } from '../../utilities/constants';
 
-
 // ### Display Name Always use the canonical component name as the React display
 // name.
 
@@ -20,12 +19,19 @@ const displayName = DYNAMIC_MENU;
 
 // TODO: Add propType descriptions for documentation
 const propTypes = {
-	availableItems: PropTypes.array,
-	children: PropTypes.node,
-	onRemoveSelection: PropTypes.func,
-	searchBoxPlaceholder: PropTypes.string,
-	popoverOptions: PropTypes.arrayOf(PropTypes.node),
-	popoverTriggerElement: PropTypes.node
+	availableItems:
+		PropTypes.array,
+	children:
+		PropTypes.node,
+	onRemoveSelection:
+		PropTypes.func,
+	searchBoxPlaceholder:
+		PropTypes.string,
+	popoverOptions: PropTypes.arrayOf(
+		PropTypes.node
+	),
+	popoverTriggerElement:
+		PropTypes.node
 };
 
 const DynamicMenu = (props) => {
@@ -40,19 +46,18 @@ const DynamicMenu = (props) => {
 			<Popover
 				align="bottom left"
 				isOpen
-				body={<div className="slds-form-element">
-					<div className="slds-form-element__control">
-						<div className="slds-combobox_container">
-							{children}
-						</div>
-						<div>
-							{popoverOptions.map((option) => option)}
-						</div>
+				// TODO: Finish popover footer.
+				body={
+					<div>
+						{children}
+						{popoverOptions.map((option) => option)}
 					</div>
-				</div>}
-				heading="Confirmation"
+				}
+				position="relative"
 			>
-				{popoverTriggerElement}
+				{
+					popoverTriggerElement
+				}
 			</Popover>
 		</IconSettings>
 	);

@@ -380,7 +380,6 @@ class Combobox extends React.Component {
 			'inline-listbox': 'icon-title-subtitle',
 			readonly: 'checkbox'
 		};
-
 		return (
 			<Menu
 				assistiveText={assistiveText}
@@ -389,6 +388,7 @@ class Combobox extends React.Component {
 				classNameMenu={this.props.classNameMenu}
 				inputId={this.getId()}
 				inputValue={this.props.value}
+				isDynamicMenu={this.props.variant === 'dynamic-menu'}
 				isSelected={this.isSelected}
 				itemVisibleLength={this.props.variant === 'readonly'
 					? this.props.readOnlyMenuItemVisibleLength
@@ -710,14 +710,11 @@ class Combobox extends React.Component {
 				<div
 					className={classNames(
 						'slds-combobox',
-						'slds-dropdown-trigger',
-						'slds-dropdown-trigger_click',
-						'ignore-react-onclickoutside', {
-							'slds-is-open': this.getIsOpen()
-						},
+						'slds-is-open',
+						// TODO: remove?
 						props.className
 					)}
-					aria-expanded={this.getIsOpen()}
+					aria-expanded
 					aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
 					// used on menu's listbox
 					aria-owns={`${this.getId()}-listbox`} // eslint-disable-line jsx-a11y/aria-proptypes
@@ -757,27 +754,9 @@ class Combobox extends React.Component {
 								|| props.value
 							: props.value}
 					/>
-					{/* {this.getDialog({ menuRenderer: this.renderMenu({ assistiveText, labels }) })} */}
 				</div>
 			</div>
-			{/* <SelectedListBox
-				activeOption={this.state.activeSelectedOption}
-				activeOptionIndex={this.state.activeSelectedOptionIndex}
-				assistiveText={assistiveText}
-				events={{
-					onBlurPill: this.handleBlurPill,
-					onClickPill: this.handlePillClickListboxOfPills,
-					onRequestFocus: this.handleRequestFocusListboxOfPills,
-					onRequestFocusOnNextPill: this.handleNavigateListboxOfPills,
-					onRequestFocusOnPreviousPill: this.handleNavigateListboxOfPills,
-					onRequestRemove: this.handleRemoveSelectedOption
-				}}
-				id={this.getId()}
-				labels={labels}
-				selection={props.selection}
-				listboxHasFocus={this.state.listboxHasFocus}
-			/> */}
-			{this.getDialog({ menuRenderer: this.renderMenu({ assistiveText, labels }) })}
+			{this.renderMenu({ assistiveText, labels })}
 		</div>
 	);
 
@@ -1123,7 +1102,7 @@ class Combobox extends React.Component {
 			},
 			'dynamic-menu': {
 				multiple: this.renderDynamicMenu,	// same
-				single: this.renderBase
+				single: this.renderDynamicMenu
 			},
 			'inline-listbox': {
 				multiple: this.renderInlineMultiple,
@@ -1135,7 +1114,6 @@ class Combobox extends React.Component {
 			}
 		};
 		const variantExists = subRenders[this.props.variant][multipleOrSingle];
-
 		return (
 			<div
 				className={classNames(
@@ -1150,8 +1128,8 @@ class Combobox extends React.Component {
 				/>
 				{
 					variantExists
-				? subRenders[this.props.variant][multipleOrSingle](subRenderParameters)
-				: subRenders.base.multiple(subRenderParameters)}
+						? subRenders[this.props.variant][multipleOrSingle](subRenderParameters)
+						: subRenders.base.multiple(subRenderParameters)}
 			</div>
 		);
 	}

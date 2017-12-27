@@ -19,7 +19,9 @@ const accounts = [
 	{ id: '5', label: 'Paper St. Soap Company', subTitle: 'Account • Beloit, WI', type: 'account' },
 	{ id: '6', label: 'Nakatomi Investments', subTitle: 'Account • Chicago, IL', type: 'account' },
 	{ id: '7', label: 'Acme Landscaping', type: 'account' },
-	{ id: '8', label: 'Acme Construction', subTitle: 'Account • Grand Marais, MN', type: 'account' }
+	{ id: '8', label: 'Acme Construction', subTitle: 'Account • Grand Marais, MN', type: 'account' },
+	{ id: '9', label: 'Acme Construction', subTitle: 'Account • Grand Marais, MN', type: 'account' },
+	{ id: '10', label: 'Acme Construction', subTitle: 'Account • Grand Marais, MN', type: 'account' }
 ];
 
 const accountsWithIcon = accounts.map((elem) => Object.assign(elem, {
@@ -60,10 +62,11 @@ class Example extends React.Component {
 					]}
 					popoverTriggerElement={
 						<Button
-							assistiveText="Icon Favorite"
+							assistiveText="Show Favorites"
 							iconCategory="utility"
 							iconName="favorite"
 							iconVariant="border-filled"
+							title="Show Favorites"
 							variant="icon"
 						/>
 					}
@@ -79,28 +82,6 @@ class Example extends React.Component {
 									console.log('onChange', event, value);
 								}
 								this.setState({	inputValue: value });
-							},
-							onRequestRemoveSelectedOption: (event, data) => {
-								this.setState({
-									inputValue: '',
-									selection: data.selection
-								});
-							},
-							onSubmit: (event, { value }) => {
-								if (this.props.action) {
-									this.props.action('onChange')(event, value);
-								} else if (console) {
-									console.log('onChange', event, value);
-								}
-								this.setState({
-									inputValue: '',
-									selection: [...this.state.selection, {
-										label: value,
-										icon: <Icon
-											assistiveText="Account"
-											category="standard"
-											name="account"
-										/> }] });
 							},
 							onSelect: (event, data) => {
 								if (this.props.action) {
