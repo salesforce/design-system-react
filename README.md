@@ -6,8 +6,8 @@
 ## Getting Started
 Welcome to the project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/). It has been tested with React >=15.4.1 <16 and is stable despite its version numbers. A 1.0 will be released soon.
 
-* [Getting Started](https://design-system-react.herokuapp.com/getting-started/)
-* [Documentation and examples](https://design-system-react.herokuapp.com/)
+* [Getting Started](https://react.lightningdesignsystem.com/getting-started/)
+* [Documentation and examples](https://react.lightningdesignsystem.com)
 * [Contributing](CONTRIBUTING.md)
 * [Codebase Overview](docs/codebase-overview.md)
 * [Usage with Webpack](docs/webpack.md)
