@@ -37,15 +37,15 @@ Typically, scripts should be downloaded in the background without blocking the D
 import IconSettings from 'design-system-react/components/icon-settings';
 
 ReactDOM.render(
-	<IconSettings iconPath="/assets/icons">
-		<MyApp />
-	</IconSettings>,
-	document.getElementById('app')
-	)
+  <IconSettings iconPath="/assets/icons">
+    <MyApp />
+  </IconSettings>,
+  document.getElementById('app')
+)
 
 // `/assets/icons` wil be prepended to `/standard-sprite/svg/symbols.svg#account` within the SVG path
 <svg aria-hidden="true" class="slds-icon">
-   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
 </svg>
 ```
 
@@ -66,11 +66,11 @@ import standardSprite from '@salesforce-ux/design-system/assets/icons/standard-s
 ...
 
 ReactDOM.render(
-	<IconSettings standardSprite={standardSprite}>
-		<MyApp />
-	</IconSettings>,
-	document.getElementById('app')
-	)
+  <IconSettings standardSprite={standardSprite}>
+    <MyApp />
+  </IconSettings>,
+  document.getElementById('app')
+)
 ```
 
 ### Example
