@@ -116,7 +116,7 @@ const Popover = createReactClass({
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 		/*
-		 * All popovers require a close button.
+		 * Assistive text related to close button.
 		*/
 		closeButtonAssistiveText: PropTypes.oneOfType([PropTypes.string]),
 		/**
@@ -134,6 +134,10 @@ const Popover = createReactClass({
 		 * All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop.
 		*/
 		heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+		/*
+		 * This prop allows the close button to be hidden on the open popover.
+		*/
+		hideCloseButton: PropTypes.bool,
 		/**
 		* By default, a unique ID will be created at render to support keyboard navigation, ARIA roles, and connect the popover to the triggering button. This ID will be applied to the triggering element. `${id}-popover`, `${id}-dialog-heading`, `${id}-dialog-body` are also created.
 		*/
@@ -429,9 +433,9 @@ const Popover = createReactClass({
 						aria-labelledby={this.props.ariaLabelledby ? this.props.ariaLabelledby : `${this.getId()}-dialog-heading`}
 						aria-describedby={`${this.getId()}-dialog-body`}
 						className={classNames(
-						'slds-popover',
-						getNubbinClassName(props.align),
-						props.className,
+							'slds-popover',
+							getNubbinClassName(props.align),
+							props.className,
 						)}
 						id={`${this.getId()}-popover`}
 						role="dialog"
@@ -439,14 +443,16 @@ const Popover = createReactClass({
 						tabIndex="-1"
 						ref={this.setMenuRef}
 					>
-						<Button
-							assistiveText={props.closeButtonAssistiveText}
-							iconName="close"
-							iconSize="small"
-							className="slds-button slds-button--icon-small slds-float--right slds-popover__close slds-button--icon"
-							onClick={this.handleCancel}
-							variant="icon"
-						/>
+						{!this.props.hideCloseButton &&
+							<Button
+								assistiveText={props.closeButtonAssistiveText}
+								iconName="close"
+								iconSize="small"
+								className="slds-button slds-button--icon-small slds-float--right slds-popover__close slds-button--icon"
+								onClick={this.handleCancel}
+								variant="icon"
+							/>
+						}
 						{this.props.heading
 							? <header
 								className="slds-popover__header"

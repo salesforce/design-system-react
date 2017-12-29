@@ -31,6 +31,10 @@ const propTypes = {
 	 * Id used for assistive technology
 	 */
 	inputId: PropTypes.string,
+	/*
+	*
+	*/
+	isDynamicMenu: PropTypes.bool,
 	/**
 	 * Determines the height of the menu based on SLDS CSS classes.
 	 */
@@ -40,9 +44,6 @@ const propTypes = {
 	 * This object is merged with the default props object on every render.
 	 * * `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.
 	 */
-
-	isDynamicMenu: PropTypes.bool,
-
 	labels: shape({
 		noOptionsFound: PropTypes.string.isRequired
 	}),

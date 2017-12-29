@@ -71,7 +71,8 @@ class Example extends React.Component {
 								}
 							}}
 							labels={{
-								placeholder: 'Search Salesforce'
+								placeholder: 'Search Salesforce',
+								noOptionsFound: 'No matches found.'
 							}}
 							menuPosition="relative"
 							multiple
@@ -115,6 +116,7 @@ class Example extends React.Component {
 							/>
 						</div>
 					}
+					hideCloseButton
 					isOpen
 					position="relative"
 				>

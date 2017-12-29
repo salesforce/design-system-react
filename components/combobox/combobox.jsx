@@ -99,6 +99,10 @@ const propTypes = {
 	 */
 	hasStaticAlignment: PropTypes.bool,
 	/**
+	 * This prop will hide the `<InnerInput>` on `Combobox`. Only applies when `variant="dynamic-menu"`.
+	 */
+	hideInput: PropTypes.bool,
+	/**
 	 * HTML id for component. _Tested with snapshot testing._
 	 */
 	id: PropTypes.string,
@@ -712,11 +716,11 @@ class Combobox extends React.Component {
 		const {
 			assistiveText,
 			className,
+			hideInput,
 			labels,
 			predefinedOptionsOnly,
 			value
-		} = props;
-
+		} = this.props;
 		return (
 			<div>
 				<div className="slds-form-element__control">
@@ -741,40 +745,42 @@ class Combobox extends React.Component {
 								slds-m-around_small"
 								role="none"
 							>
-								<InnerInput
-									aria-autocomplete="list"
-									aria-controls={`${this.getId()}-listbox`}
-									aria-activedescendant={this.state.activeOption
-										? `${this.getId()}-listbox-option-${this.state.activeOption.id}`
-										:	null}
-									autoComplete="off"
-									className="slds-input slds-combobox__input"
-									containerProps={{
-										className: 'slds-combobox__form-element',
-										role: 'none'
-									}}
-									iconRight={<InputIcon
-										category="utility"
-										name="search"
-										title={labels.inputIconTitle}
-									/>}
-									id={this.getId()}
-									onFocus={this.handleInputFocus}
-									onBlur={this.handleInputBlur}
-									onKeyDown={this.handleKeyDown}
-									inputRef={this.setInputRef}
-									onClick={() => {
-										this.openDialog();
-									}}
-									onChange={this.handleInputChange}
-									placeholder={labels.placeholder}
-									readOnly={!!(predefinedOptionsOnly && this.state.activeOption)}
-									role="textbox"
-									value={props.predefinedOptionsOnly
-										? (this.state.activeOption && this.state.activeOption.label)
-											|| value
-										: value}
-								/>
+								{!hideInput &&
+									<InnerInput
+										aria-autocomplete="list"
+										aria-controls={`${this.getId()}-listbox`}
+										aria-activedescendant={this.state.activeOption
+											? `${this.getId()}-listbox-option-${this.state.activeOption.id}`
+											:	null}
+										autoComplete="off"
+										className="slds-input slds-combobox__input"
+										containerProps={{
+											className: 'slds-combobox__form-element',
+											role: 'none'
+										}}
+										iconRight={<InputIcon
+											category="utility"
+											name="search"
+											title={labels.inputIconTitle}
+										/>}
+										id={this.getId()}
+										onFocus={this.handleInputFocus}
+										onBlur={this.handleInputBlur}
+										onKeyDown={this.handleKeyDown}
+										inputRef={this.setInputRef}
+										onClick={() => {
+											this.openDialog();
+										}}
+										onChange={this.handleInputChange}
+										placeholder={labels.placeholder}
+										readOnly={!!(predefinedOptionsOnly && this.state.activeOption)}
+										role="textbox"
+										value={props.predefinedOptionsOnly
+											? (this.state.activeOption && this.state.activeOption.label)
+												|| value
+											: value}
+									/>
+								}
 							</div>
 							<div
 								id={this.getId()}

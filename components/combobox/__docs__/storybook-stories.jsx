@@ -24,7 +24,7 @@ import SnapshotReadonlyMultipleSelection from '../__examples__/snapshot/readonly
 import SnapshotReadonlyMultipleSelectionSingleItemSelected from '../__examples__/snapshot/readonly-multiple-selection-single-item-selected';
 import SnapshotReadonlyMultipleSelectionMultipleItemsSelected from '../__examples__/snapshot/readonly-multiple-selection-multiple-items-selected';
 import SnapshotReadonlySingleSelectionCustomMenuItemOpen from '../__examples__/snapshot/readonly-single-selection-custom-menu-item';
-import DynamicMenu10Items from '../__examples__/dynamic-menu-10-items';
+import DynamicMenu10Items from '../__examples__/dynamic-menu-10-plus-items';
 
 storiesOf(COMBOBOX, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
