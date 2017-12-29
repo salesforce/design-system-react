@@ -1,3 +1,6 @@
+# machine generated
 package.json
 package-lock.json
+components/component-docs.json
+
 .eslintrc

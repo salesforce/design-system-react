@@ -70,24 +70,36 @@
     "import/extensions": "off",
     "import/first": 1,
     "import/no-unresolved": [2, { "ignore": ["^[~]"] }],
-    "indent": [2, "tab", {
-      "SwitchCase": 1
-    }],
-    "max-len": [1, 140, 4, {
-      "ignoreUrls": true,
-      "ignoreComments": true,
-      "ignorePattern": "^(\\s*)<([^\"{}();])+$"
-    }],
-    "no-multi-spaces": [1, {
-      // allows "column spacing." Following key names are Abstract Syntax Tree types
-      "exceptions": {
-        "VariableDeclarator": true,
-        "Property": true,
-        "ImportDeclaration": true,
-        "AssignmentExpression": true,
-        "JSXAttribute": true
+    "indent": [
+      2,
+      "tab",
+      {
+        "SwitchCase": 1
       }
-    }],
+    ],
+    "max-len": [
+      1,
+      140,
+      4,
+      {
+        "ignoreUrls": true,
+        "ignoreComments": true,
+        "ignorePattern": "^(\\s*)<([^\"{}();])+$"
+      }
+    ],
+    "no-multi-spaces": [
+      1,
+      {
+        // allows "column spacing." Following key names are Abstract Syntax Tree types
+        "exceptions": {
+          "VariableDeclarator": true,
+          "Property": true,
+          "ImportDeclaration": true,
+          "AssignmentExpression": true,
+          "JSXAttribute": true
+        }
+      }
+    ],
     "no-tabs": 0,
     "no-underscore-dangle": ["error", { "allowAfterThis": true }],
     "space-before-function-paren": [2, "always"],
@@ -107,21 +119,27 @@
     // We are open to changing this to always use a trailing comma
     "comma-dangle": [2, "never"],
     // currently used in older files
-    "no-param-reassign": [1, {
-      "props": true
-    }],
+    "no-param-reassign": [
+      1,
+      {
+        "props": true
+      }
+    ],
     // currently used in older files
     "no-plusplus": 1,
-    "no-mixed-operators": ["error", {
-      "groups": [
+    "no-mixed-operators": [
+      "error",
+      {
+        "groups": [
           // ["+", "-", "*", "/", "%", "**"], // imcompatible with prettier
           ["&", "|", "^", "~", "<<", ">>", ">>>"],
           ["==", "!=", "===", "!==", ">", ">=", "<", "<="],
           ["&&", "||"],
           ["in", "instanceof"]
-      ],
-      "allowSamePrecedence": true
-    }],
+        ],
+        "allowSamePrecedence": true
+      }
+    ],
 
     // Prevent missing props validation in a React component definition
     "react/prop-types": 1,
