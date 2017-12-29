@@ -1,4 +1,3 @@
-
 Welcome to [Design System React](https://react.lightningdesignsystem.com/).
 
 Presented here are Javascript components based on [Lightning Design System](https://www.lightningdesignsystem.com/) and designed for React.

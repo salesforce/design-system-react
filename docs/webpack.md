@@ -38,7 +38,6 @@ These are the relevant portions of the changes you will need to do in order to w
   },
 ```
 
-
 #### webpack.config.js
 
 ```

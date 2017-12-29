@@ -1,9 +1,11 @@
 # Design System for React
+
 ### Accessible, localization-friendly, presentational React components
 
 [![Build Status](https://travis-ci.com/salesforce/design-system-react.svg?token=erkizBStRxre5p3S1xij&branch=master)](https://travis-ci.com/salesforce/design-system-react) [![DeepScan Grade](https://deepscan.io/api/projects/1475/branches/4666/badge/grade.svg)](https://deepscan.io/dashboard/#view=project&pid=1475&bid=4666)
 
 ## Getting Started
+
 Welcome to the project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/). It has been tested with React >=15.4.1 <16 and is stable despite its version numbers. A 1.0 will be released soon.
 
 * [Getting Started](https://design-system-react.herokuapp.com/getting-started/)
@@ -25,6 +27,7 @@ npm install
 npm start
 open http://localhost:9001 http://localhost:8001
 ```
+
 ### SLDS Icons
 
 Prior to v0.7.0, SLDS icons were bundled with the JavaScript. The 400KB+ icons bundle from [SLDS](https://www.lightningdesignsystem.com/) is no longer included. You will need to download the SLDS CSS and icons separately.
