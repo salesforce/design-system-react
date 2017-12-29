@@ -2,7 +2,6 @@ import React from 'react';
 import { storiesOf, action } from '@storybook/react';
 
 import { COMBOBOX } from '../../../utilities/constants';
-
 import Base from '../__examples__/base';
 import PredefinedOptionsOnly from '../__examples__/base-predefined-options-only';
 import InlineSingle from '../__examples__/inline-single';
@@ -25,6 +24,7 @@ import SnapshotReadonlyMultipleSelection from '../__examples__/snapshot/readonly
 import SnapshotReadonlyMultipleSelectionSingleItemSelected from '../__examples__/snapshot/readonly-multiple-selection-single-item-selected';
 import SnapshotReadonlyMultipleSelectionMultipleItemsSelected from '../__examples__/snapshot/readonly-multiple-selection-multiple-items-selected';
 import SnapshotReadonlySingleSelectionCustomMenuItemOpen from '../__examples__/snapshot/readonly-single-selection-custom-menu-item';
+import DynamicMenu10Items from '../__examples__/dynamic-menu-10-items';
 
 storiesOf(COMBOBOX, module)
 	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
@@ -49,4 +49,5 @@ storiesOf(COMBOBOX, module)
 	.add('Snapshot Readonly Multiple Selection', () => (<SnapshotReadonlyMultipleSelection action={action} />))
 	.add('Snapshot Readonly Multiple Selection Single Item Selected', () => (<SnapshotReadonlyMultipleSelectionSingleItemSelected action={action} />))
 	.add('Snapshot Readonly Multiple Selection Multiple Items Selected', () => (<SnapshotReadonlyMultipleSelectionMultipleItemsSelected action={action} />))
-	.add('Snapshot Readonly Single Selection Custom Menu Item', () => (<SnapshotReadonlySingleSelectionCustomMenuItemOpen action={action} />));
+	.add('Snapshot Readonly Single Selection Custom Menu Item', () => (<SnapshotReadonlySingleSelectionCustomMenuItemOpen action={action} />))
+	.add('Dynamic Menu 10 items', () => (<DynamicMenu10Items />));

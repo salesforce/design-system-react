@@ -53,6 +53,10 @@ const propTypes = {
 		selectedListboxLabel: PropTypes.string
 	}),
 	/**
+	 * TODO: add description
+	 */
+	children: PropTypes.node,
+	/**
 	 * CSS classes to be added to tag with `.slds-combobox`. Uses `classNames` [API](https://github.com/JedWatson/classnames). _Tested with snapshot testing._
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
@@ -153,6 +157,14 @@ const propTypes = {
 	 * Limits auto-complete input submission to one of the provided options. _Tested with mocha testing._
 	 */
 	predefinedOptionsOnly: PropTypes.bool,
+	/**
+	* TODO: Add description
+	*/
+	popoverFooter: PropTypes.node,
+	/**
+	* TODO: Add description
+	*/
+	popoverTriggerElement: PropTypes.node,
 	/**
 	 * Accepts an array of item objects. For single selection, pass in an array of one object. _Tested with snapshot testing._
 	 */
@@ -704,61 +716,72 @@ class Combobox extends React.Component {
 		</div>
 	);
 
-	renderDynamicMenu = ({ assistiveText, labels, props }) => (
-		<div className="slds-form-element__control">
-			<div className="slds-combobox_container">
-				<div
-					className={classNames(
-						'slds-combobox',
-						'slds-is-open',
-						// TODO: remove?
-						props.className
-					)}
-					aria-expanded
-					aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
-					// used on menu's listbox
-					aria-owns={`${this.getId()}-listbox`} // eslint-disable-line jsx-a11y/aria-proptypes
-					role="combobox"
-				>
-					<InnerInput
-						aria-autocomplete="list"
-						aria-controls={`${this.getId()}-listbox`}
-						aria-activedescendant={this.state.activeOption
-							? `${this.getId()}-listbox-option-${this.state.activeOption.id}`
-							:	null}
-						autoComplete="off"
-						className="slds-combobox__input"
-						containerProps={{
-							className: 'slds-combobox__form-element',
-							role: 'none'
-						}}
-						iconRight={<InputIcon
-							category="utility"
-							name="search"
-							title={labels.inputIconTitle}
-						/>}
-						id={this.getId()}
-						onFocus={this.handleInputFocus}
-						onBlur={this.handleInputBlur}
-						onKeyDown={this.handleKeyDown}
-						inputRef={this.setInputRef}
-						onClick={() => {
-							this.openDialog();
-						}}
-						onChange={this.handleInputChange}
-						placeholder={labels.placeholder}
-						readOnly={!!(props.predefinedOptionsOnly && this.state.activeOption)}
-						role="textbox"
-						value={props.predefinedOptionsOnly
-							? (this.state.activeOption && this.state.activeOption.label)
-								|| props.value
-							: props.value}
-					/>
+	renderDynamicMenu = (props) => {
+		const {
+			assistiveText,
+			className,
+			labels,
+			predefinedOptionsOnly,
+			value
+		} = props;
+
+		return (
+			<div>
+				<div className="slds-form-element__control">
+					<div className="slds-combobox_container">
+						<div
+							className={classNames(
+								'slds-combobox',
+								'slds-is-open',
+								className
+							)}
+							aria-expanded
+							aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
+							// used on menu's listbox
+							aria-owns={`${this.getId()}-listbox`} // eslint-disable-line jsx-a11y/aria-proptypes
+							role="combobox"
+						>
+							<InnerInput
+								aria-autocomplete="list"
+								aria-controls={`${this.getId()}-listbox`}
+								aria-activedescendant={this.state.activeOption
+									? `${this.getId()}-listbox-option-${this.state.activeOption.id}`
+									:	null}
+								autoComplete="off"
+								className="slds-combobox__input"
+								containerProps={{
+									className: 'slds-combobox__form-element',
+									role: 'none'
+								}}
+								iconRight={<InputIcon
+									category="utility"
+									name="search"
+									title={labels.inputIconTitle}
+								/>}
+								id={this.getId()}
+								onFocus={this.handleInputFocus}
+								onBlur={this.handleInputBlur}
+								onKeyDown={this.handleKeyDown}
+								inputRef={this.setInputRef}
+								onClick={() => {
+									this.openDialog();
+								}}
+								onChange={this.handleInputChange}
+								placeholder={labels.placeholder}
+								readOnly={!!(predefinedOptionsOnly && this.state.activeOption)}
+								role="textbox"
+								value={props.predefinedOptionsOnly
+									? (this.state.activeOption && this.state.activeOption.label)
+										|| value
+									: value}
+							/>
+						</div>
+					</div>
+					{this.renderMenu({ assistiveText, labels })}
 				</div>
 			</div>
-			{this.renderMenu({ assistiveText, labels })}
-		</div>
-	);
+		);
+	};
 
 	renderInlineSingle = ({ assistiveText, labels, props }) => {
 		const iconLeft = props.selection[0] && props.selection[0].icon

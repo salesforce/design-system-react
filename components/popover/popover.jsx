@@ -108,6 +108,10 @@ const Popover = createReactClass({
 		 */
 		body: PropTypes.oneOfType([PropTypes.node, PropTypes.array]).isRequired,
 		/**
+		 * CSS classes to be added to the popover body. That is the element with `.slds-popover__body` on it.
+		 */
+		bodyClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		/**
 		 * CSS classes to be added to the popover. That is the element with `.slds-popover` on it.
 		 */
 		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
@@ -452,7 +456,7 @@ const Popover = createReactClass({
 							: null}
 						<div
 							id={`${this.getId()}-dialog-body`}
-							className="slds-popover__body"
+							className={classNames(this.props.bodyClassName, 'slds-popover__body')}
 						>
 							{props.body}
 						</div>

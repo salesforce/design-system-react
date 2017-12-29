@@ -82,7 +82,7 @@ const Button = createReactClass({
 		/**
 		 * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
 		 */
-		iconVariant: PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'more', 'global-header']),
+		iconVariant: PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'more', 'dynamic-menu', 'global-header']),
 		/**
 		 * Id string applied to button node.
 		 */
@@ -174,11 +174,11 @@ const Button = createReactClass({
 			'slds-button--inverse': plainInverseBtn,
 			'slds-button--icon-inverse': plainInverseIcon || moreInverseIcon,
 			'slds-button--icon-border-inverse': borderInverseIcon,
-			[`slds-button--icon-${iconVariant}`]: iconVariant && !borderInverseIcon,
+			[`slds-button--icon-${iconVariant}`]: iconVariant && !borderInverseIcon && iconVariant !== 'dynamic-menu',
 			'slds-global-header__button--icon': iconGlobalHeader,
 			// If icon has a container, then we apply the icon size to the container not the svg. Icon size is medium by default, so we don't need to explicitly render it here.
 			[`slds-button--icon-${this.props.iconSize}`]: iconVariant && this.props.iconSize !== 'medium',
-			'slds-button--reset': this.props.variant === 'link',
+			'slds-button--reset': this.props.variant === 'link' || this.props.iconVariant === 'dynamic-menu',
 			'slds-text-link': this.props.variant === 'link'
 		}, this.props.className);
 	},
