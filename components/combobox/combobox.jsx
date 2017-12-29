@@ -733,43 +733,57 @@ class Combobox extends React.Component {
 							aria-owns={`${this.getId()}-listbox`} // eslint-disable-line jsx-a11y/aria-proptypes
 							role="combobox"
 						>
-							<InnerInput
-								aria-autocomplete="list"
-								aria-controls={`${this.getId()}-listbox`}
-								aria-activedescendant={this.state.activeOption
-									? `${this.getId()}-listbox-option-${this.state.activeOption.id}`
-									:	null}
-								autoComplete="off"
-								className="slds-combobox__input"
-								containerProps={{
-									className: 'slds-combobox__form-element',
-									role: 'none'
-								}}
-								iconRight={<InputIcon
-									category="utility"
-									name="search"
-									title={labels.inputIconTitle}
-								/>}
+							<div
+								className="
+								slds-combobox__form-element
+								slds-input-has-icon
+								slds-input-has-icon_right
+								slds-m-around_small"
+								role="none"
+							>
+								<InnerInput
+									aria-autocomplete="list"
+									aria-controls={`${this.getId()}-listbox`}
+									aria-activedescendant={this.state.activeOption
+										? `${this.getId()}-listbox-option-${this.state.activeOption.id}`
+										:	null}
+									autoComplete="off"
+									className="slds-input slds-combobox__input"
+									containerProps={{
+										className: 'slds-combobox__form-element',
+										role: 'none'
+									}}
+									iconRight={<InputIcon
+										category="utility"
+										name="search"
+										title={labels.inputIconTitle}
+									/>}
+									id={this.getId()}
+									onFocus={this.handleInputFocus}
+									onBlur={this.handleInputBlur}
+									onKeyDown={this.handleKeyDown}
+									inputRef={this.setInputRef}
+									onClick={() => {
+										this.openDialog();
+									}}
+									onChange={this.handleInputChange}
+									placeholder={labels.placeholder}
+									readOnly={!!(predefinedOptionsOnly && this.state.activeOption)}
+									role="textbox"
+									value={props.predefinedOptionsOnly
+										? (this.state.activeOption && this.state.activeOption.label)
+											|| value
+										: value}
+								/>
+							</div>
+							<div
 								id={this.getId()}
-								onFocus={this.handleInputFocus}
-								onBlur={this.handleInputBlur}
-								onKeyDown={this.handleKeyDown}
-								inputRef={this.setInputRef}
-								onClick={() => {
-									this.openDialog();
-								}}
-								onChange={this.handleInputChange}
-								placeholder={labels.placeholder}
-								readOnly={!!(predefinedOptionsOnly && this.state.activeOption)}
-								role="textbox"
-								value={props.predefinedOptionsOnly
-									? (this.state.activeOption && this.state.activeOption.label)
-										|| value
-									: value}
-							/>
+								role="listbox"
+							>
+								{this.renderMenu({ assistiveText, labels })}
+							</div>
 						</div>
 					</div>
-					{this.renderMenu({ assistiveText, labels })}
 				</div>
 			</div>
 		);

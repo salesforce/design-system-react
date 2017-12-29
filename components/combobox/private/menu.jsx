@@ -173,7 +173,7 @@ const Menu = (props) => {
 	});
 
 	const dynamicMenuClasses = () => (
-		'slds-dropdown-length-10'
+		'slds-dropdown_length-10'
 	);
 
 	const applyClassVariants = props.isDynamicMenu ? dynamicMenuClasses() :
