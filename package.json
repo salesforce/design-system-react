@@ -191,8 +191,7 @@
     "lint-staged"
   ],
   "pre-push": [
-    "validate",
-    "test"
+    "validate"
   ],
   "prettier": {
     "arrowParens": "always",
