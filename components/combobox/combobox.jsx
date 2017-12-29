@@ -158,14 +158,6 @@ const propTypes = {
 	 */
 	predefinedOptionsOnly: PropTypes.bool,
 	/**
-	* TODO: Add description
-	*/
-	popoverFooter: PropTypes.node,
-	/**
-	* TODO: Add description
-	*/
-	popoverTriggerElement: PropTypes.node,
-	/**
 	 * Accepts an array of item objects. For single selection, pass in an array of one object. _Tested with snapshot testing._
 	 */
 	selection: PropTypes.array,
