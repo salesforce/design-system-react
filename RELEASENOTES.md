@@ -128,9 +128,22 @@ ReactDOM.render(
 * Some initial compatibility testing with React 16 has been completed, but library is not fully tested.
 * Added `type="button"` to `Button` as default (markup change).
 * Added [SLDS Avatar](https://latest-212.lightningdesignsystem.com/components/avatar)
-* Lookup Prop - Added new props isOpen, onRequestOpen, and onRequestClose to Lookup.
-* Dropdown Prop - Added new prop `disabled` to Menu Item which gets passed to `aria-disabled` on `role="option"`. Pass it down through options like so:
-  `<MenuDropdown options={[ { disabled: true, label: 'Option A', value: 'A0' }, { label: 'Option B', value: 'B0' }, { label: 'Custom Class', className: 'custom-item-class', value: 'custom0' } ]} ... />`
+* Lookup Prop
+  * Added new props isOpen, onRequestOpen, and onRequestClose to Lookup.
+* Dropdown Prop
+  * Added new prop `disabled` to Menu Item which gets passed to `aria-disabled` on `role="option"`. Pass it down through options like so:
+
+
+  ```
+  <MenuDropdown
+      options={[
+          { disabled: true, label: 'Option A', value: 'A0' },
+          { label: 'Option B', value: 'B0' },
+          { label: 'Custom Class', className: 'custom-item-class', value: 'custom0' }
+      ]}
+      ...
+  />
+  ```
 
 ## Release 0.6.23
 

@@ -12,7 +12,7 @@ First, on behalf of the core maintainers, I'd like to thank you for wanting to c
 1. Add documentation site examples and dev storybook stories in `/components/[COMPONENT]/__examples__/`
 1. Add Mocha and Snapshot tests to `/components/[COMPONENT]/__tests__/`
 1. Hook up site and storybook examples in `/components/[COMPONENT]/__docs__/`
-1. Hook up documentation site examples in `/components/site-stories.js`. Site examples only have access to variables exported in `/components/index.js`, so you should limit your imports to these within site examples.
+1. Hook up documentation site examples in `/components/site-stories.js`. Site examples only have access to variables exported in `/components/index.js`, so you should limit your component's site example imports to these variables. See [#1192](https://github.com/salesforce/design-system-react/issues/1192) for more information.
 1. Push to your username's forked repository.
 1. Send us a well-documented pull request targeting `master` from your forked repository. GitHub pull requests should have a descriptive title, a brief summary, @mention several relevant people to review the code, add helpful GitHub comments on lines where you have questions or concerns. All contributors must sign a [Contributor License Agreement](https://cla.salesforce.com/sign-cla).
 1. We'll review your code, suggest any needed changes, and hopefully merge it in. Thank you!
@@ -22,7 +22,7 @@ First, on behalf of the core maintainers, I'd like to thank you for wanting to c
 * Are you a first-time contributor? If you would like a simple task to start out with, you might consider [these issues](https://deepscan.io/dashboard/#view=project&pid=1475&bid=4666&subview=issues) or run `npm run lint` and fix a few warnings.
 * UX pattern / design must exist in [SLDS](https://www.lightningdesignsystem.com/). Components in the process of being added to SLDS will be considered as prototypes.
 * All new props and components need tests. **Please review the [testing readme](/tests/README.md)**
-* Follow Eslint settings.
+* Follow `prettier-eslint` settings. [Prettier](https://prettier.io/) is run first. Then [ESlint](https://eslint.org/). Upon commit, staged files will be run through `prettier --write` and `eslint --fix`. This should make them pass the lint task run on the CI server and hopefully avoid style nitpicks. You can enable this behavior at save in your editor, too. For instance, in Visual Studio Code, run the [prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and set `"editor.formatOnSave": true` and `prettier.eslintIntegration: true`.
 * If you are adding a feature, [add a story](https://storybook.js.org/basics/writing-stories/) to the React Storybook that uses your feature, so that reviewers can test it.
 * Add enough Storybook stories and testing examples to show use of all component prop and values--if they are enumerated. All examples that are present for a component in the [SLDS website](https://www.lightningdesignsystem.com/) should be created as a Storybook story _and_ imported into the documentaiton site examples.
 * Prop description tables on the documentation site are generated from propType comments within the component. Use `npm run build-docs` to confirm comment compatibility. Introductory component descriptions are generated from the comment directly before the component declaration with [react-docgen](https://github.com/reactjs/react-docgen).
@@ -58,5 +58,4 @@ First, on behalf of the core maintainers, I'd like to thank you for wanting to c
 ## Testing the documentation site (internal)
 
 1. Pull down the documentation site (currenly private) and place in the same parent folder as this library: `git clone git@github.com:salesforce-ux/design-system-react-site.git` and run `npm install`.
-   `.
 1. Run `npm run local-update` from within `design-system-react-site` to build, copy, and serve a local version of this library into the site. You should be able to now view the updated site at `http://localhost:8080/` and resolve any issues with updated documentation.
