@@ -11,7 +11,12 @@ let ifOneThenBothRequiredProperty;
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
 
-	ifOneThenBothRequiredProperty = function (control, props, selectedProps, comment) {
+	ifOneThenBothRequiredProperty = function (
+		control,
+		props,
+		selectedProps,
+		comment
+	) {
 		const additionalComment = comment ? ` ${comment}` : '';
 		let bothOrNoneAreSet = false;
 		const keys = Object.keys(selectedProps);
@@ -23,7 +28,10 @@ if (process.env.NODE_ENV !== 'production') {
 
 		if (!hasWarned[control]) {
 			/* eslint-disable max-len */
-			warning(bothOrNoneAreSet, `[Design System React] If one of the following props are used, then both of the following properties are required by ${control}: [${keys.join()}].${additionalComment}`);
+			warning(
+				bothOrNoneAreSet,
+				`[Design System React] If one of the following props are used, then both of the following properties are required by ${control}: [${keys.join()}].${additionalComment}`
+			);
 			/* eslint-enable max-len */
 			hasWarned[control] = !!selectedProps;
 		}

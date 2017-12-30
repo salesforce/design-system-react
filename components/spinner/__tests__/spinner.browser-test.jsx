@@ -9,11 +9,12 @@ chai.should();
 
 describe('Spinner: ', () => {
 	// Setup and takedown
-	const renderSpinner = (instance) => function () {
-		this.dom = document.createElement('div');
-		document.body.appendChild(this.dom);
-		this.component = ReactDOM.render(instance, this.dom);
-	};
+	const renderSpinner = (instance) =>
+		function () {
+			this.dom = document.createElement('div');
+			document.body.appendChild(this.dom);
+			this.component = ReactDOM.render(instance, this.dom);
+		};
 
 	function removeSpinner () {
 		ReactDOM.unmountComponentAtNode(this.dom);
@@ -24,9 +25,7 @@ describe('Spinner: ', () => {
 
 	// Tests
 	describe('Default spinner renders properly', () => {
-		before(renderSpinner(
-			<Spinner />
-		));
+		before(renderSpinner(<Spinner />));
 
 		after(removeSpinner);
 
@@ -42,9 +41,7 @@ describe('Spinner: ', () => {
 	});
 
 	describe('Props render proper css classes', () => {
-		beforeEach(renderSpinner(
-			<Spinner size="small" variant="brand" />
-		));
+		beforeEach(renderSpinner(<Spinner size="small" variant="brand" />));
 
 		afterEach(removeSpinner);
 
@@ -54,4 +51,3 @@ describe('Spinner: ', () => {
 		});
 	});
 });
-

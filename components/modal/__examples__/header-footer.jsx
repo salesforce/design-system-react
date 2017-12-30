@@ -17,11 +17,11 @@ const Example = createReactClass({
 	toggleNoHeaderIsOpen () {
 		this.setState({ noHeaderIsOpen: !this.state.noHeaderIsOpen });
 	},
-	
+
 	toggleNofooterIsOpen () {
 		this.setState({ noFooterIsOpen: !this.state.noFooterIsOpen });
 	},
-	
+
 	render () {
 		return (
 			<IconSettings iconPath="/assets/icons">
@@ -32,8 +32,22 @@ const Example = createReactClass({
 						onRequestClose={this.toggleNoHeaderIsOpen}
 					>
 						<section className="slds-p-around--medium">
-							<p>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi. Mollit officia cillum Lorem ullamco minim nostrud elit officia tempor esse quis. Cillum sunt ad dolore quis aute consequat ipsum magna exercitation reprehenderit magna. Tempor cupidatat consequat elit dolor adipisicing.</p>
-							<p>Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis sit officia. Lorem aliqua enim laboris do dolor eiusmod officia. Mollit incididunt nisi consectetur esse laborum eiusmod pariatur proident. Eiusmod et adipisicing culpa deserunt nostrud ad veniam nulla aute est. Labore esse esse cupidatat amet velit id elit consequat minim ullamco mollit enim excepteur ea.</p>
+							<p>
+								Sit nulla est ex deserunt exercitation anim occaecat. Nostrud
+								ullamco deserunt aute id consequat veniam incididunt duis in
+								sint irure nisi. Mollit officia cillum Lorem ullamco minim
+								nostrud elit officia tempor esse quis. Cillum sunt ad dolore
+								quis aute consequat ipsum magna exercitation reprehenderit
+								magna. Tempor cupidatat consequat elit dolor adipisicing.
+							</p>
+							<p>
+								Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis
+								sit officia. Lorem aliqua enim laboris do dolor eiusmod officia.
+								Mollit incididunt nisi consectetur esse laborum eiusmod pariatur
+								proident. Eiusmod et adipisicing culpa deserunt nostrud ad
+								veniam nulla aute est. Labore esse esse cupidatat amet velit id
+								elit consequat minim ullamco mollit enim excepteur ea.
+							</p>
 						</section>
 					</Modal>
 					<Button label="Open no footer" onClick={this.toggleNofooterIsOpen} />
@@ -43,8 +57,22 @@ const Example = createReactClass({
 						title="Modal Header"
 					>
 						<section className="slds-p-around--medium">
-							<p>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi. Mollit officia cillum Lorem ullamco minim nostrud elit officia tempor esse quis. Cillum sunt ad dolore quis aute consequat ipsum magna exercitation reprehenderit magna. Tempor cupidatat consequat elit dolor adipisicing.</p>
-							<p>Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis sit officia. Lorem aliqua enim laboris do dolor eiusmod officia. Mollit incididunt nisi consectetur esse laborum eiusmod pariatur proident. Eiusmod et adipisicing culpa deserunt nostrud ad veniam nulla aute est. Labore esse esse cupidatat amet velit id elit consequat minim ullamco mollit enim excepteur ea.</p>
+							<p>
+								Sit nulla est ex deserunt exercitation anim occaecat. Nostrud
+								ullamco deserunt aute id consequat veniam incididunt duis in
+								sint irure nisi. Mollit officia cillum Lorem ullamco minim
+								nostrud elit officia tempor esse quis. Cillum sunt ad dolore
+								quis aute consequat ipsum magna exercitation reprehenderit
+								magna. Tempor cupidatat consequat elit dolor adipisicing.
+							</p>
+							<p>
+								Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis
+								sit officia. Lorem aliqua enim laboris do dolor eiusmod officia.
+								Mollit incididunt nisi consectetur esse laborum eiusmod pariatur
+								proident. Eiusmod et adipisicing culpa deserunt nostrud ad
+								veniam nulla aute est. Labore esse esse cupidatat amet velit id
+								elit consequat minim ullamco mollit enim excepteur ea.
+							</p>
 						</section>
 					</Modal>
 				</div>
@@ -53,4 +81,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

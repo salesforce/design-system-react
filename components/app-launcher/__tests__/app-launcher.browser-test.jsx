@@ -6,8 +6,6 @@ import { mount, ReactWrapper } from 'enzyme';
 import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
 
-const should = chai.should();
-
 import IconSettings from '../../icon-settings';
 import AppLauncher from '../../app-launcher';
 import AppLauncherTile from '../../app-launcher/tile';
@@ -15,9 +13,11 @@ import AppLauncherSection from '../../app-launcher/section';
 import Search from '../../forms/input/search';
 import Button from '../../button';
 
-const {
-	Simulate
-} = TestUtils;
+/* eslint-disable react/no-find-dom-node */
+
+const should = chai.should();
+
+const { Simulate } = TestUtils;
 
 describe('SLDS APP LAUNCHER *******************************************', () => {
 	const handles = {
@@ -30,50 +30,61 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		isOpen: true
 	};
 
-	const createAppLauncher = (props) => React.createElement(
-		AppLauncher,
-		assign({}, defaultAppLauncherProps, props),
-		<AppLauncherSection title="All Items">
-			<AppLauncherTile title="Marketing Cloud" />
-			<AppLauncherTile title="Support Cloud" />
-		</AppLauncherSection>
-	);
+	const createAppLauncher = (props) =>
+		React.createElement(
+			AppLauncher,
+			assign({}, defaultAppLauncherProps, props),
+			<AppLauncherSection title="All Items">
+				<AppLauncherTile title="Marketing Cloud" />
+				<AppLauncherTile title="Support Cloud" />
+			</AppLauncherSection>
+		);
 
 	function mountAppLauncher (props) {
-		handles.appLauncher = mount(<IconSettings iconPath="/assets/icons">{createAppLauncher(props)}</IconSettings>);
+		handles.appLauncher = mount(
+			<IconSettings iconPath="/assets/icons">
+				{createAppLauncher(props)}
+			</IconSettings>
+		);
 
-		handles.appLauncherIcon = handles.appLauncher.find('.slds-context-bar__icon-action');
+		handles.appLauncherIcon = handles.appLauncher.find(
+			'.slds-context-bar__icon-action'
+		);
 
 		/*
 		 * How to write tests for react-modal using portal
 		 * http://remarkablemark.org/blog/2017/05/17/testing-react-modal/
 		 */
-		const portalNode = ReactDOM.findDOMNode(handles.appLauncher.find(ReactModal).node.portal); // eslint-disable-line react/no-find-dom-node
+		const portalNode = ReactDOM.findDOMNode(
+			handles.appLauncher.find(ReactModal).node.portal
+		); // eslint-disable-line react/no-find-dom-node
 
 		// Wrap the modal portal in an Enzyme wrapper
 		handles.modal = new ReactWrapper(
-			handles.appLauncher.find(ReactModal).node.portal, true
+			handles.appLauncher.find(ReactModal).node.portal,
+			true
 		);
 	}
-
 
 	function cleanDom () {
 		// Removes the modal container element from the bottom of the DOM, this will prevent the 'setState' errors
 		// gotta be a better way to do this..
-		const modalWrapper = document.documentElement.querySelectorAll('.ReactModalPortal')[0];
+		const modalWrapper = document.documentElement.querySelectorAll(
+			'.ReactModalPortal'
+		)[0];
 
 		if (modalWrapper) {
 			modalWrapper.parentNode.removeChild(modalWrapper);
 		}
 	}
 
-// ///////////////////////
-// ////// T O D O ////////
-// ///////////////////////
+	// ///////////////////////
+	// ////// T O D O ////////
+	// ///////////////////////
 	// APP LAUNCHER -----
-		// tabs?
-		// if you pass a isOpen prop, you must control the component with it (this.state.isOpen will now work)
-		// (#591, waiting on #590) modal content has classes: slds-modal__content slds-app-launcher__content slds-p-around--medium
+	// tabs?
+	// if you pass a isOpen prop, you must control the component with it (this.state.isOpen will now work)
+	// (#591, waiting on #590) modal content has classes: slds-modal__content slds-app-launcher__content slds-p-around--medium
 
 	describe('App Launcher', () => {
 		let onClose;
@@ -108,7 +119,9 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 
 		it('app launcher title can be set', () => {
 			expect(
-				handles.modal.contains(<h2 className="slds-text-heading--medium">App Launcher!</h2>)
+				handles.modal.contains(
+					<h2 className="slds-text-heading--medium">App Launcher!</h2>
+				)
 			).to.equal(true);
 		});
 
@@ -135,7 +148,11 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		});
 
 		it('renders modal content', () => {
-			should.exist(handles.modal.find('.slds-modal__content .slds-app-launcher__content .slds-p-around--medium'));
+			should.exist(
+				handles.modal.find(
+					'.slds-modal__content .slds-app-launcher__content .slds-p-around--medium'
+				)
+			);
 		});
 
 		it('app launcher can be passed children', () => {
@@ -165,21 +182,27 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		});
 
 		it('renders all App Launcher dots', () => {
-			expect(handles.appLauncherIcon.find('.slds-icon-waffle').containsAllMatchingElements([
-				<span className="slds-r1" />,
-				<span className="slds-r2" />,
-				<span className="slds-r3" />,
-				<span className="slds-r4" />,
-				<span className="slds-r5" />,
-				<span className="slds-r6" />,
-				<span className="slds-r7" />,
-				<span className="slds-r8" />,
-				<span className="slds-r9" />
-			])).to.equal(true);
+			expect(
+				handles.appLauncherIcon
+					.find('.slds-icon-waffle')
+					.containsAllMatchingElements([
+						<span className="slds-r1" />,
+						<span className="slds-r2" />,
+						<span className="slds-r3" />,
+						<span className="slds-r4" />,
+						<span className="slds-r5" />,
+						<span className="slds-r6" />,
+						<span className="slds-r7" />,
+						<span className="slds-r8" />,
+						<span className="slds-r9" />
+					])
+			).to.equal(true);
 		});
 
 		it('App Launcher Icon link has proper classes', () => {
-			expect(handles.appLauncherIcon.find('button').node.className).to.include('slds-icon-waffle_container slds-context-bar__button');
+			expect(handles.appLauncherIcon.find('button').node.className).to.include(
+				'slds-icon-waffle_container slds-context-bar__button'
+			);
 		});
 
 		it('clicking App Launcher Icon fires callback', () => {
@@ -193,7 +216,9 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		});
 
 		it('renders assistive text from prop', () => {
-			expect(handles.appLauncherIcon.find('.slds-assistive-text').text()).to.equal('Custom Icon Assistive Text');
+			expect(
+				handles.appLauncherIcon.find('.slds-assistive-text').text()
+			).to.equal('Custom Icon Assistive Text');
 		});
 	});
 });

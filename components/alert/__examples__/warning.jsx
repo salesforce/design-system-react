@@ -11,7 +11,8 @@ class Example extends React.Component {
 				<AlertContainer>
 					<Alert
 						labels={{
-							heading: 'Your browser is outdated. Your Salesforce experience may be degraded.',
+							heading:
+								'Your browser is outdated. Your Salesforce experience may be degraded.',
 							headingLink: 'More Information'
 						}}
 						onClickHeadingLink={() => {
@@ -27,4 +28,4 @@ class Example extends React.Component {
 
 Example.displayName = 'AlertExample';
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

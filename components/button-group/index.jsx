@@ -50,8 +50,10 @@ const defaultProps = { labels: {} };
  */
 const ButtonGroup = (props) => {
 	// Merge objects of strings with their default object
-	const labels = props ? assign({}, defaultProps.labels, props.labels) : defaultProps.labels;
-	
+	const labels = props
+		? assign({}, defaultProps.labels, props.labels)
+		: defaultProps.labels;
+
 	let children = props.children;
 	const zeroIndexLength = React.Children.count(props.children) - 1;
 
@@ -69,34 +71,48 @@ const ButtonGroup = (props) => {
 	}
 
 	if (props.variant === 'checkbox') {
-		children = React.Children.map(props.children, (child) => (React.cloneElement(child, {
-			variant: 'button-group'
-		})));
+		children = React.Children.map(props.children, (child) =>
+			React.cloneElement(child, {
+				variant: 'button-group'
+			})
+		);
 	}
 
 	if (props.variant === 'checkbox') {
-		return (<fieldset
-			className={classNames('slds-form-element', {
-				'slds-has-error': labels.error
-			})}
-		>
-			<legend
-				className="slds-form-element__legend slds-form-element__label"
+		return (
+			<fieldset
+				className={classNames('slds-form-element', {
+					'slds-has-error': labels.error
+				})}
 			>
-				{props.labels.label}
-			</legend>
-			<div className="slds-form-element__control">
-				<div className={classNames('slds-checkbox--button-group', props.className)}>
-					{children}
+				<legend className="slds-form-element__legend slds-form-element__label">
+					{props.labels.label}
+				</legend>
+				<div className="slds-form-element__control">
+					<div
+						className={classNames(
+							'slds-checkbox--button-group',
+							props.className
+						)}
+					>
+						{children}
+					</div>
+					{labels.error ? (
+						<div className="slds-form-element__help">{labels.error}</div>
+					) : null}
 				</div>
-				{labels.error ? <div className="slds-form-element__help">{labels.error}</div> : null}
-			</div>
-		</fieldset>);
+			</fieldset>
+		);
 	}
 	// default
-	return (<div className={classNames('slds-button-group', props.className)} role="group">
-		{children}
-	</div>);
+	return (
+		<div
+			className={classNames('slds-button-group', props.className)}
+			role="group"
+		>
+			{children}
+		</div>
+	);
 };
 
 ButtonGroup.displayName = BUTTON_GROUP;

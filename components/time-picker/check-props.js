@@ -8,7 +8,12 @@ let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
-		deprecatedProperty(COMPONENT, props.isInline, 'isInline', 'menuPosition="relative"');
+		deprecatedProperty(
+			COMPONENT,
+			props.isInline,
+			'isInline',
+			'menuPosition="relative"'
+		);
 	};
 }
 

@@ -11,7 +11,8 @@ class Example extends React.Component {
 				<ToastContainer>
 					<Toast
 						labels={{
-							heading: 'Can’t save lead “Sally Wong” because another lead has the same name.'
+							heading:
+								'Can’t save lead “Sally Wong” because another lead has the same name.'
 						}}
 						variant="error"
 					/>
@@ -23,4 +24,4 @@ class Example extends React.Component {
 
 Example.displayName = 'ToastExample';
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

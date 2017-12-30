@@ -29,13 +29,17 @@ const ButtonIcon = (props) => {
 		<SLDSUtilityIcon
 			aria-hidden="true"
 			category={props.category}
-			className={classNames('slds-button__icon', {
-				[`slds-button__icon--${props.size}`]: props.size && props.size !== 'medium',
-				'slds-button__icon--inverse-hint': props.inverse && props.hint,
-				'slds-button__icon--hint': props.hint && !props.inverse,
-				[`slds-button__icon--${props.position}`]: props.position
-			},
-			props.className)}	// iconClassName has been deprecated
+			className={classNames(
+				'slds-button__icon',
+				{
+					[`slds-button__icon--${props.size}`]:
+						props.size && props.size !== 'medium',
+					'slds-button__icon--inverse-hint': props.inverse && props.hint,
+					'slds-button__icon--hint': props.hint && !props.inverse,
+					[`slds-button__icon--${props.position}`]: props.position
+				},
+				props.className
+			)} // iconClassName has been deprecated
 			icon={props.icon}
 			name={props.name}
 			path={props.path}
@@ -47,19 +51,29 @@ const propTypes = {
 	/**
 	 * Icon category from [lightningdesignsystem.com/icons/](https://www.lightningdesignsystem.com/icons/)
 	 */
-	category: PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']).isRequired,
+	category: PropTypes.oneOf([
+		'action',
+		'custom',
+		'doctype',
+		'standard',
+		'utility'
+	]).isRequired,
 	/**
 	 * Associates an icon button with another element on the page by changes the color of the SVG. Please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#hint">Lightning Design System Buttons > Hint</a>.
 	 */
 	hint: PropTypes.bool,
 	/**
-   * An SVG object to use instead of name / category, look in `design-system-react/icons` for examples
-   */
+	 * An SVG object to use instead of name / category, look in `design-system-react/icons` for examples
+	 */
 	icon: PropTypes.object,
 	/**
 	 * Class names to be added to the SVG.
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string
+	]),
 	/**
 	 * Setting `inverse` to true will switch the color of the icon: light to dark, dark to light.
 	 */
@@ -69,8 +83,8 @@ const propTypes = {
 	 */
 	name: PropTypes.string,
 	/**
-   * Path to the icon. This will override any global icon settings.
-   */
+	 * Path to the icon. This will override any global icon settings.
+	 */
 	path: PropTypes.string,
 	/**
 	 * Adds additional spacing on the opposite side specified between button icon and the button label

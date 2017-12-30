@@ -28,12 +28,16 @@ const Example = createReactClass({
 	},
 
 	handleRequestClose (event, data) {
-		if (this.props.log) { this.props.log('onRequestClose'); }
+		if (this.props.log) {
+			this.props.log('onRequestClose');
+		}
 		this.setState({ isOpen: false });
 	},
 
 	handleClose (event, data) {
-		if (this.props.log) { this.props.log('onClose')(event, data); }
+		if (this.props.log) {
+			this.props.log('onClose')(event, data);
+		}
 	},
 
 	render () {
@@ -46,8 +50,13 @@ const Example = createReactClass({
 						footer={
 							<div className="slds-text-align--right">
 								<Button label="Cancel" onClick={this.handleCancel} />
-								<Button variant="brand" label="Apply" onClick={this.handleApply} />
-							</div>}
+								<Button
+									variant="brand"
+									label="Apply"
+									onClick={this.handleApply}
+								/>
+							</div>
+						}
 						heading="Confirmation"
 						onClose={this.handleClose}
 						onRequestClose={this.handleRequestClose}
@@ -60,4 +69,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

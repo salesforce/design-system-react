@@ -12,7 +12,7 @@ then
 	if [ $? -eq 0 ]
 	then
 		# ESlint tests on files within components and utilities folders. Doc examples and tests are currently excluded.
-		NODE_ENV=test npm run lint-prod
+		NODE_ENV=test npm run lint
 		if [ $? -eq 0 ]
 		then
 			# React DocGen library build of source comments into a JSON file for documentation site

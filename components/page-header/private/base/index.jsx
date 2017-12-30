@@ -23,9 +23,12 @@ const propTypes = {
 
 const Base = (props) => (
 	<MediaObject
-		body={<div>
-			{props.title}
-			{props.info}</div>}
+		body={
+			<div>
+				{props.title}
+				{props.info}
+			</div>
+		}
 		figure={props.icon}
 		verticalCenter
 	/>

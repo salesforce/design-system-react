@@ -7,6 +7,5 @@ testsContext.keys().forEach(testsContext);
 
 // require all `src/components/**/index.js`
 const componentsContext = require.context('../components/', true, /index\.js$/);
- 
-componentsContext.keys().forEach(componentsContext);
 
+componentsContext.keys().forEach(componentsContext);

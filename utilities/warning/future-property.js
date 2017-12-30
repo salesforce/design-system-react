@@ -15,7 +15,10 @@ if (process.env.NODE_ENV !== 'production') {
 		const additionalComment = comment ? ` ${comment}` : '';
 		if (!hasWarned[control + newProp]) {
 			/* eslint-disable max-len */
-			warning(!propValue, `[Design System React] \`${newProp}\` of ${control} is not implemented yet. Please check future releases for \`${newProp}\`.${additionalComment}`);
+			warning(
+				!propValue,
+				`[Design System React] \`${newProp}\` of ${control} is not implemented yet. Please check future releases for \`${newProp}\`.${additionalComment}`
+			);
 			/* eslint-enable max-len */
 			hasWarned[control + newProp] = !!propValue;
 		}

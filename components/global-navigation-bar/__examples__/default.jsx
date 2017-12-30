@@ -17,35 +17,39 @@ const Example = createReactClass({
 	displayName: 'GlobalNavigationBarExample',
 
 	render () {
-		const dropdownCollection = [{
-			label: 'Menu Item One',
-			value: '1',
-			iconCategory: 'utility',
-			iconName: 'table',
-			href: 'http://www.google.com'
-		}, {
-			label: 'Menu Item Two',
-			value: '2',
-			iconCategory: 'utility',
-			iconName: 'kanban',
-			href: 'http://www.google.com'
-		}, {
-			label: 'Menu Item Three',
-			value: '3',
-			iconCategory: 'utility',
-			iconName: 'side_list',
-			href: 'http://www.google.com'
-		}];
+		const dropdownCollection = [
+			{
+				label: 'Menu Item One',
+				value: '1',
+				iconCategory: 'utility',
+				iconName: 'table',
+				href: 'http://www.google.com'
+			},
+			{
+				label: 'Menu Item Two',
+				value: '2',
+				iconCategory: 'utility',
+				iconName: 'kanban',
+				href: 'http://www.google.com'
+			},
+			{
+				label: 'Menu Item Three',
+				value: '3',
+				iconCategory: 'utility',
+				iconName: 'side_list',
+				href: 'http://www.google.com'
+			}
+		];
 
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<GlobalNavigationBar>
-					<GlobalNavigationBarRegion
-						region="primary"
-					>
+					<GlobalNavigationBarRegion region="primary">
 						<AppLauncher
 							triggerName="App Name"
-							onSearch={() => { console.log('Search term:', event.target.value); }}
+							onSearch={() => {
+								console.log('Search term:', event.target.value);
+							}}
 							modalHeaderButton={<Button label="App Exchange" />}
 						>
 							<AppLauncherSection title="Tile Section">
@@ -69,7 +73,9 @@ const Example = createReactClass({
 								/>
 								<AppLauncherTile
 									title="Sales Cloud"
-									iconNode={<Icon name="campaign" category="standard" size="large" />}
+									iconNode={
+										<Icon name="campaign" category="standard" size="large" />
+									}
 									size="small"
 								/>
 							</AppLauncherSection>
@@ -105,4 +111,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

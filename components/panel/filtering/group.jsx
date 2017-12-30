@@ -45,33 +45,41 @@ const PanelFilterGroup = ({
 	saveLabel
 }) => (
 	<div className="slds-filters">
-		{variant === 'panel' ? <PanelHeader
-			assistiveTextCloseFilterPanel={assistiveTextCloseFilterPanel}
-			cancelLabel={cancelLabel}
-			heading={heading}
-			modified={modified}
-			onRequestCancel={onRequestCancel}
-			onRequestClose={onRequestClose}
-			onRequestSave={onRequestSave}
-			saveLabel={saveLabel}
-
-		/>
-		: header || null
-		}
+		{variant === 'panel' ? (
+			<PanelHeader
+				assistiveTextCloseFilterPanel={assistiveTextCloseFilterPanel}
+				cancelLabel={cancelLabel}
+				heading={heading}
+				modified={modified}
+				onRequestCancel={onRequestCancel}
+				onRequestClose={onRequestClose}
+				onRequestSave={onRequestSave}
+				saveLabel={saveLabel}
+			/>
+		) : (
+			header || null
+		)}
 		<div className="slds-filters__body">
-			{errorLabel
-				? <div className="slds-text-color--error slds-m-bottom--x-small" role="alert">{errorLabel}</div>
-				: null}
+			{errorLabel ? (
+				<div
+					className="slds-text-color--error slds-m-bottom--x-small"
+					role="alert"
+				>
+					{errorLabel}
+				</div>
+			) : null}
 			{children}
 		</div>
-		{variant === 'panel' ? <PanelFilteringFooter
-			addFilterLabel={addFilterLabel}
-			onClickAdd={onClickAdd}
-			onClickRemoveAll={onClickRemoveAll}
-			removeAllLabel={removeAllLabel}
-		/>
-		: footer || null
-		}
+		{variant === 'panel' ? (
+			<PanelFilteringFooter
+				addFilterLabel={addFilterLabel}
+				onClickAdd={onClickAdd}
+				onClickRemoveAll={onClickRemoveAll}
+				removeAllLabel={removeAllLabel}
+			/>
+		) : (
+			footer || null
+		)}
 	</div>
 );
 

@@ -6,16 +6,24 @@ import escapeRegExp from 'lodash.escaperegexp';
 import IconSettings from '~/components/icon-settings';
 
 const accounts = [
-	{ id: '1', label: 'Acme', subTitle: 'Account • San Francisco', type: 'account' },
-	{ id: '2', label: 'Salesforce.com, Inc.', subTitle: 'Account • San Francisco', type: 'account' }
+	{
+		id: '1',
+		label: 'Acme',
+		subTitle: 'Account • San Francisco',
+		type: 'account'
+	},
+	{
+		id: '2',
+		label: 'Salesforce.com, Inc.',
+		subTitle: 'Account • San Francisco',
+		type: 'account'
+	}
 ];
 
-const accountsWithIcon = accounts.map((elem) => Object.assign(elem, {
-	icon: <Icon
-		assistiveText="Account"
-		category="standard"
-		name={elem.type}
-	/> })
+const accountsWithIcon = accounts.map((elem) =>
+	Object.assign(elem, {
+		icon: <Icon assistiveText="Account" category="standard" name={elem.type} />
+	})
 );
 
 class Example extends React.Component {
@@ -39,7 +47,7 @@ class Example extends React.Component {
 					menuPosition="relative"
 					onChange={(event, { value }) => {
 						console.log('onChange', value);
-						this.setState({	inputValue: value });
+						this.setState({ inputValue: value });
 					}}
 					onRequestRemoveSelectedOption={(event, data) => {
 						this.setState({
@@ -49,13 +57,20 @@ class Example extends React.Component {
 					}}
 					onSubmit={(event, { value }) => {
 						console.log('onSubmit', value);
-						this.setState({ selection: [{
-							label: value,
-							icon: <Icon
-								assistiveText="Account"
-								category="standard"
-								name="account"
-							/> }] });
+						this.setState({
+							selection: [
+								{
+									label: value,
+									icon: (
+										<Icon
+											assistiveText="Account"
+											category="standard"
+											name="account"
+										/>
+									)
+								}
+							]
+						});
 					}}
 					onSelect={(event, data) => {
 						console.log('onSelect', data);
@@ -63,7 +78,11 @@ class Example extends React.Component {
 					}}
 					options={accountsWithIcon}
 					selection={this.state.selection}
-					value={this.state.selectedOption ? this.state.selectedOption.label : this.state.inputValue}
+					value={
+						this.state.selectedOption
+							? this.state.selectedOption.label
+							: this.state.inputValue
+					}
 				/>
 			</IconSettings>
 		);
@@ -71,4 +90,4 @@ class Example extends React.Component {
 }
 
 Example.displayName = 'ComboboxExample';
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

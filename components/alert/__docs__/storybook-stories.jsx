@@ -16,24 +16,10 @@ storiesOf(ALERT, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around--medium">{getStory()}</div>
 	))
-	.add('Info', () => (
-		<Info />
-	))
-	.add('Warning', () => (
-		<Warning />
-	))
-	.add('Error', () => (
-		<ErrorAlert />
-	))
-	.add('Offline', () => (
-		<Offline />
-	))
-	.add('Dismissable', () => (
-		<Dismissable />
-	))
-	.add('Close alert', () => (
-		<CloseAlert />
-	))
-	.add('Custom Class Names', () => (
-		<CustomClassNames />
-	));
+	.add('Info', () => <Info />)
+	.add('Warning', () => <Warning />)
+	.add('Error', () => <ErrorAlert />)
+	.add('Offline', () => <Offline />)
+	.add('Dismissable', () => <Dismissable />)
+	.add('Close alert', () => <CloseAlert />)
+	.add('Custom Class Names', () => <CustomClassNames />);

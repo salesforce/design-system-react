@@ -17,27 +17,11 @@ storiesOf(TOAST, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around--medium">{getStory()}</div>
 	))
-	.add('Info', () => (
-		<Info />
-	))
-	.add('Success', () => (
-		<Success />
-	))
-	.add('Warning', () => (
-		<Warning />
-	))
-	.add('Error', () => (
-		<ErrorAlert />
-	))
-	.add('Error With Details', () => (
-		<ErrorWithDetailsAlert />
-	))
-	.add('Close Toast', () => (
-		<CloseToast />
-	))
-	.add('Duration Toast', () => (
-		<DurationToast />
-	))
-	.add('Custom Class Names', () => (
-		<CustomClassNames />
-	));
+	.add('Info', () => <Info />)
+	.add('Success', () => <Success />)
+	.add('Warning', () => <Warning />)
+	.add('Error', () => <ErrorAlert />)
+	.add('Error With Details', () => <ErrorWithDetailsAlert />)
+	.add('Close Toast', () => <CloseToast />)
+	.add('Duration Toast', () => <DurationToast />)
+	.add('Custom Class Names', () => <CustomClassNames />);

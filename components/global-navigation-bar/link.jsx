@@ -45,15 +45,19 @@ const GlobalNavigationBarLink = (props) => {
 		tabIndex
 	} = props;
 
-	const listItemstyle = active ? { backgroundColor: activeBackgroundColor, borderBottomColor: activeBackgroundColor } : null;
+	const listItemstyle = active
+		? {
+			backgroundColor: activeBackgroundColor,
+			borderBottomColor: activeBackgroundColor
+		}
+		: null;
 
 	return (
 		<li
-			className={classNames(
-				'slds-context-bar__item',
-				{ 'slds-is-active': active,
-					[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition
-				})}
+			className={classNames('slds-context-bar__item', {
+				'slds-is-active': active,
+				[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition
+			})}
 			id={id}
 			style={listItemstyle}
 		>
@@ -61,7 +65,11 @@ const GlobalNavigationBarLink = (props) => {
 				href={href}
 				className={classNames('slds-context-bar__label-action', className)}
 				onBlur={onBlur}
-				onClick={isFunction(onClick) ? (event) => handleClick(event, href, onClick) : null}
+				onClick={
+					isFunction(onClick)
+						? (event) => handleClick(event, href, onClick)
+						: null
+				}
 				onFocus={onFocus}
 				onKeyDown={onKeyDown}
 				onKeyPress={onKeyPress}
@@ -88,7 +96,11 @@ GlobalNavigationBarLink.propTypes = {
 	/**
 	 * Class names to be added to the anchor element
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string
+	]),
 	/**
 	 * Determines position of separating bar.
 	 */

@@ -11,7 +11,13 @@ class Example extends React.Component {
 				<ToastContainer>
 					<Toast
 						labels={{
-							heading: ['Account ', <a key="acme-100" href="javascript:void(0);">ACME - 100</a>, ' widgets was created.']
+							heading: [
+								'Account ',
+								<a key="acme-100" href="javascript:void(0);">
+									ACME - 100
+								</a>,
+								' widgets was created.'
+							]
 						}}
 						variant="success"
 					/>
@@ -23,4 +29,4 @@ class Example extends React.Component {
 
 Example.displayName = 'ToastExample';
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

@@ -26,34 +26,28 @@ const PanelFilterHeader = ({
 	onRequestClose,
 	onRequestSave,
 	saveLabel
-}) => (modified
-? <div className="slds-filters__header slds-grid slds-has-divider--bottom-space slds-grid--align-spread">
-	<Button
-		label={cancelLabel}
-		onClick={onRequestCancel}
-		variant="neutral"
-	/>
-	<Button
-		label={saveLabel}
-		onClick={onRequestSave}
-		variant="brand"
-	/>
-</div>
-	: <div className="slds-filters__header slds-grid slds-has-divider--bottom-space">
-		<h2 className="slds-align-middle slds-text-heading--small">{heading}</h2>
-		<Button
-			className="slds-col--bump-left"
-			assistiveText={assistiveTextCloseFilterPanel}
-			iconCategory="utility"
-			iconName="forward"
-			iconVariant="bare"
-			iconSize="small"
-			onClick={onRequestClose}
-			title={assistiveTextCloseFilterPanel}
-			variant="icon"
-		/>
-	</div>
-);
+}) =>
+	(modified ? (
+		<div className="slds-filters__header slds-grid slds-has-divider--bottom-space slds-grid--align-spread">
+			<Button label={cancelLabel} onClick={onRequestCancel} variant="neutral" />
+			<Button label={saveLabel} onClick={onRequestSave} variant="brand" />
+		</div>
+	) : (
+		<div className="slds-filters__header slds-grid slds-has-divider--bottom-space">
+			<h2 className="slds-align-middle slds-text-heading--small">{heading}</h2>
+			<Button
+				className="slds-col--bump-left"
+				assistiveText={assistiveTextCloseFilterPanel}
+				iconCategory="utility"
+				iconName="forward"
+				iconVariant="bare"
+				iconSize="small"
+				onClick={onRequestClose}
+				title={assistiveTextCloseFilterPanel}
+				variant="icon"
+			/>
+		</div>
+	));
 
 PanelFilterHeader.displayName = 'SLDSPanelFilterHeader';
 

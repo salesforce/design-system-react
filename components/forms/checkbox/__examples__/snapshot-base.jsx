@@ -11,10 +11,7 @@ const Example = createReactClass({
 		return (
 			<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
 				<div className="slds-col--padded">
-					<Checkbox
-						label="Checkbox"
-						id="checkbox-base-example"
-					/>
+					<Checkbox label="Checkbox" id="checkbox-base-example" />
 				</div>
 				<div className="slds-col--padded">
 					<Checkbox
@@ -70,4 +67,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

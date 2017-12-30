@@ -36,16 +36,21 @@ const Icon = ({
 	path,
 	size,
 	style,
-	title }) => {
+	title
+}) => {
 	const kababCaseName = name ? name.replace(/_/g, '-') : '';
 
 	return (
 		<span
-			className={classNames({
-				'slds-icon_container': category !== 'utility',
-				'slds-icon_container--circle': category === 'action',
-				[`slds-icon-${category}-${kababCaseName}`]: category !== 'utility' && category !== 'doctype' && !path
-			}, containerClassName)}
+			className={classNames(
+				{
+					'slds-icon_container': category !== 'utility',
+					'slds-icon_container--circle': category === 'action',
+					[`slds-icon-${category}-${kababCaseName}`]:
+						category !== 'utility' && category !== 'doctype' && !path
+				},
+				containerClassName
+			)}
 			title={title}
 		>
 			<UtilityIcon
@@ -67,11 +72,11 @@ const Icon = ({
 				path={path}
 				style={style}
 			/>
-			{
-				assistiveText
-				? <span className="slds-assistive-text">{assistiveText}</span>
-				: ''
-			}
+			{assistiveText ? (
+				<span className="slds-assistive-text">{assistiveText}</span>
+			) : (
+				''
+			)}
 		</span>
 	);
 };
@@ -80,7 +85,7 @@ const Icon = ({
 // Always use the canonical component name as the React display name.
 Icon.displayName = ICON;
 
-	// ### Prop Types
+// ### Prop Types
 Icon.propTypes = {
 	/**
 	 * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
@@ -91,15 +96,29 @@ Icon.propTypes = {
 	/**
 	 * Icon category from [lightningdesignsystem.com/icons/](https://www.lightningdesignsystem.com/icons/)
 	 */
-	category: PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']).isRequired,
+	category: PropTypes.oneOf([
+		'action',
+		'custom',
+		'doctype',
+		'standard',
+		'utility'
+	]).isRequired,
 	/**
 	 * CSS classes that are applied to the SVG.
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string
+	]),
 	/**
 	 * CSS classes that are applied to the span.
 	 */
-	containerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	containerClassName: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string
+	]),
 	/**
 	 * Icon color variants
 	 */
@@ -117,8 +136,8 @@ Icon.propTypes = {
 	 */
 	name: PropTypes.string,
 	/**
-   * Path to the icon. This will override any global icon settings
-   */
+	 * Path to the icon. This will override any global icon settings
+	 */
 	path: PropTypes.string,
 	/**
 	 * Size of the icon. Visit [lightningdesignsystem.com/components/icons/#flavor-sizes](https://www.lightningdesignsystem.com/components/icons/#flavor-sizes)

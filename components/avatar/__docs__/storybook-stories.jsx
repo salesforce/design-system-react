@@ -11,7 +11,9 @@ import EntityInitials from '../__examples__/entity-initials.jsx';
 /* eslint-disable react/display-name */
 
 storiesOf(AVATAR, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
+	.addDecorator((getStory) => (
+		<div className="slds-p-around--medium">{getStory()}</div>
+	))
 	.add('Base', () => (
 		<div>
 			<h1 style={{ marginBottom: '10px' }}>Base Avatar</h1>

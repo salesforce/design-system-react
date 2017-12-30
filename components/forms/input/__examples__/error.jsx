@@ -22,13 +22,17 @@ const Example = createReactClass({
 					</div>
 					<div className="slds-col--padded">
 						<Input
-							iconLeft={<InputIcon
-								assistiveText="Search"
-								name="warning"
-								category="utility"
-								color="warning"
-								onClick={() => { console.log('Icon Clicked'); }}
-							/>}
+							iconLeft={
+								<InputIcon
+									assistiveText="Search"
+									name="warning"
+									category="utility"
+									color="warning"
+									onClick={() => {
+										console.log('Icon Clicked');
+									}}
+								/>
+							}
 							id="unique-id-4"
 							label="Input Label"
 							required
@@ -42,4 +46,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

@@ -15,29 +15,14 @@ const Example = createReactClass({
 				}}
 				variant="checkbox"
 			>
-				<Checkbox
-					id="ButtonGroupExampleMon"
-					label="Mon"
-				/>
-				<Checkbox
-					id="ButtonGroupExampleTue"
-					label="Tue"
-				/>
-				<Checkbox
-					id="ButtonGroupExampleWed"
-					label="Wed"
-				/>
-				<Checkbox
-					id="ButtonGroupExampleThu"
-					label="Thu"
-				/>
-				<Checkbox
-					id="ButtonGroupExampleFri"
-					label="Fri"
-				/>
+				<Checkbox id="ButtonGroupExampleMon" label="Mon" />
+				<Checkbox id="ButtonGroupExampleTue" label="Tue" />
+				<Checkbox id="ButtonGroupExampleWed" label="Wed" />
+				<Checkbox id="ButtonGroupExampleThu" label="Thu" />
+				<Checkbox id="ButtonGroupExampleFri" label="Fri" />
 			</ButtonGroup>
 		);
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

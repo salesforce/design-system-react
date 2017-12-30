@@ -68,10 +68,7 @@ const Tab = createReactClass({
 		/**
 		 * The string or element that is shown as both the title and the label for this tab.
 		 */
-		children: PropTypes.oneOfType([
-			PropTypes.string,
-			PropTypes.element
-		]),
+		children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 
 		/**
 		 * If the Tabs should be scopped, defaults to false
@@ -127,18 +124,16 @@ const Tab = createReactClass({
 
 		return (
 			<li
-				className={classNames(
-					'slds-text-title--caps',
-					className,
-					{
-						[activeTabClassName]: selected,
-						[disabledTabClassName]: disabled,
-						'slds-tabs--default__item': variant === 'default',
-						'slds-tabs--scoped__item': variant === 'scoped'
-					}
-				)}
+				className={classNames('slds-text-title--caps', className, {
+					[activeTabClassName]: selected,
+					[disabledTabClassName]: disabled,
+					'slds-tabs--default__item': variant === 'default',
+					'slds-tabs--scoped__item': variant === 'scoped'
+				})}
 				role="tab"
-				ref={(node) => { this.node = node; }}
+				ref={(node) => {
+					this.node = node;
+				}}
 				aria-selected={selected ? 'true' : 'false'}
 				aria-disabled={disabled}
 				aria-controls={panelId}
@@ -147,14 +142,12 @@ const Tab = createReactClass({
 				title={typeof children === 'string' ? children : null}
 			>
 				<a
-					className={classNames(
-						{
-							[activeTabClassName]: selected,
-							[disabledTabClassName]: disabled,
-							'slds-tabs--default__link': variant === 'default',
-							'slds-tabs--scoped__link': variant === 'scoped'
-						}
-					)}
+					className={classNames({
+						[activeTabClassName]: selected,
+						[disabledTabClassName]: disabled,
+						'slds-tabs--default__link': variant === 'default',
+						'slds-tabs--scoped__link': variant === 'scoped'
+					})}
 					href="javascript:void(0);" // eslint-disable-line no-script-url
 					role="presentation"
 					tabIndex="-1"

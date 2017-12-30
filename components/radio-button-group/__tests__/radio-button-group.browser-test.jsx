@@ -10,7 +10,10 @@ import { shape } from 'airbnb-prop-types';
  * context [full source here](tests/enzyme-helpers.js). `this` can
  * only be referenced if inside `function () {}`.
  */
-import { createMountNode, destroyMountNode } from '../../../tests/enzyme-helpers';
+import {
+	createMountNode,
+	destroyMountNode
+} from '../../../tests/enzyme-helpers';
 
 import RadioButtonGroup from '../../radio-button-group';
 import Radio from '../../radio-button-group/radio';
@@ -20,7 +23,6 @@ chai.use(chaiEnzyme());
 /* Re-usable demo component.
  */
 class RadioButtonGroupExample extends React.Component {
-
 	constructor (props) {
 		super(props);
 		this.state = { checked: 'Tue' };
@@ -35,11 +37,18 @@ class RadioButtonGroupExample extends React.Component {
 				disabled={this.props.disabled}
 				required={this.props.required}
 			>
-				{days.map((day) => <Radio key={day} label={day} value={day} checked={this.state.checked === day} variant="button-group" />)}
+				{days.map((day) => (
+					<Radio
+						key={day}
+						label={day}
+						value={day}
+						checked={this.state.checked === day}
+						variant="button-group"
+					/>
+				))}
 			</RadioButtonGroup>
 		);
 	}
-
 }
 
 RadioButtonGroupExample.propTypes = {
@@ -75,14 +84,19 @@ describe('RadioButtonGroup', function () {
 		expect(radios).to.have.lengthOf(5, 'there are five radio inputs');
 		for (let index = 0; index < radios.length; index++) {
 			const radio = radios.get(index);
-			expect(radio.props.checked).to.equal(radio.props.label === 'Tue', 'the second radio input is checked');
+			expect(radio.props.checked).to.equal(
+				radio.props.label === 'Tue',
+				'the second radio input is checked'
+			);
 		}
 		const legend = wrapper.find('legend');
 		expect(legend.text()).to.equal('Day of week', 'there is a label');
 	});
 
 	it('renders a disabled state', () => {
-		wrapper = mount(<RadioButtonGroupExample disabled />, { attachTo: mountNode });
+		wrapper = mount(<RadioButtonGroupExample disabled />, {
+			attachTo: mountNode
+		});
 		const radios = wrapper.find(Radio);
 		for (let index = 0; index < radios.length; index++) {
 			const radio = radios.get(index);
@@ -91,7 +105,9 @@ describe('RadioButtonGroup', function () {
 	});
 
 	it('renders a required indicator', () => {
-		wrapper = mount(<RadioButtonGroupExample required />, { attachTo: mountNode });
+		wrapper = mount(<RadioButtonGroupExample required />, {
+			attachTo: mountNode
+		});
 		const abbr = wrapper.find('abbr');
 		expect(abbr.text()).to.equal('*', 'there is a required indicator');
 	});
@@ -101,6 +117,9 @@ describe('RadioButtonGroup', function () {
 		const radio = wrapper.find({ value: 'Mon' });
 		expect(radio.props().checked).to.be.false;
 		radio.simulate('change', { event: { target: 'Mon' } });
-		expect(radio.props().checked, 'radio button changes from unchecked to checked').to.be.true;
+		expect(
+			radio.props().checked,
+			'radio button changes from unchecked to checked'
+		).to.be.true;
 	});
 });

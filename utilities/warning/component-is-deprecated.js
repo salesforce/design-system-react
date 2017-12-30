@@ -15,7 +15,10 @@ if (process.env.NODE_ENV !== 'production') {
 		const additionalComment = comment ? ` ${comment}` : '';
 		if (!hasWarned[control]) {
 			/* eslint-disable max-len */
-			lowPriorityWarning(false, `[Design System React] ${control} is a deprecated component. Bugfixes can be contributed, but new features and additional alignment with SLDS may be declined.${additionalComment}`);
+			lowPriorityWarning(
+				false,
+				`[Design System React] ${control} is a deprecated component. Bugfixes can be contributed, but new features and additional alignment with SLDS may be declined.${additionalComment}`
+			);
 			/* eslint-enable max-len */
 			hasWarned[control] = true;
 		}

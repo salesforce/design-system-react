@@ -10,7 +10,10 @@ import { mount } from 'enzyme';
  * context [full source here](tests/enzyme-helpers.js). `this` can
  * only be referenced if inside `function () {}`.
  */
-import { createMountNode, destroyMountNode } from '../../../tests/enzyme-helpers';
+import {
+	createMountNode,
+	destroyMountNode
+} from '../../../tests/enzyme-helpers';
 
 // Import your internal dependencies (for example):
 import Popover from '../../popover';
@@ -90,18 +93,23 @@ describe('SLDSFilter', function () {
 		});
 
 		it('Filter could take popover as a prop and use the props of popover to render, verifies the custom popover className', () => {
-			const demoPopover = (<DemoComponent
-				className="custom-filter-popover"
-				isOpen
-				position="absolute"
-			/>);
-			wrapper = mount(<IconSettings iconPath="/assets/icons">
-				<Filter
-					property="Show Me"
-					predicate="All Opportunities"
-					popover={demoPopover}
+			const demoPopover = (
+				<DemoComponent
+					className="custom-filter-popover"
+					isOpen
+					position="absolute"
 				/>
-			</IconSettings>, { attachTo: mountNode });
+			);
+			wrapper = mount(
+				<IconSettings iconPath="/assets/icons">
+					<Filter
+						property="Show Me"
+						predicate="All Opportunities"
+						popover={demoPopover}
+					/>
+				</IconSettings>,
+				{ attachTo: mountNode }
+			);
 
 			expect(wrapper.find('.custom-filter-popover')).to.exist;
 		});
@@ -117,9 +125,7 @@ describe('SLDSFilter', function () {
 		});
 
 		it('Filter could take onClick prop and trigger this callback during filter click', (done) => {
-			const demoPopover = (<DemoComponent
-				className="custom-filter-popover"
-			/>);
+			const demoPopover = <DemoComponent className="custom-filter-popover" />;
 
 			let onFilterClicked = false;
 
@@ -127,16 +133,22 @@ describe('SLDSFilter', function () {
 				onFilterClicked = true;
 			};
 
-			wrapper = mount(<IconSettings iconPath="/assets/icons">
-				<Filter
-					property="Show Me"
-					predicate="All Opportunities"
-					popover={demoPopover}
-					onClick={onClick}
-				/></IconSettings>, { attachTo: mountNode });
+			wrapper = mount(
+				<IconSettings iconPath="/assets/icons">
+					<Filter
+						property="Show Me"
+						predicate="All Opportunities"
+						popover={demoPopover}
+						onClick={onClick}
+					/>
+				</IconSettings>,
+				{ attachTo: mountNode }
+			);
 
 			setTimeout(() => {
-				const filterButton = wrapper.find('.slds-filters__item .slds-button--reset');
+				const filterButton = wrapper.find(
+					'.slds-filters__item .slds-button--reset'
+				);
 				filterButton.simulate('click', {});
 				expect(onFilterClicked).to.be.true;
 				done();

@@ -18,27 +18,46 @@ const handleClick = (event, { date, onSelectDate }) => {
 	onSelectDate(event, { date });
 };
 
-const handleKeyDown = (event, {
-	date,
-	onCalendarBlur,
-	onSelectDate,
-	onKeyboardNavigateToPreviousDay,
-	onKeyboardNavigateToNextDay,
-	onKeyboardNavigateToPreviousWeek,
-	onKeyboardNavigateToNextWeek
-}) => {
+const handleKeyDown = (
+	event,
+	{
+		date,
+		onCalendarBlur,
+		onSelectDate,
+		onKeyboardNavigateToPreviousDay,
+		onKeyboardNavigateToNextDay,
+		onKeyboardNavigateToPreviousWeek,
+		onKeyboardNavigateToNextWeek
+	}
+) => {
 	const keyDownCallbacks = {
-		[KEYS.SPACE]: () => { onSelectDate(event, { date }); },
-		[KEYS.ENTER]: () => { onSelectDate(event, { date }); },
-		[KEYS.TAB]: () => { onCalendarBlur(event, { direction: 'next' }); },
-		[KEYS.LEFT]: () => { onKeyboardNavigateToPreviousDay(event, { date }); },
-		[KEYS.RIGHT]: () => { onKeyboardNavigateToNextDay(event, { date }); },
-		[KEYS.UP]: () => { onKeyboardNavigateToPreviousWeek(event, { date }); },
-		[KEYS.DOWN]: () => { onKeyboardNavigateToNextWeek(event, { date }); }
+		[KEYS.SPACE]: () => {
+			onSelectDate(event, { date });
+		},
+		[KEYS.ENTER]: () => {
+			onSelectDate(event, { date });
+		},
+		[KEYS.TAB]: () => {
+			onCalendarBlur(event, { direction: 'next' });
+		},
+		[KEYS.LEFT]: () => {
+			onKeyboardNavigateToPreviousDay(event, { date });
+		},
+		[KEYS.RIGHT]: () => {
+			onKeyboardNavigateToNextDay(event, { date });
+		},
+		[KEYS.UP]: () => {
+			onKeyboardNavigateToPreviousWeek(event, { date });
+		},
+		[KEYS.DOWN]: () => {
+			onKeyboardNavigateToNextWeek(event, { date });
+		}
 	};
 
 	const shiftKeyDownCallbacks = {
-		[KEYS.TAB]: () => { onCalendarBlur(event, { direction: 'previous' }); }
+		[KEYS.TAB]: () => {
+			onCalendarBlur(event, { direction: 'previous' });
+		}
 	};
 
 	if (event.keyCode) {
@@ -53,7 +72,10 @@ const handleKeyDown = (event, {
 };
 
 const DatepickerCalendarDay = (props) => {
-	const isCurrentMonth = DateUtil.isSameMonth(props.date, props.initialDateForCalendarRender);
+	const isCurrentMonth = DateUtil.isSameMonth(
+		props.date,
+		props.initialDateForCalendarRender
+	);
 	const isToday = DateUtil.isToday(props.date);
 	const isSelectedDay = DateUtil.isSameDay(props.date, props.selectedDate);
 	const isFirstDayOfMonth = DateUtil.isFirstDayOfMonth(props.date);
@@ -70,7 +92,10 @@ const DatepickerCalendarDay = (props) => {
 				'slds-is-selected': isSelectedDay
 			})}
 			onClick={(event) => {
-				handleClick(event, { date: props.date, onSelectDate: props.onSelectDate });
+				handleClick(event, {
+					date: props.date,
+					onSelectDate: props.onSelectDate
+				});
 			}}
 			onKeyDown={(event) => {
 				handleKeyDown(event, {
@@ -82,20 +107,27 @@ const DatepickerCalendarDay = (props) => {
 					props.selectedDateRef(component);
 				}
 
-				if (props.calendarHasFocus
-					&& DateUtil.isSameDay(props.focusedDate, props.date)
-					&& isCurrentMonth) {
-					props.onRequestInternalFocusDate(undefined, { date: props.date, ref: component });
+				if (
+					props.calendarHasFocus &&
+					DateUtil.isSameDay(props.focusedDate, props.date) &&
+					isCurrentMonth
+				) {
+					props.onRequestInternalFocusDate(undefined, {
+						date: props.date,
+						ref: component
+					});
 				}
 			}}
 			role="gridcell"
-			tabIndex={!props.calendarHasFocus && isFirstDayOfMonth && isCurrentMonth ? 0 : -1}
+			tabIndex={
+				!props.calendarHasFocus && isFirstDayOfMonth && isCurrentMonth ? 0 : -1
+			}
 		>
 			{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 			<span className="slds-day">
-				{isToday
-					? <span className="slds-assistive-text">{props.todayLabel}: </span>
-					: null}
+				{isToday ? (
+					<span className="slds-assistive-text">{props.todayLabel}: </span>
+				) : null}
 				{props.date.getDate()}
 			</span>
 		</td>
@@ -118,8 +150,8 @@ DatepickerCalendarDay.propTypes = {
 	 */
 	disabled: PropTypes.bool,
 	/**
-   * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
-   */
+	 * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
+	 */
 	initialDateForCalendarRender: PropTypes.instanceOf(Date).isRequired,
 	/**
 	 * Triggered when the keyboard moves focus off the calendar.

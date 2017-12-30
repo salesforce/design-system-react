@@ -44,18 +44,22 @@ const Trigger = createReactClass({
 		/**
 		 * CSS classes to be added to triggering button.
 		 */
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		className: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string
+		]),
 		/**
-		* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button. This is provided by the `MenuDropdown`. Please use `MenuDropdown` to set.
-		*/
+		 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button. This is provided by the `MenuDropdown`. Please use `MenuDropdown` to set.
+		 */
 		id: PropTypes.string,
 		/**
 		 * Informs the trigger on the open/close state of the dropdown menu
 		 */
 		isOpen: PropTypes.bool,
 		/**
-		* By Default the dropdown menu is inside a `Dialog` component.
-		*/
+		 * By Default the dropdown menu is inside a `Dialog` component.
+		 */
 		menu: PropTypes.node,
 		/**
 		 * Is only called when `openOn` is set to `hover` and when the triggering button loses focus.
@@ -96,7 +100,11 @@ const Trigger = createReactClass({
 		/**
 		 * CSS classes to be added to wrapping trigger `div` around the button.
 		 */
-		triggerClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string])
+		triggerClassName: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string
+		])
 	},
 
 	// ### Render
@@ -104,7 +112,7 @@ const Trigger = createReactClass({
 		// The following are required for use with dropdown. Any other custom props for `Button` should be set with a `Button` child of this component, and are technically just here for backwards compatibility. See `children` prop description for more information.
 		const {
 			assistiveText,
-			children,	// eslint-disable-line no-unused-vars
+			children, // eslint-disable-line no-unused-vars
 			className,
 			id,
 			isInline, // eslint-disable-line no-unused-vars
@@ -139,7 +147,7 @@ const Trigger = createReactClass({
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<div
 				className={classnames(
-				`slds-dropdown-trigger slds-dropdown-trigger--${openOn}`,
+					`slds-dropdown-trigger slds-dropdown-trigger--${openOn}`,
 					{
 						'slds-is-open': isOpen
 					},

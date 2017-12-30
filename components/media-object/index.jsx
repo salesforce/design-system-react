@@ -37,7 +37,11 @@ const MediaObject = createReactClass({
 		/**
 		 * Class names to be added to the component's HTML tag with `slds-media` class.
 		 */
-		className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		className: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string
+		]),
 		/**
 		 * The body is often text such as a heading or paragraph.
 		 */
@@ -55,19 +59,19 @@ const MediaObject = createReactClass({
 	render () {
 		return (
 			<div
-				className={
-					classnames(
-						cssClasses.base,
-						{
-							'slds-media--center': this.props.verticalCenter,
-							'slds-has-flexi-truncate': this.props.canTruncate
-						}, this.props.className)}
+				className={classnames(
+					cssClasses.base,
+					{
+						'slds-media--center': this.props.verticalCenter,
+						'slds-has-flexi-truncate': this.props.canTruncate
+					},
+					this.props.className
+				)}
 			>
-				{this.props.figure ? <div className={cssClasses.figure}>
-					{this.props.figure} </div> : null}
-				<div className={cssClasses.body}>
-					{this.props.body}
-				</div>
+				{this.props.figure ? (
+					<div className={cssClasses.figure}>{this.props.figure} </div>
+				) : null}
+				<div className={cssClasses.body}>{this.props.body}</div>
 			</div>
 		);
 	}

@@ -16,7 +16,10 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 // ## Constants
-import { GLOBAL_NAVIGATION_BAR, GLOBAL_NAVIGATION_BAR_REGION } from '../../utilities/constants';
+import {
+	GLOBAL_NAVIGATION_BAR,
+	GLOBAL_NAVIGATION_BAR_REGION
+} from '../../utilities/constants';
 
 const auditChildren = (children) => {
 	let primaryRegion;
@@ -37,7 +40,10 @@ const auditChildren = (children) => {
 	});
 
 	if (primaryRegion && secondaryRegions.length > 0) {
-		const dividerPosition = primaryRegion.props.dividerPosition === undefined ? 'right' : primaryRegion.props.dividerPosition;
+		const dividerPosition =
+			primaryRegion.props.dividerPosition === undefined
+				? 'right'
+				: primaryRegion.props.dividerPosition;
 
 		primaryRegion = React.cloneElement(primaryRegion, {
 			dividerPosition,
@@ -49,7 +55,7 @@ const auditChildren = (children) => {
 };
 
 /**
-  * Global Navigation Bar represents a list of links that either take the user to another page or parts of the page the user is in.
+ * Global Navigation Bar represents a list of links that either take the user to another page or parts of the page the user is in.
  */
 const GlobalNavigationBar = (props) => (
 	<div
@@ -59,7 +65,8 @@ const GlobalNavigationBar = (props) => (
 				[`slds-context-bar--theme-${props.cloud}`]: props.cloud,
 				[`slds-context-bar--theme-${props.theme}`]: props.theme
 			},
-			props.className)}
+			props.className
+		)}
 	>
 		{auditChildren(props.children)}
 	</div>
@@ -74,7 +81,11 @@ GlobalNavigationBar.propTypes = {
 	/**
 	 * CSS class names to be added to the container element.
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string
+	]),
 	/**
 	 * Typically the cloud name (e.g.- "sales" or "marketing"). This primarily changes the background color.
 	 */
@@ -89,7 +100,6 @@ GlobalNavigationBar.defaultProps = {
 	cloud: 'default',
 	theme: 'dark'
 };
-
 
 GlobalNavigationBar.displayName = GLOBAL_NAVIGATION_BAR;
 

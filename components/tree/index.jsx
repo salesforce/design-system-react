@@ -38,11 +38,21 @@ class Tree extends React.Component {
 		// Start the zero level branch--that is the tree root. There is no label for
 		// the tree root, but is required by all other nodes
 		return (
-			<div id={this.props.id} className={classNames('slds-tree_container', this.props.className)} /* role="application" */>
+			<div
+				id={this.props.id}
+				className={classNames(
+					'slds-tree_container',
+					this.props.className
+				)} /* role="application" */
+			>
 				<h4
-					className={classNames('slds-text-title--caps', { 'slds-assistive-text': this.props.assistiveText })}
+					className={classNames('slds-text-title--caps', {
+						'slds-assistive-text': this.props.assistiveText
+					})}
 					id={`${this.props.id}__heading`}
-				>{headingText}</h4>
+				>
+					{headingText}
+				</h4>
 				<Branch
 					getNodes={this.props.getNodes}
 					initalClassName={this.props.listClassName}
@@ -59,7 +69,7 @@ class Tree extends React.Component {
 			</div>
 		);
 	}
- }
+}
 
 Tree.defaultProps = {
 	getNodes: (node) => node.nodes
@@ -81,14 +91,16 @@ Tree.propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string]),
+		PropTypes.string
+	]),
 	/**
 	 * Class names to be added to the top-level `ul` element of the tree.
 	 */
 	listClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string]),
+		PropTypes.string
+	]),
 	/**
 	 * A function that will be called by every branch to receive its child nodes. The parent `node` object with the branch data is passed into this function: `getNodes(node)`. If your state engine is Flux or Redux, then your tree data structure will probably be flattened or normalized within the store. This will allow you to build out your tree without transversing an actual tree of data and may be more performant.
 	 */

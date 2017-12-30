@@ -58,39 +58,43 @@ const Example = createReactClass({
 	},
 
 	render () {
-		return this.state['show-me'].isActive && (
-			<IconSettings iconPath="/assets/icons">
-				<Filter
-					align={this.props.align}
-					id="sample-panel-filtering-show-me"
-					onChange={this.onChangePredicate}
-					onRemove={this.onRemove}
-					property="Show Me"
-					predicate={this.state['show-me'].selectedItem.label}
-					{...this.props}
-				>
-					<Combobox
-						events={{
-							onSelect: (event, data) => {
-								this.setState({ 'show-me': {
-									...this.state['show-me'],
-									comboboxSelection: data.selection
-								} });
-							}
-						}}
-						labels={{
-							label: 'Show Me',
-							placeholder: 'Select record type'
-						}}
-						menuPosition="relative"
-						options={options['show-me']}
-						selection={this.state['show-me'].comboboxSelection}
-						variant="readonly"
-					/>
-				</Filter>
-			</IconSettings>
+		return (
+			this.state['show-me'].isActive && (
+				<IconSettings iconPath="/assets/icons">
+					<Filter
+						align={this.props.align}
+						id="sample-panel-filtering-show-me"
+						onChange={this.onChangePredicate}
+						onRemove={this.onRemove}
+						property="Show Me"
+						predicate={this.state['show-me'].selectedItem.label}
+						{...this.props}
+					>
+						<Combobox
+							events={{
+								onSelect: (event, data) => {
+									this.setState({
+										'show-me': {
+											...this.state['show-me'],
+											comboboxSelection: data.selection
+										}
+									});
+								}
+							}}
+							labels={{
+								label: 'Show Me',
+								placeholder: 'Select record type'
+							}}
+							menuPosition="relative"
+							options={options['show-me']}
+							selection={this.state['show-me'].comboboxSelection}
+							variant="readonly"
+						/>
+					</Filter>
+				</IconSettings>
+			)
 		);
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

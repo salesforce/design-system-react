@@ -90,16 +90,24 @@ class Avatar extends React.Component {
 		const name = label.trim();
 		const nameParts = name.split(' ');
 		if (nameParts.length > 1) {
-			return nameParts[0].charAt(0).toUpperCase() +
-				nameParts[nameParts.length - 1].charAt(0).toUpperCase();
+			return (
+				nameParts[0].charAt(0).toUpperCase() +
+				nameParts[nameParts.length - 1].charAt(0).toUpperCase()
+			);
 		}
-		return (name[0] || '').toUpperCase()
-			+ (name[1] || '').toLowerCase();
+		return (name[0] || '').toUpperCase() + (name[1] || '').toLowerCase();
 	}
 
 	renderBaseAvatar () {
 		const { imgAlt, imgSrc, title } = this.props;
-		return <img alt={imgAlt} src={imgSrc} onError={() => this.handleImageError()} title={title} />;
+		return (
+			<img
+				alt={imgAlt}
+				src={imgSrc}
+				onError={() => this.handleImageError()}
+				title={title}
+			/>
+		);
 	}
 
 	renderIconAvatar () {
@@ -117,12 +125,10 @@ class Avatar extends React.Component {
 		const { initials, label, variant } = this.props;
 		return (
 			<abbr
-				className={classNames(
-					'slds-avatar__initials', {
-						'slds-icon-standard-account': variant === 'entity',
-						'slds-icon-standard-user': variant === 'user'
-					}
-				)}
+				className={classNames('slds-avatar__initials', {
+					'slds-icon-standard-account': variant === 'entity',
+					'slds-icon-standard-user': variant === 'user'
+				})}
 				title={label}
 			>
 				{initials ? initials : this.buildInitials()}
@@ -131,13 +137,7 @@ class Avatar extends React.Component {
 	}
 
 	render () {
-		const {
-			imgSrc,
-			initials,
-			variant,
-			label,
-			size
-		} = this.props;
+		const { imgSrc, initials, variant, label, size } = this.props;
 
 		const renderAvatar = () => {
 			/* eslint no-unneeded-ternary: */

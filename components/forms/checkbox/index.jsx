@@ -170,21 +170,18 @@ const Checkbox = createReactClass({
 					onKeyDown={props.onKeyDown}
 					onKeyPress={props.onKeyPress}
 					onKeyUp={props.onKeyUp}
-					ref={
-						(component) => {
-							this.input = component;
-						}}
+					ref={(component) => {
+						this.input = component;
+					}}
 					role={props.role}
 					required={props.required}
 					type="checkbox"
 				/>
 				<label className="slds-checkbox--button__label" htmlFor={this.getId()}>
 					<span className="slds-checkbox--faux">{props.label}</span>
-					{props.assistiveText
-						? <span className="slds-assistive-text">
-							{props.assistiveText}
-						</span>
-					: null}
+					{props.assistiveText ? (
+						<span className="slds-assistive-text">{props.assistiveText}</span>
+					) : null}
 				</label>
 			</span>
 		);
@@ -193,15 +190,22 @@ const Checkbox = createReactClass({
 	renderBaseVariant (props) {
 		return (
 			<div
-				className={classNames('slds-form-element', {
-					'is-required': props.required,
-					'slds-has-error': props.errorText
-				},
-				props.className)}
+				className={classNames(
+					'slds-form-element',
+					{
+						'is-required': props.required,
+						'slds-has-error': props.errorText
+					},
+					props.className
+				)}
 			>
 				<div className="slds-form-element__control">
 					<span className="slds-checkbox">
-						{props.required ? <abbr className="slds-required" title="required">*</abbr> : null}
+						{props.required ? (
+							<abbr className="slds-required" title="required">
+								*
+							</abbr>
+						) : null}
 						<input
 							aria-controls={this.props['aria-controls']}
 							aria-describedby={this.props['aria-describedby']}
@@ -217,33 +221,32 @@ const Checkbox = createReactClass({
 							onKeyDown={props.onKeyDown}
 							onKeyPress={props.onKeyPress}
 							onKeyUp={props.onKeyUp}
-							ref={
-								(component) => {
-									if (component) {
-										component.indeterminate = props.indeterminate;
-									}
-									this.input = component;
-								}}
+							ref={(component) => {
+								if (component) {
+									component.indeterminate = props.indeterminate;
+								}
+								this.input = component;
+							}}
 							role={props.role}
 							required={props.required}
 							type="checkbox"
 						/>
 						<label className="slds-checkbox__label" htmlFor={this.getId()}>
 							<span className="slds-checkbox--faux" />
-							{props.label
-								? <span className="slds-form-element__label">
-									{props.label}
-								</span>
-							: null}
-							{props.assistiveText
-								? <span className="slds-assistive-text">
+							{props.label ? (
+								<span className="slds-form-element__label">{props.label}</span>
+							) : null}
+							{props.assistiveText ? (
+								<span className="slds-assistive-text">
 									{props.assistiveText}
 								</span>
-							: null}
+							) : null}
 						</label>
 					</span>
 				</div>
-				{props.errorText ? <div className="slds-form-element__help">{props.errorText}</div> : null}
+				{props.errorText ? (
+					<div className="slds-form-element__help">{props.errorText}</div>
+				) : null}
 			</div>
 		);
 	},
@@ -251,24 +254,32 @@ const Checkbox = createReactClass({
 	renderToggleVariant (props) {
 		return (
 			<div
-				className={classNames('slds-form-element', {
-					'is-required': props.required,
-					'slds-has-error': props.errorText
-				},
-				props.className)}
+				className={classNames(
+					'slds-form-element',
+					{
+						'is-required': props.required,
+						'slds-has-error': props.errorText
+					},
+					props.className
+				)}
 			>
-				<label className="slds-checkbox--toggle slds-grid" htmlFor={this.getId()}>
-					{props.required ? <abbr className="slds-required" title="required">*</abbr> : null}
-					{props.label
-						? <span className="slds-form-element__label slds-m-bottom--none">
+				<label
+					className="slds-checkbox--toggle slds-grid"
+					htmlFor={this.getId()}
+				>
+					{props.required ? (
+						<abbr className="slds-required" title="required">
+							*
+						</abbr>
+					) : null}
+					{props.label ? (
+						<span className="slds-form-element__label slds-m-bottom--none">
 							{props.label}
 						</span>
-					: null}
-					{props.assistiveText
-						? <span className="slds-assistive-text">
-							{props.assistiveText}
-						</span>
-					: null}
+					) : null}
+					{props.assistiveText ? (
+						<span className="slds-assistive-text">{props.assistiveText}</span>
+					) : null}
 					<input
 						aria-controls={this.props['aria-controls']}
 						aria-describedby={`${this.getId()}-desc`}
@@ -284,21 +295,30 @@ const Checkbox = createReactClass({
 						onKeyDown={props.onKeyDown}
 						onKeyPress={props.onKeyPress}
 						onKeyUp={props.onKeyUp}
-						ref={
-							(component) => {
-								this.input = component;
-							}}
+						ref={(component) => {
+							this.input = component;
+						}}
 						role={props.role}
 						required={props.required}
 						type="checkbox"
 					/>
-					<span id={`${this.getId()}-desc`} className="slds-checkbox--faux_container" aria-live="assertive">
+					<span
+						id={`${this.getId()}-desc`}
+						className="slds-checkbox--faux_container"
+						aria-live="assertive"
+					>
 						<span className="slds-checkbox--faux" />
-						<span className="slds-checkbox--on">{props.labelToggleEnabled}</span>
-						<span className="slds-checkbox--off">{props.labelToggleDisabled}</span>
+						<span className="slds-checkbox--on">
+							{props.labelToggleEnabled}
+						</span>
+						<span className="slds-checkbox--off">
+							{props.labelToggleDisabled}
+						</span>
 					</span>
 				</label>
-				{props.errorText ? <div className="slds-form-element__help">{props.errorText}</div> : null}
+				{props.errorText ? (
+					<div className="slds-form-element__help">{props.errorText}</div>
+				) : null}
 			</div>
 		);
 	},
@@ -321,11 +341,7 @@ const Checkbox = createReactClass({
 
 	handleChange (event) {
 		const value = event.target.checked;
-		const {
-			checked,
-			indeterminate,
-			onChange
-		} = this.props;
+		const { checked, indeterminate, onChange } = this.props;
 
 		if (isFunction(onChange)) {
 			// `checked` is present twice to maintain backwards compatibility. Please remove first parameter `value` on the next breaking change.
@@ -338,8 +354,7 @@ const Checkbox = createReactClass({
 
 	handleKeyDown (event) {
 		if (event.keyCode) {
-			if (event.keyCode === KEYS.ENTER ||
-					event.keyCode === KEYS.SPACE) {
+			if (event.keyCode === KEYS.ENTER || event.keyCode === KEYS.SPACE) {
 				EventUtil.trapImmediate(event);
 				this.handleChange(event);
 			}

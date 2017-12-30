@@ -9,7 +9,10 @@ import { mount } from 'enzyme';
  * only be referenced if inside `function () {}`.
  */
 
-import { createMountNode, destroyMountNode } from '../../../tests/enzyme-helpers';
+import {
+	createMountNode,
+	destroyMountNode
+} from '../../../tests/enzyme-helpers';
 
 import Accordion from '../../accordion';
 import IconSettings from '../../icon-settings';

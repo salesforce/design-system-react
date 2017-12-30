@@ -5,24 +5,25 @@
 
 import path from 'path';
 
-const exec = ({
-	command,
-	message,
-	dir = '.',
-	rootPath,
-	verbose = true
-}, callback) => {
+const exec = (
+	{ command, message, dir = '.', rootPath, verbose = true },
+	callback
+) => {
 	if (message) {
 		console.log(message);
 	} else {
 		console.log(command);
 	}
-	const child = require('child_process').exec(command, {
-		cwd: path.resolve(rootPath, dir),
-		maxBuffer: 1024 * 500
-	}, (err) => {
-		callback(err);
-	});
+	const child = require('child_process').exec(
+		command,
+		{
+			cwd: path.resolve(rootPath, dir),
+			maxBuffer: 1024 * 500
+		},
+		(err) => {
+			callback(err);
+		}
+	);
 
 	if (verbose === true) {
 		child.stdout.on('data', (data) => process.stdout.write(data.toString()));

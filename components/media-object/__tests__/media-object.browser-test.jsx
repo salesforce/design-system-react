@@ -2,7 +2,10 @@ import React from 'react';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 // `this.wrapper` and `this.dom` is set in the helpers file
-import { mountComponent, unmountComponent } from '../../../tests/enzyme-helpers';
+import {
+	mountComponent,
+	unmountComponent
+} from '../../../tests/enzyme-helpers';
 
 import MediaObject from '../../media-object';
 import Icon from '../../icon';
@@ -25,19 +28,20 @@ const DemoComponent = (props) => (
 );
 DemoComponent.displayName = 'DemoMediaObject';
 
-
 describe(`${MEDIA_OBJECT}: `, () => {
 	/*
 		Tests
 	 */
 	describe('Default Structure and CSS', () => {
-		beforeEach(mountComponent(
-			<DemoComponent
-				body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda."
-				className="this-is-a-container-test"
-				figure={<Icon category="standard" name="user" size="medium" />}
-			/>
-		));
+		beforeEach(
+			mountComponent(
+				<DemoComponent
+					body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda."
+					className="this-is-a-container-test"
+					figure={<Icon category="standard" name="user" size="medium" />}
+				/>
+			)
+		);
 
 		afterEach(unmountComponent);
 
@@ -48,7 +52,9 @@ describe(`${MEDIA_OBJECT}: `, () => {
 			const body = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.body}`);
 			console.log(body.text());
 			const bodyText = body.text();
-			expect(bodyText).to.equal('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda.');
+			expect(bodyText).to.equal(
+				'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda.'
+			);
 
 			const figure = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.figure}`);
 			const icon = figure.find('.slds-icon-standard-user');
@@ -57,13 +63,15 @@ describe(`${MEDIA_OBJECT}: `, () => {
 	});
 
 	describe('Additional Structure', () => {
-		beforeEach(mountComponent(
-			<DemoComponent
-				figure={<Icon category="standard" name="user" size="medium" />}
-				verticalCenter
-				canTruncate
-			/>
-		));
+		beforeEach(
+			mountComponent(
+				<DemoComponent
+					figure={<Icon category="standard" name="user" size="medium" />}
+					verticalCenter
+					canTruncate
+				/>
+			)
+		);
 
 		afterEach(unmountComponent);
 

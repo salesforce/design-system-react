@@ -18,7 +18,7 @@ import GlobalNavigationBarRegion from '../../global-navigation-bar/region';
 import IconSettings from '../../icon-settings';
 import SLDSSettings from '../../SLDSSettings';
 
-SLDSSettings.setAppElement('#root');	// used by Modal component
+SLDSSettings.setAppElement('#root'); // used by Modal component
 
 const standardTileDemoStyles = {
 	width: '20rem',
@@ -198,12 +198,19 @@ const DemoAppLauncherSection = createReactClass({
 	render () {
 		return (
 			<div>
-				<AppLauncherSection title="All Items" toggleable onToggleClick={action('Section `All Items` open -->')}>
+				<AppLauncherSection
+					title="All Items"
+					toggleable
+					onToggleClick={action('Section `All Items` open -->')}
+				>
 					<DemoAppLauncherTile />
 					<DemoAppLauncherTileWithIconText />
 					<DemoAppLauncherTileWithIconNode />
 				</AppLauncherSection>
-				<AppLauncherSection title="All Apps" onToggleClick={action('Section `All App` open -->')}>
+				<AppLauncherSection
+					title="All Apps"
+					onToggleClick={action('Section `All App` open -->')}
+				>
 					<DemoAppLauncherTile />
 					<DemoAppLauncherTileWithIconNode />
 				</AppLauncherSection>
@@ -218,12 +225,18 @@ const DemoAppLauncherSectionWithSmallTiles = createReactClass({
 	render () {
 		return (
 			<div>
-				<AppLauncherSection title="All Items" onToggleClick={action('Section `All Items` open -->')}>
+				<AppLauncherSection
+					title="All Items"
+					onToggleClick={action('Section `All Items` open -->')}
+				>
 					<DemoAppLauncherTile />
 					<DemoAppLauncherTileWithIconText />
 					<DemoAppLauncherTileWithIconNode />
 				</AppLauncherSection>
-				<AppLauncherSection title="All Apps" onToggleClick={action('Section `All App` open -->')}>
+				<AppLauncherSection
+					title="All Apps"
+					onToggleClick={action('Section `All App` open -->')}
+				>
 					<DemoAppLauncherTile size="small" />
 					<DemoAppLauncherTileWithIconNode size="small" />
 				</AppLauncherSection>
@@ -260,21 +273,23 @@ const DemoAppLauncher = createReactClass({
 	},
 
 	render () {
-		const search = (<Search
-			clearable={this.state.search !== ''}
-			onChange={this.onSearch}
-			onClear={this.onClear}
-			placeholder="Find an app"
-			assistiveText="Find an app"
-			value={this.state.search}
-		/>);
-		const modalHeaderButton = <Button label="App Exchange" onClick={action('Modal Button clicked!')} />;
+		const search = (
+			<Search
+				clearable={this.state.search !== ''}
+				onChange={this.onSearch}
+				onClear={this.onClear}
+				placeholder="Find an app"
+				assistiveText="Find an app"
+				value={this.state.search}
+			/>
+		);
+		const modalHeaderButton = (
+			<Button label="App Exchange" onClick={action('Modal Button clicked!')} />
+		);
 
 		return (
 			<GlobalNavigationBar>
-				<GlobalNavigationBarRegion
-					region="primary"
-				>
+				<GlobalNavigationBarRegion region="primary">
 					<AppLauncher
 						triggerName="App Name"
 						search={search}
@@ -299,14 +314,26 @@ const DemoAppLauncher = createReactClass({
 						</AppLauncherSection>
 						<AppLauncherSection title="All Apps" toggleable>
 							<DemoAppLauncherTile search={this.state.search} />
-							<DemoAppLauncherTileWithTruncatedText search={this.state.search} />
-							<DemoAppLauncherTileWithDescriptionHeading search={this.state.search} />
+							<DemoAppLauncherTileWithTruncatedText
+								search={this.state.search}
+							/>
+							<DemoAppLauncherTileWithDescriptionHeading
+								search={this.state.search}
+							/>
 							<DemoAppLauncherTile search={this.state.search} />
-							<DemoAppLauncherTileWithTruncatedText search={this.state.search} />
-							<DemoAppLauncherTileWithDescriptionHeading search={this.state.search} />
+							<DemoAppLauncherTileWithTruncatedText
+								search={this.state.search}
+							/>
+							<DemoAppLauncherTileWithDescriptionHeading
+								search={this.state.search}
+							/>
 							<DemoAppLauncherTile search={this.state.search} />
-							<DemoAppLauncherTileWithTruncatedText search={this.state.search} />
-							<DemoAppLauncherTileWithDescriptionHeading search={this.state.search} />
+							<DemoAppLauncherTileWithTruncatedText
+								search={this.state.search}
+							/>
+							<DemoAppLauncherTileWithDescriptionHeading
+								search={this.state.search}
+							/>
 						</AppLauncherSection>
 					</AppLauncher>
 				</GlobalNavigationBarRegion>
@@ -335,7 +362,13 @@ const DemoAppLauncherNoHeaderButton = createReactClass({
 	},
 
 	render () {
-		const search = <Search onChange={this.onSearch} placeholder="Find an app" assistiveText="Find an app" />;
+		const search = (
+			<Search
+				onChange={this.onSearch}
+				placeholder="Find an app"
+				assistiveText="Find an app"
+			/>
+		);
 
 		return (
 			<GlobalNavigationBar>
@@ -347,17 +380,16 @@ const DemoAppLauncherNoHeaderButton = createReactClass({
 						triggerOnClick={this.toggleAppLauncher}
 						onClose={this.toggleAppLauncher}
 					>
-						<AppLauncherSection
-							toggleable
-							title="All Items"
-						>
+						<AppLauncherSection toggleable title="All Items">
 							<DemoAppLauncherTile search={this.state.search} />
 							<DemoAppLauncherTileWithIconNode search={this.state.search} />
 							<DemoAppLauncherTileWithIconText search={this.state.search} />
 						</AppLauncherSection>
 						<AppLauncherSection title="All Apps" toggleable>
 							<DemoAppLauncherTile search={this.state.search} />
-							<DemoAppLauncherTileWithTruncatedText search={this.state.search} />
+							<DemoAppLauncherTileWithTruncatedText
+								search={this.state.search}
+							/>
 						</AppLauncherSection>
 					</AppLauncher>
 				</GlobalNavigationBarRegion>
@@ -381,7 +413,9 @@ const DemoAppLauncherNoSearch = createReactClass({
 	},
 
 	render () {
-		const modalHeaderButton = <Button label="App Exchange" onclick={action('Modal Button clicked!')} />;
+		const modalHeaderButton = (
+			<Button label="App Exchange" onclick={action('Modal Button clicked!')} />
+		);
 
 		return (
 			<GlobalNavigationBar>
@@ -393,10 +427,7 @@ const DemoAppLauncherNoSearch = createReactClass({
 						triggerOnClick={this.toggleAppLauncher}
 						onClose={this.toggleAppLauncher}
 					>
-						<AppLauncherSection
-							toggleable
-							title="All Items"
-						>
+						<AppLauncherSection toggleable title="All Items">
 							<DemoAppLauncherTile />
 							<DemoAppLauncherTileWithIconNode />
 							<DemoAppLauncherTileWithIconText />
@@ -420,8 +451,16 @@ const DemoAppLauncherWithSeveralSections = createReactClass({
 	},
 
 	render () {
-		const search = <Search onChange={this.onSearch} placeholder="Find an app" assistiveText="Find an app" />;
-		const modalHeaderButton = <Button label="App Exchange" onclick={action('Modal Button clicked!')} />;
+		const search = (
+			<Search
+				onChange={this.onSearch}
+				placeholder="Find an app"
+				assistiveText="Find an app"
+			/>
+		);
+		const modalHeaderButton = (
+			<Button label="App Exchange" onclick={action('Modal Button clicked!')} />
+		);
 
 		return (
 			<GlobalNavigationBar>
@@ -463,20 +502,55 @@ const DemoAppLauncherWithSeveralSections = createReactClass({
 	}
 });
 
-
 storiesOf(APP_LAUNCHER, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
+	.addDecorator((getStory) => (
+		<div className="slds-p-around--medium">
+			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+		</div>
+	))
 	.add('App Launcher (open)', () => <DemoAppLauncher isOpen />)
 	.add('App Launcher', () => <DemoAppLauncher />)
 	.add('App Launcher no header button', () => <DemoAppLauncherNoHeaderButton />)
 	.add('App Launcher no search', () => <DemoAppLauncherNoSearch />)
-	.add('App Launcher with several sections (no toggle)', () => <DemoAppLauncherWithSeveralSections />)
-	.add('Tile', () => <div style={standardTileDemoStyles}><DemoAppLauncherTile /></div>)
-	.add('Small Tile', () => <div style={smallTileDemoStyles}><DemoAppLauncherSmallTile /></div>)
-	.add('Tile with Icon node', () => <div style={standardTileDemoStyles}><DemoAppLauncherTileWithIconNode /></div>)
-	.add('Tile with icon text', () => <div style={standardTileDemoStyles}><DemoAppLauncherTileWithIconText /></div>)
-	.add('Tile with search text', () => <div style={standardTileDemoStyles}><DemoAppLauncherTileWithSearchText /></div>)
-	.add('Tile with truncated text', () => <div style={standardTileDemoStyles}><DemoAppLauncherTileWithTruncatedText /></div>)
-	.add('Tile with description heading', () => <div style={standardTileDemoStyles}><DemoAppLauncherTileWithDescriptionHeading /></div>)
+	.add('App Launcher with several sections (no toggle)', () => (
+		<DemoAppLauncherWithSeveralSections />
+	))
+	.add('Tile', () => (
+		<div style={standardTileDemoStyles}>
+			<DemoAppLauncherTile />
+		</div>
+	))
+	.add('Small Tile', () => (
+		<div style={smallTileDemoStyles}>
+			<DemoAppLauncherSmallTile />
+		</div>
+	))
+	.add('Tile with Icon node', () => (
+		<div style={standardTileDemoStyles}>
+			<DemoAppLauncherTileWithIconNode />
+		</div>
+	))
+	.add('Tile with icon text', () => (
+		<div style={standardTileDemoStyles}>
+			<DemoAppLauncherTileWithIconText />
+		</div>
+	))
+	.add('Tile with search text', () => (
+		<div style={standardTileDemoStyles}>
+			<DemoAppLauncherTileWithSearchText />
+		</div>
+	))
+	.add('Tile with truncated text', () => (
+		<div style={standardTileDemoStyles}>
+			<DemoAppLauncherTileWithTruncatedText />
+		</div>
+	))
+	.add('Tile with description heading', () => (
+		<div style={standardTileDemoStyles}>
+			<DemoAppLauncherTileWithDescriptionHeading />
+		</div>
+	))
 	.add('Section', () => <DemoAppLauncherSection />)
-	.add('Section with small tiles', () => <DemoAppLauncherSectionWithSmallTiles />);
+	.add('Section with small tiles', () => (
+		<DemoAppLauncherSectionWithSmallTiles />
+	));

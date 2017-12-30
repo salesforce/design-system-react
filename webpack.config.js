@@ -8,10 +8,7 @@ const config = {
 		'design-system-react': ['./components']
 	},
 	resolve: {
-		extensions: [
-			'.js',
-			'.jsx'
-		]
+		extensions: ['.js', '.jsx']
 	},
 	devtool: 'source-map',
 	output: {
@@ -23,12 +20,17 @@ const config = {
 		rules: [
 			{
 				test: /\.jsx?$/,
-				loaders: ['babel-loader', StringReplacePlugin.replace({
-					replacements: [{
-						pattern: /__VERSION__/g,
-						replacement: () => packageJson.version
-					}]
-				})],
+				loaders: [
+					'babel-loader',
+					StringReplacePlugin.replace({
+						replacements: [
+							{
+								pattern: /__VERSION__/g,
+								replacement: () => packageJson.version
+							}
+						]
+					})
+				],
 				include: [
 					path.join(__dirname, 'components'),
 					path.join(__dirname, 'css'),
@@ -55,9 +57,7 @@ const config = {
 			}
 		]
 	},
-	plugins: [
-		new StringReplacePlugin()
-	]
+	plugins: [new StringReplacePlugin()]
 };
 
 module.exports = config;

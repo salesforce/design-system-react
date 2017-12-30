@@ -5,6 +5,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Item from './item';
 
+/* eslint-disable react/no-did-update-set-state */
+
 const displayName = 'Lookup-Menu';
 const propTypes = {
 	boldRegex: PropTypes.instanceOf(RegExp),
@@ -28,21 +30,22 @@ class Menu extends React.Component {
 		this.state = { filteredItems: this.filteredItems() };
 	}
 
-  // Set filtered list length in parent to determine active indexes for aria-activedescendent
+	// Set filtered list length in parent to determine active indexes for aria-activedescendent
 	componentDidUpdate (prevProps) {
-    // make an array of the children of the list but only count the actual items (but include section dividers)
-		const childFilter = (child) => (
+		// make an array of the children of the list but only count the actual items (but include section dividers)
+		const childFilter = (child) =>
 			child.className.indexOf('js-slds-lookup__item') > -1 ||
-			child.className.indexOf('slds-lookup__divider') > -1
-		);
-		const list = [].slice.call(this.listRef.children).filter(childFilter).length;
+			child.className.indexOf('slds-lookup__divider') > -1;
+		const list = [].slice.call(this.listRef.children).filter(childFilter)
+			.length;
 		this.props.getListLength(list);
 		if (
 			prevProps.items !== this.props.items ||
 			prevProps.filter !== this.props.filter ||
 			prevProps.searchTerm !== this.props.searchTerm
 		) {
-			this.setState({ // eslint-disable-line react/no-did-update-set-state
+			this.setState({
+				// eslint-disable-line react/no-did-update-set-state
 				filteredItems: this.filteredItems()
 			});
 		}
@@ -56,7 +59,8 @@ class Menu extends React.Component {
 		return this.filterEmptySections(this.props.items.filter(this.filter, this));
 	}
 
-	filterEmptySections (items) { // eslint-disable-line class-methods-use-this
+	filterEmptySections (items) {
+		// eslint-disable-line class-methods-use-this
 		const result = [];
 		items.forEach((item, index) => {
 			if (item && item.data && item.data.type === 'section') {
@@ -66,22 +70,26 @@ class Menu extends React.Component {
 						result.push(item);
 					}
 				}
-			}			else {
+			} else {
 				result.push(item);
 			}
 		});
 		return result;
 	}
 
-  // Scroll menu up/down when using mouse keys
+	// Scroll menu up/down when using mouse keys
 	handleItemFocus = (itemIndex, itemHeight) => {
 		if (this.listRef) {
 			this.listRef.scrollTop = itemIndex * itemHeight;
 		}
-	}
+	};
 
 	getFilteredItemForIndex (i) {
-		if (i > -1 && this.state.filteredItems && i < this.state.filteredItems.length) {
+		if (
+			i > -1 &&
+			this.state.filteredItems &&
+			i < this.state.filteredItems.length
+		) {
 			return this.state.filteredItems[i];
 		}
 		return null;
@@ -102,7 +110,7 @@ class Menu extends React.Component {
 	renderItems () {
 		const focusIndex = this.props.focusIndex;
 		return this.state.filteredItems.map((component, i) => {
-      // isActive means it is aria-activedescendant
+			// isActive means it is aria-activedescendant
 			const id = component.id;
 			let isActive = false;
 			if (this.props.header) {
@@ -113,31 +121,35 @@ class Menu extends React.Component {
 			if (component.data.type === 'section') {
 				if (this.props.sectionDividerRenderer) {
 					const SectionDivider = this.props.sectionDividerRenderer;
-					return (<SectionDivider
-						data={component.data}
-						key={`section_header_${id}`}
-						{... this.props}
-					/>);
+					return (
+						<SectionDivider
+							data={component.data}
+							key={`section_header_${id}`}
+							{...this.props}
+						/>
+					);
 				}
 			}
-			return (<Item
-				boldRegex={this.props.boldRegex}
-				data={component.data}
-				handleItemFocus={this.handleItemFocus}
-				iconCategory={this.props.iconCategory}
-				iconInverse={this.props.iconInverse}
-				iconName={this.props.iconName}
-				id={id}
-				index={i}
-				isActive={isActive}
-				key={id}
-				listItemLabelRenderer={this.props.listItemLabelRenderer}
-				onSelect={this.props.onSelect}
-				searchTerm={this.props.searchTerm}
-				setFocus={this.props.setFocus}
-			>
-				{component}
-			</Item>);
+			return (
+				<Item
+					boldRegex={this.props.boldRegex}
+					data={component.data}
+					handleItemFocus={this.handleItemFocus}
+					iconCategory={this.props.iconCategory}
+					iconInverse={this.props.iconInverse}
+					iconName={this.props.iconName}
+					id={id}
+					index={i}
+					isActive={isActive}
+					key={id}
+					listItemLabelRenderer={this.props.listItemLabelRenderer}
+					onSelect={this.props.onSelect}
+					searchTerm={this.props.searchTerm}
+					setFocus={this.props.setFocus}
+				>
+					{component}
+				</Item>
+			);
 		});
 	}
 
@@ -145,7 +157,9 @@ class Menu extends React.Component {
 		if (this.state.filteredItems.length === 0) {
 			return (
 				<li className="slds-lookup__message" aria-live="polite">
-					<span className="slds-m-left--x-large slds-p-vertical--medium">{this.props.emptyMessage}</span>
+					<span className="slds-m-left--x-large slds-p-vertical--medium">
+						{this.props.emptyMessage}
+					</span>
 				</li>
 			);
 		}
@@ -157,7 +171,16 @@ class Menu extends React.Component {
 		return (
 			<section id="menuContainer" className="ignore-react-onclickoutside">
 				{this.renderHeader()}
-				<ul id="list" className="slds-lookup__list" role="presentation" ref={(list) => { if (list) { this.listRef = list; } }}>
+				<ul
+					id="list"
+					className="slds-lookup__list"
+					role="presentation"
+					ref={(list) => {
+						if (list) {
+							this.listRef = list;
+						}
+					}}
+				>
 					{this.renderContent()}
 				</ul>
 				{this.renderFooter()}

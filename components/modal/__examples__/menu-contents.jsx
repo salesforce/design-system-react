@@ -23,7 +23,10 @@ const Example = createReactClass({
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div>
-					<Button label="Open modal with menu contents" onClick={this.toggleOpen} />
+					<Button
+						label="Open modal with menu contents"
+						onClick={this.toggleOpen}
+					/>
 					<Modal
 						isOpen={this.state.isOpen}
 						footer={[
@@ -35,15 +38,31 @@ const Example = createReactClass({
 					>
 						<section className="slds-p-around--large">
 							<div className="slds-form-element slds-m-bottom--large">
-								<label className="slds-form-element__label" htmlFor="opptyName">Opportunity Name</label>
+								<label className="slds-form-element__label" htmlFor="opptyName">
+									Opportunity Name
+								</label>
 								<div className="slds-form-element__control">
-									<input id="opptyName" className="-input" type="text" placeholder="Enter name" />
+									<input
+										id="opptyName"
+										className="-input"
+										type="text"
+										placeholder="Enter name"
+									/>
 								</div>
 							</div>
 							<div className="slds-form-element slds-m-bottom--large">
-								<label className="slds-form-element__label" htmlFor="description">Opportunity Description</label>
+								<label
+									className="slds-form-element__label"
+									htmlFor="description"
+								>
+									Opportunity Description
+								</label>
 								<div className="slds-form-element__control">
-									<textarea id="description" className="-textarea" placeholder="Enter description" />
+									<textarea
+										id="description"
+										className="-textarea"
+										placeholder="Enter description"
+									/>
 								</div>
 							</div>
 							<div className="slds-form-element slds-m-bottom--large">
@@ -51,11 +70,15 @@ const Example = createReactClass({
 									emptyMessage="No items found"
 									hasError={false}
 									label="Account"
-									onChange={(newValue) => { console.log('New search term: ', newValue); }}
-									onSelect={(item) => { console.log(item, ' Selected'); }}
+									onChange={(newValue) => {
+										console.log('New search term: ', newValue);
+									}}
+									onSelect={(item) => {
+										console.log(item, ' Selected');
+									}}
 									options={[
 										{ type: 'section', label: 'SECTION 1' },
-										{ label: 'Paddy\'s Pub' },
+										{ label: "Paddy's Pub" },
 										{ label: 'Tyrell Corp' },
 										{ type: 'section', label: 'SECTION 2' },
 										{ label: 'Paper St. Soap Company' },
@@ -70,7 +93,9 @@ const Example = createReactClass({
 							<Picklist
 								className="slds-m-bottom--large"
 								label="Lead Source"
-								onSelect={(option) => { console.log('selected: ', option.label); }}
+								onSelect={(option) => {
+									console.log('selected: ', option.label);
+								}}
 								options={[
 									{ label: 'Third Party Program', value: 'A0' },
 									{ label: 'Cold Call', value: 'B0' },
@@ -84,7 +109,9 @@ const Example = createReactClass({
 							<Picklist
 								className="slds-m-bottom--large"
 								label="Type"
-								onSelect={(option) => { console.log('selected: ', option.label); }}
+								onSelect={(option) => {
+									console.log('selected: ', option.label);
+								}}
 								options={[
 									{ label: 'Add on Business', value: 'A0' },
 									{ label: 'Courtesy', value: 'B0' },
@@ -96,9 +123,16 @@ const Example = createReactClass({
 								value="C0"
 							/>
 							<div className="slds-form-element slds-m-bottom--large">
-								<label className="slds-form-element__label" htmlFor="amount">Amount</label>
+								<label className="slds-form-element__label" htmlFor="amount">
+									Amount
+								</label>
 								<div className="slds-form-element__control">
-									<input id="amount" className="-input" type="text" placeholder="Enter Amount" />
+									<input
+										id="amount"
+										className="-input"
+										type="text"
+										placeholder="Enter Amount"
+									/>
 								</div>
 							</div>
 						</section>
@@ -109,4 +143,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

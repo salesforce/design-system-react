@@ -6,14 +6,11 @@ import Button from '~/components/button';
 
 const Example = createReactClass({
 	displayName: 'TooltipExample',
-	
+
 	render () {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<PopoverTooltip
-					align="right"
-					content="Tooltip with right alignment"
-				>
+				<PopoverTooltip align="right" content="Tooltip with right alignment">
 					<Button label="Hover or focus to Open" />
 				</PopoverTooltip>
 			</IconSettings>
@@ -21,4 +18,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

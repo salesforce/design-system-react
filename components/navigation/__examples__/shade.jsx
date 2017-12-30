@@ -5,10 +5,10 @@ import IconSettings from '~/components/icon-settings';
 import Navigation from '~/components/navigation';
 
 const sampleSearchCategories = [
-	{ id: 'search_results',
+	{
+		id: 'search_results',
 		label: 'Search Results',
-		items:
-		[
+		items: [
 			{ id: 'top', label: 'Top Results' },
 			{ id: 'accounts', label: 'Accounts' },
 			{ id: 'contacts', label: 'Contacts' },
@@ -21,10 +21,10 @@ const sampleSearchCategories = [
 			{ id: 'feeds', label: 'Feeds' }
 		]
 	},
-	{ id: 'external_results',
+	{
+		id: 'external_results',
 		label: 'External Results',
-		items:
-		[
+		items: [
 			{ id: 'app_one', label: 'App One' },
 			{ id: 'app_two', label: 'App Two' },
 			{ id: 'app_three', label: 'App Three' }
@@ -66,4 +66,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

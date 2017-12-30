@@ -7,13 +7,15 @@ import DataTableRowActions from '~/components/data-table/row-actions';
 import IconSettings from '~/components/icon-settings';
 
 const CustomDataTableCell = ({ children, ...props }) => (
-	<DataTableCell title={children} {...props} >
+	<DataTableCell title={children} {...props}>
 		<a
 			href="javascript:void(0);"
 			onClick={(event) => {
 				event.preventDefault();
 			}}
-		>{children}</a>
+		>
+			{children}
+		</a>
 	</DataTableCell>
 );
 CustomDataTableCell.displayName = DataTableCell.displayName;
@@ -37,7 +39,8 @@ const Example = createReactClass({
 					confidence: '70%',
 					amount: '$25,000,000',
 					contact: 'jrogers@acme.com'
-				}, {
+				},
+				{
 					id: '5GJOOOPWU7',
 					opportunityName: 'Acme - 200 Widgets',
 					accountName: 'Acme',
@@ -58,16 +61,18 @@ const Example = createReactClass({
 					contact: 'nathan@salesforce.com'
 				}
 			],
-			selection: [{
-				id: '8IKZHZZV81',
-				opportunityName: 'salesforce.com - 1,000 Widgets',
-				accountName: 'salesforce.com',
-				closeDate: '1/31/15 3:45PM',
-				stage: 'Id. Decision Makers',
-				confidence: '60%',
-				amount: '$25,000',
-				contact: 'nathan@salesforce.com'
-			}]
+			selection: [
+				{
+					id: '8IKZHZZV81',
+					opportunityName: 'salesforce.com - 1,000 Widgets',
+					accountName: 'salesforce.com',
+					closeDate: '1/31/15 3:45PM',
+					stage: 'Id. Decision Makers',
+					confidence: '60%',
+					amount: '$25,000',
+					contact: 'nathan@salesforce.com'
+				}
+			]
 		};
 	},
 
@@ -100,14 +105,8 @@ const Example = createReactClass({
 							property="accountName"
 							width="8rem"
 						/>
-						<DataTableColumn
-							label="Close Date"
-							property="closeDate"
-						/>
-						<DataTableColumn
-							label="Stage"
-							property="stage"
-						/>
+						<DataTableColumn label="Close Date" property="closeDate" />
+						<DataTableColumn label="Stage" property="stage" />
 						<DataTableColumn
 							isSorted={this.state.sortColumn === 'confidence'}
 							label="Confidence"
@@ -115,14 +114,8 @@ const Example = createReactClass({
 							sortable
 							sortDirection={this.state.sortColumnDirection.confidence}
 						/>
-						<DataTableColumn
-							label="Amount"
-							property="amount"
-						/>
-						<DataTableColumn
-							label="Contact"
-							property="contact"
-						>
+						<DataTableColumn label="Amount" property="amount" />
+						<DataTableColumn label="Contact" property="contact">
 							<CustomDataTableCell />
 						</DataTableColumn>
 						<DataTableRowActions
@@ -131,7 +124,8 @@ const Example = createReactClass({
 									id: 0,
 									label: 'Add to Group',
 									value: '1'
-								}, {
+								},
+								{
 									id: 1,
 									label: 'Publish',
 									value: '2'
@@ -154,7 +148,9 @@ const Example = createReactClass({
 	},
 
 	handleSort (sortColumn, ...rest) {
-		if (this.props.log) { this.props.log('sort')(sortColumn, ...rest); }
+		if (this.props.log) {
+			this.props.log('sort')(sortColumn, ...rest);
+		}
 
 		const sortProperty = sortColumn.property;
 		const sortDirection = sortColumn.sortDirection;
@@ -188,4 +184,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

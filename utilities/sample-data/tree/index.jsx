@@ -18,13 +18,20 @@ const sampleNodesDefault = [
 				id: 4,
 				nodes: [
 					{
-						label: 'Watermelon', type: 'item', id: 12
+						label: 'Watermelon',
+						type: 'item',
+						id: 12
 					},
 					{
-						label: 'Canteloupe', type: 'item', _iconClass: 'glyphicon-file', id: 13
+						label: 'Canteloupe',
+						type: 'item',
+						_iconClass: 'glyphicon-file',
+						id: 13
 					},
 					{
-						label: 'Strawberries', type: 'item', id: 14
+						label: 'Strawberries',
+						type: 'item',
+						id: 14
 					}
 				]
 			},
@@ -48,15 +55,27 @@ const sampleNodesDefault = [
 						label: 'Citrus',
 						type: 'branch',
 						id: 17,
-						nodes: [{
-							label: 'Orange', type: 'item', id: 20
-						}, {
-							label: 'Grapefruit', type: 'item', id: 21
-						}, {
-							label: 'Lemon', type: 'item', id: 22
-						}, {
-							label: 'Lime', type: 'item', id: 23
-						}
+						nodes: [
+							{
+								label: 'Orange',
+								type: 'item',
+								id: 20
+							},
+							{
+								label: 'Grapefruit',
+								type: 'item',
+								id: 21
+							},
+							{
+								label: 'Lemon',
+								type: 'item',
+								id: 22
+							},
+							{
+								label: 'Lime',
+								type: 'item',
+								id: 23
+							}
 						]
 					},
 					{
@@ -65,13 +84,25 @@ const sampleNodesDefault = [
 						id: 18,
 						nodes: [
 							{
-								label: 'Granny Smith', type: 'item', id: 24
-							}, {
-								label: 'Pinklady', type: 'item', _iconClass: 'glyphicon-file', id: 25
-							}, {
-								label: 'Rotten', type: 'item', id: 26
-							}, {
-								label: 'Jonathan', type: 'item', id: 27
+								label: 'Granny Smith',
+								type: 'item',
+								id: 24
+							},
+							{
+								label: 'Pinklady',
+								type: 'item',
+								_iconClass: 'glyphicon-file',
+								id: 25
+							},
+							{
+								label: 'Rotten',
+								type: 'item',
+								id: 26
+							},
+							{
+								label: 'Jonathan',
+								type: 'item',
+								id: 27
 							}
 						]
 					},
@@ -81,17 +112,34 @@ const sampleNodesDefault = [
 						id: 19,
 						nodes: [
 							{
-								label: 'Balaton', type: 'item', id: 28
-							}, {
-								label: 'Erdi Botermo', type: 'item', id: 29
-							}, {
-								label: 'Montmorency', type: 'item', id: 30
-							}, {
-								label: 'Queen Ann', type: 'item', id: 31
-							}, {
-								label: 'Ulster', type: 'item', id: 32
-							}, {
-								label: 'Viva', type: 'item', id: 33
+								label: 'Balaton',
+								type: 'item',
+								id: 28
+							},
+							{
+								label: 'Erdi Botermo',
+								type: 'item',
+								id: 29
+							},
+							{
+								label: 'Montmorency',
+								type: 'item',
+								id: 30
+							},
+							{
+								label: 'Queen Ann',
+								type: 'item',
+								id: 31
+							},
+							{
+								label: 'Ulster',
+								type: 'item',
+								id: 32
+							},
+							{
+								label: 'Viva',
+								type: 'item',
+								id: 33
 							}
 						]
 					},
@@ -111,13 +159,24 @@ const sampleNodesDefault = [
 		id: 3,
 		nodes: [
 			{
-				label: 'Almonds', type: 'item', id: 8
-			}, {
-				label: 'Cashews', type: 'item', id: 9
-			}, {
-				label: 'Pecans', type: 'item', id: 10
-			}, {
-				label: 'Walnuts', type: 'item', id: 11
+				label: 'Almonds',
+				type: 'item',
+				id: 8
+			},
+			{
+				label: 'Cashews',
+				type: 'item',
+				id: 9
+			},
+			{
+				label: 'Pecans',
+				type: 'item',
+				id: 10
+			},
+			{
+				label: 'Walnuts',
+				type: 'item',
+				id: 11
 			}
 		]
 	},

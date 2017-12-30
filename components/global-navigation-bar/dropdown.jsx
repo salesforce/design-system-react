@@ -83,10 +83,14 @@ GlobalNavigationBarDropdown.propTypes = {
 	/**
 	 * CSS classes to be added to `li` element.
 	 */
-	buttonClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	buttonClassName: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string
+	]),
 	/**
-	* A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
-	*/
+	 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
+	 */
 	id: PropTypes.string,
 	/**
 	 * Provided to List to indicate number of items visible in the List. Pass `null` to display all items, or a string containing one of the numeric option values listed under [Dropdown Height](https://www.lightningdesignsystem.com/components/menus/#flavor-dropdown-height) at the right (eg. '5').

@@ -6,13 +6,25 @@ import { NOTIFICATION } from '../../../utilities/constants';
 import Notification from '../../notification';
 
 storiesOf(NOTIFICATION, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
+	.addDecorator((getStory) => (
+		<div className="slds-p-around--medium">
+			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+		</div>
+	))
 	.add('Base: Alert', () => (
 		<Notification
-			content={['Your new contact ', <a href="javascript:void(0);" key="0123">Sara Smith</a>, ' was successfully created.']}
+			content={[
+				'Your new contact ',
+				<a href="javascript:void(0);" key="0123">
+					Sara Smith
+				</a>,
+				' was successfully created.'
+			]}
 			iconName="notification"
 			isOpen
-			onDismiss={() => { console.log('dismiss alert'); }}
+			onDismiss={() => {
+				console.log('dismiss alert');
+			}}
 			texture
 			theme="success"
 			variant="alert"
@@ -24,7 +36,9 @@ storiesOf(NOTIFICATION, module)
 			inverse
 			isOpen
 			name="account"
-			onDismiss={() => { console.log('dismiss toast'); }}
+			onDismiss={() => {
+				console.log('dismiss toast');
+			}}
 			theme="error"
 			variant="toast"
 		/>

@@ -359,6 +359,219 @@ exports[`Base Custom Menu Item Open HTML Snapshot 1`] = `
 </div>"
 `;
 
+exports[`Base Open Custom Class Name DOM Snapshot 1`] = `
+<div
+  className="slds-form-element this-is-the-container"
+>
+  <div
+    className="slds-form-element__control"
+  >
+    <div
+      className="slds-combobox_container"
+    >
+      <div
+        aria-expanded={true}
+        aria-haspopup="listbox"
+        aria-owns="combobox-unique-id-listbox"
+        className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open this-is-the-input"
+        role="combobox"
+      >
+        <div
+          className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+          role="none"
+        >
+          <input
+            aria-activedescendant={null}
+            aria-autocomplete="list"
+            aria-controls="combobox-unique-id-listbox"
+            aria-describedby={undefined}
+            aria-expanded={undefined}
+            aria-labelledby={undefined}
+            aria-owns={undefined}
+            aria-required={undefined}
+            autoComplete="off"
+            className="slds-input slds-combobox__input"
+            disabled={undefined}
+            id="combobox-unique-id"
+            maxLength={undefined}
+            minLength={undefined}
+            name={undefined}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onInput={undefined}
+            onInvalid={undefined}
+            onKeyDown={[Function]}
+            onKeyPress={undefined}
+            onKeyUp={undefined}
+            onSelect={undefined}
+            onSubmit={undefined}
+            placeholder="Search Salesforce"
+            readOnly={false}
+            required={undefined}
+            role="textbox"
+            style={undefined}
+            tabIndex={undefined}
+            type="text"
+            value=""
+          />
+          <svg
+            aria-hidden={true}
+            className="slds-input__icon slds-icon-text-default"
+            title={undefined}
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+            />
+          </svg>
+        </div>
+        <div
+          className={undefined}
+          id="combobox-unique-id-listbox"
+          onKeyDown={[Function]}
+          onMouseEnter={undefined}
+          onMouseLeave={undefined}
+          role="listbox"
+          style={Object {}}
+        >
+          <ul
+            className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid this-is-the-menu"
+            role="presentation"
+          >
+            <li
+              className="slds-listbox__item"
+              role="presentation"
+            >
+              <span
+                aria-selected={false}
+                className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                id="combobox-unique-id-listbox-option-1"
+                onClick={[Function]}
+                role="option"
+              >
+                <span
+                  className="slds-media__figure"
+                >
+                  <span
+                    className="slds-icon_container slds-icon-standard-account"
+                    title={undefined}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon"
+                      style={undefined}
+                    >
+                      <use
+                        xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Account
+                    </span>
+                  </span>
+                </span>
+                <span
+                  className="slds-media__body"
+                >
+                  <span
+                    className="slds-listbox__option-text slds-listbox__option-text_entity"
+                  >
+                    Acme
+                  </span>
+                  <span
+                    className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                  >
+                    Account • San Francisco
+                  </span>
+                </span>
+              </span>
+            </li>
+            <li
+              className="slds-listbox__item"
+              role="presentation"
+            >
+              <span
+                aria-selected={false}
+                className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                id="combobox-unique-id-listbox-option-2"
+                onClick={[Function]}
+                role="option"
+              >
+                <span
+                  className="slds-media__figure"
+                >
+                  <span
+                    className="slds-icon_container slds-icon-standard-account"
+                    title={undefined}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon"
+                      style={undefined}
+                    >
+                      <use
+                        xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Account
+                    </span>
+                  </span>
+                </span>
+                <span
+                  className="slds-media__body"
+                >
+                  <span
+                    className="slds-listbox__option-text slds-listbox__option-text_entity"
+                  >
+                    Salesforce.com, Inc.
+                  </span>
+                  <span
+                    className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                  >
+                    Account • San Francisco
+                  </span>
+                </span>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Base Open Custom Class Name HTML Snapshot 1`] = `
+"<div class=\\"slds-form-element this-is-the-container\\">
+  <div class=\\"slds-form-element__control\\">
+    <div class=\\"slds-combobox_container\\">
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open this-is-the-input\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\" role=\\"combobox\\">
+        <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\" role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\"
+            class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
+        <div id=\\"combobox-unique-id-listbox\\" role=\\"listbox\\">
+          <ul class=\\"slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid this-is-the-menu\\" role=\\"presentation\\">
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-1\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+              </span><span class=\\"slds-media__body\\"><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Acme</span><span class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • San Francisco</span></span>
+              </span>
+            </li>
+            <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-2\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+              </span><span class=\\"slds-media__body\\"><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Salesforce.com, Inc.</span><span class=\\"slds-listbox__option-meta slds-listbox__option-meta_entity\\">Account • San Francisco</span></span>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
 exports[`Base Open DOM Snapshot 1`] = `
 <div
   className="slds-form-element"
@@ -656,7 +869,7 @@ exports[`Base Selected DOM Snapshot 1`] = `
           role="presentation"
         >
           <span
-            aria-selected="true"
+            aria-selected={true}
             className="slds-pill"
             onBlur={[Function]}
             onClick={[Function]}
@@ -665,37 +878,41 @@ exports[`Base Selected DOM Snapshot 1`] = `
             tabIndex="0"
           >
             <span
-              className="slds-icon_container slds-icon-standard-account slds-pill__icon_container"
-              title={undefined}
+              className="slds-pill__icon_container"
             >
-              <svg
-                aria-hidden="true"
-                className="slds-icon"
-                style={undefined}
-              >
-                <use
-                  xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
-                />
-              </svg>
               <span
-                className="slds-assistive-text"
+                className="slds-icon_container slds-icon-standard-account slds-pill__icon_container"
+                title={undefined}
               >
-                Account
+                <svg
+                  aria-hidden="true"
+                  className="slds-icon"
+                  style={undefined}
+                >
+                  <use
+                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Account
+                </span>
               </span>
             </span>
             <span
               className="slds-pill__label"
-              title={undefined}
+              title="Salesforce.com, Inc."
             >
               Salesforce.com, Inc.
             </span>
             <span
               className="slds-icon_container slds-pill__remove"
               onClick={[Function]}
+              role="button"
               title="Remove"
             >
               <svg
-                aria-hidden="true"
                 className="slds-icon slds-icon--x-small slds-icon-text-default"
                 style={
                   Object {
@@ -732,10 +949,9 @@ exports[`Base Selected HTML Snapshot 1`] = `
     </div>
     <div id=\\"combobox-unique-id-selected-listbox\\" role=\\"listbox\\" aria-orientation=\\"horizontal\\">
       <ul class=\\"slds-listbox slds-listbox_horizontal slds-p-top_xxx-small\\" role=\\"group\\" aria-label=\\"Selected Options:\\">
-        <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span class=\\"slds-pill\\" role=\\"option\\" tabindex=\\"0\\" aria-selected=\\"true\\"><span class=\\"slds-icon_container slds-icon-standard-account slds-pill__icon_container\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
-          <span
-            class=\\"slds-pill__label\\">Salesforce.com, Inc.</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\"><svg style=\\"cursor:pointer;\\" aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
-            </span>
+        <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"0\\" aria-selected=\\"true\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><span class=\\"slds-icon_container slds-icon-standard-account slds-pill__icon_container\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+          </span><span class=\\"slds-pill__label\\" title=\\"Salesforce.com, Inc.\\">Salesforce.com, Inc.</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer;\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
+          </span>
         </li>
       </ul>
     </div>
@@ -867,7 +1083,7 @@ exports[`Inline Multiple Selection Selected DOM Snapshot 1`] = `
             role="presentation"
           >
             <span
-              aria-selected="true"
+              aria-selected={true}
               className="slds-pill"
               onBlur={[Function]}
               onClick={[Function]}
@@ -876,37 +1092,41 @@ exports[`Inline Multiple Selection Selected DOM Snapshot 1`] = `
               tabIndex="0"
             >
               <span
-                className="slds-icon_container slds-icon-standard-account slds-pill__icon_container"
-                title={undefined}
+                className="slds-pill__icon_container"
               >
-                <svg
-                  aria-hidden="true"
-                  className="slds-icon"
-                  style={undefined}
-                >
-                  <use
-                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
-                  />
-                </svg>
                 <span
-                  className="slds-assistive-text"
+                  className="slds-icon_container slds-icon-standard-account slds-pill__icon_container"
+                  title={undefined}
                 >
-                  Account
+                  <svg
+                    aria-hidden="true"
+                    className="slds-icon"
+                    style={undefined}
+                  >
+                    <use
+                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                    />
+                  </svg>
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Account
+                  </span>
                 </span>
               </span>
               <span
                 className="slds-pill__label"
-                title={undefined}
+                title="Acme"
               >
                 Acme
               </span>
               <span
                 className="slds-icon_container slds-pill__remove"
                 onClick={[Function]}
+                role="button"
                 title="Remove"
               >
                 <svg
-                  aria-hidden="true"
                   className="slds-icon slds-icon--x-small slds-icon-text-default"
                   style={
                     Object {
@@ -931,7 +1151,7 @@ exports[`Inline Multiple Selection Selected DOM Snapshot 1`] = `
             role="presentation"
           >
             <span
-              aria-selected="true"
+              aria-selected={false}
               className="slds-pill"
               onBlur={[Function]}
               onClick={[Function]}
@@ -940,37 +1160,41 @@ exports[`Inline Multiple Selection Selected DOM Snapshot 1`] = `
               tabIndex={-1}
             >
               <span
-                className="slds-icon_container slds-icon-standard-account slds-pill__icon_container"
-                title={undefined}
+                className="slds-pill__icon_container"
               >
-                <svg
-                  aria-hidden="true"
-                  className="slds-icon"
-                  style={undefined}
-                >
-                  <use
-                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
-                  />
-                </svg>
                 <span
-                  className="slds-assistive-text"
+                  className="slds-icon_container slds-icon-standard-account slds-pill__icon_container"
+                  title={undefined}
                 >
-                  Account
+                  <svg
+                    aria-hidden="true"
+                    className="slds-icon"
+                    style={undefined}
+                  >
+                    <use
+                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                    />
+                  </svg>
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Account
+                  </span>
                 </span>
               </span>
               <span
                 className="slds-pill__label"
-                title={undefined}
+                title="Salesforce.com, Inc."
               >
                 Salesforce.com, Inc.
               </span>
               <span
                 className="slds-icon_container slds-pill__remove"
                 onClick={[Function]}
+                role="button"
                 title="Remove"
               >
                 <svg
-                  aria-hidden="true"
                   className="slds-icon slds-icon--x-small slds-icon-text-default"
                   style={
                     Object {
@@ -1062,15 +1286,13 @@ exports[`Inline Multiple Selection Selected HTML Snapshot 1`] = `
     <div class=\\"slds-combobox_container slds-has-inline-listbox\\">
       <div id=\\"combobox-unique-id-selected-listbox\\" role=\\"listbox\\" aria-orientation=\\"horizontal\\">
         <ul class=\\"slds-listbox slds-listbox_horizontal slds-p-top_xxx-small\\" role=\\"group\\" aria-label=\\"Selected Options:\\">
-          <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span class=\\"slds-pill\\" role=\\"option\\" tabindex=\\"0\\" aria-selected=\\"true\\"><span class=\\"slds-icon_container slds-icon-standard-account slds-pill__icon_container\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
-            <span
-              class=\\"slds-pill__label\\">Acme</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\"><svg style=\\"cursor:pointer;\\" aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
-              </span>
+          <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"0\\" aria-selected=\\"true\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><span class=\\"slds-icon_container slds-icon-standard-account slds-pill__icon_container\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+            </span><span class=\\"slds-pill__label\\" title=\\"Acme\\">Acme</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer;\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
+            </span>
           </li>
-          <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span class=\\"slds-pill\\" role=\\"option\\" tabindex=\\"-1\\" aria-selected=\\"true\\"><span class=\\"slds-icon_container slds-icon-standard-account slds-pill__icon_container\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
-            <span
-              class=\\"slds-pill__label\\">Salesforce.com, Inc.</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\"><svg style=\\"cursor:pointer;\\" aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
-              </span>
+          <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"-1\\" aria-selected=\\"false\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__icon_container\\"><span class=\\"slds-icon_container slds-icon-standard-account slds-pill__icon_container\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+            </span><span class=\\"slds-pill__label\\" title=\\"Salesforce.com, Inc.\\">Salesforce.com, Inc.</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer;\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
+            </span>
           </li>
         </ul>
       </div>
@@ -1504,7 +1726,7 @@ exports[`Readonly Multiple Selection Multiple Items Selected DOM Snapshot 1`] = 
           role="presentation"
         >
           <span
-            aria-selected="true"
+            aria-selected={true}
             className="slds-pill"
             onBlur={[Function]}
             onClick={[Function]}
@@ -1514,17 +1736,17 @@ exports[`Readonly Multiple Selection Multiple Items Selected DOM Snapshot 1`] = 
           >
             <span
               className="slds-pill__label"
-              title={undefined}
+              title="Acme"
             >
               Acme
             </span>
             <span
               className="slds-icon_container slds-pill__remove"
               onClick={[Function]}
+              role="button"
               title="Remove"
             >
               <svg
-                aria-hidden="true"
                 className="slds-icon slds-icon--x-small slds-icon-text-default"
                 style={
                   Object {
@@ -1549,7 +1771,7 @@ exports[`Readonly Multiple Selection Multiple Items Selected DOM Snapshot 1`] = 
           role="presentation"
         >
           <span
-            aria-selected="true"
+            aria-selected={false}
             className="slds-pill"
             onBlur={[Function]}
             onClick={[Function]}
@@ -1559,17 +1781,17 @@ exports[`Readonly Multiple Selection Multiple Items Selected DOM Snapshot 1`] = 
           >
             <span
               className="slds-pill__label"
-              title={undefined}
+              title="Salesforce.com, Inc."
             >
               Salesforce.com, Inc.
             </span>
             <span
               className="slds-icon_container slds-pill__remove"
               onClick={[Function]}
+              role="button"
               title="Remove"
             >
               <svg
-                aria-hidden="true"
                 className="slds-icon slds-icon--x-small slds-icon-text-default"
                 style={
                   Object {
@@ -1606,10 +1828,10 @@ exports[`Readonly Multiple Selection Multiple Items Selected HTML Snapshot 1`] =
     </div>
     <div id=\\"combobox-unique-id-selected-listbox\\" role=\\"listbox\\" aria-orientation=\\"horizontal\\">
       <ul class=\\"slds-listbox slds-listbox_horizontal slds-p-top_xxx-small\\" role=\\"group\\" aria-label=\\"Selected Options:\\">
-        <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span class=\\"slds-pill\\" role=\\"option\\" tabindex=\\"0\\" aria-selected=\\"true\\"><span class=\\"slds-pill__label\\">Acme</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\"><svg style=\\"cursor:pointer;\\" aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
+        <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"0\\" aria-selected=\\"true\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__label\\" title=\\"Acme\\">Acme</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer;\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
           </span>
         </li>
-        <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span class=\\"slds-pill\\" role=\\"option\\" tabindex=\\"-1\\" aria-selected=\\"true\\"><span class=\\"slds-pill__label\\">Salesforce.com, Inc.</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\"><svg style=\\"cursor:pointer;\\" aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
+        <li role=\\"presentation\\" class=\\"slds-listbox__item\\"><span tabindex=\\"-1\\" aria-selected=\\"false\\" role=\\"option\\" class=\\"slds-pill\\"><span class=\\"slds-pill__label\\" title=\\"Salesforce.com, Inc.\\">Salesforce.com, Inc.</span><span class=\\"slds-icon_container slds-pill__remove\\" title=\\"Remove\\" role=\\"button\\"><svg style=\\"cursor:pointer;\\" class=\\"slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">, Press delete or backspace to remove</span></span>
           </span>
         </li>
       </ul>

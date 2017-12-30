@@ -35,17 +35,32 @@ const CheckboxIndeterminate = createReactClass({
 	},
 
 	changeToIndeterminate (event) {
-		this.setState({ currentStateHelper: 'Indeterminate', checked: true, indeterminate: true });
-		action('changeToIndeterminate')(event, 'checked: true, indeterminate: true');
+		this.setState({
+			currentStateHelper: 'Indeterminate',
+			checked: true,
+			indeterminate: true
+		});
+		action('changeToIndeterminate')(
+			event,
+			'checked: true, indeterminate: true'
+		);
 	},
 
 	changeToCheck (event) {
-		this.setState({ currentStateHelper: 'Checked', checked: true, indeterminate: false });
+		this.setState({
+			currentStateHelper: 'Checked',
+			checked: true,
+			indeterminate: false
+		});
 		action('changeToCheck')(event, 'checked: true, indeterminate: false');
 	},
 
 	changeToUnChecked (event) {
-		this.setState({ currentStateHelper: 'Unchecked', checked: false, indeterminate: false });
+		this.setState({
+			currentStateHelper: 'Unchecked',
+			checked: false,
+			indeterminate: false
+		});
 		action('changeToUnChecked')(event, 'checked: false, indeterminate: false');
 	},
 
@@ -71,27 +86,38 @@ const CheckboxIndeterminate = createReactClass({
 						This example has an <em>indeterminate</em> checkbox.
 					</p>
 					<p>
-						It is set by providing the <code>indeterminate</code> prop as <code><strong>true</strong></code>.
+						It is set by providing the <code>indeterminate</code> prop as{' '}
+						<code>
+							<strong>true</strong>
+						</code>.
 					</p>
 					<p>
-						Once it is clicked, there is no way to make it go <em>back</em> to the indeterminate state, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:indeterminate#Checkbox_radio_button">it must be done programatically, through JavaScript</a>.
+						Once it is clicked, there is no way to make it go <em>back</em> to
+						the indeterminate state,{' '}
+						<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:indeterminate#Checkbox_radio_button">
+							it must be done programatically, through JavaScript
+						</a>.
 					</p>
 				</div>
 			</div>
 		);
 	}
-
 });
 
-
 storiesOf(FORMS_CHECKBOX, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
+	.addDecorator((getStory) => (
+		<div className="slds-p-around--medium">
+			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+		</div>
+	))
 	.add('Checkbox', () => (
 		<Checkbox
 			label="Checkbox Label"
 			name="checkbox-example-base"
 			onChange={action('change')}
-			onBlur={(e) => { console.log('bluring ', e.target); }}
+			onBlur={(e) => {
+				console.log('bluring ', e.target);
+			}}
 		/>
 	))
 	.add('Checkbox (with error)', () => (
@@ -100,7 +126,9 @@ storiesOf(FORMS_CHECKBOX, module)
 			name="checkbox-example-base-error"
 			errorText="This field has an error."
 			onChange={action('change')}
-			onBlur={(e) => { console.log('bluring ', e.target); }}
+			onBlur={(e) => {
+				console.log('bluring ', e.target);
+			}}
 		/>
 	))
 	.add('Checkbox (required)', () => (
@@ -136,14 +164,14 @@ storiesOf(FORMS_CHECKBOX, module)
 			/>
 			<div className="slds-box slds-text-longform slds-m-top--large">
 				<p>
-					This example has assistive text. In Safari on Mac you can
-					turn assistive text on by using the keyboard combination:
+					This example has assistive text. In Safari on Mac you can turn
+					assistive text on by using the keyboard combination:
 					<strong>Command + F5</strong>.
 				</p>
 				<p>
-					Once you have enabled it, use your tab key to focus on the
-					checkbox input, and the system should read you what is
-					supplied to the checkbox as the <code>assistiveText</code>
+					Once you have enabled it, use your tab key to focus on the checkbox
+					input, and the system should read you what is supplied to the checkbox
+					as the <code>assistiveText</code>
 					property.
 				</p>
 			</div>
@@ -157,15 +185,15 @@ storiesOf(FORMS_CHECKBOX, module)
 			onChange={action('change')}
 		/>
 	))
-	.add('Checkbox (indeterminate)', () => (
-		<CheckboxIndeterminate />
-	))
+	.add('Checkbox (indeterminate)', () => <CheckboxIndeterminate />)
 	.add('Checkbox Toggle', () => (
 		<Checkbox
 			label="Checkbox Toggle Label"
 			name="checkbox-example-toggle"
 			onChange={action('change')}
-			onBlur={(e) => { console.log('bluring ', e.target); }}
+			onBlur={(e) => {
+				console.log('bluring ', e.target);
+			}}
 			variant="toggle"
 		/>
 	))
@@ -175,7 +203,9 @@ storiesOf(FORMS_CHECKBOX, module)
 			name="checkbox-example-toggle-error"
 			errorText="This field has an error."
 			onChange={action('change')}
-			onBlur={(e) => { console.log('bluring ', e.target); }}
+			onBlur={(e) => {
+				console.log('bluring ', e.target);
+			}}
 			variant="toggle"
 		/>
 	))
@@ -184,7 +214,9 @@ storiesOf(FORMS_CHECKBOX, module)
 			label="Checkbox Toggle Label"
 			name="checkbox-example-toggle-required"
 			onChange={action('change')}
-			onBlur={(e) => { console.log('bluring ', e.target); }}
+			onBlur={(e) => {
+				console.log('bluring ', e.target);
+			}}
 			variant="toggle"
 			required
 		/>
@@ -194,7 +226,9 @@ storiesOf(FORMS_CHECKBOX, module)
 			label="Checkbox Toggle Label"
 			name="checkbox-example-toggle-disabled"
 			onChange={action('change')}
-			onBlur={(e) => { console.log('bluring ', e.target); }}
+			onBlur={(e) => {
+				console.log('bluring ', e.target);
+			}}
 			variant="toggle"
 			disabled
 		/>
@@ -217,14 +251,14 @@ storiesOf(FORMS_CHECKBOX, module)
 			/>
 			<div className="slds-box slds-text-longform slds-m-top--large">
 				<p>
-					This example has assistive text. In Safari on Mac you can
-					turn assistive text on by using the keyboard combination:
+					This example has assistive text. In Safari on Mac you can turn
+					assistive text on by using the keyboard combination:
 					<strong>Command + F5</strong>.
 				</p>
 				<p>
-					Once you have enabled it, use your tab key to focus on the
-					checkbox input, and the system should read you what is
-					supplied to the checkbox as the <code>assistiveText</code>
+					Once you have enabled it, use your tab key to focus on the checkbox
+					input, and the system should read you what is supplied to the checkbox
+					as the <code>assistiveText</code>
 					property.
 				</p>
 			</div>
@@ -238,5 +272,4 @@ storiesOf(FORMS_CHECKBOX, module)
 			onChange={action('change')}
 			variant="toggle"
 		/>
-	))
-;
+	));

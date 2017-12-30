@@ -11,10 +11,7 @@ const Example = createReactClass({
 			<IconSettings iconPath="/assets/icons">
 				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
 					<div className="slds-col--padded">
-						<Checkbox
-							assistiveText="Default"
-							label="Default"
-						/>
+						<Checkbox assistiveText="Default" label="Default" />
 					</div>
 					<div className="slds-col--padded">
 						<Checkbox
@@ -24,18 +21,10 @@ const Example = createReactClass({
 						/>
 					</div>
 					<div className="slds-col--padded">
-						<Checkbox
-							assistiveText="Indeterminate"
-							label="Required"
-							required
-						/>
+						<Checkbox assistiveText="Indeterminate" label="Required" required />
 					</div>
 					<div className="slds-col--padded">
-						<Checkbox
-							assistiveText="Disabled"
-							label="Disabled"
-							disabled
-						/>
+						<Checkbox assistiveText="Disabled" label="Disabled" disabled />
 					</div>
 				</div>
 			</IconSettings>
@@ -43,4 +32,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

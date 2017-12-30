@@ -5,7 +5,6 @@ import RadioButtonGroup from '~/components/radio-button-group'; // `~` is replac
 import Radio from '~/components/radio-button-group/radio'; // `~` is replaced with design-system-react at runtime
 
 class Example extends React.Component {
-
 	constructor (props) {
 		super(props);
 		this.state = { checked: 'Tue' };
@@ -28,13 +27,21 @@ class Example extends React.Component {
 						name={this.props.name}
 						errorId={this.props.errorId}
 					>
-						{days.map((day) => <Radio key={day} id={day} label={day} value={day} checked={this.state.checked === day} variant="button-group" />)}
+						{days.map((day) => (
+							<Radio
+								key={day}
+								id={day}
+								label={day}
+								value={day}
+								checked={this.state.checked === day}
+								variant="button-group"
+							/>
+						))}
 					</RadioButtonGroup>
 				</div>
 			</IconSettings>
 		);
 	}
-
 }
 
 Example.propTypes = {
@@ -47,4 +54,4 @@ Example.propTypes = {
 
 Example.displayName = 'RadioButtonGroupExample';
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

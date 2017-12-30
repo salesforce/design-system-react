@@ -10,7 +10,10 @@ import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 // `this.wrapper` and `this.dom` is set in the helpers file
-import { mountComponent, unmountComponent } from '../../../tests/enzyme-helpers';
+import {
+	mountComponent,
+	unmountComponent
+} from '../../../tests/enzyme-helpers';
 
 // ### isFunction
 import isFunction from 'lodash.isfunction';
@@ -52,8 +55,8 @@ const DemoTree = createReactClass({
 
 	getInitialState () {
 		const initalNodes = this.props.exampleNodesIndex
-		? sampleNodes[this.props.exampleNodesIndex]
-		: sampleNodes.sampleNodesDefault;
+			? sampleNodes[this.props.exampleNodesIndex]
+			: sampleNodes.sampleNodesDefault;
 		return {
 			nodes: initalNodes,
 			searchTerm: this.props.searchable ? 'fruit' : undefined
@@ -68,10 +71,14 @@ const DemoTree = createReactClass({
 		data.node.loading = data.expand ? true : undefined;
 
 		// Fake delay to demonstrate use of loading node attibute
-		setTimeout((node) => {
-			node.loading = false;
-			this.forceUpdate();
-		}, 500, data.node);
+		setTimeout(
+			(node) => {
+				node.loading = false;
+				this.forceUpdate();
+			},
+			500,
+			data.node
+		);
 		data.node.expanded = data.expand;
 	},
 
@@ -86,8 +93,10 @@ const DemoTree = createReactClass({
 			if (isFunction(this.props.itemClicked)) {
 				this.props.itemClicked(event, data);
 			}
-		} else if (!this.props.noBranchSelection ||
-				(this.props.noBranchSelection && data.node.type !== 'branch')) {
+		} else if (
+			!this.props.noBranchSelection ||
+			(this.props.noBranchSelection && data.node.type !== 'branch')
+		) {
 			data.node.selected = data.select;
 			this.forceUpdate();
 			if (isFunction(this.props.itemClicked)) {
@@ -109,14 +118,17 @@ const DemoTree = createReactClass({
 	render () {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<div>{
-					this.props.searchable
-						? <div>
-							<Search assistiveText="Search Tree" value={this.state.searchTerm} onChange={this.handleSearchChange} />
+				<div>
+					{this.props.searchable ? (
+						<div>
+							<Search
+								assistiveText="Search Tree"
+								value={this.state.searchTerm}
+								onChange={this.handleSearchChange}
+							/>
 							<br />
 						</div>
-						: null
-				}
+					) : null}
 					<Tree
 						id="example-tree"
 						getNodes={this.props.getNodes}
@@ -139,15 +151,17 @@ describe('Tree: ', () => {
 	 */
 	describe('Default Structure and CSS', () => {
 		const id = 'this-is-a-container-test';
-		beforeEach(mountComponent(
-			<DemoTree
-				className="this-is-a-container-test"
-				heading="Foods"
-				id={id}
-				listClassName="this-is-an-unordered-list-test"
-				listStyle={{ height: '500px' }}
-			/>
-		));
+		beforeEach(
+			mountComponent(
+				<DemoTree
+					className="this-is-a-container-test"
+					heading="Foods"
+					id={id}
+					listClassName="this-is-an-unordered-list-test"
+					listStyle={{ height: '500px' }}
+				/>
+			)
+		);
 
 		afterEach(unmountComponent);
 
@@ -166,39 +180,49 @@ describe('Tree: ', () => {
 	});
 
 	describe('Assistive Technology', () => {
-		beforeEach(mountComponent(
-			<DemoTree assistiveText="Foods" />
-		));
+		beforeEach(mountComponent(<DemoTree assistiveText="Foods" />));
 
 		afterEach(unmountComponent);
 
 		it('has heading via assistiveText', function () {
-			const heading = this.wrapper.find('#example-tree__heading.slds-assistive-text');
+			const heading = this.wrapper.find(
+				'#example-tree__heading.slds-assistive-text'
+			);
 			expect(heading).to.have.length(1);
-			const ariaLabelledbyId = this.wrapper.find('.slds-tree[aria-labelledby="example-tree__heading"]');
+			const ariaLabelledbyId = this.wrapper.find(
+				'.slds-tree[aria-labelledby="example-tree__heading"]'
+			);
 			expect(ariaLabelledbyId).to.have.length(1);
 		});
 	});
 
 	describe('Initial Expanded and Selection based on nodes', () => {
-		beforeEach(mountComponent(
-			<DemoTree
-				exampleNodesIndex="sampleNodesWithInitialState"
-				heading="Foods"
-			/>
-		));
+		beforeEach(
+			mountComponent(
+				<DemoTree
+					exampleNodesIndex="sampleNodesWithInitialState"
+					heading="Foods"
+				/>
+			)
+		);
 
 		afterEach(unmountComponent);
 
 		it('has initial selection', function () {
-			let selectedNode = this.wrapper.find('#example-tree-1').find('.slds-is-selected');
+			let selectedNode = this.wrapper
+				.find('#example-tree-1')
+				.find('.slds-is-selected');
 			expect(selectedNode).to.have.length(1);
-			selectedNode = this.wrapper.find('#example-tree-5').find('.slds-is-selected');
+			selectedNode = this.wrapper
+				.find('#example-tree-5')
+				.find('.slds-is-selected');
 			expect(selectedNode).to.have.length(1);
 		});
 
 		it('has initial expanded branches', function () {
-			const expandedBranchList = this.wrapper.find('#example-tree-2').find('.slds-is-expanded');
+			const expandedBranchList = this.wrapper
+				.find('#example-tree-2')
+				.find('.slds-is-expanded');
 			expect(expandedBranchList.node.childNodes).to.have.length(2);
 		});
 	});
@@ -207,22 +231,28 @@ describe('Tree: ', () => {
 		const itemClicked = sinon.spy();
 		const expandClicked = sinon.spy();
 
-		beforeEach(mountComponent(
-			<DemoTree
-				branchExpandClicked={expandClicked}
-				itemClicked={itemClicked}
-				heading="Foods"
-			/>
-		));
+		beforeEach(
+			mountComponent(
+				<DemoTree
+					branchExpandClicked={expandClicked}
+					itemClicked={itemClicked}
+					heading="Foods"
+				/>
+			)
+		);
 
 		afterEach(unmountComponent);
 
 		it('branch calls onExpandClicked and onClick', function () {
-			const branch = this.wrapper.find('#example-tree-2').find('.slds-tree__item');
+			const branch = this.wrapper
+				.find('#example-tree-2')
+				.find('.slds-tree__item');
 			branch.simulate('click');
 			expect(itemClicked.callCount).to.equal(1);
 
-			const expandButton = this.wrapper.find('#example-tree-2').find('.slds-button');
+			const expandButton = this.wrapper
+				.find('#example-tree-2')
+				.find('.slds-button');
 			expandButton.simulate('click');
 			expect(expandClicked.callCount).to.equal(1);
 		});
@@ -231,17 +261,16 @@ describe('Tree: ', () => {
 	describe('Item calls onClick', () => {
 		const itemClicked = sinon.spy();
 
-		beforeEach(mountComponent(
-			<DemoTree
-				itemClicked={itemClicked}
-				heading="Foods"
-			/>
-		));
+		beforeEach(
+			mountComponent(<DemoTree itemClicked={itemClicked} heading="Foods" />)
+		);
 
 		afterEach(unmountComponent);
 
 		it('item calls itemClicked', function () {
-			const item = this.wrapper.find('#example-tree-1').find('.slds-tree__item');
+			const item = this.wrapper
+				.find('#example-tree-1')
+				.find('.slds-tree__item');
 			item.simulate('click');
 			expect(itemClicked.callCount).to.equal(1);
 		});
@@ -250,13 +279,15 @@ describe('Tree: ', () => {
 	describe('getNodes is called on initial tree', () => {
 		const getNodes = sinon.spy();
 
-		beforeEach(mountComponent(
-			<DemoTree
-				exampleNodesIndex="sampleNodesWithInitialState"
-				getNodes={getNodes}
-				heading="Foods"
-			/>
-		));
+		beforeEach(
+			mountComponent(
+				<DemoTree
+					exampleNodesIndex="sampleNodesWithInitialState"
+					getNodes={getNodes}
+					heading="Foods"
+				/>
+			)
+		);
 
 		afterEach(unmountComponent);
 
@@ -266,12 +297,7 @@ describe('Tree: ', () => {
 	});
 
 	describe('Search term is highlighted', () => {
-		beforeEach(mountComponent(
-			<DemoTree
-				searchTerm="fruit"
-				heading="Foods"
-			/>
-		));
+		beforeEach(mountComponent(<DemoTree searchTerm="fruit" heading="Foods" />));
 
 		afterEach(unmountComponent);
 
@@ -284,17 +310,19 @@ describe('Tree: ', () => {
 	describe('Scrolling calls onScroll', () => {
 		const onScroll = sinon.spy();
 
-		beforeEach(mountComponent(
-			<DemoTree
-				exampleNodesIndex="sampleNodesWithLargeDataset"
-				heading="Foods"
-				onScroll={onScroll}
-				listStyle={{
-					height: '300px',
-					overflowY: 'auto'
-				}}
-			/>
-		));
+		beforeEach(
+			mountComponent(
+				<DemoTree
+					exampleNodesIndex="sampleNodesWithLargeDataset"
+					heading="Foods"
+					onScroll={onScroll}
+					listStyle={{
+						height: '300px',
+						overflowY: 'auto'
+					}}
+				/>
+			)
+		);
 
 		afterEach(unmountComponent);
 

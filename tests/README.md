@@ -14,39 +14,43 @@ Although we strive to make this library functional, controlled, presentational c
 * All components with mouse/keyboard interactions and events must have Mocha tests. For components with user interactions events, real DOM testing is preferred. It is not recommended to use shallow rendering or to modify component prototypes with mock functions for these tests.
 * Add each snapshot as a story to Storybook fo manual testing.
 * Design System React requires unit testing of:
-    - All components not in a `private` folder
-    - All props. This includes `children`, but only to check if `children` rendered.
-    - Correct parameters for all event callbacks
-    - Keyboard interactions specified at [SLDS site](https://www.lightningdesignsystem.com/) and possibly additional test for `tab` if DOM focus is involved
-    - Mouse interactions. This includes testing if the component gained focus or lost focus when another element is clicked.
-    - Correct DOM focus manipulation (if applicable)
-    - Jest snapshots for each [SLDS state and variant](https://www.lightningdesignsystem.com/) implemented and all documentation site example.
+  * All components not in a `private` folder
+  * All props. This includes `children`, but only to check if `children` rendered.
+  * Correct parameters for all event callbacks
+  * Keyboard interactions specified at [SLDS site](https://www.lightningdesignsystem.com/) and possibly additional test for `tab` if DOM focus is involved
+  * Mouse interactions. This includes testing if the component gained focus or lost focus when another element is clicked.
+  * Correct DOM focus manipulation (if applicable)
+  * Jest snapshots for each [SLDS state and variant](https://www.lightningdesignsystem.com/) implemented and all documentation site example.
 * Test must work in PhantomJS via the CLI and in your local browser at [http://localhost:8001](http://localhost:8001).
 * Pull requests should conform to [ESLint style definition](https://github.com/salesforce-ux/eslint-config-slds). Use `eslint-disable-line` within tests for exceptions.
 * Always pass HTML IDs in - Many components have the optional `id` property but will generate a random id to use if not passed in. These randomly generated IDs will cause your snapshot tests to fail. The markup text diff may be easier to debug if you change one prop per snapshot and have many snapshots instead of changing many props in one snapshot.
 * Tests must unmount and clean up the test fixture after each test or grouping of related tests. Do not allow unrelated tests to "bleed" into each other.
 
 ## Testing Suite Overview
-- **[Mocha](http://mochajs.org/)** - Test framework ([getting started primer](http://mochajs.org/#getting-started))
-- **[Jest](https://facebook.github.io/jest/)** - A second test framework ([Snapshot Testing](https://facebook.github.io/jest/docs/en/snapshot-testing.html))
-- **[Chai](http://chaijs.com/) w/[Expect Syntax](http://chaijs.com/api/bdd/)** - Test assertion library
-- **[Karma](https://karma-runner.github.io/1.0/index.html)** - Command line test runner --runs tests with `npm test`
-- **[Sinon](http://sinonjs.org)** - Stub/mock generator for callbacks and human interactions
-- **[Enzyme](http://airbnb.io/enzyme/)** - manipulate and traverse the DOM with syntax similar to jQuery
-- **[Chai Enzyme](https://github.com/producthunt/chai-enzyme)** - Chai assertions and convenience functions which eliminate asynchronous render complexities
-- **[ESLint](http://eslint.org/)** - Promotes consistent coding styles
-- **[react-docgen](https://github.com/reactjs/react-docgen)** - Generates JSON used by this library's documentation site.
-- **[Istanbul](https://github.com/gotwarlost/istanbul)** - Measures code coverage
-- **Visual Recognition Tests (COMING SOON)** - Captures an image and compares it to previously captured images
+
+* **[Mocha](http://mochajs.org/)** - Test framework ([getting started primer](http://mochajs.org/#getting-started))
+* **[Jest](https://facebook.github.io/jest/)** - A second test framework ([Snapshot Testing](https://facebook.github.io/jest/docs/en/snapshot-testing.html))
+* **[Chai](http://chaijs.com/) w/[Expect Syntax](http://chaijs.com/api/bdd/)** - Test assertion library
+* **[Karma](https://karma-runner.github.io/1.0/index.html)** - Command line test runner --runs tests with `npm test`
+* **[Sinon](http://sinonjs.org)** - Stub/mock generator for callbacks and human interactions
+* **[Enzyme](http://airbnb.io/enzyme/)** - manipulate and traverse the DOM with syntax similar to jQuery
+* **[Chai Enzyme](https://github.com/producthunt/chai-enzyme)** - Chai assertions and convenience functions which eliminate asynchronous render complexities
+* **[ESLint](http://eslint.org/)** - Promotes consistent coding styles
+* **[react-docgen](https://github.com/reactjs/react-docgen)** - Generates JSON used by this library's documentation site.
+* **[Istanbul](https://github.com/gotwarlost/istanbul)** - Measures code coverage
+* **Visual Recognition Tests (COMING SOON)** - Captures an image and compares it to previously captured images
 
 ## Running Tests
-- Run Karma/PhantomJS environment tests with `npm test`
-- Test interactively in your browser. Start server from terminal with `npm start` and browse to [http://localhost:8001](http://localhost:8001)
+
+* Run Karma/PhantomJS environment tests with `npm test`
+* Test interactively in your browser. Start server from terminal with `npm start` and browse to [http://localhost:8001](http://localhost:8001)
 
 ## Snapshot testing Overview
-- Files ending in `.snapshot-test.jsx` will be run by Jest. DOM checking though is tedious even with the jQuery-like, Enzyme. Snapshot testing uses the Jest framework to take a snapshot of the state of the DOM when the component is rendered and save it as a string for future comparison. Please use this process to test the presence of CSS classes, styles, and DOM nodes. Reuse of code examples in `examples` folder is _highly recommended_ in your snapshot tests. This allows confirmation of the alignment of the documentation site examples with design system markup. Mouse/keyboard user interaction tests are still expected to be created in Mocha, because they are often easier to debug interactively in the browser.
+
+* Files ending in `.snapshot-test.jsx` will be run by Jest. DOM checking though is tedious even with the jQuery-like, Enzyme. Snapshot testing uses the Jest framework to take a snapshot of the state of the DOM when the component is rendered and save it as a string for future comparison. Please use this process to test the presence of CSS classes, styles, and DOM nodes. Reuse of code examples in `examples` folder is _highly recommended_ in your snapshot tests. This allows confirmation of the alignment of the documentation site examples with design system markup. Mouse/keyboard user interaction tests are still expected to be created in Mocha, because they are often easier to debug interactively in the browser.
 
 ### Compare snapshot markup with the design system
+
 HTML Snapshots are a great way to compare markup with the [SLDS site](https://www.lightningdesignsystem.com/) examples. One way to do Test Driven Development (TDD) with snapshots is:
 
 * Copy markup from design system site
@@ -56,9 +60,11 @@ HTML Snapshots are a great way to compare markup with the [SLDS site](https://ww
 * Return to the component and `npm run snapshot-test -- --watch` and modify your component until you get the markup correct.
 
 ## Mocha test file
-- Files ending in `.browser-test.jsx` will be run by CI server and in browser.
+
+* Files ending in `.browser-test.jsx` will be run by CI server and in browser.
 
 Here is a well-commented sample test file which you can copy/paste into a new file to get started:
+
 ```
 /* Adds all of the Mocha and sinon testing global
  * variables to the global namespace for eslint purposes.
@@ -143,7 +149,7 @@ describe('Component Name here', () => {
      * roles and screen reader text is present in the DOM.
      * If your component has an ARIA role in application, and
      * does not use `tab-index`, test that the correct keyboard
-     * navigation is present. Test event callback functions using 
+     * navigation is present. Test event callback functions using
      * Simulate. For more information, view
      * https://github.com/airbnb/enzyme/blob/master/docs/api/ReactWrapper/simulate.md
      */
@@ -173,5 +179,4 @@ describe('Component Name here', () => {
    });
   });
 });
-
 ```

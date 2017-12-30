@@ -4,10 +4,16 @@ import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 
 // `this.wrapper` and `this.dom` is set in the helpers file
-import { mountComponent, unmountComponent } from '../../../tests/enzyme-helpers';
+import {
+	mountComponent,
+	unmountComponent
+} from '../../../tests/enzyme-helpers';
 
 // sample props and children
-import { dropdownCollection, propSets } from '../../../utilities/sample-data/global-navigation-bar';
+import {
+	dropdownCollection,
+	propSets
+} from '../../../utilities/sample-data/global-navigation-bar';
 
 import IconSettings from '../../icon-settings';
 import GlobalNavigationBar from '../../global-navigation-bar';
@@ -39,15 +45,15 @@ describe('Global Navigation Bar: ', () => {
 		Tests
 	 */
 	describe('Default Structure', () => {
-		beforeEach(mountComponent(
-			<IconSettings iconPath="/assets/icons">
-				<GlobalNavigationBar>
-					<GlobalNavigationBarRegion
-						region="primary"
-					/>
-				</GlobalNavigationBar>
-			</IconSettings>
-		));
+		beforeEach(
+			mountComponent(
+				<IconSettings iconPath="/assets/icons">
+					<GlobalNavigationBar>
+						<GlobalNavigationBarRegion region="primary" />
+					</GlobalNavigationBar>
+				</IconSettings>
+			)
+		);
 
 		afterEach(unmountComponent);
 
@@ -61,7 +67,9 @@ describe('Global Navigation Bar: ', () => {
 
 		it('Primary region DOES not have divider on right', function () {
 			const primary = this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`);
-			expect(primary.nodes[0].className).to.not.include('slds-context-bar__item--divider-right');
+			expect(primary.nodes[0].className).to.not.include(
+				'slds-context-bar__item--divider-right'
+			);
 		});
 	});
 
@@ -69,18 +77,28 @@ describe('Global Navigation Bar: ', () => {
 		const customCloudProps = propSets.customCloud.props;
 		const customThemeProps = propSets.lightTheme.props;
 
-		beforeEach(mountComponent(
-			<IconSettings iconPath="/assets/icons">
-				<GlobalNavigationBar {...customCloudProps} {...customThemeProps} />
-			</IconSettings>
-		));
+		beforeEach(
+			mountComponent(
+				<IconSettings iconPath="/assets/icons">
+					<GlobalNavigationBar {...customCloudProps} {...customThemeProps} />
+				</IconSettings>
+			)
+		);
 
 		afterEach(unmountComponent);
 
 		it('has custom cloud and theme CSS', function () {
 			const component = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
-			expect(component.hasClass(`${COMPONENT_CSS_CLASSES.themePrefix}${customCloudProps.cloud}`)).to.be.true;
-			expect(component.hasClass(`${COMPONENT_CSS_CLASSES.themePrefix}${customThemeProps.theme}`)).to.be.true;
+			expect(
+				component.hasClass(
+					`${COMPONENT_CSS_CLASSES.themePrefix}${customCloudProps.cloud}`
+				)
+			).to.be.true;
+			expect(
+				component.hasClass(
+					`${COMPONENT_CSS_CLASSES.themePrefix}${customThemeProps.theme}`
+				)
+			).to.be.true;
 		});
 	});
 
@@ -91,59 +109,63 @@ describe('Global Navigation Bar: ', () => {
 		const linkClicked = () => {};
 		const dropdownItemClicked = () => {};
 
-		beforeEach(mountComponent(
-			<IconSettings iconPath="/assets/icons">
-				<GlobalNavigationBar {...props}>
-					<GlobalNavigationBarRegion
-						region="primary"
-					/>
-					<GlobalNavigationBarRegion region="secondary" navigation dividerPosition="right">
-						<GlobalNavigationBarLink
-							label="Home"
-							id="home-link"
-							onClick={linkClicked('Home link clicked')}
-						/>
-						<GlobalNavigationBarDropdown
-							assistiveText="Open Menu"
-							id="primaryDropdown"
-							label="Global Navigation Menu Item 1"
-							onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
-							options={dropdownCollection}
-						/>
-						<GlobalNavigationBarLink
-							active
-							id="menu-item-2"
-							label="Global Navigation Menu Item 2"
-							onClick={linkClicked('Link clicked')}
-						/>
-						<GlobalNavigationBarDropdown
-							active
-							assistiveText="Open Menu"
-							id="primaryDropdownActive"
-							label="Global Navigation Menu Item 3"
-							onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
-							options={dropdownCollection}
-						/>
-					</GlobalNavigationBarRegion>
-					<GlobalNavigationBarRegion region="tertiary">
-						<GlobalNavigationBarLink
-							label="Actions"
-							onClick={linkClicked('Link clicked')}
-						/>
-						<GlobalNavigationBarButton
-							active
-							label="Button"
-							id="global-nav__button"
-							onClick={buttonClicked('Button clicked')}
-						/>
-						<GlobalNavigationBarLabel
-							dividerPosition="left"
-							label="Vandelay Enterprises"
-						/>
-					</GlobalNavigationBarRegion>
-				</GlobalNavigationBar>
-			</IconSettings>
-		));
+		beforeEach(
+			mountComponent(
+				<IconSettings iconPath="/assets/icons">
+					<GlobalNavigationBar {...props}>
+						<GlobalNavigationBarRegion region="primary" />
+						<GlobalNavigationBarRegion
+							region="secondary"
+							navigation
+							dividerPosition="right"
+						>
+							<GlobalNavigationBarLink
+								label="Home"
+								id="home-link"
+								onClick={linkClicked('Home link clicked')}
+							/>
+							<GlobalNavigationBarDropdown
+								assistiveText="Open Menu"
+								id="primaryDropdown"
+								label="Global Navigation Menu Item 1"
+								onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
+								options={dropdownCollection}
+							/>
+							<GlobalNavigationBarLink
+								active
+								id="menu-item-2"
+								label="Global Navigation Menu Item 2"
+								onClick={linkClicked('Link clicked')}
+							/>
+							<GlobalNavigationBarDropdown
+								active
+								assistiveText="Open Menu"
+								id="primaryDropdownActive"
+								label="Global Navigation Menu Item 3"
+								onSelect={dropdownItemClicked('Dropdown Menu Item clicked')}
+								options={dropdownCollection}
+							/>
+						</GlobalNavigationBarRegion>
+						<GlobalNavigationBarRegion region="tertiary">
+							<GlobalNavigationBarLink
+								label="Actions"
+								onClick={linkClicked('Link clicked')}
+							/>
+							<GlobalNavigationBarButton
+								active
+								label="Button"
+								id="global-nav__button"
+								onClick={buttonClicked('Button clicked')}
+							/>
+							<GlobalNavigationBarLabel
+								dividerPosition="left"
+								label="Vandelay Enterprises"
+							/>
+						</GlobalNavigationBarRegion>
+					</GlobalNavigationBar>
+				</IconSettings>
+			)
+		);
 
 		afterEach(unmountComponent);
 
@@ -160,13 +182,17 @@ describe('Global Navigation Bar: ', () => {
 
 		it('Primary region has divider on right due to secondary region', function () {
 			const primary = this.wrapper.find(`.${REGION_CSS_CLASSES.primary}`);
-			expect(primary.nodes[0].className).to.include('slds-context-bar__item--divider-right');
+			expect(primary.nodes[0].className).to.include(
+				'slds-context-bar__item--divider-right'
+			);
 		});
 
 		it('Secondary region application is a nav HTML element and has divider on right side', function () {
 			const nav = this.wrapper.find(`.${REGION_CSS_CLASSES.secondary}`);
 			expect(nav.type()).to.equal('nav');
-			expect(nav.node.className).to.include('slds-context-bar__item--divider-right');
+			expect(nav.node.className).to.include(
+				'slds-context-bar__item--divider-right'
+			);
 		});
 
 		it('displays active items as active', function () {
@@ -176,11 +202,13 @@ describe('Global Navigation Bar: ', () => {
 	});
 
 	describe('Secondary Region', () => {
-		beforeEach(mountComponent(
-			<IconSettings iconPath="/assets/icons">
-				<GlobalNavigationBarRegion region="secondary" />
-			</IconSettings>
-		));
+		beforeEach(
+			mountComponent(
+				<IconSettings iconPath="/assets/icons">
+					<GlobalNavigationBarRegion region="secondary" />
+				</IconSettings>
+			)
+		);
 
 		afterEach(unmountComponent);
 
@@ -206,7 +234,9 @@ describe('Global Navigation Bar: ', () => {
 					onClick={linkClicked('Home link clicked')}
 				/>
 			);
-			this.wrapper = mount(instance, { attachTo: document.body.appendChild(document.createElement('div')) });
+			this.wrapper = mount(instance, {
+				attachTo: document.body.appendChild(document.createElement('div'))
+			});
 			link = this.wrapper.find('#home-link');
 		});
 
@@ -235,7 +265,9 @@ describe('Global Navigation Bar: ', () => {
 					onClick={buttonClicked('Button clicked')}
 				/>
 			);
-			this.wrapper = mount(instance, { attachTo: document.body.appendChild(document.createElement('div')) });
+			this.wrapper = mount(instance, {
+				attachTo: document.body.appendChild(document.createElement('div'))
+			});
 			const link = this.wrapper.find('#global-nav__button');
 			expect(link.text()).to.equal('Button');
 			link.simulate('click');
@@ -247,13 +279,10 @@ describe('Global Navigation Bar: ', () => {
 
 	describe('GlobalNavigationLabel child component', () => {
 		it('GlobalNavigationBarLabel has attributes', function () {
-			const instance = (
-				<GlobalNavigationBarLabel
-					label="Text"
-					id="test-text"
-				/>
-			);
-			this.wrapper = mount(instance, { attachTo: document.body.appendChild(document.createElement('div')) });
+			const instance = <GlobalNavigationBarLabel label="Text" id="test-text" />;
+			this.wrapper = mount(instance, {
+				attachTo: document.body.appendChild(document.createElement('div'))
+			});
 			const item = this.wrapper.find('#test-text');
 			expect(item.text()).to.equal('Text');
 

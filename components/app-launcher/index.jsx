@@ -79,7 +79,11 @@ const AppLauncher = createReactClass({
 		/**
 		 * CSS classes to be added to App Launcher Modal.
 		 */
-		modalClassName: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+		modalClassName: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string
+		]),
 		/**
 		 * Button that exists in the upper right hand corner of the App Launcher modal
 		 */
@@ -181,7 +185,8 @@ const AppLauncher = createReactClass({
 	},
 
 	render () {
-		const isOpen = this.props.isOpen !== undefined ? this.props.isOpen : this.state.isOpen;
+		const isOpen =
+			this.props.isOpen !== undefined ? this.props.isOpen : this.state.isOpen;
 
 		// Should be removed in the future by adding a reset class of some sort.
 		const style = this.props.noTruncate ? { maxWidth: 'none' } : null;
@@ -192,11 +197,11 @@ const AppLauncher = createReactClass({
 
 				{this.renderSearch()}
 
-				{
+				{this.props.modalHeaderButton ? (
 					this.props.modalHeaderButton
-					? this.props.modalHeaderButton
-					: <span className="slds-size--1-of-7" />
-				}
+				) : (
+					<span className="slds-size--1-of-7" />
+				)}
 			</div>
 		);
 
@@ -222,7 +227,11 @@ const AppLauncher = createReactClass({
 							<span className="slds-r8" />
 							<span className="slds-r9" />
 						</span>
-						{this.props.triggerAssistiveText && <span className="slds-assistive-text">{this.props.triggerAssistiveText}</span>}
+						{this.props.triggerAssistiveText && (
+							<span className="slds-assistive-text">
+								{this.props.triggerAssistiveText}
+							</span>
+						)}
 					</button>
 				</div>
 				<Modal
@@ -230,24 +239,26 @@ const AppLauncher = createReactClass({
 					contentStyle={{ minHeight: modalContentStaticHeight }}
 					isOpen={isOpen}
 					onRequestClose={this.closeAppLauncher}
-					containerClassName={classNames('app-launcher', this.props.modalClassName)}
+					containerClassName={classNames(
+						'app-launcher',
+						this.props.modalClassName
+					)}
 					size="large"
 					header={customModalHeader}
 					headerClassName="slds-app-launcher__header"
 				>
 					{this.props.children}
 				</Modal>
-				{this.props.triggerName
-					? <span
+				{this.props.triggerName ? (
+					<span
 						className={classNames(
 							'slds-context-bar__label-action slds-context-bar__app-name',
-							{ 'slds-truncate': !this.props.noTruncate })
-						}
+							{ 'slds-truncate': !this.props.noTruncate }
+						)}
 					>
 						{this.props.triggerName}
 					</span>
-					: null
-				}
+				) : null}
 			</div>
 		);
 	}

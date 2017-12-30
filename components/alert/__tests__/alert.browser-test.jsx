@@ -4,7 +4,10 @@
 import React, { Component } from 'react';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import { mountComponent, unmountComponent } from '../../../tests/enzyme-helpers';
+import {
+	mountComponent,
+	unmountComponent
+} from '../../../tests/enzyme-helpers';
 
 chai.use(chaiEnzyme());
 
@@ -27,8 +30,8 @@ class DemoComponent extends Component {
 			<IconSettings iconPath="/assets/icons">
 				<div>
 					<AlertContainer>
-						{this.state.isOpen
-							? <Alert
+						{this.state.isOpen ? (
+							<Alert
 								dismissible
 								icon={<Icon category="utility" name="user" />}
 								labels={{
@@ -36,9 +39,11 @@ class DemoComponent extends Component {
 									headingLink: 'Log out'
 								}}
 								onClickHeadingLink={this.props.onClickHeadingLink}
-								onRequestClose={() => { this.setState({ isOpen: false }); }}
+								onRequestClose={() => {
+									this.setState({ isOpen: false });
+								}}
 							/>
-							: null }
+						) : null}
 					</AlertContainer>
 				</div>
 			</IconSettings>
@@ -53,9 +58,9 @@ describe('SLDSAlert: ', function () {
 	const onClickHeadingLink = sinon.spy();
 
 	describe('Dismiss alert', () => {
-		beforeEach(mountComponent(
-			<DemoComponent onClickHeadingLink={onClickHeadingLink} />
-		));
+		beforeEach(
+			mountComponent(<DemoComponent onClickHeadingLink={onClickHeadingLink} />)
+		);
 
 		afterEach(unmountComponent);
 

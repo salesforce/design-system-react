@@ -27,8 +27,7 @@ import EventUtil from '../../../utilities/event';
 // ## Constants
 import { TREE_ITEM } from '../../../utilities/constants';
 
-
-const	handleClick = (event, props) => {
+const handleClick = (event, props) => {
 	EventUtil.trap(event);
 
 	if (isFunction(props.onClick)) {
@@ -48,12 +47,20 @@ const Item = (props) => {
 
 	// TODO: Remove tabbing from anchor tag / add tabIndex={-1} when keyboard navigation is present.
 	return (
-		<li id={`${props.treeId}-${props.node.id}`} role="treeitem" aria-level={props.level}>
+		<li
+			id={`${props.treeId}-${props.node.id}`}
+			role="treeitem"
+			aria-level={props.level}
+		>
 			{/* eslint-disable jsx-a11y/no-static-element-interactions */}
 			<div
-				className={classNames('slds-tree__item', { 'slds-is-selected': isSelected })}
+				className={classNames('slds-tree__item', {
+					'slds-is-selected': isSelected
+				})}
 				aria-selected={isSelected ? 'true' : 'false'}
-				onClick={(event) => { handleClick(event, props); }}
+				onClick={(event) => {
+					handleClick(event, props);
+				}}
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				<Button
@@ -65,7 +72,11 @@ const Item = (props) => {
 					disabled
 				/>
 				{/* eslint-disable no-script-url */}
-				<a href="javascript:void(0)" role="presentation" className="slds-truncate">
+				<a
+					href="javascript:void(0)"
+					role="presentation"
+					className="slds-truncate"
+				>
 					{/* eslint-enable no-script-url */}
 					<Highlighter search={props.searchTerm}>{props.label}</Highlighter>
 				</a>
@@ -87,9 +98,7 @@ Item.propTypes = {
 	/**
 	 * The text of the tree item.
 	 */
-	label: PropTypes.oneOfType([
-		PropTypes.node,
-		PropTypes.string]).isRequired,
+	label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
 	/**
 	 * The number of nestings. Determines the ARIA level and style alignment.
 	 */

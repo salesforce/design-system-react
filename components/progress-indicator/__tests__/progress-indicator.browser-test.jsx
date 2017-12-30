@@ -25,11 +25,16 @@ import assign from 'lodash.assign';
  * context [full source here](tests/enzyme-helpers.js). `this` can
  * only be referenced if inside `function () {}`.
  */
-import { mountComponent, unmountComponent } from '../../../tests/enzyme-helpers';
+import {
+	mountComponent,
+	unmountComponent
+} from '../../../tests/enzyme-helpers';
 
-const { Simulate,
+const {
+	Simulate,
 	findRenderedDOMComponentWithTag,
-	findRenderedDOMComponentWithClass } = TestUtils;
+	findRenderedDOMComponentWithClass
+} = TestUtils;
 
 import SLDSProgressIndicator from '../../progress-indicator';
 import IconSettings from '../../icon-settings';
@@ -79,9 +84,15 @@ const sixSteps = [
 
 describe('SLDSProgressIndicator: ', () => {
 	describe('Basic Props Render', () => {
-		beforeEach(mountComponent(
-			<DemoComponent steps={steps} selectedStep={steps[2]} completedSteps={steps.slice(0, 2)} />
-		));
+		beforeEach(
+			mountComponent(
+				<DemoComponent
+					steps={steps}
+					selectedStep={steps[2]}
+					completedSteps={steps.slice(0, 2)}
+				/>
+			)
+		);
 
 		afterEach(unmountComponent);
 
@@ -92,17 +103,23 @@ describe('SLDSProgressIndicator: ', () => {
 		});
 
 		it('has only one active step', function () {
-			const item = this.wrapper.find('.slds-progress').find('li.slds-is-active');
+			const item = this.wrapper
+				.find('.slds-progress')
+				.find('li.slds-is-active');
 			expect(item).to.have.length(1);
 		});
 
 		it('does not have an error step', function () {
-			const item = this.wrapper.find('.slds-progress').find('li.slds-has-error');
+			const item = this.wrapper
+				.find('.slds-progress')
+				.find('li.slds-has-error');
 			expect(item).to.have.length(0);
 		});
 
 		it('has correct number of completed steps', function () {
-			const item = this.wrapper.find('.slds-progress').find('li.slds-is-completed');
+			const item = this.wrapper
+				.find('.slds-progress')
+				.find('li.slds-is-completed');
 			expect(item).to.have.length(2);
 		});
 
@@ -113,9 +130,16 @@ describe('SLDSProgressIndicator: ', () => {
 	});
 
 	describe('Within-Modal Props Render (Without Error)', () => {
-		beforeEach(mountComponent(
-			<DemoComponent steps={steps} selectedStep={steps[2]} completedSteps={steps.slice(0, 2)} variant="modal" />
-		));
+		beforeEach(
+			mountComponent(
+				<DemoComponent
+					steps={steps}
+					selectedStep={steps[2]}
+					completedSteps={steps.slice(0, 2)}
+					variant="modal"
+				/>
+			)
+		);
 
 		afterEach(unmountComponent);
 
@@ -126,17 +150,23 @@ describe('SLDSProgressIndicator: ', () => {
 		});
 
 		it('has no error step', function () {
-			const item = this.wrapper.find('.slds-progress').find('li.slds-has-error');
+			const item = this.wrapper
+				.find('.slds-progress')
+				.find('li.slds-has-error');
 			expect(item).to.have.length(0);
 		});
 
 		it('has 1 active step', function () {
-			const item = this.wrapper.find('.slds-progress').find('li.slds-is-active');
+			const item = this.wrapper
+				.find('.slds-progress')
+				.find('li.slds-is-active');
 			expect(item).to.have.length(1);
 		});
 
 		it('has correct number of completed steps', function () {
-			const item = this.wrapper.find('.slds-progress').find('li.slds-is-completed');
+			const item = this.wrapper
+				.find('.slds-progress')
+				.find('li.slds-is-completed');
 			expect(item).to.have.length(2);
 		});
 
@@ -147,58 +177,79 @@ describe('SLDSProgressIndicator: ', () => {
 	});
 
 	describe('Within-Modal Props Render (With Error)', () => {
-		beforeEach(mountComponent(
-			<DemoComponent steps={steps} selectedStep={steps[2]} errorSteps={steps.slice(2, 3)} completedSteps={steps.slice(0, 2)} variant="modal" />
-		));
+		beforeEach(
+			mountComponent(
+				<DemoComponent
+					steps={steps}
+					selectedStep={steps[2]}
+					errorSteps={steps.slice(2, 3)}
+					completedSteps={steps.slice(0, 2)}
+					variant="modal"
+				/>
+			)
+		);
 
 		afterEach(unmountComponent);
 
 		// PROPS
 		it('has 1 error step', function () {
-			const item = this.wrapper.find('.slds-progress').find('li.slds-has-error');
+			const item = this.wrapper
+				.find('.slds-progress')
+				.find('li.slds-has-error');
 			expect(item).to.have.length(1);
 		});
 
 		it('has no active step', function () {
-			const item = this.wrapper.find('.slds-progress').find('li.slds-is-active');
+			const item = this.wrapper
+				.find('.slds-progress')
+				.find('li.slds-is-active');
 			expect(item).to.have.length(0);
 		});
 
 		it('has correct number of completed steps', function () {
-			const item = this.wrapper.find('.slds-progress').find('li.slds-is-completed');
+			const item = this.wrapper
+				.find('.slds-progress')
+				.find('li.slds-is-completed');
 			expect(item).to.have.length(2);
 		});
 	});
 
 	describe('Tooltip Props Render', () => {
-		beforeEach(mountComponent(
-			<DemoComponent
-				steps={sixSteps}
-				selectedStep={sixSteps[2]}
-				errorSteps={sixSteps.slice(2, 3)}
-				completedSteps={sixSteps.slice(0, 2)}
-			/>
-		));
+		beforeEach(
+			mountComponent(
+				<DemoComponent
+					steps={sixSteps}
+					selectedStep={sixSteps[2]}
+					errorSteps={sixSteps.slice(2, 3)}
+					completedSteps={sixSteps.slice(0, 2)}
+				/>
+			)
+		);
 
 		afterEach(unmountComponent);
 
 		// PROPS
 		it('has an error step', function () {
-			const item = this.wrapper.find('.slds-progress').find('li.slds-has-error');
+			const item = this.wrapper
+				.find('.slds-progress')
+				.find('li.slds-has-error');
 			expect(item).to.have.length(1);
 		});
 
 		it('has a tooltip attached to every step', function () {
-			const item = this.wrapper.find('.slds-progress').find('.slds-tooltip-trigger');
+			const item = this.wrapper
+				.find('.slds-progress')
+				.find('.slds-tooltip-trigger');
 			expect(item).to.have.length(6);
 		});
 
 		it('renders correct assistive text', function () {
-			const item = this.wrapper.find('.slds-progress')
-									.find('.slds-tooltip-trigger')
-									.find('button > span')
-									.find('.slds-assistive-text')
-									.first();
+			const item = this.wrapper
+				.find('.slds-progress')
+				.find('.slds-tooltip-trigger')
+				.find('button > span')
+				.find('.slds-assistive-text')
+				.first();
 			expect(item.text()).to.include('custom tooltip #1');
 		});
 	});
@@ -206,15 +257,26 @@ describe('SLDSProgressIndicator: ', () => {
 	describe('Click Event', () => {
 		const clickHandler = sinon.spy();
 
-		beforeEach(mountComponent(
-			<DemoComponent steps={steps} selectedStep={steps[2]} completedSteps={steps.slice(0, 2)} onStepClick={clickHandler} />
-		));
+		beforeEach(
+			mountComponent(
+				<DemoComponent
+					steps={steps}
+					selectedStep={steps[2]}
+					completedSteps={steps.slice(0, 2)}
+					onStepClick={clickHandler}
+				/>
+			)
+		);
 
 		afterEach(unmountComponent);
 
 		// EVENTS
 		it('calls onStepClick()', function () {
-			const step = this.wrapper.find('.slds-progress').find('li').find('button').first().node;
+			const step = this.wrapper
+				.find('.slds-progress')
+				.find('li')
+				.find('button')
+				.first().node;
 			// step.simulate('click'); <-- this is causing some errors on tab tests
 			Simulate.click(step);
 			expect(clickHandler.callCount).to.equal(1);
@@ -227,9 +289,16 @@ describe('SLDSProgressIndicator: ', () => {
 		 */
 		const focusHandler = sinon.spy();
 
-		beforeEach(mountComponent(
-			<DemoComponent steps={steps} selectedStep={steps[2]} completedSteps={steps.slice(0, 2)} onStepFocus={focusHandler} />
-		));
+		beforeEach(
+			mountComponent(
+				<DemoComponent
+					steps={steps}
+					selectedStep={steps[2]}
+					completedSteps={steps.slice(0, 2)}
+					onStepFocus={focusHandler}
+				/>
+			)
+		);
 
 		afterEach(unmountComponent);
 
@@ -240,22 +309,31 @@ describe('SLDSProgressIndicator: ', () => {
 		});
 
 		it('renders assistive text for progress bar', function () {
-			const item = this.wrapper.find('.slds-progress-bar').find('.slds-assistive-text').first();
+			const item = this.wrapper
+				.find('.slds-progress-bar')
+				.find('.slds-assistive-text')
+				.first();
 			expect(item.text()).to.include('Progress:');
 			expect(item.text()).to.include('%');
 		});
 
 		it('renders assistive text for steps', function () {
-			const firstItem = this.wrapper.find('.slds-progress').find('li').find('.slds-tooltip-trigger')
-									.find('.slds-button')
-									.find('.slds-assistive-text')
-									.first();
+			const firstItem = this.wrapper
+				.find('.slds-progress')
+				.find('li')
+				.find('.slds-tooltip-trigger')
+				.find('.slds-button')
+				.find('.slds-assistive-text')
+				.first();
 			expect(firstItem.text()).to.include('tooltip label');
 
-			const secondItem = this.wrapper.find('.slds-progress').find('li').find('.slds-tooltip-trigger')
-									.find('.slds-button')
-									.find('.slds-assistive-text')
-									.at(1);
+			const secondItem = this.wrapper
+				.find('.slds-progress')
+				.find('li')
+				.find('.slds-tooltip-trigger')
+				.find('.slds-button')
+				.find('.slds-assistive-text')
+				.at(1);
 			expect(secondItem.text()).to.include('Step');
 		});
 	});

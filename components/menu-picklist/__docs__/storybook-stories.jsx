@@ -42,7 +42,7 @@ const MultipleExample = createReactClass({
 		this.setState((prevState, props) => ({
 			selectedItems: prevState.selectedIndexes.has(data.optionIndex)
 				? Array.from(prevState.selectedIndexes.delete(data.optionIndex))
-				:	Array.from(prevState.selectedIndexes.add(data.optionIndex))
+				: Array.from(prevState.selectedIndexes.add(data.optionIndex))
 		}));
 	},
 
@@ -53,13 +53,19 @@ const MultipleExample = createReactClass({
 			<Picklist
 				label="Contacts"
 				labels={{
-					multipleOptionsSelected: `${this.state.selectedIndexes.size} Contacts Selected`
+					multipleOptionsSelected: `${
+						this.state.selectedIndexes.size
+					} Contacts Selected`
 				}}
 				multiple
 				onSelect={this.handleSelect}
 				options={options}
 				onPillRemove={(removedItem, data) => {
-					console.log("data.option.label: '" + data.option.label + "' data.option.value: '" + data.option.value + "'");
+					console.log(
+						`data.option.label: '${data.option.label}' data.option.value: '${
+							data.option.value
+						}'`
+					);
 					this.handleSelect(removedItem, data);
 				}}
 			/>
@@ -68,35 +74,45 @@ const MultipleExample = createReactClass({
 });
 
 storiesOf(MENU_PICKLIST, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
-	.add('Modal', () => getPicklist({
-		label: 'Contacts',
-		placeholder: 'Select a contact',
-		onSelect: (...rest) => {
-			action('Selected')(...rest);
-		},
-		options
-	}))
-	.add('Non-modal', () => getPicklist({
-		label: 'Contacts',
-		isInline: true,
-		onClick: (event) => {
-			console.log('clicked', event.target);
-		},
-		placeholder: 'Select a contact',
-		onSelect: (...rest) => {
-			action('Selected')(...rest);
-		},
-		options
-	}))
-	.add('Error state', () => getPicklist({
-		errorText: 'This field is required',
-		label: 'Contacts',
-		placeholder: 'Select a contact',
-		onSelect: (...rest) => {
-			action('Selected')(...rest);
-		},
-		options,
-		required: true
-	}))
-	.add('Multiselect', () => (<MultipleExample />));
+	.addDecorator((getStory) => (
+		<div className="slds-p-around--medium">
+			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+		</div>
+	))
+	.add('Modal', () =>
+		getPicklist({
+			label: 'Contacts',
+			placeholder: 'Select a contact',
+			onSelect: (...rest) => {
+				action('Selected')(...rest);
+			},
+			options
+		})
+	)
+	.add('Non-modal', () =>
+		getPicklist({
+			label: 'Contacts',
+			isInline: true,
+			onClick: (event) => {
+				console.log('clicked', event.target);
+			},
+			placeholder: 'Select a contact',
+			onSelect: (...rest) => {
+				action('Selected')(...rest);
+			},
+			options
+		})
+	)
+	.add('Error state', () =>
+		getPicklist({
+			errorText: 'This field is required',
+			label: 'Contacts',
+			placeholder: 'Select a contact',
+			onSelect: (...rest) => {
+				action('Selected')(...rest);
+			},
+			options,
+			required: true
+		})
+	)
+	.add('Multiselect', () => <MultipleExample />);

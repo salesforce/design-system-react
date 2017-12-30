@@ -74,14 +74,9 @@ const Svg = createReactClass({
 	},
 
 	render () {
-		const {
-			data,
-			...props
-		} = this.props;
+		const { data, ...props } = this.props;
 
-		return data
-			? this.getSVG(data, props)
-			: null;
+		return data ? this.getSVG(data, props) : null;
 	}
 });
 

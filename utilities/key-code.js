@@ -23,7 +23,11 @@ const keyObjects = {
 	DOWN: { key: 'Down', keyCode: keys.DOWN, which: keys.DOWN },
 	TAB: { key: 'Tab', keyCode: keys.TAB, which: keys.TAB },
 	DELETE: { key: 'Delete', keyCode: keys.DELETE, which: keys.DELETE },
-	BACKSPACE: { key: 'Backspace', keyCode: keys.BACKSPACE, which: keys.BACKSPACE }
+	BACKSPACE: {
+		key: 'Backspace',
+		keyCode: keys.BACKSPACE,
+		which: keys.BACKSPACE
+	}
 };
 
 export default keys;
