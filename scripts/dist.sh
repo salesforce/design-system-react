@@ -41,6 +41,7 @@ echo "## Copying the components"
 cp -r .tmp .tmp-amd
 cp -r .tmp .tmp-commonjs
 cp -r .tmp .tmp-es
+cp -r .tmp .tmp-npm
 rm -rf .tmp/
 
 cp -r components .tmp-es/components
@@ -50,13 +51,20 @@ cp -r utilities .tmp-es/utilities
 
 echo "## Transpiling with Babel"
 
+# AMD module transpilation
 NODE_ENV=amd ./node_modules/.bin/babel --plugins transform-es2015-modules-amd .tmp-es/components --out-dir .tmp-amd/components
 cp -r styles .tmp-amd/styles
 ./node_modules/.bin/babel --plugins transform-es2015-modules-amd .tmp-es/icons --out-dir .tmp-amd/icons
 NODE_ENV=amd ./node_modules/.bin/babel --plugins transform-es2015-modules-amd .tmp-es/utilities --out-dir .tmp-amd/utilities
 
-
+# CommonJS module transpilation
 NODE_ENV=commonjs ./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp-es/components --out-dir .tmp-commonjs/components
 cp -r styles .tmp-commonjs/styles
 ./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp-es/icons --out-dir .tmp-commonjs/icons
 NODE_ENV=commonjs ./node_modules/.bin/babel --plugins transform-es2015-modules-commonjs .tmp-es/utilities --out-dir .tmp-commonjs/utilities
+
+# "Plain" ES6 style transpilation for npm
+./node_modules/.bin/babel --presets=stage-1,react --no-babelrc .tmp-es/components --out-dir .tmp-npm/components
+cp -r styles .tmp-npm/styles
+./node_modules/.bin/babel --presets=stage-1,react --no-babelrc .tmp-es/icons --out-dir .tmp-npm/icons
+./node_modules/.bin/babel --presets=stage-1,react --no-babelrc .tmp-es/utilities --out-dir .tmp-npm/utilities
