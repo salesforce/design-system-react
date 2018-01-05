@@ -4,11 +4,6 @@ import jsBeautify from 'js-beautify';
 import Settings from './settings';
 import renderer from 'react-test-renderer';
 
-const { Chrome } = require('navalia');
-const { toMatchImageSnapshot } = require('jest-image-snapshot');
-
-expect.extend({ toMatchImageSnapshot });
-
 /*
  * Render React components to DOM state as a String
  *
@@ -37,39 +32,13 @@ const testDOMandHTML = ({ name, test, Component, ComponentKind }) => {
 	test(`${name} HTML Snapshot`, () => {
 		expect(renderMarkup(Component)).toMatchSnapshot();
 	});
-
-	describe(`${name} Visual Snapshot`, () => {
-		if (ComponentKind === undefined) {
-			return;
-		}
-
-		let chrome = null;
-		jasmine.DEFAULT_TIMEOUT_INTERVAL = 999999;
-
-		beforeAll(() => {
-			chrome = new Chrome();
-		});
-
-		afterAll(() => {
-			chrome.done();
-		});
-
-		const url = `http://localhost:9002/?selectedKind=${encodeURIComponent(ComponentKind)}&selectedStory=${encodeURIComponent(name)}&full=0&down=1&left=1&panelRight=0&downPanel=storybook%2Factions%2Factions-panel`;
-		console.log('url', url);
-
-		const customConfig = { threshold: 1 };
-		it('should still look the same', () =>
-			chrome.goto(url)
-				.then(() => chrome.screenshot())
-				.then((image) => expect(image).toMatchImageSnapshot({
-					customDiffConfig: customConfig
-				}))
-		);
-	});
 };
+
+const getStorybookURL = (ComponentKind, componentName) => `http://localhost:9001/?selectedKind=${encodeURIComponent(ComponentKind)}&selectedStory=${encodeURIComponent(componentName)}&full=0&down=1&left=1&panelRight=0&downPanel=storybook%2Factions%2Factions-panel`;
 
 export {
 	renderDOM, // eslint-disable-line import/prefer-default-export
 	renderMarkup, // eslint-disable-line import/prefer-default-export
-	testDOMandHTML // eslint-disable-line import/prefer-default-export
+	testDOMandHTML, // eslint-disable-line import/prefer-default-export
+	getStorybookURL // eslint-disable-line import/prefer-default-export
 };
