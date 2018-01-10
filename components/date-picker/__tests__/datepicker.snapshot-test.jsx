@@ -49,8 +49,8 @@ const customProps = {
 	parser () {
 		return new Date(2007, 0, 6);
 	},
-	relativeYearFrom: -10,
-	relativeYearTo: 10,
+	relativeYearFrom: -20,
+	relativeYearTo: 20,
 	triggerClassName: 'CUSTOM-TRIGGER-CLASSNAME'
 };
 
