@@ -14,7 +14,6 @@ expect.extend({ toMatchImageSnapshot });
  *
  * Please note, Component is the non-JSX component object.
  */
-
 const renderDOM = (Component, props) => renderer.create(React.createElement(Component, props), null).toJSON();
 
 /*
@@ -22,54 +21,41 @@ const renderDOM = (Component, props) => renderer.create(React.createElement(Comp
  *
  * Please note, Component is the non-JSX component object.
  */
-
 const renderMarkup = (Component, props) => String(
 		jsBeautify.html(ReactDOMServer.renderToStaticMarkup(React.createElement(Component, props)),
 			Settings.jsBeautify),
 	'utf-8'
 	);
 
-const testDOMandHTML = ({ name, test, Component, ComponentKind }) => {
-	test(`${name} DOM Snapshot`, () => {
-		expect(renderDOM(Component)).toMatchSnapshot();
-	});
-
-	test(`${name} HTML Snapshot`, () => {
-		expect(renderMarkup(Component)).toMatchSnapshot();
-	});
-
-	describe(`${name} Visual Snapshot`, () => {
-		if (ComponentKind === undefined) {
-			return;
-		}
-
-		let chrome = null;
-		jasmine.DEFAULT_TIMEOUT_INTERVAL = 999999;
-
-		beforeAll(() => {
-			chrome = new Chrome();
-		});
-
-		afterAll(() => {
-			chrome.done();
-		});
-
-		const url = `http://localhost:9002/?selectedKind=${encodeURIComponent(ComponentKind)}&selectedStory=${encodeURIComponent(name)}&full=0&down=1&left=1&panelRight=0&downPanel=storybook%2Factions%2Factions-panel`;
-		console.log('url', url);
-
-		const customConfig = { threshold: 1 };
-		it('should still look the same', () =>
-			chrome.goto(url)
-				.then(() => chrome.screenshot())
-				.then((image) => expect(image).toMatchImageSnapshot({
-					customDiffConfig: customConfig
-				}))
-		);
-	});
+const testDOMandHTML = (Component, props) => {
+	expect(renderDOM(Component, props)).toMatchSnapshot();
+	expect(renderMarkup(Component, props)).toMatchSnapshot();
 };
 
+/*
+ * Utilizes jest-image-snapshot to do a visual comparison of current with previous version
+ */
+const testImageSnapshot = (name, ComponentKind) =>
+	new Promise((resolve, reject) => {
+		jasmine.DEFAULT_TIMEOUT_INTERVAL = 999999;
+
+		const url = `http://localhost:9001/?selectedKind=${encodeURIComponent(name)}&selectedStory=${encodeURIComponent(ComponentKind)}&full=0&down=1&left=1&panelRight=0&downPanel=storybook%2Factions%2Factions-panel`;
+
+		const customConfig = { threshold: 1 };
+		const chrome = new Chrome();
+		chrome.goto(url)
+			.then(() => chrome.screenshot())
+			.then((image) => expect(image).toMatchImageSnapshot({
+				customDiffConfig: customConfig
+			}))
+			.then(() => chrome.done())
+			.then(() => resolve(true))
+			.catch((err) => reject(err));
+	});
+
 export {
-	renderDOM, // eslint-disable-line import/prefer-default-export
-	renderMarkup, // eslint-disable-line import/prefer-default-export
-	testDOMandHTML // eslint-disable-line import/prefer-default-export
+	renderDOM,
+	renderMarkup,
+	testDOMandHTML,
+	testImageSnapshot
 };

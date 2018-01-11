@@ -1,20 +1,18 @@
 /* eslint-env jest */
-import { testDOMandHTML } from '../../../tests/snapshot-helpers';
+import { testDOMandHTML, testImageSnapshot } from '../../../tests/snapshot-helpers';
 
 import { BREADCRUMB } from '../../../utilities/constants';
 
 import BreadcrumbBase from '../__examples__/base';
 
-testDOMandHTML({
-	name: '2 Items',
-	test,
-	Component: BreadcrumbBase,
-	ComponentKind: BREADCRUMB
+test('Base DOM & HTML Snapshots', () => {
+	testDOMandHTML(BreadcrumbBase);
 });
 
-testDOMandHTML({
-	name: '1 Item',
-	test,
-	Component: BreadcrumbBase,
-	ComponentKind: BREADCRUMB
+test('2 Items Image Snapshot', async () => {
+	await testImageSnapshot(BREADCRUMB, '2 Items');
+});
+
+test('1 Item Image Snapshot', async () => {
+	await testImageSnapshot(BREADCRUMB, '1 Item');
 });

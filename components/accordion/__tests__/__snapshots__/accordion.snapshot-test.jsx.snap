@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Base DOM Snapshot 1`] = `
+exports[`Base DOM & HTML Snapshots 1`] = `
 <ul
   className="slds-accordion"
   name="base-example-accordion"
@@ -326,7 +326,7 @@ exports[`Base DOM Snapshot 1`] = `
 </ul>
 `;
 
-exports[`Base HTML Snapshot 1`] = `
+exports[`Base DOM & HTML Snapshots 2`] = `
 "<ul name=\\"base-example-accordion\\" class=\\"slds-accordion\\">
   <li class=\\"slds-accordion__list-item\\">
     <section class=\\"slds-accordion__section\\">
@@ -361,7 +361,7 @@ exports[`Base HTML Snapshot 1`] = `
 </ul>"
 `;
 
-exports[`Base Open DOM Snapshot 1`] = `
+exports[`Base DOM & HTML Snapshots 3`] = `
 <ul
   className="slds-accordion"
   name="base-example-accordion"
@@ -487,7 +487,7 @@ exports[`Base Open DOM Snapshot 1`] = `
 </ul>
 `;
 
-exports[`Base Open HTML Snapshot 1`] = `
+exports[`Base DOM & HTML Snapshots 4`] = `
 "<ul name=\\"base-example-accordion\\" class=\\"slds-accordion\\">
   <li class=\\"slds-accordion__list-item\\">
     <section class=\\"slds-accordion__section slds-is-open\\">

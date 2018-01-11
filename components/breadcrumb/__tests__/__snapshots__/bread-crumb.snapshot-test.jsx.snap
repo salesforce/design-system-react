@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`1 Item DOM Snapshot 1`] = `
+exports[`Base DOM & HTML Snapshots 1`] = `
 <nav
   aria-label="Breadcrumbs"
   role="navigation"
@@ -31,47 +31,7 @@ exports[`1 Item DOM Snapshot 1`] = `
 </nav>
 `;
 
-exports[`1 Item HTML Snapshot 1`] = `
-"<nav role=\\"navigation\\" aria-label=\\"Breadcrumbs\\">
-  <ol class=\\"slds-breadcrumb slds-list--horizontal\\">
-    <li class=\\"slds-breadcrumb__item slds-text-title--caps\\"><a id=\\"parent-entity\\" href=\\"javascript:void(0);\\">Parent Entity</a></li>
-    <li class=\\"slds-breadcrumb__item slds-text-title--caps\\"><a href=\\"javascript:void(0);\\">Parent Record Name</a></li>
-  </ol>
-</nav>"
-`;
-
-exports[`2 Items DOM Snapshot 1`] = `
-<nav
-  aria-label="Breadcrumbs"
-  role="navigation"
->
-  <ol
-    className="slds-breadcrumb slds-list--horizontal"
-  >
-    <li
-      className="slds-breadcrumb__item slds-text-title--caps"
-    >
-      <a
-        href="javascript:void(0);"
-        id="parent-entity"
-      >
-        Parent Entity
-      </a>
-    </li>
-    <li
-      className="slds-breadcrumb__item slds-text-title--caps"
-    >
-      <a
-        href="javascript:void(0);"
-      >
-        Parent Record Name
-      </a>
-    </li>
-  </ol>
-</nav>
-`;
-
-exports[`2 Items HTML Snapshot 1`] = `
+exports[`Base DOM & HTML Snapshots 2`] = `
 "<nav role=\\"navigation\\" aria-label=\\"Breadcrumbs\\">
   <ol class=\\"slds-breadcrumb slds-list--horizontal\\">
     <li class=\\"slds-breadcrumb__item slds-text-title--caps\\"><a id=\\"parent-entity\\" href=\\"javascript:void(0);\\">Parent Entity</a></li>

@@ -1,5 +1,5 @@
 /* eslint-env jest */
-import { testDOMandHTML } from '../../../tests/snapshot-helpers';
+import { testDOMandHTML, testImageSnapshot } from '../../../tests/snapshot-helpers';
 
 import Info from '../__examples__/info';
 import Warning from '../__examples__/warning';
@@ -10,44 +10,35 @@ import CustomClassNames from '../__examples__/custom-class-name';
 
 import { TOAST } from '../../../utilities/constants';
 
-testDOMandHTML({
-	name: 'Info',
-	test,
-	Component: Info,
-	ComponentKind: TOAST
+test('DOM & HTML Snapshots', () => {
+	testDOMandHTML(Info);
+	testDOMandHTML(Warning);
+	testDOMandHTML(ErrorAlert);
+	testDOMandHTML(ErrorWithDetailsAlert);
+	testDOMandHTML(Success);
+	testDOMandHTML(CustomClassNames);
 });
 
-testDOMandHTML({
-	name: 'Warning',
-	test,
-	Component: Warning,
-	ComponentKind: TOAST
+test('Info Image Snapshot', async () => {
+	await testImageSnapshot(TOAST, 'Info');
 });
 
-testDOMandHTML({
-	name: 'Error',
-	test,
-	Component: ErrorAlert,
-	ComponentKind: TOAST
+test('Warning Image Snapshot', async () => {
+	await testImageSnapshot(TOAST, 'Warning');
 });
 
-testDOMandHTML({
-	name: 'Error With details',
-	test,
-	Component: ErrorWithDetailsAlert,
-	ComponentKind: TOAST
+test('Error Image Snapshot', async () => {
+	await testImageSnapshot(TOAST, 'Error');
 });
 
-testDOMandHTML({
-	name: 'Success',
-	test,
-	Component: Success,
-	ComponentKind: TOAST
+test('Error With details Image Snapshot', async () => {
+	await testImageSnapshot(TOAST, 'Error With details');
 });
 
-testDOMandHTML({
-	name: 'Custom Class Name',
-	test,
-	Component: CustomClassNames,
-	ComponentKind: TOAST
+test('Success Image Snapshot', async () => {
+	await testImageSnapshot(TOAST, 'Success');
+});
+
+test('Custom Class Name Image Snapshot', async () => {
+	await testImageSnapshot(TOAST, 'Custom Class Name');
 });

@@ -8,7 +8,7 @@ NODE_ENV=test node_modules/.bin/karma start --single-run "$@"
 if [ $? -eq 0 ]
 then
   # Jest markup snapshot tests
-	NODE_ENV=test npm run snapshot-test
+	NODE_ENV=test npm run snapshot-test --maxWorkers=3
 	if [ $? -eq 0 ]
 	then
 		# ESlint tests on files within components and utilities folders. Doc examples and tests are currently excluded.

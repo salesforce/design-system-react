@@ -1,21 +1,20 @@
 /* eslint-env jest */
-import { testDOMandHTML } from '../../../tests/snapshot-helpers';
+import { testDOMandHTML, testImageSnapshot } from '../../../tests/snapshot-helpers';
 
 import Basic from '../__examples__/basic';
 import Advanced from '../__examples__/advanced';
 
 import { DATA_TABLE } from '../../../utilities/constants';
 
-testDOMandHTML({
-	name: 'Basic',
-	test,
-	Component: Basic,
-	ComponentKind: DATA_TABLE
+test('DOM & HTML Snapshots', () => {
+	testDOMandHTML(Basic);
+	testDOMandHTML(Advanced);
 });
 
-testDOMandHTML({
-	name: 'Advanced',
-	test,
-	Component: Advanced,
-	ComponentKind: DATA_TABLE
+test('Basic Image Snapshot', async () => {
+	await testImageSnapshot(DATA_TABLE, 'Basic');
+});
+
+test('Advanced Image Snapshot', async () => {
+	await testImageSnapshot(DATA_TABLE, 'Advanced');
 });
