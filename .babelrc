@@ -3,7 +3,7 @@
     ["env", {
       "targets": {
         browsers: ['last 2 versions', 'ie 11'],
-        node: '6.10'
+        node: '6.8'
       }
     }],
     "babel-preset-react"
@@ -23,10 +23,10 @@
     "preset/**",
   ],
   plugins: [
-    "babel-plugin-root-import",
-    "babel-plugin-transform-object-rest-spread",
-    "babel-plugin-transform-class-properties",
-    "babel-plugin-syntax-export-extensions",
-    "babel-plugin-transform-export-default"
+    "root-import",
+    "transform-object-rest-spread",
+    "transform-class-properties",
+    "syntax-export-extensions",
+    "transform-export-extensions"
   ]
 }
