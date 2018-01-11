@@ -1,5 +1,8 @@
 ### Project files ###
 
+# Only used for release server authentication
+.npmrc
+
 # We may want to remove to make first-time contributing easier
 package-lock.json
 

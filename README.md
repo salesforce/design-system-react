@@ -4,35 +4,56 @@
 
 [![Build Status](https://travis-ci.com/salesforce/design-system-react.svg?token=erkizBStRxre5p3S1xij&branch=master)](https://travis-ci.com/salesforce/design-system-react) [![DeepScan Grade](https://deepscan.io/api/projects/1475/branches/4666/badge/grade.svg)](https://deepscan.io/dashboard/#view=project&pid=1475&bid=4666)
 
+## Install
+
+```
+$ npm install @salesforce-ux/design-system @salesforce/design-system-react
+```
+
 ## Getting Started
 
-Welcome to the project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/). It has been tested with React >=15.4.1 <16 and is stable despite its version numbers. A 1.0 will be released soon.
+Welcome to the project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/). This library has a peer dependency on `@salesforce-ux/design-system`, `react`, and `react-dom`. It has been tested with React >=15.4.1 <16 and is stable despite its version number. A 1.0 will be released soon.
 
+* [Usage](#usage-recommended)
 * [Getting Started](https://react.lightningdesignsystem.com/getting-started/)
-* [Documentation and examples](https://react.lightningdesignsystem.com)
+* [Documentation and interactive examples](https://react.lightningdesignsystem.com)
 * [Contributing](CONTRIBUTING.md)
 * [Codebase Overview](docs/codebase-overview.md)
 * [Usage with Webpack](docs/webpack.md)
 
-#### ECMAScript 6, CommonJS and `create-react-app`
+### Quick Setup (CommonJS)
 
-It is highly recommended that you `npm install` the `-es` suffixed tag and import individual components. You will need a [stage-1 and higher proposed features](https://babeljs.io/docs/plugins/preset-stage-1/) transpiler ([stage-1 Babel preset](https://www.npmjs.com/package/babel-preset-stage-1) or review our `.babelrc`) and include transpiling the `node_modules/design-system-react` folder in your configuration. The non-suffixed package is a [CommonJS](https://nodejs.org/docs/latest/api/modules.html) build that should allow dropping dead code, but not tree-shaking.
-
-_`create-react-app` and any environment that does not transpile or let you transpile ES6 code within the `node_modules` folder is not compatible with the `-es` suffixed tag. Please use the non-suffixed CommonJS tag until an NPM module is published that is compatible with `create-react-app`._
-
-### Local development Storybook and in-browser test server
+A CommonJS-compatible version has been included within the NPM package to allows usage without transpiling. Use the following named `import` syntax to access CommonJS components from `/lib/index.js`:
 
 ```
-npm install
-npm start
-open http://localhost:9001 http://localhost:8001
+import { Button } from 'design-system-react';
+
+<Button label="Hello Button" />
 ```
 
-### SLDS Icons
+### Recommended Usage (ES6 modules)
+
+Recommended usage requires that your babel presets are set up correctly. `create-react-app` and environments that do not transpile code within `node_modules` are not compatible with the component import below. All the examples on the [documentation site](https://react.lightningdesignsystem.com/) use this syntax. You can use the Babel preset, `@salesforce/babel-preset-design-system-react`, to get started. [This preset](npmjs.com/package/@salesforce-ux/babel-preset-design-system-react) will keep Babel compatible with Design System React and allow ES6 module benefits such as tree-shaking.
+
+```
+import Button from 'design-system-react/components/button';
+
+<Button label="Hello Button" />
+```
+
+#### Transpile with `.babelrc` settings
+
+```json
+{
+  "presets": ["@salesforce/babel-preset-design-system-react"]
+}
+```
+
+### Icon Usage
 
 Prior to v0.7.0, SLDS icons were bundled with the JavaScript. The 400KB+ icons bundle from [SLDS](https://www.lightningdesignsystem.com/) is no longer included. You will need to download the SLDS CSS and icons separately.
 
-#### Serve icons publically
+#### Serve icons publicly
 
 Typically, scripts should be downloaded in the background without blocking the DOM. With React, this works best with [server side rendering](https://reactjs.org/docs/react-dom-server.html#rendertostaticmarkup). SLDS recommends placeholder stencils while scripts are initializing if the HTML cannot be served immediately. If you can serve the HTML, then icon SVGs should not be bundled and served like any other file. Set a path `context` for all child components with `<IconSettings>` at the top of your render tree:
 
@@ -46,7 +67,7 @@ ReactDOM.render(
   document.getElementById('app')
 )
 
-// `/assets/icons` wil be prepended to `/standard-sprite/svg/symbols.svg#account` within the SVG path
+// `/assets/icons` will be prepended to `/standard-sprite/svg/symbols.svg#account` within the SVG path
 <svg aria-hidden="true" class="slds-icon">
   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
 </svg>
@@ -76,41 +97,21 @@ ReactDOM.render(
 )
 ```
 
-### Example
-
-Add the following line to your `package.json` devDependencies and run `npm install`.
-
-```
-# package.json
-
-"design-system-react": "git+ssh://git@github.com:salesforce/design-system-react.git#v[VERSION]",
-```
-
-The bundled files are provided only for convenience.
+Bundled script files are provided _only_ for convenience.
 
 * `design-system-react.min.js` (700KB+) - includes icons in the JavaScript
 * `design-system-react-components.min.js` (~400KB) - no icons.
 
-Import and use only the components you need:
-
-```
-import Tooltip from 'design-system-react/components/popover-tooltip';
-import Icon from 'design-system-react/components/icon';
-import IconSettings from 'design-system-react/components/icon-settings';
-
-<IconSettings iconPath="/assets/icons">
-  <Tooltip
-    align="top"
-    content={<span>Here is more information.</span>}
-  >
-    <a href="javascript:void(0)">
-      <Icon assistiveText="More Info" category="utility" name="info" className="slds-icon-text-default" />
-    </a>
-  </Tooltip>
-</IconSettings>
-```
-
 ## Contributing to the code base
+
+#### Clone and develop locally with in-browser test server
+
+```
+git clone git@github.com:salesforce/design-system-react.git
+npm install
+npm start
+open http://localhost:9001 http://localhost:8001
+```
 
 Please read the [CONTRIBUTING.md](CONTRIBUTING.md) and [Test README](/tests/README.md) first. Then, create an issue to tell others you are working on a bug. If you would like to contribute a new component, create an issue with a list of proposed props to discuss with maintainers. Issues not addressed with pull requests may be closed eventually. Check out [who's contributing](https://github.com/salesforce/design-system-react/graphs/contributors) to the project.
 

@@ -13,7 +13,7 @@ import async from 'async';
 
 const distPath = path.resolve.bind(
 	path,
-	path.resolve(__dirname, '../', '.tmp')
+	path.resolve(__dirname, '../', '.tmp-npm')
 );
 
 // /////////////////////////////////////////////////////////////
@@ -23,29 +23,18 @@ const distPath = path.resolve.bind(
 async.series(
 	[
 		/**
-		 * Clean up the package.json for publishing
+		 * Clean up the package.json
 		 */
 		(done) => {
-			console.log('### Cleaning up the package.json');
+			console.log('### Modify package.json for publishing to NPM');
 
 			const packageJSON = JSON.parse(
 				fs.readFileSync(distPath('package.json')).toString()
 			);
-			// Used by documentation site
-			// Can be used for CI tests by consuming applications
-			packageJSON.SLDS = {
-				gitURL: packageJSON.devDependencies['@salesforce-ux/design-system']
-			};
-			delete packageJSON.scripts;
-			delete packageJSON.jest;
-			delete packageJSON.prettier;
-			delete packageJSON['lint-staged'];
 
-			// This is a UI library, not a node package.
-			delete packageJSON.engines.node;
-			delete packageJSON.devDependencies;
-			delete packageJSON['pre-push'];
-			delete packageJSON['pre-commit'];
+			packageJSON.name = '@salesforce/design-system-react';
+			packageJSON.main = 'lib/components/index.js';
+
 			fs.writeFile(
 				distPath('package.json'),
 				JSON.stringify(packageJSON, null, 2),

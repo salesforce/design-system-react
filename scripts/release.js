@@ -106,6 +106,18 @@ const tasks = ({ release, done }) => {
 		{
 			message: `# Pushing local master branch to ${remote} remote`,
 			command: `git push ${remote} master --no-verify`
+		},
+		{
+			message: '# Set up NPM configuration',
+			command: 'cp scripts/.npmrc .npmrc'
+		},
+		{
+			message: '# Publish to NPM',
+			command: 'npm publish .tmp-npm'
+		},
+		{
+			message: '# Remove NPM configuration',
+			command: 'rm .npmrc'
 		}
 	]
 		.filter((item) => !item.ignoreCommand)
