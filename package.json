@@ -87,6 +87,7 @@
   "homepage": "https://react.lightningdesignsystem.com",
   "dependencies": {
     "airbnb-prop-types": "^2.5.3",
+    "babel-preset-es2015": "^6.24.1",
     "classnames": "^2.2.5",
     "create-react-class": "^15.6.0",
     "lodash.assign": "^4.0.9",
