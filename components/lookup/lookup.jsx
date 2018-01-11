@@ -85,7 +85,7 @@ const Lookup = createReactClass({
 		 * * `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.
 		 * * `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.
 		 */
-		dialogPosition: PropTypes.string,
+		menuPosition: PropTypes.string,
 		/**
 		 * This prop is passed onto the `input`. Prevents dropdown menu from opening. Also applies disabled styling to input.
 		 */
@@ -206,7 +206,7 @@ const Lookup = createReactClass({
 			filterWith: defaultFilter,
 			iconPosition: 'right',
 			searchTerm: '',
-			dialogPosition: 'absolute'
+			menuPosition: 'absolute'
 		};
 	},
 
@@ -613,7 +613,7 @@ const Lookup = createReactClass({
 				hasStaticAlignement={!this.props.flippable}
 				constrainToScrollParent={this.props.constrainToScrollParent}
 				onRequestTargetElement={() => this.input}
-				position={this.props.dialogPosition}
+				position={this.props.menuPosition}
 			>
 				{this.renderMenuContent()}
 			</Dialog>
