@@ -11,6 +11,19 @@ Testing is done using Mocha, Jest, and Storybook. Roughly speaking: Jest tests H
 - Test interactively in your browser. 
   - Start server from terminal with `npm start` 
   - browse to [http://localhost:8001](http://localhost:8001)
+- Run snapshot tests:
+  + In one terminal:
+  ```
+  npm run storybook
+  ```
+  + In another:
+  ```
+  npm run snapshot-test
+  ```
+  or, for just a specific file:
+  ```
+  npm run snapshot-test components/button/
+  ```
 
 ### Tools Used
 - **PhantomJS
