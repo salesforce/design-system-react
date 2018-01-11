@@ -1,17 +1,32 @@
 {
-  "presets": ["react", "es2015", "stage-1"],
-  "env": {
-      "amd": {
-        "plugins": ["import-noop"]
-      },
-      "commonjs": {
-        "plugins": ["import-noop"]
-      },
-      "test": {
-        "plugins": ["istanbul"]
+  "presets": [
+    ["env", {
+      "targets": {
+        browsers: ['last 2 versions', 'ie 11'],
+        node: '6.10'
       }
+    }],
+    "babel-preset-react"
+  ],
+  "env": {
+    "amd": {
+      "plugins": ["import-noop"]
     },
-    "plugins": [
-      ["babel-plugin-root-import", "transform-class-properties"]
-    ]
+    "commonjs": {
+      "plugins": ["import-noop"]
+    },
+    "test": {
+      "plugins": ["istanbul"]
+    }
+  },
+  "ignore": [
+    "preset/**",
+  ],
+  plugins: [
+    "babel-plugin-root-import",
+    "babel-plugin-transform-object-rest-spread",
+    "babel-plugin-transform-class-properties",
+    "babel-plugin-syntax-export-extensions",
+    "babel-plugin-transform-export-default"
+  ]
 }
