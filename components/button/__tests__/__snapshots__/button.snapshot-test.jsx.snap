@@ -1,0 +1,541 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Base DOM & HTML Snapshots 1`] = `
+<div
+  className="-x-small-buttons--horizontal"
+>
+  <button
+    aria-controls={undefined}
+    aria-describedby={undefined}
+    aria-expanded={undefined}
+    aria-haspopup={undefined}
+    className="slds-button"
+    disabled={false}
+    id={undefined}
+    onBlur={undefined}
+    onClick={[Function]}
+    onFocus={undefined}
+    onKeyDown={undefined}
+    onKeyPress={undefined}
+    onKeyUp={undefined}
+    onMouseDown={undefined}
+    onMouseEnter={undefined}
+    onMouseLeave={undefined}
+    tabIndex={undefined}
+    title={undefined}
+    type="button"
+  >
+    Base
+  </button>
+  <button
+    aria-controls={undefined}
+    aria-describedby={undefined}
+    aria-expanded={undefined}
+    aria-haspopup={undefined}
+    className="slds-button slds-button--neutral"
+    disabled={false}
+    id={undefined}
+    onBlur={undefined}
+    onClick={[Function]}
+    onFocus={undefined}
+    onKeyDown={undefined}
+    onKeyPress={undefined}
+    onKeyUp={undefined}
+    onMouseDown={undefined}
+    onMouseEnter={undefined}
+    onMouseLeave={undefined}
+    tabIndex={undefined}
+    title={undefined}
+    type="button"
+  >
+    Neutral
+  </button>
+  <button
+    aria-controls={undefined}
+    aria-describedby={undefined}
+    aria-expanded={undefined}
+    aria-haspopup={undefined}
+    className="slds-button slds-button--neutral"
+    disabled={false}
+    id={undefined}
+    onBlur={undefined}
+    onClick={[Function]}
+    onFocus={undefined}
+    onKeyDown={undefined}
+    onKeyPress={undefined}
+    onKeyUp={undefined}
+    onMouseDown={undefined}
+    onMouseEnter={undefined}
+    onMouseLeave={undefined}
+    tabIndex={undefined}
+    title={undefined}
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-button__icon slds-button__icon--left"
+    >
+      <use
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#download"
+      />
+    </svg>
+    Neutral Icon
+  </button>
+  <button
+    aria-controls={undefined}
+    aria-describedby={undefined}
+    aria-expanded={undefined}
+    aria-haspopup={undefined}
+    className="slds-button slds-button--neutral"
+    disabled={false}
+    id={undefined}
+    onBlur={undefined}
+    onClick={[Function]}
+    onFocus={undefined}
+    onKeyDown={undefined}
+    onKeyPress={undefined}
+    onKeyUp={undefined}
+    onMouseDown={undefined}
+    onMouseEnter={undefined}
+    onMouseLeave={undefined}
+    tabIndex={undefined}
+    title={undefined}
+    type="button"
+  >
+    Responsive
+  </button>
+</div>
+`;
+
+exports[`Base DOM & HTML Snapshots 2`] = `
+"<div class=\\"-x-small-buttons--horizontal\\"><button class=\\"slds-button\\" type=\\"button\\">Base</button><button class=\\"slds-button slds-button--neutral\\" type=\\"button\\">Neutral</button><button class=\\"slds-button slds-button--neutral\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--left\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#download\\"></use></svg>Neutral Icon</button>
+  <button
+    class=\\"slds-button slds-button--neutral\\" type=\\"button\\">Responsive</button>
+</div>"
+`;
+
+exports[`Base DOM & HTML Snapshots 3`] = `
+<div
+  className="-x-small-buttons--horizontal"
+>
+  <button
+    aria-controls={undefined}
+    aria-describedby={undefined}
+    aria-expanded={undefined}
+    aria-haspopup={undefined}
+    className="slds-button slds-button--brand"
+    disabled={false}
+    id={undefined}
+    onBlur={undefined}
+    onClick={[Function]}
+    onFocus={undefined}
+    onKeyDown={undefined}
+    onKeyPress={undefined}
+    onKeyUp={undefined}
+    onMouseDown={undefined}
+    onMouseEnter={undefined}
+    onMouseLeave={undefined}
+    tabIndex={undefined}
+    title={undefined}
+    type="button"
+  >
+    Brand
+  </button>
+  <button
+    aria-controls={undefined}
+    aria-describedby={undefined}
+    aria-expanded={undefined}
+    aria-haspopup={undefined}
+    className="slds-button slds-button--brand"
+    disabled={true}
+    id={undefined}
+    onBlur={undefined}
+    onClick={[Function]}
+    onFocus={undefined}
+    onKeyDown={undefined}
+    onKeyPress={undefined}
+    onKeyUp={undefined}
+    onMouseDown={undefined}
+    onMouseEnter={undefined}
+    onMouseLeave={undefined}
+    tabIndex={undefined}
+    title={undefined}
+    type="button"
+  >
+    Disabled
+  </button>
+  <button
+    aria-controls={undefined}
+    aria-describedby={undefined}
+    aria-expanded={undefined}
+    aria-haspopup={undefined}
+    className="slds-button slds-button--destructive"
+    disabled={false}
+    id={undefined}
+    onBlur={undefined}
+    onClick={[Function]}
+    onFocus={undefined}
+    onKeyDown={undefined}
+    onKeyPress={undefined}
+    onKeyUp={undefined}
+    onMouseDown={undefined}
+    onMouseEnter={undefined}
+    onMouseLeave={undefined}
+    tabIndex={undefined}
+    title={undefined}
+    type="button"
+  >
+    Destructive
+  </button>
+  <div
+    className="-m-horizontal--small"
+    style={
+      Object {
+        "backgroundColor": "#16325c",
+        "display": "inline-block",
+        "padding": "10px",
+      }
+    }
+  >
+    <button
+      aria-controls={undefined}
+      aria-describedby={undefined}
+      aria-expanded={undefined}
+      aria-haspopup={undefined}
+      className="slds-button slds-button--inverse"
+      disabled={false}
+      id={undefined}
+      onBlur={undefined}
+      onClick={[Function]}
+      onFocus={undefined}
+      onKeyDown={undefined}
+      onKeyPress={undefined}
+      onKeyUp={undefined}
+      onMouseDown={undefined}
+      onMouseEnter={undefined}
+      onMouseLeave={undefined}
+      tabIndex={undefined}
+      title={undefined}
+      type="button"
+    >
+      Inverse
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Base DOM & HTML Snapshots 4`] = `
+"<div class=\\"-x-small-buttons--horizontal\\"><button class=\\"slds-button slds-button--brand\\" type=\\"button\\">Brand</button><button class=\\"slds-button slds-button--brand\\" disabled=\\"\\" type=\\"button\\">Disabled</button><button class=\\"slds-button slds-button--destructive\\" type=\\"button\\">Destructive</button>
+  <div
+    style=\\"background-color:#16325c;padding:10px;display:inline-block;\\" class=\\"-m-horizontal--small\\"><button class=\\"slds-button slds-button--inverse\\" type=\\"button\\">Inverse</button></div>
+</div>"
+`;
+
+exports[`Base DOM & HTML Snapshots 5`] = `
+<div
+  className="-x-small-buttons--horizontal"
+>
+  <button
+    aria-controls={undefined}
+    aria-describedby={undefined}
+    aria-expanded={undefined}
+    aria-haspopup={undefined}
+    className="slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small"
+    disabled={false}
+    id={undefined}
+    onBlur={undefined}
+    onClick={[Function]}
+    onFocus={undefined}
+    onKeyDown={undefined}
+    onKeyPress={undefined}
+    onKeyUp={undefined}
+    onMouseDown={undefined}
+    onMouseEnter={undefined}
+    onMouseLeave={undefined}
+    tabIndex={undefined}
+    title={undefined}
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-button__icon"
+    >
+      <use
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Icon Bare Small
+    </span>
+  </button>
+  <button
+    aria-controls={undefined}
+    aria-describedby={undefined}
+    aria-expanded={undefined}
+    aria-haspopup={undefined}
+    className="slds-button slds-button--icon-container slds-button--icon-small"
+    disabled={false}
+    id={undefined}
+    onBlur={undefined}
+    onClick={[Function]}
+    onFocus={undefined}
+    onKeyDown={undefined}
+    onKeyPress={undefined}
+    onKeyUp={undefined}
+    onMouseDown={undefined}
+    onMouseEnter={undefined}
+    onMouseLeave={undefined}
+    tabIndex={undefined}
+    title={undefined}
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-button__icon"
+    >
+      <use
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Icon Container Small
+    </span>
+  </button>
+  <div
+    className="-m-horizontal--small"
+    style={
+      Object {
+        "backgroundColor": "#4BC076",
+        "display": "inline-block",
+        "padding": "10px",
+      }
+    }
+  >
+    <button
+      aria-controls={undefined}
+      aria-describedby={undefined}
+      aria-expanded={undefined}
+      aria-haspopup={undefined}
+      className="slds-button slds-button--icon-border"
+      disabled={false}
+      id={undefined}
+      onBlur={undefined}
+      onClick={[Function]}
+      onFocus={undefined}
+      onKeyDown={undefined}
+      onKeyPress={undefined}
+      onKeyUp={undefined}
+      onMouseDown={undefined}
+      onMouseEnter={undefined}
+      onMouseLeave={undefined}
+      tabIndex={undefined}
+      title={undefined}
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Icon Border medium
+      </span>
+    </button>
+    <button
+      aria-controls={undefined}
+      aria-describedby={undefined}
+      aria-expanded={undefined}
+      aria-haspopup={undefined}
+      className="slds-button slds-button--icon-border-filled"
+      disabled={false}
+      id={undefined}
+      onBlur={undefined}
+      onClick={[Function]}
+      onFocus={undefined}
+      onKeyDown={undefined}
+      onKeyPress={undefined}
+      onKeyUp={undefined}
+      onMouseDown={undefined}
+      onMouseEnter={undefined}
+      onMouseLeave={undefined}
+      tabIndex={undefined}
+      title={undefined}
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Icon Border-filled medium
+      </span>
+    </button>
+  </div>
+  <button
+    aria-controls={undefined}
+    aria-describedby={undefined}
+    aria-expanded={undefined}
+    aria-haspopup={undefined}
+    className="slds-button slds-button--icon-more slds-button--icon-large"
+    disabled={false}
+    id={undefined}
+    onBlur={undefined}
+    onClick={[Function]}
+    onFocus={undefined}
+    onKeyDown={undefined}
+    onKeyPress={undefined}
+    onKeyUp={undefined}
+    onMouseDown={undefined}
+    onMouseEnter={undefined}
+    onMouseLeave={undefined}
+    tabIndex={undefined}
+    title={undefined}
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-button__icon"
+    >
+      <use
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+      />
+    </svg>
+    <svg
+      aria-hidden="true"
+      className="slds-button__icon slds-button__icon--x-small"
+    >
+      <use
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Icon More large
+    </span>
+  </button>
+  <div
+    className="-m-horizontal--small"
+    style={
+      Object {
+        "backgroundColor": "#16325c",
+        "display": "inline-block",
+        "padding": "10px",
+      }
+    }
+  >
+    <button
+      aria-controls={undefined}
+      aria-describedby={undefined}
+      aria-expanded={undefined}
+      aria-haspopup={undefined}
+      className="slds-button slds-button--icon-inverse"
+      disabled={false}
+      id={undefined}
+      onBlur={undefined}
+      onClick={[Function]}
+      onFocus={undefined}
+      onKeyDown={undefined}
+      onKeyPress={undefined}
+      onKeyUp={undefined}
+      onMouseDown={undefined}
+      onMouseEnter={undefined}
+      onMouseLeave={undefined}
+      tabIndex={undefined}
+      title={undefined}
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon slds-button__icon--large"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Icon inverse
+      </span>
+    </button>
+  </div>
+  <div
+    className="-hint-parent -m-horizontal--small"
+    style={
+      Object {
+        "backgroundColor": "#FFB75D",
+        "display": "inline-block",
+        "padding": "10px 50px",
+      }
+    }
+  >
+    <button
+      aria-controls={undefined}
+      aria-describedby={undefined}
+      aria-expanded={undefined}
+      aria-haspopup={undefined}
+      className="slds-button slds-button--icon"
+      disabled={false}
+      id={undefined}
+      onBlur={undefined}
+      onClick={[Function]}
+      onFocus={undefined}
+      onKeyDown={undefined}
+      onKeyPress={undefined}
+      onKeyUp={undefined}
+      onMouseDown={undefined}
+      onMouseEnter={undefined}
+      onMouseLeave={undefined}
+      tabIndex={undefined}
+      title={undefined}
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon slds-button__icon--large slds-button__icon--hint"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Icon hint large
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Base DOM & HTML Snapshots 6`] = `
+"<div class=\\"-x-small-buttons--horizontal\\"><button class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#settings\\"></use></svg><span class=\\"slds-assistive-text\\">Icon Bare Small</span></button>
+  <button
+    class=\\"slds-button slds-button--icon-container slds-button--icon-small\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#settings\\"></use></svg><span class=\\"slds-assistive-text\\">Icon Container Small</span></button>
+    <div style=\\"background-color:#4BC076;padding:10px;display:inline-block;\\"
+      class=\\"-m-horizontal--small\\"><button class=\\"slds-button slds-button--icon-border\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#settings\\"></use></svg><span class=\\"slds-assistive-text\\">Icon Border medium</span></button>
+      <button
+        class=\\"slds-button slds-button--icon-border-filled\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#settings\\"></use></svg><span class=\\"slds-assistive-text\\">Icon Border-filled medium</span></button>
+    </div><button class=\\"slds-button slds-button--icon-more slds-button--icon-large\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#settings\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Icon More large</span></button>
+    <div
+      style=\\"background-color:#16325c;padding:10px;display:inline-block;\\" class=\\"-m-horizontal--small\\"><button class=\\"slds-button slds-button--icon-inverse\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--large\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#settings\\"></use></svg><span class=\\"slds-assistive-text\\">Icon inverse</span></button></div>
+<div
+  style=\\"background-color:#FFB75D;padding:10px 50px;display:inline-block;\\" class=\\"-hint-parent -m-horizontal--small\\"><button class=\\"slds-button slds-button--icon\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--large slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#settings\\"></use></svg><span class=\\"slds-assistive-text\\">Icon hint large</span></button></div>
+  </div>"
+`;
