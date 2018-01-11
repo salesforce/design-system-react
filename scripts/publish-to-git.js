@@ -3,8 +3,6 @@
 
 /* eslint-disable no-console, global-require */
 
-console.log('# Publishing to git');
-
 import async from 'async';
 import fs from 'fs';
 import path from 'path';
@@ -12,6 +10,8 @@ import findRemoveSync from 'find-remove';
 import minimist from 'minimist';
 import { version } from '../package.json';
 import exec from './command-line-utilities';
+
+console.log('# Publishing to git');
 
 const argv = minimist(process.argv.slice(2));
 const rootPath = path.resolve(__dirname, '../');
@@ -103,7 +103,7 @@ const publish = (done, type) => {
 	async.eachSeries(actions, exec, (err) => {
 		if (err) throw err;
 
-		// console.log(`## Successfully published ${type} to git`);
+		console.log(`## Successfully published ${type} to git`);
 
 		done();
 	});
