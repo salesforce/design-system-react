@@ -53,11 +53,15 @@ const propTypes = {
 		selectedListboxLabel: PropTypes.string
 	}),
 	/**
-	 * CSS classes to be added to tag with `.slds-combobox`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
+	 * CSS classes to be added to tag with `.slds-combobox`. Uses `classNames` [API](https://github.com/JedWatson/classnames). _Tested with snapshot testing._
 	 */
 	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
-	 * CSS classes to be added to tag with `.slds-dropdown`. Uses `classNames` [API](https://github.com/JedWatson/classnames). Autocomplete/bass variant menu height should not scroll and should be determined by number items which should be no more than 10.
+	 * CSS classes to be added to top level tag with `.slds-form-element` and not on `.slds-combobox_container`. Uses `classNames` [API](https://github.com/JedWatson/classnames). _Tested with snapshot testing._
+	 */
+	classNameContainer: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	/**
+	 * CSS classes to be added to tag with `.slds-dropdown`. Uses `classNames` [API](https://github.com/JedWatson/classnames). Autocomplete/bass variant menu height should not scroll and should be determined by number items which should be no more than 10. _Tested with snapshot testing._
 	 */
 	classNameMenu: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
 	/**
@@ -1030,9 +1034,9 @@ class Combobox extends React.Component {
 		const props = this.props;
 		// Merge objects of strings with their default object
 		const assistiveText = assign({}, defaultProps.assistiveText, props.assistiveText);
-		const labels = assign({}, defaultProps.labels, props.labels);
+		const labels = assign({}, defaultProps.labels, this.props.labels);
 
-		const subRenderParameters = { assistiveText, labels, props };
+		const subRenderParameters = { assistiveText, labels, props: this.props };
 		const multipleOrSingle = this.props.multiple ? 'multiple' : 'single';
 		const subRenders = {
 			base: {
@@ -1052,10 +1056,13 @@ class Combobox extends React.Component {
 
 		return (
 			<div
-				className="slds-form-element"
+				className={classNames(
+					'slds-form-element',
+					props.classNameContainer
+				)}
 			>
 				<Label
-					assistiveText={props.assistiveText.label}
+					assistiveText={this.props.assistiveText.label}
 					htmlFor={this.getId()}
 					label={labels.label}
 				/>

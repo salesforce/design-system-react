@@ -80,6 +80,8 @@ If you are new to React, you may be trained to design components in a more compl
 
 - <a name="boolean-prop-prefix" href="#boolean-prop-prefix">#</a> **Use boolean prefixes.** If a prop is a boolean, please prefix with `is` or `can` or suffix it with `-able`. Never default a prop to `true`.
 
+- <a name="boolean-falsey-defaults" href="#boolean-falsey-defaults">#</a> **Use falsey defaults.** HTML defaults many attributes to true if no value is provided, such as `checked` instead of `checked="true"`. To maintain JSX's HTML-like syntax, please avoid asking a developer to use `propName={false}`. This may require using the opposite word, such as `isInline` instead of `isModal`.
+
 ### Use "the good parts"
 - <a name="do-not-mutate-data" href="#do-not-mutate-data">#</a> **Do not mutate data.** React tries to [optimize and prevent re-rendering the DOM when possible](https://facebook.github.io/react/docs/optimizing-performance.html#the-power-of-not-mutating-data). Many times this is not what you want. Avoid solitary use of `push`, `pop`, `shift`, `unshift`, `sort`, `reverse`, `splice` and `delete` when mutating arrays. If you ever have to ask yourself, why isn't my component rendering, this is likely the reason. Use `Object.assign()` on objects and `Array.concat()` on arrays instead of directly modifying these variables that are accessed by reference. A common pattern is to deconstruct an array with `...` and create a new one. You may consider exploring some new ES6 types such as [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) which are collections that help store unique values of any type.
 
