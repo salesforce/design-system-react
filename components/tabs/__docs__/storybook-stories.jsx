@@ -51,14 +51,23 @@ const getTabs = () => (
 		</Tabs>
 	</div>
 );
-/* eslint-enable react/display-name */
 
 /* eslint-disable react/display-name */
 const getTabsPopover = () => (
 	<div>
 		<h2 className="slds-text-heading--large">Popover Tabs Demo</h2>
 		<Tabs id="main-tabs-demo" className="custom-class-is-custom" foo="baz">
-			<Panel label="Tab 1" popover={<Popover body={'This is a sample popover'} heading="Popover"><a>Close</a></Popover>}>
+			<Panel
+				label="Tab 1"
+				popover={
+					<Popover
+						body={'This is a sample popover'}
+						align="bottom left"
+						position="absolute"
+						heading="Popover"
+					/>
+				}
+			>
 				<h2 className="slds-text-heading--medium">This is my tab 1 contents!</h2>
 				<p>And they&rsquo;re amazing.</p>
 				<p>It&quot;s awesome.</p>
@@ -67,11 +76,29 @@ const getTabsPopover = () => (
 					(You might have to hit shift+tab to put the focus onto the tab bar ;)
 				</p>
 			</Panel>
-			<Panel label="Tab 2">
+			<Panel
+				label="Tab 2"
+				popover={
+					<Popover
+						body={'This is a sample popover 2'}
+						align="bottom left"
+						heading="Popover"
+					/>
+				}
+			>
 				<h2 className="slds-text-heading--medium">This is my tab 2 contents!</h2>
 				<p>And they&rsquo;re also amazing.</p>
 			</Panel>
-			<Panel label="Tab 3">
+			<Panel
+				label="Tab 3"
+				popover={
+					<Popover
+						body={'This is a sample popover 3'}
+						align="bottom left"
+						heading="Popover"
+					/>
+				}
+			>
 				<h2 className="slds-text-heading--medium">This is my tab 3 contents!</h2>
 				<p>And they&rsquo;re quite spectacular.</p>
 			</Panel>

@@ -78,6 +78,10 @@ const Tab = createReactClass({
 		 * If the Tabs should be scopped, defaults to false
 		 */
 		variant: PropTypes.oneOf(['default', 'scoped']),
+
+		/**
+		 * Adds a `Popover` to tab panels.
+		 */
 		popover: PropTypes.node
 	},
 
@@ -168,7 +172,8 @@ const Tab = createReactClass({
 				id={id}
 				title={typeof children === 'string' ? children : null}
 			>
-				{ popover ? React.cloneElement(popover, { children: tabContent }) : tabContent }
+				{popover ? React.cloneElement(popover, { children: tabContent }) : tabContent}
+
 			</li>
 		);
 	}
