@@ -31,6 +31,12 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.8.2
+
+**Maintenance**
+
+* Update Babel settings and publish to NPM.
+
 ## Release 0.8.1
 
 **Major features**
@@ -134,16 +140,16 @@ ReactDOM.render(
   * Added new prop `disabled` to Menu Item which gets passed to `aria-disabled` on `role="option"`. Pass it down through options like so:
 
 
-  ```
-  <MenuDropdown
-      options={[
-          { disabled: true, label: 'Option A', value: 'A0' },
-          { label: 'Option B', value: 'B0' },
-          { label: 'Custom Class', className: 'custom-item-class', value: 'custom0' }
-      ]}
-      ...
-  />
-  ```
+```
+<MenuDropdown
+    options={[
+        { disabled: true, label: 'Option A', value: 'A0' },
+        { label: 'Option B', value: 'B0' },
+        { label: 'Custom Class', className: 'custom-item-class', value: 'custom0' }
+    ]}
+    ...
+/>
+```
 
 ## Release 0.6.23
 
