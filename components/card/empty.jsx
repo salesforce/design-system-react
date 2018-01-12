@@ -14,7 +14,9 @@ import { CARD_EMPTY } from '../../utilities/constants';
 const CardEmpty = (props) => (
 	<div className="slds-p-horizontal--small">
 		<div className="slds-text-align--center slds-m-bottom--x-large">
-			<h3 className="slds-text-heading--small slds-p-top--large slds-p-bottom--large">{props.heading}</h3>
+			<h3 className="slds-text-heading--small slds-p-top--large slds-p-bottom--large">
+				{props.heading}
+			</h3>
 			{props.children}
 		</div>
 	</div>

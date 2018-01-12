@@ -23,55 +23,63 @@ const dropdownItemClicked = action;
 const linkClicked = action;
 const searchClicked = action;
 
-const dropdownCollection = [{
-	label: 'Main action',
-	value: '0',
-	iconCategory: 'utility',
-	iconName: 'table',
-	href: 'http://www.google.com'
-}, {
-	label: 'Menu Header', type: 'header', divider: 'top'
-}, {
-	label: 'Menu Item One',
-	value: '1',
-	iconCategory: 'utility',
-	iconName: 'kanban',
-	href: 'http://www.google.com'
-}, {
-	label: 'Menu Item Two',
-	value: '2',
-	iconCategory: 'utility',
-	iconName: 'kanban',
-	href: 'http://www.google.com'
-}, {
-	label: 'Menu Item Three',
-	value: '3',
-	iconCategory: 'utility',
-	iconName: 'side_list',
-	href: 'http://www.google.com'
-}, {
-	label: 'Menu Item Four',
-	value: '4',
-	iconCategory: 'utility',
-	iconName: 'side_list',
-	href: 'http://www.google.com'
-}, {
-	type: 'divider'
-}, {
-	label: 'Menu Item Five',
-	value: '5',
-	iconCategory: 'utility',
-	iconName: 'side_list',
-	href: 'http://www.google.com'
-}];
+const dropdownCollection = [
+	{
+		label: 'Main action',
+		value: '0',
+		iconCategory: 'utility',
+		iconName: 'table',
+		href: 'http://www.google.com'
+	},
+	{
+		label: 'Menu Header',
+		type: 'header',
+		divider: 'top'
+	},
+	{
+		label: 'Menu Item One',
+		value: '1',
+		iconCategory: 'utility',
+		iconName: 'kanban',
+		href: 'http://www.google.com'
+	},
+	{
+		label: 'Menu Item Two',
+		value: '2',
+		iconCategory: 'utility',
+		iconName: 'kanban',
+		href: 'http://www.google.com'
+	},
+	{
+		label: 'Menu Item Three',
+		value: '3',
+		iconCategory: 'utility',
+		iconName: 'side_list',
+		href: 'http://www.google.com'
+	},
+	{
+		label: 'Menu Item Four',
+		value: '4',
+		iconCategory: 'utility',
+		iconName: 'side_list',
+		href: 'http://www.google.com'
+	},
+	{
+		type: 'divider'
+	},
+	{
+		label: 'Menu Item Five',
+		value: '5',
+		iconCategory: 'utility',
+		iconName: 'side_list',
+		href: 'http://www.google.com'
+	}
+];
 
 /* eslint-disable react/display-name */
 const getGlobalNavigationBar = (props, primaryRegionProps) => (
 	<GlobalNavigationBar {...props}>
-		<GlobalNavigationBarRegion
-			region="primary"
-			{...primaryRegionProps}
-		>
+		<GlobalNavigationBarRegion region="primary" {...primaryRegionProps}>
 			<AppLauncher
 				onSearch={searchClicked('App Launcher searched')}
 				assistiveText="Open App Launcher"
@@ -93,8 +101,12 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 				href="https://www.lightningdesignsystem.com/"
 				label="Home"
 				id="home-link"
-				onClick={linkClicked('Home link clicked. Actual href should be ignored')}
-				onKeyDown={(e) => { console.log(e.target); }}
+				onClick={linkClicked(
+					'Home link clicked. Actual href should be ignored'
+				)}
+				onKeyDown={(e) => {
+					console.log(e.target);
+				}}
 			/>
 			<GlobalNavigationBarDropdown
 				assistiveText="Open Menu Item 1"
@@ -138,10 +150,7 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 
 const getGlobalNavigationBarCustomCloud = (props, primaryRegionProps) => (
 	<GlobalNavigationBar {...props}>
-		<GlobalNavigationBarRegion
-			region="primary"
-			{...primaryRegionProps}
-		>
+		<GlobalNavigationBarRegion region="primary" {...primaryRegionProps}>
 			<AppLauncher
 				onSearch={searchClicked('App Launcher searched')}
 				{...primaryRegionProps.appLauncher}
@@ -208,11 +217,12 @@ const getGlobalNavigationBarCustomCloud = (props, primaryRegionProps) => (
 	</GlobalNavigationBar>
 );
 
-const getGlobalNavigationBarCustomCloudOverviewActive = (props, primaryRegionProps) => (
+const getGlobalNavigationBarCustomCloudOverviewActive = (
+	props,
+	primaryRegionProps
+) => (
 	<GlobalNavigationBar {...props}>
-		<GlobalNavigationBarRegion
-			region="primary"
-		>
+		<GlobalNavigationBarRegion region="primary">
 			<AppLauncher
 				onSearch={searchClicked('App Launcher searched')}
 				{...primaryRegionProps.appLauncher}
@@ -285,10 +295,7 @@ const getGlobalNavigationBarCustomCloudOverviewActive = (props, primaryRegionPro
 
 const getGlobalNavigationBarNoNav = (props, primaryRegionProps) => (
 	<GlobalNavigationBar {...props}>
-		<GlobalNavigationBarRegion
-			region="primary"
-			{...primaryRegionProps}
-		>
+		<GlobalNavigationBarRegion region="primary" {...primaryRegionProps}>
 			<AppLauncher
 				onSearch={searchClicked('App Launcher searched')}
 				assistiveText="Open App Launcher"
@@ -309,9 +316,23 @@ const getGlobalNavigationBarNoNav = (props, primaryRegionProps) => (
 );
 
 storiesOf(GLOBAL_NAVIGATION_BAR, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
-	.add('Base', () => getGlobalNavigationBar(propSets.base.props, propSets.base.primaryRegionProps))
-	.add('Custom Cloud', () => getGlobalNavigationBarCustomCloud(propSets.customCloud.props, propSets.customCloud.primaryRegionProps))
+	.addDecorator((getStory) => (
+		<div className="slds-p-around--medium">
+			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+		</div>
+	))
+	.add('Base', () =>
+		getGlobalNavigationBar(
+			propSets.base.props,
+			propSets.base.primaryRegionProps
+		)
+	)
+	.add('Custom Cloud', () =>
+		getGlobalNavigationBarCustomCloud(
+			propSets.customCloud.props,
+			propSets.customCloud.primaryRegionProps
+		)
+	)
 	.add('Custom Cloud (Multiple active and white)', () =>
 		getGlobalNavigationBarCustomCloudOverviewActive(
 			propSets.customCloud.props,
@@ -324,6 +345,11 @@ storiesOf(GLOBAL_NAVIGATION_BAR, module)
 			propSets.noNav.primaryRegionProps
 		)
 	)
-	.add('Hybrid Dropdown', () => getGlobalNavigationBar(propSets.hybrid.props, propSets.base.primaryRegionProps));
+	.add('Hybrid Dropdown', () =>
+		getGlobalNavigationBar(
+			propSets.hybrid.props,
+			propSets.base.primaryRegionProps
+		)
+	);
 
 export default getGlobalNavigationBar;

@@ -18,17 +18,34 @@ const Highlighter = (props) => {
 	if (props.search) {
 		let children;
 		if (typeof props.children === 'string') {
-			children = (<ReactHighlighter className={props.className} matchClass={null} matchElement="mark" search={props.search} title={props.children}>
-				{props.children}
-			</ReactHighlighter>);
+			children = (
+				<ReactHighlighter
+					className={props.className}
+					matchClass={null}
+					matchElement="mark"
+					search={props.search}
+					title={props.children}
+				>
+					{props.children}
+				</ReactHighlighter>
+			);
 		} else {
 			const findString = (nodeArr) =>
 				nodeArr.map((element) => {
 					let newElement;
 					if (typeof element === 'string') {
-						newElement = (<ReactHighlighter key={element} className={props.className} matchClass={null} matchElement="mark" search={props.search} title={element}>
-							{element}
-						</ReactHighlighter>);
+						newElement = (
+							<ReactHighlighter
+								key={element}
+								className={props.className}
+								matchClass={null}
+								matchElement="mark"
+								search={props.search}
+								title={element}
+							>
+								{element}
+							</ReactHighlighter>
+						);
 					} else {
 						newElement = element;
 					}
@@ -41,15 +58,15 @@ const Highlighter = (props) => {
 			}
 		}
 
-		return (
-			<span>
-				{children}
-			</span>
-		);
+		return <span>{children}</span>;
 	}
 
 	if (typeof props.children === 'string') {
-		return <span className={props.className} title={props.children}>{props.children}</span>;
+		return (
+			<span className={props.className} title={props.children}>
+				{props.children}
+			</span>
+		);
 	}
 
 	return <span className={props.className}>{props.children}</span>;

@@ -67,31 +67,33 @@ const Example = createReactClass({
 	},
 
 	render () {
-		return this.state['show-me'].isActive && (
-			<IconSettings iconPath="/assets/icons">
-				<Filter
-					align={this.props.align}
-					id="sample-panel-filtering-show-me"
-					isLocked
-					onChange={this.onChangePredicate}
-					onRemove={this.onRemove}
-					property="Show Me"
-					predicate={this.state['show-me'].selectedItem.label}
-				>
-					<Picklist
-						isInline
-						label="Show Me"
-						onSelect={(selectedItem) => {
-							this.onSelectPicklist(selectedItem, 'show-me');
-						}}
-						options={options['show-me']}
-						placeholder="Select record type"
-						value={this.state['show-me'].selectedPicklistItem.value}
-					/>
-				</Filter>
-			</IconSettings>
+		return (
+			this.state['show-me'].isActive && (
+				<IconSettings iconPath="/assets/icons">
+					<Filter
+						align={this.props.align}
+						id="sample-panel-filtering-show-me"
+						isLocked
+						onChange={this.onChangePredicate}
+						onRemove={this.onRemove}
+						property="Show Me"
+						predicate={this.state['show-me'].selectedItem.label}
+					>
+						<Picklist
+							isInline
+							label="Show Me"
+							onSelect={(selectedItem) => {
+								this.onSelectPicklist(selectedItem, 'show-me');
+							}}
+							options={options['show-me']}
+							placeholder="Select record type"
+							value={this.state['show-me'].selectedPicklistItem.value}
+						/>
+					</Filter>
+				</IconSettings>
+			)
 		);
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

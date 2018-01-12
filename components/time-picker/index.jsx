@@ -25,8 +25,8 @@ import TimepickerDropdownTrigger from './private/dropdown-trigger';
 import { TIME_PICKER } from '../../utilities/constants';
 
 /**
-*  Component description.
-*/
+ *  Component description.
+ */
 const Timepicker = createReactClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
@@ -58,7 +58,11 @@ const Timepicker = createReactClass({
 		 * * `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.
 		 * * `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.
 		 */
-		menuPosition: PropTypes.oneOf(['absolute', 'overflowBoundaryElement', 'relative']),
+		menuPosition: PropTypes.oneOf([
+			'absolute',
+			'overflowBoundaryElement',
+			'relative'
+		]),
 		/**
 		 * Receives the props `(dateValue, stringValue)`
 		 */
@@ -87,14 +91,21 @@ const Timepicker = createReactClass({
 		return {
 			formatter (date) {
 				if (date) {
-					return date.toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit' });
+					return date.toLocaleTimeString(navigator.language, {
+						hour: '2-digit',
+						minute: '2-digit'
+					});
 				}
 
 				return null;
 			},
 			parser (timeStr) {
 				const date = new Date();
-				const dateStr = date.toLocaleString(navigator.language, { year: 'numeric', month: 'numeric', day: 'numeric' });
+				const dateStr = date.toLocaleString(navigator.language, {
+					year: 'numeric',
+					month: 'numeric',
+					day: 'numeric'
+				});
 				return new Date(`${dateStr} ${timeStr}`);
 			},
 			menuPosition: 'absolute',
@@ -189,10 +200,7 @@ const Timepicker = createReactClass({
 				options={this.state.options}
 			>
 				<TimepickerDropdownTrigger
-					iconRight={<InputIcon
-						category="utility"
-						name="clock"
-					/>}
+					iconRight={<InputIcon category="utility" name="clock" />}
 					onChange={this.handleInputChange}
 					placeholder={this.props.placeholder}
 					required={this.props.required}

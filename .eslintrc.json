@@ -1,0 +1,168 @@
+{
+  "extends": "eslint-config-airbnb",
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "classes": true,
+      "experimentalObjectRestSpread": true,
+      "impliedStrict": true,
+      "jsx": true,
+      "modules": true
+    }
+  },
+  "env": {
+    "browser": true
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.{js,jsx}",
+        "**/__tests__/*.{js,jsx}",
+        "**/__docs__/*.{js,jsx}",
+        "tests/*.{js,jsx}",
+        "scripts/*.js",
+        "**/site-stories.js"
+      ],
+      "rules": {
+        "import/no-extraneous-dependencies": "off",
+        "import/no-webpack-loader-syntax": "off",
+        "max-len": "off",
+        "no-script-url": "off",
+        "no-console": "off",
+        "no-unused-vars": "off"
+      }
+    },
+    {
+      "files": [
+        "*.{js,jsx}",
+        "**/__tests__/*.{js,jsx}",
+        "**/__docs__/*.{js,jsx}",
+        "tests/*.{js,jsx}",
+        "scripts/*.js",
+        "**/site-stories.js"
+      ],
+      "env": {
+        "browser": true,
+        "jest": true,
+        "mocha": true
+      },
+      "globals": {
+        "chai": true,
+        "jest": true,
+        "sinon": true
+      },
+      "rules": {
+        "max-len": "off",
+        "no-script-url": "off",
+        "no-alert": "off",
+        "no-console": "off",
+        "no-unused-expressions": "off",
+        "no-unused-vars": "off",
+        "prefer-arrow-callback": "off",
+        "react/display-name": "off"
+      }
+    }
+  ],
+  "rules": {
+    "arrow-parens": [1, "always"],
+    "import/extensions": "off",
+    "import/first": 1,
+    "import/no-unresolved": [2, { "ignore": ["^[~]"] }],
+    "indent": [
+      2,
+      "tab",
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "max-len": [
+      1,
+      140,
+      4,
+      {
+        "ignoreUrls": true,
+        "ignoreComments": true,
+        "ignorePattern": "^(\\s*)<([^\"{}();])+$"
+      }
+    ],
+    "no-multi-spaces": [
+      1,
+      {
+        // allows "column spacing." Following key names are Abstract Syntax Tree types
+        "exceptions": {
+          "VariableDeclarator": true,
+          "Property": true,
+          "ImportDeclaration": true,
+          "AssignmentExpression": true,
+          "JSXAttribute": true
+        }
+      }
+    ],
+    "no-tabs": 0,
+    "no-underscore-dangle": ["error", { "allowAfterThis": true }],
+    "space-before-function-paren": [2, "always"],
+
+    // Can't be used because it doesn't currently recognize props used in functions
+    "react/no-unused-prop-types": 0,
+    "react/jsx-indent": [2, "tab"],
+    // indent props passed into React component
+    "react/jsx-indent-props": [1, "tab"],
+
+    //
+    // THE FOLLOWING RULES NEED REVIEW IN THE FUTURE (and hopefully removed)
+    //
+
+    // static class properties/method is still too low of a babel stage
+    "class-methods-use-this": "warn",
+    // We are open to changing this to always use a trailing comma
+    "comma-dangle": [2, "never"],
+    // currently used in older files
+    "no-param-reassign": [
+      1,
+      {
+        "props": true
+      }
+    ],
+    // currently used in older files
+    "no-plusplus": 1,
+    "no-mixed-operators": [
+      "error",
+      {
+        "groups": [
+          // ["+", "-", "*", "/", "%", "**"], // imcompatible with prettier
+          ["&", "|", "^", "~", "<<", ">>", ">>>"],
+          ["==", "!=", "===", "!==", ">", ">=", "<", "<="],
+          ["&&", "||"],
+          ["in", "instanceof"]
+        ],
+        "allowSamePrecedence": true
+      }
+    ],
+
+    // Prevent missing props validation in a React component definition
+    "react/prop-types": 1,
+    // We are migrating to classes
+    "react/prefer-es6-class": 1,
+    // Used to prevent usage of any, array, and object but may be too strict currently
+    "react/forbid-prop-types": 0,
+    // Don't throw errors when explicit defaults aren't set
+    "react/require-default-props": 0,
+    // Components that are top-level should be classes, so the DOM ref exists
+    "react/prefer-stateless-function": 1,
+    // Prevent multiple component definition per file
+    "react/no-multi-comp": 1,
+    // Prevent sorting of props or propTypes
+    "react/sort-comp": 1,
+
+    "jsx-a11y/aria-activedescendant-has-tabindex": 1,
+    "jsx-a11y/interactive-supports-focus": 1,
+    "jsx-a11y/no-autofocus": 1,
+    "jsx-a11y/no-interactive-element-to-noninteractive-role": 1,
+    "jsx-a11y/no-noninteractive-element-interactions": 1,
+    "jsx-a11y/no-noninteractive-tabindex": 1,
+    "jsx-a11y/no-redundant-roles": 1,
+    "jsx-a11y/role-has-required-aria-props": 1
+  }
+}

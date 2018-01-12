@@ -8,20 +8,19 @@ import EventUtil from './event';
  * control key event callback mapping and avoids a long conditional
  * if statement and uses an enumeration pattern instead.
  */
-const mapKeyEventCallbacks = (event, {
-	callbacks = {},
-	shiftCallbacks = {},
-	stopPropagation = true
-	}) => {
-	if (event.shiftKey
-		&& event.keyCode
-		&& shiftCallbacks[event.keyCode]) {
+const mapKeyEventCallbacks = (
+	event,
+	{ callbacks = {}, shiftCallbacks = {}, stopPropagation = true }
+) => {
+	if (event.shiftKey && event.keyCode && shiftCallbacks[event.keyCode]) {
 		if (stopPropagation) {
 			EventUtil.trapEvent(event);
 		}
-		shiftCallbacks[event.keyCode].callback(event, shiftCallbacks[event.keyCode].data);
-	}	else if (event.keyCode
-		&& callbacks[event.keyCode]) {
+		shiftCallbacks[event.keyCode].callback(
+			event,
+			shiftCallbacks[event.keyCode].data
+		);
+	} else if (event.keyCode && callbacks[event.keyCode]) {
 		if (stopPropagation) {
 			EventUtil.trapEvent(event);
 		}

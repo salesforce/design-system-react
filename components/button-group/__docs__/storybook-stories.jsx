@@ -11,7 +11,11 @@ import Checkbox from '../__examples__/checkbox';
 import CheckboxError from '../__examples__/checkbox-error';
 
 storiesOf(BUTTON_GROUP, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
+	.addDecorator((getStory) => (
+		<div className="slds-p-around--medium">
+			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+		</div>
+	))
 	.add('More Icon', () => <MoreIcon />)
 	.add('Icon Group', () => <IconGroup />)
 	.add('Checkbox', () => <Checkbox />)

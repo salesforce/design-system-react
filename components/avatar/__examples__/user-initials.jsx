@@ -9,11 +9,7 @@ const Example = createReactClass({
 	render () {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<Avatar
-					variant="user"
-					label="Annie Wilson"
-					size="medium"
-				/>
+				<Avatar variant="user" label="Annie Wilson" size="medium" />
 			</IconSettings>
 		);
 	}

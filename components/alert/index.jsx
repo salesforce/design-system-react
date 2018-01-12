@@ -30,7 +30,11 @@ const propTypes = {
 	 * CSS classes to be added to tag with `.slds-notify_alert`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 * _Tested with snapshot testing._
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string
+	]),
 	/**
 	 * Allows user to click a close button. Banners should be dismissible only if they communicate future impact to the system,
 	 * _Tested with snapshot testing._
@@ -110,11 +114,15 @@ class Alert extends React.Component {
 			}
 			this.setState({ isInitialRender: false });
 		}
-	}
+	};
 
 	render () {
 		// Merge objects of strings with their default object
-		const assistiveText = assign({}, defaultProps.assistiveText, this.props.assistiveText);
+		const assistiveText = assign(
+			{},
+			defaultProps.assistiveText,
+			this.props.assistiveText
+		);
 		const labels = assign({}, defaultProps.labels, this.props.labels);
 
 		// BACKWARD COMPATIBILITY WITH NOTIFICATION
@@ -135,11 +143,16 @@ class Alert extends React.Component {
 			error: <Icon category="utility" name="error" />
 		};
 
-		let icon = this.props.icon ? this.props.icon : defaultIcons[this.props.variant];
+		let icon = this.props.icon
+			? this.props.icon
+			: defaultIcons[this.props.variant];
 
 		// BACKWARD COMPATIBILITY WITH NOTIFICATION
-		if (this.props.iconName && this.props.iconCategory) { // eslint-disable-line react/prop-types
-			icon = <Icon category={this.props.iconCategory} name={this.props.iconName} />;
+		if (this.props.iconName && this.props.iconCategory) {
+			// eslint-disable-line react/prop-types
+			icon = (
+				<Icon category={this.props.iconCategory} name={this.props.iconName} />
+			);
 		}
 
 		const clonedIcon = React.cloneElement(icon, {
@@ -151,22 +164,35 @@ class Alert extends React.Component {
 		/* eslint-disable no-script-url */
 		return (
 			<div
-				className={classNames('slds-notify slds-notify_alert slds-theme_alert-texture', {
-					'slds-theme_info': this.props.variant === 'info',
-					'slds-theme_warning': this.props.variant === 'warning',
-					'slds-theme_error': this.props.variant === 'error',
-					'slds-theme_offline': this.props.variant === 'offline'
-				},
-				this.props.className)}
+				className={classNames(
+					'slds-notify slds-notify_alert slds-theme_alert-texture',
+					{
+						'slds-theme_info': this.props.variant === 'info',
+						'slds-theme_warning': this.props.variant === 'warning',
+						'slds-theme_error': this.props.variant === 'error',
+						'slds-theme_offline': this.props.variant === 'offline'
+					},
+					this.props.className
+				)}
 				role="alert"
 			>
-				<span className="slds-assistive-text">{assistiveTextVariant[this.props.variant]}</span>
+				<span className="slds-assistive-text">
+					{assistiveTextVariant[this.props.variant]}
+				</span>
 				{clonedIcon}
-				<h2>{heading}{' '}{labels.headingLink
-					? <a onClick={this.props.onClickHeadingLink} href="javascript:void(0);">{labels.headingLink}</a>
-					: null}</h2>
-				{this.props.dismissible
-					? <Button
+				<h2>
+					{heading}{' '}
+					{labels.headingLink ? (
+						<a
+							onClick={this.props.onClickHeadingLink}
+							href="javascript:void(0);"
+						>
+							{labels.headingLink}
+						</a>
+					) : null}
+				</h2>
+				{this.props.dismissible ? (
+					<Button
 						assistiveText={assistiveText.closeButton}
 						buttonRef={this.saveButtonRef}
 						className="slds-notify__close"
@@ -178,7 +204,7 @@ class Alert extends React.Component {
 						title={assistiveText.closeButton}
 						variant="icon"
 					/>
-				: null}
+				) : null}
 			</div>
 		);
 	}

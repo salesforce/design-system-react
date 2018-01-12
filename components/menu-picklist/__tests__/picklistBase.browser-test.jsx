@@ -9,10 +9,11 @@ import { expect } from 'chai';
 import SLDSMenuPicklist from '../../menu-picklist';
 import IconSettings from '../../icon-settings';
 
-const { Simulate,
-				scryRenderedDOMComponentsWithTag,
-				findRenderedDOMComponentWithClass
-			} = TestUtils;
+const {
+	Simulate,
+	scryRenderedDOMComponentsWithTag,
+	findRenderedDOMComponentWithClass
+} = TestUtils;
 
 describe('SLDSMenuPicklist: ', function () {
 	let body;
@@ -32,7 +33,10 @@ describe('SLDSMenuPicklist: ', function () {
 	const renderPicklist = (inst) => {
 		body = document.createElement('div');
 		document.body.appendChild(body);
-		return ReactDOM.render(<IconSettings iconPath="/assets/icons">{inst}</IconSettings>, body);
+		return ReactDOM.render(
+			<IconSettings iconPath="/assets/icons">{inst}</IconSettings>,
+			body
+		);
 	};
 
 	function removePicklist () {
@@ -47,7 +51,8 @@ describe('SLDSMenuPicklist: ', function () {
 		value: 'C0'
 	};
 
-	const createPicklist = (props) => React.createElement(SLDSMenuPicklist, assign({}, defaultProps, props));
+	const createPicklist = (props) =>
+		React.createElement(SLDSMenuPicklist, assign({}, defaultProps, props));
 
 	const getPicklist = (props) => renderPicklist(createPicklist(props));
 	const getMenu = (dom) => dom.querySelector('.slds-dropdown');
@@ -59,7 +64,7 @@ describe('SLDSMenuPicklist: ', function () {
 
 	describe('in modal mode', () => {
 		let cmp;
-		let	btn;
+		let btn;
 
 		beforeEach(() => {
 			cmp = getPicklist({ modal: true });
@@ -74,7 +79,9 @@ describe('SLDSMenuPicklist: ', function () {
 			expect(getMenu(document.body)).to.equal(null);
 			Simulate.click(btn, {});
 			setTimeout(() => {
-				expect(getMenu(document.body).className).to.include('slds-dropdown--left');
+				expect(getMenu(document.body).className).to.include(
+					'slds-dropdown--left'
+				);
 				Simulate.click(btn, {});
 				expect(getMenu(document.body)).to.equal(null);
 				done();
@@ -84,12 +91,16 @@ describe('SLDSMenuPicklist: ', function () {
 
 	describe('with click handler', () => {
 		let cmp;
-		let	btn;
-		let	clicked;
+		let btn;
+		let clicked;
 
 		beforeEach(() => {
 			clicked = false;
-			cmp = getPicklist({ onClick: () => { clicked = true; } });
+			cmp = getPicklist({
+				onClick: () => {
+					clicked = true;
+				}
+			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
 
@@ -122,13 +133,17 @@ describe('SLDSMenuPicklist: ', function () {
 
 	describe('expanded with onSelect', () => {
 		let cmp;
-		let	btn;
-		let	clicked;
-		let	selected;
+		let btn;
+		let clicked;
+		let selected;
 
 		beforeEach(() => {
 			selected = false;
-			cmp = getPicklist({ onSelect: (i) => { selected = i; } });
+			cmp = getPicklist({
+				onSelect: (i) => {
+					selected = i;
+				}
+			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 			Simulate.click(btn, {});
 		});
@@ -136,7 +151,6 @@ describe('SLDSMenuPicklist: ', function () {
 		afterEach(() => {
 			removePicklist();
 		});
-
 
 		it('selects an item', () => {
 			expect(selected).to.be.false;
@@ -148,19 +162,23 @@ describe('SLDSMenuPicklist: ', function () {
 
 	describe('disabled', () => {
 		let cmp;
-		let	btn;
-		let	clicked;
+		let btn;
+		let clicked;
 
 		beforeEach(() => {
 			clicked = false;
-			cmp = getPicklist({ disabled: true, onClick: () => { clicked = true; } });
+			cmp = getPicklist({
+				disabled: true,
+				onClick: () => {
+					clicked = true;
+				}
+			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
 
 		afterEach(() => {
 			removePicklist();
 		});
-
 
 		it("doesn't open", () => {
 			Simulate.click(btn, {});
@@ -176,13 +194,17 @@ describe('SLDSMenuPicklist: ', function () {
 
 	describe('accessible markup', () => {
 		let cmp;
-		let	btn;
-		let	clicked;
-		let	selected;
+		let btn;
+		let clicked;
+		let selected;
 
 		beforeEach(() => {
 			selected = false;
-			cmp = getPicklist({ onSelect: (i) => { selected = i; } });
+			cmp = getPicklist({
+				onSelect: (i) => {
+					selected = i;
+				}
+			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
 
@@ -190,11 +212,14 @@ describe('SLDSMenuPicklist: ', function () {
 			removePicklist();
 		});
 
-
 		it('<ul> has role menu & aria-labelledby', () => {
 			Simulate.click(btn, {});
-			const ulRole = getMenu(body).querySelector('ul').getAttribute('role');
-			const ulAria = getMenu(body).querySelector('ul').getAttribute('aria-labelledby');
+			const ulRole = getMenu(body)
+				.querySelector('ul')
+				.getAttribute('role');
+			const ulAria = getMenu(body)
+				.querySelector('ul')
+				.getAttribute('aria-labelledby');
 			expect(ulRole).to.equal('menu');
 			expect(ulAria).to.equal(btn.getAttribute('id'));
 		});
@@ -203,19 +228,26 @@ describe('SLDSMenuPicklist: ', function () {
 			Simulate.click(btn, {});
 			const items = getMenu(body).querySelectorAll('.slds-dropdown__item a');
 			const anchorRole = items[1].getAttribute('role');
-			const match = (anchorRole === 'menuitem' || anchorRole === 'menuitemradio' || anchorRole === 'menuitemcheckbox');
+			const match =
+				anchorRole === 'menuitem' ||
+				anchorRole === 'menuitemradio' ||
+				anchorRole === 'menuitemcheckbox';
 			expect(match).to.be.true;
 		});
 	});
 
 	describe('Keyboard behavior', () => {
 		let cmp;
-		let	btn;
-		let	selected;
+		let btn;
+		let selected;
 
 		beforeEach(() => {
 			selected = false;
-			cmp = getPicklist({ onSelect: (i) => { selected = i; } });
+			cmp = getPicklist({
+				onSelect: (i) => {
+					selected = i;
+				}
+			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
 
@@ -251,7 +283,11 @@ describe('SLDSMenuPicklist: ', function () {
 			Simulate.click(btn, {});
 			expect(getMenu(body)).to.not.equal(null);
 			const menuItems = getMenu(body).querySelectorAll('.slds-dropdown__item');
-			Simulate.keyDown(menuItems[1].querySelector('a'), { key: 'Esc', keyCode: 27, which: 27 });
+			Simulate.keyDown(menuItems[1].querySelector('a'), {
+				key: 'Esc',
+				keyCode: 27,
+				which: 27
+			});
 			expect(getMenu(body)).to.equal(null);
 		});
 	});

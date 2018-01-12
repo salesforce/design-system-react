@@ -5,7 +5,10 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import { mountComponent, unmountComponent } from '../../../tests/enzyme-helpers';
+import {
+	mountComponent,
+	unmountComponent
+} from '../../../tests/enzyme-helpers';
 
 chai.use(chaiEnzyme());
 
@@ -29,18 +32,20 @@ class DemoComponent extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<div>
 					<ToastContainer>
-						{this.state.isOpen
-							? <Toast
+						{this.state.isOpen ? (
+							<Toast
 								dismissible
 								icon={<Icon category="utility" name="user" />}
 								labels={{
 									heading: 'Logged in as John Smith (johnsmith@acme.com).',
 									headingLink: 'Log out'
 								}}
-								onRequestClose={() => { this.setState({ isOpen: false }); }}
+								onRequestClose={() => {
+									this.setState({ isOpen: false });
+								}}
 								{...this.props}
 							/>
-							: null }
+						) : null}
 					</ToastContainer>
 				</div>
 			</IconSettings>
@@ -55,9 +60,9 @@ describe('SLDSToast: ', function () {
 	const onClickHeadingLink = sinon.spy();
 
 	describe('Dismiss Toast', () => {
-		beforeEach(mountComponent(
-			<DemoComponent onClickHeadingLink={onClickHeadingLink} />
-		));
+		beforeEach(
+			mountComponent(<DemoComponent onClickHeadingLink={onClickHeadingLink} />)
+		);
 
 		afterEach(unmountComponent);
 
@@ -81,9 +86,7 @@ describe('SLDSToast: ', function () {
 	});
 
 	describe('Toast with duration auto-closes itself', () => {
-		beforeEach(mountComponent(
-			<DemoComponent duration={500} />
-		));
+		beforeEach(mountComponent(<DemoComponent duration={500} />));
 
 		// afterEach(unmountComponent);
 

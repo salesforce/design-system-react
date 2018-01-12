@@ -28,7 +28,9 @@ class Example extends React.Component {
 						onClickHeadingLink={() => {
 							console.log('Link clicked.');
 						}}
-						onRequestClose={() => { this.setState({ isOpen: false }); }}
+						onRequestClose={() => {
+							this.setState({ isOpen: false });
+						}}
 					/>
 				</AlertContainer>
 			</IconSettings>
@@ -38,4 +40,4 @@ class Example extends React.Component {
 
 Example.displayName = 'AlertExample';
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

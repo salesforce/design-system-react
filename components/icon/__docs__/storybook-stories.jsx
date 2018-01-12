@@ -25,25 +25,28 @@ import SizesSmall from '../__examples__/sizes-small';
 import SizesMedium from '../__examples__/sizes-medium';
 import SizesLarge from '../__examples__/sizes-large';
 
-
 storiesOf(ICON, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
-	.add('Category: Standard', () => (<Standard />))
-	.add('Category: Utility', () => (<Utility />))
-	.add('Category: Action', () => (<Action />))
-	.add('Category: Doctype', () => (<Doctype />))
-	.add('Category: Custom', () => (<Custom />))
-	.add('Category: External Path', () => (<ExternalPath />))
-	.add('Size: X-Small', () => (<SizesExtraSmall />))
-	.add('Size: Small', () => (<SizesSmall />))
-	.add('Size: Medium (default)', () => (<SizesMedium />))
-	.add('Size: Large', () => (<SizesLarge />))
+	.addDecorator((getStory) => (
+		<div className="slds-p-around--medium">
+			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+		</div>
+	))
+	.add('Category: Standard', () => <Standard />)
+	.add('Category: Utility', () => <Utility />)
+	.add('Category: Action', () => <Action />)
+	.add('Category: Doctype', () => <Doctype />)
+	.add('Category: Custom', () => <Custom />)
+	.add('Category: External Path', () => <ExternalPath />)
+	.add('Size: X-Small', () => <SizesExtraSmall />)
+	.add('Size: Small', () => <SizesSmall />)
+	.add('Size: Medium (default)', () => <SizesMedium />)
+	.add('Size: Large', () => <SizesLarge />)
 	.add('Color: Base', () => (
 		<div style={{ backgroundColor: 'goldenrod', padding: '10px' }}>
 			<ColorBase />
 		</div>
 	))
-	.add('Color: Default', () => (<ColorDefault />))
+	.add('Color: Default', () => <ColorDefault />)
 	.add('Base: Standard (custom styles)', () => (
 		<Icon
 			assistiveText="Account"
@@ -53,8 +56,6 @@ storiesOf(ICON, module)
 			title="This is a title"
 		/>
 	))
-	.add('Base: Imported', () => (<Icon
-		assistiveText="Download"
-		category="utility"
-		icon={download}
-	/>));
+	.add('Base: Imported', () => (
+		<Icon assistiveText="Download" category="utility" icon={download} />
+	));

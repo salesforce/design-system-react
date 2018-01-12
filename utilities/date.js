@@ -1,7 +1,6 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-
 const DateUtil = {
 	firstDayOfMonth (date) {
 		const newDate = new Date(date);
@@ -20,13 +19,19 @@ const DateUtil = {
 		if (!d1 || !d2) {
 			return false;
 		}
-		return (d1.getFullYear() === d2.getFullYear() && d1.getMonth() === d2.getMonth());
+		return (
+			d1.getFullYear() === d2.getFullYear() && d1.getMonth() === d2.getMonth()
+		);
 	},
 	isSameDay (d1, d2) {
 		if (!d1 || !d2) {
 			return false;
 		}
-		return (d1.getFullYear() === d2.getFullYear() && d1.getMonth() === d2.getMonth() && d1.getDate() === d2.getDate());
+		return (
+			d1.getFullYear() === d2.getFullYear() &&
+			d1.getMonth() === d2.getMonth() &&
+			d1.getDate() === d2.getDate()
+		);
 	},
 	isCurrentMonth (date) {
 		if (!date) {
@@ -59,11 +64,24 @@ const DateUtil = {
 		return DateUtil.addDays(date, delta);
 	},
 	isLeapYear (year) {
-		return (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0));
+		return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
 	},
 
 	getDaysInMonth (year, month) {
-		return [31, (DateUtil.isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
+		return [
+			31,
+			DateUtil.isLeapYear(year) ? 29 : 28,
+			31,
+			30,
+			31,
+			30,
+			31,
+			31,
+			30,
+			31,
+			30,
+			31
+		][month];
 	},
 
 	addMonths (date, value) {
@@ -71,7 +89,12 @@ const DateUtil = {
 		const dateOfNewDate = newDate.getDate();
 		newDate.setDate(1);
 		newDate.setMonth(newDate.getMonth() + value);
-		newDate.setDate(Math.min(dateOfNewDate, DateUtil.getDaysInMonth(newDate.getFullYear(), newDate.getMonth())));
+		newDate.setDate(
+			Math.min(
+				dateOfNewDate,
+				DateUtil.getDaysInMonth(newDate.getFullYear(), newDate.getMonth())
+			)
+		);
 		return newDate;
 	}
 };

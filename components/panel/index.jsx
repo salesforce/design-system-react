@@ -35,9 +35,11 @@ class Panel extends React.Component {
 					'slds-panel',
 					'slds-grid',
 					'slds-grid--vertical',
-					'slds-nowrap', {
+					'slds-nowrap',
+					{
 						'slds-panel--filters': this.props.variant === 'filters'
-					})}
+					}
+				)}
 			>
 				<div className="slds-form--stacked slds-grow slds-scrollable--y slds-grid slds-grid--vertical">
 					{this.props.children}

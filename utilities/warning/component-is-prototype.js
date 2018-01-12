@@ -15,7 +15,10 @@ if (process.env.NODE_ENV !== 'production') {
 		const additionalComment = comment ? ` ${comment}` : '';
 		if (!hasWarned[control]) {
 			/* eslint-disable max-len */
-			lowPriorityWarning(false, `[Design System React] ${control} is a prototype. (a) Props may change within a minor release. (b) Web Content Accessibility Guidelines may not be met. (c) CSS imports may be required, since it is being added to SLDS.${additionalComment}`);
+			lowPriorityWarning(
+				false,
+				`[Design System React] ${control} is a prototype. (a) Props may change within a minor release. (b) Web Content Accessibility Guidelines may not be met. (c) CSS imports may be required, since it is being added to SLDS.${additionalComment}`
+			);
 			/* eslint-enable max-len */
 			hasWarned[control] = true;
 		}

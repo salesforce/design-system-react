@@ -1,8 +1,7 @@
 {
   "name": "design-system-react",
   "stack": "cedar-14",
-  "scripts": {
-  },
+  "scripts": {},
   "env": {
     "AUTH_PASSWORD": {
       "required": true
@@ -22,9 +21,7 @@
       "quantity": 1
     }
   },
-  "addons": [
-
-  ],
+  "addons": [],
   "buildpacks": [
     {
       "url": "heroku/nodejs"

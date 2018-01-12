@@ -23,7 +23,9 @@ const Example = createReactClass({
 				<Picklist
 					listItemRenderer={ListItemRenderer}
 					label="Contacts"
-					onSelect={(value) => { console.log('selected: ', value); }}
+					onSelect={(value) => {
+						console.log('selected: ', value);
+					}}
 					options={[
 						{ label: 'Option A', value: 'A0' },
 						{ label: 'Option B', value: 'B0' },
@@ -40,4 +42,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

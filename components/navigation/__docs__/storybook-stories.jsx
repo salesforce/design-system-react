@@ -9,7 +9,11 @@ import Shade from '../__examples__/shade';
 import SnaphotDefault from '../__examples__/snapshot-default';
 
 storiesOf(NAVIGATION, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
-	.add('Default', () => (<Default action={action} />))
-	.add('Inverse', () => (<Shade action={action} />))
-	.add('DOM Snapshot', () => (<SnaphotDefault />));
+	.addDecorator((getStory) => (
+		<div className="slds-p-around--medium">
+			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+		</div>
+	))
+	.add('Default', () => <Default action={action} />)
+	.add('Inverse', () => <Shade action={action} />)
+	.add('DOM Snapshot', () => <SnaphotDefault />);

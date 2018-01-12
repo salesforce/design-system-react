@@ -31,7 +31,8 @@ describe('SLDS TEXTAREA **************************************************', () 
 		document.body.removeChild(body);
 	}
 
-	const createTextarea = (props) => React.createElement(Textarea, assign({}, defaultProps, props));
+	const createTextarea = (props) =>
+		React.createElement(Textarea, assign({}, defaultProps, props));
 	const getTextarea = (props) => renderTextarea(createTextarea(props));
 
 	describe('Standard Textarea with Label', () => {
@@ -42,9 +43,15 @@ describe('SLDS TEXTAREA **************************************************', () 
 
 		beforeEach(() => {
 			component = getTextarea({ label: 'Textarea Label', id: 'custom-id' });
-			wrapper = findRenderedDOMComponentWithClass(component, 'slds-form-element');
+			wrapper = findRenderedDOMComponentWithClass(
+				component,
+				'slds-form-element'
+			);
 			textarea = findRenderedDOMComponentWithTag(component, 'textarea');
-			label = findRenderedDOMComponentWithClass(component, 'slds-form-element__label');
+			label = findRenderedDOMComponentWithClass(
+				component,
+				'slds-form-element__label'
+			);
 		});
 
 		afterEach(() => {
@@ -82,7 +89,10 @@ describe('SLDS TEXTAREA **************************************************', () 
 
 		beforeEach(() => {
 			component = getTextarea({ assistiveText: 'Assistive Label' });
-			label = findRenderedDOMComponentWithClass(component, 'slds-form-element__label');
+			label = findRenderedDOMComponentWithClass(
+				component,
+				'slds-form-element__label'
+			);
 		});
 
 		afterEach(() => {
@@ -116,7 +126,9 @@ describe('SLDS TEXTAREA **************************************************', () 
 		});
 
 		it('each textarea has unique generated id', () => {
-			expect(textarea1.getAttribute('id')).to.not.equal(textarea2.getAttribute('id'));
+			expect(textarea1.getAttribute('id')).to.not.equal(
+				textarea2.getAttribute('id')
+			);
 		});
 	});
 
@@ -126,9 +138,19 @@ describe('SLDS TEXTAREA **************************************************', () 
 		let error;
 
 		beforeEach(() => {
-			component = getTextarea({ label: 'Textarea Label', required: true, errorText: 'Error Message' });
-			wrapper = findRenderedDOMComponentWithClass(component, 'slds-form-element');
-			error = findRenderedDOMComponentWithClass(component, 'slds-form-element__help');
+			component = getTextarea({
+				label: 'Textarea Label',
+				required: true,
+				errorText: 'Error Message'
+			});
+			wrapper = findRenderedDOMComponentWithClass(
+				component,
+				'slds-form-element'
+			);
+			error = findRenderedDOMComponentWithClass(
+				component,
+				'slds-form-element__help'
+			);
 		});
 
 		afterEach(() => {
@@ -136,7 +158,9 @@ describe('SLDS TEXTAREA **************************************************', () 
 		});
 
 		it('textarea wrapper contains an <abbr> that has class "slds-required"', () => {
-			expect(findRenderedDOMComponentWithTag(component, 'abbr').className).to.include('slds-required');
+			expect(
+				findRenderedDOMComponentWithTag(component, 'abbr').className
+			).to.include('slds-required');
 		});
 
 		it('textarea wrapper has class "slds-has-error"', () => {

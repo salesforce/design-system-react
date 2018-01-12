@@ -1,7 +1,6 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-
 // # List Component
 
 // ## Dependencies
@@ -85,31 +84,37 @@ const List = createReactClass({
 		return (
 			<ul
 				aria-labelledby={this.props.triggerId}
-				className={classNames('dropdown__list', lengthClassName, this.props.className)}
+				className={classNames(
+					'dropdown__list',
+					lengthClassName,
+					this.props.className
+				)}
 				role="menu"
 			>
-				{
-					this.props.options.map((option, index) => {
-						const id = this.props.getListItemId(index);
-						const isSingleSelected = index === this.props.selectedIndex;
-						const isMultipleSelected = !!this.props.selectedIndices && this.props.selectedIndices.indexOf(index) !== -1;
-						return (
-							<ListItem
-								{...option}
-								aria-disabled={option.disabled}
-								checkmark={this.props.checkmark && (isSingleSelected || isMultipleSelected)}
-								data={option}
-								id={id}
-								index={index}
-								isSelected={isSingleSelected || isMultipleSelected}
-								key={`${id}-${option.value}`}
-								labelRenderer={this.props.itemRenderer}
-								onSelect={this.props.onSelect}
-								ref={(listItem) => this.props.itemRefs(listItem, index)}
-							/>
-						);
-					})
-				}
+				{this.props.options.map((option, index) => {
+					const id = this.props.getListItemId(index);
+					const isSingleSelected = index === this.props.selectedIndex;
+					const isMultipleSelected =
+						!!this.props.selectedIndices &&
+						this.props.selectedIndices.indexOf(index) !== -1;
+					return (
+						<ListItem
+							{...option}
+							aria-disabled={option.disabled}
+							checkmark={
+								this.props.checkmark && (isSingleSelected || isMultipleSelected)
+							}
+							data={option}
+							id={id}
+							index={index}
+							isSelected={isSingleSelected || isMultipleSelected}
+							key={`${id}-${option.value}`}
+							labelRenderer={this.props.itemRenderer}
+							onSelect={this.props.onSelect}
+							ref={(listItem) => this.props.itemRefs(listItem, index)}
+						/>
+					);
+				})}
 			</ul>
 		);
 	}

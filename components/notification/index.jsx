@@ -134,7 +134,9 @@ class Notification extends React.Component {
 					inverse
 					className="slds-notify__close"
 					onClick={this.onDismiss}
-					buttonRef={(dismissBtn) => { this.dismissBtnRef = dismissBtn; }}
+					buttonRef={(dismissBtn) => {
+						this.dismissBtnRef = dismissBtn;
+					}}
 					variant="icon"
 				/>
 			);
@@ -153,7 +155,7 @@ class Notification extends React.Component {
 		if (this.state.returnFocusTo && this.state.returnFocusTo.focus) {
 			this.state.returnFocusTo.focus();
 		}
-	}
+	};
 
 	renderAlertContent () {
 		return (
@@ -169,7 +171,9 @@ class Notification extends React.Component {
 			<section className="notify__content slds-grid">
 				{this.renderIcon()}
 				<div className="slds-col slds-align-middle">
-					<h2 id="dialogTitle" className="slds-text-heading--small">{this.props.content}</h2>
+					<h2 id="dialogTitle" className="slds-text-heading--small">
+						{this.props.content}
+					</h2>
 				</div>
 			</section>
 		);
@@ -199,10 +203,9 @@ class Notification extends React.Component {
 	 * Because React renders the entire element to the DOM, we must switch out a blank div for the real content.
 	 * Bummer, I know.
 	 */
-	blankContent () { // eslint-disable-line class-methods-use-this
-		return (
-			<div />
-		);
+	blankContent () {
+		// eslint-disable-line class-methods-use-this
+		return <div />;
 	}
 
 	render () {
@@ -212,13 +215,21 @@ class Notification extends React.Component {
 		if (!this.props.isOpen) {
 			styles = { width: '0px' };
 		} else {
-			styles = this.props.variant === 'toast' ? { width: 'auto', left: '50%', transform: 'translateX(-50%)' } : { width: '100%' };
+			styles =
+				this.props.variant === 'toast'
+					? { width: 'auto', left: '50%', transform: 'translateX(-50%)' }
+					: { width: '100%' };
 		}
 
 		const alertStyles = !this.props.isOpen ? { display: 'none' } : null;
 		return (
 			<div className="slds-notify-container" style={styles}>
-				<div className={this.getClassName()} role="alertdialog" aria-labelledby="dialogTitle" style={alertStyles}>
+				<div
+					className={this.getClassName()}
+					role="alertdialog"
+					aria-labelledby="dialogTitle"
+					style={alertStyles}
+				>
 					{this.props.isOpen ? this.renderContent() : this.blankContent()}
 				</div>
 			</div>

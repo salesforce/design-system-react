@@ -31,26 +31,30 @@ if (process.env.NODE_ENV !== 'production') {
 
 		if (
 			// List of "native" HTML elements that are tabbable by default
-			trigger.type !== 'button'
-			&& trigger.type !== 'input'
-			&& trigger.type !== 'select'
-			&& trigger.type !== 'textarea'
-			&& trigger.type !== 'a'
+			trigger.type !== 'button' &&
+			trigger.type !== 'input' &&
+			trigger.type !== 'select' &&
+			trigger.type !== 'textarea' &&
+			trigger.type !== 'a' &&
 			// List of components that are tabbable by default
-			&& trigger.type.displayName !== BUTTON
-			&& trigger.type.displayName !== BUTTON_STATEFUL
-			&& trigger.type.displayName !== BUTTON_GROUP
-			&& trigger.type.displayName !== FORMS_CHECKBOX
-			&& trigger.type.displayName !== DATE_PICKER
-			&& trigger.type.displayName !== FORMS_INPUT
-			&& trigger.type.displayName !== LOOKUP
-			&& trigger.type.displayName !== TIME_PICKER) {
+			trigger.type.displayName !== BUTTON &&
+			trigger.type.displayName !== BUTTON_STATEFUL &&
+			trigger.type.displayName !== BUTTON_GROUP &&
+			trigger.type.displayName !== FORMS_CHECKBOX &&
+			trigger.type.displayName !== DATE_PICKER &&
+			trigger.type.displayName !== FORMS_INPUT &&
+			trigger.type.displayName !== LOOKUP &&
+			trigger.type.displayName !== TIME_PICKER
+		) {
 			// if it's not one of the above, then check to see if it has a tabIndex
 			if (childTabIndex === '-1' || childTabIndex === undefined) {
 				elementIsTabbable = false;
 				if (!hasWarned[COMPONENT]) {
 					/* eslint-disable max-len */
-					warning(elementIsTabbable, `[Design System React] The element that triggers ${COMPONENT} must be tabbable for  keyboard users. Elements such as anchor, button, input or a DOM element with tabIndex="0" specified are tabbable.${additionalComment}`);
+					warning(
+						elementIsTabbable,
+						`[Design System React] The element that triggers ${COMPONENT} must be tabbable for  keyboard users. Elements such as anchor, button, input or a DOM element with tabIndex="0" specified are tabbable.${additionalComment}`
+					);
 					/* eslint-enable max-len */
 					hasWarned[COMPONENT] = !!elementIsTabbable;
 				}

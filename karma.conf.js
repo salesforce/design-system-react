@@ -20,7 +20,6 @@ webpackConfig.externals = {
 // Karma configuration
 const configExport = function (config) {
 	config.set({
-
 		// base path that will be used to resolve all patterns (eg. files, exclude)
 		basePath: '',
 
@@ -38,8 +37,7 @@ const configExport = function (config) {
 		],
 
 		// list of files to exclude
-		exclude: [
-		],
+		exclude: [],
 
 		// preprocess matching files before serving them to the browser
 		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
@@ -53,10 +51,7 @@ const configExport = function (config) {
 		reporters: ['spec', 'coverage'],
 
 		coverageReporter: {
-			reporters: [
-				{ type: 'html', dir: 'coverage/' },
-				{ type: 'text' }
-			]
+			reporters: [{ type: 'html', dir: 'coverage/' }, { type: 'text' }]
 		},
 
 		// web server port

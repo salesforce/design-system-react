@@ -16,7 +16,9 @@ const Example = createReactClass({
 					id="sample-menu-picklist"
 					isInline
 					label="Contacts"
-					onSelect={(value) => { console.log('selected: ', value); }}
+					onSelect={(value) => {
+						console.log('selected: ', value);
+					}}
 					options={[
 						{ label: 'Option A', value: 'A0' },
 						{ label: 'Option B', value: 'B0' },

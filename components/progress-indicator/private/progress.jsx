@@ -30,7 +30,11 @@ const propTypes = {
 	/**
 	 * CSS class names to be added to the container element.
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string
+	]),
 	/**
 	 * HTML id for component.
 	 */
@@ -60,12 +64,17 @@ class Progress extends React.Component {
 		return (
 			<div
 				id={this.getId()}
-				className={classNames('slds-progress', { 'slds-progress_shade': this.props.variant === 'modal' }, this.props.className)}
+				className={classNames(
+					'slds-progress',
+					{ 'slds-progress_shade': this.props.variant === 'modal' },
+					this.props.className
+				)}
 			>
-				<ol className="slds-progress__list">
-					{ this.props.children }
-				</ol>
-				<ProgressBar value={this.props.value} assistiveText={this.props.assistiveText} />
+				<ol className="slds-progress__list">{this.props.children}</ol>
+				<ProgressBar
+					value={this.props.value}
+					assistiveText={this.props.assistiveText}
+				/>
 			</div>
 		);
 	}

@@ -8,7 +8,10 @@ let checkProps = function () {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT) {
-		componentIsDeprecated(COMPONENT, 'Please use Alert or Toast in the future. Notications is not the same component in SLDS any longer.');
+		componentIsDeprecated(
+			COMPONENT,
+			'Please use Alert or Toast in the future. Notications is not the same component in SLDS any longer.'
+		);
 	};
 }
 

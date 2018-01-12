@@ -16,7 +16,11 @@ import find from 'lodash.find';
 import Checkbox from '../../forms/checkbox';
 
 // ## Constants
-import { DATA_TABLE_ROW, DATA_TABLE_ROW_ACTIONS, DATA_TABLE_CELL } from '../../../utilities/constants';
+import {
+	DATA_TABLE_ROW,
+	DATA_TABLE_ROW_ACTIONS,
+	DATA_TABLE_CELL
+} from '../../../utilities/constants';
 
 /**
  * Used internally, provides row rendering to the DataTable.
@@ -80,7 +84,9 @@ const DataTableRow = createReactClass({
 				) : null}
 				{this.props.columns.map((column) => {
 					const Cell = column.Cell;
-					const cellId = `${this.props.id}-${DATA_TABLE_CELL}-${column.props.property}`;
+					const cellId = `${this.props.id}-${DATA_TABLE_CELL}-${
+						column.props.property
+					}`;
 
 					return (
 						<Cell
@@ -97,12 +103,12 @@ const DataTableRow = createReactClass({
 						</Cell>
 					);
 				})}
-				{this.props.rowActions ?
-					React.cloneElement(this.props.rowActions, {
+				{this.props.rowActions
+					? React.cloneElement(this.props.rowActions, {
 						id: `${this.props.id}-${DATA_TABLE_ROW_ACTIONS}`,
 						item: this.props.item
-					}) : null
-				}
+					})
+					: null}
 			</tr>
 		);
 	},

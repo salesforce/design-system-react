@@ -36,7 +36,11 @@ const propTypes = {
 	/**
 	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string
+	]),
 	/**
 	 * Stores all completed steps. It is an array of step objects.
 	 */
@@ -96,11 +100,11 @@ const propTypes = {
 };
 
 const defaultSteps = [
-	{ id: 0, label: ('tooltip label #1') },
-	{ id: 1, label: ('tooltip label #2') },
-	{ id: 2, label: ('tooltip label #3') },
-	{ id: 3, label: ('tooltip label #4') },
-	{ id: 4, label: ('tooltip label #5') }
+	{ id: 0, label: 'tooltip label #1' },
+	{ id: 1, label: 'tooltip label #2' },
+	{ id: 2, label: 'tooltip label #3' },
+	{ id: 3, label: 'tooltip label #4' },
+	{ id: 4, label: 'tooltip label #5' }
 ];
 
 const defaultProps = {
@@ -134,15 +138,13 @@ function findStep (item, items) {
 	if (Array.isArray(items)) {
 		return !!find(items, item);
 	}
-	return (JSON.stringify(item) === JSON.stringify(items));
+	return JSON.stringify(item) === JSON.stringify(items);
 }
 
 /**
  * Progress Indicator is a component that communicates to the user the progress of a particular process.
  */
 class ProgressIndicator extends React.Component {
-
-
 	componentWillMount () {
 		this.generatedId = shortid.generate();
 	}
@@ -160,12 +162,14 @@ class ProgressIndicator extends React.Component {
 
 	getSteps () {
 		// check if passed steps are valid
-		return (checkSteps(this.props.steps) ? this.props.steps : defaultSteps);
+		return checkSteps(this.props.steps) ? this.props.steps : defaultSteps;
 	}
 
 	render () {
 		// Merge objects of strings with their default object
-		const assistiveText = this.props ? assign({}, defaultProps.assistiveText, this.props.assistiveText) : defaultProps.assistiveText;
+		const assistiveText = this.props
+			? assign({}, defaultProps.assistiveText, this.props.assistiveText)
+			: defaultProps.assistiveText;
 
 		/** 1. preparing data */
 		const allSteps = this.getSteps();
@@ -187,27 +191,29 @@ class ProgressIndicator extends React.Component {
 			<Progress
 				assistiveText={assistiveText}
 				id={this.getId()}
-				value={currentStep === 0 ? '0' : `${(100 * (currentStep / (allSteps.length - 1)))}`}
+				value={
+					currentStep === 0
+						? '0'
+						: `${100 * (currentStep / (allSteps.length - 1))}`
+				}
 				variant={this.props.variant}
 				className={this.props.className}
 			>
-				{
-					allSteps.map((step, i) =>
-						(<Step
-							key={`${this.getId()}-${step.id}`}
-							id={this.getId()}
-							index={i}
-							isSelected={findStep(step, this.props.selectedStep)}
-							isDisabled={findStep(step, this.props.disabledSteps)}
-							isError={findStep(step, this.props.errorSteps)}
-							isCompleted={findStep(step, this.props.completedSteps)}
-							onClick={this.props.onStepClick}
-							onFocus={this.props.onStepFocus}
-							step={step}
-							tooltipIsOpen={findStep(step, this.props.tooltipIsOpenSteps)}
-						/>)
-					)
-				}
+				{allSteps.map((step, i) => (
+					<Step
+						key={`${this.getId()}-${step.id}`}
+						id={this.getId()}
+						index={i}
+						isSelected={findStep(step, this.props.selectedStep)}
+						isDisabled={findStep(step, this.props.disabledSteps)}
+						isError={findStep(step, this.props.errorSteps)}
+						isCompleted={findStep(step, this.props.completedSteps)}
+						onClick={this.props.onStepClick}
+						onFocus={this.props.onStepFocus}
+						step={step}
+						tooltipIsOpen={findStep(step, this.props.tooltipIsOpenSteps)}
+					/>
+				))}
 			</Progress>
 		);
 	}

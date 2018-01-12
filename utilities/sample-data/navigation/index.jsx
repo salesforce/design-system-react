@@ -1,8 +1,8 @@
 const sampleReportCategories = [
-	{ id: 'reports',
+	{
+		id: 'reports',
 		label: 'Reports',
-		items:
-		[
+		items: [
 			{ id: 'recent_reports', label: 'Recent' },
 			{ id: 'my_reports', label: 'Created by Me' },
 			{ id: 'private_reports', label: 'Private Reports' },
@@ -10,11 +10,15 @@ const sampleReportCategories = [
 			{ id: 'all_reports', label: 'All Reports' }
 		]
 	},
-	{ id: 'folders',
+	{
+		id: 'folders',
 		label: 'Folders',
-		items:
-		[
-			{ id: 'my_folders', label: 'Created by Me', url: 'http://www.google.com' },
+		items: [
+			{
+				id: 'my_folders',
+				label: 'Created by Me',
+				url: 'http://www.google.com'
+			},
 			{ id: 'shared_folders', label: 'Shared with Me' },
 			{ id: 'all_folders', label: 'All Folders' }
 		]
@@ -22,10 +26,10 @@ const sampleReportCategories = [
 ];
 
 const sampleSearchCategories = [
-	{ id: 'search_results',
+	{
+		id: 'search_results',
 		label: 'Search Results',
-		items:
-		[
+		items: [
 			{ id: 'top', label: 'Top Results' },
 			{ id: 'accounts', label: 'Accounts' },
 			{ id: 'contacts', label: 'Contacts' },
@@ -41,8 +45,7 @@ const sampleSearchCategories = [
 	{
 		id: 'external_results',
 		label: 'External Results',
-		items:
-		[
+		items: [
 			{ id: 'app_one', label: 'App One' },
 			{ id: 'app_two', label: 'App Two' },
 			{ id: 'app_three', label: 'App Three' }
@@ -50,7 +53,4 @@ const sampleSearchCategories = [
 	}
 ];
 
-export {
-	sampleReportCategories,
-	sampleSearchCategories
-};
+export { sampleReportCategories, sampleSearchCategories };

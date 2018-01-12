@@ -15,51 +15,61 @@ const Example = createReactClass({
 			<IconSettings iconPath="/assets/icons">
 				<GlobalHeader
 					logoSrc="/images/logo.svg"
-					onSkipToContent={() => { console.log('>>> Skip to Content Clicked'); }}
-					onSkipToNav={() => { console.log('>>> Skip to Nav Clicked'); }}
+					onSkipToContent={() => {
+						console.log('>>> Skip to Content Clicked');
+					}}
+					onSkipToNav={() => {
+						console.log('>>> Skip to Nav Clicked');
+					}}
 				>
 					<GlobalHeaderSearch
 						placeholder="Search Salesforce"
-						onSelect={() => { console.log('>>> onSelect'); }}
-						options={[
-							{ label: 'Email' },
-							{ label: 'Mobile' }
-						]}
+						onSelect={() => {
+							console.log('>>> onSelect');
+						}}
+						options={[{ label: 'Email' }, { label: 'Mobile' }]}
 					/>
 					<GlobalHeaderButton
 						className="slds-m-right--small"
 						iconVariant={null}
 						label="Feedback"
-						onClick={() => { console.log('>>> onClick'); }}
+						onClick={() => {
+							console.log('>>> onClick');
+						}}
 						variant="neutral"
 					/>
 					<GlobalHeaderDropdown
 						assistiveText="Global Actions"
 						iconCategory="utility"
 						iconName="add"
-						onSelect={() => { console.log('>>> onSelect'); }}
-						options={[
-							{ label: 'New Note' },
-							{ label: 'Log a Call' }
-						]}
+						onSelect={() => {
+							console.log('>>> onSelect');
+						}}
+						options={[{ label: 'New Note' }, { label: 'Log a Call' }]}
 					/>
 					<GlobalHeaderButton
 						assistiveText="Help and Training"
 						iconName="question"
-						onClick={() => { console.log('>>> onClick'); }}
+						onClick={() => {
+							console.log('>>> onClick');
+						}}
 					/>
 					<GlobalHeaderButton
 						assistiveText="Setup"
 						iconName="settings"
-						onClick={() => { console.log('>>> onClick'); }}
+						onClick={() => {
+							console.log('>>> onClick');
+						}}
 					/>
 					<GlobalHeaderProfile
 						avatar="/images/avatar2.jpg"
-						onClick={() => { console.log('>>> onClick'); }}
-						onSelect={() => { console.log('>>> onSelect'); }}
-						options={[
-							{ label: 'Profile Menu' }
-						]}
+						onClick={() => {
+							console.log('>>> onClick');
+						}}
+						onSelect={() => {
+							console.log('>>> onSelect');
+						}}
+						options={[{ label: 'Profile Menu' }]}
 					/>
 				</GlobalHeader>
 			</IconSettings>
@@ -67,4 +77,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

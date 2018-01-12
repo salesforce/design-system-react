@@ -75,7 +75,7 @@ const Textarea = createReactClass({
 			PropTypes.string
 		]),
 		/** Allows for ability to apply classNames to outer textarea div.
-		*/
+		 */
 		classNameContainer: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
@@ -142,10 +142,7 @@ const Textarea = createReactClass({
 		/**
 		 * Specifies how the text in a text area is to be wrapped when submitted in a form.
 		 */
-		wrap: PropTypes.oneOf([
-			'soft',
-			'hard'
-		])
+		wrap: PropTypes.oneOf(['soft', 'hard'])
 	},
 
 	componentWillMount () {
@@ -165,7 +162,6 @@ const Textarea = createReactClass({
 	getErrorId () {
 		return this.props['aria-describedby'] || this.generatedErrorId;
 	},
-
 
 	// ### Render
 	render () {
@@ -207,17 +203,30 @@ const Textarea = createReactClass({
 
 		return (
 			<div
-				className={classNames('slds-form-element', {
-					'slds-has-error': errorText
-				}, classNameContainer)}
+				className={classNames(
+					'slds-form-element',
+					{
+						'slds-has-error': errorText
+					},
+					classNameContainer
+				)}
 			>
-				{labelText && (<label className={classNames('slds-form-element__label', { 'slds-assistive-text': assistiveText && !label })} htmlFor={this.getId()}>
-					{required && <abbr className="slds-required" title="required">*</abbr>}
-					{labelText}
-				</label>
+				{labelText && (
+					<label
+						className={classNames('slds-form-element__label', {
+							'slds-assistive-text': assistiveText && !label
+						})}
+						htmlFor={this.getId()}
+					>
+						{required && (
+							<abbr className="slds-required" title="required">
+								*
+							</abbr>
+						)}
+						{labelText}
+					</label>
 				)}
 				<div className={classNames('slds-form-element__control')}>
-
 					<textarea
 						aria-activedescendant={this.props['aria-activedescendant']}
 						aria-controls={this.props['aria-controls']}
@@ -250,9 +259,12 @@ const Textarea = createReactClass({
 						wrap={wrap}
 						value={value}
 					/>
-
 				</div>
-				{errorText && <div id={this.getErrorId()} className="slds-form-element__help">{errorText}</div>}
+				{errorText && (
+					<div id={this.getErrorId()} className="slds-form-element__help">
+						{errorText}
+					</div>
+				)}
 				{children}
 			</div>
 		);

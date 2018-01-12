@@ -62,12 +62,13 @@ const Filter = createReactClass({
 		 */
 		children: PropTypes.node,
 		/**
-		  * Custom CSS classes for `slds-filters__item` node. Uses `classNames` [API](https://github.com/JedWatson/classnames).
-		  */
+		 * Custom CSS classes for `slds-filters__item` node. Uses `classNames` [API](https://github.com/JedWatson/classnames).
+		 */
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string]),
+			PropTypes.string
+		]),
 		/**
 		 * Applies error state styling. Per filter error messages are outside this components.
 		 */
@@ -127,7 +128,9 @@ const Filter = createReactClass({
 
 	getInitialState () {
 		return {
-			popoverIsOpen: this.props.popover ? this.props.popover.props.isOpen : false
+			popoverIsOpen: this.props.popover
+				? this.props.popover.props.isOpen
+				: false
 		};
 	},
 
@@ -172,7 +175,12 @@ const Filter = createReactClass({
 		 */
 		const popoverBody = (
 			<div>
-				<h4 className="slds-assistive-text" id={`${this.getId()}-popover-heading`}>{assistiveText.editFilterHeading}</h4>
+				<h4
+					className="slds-assistive-text"
+					id={`${this.getId()}-popover-heading`}
+				>
+					{assistiveText.editFilterHeading}
+				</h4>
 				{this.props.children}
 				<div className="slds-m-top--small slds-text-align--right">
 					<Button
@@ -200,7 +208,10 @@ const Filter = createReactClass({
 		};
 
 		/* Mixin passed popover's props if there is any to override the default popover props */
-		const popoverProps = assign(defaultPopoverProps, this.props.popover ? this.props.popover.props : {});
+		const popoverProps = assign(
+			defaultPopoverProps,
+			this.props.popover ? this.props.popover.props : {}
+		);
 		delete popoverProps.children;
 		return popoverProps;
 	},
@@ -208,13 +219,16 @@ const Filter = createReactClass({
 	render () {
 		/* Remove at next breaking change */
 		const assistiveText = {
-			editFilter: this.props.assistiveTextEditFilter // eslint-disable-line react/prop-types
-				|| this.props.assistiveText.editFilter,
-			editFilterHeading: this.props.assistiveTextEditFilterHeading // eslint-disable-line react/prop-types
-				|| this.props.assistiveText.editFilterHeading,
-			removeFilter: this.props.assistiveTextRemoveFilter // eslint-disable-line react/prop-types
-				|| this.props.assistiveText.removeFilter
-				|| `Remove Filter: ${this.props.property} ${this.props.predicate}`
+			editFilter:
+				this.props.assistiveTextEditFilter || // eslint-disable-line react/prop-types
+				this.props.assistiveText.editFilter,
+			editFilterHeading:
+				this.props.assistiveTextEditFilterHeading || // eslint-disable-line react/prop-types
+				this.props.assistiveText.editFilterHeading,
+			removeFilter:
+				this.props.assistiveTextRemoveFilter || // eslint-disable-line react/prop-types
+				this.props.assistiveText.removeFilter ||
+				`Remove Filter: ${this.props.property} ${this.props.predicate}`
 		};
 
 		/* TODO: Button wrapper for property and predictate should be transitioned to `Button` component. `Button` needs to take custom children first though. */
@@ -224,7 +238,8 @@ const Filter = createReactClass({
 				className={classNames(
 					'slds-filters__item',
 					'slds-grid',
-					'slds-grid--vertical-align-center', {
+					'slds-grid--vertical-align-center',
+					{
 						'slds-is-locked': this.props.isLocked,
 						'slds-is-new': this.props.isNew,
 						'slds-has-error': this.props.isError
@@ -232,43 +247,50 @@ const Filter = createReactClass({
 					this.props.className
 				)}
 			>
-				{!this.props.isLocked && (this.props.children || this.props.popover)
-				? <Popover
-					{...popoverProps}
-				>
+				{!this.props.isLocked && (this.props.children || this.props.popover) ? (
+					<Popover {...popoverProps}>
+						<button
+							className="slds-button--reset slds-grow slds-has-blur-focus"
+							onClick={this.handleFilterClick}
+							aria-describedby={
+								this.props.isError ? `${this.getId()}-error` : undefined
+							}
+						>
+							<span className="slds-assistive-text">
+								{assistiveText.editFilter}
+							</span>
+							{this.props.property ? (
+								<p className="slds-text-body--small">{this.props.property}</p>
+							) : null}
+							<p>{this.props.predicate}</p>
+						</button>
+					</Popover>
+				) : (
 					<button
+						aria-describedby={
+							this.props.isError ? `${this.getId()}-error` : undefined
+						}
 						className="slds-button--reset slds-grow slds-has-blur-focus"
-						onClick={this.handleFilterClick}
-						aria-describedby={this.props.isError ? `${this.getId()}-error` : undefined}
+						disabled
 					>
-						<span className="slds-assistive-text">{assistiveText.editFilter}</span>
-						{this.props.property ? <p className="slds-text-body--small">{this.props.property}</p> : null}
+						<p className="slds-text-body--small">{this.props.property}</p>
 						<p>{this.props.predicate}</p>
 					</button>
-				</Popover>
-				: <button
-					aria-describedby={this.props.isError ? `${this.getId()}-error` : undefined}
-					className="slds-button--reset slds-grow slds-has-blur-focus"
-					disabled
-				>
-					<p className="slds-text-body--small">{this.props.property}</p>
-					<p>{this.props.predicate}</p>
-				</button>
-				}
+				)}
 				{// Remove button
-					!this.props.isPermanent && !this.props.isLocked
-					? <Button
-						assistiveText={assistiveText.removeFilter}
-						hint
-						iconCategory="utility"
-						iconName="close"
-						iconSize="small"
-						iconVariant="bare"
-						onClick={this.handleRemove}
-						title={assistiveText.removeFilter}
-						variant="icon"
-					/>
-				: null}
+					!this.props.isPermanent && !this.props.isLocked ? (
+						<Button
+							assistiveText={assistiveText.removeFilter}
+							hint
+							iconCategory="utility"
+							iconName="close"
+							iconSize="small"
+							iconVariant="bare"
+							onClick={this.handleRemove}
+							title={assistiveText.removeFilter}
+							variant="icon"
+						/>
+					) : null}
 			</div>
 		);
 	}

@@ -17,7 +17,12 @@ import PropTypes from 'prop-types';
 import EventUtil from '../../utilities/event';
 
 // ## Constants
-import { GLOBAL_HEADER, GLOBAL_HEADER_PROFILE, GLOBAL_HEADER_SEARCH, GLOBAL_HEADER_TOOL } from '../../utilities/constants';
+import {
+	GLOBAL_HEADER,
+	GLOBAL_HEADER_PROFILE,
+	GLOBAL_HEADER_SEARCH,
+	GLOBAL_HEADER_TOOL
+} from '../../utilities/constants';
 
 /**
  * The global header is the anchor for the Salesforce platform and spans all other parts of the UI. It accepts children to define the items displayed within.
@@ -93,15 +98,25 @@ const GlobalHeader = createReactClass({
 
 		/* eslint-disable max-len, no-script-url */
 		return (
-			<header className="slds-global-header_container">{
-				this.props.onSkipToNav
-					? <a href="javascript:void(0);" className="slds-assistive-text slds-assistive-text--focus" onClick={this.handleSkipToNav}>{this.props.skipToNavAssistiveText}</a>
-					: null
-			} {
-				this.props.onSkipToContent
-					? <a href="javascript:void(0);" className="slds-assistive-text slds-assistive-text--focus" onClick={this.handleSkipToContent}>{this.props.skipToContentAssistiveText}</a>
-					: null
-			}
+			<header className="slds-global-header_container">
+				{this.props.onSkipToNav ? (
+					<a
+						href="javascript:void(0);"
+						className="slds-assistive-text slds-assistive-text--focus"
+						onClick={this.handleSkipToNav}
+					>
+						{this.props.skipToNavAssistiveText}
+					</a>
+				) : null}
+				{this.props.onSkipToContent ? (
+					<a
+						href="javascript:void(0);"
+						className="slds-assistive-text slds-assistive-text--focus"
+						onClick={this.handleSkipToContent}
+					>
+						{this.props.skipToContentAssistiveText}
+					</a>
+				) : null}
 				<div className="slds-global-header slds-grid slds-grid--align-spread">
 					<div className="slds-global-header__item">
 						<div className="slds-global-header__logo">

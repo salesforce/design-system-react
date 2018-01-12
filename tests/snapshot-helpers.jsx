@@ -14,17 +14,23 @@ expect.extend({ toMatchImageSnapshot });
  *
  * Please note, Component is the non-JSX component object.
  */
-const renderDOM = (Component, props) => renderer.create(React.createElement(Component, props), null).toJSON();
+const renderDOM = (Component, props) =>
+	renderer.create(React.createElement(Component, props), null).toJSON();
 
 /*
  * Render React components to markup in order to compare to a Jest Snapshot.
  *
  * Please note, Component is the non-JSX component object.
  */
-const renderMarkup = (Component, props) => String(
-		jsBeautify.html(ReactDOMServer.renderToStaticMarkup(React.createElement(Component, props)),
-			Settings.jsBeautify),
-	'utf-8'
+const renderMarkup = (Component, props) =>
+	String(
+		jsBeautify.html(
+			ReactDOMServer.renderToStaticMarkup(
+				React.createElement(Component, props)
+			),
+			Settings.jsBeautify
+		),
+		'utf-8'
 	);
 
 const testDOMandHTML = (Component, props) => {
@@ -37,23 +43,31 @@ const testDOMandHTML = (Component, props) => {
  */
 const testImageSnapshot = (name, ComponentKind) =>
 	new Promise((resolve, reject) => {
-		jasmine.DEFAULT_TIMEOUT_INTERVAL = 999999;
+		jasmine.DEFAULT_TIMEOUT_INTERVAL = 999999; // eslint-disable-line no-undef
 
-		const url = `http://localhost:9001/?selectedKind=${encodeURIComponent(name)}&selectedStory=${encodeURIComponent(ComponentKind)}&full=0&down=1&left=1&panelRight=0&downPanel=storybook%2Factions%2Factions-panel`;
+		const url = `http://localhost:9001/?selectedKind=${encodeURIComponent(
+			name
+		)}&selectedStory=${encodeURIComponent(
+			ComponentKind
+		)}&full=0&down=1&left=1&panelRight=0&downPanel=storybook%2Factions%2Factions-panel`;
 
 		const customConfig = { threshold: 1 };
 		const chrome = new Chrome();
-		chrome.goto(url)
+		chrome
+			.goto(url)
 			.then(() => chrome.screenshot())
-			.then((image) => expect(image).toMatchImageSnapshot({
-				customDiffConfig: customConfig
-			}))
+			.then((image) =>
+				expect(image).toMatchImageSnapshot({
+					customDiffConfig: customConfig
+				})
+			)
 			.then(() => chrome.done())
 			.then(() => resolve(true))
 			.catch((err) => reject(err));
 	});
 
-export {
+// eslint-disable-line import/prefer-default-export
+module.exports = {
 	renderDOM,
 	renderMarkup,
 	testDOMandHTML,

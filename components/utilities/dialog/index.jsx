@@ -46,7 +46,6 @@ import IconSettings from '../../icon-settings';
  * This component is private.
  */
 const Dialog = createReactClass({
-
 	displayName: DIALOG,
 
 	propTypes: {
@@ -73,16 +72,16 @@ const Dialog = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string]
-		),
+			PropTypes.string
+		]),
 		/**
 		 * CSS classes to be added to the wrapping `div` of the contents of the dialog.
 		 */
 		contentsClassName: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string]
-		),
+			PropTypes.string
+		]),
 		/**
 		 * Contents of dialog
 		 */
@@ -158,7 +157,11 @@ const Dialog = createReactClass({
 		 * * `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.
 		 * * `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.
 		 */
-		position: PropTypes.oneOf(['absolute', 'overflowBoundaryElement', 'relative']).isRequired,
+		position: PropTypes.oneOf([
+			'absolute',
+			'overflowBoundaryElement',
+			'relative'
+		]).isRequired,
 		/**
 		 * An object of CSS styles that are applied to the immediate parent `div` of the contents. Use this instead of margin props.
 		 */
@@ -185,8 +188,10 @@ const Dialog = createReactClass({
 	},
 
 	componentDidMount () {
-		if (this.props.position === 'absolute'
-			|| this.props.position === 'relative') {
+		if (
+			this.props.position === 'absolute' ||
+			this.props.position === 'relative'
+		) {
 			this.handleOpen();
 		}
 	},
@@ -197,8 +202,10 @@ const Dialog = createReactClass({
 			DOMElementFocus.returnFocusToStoredElement();
 		}
 
-		if (this.props.position === 'absolute'
-				|| this.props.position === 'overflowBoundaryElement') {
+		if (
+			this.props.position === 'absolute' ||
+			this.props.position === 'overflowBoundaryElement'
+		) {
 			this.destroyPopper();
 		}
 
@@ -206,12 +213,14 @@ const Dialog = createReactClass({
 	},
 
 	componentDidUpdate (prevProps, prevState) {
-		if (this.state.triggerPopperJS === true
-			&& prevState.triggerPopperJS === false
-			&& (this.props.position === 'absolute'
-			|| this.props.position === 'overflowBoundaryElement')
-			&& this.dialogContent
-			&& this.props.onRequestTargetElement()) {
+		if (
+			this.state.triggerPopperJS === true &&
+			prevState.triggerPopperJS === false &&
+			(this.props.position === 'absolute' ||
+				this.props.position === 'overflowBoundaryElement') &&
+			this.dialogContent &&
+			this.props.onRequestTargetElement()
+		) {
 			this.createPopper();
 		}
 	},
@@ -230,7 +239,8 @@ const Dialog = createReactClass({
 			// moves dialog in order to not extend a boundary element such as a scrolling parent or a window/viewpoint.
 			preventOverflow: {
 				enabled: true,
-				boundariesElement: this.props.position === 'absolute' ? 'scrollParent' : 'viewport'
+				boundariesElement:
+					this.props.position === 'absolute' ? 'scrollParent' : 'viewport'
 			},
 			// By default, dialogs will flip their alignment if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint
 			removeOnDestroy: true,
@@ -239,7 +249,8 @@ const Dialog = createReactClass({
 				order: 900,
 				fn: (popperData) => {
 					if (
-						(this.state.popperData && !isEqual(popperData.offsets, this.state.popperData.offsets)) ||
+						(this.state.popperData &&
+							!isEqual(popperData.offsets, this.state.popperData.offsets)) ||
 						!this.state.popperData
 					) {
 						this.setState({ popperData });
@@ -360,13 +371,17 @@ const Dialog = createReactClass({
 	render () {
 		let style = {};
 
-		if (this.props.position === 'absolute'
-			|| this.props.position === 'overflowBoundaryElement') {
+		if (
+			this.props.position === 'absolute' ||
+			this.props.position === 'overflowBoundaryElement'
+		) {
 			style = this.getPopperStyles();
 		}
 
 		if (this.props.inheritTargetWidth && this.props.onRequestTargetElement()) {
-			style.width = this.props.onRequestTargetElement().getBoundingClientRect().width;
+			style.width = this.props
+				.onRequestTargetElement()
+				.getBoundingClientRect().width;
 		}
 
 		if (this.props.style) {
@@ -375,12 +390,17 @@ const Dialog = createReactClass({
 
 		const contents = (
 			<div // eslint-disable-line jsx-a11y/no-static-element-interactions
-				className={classNames({
-					'absolute-positioned': this.props.position === 'absolute',
-					'portal-positioned': this.props.position === 'overflowBoundaryElement',
-					[`${this.props.outsideClickIgnoreClass}`]: this.props.position === 'overflowBoundaryElement'
-				},
-					this.props.contentsClassName) || undefined
+				className={
+					classNames(
+						{
+							'absolute-positioned': this.props.position === 'absolute',
+							'portal-positioned':
+								this.props.position === 'overflowBoundaryElement',
+							[`${this.props.outsideClickIgnoreClass}`]:
+								this.props.position === 'overflowBoundaryElement'
+						},
+						this.props.contentsClassName
+					) || undefined
 				}
 				style={style}
 				onKeyDown={this.handleKeyDown}
@@ -394,17 +414,15 @@ const Dialog = createReactClass({
 		);
 
 		const subRenders = {
-			absolute: () => (contents),
-			relative: () => (contents),
+			absolute: () => contents,
+			relative: () => contents,
 			overflowBoundaryElement: () => (
-				<Portal
-					onOpen={this.handleOpen}
-					portalMount={this.props.portalMount}
-				>
+				<Portal onOpen={this.handleOpen} portalMount={this.props.portalMount}>
 					<IconSettings iconPath={this.context.iconPath}>
 						{contents}
 					</IconSettings>
-				</Portal>)
+				</Portal>
+			)
 		};
 
 		return subRenders[this.props.position] && subRenders[this.props.position]();

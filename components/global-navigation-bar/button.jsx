@@ -23,11 +23,10 @@ import { GLOBAL_NAVIGATION_BAR_BUTTON } from '../../utilities/constants';
  */
 const GlobalNavigationButton = ({ active, dividerPosition, ...props }) => (
 	<li
-		className={classNames(
-			'slds-context-bar__item',
-			{ 'slds-is-active': active,
-				[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition
-			})}
+		className={classNames('slds-context-bar__item', {
+			'slds-is-active': active,
+			[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition
+		})}
 	>
 		<Button {...props} />
 	</li>

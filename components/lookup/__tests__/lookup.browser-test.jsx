@@ -14,11 +14,17 @@ import IconSettings from '../../icon-settings';
 import Header from '../../lookup/header';
 import Footer from '../../lookup/footer';
 
-const { Simulate, scryRenderedDOMComponentsWithClass, scryRenderedDOMComponentsWithTag } = TestUtils;
+const {
+	Simulate,
+	scryRenderedDOMComponentsWithClass,
+	scryRenderedDOMComponentsWithTag
+} = TestUtils;
 
 describe('SLDSLookup: ', () => {
 	const generateLookup = function (lookupInstance) {
-		const reactCmp = TestUtils.renderIntoDocument(<IconSettings iconPath="/assets/icons">{lookupInstance}</IconSettings>);
+		const reactCmp = TestUtils.renderIntoDocument(
+			<IconSettings iconPath="/assets/icons">{lookupInstance}</IconSettings>
+		);
 		return ReactDOM.findDOMNode(reactCmp);
 	};
 
@@ -29,8 +35,12 @@ describe('SLDSLookup: ', () => {
 		iconName: 'account',
 		isInline: true,
 		label: 'Account',
-		onChange (newValue) { console.log('New search term: ', newValue); },
-		onSelect (item) { console.log(item, ' Selected'); },
+		onChange (newValue) {
+			console.log('New search term: ', newValue);
+		},
+		onSelect (item) {
+			console.log(item, ' Selected');
+		},
 		options: [
 			{ label: 'Paddy"s Pub' },
 			{ label: 'Tyrell Corp' },
@@ -41,11 +51,15 @@ describe('SLDSLookup: ', () => {
 		]
 	};
 
-	const getLookup = (props = {}) => React.createElement(SLDSLookup, assign({}, defaultProps, props));
-	const getLookupWithHeader = (props = { headerRenderer: Header }) => React.createElement(SLDSLookup, assign({}, defaultProps, props));
-	const getLookupWithSelection = (props = { selectedItem: 1 }) => React.createElement(SLDSLookup, assign({}, defaultProps, props));
+	const getLookup = (props = {}) =>
+		React.createElement(SLDSLookup, assign({}, defaultProps, props));
+	const getLookupWithHeader = (props = { headerRenderer: Header }) =>
+		React.createElement(SLDSLookup, assign({}, defaultProps, props));
+	const getLookupWithSelection = (props = { selectedItem: 1 }) =>
+		React.createElement(SLDSLookup, assign({}, defaultProps, props));
 
-	const getItems = (lookup) => lookup.getElementsByClassName('js-slds-lookup__item');
+	const getItems = (lookup) =>
+		lookup.getElementsByClassName('js-slds-lookup__item');
 
 	describe('component renders', () => {
 		it('lookup renders', () => {
@@ -78,8 +92,12 @@ describe('SLDSLookup: ', () => {
 	describe('accessibility markup passes', () => {
 		it('label for matches input id', () => {
 			const lookup = generateLookup(getLookup());
-			const labelFor = lookup.getElementsByTagName('label')[0].getAttribute('for');
-			const inputId = lookup.getElementsByTagName('input')[0].getAttribute('id');
+			const labelFor = lookup
+				.getElementsByTagName('label')[0]
+				.getAttribute('for');
+			const inputId = lookup
+				.getElementsByTagName('input')[0]
+				.getAttribute('id');
 			expect(labelFor).to.equal(inputId);
 		});
 	});
@@ -87,7 +105,9 @@ describe('SLDSLookup: ', () => {
 	describe('accessibility aria attributes pass', () => {
 		it('aria-expanded is false initally', () => {
 			const lookup = generateLookup(getLookup());
-			const ariaExpanded = lookup.getElementsByTagName('input')[0].getAttribute('aria-expanded');
+			const ariaExpanded = lookup
+				.getElementsByTagName('input')[0]
+				.getAttribute('aria-expanded');
 			expect(ariaExpanded).to.equal('false');
 		});
 
@@ -95,28 +115,45 @@ describe('SLDSLookup: ', () => {
 			const lookup = generateLookup(getLookup());
 			const input = lookup.getElementsByTagName('input')[0];
 			TestUtils.Simulate.click(input);
-			const ariaExpanded = lookup.getElementsByTagName('input')[0].getAttribute('aria-expanded');
+			const ariaExpanded = lookup
+				.getElementsByTagName('input')[0]
+				.getAttribute('aria-expanded');
 			expect(ariaExpanded).to.equal('true');
 		});
 
 		it('LookupWithSelection - aria-expanded is true when deleting selection', () => {
 			const lookup = generateLookup(getLookupWithSelection());
 			const deleteBtn = lookup.getElementsByTagName('button')[0];
-			TestUtils.Simulate.keyDown(deleteBtn, { key: 'Down', keyCode: 46, which: 46 });
-			const ariaExpanded = lookup.getElementsByTagName('input')[0].getAttribute('aria-expanded');
+			TestUtils.Simulate.keyDown(deleteBtn, {
+				key: 'Down',
+				keyCode: 46,
+				which: 46
+			});
+			const ariaExpanded = lookup
+				.getElementsByTagName('input')[0]
+				.getAttribute('aria-expanded');
 			expect(ariaExpanded).to.equal('true');
 		});
 	});
-
 
 	describe('selecting item works', () => {
 		it('no fixed header: focuses correct item', () => {
 			const lookup = generateLookup(getLookup());
 			const input = lookup.getElementsByTagName('input')[0];
 			TestUtils.Simulate.click(input);
-			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
-			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
-			const ariaActiveDescendant = lookup.getElementsByTagName('input')[0].getAttribute('aria-activedescendant');
+			TestUtils.Simulate.keyDown(input, {
+				key: 'Down',
+				keyCode: 40,
+				which: 40
+			});
+			TestUtils.Simulate.keyDown(input, {
+				key: 'Down',
+				keyCode: 40,
+				which: 40
+			});
+			const ariaActiveDescendant = lookup
+				.getElementsByTagName('input')[0]
+				.getAttribute('aria-activedescendant');
 			expect(ariaActiveDescendant).to.equal('item-1');
 		});
 
@@ -124,9 +161,19 @@ describe('SLDSLookup: ', () => {
 			const lookup = generateLookup(getLookupWithHeader());
 			const input = lookup.getElementsByTagName('input')[0];
 			TestUtils.Simulate.click(input);
-			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
-			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
-			const ariaActiveDescendant = lookup.getElementsByTagName('input')[0].getAttribute('aria-activedescendant');
+			TestUtils.Simulate.keyDown(input, {
+				key: 'Down',
+				keyCode: 40,
+				which: 40
+			});
+			TestUtils.Simulate.keyDown(input, {
+				key: 'Down',
+				keyCode: 40,
+				which: 40
+			});
+			const ariaActiveDescendant = lookup
+				.getElementsByTagName('input')[0]
+				.getAttribute('aria-activedescendant');
 			expect(ariaActiveDescendant).to.equal('item-0');
 		});
 
@@ -134,11 +181,29 @@ describe('SLDSLookup: ', () => {
 			const lookup = generateLookup(getLookup());
 			const input = lookup.getElementsByTagName('input')[0];
 			TestUtils.Simulate.click(input);
-			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
-			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
-			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
-			TestUtils.Simulate.keyDown(input, { key: 'Enter', keyCode: 13, which: 13 });
-			const selected = lookup.getElementsByTagName('a')[0].getElementsByClassName('slds-pill__label')[0].textContent;
+			TestUtils.Simulate.keyDown(input, {
+				key: 'Down',
+				keyCode: 40,
+				which: 40
+			});
+			TestUtils.Simulate.keyDown(input, {
+				key: 'Down',
+				keyCode: 40,
+				which: 40
+			});
+			TestUtils.Simulate.keyDown(input, {
+				key: 'Down',
+				keyCode: 40,
+				which: 40
+			});
+			TestUtils.Simulate.keyDown(input, {
+				key: 'Enter',
+				keyCode: 13,
+				which: 13
+			});
+			const selected = lookup
+				.getElementsByTagName('a')[0]
+				.getElementsByClassName('slds-pill__label')[0].textContent;
 			expect(selected).to.equal('Paper St. Soap Company');
 		});
 
@@ -146,11 +211,29 @@ describe('SLDSLookup: ', () => {
 			const lookup = generateLookup(getLookupWithHeader());
 			const input = lookup.getElementsByTagName('input')[0];
 			TestUtils.Simulate.click(input);
-			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
-			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
-			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
-			TestUtils.Simulate.keyDown(input, { key: 'Enter', keyCode: 13, which: 13 });
-			const selected = lookup.getElementsByTagName('a')[0].getElementsByClassName('slds-pill__label')[0].textContent;
+			TestUtils.Simulate.keyDown(input, {
+				key: 'Down',
+				keyCode: 40,
+				which: 40
+			});
+			TestUtils.Simulate.keyDown(input, {
+				key: 'Down',
+				keyCode: 40,
+				which: 40
+			});
+			TestUtils.Simulate.keyDown(input, {
+				key: 'Down',
+				keyCode: 40,
+				which: 40
+			});
+			TestUtils.Simulate.keyDown(input, {
+				key: 'Enter',
+				keyCode: 13,
+				which: 13
+			});
+			const selected = lookup
+				.getElementsByTagName('a')[0]
+				.getElementsByClassName('slds-pill__label')[0].textContent;
 			expect(selected).to.equal('Tyrell Corp');
 		});
 
@@ -158,7 +241,11 @@ describe('SLDSLookup: ', () => {
 			const lookup = generateLookup(getLookup());
 			const input = lookup.getElementsByTagName('input')[0];
 			TestUtils.Simulate.click(input);
-			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
+			TestUtils.Simulate.keyDown(input, {
+				key: 'Down',
+				keyCode: 40,
+				which: 40
+			});
 			TestUtils.Simulate.keyDown(input, { key: 'Esc', keyCode: 27, which: 27 });
 			const ariaExpanded = input.getAttribute('aria-expanded');
 			expect(ariaExpanded).to.equal('false');
@@ -168,8 +255,16 @@ describe('SLDSLookup: ', () => {
 			const lookup = generateLookup(getLookup());
 			const input = lookup.getElementsByTagName('input')[0];
 			TestUtils.Simulate.click(input);
-			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
-			TestUtils.Simulate.keyDown(input, { key: 'Enter', keyCode: 13, which: 13 });
+			TestUtils.Simulate.keyDown(input, {
+				key: 'Down',
+				keyCode: 40,
+				which: 40
+			});
+			TestUtils.Simulate.keyDown(input, {
+				key: 'Enter',
+				keyCode: 13,
+				which: 13
+			});
 			const menu = lookup.getElementsByTagName('ul');
 			expect(menu.length).to.equal(0);
 		});
@@ -178,8 +273,14 @@ describe('SLDSLookup: ', () => {
 			const lookup = generateLookup(getLookup());
 			const input = lookup.getElementsByTagName('input')[0];
 			TestUtils.Simulate.click(input);
-			TestUtils.Simulate.keyDown(input, { key: 'Down', keyCode: 40, which: 40 });
-			const focusedItem = lookup.getElementsByTagName('ul')[0].getElementsByTagName('li')[0];
+			TestUtils.Simulate.keyDown(input, {
+				key: 'Down',
+				keyCode: 40,
+				which: 40
+			});
+			const focusedItem = lookup
+				.getElementsByTagName('ul')[0]
+				.getElementsByTagName('li')[0];
 			expect(focusedItem.className).to.have.string('slds-theme--shade');
 		});
 
@@ -194,7 +295,7 @@ describe('SLDSLookup: ', () => {
 
 	describe('expanded', () => {
 		let lookup;
-		let	input;
+		let input;
 
 		beforeEach(() => {
 			lookup = generateLookup(getLookup());
@@ -218,19 +319,25 @@ describe('SLDSLookup: ', () => {
 		});
 
 		it('displays no items when item count is 0', () => {
-			expect(lookup.getElementsByClassName('slds-lookup__message').length).to.equal(0);
+			expect(
+				lookup.getElementsByClassName('slds-lookup__message').length
+			).to.equal(0);
 			Simulate.change(input, { target: { value: 'kdjfksjdf' } });
 			expect(getItems(lookup).length).to.equal(1); // add item
-			expect(lookup.getElementsByClassName('slds-lookup__message').length).to.equal(1);
+			expect(
+				lookup.getElementsByClassName('slds-lookup__message').length
+			).to.equal(1);
 		});
 	});
 
 	describe('custom filter', () => {
 		let lookup;
-		let	input;
+		let input;
 
 		beforeEach(() => {
-			lookup = generateLookup(getLookup({ filterWith: (text, i) => text === i.label[0] }));
+			lookup = generateLookup(
+				getLookup({ filterWith: (text, i) => text === i.label[0] })
+			);
 			input = lookup.getElementsByTagName('input')[0];
 			Simulate.click(input);
 		});

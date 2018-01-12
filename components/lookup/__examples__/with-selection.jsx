@@ -17,10 +17,14 @@ const Example = createReactClass({
 					iconCategory="standard"
 					iconName="account"
 					label="Account"
-					onChange={(newValue) => { console.log('New search term: ', newValue); }}
-					onSelect={(item) => { console.log(item, ' Selected'); }}
+					onChange={(newValue) => {
+						console.log('New search term: ', newValue);
+					}}
+					onSelect={(item) => {
+						console.log(item, ' Selected');
+					}}
 					options={[
-						{ label: 'Paddy\'s Pub' },
+						{ label: "Paddy's Pub" },
 						{ label: 'Tyrell Corp' },
 						{ label: 'Paper St. Soap Company' },
 						{ label: 'Nakatomi Investments' },
@@ -34,5 +38,4 @@ const Example = createReactClass({
 	}
 });
 
-
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

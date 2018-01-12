@@ -24,8 +24,8 @@ const DatepickerCalendar = createReactClass({
 		 */
 		id: PropTypes.string.isRequired,
 		/**
-     * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
-     */
+		 * Date used to create calendar that is displayed. This is typically the initial day focused when using the keyboard navigation. Focus will be set to this date if available.
+		 */
 		initialDateForCalendarRender: PropTypes.instanceOf(Date).isRequired,
 		/**
 		 * Makes Monday the first day of the week
@@ -91,9 +91,17 @@ const DatepickerCalendar = createReactClass({
 
 	setCalendarRenderSeedDate (prevProps) {
 		// Set prop that sets focus in child component once it is rendered. This occurs when the month DOM has changed. This will trigger a re-render, but no DOM change will occur, just a DOM focus.
-		if (!DateUtil.isEqual(this.props.initialDateForCalendarRender, prevProps.initialDateForCalendarRender)) {
+		if (
+			!DateUtil.isEqual(
+				this.props.initialDateForCalendarRender,
+				prevProps.initialDateForCalendarRender
+			)
+		) {
 			this.setState({ focusedDate: this.props.initialDateForCalendarRender });
-			this.props.onRequestInternalFocusDate(undefined, { date: this.props.initialDateForCalendarRender, triggerCallback: true });
+			this.props.onRequestInternalFocusDate(undefined, {
+				date: this.props.initialDateForCalendarRender,
+				triggerCallback: true
+			});
 		}
 	},
 
@@ -116,7 +124,10 @@ const DatepickerCalendar = createReactClass({
 			this.props.onChangeMonth(event, prevDate);
 		} else {
 			this.setState({ focusedDate: prevDate });
-			this.props.onRequestInternalFocusDate(event, { date: prevDate, triggerCallback: true });
+			this.props.onRequestInternalFocusDate(event, {
+				date: prevDate,
+				triggerCallback: true
+			});
 		}
 	},
 
@@ -126,7 +137,10 @@ const DatepickerCalendar = createReactClass({
 			this.props.onChangeMonth(event, nextDate);
 		} else {
 			this.setState({ focusedDate: nextDate });
-			this.props.onRequestInternalFocusDate(event, { date: nextDate, triggerCallback: true });
+			this.props.onRequestInternalFocusDate(event, {
+				date: nextDate,
+				triggerCallback: true
+			});
 		}
 	},
 
@@ -136,7 +150,10 @@ const DatepickerCalendar = createReactClass({
 			this.props.onChangeMonth(event, prevDate);
 		} else {
 			this.setState({ focusedDate: prevDate });
-			this.props.onRequestInternalFocusDate(event, { date: prevDate, triggerCallback: true });
+			this.props.onRequestInternalFocusDate(event, {
+				date: prevDate,
+				triggerCallback: true
+			});
 		}
 	},
 
@@ -146,60 +163,77 @@ const DatepickerCalendar = createReactClass({
 			this.props.onChangeMonth(event, nextDate);
 		} else {
 			this.setState({ focusedDate: nextDate });
-			this.props.onRequestInternalFocusDate(event, { date: nextDate, triggerCallback: true });
+			this.props.onRequestInternalFocusDate(event, {
+				date: nextDate,
+				triggerCallback: true
+			});
 		}
 	},
 
 	render () {
 		const sunday = (
 			<th>
-				<abbr title={this.props.weekDayLabels[0]}>{this.props.abbreviatedWeekDayLabels[0]}</abbr>
+				<abbr title={this.props.weekDayLabels[0]}>
+					{this.props.abbreviatedWeekDayLabels[0]}
+				</abbr>
 			</th>
 		);
 
 		return (
-			<div
-				className="calendar"
-			>
-				<table className="datepicker__month" role="grid" aria-labelledby={`${this.props.id}-month`}>
+			<div className="calendar">
+				<table
+					className="datepicker__month"
+					role="grid"
+					aria-labelledby={`${this.props.id}-month`}
+				>
 					<thead>
 						<tr>
 							{this.props.isIsoWeekday ? null : sunday}
 							<th scope="col">
-								<abbr title={this.props.weekDayLabels[1]}>{this.props.abbreviatedWeekDayLabels[1]}</abbr>
+								<abbr title={this.props.weekDayLabels[1]}>
+									{this.props.abbreviatedWeekDayLabels[1]}
+								</abbr>
 							</th>
 							<th scope="col">
-								<abbr title={this.props.weekDayLabels[2]}>{this.props.abbreviatedWeekDayLabels[2]}</abbr>
+								<abbr title={this.props.weekDayLabels[2]}>
+									{this.props.abbreviatedWeekDayLabels[2]}
+								</abbr>
 							</th>
 							<th scope="col">
-								<abbr title={this.props.weekDayLabels[3]}>{this.props.abbreviatedWeekDayLabels[3]}</abbr>
+								<abbr title={this.props.weekDayLabels[3]}>
+									{this.props.abbreviatedWeekDayLabels[3]}
+								</abbr>
 							</th>
 							<th scope="col">
-								<abbr title={this.props.weekDayLabels[4]}>{this.props.abbreviatedWeekDayLabels[4]}</abbr>
+								<abbr title={this.props.weekDayLabels[4]}>
+									{this.props.abbreviatedWeekDayLabels[4]}
+								</abbr>
 							</th>
 							<th scope="col">
-								<abbr title={this.props.weekDayLabels[5]}>{this.props.abbreviatedWeekDayLabels[5]}</abbr>
+								<abbr title={this.props.weekDayLabels[5]}>
+									{this.props.abbreviatedWeekDayLabels[5]}
+								</abbr>
 							</th>
 							<th scope="col">
-								<abbr title={this.props.weekDayLabels[6]}>{this.props.abbreviatedWeekDayLabels[6]}</abbr>
+								<abbr title={this.props.weekDayLabels[6]}>
+									{this.props.abbreviatedWeekDayLabels[6]}
+								</abbr>
 							</th>
 							{this.props.isIsoWeekday && sunday}
 						</tr>
 					</thead>
 					<tbody>
-
 						{this.renderWeeks()}
 
 						<tr>
-							<td
-								colSpan="7"
-								role="gridcell"
-							>
+							<td colSpan="7" role="gridcell">
 								<a
-									href="javascript:void(0)"	// eslint-disable-line no-script-url
+									href="javascript:void(0)" // eslint-disable-line no-script-url
 									tabIndex="0"
 									className="slds-show--inline-block slds-p-bottom--x-small"
-									onClick={(event) => { this.handleSelectDate(event, { date: new Date() }); }}
+									onClick={(event) => {
+										this.handleSelectDate(event, { date: new Date() });
+									}}
 									onKeyDown={this.props.onLastFocusableNodeKeyDown}
 									ref={this.props.todayRef}
 								>
@@ -216,7 +250,9 @@ const DatepickerCalendar = createReactClass({
 	renderWeeks () {
 		const firstDayOfWeekOffset = this.props.isIsoWeekday ? 1 : 0;
 
-		const firstDayOfMonth = DateUtil.firstDayOfMonth(this.props.initialDateForCalendarRender);
+		const firstDayOfMonth = DateUtil.firstDayOfMonth(
+			this.props.initialDateForCalendarRender
+		);
 
 		let firstDayOfWeek;
 		if (firstDayOfMonth.getDay() > firstDayOfWeekOffset) {
@@ -233,25 +269,31 @@ const DatepickerCalendar = createReactClass({
 		let count = 0;
 
 		while (!done) {
-			weeks.push(<Week
-				calendarHasFocus={this.state.calendarHasFocus}
-				dateDisabled={this.props.dateDisabled}
-				firstDayOfWeek={firstDayOfWeek}
-				key={firstDayOfWeek.toString()}
-				focusedDate={this.state.focusedDate}
-				initialDateForCalendarRender={this.props.initialDateForCalendarRender}
-				onCalendarBlur={this.props.onCalendarBlur}
-				onKeyboardNavigateToPreviousDay={this.handleKeyboardNavigateToPreviousDay}
-				onKeyboardNavigateToNextDay={this.handleKeyboardNavigateToNextDay}
-				onKeyboardNavigateToPreviousWeek={this.handleKeyboardNavigateToPreviousWeek}
-				onKeyboardNavigateToNextWeek={this.handleKeyboardNavigateToNextWeek}
-				onRequestClose={this.handleRequestClose}
-				onRequestInternalFocusDate={this.props.onRequestInternalFocusDate}
-				onSelectDate={this.handleSelectDate}
-				selectedDate={this.props.selectedDate}
-				selectedDateRef={this.props.selectedDateRef}
-				todayLabel={this.props.todayLabel}
-			/>);
+			weeks.push(
+				<Week
+					calendarHasFocus={this.state.calendarHasFocus}
+					dateDisabled={this.props.dateDisabled}
+					firstDayOfWeek={firstDayOfWeek}
+					key={firstDayOfWeek.toString()}
+					focusedDate={this.state.focusedDate}
+					initialDateForCalendarRender={this.props.initialDateForCalendarRender}
+					onCalendarBlur={this.props.onCalendarBlur}
+					onKeyboardNavigateToPreviousDay={
+						this.handleKeyboardNavigateToPreviousDay
+					}
+					onKeyboardNavigateToNextDay={this.handleKeyboardNavigateToNextDay}
+					onKeyboardNavigateToPreviousWeek={
+						this.handleKeyboardNavigateToPreviousWeek
+					}
+					onKeyboardNavigateToNextWeek={this.handleKeyboardNavigateToNextWeek}
+					onRequestClose={this.handleRequestClose}
+					onRequestInternalFocusDate={this.props.onRequestInternalFocusDate}
+					onSelectDate={this.handleSelectDate}
+					selectedDate={this.props.selectedDate}
+					selectedDateRef={this.props.selectedDateRef}
+					todayLabel={this.props.todayLabel}
+				/>
+			);
 
 			// create new weeks
 			firstDayOfWeek = DateUtil.addWeeks(firstDayOfWeek, 1);
@@ -261,11 +303,17 @@ const DatepickerCalendar = createReactClass({
 		let extraWeeks = 0;
 		while (weeks.length < 6) {
 			extraWeeks += 1;
-			weeks.push(<tr key={`extra_${extraWeeks}`} className="week">
-				<td aria-disabled="true" aria-selected="false" className="slds-disabled-text">
-					<span className="slds-day ">&nbsp;</span>
-				</td>
-			</tr>);
+			weeks.push(
+				<tr key={`extra_${extraWeeks}`} className="week">
+					<td
+						aria-disabled="true"
+						aria-selected="false"
+						className="slds-disabled-text"
+					>
+						<span className="slds-day ">&nbsp;</span>
+					</td>
+				</tr>
+			);
 		}
 
 		return weeks;

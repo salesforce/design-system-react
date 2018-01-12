@@ -48,7 +48,8 @@ export const GLOBAL_NAVIGATION_BAR_DROPDOWN = 'SLDSGlobalNavigationBarDropdown';
 export const GLOBAL_NAVIGATION_BAR_LABEL = 'SLDSGlobalNavigationBarLabel';
 export const GLOBAL_NAVIGATION_BAR_LINK = 'SLDSGlobalNavigationBarLink';
 export const GLOBAL_NAVIGATION_BAR_REGION = 'SLDSGlobalNavigationBarRegion';
-export const GLOBAL_NAVIGATION_BAR_APP_LAUNCHER = 'SLDSGlobalNavigationBarAppLauncher';
+export const GLOBAL_NAVIGATION_BAR_APP_LAUNCHER =
+	'SLDSGlobalNavigationBarAppLauncher';
 export const GRID = 'SLDSGrid';
 export const HIGHLIGHTER = 'SLDSHighlighter';
 export const ICON = 'SLDSIcon';
@@ -71,6 +72,7 @@ export const PANEL_FILTER_GROUP = 'SLDSFilterGroup';
 export const PANEL_FILTER_LIST = 'SLDSFilterList';
 export const PANEL_FILTER_LIST_HEADING = 'SLDSPanelFilterListHeading';
 export const PAGE_HEADER = 'SLDSPageHeader';
+export const PILL = 'SLDSPill';
 export const POPOVER = 'SLDSPopover';
 export const POPOVER_TOOLTIP = 'SLDSPopoverTooltip';
 export const PROGRESS_INDICATOR = 'SLDSProgressIndicator';

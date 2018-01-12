@@ -20,7 +20,7 @@ const getPopoverTooltip = (props) => (
 );
 
 const getPopoverTooltipAlign = (props) => {
-/* eslint-disable react/prop-types */
+	/* eslint-disable react/prop-types */
 	const children = [];
 
 	const align = [
@@ -48,55 +48,80 @@ const getPopoverTooltipAlign = (props) => {
 		);
 	});
 
-	return (
-		<div key="container">
-			{children}
-		</div>
-	);
+	return <div key="container">{children}</div>;
 };
 
 storiesOf(POPOVER_TOOLTIP, module)
-	.addDecorator((getStory) => (<div
-		className="slds-p-around--medium slds-m-horizontal--x-large"
-		style={{
-			margin: '100px auto',
-			textAlign: 'center',
-			width: '500px' }}
-	><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>))
-	.add('Base', () => getPopoverTooltip({
-		align: 'bottom',
-		id: 'myPopoverId',
-		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie'
-	}))
+	.addDecorator((getStory) => (
+		<div
+			className="slds-p-around--medium slds-m-horizontal--x-large"
+			style={{
+				margin: '100px auto',
+				textAlign: 'center',
+				width: '500px'
+			}}
+		>
+			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+		</div>
+	))
+	.add('Base', () =>
+		getPopoverTooltip({
+			align: 'bottom',
+			id: 'myPopoverId',
+			content:
+				'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie'
+		})
+	)
 	.add('Button Group', () => <ButtonGroupExample />)
 	.add('Button', () => <ButtonExample />)
-	.add('Open', () => getPopoverTooltip({
-		align: 'bottom',
-		isOpen: true,
-		id: 'myPopoverId',
-		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie'
-	}))
-	.add('Alignment (Button)', () => getPopoverTooltipAlign({
-		id: 'myPopoverId',
-		isOpen: true,
-		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
-		trigger: (<Button label="Trigger Tooltip" />)
-	}))
-	.add('Alignment (span)', () => getPopoverTooltipAlign({
-		id: 'myPopoverId',
-		isOpen: true,
-		content: 'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
-		trigger: (<span tabIndex="0" key="trigger">Trigger Tooltip</span>)
-	}))
-	.add('Alignment (icon)', () => getPopoverTooltipAlign({
-		id: 'myPopoverId',
-		isOpen: true,
-		content: <span><Icon category="utility" inverse name="close" size="x-small" />wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie</span>, // react/no-unescaped-entities
-		trigger: (<Icon
-			assistiveText="Case Icon"
-			category="standard"
-			name="case"
-			size="small"
-			tabIndex="0"
-		/>)
-	}));
+	.add('Open', () =>
+		getPopoverTooltip({
+			align: 'bottom',
+			isOpen: true,
+			id: 'myPopoverId',
+			content:
+				'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie'
+		})
+	)
+	.add('Alignment (Button)', () =>
+		getPopoverTooltipAlign({
+			id: 'myPopoverId',
+			isOpen: true,
+			content:
+				'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
+			trigger: <Button label="Trigger Tooltip" />
+		})
+	)
+	.add('Alignment (span)', () =>
+		getPopoverTooltipAlign({
+			id: 'myPopoverId',
+			isOpen: true,
+			content:
+				'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
+			trigger: (
+				<span tabIndex="0" key="trigger">
+					Trigger Tooltip
+				</span>
+			)
+		})
+	)
+	.add('Alignment (icon)', () =>
+		getPopoverTooltipAlign({
+			id: 'myPopoverId',
+			isOpen: true,
+			content: (
+				<span>
+					<Icon category="utility" inverse name="close" size="x-small" />wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie
+				</span>
+			), // react/no-unescaped-entities
+			trigger: (
+				<Icon
+					assistiveText="Case Icon"
+					category="standard"
+					name="case"
+					size="small"
+					tabIndex="0"
+				/>
+			)
+		})
+	);

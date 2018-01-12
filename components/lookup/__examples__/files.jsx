@@ -16,7 +16,9 @@ const Example = createReactClass({
 					iconInverse={false}
 					iconName="open_folder"
 					label="Files"
-					onSelect={(item) => { console.log(item, ' Selected'); }}
+					onSelect={(item) => {
+						console.log(item, ' Selected');
+					}}
 					options={[
 						{ label: 'File 1' },
 						{ label: 'File 2' },
@@ -29,4 +31,4 @@ const Example = createReactClass({
 	}
 });
 
-export default Example;	// export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

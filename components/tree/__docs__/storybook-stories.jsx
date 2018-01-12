@@ -35,8 +35,8 @@ const DemoTree = createReactClass({
 
 	getInitialState () {
 		const initalNodes = this.props.exampleNodesIndex
-		? sampleNodes[this.props.exampleNodesIndex]
-		: sampleNodes.sampleNodesDefault;
+			? sampleNodes[this.props.exampleNodesIndex]
+			: sampleNodes.sampleNodesDefault;
 		return {
 			nodes: initalNodes,
 			selectedNode: undefined,
@@ -50,10 +50,14 @@ const DemoTree = createReactClass({
 		data.node.loading = data.expand ? true : undefined;
 
 		// Fake delay to demonstrate use of loading node attibute
-		setTimeout((node) => {
-			node.loading = false;
-			this.forceUpdate();
-		}, 500, data.node);
+		setTimeout(
+			(node) => {
+				node.loading = false;
+				this.forceUpdate();
+			},
+			500,
+			data.node
+		);
 		data.node.expanded = data.expand;
 	},
 
@@ -61,15 +65,20 @@ const DemoTree = createReactClass({
 		if (this.props.singleSelection) {
 			data.node.selected = data.select;
 			this.setState((prevState) => {
-				if (this.state.selectedNode && this.state.selectedNode.id !== data.node.id) {
+				if (
+					this.state.selectedNode &&
+					this.state.selectedNode.id !== data.node.id
+				) {
 					this.state.selectedNode.selected = false;
 				}
 
 				return { selectedNode: data.node };
 			});
 			itemClicked('Node Clicked')(event, data);
-		} else if (!this.props.noBranchSelection ||
-				(this.props.noBranchSelection && data.node.type !== 'branch')) {
+		} else if (
+			!this.props.noBranchSelection ||
+			(this.props.noBranchSelection && data.node.type !== 'branch')
+		) {
 			data.node.selected = data.select;
 			// trigger render
 			this.setState((prevState) => ({ ...prevState }));
@@ -87,14 +96,17 @@ const DemoTree = createReactClass({
 
 	render () {
 		return (
-			<div>{
-				this.props.searchable
-				? <div>
-					<Search assistiveText="Search Tree" value={this.state.searchTerm} onChange={this.handleSearchChange} />
-					<br />
-				</div>
-				: null
-			}
+			<div>
+				{this.props.searchable ? (
+					<div>
+						<Search
+							assistiveText="Search Tree"
+							value={this.state.searchTerm}
+							onChange={this.handleSearchChange}
+						/>
+						<br />
+					</div>
+				) : null}
 				<Tree
 					nodes={this.state.nodes}
 					onExpandClick={this.handleExpandClick}
@@ -109,34 +121,43 @@ const DemoTree = createReactClass({
 });
 
 storiesOf(TREE, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium"><IconSettings iconPath="/assets/icons">{getStory()}</IconSettings></div>)
+	.addDecorator((getStory) => (
+		<div className="slds-p-around--medium">
+			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+		</div>
+	))
 	.add('Base', () => <DemoTree heading="Miscellaneous Foods" />)
-	.add('Initial Expanded/Selection', () => (<DemoTree
-		heading="Miscellaneous Foods"
-		exampleNodesIndex="sampleNodesWithInitialState"
-	/>))
-	.add('No Branch Select', () => (<DemoTree
-		heading="Miscellaneous Foods"
-		noBranchSelection
-	/>))
-	.add('Single Selection', () => (<DemoTree
-		heading="Miscellaneous Foods"
-		singleSelection
-	/>))
-	.add('Assistive Heading', () => <DemoTree assistiveText="Miscellaneous Foods" />)
-	.add('Overflow Hidden', () => (<DemoTree
-		heading="Miscellaneous Foods"
-		exampleNodesIndex="sampleNodesWithLargeDataset"
-		listStyle={{
-			height: '300px',
-			overflowY: 'auto'
-		}}
-	/>))
-	.add('Large dataset (300+)', () => (<DemoTree
-		heading="Miscellaneous Foods"
-		exampleNodesIndex="sampleNodesWithLargeDataset"
-	/>))
-	.add('Highlighted Search', () => (<DemoTree
-		heading="Results for fruit"
-		searchable
-	/>));
+	.add('Initial Expanded/Selection', () => (
+		<DemoTree
+			heading="Miscellaneous Foods"
+			exampleNodesIndex="sampleNodesWithInitialState"
+		/>
+	))
+	.add('No Branch Select', () => (
+		<DemoTree heading="Miscellaneous Foods" noBranchSelection />
+	))
+	.add('Single Selection', () => (
+		<DemoTree heading="Miscellaneous Foods" singleSelection />
+	))
+	.add('Assistive Heading', () => (
+		<DemoTree assistiveText="Miscellaneous Foods" />
+	))
+	.add('Overflow Hidden', () => (
+		<DemoTree
+			heading="Miscellaneous Foods"
+			exampleNodesIndex="sampleNodesWithLargeDataset"
+			listStyle={{
+				height: '300px',
+				overflowY: 'auto'
+			}}
+		/>
+	))
+	.add('Large dataset (300+)', () => (
+		<DemoTree
+			heading="Miscellaneous Foods"
+			exampleNodesIndex="sampleNodesWithLargeDataset"
+		/>
+	))
+	.add('Highlighted Search', () => (
+		<DemoTree heading="Results for fruit" searchable />
+	));

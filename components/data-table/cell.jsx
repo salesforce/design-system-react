@@ -15,7 +15,9 @@ import { DATA_TABLE_CELL } from '../../utilities/constants';
  * The default Cell renderer for the DataTable. Pass in any React component with the same `displayName` which takes the same props to provide custom rendering.
  */
 const DataTableCell = (props) => {
-	const childText = React.isValidElement(props.children) ? props.children.props.children : props.children;
+	const childText = React.isValidElement(props.children)
+		? props.children.props.children
+		: props.children;
 	const contents = (
 		<div
 			className={classNames({
@@ -27,22 +29,26 @@ const DataTableCell = (props) => {
 		</div>
 	);
 
-	let cell = (<td
-		className={props.className}
-		role={props.fixedLayout ? 'gridcell' : null}
-		style={props.width ? { width: props.width } : null}
-	>
-		{contents}
-	</td>);
-
-	if (props.primaryColumn) {
-		cell = (<th
+	let cell = (
+		<td
 			className={props.className}
 			role={props.fixedLayout ? 'gridcell' : null}
 			style={props.width ? { width: props.width } : null}
 		>
 			{contents}
-		</th>);
+		</td>
+	);
+
+	if (props.primaryColumn) {
+		cell = (
+			<th
+				className={props.className}
+				role={props.fixedLayout ? 'gridcell' : null}
+				style={props.width ? { width: props.width } : null}
+			>
+				{contents}
+			</th>
+		);
 	}
 
 	return cell;
@@ -61,7 +67,11 @@ DataTableCell.propTypes = {
 	/**
 	 * Class names to be added to the cell.
 	 */
-	className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string
+	]),
 	/**
 	 * Use this if you are creating an advanced table (selectable, sortable, or resizable rows)
 	 */

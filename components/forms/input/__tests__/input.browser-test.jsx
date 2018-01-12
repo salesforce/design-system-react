@@ -26,7 +26,10 @@ describe('SLDSInput', () => {
 	const renderInput = (instance) => {
 		body = document.createElement('div');
 		document.body.appendChild(body);
-		return ReactDOM.render(<IconSettings iconPath="/assets/icons">{instance}</IconSettings>, body);
+		return ReactDOM.render(
+			<IconSettings iconPath="/assets/icons">{instance}</IconSettings>,
+			body
+		);
 	};
 
 	function removeInput () {
@@ -34,7 +37,8 @@ describe('SLDSInput', () => {
 		document.body.removeChild(body);
 	}
 
-	const createInput = (props) => React.createElement(Input, assign({}, defaultProps, props));
+	const createInput = (props) =>
+		React.createElement(Input, assign({}, defaultProps, props));
 	const getInput = (props) => renderInput(createInput(props));
 
 	describe('Standard Input with Label', () => {
@@ -45,9 +49,15 @@ describe('SLDSInput', () => {
 
 		beforeEach(() => {
 			component = getInput({ label: 'Input Label', id: 'custom-id' });
-			wrapper = findRenderedDOMComponentWithClass(component, 'slds-form-element');
+			wrapper = findRenderedDOMComponentWithClass(
+				component,
+				'slds-form-element'
+			);
 			input = findRenderedDOMComponentWithTag(component, 'input');
-			label = findRenderedDOMComponentWithClass(component, 'slds-form-element__label');
+			label = findRenderedDOMComponentWithClass(
+				component,
+				'slds-form-element__label'
+			);
 		});
 
 		afterEach(() => {
@@ -92,7 +102,10 @@ describe('SLDSInput', () => {
 
 		beforeEach(() => {
 			component = getInput({ assistiveText: { label: 'Assistive Label' } });
-			label = findRenderedDOMComponentWithClass(component, 'slds-form-element__label');
+			label = findRenderedDOMComponentWithClass(
+				component,
+				'slds-form-element__label'
+			);
 			input = findRenderedDOMComponentWithTag(component, 'input');
 		});
 
@@ -210,9 +223,19 @@ describe('SLDSInput', () => {
 		let input;
 
 		beforeEach(() => {
-			component = getInput({ label: 'Input Label', required: true, errorText: 'Error Message' });
-			wrapper = findRenderedDOMComponentWithClass(component, 'slds-form-element');
-			error = findRenderedDOMComponentWithClass(component, 'slds-form-element__help');
+			component = getInput({
+				label: 'Input Label',
+				required: true,
+				errorText: 'Error Message'
+			});
+			wrapper = findRenderedDOMComponentWithClass(
+				component,
+				'slds-form-element'
+			);
+			error = findRenderedDOMComponentWithClass(
+				component,
+				'slds-form-element__help'
+			);
 			input = findRenderedDOMComponentWithTag(component, 'input');
 		});
 
@@ -221,7 +244,9 @@ describe('SLDSInput', () => {
 		});
 
 		it('input wrapper contains an <abbr> that has class "slds-required"', () => {
-			expect(findRenderedDOMComponentWithTag(component, 'abbr').className).to.include('slds-required');
+			expect(
+				findRenderedDOMComponentWithTag(component, 'abbr').className
+			).to.include('slds-required');
 		});
 
 		it('input wrapper has class "slds-has-error"', () => {
@@ -249,16 +274,24 @@ describe('SLDSInput', () => {
 
 		beforeEach(() => {
 			component = getInput({
-				iconLeft: <InputIcon
-					assistiveText="Passed assistive text to icon"
-					name="search"
-					category="utility"
-					onClick={clickCallback}
-				/>
+				iconLeft: (
+					<InputIcon
+						assistiveText="Passed assistive text to icon"
+						name="search"
+						category="utility"
+						onClick={clickCallback}
+					/>
+				)
 			});
 			leftButton = findRenderedDOMComponentWithTag(component, 'button');
-			iconAssistiveText = findRenderedDOMComponentWithClass(component, 'slds-assistive-text');
-			elementControl = findRenderedDOMComponentWithClass(component, 'slds-form-element__control');
+			iconAssistiveText = findRenderedDOMComponentWithClass(
+				component,
+				'slds-assistive-text'
+			);
+			elementControl = findRenderedDOMComponentWithClass(
+				component,
+				'slds-form-element__control'
+			);
 		});
 
 		afterEach(() => {
@@ -270,7 +303,9 @@ describe('SLDSInput', () => {
 		});
 
 		it('passes "assitiveText" down to icon', () => {
-			expect(iconAssistiveText.textContent).to.equal('Passed assistive text to icon');
+			expect(iconAssistiveText.textContent).to.equal(
+				'Passed assistive text to icon'
+			);
 		});
 
 		it('icon renders button BEFORE input in DOM', () => {
@@ -293,15 +328,20 @@ describe('SLDSInput', () => {
 
 		beforeEach(() => {
 			component = getInput({
-				iconRight: <InputIcon
-					assistiveText="Passed assistive text to icon"
-					name="search"
-					category="utility"
-					onClick={clickCallback}
-				/>
+				iconRight: (
+					<InputIcon
+						assistiveText="Passed assistive text to icon"
+						name="search"
+						category="utility"
+						onClick={clickCallback}
+					/>
+				)
 			});
 			leftButton = findRenderedDOMComponentWithTag(component, 'button');
-			elementControl = findRenderedDOMComponentWithClass(component, 'slds-form-element__control');
+			elementControl = findRenderedDOMComponentWithClass(
+				component,
+				'slds-form-element__control'
+			);
 		});
 
 		afterEach(() => {
@@ -329,8 +369,13 @@ describe('SLDSInput', () => {
 		let elementControl;
 
 		beforeEach(() => {
-			component = getInput({ iconRight: <Icon name="search" category="utility" /> });
-			elementControl = findRenderedDOMComponentWithClass(component, 'slds-form-element__control');
+			component = getInput({
+				iconRight: <Icon name="search" category="utility" />
+			});
+			elementControl = findRenderedDOMComponentWithClass(
+				component,
+				'slds-form-element__control'
+			);
 		});
 
 		afterEach(() => {
@@ -351,11 +396,13 @@ describe('SLDSInput', () => {
 			component = getInput({
 				assistiveText: { label: 'Passed assistive text to icon' },
 				hasSpinner: true,
-				iconRight: <InputIcon
-					assistiveText="Passed assistive text to icon"
-					name="search"
-					category="utility"
-				/>,
+				iconRight: (
+					<InputIcon
+						assistiveText="Passed assistive text to icon"
+						name="search"
+						category="utility"
+					/>
+				),
 				id: 'unique-id-4',
 				label: 'Input Label'
 			});
@@ -396,17 +443,22 @@ describe('SLDSInput', () => {
 				required: true,
 				errorText: 'Error Message',
 				hasSpinner: true,
-				iconRight: <InputIcon
-					assistiveText="Passed assistive text to icon"
-					name="search"
-					category="utility"
-				/>,
+				iconRight: (
+					<InputIcon
+						assistiveText="Passed assistive text to icon"
+						name="search"
+						category="utility"
+					/>
+				),
 				id: 'unique-id-4',
 				label: 'Input Label'
 			});
 			spinner = findRenderedDOMComponentWithClass(component, 'slds-spinner');
 			input = findRenderedDOMComponentWithTag(component, 'input');
-			error = findRenderedDOMComponentWithClass(component, 'slds-form-element__help');
+			error = findRenderedDOMComponentWithClass(
+				component,
+				'slds-form-element__help'
+			);
 		});
 
 		afterEach(() => {
@@ -417,7 +469,7 @@ describe('SLDSInput', () => {
 			const errorId = error.getAttribute('id');
 			const spinnerId = spinner.getAttribute('id');
 			const inputDescribedby = input.getAttribute('aria-describedby');
-			expect(inputDescribedby).to.equal(spinnerId + ' ' + errorId);
+			expect(inputDescribedby).to.equal(`${spinnerId} ${errorId}`);
 		});
 	});
 
@@ -431,7 +483,10 @@ describe('SLDSInput', () => {
 				id: 'unique-id-5',
 				label: 'Input Label'
 			});
-			fixedTextLeft = findRenderedDOMComponentWithClass(component, 'slds-form-element__addon');
+			fixedTextLeft = findRenderedDOMComponentWithClass(
+				component,
+				'slds-form-element__addon'
+			);
 		});
 
 		afterEach(() => {

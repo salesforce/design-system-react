@@ -62,4 +62,3 @@ test('Icon Size Medium HTML Snapshot', () => {
 test('Icon Size Large HTML Snapshot', () => {
 	expect(renderMarkup(SizesLarge)).toMatchSnapshot();
 });
-

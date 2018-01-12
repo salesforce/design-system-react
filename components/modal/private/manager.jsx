@@ -1,7 +1,6 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-
 import React from 'react';
 import createReactClass from 'create-react-class';
 import ReactDOM from 'react-dom';
@@ -9,7 +8,6 @@ import ReactDOM from 'react-dom';
 import Button from '../../button';
 import Icon from '../../icon';
 import EventUtil from '../../../utilities/event';
-
 
 import Modal from 'react-modal';
 
@@ -77,7 +75,7 @@ const Manager = createReactClass({
 		if (window && document && document.body) {
 			if (this.state.isOpen) {
 				document.body.style.overflow = 'hidden';
-			}			else {
+			} else {
 				document.body.style.overflow = 'inherit';
 			}
 		}
@@ -87,31 +85,34 @@ const Manager = createReactClass({
 		return (
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<div
-				className={`slds-modal${this.state.revealed ? ' slds-fade-in-open' : ''}`}
+				className={`slds-modal${
+					this.state.revealed ? ' slds-fade-in-open' : ''
+				}`}
 				onClick={this.closeModal}
 			>
-				<div className="slds-modal__container" onClick={(e) => { EventUtil.trap(e); }}>
+				<div
+					className="slds-modal__container"
+					onClick={(e) => {
+						EventUtil.trap(e);
+					}}
+				>
 					{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 					<div className="slds-modal__header">
 						<h2 className="slds-text-heading--medium">{this.props.title}</h2>
-						<Button className="slds-button slds-modal__close" onClick={this.closeModal}>
+						<Button
+							className="slds-button slds-modal__close"
+							onClick={this.closeModal}
+						>
 							<Icon name="close" category="utility" size="small" />
 							<span className="slds-assistive-text">Close</span>
 						</Button>
 					</div>
 
-					<div className="slds-modal__content">
-
-						{this.props.children}
-
-					</div>
-					<div className="slds-modal__footer">
-						{this.props.footer}
-					</div>
-
+					<div className="slds-modal__content">{this.props.children}</div>
+					<div className="slds-modal__footer">{this.props.footer}</div>
 				</div>
-
-			</div>);
+			</div>
+		);
 	},
 
 	render () {
@@ -120,7 +121,9 @@ const Manager = createReactClass({
 				isOpen={this.state.isOpen}
 				onRequestClose={this.closeModal}
 				style={customStyles}
-				overlayClassName={`slds-modal-backdrop${this.state.revealed ? ' slds-modal-backdrop--open' : ''}`}
+				overlayClassName={`slds-modal-backdrop${
+					this.state.revealed ? ' slds-modal-backdrop--open' : ''
+				}`}
 			>
 				{this.getModal()}
 			</Modal>
@@ -142,8 +145,6 @@ const Manager = createReactClass({
 			}
 		}
 	}
-
-
 });
 
 export default Manager;
