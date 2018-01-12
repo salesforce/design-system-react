@@ -535,4 +535,6 @@ render () {
 
 Read: [Class Name Manipulation](https://github.com/JedWatson/classnames/blob/master/README.md)
 
+Read: [Airbnb React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)
+
 Some syntax samples are from the [Planning Center](https://github.com/planningcenter/react-patterns)
