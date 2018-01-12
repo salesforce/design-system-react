@@ -20,7 +20,7 @@ Welcome to the project! :wave: This library is the [React](https://facebook.gith
 A CommonJS-compatible version has been included within the NPM package to allows usage without transpiling. Use the following named `import` syntax to access CommonJS components from `/lib/index.js`:
 
 ```
-import { Button } from 'design-system-react';
+import { Button } from '@salesforce/design-system-react';
 
 <Button label="Hello Button" />
 ```
@@ -30,7 +30,7 @@ import { Button } from 'design-system-react';
 Recommended usage requires that your babel presets are set up correctly. `create-react-app` and environments that do not transpile code within `node_modules` are not compatible with the component import below. All the examples on the [documentation site](https://react.lightningdesignsystem.com/) use this syntax. You can use the Babel preset, `@salesforce/babel-preset-design-system-react`, to get started. [This preset](npmjs.com/package/@salesforce-ux/babel-preset-design-system-react) will keep Babel compatible with Design System React and allow ES6 module benefits such as tree-shaking.
 
 ```
-import Button from 'design-system-react/components/button';
+import Button from '@salesforce/design-system-react/components/button';
 
 <Button label="Hello Button" />
 ```
