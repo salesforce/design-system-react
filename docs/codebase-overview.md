@@ -7,15 +7,16 @@ If you want to [contribute](CONTRIBUTING.md), we hope that this overview will he
 ## Top-Level folders
 
 * `components` - React components
-  * `[COMPONENT]` - components that part of the public API
-    _ `__tests__` - Mocha and Jest tests
-    _ `__examples__` Examples used in storybook and documentation website
-    _ `__docs__` - storybook and documentation website imports of examples
-    _ `private` - components that are not a part of the public API \* `utilities` - components that are shared between other components
-* `icons` - Inline icons [legacy]
+    * `[COMPONENT]` - components that are part of the public API
+        * `__tests__` - Mocha and Jest tests
+        * `__examples__` Examples used in storybook and documentation website
+        * `__docs__` - storybook and documentation website imports of examples
+        * `private` - components that are not a part of the public API
+    * `utilities` - components that are shared between other components (not public API)
+* `icons` - Inline icons \[legacy\]
 * `scripts` - Build and release tasks
-* `styles` - Temporary location for styles
-* `utilities` - Scripts that are not React components including `checkProp` warnings, DOM, and event helpers
+* `styles` - Temporary location for styles (use sparingly)
+* `utilities` - Scripts that are not React components including `checkProp` warnings, DOM, and event helpers. (not public API)
 
 ### Introduction to presentational components
 
