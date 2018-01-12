@@ -9,6 +9,7 @@ First, on behalf of the core maintainers, I'd like to thank you for wanting to c
 1. Fork this repository, clone your fork locally. Create a topic branch locally.
 1. Add the new component to the `/components` folder
 1. Add the component name to `/components/constants.js`
+1. If you are modifying an existing component, please fix all eslint errors in your pull request as a separate commit. Bonus kudos for fixing warnings!
 1. Add documentation site examples and dev storybook stories in `/components/[COMPONENT]/__examples__/`
 1. Add Mocha and Snapshot tests to `/components/[COMPONENT]/__tests__/`
 1. Hook up site and storybook examples in `/components/[COMPONENT]/__docs__/`
