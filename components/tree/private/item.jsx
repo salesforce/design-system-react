@@ -11,15 +11,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '../../button';
-
 // ### classNames
 import classNames from 'classnames';
 
-import Highlighter from '../../utilities/highlighter';
-
 // ### isFunction
 import isFunction from 'lodash.isfunction';
+
+import Button from '../../button';
+
+import Highlighter from '../../utilities/highlighter';
 
 // ### Event Helpers
 import EventUtil from '../../../utilities/event';
@@ -72,6 +72,7 @@ const Item = (props) => {
 					disabled
 				/>
 				{/* eslint-disable no-script-url */}
+				{/* eslint-disable jsx-a11y/no-interactive-element-to-noninteractive-role */}
 				<a
 					href="javascript:void(0)"
 					role="presentation"

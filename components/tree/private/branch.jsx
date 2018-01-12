@@ -11,6 +11,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// ### isFunction
+import isFunction from 'lodash.isfunction';
+
+// ### classNames
+import classNames from 'classnames';
+
+// ### shortid
+import shortid from 'shortid';
+
 import Button from '../../button';
 
 // Child components
@@ -18,17 +27,8 @@ import Item from './item';
 
 import Highlighter from '../../utilities/highlighter';
 
-// ### isFunction
-import isFunction from 'lodash.isfunction';
-
 // ### Event Helpers
 import EventUtil from '../../../utilities/event';
-
-// ### classNames
-import classNames from 'classnames';
-
-// ### shortid
-import shortid from 'shortid';
 
 // ## Constants
 import { TREE_BRANCH } from '../../../utilities/constants';
@@ -185,6 +185,7 @@ const renderBranch = (children, props) => {
 					}}
 				/>
 				{/* eslint-disable no-script-url */}
+				{/* eslint-disable jsx-a11y/no-interactive-element-to-noninteractive-role */}
 				<a
 					id={`${props.htmlId}__label`}
 					href="javascript:void(0)"
