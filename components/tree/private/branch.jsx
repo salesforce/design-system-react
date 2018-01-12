@@ -373,7 +373,7 @@ Branch.propTypes = {
 	treeIndex: PropTypes.string
 };
 
-Branch.getDefaultProps = {
+Branch.defaultProps = {
 	level: 0,
 	label: '',
 	treeIndex: ''

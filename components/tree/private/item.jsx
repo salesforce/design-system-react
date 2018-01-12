@@ -125,7 +125,7 @@ Item.propTypes = {
 	treeIndex: PropTypes.string
 };
 
-Item.getDefaultProps = {
+Item.defaultProps = {
 	selected: false
 };
 

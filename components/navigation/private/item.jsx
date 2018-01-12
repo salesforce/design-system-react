@@ -67,7 +67,7 @@ Item.propTypes = {
 	onSelect: PropTypes.func
 };
 
-Item.getDefaultProps = {
+Item.defaultProps = {
 	isSelected: false
 };
 
