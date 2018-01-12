@@ -11,15 +11,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '../../button';
-
 // ### classNames
 import classNames from 'classnames';
 
-import Highlighter from '../../utilities/highlighter';
-
 // ### isFunction
 import isFunction from 'lodash.isfunction';
+
+import Button from '../../button';
+
+import Highlighter from '../../utilities/highlighter';
 
 // ### Event Helpers
 import EventUtil from '../../../utilities/event';
@@ -74,6 +74,7 @@ const Item = (props) => {
 				{/* eslint-disable no-script-url */}
 				<a
 					href="javascript:void(0)"
+					// eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role
 					role="presentation"
 					className="slds-truncate"
 				>
@@ -125,7 +126,7 @@ Item.propTypes = {
 	treeIndex: PropTypes.string
 };
 
-Item.getDefaultProps = {
+Item.defaultProps = {
 	selected: false
 };
 
