@@ -72,9 +72,9 @@ const Item = (props) => {
 					disabled
 				/>
 				{/* eslint-disable no-script-url */}
-				{/* eslint-disable jsx-a11y/no-interactive-element-to-noninteractive-role */}
 				<a
 					href="javascript:void(0)"
+					// eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role
 					role="presentation"
 					className="slds-truncate"
 				>
