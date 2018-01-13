@@ -10,8 +10,7 @@
   "lint-staged": {
     "*.{js,jsx}": [
       "./node_modules/.bin/prettier-eslint --write",
-      "git add",
-      "./node_modules/.bin/eslint --max-warnings=0"
+      "git add"
     ],
     "*.{json,md}": [
       "./node_modules/.bin/prettier --use-tabs=false --write",
