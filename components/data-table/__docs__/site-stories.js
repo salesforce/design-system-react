@@ -4,8 +4,8 @@
 /* eslint-disable global-require */
 
 const siteStories = [
-	require('raw-loader!design-system-react/components/data-table/__examples__/basic.jsx'),
-	require('raw-loader!design-system-react/components/data-table/__examples__/advanced.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/advanced.jsx')
 ];
 
 module.exports = siteStories;

@@ -4,10 +4,10 @@
 /* eslint-disable global-require */
 
 const siteStories = [
-	require('raw-loader!design-system-react/components/filter/__examples__/default.jsx'),
-	require('raw-loader!design-system-react/components/filter/__examples__/new.jsx'),
-	require('raw-loader!design-system-react/components/filter/__examples__/error.jsx'),
-	require('raw-loader!design-system-react/components/filter/__examples__/locked.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/filter/__examples__/default.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/filter/__examples__/new.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/filter/__examples__/error.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/filter/__examples__/locked.jsx')
 ];
 
 module.exports = siteStories;

@@ -4,7 +4,7 @@
 /* eslint-disable global-require */
 
 const siteStories = [
-	require('raw-loader!design-system-react/components/card/__examples__/related-list-with-table.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/card/__examples__/related-list-with-table.jsx')
 ];
 
 module.exports = siteStories;

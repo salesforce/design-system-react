@@ -4,7 +4,7 @@
 /* eslint-disable global-require */
 
 const siteStories = [
-	require('raw-loader!design-system-react/components/radio-group/__examples__/base.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/radio-group/__examples__/base.jsx')
 ];
 
 module.exports = siteStories;
