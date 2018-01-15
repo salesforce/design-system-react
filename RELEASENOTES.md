@@ -31,6 +31,13 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.8.3
+
+**Bugfix**
+
+* Fix Lookup due to `Dialog` upgrade to PopperJS.
+* `Icon` not present in NPM module
+
 ## Release 0.8.2
 
 **Maintenance**
@@ -138,7 +145,6 @@ ReactDOM.render(
   * Added new props isOpen, onRequestOpen, and onRequestClose to Lookup.
 * Dropdown Prop
   * Added new prop `disabled` to Menu Item which gets passed to `aria-disabled` on `role="option"`. Pass it down through options like so:
-
 
 ```
 <MenuDropdown
