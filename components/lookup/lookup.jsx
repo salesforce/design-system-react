@@ -80,6 +80,13 @@ const Lookup = createReactClass({
 		 */
 		describedById: PropTypes.string,
 		/**
+		 * Please select one of the following:
+		 * * `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
+		 * * `overflowBoundaryElement` - The dialog will overflow scrolling parents. Use on elements that are aligned to the left or right of their target and don't care about the target being within a scrolling parent. Typically this is a popover or tooltip. Dropdown menus can usually open up and down if no room exists. In order to achieve this a portal element will be created and attached to `body`. This element will render into that detached render tree.
+		 * * `relative` - No styling or portals will be used. Menus will be positioned relative to their triggers. This is a great choice for HTML snapshot testing.
+		 */
+		menuPosition: PropTypes.string,
+		/**
 		 * This prop is passed onto the `input`. Prevents dropdown menu from opening. Also applies disabled styling to input.
 		 */
 		disabled: PropTypes.bool,
@@ -198,7 +205,8 @@ const Lookup = createReactClass({
 			constrainToScrollParent: true,
 			filterWith: defaultFilter,
 			iconPosition: 'right',
-			searchTerm: ''
+			searchTerm: '',
+			menuPosition: 'absolute'
 		};
 	},
 
@@ -593,6 +601,10 @@ const Lookup = createReactClass({
 	},
 
 	renderSeparateMenu () {
+		// FOR BACKWARDS COMPATIBILITY
+		const menuPosition = this.props.isInline
+			? 'relative'
+			: this.props.menuPosition; // eslint-disable-line react/prop-types
 		return this.getIsOpen() ? (
 			<Dialog
 				align="bottom"
@@ -605,6 +617,7 @@ const Lookup = createReactClass({
 				hasStaticAlignement={!this.props.flippable}
 				constrainToScrollParent={this.props.constrainToScrollParent}
 				onRequestTargetElement={() => this.input}
+				position={menuPosition}
 			>
 				{this.renderMenuContent()}
 			</Dialog>
