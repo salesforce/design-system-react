@@ -4,11 +4,11 @@
 /* eslint-disable global-require */
 
 const siteStories = [
-	require('raw-loader!design-system-react/components/toast/__examples__/info.jsx'),
-	require('raw-loader!design-system-react/components/toast/__examples__/success.jsx'),
-	require('raw-loader!design-system-react/components/toast/__examples__/warning.jsx'),
-	require('raw-loader!design-system-react/components/toast/__examples__/error.jsx'),
-	require('raw-loader!design-system-react/components/toast/__examples__/error-with-details.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/toast/__examples__/info.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/toast/__examples__/success.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/toast/__examples__/warning.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/toast/__examples__/error.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/toast/__examples__/error-with-details.jsx')
 ];
 
 module.exports = siteStories;

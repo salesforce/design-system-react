@@ -4,8 +4,8 @@
 /* eslint-disable global-require */
 
 const siteStories = [
-	require('raw-loader!design-system-react/components/forms/radio/__examples__/default.jsx'),
-	require('raw-loader!design-system-react/components/forms/radio/__examples__/disabled.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/forms/radio/__examples__/default.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/forms/radio/__examples__/disabled.jsx')
 ];
 
 module.exports = siteStories;

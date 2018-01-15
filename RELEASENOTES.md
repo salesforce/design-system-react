@@ -31,6 +31,18 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.8.4
+
+**Bugfix**
+
+* `Icon` not present in NPM module due to gitignore's EMACS settings.
+
+## Release 0.8.3
+
+**Bugfix**
+
+* Fix Lookup due to `Dialog` upgrade to PopperJS.
+
 ## Release 0.8.2
 
 **Maintenance**

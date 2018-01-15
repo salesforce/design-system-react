@@ -4,8 +4,8 @@
 /* eslint-disable global-require */
 
 const siteStories = [
-	require('raw-loader!design-system-react/components/button-group/__examples__/more-icon.jsx'),
-	require('raw-loader!design-system-react/components/button-group/__examples__/icon-group.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/button-group/__examples__/more-icon.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/button-group/__examples__/icon-group.jsx')
 ];
 
 module.exports = siteStories;

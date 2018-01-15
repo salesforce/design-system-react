@@ -4,9 +4,9 @@
 /* eslint-disable global-require */
 
 const siteStories = [
-	require('raw-loader!design-system-react/components/popover/__examples__/header.jsx'),
-	require('raw-loader!design-system-react/components/popover/__examples__/alternative-header.jsx'),
-	require('raw-loader!design-system-react/components/popover/__examples__/controlled-with-footer.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/header.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/alternative-header.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/controlled-with-footer.jsx')
 ];
 
 module.exports = siteStories;

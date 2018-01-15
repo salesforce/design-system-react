@@ -4,8 +4,8 @@
 /* eslint-disable global-require */
 
 const siteStories = [
-	require('raw-loader!design-system-react/components/navigation/__examples__/default.jsx'),
-	require('raw-loader!design-system-react/components/navigation/__examples__/shade.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/navigation/__examples__/default.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/navigation/__examples__/shade.jsx')
 ];
 
 module.exports = siteStories;

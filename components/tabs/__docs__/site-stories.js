@@ -4,8 +4,8 @@
 /* eslint-disable global-require */
 
 const siteStories = [
-	require('raw-loader!design-system-react/components/tabs/__examples__/default.jsx'),
-	require('raw-loader!design-system-react/components/tabs/__examples__/scoped.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/tabs/__examples__/default.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/tabs/__examples__/scoped.jsx')
 ];
 
 module.exports = siteStories;

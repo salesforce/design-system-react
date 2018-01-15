@@ -14,19 +14,21 @@ $ npm install @salesforce-ux/design-system @salesforce/design-system-react
 
 Welcome to the project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/). This library has a peer dependency on `@salesforce-ux/design-system`, `react`, and `react-dom`. It has been tested with React >=15.4.1 <16 and is stable despite its version number. A 1.0 will be released soon.
 
-* [Usage](#usage-recommended)
+* [Usage](#usage)
 * [Getting Started](https://react.lightningdesignsystem.com/getting-started/)
 * [Documentation and interactive examples](https://react.lightningdesignsystem.com)
 * [Contributing](CONTRIBUTING.md)
 * [Codebase Overview](docs/codebase-overview.md)
 * [Usage with Webpack](docs/webpack.md)
 
+## Usage
+
 ### Quick Setup (CommonJS)
 
 A CommonJS-compatible version has been included within the NPM package to allows usage without transpiling. Use the following named `import` syntax to access CommonJS components from `/lib/index.js`:
 
 ```
-import { Button } from 'design-system-react';
+import { Button } from '@salesforce/design-system-react';
 
 <Button label="Hello Button" />
 ```
@@ -36,7 +38,7 @@ import { Button } from 'design-system-react';
 Recommended usage requires that your babel presets are set up correctly. `create-react-app` and environments that do not transpile code within `node_modules` are not compatible with the component import below. All the examples on the [documentation site](https://react.lightningdesignsystem.com/) use this syntax. You can use the Babel preset, `@salesforce/babel-preset-design-system-react`, to get started. [This preset](https://npmjs.com/package/@salesforce/babel-preset-design-system-react) will keep Babel compatible with Design System React and allow ES6 module benefits such as tree-shaking.
 
 ```
-import Button from 'design-system-react/components/button';
+import Button from '@salesforce/design-system-react/components/button';
 
 <Button label="Hello Button" />
 ```
@@ -58,7 +60,7 @@ Prior to v0.7.0, SLDS icons were bundled with the JavaScript. The 400KB+ icons b
 Typically, scripts should be downloaded in the background without blocking the DOM. With React, this works best with [server side rendering](https://reactjs.org/docs/react-dom-server.html#rendertostaticmarkup). SLDS recommends placeholder stencils while scripts are initializing if the HTML cannot be served immediately. If you can serve the HTML, then icon SVGs should not be bundled and served like any other file. Set a path `context` for all child components with `<IconSettings>` at the top of your render tree:
 
 ```
-import IconSettings from 'design-system-react/components/icon-settings';
+import IconSettings from '@salesforce/design-system-react/components/icon-settings';
 
 ReactDOM.render(
   <IconSettings iconPath="/assets/icons">
@@ -83,7 +85,7 @@ app.use('/assets/icons', express.static('node_modules/@salesforce-ux/icons/dist/
 If you use a module bundler, like Webpack, you can import the individual `sprite` files and assign them to the `<IconSettings>` sprite properties. Your SVG images will be bundled with your scripts and block the DOM from rendering until the script file is loaded.
 
 ```
-import IconSettings from 'design-system-react/components/icon-settings';
+import IconSettings from '@salesforce/design-system-react/components/icon-settings';
 
 import standardSprite from '@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg';
 ...

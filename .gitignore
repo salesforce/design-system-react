@@ -12,7 +12,7 @@ storybook/
 # Publishing and dist build
 .tmp*
 
-# For build server. A copy of itself is 
+# For build server. A copy of itself from master is pulled down in order to publish itself.
 design-system-react
 
 # Allow custom pre-commit
@@ -158,8 +158,9 @@ anaconda-mode/
 .AppleDouble
 .LSOverride
 
+# Removed due to Icon component not working on NPM.
 # Icon must end with two \r
-Icon
+# Icon
 
 # Thumbnails
 ._*

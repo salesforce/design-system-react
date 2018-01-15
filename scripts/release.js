@@ -113,7 +113,7 @@ const tasks = ({ release, done }) => {
 		},
 		{
 			message: '# Publish to NPM',
-			command: 'npm publish .tmp-npm'
+			command: 'npm publish .tmp-npm --access public'
 		},
 		{
 			message: '# Remove NPM configuration',

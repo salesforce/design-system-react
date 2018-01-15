@@ -4,8 +4,8 @@
 /* eslint-disable global-require */
 
 const siteStories = [
-	require('raw-loader!design-system-react/components/breadcrumb/__examples__/base.jsx'),
-	require('raw-loader!design-system-react/components/breadcrumb/__examples__/one-item.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/breadcrumb/__examples__/base.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/breadcrumb/__examples__/one-item.jsx')
 ];
 
 module.exports = siteStories;

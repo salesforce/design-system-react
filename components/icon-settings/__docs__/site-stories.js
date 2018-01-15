@@ -4,8 +4,8 @@
 /* eslint-disable global-require */
 
 const siteStories = [
-	require('raw-loader!design-system-react/components/icon-settings/__examples__/icon-path.jsx'),
-	require('raw-loader!design-system-react/components/icon-settings/__examples__/sprite.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/icon-settings/__examples__/icon-path.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/icon-settings/__examples__/sprite.jsx')
 ];
 
 module.exports = siteStories;
