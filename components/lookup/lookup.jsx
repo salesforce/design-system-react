@@ -601,6 +601,10 @@ const Lookup = createReactClass({
 	},
 
 	renderSeparateMenu () {
+		// FOR BACKWARDS COMPATIBILITY
+		const menuPosition = this.props.isInline
+			? 'relative'
+			: this.props.menuPosition; // eslint-disable-line react/prop-types
 		return this.getIsOpen() ? (
 			<Dialog
 				align="bottom"
@@ -613,7 +617,7 @@ const Lookup = createReactClass({
 				hasStaticAlignement={!this.props.flippable}
 				constrainToScrollParent={this.props.constrainToScrollParent}
 				onRequestTargetElement={() => this.input}
-				position={this.props.menuPosition}
+				position={menuPosition}
 			>
 				{this.renderMenuContent()}
 			</Dialog>
