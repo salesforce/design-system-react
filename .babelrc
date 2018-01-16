@@ -1,13 +1,5 @@
 {
-  "presets": [
-    ["env", {
-      "targets": {
-        browsers: ['last 2 versions', 'ie 11'],
-        node: '6.8'
-      }
-    }],
-    "babel-preset-react"
-  ],
+  "presets": ["@salesforce/babel-preset-design-system-react"],
   "env": {
     "amd": {
       "plugins": ["import-noop"]
@@ -23,10 +15,6 @@
     "preset/**",
   ],
   plugins: [
-    "root-import",
-    "transform-object-rest-spread",
-    "transform-class-properties",
-    "syntax-export-extensions",
-    "transform-export-extensions"
+    "root-import"
   ]
 }
