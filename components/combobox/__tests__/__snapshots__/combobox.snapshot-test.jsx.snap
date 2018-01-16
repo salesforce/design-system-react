@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Base DOM & HTML Snapshots 1`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 1`] = `
 <div
   className="slds-form-element"
 >
@@ -188,7 +188,7 @@ exports[`Base DOM & HTML Snapshots 1`] = `
 </div>
 `;
 
-exports[`Base DOM & HTML Snapshots 2`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 2`] = `
 "<div class=\\"slds-form-element\\">
   <div class=\\"slds-form-element__control\\">
     <div class=\\"slds-combobox_container\\">
@@ -213,7 +213,7 @@ exports[`Base DOM & HTML Snapshots 2`] = `
 </div>"
 `;
 
-exports[`Base DOM & HTML Snapshots 3`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 3`] = `
 <div
   className="slds-form-element this-is-the-container"
 >
@@ -401,7 +401,7 @@ exports[`Base DOM & HTML Snapshots 3`] = `
 </div>
 `;
 
-exports[`Base DOM & HTML Snapshots 4`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 4`] = `
 "<div class=\\"slds-form-element this-is-the-container\\">
   <div class=\\"slds-form-element__control\\">
     <div class=\\"slds-combobox_container\\">
@@ -426,7 +426,7 @@ exports[`Base DOM & HTML Snapshots 4`] = `
 </div>"
 `;
 
-exports[`Base DOM & HTML Snapshots 5`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 5`] = `
 <div
   className="slds-form-element"
 >
@@ -579,7 +579,7 @@ exports[`Base DOM & HTML Snapshots 5`] = `
 </div>
 `;
 
-exports[`Base DOM & HTML Snapshots 6`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 6`] = `
 "<div class=\\"slds-form-element\\">
   <div class=\\"slds-form-element__control\\">
     <div class=\\"slds-combobox_container\\">
@@ -600,7 +600,7 @@ exports[`Base DOM & HTML Snapshots 6`] = `
 </div>"
 `;
 
-exports[`Base DOM & HTML Snapshots 7`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 7`] = `
 <div
   className="slds-form-element"
 >
@@ -677,7 +677,7 @@ exports[`Base DOM & HTML Snapshots 7`] = `
 </div>
 `;
 
-exports[`Base DOM & HTML Snapshots 8`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 8`] = `
 "<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
   <div class=\\"slds-form-element__control\\">
     <div class=\\"slds-combobox_container\\">
@@ -690,7 +690,7 @@ exports[`Base DOM & HTML Snapshots 8`] = `
 </div>"
 `;
 
-exports[`Base DOM & HTML Snapshots 9`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 9`] = `
 <div
   className="slds-form-element"
 >
@@ -813,7 +813,7 @@ exports[`Base DOM & HTML Snapshots 9`] = `
 </div>
 `;
 
-exports[`Base DOM & HTML Snapshots 10`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 10`] = `
 "<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
   <div class=\\"slds-form-element__control\\">
     <div class=\\"slds-combobox_container slds-has-inline-listbox\\">
@@ -829,7 +829,7 @@ exports[`Base DOM & HTML Snapshots 10`] = `
 </div>"
 `;
 
-exports[`Base DOM & HTML Snapshots 11`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 11`] = `
 <div
   className="slds-form-element"
 >
@@ -909,7 +909,7 @@ exports[`Base DOM & HTML Snapshots 11`] = `
 </div>
 `;
 
-exports[`Base DOM & HTML Snapshots 12`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 12`] = `
 "<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
   <div class=\\"slds-form-element__control\\">
     <div class=\\"slds-combobox_container\\">
@@ -922,7 +922,7 @@ exports[`Base DOM & HTML Snapshots 12`] = `
 </div>"
 `;
 
-exports[`Base DOM & HTML Snapshots 13`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 13`] = `
 <div
   className="slds-form-element"
 >
@@ -1150,7 +1150,7 @@ exports[`Base DOM & HTML Snapshots 13`] = `
 </div>
 `;
 
-exports[`Base DOM & HTML Snapshots 14`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 14`] = `
 "<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
   <div class=\\"slds-form-element__control\\">
     <div class=\\"slds-combobox_container slds-has-inline-listbox\\">
@@ -1175,7 +1175,7 @@ exports[`Base DOM & HTML Snapshots 14`] = `
 </div>"
 `;
 
-exports[`Base DOM & HTML Snapshots 15`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 15`] = `
 <div
   className="slds-form-element"
 >
@@ -1258,7 +1258,7 @@ exports[`Base DOM & HTML Snapshots 15`] = `
 </div>
 `;
 
-exports[`Base DOM & HTML Snapshots 16`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 16`] = `
 "<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
   <div class=\\"slds-form-element__control\\">
     <div class=\\"slds-combobox_container\\">
@@ -1273,7 +1273,7 @@ exports[`Base DOM & HTML Snapshots 16`] = `
 </div>"
 `;
 
-exports[`Base DOM & HTML Snapshots 17`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 17`] = `
 <div
   className="slds-form-element"
 >
@@ -1356,7 +1356,7 @@ exports[`Base DOM & HTML Snapshots 17`] = `
 </div>
 `;
 
-exports[`Base DOM & HTML Snapshots 18`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 18`] = `
 "<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
   <div class=\\"slds-form-element__control\\">
     <div class=\\"slds-combobox_container\\">
@@ -1371,7 +1371,7 @@ exports[`Base DOM & HTML Snapshots 18`] = `
 </div>"
 `;
 
-exports[`Base DOM & HTML Snapshots 19`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 19`] = `
 <div
   className="slds-form-element"
 >
@@ -1818,7 +1818,7 @@ exports[`Base DOM & HTML Snapshots 19`] = `
 </div>
 `;
 
-exports[`Base DOM & HTML Snapshots 20`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 20`] = `
 "<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
   <div class=\\"slds-form-element__control\\">
     <div class=\\"slds-combobox_container\\">
@@ -1878,7 +1878,7 @@ exports[`Base DOM & HTML Snapshots 20`] = `
 </div>"
 `;
 
-exports[`Base DOM & HTML Snapshots 21`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 21`] = `
 <div
   className="slds-form-element"
 >
@@ -1961,7 +1961,7 @@ exports[`Base DOM & HTML Snapshots 21`] = `
 </div>
 `;
 
-exports[`Base DOM & HTML Snapshots 22`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 22`] = `
 "<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
   <div class=\\"slds-form-element__control\\">
     <div class=\\"slds-combobox_container\\">
@@ -1976,7 +1976,7 @@ exports[`Base DOM & HTML Snapshots 22`] = `
 </div>"
 `;
 
-exports[`Base DOM & HTML Snapshots 23`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 23`] = `
 <div
   className="slds-form-element"
 >
@@ -2059,7 +2059,7 @@ exports[`Base DOM & HTML Snapshots 23`] = `
 </div>
 `;
 
-exports[`Base DOM & HTML Snapshots 24`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 24`] = `
 "<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
   <div class=\\"slds-form-element__control\\">
     <div class=\\"slds-combobox_container\\">
@@ -2074,7 +2074,7 @@ exports[`Base DOM & HTML Snapshots 24`] = `
 </div>"
 `;
 
-exports[`Base DOM & HTML Snapshots 25`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 25`] = `
 <div
   className="slds-form-element"
 >
@@ -2259,7 +2259,7 @@ exports[`Base DOM & HTML Snapshots 25`] = `
 </div>
 `;
 
-exports[`Base DOM & HTML Snapshots 26`] = `
+exports[`SLDSCombobox Base DOM & HTML Snapshots 26`] = `
 "<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
   <div class=\\"slds-form-element__control\\">
     <div class=\\"slds-combobox_container\\">

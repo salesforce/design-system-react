@@ -22,78 +22,80 @@ import SnapshotReadonlySingleSelectionCustomMenuItemOpen from '../__examples__/s
 
 import { COMBOBOX } from '../../../utilities/constants';
 
-test('Base DOM & HTML Snapshots', () => {
-	testDOMandHTML(SnapshotBaseOpen);
-	testDOMandHTML(SnapshotBaseOpenClassName);
-	testDOMandHTML(SnapshotBaseSelected);
-	testDOMandHTML(SnapshotInlineSingleSelection);
-	testDOMandHTML(SnapshotInlineSingleSelectionSelected);
-	testDOMandHTML(SnapshotInlineMultipleSelection);
-	testDOMandHTML(SnapshotInlineMultipleSelectionSelected);
-	testDOMandHTML(SnapshotReadonlySingleSelection);
-	testDOMandHTML(SnapshotReadonlySingleSelectionSelected);
-	testDOMandHTML(SnapshotReadonlySingleSelectionSelectedOpen);
-	testDOMandHTML(SnapshotReadonlyMultipleSelection);
-	testDOMandHTML(SnapshotReadonlyMultipleSelectionSingleItemSelected);
-	testDOMandHTML(SnapshotReadonlyMultipleSelectionMultipleItemsSelected);
-});
+describe(COMBOBOX, () => {
+	test('Base DOM & HTML Snapshots', () => {
+		testDOMandHTML(SnapshotBaseOpen);
+		testDOMandHTML(SnapshotBaseOpenClassName);
+		testDOMandHTML(SnapshotBaseSelected);
+		testDOMandHTML(SnapshotInlineSingleSelection);
+		testDOMandHTML(SnapshotInlineSingleSelectionSelected);
+		testDOMandHTML(SnapshotInlineMultipleSelection);
+		testDOMandHTML(SnapshotInlineMultipleSelectionSelected);
+		testDOMandHTML(SnapshotReadonlySingleSelection);
+		testDOMandHTML(SnapshotReadonlySingleSelectionSelected);
+		testDOMandHTML(SnapshotReadonlySingleSelectionSelectedOpen);
+		testDOMandHTML(SnapshotReadonlyMultipleSelection);
+		testDOMandHTML(SnapshotReadonlyMultipleSelectionSingleItemSelected);
+		testDOMandHTML(SnapshotReadonlyMultipleSelectionMultipleItemsSelected);
+	});
 
-test('Base Open Image Snapshot', async () => {
-	await testImageSnapshot(COMBOBOX, 'Base Open');
-});
+	test('Base Open Image Snapshot', async () => {
+		await testImageSnapshot(COMBOBOX, 'Base Open');
+	});
 
-test('Base Selected Image Snapshot', async () => {
-	await testImageSnapshot(COMBOBOX, 'Base Selected');
-});
+	test('Base Selected Image Snapshot', async () => {
+		await testImageSnapshot(COMBOBOX, 'Base Selected');
+	});
 
-test('Base Open Custom Class Name Image Snapshot', async () => {
-	await testImageSnapshot(COMBOBOX, 'Base Open Custom Class Name');
-});
+	test('Base Open Custom Class Name Image Snapshot', async () => {
+		await testImageSnapshot(COMBOBOX, 'Base Open Custom Class Name');
+	});
 
-test('Inline Single Selection Image Snapshot', async () => {
-	await testImageSnapshot(COMBOBOX, 'Inline Single Selection');
-});
+	test('Inline Single Selection Image Snapshot', async () => {
+		await testImageSnapshot(COMBOBOX, 'Inline Single Selection');
+	});
 
-test('Inline Single Selection Selected Image Snapshot', async () => {
-	await testImageSnapshot(COMBOBOX, 'Inline Single Selection Selected');
-});
+	test('Inline Single Selection Selected Image Snapshot', async () => {
+		await testImageSnapshot(COMBOBOX, 'Inline Single Selection Selected');
+	});
 
-test('Inline Multiple Selection Image Snapshot', async () => {
-	await testImageSnapshot(COMBOBOX, 'Inline Multiple Selection');
-});
+	test('Inline Multiple Selection Image Snapshot', async () => {
+		await testImageSnapshot(COMBOBOX, 'Inline Multiple Selection');
+	});
 
-test('Inline Multiple Selection Selected Image Snapshot', async () => {
-	await testImageSnapshot(COMBOBOX, 'Inline Multiple Selection Selected');
-});
+	test('Inline Multiple Selection Selected Image Snapshot', async () => {
+		await testImageSnapshot(COMBOBOX, 'Inline Multiple Selection Selected');
+	});
 
-test('Base Custom Menu Item Open Image Snapshot', async () => {
-	await testImageSnapshot(COMBOBOX, 'Base Custom Menu Item Open');
-});
+	test('Base Custom Menu Item Open Image Snapshot', async () => {
+		await testImageSnapshot(COMBOBOX, 'Base Custom Menu Item Open');
+	});
 
-test('Readonly Single Selection Image Snapshot', async () => {
-	await testImageSnapshot(COMBOBOX, 'Readonly Single Selection');
-});
+	test('Readonly Single Selection Image Snapshot', async () => {
+		await testImageSnapshot(COMBOBOX, 'Readonly Single Selection');
+	});
 
-test('Readonly Single Selection Selected Image Snapshot', async () => {
-	await testImageSnapshot(COMBOBOX, 'Readonly Single Selection Selected');
-});
+	test('Readonly Single Selection Selected Image Snapshot', async () => {
+		await testImageSnapshot(COMBOBOX, 'Readonly Single Selection Selected');
+	});
 
-test('Readonly Single Selection Selected Open Image Snapshot', async () => {
-	await testImageSnapshot(COMBOBOX, 'Readonly Single Selection Selected Open');
-});
+	test('Readonly Single Selection Selected Open Image Snapshot', async () => {
+		await testImageSnapshot(COMBOBOX, 'Readonly Single Selection Selected Open');
+	});
 
-test('Readonly Multiple Selection Image Snapshot', async () => {
-	await testImageSnapshot(COMBOBOX, 'Readonly Multiple Selection');
-});
+	test('Readonly Multiple Selection Image Snapshot', async () => {
+		await testImageSnapshot(COMBOBOX, 'Readonly Multiple Selection');
+	});
 
-test('Readonly Multiple Selection Single Item Selected Image Snapshot', async () => {
-	await testImageSnapshot(COMBOBOX, 'Readonly Multiple Selection Single Item Selected');
-});
+	test('Readonly Multiple Selection Single Item Selected Image Snapshot', async () => {
+		await testImageSnapshot(COMBOBOX, 'Readonly Multiple Selection Single Item Selected');
+	});
 
-test('Readonly Multiple Selection Multiple Items Selected Image Snapshot', async () => {
-	await testImageSnapshot(COMBOBOX, 'Readonly Multiple Selection Multiple Items Selected');
-});
+	test('Readonly Multiple Selection Multiple Items Selected Image Snapshot', async () => {
+		await testImageSnapshot(COMBOBOX, 'Readonly Multiple Selection Multiple Items Selected');
+	});
 
-test('Readonly Single Selection Custom Menu Item Open Image Snapshot', async () => {
-	await testImageSnapshot(COMBOBOX, 'Readonly Single Selection Custom Menu Item Open');
+	test('Readonly Single Selection Custom Menu Item Open Image Snapshot', async () => {
+		await testImageSnapshot(COMBOBOX, 'Readonly Single Selection Custom Menu Item Open');
+	});
 });
