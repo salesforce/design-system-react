@@ -235,7 +235,7 @@ exports[`Datepicker
                 <span
                   className="slds-truncate"
                 >
-                  Year
+                  2007
                 </span>
                 <span
                   className={undefined}

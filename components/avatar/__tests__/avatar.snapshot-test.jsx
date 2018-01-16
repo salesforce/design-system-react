@@ -9,30 +9,32 @@ import SnapshotUserInitials from '../__examples__/user-initials';
 
 import { AVATAR } from '../../../utilities/constants';
 
-test('Base DOM & HTML Snapshots', () => {
-	testDOMandHTML(SnapshotBase);
-	testDOMandHTML(SnapshotEntityIcon);
-	testDOMandHTML(SnapshotEntityInitials);
-	testDOMandHTML(SnapshotUserIcon);
-	testDOMandHTML(SnapshotUserInitials);
-});
+describe(AVATAR, () => {
+	test('Base DOM & HTML Snapshots', () => {
+		testDOMandHTML(SnapshotBase);
+		testDOMandHTML(SnapshotEntityIcon);
+		testDOMandHTML(SnapshotEntityInitials);
+		testDOMandHTML(SnapshotUserIcon);
+		testDOMandHTML(SnapshotUserInitials);
+	});
 
-test('Base Image Snapshot', async () => {
-	await testImageSnapshot(AVATAR, 'Base');
-});
+	test('Base Image Snapshot', async () => {
+		await testImageSnapshot(AVATAR, 'Base');
+	});
 
-test('Entity Icon Image Snapshot', async () => {
-	await testImageSnapshot(AVATAR, 'Entity Icon');
-});
+	test('Entity Icon Image Snapshot', async () => {
+		await testImageSnapshot(AVATAR, 'Entity Icon');
+	});
 
-test('Entity Initials Image Snapshot', async () => {
-	await testImageSnapshot(AVATAR, 'Entity Initials');
-});
+	test('Entity Initials Image Snapshot', async () => {
+		await testImageSnapshot(AVATAR, 'Entity Initials');
+	});
 
-test('User Icon Image Snapshot', async () => {
-	await testImageSnapshot(AVATAR, 'User Icon');
-});
+	test('User Icon Image Snapshot', async () => {
+		await testImageSnapshot(AVATAR, 'User Icon');
+	});
 
-test('User Initials Image Snapshot', async () => {
-	await testImageSnapshot(AVATAR, 'User Initials');
+	test('User Initials Image Snapshot', async () => {
+		await testImageSnapshot(AVATAR, 'User Initials');
+	});
 });

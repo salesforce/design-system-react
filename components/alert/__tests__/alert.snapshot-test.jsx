@@ -10,35 +10,37 @@ import CustomClassNames from '../__examples__/custom-class-name';
 
 import { ALERT } from '../../../utilities/constants';
 
-test('Base DOM & HTML Snapshots', () => {
-	testDOMandHTML(Info);
-	testDOMandHTML(Warning);
-	testDOMandHTML(ErrorAlert);
-	testDOMandHTML(Offline);
-	testDOMandHTML(Dismissable);
-	testDOMandHTML(CustomClassNames);
-});
+describe(ALERT, () => {
+	test('Base DOM & HTML Snapshots look the same', () => {
+		testDOMandHTML(Info);
+		testDOMandHTML(Warning);
+		testDOMandHTML(ErrorAlert);
+		testDOMandHTML(Offline);
+		testDOMandHTML(Dismissable);
+		testDOMandHTML(CustomClassNames);
+	});
 
-test('Info Image Snapshot', async () => {
-	await testImageSnapshot(ALERT, 'Info');
-});
+	test('Info Image Snapshot looks the same', async () => {
+		await testImageSnapshot(ALERT, 'Info');
+	});
 
-test('Warning Image Snapshot', async () => {
-	await testImageSnapshot(ALERT, 'Warning');
-});
+	test('Warning Image Snapshot looks the same', async () => {
+		await testImageSnapshot(ALERT, 'Warning');
+	});
 
-test('Error Image Snapshot', async () => {
-	await testImageSnapshot(ALERT, 'Error');
-});
+	test('Error Image Snapshot looks the same', async () => {
+		await testImageSnapshot(ALERT, 'Error');
+	});
 
-test('Offline Image Snapshot', async () => {
-	await testImageSnapshot(ALERT, 'Offline');
-});
+	test('Offline Image Snapshot looks the same', async () => {
+		await testImageSnapshot(ALERT, 'Offline');
+	});
 
-test('Dismissable Image Snapshot', async () => {
-	await testImageSnapshot(ALERT, 'Dismissable');
-});
+	test('Dismissable Image Snapshot looks the same', async () => {
+		await testImageSnapshot(ALERT, 'Dismissable');
+	});
 
-test('Custom Class Name Image Snapshot', async () => {
-	await testImageSnapshot(ALERT, 'Custom Class Name');
+	test('Custom Class Name Image Snapshot looks the same', async () => {
+		await testImageSnapshot(ALERT, 'Custom Class Name');
+	});
 });
