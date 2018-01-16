@@ -6,15 +6,17 @@ import Advanced from '../__examples__/advanced';
 
 import { DATA_TABLE } from '../../../utilities/constants';
 
-test('DOM & HTML Snapshots', () => {
-	testDOMandHTML(Basic);
-	testDOMandHTML(Advanced);
-});
+describe(DATA_TABLE, () => {
+	test('DOM & HTML Snapshots', () => {
+		testDOMandHTML(Basic);
+		testDOMandHTML(Advanced);
+	});
 
-test('Basic Image Snapshot', async () => {
-	await testImageSnapshot(DATA_TABLE, 'Basic');
-});
+	test('Basic Image Snapshot', async () => {
+		await testImageSnapshot(DATA_TABLE, 'Basic');
+	});
 
-test('Advanced Image Snapshot', async () => {
-	await testImageSnapshot(DATA_TABLE, 'Advanced');
+	test('Advanced Image Snapshot', async () => {
+		await testImageSnapshot(DATA_TABLE, 'Advanced');
+	});
 });
