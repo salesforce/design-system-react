@@ -15,5 +15,13 @@ describe(BUTTON_STATEFUL, () => {
 	test('Base Image Snapshot looks the same', async () => {
 		await testImageSnapshot(BUTTON_STATEFUL, 'Base');
 	});
+
+	test('Disabled Image Snapshot looks the same', async () => {
+		await testImageSnapshot(BUTTON_STATEFUL, 'Disabled');
+	});
+
+	test('Icon Image Snapshot looks the same', async () => {
+		await testImageSnapshot(BUTTON_STATEFUL, 'Icon');
+	});
 });
 
