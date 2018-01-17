@@ -356,3 +356,493 @@ exports[`Permanant Filter Base Snapshot 1`] = `
   </SLDSFilter>
 </SLDSIconSettings>
 `;
+
+exports[`SLDSFilter AssistiveTextFilter DOM & HTML Snapshots look the same 1`] = `
+<div
+  className="slds-filters__item slds-grid slds-grid--vertical-align-center"
+>
+  <div
+    className="slds-grow"
+    style={
+      Object {
+        "display": "inline",
+      }
+    }
+  >
+    <button
+      aria-describedby={undefined}
+      className="slds-button--reset slds-grow slds-has-blur-focus"
+      id="sample-panel-filtering-show-me"
+      onClick={[Function]}
+      onFocus={null}
+      onMouseDown={undefined}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      tabIndex="0"
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        editFilter-TEST
+      </span>
+      <p
+        className="slds-text-body--small"
+      >
+        Show Me
+      </p>
+      <p>
+        All Products
+      </p>
+    </button>
+  </div>
+  <button
+    aria-controls={undefined}
+    aria-describedby={undefined}
+    aria-expanded={undefined}
+    aria-haspopup={undefined}
+    className="slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small"
+    disabled={false}
+    id={undefined}
+    onBlur={undefined}
+    onClick={[Function]}
+    onFocus={undefined}
+    onKeyDown={undefined}
+    onKeyPress={undefined}
+    onKeyUp={undefined}
+    onMouseDown={undefined}
+    onMouseEnter={undefined}
+    onMouseLeave={undefined}
+    tabIndex={undefined}
+    title="removeFilter-TEST"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-button__icon slds-button__icon--hint"
+    >
+      <use
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      removeFilter-TEST
+    </span>
+  </button>
+</div>
+`;
+
+exports[`SLDSFilter AssistiveTextFilter DOM & HTML Snapshots look the same 2`] = `
+"<div class=\\"slds-filters__item slds-grid slds-grid--vertical-align-center\\">
+  <div class=\\"slds-grow\\" style=\\"display:inline;\\"><button class=\\"slds-button--reset slds-grow slds-has-blur-focus\\" id=\\"sample-panel-filtering-show-me\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">editFilter-TEST</span><p class=\\"slds-text-body--small\\">Show Me</p><p>All Products</p></button></div>
+  <button
+    class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\\" title=\\"removeFilter-TEST\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">removeFilter-TEST</span></button>
+</div>"
+`;
+
+exports[`SLDSFilter Default DOM & HTML Snapshots look the same 1`] = `
+<div
+  className="slds-filters__item slds-grid slds-grid--vertical-align-center"
+>
+  <div
+    className="slds-grow"
+    style={
+      Object {
+        "display": "inline",
+      }
+    }
+  >
+    <button
+      aria-describedby={undefined}
+      className="slds-button--reset slds-grow slds-has-blur-focus"
+      id="sample-panel-filtering-show-me"
+      onClick={[Function]}
+      onFocus={null}
+      onMouseDown={undefined}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      tabIndex="0"
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        Edit filter:
+      </span>
+      <p
+        className="slds-text-body--small"
+      >
+        Show Me
+      </p>
+      <p>
+        All Products
+      </p>
+    </button>
+  </div>
+  <button
+    aria-controls={undefined}
+    aria-describedby={undefined}
+    aria-expanded={undefined}
+    aria-haspopup={undefined}
+    className="slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small"
+    disabled={false}
+    id={undefined}
+    onBlur={undefined}
+    onClick={[Function]}
+    onFocus={undefined}
+    onKeyDown={undefined}
+    onKeyPress={undefined}
+    onKeyUp={undefined}
+    onMouseDown={undefined}
+    onMouseEnter={undefined}
+    onMouseLeave={undefined}
+    tabIndex={undefined}
+    title="Remove Filter: Show Me All Products"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-button__icon slds-button__icon--hint"
+    >
+      <use
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Remove Filter: Show Me All Products
+    </span>
+  </button>
+</div>
+`;
+
+exports[`SLDSFilter Default DOM & HTML Snapshots look the same 2`] = `
+"<div class=\\"slds-filters__item slds-grid slds-grid--vertical-align-center\\">
+  <div class=\\"slds-grow\\" style=\\"display:inline;\\"><button class=\\"slds-button--reset slds-grow slds-has-blur-focus\\" id=\\"sample-panel-filtering-show-me\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body--small\\">Show Me</p><p>All Products</p></button></div>
+  <button
+    class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\\" title=\\"Remove Filter: Show Me All Products\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove Filter: Show Me All Products</span></button>
+</div>"
+`;
+
+exports[`SLDSFilter Default with custom className DOM & HTML Snapshots look the same 1`] = `
+<div
+  className="slds-filters__item slds-grid slds-grid--vertical-align-center MY_CUSTOM_CLASS_NAME"
+>
+  <div
+    className="slds-grow"
+    style={
+      Object {
+        "display": "inline",
+      }
+    }
+  >
+    <button
+      aria-describedby={undefined}
+      className="slds-button--reset slds-grow slds-has-blur-focus"
+      id="sample-panel-filtering-show-me"
+      onClick={[Function]}
+      onFocus={null}
+      onMouseDown={undefined}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      tabIndex="0"
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        Edit filter:
+      </span>
+      <p
+        className="slds-text-body--small"
+      >
+        Show Me
+      </p>
+      <p>
+        All Products
+      </p>
+    </button>
+  </div>
+  <button
+    aria-controls={undefined}
+    aria-describedby={undefined}
+    aria-expanded={undefined}
+    aria-haspopup={undefined}
+    className="slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small"
+    disabled={false}
+    id={undefined}
+    onBlur={undefined}
+    onClick={[Function]}
+    onFocus={undefined}
+    onKeyDown={undefined}
+    onKeyPress={undefined}
+    onKeyUp={undefined}
+    onMouseDown={undefined}
+    onMouseEnter={undefined}
+    onMouseLeave={undefined}
+    tabIndex={undefined}
+    title="Remove Filter: Show Me All Products"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-button__icon slds-button__icon--hint"
+    >
+      <use
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Remove Filter: Show Me All Products
+    </span>
+  </button>
+</div>
+`;
+
+exports[`SLDSFilter Default with custom className DOM & HTML Snapshots look the same 2`] = `
+"<div class=\\"slds-filters__item slds-grid slds-grid--vertical-align-center MY_CUSTOM_CLASS_NAME\\">
+  <div class=\\"slds-grow\\" style=\\"display:inline;\\"><button class=\\"slds-button--reset slds-grow slds-has-blur-focus\\" id=\\"sample-panel-filtering-show-me\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body--small\\">Show Me</p><p>All Products</p></button></div>
+  <button
+    class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\\" title=\\"Remove Filter: Show Me All Products\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove Filter: Show Me All Products</span></button>
+</div>"
+`;
+
+exports[`SLDSFilter ErrorFilter DOM & HTML Snapshots look the same 1`] = `
+<div
+  className="slds-filters__item slds-grid slds-grid--vertical-align-center slds-has-error"
+>
+  <div
+    className="slds-grow"
+    style={
+      Object {
+        "display": "inline",
+      }
+    }
+  >
+    <button
+      aria-describedby="sample-panel-filtering-show-me-error"
+      className="slds-button--reset slds-grow slds-has-blur-focus"
+      id="sample-panel-filtering-show-me"
+      onClick={[Function]}
+      onFocus={null}
+      onMouseDown={undefined}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      tabIndex="0"
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        Edit filter:
+      </span>
+      <p
+        className="slds-text-body--small"
+      >
+        Show Me
+      </p>
+      <p>
+        All Products
+      </p>
+    </button>
+  </div>
+  <button
+    aria-controls={undefined}
+    aria-describedby={undefined}
+    aria-expanded={undefined}
+    aria-haspopup={undefined}
+    className="slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small"
+    disabled={false}
+    id={undefined}
+    onBlur={undefined}
+    onClick={[Function]}
+    onFocus={undefined}
+    onKeyDown={undefined}
+    onKeyPress={undefined}
+    onKeyUp={undefined}
+    onMouseDown={undefined}
+    onMouseEnter={undefined}
+    onMouseLeave={undefined}
+    tabIndex={undefined}
+    title="Remove Filter: Show Me All Products"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-button__icon slds-button__icon--hint"
+    >
+      <use
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Remove Filter: Show Me All Products
+    </span>
+  </button>
+</div>
+`;
+
+exports[`SLDSFilter ErrorFilter DOM & HTML Snapshots look the same 2`] = `
+"<div class=\\"slds-filters__item slds-grid slds-grid--vertical-align-center slds-has-error\\">
+  <div class=\\"slds-grow\\" style=\\"display:inline;\\"><button class=\\"slds-button--reset slds-grow slds-has-blur-focus\\" aria-describedby=\\"sample-panel-filtering-show-me-error\\" id=\\"sample-panel-filtering-show-me\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body--small\\">Show Me</p><p>All Products</p></button></div>
+  <button
+    class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\\" title=\\"Remove Filter: Show Me All Products\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove Filter: Show Me All Products</span></button>
+</div>"
+`;
+
+exports[`SLDSFilter LockedFilter DOM & HTML Snapshots look the same 1`] = `
+<div
+  className="slds-filters__item slds-grid slds-grid--vertical-align-center slds-is-locked"
+>
+  <button
+    aria-describedby={undefined}
+    className="slds-button--reset slds-grow slds-has-blur-focus"
+    disabled={true}
+  >
+    <p
+      className="slds-text-body--small"
+    >
+      Show Me
+    </p>
+    <p>
+      All Products
+    </p>
+  </button>
+</div>
+`;
+
+exports[`SLDSFilter LockedFilter DOM & HTML Snapshots look the same 2`] = `"<div class=\\"slds-filters__item slds-grid slds-grid--vertical-align-center slds-is-locked\\"><button class=\\"slds-button--reset slds-grow slds-has-blur-focus\\" disabled=\\"\\"><p class=\\"slds-text-body--small\\">Show Me</p><p>All Products</p></button></div>"`;
+
+exports[`SLDSFilter NewFilter DOM & HTML Snapshots look the same 1`] = `
+<div
+  className="slds-filters__item slds-grid slds-grid--vertical-align-center slds-is-new"
+>
+  <div
+    className="slds-grow"
+    style={
+      Object {
+        "display": "inline",
+      }
+    }
+  >
+    <button
+      aria-describedby={undefined}
+      className="slds-button--reset slds-grow slds-has-blur-focus"
+      id="sample-panel-filtering-show-me"
+      onClick={[Function]}
+      onFocus={null}
+      onMouseDown={undefined}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      tabIndex="0"
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        Edit filter:
+      </span>
+      <p
+        className="slds-text-body--small"
+      >
+        Show Me
+      </p>
+      <p>
+        All Products
+      </p>
+    </button>
+  </div>
+  <button
+    aria-controls={undefined}
+    aria-describedby={undefined}
+    aria-expanded={undefined}
+    aria-haspopup={undefined}
+    className="slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small"
+    disabled={false}
+    id={undefined}
+    onBlur={undefined}
+    onClick={[Function]}
+    onFocus={undefined}
+    onKeyDown={undefined}
+    onKeyPress={undefined}
+    onKeyUp={undefined}
+    onMouseDown={undefined}
+    onMouseEnter={undefined}
+    onMouseLeave={undefined}
+    tabIndex={undefined}
+    title="Remove Filter: Show Me All Products"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-button__icon slds-button__icon--hint"
+    >
+      <use
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Remove Filter: Show Me All Products
+    </span>
+  </button>
+</div>
+`;
+
+exports[`SLDSFilter NewFilter DOM & HTML Snapshots look the same 2`] = `
+"<div class=\\"slds-filters__item slds-grid slds-grid--vertical-align-center slds-is-new\\">
+  <div class=\\"slds-grow\\" style=\\"display:inline;\\"><button class=\\"slds-button--reset slds-grow slds-has-blur-focus\\" id=\\"sample-panel-filtering-show-me\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body--small\\">Show Me</p><p>All Products</p></button></div>
+  <button
+    class=\\"slds-button slds-button--icon slds-button--icon-bare slds-button--icon-small\\" title=\\"Remove Filter: Show Me All Products\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--hint\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#close\\"></use></svg><span class=\\"slds-assistive-text\\">Remove Filter: Show Me All Products</span></button>
+</div>"
+`;
+
+exports[`SLDSFilter PermanantFilter DOM & HTML Snapshots look the same 1`] = `
+<div
+  className="slds-filters__item slds-grid slds-grid--vertical-align-center"
+>
+  <div
+    className="slds-grow"
+    style={
+      Object {
+        "display": "inline",
+      }
+    }
+  >
+    <button
+      aria-describedby={undefined}
+      className="slds-button--reset slds-grow slds-has-blur-focus"
+      id="sample-panel-filtering-show-me"
+      onClick={[Function]}
+      onFocus={null}
+      onMouseDown={undefined}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      tabIndex="0"
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        Edit filter:
+      </span>
+      <p
+        className="slds-text-body--small"
+      >
+        Show Me
+      </p>
+      <p>
+        All Products
+      </p>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`SLDSFilter PermanantFilter DOM & HTML Snapshots look the same 2`] = `
+"<div class=\\"slds-filters__item slds-grid slds-grid--vertical-align-center\\">
+  <div class=\\"slds-grow\\" style=\\"display:inline;\\"><button class=\\"slds-button--reset slds-grow slds-has-blur-focus\\" id=\\"sample-panel-filtering-show-me\\" tabindex=\\"0\\"><span class=\\"slds-assistive-text\\">Edit filter:</span><p class=\\"slds-text-body--small\\">Show Me</p><p>All Products</p></button></div>
+</div>"
+`;
