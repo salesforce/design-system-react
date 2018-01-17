@@ -1,0 +1,320 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SLDSMenuDropdown Checkmark DOM & HTML Snapshots look the same 1`] = `
+<div
+  className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center"
+>
+  <div
+    className="slds-col--padded"
+  >
+    <span>
+      Checkmark 
+    </span>
+    <div
+      className="slds-dropdown-trigger slds-dropdown-trigger--click"
+      id="H1iMi7aVf"
+      onBlur={undefined}
+      onClick={[Function]}
+      onFocus={null}
+      onKeyDown={[Function]}
+      onMouseDown={undefined}
+      onMouseEnter={null}
+      onMouseLeave={null}
+    >
+      <button
+        aria-controls={undefined}
+        aria-describedby={undefined}
+        aria-expanded={false}
+        aria-haspopup={true}
+        className="slds-button slds-button--icon-border-filled ignore-click-H1iMi7aVf"
+        disabled={false}
+        id={undefined}
+        onBlur={undefined}
+        onClick={[Function]}
+        onFocus={undefined}
+        onKeyDown={undefined}
+        onKeyPress={undefined}
+        onKeyUp={undefined}
+        onMouseDown={undefined}
+        onMouseEnter={undefined}
+        onMouseLeave={undefined}
+        tabIndex="0"
+        title={undefined}
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div
+    className="slds-col--padded"
+  >
+    <span>
+      Checkmark with right icon 
+    </span>
+    <div
+      className="slds-dropdown-trigger slds-dropdown-trigger--click"
+      id="HklszjXaVM"
+      onBlur={undefined}
+      onClick={[Function]}
+      onFocus={null}
+      onKeyDown={[Function]}
+      onMouseDown={undefined}
+      onMouseEnter={null}
+      onMouseLeave={null}
+    >
+      <button
+        aria-controls={undefined}
+        aria-describedby={undefined}
+        aria-expanded={false}
+        aria-haspopup={true}
+        className="slds-button slds-button--icon-more slds-button--icon-large ignore-click-HklszjXaVM"
+        disabled={false}
+        id={undefined}
+        onBlur={undefined}
+        onClick={[Function]}
+        onFocus={undefined}
+        onKeyDown={undefined}
+        onKeyPress={undefined}
+        onKeyUp={undefined}
+        onMouseDown={undefined}
+        onMouseEnter={undefined}
+        onMouseLeave={undefined}
+        tabIndex="0"
+        title={undefined}
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+          />
+        </svg>
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon--x-small"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Checkmark with right icon
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SLDSMenuDropdown Checkmark DOM & HTML Snapshots look the same 2`] = `
+"<div class=\\"slds-grid slds-grid--pull-padded slds-grid--vertical-align-center\\">
+  <div class=\\"slds-col--padded\\"><span>Checkmark </span>
+    <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"Hk-szsQTVf\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-border-filled ignore-click-Hk-szsQTVf\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
+  </div>
+  <div class=\\"slds-col--padded\\"><span>Checkmark with right icon </span>
+    <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"Hkfifsm64G\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-more slds-button--icon-large ignore-click-Hkfifsm64G\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#settings\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Checkmark with right icon</span></button></div>
+  </div>
+</div>"
+`;
+
+exports[`SLDSMenuDropdown CustomTrigger DOM & HTML Snapshots look the same 1`] = `
+<div
+  className="slds-dropdown-trigger slds-dropdown-trigger--click"
+  id="BymjMjm6VG"
+  onBlur={undefined}
+  onClick={[Function]}
+  onFocus={null}
+  onKeyDown={[Function]}
+  onMouseDown={undefined}
+  onMouseEnter={null}
+  onMouseLeave={null}
+>
+  <button
+    aria-controls={undefined}
+    aria-describedby={undefined}
+    aria-expanded={false}
+    aria-haspopup={true}
+    className="slds-button slds-button--neutral ignore-click-BymjMjm6VG"
+    disabled={false}
+    id={undefined}
+    onBlur={undefined}
+    onClick={[Function]}
+    onFocus={undefined}
+    onKeyDown={undefined}
+    onKeyPress={undefined}
+    onKeyUp={undefined}
+    onMouseDown={undefined}
+    onMouseEnter={undefined}
+    onMouseLeave={undefined}
+    tabIndex="0"
+    title={undefined}
+    type="button"
+  >
+    Dropdown
+    <svg
+      aria-hidden="true"
+      className="slds-button__icon slds-button__icon--right"
+    >
+      <use
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+      />
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`SLDSMenuDropdown CustomTrigger DOM & HTML Snapshots look the same 2`] = `"<div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"SyNsfo7pEG\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--neutral ignore-click-SyNsfo7pEG\\" tabindex=\\"0\\" type=\\"button\\">Dropdown<svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--right\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>"`;
+
+exports[`SLDSMenuDropdown Default DOM & HTML Snapshots look the same 1`] = `
+<div
+  className="slds-dropdown-trigger slds-dropdown-trigger--click"
+  id="ryHjfi764M"
+  onBlur={undefined}
+  onClick={[Function]}
+  onFocus={null}
+  onKeyDown={[Function]}
+  onMouseDown={undefined}
+  onMouseEnter={null}
+  onMouseLeave={null}
+>
+  <button
+    aria-controls={undefined}
+    aria-describedby={undefined}
+    aria-expanded={false}
+    aria-haspopup={true}
+    className="slds-button slds-button--icon-border-filled ignore-click-ryHjfi764M"
+    disabled={false}
+    id={undefined}
+    onBlur={undefined}
+    onClick={[Function]}
+    onFocus={undefined}
+    onKeyDown={undefined}
+    onKeyPress={undefined}
+    onKeyUp={undefined}
+    onMouseDown={undefined}
+    onMouseEnter={undefined}
+    onMouseLeave={undefined}
+    tabIndex="0"
+    title={undefined}
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-button__icon"
+    >
+      <use
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+      />
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`SLDSMenuDropdown Default DOM & HTML Snapshots look the same 2`] = `"<div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"SyIoMi7p4G\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-border-filled ignore-click-SyIoMi7p4G\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>"`;
+
+exports[`SLDSMenuDropdown DefaultIconLabel DOM & HTML Snapshots look the same 1`] = `
+<div
+  className="slds-dropdown-trigger slds-dropdown-trigger--click"
+  id="ryviGj7pNG"
+  onBlur={undefined}
+  onClick={[Function]}
+  onFocus={null}
+  onKeyDown={[Function]}
+  onMouseDown={undefined}
+  onMouseEnter={null}
+  onMouseLeave={null}
+>
+  <button
+    aria-controls={undefined}
+    aria-describedby={undefined}
+    aria-expanded={false}
+    aria-haspopup={true}
+    className="slds-button slds-button--neutral ignore-click-ryviGj7pNG"
+    disabled={false}
+    id={undefined}
+    onBlur={undefined}
+    onClick={[Function]}
+    onFocus={undefined}
+    onKeyDown={undefined}
+    onKeyPress={undefined}
+    onKeyUp={undefined}
+    onMouseDown={undefined}
+    onMouseEnter={undefined}
+    onMouseLeave={undefined}
+    tabIndex="0"
+    title={undefined}
+    type="button"
+  >
+    Dropdown
+    <svg
+      aria-hidden="true"
+      className="slds-button__icon slds-button__icon--right"
+    >
+      <use
+        xlinkHref={undefined}
+      />
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`SLDSMenuDropdown DefaultIconLabel DOM & HTML Snapshots look the same 2`] = `"<div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"SJdjfjXT4f\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--neutral ignore-click-SJdjfjXT4f\\" tabindex=\\"0\\" type=\\"button\\">Dropdown<svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--right\\"><use></use></svg></button></div>"`;
+
+exports[`SLDSMenuDropdown SubHeading DOM & HTML Snapshots look the same 1`] = `
+<div
+  className="slds-dropdown-trigger slds-dropdown-trigger--click"
+  id="SJFjfom6Ef"
+  onBlur={undefined}
+  onClick={[Function]}
+  onFocus={null}
+  onKeyDown={[Function]}
+  onMouseDown={undefined}
+  onMouseEnter={null}
+  onMouseLeave={null}
+>
+  <button
+    aria-controls={undefined}
+    aria-describedby={undefined}
+    aria-expanded={false}
+    aria-haspopup={true}
+    className="slds-button slds-button--icon-border-filled ignore-click-SJFjfom6Ef"
+    disabled={false}
+    id={undefined}
+    onBlur={undefined}
+    onClick={[Function]}
+    onFocus={undefined}
+    onKeyDown={undefined}
+    onKeyPress={undefined}
+    onKeyUp={undefined}
+    onMouseDown={undefined}
+    onMouseEnter={undefined}
+    onMouseLeave={undefined}
+    tabIndex="0"
+    title={undefined}
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-button__icon"
+    >
+      <use
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+      />
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`SLDSMenuDropdown SubHeading DOM & HTML Snapshots look the same 2`] = `"<div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"H1qoziXaEG\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-border-filled ignore-click-H1qoziXaEG\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>"`;
