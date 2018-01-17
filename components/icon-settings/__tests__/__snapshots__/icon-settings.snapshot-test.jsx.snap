@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SLDSIconSettings DOM & HTML Snapshots look the same 1`] = `
+<div
+  className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center"
+>
+  <div
+    className="slds-col--padded"
+  >
+    <span
+      className="slds-icon_container slds-icon-standard-account"
+      title={undefined}
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon slds-icon--small"
+        style={undefined}
+      >
+        <use
+          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Account
+      </span>
+    </span>
+  </div>
+  <div
+    className="slds-col--padded"
+  >
+    <span
+      className={undefined}
+      title={undefined}
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon slds-icon--small slds-icon-text-default"
+        style={undefined}
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Announcement
+      </span>
+    </span>
+  </div>
+  <div
+    className="slds-col--padded"
+  >
+    <span
+      className="slds-icon_container slds-icon_container--circle slds-icon-action-description"
+      title={undefined}
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon slds-icon--small"
+        style={undefined}
+      >
+        <use
+          xlinkHref="/assets/icons/action-sprite/svg/symbols.svg#description"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Description
+      </span>
+    </span>
+  </div>
+  <div
+    className="slds-col--padded"
+  >
+    <span
+      className="slds-icon_container"
+      title={undefined}
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon slds-icon--small"
+        style={undefined}
+      >
+        <use
+          xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#xml"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        XML
+      </span>
+    </span>
+  </div>
+  <div
+    className="slds-col--padded"
+  >
+    <span
+      className="slds-icon_container slds-icon-custom-custom5"
+      title={undefined}
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon slds-icon--small"
+        style={undefined}
+      >
+        <use
+          xlinkHref="/assets/icons/custom-sprite/svg/symbols.svg#custom5"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        custom5
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`SLDSIconSettings DOM & HTML Snapshots look the same 2`] = `
+"<div class=\\"slds-grid slds-grid--pull-padded slds-grid--vertical-align-center\\">
+  <div class=\\"slds-col--padded\\"><span class=\\"slds-icon_container slds-icon-standard-account\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#account\\"></use></svg><span class=\\"slds-assistive-text\\">Account</span></span>
+  </div>
+  <div class=\\"slds-col--padded\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#announcement\\"></use></svg><span class=\\"slds-assistive-text\\">Announcement</span></span>
+  </div>
+  <div class=\\"slds-col--padded\\"><span class=\\"slds-icon_container slds-icon_container--circle slds-icon-action-description\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/action-sprite/svg/symbols.svg#description\\"></use></svg><span class=\\"slds-assistive-text\\">Description</span></span>
+  </div>
+  <div class=\\"slds-col--padded\\"><span class=\\"slds-icon_container\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/doctype-sprite/svg/symbols.svg#xml\\"></use></svg><span class=\\"slds-assistive-text\\">XML</span></span>
+  </div>
+  <div class=\\"slds-col--padded\\"><span class=\\"slds-icon_container slds-icon-custom-custom5\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/custom-sprite/svg/symbols.svg#custom5\\"></use></svg><span class=\\"slds-assistive-text\\">custom5</span></span>
+  </div>
+</div>"
+`;
