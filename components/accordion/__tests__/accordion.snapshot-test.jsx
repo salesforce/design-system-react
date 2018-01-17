@@ -7,16 +7,16 @@ import SnapshotBaseOpen from '../__examples__/snapshot/base-open';
 import { ACCORDION } from '../../../utilities/constants';
 
 describe(ACCORDION, () => {
-	test('Base DOM & HTML Snapshots', () => {
+	test('Base DOM & HTML Snapshots look the same', () => {
 		testDOMandHTML(SnapshotBase);
 		testDOMandHTML(SnapshotBaseOpen);
 	});
 
-	test('Base Image Snapshot', async () => {
+	test('Base Image Snapshot looks the same', async () => {
 		await testImageSnapshot(ACCORDION, 'Base');
 	});
 
-	test('Base Open Image Snapshot', async () => {
+	test('Base Open Image Snapshot looks the same', async () => {
 		await testImageSnapshot(ACCORDION, 'Base Open');
 	});
 });
