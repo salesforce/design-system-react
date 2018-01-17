@@ -10,8 +10,24 @@ describe(CARD, () => {
 		testDOMandHTML(Base);
 	});
 
-	test('Base Image Snapshot looks the same', async () => {
-		await testImageSnapshot(CARD, 'Base');
+	test('w/ Items Image Snapshot looks the same', async () => {
+		await testImageSnapshot(CARD, 'w/ Items');
+	});
+
+	test('Empty Image Snapshot looks the same', async () => {
+		await testImageSnapshot(CARD, 'Empty');
+	});
+
+	test('Custom Header Image Snapshot looks the same', async () => {
+		await testImageSnapshot(CARD, 'Custom Header');
+	});
+
+	test('Custom Heading Image Snapshot looks the same', async () => {
+		await testImageSnapshot(CARD, 'Custom Heading');
+	});
+
+	test('Set height card Image Snapshot looks the same', async () => {
+		await testImageSnapshot(CARD, 'Set height card');
 	});
 });
 
