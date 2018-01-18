@@ -218,8 +218,7 @@ class PopoverTooltip extends React.Component {
 		return <span className="slds-assistive-text">{this.props.content}</span>;
 	}
 
-	decorateGrandKidsWithKeyToSilenceWarning (grandKids) {
-		// eslint-disable-line class-methods-use-this
+	decorateGrandKidsWithKeyToSilenceWarning (grandKids) { // eslint-disable-line class-methods-use-this
 		return React.Children.map(grandKids, (component, i) => {
 			const decoratedComponent = React.isValidElement(component)
 				? React.cloneElement(component, { key: i })

@@ -59,8 +59,7 @@ class Menu extends React.Component {
 		return this.filterEmptySections(this.props.items.filter(this.filter, this));
 	}
 
-	filterEmptySections (items) {
-		// eslint-disable-line class-methods-use-this
+	filterEmptySections (items) { // eslint-disable-line class-methods-use-this
 		const result = [];
 		items.forEach((item, index) => {
 			if (item && item.data && item.data.type === 'section') {

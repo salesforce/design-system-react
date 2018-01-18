@@ -1,6 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -44,8 +46,7 @@ class Title extends Component {
 		);
 	}
 
-	_getClassNames (truncate, align, className) {
-		// eslint-disable-line class-methods-use-this
+	_getClassNames (truncate, align, className) { // eslint-disable-line class-methods-use-this
 		return classnames(
 			'slds-page-header__title slds-m-right--small',
 			className,
