@@ -49,7 +49,7 @@ const testImageSnapshot = (name, ComponentKind) =>
 			name
 		)}&selectedStory=${encodeURIComponent(
 			ComponentKind
-		)}&full=0&down=1&left=1&panelRight=0&downPanel=storybook%2Factions%2Factions-panel`;
+		)}&full=1&down=1&left=1&panelRight=0&downPanel=storybook%2Factions%2Factions-panel`;
 
 		const customConfig = { threshold: 1 };
 		const chrome = new Chrome();
