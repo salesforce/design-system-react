@@ -28,6 +28,7 @@
     "link": "./scripts/npm-link.sh",
     "lint": "./node_modules/.bin/eslint \"**/*.{js,jsx}\"",
     "lint-fix": "./node_modules/.bin/eslint --fix \"**/*.{js,jsx}\"",
+    "lint:fix": "./node_modules/.bin/eslint --fix \"**/*.{js,jsx}\"",
     "lint-staged": "lint-staged",
     "publish-to-git": "./node_modules/.bin/babel-node scripts/publish-to-git.js",
     "publish-to-edge": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge",
@@ -183,7 +184,6 @@
     "phantomjs-polyfill-find-index": "^1.0.1",
     "phantomjs-polyfill-includes": "^1.0.2",
     "phantomjs-prebuilt": "^2.1.15",
-    "pre-commit": "^1.2.2",
     "prettier": "~1.9",
     "prettier-eslint": "~8.2",
     "prettier-eslint-cli": "^4.4.2",
@@ -203,12 +203,6 @@
     "webpack-hot-middleware": "^2.18.2",
     "xml2json": "^0.11.0"
   },
-  "pre-commit": [
-    "lint-staged"
-  ],
-  "pre-push": [
-    "validate"
-  ],
   "prettier": {
     "arrowParens": "always",
     "bracketSpacing": true,
