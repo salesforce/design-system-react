@@ -203,7 +203,8 @@ class Notification extends React.Component {
 	 * Because React renders the entire element to the DOM, we must switch out a blank div for the real content.
 	 * Bummer, I know.
 	 */
-	blankContent () { // eslint-disable-line class-methods-use-this
+	// eslint-disable-next-line class-methods-use-this
+	blankContent () {
 		return <div />;
 	}
 

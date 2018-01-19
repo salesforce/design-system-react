@@ -51,7 +51,8 @@ class DetailRow extends Component {
 		return <ul className={classes}>{renderDetails()}</ul>;
 	}
 
-	_getClassNames (className) { // eslint-disable-line class-methods-use-this
+	// eslint-disable-next-line class-methods-use-this
+	_getClassNames (className) {
 		return classnames('slds-grid slds-page-header__detail-row', className);
 	}
 }
