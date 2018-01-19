@@ -12,12 +12,12 @@ const Example = createReactClass({
 		};
 	},
 
-	toggleOpen () {
-		this.setState({ isOpen: !this.state.isOpen });
-	},
-
 	getParent () {
 		return document.querySelector('#myModalContainer');
+	},
+
+	toggleOpen () {
+		this.setState({ isOpen: !this.state.isOpen });
 	},
 
 	render () {

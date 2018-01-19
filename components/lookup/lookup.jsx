@@ -223,6 +223,30 @@ const Lookup = createReactClass({
 		};
 	},
 
+	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(LOOKUP, this.props);
+
+		// Keeps track of references of children for keyboard navigation
+		this.pills = [];
+	},
+
+	componentDidMount () {
+		this.modifyItems(this.props.options);
+	},
+
+	componentWillReceiveProps (newProps) {
+		if (newProps.options) {
+			this.modifyItems(newProps.options);
+		}
+		if (
+			newProps.selectedItem !== this.props.selectedItem ||
+			!isEqual(newProps.options, this.props.options)
+		) {
+			this.setState({ selectedIndex: newProps.selectedItem });
+		}
+	},
+
 	componentDidUpdate (prevProps, prevState) {
 		if (
 			!isNaN(parseInt(prevState.selectedIndex, 10)) &&
@@ -241,38 +265,11 @@ const Lookup = createReactClass({
 		}
 	},
 
-	componentWillReceiveProps (newProps) {
-		if (newProps.options) {
-			this.modifyItems(newProps.options);
-		}
-		if (
-			newProps.selectedItem !== this.props.selectedItem ||
-			!isEqual(newProps.options, this.props.options)
-		) {
-			this.setState({ selectedIndex: newProps.selectedItem });
-		}
-	},
-
-	componentWillMount () {
-		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(LOOKUP, this.props);
-
-		// Keeps track of references of children for keyboard navigation
-		this.pills = [];
-	},
-
-	componentDidMount () {
-		this.modifyItems(this.props.options);
-	},
-
-	modifyItems (itemsToModify) {
-		const items = itemsToModify.map((item, index) => ({
-			id: `item-${index}`,
-			label: item.label,
-			data: item
-		}));
-
-		this.setState({ items });
+	getClassName () {
+		return classNames(this.props.className, 'slds-form-element slds-lookup', {
+			'slds-has-selection': this.isSelected(),
+			'slds-is-open': this.getIsOpen()
+		});
 	},
 
 	setFirstIndex () {
@@ -288,6 +285,74 @@ const Lookup = createReactClass({
 		}
 
 		this.setState({ focusIndex: nextFocusIndex });
+	},
+
+	getHeader () {
+		const Header = this.props.headerRenderer;
+		const headerActive = this.state.focusIndex === 0;
+
+		return (
+			<Header
+				ref={(header) => {
+					this.headerComponent = header;
+				}}
+				{...this.props}
+				focusIndex={this.state.focusIndex}
+				isActive={headerActive}
+				onClose={this.handleClose}
+				searchTerm={this.state.searchTerm}
+				setFocus={this.setFocus}
+			/>
+		);
+	},
+
+	getFooter () {
+		const Footer = this.props.footerRenderer;
+		const numFocusable = this.getNumFocusableItems();
+		const footerActive = this.state.focusIndex === numFocusable;
+
+		return (
+			<Footer
+				ref={(footer) => {
+					this.footerComponent = footer;
+				}}
+				{...this.props}
+				focusIndex={this.state.focusIndex}
+				isActive={footerActive}
+				onClose={this.handleClose}
+				setFocus={this.setFocus}
+			/>
+		);
+	},
+
+	setFocus (id) {
+		this.setState({ currentFocus: id });
+	},
+
+	getIsOpen () {
+		return !!(isBoolean(this.props.isOpen)
+			? this.props.isOpen
+			: this.state.isOpen);
+	},
+
+	getListLength (qty) {
+		if (qty !== this.state.listLength) {
+			this.setState({ listLength: qty });
+		}
+	},
+
+	getNumFocusableItems () {
+		let offset = 0;
+
+		if (this.footerComponent) {
+			offset += 1;
+		}
+
+		if (this.headerComponent) {
+			offset += 1;
+		}
+
+		return this.state.listLength - 1 + offset;
 	},
 
 	// =================================================
@@ -321,36 +386,6 @@ const Lookup = createReactClass({
 		}
 
 		this.setState({ focusIndex: prevFocusIndex });
-	},
-
-	setFocus (id) {
-		this.setState({ currentFocus: id });
-	},
-
-	getIsOpen () {
-		return !!(isBoolean(this.props.isOpen)
-			? this.props.isOpen
-			: this.state.isOpen);
-	},
-
-	getListLength (qty) {
-		if (qty !== this.state.listLength) {
-			this.setState({ listLength: qty });
-		}
-	},
-
-	getNumFocusableItems () {
-		let offset = 0;
-
-		if (this.footerComponent) {
-			offset += 1;
-		}
-
-		if (this.headerComponent) {
-			offset += 1;
-		}
-
-		return this.state.listLength - 1 + offset;
 	},
 
 	// =================================================
@@ -520,46 +555,33 @@ const Lookup = createReactClass({
 		}
 	},
 
-	getHeader () {
-		const Header = this.props.headerRenderer;
-		const headerActive = this.state.focusIndex === 0;
-
-		return (
-			<Header
-				ref={(header) => {
-					this.headerComponent = header;
-				}}
-				{...this.props}
-				focusIndex={this.state.focusIndex}
-				isActive={headerActive}
-				onClose={this.handleClose}
-				searchTerm={this.state.searchTerm}
-				setFocus={this.setFocus}
-			/>
-		);
-	},
-
-	getFooter () {
-		const Footer = this.props.footerRenderer;
-		const numFocusable = this.getNumFocusableItems();
-		const footerActive = this.state.focusIndex === numFocusable;
-
-		return (
-			<Footer
-				ref={(footer) => {
-					this.footerComponent = footer;
-				}}
-				{...this.props}
-				focusIndex={this.state.focusIndex}
-				isActive={footerActive}
-				onClose={this.handleClose}
-				setFocus={this.setFocus}
-			/>
-		);
-	},
-
 	normalizeSearchTerm (string) {
 		return (string || '').toString().replace(/^\s+/, '');
+	},
+
+	inputRefId () {
+		return `${this.props.label}Lookup`;
+	},
+
+	focusInput () {
+		this.focusOnRender = true;
+	},
+
+	isSelected () {
+		const hasSelection =
+			!isNaN(parseInt(this.state.selectedIndex, 10)) &&
+			this.state.selectedIndex >= 0;
+		return hasSelection;
+	},
+
+	modifyItems (itemsToModify) {
+		const items = itemsToModify.map((item, index) => ({
+			id: `item-${index}`,
+			label: item.label,
+			data: item
+		}));
+
+		this.setState({ items });
 	},
 
 	// =================================================
@@ -730,28 +752,6 @@ const Lookup = createReactClass({
 			);
 		}
 		return inputLabel;
-	},
-
-	inputRefId () {
-		return `${this.props.label}Lookup`;
-	},
-
-	focusInput () {
-		this.focusOnRender = true;
-	},
-
-	isSelected () {
-		const hasSelection =
-			!isNaN(parseInt(this.state.selectedIndex, 10)) &&
-			this.state.selectedIndex >= 0;
-		return hasSelection;
-	},
-
-	getClassName () {
-		return classNames(this.props.className, 'slds-form-element slds-lookup', {
-			'slds-has-selection': this.isSelected(),
-			'slds-is-open': this.getIsOpen()
-		});
 	},
 
 	render () {

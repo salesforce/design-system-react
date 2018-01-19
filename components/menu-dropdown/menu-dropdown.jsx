@@ -96,8 +96,6 @@ const MenuDropdown = createReactClass({
 	// Always use the canonical component name as the React display name.
 	displayName: MENU_DROPDOWN,
 
-	mixins: [KeyboardNavigable],
-
 	// ### Prop Types
 	propTypes: {
 		/**
@@ -369,6 +367,8 @@ const MenuDropdown = createReactClass({
 		multiple: PropTypes.bool
 	},
 
+	mixins: [KeyboardNavigable],
+
 	getDefaultProps () {
 		return {
 			align: 'left',
@@ -448,6 +448,77 @@ const MenuDropdown = createReactClass({
 		return this.props.listItemRenderer
 			? this.props.listItemRenderer
 			: ListItemLabel;
+	},
+
+	setFocus () {
+		if (!this.isHover && !this.isUnmounting && this.trigger) {
+			ReactDOM.findDOMNode(this.trigger).focus(); // eslint-disable-line react/no-find-dom-node
+		}
+	},
+
+	getMenu () {
+		return ReactDOM.findDOMNode(this.list); // eslint-disable-line react/no-find-dom-node
+	},
+
+	getMenuItem (index) {
+		if (index !== undefined && this.listItems) {
+			return ReactDOM.findDOMNode(this.listItems[index]); // eslint-disable-line react/no-find-dom-node
+		}
+
+		return undefined;
+	},
+
+	setCurrentSelectedIndices (nextProps) {
+		if (this.props.multiple !== true) {
+			this.setState({
+				selectedIndex: this.getIndexByValue(nextProps.value)
+			});
+		} else {
+			let values = [];
+			let currentIndices = [];
+			if (!Array.isArray(nextProps.value)) {
+				values.push(nextProps.value);
+			} else {
+				values = nextProps.value;
+			}
+			values = values.filter((value) => this.getIndexByValue(value) !== -1);
+			currentIndices = values.map((value) => this.getIndexByValue(value));
+
+			this.setState({
+				selectedIndices: currentIndices
+			});
+		}
+	},
+
+	// Trigger opens, closes, and recieves focus on close
+	saveRefToTrigger (trigger) {
+		this.trigger = trigger;
+
+		if (!this.state.triggerRendered) {
+			this.setState({ triggerRendered: true });
+		}
+	},
+
+	// TriggerContainer is the wrapping outer DOM element which may differ from the actual trigger which is most likely a `button`.
+	saveRefToTriggerContainer (triggerContainer) {
+		this.triggerContainer = triggerContainer;
+		if (!this.trigger) this.trigger = triggerContainer;
+	},
+
+	saveRefToList (list) {
+		this.list = list;
+	},
+
+	saveRefToListItem (listItem, index) {
+		if (!this.listItems) {
+			this.listItems = {};
+		}
+
+		this.listItems[index] = listItem;
+
+		if (index === this.state.focusedIndex) {
+			this.handleKeyboardFocus(this.state.focusedIndex);
+		}
 	},
 
 	handleClose () {
@@ -635,77 +706,6 @@ const MenuDropdown = createReactClass({
 			this.handleClose();
 		} else {
 			this.handleOpen();
-		}
-	},
-
-	setFocus () {
-		if (!this.isHover && !this.isUnmounting && this.trigger) {
-			ReactDOM.findDOMNode(this.trigger).focus(); // eslint-disable-line react/no-find-dom-node
-		}
-	},
-
-	// Trigger opens, closes, and recieves focus on close
-	saveRefToTrigger (trigger) {
-		this.trigger = trigger;
-
-		if (!this.state.triggerRendered) {
-			this.setState({ triggerRendered: true });
-		}
-	},
-
-	// TriggerContainer is the wrapping outer DOM element which may differ from the actual trigger which is most likely a `button`.
-	saveRefToTriggerContainer (triggerContainer) {
-		this.triggerContainer = triggerContainer;
-		if (!this.trigger) this.trigger = triggerContainer;
-	},
-
-	saveRefToList (list) {
-		this.list = list;
-	},
-
-	saveRefToListItem (listItem, index) {
-		if (!this.listItems) {
-			this.listItems = {};
-		}
-
-		this.listItems[index] = listItem;
-
-		if (index === this.state.focusedIndex) {
-			this.handleKeyboardFocus(this.state.focusedIndex);
-		}
-	},
-
-	getMenu () {
-		return ReactDOM.findDOMNode(this.list); // eslint-disable-line react/no-find-dom-node
-	},
-
-	getMenuItem (index) {
-		if (index !== undefined && this.listItems) {
-			return ReactDOM.findDOMNode(this.listItems[index]); // eslint-disable-line react/no-find-dom-node
-		}
-
-		return undefined;
-	},
-
-	setCurrentSelectedIndices (nextProps) {
-		if (this.props.multiple !== true) {
-			this.setState({
-				selectedIndex: this.getIndexByValue(nextProps.value)
-			});
-		} else {
-			let values = [];
-			let currentIndices = [];
-			if (!Array.isArray(nextProps.value)) {
-				values.push(nextProps.value);
-			} else {
-				values = nextProps.value;
-			}
-			values = values.filter((value) => this.getIndexByValue(value) !== -1);
-			currentIndices = values.map((value) => this.getIndexByValue(value));
-
-			this.setState({
-				selectedIndices: currentIndices
-			});
 		}
 	},
 

@@ -304,8 +304,7 @@ class Modal extends React.Component {
 		};
 
 		if (hasFooter) {
-			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
-			footer = (
+			footer = ( // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/no-noninteractive-element-interactions
 				<footer
 					className={classNames(footerClass, this.props.footerClassNames)}
 					onClick={this.handleModalClick}

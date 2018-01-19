@@ -50,6 +50,16 @@ const DataTableRowActions = createReactClass({
 		};
 	},
 
+	handleClick (e) {
+		EventUtil.trap(e);
+	},
+
+	handleSelect (selection) {
+		if (isFunction(this.props.onAction)) {
+			this.props.onAction(this.props.item, selection);
+		}
+	},
+
 	// ### Render
 	render () {
 		// i18n
@@ -78,16 +88,6 @@ const DataTableRowActions = createReactClass({
 				/>
 			</td>
 		);
-	},
-
-	handleClick (e) {
-		EventUtil.trap(e);
-	},
-
-	handleSelect (selection) {
-		if (isFunction(this.props.onAction)) {
-			this.props.onAction(this.props.item, selection);
-		}
 	}
 });
 

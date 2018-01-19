@@ -169,12 +169,6 @@ const Button = createReactClass({
 		};
 	},
 
-	handleClick (event) {
-		if (this.props.onClick) {
-			this.props.onClick(event);
-		}
-	},
-
 	getClassName () {
 		const isIcon = this.props.variant === 'icon';
 
@@ -217,6 +211,12 @@ const Button = createReactClass({
 			},
 			this.props.className
 		);
+	},
+
+	handleClick (event) {
+		if (this.props.onClick) {
+			this.props.onClick(event);
+		}
 	},
 
 	renderIcon (name) {

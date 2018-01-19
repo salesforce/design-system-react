@@ -194,6 +194,28 @@ const DataTable = createReactClass({
 		checkProps(DATA_TABLE, this.props);
 	},
 
+	handleToggleAll (selected, e) {
+		if (isFunction(this.props.onChange)) {
+			const selection = selected ? [...this.props.items] : [];
+
+			this.props.onChange(selection, e);
+		}
+	},
+
+	handleRowToggle (item, selected, e) {
+		if (isFunction(this.props.onChange)) {
+			let selection;
+
+			if (selected) {
+				selection = [...this.props.selection, item];
+			} else {
+				selection = reject(this.props.selection, item);
+			}
+
+			this.props.onChange(selection, e);
+		}
+	},
+
 	// ### Render
 	render () {
 		const numRows = count(this.props.items);
@@ -307,28 +329,6 @@ const DataTable = createReactClass({
 				</tbody>
 			</table>
 		);
-	},
-
-	handleToggleAll (selected, e) {
-		if (isFunction(this.props.onChange)) {
-			const selection = selected ? [...this.props.items] : [];
-
-			this.props.onChange(selection, e);
-		}
-	},
-
-	handleRowToggle (item, selected, e) {
-		if (isFunction(this.props.onChange)) {
-			let selection;
-
-			if (selected) {
-				selection = [...this.props.selection, item];
-			} else {
-				selection = reject(this.props.selection, item);
-			}
-
-			this.props.onChange(selection, e);
-		}
 	}
 });
 
