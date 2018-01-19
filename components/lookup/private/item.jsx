@@ -36,14 +36,9 @@ class Item extends React.Component {
 		}
 	}
 
-	handleClick = () => this.props.onSelect(this.props.id, this.props.data);
-
-	// Scroll menu item based on up/down mouse keys (assumes all items are the same height)
-	scrollFocus () {
-		const height = this.itemRef.offsetHeight;
-		if (height && this.props.handleItemFocus) {
-			this.props.handleItemFocus(this.props.index, height);
-		}
+	getCustomLabel () {
+		const ListItemLabel = this.props.listItemLabelRenderer;
+		return <ListItemLabel {...this.props} />;
 	}
 
 	getIcon () {
@@ -61,11 +56,6 @@ class Item extends React.Component {
 			);
 		}
 		return null;
-	}
-
-	getCustomLabel () {
-		const ListItemLabel = this.props.listItemLabelRenderer;
-		return <ListItemLabel {...this.props} />;
 	}
 
 	getLabel () {
@@ -95,13 +85,23 @@ class Item extends React.Component {
 		return label;
 	}
 
+	handleClick = () => this.props.onSelect(this.props.id, this.props.data);
+
+	// Scroll menu item based on up/down mouse keys (assumes all items are the same height)
+	scrollFocus () {
+		const height = this.itemRef.offsetHeight;
+		if (height && this.props.handleItemFocus) {
+			this.props.handleItemFocus(this.props.index, height);
+		}
+	}
+
 	render () {
 		let itemClassName = 'js-slds-lookup__item';
 		const id = this.props.id;
 		if (this.props.isActive) itemClassName += ' slds-theme--shade';
 
 		return (
-			// IMPORTANT: anchor id is used to set lookup's input's aria-activedescendant
+		// IMPORTANT: anchor id is used to set lookup's input's aria-activedescendant
 			<li
 				className={itemClassName}
 				ref={(li) => {

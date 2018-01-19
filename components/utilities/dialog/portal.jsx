@@ -29,6 +29,10 @@ class Portal extends Component {
 		this.unmountPortal();
 	}
 
+	getChildren () {
+		return Children.only(this.props.children);
+	}
+
 	getPortalParentNode () {
 		let element;
 		if (typeof this.props.renderTo === 'string') {
@@ -39,10 +43,6 @@ class Portal extends Component {
 		return element;
 	}
 
-	getChildren () {
-		return Children.only(this.props.children);
-	}
-
 	setupPortalNode () {
 		const parentParentNode = this.getPortalParentNode();
 
@@ -51,6 +51,34 @@ class Portal extends Component {
 		this.portalNodeInstance = this.props.onMount
 			? this.props.onMount(undefined, { portal: this.portalNode })
 			: this.portalNode;
+	}
+
+	unmountPortal () {
+		if (this.portalNode) {
+			ReactDOM.unmountComponentAtNode(this.portalNode);
+			this.portalNode.parentNode.removeChild(this.portalNode);
+		}
+		this.portalNode = null;
+	}
+
+	updatePortal () {
+		if (this.props.id) {
+			this.portalNode.id = this.props.id;
+		}
+
+		if (this.props.className) {
+			this.portalNode.className = this.props.className;
+		}
+
+		if (this.props.style) {
+			Object.keys(this.props.style).forEach((key) => {
+				this.portalNode.style[key] = this.props.style[key];
+			});
+		}
+
+		if (this.props.onUpdate) {
+			this.portalNodeInstance = this.props.onUpdate(this.portalNodeInstance);
+		}
 	}
 
 	renderPortal () {
@@ -91,34 +119,6 @@ class Portal extends Component {
 				}
 			);
 		}
-	}
-
-	updatePortal () {
-		if (this.props.id) {
-			this.portalNode.id = this.props.id;
-		}
-
-		if (this.props.className) {
-			this.portalNode.className = this.props.className;
-		}
-
-		if (this.props.style) {
-			Object.keys(this.props.style).forEach((key) => {
-				this.portalNode.style[key] = this.props.style[key];
-			});
-		}
-
-		if (this.props.onUpdate) {
-			this.portalNodeInstance = this.props.onUpdate(this.portalNodeInstance);
-		}
-	}
-
-	unmountPortal () {
-		if (this.portalNode) {
-			ReactDOM.unmountComponentAtNode(this.portalNode);
-			this.portalNode.parentNode.removeChild(this.portalNode);
-		}
-		this.portalNode = null;
 	}
 
 	render () {

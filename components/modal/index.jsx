@@ -164,10 +164,8 @@ class Modal extends React.Component {
 		);
 	}
 
-	setReturnFocus () {
-		this.setState({
-			returnFocusTo: document.activeElement
-		});
+	componentWillMount () {
+		this.generatedId = shortid.generate();
 	}
 
 	componentDidMount () {
@@ -199,10 +197,6 @@ class Modal extends React.Component {
 		}
 	}
 
-	componentWillMount () {
-		this.generatedId = shortid.generate();
-	}
-
 	componentWillUnmount () {
 		this.isUnmounting = true;
 		this.clearBodyScroll();
@@ -212,14 +206,64 @@ class Modal extends React.Component {
 		return this.props.id || this.generatedId;
 	}
 
-	dismissModalOnClickOutside () {
-		// if dismissOnClickOutside is not set, default its value to dismissible
-		const dismissOnClickOutside = isBoolean(this.props.dismissOnClickOutside)
-			? this.props.dismissOnClickOutside
-			: this.props.dismissible;
+	getModal () {
+		const modalStyle =
+			this.props.align === 'top' ? { justifyContent: 'flex-start' } : null;
+		const borderRadius =
+			this.props.title || this.props.header ? {} : { borderRadius: '.25rem' };
+		const contentStyleFromProps = this.props.contentStyle || {};
+		const contentStyle = {
+			...borderRadius,
+			...contentStyleFromProps
+		};
+		return (
+			// temporarily disabling eslint for the onClicks on the div tags
+			/* eslint-disable */
+			<div
+				aria-labelledby={this.getId()}
+				className={classNames({
+					'slds-modal': true,
+					'slds-fade-in-open': this.state.revealed,
+					'slds-modal--large': this.props.size === 'large',
+					'slds-modal--prompt': this.isPrompt()
+				})}
+				onClick={this.dismissModalOnClickOutside}
+				role="dialog"
+			>
+				<div
+					className={classNames(
+						'slds-modal__container',
+						this.props.containerClassName
+					)}
+					style={modalStyle}
+				>
+					{this.headerComponent()}
+					<div
+						className={classNames(
+							'slds-modal__content',
+							this.props.contentClassName
+						)}
+						style={contentStyle}
+						onClick={this.handleModalClick}
+					>
+						{this.props.children}
+					</div>
+					{this.footerComponent()}
+				</div>
+			</div>
+			/* eslint-enable */
+		);
+	}
 
-		if (dismissOnClickOutside) {
-			this.dismissModal();
+	setReturnFocus () {
+		this.setState({
+			returnFocusTo: document.activeElement
+		});
+	}
+
+	clearBodyScroll () { // eslint-disable-line class-methods-use-this
+		if (window && document && document.body) {
+			document.body.style.overflow = 'inherit';
 		}
 	}
 
@@ -239,36 +283,15 @@ class Modal extends React.Component {
 		}
 	}
 
-	handleSubmitModal () {
-		this.closeModal();
-	}
+	dismissModalOnClickOutside () {
+		// if dismissOnClickOutside is not set, default its value to dismissible
+		const dismissOnClickOutside = isBoolean(this.props.dismissOnClickOutside)
+			? this.props.dismissOnClickOutside
+			: this.props.dismissible;
 
-	updateBodyScroll () {
-		if (window && document && document.body) {
-			if (this.props.isOpen) {
-				document.body.style.overflow = 'hidden';
-			} else {
-				document.body.style.overflow = 'inherit';
-			}
+		if (dismissOnClickOutside) {
+			this.dismissModal();
 		}
-	}
-
-	// eslint-disable-next-line class-methods-use-this
-	clearBodyScroll () {
-		if (window && document && document.body) {
-			document.body.style.overflow = 'inherit';
-		}
-	}
-
-	// eslint-disable-next-line class-methods-use-this
-	handleModalClick (event) {
-		if (event && event.stopPropagation) {
-			event.stopPropagation();
-		}
-	}
-
-	isPrompt () {
-		return this.props.prompt !== undefined;
 	}
 
 	footerComponent () {
@@ -292,6 +315,16 @@ class Modal extends React.Component {
 			);
 		}
 		return footer;
+	}
+
+	handleModalClick (event) { // eslint-disable-line class-methods-use-this
+		if (event && event.stopPropagation) {
+			event.stopPropagation();
+		}
+	}
+
+	handleSubmitModal () {
+		this.closeModal();
 	}
 
 	headerComponent () {
@@ -353,53 +386,18 @@ class Modal extends React.Component {
 		);
 	}
 
-	getModal () {
-		const modalStyle =
-			this.props.align === 'top' ? { justifyContent: 'flex-start' } : null;
-		const borderRadius =
-			this.props.title || this.props.header ? {} : { borderRadius: '.25rem' };
-		const contentStyleFromProps = this.props.contentStyle || {};
-		const contentStyle = {
-			...borderRadius,
-			...contentStyleFromProps
-		};
-		return (
-			// temporarily disabling eslint for the onClicks on the div tags
-			/* eslint-disable */
-			<div
-				aria-labelledby={this.getId()}
-				className={classNames({
-					'slds-modal': true,
-					'slds-fade-in-open': this.state.revealed,
-					'slds-modal--large': this.props.size === 'large',
-					'slds-modal--prompt': this.isPrompt()
-				})}
-				onClick={this.dismissModalOnClickOutside}
-				role="dialog"
-			>
-				<div
-					className={classNames(
-						'slds-modal__container',
-						this.props.containerClassName
-					)}
-					style={modalStyle}
-				>
-					{this.headerComponent()}
-					<div
-						className={classNames(
-							'slds-modal__content',
-							this.props.contentClassName
-						)}
-						style={contentStyle}
-						onClick={this.handleModalClick}
-					>
-						{this.props.children}
-					</div>
-					{this.footerComponent()}
-				</div>
-			</div>
-			/* eslint-enable */
-		);
+	isPrompt () {
+		return this.props.prompt !== undefined;
+	}
+
+	updateBodyScroll () {
+		if (window && document && document.body) {
+			if (this.props.isOpen) {
+				document.body.style.overflow = 'hidden';
+			} else {
+				document.body.style.overflow = 'inherit';
+			}
+		}
 	}
 
 	render () {

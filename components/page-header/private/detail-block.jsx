@@ -50,6 +50,12 @@ class DetailBlock extends Component {
 		}
 	}
 
+	_getClassNames (className, flavor) { // eslint-disable-line class-methods-use-this
+		return classnames('slds-page-header__detail-block', className, {
+			[`slds-size--${flavor}`]: flavor
+		});
+	}
+
 	_renderFieldTruncation () {
 		const fieldContent = this.fieldContentRef;
 		const isTruncated =
@@ -59,13 +65,6 @@ class DetailBlock extends Component {
 		} else {
 			this.setState({ showTooltip: false });
 		}
-	}
-
-	// eslint-disable-next-line class-methods-use-this
-	_getClassNames (className, flavor) {
-		return classnames('slds-page-header__detail-block', className, {
-			[`slds-size--${flavor}`]: flavor
-		});
 	}
 
 	render () {

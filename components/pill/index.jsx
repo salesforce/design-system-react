@@ -122,26 +122,10 @@ class Pill extends React.Component {
 			: 'javascript:void(0);'); // eslint-disable-line no-script-url
 
 	/**
-	 * Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component.
+	 * Removes focus from the component.
 	 */
-	restProps = () => {
-		const {
-			bare,
-			hasError,
-			variant,
-			className,
-			onClick,
-			onRemove,
-			labels,
-			assistiveText,
-			children,
-			href,
-			icon,
-			avatar,
-			onKeyDown,
-			...other
-		} = this.props;
-		return other;
+	blur = () => {
+		this.root.blur();
 	};
 
 	/**
@@ -149,13 +133,6 @@ class Pill extends React.Component {
 	 */
 	focus = () => {
 		this.root.focus();
-	};
-
-	/**
-	 * Removes focus from the component.
-	 */
-	blur = () => {
-		this.root.blur();
 	};
 
 	handleKeyDown = (event, ...rest) => {
@@ -192,6 +169,29 @@ class Pill extends React.Component {
 	handleRef = (root) => {
 		// Keeping the top-most element to support focus() and blur()
 		this.root = root;
+	};
+
+	/**
+	 * Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component.
+	 */
+	restProps = () => {
+		const {
+			bare,
+			hasError,
+			variant,
+			className,
+			onClick,
+			onRemove,
+			labels,
+			assistiveText,
+			children,
+			href,
+			icon,
+			avatar,
+			onKeyDown,
+			...other
+		} = this.props;
+		return other;
 	};
 
 	renderIcon = () => {

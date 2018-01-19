@@ -51,12 +51,19 @@ class Menu extends React.Component {
 		}
 	}
 
-	filter (item) {
-		return this.props.filterWith(this.props.searchTerm, item);
+	getFilteredItemForIndex (i) {
+		if (
+			i > -1 &&
+			this.state.filteredItems &&
+			i < this.state.filteredItems.length
+		) {
+			return this.state.filteredItems[i];
+		}
+		return null;
 	}
 
-	filteredItems () {
-		return this.filterEmptySections(this.props.items.filter(this.filter, this));
+	filter (item) {
+		return this.props.filterWith(this.props.searchTerm, item);
 	}
 
 	// eslint-disable-next-line class-methods-use-this
@@ -77,6 +84,10 @@ class Menu extends React.Component {
 		return result;
 	}
 
+	filteredItems () {
+		return this.filterEmptySections(this.props.items.filter(this.filter, this));
+	}
+
 	// Scroll menu up/down when using mouse keys
 	handleItemFocus = (itemIndex, itemHeight) => {
 		if (this.listRef) {
@@ -84,27 +95,26 @@ class Menu extends React.Component {
 		}
 	};
 
-	getFilteredItemForIndex (i) {
-		if (
-			i > -1 &&
-			this.state.filteredItems &&
-			i < this.state.filteredItems.length
-		) {
-			return this.state.filteredItems[i];
+	renderContent () {
+		if (this.state.filteredItems.length === 0) {
+			return (
+				<li className="slds-lookup__message" aria-live="polite">
+					<span className="slds-m-left--x-large slds-p-vertical--medium">
+						{this.props.emptyMessage}
+					</span>
+				</li>
+			);
 		}
-		return null;
-	}
 
-	renderHeader () {
-		return this.props.header;
+		return this.renderItems();
 	}
 
 	renderFooter () {
 		return this.props.footer;
 	}
 
-	renderSectionDivider () {
-		return this.props.sectionDivider;
+	renderHeader () {
+		return this.props.header;
 	}
 
 	renderItems () {
@@ -153,18 +163,8 @@ class Menu extends React.Component {
 		});
 	}
 
-	renderContent () {
-		if (this.state.filteredItems.length === 0) {
-			return (
-				<li className="slds-lookup__message" aria-live="polite">
-					<span className="slds-m-left--x-large slds-p-vertical--medium">
-						{this.props.emptyMessage}
-					</span>
-				</li>
-			);
-		}
-
-		return this.renderItems();
+	renderSectionDivider () {
+		return this.props.sectionDivider;
 	}
 
 	render () {

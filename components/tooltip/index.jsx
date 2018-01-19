@@ -135,44 +135,26 @@ class PopoverTooltip extends React.Component {
 		this.isUnmounting = true;
 	}
 
+	getContent () {
+		return React.Children.map(this.props.children, (child, i) =>
+			React.cloneElement(
+				child,
+				{
+					key: i,
+					'aria-describedby': this.getId(),
+					onBlur: this.handleMouseLeave,
+					onFocus: this.handleMouseEnter,
+					onMouseEnter: this.handleMouseEnter,
+					onMouseLeave: this.handleMouseLeave
+				},
+				this.grandKidsWithAsstText(child)
+			)
+		);
+	}
+
 	getId () {
 		return this.props.id || this.generatedId;
 	}
-
-	getTooltipTarget () {
-		return this.props.target ? this.props.target : this.trigger;
-	}
-
-	handleMouseEnter = () => {
-		this.setState({
-			isOpen: true,
-			isClosing: false
-		});
-	};
-
-	handleMouseLeave = () => {
-		this.setState({ isClosing: true });
-
-		setTimeout(() => {
-			if (!this.isUnmounting && this.state.isClosing) {
-				this.setState({
-					isOpen: false,
-					isClosing: false
-				});
-			}
-		}, this.props.hoverCloseDelay);
-	};
-
-	getTooltipContent () {
-		return <div className="slds-popover__body">{this.props.content}</div>;
-	}
-
-	handleCancel = () => {
-		this.setState({
-			isOpen: false,
-			isClosing: false
-		});
-	};
 
 	getTooltip () {
 		const isOpen =
@@ -214,8 +196,12 @@ class PopoverTooltip extends React.Component {
 		);
 	}
 
-	renderAssistantText () {
-		return <span className="slds-assistive-text">{this.props.content}</span>;
+	getTooltipContent () {
+		return <div className="slds-popover__body">{this.props.content}</div>;
+	}
+
+	getTooltipTarget () {
+		return this.props.target ? this.props.target : this.trigger;
 	}
 
 	// eslint-disable-next-line class-methods-use-this
@@ -236,22 +222,32 @@ class PopoverTooltip extends React.Component {
 		return this.decorateGrandKidsWithKeyToSilenceWarning(grandKids);
 	}
 
-	getContent () {
-		return React.Children.map(this.props.children, (child, i) =>
-			React.cloneElement(
-				child,
-				{
-					key: i,
-					'aria-describedby': this.getId(),
-					onBlur: this.handleMouseLeave,
-					onFocus: this.handleMouseEnter,
-					onMouseEnter: this.handleMouseEnter,
-					onMouseLeave: this.handleMouseLeave
-				},
-				this.grandKidsWithAsstText(child)
-			)
-		);
-	}
+	handleCancel = () => {
+		this.setState({
+			isOpen: false,
+			isClosing: false
+		});
+	};
+
+	handleMouseEnter = () => {
+		this.setState({
+			isOpen: true,
+			isClosing: false
+		});
+	};
+
+	handleMouseLeave = () => {
+		this.setState({ isClosing: true });
+
+		setTimeout(() => {
+			if (!this.isUnmounting && this.state.isClosing) {
+				this.setState({
+					isOpen: false,
+					isClosing: false
+				});
+			}
+		}, this.props.hoverCloseDelay);
+	};
 
 	saveTriggerRef = (component) => {
 		this.trigger = component;
@@ -264,6 +260,10 @@ class PopoverTooltip extends React.Component {
 			this.setState({ triggerRendered: true });
 		}
 	};
+
+	renderAssistantText () {
+		return <span className="slds-assistive-text">{this.props.content}</span>;
+	}
 
 	render () {
 		const containerStyles = { display: 'inline', ...this.props.triggerStyle };
