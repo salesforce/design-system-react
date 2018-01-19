@@ -28,7 +28,7 @@
     "link": "./scripts/npm-link.sh",
     "lint": "./node_modules/.bin/eslint \"**/*.{js,jsx}\"",
     "lint-fix": "./node_modules/.bin/eslint --fix \"**/*.{js,jsx}\"",
-    "lint:fix": "./node_modules/.bin/eslint --fix \"**/*.{js,jsx}\"",
+    "lint:fix": "npm run lint-fix",
     "lint-staged": "lint-staged",
     "publish-to-git": "./node_modules/.bin/babel-node scripts/publish-to-git.js",
     "publish-to-edge": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge",
