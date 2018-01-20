@@ -9,8 +9,7 @@ First, on behalf of the core maintainers, I'd like to thank you for wanting to c
 1. Fork this repository, clone your fork locally. Create a topic branch locally.
 1. Add the new component to the `/components` folder
 1. Add the component name to `/components/constants.js`
-1. If there are ESlint warnings already present in the code, please fix them if you can, in a separate commit, but this is not mandatory for every pull request. Bonus kudos for fixing warnings!
-1. Add documentation site examples and dev storybook stories in `/components/[COMPONENT]/__examples__/`
+1. If you are adding a feature, add documentation site examples and dev storybook stories in `/components/[COMPONENT]/__examples__/`. This doesn't apply to bugfixes.
 1. Add Mocha and Snapshot tests to `/components/[COMPONENT]/__tests__/`
 1. Hook up site and storybook examples in `/components/[COMPONENT]/__docs__/`
 1. Hook up documentation site examples in `/components/site-stories.js`. Site examples only have access to variables exported in `/components/index.js`, so you should limit your component's site example imports to these variables. See [#1192](https://github.com/salesforce/design-system-react/issues/1192) for more information.
