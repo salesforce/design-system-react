@@ -515,6 +515,20 @@
       "display-name": "Radios",
       "SLDS-component-path": "/components/forms/#flavor-radio"
     },
+	{
+	  "component": "split-view",
+	  "status": "prod",
+	  "display-name": "Split View",
+	  "SLDS-component-path": "/components/split-view",
+	  "dependencies": [
+		{
+		  "component": "header"
+		},
+		{
+		  "component": "listbox"
+		}
+	  ]
+	},
     {
       "component": "radio-group",
       "status": "prod",

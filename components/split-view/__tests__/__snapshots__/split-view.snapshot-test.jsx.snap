@@ -1,0 +1,2903 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Base Closed DOM Snapshot 1`] = `
+<div
+  style={
+    Object {
+      "height": "90vh",
+    }
+  }
+>
+  <div
+    className="slds-grid"
+    id="base-example"
+    style={
+      Object {
+        "height": "100%",
+      }
+    }
+  >
+    <div
+      className="slds-split-view_container slds-is-closed"
+      style={
+        Object {
+          "maxWidth": "0",
+        }
+      }
+    >
+      <button
+        aria-controls="master_view_base-example"
+        aria-describedby={undefined}
+        aria-expanded={false}
+        aria-haspopup={undefined}
+        className="slds-button slds-button slds-button_icon slds-split-view__toggle-button"
+        disabled={false}
+        id={undefined}
+        onBlur={undefined}
+        onClick={[Function]}
+        onFocus={undefined}
+        onKeyDown={undefined}
+        onKeyPress={undefined}
+        onKeyUp={undefined}
+        onMouseDown={undefined}
+        onMouseEnter={undefined}
+        onMouseLeave={undefined}
+        tabIndex={undefined}
+        title="Open split view"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon--x-small"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      className="slds-grow slds-scrollable_y"
+      style={
+        Object {
+          "marginLeft": "0.75rem",
+        }
+      }
+    >
+      <dl
+        className="slds-box slds-m-left_medium slds-m-bottom_medium slds-list_horizontal slds-wrap"
+      >
+        <dt
+          className="slds-item_label slds-text-color_weak slds-truncate"
+          title="Name"
+        >
+          Name:
+        </dt>
+        <dd
+          className="slds-item_detail slds-truncate"
+          title="John Gardner"
+        >
+          John Gardner
+        </dd>
+        <dt
+          className="slds-item_label slds-text-color_weak slds-truncate"
+          title="Value"
+        >
+          Value:
+        </dt>
+        <dd
+          className="slds-item_detail slds-truncate"
+          title="70"
+        >
+          70
+        </dd>
+        <dt
+          className="slds-item_label slds-text-color_weak slds-truncate"
+          title="Company"
+        >
+          Company:
+        </dt>
+        <dd
+          className="slds-item_detail slds-truncate"
+          title="3C Systems"
+        >
+          3C Systems
+        </dd>
+        <dt
+          className="slds-item_label slds-text-color_weak slds-truncate"
+          title="Status"
+        >
+          Status:
+        </dt>
+        <dd
+          className="slds-item_detail slds-truncate"
+          title="Contacted"
+        >
+          Contacted
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Base Closed HTML Snapshot 1`] = `
+"<div style=\\"height:90vh;\\">
+  <div id=\\"base-example\\" class=\\"slds-grid\\" style=\\"height:100%;\\">
+    <div style=\\"max-width:0px;\\" class=\\"slds-split-view_container slds-is-closed\\"><button aria-controls=\\"master_view_base-example\\" aria-expanded=\\"false\\" class=\\"slds-button slds-button slds-button_icon slds-split-view__toggle-button\\" title=\\"Open split view\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg></button></div>
+    <div
+      style=\\"margin-left:0.75rem;\\" class=\\"slds-grow slds-scrollable_y\\">
+      <dl class=\\"slds-box slds-m-left_medium slds-m-bottom_medium slds-list_horizontal slds-wrap\\"><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Name\\">Name:</dt>
+        <dd class=\\"slds-item_detail slds-truncate\\" title=\\"John Gardner\\">John Gardner</dd><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Value\\">Value:</dt>
+        <dd class=\\"slds-item_detail slds-truncate\\" title=\\"70\\">70</dd><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Company\\">Company:</dt>
+        <dd class=\\"slds-item_detail slds-truncate\\" title=\\"3C Systems\\">3C Systems</dd><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Status\\">Status:</dt>
+        <dd class=\\"slds-item_detail slds-truncate\\" title=\\"Contacted\\">Contacted</dd>
+      </dl>
+  </div>
+</div>
+</div>"
+`;
+
+exports[`Base Multiple DOM Snapshot 1`] = `
+<div
+  style={
+    Object {
+      "height": "90vh",
+    }
+  }
+>
+  <div
+    className="slds-grid"
+    id="base-multiple-example"
+    style={
+      Object {
+        "height": "100%",
+      }
+    }
+  >
+    <div
+      className="slds-split-view_container slds-is-open"
+      style={
+        Object {
+          "maxWidth": "20rem",
+        }
+      }
+    >
+      <button
+        aria-controls="master_view_base-multiple-example"
+        aria-describedby={undefined}
+        aria-expanded={true}
+        aria-haspopup={undefined}
+        className="slds-button slds-button slds-button_icon slds-split-view__toggle-button slds-is-open"
+        disabled={false}
+        id={undefined}
+        onBlur={undefined}
+        onClick={[Function]}
+        onFocus={undefined}
+        onKeyDown={undefined}
+        onKeyPress={undefined}
+        onKeyUp={undefined}
+        onMouseDown={undefined}
+        onMouseEnter={undefined}
+        onMouseLeave={undefined}
+        tabIndex={undefined}
+        title="Close split view"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon--x-small"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left"
+          />
+        </svg>
+      </button>
+      <article
+        className="slds-split-view slds-grid slds-grid_vertical slds-grow slds-scrollable_none"
+        id="master_view_base-multiple-example"
+      >
+        <div
+          className="slds-page-header slds-page-header--object-home slds-split-view__header slds-has-bottom-magnet"
+        >
+          <div>
+            <div
+              className="slds-grid"
+            >
+              <div
+                className="slds-col slds-has-flexi-truncate"
+              >
+                <div
+                  className="slds-media slds-no-space slds-grow"
+                >
+                  <div
+                    className="slds-media__figure"
+                  >
+                    <span
+                      className="slds-icon_container slds-icon-standard-lead"
+                      title={undefined}
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon"
+                        style={undefined}
+                      >
+                        <use
+                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#lead"
+                        />
+                      </svg>
+                      
+                    </span>
+                     
+                  </div>
+                  <div
+                    className="slds-media__body"
+                  >
+                    <div>
+                      <div
+                        className="slds-media__body"
+                      >
+                        <h1
+                          className="slds-text-heading_small slds-text-color_default slds-p-right_x-small"
+                        >
+                          <div
+                            className="slds-dropdown-trigger slds-dropdown-trigger--click"
+                            id="header-title-leads"
+                            onBlur={undefined}
+                            onClick={[Function]}
+                            onFocus={null}
+                            onKeyDown={[Function]}
+                            onMouseDown={undefined}
+                            onMouseEnter={null}
+                            onMouseLeave={null}
+                          >
+                            <button
+                              aria-controls={undefined}
+                              aria-describedby={undefined}
+                              aria-expanded={false}
+                              aria-haspopup={true}
+                              className="slds-button slds-button--reset slds-type-focus"
+                              disabled={false}
+                              id={undefined}
+                              onBlur={undefined}
+                              onClick={[Function]}
+                              onFocus={undefined}
+                              onKeyDown={undefined}
+                              onKeyPress={undefined}
+                              onKeyUp={undefined}
+                              onMouseDown={undefined}
+                              onMouseEnter={undefined}
+                              onMouseLeave={undefined}
+                              tabIndex="0"
+                              title={undefined}
+                              type="button"
+                            >
+                              My Leads
+                              <svg
+                                aria-hidden="true"
+                                className="slds-button__icon slds-button__icon--right"
+                              >
+                                <use
+                                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                />
+                              </svg>
+                            </button>
+                          </div>
+                        </h1>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom--xx-small"
+              >
+                <div
+                  className="slds-col slds-no-flex slds-grid slds-align-top"
+                >
+                  <div
+                    className="slds-dropdown-trigger slds-dropdown-trigger--click"
+                    id="header-nav-right-more"
+                    onBlur={undefined}
+                    onClick={[Function]}
+                    onFocus={null}
+                    onKeyDown={[Function]}
+                    onMouseDown={undefined}
+                    onMouseEnter={null}
+                    onMouseLeave={null}
+                  >
+                    <button
+                      aria-controls={undefined}
+                      aria-describedby={undefined}
+                      aria-expanded={false}
+                      aria-haspopup={true}
+                      className="slds-button slds-button--icon-border-filled ignore-click-header-nav-right-more"
+                      disabled={false}
+                      id={undefined}
+                      onBlur={undefined}
+                      onClick={[Function]}
+                      onFocus={undefined}
+                      onKeyDown={undefined}
+                      onKeyPress={undefined}
+                      onKeyUp={undefined}
+                      onMouseDown={undefined}
+                      onMouseEnter={undefined}
+                      onMouseLeave={undefined}
+                      tabIndex="0"
+                      title={undefined}
+                      type="button"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-button__icon"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="slds-grid"
+            >
+              <div
+                className="slds-col slds-align-bottom"
+              >
+                <p
+                  className="slds-page-header__info"
+                >
+                  42 items • Updated just now
+                </p>
+              </div>
+              <div
+                className="slds-col slds-no-flex slds-grid slds-align-bottom"
+              >
+                <div
+                  className="slds-grid"
+                >
+                  <div
+                    className="slds-dropdown-trigger slds-dropdown-trigger--click"
+                    id="header-right-refresh"
+                    onBlur={undefined}
+                    onClick={[Function]}
+                    onFocus={null}
+                    onKeyDown={[Function]}
+                    onMouseDown={undefined}
+                    onMouseEnter={null}
+                    onMouseLeave={null}
+                  >
+                    <button
+                      aria-controls={undefined}
+                      aria-describedby={undefined}
+                      aria-expanded={false}
+                      aria-haspopup={true}
+                      className="slds-button slds-button--icon-more slds-button--icon-large ignore-click-header-right-refresh slds-m-right_xx-small"
+                      disabled={false}
+                      id={undefined}
+                      onBlur={undefined}
+                      onClick={[Function]}
+                      onFocus={undefined}
+                      onKeyDown={undefined}
+                      onKeyPress={undefined}
+                      onKeyUp={undefined}
+                      onMouseDown={undefined}
+                      onMouseEnter={undefined}
+                      onMouseLeave={undefined}
+                      tabIndex="0"
+                      title={undefined}
+                      type="button"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-button__icon"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#side_list"
+                        />
+                      </svg>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-button__icon slds-button__icon--x-small"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        />
+                      </svg>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Checkmark with right icon
+                      </span>
+                    </button>
+                  </div>
+                  <button
+                    aria-controls={undefined}
+                    aria-describedby={undefined}
+                    aria-expanded={undefined}
+                    aria-haspopup={undefined}
+                    className="slds-button slds-button--icon-border"
+                    disabled={false}
+                    id={undefined}
+                    onBlur={undefined}
+                    onClick={[Function]}
+                    onFocus={undefined}
+                    onKeyDown={undefined}
+                    onKeyPress={undefined}
+                    onKeyUp={undefined}
+                    onMouseDown={undefined}
+                    onMouseEnter={undefined}
+                    onMouseLeave={undefined}
+                    tabIndex={undefined}
+                    title={undefined}
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#refresh"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Refresh
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="slds-grid slds-grid_vertical slds-scrollable_none"
+          id={undefined}
+        >
+          <a
+            className="slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset"
+            href="javascript:void(0);"
+            onClick={[Function]}
+            role="button"
+            style={
+              Object {
+                "borderTop": "0",
+              }
+            }
+          >
+            <span>
+              <span
+                className="slds-assistive-text"
+              >
+                Sorted by
+                :
+              </span>
+              <span>
+                Lead Score
+                <span
+                  className={undefined}
+                  title={undefined}
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-align-top slds-icon slds-icon--xx-small slds-icon-text-default"
+                    style={undefined}
+                  >
+                    <use
+                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"
+                    />
+                  </svg>
+                  
+                </span>
+              </span>
+              <span
+                className="slds-assistive-text"
+              >
+                -
+                 
+                Descending
+              </span>
+            </span>
+          </a>
+          <ul
+            aria-label="Select an item to open it in a new workspace tab."
+            aria-multiselectable={true}
+            className="slds-scrollable_y"
+            onKeyDown={[Function]}
+            role="listbox"
+          >
+            <li
+              className="slds-split-view__list-item slds-is-unread"
+              role="presentation"
+            >
+              <a
+                aria-selected={false}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={-1}
+              >
+                <abbr
+                  aria-label={undefined}
+                  className="slds-indicator_unread"
+                  title={undefined}
+                >
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    ●
+                  </span>
+                </abbr>
+                <div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate slds-text-body_regular slds-text-color_default"
+                      title="Riley Shultz"
+                    >
+                      Riley Shultz
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="99"
+                    >
+                      99
+                    </span>
+                  </div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Biotech, Inc."
+                    >
+                      Biotech, Inc.
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="Biotech, Inc."
+                    >
+                      Nurturing
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li
+              className="slds-split-view__list-item"
+              role="presentation"
+            >
+              <a
+                aria-selected={false}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={-1}
+              >
+                <div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate slds-text-body_regular slds-text-color_default"
+                      title="Jason A. - VP of Sales"
+                    >
+                      Jason A. - VP of Sales
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="92"
+                    >
+                      92
+                    </span>
+                  </div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Case Management Solutions"
+                    >
+                      Case Management Solutions
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="Case Management Solutions"
+                    >
+                      Contacted
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li
+              className="slds-split-view__list-item slds-is-unread"
+              role="presentation"
+            >
+              <a
+                aria-selected={false}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={-1}
+              >
+                <abbr
+                  aria-label={undefined}
+                  className="slds-indicator_unread"
+                  title={undefined}
+                >
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    ●
+                  </span>
+                </abbr>
+                <div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate slds-text-body_regular slds-text-color_default"
+                      title="Josh Smith"
+                    >
+                      Josh Smith
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="90"
+                    >
+                      90
+                    </span>
+                  </div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Acme, Inc."
+                    >
+                      Acme, Inc.
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="Acme, Inc."
+                    >
+                      Contacted
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li
+              className="slds-split-view__list-item"
+              role="presentation"
+            >
+              <a
+                aria-selected={false}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={-1}
+              >
+                <div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate slds-text-body_regular slds-text-color_default"
+                      title="Bobby Tree"
+                    >
+                      Bobby Tree
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="89"
+                    >
+                      89
+                    </span>
+                  </div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Salesforce, Inc."
+                    >
+                      Salesforce, Inc.
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="Salesforce, Inc."
+                    >
+                      Closing
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li
+              className="slds-split-view__list-item"
+              role="presentation"
+            >
+              <a
+                aria-selected={false}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={-1}
+              >
+                <div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate slds-text-body_regular slds-text-color_default"
+                      title="Riley Shultz"
+                    >
+                      Riley Shultz
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="74"
+                    >
+                      74
+                    </span>
+                  </div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Tesla"
+                    >
+                      Tesla
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="Tesla"
+                    >
+                      Contacted
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li
+              className="slds-split-view__list-item"
+              role="presentation"
+            >
+              <a
+                aria-selected={false}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={-1}
+              >
+                <div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate slds-text-body_regular slds-text-color_default"
+                      title="Andy Smith"
+                    >
+                      Andy Smith
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="72"
+                    >
+                      72
+                    </span>
+                  </div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Universal Technologies"
+                    >
+                      Universal Technologies
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="Universal Technologies"
+                    >
+                      New
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li
+              className="slds-split-view__list-item"
+              role="presentation"
+            >
+              <a
+                aria-selected={false}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={-1}
+              >
+                <div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate slds-text-body_regular slds-text-color_default"
+                      title="Jim Steele"
+                    >
+                      Jim Steele
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="71"
+                    >
+                      71
+                    </span>
+                  </div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="BigList, Inc."
+                    >
+                      BigList, Inc.
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="BigList, Inc."
+                    >
+                      New
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li
+              className="slds-split-view__list-item"
+              role="presentation"
+            >
+              <a
+                aria-selected={true}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={0}
+              >
+                <div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate slds-text-body_regular slds-text-color_default"
+                      title="John Gardner"
+                    >
+                      John Gardner
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="70"
+                    >
+                      70
+                    </span>
+                  </div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="3C Systems"
+                    >
+                      3C Systems
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="3C Systems"
+                    >
+                      Contacted
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li
+              className="slds-split-view__list-item"
+              role="presentation"
+            >
+              <a
+                aria-selected={false}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={-1}
+              >
+                <div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate slds-text-body_regular slds-text-color_default"
+                      title="Sarah Loehr"
+                    >
+                      Sarah Loehr
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="68"
+                    >
+                      68
+                    </span>
+                  </div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="MedLife, Inc."
+                    >
+                      MedLife, Inc.
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="MedLife, Inc."
+                    >
+                      New
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <div
+      className="slds-grow slds-scrollable_y"
+      style={
+        Object {
+          "marginLeft": "0.75rem",
+        }
+      }
+    >
+      <dl
+        className="slds-box slds-m-left_medium slds-m-bottom_medium slds-list_horizontal slds-wrap"
+      >
+        <dt
+          className="slds-item_label slds-text-color_weak slds-truncate"
+          title="Name"
+        >
+          Name:
+        </dt>
+        <dd
+          className="slds-item_detail slds-truncate"
+          title="John Gardner"
+        >
+          John Gardner
+        </dd>
+        <dt
+          className="slds-item_label slds-text-color_weak slds-truncate"
+          title="Value"
+        >
+          Value:
+        </dt>
+        <dd
+          className="slds-item_detail slds-truncate"
+          title="70"
+        >
+          70
+        </dd>
+        <dt
+          className="slds-item_label slds-text-color_weak slds-truncate"
+          title="Company"
+        >
+          Company:
+        </dt>
+        <dd
+          className="slds-item_detail slds-truncate"
+          title="3C Systems"
+        >
+          3C Systems
+        </dd>
+        <dt
+          className="slds-item_label slds-text-color_weak slds-truncate"
+          title="Status"
+        >
+          Status:
+        </dt>
+        <dd
+          className="slds-item_detail slds-truncate"
+          title="Contacted"
+        >
+          Contacted
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Base Multiple HTML Snapshot 1`] = `
+"<div style=\\"height:90vh;\\">
+  <div id=\\"base-multiple-example\\" class=\\"slds-grid\\" style=\\"height:100%;\\">
+    <div style=\\"max-width:20rem;\\" class=\\"slds-split-view_container slds-is-open\\"><button aria-controls=\\"master_view_base-multiple-example\\" aria-expanded=\\"true\\" class=\\"slds-button slds-button slds-button_icon slds-split-view__toggle-button slds-is-open\\" title=\\"Close split view\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg></button>
+      <article
+        id=\\"master_view_base-multiple-example\\" class=\\"slds-split-view slds-grid slds-grid_vertical slds-grow slds-scrollable_none\\">
+        <div class=\\"slds-page-header slds-page-header--object-home slds-split-view__header slds-has-bottom-magnet\\">
+          <div>
+            <div class=\\"slds-grid\\">
+              <div class=\\"slds-col slds-has-flexi-truncate\\">
+                <div class=\\"slds-media slds-no-space slds-grow\\">
+                  <div class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-lead\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#lead\\"></use></svg></span> </div>
+                  <div class=\\"slds-media__body\\">
+                    <div>
+                      <div class=\\"slds-media__body\\">
+                        <h1 class=\\"slds-text-heading_small slds-text-color_default slds-p-right_x-small\\">
+                          <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"header-title-leads\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--reset slds-type-focus\\" tabindex=\\"0\\" type=\\"button\\">My Leads<svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--right\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
+                        </h1>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class=\\"slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom--xx-small\\">
+                <div class=\\"slds-col slds-no-flex slds-grid slds-align-top\\">
+                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"header-nav-right-more\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-border-filled ignore-click-header-nav-right-more\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
+                </div>
+              </div>
+            </div>
+            <div class=\\"slds-grid\\">
+              <div class=\\"slds-col slds-align-bottom\\">
+                <p class=\\"slds-page-header__info\\">42 items • Updated just now</p>
+              </div>
+              <div class=\\"slds-col slds-no-flex slds-grid slds-align-bottom\\">
+                <div class=\\"slds-grid\\">
+                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"header-right-refresh\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-more slds-button--icon-large ignore-click-header-right-refresh slds-m-right_xx-small\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#side_list\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Checkmark with right icon</span></button></div>
+                  <button
+                    class=\\"slds-button slds-button--icon-border\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#refresh\\"></use></svg><span class=\\"slds-assistive-text\\">Refresh</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class=\\"slds-grid slds-grid_vertical slds-scrollable_none\\"><a style=\\"border-top:0px;\\" href=\\"javascript:void(0);\\" role=\\"button\\" class=\\"slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset\\"><span><span class=\\"slds-assistive-text\\">Sorted by:</span><span>Lead Score<span><svg aria-hidden=\\"true\\" class=\\"slds-align-top slds-icon slds-icon--xx-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#arrowdown\\"></use></svg></span></span><span class=\\"slds-assistive-text\\">- Descending</span></span></a>
+          <ul
+            class=\\"slds-scrollable_y\\" aria-label=\\"Select an item to open it in a new workspace tab.\\" aria-multiselectable=\\"true\\" role=\\"listbox\\">
+            <li class=\\"slds-split-view__list-item slds-is-unread\\" role=\\"presentation\\"><a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\"><abbr class=\\"slds-indicator_unread\\"><span class=\\"slds-assistive-text\\">●</span></abbr><div><div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate slds-text-body_regular slds-text-color_default\\" title=\\"Riley Shultz\\">Riley Shultz</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"99\\">99</span></div><div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate\\" title=\\"Biotech, Inc.\\">Biotech, Inc.</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"Biotech, Inc.\\">Nurturing</span></div></div></a></li>
+            <li
+              class=\\"slds-split-view__list-item\\" role=\\"presentation\\">
+              <a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\">
+                <div>
+                  <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate slds-text-body_regular slds-text-color_default\\" title=\\"Jason A. - VP of Sales\\">Jason A. - VP of Sales</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"92\\">92</span></div>
+                  <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate\\" title=\\"Case Management Solutions\\">Case Management Solutions</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"Case Management Solutions\\">Contacted</span></div>
+                </div>
+              </a>
+              </li>
+              <li class=\\"slds-split-view__list-item slds-is-unread\\" role=\\"presentation\\"><a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\"><abbr class=\\"slds-indicator_unread\\"><span class=\\"slds-assistive-text\\">●</span></abbr><div><div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate slds-text-body_regular slds-text-color_default\\" title=\\"Josh Smith\\">Josh Smith</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"90\\">90</span></div><div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate\\" title=\\"Acme, Inc.\\">Acme, Inc.</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"Acme, Inc.\\">Contacted</span></div></div></a></li>
+              <li
+                class=\\"slds-split-view__list-item\\" role=\\"presentation\\">
+                <a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\">
+                  <div>
+                    <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate slds-text-body_regular slds-text-color_default\\" title=\\"Bobby Tree\\">Bobby Tree</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"89\\">89</span></div>
+                    <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate\\" title=\\"Salesforce, Inc.\\">Salesforce, Inc.</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"Salesforce, Inc.\\">Closing</span></div>
+                  </div>
+                </a>
+                </li>
+                <li class=\\"slds-split-view__list-item\\" role=\\"presentation\\">
+                  <a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\">
+                    <div>
+                      <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate slds-text-body_regular slds-text-color_default\\" title=\\"Riley Shultz\\">Riley Shultz</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"74\\">74</span></div>
+                      <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate\\" title=\\"Tesla\\">Tesla</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"Tesla\\">Contacted</span></div>
+                    </div>
+                  </a>
+                </li>
+                <li class=\\"slds-split-view__list-item\\" role=\\"presentation\\">
+                  <a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\">
+                    <div>
+                      <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate slds-text-body_regular slds-text-color_default\\" title=\\"Andy Smith\\">Andy Smith</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"72\\">72</span></div>
+                      <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate\\" title=\\"Universal Technologies\\">Universal Technologies</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"Universal Technologies\\">New</span></div>
+                    </div>
+                  </a>
+                </li>
+                <li class=\\"slds-split-view__list-item\\" role=\\"presentation\\">
+                  <a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\">
+                    <div>
+                      <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate slds-text-body_regular slds-text-color_default\\" title=\\"Jim Steele\\">Jim Steele</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"71\\">71</span></div>
+                      <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate\\" title=\\"BigList, Inc.\\">BigList, Inc.</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"BigList, Inc.\\">New</span></div>
+                    </div>
+                  </a>
+                </li>
+                <li class=\\"slds-split-view__list-item\\" role=\\"presentation\\">
+                  <a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"true\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\">
+                    <div>
+                      <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate slds-text-body_regular slds-text-color_default\\" title=\\"John Gardner\\">John Gardner</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"70\\">70</span></div>
+                      <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate\\" title=\\"3C Systems\\">3C Systems</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"3C Systems\\">Contacted</span></div>
+                    </div>
+                  </a>
+                </li>
+                <li class=\\"slds-split-view__list-item\\" role=\\"presentation\\">
+                  <a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\">
+                    <div>
+                      <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate slds-text-body_regular slds-text-color_default\\" title=\\"Sarah Loehr\\">Sarah Loehr</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"68\\">68</span></div>
+                      <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate\\" title=\\"MedLife, Inc.\\">MedLife, Inc.</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"MedLife, Inc.\\">New</span></div>
+                    </div>
+                  </a>
+                </li>
+                </ul>
+        </div>
+        </article>
+    </div>
+    <div style=\\"margin-left:0.75rem;\\" class=\\"slds-grow slds-scrollable_y\\">
+      <dl class=\\"slds-box slds-m-left_medium slds-m-bottom_medium slds-list_horizontal slds-wrap\\"><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Name\\">Name:</dt>
+        <dd class=\\"slds-item_detail slds-truncate\\" title=\\"John Gardner\\">John Gardner</dd><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Value\\">Value:</dt>
+        <dd class=\\"slds-item_detail slds-truncate\\" title=\\"70\\">70</dd><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Company\\">Company:</dt>
+        <dd class=\\"slds-item_detail slds-truncate\\" title=\\"3C Systems\\">3C Systems</dd><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Status\\">Status:</dt>
+        <dd class=\\"slds-item_detail slds-truncate\\" title=\\"Contacted\\">Contacted</dd>
+      </dl>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Base Open DOM Snapshot 1`] = `
+<div
+  style={
+    Object {
+      "height": "90vh",
+    }
+  }
+>
+  <div
+    className="slds-grid"
+    id="base-example"
+    style={
+      Object {
+        "height": "100%",
+      }
+    }
+  >
+    <div
+      className="slds-split-view_container slds-is-open"
+      style={
+        Object {
+          "maxWidth": "20rem",
+        }
+      }
+    >
+      <button
+        aria-controls="master_view_base-example"
+        aria-describedby={undefined}
+        aria-expanded={true}
+        aria-haspopup={undefined}
+        className="slds-button slds-button slds-button_icon slds-split-view__toggle-button slds-is-open"
+        disabled={false}
+        id={undefined}
+        onBlur={undefined}
+        onClick={[Function]}
+        onFocus={undefined}
+        onKeyDown={undefined}
+        onKeyPress={undefined}
+        onKeyUp={undefined}
+        onMouseDown={undefined}
+        onMouseEnter={undefined}
+        onMouseLeave={undefined}
+        tabIndex={undefined}
+        title="Close split view"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon--x-small"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left"
+          />
+        </svg>
+      </button>
+      <article
+        className="slds-split-view slds-grid slds-grid_vertical slds-grow slds-scrollable_none"
+        id="master_view_base-example"
+      >
+        <div
+          className="slds-page-header slds-page-header--object-home slds-split-view__header slds-has-bottom-magnet"
+        >
+          <div>
+            <div
+              className="slds-grid"
+            >
+              <div
+                className="slds-col slds-has-flexi-truncate"
+              >
+                <div
+                  className="slds-media slds-no-space slds-grow"
+                >
+                  <div
+                    className="slds-media__figure"
+                  >
+                    <span
+                      className="slds-icon_container slds-icon-standard-lead"
+                      title={undefined}
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon"
+                        style={undefined}
+                      >
+                        <use
+                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#lead"
+                        />
+                      </svg>
+                      
+                    </span>
+                     
+                  </div>
+                  <div
+                    className="slds-media__body"
+                  >
+                    <div>
+                      <div
+                        className="slds-media__body"
+                      >
+                        <h1
+                          className="slds-text-heading_small slds-text-color_default slds-p-right_x-small"
+                        >
+                          <div
+                            className="slds-dropdown-trigger slds-dropdown-trigger--click"
+                            id="header-title-leads"
+                            onBlur={undefined}
+                            onClick={[Function]}
+                            onFocus={null}
+                            onKeyDown={[Function]}
+                            onMouseDown={undefined}
+                            onMouseEnter={null}
+                            onMouseLeave={null}
+                          >
+                            <button
+                              aria-controls={undefined}
+                              aria-describedby={undefined}
+                              aria-expanded={false}
+                              aria-haspopup={true}
+                              className="slds-button slds-button--reset slds-type-focus"
+                              disabled={false}
+                              id={undefined}
+                              onBlur={undefined}
+                              onClick={[Function]}
+                              onFocus={undefined}
+                              onKeyDown={undefined}
+                              onKeyPress={undefined}
+                              onKeyUp={undefined}
+                              onMouseDown={undefined}
+                              onMouseEnter={undefined}
+                              onMouseLeave={undefined}
+                              tabIndex="0"
+                              title={undefined}
+                              type="button"
+                            >
+                              My Leads
+                              <svg
+                                aria-hidden="true"
+                                className="slds-button__icon slds-button__icon--right"
+                              >
+                                <use
+                                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                />
+                              </svg>
+                            </button>
+                          </div>
+                        </h1>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom--xx-small"
+              >
+                <div
+                  className="slds-col slds-no-flex slds-grid slds-align-top"
+                >
+                  <div
+                    className="slds-dropdown-trigger slds-dropdown-trigger--click"
+                    id="header-nav-right-more"
+                    onBlur={undefined}
+                    onClick={[Function]}
+                    onFocus={null}
+                    onKeyDown={[Function]}
+                    onMouseDown={undefined}
+                    onMouseEnter={null}
+                    onMouseLeave={null}
+                  >
+                    <button
+                      aria-controls={undefined}
+                      aria-describedby={undefined}
+                      aria-expanded={false}
+                      aria-haspopup={true}
+                      className="slds-button slds-button--icon-border-filled ignore-click-header-nav-right-more"
+                      disabled={false}
+                      id={undefined}
+                      onBlur={undefined}
+                      onClick={[Function]}
+                      onFocus={undefined}
+                      onKeyDown={undefined}
+                      onKeyPress={undefined}
+                      onKeyUp={undefined}
+                      onMouseDown={undefined}
+                      onMouseEnter={undefined}
+                      onMouseLeave={undefined}
+                      tabIndex="0"
+                      title={undefined}
+                      type="button"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-button__icon"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="slds-grid"
+            >
+              <div
+                className="slds-col slds-align-bottom"
+              >
+                <p
+                  className="slds-page-header__info"
+                >
+                  42 items • Updated just now
+                </p>
+              </div>
+              <div
+                className="slds-col slds-no-flex slds-grid slds-align-bottom"
+              >
+                <div
+                  className="slds-grid"
+                >
+                  <div
+                    className="slds-dropdown-trigger slds-dropdown-trigger--click"
+                    id="header-right-refresh"
+                    onBlur={undefined}
+                    onClick={[Function]}
+                    onFocus={null}
+                    onKeyDown={[Function]}
+                    onMouseDown={undefined}
+                    onMouseEnter={null}
+                    onMouseLeave={null}
+                  >
+                    <button
+                      aria-controls={undefined}
+                      aria-describedby={undefined}
+                      aria-expanded={false}
+                      aria-haspopup={true}
+                      className="slds-button slds-button--icon-more slds-button--icon-large ignore-click-header-right-refresh slds-m-right_xx-small"
+                      disabled={false}
+                      id={undefined}
+                      onBlur={undefined}
+                      onClick={[Function]}
+                      onFocus={undefined}
+                      onKeyDown={undefined}
+                      onKeyPress={undefined}
+                      onKeyUp={undefined}
+                      onMouseDown={undefined}
+                      onMouseEnter={undefined}
+                      onMouseLeave={undefined}
+                      tabIndex="0"
+                      title={undefined}
+                      type="button"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-button__icon"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#side_list"
+                        />
+                      </svg>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-button__icon slds-button__icon--x-small"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        />
+                      </svg>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Checkmark with right icon
+                      </span>
+                    </button>
+                  </div>
+                  <button
+                    aria-controls={undefined}
+                    aria-describedby={undefined}
+                    aria-expanded={undefined}
+                    aria-haspopup={undefined}
+                    className="slds-button slds-button--icon-border"
+                    disabled={false}
+                    id={undefined}
+                    onBlur={undefined}
+                    onClick={[Function]}
+                    onFocus={undefined}
+                    onKeyDown={undefined}
+                    onKeyPress={undefined}
+                    onKeyUp={undefined}
+                    onMouseDown={undefined}
+                    onMouseEnter={undefined}
+                    onMouseLeave={undefined}
+                    tabIndex={undefined}
+                    title={undefined}
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#refresh"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Refresh
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="slds-grid slds-grid_vertical slds-scrollable_none"
+          id={undefined}
+        >
+          <a
+            className="slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset"
+            href="javascript:void(0);"
+            onClick={[Function]}
+            role="button"
+            style={
+              Object {
+                "borderTop": "0",
+              }
+            }
+          >
+            <span>
+              <span
+                className="slds-assistive-text"
+              >
+                Sorted by
+                :
+              </span>
+              <span>
+                Lead Score
+                <span
+                  className={undefined}
+                  title={undefined}
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-align-top slds-icon slds-icon--xx-small slds-icon-text-default"
+                    style={undefined}
+                  >
+                    <use
+                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"
+                    />
+                  </svg>
+                  
+                </span>
+              </span>
+              <span
+                className="slds-assistive-text"
+              >
+                -
+                 
+                Descending
+              </span>
+            </span>
+          </a>
+          <ul
+            aria-label="Select an item to open it in a new workspace tab."
+            aria-multiselectable={undefined}
+            className="slds-scrollable_y"
+            onKeyDown={[Function]}
+            role="listbox"
+          >
+            <li
+              className="slds-split-view__list-item slds-is-unread"
+              role="presentation"
+            >
+              <a
+                aria-selected={false}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={-1}
+              >
+                <abbr
+                  aria-label={undefined}
+                  className="slds-indicator_unread"
+                  title={undefined}
+                >
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    ●
+                  </span>
+                </abbr>
+                <div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate slds-text-body_regular slds-text-color_default"
+                      title="Riley Shultz"
+                    >
+                      Riley Shultz
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="99"
+                    >
+                      99
+                    </span>
+                  </div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Biotech, Inc."
+                    >
+                      Biotech, Inc.
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="Biotech, Inc."
+                    >
+                      Nurturing
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li
+              className="slds-split-view__list-item"
+              role="presentation"
+            >
+              <a
+                aria-selected={false}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={-1}
+              >
+                <div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate slds-text-body_regular slds-text-color_default"
+                      title="Jason A. - VP of Sales"
+                    >
+                      Jason A. - VP of Sales
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="92"
+                    >
+                      92
+                    </span>
+                  </div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Case Management Solutions"
+                    >
+                      Case Management Solutions
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="Case Management Solutions"
+                    >
+                      Contacted
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li
+              className="slds-split-view__list-item slds-is-unread"
+              role="presentation"
+            >
+              <a
+                aria-selected={false}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={-1}
+              >
+                <abbr
+                  aria-label={undefined}
+                  className="slds-indicator_unread"
+                  title={undefined}
+                >
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    ●
+                  </span>
+                </abbr>
+                <div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate slds-text-body_regular slds-text-color_default"
+                      title="Josh Smith"
+                    >
+                      Josh Smith
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="90"
+                    >
+                      90
+                    </span>
+                  </div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Acme, Inc."
+                    >
+                      Acme, Inc.
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="Acme, Inc."
+                    >
+                      Contacted
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li
+              className="slds-split-view__list-item"
+              role="presentation"
+            >
+              <a
+                aria-selected={false}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={-1}
+              >
+                <div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate slds-text-body_regular slds-text-color_default"
+                      title="Bobby Tree"
+                    >
+                      Bobby Tree
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="89"
+                    >
+                      89
+                    </span>
+                  </div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Salesforce, Inc."
+                    >
+                      Salesforce, Inc.
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="Salesforce, Inc."
+                    >
+                      Closing
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li
+              className="slds-split-view__list-item"
+              role="presentation"
+            >
+              <a
+                aria-selected={false}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={-1}
+              >
+                <div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate slds-text-body_regular slds-text-color_default"
+                      title="Riley Shultz"
+                    >
+                      Riley Shultz
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="74"
+                    >
+                      74
+                    </span>
+                  </div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Tesla"
+                    >
+                      Tesla
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="Tesla"
+                    >
+                      Contacted
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li
+              className="slds-split-view__list-item"
+              role="presentation"
+            >
+              <a
+                aria-selected={false}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={-1}
+              >
+                <div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate slds-text-body_regular slds-text-color_default"
+                      title="Andy Smith"
+                    >
+                      Andy Smith
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="72"
+                    >
+                      72
+                    </span>
+                  </div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Universal Technologies"
+                    >
+                      Universal Technologies
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="Universal Technologies"
+                    >
+                      New
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li
+              className="slds-split-view__list-item"
+              role="presentation"
+            >
+              <a
+                aria-selected={false}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={-1}
+              >
+                <div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate slds-text-body_regular slds-text-color_default"
+                      title="Jim Steele"
+                    >
+                      Jim Steele
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="71"
+                    >
+                      71
+                    </span>
+                  </div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="BigList, Inc."
+                    >
+                      BigList, Inc.
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="BigList, Inc."
+                    >
+                      New
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li
+              className="slds-split-view__list-item"
+              role="presentation"
+            >
+              <a
+                aria-selected={true}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={0}
+              >
+                <div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate slds-text-body_regular slds-text-color_default"
+                      title="John Gardner"
+                    >
+                      John Gardner
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="70"
+                    >
+                      70
+                    </span>
+                  </div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="3C Systems"
+                    >
+                      3C Systems
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="3C Systems"
+                    >
+                      Contacted
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li
+              className="slds-split-view__list-item"
+              role="presentation"
+            >
+              <a
+                aria-selected={false}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={-1}
+              >
+                <div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate slds-text-body_regular slds-text-color_default"
+                      title="Sarah Loehr"
+                    >
+                      Sarah Loehr
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="68"
+                    >
+                      68
+                    </span>
+                  </div>
+                  <div
+                    className="slds-grid slds-wrap"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="MedLife, Inc."
+                    >
+                      MedLife, Inc.
+                    </span>
+                    <span
+                      className="slds-truncate slds-col_bump-left"
+                      title="MedLife, Inc."
+                    >
+                      New
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <div
+      className="slds-grow slds-scrollable_y"
+      style={
+        Object {
+          "marginLeft": "0.75rem",
+        }
+      }
+    >
+      <dl
+        className="slds-box slds-m-left_medium slds-m-bottom_medium slds-list_horizontal slds-wrap"
+      >
+        <dt
+          className="slds-item_label slds-text-color_weak slds-truncate"
+          title="Name"
+        >
+          Name:
+        </dt>
+        <dd
+          className="slds-item_detail slds-truncate"
+          title="John Gardner"
+        >
+          John Gardner
+        </dd>
+        <dt
+          className="slds-item_label slds-text-color_weak slds-truncate"
+          title="Value"
+        >
+          Value:
+        </dt>
+        <dd
+          className="slds-item_detail slds-truncate"
+          title="70"
+        >
+          70
+        </dd>
+        <dt
+          className="slds-item_label slds-text-color_weak slds-truncate"
+          title="Company"
+        >
+          Company:
+        </dt>
+        <dd
+          className="slds-item_detail slds-truncate"
+          title="3C Systems"
+        >
+          3C Systems
+        </dd>
+        <dt
+          className="slds-item_label slds-text-color_weak slds-truncate"
+          title="Status"
+        >
+          Status:
+        </dt>
+        <dd
+          className="slds-item_detail slds-truncate"
+          title="Contacted"
+        >
+          Contacted
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Base Open HTML Snapshot 1`] = `
+"<div style=\\"height:90vh;\\">
+  <div id=\\"base-example\\" class=\\"slds-grid\\" style=\\"height:100%;\\">
+    <div style=\\"max-width:20rem;\\" class=\\"slds-split-view_container slds-is-open\\"><button aria-controls=\\"master_view_base-example\\" aria-expanded=\\"true\\" class=\\"slds-button slds-button slds-button_icon slds-split-view__toggle-button slds-is-open\\" title=\\"Close split view\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg></button>
+      <article
+        id=\\"master_view_base-example\\" class=\\"slds-split-view slds-grid slds-grid_vertical slds-grow slds-scrollable_none\\">
+        <div class=\\"slds-page-header slds-page-header--object-home slds-split-view__header slds-has-bottom-magnet\\">
+          <div>
+            <div class=\\"slds-grid\\">
+              <div class=\\"slds-col slds-has-flexi-truncate\\">
+                <div class=\\"slds-media slds-no-space slds-grow\\">
+                  <div class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-lead\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#lead\\"></use></svg></span> </div>
+                  <div class=\\"slds-media__body\\">
+                    <div>
+                      <div class=\\"slds-media__body\\">
+                        <h1 class=\\"slds-text-heading_small slds-text-color_default slds-p-right_x-small\\">
+                          <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"header-title-leads\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--reset slds-type-focus\\" tabindex=\\"0\\" type=\\"button\\">My Leads<svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--right\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
+                        </h1>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class=\\"slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom--xx-small\\">
+                <div class=\\"slds-col slds-no-flex slds-grid slds-align-top\\">
+                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"header-nav-right-more\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-border-filled ignore-click-header-nav-right-more\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
+                </div>
+              </div>
+            </div>
+            <div class=\\"slds-grid\\">
+              <div class=\\"slds-col slds-align-bottom\\">
+                <p class=\\"slds-page-header__info\\">42 items • Updated just now</p>
+              </div>
+              <div class=\\"slds-col slds-no-flex slds-grid slds-align-bottom\\">
+                <div class=\\"slds-grid\\">
+                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"header-right-refresh\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-more slds-button--icon-large ignore-click-header-right-refresh slds-m-right_xx-small\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#side_list\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Checkmark with right icon</span></button></div>
+                  <button
+                    class=\\"slds-button slds-button--icon-border\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#refresh\\"></use></svg><span class=\\"slds-assistive-text\\">Refresh</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class=\\"slds-grid slds-grid_vertical slds-scrollable_none\\"><a style=\\"border-top:0px;\\" href=\\"javascript:void(0);\\" role=\\"button\\" class=\\"slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset\\"><span><span class=\\"slds-assistive-text\\">Sorted by:</span><span>Lead Score<span><svg aria-hidden=\\"true\\" class=\\"slds-align-top slds-icon slds-icon--xx-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#arrowdown\\"></use></svg></span></span><span class=\\"slds-assistive-text\\">- Descending</span></span></a>
+          <ul
+            class=\\"slds-scrollable_y\\" aria-label=\\"Select an item to open it in a new workspace tab.\\" role=\\"listbox\\">
+            <li class=\\"slds-split-view__list-item slds-is-unread\\" role=\\"presentation\\"><a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\"><abbr class=\\"slds-indicator_unread\\"><span class=\\"slds-assistive-text\\">●</span></abbr><div><div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate slds-text-body_regular slds-text-color_default\\" title=\\"Riley Shultz\\">Riley Shultz</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"99\\">99</span></div><div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate\\" title=\\"Biotech, Inc.\\">Biotech, Inc.</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"Biotech, Inc.\\">Nurturing</span></div></div></a></li>
+            <li
+              class=\\"slds-split-view__list-item\\" role=\\"presentation\\">
+              <a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\">
+                <div>
+                  <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate slds-text-body_regular slds-text-color_default\\" title=\\"Jason A. - VP of Sales\\">Jason A. - VP of Sales</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"92\\">92</span></div>
+                  <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate\\" title=\\"Case Management Solutions\\">Case Management Solutions</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"Case Management Solutions\\">Contacted</span></div>
+                </div>
+              </a>
+              </li>
+              <li class=\\"slds-split-view__list-item slds-is-unread\\" role=\\"presentation\\"><a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\"><abbr class=\\"slds-indicator_unread\\"><span class=\\"slds-assistive-text\\">●</span></abbr><div><div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate slds-text-body_regular slds-text-color_default\\" title=\\"Josh Smith\\">Josh Smith</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"90\\">90</span></div><div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate\\" title=\\"Acme, Inc.\\">Acme, Inc.</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"Acme, Inc.\\">Contacted</span></div></div></a></li>
+              <li
+                class=\\"slds-split-view__list-item\\" role=\\"presentation\\">
+                <a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\">
+                  <div>
+                    <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate slds-text-body_regular slds-text-color_default\\" title=\\"Bobby Tree\\">Bobby Tree</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"89\\">89</span></div>
+                    <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate\\" title=\\"Salesforce, Inc.\\">Salesforce, Inc.</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"Salesforce, Inc.\\">Closing</span></div>
+                  </div>
+                </a>
+                </li>
+                <li class=\\"slds-split-view__list-item\\" role=\\"presentation\\">
+                  <a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\">
+                    <div>
+                      <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate slds-text-body_regular slds-text-color_default\\" title=\\"Riley Shultz\\">Riley Shultz</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"74\\">74</span></div>
+                      <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate\\" title=\\"Tesla\\">Tesla</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"Tesla\\">Contacted</span></div>
+                    </div>
+                  </a>
+                </li>
+                <li class=\\"slds-split-view__list-item\\" role=\\"presentation\\">
+                  <a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\">
+                    <div>
+                      <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate slds-text-body_regular slds-text-color_default\\" title=\\"Andy Smith\\">Andy Smith</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"72\\">72</span></div>
+                      <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate\\" title=\\"Universal Technologies\\">Universal Technologies</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"Universal Technologies\\">New</span></div>
+                    </div>
+                  </a>
+                </li>
+                <li class=\\"slds-split-view__list-item\\" role=\\"presentation\\">
+                  <a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\">
+                    <div>
+                      <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate slds-text-body_regular slds-text-color_default\\" title=\\"Jim Steele\\">Jim Steele</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"71\\">71</span></div>
+                      <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate\\" title=\\"BigList, Inc.\\">BigList, Inc.</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"BigList, Inc.\\">New</span></div>
+                    </div>
+                  </a>
+                </li>
+                <li class=\\"slds-split-view__list-item\\" role=\\"presentation\\">
+                  <a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"true\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\">
+                    <div>
+                      <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate slds-text-body_regular slds-text-color_default\\" title=\\"John Gardner\\">John Gardner</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"70\\">70</span></div>
+                      <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate\\" title=\\"3C Systems\\">3C Systems</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"3C Systems\\">Contacted</span></div>
+                    </div>
+                  </a>
+                </li>
+                <li class=\\"slds-split-view__list-item\\" role=\\"presentation\\">
+                  <a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\">
+                    <div>
+                      <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate slds-text-body_regular slds-text-color_default\\" title=\\"Sarah Loehr\\">Sarah Loehr</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"68\\">68</span></div>
+                      <div class=\\"slds-grid slds-wrap\\"><span class=\\"slds-truncate\\" title=\\"MedLife, Inc.\\">MedLife, Inc.</span><span class=\\"slds-truncate slds-col_bump-left\\" title=\\"MedLife, Inc.\\">New</span></div>
+                    </div>
+                  </a>
+                </li>
+                </ul>
+        </div>
+        </article>
+    </div>
+    <div style=\\"margin-left:0.75rem;\\" class=\\"slds-grow slds-scrollable_y\\">
+      <dl class=\\"slds-box slds-m-left_medium slds-m-bottom_medium slds-list_horizontal slds-wrap\\"><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Name\\">Name:</dt>
+        <dd class=\\"slds-item_detail slds-truncate\\" title=\\"John Gardner\\">John Gardner</dd><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Value\\">Value:</dt>
+        <dd class=\\"slds-item_detail slds-truncate\\" title=\\"70\\">70</dd><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Company\\">Company:</dt>
+        <dd class=\\"slds-item_detail slds-truncate\\" title=\\"3C Systems\\">3C Systems</dd><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Status\\">Status:</dt>
+        <dd class=\\"slds-item_detail slds-truncate\\" title=\\"Contacted\\">Contacted</dd>
+      </dl>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Custom DOM Snapshot 1`] = `
+<div
+  style={
+    Object {
+      "height": "90vh",
+    }
+  }
+>
+  <div
+    className="slds-grid"
+    id="custom-example"
+    style={
+      Object {
+        "height": "100%",
+      }
+    }
+  >
+    <div
+      className="slds-split-view_container slds-is-open"
+      style={
+        Object {
+          "maxWidth": "20rem",
+        }
+      }
+    >
+      <button
+        aria-controls="master_view_custom-example"
+        aria-describedby={undefined}
+        aria-expanded={true}
+        aria-haspopup={undefined}
+        className="slds-button slds-button slds-button_icon slds-split-view__toggle-button slds-is-open"
+        disabled={false}
+        id={undefined}
+        onBlur={undefined}
+        onClick={[Function]}
+        onFocus={undefined}
+        onKeyDown={undefined}
+        onKeyPress={undefined}
+        onKeyUp={undefined}
+        onMouseDown={undefined}
+        onMouseEnter={undefined}
+        onMouseLeave={undefined}
+        tabIndex={undefined}
+        title="Close split view"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon--x-small"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#left"
+          />
+        </svg>
+      </button>
+      <article
+        className="slds-split-view slds-grid slds-grid_vertical slds-grow slds-scrollable_none"
+        id="master_view_custom-example"
+      >
+        <div
+          className="slds-page-header slds-page-header--object-home slds-split-view__header slds-has-bottom-magnet"
+        >
+          <div>
+            <div
+              className="slds-grid"
+            >
+              <div
+                className="slds-col slds-has-flexi-truncate"
+              >
+                <div
+                  className="slds-media slds-no-space slds-grow"
+                >
+                  <div
+                    className="slds-media__figure"
+                  >
+                    <span
+                      className="slds-icon_container slds-icon-standard-lead"
+                      title={undefined}
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon"
+                        style={undefined}
+                      >
+                        <use
+                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#lead"
+                        />
+                      </svg>
+                      
+                    </span>
+                     
+                  </div>
+                  <div
+                    className="slds-media__body"
+                  >
+                    <div>
+                      <div
+                        className="slds-media__body"
+                      >
+                        <h1
+                          className="slds-text-heading_small slds-text-color_default slds-p-right_x-small"
+                        >
+                          <div
+                            className="slds-dropdown-trigger slds-dropdown-trigger--click"
+                            id="header-title-leads"
+                            onBlur={undefined}
+                            onClick={[Function]}
+                            onFocus={null}
+                            onKeyDown={[Function]}
+                            onMouseDown={undefined}
+                            onMouseEnter={null}
+                            onMouseLeave={null}
+                          >
+                            <button
+                              aria-controls={undefined}
+                              aria-describedby={undefined}
+                              aria-expanded={false}
+                              aria-haspopup={true}
+                              className="slds-button slds-button--reset slds-type-focus"
+                              disabled={false}
+                              id={undefined}
+                              onBlur={undefined}
+                              onClick={[Function]}
+                              onFocus={undefined}
+                              onKeyDown={undefined}
+                              onKeyPress={undefined}
+                              onKeyUp={undefined}
+                              onMouseDown={undefined}
+                              onMouseEnter={undefined}
+                              onMouseLeave={undefined}
+                              tabIndex="0"
+                              title={undefined}
+                              type="button"
+                            >
+                              My Leads
+                              <svg
+                                aria-hidden="true"
+                                className="slds-button__icon slds-button__icon--right"
+                              >
+                                <use
+                                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                />
+                              </svg>
+                            </button>
+                          </div>
+                        </h1>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom--xx-small"
+              >
+                <div
+                  className="slds-col slds-no-flex slds-grid slds-align-top"
+                >
+                  <div
+                    className="slds-dropdown-trigger slds-dropdown-trigger--click"
+                    id="header-nav-right-more"
+                    onBlur={undefined}
+                    onClick={[Function]}
+                    onFocus={null}
+                    onKeyDown={[Function]}
+                    onMouseDown={undefined}
+                    onMouseEnter={null}
+                    onMouseLeave={null}
+                  >
+                    <button
+                      aria-controls={undefined}
+                      aria-describedby={undefined}
+                      aria-expanded={false}
+                      aria-haspopup={true}
+                      className="slds-button slds-button--icon-border-filled ignore-click-header-nav-right-more"
+                      disabled={false}
+                      id={undefined}
+                      onBlur={undefined}
+                      onClick={[Function]}
+                      onFocus={undefined}
+                      onKeyDown={undefined}
+                      onKeyPress={undefined}
+                      onKeyUp={undefined}
+                      onMouseDown={undefined}
+                      onMouseEnter={undefined}
+                      onMouseLeave={undefined}
+                      tabIndex="0"
+                      title={undefined}
+                      type="button"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-button__icon"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="slds-grid"
+            >
+              <div
+                className="slds-col slds-align-bottom"
+              >
+                <p
+                  className="slds-page-header__info"
+                >
+                  42 items • Updated just now
+                </p>
+              </div>
+              <div
+                className="slds-col slds-no-flex slds-grid slds-align-bottom"
+              >
+                <div
+                  className="slds-grid"
+                >
+                  <div
+                    className="slds-dropdown-trigger slds-dropdown-trigger--click"
+                    id="header-right-refresh"
+                    onBlur={undefined}
+                    onClick={[Function]}
+                    onFocus={null}
+                    onKeyDown={[Function]}
+                    onMouseDown={undefined}
+                    onMouseEnter={null}
+                    onMouseLeave={null}
+                  >
+                    <button
+                      aria-controls={undefined}
+                      aria-describedby={undefined}
+                      aria-expanded={false}
+                      aria-haspopup={true}
+                      className="slds-button slds-button--icon-more slds-button--icon-large ignore-click-header-right-refresh slds-m-right_xx-small"
+                      disabled={false}
+                      id={undefined}
+                      onBlur={undefined}
+                      onClick={[Function]}
+                      onFocus={undefined}
+                      onKeyDown={undefined}
+                      onKeyPress={undefined}
+                      onKeyUp={undefined}
+                      onMouseDown={undefined}
+                      onMouseEnter={undefined}
+                      onMouseLeave={undefined}
+                      tabIndex="0"
+                      title={undefined}
+                      type="button"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-button__icon"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#side_list"
+                        />
+                      </svg>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-button__icon slds-button__icon--x-small"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        />
+                      </svg>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Checkmark with right icon
+                      </span>
+                    </button>
+                  </div>
+                  <button
+                    aria-controls={undefined}
+                    aria-describedby={undefined}
+                    aria-expanded={undefined}
+                    aria-haspopup={undefined}
+                    className="slds-button slds-button--icon-border"
+                    disabled={false}
+                    id={undefined}
+                    onBlur={undefined}
+                    onClick={[Function]}
+                    onFocus={undefined}
+                    onKeyDown={undefined}
+                    onKeyPress={undefined}
+                    onKeyUp={undefined}
+                    onMouseDown={undefined}
+                    onMouseEnter={undefined}
+                    onMouseLeave={undefined}
+                    tabIndex={undefined}
+                    title={undefined}
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#refresh"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Refresh
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="slds-grid slds-grid_vertical slds-scrollable_none"
+          id={undefined}
+        >
+          <a
+            className="slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset"
+            href="javascript:void(0);"
+            onClick={[Function]}
+            role="button"
+            style={
+              Object {
+                "borderTop": "0",
+              }
+            }
+          >
+            <span>
+              <span
+                className="slds-assistive-text"
+              >
+                Sorted by
+                :
+              </span>
+              <span>
+                Lead Score
+                <span
+                  className={undefined}
+                  title={undefined}
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-align-top slds-icon slds-icon--xx-small slds-icon-text-default"
+                    style={undefined}
+                  >
+                    <use
+                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"
+                    />
+                  </svg>
+                  
+                </span>
+              </span>
+              <span
+                className="slds-assistive-text"
+              >
+                -
+                 
+                Descending
+              </span>
+            </span>
+          </a>
+          <ul
+            aria-label="Select an item to open it in a new workspace tab."
+            aria-multiselectable={undefined}
+            className="slds-scrollable_y"
+            onKeyDown={[Function]}
+            role="listbox"
+          >
+            <li
+              className="slds-split-view__list-item slds-is-unread"
+              role="presentation"
+            >
+              <a
+                aria-selected={false}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={-1}
+              >
+                <abbr
+                  aria-label={undefined}
+                  className="slds-indicator_unread"
+                  title={undefined}
+                >
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    ●
+                  </span>
+                </abbr>
+                <div>
+                  <span
+                    className="slds-icon_container slds-icon_container--circle slds-icon-action-call"
+                    title={undefined}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon slds-icon--x-small"
+                      style={undefined}
+                    >
+                      <use
+                        xlinkHref="/assets/icons/action-sprite/svg/symbols.svg#call"
+                      />
+                    </svg>
+                    
+                  </span>
+                  <span
+                    className="slds-text-heading_small slds-m-left_medium"
+                  >
+                    Riley Shultz
+                  </span>
+                </div>
+              </a>
+            </li>
+            <li
+              className="slds-split-view__list-item"
+              role="presentation"
+            >
+              <a
+                aria-selected={false}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={-1}
+              >
+                <div>
+                  <span
+                    className="slds-icon_container slds-icon_container--circle slds-icon-action-check"
+                    title={undefined}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon slds-icon--x-small"
+                      style={undefined}
+                    >
+                      <use
+                        xlinkHref="/assets/icons/action-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                    
+                  </span>
+                  <span
+                    className="slds-text-heading_small slds-m-left_medium"
+                  >
+                    Jason A. - VP of Sales
+                  </span>
+                </div>
+              </a>
+            </li>
+            <li
+              className="slds-split-view__list-item slds-is-unread"
+              role="presentation"
+            >
+              <a
+                aria-selected={false}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={-1}
+              >
+                <abbr
+                  aria-label={undefined}
+                  className="slds-indicator_unread"
+                  title={undefined}
+                >
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    ●
+                  </span>
+                </abbr>
+                <div>
+                  <span
+                    className="slds-icon_container slds-icon_container--circle slds-icon-action-check"
+                    title={undefined}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon slds-icon--x-small"
+                      style={undefined}
+                    >
+                      <use
+                        xlinkHref="/assets/icons/action-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                    
+                  </span>
+                  <span
+                    className="slds-text-heading_small slds-m-left_medium"
+                  >
+                    Josh Smith
+                  </span>
+                </div>
+              </a>
+            </li>
+            <li
+              className="slds-split-view__list-item"
+              role="presentation"
+            >
+              <a
+                aria-selected={true}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={0}
+              >
+                <div>
+                  <span
+                    className="slds-icon_container slds-icon_container--circle slds-icon-action-call"
+                    title={undefined}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon slds-icon--x-small"
+                      style={undefined}
+                    >
+                      <use
+                        xlinkHref="/assets/icons/action-sprite/svg/symbols.svg#call"
+                      />
+                    </svg>
+                    
+                  </span>
+                  <span
+                    className="slds-text-heading_small slds-m-left_medium"
+                  >
+                    Bobby Tree
+                  </span>
+                </div>
+              </a>
+            </li>
+            <li
+              className="slds-split-view__list-item"
+              role="presentation"
+            >
+              <a
+                aria-selected={false}
+                className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
+                href="javascript:void(0);"
+                onClick={[Function]}
+                role="option"
+                tabIndex={-1}
+              >
+                <div>
+                  <span
+                    className="slds-icon_container slds-icon_container--circle slds-icon-action-check"
+                    title={undefined}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon slds-icon--x-small"
+                      style={undefined}
+                    >
+                      <use
+                        xlinkHref="/assets/icons/action-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                    
+                  </span>
+                  <span
+                    className="slds-text-heading_small slds-m-left_medium"
+                  >
+                    Riley Shultz
+                  </span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <div
+      className="slds-grow slds-scrollable_y"
+      style={
+        Object {
+          "marginLeft": "0.75rem",
+        }
+      }
+    >
+      <dl
+        className="slds-box slds-m-left_medium slds-m-bottom_medium slds-list_horizontal slds-wrap"
+      >
+        <dt
+          className="slds-item_label slds-text-color_weak slds-truncate"
+          title="Name"
+        >
+          Name:
+        </dt>
+        <dd
+          className="slds-item_detail slds-truncate"
+          title="Bobby Tree"
+        >
+          Bobby Tree
+        </dd>
+        <dt
+          className="slds-item_label slds-text-color_weak slds-truncate"
+          title="Value"
+        >
+          Value:
+        </dt>
+        <dd
+          className="slds-item_detail slds-truncate"
+          title="89"
+        >
+          89
+        </dd>
+        <dt
+          className="slds-item_label slds-text-color_weak slds-truncate"
+          title="Company"
+        >
+          Company:
+        </dt>
+        <dd
+          className="slds-item_detail slds-truncate"
+          title="Salesforce, Inc."
+        >
+          Salesforce, Inc.
+        </dd>
+        <dt
+          className="slds-item_label slds-text-color_weak slds-truncate"
+          title="Status"
+        >
+          Status:
+        </dt>
+        <dd
+          className="slds-item_detail slds-truncate"
+          title="Closing"
+        >
+          Closing
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Custom HTML Snapshot 1`] = `
+"<div style=\\"height:90vh;\\">
+  <div id=\\"custom-example\\" class=\\"slds-grid\\" style=\\"height:100%;\\">
+    <div style=\\"max-width:20rem;\\" class=\\"slds-split-view_container slds-is-open\\"><button aria-controls=\\"master_view_custom-example\\" aria-expanded=\\"true\\" class=\\"slds-button slds-button slds-button_icon slds-split-view__toggle-button slds-is-open\\" title=\\"Close split view\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#left\\"></use></svg></button>
+      <article
+        id=\\"master_view_custom-example\\" class=\\"slds-split-view slds-grid slds-grid_vertical slds-grow slds-scrollable_none\\">
+        <div class=\\"slds-page-header slds-page-header--object-home slds-split-view__header slds-has-bottom-magnet\\">
+          <div>
+            <div class=\\"slds-grid\\">
+              <div class=\\"slds-col slds-has-flexi-truncate\\">
+                <div class=\\"slds-media slds-no-space slds-grow\\">
+                  <div class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-lead\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#lead\\"></use></svg></span> </div>
+                  <div class=\\"slds-media__body\\">
+                    <div>
+                      <div class=\\"slds-media__body\\">
+                        <h1 class=\\"slds-text-heading_small slds-text-color_default slds-p-right_x-small\\">
+                          <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"header-title-leads\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--reset slds-type-focus\\" tabindex=\\"0\\" type=\\"button\\">My Leads<svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--right\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
+                        </h1>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class=\\"slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom--xx-small\\">
+                <div class=\\"slds-col slds-no-flex slds-grid slds-align-top\\">
+                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"header-nav-right-more\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-border-filled ignore-click-header-nav-right-more\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></button></div>
+                </div>
+              </div>
+            </div>
+            <div class=\\"slds-grid\\">
+              <div class=\\"slds-col slds-align-bottom\\">
+                <p class=\\"slds-page-header__info\\">42 items • Updated just now</p>
+              </div>
+              <div class=\\"slds-col slds-no-flex slds-grid slds-align-bottom\\">
+                <div class=\\"slds-grid\\">
+                  <div class=\\"slds-dropdown-trigger slds-dropdown-trigger--click\\" id=\\"header-right-refresh\\"><button aria-expanded=\\"false\\" aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-more slds-button--icon-large ignore-click-header-right-refresh slds-m-right_xx-small\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#side_list\\"></use></svg><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-button__icon--x-small\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg><span class=\\"slds-assistive-text\\">Checkmark with right icon</span></button></div>
+                  <button
+                    class=\\"slds-button slds-button--icon-border\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#refresh\\"></use></svg><span class=\\"slds-assistive-text\\">Refresh</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class=\\"slds-grid slds-grid_vertical slds-scrollable_none\\"><a style=\\"border-top:0px;\\" href=\\"javascript:void(0);\\" role=\\"button\\" class=\\"slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset\\"><span><span class=\\"slds-assistive-text\\">Sorted by:</span><span>Lead Score<span><svg aria-hidden=\\"true\\" class=\\"slds-align-top slds-icon slds-icon--xx-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#arrowdown\\"></use></svg></span></span><span class=\\"slds-assistive-text\\">- Descending</span></span></a>
+          <ul
+            class=\\"slds-scrollable_y\\" aria-label=\\"Select an item to open it in a new workspace tab.\\" role=\\"listbox\\">
+            <li class=\\"slds-split-view__list-item slds-is-unread\\" role=\\"presentation\\"><a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\"><abbr class=\\"slds-indicator_unread\\"><span class=\\"slds-assistive-text\\">●</span></abbr><div><span class=\\"slds-icon_container slds-icon_container--circle slds-icon-action-call\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/action-sprite/svg/symbols.svg#call\\"></use></svg></span><span class=\\"slds-text-heading_small slds-m-left_medium\\">Riley Shultz</span></div></a></li>
+            <li
+              class=\\"slds-split-view__list-item\\" role=\\"presentation\\">
+              <a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\">
+                <div><span class=\\"slds-icon_container slds-icon_container--circle slds-icon-action-check\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/action-sprite/svg/symbols.svg#check\\"></use></svg></span>
+                  <span
+                    class=\\"slds-text-heading_small slds-m-left_medium\\">Jason A. - VP of Sales</span>
+                </div>
+              </a>
+              </li>
+              <li class=\\"slds-split-view__list-item slds-is-unread\\" role=\\"presentation\\"><a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\"><abbr class=\\"slds-indicator_unread\\"><span class=\\"slds-assistive-text\\">●</span></abbr><div><span class=\\"slds-icon_container slds-icon_container--circle slds-icon-action-check\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/action-sprite/svg/symbols.svg#check\\"></use></svg></span><span class=\\"slds-text-heading_small slds-m-left_medium\\">Josh Smith</span></div></a></li>
+              <li
+                class=\\"slds-split-view__list-item\\" role=\\"presentation\\">
+                <a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"true\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\">
+                  <div><span class=\\"slds-icon_container slds-icon_container--circle slds-icon-action-call\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/action-sprite/svg/symbols.svg#call\\"></use></svg></span>
+                    <span
+                      class=\\"slds-text-heading_small slds-m-left_medium\\">Bobby Tree</span>
+                  </div>
+                </a>
+                </li>
+                <li class=\\"slds-split-view__list-item\\" role=\\"presentation\\">
+                  <a class=\\"slds-split-view__list-item-action slds-grow slds-has-flexi-truncate\\" role=\\"option\\" aria-selected=\\"false\\" tabindex=\\"-1\\" href=\\"javascript:void(0);\\">
+                    <div><span class=\\"slds-icon_container slds-icon_container--circle slds-icon-action-check\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--x-small\\"><use xlink:href=\\"/assets/icons/action-sprite/svg/symbols.svg#check\\"></use></svg></span>
+                      <span
+                        class=\\"slds-text-heading_small slds-m-left_medium\\">Riley Shultz</span>
+                    </div>
+                  </a>
+                </li>
+                </ul>
+        </div>
+        </article>
+    </div>
+    <div style=\\"margin-left:0.75rem;\\" class=\\"slds-grow slds-scrollable_y\\">
+      <dl class=\\"slds-box slds-m-left_medium slds-m-bottom_medium slds-list_horizontal slds-wrap\\"><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Name\\">Name:</dt>
+        <dd class=\\"slds-item_detail slds-truncate\\" title=\\"Bobby Tree\\">Bobby Tree</dd><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Value\\">Value:</dt>
+        <dd class=\\"slds-item_detail slds-truncate\\" title=\\"89\\">89</dd><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Company\\">Company:</dt>
+        <dd class=\\"slds-item_detail slds-truncate\\" title=\\"Salesforce, Inc.\\">Salesforce, Inc.</dd><dt class=\\"slds-item_label slds-text-color_weak slds-truncate\\" title=\\"Status\\">Status:</dt>
+        <dd class=\\"slds-item_detail slds-truncate\\" title=\\"Closing\\">Closing</dd>
+      </dl>
+    </div>
+  </div>
+</div>"
+`;
