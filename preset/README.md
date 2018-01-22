@@ -1,6 +1,6 @@
 # Babel Preset for Source Code
 
-> A Babel 6 preset that compiles official ES2015+ down to ES5 by automatically determining the Babel plugins and polyfills you need based Salesforce's supported browsers. This includes the Design System for React project.
+> A Babel 6 preset that makes Design System React compatible with Salesforce’s supported browsers. This enables a module bundler, such as Webpack, to transpile Design System React. Using this will make it easier to upgrade in the future without having to manually reconfigure your Babel settings to be compatible with new language features Design System React may use.
 
 Currently contains transforms for all standard syntax that is [ES2017](https://tc39.github.io/ecma262/), `babel-preset-react` and the following lower-stage plugins:
 
