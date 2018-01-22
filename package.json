@@ -93,6 +93,7 @@
     "lodash.compact": "^3.0.0",
     "lodash.escaperegexp": "^4.1.1",
     "lodash.find": "^4.3.0",
+    "lodash.findindex": "^4.3.0",
     "lodash.flatten": "^4.2.0",
     "lodash.isboolean": "^3.0.3",
     "lodash.isdate": "^4.0.1",

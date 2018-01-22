@@ -15,6 +15,7 @@ import assign from 'lodash.assign';
 import find from 'lodash.find';
 import reject from 'lodash.reject';
 import isEqual from 'lodash.isequal';
+import findIndex from 'lodash.findindex';
 
 import { shape } from 'airbnb-prop-types';
 
@@ -239,7 +240,7 @@ class Combobox extends React.Component {
 		// list. If it's in the options list, then find the new index and
 		// set `activeOptionIndex`
 		if (!isEqual(this.props.options, nextProps.options)) {
-			const index = nextProps.options.findIndex((item) =>
+			const index = findIndex(nextProps.options, (item) =>
 				isEqual(item, this.state.activeOption)
 			);
 			if (index !== -1) {
