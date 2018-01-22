@@ -224,6 +224,10 @@
       "component": "accordion",
       "status": "prod",
       "display-name": "Accordions",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
       "SLDS-component-path": "/components/accordions",
       "dependencies": [
         {
@@ -235,6 +239,10 @@
       "component": "alert",
       "status": "prod",
       "display-name": "Alerts",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
       "SLDS-component-path": "/components/alerts",
       "dependencies": [
         {
@@ -244,7 +252,7 @@
     },
     {
       "component": "app-launcher",
-      "status": "prod",
+      "status": "prototype",
       "display-name": "App Launcher",
       "SLDS-component-path": "/components/app-launcher/#flavor-default",
       "dependencies": [
@@ -257,15 +265,33 @@
       ]
     },
     {
+      "component": "avatar",
+      "status": "prod",
+      "display-name": "Avatars",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/avatars"
+    },
+    {
       "component": "breadcrumb",
       "status": "prod",
       "display-name": "Breadcrumbs",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
       "SLDS-component-path": "/components/breadcrumbs"
     },
     {
       "component": "button",
       "status": "prod",
       "display-name": "Buttons",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
       "SLDS-component-path": "/components/buttons"
     },
     {
@@ -284,6 +310,10 @@
       "component": "card",
       "status": "prod",
       "display-name": "Cards",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
       "SLDS-component-path": "/components/cards",
       "dependencies": [
         {
@@ -298,18 +328,20 @@
       "component": "forms/checkbox",
       "status": "prod",
       "display-name": "Checkboxes",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
       "SLDS-component-path": "/components/forms/#flavor-checkbox"
-    },
-    {
-      "component": "avatar",
-      "status": "prod",
-      "display-name": "Avatars",
-      "SLDS-component-path": "/components/avatars"
     },
     {
       "component": "combobox",
       "status": "prod",
       "display-name": "Comboboxes",
+      "last-accessibility-review": {
+        "date-iso-8601": "2017/08/21",
+        "commit-sha": "295a4766f712a5f93743c4ecd3ba62d91c1fc153"
+      },
       "SLDS-component-path": "/components/comboboxes"
     },
     {
@@ -336,19 +368,11 @@
       "component": "date-picker",
       "status": "prod",
       "display-name": "Datepickers",
+      "last-accessibility-review": {
+        "date-iso-8601": "2017/01/20",
+        "commit-sha": "568f503b19ddc039207e4b5c2636461de937f5f0"
+      },
       "SLDS-component-path": "/components/datepickers"
-    },
-    {
-      "component": "icon",
-      "status": "prod",
-      "display-name": "Icons",
-      "SLDS-component-path": "/components/icons"
-    },
-    {
-      "component": "icon-settings",
-      "status": "prod",
-      "display-name": "Icon Settings",
-      "SLDS-component-path": "/components/icons-settings"
     },
     {
       "component": "filter",
@@ -374,6 +398,10 @@
       "component": "forms/input",
       "status": "prod",
       "display-name": "Inputs",
+      "last-accessibility-review": {
+        "date-iso-8601": "2017/09/22",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
       "SLDS-component-path": "/components/forms#flavor-input"
     },
     {
@@ -384,7 +412,7 @@
     },
     {
       "component": "global-header",
-      "status": "prod",
+      "status": "prototype",
       "display-name": "Global Header",
       "SLDS-component-path": "/components/global-header#flavor-base",
       "dependencies": [
@@ -404,8 +432,12 @@
     },
     {
       "component": "global-navigation-bar",
-      "status": "prod",
+      "status": "prototype",
       "display-name": "Global Navigation Bar",
+      "last-accessibility-review": {
+        "date-iso-8601": "2017/05/02",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
       "SLDS-component-path": "/components/global-navigation#flavor-navigation-bar",
       "dependencies": [
         {
@@ -424,6 +456,22 @@
           "component": "region"
         }
       ]
+    },
+    {
+      "component": "icon",
+      "status": "prod",
+      "display-name": "Icons",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/icons"
+    },
+    {
+      "component": "icon-settings",
+      "status": "prod",
+      "display-name": "Icon Settings",
+      "SLDS-component-path": "/components/icons-settings"
     },
     {
       "component": "media-object",
@@ -513,26 +561,42 @@
       "component": "forms/radio",
       "status": "prod",
       "display-name": "Radios",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
       "SLDS-component-path": "/components/forms/#flavor-radio"
     },
-	{
-	  "component": "split-view",
-	  "status": "prod",
-	  "display-name": "Split View",
-	  "SLDS-component-path": "/components/split-view",
-	  "dependencies": [
-		{
-		  "component": "header"
-		},
-		{
-		  "component": "listbox"
-		}
-	  ]
-	},
+    {
+      "component": "split-view",
+      "status": "prod",
+      "display-name": "Split View",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "last-slds-markup-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/split-view",
+      "dependencies": [
+      {
+        "component": "header"
+      },
+      {
+        "component": "listbox"
+      }
+      ]
+    },
     {
       "component": "radio-group",
       "status": "prod",
       "display-name": "Radio Groups",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
       "SLDS-component-path": "/components/radio-group"
     },
     {
@@ -551,6 +615,10 @@
       "component": "tabs",
       "status": "prod",
       "display-name": "Tabs",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
       "SLDS-component-path": "/components/tabs",
       "dependencies": [
         {
@@ -562,6 +630,10 @@
       "component": "toast",
       "status": "prod",
       "display-name": "Toasts",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
       "SLDS-component-path": "/components/toasts",
       "dependencies": [
         {
