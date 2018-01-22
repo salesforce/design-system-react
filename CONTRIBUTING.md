@@ -22,6 +22,7 @@ First, on behalf of the core maintainers, I'd like to thank you for wanting to c
 * Are you a first-time contributor? If you would like a simple task to start out with, you might consider [these issues](https://deepscan.io/dashboard/#view=project&pid=1475&bid=4666&subview=issues) or run `npm run lint` and fix a few warnings.
 * UX pattern / design must exist in [SLDS](https://www.lightningdesignsystem.com/). Components in the process of being added to SLDS will be considered as prototypes.
 * All new props and components need tests. **Please review the [testing readme](/tests/README.md)**
+* Contributions of components with a subset of SLDS variants will be considered. Please consider your architecture in view of the other variants and create an issue before starting just to be certain.
 * Follow `prettier-eslint` settings. [Prettier](https://prettier.io/) is run first. Then [ESlint](https://eslint.org/). Upon commit, staged files will be run through `prettier --write` and `eslint --fix`. This should make them pass the lint task run on the CI server and hopefully avoid style nitpicks.
     * You can enable this behavior at save in your editor, too. For instance, in Visual Studio Code, run the [prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and set `"editor.formatOnSave": true` and `prettier.eslintIntegration: true`.
 * If you are adding a feature, [add a story](https://storybook.js.org/basics/writing-stories/) to the React Storybook that uses your feature, so that reviewers can test it.
