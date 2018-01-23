@@ -135,21 +135,21 @@ const Dialog = createReactClass({
 		 */
 		outsideClickIgnoreClass: PropTypes.string,
 		/**
-		  * If a dialog is `positione="overflowBoundaryElement"`, it will be rendered in a portal or separate render tree. This `portalMount` callback will be triggered instead of the the default `ReactDOM.unstable_renderSubtreeIntoContainer` and the function will mount the portal itself. Consider the following code that bypasses the internal mount and uses an Enzyme wrapper to mount the React root tree to the DOM.
-		  *
-		  * ```
-		  * <Popover
-		  *   isOpen
-		  *   portalMount={({ instance, reactElement, domContainerNode }) => {
-		  *     portalWrapper = Enzyme.mount(reactElement, { attachTo: domContainerNode });
-		  *   }}
-		  *   onOpen={() => {
-		  *     expect(portalWrapper.find(`#my-heading`)).to.exist;
-		  *     done();
-		  *   }}
-		  *   />
-		  * ```
-		  */
+		 * If a dialog is `positione="overflowBoundaryElement"`, it will be rendered in a portal or separate render tree. This `portalMount` callback will be triggered instead of the the default `ReactDOM.unstable_renderSubtreeIntoContainer` and the function will mount the portal itself. Consider the following code that bypasses the internal mount and uses an Enzyme wrapper to mount the React root tree to the DOM.
+		 *
+		 * ```
+		 * <Popover
+		 *   isOpen
+		 *   portalMount={({ instance, reactElement, domContainerNode }) => {
+		 *     portalWrapper = Enzyme.mount(reactElement, { attachTo: domContainerNode });
+		 *   }}
+		 *   onOpen={() => {
+		 *     expect(portalWrapper.find(`#my-heading`)).to.exist;
+		 *     done();
+		 *   }}
+		 *   />
+		 * ```
+		 */
 		portalMount: PropTypes.func,
 		/**
 		 * Please select one of the following:
