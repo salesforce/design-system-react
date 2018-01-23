@@ -336,7 +336,7 @@ class Tabs extends React.Component {
 		const children = React.Children.toArray(this.props.children);
 
 		return (
-		// `parentId` gets consumed by TabsList, adding a suffix of `-tabs__nav`
+			// `parentId` gets consumed by TabsList, adding a suffix of `-tabs__nav`
 			<TabsList id={parentId} variant={this.getVariant()}>
 				{children.map((child, index) => {
 					const id = `${parentId}-slds-tabs--tab-${index}`;
@@ -379,7 +379,7 @@ class Tabs extends React.Component {
 		}
 
 		return (
-		/* eslint-disable jsx-a11y/no-static-element-interactions */
+			/* eslint-disable jsx-a11y/no-static-element-interactions */
 			<div
 				id={id}
 				className={classNames(

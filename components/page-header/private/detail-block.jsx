@@ -50,7 +50,8 @@ class DetailBlock extends Component {
 		}
 	}
 
-	_getClassNames (className, flavor) { // eslint-disable-line class-methods-use-this
+	// eslint-disable-next-line class-methods-use-this
+	_getClassNames (className, flavor) {
 		return classnames('slds-page-header__detail-block', className, {
 			[`slds-size--${flavor}`]: flavor
 		});

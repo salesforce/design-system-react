@@ -34,7 +34,8 @@ const defaultProps = {
 };
 
 class Title extends Component {
-	_getClassNames (truncate, align, className) { // eslint-disable-line class-methods-use-this
+	_getClassNames(truncate, align, className) {
+		// eslint-disable-line class-methods-use-this
 		return classnames(
 			'slds-page-header__title slds-m-right--small',
 			className,
@@ -45,7 +46,7 @@ class Title extends Component {
 		);
 	}
 
-	render () {
+	render() {
 		const { children, title, truncate, align, className } = this.props;
 		const classes = this._getClassNames(truncate, align, className);
 

@@ -261,7 +261,8 @@ class Modal extends React.Component {
 		});
 	}
 
-	clearBodyScroll () { // eslint-disable-line class-methods-use-this
+	// eslint-disable-next-line class-methods-use-this
+	clearBodyScroll () {
 		if (window && document && document.body) {
 			document.body.style.overflow = 'inherit';
 		}
@@ -316,7 +317,8 @@ class Modal extends React.Component {
 		return footer;
 	}
 
-	handleModalClick (event) { // eslint-disable-line class-methods-use-this
+	// eslint-disable-next-line class-methods-use-this
+	handleModalClick (event) {
 		if (event && event.stopPropagation) {
 			event.stopPropagation();
 		}

@@ -101,7 +101,7 @@ class Item extends React.Component {
 		if (this.props.isActive) itemClassName += ' slds-theme--shade';
 
 		return (
-		// IMPORTANT: anchor id is used to set lookup's input's aria-activedescendant
+			// IMPORTANT: anchor id is used to set lookup's input's aria-activedescendant
 			<li
 				className={itemClassName}
 				ref={(li) => {
