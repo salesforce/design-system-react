@@ -139,7 +139,7 @@ const MenuDropdown = createReactClass({
 		 * ```
 		 * <Dropdown>
 		 *   <Trigger>
-		 *	 <Button iconCategory="utility" iconName="settings" />
+		 *   <Button iconCategory="utility" iconName="settings" />
 		 *   </Trigger>
 		 *   <div>Look ma! This is Custom Content.</div>
 		 *   <List options={[myArray]}/>
@@ -309,26 +309,26 @@ const MenuDropdown = createReactClass({
 		 * An array of menu item objects. `className` and `id` object keys are applied to the `li` DOM node. `divider` key can have a value of `top` or `bottom`. `rightIcon` and `leftIcon` are not actually `Icon` components, but prop objects that get passed to an `Icon` component. The `href` key will be added to the `a` and its default click event will be prevented. Here is a sample:
 		 * ```
 		 * [{
-		 *	className: 'custom-li-class',
-		 *  	divider: 'bottom',
-		 *  	label: 'A Header',
-		 *  	type: 'header'
+		 *   className: 'custom-li-class',
+		 *     divider: 'bottom',
+		 *     label: 'A Header',
+		 *     type: 'header'
 		 *  }, {
-		 *  	href: 'http://sfdc.co/',
-		 *  	id: 'custom-li-id',
-		 *  	label: 'Has a value',
-		 *	leftIcon: {
-		 *	  name: 'settings',
-		 *	  category: 'utility'
-		 *	},
-		 *	rightIcon: {
-		 *		name: 'settings',
-		 *		category: 'utility'
-		 *	},
-		 *  	type: 'item',
-		 *  	value: 'B0'
+		 *     href: 'http://sfdc.co/',
+		 *     id: 'custom-li-id',
+		 *     label: 'Has a value',
+		 *   leftIcon: {
+		 *    name: 'settings',
+		 *    category: 'utility'
+		 *   },
+		 *   rightIcon: {
+		 *    name: 'settings',
+		 *    category: 'utility'
+		 *   },
+		 *     type: 'item',
+		 *     value: 'B0'
 		 *  }, {
-		 *	type: 'divider'
+		 *   type: 'divider'
 		 * }]
 		 * ```
 		 */

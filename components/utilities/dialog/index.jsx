@@ -139,17 +139,17 @@ const Dialog = createReactClass({
 		  *
 		  * ```
 		  * <Popover
-		 		isOpen
-				portalMount={({ instance, reactElement, domContainerNode }) => {
-					portalWrapper = Enzyme.mount(reactElement, { attachTo: domContainerNode });
-				}}
-		 		onOpen={() => {
-		 			expect(portalWrapper.find(`#my-heading`)).to.exist;
-		 			done();
-		 		}}
-		 		/>
-		 *	```
-		 */
+		  *   isOpen
+		  *   portalMount={({ instance, reactElement, domContainerNode }) => {
+		  *     portalWrapper = Enzyme.mount(reactElement, { attachTo: domContainerNode });
+		  *   }}
+		  *   onOpen={() => {
+		  *     expect(portalWrapper.find(`#my-heading`)).to.exist;
+		  *     done();
+		  *   }}
+		  *   />
+		  * ```
+		  */
 		portalMount: PropTypes.func,
 		/**
 		 * Please select one of the following:

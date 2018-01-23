@@ -66,7 +66,7 @@ const propTypes = {
 	 */
 	stateTwo: PropTypes.object,
 	/**
-	 *	Deselect label and icon (optional) of button.
+	 * Deselect label and icon (optional) of button.
 	 */
 	stateThree: PropTypes.object,
 	/**

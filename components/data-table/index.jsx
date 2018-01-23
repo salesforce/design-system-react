@@ -91,7 +91,7 @@ const DataTable = createReactClass({
 		 * import DataTableCell from 'design-system-react/data-table/cell';
 		 * const CustomDataTableCell = ({ children, ...props }) => (
 		 *   <DataTableCell {...props} >
-		 *	 <a href="javascript:void(0);">{children}</a>
+		 *   <a href="javascript:void(0);">{children}</a>
 		 *   </DataTableCell>
 		 * );
 		 * CustomDataTableCell.displayName = DataTableCell.displayName;
@@ -99,7 +99,7 @@ const DataTable = createReactClass({
 		 * <DataTable>
 		 *   <DataTableColumn />
 		 *   <DataTableColumn>
-		 *	 <DataTableCustomCell />
+		 *   <DataTableCustomCell />
 		 *   </DataTableColumn>
 		 *   <DataTableRowActions />
 		 * </DataTable>
