@@ -152,8 +152,7 @@ class Modal extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			isClosing: false,
-			revealed: false
+			isClosing: false
 		};
 
 		// Bind
@@ -170,12 +169,6 @@ class Modal extends React.Component {
 
 	componentDidMount () {
 		this.setReturnFocus();
-
-		if (!this.state.revealed) {
-			setTimeout(() => {
-				this.setState({ revealed: true });
-			});
-		}
 		this.updateBodyScroll();
 	}
 
