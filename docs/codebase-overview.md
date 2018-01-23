@@ -28,7 +28,7 @@ If you are new to React, you may be trained to design components in a more compl
 
 ### Think of others first
 
-* <a name="not-bootstrap" href="#not-bootstrap">#</a> **Consider your audience.** This project is not Bootstrap, and we've built [frameworks on top of Bootstrap](https://github.com/ExactTarget/fuelux). The primary audience for this project is software engineers yearning to easily implement the design artifact handed to them. Yes, contributors should over-document and explain much as you need to, but you do _not_ need to have components just work when you drop them on the page. Read on for more about limiting internal component state.
+* <a name="not-bootstrap" href="#not-bootstrap">#</a> **Consider your audience.** This project is not Bootstrap, and we've built [frameworks on top of Bootstrap](https://github.com/ExactTarget/fuelux). The primary audience for this project is software engineers yearning to easily implement the design artifact handed to them. Yes, contributors should over-document and explain much as you need to, but you do _not_ need to have components just work when you drop them on the page. Read on for more about limiting internal component state. 
 
 * <a name="consuming-developer-mindset" href="#consuming-developer-mindset">#</a> **Put yourself in the consuming developer mindset.** "I just updated. What just broke and why?" Why does the React child component become the the DOM parent node? Write as long of a prop description comment that is needed to understand the concept. Need to sunset a prop or change the variable type accepted? Write backwards compatible code and add console warnings that will _only run in development_. See the `checkProp` paradigm. If the test can become an independent module and work in multiple components, add it to the `design-system-react/utilities` folder. Some examples include:
 
@@ -36,6 +36,8 @@ If you are new to React, you may be trained to design components in a more compl
   * Determine if trigger can be tabbed to
   * Require one of multiple prop, but not both or only one of specified properties
   * Warnings of property deprecation, sunsetting, and future changes
+
+* <a name="not-browser-compatible" href="#not-browser-compatible">#</a> **This library will not, and is not, intended to be run in a browser as-is.** This library is targeted at engineers that can optimize their builds for performance and target the browsers and environments they need to support with appropriate polyfills. Polyfills should be added at application build time.
 
 * <a name="all-text-can-be-internationalized" href="#all-text-can-be-internationalized">#</a> Any text the user can read (including text for screenreaders) should be able to be set via a prop for internationalization purposes. _Within the component, do not concatenate strings._ This assumes that you know the word order of all languages. Strings should be passed into props in their entirety.
 
