@@ -1,7 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { testDOMandHTML, testImageSnapshot } from '../../../tests/snapshot-helpers';
+import {
+	testDOMandHTML,
+	testImageSnapshot
+} from '../../../tests/snapshot-helpers';
 
 // import Default from '../__examples__/default';
 
@@ -21,7 +24,10 @@ describe(GLOBAL_NAVIGATION_BAR, () => {
 	});
 
 	test('Custom Cloud (Multiple active and white) Image Snapshot looks the same', async () => {
-		await testImageSnapshot(GLOBAL_NAVIGATION_BAR, 'Custom Cloud (Multiple active and white)');
+		await testImageSnapshot(
+			GLOBAL_NAVIGATION_BAR,
+			'Custom Cloud (Multiple active and white)'
+		);
 	});
 
 	test('No Secondary Navigation Image Snapshot looks the same', async () => {

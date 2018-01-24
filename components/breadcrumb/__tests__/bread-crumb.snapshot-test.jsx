@@ -1,5 +1,8 @@
 /* eslint-env jest */
-import { testDOMandHTML, testImageSnapshot } from '../../../tests/snapshot-helpers';
+import {
+	testDOMandHTML,
+	testImageSnapshot
+} from '../../../tests/snapshot-helpers';
 
 import { BREADCRUMB } from '../../../utilities/constants';
 

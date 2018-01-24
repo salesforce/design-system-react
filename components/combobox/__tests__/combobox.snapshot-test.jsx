@@ -1,7 +1,10 @@
 /* eslint-env jest */
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { testDOMandHTML, testImageSnapshot } from '../../../tests/snapshot-helpers';
+import {
+	testDOMandHTML,
+	testImageSnapshot
+} from '../../../tests/snapshot-helpers';
 
 import SnapshotBaseOpen from '../__examples__/snapshot/base-open';
 import SnapshotBaseOpenClassName from '../__examples__/snapshot/base-open-class-name';
@@ -80,7 +83,10 @@ describe(COMBOBOX, () => {
 	});
 
 	test('Readonly Single Selection Selected Open Image Snapshot', async () => {
-		await testImageSnapshot(COMBOBOX, 'Readonly Single Selection Selected Open');
+		await testImageSnapshot(
+			COMBOBOX,
+			'Readonly Single Selection Selected Open'
+		);
 	});
 
 	test('Readonly Multiple Selection Image Snapshot', async () => {
@@ -88,14 +94,23 @@ describe(COMBOBOX, () => {
 	});
 
 	test('Readonly Multiple Selection Single Item Selected Image Snapshot', async () => {
-		await testImageSnapshot(COMBOBOX, 'Readonly Multiple Selection Single Item Selected');
+		await testImageSnapshot(
+			COMBOBOX,
+			'Readonly Multiple Selection Single Item Selected'
+		);
 	});
 
 	test('Readonly Multiple Selection Multiple Items Selected Image Snapshot', async () => {
-		await testImageSnapshot(COMBOBOX, 'Readonly Multiple Selection Multiple Items Selected');
+		await testImageSnapshot(
+			COMBOBOX,
+			'Readonly Multiple Selection Multiple Items Selected'
+		);
 	});
 
 	test('Readonly Single Selection Custom Menu Item Open Image Snapshot', async () => {
-		await testImageSnapshot(COMBOBOX, 'Readonly Single Selection Custom Menu Item Open');
+		await testImageSnapshot(
+			COMBOBOX,
+			'Readonly Single Selection Custom Menu Item Open'
+		);
 	});
 });

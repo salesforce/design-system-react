@@ -1,7 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { testDOMandHTML, testImageSnapshot } from '../../../tests/snapshot-helpers';
+import {
+	testDOMandHTML,
+	testImageSnapshot
+} from '../../../tests/snapshot-helpers';
 
 import Default from '../__examples__/default';
 import NewFilter from '../__examples__/new';

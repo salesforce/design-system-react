@@ -1,5 +1,8 @@
 /* eslint-env jest */
-import { testDOMandHTML, testImageSnapshot } from '../../../tests/snapshot-helpers';
+import {
+	testDOMandHTML,
+	testImageSnapshot
+} from '../../../tests/snapshot-helpers';
 
 import Icon from '../__examples__/icon';
 import IconText from '../__examples__/icon-text';
@@ -24,4 +27,3 @@ describe(BUTTON_STATEFUL, () => {
 		await testImageSnapshot(BUTTON_STATEFUL, 'Icon');
 	});
 });
-

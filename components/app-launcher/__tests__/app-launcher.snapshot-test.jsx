@@ -1,5 +1,8 @@
 /* eslint-env jest */
-import { testDOMandHTML, testImageSnapshot } from '../../../tests/snapshot-helpers';
+import {
+	testDOMandHTML,
+	testImageSnapshot
+} from '../../../tests/snapshot-helpers';
 
 // import Base from '../__examples__/default';
 
@@ -27,7 +30,10 @@ describe(APP_LAUNCHER, () => {
 	});
 
 	test('App Launcher with several sections (no toggle) looks the same', async () => {
-		await testImageSnapshot(APP_LAUNCHER, 'App Launcher with several sections (no toggle)');
+		await testImageSnapshot(
+			APP_LAUNCHER,
+			'App Launcher with several sections (no toggle)'
+		);
 	});
 
 	test('Tile looks the same', async () => {
@@ -66,4 +72,3 @@ describe(APP_LAUNCHER, () => {
 		await testImageSnapshot(APP_LAUNCHER, 'Section with small tiles');
 	});
 });
-

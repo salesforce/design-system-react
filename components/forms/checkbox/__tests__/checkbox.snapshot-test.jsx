@@ -1,6 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { testDOMandHTML, testImageSnapshot } from '../../../../tests/snapshot-helpers';
+import {
+	testDOMandHTML,
+	testImageSnapshot
+} from '../../../../tests/snapshot-helpers';
 
 import CheckboxBase from '../__examples__/snapshot-base';
 import CheckboxToggle from '../__examples__/snapshot-toggle';

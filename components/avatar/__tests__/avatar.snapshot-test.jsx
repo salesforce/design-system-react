@@ -1,5 +1,8 @@
 /* eslint-env jest */
-import { testDOMandHTML, testImageSnapshot } from '../../../tests/snapshot-helpers';
+import {
+	testDOMandHTML,
+	testImageSnapshot
+} from '../../../tests/snapshot-helpers';
 
 import SnapshotBase from '../__examples__/base';
 import SnapshotEntityIcon from '../__examples__/entity-icon';

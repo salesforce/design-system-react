@@ -1,5 +1,8 @@
 /* eslint-env jest */
-import { testDOMandHTML, testImageSnapshot } from '../../../tests/snapshot-helpers';
+import {
+	testDOMandHTML,
+	testImageSnapshot
+} from '../../../tests/snapshot-helpers';
 
 import Info from '../__examples__/info';
 import Warning from '../__examples__/warning';

@@ -1,5 +1,8 @@
 /* eslint-env jest */
-import { testDOMandHTML, testImageSnapshot } from '../../../tests/snapshot-helpers';
+import {
+	testDOMandHTML,
+	testImageSnapshot
+} from '../../../tests/snapshot-helpers';
 
 import Base from '../__examples__/related-list-with-table';
 
@@ -30,4 +33,3 @@ describe(CARD, () => {
 		await testImageSnapshot(CARD, 'Set height card');
 	});
 });
-

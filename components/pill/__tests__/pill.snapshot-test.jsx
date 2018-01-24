@@ -1,6 +1,9 @@
 /* eslint-env jest */
 import React from 'react';
-import { testDOMandHTML, testImageSnapshot } from '../../../tests/snapshot-helpers';
+import {
+	testDOMandHTML,
+	testImageSnapshot
+} from '../../../tests/snapshot-helpers';
 
 import BaseExample from '../__examples__/base';
 import IconExample from '../__examples__/icon';

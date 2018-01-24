@@ -38,13 +38,22 @@ const propsTypes = {
 
 const defaultProps = {};
 
-const SplitViewToggleButton = ({ isOpen, assistiveText, ariaControls, events }) => {
-	const toggleAssistiveText = isOpen ? assistiveText.toggleButtonOpen : assistiveText.toggleButtonClose;
+const SplitViewToggleButton = ({
+	isOpen,
+	assistiveText,
+	ariaControls,
+	events
+}) => {
+	const toggleAssistiveText = isOpen
+		? assistiveText.toggleButtonOpen
+		: assistiveText.toggleButtonClose;
 
 	return (
 		<Button
-			className={classNames('slds-button slds-button_icon slds-split-view__toggle-button',
-				{ 'slds-is-open': isOpen })}
+			className={classNames(
+				'slds-button slds-button_icon slds-split-view__toggle-button',
+				{ 'slds-is-open': isOpen }
+			)}
 			aria-expanded={isOpen}
 			aria-controls={ariaControls}
 			title={toggleAssistiveText}
@@ -63,4 +72,3 @@ SplitViewToggleButton.propTypes = propsTypes;
 SplitViewToggleButton.defaultProps = defaultProps;
 
 export default SplitViewToggleButton;
-
