@@ -29,13 +29,13 @@ const renderMarkup = (Component, props) =>
 		'utf-8'
 	);
 
-const testDOMandHTML = ({ name, test, Component }) => {
+const testDOMandHTML = ({ name, test, Component, props }) => {
 	test(`${name} DOM Snapshot`, () => {
-		expect(renderDOM(Component)).toMatchSnapshot();
+		expect(renderDOM(Component, props)).toMatchSnapshot();
 	});
 
 	test(`${name} HTML Snapshot`, () => {
-		expect(renderMarkup(Component)).toMatchSnapshot();
+		expect(renderMarkup(Component, props)).toMatchSnapshot();
 	});
 };
 

@@ -189,6 +189,9 @@ export RadioGroup from './radio-group';
 export SLDSSpinner from './spinner';
 export Spinner from './spinner';
 
+export SLDSSplitview from './split-view';
+export Splitview from './split-view';
+
 export SLDSTimepicker from './time-picker';
 export Timepicker from './time-picker';
 

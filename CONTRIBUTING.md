@@ -9,8 +9,7 @@ First, on behalf of the core maintainers, I'd like to thank you for wanting to c
 1. Fork this repository, clone your fork locally. Create a topic branch locally.
 1. Add the new component to the `/components` folder
 1. Add the component name to `/components/constants.js`
-1. If you are modifying an existing component, please fix all eslint errors in your pull request as a separate commit. Bonus kudos for fixing warnings!
-1. Add documentation site examples and dev storybook stories in `/components/[COMPONENT]/__examples__/`
+1. If you are adding a feature, add [documentation site examples](https://react.lightningdesignsystem.com/) and [dev storybook stories](https://design-system-react-components.herokuapp.com/) in `/components/[COMPONENT]/__examples__/`. This doesn't apply to bugfixes. Run `npm start` to view stories at `localhost:9001`.
 1. Add Mocha and Snapshot tests to `/components/[COMPONENT]/__tests__/`
 1. Hook up site and storybook examples in `/components/[COMPONENT]/__docs__/`
 1. Hook up documentation site examples in `/components/site-stories.js`. Site examples only have access to variables exported in `/components/index.js`, so you should limit your component's site example imports to these variables. See [#1192](https://github.com/salesforce/design-system-react/issues/1192) for more information.
@@ -23,7 +22,9 @@ First, on behalf of the core maintainers, I'd like to thank you for wanting to c
 * Are you a first-time contributor? If you would like a simple task to start out with, you might consider [these issues](https://deepscan.io/dashboard/#view=project&pid=1475&bid=4666&subview=issues) or run `npm run lint` and fix a few warnings.
 * UX pattern / design must exist in [SLDS](https://www.lightningdesignsystem.com/). Components in the process of being added to SLDS will be considered as prototypes.
 * All new props and components need tests. **Please review the [testing readme](/tests/README.md)**
-* Follow `prettier-eslint` settings. [Prettier](https://prettier.io/) is run first. Then [ESlint](https://eslint.org/). Upon commit, staged files will be run through `prettier --write` and `eslint --fix`. This should make them pass the lint task run on the CI server and hopefully avoid style nitpicks. You can enable this behavior at save in your editor, too. For instance, in Visual Studio Code, run the [prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and set `"editor.formatOnSave": true` and `prettier.eslintIntegration: true`.
+* Contributions of components with a subset of SLDS variants will be considered. Please consider your architecture in view of the other variants and create an issue before starting just to be certain.
+* Follow `prettier-eslint` settings. [Prettier](https://prettier.io/) is run first. Then [ESlint](https://eslint.org/). Upon commit, staged files will be run through `prettier --write` and `eslint --fix`. This should make them pass the lint task run on the CI server and hopefully avoid style nitpicks.
+    * You can enable this behavior at save in your editor, too. For instance, in Visual Studio Code, run the [prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and set `"editor.formatOnSave": true` and `prettier.eslintIntegration: true`.
 * If you are adding a feature, [add a story](https://storybook.js.org/basics/writing-stories/) to the React Storybook that uses your feature, so that reviewers can test it.
 * Add enough Storybook stories and testing examples to show use of all component prop and values--if they are enumerated. All examples that are present for a component in the [SLDS website](https://www.lightningdesignsystem.com/) should be created as a Storybook story _and_ imported into the documentaiton site examples.
 * Prop description tables on the documentation site are generated from propType comments within the component. Use `npm run build-docs` to confirm comment compatibility. Introductory component descriptions are generated from the comment directly before the component declaration with [react-docgen](https://github.com/reactjs/react-docgen).
