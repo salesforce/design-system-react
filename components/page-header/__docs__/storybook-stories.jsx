@@ -1,4 +1,4 @@
-/* eslint-disable indent */
+/* eslint-disable indent, jsx-a11y/no-noninteractive-tabindex */
 
 import React from 'react';
 import createReactClass from 'create-react-class';
@@ -50,6 +50,13 @@ const DemoPageHeader = createReactClass({
 		}
 	},
 
+	handleSelect (selectedItem, ...rest) {
+		action('select')(selectedItem, ...rest);
+		this.setState({
+			currentSelected: this.state.options.indexOf(selectedItem)
+		});
+	},
+
 	render () {
 		const defaultProps = {
 			iconAssistiveText: 'User',
@@ -69,13 +76,6 @@ const DemoPageHeader = createReactClass({
 				<SLDSPageHeader {...defaultProps} />
 			</div>
 		);
-	},
-
-	handleSelect (selectedItem, ...rest) {
-		action('select')(selectedItem, ...rest);
-		this.setState({
-			currentSelected: this.state.options.indexOf(selectedItem)
-		});
 	}
 });
 const getPageHeader = (props) => <SLDSPageHeader {...props} />;

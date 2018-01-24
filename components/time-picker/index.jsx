@@ -179,6 +179,36 @@ const Timepicker = createReactClass({
 		return new Date();
 	},
 
+	handleChange (date, strValue) {
+		this.setState({
+			value: date,
+			strValue
+		});
+
+		if (this.props.onDateChange) {
+			this.props.onDateChange(date, strValue);
+		}
+	},
+
+	handleSelect (val) {
+		if (val && val.value) {
+			this.handleChange(val.value, val.label);
+		}
+	},
+
+	handleInputChange (event) {
+		const strValue = event.target.value;
+
+		this.setState({
+			strValue
+		});
+
+		if (this.props.onDateChange) {
+			const parsedDate = this.props.parser(strValue);
+			this.props.onDateChange(parsedDate, strValue);
+		}
+	},
+
 	// ### Render
 	render () {
 		return (
@@ -209,36 +239,6 @@ const Timepicker = createReactClass({
 				/>
 			</MenuDropdown>
 		);
-	},
-
-	handleChange (date, strValue) {
-		this.setState({
-			value: date,
-			strValue
-		});
-
-		if (this.props.onDateChange) {
-			this.props.onDateChange(date, strValue);
-		}
-	},
-
-	handleSelect (val) {
-		if (val && val.value) {
-			this.handleChange(val.value, val.label);
-		}
-	},
-
-	handleInputChange (event) {
-		const strValue = event.target.value;
-
-		this.setState({
-			strValue
-		});
-
-		if (this.props.onDateChange) {
-			const parsedDate = this.props.parser(strValue);
-			this.props.onDateChange(parsedDate, strValue);
-		}
 	}
 });
 

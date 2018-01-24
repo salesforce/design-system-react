@@ -54,8 +54,6 @@ const MenuPicklist = createReactClass({
 	// Always use the canonical component name as the React display name.
 	displayName: MENU_PICKLIST,
 
-	mixins: [KeyboardNavigable],
-
 	// ### Prop Types
 	propTypes: {
 		/**
@@ -129,6 +127,8 @@ const MenuPicklist = createReactClass({
 		 */
 		value: PropTypes.node
 	},
+
+	mixins: [KeyboardNavigable],
 
 	getDefaultProps () {
 		return {
@@ -247,6 +247,12 @@ const MenuPicklist = createReactClass({
 			: ListItemLabel;
 	},
 
+	setFocus () {
+		if (!this.isUnmounting && this.button) {
+			this.button.focus();
+		}
+	},
+
 	handleSelect (index) {
 		if (!this.props.multiple) {
 			this.setState({ selectedIndex: index });
@@ -299,12 +305,6 @@ const MenuPicklist = createReactClass({
 		if (event) {
 			EventUtil.trapImmediate(event);
 			event.nativeEvent[this.getClickEventName()] = true;
-		}
-	},
-
-	setFocus () {
-		if (!this.isUnmounting && this.button) {
-			this.button.focus();
 		}
 	},
 

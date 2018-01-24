@@ -67,14 +67,6 @@ const defaultProps = {};
  */
 class ProgressRing extends React.Component {
 	/**
-	 * Gets the theme CSS class
-	 * @returns {string} Class name
-	 */
-	themeClass () {
-		return THEME_CLASSES[this.props.theme] || '';
-	}
-
-	/**
 	 * Gets the icon to display
 	 * @returns {node} Icon
 	 */
@@ -102,6 +94,14 @@ class ProgressRing extends React.Component {
 	 */
 	percentDecimal () {
 		return this.props.value / 100;
+	}
+
+	/**
+	 * Gets the theme CSS class
+	 * @returns {string} Class name
+	 */
+	themeClass () {
+		return THEME_CLASSES[this.props.theme] || '';
 	}
 
 	render () {

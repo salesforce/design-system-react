@@ -55,30 +55,24 @@ const Manager = createReactClass({
 		this.updateBodyScroll();
 	},
 
-	componentWillUnmount () {
-		this.isUnmounting = true;
-	},
+	componentDidUpdate (prevProps, prevState) {
+		if (this.state.isOpen !== prevState.isOpen) {
+			this.updateBodyScroll();
 
-	openModal () {
-		this.setState({ isOpen: true });
-	},
-
-	closeModal () {
-		this.setState({ isOpen: false });
-	},
-
-	handleSubmitModal () {
-		this.closeModal();
-	},
-
-	updateBodyScroll () {
-		if (window && document && document.body) {
-			if (this.state.isOpen) {
-				document.body.style.overflow = 'hidden';
-			} else {
-				document.body.style.overflow = 'inherit';
+			if (!this.state.isOpen) {
+				if (!this.isUnmounting) {
+					const el = this.getDOMNode().parentNode;
+					if (el && el.getAttribute('data-slds-modal')) {
+						ReactDOM.unmountComponentAtNode(el);
+						document.body.removeChild(el);
+					}
+				}
 			}
 		}
+	},
+
+	componentWillUnmount () {
+		this.isUnmounting = true;
 	},
 
 	getModal () {
@@ -115,6 +109,28 @@ const Manager = createReactClass({
 		);
 	},
 
+	openModal () {
+		this.setState({ isOpen: true });
+	},
+
+	closeModal () {
+		this.setState({ isOpen: false });
+	},
+
+	handleSubmitModal () {
+		this.closeModal();
+	},
+
+	updateBodyScroll () {
+		if (window && document && document.body) {
+			if (this.state.isOpen) {
+				document.body.style.overflow = 'hidden';
+			} else {
+				document.body.style.overflow = 'inherit';
+			}
+		}
+	},
+
 	render () {
 		return (
 			<Modal
@@ -128,22 +144,6 @@ const Manager = createReactClass({
 				{this.getModal()}
 			</Modal>
 		);
-	},
-
-	componentDidUpdate (prevProps, prevState) {
-		if (this.state.isOpen !== prevState.isOpen) {
-			this.updateBodyScroll();
-
-			if (!this.state.isOpen) {
-				if (!this.isUnmounting) {
-					const el = this.getDOMNode().parentNode;
-					if (el && el.getAttribute('data-slds-modal')) {
-						ReactDOM.unmountComponentAtNode(el);
-						document.body.removeChild(el);
-					}
-				}
-			}
-		}
 	}
 });
 

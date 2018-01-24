@@ -1,4 +1,4 @@
-/* eslint-disable react/display-name */
+/* eslint-disable react/display-name, jsx-a11y/no-noninteractive-tabindex */
 
 import React from 'react';
 import { storiesOf } from '@storybook/react';

@@ -1,6 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+
 // ### React
 import React from 'react';
 import createReactClass from 'create-react-class';
@@ -48,6 +50,16 @@ const DataTableRowActions = createReactClass({
 		};
 	},
 
+	handleClick (e) {
+		EventUtil.trap(e);
+	},
+
+	handleSelect (selection) {
+		if (isFunction(this.props.onAction)) {
+			this.props.onAction(this.props.item, selection);
+		}
+	},
+
 	// ### Render
 	render () {
 		// i18n
@@ -76,16 +88,6 @@ const DataTableRowActions = createReactClass({
 				/>
 			</td>
 		);
-	},
-
-	handleClick (e) {
-		EventUtil.trap(e);
-	},
-
-	handleSelect (selection) {
-		if (isFunction(this.props.onAction)) {
-			this.props.onAction(this.props.item, selection);
-		}
 	}
 });
 

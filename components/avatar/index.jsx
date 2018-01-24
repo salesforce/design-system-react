@@ -81,10 +81,6 @@ class Avatar extends React.Component {
 		};
 	}
 
-	handleImageError () {
-		return this.setState(() => ({ imgLoadError: true }));
-	}
-
 	buildInitials () {
 		const { label } = this.props;
 		const name = label.trim();
@@ -96,6 +92,10 @@ class Avatar extends React.Component {
 			);
 		}
 		return (name[0] || '').toUpperCase() + (name[1] || '').toLowerCase();
+	}
+
+	handleImageError () {
+		return this.setState(() => ({ imgLoadError: true }));
 	}
 
 	renderBaseAvatar () {
