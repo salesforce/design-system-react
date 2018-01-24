@@ -7,13 +7,14 @@ If you want to [contribute](CONTRIBUTING.md), we hope that this overview will he
 ## Top-Level folders
 
 * `components` - React components
-    * `[COMPONENT]` - components that are part of the public API
-        * `__tests__` - Mocha and Jest tests
-        * `__examples__` Examples used in storybook and documentation website
-        * `__docs__` - storybook and documentation website imports of examples
-        * `private` - components that are not a part of the public API
-    * `utilities` - components that are shared between other components (not public API)
+  * `[COMPONENT]` - components that are part of the public API
+    * `__tests__` - Mocha and Jest tests
+    * `__examples__` Examples used in storybook and documentation website
+    * `__docs__` - storybook and documentation website imports of examples
+    * `private` - components that are not a part of the public API
+  * `utilities` - components that are shared between other components (not public API)
 * `icons` - Inline icons \[legacy\]
+* `preset` - Babel preset published to `@salesforce/babel-preset-design-system-react`
 * `scripts` - Build and release tasks
 * `styles` - Temporary location for styles (use sparingly)
 * `utilities` - Scripts that are not React components including `checkProp` warnings, DOM, and event helpers. (not public API)
@@ -28,7 +29,7 @@ If you are new to React, you may be trained to design components in a more compl
 
 ### Think of others first
 
-* <a name="not-bootstrap" href="#not-bootstrap">#</a> **Consider your audience.** This project is not Bootstrap, and we've built [frameworks on top of Bootstrap](https://github.com/ExactTarget/fuelux). The primary audience for this project is software engineers yearning to easily implement the design artifact handed to them. Yes, contributors should over-document and explain much as you need to, but you do _not_ need to have components just work when you drop them on the page. Read on for more about limiting internal component state. 
+* <a name="not-bootstrap" href="#not-bootstrap">#</a> **Consider your audience.** This project is not Bootstrap, and we've built [frameworks on top of Bootstrap](https://github.com/ExactTarget/fuelux). The primary audience for this project is software engineers yearning to easily implement the design artifact handed to them. Yes, contributors should over-document and explain much as you need to, but you do _not_ need to have components just work when you drop them on the page. Read on for more about limiting internal component state.
 
 * <a name="consuming-developer-mindset" href="#consuming-developer-mindset">#</a> **Put yourself in the consuming developer mindset.** "I just updated. What just broke and why?" Why does the React child component become the the DOM parent node? Write as long of a prop description comment that is needed to understand the concept. Need to sunset a prop or change the variable type accepted? Write backwards compatible code and add console warnings that will _only run in development_. See the `checkProp` paradigm. If the test can become an independent module and work in multiple components, add it to the `design-system-react/utilities` folder. Some examples include:
 
@@ -540,3 +541,9 @@ Read: [Class Name Manipulation](https://github.com/JedWatson/classnames/blob/mas
 Read: [Airbnb React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)
 
 Some syntax samples are from the [Planning Center](https://github.com/planningcenter/react-patterns)
+
+# Babel Preset
+
+`/preset` folder contains a Babel 6 preset that makes Design System React compatible with Salesforce’s supported browsers. This is a temporary location until a repository is created.
+
+This preset enables a module bundler, such as Webpack, to transpile Design System React. Using this will make it easier to upgrade in the future without having to manually reconfigure your Babel settings to be compatible with new language features Design System React may use.
