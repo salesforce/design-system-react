@@ -384,7 +384,7 @@
       "component": "filter",
       "status": "prototype",
       "display-name": "Filters",
-      "SLDS-component-path": "/components/panels"
+      "SLDS-component-path": "/components/filter"
     },
     {
       "component": "forms/input/inline",
@@ -587,12 +587,12 @@
       },
       "SLDS-component-path": "/components/split-view",
       "dependencies": [
-      {
-        "component": "header"
-      },
-      {
-        "component": "listbox"
-      }
+        {
+          "component": "header"
+        },
+        {
+          "component": "listbox"
+        }
       ]
     },
     {

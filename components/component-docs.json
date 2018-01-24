@@ -611,6 +611,159 @@
             }
         ]
     },
+    "avatar": {
+        "description": "The avatar component represents an object or entity. An image is the preferred format for an avatar.\n If the `imgSrc` prop is undefined, and if a `label` or `initials` prop is available, the fallback avatar will render with initials. If initals are passed in directly in the `initials` prop, this will render in the fallback avatar. If `initals` prop is unavailable but a `label` prop is available, the fallback avatar will render with built initials of the user name or entity name.\n\n Intials built from the `label` prop will apply the following logic: If the label name contains two words, like first and last name, the first letter of each will be capitalized and returned. For labels that only have a single word name, the first two letters of that word, using one capital and one lower case letter, will be returned. For labels that contain three or more words, the first character of the first and last words will be capitalized and returned.\n\n If `initials` or `label` are not available, the fallback avatar will render a standard icon. If `variant='user'`, a user icon will\n render. If `variant='entity'`, an account icon will render.",
+        "methods": [
+            {
+                "name": "handleImageError",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "buildInitials",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "renderBaseAvatar",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "renderIconAvatar",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "renderInitialsAvatar",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "className": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Class names to be applied to Avatar component."
+            },
+            "imgAlt": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Alt attribute to be applied to image (base case) element.",
+                "defaultValue": {
+                    "value": "''",
+                    "computed": false
+                }
+            },
+            "imgSrc": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Source attribute to be applied to image (base case) element."
+            },
+            "initials": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Initials attribute to optionally pass in initials directly in case of \"initials\" fallback case."
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Label attibute to display inside \"initials\" fallback case. Will be passed as title prop in `abbr` element to provide more specificity."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'entity'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'user'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": true,
+                "description": "Avatar variants to apply relevant styling (circle: user, square: entity) and icon rendering if applicable.",
+                "defaultValue": {
+                    "value": "'user'",
+                    "computed": false
+                }
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": true,
+                "description": "Size of the icon in \"icon\" fallback case.",
+                "defaultValue": {
+                    "value": "'medium'",
+                    "computed": false
+                }
+            },
+            "title": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Title attribute for the avatar container.",
+                "defaultValue": {
+                    "value": "'user avatar'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "avatars",
+        "display-name": "Avatars",
+        "SLDS-component-path": "/components/avatars",
+        "dependencies": []
+    },
     "breadcrumb": {
         "description": "Use breadcrumbs to note the path of a record and help the user to navigate back to the parent.Breadcrumb based on SLDS 2.1.0-dev",
         "methods": [],
@@ -1947,159 +2100,6 @@
         "route": "checkboxes",
         "display-name": "Checkboxes",
         "SLDS-component-path": "/components/forms/#flavor-checkbox",
-        "dependencies": []
-    },
-    "avatar": {
-        "description": "The avatar component represents an object or entity. An image is the preferred format for an avatar.\n If the `imgSrc` prop is undefined, and if a `label` or `initials` prop is available, the fallback avatar will render with initials. If initals are passed in directly in the `initials` prop, this will render in the fallback avatar. If `initals` prop is unavailable but a `label` prop is available, the fallback avatar will render with built initials of the user name or entity name.\n\n Intials built from the `label` prop will apply the following logic: If the label name contains two words, like first and last name, the first letter of each will be capitalized and returned. For labels that only have a single word name, the first two letters of that word, using one capital and one lower case letter, will be returned. For labels that contain three or more words, the first character of the first and last words will be capitalized and returned.\n\n If `initials` or `label` are not available, the fallback avatar will render a standard icon. If `variant='user'`, a user icon will\n render. If `variant='entity'`, an account icon will render.",
-        "methods": [
-            {
-                "name": "handleImageError",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "buildInitials",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "renderBaseAvatar",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "renderIconAvatar",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "renderInitialsAvatar",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
-        "props": {
-            "assistiveText": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": ""
-            },
-            "className": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Class names to be applied to Avatar component."
-            },
-            "imgAlt": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Alt attribute to be applied to image (base case) element.",
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
-            },
-            "imgSrc": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Source attribute to be applied to image (base case) element."
-            },
-            "initials": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Initials attribute to optionally pass in initials directly in case of \"initials\" fallback case."
-            },
-            "label": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Label attibute to display inside \"initials\" fallback case. Will be passed as title prop in `abbr` element to provide more specificity."
-            },
-            "variant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'entity'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'user'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": true,
-                "description": "Avatar variants to apply relevant styling (circle: user, square: entity) and icon rendering if applicable.",
-                "defaultValue": {
-                    "value": "'user'",
-                    "computed": false
-                }
-            },
-            "size": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'x-small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'medium'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'large'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": true,
-                "description": "Size of the icon in \"icon\" fallback case.",
-                "defaultValue": {
-                    "value": "'medium'",
-                    "computed": false
-                }
-            },
-            "title": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Title attribute for the avatar container.",
-                "defaultValue": {
-                    "value": "'user avatar'",
-                    "computed": false
-                }
-            }
-        },
-        "route": "avatars",
-        "display-name": "Avatars",
-        "SLDS-component-path": "/components/avatars",
         "dependencies": []
     },
     "combobox": {
@@ -3691,240 +3691,6 @@
         "SLDS-component-path": "/components/datepickers",
         "dependencies": []
     },
-    "icon": {
-        "description": "The Icon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href='/components/buttons/'>Button component</a> component with <code>variant='icon'</code>.",
-        "methods": [],
-        "props": {
-            "assistiveText": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nNaked icons must have assistive text, however, if you also have visible descriptive text with the icon,\ndeclare this prop as <code>assistiveText=''</code>."
-            },
-            "category": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'action'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'custom'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'doctype'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'standard'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'utility'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": true,
-                "description": "Icon category from [lightningdesignsystem.com/icons/](https://www.lightningdesignsystem.com/icons/)",
-                "defaultValue": {
-                    "value": "'standard'",
-                    "computed": false
-                }
-            },
-            "className": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "CSS classes that are applied to the SVG."
-            },
-            "containerClassName": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "CSS classes that are applied to the span."
-            },
-            "colorVariant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'base'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'default'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'error'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'warning'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Icon color variants"
-            },
-            "icon": {
-                "type": {
-                    "name": "object"
-                },
-                "required": false,
-                "description": "A custom SVG object to use instead of the supplied SLDS icons, look in `design-system-react/icons` for examples and syntax."
-            },
-            "inverse": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Setting `inverse` to true will switch the color of the icon: light to dark, dark to light."
-            },
-            "name": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names."
-            },
-            "path": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the icon. This will override any global icon settings"
-            },
-            "size": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'x-small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'medium'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'large'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Size of the icon. Visit [lightningdesignsystem.com/components/icons/#flavor-sizes](https://www.lightningdesignsystem.com/components/icons/#flavor-sizes)",
-                "defaultValue": {
-                    "value": "'medium'",
-                    "computed": false
-                }
-            },
-            "style": {
-                "type": {
-                    "name": "object"
-                },
-                "required": false,
-                "description": "Custom styles to be passed to the SVG. Could be used to change icon or background color."
-            },
-            "title": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Title attribute for the icon container"
-            }
-        },
-        "route": "icons",
-        "display-name": "Icons",
-        "SLDS-component-path": "/components/icons",
-        "dependencies": []
-    },
-    "icon-settings": {
-        "description": "The Icon Settings component allows for the path to the icons to be specified.\nThis should be used at the root of the application.\n\n**Individual sprites**\nIf you are using webpack it is advised to use the sprite properties\n{actionSprite, standardSprite...} to specify the individual sprite paths so that webpack can\neasily re-write the paths.\n```\nimport actionSprite from '......';\n\n<IconSettings actionSprite={actionSprite} ......>\n```\n**Root icon path**\nOtherwise use the iconPath to specify the root path to where the icon files will be located in you application\nsuch as `/assets/icons`.",
-        "methods": [],
-        "props": {
-            "iconPath": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the root icon folder\nexample: `/assets/icons`"
-            },
-            "actionSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the action sprite\nexample: '@salesforce-ux/design-system/assets/icons/action-sprite/svg/symbols.svg';"
-            },
-            "customSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the custom sprite\nexample: '@salesforce-ux/design-system/assets/icons/custom-sprite/svg/symbols.svg';"
-            },
-            "doctypeSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the doctype sprite\nexample: '@salesforce-ux/design-system/assets/icons/doctype-sprite/svg/symbols.svg';"
-            },
-            "standardSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the standard sprite\nexample: '@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg';"
-            },
-            "utilitySprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the utility sprite\nexample: '@salesforce-ux/design-system/assets/icons/utility-sprite/svg/symbols.svg';"
-            }
-        },
-        "route": "icon-settings",
-        "display-name": "Icon Settings",
-        "SLDS-component-path": "/components/icons-settings",
-        "dependencies": []
-    },
     "filter": {
         "description": "A Filter is a popover with custom trigger. It can be used by [Panel Filtering](/components/panels/). Menus within a Filter Popover will need to not have \"portal mounts\" and be inline.",
         "methods": [
@@ -4142,7 +3908,7 @@
         },
         "route": "filters",
         "display-name": "Filters",
-        "SLDS-component-path": "/components/panels",
+        "SLDS-component-path": "/components/filter",
         "dependencies": []
     },
     "input/inline": {
@@ -6129,6 +5895,244 @@
                 }
             }
         ]
+    },
+    "icon": {
+        "description": "The Icon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href='/components/buttons/'>Button component</a> component with <code>variant='icon'</code>.",
+        "methods": [],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nNaked icons must have assistive text, however, if you also have visible descriptive text with the icon,\ndeclare this prop as <code>assistiveText=''</code>."
+            },
+            "category": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'action'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'custom'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'doctype'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'standard'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'utility'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": true,
+                "description": "Icon category from [lightningdesignsystem.com/icons/](https://www.lightningdesignsystem.com/icons/)",
+                "defaultValue": {
+                    "value": "'standard'",
+                    "computed": false
+                }
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes that are applied to the SVG."
+            },
+            "containerClassName": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes that are applied to the span."
+            },
+            "colorVariant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'default'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'error'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'warning'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Icon color variants"
+            },
+            "icon": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "A custom SVG object to use instead of the supplied SLDS icons, look in `design-system-react/icons` for examples and syntax."
+            },
+            "inverse": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Setting `inverse` to true will switch the color of the icon: light to dark, dark to light."
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names."
+            },
+            "path": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the icon. This will override any global icon settings"
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'xx-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Size of the icon. Visit [lightningdesignsystem.com/components/icons/#flavor-sizes](https://www.lightningdesignsystem.com/components/icons/#flavor-sizes)",
+                "defaultValue": {
+                    "value": "'medium'",
+                    "computed": false
+                }
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the SVG. Could be used to change icon or background color."
+            },
+            "title": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Title attribute for the icon container"
+            }
+        },
+        "route": "icons",
+        "display-name": "Icons",
+        "SLDS-component-path": "/components/icons",
+        "dependencies": []
+    },
+    "icon-settings": {
+        "description": "The Icon Settings component allows for the path to the icons to be specified.\nThis should be used at the root of the application.\n\n**Individual sprites**\nIf you are using webpack it is advised to use the sprite properties\n{actionSprite, standardSprite...} to specify the individual sprite paths so that webpack can\neasily re-write the paths.\n```\nimport actionSprite from '......';\n\n<IconSettings actionSprite={actionSprite} ......>\n```\n**Root icon path**\nOtherwise use the iconPath to specify the root path to where the icon files will be located in you application\nsuch as `/assets/icons`.",
+        "methods": [],
+        "props": {
+            "iconPath": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the root icon folder\nexample: `/assets/icons`"
+            },
+            "actionSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the action sprite\nexample: '@salesforce-ux/design-system/assets/icons/action-sprite/svg/symbols.svg';"
+            },
+            "customSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the custom sprite\nexample: '@salesforce-ux/design-system/assets/icons/custom-sprite/svg/symbols.svg';"
+            },
+            "doctypeSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the doctype sprite\nexample: '@salesforce-ux/design-system/assets/icons/doctype-sprite/svg/symbols.svg';"
+            },
+            "standardSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the standard sprite\nexample: '@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg';"
+            },
+            "utilitySprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the utility sprite\nexample: '@salesforce-ux/design-system/assets/icons/utility-sprite/svg/symbols.svg';"
+            }
+        },
+        "route": "icon-settings",
+        "display-name": "Icon Settings",
+        "SLDS-component-path": "/components/icons-settings",
+        "dependencies": []
     },
     "media-object": {
         "description": "When you need text and a figure next to each other, use a media object.",
@@ -9369,6 +9373,573 @@
         "display-name": "Radios",
         "SLDS-component-path": "/components/forms/#flavor-radio",
         "dependencies": []
+    },
+    "split-view": {
+        "description": "Split view is used to navigate between records in a list while staying on the same screen.",
+        "methods": [
+            {
+                "name": "id",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "masterViewId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "setIsOpen",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "isOpen",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "toggle",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "masterContent",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "toggleButtonOpen": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "toggleButtonClose": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\n* `toggleButtonOpen`: The button used to open the split view.\n* `toggleButtonClose`: The button used to close the split view.",
+                "defaultValue": {
+                    "value": "{\n    toggleButtonOpen: 'Close split view',\n    toggleButtonClose: 'Open split view'\n}",
+                    "computed": false
+                }
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML Id for the component."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to the root `div` tag. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "isOpen": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Sets the split view to be open or closed."
+            },
+            "events": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "onClose": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onOpen": {
+                            "name": "func",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Event Callbacks\n* `onClose`: Triggered when the split view has closed.\n* `onOpen`: Triggered when the split view has opened.",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
+            "master": {
+                "type": {
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "element"
+                    }
+                },
+                "required": true,
+                "description": "The React component that is rendered in the master section.\nYou need to pass in an array of elements in order for the scrolling to in the SplitViewList to work correctly.\nReact requires that you also supply a unique `key` for each element [React Lists and Keys](https://reactjs.org/docs/lists-and-keys.html#keys)."
+            },
+            "masterWidth": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The width of the master section.",
+                "defaultValue": {
+                    "value": "'20rem'",
+                    "computed": false
+                }
+            },
+            "detail": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "arrayOf",
+                            "value": {
+                                "name": "element"
+                            }
+                        },
+                        {
+                            "name": "element"
+                        }
+                    ]
+                },
+                "required": true,
+                "description": "The React component that is rendered in the detail section."
+            }
+        },
+        "route": "split-view",
+        "display-name": "Split View",
+        "SLDS-component-path": "/components/split-view",
+        "dependencies": [
+            {
+                "header": {
+                    "description": "The Split View Header takes the same properties as the Page Header component. See: [PageHeader](https://react.lightningdesignsystem.com/components/page-headers/)\n@param props {object} Page Header properties",
+                    "methods": [],
+                    "name": "header",
+                    "source": "/components/split-view/header.jsx"
+                }
+            },
+            {
+                "listbox": {
+                    "description": "",
+                    "methods": [
+                        {
+                            "name": "isListItemFocused",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "item",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
+                        },
+                        {
+                            "name": "isSelected",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "item",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
+                        },
+                        {
+                            "name": "isUnread",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "item",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
+                        },
+                        {
+                            "name": "handleKeyDown",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "event",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
+                        },
+                        {
+                            "name": "moveToNextItem",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "event",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
+                        },
+                        {
+                            "name": "moveToPreviousItem",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "event",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
+                        },
+                        {
+                            "name": "moveToIndex",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "event",
+                                    "type": null
+                                },
+                                {
+                                    "name": "index",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
+                        },
+                        {
+                            "name": "focusFirstItem",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null
+                        },
+                        {
+                            "name": "focusItem",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "item",
+                                    "type": null
+                                },
+                                {
+                                    "name": "setDataOnly",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
+                        },
+                        {
+                            "name": "deselectAllListItems",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "event",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
+                        },
+                        {
+                            "name": "selectAllListItems",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "event",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
+                        },
+                        {
+                            "name": "selectListItem",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "item",
+                                    "type": null
+                                },
+                                {
+                                    "name": "event",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
+                        },
+                        {
+                            "name": "handleOnSelect",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "event",
+                                    "type": null
+                                },
+                                {
+                                    "name": "{ item }",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
+                        },
+                        {
+                            "name": "sortDirection",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null
+                        },
+                        {
+                            "name": "headerWrapper",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "children",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
+                        },
+                        {
+                            "name": "header",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null
+                        },
+                        {
+                            "name": "addListItemComponent",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "component",
+                                    "type": null
+                                },
+                                {
+                                    "name": "index",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
+                        },
+                        {
+                            "name": "listItems",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null
+                        }
+                    ],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "list": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "sort": {
+                                        "name": "shape",
+                                        "value": {
+                                            "sortedBy": {
+                                                "name": "string",
+                                                "required": false
+                                            },
+                                            "descending": {
+                                                "name": "string",
+                                                "required": false
+                                            },
+                                            "ascending": {
+                                                "name": "string",
+                                                "required": false
+                                            }
+                                        },
+                                        "required": false
+                                    },
+                                    "unreadItem": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility**\n* `list`: aria label for the list\n* `sort`\n* * `sortedBy`: Clickable sort header for the list.\n* * `descending`: Descending sorting.\n* * `ascending`: Ascending sorting.",
+                            "defaultValue": {
+                                "value": "{\n    list: 'Select an item to open it in a new workspace tab.',\n    sort: {\n        sortedBy: 'Sorted by',\n        descending: 'Descending',\n        ascending: 'Ascending'\n    }\n}",
+                                "computed": false
+                            }
+                        },
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "CSS classes to be added to the parent `div` tag."
+                        },
+                        "events": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "onSelect": {
+                                        "name": "func",
+                                        "required": true
+                                    },
+                                    "onSort": {
+                                        "name": "func",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "Event Callbacks\n* `onSelect`: Called when a list item is selected.\n* * event {object} List item click event\n* * Meta {object}\n* * * selectedItems {array} List of selected items.\n* * * item {object} Last selected item.\n* `onSort`: Called when the list is sorted.\n* * event {object} Sort click event",
+                            "defaultValue": {
+                                "value": "{}",
+                                "computed": false
+                            }
+                        },
+                        "id": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "HTML id for component."
+                        },
+                        "labels": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "header": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Text labels for internationalization**\n* `header`: This is the header of the list.",
+                            "defaultValue": {
+                                "value": "{}",
+                                "computed": false
+                            }
+                        },
+                        "sortDirection": {
+                            "type": {
+                                "name": "enum",
+                                "value": [
+                                    {
+                                        "value": "SORT_OPTIONS.UP",
+                                        "computed": true
+                                    },
+                                    {
+                                        "value": "SORT_OPTIONS.DOWN",
+                                        "computed": true
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "The direction of the sort arrow. Option are:\n* SORT_OPTIONS.UP: `up`\n* SORT_OPTIONS.DOWN: `down`"
+                        },
+                        "multiple": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Allows multiple item to be selection"
+                        },
+                        "options": {
+                            "type": {
+                                "name": "array"
+                            },
+                            "required": true,
+                            "description": "The list of items.\nIt is recommended that you have a unique `id` for each item."
+                        },
+                        "selection": {
+                            "type": {
+                                "name": "array"
+                            },
+                            "required": false,
+                            "description": "Accepts an array of item objects. For single selection, pass in an array of one object.",
+                            "defaultValue": {
+                                "value": "[]",
+                                "computed": false
+                            }
+                        },
+                        "unread": {
+                            "type": {
+                                "name": "array"
+                            },
+                            "required": false,
+                            "description": "Accepts an array of item objects. For single unread, pass in an array of one object.",
+                            "defaultValue": {
+                                "value": "[]",
+                                "computed": false
+                            }
+                        },
+                        "listItem": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Custom list item template for the list item content. The select and unread functionality wraps the custom list item.\nThis should be a React component that accepts props."
+                        }
+                    },
+                    "name": "listbox",
+                    "source": "/components/split-view/listbox.jsx"
+                }
+            }
+        ]
     },
     "radio-group": {
         "description": "A styled select list that can have a single entry checked at any one time.\nThe RadioGroup component wraps [Radio](/components/radios) components, which should be used as children.",
