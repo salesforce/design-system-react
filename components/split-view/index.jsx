@@ -51,7 +51,10 @@ const propTypes = {
 	 * You need to pass in an array of elements in order for the scrolling to in the SplitViewList to work correctly.
 	 * React requires that you also supply a unique `key` for each element [React Lists and Keys](https://reactjs.org/docs/lists-and-keys.html#keys).
 	 */
-	master: PropTypes.arrayOf(PropTypes.element).isRequired,
+	master: PropTypes.oneOfType([
+		PropTypes.arrayOf(PropTypes.element),
+		PropTypes.element
+	]).isRequired,
 	/**
 	 * The width of the master section.
 	 */
