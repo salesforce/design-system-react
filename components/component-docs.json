@@ -145,7 +145,7 @@
             "assistiveText": {
                 "type": {
                     "name": "custom",
-                    "raw": "shape({\n    closeButton: PropTypes.oneOfType([PropTypes.string, PropTypes.node])\n})"
+                    "raw": "PropTypes.shape({\n    closeButton: PropTypes.oneOfType([PropTypes.string, PropTypes.node])\n})"
                 },
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `closeButton`: This is a visually hidden label for the close button.\n_Tested with snapshot testing._",
@@ -189,7 +189,7 @@
             "labels": {
                 "type": {
                     "name": "custom",
-                    "raw": "shape({\n    heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),\n    headingLink: PropTypes.oneOfType([PropTypes.string, PropTypes.node])\n})"
+                    "raw": "PropTypes.shape({\n    heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),\n    headingLink: PropTypes.oneOfType([PropTypes.string, PropTypes.node])\n})"
                 },
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `heading`: text within heading tag\n* `headingLink`: Text of link that triggers `onClickHeadingLink`. Inline links should pass a keyed array of React components into `labels.heading`.\n\n_Tested with snapshot testing._",
@@ -1584,7 +1584,7 @@
             "labels": {
                 "type": {
                     "name": "custom",
-                    "raw": "shape({\n    error: PropTypes.string,\n    label: PropTypes.string\n})"
+                    "raw": "PropTypes.shape({\n    error: PropTypes.string,\n    label: PropTypes.string\n})"
                 },
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `error`: Message to display when any of Checkboxes are in an error state. _Tested with snapshot testing._\n* `label`: This label appears above the button group. _Tested with snapshot testing._",
@@ -2488,7 +2488,7 @@
             "assistiveText": {
                 "type": {
                     "name": "custom",
-                    "raw": "shape({\n    label: PropTypes.string,\n    optionSelectedInMenu: PropTypes.string,\n    removeSingleSelectedOption: PropTypes.string,\n    removePill: PropTypes.string,\n    selectedListboxLabel: PropTypes.string\n})"
+                    "raw": "PropTypes.shape({\n    label: PropTypes.string,\n    optionSelectedInMenu: PropTypes.string,\n    removeSingleSelectedOption: PropTypes.string,\n    removePill: PropTypes.string,\n    selectedListboxLabel: PropTypes.string\n})"
                 },
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.\n* `optionSelectedInMenu`: Added before selected menu items in Read-only variants (Picklists). The default is `Current Selection:`.\n* `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.\n* `removePill`: Used by multiple selection Comboboxes to remove a selected item (pill). Focus is on the pill. This is not a button. The default  is `, Press delete or backspace to remove`.\n* `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.\n_Tested with snapshot testing._",
@@ -2554,7 +2554,7 @@
             "events": {
                 "type": {
                     "name": "custom",
-                    "raw": "shape({\n    onBlur: PropTypes.func,\n    onChange: PropTypes.func,\n    onClose: PropTypes.func,\n    onFocus: PropTypes.func,\n    onOpen: PropTypes.func,\n    onRequestClose: PropTypes.func,\n    onRequestOpen: PropTypes.func,\n    onRequestRemoveSelectedOption: PropTypes.func,\n    onSelect: PropTypes.func,\n    onSubmit: PropTypes.func\n})"
+                    "raw": "PropTypes.shape({\n    onBlur: PropTypes.func,\n    onChange: PropTypes.func,\n    onClose: PropTypes.func,\n    onFocus: PropTypes.func,\n    onOpen: PropTypes.func,\n    onRequestClose: PropTypes.func,\n    onRequestOpen: PropTypes.func,\n    onRequestRemoveSelectedOption: PropTypes.func,\n    onSelect: PropTypes.func,\n    onSubmit: PropTypes.func\n})"
                 },
                 "required": false,
                 "description": "Event Callbacks\n* `onBlur`: Called when `input` removes focus.\n* `onChange`: Called when keyboard events occur within `input`\n* `onClose`: Triggered when the menu has closed.\n* `onFocus`: Called when `input` receives focus.\n* `onOpen`: Triggered when the menu has opened.\n* `onRequestClose`: Function called when the menu would like to hide. Please use with `isOpen`.\n* `onRequestOpen`:  Function called when the menu would like to show. Please use with `isOpen`.\n* `onRequestRemoveSelectedOption`: Function called when a single selection option is to be removed.\n* `onSelect`: Function called when a menu item is selected\n* `onSubmit`: Function called when user presses enter or submits the `input`\n_Tested with Mocha testing._",
@@ -2580,7 +2580,7 @@
             "labels": {
                 "type": {
                     "name": "custom",
-                    "raw": "shape({\n    label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),\n    multipleOptionsSelected: PropTypes.string,\n    noOptionsFound: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),\n    placeholder: PropTypes.string,\n    placeholderReadOnly: PropTypes.string,\n    removePillTitle: PropTypes.string\n})"
+                    "raw": "PropTypes.shape({\n    label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),\n    multipleOptionsSelected: PropTypes.string,\n    noOptionsFound: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),\n    placeholder: PropTypes.string,\n    placeholderReadOnly: PropTypes.string,\n    removePillTitle: PropTypes.string\n})"
                 },
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: This label appears above the input.\n* `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.\n* `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.\n* `placeholder`: Input placeholder\n* `placeholderReadOnly`: Placeholder for Picklist-like Combobox\n* `removePillTitle`: Title on `X` icon\n_Tested with snapshot testing._",
@@ -3428,7 +3428,7 @@
             "assistiveText": {
                 "type": {
                     "name": "custom",
-                    "raw": "shape({\n    nextMonth: PropTypes.string,\n    openCalendar: PropTypes.string,\n    previousMonth: PropTypes.string\n})"
+                    "raw": "PropTypes.shape({\n    nextMonth: PropTypes.string,\n    openCalendar: PropTypes.string,\n    previousMonth: PropTypes.string\n})"
                 },
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `nextMonth`: Label for button to go to the next month _Tested with snapshot testing._\n* `openCalendar`: Call to action label for calendar dialog trigger _Tested with snapshot testing._\n* `previousMonth`: Label for button to go to the previous month _Tested with snapshot testing._",
@@ -3536,7 +3536,7 @@
             "labels": {
                 "type": {
                     "name": "custom",
-                    "raw": "shape({\n    abbreviatedWeekDays: PropTypes.array,\n    label: PropTypes.string,\n    months: PropTypes.array,\n    placeholder: PropTypes.string,\n    today: PropTypes.string,\n    weekDays: PropTypes.array\n})"
+                    "raw": "PropTypes.shape({\n    abbreviatedWeekDays: PropTypes.array,\n    label: PropTypes.string,\n    months: PropTypes.array,\n    placeholder: PropTypes.string,\n    today: PropTypes.string,\n    weekDays: PropTypes.array\n})"
                 },
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `abbreviatedWeekDays`: Three letter abbreviations of the days of the week, starting on Sunday. _Tested with snapshot testing._\n* `months`: Names of the months. _Tested with snapshot testing._\n* `label`: This label appears above the input.\n* `placeholder`: Placeholder text for input. _Tested with snapshot testing._\n* `today`: Label of shortcut to jump to today within the calendar. This is also used for assistive text on today's date. _Tested with snapshot testing._\n* `weekDays`: Full names of the seven days of the week, starting on Sunday. _Tested with snapshot testing._",
@@ -4246,7 +4246,7 @@
             "assistiveText": {
                 "type": {
                     "name": "custom",
-                    "raw": "shape({\n    label: PropTypes.string,\n    spinner: PropTypes.string\n})"
+                    "raw": "PropTypes.shape({\n    label: PropTypes.string,\n    spinner: PropTypes.string\n})"
                 },
                 "required": false,
                 "description": "**Assistive text for accessibility**\n* `label`: Visually hidden label but read out loud by screen readers.\n* `spinner`: Text for loading spinner icon."
@@ -8076,7 +8076,7 @@
             "assistiveText": {
                 "type": {
                     "name": "custom",
-                    "raw": "shape({\n    remove: PropTypes.string\n})"
+                    "raw": "PropTypes.shape({\n    remove: PropTypes.string\n})"
                 },
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `remove`: This is a visually hidden label for the close button.\n_Tested with snapshot testing._",
@@ -8148,7 +8148,7 @@
             "labels": {
                 "type": {
                     "name": "custom",
-                    "raw": "shape({\n    label: PropTypes.string,\n    title: PropTypes.string,\n    removeTitle: PropTypes.string\n})"
+                    "raw": "PropTypes.shape({\n    label: PropTypes.string,\n    title: PropTypes.string,\n    removeTitle: PropTypes.string\n})"
                 },
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: Pill's label.\n* `title`: Pill's title.\n* `removeTitle`: A title to use for the remove icon.\n\n_Tested with snapshot testing._",
@@ -9013,7 +9013,7 @@
             "assistiveText": {
                 "type": {
                     "name": "custom",
-                    "raw": "shape({\n    percentage: PropTypes.string\n})"
+                    "raw": "PropTypes.shape({\n    percentage: PropTypes.string\n})"
                 },
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`",
@@ -9995,7 +9995,7 @@
             "labels": {
                 "type": {
                     "name": "custom",
-                    "raw": "shape({\n    error: PropTypes.string,\n    label: PropTypes.string\n})"
+                    "raw": "PropTypes.shape({\n    error: PropTypes.string,\n    label: PropTypes.string\n})"
                 },
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `error`: Message to display when any of Checkboxes are in an error state.\n* `label`: This label appears above the radio group.",
@@ -10099,7 +10099,7 @@
             "labels": {
                 "type": {
                     "name": "custom",
-                    "raw": "shape({\n    error: PropTypes.string,\n    label: PropTypes.string\n})"
+                    "raw": "PropTypes.shape({\n    error: PropTypes.string,\n    label: PropTypes.string\n})"
                 },
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `error`: Message to display when any of Checkboxes are in an error state.\n* `label`: This label appears above the button group.",
@@ -10770,7 +10770,7 @@
             "assistiveText": {
                 "type": {
                     "name": "custom",
-                    "raw": "shape({\n    closeButton: PropTypes.oneOfType([PropTypes.string, PropTypes.node])\n})"
+                    "raw": "PropTypes.shape({\n    closeButton: PropTypes.oneOfType([PropTypes.string, PropTypes.node])\n})"
                 },
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `closeButton`: This is a visually hidden label for the close button.\n_Tested with snapshot testing._",
@@ -10807,7 +10807,7 @@
             "labels": {
                 "type": {
                     "name": "custom",
-                    "raw": "shape({\n    details: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),\n    heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),\n    headingLink: PropTypes.oneOfType([PropTypes.string, PropTypes.node])\n})"
+                    "raw": "PropTypes.shape({\n    details: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),\n    heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),\n    headingLink: PropTypes.oneOfType([PropTypes.string, PropTypes.node])\n})"
                 },
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `details`: Secondary text below heading\n* `heading`: text within heading tag\n* `headingLink`: Text of link that triggers `onClickHeadingLink`. Inline links should pass a keyed array of React components into `labels.heading`.\n\n_Tested with snapshot testing._"

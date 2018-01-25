@@ -33,8 +33,6 @@ import List from '../utilities/menu-list';
 import ListItemLabel from '../utilities/menu-list/item-label';
 import Pill from '../utilities/pill';
 
-import { shape } from 'airbnb-prop-types';
-
 // ### Traits
 
 // #### KeyboardNavigable
@@ -89,7 +87,7 @@ const MenuPicklist = createReactClass({
 		 * This object is merged with the default props object on every render.
 		 * * `multipleOptionsSelected`: Text to be used when multiple items are selected. "2 Options Selected" is a good pattern to use.
 		 */
-		labels: shape({
+		labels: PropTypes.shape({
 			multipleOptionsSelected: PropTypes.string
 		}),
 		/**

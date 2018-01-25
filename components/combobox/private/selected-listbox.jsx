@@ -9,8 +9,6 @@ import Pill from '../../utilities/pill';
 import classNames from 'classnames';
 import isEqual from 'lodash.isequal';
 
-import { shape } from 'airbnb-prop-types';
-
 const propTypes = {
 	/*
 	 * The option object within the selection prop that should have focus.
@@ -26,14 +24,14 @@ const propTypes = {
 	 * * `label`: This is used as a visually hidden label if, no `labels.label` is provided.
 	 * * `removePill`: Aids in keyboard interaction with Pills.
 	 */
-	assistiveText: shape({
+	assistiveText: PropTypes.shape({
 		label: PropTypes.string,
 		removePill: PropTypes.string
 	}),
 	/*
 	 * Callback called when pill is clicked, delete is pressed, or backspace is pressed.
 	 */
-	events: shape({
+	events: PropTypes.shape({
 		onClickPill: PropTypes.func.isRequired,
 		onRequestFocus: PropTypes.func.isRequired,
 		onRequestFocusOnNextPill: PropTypes.func.isRequired,
@@ -51,7 +49,7 @@ const propTypes = {
 	/*
 	 * Pill Label
 	 */
-	labels: shape({
+	labels: PropTypes.shape({
 		label: PropTypes.string,
 		remove: PropTypes.string,
 		title: PropTypes.string

@@ -7,7 +7,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { shape } from 'airbnb-prop-types';
 import { PILL } from '../../utilities/constants';
 import UtilityIcon from '../utilities/utility-icon';
 import KEYS from '../../utilities/key-code';
@@ -23,7 +22,7 @@ const propTypes = {
 	 * * `remove`: This is a visually hidden label for the close button.
 	 * _Tested with snapshot testing._
 	 */
-	assistiveText: shape({
+	assistiveText: PropTypes.shape({
 		remove: PropTypes.string
 	}),
 	/**
@@ -74,7 +73,7 @@ const propTypes = {
 	 *
 	 * _Tested with snapshot testing._
 	 */
-	labels: shape({
+	labels: PropTypes.shape({
 		label: PropTypes.string,
 		title: PropTypes.string,
 		removeTitle: PropTypes.string
@@ -116,10 +115,10 @@ class Pill extends React.Component {
 		checkProps(PILL);
 	}
 
-	getHref = () => (typeof this.props.href === 'string'
-		? this.props.href
-		: 'javascript:void(0);' // eslint-disable-line no-script-url
-	);
+	getHref = () =>
+		(typeof this.props.href === 'string'
+			? this.props.href
+			: 'javascript:void(0);'); // eslint-disable-line no-script-url
 
 	/**
 	 * Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component.

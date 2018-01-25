@@ -6,8 +6,6 @@ import PropTypes from 'prop-types';
 import isEqual from 'lodash.isequal';
 import classNames from 'classnames';
 
-import { shape } from 'airbnb-prop-types';
-
 import Icon from '../../icon';
 
 const propTypes = {
@@ -48,7 +46,7 @@ const propTypes = {
 	 * This object is merged with the default props object on every render.
 	 * * `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.
 	 */
-	labels: shape({
+	labels: PropTypes.shape({
 		noOptionsFound: PropTypes.string.isRequired
 	}),
 	/**
