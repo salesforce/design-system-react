@@ -100,12 +100,12 @@ class SplitView extends React.Component {
 		nextProps.isOpen !== this.props.isOpen && this.setIsOpen(nextProps.isOpen);
 	}
 
-	get id () {
+	getId () {
 		return this.props.id || this.generatedId;
 	}
 
-	get masterViewId () {
-		return `master_view_${this.id}`;
+	getMasterViewId () {
+		return `master_view_${this.getId()}`;
 	}
 
 	setIsOpen (isOpen) {
@@ -127,7 +127,7 @@ class SplitView extends React.Component {
 	masterContent () {
 		return this.state.isOpen ? (
 			<article
-				id={this.masterViewId}
+				id={this.getMasterViewId()}
 				className="slds-split-view slds-grid slds-grid_vertical slds-grow slds-scrollable_none"
 			>
 				{this.props.master}
@@ -138,7 +138,7 @@ class SplitView extends React.Component {
 	render () {
 		return (
 			<div
-				id={this.id}
+				id={this.getId()}
 				className={classNames('slds-grid', this.props.className)}
 				style={{
 					height: '100%'
@@ -156,7 +156,7 @@ class SplitView extends React.Component {
 				>
 					<ToggleButton
 						assistiveText={this.props.assistiveText}
-						ariaControls={this.masterViewId}
+						ariaControls={this.getMasterViewId()}
 						isOpen={this.state.isOpen}
 						events={{
 							onClick: (event) => this.toggle(event)

@@ -2,73 +2,75 @@ import React from 'react';
 import IconSettings from '~/components/icon-settings';
 import SplitView from '~/components/split-view/index';
 import SplitViewHeader from '~/components/split-view/header';
-import SplitViewListbox, {
-	SORT_OPTIONS
-} from '~/components/split-view/listbox';
+import SplitViewListbox from '~/components/split-view/listbox';
 import Button from '~/components/button';
 import Dropdown from '~/components/menu-dropdown';
 import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
-import shortid from 'shortid';
+
+const SORT_OPTIONS = {
+	UP: 'up',
+	DOWN: 'down'
+};
 
 const listOptions = [
 	{
-		id: shortid.generate(),
+		id: '001',
 		label: 'Riley Shultz',
 		topRightText: '99',
 		bottomLeftText: 'Biotech, Inc.',
 		bottomRightText: 'Nurturing'
 	},
 	{
-		id: shortid.generate(),
+		id: '002',
 		label: 'Jason A. - VP of Sales',
 		topRightText: '92',
 		bottomLeftText: 'Case Management Solutions',
 		bottomRightText: 'Contacted'
 	},
 	{
-		id: shortid.generate(),
+		id: '003',
 		label: 'Josh Smith',
 		topRightText: '90',
 		bottomLeftText: 'Acme, Inc.',
 		bottomRightText: 'Contacted'
 	},
 	{
-		id: shortid.generate(),
+		id: '004',
 		label: 'Bobby Tree',
 		topRightText: '89',
 		bottomLeftText: 'Salesforce, Inc.',
 		bottomRightText: 'Closing'
 	},
 	{
-		id: shortid.generate(),
+		id: '005',
 		label: 'Riley Shultz',
 		topRightText: '74',
 		bottomLeftText: 'Tesla',
 		bottomRightText: 'Contacted'
 	},
 	{
-		id: shortid.generate(),
+		id: '006',
 		label: 'Andy Smith',
 		topRightText: '72',
 		bottomLeftText: 'Universal Technologies',
 		bottomRightText: 'New'
 	},
 	{
-		id: shortid.generate(),
+		id: '007',
 		label: 'Jim Steele',
 		topRightText: '71',
 		bottomLeftText: 'BigList, Inc.',
 		bottomRightText: 'New'
 	},
 	{
-		id: shortid.generate(),
+		id: '008',
 		label: 'John Gardner',
 		topRightText: '70',
 		bottomLeftText: '3C Systems',
 		bottomRightText: 'Contacted'
 	},
 	{
-		id: shortid.generate(),
+		id: '009',
 		label: 'Sarah Loehr',
 		topRightText: '68',
 		bottomLeftText: 'MedLife, Inc.',
