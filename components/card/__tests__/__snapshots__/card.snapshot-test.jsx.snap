@@ -1,0 +1,231 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SLDSCard Base DOM & HTML Snapshots look the same 1`] = `
+<div
+  className="slds-grid slds-grid--vertical"
+>
+  <article
+    className="slds-card"
+    id="ExampleCard"
+    style={undefined}
+  >
+    <div
+      className="slds-card__header slds-grid"
+    >
+      <div
+        className="slds-media slds-media--center slds-has-flexi-truncate"
+      >
+        <div
+          className="slds-media__figure"
+        >
+          <span
+            className="slds-icon_container slds-icon-standard-document"
+            title={undefined}
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-icon slds-icon--small"
+              style={undefined}
+            >
+              <use
+                xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#document"
+              />
+            </svg>
+            
+          </span>
+           
+        </div>
+        <div
+          className="slds-media__body"
+        >
+          <h2
+            className="slds-text-heading--small slds-truncate"
+            id="ExampleCard__heading"
+            title="Releated Items"
+          >
+            Releated Items
+          </h2>
+        </div>
+      </div>
+      <div
+        className="slds-input-has-icon slds-input-has-icon--left slds-size--1-of-3"
+      >
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-form-element__label slds-assistive-text"
+            htmlFor="ExampleCard__filter-input"
+          >
+            Find in List
+          </label>
+          <div
+            className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"
+          >
+            <svg
+              aria-hidden={true}
+              className="slds-input__icon slds-icon-text-default slds-input__icon--left"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+              />
+            </svg>
+            <input
+              aria-activedescendant={undefined}
+              aria-autocomplete={undefined}
+              aria-controls={undefined}
+              aria-describedby={undefined}
+              aria-expanded={undefined}
+              aria-labelledby={undefined}
+              aria-owns={undefined}
+              aria-required={undefined}
+              autoComplete={undefined}
+              className="slds-input"
+              disabled={undefined}
+              id="ExampleCard__filter-input"
+              maxLength={undefined}
+              minLength={undefined}
+              name={undefined}
+              onBlur={undefined}
+              onChange={[Function]}
+              onClick={undefined}
+              onFocus={undefined}
+              onInput={undefined}
+              onInvalid={undefined}
+              onKeyDown={undefined}
+              onKeyPress={undefined}
+              onKeyUp={undefined}
+              onSelect={undefined}
+              onSubmit={undefined}
+              placeholder="Find in List"
+              readOnly={undefined}
+              required={undefined}
+              role={undefined}
+              style={undefined}
+              tabIndex={undefined}
+              type="text"
+              value={undefined}
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-no-flex slds-size--1-of-3 slds-text-align--right"
+        id="ExampleCard__header-actions"
+      >
+        <button
+          aria-controls={undefined}
+          aria-describedby={undefined}
+          aria-expanded={undefined}
+          aria-haspopup={undefined}
+          className="slds-button slds-button--neutral"
+          disabled={false}
+          id={undefined}
+          onBlur={undefined}
+          onClick={[Function]}
+          onFocus={undefined}
+          onKeyDown={undefined}
+          onKeyPress={undefined}
+          onKeyUp={undefined}
+          onMouseDown={undefined}
+          onMouseEnter={undefined}
+          onMouseLeave={undefined}
+          tabIndex={undefined}
+          title={undefined}
+          type="button"
+        >
+          Delete All Items
+        </button>
+      </div>
+    </div>
+    <div
+      className="slds-card__body"
+      id="ExampleCard__body"
+    >
+      <table
+        className="slds-table slds-table--bordered slds-table--cell-buffer"
+        id="DataTableExample-1"
+        role={null}
+      >
+        <thead>
+          <tr
+            className="slds-text-title--caps"
+          >
+            <th
+              aria-sort={null}
+              className=""
+              focusable={null}
+              scope="col"
+              style={null}
+            >
+              <div
+                className="slds-truncate"
+              >
+                Opportunity Name
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            className=""
+          >
+            <td
+              className="slds-truncate"
+              role={null}
+              style={null}
+            >
+              <div
+                className=""
+                title="Cloudhub"
+              >
+                Cloudhub
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+</div>
+`;
+
+exports[`SLDSCard Base DOM & HTML Snapshots look the same 2`] = `
+"<div class=\\"slds-grid slds-grid--vertical\\">
+  <article id=\\"ExampleCard\\" class=\\"slds-card\\">
+    <div class=\\"slds-card__header slds-grid\\">
+      <div class=\\"slds-media slds-media--center slds-has-flexi-truncate\\">
+        <div class=\\"slds-media__figure\\"><span class=\\"slds-icon_container slds-icon-standard-document\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon--small\\"><use xlink:href=\\"/assets/icons/standard-sprite/svg/symbols.svg#document\\"></use></svg></span> </div>
+        <div class=\\"slds-media__body\\">
+          <h2 id=\\"ExampleCard__heading\\" class=\\"slds-text-heading--small slds-truncate\\" title=\\"Releated Items\\">Releated Items</h2>
+        </div>
+      </div>
+      <div class=\\"slds-input-has-icon slds-input-has-icon--left slds-size--1-of-3\\">
+        <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label slds-assistive-text\\" for=\\"ExampleCard__filter-input\\">Find in List</label>
+          <div class=\\"slds-form-element__control slds-input-has-icon slds-input-has-icon_left\\"><svg aria-hidden=\\"true\\" class=\\"slds-input__icon slds-icon-text-default slds-input__icon--left\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg><input type=\\"text\\" class=\\"slds-input\\" id=\\"ExampleCard__filter-input\\"
+              placeholder=\\"Find in List\\" /></div>
+        </div>
+      </div>
+      <div id=\\"ExampleCard__header-actions\\" class=\\"slds-no-flex slds-size--1-of-3 slds-text-align--right\\"><button class=\\"slds-button slds-button--neutral\\" type=\\"button\\">Delete All Items</button></div>
+    </div>
+    <div class=\\"slds-card__body\\" id=\\"ExampleCard__body\\">
+      <table class=\\"slds-table slds-table--bordered slds-table--cell-buffer\\" id=\\"DataTableExample-1\\">
+        <thead>
+          <tr class=\\"slds-text-title--caps\\">
+            <th class=\\"\\" scope=\\"col\\">
+              <div class=\\"slds-truncate\\">Opportunity Name</div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class=\\"\\">
+            <td class=\\"slds-truncate\\">
+              <div class=\\"\\" title=\\"Cloudhub\\">Cloudhub</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+</div>"
+`;

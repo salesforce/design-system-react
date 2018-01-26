@@ -135,20 +135,20 @@ const Dialog = createReactClass({
 		 */
 		outsideClickIgnoreClass: PropTypes.string,
 		/**
-		  * If a dialog is `positione="overflowBoundaryElement"`, it will be rendered in a portal or separate render tree. This `portalMount` callback will be triggered instead of the the default `ReactDOM.unstable_renderSubtreeIntoContainer` and the function will mount the portal itself. Consider the following code that bypasses the internal mount and uses an Enzyme wrapper to mount the React root tree to the DOM.
-		  *
-		  * ```
-		  * <Popover
-		 		isOpen
-				portalMount={({ instance, reactElement, domContainerNode }) => {
-					portalWrapper = Enzyme.mount(reactElement, { attachTo: domContainerNode });
-				}}
-		 		onOpen={() => {
-		 			expect(portalWrapper.find(`#my-heading`)).to.exist;
-		 			done();
-		 		}}
-		 		/>
-		 *	```
+		 * If a dialog is `positione="overflowBoundaryElement"`, it will be rendered in a portal or separate render tree. This `portalMount` callback will be triggered instead of the the default `ReactDOM.unstable_renderSubtreeIntoContainer` and the function will mount the portal itself. Consider the following code that bypasses the internal mount and uses an Enzyme wrapper to mount the React root tree to the DOM.
+		 *
+		 * ```
+		 * <Popover
+		 *   isOpen
+		 *   portalMount={({ instance, reactElement, domContainerNode }) => {
+		 *     portalWrapper = Enzyme.mount(reactElement, { attachTo: domContainerNode });
+		 *   }}
+		 *   onOpen={() => {
+		 *     expect(portalWrapper.find(`#my-heading`)).to.exist;
+		 *     done();
+		 *   }}
+		 *   />
+		 * ```
 		 */
 		portalMount: PropTypes.func,
 		/**
@@ -196,6 +196,19 @@ const Dialog = createReactClass({
 		}
 	},
 
+	componentDidUpdate (prevProps, prevState) {
+		if (
+			this.state.triggerPopperJS === true &&
+			prevState.triggerPopperJS === false &&
+			(this.props.position === 'absolute' ||
+				this.props.position === 'overflowBoundaryElement') &&
+			this.dialogContent &&
+			this.props.onRequestTargetElement()
+		) {
+			this.createPopper();
+		}
+	},
+
 	componentWillUnmount () {
 		if (this.props.variant === 'popover') {
 			DOMElementFocus.teardownScopedFocus();
@@ -212,16 +225,88 @@ const Dialog = createReactClass({
 		this.handleClose(undefined, { componentWillUnmount: true });
 	},
 
-	componentDidUpdate (prevProps, prevState) {
-		if (
-			this.state.triggerPopperJS === true &&
-			prevState.triggerPopperJS === false &&
-			(this.props.position === 'absolute' ||
-				this.props.position === 'overflowBoundaryElement') &&
-			this.dialogContent &&
-			this.props.onRequestTargetElement()
-		) {
-			this.createPopper();
+	getPropOffsetsInPixels (offsetString) {
+		const offsetArray = offsetString.split(' ');
+		return {
+			vertical: parseInt(offsetArray[0], 10),
+			horizontal: parseInt(offsetArray[1], 10)
+		};
+	},
+
+	getPopperStyles () {
+		const { popperData } = this.state;
+		if (!this.popper || !popperData) {
+			return {
+				position: 'absolute',
+				pointerEvents: 'none'
+			};
+		}
+
+		const propOffsets = this.getPropOffsetsInPixels(this.props.offset);
+		const { position } = popperData.offsets.popper;
+		const left = `${popperData.offsets.popper.left + propOffsets.horizontal}px`;
+		const top = `${popperData.offsets.popper.top + propOffsets.vertical}px`;
+		return { ...popperData.style, left, top, position };
+	},
+
+	// Render
+	setDialogContent (component) {
+		this.dialogContent = component;
+		if (!this.state.triggerPopperJS) {
+			this.setState({ triggerPopperJS: true });
+		}
+	},
+
+	/**
+	 * Events
+	 */
+	handleClickOutside () {
+		this.handleClose();
+	},
+
+	handleClose (event, data) {
+		this.setState({ triggerPopperJS: true });
+		if (this.props.onClose) {
+			this.props.onClose(event, data);
+		}
+	},
+
+	handleClick (event) {
+		if (event.nativeEvent) {
+			event.nativeEvent.preventDefault();
+			event.nativeEvent.stopPropagation();
+		}
+	},
+
+	handleKeyDown (event) {
+		if (event.keyCode === KEYS.TAB) {
+			if (this.props.closeOnTabKey) {
+				EventUtil.trap(event);
+				this.handleClose(event);
+			}
+		}
+
+		if (this.props.onKeyDown) {
+			this.props.onKeyDown(event);
+		}
+	},
+
+	handleOpen () {
+		const scopedElement = this.dialogContent;
+
+		if (this.props.variant === 'popover' && scopedElement) {
+			DOMElementFocus.storeActiveElement();
+			DOMElementFocus.setupScopedFocus({
+				ancestorElement: scopedElement.querySelector('.slds-popover')
+			}); // eslint-disable-line react/no-find-dom-node
+			// Don't steal focus from inner elements
+			if (!DOMElementFocus.hasOrAncestorHasFocus()) {
+				DOMElementFocus.focusAncestor();
+			}
+		}
+
+		if (this.props.onOpen) {
+			this.props.onOpen(undefined, { portal: this.dialogContent });
 		}
 	},
 
@@ -275,96 +360,9 @@ const Dialog = createReactClass({
 		this.popper.scheduleUpdate();
 	},
 
-	getPropOffsetsInPixels (offsetString) {
-		const offsetArray = offsetString.split(' ');
-		return {
-			vertical: parseInt(offsetArray[0], 10),
-			horizontal: parseInt(offsetArray[1], 10)
-		};
-	},
-
-	getPopperStyles () {
-		const { popperData } = this.state;
-		if (!this.popper || !popperData) {
-			return {
-				position: 'absolute',
-				pointerEvents: 'none'
-			};
-		}
-
-		const propOffsets = this.getPropOffsetsInPixels(this.props.offset);
-		const { position } = popperData.offsets.popper;
-		const left = `${popperData.offsets.popper.left + propOffsets.horizontal}px`;
-		const top = `${popperData.offsets.popper.top + propOffsets.vertical}px`;
-		return { ...popperData.style, left, top, position };
-	},
-
 	destroyPopper () {
 		if (this.popper) {
 			this.popper.destroy();
-		}
-	},
-
-	/**
-	 * Events
-	 */
-
-	handleClickOutside () {
-		this.handleClose();
-	},
-
-	handleClose (event, data) {
-		this.setState({ triggerPopperJS: true });
-		if (this.props.onClose) {
-			this.props.onClose(event, data);
-		}
-	},
-
-	handleClick (event) {
-		if (event.nativeEvent) {
-			event.nativeEvent.preventDefault();
-			event.nativeEvent.stopPropagation();
-		}
-	},
-
-	handleKeyDown (event) {
-		if (event.keyCode === KEYS.TAB) {
-			if (this.props.closeOnTabKey) {
-				EventUtil.trap(event);
-				this.handleClose(event);
-			}
-		}
-
-		if (this.props.onKeyDown) {
-			this.props.onKeyDown(event);
-		}
-	},
-
-	handleOpen () {
-		const scopedElement = this.dialogContent;
-
-		if (this.props.variant === 'popover' && scopedElement) {
-			DOMElementFocus.storeActiveElement();
-			DOMElementFocus.setupScopedFocus({
-				ancestorElement: scopedElement.querySelector('.slds-popover')
-			}); // eslint-disable-line react/no-find-dom-node
-			// Don't steal focus from inner elements
-			if (!DOMElementFocus.hasOrAncestorHasFocus()) {
-				DOMElementFocus.focusAncestor();
-			}
-		}
-
-		if (this.props.onOpen) {
-			this.props.onOpen(undefined, { portal: this.dialogContent });
-		}
-	},
-
-	// Render
-
-	setDialogContent (component) {
-		this.dialogContent = component;
-		if (!this.state.triggerPopperJS) {
-			this.setState({ triggerPopperJS: true });
 		}
 	},
 

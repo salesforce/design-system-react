@@ -44,10 +44,6 @@ const TextTruncate = createReactClass({
 		return {};
 	},
 
-	onResize () {
-		this.update(this.props);
-	},
-
 	componentDidMount () {
 		window.addEventListener('resize', this.onResize, false);
 	},
@@ -60,8 +56,8 @@ const TextTruncate = createReactClass({
 		window.removeEventListener('resize', this.onResize, false);
 	},
 
-	update (nextProps) {
-		this.getRenderText(this.scope, nextProps);
+	onResize () {
+		this.update(this.props);
 	},
 
 	getRenderText (ref, nextProps) {
@@ -209,6 +205,10 @@ const TextTruncate = createReactClass({
 		}
 
 		this.setState({ renderText });
+	},
+
+	update (nextProps) {
+		this.getRenderText(this.scope, nextProps);
 	},
 
 	render () {

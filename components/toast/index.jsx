@@ -97,6 +97,11 @@ class Toast extends React.Component {
 		this.timeout = null;
 	}
 
+	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(TOAST, this.props);
+	}
+
 	componentDidMount () {
 		if (this.props.duration) {
 			this.timeout = setTimeout(() => {
@@ -105,25 +110,9 @@ class Toast extends React.Component {
 		}
 	}
 
-	componentWillMount () {
-		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(TOAST, this.props);
-	}
-
 	componentWillUnmount () {
 		DOMElementFocus.returnFocusToStoredElement();
 	}
-
-	saveButtonRef = (component) => {
-		this.closeButton = component;
-		if (this.state.isInitialRender) {
-			DOMElementFocus.storeActiveElement();
-			if (this.closeButton) {
-				this.closeButton.focus();
-			}
-			this.setState({ isInitialRender: false });
-		}
-	};
 
 	onClose = () => {
 		if (this.timeout) {
@@ -133,6 +122,17 @@ class Toast extends React.Component {
 
 		if (this.props.onRequestClose) {
 			this.props.onRequestClose();
+		}
+	};
+
+	saveButtonRef = (component) => {
+		this.closeButton = component;
+		if (this.state.isInitialRender) {
+			DOMElementFocus.storeActiveElement();
+			if (this.closeButton) {
+				this.closeButton.focus();
+			}
+			this.setState({ isInitialRender: false });
 		}
 	};
 

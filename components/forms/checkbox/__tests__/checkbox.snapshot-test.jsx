@@ -1,24 +1,73 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { renderMarkup } from '../../../../tests/snapshot-helpers';
+import {
+	testDOMandHTML,
+	testImageSnapshot
+} from '../../../../tests/snapshot-helpers';
 
 import CheckboxBase from '../__examples__/snapshot-base';
 import CheckboxToggle from '../__examples__/snapshot-toggle';
 
-test('Checkbox Base DOM Snapshot', () => {
-	const domTree = renderer.create(<CheckboxBase />).toJSON();
-	expect(domTree).toMatchSnapshot();
-});
+import { CHECKBOX } from '../../../../utilities/constants';
 
-test('Checkbox Base HTML Snapshot', () => {
-	expect(renderMarkup(CheckboxBase)).toMatchSnapshot();
-});
+describe(CHECKBOX, () => {
+	test('Base DOM & HTML Snapshots look the same', () => {
+		testDOMandHTML(CheckboxBase);
+	});
 
-test('Checkbox Toggle DOM Snapshot', () => {
-	const domTree = renderer.create(<CheckboxToggle />).toJSON();
-	expect(domTree).toMatchSnapshot();
-});
+	test('Toggle DOM & HTML Snapshots look the same', () => {
+		testDOMandHTML(CheckboxToggle);
+	});
 
-test('Checkbox Toggle HTML Snapshot', () => {
-	expect(renderMarkup(CheckboxToggle)).toMatchSnapshot();
+	test('Image Snapshot looks the same', async () => {
+		await testImageSnapshot(CHECKBOX, 'Checkbox');
+	});
+
+	test('(with error) Image Snapshot looks the same', async () => {
+		await testImageSnapshot(CHECKBOX, 'Checkbox (with error)');
+	});
+
+	test('(required) Image Snapshot looks the same', async () => {
+		await testImageSnapshot(CHECKBOX, 'Checkbox (required)');
+	});
+
+	test('(disabled) Image Snapshot looks the same', async () => {
+		await testImageSnapshot(CHECKBOX, 'Checkbox (disabled)');
+	});
+
+	test('(assistive text) Image Snapshot looks the same', async () => {
+		await testImageSnapshot(CHECKBOX, 'Checkbox (assistive text)');
+	});
+
+	test('(checked) Image Snapshot looks the same', async () => {
+		await testImageSnapshot(CHECKBOX, 'Checkbox (checked)');
+	});
+
+	test('(indeterminate) Image Snapshot looks the same', async () => {
+		await testImageSnapshot(CHECKBOX, 'Checkbox (indeterminate)');
+	});
+
+	test('Toggle Image Snapshot looks the same', async () => {
+		await testImageSnapshot(CHECKBOX, 'Checkbox Toggle');
+	});
+
+	test('Toggle (with error) Image Snapshot looks the same', async () => {
+		await testImageSnapshot(CHECKBOX, 'Checkbox Toggle (with error)');
+	});
+
+	test('Toggle (required) Image Snapshot looks the same', async () => {
+		await testImageSnapshot(CHECKBOX, 'Checkbox Toggle (required)');
+	});
+
+	test('Toggle (disabled) Image Snapshot looks the same', async () => {
+		await testImageSnapshot(CHECKBOX, 'Checkbox Toggle (disabled)');
+	});
+
+	test('Toggle (assistive text) Image Snapshot looks the same', async () => {
+		await testImageSnapshot(CHECKBOX, 'Checkbox Toggle (assistive text)');
+	});
+
+	test('Toggle (checked) Image Snapshot looks the same', async () => {
+		await testImageSnapshot(CHECKBOX, 'Checkbox Toggle (checked)');
+	});
 });

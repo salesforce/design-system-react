@@ -1,18 +1,16 @@
 /* eslint-env jest */
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { renderMarkup } from '../../../tests/snapshot-helpers';
+
+import {
+	renderMarkup,
+	testDOMandHTML,
+	testImageSnapshot
+} from '../../../tests/snapshot-helpers';
 
 import SnapshotDefault from '../__examples__/snapshot-default';
 
-test('Datepicker Default DOM Snapshot', () => {
-	const domTree = renderer.create(<SnapshotDefault />).toJSON();
-	expect(domTree).toMatchSnapshot();
-});
-
-test('Datepicker Default HTML Snapshot', () => {
-	expect(renderMarkup(SnapshotDefault)).toMatchSnapshot();
-});
+import { DATE_PICKER } from '../../../utilities/constants';
 
 const customProps = {
 	align: 'right',
@@ -54,31 +52,58 @@ const customProps = {
 	triggerClassName: 'CUSTOM-TRIGGER-CLASSNAME'
 };
 
-test(`Datepicker
-		abbreviatedWeekDayLabels,
-		assistiveTextNextMonth,
-		assistiveTextOpenCalendar,
-		assistiveTextPreviousMonth,
-		align,
-		className,
-		formatter,
-		monthLabels,
-		placeholder,
-		relativeYearFrom,
-		relativeYearTo,
-		todayLabel,
-		triggerClassName,
-		weekDayLabels
-	DOM Snapshot`, () => {
-		const domTree = renderer
-			.create(<SnapshotDefault {...customProps} />)
-			.toJSON();
-		expect(domTree).toMatchSnapshot();
+describe(DATE_PICKER, () => {
+	test('Base DOM & HTML Snapshots look the same', () => {
+		testDOMandHTML(SnapshotDefault);
 	});
 
-test(`Datepicker
-	isIsoWeekday
-	DOM Snapshot`, () => {
-		const domTree = renderer.create(<SnapshotDefault isIsoWeekday />).toJSON();
-		expect(domTree).toMatchSnapshot();
+	const customPropsTestName = `
+	abbreviatedWeekDayLabels,
+	assistiveTextNextMonth,
+	assistiveTextOpenCalendar,
+	assistiveTextPreviousMonth,
+	align,
+	className,
+	formatter,
+	monthLabels,
+	placeholder,
+	relativeYearFrom,
+	relativeYearTo,
+	todayLabel,
+	triggerClassName,
+	weekDayLabels
+DOM Snapshot looks the same`;
+	test(customPropsTestName, () => {
+		testDOMandHTML(SnapshotDefault, customProps);
 	});
+
+	const customIsIsoTestName = `
+	isIsoWeekday
+DOM Snapshot looks the same`;
+	test(customIsIsoTestName, () => {
+		testDOMandHTML(SnapshotDefault, { isIsoWeekday: true });
+	});
+
+	test('Default Image Snapshot looks the same', async () => {
+		await testImageSnapshot(DATE_PICKER, 'Default');
+	});
+
+	test('ISO weekdays Image Snapshot looks the same', async () => {
+		await testImageSnapshot(DATE_PICKER, 'ISO weekdays');
+	});
+
+	test('Custom Input Image Snapshot looks the same', async () => {
+		await testImageSnapshot(DATE_PICKER, 'Custom Input');
+	});
+	test('Inline menu Image Snapshot looks the same', async () => {
+		await testImageSnapshot(DATE_PICKER, 'Inline menu');
+	});
+
+	test('DOM Snapshot Image Snapshot looks the same', async () => {
+		await testImageSnapshot(DATE_PICKER, 'DOM Snapshot');
+	});
+
+	test('Weekday picker Image Snapshot looks the same', async () => {
+		await testImageSnapshot(DATE_PICKER, 'Weekday picker');
+	});
+});

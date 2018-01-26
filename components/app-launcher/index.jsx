@@ -118,11 +118,6 @@ const AppLauncher = createReactClass({
 		triggerOnClick: PropTypes.func
 	},
 
-	componentWillMount () {
-		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(APP_LAUNCHER, this.props);
-	},
-
 	getDefaultProps () {
 		return {
 			triggerAssistiveText: 'Open App Launcher',
@@ -134,6 +129,11 @@ const AppLauncher = createReactClass({
 		return {
 			isOpen: false
 		};
+	},
+
+	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(APP_LAUNCHER, this.props);
 	},
 
 	openAppLauncher (event) {

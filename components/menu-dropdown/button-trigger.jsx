@@ -35,7 +35,7 @@ const Trigger = createReactClass({
 		 * ```
 		 * <Dropdown>
 		 *   <Trigger>
-		 *     <Button iconCategory="utility" iconName="settings" />
+		 *   <Button iconCategory="utility" iconName="settings" />
 		 *   </Trigger>
 		 * </Dropdown>
 		 * ```

@@ -170,6 +170,78 @@ const DatepickerCalendar = createReactClass({
 		}
 	},
 
+	renderWeeks () {
+		const firstDayOfWeekOffset = this.props.isIsoWeekday ? 1 : 0;
+
+		const firstDayOfMonth = DateUtil.firstDayOfMonth(
+			this.props.initialDateForCalendarRender
+		);
+
+		let firstDayOfWeek;
+		if (firstDayOfMonth.getDay() > firstDayOfWeekOffset) {
+			const prevWeek = DateUtil.addWeeks(firstDayOfMonth, -1);
+			firstDayOfWeek = DateUtil.nearestWeekDay(prevWeek, firstDayOfWeekOffset);
+		} else {
+			firstDayOfWeek = firstDayOfMonth;
+		}
+
+		const weeks = [];
+		let done = false;
+
+		let monthIndex = firstDayOfWeek.getMonth();
+		let count = 0;
+
+		while (!done) {
+			weeks.push(
+				<Week
+					calendarHasFocus={this.state.calendarHasFocus}
+					dateDisabled={this.props.dateDisabled}
+					firstDayOfWeek={firstDayOfWeek}
+					key={firstDayOfWeek.toString()}
+					focusedDate={this.state.focusedDate}
+					initialDateForCalendarRender={this.props.initialDateForCalendarRender}
+					onCalendarBlur={this.props.onCalendarBlur}
+					onKeyboardNavigateToPreviousDay={
+						this.handleKeyboardNavigateToPreviousDay
+					}
+					onKeyboardNavigateToNextDay={this.handleKeyboardNavigateToNextDay}
+					onKeyboardNavigateToPreviousWeek={
+						this.handleKeyboardNavigateToPreviousWeek
+					}
+					onKeyboardNavigateToNextWeek={this.handleKeyboardNavigateToNextWeek}
+					onRequestClose={this.handleRequestClose}
+					onRequestInternalFocusDate={this.props.onRequestInternalFocusDate}
+					onSelectDate={this.handleSelectDate}
+					selectedDate={this.props.selectedDate}
+					selectedDateRef={this.props.selectedDateRef}
+					todayLabel={this.props.todayLabel}
+				/>
+			);
+
+			// create new weeks
+			firstDayOfWeek = DateUtil.addWeeks(firstDayOfWeek, 1);
+			done = count++ > 2 && monthIndex !== firstDayOfWeek.getMonth();
+			monthIndex = firstDayOfWeek.getMonth();
+		}
+		let extraWeeks = 0;
+		while (weeks.length < 6) {
+			extraWeeks += 1;
+			weeks.push(
+				<tr key={`extra_${extraWeeks}`} className="week">
+					<td
+						aria-disabled="true"
+						aria-selected="false"
+						className="slds-disabled-text"
+					>
+						<span className="slds-day ">&nbsp;</span>
+					</td>
+				</tr>
+			);
+		}
+
+		return weeks;
+	},
+
 	render () {
 		const sunday = (
 			<th>
@@ -245,78 +317,6 @@ const DatepickerCalendar = createReactClass({
 				</table>
 			</div>
 		);
-	},
-
-	renderWeeks () {
-		const firstDayOfWeekOffset = this.props.isIsoWeekday ? 1 : 0;
-
-		const firstDayOfMonth = DateUtil.firstDayOfMonth(
-			this.props.initialDateForCalendarRender
-		);
-
-		let firstDayOfWeek;
-		if (firstDayOfMonth.getDay() > firstDayOfWeekOffset) {
-			const prevWeek = DateUtil.addWeeks(firstDayOfMonth, -1);
-			firstDayOfWeek = DateUtil.nearestWeekDay(prevWeek, firstDayOfWeekOffset);
-		} else {
-			firstDayOfWeek = firstDayOfMonth;
-		}
-
-		const weeks = [];
-		let done = false;
-
-		let monthIndex = firstDayOfWeek.getMonth();
-		let count = 0;
-
-		while (!done) {
-			weeks.push(
-				<Week
-					calendarHasFocus={this.state.calendarHasFocus}
-					dateDisabled={this.props.dateDisabled}
-					firstDayOfWeek={firstDayOfWeek}
-					key={firstDayOfWeek.toString()}
-					focusedDate={this.state.focusedDate}
-					initialDateForCalendarRender={this.props.initialDateForCalendarRender}
-					onCalendarBlur={this.props.onCalendarBlur}
-					onKeyboardNavigateToPreviousDay={
-						this.handleKeyboardNavigateToPreviousDay
-					}
-					onKeyboardNavigateToNextDay={this.handleKeyboardNavigateToNextDay}
-					onKeyboardNavigateToPreviousWeek={
-						this.handleKeyboardNavigateToPreviousWeek
-					}
-					onKeyboardNavigateToNextWeek={this.handleKeyboardNavigateToNextWeek}
-					onRequestClose={this.handleRequestClose}
-					onRequestInternalFocusDate={this.props.onRequestInternalFocusDate}
-					onSelectDate={this.handleSelectDate}
-					selectedDate={this.props.selectedDate}
-					selectedDateRef={this.props.selectedDateRef}
-					todayLabel={this.props.todayLabel}
-				/>
-			);
-
-			// create new weeks
-			firstDayOfWeek = DateUtil.addWeeks(firstDayOfWeek, 1);
-			done = count++ > 2 && monthIndex !== firstDayOfWeek.getMonth();
-			monthIndex = firstDayOfWeek.getMonth();
-		}
-		let extraWeeks = 0;
-		while (weeks.length < 6) {
-			extraWeeks += 1;
-			weeks.push(
-				<tr key={`extra_${extraWeeks}`} className="week">
-					<td
-						aria-disabled="true"
-						aria-selected="false"
-						className="slds-disabled-text"
-					>
-						<span className="slds-day ">&nbsp;</span>
-					</td>
-				</tr>
-			);
-		}
-
-		return weeks;
 	}
 });
 

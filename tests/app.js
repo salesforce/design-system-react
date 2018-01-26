@@ -1,3 +1,4 @@
+const { spawn } = require('child_process');
 const express = require('express');
 const path = require('path');
 const webpack = require('webpack');
@@ -50,10 +51,37 @@ app.use(
 
 // Needed for in browser testing
 app.use(express.static(path.join(__dirname, '../tests')));
+
 app.use('/base/node_modules', express.static(`${__dirname}/node_modules`));
 
 const server = app.listen(port, () => {
 	console.log(
 		`In-browser unit test server listening on port ${server.address().port}`
 	);
+});
+
+const storybookApp = express();
+storybookApp.use(express.static(`${__dirname}/../storybook`));
+
+const storybookServer = storybookApp.listen(9002, () => {
+	const storybookPort = storybookServer.address().port;
+	console.log('storybookApp listening at port %s', storybookPort);
+
+	process.stdout.write('\n');
+	process.stdout.write('npm run snapshot-test');
+	const storybookTest = spawn('npm', ['run', 'snapshot-test']);
+
+	storybookTest.stdout.on('data', (stream) => {
+		process.stdout.write(`\n${stream}`);
+	});
+
+	storybookTest.stderr.on('data', (errData) => {
+		const errString = `${errData}`;
+		process.stdout.write(`\n${errString}`);
+	});
+
+	storybookTest.on('close', (code) => {
+		process.stdout.write(`storybookTest process exited with code ${code}`);
+		storybookServer.close();
+	});
 });

@@ -63,25 +63,22 @@ const Example = createReactClass({
 		return this.getAllOn();
 	},
 
-	render () {
-		return (
-			<IconSettings iconPath="/assets/icons">
-				<div>
-					<div className="slds-grid slds-grid_vertical-align-start">
-						<div className="slds-pill_container">
-							<ul
-								className="slds-listbox slds-listbox_horizontal slds-listbox_inline"
-								role="listbox"
-								aria-label="Selected Options:"
-								aria-orientation="horizontal"
-							>
-								{PILLS.map(this.renderListItem)}
-							</ul>
-						</div>
-					</div>
-				</div>
-			</IconSettings>
-		);
+	onClick (event) {
+		this.props.action('onClick')(event);
+	},
+
+	onRemove (event, pill) {
+		this.props.action('onRemove')(event);
+		this.setState({
+			[pill]: false
+		});
+	},
+
+	getAllOn () {
+		return PILLS.reduce((result, item, index) => {
+			result['pill' + index] = true;
+			return result;
+		}, {});
 	},
 
 	renderListItem (icon, index) {
@@ -110,22 +107,25 @@ const Example = createReactClass({
 		return null;
 	},
 
-	onClick (event) {
-		this.props.action('onClick')(event);
-	},
-
-	onRemove (event, pill) {
-		this.props.action('onRemove')(event);
-		this.setState({
-			[pill]: false
-		});
-	},
-
-	getAllOn () {
-		return PILLS.reduce((result, item, index) => {
-			result['pill' + index] = true;
-			return result;
-		}, {});
+	render () {
+		return (
+			<IconSettings iconPath="/assets/icons">
+				<div>
+					<div className="slds-grid slds-grid_vertical-align-start">
+						<div className="slds-pill_container">
+							<ul
+								className="slds-listbox slds-listbox_horizontal slds-listbox_inline"
+								role="listbox"
+								aria-label="Selected Options:"
+								aria-orientation="horizontal"
+							>
+								{PILLS.map(this.renderListItem)}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</IconSettings>
+		);
 	}
 });
 

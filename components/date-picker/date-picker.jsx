@@ -283,133 +283,6 @@ class Datepicker extends React.Component {
 		}
 	}
 
-	getId () {
-		return this.props.id || this.generatedId;
-	}
-
-	getIsOpen () {
-		return !!(isBoolean(this.props.isOpen)
-			? this.props.isOpen
-			: this.state.isOpen);
-	}
-
-	handleCalendarChange (event, { date }) {
-		this.setState({
-			value: date,
-			formattedValue: this.props.formatter(date),
-			inputValue: this.props.formatter(date)
-		});
-
-		this.handleRequestClose();
-
-		if (this.props.onChange) {
-			this.props.onChange(event, {
-				date,
-				formattedDate: this.props.formatter(date),
-				timezoneOffset: date.getTimezoneOffset()
-			});
-		}
-
-		// Please remove `onDateChange` on the next breaking change.
-		/* eslint-disable react/prop-types */
-		if (this.props.onDateChange) {
-			this.props.onDateChange(date, this.props.formatter(date));
-		}
-		/* eslint-enable react/prop-types */
-	}
-
-	handleClickOutside () {
-		this.handleRequestClose();
-	}
-
-	handleRequestClose () {
-		if (this.props.onRequestClose) {
-			this.props.onRequestClose();
-		}
-
-		if (this.getIsOpen()) {
-			this.setState({ isOpen: false });
-		}
-
-		if (this.inputRef) {
-			this.inputRef.focus();
-		}
-	}
-
-	openDialog () {
-		if (this.props.onRequestOpen) {
-			this.props.onRequestOpen();
-		} else {
-			this.setState({ isOpen: true });
-		}
-	}
-
-	parseDate (formattedValue) {
-		let parsedDate = this.props.parser(formattedValue);
-		if (
-			Object.prototype.toString.call(parsedDate) !== '[object Date]' ||
-			isNaN(parsedDate.getTime())
-		) {
-			parsedDate = new Date();
-		}
-		return parsedDate;
-	}
-
-	handleClose () {
-		if (this.props.onClose) {
-			this.props.onClose();
-		}
-	}
-
-	handleOpen (event, { portal }) {
-		if (this.props.onOpen) {
-			this.props.onOpen(event, { portal });
-		}
-
-		if (this.selectedDateCell) {
-			this.selectedDateCell.focus();
-		}
-	}
-
-	getDialog ({ labels, assistiveText }) {
-		// FOR BACKWARDS COMPATIBILITY
-		const menuPosition = this.props.isInline
-			? 'relative'
-			: this.props.menuPosition; // eslint-disable-line react/prop-types
-
-		// SLDS override
-		const style =
-			this.props.menuPosition !== 'relative' ? { transform: 'none' } : {};
-
-		return !this.props.disabled && this.getIsOpen() ? (
-			<Dialog
-				align={`bottom ${this.props.align}`}
-				contentsClassName={classNames(
-					'slds-datepicker slds-dropdown',
-					{
-						'slds-dropdown--right':
-							this.props.menuPosition === 'relative' &&
-							this.props.align === 'right',
-						'slds-dropdown--left':
-							this.props.menuPosition === 'relative' &&
-							this.props.align === 'left'
-					},
-					this.props.className
-				)}
-				context={this.context}
-				hasStaticAlignment={this.props.hasStaticAlignment}
-				style={style}
-				onClose={this.handleClose}
-				onOpen={this.handleOpen}
-				onRequestTargetElement={() => this.inputRef}
-				position={menuPosition}
-				portalMount={this.props.portalMount}
-			>
-				{this.getDatePicker({ labels, assistiveText })}
-			</Dialog>
-		) : null;
-	}
-
 	getDatePicker ({ labels, assistiveText }) {
 		const date = this.state.formattedValue
 			? this.parseDate(this.state.formattedValue)
@@ -455,6 +328,102 @@ class Datepicker extends React.Component {
 		);
 	}
 
+	getDialog ({ labels, assistiveText }) {
+		// FOR BACKWARDS COMPATIBILITY
+		const menuPosition = this.props.isInline
+			? 'relative'
+			: this.props.menuPosition; // eslint-disable-line react/prop-types
+
+		// SLDS override
+		const style =
+			this.props.menuPosition !== 'relative' ? { transform: 'none' } : {};
+
+		return !this.props.disabled && this.getIsOpen() ? (
+			<Dialog
+				align={`bottom ${this.props.align}`}
+				contentsClassName={classNames(
+					'slds-datepicker slds-dropdown',
+					{
+						'slds-dropdown--right':
+							this.props.menuPosition === 'relative' &&
+							this.props.align === 'right',
+						'slds-dropdown--left':
+							this.props.menuPosition === 'relative' &&
+							this.props.align === 'left'
+					},
+					this.props.className
+				)}
+				context={this.context}
+				hasStaticAlignment={this.props.hasStaticAlignment}
+				style={style}
+				onClose={this.handleClose}
+				onOpen={this.handleOpen}
+				onRequestTargetElement={() => this.inputRef}
+				position={menuPosition}
+				portalMount={this.props.portalMount}
+			>
+				{this.getDatePicker({ labels, assistiveText })}
+			</Dialog>
+		) : null;
+	}
+
+	getId () {
+		return this.props.id || this.generatedId;
+	}
+
+	getIsOpen () {
+		return !!(isBoolean(this.props.isOpen)
+			? this.props.isOpen
+			: this.state.isOpen);
+	}
+
+	setInputRef (component) {
+		this.inputRef = component;
+		// yes, this is a re-render triggered by a render.
+		// Dialog/Popper.js cannot place the popover until
+		// the trigger/target DOM node is mounted. This
+		// way `findDOMNode` is not called and parent
+		// DOM nodes are not queried.
+		if (!this.state.inputRendered) {
+			this.setState({ inputRendered: true });
+		}
+	}
+
+	handleCalendarChange (event, { date }) {
+		this.setState({
+			value: date,
+			formattedValue: this.props.formatter(date),
+			inputValue: this.props.formatter(date)
+		});
+
+		this.handleRequestClose();
+
+		if (this.props.onChange) {
+			this.props.onChange(event, {
+				date,
+				formattedDate: this.props.formatter(date),
+				timezoneOffset: date.getTimezoneOffset()
+			});
+		}
+
+		// Please remove `onDateChange` on the next breaking change.
+		/* eslint-disable react/prop-types */
+		if (this.props.onDateChange) {
+			this.props.onDateChange(date, this.props.formatter(date));
+		}
+		/* eslint-enable react/prop-types */
+	}
+
+	handleClickOutside () {
+		this.handleRequestClose();
+	}
+
+	handleClose () {
+		if (this.props.onClose) {
+			this.props.onClose();
+		}
+	}
+
 	handleInputChange (event) {
 		this.setState({
 			formattedValue: event.target.value,
@@ -491,16 +460,47 @@ class Datepicker extends React.Component {
 		/* eslint-enable react/prop-types */
 	}
 
-	setInputRef (component) {
-		this.inputRef = component;
-		// yes, this is a re-render triggered by a render.
-		// Dialog/Popper.js cannot place the popover until
-		// the trigger/target DOM node is mounted. This
-		// way `findDOMNode` is not called and parent
-		// DOM nodes are not queried.
-		if (!this.state.inputRendered) {
-			this.setState({ inputRendered: true });
+	handleOpen (event, { portal }) {
+		if (this.props.onOpen) {
+			this.props.onOpen(event, { portal });
 		}
+
+		if (this.selectedDateCell) {
+			this.selectedDateCell.focus();
+		}
+	}
+
+	handleRequestClose () {
+		if (this.props.onRequestClose) {
+			this.props.onRequestClose();
+		}
+
+		if (this.getIsOpen()) {
+			this.setState({ isOpen: false });
+		}
+
+		if (this.inputRef) {
+			this.inputRef.focus();
+		}
+	}
+
+	openDialog () {
+		if (this.props.onRequestOpen) {
+			this.props.onRequestOpen();
+		} else {
+			this.setState({ isOpen: true });
+		}
+	}
+
+	parseDate (formattedValue) {
+		let parsedDate = this.props.parser(formattedValue);
+		if (
+			Object.prototype.toString.call(parsedDate) !== '[object Date]' ||
+			isNaN(parsedDate.getTime())
+		) {
+			parsedDate = new Date();
+		}
+		return parsedDate;
 	}
 
 	render () {

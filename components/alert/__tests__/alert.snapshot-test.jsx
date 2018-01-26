@@ -1,5 +1,8 @@
 /* eslint-env jest */
-import { testDOMandHTML } from '../../../tests/snapshot-helpers';
+import {
+	testDOMandHTML,
+	testImageSnapshot
+} from '../../../tests/snapshot-helpers';
 
 import Info from '../__examples__/info';
 import Warning from '../__examples__/warning';
@@ -8,38 +11,39 @@ import Offline from '../__examples__/offline';
 import Dismissable from '../__examples__/dismissable';
 import CustomClassNames from '../__examples__/custom-class-name';
 
-testDOMandHTML({
-	name: 'Alert Info',
-	test,
-	Component: Info
-});
+import { ALERT } from '../../../utilities/constants';
 
-testDOMandHTML({
-	name: 'Alert Warning',
-	test,
-	Component: Warning
-});
+describe(ALERT, () => {
+	test('Base DOM & HTML Snapshots look the same', () => {
+		testDOMandHTML(Info);
+		testDOMandHTML(Warning);
+		testDOMandHTML(ErrorAlert);
+		testDOMandHTML(Offline);
+		testDOMandHTML(Dismissable);
+		testDOMandHTML(CustomClassNames);
+	});
 
-testDOMandHTML({
-	name: 'Alert Error',
-	test,
-	Component: ErrorAlert
-});
+	test('Info Image Snapshot looks the same', async () => {
+		await testImageSnapshot(ALERT, 'Info');
+	});
 
-testDOMandHTML({
-	name: 'Alert Offline',
-	test,
-	Component: Offline
-});
+	test('Warning Image Snapshot looks the same', async () => {
+		await testImageSnapshot(ALERT, 'Warning');
+	});
 
-testDOMandHTML({
-	name: 'Alert Dismissable',
-	test,
-	Component: Dismissable
-});
+	test('Error Image Snapshot looks the same', async () => {
+		await testImageSnapshot(ALERT, 'Error');
+	});
 
-testDOMandHTML({
-	name: 'Alert Custom Class Name',
-	test,
-	Component: CustomClassNames
+	test('Offline Image Snapshot looks the same', async () => {
+		await testImageSnapshot(ALERT, 'Offline');
+	});
+
+	test('Dismissable Image Snapshot looks the same', async () => {
+		await testImageSnapshot(ALERT, 'Dismissable');
+	});
+
+	test('Custom Class Name Image Snapshot looks the same', async () => {
+		await testImageSnapshot(ALERT, 'Custom Class Name');
+	});
 });

@@ -1,6 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -32,19 +34,7 @@ const defaultProps = {
 };
 
 class Title extends Component {
-	render () {
-		const { children, title, truncate, align, className } = this.props;
-		const classes = this._getClassNames(truncate, align, className);
-
-		return (
-			<h1 className={classes} title={title}>
-				{title}
-				{children}
-			</h1>
-		);
-	}
-
-	_getClassNames (truncate, align, className) {
+	_getClassNames(truncate, align, className) {
 		// eslint-disable-line class-methods-use-this
 		return classnames(
 			'slds-page-header__title slds-m-right--small',
@@ -53,6 +43,18 @@ class Title extends Component {
 				'slds-truncate': truncate,
 				[`slds-align-${align}`]: align
 			}
+		);
+	}
+
+	render() {
+		const { children, title, truncate, align, className } = this.props;
+		const classes = this._getClassNames(truncate, align, className);
+
+		return (
+			<h1 className={classes} title={title}>
+				{title}
+				{children}
+			</h1>
 		);
 	}
 }

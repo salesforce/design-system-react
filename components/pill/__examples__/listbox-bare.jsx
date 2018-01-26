@@ -19,6 +19,10 @@ const Example = createReactClass({
 		};
 	},
 
+	onRemove (event) {
+		this.props.action('onRemove')(event);
+	},
+
 	render () {
 		return (
 			<IconSettings iconPath="/assets/icons">
@@ -74,10 +78,6 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-
-	onRemove (event) {
-		this.props.action('onRemove')(event);
 	}
 });
 

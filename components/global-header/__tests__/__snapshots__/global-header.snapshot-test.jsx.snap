@@ -1,0 +1,334 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SLDSGlobalHeader Default DOM & HTML Snapshots look the same 1`] = `
+<header
+  className="slds-global-header_container"
+>
+  <a
+    className="slds-assistive-text slds-assistive-text--focus"
+    href="javascript:void(0);"
+    onClick={[Function]}
+  >
+    Skip to Navigation
+  </a>
+  <a
+    className="slds-assistive-text slds-assistive-text--focus"
+    href="javascript:void(0);"
+    onClick={[Function]}
+  >
+    Skip to Main Content
+  </a>
+  <div
+    className="slds-global-header slds-grid slds-grid--align-spread"
+  >
+    <div
+      className="slds-global-header__item"
+    >
+      <div
+        className="slds-global-header__logo"
+      >
+        <img
+          alt=""
+          src="/images/logo.svg"
+        />
+      </div>
+    </div>
+    <div
+      className="slds-global-header__item slds-global-header__item--search"
+    >
+      <div
+        className="slds-form-element slds-lookup"
+        data-scope="single"
+        data-select="single"
+        onScroll={undefined}
+      >
+        <div
+          className="slds-form-element__control slds-input-has-icon slds-input-has-icon--left"
+        >
+          <div
+            className="slds-form-element slds-lookup__search-input"
+          >
+            <div
+              className="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+            >
+              <input
+                aria-activedescendant=""
+                aria-autocomplete="list"
+                aria-controls={undefined}
+                aria-describedby={undefined}
+                aria-expanded={false}
+                aria-labelledby={undefined}
+                aria-owns={undefined}
+                aria-required={undefined}
+                autoComplete={undefined}
+                className="slds-input"
+                disabled={undefined}
+                id="undefinedLookup"
+                maxLength={undefined}
+                minLength={undefined}
+                name={undefined}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onInput={undefined}
+                onInvalid={undefined}
+                onKeyDown={[Function]}
+                onKeyPress={undefined}
+                onKeyUp={undefined}
+                onSelect={undefined}
+                onSubmit={undefined}
+                placeholder="Search Salesforce"
+                readOnly={undefined}
+                required={undefined}
+                role="combobox"
+                style={undefined}
+                tabIndex={undefined}
+                type="text"
+                value=""
+              />
+              <svg
+                aria-hidden={true}
+                className="slds-input__icon slds-icon-text-default slds-input__icon--right"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul
+      className="slds-global-header__item slds-grid slds-grid--vertical-align-center"
+    >
+      <li>
+        <button
+          aria-controls={undefined}
+          aria-describedby={undefined}
+          aria-expanded={undefined}
+          aria-haspopup={undefined}
+          className="slds-button slds-button--neutral slds-m-right--small"
+          disabled={false}
+          id={undefined}
+          onBlur={undefined}
+          onClick={[Function]}
+          onFocus={undefined}
+          onKeyDown={undefined}
+          onKeyPress={undefined}
+          onKeyUp={undefined}
+          onMouseDown={undefined}
+          onMouseEnter={undefined}
+          onMouseLeave={undefined}
+          tabIndex={undefined}
+          title={undefined}
+          type="button"
+        >
+          Feedback
+        </button>
+      </li>
+      <li
+        aria-haspopup="true"
+        className="slds-dropdown-trigger slds-dropdown-trigger--click ignore-click-HJedWQ7a4G"
+        id="HJedWQ7a4G"
+        onBlur={undefined}
+        onClick={[Function]}
+        onFocus={null}
+        onKeyDown={[Function]}
+        onMouseDown={undefined}
+        onMouseEnter={null}
+        onMouseLeave={null}
+      >
+        <li>
+          <button
+            aria-controls={undefined}
+            aria-describedby={undefined}
+            aria-expanded={undefined}
+            aria-haspopup={true}
+            className="slds-button slds-button--icon-container slds-global-header__button--icon"
+            disabled={false}
+            id={undefined}
+            onBlur={undefined}
+            onClick={[Function]}
+            onFocus={undefined}
+            onKeyDown={undefined}
+            onKeyPress={undefined}
+            onKeyUp={undefined}
+            onMouseDown={undefined}
+            onMouseEnter={undefined}
+            onMouseLeave={undefined}
+            tabIndex="0"
+            title={undefined}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon slds-global-header__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Global Actions
+            </span>
+          </button>
+        </li>
+      </li>
+      <li>
+        <button
+          aria-controls={undefined}
+          aria-describedby={undefined}
+          aria-expanded={undefined}
+          aria-haspopup={undefined}
+          className="slds-button slds-button--icon-container slds-global-header__button--icon"
+          disabled={false}
+          id={undefined}
+          onBlur={undefined}
+          onClick={[Function]}
+          onFocus={undefined}
+          onKeyDown={undefined}
+          onKeyPress={undefined}
+          onKeyUp={undefined}
+          onMouseDown={undefined}
+          onMouseEnter={undefined}
+          onMouseLeave={undefined}
+          tabIndex={undefined}
+          title={undefined}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-global-header__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#question"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Help and Training
+          </span>
+        </button>
+      </li>
+      <li>
+        <button
+          aria-controls={undefined}
+          aria-describedby={undefined}
+          aria-expanded={undefined}
+          aria-haspopup={undefined}
+          className="slds-button slds-button--icon-container slds-global-header__button--icon"
+          disabled={false}
+          id={undefined}
+          onBlur={undefined}
+          onClick={[Function]}
+          onFocus={undefined}
+          onKeyDown={undefined}
+          onKeyPress={undefined}
+          onKeyUp={undefined}
+          onMouseDown={undefined}
+          onMouseEnter={undefined}
+          onMouseLeave={undefined}
+          tabIndex={undefined}
+          title={undefined}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-global-header__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Setup
+          </span>
+        </button>
+      </li>
+      <li
+        aria-haspopup="true"
+        className="slds-dropdown-trigger slds-dropdown-trigger--click slds-m-left--x-small"
+        id="HJ-d-Q7pVz"
+        onBlur={undefined}
+        onClick={[Function]}
+        onFocus={null}
+        onKeyDown={[Function]}
+        onMouseDown={undefined}
+        onMouseEnter={null}
+        onMouseLeave={null}
+      >
+        <li>
+          <button
+            aria-controls={undefined}
+            aria-describedby={undefined}
+            aria-expanded={undefined}
+            aria-haspopup={true}
+            className="slds-button slds-button--icon-container"
+            disabled={false}
+            id={undefined}
+            onBlur={undefined}
+            onClick={[Function]}
+            onFocus={undefined}
+            onKeyDown={undefined}
+            onKeyPress={undefined}
+            onKeyUp={undefined}
+            onMouseDown={undefined}
+            onMouseEnter={undefined}
+            onMouseLeave={undefined}
+            tabIndex="0"
+            title={undefined}
+            type="button"
+          >
+            <span
+              className="slds-avatar slds-avatar--circle slds-avatar--medium"
+            >
+              <img
+                alt=""
+                src="/images/avatar2.jpg"
+              />
+            </span>
+          </button>
+        </li>
+      </li>
+    </ul>
+  </div>
+</header>
+`;
+
+exports[`SLDSGlobalHeader Default DOM & HTML Snapshots look the same 2`] = `
+"<header class=\\"slds-global-header_container\\"><a href=\\"javascript:void(0);\\" class=\\"slds-assistive-text slds-assistive-text--focus\\">Skip to Navigation</a><a href=\\"javascript:void(0);\\" class=\\"slds-assistive-text slds-assistive-text--focus\\">Skip to Main Content</a>
+  <div class=\\"slds-global-header slds-grid slds-grid--align-spread\\">
+    <div class=\\"slds-global-header__item\\">
+      <div class=\\"slds-global-header__logo\\"><img src=\\"/images/logo.svg\\" alt=\\"\\" /></div>
+    </div>
+    <div class=\\"slds-global-header__item slds-global-header__item--search\\">
+      <div class=\\"slds-form-element slds-lookup\\" data-select=\\"single\\" data-scope=\\"single\\">
+        <div class=\\"slds-form-element__control slds-input-has-icon slds-input-has-icon--left\\">
+          <div class=\\"slds-form-element slds-lookup__search-input\\">
+            <div class=\\"slds-form-element__control slds-input-has-icon slds-input-has-icon_right\\"><input type=\\"text\\" aria-activedescendant=\\"\\" aria-autocomplete=\\"list\\" aria-expanded=\\"false\\" class=\\"slds-input\\" id=\\"undefinedLookup\\" placeholder=\\"Search Salesforce\\" role=\\"combobox\\" value=\\"\\" /><svg aria-hidden=\\"true\\" class=\\"slds-input__icon slds-icon-text-default slds-input__icon--right\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class=\\"slds-global-header__item slds-grid slds-grid--vertical-align-center\\">
+      <li><button class=\\"slds-button slds-button--neutral slds-m-right--small\\" type=\\"button\\">Feedback</button></li>
+      <li aria-haspopup=\\"true\\" class=\\"slds-dropdown-trigger slds-dropdown-trigger--click ignore-click-Sy7uZQ7a4M\\" id=\\"Sy7uZQ7a4M\\">
+        <li><button aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-container slds-global-header__button--icon\\" tabindex=\\"0\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-global-header__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#add\\"></use></svg><span class=\\"slds-assistive-text\\">Global Actions</span></button></li>
+      </li>
+      <li><button class=\\"slds-button slds-button--icon-container slds-global-header__button--icon\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-global-header__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#question\\"></use></svg><span class=\\"slds-assistive-text\\">Help and Training</span></button></li>
+      <li><button class=\\"slds-button slds-button--icon-container slds-global-header__button--icon\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon slds-global-header__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#settings\\"></use></svg><span class=\\"slds-assistive-text\\">Setup</span></button></li>
+      <li
+        aria-haspopup=\\"true\\" class=\\"slds-dropdown-trigger slds-dropdown-trigger--click slds-m-left--x-small\\" id=\\"Hy4uZXmTNf\\">
+        <li><button aria-haspopup=\\"true\\" class=\\"slds-button slds-button--icon-container\\" tabindex=\\"0\\" type=\\"button\\"><span class=\\"slds-avatar slds-avatar--circle slds-avatar--medium\\"><img src=\\"/images/avatar2.jpg\\" alt=\\"\\"/></span></button></li>
+        </li>
+    </ul>
+  </div>
+</header>"
+`;

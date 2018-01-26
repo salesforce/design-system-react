@@ -1,6 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable jsx-a11y/interactive-supports-focus */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash.isequal';

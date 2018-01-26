@@ -27,20 +27,29 @@ const Example = createReactClass({
 		};
 	},
 
-	render () {
-		return (
-			<IconSettings iconPath="/assets/icons">
-				<div className="slds-grid slds-grid_pull-padded-medium">
-					<div className="slds-p-horizontal_medium">{this.renderLinked()}</div>
-					<div className="slds-p-horizontal_medium">
-						{this.renderUnlinked()}
-					</div>
-					<div className="slds-p-horizontal_medium">
-						{this.renderTruncated()}
-					</div>
-				</div>
-			</IconSettings>
-		);
+	onClick (event) {
+		this.props.action('onClick')(event);
+	},
+
+	onRemoveLinked (event) {
+		this.props.action('onRemove')(event);
+		this.setState({
+			linked: false
+		});
+	},
+
+	onRemoveUnlinked (event) {
+		this.props.action('onRemove')(event);
+		this.setState({
+			unlinked: false
+		});
+	},
+
+	onRemoveTruncated (event) {
+		this.props.action('onRemove')(event);
+		this.setState({
+			truncated: false
+		});
 	},
 
 	renderLinked () {
@@ -97,29 +106,20 @@ const Example = createReactClass({
 		return null;
 	},
 
-	onClick (event) {
-		this.props.action('onClick')(event);
-	},
-
-	onRemoveLinked (event) {
-		this.props.action('onRemove')(event);
-		this.setState({
-			linked: false
-		});
-	},
-
-	onRemoveUnlinked (event) {
-		this.props.action('onRemove')(event);
-		this.setState({
-			unlinked: false
-		});
-	},
-
-	onRemoveTruncated (event) {
-		this.props.action('onRemove')(event);
-		this.setState({
-			truncated: false
-		});
+	render () {
+		return (
+			<IconSettings iconPath="/assets/icons">
+				<div className="slds-grid slds-grid_pull-padded-medium">
+					<div className="slds-p-horizontal_medium">{this.renderLinked()}</div>
+					<div className="slds-p-horizontal_medium">
+						{this.renderUnlinked()}
+					</div>
+					<div className="slds-p-horizontal_medium">
+						{this.renderTruncated()}
+					</div>
+				</div>
+			</IconSettings>
+		);
 	}
 });
 

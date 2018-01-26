@@ -25,6 +25,21 @@ const Example = createReactClass({
 		};
 	},
 
+	handleFilterChange (event) {
+		const filteredItems = sampleItems.filter((item) =>
+			RegExp(event.target.value, 'i').test(item.name)
+		);
+		this.setState({ isFiltering: true, items: filteredItems });
+	},
+
+	handleDeleteAllItems () {
+		this.setState({ isFiltering: false, items: [] });
+	},
+
+	handleAddItem () {
+		this.setState({ items: sampleItems });
+	},
+
 	render () {
 		const isEmpty = this.state.items.length === 0;
 
@@ -71,21 +86,6 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-
-	handleFilterChange (event) {
-		const filteredItems = sampleItems.filter((item) =>
-			RegExp(event.target.value, 'i').test(item.name)
-		);
-		this.setState({ isFiltering: true, items: filteredItems });
-	},
-
-	handleDeleteAllItems () {
-		this.setState({ isFiltering: false, items: [] });
-	},
-
-	handleAddItem () {
-		this.setState({ items: sampleItems });
 	}
 });
 

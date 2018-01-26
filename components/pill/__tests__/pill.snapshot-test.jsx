@@ -1,6 +1,9 @@
 /* eslint-env jest */
 import React from 'react';
-import { renderMarkup, testDOMandHTML } from '../../../tests/snapshot-helpers';
+import {
+	testDOMandHTML,
+	testImageSnapshot
+} from '../../../tests/snapshot-helpers';
 
 import BaseExample from '../__examples__/base';
 import IconExample from '../__examples__/icon';
@@ -10,44 +13,44 @@ import ListboxExample from '../__examples__/listbox';
 import IconListboxExample from '../__examples__/listbox-icon';
 import AvatarListboxExample from '../__examples__/listbox-avatar';
 
-testDOMandHTML({
-	name: 'Linked, Unlinked, Truncated',
-	test,
-	Component: BaseExample
-});
+import { PILL } from '../../../utilities/constants';
 
-testDOMandHTML({
-	name: 'Icon, Avatar, Error',
-	test,
-	Component: IconExample
-});
+describe(PILL, () => {
+	test('DOM & HTML Snapshots look the same', () => {
+		testDOMandHTML(BaseExample);
+		testDOMandHTML(IconExample);
+		testDOMandHTML(ContainerExample);
+		testDOMandHTML(BarePillListboxExample);
+		testDOMandHTML(ListboxExample);
+		testDOMandHTML(IconListboxExample);
+		testDOMandHTML(AvatarListboxExample);
+	});
 
-testDOMandHTML({
-	name: 'Bare',
-	test,
-	Component: BarePillListboxExample
-});
+	test('Linked, Unlinked, Truncated Image Snapshot looks the same', async () => {
+		await testImageSnapshot(PILL, 'Linked, Unlinked, Truncated');
+	});
 
-testDOMandHTML({
-	name: 'Pill Container',
-	test,
-	Component: ContainerExample
-});
+	test('Icon, Avatar, Error Image Snapshot looks the same', async () => {
+		await testImageSnapshot(PILL, 'Icon, Avatar, Error');
+	});
 
-testDOMandHTML({
-	name: 'Listbox Of Pill Options',
-	test,
-	Component: ListboxExample
-});
+	test('Bare Image Snapshot looks the same', async () => {
+		await testImageSnapshot(PILL, 'Bare');
+	});
 
-testDOMandHTML({
-	name: 'Listbox Of Pill Options With Icon',
-	test,
-	Component: IconListboxExample
-});
+	test('Pill Container Image Snapshot looks the same', async () => {
+		await testImageSnapshot(PILL, 'Pill Container');
+	});
 
-testDOMandHTML({
-	name: 'Listbox Of Pill Options With Avatar',
-	test,
-	Component: AvatarListboxExample
+	test('Listbox Of Pill Options Image Snapshot looks the same', async () => {
+		await testImageSnapshot(PILL, 'Listbox Of Pill Options');
+	});
+
+	test('Listbox Of Pill Options With Icon Image Snapshot looks the same', async () => {
+		await testImageSnapshot(PILL, 'Listbox Of Pill Options With Icon');
+	});
+
+	test('Listbox Of Pill Options With Avatar Image Snapshot looks the same', async () => {
+		await testImageSnapshot(PILL, 'Listbox Of Pill Options With Avatar');
+	});
 });

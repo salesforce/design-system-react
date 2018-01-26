@@ -1,9 +1,23 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+/* eslint-env jest */
+import {
+	testDOMandHTML,
+	testImageSnapshot
+} from '../../../tests/snapshot-helpers';
+
+import { BREADCRUMB } from '../../../utilities/constants';
 
 import BreadcrumbBase from '../__examples__/base';
 
-test('Breadcrumb Base Snapshot', () => {
-	const domTree = renderer.create(<BreadcrumbBase />).toJSON();
-	expect(domTree).toMatchSnapshot();
+describe(BREADCRUMB, () => {
+	test('Base DOM & HTML Snapshots', () => {
+		testDOMandHTML(BreadcrumbBase);
+	});
+
+	test('2 Items Image Snapshot', async () => {
+		await testImageSnapshot(BREADCRUMB, '2 Items');
+	});
+
+	test('1 Item Image Snapshot', async () => {
+		await testImageSnapshot(BREADCRUMB, '1 Item');
+	});
 });

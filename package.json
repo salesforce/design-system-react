@@ -7,16 +7,6 @@
     "node": "6.x",
     "npm": "^5.5.1"
   },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "./node_modules/.bin/prettier-eslint --write",
-      "git add"
-    ],
-    "*.{json,md}": [
-      "./node_modules/.bin/prettier --use-tabs=false --write",
-      "git add"
-    ]
-  },
   "scripts": {
     "build-docs": "./node_modules/.bin/babel-node ./scripts/build-docs.js",
     "build-storybook": "build-storybook -o ./storybook",
@@ -27,17 +17,18 @@
     "icons": "./node_modules/.bin/babel-node scripts/inline-icons.js",
     "link": "./scripts/npm-link.sh",
     "lint": "./node_modules/.bin/eslint \"**/*.{js,jsx}\"",
-    "lint-fix": "./node_modules/.bin/eslint --fix \"**/*.{js,jsx}\"",
+    "lint:fix": "npm run format &&./node_modules/.bin/eslint --fix \"**/*.{js,jsx}\"",
     "lint-staged": "lint-staged",
-    "publish-to-git": "./node_modules/.bin/babel-node scripts/publish-to-git.js",
-    "publish-to-edge": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge",
-    "publish-to-upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
-    "release-patch": "./node_modules/.bin/babel-node scripts/release.js --release=patch",
-    "release-minor": "./node_modules/.bin/babel-node scripts/release.js --release=minor",
+    "publish": "./node_modules/.bin/babel-node scripts/publish-to-git.js",
+    "publish:edge": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge",
+    "publish:upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
+    "release:patch": "./node_modules/.bin/babel-node scripts/release.js --release=patch",
+    "release:minor": "./node_modules/.bin/babel-node scripts/release.js --release=minor",
     "snapshot-test": "./node_modules/.bin/jest",
     "start": "./node_modules/.bin/start-storybook -p 9001 -s ./node_modules & node tests/app",
     "storybook": "start-storybook -p 9001 -s ./node_modules",
     "test": "scripts/test.sh",
+    "update-snapshots": "./node_modules/.bin/jest --updateSnapshot",
     "validate": "npm ls",
     "version": "git add package.json && git commit -m \"Bump package version\""
   },
@@ -126,6 +117,7 @@
     "@storybook/addon-actions": "^3.2.12",
     "@storybook/addon-info": "^3.2.10",
     "@storybook/react": "~3.2.0",
+    "ajv": "^5.5.1",
     "async": "^2.0.0-rc.5",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.0",
@@ -145,6 +137,7 @@
     "basic-auth": "^1.0.4",
     "chai": "^4.0.1",
     "chai-enzyme": "^0.8.0",
+    "cheerio": "^1.0.0-rc.1",
     "compression": "^1.6.2",
     "css-loader": "^0.28.0",
     "enzyme": "^2.5.1",
@@ -161,6 +154,7 @@
     "fs-extra": "^3.0.0",
     "istanbul-instrumenter-loader": "^2.0.0",
     "jest": "^21.2.1",
+    "jest-image-snapshot": "^2.2.0",
     "js-beautify": "^1.6.8",
     "json-loader": "^0.5.3",
     "karma": "^1.7.0",
@@ -180,12 +174,12 @@
     "lodash.trim": "^4.0.1",
     "minimist": "^1.2.0",
     "mocha": "^3.1.2",
+    "navalia": "^1.2.0",
     "node-sass": "^4.5.0",
     "object.entries": "^1.0.4",
     "phantomjs-polyfill-find-index": "^1.0.1",
     "phantomjs-polyfill-includes": "^1.0.2",
     "phantomjs-prebuilt": "^2.1.15",
-    "pre-commit": "^1.2.2",
     "prettier": "~1.9",
     "prettier-eslint": "~8.2",
     "prettier-eslint-cli": "^4.4.2",
@@ -205,12 +199,6 @@
     "webpack-hot-middleware": "^2.18.2",
     "xml2json": "^0.11.0"
   },
-  "pre-commit": [
-    "lint-staged"
-  ],
-  "pre-push": [
-    "validate"
-  ],
   "prettier": {
     "arrowParens": "always",
     "bracketSpacing": true,

@@ -1,12 +1,25 @@
 /* eslint-env jest */
+import {
+	testDOMandHTML,
+	testImageSnapshot
+} from '../../../tests/snapshot-helpers';
+
 import Basic from '../__examples__/basic';
 import Advanced from '../__examples__/advanced';
-import { renderMarkup } from '../../../tests/snapshot-helpers';
 
-test('DataTable Basic HTML Snapshot', () => {
-	expect(renderMarkup(Basic)).toMatchSnapshot();
-});
+import { DATA_TABLE } from '../../../utilities/constants';
 
-test('DataTable Advanced HTML Snapshot', () => {
-	expect(renderMarkup(Advanced)).toMatchSnapshot();
+describe(DATA_TABLE, () => {
+	test('DOM & HTML Snapshots', () => {
+		testDOMandHTML(Basic);
+		testDOMandHTML(Advanced);
+	});
+
+	test('Basic Image Snapshot', async () => {
+		await testImageSnapshot(DATA_TABLE, 'Basic');
+	});
+
+	test('Advanced Image Snapshot', async () => {
+		await testImageSnapshot(DATA_TABLE, 'Advanced');
+	});
 });

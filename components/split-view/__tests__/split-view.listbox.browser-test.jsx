@@ -60,12 +60,12 @@ describe('SLDSSplitView - Listbox', () => {
 	};
 
 	const expectItemSelected = (value) => {
-		value = Array.isArray(value) ? value : [value];
+		const newValue = Array.isArray(value) ? value : [value];
 
 		const anchors = component.find('li > a');
 
 		listOptions.forEach((item, index) => {
-			value.includes(index)
+			newValue.includes(index)
 				? expect(anchors.at(index).prop('aria-selected')).to.be.true
 				: expect(anchors.at(index).prop('aria-selected')).to.be.false;
 		});

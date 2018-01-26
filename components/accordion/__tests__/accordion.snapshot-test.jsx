@@ -1,17 +1,25 @@
 /* eslint-env jest */
-import { testDOMandHTML } from '../../../tests/snapshot-helpers';
+import {
+	testDOMandHTML,
+	testImageSnapshot
+} from '../../../tests/snapshot-helpers';
 
 import SnapshotBase from '../__examples__/base';
 import SnapshotBaseOpen from '../__examples__/snapshot/base-open';
 
-testDOMandHTML({
-	name: 'Base',
-	test,
-	Component: SnapshotBase
-});
+import { ACCORDION } from '../../../utilities/constants';
 
-testDOMandHTML({
-	name: 'Base Open',
-	test,
-	Component: SnapshotBaseOpen
+describe(ACCORDION, () => {
+	test('Base DOM & HTML Snapshots look the same', () => {
+		testDOMandHTML(SnapshotBase);
+		testDOMandHTML(SnapshotBaseOpen);
+	});
+
+	test('Base Image Snapshot looks the same', async () => {
+		await testImageSnapshot(ACCORDION, 'Base');
+	});
+
+	test('Base Open Image Snapshot looks the same', async () => {
+		await testImageSnapshot(ACCORDION, 'Base Open');
+	});
 });
