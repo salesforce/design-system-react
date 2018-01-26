@@ -115,7 +115,7 @@
     "warning": "^3.0.0"
   },
   "peerDependencies": {
-    "@salesforce-ux/design-system": "2.4.x",
+    "@salesforce-ux/design-system": ">=2.4.x",
     "react": ">=15.4.1 <16",
     "react-dom": ">=15.4.1 <16"
   },
@@ -586,12 +586,12 @@
       },
       "SLDS-component-path": "/components/split-view",
       "dependencies": [
-      {
-        "component": "header"
-      },
-      {
-        "component": "listbox"
-      }
+        {
+          "component": "header"
+        },
+        {
+          "component": "listbox"
+        }
       ]
     },
     {
