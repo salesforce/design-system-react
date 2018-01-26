@@ -3,10 +3,13 @@ const express = require('express');
 const path = require('path');
 
 const expressMiddleWare = (router) => {
-	router.use('/assets/icons',
+	router.use(
+		'/assets',
 		express.static(
-			path.join(__dirname,
-			'../node_modules/@salesforce-ux/icons/dist/salesforce-lightning-design-system-icons/')
+			path.join(
+				__dirname,
+				'../node_modules/@salesforce-ux/design-system/assets/'
+			)
 		)
 	);
 };

@@ -1,4 +1,6 @@
-import '@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.css';
+// In addition to this file, please add new components
+// to storybook-stories-image-snapshots.js to enable
+// image snapshot testing
 
 export Accordion from '../components/accordion/__docs__/storybook-stories';
 export Alert from '../components/alert/__docs__/storybook-stories';
