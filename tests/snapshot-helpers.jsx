@@ -43,6 +43,7 @@ const testDOMandHTML = (Component, props) => {
  */
 const testImageSnapshot = (name, ComponentKind) =>
 	new Promise((resolve, reject) => {
+		// TODO: is this doing anything???
 		jasmine.DEFAULT_TIMEOUT_INTERVAL = 999999; // eslint-disable-line no-undef
 
 		const url = `http://localhost:9001/?selectedKind=${encodeURIComponent(
