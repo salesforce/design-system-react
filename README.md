@@ -25,18 +25,13 @@ Welcome to the project! :wave: This library is the [React](https://facebook.gith
 
 ### Quick Setup (CommonJS)
 
-A CommonJS-compatible version has been included within the NPM package to allows usage without transpiling. Use the following named `import` syntax to access CommonJS components from `/lib/index.js`:
+A CommonJS-compatible version has been included within the NPM package to allows usage without transpiling. Use the following named `import` syntax to access CommonJS components. Be sure to import the relevant styles from Lightning Design System as well.
 
 ```
 import { Button } from '@salesforce/design-system-react/design-system-react.js';
+import "@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.css";
 
 <Button label="Hello Button" />
-```
-
-Be sure to import the relevant styles from Lightning Design System as well.
-
-```
-import "@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.css";
 ```
 
 ### Recommended Usage (ES6 modules)
