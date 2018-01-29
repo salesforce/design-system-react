@@ -8,7 +8,7 @@ package-lock.json
 
 # React Storybook
 storybook/
-storybook-image-snapshots/
+storybook-based-tests/
 
 # Publishing and dist build
 .tmp*
