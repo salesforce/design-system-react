@@ -1,5 +1,7 @@
 // Sample stories for image snapshot testing
-// Components commented twice are not currently compatible with jest-image-snapshot
+// Components commented twice are not currently
+// compatible with jest-image-snapshot, most are
+// issues with a DOM not being present.
 
 export Blank from '../tests/initial-blank-stories';
 export Accordion from '../components/accordion/__docs__/storybook-stories';

@@ -116,10 +116,10 @@ class Pill extends React.Component {
 		checkProps(PILL);
 	}
 
-	getHref = () => (typeof this.props.href === 'string'
-		? this.props.href
-		: 'javascript:void(0);' // eslint-disable-line no-script-url
-	);
+	getHref = () =>
+		(typeof this.props.href === 'string'
+			? this.props.href
+			: 'javascript:void(0);'); // eslint-disable-line no-script-url
 
 	/**
 	 * Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component.
