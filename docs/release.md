@@ -8,7 +8,7 @@
 
 ### Manual release
 
-1. **Choose one**: `npm run release-patch` or `npm run release-minor`. This script pulls from upstream, bumps the version, commits changes, and publishes tags to your `upstream` repository (that is this repo).
+1. **Choose one**: `npm run release:patch` or `npm run release:minor`. This script pulls from upstream, bumps the version, commits changes, and publishes tags to your `upstream` repository (that is this repo).
 1. Copy and paste your release notes into the [Github Draft Release UI](https://github.com/salesforce-ux/design-system-react/releases) and publish.
 
 ## Update documentation site
@@ -24,4 +24,4 @@
 1. Create environment variable, `ORIGIN` and set to `[git@github.com:[your username]/design-system-react.git]`
 1. Create environment variable, `GIT_SSH_KEY` and set to a user's private key (base64 encoded) that has access to your repository. `openssl base64 < [PRIVATE_KEY_FILENAME] | tr -d '\n' | pbcopy`
 
-_If you are timid about releasing or need your pull request in review "pre-released," you can publish to origin (your fork) with `npm run publish-to-git` and then test and review the tag on your fork. This is just the publish step though, any other tasks you will need to do manually to test publishing._
+_If you are timid about releasing or need your pull request in review "pre-released," you can publish to origin (your fork) with `npm run publish:git` and then test and review the tag on your fork. This is just the publish step though, any other tasks you will need to do manually to test publishing._
