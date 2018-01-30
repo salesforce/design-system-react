@@ -38,6 +38,7 @@
     "start": "./node_modules/.bin/start-storybook -p 9001 -s ./node_modules & node tests/app",
     "storybook": "start-storybook -p 9001 -s ./node_modules",
     "test": "scripts/test.sh",
+    "travis-ci": "scripts/travis-ci.sh",
     "validate": "npm ls",
     "version": "git add package.json && git commit -m \"Bump package version\""
   },
