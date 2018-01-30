@@ -6,7 +6,7 @@
 source ./scripts/test.sh
 
 # Prettier
-RUN_FORMAT_CODE='npm run prettier:code'
+RUN_FORMAT_CODE='npm run prettier-eslint:code'
 SKIP_RUN_FORMAT_CODE=false
 # ESlint tests on files within components and utilities folders. Doc examples and tests are currently excluded.
 RUN_FORMAT_DOCS='npm run prettier:docs'
@@ -30,7 +30,9 @@ if (( numArgs >= 0 )); then
 		[ "$1" == "--skip-prettier" ] ||
 		[ "$1" == "--no-prettier" ] ||
 		[ "$1" == "--skip-lint" ] ||
-		[ "$1" == "--no-lint" ] &&
+		[ "$1" == "--no-lint" ] ||
+		[ "$1" == "--skip-eslint" ] ||
+		[ "$1" == "--no-eslint" ] &&
 			RUN_FORMAT_CODE="echo ✂    ︎ skipping ${RUN_FORMAT_CODE}" &&
 			RUN_FORMAT_DOCS="echo ✂    ︎ skipping ${RUN_FORMAT_DOCS}"
 		[ "$1" == "--skip-karma" ] ||
