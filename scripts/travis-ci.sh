@@ -17,33 +17,38 @@ SKIP_START_KARMA=false
 # Jest markup & image snapshot tests
 SNAPSHOT_TESTS='npm run snapshot-test'
 SKIP_SNAPSHOT_TESTS=false
-# React DocGen library build of source comments into a JSON file for documentation site
-DOCGEN='npm run build-docs'
-SKIP_DOCGEN=false
+
 
 numArgs=$#
-maxArgs=5
 # parse arguments
-if (( numArgs >= 0 && numArgs <= maxArgs )); then
+if (( numArgs >= 0 )); then
 	until [ -z "$1" ]; do
-		[ "$1" == "--skip-format" ]
-			|| [ "$1" == "--no-format" ]
-			|| [ "$1" == "--skip-prettier" ]
-			|| [ "$1" == "--no-prettier" ]
-			|| [ "$1" == "--skip-lint" ]
-			|| [ "$1" == "--no-lint" ]
-				&& RUN_PRETTIER_CODE="echo ✂    ︎ skipping ${RUN_PRETTIER_CODE}"
-				&& RUN_PRETTIER_DOCS="echo ✂    ︎ skipping ${RUN_PRETTIER_DOCS}"
-		[ "$1" == "--skip-karma" ] || [ "$1" == "--no-karma" ]  && START_KARMA="echo ✂    ︎ skipping ${START_KARMA}"
-		[ "$1" == "--skip-snapshot" ] || [ "$1" == "--no-snapshot" ] || [ "$1" == "--skip-jest" ] || [ "$1" == "--no-jest" ]  && SNAPSHOT_TESTS="echo ✂    ︎ skipping ${SNAPSHOT_TESTS}"
-		[ "$1" == "--skip-docgen" ] || [ "$1" == "--no-docgen" ] || [ "$1" == "--skip-docs" ] || [ "$1" == "--no-docs" ]  && DOCGEN="echo ✂    ︎ skipping ${DOCGEN}"
+		[ "$1" == "--skip-format" ] ||
+		[ "$1" == "--no-format" ] ||
+		[ "$1" == "--skip-prettier" ] ||
+		[ "$1" == "--no-prettier" ] ||
+		[ "$1" == "--skip-lint" ] ||
+		[ "$1" == "--no-lint" ] &&
+			RUN_PRETTIER_CODE="echo ✂    ︎ skipping ${RUN_PRETTIER_CODE}" &&
+			RUN_PRETTIER_DOCS="echo ✂    ︎ skipping ${RUN_PRETTIER_DOCS}"
+		[ "$1" == "--skip-karma" ] ||
+		[ "$1" == "--no-karma" ]  &&
+			START_KARMA="echo ✂    ︎ skipping ${START_KARMA}"
+		[ "$1" == "--skip-snapshot" ] ||
+		[ "$1" == "--no-snapshot" ] ||
+		[ "$1" == "--skip-jest" ] ||
+		[ "$1" == "--no-jest" ]  &&
+			SNAPSHOT_TESTS="echo ✂    ︎ skipping ${SNAPSHOT_TESTS}"
 		shift 1
 	done
-else
-	echo "unrecognized number of arguments ($#, max is $maxArgs). You passed in: $@"
-	exit 1
 fi
 
-declare -a COMMANDS=("${RUN_PRETTIER_CODE}" "${RUN_PRETTIER_DOCS}" "${START_KARMA}" "${SNAPSHOT_TESTS}" "${DOCGEN}")
+declare -a COMMANDS=("${RUN_PRETTIER_CODE}" "${RUN_PRETTIER_DOCS}" "${START_KARMA}" "${SNAPSHOT_TESTS}")
 
+printf "
+Running DSR Travis-CI QA Scripts
+"
 runTests "${COMMANDS[@]}"
+printf "
+DSR Travis-CI QA Scripts Completed
+"
