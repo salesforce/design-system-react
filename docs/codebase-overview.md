@@ -7,13 +7,14 @@ If you want to [contribute](CONTRIBUTING.md), we hope that this overview will he
 ## Top-Level folders
 
 * `components` - React components
-    * `[COMPONENT]` - components that are part of the public API
-        * `__tests__` - Mocha and Jest tests
-        * `__examples__` Examples used in storybook and documentation website
-        * `__docs__` - storybook and documentation website imports of examples
-        * `private` - components that are not a part of the public API
-    * `utilities` - components that are shared between other components (not public API)
+  * `[COMPONENT]` - components that are part of the public API
+    * `__tests__` - Mocha and Jest tests
+    * `__examples__` Examples used in storybook and documentation website
+    * `__docs__` - storybook and documentation website imports of examples
+    * `private` - components that are not a part of the public API
+  * `utilities` - components that are shared between other components (not public API)
 * `icons` - Inline icons \[legacy\]
+* `preset` - Babel preset published to `@salesforce/babel-preset-design-system-react`
 * `scripts` - Build and release tasks
 * `styles` - Temporary location for styles (use sparingly)
 * `utilities` - Scripts that are not React components including `checkProp` warnings, DOM, and event helpers. (not public API)
@@ -36,6 +37,8 @@ If you are new to React, you may be trained to design components in a more compl
   * Determine if trigger can be tabbed to
   * Require one of multiple prop, but not both or only one of specified properties
   * Warnings of property deprecation, sunsetting, and future changes
+
+* <a name="not-browser-compatible" href="#not-browser-compatible">#</a> **This library will not, and is not, intended to be run in a browser as-is.** This library is targeted at engineers that can optimize their builds for performance and target the browsers and environments they need to support with appropriate polyfills. Polyfills should be added at application build time.
 
 * <a name="all-text-can-be-internationalized" href="#all-text-can-be-internationalized">#</a> Any text the user can read (including text for screenreaders) should be able to be set via a prop for internationalization purposes. _Within the component, do not concatenate strings._ This assumes that you know the word order of all languages. Strings should be passed into props in their entirety.
 
@@ -538,3 +541,9 @@ Read: [Class Name Manipulation](https://github.com/JedWatson/classnames/blob/mas
 Read: [Airbnb React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)
 
 Some syntax samples are from the [Planning Center](https://github.com/planningcenter/react-patterns)
+
+# Babel Preset
+
+`/preset` folder contains a Babel 6 preset that makes Design System React compatible with Salesforce’s supported browsers. This is a temporary location until a repository is created.
+
+This preset enables a module bundler, such as Webpack, to transpile Design System React. Using this will make it easier to upgrade in the future without having to manually reconfigure your Babel settings to be compatible with new language features Design System React may use.

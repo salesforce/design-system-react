@@ -57,6 +57,7 @@ const Icon = ({
 				aria-hidden="true"
 				category={category}
 				className={classNames(className, 'slds-icon', {
+					'slds-icon--xx-small': size === 'xx-small',
 					'slds-icon--x-small': size === 'x-small',
 					'slds-icon--small': size === 'small',
 					// medium intentially not present
@@ -142,7 +143,7 @@ Icon.propTypes = {
 	/**
 	 * Size of the icon. Visit [lightningdesignsystem.com/components/icons/#flavor-sizes](https://www.lightningdesignsystem.com/components/icons/#flavor-sizes)
 	 */
-	size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
+	size: PropTypes.oneOf(['xx-small', 'x-small', 'small', 'medium', 'large']),
 	/**
 	 * Custom styles to be passed to the SVG. Could be used to change icon or background color.
 	 */

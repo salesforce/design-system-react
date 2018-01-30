@@ -152,8 +152,7 @@ class Modal extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			isClosing: false,
-			revealed: false
+			isClosing: false
 		};
 
 		// Bind
@@ -172,12 +171,6 @@ class Modal extends React.Component {
 
 	componentDidMount () {
 		this.setReturnFocus();
-
-		if (!this.state.revealed) {
-			setTimeout(() => {
-				this.setState({ revealed: true });
-			});
-		}
 		this.updateBodyScroll();
 	}
 
@@ -370,7 +363,7 @@ class Modal extends React.Component {
 				aria-labelledby={this.getId()}
 				className={classNames({
 					'slds-modal': true,
-					'slds-fade-in-open': this.state.revealed,
+					'slds-fade-in-open': true,
 					'slds-modal--large': this.props.size === 'large',
 					'slds-modal--prompt': this.isPrompt()
 				})}
