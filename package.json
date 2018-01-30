@@ -7,28 +7,22 @@
     "node": "6.x",
     "npm": "^5.5.1"
   },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "./node_modules/.bin/prettier-eslint --write",
-      "git add"
-    ],
-    "*.{json,md}": [
-      "./node_modules/.bin/prettier --use-tabs=false --write",
-      "git add"
-    ]
-  },
   "scripts": {
     "build-docs": "./node_modules/.bin/babel-node ./scripts/build-docs.js",
     "build-storybook": "build-storybook -o ./storybook",
     "dist": "scripts/dist.sh",
-    "format": "./node_modules/.bin/prettier-eslint --write \"**/*.{js,jsx}\"",
+    "format": "./node_modules/.bin/prettier-eslint --write \"**/*.{js,jsx}\" && ./node_modules/.bin/prettier --use-tabs=false --write \"*.{json,md}\"",
     "heroku-prebuild": "./scripts/heroku-prebuild.sh",
     "heroku-postbuild": "./scripts/heroku-postbuild.sh",
     "icons": "./node_modules/.bin/babel-node scripts/inline-icons.js",
     "link": "./scripts/npm-link.sh",
     "lint": "./node_modules/.bin/eslint \"**/*.{js,jsx}\"",
-    "lint:fix": "npm run format &&./node_modules/.bin/eslint --fix \"**/*.{js,jsx}\"",
-    "lint-staged": "lint-staged",
+    "lint:fix": "echo \"`npm run format` is probably the droid you are looking for...\" && ./node_modules/.bin/eslint --fix \"**/*.{js,jsx}\"",
+    "prettier": "npm run prettier:code && npm run prettier:docs",
+    "prettier:code": "echo \"`npm run format` is probably the droid you are looking for...\" && ./node_modules/.bin/prettier --write \"**/*.{js,jsx}\"",
+    "prettier:docs": "./node_modules/.bin/prettier --use-tabs=false --write \"*.{json,md}\"",
+    "prettier:code:no-fix": "./node_modules/.bin/prettier --list-different \"**/*.{js,jsx}\"",
+    "prettier:docs:no-fix": "./node_modules/.bin/prettier --use-tabs=false --list-different \"*.{json,md}\"",
     "publish": "./node_modules/.bin/babel-node scripts/publish-to-git.js",
     "publish:edge": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge",
     "publish:upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
@@ -37,7 +31,7 @@
     "snapshot-test": "./node_modules/.bin/jest",
     "start": "./node_modules/.bin/start-storybook -p 9001 -s ./node_modules & node tests/app",
     "storybook": "start-storybook -p 9001 -s ./node_modules",
-    "test": "scripts/test.sh",
+    "test": "scripts/local-qa.sh",
     "travis-ci": "scripts/travis-ci.sh",
     "validate": "npm ls",
     "version": "git add package.json && git commit -m \"Bump package version\""

@@ -6,11 +6,11 @@
 source ./scripts/test.sh
 
 # Prettier
-RUN_PRETTIER_CODE='npm run prettier:code:no-fix'
-SKIP_RUN_PRETTIER_CODE=false
+RUN_FORMAT_CODE='npm run prettier:code'
+SKIP_RUN_FORMAT_CODE=false
 # ESlint tests on files within components and utilities folders. Doc examples and tests are currently excluded.
-RUN_PRETTIER_DOCS='npm run prettier:docs:no-fix'
-SKIP_RUN_PRETTIER_DOCS=false
+RUN_FORMAT_DOCS='npm run prettier:docs'
+SKIP_RUN_FORMAT_DOCS=false
 # Mocha framework tests that focus on user interaction
 START_KARMA='node_modules/.bin/karma start --single-run'
 SKIP_START_KARMA=false
@@ -26,14 +26,8 @@ maxArgs=5
 # parse arguments
 if (( numArgs >= 0 && numArgs <= maxArgs )); then
 	until [ -z "$1" ]; do
-		[ "$1" == "--skip-format" ]
-			|| [ "$1" == "--no-format" ]
-			|| [ "$1" == "--skip-prettier" ]
-			|| [ "$1" == "--no-prettier" ]
-			|| [ "$1" == "--skip-lint" ]
-			|| [ "$1" == "--no-lint" ]
-				&& RUN_PRETTIER_CODE="echo ✂    ︎ skipping ${RUN_PRETTIER_CODE}"
-				&& RUN_PRETTIER_DOCS="echo ✂    ︎ skipping ${RUN_PRETTIER_DOCS}"
+		[ "$1" == "--skip-format" ] || [ "$1" == "--no-format" ] || [ "$1" == "--skip-prettier" ] || [ "$1" == "--no-prettier" ]  && RUN_FORMAT_CODE="echo ✂    ︎ skipping ${RUN_FORMAT_CODE}" && RUN_FORMAT_DOCS="echo ✂    ︎ skipping ${RUN_FORMAT_DOCS}"
+		[ "$1" == "--skip-lint" ] || [ "$1" == "--no-lint" ]  && echo "unused"
 		[ "$1" == "--skip-karma" ] || [ "$1" == "--no-karma" ]  && START_KARMA="echo ✂    ︎ skipping ${START_KARMA}"
 		[ "$1" == "--skip-snapshot" ] || [ "$1" == "--no-snapshot" ] || [ "$1" == "--skip-jest" ] || [ "$1" == "--no-jest" ]  && SNAPSHOT_TESTS="echo ✂    ︎ skipping ${SNAPSHOT_TESTS}"
 		[ "$1" == "--skip-docgen" ] || [ "$1" == "--no-docgen" ] || [ "$1" == "--skip-docs" ] || [ "$1" == "--no-docs" ]  && DOCGEN="echo ✂    ︎ skipping ${DOCGEN}"
@@ -44,6 +38,6 @@ else
 	exit 1
 fi
 
-declare -a COMMANDS=("${RUN_PRETTIER_CODE}" "${RUN_PRETTIER_DOCS}" "${START_KARMA}" "${SNAPSHOT_TESTS}" "${DOCGEN}")
+declare -a COMMANDS=("${RUN_FORMAT_CODE}" "${RUN_FORMAT_DOCS}" "${START_KARMA}" "${SNAPSHOT_TESTS}" "${DOCGEN}")
 
 runTests "${COMMANDS[@]}"
