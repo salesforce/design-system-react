@@ -21,7 +21,7 @@
     "lint": "npm run prettier:no-fix",
     "lint:fix": "npm run prettier",
     "prettier": "npm run prettier-eslint:code && npm run prettier:docs",
-    "prettier:no-fix": "npm run prettier:code:no-fix && npm run prettier:docs:no-fix",
+    "prettier:no-fix": "npm run prettier-eslint:code:no-fix && npm run prettier:docs:no-fix",
     "prettier:code": "echo \"Hey there stranger, we use prettier-eslint around here :)\nCalling npm run prettier-eslint:code instead...\" && npm run prettier-eslint:code",
     "prettier-eslint:code": "./node_modules/.bin/prettier-eslint --write \"**/*.{js,jsx}\"",
     "prettier:docs": "./node_modules/.bin/prettier --use-tabs=false --write \"*.{json,md}\"",
