@@ -552,3 +552,26 @@ Some syntax samples are from the [Planning Center](https://github.com/planningce
 `/preset` folder contains a Babel 6 preset that makes Design System React compatible with Salesforce’s supported browsers. This is a temporary location until a repository is created.
 
 This preset enables a module bundler, such as Webpack, to transpile Design System React. Using this will make it easier to upgrade in the future without having to manually reconfigure your Babel settings to be compatible with new language features Design System React may use.
+
+# Open source benefits
+* More efficient and effective development
+  * Faster Time-to-Market
+  * Reduced development costs
+* Overcoming organizational unit boundaries
+  * Cost and risk sharing among organizational units
+  * Collaboration across organizational unit boundaries
+  * Program-wide information exchange
+* More successful reuse
+  * Use of competences missing at component providers
+  * Independence between re-users and providers
+  * Relief of component providers
+* Better software product
+  * increased code quality
+  * More innovative development
+* More flexible utilization of developers
+  * Simplified developer deployment
+  * Collaboration of detached developers
+* Enhanced knowledge management
+  * Community-based learning
+  * Openness and availability of knowledge
+* Higher employee motivation
