@@ -122,11 +122,11 @@
     "no-param-reassign": [
       1,
       {
-        "props": true
+        "props": false
       }
     ],
     // currently used in older files
-    "no-plusplus": 1,
+    "no-plusplus": 0,
     "no-mixed-operators": [
       "error",
       {
@@ -163,6 +163,19 @@
     "jsx-a11y/no-noninteractive-element-interactions": 1,
     "jsx-a11y/no-noninteractive-tabindex": 1,
     "jsx-a11y/no-redundant-roles": 1,
-    "jsx-a11y/role-has-required-aria-props": 1
+    "jsx-a11y/role-has-required-aria-props": 1,
+
+    // Taken from eslint-config-sfmc
+    "func-names": 0,
+    "import/first": 0,
+    "react/sort-comp": 0,
+    "react/no-multi-comp": 0,
+
+    // When someone is ready to tackle these issues, feel free to uncomment the following
+    // Do not push a change that causes lint errors/warnings to start appearing
+    // All lint warnings errors should be meaningful, and therefore, there should never intentionally be any
+    "react/prefer-es6-class": 0,
+    "react/prop-types": 0,
+    "react/prefer-stateless-function": 0
   }
 }

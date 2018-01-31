@@ -1,6 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable jsx-a11y/no-redundant-roles */
+
 // # Page Header Component
 
 // Implements the [Page Header design pattern](https://www.lightningdesignsystem.com/components/page-headers) in React.

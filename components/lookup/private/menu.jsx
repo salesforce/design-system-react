@@ -44,8 +44,8 @@ class Menu extends React.Component {
 			prevProps.filter !== this.props.filter ||
 			prevProps.searchTerm !== this.props.searchTerm
 		) {
+			// eslint-disable-next-line class-methods-use-this
 			this.setState({
-				// eslint-disable-line react/no-did-update-set-state
 				filteredItems: this.filteredItems()
 			});
 		}
@@ -59,8 +59,8 @@ class Menu extends React.Component {
 		return this.filterEmptySections(this.props.items.filter(this.filter, this));
 	}
 
+	// eslint-disable-next-line class-methods-use-this
 	filterEmptySections (items) {
-		// eslint-disable-line class-methods-use-this
 		const result = [];
 		items.forEach((item, index) => {
 			if (item && item.data && item.data.type === 'section') {

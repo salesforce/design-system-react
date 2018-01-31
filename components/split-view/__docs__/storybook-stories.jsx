@@ -8,9 +8,11 @@ import ExternalState from '../__examples__/external-state';
 import CustomItemList from '../__examples__/custom-Item-list';
 
 storiesOf(SPLIT_VIEW, module)
-	.addDecorator((getStory) => <div className="slds-p-around--medium">{getStory()}</div>)
-	.add('Base: Open', () => (<Base />))
-	.add('Base: Closed', () => (<Base isOpen={false} />))
-	.add('Base: Multiple', () => (<BaseMultiple />))
-	.add('External State', () => (<ExternalState />))
-	.add('Custom List', () => (<CustomItemList />));
+	.addDecorator((getStory) => (
+		<div className="slds-p-around--medium">{getStory()}</div>
+	))
+	.add('Base: Open', () => <Base />)
+	.add('Base: Closed', () => <Base isOpen={false} />)
+	.add('Base: Multiple', () => <BaseMultiple />)
+	.add('External State', () => <ExternalState />)
+	.add('Custom List', () => <CustomItemList />);

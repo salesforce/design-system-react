@@ -1,4 +1,4 @@
-/* eslint-disable indent */
+/* eslint-disable indent, jsx-a11y/no-noninteractive-tabindex */
 
 import React from 'react';
 import createReactClass from 'create-react-class';

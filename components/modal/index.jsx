@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-/* eslint-disable react/prefer-es6-class */
+/* eslint-disable react/prefer-es6-class, jsx-a11y/no-noninteractive-element-interactions */
 
 // Implements the [Modal design pattern](https://lightningdesignsystem.com/components/modals/) in React.
 // Based on SLDS v2.2.1
@@ -246,15 +246,15 @@ class Modal extends React.Component {
 		}
 	}
 
+	// eslint-disable-next-line class-methods-use-this
 	clearBodyScroll () {
-		// eslint-disable-line class-methods-use-this
 		if (window && document && document.body) {
 			document.body.style.overflow = 'inherit';
 		}
 	}
 
+	// eslint-disable-next-line class-methods-use-this
 	handleModalClick (event) {
-		// eslint-disable-line class-methods-use-this
 		if (event && event.stopPropagation) {
 			event.stopPropagation();
 		}

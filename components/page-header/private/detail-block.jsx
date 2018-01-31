@@ -1,6 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -59,8 +61,8 @@ class DetailBlock extends Component {
 		}
 	}
 
+	// eslint-disable-next-line class-methods-use-this
 	_getClassNames (className, flavor) {
-		// eslint-disable-line class-methods-use-this
 		return classnames('slds-page-header__detail-block', className, {
 			[`slds-size--${flavor}`]: flavor
 		});
