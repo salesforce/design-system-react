@@ -170,7 +170,6 @@
     "import/first": 0,
     "react/no-multi-comp": 0,
 
-
     // When someone is ready to tackle these issues, feel free to uncomment the following
     // Do not push a change that causes lint errors/warnings to start appearing
     // All lint warnings errors should be meaningful, and therefore, there should never intentionally be any
