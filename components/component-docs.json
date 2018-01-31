@@ -9500,10 +9500,18 @@
             },
             "master": {
                 "type": {
-                    "name": "arrayOf",
-                    "value": {
-                        "name": "element"
-                    }
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "arrayOf",
+                            "value": {
+                                "name": "element"
+                            }
+                        },
+                        {
+                            "name": "element"
+                        }
+                    ]
                 },
                 "required": true,
                 "description": "The React component that is rendered in the master section.\nYou need to pass in an array of elements in order for the scrolling to in the SplitViewList to work correctly.\nReact requires that you also supply a unique `key` for each element [React Lists and Keys](https://reactjs.org/docs/lists-and-keys.html#keys)."

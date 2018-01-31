@@ -30,21 +30,26 @@ const SplitViewListItemContent = ({ item }) => (
 			<span
 				className="slds-truncate slds-text-body_regular slds-text-color_default"
 				title={item.label}
-			>{item.label}</span>
+			>
+				{item.label}
+			</span>
 			<span
 				className="slds-truncate slds-col_bump-left"
 				title={item.topRightText}
-			>{item.topRightText}</span>
+			>
+				{item.topRightText}
+			</span>
 		</div>
 		<div className="slds-grid slds-wrap">
-			<span
-				className="slds-truncate"
-				title={item.bottomLeftText}
-			>{item.bottomLeftText}</span>
+			<span className="slds-truncate" title={item.bottomLeftText}>
+				{item.bottomLeftText}
+			</span>
 			<span
 				className="slds-truncate slds-col_bump-left"
 				title={item.bottomLeftText}
-			>{item.bottomRightText}</span>
+			>
+				{item.bottomRightText}
+			</span>
 		</div>
 	</div>
 );
