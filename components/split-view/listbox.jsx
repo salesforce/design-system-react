@@ -24,9 +24,9 @@ const propTypes = {
 	 * **Assistive text for accessibility**
 	 * * `list`: aria label for the list
 	 * * `sort`
-	 * * * `sortedBy`: Clickable sort header for the list.
-	 * * * `descending`: Descending sorting.
-	 * * * `ascending`: Ascending sorting.
+	 *    * `sortedBy`: Clickable sort header for the list.
+	 *    * `descending`: Descending sorting.
+	 *    * `ascending`: Ascending sorting.
 	 */
 	assistiveText: PropTypes.shape({
 		list: PropTypes.string,
@@ -48,12 +48,12 @@ const propTypes = {
 	/**
 	 * Event Callbacks
 	 * * `onSelect`: Called when a list item is selected.
-	 * * * event {object} List item click event
-	 * * * Meta {object}
-	 * * * * selectedItems {array} List of selected items.
-	 * * * * item {object} Last selected item.
+	 *    * event {object} List item click event
+	 *    * Meta {object}
+	 *       * selectedItems {array} List of selected items.
+	 *       * item {object} Last selected item.
 	 * * `onSort`: Called when the list is sorted.
-	 * * * event {object} Sort click event
+	 *    * event {object} Sort click event
 	 */
 	events: PropTypes.shape({
 		onSelect: PropTypes.func.isRequired,
