@@ -63,6 +63,10 @@ printf "
 Running DSR Local QA Scripts
 "
 runTests "${COMMANDS[@]}"
+EXIT_CODE=$?
+
 printf "
-DSR Local QA Scripts Completed
+DSR Local QA Scripts Completed with exit condition ${EXIT_CODE}
 "
+
+exit $((10#$EXIT_CODE))
