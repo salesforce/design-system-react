@@ -44,8 +44,8 @@ class Title extends Component {
 		);
 	}
 
+	// eslint-disable-next-line class-methods-use-this
 	_getClassNames (truncate, align, className) {
-		// eslint-disable-line class-methods-use-this
 		return classnames(
 			'slds-page-header__title slds-m-right--small',
 			className,

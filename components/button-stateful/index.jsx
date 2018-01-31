@@ -66,7 +66,7 @@ const propTypes = {
 	 */
 	stateTwo: PropTypes.object,
 	/**
-	 *	Deselect label and icon (optional) of button.
+	 * Deselect label and icon (optional) of button.
 	 */
 	stateThree: PropTypes.object,
 	/**
@@ -97,18 +97,6 @@ class ButtonStateful extends React.Component {
 		this.state = { active: false };
 	}
 
-	handleClick = (e) => {
-		if (isFunction(this.props.onClick)) this.props.onClick(e);
-		if (!isBoolean(this.props.active)) {
-			this.setState({ active: !this.state.active });
-		}
-	};
-
-	handleBlur = (e) => {
-		if (this.props.onBlur) this.props.onBlur(e);
-		e.currentTarget.blur();
-	};
-
 	getClassName (active) {
 		return classNames(this.props.className, 'slds-button', {
 			'slds-button--neutral': this.props.variant !== 'icon',
@@ -119,6 +107,18 @@ class ButtonStateful extends React.Component {
 			'slds-button--icon-border': this.props.variant === 'icon'
 		});
 	}
+
+	handleBlur = (e) => {
+		if (this.props.onBlur) this.props.onBlur(e);
+		e.currentTarget.blur();
+	};
+
+	handleClick = (e) => {
+		if (isFunction(this.props.onClick)) this.props.onClick(e);
+		if (!isBoolean(this.props.active)) {
+			this.setState({ active: !this.state.active });
+		}
+	};
 
 	render () {
 		const {

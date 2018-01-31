@@ -80,6 +80,16 @@ const GlobalHeader = createReactClass({
 		};
 	},
 
+	handleSkipToContent (e) {
+		EventUtil.trap(e);
+		this.props.onSkipToContent(e);
+	},
+
+	handleSkipToNav (e) {
+		EventUtil.trap(e);
+		this.props.onSkipToNav(e);
+	},
+
 	render () {
 		let tools;
 		let search;
@@ -133,16 +143,6 @@ const GlobalHeader = createReactClass({
 			</header>
 		);
 		/* eslint-enable max-len, no-script-url */
-	},
-
-	handleSkipToContent (e) {
-		EventUtil.trap(e);
-		this.props.onSkipToContent(e);
-	},
-
-	handleSkipToNav (e) {
-		EventUtil.trap(e);
-		this.props.onSkipToNav(e);
 	}
 });
 

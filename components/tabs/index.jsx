@@ -142,26 +142,78 @@ class Tabs extends React.Component {
 		});
 	}
 
+	getNextTab (index) {
+		const count = this.getTabsCount();
+
+		// Look for non-disabled tab from index to the last tab on the right
+		for (let i = index + 1; i < count; i++) {
+			const tab = this.getTab(i);
+			if (!isTabDisabled(tab)) {
+				return i;
+			}
+		}
+
+		// If no tab found, continue searching from first on left to index
+		for (let i = 0; i < index; i++) {
+			const tab = this.getTab(i);
+			if (!isTabDisabled(tab)) {
+				return i;
+			}
+		}
+
+		// No tabs are disabled, return index
+		return index;
+	}
+
+	getPanelsCount () {
+		return this.props.children ? React.Children.count(this.props.children) : 0;
+	}
+
+	getPrevTab (index) {
+		let i = index;
+
+		// Look for non-disabled tab from index to first tab on the left
+		while (i--) {
+			const tab = this.getTab(i);
+			if (!isTabDisabled(tab)) {
+				return i;
+			}
+		}
+
+		// If no tab found, continue searching from last tab on right to index
+		i = this.getTabsCount();
+		while (i-- > index) {
+			const tab = this.getTab(i);
+			if (!isTabDisabled(tab)) {
+				return i;
+			}
+		}
+
+		// No tabs are disabled, return index
+		return index;
+	}
+
+	getSelectedIndex () {
+		return isNumber(this.props.selectedIndex)
+			? this.props.selectedIndex
+			: this.state.selectedIndex;
+	}
+
+	getTab (index) {
+		return this.tabs[index].tab;
+	}
+
+	getTabNode (index) {
+		return this.tabs[index].node;
+	}
+
+	getTabsCount () {
+		return this.props.children ? React.Children.count(this.props.children) : 0;
+	}
+
 	getVariant () {
 		return this.props.variant === 'scoped' ? 'scoped' : 'default';
 	}
-
-	handleClick = (e) => {
-		let node = e.target;
-		/* eslint-disable no-cond-assign */
-		do {
-			if (this.isTabFromContainer(node)) {
-				if (isTabDisabled(node)) {
-					return;
-				}
-
-				const index = [].slice.call(node.parentNode.children).indexOf(node);
-				this.setSelected(index);
-				return;
-			}
-		} while ((node = node.parentNode) !== null);
-		/* eslint-enable no-cond-assign */
-	};
 
 	setSelected (index, focus) {
 		// Check index boundary
@@ -190,97 +242,22 @@ class Tabs extends React.Component {
 		}
 	}
 
-	getNextTab (index) {
-		const count = this.getTabsCount();
-
-		// Look for non-disabled tab from index to the last tab on the right
-		for (let i = index + 1; i < count; i++) {
-			const tab = this.getTab(i);
-			if (!isTabDisabled(tab)) {
-				return i;
-			}
-		}
-
-		// If no tab found, continue searching from first on left to index
-		for (let i = 0; i < index; i++) {
-			const tab = this.getTab(i);
-			if (!isTabDisabled(tab)) {
-				return i;
-			}
-		}
-
-		// No tabs are disabled, return index
-		return index;
-	}
-
-	getPrevTab (index) {
-		let i = index;
-
-		// Look for non-disabled tab from index to first tab on the left
-		while (i--) {
-			const tab = this.getTab(i);
-			if (!isTabDisabled(tab)) {
-				return i;
-			}
-		}
-
-		// If no tab found, continue searching from last tab on right to index
-		i = this.getTabsCount();
-		while (i-- > index) {
-			const tab = this.getTab(i);
-			if (!isTabDisabled(tab)) {
-				return i;
-			}
-		}
-
-		// No tabs are disabled, return index
-		return index;
-	}
-
-	getTabsCount () {
-		return this.props.children ? React.Children.count(this.props.children) : 0;
-	}
-
-	getPanelsCount () {
-		return this.props.children ? React.Children.count(this.props.children) : 0;
-	}
-
-	getSelectedIndex () {
-		return isNumber(this.props.selectedIndex)
-			? this.props.selectedIndex
-			: this.state.selectedIndex;
-	}
-
-	getTab (index) {
-		return this.tabs[index].tab;
-	}
-
-	getTabNode (index) {
-		return this.tabs[index].node;
-	}
-
-	/**
-	 * Determine if a node from event.target is a Tab element for the current Tabs container.
-	 * If the clicked element is not a Tab, it returns false.
-	 * If it finds another Tabs container between the Tab and `this`, it returns false.
-	 */
-	isTabFromContainer (node) {
-		// Return immediately if the clicked element is not a Tab. This prevents tab panel content from selecting a tab.
-		if (!isTabNode(node)) {
-			return false;
-		}
-
-		// Check if the first occurrence of a Tabs container is `this` one.
-		let nodeAncestor = node.parentElement;
+	handleClick = (e) => {
+		let node = e.target;
+		/* eslint-disable no-cond-assign */
 		do {
-			if (nodeAncestor === this.tabsNode) return true;
-			else if (nodeAncestor.getAttribute('data-tabs')) break;
+			if (this.isTabFromContainer(node)) {
+				if (isTabDisabled(node)) {
+					return;
+				}
 
-			nodeAncestor = nodeAncestor.parentElement;
-		} while (nodeAncestor);
-
-		return false;
-	}
+				const index = [].slice.call(node.parentNode.children).indexOf(node);
+				this.setSelected(index);
+				return;
+			}
+		} while ((node = node.parentNode) !== null);
+		/* eslint-enable no-cond-assign */
+	};
 
 	handleKeyDown = (event) => {
 		if (this.isTabFromContainer(event.target)) {
@@ -305,6 +282,55 @@ class Tabs extends React.Component {
 			this.setSelected(index, true);
 		}
 	};
+
+	/**
+	 * Determine if a node from event.target is a Tab element for the current Tabs container.
+	 * If the clicked element is not a Tab, it returns false.
+	 * If it finds another Tabs container between the Tab and `this`, it returns false.
+	 */
+	isTabFromContainer (node) {
+		// Return immediately if the clicked element is not a Tab. This prevents tab panel content from selecting a tab.
+		if (!isTabNode(node)) {
+			return false;
+		}
+
+		// Check if the first occurrence of a Tabs container is `this` one.
+		let nodeAncestor = node.parentElement;
+		do {
+			if (nodeAncestor === this.tabsNode) return true;
+			else if (nodeAncestor.getAttribute('data-tabs')) break;
+
+			nodeAncestor = nodeAncestor.parentElement;
+		} while (nodeAncestor);
+
+		return false;
+	}
+
+	renderTabPanels (parentId) {
+		const children = React.Children.toArray(this.props.children);
+		const selectedIndex = this.getSelectedIndex();
+		let result = null;
+
+		result = children.map((child, index) => {
+			const tabId = `${parentId}-slds-tabs--tab-${index}`;
+			const id = `${parentId}-slds-tabs--panel-${index}`;
+			const selected = selectedIndex === index;
+			const variant = this.getVariant();
+
+			return (
+				<TabPanel
+					key={child.key}
+					selected={selected}
+					id={id}
+					tabId={tabId}
+					variant={variant}
+				>
+					{children[index]}
+				</TabPanel>
+			);
+		});
+		return result;
+	}
 
 	renderTabsList (parentId) {
 		const children = React.Children.toArray(this.props.children);
@@ -337,32 +363,6 @@ class Tabs extends React.Component {
 				})}
 			</TabsList>
 		);
-	}
-
-	renderTabPanels (parentId) {
-		const children = React.Children.toArray(this.props.children);
-		const selectedIndex = this.getSelectedIndex();
-		let result = null;
-
-		result = children.map((child, index) => {
-			const tabId = `${parentId}-slds-tabs--tab-${index}`;
-			const id = `${parentId}-slds-tabs--panel-${index}`;
-			const selected = selectedIndex === index;
-			const variant = this.getVariant();
-
-			return (
-				<TabPanel
-					key={child.key}
-					selected={selected}
-					id={id}
-					tabId={tabId}
-					variant={variant}
-				>
-					{children[index]}
-				</TabPanel>
-			);
-		});
-		return result;
 	}
 
 	render () {

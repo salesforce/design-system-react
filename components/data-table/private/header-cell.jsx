@@ -95,6 +95,24 @@ const DataTableHeaderCell = createReactClass({
 		}
 	},
 
+	handleSort (e) {
+		const oldSortDirection =
+			this.props.sortDirection || this.state.sortDirection;
+		const sortDirection = oldSortDirection === 'asc' ? 'desc' : 'asc';
+		const data = {
+			property: this.props.property,
+			sortDirection
+		};
+
+		this.setState({
+			sortDirection
+		});
+
+		if (isFunction(this.props.onSort)) {
+			this.props.onSort(data, e);
+		}
+	},
+
 	// ### Render
 	// Should return a `<th></th>`.
 	render () {
@@ -158,24 +176,6 @@ const DataTableHeaderCell = createReactClass({
 				)}
 			</th>
 		);
-	},
-
-	handleSort (e) {
-		const oldSortDirection =
-			this.props.sortDirection || this.state.sortDirection;
-		const sortDirection = oldSortDirection === 'asc' ? 'desc' : 'asc';
-		const data = {
-			property: this.props.property,
-			sortDirection
-		};
-
-		this.setState({
-			sortDirection
-		});
-
-		if (isFunction(this.props.onSort)) {
-			this.props.onSort(data, e);
-		}
 	}
 });
 

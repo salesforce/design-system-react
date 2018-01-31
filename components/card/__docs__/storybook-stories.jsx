@@ -40,6 +40,34 @@ const DemoCard = createReactClass({
 		};
 	},
 
+	handleFilterChange (event, ...rest) {
+		action('filter')(event, ...rest);
+
+		const filter =
+			event.target.value !== '' ? RegExp(event.target.value, 'i') : null;
+
+		this.setState({
+			filter
+		});
+	},
+
+	handleDeleteAllItems (...rest) {
+		action('delete all')(...rest);
+
+		this.setState({
+			filter: null,
+			items: []
+		});
+	},
+
+	handleAddItem (...rest) {
+		action('add')(...rest);
+
+		this.setState({
+			items: [{ name: uniqueId('New item #') }, ...this.state.items]
+		});
+	},
+
 	render () {
 		let items = this.state.items;
 		if (this.state.filter) {
@@ -88,34 +116,6 @@ const DemoCard = createReactClass({
 				</Card>
 			</div>
 		);
-	},
-
-	handleFilterChange (event, ...rest) {
-		action('filter')(event, ...rest);
-
-		const filter =
-			event.target.value !== '' ? RegExp(event.target.value, 'i') : null;
-
-		this.setState({
-			filter
-		});
-	},
-
-	handleDeleteAllItems (...rest) {
-		action('delete all')(...rest);
-
-		this.setState({
-			filter: null,
-			items: []
-		});
-	},
-
-	handleAddItem (...rest) {
-		action('add')(...rest);
-
-		this.setState({
-			items: [{ name: uniqueId('New item #') }, ...this.state.items]
-		});
 	}
 });
 

@@ -11,8 +11,7 @@ const propTypes = {};
 
 const defaultProps = {};
 /**
- * The Split View Header takes the same properties as the Page Header component. See: [PageHeader](https://react.lightningdesignsystem.com/components/page-headers/)
- * @param props {object} Page Header properties
+ * The Split View Header takes the same properties as the [PageHeader](https://react.lightningdesignsystem.com/components/page-headers/) component.
  */
 const SplitViewHeader = ({ className, ...rest }) => (
 	<PageHeader

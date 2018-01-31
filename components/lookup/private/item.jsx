@@ -1,6 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable jsx-a11y/role-has-required-aria-props */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../../icon';
@@ -34,14 +36,9 @@ class Item extends React.Component {
 		}
 	}
 
-	handleClick = () => this.props.onSelect(this.props.id, this.props.data);
-
-	// Scroll menu item based on up/down mouse keys (assumes all items are the same height)
-	scrollFocus () {
-		const height = this.itemRef.offsetHeight;
-		if (height && this.props.handleItemFocus) {
-			this.props.handleItemFocus(this.props.index, height);
-		}
+	getCustomLabel () {
+		const ListItemLabel = this.props.listItemLabelRenderer;
+		return <ListItemLabel {...this.props} />;
 	}
 
 	getIcon () {
@@ -59,11 +56,6 @@ class Item extends React.Component {
 			);
 		}
 		return null;
-	}
-
-	getCustomLabel () {
-		const ListItemLabel = this.props.listItemLabelRenderer;
-		return <ListItemLabel {...this.props} />;
 	}
 
 	getLabel () {
@@ -91,6 +83,16 @@ class Item extends React.Component {
 			);
 		}
 		return label;
+	}
+
+	handleClick = () => this.props.onSelect(this.props.id, this.props.data);
+
+	// Scroll menu item based on up/down mouse keys (assumes all items are the same height)
+	scrollFocus () {
+		const height = this.itemRef.offsetHeight;
+		if (height && this.props.handleItemFocus) {
+			this.props.handleItemFocus(this.props.index, height);
+		}
 	}
 
 	render () {

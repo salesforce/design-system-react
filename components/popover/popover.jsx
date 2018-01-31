@@ -246,6 +246,22 @@ const Popover = createReactClass({
 		return this.dialog;
 	},
 
+	setMenuRef (component) {
+		this.dialog = component;
+	},
+
+	setContainerRef (component) {
+		this.trigger = component;
+		// yes, this is a re-render triggered by a render.
+		// Dialog/Popper.js cannot place the popover until
+		// the trigger/target DOM node is mounted. This
+		// way `findDOMNode` is not called and parent
+		// DOM nodes are not queried.
+		if (!this.state.inputRendered) {
+			this.setState({ inputRendered: true });
+		}
+	},
+
 	handleDialogClose (event, data) {
 		const componentWillUnmount = (data && data.componentWillUnmount) || false;
 
@@ -406,10 +422,6 @@ const Popover = createReactClass({
 		}
 	},
 
-	setMenuRef (component) {
-		this.dialog = component;
-	},
-
 	renderDialog (isOpen, outsideClickIgnoreClass) {
 		const props = this.props;
 		const offset = props.offset;
@@ -508,18 +520,6 @@ const Popover = createReactClass({
 		} else if (!isOpen && this.overlay && this.overlay.parentNode) {
 			this.overlay.parentNode.removeChild(this.overlay);
 			this.overlay = undefined;
-		}
-	},
-
-	setContainerRef (component) {
-		this.trigger = component;
-		// yes, this is a re-render triggered by a render.
-		// Dialog/Popper.js cannot place the popover until
-		// the trigger/target DOM node is mounted. This
-		// way `findDOMNode` is not called and parent
-		// DOM nodes are not queried.
-		if (!this.state.inputRendered) {
-			this.setState({ inputRendered: true });
 		}
 	},
 

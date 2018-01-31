@@ -54,6 +54,14 @@ const DataTableRow = createReactClass({
 		selection: PropTypes.array
 	},
 
+	isSelected () {
+		return !!find(this.props.selection, this.props.item);
+	},
+
+	handleToggle (selected, e) {
+		return this.props.onToggle(this.props.item, selected, e);
+	},
+
 	// ### Render
 	render () {
 		const isSelected = this.isSelected();
@@ -111,14 +119,6 @@ const DataTableRow = createReactClass({
 					: null}
 			</tr>
 		);
-	},
-
-	isSelected () {
-		return !!find(this.props.selection, this.props.item);
-	},
-
-	handleToggle (selected, e) {
-		return this.props.onToggle(this.props.item, selected, e);
 	}
 });
 

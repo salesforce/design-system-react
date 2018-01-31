@@ -115,30 +115,6 @@ class InlineEdit extends React.Component {
 		}
 	}
 
-	triggerEditMode = () => {
-		if (!this.props.disabled) {
-			this.autoFocus = true;
-			this.setState({
-				isEditing: true,
-				value: this.props.value
-			});
-			if (isFunction(this.props.onEnterEditMode)) {
-				this.props.onEnterEditMode();
-			}
-		}
-	};
-
-	saveEdits = (option) => {
-		if (!(option && option.cancel === true)) {
-			if (isFunction(this.props.onChange)) {
-				this.props.onChange({
-					value: this.state.value
-				});
-			}
-		}
-		this.endEditMode(option);
-	};
-
 	endEditMode = (option) => {
 		if (this.willSave) {
 			clearTimeout(this.willSave);
@@ -186,6 +162,30 @@ class InlineEdit extends React.Component {
 				this.props.onKeyUp(event, {
 					value: this.state.value
 				});
+			}
+		}
+	};
+
+	saveEdits = (option) => {
+		if (!(option && option.cancel === true)) {
+			if (isFunction(this.props.onChange)) {
+				this.props.onChange({
+					value: this.state.value
+				});
+			}
+		}
+		this.endEditMode(option);
+	};
+
+	triggerEditMode = () => {
+		if (!this.props.disabled) {
+			this.autoFocus = true;
+			this.setState({
+				isEditing: true,
+				value: this.props.value
+			});
+			if (isFunction(this.props.onEnterEditMode)) {
+				this.props.onEnterEditMode();
 			}
 		}
 	};

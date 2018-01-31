@@ -28,6 +28,13 @@ const DemoLookup = createReactClass({
 		this.setState({ currentSelected: -1 });
 	},
 
+	handleSelect (selectedItem, ...rest) {
+		action('select')(selectedItem, ...rest);
+		this.setState({
+			currentSelected: this.state.options.indexOf(selectedItem)
+		});
+	},
+
 	render () {
 		return (
 			<div>
@@ -43,13 +50,6 @@ const DemoLookup = createReactClass({
 				/>
 			</div>
 		);
-	},
-
-	handleSelect (selectedItem, ...rest) {
-		action('select')(selectedItem, ...rest);
-		this.setState({
-			currentSelected: this.state.options.indexOf(selectedItem)
-		});
 	}
 });
 
@@ -69,6 +69,11 @@ const DemoLookupAccounts = createReactClass({
 		};
 	},
 
+	handleSelect (selectedItem, ...rest) {
+		action('select')(selectedItem, ...rest);
+		this.setState({ selectedItem });
+	},
+
 	render () {
 		return (
 			<Lookup
@@ -80,11 +85,6 @@ const DemoLookupAccounts = createReactClass({
 				options={this.state.options}
 			/>
 		);
-	},
-
-	handleSelect (selectedItem, ...rest) {
-		action('select')(selectedItem, ...rest);
-		this.setState({ selectedItem });
 	}
 });
 
