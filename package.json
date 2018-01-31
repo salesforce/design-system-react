@@ -37,7 +37,8 @@
     "snapshot-test": "./node_modules/.bin/jest",
     "start": "./node_modules/.bin/start-storybook -p 9001 -s ./node_modules & node tests/app",
     "storybook": "start-storybook -p 9001 -s ./node_modules",
-    "test": "scripts/local-qa.sh",
+    "test": "scripts/local-qa.sh --no-fix",
+    "test:fix": "scripts/local-qa.sh",
     "travis-ci": "scripts/travis-ci.sh",
     "validate": "npm ls",
     "version": "git add package.json && git commit -m \"Bump package version\""

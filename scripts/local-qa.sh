@@ -25,6 +25,11 @@ numArgs=$#
 # parse arguments
 if (( numArgs >= 0 )); then
 	until [ -z "$1" ]; do
+		[ "$1" == "--no-fix" ] &&
+			# Prettier
+			RUN_FORMAT_CODE='npm run prettier-eslint:code:no-fix'
+			# ESlint tests on files within components and utilities folders. Doc examples and tests are currently excluded.
+			RUN_FORMAT_DOCS='npm run prettier:docs:no-fix'
 		[ "$1" == "--skip-format" ] ||
 		[ "$1" == "--no-format" ] ||
 		[ "$1" == "--skip-prettier" ] ||
@@ -58,6 +63,10 @@ printf "
 Running DSR Local QA Scripts
 "
 runTests "${COMMANDS[@]}"
+EXIT_CODE=$?
+
 printf "
-DSR Local QA Scripts Completed
+DSR Local QA Scripts Completed with exit condition ${EXIT_CODE}
 "
+
+exit $((10#$EXIT_CODE))
