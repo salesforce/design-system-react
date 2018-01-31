@@ -168,7 +168,6 @@
     // Taken from eslint-config-sfmc
     "func-names": 0,
     "import/first": 0,
-    "react/sort-comp": 0,
     "react/no-multi-comp": 0,
 
     // When someone is ready to tackle these issues, feel free to uncomment the following

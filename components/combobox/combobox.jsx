@@ -272,112 +272,6 @@ class Combobox extends React.Component {
 		}
 	}
 
-	/**
-	 * Shared class property getter methods
-	 */
-
-	getId = () => this.props.id || this.generatedId;
-
-	getIsOpen = () =>
-		!!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
-
-	getIsActiveOption = () =>
-		this.state.activeOption && this.state.activeOptionIndex !== -1;
-
-	getNewActiveOptionIndex = ({ activeOptionIndex, offset, options }) => {
-		// used by menu listbox and selected options listbox
-		const newIndex = activeOptionIndex + offset;
-		const hasNewIndex = options.length > newIndex && newIndex >= 0;
-		return hasNewIndex ? newIndex : activeOptionIndex;
-	};
-
-	getTargetElement = () => this.inputRef;
-
-	isSelected = ({ selection, option }) => !!find(selection, option);
-
-	/**
-	 * Menu open/close and sub-render methods
-	 */
-
-	handleClickOutside = () => {
-		this.handleRequestClose();
-	};
-
-	handleRequestClose = () => {
-		if (this.props.events.onRequestClose) {
-			this.props.events.onRequestClose();
-		}
-
-		if (this.getIsOpen()) {
-			this.setState({ isOpen: false });
-		}
-	};
-
-	openDialog = () => {
-		if (this.props.events.onRequestOpen) {
-			this.props.events.onRequestOpen();
-		} else {
-			this.setState({
-				isOpen: true
-			});
-		}
-	};
-
-	handleClose = () => {
-		const isOpen = this.getIsOpen();
-
-		if (isOpen) {
-			if (currentOpenDropdown === this) {
-				currentOpenDropdown = undefined;
-			}
-
-			this.setState({
-				activeOption: undefined,
-				activeOptionIndex: -1,
-				isOpen: false
-			});
-
-			if (this.props.events.onClose) {
-				this.props.events.onClose();
-			}
-		}
-	};
-
-	handleOpen = () => {
-		const isOpen = this.getIsOpen();
-
-		if (!isOpen) {
-			if (currentOpenDropdown && isFunction(currentOpenDropdown.handleClose)) {
-				currentOpenDropdown.handleClose();
-			}
-
-			currentOpenDropdown = this;
-
-			this.setState({
-				isOpen: true
-			});
-
-			if (this.props.events.onOpen) {
-				this.props.events.onOpen();
-			}
-		}
-	};
-
-	requestOpenMenu = () => {
-		const isInlineSingleSelectionAndIsNotSelected =
-			!this.props.multiple &&
-			this.props.selection.length === 0 &&
-			this.props.variant === 'inline-listbox';
-
-		if (
-			isInlineSingleSelectionAndIsNotSelected ||
-			this.props.multiple ||
-			this.props.variant === 'readonly'
-		) {
-			this.openDialog();
-		}
-	};
-
 	getDialog ({ menuRenderer }) {
 		// FOR BACKWARDS COMPATIBILITY
 		const menuPosition = this.props.isInline
@@ -404,111 +298,90 @@ class Combobox extends React.Component {
 		) : null;
 	}
 
-	renderMenu = ({ assistiveText, labels }) => {
-		const menuVariant = {
-			base: 'icon-title-subtitle',
-			'inline-listbox': 'icon-title-subtitle',
-			readonly: 'checkbox'
-		};
+	/**
+	 * Shared class property getter methods
+	 */
 
-		return (
-			<Menu
-				assistiveText={assistiveText}
-				activeOption={this.state.activeOption}
-				activeOptionIndex={this.state.activeOptionIndex}
-				classNameMenu={this.props.classNameMenu}
-				inputId={this.getId()}
-				inputValue={this.props.value}
-				isSelected={this.isSelected}
-				itemVisibleLength={
-					this.props.variant === 'readonly'
-						? this.props.readOnlyMenuItemVisibleLength
-						: null
-				}
-				labels={labels}
-				menuItem={this.props.menuItem}
-				options={this.props.options}
-				onSelect={this.handleSelect}
-				clearActiveOption={this.clearActiveOption}
-				selection={this.props.selection}
-				variant={menuVariant[this.props.variant]}
-			/>
-		);
+	getId = () => this.props.id || this.generatedId;
+
+	getIsActiveOption = () =>
+		this.state.activeOption && this.state.activeOptionIndex !== -1;
+
+	getIsOpen = () =>
+		!!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
+
+	getNewActiveOptionIndex = ({ activeOptionIndex, offset, options }) => {
+		// used by menu listbox and selected options listbox
+		const newIndex = activeOptionIndex + offset;
+		const hasNewIndex = options.length > newIndex && newIndex >= 0;
+		return hasNewIndex ? newIndex : activeOptionIndex;
+	};
+
+	getTargetElement = () => this.inputRef;
+
+	setInputRef = (component) => {
+		this.inputRef = component;
+		// yes, this is a render triggered by a render.
+		// Dialog/Popper.js cannot place the menu until
+		// the trigger/target DOM node is mounted. This
+		// way `findDOMNode` is not called and parent
+		// DOM nodes are not queried.
+		if (!this.state.inputRendered) {
+			this.setState({ inputRendered: true });
+		}
+	};
+
+	handleBlurPill = () => {
+		this.setState({ listboxHasFocus: false });
 	};
 
 	/**
-	 * Input and menu keyboard event methods
+	 * Menu open/close and sub-render methods
 	 */
 
-	handleKeyDown = (event) => {
-		// Helper function that takes an object literal of callbacks that are triggered with a key event
-		mapKeyEventCallbacks(event, {
-			callbacks: {
-				[KEYS.DOWN]: { callback: this.handleKeyDownDown },
-				[KEYS.ENTER]: { callback: this.handleInputSubmit },
-				[KEYS.ESCAPE]: { callback: this.handleClose },
-				[KEYS.UP]: { callback: this.handleKeyDownUp }
-			}
-		});
+	handleClickOutside = () => {
+		this.handleRequestClose();
 	};
 
-	handleNavigateListboxMenu = (event, { direction }) => {
-		const offsets = { next: 1, previous: -1 };
-		// takes current/previous state and returns an object with the new state
-		this.setState((prevState) => {
-			const newIndex = this.getNewActiveOptionIndex({
-				activeOptionIndex: prevState.activeOptionIndex,
-				offset: offsets[direction],
-				options: this.props.options
+	handleClose = () => {
+		const isOpen = this.getIsOpen();
+
+		if (isOpen) {
+			if (currentOpenDropdown === this) {
+				currentOpenDropdown = undefined;
+			}
+
+			this.setState({
+				activeOption: undefined,
+				activeOptionIndex: -1,
+				isOpen: false
 			});
 
-			return {
-				activeOption: this.props.options[newIndex],
-				activeOptionIndex: newIndex
-			};
-		});
-	};
-
-	handleSelect = (event, { selection, option }) => {
-		let newSelection;
-		const isSelected = this.isSelected({ selection, option });
-		const singleSelectAndSelectedWasNotClicked =
-			!this.props.multiple && !isSelected;
-		const multiSelectAndSelectedWasNotClicked =
-			this.props.multiple && !isSelected;
-
-		if (singleSelectAndSelectedWasNotClicked) {
-			newSelection = [option];
-		} else if (multiSelectAndSelectedWasNotClicked) {
-			newSelection = [...this.props.selection, option];
-		} else {
-			newSelection = reject(this.props.selection, option);
-		}
-
-		if (this.props.events.onSelect) {
-			this.props.events.onSelect(event, { selection: newSelection });
-		}
-
-		this.handleClose();
-
-		if (this.inputRef) {
-			this.inputRef.focus();
+			if (this.props.events.onClose) {
+				this.props.events.onClose();
+			}
 		}
 	};
 
-	handleKeyDownDown = (event) => {
-		// Don't open if user is selecting text
-		if (!event.shiftKey) {
-			this.openDialog();
-		}
+	handleInputBlur = (event) => {
+		// If menu is open when the input's onBlur event fires, it will close before the onClick of the menu item can fire.
+		setTimeout(() => {
+			this.handleClose();
+		}, 200);
 
-		this.handleNavigateListboxMenu(event, { direction: 'next' });
+		if (this.props.events.onBlur) {
+			this.props.events.onBlur(event);
+		}
 	};
 
-	handleKeyDownUp = (event) => {
-		// Don't open if user is selecting text
-		if (!event.shiftKey && this.state.isOpen) {
-			this.handleNavigateListboxMenu(event, { direction: 'previous' });
+	handleInputChange = (event) => {
+		this.requestOpenMenu();
+		this.props.events.onChange(event, { value: event.target.value });
+	};
+
+	handleInputFocus = (event) => {
+		if (this.props.events.onFocus) {
+			this.props.events.onFocus(event);
 		}
 	};
 
@@ -531,75 +404,52 @@ class Combobox extends React.Component {
 		}
 	};
 
-	handleInputChange = (event) => {
-		this.requestOpenMenu();
-		this.props.events.onChange(event, { value: event.target.value });
-	};
-
-	handleInputFocus = (event) => {
-		if (this.props.events.onFocus) {
-			this.props.events.onFocus(event);
-		}
-	};
-
-	handleInputBlur = (event) => {
-		// If menu is open when the input's onBlur event fires, it will close before the onClick of the menu item can fire.
-		setTimeout(() => {
-			this.handleClose();
-		}, 200);
-
-		if (this.props.events.onBlur) {
-			this.props.events.onBlur(event);
-		}
-	};
-
 	/**
-	 * Selected options with listbox of pills event methods
+	 * Input and menu keyboard event methods
 	 */
 
-	handleRemoveSelectedOption = (event, { option, index }) => {
-		event.preventDefault();
-		const onlyOnePillAndInputExists = this.props.selection.length === 1;
-		const isReadOnlyAndTwoPillsExists =
-			this.props.selection.length === 2 &&
-			this.props.variant === 'readonly' &&
-			this.props.multiple;
-		const lastPillWasRemoved = index + 1 === this.props.selection.length;
+	handleKeyDown = (event) => {
+		// Helper function that takes an object literal of callbacks that are triggered with a key event
+		mapKeyEventCallbacks(event, {
+			callbacks: {
+				[KEYS.DOWN]: { callback: this.handleKeyDownDown },
+				[KEYS.ENTER]: { callback: this.handleInputSubmit },
+				[KEYS.ESCAPE]: { callback: this.handleClose },
+				[KEYS.UP]: { callback: this.handleKeyDownUp }
+			}
+		});
+	};
 
-		if (
-			(onlyOnePillAndInputExists || isReadOnlyAndTwoPillsExists) &&
-			this.inputRef
-		) {
-			this.inputRef.focus();
-		} else if (lastPillWasRemoved) {
-			// set focus to previous option and index
-			this.setState({
-				activeSelectedOption: this.props.selection[index - 1],
-				activeSelectedOptionIndex: index - 1,
-				listboxHasFocus: true
-			});
-		} else {
-			// set focus to next option, but same index
-			this.setState({
-				activeSelectedOption: this.props.selection[index + 1],
-				activeSelectedOptionIndex: index,
-				listboxHasFocus: true
-			});
+	handleKeyDownDown = (event) => {
+		// Don't open if user is selecting text
+		if (!event.shiftKey) {
+			this.openDialog();
 		}
 
-		if (this.props.events.onRequestRemoveSelectedOption) {
-			this.props.events.onRequestRemoveSelectedOption(event, {
-				selection: reject(this.props.selection, option)
-			});
+		this.handleNavigateListboxMenu(event, { direction: 'next' });
+	};
+
+	handleKeyDownUp = (event) => {
+		// Don't open if user is selecting text
+		if (!event.shiftKey && this.state.isOpen) {
+			this.handleNavigateListboxMenu(event, { direction: 'previous' });
 		}
 	};
 
-	handlePillClickListboxOfPills = (event, { option, index }) => {
-		// this is clicking the span, not the remove button
-		this.setState({
-			activeSelectedOption: option,
-			activeSelectedOptionIndex: index,
-			listboxHasFocus: true
+	handleNavigateListboxMenu = (event, { direction }) => {
+		const offsets = { next: 1, previous: -1 };
+		// takes current/previous state and returns an object with the new state
+		this.setState((prevState) => {
+			const newIndex = this.getNewActiveOptionIndex({
+				activeOptionIndex: prevState.activeOptionIndex,
+				offset: offsets[direction],
+				options: this.props.options
+			});
+
+			return {
+				activeOption: this.props.options[newIndex],
+				activeOptionIndex: newIndex
+			};
 		});
 	};
 
@@ -644,6 +494,86 @@ class Combobox extends React.Component {
 		});
 	};
 
+	handleOpen = () => {
+		const isOpen = this.getIsOpen();
+
+		if (!isOpen) {
+			if (currentOpenDropdown && isFunction(currentOpenDropdown.handleClose)) {
+				currentOpenDropdown.handleClose();
+			}
+
+			currentOpenDropdown = this;
+
+			this.setState({
+				isOpen: true
+			});
+
+			if (this.props.events.onOpen) {
+				this.props.events.onOpen();
+			}
+		}
+	};
+
+	handlePillClickListboxOfPills = (event, { option, index }) => {
+		// this is clicking the span, not the remove button
+		this.setState({
+			activeSelectedOption: option,
+			activeSelectedOptionIndex: index,
+			listboxHasFocus: true
+		});
+	};
+
+	/**
+	 * Selected options with listbox of pills event methods
+	 */
+
+	handleRemoveSelectedOption = (event, { option, index }) => {
+		event.preventDefault();
+		const onlyOnePillAndInputExists = this.props.selection.length === 1;
+		const isReadOnlyAndTwoPillsExists =
+			this.props.selection.length === 2 &&
+			this.props.variant === 'readonly' &&
+			this.props.multiple;
+		const lastPillWasRemoved = index + 1 === this.props.selection.length;
+
+		if (
+			(onlyOnePillAndInputExists || isReadOnlyAndTwoPillsExists) &&
+			this.inputRef
+		) {
+			this.inputRef.focus();
+		} else if (lastPillWasRemoved) {
+			// set focus to previous option and index
+			this.setState({
+				activeSelectedOption: this.props.selection[index - 1],
+				activeSelectedOptionIndex: index - 1,
+				listboxHasFocus: true
+			});
+		} else {
+			// set focus to next option, but same index
+			this.setState({
+				activeSelectedOption: this.props.selection[index + 1],
+				activeSelectedOptionIndex: index,
+				listboxHasFocus: true
+			});
+		}
+
+		if (this.props.events.onRequestRemoveSelectedOption) {
+			this.props.events.onRequestRemoveSelectedOption(event, {
+				selection: reject(this.props.selection, option)
+			});
+		}
+	};
+
+	handleRequestClose = () => {
+		if (this.props.events.onRequestClose) {
+			this.props.events.onRequestClose();
+		}
+
+		if (this.getIsOpen()) {
+			this.setState({ isOpen: false });
+		}
+	};
+
 	handleRequestFocusListboxOfPills = (event, { ref }) => {
 		if (ref) {
 			this.activeSelectedOptionRef = ref;
@@ -651,19 +581,57 @@ class Combobox extends React.Component {
 		}
 	};
 
-	handleBlurPill = () => {
-		this.setState({ listboxHasFocus: false });
+	handleSelect = (event, { selection, option }) => {
+		let newSelection;
+		const isSelected = this.isSelected({ selection, option });
+		const singleSelectAndSelectedWasNotClicked =
+			!this.props.multiple && !isSelected;
+		const multiSelectAndSelectedWasNotClicked =
+			this.props.multiple && !isSelected;
+
+		if (singleSelectAndSelectedWasNotClicked) {
+			newSelection = [option];
+		} else if (multiSelectAndSelectedWasNotClicked) {
+			newSelection = [...this.props.selection, option];
+		} else {
+			newSelection = reject(this.props.selection, option);
+		}
+
+		if (this.props.events.onSelect) {
+			this.props.events.onSelect(event, { selection: newSelection });
+		}
+
+		this.handleClose();
+
+		if (this.inputRef) {
+			this.inputRef.focus();
+		}
 	};
 
-	setInputRef = (component) => {
-		this.inputRef = component;
-		// yes, this is a render triggered by a render.
-		// Dialog/Popper.js cannot place the menu until
-		// the trigger/target DOM node is mounted. This
-		// way `findDOMNode` is not called and parent
-		// DOM nodes are not queried.
-		if (!this.state.inputRendered) {
-			this.setState({ inputRendered: true });
+	isSelected = ({ selection, option }) => !!find(selection, option);
+
+	openDialog = () => {
+		if (this.props.events.onRequestOpen) {
+			this.props.events.onRequestOpen();
+		} else {
+			this.setState({
+				isOpen: true
+			});
+		}
+	};
+
+	requestOpenMenu = () => {
+		const isInlineSingleSelectionAndIsNotSelected =
+			!this.props.multiple &&
+			this.props.selection.length === 0 &&
+			this.props.variant === 'inline-listbox';
+
+		if (
+			isInlineSingleSelectionAndIsNotSelected ||
+			this.props.multiple ||
+			this.props.variant === 'readonly'
+		) {
+			this.openDialog();
 		}
 	};
 
@@ -757,6 +725,99 @@ class Combobox extends React.Component {
 				selection={props.selection}
 				listboxHasFocus={this.state.listboxHasFocus}
 			/>
+		</div>
+	);
+
+	renderInlineMultiple = ({ assistiveText, labels, props }) => (
+		<div className="slds-form-element__control">
+			<div
+				className={classNames('slds-combobox_container', {
+					'slds-has-inline-listbox': props.selection.length
+				})}
+			>
+				{props.selection.length ? (
+					<SelectedListBox
+						activeOption={this.state.activeSelectedOption}
+						activeOptionIndex={this.state.activeSelectedOptionIndex}
+						assistiveText={assistiveText}
+						events={{
+							onBlurPill: this.handleBlurPill,
+							onClickPill: this.handlePillClickListboxOfPills,
+							onRequestFocus: this.handleRequestFocusListboxOfPills,
+							onRequestFocusOnNextPill: this.handleNavigateListboxOfPills,
+							onRequestFocusOnPreviousPill: this.handleNavigateListboxOfPills,
+							onRequestRemove: this.handleRemoveSelectedOption
+						}}
+						id={this.getId()}
+						labels={labels}
+						selection={props.selection}
+						listboxHasFocus={this.state.listboxHasFocus}
+					/>
+				) : null}
+				<div
+					className={classNames(
+						'slds-combobox',
+						'slds-dropdown-trigger',
+						'slds-dropdown-trigger_click',
+						'ignore-react-onclickoutside',
+						{
+							'slds-is-open': this.getIsOpen()
+						},
+						props.className
+					)}
+					aria-expanded={this.getIsOpen()}
+					aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
+					role="combobox"
+				>
+					<InnerInput
+						aria-autocomplete="list"
+						aria-controls={`${this.getId()}-listbox`}
+						aria-activedescendant={
+							this.state.activeOption
+								? `${this.getId()}-listbox-option-${this.state.activeOption.id}`
+								: null
+						}
+						autoComplete="off"
+						className="slds-combobox__input"
+						containerProps={{
+							'aria-expanded': this.getIsOpen(),
+							'aria-haspopup': 'listbox',
+							className: 'slds-combobox__form-element',
+							role: 'none'
+						}}
+						iconRight={
+							<InputIcon
+								category="utility"
+								name="search"
+								title={labels.inputIconTitle}
+							/>
+						}
+						id={this.getId()}
+						onFocus={this.handleInputFocus}
+						onBlur={this.handleInputBlur}
+						onKeyDown={this.handleKeyDown}
+						inputRef={this.setInputRef}
+						onClick={() => {
+							this.openDialog();
+						}}
+						onChange={this.handleInputChange}
+						placeholder={labels.placeholder}
+						readOnly={
+							!!(props.predefinedOptionsOnly && this.state.activeOption)
+						}
+						role="textbox"
+						value={
+							props.predefinedOptionsOnly
+								? (this.state.activeOption && this.state.activeOption.label) ||
+									props.value
+								: props.value
+						}
+					/>
+					{this.getDialog({
+						menuRenderer: this.renderMenu({ assistiveText, labels })
+					})}
+				</div>
+			</div>
 		</div>
 	);
 
@@ -869,169 +930,35 @@ class Combobox extends React.Component {
 		);
 	};
 
-	renderInlineMultiple = ({ assistiveText, labels, props }) => (
-		<div className="slds-form-element__control">
-			<div
-				className={classNames('slds-combobox_container', {
-					'slds-has-inline-listbox': props.selection.length
-				})}
-			>
-				{props.selection.length ? (
-					<SelectedListBox
-						activeOption={this.state.activeSelectedOption}
-						activeOptionIndex={this.state.activeSelectedOptionIndex}
-						assistiveText={assistiveText}
-						events={{
-							onBlurPill: this.handleBlurPill,
-							onClickPill: this.handlePillClickListboxOfPills,
-							onRequestFocus: this.handleRequestFocusListboxOfPills,
-							onRequestFocusOnNextPill: this.handleNavigateListboxOfPills,
-							onRequestFocusOnPreviousPill: this.handleNavigateListboxOfPills,
-							onRequestRemove: this.handleRemoveSelectedOption
-						}}
-						id={this.getId()}
-						labels={labels}
-						selection={props.selection}
-						listboxHasFocus={this.state.listboxHasFocus}
-					/>
-				) : null}
-				<div
-					className={classNames(
-						'slds-combobox',
-						'slds-dropdown-trigger',
-						'slds-dropdown-trigger_click',
-						'ignore-react-onclickoutside',
-						{
-							'slds-is-open': this.getIsOpen()
-						},
-						props.className
-					)}
-					aria-expanded={this.getIsOpen()}
-					aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
-					role="combobox"
-				>
-					<InnerInput
-						aria-autocomplete="list"
-						aria-controls={`${this.getId()}-listbox`}
-						aria-activedescendant={
-							this.state.activeOption
-								? `${this.getId()}-listbox-option-${this.state.activeOption.id}`
-								: null
-						}
-						autoComplete="off"
-						className="slds-combobox__input"
-						containerProps={{
-							'aria-expanded': this.getIsOpen(),
-							'aria-haspopup': 'listbox',
-							className: 'slds-combobox__form-element',
-							role: 'none'
-						}}
-						iconRight={
-							<InputIcon
-								category="utility"
-								name="search"
-								title={labels.inputIconTitle}
-							/>
-						}
-						id={this.getId()}
-						onFocus={this.handleInputFocus}
-						onBlur={this.handleInputBlur}
-						onKeyDown={this.handleKeyDown}
-						inputRef={this.setInputRef}
-						onClick={() => {
-							this.openDialog();
-						}}
-						onChange={this.handleInputChange}
-						placeholder={labels.placeholder}
-						readOnly={
-							!!(props.predefinedOptionsOnly && this.state.activeOption)
-						}
-						role="textbox"
-						value={
-							props.predefinedOptionsOnly
-								? (this.state.activeOption && this.state.activeOption.label) ||
-									props.value
-								: props.value
-						}
-					/>
-					{this.getDialog({
-						menuRenderer: this.renderMenu({ assistiveText, labels })
-					})}
-				</div>
-			</div>
-		</div>
-	);
+	renderMenu = ({ assistiveText, labels }) => {
+		const menuVariant = {
+			base: 'icon-title-subtitle',
+			'inline-listbox': 'icon-title-subtitle',
+			readonly: 'checkbox'
+		};
 
-	renderReadOnlySingle = ({ assistiveText, labels, props }) => {
-		const value = (props.selection[0] && props.selection[0].label) || '';
-
-		/* eslint-disable jsx-a11y/role-supports-aria-props */
 		return (
-			<div className="slds-form-element__control">
-				<div className="slds-combobox_container">
-					<div // aria attributes have been moved to the `div` wrapping `input` to comply with ARIA 1.1.
-						className={classNames(
-							'slds-combobox',
-							'slds-dropdown-trigger',
-							'slds-dropdown-trigger_click',
-							'ignore-react-onclickoutside',
-							{
-								'slds-is-open': this.getIsOpen()
-							},
-							props.className
-						)}
-						aria-expanded={this.getIsOpen()}
-						aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
-						role="combobox"
-					>
-						<InnerInput
-							aria-autocomplete="list"
-							aria-controls={`${this.getId()}-listbox`}
-							aria-activedescendant={
-								this.state.activeOption
-									? `${this.getId()}-listbox-option-${
-										this.state.activeOption.id
-									}`
-									: null
-							}
-							autoComplete="off"
-							className="slds-combobox__input"
-							containerProps={{
-								'aria-expanded': this.getIsOpen(),
-								'aria-haspopup': 'listbox',
-								className: 'slds-combobox__form-element',
-								role: 'none'
-							}}
-							iconRight={
-								<InputIcon category="utility" name="down" variant="combobox" />
-							}
-							id={this.getId()}
-							onFocus={this.handleInputFocus}
-							onBlur={this.handleInputBlur}
-							onKeyDown={this.handleKeyDown}
-							inputRef={this.setInputRef}
-							onClick={() => {
-								this.requestOpenMenu();
-							}}
-							onChange={(event) => {
-								if (!props.selection.length) {
-									this.handleInputChange(event);
-								}
-							}}
-							placeholder={labels.placeholderReadOnly}
-							readOnly
-							role="textbox"
-							value={
-								(this.state.activeOption && this.state.activeOption.label) ||
-								value
-							}
-						/>
-						{this.getDialog({
-							menuRenderer: this.renderMenu({ assistiveText, labels })
-						})}
-					</div>
-				</div>
-			</div>
+			<Menu
+				assistiveText={assistiveText}
+				activeOption={this.state.activeOption}
+				activeOptionIndex={this.state.activeOptionIndex}
+				classNameMenu={this.props.classNameMenu}
+				inputId={this.getId()}
+				inputValue={this.props.value}
+				isSelected={this.isSelected}
+				itemVisibleLength={
+					this.props.variant === 'readonly'
+						? this.props.readOnlyMenuItemVisibleLength
+						: null
+				}
+				labels={labels}
+				menuItem={this.props.menuItem}
+				options={this.props.options}
+				onSelect={this.handleSelect}
+				clearActiveOption={this.clearActiveOption}
+				selection={this.props.selection}
+				variant={menuVariant[this.props.variant]}
+			/>
 		);
 	};
 
@@ -1124,6 +1051,79 @@ class Combobox extends React.Component {
 					variant={this.props.variant}
 					renderAtSelectionLength={2}
 				/>
+			</div>
+		);
+	};
+
+	renderReadOnlySingle = ({ assistiveText, labels, props }) => {
+		const value = (props.selection[0] && props.selection[0].label) || '';
+
+		/* eslint-disable jsx-a11y/role-supports-aria-props */
+		return (
+			<div className="slds-form-element__control">
+				<div className="slds-combobox_container">
+					<div // aria attributes have been moved to the `div` wrapping `input` to comply with ARIA 1.1.
+						className={classNames(
+							'slds-combobox',
+							'slds-dropdown-trigger',
+							'slds-dropdown-trigger_click',
+							'ignore-react-onclickoutside',
+							{
+								'slds-is-open': this.getIsOpen()
+							},
+							props.className
+						)}
+						aria-expanded={this.getIsOpen()}
+						aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
+						role="combobox"
+					>
+						<InnerInput
+							aria-autocomplete="list"
+							aria-controls={`${this.getId()}-listbox`}
+							aria-activedescendant={
+								this.state.activeOption
+									? `${this.getId()}-listbox-option-${
+										this.state.activeOption.id
+									}`
+									: null
+							}
+							autoComplete="off"
+							className="slds-combobox__input"
+							containerProps={{
+								'aria-expanded': this.getIsOpen(),
+								'aria-haspopup': 'listbox',
+								className: 'slds-combobox__form-element',
+								role: 'none'
+							}}
+							iconRight={
+								<InputIcon category="utility" name="down" variant="combobox" />
+							}
+							id={this.getId()}
+							onFocus={this.handleInputFocus}
+							onBlur={this.handleInputBlur}
+							onKeyDown={this.handleKeyDown}
+							inputRef={this.setInputRef}
+							onClick={() => {
+								this.requestOpenMenu();
+							}}
+							onChange={(event) => {
+								if (!props.selection.length) {
+									this.handleInputChange(event);
+								}
+							}}
+							placeholder={labels.placeholderReadOnly}
+							readOnly
+							role="textbox"
+							value={
+								(this.state.activeOption && this.state.activeOption.label) ||
+								value
+							}
+						/>
+						{this.getDialog({
+							menuRenderer: this.renderMenu({ assistiveText, labels })
+						})}
+					</div>
+				</div>
 			</div>
 		);
 	};

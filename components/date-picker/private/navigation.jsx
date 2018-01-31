@@ -55,9 +55,23 @@ const DatepickerMonthNavigation = createReactClass({
 		relativeYearTo: PropTypes.number
 	},
 
+	getMonthLabel () {
+		return this.props.monthLabels[
+			new Date(this.props.initialDateForCalendarRender).getMonth()
+		];
+	},
+
+	getYearLabel () {
+		return new Date(this.props.initialDateForCalendarRender).getFullYear();
+	},
+
 	handleClick (event) {
 		event.preventDefault();
 		event.stopPropagation();
+	},
+
+	handleYearSelect (initialDateForCalendarRender) {
+		this.props.onChangeMonth(undefined, initialDateForCalendarRender);
 	},
 
 	previousMonthClicked () {
@@ -72,20 +86,6 @@ const DatepickerMonthNavigation = createReactClass({
 			undefined,
 			DateUtil.addMonths(this.props.initialDateForCalendarRender, 1)
 		);
-	},
-
-	handleYearSelect (initialDateForCalendarRender) {
-		this.props.onChangeMonth(undefined, initialDateForCalendarRender);
-	},
-
-	getMonthLabel () {
-		return this.props.monthLabels[
-			new Date(this.props.initialDateForCalendarRender).getMonth()
-		];
-	},
-
-	getYearLabel () {
-		return new Date(this.props.initialDateForCalendarRender).getFullYear();
 	},
 
 	render () {

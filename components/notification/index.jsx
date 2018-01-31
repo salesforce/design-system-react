@@ -96,28 +96,43 @@ class Notification extends React.Component {
 		}
 	}
 
-	renderIcon () {
-		if (this.props.iconName) {
-			let classes = '';
-
-			if (this.props.variant === 'alert') {
-				classes = 'slds-m-right--x-small';
-			} else if (this.props.variant === 'toast') {
-				classes = 'slds-m-right--small slds-col slds-no-flex';
-			}
-
-			return (
-				<Icon
-					category={this.props.iconCategory}
-					className={classes}
-					inverse
-					name={this.props.iconName}
-					size="small"
-				/>
-			);
+	onDismiss = () => {
+		if (this.timeout) {
+			clearTimeout(this.timeout);
+			this.timeout = null;
 		}
 
-		return null;
+		if (this.props.onDismiss) this.props.onDismiss();
+		if (this.state.returnFocusTo && this.state.returnFocusTo.focus) {
+			this.state.returnFocusTo.focus();
+		}
+	};
+
+	getClassName () {
+		return classNames(this.props.className, 'slds-notify', {
+			[`slds-notify--${this.props.variant}`]: this.props.variant,
+			[`slds-theme--${this.props.theme}`]: this.props.theme,
+			'slds-theme--alert-texture': this.props.texture
+		});
+	}
+
+	/*
+	 * The parent container with role='alert' only announces its content if there is a change inside of it.
+	 * Because React renders the entire element to the DOM, we must switch out a blank div for the real content.
+	 * Bummer, I know.
+	 */
+	// eslint-disable-next-line class-methods-use-this
+	blankContent () {
+		return <div />;
+	}
+
+	renderAlertContent () {
+		return (
+			<h2 id="dialogTitle">
+				{this.renderIcon()}
+				{this.props.content}
+			</h2>
+		);
 	}
 
 	renderClose () {
@@ -145,25 +160,39 @@ class Notification extends React.Component {
 		return null;
 	}
 
-	onDismiss = () => {
-		if (this.timeout) {
-			clearTimeout(this.timeout);
-			this.timeout = null;
-		}
-
-		if (this.props.onDismiss) this.props.onDismiss();
-		if (this.state.returnFocusTo && this.state.returnFocusTo.focus) {
-			this.state.returnFocusTo.focus();
-		}
-	};
-
-	renderAlertContent () {
+	renderContent () {
 		return (
-			<h2 id="dialogTitle">
-				{this.renderIcon()}
-				{this.props.content}
-			</h2>
+			<div>
+				<span className="slds-assistive-text">{this.props.theme}</span>
+				{this.renderClose()}
+				{this.props.variant === 'toast' ? this.renderToastContent() : null}
+				{this.props.variant === 'alert' ? this.renderAlertContent() : null}
+			</div>
 		);
+	}
+
+	renderIcon () {
+		if (this.props.iconName) {
+			let classes = '';
+
+			if (this.props.variant === 'alert') {
+				classes = 'slds-m-right--x-small';
+			} else if (this.props.variant === 'toast') {
+				classes = 'slds-m-right--small slds-col slds-no-flex';
+			}
+
+			return (
+				<Icon
+					category={this.props.iconCategory}
+					className={classes}
+					inverse
+					name={this.props.iconName}
+					size="small"
+				/>
+			);
+		}
+
+		return null;
 	}
 
 	renderToastContent () {
@@ -177,35 +206,6 @@ class Notification extends React.Component {
 				</div>
 			</section>
 		);
-	}
-
-	getClassName () {
-		return classNames(this.props.className, 'slds-notify', {
-			[`slds-notify--${this.props.variant}`]: this.props.variant,
-			[`slds-theme--${this.props.theme}`]: this.props.theme,
-			'slds-theme--alert-texture': this.props.texture
-		});
-	}
-
-	renderContent () {
-		return (
-			<div>
-				<span className="slds-assistive-text">{this.props.theme}</span>
-				{this.renderClose()}
-				{this.props.variant === 'toast' ? this.renderToastContent() : null}
-				{this.props.variant === 'alert' ? this.renderAlertContent() : null}
-			</div>
-		);
-	}
-
-	/*
-	 * The parent container with role='alert' only announces its content if there is a change inside of it.
-	 * Because React renders the entire element to the DOM, we must switch out a blank div for the real content.
-	 * Bummer, I know.
-	 */
-	// eslint-disable-next-line class-methods-use-this
-	blankContent () {
-		return <div />;
 	}
 
 	render () {

@@ -29,6 +29,17 @@ const Example = createReactClass({
 		};
 	},
 
+	onClick (event) {
+		this.props.action('onClick')(event);
+	},
+
+	onRemove (event, pill) {
+		this.props.action('onRemove')(event);
+		this.setState({
+			[pill]: false
+		});
+	},
+
 	render () {
 		return (
 			<IconSettings iconPath="/assets/icons">
@@ -94,17 +105,6 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-
-	onClick (event) {
-		this.props.action('onClick')(event);
-	},
-
-	onRemove (event, pill) {
-		this.props.action('onRemove')(event);
-		this.setState({
-			[pill]: false
-		});
 	}
 });
 

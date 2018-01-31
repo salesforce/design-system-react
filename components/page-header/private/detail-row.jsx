@@ -21,6 +21,11 @@ const propTypes = {
 const defaultProps = {};
 
 class DetailRow extends Component {
+	// eslint-disable-next-line class-methods-use-this
+	_getClassNames (className) {
+		return classnames('slds-grid slds-page-header__detail-row', className);
+	}
+
 	render () {
 		const { children, className, details } = this.props;
 		const classes = this._getClassNames(className);
@@ -49,11 +54,6 @@ class DetailRow extends Component {
 		};
 
 		return <ul className={classes}>{renderDetails()}</ul>;
-	}
-
-	// eslint-disable-next-line class-methods-use-this
-	_getClassNames (className) {
-		return classnames('slds-grid slds-page-header__detail-row', className);
 	}
 }
 

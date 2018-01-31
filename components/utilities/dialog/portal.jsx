@@ -29,6 +29,10 @@ class Portal extends Component {
 		this.unmountPortal();
 	}
 
+	getChildren () {
+		return Children.only(this.props.children);
+	}
+
 	getPortalParentNode () {
 		let element;
 		if (typeof this.props.renderTo === 'string') {
@@ -39,10 +43,6 @@ class Portal extends Component {
 		return element;
 	}
 
-	getChildren () {
-		return Children.only(this.props.children);
-	}
-
 	setupPortalNode () {
 		const parentParentNode = this.getPortalParentNode();
 
@@ -51,6 +51,34 @@ class Portal extends Component {
 		this.portalNodeInstance = this.props.onMount
 			? this.props.onMount(undefined, { portal: this.portalNode })
 			: this.portalNode;
+	}
+
+	unmountPortal () {
+		if (this.portalNode) {
+			ReactDOM.unmountComponentAtNode(this.portalNode);
+			this.portalNode.parentNode.removeChild(this.portalNode);
+		}
+		this.portalNode = null;
+	}
+
+	updatePortal () {
+		if (this.props.id) {
+			this.portalNode.id = this.props.id;
+		}
+
+		if (this.props.className) {
+			this.portalNode.className = this.props.className;
+		}
+
+		if (this.props.style) {
+			Object.keys(this.props.style).forEach((key) => {
+				this.portalNode.style[key] = this.props.style[key];
+			});
+		}
+
+		if (this.props.onUpdate) {
+			this.portalNodeInstance = this.props.onUpdate(this.portalNodeInstance);
+		}
 	}
 
 	renderPortal () {
@@ -91,34 +119,6 @@ class Portal extends Component {
 				}
 			);
 		}
-	}
-
-	updatePortal () {
-		if (this.props.id) {
-			this.portalNode.id = this.props.id;
-		}
-
-		if (this.props.className) {
-			this.portalNode.className = this.props.className;
-		}
-
-		if (this.props.style) {
-			Object.keys(this.props.style).forEach((key) => {
-				this.portalNode.style[key] = this.props.style[key];
-			});
-		}
-
-		if (this.props.onUpdate) {
-			this.portalNodeInstance = this.props.onUpdate(this.portalNodeInstance);
-		}
-	}
-
-	unmountPortal () {
-		if (this.portalNode) {
-			ReactDOM.unmountComponentAtNode(this.portalNode);
-			this.portalNode.parentNode.removeChild(this.portalNode);
-		}
-		this.portalNode = null;
 	}
 
 	render () {
@@ -170,20 +170,20 @@ Portal.propTypes = {
 	 */
 	onUnmount: PropTypes.func,
 	/**
-	  * If a dialog is `positione="overflowBoundaryElement"`, it will be rendered in a portal or separate render tree. This `portalMount` callback will be triggered instead of the the default `ReactDOM.unstable_renderSubtreeIntoContainer` and the function will mount the portal itself. Consider the following code that bypasses the internal mount and uses an Enzyme wrapper to mount the React root tree to the DOM.
-	  *
-	  * ```
-	  * <Popover
-	 		isOpen
-			portalMount={({ instance, reactElement, domContainerNode }) => {
-				portalWrapper = Enzyme.mount(reactElement, { attachTo: domContainerNode });
-			}}
-	 		onOpen={() => {
-	 			expect(portalWrapper.find(`#my-heading`)).to.exist;
-	 			done();
-	 		}}
-	 		/>
-	 *	```
+	 * If a dialog is `positione="overflowBoundaryElement"`, it will be rendered in a portal or separate render tree. This `portalMount` callback will be triggered instead of the the default `ReactDOM.unstable_renderSubtreeIntoContainer` and the function will mount the portal itself. Consider the following code that bypasses the internal mount and uses an Enzyme wrapper to mount the React root tree to the DOM.
+	 *
+	 * ```
+	 * <Popover
+	 *   isOpen
+	 *   portalMount={({ instance, reactElement, domContainerNode }) => {
+	 *     portalWrapper = Enzyme.mount(reactElement, { attachTo: domContainerNode });
+	 *   }}
+	 *   onOpen={() => {
+	 *     expect(portalWrapper.find(`#my-heading`)).to.exist;
+	 *     done();
+	 *   }}
+	 * />
+	 * ```
 	 */
 	portalMount: PropTypes.func
 };

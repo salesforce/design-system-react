@@ -12,6 +12,10 @@ const Example = createReactClass({
 		};
 	},
 
+	handleChange (eventProps) {
+		this.setState({ value: eventProps.value });
+	},
+
 	render () {
 		return (
 			<IconSettings iconPath="/assets/icons">
@@ -40,10 +44,6 @@ const Example = createReactClass({
 				</section>
 			</IconSettings>
 		);
-	},
-
-	handleChange (eventProps) {
-		this.setState({ value: eventProps.value });
 	}
 });
 

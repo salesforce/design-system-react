@@ -17,6 +17,11 @@ import KEYS from '../../../utilities/key-code';
 import classNames from 'classnames';
 
 class DatepickerCalendarWrapper extends React.Component {
+	static defaultProps = {
+		selectedDate: new Date(),
+		value: new Date()
+	};
+
 	static displayName = 'DatepickerCalendarWrapper';
 
 	static propTypes = {
@@ -98,21 +103,9 @@ class DatepickerCalendarWrapper extends React.Component {
 		weekDayLabels: PropTypes.array.isRequired
 	};
 
-	static defaultProps = {
-		selectedDate: new Date(),
-		value: new Date()
-	};
-
 	state = {
 		initialDateForCalendarRender: this.props.selectedDate,
 		isCalendarFocused: true
-	};
-
-	handleInitialDateForCalendarRenderChange = (
-		event,
-		initialDateForCalendarRender
-	) => {
-		this.setState({ initialDateForCalendarRender });
 	};
 
 	handleCalendarBlur = (event, { direction }) => {
@@ -139,9 +132,24 @@ class DatepickerCalendarWrapper extends React.Component {
 		}
 	};
 
-	handleRequestClose = () => {
-		if (this.props.onRequestClose) {
-			this.props.onRequestClose();
+	handleFirstFocusableNodeKeyDown = (event) => {
+		if (event.shiftKey && event.keyCode === KEYS.TAB) {
+			EventUtil.trapEvent(event);
+			this.setState({ isCalendarFocused: true });
+		}
+	};
+
+	handleInitialDateForCalendarRenderChange = (
+		event,
+		initialDateForCalendarRender
+	) => {
+		this.setState({ initialDateForCalendarRender });
+	};
+
+	handleKeyDown = (event) => {
+		if (event.keyCode === KEYS.ESCAPE) {
+			EventUtil.trapEvent(event);
+			this.props.onRequestClose(event);
 		}
 	};
 
@@ -152,10 +160,9 @@ class DatepickerCalendarWrapper extends React.Component {
 		}
 	};
 
-	handleFirstFocusableNodeKeyDown = (event) => {
-		if (event.shiftKey && event.keyCode === KEYS.TAB) {
-			EventUtil.trapEvent(event);
-			this.setState({ isCalendarFocused: true });
+	handleRequestClose = () => {
+		if (this.props.onRequestClose) {
+			this.props.onRequestClose();
 		}
 	};
 
@@ -169,13 +176,6 @@ class DatepickerCalendarWrapper extends React.Component {
 		if (this.props.onCalendarFocus && data.triggerCallback) {
 			const { triggerCallback, ...modifiedData } = data; // eslint-disable-line no-unused-vars
 			this.props.onCalendarFocus(event, modifiedData);
-		}
-	};
-
-	handleKeyDown = (event) => {
-		if (event.keyCode === KEYS.ESCAPE) {
-			EventUtil.trapEvent(event);
-			this.props.onRequestClose(event);
 		}
 	};
 

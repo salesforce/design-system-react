@@ -152,6 +152,28 @@ const Checkbox = createReactClass({
 		return this.props.id || this.generatedId;
 	},
 
+	handleChange (event) {
+		const value = event.target.checked;
+		const { checked, indeterminate, onChange } = this.props;
+
+		if (isFunction(onChange)) {
+			// `checked` is present twice to maintain backwards compatibility. Please remove first parameter `value` on the next breaking change.
+			onChange(value, event, {
+				checked: indeterminate ? true : !checked,
+				indeterminate: false
+			});
+		}
+	},
+
+	handleKeyDown (event) {
+		if (event.keyCode) {
+			if (event.keyCode === KEYS.ENTER || event.keyCode === KEYS.SPACE) {
+				EventUtil.trapImmediate(event);
+				this.handleChange(event);
+			}
+		}
+	},
+
 	renderButtonGroupVariant (props) {
 		return (
 			<span className="slds-button slds-checkbox--button">
@@ -337,28 +359,6 @@ const Checkbox = createReactClass({
 				renderer = this.renderBaseVariant(this.props);
 		}
 		return renderer;
-	},
-
-	handleChange (event) {
-		const value = event.target.checked;
-		const { checked, indeterminate, onChange } = this.props;
-
-		if (isFunction(onChange)) {
-			// `checked` is present twice to maintain backwards compatibility. Please remove first parameter `value` on the next breaking change.
-			onChange(value, event, {
-				checked: indeterminate ? true : !checked,
-				indeterminate: false
-			});
-		}
-	},
-
-	handleKeyDown (event) {
-		if (event.keyCode) {
-			if (event.keyCode === KEYS.ENTER || event.keyCode === KEYS.SPACE) {
-				EventUtil.trapImmediate(event);
-				this.handleChange(event);
-			}
-		}
 	}
 });
 

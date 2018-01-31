@@ -143,32 +143,6 @@ const Filter = createReactClass({
 		return this.props.id || this.generatedId;
 	},
 
-	handleFilterClick () {
-		this.setState({ popoverIsOpen: true });
-
-		if (this.props.onClick) {
-			this.props.onClick();
-		}
-	},
-
-	handleClose () {
-		this.setState({ popoverIsOpen: false });
-	},
-
-	handleChange (event) {
-		this.setState({ popoverIsOpen: false });
-
-		if (this.props.onChange) {
-			this.props.onChange(event, { id: this.getId() });
-		}
-	},
-
-	handleRemove (event) {
-		if (this.props.onRemove) {
-			this.props.onRemove(event, { id: this.getId() });
-		}
-	},
-
 	getCustomPopoverProps ({ assistiveText }) {
 		/*
 		 * Generate the popover props based on passed in popover props. Using the default behavior if not provided by passed in popover
@@ -214,6 +188,32 @@ const Filter = createReactClass({
 		);
 		delete popoverProps.children;
 		return popoverProps;
+	},
+
+	handleFilterClick () {
+		this.setState({ popoverIsOpen: true });
+
+		if (this.props.onClick) {
+			this.props.onClick();
+		}
+	},
+
+	handleClose () {
+		this.setState({ popoverIsOpen: false });
+	},
+
+	handleChange (event) {
+		this.setState({ popoverIsOpen: false });
+
+		if (this.props.onChange) {
+			this.props.onChange(event, { id: this.getId() });
+		}
+	},
+
+	handleRemove (event) {
+		if (this.props.onRemove) {
+			this.props.onRemove(event, { id: this.getId() });
+		}
 	},
 
 	render () {

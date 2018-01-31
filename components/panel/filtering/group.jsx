@@ -106,12 +106,12 @@ PanelFilterGroup.propTypes = {
 	 *   variant="panel"
 	 * >
 	 *   <FilterList>
-	 *     <Filter
-	 *       property="Show Me"
-	 *       predicate="All Wackamoles"
-	 *     >
-	 *     {popoverContents}
-	 *     </Filter>
+	 *   <Filter
+	 *     property="Show Me"
+	 *     predicate="All Wackamoles"
+	 *   >
+	 *   {popoverContents}
+	 *   </Filter>
 	 *   </FilterList>
 	 * </FilterGroup>
 	 * ```

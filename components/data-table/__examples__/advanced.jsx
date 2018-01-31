@@ -76,6 +76,50 @@ const Example = createReactClass({
 		};
 	},
 
+	handleChanged (selection) {
+		this.setState({ selection });
+	},
+
+	handleRowAction (item, action) {
+		console.log(item, action);
+	},
+
+	handleSort (sortColumn, ...rest) {
+		if (this.props.log) {
+			this.props.log('sort')(sortColumn, ...rest);
+		}
+
+		const sortProperty = sortColumn.property;
+		const sortDirection = sortColumn.sortDirection;
+		const newState = {
+			sortColumn: sortProperty,
+			sortColumnDirection: {
+				[sortProperty]: sortDirection
+			},
+			items: [...this.state.items]
+		};
+
+		// needs to work in both directions
+		newState.items = newState.items.sort((a, b) => {
+			let val = 0;
+
+			if (a[sortProperty] > b[sortProperty]) {
+				val = 1;
+			}
+			if (a[sortProperty] < b[sortProperty]) {
+				val = -1;
+			}
+
+			if (sortDirection === 'desc') {
+				val *= -1;
+			}
+
+			return val;
+		});
+
+		this.setState(newState);
+	},
+
 	render () {
 		return (
 			<div>
@@ -137,50 +181,6 @@ const Example = createReactClass({
 				</IconSettings>
 			</div>
 		);
-	},
-
-	handleChanged (selection) {
-		this.setState({ selection });
-	},
-
-	handleRowAction (item, action) {
-		console.log(item, action);
-	},
-
-	handleSort (sortColumn, ...rest) {
-		if (this.props.log) {
-			this.props.log('sort')(sortColumn, ...rest);
-		}
-
-		const sortProperty = sortColumn.property;
-		const sortDirection = sortColumn.sortDirection;
-		const newState = {
-			sortColumn: sortProperty,
-			sortColumnDirection: {
-				[sortProperty]: sortDirection
-			},
-			items: [...this.state.items]
-		};
-
-		// needs to work in both directions
-		newState.items = newState.items.sort((a, b) => {
-			let val = 0;
-
-			if (a[sortProperty] > b[sortProperty]) {
-				val = 1;
-			}
-			if (a[sortProperty] < b[sortProperty]) {
-				val = -1;
-			}
-
-			if (sortDirection === 'desc') {
-				val *= -1;
-			}
-
-			return val;
-		});
-
-		this.setState(newState);
 	}
 });
 

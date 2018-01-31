@@ -75,24 +75,6 @@ const ListItem = createReactClass({
 		};
 	},
 
-	handleClick (event) {
-		if (
-			this.props.type !== 'link' ||
-			this.props.href === 'javascript:void(0);'
-		) {
-			// eslint-disable-line no-script-url
-			EventUtil.trapImmediate(event);
-		}
-
-		if (this.props.onSelect) {
-			this.props.onSelect(this.props.index);
-		}
-	},
-
-	handleMouseDown (event) {
-		EventUtil.trapImmediate(event);
-	},
-
 	getLabel () {
 		const Label = this.props.labelRenderer;
 		return (
@@ -139,6 +121,24 @@ const ListItem = createReactClass({
 		}
 
 		return null;
+	},
+
+	handleClick (event) {
+		if (
+			this.props.type !== 'link' ||
+			this.props.href === 'javascript:void(0);'
+		) {
+			// eslint-disable-line no-script-url
+			EventUtil.trapImmediate(event);
+		}
+
+		if (this.props.onSelect) {
+			this.props.onSelect(this.props.index);
+		}
+	},
+
+	handleMouseDown (event) {
+		EventUtil.trapImmediate(event);
 	},
 
 	render () {

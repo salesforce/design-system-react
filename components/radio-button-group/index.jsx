@@ -78,15 +78,15 @@ class RadioButtonGroup extends React.Component {
 		this.generatedErrorId = this.labels.error ? shortid.generate() : null;
 	}
 
-	getName () {
-		return this.props.name || this.generatedName;
-	}
-
 	getErrorId () {
 		if (this.hasError()) {
 			return this.props.errorId || this.generatedErrorId;
 		}
 		return undefined;
+	}
+
+	getName () {
+		return this.props.name || this.generatedName;
 	}
 
 	hasError () {
