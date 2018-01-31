@@ -58,6 +58,10 @@ printf "
 Running DSR Travis-CI QA Scripts
 "
 runTests "${COMMANDS[@]}"
+EXIT_CODE=$?
+
 printf "
-DSR Travis-CI QA Scripts Completed
+DSR Travis-CI QA Scripts Completed with exit condition ${EXIT_CODE}
 "
+
+exit $((10#$EXIT_CODE))
