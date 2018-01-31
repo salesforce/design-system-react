@@ -17,7 +17,9 @@ SKIP_START_KARMA=false
 # Jest markup & image snapshot tests
 SNAPSHOT_TESTS='npm run snapshot-test'
 SKIP_SNAPSHOT_TESTS=false
-
+# React DocGen library build of source comments into a JSON file for documentation site
+DOCGEN='npm run build-docs'
+SKIP_DOCGEN=false
 
 numArgs=$#
 # parse arguments
@@ -41,11 +43,16 @@ if (( numArgs >= 0 )); then
 		[ "$1" == "--skip-jest" ] ||
 		[ "$1" == "--no-jest" ]  &&
 			SNAPSHOT_TESTS="echo ✂    ︎ skipping ${SNAPSHOT_TESTS}"
+		[ "$1" == "--skip-docgen" ] ||
+		[ "$1" == "--no-docgen" ] ||
+		[ "$1" == "--skip-docs" ] ||
+		[ "$1" == "--no-docs" ]  &&
+			DOCGEN="echo ✂    ︎ skipping ${DOCGEN}"
 		shift 1
 	done
 fi
 
-declare -a COMMANDS=("${RUN_PRETTIER_CODE}" "${RUN_PRETTIER_DOCS}" "${START_KARMA}" "${SNAPSHOT_TESTS}")
+declare -a COMMANDS=("${RUN_PRETTIER_CODE}" "${RUN_PRETTIER_DOCS}" "${START_KARMA}" "${SNAPSHOT_TESTS}" "${DOCGEN}")
 
 printf "
 Running DSR Travis-CI QA Scripts
