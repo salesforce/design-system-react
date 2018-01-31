@@ -1,6 +1,6 @@
 {
   "name": "design-system-react",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "description": "Salesforce Lightning Design System for React",
   "license": "SEE LICENSE IN README.md",
   "engines": {
@@ -87,6 +87,7 @@
   "module": "components/index.js",
   "homepage": "https://react.lightningdesignsystem.com",
   "dependencies": {
+    "@salesforce/babel-preset-design-system-react": "^1.0.0",
     "airbnb-prop-types": "^2.5.3",
     "babel-preset-es2015": "^6.24.1",
     "classnames": "^2.2.5",
@@ -117,7 +118,7 @@
     "warning": "^3.0.0"
   },
   "peerDependencies": {
-    "@salesforce-ux/design-system": "2.4.x",
+    "@salesforce-ux/design-system": ">=2.4.x",
     "react": ">=15.4.1 <16",
     "react-dom": ">=15.4.1 <16"
   },
@@ -378,7 +379,7 @@
       "component": "filter",
       "status": "prototype",
       "display-name": "Filters",
-      "SLDS-component-path": "/components/panels"
+      "SLDS-component-path": "/components/filter"
     },
     {
       "component": "forms/input/inline",
@@ -581,12 +582,12 @@
       },
       "SLDS-component-path": "/components/split-view",
       "dependencies": [
-      {
-        "component": "header"
-      },
-      {
-        "component": "listbox"
-      }
+        {
+          "component": "header"
+        },
+        {
+          "component": "listbox"
+        }
       ]
     },
     {

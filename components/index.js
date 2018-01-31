@@ -189,8 +189,18 @@ export RadioGroup from './radio-group';
 export SLDSSpinner from './spinner';
 export Spinner from './spinner';
 
+// Remove at next breaking change
 export SLDSSplitview from './split-view';
 export Splitview from './split-view';
+
+export SLDSSplitView from './split-view';
+export SplitView from './split-view';
+
+export SLDSSplitViewHeader from './split-view/header';
+export SplitViewHeader from './split-view/header';
+
+export SLDSSplitViewListbox from './split-view/listbox';
+export SplitViewListbox from './split-view/listbox';
 
 export SLDSTimepicker from './time-picker';
 export Timepicker from './time-picker';

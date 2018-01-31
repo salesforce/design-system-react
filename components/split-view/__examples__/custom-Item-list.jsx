@@ -3,46 +3,48 @@ import PropTypes from 'prop-types';
 import IconSettings from '~/components/icon-settings';
 import SplitView from '~/components/split-view/index';
 import SplitViewHeader from '~/components/split-view/header';
-import SplitViewListbox, {
-	SORT_OPTIONS
-} from '~/components/split-view/listbox';
+import SplitViewListbox from '~/components/split-view/listbox';
 import Icon from '~/components/icon';
 import Button from '~/components/button';
 import Dropdown from '~/components/menu-dropdown';
 import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
-import shortid from 'shortid';
+
+const SORT_OPTIONS = {
+	UP: 'up',
+	DOWN: 'down'
+};
 
 const listOptions = [
 	{
-		id: shortid.generate(),
+		id: '001',
 		name: 'Riley Shultz',
 		ranking: '99',
 		company: 'Biotech, Inc.',
 		status: 'Nurturing'
 	},
 	{
-		id: shortid.generate(),
+		id: '002',
 		name: 'Jason A. - VP of Sales',
 		ranking: '92',
 		company: 'Case Management Solutions',
 		status: 'Contacted'
 	},
 	{
-		id: shortid.generate(),
+		id: '003',
 		name: 'Josh Smith',
 		ranking: '90',
 		company: 'Acme, Inc.',
 		status: 'Contacted'
 	},
 	{
-		id: shortid.generate(),
+		id: '004',
 		name: 'Bobby Tree',
 		ranking: '89',
 		company: 'Salesforce, Inc.',
 		status: 'Closing'
 	},
 	{
-		id: shortid.generate(),
+		id: '005',
 		name: 'Riley Shultz',
 		ranking: '74',
 		company: 'Tesla',
