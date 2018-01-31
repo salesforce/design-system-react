@@ -144,6 +144,11 @@ Unless you have an accessiblity guru in your department (knowledge of implementi
 * Components should be able to be rendered without a `DOM`. Test for the existence of `document` and `window` before using them.
 * For more specifics about testing please review the [testing module walkthough](../tests/README.md).
 
+## Notes on documentation site examples
+* Documentation site code is located in a [private repository](https://github.com/salesforce-ux/design-system-react-site).
+* The NPM module for this library is used for component documentation. Therefore, changes to documentation require a new version to be published.
+* Documentation site examples use [CodeMirror](https://codemirror.net/) to `eval()` site examples from the NPM module. `import` and `export` statements are ignored by CodeMirror. Exports from `components/index.js` are the only variables available to code examples. Do not `import` any other variables or the site examples will not work.
+
 ## Notes on Converting SLDS to Design System React
 
 * `variant` should be used for significant structure and markup or UX pattern changes that cannot exist at the same time. This may include examples, modifiers, but are usually labelled variants in SLDS. In order to clear, never make the presense of an event callback imply a markup change, other than the event attribute specified. Example: Do not make the addition of `onClick` turn a `span` into an `a` tag.
