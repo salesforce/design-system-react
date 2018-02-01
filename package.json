@@ -4,7 +4,7 @@
   "description": "Salesforce Lightning Design System for React",
   "license": "SEE LICENSE IN README.md",
   "engines": {
-    "node": "6.x",
+    "node": "8.x",
     "npm": "^5.5.1"
   },
   "scripts": {
