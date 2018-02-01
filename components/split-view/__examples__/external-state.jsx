@@ -183,21 +183,12 @@ class Example extends React.Component {
 		this.sortList = this.sortList.bind(this);
 	}
 
-	sortList () {
-		const sortDirection =
-			this.state.sortDirection === SORT_OPTIONS.DOWN
-				? SORT_OPTIONS.UP
-				: SORT_OPTIONS.DOWN;
+	onSplitViewOpen () {
+		this.setState({ isOpen: true });
+	}
 
-		this.setState({
-			options: this.state.options.sort(
-				(a, b) =>
-					(sortDirection === SORT_OPTIONS.DOWN
-						? a.label > b.label
-						: b.label > a.label)
-			),
-			sortDirection
-		});
+	onSplitViewClose () {
+		this.setState({ isOpen: false });
 	}
 
 	// For multiple elements you need to pass an array in order for the scrolling to in the SplitViewList to work.
@@ -297,12 +288,21 @@ class Example extends React.Component {
 		);
 	}
 
-	onSplitViewOpen () {
-		this.setState({ isOpen: true });
-	}
+	sortList () {
+		const sortDirection =
+			this.state.sortDirection === SORT_OPTIONS.DOWN
+				? SORT_OPTIONS.UP
+				: SORT_OPTIONS.DOWN;
 
-	onSplitViewClose () {
-		this.setState({ isOpen: false });
+		this.setState({
+			options: this.state.options.sort(
+				(a, b) =>
+					(sortDirection === SORT_OPTIONS.DOWN
+						? a.label > b.label
+						: b.label > a.label)
+			),
+			sortDirection
+		});
 	}
 
 	render () {
