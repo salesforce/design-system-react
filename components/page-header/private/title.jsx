@@ -32,18 +32,6 @@ const defaultProps = {
 };
 
 class Title extends Component {
-	render () {
-		const { children, title, truncate, align, className } = this.props;
-		const classes = this._getClassNames(truncate, align, className);
-
-		return (
-			<h1 className={classes} title={title}>
-				{title}
-				{children}
-			</h1>
-		);
-	}
-
 	// eslint-disable-next-line class-methods-use-this
 	_getClassNames (truncate, align, className) {
 		return classnames(
@@ -53,6 +41,18 @@ class Title extends Component {
 				'slds-truncate': truncate,
 				[`slds-align-${align}`]: align
 			}
+		);
+	}
+
+	render () {
+		const { children, title, truncate, align, className } = this.props;
+		const classes = this._getClassNames(truncate, align, className);
+
+		return (
+			<h1 className={classes} title={title}>
+				{title}
+				{children}
+			</h1>
 		);
 	}
 }
