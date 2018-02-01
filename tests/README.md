@@ -26,9 +26,9 @@ Add DOM snapshot, image snapshot, and documentation site examples to Storybook f
 
 `npm start` and browse to [http://localhost:9001](http://localhost:9001) to view Storybooks.
 
-### Linting
+### Style and quality linting
 
-Pull requests should conform to Prettier-ESLint](https://github.com/prettier/prettier-eslint) definitions. Use `eslint-disable-line` within tests for exceptions. Prettier-ESLint formats your JavaScript using `prettier` followed by `eslint --fix`. [Prettier](https://prettier.io/)** enforces code _style_. [ESLint](http://eslint.org/)** enforces code _quality_. Run `npm run lint` to test and `npm run lint:fix` to automatically fix many issues.
+There are two parts to code linting: style and quality. [Prettier-ESLint](https://github.com/prettier/prettier-eslint)/[Prettier](https://prettier.io/) formats JavaScript, markdown and JSON to a consistent style for increased readability. [ESLint](http://eslint.org/) checks for code quality. `npm run lint:fix` will fix most style issues. Many editors have `prettier-eslint` format-on-save options. However, do not use Prettier by itself or linting will not pass. `npm run lint` will check style and quality. Use `eslint-disable-line [RULE]` within tests for necessary exceptions.
 
 ### Story-based tests
 
