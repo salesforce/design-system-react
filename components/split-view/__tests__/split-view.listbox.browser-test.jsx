@@ -60,16 +60,18 @@ describe('SLDSSplitView - Listbox', () => {
 	};
 
 	const expectItemSelected = (value) => {
-		value = Array.isArray(value) ? value : [value];
+		const itemIndex = Array.isArray(value) ? value : [value];
 
 		const anchors = component.find('li > a');
 
 		listOptions.forEach((item, index) => {
-			value.includes(index)
+			value.includes(index);
+			itemIndex.includes(index)
 				? expect(anchors.at(index).prop('aria-selected')).to.be.true
 				: expect(anchors.at(index).prop('aria-selected')).to.be.false;
 		});
 	};
+
 
 	describe('When the component is mounted', () => {
 		it('should focus the first selected item', () => {
