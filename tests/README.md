@@ -1,19 +1,73 @@
-# Unit Testing
+# Unit testing
 
-First, thank you for helping us make this library more robust and stable.
+Thank you for helping us make this library more robust and stable.
 
 * Tests reduce bugs in new features and existing features
 * Tests are good documentation
 * Tests reduce the cost of change and refactoring
 * Tests improve code design
 
-Although we strive to make this library functional, controlled, presentational components, pure UI components would require consumers to keep track of DOM focus, active menu items, and other states. Your tests need to simulate user interactions as closely as possible. All pull requests must contain unit tests which cover the following items for the code being considered:
+## Overview
 
-* Add to the Proptype description comments `_Tested with snapshot testing._` or `_Tested with Mocha testing._` to state to consumers how the prop is tested. This will also give you starting list of what needs testing. `assistiveText`, `className`, `labels`, `id`, `isOpen`, `options`, `variant` are examples of props to test with snapshots.
-* Begin with DOM and markup snapshot testing to test if the markup of every state conforms to the [SLDS site](https://www.lightningdesignsystem.com/). Simple components that have no interactions or events can be tested with snapshots only. ARIA attribute states and events callbacks are examples of props to test with in-browser Mocha tests.
-* All components with mouse/keyboard interactions and events must have Mocha tests. For components with user interactions events, real DOM testing is preferred. It is not recommended to use shallow rendering or to modify component prototypes with mock functions for these tests.
-* Add each snapshot as a story to Storybook fo manual testing.
-* Design System React requires unit testing of:
+Testing is done using Mocha, Jest, and Storybook. Roughly speaking: Jest tests DOM structure and visual regression with images, Mocha tests user interaction and events, and Storybook allows you to visually inspect and interact with a component.
+
+### Running tests
+
+* Run lint, Karma/PhantomJS environment, and snapshot tests with `npm test`.
+* Test Mocha tests interactively in your browser.
+  * Start server from terminal with `npm start`
+  * Browse to [http://localhost:8001](http://localhost:8001)
+* Run snapshot tests with `npm run snapshot-test` or, for just a specific file:
+  `npm run snapshot-test components/button/`.
+
+### React Storybook
+
+Add DOM snapshot, image snapshot, and documentation site examples to Storybook for manual testing.
+
+`npm start` and browse to [http://localhost:9001](http://localhost:9001) to view Storybooks.
+
+### Linting
+
+Pull requests should conform to Prettier-ESLint](https://github.com/prettier/prettier-eslint) definitions. Use `eslint-disable-line` within tests for exceptions. Prettier-ESLint formats your JavaScript using `prettier` followed by `eslint --fix`. [Prettier](https://prettier.io/)** enforces code _style_. [ESLint](http://eslint.org/)** enforces code _quality_. Run `npm run lint` to test and `npm run lint:fix` to automatically fix many issues.
+
+### Story-based tests
+
+Story-based tests use [Jest](https://facebook.github.io/jest/), [React Storybook](https://storybook.js.org/), and [Storyshots](https://github.com/storybooks/storybook/tree/master/addons/storyshots) to automatically create DOM and image snapshots of each story example. Snapshot testing uses the Jest framework to take a snapshot of the state of the DOM when the component is rendered and save it as a string for future comparison. StoryShots utilizes Jest Image Snapshot to test the visual rendering of pages against previously correct versions for visual regression testing. These tests are run without a DOM. Most props that don't involve the user can be tested here.
+
+To create tests automatically, import examples in `/components/storybook-stories.js` into `/components/story-based-tests.js` also. Then, run `npm run snapshot-test`. Markup and image snapshots will be generated within the `tests` folder for each Storybook story. If additional snapshot tests are needed, create a test ending in `.snapshot-test.jsx`. 
+
+Use Jest to test the presence of:
+
+* DOM/markup nodes
+* CSS classes
+* Styles
+
+**Do not** use Jest for:
+
+* Mouse/keyboard user interaction (event callbacks)
+
+#### Snapshot requirements
+
+* Test if the markup of every state conforms to the [SLDS site](https://www.lightningdesignsystem.com/).
+* **Always pass HTML IDs in** - Many components have the optional `id` property but will generate a random id to use if not passed in. These randomly generated IDs will cause your snapshot tests to fail. The markup text diff may be easier to debug if you change one prop per snapshot and have many snapshots instead of changing many props in one snapshot.
+* Reuse code examples in `examples` folder for tests. This allows confirmation of the alignment of the documentation site examples with SLDS markup.
+
+### Additional tools
+
+* **[Mocha](http://mochajs.org/)** - Test framework ran in [PhantomJS](http://phantomjs.org/)
+* **[Chai](http://chaijs.com/) w/[Expect Syntax](http://chaijs.com/api/bdd/)** - Test assertion library
+* **[Karma](https://karma-runner.github.io/1.0/index.html)** - Command line test runner for Mocha
+* **[Sinon](http://sinonjs.org)** - Stub/mock generator for callbacks and human interactions
+* **[Enzyme](http://airbnb.io/enzyme/)** - manipulate and traverse the DOM with syntax similar to jQuery
+* **[Chai Enzyme](https://github.com/producthunt/chai-enzyme)** - Chai assertions and convenience functions which eliminate asynchronous render complexities
+* **[Istanbul](https://github.com/gotwarlost/istanbul)** - Measures code coverage for Mocha framework
+* **[react-docgen](https://github.com/reactjs/react-docgen)** - Extracts information from React components and generates JSON used by the documentation site
+
+## General test requirements
+
+* Tests need to simulate user interactions as closely as possible.
+* Tests must work in both PhantomJS via the CLI and in your local browser at [http://localhost:8001](http://localhost:8001).
+* All pull requests must contain unit testing of:
   * All components not in a `private` folder
   * All props. This includes `children`, but only to check if `children` rendered.
   * Correct parameters for all event callbacks
@@ -21,64 +75,50 @@ Although we strive to make this library functional, controlled, presentational c
   * Mouse interactions. This includes testing if the component gained focus or lost focus when another element is clicked.
   * Correct DOM focus manipulation (if applicable)
   * Jest snapshots for each [SLDS state and variant](https://www.lightningdesignsystem.com/) implemented and all documentation site example.
-* Test must work in PhantomJS via the CLI and in your local browser at [http://localhost:8001](http://localhost:8001).
-* Pull requests should conform to [ESLint style definition](https://github.com/salesforce-ux/eslint-config-slds). Use `eslint-disable-line` within tests for exceptions.
-* Always pass HTML IDs in - Many components have the optional `id` property but will generate a random id to use if not passed in. These randomly generated IDs will cause your snapshot tests to fail. The markup text diff may be easier to debug if you change one prop per snapshot and have many snapshots instead of changing many props in one snapshot.
 * Tests must unmount and clean up the test fixture after each test or grouping of related tests. Do not allow unrelated tests to "bleed" into each other.
+* Add to the `PropType` description comments `_Tested with snapshot testing._` or `_Tested with Mocha testing._` to state to consumers how the prop is tested. _This will also give you starting list of what needs testing. `assistiveText`, `className`, `labels`, `id`, `isOpen`, `options`, `variant` are examples of props to test with snapshots._
+  eg:
 
-## Testing Suite Overview
+```
+const propTypes = {
+  /**
+   * CSS class names to be added to the accordion component. _Tested with snapshot testing._
+   */
+  className: PropTypes.oneOfType([PropTypes.array, PropTypes.object, PropTypes.string]),
+  /**
+   * HTML id for accordion component. _Tested with snapshot testing._
+   */
+  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+}
+```
 
-* **[Mocha](http://mochajs.org/)** - Test framework ([getting started primer](http://mochajs.org/#getting-started))
-* **[Jest](https://facebook.github.io/jest/)** - A second test framework ([Snapshot Testing](https://facebook.github.io/jest/docs/en/snapshot-testing.html))
-* **[Chai](http://chaijs.com/) w/[Expect Syntax](http://chaijs.com/api/bdd/)** - Test assertion library
-* **[Karma](https://karma-runner.github.io/1.0/index.html)** - Command line test runner --runs tests with `npm test`
-* **[Sinon](http://sinonjs.org)** - Stub/mock generator for callbacks and human interactions
-* **[Enzyme](http://airbnb.io/enzyme/)** - manipulate and traverse the DOM with syntax similar to jQuery
-* **[Chai Enzyme](https://github.com/producthunt/chai-enzyme)** - Chai assertions and convenience functions which eliminate asynchronous render complexities
-* **[ESLint](http://eslint.org/)** - Promotes consistent coding styles
-* **[react-docgen](https://github.com/reactjs/react-docgen)** - Generates JSON used by this library's documentation site.
-* **[Istanbul](https://github.com/gotwarlost/istanbul)** - Measures code coverage
-* **Visual Recognition Tests (COMING SOON)** - Captures an image and compares it to previously captured images
 
-## Running Tests
 
-* Run Karma/PhantomJS environment tests with `npm test`
-* Test interactively in your browser. Start server from terminal with `npm start` and browse to [http://localhost:8001](http://localhost:8001)
+#### TDD with Jest
 
-## Snapshot testing Overview
+HTML Snapshots are a great way to compare markup with the [SLDS site](https://www.lightningdesignsystem.com/) examples.
 
-* Files ending in `.snapshot-test.jsx` will be run by Jest. DOM checking though is tedious even with the jQuery-like, Enzyme. Snapshot testing uses the Jest framework to take a snapshot of the state of the DOM when the component is rendered and save it as a string for future comparison. Please use this process to test the presence of CSS classes, styles, and DOM nodes. Reuse of code examples in `examples` folder is _highly recommended_ in your snapshot tests. This allows confirmation of the alignment of the documentation site examples with design system markup. Mouse/keyboard user interaction tests are still expected to be created in Mocha, because they are often easier to debug interactively in the browser.
+1. Copy markup from design system site
+1. [Convert to JSX](http://magic.reactjs.net/htmltojsx.htm). _SVGs may require extra attention and hand-conversion._
+1. Copy JSX into the new component's `render` function to feed the markup into the Jest snapshot
+1. `npm run snapshot-test` _(or `npm run snapshot-test -- -u` to overwrite the existing snapshot)_
+1. Return to the component and `npm run snapshot-test -- --watch`
+1. Modify your component until you get the markup correct.
 
-### Compare snapshot markup with the design system
+### Mocha
 
-HTML Snapshots are a great way to compare markup with the [SLDS site](https://www.lightningdesignsystem.com/) examples. One way to do Test Driven Development (TDD) with snapshots is:
+Files ending in `.browser-test.jsx` will be run by CI server and in browser.
 
-* Copy markup from design system site
-* [Convert to JSX](http://magic.reactjs.net/htmltojsx.htm). SVGs may need to be converted correctly.
-* Copy JSX into the new component's `render` function to feed the markup into the Jest snapshot
-* `npm run snapshot-test` or `npm run snapshot-test -- -u` (to overwrite the existing snapshot)
-* Return to the component and `npm run snapshot-test -- --watch` and modify your component until you get the markup correct.
+* ARIA attribute states should be tested with in-browser Mocha tests.
+* All mouse/keyboard interactions and events must have Mocha tests.
+  * For components with user interactions events, real DOM testing is preferred. It is not recommended to use shallow rendering or to modify component prototypes with mock functions for these tests.
+  * Because they are often easier to debug in the browser, mouse/keyboard user interaction testing should be done using Mocha.
 
-## Mocha test file
-
-* Files ending in `.browser-test.jsx` will be run by CI server and in browser.
+## Sample Mocha Test File
 
 Here is a well-commented sample test file which you can copy/paste into a new file to get started:
 
 ```
-/* Adds all of the Mocha and sinon testing global
- * variables to the global namespace for eslint purposes.
- */
-/* eslint-env mocha */
-/* global sinon */
-
-// Additional modifiers to eslint settings for convenience
-/* eslint-disable no-console */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable max-len */
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable react/display-name */
-
 // Import your external dependencies
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -90,7 +130,7 @@ import chaiEnzyme from 'chai-enzyme';
  * context [full source here](tests/enzyme-helpers.js). `this` can
  * only be referenced if inside `function () {}`.
  */
-import { mountComponent, unmountComponent } from '../enzyme-helpers';
+import { mountComponent, unmountComponent } from '../../../tests/enzyme-helpers';
 
 // Import your internal dependencies (for example):
 import Tree from '../../components/tree';
