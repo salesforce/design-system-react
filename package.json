@@ -472,12 +472,20 @@
       "component": "media-object",
       "status": "prod",
       "display-name": "Media Objects",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
       "SLDS-component-path": "/components/utilities/media-objects/"
     },
     {
       "component": "menu-dropdown",
       "status": "prod",
       "display-name": "Dropdown Menus",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
       "SLDS-component-path": "/components/menus#flavor-dropdown",
       "dependencies": [
         {
@@ -524,6 +532,10 @@
       "component": "popover",
       "status": "prod",
       "display-name": "Popovers",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
       "SLDS-component-path": "/components/popovers"
     },
     {
@@ -598,6 +610,10 @@
       "component": "radio-button-group",
       "status": "prod",
       "display-name": "Radio Button Groups",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
       "SLDS-component-path": "/components/radio-button-group"
     },
     {
