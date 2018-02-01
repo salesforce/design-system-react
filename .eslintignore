@@ -10,11 +10,12 @@ package-lock.json
 
 # React Storybook
 storybook/
+storybook-based-tests/
 
 # Publishing and dist build
 .tmp*
 
-# For build server. A copy of itself is 
+# For build server. A copy of itself is
 design-system-react
 
 # Allow custom pre-commit

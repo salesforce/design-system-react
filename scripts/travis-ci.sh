@@ -5,19 +5,24 @@
 
 source ./scripts/test.sh
 
-# Prettier
-RUN_PRETTIER_CODE='npm run prettier-eslint:code:no-fix'
-SKIP_RUN_PRETTIER_CODE=false
-# ESlint tests on files within components and utilities folders. Doc examples and tests are currently excluded.
-RUN_PRETTIER_DOCS='npm run prettier:docs:no-fix'
-SKIP_RUN_PRETTIER_DOCS=false
+# Test that your NPM module dependendencies are not missing.
+# [commented out until alpha dependencies for image storyshots 
+# and Babel are worked out]
+# VALIDATE_NPM_MODULES='npm run validate'
+# SKIP_VALIDATE_NPM_MODULES=false
+
+# Prettier THEN ESlint on files within components and utilities folders.
+# Prettier by itself will not work. 
+# Prettier ONLY on JSON and markdown files.
+RUN_LINT='npm run lint'
+SKIP_LINT=false
 # Mocha framework tests that focus on user interaction
 START_KARMA='node_modules/.bin/karma start --single-run'
 SKIP_START_KARMA=false
 # Jest markup & image snapshot tests
 SNAPSHOT_TESTS='npm run snapshot-test'
 SKIP_SNAPSHOT_TESTS=false
-# React DocGen library build of source comments into a JSON file for documentation site
+# React DocGen library build of source code PropType comments into a JSON file for documentation site
 DOCGEN='npm run build-docs'
 SKIP_DOCGEN=false
 
@@ -25,16 +30,20 @@ numArgs=$#
 # parse arguments
 if (( numArgs >= 0 )); then
 	until [ -z "$1" ]; do
-		[ "$1" == "--skip-format" ] ||
-		[ "$1" == "--no-format" ] ||
+		# [ "$1" == "--skip-validate" ] &&
+		#	VALIDATE_NPM_MODULES="echo ✂    ︎ skipping ${VALIDATE_NPM_MODULES}"
+		[ "$1" == "--fix" ] &&
+			# Prettier THEN ESlint on files within components and utilities folders.
+			# Prettier by itself will not work. 
+			# Prettier ONLY on JSON and markdown files.
+			RUN_LINT='npm run lint:fix'
 		[ "$1" == "--skip-prettier" ] ||
 		[ "$1" == "--no-prettier" ] ||
 		[ "$1" == "--skip-lint" ] ||
 		[ "$1" == "--no-lint" ] ||
 		[ "$1" == "--skip-eslint" ] ||
 		[ "$1" == "--no-eslint" ] &&
-			RUN_PRETTIER_CODE="echo ✂    ︎ skipping ${RUN_PRETTIER_CODE}" &&
-			RUN_PRETTIER_DOCS="echo ✂    ︎ skipping ${RUN_PRETTIER_DOCS}"
+			RUN_LINT="echo ✂    ︎ skipping ${RUN_LINT}" &&
 		[ "$1" == "--skip-karma" ] ||
 		[ "$1" == "--no-karma" ]  &&
 			START_KARMA="echo ✂    ︎ skipping ${START_KARMA}"
@@ -52,7 +61,7 @@ if (( numArgs >= 0 )); then
 	done
 fi
 
-declare -a COMMANDS=("${RUN_PRETTIER_CODE}" "${RUN_PRETTIER_DOCS}" "${START_KARMA}" "${SNAPSHOT_TESTS}" "${DOCGEN}")
+declare -a COMMANDS=("${RUN_LINT}" "${START_KARMA}" "${SNAPSHOT_TESTS}" "${DOCGEN}")
 
 printf "
 Running DSR Travis-CI QA Scripts

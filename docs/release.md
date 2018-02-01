@@ -24,4 +24,4 @@
 1. Create environment variable, `ORIGIN` and set to `[git@github.com:[your username]/design-system-react.git]`
 1. Create environment variable, `GIT_SSH_KEY` and set to a user's private key (base64 encoded) that has access to your repository. `openssl base64 < [PRIVATE_KEY_FILENAME] | tr -d '\n' | pbcopy`
 
-_If you are timid about releasing or need your pull request in review "pre-released," you can publish to origin (your fork) with `npm run publish:git` and then test and review the tag on your fork. This is just the publish step though, any other tasks you will need to do manually to test publishing._
+_If you are timid about releasing or need your pull request in review "pre-released," you can publish to origin (your fork) with `npm run publish:origin` and then test and review the tag on your fork. This is just the publish step though, any other tasks you will need to do manually to test publishing._

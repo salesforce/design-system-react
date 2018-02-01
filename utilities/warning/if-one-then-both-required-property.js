@@ -20,7 +20,7 @@ if (process.env.NODE_ENV !== 'production') {
 		const additionalComment = comment ? ` ${comment}` : '';
 		let bothOrNoneAreSet = false;
 		const keys = Object.keys(selectedProps);
-		const values = Object.values(selectedProps);
+		const values = keys.map((key) => selectedProps[key]);
 		const allTruthy = values.every((element) => !!element);
 		const allFalsey = values.every((element) => !element);
 

@@ -4,18 +4,18 @@ First, on behalf of the core maintainers, I'd like to thank you for wanting to c
 
 ## Contributing process
 
-1. Read the [Codebase Overview](docs/codebase-overview.md) to learn concepts and best practices for the codebase and to confirm it is within project scope.
-1. Create a new issue before starting your solution to keep track of what you are trying to contribute. That way, we can offer suggestions, collaborate on a public API (props), or let you know if there is already an effort in progress.
+1. Read the [Codebase Overview](docs/codebase-overview.md) to learn concepts and best practices for the codebase and to confirm contribution is within project scope.
+1. Create a new issue before starting your solution to keep track of what you want to contribute, so that others can offer suggestions, collaborate on a public API (props), or let you know if there is already an effort in progress.
 1. Fork this repository, clone your fork locally. Create a topic branch locally.
-1. Add the new component to the `/components` folder
-1. Add the component name to `/components/constants.js`
-1. If you are adding a feature, add [documentation site examples](https://react.lightningdesignsystem.com/) and [dev storybook stories](https://design-system-react-components.herokuapp.com/) in `/components/[COMPONENT]/__examples__/`. This doesn't apply to bugfixes. Run `npm start` to view stories at `localhost:9001`.
-1. Add Mocha and Snapshot tests to `/components/[COMPONENT]/__tests__/`
-1. Hook up site and storybook examples in `/components/[COMPONENT]/__docs__/`
-1. Hook up documentation site examples in `/components/site-stories.js`. Site examples only have access to variables exported in `/components/index.js`, so you should limit your component's site example imports to these variables. See [#1192](https://github.com/salesforce/design-system-react/issues/1192) for more information.
+1. Add a new component folder to the `/components`.
+1. Add all public components exports to `/components/index.js` and the component's name to `/components/constants.js`
+1. Add [documentation site examples](https://react.lightningdesignsystem.com/) and [dev storybook stories](https://design-system-react-components.herokuapp.com/) in `/components/[COMPONENT]/__examples__/`.
+1. Hook up storybook and site examples in `/components/[COMPONENT]/__docs__/`. Import these examples into Storybook within `/components/storybook-stories.js` and `/components/site-stories.js` respectively. Run `npm start` to view stories at `localhost:9001`. Site examples only have access to variables exported in `/components/index.js`, so you should limit your component's site example imports to these variables. See [#1192](https://github.com/salesforce/design-system-react/issues/1192) for more information.
+1. Copy new examples from `/components/storybook-stories.js` to `/components/story-based-tests.js`. This will add DOM and image snapshot testing for the component. These tests use [Storyshots](https://github.com/storybooks/storybook/tree/master/addons/storyshots) and are run without a DOM. Most props that don't involve the user can be tested here.
+1. Add callback prop tests in Mocha test framework to `/components/[COMPONENT]/__tests__/`
 1. Push to your username's forked repository.
 1. Send us a well-documented pull request targeting `master` from your forked repository. GitHub pull requests should have a descriptive title, a brief summary, @mention several relevant people to review the code, add helpful GitHub comments on lines where you have questions or concerns. All contributors must sign a [Contributor License Agreement](https://cla.salesforce.com/sign-cla).
-1. We'll review your code, suggest any needed changes, and hopefully merge it in. Thank you!
+1. We'll review your code, suggest any needed changes, and hopefully merge it in soon. Thank you!
 
 ## Contributing Guidelines
 
@@ -23,11 +23,11 @@ First, on behalf of the core maintainers, I'd like to thank you for wanting to c
 * UX pattern / design must exist in [SLDS](https://www.lightningdesignsystem.com/). Components in the process of being added to SLDS will be considered as prototypes.
 * All new props and components need tests. **Please review the [testing readme](/tests/README.md)**
 * Contributions of components with a subset of SLDS variants will be considered. Please consider your architecture in view of the other variants and create an issue before starting just to be certain.
-* Follow `prettier-eslint` settings. [Prettier](https://prettier.io/) is run first. Then [ESlint](https://eslint.org/). Upon commit, staged files will be run through `prettier --write` and `eslint --fix`. This should make them pass the lint task run on the CI server and hopefully avoid style nitpicks.
+* Follow this library's `prettier-eslint` settings. `npm run lint:fix` will run [Prettier](https://prettier.io/) and then [ESlint](https://eslint.org/) and write changes to your files.
   * You can enable this behavior at save in your editor, too. For instance, in Visual Studio Code, run the [prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and set `"editor.formatOnSave": true` and `prettier.eslintIntegration: true`.
 * If you are adding a feature, [add a story](https://storybook.js.org/basics/writing-stories/) to the React Storybook that uses your feature, so that reviewers can test it.
 * Add enough Storybook stories and testing examples to show use of all component prop and values--if they are enumerated. All examples that are present for a component in the [SLDS website](https://www.lightningdesignsystem.com/) should be created as a Storybook story _and_ imported into the documentaiton site examples.
-* Prop description tables on the documentation site are generated from propType comments within the component. Use `npm run build-docs` to confirm comment compatibility. Introductory component descriptions are generated from the comment directly before the component declaration with [react-docgen](https://github.com/reactjs/react-docgen).
+* Prop description tables on the documentation site are generated from `propType` comments within the component. Use `npm run build-docs` to confirm comment compatibility. Introductory component descriptions are generated from the comment directly before the component declaration with [react-docgen](https://github.com/reactjs/react-docgen).
 * All props descriptions should have a _Tested with snapshot testing._ or _Tested with Mocha framework._ notice in them.
 
 ## The review process
