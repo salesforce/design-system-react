@@ -72,7 +72,6 @@ describe('SLDSSplitView - Listbox', () => {
 		});
 	};
 
-
 	describe('When the component is mounted', () => {
 		it('should focus the first selected item', () => {
 			component = mountComponent({

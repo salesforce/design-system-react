@@ -126,7 +126,7 @@ class SplitView extends React.Component {
 
 		if (this.state.isOpen && this.props.events.onClose) {
 			this.props.events.onClose(event);
-		}	else if (!this.state.isOpen && this.props.events.onOpen) {
+		} else if (!this.state.isOpen && this.props.events.onOpen) {
 			this.props.events.onOpen(event);
 		}
 	}
