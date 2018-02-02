@@ -12,15 +12,20 @@
       "modules": true
     }
   },
+  "plugins": [
+    "filenames"
+  ],
   "env": {
     "browser": true
   },
   "overrides": [
     {
       "files": [
-        "*.{js,jsx}",
-        "**/__tests__/*.{js,jsx}",
-        "**/__docs__/*.{js,jsx}",
+        "./*.js",
+        "preset/*.js",
+        "**/__examples__/**/*.{js,jsx}",
+        "**/__tests__/**/*.{js,jsx}",
+        "**/__docs__/**/*.{js,jsx}",
         "tests/*.{js,jsx}",
         "scripts/*.js",
         "**/site-stories.js"
@@ -36,9 +41,11 @@
     },
     {
       "files": [
-        "*.{js,jsx}",
-        "**/__tests__/*.{js,jsx}",
-        "**/__docs__/*.{js,jsx}",
+        "./*.js",
+        "preset/*.js",
+        "**/__examples__/**/*.{js,jsx}",
+        "**/__tests__/**/*.{js,jsx}",
+        "**/__docs__/**/*.{js,jsx}",
         "tests/*.{js,jsx}",
         "scripts/*.js",
         "**/site-stories.js"
@@ -67,8 +74,10 @@
   ],
   "rules": {
     "arrow-parens": [1, "always"],
+    "filenames/match-regex": [ 2, "^[a-z\\-\\.]+$", true],
     "import/extensions": "off",
     "import/first": 1,
+    // used by examples for "root" npm package in documentation site
     "import/no-unresolved": [2, { "ignore": ["^[~]"] }],
     "indent": [
       2,
