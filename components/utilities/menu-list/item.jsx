@@ -126,7 +126,7 @@ const ListItem = createReactClass({
 	handleClick (event) {
 		if (
 			this.props.type !== 'link' ||
-			this.props.href === 'javascript:void(0);'
+			this.props.href === 'javascript:void(0);' // eslint-disable-line no-script-url
 		) {
 			// eslint-disable-line no-script-url
 			EventUtil.trapImmediate(event);

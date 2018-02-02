@@ -1,4 +1,5 @@
 /* eslint-env node */
+/* eslint-disable import/no-extraneous-dependencies */
 const webpackConfig = require('./webpack.config');
 const karmaWebpack = require('karma-webpack');
 const karmaMocha = require('karma-mocha');

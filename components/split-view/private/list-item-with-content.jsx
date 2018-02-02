@@ -113,7 +113,7 @@ const listItemWithContent = (ListItemContent) => {
 								: this.props.isSelected
 						}
 						tabIndex={this.props.isFocused ? 0 : -1}
-						href="javascript:void(0);"
+						href="javascript:void(0);" // eslint-disable-line no-script-url
 						onClick={(e) => this.onClick(e)}
 					>
 						{this.unread()}
