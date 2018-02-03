@@ -12,9 +12,7 @@
       "modules": true
     }
   },
-  "plugins": [
-    "filenames"
-  ],
+  "plugins": ["filenames"],
   "env": {
     "browser": true
   },
@@ -74,7 +72,7 @@
   ],
   "rules": {
     "arrow-parens": [1, "always"],
-    "filenames/match-regex": [ 2, "^[a-z\\-\\.]+$", true],
+    "filenames/match-regex": [2, "^[a-z\\-\\.]+$", true],
     "import/extensions": "off",
     "import/first": 1,
     // used by examples for "root" npm package in documentation site
@@ -86,16 +84,7 @@
         "SwitchCase": 1
       }
     ],
-    "max-len": [
-      1,
-      140,
-      4,
-      {
-        "ignoreUrls": true,
-        "ignoreComments": true,
-        "ignorePattern": "^(\\s*)<([^\"{}();])+$"
-      }
-    ],
+    "max-len": "off",
     "no-multi-spaces": [
       1,
       {
