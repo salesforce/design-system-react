@@ -52,7 +52,7 @@ const Example = createReactClass({
 							}
 							id="unique-id-2"
 							label="Input Label"
-							placeholder={'Clickable Icons (Left and Right)'}
+							placeholder="Clickable Icons (Left and Right)"
 						/>
 					</div>
 					<div className="slds-col--padded">

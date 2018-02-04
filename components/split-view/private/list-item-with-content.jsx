@@ -86,7 +86,7 @@ const listItemWithContent = (ListItemContent) => {
 		unread () {
 			return this.props.isUnread ? (
 				<abbr
-					className={'slds-indicator_unread'}
+					className="slds-indicator_unread"
 					title={this.props.assistiveText.unreadItem}
 					aria-label={this.props.assistiveText.unreadItem}
 				>

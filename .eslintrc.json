@@ -173,8 +173,6 @@
     // TODO: Should be removed
     "react/no-unused-state": "off",
     // TODO: Should be removed
-    "react/jsx-curly-brace-presence": "off",
-    // TODO: Should be removed
     "react/prop-types": "off",
     // TODO: Should be removed
     "react/prefer-es6-class": "off",

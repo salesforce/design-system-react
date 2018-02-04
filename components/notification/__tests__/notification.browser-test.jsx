@@ -62,7 +62,7 @@ describe('SLDSNotification: ', () => {
 					iconName="notification"
 					isOpen
 					texture
-					content={'hi'}
+					content="hi"
 				/>
 			);
 			setTimeout(() => {
