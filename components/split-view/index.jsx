@@ -175,7 +175,7 @@ class SplitView extends React.Component {
 					style={{
 						marginLeft: TOGGLE_BUTTON_WIDTH
 					}}
-					className={'slds-grow slds-scrollable_y'}
+					className="slds-grow slds-scrollable_y"
 				>
 					{this.props.detail}
 				</div>

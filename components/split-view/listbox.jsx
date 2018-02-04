@@ -279,14 +279,14 @@ class SplitViewListbox extends React.Component {
 	sortDirection () {
 		return this.props.sortDirection ? (
 			<Icon
-				category={'utility'}
+				category="utility"
 				name={
 					this.props.sortDirection === SORT_OPTIONS.DOWN
 						? 'arrowdown'
 						: 'arrowup'
 				}
-				size={'xx-small'}
-				className={'slds-align-top'}
+				size="xx-small"
+				className="slds-align-top"
 			/>
 		) : null;
 	}
