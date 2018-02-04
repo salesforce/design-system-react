@@ -74,14 +74,14 @@
     // Increases clarity and readabilty
     "arrow-parens": [1, "always"],
     // Creates consistent filename case: "kabob case"
-    "filenames/match-regex": [2, "^[a-z\\-\\.]+$", true],
+    "filenames/match-regex": ["error", "^[a-z\\-\\.]+$", true],
     // ALl imported files are JSX or JS
     "import/extensions": "off",
     // `~` is used by examples for "root" npm package in documentation site
-    "import/no-unresolved": [2, { "ignore": ["^[~]"] }],
+    "import/no-unresolved": ["error", { "ignore": ["^[~]"] }],
     // This is a tab indent library at this time.
     "indent": [
-      2,
+      "error",
       "tab",
       {
         "SwitchCase": 1
@@ -90,7 +90,7 @@
     // Creates issues within JSX when paired with Prettier. This library defers to Preitter for line length.
     "max-len": "off",
     "no-multi-spaces": [
-      2,
+      "error",
       {
         // allows "column spacing." Following key names are Abstract Syntax Tree types
         "exceptions": {
@@ -109,14 +109,14 @@
     // _ is not really private.
     "no-underscore-dangle": ["error", { "allowAfterThis": true }],
     // Increases readability of function name
-    "space-before-function-paren": [2, "always"],
+    "space-before-function-paren": ["error", "always"],
 
     // Can't be used because it doesn't currently recognize props used in functions
     "react/no-unused-prop-types": "off",
     // This is a tab indent library at this time.
-    "react/jsx-indent": [2, "tab"],
+    "react/jsx-indent": ["error", "tab"],
     // indent props passed into React component
-    "react/jsx-indent-props": [2, "tab"],
+    "react/jsx-indent-props": ["error", "tab"],
 
     //
     // THE FOLLOWING RULES NEED REVIEW IN THE FUTURE (and possibly removed)
@@ -130,7 +130,7 @@
     "class-methods-use-this": "warn",
     // We are open to changing this to always use a trailing comma,
     // in order to make re-sorting easier
-    "comma-dangle": [2, "never"],
+    "comma-dangle": ["error", "never"],
     // TODO: Should be removed
     "func-names": "off",
     // May consider removing
@@ -139,7 +139,7 @@
     "import/first": "off",
     // currently used in older files, this should be removed
     "no-param-reassign": [
-      2,
+      "error",
       {
         "props": false
       }
@@ -191,14 +191,14 @@
 
     // javascript:void(0) is present in SLDS markup
     "jsx-a11y/anchor-is-valid": "off",
-    "jsx-a11y/aria-activedescendant-has-tabindex": 2,
-    "jsx-a11y/interactive-supports-focus": 2,
-    "jsx-a11y/no-autofocus": 2,
-    "jsx-a11y/no-interactive-element-to-noninteractive-role": 2,
-    "jsx-a11y/no-noninteractive-element-interactions": 2,
-    "jsx-a11y/no-noninteractive-tabindex": 2,
-    "jsx-a11y/no-redundant-roles": 2,
-    "jsx-a11y/role-has-required-aria-props": 2,
+    "jsx-a11y/aria-activedescendant-has-tabindex": "error",
+    "jsx-a11y/interactive-supports-focus": "error",
+    "jsx-a11y/no-autofocus": "error",
+    "jsx-a11y/no-interactive-element-to-noninteractive-role": "error",
+    "jsx-a11y/no-noninteractive-element-interactions": "error",
+    "jsx-a11y/no-noninteractive-tabindex": "error",
+    "jsx-a11y/no-redundant-roles": "error",
+    "jsx-a11y/role-has-required-aria-props": "error",
     // Many labels have htmlFor, but are still errors
     "jsx-a11y/label-has-for": "off",
     // TODO: Should be removed. All mouse interactions should be able
