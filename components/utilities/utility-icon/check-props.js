@@ -12,7 +12,7 @@ if (process.env.NODE_ENV !== 'production') {
 			const modifiedPath = props.path || props.context.iconPath;
 			urlExists(
 				COMPONENT,
-				`${modifiedPath}/${props.category}-sprite/svg/symbols.svg#${props.name}`
+				`${modifiedPath}/${props.category}-sprite/svg/symbols.svg#${props.name}`,
 			);
 		}
 	};

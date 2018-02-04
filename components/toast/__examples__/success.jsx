@@ -16,8 +16,8 @@ class Example extends React.Component {
 								<a key="acme-100" href="javascript:void(0);">
 									ACME - 100
 								</a>,
-								' widgets was created.'
-							]
+								' widgets was created.',
+							],
 						}}
 						variant="success"
 					/>

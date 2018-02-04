@@ -10,7 +10,7 @@ if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT) {
 		componentIsDeprecated(
 			COMPONENT,
-			'Please use an auto-complete Combobox instead. It is more accessible and closer aligned to SLDS.'
+			'Please use an auto-complete Combobox instead. It is more accessible and closer aligned to SLDS.',
 		);
 	};
 }

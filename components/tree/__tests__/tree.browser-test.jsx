@@ -12,7 +12,7 @@ import chaiEnzyme from 'chai-enzyme';
 // `this.wrapper` and `this.dom` is set in the helpers file
 import {
 	mountComponent,
-	unmountComponent
+	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 
 // ### isFunction
@@ -27,7 +27,7 @@ import Search from '../../forms/input/search';
 chai.use(chaiEnzyme());
 
 const COMPONENT_CSS_CLASSES = {
-	base: 'slds-tree'
+	base: 'slds-tree',
 };
 
 const DemoTree = createReactClass({
@@ -43,13 +43,13 @@ const DemoTree = createReactClass({
 		searchTerm: PropTypes.string,
 		searchable: PropTypes.bool,
 		singleSelection: PropTypes.bool,
-		treeScrolled: PropTypes.func
+		treeScrolled: PropTypes.func,
 	},
 
 	getDefaultProps () {
 		return {
 			exampleNodesIndex: 'sampleNodesDefault',
-			id: 'example-tree'
+			id: 'example-tree',
 		};
 	},
 
@@ -59,7 +59,7 @@ const DemoTree = createReactClass({
 			: sampleNodes.sampleNodesDefault;
 		return {
 			nodes: initalNodes,
-			searchTerm: this.props.searchable ? 'fruit' : undefined
+			searchTerm: this.props.searchable ? 'fruit' : undefined,
 		};
 	},
 
@@ -77,7 +77,7 @@ const DemoTree = createReactClass({
 				this.forceUpdate();
 			},
 			500,
-			data.node
+			data.node,
 		);
 		data.node.expanded = data.expand;
 	},
@@ -142,7 +142,7 @@ const DemoTree = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 describe('Tree: ', () => {
@@ -159,8 +159,8 @@ describe('Tree: ', () => {
 					id={id}
 					listClassName="this-is-an-unordered-list-test"
 					listStyle={{ height: '500px' }}
-				/>
-			)
+				/>,
+			),
 		);
 
 		afterEach(unmountComponent);
@@ -186,11 +186,11 @@ describe('Tree: ', () => {
 
 		it('has heading via assistiveText', function () {
 			const heading = this.wrapper.find(
-				'#example-tree__heading.slds-assistive-text'
+				'#example-tree__heading.slds-assistive-text',
 			);
 			expect(heading).to.have.length(1);
 			const ariaLabelledbyId = this.wrapper.find(
-				'.slds-tree[aria-labelledby="example-tree__heading"]'
+				'.slds-tree[aria-labelledby="example-tree__heading"]',
 			);
 			expect(ariaLabelledbyId).to.have.length(1);
 		});
@@ -202,8 +202,8 @@ describe('Tree: ', () => {
 				<DemoTree
 					exampleNodesIndex="sampleNodesWithInitialState"
 					heading="Foods"
-				/>
-			)
+				/>,
+			),
 		);
 
 		afterEach(unmountComponent);
@@ -237,8 +237,8 @@ describe('Tree: ', () => {
 					branchExpandClicked={expandClicked}
 					itemClicked={itemClicked}
 					heading="Foods"
-				/>
-			)
+				/>,
+			),
 		);
 
 		afterEach(unmountComponent);
@@ -262,7 +262,7 @@ describe('Tree: ', () => {
 		const itemClicked = sinon.spy();
 
 		beforeEach(
-			mountComponent(<DemoTree itemClicked={itemClicked} heading="Foods" />)
+			mountComponent(<DemoTree itemClicked={itemClicked} heading="Foods" />),
 		);
 
 		afterEach(unmountComponent);
@@ -285,8 +285,8 @@ describe('Tree: ', () => {
 					exampleNodesIndex="sampleNodesWithInitialState"
 					getNodes={getNodes}
 					heading="Foods"
-				/>
-			)
+				/>,
+			),
 		);
 
 		afterEach(unmountComponent);
@@ -318,10 +318,10 @@ describe('Tree: ', () => {
 					onScroll={onScroll}
 					listStyle={{
 						height: '300px',
-						overflowY: 'auto'
+						overflowY: 'auto',
 					}}
-				/>
-			)
+				/>,
+			),
 		);
 
 		afterEach(unmountComponent);

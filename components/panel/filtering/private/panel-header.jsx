@@ -25,7 +25,7 @@ const PanelFilterHeader = ({
 	onRequestCancel,
 	onRequestClose,
 	onRequestSave,
-	saveLabel
+	saveLabel,
 }) =>
 	(modified ? (
 		<div className="slds-filters__header slds-grid slds-has-divider--bottom-space slds-grid--align-spread">
@@ -83,7 +83,7 @@ PanelFilterHeader.propTypes = {
 	/**
 	 * Label for button that saves modified filters
 	 */
-	saveLabel: PropTypes.string
+	saveLabel: PropTypes.string,
 };
 
 export default PanelFilterHeader;

@@ -17,7 +17,7 @@ if (process.env.NODE_ENV !== 'production') {
 			/* eslint-disable max-len */
 			warning(
 				!propValue,
-				`[Design System React] \`${newProp}\` of ${control} is not implemented yet. Please check future releases for \`${newProp}\`.${additionalComment}`
+				`[Design System React] \`${newProp}\` of ${control} is not implemented yet. Please check future releases for \`${newProp}\`.${additionalComment}`,
 			);
 			/* eslint-enable max-len */
 			hasWarned[control + newProp] = !!propValue;

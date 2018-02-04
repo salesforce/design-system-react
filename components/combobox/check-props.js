@@ -13,7 +13,7 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.isInline,
 			'isInline',
-			'menuPosition="relative"'
+			'menuPosition="relative"',
 		);
 		/* eslint-enable max-len */
 	};

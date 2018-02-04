@@ -41,7 +41,7 @@ const propTypes = {
 	/**
 	 * HTML title attribute. _Tested with snapshot testing._
 	 */
-	title: PropTypes.string
+	title: PropTypes.string,
 };
 
 const AccordionPanel = ({
@@ -51,12 +51,12 @@ const AccordionPanel = ({
 	panelContentActions,
 	summary,
 	title,
-	onTogglePanel
+	onTogglePanel,
 }) => (
 	<li className="slds-accordion__list-item">
 		<section
 			className={classNames('slds-accordion__section', {
-				'slds-is-open': expanded
+				'slds-is-open': expanded,
 			})}
 		>
 			<div className="slds-accordion__summary">

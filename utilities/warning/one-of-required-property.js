@@ -25,7 +25,7 @@ if (process.env.NODE_ENV !== 'production') {
 			/* eslint-disable max-len */
 			warning(
 				atLeastOnePropIsSet,
-				`[Design System React] One of the following props are required by ${control}: [${keys.join()}].${additionalComment}`
+				`[Design System React] One of the following props are required by ${control}: [${keys.join()}].${additionalComment}`,
 			);
 			/* eslint-enable max-len */
 			hasWarned[control] = !!selectedProps;

@@ -20,7 +20,7 @@ describe('Inline Edit: ', function () {
 			document.body.appendChild(this.dom);
 			this.component = ReactDOM.render(
 				<IconSettings iconPath="/assets/icons">{instance}</IconSettings>,
-				this.dom
+				this.dom,
 			);
 		};
 
@@ -40,8 +40,8 @@ describe('Inline Edit: ', function () {
 	describe('Structure', function () {
 		beforeEach(
 			renderInlineEdit(
-				<InlineEdit id="inline-edit-standard" value={sampleValue} />
-			)
+				<InlineEdit id="inline-edit-standard" value={sampleValue} />,
+			),
 		);
 
 		afterEach(removeInlineEdit);

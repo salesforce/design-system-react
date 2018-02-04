@@ -14,7 +14,7 @@ const Example = createReactClass({
 				<BreadCrumb trail={trail} />
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

@@ -4,7 +4,7 @@ import chaiEnzyme from 'chai-enzyme';
 // `this.wrapper` and `this.dom` is set in the helpers file
 import {
 	mountComponent,
-	unmountComponent
+	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 
 import MediaObject from '../../media-object';
@@ -18,7 +18,7 @@ chai.use(chaiEnzyme());
 const COMPONENT_CSS_CLASSES = {
 	base: 'slds-media',
 	figure: 'slds-media__figure',
-	body: 'slds-media__body'
+	body: 'slds-media__body',
 };
 
 const DemoComponent = (props) => (
@@ -39,8 +39,8 @@ describe(`${MEDIA_OBJECT}: `, () => {
 					body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda."
 					className="this-is-a-container-test"
 					figure={<Icon category="standard" name="user" size="medium" />}
-				/>
-			)
+				/>,
+			),
 		);
 
 		afterEach(unmountComponent);
@@ -53,7 +53,7 @@ describe(`${MEDIA_OBJECT}: `, () => {
 			console.log(body.text());
 			const bodyText = body.text();
 			expect(bodyText).to.equal(
-				'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda.'
+				'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda.',
 			);
 
 			const figure = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.figure}`);
@@ -69,8 +69,8 @@ describe(`${MEDIA_OBJECT}: `, () => {
 					figure={<Icon category="standard" name="user" size="medium" />}
 					verticalCenter
 					canTruncate
-				/>
-			)
+				/>,
+			),
 		);
 
 		afterEach(unmountComponent);

@@ -13,38 +13,38 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.iconCategory,
 			'iconCategory',
-			'Use `Icon` instead.'
+			'Use `Icon` instead.',
 		);
 		sunsetProperty(
 			COMPONENT,
 			props.iconName,
 			'iconName',
-			'Use `Icon` instead.'
+			'Use `Icon` instead.',
 		);
 
 		sunsetProperty(
 			COMPONENT,
 			props.content,
 			'content',
-			'Use `labels.heading` and `labels.headingLink` instead.'
+			'Use `labels.heading` and `labels.headingLink` instead.',
 		);
 		sunsetProperty(
 			COMPONENT,
 			props.duration,
 			'duration',
-			'Only Toasts can auto-hide.'
+			'Only Toasts can auto-hide.',
 		);
 		sunsetProperty(
 			COMPONENT,
 			props.isOpen,
 			'isOpen',
-			'Use a conditional outside of alert.'
+			'Use a conditional outside of alert.',
 		);
 		sunsetProperty(
 			COMPONENT,
 			props.isOpen,
 			'onDismiss',
-			'Use `onRequestClose` instead'
+			'Use `onRequestClose` instead',
 		);
 		sunsetProperty(COMPONENT, props.texture, 'texture');
 		sunsetProperty(COMPONENT, props.theme, 'theme', 'Use `variant` instead.');

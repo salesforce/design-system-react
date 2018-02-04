@@ -39,7 +39,7 @@ const recordHomeContentRight = (
 				align="right"
 				options={[
 					{ label: 'Disable', value: 'A0' },
-					{ label: 'Promote', value: 'C0' }
+					{ label: 'Promote', value: 'C0' },
 				]}
 			/>
 		</SLDSButtonGroup>
@@ -52,10 +52,10 @@ const recordHomeDetails = [
 		content:
 			'Description that demonstrates truncation with content. Description that demonstrates truncation with content.',
 		flavor: '1-of-4',
-		truncate: true
+		truncate: true,
 	},
 	{ label: 'Last Modified', content: 'August 31, 2016 2:01PM PST' },
-	{ label: 'Status', content: 'Status of thing you wanna know' }
+	{ label: 'Status', content: 'Status of thing you wanna know' },
 ];
 
 describe('PageHeader: ', function () {
@@ -67,7 +67,7 @@ describe('PageHeader: ', function () {
 		title: 'Record Title',
 		variant: 'recordHome',
 		contentRight: recordHomeContentRight,
-		details: recordHomeDetails
+		details: recordHomeDetails,
 	};
 
 	describe('Renders basic props', function () {
@@ -75,7 +75,7 @@ describe('PageHeader: ', function () {
 			const wrapper = mount(
 				<IconSettings iconPath="/assets/icons">
 					<PageHeader {...defaultPropsRecordHome} />
-				</IconSettings>
+				</IconSettings>,
 			);
 			const svg = wrapper.find('.slds-media__figure .slds-icon-standard-user');
 			expect(svg).to.exist;
@@ -85,7 +85,7 @@ describe('PageHeader: ', function () {
 			const wrapper = mount(
 				<IconSettings iconPath="/assets/icons">
 					<PageHeader {...defaultPropsRecordHome} />
-				</IconSettings>
+				</IconSettings>,
 			);
 			// Need to find the prop this way because PageHeader is being rendered inside of the IconSettings
 			const childrenProps = wrapper.component.props.props.children.props;
@@ -96,7 +96,7 @@ describe('PageHeader: ', function () {
 			const wrapper = mount(
 				<IconSettings iconPath="/assets/icons">
 					<PageHeader {...defaultPropsRecordHome} />
-				</IconSettings>
+				</IconSettings>,
 			);
 			// Need to find the prop this way because PageHeader is being rendered inside of the IconSettings
 			const childrenProps = wrapper.component.props.props.children.props;
@@ -107,7 +107,7 @@ describe('PageHeader: ', function () {
 			const wrapper = mount(
 				<IconSettings iconPath="/assets/icons">
 					<PageHeader {...defaultPropsRecordHome} />
-				</IconSettings>
+				</IconSettings>,
 			);
 			const statefulBtn = wrapper.find('.slds-not-selected');
 			const buttonGroup = wrapper.find('.slds-button-group');
@@ -119,13 +119,13 @@ describe('PageHeader: ', function () {
 			const wrapper = mount(
 				<IconSettings iconPath="/assets/icons">
 					<PageHeader {...defaultPropsRecordHome} />
-				</IconSettings>
+				</IconSettings>,
 			);
 			const field1Title = wrapper.find('.slds-text-title').first();
 			const field1Content = wrapper.find('.slds-text-body--regular').first();
 			expect(field1Title.text()).to.equal('Description');
 			expect(field1Content.text()).to.equal(
-				'Description that demonstrates truncation with content. Description that demonstrates truncation with content.'
+				'Description that demonstrates truncation with content. Description that demonstrates truncation with content.',
 			);
 		});
 	});
@@ -135,7 +135,7 @@ describe('PageHeader: ', function () {
 			const wrapper = mount(
 				<IconSettings iconPath="/assets/icons">
 					<PageHeader {...defaultPropsRecordHome} />
-				</IconSettings>
+				</IconSettings>,
 			);
 			const field1Content = wrapper.find('.slds-text-body--regular').first();
 			expect(field1Content.hasClass('slds-truncate')).to.equal(true);

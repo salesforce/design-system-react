@@ -128,9 +128,6 @@
 
     // static class properties/method is still too low of a babel stage
     "class-methods-use-this": "warn",
-    // We are open to changing this to always use a trailing comma,
-    // in order to make re-sorting easier
-    "comma-dangle": [2, "never"],
     // TODO: Should be removed
     "func-names": "off",
     // May consider removing

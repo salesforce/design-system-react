@@ -26,7 +26,7 @@ import { PANEL_FILTER_LIST_HEADING } from '../../../utilities/constants';
 const PanelFilterListHeading = ({ heading, isLocked, lockedHeading }) => (
 	<h3
 		className={classNames('slds-text-body--small', 'slds-m-vertical--x-small', {
-			'slds-grid': isLocked
+			'slds-grid': isLocked,
 		})}
 	>
 		{isLocked ? lockedHeading : heading}
@@ -56,12 +56,12 @@ PanelFilterListHeading.propTypes = {
 	/**
 	 * Heading for a group of filters that are locked
 	 */
-	lockedHeading: PropTypes.string
+	lockedHeading: PropTypes.string,
 };
 
 PanelFilterListHeading.defaultProps = {
 	heading: 'Matching all these filters',
-	lockedLabel: 'Locked filters'
+	lockedLabel: 'Locked filters',
 };
 
 export default PanelFilterListHeading;

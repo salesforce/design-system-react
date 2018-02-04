@@ -13,19 +13,19 @@ class Example extends React.Component {
 				{
 					id: '1',
 					summary: 'Accordion Summary',
-					details: 'Accordion details - A'
+					details: 'Accordion details - A',
 				},
 				{
 					id: '2',
 					summary: 'Accordion Summary',
-					details: 'Accordion details - B'
+					details: 'Accordion details - B',
 				},
 				{
 					id: '3',
 					summary: 'Accordion Summary',
-					details: 'Accordion details - C'
-				}
-			]
+					details: 'Accordion details - C',
+				},
+			],
 		};
 	}
 
@@ -43,7 +43,7 @@ class Example extends React.Component {
 					if (option.label === 'delete') {
 						this.setState((state) => ({
 							...state,
-							items: state.items.filter((item) => item.id !== selectedItem.id)
+							items: state.items.filter((item) => item.id !== selectedItem.id),
 						}));
 					} else if (console) {
 						console.log('onSelect', event, option);
@@ -52,16 +52,16 @@ class Example extends React.Component {
 				options={[
 					{
 						label: 'delete',
-						value: 'A0'
+						value: 'A0',
 					},
 					{
 						label: 'redo',
-						value: 'B0'
+						value: 'B0',
 					},
 					{
 						label: 'activate',
-						value: 'C0'
-					}
+						value: 'C0',
+					},
 				]}
 				iconSize="x-small"
 			/>
@@ -73,8 +73,8 @@ class Example extends React.Component {
 			...state,
 			expandedPanels: {
 				...state.expandedPanels,
-				[data.id]: !state.expandedPanels[data.id]
-			}
+				[data.id]: !state.expandedPanels[data.id],
+			},
 		}));
 		if (this.props.action) {
 			const dataAsArray = Object.keys(data).map((id) => data[id]);

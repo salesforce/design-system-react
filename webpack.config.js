@@ -5,16 +5,16 @@ const packageJson = require('./package.json');
 
 const config = {
 	entry: {
-		'design-system-react': ['./components']
+		'design-system-react': ['./components'],
 	},
 	resolve: {
-		extensions: ['.js', '.jsx']
+		extensions: ['.js', '.jsx'],
 	},
 	devtool: 'source-map',
 	output: {
 		path: path.join(__dirname, '.tmp'),
 		filename: '[name].js',
-		publicPath: '/'
+		publicPath: '/',
 	},
 	module: {
 		rules: [
@@ -26,38 +26,38 @@ const config = {
 						replacements: [
 							{
 								pattern: /__VERSION__/g,
-								replacement: () => packageJson.version
-							}
-						]
-					})
+								replacement: () => packageJson.version,
+							},
+						],
+					}),
 				],
 				include: [
 					path.join(__dirname, 'components'),
 					path.join(__dirname, 'css'),
 					path.join(__dirname, 'icons'),
 					path.join(__dirname, 'tests'),
-					path.join(__dirname, 'utilities')
-				]
+					path.join(__dirname, 'utilities'),
+				],
 			},
 			{
 				test: /\.json$/,
-				loader: 'json-loader'
+				loader: 'json-loader',
 			},
 			{
 				test: /\.css$/,
-				loaders: ['style-loader', 'css-loader']
+				loaders: ['style-loader', 'css-loader'],
 			},
 			{
 				test: /\.(svg|gif|jpe?g|png)$/,
-				loader: 'file-loader?limit=10000'
+				loader: 'file-loader?limit=10000',
 			},
 			{
 				test: /\.(eot|woff|woff2|ttf)$/,
-				loader: 'file-loader?limit=30&name=fonts/webfonts/[name].[ext]'
-			}
-		]
+				loader: 'file-loader?limit=30&name=fonts/webfonts/[name].[ext]',
+			},
+		],
 	},
-	plugins: [new StringReplacePlugin()]
+	plugins: [new StringReplacePlugin()],
 };
 
 module.exports = config;

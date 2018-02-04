@@ -12,7 +12,7 @@ import IconSettings from '../../icon-settings';
 const {
 	Simulate,
 	scryRenderedDOMComponentsWithTag,
-	findRenderedDOMComponentWithClass
+	findRenderedDOMComponentWithClass,
 } = TestUtils;
 
 describe('SLDSMenuPicklist: ', function () {
@@ -22,12 +22,12 @@ describe('SLDSMenuPicklist: ', function () {
 		{
 			label: 'A Option Option Super Super Long',
 			value: 'A0',
-			title: 'Greg'
+			title: 'Greg',
 		},
 		{
 			label: 'B Option',
-			value: 'B0'
-		}
+			value: 'B0',
+		},
 	];
 
 	const renderPicklist = (inst) => {
@@ -35,7 +35,7 @@ describe('SLDSMenuPicklist: ', function () {
 		document.body.appendChild(body);
 		return ReactDOM.render(
 			<IconSettings iconPath="/assets/icons">{inst}</IconSettings>,
-			body
+			body,
 		);
 	};
 
@@ -48,7 +48,7 @@ describe('SLDSMenuPicklist: ', function () {
 		modal: false,
 		options,
 		placeholder: 'Select a contact',
-		value: 'C0'
+		value: 'C0',
 	};
 
 	const createPicklist = (props) =>
@@ -80,7 +80,7 @@ describe('SLDSMenuPicklist: ', function () {
 			Simulate.click(btn, {});
 			setTimeout(() => {
 				expect(getMenu(document.body).className).to.include(
-					'slds-dropdown--left'
+					'slds-dropdown--left',
 				);
 				Simulate.click(btn, {});
 				expect(getMenu(document.body)).to.equal(null);
@@ -99,7 +99,7 @@ describe('SLDSMenuPicklist: ', function () {
 			cmp = getPicklist({
 				onClick: () => {
 					clicked = true;
-				}
+				},
 			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
@@ -142,7 +142,7 @@ describe('SLDSMenuPicklist: ', function () {
 			cmp = getPicklist({
 				onSelect: (i) => {
 					selected = i;
-				}
+				},
 			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 			Simulate.click(btn, {});
@@ -171,7 +171,7 @@ describe('SLDSMenuPicklist: ', function () {
 				disabled: true,
 				onClick: () => {
 					clicked = true;
-				}
+				},
 			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
@@ -203,7 +203,7 @@ describe('SLDSMenuPicklist: ', function () {
 			cmp = getPicklist({
 				onSelect: (i) => {
 					selected = i;
-				}
+				},
 			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
@@ -246,7 +246,7 @@ describe('SLDSMenuPicklist: ', function () {
 			cmp = getPicklist({
 				onSelect: (i) => {
 					selected = i;
-				}
+				},
 			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
@@ -286,7 +286,7 @@ describe('SLDSMenuPicklist: ', function () {
 			Simulate.keyDown(menuItems[1].querySelector('a'), {
 				key: 'Esc',
 				keyCode: 27,
-				which: 27
+				which: 27,
 			});
 			expect(getMenu(body)).to.equal(null);
 		});
@@ -298,7 +298,7 @@ describe('SLDSMenuPicklist: ', function () {
 
 		beforeEach(() => {
 			cmp = getPicklist({
-				multiple: true
+				multiple: true,
 			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 			Simulate.click(btn, {});

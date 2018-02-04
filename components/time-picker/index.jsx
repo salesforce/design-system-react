@@ -61,7 +61,7 @@ const Timepicker = createReactClass({
 		menuPosition: PropTypes.oneOf([
 			'absolute',
 			'overflowBoundaryElement',
-			'relative'
+			'relative',
 		]),
 		/**
 		 * Receives the props `(dateValue, stringValue)`
@@ -84,7 +84,7 @@ const Timepicker = createReactClass({
 		/**
 		 * Date
 		 */
-		value: PropTypes.instanceOf(Date)
+		value: PropTypes.instanceOf(Date),
 	},
 
 	getDefaultProps () {
@@ -93,7 +93,7 @@ const Timepicker = createReactClass({
 				if (date) {
 					return date.toLocaleTimeString(navigator.language, {
 						hour: '2-digit',
-						minute: '2-digit'
+						minute: '2-digit',
 					});
 				}
 
@@ -104,14 +104,14 @@ const Timepicker = createReactClass({
 				const dateStr = date.toLocaleString(navigator.language, {
 					year: 'numeric',
 					month: 'numeric',
-					day: 'numeric'
+					day: 'numeric',
 				});
 				return new Date(`${dateStr} ${timeStr}`);
 			},
 			menuPosition: 'absolute',
 			placeholder: 'Pick Time',
 			value: null,
-			stepInMinutes: 30
+			stepInMinutes: 30,
 		};
 	},
 
@@ -119,7 +119,7 @@ const Timepicker = createReactClass({
 		return {
 			value: this.props.value,
 			strValue: this.props.strValue,
-			options: this.getOptions()
+			options: this.getOptions(),
 		};
 	},
 
@@ -136,7 +136,7 @@ const Timepicker = createReactClass({
 			if (currentTime !== nextTime) {
 				this.setState({
 					value: nextProps.value,
-					strValue: this.props.formatter(nextProps.value)
+					strValue: this.props.formatter(nextProps.value),
 				});
 			}
 		}
@@ -158,7 +158,7 @@ const Timepicker = createReactClass({
 
 			options.push({
 				label: formatted,
-				value: new Date(curDate)
+				value: new Date(curDate),
 			});
 
 			curDate.setMinutes(curDate.getMinutes() + this.props.stepInMinutes);
@@ -182,7 +182,7 @@ const Timepicker = createReactClass({
 	handleChange (date, strValue) {
 		this.setState({
 			value: date,
-			strValue
+			strValue,
 		});
 
 		if (this.props.onDateChange) {
@@ -200,7 +200,7 @@ const Timepicker = createReactClass({
 		const strValue = event.target.value;
 
 		this.setState({
-			strValue
+			strValue,
 		});
 
 		if (this.props.onDateChange) {
@@ -223,7 +223,7 @@ const Timepicker = createReactClass({
 				menuStyle={{
 					maxHeight: '20em',
 					overflowX: 'hidden',
-					minWidth: '100%'
+					minWidth: '100%',
 				}}
 				menuPosition={this.props.menuPosition}
 				onSelect={this.handleSelect}
@@ -239,7 +239,7 @@ const Timepicker = createReactClass({
 				/>
 			</MenuDropdown>
 		);
-	}
+	},
 });
 
 export default Timepicker;

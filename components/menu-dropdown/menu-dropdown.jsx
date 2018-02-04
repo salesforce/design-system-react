@@ -54,7 +54,7 @@ import KEYS from '../../utilities/key-code';
 import {
 	MENU_DROPDOWN,
 	MENU_DROPDOWN_TRIGGER,
-	LIST
+	LIST,
 } from '../../utilities/constants';
 
 const documentDefined = typeof document !== 'undefined';
@@ -80,7 +80,7 @@ const DropdownNubbinPositions = [
 	'top right',
 	'bottom left',
 	'bottom',
-	'bottom right'
+	'bottom right',
 ];
 
 /**
@@ -112,7 +112,7 @@ const MenuDropdown = createReactClass({
 		buttonClassName: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * If true, button/icon is white. Meant for buttons or utility icons on dark backgrounds.
@@ -126,7 +126,7 @@ const MenuDropdown = createReactClass({
 			'neutral',
 			'brand',
 			'destructive',
-			'icon'
+			'icon',
 		]),
 		/**
 		 * If true, renders checkmark icon on the selected Menu Item.
@@ -153,7 +153,7 @@ const MenuDropdown = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * By default, these class names will be added to the absolutely-positioned `Dialog` component.
@@ -161,7 +161,7 @@ const MenuDropdown = createReactClass({
 		containerClassName: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * This prop is passed onto the triggering `Button`. Prevent dropdown menu from opening. Also applies disabled styling to trigger button.
@@ -186,7 +186,7 @@ const MenuDropdown = createReactClass({
 			'custom',
 			'doctype',
 			'standard',
-			'utility'
+			'utility',
 		]),
 		/**
 		 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
@@ -205,7 +205,7 @@ const MenuDropdown = createReactClass({
 			'border',
 			'border-filled',
 			'small',
-			'more'
+			'more',
 		]),
 		/**
 		 * Determines the size of the icon.
@@ -240,7 +240,7 @@ const MenuDropdown = createReactClass({
 		menuPosition: PropTypes.oneOf([
 			'absolute',
 			'overflowBoundaryElement',
-			'relative'
+			'relative',
 		]),
 		/**
 		 * Style applied to menu element (that is the `.slds-dropdown` element)
@@ -255,7 +255,7 @@ const MenuDropdown = createReactClass({
 			'top right',
 			'bottom left',
 			'bottom',
-			'bottom right'
+			'bottom right',
 		]),
 		/**
 		 *  Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px).
@@ -347,7 +347,7 @@ const MenuDropdown = createReactClass({
 		value: PropTypes.oneOfType([
 			PropTypes.number,
 			PropTypes.string,
-			PropTypes.array
+			PropTypes.array,
 		]),
 		/**
 		 * This prop is passed onto the triggering `Button`. It creates a tooltip with the content of the `node` provided.
@@ -359,12 +359,12 @@ const MenuDropdown = createReactClass({
 		triggerClassName: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * Whether this dropdown supports multi select.
 		 */
-		multiple: PropTypes.bool
+		multiple: PropTypes.bool,
 	},
 
 	mixins: [KeyboardNavigable],
@@ -374,7 +374,7 @@ const MenuDropdown = createReactClass({
 			align: 'left',
 			hoverCloseDelay: 300,
 			menuPosition: 'absolute',
-			openOn: 'click'
+			openOn: 'click',
 		};
 	},
 
@@ -382,7 +382,7 @@ const MenuDropdown = createReactClass({
 		return {
 			focusedIndex: -1,
 			selectedIndex: -1,
-			selectedIndices: []
+			selectedIndices: [],
 		};
 	},
 
@@ -471,7 +471,7 @@ const MenuDropdown = createReactClass({
 	setCurrentSelectedIndices (nextProps) {
 		if (this.props.multiple !== true) {
 			this.setState({
-				selectedIndex: this.getIndexByValue(nextProps.value)
+				selectedIndex: this.getIndexByValue(nextProps.value),
 			});
 		} else {
 			let values = [];
@@ -485,7 +485,7 @@ const MenuDropdown = createReactClass({
 			currentIndices = values.map((value) => this.getIndexByValue(value));
 
 			this.setState({
-				selectedIndices: currentIndices
+				selectedIndices: currentIndices,
 			});
 		}
 	},
@@ -530,7 +530,7 @@ const MenuDropdown = createReactClass({
 			}
 
 			this.setState({
-				isOpen: false
+				isOpen: false,
 			});
 
 			this.isHover = false;
@@ -552,7 +552,7 @@ const MenuDropdown = createReactClass({
 			currentOpenDropdown = this;
 
 			this.setState({
-				isOpen: true
+				isOpen: true,
 			});
 
 			if (this.props.onOpen) {
@@ -639,14 +639,14 @@ const MenuDropdown = createReactClass({
 		) {
 			const currentIndices = this.state.selectedIndices.concat(index);
 			this.setState({
-				selectedIndices: currentIndices
+				selectedIndices: currentIndices,
 			});
 		} else if (this.props.multiple) {
 			const deselectIndex = this.state.selectedIndices.indexOf(index);
 			const currentSelected = this.state.selectedIndices;
 			currentSelected.splice(deselectIndex, 1);
 			this.setState({
-				selectedIndices: currentSelected
+				selectedIndices: currentSelected,
 			});
 		}
 
@@ -677,7 +677,7 @@ const MenuDropdown = createReactClass({
 					keyCode: event.keyCode,
 					onSelect: this.handleSelect,
 					target: event.target,
-					toggleOpen: this.toggleOpen
+					toggleOpen: this.toggleOpen,
 				});
 			} else {
 				this.handleCancel();
@@ -740,12 +740,12 @@ const MenuDropdown = createReactClass({
 		React.Children.forEach(customContent, (child) => {
 			if (child && child.type.displayName === LIST) {
 				customContentWithListPropInjection.push(
-					this.renderDefaultMenuContent(child.props)
+					this.renderDefaultMenuContent(child.props),
 				);
 			} else if (child) {
 				const clonedCustomContent = React.cloneElement(child, {
 					onClick: this.handleClickCustomContent,
-					key: shortid.generate()
+					key: shortid.generate(),
 				});
 				customContentWithListPropInjection.push(clonedCustomContent);
 			}
@@ -766,7 +766,7 @@ const MenuDropdown = createReactClass({
 			const positions = this.props.nubbinPosition.split(' ');
 			positionClassName = classNames(
 				`slds-nubbin--${positions.join('-')}`,
-				positions.map((position) => `slds-dropdown--${position}`)
+				positions.map((position) => `slds-dropdown--${position}`),
 			);
 
 			// TODO: allow nubbinPosition prop to set the offset automatically
@@ -782,7 +782,7 @@ const MenuDropdown = createReactClass({
 				className={classNames(
 					'slds-dropdown',
 					positionClassName,
-					this.props.className
+					this.props.className,
 				)}
 				onMouseEnter={
 					this.props.openOn === 'hover' ? this.handleMouseEnter : null
@@ -806,7 +806,7 @@ const MenuDropdown = createReactClass({
 			const positions = this.props.nubbinPosition.split(' ');
 			positionClassName = classNames(
 				`slds-nubbin--${positions.join('-')}`,
-				positions.map((position) => `slds-dropdown--${position}`)
+				positions.map((position) => `slds-dropdown--${position}`),
 			);
 			marginTop = 0;
 			// TODO: allow nubbinPosition prop to set the offset automatically
@@ -831,7 +831,7 @@ const MenuDropdown = createReactClass({
 					'slds-dropdown',
 					'ignore-react-onclickoutside',
 					positionClassName,
-					this.props.className
+					this.props.className,
 				)}
 				context={this.context}
 				hasStaticAlignment={this.props.hasStaticAlignment}
@@ -916,7 +916,7 @@ const MenuDropdown = createReactClass({
 				assistiveText={this.props.assistiveText}
 				className={classNames(
 					outsideClickIgnoreClass,
-					this.props.buttonClassName
+					this.props.buttonClassName,
 				)}
 				disabled={this.props.disabled}
 				hint={this.props.hint}
@@ -960,11 +960,11 @@ const MenuDropdown = createReactClass({
 				{...CustomTriggerChildProps}
 			/>
 		);
-	}
+	},
 });
 
 MenuDropdown.contextTypes = {
-	iconPath: PropTypes.string
+	iconPath: PropTypes.string,
 };
 
 export default MenuDropdown;

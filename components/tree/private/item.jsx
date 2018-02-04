@@ -34,7 +34,7 @@ const handleClick = (event, props) => {
 		props.onClick(event, {
 			node: props.node,
 			select: !props.node.selected,
-			treeIndex: props.treeIndex
+			treeIndex: props.treeIndex,
 		});
 	}
 };
@@ -55,7 +55,7 @@ const Item = (props) => {
 			{/* eslint-disable jsx-a11y/no-static-element-interactions */}
 			<div
 				className={classNames('slds-tree__item', {
-					'slds-is-selected': isSelected
+					'slds-is-selected': isSelected,
 				})}
 				aria-selected={isSelected ? 'true' : 'false'}
 				onClick={(event) => {
@@ -123,11 +123,11 @@ Item.propTypes = {
 	/**
 	 * Location of node (zero index). First node is `0`. It's first child is `0-0`. This can be used to modify your nodes without searching for the node. This index is only valid if the `nodes` prop is the same as at the time of the event.
 	 */
-	treeIndex: PropTypes.string
+	treeIndex: PropTypes.string,
 };
 
 Item.defaultProps = {
-	selected: false
+	selected: false,
 };
 
 export default Item;

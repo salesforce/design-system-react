@@ -21,7 +21,7 @@ const DataTableCell = (props) => {
 	const contents = (
 		<div
 			className={classNames({
-				'slds-truncate': props.fixedLayout
+				'slds-truncate': props.fixedLayout,
 			})}
 			title={props.title || childText}
 		>
@@ -70,7 +70,7 @@ DataTableCell.propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Use this if you are creating an advanced table (selectable, sortable, or resizable rows)
@@ -95,7 +95,7 @@ DataTableCell.propTypes = {
 	/**
 	 * Width of column. This is required for advanced/fixed layout tables. Please provide units. (`rems` are recommended)
 	 */
-	width: PropTypes.string
+	width: PropTypes.string,
 };
 
 export default DataTableCell;

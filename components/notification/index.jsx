@@ -42,14 +42,14 @@ const propTypes = {
 	 * Styling for Notification background color. Please reference <a href='http://www.lightningdesignsystem.com/components/utilities/themes/#color'>Lighning Design System Themes > Color</a>.
 	 */
 	theme: PropTypes.oneOf(['success', 'warning', 'error', 'offline']),
-	variant: PropTypes.oneOf(['alert', 'toast']).isRequired
+	variant: PropTypes.oneOf(['alert', 'toast']).isRequired,
 };
 
 const defaultProps = {
 	iconCategory: 'utility',
 	dismissible: true,
 	isOpen: false,
-	texture: false
+	texture: false,
 };
 
 /**
@@ -112,7 +112,7 @@ class Notification extends React.Component {
 		return classNames(this.props.className, 'slds-notify', {
 			[`slds-notify--${this.props.variant}`]: this.props.variant,
 			[`slds-theme--${this.props.theme}`]: this.props.theme,
-			'slds-theme--alert-texture': this.props.texture
+			'slds-theme--alert-texture': this.props.texture,
 		});
 	}
 

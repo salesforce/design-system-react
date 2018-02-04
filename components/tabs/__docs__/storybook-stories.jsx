@@ -211,8 +211,8 @@ const DemoTabsConditional = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
-		])
+			PropTypes.string,
+		]),
 	},
 
 	getInitialState () {
@@ -222,7 +222,7 @@ const DemoTabsConditional = createReactClass({
 			showC: true,
 			disableA: false,
 			disableB: true,
-			disableC: true
+			disableC: true,
 		};
 	},
 
@@ -320,7 +320,7 @@ const DemoTabsConditional = createReactClass({
 				</Tabs>
 			</div>
 		);
-	}
+	},
 });
 
 const DemoTabsOutsideControl = createReactClass({
@@ -334,19 +334,19 @@ const DemoTabsOutsideControl = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * The Tab (and corresponding TabPanel) that is selected when the component renders. Defaults to `0`.
 		 */
 		whichOneSelectedYo: PropTypes.number,
-		prevOneSelectedYo: PropTypes.number
+		prevOneSelectedYo: PropTypes.number,
 	},
 
 	getInitialState () {
 		return {
 			whichOneSelectedYo: this.props.whichOneSelectedYo || 0,
-			prevOneSelectedYo: this.props.prevOneSelectedYo || 0
+			prevOneSelectedYo: this.props.prevOneSelectedYo || 0,
 		};
 	},
 
@@ -484,7 +484,7 @@ const DemoTabsOutsideControl = createReactClass({
 				</Tabs>
 			</div>
 		);
-	}
+	},
 });
 
 /* eslint-disable react/display-name */
@@ -612,7 +612,7 @@ const DemoTabsInterceptSelect = createReactClass({
 				</Tabs>
 			</div>
 		);
-	}
+	},
 });
 
 storiesOf(TABS, module)

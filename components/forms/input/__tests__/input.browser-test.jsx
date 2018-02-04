@@ -13,12 +13,12 @@ import IconSettings from '../../../icon-settings';
 const {
 	findRenderedDOMComponentWithTag,
 	scryRenderedDOMComponentsWithTag,
-	findRenderedDOMComponentWithClass
+	findRenderedDOMComponentWithClass,
 } = TestUtils;
 
 describe('SLDSInput', () => {
 	const defaultProps = {
-		placeholder: 'Placeholder Text'
+		placeholder: 'Placeholder Text',
 	};
 
 	let body;
@@ -28,7 +28,7 @@ describe('SLDSInput', () => {
 		document.body.appendChild(body);
 		return ReactDOM.render(
 			<IconSettings iconPath="/assets/icons">{instance}</IconSettings>,
-			body
+			body,
 		);
 	};
 
@@ -51,12 +51,12 @@ describe('SLDSInput', () => {
 			component = getInput({ label: 'Input Label', id: 'custom-id' });
 			wrapper = findRenderedDOMComponentWithClass(
 				component,
-				'slds-form-element'
+				'slds-form-element',
 			);
 			input = findRenderedDOMComponentWithTag(component, 'input');
 			label = findRenderedDOMComponentWithClass(
 				component,
-				'slds-form-element__label'
+				'slds-form-element__label',
 			);
 		});
 
@@ -104,7 +104,7 @@ describe('SLDSInput', () => {
 			component = getInput({ assistiveText: { label: 'Assistive Label' } });
 			label = findRenderedDOMComponentWithClass(
 				component,
-				'slds-form-element__label'
+				'slds-form-element__label',
 			);
 			input = findRenderedDOMComponentWithTag(component, 'input');
 		});
@@ -226,15 +226,15 @@ describe('SLDSInput', () => {
 			component = getInput({
 				label: 'Input Label',
 				required: true,
-				errorText: 'Error Message'
+				errorText: 'Error Message',
 			});
 			wrapper = findRenderedDOMComponentWithClass(
 				component,
-				'slds-form-element'
+				'slds-form-element',
 			);
 			error = findRenderedDOMComponentWithClass(
 				component,
-				'slds-form-element__help'
+				'slds-form-element__help',
 			);
 			input = findRenderedDOMComponentWithTag(component, 'input');
 		});
@@ -245,7 +245,7 @@ describe('SLDSInput', () => {
 
 		it('input wrapper contains an <abbr> that has class "slds-required"', () => {
 			expect(
-				findRenderedDOMComponentWithTag(component, 'abbr').className
+				findRenderedDOMComponentWithTag(component, 'abbr').className,
 			).to.include('slds-required');
 		});
 
@@ -281,16 +281,16 @@ describe('SLDSInput', () => {
 						category="utility"
 						onClick={clickCallback}
 					/>
-				)
+				),
 			});
 			leftButton = findRenderedDOMComponentWithTag(component, 'button');
 			iconAssistiveText = findRenderedDOMComponentWithClass(
 				component,
-				'slds-assistive-text'
+				'slds-assistive-text',
 			);
 			elementControl = findRenderedDOMComponentWithClass(
 				component,
-				'slds-form-element__control'
+				'slds-form-element__control',
 			);
 		});
 
@@ -304,7 +304,7 @@ describe('SLDSInput', () => {
 
 		it('passes "assitiveText" down to icon', () => {
 			expect(iconAssistiveText.textContent).to.equal(
-				'Passed assistive text to icon'
+				'Passed assistive text to icon',
 			);
 		});
 
@@ -335,12 +335,12 @@ describe('SLDSInput', () => {
 						category="utility"
 						onClick={clickCallback}
 					/>
-				)
+				),
 			});
 			leftButton = findRenderedDOMComponentWithTag(component, 'button');
 			elementControl = findRenderedDOMComponentWithClass(
 				component,
-				'slds-form-element__control'
+				'slds-form-element__control',
 			);
 		});
 
@@ -370,11 +370,11 @@ describe('SLDSInput', () => {
 
 		beforeEach(() => {
 			component = getInput({
-				iconRight: <Icon name="search" category="utility" />
+				iconRight: <Icon name="search" category="utility" />,
 			});
 			elementControl = findRenderedDOMComponentWithClass(
 				component,
-				'slds-form-element__control'
+				'slds-form-element__control',
 			);
 		});
 
@@ -404,7 +404,7 @@ describe('SLDSInput', () => {
 					/>
 				),
 				id: 'unique-id-4',
-				label: 'Input Label'
+				label: 'Input Label',
 			});
 			spinner = findRenderedDOMComponentWithClass(component, 'slds-spinner');
 			input = findRenderedDOMComponentWithTag(component, 'input');
@@ -451,13 +451,13 @@ describe('SLDSInput', () => {
 					/>
 				),
 				id: 'unique-id-4',
-				label: 'Input Label'
+				label: 'Input Label',
 			});
 			spinner = findRenderedDOMComponentWithClass(component, 'slds-spinner');
 			input = findRenderedDOMComponentWithTag(component, 'input');
 			error = findRenderedDOMComponentWithClass(
 				component,
-				'slds-form-element__help'
+				'slds-form-element__help',
 			);
 		});
 
@@ -481,11 +481,11 @@ describe('SLDSInput', () => {
 			component = getInput({
 				fixedTextLeft: '$',
 				id: 'unique-id-5',
-				label: 'Input Label'
+				label: 'Input Label',
 			});
 			fixedTextLeft = findRenderedDOMComponentWithClass(
 				component,
-				'slds-form-element__addon'
+				'slds-form-element__addon',
 			);
 		});
 

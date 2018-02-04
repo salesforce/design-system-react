@@ -82,7 +82,7 @@ const AppLauncher = createReactClass({
 		modalClassName: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * Button that exists in the upper right hand corner of the App Launcher modal
@@ -115,19 +115,19 @@ const AppLauncher = createReactClass({
 		/**
 		 * Callback when the App Launcher icon is clicked
 		 */
-		triggerOnClick: PropTypes.func
+		triggerOnClick: PropTypes.func,
 	},
 
 	getDefaultProps () {
 		return {
 			triggerAssistiveText: 'Open App Launcher',
-			title: 'App Launcher'
+			title: 'App Launcher',
 		};
 	},
 
 	getInitialState () {
 		return {
-			isOpen: false
+			isOpen: false,
 		};
 	},
 
@@ -241,7 +241,7 @@ const AppLauncher = createReactClass({
 					onRequestClose={this.closeAppLauncher}
 					containerClassName={classNames(
 						'app-launcher',
-						this.props.modalClassName
+						this.props.modalClassName,
 					)}
 					size="large"
 					header={customModalHeader}
@@ -253,7 +253,7 @@ const AppLauncher = createReactClass({
 					<span
 						className={classNames(
 							'slds-context-bar__label-action slds-context-bar__app-name',
-							{ 'slds-truncate': !this.props.noTruncate }
+							{ 'slds-truncate': !this.props.noTruncate },
 						)}
 					>
 						{this.props.triggerName}
@@ -261,7 +261,7 @@ const AppLauncher = createReactClass({
 				) : null}
 			</div>
 		);
-	}
+	},
 });
 
 export default AppLauncher;

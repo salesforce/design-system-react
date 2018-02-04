@@ -58,18 +58,18 @@ const AppLauncherSection = createReactClass({
 		/**
 		 * Callback for when section is toggled. Passes "isOpen" bool. Forces `toggleable` to true
 		 */
-		onToggleClick: PropTypes.func
+		onToggleClick: PropTypes.func,
 	},
 
 	getDefaultProps () {
 		return {
-			collapseSectionAssistiveText: 'Toggle visibility of section'
+			collapseSectionAssistiveText: 'Toggle visibility of section',
 		};
 	},
 
 	getInitialState () {
 		return {
-			isOpen: true
+			isOpen: true,
 		};
 	},
 
@@ -107,7 +107,7 @@ const AppLauncherSection = createReactClass({
 					<ul
 						className={classNames(
 							'slds-grid slds-grid--pull-padded slds-wrap',
-							sectionIsOpenClass
+							sectionIsOpenClass,
 						)}
 					>
 						{React.Children.map(this.props.children, (child) => (
@@ -116,7 +116,7 @@ const AppLauncherSection = createReactClass({
 									'slds-col--padded slds-grow-none',
 									child.props.size === 'small'
 										? 'slds-size--xx-small'
-										: 'slds-size--1-of-1 slds-medium-size--1-of-3'
+										: 'slds-size--1-of-1 slds-medium-size--1-of-3',
 								)}
 							>
 								{child}
@@ -126,7 +126,7 @@ const AppLauncherSection = createReactClass({
 				</div>
 			</div>
 		);
-	}
+	},
 });
 
 export default AppLauncherSection;

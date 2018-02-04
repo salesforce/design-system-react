@@ -18,7 +18,7 @@ if (process.env.NODE_ENV !== 'production') {
 		control,
 		children,
 		displayName,
-		comment
+		comment,
 	) {
 		const additionalComment = comment ? ` ${comment}` : '';
 		const childrenWithoutSelectedDisplayName = [];
@@ -35,7 +35,7 @@ if (process.env.NODE_ENV !== 'production') {
 			/* eslint-disable max-len */
 			warning(
 				hasChildrenWithoutSelectedDisplayName,
-				`[Design System React] Unable to use child components specified within ${control}. Please use a child component with a \`displayName\` class property value of ${displayName}. Children without that class property are ignored. Please review \`children\` prop documentation.${additionalComment}`
+				`[Design System React] Unable to use child components specified within ${control}. Please use a child component with a \`displayName\` class property value of ${displayName}. Children without that class property are ignored. Please review \`children\` prop documentation.${additionalComment}`,
 			);
 			/* eslint-enable max-len */
 			hasWarned[control] = !!hasChildrenWithoutSelectedDisplayName;

@@ -77,7 +77,7 @@ DataTableColumn.propTypes = {
 	/**
 	 * Width of column. This is required for advanced/fixed layout tables. Please provide units. (`rems` are recommended)
 	 */
-	width: PropTypes.string
+	width: PropTypes.string,
 };
 
 export default DataTableColumn;

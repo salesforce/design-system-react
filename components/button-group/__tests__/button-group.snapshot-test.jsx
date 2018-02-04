@@ -11,23 +11,23 @@ import CheckboxError from '../__examples__/checkbox-error';
 testDOMandHTML({
 	name: 'Button Group IconGroup',
 	test,
-	Component: IconGroup
+	Component: IconGroup,
 });
 
 testDOMandHTML({
 	name: 'Button Group MoreIcon',
 	test,
-	Component: MoreIcon
+	Component: MoreIcon,
 });
 
 testDOMandHTML({
 	name: 'Button Group Checkbox',
 	test,
-	Component: Checkbox
+	Component: Checkbox,
 });
 
 testDOMandHTML({
 	name: 'Button Group Checkbox Error',
 	test,
-	Component: CheckboxError
+	Component: CheckboxError,
 });

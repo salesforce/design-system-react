@@ -49,8 +49,8 @@ Panel.propTypes = {
 	children: PropTypes.oneOfType([
 		PropTypes.arrayOf(PropTypes.node),
 		PropTypes.node,
-		PropTypes.element
-	]).isRequired
+		PropTypes.element,
+	]).isRequired,
 };
 
 export default Panel;

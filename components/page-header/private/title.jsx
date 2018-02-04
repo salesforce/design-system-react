@@ -22,13 +22,13 @@ const propTypes = {
 	/**
 	 * Optional class name
 	 */
-	className: PropTypes.string
+	className: PropTypes.string,
 };
 const defaultProps = {
 	truncate: true,
 	align: 'middle',
 	title: 'Page Header Title',
-	className: ''
+	className: '',
 };
 
 class Title extends Component {
@@ -39,8 +39,8 @@ class Title extends Component {
 			className,
 			{
 				'slds-truncate': truncate,
-				[`slds-align-${align}`]: align
-			}
+				[`slds-align-${align}`]: align,
+			},
 		);
 	}
 

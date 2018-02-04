@@ -18,7 +18,7 @@ const propTypes = {
 	/**
 	 * Info node passed by PageHeader
 	 */
-	info: PropTypes.node
+	info: PropTypes.node,
 };
 
 const Base = (props) => (

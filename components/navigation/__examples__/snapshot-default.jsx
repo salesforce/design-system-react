@@ -21,7 +21,7 @@ const Example = createReactClass({
 				/>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example;

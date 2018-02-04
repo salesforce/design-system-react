@@ -50,7 +50,7 @@ const getNubbinClassName = (align) =>
 		'slds-nubbin--left':
 			align === 'right' || align === 'right bottom' || align === 'right top',
 		'slds-nubbin--right':
-			align === 'left' || align === 'left bottom' || align === 'left top'
+			align === 'left' || align === 'left bottom' || align === 'left top',
 	});
 
 const getAlignment = {};
@@ -116,5 +116,5 @@ export {
 	getMargin,
 	getAlignment,
 	getNubbinClassName,
-	mapPropToPopperPlacement
+	mapPropToPopperPlacement,
 };

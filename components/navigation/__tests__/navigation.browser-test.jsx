@@ -32,7 +32,7 @@ if (!Object.entries) {
  */
 import {
 	mountComponent,
-	unmountComponent
+	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 
 import { sampleReportCategories } from '../../../utilities/sample-data/navigation';
@@ -46,7 +46,7 @@ chai.use(chaiEnzyme());
 const defaultProps = {
 	id: 'sample-navigation',
 	className: 'sample-navigation',
-	categories: sampleReportCategories
+	categories: sampleReportCategories,
 };
 
 /* A re-usable demo component fixture outside of `describe` sections
@@ -56,7 +56,7 @@ const DemoComponent = createReactClass({
 	displayName: 'NavigationDemoComponent',
 	propTypes: {
 		selectedId: PropTypes.string,
-		onSelect: PropTypes.func
+		onSelect: PropTypes.func,
 	},
 
 	getDefaultProps () {
@@ -71,7 +71,7 @@ const DemoComponent = createReactClass({
 
 	render () {
 		return <Navigation {...this.props} />;
-	}
+	},
 });
 
 describe('SLDSNavigation', () => {
@@ -89,7 +89,7 @@ describe('SLDSNavigation', () => {
 				const header = this.wrapper.find(`#sample-navigation-${categoryId}`);
 				expect(header).to.have.length(1);
 				const ariaDescribedbyId = this.wrapper.find(
-					`a[aria-describedby="sample-navigation-${categoryId}"]`
+					`a[aria-describedby="sample-navigation-${categoryId}"]`,
 				);
 				expect(ariaDescribedbyId).to.have.length(itemCount);
 			});

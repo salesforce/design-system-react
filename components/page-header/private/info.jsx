@@ -14,7 +14,7 @@ const propTypes = {
 	/**
 	 * Optional class name
 	 */
-	className: PropTypes.string
+	className: PropTypes.string,
 };
 
 const Info = (props) => (

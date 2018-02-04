@@ -49,7 +49,7 @@ Example.propTypes = {
 	required: PropTypes.bool,
 	name: PropTypes.string,
 	errorId: PropTypes.string,
-	errorLabel: PropTypes.string
+	errorLabel: PropTypes.string,
 };
 
 Example.displayName = 'RadioButtonGroupExample';

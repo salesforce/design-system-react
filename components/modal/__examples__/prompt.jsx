@@ -9,7 +9,7 @@ const Example = createReactClass({
 
 	getInitialState () {
 		return {
-			isOpen: false
+			isOpen: false,
 		};
 	},
 
@@ -29,7 +29,7 @@ const Example = createReactClass({
 								key="promptBtn"
 								label="Got it"
 								onClick={this.toggleOpen}
-							/>
+							/>,
 						]}
 						isOpen={this.state.isOpen}
 						onRequestClose={this.toggleOpen}
@@ -46,7 +46,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

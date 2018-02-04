@@ -42,7 +42,7 @@ test('AssistiveText Filter', () => {
 
 test('Filter Base with custom className Snapshot', () => {
 	expect(
-		renderMarkup(Default, { className: 'MY_CUSTOM_CLASS_NAME' })
+		renderMarkup(Default, { className: 'MY_CUSTOM_CLASS_NAME' }),
 	).toMatchSnapshot();
 });
 

@@ -37,7 +37,7 @@ const Example = createReactClass({
 						openOn="click"
 						options={[
 							{ label: 'Sort ascending', value: 'A0' },
-							{ label: 'Sort descending', value: 'B0' }
+							{ label: 'Sort descending', value: 'B0' },
 						]}
 						value="A0"
 						variant="icon"
@@ -45,7 +45,7 @@ const Example = createReactClass({
 				</ButtonGroup>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

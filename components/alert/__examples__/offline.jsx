@@ -12,7 +12,7 @@ class Example extends React.Component {
 					<Alert
 						labels={{
 							heading: 'You are in offline mode.',
-							headingLink: 'More information'
+							headingLink: 'More information',
 						}}
 						onClickHeadingLink={() => {
 							console.log('Link clicked.');

@@ -73,7 +73,7 @@ const TimepickerDropdownTrigger = createReactClass({
 		/**
 		 * Date
 		 */
-		value: PropTypes.string
+		value: PropTypes.string,
 	},
 
 	handleKeyDown (event) {
@@ -116,7 +116,7 @@ const TimepickerDropdownTrigger = createReactClass({
 				</Input>
 			</div>
 		);
-	}
+	},
 });
 
 export default TimepickerDropdownTrigger;

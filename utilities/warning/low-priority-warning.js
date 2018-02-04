@@ -10,7 +10,7 @@ if (process.env.NODE_ENV !== 'production') {
 		let argIndex = 0;
 		const message = `Warning: ${originalMessage.replace(
 			/%s/g,
-			() => args[argIndex++]
+			() => args[argIndex++],
 		)}`;
 		if (typeof console !== 'undefined') {
 			console.warn(message); // eslint-disable-line no-console

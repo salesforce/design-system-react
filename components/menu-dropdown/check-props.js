@@ -17,19 +17,19 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.forceOpen,
 			'forceOpen',
-			'Please use isOpen instead. It provides a consistent prop that aligns with other componenents.'
+			'Please use isOpen instead. It provides a consistent prop that aligns with other componenents.',
 		);
 
 		oneOfRequiredProperty(COMPONENT, {
 			options: props.options,
-			children: props.children
+			children: props.children,
 		});
 
 		if (!props.options) {
 			hasChildrenWithoutDisplayNameOf(
 				COMPONENT,
 				props.children,
-				MENU_DROPDOWN_TRIGGER
+				MENU_DROPDOWN_TRIGGER,
 			);
 		}
 
@@ -37,7 +37,7 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.isInline,
 			'isInline',
-			'menuPosition="relative"'
+			'menuPosition="relative"',
 		);
 	};
 }

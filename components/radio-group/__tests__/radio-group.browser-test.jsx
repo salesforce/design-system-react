@@ -12,7 +12,7 @@ import { shape } from 'airbnb-prop-types';
  */
 import {
 	createMountNode,
-	destroyMountNode
+	destroyMountNode,
 } from '../../../tests/enzyme-helpers';
 
 import RadioGroup from '../../radio-group';
@@ -54,14 +54,14 @@ class RadioGroupExample extends React.Component {
 RadioGroupExample.propTypes = {
 	labels: shape({
 		error: PropTypes.string,
-		label: PropTypes.string
+		label: PropTypes.string,
 	}),
 	disabled: PropTypes.bool,
-	required: PropTypes.bool
+	required: PropTypes.bool,
 };
 
 RadioGroupExample.defaultProps = {
-	labels: { label: 'Radio Group Label' }
+	labels: { label: 'Radio Group Label' },
 };
 
 /* RadioGroup rendering tests
@@ -86,7 +86,7 @@ describe('RadioGroup', function () {
 			const radio = radios.get(index);
 			expect(radio.props.checked).to.equal(
 				radio.props.label === 'Radio Label One',
-				'the second radio input is checked'
+				'the second radio input is checked',
 			);
 		}
 		const legend = wrapper.find('legend');
@@ -115,7 +115,7 @@ describe('RadioGroup', function () {
 		radio.simulate('change', { event: { target: 'Radio Label Two' } });
 		expect(
 			radio.props().checked,
-			'radio button changes from unchecked to checked'
+			'radio button changes from unchecked to checked',
 		).to.be.true;
 	});
 });

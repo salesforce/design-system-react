@@ -32,7 +32,7 @@ if (process.env.NODE_ENV !== 'production') {
 				/* eslint-disable max-len */
 				warning(
 					!url,
-					`The icon asset was not found at ${url}. Make sure the path to the icon asset is correct. You can set the icon path by importing the IconSettings component, \`<IconSettings iconPath=[/assets/icons]>\` from \`components/iconSettings\`, and wrap that component around your entire app or around individual components using icons. If you are using the \`<Icon>\` component, you can also pass the url to \`this.props.path\`.${additionalComment}`
+					`The icon asset was not found at ${url}. Make sure the path to the icon asset is correct. You can set the icon path by importing the IconSettings component, \`<IconSettings iconPath=[/assets/icons]>\` from \`components/iconSettings\`, and wrap that component around your entire app or around individual components using icons. If you are using the \`<Icon>\` component, you can also pass the url to \`this.props.path\`.${additionalComment}`,
 				);
 				/* eslint-enable max-len */
 				hasWarned[`${control}-path`] = !!url;

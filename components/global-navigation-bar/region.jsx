@@ -39,7 +39,7 @@ const renderSecondary = (dividerClass, className, children, navigation) => {
 				className={classNames(
 					'slds-context-bar__secondary',
 					dividerClass,
-					className
+					className,
 				)}
 				role="navigation"
 			>
@@ -52,7 +52,7 @@ const renderSecondary = (dividerClass, className, children, navigation) => {
 				className={classNames(
 					'slds-context-bar__secondary',
 					dividerClass,
-					className
+					className,
 				)}
 			>
 				<ul className="slds-grid">{children}</ul>
@@ -68,7 +68,7 @@ const renderTertiary = (dividerClass, className, children) => (
 			'slds-context-bar__tertiary',
 			'slds-col--bump-left',
 			dividerClass,
-			className
+			className,
 		)}
 	>
 		<ul className="slds-grid">{children}</ul>
@@ -97,7 +97,7 @@ const Region = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * Wraps the `secondary` region in a `nav` and adds a role attribute
@@ -106,7 +106,7 @@ const Region = createReactClass({
 		/**
 		 * Region wrap children in styling specific to that region.
 		 */
-		region: PropTypes.oneOf(['primary', 'secondary', 'tertiary']).isRequired
+		region: PropTypes.oneOf(['primary', 'secondary', 'tertiary']).isRequired,
 	},
 
 	render () {
@@ -120,7 +120,7 @@ const Region = createReactClass({
 				region = renderPrimary(
 					dividerClass,
 					this.props.className,
-					this.props.children
+					this.props.children,
 				);
 				break;
 			case 'secondary':
@@ -128,14 +128,14 @@ const Region = createReactClass({
 					dividerClass,
 					this.props.className,
 					this.props.children,
-					this.props.navigation
+					this.props.navigation,
 				);
 				break;
 			case 'tertiary':
 				region = renderTertiary(
 					dividerClass,
 					this.props.className,
-					this.props.children
+					this.props.children,
 				);
 				break;
 			default:
@@ -143,7 +143,7 @@ const Region = createReactClass({
 		}
 
 		return region;
-	}
+	},
 });
 
 export default Region;

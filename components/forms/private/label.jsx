@@ -25,11 +25,11 @@ const propTypes = {
 	/**
 	 * Changes markup of label.
 	 */
-	variant: PropTypes.oneOf(['base', 'static'])
+	variant: PropTypes.oneOf(['base', 'static']),
 };
 
 const defaultProps = {
-	variant: 'base'
+	variant: 'base',
 };
 
 /*
@@ -43,7 +43,7 @@ const Label = (props) => {
 		base: (
 			<label
 				className={classNames('slds-form-element__label', {
-					'slds-assistive-text': props.assistiveText && !props.label
+					'slds-assistive-text': props.assistiveText && !props.label,
 				})}
 				htmlFor={props.htmlFor}
 			>
@@ -55,7 +55,7 @@ const Label = (props) => {
 				{labelText}
 			</label>
 		),
-		static: <span className="slds-form-element__label">{labelText}</span>
+		static: <span className="slds-form-element__label">{labelText}</span>,
 	};
 
 	return labelText ? subRenders[props.variant] : null;

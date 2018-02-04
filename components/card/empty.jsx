@@ -35,11 +35,11 @@ CardEmpty.propTypes = {
 	/**
 	 * Primary text for an Empty Card.
 	 */
-	heading: PropTypes.string
+	heading: PropTypes.string,
 };
 
 CardEmpty.defaultProps = {
-	heading: 'No Related Items'
+	heading: 'No Related Items',
 };
 
 export default CardEmpty;

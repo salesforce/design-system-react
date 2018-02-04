@@ -33,7 +33,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Name of the submitted form parameter.
@@ -80,17 +80,17 @@ const propTypes = {
 		'url',
 		'search',
 		'tel',
-		'color'
+		'color',
 	]),
 	/**
 	 * Inline Edit is a controlled component, and will always display this value.
 	 */
-	value: PropTypes.string.isRequired
+	value: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
 	assistiveText: 'Edit text',
-	type: 'text'
+	type: 'text',
 };
 
 /**
@@ -101,7 +101,7 @@ class InlineEdit extends React.Component {
 		super(props);
 		this.state = {
 			isEditing: false,
-			value: null
+			value: null,
 		};
 	}
 
@@ -123,7 +123,7 @@ class InlineEdit extends React.Component {
 
 		this.setState({
 			isEditing: false,
-			value: null
+			value: null,
 		});
 
 		if (this.props.onLeaveEditMode && isFunction(this.props.onLeaveEditMode)) {
@@ -142,7 +142,7 @@ class InlineEdit extends React.Component {
 
 	handleChange = (event) => {
 		this.setState({
-			value: event.target.value
+			value: event.target.value,
 		});
 	};
 
@@ -160,7 +160,7 @@ class InlineEdit extends React.Component {
 		if (event.keyCode) {
 			if (this.props.onKeyUp && isFunction(this.props.onKeyUp)) {
 				this.props.onKeyUp(event, {
-					value: this.state.value
+					value: this.state.value,
 				});
 			}
 		}
@@ -170,7 +170,7 @@ class InlineEdit extends React.Component {
 		if (!(option && option.cancel === true)) {
 			if (isFunction(this.props.onChange)) {
 				this.props.onChange({
-					value: this.state.value
+					value: this.state.value,
 				});
 			}
 		}
@@ -182,7 +182,7 @@ class InlineEdit extends React.Component {
 			this.autoFocus = true;
 			this.setState({
 				isEditing: true,
-				value: this.props.value
+				value: this.props.value,
 			});
 			if (isFunction(this.props.onEnterEditMode)) {
 				this.props.onEnterEditMode();

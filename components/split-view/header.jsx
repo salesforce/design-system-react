@@ -17,7 +17,7 @@ const SplitViewHeader = ({ className, ...rest }) => (
 	<PageHeader
 		className={classNames(
 			'slds-split-view__header slds-has-bottom-magnet',
-			className
+			className,
 		)}
 		{...rest}
 	/>

@@ -74,14 +74,14 @@ const DatepickerCalendar = createReactClass({
 		/**
 		 * Names of the seven days of the week, starting on Sunday.
 		 */
-		weekDayLabels: PropTypes.array.isRequired
+		weekDayLabels: PropTypes.array.isRequired,
 	},
 
 	getInitialState () {
 		return {
 			focusedDate: this.props.initialDateForCalendarRender,
 			calendarHasFocus: true,
-			todayFocus: false
+			todayFocus: false,
 		};
 	},
 
@@ -94,13 +94,13 @@ const DatepickerCalendar = createReactClass({
 		if (
 			!DateUtil.isEqual(
 				this.props.initialDateForCalendarRender,
-				prevProps.initialDateForCalendarRender
+				prevProps.initialDateForCalendarRender,
 			)
 		) {
 			this.setState({ focusedDate: this.props.initialDateForCalendarRender });
 			this.props.onRequestInternalFocusDate(undefined, {
 				date: this.props.initialDateForCalendarRender,
-				triggerCallback: true
+				triggerCallback: true,
 			});
 		}
 	},
@@ -126,7 +126,7 @@ const DatepickerCalendar = createReactClass({
 			this.setState({ focusedDate: prevDate });
 			this.props.onRequestInternalFocusDate(event, {
 				date: prevDate,
-				triggerCallback: true
+				triggerCallback: true,
 			});
 		}
 	},
@@ -139,7 +139,7 @@ const DatepickerCalendar = createReactClass({
 			this.setState({ focusedDate: nextDate });
 			this.props.onRequestInternalFocusDate(event, {
 				date: nextDate,
-				triggerCallback: true
+				triggerCallback: true,
 			});
 		}
 	},
@@ -152,7 +152,7 @@ const DatepickerCalendar = createReactClass({
 			this.setState({ focusedDate: prevDate });
 			this.props.onRequestInternalFocusDate(event, {
 				date: prevDate,
-				triggerCallback: true
+				triggerCallback: true,
 			});
 		}
 	},
@@ -165,7 +165,7 @@ const DatepickerCalendar = createReactClass({
 			this.setState({ focusedDate: nextDate });
 			this.props.onRequestInternalFocusDate(event, {
 				date: nextDate,
-				triggerCallback: true
+				triggerCallback: true,
 			});
 		}
 	},
@@ -174,7 +174,7 @@ const DatepickerCalendar = createReactClass({
 		const firstDayOfWeekOffset = this.props.isIsoWeekday ? 1 : 0;
 
 		const firstDayOfMonth = DateUtil.firstDayOfMonth(
-			this.props.initialDateForCalendarRender
+			this.props.initialDateForCalendarRender,
 		);
 
 		let firstDayOfWeek;
@@ -215,7 +215,7 @@ const DatepickerCalendar = createReactClass({
 					selectedDate={this.props.selectedDate}
 					selectedDateRef={this.props.selectedDateRef}
 					todayLabel={this.props.todayLabel}
-				/>
+				/>,
 			);
 
 			// create new weeks
@@ -235,7 +235,7 @@ const DatepickerCalendar = createReactClass({
 					>
 						<span className="slds-day ">&nbsp;</span>
 					</td>
-				</tr>
+				</tr>,
 			);
 		}
 
@@ -317,7 +317,7 @@ const DatepickerCalendar = createReactClass({
 				</table>
 			</div>
 		);
-	}
+	},
 });
 
 export default DatepickerCalendar;

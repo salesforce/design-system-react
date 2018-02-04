@@ -15,7 +15,7 @@ chai.should();
 const {
 	Simulate,
 	scryRenderedComponentsWithType,
-	findRenderedDOMComponentWithClass
+	findRenderedDOMComponentWithClass,
 } = TestUtils;
 
 describe('DataTable: ', function () {
@@ -24,57 +24,57 @@ describe('DataTable: ', function () {
 			id: '8IKZHZZV80',
 			name: 'Cloudhub',
 			count: 100976,
-			lastModified: 'Yesterday'
+			lastModified: 'Yesterday',
 		},
 		{
 			id: '5GJOOOPWU7',
 			name: 'Cloudhub + Anypoint Connectors',
 			count: 54976,
-			lastModified: 'Today'
+			lastModified: 'Today',
 		},
 		{
 			id: 'Q8Z71ZUCEZ',
 			name: 'Cloud City',
 			count: 101280,
-			lastModified: 'Today'
+			lastModified: 'Today',
 		},
 		{
 			id: '2FSH2DP0LY',
 			name: 'IoT',
 			count: 976,
-			lastModified: 'Yesterday'
+			lastModified: 'Yesterday',
 		},
 		{
 			id: '8NE888QKV1',
 			name: 'IoT + Anypoint Connectors',
 			count: 54976,
-			lastModified: 'Today'
+			lastModified: 'Today',
 		},
 		{
 			id: 'M4D37GW83H',
 			name: 'Salesforce Tower',
 			count: 101280,
-			lastModified: 'Today'
-		}
+			lastModified: 'Today',
+		},
 	];
 
 	const columns = [
 		{
 			label: 'Name',
 			property: 'name',
-			truncate: true
+			truncate: true,
 		},
 		{
 			label: 'Count',
 			property: 'count',
-			sortable: true
-		}
+			sortable: true,
+		},
 	];
 
 	const defaultProps = {
 		id: 'DataTableExample-default',
 		items,
-		selectRows: true
+		selectRows: true,
 	};
 
 	const renderTable = (instance) =>
@@ -83,7 +83,7 @@ describe('DataTable: ', function () {
 			document.body.appendChild(this.dom);
 			this.component = ReactDOM.render(
 				<IconSettings iconPath="/assets/icons">{instance}</IconSettings>,
-				this.dom
+				this.dom,
 			);
 		};
 
@@ -113,8 +113,8 @@ describe('DataTable: ', function () {
 					{columns.map((columnProps) => (
 						<DataTableColumn {...columnProps} key={columnProps.property} />
 					))}
-				</DataTable>
-			)
+				</DataTable>,
+			),
 		);
 
 		afterEach(removeTable);
@@ -134,11 +134,11 @@ describe('DataTable: ', function () {
 		it('renders the correct contents in each cell', function () {
 			const firstName = getCell(this.dom, 1, 1);
 			firstName.innerHTML.should.equal(
-				'<div class="" title="Cloudhub">Cloudhub</div>'
+				'<div class="" title="Cloudhub">Cloudhub</div>',
 			);
 			const secondCount = getCell(this.dom, 2, 2);
 			secondCount.innerHTML.should.equal(
-				'<div class="" title="54976">54976</div>'
+				'<div class="" title="54976">54976</div>',
 			);
 		});
 
@@ -152,7 +152,7 @@ describe('DataTable: ', function () {
 					{columns.map((columnProps) => (
 						<DataTableColumn {...columnProps} key={columnProps.property} />
 					))}
-				</DataTable>
+				</DataTable>,
 			).call(this);
 			checkboxes = getTable(this.dom).querySelectorAll('.slds-checkbox');
 			checkboxes.should.have.length(0);
@@ -165,8 +165,8 @@ describe('DataTable: ', function () {
 				id: '8IKZHZZV80',
 				name: 'Cloudhub',
 				count: 100976,
-				lastModified: 'Yesterday'
-			}
+				lastModified: 'Yesterday',
+			},
 		];
 
 		afterEach(removeTable);
@@ -177,14 +177,14 @@ describe('DataTable: ', function () {
 					{columns.map((columnProps) => (
 						<DataTableColumn {...columnProps} key={columnProps.property} />
 					))}
-				</DataTable>
+				</DataTable>,
 			).call(this);
 
 			const tbody = getTable(this.dom).querySelectorAll('tbody')[0];
 			const selectedRows = tbody.querySelectorAll('tr.slds-is-selected');
 			selectedRows.should.have.length(1);
 			const checkedBoxes = tbody.querySelectorAll(
-				'.slds-checkbox input:checked'
+				'.slds-checkbox input:checked',
 			);
 			checkedBoxes.should.have.length(1);
 		});
@@ -204,7 +204,7 @@ describe('DataTable: ', function () {
 					{columns.map((columnProps) => (
 						<DataTableColumn {...columnProps} key={columnProps.property} />
 					))}
-				</DataTable>
+				</DataTable>,
 			).call(this);
 
 			const tbody = getTable(this.dom).querySelectorAll('tbody')[0];
@@ -229,7 +229,7 @@ describe('DataTable: ', function () {
 					{columns.map((columnProps) => (
 						<DataTableColumn {...columnProps} key={columnProps.property} />
 					))}
-				</DataTable>
+				</DataTable>,
 			).call(this);
 
 			const secondRow = getRow(this.dom, 2);
@@ -249,7 +249,7 @@ describe('DataTable: ', function () {
 					{columns.map((columnProps) => (
 						<DataTableColumn {...columnProps} key={columnProps.property} />
 					))}
-				</DataTable>
+				</DataTable>,
 			).call(this);
 
 			const thead = getTable(this.dom).querySelectorAll('thead')[0];
@@ -269,7 +269,7 @@ describe('DataTable: ', function () {
 					{columns.map((columnProps) => (
 						<DataTableColumn {...columnProps} key={columnProps.property} />
 					))}
-				</DataTable>
+				</DataTable>,
 			).call(this);
 
 			const thead = getTable(this.dom).querySelectorAll('thead')[0];
@@ -294,7 +294,7 @@ describe('DataTable: ', function () {
 					{columns.map((columnProps) => (
 						<DataTableColumn {...columnProps} key={columnProps.property} />
 					))}
-				</DataTable>
+				</DataTable>,
 			).call(this);
 
 			const thead = getTable(this.dom).querySelectorAll('thead')[0];
@@ -314,7 +314,7 @@ describe('DataTable: ', function () {
 					{columns.map((columnProps) => (
 						<DataTableColumn {...columnProps} key={columnProps.property} />
 					))}
-				</DataTable>
+				</DataTable>,
 			).call(this);
 
 			const thead = getTable(this.dom).querySelectorAll('thead')[0];
@@ -339,21 +339,21 @@ describe('DataTable: ', function () {
 							{
 								id: 0,
 								label: 'Add to Group',
-								value: '1'
+								value: '1',
 							},
 							{
 								id: 1,
 								label: 'Publish',
-								value: '2'
-							}
+								value: '2',
+							},
 						]}
 					/>
-				</DataTable>
+				</DataTable>,
 			).call(this);
 
 			const rowActionMenus = scryRenderedComponentsWithType(
 				this.component,
-				DataTableRowActions
+				DataTableRowActions,
 			);
 			rowActionMenus.should.have.length(6);
 		});
@@ -375,26 +375,26 @@ describe('DataTable: ', function () {
 							{
 								id: 0,
 								label: 'Add to Group',
-								value: '1'
+								value: '1',
 							},
 							{
 								id: 1,
 								label: 'Publish',
-								value: '2'
-							}
+								value: '2',
+							},
 						]}
 						onAction={this.onAction}
 					/>
-				</DataTable>
+				</DataTable>,
 			).call(this);
 
 			const rowActionMenu = scryRenderedComponentsWithType(
 				this.component,
-				DataTableRowActions
+				DataTableRowActions,
 			)[0];
 			const trigger = findRenderedDOMComponentWithClass(
 				rowActionMenu,
-				'slds-button'
+				'slds-button',
 			);
 			Simulate.click(trigger, {});
 
@@ -417,7 +417,7 @@ describe('DataTable: ', function () {
 							<DataTableHighlightCell />
 						</DataTableColumn>
 					))}
-				</DataTable>
+				</DataTable>,
 			).call(this);
 
 			const secondRow = getRow(this.dom, 2);

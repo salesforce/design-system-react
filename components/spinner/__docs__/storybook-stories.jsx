@@ -13,7 +13,7 @@ const inverseContainer = {
 	backgroundColor: '#4bca81',
 	position: 'absolute',
 	width: '100%',
-	height: '100%'
+	height: '100%',
 };
 
 storiesOf(SPINNER, module)
@@ -31,8 +31,8 @@ storiesOf(SPINNER, module)
 		getSpinner({
 			size: 'large',
 			variant: 'brand',
-			containerClassName: 'my-custom-classname'
-		})
+			containerClassName: 'my-custom-classname',
+		}),
 	)
 
 	.addDecorator((getStory) => (
@@ -42,8 +42,8 @@ storiesOf(SPINNER, module)
 	))
 	.add('Inverse Small', () => getSpinner({ size: 'small', variant: 'inverse' }))
 	.add('Inverse Medium', () =>
-		getSpinner({ size: 'medium', variant: 'inverse' })
+		getSpinner({ size: 'medium', variant: 'inverse' }),
 	)
 	.add('Inverse Large', () =>
-		getSpinner({ size: 'large', variant: 'inverse' })
+		getSpinner({ size: 'large', variant: 'inverse' }),
 	);

@@ -6,7 +6,7 @@ import sinon from 'sinon';
 
 import IconSettings from '../../../components/icon-settings';
 import SplitViewListbox, {
-	SORT_OPTIONS
+	SORT_OPTIONS,
 } from '../../../components/split-view/listbox';
 
 chai.use(chaiEnzyme());
@@ -17,29 +17,29 @@ const listOptions = [
 		label: 'Riley Shultz',
 		topRightText: '99',
 		bottomLeftText: 'Biotech, Inc.',
-		bottomRightText: 'Nurturing'
+		bottomRightText: 'Nurturing',
 	},
 	{
 		id: 'option2',
 		label: 'Jason A. - VP of Sales',
 		topRightText: '92',
 		bottomLeftText: 'Case Management Solutions',
-		bottomRightText: 'Contacted'
+		bottomRightText: 'Contacted',
 	},
 	{
 		id: 'option3',
 		label: 'Josh Smith',
 		topRightText: '90',
 		bottomLeftText: 'Acme, Inc.',
-		bottomRightText: 'Contacted'
+		bottomRightText: 'Contacted',
 	},
 	{
 		id: 'option4',
 		label: 'Bobby Tree',
 		topRightText: '89',
 		bottomLeftText: 'Salesforce, Inc.',
-		bottomRightText: 'Closing'
-	}
+		bottomRightText: 'Closing',
+	},
 ];
 
 describe('SLDSSplitView - Listbox header', () => {
@@ -56,22 +56,22 @@ describe('SLDSSplitView - Listbox header', () => {
 	const props = {
 		options: listOptions,
 		labels: {
-			header: 'test header'
+			header: 'test header',
 		},
 		assistiveText: {
 			sort: {
 				sortedBy: 'test sort by',
 				descending: 'test descending',
-				ascending: 'test ascending'
-			}
+				ascending: 'test ascending',
+			},
 		},
 		sortDirection: SORT_OPTIONS.DOWN,
 		events: {
 			onSort: sinon.spy(),
 			onSelect: (event, { selectedItems }) => {
 				component.setProps({ selection: selectedItems });
-			}
-		}
+			},
+		},
 	};
 
 	beforeEach(() => {
@@ -92,7 +92,7 @@ describe('SLDSSplitView - Listbox header', () => {
 			component
 				.find('.slds-split-view__list-header > span > span')
 				.at(1)
-				.text()
+				.text(),
 		).to.equal('test header');
 	});
 
@@ -101,7 +101,7 @@ describe('SLDSSplitView - Listbox header', () => {
 			component
 				.find('.slds-split-view__list-header > span > span')
 				.at(0)
-				.text()
+				.text(),
 		).to.equal('test sort by:');
 	});
 
@@ -111,7 +111,7 @@ describe('SLDSSplitView - Listbox header', () => {
 				expect(
 					component
 						.find('.slds-split-view__list-header svg > use')
-						.prop('xlinkHref')
+						.prop('xlinkHref'),
 				).to.have.string('arrowdown');
 			});
 
@@ -120,7 +120,7 @@ describe('SLDSSplitView - Listbox header', () => {
 					component
 						.find('.slds-split-view__list-header > span > span')
 						.at(2)
-						.text()
+						.text(),
 				).to.equal('- test descending');
 			});
 
@@ -130,7 +130,7 @@ describe('SLDSSplitView - Listbox header', () => {
 				expect(
 					component
 						.find('.slds-split-view__list-header svg > use')
-						.prop('xlinkHref')
+						.prop('xlinkHref'),
 				).to.have.string('arrowup');
 			});
 
@@ -141,14 +141,14 @@ describe('SLDSSplitView - Listbox header', () => {
 					component
 						.find('.slds-split-view__list-header > span > span')
 						.at(2)
-						.text()
+						.text(),
 				).to.equal('- test ascending');
 			});
 
 			it('should not have a sort direction when no direction specified', () => {
 				component.setProps({ sortDirection: undefined });
 				expect(
-					component.find('.slds-split-view__list-header svg')
+					component.find('.slds-split-view__list-header svg'),
 				).to.have.length(0);
 			});
 
@@ -160,7 +160,7 @@ describe('SLDSSplitView - Listbox header', () => {
 			it('should not be clickable when onSort not specified', () => {
 				component.setProps({ events: { onSelect: sinon.spy() } });
 				expect(component.find('.slds-split-view__list-header a')).to.be.length(
-					0
+					0,
 				);
 			});
 		});

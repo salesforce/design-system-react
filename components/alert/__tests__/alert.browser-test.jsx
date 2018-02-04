@@ -6,7 +6,7 @@ import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import {
 	mountComponent,
-	unmountComponent
+	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 
 chai.use(chaiEnzyme());
@@ -21,7 +21,7 @@ class DemoComponent extends Component {
 		super(props);
 
 		this.state = {
-			isOpen: true
+			isOpen: true,
 		};
 	}
 
@@ -36,7 +36,7 @@ class DemoComponent extends Component {
 								icon={<Icon category="utility" name="user" />}
 								labels={{
 									heading: 'Logged in as John Smith (johnsmith@acme.com).',
-									headingLink: 'Log out'
+									headingLink: 'Log out',
 								}}
 								onClickHeadingLink={this.props.onClickHeadingLink}
 								onRequestClose={() => {
@@ -59,7 +59,7 @@ describe('SLDSAlert: ', function () {
 
 	describe('Dismiss alert', () => {
 		beforeEach(
-			mountComponent(<DemoComponent onClickHeadingLink={onClickHeadingLink} />)
+			mountComponent(<DemoComponent onClickHeadingLink={onClickHeadingLink} />),
 		);
 
 		afterEach(unmountComponent);

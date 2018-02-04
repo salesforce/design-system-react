@@ -37,8 +37,8 @@ class Panel extends React.Component {
 					'slds-grid--vertical',
 					'slds-nowrap',
 					{
-						'slds-panel--filters': this.props.variant === 'filters'
-					}
+						'slds-panel--filters': this.props.variant === 'filters',
+					},
 				)}
 			>
 				<div className="slds-form--stacked slds-grow slds-scrollable--y slds-grid slds-grid--vertical">
@@ -59,7 +59,7 @@ Panel.propTypes = {
 	/**
 	 * The type of panel
 	 */
-	variant: PropTypes.oneOf(['filters'])
+	variant: PropTypes.oneOf(['filters']),
 };
 
 export default Panel;

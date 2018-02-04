@@ -7,7 +7,7 @@ import path from 'path';
 
 const exec = (
 	{ command, message, dir = '.', rootPath, verbose = true },
-	callback
+	callback,
 ) => {
 	if (message) {
 		console.log(message);
@@ -18,11 +18,11 @@ const exec = (
 		command,
 		{
 			cwd: path.resolve(rootPath, dir),
-			maxBuffer: 1024 * 500
+			maxBuffer: 1024 * 500,
 		},
 		(err) => {
 			callback(err);
-		}
+		},
 	);
 
 	if (verbose === true) {

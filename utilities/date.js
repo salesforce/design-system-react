@@ -80,7 +80,7 @@ const DateUtil = {
 			30,
 			31,
 			30,
-			31
+			31,
 		][month];
 	},
 
@@ -92,11 +92,11 @@ const DateUtil = {
 		newDate.setDate(
 			Math.min(
 				dateOfNewDate,
-				DateUtil.getDaysInMonth(newDate.getFullYear(), newDate.getMonth())
-			)
+				DateUtil.getDaysInMonth(newDate.getFullYear(), newDate.getMonth()),
+			),
 		);
 		return newDate;
-	}
+	},
 };
 
 export default DateUtil;
