@@ -1,8 +1,7 @@
 /* eslint-env commonjs */
 /* eslint-disable global-require */
-const assign = require('lodash.assign');
 
-module.exports = function buildPreset (context, options) {
+module.exports = function buildPreset () {
 	return {
 		presets: [
 			require('babel-preset-env').default(null, {

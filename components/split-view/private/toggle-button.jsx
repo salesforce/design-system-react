@@ -57,10 +57,10 @@ const SplitViewToggleButton = ({
 			aria-expanded={isOpen}
 			aria-controls={ariaControls}
 			title={toggleAssistiveText}
-			variant={'base'}
-			iconName={'left'}
-			iconCategory={'utility'}
-			iconSize={'x-small'}
+			variant="base"
+			iconName="left"
+			iconCategory="utility"
+			iconSize="x-small"
 			onClick={events.onClick}
 			assistiveText={toggleAssistiveText}
 		/>

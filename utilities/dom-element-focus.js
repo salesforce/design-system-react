@@ -40,9 +40,10 @@ const ElementFocus = {
 			try {
 				focusLaterElement.focus();
 			} catch (e) {
+				// eslint-disable-next-line no-console
 				console.warn(
 					`You tried to return focus to ${focusLaterElement} but it is not in the DOM anymore`
-				); // eslint-disable-line no-console
+				);
 			}
 			focusLaterElement = null;
 		}

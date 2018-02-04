@@ -31,7 +31,7 @@ export const EXPIRED_WITH_CUSTOM_ICON = () => (
 		value={20}
 		theme={THEME_OPTIONS.EXPIRED}
 		hasIcon
-		icon={<Icon category={'utility'} name={'lock'} />}
+		icon={<Icon category="utility" name="lock" />}
 	/>
 );
 export const EXPIRED_100 = () => (

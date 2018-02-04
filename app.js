@@ -1,5 +1,6 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-console */
+/* eslint-disable import/no-extraneous-dependencies */
 const compression = require('compression');
 const express = require('express');
 

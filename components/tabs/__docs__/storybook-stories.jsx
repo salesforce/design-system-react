@@ -588,9 +588,11 @@ const DemoTabsInterceptSelect = createReactClass({
 					<Panel label="Panel with intercept">
 						<p>Default Panel</p>
 						{this.state.intercepts > 0 && (
-							<p>{`We've intercepted navigation ${
-								this.state.intercepts
-							} time(s)`}</p>
+							<p>
+								{`We've intercepted navigation ${
+									this.state.intercepts
+								} time(s)`}
+							</p>
 						)}
 					</Panel>
 					<Panel label="Unreachable panel">
