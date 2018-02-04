@@ -29,7 +29,9 @@ do
 	echo "    ${COMMAND}"
 done
 
+echo -en 'travis_fold:start:npm ls\\r'
 npm ls --silent
+echo -en 'travis_fold:end:npm ls\\r'
 
 for COMMAND in "${COMMANDS[@]}"
 do
