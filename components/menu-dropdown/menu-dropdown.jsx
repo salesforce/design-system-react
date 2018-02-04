@@ -742,7 +742,7 @@ const MenuDropdown = createReactClass({
 				customContentWithListPropInjection.push(
 					this.renderDefaultMenuContent(child.props)
 				);
-			} else {
+			} else if (child) {
 				const clonedCustomContent = React.cloneElement(child, {
 					onClick: this.handleClickCustomContent,
 					key: shortid.generate()
