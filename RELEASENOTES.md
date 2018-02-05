@@ -31,6 +31,12 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.8.7
+
+**Bugfix**
+
+* Revert Modal CSS class `slds-fade-in-open`
+
 ## Release 0.8.6
 
 **Major features**
