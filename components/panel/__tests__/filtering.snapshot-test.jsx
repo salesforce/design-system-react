@@ -16,9 +16,9 @@ test('Panel Filtering Default Snapshot', () => {
 test('Panel Filtering Default HTML Snapshot', () => {
 	const domTree = String(
 		jsBeautify.html(ReactDOMServer.renderToStaticMarkup(<PanelFiltering />), {
-			indent_size: 2
+			indent_size: 2,
 		}),
-		'utf-8'
+		'utf-8',
 	);
 	expect(domTree).toMatchSnapshot();
 });

@@ -42,7 +42,7 @@ const ElementFocus = {
 			} catch (e) {
 				// eslint-disable-next-line no-console
 				console.warn(
-					`You tried to return focus to ${focusLaterElement} but it is not in the DOM anymore`
+					`You tried to return focus to ${focusLaterElement} but it is not in the DOM anymore`,
 				);
 			}
 			focusLaterElement = null;
@@ -60,7 +60,7 @@ const ElementFocus = {
 		if (canUseDOM) {
 			window.removeEventListener('keydown', handleScopedKeyDown);
 		}
-	}
+	},
 };
 
 export default ElementFocus;

@@ -15,7 +15,7 @@ if (process.env.NODE_ENV !== 'production') {
 		control,
 		props,
 		selectedProps,
-		comment
+		comment,
 	) {
 		const additionalComment = comment ? ` ${comment}` : '';
 		let bothOrNoneAreSet = false;
@@ -30,7 +30,7 @@ if (process.env.NODE_ENV !== 'production') {
 			/* eslint-disable max-len */
 			warning(
 				bothOrNoneAreSet,
-				`[Design System React] If one of the following props are used, then both of the following properties are required by ${control}: [${keys.join()}].${additionalComment}`
+				`[Design System React] If one of the following props are used, then both of the following properties are required by ${control}: [${keys.join()}].${additionalComment}`,
 			);
 			/* eslint-enable max-len */
 			hasWarned[control] = !!selectedProps;

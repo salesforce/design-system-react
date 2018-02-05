@@ -40,7 +40,7 @@ const Example = createReactClass({
 				</section>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

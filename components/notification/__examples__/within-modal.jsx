@@ -1,28 +1,25 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
 import Notification from '~/components/notification'; // `~` is replaced with design-system-react at runtime
 import Modal from '~/components/modal';
 import Button from '~/components/button';
 
-const Example = createReactClass({
-	displayName: 'NotificationExample',
+class Example extends React.Component {
+	static displayName = 'NotificationExample';
 
-	getInitialState () {
-		return {
-			isOpen: false,
-			modalOpen: false,
-			toastOpen: true
-		};
-	},
+	state = {
+		isOpen: false,
+		modalOpen: false,
+		toastOpen: true,
+	};
 
-	toggleModal () {
+	toggleModal = () => {
 		this.setState({ modalOpen: !this.state.modalOpen });
-	},
+	};
 
-	toggleToast () {
+	toggleToast = () => {
 		this.setState({ toastOpen: !this.state.toastOpen });
-	},
+	};
 
 	render () {
 		return (
@@ -39,7 +36,7 @@ const Example = createReactClass({
 								label="Toggle Toast"
 								onClick={this.toggleToast}
 								variant="brand"
-							/>
+							/>,
 						]}
 						isOpen={this.state.modalOpen}
 						onRequestClose={this.toggleModal}
@@ -78,6 +75,6 @@ const Example = createReactClass({
 			</IconSettings>
 		);
 	}
-});
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

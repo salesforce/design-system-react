@@ -88,7 +88,7 @@ Search.propTypes = {
 	/**
 	 * Placeholder for the input
 	 */
-	placeholder: PropTypes.string
+	placeholder: PropTypes.string,
 };
 
 export default Search;

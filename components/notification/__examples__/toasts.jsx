@@ -1,24 +1,21 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
 import Notification from '~/components/notification'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 
-const Example = createReactClass({
-	displayName: 'NotificationExample',
+class Example extends React.Component {
+	static displayName = 'NotificationExample';
 
-	getInitialState () {
-		return {
-			baseIsOpen: false,
-			successIsOpen: false,
-			warningIsOpen: false,
-			errorIsOpen: false
-		};
-	},
+	state = {
+		baseIsOpen: false,
+		successIsOpen: false,
+		warningIsOpen: false,
+		errorIsOpen: false,
+	};
 
-	toggleOpen (event, theme) {
+	toggleOpen = (event, theme) => {
 		this.setState({ [`${theme}IsOpen`]: !this.state[`${theme}IsOpen`] });
-	},
+	};
 
 	render () {
 		return (
@@ -50,7 +47,7 @@ const Example = createReactClass({
 							<span key="new-contact">
 								Your new contact <a href="javascript:void(0);">Sara Smith</a>{' '}
 								was successfully created.
-							</span>
+							</span>,
 						]}
 						iconName="notification"
 						isOpen={this.state.successIsOpen}
@@ -71,7 +68,7 @@ const Example = createReactClass({
 						content={[
 							<span key="required-fields">
 								Oops, you&quot;ve missed some required form inputs.
-							</span>
+							</span>,
 						]}
 						isOpen={this.state.warningIsOpen}
 						onDismiss={(event) => {
@@ -92,7 +89,7 @@ const Example = createReactClass({
 							<span key="required-fields">
 								You encountered some errors when trying to save edits to Samuel
 								Smith.
-							</span>
+							</span>,
 						]}
 						iconName="warning"
 						isOpen={this.state.errorIsOpen}
@@ -106,6 +103,6 @@ const Example = createReactClass({
 			</IconSettings>
 		);
 	}
-});
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

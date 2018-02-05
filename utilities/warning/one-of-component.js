@@ -15,7 +15,7 @@ if (process.env.NODE_ENV !== 'production') {
 		props,
 		propName,
 		allowedComponents,
-		comment
+		comment,
 	) {
 		const additionalComment = comment ? ` ${comment}` : '';
 
@@ -34,8 +34,8 @@ if (process.env.NODE_ENV !== 'production') {
 			warning(
 				allowedComponentFound,
 				`[Design System React] ${control} requires that prop '${propName}' is an instance of one of the following components: ${allowedComponents.join(
-					', '
-				)}. An instance of '${componentType}' was given.${additionalComment}`
+					', ',
+				)}. An instance of '${componentType}' was given.${additionalComment}`,
 			);
 			/* eslint-enable max-len */
 			hasWarned[control] = !!allowedComponentFound;

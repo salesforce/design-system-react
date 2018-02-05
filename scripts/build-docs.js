@@ -10,7 +10,7 @@ import { parse as bParse } from 'babylon';
 import { components } from '../package.json';
 
 console.log(
-	'# Generating docs based on `components` object in `package.json`. Please add any public components to this object.'
+	'# Generating docs based on `components` object in `package.json`. Please add any public components to this object.',
 );
 
 const output = {};
@@ -31,7 +31,7 @@ components.map((node) => {
 		'../components',
 		node.component,
 		'/',
-		`${node.component}.jsx`
+		`${node.component}.jsx`,
 	);
 
 	try {
@@ -51,8 +51,8 @@ components.map((node) => {
 	console.log(
 		`\n================================================================================\n[ ${inputPath.replace(
 			dirName,
-			'.'
-		)} ] `
+			'.',
+		)} ] `,
 	);
 
 	const src = fs.readFileSync(inputPath, 'utf8');
@@ -64,8 +64,8 @@ components.map((node) => {
 			// enable jsx and flow syntax
 			'jsx',
 			'objectRestSpread',
-			'classProperties'
-		]
+			'classProperties',
+		],
 	});
 	const cleanRoute = kebabCase(node['display-name']);
 
@@ -79,7 +79,7 @@ components.map((node) => {
 				'../components',
 				node.component,
 				'/',
-				`${dependency.component}.jsx`
+				`${dependency.component}.jsx`,
 			);
 
 			const depSrc = fs.readFileSync(depInputPathToUse, 'utf8');
@@ -89,8 +89,8 @@ components.map((node) => {
 				util.inspect(depInputPathToUse.replace(dirName, '.'), {
 					showHidden: true,
 					depth: null,
-					colors: true
-				})
+					colors: true,
+				}),
 			);
 
 			let depDoc = {};
@@ -106,12 +106,12 @@ components.map((node) => {
 						util.inspect(err.message, {
 							showHidden: true,
 							depth: null,
-							colors: true
+							colors: true,
 						}),
 						`\n  ${depInputPathToUse.replace(
 							dirName,
-							'.'
-						)} is apparently not a valid JSX file...? This library uses https://github.com/reactjs/react-docgen to create its documentation. Please conform to code that is compatible with that library.\n\n`
+							'.',
+						)} is apparently not a valid JSX file...? This library uses https://github.com/reactjs/react-docgen to create its documentation. Please conform to code that is compatible with that library.\n\n`,
 					);
 					process.exit(1);
 				}
@@ -145,7 +145,7 @@ fs.writeFile(outputPath, JSON.stringify(output, null, 4), (err) => {
 	if (err) {
 		console.log(
 			'  [ ERROR AT ./scripts/build-docs.js:139 ] err: ',
-			util.inspect(err, { showHidden: true, depth: null, colors: true })
+			util.inspect(err, { showHidden: true, depth: null, colors: true }),
 		);
 	}
 });

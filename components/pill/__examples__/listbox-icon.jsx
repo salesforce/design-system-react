@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import createReactClass from 'create-react-class';
 
 import Pill from '~/components/pill';
 import Icon from '~/components/icon';
@@ -8,80 +7,74 @@ import IconSettings from '~/components/icon-settings';
 const PILLS = [
 	{
 		category: 'standard',
-		name: 'account'
+		name: 'account',
 	},
 	{
 		category: 'standard',
-		name: 'case'
+		name: 'case',
 	},
 	{
 		category: 'utility',
-		name: 'retweet'
+		name: 'retweet',
 	},
 	{
 		category: 'standard',
-		name: 'solution'
+		name: 'solution',
 	},
 	{
 		category: 'standard',
-		name: 'custom_notification'
+		name: 'custom_notification',
 	},
 	{
 		category: 'standard',
-		name: 'email'
+		name: 'email',
 	},
 	{
 		category: 'standard',
-		name: 'endorsement'
+		name: 'endorsement',
 	},
 	{
 		category: 'standard',
-		name: 'recent'
+		name: 'recent',
 	},
 	{
 		category: 'custom',
-		name: 'custom31'
-	}
+		name: 'custom31',
+	},
 ];
 
 function noop () {}
 
-const Example = createReactClass({
-	displayName: 'PillWithIconListboxExample',
+class Example extends React.Component {
+	static displayName = 'PillWithIconListboxExample';
 
-	propTypes: {
-		action: PropTypes.func
-	},
+	static propTypes = {
+		action: PropTypes.func,
+	};
 
-	getDefaultProps () {
-		return {
-			action: () => noop
-		};
-	},
+	static defaultProps = {
+		action: () => noop,
+	};
 
-	getInitialState () {
-		return this.getAllOn();
-	},
+	state = this.getAllOn();
 
-	onClick (event) {
+	onClick = (event) => {
 		this.props.action('onClick')(event);
-	},
+	};
 
-	onRemove (event, pill) {
+	onRemove = (event, pill) => {
 		this.props.action('onRemove')(event);
 		this.setState({
-			[pill]: false
+			[pill]: false,
 		});
-	},
+	};
 
-	getAllOn () {
-		return PILLS.reduce((result, item, index) => {
-			result['pill' + index] = true;
-			return result;
-		}, {});
-	},
+	getAllOn = () => PILLS.reduce((result, item, index) => {
+		result['pill' + index] = true;
+		return result;
+	}, {});
 
-	renderListItem (icon, index) {
+	renderListItem = (icon, index) => {
 		if (this.state['pill' + index]) {
 			return (
 				<li className="slds-listbox-item" role="presentation" key={index}>
@@ -89,10 +82,10 @@ const Example = createReactClass({
 						labels={{
 							label: 'Pill Label',
 							title: 'Full pill label verbiage mirrored here',
-							removeTitle: 'Remove'
+							removeTitle: 'Remove',
 						}}
 						assistiveText={{
-							remove: 'Press delete or backspace to remove'
+							remove: 'Press delete or backspace to remove',
 						}}
 						variant="option"
 						icon={
@@ -105,7 +98,7 @@ const Example = createReactClass({
 			);
 		}
 		return null;
-	},
+	};
 
 	render () {
 		return (
@@ -127,6 +120,6 @@ const Example = createReactClass({
 			</IconSettings>
 		);
 	}
-});
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

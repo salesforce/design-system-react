@@ -16,7 +16,7 @@ describe('SLDSButtonGroup: ', () => {
 		const reactCmp = TestUtils.renderIntoDocument(
 			<IconSettings iconPath="/assets/icons">
 				<div>{buttonGroupInstance}</div>
-			</IconSettings>
+			</IconSettings>,
 		);
 		return ReactDOM.findDOMNode(reactCmp).children[0];
 	};

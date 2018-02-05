@@ -14,7 +14,7 @@ test('Radio Group Base DOM Snapshot', () => {
 
 test('Radio Group Base HTML Snapshot', () => {
 	expect(
-		renderMarkup(SnapshotExample, { name: 'radioGroup' })
+		renderMarkup(SnapshotExample, { name: 'radioGroup' }),
 	).toMatchSnapshot();
 });
 
@@ -39,7 +39,7 @@ test('Radio Group Error DOM Snapshot', () => {
 				name="radioGroup"
 				errorLabel="error message"
 				errorId="radioGroupError"
-			/>
+			/>,
 		)
 		.toJSON();
 	expect(domTree).toMatchSnapshot();

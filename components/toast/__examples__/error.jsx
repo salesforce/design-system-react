@@ -1,7 +1,6 @@
 import React from 'react';
 import Toast from '~/components/toast'; // `~` is replaced with design-system-react at runtime
 import ToastContainer from '~/components/toast/container'; // `~` is replaced with design-system-react at runtime
-import Icon from '~/components/icon'; // `~` is replaced with design-system-react at runtime
 import IconSettings from '~/components/icon-settings';
 
 class Example extends React.Component {
@@ -12,7 +11,7 @@ class Example extends React.Component {
 					<Toast
 						labels={{
 							heading:
-								'Can’t save lead “Sally Wong” because another lead has the same name.'
+								'Can’t save lead “Sally Wong” because another lead has the same name.',
 						}}
 						variant="error"
 					/>

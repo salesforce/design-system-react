@@ -42,7 +42,7 @@ const PanelFilterGroup = ({
 	onRequestCancel,
 	onRequestClose,
 	onRequestSave,
-	saveLabel
+	saveLabel,
 }) => (
 	<div className="slds-filters">
 		{variant === 'panel' ? (
@@ -168,7 +168,7 @@ PanelFilterGroup.propTypes = {
 	/**
 	 * Adds in default Panel header and footer
 	 */
-	variant: PropTypes.oneOf(['panel'])
+	variant: PropTypes.oneOf(['panel']),
 };
 
 PanelFilterGroup.defaultProps = {
@@ -177,7 +177,7 @@ PanelFilterGroup.defaultProps = {
 	assistiveTextCloseFilterPanel: 'Close Filter Panel',
 	heading: 'Filter',
 	saveLabel: 'Save',
-	removeAllLabel: 'Remove All'
+	removeAllLabel: 'Remove All',
 };
 
 export default PanelFilterGroup;

@@ -9,14 +9,13 @@ import { shape } from 'airbnb-prop-types';
 
 import assign from 'lodash.assign';
 
+import find from 'lodash.find';
+
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 import { PROGRESS_INDICATOR } from '../../utilities/constants';
-
-// ### find
-import find from 'lodash.find';
 
 // Child components
 import Step from './private/step';
@@ -31,7 +30,7 @@ const propTypes = {
 	 * * `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`
 	 */
 	assistiveText: shape({
-		percentage: PropTypes.string
+		percentage: PropTypes.string,
 	}),
 	/**
 	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
@@ -39,7 +38,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Stores all completed steps. It is an array of step objects.
@@ -96,7 +95,7 @@ const propTypes = {
 	/**
 	 * Determines component style.
 	 */
-	variant: PropTypes.oneOf(['base', 'modal'])
+	variant: PropTypes.oneOf(['base', 'modal']),
 };
 
 const defaultSteps = [
@@ -104,7 +103,7 @@ const defaultSteps = [
 	{ id: 1, label: 'tooltip label #2' },
 	{ id: 2, label: 'tooltip label #3' },
 	{ id: 3, label: 'tooltip label #4' },
-	{ id: 4, label: 'tooltip label #5' }
+	{ id: 4, label: 'tooltip label #5' },
 ];
 
 const defaultProps = {
@@ -116,18 +115,23 @@ const defaultProps = {
 	variant: 'base',
 	// click/focus callbacks by default do nothing
 	onStepClick: () => {},
-	onStepFocus: () => {}
+	onStepFocus: () => {},
 };
 
 /**
  * Check if the passed steps are valid
  */
 function checkSteps (steps) {
-	if (steps === undefined) return false;
-	for (let i = 0; i < steps.length; ++i) {
-		if (steps[i].label === undefined) return false;
+	const anyLabelUndefined = (step) => step.label === undefined;
+	let valid = true;
+
+	if (steps === undefined) {
+		valid = false;
+	} else if (Array.isArray(steps) && steps.some(anyLabelUndefined)) {
+		valid = false;
 	}
-	return true;
+
+	return valid;
 }
 
 /**
@@ -176,7 +180,7 @@ class ProgressIndicator extends React.Component {
 
 		let currentStep = 0;
 		// find index for the current step
-		for (let i = 0; i < allSteps.length; ++i) {
+		for (let i = 0; i < allSteps.length; i += 1) {
 			// assign step an id if it does not have one
 			if (allSteps[i].id === undefined) {
 				allSteps[i].id = i;

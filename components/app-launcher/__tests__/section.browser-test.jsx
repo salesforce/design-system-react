@@ -4,41 +4,41 @@ import chai from 'chai';
 import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
 
-const expect = chai.expect;
-const should = chai.should();
-
 import IconSettings from '../../icon-settings';
 import AppLauncherTile from '../../app-launcher/tile';
 import AppLauncherSection from '../../app-launcher/section';
+
+const expect = chai.expect;
+const should = chai.should();
 
 const { Simulate } = TestUtils;
 
 describe('SLDS APP LAUNCHER SECTION *******************************************', () => {
 	const handles = {
-		section: null
+		section: null,
 	};
 
 	const defaultSectionProps = {
-		title: 'All Items'
+		title: 'All Items',
 	};
 
 	const defaultChildren = [
 		<AppLauncherTile key="asdf" title="Marketing Cloud" />,
-		<AppLauncherTile key="qwer" title="Support Cloud" />
+		<AppLauncherTile key="qwer" title="Support Cloud" />,
 	];
 
 	const createSection = (props, children) =>
 		React.createElement(
 			AppLauncherSection,
 			assign({}, defaultSectionProps, props),
-			children
+			children,
 		);
 
 	function mountSection (props, children = defaultChildren) {
 		handles.section = mount(
 			<IconSettings iconPath="/assets/icons">
 				{createSection(props, children)}
-			</IconSettings>
+			</IconSettings>,
 		);
 	}
 
@@ -52,7 +52,7 @@ describe('SLDS APP LAUNCHER SECTION *******************************************'
 				collapseSectionAssistiveText: 'Collapse Section',
 				onToggleClick,
 				title: 'ALL THE ITEMS!',
-				toggleable: true
+				toggleable: true,
 			});
 		});
 
@@ -62,7 +62,7 @@ describe('SLDS APP LAUNCHER SECTION *******************************************'
 
 		it('modal section has "slds-is-open" class when open', () => {
 			expect(handles.section.find('.slds-section').node.className).to.include(
-				'slds-is-open'
+				'slds-is-open',
 			);
 		});
 
@@ -72,7 +72,7 @@ describe('SLDS APP LAUNCHER SECTION *******************************************'
 
 		it('ul has proper classes', () => {
 			should.exist(
-				handles.section.find('ul.slds-grid.slds-grid--pull-padded.slds-wrap')
+				handles.section.find('ul.slds-grid.slds-grid--pull-padded.slds-wrap'),
 			);
 		});
 
@@ -82,7 +82,7 @@ describe('SLDS APP LAUNCHER SECTION *******************************************'
 
 		it('renders li with proper classes', () => {
 			expect(handles.section.find('li').at(0).node.className).to.include(
-				'slds-col--padded slds-grow-none slds-size--1-of-1 slds-medium-size--1-of-3'
+				'slds-col--padded slds-grow-none slds-size--1-of-1 slds-medium-size--1-of-3',
 			);
 		});
 
@@ -92,7 +92,7 @@ describe('SLDS APP LAUNCHER SECTION *******************************************'
 
 		it('renders custom toggle assistve text', () => {
 			expect(handles.section.find('.slds-assistive-text').text()).to.equal(
-				'Collapse Section'
+				'Collapse Section',
 			);
 		});
 
@@ -110,8 +110,8 @@ describe('SLDS APP LAUNCHER SECTION *******************************************'
 		it('does not render toggle if toggleable is false', () => {
 			should.not.exist(
 				handles.section.find(
-					'.slds-button .slds-button--icon .slds-m-right--small'
-				)
+					'.slds-button .slds-button--icon .slds-m-right--small',
+				),
 			);
 		});
 	});
@@ -120,7 +120,7 @@ describe('SLDS APP LAUNCHER SECTION *******************************************'
 		beforeEach(() => {
 			mountSection({
 				toggleable: true,
-				isOpen: false
+				isOpen: false,
 			});
 		});
 
@@ -133,15 +133,15 @@ describe('SLDS APP LAUNCHER SECTION *******************************************'
 		beforeEach(() => {
 			mountSection(
 				{},
-				<AppLauncherTile size="small" title="Marketing Clout" />
+				<AppLauncherTile size="small" title="Marketing Clout" />,
 			);
 		});
 
 		it('renders li with proper classes for small tiles', () => {
 			should.exist(
 				handles.section.find(
-					'.slds-col--padded .slds-grow-none .slds-size--xx-small'
-				)
+					'.slds-col--padded .slds-grow-none .slds-size--xx-small',
+				),
 			);
 		});
 	});

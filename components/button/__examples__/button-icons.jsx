@@ -1,10 +1,9 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
 import Button from '~/components/button'; // `~` is replaced with design-system-react at runtime
 
-const Example = createReactClass({
-	displayName: 'ButtonExample',
+class Example extends React.Component {
+	static displayName = 'ButtonExample';
 
 	render () {
 		return (
@@ -33,7 +32,7 @@ const Example = createReactClass({
 						style={{
 							backgroundColor: '#4BC076',
 							padding: '10px',
-							display: 'inline-block'
+							display: 'inline-block',
 						}}
 						className="-m-horizontal--small"
 					>
@@ -64,7 +63,7 @@ const Example = createReactClass({
 						style={{
 							backgroundColor: '#16325c',
 							padding: '10px',
-							display: 'inline-block'
+							display: 'inline-block',
 						}}
 						className="-m-horizontal--small"
 					>
@@ -81,7 +80,7 @@ const Example = createReactClass({
 						style={{
 							backgroundColor: '#FFB75D',
 							padding: '10px 50px',
-							display: 'inline-block'
+							display: 'inline-block',
 						}}
 						className="-hint-parent -m-horizontal--small"
 					>
@@ -97,6 +96,6 @@ const Example = createReactClass({
 			</IconSettings>
 		);
 	}
-});
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

@@ -17,7 +17,7 @@ import Panel from '../../tabs/panel';
  */
 import {
 	mountComponent,
-	unmountComponent
+	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
@@ -34,7 +34,7 @@ const COMPONENT_CSS_CLASSES = {
 	item: 'slds-tabs--default__item',
 	link: 'slds-tabs--default__link',
 	content: 'slds-tabs--default__content',
-	testClass: 'this-is-a-css-class-name'
+	testClass: 'this-is-a-css-class-name',
 };
 
 /* A re-usable demo component fixture outside of `describe` sections
@@ -53,7 +53,7 @@ const TabsDemoComponent = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * HTML `id` attribute of primary element that has `.slds-tabs--default` on it. Optional: If one is not supplied, a `shortid` will be created.
@@ -62,7 +62,7 @@ const TabsDemoComponent = createReactClass({
 		/**
 		 * Function that triggers when a tab is selected.
 		 */
-		onSelect: PropTypes.func
+		onSelect: PropTypes.func,
 	},
 
 	render () {
@@ -78,7 +78,7 @@ const TabsDemoComponent = createReactClass({
 			<div
 				className={classNames(
 					'slds-m-top--large',
-					`${COMPONENT_CSS_CLASSES.wrapper}`
+					`${COMPONENT_CSS_CLASSES.wrapper}`,
 				)}
 			>
 				<Tabs className={classNames(className)} id={id} {...attributes}>
@@ -113,7 +113,7 @@ const TabsDemoComponent = createReactClass({
 				</Tabs>
 			</div>
 		);
-	}
+	},
 });
 
 describe('Tabs', () => {
@@ -128,14 +128,14 @@ describe('Tabs', () => {
 					className={`${COMPONENT_CSS_CLASSES.testClass}`}
 					id={id}
 					bar="baz"
-				/>
-			)
+				/>,
+			),
 		);
 		after(unmountComponent);
 
 		it('Has a main wrapper with the proper class name.', function () {
 			const myTabsWrapper = this.wrapper.find(
-				`.${COMPONENT_CSS_CLASSES.wrapper}`
+				`.${COMPONENT_CSS_CLASSES.wrapper}`,
 			);
 			expect(myTabsWrapper.hasClass(COMPONENT_CSS_CLASSES.wrapper)).to.be.true;
 		});
@@ -170,7 +170,7 @@ describe('Tabs', () => {
 			COMPONENT_CSS_CLASSES.item
 		}).`, function () {
 			const myTabsListItems = this.wrapper.find(
-				`.${COMPONENT_CSS_CLASSES.item}`
+				`.${COMPONENT_CSS_CLASSES.item}`,
 			);
 			this.wrapper
 				.find(`.${COMPONENT_CSS_CLASSES.item}`)
@@ -182,7 +182,7 @@ describe('Tabs', () => {
 
 		it('Has only one (1) tab with ".slds-disabled" class on it.', function () {
 			const myTabsListItem = this.wrapper.find(
-				`.${COMPONENT_CSS_CLASSES.item}.slds-disabled`
+				`.${COMPONENT_CSS_CLASSES.item}.slds-disabled`,
 			);
 			expect(myTabsListItem).to.have.length(1);
 		});
@@ -205,17 +205,17 @@ describe('Tabs', () => {
 
 		it('Has the proper disabled class on the second tab.', function () {
 			const myTabsListItem = this.wrapper.find(
-				`.${COMPONENT_CSS_CLASSES.item}.slds-disabled`
+				`.${COMPONENT_CSS_CLASSES.item}.slds-disabled`,
 			);
 			expect(myTabsListItem.hasClass('slds-disabled')).to.equal(true);
 		});
 
 		it('Has the same number of tabs as panels.', function () {
 			const myTabsListItems = this.wrapper.find(
-				`.${COMPONENT_CSS_CLASSES.item}`
+				`.${COMPONENT_CSS_CLASSES.item}`,
 			);
 			const myTabsPanels = this.wrapper.find(
-				`.${COMPONENT_CSS_CLASSES.content}`
+				`.${COMPONENT_CSS_CLASSES.content}`,
 			);
 			expect(myTabsListItems).to.have.length(4);
 			expect(myTabsPanels).to.have.length(4);
@@ -233,8 +233,8 @@ describe('Tabs', () => {
 				<TabsDemoComponent
 					className={`${COMPONENT_CSS_CLASSES.testClass}`}
 					id={id}
-				/>
-			)
+				/>,
+			),
 		);
 		after(unmountComponent);
 
@@ -244,7 +244,7 @@ describe('Tabs', () => {
 				.forEach(function (node, index) {
 					expect(node).to.have.attr(
 						'aria-controls',
-						`${id}-slds-tabs--panel-${index}`
+						`${id}-slds-tabs--panel-${index}`,
 					);
 				});
 		});
@@ -255,14 +255,14 @@ describe('Tabs', () => {
 				.forEach(function (node, index) {
 					expect(node).to.have.attr(
 						'aria-labelledby',
-						`${id}-slds-tabs--tab-${index}`
+						`${id}-slds-tabs--tab-${index}`,
 					);
 				});
 		});
 
 		it('Has the aria-disabled attribute on the second tab.', function () {
 			const myTabsListItem = this.wrapper.find(
-				`.${COMPONENT_CSS_CLASSES.item}.slds-disabled`
+				`.${COMPONENT_CSS_CLASSES.item}.slds-disabled`,
 			);
 			expect(myTabsListItem)
 				.to.have.attr('aria-disabled')
@@ -271,7 +271,7 @@ describe('Tabs', () => {
 
 		it('Has a tabindex of -1 on the second tab.', function () {
 			const myTabsListItem = this.wrapper.find(
-				`.${COMPONENT_CSS_CLASSES.item}.slds-disabled`
+				`.${COMPONENT_CSS_CLASSES.item}.slds-disabled`,
 			);
 			expect(myTabsListItem)
 				.to.have.attr('tabindex')
@@ -287,7 +287,7 @@ describe('Tabs', () => {
 
 		it('New panel renders when a tab is clicked ', function () {
 			const myTabsListItems = this.wrapper.find(
-				`.${COMPONENT_CSS_CLASSES.item}`
+				`.${COMPONENT_CSS_CLASSES.item}`,
 			);
 			const myFirstPanel = this.wrapper.find(`#${id}-slds-tabs--panel-0`);
 			const myThirdPanel = this.wrapper.find(`#${id}-slds-tabs--panel-2`);
@@ -316,7 +316,7 @@ describe('Tabs', () => {
 
 		it('Disabled tab does not reveal new content ', function () {
 			const myTabsListItems = this.wrapper.find(
-				`.${COMPONENT_CSS_CLASSES.item}`
+				`.${COMPONENT_CSS_CLASSES.item}`,
 			);
 			const myFirstPanel = this.wrapper.find(`#${id}-slds-tabs--panel-0`);
 			const mySecondPanel = this.wrapper.find(`#${id}-slds-tabs--panel-1`);
@@ -345,7 +345,7 @@ describe('Tabs', () => {
 
 		it('Can be tabbed into', function () {
 			const myTabsListItems = this.wrapper.find(
-				`.${COMPONENT_CSS_CLASSES.item}`
+				`.${COMPONENT_CSS_CLASSES.item}`,
 			);
 			const myFirstPanel = this.wrapper.find(`#${id}-slds-tabs--panel-0`);
 
@@ -360,12 +360,12 @@ describe('Tabs', () => {
 			Simulate.keyDown(myTabsListItems.nodes[0], {
 				key: 'Tab',
 				keyCode: 9,
-				which: 9
+				which: 9,
 			});
 			Simulate.keyDown(myTabsListItems.nodes[0], {
 				key: 'Right',
 				keyCode: 39,
-				which: 39
+				which: 39,
 			});
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(false);
@@ -384,7 +384,7 @@ describe('Tabs', () => {
 
 		it('Disabled tab can NOT be tabbed into', function () {
 			const myTabsListItems = this.wrapper.find(
-				`.${COMPONENT_CSS_CLASSES.item}`
+				`.${COMPONENT_CSS_CLASSES.item}`,
 			);
 			const myFirstPanel = this.wrapper.find(`#${id}-slds-tabs--panel-0`);
 			const mySecondPanel = this.wrapper.find(`#${id}-slds-tabs--panel-1`);
@@ -398,12 +398,12 @@ describe('Tabs', () => {
 			Simulate.keyDown(myTabsListItems.nodes[0], {
 				key: 'Tab',
 				keyCode: 9,
-				which: 9
+				which: 9,
 			});
 			Simulate.keyDown(myTabsListItems.nodes[0], {
 				key: 'Right',
 				keyCode: 39,
-				which: 39
+				which: 39,
 			});
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(false);
@@ -423,14 +423,14 @@ describe('Tabs', () => {
 
 		before(
 			mountComponent(
-				<TabsDemoComponent id={id} onSelect={interceptTabSelect} />
-			)
+				<TabsDemoComponent id={id} onSelect={interceptTabSelect} />,
+			),
 		);
 		after(unmountComponent);
 
 		it('Maintains the same tab selection when onSelect function returns false', function () {
 			const myTabsListItems = this.wrapper.find(
-				`.${COMPONENT_CSS_CLASSES.item}`
+				`.${COMPONENT_CSS_CLASSES.item}`,
 			);
 			const myFirstPanel = this.wrapper.find(`#${id}-slds-tabs--panel-0`);
 			const mySecondPanel = this.wrapper.find(`#${id}-slds-tabs--panel-1`);

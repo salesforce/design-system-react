@@ -1,6 +1,5 @@
 /* eslint-disable no-console, react/prop-types */
 import React from 'react';
-import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
 import Navigation from '~/components/navigation';
 
@@ -13,8 +12,8 @@ const sampleReportCategories = [
 			{ id: 'my_reports', label: 'Created by Me' },
 			{ id: 'private_reports', label: 'Private Reports' },
 			{ id: 'public_reports', label: 'Public Reports' },
-			{ id: 'all_reports', label: 'All Reports' }
-		]
+			{ id: 'all_reports', label: 'All Reports' },
+		],
 	},
 	{
 		id: 'folders',
@@ -22,19 +21,17 @@ const sampleReportCategories = [
 		items: [
 			{ id: 'my_folders', label: 'Created by Me' },
 			{ id: 'shared_folders', label: 'Shared with Me' },
-			{ id: 'all_folders', label: 'All Folders' }
-		]
-	}
+			{ id: 'all_folders', label: 'All Folders' },
+		],
+	},
 ];
 
-const Example = createReactClass({
-	displayName: 'NavigationExample',
+class Example extends React.Component {
+	static displayName = 'NavigationExample';
 
-	getInitialState () {
-		return {
-			selectedId: 'recent_reports'
-		};
-	},
+	state = {
+		selectedId: 'recent_reports',
+	};
 
 	render () {
 		return (
@@ -58,6 +55,6 @@ const Example = createReactClass({
 			</IconSettings>
 		);
 	}
-});
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

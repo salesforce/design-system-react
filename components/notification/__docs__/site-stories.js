@@ -6,7 +6,7 @@
 const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/notification/__examples__/alerts.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/notification/__examples__/toasts.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/notification/__examples__/within-modal.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/notification/__examples__/within-modal.jsx'),
 ];
 
 module.exports = siteStories;

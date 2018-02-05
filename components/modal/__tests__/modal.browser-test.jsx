@@ -23,7 +23,7 @@ describe('SLDSModal: ', function () {
 
 	const defaultProps = {
 		align: 'top',
-		children: <div>hello</div>
+		children: <div>hello</div>,
 	};
 
 	const renderModal = (modalInstance) => {
@@ -52,22 +52,22 @@ describe('SLDSModal: ', function () {
 				contentClassName: 'content-class-name-test',
 				contentStyle: { height: '500px' },
 				isOpen: true,
-				portalClassName: 'portal-class-name-test'
+				portalClassName: 'portal-class-name-test',
 			});
 		});
 
 		it('has correct containerClassName, contentClassName, contentStyle, and portalClassName', () => {
 			const modalContainer = getModalNode(document.body).querySelector(
-				'.slds-modal__container.container-class-name-test'
+				'.slds-modal__container.container-class-name-test',
 			);
 			expect(modalContainer).to.exist;
 			const modalContent = getModalNode(document.body).querySelector(
-				'.slds-modal__content.content-class-name-test'
+				'.slds-modal__content.content-class-name-test',
 			);
 			expect(modalContent).to.exist;
 			expect(modalContent.style.height).to.equal('500px');
 			const modalPortal = document.querySelector(
-				'body > .portal-class-name-test'
+				'body > .portal-class-name-test',
 			);
 			expect(modalPortal).to.exist;
 		});
@@ -101,7 +101,7 @@ describe('SLDSModal: ', function () {
 				containerClassName: 'my-custom-class',
 				onRequestClose: () => {
 					closed = true;
-				}
+				},
 			});
 			modal = getModalNode(document.body);
 		});
@@ -139,7 +139,7 @@ describe('SLDSModal: ', function () {
 			getModal({
 				header: <div id="art-vandelay">Art vandelay</div>,
 				headerClassName: 'art-vandelay',
-				isOpen: true
+				isOpen: true,
 			});
 			modal = getModalNode(document.body);
 		});
@@ -151,7 +151,7 @@ describe('SLDSModal: ', function () {
 
 		it('adds the custom header class', () => {
 			expect(modal.querySelector('.slds-modal__header').className).to.include(
-				'art-vandelay'
+				'art-vandelay',
 			);
 		});
 	});
@@ -165,7 +165,7 @@ describe('SLDSModal: ', function () {
 				isOpen: true,
 				prompt: 'warning',
 				title: 'are you sure?',
-				footer: feet
+				footer: feet,
 			});
 			modal = getModalNode(document.body);
 		});
@@ -181,7 +181,7 @@ describe('SLDSModal: ', function () {
 
 		it('adds the prompt theme class', () => {
 			expect(modal.querySelector('.slds-modal__header').className).to.include(
-				'slds-theme--warning'
+				'slds-theme--warning',
 			);
 		});
 
@@ -196,12 +196,12 @@ describe('SLDSModal: ', function () {
 		beforeEach(() => {
 			const feet = [
 				<div className="toes">Toe 1</div>,
-				<div className="toes">Toe 2</div>
+				<div className="toes">Toe 2</div>,
 			];
 			getModal({
 				isOpen: true,
 				directional: true,
-				footer: feet
+				footer: feet,
 			});
 			modal = getModalNode(document.body);
 		});
@@ -218,12 +218,12 @@ describe('SLDSModal: ', function () {
 		beforeEach(() => {
 			const feet = [
 				<button className="cancel">Cancel</button>,
-				<button className="save">Save</button>
+				<button className="save">Save</button>,
 			];
 			getModal({
 				isOpen: true,
 				directional: true,
-				footer: feet
+				footer: feet,
 			});
 			modal = getModalNode(document.body);
 		});
@@ -233,11 +233,11 @@ describe('SLDSModal: ', function () {
 				Simulate.keyDown(modal, {
 					key: 'Tab',
 					keyCode: 9,
-					which: 9
+					which: 9,
 				});
 				setTimeout(() => {
 					expect(document.activeElement.className).to.include(
-						'slds-modal__close'
+						'slds-modal__close',
 					);
 					done();
 				}, 200);

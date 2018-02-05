@@ -1,17 +1,14 @@
 /* eslint-disable no-console, react/prop-types */
 import React from 'react';
-import createReactClass from 'create-react-class';
 import Datepicker from '~/components/date-picker';
 import Input from '~/components/forms/input';
 
-const Example = createReactClass({
-	displayName: 'DatepickerExample',
+class Example extends React.Component {
+	static displayName = 'DatepickerExample';
 
-	getInitialState () {
-		return {
-			isOpen: false
-		};
-	},
+	state = {
+		isOpen: false,
+	};
 
 	render () {
 		return (
@@ -36,6 +33,6 @@ const Example = createReactClass({
 			</Datepicker>
 		);
 	}
-});
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

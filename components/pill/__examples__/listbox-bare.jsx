@@ -6,22 +6,20 @@ import IconSettings from '~/components/icon-settings';
 
 function noop () {}
 
-const Example = createReactClass({
-	displayName: 'BarePillListboxExample',
+class Example extends React.Component {
+	static displayName = 'BarePillListboxExample';
 
-	propTypes: {
-		action: PropTypes.func
-	},
+	static propTypes = {
+		action: PropTypes.func,
+	};
 
-	getDefaultProps () {
-		return {
-			action: () => noop
-		};
-	},
+	static defaultProps = {
+		action: () => noop,
+	};
 
-	onRemove (event) {
+	onRemove = (event) => {
 		this.props.action('onRemove')(event);
-	},
+	};
 
 	render () {
 		return (
@@ -43,10 +41,10 @@ const Example = createReactClass({
 										labels={{
 											label: 'Pill Label',
 											title: 'Full pill label verbiage mirrored here',
-											removeTitle: 'Remove'
+											removeTitle: 'Remove',
 										}}
 										assistiveText={{
-											remove: 'Press delete or backspace to remove'
+											remove: 'Press delete or backspace to remove',
 										}}
 										bare
 										variant="option"
@@ -60,10 +58,10 @@ const Example = createReactClass({
 										labels={{
 											label: 'Pill Label',
 											title: 'Full pill label verbiage mirrored here',
-											removeTitle: 'Remove'
+											removeTitle: 'Remove',
 										}}
 										assistiveText={{
-											remove: 'Press delete or backspace to remove'
+											remove: 'Press delete or backspace to remove',
 										}}
 										bare
 										variant="option"
@@ -79,6 +77,6 @@ const Example = createReactClass({
 			</IconSettings>
 		);
 	}
-});
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

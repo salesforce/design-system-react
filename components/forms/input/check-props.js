@@ -18,35 +18,35 @@ if (process.env.NODE_ENV !== 'production') {
 			props.iconCategory,
 			'iconCategory',
 			undefined,
-			'Please use `iconLeft` and `iconRight` to pass in a customized <Icon> component.'
+			'Please use `iconLeft` and `iconRight` to pass in a customized <Icon> component.',
 		);
 		deprecatedProperty(
 			COMPONENT,
 			props.iconName,
 			'iconName',
 			undefined,
-			'Please use `iconLeft` and `iconRight` to pass in a customized <Icon> component'
+			'Please use `iconLeft` and `iconRight` to pass in a customized <Icon> component',
 		);
 		deprecatedProperty(
 			COMPONENT,
 			props.iconPosition,
 			'iconPosition',
 			undefined,
-			'Please use `iconLeft` and `iconRight` to pass in a customized <Icon> component'
+			'Please use `iconLeft` and `iconRight` to pass in a customized <Icon> component',
 		);
 		deprecatedProperty(
 			COMPONENT,
 			props.iconAssistiveText,
 			'iconAssistiveText',
 			undefined,
-			'Please use `iconLeft` and `iconRight` to pass in a customized <Icon> component'
+			'Please use `iconLeft` and `iconRight` to pass in a customized <Icon> component',
 		);
 		deprecatedProperty(
 			COMPONENT,
 			props.onIconClick,
 			'onIconClick',
 			undefined,
-			'Please use `iconLeft` and `iconRight` to pass in a customized <Icon> component'
+			'Please use `iconLeft` and `iconRight` to pass in a customized <Icon> component',
 		);
 
 		if (typeof props.assistiveText === 'string') {
@@ -54,18 +54,18 @@ if (process.env.NODE_ENV !== 'production') {
 				COMPONENT,
 				props.assistiveText,
 				'assistiveText',
-				'AssistiveText as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use either assistiveText.label or assistiveText.spinner'
+				'AssistiveText as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use either assistiveText.label or assistiveText.spinner',
 			);
 		}
 
 		onlyOneOfProperties(COMPONENT, {
 			assistiveText: props.assistiveText,
-			label: props.label
+			label: props.label,
 		});
 
 		onlyOneOfProperties(COMPONENT, {
 			fixedTextLeft: props.fixedTextLeft,
-			fixedTextRight: props.fixedTextRight
+			fixedTextRight: props.fixedTextRight,
 		});
 
 		/*

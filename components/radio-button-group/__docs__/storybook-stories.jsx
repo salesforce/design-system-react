@@ -53,15 +53,15 @@ class RadioButtonGroupExample extends React.Component {
 RadioButtonGroupExample.propTypes = {
 	labels: shape({
 		error: PropTypes.string,
-		label: PropTypes.string
+		label: PropTypes.string,
 	}),
 	disabled: PropTypes.bool,
 	required: PropTypes.bool,
-	heading: PropTypes.string
+	heading: PropTypes.string,
 };
 
 RadioButtonGroupExample.defaultProps = {
-	labels: { label: 'Day of week' }
+	labels: { label: 'Day of week' },
 };
 
 storiesOf(RADIO_BUTTON_GROUP, module)

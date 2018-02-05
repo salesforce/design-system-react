@@ -9,7 +9,6 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### shortid
@@ -44,7 +43,7 @@ import {
 	DATA_TABLE,
 	DATA_TABLE_CELL,
 	DATA_TABLE_HEAD,
-	DATA_TABLE_ROW
+	DATA_TABLE_ROW,
 } from '../../utilities/constants';
 
 // Safely get the length of an array, returning 0 for invalid input.
@@ -54,13 +53,13 @@ const count = (array) => (Array.isArray(array) ? array.length : 0);
  * DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
  *
  */
-const DataTable = createReactClass({
+class DataTable extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: DATA_TABLE,
+	static displayName = DATA_TABLE;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Text for heading of actions column
 		 */
@@ -112,7 +111,7 @@ const DataTable = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * A variant which adds border to the vertical columns.
@@ -173,36 +172,34 @@ const DataTable = createReactClass({
 		/**
 		 * A variant which removes horizontal padding. CSS class will be removed if `fixedLayout==true`.
 		 */
-		unbufferedCell: PropTypes.bool
-	},
+		unbufferedCell: PropTypes.bool,
+	};
 
-	getDefaultProps () {
-		return {
-			assistiveTextForActionsHeader: 'Actions',
-			assistiveTextForColumnSort: 'Sort',
-			assistiveTextForColumnSortedAscending: 'Sorted Ascending',
-			assistiveTextForColumnSortedDescending: 'Sorted Descending',
-			assistiveTextForSelectAllRows: 'Select all rows',
-			assistiveTextForSelectRow: 'Select row',
-			id: shortid.generate(),
-			selection: []
-		};
-	},
+	static defaultProps = {
+		assistiveTextForActionsHeader: 'Actions',
+		assistiveTextForColumnSort: 'Sort',
+		assistiveTextForColumnSortedAscending: 'Sorted Ascending',
+		assistiveTextForColumnSortedDescending: 'Sorted Descending',
+		assistiveTextForSelectAllRows: 'Select all rows',
+		assistiveTextForSelectRow: 'Select row',
+		id: shortid.generate(),
+		selection: [],
+	};
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(DATA_TABLE, this.props);
-	},
+	}
 
-	handleToggleAll (selected, e) {
+	handleToggleAll = (selected, e) => {
 		if (isFunction(this.props.onChange)) {
 			const selection = selected ? [...this.props.items] : [];
 
 			this.props.onChange(selection, e);
 		}
-	},
+	};
 
-	handleRowToggle (item, selected, e) {
+	handleRowToggle = (item, selected, e) => {
 		if (isFunction(this.props.onChange)) {
 			let selection;
 
@@ -214,7 +211,7 @@ const DataTable = createReactClass({
 
 			this.props.onChange(selection, e);
 		}
-	},
+	};
 
 	// ### Render
 	render () {
@@ -246,7 +243,7 @@ const DataTable = createReactClass({
 				columns.push({
 					Cell,
 					props,
-					dataTableProps: this.props
+					dataTableProps: this.props,
 				});
 			} else if (
 				child &&
@@ -271,9 +268,9 @@ const DataTable = createReactClass({
 							.stackedHorizontal,
 						'slds-table--striped': this.props.striped,
 						'slds-table--col-bordered': this.props.columnBordered,
-						'slds-no-row-hover': this.props.noRowHover
+						'slds-no-row-hover': this.props.noRowHover,
 					},
-					this.props.className
+					this.props.className,
 				)}
 				id={this.props.id}
 				role={this.props.fixedLayout ? 'grid' : null}
@@ -330,6 +327,6 @@ const DataTable = createReactClass({
 			</table>
 		);
 	}
-});
+}
 
 export default DataTable;

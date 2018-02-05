@@ -14,7 +14,7 @@ import {
 	DATE_PICKER,
 	FORMS_INPUT,
 	LOOKUP,
-	TIME_PICKER
+	TIME_PICKER,
 } from '../../utilities/constants';
 
 /* eslint-disable import/no-mutable-exports */
@@ -53,7 +53,7 @@ if (process.env.NODE_ENV !== 'production') {
 					/* eslint-disable max-len */
 					warning(
 						elementIsTabbable,
-						`[Design System React] The element that triggers ${COMPONENT} must be tabbable for  keyboard users. Elements such as anchor, button, input or a DOM element with tabIndex="0" specified are tabbable.${additionalComment}`
+						`[Design System React] The element that triggers ${COMPONENT} must be tabbable for  keyboard users. Elements such as anchor, button, input or a DOM element with tabIndex="0" specified are tabbable.${additionalComment}`,
 					);
 					/* eslint-enable max-len */
 					hasWarned[COMPONENT] = !!elementIsTabbable;

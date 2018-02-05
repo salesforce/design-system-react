@@ -6,7 +6,7 @@
 const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/button/__examples__/base-neutral.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/button/__examples__/brand-disabled-destructive-inverse.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/button/__examples__/button-icons.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/button/__examples__/button-icons.jsx'),
 ];
 
 module.exports = siteStories;

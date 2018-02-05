@@ -1,5 +1,4 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 
 import Panel from '~/components/panel'; // `~` is replaced with design-system-react at runtime
 import PanelFilterGroup from '~/components/panel/filtering/group';
@@ -13,47 +12,45 @@ import Picklist from '~/components/menu-picklist';
 const options = {
 	'show-me': [
 		{ label: 'All Products', value: 'all-products' },
-		{ label: 'All Wackamoles', value: 'all-Wackamoles' }
+		{ label: 'All Wackamoles', value: 'all-Wackamoles' },
 	],
 	'created-date': [
 		{ label: 'equals THIS WEEK', value: 'this-week' },
-		{ label: 'equals LAST WEEK', value: 'last-week' }
+		{ label: 'equals LAST WEEK', value: 'last-week' },
 	],
 	'list-price': [
 		{ label: 'greater than "500"', value: 'greater-than-500' },
-		{ label: 'greater than "100"', value: 'greater-than-100' }
+		{ label: 'greater than "100"', value: 'greater-than-100' },
 	],
 	new: [
 		{ label: 'less than "1000"', value: 'less-than-1000' },
-		{ label: 'less than "800"', value: 'less-than-800' }
-	]
+		{ label: 'less than "800"', value: 'less-than-800' },
+	],
 };
 
-const Example = createReactClass({
-	displayName: 'PanelExample',
+class Example extends React.Component {
+	static displayName = 'PanelExample';
 
-	getInitialState () {
-		return {
-			modifiedPanel: false,
-			'show-me': {
-				selectedPicklistItem: options['show-me'][0],
-				selectedItem: options['show-me'][0]
-			},
-			'created-date': {
-				selectedPicklistItem: options['created-date'][0],
-				selectedItem: options['created-date'][0],
-				isActive: true
-			},
-			'list-price': {
-				selectedPicklistItem: options['list-price'][0],
-				selectedItem: options['list-price'][0],
-				isActive: true
-			},
-			new: {}
-		};
-	},
+	state = {
+		modifiedPanel: false,
+		'show-me': {
+			selectedPicklistItem: options['show-me'][0],
+			selectedItem: options['show-me'][0],
+		},
+		'created-date': {
+			selectedPicklistItem: options['created-date'][0],
+			selectedItem: options['created-date'][0],
+			isActive: true,
+		},
+		'list-price': {
+			selectedPicklistItem: options['list-price'][0],
+			selectedItem: options['list-price'][0],
+			isActive: true,
+		},
+		new: {},
+	};
 
-	onChangePredicate (event, { id }) {
+	onChangePredicate = (event, { id }) => {
 		const idSuffix = id.split('sample-panel-filtering-')[1];
 		this.setState({
 			modifiedPanel:
@@ -61,29 +58,29 @@ const Example = createReactClass({
 				this.state[idSuffix].selectedPicklistItem,
 			[idSuffix]: {
 				...this.state[idSuffix],
-				selectedItem: this.state[idSuffix].selectedPicklistItem
-			}
+				selectedItem: this.state[idSuffix].selectedPicklistItem,
+			},
 		});
-	},
+	};
 
-	onSelectPicklist (selectedItem, id) {
+	onSelectPicklist = (selectedItem, id) => {
 		this.setState({
 			[id]: {
 				...this.state[id],
-				selectedPicklistItem: selectedItem
-			}
+				selectedPicklistItem: selectedItem,
+			},
 		});
-	},
+	};
 
-	onRemove (event, { id }) {
+	onRemove = (event, { id }) => {
 		const idSuffix = id.split('sample-panel-filtering-')[1];
 		this.setState({
 			[idSuffix]: {
 				...this.state[idSuffix],
-				isActive: false
-			}
+				isActive: false,
+			},
 		});
-	},
+	};
 
 	render () {
 		const hasActiveFilters =
@@ -98,12 +95,12 @@ const Example = createReactClass({
 						onClickAdd={() => {
 							this.setState({
 								modifiedPanel: true,
-								new: { isActive: true, new: true }
+								new: { isActive: true, new: true },
 							});
 						}}
 						onClickRemoveAll={() => {
 							this.onRemove(null, {
-								id: 'sample-panel-filtering-created-date'
+								id: 'sample-panel-filtering-created-date',
 							});
 							this.onRemove(null, { id: 'sample-panel-filtering-list-price' });
 							this.onRemove(null, { id: 'sample-panel-filtering-new' });
@@ -229,6 +226,6 @@ const Example = createReactClass({
 			</IconSettings>
 		);
 	}
-});
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

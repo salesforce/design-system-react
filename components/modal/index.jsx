@@ -10,7 +10,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
-import Button from '../button';
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
 
@@ -21,6 +20,8 @@ import isBoolean from 'lodash.isboolean';
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
+
+import Button from '../button';
 
 const displayName = 'Modal';
 const propTypes = {
@@ -42,7 +43,7 @@ const propTypes = {
 	containerClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Custom CSS classes for the modal's body. This is the element that has overflow rules and should be used to set a static height if desired. Use `classNames` [API](https://github.com/JedWatson/classnames).
@@ -50,7 +51,7 @@ const propTypes = {
 	contentClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Custom styles for the modal's body. This is the element that has overflow rules and should be used to set a static height if desired.
@@ -86,7 +87,7 @@ const propTypes = {
 	headerClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Forces the modal to be open or closed.
@@ -102,7 +103,7 @@ const propTypes = {
 	portalClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Styles the modal as a prompt.
@@ -113,7 +114,7 @@ const propTypes = {
 		'error',
 		'wrench',
 		'offline',
-		'info'
+		'info',
 	]),
 	/**
 	 * Specifiies the modal's width. May be deprecated in favor of `width` in the future.
@@ -130,12 +131,12 @@ const propTypes = {
 	/**
 	 * Allows adding additional notifications within the modal.
 	 */
-	toast: PropTypes.node
+	toast: PropTypes.node,
 };
 
 const defaultProps = {
 	align: 'center',
-	dismissible: true
+	dismissible: true,
 };
 
 /**
@@ -152,14 +153,14 @@ class Modal extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			isClosing: false
+			isClosing: false,
 		};
 
 		// Bind
 		this.handleModalClick = this.handleModalClick.bind(this);
 		this.closeModal = this.closeModal.bind(this);
 		this.dismissModalOnClickOutside = this.dismissModalOnClickOutside.bind(
-			this
+			this,
 		);
 	}
 
@@ -207,7 +208,7 @@ class Modal extends React.Component {
 		const contentStyleFromProps = this.props.contentStyle || {};
 		const contentStyle = {
 			...borderRadius,
-			...contentStyleFromProps
+			...contentStyleFromProps,
 		};
 		return (
 			// temporarily disabling eslint for the onClicks on the div tags
@@ -250,7 +251,7 @@ class Modal extends React.Component {
 
 	setReturnFocus () {
 		this.setState({
-			returnFocusTo: document.activeElement
+			returnFocusTo: document.activeElement,
 		});
 	}
 
@@ -294,7 +295,7 @@ class Modal extends React.Component {
 		const footerClass = {
 			'slds-modal__footer': true,
 			'slds-modal__footer--directional': this.props.directional,
-			'slds-theme--default': this.isPrompt()
+			'slds-theme--default': this.isPrompt(),
 		};
 
 		if (hasFooter) {
@@ -347,7 +348,7 @@ class Modal extends React.Component {
 					<h2
 						className={classNames({
 							'slds-text-heading--small': this.isPrompt(),
-							'slds-text-heading--medium': !this.isPrompt()
+							'slds-text-heading--medium': !this.isPrompt(),
 						})}
 						id={this.getId()}
 					>
@@ -368,9 +369,9 @@ class Modal extends React.Component {
 					{
 						'slds-modal__header--empty': headerEmpty,
 						[`slds-theme--${this.props.prompt}`]: this.isPrompt(),
-						'slds-theme--alert-texture': this.isPrompt()
+						'slds-theme--alert-texture': this.isPrompt(),
 					},
-					this.props.headerClassName
+					this.props.headerClassName,
 				)}
 				onClick={this.handleModalClick}
 			>
@@ -408,12 +409,12 @@ class Modal extends React.Component {
 				WebkitOverflowScrolling: 'default',
 				borderRadius: 'default',
 				outline: 'default',
-				padding: 'default'
+				padding: 'default',
 			},
 			overlay: {
 				position: 'static',
-				backgroundColor: 'default'
-			}
+				backgroundColor: 'default',
+			},
 		};
 
 		return (
@@ -425,7 +426,7 @@ class Modal extends React.Component {
 				parentSelector={this.props.parentSelector}
 				portalClassName={classNames(
 					'ReactModalPortal',
-					this.props.portalClassName
+					this.props.portalClassName,
 				)}
 			>
 				{this.getModal()}

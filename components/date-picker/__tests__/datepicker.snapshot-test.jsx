@@ -19,7 +19,7 @@ const customProps = {
 	assistiveText: {
 		openCalendar: 'CUSTOM open Calendar',
 		nextMonth: 'CUSTOM next month',
-		previousMonth: 'CUSTOM previous month'
+		previousMonth: 'CUSTOM previous month',
 	},
 	className: 'CUSTOM-CLASSNAME',
 	formatter () {
@@ -40,18 +40,18 @@ const customProps = {
 			'MONTH 9',
 			'MONTH 10',
 			'MONTH 11',
-			'MONTH 12'
+			'MONTH 12',
 		],
 		placeholder: 'SWIPE RIGHT :-)',
 		today: 'TODAY YOU ARE YOU!',
-		weekDays: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7']
+		weekDays: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
 	},
 	parser () {
 		return new Date(2007, 0, 6);
 	},
 	relativeYearFrom: -20,
 	relativeYearTo: 20,
-	triggerClassName: 'CUSTOM-TRIGGER-CLASSNAME'
+	triggerClassName: 'CUSTOM-TRIGGER-CLASSNAME',
 };
 
 test(`Datepicker

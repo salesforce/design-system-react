@@ -53,7 +53,7 @@ export function getNavigableItems (items) {
 			if (itemIsSelectable(item)) {
 				navigableItems.push({
 					index,
-					text: `${item.label}`.toLowerCase()
+					text: `${item.label}`.toLowerCase(),
 				});
 
 				navigableItems.indexes.push(index);
@@ -75,7 +75,7 @@ export function keyboardNavigate ({
 	onFocus,
 	onSelect,
 	target,
-	toggleOpen
+	toggleOpen,
 }) {
 	const indexes = navigableItems.indexes;
 	const lastIndex = indexes.length - 1;
@@ -109,17 +109,19 @@ export function keyboardNavigate ({
 	} else if (keyCode === KEYS.ENTER || keyCode === KEYS.SPACE) {
 		onSelect(currentFocusedIndex);
 	} else {
-		let navigableIndex = indexes.indexOf(currentFocusedIndex);
+		const navigableIndex = indexes.indexOf(currentFocusedIndex);
 
 		if (keyCode === KEYS.DOWN) {
 			if (navigableIndex < lastIndex) {
-				focusedIndex = indexes[++navigableIndex];
+				const newNavigableIndex = navigableIndex + 1;
+				focusedIndex = indexes[newNavigableIndex];
 			} else {
 				focusedIndex = indexes[0];
 			}
 		} else if (keyCode === KEYS.UP) {
 			if (navigableIndex > 0) {
-				focusedIndex = indexes[--navigableIndex];
+				const newNavigableIndex = navigableIndex - 1;
+				focusedIndex = indexes[newNavigableIndex];
 			} else {
 				focusedIndex = indexes[lastIndex];
 			}
@@ -142,7 +144,7 @@ export function keyboardNavigate ({
 						item.text.substr(0, pattern.length) === pattern) ||
 					(consecutive > 0 && item.text.substr(0, 1) === ch)
 				) {
-					consecutive--;
+					consecutive -= 1;
 					focusedIndex = item.index;
 				}
 			});
@@ -187,7 +189,7 @@ export const KeyboardNavigableMixin = {
 		onFocus = this.handleKeyboardFocus,
 		onSelect,
 		target,
-		toggleOpen = noop
+		toggleOpen = noop,
 	}) {
 		keyboardNavigate({
 			componentContext: this,
@@ -199,7 +201,7 @@ export const KeyboardNavigableMixin = {
 			onFocus,
 			onSelect,
 			target,
-			toggleOpen
+			toggleOpen,
 		});
 	},
 
@@ -255,7 +257,7 @@ export const KeyboardNavigableMixin = {
 				}
 			}
 		}
-	}
+	},
 };
 
 export default KeyboardNavigableMixin;

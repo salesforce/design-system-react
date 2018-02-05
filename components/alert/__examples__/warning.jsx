@@ -1,7 +1,6 @@
 import React from 'react';
 import Alert from '~/components/alert'; // `~` is replaced with design-system-react at runtime
 import AlertContainer from '~/components/alert/container'; // `~` is replaced with design-system-react at runtime
-import Icon from '~/components/icon'; // `~` is replaced with design-system-react at runtime
 import IconSettings from '~/components/icon-settings';
 
 class Example extends React.Component {
@@ -13,7 +12,7 @@ class Example extends React.Component {
 						labels={{
 							heading:
 								'Your browser is outdated. Your Salesforce experience may be degraded.',
-							headingLink: 'More Information'
+							headingLink: 'More Information',
 						}}
 						onClickHeadingLink={() => {
 							console.log('Link clicked.');

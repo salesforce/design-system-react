@@ -23,11 +23,11 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 	const handles = {
 		appLauncher: null,
 		appLauncherIcon: null,
-		modal: null
+		modal: null,
 	};
 
 	const defaultAppLauncherProps = {
-		isOpen: true
+		isOpen: true,
 	};
 
 	const createAppLauncher = (props) =>
@@ -37,18 +37,18 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 			<AppLauncherSection title="All Items">
 				<AppLauncherTile title="Marketing Cloud" />
 				<AppLauncherTile title="Support Cloud" />
-			</AppLauncherSection>
+			</AppLauncherSection>,
 		);
 
 	function mountAppLauncher (props) {
 		handles.appLauncher = mount(
 			<IconSettings iconPath="/assets/icons">
 				{createAppLauncher(props)}
-			</IconSettings>
+			</IconSettings>,
 		);
 
 		handles.appLauncherIcon = handles.appLauncher.find(
-			'.slds-context-bar__icon-action'
+			'.slds-context-bar__icon-action',
 		);
 
 		/*
@@ -56,13 +56,13 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		 * http://remarkablemark.org/blog/2017/05/17/testing-react-modal/
 		 */
 		const portalNode = ReactDOM.findDOMNode(
-			handles.appLauncher.find(ReactModal).node.portal
+			handles.appLauncher.find(ReactModal).node.portal,
 		); // eslint-disable-line react/no-find-dom-node
 
 		// Wrap the modal portal in an Enzyme wrapper
 		handles.modal = new ReactWrapper(
 			handles.appLauncher.find(ReactModal).node.portal,
-			true
+			true,
 		);
 	}
 
@@ -70,7 +70,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		// Removes the modal container element from the bottom of the DOM, this will prevent the 'setState' errors
 		// gotta be a better way to do this..
 		const modalWrapper = document.documentElement.querySelectorAll(
-			'.ReactModalPortal'
+			'.ReactModalPortal',
 		)[0];
 
 		if (modalWrapper) {
@@ -97,7 +97,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 				modalHeaderButton: <Button label="App Exchange" />,
 				onClose,
 				search: <Search assistiveText="Find an app" />,
-				title: 'App Launcher!'
+				title: 'App Launcher!',
 			});
 		});
 
@@ -120,8 +120,8 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		it('app launcher title can be set', () => {
 			expect(
 				handles.modal.contains(
-					<h2 className="slds-text-heading--medium">App Launcher!</h2>
-				)
+					<h2 className="slds-text-heading--medium">App Launcher!</h2>,
+				),
 			).to.equal(true);
 		});
 
@@ -150,8 +150,8 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 		it('renders modal content', () => {
 			should.exist(
 				handles.modal.find(
-					'.slds-modal__content .slds-app-launcher__content .slds-p-around--medium'
-				)
+					'.slds-modal__content .slds-app-launcher__content .slds-p-around--medium',
+				),
 			);
 		});
 
@@ -169,7 +169,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 
 			mountAppLauncher({
 				triggerAssistiveText: 'Custom Icon Assistive Text',
-				triggerOnClick
+				triggerOnClick,
 			});
 		});
 
@@ -194,14 +194,14 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 						<span className="slds-r6" />,
 						<span className="slds-r7" />,
 						<span className="slds-r8" />,
-						<span className="slds-r9" />
-					])
+						<span className="slds-r9" />,
+					]),
 			).to.equal(true);
 		});
 
 		it('App Launcher Icon link has proper classes', () => {
 			expect(handles.appLauncherIcon.find('button').node.className).to.include(
-				'slds-icon-waffle_container slds-context-bar__button'
+				'slds-icon-waffle_container slds-context-bar__button',
 			);
 		});
 
@@ -217,7 +217,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 
 		it('renders assistive text from prop', () => {
 			expect(
-				handles.appLauncherIcon.find('.slds-assistive-text').text()
+				handles.appLauncherIcon.find('.slds-assistive-text').text(),
 			).to.equal('Custom Icon Assistive Text');
 		});
 	});

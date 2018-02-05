@@ -29,14 +29,14 @@ const TextTruncate = createReactClass({
 		text: PropTypes.string,
 		textTruncateChild: PropTypes.node,
 		truncateText: PropTypes.string,
-		wrapper: PropTypes.func
+		wrapper: PropTypes.func,
 	},
 
 	getDefaultProps () {
 		return {
 			line: 1,
 			text: '',
-			truncateText: '…'
+			truncateText: '…',
 		};
 	},
 
@@ -93,7 +93,7 @@ const TextTruncate = createReactClass({
 			style['font-weight'],
 			style['font-style'],
 			style['font-size'],
-			style['font-family']
+			style['font-family'],
 		].join(' ');
 
 		// return if display:none
@@ -117,7 +117,7 @@ const TextTruncate = createReactClass({
 			let lastIsEng = false;
 			let lastSpaceIndex = -1;
 
-			while (displayLine--) {
+			while (displayLine !== 0) {
 				let ext = '';
 				let extraWidthDueToPrefixStyle = 0;
 
@@ -153,7 +153,7 @@ const TextTruncate = createReactClass({
 					} else {
 						let lastWidth = 0;
 						do {
-							currentPos--;
+							currentPos -= 1;
 							truncatedText = text.substr(startPos, currentPos);
 							if (truncatedText[truncatedText.length - 1] === ' ') {
 								truncatedText = text.substr(startPos, currentPos - 1);
@@ -184,6 +184,8 @@ const TextTruncate = createReactClass({
 					startPos = maxTextLength;
 					break;
 				}
+
+				displayLine -= 1; // iterate
 			}
 
 			if (startPos !== maxTextLength) {
@@ -224,7 +226,7 @@ const TextTruncate = createReactClass({
 				{this.state.renderText}
 			</div>
 		);
-	}
+	},
 });
 
 export default TextTruncate;

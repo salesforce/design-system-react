@@ -1,11 +1,10 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
 import MediaObject from '~/components/media-object'; // `~` is replaced with design-system-react at runtime
 import Icon from '~/components/icon';
 
-const Example = createReactClass({
-	displayName: 'MediaObjectExample',
+class Example extends React.Component {
+	static displayName = 'MediaObjectExample';
 
 	render () {
 		return (
@@ -18,6 +17,6 @@ const Example = createReactClass({
 			</IconSettings>
 		);
 	}
-});
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

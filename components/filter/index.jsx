@@ -12,7 +12,6 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### assign
@@ -21,16 +20,16 @@ import assign from 'lodash.assign';
 // ### classNames
 import classNames from 'classnames';
 
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
+
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 
 import Button from '../button';
 import Popover from '../popover';
-
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
 
 // ## Constants
 import { FILTER } from '../../utilities/constants';
@@ -38,10 +37,10 @@ import { FILTER } from '../../utilities/constants';
 /**
  * A Filter is a popover with custom trigger. It can be used by [Panel Filtering](/components/panels/). Menus within a Filter Popover will need to not have "portal mounts" and be inline.
  */
-const Filter = createReactClass({
-	displayName: FILTER,
+class Filter extends React.Component {
+	static displayName = FILTER;
 
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Aligns the popover with the respective side of the trigger. That is `left` will place the `Popover` to the left of the Filter.
 		 */
@@ -55,7 +54,7 @@ const Filter = createReactClass({
 		assistiveText: PropTypes.shape({
 			editFilter: PropTypes.string,
 			editFilterHeading: PropTypes.string,
-			removeFilter: PropTypes.string
+			removeFilter: PropTypes.string,
 		}),
 		/**
 		 * Contents of popover. That is the dropdowns and inputs that set the filter criteria.
@@ -67,7 +66,7 @@ const Filter = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * Applies error state styling. Per filter error messages are outside this components.
@@ -112,38 +111,30 @@ const Filter = createReactClass({
 		/**
 		 * The property you are filtering. For instance, if "Hair Color is PURPLE" is your filter, "Hair Color" is your filter property.
 		 */
-		property: PropTypes.node
-	},
+		property: PropTypes.node,
+	};
 
-	getDefaultProps () {
-		return {
-			align: 'left',
-			assistiveText: {
-				editFilter: 'Edit filter:',
-				editFilterHeading: 'Choose filter criteria'
-			},
-			predicate: 'New Filter'
-		};
-	},
+	static defaultProps = {
+		align: 'left',
+		assistiveText: {
+			editFilter: 'Edit filter:',
+			editFilterHeading: 'Choose filter criteria',
+		},
+		predicate: 'New Filter',
+	};
 
-	getInitialState () {
-		return {
-			popoverIsOpen: this.props.popover
-				? this.props.popover.props.isOpen
-				: false
-		};
-	},
+	state = {
+		popoverIsOpen: this.props.popover ? this.props.popover.props.isOpen : false,
+	};
 
 	componentWillMount () {
 		this.generatedId = shortid.generate();
 		checkProps(FILTER);
-	},
+	}
 
-	getId () {
-		return this.props.id || this.generatedId;
-	},
+	getId = () => this.props.id || this.generatedId;
 
-	getCustomPopoverProps ({ assistiveText }) {
+	getCustomPopoverProps = ({ assistiveText }) => {
 		/*
 		 * Generate the popover props based on passed in popover props. Using the default behavior if not provided by passed in popover
 		 */
@@ -178,43 +169,43 @@ const Filter = createReactClass({
 			onClose: this.handleClose,
 			onRequestClose: this.handleClose,
 			position: 'overflowBoundaryElement',
-			triggerClassName: 'slds-grow'
+			triggerClassName: 'slds-grow',
 		};
 
 		/* Mixin passed popover's props if there is any to override the default popover props */
 		const popoverProps = assign(
 			defaultPopoverProps,
-			this.props.popover ? this.props.popover.props : {}
+			this.props.popover ? this.props.popover.props : {},
 		);
 		delete popoverProps.children;
 		return popoverProps;
-	},
+	};
 
-	handleFilterClick () {
+	handleFilterClick = () => {
 		this.setState({ popoverIsOpen: true });
 
 		if (this.props.onClick) {
 			this.props.onClick();
 		}
-	},
+	};
 
-	handleClose () {
+	handleClose = () => {
 		this.setState({ popoverIsOpen: false });
-	},
+	};
 
-	handleChange (event) {
+	handleChange = (event) => {
 		this.setState({ popoverIsOpen: false });
 
 		if (this.props.onChange) {
 			this.props.onChange(event, { id: this.getId() });
 		}
-	},
+	};
 
-	handleRemove (event) {
+	handleRemove = (event) => {
 		if (this.props.onRemove) {
 			this.props.onRemove(event, { id: this.getId() });
 		}
-	},
+	};
 
 	render () {
 		/* Remove at next breaking change */
@@ -228,7 +219,7 @@ const Filter = createReactClass({
 			removeFilter:
 				this.props.assistiveTextRemoveFilter || // eslint-disable-line react/prop-types
 				this.props.assistiveText.removeFilter ||
-				`Remove Filter: ${this.props.property} ${this.props.predicate}`
+				`Remove Filter: ${this.props.property} ${this.props.predicate}`,
 		};
 
 		/* TODO: Button wrapper for property and predictate should be transitioned to `Button` component. `Button` needs to take custom children first though. */
@@ -242,9 +233,9 @@ const Filter = createReactClass({
 					{
 						'slds-is-locked': this.props.isLocked,
 						'slds-is-new': this.props.isNew,
-						'slds-has-error': this.props.isError
+						'slds-has-error': this.props.isError,
 					},
-					this.props.className
+					this.props.className,
 				)}
 			>
 				{!this.props.isLocked && (this.props.children || this.props.popover) ? (
@@ -294,6 +285,6 @@ const Filter = createReactClass({
 			</div>
 		);
 	}
-});
+}
 
 export default Filter;

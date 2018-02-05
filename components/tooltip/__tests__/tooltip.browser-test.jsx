@@ -11,7 +11,7 @@ import SLDSButton from '../../button';
 const {
 	Simulate,
 	findRenderedDOMComponentWithTag,
-	findRenderedDOMComponentWithClass
+	findRenderedDOMComponentWithClass,
 } = TestUtils;
 
 describe('SLDSTooltip: ', function () {
@@ -26,14 +26,14 @@ describe('SLDSTooltip: ', function () {
 			</span>
 		),
 		hasStaticAlignment: true,
-		id: 'myTooltip123'
+		id: 'myTooltip123',
 	};
 
 	afterEach(() => {
 		try {
 			Array.prototype.forEach.call(
 				document.body.querySelectorAll('.drop'),
-				(component) => document.body.removeChild(component)
+				(component) => document.body.removeChild(component),
 			);
 			if (body) {
 				document.body.removeChild(body);
@@ -71,16 +71,16 @@ describe('SLDSTooltip: ', function () {
 			rootNode = generateTooltip(
 				{
 					...defaultProps,
-					align: 'top'
+					align: 'top',
 				},
-				defaultTrigger
+				defaultTrigger,
 			);
 		});
 
 		it('renders the content as assistive text', () => {
 			const span = findRenderedDOMComponentWithClass(
 				rootNode,
-				'slds-assistive-text'
+				'slds-assistive-text',
 			);
 			expect(span.textContent).to.equal('This is more info. blah blah.');
 		});
@@ -109,7 +109,7 @@ describe('SLDSTooltip: ', function () {
 				const triggerBounds = trigger.getBoundingClientRect();
 				expect(tipBounds.top).to.be.within(
 					triggerBounds.top - tooltipOffset,
-					triggerBounds.top
+					triggerBounds.top,
 				);
 				done();
 			});
@@ -133,9 +133,9 @@ describe('SLDSTooltip: ', function () {
 			const rootNode = generateTooltip(
 				{
 					...defaultProps,
-					isOpen: false
+					isOpen: false,
 				},
-				defaultTrigger
+				defaultTrigger,
 			);
 
 			setTimeout(() => {
@@ -173,9 +173,9 @@ describe('SLDSTooltip: ', function () {
 							{defaultTextContent}
 						</span>
 					),
-					isOpen: true
+					isOpen: true,
 				},
-				defaultTrigger
+				defaultTrigger,
 			);
 		});
 	});

@@ -14,7 +14,7 @@ const CheckboxIndeterminate = createReactClass({
 		return {
 			indeterminate: true,
 			checked: true,
-			currentStateHelper: 'Indeterminate'
+			currentStateHelper: 'Indeterminate',
 		};
 	},
 
@@ -23,14 +23,14 @@ const CheckboxIndeterminate = createReactClass({
 		this.setState({
 			checked: data.checked,
 			currentStateHelper: data.indeterminate ? 'Indeterminate' : checkedLabel,
-			indeterminate: data.indeterminate
+			indeterminate: data.indeterminate,
 		});
 
 		action('handleChange')(
 			checked,
 			event,
 			`checked: ${data.checked},
-			indeterminate: ${data.indeterminate}`
+			indeterminate: ${data.indeterminate}`,
 		);
 	},
 
@@ -38,11 +38,11 @@ const CheckboxIndeterminate = createReactClass({
 		this.setState({
 			currentStateHelper: 'Indeterminate',
 			checked: true,
-			indeterminate: true
+			indeterminate: true,
 		});
 		action('changeToIndeterminate')(
 			event,
-			'checked: true, indeterminate: true'
+			'checked: true, indeterminate: true',
 		);
 	},
 
@@ -50,7 +50,7 @@ const CheckboxIndeterminate = createReactClass({
 		this.setState({
 			currentStateHelper: 'Checked',
 			checked: true,
-			indeterminate: false
+			indeterminate: false,
 		});
 		action('changeToCheck')(event, 'checked: true, indeterminate: false');
 	},
@@ -59,7 +59,7 @@ const CheckboxIndeterminate = createReactClass({
 		this.setState({
 			currentStateHelper: 'Unchecked',
 			checked: false,
-			indeterminate: false
+			indeterminate: false,
 		});
 		action('changeToUnChecked')(event, 'checked: false, indeterminate: false');
 	},
@@ -101,7 +101,7 @@ const CheckboxIndeterminate = createReactClass({
 				</div>
 			</div>
 		);
-	}
+	},
 });
 
 storiesOf(FORMS_CHECKBOX, module)
@@ -150,14 +150,14 @@ storiesOf(FORMS_CHECKBOX, module)
 	.add('Checkbox (assistive text)', () => (
 		<div>
 			<Checkbox
-				assistiveText={`This is my checkbox.
+				assistiveText="This is my checkbox.
 							There are many like it, but this one is mine.
 							My checkbox is my best friend.
 							It is my life.
 							I must master it as I must master my life.
 							Without me, my checkbox is useless. Without my checkbox, I am useless.
 							I must make my checkbox true.
-							I must make it truer than my radio button who is trying to... `}
+							I must make it truer than my radio button who is trying to... "
 				label="Checkbox Label"
 				name="checkbox-example-base-assistiveText"
 				onChange={action('change')}
@@ -236,14 +236,14 @@ storiesOf(FORMS_CHECKBOX, module)
 	.add('Checkbox Toggle (assistive text)', () => (
 		<div>
 			<Checkbox
-				assistiveText={`This is my checkbox.
+				assistiveText="This is my checkbox.
 							There are many like it, but this one is mine.
 							My checkbox is my best friend.
 							It is my life.
 							I must master it as I must master my life.
 							Without me, my checkbox is useless. Without my checkbox, I am useless.
 							I must make my checkbox true.
-							I must make it truer than my radio button who is trying to... `}
+							I must make it truer than my radio button who is trying to... "
 				label="Checkbox Label"
 				name="checkbox-example-base-assistiveText"
 				onChange={action('change')}

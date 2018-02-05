@@ -7,7 +7,6 @@ import Default from '../__examples__/default';
 import NewFilter from '../__examples__/new';
 import LockedFilter from '../__examples__/locked';
 import PermanantFilter from '../__examples__/permanant';
-import ErrorFilter from '../__examples__/error';
 import AssistiveTextFilter from '../__examples__/assistive-text';
 
 /* eslint-disable react/display-name */

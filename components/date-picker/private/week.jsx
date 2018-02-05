@@ -12,7 +12,7 @@ const DatepickerWeek = (props) => {
 	const days = [];
 	let date = props.firstDayOfWeek;
 
-	for (let i = 0; i < 7; i++) {
+	for (let i = 0; i < 7; i += 1) {
 		days.push(
 			<Day
 				calendarHasFocus={props.calendarHasFocus}
@@ -34,7 +34,7 @@ const DatepickerWeek = (props) => {
 				selectedDate={props.selectedDate}
 				selectedDateRef={props.selectedDateRef}
 				todayLabel={props.todayLabel}
-			/>
+			/>,
 		);
 		date = DateUtil.addDays(date, 1);
 	}
@@ -110,7 +110,7 @@ DatepickerWeek.propTypes = {
 	/**
 	 * Label of shortcut to jump to today within the calendar. Also used for assistive text for the current day.
 	 */
-	todayLabel: PropTypes.string.isRequired
+	todayLabel: PropTypes.string.isRequired,
 };
 
 DatepickerWeek.displayName = 'SLDSDatepickerWeek';

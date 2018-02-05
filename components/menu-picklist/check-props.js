@@ -10,7 +10,7 @@ if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT) {
 		componentIsDeprecated(
 			COMPONENT,
-			'Please use an read-only Combobox instead. It is more accessible and closer aligned to SLDS.'
+			'Please use an read-only Combobox instead. It is more accessible and closer aligned to SLDS.',
 		);
 	};
 }

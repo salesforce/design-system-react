@@ -5,7 +5,6 @@
 // Based on SLDS v2.2.1
 
 import React from 'react';
-import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -27,10 +26,10 @@ import Item from './private/item';
 /**
  * Navigation represents a list of links that either take the user to another page or parts of the page the user is in.
  */
-const Navigation = createReactClass({
-	displayName: NAVIGATION,
+class Navigation extends React.Component {
+	static displayName = NAVIGATION;
 
-	propTypes: {
+	static propTypes = {
 		/**
 		 * HTML id for component. _Tested with snapshot testing._
 		 */
@@ -41,7 +40,7 @@ const Navigation = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * Array of categories. The required shape is: `{id: string, label: string, items: array}`. The required shape of an item is `{id: string, label: string, url: string}`. All item ids are expected to be unique. _Tested with snapshot testing._
@@ -58,28 +57,22 @@ const Navigation = createReactClass({
 		/**
 		 * Determines component style. _Tested with snapshot testing._
 		 */
-		variant: PropTypes.oneOf(['default', 'shade'])
-	},
+		variant: PropTypes.oneOf(['default', 'shade']),
+	};
 
-	getDefaultProps () {
-		return {
-			variant: 'default'
-		};
-	},
+	static defaultProps = {
+		variant: 'default',
+	};
 
 	componentWillMount () {
 		this.generatedId = shortid.generate();
-	},
+	}
 
-	getId () {
-		return this.props.id || this.generatedId;
-	},
+	getId = () => this.props.id || this.generatedId;
 
-	getVariant () {
-		return this.props.variant === 'shade' ? 'shade' : 'default';
-	},
+	getVariant = () => (this.props.variant === 'shade' ? 'shade' : 'default');
 
-	getSelectedId () {
+	getSelectedId = () => {
 		const categories = this.props.categories;
 		let selectedId;
 		if (this.props.selectedId) {
@@ -92,7 +85,7 @@ const Navigation = createReactClass({
 			selectedId = categories[0].items[0].id;
 		}
 		return selectedId;
-	},
+	};
 
 	render () {
 		const rootId = this.getId();
@@ -105,9 +98,9 @@ const Navigation = createReactClass({
 					'slds-grid--vertical',
 					'slds-navigation-list--vertical',
 					{
-						'slds-navigation-list--vertical-inverse': variant === 'shade'
+						'slds-navigation-list--vertical-inverse': variant === 'shade',
 					},
-					this.props.className
+					this.props.className,
 				)}
 			>
 				{this.props.categories.map((category) => {
@@ -131,12 +124,12 @@ const Navigation = createReactClass({
 									onSelect={this.props.onSelect}
 								/>
 							))}
-						</ul>
+						</ul>,
 					];
 				})}
 			</div>
 		);
 	}
-});
+}
 
 export default Navigation;

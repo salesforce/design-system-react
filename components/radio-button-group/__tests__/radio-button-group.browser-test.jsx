@@ -12,7 +12,7 @@ import { shape } from 'airbnb-prop-types';
  */
 import {
 	createMountNode,
-	destroyMountNode
+	destroyMountNode,
 } from '../../../tests/enzyme-helpers';
 
 import RadioButtonGroup from '../../radio-button-group';
@@ -54,14 +54,14 @@ class RadioButtonGroupExample extends React.Component {
 RadioButtonGroupExample.propTypes = {
 	labels: shape({
 		error: PropTypes.string,
-		label: PropTypes.string
+		label: PropTypes.string,
 	}),
 	disabled: PropTypes.bool,
-	required: PropTypes.bool
+	required: PropTypes.bool,
 };
 
 RadioButtonGroupExample.defaultProps = {
-	labels: { label: 'Day of week' }
+	labels: { label: 'Day of week' },
 };
 
 /* RadioButtonGroup rendering tests
@@ -82,31 +82,31 @@ describe('RadioButtonGroup', function () {
 		wrapper = mount(<RadioButtonGroupExample />, { attachTo: mountNode });
 		const radios = wrapper.find(Radio);
 		expect(radios).to.have.lengthOf(5, 'there are five radio inputs');
-		for (let index = 0; index < radios.length; index++) {
+		radios.forEach((radioWrapper, index) => {
 			const radio = radios.get(index);
 			expect(radio.props.checked).to.equal(
 				radio.props.label === 'Tue',
-				'the second radio input is checked'
+				'the second radio input is checked',
 			);
-		}
+		});
 		const legend = wrapper.find('legend');
 		expect(legend.text()).to.equal('Day of week', 'there is a label');
 	});
 
 	it('renders a disabled state', () => {
 		wrapper = mount(<RadioButtonGroupExample disabled />, {
-			attachTo: mountNode
+			attachTo: mountNode,
 		});
 		const radios = wrapper.find(Radio);
-		for (let index = 0; index < radios.length; index++) {
+		radios.forEach((radioWrapper, index) => {
 			const radio = radios.get(index);
 			expect(radio.props.disabled, 'all radio inputs are disabled').to.be.true;
-		}
+		});
 	});
 
 	it('renders a required indicator', () => {
 		wrapper = mount(<RadioButtonGroupExample required />, {
-			attachTo: mountNode
+			attachTo: mountNode,
 		});
 		const abbr = wrapper.find('abbr');
 		expect(abbr.text()).to.equal('*', 'there is a required indicator');
@@ -119,7 +119,7 @@ describe('RadioButtonGroup', function () {
 		radio.simulate('change', { event: { target: 'Mon' } });
 		expect(
 			radio.props().checked,
-			'radio button changes from unchecked to checked'
+			'radio button changes from unchecked to checked',
 		).to.be.true;
 	});
 });

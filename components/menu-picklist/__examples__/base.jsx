@@ -1,10 +1,9 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
 import Picklist from '~/components/menu-picklist'; // `~` is replaced with design-system-react at runtime
 
-const Example = createReactClass({
-	displayName: 'PicklistExample',
+class Example extends React.Component {
+	static displayName = 'PicklistExample';
 
 	render () {
 		return (
@@ -22,7 +21,7 @@ const Example = createReactClass({
 								{ label: 'Option C', value: 'C0' },
 								{ label: 'Option D', value: 'D0' },
 								{ label: 'Option E', value: 'E0' },
-								{ label: 'Option FGHIJKLMNOPQRSTUVWXYZ', value: 'F0' }
+								{ label: 'Option FGHIJKLMNOPQRSTUVWXYZ', value: 'F0' },
 							]}
 							placeholder="Select a contact"
 						/>
@@ -39,7 +38,7 @@ const Example = createReactClass({
 								{ label: 'Option C', value: 'C0' },
 								{ label: 'Option D', value: 'D0' },
 								{ label: 'Option E', value: 'E0' },
-								{ label: 'Option FGHIJKLMNOPQRSTUVWXYZ', value: 'F0' }
+								{ label: 'Option FGHIJKLMNOPQRSTUVWXYZ', value: 'F0' },
 							]}
 							placeholder="Select a contact"
 							value="C0"
@@ -58,7 +57,7 @@ const Example = createReactClass({
 								{ label: 'Option C', value: 'C0' },
 								{ label: 'Option D', value: 'D0' },
 								{ label: 'Option E', value: 'E0' },
-								{ label: 'Option FGHIJKLMNOPQRSTUVWXYZ', value: 'F0' }
+								{ label: 'Option FGHIJKLMNOPQRSTUVWXYZ', value: 'F0' },
 							]}
 							placeholder="Select a contact"
 							value="C0"
@@ -68,6 +67,6 @@ const Example = createReactClass({
 			</IconSettings>
 		);
 	}
-});
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

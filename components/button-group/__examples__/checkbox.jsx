@@ -1,16 +1,15 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import ButtonGroup from '~/components/button-group';
 import Checkbox from '~/components/forms/checkbox';
 
-const Example = createReactClass({
-	displayName: 'ButtonGroupExample',
+class Example extends React.Component {
+	static displayName = 'ButtonGroupExample';
 
 	render () {
 		return (
 			<ButtonGroup
 				labels={{
-					label: 'Scheduled Day(s)'
+					label: 'Scheduled Day(s)',
 				}}
 				variant="checkbox"
 			>
@@ -22,6 +21,6 @@ const Example = createReactClass({
 			</ButtonGroup>
 		);
 	}
-});
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

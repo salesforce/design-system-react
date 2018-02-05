@@ -10,8 +10,8 @@ testDOMandHTML({
 	test,
 	Component: Base,
 	props: {
-		isOpen: true
-	}
+		isOpen: true,
+	},
 });
 
 testDOMandHTML({
@@ -19,18 +19,18 @@ testDOMandHTML({
 	test,
 	Component: Base,
 	props: {
-		isOpen: false
-	}
+		isOpen: false,
+	},
 });
 
 testDOMandHTML({
 	name: 'Base Multiple',
 	test,
-	Component: BaseMultiple
+	Component: BaseMultiple,
 });
 
 testDOMandHTML({
 	name: 'Custom',
 	test,
-	Component: Custom
+	Component: Custom,
 });

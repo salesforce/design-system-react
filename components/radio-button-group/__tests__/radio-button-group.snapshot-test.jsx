@@ -14,7 +14,7 @@ test('Radio Button Group Base DOM Snapshot', () => {
 
 test('Radio Button Group Base HTML Snapshot', () => {
 	expect(
-		renderMarkup(SnapshotExample, { name: 'dayOfWeek' })
+		renderMarkup(SnapshotExample, { name: 'dayOfWeek' }),
 	).toMatchSnapshot();
 });
 
@@ -39,7 +39,7 @@ test('Radio Button Group Error DOM Snapshot', () => {
 				name="radioGroup"
 				errorLabel="error message"
 				errorId="radioGroupError"
-			/>
+			/>,
 		)
 		.toJSON();
 	expect(domTree).toMatchSnapshot();

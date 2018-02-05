@@ -18,7 +18,7 @@ const options = [
 		className: 'custom-li-class',
 		divider: 'bottom',
 		label: 'A Header',
-		type: 'header'
+		type: 'header',
 	},
 	{ disabled: true, label: 'An option that is Super Super Long', value: 'A0' },
 	{ label: 'Custom Class', className: 'custom-item-class', value: 'classssss' },
@@ -28,17 +28,17 @@ const options = [
 		label: 'Has a value',
 		leftIcon: {
 			name: 'settings',
-			category: 'utility'
+			category: 'utility',
 		},
 		rightIcon: {
 			name: 'settings',
-			category: 'utility'
+			category: 'utility',
 		},
 		type: 'item',
-		value: 'B0'
+		value: 'B0',
 	},
 	{
-		type: 'divider'
+		type: 'divider',
 	},
 	{ label: 'C Option', value: 'C0' },
 	{ label: 'D Option', value: 'D0' },
@@ -47,7 +47,7 @@ const options = [
 	{ label: 'B2 Option', value: 'B1' },
 	{ label: 'C2 Option', value: 'C1' },
 	{ label: 'D2 Option', value: 'D1' },
-	{ label: 'E2 Option Super Super Long', value: 'E1' }
+	{ label: 'E2 Option Super Super Long', value: 'E1' },
 ];
 
 const getDropdown = (props) => (
@@ -60,7 +60,7 @@ const DropdownControlled = createReactClass({
 	getInitialState () {
 		return {
 			forcedState: undefined,
-			menuOptions: options
+			menuOptions: options,
 		};
 	},
 
@@ -79,11 +79,11 @@ const DropdownControlled = createReactClass({
 	},
 
 	toggleDisabledOption () {
-		this.setState((prevState, props) => {
+		this.setState((prevState) => {
 			prevState.menuOptions.splice(1, 1, {
 				disabled: false,
 				label: 'An option that is Super Super Long',
-				value: 'A0'
+				value: 'A0',
 			});
 			return { options: prevState.menuOptions };
 		});
@@ -116,7 +116,7 @@ const DropdownControlled = createReactClass({
 				</div>
 			</div>
 		);
-	}
+	},
 });
 
 const getDropdownPositioned = (props) => {
@@ -142,7 +142,7 @@ const getDropdownPositioned = (props) => {
 						/>
 					</Trigger>
 				</Dropdown>
-			</div>
+			</div>,
 		);
 	});
 
@@ -226,8 +226,8 @@ storiesOf(MENU_DROPDOWN, module)
 			onSelect: (...rest) => {
 				action('Selected')(...rest);
 			},
-			options
-		})
+			options,
+		}),
 	)
 	.add('Base with icon', () =>
 		getDropdown({
@@ -241,8 +241,8 @@ storiesOf(MENU_DROPDOWN, module)
 			onSelect: (...rest) => {
 				action('Selected')(...rest);
 			},
-			options
-		})
+			options,
+		}),
 	)
 	.add('Render inline', () =>
 		getDropdown({
@@ -255,8 +255,8 @@ storiesOf(MENU_DROPDOWN, module)
 			onSelect: (...rest) => {
 				action('Selected')(...rest);
 			},
-			options
-		})
+			options,
+		}),
 	)
 	.add('Render inline w/ Nubbins', () =>
 		getDropdownPositioned({
@@ -264,8 +264,8 @@ storiesOf(MENU_DROPDOWN, module)
 			onSelect: (...rest) => {
 				action('Selected')(...rest);
 			},
-			options
-		})
+			options,
+		}),
 	)
 	.add('Custom Trigger', () =>
 		getDropdownCustomTrigger({
@@ -273,8 +273,8 @@ storiesOf(MENU_DROPDOWN, module)
 			onSelect: (...rest) => {
 				action('Selected')(...rest);
 			},
-			options
-		})
+			options,
+		}),
 	)
 	.add('Custom Content', () =>
 		getDropdownCustomContent({
@@ -282,8 +282,8 @@ storiesOf(MENU_DROPDOWN, module)
 			onSelect: (...rest) => {
 				action('Selected')(...rest);
 			},
-			options
-		})
+			options,
+		}),
 	)
 	.add('Hover', () =>
 		getDropdown({
@@ -295,8 +295,8 @@ storiesOf(MENU_DROPDOWN, module)
 				action('Selected')(...rest);
 			},
 			openOn: 'hover',
-			options
-		})
+			options,
+		}),
 	)
 	.add('Two Hovers', () => (
 		<div>
@@ -309,7 +309,7 @@ storiesOf(MENU_DROPDOWN, module)
 					action('Selected')(...rest);
 				},
 				openOn: 'hover',
-				options
+				options,
 			})}{' '}
 			{getDropdown({
 				assistiveText: 'Icon More large',
@@ -320,7 +320,7 @@ storiesOf(MENU_DROPDOWN, module)
 					action('Selected')(...rest);
 				},
 				openOn: 'hover',
-				options
+				options,
 			})}
 		</div>
 	))
@@ -338,8 +338,8 @@ storiesOf(MENU_DROPDOWN, module)
 			},
 			openOn: 'hover',
 			options,
-			value: 'C0'
-		})
+			value: 'C0',
+		}),
 	)
 	.add('Controled w/ isOpen', () => (
 		<DropdownControlled

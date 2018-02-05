@@ -26,12 +26,12 @@ const propTypes = {
 	 * Sets whether the fields truncate
 	 */
 	truncate: PropTypes.bool,
-	flavor: PropTypes.string
+	flavor: PropTypes.string,
 };
 
 const defaultProps = {
 	label: '',
-	content: ''
+	content: '',
 };
 
 class DetailBlock extends Component {
@@ -53,7 +53,7 @@ class DetailBlock extends Component {
 	// eslint-disable-next-line class-methods-use-this
 	_getClassNames (className, flavor) {
 		return classnames('slds-page-header__detail-block', className, {
-			[`slds-size--${flavor}`]: flavor
+			[`slds-size--${flavor}`]: flavor,
 		});
 	}
 
@@ -81,7 +81,7 @@ class DetailBlock extends Component {
 
 			if (type === 'string') {
 				const labelClasses = classnames('slds-text-title', {
-					'slds-truncate': truncate
+					'slds-truncate': truncate,
 				});
 				return (
 					<p className={labelClasses} title={label}>
@@ -99,7 +99,7 @@ class DetailBlock extends Component {
 			const type = typeof content;
 			if (type === 'string') {
 				const labelClasses = classnames('slds-text-body--regular', {
-					'slds-truncate': truncate
+					'slds-truncate': truncate,
 				});
 				return (
 					<p
@@ -121,7 +121,7 @@ class DetailBlock extends Component {
 		 */
 		const renderContentWithTooltip = () => {
 			const labelClasses = classnames('slds-text-body--regular', {
-				'slds-truncate': truncate
+				'slds-truncate': truncate,
 			});
 			return (
 				<PopoverTooltip align="top" content={content}>

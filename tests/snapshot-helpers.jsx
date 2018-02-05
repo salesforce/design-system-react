@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import jsBeautify from 'js-beautify';
-import Settings from './settings';
 import renderer from 'react-test-renderer';
+import Settings from './settings';
 /*
  * Render React components to DOM state as a String
  *
@@ -22,11 +22,11 @@ const renderMarkup = (Component, props) =>
 	String(
 		jsBeautify.html(
 			ReactDOMServer.renderToStaticMarkup(
-				React.createElement(Component, props)
+				React.createElement(Component, props),
 			),
-			Settings.jsBeautify
+			Settings.jsBeautify,
 		),
-		'utf-8'
+		'utf-8',
 	);
 
 const testDOMandHTML = ({ name, test, Component, props }) => {

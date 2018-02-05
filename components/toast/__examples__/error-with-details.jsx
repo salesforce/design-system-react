@@ -1,7 +1,6 @@
 import React from 'react';
 import Toast from '~/components/toast'; // `~` is replaced with design-system-react at runtime
 import ToastContainer from '~/components/toast/container'; // `~` is replaced with design-system-react at runtime
-import Icon from '~/components/icon'; // `~` is replaced with design-system-react at runtime
 import IconSettings from '~/components/icon-settings';
 
 class Example extends React.Component {
@@ -14,7 +13,7 @@ class Example extends React.Component {
 							heading:
 								"You've encountered some errors when trying to save edits to Samuel Smith.",
 							details:
-								"Here's some detail of what happened, being very descriptive and transparent."
+								"Here's some detail of what happened, being very descriptive and transparent.",
 						}}
 						variant="error"
 					/>

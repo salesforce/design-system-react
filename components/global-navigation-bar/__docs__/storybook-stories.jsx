@@ -29,51 +29,51 @@ const dropdownCollection = [
 		value: '0',
 		iconCategory: 'utility',
 		iconName: 'table',
-		href: 'http://www.google.com'
+		href: 'http://www.google.com',
 	},
 	{
 		label: 'Menu Header',
 		type: 'header',
-		divider: 'top'
+		divider: 'top',
 	},
 	{
 		label: 'Menu Item One',
 		value: '1',
 		iconCategory: 'utility',
 		iconName: 'kanban',
-		href: 'http://www.google.com'
+		href: 'http://www.google.com',
 	},
 	{
 		label: 'Menu Item Two',
 		value: '2',
 		iconCategory: 'utility',
 		iconName: 'kanban',
-		href: 'http://www.google.com'
+		href: 'http://www.google.com',
 	},
 	{
 		label: 'Menu Item Three',
 		value: '3',
 		iconCategory: 'utility',
 		iconName: 'side_list',
-		href: 'http://www.google.com'
+		href: 'http://www.google.com',
 	},
 	{
 		label: 'Menu Item Four',
 		value: '4',
 		iconCategory: 'utility',
 		iconName: 'side_list',
-		href: 'http://www.google.com'
+		href: 'http://www.google.com',
 	},
 	{
-		type: 'divider'
+		type: 'divider',
 	},
 	{
 		label: 'Menu Item Five',
 		value: '5',
 		iconCategory: 'utility',
 		iconName: 'side_list',
-		href: 'http://www.google.com'
-	}
+		href: 'http://www.google.com',
+	},
 ];
 
 /* eslint-disable react/display-name */
@@ -102,7 +102,7 @@ const getGlobalNavigationBar = (props, primaryRegionProps) => (
 				label="Home"
 				id="home-link"
 				onClick={linkClicked(
-					'Home link clicked. Actual href should be ignored'
+					'Home link clicked. Actual href should be ignored',
 				)}
 				onKeyDown={(e) => {
 					console.log(e.target);
@@ -219,7 +219,7 @@ const getGlobalNavigationBarCustomCloud = (props, primaryRegionProps) => (
 
 const getGlobalNavigationBarCustomCloudOverviewActive = (
 	props,
-	primaryRegionProps
+	primaryRegionProps,
 ) => (
 	<GlobalNavigationBar {...props}>
 		<GlobalNavigationBarRegion region="primary">
@@ -324,32 +324,32 @@ storiesOf(GLOBAL_NAVIGATION_BAR, module)
 	.add('Base', () =>
 		getGlobalNavigationBar(
 			propSets.base.props,
-			propSets.base.primaryRegionProps
-		)
+			propSets.base.primaryRegionProps,
+		),
 	)
 	.add('Custom Cloud', () =>
 		getGlobalNavigationBarCustomCloud(
 			propSets.customCloud.props,
-			propSets.customCloud.primaryRegionProps
-		)
+			propSets.customCloud.primaryRegionProps,
+		),
 	)
 	.add('Custom Cloud (Multiple active and white)', () =>
 		getGlobalNavigationBarCustomCloudOverviewActive(
 			propSets.customCloud.props,
-			propSets.customCloud.primaryRegionProps
-		)
+			propSets.customCloud.primaryRegionProps,
+		),
 	)
 	.add('No Secondary Navigation', () =>
 		getGlobalNavigationBarNoNav(
 			propSets.noNav.props,
-			propSets.noNav.primaryRegionProps
-		)
+			propSets.noNav.primaryRegionProps,
+		),
 	)
 	.add('Hybrid Dropdown', () =>
 		getGlobalNavigationBar(
 			propSets.hybrid.props,
-			propSets.base.primaryRegionProps
-		)
+			propSets.base.primaryRegionProps,
+		),
 	);
 
 export default getGlobalNavigationBar;

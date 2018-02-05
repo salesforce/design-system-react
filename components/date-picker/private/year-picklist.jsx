@@ -33,7 +33,7 @@ const DatepickerYearSelector = createReactClass({
 		/**
 		 * Callback that passes in the DOM reference of the `<button>` DOM node within this component. Primary use is to allow `focus` to be called. You should still test if the node exists, since rendering is asynchronous. `buttonRef={(component) => { if(component) console.log(component); }}`
 		 */
-		yearPicklistButtonRef: PropTypes.func
+		yearPicklistButtonRef: PropTypes.func,
 	},
 
 	getOptions () {
@@ -42,7 +42,7 @@ const DatepickerYearSelector = createReactClass({
 		const toYear = now.getFullYear() + this.props.relativeYearTo;
 		const opts = [];
 
-		for (let year = fromYear; year < toYear; year++) {
+		for (let year = fromYear; year < toYear; year += 1) {
 			opts.push({ label: `${year}`, value: year });
 		}
 		return opts;
@@ -53,9 +53,9 @@ const DatepickerYearSelector = createReactClass({
 			this.props.onChangeMonth(
 				new Date(
 					this.props.initialDateForCalendarRender.setFullYear(
-						parseInt(selectedValue.value, 10)
-					)
-				)
+						parseInt(selectedValue.value, 10),
+					),
+				),
 			);
 		}
 	},
@@ -77,7 +77,7 @@ const DatepickerYearSelector = createReactClass({
 				/>
 			</div>
 		);
-	}
+	},
 });
 
 export default DatepickerYearSelector;

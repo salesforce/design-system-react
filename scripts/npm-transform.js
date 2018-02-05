@@ -13,7 +13,7 @@ import async from 'async';
 
 const distPath = path.resolve.bind(
 	path,
-	path.resolve(__dirname, '../', '.tmp-npm')
+	path.resolve(__dirname, '../', '.tmp-npm'),
 );
 
 // /////////////////////////////////////////////////////////////
@@ -29,7 +29,7 @@ async.series(
 			console.log('### Modify package.json for publishing to NPM');
 
 			const packageJSON = JSON.parse(
-				fs.readFileSync(distPath('package.json')).toString()
+				fs.readFileSync(distPath('package.json')).toString(),
 			);
 
 			packageJSON.name = '@salesforce/design-system-react';
@@ -38,11 +38,11 @@ async.series(
 			fs.writeFile(
 				distPath('package.json'),
 				JSON.stringify(packageJSON, null, 2),
-				done
+				done,
 			);
-		}
+		},
 	],
 	(err) => {
 		if (err) throw err;
-	}
+	},
 );

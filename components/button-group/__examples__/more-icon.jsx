@@ -1,12 +1,11 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import ButtonGroup from '~/components/button-group';
 import Button from '~/components/button';
 import Dropdown from '~/components/menu-dropdown';
 import IconSettings from '~/components/icon-settings';
 
-const Example = createReactClass({
-	displayName: 'ButtonGroupExample',
+class Example extends React.Component {
+	static displayName = 'ButtonGroupExample';
 
 	render () {
 		return (
@@ -28,13 +27,13 @@ const Example = createReactClass({
 						options={[
 							{ label: 'undo', value: 'A0' },
 							{ label: 'redo', value: 'B0' },
-							{ label: 'activate', value: 'C0' }
+							{ label: 'activate', value: 'C0' },
 						]}
 					/>
 				</ButtonGroup>
 			</IconSettings>
 		);
 	}
-});
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

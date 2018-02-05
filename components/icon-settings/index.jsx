@@ -31,7 +31,7 @@ class IconSettings extends React.Component {
 			customSprite: this.props.customSprite,
 			doctypeSprite: this.props.doctypeSprite,
 			standardSprite: this.props.standardSprite,
-			utilitySprite: this.props.utilitySprite
+			utilitySprite: this.props.utilitySprite,
 		};
 	}
 
@@ -48,7 +48,7 @@ IconSettings.childContextTypes = {
 	customSprite: PropTypes.string,
 	doctypeSprite: PropTypes.string,
 	standardSprite: PropTypes.string,
-	utilitySprite: PropTypes.string
+	utilitySprite: PropTypes.string,
 };
 
 IconSettings.propTypes = {
@@ -81,7 +81,7 @@ IconSettings.propTypes = {
 	 * Path to the utility sprite
 	 * example: '@salesforce-ux/design-system/assets/icons/utility-sprite/svg/symbols.svg';
 	 */
-	utilitySprite: PropTypes.string
+	utilitySprite: PropTypes.string,
 };
 
 export default IconSettings;

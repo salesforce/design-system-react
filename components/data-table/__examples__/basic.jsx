@@ -1,5 +1,4 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import DataTable from '~/components/data-table'; // `~` is replaced with design-system-react at runtime
 import DataTableColumn from '~/components/data-table/column';
 import DataTableCell from '~/components/data-table/cell';
@@ -44,48 +43,46 @@ const columns = [
 
 	<DataTableColumn key="contact" label="Contact" property="contact">
 		<CustomDataTableCell />
-	</DataTableColumn>
+	</DataTableColumn>,
 ];
 
-const Example = createReactClass({
-	displayName: 'DataTableExample',
+class Example extends React.Component {
+	static displayName = 'DataTableExample';
 
-	getInitialState () {
-		return {
-			items: [
-				{
-					id: '8IKZHZZV80',
-					opportunityName: 'Cloudhub',
-					accountName: 'Cloudhub',
-					closeDate: '4/14/2015',
-					stage: 'Prospecting',
-					confidence: '20%',
-					amount: '$25k',
-					contact: 'jrogers@cloudhub.com'
-				},
-				{
-					id: '5GJOOOPWU7',
-					opportunityName: 'Cloudhub + Anypoint Connectors',
-					accountName: 'Cloudhub',
-					closeDate: '4/14/2015',
-					stage: 'Prospecting',
-					confidence: '20%',
-					amount: '$25k',
-					contact: 'jrogers@cloudhub.com'
-				},
-				{
-					id: '8IKZHZZV81',
-					opportunityName: 'Cloudhub',
-					accountName: 'Cloudhub',
-					closeDate: '4/14/2015',
-					stage: 'Prospecting',
-					confidence: '20%',
-					amount: '$25k',
-					contact: 'jrogers@cloudhub.com'
-				}
-			]
-		};
-	},
+	state = {
+		items: [
+			{
+				id: '8IKZHZZV80',
+				opportunityName: 'Cloudhub',
+				accountName: 'Cloudhub',
+				closeDate: '4/14/2015',
+				stage: 'Prospecting',
+				confidence: '20%',
+				amount: '$25k',
+				contact: 'jrogers@cloudhub.com',
+			},
+			{
+				id: '5GJOOOPWU7',
+				opportunityName: 'Cloudhub + Anypoint Connectors',
+				accountName: 'Cloudhub',
+				closeDate: '4/14/2015',
+				stage: 'Prospecting',
+				confidence: '20%',
+				amount: '$25k',
+				contact: 'jrogers@cloudhub.com',
+			},
+			{
+				id: '8IKZHZZV81',
+				opportunityName: 'Cloudhub',
+				accountName: 'Cloudhub',
+				closeDate: '4/14/2015',
+				stage: 'Prospecting',
+				confidence: '20%',
+				amount: '$25k',
+				contact: 'jrogers@cloudhub.com',
+			},
+		],
+	};
 
 	render () {
 		return (
@@ -149,6 +146,6 @@ const Example = createReactClass({
 			</IconSettings>
 		);
 	}
-});
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

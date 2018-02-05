@@ -26,18 +26,18 @@ describe('SLDSPill', () => {
 					labels={{
 						label: LABEL,
 						title: LABEL_TITLE,
-						removeTitle: 'Remove'
+						removeTitle: 'Remove',
 					}}
 					assistiveText={{
-						remove: 'Remove assistive text'
+						remove: 'Remove assistive text',
 					}}
 					className="extra-class"
 					onClick={onClick}
 					onRemove={onRemove}
 					onFocus={onFocus}
 					onBlur={onBlur}
-				/>
-			)
+				/>,
+			),
 		);
 
 		afterEach(unmountComponent);
@@ -75,13 +75,13 @@ describe('SLDSPill', () => {
 			const pill = this.wrapper.find('.slds-pill');
 			expect(pill.matchesElement(document.activeElement)).to.be.equal(
 				true,
-				'Pill was not focused'
+				'Pill was not focused',
 			);
 			expect(onFocus.calledOnce).to.be.true;
 			this.wrapper.instance().blur();
 			expect(pill.matchesElement(document.activeElement)).to.be.equal(
 				false,
-				'Pill was not blurred'
+				'Pill was not blurred',
 			);
 			expect(onBlur.calledOnce).to.be.true;
 		});
@@ -108,11 +108,11 @@ describe('SLDSPill', () => {
 			mountComponent(
 				<SLDSPill
 					labels={{
-						label: LABEL
+						label: LABEL,
 					}}
 					href={HREF}
-				/>
-			)
+				/>,
+			),
 		);
 
 		afterEach(unmountComponent);
@@ -130,10 +130,10 @@ describe('SLDSPill', () => {
 			mountComponent(
 				<SLDSPill
 					labels={{
-						label: LABEL
+						label: LABEL,
 					}}
-				/>
-			)
+				/>,
+			),
 		);
 
 		afterEach(unmountComponent);
@@ -150,11 +150,11 @@ describe('SLDSPill', () => {
 			mountComponent(
 				<SLDSPill
 					labels={{
-						label: LABEL
+						label: LABEL,
 					}}
 					bare
-				/>
-			)
+				/>,
+			),
 		);
 
 		afterEach(unmountComponent);
@@ -172,11 +172,11 @@ describe('SLDSPill', () => {
 			mountComponent(
 				<SLDSPill
 					labels={{
-						label: LABEL
+						label: LABEL,
 					}}
 					hasError
-				/>
-			)
+				/>,
+			),
 		);
 
 		afterEach(unmountComponent);
@@ -193,12 +193,12 @@ describe('SLDSPill', () => {
 			mountComponent(
 				<SLDSPill
 					labels={{
-						label: LABEL
+						label: LABEL,
 					}}
 					onClick={onClick}
 					icon={<SLDSIcon title="Account" category="standard" name="account" />}
-				/>
-			)
+				/>,
+			),
 		);
 
 		afterEach(unmountComponent);
@@ -217,7 +217,7 @@ describe('SLDSPill', () => {
 			mountComponent(
 				<SLDSPill
 					labels={{
-						label: LABEL
+						label: LABEL,
 					}}
 					avatar={
 						<SLDSAvatar
@@ -226,8 +226,8 @@ describe('SLDSPill', () => {
 							imgSrc="https://lightningdesignsystem.com/assets/images/avatar2.jpg"
 						/>
 					}
-				/>
-			)
+				/>,
+			),
 		);
 
 		afterEach(unmountComponent);
@@ -238,7 +238,7 @@ describe('SLDSPill', () => {
 			expect(avatar.prop('title')).to.equal('User avatar');
 			expect(avatar.prop('variant')).to.equal('user');
 			expect(avatar.prop('imgSrc')).to.equal(
-				'https://lightningdesignsystem.com/assets/images/avatar2.jpg'
+				'https://lightningdesignsystem.com/assets/images/avatar2.jpg',
 			);
 		});
 	});
@@ -251,13 +251,13 @@ describe('SLDSPill', () => {
 				<SLDSPill
 					labels={{
 						label: LABEL,
-						title: LABEL_TITLE
+						title: LABEL_TITLE,
 					}}
 					variant="option"
 					removeTitle="Remove"
 					onRemove={onRemove}
-				/>
-			)
+				/>,
+			),
 		);
 
 		afterEach(unmountComponent);
@@ -278,8 +278,8 @@ describe('SLDSPill', () => {
 			mountComponent(
 				<SLDSPill onClick={onClick} onRemove={onRemove}>
 					<div className="abc">this is a custom label</div>
-				</SLDSPill>
-			)
+				</SLDSPill>,
+			),
 		);
 
 		afterEach(unmountComponent);

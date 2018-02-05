@@ -4,22 +4,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Calendar from './calendar';
-import CalendarNavigation from './navigation';
-
-import EventUtil from '../../../utilities/event';
-import KEYS from '../../../utilities/key-code';
-
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
 // joining classNames together."
 import classNames from 'classnames';
 
+import Calendar from './calendar';
+import CalendarNavigation from './navigation';
+
+import EventUtil from '../../../utilities/event';
+import KEYS from '../../../utilities/key-code';
+
 class DatepickerCalendarWrapper extends React.Component {
 	static defaultProps = {
 		selectedDate: new Date(),
-		value: new Date()
+		value: new Date(),
 	};
 
 	static displayName = 'DatepickerCalendarWrapper';
@@ -43,7 +43,7 @@ class DatepickerCalendarWrapper extends React.Component {
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * dateDisabled() takes a date as input argument, returns true if given date should be disabled, otherwise returns false.
@@ -100,12 +100,12 @@ class DatepickerCalendarWrapper extends React.Component {
 		/**
 		 * Names of the seven days of the week, starting on Sunday.
 		 */
-		weekDayLabels: PropTypes.array.isRequired
+		weekDayLabels: PropTypes.array.isRequired,
 	};
 
 	state = {
 		initialDateForCalendarRender: this.props.selectedDate,
-		isCalendarFocused: true
+		isCalendarFocused: true,
 	};
 
 	handleCalendarBlur = (event, { direction }) => {
@@ -115,7 +115,7 @@ class DatepickerCalendarWrapper extends React.Component {
 				this.props.onCalendarFocus(event, {
 					direction,
 					isCalendarFocused: false,
-					ref: this.previousMonthRef
+					ref: this.previousMonthRef,
 				});
 			}
 			this.previousMonthRef.focus();
@@ -125,7 +125,7 @@ class DatepickerCalendarWrapper extends React.Component {
 				this.props.onCalendarFocus(event, {
 					direction,
 					isCalendarFocused: false,
-					ref: this.todayRef
+					ref: this.todayRef,
 				});
 			}
 			this.todayRef.focus();
@@ -141,7 +141,7 @@ class DatepickerCalendarWrapper extends React.Component {
 
 	handleInitialDateForCalendarRenderChange = (
 		event,
-		initialDateForCalendarRender
+		initialDateForCalendarRender,
 	) => {
 		this.setState({ initialDateForCalendarRender });
 	};
@@ -184,9 +184,9 @@ class DatepickerCalendarWrapper extends React.Component {
 			<div // eslint-disable-line jsx-a11y/no-static-element-interactions
 				className={classNames(
 					{
-						'slds-datepicker': this.props.isolated
+						'slds-datepicker': this.props.isolated,
 					},
-					this.props.className
+					this.props.className,
 				)}
 				aria-hidden="false"
 				data-selection="single"

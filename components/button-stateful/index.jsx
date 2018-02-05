@@ -74,7 +74,7 @@ const propTypes = {
 	 */
 	tabIndex: PropTypes.string,
 	tooltip: PropTypes.node,
-	variant: PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon'])
+	variant: PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon']),
 };
 
 // i18n
@@ -84,7 +84,7 @@ const defaultProps = {
 	responsive: false,
 	stateOne: { iconName: 'add', label: 'Follow' },
 	stateTwo: { iconName: 'check', label: 'Following' },
-	stateThree: { iconName: 'close', label: 'Unfollow' }
+	stateThree: { iconName: 'close', label: 'Unfollow' },
 };
 
 /**
@@ -104,7 +104,7 @@ class ButtonStateful extends React.Component {
 			'slds-not-selected': !active,
 			'slds-is-selected': active,
 			'slds-max-small-button--stretch': this.props.responsive,
-			'slds-button--icon-border': this.props.variant === 'icon'
+			'slds-button--icon-border': this.props.variant === 'icon',
 		});
 	}
 
@@ -139,7 +139,7 @@ class ButtonStateful extends React.Component {
 			stateTwo,
 			stateThree,
 			tabIndex,
-			variant
+			variant,
 		} = this.props;
 
 		const isActive = isBoolean(active) ? active : this.state.active;

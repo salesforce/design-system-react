@@ -8,7 +8,7 @@ import { mount } from 'enzyme';
 import assign from 'lodash.assign';
 import {
 	Simulate,
-	findRenderedDOMComponentWithClass
+	findRenderedDOMComponentWithClass,
 } from 'react-addons-test-utils';
 
 /* Enzyme Helpers that can mount and unmount React component instances to
@@ -18,7 +18,7 @@ import {
  */
 import {
 	mountComponent,
-	unmountComponent
+	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 
 // Import your internal dependencies (for example):
@@ -36,7 +36,7 @@ const menuOptions = [
 	{ label: 'A super short', value: 'A0' },
 	{ label: 'B Option Super Super Long', value: 'B0' },
 	{ label: 'C Option', value: 'C0' },
-	{ disabled: true, label: 'D Option', value: 'D0' }
+	{ disabled: true, label: 'D Option', value: 'D0' },
 ];
 
 const defaultProps = {
@@ -46,7 +46,7 @@ const defaultProps = {
 	openOn: 'click',
 	options: menuOptions,
 	placeholder: 'Select a contact',
-	value: 'B0'
+	value: 'B0',
 };
 
 /* eslint-disable react/prop-types */
@@ -102,8 +102,8 @@ const getNodes = ({ wrapper }) => ({
 	menu: wrapper.find('.slds-dropdown'),
 	customContent: wrapper.find('#custom-dropdown-menu-content'),
 	customContentLink: wrapper.find(
-		'#custom-dropdown-menu-content #custom-dropdown-menu-content-link'
-	)
+		'#custom-dropdown-menu-content #custom-dropdown-menu-content-link',
+	),
 });
 
 /* All tests for component being tested should be wrapped in a root `describe`,
@@ -120,7 +120,7 @@ describe('SLDSMenuDropdown', function () {
 
 	describe('Styling', () => {
 		beforeEach(
-			mountComponent(<DemoComponent menuStyle={{ height: '500px' }} />)
+			mountComponent(<DemoComponent menuStyle={{ height: '500px' }} />),
 		);
 
 		afterEach(unmountComponent);
@@ -142,8 +142,8 @@ describe('SLDSMenuDropdown', function () {
 					<List
 						options={[{ label: 'Custom Content Option' }, ...menuOptions]}
 					/>
-				</DemoComponent>
-			)
+				</DemoComponent>,
+			),
 		);
 
 		afterEach(unmountComponent);
@@ -170,7 +170,7 @@ describe('SLDSMenuDropdown', function () {
 			nodes.button.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
 			expect(openNodes.menu.find(`#${buttonId}-item-0`).text()).to.equal(
-				'Custom Content Option'
+				'Custom Content Option',
 			);
 		});
 	});
@@ -218,8 +218,8 @@ describe('SLDSMenuDropdown', function () {
 					onSelect={(selectedOption) => {
 						selected = selectedOption;
 					}}
-				/>
-			)
+				/>,
+			),
 		);
 
 		afterEach(unmountComponent);
@@ -247,10 +247,10 @@ describe('SLDSMenuDropdown', function () {
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
 			expect(openNodes.menu.find('ul').node.getAttribute('role')).to.equal(
-				'menu'
+				'menu',
 			);
 			expect(
-				openNodes.menu.find('ul').node.getAttribute('aria-labelledby')
+				openNodes.menu.find('ul').node.getAttribute('aria-labelledby'),
 			).to.equal(openNodes.trigger.node.getAttribute('id'));
 		});
 
@@ -290,8 +290,8 @@ describe('SLDSMenuDropdown', function () {
 					checkmark
 					iconName="down"
 					iconVariant="border-filled"
-				/>
-			)
+				/>,
+			),
 		);
 
 		afterEach(unmountComponent);
@@ -300,7 +300,7 @@ describe('SLDSMenuDropdown', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			console.log(nodes.button);
 			expect(nodes.button.find('.slds-assistive-text').text()).to.equal(
-				'more options'
+				'more options',
 			);
 		});
 	});
@@ -314,8 +314,8 @@ describe('SLDSMenuDropdown', function () {
 					onSelect={(selectedOption) => {
 						selected = selectedOption;
 					}}
-				/>
-			)
+				/>,
+			),
 		);
 
 		afterEach(unmountComponent);
@@ -371,14 +371,14 @@ describe('SLDSMenuDropdown', function () {
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
 			expect(
-				openNodes.menu.find('.slds-dropdown__item svg').nodes.length
+				openNodes.menu.find('.slds-dropdown__item svg').nodes.length,
 			).to.equal(1);
 			openNodes.menu
 				.find('.slds-dropdown__item a')
 				.first()
 				.simulate('click', {});
 			expect(
-				openNodes.menu.find('.slds-dropdown__item svg').nodes.length
+				openNodes.menu.find('.slds-dropdown__item svg').nodes.length,
 			).to.equal(2);
 		});
 	});
@@ -394,7 +394,7 @@ describe('SLDSMenuDropdown', function () {
 			// eslint-disable-next-line react/no-render-return-value
 			return ReactDOM.render(
 				<IconSettings iconPath="/assets/icons">{inst}</IconSettings>,
-				body
+				body,
 			);
 		};
 
@@ -473,7 +473,7 @@ describe('SLDSMenuDropdown', function () {
 			// eslint-disable-next-line react/no-render-return-value
 			return ReactDOM.render(
 				<IconSettings iconPath="/assets/icons">{inst}</IconSettings>,
-				body
+				body,
 			);
 		};
 

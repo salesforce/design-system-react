@@ -20,13 +20,13 @@ import { CARD_HEADER } from '../../../utilities/constants';
 const idSuffixes = {
 	headerActions: '__header-actions',
 	heading: '__heading',
-	filter: '__filter-input'
+	filter: '__filter-input',
 };
 
 const renderFilter = (filter, id) => {
 	// allow id to be set by custom header component passed in
 	const clonedFilter = React.cloneElement(filter, {
-		id: filter.props.id || id
+		id: filter.props.id || id,
 	});
 
 	return (
@@ -66,7 +66,7 @@ const CardHeader = (props) => {
 			body: heading,
 			verticalCenter: true,
 			canTruncate: true,
-			...props.header.props
+			...props.header.props,
 		});
 	} else {
 		Header = (
@@ -89,7 +89,7 @@ const CardHeader = (props) => {
 				id={props.headerActionsId}
 				className={classnames('slds-no-flex', {
 					'slds-size--1-of-3': hasFilter,
-					'slds-text-align--right': hasFilter
+					'slds-text-align--right': hasFilter,
 				})}
 			>
 				{props.headerActions}
@@ -136,7 +136,7 @@ CardHeader.propTypes = {
 	/**
 	 * Icon associated with grouped items
 	 */
-	icon: PropTypes.node
+	icon: PropTypes.node,
 };
 
 export default CardHeader;

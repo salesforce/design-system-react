@@ -9,7 +9,6 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -23,14 +22,14 @@ import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
 /**
  *  The Dropdown Button Trigger renders the default trigger button for the dropdown menu. If this component has children, it does not render itself to the DOM. Instead, it renders its child element, `Button`, and all that child's properties. This component may be used as a template to create custom triggers that do not use `Button`.
  */
-const GlobalNavigationDropdownTrigger = createReactClass({
+class GlobalNavigationDropdownTrigger extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
 	// display name.
-	displayName: MENU_DROPDOWN_TRIGGER,
+	static displayName = MENU_DROPDOWN_TRIGGER;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Whether the item is active or not.
 		 */
@@ -50,7 +49,7 @@ const GlobalNavigationDropdownTrigger = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * Determines position of separating bar.
@@ -103,8 +102,8 @@ const GlobalNavigationDropdownTrigger = createReactClass({
 		/**
 		 * The ref of the actual triggering button.
 		 */
-		triggerRef: PropTypes.func
-	},
+		triggerRef: PropTypes.func,
+	};
 
 	// ### Render
 	render () {
@@ -151,9 +150,9 @@ const GlobalNavigationDropdownTrigger = createReactClass({
 					{
 						'slds-is-open': isOpen,
 						'slds-is-active': active,
-						[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition
+						[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition,
 					},
-					className
+					className,
 				)}
 				id={id}
 				onBlur={onBlur}
@@ -185,6 +184,6 @@ const GlobalNavigationDropdownTrigger = createReactClass({
 			</li>
 		);
 	}
-});
+}
 
 export default GlobalNavigationDropdownTrigger;

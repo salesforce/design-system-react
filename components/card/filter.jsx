@@ -45,11 +45,11 @@ Filter.propTypes = {
 	/**
 	 * Text present in input until the user enters text. This text will also be used for a visually hidden label on the filter `input` element for accessibility.
 	 */
-	placeholder: PropTypes.string.isRequired
+	placeholder: PropTypes.string.isRequired,
 };
 
 Filter.defaultProps = {
-	placeholder: 'Find in List'
+	placeholder: 'Find in List',
 };
 
 export default Filter;

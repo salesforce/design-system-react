@@ -1,24 +1,21 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
 import Notification from '~/components/notification'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 
-const Example = createReactClass({
-	displayName: 'NotificationExample',
+class Example extends React.Component {
+	static displayName = 'NotificationExample';
 
-	getInitialState () {
-		return {
-			baseIsOpen: false,
-			successIsOpen: false,
-			errorIsOpen: false,
-			offlineIsOpen: false
-		};
-	},
+	state = {
+		baseIsOpen: false,
+		successIsOpen: false,
+		errorIsOpen: false,
+		offlineIsOpen: false,
+	};
 
-	toggleOpen (event, theme) {
+	toggleOpen = (event, theme) => {
 		this.setState({ [`${theme}IsOpen`]: !this.state[`${theme}IsOpen`] });
-	},
+	};
 
 	render () {
 		return (
@@ -51,7 +48,7 @@ const Example = createReactClass({
 							<span key="maintenance">
 								Scheduled Maintenance Notification: Sunday March 15, 8:00
 								AM–10:00 PST <a href="javascript:void(0);">More Information</a>
-							</span>
+							</span>,
 						]}
 						iconName="notification"
 						isOpen={this.state.successIsOpen}
@@ -74,7 +71,7 @@ const Example = createReactClass({
 							<span key="browser">
 								Your browser is currently not supported. Your Salesforce may be
 								degraded. <a href="javascript:void(0);">More Information</a>
-							</span>
+							</span>,
 						]}
 						iconName="ban"
 						isOpen={this.state.errorIsOpen}
@@ -97,7 +94,7 @@ const Example = createReactClass({
 							<span key="offline">
 								You are in offline mode{' '}
 								<a href="javascript:void(0);">More Information</a>
-							</span>
+							</span>,
 						]}
 						iconName="offline"
 						isOpen={this.state.offlineIsOpen}
@@ -112,6 +109,6 @@ const Example = createReactClass({
 			</IconSettings>
 		);
 	}
-});
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

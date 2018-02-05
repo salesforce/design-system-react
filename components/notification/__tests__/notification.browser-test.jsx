@@ -16,7 +16,7 @@ describe('SLDSNotification: ', () => {
 		const reactCmp = TestUtils.renderIntoDocument(
 			<IconSettings iconPath="/assets/icons">
 				{notificationInstance}
-			</IconSettings>
+			</IconSettings>,
 		);
 		return ReactDOM.findDOMNode(reactCmp);
 	};
@@ -24,7 +24,7 @@ describe('SLDSNotification: ', () => {
 	describe('component renders', () => {
 		it('notification renders', () => {
 			const notification = generateNotification(
-				<SLDSNotification variant="toast" theme="success" isOpen />
+				<SLDSNotification variant="toast" theme="success" isOpen />,
 			);
 			expect(notification).to.not.equal(undefined);
 		});
@@ -40,7 +40,7 @@ describe('SLDSNotification: ', () => {
 					isOpen
 					texture
 					animated
-				/>
+				/>,
 			);
 			const alert = notification.getElementsByTagName('div')[0];
 			expect(alert.className).to.include('slds-notify--toast');
@@ -48,7 +48,7 @@ describe('SLDSNotification: ', () => {
 
 		it('renders theme', () => {
 			const notification = generateNotification(
-				<SLDSNotification variant="toast" theme="error" isOpen />
+				<SLDSNotification variant="toast" theme="error" isOpen />,
 			);
 			const alert = notification.getElementsByTagName('div')[0];
 			expect(alert.className).to.include('slds-theme--error');
@@ -62,13 +62,13 @@ describe('SLDSNotification: ', () => {
 					iconName="notification"
 					isOpen
 					texture
-					content={'hi'}
-				/>
+					content="hi"
+				/>,
 			);
 			setTimeout(() => {
 				const close = notification.querySelectorAll('button');
 				const svgs = notification.querySelectorAll(
-					'[*|href="/assets/icons/utility-sprite/svg/symbols.svg#notification"]'
+					'[*|href="/assets/icons/utility-sprite/svg/symbols.svg#notification"]',
 				);
 				expect(close[0].className).to.include('slds-notify__close');
 				expect(svgs[0]).to.exist;
@@ -87,7 +87,7 @@ describe('SLDSNotification: ', () => {
 					iconName="notification"
 					onDismiss={onClick}
 					isOpen
-				/>
+				/>,
 			);
 			setTimeout(() => {
 				const dismissBtn = notification.getElementsByTagName('button')[0];

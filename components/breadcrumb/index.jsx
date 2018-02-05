@@ -50,11 +50,11 @@ Breadcrumb.propTypes = {
 	/**
 	 * An array of react elements presumably anchor elements.
 	 */
-	trail: PropTypes.array
+	trail: PropTypes.array,
 };
 
 Breadcrumb.defaultProps = {
-	assistiveText: 'Breadcrumbs'
+	assistiveText: 'Breadcrumbs',
 };
 
 export default Breadcrumb;

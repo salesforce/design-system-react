@@ -24,9 +24,7 @@
         // devDependencies are used
         "import/no-extraneous-dependencies": "off",
         // console is used in examples
-        "no-console": "off",
-        // TODO: This should be removed.
-        "no-unused-vars": "off"
+        "no-console": "off"
       }
     },
     {
@@ -128,15 +126,10 @@
 
     // static class properties/method is still too low of a babel stage
     "class-methods-use-this": "warn",
-    // We are open to changing this to always use a trailing comma,
-    // in order to make re-sorting easier
-    "comma-dangle": [2, "never"],
     // TODO: Should be removed
     "func-names": "off",
     // May consider removing
     "function-paren-newline": "off",
-    // TODO: Should be removed
-    "import/first": "off",
     // currently used in older files, this should be removed
     "no-param-reassign": [
       2,
@@ -144,8 +137,6 @@
         "props": false
       }
     ],
-    // currently used in older files
-    "no-plusplus": "off",
     // Should be removed in the future. `event` is the main global used now.
     "no-restricted-globals": "off",
     // Would prefer all mixed operators as errors, but this conflicts
@@ -172,8 +163,6 @@
     "react/default-props-match-prop-types": "off",
     // TODO: Should be removed
     "react/no-unused-state": "off",
-    // TODO: Should be removed
-    "react/jsx-curly-brace-presence": "off",
     // TODO: Should be removed
     "react/prop-types": "off",
     // TODO: Should be removed

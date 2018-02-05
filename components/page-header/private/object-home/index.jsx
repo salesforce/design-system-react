@@ -30,7 +30,7 @@ const propTypes = {
 	/**
 	 * Title node passed by PageHeader
 	 */
-	title: PropTypes.node
+	title: PropTypes.node,
 };
 
 const ObjectHome = (props) => (

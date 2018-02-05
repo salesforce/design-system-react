@@ -17,7 +17,7 @@ const ModalTrigger = {
 			</Modal>
 		);
 		ReactDOM.render(comp, el);
-	}
+	},
 };
 
 export default ModalTrigger;

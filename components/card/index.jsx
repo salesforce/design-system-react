@@ -28,7 +28,7 @@ const idSuffixes = {
 	body: '__body',
 	headerActions: '__header-actions',
 	heading: '__heading',
-	filter: '__filter-input'
+	filter: '__filter-input',
 };
 
 /**
@@ -81,7 +81,7 @@ const Card = function (props) {
 Card.displayName = CARD;
 
 Card.defaultProps = {
-	heading: 'Related Items'
+	heading: 'Related Items',
 };
 
 // ### Prop Types
@@ -92,7 +92,7 @@ Card.propTypes = {
 	bodyClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * The main section of the card. It often contains a `DataTable` or `Tile`.
@@ -104,7 +104,7 @@ Card.propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Replaces the body (that is the children) with the specified empty state, this will also remove header actions, the filter, and the icon. If the default empty state is wanted, set to `true`.
@@ -141,7 +141,7 @@ Card.propTypes = {
 	/**
 	 * Custom styles to be added to the card.
 	 */
-	style: PropTypes.object
+	style: PropTypes.object,
 };
 
 export default Card;

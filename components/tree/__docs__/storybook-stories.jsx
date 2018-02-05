@@ -23,13 +23,13 @@ const DemoTree = createReactClass({
 		noBranchSelection: PropTypes.bool,
 		searchTerm: PropTypes.string,
 		searchable: PropTypes.bool,
-		singleSelection: PropTypes.bool
+		singleSelection: PropTypes.bool,
 	},
 
 	getDefaultProps () {
 		return {
 			exampleNodesIndex: 'sampleNodesDefault',
-			id: 'example-tree'
+			id: 'example-tree',
 		};
 	},
 
@@ -40,7 +40,7 @@ const DemoTree = createReactClass({
 		return {
 			nodes: initalNodes,
 			selectedNode: undefined,
-			searchTerm: this.props.searchable ? 'fruit' : undefined
+			searchTerm: this.props.searchable ? 'fruit' : undefined,
 		};
 	},
 
@@ -56,7 +56,7 @@ const DemoTree = createReactClass({
 				this.forceUpdate();
 			},
 			500,
-			data.node
+			data.node,
 		);
 		data.node.expanded = data.expand;
 	},
@@ -64,7 +64,7 @@ const DemoTree = createReactClass({
 	handleClick (event, data) {
 		if (this.props.singleSelection) {
 			data.node.selected = data.select;
-			this.setState((prevState) => {
+			this.setState(() => {
 				if (
 					this.state.selectedNode &&
 					this.state.selectedNode.id !== data.node.id
@@ -117,7 +117,7 @@ const DemoTree = createReactClass({
 				/>
 			</div>
 		);
-	}
+	},
 });
 
 storiesOf(TREE, module)
@@ -148,7 +148,7 @@ storiesOf(TREE, module)
 			exampleNodesIndex="sampleNodesWithLargeDataset"
 			listStyle={{
 				height: '300px',
-				overflowY: 'auto'
+				overflowY: 'auto',
 			}}
 		/>
 	))

@@ -1,5 +1,4 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
 import PageHeader from '~/components/page-header'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
@@ -7,8 +6,8 @@ import ButtonGroup from '~/components/button-group';
 import Dropdown from '~/components/menu-dropdown';
 import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
 
-const Example = createReactClass({
-	displayName: 'PageHeaderExample',
+class Example extends React.Component {
+	static displayName = 'PageHeaderExample';
 
 	render () {
 		const navRight = (
@@ -26,7 +25,7 @@ const Example = createReactClass({
 							{ label: 'Menu Item Two', value: 'B0' },
 							{ label: 'Menu Item Three', value: 'C0' },
 							{ type: 'divider' },
-							{ label: 'Menu Item Four', value: 'D0' }
+							{ label: 'Menu Item Four', value: 'D0' },
 						]}
 					/>
 				</ButtonGroup>
@@ -42,7 +41,7 @@ const Example = createReactClass({
 						{ label: 'Menu Item Two', value: 'B0' },
 						{ label: 'Menu Item Three', value: 'C0' },
 						{ type: 'divider' },
-						{ label: 'Menu Item Four', value: 'D0' }
+						{ label: 'Menu Item Four', value: 'D0' },
 					]}
 				>
 					<DropdownTrigger>
@@ -64,7 +63,7 @@ const Example = createReactClass({
 						{ label: 'Menu Item Two', value: 'B0' },
 						{ label: 'Menu Item Three', value: 'C0' },
 						{ type: 'divider' },
-						{ label: 'Menu Item Four', value: 'D0' }
+						{ label: 'Menu Item Four', value: 'D0' },
 					]}
 				>
 					<DropdownTrigger>
@@ -126,7 +125,7 @@ const Example = createReactClass({
 									{ label: 'Menu Item Two', value: 'B0' },
 									{ label: 'Menu Item Three', value: 'C0' },
 									{ type: 'divider' },
-									{ label: 'Menu Item Four', value: 'D0' }
+									{ label: 'Menu Item Four', value: 'D0' },
 								]}
 							>
 								<DropdownTrigger>
@@ -148,6 +147,6 @@ const Example = createReactClass({
 			</IconSettings>
 		);
 	}
-});
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

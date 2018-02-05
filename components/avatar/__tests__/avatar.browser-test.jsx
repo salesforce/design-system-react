@@ -7,13 +7,13 @@ import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import {
 	createMountNode,
-	destroyMountNode
+	destroyMountNode,
 } from '../../../tests/enzyme-helpers';
-
-chai.use(chaiEnzyme());
 
 import SLDSAvatar from '../../avatar';
 import IconSettings from '../../icon-settings';
+
+chai.use(chaiEnzyme());
 
 describe('SLDSAvatar: ', function () {
 	let mountNode;
@@ -31,7 +31,7 @@ describe('SLDSAvatar: ', function () {
 		it('avatar renders with image', () => {
 			const expectedSrc = 'success';
 			wrapper = mount(<SLDSAvatar imgSrc={expectedSrc} />, {
-				attachTo: mountNode
+				attachTo: mountNode,
 			});
 
 			const img = wrapper.find('img');
@@ -44,7 +44,7 @@ describe('SLDSAvatar: ', function () {
 				<IconSettings iconPath="/assets/icons">
 					<SLDSAvatar size="large" />
 				</IconSettings>,
-				{ attachTo: mountNode }
+				{ attachTo: mountNode },
 			);
 
 			const avatar = wrapper.find('.slds-avatar_large');
@@ -57,7 +57,7 @@ describe('SLDSAvatar: ', function () {
 					<IconSettings iconPath="/assets/icons">
 						<SLDSAvatar variant="user" />
 					</IconSettings>,
-					{ attachTo: mountNode }
+					{ attachTo: mountNode },
 				);
 			});
 
@@ -73,7 +73,7 @@ describe('SLDSAvatar: ', function () {
 					<IconSettings iconPath="/assets/icons">
 						<SLDSAvatar variant="entity" />
 					</IconSettings>,
-					{ attachTo: mountNode }
+					{ attachTo: mountNode },
 				);
 			});
 
@@ -98,7 +98,7 @@ describe('SLDSAvatar: ', function () {
 				<IconSettings iconPath="/assets/icons">
 					<SLDSAvatar initials="AW" />
 				</IconSettings>,
-				{ attachTo: mountNode }
+				{ attachTo: mountNode },
 			);
 
 			const abbr = avatar.find('abbr');
@@ -110,7 +110,7 @@ describe('SLDSAvatar: ', function () {
 				<IconSettings iconPath="/assets/icons">
 					<SLDSAvatar label="test" />
 				</IconSettings>,
-				{ attachTo: mountNode }
+				{ attachTo: mountNode },
 			);
 			const abbr = !!avatar.find('abbr');
 			expect(abbr).to.be.true;
@@ -121,7 +121,7 @@ describe('SLDSAvatar: ', function () {
 				<IconSettings iconPath="/assets/icons">
 					<SLDSAvatar label="Jane Doe" />
 				</IconSettings>,
-				{ attachTo: mountNode }
+				{ attachTo: mountNode },
 			);
 			const abbr = avatar.find('abbr');
 			expect(abbr.node.textContent).to.equal('JD');
@@ -132,7 +132,7 @@ describe('SLDSAvatar: ', function () {
 				<IconSettings iconPath="/assets/icons">
 					<SLDSAvatar label="Acme" />
 				</IconSettings>,
-				{ attachTo: mountNode }
+				{ attachTo: mountNode },
 			);
 			const abbr = avatar.find('abbr');
 			expect(abbr.node.textContent).to.equal('Ac');
@@ -143,7 +143,7 @@ describe('SLDSAvatar: ', function () {
 				<IconSettings iconPath="/assets/icons">
 					<SLDSAvatar label="Acme Communications" />
 				</IconSettings>,
-				{ attachTo: mountNode }
+				{ attachTo: mountNode },
 			);
 			const abbr = avatar.find('abbr');
 			expect(abbr.node.textContent).to.equal('AC');
@@ -154,7 +154,7 @@ describe('SLDSAvatar: ', function () {
 				<IconSettings iconPath="/assets/icons">
 					<SLDSAvatar label="Acme Communications Inc." />
 				</IconSettings>,
-				{ attachTo: mountNode }
+				{ attachTo: mountNode },
 			);
 			const abbr = avatar.find('abbr');
 			expect(abbr.node.textContent).to.equal('AI');
@@ -175,7 +175,7 @@ describe('SLDSAvatar: ', function () {
 				<IconSettings iconPath="/assets/icons">
 					<SLDSAvatar variant="entity" assistiveText="entity icon avatar" />
 				</IconSettings>,
-				{ attachTo: mountNode }
+				{ attachTo: mountNode },
 			);
 			const span = avatar.find('.slds-assistive-text');
 			expect(span.node.innerHTML).to.equal('entity icon avatar');
@@ -186,7 +186,7 @@ describe('SLDSAvatar: ', function () {
 				<IconSettings iconPath="/assets/icons">
 					<SLDSAvatar variant="entity" />
 				</IconSettings>,
-				{ attachTo: mountNode }
+				{ attachTo: mountNode },
 			);
 			const span = !!avatar.find('.slds-icon-standard-account').node;
 			expect(span).to.be.true;
@@ -197,7 +197,7 @@ describe('SLDSAvatar: ', function () {
 				<IconSettings iconPath="/assets/icons">
 					<SLDSAvatar variant="user" />
 				</IconSettings>,
-				{ attachTo: mountNode }
+				{ attachTo: mountNode },
 			);
 			const span = !!avatar.find('.slds-icon-standard-user').node;
 			expect(span).to.be.true;

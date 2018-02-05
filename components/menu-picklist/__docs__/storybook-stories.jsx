@@ -19,7 +19,7 @@ const options = [
 	{ label: 'B2 Option', value: 'B1' },
 	{ label: 'C2 Option', value: 'C1' },
 	{ label: 'D2 Option', value: 'D1' },
-	{ label: 'E2 Option Super Super Long', value: 'E1' }
+	{ label: 'E2 Option Super Super Long', value: 'E1' },
 ];
 
 const getPicklist = (props) => (
@@ -34,15 +34,15 @@ const MultipleExample = createReactClass({
 
 	getInitialState () {
 		return {
-			selectedIndexes: new Set()
+			selectedIndexes: new Set(),
 		};
 	},
 
 	handleSelect (selectedItem, data) {
-		this.setState((prevState, props) => ({
+		this.setState((prevState) => ({
 			selectedItems: prevState.selectedIndexes.has(data.optionIndex)
 				? Array.from(prevState.selectedIndexes.delete(data.optionIndex))
-				: Array.from(prevState.selectedIndexes.add(data.optionIndex))
+				: Array.from(prevState.selectedIndexes.add(data.optionIndex)),
 		}));
 	},
 
@@ -55,7 +55,7 @@ const MultipleExample = createReactClass({
 				labels={{
 					multipleOptionsSelected: `${
 						this.state.selectedIndexes.size
-					} Contacts Selected`
+					} Contacts Selected`,
 				}}
 				multiple
 				onSelect={this.handleSelect}
@@ -64,13 +64,13 @@ const MultipleExample = createReactClass({
 					console.log(
 						`data.option.label: '${data.option.label}' data.option.value: '${
 							data.option.value
-						}'`
+						}'`,
 					);
 					this.handleSelect(removedItem, data);
 				}}
 			/>
 		);
-	}
+	},
 });
 
 storiesOf(MENU_PICKLIST, module)
@@ -86,8 +86,8 @@ storiesOf(MENU_PICKLIST, module)
 			onSelect: (...rest) => {
 				action('Selected')(...rest);
 			},
-			options
-		})
+			options,
+		}),
 	)
 	.add('Non-modal', () =>
 		getPicklist({
@@ -100,8 +100,8 @@ storiesOf(MENU_PICKLIST, module)
 			onSelect: (...rest) => {
 				action('Selected')(...rest);
 			},
-			options
-		})
+			options,
+		}),
 	)
 	.add('Error state', () =>
 		getPicklist({
@@ -112,7 +112,7 @@ storiesOf(MENU_PICKLIST, module)
 				action('Selected')(...rest);
 			},
 			options,
-			required: true
-		})
+			required: true,
+		}),
 	)
 	.add('Multiselect', () => <MultipleExample />);

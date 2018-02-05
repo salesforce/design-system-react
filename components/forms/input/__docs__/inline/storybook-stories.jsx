@@ -13,7 +13,7 @@ const DemoInlineEdit = createReactClass({
 
 	getInitialState () {
 		return {
-			value: 'Edit me inline'
+			value: 'Edit me inline',
 		};
 	},
 
@@ -35,7 +35,7 @@ const DemoInlineEdit = createReactClass({
 				onChange={this.handleChange}
 			/>
 		);
-	}
+	},
 });
 
 storiesOf(FORMS_INLINE_EDIT, module)

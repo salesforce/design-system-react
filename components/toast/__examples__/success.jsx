@@ -1,7 +1,6 @@
 import React from 'react';
 import Toast from '~/components/toast'; // `~` is replaced with design-system-react at runtime
 import ToastContainer from '~/components/toast/container'; // `~` is replaced with design-system-react at runtime
-import Icon from '~/components/icon'; // `~` is replaced with design-system-react at runtime
 import IconSettings from '~/components/icon-settings';
 
 class Example extends React.Component {
@@ -16,8 +15,8 @@ class Example extends React.Component {
 								<a key="acme-100" href="javascript:void(0);">
 									ACME - 100
 								</a>,
-								' widgets was created.'
-							]
+								' widgets was created.',
+							],
 						}}
 						variant="success"
 					/>

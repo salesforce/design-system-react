@@ -1,12 +1,11 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import ButtonGroup from '~/components/button-group';
 import ButtonStateful from '~/components/button-stateful';
 import Dropdown from '~/components/menu-dropdown';
 import IconSettings from '~/components/icon-settings';
 
-const Example = createReactClass({
-	displayName: 'ButtonGroupExample',
+class Example extends React.Component {
+	static displayName = 'ButtonGroupExample';
 
 	render () {
 		return (
@@ -37,7 +36,7 @@ const Example = createReactClass({
 						openOn="click"
 						options={[
 							{ label: 'Sort ascending', value: 'A0' },
-							{ label: 'Sort descending', value: 'B0' }
+							{ label: 'Sort descending', value: 'B0' },
 						]}
 						value="A0"
 						variant="icon"
@@ -46,6 +45,6 @@ const Example = createReactClass({
 			</IconSettings>
 		);
 	}
-});
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

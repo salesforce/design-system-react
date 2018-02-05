@@ -5,7 +5,7 @@ export default function truncateByLength ({
 	inputString = '',
 	maxLength = 140,
 	truncationChars = '...',
-	startingLength = 0
+	startingLength = 0,
 }) {
 	let outputString;
 

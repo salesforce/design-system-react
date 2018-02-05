@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 /* eslint-disable jsx-a11y/role-has-required-aria-props */
+/* eslint-disable react/prefer-es6-class */
 
 // # Lookup Component
 
@@ -17,6 +18,7 @@ import PropTypes from 'prop-types';
 import escapeRegExp from 'lodash.escaperegexp';
 import isBoolean from 'lodash.isboolean';
 import isEqual from 'lodash.isequal';
+import classNames from 'classnames';
 
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)
@@ -34,7 +36,6 @@ import EventUtil from '../../utilities/event';
 import KEYS from '../../utilities/key-code';
 
 import Menu from './menu';
-import classNames from 'classnames';
 
 import { LOOKUP } from '../../utilities/constants';
 
@@ -71,7 +72,7 @@ const Lookup = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * If true, constrains the menu to the scroll parent. Has no effect if `isInline` is `true`.
@@ -199,7 +200,7 @@ const Lookup = createReactClass({
 		/**
 		 * Index of current selected item. To clear the selection, pass in -1.
 		 */
-		selectedItem: PropTypes.number
+		selectedItem: PropTypes.number,
 	},
 
 	getDefaultProps () {
@@ -208,7 +209,7 @@ const Lookup = createReactClass({
 			filterWith: defaultFilter,
 			iconPosition: 'right',
 			searchTerm: '',
-			menuPosition: 'absolute'
+			menuPosition: 'absolute',
 		};
 	},
 
@@ -219,7 +220,7 @@ const Lookup = createReactClass({
 			items: [],
 			listLength: this.props.options.length,
 			searchTerm: this.normalizeSearchTerm(this.props.searchTerm),
-			selectedIndex: this.props.selectedItem
+			selectedIndex: this.props.selectedItem,
 		};
 	},
 
@@ -268,7 +269,7 @@ const Lookup = createReactClass({
 	getClassName () {
 		return classNames(this.props.className, 'slds-form-element slds-lookup', {
 			'slds-has-selection': this.isSelected(),
-			'slds-is-open': this.getIsOpen()
+			'slds-is-open': this.getIsOpen(),
 		});
 	},
 
@@ -281,7 +282,7 @@ const Lookup = createReactClass({
 		}
 
 		if (filteredItem && filteredItem.data.type === 'section') {
-			nextFocusIndex++;
+			nextFocusIndex += 1;
 		}
 
 		this.setState({ focusIndex: nextFocusIndex });
@@ -363,11 +364,11 @@ const Lookup = createReactClass({
 		let nextFocusIndex =
 			this.state.focusIndex < numFocusable ? this.state.focusIndex + 1 : 0;
 		const filteredItem = this.menuComponent.getFilteredItemForIndex(
-			nextFocusIndex
+			nextFocusIndex,
 		);
 
 		if (filteredItem && filteredItem.data.type === 'section') {
-			nextFocusIndex++;
+			nextFocusIndex += 1;
 		}
 
 		this.setState({ focusIndex: nextFocusIndex });
@@ -378,7 +379,7 @@ const Lookup = createReactClass({
 		let prevFocusIndex =
 			this.state.focusIndex > 0 ? this.state.focusIndex - 1 : numFocusable;
 		const filteredItem = this.menuComponent.getFilteredItemForIndex(
-			prevFocusIndex
+			prevFocusIndex,
 		);
 
 		if (filteredItem && filteredItem.data.type === 'section') {
@@ -405,7 +406,7 @@ const Lookup = createReactClass({
 			this.setState({
 				isOpen: false,
 				selectedIndex: index,
-				searchTerm: ''
+				searchTerm: '',
 			});
 			const data = this.state.items[index].data;
 			if (this.props.onSelect) {
@@ -420,7 +421,7 @@ const Lookup = createReactClass({
 		}
 		this.setState({
 			selectedIndex: null,
-			isOpen: true
+			isOpen: true,
 		});
 
 		this.focusInput();
@@ -439,7 +440,7 @@ const Lookup = createReactClass({
 		this.setState({
 			isOpen: false,
 			focusIndex: null,
-			currentFocus: null
+			currentFocus: null,
 		});
 	},
 
@@ -578,7 +579,7 @@ const Lookup = createReactClass({
 		const items = itemsToModify.map((item, index) => ({
 			id: `item-${index}`,
 			label: item.label,
-			data: item
+			data: item,
 		}));
 
 		this.setState({ items });
@@ -768,7 +769,7 @@ const Lookup = createReactClass({
 			'slds-form-element__control': true,
 			[`slds-input-has-icon slds-input-has-icon--${
 				this.props.iconPosition
-			}`]: !this.isSelected()
+			}`]: !this.isSelected(),
 		};
 
 		return (
@@ -786,11 +787,11 @@ const Lookup = createReactClass({
 				{isInline ? this.renderInlineMenu() : this.renderSeparateMenu()}
 			</div>
 		);
-	}
+	},
 });
 
 Lookup.contextTypes = {
-	iconPath: PropTypes.string
+	iconPath: PropTypes.string,
 };
 
 export default Lookup;

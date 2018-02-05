@@ -16,8 +16,8 @@ app.use(compression());
 app.use(
 	'/assets',
 	express.static(
-		`${__dirname}/node_modules/@salesforce-ux/design-system/assets/`
-	)
+		`${__dirname}/node_modules/@salesforce-ux/design-system/assets/`,
+	),
 );
 app.use(express.static(`${__dirname}/storybook`));
 

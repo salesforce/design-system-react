@@ -13,18 +13,18 @@ import assign from 'lodash.assign';
  */
 import {
 	createMountNode,
-	destroyMountNode
+	destroyMountNode,
 } from '../../../tests/enzyme-helpers';
 
 // Import your internal dependencies (for example):
 import Combobox from '../../../components/combobox';
 import Icon from '../../../components/icon';
-import filter from '~/components/combobox/filter';
+import filter from '../../../components/combobox/filter';
 import KEYS, { keyObjects } from '../../../utilities/key-code';
 import LETTERKEYS, {
-	keyObjects as letterKeyObjects
+	keyObjects as letterKeyObjects,
 } from '../../../utilities/letter-key-code';
-import IconSettings from '~/components/icon-settings';
+import IconSettings from '../../../components/icon-settings';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme
@@ -36,65 +36,65 @@ const accounts = [
 		id: '1',
 		label: 'Acme',
 		subTitle: 'Account • San Francisco',
-		type: 'account'
+		type: 'account',
 	},
 	{
 		id: '2',
 		label: 'Salesforce.com, Inc.',
 		subTitle: 'Account • San Francisco',
-		type: 'account'
+		type: 'account',
 	},
 	{
 		id: '3',
 		label: "Paddy's Pub",
 		subTitle: 'Account • Boston, MA',
-		type: 'account'
+		type: 'account',
 	},
 	{
 		id: '4',
 		label: 'Tyrell Corp',
 		subTitle: 'Account • San Francisco, CA',
-		type: 'account'
+		type: 'account',
 	},
 	{
 		id: '5',
 		label: 'Paper St. Soap Company',
 		subTitle: 'Account • Beloit, WI',
-		type: 'account'
+		type: 'account',
 	},
 	{
 		id: '6',
 		label: 'Nakatomi Investments',
 		subTitle: 'Account • Chicago, IL',
-		type: 'account'
+		type: 'account',
 	},
 	{ id: '7', label: 'Acme Landscaping', type: 'account' },
 	{
 		id: '8',
 		label: 'Acme Construction',
 		subTitle: 'Account • Grand Marais, MN',
-		type: 'account'
-	}
+		type: 'account',
+	},
 ];
 
 const accountsWithIcon = accounts.map((elem) =>
 	assign(elem, {
-		icon: <Icon assistiveText="Account" category="standard" name={elem.type} />
-	})
+		icon: <Icon assistiveText="Account" category="standard" name={elem.type} />,
+	}),
 );
 
 const defaultProps = {
 	id: 'combobox-unique-id',
 	labels: {
 		label: 'Search',
-		placeholder: 'Search Salesforce'
+		placeholder: 'Search Salesforce',
 	},
-	menuPosition: 'relative'
+	menuPosition: 'relative',
 };
 
 const propTypes = {
 	componentWillUpdate: PropTypes.func,
-	initialSelection: PropTypes.array
+	initialSelection: PropTypes.array,
 };
 
 /* A re-usable demo component fixture outside of `describe` sections
@@ -108,7 +108,7 @@ class DemoComponent extends React.Component {
 
 		this.state = {
 			inputValue: '',
-			selection: this.props.initialSelection || []
+			selection: this.props.initialSelection || [],
 		};
 	}
 
@@ -130,7 +130,7 @@ class DemoComponent extends React.Component {
 							console.log(data);
 							this.setState({
 								inputValue: '',
-								selection: data.selection
+								selection: data.selection,
 							});
 						},
 						onSubmit: (event, { value }) => {
@@ -146,22 +146,22 @@ class DemoComponent extends React.Component {
 												category="standard"
 												name="account"
 											/>
-										)
-									}
-								]
+										),
+									},
+								],
 							});
 						},
 						onSelect: (event, data) => {
 							this.setState({
 								inputValue: '',
-								selection: data.selection
+								selection: data.selection,
 							});
-						}
+						},
 					}}
 					options={filter({
 						inputValue: this.state.inputValue,
 						options: accountsWithIcon,
-						selection: this.state.selection
+						selection: this.state.selection,
 					})}
 					selection={this.state.selection}
 					value={this.state.inputValue}
@@ -182,8 +182,8 @@ const getNodes = ({ wrapper }) => ({
 	menuListbox: wrapper.find('.slds-combobox .slds-listbox.slds-dropdown'),
 	removeSingleItem: wrapper.find('.slds-combobox .slds-input__icon'),
 	selectedListbox: wrapper.find(
-		`#${defaultProps.id}-selected-listbox .slds-listbox`
-	)
+		`#${defaultProps.id}-selected-listbox .slds-listbox`,
+	),
 });
 
 /* All tests for component being tested should be wrapped in a root `describe`,
@@ -215,22 +215,22 @@ describe('SLDSCombobox', function () {
 			wrapper = mount(<DemoComponent multiple />, { attachTo: mountNode });
 			const nodes = getNodes({ wrapper });
 			expect(nodes.combobox.node.getAttribute('aria-haspopup')).to.equal(
-				'listbox'
+				'listbox',
 			);
 			// closed
 			expect(nodes.combobox.node.getAttribute('aria-expanded')).to.equal(
-				'false'
+				'false',
 			);
 			// open
 			nodes.input.simulate('click', {});
 			expect(nodes.combobox.node.getAttribute('aria-expanded')).to.equal(
-				'true'
+				'true',
 			);
 		});
 
 		it('menu filters to second item, menu listbox menu item 2 aria-selected is true, input activedescendent has item 2 id, after pressing down arrow, enter selects item 2', function () {
 			wrapper = mount(<DemoComponent multiple isOpen />, {
-				attachTo: mountNode
+				attachTo: mountNode,
 			});
 			let nodes = getNodes({ wrapper });
 			nodes.input.simulate('focus');
@@ -238,18 +238,18 @@ describe('SLDSCombobox', function () {
 			nodes.input.simulate('keyDown', keyObjects.DOWN);
 			expect(
 				nodes.menuListbox.node.firstChild.firstChild.getAttribute(
-					'aria-selected'
-				)
+					'aria-selected',
+				),
 			).to.equal('true');
 			expect(nodes.input.node.getAttribute('aria-activedescendant')).to.equal(
-				`${defaultProps.id}-listbox-option-2`
+				`${defaultProps.id}-listbox-option-2`,
 			);
 			// select
 			nodes.input.simulate('keyDown', keyObjects.ENTER);
 			nodes = getNodes({ wrapper });
 			expect(nodes.input.node.getAttribute('value')).to.equal('');
 			expect(nodes.selectedListbox.find('.slds-pill__label').text()).to.equal(
-				accounts[1].label
+				accounts[1].label,
 			);
 		});
 
@@ -266,22 +266,22 @@ describe('SLDSCombobox', function () {
 					accountsWithIcon[1],
 					accountsWithIcon[2],
 					accountsWithIcon[3],
-					accountsWithIcon[4]
+					accountsWithIcon[4],
 				],
 				removeThirdInitialItem: [
 					accountsWithIcon[1],
 					accountsWithIcon[3],
-					accountsWithIcon[4]
+					accountsWithIcon[4],
 				],
 				removesLastAndInitialFifthPill: [
 					accountsWithIcon[1],
-					accountsWithIcon[3]
+					accountsWithIcon[3],
 				],
 				removeInitalSecondAndFourthPill: [accountsWithIcon[3]],
-				allPillsRemoved: []
+				allPillsRemoved: [],
 			};
 			const selectionIndexedStates = Object.keys(selectionKeyedStates).map(
-				(key, index) => selectionKeyedStates[key]
+				(key, index) => selectionKeyedStates[key],
 			);
 
 			let counter = 0;
@@ -289,68 +289,68 @@ describe('SLDSCombobox', function () {
 				<DemoComponent
 					componentWillUpdate={(prevState) => {
 						expect(prevState.selection).to.have.members(
-							selectionIndexedStates[counter]
+							selectionIndexedStates[counter],
 						);
 						if (counter === 4) {
 							done();
 						}
-						counter++;
+						counter += 1;
 					}}
 					initialSelection={[
 						accounts[0],
 						accounts[1],
 						accounts[2],
 						accounts[3],
-						accounts[4]
+						accounts[4],
 					]}
 					multiple
 				/>,
-				{ attachTo: mountNode }
+				{ attachTo: mountNode },
 			);
 			const nodes = getNodes({ wrapper });
 			nodes.input.simulate('focus');
 			nodes.input.simulate('keyDown', keyObjects.TAB);
 			getSelectedListboxPills({ nodes, index: 0 }).simulate(
 				'keyDown',
-				keyObjects.DELETE
+				keyObjects.DELETE,
 			);
 			expect(getFocusedPillLabel()).to.equal(accountsWithIcon[1].label);
 			getSelectedListboxPills({ nodes, index: 0 }).simulate(
 				'keyDown',
-				keyObjects.RIGHT
+				keyObjects.RIGHT,
 			);
 			expect(getFocusedPillLabel()).to.equal(accountsWithIcon[2].label);
 			getSelectedListboxPills({ nodes, index: 1 }).simulate(
 				'keyDown',
-				keyObjects.DELETE
+				keyObjects.DELETE,
 			);
 			expect(getFocusedPillLabel()).to.equal(accountsWithIcon[3].label);
 			getSelectedListboxPills({ nodes, index: 1 }).simulate(
 				'keyDown',
-				keyObjects.LEFT
+				keyObjects.LEFT,
 			);
 			getSelectedListboxPills({ nodes, index: 0 }).simulate(
 				'keyDown',
-				keyObjects.LEFT
+				keyObjects.LEFT,
 			);
 			expect(getFocusedPillLabel()).to.equal(accountsWithIcon[4].label);
 			getSelectedListboxPills({ nodes, index: 2 }).simulate(
 				'keyDown',
-				keyObjects.DELETE
+				keyObjects.DELETE,
 			);
 			expect(getFocusedPillLabel()).to.equal(accountsWithIcon[3].label);
 			getSelectedListboxPills({ nodes, index: 1 }).simulate(
 				'keyDown',
-				keyObjects.RIGHT
+				keyObjects.RIGHT,
 			);
 			expect(getFocusedPillLabel()).to.equal(accountsWithIcon[1].label);
 			getSelectedListboxPills({ nodes, index: 0 }).simulate(
 				'keyDown',
-				keyObjects.DELETE
+				keyObjects.DELETE,
 			);
 			getSelectedListboxPills({ nodes, index: 0 }).simulate(
 				'keydown',
-				keyObjects.DELETE
+				keyObjects.DELETE,
 			);
 		});
 	});
@@ -366,7 +366,7 @@ describe('SLDSCombobox', function () {
 
 		it('Limit to pre-defined choices', function () {
 			wrapper = mount(<DemoComponent multiple predefinedOptionsOnly />, {
-				attachTo: mountNode
+				attachTo: mountNode,
 			});
 			let nodes = getNodes({ wrapper });
 			nodes.input.simulate('focus');
@@ -378,7 +378,7 @@ describe('SLDSCombobox', function () {
 
 		it('Inline Single Selection Remove selection', function () {
 			wrapper = mount(<DemoComponent variant="inline-listbox" />, {
-				attachTo: mountNode
+				attachTo: mountNode,
 			});
 			let nodes = getNodes({ wrapper });
 
@@ -415,7 +415,7 @@ describe('SLDSCombobox', function () {
 			expect(
 				nodes.menuListbox
 					.find('.slds-listbox__item.slds-listbox__status')
-					.text()
+					.text(),
 			).to.equal('No matches found.');
 		});
 	});

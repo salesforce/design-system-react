@@ -5,9 +5,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import Icon from '../../icon';
 import EventUtil from '../../../utilities/event';
-import cx from 'classnames';
 
 const displayName = 'Lookup-Menu-Item';
 const propTypes = {
@@ -22,7 +22,7 @@ const propTypes = {
 	listItemLabelRenderer: PropTypes.func,
 	onSelect: PropTypes.func,
 	searchTerm: PropTypes.string,
-	setFocus: PropTypes.func
+	setFocus: PropTypes.func,
 };
 
 class Item extends React.Component {
@@ -73,7 +73,7 @@ class Item extends React.Component {
 			);
 		} else {
 			const labelClassName = cx('slds-lookup__result-text', {
-				'slds-m-left--x-small': !this.props.iconName
+				'slds-m-left--x-small': !this.props.iconName,
 			});
 
 			label = (

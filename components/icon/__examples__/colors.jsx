@@ -3,10 +3,10 @@ import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
 import Icon from '~/components/icon'; // `~` is replaced with design-system-react at runtime
 
-const Example = createReactClass({
-	displayName: 'IconExample',
+class Example extends React.Component {
+    static displayName = 'IconExample';
 
-	render () {
+    render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div className="slds-grid slds-grid--pull-padded slds-grid--vertical-align-center">
@@ -46,6 +46,6 @@ const Example = createReactClass({
 			</IconSettings>
 		);
 	}
-});
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

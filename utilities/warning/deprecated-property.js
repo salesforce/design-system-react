@@ -19,7 +19,7 @@ if (process.env.NODE_ENV !== 'production') {
 			/* eslint-disable max-len */
 			warning(
 				propValue === undefined,
-				`[Design System React] \`${oldProp}\` will be removed in the next major version of ${control}.${newPropertySentence}${additionalComment}`
+				`[Design System React] \`${oldProp}\` will be removed in the next major version of ${control}.${newPropertySentence}${additionalComment}`,
 			);
 			/* eslint-enable max-len */
 			hasWarned[control + oldProp] = propValue !== undefined;

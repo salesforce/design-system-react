@@ -11,35 +11,35 @@ import CustomClassNames from '../__examples__/custom-class-name';
 testDOMandHTML({
 	name: 'Toast Info',
 	test,
-	Component: Info
+	Component: Info,
 });
 
 testDOMandHTML({
 	name: 'Toast Warning',
 	test,
-	Component: Warning
+	Component: Warning,
 });
 
 testDOMandHTML({
 	name: 'Toast Error',
 	test,
-	Component: ErrorAlert
+	Component: ErrorAlert,
 });
 
 testDOMandHTML({
 	name: 'Toast Error With details',
 	test,
-	Component: ErrorWithDetailsAlert
+	Component: ErrorWithDetailsAlert,
 });
 
 testDOMandHTML({
 	name: 'Toast Success',
 	test,
-	Component: Success
+	Component: Success,
 });
 
 testDOMandHTML({
 	name: 'Toast Custom Class Name',
 	test,
-	Component: CustomClassNames
+	Component: CustomClassNames,
 });

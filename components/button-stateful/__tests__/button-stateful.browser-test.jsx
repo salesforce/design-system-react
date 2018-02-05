@@ -16,7 +16,7 @@ describe('Button Stateful: ', () => {
 		assistiveText: 'like',
 		iconName: 'like',
 		iconSize: 'large',
-		variant: 'icon'
+		variant: 'icon',
 	};
 
 	// Setup and takedown
@@ -26,7 +26,7 @@ describe('Button Stateful: ', () => {
 			document.body.appendChild(this.dom);
 			this.component = ReactDOM.render(
 				<IconSettings iconPath="/assets/icons">{instance}</IconSettings>,
-				this.dom
+				this.dom,
 			);
 		};
 	function removeButton () {

@@ -90,7 +90,7 @@ const propTypes = {
 	children: PropTypes.oneOfType([
 		PropTypes.arrayOf(PropTypes.node),
 		PropTypes.node,
-		PropTypes.element
+		PropTypes.element,
 	]).isRequired,
 
 	/**
@@ -99,7 +99,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 
 	/**
@@ -120,11 +120,11 @@ const propTypes = {
 	/**
 	 * The Tab (and corresponding TabPanel) that is currently selected.
 	 */
-	selectedIndex: PropTypes.number
+	selectedIndex: PropTypes.number,
 };
 const defaultProps = {
 	defaultSelectedIndex: 0,
-	variant: 'default'
+	variant: 'default',
 };
 
 class Tabs extends React.Component {
@@ -138,7 +138,7 @@ class Tabs extends React.Component {
 		this.generatedId = shortid.generate();
 		this.flavor = this.getVariant();
 		this.setState({
-			selectedIndex: this.props.defaultSelectedIndex
+			selectedIndex: this.props.defaultSelectedIndex,
 		});
 	}
 
@@ -146,6 +146,7 @@ class Tabs extends React.Component {
 		const count = this.getTabsCount();
 
 		// Look for non-disabled tab from index to the last tab on the right
+		// eslint-disable-next-line no-plusplus
 		for (let i = index + 1; i < count; i++) {
 			const tab = this.getTab(i);
 			if (!isTabDisabled(tab)) {
@@ -154,6 +155,7 @@ class Tabs extends React.Component {
 		}
 
 		// If no tab found, continue searching from first on left to index
+		// eslint-disable-next-line no-plusplus
 		for (let i = 0; i < index; i++) {
 			const tab = this.getTab(i);
 			if (!isTabDisabled(tab)) {
@@ -173,6 +175,7 @@ class Tabs extends React.Component {
 		let i = index;
 
 		// Look for non-disabled tab from index to first tab on the left
+		// eslint-disable-next-line no-plusplus
 		while (i--) {
 			const tab = this.getTab(i);
 			if (!isTabDisabled(tab)) {
@@ -182,6 +185,7 @@ class Tabs extends React.Component {
 
 		// If no tab found, continue searching from last tab on right to index
 		i = this.getTabsCount();
+		// eslint-disable-next-line no-plusplus
 		while (i-- > index) {
 			const tab = this.getTab(i);
 			if (!isTabDisabled(tab)) {
@@ -369,7 +373,7 @@ class Tabs extends React.Component {
 		const {
 			className,
 			id = this.generatedId,
-			variant = this.getVariant
+			variant = this.getVariant,
 		} = this.props;
 
 		if (this.state.focus) {
@@ -385,9 +389,9 @@ class Tabs extends React.Component {
 				className={classNames(
 					{
 						'slds-tabs--default': variant === 'default',
-						'slds-tabs--scoped': variant === 'scoped'
+						'slds-tabs--scoped': variant === 'scoped',
 					},
-					className
+					className,
 				)}
 				onClick={this.handleClick}
 				onKeyDown={this.handleKeyDown}

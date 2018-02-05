@@ -20,7 +20,7 @@ storiesOf(BUTTON, module)
 	.add('Base', () => getButton({ label: 'Base', variant: 'base' }))
 	.add('Neutral', () => getButton({ label: 'Neutral' }))
 	.add('Neutral with id', () =>
-		getButton({ label: 'Neutral', id: 'custom-id' })
+		getButton({ label: 'Neutral', id: 'custom-id' }),
 	)
 	.add('Neutral Icon', () =>
 		getButton({
@@ -28,8 +28,8 @@ storiesOf(BUTTON, module)
 			iconName: 'download',
 			iconPosition: 'left',
 			onFocus: action('focus'),
-			onKeyDown: action('keyDown')
-		})
+			onKeyDown: action('keyDown'),
+		}),
 	)
 	.add('Disabled', () => getButton({ label: 'Disabled', disabled: true }))
 	.add('Icon large', () =>
@@ -37,16 +37,16 @@ storiesOf(BUTTON, module)
 			assistiveText: 'Icon',
 			iconSize: 'large',
 			iconName: 'answer',
-			title: 'chat'
-		})
+			title: 'chat',
+		}),
 	)
 	.add('Icon with external path', () =>
 		getIconButton({
 			assistiveText: 'Icon',
 			iconSize: 'large',
 			iconPath: '/assets/icons/utility-sprite/svg/symbols.svg#announcement',
-			title: 'announcement'
-		})
+			title: 'announcement',
+		}),
 	)
 	.addDecorator((getStory) => (
 		<div
@@ -62,8 +62,8 @@ storiesOf(BUTTON, module)
 			iconName: 'settings',
 			iconSize: 'large',
 			iconVariant: 'border',
-			inverse: true
-		})
+			inverse: true,
+		}),
 	)
 	.add('Dropdown Icon inverse', () =>
 		getIconButton({
@@ -71,8 +71,8 @@ storiesOf(BUTTON, module)
 			assistiveText: 'Dropdown Icon inverse',
 			iconName: 'settings',
 			iconVariant: 'more',
-			inverse: true
-		})
+			inverse: true,
+		}),
 	)
 	.addDecorator((getStory) => (
 		<div className="slds-hint-parent" style={{ backgroundColor: '#16325c' }}>
@@ -86,6 +86,6 @@ storiesOf(BUTTON, module)
 			iconVariant: 'border',
 			iconSize: 'small',
 			hint: true,
-			inverse: true
-		})
+			inverse: true,
+		}),
 	);

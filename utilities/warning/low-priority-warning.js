@@ -8,10 +8,11 @@ let lowPriorityWarning = function () {};
 if (process.env.NODE_ENV !== 'production') {
 	const printWarning = function (originalMessage, ...args) {
 		let argIndex = 0;
-		const message = `Warning: ${originalMessage.replace(
-			/%s/g,
-			() => args[argIndex++]
-		)}`;
+		const message = `Warning: ${originalMessage.replace(/%s/g, () => {
+			const argument = args[argIndex];
+			argIndex += 1;
+			return argument;
+		})}`;
 		if (typeof console !== 'undefined') {
 			console.warn(message); // eslint-disable-line no-console
 		}

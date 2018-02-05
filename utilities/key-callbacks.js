@@ -10,7 +10,7 @@ import EventUtil from './event';
  */
 const mapKeyEventCallbacks = (
 	event,
-	{ callbacks = {}, shiftCallbacks = {}, stopPropagation = true }
+	{ callbacks = {}, shiftCallbacks = {}, stopPropagation = true },
 ) => {
 	if (event.shiftKey && event.keyCode && shiftCallbacks[event.keyCode]) {
 		if (stopPropagation) {
@@ -18,7 +18,7 @@ const mapKeyEventCallbacks = (
 		}
 		shiftCallbacks[event.keyCode].callback(
 			event,
-			shiftCallbacks[event.keyCode].data
+			shiftCallbacks[event.keyCode].data,
 		);
 	} else if (event.keyCode && callbacks[event.keyCode]) {
 		if (stopPropagation) {

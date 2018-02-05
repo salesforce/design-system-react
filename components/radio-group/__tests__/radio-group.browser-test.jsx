@@ -12,7 +12,7 @@ import { shape } from 'airbnb-prop-types';
  */
 import {
 	createMountNode,
-	destroyMountNode
+	destroyMountNode,
 } from '../../../tests/enzyme-helpers';
 
 import RadioGroup from '../../radio-group';
@@ -54,14 +54,14 @@ class RadioGroupExample extends React.Component {
 RadioGroupExample.propTypes = {
 	labels: shape({
 		error: PropTypes.string,
-		label: PropTypes.string
+		label: PropTypes.string,
 	}),
 	disabled: PropTypes.bool,
-	required: PropTypes.bool
+	required: PropTypes.bool,
 };
 
 RadioGroupExample.defaultProps = {
-	labels: { label: 'Radio Group Label' }
+	labels: { label: 'Radio Group Label' },
 };
 
 /* RadioGroup rendering tests
@@ -82,13 +82,14 @@ describe('RadioGroup', function () {
 		wrapper = mount(<RadioGroupExample />, { attachTo: mountNode });
 		const radios = wrapper.find(Radio);
 		expect(radios).to.have.lengthOf(2, 'there are 2 radio inputs');
-		for (let index = 0; index < radios.length; index++) {
+		radios.forEach((radioWrapper, index) => {
 			const radio = radios.get(index);
 			expect(radio.props.checked).to.equal(
 				radio.props.label === 'Radio Label One',
-				'the second radio input is checked'
+				'the second radio input is checked',
 			);
-		}
+		});
+
 		const legend = wrapper.find('legend');
 		expect(legend.text()).to.equal('Radio Group Label', 'there is a label');
 	});
@@ -96,10 +97,10 @@ describe('RadioGroup', function () {
 	it('renders a disabled state', () => {
 		wrapper = mount(<RadioGroupExample disabled />, { attachTo: mountNode });
 		const radios = wrapper.find(Radio);
-		for (let index = 0; index < radios.length; index++) {
+		radios.forEach((radioWrapper, index) => {
 			const radio = radios.get(index);
 			expect(radio.props.disabled, 'all radio inputs are disabled').to.be.true;
-		}
+		});
 	});
 
 	it('renders a required indicator', () => {
@@ -115,7 +116,7 @@ describe('RadioGroup', function () {
 		radio.simulate('change', { event: { target: 'Radio Label Two' } });
 		expect(
 			radio.props().checked,
-			'radio button changes from unchecked to checked'
+			'radio button changes from unchecked to checked',
 		).to.be.true;
 	});
 });

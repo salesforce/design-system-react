@@ -27,7 +27,7 @@ const EventUtil = {
 		}
 
 		EventUtil.trap(event);
-	}
+	},
 };
 
 export default EventUtil;

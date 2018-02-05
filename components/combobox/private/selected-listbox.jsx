@@ -4,12 +4,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Pill from '../../utilities/pill';
-
 import classNames from 'classnames';
 import isEqual from 'lodash.isequal';
-
 import { shape } from 'airbnb-prop-types';
+
+import Pill from '../../utilities/pill';
 
 const propTypes = {
 	/*
@@ -28,7 +27,7 @@ const propTypes = {
 	 */
 	assistiveText: shape({
 		label: PropTypes.string,
-		removePill: PropTypes.string
+		removePill: PropTypes.string,
 	}),
 	/*
 	 * Callback called when pill is clicked, delete is pressed, or backspace is pressed.
@@ -38,7 +37,7 @@ const propTypes = {
 		onRequestFocus: PropTypes.func.isRequired,
 		onRequestFocusOnNextPill: PropTypes.func.isRequired,
 		onRequestFocusOnPreviousPill: PropTypes.func.isRequired,
-		onRequestRemove: PropTypes.func.isRequired
+		onRequestRemove: PropTypes.func.isRequired,
 	}),
 	/**
 	 * HTML id for Combobox
@@ -54,7 +53,7 @@ const propTypes = {
 	labels: shape({
 		label: PropTypes.string,
 		remove: PropTypes.string,
-		title: PropTypes.string
+		title: PropTypes.string,
 	}),
 	/**
 	 * Changes styles of the input. Currently `entity` is not supported.
@@ -71,11 +70,11 @@ const propTypes = {
 	/**
 	 * Changes styles of the input. Currently `entity` is not supported.
 	 */
-	variant: PropTypes.oneOf(['base', 'inline-listbox', 'readonly'])
+	variant: PropTypes.oneOf(['base', 'inline-listbox', 'readonly']),
 };
 
 const defaultProps = {
-	renderAtSelectionLength: 1
+	renderAtSelectionLength: 1,
 };
 
 const SelectedListBox = (props) =>
@@ -89,7 +88,7 @@ const SelectedListBox = (props) =>
 				className={classNames('slds-listbox', {
 					'slds-listbox--inline': props.isInline,
 					'slds-listbox_horizontal': !props.isInline,
-					'slds-p-top_xxx-small': !props.isInline
+					'slds-p-top_xxx-small': !props.isInline,
 				})}
 				role="group"
 				aria-label={props.assistiveText.selectedListboxLabel}
@@ -107,7 +106,7 @@ const SelectedListBox = (props) =>
 						setActiveBasedOnstateFromParent || listboxRenderedForFirstTime;
 					const icon = option.icon
 						? React.cloneElement(option.icon, {
-							containerClassName: 'slds-pill__icon_container'
+							containerClassName: 'slds-pill__icon_container',
 						})
 						: null;
 
@@ -120,14 +119,14 @@ const SelectedListBox = (props) =>
 							<Pill
 								active={active}
 								assistiveText={{
-									remove: props.assistiveText.removePill
+									remove: props.assistiveText.removePill,
 								}}
 								events={{
 									onBlur: props.events.onBlurPill,
 									onClick: (event, data) => {
 										props.events.onClickPill(event, {
 											...data,
-											index: renderIndex
+											index: renderIndex,
 										});
 									},
 									onRequestFocusOnNextPill:
@@ -137,16 +136,16 @@ const SelectedListBox = (props) =>
 									onRequestRemove: (event, data) => {
 										props.events.onRequestRemove(event, {
 											...data,
-											index: renderIndex
+											index: renderIndex,
 										});
 									},
-									onRequestFocus: props.events.onRequestFocus
+									onRequestFocus: props.events.onRequestFocus,
 								}}
 								eventData={{ option }}
 								icon={icon}
 								labels={{
 									label: option.label,
-									removeTitle: props.labels.removePillTitle
+									removeTitle: props.labels.removePillTitle,
 								}}
 								requestFocus={props.listboxHasFocus}
 								tabIndex={active ? 0 : -1}

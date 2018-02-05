@@ -7,7 +7,6 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### assign
@@ -25,13 +24,13 @@ import isBoolean from 'lodash.isboolean';
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
-// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
-import checkProps from './check-props';
-
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
+
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
 
 import Button from '../button';
 
@@ -70,19 +69,19 @@ const PopoverNubbinPositions = [
 	'top right',
 	'bottom left',
 	'bottom',
-	'bottom right'
+	'bottom right',
 ];
 
 /**
  * The Popover component is a non-modal dialog. It should be paired with a clickable trigger such as a `Button`. It traps focus from the page and must be exited if focus needs to be outside the Popover. Use a `Tooltip` if there are no call to actions within the dialog. A `Tooltip` does not need to be clicked. Multiple popovers open at the same time, each with focus trap is not supported.
  */
-const Popover = createReactClass({
+class Popover extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: POPOVER,
+	static displayName = POPOVER;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Aligns the popover with the respective side of the trigger. That is `top` will place the `Popover` above the trigger.
 		 */
@@ -94,7 +93,7 @@ const Popover = createReactClass({
 			'bottom',
 			'bottom left',
 			'bottom right',
-			'left'
+			'left',
 		]),
 		/**
 		 * HTML `id` of heading for popover. Only use if your header is within your popover body.
@@ -114,7 +113,7 @@ const Popover = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/*
 		 * All popovers require a close button.
@@ -180,7 +179,7 @@ const Popover = createReactClass({
 		position: PropTypes.oneOf([
 			'absolute',
 			'overflowBoundaryElement',
-			'relative'
+			'relative',
 		]),
 		/**
 		 * An object of CSS styles that are applied to the `slds-popover` DOM element.
@@ -196,31 +195,27 @@ const Popover = createReactClass({
 		triggerClassName: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
-		])
-	},
+			PropTypes.string,
+		]),
+	};
 
-	getDefaultProps () {
-		return {
-			align: 'right',
-			closeButtonAssistiveText: 'Close dialog',
-			hoverCloseDelay: 300,
-			openOn: 'click',
-			position: 'absolute'
-		};
-	},
+	static defaultProps = {
+		align: 'right',
+		closeButtonAssistiveText: 'Close dialog',
+		hoverCloseDelay: 300,
+		openOn: 'click',
+		position: 'absolute',
+	};
 
-	getInitialState () {
-		return {
-			isOpen: false
-		};
-	},
+	state = {
+		isOpen: false,
+	};
 
 	componentWillMount () {
 		this.generatedId = shortid.generate();
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(POPOVER, this.props);
-	},
+	}
 
 	componentWillUnmount () {
 		if (currentOpenPopover === this) {
@@ -228,29 +223,23 @@ const Popover = createReactClass({
 		}
 		this.isUnmounting = true;
 		this.renderOverlay(false);
-	},
+	}
 
-	getId () {
-		return this.props.id || this.generatedId;
-	},
+	getId = () => this.props.id || this.generatedId;
 
-	getIsOpen () {
-		return (
-			!this.props.disabled &&
-			!!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen)
-		);
-	},
+	getIsOpen = () =>
+		!this.props.disabled &&
+		!!(isBoolean(this.props.isOpen) ? this.props.isOpen : this.state.isOpen);
 
-	getMenu () {
+	getMenu = () =>
 		// needed by keyboard navigation
-		return this.dialog;
-	},
+		this.dialog;
 
-	setMenuRef (component) {
+	setMenuRef = (component) => {
 		this.dialog = component;
-	},
+	};
 
-	setContainerRef (component) {
+	setContainerRef = (component) => {
 		this.trigger = component;
 		// yes, this is a re-render triggered by a render.
 		// Dialog/Popper.js cannot place the popover until
@@ -260,9 +249,9 @@ const Popover = createReactClass({
 		if (!this.state.inputRendered) {
 			this.setState({ inputRendered: true });
 		}
-	},
+	};
 
-	handleDialogClose (event, data) {
+	handleDialogClose = (event, data) => {
 		const componentWillUnmount = (data && data.componentWillUnmount) || false;
 
 		if (currentOpenPopover === this) {
@@ -273,12 +262,12 @@ const Popover = createReactClass({
 			this.props.onClose(event, {
 				// Breaking change: component object reference has been
 				// removed (`this`), due to endless loop creation.
-				componentWillUnmount
+				componentWillUnmount,
 			});
 		}
-	},
+	};
 
-	handleClose (event, data) {
+	handleClose = (event, data) => {
 		const isOpen = this.getIsOpen();
 
 		if (isOpen) {
@@ -292,36 +281,36 @@ const Popover = createReactClass({
 			}
 
 			this.setState({
-				isOpen: false
+				isOpen: false,
 			});
 
 			this.isHover = false;
 		}
-	},
+	};
 
-	handleOpen () {
+	handleOpen = () => {
 		const isOpen = this.getIsOpen();
 
 		if (!isOpen) {
 			if (currentOpenPopover && isFunction(currentOpenPopover.handleClose)) {
 				currentOpenPopover.handleClose(undefined, {
 					trigger: 'newPopover',
-					id: currentOpenPopover.getId()
+					id: currentOpenPopover.getId(),
 				});
 			}
 
 			currentOpenPopover = this;
 
 			this.setState({
-				isOpen: true
+				isOpen: true,
 			});
 		}
-	},
+	};
 
 	/* props.openOn is not a part of prop-types because it is not a supported feature, but may be needed for backwards compatibility with non-accessible dropdown/popover hybrids. */
 
 	/* eslint-disable react/prop-types */
-	handleMouseEnter (event) {
+	handleMouseEnter = (event) => {
 		const isOpen = this.getIsOpen();
 
 		this.isHover = true;
@@ -336,9 +325,9 @@ const Popover = createReactClass({
 		if (this.props.onMouseEnter) {
 			this.props.onMouseEnter(event);
 		}
-	},
+	};
 
-	handleMouseLeave (event) {
+	handleMouseLeave = (event) => {
 		const isOpen = this.getIsOpen();
 
 		if (isOpen) {
@@ -350,10 +339,11 @@ const Popover = createReactClass({
 		if (this.props.onMouseLeave) {
 			this.props.onMouseLeave(event);
 		}
-	},
+	};
+
 	/* eslint-enable react/prop-types */
 
-	handleClick (event, { triggerOnClickCallback }) {
+	handleClick = (event, { triggerOnClickCallback }) => {
 		const isOpen = this.getIsOpen();
 
 		if (!isOpen) {
@@ -369,9 +359,9 @@ const Popover = createReactClass({
 		if (triggerOnClickCallback) {
 			triggerOnClickCallback(event);
 		}
-	},
+	};
 
-	handleFocus (event) {
+	handleFocus = (event) => {
 		const isOpen = this.getIsOpen();
 
 		if (!isOpen) {
@@ -381,9 +371,9 @@ const Popover = createReactClass({
 		if (this.props.onFocus) {
 			this.props.onFocus(event);
 		}
-	},
+	};
 
-	handleKeyDown (event) {
+	handleKeyDown = (event) => {
 		if (event.keyCode) {
 			if (event.keyCode !== KEYS.TAB) {
 				const isOpen = this.getIsOpen();
@@ -396,33 +386,33 @@ const Popover = createReactClass({
 					keyCode: event.keyCode,
 					targetTarget: event.target,
 					toggleOpen: this.toggleOpenFromKeyboard,
-					trigger: this.trigger
+					trigger: this.trigger,
 				});
 			}
 			if (this.props.onKeyDown) {
 				this.props.onKeyDown(event);
 			}
 		}
-	},
+	};
 
-	handleCancel (event) {
+	handleCancel = (event) => {
 		this.handleClose(event, { trigger: 'cancel' });
-	},
+	};
 
-	handleClickOutside (event) {
+	handleClickOutside = (event) => {
 		this.handleClose(event, { trigger: 'clickOutside' });
-	},
+	};
 
-	toggleOpenFromKeyboard (event) {
+	toggleOpenFromKeyboard = (event) => {
 		const isOpen = this.getIsOpen();
 		if (isOpen) {
 			this.handleCancel(event);
 		} else {
 			this.handleOpen();
 		}
-	},
+	};
 
-	renderDialog (isOpen, outsideClickIgnoreClass) {
+	renderDialog = (isOpen, outsideClickIgnoreClass) => {
 		const props = this.props;
 		const offset = props.offset;
 		const style = this.props.style || {};
@@ -432,7 +422,7 @@ const Popover = createReactClass({
 				align={props.align}
 				contentsClassName={classNames(
 					this.props.contentsClassName,
-					'ignore-react-onclickoutside'
+					'ignore-react-onclickoutside',
 				)}
 				context={this.context}
 				hasStaticAlignment={props.hasStaticAlignment}
@@ -450,7 +440,7 @@ const Popover = createReactClass({
 					marginBottom: getMargin.bottom(props.align),
 					marginLeft: getMargin.left(props.align),
 					marginRight: getMargin.right(props.align),
-					marginTop: getMargin.top(props.align)
+					marginTop: getMargin.top(props.align),
 				}}
 				variant="popover"
 			>
@@ -464,7 +454,7 @@ const Popover = createReactClass({
 					className={classNames(
 						'slds-popover',
 						getNubbinClassName(props.align),
-						props.className
+						props.className,
 					)}
 					id={`${this.getId()}-popover`}
 					role="dialog"
@@ -504,9 +494,9 @@ const Popover = createReactClass({
 				</div>
 			</Dialog>
 		) : null;
-	},
+	};
 
-	renderOverlay (isOpen) {
+	renderOverlay = (isOpen) => {
 		if (isFunction(overlay) && documentDefined) {
 			overlay(isOpen, overlay);
 		} else if (
@@ -521,7 +511,7 @@ const Popover = createReactClass({
 			this.overlay.parentNode.removeChild(this.overlay);
 			this.overlay = undefined;
 		}
-	},
+	};
 
 	render () {
 		const outsideClickIgnoreClass = `ignore-click-${this.getId()}`;
@@ -533,7 +523,7 @@ const Popover = createReactClass({
 						this.props.openOn === 'click' || this.props.openOn === 'hybrid'
 							? (event) => {
 								this.handleClick(event, {
-									triggerOnClickCallback: this.props.children.props.onClick
+									triggerOnClickCallback: this.props.children.props.onClick,
 								});
 							}
 							: this.children.props.onClick,
@@ -548,7 +538,7 @@ const Popover = createReactClass({
 							? this.handleMouseLeave
 							: null,
 				tabIndex: this.props.children.props.tabIndex || '0',
-				...this.props.children.props
+				...this.props.children.props,
 			})
 			: null;
 
@@ -566,10 +556,10 @@ const Popover = createReactClass({
 			</div>
 		);
 	}
-});
+}
 
 Popover.contextTypes = {
-	iconPath: PropTypes.string
+	iconPath: PropTypes.string,
 };
 
 export default Popover;

@@ -17,7 +17,7 @@ if (process.env.NODE_ENV !== 'production') {
 			/* eslint-disable max-len */
 			warning(
 				!propValue,
-				`[Design System React] \`${oldProp}\` has reached End-of-Life and has been removed from the API of ${control}. Please update your API.${additionalComment}`
+				`[Design System React] \`${oldProp}\` has reached End-of-Life and has been removed from the API of ${control}. Please update your API.${additionalComment}`,
 			);
 			/* eslint-enable max-len */
 			hasWarned[control + oldProp] = !!propValue;

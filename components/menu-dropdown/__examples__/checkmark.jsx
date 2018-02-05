@@ -1,10 +1,9 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
 import Dropdown from '~/components/menu-dropdown'; // `~` is replaced with design-system-react at runtime
 
-const Example = createReactClass({
-	displayName: 'MediaObjectExample',
+class Example extends React.Component {
+	static displayName = 'MediaObjectExample';
 
 	render () {
 		return (
@@ -23,7 +22,7 @@ const Example = createReactClass({
 							options={[
 								{ label: 'Menu Item One', value: 'A0' },
 								{ label: 'Menu Item Two', value: 'B0' },
-								{ label: 'Menu Item Three', value: 'C0' }
+								{ label: 'Menu Item Three', value: 'C0' },
 							]}
 							value="A0"
 						/>
@@ -46,25 +45,25 @@ const Example = createReactClass({
 									value: 'A0',
 									rightIcon: {
 										category: 'utility',
-										name: 'table'
-									}
+										name: 'table',
+									},
 								},
 								{
 									label: 'Kanban Board',
 									value: 'A0',
 									rightIcon: {
 										category: 'utility',
-										name: 'kanban'
-									}
+										name: 'kanban',
+									},
 								},
 								{
 									label: 'List View',
 									value: 'A0',
 									rightIcon: {
 										category: 'utility',
-										name: 'side_list'
-									}
-								}
+										name: 'side_list',
+									},
+								},
 							]}
 							value="A0"
 						/>
@@ -73,6 +72,6 @@ const Example = createReactClass({
 			</IconSettings>
 		);
 	}
-});
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

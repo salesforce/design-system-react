@@ -5,13 +5,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { shape } from 'airbnb-prop-types';
 
-import ProgressBar from './progress-bar';
-
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, 'a simple javascript utility for conditionally
 // joining classNames together.'
 import classNames from 'classnames';
+
+import ProgressBar from './progress-bar';
 
 import { PROGRESS_INDICATOR_PROGRESS } from '../../../utilities/constants';
 
@@ -21,7 +21,7 @@ const propTypes = {
 	 * Assistive text for percentage
 	 */
 	assistiveText: shape({
-		percentage: PropTypes.string
+		percentage: PropTypes.string,
 	}),
 	/**
 	 * Steps in the component
@@ -33,7 +33,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * HTML id for component.
@@ -46,7 +46,7 @@ const propTypes = {
 	/**
 	 * Determines component style
 	 */
-	variant: PropTypes.oneOf(['base', 'modal'])
+	variant: PropTypes.oneOf(['base', 'modal']),
 };
 
 /**
@@ -67,7 +67,7 @@ class Progress extends React.Component {
 				className={classNames(
 					'slds-progress',
 					{ 'slds-progress_shade': this.props.variant === 'modal' },
-					this.props.className
+					this.props.className,
 				)}
 			>
 				<ol className="slds-progress__list">{this.props.children}</ol>

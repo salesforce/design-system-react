@@ -14,7 +14,7 @@ import IconSettings from '../../icon-settings';
  */
 import {
 	createMountNode,
-	destroyMountNode
+	destroyMountNode,
 } from '../../../tests/enzyme-helpers';
 
 // Import your internal dependencies (for example):
@@ -29,7 +29,7 @@ chai.use(chaiEnzyme());
 
 const defaultProps = {
 	id: 'sample-datepicker',
-	value: new Date(2007, 0, 6)
+	value: new Date(2007, 0, 6),
 };
 
 /* A re-usable demo component fixture outside of `describe` sections
@@ -40,7 +40,7 @@ const defaultProps = {
 const DemoComponent = createReactClass({
 	displayName: 'DatepickerDemoComponent',
 	propTypes: {
-		isOpen: PropTypes.bool
+		isOpen: PropTypes.bool,
 	},
 
 	getDefaultProps () {
@@ -59,7 +59,7 @@ const DemoComponent = createReactClass({
 				<Datepicker {...this.props} />
 			</IconSettings>
 		);
-	}
+	},
 });
 
 /* All tests for component being tested should be wrapped in a root `describe`,
@@ -107,7 +107,7 @@ describe('SLDSDatepicker', function () {
 	describe('Optional props', () => {
 		const customPlaceholder = 'With custom Input';
 		const optionalProps = {
-			children: <Input placeholder={customPlaceholder} value="" />
+			children: <Input placeholder={customPlaceholder} value="" />,
 		};
 
 		beforeEach(() => {
@@ -120,11 +120,11 @@ describe('SLDSDatepicker', function () {
 
 		it('has custom input with custom placeholder', function () {
 			wrapper = mount(<DemoComponent {...optionalProps} />, {
-				attachTo: mountNode
+				attachTo: mountNode,
 			});
 
 			expect(wrapper.find('input').node.getAttribute('placeholder')).to.equal(
-				customPlaceholder
+				customPlaceholder,
 			);
 		});
 	});
@@ -162,7 +162,7 @@ describe('SLDSDatepicker', function () {
 						firstDayOfMonth.simulate('click', {});
 					}}
 				/>,
-				{ attachTo: mountNode }
+				{ attachTo: mountNode },
 			);
 
 			const trigger = wrapper.find(triggerClassSelector);
@@ -180,7 +180,7 @@ describe('SLDSDatepicker', function () {
 
 							// test callback parameters
 							expect(data.date.getTime()).to.equal(
-								new Date('1/1/2007').getTime()
+								new Date('1/1/2007').getTime(),
 							);
 							expect(data.formattedDate).to.equal('1/1/2007');
 
@@ -195,7 +195,7 @@ describe('SLDSDatepicker', function () {
 						firstDayOfMonth.simulate('click', {});
 					}}
 				/>,
-				{ attachTo: mountNode }
+				{ attachTo: mountNode },
 			);
 
 			const trigger = wrapper.find(triggerClassSelector);
@@ -233,11 +233,11 @@ describe('SLDSDatepicker', function () {
 							firstDayOfMonth.simulate('keyDown', {
 								key: 'Esc',
 								keyCode: KEYS.ESCAPE,
-								which: KEYS.ESCAPE
+								which: KEYS.ESCAPE,
 							});
 						}}
 					/>,
-					{ attachTo: mountNode }
+					{ attachTo: mountNode },
 				);
 
 				const trigger = wrapper.find(triggerClassSelector);
@@ -250,21 +250,21 @@ describe('SLDSDatepicker', function () {
 						isOpen
 						onCalendarFocus={(event, data) => {
 							expect(data.date.getTime()).to.equal(
-								new Date(2007, 0, 13).getTime()
+								new Date(2007, 0, 13).getTime(),
 							);
 							done();
 						}}
 					/>,
-					{ attachTo: mountNode }
+					{ attachTo: mountNode },
 				);
 
 				const selectedDay = wrapper.find(
-					'.datepicker__month [aria-selected=true]'
+					'.datepicker__month [aria-selected=true]',
 				);
 				selectedDay.simulate('keyDown', {
 					key: 'Down',
 					keyCode: KEYS.DOWN,
-					which: KEYS.DOWN
+					which: KEYS.DOWN,
 				});
 			});
 
@@ -274,21 +274,21 @@ describe('SLDSDatepicker', function () {
 						isOpen
 						onCalendarFocus={(event, data) => {
 							expect(data.date.getTime()).to.equal(
-								new Date(2007, 0, 7).getTime()
+								new Date(2007, 0, 7).getTime(),
 							);
 							done();
 						}}
 					/>,
-					{ attachTo: mountNode }
+					{ attachTo: mountNode },
 				);
 
 				const selectedDay = wrapper.find(
-					'.datepicker__month [aria-selected=true]'
+					'.datepicker__month [aria-selected=true]',
 				);
 				selectedDay.simulate('keyDown', {
 					key: 'Right',
 					keyCode: KEYS.RIGHT,
-					which: KEYS.RIGHT
+					which: KEYS.RIGHT,
 				});
 			});
 
@@ -298,21 +298,21 @@ describe('SLDSDatepicker', function () {
 						isOpen
 						onCalendarFocus={(event, data) => {
 							expect(data.date.getTime()).to.equal(
-								new Date(2006, 11, 30).getTime()
+								new Date(2006, 11, 30).getTime(),
 							);
 							done();
 						}}
 					/>,
-					{ attachTo: mountNode }
+					{ attachTo: mountNode },
 				);
 
 				const selectedDay = wrapper.find(
-					'.datepicker__month [aria-selected=true]'
+					'.datepicker__month [aria-selected=true]',
 				);
 				selectedDay.simulate('keyDown', {
 					key: 'Up',
 					keyCode: KEYS.UP,
-					which: KEYS.UP
+					which: KEYS.UP,
 				});
 			});
 
@@ -322,21 +322,21 @@ describe('SLDSDatepicker', function () {
 						isOpen
 						onCalendarFocus={(event, data) => {
 							expect(data.date.getTime()).to.equal(
-								new Date(2007, 0, 5).getTime()
+								new Date(2007, 0, 5).getTime(),
 							);
 							done();
 						}}
 					/>,
-					{ attachTo: mountNode }
+					{ attachTo: mountNode },
 				);
 
 				const selectedDay = wrapper.find(
-					'.datepicker__month [aria-selected=true]'
+					'.datepicker__month [aria-selected=true]',
 				);
 				selectedDay.simulate('keyDown', {
 					key: 'Left',
 					keyCode: KEYS.LEFT,
-					which: KEYS.LEFT
+					which: KEYS.LEFT,
 				});
 			});
 
@@ -349,16 +349,16 @@ describe('SLDSDatepicker', function () {
 							done();
 						}}
 					/>,
-					{ attachTo: mountNode }
+					{ attachTo: mountNode },
 				);
 
 				const selectedDay = wrapper.find(
-					'.datepicker__month [aria-selected=true]'
+					'.datepicker__month [aria-selected=true]',
 				);
 				selectedDay.simulate('keyDown', {
 					key: 'Tab',
 					keyCode: KEYS.TAB,
-					which: KEYS.TAB
+					which: KEYS.TAB,
 				});
 			});
 
@@ -371,17 +371,17 @@ describe('SLDSDatepicker', function () {
 							done();
 						}}
 					/>,
-					{ attachTo: mountNode }
+					{ attachTo: mountNode },
 				);
 
 				const selectedDay = wrapper.find(
-					'.datepicker__month [aria-selected=true]'
+					'.datepicker__month [aria-selected=true]',
 				);
 				selectedDay.simulate('keyDown', {
 					key: 'Tab',
 					keyCode: KEYS.TAB,
 					shiftKey: true,
-					which: KEYS.TAB
+					which: KEYS.TAB,
 				});
 			});
 		});
@@ -406,7 +406,7 @@ describe('SLDSDatepicker', function () {
 					onClick={triggerClicked}
 					onOpen={dialogOpened}
 				/>,
-				{ attachTo: mountNode }
+				{ attachTo: mountNode },
 			);
 
 			const trigger = wrapper.find('#sample-datepicker');
@@ -435,7 +435,7 @@ describe('SLDSDatepicker', function () {
 					value={new Date(2007, 0, 5)}
 					dateDisabled={({ date }) => date.getDay() > 5 || date.getDay() < 1}
 				/>,
-				{ attachTo: mountNode }
+				{ attachTo: mountNode },
 			);
 
 			const input = wrapper.find('input');

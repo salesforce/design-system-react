@@ -1,10 +1,9 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
 import Lookup from '~/components/lookup'; // `~` is replaced with design-system-react at runtime
 
-const Example = createReactClass({
-	displayName: 'LookupExample',
+class Example extends React.Component {
+	static displayName = 'LookupExample';
 
 	render () {
 		return (
@@ -28,13 +27,13 @@ const Example = createReactClass({
 						{ label: 'Nakatomi Investments' },
 						{ label: 'Acme Landscaping' },
 						{ type: 'section', label: 'SECTION 3' },
-						{ label: 'Acme Construction' }
+						{ label: 'Acme Construction' },
 					]}
 					sectionDividerRenderer={Lookup.DefaultSectionDivider}
 				/>
 			</IconSettings>
 		);
 	}
-});
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

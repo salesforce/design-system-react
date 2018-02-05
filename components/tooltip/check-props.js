@@ -16,21 +16,21 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.openByDefault,
 			'openByDefault',
-			'isOpen'
+			'isOpen',
 		);
 		deprecatedProperty(
 			COMPONENT,
 			props.target,
 			'target',
 			undefined,
-			'A new positioning library is being implmented under the hood. Please trigger tooltips to appear on their triggers with `isOpen` and not on other DOM elements.' // eslint-disable-line max-len
+			'A new positioning library is being implmented under the hood. Please trigger tooltips to appear on their triggers with `isOpen` and not on other DOM elements.', // eslint-disable-line max-len
 		);
 
 		deprecatedProperty(
 			COMPONENT,
 			props.isInline,
 			'isInline',
-			'position="relative"'
+			'position="relative"',
 		);
 	};
 }

@@ -18,7 +18,7 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.sortable,
 			'sortable',
-			'The table is sortable if one or more of its columns are sortable.'
+			'The table is sortable if one or more of its columns are sortable.',
 		);
 
 		// Deprecated and moved to a child
@@ -26,14 +26,14 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.columns,
 			'columns',
-			'Please provide one or more children of the type <Column /> instead.'
+			'Please provide one or more children of the type <Column /> instead.',
 		);
 
 		sunsetProperty(
 			COMPONENT,
 			props.bordered,
 			'bordered',
-			'All SLDS DataTables have row borders by default now. If you do not want row borders, please use `unborderedRow`'
+			'All SLDS DataTables have row borders by default now. If you do not want row borders, please use `unborderedRow`',
 		);
 		/* eslint-enable max-len */
 	};

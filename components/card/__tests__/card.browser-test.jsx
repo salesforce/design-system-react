@@ -16,33 +16,33 @@ chai.should();
 const headerIdSuffixes = {
 	headerActions: '__header-actions',
 	heading: '__heading',
-	filter: '__filter-input'
+	filter: '__filter-input',
 };
 
 const cardIdSuffixes = {
 	body: '__body',
 	headerActions: '__header-actions',
 	heading: '__heading',
-	filter: '__filter-input'
+	filter: '__filter-input',
 };
 
 const cssClasses = {
-	base: 'slds-card'
+	base: 'slds-card',
 };
 
 const footerCssClasses = {
-	base: 'slds-card__footer'
+	base: 'slds-card__footer',
 };
 
 const headerCssClasses = {
-	base: 'slds-card__header'
+	base: 'slds-card__header',
 };
 
 describe('Card: ', () => {
 	// Base defaults
 	const requiredProps = {
 		id: 'ExampleCard',
-		heading: 'Lots of Related Items'
+		heading: 'Lots of Related Items',
 	};
 
 	const renderCard = (instance) =>
@@ -51,7 +51,7 @@ describe('Card: ', () => {
 			document.body.appendChild(this.dom);
 			this.component = ReactDOM.render(
 				<IconSettings iconPath="/assets/icons">{instance}</IconSettings>,
-				this.dom
+				this.dom,
 			);
 		};
 
@@ -66,13 +66,13 @@ describe('Card: ', () => {
 		getCard(dom).querySelectorAll(`.${headerCssClasses.base}`)[0];
 	const getHeaderActions = (dom) =>
 		getHeader(dom).querySelectorAll(
-			`#${requiredProps.id}${headerIdSuffixes.headerActions}`
+			`#${requiredProps.id}${headerIdSuffixes.headerActions}`,
 		)[0];
 	const getFilter = (dom) =>
 		getHeader(dom).querySelectorAll('.slds-form-element')[0];
 	const getBody = (dom) =>
 		getCard(dom).querySelectorAll(
-			`#${requiredProps.id}${cardIdSuffixes.body}`
+			`#${requiredProps.id}${cardIdSuffixes.body}`,
 		)[0];
 	const getFooter = (dom) =>
 		getCard(dom).querySelectorAll(`.${footerCssClasses.base}`)[0];
@@ -96,7 +96,7 @@ describe('Card: ', () => {
 
 		it('has the correct heading text', function () {
 			const heading = getHeader(this.dom).querySelectorAll(
-				`#${requiredProps.id}${cardIdSuffixes.heading}`
+				`#${requiredProps.id}${cardIdSuffixes.heading}`,
 			)[0];
 			heading.textContent = requiredProps.heading;
 		});
@@ -104,16 +104,16 @@ describe('Card: ', () => {
 
 	// Optional props
 	const renderFooterContents = React.createElement('span', {
-		id: 'sampleFooter'
+		id: 'sampleFooter',
 	});
 	const renderHeaderActions = React.createElement('span', {
-		id: 'sampleHeaderActions'
+		id: 'sampleHeaderActions',
 	});
 	const renderFilter = React.createElement(CardFilter);
 	const renderIcon = React.createElement(Icon, {
 		category: 'standard',
 		name: 'default',
-		size: 'small'
+		size: 'small',
 	});
 
 	const optionalProps = assign(requiredProps, {
@@ -123,7 +123,7 @@ describe('Card: ', () => {
 		headerActions: renderHeaderActions,
 		filter: renderFilter,
 		icon: renderIcon,
-		style: { background: 'rgb(18, 49, 35)' }
+		style: { background: 'rgb(18, 49, 35)' },
 	});
 
 	describe('Optional Structure', () => {
@@ -159,7 +159,7 @@ describe('Card: ', () => {
 		it('has an icon', function () {
 			const header = getHeader(this.dom);
 			const icon = header.querySelectorAll(
-				`.${mediaObjectCssClasses.figure}`
+				`.${mediaObjectCssClasses.figure}`,
 			)[0];
 			icon.should.not.be.undefined;
 		});
@@ -180,7 +180,7 @@ describe('Card: ', () => {
 			const headerActions = getHeaderActions(this.dom);
 			headerActions.should.not.be.undefined;
 			const headerActionsChildren = headerActions.querySelectorAll(
-				'#sampleHeaderActions'
+				'#sampleHeaderActions',
 			)[0];
 			headerActionsChildren.should.not.be.undefined;
 		});
@@ -197,7 +197,7 @@ describe('Card: ', () => {
 				>
 					To Wanda! This is custom!
 				</span>
-			)
+			),
 		};
 
 		beforeEach(renderCard(<Card {...props} />));
@@ -212,7 +212,7 @@ describe('Card: ', () => {
 
 	describe('Empty Structure', () => {
 		const props = assign(optionalProps, {
-			empty: true
+			empty: true,
 		});
 
 		beforeEach(renderCard(<Card {...props} />));

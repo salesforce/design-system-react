@@ -10,12 +10,12 @@ const propTypes = {
 	 * Assistive text for percentage
 	 */
 	assistiveText: shape({
-		percentage: PropTypes.string
+		percentage: PropTypes.string,
 	}),
 	/**
 	 * Percentage of progress completion, with range of [0, 100]
 	 */
-	value: PropTypes.string.isRequired
+	value: PropTypes.string.isRequired,
 };
 /**
  * ProgressBar renders the blue/gray progress bar and dynamically updates its completion percentage

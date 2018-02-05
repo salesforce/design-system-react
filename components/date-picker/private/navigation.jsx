@@ -52,7 +52,7 @@ const DatepickerMonthNavigation = createReactClass({
 		/**
 		 * Offset of year from current year that can be selected in the year selection dropdown. (2017 + 5 = 2012).
 		 */
-		relativeYearTo: PropTypes.number
+		relativeYearTo: PropTypes.number,
 	},
 
 	getMonthLabel () {
@@ -77,14 +77,14 @@ const DatepickerMonthNavigation = createReactClass({
 	previousMonthClicked () {
 		this.props.onChangeMonth(
 			undefined,
-			DateUtil.addMonths(this.props.initialDateForCalendarRender, -1)
+			DateUtil.addMonths(this.props.initialDateForCalendarRender, -1),
 		);
 	},
 
 	nextMonthClicked () {
 		this.props.onChangeMonth(
 			undefined,
-			DateUtil.addMonths(this.props.initialDateForCalendarRender, 1)
+			DateUtil.addMonths(this.props.initialDateForCalendarRender, 1),
 		);
 	},
 
@@ -137,7 +137,7 @@ const DatepickerMonthNavigation = createReactClass({
 				/>
 			</div>
 		);
-	}
+	},
 });
 
 export default DatepickerMonthNavigation;
