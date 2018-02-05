@@ -81,7 +81,7 @@ const listOptions = [
 const headerNavRight = (
 	<div>
 		<Dropdown
-			id={'header-nav-right-more'}
+			id="header-nav-right-more"
 			align="right"
 			assistiveText="More Options"
 			iconName="down"
@@ -97,8 +97,8 @@ const headerNavRight = (
 const headerContentRight = (
 	<div>
 		<Dropdown
-			id={'header-right-refresh'}
-			buttonClassName={'slds-m-right_xx-small'}
+			id="header-right-refresh"
+			buttonClassName="slds-m-right_xx-small"
 			assistiveText="Checkmark with right icon"
 			buttonVariant="icon"
 			checkmark
@@ -141,10 +141,10 @@ const headerContentRight = (
 );
 
 const headerTitle = (
-	<div className={'slds-media__body'}>
+	<div className="slds-media__body">
 		<h1 className="slds-text-heading_small slds-text-color_default slds-p-right_x-small">
 			<Dropdown
-				id={'header-title-leads'}
+				id="header-title-leads"
 				options={[
 					{ label: 'Menu Item One', value: 'A0' },
 					{ label: 'Menu Item Two', value: 'B0' },
@@ -196,7 +196,7 @@ class Example extends React.Component {
 	masterView () {
 		return [
 			<SplitViewHeader
-				key={'1'}
+				key="1"
 				contentRight={headerContentRight}
 				navRight={headerNavRight}
 				iconAssistiveText="User"
@@ -208,7 +208,7 @@ class Example extends React.Component {
 				variant="objectHome"
 			/>,
 			<SplitViewListbox
-				key={'2'}
+				key="2"
 				labels={{
 					header: 'Lead Score'
 				}}
@@ -309,17 +309,17 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div>
-					<div className={'slds-box slds-m-bottom_large'}>
-						<div className={'slds-text-title_caps slds-m-bottom_small'}>
+					<div className="slds-box slds-m-bottom_large">
+						<div className="slds-text-title_caps slds-m-bottom_small">
 							Externally control the split view
 						</div>
 						<Button
 							onClick={() => this.setState({ isOpen: true })}
-							label={'Open the split view'}
+							label="Open the split view"
 						/>
 						<Button
 							onClick={() => this.setState({ isOpen: false })}
-							label={'Close the split view'}
+							label="Close the split view"
 						/>
 					</div>
 					<div style={{ height: '80vh' }}>

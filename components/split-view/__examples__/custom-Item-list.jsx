@@ -55,7 +55,7 @@ const listOptions = [
 const headerNavRight = (
 	<div>
 		<Dropdown
-			id={'header-nav-right-more'}
+			id="header-nav-right-more"
 			align="right"
 			assistiveText="More Options"
 			iconName="down"
@@ -71,8 +71,8 @@ const headerNavRight = (
 const headerContentRight = (
 	<div>
 		<Dropdown
-			id={'header-right-refresh'}
-			buttonClassName={'slds-m-right_xx-small'}
+			id="header-right-refresh"
+			buttonClassName="slds-m-right_xx-small"
 			assistiveText="Checkmark with right icon"
 			buttonVariant="icon"
 			checkmark
@@ -115,10 +115,10 @@ const headerContentRight = (
 );
 
 const headerTitle = (
-	<div className={'slds-media__body'}>
+	<div className="slds-media__body">
 		<h1 className="slds-text-heading_small slds-text-color_default slds-p-right_x-small">
 			<Dropdown
-				id={'header-title-leads'}
+				id="header-title-leads"
 				options={[
 					{ label: 'Menu Item One', value: 'A0' },
 					{ label: 'Menu Item Two', value: 'B0' },
@@ -149,9 +149,9 @@ const headerTitle = (
 const CustomListItem = (props) => (
 	<div>
 		<Icon
-			category={'action'}
+			category="action"
 			name={props.item.status === 'Contacted' ? 'check' : 'call'}
-			size={'x-small'}
+			size="x-small"
 		/>
 		<span className="slds-text-heading_small slds-m-left_medium">
 			{props.item.name}
@@ -204,7 +204,7 @@ class Example extends React.Component {
 	masterView () {
 		return [
 			<SplitViewHeader
-				key={'1'}
+				key="1"
 				contentRight={headerContentRight}
 				navRight={headerNavRight}
 				iconAssistiveText="User"
@@ -216,7 +216,7 @@ class Example extends React.Component {
 				variant="objectHome"
 			/>,
 			<SplitViewListbox
-				key={'2'}
+				key="2"
 				labels={{
 					header: 'Lead Score'
 				}}
@@ -293,7 +293,7 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<div style={{ height: '90vh' }}>
 					<SplitView
-						id={'custom-example'}
+						id="custom-example"
 						master={this.masterView()}
 						detail={this.detailView()}
 					/>

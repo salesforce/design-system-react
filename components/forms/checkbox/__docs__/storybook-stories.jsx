@@ -150,14 +150,14 @@ storiesOf(FORMS_CHECKBOX, module)
 	.add('Checkbox (assistive text)', () => (
 		<div>
 			<Checkbox
-				assistiveText={`This is my checkbox.
+				assistiveText="This is my checkbox.
 							There are many like it, but this one is mine.
 							My checkbox is my best friend.
 							It is my life.
 							I must master it as I must master my life.
 							Without me, my checkbox is useless. Without my checkbox, I am useless.
 							I must make my checkbox true.
-							I must make it truer than my radio button who is trying to... `}
+							I must make it truer than my radio button who is trying to... "
 				label="Checkbox Label"
 				name="checkbox-example-base-assistiveText"
 				onChange={action('change')}
@@ -236,14 +236,14 @@ storiesOf(FORMS_CHECKBOX, module)
 	.add('Checkbox Toggle (assistive text)', () => (
 		<div>
 			<Checkbox
-				assistiveText={`This is my checkbox.
+				assistiveText="This is my checkbox.
 							There are many like it, but this one is mine.
 							My checkbox is my best friend.
 							It is my life.
 							I must master it as I must master my life.
 							Without me, my checkbox is useless. Without my checkbox, I am useless.
 							I must make my checkbox true.
-							I must make it truer than my radio button who is trying to... `}
+							I must make it truer than my radio button who is trying to... "
 				label="Checkbox Label"
 				name="checkbox-example-base-assistiveText"
 				onChange={action('change')}
