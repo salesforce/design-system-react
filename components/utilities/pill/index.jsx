@@ -6,11 +6,12 @@ import PropTypes from 'prop-types';
 
 import assign from 'lodash.assign';
 
+import { shape } from 'airbnb-prop-types';
+
 import KEYS from '../../../utilities/key-code';
 import mapKeyEventCallbacks from '../../../utilities/key-callbacks';
 import EventUtil from '../../../utilities/event';
 
-import { shape } from 'airbnb-prop-types';
 import SLDSPill from '../../../components/pill';
 
 const propTypes = {

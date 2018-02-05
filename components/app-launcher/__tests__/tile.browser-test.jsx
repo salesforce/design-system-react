@@ -5,11 +5,11 @@ import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
 import IconSettings from '../../icon-settings';
 
-const expect = chai.expect;
-const should = chai.should();
-
 import AppLauncherTile from '../../app-launcher/tile';
 import Icon from '../../icon';
+
+const expect = chai.expect;
+const should = chai.should();
 
 const { Simulate } = TestUtils;
 

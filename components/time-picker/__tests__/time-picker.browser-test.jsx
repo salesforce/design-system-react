@@ -7,14 +7,14 @@ import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 import assign from 'lodash.assign';
 
+import SLDSTimepicker from '../../time-picker';
+import IconSettings from '../../icon-settings';
+
 const {
 	Simulate,
 	findRenderedDOMComponentWithTag,
 	findRenderedDOMComponentWithClass,
 } = TestUtils;
-
-import SLDSTimepicker from '../../time-picker';
-import IconSettings from '../../icon-settings';
 
 const mockCallback = sinon.spy();
 

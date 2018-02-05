@@ -4,13 +4,6 @@
 /* eslint-env mocha */
 /* global sinon */
 
-// Additional modifiers to [eslint-config-slds](https://github.com/salesforce-ux/eslint-config-slds) for convenience
-/* eslint-disable no-console */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable max-len */
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable react/display-name */
-
 // Import your external dependencies
 import React from 'react';
 import createReactClass from 'create-react-class';
@@ -19,11 +12,6 @@ import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 
 import entries from 'object.entries';
-
-// shim for PhantomJS
-if (!Object.entries) {
-	entries.shim();
-}
 
 /* Enzyme Helpers that can mount and unmount React component instances to
  * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`
@@ -37,6 +25,11 @@ import {
 
 import { sampleReportCategories } from '../../../utilities/sample-data/navigation';
 import Navigation from '../../navigation';
+
+// shim for PhantomJS
+if (!Object.entries) {
+	entries.shim();
+}
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme

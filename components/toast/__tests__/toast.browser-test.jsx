@@ -10,13 +10,13 @@ import {
 	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 
-chai.use(chaiEnzyme());
-
 import Toast from '../../toast'; // `~` is replaced with design-system-react at runtime
 import ToastContainer from '../../toast/container'; // `~` is replaced with design-system-react at runtime
 import Icon from '../../icon'; // `~` is replaced with design-system-react at runtime
 import Button from '../../button'; // `~` is replaced with design-system-react at runtime
 import IconSettings from '../../icon-settings';
+
+chai.use(chaiEnzyme());
 
 class DemoComponent extends React.Component {
 	constructor (props) {

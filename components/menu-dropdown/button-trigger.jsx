@@ -8,13 +8,14 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
-import Button from '../button';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
 // joining classNames together."
 import classnames from 'classnames';
+
+import Button from '../button';
 
 // ### Children
 import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';

@@ -7,14 +7,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import assign from 'lodash.assign';
+import { shape } from 'airbnb-prop-types';
 import classNames from '../../utilities/class-names';
 import Button from '../button';
 import Icon from '../icon';
 import checkProps from './check-props';
 import { ALERT } from '../../utilities/constants';
-import assign from 'lodash.assign';
 import DOMElementFocus from '../../utilities/dom-element-focus';
-import { shape } from 'airbnb-prop-types';
 
 const propTypes = {
 	/**

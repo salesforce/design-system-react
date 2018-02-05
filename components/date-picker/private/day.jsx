@@ -4,15 +4,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import EventUtil from '../../../utilities/event';
-import DateUtil from '../../../utilities/date';
-import KEYS from '../../../utilities/key-code';
-
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
 // joining classNames together."
 import classNames from 'classnames';
+
+import EventUtil from '../../../utilities/event';
+import DateUtil from '../../../utilities/date';
+import KEYS from '../../../utilities/key-code';
 
 const handleClick = (event, { date, onSelectDate }) => {
 	onSelectDate(event, { date });

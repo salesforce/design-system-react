@@ -3,28 +3,17 @@
 
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 
-// # App Launcher Component
-
-// ## Dependencies
-
-// ### React
 import React from 'react';
 import PropTypes from 'prop-types';
-
-// ### classNames
+import isFunction from 'lodash.isfunction';
 import classNames from 'classnames';
 
-// ### Truncate
 import Truncate from '../utilities/truncate';
-
-// ### isFunction
-import isFunction from 'lodash.isfunction';
 
 // ## Children
 import Highlighter from '../utilities/highlighter';
 import PopoverTooltip from '../popover-tooltip';
 
-// ## Constants
 import { APP_LAUNCHER_TILE } from '../../utilities/constants';
 
 const handleClick = (event, href, onClick) => {

@@ -9,12 +9,12 @@ import {
 	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 
-chai.use(chaiEnzyme());
-
 import Alert from '../';
 import AlertContainer from '../container';
 import Icon from '../../icon';
 import IconSettings from '../../icon-settings';
+
+chai.use(chaiEnzyme());
 
 class DemoComponent extends Component {
 	constructor (props) {

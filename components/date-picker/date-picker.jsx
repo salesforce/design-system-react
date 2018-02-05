@@ -4,11 +4,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Dialog from '../utilities/dialog';
-import CalendarWrapper from './private/calendar-wrapper';
-import InputIcon from '../icon/input-icon';
-import Input from '../forms/input';
-
 import assign from 'lodash.assign';
 
 import { shape } from 'airbnb-prop-types';
@@ -26,6 +21,11 @@ import classNames from 'classnames';
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
+
+import Dialog from '../utilities/dialog';
+import CalendarWrapper from './private/calendar-wrapper';
+import InputIcon from '../icon/input-icon';
+import Input from '../forms/input';
 
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)

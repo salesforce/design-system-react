@@ -11,11 +11,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Child components
-import Branch from './private/branch';
-
 // ### classNames
 import classNames from 'classnames';
+
+// Child components
+import Branch from './private/branch';
 
 // Similar to React's PropTypes check. When in development mode, it issues errors in the console about properties.
 import checkProps from './check-props';

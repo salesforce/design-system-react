@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import jsBeautify from 'js-beautify';
-import Settings from './settings';
 import renderer from 'react-test-renderer';
+import Settings from './settings';
 /*
  * Render React components to DOM state as a String
  *

@@ -4,17 +4,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Calendar from './calendar';
-import CalendarNavigation from './navigation';
-
-import EventUtil from '../../../utilities/event';
-import KEYS from '../../../utilities/key-code';
-
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
 // joining classNames together."
 import classNames from 'classnames';
+
+import Calendar from './calendar';
+import CalendarNavigation from './navigation';
+
+import EventUtil from '../../../utilities/event';
+import KEYS from '../../../utilities/key-code';
 
 class DatepickerCalendarWrapper extends React.Component {
 	static defaultProps = {

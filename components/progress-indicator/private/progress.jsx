@@ -5,13 +5,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { shape } from 'airbnb-prop-types';
 
-import ProgressBar from './progress-bar';
-
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, 'a simple javascript utility for conditionally
 // joining classNames together.'
 import classNames from 'classnames';
+
+import ProgressBar from './progress-bar';
 
 import { PROGRESS_INDICATOR_PROGRESS } from '../../../utilities/constants';
 
