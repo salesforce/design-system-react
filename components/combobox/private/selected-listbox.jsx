@@ -4,12 +4,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Pill from '../../utilities/pill';
-
 import classNames from 'classnames';
 import isEqual from 'lodash.isequal';
-
 import { shape } from 'airbnb-prop-types';
+
+import Pill from '../../utilities/pill';
 
 const propTypes = {
 	/*

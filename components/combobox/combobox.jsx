@@ -6,13 +6,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Dialog from '../utilities/dialog';
-import InnerInput from '../../components/forms/input/private/inner-input';
-import InputIcon from '../icon/input-icon';
-import Menu from './private/menu';
-import Label from '../forms/private/label';
-import SelectedListBox from './private/selected-listbox';
-
 import assign from 'lodash.assign';
 import find from 'lodash.find';
 import reject from 'lodash.reject';
@@ -27,6 +20,13 @@ import isFunction from 'lodash.isfunction';
 import classNames from 'classnames';
 
 import shortid from 'shortid';
+
+import Dialog from '../utilities/dialog';
+import InnerInput from '../../components/forms/input/private/inner-input';
+import InputIcon from '../icon/input-icon';
+import Menu from './private/menu';
+import Label from '../forms/private/label';
+import SelectedListBox from './private/selected-listbox';
 
 import KEYS from '../../utilities/key-code';
 import mapKeyEventCallbacks from '../../utilities/key-callbacks';

@@ -10,7 +10,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
-import Button from '../button';
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
 
@@ -21,6 +20,8 @@ import isBoolean from 'lodash.isboolean';
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
+
+import Button from '../button';
 
 const displayName = 'Modal';
 const propTypes = {
