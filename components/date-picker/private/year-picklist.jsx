@@ -42,7 +42,7 @@ const DatepickerYearSelector = createReactClass({
 		const toYear = now.getFullYear() + this.props.relativeYearTo;
 		const opts = [];
 
-		for (let year = fromYear; year < toYear; year++) {
+		for (let year = fromYear; year < toYear; year += 1) {
 			opts.push({ label: `${year}`, value: year });
 		}
 		return opts;

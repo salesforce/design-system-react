@@ -117,7 +117,7 @@ const TextTruncate = createReactClass({
 			let lastIsEng = false;
 			let lastSpaceIndex = -1;
 
-			while (displayLine--) {
+			while (displayLine !== 0) {
 				let ext = '';
 				let extraWidthDueToPrefixStyle = 0;
 
@@ -153,7 +153,7 @@ const TextTruncate = createReactClass({
 					} else {
 						let lastWidth = 0;
 						do {
-							currentPos--;
+							currentPos -= 1;
 							truncatedText = text.substr(startPos, currentPos);
 							if (truncatedText[truncatedText.length - 1] === ' ') {
 								truncatedText = text.substr(startPos, currentPos - 1);
@@ -184,6 +184,8 @@ const TextTruncate = createReactClass({
 					startPos = maxTextLength;
 					break;
 				}
+
+				displayLine -= 1; // iterate
 			}
 
 			if (startPos !== maxTextLength) {

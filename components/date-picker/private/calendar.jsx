@@ -220,7 +220,8 @@ const DatepickerCalendar = createReactClass({
 
 			// create new weeks
 			firstDayOfWeek = DateUtil.addWeeks(firstDayOfWeek, 1);
-			done = count++ > 2 && monthIndex !== firstDayOfWeek.getMonth();
+			done = count > 2 && monthIndex !== firstDayOfWeek.getMonth();
+			count += 1;
 			monthIndex = firstDayOfWeek.getMonth();
 		}
 		let extraWeeks = 0;

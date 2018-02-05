@@ -12,7 +12,7 @@ const DatepickerWeek = (props) => {
 	const days = [];
 	let date = props.firstDayOfWeek;
 
-	for (let i = 0; i < 7; i++) {
+	for (let i = 0; i < 7; i += 1) {
 		days.push(
 			<Day
 				calendarHasFocus={props.calendarHasFocus}
