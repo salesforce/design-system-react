@@ -144,8 +144,6 @@
         "props": false
       }
     ],
-    // currently used in older files
-    "no-plusplus": "off",
     // Should be removed in the future. `event` is the main global used now.
     "no-restricted-globals": "off",
     // Would prefer all mixed operators as errors, but this conflicts
