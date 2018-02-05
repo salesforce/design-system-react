@@ -33,8 +33,6 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ## Release 0.8.6
 
-There should be no significant consumer and end-user changes from v0.8.5.
-
 **Major features**
 
 * Add automated image and DOM snapshots with story-based automatic unit test creation
