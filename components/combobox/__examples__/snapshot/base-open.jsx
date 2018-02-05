@@ -2,7 +2,6 @@
 import React from 'react';
 import Combobox from '~/components/combobox';
 import Icon from '~/components/icon';
-import escapeRegExp from 'lodash.escaperegexp';
 import IconSettings from '~/components/icon-settings';
 
 const accounts = [
@@ -50,7 +49,7 @@ class Example extends React.Component {
 						console.log('onChange', value);
 						this.setState({ inputValue: value });
 					}}
-					onRequestRemoveSelectedOption={(event, data) => {
+					onRequestRemoveSelectedOption={() => {
 						this.setState({
 							inputValue: '',
 							selection: [],

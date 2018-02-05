@@ -1,11 +1,10 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
 import PopoverTooltip from '~/components/popover-tooltip'; // `~` is replaced with design-system-react at runtime
 import Icon from '~/components/icon';
 
-const Example = createReactClass({
-	displayName: 'TooltipExample',
+class Example extends React.Component {
+	static displayName = 'TooltipExample';
 
 	render () {
 		return (
@@ -25,7 +24,7 @@ const Example = createReactClass({
 				</PopoverTooltip>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

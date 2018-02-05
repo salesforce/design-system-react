@@ -1,6 +1,5 @@
 /* eslint-disable no-console, react/prop-types */
 import React from 'react';
-import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
 import Navigation from '~/components/navigation';
 
@@ -32,14 +31,12 @@ const sampleSearchCategories = [
 	},
 ];
 
-const Example = createReactClass({
-	displayName: 'NavigationExample',
+class Example extends React.Component {
+	static displayName = 'NavigationExample';
 
-	getInitialState () {
-		return {
-			selectedId: 'top',
-		};
-	},
+	state = {
+		selectedId: 'top',
+	};
 
 	render () {
 		return (
@@ -63,7 +60,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

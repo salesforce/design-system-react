@@ -1,12 +1,7 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import IconSettings from '~/components/icon-settings';
 
-import Panel from '~/components/panel'; // `~` is replaced with design-system-react at runtime
-import FilterGroup from '~/components/panel/filtering/group';
-import FilterList from '~/components/panel/filtering/list';
-import FilterListHeading from '~/components/panel/filtering/list-heading';
 import Filter from '~/components/filter';
 
 import Picklist from '~/components/menu-picklist';
@@ -18,26 +13,24 @@ const options = {
 	],
 };
 
-const Example = createReactClass({
-	displayName: 'FilterExample',
+class Example extends React.Component {
+	static displayName = 'FilterExample';
 
-	propTypes () {
+	static propTypes () {
 		return {
 			align: PropTypes.string,
 		};
-	},
+	}
 
-	getInitialState () {
-		return {
-			'show-me': {
-				selectedPicklistItem: options['show-me'][0],
-				selectedItem: options['show-me'][0],
-				isActive: true,
-			},
-		};
-	},
+	state = {
+		'show-me': {
+			selectedPicklistItem: options['show-me'][0],
+			selectedItem: options['show-me'][0],
+			isActive: true,
+		},
+	};
 
-	onChangePredicate (event, { id }) {
+	onChangePredicate = (event, { id }) => {
 		const idSuffix = id.split('sample-panel-filtering-')[1];
 		this.setState({
 			[idSuffix]: {
@@ -45,18 +38,18 @@ const Example = createReactClass({
 				selectedItem: this.state[idSuffix].selectedPicklistItem,
 			},
 		});
-	},
+	};
 
-	onSelectPicklist (selectedItem, id) {
+	onSelectPicklist = (selectedItem, id) => {
 		this.setState({
 			[id]: {
 				...this.state[id],
 				selectedPicklistItem: selectedItem,
 			},
 		});
-	},
+	};
 
-	onRemove (event, { id }) {
+	onRemove = (event, { id }) => {
 		const idSuffix = id.split('sample-panel-filtering-')[1];
 		this.setState({
 			[idSuffix]: {
@@ -64,7 +57,7 @@ const Example = createReactClass({
 				isActive: false,
 			},
 		});
-	},
+	};
 
 	render () {
 		return (
@@ -93,7 +86,7 @@ const Example = createReactClass({
 				</IconSettings>
 			)
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

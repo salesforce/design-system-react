@@ -7,8 +7,8 @@ import Avatar from '~/components/avatar';
 
 function noop () {}
 
-const Example = createReactClass({
-	displayName: 'PillExample',
+class Example extends React.Component {
+	static displayName = 'PillExample';
 
 	render () {
 		return (
@@ -105,7 +105,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

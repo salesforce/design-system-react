@@ -1,5 +1,4 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
 import PropTypes from 'prop-types';
 import Tree from '~/components/tree';
@@ -382,37 +381,37 @@ const sampleNodes = {
 	],
 };
 
-const Example = createReactClass({
-	displayName: 'TreeExample',
+class Example extends React.Component {
+	static displayName = 'TreeExample';
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		exampleNodesIndex: PropTypes.string,
 		noBranchSelection: PropTypes.bool,
 		searchTerm: PropTypes.string,
 		searchable: PropTypes.bool,
 		singleSelection: PropTypes.bool,
-	},
+	};
 
-	getDefaultProps () {
-		return {
-			exampleNodesIndex: 'sampleNodesDefault',
-			id: 'example-tree',
-		};
-	},
+	static defaultProps = {
+		exampleNodesIndex: 'sampleNodesDefault',
+		id: 'example-tree',
+	};
 
-	getInitialState () {
-		const initalNodes = this.props.exampleNodesIndex
-			? sampleNodes[this.props.exampleNodesIndex]
+	constructor (props) {
+		super(props);
+		const initalNodes = props.exampleNodesIndex
+			? sampleNodes[props.exampleNodesIndex]
 			: sampleNodes.sampleNodesDefault;
-		return {
+
+		this.state = {
 			nodes: initalNodes,
-			searchTerm: this.props.searchable ? 'fruit' : undefined,
+			searchTerm: props.searchable ? 'fruit' : undefined,
 		};
-	},
+	}
 
 	// By default Tree can have multiple selected nodes and folders/branches can be selected. To disable either of these, you can use the following logic. However, `props` are immutable. The node passed in shouldn't be modified, and due to object and arrays being reference variables, forceUpate is needed. This is just a "working example" not a prescription.
-	handleExpandClick (event, data) {
+	handleExpandClick = (event, data) => {
 		console.log('[handleExpandClick] (event, data)', event, data);
 		data.node.loading = data.expand ? true : undefined;
 
@@ -426,12 +425,12 @@ const Example = createReactClass({
 			data.node,
 		);
 		data.node.expanded = data.expand;
-	},
+	};
 
-	handleClick (event, data) {
+	handleClick = (event, data) => {
 		if (this.props.singleSelection) {
 			data.node.selected = data.select;
-			this.setState((prevState) => {
+			this.setState(() => {
 				if (
 					this.state.selectedNode &&
 					this.state.selectedNode.id !== data.node.id
@@ -450,15 +449,15 @@ const Example = createReactClass({
 			this.setState((prevState) => ({ ...prevState }));
 			console.log('[handleClick] (event, data)', event, data);
 		}
-	},
+	};
 
-	handleScroll (event, data) {
+	handleScroll = (event, data) => {
 		console.log('[handleScroll] (event, data)', event, data);
-	},
+	};
 
-	handleSearchChange (event) {
+	handleSearchChange = (event) => {
 		this.setState({ searchTerm: event.target.value });
-	},
+	};
 
 	render () {
 		return (
@@ -475,7 +474,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

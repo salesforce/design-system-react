@@ -1,5 +1,4 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import IconSettings from '~/components/icon-settings';
 import ProgressIndicator from '~/components/progress-indicator'; // `~` is replaced with design-system-react at runtime
 
@@ -19,8 +18,8 @@ const handleStepEvent = function (event, data) {
 	console.log(data);
 };
 
-const Example = createReactClass({
-	displayName: 'ProgressIndicatorDefault',
+class Example extends React.Component {
+	static displayName = 'ProgressIndicatorDefault';
 
 	render () {
 		return (
@@ -41,7 +40,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

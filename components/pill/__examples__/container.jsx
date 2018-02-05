@@ -6,26 +6,24 @@ import IconSettings from '~/components/icon-settings';
 
 function noop () {}
 
-const Example = createReactClass({
-	displayName: 'PillContainerExample',
+class Example extends React.Component {
+	static displayName = 'PillContainerExample';
 
-	propTypes: {
+	static propTypes = {
 		action: PropTypes.func,
-	},
+	};
 
-	getDefaultProps () {
-		return {
-			action: () => noop,
-		};
-	},
+	static defaultProps = {
+		action: () => noop,
+	};
 
-	onClick (event) {
+	onClick = (event) => {
 		this.props.action('onClick')(event);
-	},
+	};
 
-	onRemove (event) {
+	onRemove = (event) => {
 		this.props.action('onRemove')(event);
-	},
+	};
 
 	render () {
 		return (
@@ -108,7 +106,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	},
-});
+	}
+}
 
 export default Example;

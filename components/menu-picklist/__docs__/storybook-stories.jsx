@@ -39,7 +39,7 @@ const MultipleExample = createReactClass({
 	},
 
 	handleSelect (selectedItem, data) {
-		this.setState((prevState, props) => ({
+		this.setState((prevState) => ({
 			selectedItems: prevState.selectedIndexes.has(data.optionIndex)
 				? Array.from(prevState.selectedIndexes.delete(data.optionIndex))
 				: Array.from(prevState.selectedIndexes.add(data.optionIndex)),

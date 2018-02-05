@@ -1,6 +1,5 @@
 import React from 'react';
 import IconSettings from '~/components/icon-settings';
-import Icon from '~/components/icon';
 import ProgressRing from '~/components/progress-ring';
 
 class Example extends React.Component {

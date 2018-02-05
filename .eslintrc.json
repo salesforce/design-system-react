@@ -24,9 +24,7 @@
         // devDependencies are used
         "import/no-extraneous-dependencies": "off",
         // console is used in examples
-        "no-console": "off",
-        // TODO: This should be removed.
-        "no-unused-vars": "off"
+        "no-console": "off"
       }
     },
     {

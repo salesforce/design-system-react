@@ -79,7 +79,7 @@ const DropdownControlled = createReactClass({
 	},
 
 	toggleDisabledOption () {
-		this.setState((prevState, props) => {
+		this.setState((prevState) => {
 			prevState.menuOptions.splice(1, 1, {
 				disabled: false,
 				label: 'An option that is Super Super Long',

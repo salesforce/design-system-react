@@ -88,7 +88,7 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Accordion id="base-example-accordion">
-					{this.state.items.map((item, i) => (
+					{this.state.items.map((item) => (
 						<AccordionPanel
 							expanded={!!this.state.expandedPanels[item.id]}
 							id={item.id}

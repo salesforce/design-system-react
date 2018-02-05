@@ -1,9 +1,8 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 import ProgressIndicator from '~/components/progress-indicator'; // `~` is replaced with design-system-react at runtime
 
-const Example = createReactClass({
-	displayName: 'ProgressIndicatorStepError',
+class Example extends React.Component {
+	static displayName = 'ProgressIndicatorStepError';
 
 	render () {
 		return (
@@ -11,7 +10,7 @@ const Example = createReactClass({
 				<ProgressIndicator {...this.props} />
 			</div>
 		);
-	},
-});
+	}
+}
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
