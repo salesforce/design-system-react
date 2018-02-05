@@ -10,7 +10,6 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### Event Helpers
@@ -38,10 +37,10 @@ import {
  * </SLDSGlobalHeader>
  * ```
  */
-const GlobalHeader = createReactClass({
-	displayName: GLOBAL_HEADER,
+class GlobalHeader extends React.Component {
+	static displayName = GLOBAL_HEADER;
 
-	propTypes: {
+	static propTypes = {
 		/**
 		 * See the component description, this accepts some combination of `SLDSGlobalHeaderSearch`, `SLDSGlobalHeaderButton`, `SLDSGlobalHeaderDropdown`, and `SLDSGlobalHeaderProfile` components.
 		 */
@@ -70,25 +69,23 @@ const GlobalHeader = createReactClass({
 		 * The localized text that will be read back for the "Skip to Navigation" accessibility link.
 		 */
 		skipToNavAssistiveText: PropTypes.string,
-	},
+	};
 
-	getDefaultProps () {
-		return {
-			logoSrc: '/assets/images/logo.svg',
-			skipToNavAssistiveText: 'Skip to Navigation',
-			skipToContentAssistiveText: 'Skip to Main Content',
-		};
-	},
+	static defaultProps = {
+		logoSrc: '/assets/images/logo.svg',
+		skipToNavAssistiveText: 'Skip to Navigation',
+		skipToContentAssistiveText: 'Skip to Main Content',
+	};
 
-	handleSkipToContent (e) {
+	handleSkipToContent = (e) => {
 		EventUtil.trap(e);
 		this.props.onSkipToContent(e);
-	},
+	};
 
-	handleSkipToNav (e) {
+	handleSkipToNav = (e) => {
 		EventUtil.trap(e);
 		this.props.onSkipToNav(e);
-	},
+	};
 
 	render () {
 		let tools;
@@ -143,7 +140,7 @@ const GlobalHeader = createReactClass({
 			</header>
 		);
 		/* eslint-enable max-len, no-script-url */
-	},
-});
+	}
+}
 
 export default GlobalHeader;

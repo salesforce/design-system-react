@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 /* eslint-disable jsx-a11y/role-has-required-aria-props */
+/* eslint-disable react/prefer-es6-class */
 
 // # Lookup Component
 

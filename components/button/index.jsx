@@ -5,8 +5,8 @@
 // Based on SLDS v2.2.1
 
 import React from 'react';
-import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
+
 import classNames from 'classnames';
 import ButtonIcon from '../icon/button-icon';
 import PopoverTooltip from '../popover-tooltip';
@@ -18,10 +18,10 @@ import { BUTTON } from '../../utilities/constants';
  * Either a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.
  * For buttons that maintain selected/unselected states, use the <a href="#/button-stateful">ButtonStateful</a> component.
  */
-const Button = createReactClass({
-	displayName: BUTTON,
+class Button extends React.Component {
+	static displayName = BUTTON;
 
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Used if the Button triggers a tooltip. The value should match the `id` of the element with `role="tooltip"`.
 		 */
@@ -155,21 +155,19 @@ const Button = createReactClass({
 			PropTypes.string,
 		]),
 		tooltip: PropTypes.node,
-	},
+	};
 
-	getDefaultProps () {
-		return {
-			disabled: false,
-			hint: false,
-			iconSize: 'medium',
-			iconCategory: 'utility',
-			responsive: false,
-			type: 'button',
-			variant: 'neutral',
-		};
-	},
+	static defaultProps = {
+		disabled: false,
+		hint: false,
+		iconSize: 'medium',
+		iconCategory: 'utility',
+		responsive: false,
+		type: 'button',
+		variant: 'neutral',
+	};
 
-	getClassName () {
+	getClassName = () => {
 		const isIcon = this.props.variant === 'icon';
 
 		let iconVariant = this.props.iconVariant;
@@ -211,15 +209,15 @@ const Button = createReactClass({
 			},
 			this.props.className,
 		);
-	},
+	};
 
-	handleClick (event) {
+	handleClick = (event) => {
 		if (this.props.onClick) {
 			this.props.onClick(event);
 		}
-	},
+	};
 
-	renderIcon (name) {
+	renderIcon = (name) => {
 		const iconSize =
 			this.props.iconSize === '' || this.props.iconVariant
 				? null
@@ -242,9 +240,9 @@ const Button = createReactClass({
 				size={iconSize}
 			/>
 		);
-	},
+	};
 
-	renderLabel () {
+	renderLabel = () => {
 		const iconOnly = this.props.variant === 'icon';
 
 		return iconOnly && this.props.assistiveText ? (
@@ -252,67 +250,63 @@ const Button = createReactClass({
 		) : (
 			this.props.label
 		);
-	},
+	};
 
-	renderButton () {
-		return (
-			<button
-				aria-controls={this.props['aria-controls']}
-				aria-describedby={this.props['aria-describedby']}
-				aria-expanded={this.props['aria-expanded']}
-				aria-haspopup={this.props['aria-haspopup']}
-				className={this.getClassName()}
-				disabled={this.props.disabled}
-				id={this.props.id}
-				onBlur={this.props.onBlur}
-				onClick={this.handleClick}
-				onFocus={this.props.onFocus}
-				onKeyDown={this.props.onKeyDown}
-				onKeyPress={this.props.onKeyPress}
-				onKeyUp={this.props.onKeyUp}
-				onMouseDown={this.props.onMouseDown}
-				onMouseEnter={this.props.onMouseEnter}
-				onMouseLeave={this.props.onMouseLeave}
-				ref={(component) => {
-					if (this.props.buttonRef) {
-						this.props.buttonRef(component);
-					}
-				}}
-				tabIndex={this.props.tabIndex}
-				title={this.props.title}
-				type={this.props.type}
-			>
-				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
-
-				{this.props.iconName || this.props.iconPath
-					? this.renderIcon(this.props.iconName)
-					: null}
-				{this.props.iconVariant === 'more' ? (
-					<ButtonIcon category="utility" name="down" size="x-small" />
-				) : null}
-
-				{this.props.iconPosition === 'left' || !this.props.iconPosition
-					? this.renderLabel()
-					: null}
-				{
-					this.props.children // eslint-disable-line react/prop-types
+	renderButton = () => (
+		<button
+			aria-controls={this.props['aria-controls']}
+			aria-describedby={this.props['aria-describedby']}
+			aria-expanded={this.props['aria-expanded']}
+			aria-haspopup={this.props['aria-haspopup']}
+			className={this.getClassName()}
+			disabled={this.props.disabled}
+			id={this.props.id}
+			onBlur={this.props.onBlur}
+			onClick={this.handleClick}
+			onFocus={this.props.onFocus}
+			onKeyDown={this.props.onKeyDown}
+			onKeyPress={this.props.onKeyPress}
+			onKeyUp={this.props.onKeyUp}
+			onMouseDown={this.props.onMouseDown}
+			onMouseEnter={this.props.onMouseEnter}
+			onMouseLeave={this.props.onMouseLeave}
+			ref={(component) => {
+				if (this.props.buttonRef) {
+					this.props.buttonRef(component);
 				}
-			</button>
-		);
-	},
+			}}
+			tabIndex={this.props.tabIndex}
+			title={this.props.title}
+			type={this.props.type}
+		>
+			{this.props.iconPosition === 'right' ? this.renderLabel() : null}
+
+			{this.props.iconName || this.props.iconPath
+				? this.renderIcon(this.props.iconName)
+				: null}
+			{this.props.iconVariant === 'more' ? (
+				<ButtonIcon category="utility" name="down" size="x-small" />
+			) : null}
+
+			{this.props.iconPosition === 'left' || !this.props.iconPosition
+				? this.renderLabel()
+				: null}
+			{
+				this.props.children // eslint-disable-line react/prop-types
+			}
+		</button>
+	);
 
 	// This is present for backwards compatibility and should be removed at a future breaking change release. Please wrap a `Button` in a `PopoverTooltip` to achieve the same result. There will be an extra trigger `div` wrapping the `Button` though.
-	renderTooltip () {
-		return (
-			<PopoverTooltip content={this.props.tooltip}>
-				{this.renderButton}
-			</PopoverTooltip>
-		);
-	},
+	renderTooltip = () => (
+		<PopoverTooltip content={this.props.tooltip}>
+			{this.renderButton}
+		</PopoverTooltip>
+	);
 
 	render () {
 		return this.props.tooltip ? this.renderTooltip() : this.renderButton();
-	},
-});
+	}
+}
 
 export default Button;

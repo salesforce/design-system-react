@@ -9,7 +9,6 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -61,13 +60,13 @@ import { APP_LAUNCHER } from '../../utilities/constants';
  * ```
  */
 
-const AppLauncher = createReactClass({
+class AppLauncher extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: APP_LAUNCHER,
+	static displayName = APP_LAUNCHER;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		/**
 		 * One or more `<AppLauncherSection />`s each containing one or more `<AppLauncherTile />`s
 		 */
@@ -116,43 +115,39 @@ const AppLauncher = createReactClass({
 		 * Callback when the App Launcher icon is clicked
 		 */
 		triggerOnClick: PropTypes.func,
-	},
+	};
 
-	getDefaultProps () {
-		return {
-			triggerAssistiveText: 'Open App Launcher',
-			title: 'App Launcher',
-		};
-	},
+	static defaultProps = {
+		triggerAssistiveText: 'Open App Launcher',
+		title: 'App Launcher',
+	};
 
-	getInitialState () {
-		return {
-			isOpen: false,
-		};
-	},
+	state = {
+		isOpen: false,
+	};
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(APP_LAUNCHER, this.props);
-	},
+	}
 
-	openAppLauncher (event) {
+	openAppLauncher = (event) => {
 		this.setState({ isOpen: true });
 
 		if (isFunction(this.props.triggerOnClick)) {
 			this.props.triggerOnClick(event);
 		}
-	},
+	};
 
-	closeAppLauncher (event) {
+	closeAppLauncher = (event) => {
 		this.setState({ isOpen: false });
 
 		if (isFunction(this.props.onClose)) {
 			this.props.onClose(event);
 		}
-	},
+	};
 
-	renderSearch () {
+	renderSearch = () => {
 		let returnVal;
 
 		if (this.props.search) {
@@ -182,7 +177,7 @@ const AppLauncher = createReactClass({
 		}
 
 		return returnVal;
-	},
+	};
 
 	render () {
 		const isOpen =
@@ -261,7 +256,7 @@ const AppLauncher = createReactClass({
 				) : null}
 			</div>
 		);
-	},
-});
+	}
+}
 
 export default AppLauncher;

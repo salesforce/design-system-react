@@ -5,7 +5,6 @@
 
 // ### React
 import React from 'react';
-import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
 // ### isFunction
@@ -23,13 +22,13 @@ import { DATA_TABLE_ROW_ACTIONS } from '../../utilities/constants';
 /**
  * RowActions provide a mechanism for defining a menu to display alongside each row in the DataTable.
  */
-const DataTableRowActions = createReactClass({
+class DataTableRowActions extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
-	displayName: DATA_TABLE_ROW_ACTIONS,
+	static displayName = DATA_TABLE_ROW_ACTIONS;
 
 	// ### Prop Types
-	propTypes: {
+	static propTypes = {
 		/**
 		 * Description of the menu for screenreaders.
 		 */
@@ -42,23 +41,21 @@ const DataTableRowActions = createReactClass({
 		item: PropTypes.object,
 		onAction: PropTypes.func,
 		options: PropTypes.array.isRequired,
-	},
+	};
 
-	getDefaultProps () {
-		return {
-			assistiveText: 'Actions',
-		};
-	},
+	static defaultProps = {
+		assistiveText: 'Actions',
+	};
 
-	handleClick (e) {
+	handleClick = (e) => {
 		EventUtil.trap(e);
-	},
+	};
 
-	handleSelect (selection) {
+	handleSelect = (selection) => {
 		if (isFunction(this.props.onAction)) {
 			this.props.onAction(this.props.item, selection);
 		}
-	},
+	};
 
 	// ### Render
 	render () {
@@ -88,7 +85,7 @@ const DataTableRowActions = createReactClass({
 				/>
 			</td>
 		);
-	},
-});
+	}
+}
 
 export default DataTableRowActions;
