@@ -100,7 +100,9 @@ class SplitView extends React.Component {
 	}
 
 	componentWillReceiveProps (nextProps) {
-		nextProps.isOpen !== this.props.isOpen && this.setIsOpen(nextProps.isOpen);
+		if (nextProps.isOpen !== this.props.isOpen) {
+			this.setIsOpen(nextProps.isOpen);
+		}
 	}
 
 	getId () {
@@ -122,9 +124,11 @@ class SplitView extends React.Component {
 	toggle (event) {
 		this.setIsOpen(!this.state.isOpen);
 
-		this.state.isOpen
-			? this.props.events.onClose && this.props.events.onClose(event)
-			: this.props.events.onOpen && this.props.events.onOpen(event);
+		if (this.state.isOpen && this.props.events.onClose) {
+			this.props.events.onClose(event);
+		} else if (!this.state.isOpen && this.props.events.onOpen) {
+			this.props.events.onOpen(event);
+		}
 	}
 
 	masterContent () {

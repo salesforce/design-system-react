@@ -25,8 +25,8 @@ test(`Navigation
 		id,
 		variant
 	DOM Snapshot`, () => {
-		const domTree = renderer
-			.create(<SnapshotDefault {...customProps} />)
-			.toJSON();
-		expect(domTree).toMatchSnapshot();
-	});
+	const domTree = renderer
+		.create(<SnapshotDefault {...customProps} />)
+		.toJSON();
+	expect(domTree).toMatchSnapshot();
+});

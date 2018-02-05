@@ -12,37 +12,38 @@
       "modules": true
     }
   },
+  "plugins": ["filenames"],
   "env": {
     "browser": true
   },
   "overrides": [
     {
-      "files": [
-        "*.{js,jsx}",
-        "**/__tests__/*.{js,jsx}",
-        "**/__docs__/*.{js,jsx}",
-        "tests/*.{js,jsx}",
-        "scripts/*.js",
-        "**/site-stories.js"
-      ],
+      // Storybook and site examples
+      "files": ["**/__examples__/**/*.{js,jsx}", "**/__docs__/**/*.{js,jsx}", "**/site-stories.js"],
       "rules": {
+        // devDependencies are used
         "import/no-extraneous-dependencies": "off",
-        "import/no-webpack-loader-syntax": "off",
-        "max-len": "off",
-        "no-script-url": "off",
+        // console is used in examples
         "no-console": "off",
+        // TODO: This should be removed.
         "no-unused-vars": "off"
       }
     },
     {
-      "files": [
-        "*.{js,jsx}",
-        "**/__tests__/*.{js,jsx}",
-        "**/__docs__/*.{js,jsx}",
-        "tests/*.{js,jsx}",
-        "scripts/*.js",
-        "**/site-stories.js"
-      ],
+      // Utility scripts
+      "files": ["./*.js", "preset/*.js", "scripts/*.js", "**/site-stories.js"],
+      "rules": {
+        // devDependencies are used
+        "import/no-extraneous-dependencies": "off",
+        // Utility scripts use many types of loaders
+        "import/no-webpack-loader-syntax": "off",
+        // console is used in scripts
+        "no-console": "off"
+      }
+    },
+    {
+      // Test files
+      "files": ["**/__tests__/**/*.{js,jsx}", "tests/*.{js,jsx}"],
       "env": {
         "browser": true,
         "jest": true,
@@ -54,22 +55,31 @@
         "sinon": true
       },
       "rules": {
-        "max-len": "off",
-        "no-script-url": "off",
-        "no-alert": "off",
+        // devDependencies are used
+        "import/no-extraneous-dependencies": "off",
+        // console is used in tests
         "no-console": "off",
+        // TODO: This should be removed.
         "no-unused-expressions": "off",
+        // TODO: This should be removed.
         "no-unused-vars": "off",
+        // TODO: This should be removed.
         "prefer-arrow-callback": "off",
+        // TODO: This should be removed.
         "react/display-name": "off"
       }
     }
   ],
   "rules": {
+    // Increases clarity and readabilty
     "arrow-parens": [1, "always"],
+    // Creates consistent filename case: "kabob case"
+    "filenames/match-regex": [2, "^[a-z\\-\\.]+$", true],
+    // ALl imported files are JSX or JS
     "import/extensions": "off",
-    "import/first": 1,
+    // `~` is used by examples for "root" npm package in documentation site
     "import/no-unresolved": [2, { "ignore": ["^[~]"] }],
+    // This is a tab indent library at this time.
     "indent": [
       2,
       "tab",
@@ -77,18 +87,10 @@
         "SwitchCase": 1
       }
     ],
-    "max-len": [
-      1,
-      140,
-      4,
-      {
-        "ignoreUrls": true,
-        "ignoreComments": true,
-        "ignorePattern": "^(\\s*)<([^\"{}();])+$"
-      }
-    ],
+    // Creates issues within JSX when paired with Prettier. This library defers to Preitter for line length.
+    "max-len": "off",
     "no-multi-spaces": [
-      1,
+      2,
       {
         // allows "column spacing." Following key names are Abstract Syntax Tree types
         "exceptions": {
@@ -100,33 +102,54 @@
         }
       }
     ],
-    "no-tabs": 0,
+    // javascript:void(0) is present in SLDS markup
+    "no-script-url": "off",
+    // This is a tab indent library at this time.
+    "no-tabs": "off",
+    // _ is not really private.
     "no-underscore-dangle": ["error", { "allowAfterThis": true }],
+    // Increases readability of function name
     "space-before-function-paren": [2, "always"],
 
     // Can't be used because it doesn't currently recognize props used in functions
-    "react/no-unused-prop-types": 0,
+    "react/no-unused-prop-types": "off",
+    // This is a tab indent library at this time.
     "react/jsx-indent": [2, "tab"],
     // indent props passed into React component
-    "react/jsx-indent-props": [1, "tab"],
+    "react/jsx-indent-props": [2, "tab"],
 
     //
-    // THE FOLLOWING RULES NEED REVIEW IN THE FUTURE (and hopefully removed)
+    // THE FOLLOWING RULES NEED REVIEW IN THE FUTURE (and possibly removed)
     //
+    // When someone is ready to tackle these issues, feel free to tighten
+    // the following rules. Do not push a change that causes lint errors/warnings
+    // to start appearing. All lint warnings errors should be meaningful, and
+    // therefore, there should never intentionally be any.
 
     // static class properties/method is still too low of a babel stage
     "class-methods-use-this": "warn",
-    // We are open to changing this to always use a trailing comma
+    // We are open to changing this to always use a trailing comma,
+    // in order to make re-sorting easier
     "comma-dangle": [2, "never"],
-    // currently used in older files
+    // TODO: Should be removed
+    "func-names": "off",
+    // May consider removing
+    "function-paren-newline": "off",
+    // TODO: Should be removed
+    "import/first": "off",
+    // currently used in older files, this should be removed
     "no-param-reassign": [
-      1,
+      2,
       {
         "props": false
       }
     ],
     // currently used in older files
-    "no-plusplus": 0,
+    "no-plusplus": "off",
+    // Should be removed in the future. `event` is the main global used now.
+    "no-restricted-globals": "off",
+    // Would prefer all mixed operators as errors, but this conflicts
+    // with Prettier
     "no-mixed-operators": [
       "error",
       {
@@ -140,41 +163,46 @@
         "allowSamePrecedence": true
       }
     ],
+    // May consider removing
+    "object-curly-newline": "off",
+    // May consider removing
+    "prefer-destructuring": "off",
 
-    // Prevent missing props validation in a React component definition
-    "react/prop-types": 1,
-    // We are migrating to classes
-    "react/prefer-es6-class": 1,
+    // May consider removing. Would be unable to test for undefined props.
+    "react/default-props-match-prop-types": "off",
+    // TODO: Should be removed
+    "react/no-unused-state": "off",
+    // TODO: Should be removed
+    "react/jsx-curly-brace-presence": "off",
+    // TODO: Should be removed
+    "react/prop-types": "off",
+    // TODO: Should be removed
+    "react/prefer-es6-class": "off",
     // Used to prevent usage of any, array, and object but may be too strict currently
-    "react/forbid-prop-types": 0,
+    "react/forbid-prop-types": "off",
+    // TODO: Should be removed
+    "react/no-multi-comp": "off",
     // Don't throw errors when explicit defaults aren't set
-    "react/require-default-props": 0,
+    "react/require-default-props": "off",
     // Components that are top-level should be classes, so the DOM ref exists
-    "react/prefer-stateless-function": 1,
+    "react/prefer-stateless-function": "off",
     // Prevent multiple component definition per file
-    "react/no-multi-comp": 1,
-    // Prevent sorting of props or propTypes
-    "react/sort-comp": 1,
+    "react/no-multi-comp": "off",
 
-    "jsx-a11y/aria-activedescendant-has-tabindex": 1,
-    "jsx-a11y/interactive-supports-focus": 1,
-    "jsx-a11y/no-autofocus": 1,
-    "jsx-a11y/no-interactive-element-to-noninteractive-role": 1,
-    "jsx-a11y/no-noninteractive-element-interactions": 1,
-    "jsx-a11y/no-noninteractive-tabindex": 1,
-    "jsx-a11y/no-redundant-roles": 1,
-    "jsx-a11y/role-has-required-aria-props": 1,
-
-    // Taken from eslint-config-sfmc
-    "func-names": 0,
-    "import/first": 0,
-    "react/no-multi-comp": 0,
-
-    // When someone is ready to tackle these issues, feel free to uncomment the following
-    // Do not push a change that causes lint errors/warnings to start appearing
-    // All lint warnings errors should be meaningful, and therefore, there should never intentionally be any
-    "react/prefer-es6-class": 0,
-    "react/prop-types": 0,
-    "react/prefer-stateless-function": 0
+    // javascript:void(0) is present in SLDS markup
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/aria-activedescendant-has-tabindex": 2,
+    "jsx-a11y/interactive-supports-focus": 2,
+    "jsx-a11y/no-autofocus": 2,
+    "jsx-a11y/no-interactive-element-to-noninteractive-role": 2,
+    "jsx-a11y/no-noninteractive-element-interactions": 2,
+    "jsx-a11y/no-noninteractive-tabindex": 2,
+    "jsx-a11y/no-redundant-roles": 2,
+    "jsx-a11y/role-has-required-aria-props": 2,
+    // Many labels have htmlFor, but are still errors
+    "jsx-a11y/label-has-for": "off",
+    // TODO: Should be removed. All mouse interactions should be able
+    // to be done with the keyboard.
+    "jsx-a11y/click-events-have-key-events": "off"
   }
 }

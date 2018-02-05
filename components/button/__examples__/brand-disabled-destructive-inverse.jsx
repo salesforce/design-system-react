@@ -16,7 +16,7 @@ const Example = createReactClass({
 						disabled
 						label="Disabled"
 						onClick={() => {
-							alert('Disabled Button Clicked');
+							console.log('Disabled Button Clicked');
 						}}
 						variant="brand"
 					/>

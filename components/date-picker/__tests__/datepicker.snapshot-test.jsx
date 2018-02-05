@@ -70,15 +70,15 @@ test(`Datepicker
 		triggerClassName,
 		weekDayLabels
 	DOM Snapshot`, () => {
-		const domTree = renderer
-			.create(<SnapshotDefault {...customProps} />)
-			.toJSON();
-		expect(domTree).toMatchSnapshot();
-	});
+	const domTree = renderer
+		.create(<SnapshotDefault {...customProps} />)
+		.toJSON();
+	expect(domTree).toMatchSnapshot();
+});
 
 test(`Datepicker
 	isIsoWeekday
 	DOM Snapshot`, () => {
-		const domTree = renderer.create(<SnapshotDefault isIsoWeekday />).toJSON();
-		expect(domTree).toMatchSnapshot();
-	});
+	const domTree = renderer.create(<SnapshotDefault isIsoWeekday />).toJSON();
+	expect(domTree).toMatchSnapshot();
+});

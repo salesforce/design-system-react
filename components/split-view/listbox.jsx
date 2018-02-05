@@ -161,9 +161,11 @@ class SplitViewListbox extends React.Component {
 		if (this.props.multiple && event.key === 'a' && event.ctrlKey) {
 			// select / deselect all
 			eventUtil.trap(event);
-			this.props.options === this.props.selection
-				? this.deselectAllListItems(event)
-				: this.selectAllListItems(event);
+			if (this.props.options === this.props.selection) {
+				this.deselectAllListItems(event);
+			} else {
+				this.selectAllListItems(event);
+			}
 		} else if (event.key === 'ArrowUp') {
 			eventUtil.trap(event);
 			this.moveToPreviousItem(event);
@@ -194,7 +196,9 @@ class SplitViewListbox extends React.Component {
 	moveToIndex (event, index) {
 		const item = this.props.options[index];
 
-		!event.metaKey && !event.ctrlKey && this.selectListItem(item, event);
+		if (!event.metaKey && !event.ctrlKey) {
+			this.selectListItem(item, event);
+		}
 
 		this.focusItem(item);
 	}
@@ -212,7 +216,9 @@ class SplitViewListbox extends React.Component {
 	focusItem (item, setDataOnly) {
 		const index = this.props.options.indexOf(item);
 
-		!setDataOnly && this.listItemComponents[index].focus();
+		if (!setDataOnly) {
+			this.listItemComponents[index].focus();
+		}
 
 		this.setState({
 			currentFocusedListItem: {
@@ -289,7 +295,7 @@ class SplitViewListbox extends React.Component {
 		return this.props.events.onSort ? (
 			<a
 				style={{ borderTop: '0' }}
-				href="javascript:void(0);"
+				href="javascript:void(0);" // eslint-disable-line no-script-url
 				role="button"
 				className="slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset"
 				onClick={this.props.events.onSort}
