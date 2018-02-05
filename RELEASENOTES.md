@@ -37,6 +37,16 @@ These are changes that have backwards-compatible solutions present and that comp
 
 * Revert Modal CSS class `slds-fade-in-open`
 
+**Maintenance**
+
+* Add NPM package-lock
+* Clarify lint scripts
+* Kabob-case filename check
+* Fix typos in webpack docs
+* Remove JSX curly braces when not needed
+* Add Trailing comma to iterables
+* Updates dev node engine version to 8.x
+
 ## Release 0.8.6
 
 **Major features**
