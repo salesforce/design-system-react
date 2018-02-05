@@ -23,7 +23,7 @@ These are the relevant portions of the changes you will need to do in order to w
 ```
   "scripts": {
      ...,
-    "postinstall": "bash postinstall.sh",
+    "postinstall": "node postinstall.js",
     "build": "webpack",
     ...
   },
@@ -67,7 +67,7 @@ These are the relevant portions of the changes you will need to do in order to w
     ...
 ```
 
-#### postinstall.sh
+#### postinstall.js
 
 Create symlinks from `node_modules` to your public folder in order to serve static assets
 
@@ -103,7 +103,7 @@ directories.forEach((folderName) => {
 import React, { Component } from 'react';
 
 import '@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.min.css';
-import IconSettings from 'design-system-react/components/icon-settings';
+import IconSettings from '@salesforce/design-system-react/components/icon-settings';
 ...
 ...
 

@@ -29,14 +29,14 @@ const TextTruncate = createReactClass({
 		text: PropTypes.string,
 		textTruncateChild: PropTypes.node,
 		truncateText: PropTypes.string,
-		wrapper: PropTypes.func
+		wrapper: PropTypes.func,
 	},
 
 	getDefaultProps () {
 		return {
 			line: 1,
 			text: '',
-			truncateText: '…'
+			truncateText: '…',
 		};
 	},
 
@@ -93,7 +93,7 @@ const TextTruncate = createReactClass({
 			style['font-weight'],
 			style['font-style'],
 			style['font-size'],
-			style['font-family']
+			style['font-family'],
 		].join(' ');
 
 		// return if display:none
@@ -224,7 +224,7 @@ const TextTruncate = createReactClass({
 				{this.state.renderText}
 			</div>
 		);
-	}
+	},
 });
 
 export default TextTruncate;

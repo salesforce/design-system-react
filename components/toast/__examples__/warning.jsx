@@ -12,7 +12,7 @@ class Example extends React.Component {
 					<Toast
 						labels={{
 							heading:
-								'Can’t share file “report-q3.pdf” with the selected users.'
+								'Can’t share file “report-q3.pdf” with the selected users.',
 						}}
 						variant="warning"
 					/>

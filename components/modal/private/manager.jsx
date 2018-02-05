@@ -24,25 +24,25 @@ const customStyles = {
 		WebkitOverflowScrolling: 'default',
 		borderRadius: 'default',
 		outline: 'default',
-		padding: 'default'
+		padding: 'default',
 	},
 	overlay: {
-		backgroundColor: 'default'
-	}
+		backgroundColor: 'default',
+	},
 };
 
 const Manager = createReactClass({
 	getDefaultProps () {
 		return {
 			title: '',
-			isOpen: false
+			isOpen: false,
 		};
 	},
 
 	getInitialState () {
 		return {
 			isOpen: this.props.isOpen,
-			revealed: false
+			revealed: false,
 		};
 	},
 
@@ -144,7 +144,7 @@ const Manager = createReactClass({
 				{this.getModal()}
 			</Modal>
 		);
-	}
+	},
 });
 
 export default Manager;

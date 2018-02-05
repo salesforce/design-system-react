@@ -28,13 +28,13 @@ const Example = createReactClass({
 						options={[
 							{ label: 'A Option', value: 'A0' },
 							{ label: 'B Option', value: 'B0' },
-							{ label: 'C Option', value: 'C0' }
+							{ label: 'C Option', value: 'C0' },
 						]}
 					/>
 				</ButtonGroup>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

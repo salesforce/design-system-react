@@ -8,7 +8,7 @@ const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/alert/__examples__/warning.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/alert/__examples__/offline.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/alert/__examples__/error.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/alert/__examples__/dismissable.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/alert/__examples__/dismissable.jsx'),
 ];
 
 module.exports = siteStories;

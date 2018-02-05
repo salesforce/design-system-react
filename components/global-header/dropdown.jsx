@@ -59,7 +59,7 @@ GlobalHeaderDropdown.propTypes = {
 	buttonClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
@@ -74,7 +74,7 @@ GlobalHeaderDropdown.propTypes = {
 		'border',
 		'border-filled',
 		'more',
-		'global-header'
+		'global-header',
 	]),
 	/**
 	 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
@@ -93,7 +93,7 @@ GlobalHeaderDropdown.propTypes = {
 		'top right',
 		'bottom left',
 		'bottom',
-		'bottom right'
+		'bottom right',
 	]),
 	/**
 	 *  Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px).
@@ -106,7 +106,7 @@ GlobalHeaderDropdown.propTypes = {
 	/**
 	 * An array of menu item.
 	 */
-	options: PropTypes.array.isRequired
+	options: PropTypes.array.isRequired,
 };
 
 // ### Default Props
@@ -116,7 +116,7 @@ GlobalHeaderDropdown.defaultProps = {
 	iconVariant: 'global-header',
 	nubbinPosition: 'top right',
 	// TODO: Use design tokens to remove "magic numbers" that center nubbin under button
-	offset: '12px 16px'
+	offset: '12px 16px',
 };
 
 export default GlobalHeaderDropdown;

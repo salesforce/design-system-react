@@ -9,7 +9,7 @@ const Example = createReactClass({
 
 	getInitialState () {
 		return {
-			isOpen: false
+			isOpen: false,
 		};
 	},
 
@@ -35,7 +35,7 @@ const Example = createReactClass({
 				<Input placeholder="With custom Input" value="" />
 			</Datepicker>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

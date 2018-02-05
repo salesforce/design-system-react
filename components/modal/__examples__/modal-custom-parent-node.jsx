@@ -8,7 +8,7 @@ const Example = createReactClass({
 
 	getInitialState () {
 		return {
-			isOpen: false
+			isOpen: false,
 		};
 	},
 
@@ -51,7 +51,7 @@ const Example = createReactClass({
 				</Modal>
 			</div>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

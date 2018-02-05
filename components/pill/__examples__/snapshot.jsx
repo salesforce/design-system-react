@@ -19,7 +19,7 @@ const Example = createReactClass({
 							labels={{
 								label: 'Pill Label',
 								title: 'Full pill label verbiage mirrored here',
-								removeTitle: 'Remove'
+								removeTitle: 'Remove',
 							}}
 							onClick={noop}
 							onRemove={noop}
@@ -30,7 +30,7 @@ const Example = createReactClass({
 							labels={{
 								label: 'Pill Label',
 								title: 'Full pill label verbiage mirrored here',
-								removeTitle: 'Remove'
+								removeTitle: 'Remove',
 							}}
 							onRemove={noop}
 						/>
@@ -40,7 +40,7 @@ const Example = createReactClass({
 							labels={{
 								label: 'Pill Label',
 								title: 'Full pill label verbiage mirrored here',
-								removeTitle: 'Remove'
+								removeTitle: 'Remove',
 							}}
 							icon={<Icon title="Account" category="standard" name="account" />}
 							onClick={noop}
@@ -52,7 +52,7 @@ const Example = createReactClass({
 							labels={{
 								label: 'Pill Label',
 								title: 'Full pill label verbiage mirrored here',
-								removeTitle: 'Remove'
+								removeTitle: 'Remove',
 							}}
 							avatar={
 								<Avatar
@@ -70,7 +70,7 @@ const Example = createReactClass({
 							labels={{
 								label: 'Pill Label',
 								title: 'Full pill label verbiage mirrored here',
-								removeTitle: 'Remove'
+								removeTitle: 'Remove',
 							}}
 							hasError
 							icon={
@@ -90,10 +90,10 @@ const Example = createReactClass({
 							labels={{
 								label: 'Pill Label',
 								title: 'Full pill label verbiage mirrored here',
-								removeTitle: 'Remove'
+								removeTitle: 'Remove',
 							}}
 							assistiveText={{
-								remove: 'Press delete or backspace to remove'
+								remove: 'Press delete or backspace to remove',
 							}}
 							bare
 							variant="option"
@@ -105,7 +105,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

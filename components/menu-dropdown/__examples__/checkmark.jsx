@@ -23,7 +23,7 @@ const Example = createReactClass({
 							options={[
 								{ label: 'Menu Item One', value: 'A0' },
 								{ label: 'Menu Item Two', value: 'B0' },
-								{ label: 'Menu Item Three', value: 'C0' }
+								{ label: 'Menu Item Three', value: 'C0' },
 							]}
 							value="A0"
 						/>
@@ -46,25 +46,25 @@ const Example = createReactClass({
 									value: 'A0',
 									rightIcon: {
 										category: 'utility',
-										name: 'table'
-									}
+										name: 'table',
+									},
 								},
 								{
 									label: 'Kanban Board',
 									value: 'A0',
 									rightIcon: {
 										category: 'utility',
-										name: 'kanban'
-									}
+										name: 'kanban',
+									},
 								},
 								{
 									label: 'List View',
 									value: 'A0',
 									rightIcon: {
 										category: 'utility',
-										name: 'side_list'
-									}
-								}
+										name: 'side_list',
+									},
+								},
 							]}
 							value="A0"
 						/>
@@ -72,7 +72,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

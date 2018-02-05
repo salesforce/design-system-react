@@ -13,41 +13,41 @@ import AvatarListboxExample from '../__examples__/listbox-avatar';
 testDOMandHTML({
 	name: 'Linked, Unlinked, Truncated',
 	test,
-	Component: BaseExample
+	Component: BaseExample,
 });
 
 testDOMandHTML({
 	name: 'Icon, Avatar, Error',
 	test,
-	Component: IconExample
+	Component: IconExample,
 });
 
 testDOMandHTML({
 	name: 'Bare',
 	test,
-	Component: BarePillListboxExample
+	Component: BarePillListboxExample,
 });
 
 testDOMandHTML({
 	name: 'Pill Container',
 	test,
-	Component: ContainerExample
+	Component: ContainerExample,
 });
 
 testDOMandHTML({
 	name: 'Listbox Of Pill Options',
 	test,
-	Component: ListboxExample
+	Component: ListboxExample,
 });
 
 testDOMandHTML({
 	name: 'Listbox Of Pill Options With Icon',
 	test,
-	Component: IconListboxExample
+	Component: IconListboxExample,
 });
 
 testDOMandHTML({
 	name: 'Listbox Of Pill Options With Avatar',
 	test,
-	Component: AvatarListboxExample
+	Component: AvatarListboxExample,
 });

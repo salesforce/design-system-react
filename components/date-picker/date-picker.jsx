@@ -47,7 +47,7 @@ const propTypes = {
 	assistiveText: shape({
 		nextMonth: PropTypes.string,
 		openCalendar: PropTypes.string,
-		previousMonth: PropTypes.string
+		previousMonth: PropTypes.string,
 	}),
 	/**
 	 * Aligns the right or left side of the menu with the respective side of the trigger. _Tested with snapshot testing._
@@ -63,7 +63,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Disable input and calendar. _Tested with Mocha framework._
@@ -104,7 +104,7 @@ const propTypes = {
 		months: PropTypes.array,
 		placeholder: PropTypes.string,
 		today: PropTypes.string,
-		weekDays: PropTypes.array
+		weekDays: PropTypes.array,
 	}),
 	/**
 	 * Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use view [Concepts and Best Practices](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices)
@@ -123,7 +123,7 @@ const propTypes = {
 	menuPosition: PropTypes.oneOf([
 		'absolute',
 		'overflowBoundaryElement',
-		'relative'
+		'relative',
 	]),
 	/**
 	 * Triggered when the user wants to focus on a new day with the keyboard. If the target node is a day it will return the keyboard event a data object with the shape: `{date: [Date object]}`. Event will be `null` when new month is re-rendered.  _Tested with Mocha framework._
@@ -167,12 +167,12 @@ const propTypes = {
 	triggerClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Sets date with a `Date` ECMAScript object. _Tested with snapshot testing._
 	 */
-	value: PropTypes.instanceOf(Date)
+	value: PropTypes.instanceOf(Date),
 };
 
 const defaultProps = {
@@ -180,7 +180,7 @@ const defaultProps = {
 	assistiveText: {
 		nextMonth: 'Next month',
 		openCalendar: 'Open Calendar',
-		previousMonth: 'Previous month'
+		previousMonth: 'Previous month',
 	},
 	formatter (date) {
 		return date
@@ -201,7 +201,7 @@ const defaultProps = {
 			'September',
 			'October',
 			'November',
-			'December'
+			'December',
 		],
 		placeholder: 'Pick a Date',
 		today: 'Today',
@@ -212,8 +212,8 @@ const defaultProps = {
 			'Wednesday',
 			'Thursday',
 			'Friday',
-			'Saturday'
-		]
+			'Saturday',
+		],
 	},
 	menuPosition: 'absolute',
 	parser (str) {
@@ -221,7 +221,7 @@ const defaultProps = {
 	},
 	relativeYearFrom: -5,
 	relativeYearTo: 5,
-	dateDisabled: () => false
+	dateDisabled: () => false,
 };
 
 /**
@@ -257,7 +257,7 @@ class Datepicker extends React.Component {
 			isOpen: false,
 			value: props.value,
 			formattedValue: initDate || '',
-			inputValue: initDate || ''
+			inputValue: initDate || '',
 		};
 	}
 
@@ -277,7 +277,7 @@ class Datepicker extends React.Component {
 				this.setState({
 					value: nextProps.value,
 					formattedValue: this.props.formatter(nextProps.value),
-					inputValue: this.props.formatter(nextProps.value)
+					inputValue: this.props.formatter(nextProps.value),
 				});
 			}
 		}
@@ -349,7 +349,7 @@ class Datepicker extends React.Component {
 							this.props.align === 'right',
 						'slds-dropdown--left':
 							this.props.menuPosition === 'relative' &&
-							this.props.align === 'left'
+							this.props.align === 'left',
 					},
 					this.props.className
 				)}
@@ -393,7 +393,7 @@ class Datepicker extends React.Component {
 		this.setState({
 			value: date,
 			formattedValue: this.props.formatter(date),
-			inputValue: this.props.formatter(date)
+			inputValue: this.props.formatter(date),
 		});
 
 		this.handleRequestClose();
@@ -402,7 +402,7 @@ class Datepicker extends React.Component {
 			this.props.onChange(event, {
 				date,
 				formattedDate: this.props.formatter(date),
-				timezoneOffset: date.getTimezoneOffset()
+				timezoneOffset: date.getTimezoneOffset(),
 			});
 		}
 
@@ -427,7 +427,7 @@ class Datepicker extends React.Component {
 	handleInputChange (event) {
 		this.setState({
 			formattedValue: event.target.value,
-			inputValue: event.target.value
+			inputValue: event.target.value,
 		});
 
 		const date = this.props.parser(event.target.value);
@@ -436,7 +436,7 @@ class Datepicker extends React.Component {
 			this.props.onChange(event, {
 				date,
 				formattedDate: event.target.value,
-				timezoneOffset: date.getTimezoneOffset()
+				timezoneOffset: date.getTimezoneOffset(),
 			});
 		}
 	}
@@ -564,12 +564,12 @@ class Datepicker extends React.Component {
 				this.props.required, // eslint-disable-line react/prop-types
 			value:
 				(this.props.children && this.props.children.props.value) ||
-				this.state.inputValue
+				this.state.inputValue,
 		};
 
 		const clonedInput = this.props.children ? (
 			React.cloneElement(this.props.children, {
-				...clonedInputProps
+				...clonedInputProps,
 			})
 		) : (
 			<Input {...clonedInputProps} />
@@ -582,7 +582,7 @@ class Datepicker extends React.Component {
 					'slds-dropdown-trigger--click',
 					'ignore-react-onclickoutside',
 					{
-						'slds-is-open': this.getIsOpen()
+						'slds-is-open': this.getIsOpen(),
 					},
 					this.props.triggerClassName
 				)}
@@ -595,7 +595,7 @@ class Datepicker extends React.Component {
 }
 
 Datepicker.contextTypes = {
-	iconPath: PropTypes.string
+	iconPath: PropTypes.string,
 };
 
 Datepicker.displayName = DATE_PICKER;

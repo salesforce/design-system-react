@@ -12,7 +12,7 @@ import { shape } from 'airbnb-prop-types';
  */
 import {
 	createMountNode,
-	destroyMountNode
+	destroyMountNode,
 } from '../../../tests/enzyme-helpers';
 
 import RadioButtonGroup from '../../radio-button-group';
@@ -54,14 +54,14 @@ class RadioButtonGroupExample extends React.Component {
 RadioButtonGroupExample.propTypes = {
 	labels: shape({
 		error: PropTypes.string,
-		label: PropTypes.string
+		label: PropTypes.string,
 	}),
 	disabled: PropTypes.bool,
-	required: PropTypes.bool
+	required: PropTypes.bool,
 };
 
 RadioButtonGroupExample.defaultProps = {
-	labels: { label: 'Day of week' }
+	labels: { label: 'Day of week' },
 };
 
 /* RadioButtonGroup rendering tests
@@ -95,7 +95,7 @@ describe('RadioButtonGroup', function () {
 
 	it('renders a disabled state', () => {
 		wrapper = mount(<RadioButtonGroupExample disabled />, {
-			attachTo: mountNode
+			attachTo: mountNode,
 		});
 		const radios = wrapper.find(Radio);
 		for (let index = 0; index < radios.length; index++) {
@@ -106,7 +106,7 @@ describe('RadioButtonGroup', function () {
 
 	it('renders a required indicator', () => {
 		wrapper = mount(<RadioButtonGroupExample required />, {
-			attachTo: mountNode
+			attachTo: mountNode,
 		});
 		const abbr = wrapper.find('abbr');
 		expect(abbr.text()).to.equal('*', 'there is a required indicator');

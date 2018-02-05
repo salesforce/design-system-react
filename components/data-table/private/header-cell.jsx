@@ -21,7 +21,7 @@ import checkProps from '../column-check-props';
 // ## Constants
 import {
 	DATA_TABLE_HEADER_CELL,
-	DATA_TABLE_COLUMN
+	DATA_TABLE_COLUMN,
 } from '../../../utilities/constants';
 
 /**
@@ -75,12 +75,12 @@ const DataTableHeaderCell = createReactClass({
 		/**
 		 * Width of column. This is required for advanced/fixed layout tables. Please provide units. (`rems` are recommended)
 		 */
-		width: PropTypes.string
+		width: PropTypes.string,
 	},
 
 	getInitialState () {
 		return {
-			sortDirection: null
+			sortDirection: null,
 		};
 	},
 
@@ -101,11 +101,11 @@ const DataTableHeaderCell = createReactClass({
 		const sortDirection = oldSortDirection === 'asc' ? 'desc' : 'asc';
 		const data = {
 			property: this.props.property,
-			sortDirection
+			sortDirection,
 		};
 
 		this.setState({
-			sortDirection
+			sortDirection,
 		});
 
 		if (isFunction(this.props.onSort)) {
@@ -131,7 +131,7 @@ const DataTableHeaderCell = createReactClass({
 					'slds-is-sortable': sortable,
 					'slds-is-sorted': isSorted,
 					[`slds-is-sorted--${sortDirection}`]: sortDirection,
-					'slds-is-sorted--asc': isSorted && !sortDirection // default for hover, up arrow is ascending which means A is at the top of the table, and Z is at the bottom. You have to think about row numbers abstracting, and not the visual order on the table.
+					'slds-is-sorted--asc': isSorted && !sortDirection, // default for hover, up arrow is ascending which means A is at the top of the table, and Z is at the bottom. You have to think about row numbers abstracting, and not the visual order on the table.
 				})}
 				focusable={sortable ? true : null}
 				scope="col"
@@ -176,7 +176,7 @@ const DataTableHeaderCell = createReactClass({
 				)}
 			</th>
 		);
-	}
+	},
 });
 
 export default DataTableHeaderCell;

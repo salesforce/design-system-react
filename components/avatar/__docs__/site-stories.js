@@ -8,7 +8,7 @@ const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/avatar/__examples__/user-initials.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/avatar/__examples__/user-icon.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/avatar/__examples__/entity-initials.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/avatar/__examples__/entity-icon.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/avatar/__examples__/entity-icon.jsx'),
 ];
 
 module.exports = siteStories;

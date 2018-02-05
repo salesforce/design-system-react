@@ -31,94 +31,94 @@ const tasks = ({ release, done }) => {
 	const commands = [
 		{
 			message: `# Check if ${remote} remote exists`,
-			command: `git ls-remote ${remote} --exit-code --quiet`
+			command: `git ls-remote ${remote} --exit-code --quiet`,
 		},
 		{
 			ignoreCommand: isBuildServer,
 			message:
 				'# Checking out master branch. Please ignore "RELEASENOTES.md - Your branch and \'upstream/master\' have diverged."',
-			command: 'git checkout master'
+			command: 'git checkout master',
 		},
 		{
 			ignoreCommand: isBuildServer,
 			message: '# Pruning NPM dependencies',
-			command: 'npm prune'
+			command: 'npm prune',
 		},
 		{
 			ignoreCommand: isBuildServer,
 			message: '# Running NPM install',
 			command: 'npm install',
-			verbose: false
+			verbose: false,
 		},
 		{
 			message: '# Build icons from latest icon module',
-			command: 'npm run icons'
+			command: 'npm run icons',
 		},
 		{
 			ignoreCommand: isBuildServer,
 			message: '# Running test suite',
 			command: 'npm test',
-			verbose: false
+			verbose: false,
 		},
 		{
 			ignoreCommand: isBuildServer,
 			message:
 				'# Update release notes, inline icons (if needed), and site component documentation',
-			command: 'git add RELEASENOTES.md'
+			command: 'git add RELEASENOTES.md',
 		},
 		{ command: 'git add icons/*' },
 		{ command: 'npm run build-docs' },
 		{ command: 'git add components/component-docs.json' },
 		{
 			ignoreCommand: !isBuildServer,
-			command: `rm -f ${release}.md`
+			command: `rm -f ${release}.md`,
 		},
 		{
 			// always commit because ${release}.md just got deleted if it is a release commit
 			ignoreCommand: !isBuildServer,
 			command:
-				'git commit -a -m "Clean up for release" -m "Build Server commit: Update release notes, commit inline icons (if needed), site component documentation (if needed). Remove patch.md or minor.md"'
+				'git commit -a -m "Clean up for release" -m "Build Server commit: Update release notes, commit inline icons (if needed), site component documentation (if needed). Remove patch.md or minor.md"',
 		},
 		{
 			// test if any files have changed, if they have then commit them
 			ignoreCommand: isBuildServer,
 			command:
-				'git diff-index --quiet HEAD || git commit -m "Update release notes, inline icons (if needed), and site component documentation"'
+				'git diff-index --quiet HEAD || git commit -m "Update release notes, inline icons (if needed), and site component documentation"',
 		},
 		{
 			ignoreCommand: isBuildServer,
-			command: 'git pull upstream master'
+			command: 'git pull upstream master',
 		},
 		{
 			ignoreCommand: isBuildServer,
-			command: 'git diff --exit-code'
+			command: 'git diff --exit-code',
 		},
 		{
 			message:
 				'# Bumping version in package.json, committing RELEASENOTES.md, and checking that there are no files in local working copy. Published package is based on current state of local files, not versioned files.',
-			command: `npm --no-git-tag-version version ${release}`
+			command: `npm --no-git-tag-version version ${release}`,
 		},
 		{
 			message: `# Building and publishing tag to ${remote} remote`,
 			command: `./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=${remote}`,
-			verbose: false
+			verbose: false,
 		},
 		{
 			message: `# Pushing local master branch to ${remote} remote`,
-			command: `git push ${remote} master --no-verify`
+			command: `git push ${remote} master --no-verify`,
 		},
 		{
 			message: '# Set up NPM configuration',
-			command: 'cp scripts/.npmrc .npmrc'
+			command: 'cp scripts/.npmrc .npmrc',
 		},
 		{
 			message: '# Publish to NPM',
-			command: 'npm publish .tmp-npm --access public'
+			command: 'npm publish .tmp-npm --access public',
 		},
 		{
 			message: '# Remove NPM configuration',
-			command: 'rm .npmrc'
-		}
+			command: 'rm .npmrc',
+		},
 	]
 		.filter((item) => !item.ignoreCommand)
 		.map((item) => ({ ...item, rootPath }));
@@ -152,9 +152,9 @@ const releaseNotesSchema = {
 		releasenotes: {
 			default: 'y',
 			message:
-				"Have you written release notes (y/n)? 'n' will open RELEASENOTES.MD."
-		}
-	}
+				"Have you written release notes (y/n)? 'n' will open RELEASENOTES.MD.",
+		},
+	},
 };
 
 // START HERE
@@ -179,7 +179,7 @@ if (isBuildServer) {
 			exec(
 				{
 					command: 'open RELEASENOTES.MD',
-					rootPath
+					rootPath,
 				},
 				() => {}
 			);

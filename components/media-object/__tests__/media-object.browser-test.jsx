@@ -4,7 +4,7 @@ import chaiEnzyme from 'chai-enzyme';
 // `this.wrapper` and `this.dom` is set in the helpers file
 import {
 	mountComponent,
-	unmountComponent
+	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 
 import MediaObject from '../../media-object';
@@ -18,7 +18,7 @@ chai.use(chaiEnzyme());
 const COMPONENT_CSS_CLASSES = {
 	base: 'slds-media',
 	figure: 'slds-media__figure',
-	body: 'slds-media__body'
+	body: 'slds-media__body',
 };
 
 const DemoComponent = (props) => (

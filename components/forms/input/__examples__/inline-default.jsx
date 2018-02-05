@@ -8,7 +8,7 @@ const Example = createReactClass({
 
 	getInitialState () {
 		return {
-			value: 'Edit me inline'
+			value: 'Edit me inline',
 		};
 	},
 
@@ -44,7 +44,7 @@ const Example = createReactClass({
 				</section>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

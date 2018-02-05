@@ -25,8 +25,8 @@ test('MenuPicklist Default HTML Snapshot', () => {
 test(`MenuPicklist
 	errorText
 	DOM Snapshot`, () => {
-		const domTree = renderer
-			.create(<SnapshotDefault errorText="This field is required." required />)
-			.toJSON();
-		expect(domTree).toMatchSnapshot();
-	});
+	const domTree = renderer
+		.create(<SnapshotDefault errorText="This field is required." required />)
+		.toJSON();
+	expect(domTree).toMatchSnapshot();
+});

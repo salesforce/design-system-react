@@ -11,35 +11,35 @@ import CustomClassNames from '../__examples__/custom-class-name';
 testDOMandHTML({
 	name: 'Alert Info',
 	test,
-	Component: Info
+	Component: Info,
 });
 
 testDOMandHTML({
 	name: 'Alert Warning',
 	test,
-	Component: Warning
+	Component: Warning,
 });
 
 testDOMandHTML({
 	name: 'Alert Error',
 	test,
-	Component: ErrorAlert
+	Component: ErrorAlert,
 });
 
 testDOMandHTML({
 	name: 'Alert Offline',
 	test,
-	Component: Offline
+	Component: Offline,
 });
 
 testDOMandHTML({
 	name: 'Alert Dismissable',
 	test,
-	Component: Dismissable
+	Component: Dismissable,
 });
 
 testDOMandHTML({
 	name: 'Alert Custom Class Name',
 	test,
-	Component: CustomClassNames
+	Component: CustomClassNames,
 });

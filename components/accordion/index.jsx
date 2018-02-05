@@ -19,7 +19,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * HTML id for accordion component. _Tested with snapshot testing._
@@ -37,7 +37,7 @@ const propTypes = {
 	 * </SLDSAccordion>
 	 * ```
 	 */
-	children: PropTypes.node.isRequired
+	children: PropTypes.node.isRequired,
 };
 
 /**

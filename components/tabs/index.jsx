@@ -90,7 +90,7 @@ const propTypes = {
 	children: PropTypes.oneOfType([
 		PropTypes.arrayOf(PropTypes.node),
 		PropTypes.node,
-		PropTypes.element
+		PropTypes.element,
 	]).isRequired,
 
 	/**
@@ -99,7 +99,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 
 	/**
@@ -120,11 +120,11 @@ const propTypes = {
 	/**
 	 * The Tab (and corresponding TabPanel) that is currently selected.
 	 */
-	selectedIndex: PropTypes.number
+	selectedIndex: PropTypes.number,
 };
 const defaultProps = {
 	defaultSelectedIndex: 0,
-	variant: 'default'
+	variant: 'default',
 };
 
 class Tabs extends React.Component {
@@ -138,7 +138,7 @@ class Tabs extends React.Component {
 		this.generatedId = shortid.generate();
 		this.flavor = this.getVariant();
 		this.setState({
-			selectedIndex: this.props.defaultSelectedIndex
+			selectedIndex: this.props.defaultSelectedIndex,
 		});
 	}
 
@@ -369,7 +369,7 @@ class Tabs extends React.Component {
 		const {
 			className,
 			id = this.generatedId,
-			variant = this.getVariant
+			variant = this.getVariant,
 		} = this.props;
 
 		if (this.state.focus) {
@@ -385,7 +385,7 @@ class Tabs extends React.Component {
 				className={classNames(
 					{
 						'slds-tabs--default': variant === 'default',
-						'slds-tabs--scoped': variant === 'scoped'
+						'slds-tabs--scoped': variant === 'scoped',
 					},
 					className
 				)}

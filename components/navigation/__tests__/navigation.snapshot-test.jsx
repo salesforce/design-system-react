@@ -17,7 +17,7 @@ const customProps = {
 	className: 'CUSTOM-CLASSNAME',
 	id: 'CUSTOM-ID',
 	variant: 'shade',
-	selectedId: 'all_reports'
+	selectedId: 'all_reports',
 };
 
 test(`Navigation
@@ -25,8 +25,8 @@ test(`Navigation
 		id,
 		variant
 	DOM Snapshot`, () => {
-		const domTree = renderer
-			.create(<SnapshotDefault {...customProps} />)
-			.toJSON();
-		expect(domTree).toMatchSnapshot();
-	});
+	const domTree = renderer
+		.create(<SnapshotDefault {...customProps} />)
+		.toJSON();
+	expect(domTree).toMatchSnapshot();
+});

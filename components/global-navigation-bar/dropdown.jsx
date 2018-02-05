@@ -86,7 +86,7 @@ GlobalNavigationBarDropdown.propTypes = {
 	buttonClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
@@ -107,13 +107,13 @@ GlobalNavigationBarDropdown.propTypes = {
 	/**
 	 * An array of menu item.
 	 */
-	options: PropTypes.array.isRequired
+	options: PropTypes.array.isRequired,
 };
 
 // ### Default Props
 GlobalNavigationBarDropdown.defaultProps = {
 	align: 'right',
-	length: null
+	length: null,
 };
 
 export default GlobalNavigationBarDropdown;

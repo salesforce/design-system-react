@@ -18,7 +18,7 @@ import classNames from 'classnames';
 // ## Constants
 import {
 	GLOBAL_NAVIGATION_BAR,
-	GLOBAL_NAVIGATION_BAR_REGION
+	GLOBAL_NAVIGATION_BAR_REGION,
 } from '../../utilities/constants';
 
 const auditChildren = (children) => {
@@ -47,7 +47,7 @@ const auditChildren = (children) => {
 
 		primaryRegion = React.cloneElement(primaryRegion, {
 			dividerPosition,
-			key: 'primary-region'
+			key: 'primary-region',
 		});
 	}
 
@@ -63,7 +63,7 @@ const GlobalNavigationBar = (props) => (
 			'slds-context-bar',
 			{
 				[`slds-context-bar--theme-${props.cloud}`]: props.cloud,
-				[`slds-context-bar--theme-${props.theme}`]: props.theme
+				[`slds-context-bar--theme-${props.theme}`]: props.theme,
 			},
 			props.className
 		)}
@@ -84,7 +84,7 @@ GlobalNavigationBar.propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Typically the cloud name (e.g.- "sales" or "marketing"). This primarily changes the background color.
@@ -93,12 +93,12 @@ GlobalNavigationBar.propTypes = {
 	/**
 	 * Transforms text and interactions (such as hover) to be more visually accessible.
 	 */
-	theme: PropTypes.oneOf(['light', 'dark'])
+	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 GlobalNavigationBar.defaultProps = {
 	cloud: 'default',
-	theme: 'dark'
+	theme: 'dark',
 };
 
 GlobalNavigationBar.displayName = GLOBAL_NAVIGATION_BAR;

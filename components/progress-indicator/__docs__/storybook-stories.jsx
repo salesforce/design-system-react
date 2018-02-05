@@ -13,17 +13,17 @@ const steps = [
 	{
 		id: 0,
 		label: <i>tooltip label #1</i>,
-		assistiveText: 'This is custom text in the assistive text key'
+		assistiveText: 'This is custom text in the assistive text key',
 	},
 	{ id: 1, label: 'tooltip label #2' },
 	{ id: 2, label: <strong>tooltip label #3</strong> },
 	{ id: 3, label: 'tooltip label #4' },
-	{ id: 4, label: 'tooltip label #5' }
+	{ id: 4, label: 'tooltip label #5' },
 ];
 
 const stepsDisabled = [
 	{ id: 3, label: 'tooltip label #4' },
-	{ id: 4, label: 'tooltip label #5' }
+	{ id: 4, label: 'tooltip label #5' },
 ];
 
 const manySteps = [
@@ -35,7 +35,7 @@ const manySteps = [
 	{ id: 'f', label: 'tooltip label #6' },
 	{ id: 'g', label: 'tooltip label #7' },
 	{ id: 'h', label: 'tooltip label #8' },
-	{ id: 'i', label: 'tooltip label #9' }
+	{ id: 'i', label: 'tooltip label #9' },
 ];
 
 const ExampleProgressIndicator = createReactClass({
@@ -53,7 +53,7 @@ const ExampleProgressIndicator = createReactClass({
 				/>
 			</div>
 		);
-	}
+	},
 });
 
 storiesOf(PROGRESS_INDICATOR, module)

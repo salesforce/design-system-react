@@ -32,7 +32,7 @@ const PanelFilterList = createReactClass({
 			/**
 			 * Pass in `Filter` components
 			 */
-			children: PropTypes.node
+			children: PropTypes.node,
 		};
 	},
 
@@ -51,7 +51,7 @@ const PanelFilterList = createReactClass({
 
 			if (child && child.props.errorLabel) {
 				clonedChild = React.cloneElement(child, {
-					isError: true
+					isError: true,
 				});
 			}
 
@@ -75,7 +75,7 @@ const PanelFilterList = createReactClass({
 				{children}
 			</ol>
 		);
-	}
+	},
 });
 
 export default PanelFilterList;

@@ -40,7 +40,7 @@ const handleExpandClick = (event, props) => {
 		props.onExpandClick(event, {
 			node: props.node,
 			expand: !props.node.expanded,
-			treeIndex: props.treeIndex
+			treeIndex: props.treeIndex,
 		});
 	}
 };
@@ -51,7 +51,7 @@ const handleClick = (event, props) => {
 		props.onClick(event, {
 			node: props.node,
 			select: !props.node.selected,
-			treeIndex: props.treeIndex
+			treeIndex: props.treeIndex,
 		});
 	}
 };
@@ -64,7 +64,7 @@ const handleScroll = (event, props) => {
 
 	if (isFunction(props.onScroll)) {
 		props.onScroll(event, {
-			percentage
+			percentage,
 		});
 	}
 };
@@ -100,12 +100,12 @@ renderInitialNode.propTypes = {
 	initalClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/*
 	 * Styles to be added to the top-level `ul` element. Useful for `overflow:hidden`.
 	 */
-	initialStyle: PropTypes.object
+	initialStyle: PropTypes.object,
 };
 
 // Most of these props come from the nodes array, not from the Tree props
@@ -119,7 +119,7 @@ const renderBranch = (children, props) => {
 			style={{
 				display: 'block',
 				paddingLeft: `${1.5 * props.level + 1.5}rem`,
-				marginTop: '.5rem'
+				marginTop: '.5rem',
 			}}
 		>
 			<div
@@ -129,7 +129,7 @@ const renderBranch = (children, props) => {
 					marginBottom: '.75rem',
 					height: '.5rem',
 					backgroundColor: 'rgb(224, 229, 238)',
-					width: '40%'
+					width: '40%',
 				}}
 			/>
 			<div
@@ -139,7 +139,7 @@ const renderBranch = (children, props) => {
 					marginBottom: '.75rem',
 					height: '.5rem',
 					backgroundColor: 'rgb(224, 229, 238)',
-					width: '80%'
+					width: '80%',
 				}}
 			/>
 			<div
@@ -149,7 +149,7 @@ const renderBranch = (children, props) => {
 					marginBottom: '.75rem',
 					height: '.5rem',
 					backgroundColor: 'rgb(224, 229, 238)',
-					width: '60%'
+					width: '60%',
 				}}
 			/>
 		</div>
@@ -166,7 +166,7 @@ const renderBranch = (children, props) => {
 			{/* eslint-disable jsx-a11y/no-static-element-interactions */}
 			<div
 				className={classNames('slds-tree__item', {
-					'slds-is-selected': isSelected
+					'slds-is-selected': isSelected,
 				})}
 				onClick={(event) => {
 					handleClick(event, props);
@@ -200,7 +200,7 @@ const renderBranch = (children, props) => {
 			<ul
 				className={classNames({
 					'slds-is-expanded': isExpanded,
-					'slds-is-collapsed': !isExpanded
+					'slds-is-collapsed': !isExpanded,
 				})}
 				role="group"
 				aria-labelledby={`${props.htmlId}__label`}
@@ -245,7 +245,7 @@ renderBranch.propTypes = {
 	/**
 	 * Location of node (zero index). First node is `0`. It's first child is `0-0`. This can be used to modify your nodes without searching for the node. This index is only valid if the `nodes` prop is the same as at the time of the event.
 	 */
-	treeIndex: PropTypes.string
+	treeIndex: PropTypes.string,
 };
 
 /**
@@ -337,7 +337,7 @@ Branch.propTypes = {
 	initalClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	initialStyle: PropTypes.object,
 	/**
@@ -371,13 +371,13 @@ Branch.propTypes = {
 	/**
 	 * Location of node (zero index). First node is `0`. It's first child is `0-0`. This can be used to modify your nodes without searching for the node. This index is only valid if the `nodes` prop is the same as at the time of the event.
 	 */
-	treeIndex: PropTypes.string
+	treeIndex: PropTypes.string,
 };
 
 Branch.defaultProps = {
 	level: 0,
 	label: '',
-	treeIndex: ''
+	treeIndex: '',
 };
 
 export default Branch;

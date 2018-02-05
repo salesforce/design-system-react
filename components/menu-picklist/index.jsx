@@ -88,7 +88,7 @@ const MenuPicklist = createReactClass({
 		 * * `multipleOptionsSelected`: Text to be used when multiple items are selected. "2 Options Selected" is a good pattern to use.
 		 */
 		labels: shape({
-			multipleOptionsSelected: PropTypes.string
+			multipleOptionsSelected: PropTypes.string,
 		}),
 		/**
 		 * Custom element that overrides the default Menu Item component.
@@ -125,7 +125,7 @@ const MenuPicklist = createReactClass({
 		/**
 		 * Current selected item.
 		 */
-		value: PropTypes.node
+		value: PropTypes.node,
 	},
 
 	mixins: [KeyboardNavigable],
@@ -136,9 +136,9 @@ const MenuPicklist = createReactClass({
 			placeholder: 'Select an Option',
 			checkmark: true,
 			labels: {
-				multipleOptionsSelected: 'Multiple Options Selected'
+				multipleOptionsSelected: 'Multiple Options Selected',
 			},
-			menuPosition: 'absolute'
+			menuPosition: 'absolute',
 		};
 	},
 
@@ -147,7 +147,7 @@ const MenuPicklist = createReactClass({
 			focusedIndex: -1,
 			selectedIndex: -1,
 			selectedIndices: [],
-			currentPillLabel: ''
+			currentPillLabel: '',
 		};
 	},
 
@@ -166,7 +166,7 @@ const MenuPicklist = createReactClass({
 
 		if (!this.props.multiple) {
 			this.setState({
-				selectedIndex: this.getIndexByValue(this.props)
+				selectedIndex: this.getIndexByValue(this.props),
 			});
 		} else {
 			const currentSelectedIndex = this.getIndexByValue(this.props);
@@ -175,7 +175,7 @@ const MenuPicklist = createReactClass({
 				currentIndices.push(currentSelectedIndex);
 			}
 			this.setState({
-				selectedIndices: currentIndices
+				selectedIndices: currentIndices,
 			});
 		}
 	},
@@ -187,7 +187,7 @@ const MenuPicklist = createReactClass({
 		) {
 			if (this.props.multiple !== true) {
 				this.setState({
-					selectedIndex: this.getIndexByValue(nextProps)
+					selectedIndex: this.getIndexByValue(nextProps),
 				});
 			} else {
 				const currentSelectedIndex = this.getIndexByValue(nextProps);
@@ -196,7 +196,7 @@ const MenuPicklist = createReactClass({
 						currentSelectedIndex
 					);
 					this.setState({
-						selectedIndices: currentIndices
+						selectedIndices: currentIndices,
 					});
 				}
 			}
@@ -270,7 +270,7 @@ const MenuPicklist = createReactClass({
 			}
 
 			this.setState({
-				selectedIndices: currentIndices
+				selectedIndices: currentIndices,
 			});
 		}
 
@@ -334,7 +334,7 @@ const MenuPicklist = createReactClass({
 					isOpen: this.state.isOpen || false,
 					keyCode: event.keyCode,
 					onSelect: this.handleSelect,
-					toggleOpen: this.toggleOpen
+					toggleOpen: this.toggleOpen,
 				});
 			} else {
 				this.handleCancel();
@@ -415,7 +415,7 @@ const MenuPicklist = createReactClass({
 				style={{
 					maxHeight: '20em',
 					overflowX: 'hidden',
-					minWidth: '100%'
+					minWidth: '100%',
 				}}
 			>
 				{this.renderMenuContent()}
@@ -510,7 +510,7 @@ const MenuPicklist = createReactClass({
 					<Pill
 						eventData={{
 							item: this.props.options[selectedPill],
-							index: selectedPill
+							index: selectedPill,
 						}}
 						events={{
 							onRequestRemove: (event, data) => {
@@ -523,13 +523,13 @@ const MenuPicklist = createReactClass({
 									const option = this.getValueByIndex(index);
 									this.props.onPillRemove(option, {
 										option,
-										optionIndex: index
+										optionIndex: index,
 									});
 								}
-							}
+							},
 						}}
 						labels={{
-							label: pillLabel
+							label: pillLabel,
 						}}
 					/>
 				</li>
@@ -564,7 +564,7 @@ const MenuPicklist = createReactClass({
 				className={classNames(
 					'slds-form-element',
 					{
-						'slds-has-error': errorText
+						'slds-has-error': errorText,
 					},
 					className
 				)}
@@ -589,11 +589,11 @@ const MenuPicklist = createReactClass({
 				)}
 			</div>
 		);
-	}
+	},
 });
 
 MenuPicklist.contextTypes = {
-	iconPath: PropTypes.string
+	iconPath: PropTypes.string,
 };
 
 export default MenuPicklist;

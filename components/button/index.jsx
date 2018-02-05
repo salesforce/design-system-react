@@ -53,7 +53,7 @@ const Button = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * Disables the button and adds disabled styling.
@@ -71,7 +71,7 @@ const Button = createReactClass({
 			'custom',
 			'doctype',
 			'standard',
-			'utility'
+			'utility',
 		]),
 		/**
 		 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
@@ -98,7 +98,7 @@ const Button = createReactClass({
 			'border',
 			'border-filled',
 			'more',
-			'global-header'
+			'global-header',
 		]),
 		/**
 		 * Id string applied to button node.
@@ -147,14 +147,14 @@ const Button = createReactClass({
 			'brand',
 			'destructive',
 			'success',
-			'icon'
+			'icon',
 		]),
 		iconClassName: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
-		tooltip: PropTypes.node
+		tooltip: PropTypes.node,
 	},
 
 	getDefaultProps () {
@@ -165,7 +165,7 @@ const Button = createReactClass({
 			iconCategory: 'utility',
 			responsive: false,
 			type: 'button',
-			variant: 'neutral'
+			variant: 'neutral',
 		};
 	},
 
@@ -207,7 +207,7 @@ const Button = createReactClass({
 				[`slds-button--icon-${this.props.iconSize}`]:
 					iconVariant && this.props.iconSize !== 'medium',
 				'slds-button--reset': this.props.variant === 'link',
-				'slds-text-link': this.props.variant === 'link'
+				'slds-text-link': this.props.variant === 'link',
 			},
 			this.props.className
 		);
@@ -230,7 +230,7 @@ const Button = createReactClass({
 				className={classNames(
 					{
 						'slds-global-header__icon':
-							this.props.iconVariant === 'global-header'
+							this.props.iconVariant === 'global-header',
 					},
 					this.props.iconClassName
 				)}
@@ -312,7 +312,7 @@ const Button = createReactClass({
 
 	render () {
 		return this.props.tooltip ? this.renderTooltip() : this.renderButton();
-	}
+	},
 });
 
 export default Button;

@@ -24,7 +24,7 @@ const propTypes = {
 	 * * `pressDeleteOrBackspace`: Informs user of keyboard keys to press in order to remove a pill
 	 */
 	assistiveText: shape({
-		remove: PropTypes.string
+		remove: PropTypes.string,
 	}),
 	/*
 	 * Pills are often used for selection of a type of entity such as days in a daypicker. This prop allows you to pass in data that will be passed back to the event handler.
@@ -38,7 +38,7 @@ const propTypes = {
 		onRequestFocus: PropTypes.func.isRequired,
 		onRequestFocusOnNextPill: PropTypes.func.isRequired,
 		onRequestFocusOnPreviousPill: PropTypes.func.isRequired,
-		onRequestRemove: PropTypes.func.isRequired
+		onRequestRemove: PropTypes.func.isRequired,
 	}),
 	/*
 	 * The icon next to the pill label.
@@ -49,7 +49,7 @@ const propTypes = {
 	 */
 	labels: shape({
 		label: PropTypes.string.isRequired,
-		removeTitle: PropTypes.string
+		removeTitle: PropTypes.string,
 	}),
 	/*
 	 * If true and is active pill in listbox, will trigger `events.onRequestFocus`
@@ -62,17 +62,17 @@ const propTypes = {
 	/*
 	 * Allows the user to tab to the node
 	 */
-	tabIndex: PropTypes.number
+	tabIndex: PropTypes.number,
 };
 
 const defaultProps = {
 	assistiveText: shape({
-		remove: ', Press delete or backspace to remove'
+		remove: ', Press delete or backspace to remove',
 	}),
 	labels: {
-		remove: 'Remove'
+		remove: 'Remove',
 	},
-	events: {}
+	events: {},
 };
 
 const handleKeyDown = (event, { events, data }) => {
@@ -83,13 +83,13 @@ const handleKeyDown = (event, { events, data }) => {
 			[KEYS.DELETE]: { callback: events.onRequestRemove, data },
 			[KEYS.LEFT]: {
 				callback: events.onRequestFocusOnPreviousPill,
-				data: { ...data, direction: 'previous' }
+				data: { ...data, direction: 'previous' },
 			},
 			[KEYS.RIGHT]: {
 				callback: events.onRequestFocusOnNextPill,
-				data: { ...data, direction: 'next' }
-			}
-		}
+				data: { ...data, direction: 'next' },
+			},
+		},
 	});
 };
 
@@ -113,7 +113,7 @@ const Pill = (props) => {
 			variant="option"
 			labels={labels}
 			assistiveText={{
-				remove: assistiveText.remove
+				remove: assistiveText.remove,
 			}}
 			aria-selected={props.active}
 			onBlur={props.events.onBlur}
@@ -122,7 +122,7 @@ const Pill = (props) => {
 					? (event) => {
 						if (props.events.onClick) {
 							props.events.onClick(event, {
-								option: props.eventData
+								option: props.eventData,
 							});
 						}
 					}
@@ -132,13 +132,13 @@ const Pill = (props) => {
 				EventUtil.trap(event);
 				handleClickRemove(event, {
 					events: props.events,
-					eventData: props.eventData
+					eventData: props.eventData,
 				});
 			}}
 			onKeyDown={(event) => {
 				handleKeyDown(event, {
 					events: props.events,
-					data: props.eventData
+					data: props.eventData,
 				});
 			}}
 			ref={(component) => {

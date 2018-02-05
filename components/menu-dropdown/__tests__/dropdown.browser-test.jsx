@@ -8,7 +8,7 @@ import { mount } from 'enzyme';
 import assign from 'lodash.assign';
 import {
 	Simulate,
-	findRenderedDOMComponentWithClass
+	findRenderedDOMComponentWithClass,
 } from 'react-addons-test-utils';
 
 /* Enzyme Helpers that can mount and unmount React component instances to
@@ -18,7 +18,7 @@ import {
  */
 import {
 	mountComponent,
-	unmountComponent
+	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 
 // Import your internal dependencies (for example):
@@ -36,7 +36,7 @@ const menuOptions = [
 	{ label: 'A super short', value: 'A0' },
 	{ label: 'B Option Super Super Long', value: 'B0' },
 	{ label: 'C Option', value: 'C0' },
-	{ disabled: true, label: 'D Option', value: 'D0' }
+	{ disabled: true, label: 'D Option', value: 'D0' },
 ];
 
 const defaultProps = {
@@ -46,7 +46,7 @@ const defaultProps = {
 	openOn: 'click',
 	options: menuOptions,
 	placeholder: 'Select a contact',
-	value: 'B0'
+	value: 'B0',
 };
 
 /* eslint-disable react/prop-types */
@@ -103,7 +103,7 @@ const getNodes = ({ wrapper }) => ({
 	customContent: wrapper.find('#custom-dropdown-menu-content'),
 	customContentLink: wrapper.find(
 		'#custom-dropdown-menu-content #custom-dropdown-menu-content-link'
-	)
+	),
 });
 
 /* All tests for component being tested should be wrapped in a root `describe`,

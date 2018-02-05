@@ -10,12 +10,12 @@ const Example = createReactClass({
 	displayName: 'BasePillExample',
 
 	propTypes: {
-		action: PropTypes.func
+		action: PropTypes.func,
 	},
 
 	getDefaultProps () {
 		return {
-			action: () => noop
+			action: () => noop,
 		};
 	},
 
@@ -23,7 +23,7 @@ const Example = createReactClass({
 		return {
 			linked: true,
 			unlinked: true,
-			truncated: true
+			truncated: true,
 		};
 	},
 
@@ -34,21 +34,21 @@ const Example = createReactClass({
 	onRemoveLinked (event) {
 		this.props.action('onRemove')(event);
 		this.setState({
-			linked: false
+			linked: false,
 		});
 	},
 
 	onRemoveUnlinked (event) {
 		this.props.action('onRemove')(event);
 		this.setState({
-			unlinked: false
+			unlinked: false,
 		});
 	},
 
 	onRemoveTruncated (event) {
 		this.props.action('onRemove')(event);
 		this.setState({
-			truncated: false
+			truncated: false,
 		});
 	},
 
@@ -59,7 +59,7 @@ const Example = createReactClass({
 					labels={{
 						label: 'Pill Label',
 						title: 'Full pill label verbiage mirrored here',
-						removeTitle: 'Remove'
+						removeTitle: 'Remove',
 					}}
 					onClick={this.onClick}
 					onRemove={this.onRemoveLinked}
@@ -76,7 +76,7 @@ const Example = createReactClass({
 					labels={{
 						label: 'Pill Label',
 						title: 'Full pill label verbiage mirrored here',
-						removeTitle: 'Remove'
+						removeTitle: 'Remove',
 					}}
 					onRemove={this.onRemoveUnlinked}
 				/>
@@ -94,7 +94,7 @@ const Example = createReactClass({
 							labels={{
 								label:
 									'Pill label that is longer than the area that contains it',
-								removeTitle: 'Remove'
+								removeTitle: 'Remove',
 							}}
 							onClick={this.onClick}
 							onRemove={this.onRemoveTruncated}
@@ -120,7 +120,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example;

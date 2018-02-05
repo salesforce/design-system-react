@@ -17,7 +17,7 @@ import Footer from '../../lookup/footer';
 const {
 	Simulate,
 	scryRenderedDOMComponentsWithClass,
-	scryRenderedDOMComponentsWithTag
+	scryRenderedDOMComponentsWithTag,
 } = TestUtils;
 
 describe('SLDSLookup: ', () => {
@@ -47,8 +47,8 @@ describe('SLDSLookup: ', () => {
 			{ label: 'Paper St. Soap Company' },
 			{ label: 'Nakatomi Investments' },
 			{ label: 'Acme Landscaping' },
-			{ label: 'Acme Construction' }
-		]
+			{ label: 'Acme Construction' },
+		],
 	};
 
 	const getLookup = (props = {}) =>
@@ -127,7 +127,7 @@ describe('SLDSLookup: ', () => {
 			TestUtils.Simulate.keyDown(deleteBtn, {
 				key: 'Down',
 				keyCode: 46,
-				which: 46
+				which: 46,
 			});
 			const ariaExpanded = lookup
 				.getElementsByTagName('input')[0]
@@ -144,12 +144,12 @@ describe('SLDSLookup: ', () => {
 			TestUtils.Simulate.keyDown(input, {
 				key: 'Down',
 				keyCode: 40,
-				which: 40
+				which: 40,
 			});
 			TestUtils.Simulate.keyDown(input, {
 				key: 'Down',
 				keyCode: 40,
-				which: 40
+				which: 40,
 			});
 			const ariaActiveDescendant = lookup
 				.getElementsByTagName('input')[0]
@@ -164,12 +164,12 @@ describe('SLDSLookup: ', () => {
 			TestUtils.Simulate.keyDown(input, {
 				key: 'Down',
 				keyCode: 40,
-				which: 40
+				which: 40,
 			});
 			TestUtils.Simulate.keyDown(input, {
 				key: 'Down',
 				keyCode: 40,
-				which: 40
+				which: 40,
 			});
 			const ariaActiveDescendant = lookup
 				.getElementsByTagName('input')[0]
@@ -184,22 +184,22 @@ describe('SLDSLookup: ', () => {
 			TestUtils.Simulate.keyDown(input, {
 				key: 'Down',
 				keyCode: 40,
-				which: 40
+				which: 40,
 			});
 			TestUtils.Simulate.keyDown(input, {
 				key: 'Down',
 				keyCode: 40,
-				which: 40
+				which: 40,
 			});
 			TestUtils.Simulate.keyDown(input, {
 				key: 'Down',
 				keyCode: 40,
-				which: 40
+				which: 40,
 			});
 			TestUtils.Simulate.keyDown(input, {
 				key: 'Enter',
 				keyCode: 13,
-				which: 13
+				which: 13,
 			});
 			const selected = lookup
 				.getElementsByTagName('a')[0]
@@ -214,22 +214,22 @@ describe('SLDSLookup: ', () => {
 			TestUtils.Simulate.keyDown(input, {
 				key: 'Down',
 				keyCode: 40,
-				which: 40
+				which: 40,
 			});
 			TestUtils.Simulate.keyDown(input, {
 				key: 'Down',
 				keyCode: 40,
-				which: 40
+				which: 40,
 			});
 			TestUtils.Simulate.keyDown(input, {
 				key: 'Down',
 				keyCode: 40,
-				which: 40
+				which: 40,
 			});
 			TestUtils.Simulate.keyDown(input, {
 				key: 'Enter',
 				keyCode: 13,
-				which: 13
+				which: 13,
 			});
 			const selected = lookup
 				.getElementsByTagName('a')[0]
@@ -244,7 +244,7 @@ describe('SLDSLookup: ', () => {
 			TestUtils.Simulate.keyDown(input, {
 				key: 'Down',
 				keyCode: 40,
-				which: 40
+				which: 40,
 			});
 			TestUtils.Simulate.keyDown(input, { key: 'Esc', keyCode: 27, which: 27 });
 			const ariaExpanded = input.getAttribute('aria-expanded');
@@ -258,12 +258,12 @@ describe('SLDSLookup: ', () => {
 			TestUtils.Simulate.keyDown(input, {
 				key: 'Down',
 				keyCode: 40,
-				which: 40
+				which: 40,
 			});
 			TestUtils.Simulate.keyDown(input, {
 				key: 'Enter',
 				keyCode: 13,
-				which: 13
+				which: 13,
 			});
 			const menu = lookup.getElementsByTagName('ul');
 			expect(menu.length).to.equal(0);
@@ -276,7 +276,7 @@ describe('SLDSLookup: ', () => {
 			TestUtils.Simulate.keyDown(input, {
 				key: 'Down',
 				keyCode: 40,
-				which: 40
+				which: 40,
 			});
 			const focusedItem = lookup
 				.getElementsByTagName('ul')[0]

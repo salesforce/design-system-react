@@ -18,7 +18,7 @@ import { MEDIA_OBJECT } from '../../utilities/constants';
 export const cssClasses = {
 	base: 'slds-media',
 	figure: 'slds-media__figure',
-	body: 'slds-media__body'
+	body: 'slds-media__body',
 };
 
 /**
@@ -40,7 +40,7 @@ const MediaObject = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * The body is often text such as a heading or paragraph.
@@ -53,7 +53,7 @@ const MediaObject = createReactClass({
 		/**
 		 * Vertically centers the body with the middle of the figure.
 		 */
-		verticalCenter: PropTypes.bool
+		verticalCenter: PropTypes.bool,
 	},
 
 	render () {
@@ -63,7 +63,7 @@ const MediaObject = createReactClass({
 					cssClasses.base,
 					{
 						'slds-media--center': this.props.verticalCenter,
-						'slds-has-flexi-truncate': this.props.canTruncate
+						'slds-has-flexi-truncate': this.props.canTruncate,
 					},
 					this.props.className
 				)}
@@ -74,7 +74,7 @@ const MediaObject = createReactClass({
 				<div className={cssClasses.body}>{this.props.body}</div>
 			</div>
 		);
-	}
+	},
 });
 
 export default MediaObject;

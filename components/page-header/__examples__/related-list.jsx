@@ -39,7 +39,7 @@ const Example = createReactClass({
 						{ label: 'Menu Item Two', value: 'B0' },
 						{ label: 'Menu Item Three', value: 'C0' },
 						{ type: 'divider' },
-						{ label: 'Menu Item Four', value: 'D0' }
+						{ label: 'Menu Item Four', value: 'D0' },
 					]}
 				>
 					<DropdownTrigger>
@@ -78,7 +78,7 @@ const Example = createReactClass({
 							{ label: 'Menu Item Two', value: 'B0' },
 							{ label: 'Menu Item Three', value: 'C0' },
 							{ type: 'divider' },
-							{ label: 'Menu Item Four', value: 'D0' }
+							{ label: 'Menu Item Four', value: 'D0' },
 						]}
 					/>
 				</ButtonGroup>
@@ -87,7 +87,7 @@ const Example = createReactClass({
 
 		const trail = [
 			<a href="javascript:void(0);">Accounts</a>,
-			<a href="javascript:void(0);">Company One</a>
+			<a href="javascript:void(0);">Company One</a>,
 		];
 
 		return (
@@ -103,7 +103,7 @@ const Example = createReactClass({
 				/>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

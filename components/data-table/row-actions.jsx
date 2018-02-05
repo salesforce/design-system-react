@@ -41,12 +41,12 @@ const DataTableRowActions = createReactClass({
 		id: PropTypes.string,
 		item: PropTypes.object,
 		onAction: PropTypes.func,
-		options: PropTypes.array.isRequired
+		options: PropTypes.array.isRequired,
 	},
 
 	getDefaultProps () {
 		return {
-			assistiveText: 'Actions'
+			assistiveText: 'Actions',
 		};
 	},
 
@@ -88,7 +88,7 @@ const DataTableRowActions = createReactClass({
 				/>
 			</td>
 		);
-	}
+	},
 });
 
 export default DataTableRowActions;

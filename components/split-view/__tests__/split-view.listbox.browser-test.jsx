@@ -15,29 +15,29 @@ const listOptions = [
 		label: 'Riley Shultz',
 		topRightText: '99',
 		bottomLeftText: 'Biotech, Inc.',
-		bottomRightText: 'Nurturing'
+		bottomRightText: 'Nurturing',
 	},
 	{
 		id: 'option2',
 		label: 'Jason A. - VP of Sales',
 		topRightText: '92',
 		bottomLeftText: 'Case Management Solutions',
-		bottomRightText: 'Contacted'
+		bottomRightText: 'Contacted',
 	},
 	{
 		id: 'option3',
 		label: 'Josh Smith',
 		topRightText: '90',
 		bottomLeftText: 'Acme, Inc.',
-		bottomRightText: 'Contacted'
+		bottomRightText: 'Contacted',
 	},
 	{
 		id: 'option4',
 		label: 'Bobby Tree',
 		topRightText: '89',
 		bottomLeftText: 'Salesforce, Inc.',
-		bottomRightText: 'Closing'
-	}
+		bottomRightText: 'Closing',
+	},
 ];
 
 describe('SLDSSplitView - Listbox', () => {
@@ -65,13 +65,11 @@ describe('SLDSSplitView - Listbox', () => {
 		const anchors = component.find('li > a');
 
 		listOptions.forEach((item, index) => {
-			value.includes(index);
 			itemIndex.includes(index)
 				? expect(anchors.at(index).prop('aria-selected')).to.be.true
 				: expect(anchors.at(index).prop('aria-selected')).to.be.false;
 		});
 	};
-
 
 	describe('When the component is mounted', () => {
 		it('should focus the first selected item', () => {
@@ -79,8 +77,8 @@ describe('SLDSSplitView - Listbox', () => {
 				options: listOptions,
 				selection: [listOptions[1]],
 				events: {
-					onSelect: sinon.spy()
-				}
+					onSelect: sinon.spy(),
+				},
 			});
 
 			expectItemFocused(1);
@@ -90,8 +88,8 @@ describe('SLDSSplitView - Listbox', () => {
 			component = mountComponent({
 				options: listOptions,
 				events: {
-					onSelect: sinon.spy()
-				}
+					onSelect: sinon.spy(),
+				},
 			});
 
 			expectItemFocused(0);
@@ -104,8 +102,8 @@ describe('SLDSSplitView - Listbox', () => {
 				component = mountComponent({
 					options: listOptions,
 					events: {
-						onSelect: () => {}
-					}
+						onSelect: () => {},
+					},
 				});
 
 				component
@@ -122,8 +120,8 @@ describe('SLDSSplitView - Listbox', () => {
 					events: {
 						onSelect: (event, { selectedItems }) => {
 							component.setProps({ selection: selectedItems });
-						}
-					}
+						},
+					},
 				});
 
 				component
@@ -142,8 +140,8 @@ describe('SLDSSplitView - Listbox', () => {
 						events: {
 							onSelect: (event, { selectedItems }) => {
 								component.setProps({ selection: selectedItems });
-							}
-						}
+							},
+						},
 					});
 				});
 
@@ -187,8 +185,8 @@ describe('SLDSSplitView - Listbox', () => {
 					events: {
 						onSelect: (event, { selectedItems }) => {
 							component.setProps({ selection: selectedItems });
-						}
-					}
+						},
+					},
 				});
 			});
 

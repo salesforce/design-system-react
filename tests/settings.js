@@ -4,8 +4,8 @@
 
 const Settings = {
 	jsBeautify: {
-		indent_size: 2
-	}
+		indent_size: 2,
+	},
 };
 
 export default Settings;

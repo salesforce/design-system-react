@@ -23,11 +23,11 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 	const handles = {
 		appLauncher: null,
 		appLauncherIcon: null,
-		modal: null
+		modal: null,
 	};
 
 	const defaultAppLauncherProps = {
-		isOpen: true
+		isOpen: true,
 	};
 
 	const createAppLauncher = (props) =>
@@ -97,7 +97,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 				modalHeaderButton: <Button label="App Exchange" />,
 				onClose,
 				search: <Search assistiveText="Find an app" />,
-				title: 'App Launcher!'
+				title: 'App Launcher!',
 			});
 		});
 
@@ -169,7 +169,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 
 			mountAppLauncher({
 				triggerAssistiveText: 'Custom Icon Assistive Text',
-				triggerOnClick
+				triggerOnClick,
 			});
 		});
 
@@ -194,7 +194,7 @@ describe('SLDS APP LAUNCHER *******************************************', () => 
 						<span className="slds-r6" />,
 						<span className="slds-r7" />,
 						<span className="slds-r8" />,
-						<span className="slds-r9" />
+						<span className="slds-r9" />,
 					])
 			).to.equal(true);
 		});

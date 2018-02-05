@@ -29,13 +29,13 @@ const Example = createReactClass({
 						{ label: 'Paper St. Soap Company' },
 						{ label: 'Nakatomi Investments' },
 						{ label: 'Acme Landscaping' },
-						{ label: 'Acme Construction' }
+						{ label: 'Acme Construction' },
 					]}
 					selectedItem={1}
 				/>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

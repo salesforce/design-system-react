@@ -59,7 +59,7 @@ const Checkbox = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * Disables the Checkbox and prevents clicking it.
@@ -132,14 +132,14 @@ const Checkbox = createReactClass({
 		/**
 		 * Which flavor of checkbox? Default is `base` while other option is `toggle`. (**Note:** `toggle` variant does not support the `indeterminate` feature, because [SLDS does not support it](https://lightningdesignsystem.com/components/forms/#flavor-checkbox-toggle-checkbox-toggle).)
 		 */
-		variant: PropTypes.oneOf(['base', 'toggle', 'button-group'])
+		variant: PropTypes.oneOf(['base', 'toggle', 'button-group']),
 	},
 
 	getDefaultProps () {
 		return {
 			variant: 'base',
 			labelToggleEnabled: 'Enabled',
-			labelToggleDisabled: 'Disabled'
+			labelToggleDisabled: 'Disabled',
 		};
 	},
 
@@ -160,7 +160,7 @@ const Checkbox = createReactClass({
 			// `checked` is present twice to maintain backwards compatibility. Please remove first parameter `value` on the next breaking change.
 			onChange(value, event, {
 				checked: indeterminate ? true : !checked,
-				indeterminate: false
+				indeterminate: false,
 			});
 		}
 	},
@@ -216,7 +216,7 @@ const Checkbox = createReactClass({
 					'slds-form-element',
 					{
 						'is-required': props.required,
-						'slds-has-error': props.errorText
+						'slds-has-error': props.errorText,
 					},
 					props.className
 				)}
@@ -280,7 +280,7 @@ const Checkbox = createReactClass({
 					'slds-form-element',
 					{
 						'is-required': props.required,
-						'slds-has-error': props.errorText
+						'slds-has-error': props.errorText,
 					},
 					props.className
 				)}
@@ -359,7 +359,7 @@ const Checkbox = createReactClass({
 				renderer = this.renderBaseVariant(this.props);
 		}
 		return renderer;
-	}
+	},
 });
 
 export default Checkbox;

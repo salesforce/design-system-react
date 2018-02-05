@@ -14,8 +14,8 @@ import Combobox from '~/components/combobox';
 const options = {
 	'show-me': [
 		{ id: 1, label: 'All Products', value: 'all-products' },
-		{ id: 2, label: 'All Wackamoles', value: 'all-Wackamoles' }
-	]
+		{ id: 2, label: 'All Wackamoles', value: 'all-Wackamoles' },
+	],
 };
 
 const Example = createReactClass({
@@ -23,7 +23,7 @@ const Example = createReactClass({
 
 	propTypes () {
 		return {
-			align: PropTypes.string
+			align: PropTypes.string,
 		};
 	},
 
@@ -32,8 +32,8 @@ const Example = createReactClass({
 			'show-me': {
 				selectedItem: options['show-me'][0],
 				isActive: true,
-				comboboxSelection: [options['show-me'][0]]
-			}
+				comboboxSelection: [options['show-me'][0]],
+			},
 		};
 	},
 
@@ -42,8 +42,8 @@ const Example = createReactClass({
 		this.setState({
 			[idSuffix]: {
 				...this.state[idSuffix],
-				selectedItem: this.state[idSuffix].comboboxSelection[0]
-			}
+				selectedItem: this.state[idSuffix].comboboxSelection[0],
+			},
 		});
 	},
 
@@ -52,8 +52,8 @@ const Example = createReactClass({
 		this.setState({
 			[idSuffix]: {
 				...this.state[idSuffix],
-				isActive: false
-			}
+				isActive: false,
+			},
 		});
 	},
 
@@ -76,14 +76,14 @@ const Example = createReactClass({
 									this.setState({
 										'show-me': {
 											...this.state['show-me'],
-											comboboxSelection: data.selection
-										}
+											comboboxSelection: data.selection,
+										},
 									});
-								}
+								},
 							}}
 							labels={{
 								label: 'Show Me',
-								placeholder: 'Select record type'
+								placeholder: 'Select record type',
 							}}
 							menuPosition="relative"
 							options={options['show-me']}
@@ -94,7 +94,7 @@ const Example = createReactClass({
 				</IconSettings>
 			)
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

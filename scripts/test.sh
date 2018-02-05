@@ -24,13 +24,14 @@ Hit Ctrl+C to abort any currently executing script and immediately start
 the next. The following scripts are about to execute one at a time:
 "
 
-
-
 for COMMAND in "${COMMANDS[@]}"
 do
 	echo "    ${COMMAND}"
 done
 
+echo -en 'travis_fold:start:npm ls\\r'
+npm ls --silent
+echo -en 'travis_fold:end:npm ls\\r'
 
 for COMMAND in "${COMMANDS[@]}"
 do

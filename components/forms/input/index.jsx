@@ -69,7 +69,7 @@ const Input = createReactClass({
 		 */
 		assistiveText: shape({
 			label: PropTypes.string,
-			spinner: PropTypes.string
+			spinner: PropTypes.string,
 		}),
 		children: PropTypes.node,
 		/**
@@ -78,7 +78,7 @@ const Input = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * Disables the input and prevents editing the contents.
@@ -176,7 +176,7 @@ const Input = createReactClass({
 			'url',
 			'search',
 			'tel',
-			'color'
+			'color',
 		]),
 		/**
 		 * The input is a controlled component, and will always display this value.
@@ -184,12 +184,12 @@ const Input = createReactClass({
 		value: PropTypes.string,
 		iconPosition: PropTypes.string,
 		inlineEditTrigger: PropTypes.node,
-		role: PropTypes.string
+		role: PropTypes.string,
 	},
 
 	getDefaultProps () {
 		return {
-			type: 'text'
+			type: 'text',
 		};
 	},
 
@@ -232,7 +232,7 @@ const Input = createReactClass({
 			onClick:
 				(this.props[iconPositionProp] &&
 					this.props[iconPositionProp].props.onClick) ||
-				this.props.onIconClick
+				this.props.onIconClick,
 		};
 		/* eslint-enable react/prop-types */
 
@@ -242,7 +242,7 @@ const Input = createReactClass({
 			this.props[iconPositionProp]
 		) {
 			icon = React.cloneElement(this.props[iconPositionProp], {
-				iconPosition: `${position}`
+				iconPosition: `${position}`,
 			});
 		} else if (deprecatedProps.name) {
 			icon = <InputIcon iconPosition={position} {...deprecatedProps} />;
@@ -268,7 +268,7 @@ const Input = createReactClass({
 				className={classNames(
 					'slds-form-element',
 					{
-						'slds-has-error': this.props.errorText
+						'slds-has-error': this.props.errorText,
 					},
 					this.props.className
 				)}
@@ -290,7 +290,7 @@ const Input = createReactClass({
 					aria-owns={this.props['aria-owns']}
 					aria-required={this.props['aria-required']}
 					containerProps={{
-						className: 'slds-form-element__control'
+						className: 'slds-form-element__control',
 					}}
 					disabled={this.props.disabled}
 					fixedTextLeft={this.props.fixedTextLeft}
@@ -336,7 +336,7 @@ const Input = createReactClass({
 				{this.props.children}
 			</div>
 		);
-	}
+	},
 });
 
 export default Input;

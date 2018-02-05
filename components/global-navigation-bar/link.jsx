@@ -42,13 +42,13 @@ const GlobalNavigationBarLink = (props) => {
 		onFocus,
 		onKeyDown,
 		onKeyPress,
-		tabIndex
+		tabIndex,
 	} = props;
 
 	const listItemstyle = active
 		? {
 			backgroundColor: activeBackgroundColor,
-			borderBottomColor: activeBackgroundColor
+			borderBottomColor: activeBackgroundColor,
 		}
 		: null;
 
@@ -56,7 +56,7 @@ const GlobalNavigationBarLink = (props) => {
 		<li
 			className={classNames('slds-context-bar__item', {
 				'slds-is-active': active,
-				[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition
+				[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition,
 			})}
 			id={id}
 			style={listItemstyle}
@@ -99,7 +99,7 @@ GlobalNavigationBarLink.propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Determines position of separating bar.
@@ -131,11 +131,11 @@ GlobalNavigationBarLink.propTypes = {
 	/**
 	 * Write "-1" if you don't want the user to tab to the button.
 	 */
-	tabIndex: PropTypes.string
+	tabIndex: PropTypes.string,
 };
 
 GlobalNavigationBarLink.defaultProps = {
-	href: 'javascript:void(0);' // eslint-disable-line no-script-url
+	href: 'javascript:void(0);', // eslint-disable-line no-script-url
 };
 
 export default GlobalNavigationBarLink;

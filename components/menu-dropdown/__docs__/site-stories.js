@@ -7,7 +7,7 @@ const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/menu-dropdown/__examples__/default.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/menu-dropdown/__examples__/sub-heading.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/menu-dropdown/__examples__/custom-trigger.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/menu-dropdown/__examples__/checkmark.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/menu-dropdown/__examples__/checkmark.jsx'),
 ];
 
 module.exports = siteStories;

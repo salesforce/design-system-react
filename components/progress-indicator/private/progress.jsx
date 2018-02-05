@@ -21,7 +21,7 @@ const propTypes = {
 	 * Assistive text for percentage
 	 */
 	assistiveText: shape({
-		percentage: PropTypes.string
+		percentage: PropTypes.string,
 	}),
 	/**
 	 * Steps in the component
@@ -33,7 +33,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * HTML id for component.
@@ -46,7 +46,7 @@ const propTypes = {
 	/**
 	 * Determines component style
 	 */
-	variant: PropTypes.oneOf(['base', 'modal'])
+	variant: PropTypes.oneOf(['base', 'modal']),
 };
 
 /**

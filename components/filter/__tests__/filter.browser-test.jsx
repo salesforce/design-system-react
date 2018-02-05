@@ -12,7 +12,7 @@ import { mount } from 'enzyme';
  */
 import {
 	createMountNode,
-	destroyMountNode
+	destroyMountNode,
 } from '../../../tests/enzyme-helpers';
 
 // Import your internal dependencies (for example):
@@ -29,14 +29,14 @@ chai.use(chaiEnzyme());
 const defaultProps = {
 	id: 'sample-popover',
 	body: <span id="sample-body">This is the body</span>,
-	heading: <span id="sample-heading">This is the heading</span>
+	heading: <span id="sample-heading">This is the heading</span>,
 };
 
 const defaultIds = {
 	trigger: defaultProps.id,
 	popover: `${defaultProps.id}-popover`,
 	body: `${defaultProps.id}-dialog-body`,
-	heading: `${defaultProps.id}-dialog-heading`
+	heading: `${defaultProps.id}-dialog-heading`,
 };
 
 /* A re-usable demo component fixture outside of `describe` sections
@@ -47,7 +47,7 @@ const defaultIds = {
 const DemoComponent = createReactClass({
 	displayName: 'PopoverDemoComponent',
 	propTypes: {
-		isOpen: PropTypes.bool
+		isOpen: PropTypes.bool,
 	},
 
 	getDefaultProps () {
@@ -64,7 +64,7 @@ const DemoComponent = createReactClass({
 				<Button label="Trigger Popover" />
 			</Popover>
 		);
-	}
+	},
 });
 
 /* All tests for component being tested should be wrapped in a root `describe`,

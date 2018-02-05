@@ -12,7 +12,7 @@ const Example = createReactClass({
 				<Textarea id="unique-id-1" label="Textarea Label" />
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
