@@ -20,6 +20,6 @@ storiesOf(TIME_PICKER, module)
 			label: 'Time',
 			required: true,
 			stepInMinutes: 30,
-			onDateChange: action('onDateChange')
+			onDateChange: action('onDateChange'),
 		})
 	);

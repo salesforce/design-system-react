@@ -30,7 +30,7 @@ app.use(express.static(`${rootPath}/storybook-based-tests`));
 // Create DOM snapshot tests from Storybook stories
 initStoryshots({
 	configPath: '.storybook-based-tests',
-	suite: 'DOM snapshots'
+	suite: 'DOM snapshots',
 });
 
 /* jest-image-snapshot
@@ -41,7 +41,7 @@ const getMatchOptions = ({ context: { kind, story }, url }) => ({
 	failureThreshold: 0.2,
 	failureThresholdType: 'percent',
 	// 0.02 appears to ignore slight gray changes in SLDS
-	customDiffConfig: { threshold: 0.02 }
+	customDiffConfig: { threshold: 0.02 },
 });
 
 let server;
@@ -69,7 +69,7 @@ describe('Image Snapshots', function imageSnapshotFunction () {
 		suite: 'Image storyshots',
 		test: imageSnapshot({
 			storybookUrl: `http://localhost:${port}`,
-			getMatchOptions
-		})
+			getMatchOptions,
+		}),
 	});
 });

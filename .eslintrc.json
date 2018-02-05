@@ -130,7 +130,7 @@
     "class-methods-use-this": "warn",
     // We are open to changing this to always use a trailing comma,
     // in order to make re-sorting easier
-    "comma-dangle": [2, "never"],
+    "comma-dangle": [2, "only-multiline"],
     // TODO: Should be removed
     "func-names": "off",
     // May consider removing

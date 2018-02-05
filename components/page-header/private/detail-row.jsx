@@ -16,7 +16,7 @@ const propTypes = {
 	/**
 	 * An array of detail blocks
 	 */
-	details: PropTypes.array
+	details: PropTypes.array,
 };
 const defaultProps = {};
 

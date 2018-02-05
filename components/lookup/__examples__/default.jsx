@@ -28,13 +28,13 @@ const Example = createReactClass({
 						{ label: 'Nakatomi Investments' },
 						{ label: 'Acme Landscaping' },
 						{ type: 'section', label: 'SECTION 3' },
-						{ label: 'Acme Construction' }
+						{ label: 'Acme Construction' },
 					]}
 					sectionDividerRenderer={Lookup.DefaultSectionDivider}
 				/>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

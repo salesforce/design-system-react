@@ -11,7 +11,7 @@ const Example = createReactClass({
 				<ProgressIndicator {...this.props} />
 			</div>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

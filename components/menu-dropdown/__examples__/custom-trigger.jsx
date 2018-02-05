@@ -18,7 +18,7 @@ const Example = createReactClass({
 						{ label: 'Menu Item Two', value: 'B0' },
 						{ label: 'Menu Item Three', value: 'C0' },
 						{ type: 'divider' },
-						{ label: 'Menu Item Four', value: 'D0' }
+						{ label: 'Menu Item Four', value: 'D0' },
 					]}
 				>
 					<DropdownTrigger>
@@ -27,7 +27,7 @@ const Example = createReactClass({
 				</Dropdown>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

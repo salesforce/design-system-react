@@ -207,7 +207,7 @@
     "jsxBracketSameLine": false,
     "semi": true,
     "singleQuote": true,
-    "trailingComma": "none",
+    "trailingComma": "es5",
     "useTabs": true
   },
   "components": [

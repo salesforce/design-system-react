@@ -6,13 +6,13 @@ import chaiEnzyme from 'chai-enzyme';
 // `this.wrapper` and `this.dom` is set in the helpers file
 import {
 	mountComponent,
-	unmountComponent
+	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 
 // sample props and children
 import {
 	dropdownCollection,
-	propSets
+	propSets,
 } from '../../../utilities/sample-data/global-navigation-bar';
 
 import IconSettings from '../../icon-settings';
@@ -27,14 +27,14 @@ chai.use(chaiEnzyme());
 
 const COMPONENT_CSS_CLASSES = {
 	base: 'slds-context-bar',
-	themePrefix: 'slds-context-bar--theme-'
+	themePrefix: 'slds-context-bar--theme-',
 };
 
 const REGION_CSS_CLASSES = {
 	primary: 'slds-context-bar__primary',
 	secondary: 'slds-context-bar__secondary',
 	tertiary: 'slds-context-bar__tertiary',
-	appName: 'slds-context-bar__app-name'
+	appName: 'slds-context-bar__app-name',
 };
 
 describe('Global Navigation Bar: ', () => {
@@ -235,7 +235,7 @@ describe('Global Navigation Bar: ', () => {
 				/>
 			);
 			this.wrapper = mount(instance, {
-				attachTo: document.body.appendChild(document.createElement('div'))
+				attachTo: document.body.appendChild(document.createElement('div')),
 			});
 			link = this.wrapper.find('#home-link');
 		});
@@ -266,7 +266,7 @@ describe('Global Navigation Bar: ', () => {
 				/>
 			);
 			this.wrapper = mount(instance, {
-				attachTo: document.body.appendChild(document.createElement('div'))
+				attachTo: document.body.appendChild(document.createElement('div')),
 			});
 			const link = this.wrapper.find('#global-nav__button');
 			expect(link.text()).to.equal('Button');
@@ -281,7 +281,7 @@ describe('Global Navigation Bar: ', () => {
 		it('GlobalNavigationBarLabel has attributes', function () {
 			const instance = <GlobalNavigationBarLabel label="Text" id="test-text" />;
 			this.wrapper = mount(instance, {
-				attachTo: document.body.appendChild(document.createElement('div'))
+				attachTo: document.body.appendChild(document.createElement('div')),
 			});
 			const item = this.wrapper.find('#test-text');
 			expect(item.text()).to.equal('Text');

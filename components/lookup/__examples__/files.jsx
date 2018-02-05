@@ -23,12 +23,12 @@ const Example = createReactClass({
 						{ label: 'File 1' },
 						{ label: 'File 2' },
 						{ label: 'File 3' },
-						{ label: 'File 4' }
+						{ label: 'File 4' },
 					]}
 				/>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

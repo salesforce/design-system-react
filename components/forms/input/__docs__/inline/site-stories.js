@@ -4,7 +4,7 @@
 /* eslint-disable global-require */
 
 const siteStories = [
-	require('raw-loader!@salesforce/design-system-react/components/forms/input/__examples__/inline-default.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/forms/input/__examples__/inline-default.jsx'),
 ];
 
 module.exports = siteStories;

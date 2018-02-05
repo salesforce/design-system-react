@@ -25,7 +25,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * **Text labels for internationalization**
@@ -35,12 +35,12 @@ const propTypes = {
 	 */
 	labels: shape({
 		error: PropTypes.string,
-		label: PropTypes.string
+		label: PropTypes.string,
 	}),
 	/**
 	 * Use checkbox variant for "Checkbox Button Group" styling and add Checkbox components as children _Tested with snapshot testing._
 	 */
-	variant: PropTypes.oneOf(['checkbox'])
+	variant: PropTypes.oneOf(['checkbox']),
 };
 
 const defaultProps = { labels: {} };
@@ -62,7 +62,7 @@ const ButtonGroup = (props) => {
 			let newChild;
 			if (index === zeroIndexLength) {
 				newChild = React.cloneElement(child, {
-					triggerClassName: 'slds-button--last'
+					triggerClassName: 'slds-button--last',
 				});
 			}
 
@@ -73,7 +73,7 @@ const ButtonGroup = (props) => {
 	if (props.variant === 'checkbox') {
 		children = React.Children.map(props.children, (child) =>
 			React.cloneElement(child, {
-				variant: 'button-group'
+				variant: 'button-group',
 			})
 		);
 	}
@@ -82,7 +82,7 @@ const ButtonGroup = (props) => {
 		return (
 			<fieldset
 				className={classNames('slds-form-element', {
-					'slds-has-error': labels.error
+					'slds-has-error': labels.error,
 				})}
 			>
 				<legend className="slds-form-element__legend slds-form-element__label">

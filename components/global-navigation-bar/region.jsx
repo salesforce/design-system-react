@@ -97,7 +97,7 @@ const Region = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * Wraps the `secondary` region in a `nav` and adds a role attribute
@@ -106,7 +106,7 @@ const Region = createReactClass({
 		/**
 		 * Region wrap children in styling specific to that region.
 		 */
-		region: PropTypes.oneOf(['primary', 'secondary', 'tertiary']).isRequired
+		region: PropTypes.oneOf(['primary', 'secondary', 'tertiary']).isRequired,
 	},
 
 	render () {
@@ -143,7 +143,7 @@ const Region = createReactClass({
 		}
 
 		return region;
-	}
+	},
 });
 
 export default Region;

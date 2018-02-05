@@ -7,11 +7,11 @@ import SnapshotBaseOpen from '../__examples__/snapshot/base-open';
 testDOMandHTML({
 	name: 'Base',
 	test,
-	Component: SnapshotBase
+	Component: SnapshotBase,
 });
 
 testDOMandHTML({
 	name: 'Base Open',
 	test,
-	Component: SnapshotBaseOpen
+	Component: SnapshotBaseOpen,
 });

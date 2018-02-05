@@ -64,8 +64,8 @@ components.map((node) => {
 			// enable jsx and flow syntax
 			'jsx',
 			'objectRestSpread',
-			'classProperties'
-		]
+			'classProperties',
+		],
 	});
 	const cleanRoute = kebabCase(node['display-name']);
 
@@ -89,7 +89,7 @@ components.map((node) => {
 				util.inspect(depInputPathToUse.replace(dirName, '.'), {
 					showHidden: true,
 					depth: null,
-					colors: true
+					colors: true,
 				})
 			);
 
@@ -106,7 +106,7 @@ components.map((node) => {
 						util.inspect(err.message, {
 							showHidden: true,
 							depth: null,
-							colors: true
+							colors: true,
 						}),
 						`\n  ${depInputPathToUse.replace(
 							dirName,

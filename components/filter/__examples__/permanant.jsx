@@ -14,8 +14,8 @@ import Picklist from '~/components/menu-picklist';
 const options = {
 	'show-me': [
 		{ label: 'All Products', value: 'all-products' },
-		{ label: 'All Wackamoles', value: 'all-Wackamoles' }
-	]
+		{ label: 'All Wackamoles', value: 'all-Wackamoles' },
+	],
 };
 
 const Example = createReactClass({
@@ -23,7 +23,7 @@ const Example = createReactClass({
 
 	propTypes () {
 		return {
-			align: PropTypes.string
+			align: PropTypes.string,
 		};
 	},
 
@@ -32,8 +32,8 @@ const Example = createReactClass({
 			'show-me': {
 				selectedPicklistItem: options['show-me'][0],
 				selectedItem: options['show-me'][0],
-				isActive: true
-			}
+				isActive: true,
+			},
 		};
 	},
 
@@ -42,8 +42,8 @@ const Example = createReactClass({
 		this.setState({
 			[idSuffix]: {
 				...this.state[idSuffix],
-				selectedItem: this.state[idSuffix].selectedPicklistItem
-			}
+				selectedItem: this.state[idSuffix].selectedPicklistItem,
+			},
 		});
 	},
 
@@ -51,8 +51,8 @@ const Example = createReactClass({
 		this.setState({
 			[id]: {
 				...this.state[id],
-				selectedPicklistItem: selectedItem
-			}
+				selectedPicklistItem: selectedItem,
+			},
 		});
 	},
 
@@ -61,8 +61,8 @@ const Example = createReactClass({
 		this.setState({
 			[idSuffix]: {
 				...this.state[idSuffix],
-				isActive: false
-			}
+				isActive: false,
+			},
 		});
 	},
 
@@ -93,7 +93,7 @@ const Example = createReactClass({
 				</IconSettings>
 			)
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

@@ -13,7 +13,7 @@ class Example extends React.Component {
 						className="this-is-the-alert"
 						labels={{
 							heading: '26 potential duplicate leads were found.',
-							headingLink: 'Select Leads to Merge'
+							headingLink: 'Select Leads to Merge',
 						}}
 					/>
 				</ToastContainer>

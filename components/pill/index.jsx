@@ -24,7 +24,7 @@ const propTypes = {
 	 * _Tested with snapshot testing._
 	 */
 	assistiveText: shape({
-		remove: PropTypes.string
+		remove: PropTypes.string,
 	}),
 	/**
 	 * SLDSAvatar component to show on the left of the pill.
@@ -48,7 +48,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Applies the error style to the component.
@@ -77,7 +77,7 @@ const propTypes = {
 	labels: shape({
 		label: PropTypes.string,
 		title: PropTypes.string,
-		removeTitle: PropTypes.string
+		removeTitle: PropTypes.string,
 	}),
 	/**
 	 * `onBlur` callback executes when the component loses focus.
@@ -108,7 +108,7 @@ const propTypes = {
 	 * A variant of a pill
 	 * _Tested with Mocha framework._
 	 */
-	variant: PropTypes.oneOf(['link', 'option'])
+	variant: PropTypes.oneOf(['link', 'option']),
 };
 
 class Pill extends React.Component {
@@ -275,7 +275,7 @@ class Pill extends React.Component {
 					{
 						'slds-pill_link': this.props.variant === 'link',
 						'slds-has-error': this.props.hasError,
-						'slds-pill_bare': this.props.bare
+						'slds-pill_bare': this.props.bare,
 					},
 					this.props.className
 				)}
@@ -302,7 +302,7 @@ Pill.displayName = PILL;
 Pill.defaultProps = {
 	variant: 'link',
 	labels: {},
-	assistiveText: {}
+	assistiveText: {},
 };
 
 Pill.propTypes = propTypes;

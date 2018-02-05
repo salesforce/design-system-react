@@ -14,7 +14,7 @@ import IconSettings from '../../icon-settings';
  */
 import {
 	createMountNode,
-	destroyMountNode
+	destroyMountNode,
 } from '../../../tests/enzyme-helpers';
 
 // Import your internal dependencies (for example):
@@ -29,7 +29,7 @@ chai.use(chaiEnzyme());
 
 const defaultProps = {
 	id: 'sample-datepicker',
-	value: new Date(2007, 0, 6)
+	value: new Date(2007, 0, 6),
 };
 
 /* A re-usable demo component fixture outside of `describe` sections
@@ -40,7 +40,7 @@ const defaultProps = {
 const DemoComponent = createReactClass({
 	displayName: 'DatepickerDemoComponent',
 	propTypes: {
-		isOpen: PropTypes.bool
+		isOpen: PropTypes.bool,
 	},
 
 	getDefaultProps () {
@@ -59,7 +59,7 @@ const DemoComponent = createReactClass({
 				<Datepicker {...this.props} />
 			</IconSettings>
 		);
-	}
+	},
 });
 
 /* All tests for component being tested should be wrapped in a root `describe`,
@@ -107,7 +107,7 @@ describe('SLDSDatepicker', function () {
 	describe('Optional props', () => {
 		const customPlaceholder = 'With custom Input';
 		const optionalProps = {
-			children: <Input placeholder={customPlaceholder} value="" />
+			children: <Input placeholder={customPlaceholder} value="" />,
 		};
 
 		beforeEach(() => {
@@ -120,7 +120,7 @@ describe('SLDSDatepicker', function () {
 
 		it('has custom input with custom placeholder', function () {
 			wrapper = mount(<DemoComponent {...optionalProps} />, {
-				attachTo: mountNode
+				attachTo: mountNode,
 			});
 
 			expect(wrapper.find('input').node.getAttribute('placeholder')).to.equal(
@@ -233,7 +233,7 @@ describe('SLDSDatepicker', function () {
 							firstDayOfMonth.simulate('keyDown', {
 								key: 'Esc',
 								keyCode: KEYS.ESCAPE,
-								which: KEYS.ESCAPE
+								which: KEYS.ESCAPE,
 							});
 						}}
 					/>,
@@ -264,7 +264,7 @@ describe('SLDSDatepicker', function () {
 				selectedDay.simulate('keyDown', {
 					key: 'Down',
 					keyCode: KEYS.DOWN,
-					which: KEYS.DOWN
+					which: KEYS.DOWN,
 				});
 			});
 
@@ -288,7 +288,7 @@ describe('SLDSDatepicker', function () {
 				selectedDay.simulate('keyDown', {
 					key: 'Right',
 					keyCode: KEYS.RIGHT,
-					which: KEYS.RIGHT
+					which: KEYS.RIGHT,
 				});
 			});
 
@@ -312,7 +312,7 @@ describe('SLDSDatepicker', function () {
 				selectedDay.simulate('keyDown', {
 					key: 'Up',
 					keyCode: KEYS.UP,
-					which: KEYS.UP
+					which: KEYS.UP,
 				});
 			});
 
@@ -336,7 +336,7 @@ describe('SLDSDatepicker', function () {
 				selectedDay.simulate('keyDown', {
 					key: 'Left',
 					keyCode: KEYS.LEFT,
-					which: KEYS.LEFT
+					which: KEYS.LEFT,
 				});
 			});
 
@@ -358,7 +358,7 @@ describe('SLDSDatepicker', function () {
 				selectedDay.simulate('keyDown', {
 					key: 'Tab',
 					keyCode: KEYS.TAB,
-					which: KEYS.TAB
+					which: KEYS.TAB,
 				});
 			});
 
@@ -381,7 +381,7 @@ describe('SLDSDatepicker', function () {
 					key: 'Tab',
 					keyCode: KEYS.TAB,
 					shiftKey: true,
-					which: KEYS.TAB
+					which: KEYS.TAB,
 				});
 			});
 		});

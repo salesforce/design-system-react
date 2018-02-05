@@ -7,8 +7,8 @@ const sampleReportCategories = [
 			{ id: 'my_reports', label: 'Created by Me' },
 			{ id: 'private_reports', label: 'Private Reports' },
 			{ id: 'public_reports', label: 'Public Reports' },
-			{ id: 'all_reports', label: 'All Reports' }
-		]
+			{ id: 'all_reports', label: 'All Reports' },
+		],
 	},
 	{
 		id: 'folders',
@@ -17,12 +17,12 @@ const sampleReportCategories = [
 			{
 				id: 'my_folders',
 				label: 'Created by Me',
-				url: 'http://www.google.com'
+				url: 'http://www.google.com',
 			},
 			{ id: 'shared_folders', label: 'Shared with Me' },
-			{ id: 'all_folders', label: 'All Folders' }
-		]
-	}
+			{ id: 'all_folders', label: 'All Folders' },
+		],
+	},
 ];
 
 const sampleSearchCategories = [
@@ -39,8 +39,8 @@ const sampleSearchCategories = [
 			{ id: 'files', label: 'Files' },
 			{ id: 'dashboards', label: 'Dashboards' },
 			{ id: 'reports', label: 'Reports' },
-			{ id: 'feeds', label: 'Feeds' }
-		]
+			{ id: 'feeds', label: 'Feeds' },
+		],
 	},
 	{
 		id: 'external_results',
@@ -48,9 +48,9 @@ const sampleSearchCategories = [
 		items: [
 			{ id: 'app_one', label: 'App One' },
 			{ id: 'app_two', label: 'App Two' },
-			{ id: 'app_three', label: 'App Three' }
-		]
-	}
+			{ id: 'app_three', label: 'App Three' },
+		],
+	},
 ];
 
 export { sampleReportCategories, sampleSearchCategories };

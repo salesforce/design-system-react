@@ -14,7 +14,7 @@ const CheckboxIndeterminate = createReactClass({
 		return {
 			indeterminate: true,
 			checked: true,
-			currentStateHelper: 'Indeterminate'
+			currentStateHelper: 'Indeterminate',
 		};
 	},
 
@@ -23,7 +23,7 @@ const CheckboxIndeterminate = createReactClass({
 		this.setState({
 			checked: data.checked,
 			currentStateHelper: data.indeterminate ? 'Indeterminate' : checkedLabel,
-			indeterminate: data.indeterminate
+			indeterminate: data.indeterminate,
 		});
 
 		action('handleChange')(
@@ -38,7 +38,7 @@ const CheckboxIndeterminate = createReactClass({
 		this.setState({
 			currentStateHelper: 'Indeterminate',
 			checked: true,
-			indeterminate: true
+			indeterminate: true,
 		});
 		action('changeToIndeterminate')(
 			event,
@@ -50,7 +50,7 @@ const CheckboxIndeterminate = createReactClass({
 		this.setState({
 			currentStateHelper: 'Checked',
 			checked: true,
-			indeterminate: false
+			indeterminate: false,
 		});
 		action('changeToCheck')(event, 'checked: true, indeterminate: false');
 	},
@@ -59,7 +59,7 @@ const CheckboxIndeterminate = createReactClass({
 		this.setState({
 			currentStateHelper: 'Unchecked',
 			checked: false,
-			indeterminate: false
+			indeterminate: false,
 		});
 		action('changeToUnChecked')(event, 'checked: false, indeterminate: false');
 	},
@@ -101,7 +101,7 @@ const CheckboxIndeterminate = createReactClass({
 				</div>
 			</div>
 		);
-	}
+	},
 });
 
 storiesOf(FORMS_CHECKBOX, module)

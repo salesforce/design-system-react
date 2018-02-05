@@ -50,7 +50,7 @@ const GlobalNavigationDropdownTrigger = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * Determines position of separating bar.
@@ -103,7 +103,7 @@ const GlobalNavigationDropdownTrigger = createReactClass({
 		/**
 		 * The ref of the actual triggering button.
 		 */
-		triggerRef: PropTypes.func
+		triggerRef: PropTypes.func,
 	},
 
 	// ### Render
@@ -151,7 +151,7 @@ const GlobalNavigationDropdownTrigger = createReactClass({
 					{
 						'slds-is-open': isOpen,
 						'slds-is-active': active,
-						[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition
+						[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition,
 					},
 					className
 				)}
@@ -184,7 +184,7 @@ const GlobalNavigationDropdownTrigger = createReactClass({
 				{menu}
 			</li>
 		);
-	}
+	},
 });
 
 export default GlobalNavigationDropdownTrigger;

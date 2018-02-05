@@ -9,7 +9,7 @@ import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
 
 const SORT_OPTIONS = {
 	UP: 'up',
-	DOWN: 'down'
+	DOWN: 'down',
 };
 
 const listOptions = [
@@ -18,64 +18,64 @@ const listOptions = [
 		label: 'Riley Shultz',
 		topRightText: '99',
 		bottomLeftText: 'Biotech, Inc.',
-		bottomRightText: 'Nurturing'
+		bottomRightText: 'Nurturing',
 	},
 	{
 		id: '002',
 		label: 'Jason A. - VP of Sales',
 		topRightText: '92',
 		bottomLeftText: 'Case Management Solutions',
-		bottomRightText: 'Contacted'
+		bottomRightText: 'Contacted',
 	},
 	{
 		id: '003',
 		label: 'Josh Smith',
 		topRightText: '90',
 		bottomLeftText: 'Acme, Inc.',
-		bottomRightText: 'Contacted'
+		bottomRightText: 'Contacted',
 	},
 	{
 		id: '004',
 		label: 'Bobby Tree',
 		topRightText: '89',
 		bottomLeftText: 'Salesforce, Inc.',
-		bottomRightText: 'Closing'
+		bottomRightText: 'Closing',
 	},
 	{
 		id: '005',
 		label: 'Riley Shultz',
 		topRightText: '74',
 		bottomLeftText: 'Tesla',
-		bottomRightText: 'Contacted'
+		bottomRightText: 'Contacted',
 	},
 	{
 		id: '006',
 		label: 'Andy Smith',
 		topRightText: '72',
 		bottomLeftText: 'Universal Technologies',
-		bottomRightText: 'New'
+		bottomRightText: 'New',
 	},
 	{
 		id: '007',
 		label: 'Jim Steele',
 		topRightText: '71',
 		bottomLeftText: 'BigList, Inc.',
-		bottomRightText: 'New'
+		bottomRightText: 'New',
 	},
 	{
 		id: '008',
 		label: 'John Gardner',
 		topRightText: '70',
 		bottomLeftText: '3C Systems',
-		bottomRightText: 'Contacted'
+		bottomRightText: 'Contacted',
 	},
 	{
 		id: '009',
 		label: 'Sarah Loehr',
 		topRightText: '68',
 		bottomLeftText: 'MedLife, Inc.',
-		bottomRightText: 'New'
-	}
+		bottomRightText: 'New',
+	},
 ];
 
 const headerNavRight = (
@@ -88,7 +88,7 @@ const headerNavRight = (
 			iconVariant="border-filled"
 			options={[
 				{ label: 'Menu Item One', value: 'A0' },
-				{ label: 'Menu Item Two', value: 'B0' }
+				{ label: 'Menu Item Two', value: 'B0' },
 			]}
 		/>
 	</div>
@@ -116,17 +116,17 @@ const headerContentRight = (
 					value: 'A0',
 					rightIcon: {
 						category: 'utility',
-						name: 'table'
-					}
+						name: 'table',
+					},
 				},
 				{
 					label: 'List View',
 					value: 'B0',
 					rightIcon: {
 						category: 'utility',
-						name: 'side_list'
-					}
-				}
+						name: 'side_list',
+					},
+				},
 			]}
 			value="B0"
 		/>
@@ -150,7 +150,7 @@ const headerTitle = (
 					{ label: 'Menu Item Two', value: 'B0' },
 					{ label: 'Menu Item Three', value: 'C0' },
 					{ type: 'divider' },
-					{ label: 'Menu Item Four', value: 'D0' }
+					{ label: 'Menu Item Four', value: 'D0' },
 				]}
 			>
 				<DropdownTrigger>
@@ -177,7 +177,7 @@ class Example extends React.Component {
 			selected: [listOptions[listOptions.length - 2]],
 			unread: [listOptions[0], listOptions[2]],
 			sortDirection: SORT_OPTIONS.DOWN,
-			isOpen: true
+			isOpen: true,
 		};
 
 		this.sortList = this.sortList.bind(this);
@@ -210,7 +210,7 @@ class Example extends React.Component {
 			<SplitViewListbox
 				key="2"
 				labels={{
-					header: 'Lead Score'
+					header: 'Lead Score',
 				}}
 				sortDirection={this.state.sortDirection}
 				options={this.state.options}
@@ -219,13 +219,13 @@ class Example extends React.Component {
 					onSelect: (event, { selectedItems, item }) => {
 						this.setState({
 							unread: this.state.unread.filter((i) => i !== item),
-							selected: selectedItems
+							selected: selectedItems,
 						});
-					}
+					},
 				}}
 				selection={this.state.selected}
 				unread={this.state.unread}
-			/>
+			/>,
 		];
 	}
 
@@ -301,7 +301,7 @@ class Example extends React.Component {
 						? a.label > b.label
 						: b.label > a.label)
 			),
-			sortDirection
+			sortDirection,
 		});
 	}
 
@@ -326,7 +326,7 @@ class Example extends React.Component {
 						<SplitView
 							events={{
 								onOpen: (e) => this.onSplitViewOpen(e),
-								onClose: (e) => this.onSplitViewClose(e)
+								onClose: (e) => this.onSplitViewClose(e),
 							}}
 							isOpen={this.state.isOpen}
 							master={this.masterView()}

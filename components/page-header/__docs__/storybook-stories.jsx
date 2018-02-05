@@ -21,16 +21,16 @@ const recordHomeDetails1 = [
 		content:
 			'Description that demonstrates truncation with content. Description that demonstrates truncation with content.',
 		flavor: '1-of-4',
-		truncate: true
+		truncate: true,
 	},
 	{ label: 'Field 2', content: 'Multiple Values' },
-	{ label: 'Field 3', content: 'Description (2-line truncation)' }
+	{ label: 'Field 3', content: 'Description (2-line truncation)' },
 ];
 
 const recordHomeDetails2 = [
 	{ label: 'Field 1', content: 'hi', flavor: '1-of-4', truncate: true },
 	{ label: 'Field 2', content: 'Multiple Values' },
-	{ label: 'Field 3', content: 'Description (2-line truncation)' }
+	{ label: 'Field 3', content: 'Description (2-line truncation)' },
 ];
 
 const DemoPageHeader = createReactClass({
@@ -38,7 +38,7 @@ const DemoPageHeader = createReactClass({
 
 	getInitialState () {
 		return {
-			recordHomeDetails: recordHomeDetails2
+			recordHomeDetails: recordHomeDetails2,
 		};
 	},
 
@@ -53,7 +53,7 @@ const DemoPageHeader = createReactClass({
 	handleSelect (selectedItem, ...rest) {
 		action('select')(selectedItem, ...rest);
 		this.setState({
-			currentSelected: this.state.options.indexOf(selectedItem)
+			currentSelected: this.state.options.indexOf(selectedItem),
 		});
 	},
 
@@ -65,7 +65,7 @@ const DemoPageHeader = createReactClass({
 			label: 'Record Type',
 			title: 'Record Title',
 			variant: 'recordHome',
-			details: this.state.recordHomeDetails
+			details: this.state.recordHomeDetails,
 		};
 
 		return (
@@ -76,7 +76,7 @@ const DemoPageHeader = createReactClass({
 				<SLDSPageHeader {...defaultProps} />
 			</div>
 		);
-	}
+	},
 });
 const getPageHeader = (props) => <SLDSPageHeader {...props} />;
 
@@ -105,7 +105,7 @@ const recordHomeContentRight = (
 				align="right"
 				options={[
 					{ label: 'Disable', value: 'A0' },
-					{ label: 'Promote', value: 'C0' }
+					{ label: 'Promote', value: 'C0' },
 				]}
 			/>
 		</SLDSButtonGroup>
@@ -130,11 +130,11 @@ const recordHomeDetails = [
 		content:
 			'Description that demonstrates truncation with content. Description that demonstrates truncation with content.',
 		flavor: '1-of-4',
-		truncate: true
+		truncate: true,
 	},
 	{ label: 'Field 2', content: 'Multiple Values' },
 	{ label: 'Field 3', content: customTooltip(), flavor: '1-of-4' },
-	{ label: 'Field 4', content: 'Description (2-line truncation)' }
+	{ label: 'Field 4', content: 'Description (2-line truncation)' },
 ];
 
 const objectHomeContentRight = (
@@ -179,7 +179,7 @@ const objectHomeContentRight = (
 					{ label: 'Last Name (ascending)', value: 'LNA' },
 					{ label: 'Last Name (descending)', value: 'LND' },
 					{ label: 'Last Contacted (descending)', value: 'LCD' },
-					{ label: 'Last Contacted (ascending)', value: 'LCA' }
+					{ label: 'Last Contacted (ascending)', value: 'LCA' },
 				]}
 			/>
 		</SLDSButtonGroup>
@@ -198,7 +198,7 @@ const objectHomeNavRight = (
 			options={[
 				{ label: 'Refresh List', value: 'A0' },
 				{ label: 'Duplicate Selected Leads', value: 'B0' },
-				{ label: 'Disabled Selected Leads', value: 'C0' }
+				{ label: 'Disabled Selected Leads', value: 'C0' },
 			]}
 		/>
 	</SLDSButtonGroup>
@@ -240,7 +240,7 @@ const relatedListContentRight = (
 					{ label: 'Last Name (ascending)', value: 'LNA' },
 					{ label: 'Last Name (descending)', value: 'LND' },
 					{ label: 'Last Contacted (descending)', value: 'LCD' },
-					{ label: 'Last Contacted (ascending)', value: 'LCA' }
+					{ label: 'Last Contacted (ascending)', value: 'LCA' },
 				]}
 			/>
 		</SLDSButtonGroup>
@@ -261,7 +261,7 @@ const relatedListNavRight = (
 			options={[
 				{ label: 'Refresh List', value: 'A0' },
 				{ label: 'Duplicate Selected Leads', value: 'B0' },
-				{ label: 'Disabled Selected Leads', value: 'C0' }
+				{ label: 'Disabled Selected Leads', value: 'C0' },
 			]}
 		/>
 	</SLDSButtonGroup>
@@ -269,7 +269,7 @@ const relatedListNavRight = (
 
 const relatedListTrail = [
 	<a href="javascript:void(0);">Accounts</a>,
-	<a href="javascript:void(0);">Company One</a>
+	<a href="javascript:void(0);">Company One</a>,
 ];
 
 storiesOf(PAGE_HEADER, module)
@@ -284,7 +284,7 @@ storiesOf(PAGE_HEADER, module)
 			iconCategory: 'standard',
 			iconName: 'opportunity',
 			title: 'Rohde Corp - 80,000 Widgets',
-			info: 'Mark Jaeckal • Unlimited Customer • 11/13/15'
+			info: 'Mark Jaeckal • Unlimited Customer • 11/13/15',
 		})
 	)
 	.add('Record Home (truncates)', () =>
@@ -296,7 +296,7 @@ storiesOf(PAGE_HEADER, module)
 			title: 'Record Title',
 			variant: 'recordHome',
 			contentRight: recordHomeContentRight,
-			details: recordHomeDetails
+			details: recordHomeDetails,
 		})
 	)
 	.add('Object Home', () => <ObjectHome />)
@@ -307,7 +307,7 @@ storiesOf(PAGE_HEADER, module)
 			info: '10 items • sorted by name',
 			contentRight: relatedListContentRight,
 			navRight: relatedListNavRight,
-			trail: relatedListTrail
+			trail: relatedListTrail,
 		})
 	)
 	.add('Record Home (field updates)', () => <DemoPageHeader />);

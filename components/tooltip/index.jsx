@@ -48,7 +48,7 @@ const propTypes = {
 		'bottom right',
 		'left',
 		'left top',
-		'left bottom'
+		'left bottom',
 	]).isRequired,
 	/**
 	 * Pass the one element that triggers the Tooltip as a child. It must be an element with `tabIndex` or an element that already has a `tabIndex` set such as an anchor or a button, so that keyboard users can tab to it.
@@ -80,7 +80,7 @@ const propTypes = {
 	triggerClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Please select one of the following:
@@ -91,7 +91,7 @@ const propTypes = {
 	position: PropTypes.oneOf([
 		'absolute',
 		'overflowBoundaryElement',
-		'relative'
+		'relative',
 	]),
 	/**
 	 * Custom styles to be added to wrapping triggering `div`.
@@ -100,7 +100,7 @@ const propTypes = {
 	/**
 	 * Determines the variant of tooltip: for informative purpose (blue background) or warning purpose (red background)
 	 */
-	variant: PropTypes.oneOf(['info', 'error'])
+	variant: PropTypes.oneOf(['info', 'error']),
 };
 
 const defaultProps = {
@@ -108,7 +108,7 @@ const defaultProps = {
 	content: <span>Tooltip</span>,
 	hoverCloseDelay: 50,
 	position: 'absolute',
-	variant: 'info'
+	variant: 'info',
 };
 
 /**
@@ -120,7 +120,7 @@ class PopoverTooltip extends React.Component {
 
 		this.state = {
 			isClosing: false,
-			isOpen: false
+			isOpen: false,
 		};
 	}
 
@@ -145,7 +145,7 @@ class PopoverTooltip extends React.Component {
 					onBlur: this.handleMouseLeave,
 					onFocus: this.handleMouseEnter,
 					onMouseEnter: this.handleMouseEnter,
-					onMouseLeave: this.handleMouseLeave
+					onMouseLeave: this.handleMouseLeave,
 				},
 				this.grandKidsWithAsstText(child)
 			)
@@ -174,7 +174,7 @@ class PopoverTooltip extends React.Component {
 					marginBottom: getMargin.bottom(align),
 					marginLeft: getMargin.left(align),
 					marginRight: getMargin.right(align),
-					marginTop: getMargin.top(align)
+					marginTop: getMargin.top(align),
 				}}
 				variant="tooltip"
 			>
@@ -225,14 +225,14 @@ class PopoverTooltip extends React.Component {
 	handleCancel = () => {
 		this.setState({
 			isOpen: false,
-			isClosing: false
+			isClosing: false,
 		});
 	};
 
 	handleMouseEnter = () => {
 		this.setState({
 			isOpen: true,
-			isClosing: false
+			isClosing: false,
 		});
 	};
 
@@ -243,7 +243,7 @@ class PopoverTooltip extends React.Component {
 			if (!this.isUnmounting && this.state.isClosing) {
 				this.setState({
 					isOpen: false,
-					isClosing: false
+					isClosing: false,
 				});
 			}
 		}, this.props.hoverCloseDelay);
@@ -285,7 +285,7 @@ class PopoverTooltip extends React.Component {
 }
 
 PopoverTooltip.contextTypes = {
-	iconPath: PropTypes.string
+	iconPath: PropTypes.string,
 };
 
 PopoverTooltip.displayName = displayName;

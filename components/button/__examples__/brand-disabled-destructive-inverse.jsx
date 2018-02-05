@@ -27,7 +27,7 @@ const Example = createReactClass({
 						style={{
 							backgroundColor: '#16325c',
 							padding: '10px',
-							display: 'inline-block'
+							display: 'inline-block',
 						}}
 						className="-m-horizontal--small"
 					>
@@ -36,7 +36,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

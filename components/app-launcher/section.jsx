@@ -58,18 +58,18 @@ const AppLauncherSection = createReactClass({
 		/**
 		 * Callback for when section is toggled. Passes "isOpen" bool. Forces `toggleable` to true
 		 */
-		onToggleClick: PropTypes.func
+		onToggleClick: PropTypes.func,
 	},
 
 	getDefaultProps () {
 		return {
-			collapseSectionAssistiveText: 'Toggle visibility of section'
+			collapseSectionAssistiveText: 'Toggle visibility of section',
 		};
 	},
 
 	getInitialState () {
 		return {
-			isOpen: true
+			isOpen: true,
 		};
 	},
 
@@ -126,7 +126,7 @@ const AppLauncherSection = createReactClass({
 				</div>
 			</div>
 		);
-	}
+	},
 });
 
 export default AppLauncherSection;

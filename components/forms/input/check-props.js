@@ -60,12 +60,12 @@ if (process.env.NODE_ENV !== 'production') {
 
 		onlyOneOfProperties(COMPONENT, {
 			assistiveText: props.assistiveText,
-			label: props.label
+			label: props.label,
 		});
 
 		onlyOneOfProperties(COMPONENT, {
 			fixedTextLeft: props.fixedTextLeft,
-			fixedTextRight: props.fixedTextRight
+			fixedTextRight: props.fixedTextRight,
 		});
 
 		/*

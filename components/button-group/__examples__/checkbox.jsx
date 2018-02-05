@@ -10,7 +10,7 @@ const Example = createReactClass({
 		return (
 			<ButtonGroup
 				labels={{
-					label: 'Scheduled Day(s)'
+					label: 'Scheduled Day(s)',
 				}}
 				variant="checkbox"
 			>
@@ -21,7 +21,7 @@ const Example = createReactClass({
 				<Checkbox id="ButtonGroupExampleFri" label="Fri" />
 			</ButtonGroup>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

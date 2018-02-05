@@ -64,7 +64,7 @@ const Dialog = createReactClass({
 			'bottom right',
 			'left',
 			'left top',
-			'left bottom'
+			'left bottom',
 		]),
 		/**
 		 * CSS classes to be added to the absolutely positioned element.
@@ -72,7 +72,7 @@ const Dialog = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * CSS classes to be added to the wrapping `div` of the contents of the dialog.
@@ -80,7 +80,7 @@ const Dialog = createReactClass({
 		contentsClassName: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * Contents of dialog
@@ -160,7 +160,7 @@ const Dialog = createReactClass({
 		position: PropTypes.oneOf([
 			'absolute',
 			'overflowBoundaryElement',
-			'relative'
+			'relative',
 		]).isRequired,
 		/**
 		 * An object of CSS styles that are applied to the immediate parent `div` of the contents. Use this instead of margin props.
@@ -169,21 +169,21 @@ const Dialog = createReactClass({
 		/**
 		 * Sets which focus UX pattern to follow. For instance, popovers trap focus and must be exited to regain focus. Dropdowns and Tooltips never have focus.
 		 */
-		variant: PropTypes.oneOf(['dropdown', 'popover', 'tooltip'])
+		variant: PropTypes.oneOf(['dropdown', 'popover', 'tooltip']),
 	},
 
 	getDefaultProps () {
 		return {
 			align: 'bottom left',
 			offset: '0px 0px',
-			outsideClickIgnoreClass: 'ignore-react-onclickoutside'
+			outsideClickIgnoreClass: 'ignore-react-onclickoutside',
 		};
 	},
 
 	getInitialState () {
 		return {
 			triggerPopperJS: false,
-			isOpen: false
+			isOpen: false,
 		};
 	},
 
@@ -229,7 +229,7 @@ const Dialog = createReactClass({
 		const offsetArray = offsetString.split(' ');
 		return {
 			vertical: parseInt(offsetArray[0], 10),
-			horizontal: parseInt(offsetArray[1], 10)
+			horizontal: parseInt(offsetArray[1], 10),
 		};
 	},
 
@@ -238,7 +238,7 @@ const Dialog = createReactClass({
 		if (!this.popper || !popperData) {
 			return {
 				position: 'absolute',
-				pointerEvents: 'none'
+				pointerEvents: 'none',
 			};
 		}
 
@@ -297,7 +297,7 @@ const Dialog = createReactClass({
 		if (this.props.variant === 'popover' && scopedElement) {
 			DOMElementFocus.storeActiveElement();
 			DOMElementFocus.setupScopedFocus({
-				ancestorElement: scopedElement.querySelector('.slds-popover')
+				ancestorElement: scopedElement.querySelector('.slds-popover'),
 			}); // eslint-disable-line react/no-find-dom-node
 			// Don't steal focus from inner elements
 			if (!DOMElementFocus.hasOrAncestorHasFocus()) {
@@ -325,7 +325,7 @@ const Dialog = createReactClass({
 			preventOverflow: {
 				enabled: true,
 				boundariesElement:
-					this.props.position === 'absolute' ? 'scrollParent' : 'viewport'
+					this.props.position === 'absolute' ? 'scrollParent' : 'viewport',
 			},
 			// By default, dialogs will flip their alignment if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint
 			removeOnDestroy: true,
@@ -341,8 +341,8 @@ const Dialog = createReactClass({
 						this.setState({ popperData });
 					}
 					return popperData;
-				}
-			}
+				},
+			},
 			// arrow property can also point to an element
 		};
 		if (!reference) {
@@ -354,7 +354,7 @@ const Dialog = createReactClass({
 		this.popper = new Popper(reference, popper, {
 			placement,
 			eventsEnabled,
-			modifiers
+			modifiers,
 		});
 
 		this.popper.scheduleUpdate();
@@ -395,7 +395,7 @@ const Dialog = createReactClass({
 							'portal-positioned':
 								this.props.position === 'overflowBoundaryElement',
 							[`${this.props.outsideClickIgnoreClass}`]:
-								this.props.position === 'overflowBoundaryElement'
+								this.props.position === 'overflowBoundaryElement',
 						},
 						this.props.contentsClassName
 					) || undefined
@@ -420,15 +420,15 @@ const Dialog = createReactClass({
 						{contents}
 					</IconSettings>
 				</Portal>
-			)
+			),
 		};
 
 		return subRenders[this.props.position] && subRenders[this.props.position]();
-	}
+	},
 });
 
 Dialog.contextTypes = {
-	iconPath: PropTypes.string
+	iconPath: PropTypes.string,
 };
 
 export default Dialog;

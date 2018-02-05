@@ -13,12 +13,12 @@ import IconSettings from '../../../icon-settings';
 const {
 	findRenderedDOMComponentWithTag,
 	scryRenderedDOMComponentsWithTag,
-	findRenderedDOMComponentWithClass
+	findRenderedDOMComponentWithClass,
 } = TestUtils;
 
 describe('SLDSInput', () => {
 	const defaultProps = {
-		placeholder: 'Placeholder Text'
+		placeholder: 'Placeholder Text',
 	};
 
 	let body;
@@ -226,7 +226,7 @@ describe('SLDSInput', () => {
 			component = getInput({
 				label: 'Input Label',
 				required: true,
-				errorText: 'Error Message'
+				errorText: 'Error Message',
 			});
 			wrapper = findRenderedDOMComponentWithClass(
 				component,
@@ -281,7 +281,7 @@ describe('SLDSInput', () => {
 						category="utility"
 						onClick={clickCallback}
 					/>
-				)
+				),
 			});
 			leftButton = findRenderedDOMComponentWithTag(component, 'button');
 			iconAssistiveText = findRenderedDOMComponentWithClass(
@@ -335,7 +335,7 @@ describe('SLDSInput', () => {
 						category="utility"
 						onClick={clickCallback}
 					/>
-				)
+				),
 			});
 			leftButton = findRenderedDOMComponentWithTag(component, 'button');
 			elementControl = findRenderedDOMComponentWithClass(
@@ -370,7 +370,7 @@ describe('SLDSInput', () => {
 
 		beforeEach(() => {
 			component = getInput({
-				iconRight: <Icon name="search" category="utility" />
+				iconRight: <Icon name="search" category="utility" />,
 			});
 			elementControl = findRenderedDOMComponentWithClass(
 				component,
@@ -404,7 +404,7 @@ describe('SLDSInput', () => {
 					/>
 				),
 				id: 'unique-id-4',
-				label: 'Input Label'
+				label: 'Input Label',
 			});
 			spinner = findRenderedDOMComponentWithClass(component, 'slds-spinner');
 			input = findRenderedDOMComponentWithTag(component, 'input');
@@ -451,7 +451,7 @@ describe('SLDSInput', () => {
 					/>
 				),
 				id: 'unique-id-4',
-				label: 'Input Label'
+				label: 'Input Label',
 			});
 			spinner = findRenderedDOMComponentWithClass(component, 'slds-spinner');
 			input = findRenderedDOMComponentWithTag(component, 'input');
@@ -481,7 +481,7 @@ describe('SLDSInput', () => {
 			component = getInput({
 				fixedTextLeft: '$',
 				id: 'unique-id-5',
-				label: 'Input Label'
+				label: 'Input Label',
 			});
 			fixedTextLeft = findRenderedDOMComponentWithClass(
 				component,

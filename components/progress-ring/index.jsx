@@ -17,7 +17,7 @@ import ProgressRingShape from './private/ring-shape';
 export const THEME_OPTIONS = Object.freeze({
 	WARNING: 'warning',
 	EXPIRED: 'expired',
-	COMPLETE: 'complete'
+	COMPLETE: 'complete',
 });
 
 /**
@@ -26,7 +26,7 @@ export const THEME_OPTIONS = Object.freeze({
 const THEME_CLASSES = {
 	[THEME_OPTIONS.COMPLETE]: 'slds-progress-ring_complete',
 	[THEME_OPTIONS.WARNING]: 'slds-progress-ring_warning',
-	[THEME_OPTIONS.EXPIRED]: 'slds-progress-ring_expired'
+	[THEME_OPTIONS.EXPIRED]: 'slds-progress-ring_expired',
 };
 
 const propTypes = {
@@ -40,7 +40,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * The theme applied to the ring.
@@ -57,7 +57,7 @@ const propTypes = {
 	/**
 	 * Percentage of progress completion, ranging [0, 100].
 	 */
-	value: PropTypes.number.isRequired
+	value: PropTypes.number.isRequired,
 };
 
 const defaultProps = {};

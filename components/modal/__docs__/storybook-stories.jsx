@@ -23,7 +23,7 @@ const getModal = (props) => <Modal {...props} />;
 
 const modalFooter = [
 	<Button key="modalBCancel" label="Cancel" />,
-	<Button key="modalBSave" label="Save" variant="brand" />
+	<Button key="modalBSave" label="Save" variant="brand" />,
 ];
 
 const modalContent = (
@@ -103,7 +103,7 @@ const modalContent = (
 				{ label: 'Cold Call', value: 'B0' },
 				{ label: 'LinkedIn', value: 'C0' },
 				{ label: 'Direct Mail', value: 'D0' },
-				{ label: 'Other', value: 'E0' }
+				{ label: 'Other', value: 'E0' },
 			]}
 			placeholder="Select Lead Source"
 			value="B0"
@@ -201,7 +201,7 @@ storiesOf(MODAL, module)
 			title: 'New Opportunity',
 			children: modalContent,
 			onRequestClose: action('modal closed'),
-			portalClassName: 'portal-class-name-test'
+			portalClassName: 'portal-class-name-test',
 		})
 	)
 	.add('Small with footer, not dismissible', () =>
@@ -212,7 +212,7 @@ storiesOf(MODAL, module)
 			title: 'New Opportunity',
 			children: modalContent,
 			onRequestClose: action('modal closed'),
-			footer: modalFooter
+			footer: modalFooter,
 		})
 	)
 	.add('Small with custom footer', () =>
@@ -229,7 +229,7 @@ storiesOf(MODAL, module)
 					<Button label="update" />
 					<Button label="run" />
 				</div>
-			)
+			),
 		})
 	)
 	.add('Small no header', () =>
@@ -237,7 +237,7 @@ storiesOf(MODAL, module)
 			isOpen: true,
 			children: modalContent,
 			onRequestClose: action('modal closed'),
-			portalClassName: 'portal-class-name-test'
+			portalClassName: 'portal-class-name-test',
 		})
 	)
 	.add('Large with directional footer', () =>
@@ -249,7 +249,7 @@ storiesOf(MODAL, module)
 			children: modalContent,
 			onRequestClose: action('modal closed'),
 			footer: modalFooter,
-			size: 'large'
+			size: 'large',
 		})
 	)
 	.add('Prompt', () =>
@@ -266,6 +266,6 @@ storiesOf(MODAL, module)
 				</div>
 			), // eslint-disable-line max-len
 			prompt: 'error',
-			onRequestClose: action('modal closed')
+			onRequestClose: action('modal closed'),
 		})
 	);

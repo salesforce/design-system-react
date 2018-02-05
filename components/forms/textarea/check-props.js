@@ -11,7 +11,7 @@ if (process.env.NODE_ENV !== 'production') {
 	checkProps = function (COMPONENT, props) {
 		onlyOneOfProperties(COMPONENT, {
 			assistiveText: props.assistiveText,
-			label: props.label
+			label: props.label,
 		});
 	};
 }

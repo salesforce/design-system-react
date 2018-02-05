@@ -26,10 +26,10 @@ describe('SLDSPill', () => {
 					labels={{
 						label: LABEL,
 						title: LABEL_TITLE,
-						removeTitle: 'Remove'
+						removeTitle: 'Remove',
 					}}
 					assistiveText={{
-						remove: 'Remove assistive text'
+						remove: 'Remove assistive text',
 					}}
 					className="extra-class"
 					onClick={onClick}
@@ -108,7 +108,7 @@ describe('SLDSPill', () => {
 			mountComponent(
 				<SLDSPill
 					labels={{
-						label: LABEL
+						label: LABEL,
 					}}
 					href={HREF}
 				/>
@@ -130,7 +130,7 @@ describe('SLDSPill', () => {
 			mountComponent(
 				<SLDSPill
 					labels={{
-						label: LABEL
+						label: LABEL,
 					}}
 				/>
 			)
@@ -150,7 +150,7 @@ describe('SLDSPill', () => {
 			mountComponent(
 				<SLDSPill
 					labels={{
-						label: LABEL
+						label: LABEL,
 					}}
 					bare
 				/>
@@ -172,7 +172,7 @@ describe('SLDSPill', () => {
 			mountComponent(
 				<SLDSPill
 					labels={{
-						label: LABEL
+						label: LABEL,
 					}}
 					hasError
 				/>
@@ -193,7 +193,7 @@ describe('SLDSPill', () => {
 			mountComponent(
 				<SLDSPill
 					labels={{
-						label: LABEL
+						label: LABEL,
 					}}
 					onClick={onClick}
 					icon={<SLDSIcon title="Account" category="standard" name="account" />}
@@ -217,7 +217,7 @@ describe('SLDSPill', () => {
 			mountComponent(
 				<SLDSPill
 					labels={{
-						label: LABEL
+						label: LABEL,
 					}}
 					avatar={
 						<SLDSAvatar
@@ -251,7 +251,7 @@ describe('SLDSPill', () => {
 				<SLDSPill
 					labels={{
 						label: LABEL,
-						title: LABEL_TITLE
+						title: LABEL_TITLE,
 					}}
 					variant="option"
 					removeTitle="Remove"

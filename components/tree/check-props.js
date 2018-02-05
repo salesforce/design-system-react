@@ -14,7 +14,7 @@ if (process.env.NODE_ENV !== 'production') {
 		/* eslint-disable max-len */
 		oneOfRequiredProperty(COMPONENT, {
 			assistiveText: props.assistiveText,
-			heading: props.heading
+			heading: props.heading,
 		});
 		/* eslint-enable max-len */
 	};

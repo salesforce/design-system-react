@@ -6,7 +6,7 @@
 const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/lookup/__examples__/default.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/lookup/__examples__/files.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/lookup/__examples__/with-selection.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/lookup/__examples__/with-selection.jsx'),
 ];
 
 module.exports = siteStories;

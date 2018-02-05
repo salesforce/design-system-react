@@ -65,14 +65,14 @@ const List = createReactClass({
 		/**
 		 * The id of the element which triggered this list (in a menu context).
 		 */
-		triggerId: PropTypes.string
+		triggerId: PropTypes.string,
 	},
 
 	getDefaultProps () {
 		return {
 			length: '5',
 			options: [],
-			selectedIndex: -1
+			selectedIndex: -1,
 		};
 	},
 
@@ -117,7 +117,7 @@ const List = createReactClass({
 				})}
 			</ul>
 		);
-	}
+	},
 });
 
 export default List;

@@ -12,7 +12,7 @@ const Example = createReactClass({
 				<Avatar variant="user" label="Annie Wilson" size="medium" />
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

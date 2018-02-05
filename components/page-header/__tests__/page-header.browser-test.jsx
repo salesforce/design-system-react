@@ -39,7 +39,7 @@ const recordHomeContentRight = (
 				align="right"
 				options={[
 					{ label: 'Disable', value: 'A0' },
-					{ label: 'Promote', value: 'C0' }
+					{ label: 'Promote', value: 'C0' },
 				]}
 			/>
 		</SLDSButtonGroup>
@@ -52,10 +52,10 @@ const recordHomeDetails = [
 		content:
 			'Description that demonstrates truncation with content. Description that demonstrates truncation with content.',
 		flavor: '1-of-4',
-		truncate: true
+		truncate: true,
 	},
 	{ label: 'Last Modified', content: 'August 31, 2016 2:01PM PST' },
-	{ label: 'Status', content: 'Status of thing you wanna know' }
+	{ label: 'Status', content: 'Status of thing you wanna know' },
 ];
 
 describe('PageHeader: ', function () {
@@ -67,7 +67,7 @@ describe('PageHeader: ', function () {
 		title: 'Record Title',
 		variant: 'recordHome',
 		contentRight: recordHomeContentRight,
-		details: recordHomeDetails
+		details: recordHomeDetails,
 	};
 
 	describe('Renders basic props', function () {

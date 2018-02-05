@@ -27,7 +27,7 @@ const handleKeyDown = (
 		onKeyboardNavigateToPreviousDay,
 		onKeyboardNavigateToNextDay,
 		onKeyboardNavigateToPreviousWeek,
-		onKeyboardNavigateToNextWeek
+		onKeyboardNavigateToNextWeek,
 	}
 ) => {
 	const keyDownCallbacks = {
@@ -51,13 +51,13 @@ const handleKeyDown = (
 		},
 		[KEYS.DOWN]: () => {
 			onKeyboardNavigateToNextWeek(event, { date });
-		}
+		},
 	};
 
 	const shiftKeyDownCallbacks = {
 		[KEYS.TAB]: () => {
 			onCalendarBlur(event, { direction: 'previous' });
-		}
+		},
 	};
 
 	if (event.keyCode) {
@@ -89,17 +89,17 @@ const DatepickerCalendarDay = (props) => {
 			className={classNames({
 				'slds-is-today': isToday,
 				'slds-disabled-text': isDisabled,
-				'slds-is-selected': isSelectedDay
+				'slds-is-selected': isSelectedDay,
 			})}
 			onClick={(event) => {
 				handleClick(event, {
 					date: props.date,
-					onSelectDate: props.onSelectDate
+					onSelectDate: props.onSelectDate,
 				});
 			}}
 			onKeyDown={(event) => {
 				handleKeyDown(event, {
-					...props
+					...props,
 				});
 			}}
 			ref={(component) => {
@@ -114,7 +114,7 @@ const DatepickerCalendarDay = (props) => {
 				) {
 					props.onRequestInternalFocusDate(undefined, {
 						date: props.date,
-						ref: component
+						ref: component,
 					});
 				}
 			}}
@@ -194,7 +194,7 @@ DatepickerCalendarDay.propTypes = {
 	 */
 	todayLabel: PropTypes.string.isRequired,
 	focusedDate: PropTypes.instanceOf(Date),
-	onRequestInternalFocusDate: PropTypes.func
+	onRequestInternalFocusDate: PropTypes.func,
 };
 
 export default DatepickerCalendarDay;

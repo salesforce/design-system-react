@@ -32,14 +32,14 @@ const Example = createReactClass({
 						{ label: 'Option C', value: 'C0' },
 						{ label: 'Option D', value: 'D0' },
 						{ label: 'Option E', value: 'E0' },
-						{ label: 'Option FGHIJKLMNOPQRSTUVWXYZ', value: 'F0' }
+						{ label: 'Option FGHIJKLMNOPQRSTUVWXYZ', value: 'F0' },
 					]}
 					placeholder="Select a contact"
 					value="C0"
 				/>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

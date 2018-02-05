@@ -31,7 +31,7 @@ const TabPanel = ({
 			'slds-show': selected,
 			'slds-hide': !selected,
 			'slds-tabs--default__content': variant === 'default',
-			'slds-tabs--scoped__content': variant === 'scoped'
+			'slds-tabs--scoped__content': variant === 'scoped',
 		})}
 		id={id}
 		role="tabpanel"
@@ -69,7 +69,7 @@ TabPanel.propTypes = {
 	children: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 
 	/**
@@ -95,12 +95,12 @@ TabPanel.propTypes = {
 	/**
 	 * The HTML ID of the `<Tab />` that controls this panel.
 	 */
-	tabId: PropTypes.string
+	tabId: PropTypes.string,
 };
 
 TabPanel.defaultProps = {
 	variant: 'default',
-	selected: false
+	selected: false,
 };
 
 export default TabPanel;

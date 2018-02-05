@@ -54,15 +54,15 @@ class RadioGroupExample extends React.Component {
 RadioGroupExample.propTypes = {
 	labels: shape({
 		error: PropTypes.string,
-		label: PropTypes.string
+		label: PropTypes.string,
 	}),
 	disabled: PropTypes.bool,
 	required: PropTypes.bool,
-	heading: PropTypes.string
+	heading: PropTypes.string,
 };
 
 RadioGroupExample.defaultProps = {
-	labels: { label: 'Radio Group Label' }
+	labels: { label: 'Radio Group Label' },
 };
 
 storiesOf(RADIO_GROUP, module)

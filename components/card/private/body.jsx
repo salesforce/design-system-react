@@ -31,12 +31,12 @@ CardBody.propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Set the HTML `id` of the body.
 	 */
-	id: PropTypes.string
+	id: PropTypes.string,
 };
 
 export default CardBody;

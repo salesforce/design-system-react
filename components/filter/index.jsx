@@ -55,7 +55,7 @@ const Filter = createReactClass({
 		assistiveText: PropTypes.shape({
 			editFilter: PropTypes.string,
 			editFilterHeading: PropTypes.string,
-			removeFilter: PropTypes.string
+			removeFilter: PropTypes.string,
 		}),
 		/**
 		 * Contents of popover. That is the dropdowns and inputs that set the filter criteria.
@@ -67,7 +67,7 @@ const Filter = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * Applies error state styling. Per filter error messages are outside this components.
@@ -112,7 +112,7 @@ const Filter = createReactClass({
 		/**
 		 * The property you are filtering. For instance, if "Hair Color is PURPLE" is your filter, "Hair Color" is your filter property.
 		 */
-		property: PropTypes.node
+		property: PropTypes.node,
 	},
 
 	getDefaultProps () {
@@ -120,9 +120,9 @@ const Filter = createReactClass({
 			align: 'left',
 			assistiveText: {
 				editFilter: 'Edit filter:',
-				editFilterHeading: 'Choose filter criteria'
+				editFilterHeading: 'Choose filter criteria',
 			},
-			predicate: 'New Filter'
+			predicate: 'New Filter',
 		};
 	},
 
@@ -130,7 +130,7 @@ const Filter = createReactClass({
 		return {
 			popoverIsOpen: this.props.popover
 				? this.props.popover.props.isOpen
-				: false
+				: false,
 		};
 	},
 
@@ -178,7 +178,7 @@ const Filter = createReactClass({
 			onClose: this.handleClose,
 			onRequestClose: this.handleClose,
 			position: 'overflowBoundaryElement',
-			triggerClassName: 'slds-grow'
+			triggerClassName: 'slds-grow',
 		};
 
 		/* Mixin passed popover's props if there is any to override the default popover props */
@@ -228,7 +228,7 @@ const Filter = createReactClass({
 			removeFilter:
 				this.props.assistiveTextRemoveFilter || // eslint-disable-line react/prop-types
 				this.props.assistiveText.removeFilter ||
-				`Remove Filter: ${this.props.property} ${this.props.predicate}`
+				`Remove Filter: ${this.props.property} ${this.props.predicate}`,
 		};
 
 		/* TODO: Button wrapper for property and predictate should be transitioned to `Button` component. `Button` needs to take custom children first though. */
@@ -242,7 +242,7 @@ const Filter = createReactClass({
 					{
 						'slds-is-locked': this.props.isLocked,
 						'slds-is-new': this.props.isNew,
-						'slds-has-error': this.props.isError
+						'slds-has-error': this.props.isError,
 					},
 					this.props.className
 				)}
@@ -293,7 +293,7 @@ const Filter = createReactClass({
 					) : null}
 			</div>
 		);
-	}
+	},
 });
 
 export default Filter;

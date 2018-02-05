@@ -44,11 +44,11 @@ const propTypes = {
 	/**
 	 * Variant of the Radio button. Base is the default and button-group makes the radio button look like a normal button (should be a child of <RadioButtonGroup>).
 	 */
-	variant: PropTypes.oneOf(['base', 'button-group'])
+	variant: PropTypes.oneOf(['base', 'button-group']),
 };
 
 const defaultProps = {
-	variant: 'base'
+	variant: 'base',
 };
 
 /**
@@ -70,7 +70,8 @@ class Radio extends React.Component {
 			<span
 				className={classNames({
 					'slds-radio': this.props.variant === 'base',
-					'slds-button slds-radio_button': this.props.variant === 'button-group'
+					'slds-button slds-radio_button':
+						this.props.variant === 'button-group',
 				})}
 			>
 				<input

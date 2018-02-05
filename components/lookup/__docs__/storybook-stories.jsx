@@ -19,8 +19,8 @@ const DemoLookup = createReactClass({
 				{ label: 'File 1' },
 				{ label: 'File 2' },
 				{ label: 'File 3' },
-				{ label: 'File 4' }
-			]
+				{ label: 'File 4' },
+			],
 		};
 	},
 
@@ -31,7 +31,7 @@ const DemoLookup = createReactClass({
 	handleSelect (selectedItem, ...rest) {
 		action('select')(selectedItem, ...rest);
 		this.setState({
-			currentSelected: this.state.options.indexOf(selectedItem)
+			currentSelected: this.state.options.indexOf(selectedItem),
 		});
 	},
 
@@ -50,7 +50,7 @@ const DemoLookup = createReactClass({
 				/>
 			</div>
 		);
-	}
+	},
 });
 
 const DemoLookupAccounts = createReactClass({
@@ -64,8 +64,8 @@ const DemoLookupAccounts = createReactClass({
 				{ label: 'Paper St. Soap Company', subTitle: 'Beloit, WI' },
 				{ label: 'Nakatomi Investments', subTitle: 'Chicago, IL' },
 				{ label: 'Acme Landscaping' },
-				{ label: 'Acme Construction', subTitle: 'Grand Marais, MN' }
-			]
+				{ label: 'Acme Construction', subTitle: 'Grand Marais, MN' },
+			],
 		};
 	},
 
@@ -85,7 +85,7 @@ const DemoLookupAccounts = createReactClass({
 				options={this.state.options}
 			/>
 		);
-	}
+	},
 });
 
 storiesOf(LOOKUP, module)

@@ -15,12 +15,12 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Alert components
 	 */
-	children: PropTypes.node
+	children: PropTypes.node,
 };
 
 /**

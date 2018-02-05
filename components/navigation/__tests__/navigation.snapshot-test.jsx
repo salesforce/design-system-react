@@ -17,7 +17,7 @@ const customProps = {
 	className: 'CUSTOM-CLASSNAME',
 	id: 'CUSTOM-ID',
 	variant: 'shade',
-	selectedId: 'all_reports'
+	selectedId: 'all_reports',
 };
 
 test(`Navigation
