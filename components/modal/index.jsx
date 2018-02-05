@@ -216,7 +216,7 @@ class Modal extends React.Component {
 				aria-labelledby={this.getId()}
 				className={classNames({
 					'slds-modal': true,
-					'slds-fade-in-open': this.state.revealed,
+					'slds-fade-in-open': true,
 					'slds-modal--large': this.props.size === 'large',
 					'slds-modal--prompt': this.isPrompt(),
 				})}
