@@ -22,12 +22,12 @@ const Example = createReactClass({
 						{ label: 'Menu Item Two', value: 'B0' },
 						{ label: 'Menu Sub Heading', type: 'header' },
 						{ label: 'Menu Item One', value: 'A0' },
-						{ label: 'Menu Item Two', value: 'B0' }
+						{ label: 'Menu Item Two', value: 'B0' },
 					]}
 				/>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

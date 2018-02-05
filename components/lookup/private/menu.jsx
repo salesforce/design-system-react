@@ -19,10 +19,10 @@ const propTypes = {
 	label: PropTypes.string,
 	listLength: PropTypes.number,
 	searchTerm: PropTypes.string,
-	setFocus: PropTypes.func
+	setFocus: PropTypes.func,
 };
 const defaultProps = {
-	emptyMessage: 'No matches found.'
+	emptyMessage: 'No matches found.',
 };
 class Menu extends React.Component {
 	constructor (props) {
@@ -46,7 +46,7 @@ class Menu extends React.Component {
 		) {
 			// eslint-disable-next-line class-methods-use-this
 			this.setState({
-				filteredItems: this.filteredItems()
+				filteredItems: this.filteredItems(),
 			});
 		}
 	}

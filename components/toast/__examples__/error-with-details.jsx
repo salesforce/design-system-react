@@ -14,7 +14,7 @@ class Example extends React.Component {
 							heading:
 								"You've encountered some errors when trying to save edits to Samuel Smith.",
 							details:
-								"Here's some detail of what happened, being very descriptive and transparent."
+								"Here's some detail of what happened, being very descriptive and transparent.",
 						}}
 						variant="error"
 					/>

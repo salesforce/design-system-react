@@ -32,7 +32,7 @@ if (!Object.entries) {
  */
 import {
 	mountComponent,
-	unmountComponent
+	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 
 import { sampleReportCategories } from '../../../utilities/sample-data/navigation';
@@ -46,7 +46,7 @@ chai.use(chaiEnzyme());
 const defaultProps = {
 	id: 'sample-navigation',
 	className: 'sample-navigation',
-	categories: sampleReportCategories
+	categories: sampleReportCategories,
 };
 
 /* A re-usable demo component fixture outside of `describe` sections
@@ -56,7 +56,7 @@ const DemoComponent = createReactClass({
 	displayName: 'NavigationDemoComponent',
 	propTypes: {
 		selectedId: PropTypes.string,
-		onSelect: PropTypes.func
+		onSelect: PropTypes.func,
 	},
 
 	getDefaultProps () {
@@ -71,7 +71,7 @@ const DemoComponent = createReactClass({
 
 	render () {
 		return <Navigation {...this.props} />;
-	}
+	},
 });
 
 describe('SLDSNavigation', () => {

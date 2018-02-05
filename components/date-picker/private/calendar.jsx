@@ -74,14 +74,14 @@ const DatepickerCalendar = createReactClass({
 		/**
 		 * Names of the seven days of the week, starting on Sunday.
 		 */
-		weekDayLabels: PropTypes.array.isRequired
+		weekDayLabels: PropTypes.array.isRequired,
 	},
 
 	getInitialState () {
 		return {
 			focusedDate: this.props.initialDateForCalendarRender,
 			calendarHasFocus: true,
-			todayFocus: false
+			todayFocus: false,
 		};
 	},
 
@@ -100,7 +100,7 @@ const DatepickerCalendar = createReactClass({
 			this.setState({ focusedDate: this.props.initialDateForCalendarRender });
 			this.props.onRequestInternalFocusDate(undefined, {
 				date: this.props.initialDateForCalendarRender,
-				triggerCallback: true
+				triggerCallback: true,
 			});
 		}
 	},
@@ -126,7 +126,7 @@ const DatepickerCalendar = createReactClass({
 			this.setState({ focusedDate: prevDate });
 			this.props.onRequestInternalFocusDate(event, {
 				date: prevDate,
-				triggerCallback: true
+				triggerCallback: true,
 			});
 		}
 	},
@@ -139,7 +139,7 @@ const DatepickerCalendar = createReactClass({
 			this.setState({ focusedDate: nextDate });
 			this.props.onRequestInternalFocusDate(event, {
 				date: nextDate,
-				triggerCallback: true
+				triggerCallback: true,
 			});
 		}
 	},
@@ -152,7 +152,7 @@ const DatepickerCalendar = createReactClass({
 			this.setState({ focusedDate: prevDate });
 			this.props.onRequestInternalFocusDate(event, {
 				date: prevDate,
-				triggerCallback: true
+				triggerCallback: true,
 			});
 		}
 	},
@@ -165,7 +165,7 @@ const DatepickerCalendar = createReactClass({
 			this.setState({ focusedDate: nextDate });
 			this.props.onRequestInternalFocusDate(event, {
 				date: nextDate,
-				triggerCallback: true
+				triggerCallback: true,
 			});
 		}
 	},
@@ -317,7 +317,7 @@ const DatepickerCalendar = createReactClass({
 				</table>
 			</div>
 		);
-	}
+	},
 });
 
 export default DatepickerCalendar;

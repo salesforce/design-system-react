@@ -27,20 +27,20 @@ import assign from 'lodash.assign';
  */
 import {
 	mountComponent,
-	unmountComponent
+	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 
 const {
 	Simulate,
 	findRenderedDOMComponentWithTag,
-	findRenderedDOMComponentWithClass
+	findRenderedDOMComponentWithClass,
 } = TestUtils;
 
 import SLDSProgressIndicator from '../../progress-indicator';
 import IconSettings from '../../icon-settings';
 
 const defaultProps = {
-	id: 'sample-progress-indicator'
+	id: 'sample-progress-indicator',
 };
 
 const mockCallback = sinon.spy();
@@ -49,7 +49,7 @@ const DemoComponent = createReactClass({
 	displayName: 'ProgressIndicatorDemoComponent',
 	propTypes: {
 		onStepClick: mockCallback,
-		onStepFocus: mockCallback
+		onStepFocus: mockCallback,
 	},
 
 	getDefaultProps () {
@@ -62,7 +62,7 @@ const DemoComponent = createReactClass({
 				<SLDSProgressIndicator {...this.props} />
 			</IconSettings>
 		);
-	}
+	},
 });
 
 const steps = [
@@ -70,7 +70,7 @@ const steps = [
 	{ id: 1, label: 'tooltip label #2' },
 	{ id: 2, label: 'tooltip label #3' },
 	{ id: 3, label: 'tooltip label #4' },
-	{ id: 4, label: 'tooltip label #5' }
+	{ id: 4, label: 'tooltip label #5' },
 ];
 
 const sixSteps = [
@@ -79,7 +79,7 @@ const sixSteps = [
 	{ id: 2, label: 'tooltip label #3' },
 	{ id: 3, label: 'tooltip label #4' },
 	{ id: 4, label: 'tooltip label #5' },
-	{ id: 5, label: 'tooltip label #6' }
+	{ id: 5, label: 'tooltip label #6' },
 ];
 
 describe('SLDSProgressIndicator: ', () => {

@@ -41,7 +41,7 @@ const Navigation = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * Array of categories. The required shape is: `{id: string, label: string, items: array}`. The required shape of an item is `{id: string, label: string, url: string}`. All item ids are expected to be unique. _Tested with snapshot testing._
@@ -58,12 +58,12 @@ const Navigation = createReactClass({
 		/**
 		 * Determines component style. _Tested with snapshot testing._
 		 */
-		variant: PropTypes.oneOf(['default', 'shade'])
+		variant: PropTypes.oneOf(['default', 'shade']),
 	},
 
 	getDefaultProps () {
 		return {
-			variant: 'default'
+			variant: 'default',
 		};
 	},
 
@@ -105,7 +105,7 @@ const Navigation = createReactClass({
 					'slds-grid--vertical',
 					'slds-navigation-list--vertical',
 					{
-						'slds-navigation-list--vertical-inverse': variant === 'shade'
+						'slds-navigation-list--vertical-inverse': variant === 'shade',
 					},
 					this.props.className
 				)}
@@ -131,12 +131,12 @@ const Navigation = createReactClass({
 									onSelect={this.props.onSelect}
 								/>
 							))}
-						</ul>
+						</ul>,
 					];
 				})}
 			</div>
 		);
-	}
+	},
 });
 
 export default Navigation;

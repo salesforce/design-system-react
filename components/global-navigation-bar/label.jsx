@@ -31,7 +31,7 @@ const GlobalNavigationBarLabel = (props) => {
 				className={classNames(
 					'slds-context-bar__label-action',
 					{
-						[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition
+						[`slds-context-bar__item--divider-${dividerPosition}`]: dividerPosition,
 					},
 					className
 				)}
@@ -52,7 +52,7 @@ GlobalNavigationBarLabel.propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Determines position of separating bar.
@@ -65,7 +65,7 @@ GlobalNavigationBarLabel.propTypes = {
 	/**
 	 * Text to show
 	 */
-	label: PropTypes.string
+	label: PropTypes.string,
 };
 
 export default GlobalNavigationBarLabel;

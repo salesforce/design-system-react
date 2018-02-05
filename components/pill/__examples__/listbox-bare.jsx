@@ -10,12 +10,12 @@ const Example = createReactClass({
 	displayName: 'BarePillListboxExample',
 
 	propTypes: {
-		action: PropTypes.func
+		action: PropTypes.func,
 	},
 
 	getDefaultProps () {
 		return {
-			action: () => noop
+			action: () => noop,
 		};
 	},
 
@@ -43,10 +43,10 @@ const Example = createReactClass({
 										labels={{
 											label: 'Pill Label',
 											title: 'Full pill label verbiage mirrored here',
-											removeTitle: 'Remove'
+											removeTitle: 'Remove',
 										}}
 										assistiveText={{
-											remove: 'Press delete or backspace to remove'
+											remove: 'Press delete or backspace to remove',
 										}}
 										bare
 										variant="option"
@@ -60,10 +60,10 @@ const Example = createReactClass({
 										labels={{
 											label: 'Pill Label',
 											title: 'Full pill label verbiage mirrored here',
-											removeTitle: 'Remove'
+											removeTitle: 'Remove',
 										}}
 										assistiveText={{
-											remove: 'Press delete or backspace to remove'
+											remove: 'Press delete or backspace to remove',
 										}}
 										bare
 										variant="option"
@@ -78,7 +78,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

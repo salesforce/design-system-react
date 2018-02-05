@@ -60,7 +60,7 @@ const ElementFocus = {
 		if (canUseDOM) {
 			window.removeEventListener('keydown', handleScopedKeyDown);
 		}
-	}
+	},
 };
 
 export default ElementFocus;

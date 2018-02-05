@@ -10,7 +10,7 @@ const Example = createReactClass({
 	getInitialState () {
 		return {
 			noHeaderIsOpen: false,
-			noFooterIsOpen: false
+			noFooterIsOpen: false,
 		};
 	},
 
@@ -78,7 +78,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

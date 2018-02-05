@@ -5,7 +5,7 @@ const sampleNodesDefault = [
 	{
 		label: 'Grains',
 		type: 'item',
-		id: 1
+		id: 1,
 	},
 	{
 		label: 'Fruits',
@@ -20,20 +20,20 @@ const sampleNodesDefault = [
 					{
 						label: 'Watermelon',
 						type: 'item',
-						id: 12
+						id: 12,
 					},
 					{
 						label: 'Canteloupe',
 						type: 'item',
 						_iconClass: 'glyphicon-file',
-						id: 13
+						id: 13,
 					},
 					{
 						label: 'Strawberries',
 						type: 'item',
-						id: 14
-					}
-				]
+						id: 14,
+					},
+				],
 			},
 			{
 				label: 'Tree Fruits',
@@ -43,13 +43,13 @@ const sampleNodesDefault = [
 					{
 						label: 'Peaches',
 						type: 'item',
-						id: 15
+						id: 15,
 					},
 					{
 						label: 'Pears',
 						type: 'item',
 						_iconClass: 'glyphicon-file',
-						id: 16
+						id: 16,
 					},
 					{
 						label: 'Citrus',
@@ -59,24 +59,24 @@ const sampleNodesDefault = [
 							{
 								label: 'Orange',
 								type: 'item',
-								id: 20
+								id: 20,
 							},
 							{
 								label: 'Grapefruit',
 								type: 'item',
-								id: 21
+								id: 21,
 							},
 							{
 								label: 'Lemon',
 								type: 'item',
-								id: 22
+								id: 22,
 							},
 							{
 								label: 'Lime',
 								type: 'item',
-								id: 23
-							}
-						]
+								id: 23,
+							},
+						],
 					},
 					{
 						label: 'Apples',
@@ -86,25 +86,25 @@ const sampleNodesDefault = [
 							{
 								label: 'Granny Smith',
 								type: 'item',
-								id: 24
+								id: 24,
 							},
 							{
 								label: 'Pinklady',
 								type: 'item',
 								_iconClass: 'glyphicon-file',
-								id: 25
+								id: 25,
 							},
 							{
 								label: 'Rotten',
 								type: 'item',
-								id: 26
+								id: 26,
 							},
 							{
 								label: 'Jonathan',
 								type: 'item',
-								id: 27
-							}
-						]
+								id: 27,
+							},
+						],
 					},
 					{
 						label: 'Cherries',
@@ -114,43 +114,43 @@ const sampleNodesDefault = [
 							{
 								label: 'Balaton',
 								type: 'item',
-								id: 28
+								id: 28,
 							},
 							{
 								label: 'Erdi Botermo',
 								type: 'item',
-								id: 29
+								id: 29,
 							},
 							{
 								label: 'Montmorency',
 								type: 'item',
-								id: 30
+								id: 30,
 							},
 							{
 								label: 'Queen Ann',
 								type: 'item',
-								id: 31
+								id: 31,
 							},
 							{
 								label: 'Ulster',
 								type: 'item',
-								id: 32
+								id: 32,
 							},
 							{
 								label: 'Viva',
 								type: 'item',
-								id: 33
-							}
-						]
+								id: 33,
+							},
+						],
 					},
 					{
 						label: 'Raspberries',
 						type: 'item',
-						id: 6
-					}
-				]
-			}
-		]
+						id: 6,
+					},
+				],
+			},
+		],
 	},
 	{
 		label: 'Nuts',
@@ -161,36 +161,36 @@ const sampleNodesDefault = [
 			{
 				label: 'Almonds',
 				type: 'item',
-				id: 8
+				id: 8,
 			},
 			{
 				label: 'Cashews',
 				type: 'item',
-				id: 9
+				id: 9,
 			},
 			{
 				label: 'Pecans',
 				type: 'item',
-				id: 10
+				id: 10,
 			},
 			{
 				label: 'Walnuts',
 				type: 'item',
-				id: 11
-			}
-		]
+				id: 11,
+			},
+		],
 	},
 	{
 		label: 'Empty folder',
 		type: 'branch',
-		id: 7
-	}
+		id: 7,
+	},
 ];
 
 const sampleNodes = {
 	sampleNodesDefault,
 	sampleNodesWithLargeDataset,
-	sampleNodesWithInitialState
+	sampleNodesWithInitialState,
 };
 
 export default sampleNodes;

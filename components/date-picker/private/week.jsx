@@ -110,7 +110,7 @@ DatepickerWeek.propTypes = {
 	/**
 	 * Label of shortcut to jump to today within the calendar. Also used for assistive text for the current day.
 	 */
-	todayLabel: PropTypes.string.isRequired
+	todayLabel: PropTypes.string.isRequired,
 };
 
 DatepickerWeek.displayName = 'SLDSDatepickerWeek';

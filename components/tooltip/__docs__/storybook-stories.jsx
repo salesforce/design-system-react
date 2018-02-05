@@ -35,7 +35,7 @@ const getPopoverTooltipAlign = (props) => {
 		'bottom right',
 		'left',
 		'left top',
-		'left bottom'
+		'left bottom',
 	];
 
 	align.forEach((value) => {
@@ -58,7 +58,7 @@ storiesOf(POPOVER_TOOLTIP, module)
 			style={{
 				margin: '100px auto',
 				textAlign: 'center',
-				width: '500px'
+				width: '500px',
 			}}
 		>
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
@@ -69,7 +69,7 @@ storiesOf(POPOVER_TOOLTIP, module)
 			align: 'bottom',
 			id: 'myPopoverId',
 			content:
-				'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie'
+				'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
 		})
 	)
 	.add('Button Group', () => <ButtonGroupExample />)
@@ -80,7 +80,7 @@ storiesOf(POPOVER_TOOLTIP, module)
 			isOpen: true,
 			id: 'myPopoverId',
 			content:
-				'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie'
+				'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
 		})
 	)
 	.add('Alignment (Button)', () =>
@@ -89,7 +89,7 @@ storiesOf(POPOVER_TOOLTIP, module)
 			isOpen: true,
 			content:
 				'wjeifowejfiwoefjweoifjweiofjweiofwjefiowejfiowejfiowefjweiofjweiofjweiofjiwoefjowiefjoiwejfiowejfoie',
-			trigger: <Button label="Trigger Tooltip" />
+			trigger: <Button label="Trigger Tooltip" />,
 		})
 	)
 	.add('Alignment (span)', () =>
@@ -102,7 +102,7 @@ storiesOf(POPOVER_TOOLTIP, module)
 				<span tabIndex="0" key="trigger">
 					Trigger Tooltip
 				</span>
-			)
+			),
 		})
 	)
 	.add('Alignment (icon)', () =>
@@ -122,6 +122,6 @@ storiesOf(POPOVER_TOOLTIP, module)
 					size="small"
 					tabIndex="0"
 				/>
-			)
+			),
 		})
 	);

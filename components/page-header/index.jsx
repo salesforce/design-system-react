@@ -65,7 +65,7 @@ const propTypes = {
 		'custom',
 		'doctype',
 		'standard',
-		'utility'
+		'utility',
 	]),
 	/**
 	 * If omitted, icon position is centered.
@@ -80,7 +80,7 @@ const propTypes = {
 		'border',
 		'border-filled',
 		'small',
-		'more'
+		'more',
 	]),
 	/**
 	 * Content to appear on the right hand side of the page header
@@ -97,7 +97,7 @@ const propTypes = {
 	/**
 	 * An array of react elements presumably anchor <a> elements.
 	 */
-	trail: PropTypes.array
+	trail: PropTypes.array,
 };
 
 const defaultProps = {
@@ -106,7 +106,7 @@ const defaultProps = {
 	navRight: '',
 	contentRight: '',
 	details: [],
-	trail: []
+	trail: [],
 };
 
 /**
@@ -117,7 +117,7 @@ class PageHeader extends Component {
 		return classnames(
 			'slds-page-header',
 			{
-				'slds-page-header--object-home': this.props.variant === 'objectHome'
+				'slds-page-header--object-home': this.props.variant === 'objectHome',
 			},
 			className
 		);
@@ -143,7 +143,7 @@ class PageHeader extends Component {
 			navRight,
 			title,
 			trail,
-			variant
+			variant,
 		} = this.props;
 
 		const classes = this._getClassNames(className);

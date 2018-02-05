@@ -13,8 +13,8 @@ const sampleReportCategories = [
 			{ id: 'my_reports', label: 'Created by Me' },
 			{ id: 'private_reports', label: 'Private Reports' },
 			{ id: 'public_reports', label: 'Public Reports' },
-			{ id: 'all_reports', label: 'All Reports' }
-		]
+			{ id: 'all_reports', label: 'All Reports' },
+		],
 	},
 	{
 		id: 'folders',
@@ -22,9 +22,9 @@ const sampleReportCategories = [
 		items: [
 			{ id: 'my_folders', label: 'Created by Me' },
 			{ id: 'shared_folders', label: 'Shared with Me' },
-			{ id: 'all_folders', label: 'All Folders' }
-		]
-	}
+			{ id: 'all_folders', label: 'All Folders' },
+		],
+	},
 ];
 
 const Example = createReactClass({
@@ -32,7 +32,7 @@ const Example = createReactClass({
 
 	getInitialState () {
 		return {
-			selectedId: 'recent_reports'
+			selectedId: 'recent_reports',
 		};
 	},
 
@@ -57,7 +57,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

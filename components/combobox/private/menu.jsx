@@ -27,7 +27,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * CSS classes to be added to tag with `.slds-dropdown`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
@@ -35,7 +35,7 @@ const propTypes = {
 	classNameMenu: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/*
 	 * Id used for assistive technology
@@ -51,7 +51,7 @@ const propTypes = {
 	 * * `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.
 	 */
 	labels: shape({
-		noOptionsFound: PropTypes.string.isRequired
+		noOptionsFound: PropTypes.string.isRequired,
 	}),
 	/**
 	 * Accepts a custom menu item rendering function that becomes a custom component and is passed in the following props:
@@ -83,7 +83,7 @@ const propTypes = {
 	 */
 	variant: PropTypes.oneOf(['icon-title-subtitle', 'checkbox']),
 	isSelected: PropTypes.func,
-	assistiveText: PropTypes.object
+	assistiveText: PropTypes.object,
 };
 
 const defaultProps = {};
@@ -95,7 +95,7 @@ const Menu = (props) => {
 			isEqual(optionData, props.activeOption);
 		const selected = props.isSelected({
 			selection: props.selection,
-			option: optionData
+			option: optionData,
 		});
 		const MenuItem = props.menuItem;
 
@@ -151,13 +151,13 @@ const Menu = (props) => {
 									' slds-listbox__option_plain slds-media_small slds-media_center',
 									{
 										'slds-has-focus': active,
-										'slds-is-selected': selected
+										'slds-is-selected': selected,
 									}
 								)}
 								onClick={(event) => {
 									props.onSelect(event, {
 										selection: props.selection,
-										option: optionData
+										option: optionData,
 									});
 								}}
 								role="option"
@@ -189,7 +189,7 @@ const Menu = (props) => {
 									)}
 								</span>
 							</span>
-						)
+						),
 					}[props.variant]
 				}
 			</li>
@@ -203,7 +203,7 @@ const Menu = (props) => {
 				{
 					'slds-dropdown_length-with-icon-5': props.itemVisibleLength === 5,
 					'slds-dropdown_length-with-icon-7': props.itemVisibleLength === 7,
-					'slds-dropdown_length-with-icon-10': props.itemVisibleLength === 10
+					'slds-dropdown_length-with-icon-10': props.itemVisibleLength === 10,
 				},
 				props.classNameMenu
 			)}

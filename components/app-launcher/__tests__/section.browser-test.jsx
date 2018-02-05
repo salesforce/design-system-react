@@ -15,16 +15,16 @@ const { Simulate } = TestUtils;
 
 describe('SLDS APP LAUNCHER SECTION *******************************************', () => {
 	const handles = {
-		section: null
+		section: null,
 	};
 
 	const defaultSectionProps = {
-		title: 'All Items'
+		title: 'All Items',
 	};
 
 	const defaultChildren = [
 		<AppLauncherTile key="asdf" title="Marketing Cloud" />,
-		<AppLauncherTile key="qwer" title="Support Cloud" />
+		<AppLauncherTile key="qwer" title="Support Cloud" />,
 	];
 
 	const createSection = (props, children) =>
@@ -52,7 +52,7 @@ describe('SLDS APP LAUNCHER SECTION *******************************************'
 				collapseSectionAssistiveText: 'Collapse Section',
 				onToggleClick,
 				title: 'ALL THE ITEMS!',
-				toggleable: true
+				toggleable: true,
 			});
 		});
 
@@ -120,7 +120,7 @@ describe('SLDS APP LAUNCHER SECTION *******************************************'
 		beforeEach(() => {
 			mountSection({
 				toggleable: true,
-				isOpen: false
+				isOpen: false,
 			});
 		});
 

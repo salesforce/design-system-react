@@ -54,7 +54,7 @@ const AppLauncherTile = (props) => {
 		>
 			<div
 				className={classNames('slds-app-launcher__tile-figure', {
-					'slds-app-launcher__tile-figure--small': smallTile
+					'slds-app-launcher__tile-figure--small': smallTile,
 				})}
 			>
 				{props.iconNode || (
@@ -130,7 +130,7 @@ AppLauncherTile.displayName = APP_LAUNCHER_TILE;
 AppLauncherTile.defaultProps = {
 	href: 'javascript:void(0);', // eslint-disable-line no-script-url
 	size: 'default',
-	moreLabel: ' More'
+	moreLabel: ' More',
 };
 
 // ### Prop Types
@@ -165,7 +165,7 @@ AppLauncherTile.propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Function that will be executed when clicking on a tile
@@ -182,7 +182,7 @@ AppLauncherTile.propTypes = {
 	/**
 	 * Text used to highlight content in app tiles
 	 */
-	search: PropTypes.string
+	search: PropTypes.string,
 	// TODO: allow for passing iconBackgroundColor
 	// TODO: add Highlighter to Truncate text (https://github.com/ShinyChang/React-Text-Truncate/issues/32)
 };

@@ -6,7 +6,7 @@
 const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/panel/__examples__/filtering.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/panel/__examples__/filtering-locked.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/panel/__examples__/filtering-error.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/panel/__examples__/filtering-error.jsx'),
 ];
 
 module.exports = siteStories;

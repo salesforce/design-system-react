@@ -31,7 +31,7 @@ const propTypes = {
 	 * * `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`
 	 */
 	assistiveText: shape({
-		percentage: PropTypes.string
+		percentage: PropTypes.string,
 	}),
 	/**
 	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
@@ -39,7 +39,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Stores all completed steps. It is an array of step objects.
@@ -96,7 +96,7 @@ const propTypes = {
 	/**
 	 * Determines component style.
 	 */
-	variant: PropTypes.oneOf(['base', 'modal'])
+	variant: PropTypes.oneOf(['base', 'modal']),
 };
 
 const defaultSteps = [
@@ -104,7 +104,7 @@ const defaultSteps = [
 	{ id: 1, label: 'tooltip label #2' },
 	{ id: 2, label: 'tooltip label #3' },
 	{ id: 3, label: 'tooltip label #4' },
-	{ id: 4, label: 'tooltip label #5' }
+	{ id: 4, label: 'tooltip label #5' },
 ];
 
 const defaultProps = {
@@ -116,7 +116,7 @@ const defaultProps = {
 	variant: 'base',
 	// click/focus callbacks by default do nothing
 	onStepClick: () => {},
-	onStepFocus: () => {}
+	onStepFocus: () => {},
 };
 
 /**

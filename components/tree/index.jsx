@@ -47,7 +47,7 @@ class Tree extends React.Component {
 			>
 				<h4
 					className={classNames('slds-text-title--caps', {
-						'slds-assistive-text': this.props.assistiveText
+						'slds-assistive-text': this.props.assistiveText,
 					})}
 					id={`${this.props.id}__heading`}
 				>
@@ -72,7 +72,7 @@ class Tree extends React.Component {
 }
 
 Tree.defaultProps = {
-	getNodes: (node) => node.nodes
+	getNodes: (node) => node.nodes,
 };
 
 // ### Display Name
@@ -91,7 +91,7 @@ Tree.propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Class names to be added to the top-level `ul` element of the tree.
@@ -99,7 +99,7 @@ Tree.propTypes = {
 	listClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * A function that will be called by every branch to receive its child nodes. The parent `node` object with the branch data is passed into this function: `getNodes(node)`. If your state engine is Flux or Redux, then your tree data structure will probably be flattened or normalized within the store. This will allow you to build out your tree without transversing an actual tree of data and may be more performant.
@@ -136,7 +136,7 @@ Tree.propTypes = {
 	/*
 	 * Styles to be added to the top-level `ul` element. Useful for `overflow:hidden`.
 	 */
-	listStyle: PropTypes.object
+	listStyle: PropTypes.object,
 };
 
 export default Tree;

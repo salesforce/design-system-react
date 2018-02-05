@@ -12,7 +12,7 @@ const Example = createReactClass({
 		return {
 			isOpen: false,
 			modalOpen: false,
-			toastOpen: true
+			toastOpen: true,
 		};
 	},
 
@@ -39,7 +39,7 @@ const Example = createReactClass({
 								label="Toggle Toast"
 								onClick={this.toggleToast}
 								variant="brand"
-							/>
+							/>,
 						]}
 						isOpen={this.state.modalOpen}
 						onRequestClose={this.toggleModal}
@@ -77,7 +77,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

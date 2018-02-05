@@ -10,12 +10,12 @@ const Example = createReactClass({
 	displayName: 'PillContainerExample',
 
 	propTypes: {
-		action: PropTypes.func
+		action: PropTypes.func,
 	},
 
 	getDefaultProps () {
 		return {
-			action: () => noop
+			action: () => noop,
 		};
 	},
 
@@ -41,7 +41,7 @@ const Example = createReactClass({
 									labels={{
 										label: 'Pill Label',
 										title: 'Full pill label verbiage mirrored here',
-										removeTitle: 'Remove'
+										removeTitle: 'Remove',
 									}}
 									onClick={this.onClick}
 									onRemove={this.onRemove}
@@ -50,7 +50,7 @@ const Example = createReactClass({
 									labels={{
 										label: 'Pill Label',
 										title: 'Full pill label verbiage mirrored here',
-										removeTitle: 'Remove'
+										removeTitle: 'Remove',
 									}}
 									onClick={this.onClick}
 									onRemove={this.onRemove}
@@ -59,7 +59,7 @@ const Example = createReactClass({
 									labels={{
 										label: 'Pill Label',
 										title: 'Full pill label verbiage mirrored here',
-										removeTitle: 'Remove'
+										removeTitle: 'Remove',
 									}}
 									onClick={this.onClick}
 									onRemove={this.onRemove}
@@ -79,10 +79,10 @@ const Example = createReactClass({
 											labels={{
 												label: 'Pill Label',
 												title: 'Full pill label verbiage mirrored here',
-												removeTitle: 'Remove'
+												removeTitle: 'Remove',
 											}}
 											assistiveText={{
-												remove: 'Press delete or backspace to remove'
+												remove: 'Press delete or backspace to remove',
 											}}
 											variant="option"
 											aria-selected="true"
@@ -93,10 +93,10 @@ const Example = createReactClass({
 											labels={{
 												label: 'Pill Label',
 												title: 'Full pill label verbiage mirrored here',
-												removeTitle: 'Remove'
+												removeTitle: 'Remove',
 											}}
 											assistiveText={{
-												remove: 'Press delete or backspace to remove'
+												remove: 'Press delete or backspace to remove',
 											}}
 											variant="option"
 										/>
@@ -108,7 +108,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example;

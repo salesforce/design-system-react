@@ -20,16 +20,16 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Decimal percentage drain of the ring [0.0 - 1.0]
 	 */
-	fillPercentDecimal: PropTypes.number
+	fillPercentDecimal: PropTypes.number,
 };
 
 const defaultProps = {
-	fillPercentDecimal: 0
+	fillPercentDecimal: 0,
 };
 
 /**

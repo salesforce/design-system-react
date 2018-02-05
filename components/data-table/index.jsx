@@ -44,7 +44,7 @@ import {
 	DATA_TABLE,
 	DATA_TABLE_CELL,
 	DATA_TABLE_HEAD,
-	DATA_TABLE_ROW
+	DATA_TABLE_ROW,
 } from '../../utilities/constants';
 
 // Safely get the length of an array, returning 0 for invalid input.
@@ -112,7 +112,7 @@ const DataTable = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * A variant which adds border to the vertical columns.
@@ -173,7 +173,7 @@ const DataTable = createReactClass({
 		/**
 		 * A variant which removes horizontal padding. CSS class will be removed if `fixedLayout==true`.
 		 */
-		unbufferedCell: PropTypes.bool
+		unbufferedCell: PropTypes.bool,
 	},
 
 	getDefaultProps () {
@@ -185,7 +185,7 @@ const DataTable = createReactClass({
 			assistiveTextForSelectAllRows: 'Select all rows',
 			assistiveTextForSelectRow: 'Select row',
 			id: shortid.generate(),
-			selection: []
+			selection: [],
 		};
 	},
 
@@ -246,7 +246,7 @@ const DataTable = createReactClass({
 				columns.push({
 					Cell,
 					props,
-					dataTableProps: this.props
+					dataTableProps: this.props,
 				});
 			} else if (
 				child &&
@@ -271,7 +271,7 @@ const DataTable = createReactClass({
 							.stackedHorizontal,
 						'slds-table--striped': this.props.striped,
 						'slds-table--col-bordered': this.props.columnBordered,
-						'slds-no-row-hover': this.props.noRowHover
+						'slds-no-row-hover': this.props.noRowHover,
 					},
 					this.props.className
 				)}
@@ -329,7 +329,7 @@ const DataTable = createReactClass({
 				</tbody>
 			</table>
 		);
-	}
+	},
 });
 
 export default DataTable;

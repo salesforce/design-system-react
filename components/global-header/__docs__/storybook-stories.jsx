@@ -72,12 +72,16 @@ const GlobalHeaderDemo = (props) => (
 			options={[
 				{
 					label: 'New Note',
-					rightIcon: { category: 'standard', name: 'note', size: 'small' }
+					rightIcon: { category: 'standard', name: 'note', size: 'small' },
 				},
 				{
 					label: 'Log a Call',
-					rightIcon: { category: 'standard', name: 'log_a_call', size: 'small' }
-				}
+					rightIcon: {
+						category: 'standard',
+						name: 'log_a_call',
+						size: 'small',
+					},
+				},
 			]}
 		/>
 		<GlobalHeaderButton

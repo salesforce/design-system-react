@@ -13,7 +13,7 @@ const inverseContainer = {
 	backgroundColor: '#4bca81',
 	position: 'absolute',
 	width: '100%',
-	height: '100%'
+	height: '100%',
 };
 
 storiesOf(SPINNER, module)
@@ -31,7 +31,7 @@ storiesOf(SPINNER, module)
 		getSpinner({
 			size: 'large',
 			variant: 'brand',
-			containerClassName: 'my-custom-classname'
+			containerClassName: 'my-custom-classname',
 		})
 	)
 

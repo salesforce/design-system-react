@@ -34,7 +34,7 @@ async.series(
 			// Used by documentation site
 			// Can be used for CI tests by consuming applications
 			packageJSON.SLDS = {
-				gitURL: packageJSON.devDependencies['@salesforce-ux/design-system']
+				gitURL: packageJSON.devDependencies['@salesforce-ux/design-system'],
 			};
 			delete packageJSON.scripts;
 			delete packageJSON.jest;
@@ -51,7 +51,7 @@ async.series(
 				JSON.stringify(packageJSON, null, 2),
 				done
 			);
-		}
+		},
 	],
 	(err) => {
 		if (err) throw err;

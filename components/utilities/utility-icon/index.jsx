@@ -37,7 +37,7 @@ const UtilityIcon = (
 		custom: SLDS_ICONS_CUSTOM,
 		doctype: SLDS_ICONS_DOCTYPE,
 		standard: SLDS_ICONS_STANDARD,
-		utility: SLDS_ICONS_UTILITY
+		utility: SLDS_ICONS_UTILITY,
 	};
 	let inlineData;
 
@@ -83,7 +83,7 @@ UtilityIcon.propTypes = {
 		'custom',
 		'doctype',
 		'standard',
-		'utility'
+		'utility',
 	]),
 	/**
 	 * An SVG object to use instead of name / category, look in `design-system-react/icons` for examples
@@ -96,11 +96,11 @@ UtilityIcon.propTypes = {
 	/**
 	 * Path to the icon. This will override any global icon settings.
 	 */
-	path: PropTypes.string
+	path: PropTypes.string,
 };
 
 UtilityIcon.defaultProps = {
-	category: 'utility'
+	category: 'utility',
 };
 
 UtilityIcon.contextTypes = {
@@ -109,7 +109,7 @@ UtilityIcon.contextTypes = {
 	customSprite: PropTypes.string,
 	doctypeSprite: PropTypes.string,
 	standardSprite: PropTypes.string,
-	utilitySprite: PropTypes.string
+	utilitySprite: PropTypes.string,
 };
 
 export default UtilityIcon;

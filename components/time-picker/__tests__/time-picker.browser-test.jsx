@@ -10,7 +10,7 @@ import assign from 'lodash.assign';
 const {
 	Simulate,
 	findRenderedDOMComponentWithTag,
-	findRenderedDOMComponentWithClass
+	findRenderedDOMComponentWithClass,
 } = TestUtils;
 
 import SLDSTimepicker from '../../time-picker';
@@ -26,7 +26,7 @@ const defaultStrValue = formatter(dateTimeNow);
 const defaultProps = {
 	onDateChange: () => {},
 	value: dateTimeNow,
-	strValue: defaultStrValue
+	strValue: defaultStrValue,
 };
 
 describe('SLDSTimepicker: ', () => {
@@ -43,7 +43,7 @@ describe('SLDSTimepicker: ', () => {
 						return {
 							isOpen: false,
 							value: futureDateTime,
-							strValue: formatter(futureDateTime)
+							strValue: formatter(futureDateTime),
 						};
 					},
 					render () {
@@ -52,7 +52,7 @@ describe('SLDSTimepicker: ', () => {
 								<SLDSTimepicker ref="timePicker" {...defaultProps} />
 							</IconSettings>
 						);
-					}
+					},
 				})
 			);
 

@@ -66,7 +66,7 @@ const propTypes = {
 	 * This is mainly for dev test purpose.
 	 * Usually the tooltip should only show when hover.
 	 */
-	tooltipIsOpen: PropTypes.bool
+	tooltipIsOpen: PropTypes.bool,
 };
 
 /**
@@ -85,7 +85,7 @@ class Step extends React.Component {
 			isError: props.isError,
 			isCompleted: props.isCompleted,
 			isDisabled: props.isDisabled,
-			step: props.step
+			step: props.step,
 		};
 
 		const icon = renderIcon ? (
@@ -157,7 +157,7 @@ class Step extends React.Component {
 				this.props.index}`,
 			content: this.props.step.label,
 			variant: this.props.isError ? 'error' : 'info',
-			triggerStyle: { display: !renderIcon ? 'flex' : '' }
+			triggerStyle: { display: !renderIcon ? 'flex' : '' },
 		};
 
 		// This is mainly for dev test purpose.
@@ -173,7 +173,7 @@ class Step extends React.Component {
 				className={classNames('slds-progress__item', {
 					'slds-is-completed': this.props.isCompleted,
 					'slds-is-active': this.props.isSelected && !this.props.isError,
-					'slds-has-error': this.props.isError
+					'slds-has-error': this.props.isError,
 				})}
 			>
 				<PopoverTooltip {...tooltipProps}>

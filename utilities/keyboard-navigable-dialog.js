@@ -38,7 +38,7 @@ const KeyboardNavigableDialog = ({
 	keyCode,
 	eventTarget,
 	trigger,
-	toggleOpen
+	toggleOpen,
 }) => {
 	switch (keyCode) {
 		case KEYS.ESCAPE:
@@ -51,7 +51,7 @@ const KeyboardNavigableDialog = ({
 				internalHandleClick({
 					trigger,
 					eventTarget,
-					handleClick
+					handleClick,
 				});
 			}
 			break;

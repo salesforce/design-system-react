@@ -40,7 +40,7 @@ async.series(
 				JSON.stringify(packageJSON, null, 2),
 				done
 			);
-		}
+		},
 	],
 	(err) => {
 		if (err) throw err;

@@ -53,14 +53,14 @@ const propTypes = {
 	/**
 	 * Title attribute for the avatar container.
 	 */
-	title: PropTypes.string
+	title: PropTypes.string,
 };
 
 const defaultProps = {
 	imgAlt: '',
 	size: 'medium',
 	title: 'user avatar',
-	variant: 'user'
+	variant: 'user',
 };
 
 /**
@@ -77,7 +77,7 @@ class Avatar extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			imgLoadError: false
+			imgLoadError: false,
 		};
 	}
 
@@ -127,7 +127,7 @@ class Avatar extends React.Component {
 			<abbr
 				className={classNames('slds-avatar__initials', {
 					'slds-icon-standard-account': variant === 'entity',
-					'slds-icon-standard-user': variant === 'user'
+					'slds-icon-standard-user': variant === 'user',
 				})}
 				title={label}
 			>
@@ -158,7 +158,7 @@ class Avatar extends React.Component {
 						'slds-avatar_x-small': size === 'x-small',
 						'slds-avatar_small': size === 'small',
 						'slds-avatar_medium': size === 'medium',
-						'slds-avatar_large': size === 'large'
+						'slds-avatar_large': size === 'large',
 					})}
 				>
 					{renderAvatar()}

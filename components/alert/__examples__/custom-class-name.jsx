@@ -14,7 +14,7 @@ class Example extends React.Component {
 						icon={<Icon category="utility" name="user" />}
 						labels={{
 							heading: 'Logged in as John Smith (johnsmith@acme.com).',
-							headingLink: 'Log out'
+							headingLink: 'Log out',
 						}}
 						onClickHeadingLink={() => {
 							console.log('Link clicked.');

@@ -12,7 +12,7 @@ import { shape } from 'airbnb-prop-types';
  */
 import {
 	createMountNode,
-	destroyMountNode
+	destroyMountNode,
 } from '../../../tests/enzyme-helpers';
 
 import RadioGroup from '../../radio-group';
@@ -54,14 +54,14 @@ class RadioGroupExample extends React.Component {
 RadioGroupExample.propTypes = {
 	labels: shape({
 		error: PropTypes.string,
-		label: PropTypes.string
+		label: PropTypes.string,
 	}),
 	disabled: PropTypes.bool,
-	required: PropTypes.bool
+	required: PropTypes.bool,
 };
 
 RadioGroupExample.defaultProps = {
-	labels: { label: 'Radio Group Label' }
+	labels: { label: 'Radio Group Label' },
 };
 
 /* RadioGroup rendering tests

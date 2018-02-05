@@ -18,8 +18,8 @@ const propTypes = {
 		label: PropTypes.string,
 		topRightText: PropTypes.string,
 		bottomLeftText: PropTypes.string,
-		bottomRightText: PropTypes.string
-	})
+		bottomRightText: PropTypes.string,
+	}),
 };
 
 const defaultProps = {};

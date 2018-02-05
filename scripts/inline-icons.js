@@ -32,7 +32,7 @@ const inlineIcons = (spriteType, done) => {
 	// This string replacement includes icons in the bundle. The default condition is an equality comparison of two constants, `'__EXCLUDE_SLDS_ICONS__' === '__INCLUDE_SLDS_ICONS__'`, which will allow minification to remove the inline icons and save 100KBs in size when bundling for production.
 	const index = [
 		license,
-		"let icons = {}; if ('__EXCLUDE_SLDS_ICONS__' === '__INCLUDE_SLDS_ICONS__') { icons = {"
+		"let icons = {}; if ('__EXCLUDE_SLDS_ICONS__' === '__INCLUDE_SLDS_ICONS__') { icons = {",
 	];
 
 	const sprite = JSON.parse(parser.toJson(text));

@@ -15,7 +15,7 @@ webpackConfig.externals = {
 	'react/lib/ReactContext': true,
 	'react/lib/ExecutionEnvironment': true,
 	'react/addons': true,
-	cheerio: 'window'
+	cheerio: 'window',
 };
 
 // Karma configuration
@@ -34,7 +34,7 @@ const configExport = function (config) {
 			'tests/fixtures/phantomjs-shims.js',
 			'./node_modules/phantomjs-polyfill-find-index/findIndex-polyfill.js',
 			'./node_modules/phantomjs-polyfill-includes/includes-polyfill.js',
-			'components/tests-bundle.js'
+			'components/tests-bundle.js',
 		],
 
 		// list of files to exclude
@@ -43,7 +43,7 @@ const configExport = function (config) {
 		// preprocess matching files before serving them to the browser
 		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 		preprocessors: {
-			'components/tests-bundle.js': ['webpack', 'sourcemap']
+			'components/tests-bundle.js': ['webpack', 'sourcemap'],
 		},
 
 		// test results reporter to use
@@ -52,7 +52,7 @@ const configExport = function (config) {
 		reporters: ['spec', 'coverage'],
 
 		coverageReporter: {
-			reporters: [{ type: 'html', dir: 'coverage/' }, { type: 'text' }]
+			reporters: [{ type: 'html', dir: 'coverage/' }, { type: 'text' }],
 		},
 
 		// web server port
@@ -86,8 +86,8 @@ const configExport = function (config) {
 			karmaPhantomjsLauncher,
 			karmaChromeLauncher,
 			karmaSpecReporter,
-			karmaCoverage
-		]
+			karmaCoverage,
+		],
 	});
 };
 

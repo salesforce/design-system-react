@@ -7,12 +7,12 @@ const steps = [
 	{
 		id: 0,
 		label: <i>tooltip label #1</i>,
-		assistiveText: 'This is custom text in the assistive text key'
+		assistiveText: 'This is custom text in the assistive text key',
 	},
 	{ id: 1, label: 'tooltip label #2' },
 	{ id: 2, label: <strong>tooltip label #3</strong> },
 	{ id: 3, label: 'tooltip label #4' },
-	{ id: 4, label: 'tooltip label #5' }
+	{ id: 4, label: 'tooltip label #5' },
 ];
 
 const handleStepEvent = function (event, data) {
@@ -29,7 +29,7 @@ const Example = createReactClass({
 					style={{
 						padding: '2rem 1rem 0px',
 						background:
-							this.props.variant === 'modal' ? 'rgb(244, 246, 249)' : ''
+							this.props.variant === 'modal' ? 'rgb(244, 246, 249)' : '',
 					}}
 				>
 					<ProgressIndicator
@@ -41,7 +41,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

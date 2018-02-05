@@ -22,7 +22,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 		oneOfRequiredProperty(COMPONENT, {
 			options: props.options,
-			children: props.children
+			children: props.children,
 		});
 
 		if (!props.options) {

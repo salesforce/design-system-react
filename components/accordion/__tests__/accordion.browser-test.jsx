@@ -11,7 +11,7 @@ import { mount } from 'enzyme';
 
 import {
 	createMountNode,
-	destroyMountNode
+	destroyMountNode,
 } from '../../../tests/enzyme-helpers';
 
 import Accordion from '../../accordion';
@@ -41,19 +41,19 @@ class AccordionExample extends React.Component {
 				{
 					id: '1',
 					summary: 'Accordion Summary',
-					details: 'Accordion details - A'
+					details: 'Accordion details - A',
 				},
 				{
 					id: '2',
 					summary: 'Accordion Summary',
-					details: 'Accordion details - B'
+					details: 'Accordion details - B',
 				},
 				{
 					id: '3',
 					summary: 'Accordion Summary',
-					details: 'Accordion details - C'
-				}
-			]
+					details: 'Accordion details - C',
+				},
+			],
 		};
 	}
 
@@ -71,7 +71,7 @@ class AccordionExample extends React.Component {
 					if (option.label === 'delete') {
 						this.setState((state) => ({
 							...state,
-							items: state.items.filter((item) => item.id !== selectedItem.id)
+							items: state.items.filter((item) => item.id !== selectedItem.id),
 						}));
 					} else if (console) {
 						console.log('onSelect', event, option);
@@ -80,16 +80,16 @@ class AccordionExample extends React.Component {
 				options={[
 					{
 						label: 'delete',
-						value: 'A0'
+						value: 'A0',
 					},
 					{
 						label: 'redo',
-						value: 'B0'
+						value: 'B0',
 					},
 					{
 						label: 'activate',
-						value: 'C0'
-					}
+						value: 'C0',
+					},
 				]}
 				iconSize="x-small"
 			/>
@@ -101,8 +101,8 @@ class AccordionExample extends React.Component {
 			...state,
 			expandedPanels: {
 				...state.expandedPanels,
-				[id]: !state.expandedPanels[id]
-			}
+				[id]: !state.expandedPanels[id],
+			},
 		}));
 	}
 
@@ -156,7 +156,7 @@ describe('Accordion', function () {
 
 		it('renders `panelContentActions` component, if passed', () => {
 			wrapper = mount(<AccordionExample />, {
-				attachTo: mountNode
+				attachTo: mountNode,
 			});
 			const panelContentActions = wrapper.find(
 				'div .slds-dropdown-trigger .slds-dropdown-trigger--click'

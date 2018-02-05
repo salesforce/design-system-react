@@ -21,7 +21,7 @@ import InlineEdit from '../../forms/input/inline';
 const sampleItems = [
 	{ name: 'Cloudhub' },
 	{ name: 'Cloudhub + Anypoint Connectors' },
-	{ name: 'Cloud City' }
+	{ name: 'Cloud City' },
 ];
 
 const DemoCard = createReactClass({
@@ -30,13 +30,13 @@ const DemoCard = createReactClass({
 	propTypes: {
 		items: PropTypes.array,
 		header: PropTypes.node,
-		heading: PropTypes.oneOfType([PropTypes.node, PropTypes.string])
+		heading: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	},
 
 	getInitialState () {
 		return {
 			filter: null,
-			items: this.props.items
+			items: this.props.items,
 		};
 	},
 
@@ -47,7 +47,7 @@ const DemoCard = createReactClass({
 			event.target.value !== '' ? RegExp(event.target.value, 'i') : null;
 
 		this.setState({
-			filter
+			filter,
 		});
 	},
 
@@ -56,7 +56,7 @@ const DemoCard = createReactClass({
 
 		this.setState({
 			filter: null,
-			items: []
+			items: [],
 		});
 	},
 
@@ -64,7 +64,7 @@ const DemoCard = createReactClass({
 		action('add')(...rest);
 
 		this.setState({
-			items: [{ name: uniqueId('New item #') }, ...this.state.items]
+			items: [{ name: uniqueId('New item #') }, ...this.state.items],
 		});
 	},
 
@@ -116,7 +116,7 @@ const DemoCard = createReactClass({
 				</Card>
 			</div>
 		);
-	}
+	},
 });
 
 const SetHeightCard = () => (

@@ -23,89 +23,89 @@ import SnapshotReadonlySingleSelectionCustomMenuItemOpen from '../__examples__/s
 testDOMandHTML({
 	name: 'Base Open',
 	test,
-	Component: SnapshotBaseOpen
+	Component: SnapshotBaseOpen,
 });
 
 testDOMandHTML({
 	name: 'Base Selected',
 	test,
-	Component: SnapshotBaseSelected
+	Component: SnapshotBaseSelected,
 });
 
 testDOMandHTML({
 	name: 'Base Open Custom Class Name',
 	test,
-	Component: SnapshotBaseOpenClassName
+	Component: SnapshotBaseOpenClassName,
 });
 
 testDOMandHTML({
 	name: 'Inline Single Selection',
 	test,
-	Component: SnapshotInlineSingleSelection
+	Component: SnapshotInlineSingleSelection,
 });
 
 testDOMandHTML({
 	name: 'Inline Single Selection Selected',
 	test,
-	Component: SnapshotInlineSingleSelectionSelected
+	Component: SnapshotInlineSingleSelectionSelected,
 });
 
 testDOMandHTML({
 	name: 'Inline Multiple Selection',
 	test,
-	Component: SnapshotInlineMultipleSelection
+	Component: SnapshotInlineMultipleSelection,
 });
 
 testDOMandHTML({
 	name: 'Inline Multiple Selection Selected',
 	test,
-	Component: SnapshotInlineMultipleSelectionSelected
+	Component: SnapshotInlineMultipleSelectionSelected,
 });
 
 testDOMandHTML({
 	name: 'Base Custom Menu Item Open',
 	test,
-	Component: SnapshotBaseCustomMenuItemOpen
+	Component: SnapshotBaseCustomMenuItemOpen,
 });
 
 testDOMandHTML({
 	name: 'Readonly Single Selection',
 	test,
-	Component: SnapshotReadonlySingleSelection
+	Component: SnapshotReadonlySingleSelection,
 });
 
 testDOMandHTML({
 	name: 'Readonly Single Selection Selected',
 	test,
-	Component: SnapshotReadonlySingleSelectionSelected
+	Component: SnapshotReadonlySingleSelectionSelected,
 });
 
 testDOMandHTML({
 	name: 'Readonly Single Selection Selected Open',
 	test,
-	Component: SnapshotReadonlySingleSelectionSelectedOpen
+	Component: SnapshotReadonlySingleSelectionSelectedOpen,
 });
 
 testDOMandHTML({
 	name: 'Readonly Multiple Selection',
 	test,
-	Component: SnapshotReadonlyMultipleSelection
+	Component: SnapshotReadonlyMultipleSelection,
 });
 
 testDOMandHTML({
 	name: 'Readonly Multiple Selection Single Item Selected',
 	test,
-	Component: SnapshotReadonlyMultipleSelectionSingleItemSelected
+	Component: SnapshotReadonlyMultipleSelectionSingleItemSelected,
 });
 
 testDOMandHTML({
 	name: 'Readonly Multiple Selection Multiple Items Selected',
 	test,
-	Component: SnapshotReadonlyMultipleSelectionMultipleItemsSelected
+	Component: SnapshotReadonlyMultipleSelectionMultipleItemsSelected,
 });
 
 testDOMandHTML({
 	name: 'Readonly Single Selection Custom Menu Item Open',
 	test,
-	Component: SnapshotReadonlySingleSelectionCustomMenuItemOpen
+	Component: SnapshotReadonlySingleSelectionCustomMenuItemOpen,
 });

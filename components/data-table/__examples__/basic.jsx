@@ -44,7 +44,7 @@ const columns = [
 
 	<DataTableColumn key="contact" label="Contact" property="contact">
 		<CustomDataTableCell />
-	</DataTableColumn>
+	</DataTableColumn>,
 ];
 
 const Example = createReactClass({
@@ -61,7 +61,7 @@ const Example = createReactClass({
 					stage: 'Prospecting',
 					confidence: '20%',
 					amount: '$25k',
-					contact: 'jrogers@cloudhub.com'
+					contact: 'jrogers@cloudhub.com',
 				},
 				{
 					id: '5GJOOOPWU7',
@@ -71,7 +71,7 @@ const Example = createReactClass({
 					stage: 'Prospecting',
 					confidence: '20%',
 					amount: '$25k',
-					contact: 'jrogers@cloudhub.com'
+					contact: 'jrogers@cloudhub.com',
 				},
 				{
 					id: '8IKZHZZV81',
@@ -81,9 +81,9 @@ const Example = createReactClass({
 					stage: 'Prospecting',
 					confidence: '20%',
 					amount: '$25k',
-					contact: 'jrogers@cloudhub.com'
-				}
-			]
+					contact: 'jrogers@cloudhub.com',
+				},
+			],
 		};
 	},
 
@@ -148,7 +148,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

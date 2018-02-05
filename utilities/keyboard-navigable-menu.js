@@ -53,7 +53,7 @@ export function getNavigableItems (items) {
 			if (itemIsSelectable(item)) {
 				navigableItems.push({
 					index,
-					text: `${item.label}`.toLowerCase()
+					text: `${item.label}`.toLowerCase(),
 				});
 
 				navigableItems.indexes.push(index);
@@ -75,7 +75,7 @@ export function keyboardNavigate ({
 	onFocus,
 	onSelect,
 	target,
-	toggleOpen
+	toggleOpen,
 }) {
 	const indexes = navigableItems.indexes;
 	const lastIndex = indexes.length - 1;
@@ -187,7 +187,7 @@ export const KeyboardNavigableMixin = {
 		onFocus = this.handleKeyboardFocus,
 		onSelect,
 		target,
-		toggleOpen = noop
+		toggleOpen = noop,
 	}) {
 		keyboardNavigate({
 			componentContext: this,
@@ -199,7 +199,7 @@ export const KeyboardNavigableMixin = {
 			onFocus,
 			onSelect,
 			target,
-			toggleOpen
+			toggleOpen,
 		});
 	},
 
@@ -255,7 +255,7 @@ export const KeyboardNavigableMixin = {
 				}
 			}
 		}
-	}
+	},
 };
 
 export default KeyboardNavigableMixin;

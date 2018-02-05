@@ -34,7 +34,7 @@ const getPopoverNubbins = (props) => {
 		'bottom',
 		'bottom left',
 		'bottom right',
-		'left'
+		'left',
 	];
 
 	align.forEach((value) => {
@@ -72,7 +72,7 @@ storiesOf(POPOVER, module)
 			style={{
 				margin: '300px auto',
 				textAlign: 'center',
-				width: '500px'
+				width: '500px',
 			}}
 		>
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
@@ -83,7 +83,7 @@ storiesOf(POPOVER, module)
 	.add('AlternativeHeader', () => <AlternativeHeader />)
 	.add('Alignment (Button)', () =>
 		getPopoverNubbins({
-			trigger: <Button label="Trigger Popover" tabIndex="0" />
+			trigger: <Button label="Trigger Popover" tabIndex="0" />,
 		})
 	)
 	.add('Alignment (ButtonIcon)', () =>
@@ -102,7 +102,7 @@ storiesOf(POPOVER, module)
 					iconVariant="border"
 					variant="icon"
 				/>
-			)
+			),
 		})
 	)
 	.add('Styling (dev-only)', () =>
@@ -115,6 +115,6 @@ storiesOf(POPOVER, module)
 			closeButtonAssistiveText: 'Shut it now!',
 			containerClassName: 'sample-container-classname',
 			containerStyle: { background: containerBackgroundColor },
-			style: { background: popoverBackgroundColor }
+			style: { background: popoverBackgroundColor },
 		})
 	);

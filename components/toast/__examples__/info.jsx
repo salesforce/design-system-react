@@ -12,7 +12,7 @@ class Example extends React.Component {
 					<Toast
 						labels={{
 							heading: '26 potential duplicate leads were found.',
-							headingLink: 'Select Leads to Merge'
+							headingLink: 'Select Leads to Merge',
 						}}
 						onClickHeadingLink={() => {
 							console.log('Link clicked.');

@@ -10,7 +10,7 @@ import DefaultSectionDivider from './menu/default-section-divider';
 import Lookup from './lookup';
 
 export default onClickOutside(Lookup, {
-	excludeScrollbar: true
+	excludeScrollbar: true,
 });
 
 export { DefaultHeader };

@@ -48,7 +48,7 @@ const documentationSiteLiveExamples = {
 	'time-picker': require('@salesforce/design-system-react/components/time-picker/__docs__/site-stories.js'),
 	toast: require('@salesforce/design-system-react/components/toast/__docs__/site-stories.js'),
 	tooltip: require('@salesforce/design-system-react/components/tooltip/__docs__/site-stories.js'),
-	tree: require('@salesforce/design-system-react/components/tree/__docs__/site-stories.js')
+	tree: require('@salesforce/design-system-react/components/tree/__docs__/site-stories.js'),
 };
 
 module.exports = documentationSiteLiveExamples;

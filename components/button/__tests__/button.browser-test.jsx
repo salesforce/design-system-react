@@ -8,7 +8,7 @@ import assign from 'lodash.assign';
 const {
 	Simulate,
 	findRenderedDOMComponentWithTag,
-	findRenderedDOMComponentWithClass
+	findRenderedDOMComponentWithClass,
 } = TestUtils;
 
 import SLDSButton from '../../button';
@@ -22,7 +22,7 @@ describe('SLDSButton: ', () => {
 	const defaultProps = {
 		label: 'Neutral',
 		onClick: mockCallback,
-		variant: 'neutral'
+		variant: 'neutral',
 	};
 
 	const renderButton = (inst) => {
@@ -51,7 +51,7 @@ describe('SLDSButton: ', () => {
 			cmp = getButton({
 				id: 'custom-id',
 				text: 'Brand',
-				theme: 'brand'
+				theme: 'brand',
 			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
@@ -84,7 +84,7 @@ describe('SLDSButton: ', () => {
 				iconName: 'download',
 				iconCategory: 'action',
 				iconPosition: 'right',
-				variant: 'neutral'
+				variant: 'neutral',
 			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 			svg = findRenderedDOMComponentWithClass(cmp, 'slds-button__icon');
@@ -115,7 +115,7 @@ describe('SLDSButton: ', () => {
 				variant: 'icon',
 				iconName: 'settings',
 				iconSize: 'small',
-				iconVariant: 'bare'
+				iconVariant: 'bare',
 			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 			asstText = findRenderedDOMComponentWithClass(cmp, 'slds-assistive-text');
@@ -146,7 +146,7 @@ describe('SLDSButton: ', () => {
 				variant: 'icon',
 				iconPath: '/assets/icons/utility-sprite/svg/symbols.svg#announcement',
 				iconSize: 'large',
-				iconVariant: 'bare'
+				iconVariant: 'bare',
 			});
 			use = findRenderedDOMComponentWithTag(cmp, 'use');
 			svgHref = use.getAttribute('xlink:href');
@@ -173,7 +173,7 @@ describe('SLDSButton: ', () => {
 			cmp = getButton({
 				label: 'Neutral',
 				variant: 'neutral',
-				onClick: setClick
+				onClick: setClick,
 			});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});

@@ -14,7 +14,7 @@ if (process.env.NODE_ENV !== 'production') {
 				COMPONENT,
 				{
 					variant: props.variant,
-					indeterminate: props.indeterminate
+					indeterminate: props.indeterminate,
 				},
 				'Currently SLDS does not support the `indeterminate` state in Checkbox Toggle. See SLDS documentation about [Checkbox Toggle](https://lightningdesignsystem.com/components/forms/#flavor-checkbox-toggle-checkbox-toggle) for more information.'
 			);

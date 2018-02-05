@@ -13,7 +13,7 @@ import assign from 'lodash.assign';
  */
 import {
 	createMountNode,
-	destroyMountNode
+	destroyMountNode,
 } from '../../../tests/enzyme-helpers';
 
 // Import your internal dependencies (for example):
@@ -22,7 +22,7 @@ import Icon from '../../../components/icon';
 import filter from '~/components/combobox/filter';
 import KEYS, { keyObjects } from '../../../utilities/key-code';
 import LETTERKEYS, {
-	keyObjects as letterKeyObjects
+	keyObjects as letterKeyObjects,
 } from '../../../utilities/letter-key-code';
 import IconSettings from '~/components/icon-settings';
 
@@ -36,50 +36,50 @@ const accounts = [
 		id: '1',
 		label: 'Acme',
 		subTitle: 'Account • San Francisco',
-		type: 'account'
+		type: 'account',
 	},
 	{
 		id: '2',
 		label: 'Salesforce.com, Inc.',
 		subTitle: 'Account • San Francisco',
-		type: 'account'
+		type: 'account',
 	},
 	{
 		id: '3',
 		label: "Paddy's Pub",
 		subTitle: 'Account • Boston, MA',
-		type: 'account'
+		type: 'account',
 	},
 	{
 		id: '4',
 		label: 'Tyrell Corp',
 		subTitle: 'Account • San Francisco, CA',
-		type: 'account'
+		type: 'account',
 	},
 	{
 		id: '5',
 		label: 'Paper St. Soap Company',
 		subTitle: 'Account • Beloit, WI',
-		type: 'account'
+		type: 'account',
 	},
 	{
 		id: '6',
 		label: 'Nakatomi Investments',
 		subTitle: 'Account • Chicago, IL',
-		type: 'account'
+		type: 'account',
 	},
 	{ id: '7', label: 'Acme Landscaping', type: 'account' },
 	{
 		id: '8',
 		label: 'Acme Construction',
 		subTitle: 'Account • Grand Marais, MN',
-		type: 'account'
-	}
+		type: 'account',
+	},
 ];
 
 const accountsWithIcon = accounts.map((elem) =>
 	assign(elem, {
-		icon: <Icon assistiveText="Account" category="standard" name={elem.type} />
+		icon: <Icon assistiveText="Account" category="standard" name={elem.type} />,
 	})
 );
 
@@ -87,14 +87,14 @@ const defaultProps = {
 	id: 'combobox-unique-id',
 	labels: {
 		label: 'Search',
-		placeholder: 'Search Salesforce'
+		placeholder: 'Search Salesforce',
 	},
-	menuPosition: 'relative'
+	menuPosition: 'relative',
 };
 
 const propTypes = {
 	componentWillUpdate: PropTypes.func,
-	initialSelection: PropTypes.array
+	initialSelection: PropTypes.array,
 };
 
 /* A re-usable demo component fixture outside of `describe` sections
@@ -108,7 +108,7 @@ class DemoComponent extends React.Component {
 
 		this.state = {
 			inputValue: '',
-			selection: this.props.initialSelection || []
+			selection: this.props.initialSelection || [],
 		};
 	}
 
@@ -130,7 +130,7 @@ class DemoComponent extends React.Component {
 							console.log(data);
 							this.setState({
 								inputValue: '',
-								selection: data.selection
+								selection: data.selection,
 							});
 						},
 						onSubmit: (event, { value }) => {
@@ -146,22 +146,22 @@ class DemoComponent extends React.Component {
 												category="standard"
 												name="account"
 											/>
-										)
-									}
-								]
+										),
+									},
+								],
 							});
 						},
 						onSelect: (event, data) => {
 							this.setState({
 								inputValue: '',
-								selection: data.selection
+								selection: data.selection,
 							});
-						}
+						},
 					}}
 					options={filter({
 						inputValue: this.state.inputValue,
 						options: accountsWithIcon,
-						selection: this.state.selection
+						selection: this.state.selection,
 					})}
 					selection={this.state.selection}
 					value={this.state.inputValue}
@@ -183,7 +183,7 @@ const getNodes = ({ wrapper }) => ({
 	removeSingleItem: wrapper.find('.slds-combobox .slds-input__icon'),
 	selectedListbox: wrapper.find(
 		`#${defaultProps.id}-selected-listbox .slds-listbox`
-	)
+	),
 });
 
 /* All tests for component being tested should be wrapped in a root `describe`,
@@ -230,7 +230,7 @@ describe('SLDSCombobox', function () {
 
 		it('menu filters to second item, menu listbox menu item 2 aria-selected is true, input activedescendent has item 2 id, after pressing down arrow, enter selects item 2', function () {
 			wrapper = mount(<DemoComponent multiple isOpen />, {
-				attachTo: mountNode
+				attachTo: mountNode,
 			});
 			let nodes = getNodes({ wrapper });
 			nodes.input.simulate('focus');
@@ -266,19 +266,19 @@ describe('SLDSCombobox', function () {
 					accountsWithIcon[1],
 					accountsWithIcon[2],
 					accountsWithIcon[3],
-					accountsWithIcon[4]
+					accountsWithIcon[4],
 				],
 				removeThirdInitialItem: [
 					accountsWithIcon[1],
 					accountsWithIcon[3],
-					accountsWithIcon[4]
+					accountsWithIcon[4],
 				],
 				removesLastAndInitialFifthPill: [
 					accountsWithIcon[1],
-					accountsWithIcon[3]
+					accountsWithIcon[3],
 				],
 				removeInitalSecondAndFourthPill: [accountsWithIcon[3]],
-				allPillsRemoved: []
+				allPillsRemoved: [],
 			};
 			const selectionIndexedStates = Object.keys(selectionKeyedStates).map(
 				(key, index) => selectionKeyedStates[key]
@@ -301,7 +301,7 @@ describe('SLDSCombobox', function () {
 						accounts[1],
 						accounts[2],
 						accounts[3],
-						accounts[4]
+						accounts[4],
 					]}
 					multiple
 				/>,
@@ -366,7 +366,7 @@ describe('SLDSCombobox', function () {
 
 		it('Limit to pre-defined choices', function () {
 			wrapper = mount(<DemoComponent multiple predefinedOptionsOnly />, {
-				attachTo: mountNode
+				attachTo: mountNode,
 			});
 			let nodes = getNodes({ wrapper });
 			nodes.input.simulate('focus');
@@ -378,7 +378,7 @@ describe('SLDSCombobox', function () {
 
 		it('Inline Single Selection Remove selection', function () {
 			wrapper = mount(<DemoComponent variant="inline-listbox" />, {
-				attachTo: mountNode
+				attachTo: mountNode,
 			});
 			let nodes = getNodes({ wrapper });
 

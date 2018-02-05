@@ -14,7 +14,7 @@ import {
 	DATE_PICKER,
 	FORMS_INPUT,
 	LOOKUP,
-	TIME_PICKER
+	TIME_PICKER,
 } from '../../utilities/constants';
 
 /* eslint-disable import/no-mutable-exports */

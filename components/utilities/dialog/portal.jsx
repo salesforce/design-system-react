@@ -13,7 +13,7 @@ class Portal extends Component {
 		super(props);
 		this.portalNode = null;
 		this.state = {
-			isOpen: false
+			isOpen: false,
 		};
 	}
 
@@ -99,7 +99,7 @@ class Portal extends Component {
 				domContainerNode: this.portalNode,
 				updateCallback: () => {
 					this.updatePortal(); // update after subtree renders
-				}
+				},
 			});
 		} else {
 			// actual render
@@ -185,7 +185,7 @@ Portal.propTypes = {
 	 * />
 	 * ```
 	 */
-	portalMount: PropTypes.func
+	portalMount: PropTypes.func,
 };
 
 Portal.defaultProps = {
@@ -194,7 +194,7 @@ Portal.defaultProps = {
 	onMount: () => null,
 	onOpen: () => null,
 	onUpdate: () => null,
-	onUnmount: () => null
+	onUnmount: () => null,
 };
 
 export default Portal;

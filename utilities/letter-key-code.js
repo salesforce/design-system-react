@@ -9,7 +9,7 @@ for (let i = 65; i <= 122; i++) {
 	keyObjects[`${String.fromCharCode(i)}`] = {
 		key: `${String.fromCharCode(i)}`,
 		keyCode: i,
-		which: i
+		which: i,
 	};
 }
 

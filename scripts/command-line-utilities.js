@@ -18,7 +18,7 @@ const exec = (
 		command,
 		{
 			cwd: path.resolve(rootPath, dir),
-			maxBuffer: 1024 * 500
+			maxBuffer: 1024 * 500,
 		},
 		(err) => {
 			callback(err);

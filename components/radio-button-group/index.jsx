@@ -25,7 +25,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * **Text labels for internationalization**
@@ -35,7 +35,7 @@ const propTypes = {
 	 */
 	labels: shape({
 		error: PropTypes.string,
-		label: PropTypes.string
+		label: PropTypes.string,
 	}),
 	/**
 	 * This event fires when the radio selection changes.
@@ -56,7 +56,7 @@ const propTypes = {
 	/**
 	 * The ID of the error message, for linking to radio inputs with aria-describedby.
 	 */
-	errorId: PropTypes.string
+	errorId: PropTypes.string,
 };
 
 const defaultProps = { labels: {} };
@@ -99,14 +99,14 @@ class RadioButtonGroup extends React.Component {
 				name: this.getName(),
 				onChange: this.props.onChange,
 				'aria-describedby': this.getErrorId(),
-				disabled: this.props.disabled
+				disabled: this.props.disabled,
 			})
 		);
 
 		return (
 			<fieldset
 				className={classNames('slds-form-element', {
-					'slds-has-error': this.labels.error
+					'slds-has-error': this.labels.error,
 				})}
 			>
 				<legend className="slds-form-element__legend slds-form-element__label">

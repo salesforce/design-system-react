@@ -39,13 +39,13 @@ const PROP_TYPES = {
 	/**
 	 * Determines the color of the spinner: `base` is gray, `brand` is blue, and `inverse` is white.
 	 */
-	variant: PropTypes.oneOf(['base', 'brand', 'inverse'])
+	variant: PropTypes.oneOf(['base', 'brand', 'inverse']),
 };
 
 const DEFAULT_PROPS = {
 	assistiveText: 'Loading...',
 	size: 'medium',
-	variant: 'base'
+	variant: 'base',
 };
 
 // ## Spinner
@@ -56,14 +56,14 @@ const Spinner = (props) => {
 		id,
 		isInput,
 		size,
-		variant
+		variant,
 	} = props;
 
 	const spinnerClassName = classNames('slds-spinner', {
 		'slds-input__spinner': isInput,
 		'slds-spinner_brand': variant === 'brand',
 		'slds-spinner_inverse': variant === 'inverse',
-		[`slds-spinner_${size}`]: size
+		[`slds-spinner_${size}`]: size,
 	});
 
 	return (

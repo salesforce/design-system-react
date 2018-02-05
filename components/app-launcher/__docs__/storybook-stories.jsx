@@ -23,13 +23,13 @@ SLDSSettings.setAppElement('#root'); // used by Modal component
 const standardTileDemoStyles = {
 	width: '20rem',
 	paddingLeft: '.5rem',
-	paddingRight: '.5rem'
+	paddingRight: '.5rem',
 };
 
 const smallTileDemoStyles = {
 	width: '6rem',
 	paddingLeft: '.5rem',
-	paddingRight: '.5rem'
+	paddingRight: '.5rem',
 };
 
 const DemoAppLauncherTile = createReactClass({
@@ -37,7 +37,7 @@ const DemoAppLauncherTile = createReactClass({
 
 	propTypes: {
 		search: PropTypes.string,
-		size: PropTypes.string
+		size: PropTypes.string,
 	},
 
 	render () {
@@ -52,7 +52,7 @@ const DemoAppLauncherTile = createReactClass({
 				size={this.props.size}
 			/>
 		);
-	}
+	},
 });
 
 const DemoAppLauncherSmallTile = createReactClass({
@@ -67,7 +67,7 @@ const DemoAppLauncherSmallTile = createReactClass({
 				onClick={action('Tiny tile clicked!')}
 			/>
 		);
-	}
+	},
 });
 
 const DemoAppLauncherTileWithIconNode = createReactClass({
@@ -75,7 +75,7 @@ const DemoAppLauncherTileWithIconNode = createReactClass({
 
 	propTypes: {
 		search: PropTypes.string,
-		size: PropTypes.string
+		size: PropTypes.string,
 	},
 
 	render () {
@@ -92,7 +92,7 @@ const DemoAppLauncherTileWithIconNode = createReactClass({
 				size={this.props.size}
 			/>
 		);
-	}
+	},
 });
 
 const DemoAppLauncherTileWithIconText = createReactClass({
@@ -100,7 +100,7 @@ const DemoAppLauncherTileWithIconText = createReactClass({
 
 	propTypes: {
 		search: PropTypes.string,
-		size: PropTypes.string
+		size: PropTypes.string,
 	},
 
 	render () {
@@ -114,7 +114,7 @@ const DemoAppLauncherTileWithIconText = createReactClass({
 				size={this.props.size}
 			/>
 		);
-	}
+	},
 });
 
 const DemoAppLauncherTileWithTruncatedText = createReactClass({
@@ -122,7 +122,7 @@ const DemoAppLauncherTileWithTruncatedText = createReactClass({
 
 	propTypes: {
 		search: PropTypes.string,
-		size: PropTypes.string
+		size: PropTypes.string,
 	},
 
 	render () {
@@ -136,7 +136,7 @@ const DemoAppLauncherTileWithTruncatedText = createReactClass({
 				size={this.props.size}
 			/>
 		);
-	}
+	},
 });
 
 const DemoAppLauncherTileWithDescriptionHeading = createReactClass({
@@ -144,12 +144,12 @@ const DemoAppLauncherTileWithDescriptionHeading = createReactClass({
 
 	propTypes: {
 		search: PropTypes.string,
-		size: PropTypes.string
+		size: PropTypes.string,
 	},
 
 	getDefaultProps () {
 		return {
-			search: 'journey'
+			search: 'journey',
 		};
 	},
 
@@ -165,7 +165,7 @@ const DemoAppLauncherTileWithDescriptionHeading = createReactClass({
 				size={this.props.size}
 			/>
 		);
-	}
+	},
 });
 
 const DemoAppLauncherTileWithSearchText = createReactClass({
@@ -173,12 +173,12 @@ const DemoAppLauncherTileWithSearchText = createReactClass({
 
 	propTypes: {
 		search: PropTypes.string,
-		size: PropTypes.string
+		size: PropTypes.string,
 	},
 
 	getDefaultProps () {
 		return {
-			search: 'Call'
+			search: 'Call',
 		};
 	},
 
@@ -189,7 +189,7 @@ const DemoAppLauncherTileWithSearchText = createReactClass({
 				size={this.props.size}
 			/>
 		);
-	}
+	},
 });
 
 const DemoAppLauncherSection = createReactClass({
@@ -216,7 +216,7 @@ const DemoAppLauncherSection = createReactClass({
 				</AppLauncherSection>
 			</div>
 		);
-	}
+	},
 });
 
 const DemoAppLauncherSectionWithSmallTiles = createReactClass({
@@ -242,7 +242,7 @@ const DemoAppLauncherSectionWithSmallTiles = createReactClass({
 				</AppLauncherSection>
 			</div>
 		);
-	}
+	},
 });
 
 const DemoAppLauncher = createReactClass({
@@ -252,7 +252,7 @@ const DemoAppLauncher = createReactClass({
 		return {
 			search: '',
 			appLauncherOpen: this.props.isOpen || false, // eslint-disable-line react/prop-types
-			allItemsSectionIsOpen: false
+			allItemsSectionIsOpen: false,
 		};
 	},
 
@@ -339,7 +339,7 @@ const DemoAppLauncher = createReactClass({
 				</GlobalNavigationBarRegion>
 			</GlobalNavigationBar>
 		);
-	}
+	},
 });
 
 const DemoAppLauncherNoHeaderButton = createReactClass({
@@ -349,7 +349,7 @@ const DemoAppLauncherNoHeaderButton = createReactClass({
 		return {
 			search: '',
 			appLauncherOpen: false,
-			allItemsSectionIsOpen: false
+			allItemsSectionIsOpen: false,
 		};
 	},
 
@@ -395,7 +395,7 @@ const DemoAppLauncherNoHeaderButton = createReactClass({
 				</GlobalNavigationBarRegion>
 			</GlobalNavigationBar>
 		);
-	}
+	},
 });
 
 const DemoAppLauncherNoSearch = createReactClass({
@@ -404,7 +404,7 @@ const DemoAppLauncherNoSearch = createReactClass({
 	getInitialState () {
 		return {
 			appLauncherOpen: false,
-			allItemsSectionIsOpen: false
+			allItemsSectionIsOpen: false,
 		};
 	},
 
@@ -440,7 +440,7 @@ const DemoAppLauncherNoSearch = createReactClass({
 				</GlobalNavigationBarRegion>
 			</GlobalNavigationBar>
 		);
-	}
+	},
 });
 
 const DemoAppLauncherWithSeveralSections = createReactClass({
@@ -499,7 +499,7 @@ const DemoAppLauncherWithSeveralSections = createReactClass({
 				</GlobalNavigationBarRegion>
 			</GlobalNavigationBar>
 		);
-	}
+	},
 });
 
 storiesOf(APP_LAUNCHER, module)

@@ -12,7 +12,7 @@ const Example = createReactClass({
 				dateDisabled={({ date }) => date.getDay() > 5 || date.getDay() < 1}
 			/>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

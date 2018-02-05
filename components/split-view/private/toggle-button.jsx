@@ -17,7 +17,7 @@ const propsTypes = {
 	 */
 	assistiveText: PropTypes.shape({
 		toggleButtonOpen: PropTypes.string.isRequired,
-		toggleButtonClose: PropTypes.string.isRequired
+		toggleButtonClose: PropTypes.string.isRequired,
 	}),
 	/**
 	 * Unique html id placed on the button for aria-controls
@@ -32,8 +32,8 @@ const propsTypes = {
 	 * * `onClick`: Called when the button is clicked.
 	 */
 	events: PropTypes.shape({
-		onClick: PropTypes.func.isRequired
-	})
+		onClick: PropTypes.func.isRequired,
+	}),
 };
 
 const defaultProps = {};
@@ -42,7 +42,7 @@ const SplitViewToggleButton = ({
 	isOpen,
 	assistiveText,
 	ariaControls,
-	events
+	events,
 }) => {
 	const toggleAssistiveText = isOpen
 		? assistiveText.toggleButtonOpen
