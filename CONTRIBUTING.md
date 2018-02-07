@@ -6,12 +6,14 @@ First, on behalf of the core maintainers, I'd like to thank you for wanting to c
 
 1. Read the [Codebase Overview](docs/codebase-overview.md) to learn concepts and best practices for the codebase and to confirm contribution is within project scope.
 1. Create a new issue before starting your solution to keep track of what you want to contribute, so that others can offer suggestions, collaborate on a public API (props), or let you know if there is already an effort in progress.
-1. Fork this repository, clone your fork locally. Create a topic branch locally.
-1. Add a new component folder to the `/components`.
+1. Fork this repository, clone your fork locally `git clone git@github.com:[YOUR-USER]/design-system-react.git`. Create a topic branch locally.
+1. `npm install` to install development dependencies.
+1. `npm start` to start [Storybook](https://storybook.js.org/). Change source code to update component stories. Webpack will hot module replace your code. View stories at [http://localhost:9001](http://localhost:9001). 
+1. To add a new component, add a new component folder to the `/components`.
+1. Hook up storybook and site examples in `/components/[COMPONENT]/__docs__/`. Import these examples into Storybook within `/components/storybook-stories.js` and `/components/site-stories.js` respectively. Site examples only have access to variables exported in `/components/index.js`, so you should limit your component's site example imports to these variables. See [#1192](https://github.com/salesforce/design-system-react/issues/1192) for more information.
+1. Copy new examples from `/components/storybook-stories.js` to `/components/story-based-tests.js`. This will add DOM and image snapshot testing for the component. These tests use [Storyshots](https://github.com/storybooks/storybook/tree/master/addons/storyshots) and are run without a DOM. Most props that don't involve the user can be tested here.
 1. Add all public components exports to `/components/index.js` and the component's name to `/components/constants.js`
 1. Add [documentation site examples](https://react.lightningdesignsystem.com/) and [dev storybook stories](https://design-system-react-components.herokuapp.com/) in `/components/[COMPONENT]/__examples__/`.
-1. Hook up storybook and site examples in `/components/[COMPONENT]/__docs__/`. Import these examples into Storybook within `/components/storybook-stories.js` and `/components/site-stories.js` respectively. Run `npm start` to view stories at `localhost:9001`. Site examples only have access to variables exported in `/components/index.js`, so you should limit your component's site example imports to these variables. See [#1192](https://github.com/salesforce/design-system-react/issues/1192) for more information.
-1. Copy new examples from `/components/storybook-stories.js` to `/components/story-based-tests.js`. This will add DOM and image snapshot testing for the component. These tests use [Storyshots](https://github.com/storybooks/storybook/tree/master/addons/storyshots) and are run without a DOM. Most props that don't involve the user can be tested here.
 1. Add callback prop tests in Mocha test framework to `/components/[COMPONENT]/__tests__/`
 1. Push to your username's forked repository.
 1. Send us a well-documented pull request targeting `master` from your forked repository. GitHub pull requests should have a descriptive title, a brief summary, @mention several relevant people to review the code, add helpful GitHub comments on lines where you have questions or concerns. All contributors must sign a [Contributor License Agreement](https://cla.salesforce.com/sign-cla).
