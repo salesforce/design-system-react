@@ -40,7 +40,7 @@ const defaultIds = {
 
 const getNodes = ({ wrapper }) => ({
 	popover: wrapper.find('.slds-popover'),
-	closeButton: wrapper.find('.slds-popover__close')
+	closeButton: wrapper.find('.slds-popover__close'),
 });
 
 /* A re-usable demo component fixture outside of `describe` sections

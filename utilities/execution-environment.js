@@ -7,12 +7,8 @@ const canUseDOM = !!(
 	window.document.createElement
 );
 const canUseWorkers = typeof Worker !== 'undefined';
-const canUseEventListeners = canUseDOM && !!(window.addEventListener || window.attachEvent);
+const canUseEventListeners =
+	canUseDOM && !!(window.addEventListener || window.attachEvent);
 const canUseViewport = canUseDOM && !!window.screen;
 
-export {
-	canUseDOM,
-	canUseWorkers,
-	canUseEventListeners,
-	canUseViewport,
-};
+export { canUseDOM, canUseWorkers, canUseEventListeners, canUseViewport };
