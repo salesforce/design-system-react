@@ -9,7 +9,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import assign from 'lodash.assign';
-import { shape } from 'airbnb-prop-types';
 
 import classNames from '../../utilities/class-names';
 import Button from '../button';
@@ -25,7 +24,7 @@ const propTypes = {
 	 * * `closeButton`: This is a visually hidden label for the close button.
 	 * _Tested with snapshot testing._
 	 */
-	assistiveText: shape({
+	assistiveText: PropTypes.shape({
 		closeButton: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 	}),
 	/**
@@ -50,7 +49,7 @@ const propTypes = {
 	 *
 	 * _Tested with snapshot testing._
 	 */
-	labels: shape({
+	labels: PropTypes.shape({
 		details: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 		heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 		headingLink: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),

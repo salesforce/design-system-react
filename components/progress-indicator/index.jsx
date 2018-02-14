@@ -5,7 +5,6 @@
 // Based on SLDS v2.4.0
 import React from 'react';
 import PropTypes from 'prop-types';
-import { shape } from 'airbnb-prop-types';
 
 import assign from 'lodash.assign';
 
@@ -29,7 +28,7 @@ const propTypes = {
 	 * This object is merged with the default props object on every render.
 	 * * `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`
 	 */
-	assistiveText: shape({
+	assistiveText: PropTypes.shape({
 		percentage: PropTypes.string,
 	}),
 	/**

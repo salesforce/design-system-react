@@ -12,8 +12,6 @@ import reject from 'lodash.reject';
 import isEqual from 'lodash.isequal';
 import findIndex from 'lodash.findindex';
 
-import { shape } from 'airbnb-prop-types';
-
 import isBoolean from 'lodash.isboolean';
 import isFunction from 'lodash.isfunction';
 
@@ -48,7 +46,7 @@ const propTypes = {
 	 * * `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.
 	 * _Tested with snapshot testing._
 	 */
-	assistiveText: shape({
+	assistiveText: PropTypes.shape({
 		label: PropTypes.string,
 		optionSelectedInMenu: PropTypes.string,
 		removeSingleSelectedOption: PropTypes.string,
@@ -93,7 +91,7 @@ const propTypes = {
 	 * * `onSubmit`: Function called when user presses enter or submits the `input`
 	 * _Tested with Mocha testing._
 	 */
-	events: shape({
+	events: PropTypes.shape({
 		onBlur: PropTypes.func,
 		onChange: PropTypes.func,
 		onClose: PropTypes.func,
@@ -124,7 +122,7 @@ const propTypes = {
 	 * * `removePillTitle`: Title on `X` icon
 	 * _Tested with snapshot testing._
 	 */
-	labels: shape({
+	labels: PropTypes.shape({
 		label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 		multipleOptionsSelected: PropTypes.string,
 		noOptionsFound: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),

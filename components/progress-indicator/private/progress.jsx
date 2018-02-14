@@ -3,7 +3,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { shape } from 'airbnb-prop-types';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -20,7 +19,7 @@ const propTypes = {
 	/**
 	 * Assistive text for percentage
 	 */
-	assistiveText: shape({
+	assistiveText: PropTypes.shape({
 		percentage: PropTypes.string,
 	}),
 	/**

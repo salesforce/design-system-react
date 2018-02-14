@@ -6,8 +6,6 @@ import PropTypes from 'prop-types';
 
 import assign from 'lodash.assign';
 
-import { shape } from 'airbnb-prop-types';
-
 import KEYS from '../../../utilities/key-code';
 import mapKeyEventCallbacks from '../../../utilities/key-callbacks';
 import EventUtil from '../../../utilities/event';
@@ -24,7 +22,7 @@ const propTypes = {
 	 * This object is merged with the default props object on every render.
 	 * * `pressDeleteOrBackspace`: Informs user of keyboard keys to press in order to remove a pill
 	 */
-	assistiveText: shape({
+	assistiveText: PropTypes.shape({
 		remove: PropTypes.string,
 	}),
 	/*
@@ -34,7 +32,7 @@ const propTypes = {
 	/*
 	 * Callback called when pill is clicked, delete is pressed, or backspace is pressed.
 	 */
-	events: shape({
+	events: PropTypes.shape({
 		onClick: PropTypes.func,
 		onRequestFocus: PropTypes.func.isRequired,
 		onRequestFocusOnNextPill: PropTypes.func.isRequired,
@@ -48,7 +46,7 @@ const propTypes = {
 	/*
 	 * Pill Label
 	 */
-	labels: shape({
+	labels: PropTypes.shape({
 		label: PropTypes.string.isRequired,
 		removeTitle: PropTypes.string,
 	}),
@@ -67,7 +65,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-	assistiveText: shape({
+	assistiveText: PropTypes.shape({
 		remove: ', Press delete or backspace to remove',
 	}),
 	labels: {

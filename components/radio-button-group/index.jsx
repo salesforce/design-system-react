@@ -10,7 +10,6 @@ import classNames from 'classnames';
 
 import shortid from 'shortid';
 import assign from 'lodash.assign';
-import { shape } from 'airbnb-prop-types';
 
 import { RADIO_BUTTON_GROUP } from '../../utilities/constants';
 
@@ -33,7 +32,7 @@ const propTypes = {
 	 * * `error`: Message to display when any of Checkboxes are in an error state.
 	 * * `label`: This label appears above the button group.
 	 */
-	labels: shape({
+	labels: PropTypes.shape({
 		error: PropTypes.string,
 		label: PropTypes.string,
 	}),
