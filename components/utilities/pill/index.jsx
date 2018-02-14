@@ -9,7 +9,7 @@ import assign from 'lodash.assign';
 import KEYS from '../../../utilities/key-code';
 import mapKeyEventCallbacks from '../../../utilities/key-callbacks';
 import EventUtil from '../../../utilities/event';
-
+// Allows objects with undefined values to merge with default
 import { shape } from 'airbnb-prop-types';
 import SLDSPill from '../../../components/pill';
 

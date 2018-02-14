@@ -18,7 +18,7 @@ import find from 'lodash.find';
 import reject from 'lodash.reject';
 import isEqual from 'lodash.isequal';
 import findIndex from 'lodash.findindex';
-
+// Allows objects with undefined values to merge with default
 import { shape } from 'airbnb-prop-types';
 
 import isBoolean from 'lodash.isboolean';

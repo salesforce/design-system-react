@@ -7,6 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+// Allows objects with undefined values to merge with default
 import { shape } from 'airbnb-prop-types';
 import { PILL } from '../../utilities/constants';
 import UtilityIcon from '../utilities/utility-icon';

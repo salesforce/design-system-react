@@ -10,7 +10,7 @@ import InputIcon from '../icon/input-icon';
 import Input from '../forms/input';
 
 import assign from 'lodash.assign';
-
+// Allows objects with undefined values to merge with default
 import { shape } from 'airbnb-prop-types';
 
 // ### isBoolean

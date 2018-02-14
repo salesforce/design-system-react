@@ -11,6 +11,7 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
+// Allows objects with undefined values to merge with default
 import { shape } from 'airbnb-prop-types';
 
 // ### classNames
