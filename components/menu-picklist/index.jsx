@@ -22,8 +22,6 @@ import classNames from 'classnames';
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 
-import { shape } from 'airbnb-prop-types';
-
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
@@ -87,7 +85,7 @@ const MenuPicklist = createReactClass({
 		 * This object is merged with the default props object on every render.
 		 * * `multipleOptionsSelected`: Text to be used when multiple items are selected. "2 Options Selected" is a good pattern to use.
 		 */
-		labels: shape({
+		labels: PropTypes.shape({
 			multipleOptionsSelected: PropTypes.string,
 		}),
 		/**

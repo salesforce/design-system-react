@@ -10,8 +10,6 @@ import classNames from 'classnames';
 
 import assign from 'lodash.assign';
 
-import { shape } from 'airbnb-prop-types';
-
 import { BUTTON_GROUP } from '../../utilities/constants';
 
 const propTypes = {
@@ -33,7 +31,7 @@ const propTypes = {
 	 * * `error`: Message to display when any of Checkboxes are in an error state. _Tested with snapshot testing._
 	 * * `label`: This label appears above the button group. _Tested with snapshot testing._
 	 */
-	labels: shape({
+	labels: PropTypes.shape({
 		error: PropTypes.string,
 		label: PropTypes.string,
 	}),
