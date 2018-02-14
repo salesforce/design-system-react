@@ -12,12 +12,16 @@
  * To view `npm start` and open `http://localhost:8001`.
  */
 
-const browserTestsContext = require.context('../components/',
+const browserTestsContext = require.context(
+	'../components/',
 	true,
-	/.\.browser-test\.jsx?$/);
+	/.\.browser-test\.jsx?$/
+);
 browserTestsContext.keys().forEach(browserTestsContext);
 
-const utilitiesTestsContext = require.context('../utilities/',
+const utilitiesTestsContext = require.context(
+	'../utilities/',
 	true,
-	/.\.browser-test\.jsx?$/);
+	/.\.browser-test\.jsx?$/
+);
 utilitiesTestsContext.keys().forEach(utilitiesTestsContext);
