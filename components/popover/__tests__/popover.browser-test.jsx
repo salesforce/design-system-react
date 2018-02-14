@@ -257,7 +257,7 @@ describe('SLDSPopover', function () {
 		});
 
 		afterEach(() => {
-			// destroyMountNode({ wrapper, mountNode });
+			destroyMountNode({ wrapper, mountNode });
 		});
 
 		it('focus moves to correct node on open', function (done) {
