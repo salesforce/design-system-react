@@ -7,8 +7,7 @@ import PropTypes from 'prop-types';
 import { ICON_SETTINGS } from '../../utilities/constants';
 
 /**
- * The Icon Settings component allows for the path to the icons to be specified.
- * This should be used at the root of the application.
+ * The Icon Settings component allows for the path to the icons to be specified in all child components and is recommended to be used at the root of the application. It's render function is `return this.props.children`, so it can only have one child node.
  *
  * **Individual sprites**
  * If you are using webpack it is advised to use the sprite properties

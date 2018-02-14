@@ -19,12 +19,12 @@ import {
 // Import your internal dependencies (for example):
 import Combobox from '../../../components/combobox';
 import Icon from '../../../components/icon';
-import filter from '~/components/combobox/filter';
+import filter from '../../../components/combobox/filter';
 import KEYS, { keyObjects } from '../../../utilities/key-code';
 import LETTERKEYS, {
 	keyObjects as letterKeyObjects,
 } from '../../../utilities/letter-key-code';
-import IconSettings from '~/components/icon-settings';
+import IconSettings from '../../../components/icon-settings';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme

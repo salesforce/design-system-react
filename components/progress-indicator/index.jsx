@@ -9,14 +9,13 @@ import { shape } from 'airbnb-prop-types';
 
 import assign from 'lodash.assign';
 
+import find from 'lodash.find';
+
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 import { PROGRESS_INDICATOR } from '../../utilities/constants';
-
-// ### find
-import find from 'lodash.find';
 
 // Child components
 import Step from './private/step';

@@ -2,6 +2,9 @@ import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import { storiesOf, action } from '@storybook/react';
+
+import classNames from 'classnames';
+
 import IconSettings from '../../icon-settings';
 
 import { TABS } from '../../../utilities/constants';
@@ -21,8 +24,6 @@ import Button from '../../button';
 
 // Used in the custom content story
 import Icon from '../../icon';
-
-import classNames from 'classnames';
 
 /* eslint-disable react/display-name */
 const getTabs = () => (

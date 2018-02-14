@@ -5,14 +5,14 @@ import TestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 import assign from 'lodash.assign';
 
+import SLDSButton from '../../button';
+import IconSettings from '../../icon-settings';
+
 const {
 	Simulate,
 	findRenderedDOMComponentWithTag,
 	findRenderedDOMComponentWithClass,
 } = TestUtils;
-
-import SLDSButton from '../../button';
-import IconSettings from '../../icon-settings';
 
 const mockCallback = sinon.spy();
 
