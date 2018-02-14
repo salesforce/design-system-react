@@ -115,6 +115,9 @@ const defaultProps = {
 	unread: [],
 };
 
+/**
+ * The menu with the ARIA role of a listbox.
+ */
 class SplitViewListbox extends React.Component {
 	static displayName = SPLIT_VIEW_LISTBOX;
 	static propTypes = propTypes;

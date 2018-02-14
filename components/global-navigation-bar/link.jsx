@@ -117,16 +117,37 @@ GlobalNavigationBarLink.propTypes = {
 	 * Text to show for link item.
 	 */
 	label: PropTypes.string,
+	/**
+	 * Triggered when focus is removed.
+	 */
 	onBlur: PropTypes.func,
 	/**
 	 * `function (event, href)` - fires when the link is clicked. If set, the browser location change to the `href` specified will be ignored, but the `href` will be included in an additional parameter passed to the callback.
 	 */
 	onClick: PropTypes.func,
+	/**
+	 * Triggered when component is focused.
+	 */
 	onFocus: PropTypes.func,
+	/**
+	 * Triggered when a key is pressed down
+	 */
 	onKeyDown: PropTypes.func,
+	/**
+	 * Triggered when a key is pressed and released
+	 */
 	onKeyPress: PropTypes.func,
+	/**
+	 * Triggered when a key is released
+	 */
 	onKeyUp: PropTypes.func,
+	/**
+	 * Triggered when a mouse arrow hovers
+	 */
 	onMouseEnter: PropTypes.func,
+	/**
+	 * Triggered when a mouse arrow no longer hovers
+	 */
 	onMouseLeave: PropTypes.func,
 	/**
 	 * Write "-1" if you don't want the user to tab to the button.

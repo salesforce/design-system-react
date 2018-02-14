@@ -1,16 +1,17 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-// # Tabs: Panel child component
-//
-// Helps implement the [Tabs design pattern](https://www.lightningdesignsystem.com/components/tabs/) in React.
-//
-// The `<TabsPanel />` component allows us to simplify the structure of the `<Tabs />` component.
-//
-// Rather than require different (deeply nested) children for tabslist, with its tab(s) as well as tabpanel(s), we provide this TabsPanel component which takes a `label` property that will become what is shown on the `<Tab />` that will be associated with it.
-//
-// The `children` of the Panel will be fed to the `<TabPanel />` component, while its `label` is handled in `<Tab />`, via `<TabsList />`.
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import { TABS_PANEL } from '../../utilities/constants';
+
 /**
+ * The `<TabsPanel />` component allows us to simplify the structure of the `<Tabs />` component.
+
+ * Rather than require different (deeply nested) children for tabslist, with its tab(s) as well as tabpanel(s), we provide this `TabsPanel` component which takes a `label` property that will become what is shown on the `<Tab />` that will be associated with it.
+
+ * The `children` of the Panel will be fed to the `<TabPanel />` component, while its `label` is handled in `<Tab />`, via `<TabsList />`.
  *
  * ```
  * <TabsPanel label="Tab 1">
@@ -21,16 +22,6 @@
  * </TabsPanel>
  * ```
  */
-
-// ## Dependencies
-
-// ### React
-import React from 'react';
-import PropTypes from 'prop-types';
-
-// ## Constants
-import { TABS_PANEL } from '../../utilities/constants';
-
 const Panel = ({ children }) => <div>{React.Children.toArray(children)}</div>;
 
 Panel.displayName = TABS_PANEL;

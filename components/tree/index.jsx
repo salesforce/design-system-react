@@ -133,7 +133,7 @@ Tree.propTypes = {
 	 * Highlights term if found in node label. This does not auto-expand branches.
 	 */
 	searchTerm: PropTypes.string,
-	/*
+	/**
 	 * Styles to be added to the top-level `ul` element. Useful for `overflow:hidden`.
 	 */
 	listStyle: PropTypes.object,

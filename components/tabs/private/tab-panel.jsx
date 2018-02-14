@@ -15,7 +15,9 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { TAB_PANEL } from '../../../utilities/constants';
 
-/* eslint-disable no-unused-vars */
+/**
+ * The containers of content that are shown and hidden by `Tabs`.
+ */
 const TabPanel = ({
 	className,
 	children,
@@ -23,7 +25,7 @@ const TabPanel = ({
 	selected,
 	id,
 	tabId,
-	...attributes
+	...attributes // eslint-disable-line no-unused-vars
 }) => (
 	<div
 		aria-labelledby={tabId}

@@ -38,9 +38,21 @@ const DataTableRowActions = createReactClass({
 		 * Class names to be added to the actions menu.
 		 */
 		className: PropTypes.string,
+		/**
+		 * HTML ID to be added to the actions menu.
+		 */
 		id: PropTypes.string,
+		/**
+		 * `DataTable` row item
+		 */
 		item: PropTypes.object,
+		/**
+		 * Triggered when an item is selected.
+		 */
 		onAction: PropTypes.func,
+		/**
+		 * `Dropdown` options. See `Dropdown`.
+		 */
 		options: PropTypes.array.isRequired,
 	},
 

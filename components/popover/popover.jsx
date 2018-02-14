@@ -116,24 +116,25 @@ const Popover = createReactClass({
 			PropTypes.object,
 			PropTypes.string,
 		]),
-		/*
+		/**
 		 * All popovers require a close button.
-		*/
+		 */
 		closeButtonAssistiveText: PropTypes.oneOfType([PropTypes.string]),
 		/**
 		 * This prop is passed onto the triggering `Button`. Prevent popover from opening. Also applies disabled styling to trigger button.
 		 */
 		disabled: PropTypes.bool,
-		/*
+		/**
 		 * A footer is an optional. Buttons are often placed here.
-		*/
+		 */
 		footer: PropTypes.node,
-		/* Prevents the Popover from changing position based on the viewport/window. If set to true your popover can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the popover contents scrollable to fit the menu on the screen.
-		*/
+		/**
+		 * Prevents the Popover from changing position based on the viewport/window. If set to true your popover can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the popover contents scrollable to fit the menu on the screen.
+		 */
 		hasStaticAlignment: PropTypes.bool,
-		/*
+		/**
 		 * All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop.
-		*/
+		 */
 		heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 		/**
 		 * By default, a unique ID will be created at render to support keyboard navigation, ARIA roles, and connect the popover to the triggering button. This ID will be applied to the triggering element. `${id}-popover`, `${id}-dialog-heading`, `${id}-dialog-body` are also created.
