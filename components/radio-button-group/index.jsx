@@ -10,6 +10,7 @@ import classNames from 'classnames';
 
 import shortid from 'shortid';
 import assign from 'lodash.assign';
+// Allows objects with undefined values to merge with default
 import { shape } from 'airbnb-prop-types';
 
 import { RADIO_BUTTON_GROUP } from '../../utilities/constants';

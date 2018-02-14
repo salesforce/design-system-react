@@ -32,7 +32,7 @@ import Icon from '../icon';
 import List from '../utilities/menu-list';
 import ListItemLabel from '../utilities/menu-list/item-label';
 import Pill from '../utilities/pill';
-
+// Allows objects with undefined values to merge with default
 import { shape } from 'airbnb-prop-types';
 
 // ### Traits

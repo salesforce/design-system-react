@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import assign from 'lodash.assign';
-
+// Allows objects with undefined values to merge with default
 import { shape } from 'airbnb-prop-types';
 
 import { BUTTON_GROUP } from '../../utilities/constants';

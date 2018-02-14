@@ -5,6 +5,7 @@
 // Based on SLDS v2.4.0
 import React from 'react';
 import PropTypes from 'prop-types';
+// Allows objects with undefined values to merge with default
 import { shape } from 'airbnb-prop-types';
 
 import assign from 'lodash.assign';

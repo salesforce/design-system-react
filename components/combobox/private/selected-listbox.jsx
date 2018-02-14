@@ -8,7 +8,7 @@ import Pill from '../../utilities/pill';
 
 import classNames from 'classnames';
 import isEqual from 'lodash.isequal';
-
+// Allows objects with undefined values to merge with default
 import { shape } from 'airbnb-prop-types';
 
 const propTypes = {
