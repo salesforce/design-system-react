@@ -26,7 +26,7 @@
     "release:patch": "./node_modules/.bin/babel-node scripts/release.js --release=patch",
     "release:minor": "./node_modules/.bin/babel-node scripts/release.js --release=minor",
     "snapshot-test": "./node_modules/.bin/jest",
-    "start": "./node_modules/.bin/start-storybook -p 9001 -s ./node_modules & node tests/app",
+    "start": "./node_modules/.bin/start-storybook -p 9001 -s ./node_modules & node tests/browser-tests-app",
     "start:static": "node app",
     "storybook": "start-storybook -p 9001 -s ./node_modules",
     "test": "scripts/local-qa.sh --no-fix",
