@@ -11,14 +11,6 @@ import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 
-import { POPOVER_TOOLTIP } from '../../utilities/constants';
-
-import Dialog from '../utilities/dialog';
-import { getMargin, getNubbinClassName } from '../../utilities/dialog-helpers';
-
-// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
-import checkProps from './check-props';
-
 // ### Util helpers
 import flatten from 'lodash.flatten';
 import compact from 'lodash.compact';
@@ -27,6 +19,14 @@ import compact from 'lodash.compact';
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
+
+import { POPOVER_TOOLTIP } from '../../utilities/constants';
+
+import Dialog from '../utilities/dialog';
+import { getMargin, getNubbinClassName } from '../../utilities/dialog-helpers';
+
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
 
 // ### Display Name
 // Always use the canonical component name as the React display name.
@@ -48,7 +48,7 @@ const propTypes = {
 		'bottom right',
 		'left',
 		'left top',
-		'left bottom'
+		'left bottom',
 	]).isRequired,
 	/**
 	 * Pass the one element that triggers the Tooltip as a child. It must be an element with `tabIndex` or an element that already has a `tabIndex` set such as an anchor or a button, so that keyboard users can tab to it.
@@ -80,7 +80,7 @@ const propTypes = {
 	triggerClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Please select one of the following:
@@ -91,7 +91,7 @@ const propTypes = {
 	position: PropTypes.oneOf([
 		'absolute',
 		'overflowBoundaryElement',
-		'relative'
+		'relative',
 	]),
 	/**
 	 * Custom styles to be added to wrapping triggering `div`.
@@ -100,7 +100,7 @@ const propTypes = {
 	/**
 	 * Determines the variant of tooltip: for informative purpose (blue background) or warning purpose (red background)
 	 */
-	variant: PropTypes.oneOf(['info', 'error'])
+	variant: PropTypes.oneOf(['info', 'error']),
 };
 
 const defaultProps = {
@@ -108,7 +108,7 @@ const defaultProps = {
 	content: <span>Tooltip</span>,
 	hoverCloseDelay: 50,
 	position: 'absolute',
-	variant: 'info'
+	variant: 'info',
 };
 
 /**
@@ -120,7 +120,7 @@ class PopoverTooltip extends React.Component {
 
 		this.state = {
 			isClosing: false,
-			isOpen: false
+			isOpen: false,
 		};
 	}
 
@@ -135,44 +135,26 @@ class PopoverTooltip extends React.Component {
 		this.isUnmounting = true;
 	}
 
+	getContent () {
+		return React.Children.map(this.props.children, (child, i) =>
+			React.cloneElement(
+				child,
+				{
+					key: i,
+					'aria-describedby': this.getId(),
+					onBlur: this.handleMouseLeave,
+					onFocus: this.handleMouseEnter,
+					onMouseEnter: this.handleMouseEnter,
+					onMouseLeave: this.handleMouseLeave,
+				},
+				this.grandKidsWithAsstText(child)
+			)
+		);
+	}
+
 	getId () {
 		return this.props.id || this.generatedId;
 	}
-
-	getTooltipTarget () {
-		return this.props.target ? this.props.target : this.trigger;
-	}
-
-	handleMouseEnter = () => {
-		this.setState({
-			isOpen: true,
-			isClosing: false
-		});
-	};
-
-	handleMouseLeave = () => {
-		this.setState({ isClosing: true });
-
-		setTimeout(() => {
-			if (!this.isUnmounting && this.state.isClosing) {
-				this.setState({
-					isOpen: false,
-					isClosing: false
-				});
-			}
-		}, this.props.hoverCloseDelay);
-	};
-
-	getTooltipContent () {
-		return <div className="slds-popover__body">{this.props.content}</div>;
-	}
-
-	handleCancel = () => {
-		this.setState({
-			isOpen: false,
-			isClosing: false
-		});
-	};
 
 	getTooltip () {
 		const isOpen =
@@ -192,7 +174,7 @@ class PopoverTooltip extends React.Component {
 					marginBottom: getMargin.bottom(align),
 					marginLeft: getMargin.left(align),
 					marginRight: getMargin.right(align),
-					marginTop: getMargin.top(align)
+					marginTop: getMargin.top(align),
 				}}
 				variant="tooltip"
 			>
@@ -214,12 +196,16 @@ class PopoverTooltip extends React.Component {
 		);
 	}
 
-	renderAssistantText () {
-		return <span className="slds-assistive-text">{this.props.content}</span>;
+	getTooltipContent () {
+		return <div className="slds-popover__body">{this.props.content}</div>;
 	}
 
+	getTooltipTarget () {
+		return this.props.target ? this.props.target : this.trigger;
+	}
+
+	// eslint-disable-next-line class-methods-use-this
 	decorateGrandKidsWithKeyToSilenceWarning (grandKids) {
-		// eslint-disable-line class-methods-use-this
 		return React.Children.map(grandKids, (component, i) => {
 			const decoratedComponent = React.isValidElement(component)
 				? React.cloneElement(component, { key: i })
@@ -236,22 +222,32 @@ class PopoverTooltip extends React.Component {
 		return this.decorateGrandKidsWithKeyToSilenceWarning(grandKids);
 	}
 
-	getContent () {
-		return React.Children.map(this.props.children, (child, i) =>
-			React.cloneElement(
-				child,
-				{
-					key: i,
-					'aria-describedby': this.getId(),
-					onBlur: this.handleMouseLeave,
-					onFocus: this.handleMouseEnter,
-					onMouseEnter: this.handleMouseEnter,
-					onMouseLeave: this.handleMouseLeave
-				},
-				this.grandKidsWithAsstText(child)
-			)
-		);
-	}
+	handleCancel = () => {
+		this.setState({
+			isOpen: false,
+			isClosing: false,
+		});
+	};
+
+	handleMouseEnter = () => {
+		this.setState({
+			isOpen: true,
+			isClosing: false,
+		});
+	};
+
+	handleMouseLeave = () => {
+		this.setState({ isClosing: true });
+
+		setTimeout(() => {
+			if (!this.isUnmounting && this.state.isClosing) {
+				this.setState({
+					isOpen: false,
+					isClosing: false,
+				});
+			}
+		}, this.props.hoverCloseDelay);
+	};
 
 	saveTriggerRef = (component) => {
 		this.trigger = component;
@@ -264,6 +260,10 @@ class PopoverTooltip extends React.Component {
 			this.setState({ triggerRendered: true });
 		}
 	};
+
+	renderAssistantText () {
+		return <span className="slds-assistive-text">{this.props.content}</span>;
+	}
 
 	render () {
 		const containerStyles = { display: 'inline', ...this.props.triggerStyle };
@@ -285,7 +285,7 @@ class PopoverTooltip extends React.Component {
 }
 
 PopoverTooltip.contextTypes = {
-	iconPath: PropTypes.string
+	iconPath: PropTypes.string,
 };
 
 PopoverTooltip.displayName = displayName;

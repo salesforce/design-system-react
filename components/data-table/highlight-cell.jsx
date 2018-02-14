@@ -33,12 +33,12 @@ DataTableHighlightCell.propTypes = {
 	children: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number,
-		PropTypes.bool
+		PropTypes.bool,
 	]),
 	/**
 	 * The string of text (or Regular Expression) to highlight.
 	 */
-	search: PropTypes.any
+	search: PropTypes.any,
 };
 
 export default DataTableHighlightCell;

@@ -1,4 +1,14 @@
-import '@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.css';
+/*
+ * STORY-BASED EXAMPLES
+ *
+ * Please add stories below to use Storybook Stories (http://localhost:9001)
+ * as the basis for manual review and a development sandbox. New components
+ * should also be added to `story-based-tests.jsx` in order to automatically
+ * add DOM and image snapshots. With enough Storybook story examples, these
+ * two methods should be significant to fully test components with the
+ * exception of callback testing. Pleaes test callback props with the Mocha
+ * framework (http://localhost:8001).
+ */
 
 export Accordion from '../components/accordion/__docs__/storybook-stories';
 export Alert from '../components/alert/__docs__/storybook-stories';

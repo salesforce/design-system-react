@@ -8,16 +8,16 @@ const Example = createReactClass({
 
 	getInitialState () {
 		return {
-			isOpen: false
+			isOpen: false,
 		};
-	},
-
-	toggleOpen () {
-		this.setState({ isOpen: !this.state.isOpen });
 	},
 
 	getParent () {
 		return document.querySelector('#myModalContainer');
+	},
+
+	toggleOpen () {
+		this.setState({ isOpen: !this.state.isOpen });
 	},
 
 	render () {
@@ -51,7 +51,7 @@ const Example = createReactClass({
 				</Modal>
 			</div>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

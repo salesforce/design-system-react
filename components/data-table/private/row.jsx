@@ -19,7 +19,7 @@ import Checkbox from '../../forms/checkbox';
 import {
 	DATA_TABLE_ROW,
 	DATA_TABLE_ROW_ACTIONS,
-	DATA_TABLE_CELL
+	DATA_TABLE_CELL,
 } from '../../../utilities/constants';
 
 /**
@@ -40,7 +40,7 @@ const DataTableRow = createReactClass({
 		columns: PropTypes.arrayOf(
 			PropTypes.shape({
 				Cell: PropTypes.func,
-				props: PropTypes.object
+				props: PropTypes.object,
 			})
 		),
 		/**
@@ -51,7 +51,15 @@ const DataTableRow = createReactClass({
 		item: PropTypes.object.isRequired,
 		onToggle: PropTypes.func,
 		rowActions: PropTypes.element,
-		selection: PropTypes.array
+		selection: PropTypes.array,
+	},
+
+	isSelected () {
+		return !!find(this.props.selection, this.props.item);
+	},
+
+	handleToggle (selected, e) {
+		return this.props.onToggle(this.props.item, selected, e);
 	},
 
 	// ### Render
@@ -63,7 +71,7 @@ const DataTableRow = createReactClass({
 			<tr
 				className={classNames({
 					'slds-hint-parent': this.props.rowActions,
-					'slds-is-selected': this.props.canSelectRows && isSelected
+					'slds-is-selected': this.props.canSelectRows && isSelected,
 				})}
 			>
 				{this.props.canSelectRows ? (
@@ -106,20 +114,12 @@ const DataTableRow = createReactClass({
 				{this.props.rowActions
 					? React.cloneElement(this.props.rowActions, {
 						id: `${this.props.id}-${DATA_TABLE_ROW_ACTIONS}`,
-						item: this.props.item
+						item: this.props.item,
 					})
 					: null}
 			</tr>
 		);
 	},
-
-	isSelected () {
-		return !!find(this.props.selection, this.props.item);
-	},
-
-	handleToggle (selected, e) {
-		return this.props.onToggle(this.props.item, selected, e);
-	}
 });
 
 export default DataTableRow;

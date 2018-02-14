@@ -12,14 +12,14 @@ export default class Example extends React.Component {
 				{
 					id: '1',
 					summary: 'Accordion Summary',
-					details: 'Accordion details - A'
+					details: 'Accordion details - A',
 				},
 				{
 					id: '2',
 					summary: 'Accordion Summary',
-					details: 'Accordion details - B'
-				}
-			]
+					details: 'Accordion details - B',
+				},
+			],
 		};
 	}
 
@@ -28,8 +28,8 @@ export default class Example extends React.Component {
 			...state,
 			expandedPanels: {
 				...state.expandedPanels,
-				[data.id]: !state.expandedPanels[data.id]
-			}
+				[data.id]: !state.expandedPanels[data.id],
+			},
 		}));
 		console.log('onClick', data);
 	}

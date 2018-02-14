@@ -2,91 +2,93 @@ import React from 'react';
 import IconSettings from '~/components/icon-settings';
 import SplitView from '~/components/split-view/index';
 import SplitViewHeader from '~/components/split-view/header';
-import SplitViewListbox, {
-	SORT_OPTIONS
-} from '~/components/split-view/listbox';
+import SplitViewListbox from '~/components/split-view/listbox';
 import Button from '~/components/button';
 import Dropdown from '~/components/menu-dropdown';
 import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
-import shortid from 'shortid';
+
+const SORT_OPTIONS = {
+	UP: 'up',
+	DOWN: 'down',
+};
 
 const listOptions = [
 	{
-		id: shortid.generate(),
+		id: '001',
 		label: 'Riley Shultz',
 		topRightText: '99',
 		bottomLeftText: 'Biotech, Inc.',
-		bottomRightText: 'Nurturing'
+		bottomRightText: 'Nurturing',
 	},
 	{
-		id: shortid.generate(),
+		id: '002',
 		label: 'Jason A. - VP of Sales',
 		topRightText: '92',
 		bottomLeftText: 'Case Management Solutions',
-		bottomRightText: 'Contacted'
+		bottomRightText: 'Contacted',
 	},
 	{
-		id: shortid.generate(),
+		id: '003',
 		label: 'Josh Smith',
 		topRightText: '90',
 		bottomLeftText: 'Acme, Inc.',
-		bottomRightText: 'Contacted'
+		bottomRightText: 'Contacted',
 	},
 	{
-		id: shortid.generate(),
+		id: '004',
 		label: 'Bobby Tree',
 		topRightText: '89',
 		bottomLeftText: 'Salesforce, Inc.',
-		bottomRightText: 'Closing'
+		bottomRightText: 'Closing',
 	},
 	{
-		id: shortid.generate(),
+		id: '005',
 		label: 'Riley Shultz',
 		topRightText: '74',
 		bottomLeftText: 'Tesla',
-		bottomRightText: 'Contacted'
+		bottomRightText: 'Contacted',
 	},
 	{
-		id: shortid.generate(),
+		id: '006',
 		label: 'Andy Smith',
 		topRightText: '72',
 		bottomLeftText: 'Universal Technologies',
-		bottomRightText: 'New'
+		bottomRightText: 'New',
 	},
 	{
-		id: shortid.generate(),
+		id: '007',
 		label: 'Jim Steele',
 		topRightText: '71',
 		bottomLeftText: 'BigList, Inc.',
-		bottomRightText: 'New'
+		bottomRightText: 'New',
 	},
 	{
-		id: shortid.generate(),
+		id: '008',
 		label: 'John Gardner',
 		topRightText: '70',
 		bottomLeftText: '3C Systems',
-		bottomRightText: 'Contacted'
+		bottomRightText: 'Contacted',
 	},
 	{
-		id: shortid.generate(),
+		id: '009',
 		label: 'Sarah Loehr',
 		topRightText: '68',
 		bottomLeftText: 'MedLife, Inc.',
-		bottomRightText: 'New'
-	}
+		bottomRightText: 'New',
+	},
 ];
 
 const headerNavRight = (
 	<div>
 		<Dropdown
-			id={'header-nav-right-more'}
+			id="header-nav-right-more"
 			align="right"
 			assistiveText="More Options"
 			iconName="down"
 			iconVariant="border-filled"
 			options={[
 				{ label: 'Menu Item One', value: 'A0' },
-				{ label: 'Menu Item Two', value: 'B0' }
+				{ label: 'Menu Item Two', value: 'B0' },
 			]}
 		/>
 	</div>
@@ -95,8 +97,8 @@ const headerNavRight = (
 const headerContentRight = (
 	<div>
 		<Dropdown
-			id={'header-right-refresh'}
-			buttonClassName={'slds-m-right_xx-small'}
+			id="header-right-refresh"
+			buttonClassName="slds-m-right_xx-small"
 			assistiveText="Checkmark with right icon"
 			buttonVariant="icon"
 			checkmark
@@ -114,17 +116,17 @@ const headerContentRight = (
 					value: 'A0',
 					rightIcon: {
 						category: 'utility',
-						name: 'table'
-					}
+						name: 'table',
+					},
 				},
 				{
 					label: 'List View',
 					value: 'B0',
 					rightIcon: {
 						category: 'utility',
-						name: 'side_list'
-					}
-				}
+						name: 'side_list',
+					},
+				},
 			]}
 			value="B0"
 		/>
@@ -139,16 +141,16 @@ const headerContentRight = (
 );
 
 const headerTitle = (
-	<div className={'slds-media__body'}>
+	<div className="slds-media__body">
 		<h1 className="slds-text-heading_small slds-text-color_default slds-p-right_x-small">
 			<Dropdown
-				id={'header-title-leads'}
+				id="header-title-leads"
 				options={[
 					{ label: 'Menu Item One', value: 'A0' },
 					{ label: 'Menu Item Two', value: 'B0' },
 					{ label: 'Menu Item Three', value: 'C0' },
 					{ type: 'divider' },
-					{ label: 'Menu Item Four', value: 'D0' }
+					{ label: 'Menu Item Four', value: 'D0' },
 				]}
 			>
 				<DropdownTrigger>
@@ -174,7 +176,7 @@ class Example extends React.Component {
 			options: listOptions,
 			selected: [listOptions[listOptions.length - 2]],
 			unread: [listOptions[0], listOptions[2]],
-			sortDirection: SORT_OPTIONS.DOWN
+			sortDirection: SORT_OPTIONS.DOWN,
 		};
 
 		this.sortList = this.sortList.bind(this);
@@ -193,7 +195,7 @@ class Example extends React.Component {
 						? a.label > b.label
 						: b.label > a.label)
 			),
-			sortDirection
+			sortDirection,
 		});
 	}
 
@@ -202,7 +204,7 @@ class Example extends React.Component {
 	masterView () {
 		return [
 			<SplitViewHeader
-				key={'1'}
+				key="1"
 				contentRight={headerContentRight}
 				navRight={headerNavRight}
 				iconAssistiveText="User"
@@ -214,9 +216,9 @@ class Example extends React.Component {
 				variant="objectHome"
 			/>,
 			<SplitViewListbox
-				key={'2'}
+				key="2"
 				labels={{
-					header: 'Lead Score'
+					header: 'Lead Score',
 				}}
 				sortDirection={this.state.sortDirection}
 				options={this.state.options}
@@ -225,13 +227,13 @@ class Example extends React.Component {
 					onSelect: (event, { selectedItems, item }) => {
 						this.setState({
 							unread: this.state.unread.filter((i) => i !== item),
-							selected: selectedItems
+							selected: selectedItems,
 						});
-					}
+					},
 				}}
 				selection={this.state.selected}
 				unread={this.state.unread}
-			/>
+			/>,
 		];
 	}
 
@@ -299,7 +301,7 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<div style={{ height: '90vh' }}>
 					<SplitView
-						id={'base-example'}
+						id="base-example"
 						isOpen={this.props.isOpen}
 						master={this.masterView()}
 						detail={this.detailView()}

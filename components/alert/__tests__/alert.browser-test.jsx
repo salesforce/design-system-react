@@ -6,22 +6,22 @@ import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import {
 	mountComponent,
-	unmountComponent
+	unmountComponent,
 } from '../../../tests/enzyme-helpers';
-
-chai.use(chaiEnzyme());
 
 import Alert from '../';
 import AlertContainer from '../container';
 import Icon from '../../icon';
 import IconSettings from '../../icon-settings';
 
+chai.use(chaiEnzyme());
+
 class DemoComponent extends Component {
 	constructor (props) {
 		super(props);
 
 		this.state = {
-			isOpen: true
+			isOpen: true,
 		};
 	}
 
@@ -36,7 +36,7 @@ class DemoComponent extends Component {
 								icon={<Icon category="utility" name="user" />}
 								labels={{
 									heading: 'Logged in as John Smith (johnsmith@acme.com).',
-									headingLink: 'Log out'
+									headingLink: 'Log out',
 								}}
 								onClickHeadingLink={this.props.onClickHeadingLink}
 								onRequestClose={() => {

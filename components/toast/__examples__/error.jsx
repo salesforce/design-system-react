@@ -12,7 +12,7 @@ class Example extends React.Component {
 					<Toast
 						labels={{
 							heading:
-								'Can’t save lead “Sally Wong” because another lead has the same name.'
+								'Can’t save lead “Sally Wong” because another lead has the same name.',
 						}}
 						variant="error"
 					/>

@@ -1,6 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable jsx-a11y/role-has-required-aria-props */
+
 // # Lookup Component
 
 // Implements the [Lookup design pattern](https://latest-204.lightningdesignsystem.com/components/lookups) in React.
@@ -15,6 +17,7 @@ import PropTypes from 'prop-types';
 import escapeRegExp from 'lodash.escaperegexp';
 import isBoolean from 'lodash.isboolean';
 import isEqual from 'lodash.isequal';
+import classNames from 'classnames';
 
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)
@@ -32,7 +35,6 @@ import EventUtil from '../../utilities/event';
 import KEYS from '../../utilities/key-code';
 
 import Menu from './menu';
-import classNames from 'classnames';
 
 import { LOOKUP } from '../../utilities/constants';
 
@@ -69,7 +71,7 @@ const Lookup = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * If true, constrains the menu to the scroll parent. Has no effect if `isInline` is `true`.
@@ -197,7 +199,7 @@ const Lookup = createReactClass({
 		/**
 		 * Index of current selected item. To clear the selection, pass in -1.
 		 */
-		selectedItem: PropTypes.number
+		selectedItem: PropTypes.number,
 	},
 
 	getDefaultProps () {
@@ -206,7 +208,7 @@ const Lookup = createReactClass({
 			filterWith: defaultFilter,
 			iconPosition: 'right',
 			searchTerm: '',
-			menuPosition: 'absolute'
+			menuPosition: 'absolute',
 		};
 	},
 
@@ -217,8 +219,32 @@ const Lookup = createReactClass({
 			items: [],
 			listLength: this.props.options.length,
 			searchTerm: this.normalizeSearchTerm(this.props.searchTerm),
-			selectedIndex: this.props.selectedItem
+			selectedIndex: this.props.selectedItem,
 		};
+	},
+
+	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(LOOKUP, this.props);
+
+		// Keeps track of references of children for keyboard navigation
+		this.pills = [];
+	},
+
+	componentDidMount () {
+		this.modifyItems(this.props.options);
+	},
+
+	componentWillReceiveProps (newProps) {
+		if (newProps.options) {
+			this.modifyItems(newProps.options);
+		}
+		if (
+			newProps.selectedItem !== this.props.selectedItem ||
+			!isEqual(newProps.options, this.props.options)
+		) {
+			this.setState({ selectedIndex: newProps.selectedItem });
+		}
 	},
 
 	componentDidUpdate (prevProps, prevState) {
@@ -239,38 +265,11 @@ const Lookup = createReactClass({
 		}
 	},
 
-	componentWillReceiveProps (newProps) {
-		if (newProps.options) {
-			this.modifyItems(newProps.options);
-		}
-		if (
-			newProps.selectedItem !== this.props.selectedItem ||
-			!isEqual(newProps.options, this.props.options)
-		) {
-			this.setState({ selectedIndex: newProps.selectedItem });
-		}
-	},
-
-	componentWillMount () {
-		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(LOOKUP, this.props);
-
-		// Keeps track of references of children for keyboard navigation
-		this.pills = [];
-	},
-
-	componentDidMount () {
-		this.modifyItems(this.props.options);
-	},
-
-	modifyItems (itemsToModify) {
-		const items = itemsToModify.map((item, index) => ({
-			id: `item-${index}`,
-			label: item.label,
-			data: item
-		}));
-
-		this.setState({ items });
+	getClassName () {
+		return classNames(this.props.className, 'slds-form-element slds-lookup', {
+			'slds-has-selection': this.isSelected(),
+			'slds-is-open': this.getIsOpen(),
+		});
 	},
 
 	setFirstIndex () {
@@ -286,6 +285,74 @@ const Lookup = createReactClass({
 		}
 
 		this.setState({ focusIndex: nextFocusIndex });
+	},
+
+	getHeader () {
+		const Header = this.props.headerRenderer;
+		const headerActive = this.state.focusIndex === 0;
+
+		return (
+			<Header
+				ref={(header) => {
+					this.headerComponent = header;
+				}}
+				{...this.props}
+				focusIndex={this.state.focusIndex}
+				isActive={headerActive}
+				onClose={this.handleClose}
+				searchTerm={this.state.searchTerm}
+				setFocus={this.setFocus}
+			/>
+		);
+	},
+
+	getFooter () {
+		const Footer = this.props.footerRenderer;
+		const numFocusable = this.getNumFocusableItems();
+		const footerActive = this.state.focusIndex === numFocusable;
+
+		return (
+			<Footer
+				ref={(footer) => {
+					this.footerComponent = footer;
+				}}
+				{...this.props}
+				focusIndex={this.state.focusIndex}
+				isActive={footerActive}
+				onClose={this.handleClose}
+				setFocus={this.setFocus}
+			/>
+		);
+	},
+
+	setFocus (id) {
+		this.setState({ currentFocus: id });
+	},
+
+	getIsOpen () {
+		return !!(isBoolean(this.props.isOpen)
+			? this.props.isOpen
+			: this.state.isOpen);
+	},
+
+	getListLength (qty) {
+		if (qty !== this.state.listLength) {
+			this.setState({ listLength: qty });
+		}
+	},
+
+	getNumFocusableItems () {
+		let offset = 0;
+
+		if (this.footerComponent) {
+			offset += 1;
+		}
+
+		if (this.headerComponent) {
+			offset += 1;
+		}
+
+		return this.state.listLength - 1 + offset;
 	},
 
 	// =================================================
@@ -321,36 +388,6 @@ const Lookup = createReactClass({
 		this.setState({ focusIndex: prevFocusIndex });
 	},
 
-	setFocus (id) {
-		this.setState({ currentFocus: id });
-	},
-
-	getIsOpen () {
-		return !!(isBoolean(this.props.isOpen)
-			? this.props.isOpen
-			: this.state.isOpen);
-	},
-
-	getListLength (qty) {
-		if (qty !== this.state.listLength) {
-			this.setState({ listLength: qty });
-		}
-	},
-
-	getNumFocusableItems () {
-		let offset = 0;
-
-		if (this.footerComponent) {
-			offset += 1;
-		}
-
-		if (this.headerComponent) {
-			offset += 1;
-		}
-
-		return this.state.listLength - 1 + offset;
-	},
-
 	// =================================================
 	// Select menu item (onClick or on key enter/space)
 	selectItem (itemId) {
@@ -368,7 +405,7 @@ const Lookup = createReactClass({
 			this.setState({
 				isOpen: false,
 				selectedIndex: index,
-				searchTerm: ''
+				searchTerm: '',
 			});
 			const data = this.state.items[index].data;
 			if (this.props.onSelect) {
@@ -383,7 +420,7 @@ const Lookup = createReactClass({
 		}
 		this.setState({
 			selectedIndex: null,
-			isOpen: true
+			isOpen: true,
 		});
 
 		this.focusInput();
@@ -402,7 +439,7 @@ const Lookup = createReactClass({
 		this.setState({
 			isOpen: false,
 			focusIndex: null,
-			currentFocus: null
+			currentFocus: null,
 		});
 	},
 
@@ -518,46 +555,33 @@ const Lookup = createReactClass({
 		}
 	},
 
-	getHeader () {
-		const Header = this.props.headerRenderer;
-		const headerActive = this.state.focusIndex === 0;
-
-		return (
-			<Header
-				ref={(header) => {
-					this.headerComponent = header;
-				}}
-				{...this.props}
-				focusIndex={this.state.focusIndex}
-				isActive={headerActive}
-				onClose={this.handleClose}
-				searchTerm={this.state.searchTerm}
-				setFocus={this.setFocus}
-			/>
-		);
-	},
-
-	getFooter () {
-		const Footer = this.props.footerRenderer;
-		const numFocusable = this.getNumFocusableItems();
-		const footerActive = this.state.focusIndex === numFocusable;
-
-		return (
-			<Footer
-				ref={(footer) => {
-					this.footerComponent = footer;
-				}}
-				{...this.props}
-				focusIndex={this.state.focusIndex}
-				isActive={footerActive}
-				onClose={this.handleClose}
-				setFocus={this.setFocus}
-			/>
-		);
-	},
-
 	normalizeSearchTerm (string) {
 		return (string || '').toString().replace(/^\s+/, '');
+	},
+
+	inputRefId () {
+		return `${this.props.label}Lookup`;
+	},
+
+	focusInput () {
+		this.focusOnRender = true;
+	},
+
+	isSelected () {
+		const hasSelection =
+			!isNaN(parseInt(this.state.selectedIndex, 10)) &&
+			this.state.selectedIndex >= 0;
+		return hasSelection;
+	},
+
+	modifyItems (itemsToModify) {
+		const items = itemsToModify.map((item, index) => ({
+			id: `item-${index}`,
+			label: item.label,
+			data: item,
+		}));
+
+		this.setState({ items });
 	},
 
 	// =================================================
@@ -730,28 +754,6 @@ const Lookup = createReactClass({
 		return inputLabel;
 	},
 
-	inputRefId () {
-		return `${this.props.label}Lookup`;
-	},
-
-	focusInput () {
-		this.focusOnRender = true;
-	},
-
-	isSelected () {
-		const hasSelection =
-			!isNaN(parseInt(this.state.selectedIndex, 10)) &&
-			this.state.selectedIndex >= 0;
-		return hasSelection;
-	},
-
-	getClassName () {
-		return classNames(this.props.className, 'slds-form-element slds-lookup', {
-			'slds-has-selection': this.isSelected(),
-			'slds-is-open': this.getIsOpen()
-		});
-	},
-
 	render () {
 		let isInline;
 		/* eslint-disable react/prop-types */
@@ -766,7 +768,7 @@ const Lookup = createReactClass({
 			'slds-form-element__control': true,
 			[`slds-input-has-icon slds-input-has-icon--${
 				this.props.iconPosition
-			}`]: !this.isSelected()
+			}`]: !this.isSelected(),
 		};
 
 		return (
@@ -784,11 +786,11 @@ const Lookup = createReactClass({
 				{isInline ? this.renderInlineMenu() : this.renderSeparateMenu()}
 			</div>
 		);
-	}
+	},
 });
 
 Lookup.contextTypes = {
-	iconPath: PropTypes.string
+	iconPath: PropTypes.string,
 };
 
 export default Lookup;

@@ -12,7 +12,7 @@ import Icon from '~/components/icon';
 const sampleItems = [
 	{ name: 'Cloudhub' },
 	{ name: 'Cloudhub + Anypoint Connectors' },
-	{ name: 'Cloud City' }
+	{ name: 'Cloud City' },
 ];
 
 const Example = createReactClass({
@@ -21,8 +21,23 @@ const Example = createReactClass({
 	getInitialState () {
 		return {
 			items: sampleItems,
-			isFiltering: false
+			isFiltering: false,
 		};
+	},
+
+	handleFilterChange (event) {
+		const filteredItems = sampleItems.filter((item) =>
+			RegExp(event.target.value, 'i').test(item.name)
+		);
+		this.setState({ isFiltering: true, items: filteredItems });
+	},
+
+	handleDeleteAllItems () {
+		this.setState({ isFiltering: false, items: [] });
+	},
+
+	handleAddItem () {
+		this.setState({ items: sampleItems });
 	},
 
 	render () {
@@ -72,21 +87,6 @@ const Example = createReactClass({
 			</IconSettings>
 		);
 	},
-
-	handleFilterChange (event) {
-		const filteredItems = sampleItems.filter((item) =>
-			RegExp(event.target.value, 'i').test(item.name)
-		);
-		this.setState({ isFiltering: true, items: filteredItems });
-	},
-
-	handleDeleteAllItems () {
-		this.setState({ isFiltering: false, items: [] });
-	},
-
-	handleAddItem () {
-		this.setState({ items: sampleItems });
-	}
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

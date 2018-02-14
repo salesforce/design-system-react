@@ -10,45 +10,45 @@ const accounts = [
 		id: '1',
 		label: 'Acme',
 		subTitle: 'Account • San Francisco',
-		type: 'account'
+		type: 'account',
 	},
 	{
 		id: '2',
 		label: 'Salesforce.com, Inc.',
 		subTitle: 'Account • San Francisco',
-		type: 'account'
+		type: 'account',
 	},
 	{
 		id: '3',
 		label: "Paddy's Pub",
 		subTitle: 'Account • Boston, MA',
-		type: 'account'
+		type: 'account',
 	},
 	{
 		id: '4',
 		label: 'Tyrell Corp',
 		subTitle: 'Account • San Francisco, CA',
-		type: 'account'
+		type: 'account',
 	},
 	{
 		id: '5',
 		label: 'Paper St. Soap Company',
 		subTitle: 'Account • Beloit, WI',
-		type: 'account'
+		type: 'account',
 	},
 	{
 		id: '6',
 		label: 'Nakatomi Investments',
 		subTitle: 'Account • Chicago, IL',
-		type: 'account'
+		type: 'account',
 	},
 	{ id: '7', label: 'Acme Landscaping', type: 'account' },
 	{
 		id: '8',
 		label: 'Acme Construction',
 		subTitle: 'Account • Grand Marais, MN',
-		type: 'account'
-	}
+		type: 'account',
+	},
 ];
 
 class Example extends React.Component {
@@ -57,7 +57,7 @@ class Example extends React.Component {
 
 		this.state = {
 			inputValue: '',
-			selection: []
+			selection: [],
 		};
 	}
 
@@ -78,13 +78,13 @@ class Example extends React.Component {
 							}
 							this.setState({
 								inputValue: '',
-								selection: data.selection
+								selection: data.selection,
 							});
-						}
+						},
 					}}
 					labels={{
 						label: 'Search',
-						placeholder: 'Search Salesforce'
+						placeholder: 'Search Salesforce',
 					}}
 					options={accounts}
 					selection={this.state.selection}

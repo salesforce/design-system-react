@@ -17,7 +17,7 @@ import ProgressRingShape from './private/ring-shape';
 export const THEME_OPTIONS = Object.freeze({
 	WARNING: 'warning',
 	EXPIRED: 'expired',
-	COMPLETE: 'complete'
+	COMPLETE: 'complete',
 });
 
 /**
@@ -26,7 +26,7 @@ export const THEME_OPTIONS = Object.freeze({
 const THEME_CLASSES = {
 	[THEME_OPTIONS.COMPLETE]: 'slds-progress-ring_complete',
 	[THEME_OPTIONS.WARNING]: 'slds-progress-ring_warning',
-	[THEME_OPTIONS.EXPIRED]: 'slds-progress-ring_expired'
+	[THEME_OPTIONS.EXPIRED]: 'slds-progress-ring_expired',
 };
 
 const propTypes = {
@@ -40,7 +40,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * The theme applied to the ring.
@@ -57,7 +57,7 @@ const propTypes = {
 	/**
 	 * Percentage of progress completion, ranging [0, 100].
 	 */
-	value: PropTypes.number.isRequired
+	value: PropTypes.number.isRequired,
 };
 
 const defaultProps = {};
@@ -66,14 +66,6 @@ const defaultProps = {};
  * Customizable and configurable progress ring. Will display progress in a circular progress bar factor, and is capable of displaying iconography inside of the ring structure.
  */
 class ProgressRing extends React.Component {
-	/**
-	 * Gets the theme CSS class
-	 * @returns {string} Class name
-	 */
-	themeClass () {
-		return THEME_CLASSES[this.props.theme] || '';
-	}
-
 	/**
 	 * Gets the icon to display
 	 * @returns {node} Icon
@@ -85,11 +77,11 @@ class ProgressRing extends React.Component {
 			if (this.props.icon) {
 				icon = this.props.icon;
 			} else if (this.props.theme === THEME_OPTIONS.WARNING) {
-				icon = <Icon category={'utility'} name={'warning'} title={'Warning'} />;
+				icon = <Icon category="utility" name="warning" title="Warning" />;
 			} else if (this.props.theme === THEME_OPTIONS.EXPIRED) {
-				icon = <Icon category={'utility'} name={'error'} title={'Expired'} />;
+				icon = <Icon category="utility" name="error" title="Expired" />;
 			} else if (this.props.theme === THEME_OPTIONS.COMPLETE) {
-				icon = <Icon category={'utility'} name={'check'} title={'complete'} />;
+				icon = <Icon category="utility" name="check" title="complete" />;
 			}
 		}
 
@@ -102,6 +94,14 @@ class ProgressRing extends React.Component {
 	 */
 	percentDecimal () {
 		return this.props.value / 100;
+	}
+
+	/**
+	 * Gets the theme CSS class
+	 * @returns {string} Class name
+	 */
+	themeClass () {
+		return THEME_CLASSES[this.props.theme] || '';
 	}
 
 	render () {

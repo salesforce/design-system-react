@@ -7,12 +7,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import assign from 'lodash.assign';
+
 import classNames from '../../utilities/class-names';
 import Button from '../button';
 import Icon from '../icon';
 import checkProps from './check-props';
 import { TOAST } from '../../utilities/constants';
-import assign from 'lodash.assign';
 import DOMElementFocus from '../../utilities/dom-element-focus';
 
 const propTypes = {
@@ -23,7 +25,7 @@ const propTypes = {
 	 * _Tested with snapshot testing._
 	 */
 	assistiveText: PropTypes.shape({
-		closeButton: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+		closeButton: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 	}),
 	/**
 	 * CSS classes to be added to tag with `.slds-notify_toast`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
@@ -32,7 +34,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * If duration exists, the Toast will disappear after that amount of time. Time in milliseconds. _Tested with Mocha testing._
@@ -50,7 +52,7 @@ const propTypes = {
 	labels: PropTypes.shape({
 		details: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 		heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-		headingLink: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+		headingLink: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 	}),
 	/**
 	 * Triggered by link. _Tested with Mocha testing._
@@ -73,14 +75,14 @@ const propTypes = {
 	/**
 	 * The type of Toast. _Tested with snapshot testing._
 	 */
-	variant: PropTypes.oneOf(['error', 'info', 'success', 'warning']).isRequired
+	variant: PropTypes.oneOf(['error', 'info', 'success', 'warning']).isRequired,
 };
 
 const defaultProps = {
 	assistiveText: {
-		closeButton: 'Close'
+		closeButton: 'Close',
 	},
-	variant: 'info'
+	variant: 'info',
 };
 
 /**
@@ -91,9 +93,14 @@ class Toast extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			isInitialRender: true
+			isInitialRender: true,
 		};
 		this.timeout = null;
+	}
+
+	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(TOAST, this.props);
 	}
 
 	componentDidMount () {
@@ -104,25 +111,9 @@ class Toast extends React.Component {
 		}
 	}
 
-	componentWillMount () {
-		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(TOAST, this.props);
-	}
-
 	componentWillUnmount () {
 		DOMElementFocus.returnFocusToStoredElement();
 	}
-
-	saveButtonRef = (component) => {
-		this.closeButton = component;
-		if (this.state.isInitialRender) {
-			DOMElementFocus.storeActiveElement();
-			if (this.closeButton) {
-				this.closeButton.focus();
-			}
-			this.setState({ isInitialRender: false });
-		}
-	};
 
 	onClose = () => {
 		if (this.timeout) {
@@ -132,6 +123,17 @@ class Toast extends React.Component {
 
 		if (this.props.onRequestClose) {
 			this.props.onRequestClose();
+		}
+	};
+
+	saveButtonRef = (component) => {
+		this.closeButton = component;
+		if (this.state.isInitialRender) {
+			DOMElementFocus.storeActiveElement();
+			if (this.closeButton) {
+				this.closeButton.focus();
+			}
+			this.setState({ isInitialRender: false });
 		}
 	};
 
@@ -149,14 +151,14 @@ class Toast extends React.Component {
 			info: 'info',
 			success: 'success',
 			warning: 'warning',
-			error: 'error'
+			error: 'error',
 		};
 
 		const defaultIcons = {
 			info: <Icon category="utility" name="info" />,
 			success: <Icon category="utility" name="success" />,
 			warning: <Icon category="utility" name="warning" />,
-			error: <Icon category="utility" name="error" />
+			error: <Icon category="utility" name="error" />,
 		};
 
 		const icon = this.props.icon
@@ -166,7 +168,7 @@ class Toast extends React.Component {
 		const clonedIcon = React.cloneElement(icon, {
 			containerClassName: 'slds-m-right_small slds-no-flex slds-align-top',
 			inverse: true,
-			size: 'small'
+			size: 'small',
 		});
 
 		/* eslint-disable no-script-url */
@@ -178,7 +180,7 @@ class Toast extends React.Component {
 						'slds-theme_info': this.props.variant === 'info',
 						'slds-theme_success': this.props.variant === 'success',
 						'slds-theme_warning': this.props.variant === 'warning',
-						'slds-theme_error': this.props.variant === 'error'
+						'slds-theme_error': this.props.variant === 'error',
 					},
 					this.props.className
 				)}

@@ -13,7 +13,7 @@ class Portal extends Component {
 		super(props);
 		this.portalNode = null;
 		this.state = {
-			isOpen: false
+			isOpen: false,
 		};
 	}
 
@@ -29,6 +29,10 @@ class Portal extends Component {
 		this.unmountPortal();
 	}
 
+	getChildren () {
+		return Children.only(this.props.children);
+	}
+
 	getPortalParentNode () {
 		let element;
 		if (typeof this.props.renderTo === 'string') {
@@ -37,10 +41,6 @@ class Portal extends Component {
 			element = this.props.renderTo || document.body;
 		}
 		return element;
-	}
-
-	getChildren () {
-		return Children.only(this.props.children);
 	}
 
 	setupPortalNode () {
@@ -53,44 +53,12 @@ class Portal extends Component {
 			: this.portalNode;
 	}
 
-	renderPortal () {
-		// if no portal contents, then unmount
-		if (!this.getChildren()) {
-			this.unmountPortal();
-			return;
+	unmountPortal () {
+		if (this.portalNode) {
+			ReactDOM.unmountComponentAtNode(this.portalNode);
+			this.portalNode.parentNode.removeChild(this.portalNode);
 		}
-
-		if (!this.portalNode) {
-			this.setupPortalNode();
-		}
-
-		if (this.props.portalMount) {
-			this.props.portalMount({
-				instance: this,
-				reactElement: this.getChildren(),
-				domContainerNode: this.portalNode,
-				updateCallback: () => {
-					this.updatePortal(); // update after subtree renders
-				}
-			});
-		} else {
-			// actual render
-			ReactDOM.unstable_renderSubtreeIntoContainer(
-				this,
-				this.getChildren(),
-				this.portalNode,
-				() => {
-					this.updatePortal(); // update after subtree renders
-
-					if (this.state.isOpen === false) {
-						if (this.props.onOpen) {
-							this.props.onOpen(undefined, { portal: this.getChildren() });
-						}
-						this.setState({ isOpen: true });
-					}
-				}
-			);
-		}
+		this.portalNode = null;
 	}
 
 	updatePortal () {
@@ -113,12 +81,44 @@ class Portal extends Component {
 		}
 	}
 
-	unmountPortal () {
-		if (this.portalNode) {
-			ReactDOM.unmountComponentAtNode(this.portalNode);
-			this.portalNode.parentNode.removeChild(this.portalNode);
+	renderPortal () {
+		// if no portal contents, then unmount
+		if (!this.getChildren()) {
+			this.unmountPortal();
+			return;
 		}
-		this.portalNode = null;
+
+		if (!this.portalNode) {
+			this.setupPortalNode();
+		}
+
+		if (this.props.portalMount) {
+			this.props.portalMount({
+				instance: this,
+				reactElement: this.getChildren(),
+				domContainerNode: this.portalNode,
+				updateCallback: () => {
+					this.updatePortal(); // update after subtree renders
+				},
+			});
+		} else {
+			// actual render
+			ReactDOM.unstable_renderSubtreeIntoContainer(
+				this,
+				this.getChildren(),
+				this.portalNode,
+				() => {
+					this.updatePortal(); // update after subtree renders
+
+					if (this.state.isOpen === false) {
+						if (this.props.onOpen) {
+							this.props.onOpen(undefined, { portal: this.getChildren() });
+						}
+						this.setState({ isOpen: true });
+					}
+				}
+			);
+		}
 	}
 
 	render () {
@@ -170,22 +170,22 @@ Portal.propTypes = {
 	 */
 	onUnmount: PropTypes.func,
 	/**
-	  * If a dialog is `positione="overflowBoundaryElement"`, it will be rendered in a portal or separate render tree. This `portalMount` callback will be triggered instead of the the default `ReactDOM.unstable_renderSubtreeIntoContainer` and the function will mount the portal itself. Consider the following code that bypasses the internal mount and uses an Enzyme wrapper to mount the React root tree to the DOM.
-	  *
-	  * ```
-	  * <Popover
-	 		isOpen
-			portalMount={({ instance, reactElement, domContainerNode }) => {
-				portalWrapper = Enzyme.mount(reactElement, { attachTo: domContainerNode });
-			}}
-	 		onOpen={() => {
-	 			expect(portalWrapper.find(`#my-heading`)).to.exist;
-	 			done();
-	 		}}
-	 		/>
-	 *	```
+	 * If a dialog is `positione="overflowBoundaryElement"`, it will be rendered in a portal or separate render tree. This `portalMount` callback will be triggered instead of the the default `ReactDOM.unstable_renderSubtreeIntoContainer` and the function will mount the portal itself. Consider the following code that bypasses the internal mount and uses an Enzyme wrapper to mount the React root tree to the DOM.
+	 *
+	 * ```
+	 * <Popover
+	 *   isOpen
+	 *   portalMount={({ instance, reactElement, domContainerNode }) => {
+	 *     portalWrapper = Enzyme.mount(reactElement, { attachTo: domContainerNode });
+	 *   }}
+	 *   onOpen={() => {
+	 *     expect(portalWrapper.find(`#my-heading`)).to.exist;
+	 *     done();
+	 *   }}
+	 * />
+	 * ```
 	 */
-	portalMount: PropTypes.func
+	portalMount: PropTypes.func,
 };
 
 Portal.defaultProps = {
@@ -194,7 +194,7 @@ Portal.defaultProps = {
 	onMount: () => null,
 	onOpen: () => null,
 	onUpdate: () => null,
-	onUnmount: () => null
+	onUnmount: () => null,
 };
 
 export default Portal;

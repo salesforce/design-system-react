@@ -23,7 +23,7 @@ describe('SLDSModal: ', function () {
 
 	const defaultProps = {
 		align: 'top',
-		children: <div>hello</div>
+		children: <div>hello</div>,
 	};
 
 	const renderModal = (modalInstance) => {
@@ -52,7 +52,7 @@ describe('SLDSModal: ', function () {
 				contentClassName: 'content-class-name-test',
 				contentStyle: { height: '500px' },
 				isOpen: true,
-				portalClassName: 'portal-class-name-test'
+				portalClassName: 'portal-class-name-test',
 			});
 		});
 
@@ -101,7 +101,7 @@ describe('SLDSModal: ', function () {
 				containerClassName: 'my-custom-class',
 				onRequestClose: () => {
 					closed = true;
-				}
+				},
 			});
 			modal = getModalNode(document.body);
 		});
@@ -139,7 +139,7 @@ describe('SLDSModal: ', function () {
 			getModal({
 				header: <div id="art-vandelay">Art vandelay</div>,
 				headerClassName: 'art-vandelay',
-				isOpen: true
+				isOpen: true,
 			});
 			modal = getModalNode(document.body);
 		});
@@ -165,7 +165,7 @@ describe('SLDSModal: ', function () {
 				isOpen: true,
 				prompt: 'warning',
 				title: 'are you sure?',
-				footer: feet
+				footer: feet,
 			});
 			modal = getModalNode(document.body);
 		});
@@ -196,12 +196,12 @@ describe('SLDSModal: ', function () {
 		beforeEach(() => {
 			const feet = [
 				<div className="toes">Toe 1</div>,
-				<div className="toes">Toe 2</div>
+				<div className="toes">Toe 2</div>,
 			];
 			getModal({
 				isOpen: true,
 				directional: true,
-				footer: feet
+				footer: feet,
 			});
 			modal = getModalNode(document.body);
 		});
@@ -218,12 +218,12 @@ describe('SLDSModal: ', function () {
 		beforeEach(() => {
 			const feet = [
 				<button className="cancel">Cancel</button>,
-				<button className="save">Save</button>
+				<button className="save">Save</button>,
 			];
 			getModal({
 				isOpen: true,
 				directional: true,
-				footer: feet
+				footer: feet,
 			});
 			modal = getModalNode(document.body);
 		});
@@ -233,7 +233,7 @@ describe('SLDSModal: ', function () {
 				Simulate.keyDown(modal, {
 					key: 'Tab',
 					keyCode: 9,
-					which: 9
+					which: 9,
 				});
 				setTimeout(() => {
 					expect(document.activeElement.className).to.include(

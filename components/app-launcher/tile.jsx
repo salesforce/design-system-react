@@ -1,28 +1,19 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-// # App Launcher Component
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 
-// ## Dependencies
-
-// ### React
 import React from 'react';
 import PropTypes from 'prop-types';
-
-// ### classNames
+import isFunction from 'lodash.isfunction';
 import classNames from 'classnames';
 
-// ### Truncate
 import Truncate from '../utilities/truncate';
-
-// ### isFunction
-import isFunction from 'lodash.isfunction';
 
 // ## Children
 import Highlighter from '../utilities/highlighter';
 import PopoverTooltip from '../popover-tooltip';
 
-// ## Constants
 import { APP_LAUNCHER_TILE } from '../../utilities/constants';
 
 const handleClick = (event, href, onClick) => {
@@ -52,7 +43,7 @@ const AppLauncherTile = (props) => {
 		>
 			<div
 				className={classNames('slds-app-launcher__tile-figure', {
-					'slds-app-launcher__tile-figure--small': smallTile
+					'slds-app-launcher__tile-figure--small': smallTile,
 				})}
 			>
 				{props.iconNode || (
@@ -128,7 +119,7 @@ AppLauncherTile.displayName = APP_LAUNCHER_TILE;
 AppLauncherTile.defaultProps = {
 	href: 'javascript:void(0);', // eslint-disable-line no-script-url
 	size: 'default',
-	moreLabel: ' More'
+	moreLabel: ' More',
 };
 
 // ### Prop Types
@@ -163,7 +154,7 @@ AppLauncherTile.propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Function that will be executed when clicking on a tile
@@ -180,7 +171,7 @@ AppLauncherTile.propTypes = {
 	/**
 	 * Text used to highlight content in app tiles
 	 */
-	search: PropTypes.string
+	search: PropTypes.string,
 	// TODO: allow for passing iconBackgroundColor
 	// TODO: add Highlighter to Truncate text (https://github.com/ShinyChang/React-Text-Truncate/issues/32)
 };

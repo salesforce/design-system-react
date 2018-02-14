@@ -22,16 +22,28 @@ const propTypes = {
 	/**
 	 * Optional class name
 	 */
-	className: PropTypes.string
+	className: PropTypes.string,
 };
 const defaultProps = {
 	truncate: true,
 	align: 'middle',
 	title: 'Page Header Title',
-	className: ''
+	className: '',
 };
 
 class Title extends Component {
+	// eslint-disable-next-line class-methods-use-this
+	_getClassNames (truncate, align, className) {
+		return classnames(
+			'slds-page-header__title slds-m-right--small',
+			className,
+			{
+				'slds-truncate': truncate,
+				[`slds-align-${align}`]: align,
+			}
+		);
+	}
+
 	render () {
 		const { children, title, truncate, align, className } = this.props;
 		const classes = this._getClassNames(truncate, align, className);
@@ -41,18 +53,6 @@ class Title extends Component {
 				{title}
 				{children}
 			</h1>
-		);
-	}
-
-	_getClassNames (truncate, align, className) {
-		// eslint-disable-line class-methods-use-this
-		return classnames(
-			'slds-page-header__title slds-m-right--small',
-			className,
-			{
-				'slds-truncate': truncate,
-				[`slds-align-${align}`]: align
-			}
 		);
 	}
 }

@@ -54,7 +54,7 @@ import KEYS from '../../utilities/key-code';
 import {
 	MENU_DROPDOWN,
 	MENU_DROPDOWN_TRIGGER,
-	LIST
+	LIST,
 } from '../../utilities/constants';
 
 const documentDefined = typeof document !== 'undefined';
@@ -80,7 +80,7 @@ const DropdownNubbinPositions = [
 	'top right',
 	'bottom left',
 	'bottom',
-	'bottom right'
+	'bottom right',
 ];
 
 /**
@@ -95,8 +95,6 @@ const MenuDropdown = createReactClass({
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	displayName: MENU_DROPDOWN,
-
-	mixins: [KeyboardNavigable],
 
 	// ### Prop Types
 	propTypes: {
@@ -114,7 +112,7 @@ const MenuDropdown = createReactClass({
 		buttonClassName: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * If true, button/icon is white. Meant for buttons or utility icons on dark backgrounds.
@@ -128,7 +126,7 @@ const MenuDropdown = createReactClass({
 			'neutral',
 			'brand',
 			'destructive',
-			'icon'
+			'icon',
 		]),
 		/**
 		 * If true, renders checkmark icon on the selected Menu Item.
@@ -141,7 +139,7 @@ const MenuDropdown = createReactClass({
 		 * ```
 		 * <Dropdown>
 		 *   <Trigger>
-		 *     <Button iconCategory="utility" iconName="settings" />
+		 *   <Button iconCategory="utility" iconName="settings" />
 		 *   </Trigger>
 		 *   <div>Look ma! This is Custom Content.</div>
 		 *   <List options={[myArray]}/>
@@ -155,7 +153,7 @@ const MenuDropdown = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * By default, these class names will be added to the absolutely-positioned `Dialog` component.
@@ -163,7 +161,7 @@ const MenuDropdown = createReactClass({
 		containerClassName: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * This prop is passed onto the triggering `Button`. Prevent dropdown menu from opening. Also applies disabled styling to trigger button.
@@ -188,7 +186,7 @@ const MenuDropdown = createReactClass({
 			'custom',
 			'doctype',
 			'standard',
-			'utility'
+			'utility',
 		]),
 		/**
 		 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
@@ -207,7 +205,7 @@ const MenuDropdown = createReactClass({
 			'border',
 			'border-filled',
 			'small',
-			'more'
+			'more',
 		]),
 		/**
 		 * Determines the size of the icon.
@@ -242,7 +240,7 @@ const MenuDropdown = createReactClass({
 		menuPosition: PropTypes.oneOf([
 			'absolute',
 			'overflowBoundaryElement',
-			'relative'
+			'relative',
 		]),
 		/**
 		 * Style applied to menu element (that is the `.slds-dropdown` element)
@@ -257,7 +255,7 @@ const MenuDropdown = createReactClass({
 			'top right',
 			'bottom left',
 			'bottom',
-			'bottom right'
+			'bottom right',
 		]),
 		/**
 		 *  Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px).
@@ -311,26 +309,26 @@ const MenuDropdown = createReactClass({
 		 * An array of menu item objects. `className` and `id` object keys are applied to the `li` DOM node. `divider` key can have a value of `top` or `bottom`. `rightIcon` and `leftIcon` are not actually `Icon` components, but prop objects that get passed to an `Icon` component. The `href` key will be added to the `a` and its default click event will be prevented. Here is a sample:
 		 * ```
 		 * [{
-		 *    className: 'custom-li-class',
-		 *  	divider: 'bottom',
-		 *  	label: 'A Header',
-		 *  	type: 'header'
+		 *   className: 'custom-li-class',
+		 *     divider: 'bottom',
+		 *     label: 'A Header',
+		 *     type: 'header'
 		 *  }, {
-		 *  	href: 'http://sfdc.co/',
-		 *  	id: 'custom-li-id',
-		 *  	label: 'Has a value',
-		 *    leftIcon: {
-		 *      name: 'settings',
-		 *      category: 'utility'
-		 *    },
-		 *    rightIcon: {
-		 *        name: 'settings',
-		 *        category: 'utility'
-		 *    },
-		 *  	type: 'item',
-		 *  	value: 'B0'
+		 *     href: 'http://sfdc.co/',
+		 *     id: 'custom-li-id',
+		 *     label: 'Has a value',
+		 *   leftIcon: {
+		 *    name: 'settings',
+		 *    category: 'utility'
+		 *   },
+		 *   rightIcon: {
+		 *    name: 'settings',
+		 *    category: 'utility'
+		 *   },
+		 *     type: 'item',
+		 *     value: 'B0'
 		 *  }, {
-		 *    type: 'divider'
+		 *   type: 'divider'
 		 * }]
 		 * ```
 		 */
@@ -349,7 +347,7 @@ const MenuDropdown = createReactClass({
 		value: PropTypes.oneOfType([
 			PropTypes.number,
 			PropTypes.string,
-			PropTypes.array
+			PropTypes.array,
 		]),
 		/**
 		 * This prop is passed onto the triggering `Button`. It creates a tooltip with the content of the `node` provided.
@@ -361,20 +359,22 @@ const MenuDropdown = createReactClass({
 		triggerClassName: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * Whether this dropdown supports multi select.
 		 */
-		multiple: PropTypes.bool
+		multiple: PropTypes.bool,
 	},
+
+	mixins: [KeyboardNavigable],
 
 	getDefaultProps () {
 		return {
 			align: 'left',
 			hoverCloseDelay: 300,
 			menuPosition: 'absolute',
-			openOn: 'click'
+			openOn: 'click',
 		};
 	},
 
@@ -382,7 +382,7 @@ const MenuDropdown = createReactClass({
 		return {
 			focusedIndex: -1,
 			selectedIndex: -1,
-			selectedIndices: []
+			selectedIndices: [],
 		};
 	},
 
@@ -450,6 +450,77 @@ const MenuDropdown = createReactClass({
 			: ListItemLabel;
 	},
 
+	setFocus () {
+		if (!this.isHover && !this.isUnmounting && this.trigger) {
+			ReactDOM.findDOMNode(this.trigger).focus(); // eslint-disable-line react/no-find-dom-node
+		}
+	},
+
+	getMenu () {
+		return ReactDOM.findDOMNode(this.list); // eslint-disable-line react/no-find-dom-node
+	},
+
+	getMenuItem (index) {
+		if (index !== undefined && this.listItems) {
+			return ReactDOM.findDOMNode(this.listItems[index]); // eslint-disable-line react/no-find-dom-node
+		}
+
+		return undefined;
+	},
+
+	setCurrentSelectedIndices (nextProps) {
+		if (this.props.multiple !== true) {
+			this.setState({
+				selectedIndex: this.getIndexByValue(nextProps.value),
+			});
+		} else {
+			let values = [];
+			let currentIndices = [];
+			if (!Array.isArray(nextProps.value)) {
+				values.push(nextProps.value);
+			} else {
+				values = nextProps.value;
+			}
+			values = values.filter((value) => this.getIndexByValue(value) !== -1);
+			currentIndices = values.map((value) => this.getIndexByValue(value));
+
+			this.setState({
+				selectedIndices: currentIndices,
+			});
+		}
+	},
+
+	// Trigger opens, closes, and recieves focus on close
+	saveRefToTrigger (trigger) {
+		this.trigger = trigger;
+
+		if (!this.state.triggerRendered) {
+			this.setState({ triggerRendered: true });
+		}
+	},
+
+	// TriggerContainer is the wrapping outer DOM element which may differ from the actual trigger which is most likely a `button`.
+	saveRefToTriggerContainer (triggerContainer) {
+		this.triggerContainer = triggerContainer;
+		if (!this.trigger) this.trigger = triggerContainer;
+	},
+
+	saveRefToList (list) {
+		this.list = list;
+	},
+
+	saveRefToListItem (listItem, index) {
+		if (!this.listItems) {
+			this.listItems = {};
+		}
+
+		this.listItems[index] = listItem;
+
+		if (index === this.state.focusedIndex) {
+			this.handleKeyboardFocus(this.state.focusedIndex);
+		}
+	},
+
 	handleClose () {
 		const isOpen = this.getIsOpen();
 
@@ -459,7 +530,7 @@ const MenuDropdown = createReactClass({
 			}
 
 			this.setState({
-				isOpen: false
+				isOpen: false,
 			});
 
 			this.isHover = false;
@@ -481,7 +552,7 @@ const MenuDropdown = createReactClass({
 			currentOpenDropdown = this;
 
 			this.setState({
-				isOpen: true
+				isOpen: true,
 			});
 
 			if (this.props.onOpen) {
@@ -568,14 +639,14 @@ const MenuDropdown = createReactClass({
 		) {
 			const currentIndices = this.state.selectedIndices.concat(index);
 			this.setState({
-				selectedIndices: currentIndices
+				selectedIndices: currentIndices,
 			});
 		} else if (this.props.multiple) {
 			const deselectIndex = this.state.selectedIndices.indexOf(index);
 			const currentSelected = this.state.selectedIndices;
 			currentSelected.splice(deselectIndex, 1);
 			this.setState({
-				selectedIndices: currentSelected
+				selectedIndices: currentSelected,
 			});
 		}
 
@@ -606,7 +677,7 @@ const MenuDropdown = createReactClass({
 					keyCode: event.keyCode,
 					onSelect: this.handleSelect,
 					target: event.target,
-					toggleOpen: this.toggleOpen
+					toggleOpen: this.toggleOpen,
 				});
 			} else {
 				this.handleCancel();
@@ -635,77 +706,6 @@ const MenuDropdown = createReactClass({
 			this.handleClose();
 		} else {
 			this.handleOpen();
-		}
-	},
-
-	setFocus () {
-		if (!this.isHover && !this.isUnmounting && this.trigger) {
-			ReactDOM.findDOMNode(this.trigger).focus(); // eslint-disable-line react/no-find-dom-node
-		}
-	},
-
-	// Trigger opens, closes, and recieves focus on close
-	saveRefToTrigger (trigger) {
-		this.trigger = trigger;
-
-		if (!this.state.triggerRendered) {
-			this.setState({ triggerRendered: true });
-		}
-	},
-
-	// TriggerContainer is the wrapping outer DOM element which may differ from the actual trigger which is most likely a `button`.
-	saveRefToTriggerContainer (triggerContainer) {
-		this.triggerContainer = triggerContainer;
-		if (!this.trigger) this.trigger = triggerContainer;
-	},
-
-	saveRefToList (list) {
-		this.list = list;
-	},
-
-	saveRefToListItem (listItem, index) {
-		if (!this.listItems) {
-			this.listItems = {};
-		}
-
-		this.listItems[index] = listItem;
-
-		if (index === this.state.focusedIndex) {
-			this.handleKeyboardFocus(this.state.focusedIndex);
-		}
-	},
-
-	getMenu () {
-		return ReactDOM.findDOMNode(this.list); // eslint-disable-line react/no-find-dom-node
-	},
-
-	getMenuItem (index) {
-		if (index !== undefined && this.listItems) {
-			return ReactDOM.findDOMNode(this.listItems[index]); // eslint-disable-line react/no-find-dom-node
-		}
-
-		return undefined;
-	},
-
-	setCurrentSelectedIndices (nextProps) {
-		if (this.props.multiple !== true) {
-			this.setState({
-				selectedIndex: this.getIndexByValue(nextProps.value)
-			});
-		} else {
-			let values = [];
-			let currentIndices = [];
-			if (!Array.isArray(nextProps.value)) {
-				values.push(nextProps.value);
-			} else {
-				values = nextProps.value;
-			}
-			values = values.filter((value) => this.getIndexByValue(value) !== -1);
-			currentIndices = values.map((value) => this.getIndexByValue(value));
-
-			this.setState({
-				selectedIndices: currentIndices
-			});
 		}
 	},
 
@@ -742,10 +742,10 @@ const MenuDropdown = createReactClass({
 				customContentWithListPropInjection.push(
 					this.renderDefaultMenuContent(child.props)
 				);
-			} else {
+			} else if (child) {
 				const clonedCustomContent = React.cloneElement(child, {
 					onClick: this.handleClickCustomContent,
-					key: shortid.generate()
+					key: shortid.generate(),
 				});
 				customContentWithListPropInjection.push(clonedCustomContent);
 			}
@@ -960,11 +960,11 @@ const MenuDropdown = createReactClass({
 				{...CustomTriggerChildProps}
 			/>
 		);
-	}
+	},
 });
 
 MenuDropdown.contextTypes = {
-	iconPath: PropTypes.string
+	iconPath: PropTypes.string,
 };
 
 export default MenuDropdown;

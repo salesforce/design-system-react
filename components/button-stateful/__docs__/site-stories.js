@@ -5,7 +5,7 @@
 
 const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/button-stateful/__examples__/icon.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/button-stateful/__examples__/icon-text.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/button-stateful/__examples__/icon-text.jsx'),
 ];
 
 module.exports = siteStories;

@@ -73,7 +73,20 @@ const TimepickerDropdownTrigger = createReactClass({
 		/**
 		 * Date
 		 */
-		value: PropTypes.string
+		value: PropTypes.string,
+	},
+
+	handleKeyDown (event) {
+		if (this.props.onKeyDown && event.keyCode) {
+			if (
+				event.keyCode === KEYS.ENTER ||
+				event.keyCode === KEYS.DOWN ||
+				event.keyCode === KEYS.UP ||
+				event.keyCode === KEYS.ESCAPE
+			) {
+				this.props.onKeyDown(event);
+			}
+		}
 	},
 
 	// ### Render
@@ -104,19 +117,6 @@ const TimepickerDropdownTrigger = createReactClass({
 			</div>
 		);
 	},
-
-	handleKeyDown (event) {
-		if (this.props.onKeyDown && event.keyCode) {
-			if (
-				event.keyCode === KEYS.ENTER ||
-				event.keyCode === KEYS.DOWN ||
-				event.keyCode === KEYS.UP ||
-				event.keyCode === KEYS.ESCAPE
-			) {
-				this.props.onKeyDown(event);
-			}
-		}
-	}
 });
 
 export default TimepickerDropdownTrigger;

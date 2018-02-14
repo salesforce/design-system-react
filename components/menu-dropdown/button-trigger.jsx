@@ -8,13 +8,14 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
-import Button from '../button';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
 // joining classNames together."
 import classnames from 'classnames';
+
+import Button from '../button';
 
 // ### Children
 import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
@@ -35,7 +36,7 @@ const Trigger = createReactClass({
 		 * ```
 		 * <Dropdown>
 		 *   <Trigger>
-		 *     <Button iconCategory="utility" iconName="settings" />
+		 *   <Button iconCategory="utility" iconName="settings" />
 		 *   </Trigger>
 		 * </Dropdown>
 		 * ```
@@ -47,7 +48,7 @@ const Trigger = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button. This is provided by the `MenuDropdown`. Please use `MenuDropdown` to set.
@@ -103,8 +104,8 @@ const Trigger = createReactClass({
 		triggerClassName: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
-		])
+			PropTypes.string,
+		]),
 	},
 
 	// ### Render
@@ -149,7 +150,7 @@ const Trigger = createReactClass({
 				className={classnames(
 					`slds-dropdown-trigger slds-dropdown-trigger--${openOn}`,
 					{
-						'slds-is-open': isOpen
+						'slds-is-open': isOpen,
 					},
 					triggerClassName
 				)}
@@ -175,7 +176,7 @@ const Trigger = createReactClass({
 				{menu}
 			</div>
 		);
-	}
+	},
 });
 
 export default Trigger;

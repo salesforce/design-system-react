@@ -20,6 +20,9 @@ import { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import assign from 'lodash.assign';
 
+import SLDSProgressIndicator from '../../progress-indicator';
+import IconSettings from '../../icon-settings';
+
 /* Enzyme Helpers that can mount and unmount React component instances to
  * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`
  * context [full source here](tests/enzyme-helpers.js). `this` can
@@ -27,20 +30,17 @@ import assign from 'lodash.assign';
  */
 import {
 	mountComponent,
-	unmountComponent
+	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 
 const {
 	Simulate,
 	findRenderedDOMComponentWithTag,
-	findRenderedDOMComponentWithClass
+	findRenderedDOMComponentWithClass,
 } = TestUtils;
 
-import SLDSProgressIndicator from '../../progress-indicator';
-import IconSettings from '../../icon-settings';
-
 const defaultProps = {
-	id: 'sample-progress-indicator'
+	id: 'sample-progress-indicator',
 };
 
 const mockCallback = sinon.spy();
@@ -49,7 +49,7 @@ const DemoComponent = createReactClass({
 	displayName: 'ProgressIndicatorDemoComponent',
 	propTypes: {
 		onStepClick: mockCallback,
-		onStepFocus: mockCallback
+		onStepFocus: mockCallback,
 	},
 
 	getDefaultProps () {
@@ -62,7 +62,7 @@ const DemoComponent = createReactClass({
 				<SLDSProgressIndicator {...this.props} />
 			</IconSettings>
 		);
-	}
+	},
 });
 
 const steps = [
@@ -70,7 +70,7 @@ const steps = [
 	{ id: 1, label: 'tooltip label #2' },
 	{ id: 2, label: 'tooltip label #3' },
 	{ id: 3, label: 'tooltip label #4' },
-	{ id: 4, label: 'tooltip label #5' }
+	{ id: 4, label: 'tooltip label #5' },
 ];
 
 const sixSteps = [
@@ -79,7 +79,7 @@ const sixSteps = [
 	{ id: 2, label: 'tooltip label #3' },
 	{ id: 3, label: 'tooltip label #4' },
 	{ id: 4, label: 'tooltip label #5' },
-	{ id: 5, label: 'tooltip label #6' }
+	{ id: 5, label: 'tooltip label #6' },
 ];
 
 describe('SLDSProgressIndicator: ', () => {
@@ -342,7 +342,7 @@ describe('SLDSProgressIndicator: ', () => {
 	 * TODO in the future:
 	 * we may want to extend test cases when TetherJS is removed for future dev
 	 * The following cases may be considered:
-	 *    1. test tooltips behave properly (show/hide/with correct label) *on hover*
-	 *    2. test tooltips behave properly *on focus/blur*
+	 *   1. test tooltips behave properly (show/hide/with correct label) *on hover*
+	 *   2. test tooltips behave properly *on focus/blur*
 	 */
 });

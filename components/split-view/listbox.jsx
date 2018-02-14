@@ -16,7 +16,7 @@ import listItemWithContent from './private/list-item-with-content';
 
 export const SORT_OPTIONS = Object.freeze({
 	UP: 'up',
-	DOWN: 'down'
+	DOWN: 'down',
 });
 
 const propTypes = {
@@ -24,18 +24,18 @@ const propTypes = {
 	 * **Assistive text for accessibility**
 	 * * `list`: aria label for the list
 	 * * `sort`
-	 * * * `sortedBy`: Clickable sort header for the list.
-	 * * * `descending`: Descending sorting.
-	 * * * `ascending`: Ascending sorting.
+	 *    * `sortedBy`: Clickable sort header for the list.
+	 *    * `descending`: Descending sorting.
+	 *    * `ascending`: Ascending sorting.
 	 */
 	assistiveText: PropTypes.shape({
 		list: PropTypes.string,
 		sort: PropTypes.shape({
 			sortedBy: PropTypes.string,
 			descending: PropTypes.string,
-			ascending: PropTypes.string
+			ascending: PropTypes.string,
 		}),
-		unreadItem: PropTypes.string
+		unreadItem: PropTypes.string,
 	}),
 	/**
 	 * CSS classes to be added to the parent `div` tag.
@@ -43,21 +43,21 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Event Callbacks
 	 * * `onSelect`: Called when a list item is selected.
-	 * * * event {object} List item click event
-	 * * * Meta {object}
-	 * * * * selectedItems {array} List of selected items.
-	 * * * * item {object} Last selected item.
+	 *    * event {object} List item click event
+	 *    * Meta {object}
+	 *       * selectedItems {array} List of selected items.
+	 *       * item {object} Last selected item.
 	 * * `onSort`: Called when the list is sorted.
-	 * * * event {object} Sort click event
+	 *    * event {object} Sort click event
 	 */
 	events: PropTypes.shape({
 		onSelect: PropTypes.func.isRequired,
-		onSort: PropTypes.func
+		onSort: PropTypes.func,
 	}),
 	/**
 	 * HTML id for component.
@@ -68,7 +68,7 @@ const propTypes = {
 	 * * `header`: This is the header of the list.
 	 */
 	labels: PropTypes.shape({
-		header: PropTypes.string
+		header: PropTypes.string,
 	}),
 	/**
 	 * The direction of the sort arrow. Option are:
@@ -97,7 +97,7 @@ const propTypes = {
 	 * Custom list item template for the list item content. The select and unread functionality wraps the custom list item.
 	 * This should be a React component that accepts props.
 	 */
-	listItem: PropTypes.func
+	listItem: PropTypes.func,
 };
 
 const defaultProps = {
@@ -106,13 +106,13 @@ const defaultProps = {
 		sort: {
 			sortedBy: 'Sorted by',
 			descending: 'Descending',
-			ascending: 'Ascending'
-		}
+			ascending: 'Ascending',
+		},
 	},
 	events: {},
 	labels: {},
 	selection: [],
-	unread: []
+	unread: [],
 };
 
 class SplitViewListbox extends React.Component {
@@ -129,8 +129,8 @@ class SplitViewListbox extends React.Component {
 			currentSelectedItem: null,
 			currentFocusedListItem: {
 				index: 0,
-				item: null
-			}
+				item: null,
+			},
 		};
 	}
 
@@ -161,9 +161,11 @@ class SplitViewListbox extends React.Component {
 		if (this.props.multiple && event.key === 'a' && event.ctrlKey) {
 			// select / deselect all
 			eventUtil.trap(event);
-			this.props.options === this.props.selection
-				? this.deselectAllListItems(event)
-				: this.selectAllListItems(event);
+			if (this.props.options === this.props.selection) {
+				this.deselectAllListItems(event);
+			} else {
+				this.selectAllListItems(event);
+			}
 		} else if (event.key === 'ArrowUp') {
 			eventUtil.trap(event);
 			this.moveToPreviousItem(event);
@@ -194,7 +196,9 @@ class SplitViewListbox extends React.Component {
 	moveToIndex (event, index) {
 		const item = this.props.options[index];
 
-		!event.metaKey && !event.ctrlKey && this.selectListItem(item, event);
+		if (!event.metaKey && !event.ctrlKey) {
+			this.selectListItem(item, event);
+		}
 
 		this.focusItem(item);
 	}
@@ -212,13 +216,15 @@ class SplitViewListbox extends React.Component {
 	focusItem (item, setDataOnly) {
 		const index = this.props.options.indexOf(item);
 
-		!setDataOnly && this.listItemComponents[index].focus();
+		if (!setDataOnly) {
+			this.listItemComponents[index].focus();
+		}
 
 		this.setState({
 			currentFocusedListItem: {
 				index,
-				item
-			}
+				item,
+			},
 		});
 	}
 
@@ -226,14 +232,14 @@ class SplitViewListbox extends React.Component {
 		this.setState({ currentSelectedItem: null });
 		this.props.events.onSelect(event, {
 			selectedItems: [],
-			item: null
+			item: null,
 		});
 	}
 
 	selectAllListItems (event) {
 		this.props.events.onSelect(event, {
 			selectedItems: this.props.options,
-			item: this.state.currentSelectedItem
+			item: this.state.currentSelectedItem,
 		});
 	}
 
@@ -248,14 +254,14 @@ class SplitViewListbox extends React.Component {
 			} else if (event.shiftKey) {
 				const [begin, end] = [
 					this.props.options.indexOf(this.state.currentSelectedItem),
-					this.props.options.indexOf(item)
+					this.props.options.indexOf(item),
 				].sort();
 
 				const addToSelection = this.props.options.slice(begin, end + 1);
 
 				selectedItems = [
 					...addToSelection,
-					...this.props.selection.filter((i) => !addToSelection.includes(i))
+					...this.props.selection.filter((i) => !addToSelection.includes(i)),
 				];
 			}
 		}
@@ -273,14 +279,14 @@ class SplitViewListbox extends React.Component {
 	sortDirection () {
 		return this.props.sortDirection ? (
 			<Icon
-				category={'utility'}
+				category="utility"
 				name={
 					this.props.sortDirection === SORT_OPTIONS.DOWN
 						? 'arrowdown'
 						: 'arrowup'
 				}
-				size={'xx-small'}
-				className={'slds-align-top'}
+				size="xx-small"
+				className="slds-align-top"
 			/>
 		) : null;
 	}
@@ -289,7 +295,7 @@ class SplitViewListbox extends React.Component {
 		return this.props.events.onSort ? (
 			<a
 				style={{ borderTop: '0' }}
-				href="javascript:void(0);"
+				href="javascript:void(0);" // eslint-disable-line no-script-url
 				role="button"
 				className="slds-split-view__list-header slds-grid slds-text-title_caps slds-text-link_reset"
 				onClick={this.props.events.onSort}
@@ -339,7 +345,7 @@ class SplitViewListbox extends React.Component {
 			<ListItemWithContent
 				key={item.id || index}
 				assistiveText={{
-					unreadItem: this.props.assistiveText.unreadItem
+					unreadItem: this.props.assistiveText.unreadItem,
 				}}
 				listItemRef={(component) => {
 					this.addListItemComponent(component, index);
@@ -349,7 +355,7 @@ class SplitViewListbox extends React.Component {
 				isSelected={this.isSelected(item)}
 				isUnread={this.isUnread(item)}
 				events={{
-					onClick: (event, meta) => this.handleOnSelect(event, meta)
+					onClick: (event, meta) => this.handleOnSelect(event, meta),
 				}}
 				multiple={this.props.multiple}
 			/>

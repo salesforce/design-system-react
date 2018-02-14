@@ -11,7 +11,7 @@ const Example = createReactClass({
 			<ButtonGroup
 				labels={{
 					error: 'This field is required',
-					label: 'Scheduled Day(s)'
+					label: 'Scheduled Day(s)',
 				}}
 				variant="checkbox"
 			>
@@ -22,7 +22,7 @@ const Example = createReactClass({
 				<Checkbox id="ButtonGroupExampleFri" label="Fri" />
 			</ButtonGroup>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

@@ -1,11 +1,13 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable jsx-a11y/role-has-required-aria-props */
+
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import Icon from '../../icon';
 import EventUtil from '../../../utilities/event';
-import cx from 'classnames';
 
 const displayName = 'Lookup-Menu-Item';
 const propTypes = {
@@ -20,7 +22,7 @@ const propTypes = {
 	listItemLabelRenderer: PropTypes.func,
 	onSelect: PropTypes.func,
 	searchTerm: PropTypes.string,
-	setFocus: PropTypes.func
+	setFocus: PropTypes.func,
 };
 
 class Item extends React.Component {
@@ -34,14 +36,9 @@ class Item extends React.Component {
 		}
 	}
 
-	handleClick = () => this.props.onSelect(this.props.id, this.props.data);
-
-	// Scroll menu item based on up/down mouse keys (assumes all items are the same height)
-	scrollFocus () {
-		const height = this.itemRef.offsetHeight;
-		if (height && this.props.handleItemFocus) {
-			this.props.handleItemFocus(this.props.index, height);
-		}
+	getCustomLabel () {
+		const ListItemLabel = this.props.listItemLabelRenderer;
+		return <ListItemLabel {...this.props} />;
 	}
 
 	getIcon () {
@@ -61,11 +58,6 @@ class Item extends React.Component {
 		return null;
 	}
 
-	getCustomLabel () {
-		const ListItemLabel = this.props.listItemLabelRenderer;
-		return <ListItemLabel {...this.props} />;
-	}
-
 	getLabel () {
 		let label;
 		if (this.props.children.data.subTitle) {
@@ -81,7 +73,7 @@ class Item extends React.Component {
 			);
 		} else {
 			const labelClassName = cx('slds-lookup__result-text', {
-				'slds-m-left--x-small': !this.props.iconName
+				'slds-m-left--x-small': !this.props.iconName,
 			});
 
 			label = (
@@ -91,6 +83,16 @@ class Item extends React.Component {
 			);
 		}
 		return label;
+	}
+
+	handleClick = () => this.props.onSelect(this.props.id, this.props.data);
+
+	// Scroll menu item based on up/down mouse keys (assumes all items are the same height)
+	scrollFocus () {
+		const height = this.itemRef.offsetHeight;
+		if (height && this.props.handleItemFocus) {
+			this.props.handleItemFocus(this.props.index, height);
+		}
 	}
 
 	render () {

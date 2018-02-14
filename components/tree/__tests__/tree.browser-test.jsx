@@ -7,16 +7,15 @@ import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
+import isFunction from 'lodash.isfunction';
+
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 // `this.wrapper` and `this.dom` is set in the helpers file
 import {
 	mountComponent,
-	unmountComponent
+	unmountComponent,
 } from '../../../tests/enzyme-helpers';
-
-// ### isFunction
-import isFunction from 'lodash.isfunction';
 
 import sampleNodes from '../../../utilities/sample-data/tree';
 
@@ -27,7 +26,7 @@ import Search from '../../forms/input/search';
 chai.use(chaiEnzyme());
 
 const COMPONENT_CSS_CLASSES = {
-	base: 'slds-tree'
+	base: 'slds-tree',
 };
 
 const DemoTree = createReactClass({
@@ -43,13 +42,13 @@ const DemoTree = createReactClass({
 		searchTerm: PropTypes.string,
 		searchable: PropTypes.bool,
 		singleSelection: PropTypes.bool,
-		treeScrolled: PropTypes.func
+		treeScrolled: PropTypes.func,
 	},
 
 	getDefaultProps () {
 		return {
 			exampleNodesIndex: 'sampleNodesDefault',
-			id: 'example-tree'
+			id: 'example-tree',
 		};
 	},
 
@@ -59,7 +58,7 @@ const DemoTree = createReactClass({
 			: sampleNodes.sampleNodesDefault;
 		return {
 			nodes: initalNodes,
-			searchTerm: this.props.searchable ? 'fruit' : undefined
+			searchTerm: this.props.searchable ? 'fruit' : undefined,
 		};
 	},
 
@@ -142,7 +141,7 @@ const DemoTree = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 describe('Tree: ', () => {
@@ -318,7 +317,7 @@ describe('Tree: ', () => {
 					onScroll={onScroll}
 					listStyle={{
 						height: '300px',
-						overflowY: 'auto'
+						overflowY: 'auto',
 					}}
 				/>
 			)

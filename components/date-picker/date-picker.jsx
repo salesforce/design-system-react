@@ -4,11 +4,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Dialog from '../utilities/dialog';
-import CalendarWrapper from './private/calendar-wrapper';
-import InputIcon from '../icon/input-icon';
-import Input from '../forms/input';
-
 import assign from 'lodash.assign';
 
 // ### isBoolean
@@ -24,6 +19,11 @@ import classNames from 'classnames';
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
+
+import Dialog from '../utilities/dialog';
+import CalendarWrapper from './private/calendar-wrapper';
+import InputIcon from '../icon/input-icon';
+import Input from '../forms/input';
 
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)
@@ -45,7 +45,7 @@ const propTypes = {
 	assistiveText: PropTypes.shape({
 		nextMonth: PropTypes.string,
 		openCalendar: PropTypes.string,
-		previousMonth: PropTypes.string
+		previousMonth: PropTypes.string,
 	}),
 	/**
 	 * Aligns the right or left side of the menu with the respective side of the trigger. _Tested with snapshot testing._
@@ -61,7 +61,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Disable input and calendar. _Tested with Mocha framework._
@@ -102,7 +102,7 @@ const propTypes = {
 		months: PropTypes.array,
 		placeholder: PropTypes.string,
 		today: PropTypes.string,
-		weekDays: PropTypes.array
+		weekDays: PropTypes.array,
 	}),
 	/**
 	 * Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use view [Concepts and Best Practices](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices)
@@ -121,7 +121,7 @@ const propTypes = {
 	menuPosition: PropTypes.oneOf([
 		'absolute',
 		'overflowBoundaryElement',
-		'relative'
+		'relative',
 	]),
 	/**
 	 * Triggered when the user wants to focus on a new day with the keyboard. If the target node is a day it will return the keyboard event a data object with the shape: `{date: [Date object]}`. Event will be `null` when new month is re-rendered.  _Tested with Mocha framework._
@@ -165,12 +165,12 @@ const propTypes = {
 	triggerClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Sets date with a `Date` ECMAScript object. _Tested with snapshot testing._
 	 */
-	value: PropTypes.instanceOf(Date)
+	value: PropTypes.instanceOf(Date),
 };
 
 const defaultProps = {
@@ -178,7 +178,7 @@ const defaultProps = {
 	assistiveText: {
 		nextMonth: 'Next month',
 		openCalendar: 'Open Calendar',
-		previousMonth: 'Previous month'
+		previousMonth: 'Previous month',
 	},
 	formatter (date) {
 		return date
@@ -199,7 +199,7 @@ const defaultProps = {
 			'September',
 			'October',
 			'November',
-			'December'
+			'December',
 		],
 		placeholder: 'Pick a Date',
 		today: 'Today',
@@ -210,8 +210,8 @@ const defaultProps = {
 			'Wednesday',
 			'Thursday',
 			'Friday',
-			'Saturday'
-		]
+			'Saturday',
+		],
 	},
 	menuPosition: 'absolute',
 	parser (str) {
@@ -219,7 +219,7 @@ const defaultProps = {
 	},
 	relativeYearFrom: -5,
 	relativeYearTo: 5,
-	dateDisabled: () => false
+	dateDisabled: () => false,
 };
 
 /**
@@ -255,7 +255,7 @@ class Datepicker extends React.Component {
 			isOpen: false,
 			value: props.value,
 			formattedValue: initDate || '',
-			inputValue: initDate || ''
+			inputValue: initDate || '',
 		};
 	}
 
@@ -275,137 +275,10 @@ class Datepicker extends React.Component {
 				this.setState({
 					value: nextProps.value,
 					formattedValue: this.props.formatter(nextProps.value),
-					inputValue: this.props.formatter(nextProps.value)
+					inputValue: this.props.formatter(nextProps.value),
 				});
 			}
 		}
-	}
-
-	getId () {
-		return this.props.id || this.generatedId;
-	}
-
-	getIsOpen () {
-		return !!(isBoolean(this.props.isOpen)
-			? this.props.isOpen
-			: this.state.isOpen);
-	}
-
-	handleCalendarChange (event, { date }) {
-		this.setState({
-			value: date,
-			formattedValue: this.props.formatter(date),
-			inputValue: this.props.formatter(date)
-		});
-
-		this.handleRequestClose();
-
-		if (this.props.onChange) {
-			this.props.onChange(event, {
-				date,
-				formattedDate: this.props.formatter(date),
-				timezoneOffset: date.getTimezoneOffset()
-			});
-		}
-
-		// Please remove `onDateChange` on the next breaking change.
-		/* eslint-disable react/prop-types */
-		if (this.props.onDateChange) {
-			this.props.onDateChange(date, this.props.formatter(date));
-		}
-		/* eslint-enable react/prop-types */
-	}
-
-	handleClickOutside () {
-		this.handleRequestClose();
-	}
-
-	handleRequestClose () {
-		if (this.props.onRequestClose) {
-			this.props.onRequestClose();
-		}
-
-		if (this.getIsOpen()) {
-			this.setState({ isOpen: false });
-		}
-
-		if (this.inputRef) {
-			this.inputRef.focus();
-		}
-	}
-
-	openDialog () {
-		if (this.props.onRequestOpen) {
-			this.props.onRequestOpen();
-		} else {
-			this.setState({ isOpen: true });
-		}
-	}
-
-	parseDate (formattedValue) {
-		let parsedDate = this.props.parser(formattedValue);
-		if (
-			Object.prototype.toString.call(parsedDate) !== '[object Date]' ||
-			isNaN(parsedDate.getTime())
-		) {
-			parsedDate = new Date();
-		}
-		return parsedDate;
-	}
-
-	handleClose () {
-		if (this.props.onClose) {
-			this.props.onClose();
-		}
-	}
-
-	handleOpen (event, { portal }) {
-		if (this.props.onOpen) {
-			this.props.onOpen(event, { portal });
-		}
-
-		if (this.selectedDateCell) {
-			this.selectedDateCell.focus();
-		}
-	}
-
-	getDialog ({ labels, assistiveText }) {
-		// FOR BACKWARDS COMPATIBILITY
-		const menuPosition = this.props.isInline
-			? 'relative'
-			: this.props.menuPosition; // eslint-disable-line react/prop-types
-
-		// SLDS override
-		const style =
-			this.props.menuPosition !== 'relative' ? { transform: 'none' } : {};
-
-		return !this.props.disabled && this.getIsOpen() ? (
-			<Dialog
-				align={`bottom ${this.props.align}`}
-				contentsClassName={classNames(
-					'slds-datepicker slds-dropdown',
-					{
-						'slds-dropdown--right':
-							this.props.menuPosition === 'relative' &&
-							this.props.align === 'right',
-						'slds-dropdown--left':
-							this.props.menuPosition === 'relative' &&
-							this.props.align === 'left'
-					},
-					this.props.className
-				)}
-				context={this.context}
-				hasStaticAlignment={this.props.hasStaticAlignment}
-				style={style}
-				onClose={this.handleClose}
-				onOpen={this.handleOpen}
-				onRequestTargetElement={() => this.inputRef}
-				position={menuPosition}
-				portalMount={this.props.portalMount}
-			>
-				{this.getDatePicker({ labels, assistiveText })}
-			</Dialog>
-		) : null;
 	}
 
 	getDatePicker ({ labels, assistiveText }) {
@@ -453,10 +326,106 @@ class Datepicker extends React.Component {
 		);
 	}
 
+	getDialog ({ labels, assistiveText }) {
+		// FOR BACKWARDS COMPATIBILITY
+		const menuPosition = this.props.isInline
+			? 'relative'
+			: this.props.menuPosition; // eslint-disable-line react/prop-types
+
+		// SLDS override
+		const style =
+			this.props.menuPosition !== 'relative' ? { transform: 'none' } : {};
+
+		return !this.props.disabled && this.getIsOpen() ? (
+			<Dialog
+				align={`bottom ${this.props.align}`}
+				contentsClassName={classNames(
+					'slds-datepicker slds-dropdown',
+					{
+						'slds-dropdown--right':
+							this.props.menuPosition === 'relative' &&
+							this.props.align === 'right',
+						'slds-dropdown--left':
+							this.props.menuPosition === 'relative' &&
+							this.props.align === 'left',
+					},
+					this.props.className
+				)}
+				context={this.context}
+				hasStaticAlignment={this.props.hasStaticAlignment}
+				style={style}
+				onClose={this.handleClose}
+				onOpen={this.handleOpen}
+				onRequestTargetElement={() => this.inputRef}
+				position={menuPosition}
+				portalMount={this.props.portalMount}
+			>
+				{this.getDatePicker({ labels, assistiveText })}
+			</Dialog>
+		) : null;
+	}
+
+	getId () {
+		return this.props.id || this.generatedId;
+	}
+
+	getIsOpen () {
+		return !!(isBoolean(this.props.isOpen)
+			? this.props.isOpen
+			: this.state.isOpen);
+	}
+
+	setInputRef (component) {
+		this.inputRef = component;
+		// yes, this is a re-render triggered by a render.
+		// Dialog/Popper.js cannot place the popover until
+		// the trigger/target DOM node is mounted. This
+		// way `findDOMNode` is not called and parent
+		// DOM nodes are not queried.
+		if (!this.state.inputRendered) {
+			this.setState({ inputRendered: true });
+		}
+	}
+
+	handleCalendarChange (event, { date }) {
+		this.setState({
+			value: date,
+			formattedValue: this.props.formatter(date),
+			inputValue: this.props.formatter(date),
+		});
+
+		this.handleRequestClose();
+
+		if (this.props.onChange) {
+			this.props.onChange(event, {
+				date,
+				formattedDate: this.props.formatter(date),
+				timezoneOffset: date.getTimezoneOffset(),
+			});
+		}
+
+		// Please remove `onDateChange` on the next breaking change.
+		/* eslint-disable react/prop-types */
+		if (this.props.onDateChange) {
+			this.props.onDateChange(date, this.props.formatter(date));
+		}
+		/* eslint-enable react/prop-types */
+	}
+
+	handleClickOutside () {
+		this.handleRequestClose();
+	}
+
+	handleClose () {
+		if (this.props.onClose) {
+			this.props.onClose();
+		}
+	}
+
 	handleInputChange (event) {
 		this.setState({
 			formattedValue: event.target.value,
-			inputValue: event.target.value
+			inputValue: event.target.value,
 		});
 
 		const date = this.props.parser(event.target.value);
@@ -465,7 +434,7 @@ class Datepicker extends React.Component {
 			this.props.onChange(event, {
 				date,
 				formattedDate: event.target.value,
-				timezoneOffset: date.getTimezoneOffset()
+				timezoneOffset: date.getTimezoneOffset(),
 			});
 		}
 	}
@@ -489,16 +458,47 @@ class Datepicker extends React.Component {
 		/* eslint-enable react/prop-types */
 	}
 
-	setInputRef (component) {
-		this.inputRef = component;
-		// yes, this is a re-render triggered by a render.
-		// Dialog/Popper.js cannot place the popover until
-		// the trigger/target DOM node is mounted. This
-		// way `findDOMNode` is not called and parent
-		// DOM nodes are not queried.
-		if (!this.state.inputRendered) {
-			this.setState({ inputRendered: true });
+	handleOpen (event, { portal }) {
+		if (this.props.onOpen) {
+			this.props.onOpen(event, { portal });
 		}
+
+		if (this.selectedDateCell) {
+			this.selectedDateCell.focus();
+		}
+	}
+
+	handleRequestClose () {
+		if (this.props.onRequestClose) {
+			this.props.onRequestClose();
+		}
+
+		if (this.getIsOpen()) {
+			this.setState({ isOpen: false });
+		}
+
+		if (this.inputRef) {
+			this.inputRef.focus();
+		}
+	}
+
+	openDialog () {
+		if (this.props.onRequestOpen) {
+			this.props.onRequestOpen();
+		} else {
+			this.setState({ isOpen: true });
+		}
+	}
+
+	parseDate (formattedValue) {
+		let parsedDate = this.props.parser(formattedValue);
+		if (
+			Object.prototype.toString.call(parsedDate) !== '[object Date]' ||
+			isNaN(parsedDate.getTime())
+		) {
+			parsedDate = new Date();
+		}
+		return parsedDate;
 	}
 
 	render () {
@@ -562,12 +562,12 @@ class Datepicker extends React.Component {
 				this.props.required, // eslint-disable-line react/prop-types
 			value:
 				(this.props.children && this.props.children.props.value) ||
-				this.state.inputValue
+				this.state.inputValue,
 		};
 
 		const clonedInput = this.props.children ? (
 			React.cloneElement(this.props.children, {
-				...clonedInputProps
+				...clonedInputProps,
 			})
 		) : (
 			<Input {...clonedInputProps} />
@@ -580,7 +580,7 @@ class Datepicker extends React.Component {
 					'slds-dropdown-trigger--click',
 					'ignore-react-onclickoutside',
 					{
-						'slds-is-open': this.getIsOpen()
+						'slds-is-open': this.getIsOpen(),
 					},
 					this.props.triggerClassName
 				)}
@@ -593,7 +593,7 @@ class Datepicker extends React.Component {
 }
 
 Datepicker.contextTypes = {
-	iconPath: PropTypes.string
+	iconPath: PropTypes.string,
 };
 
 Datepicker.displayName = DATE_PICKER;

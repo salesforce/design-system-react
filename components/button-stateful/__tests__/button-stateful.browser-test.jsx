@@ -16,7 +16,7 @@ describe('Button Stateful: ', () => {
 		assistiveText: 'like',
 		iconName: 'like',
 		iconSize: 'large',
-		variant: 'icon'
+		variant: 'icon',
 	};
 
 	// Setup and takedown

@@ -13,7 +13,7 @@ class Example extends React.Component {
 						labels={{
 							heading:
 								'Your browser is outdated. Your Salesforce experience may be degraded.',
-							headingLink: 'More Information'
+							headingLink: 'More Information',
 						}}
 						onClickHeadingLink={() => {
 							console.log('Link clicked.');

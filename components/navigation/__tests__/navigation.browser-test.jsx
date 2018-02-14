@@ -4,13 +4,6 @@
 /* eslint-env mocha */
 /* global sinon */
 
-// Additional modifiers to [eslint-config-slds](https://github.com/salesforce-ux/eslint-config-slds) for convenience
-/* eslint-disable no-console */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable max-len */
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable react/display-name */
-
 // Import your external dependencies
 import React from 'react';
 import createReactClass from 'create-react-class';
@@ -20,11 +13,6 @@ import chaiEnzyme from 'chai-enzyme';
 
 import entries from 'object.entries';
 
-// shim for PhantomJS
-if (!Object.entries) {
-	entries.shim();
-}
-
 /* Enzyme Helpers that can mount and unmount React component instances to
  * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`
  * context [full source here](tests/enzyme-helpers.js). `this` can
@@ -32,11 +20,16 @@ if (!Object.entries) {
  */
 import {
 	mountComponent,
-	unmountComponent
+	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 
 import { sampleReportCategories } from '../../../utilities/sample-data/navigation';
 import Navigation from '../../navigation';
+
+// shim for PhantomJS
+if (!Object.entries) {
+	entries.shim();
+}
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme
@@ -46,7 +39,7 @@ chai.use(chaiEnzyme());
 const defaultProps = {
 	id: 'sample-navigation',
 	className: 'sample-navigation',
-	categories: sampleReportCategories
+	categories: sampleReportCategories,
 };
 
 /* A re-usable demo component fixture outside of `describe` sections
@@ -56,7 +49,7 @@ const DemoComponent = createReactClass({
 	displayName: 'NavigationDemoComponent',
 	propTypes: {
 		selectedId: PropTypes.string,
-		onSelect: PropTypes.func
+		onSelect: PropTypes.func,
 	},
 
 	getDefaultProps () {
@@ -71,7 +64,7 @@ const DemoComponent = createReactClass({
 
 	render () {
 		return <Navigation {...this.props} />;
-	}
+	},
 });
 
 describe('SLDSNavigation', () => {

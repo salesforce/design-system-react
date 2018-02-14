@@ -27,7 +27,7 @@ const Example = createReactClass({
 		return {
 			sortColumn: 'opportunityName',
 			sortColumnDirection: {
-				opportunityName: 'asc'
+				opportunityName: 'asc',
 			},
 			items: [
 				{
@@ -38,7 +38,7 @@ const Example = createReactClass({
 					stage: 'Value Proposition',
 					confidence: '70%',
 					amount: '$25,000,000',
-					contact: 'jrogers@acme.com'
+					contact: 'jrogers@acme.com',
 				},
 				{
 					id: '5GJOOOPWU7',
@@ -48,7 +48,7 @@ const Example = createReactClass({
 					stage: 'Prospecting',
 					confidence: '30%',
 					amount: '$5,000,000',
-					contact: 'bob@acme.com'
+					contact: 'bob@acme.com',
 				},
 				{
 					id: '8IKZHZZV81',
@@ -58,8 +58,8 @@ const Example = createReactClass({
 					stage: 'Id. Decision Makers',
 					confidence: '60%',
 					amount: '$25,000',
-					contact: 'nathan@salesforce.com'
-				}
+					contact: 'nathan@salesforce.com',
+				},
 			],
 			selection: [
 				{
@@ -70,10 +70,54 @@ const Example = createReactClass({
 					stage: 'Id. Decision Makers',
 					confidence: '60%',
 					amount: '$25,000',
-					contact: 'nathan@salesforce.com'
-				}
-			]
+					contact: 'nathan@salesforce.com',
+				},
+			],
 		};
+	},
+
+	handleChanged (selection) {
+		this.setState({ selection });
+	},
+
+	handleRowAction (item, action) {
+		console.log(item, action);
+	},
+
+	handleSort (sortColumn, ...rest) {
+		if (this.props.log) {
+			this.props.log('sort')(sortColumn, ...rest);
+		}
+
+		const sortProperty = sortColumn.property;
+		const sortDirection = sortColumn.sortDirection;
+		const newState = {
+			sortColumn: sortProperty,
+			sortColumnDirection: {
+				[sortProperty]: sortDirection,
+			},
+			items: [...this.state.items],
+		};
+
+		// needs to work in both directions
+		newState.items = newState.items.sort((a, b) => {
+			let val = 0;
+
+			if (a[sortProperty] > b[sortProperty]) {
+				val = 1;
+			}
+			if (a[sortProperty] < b[sortProperty]) {
+				val = -1;
+			}
+
+			if (sortDirection === 'desc') {
+				val *= -1;
+			}
+
+			return val;
+		});
+
+		this.setState(newState);
 	},
 
 	render () {
@@ -123,13 +167,13 @@ const Example = createReactClass({
 								{
 									id: 0,
 									label: 'Add to Group',
-									value: '1'
+									value: '1',
 								},
 								{
 									id: 1,
 									label: 'Publish',
-									value: '2'
-								}
+									value: '2',
+								},
 							]}
 							onAction={this.handleRowAction}
 						/>
@@ -138,50 +182,6 @@ const Example = createReactClass({
 			</div>
 		);
 	},
-
-	handleChanged (selection) {
-		this.setState({ selection });
-	},
-
-	handleRowAction (item, action) {
-		console.log(item, action);
-	},
-
-	handleSort (sortColumn, ...rest) {
-		if (this.props.log) {
-			this.props.log('sort')(sortColumn, ...rest);
-		}
-
-		const sortProperty = sortColumn.property;
-		const sortDirection = sortColumn.sortDirection;
-		const newState = {
-			sortColumn: sortProperty,
-			sortColumnDirection: {
-				[sortProperty]: sortDirection
-			},
-			items: [...this.state.items]
-		};
-
-		// needs to work in both directions
-		newState.items = newState.items.sort((a, b) => {
-			let val = 0;
-
-			if (a[sortProperty] > b[sortProperty]) {
-				val = 1;
-			}
-			if (a[sortProperty] < b[sortProperty]) {
-				val = -1;
-			}
-
-			if (sortDirection === 'desc') {
-				val *= -1;
-			}
-
-			return val;
-		});
-
-		this.setState(newState);
-	}
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

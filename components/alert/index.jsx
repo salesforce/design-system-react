@@ -7,12 +7,12 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import assign from 'lodash.assign';
 import classNames from '../../utilities/class-names';
 import Button from '../button';
 import Icon from '../icon';
 import checkProps from './check-props';
 import { ALERT } from '../../utilities/constants';
-import assign from 'lodash.assign';
 import DOMElementFocus from '../../utilities/dom-element-focus';
 
 const propTypes = {
@@ -23,7 +23,7 @@ const propTypes = {
 	 * _Tested with snapshot testing._
 	 */
 	assistiveText: PropTypes.shape({
-		closeButton: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+		closeButton: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 	}),
 	/**
 	 * CSS classes to be added to tag with `.slds-notify_alert`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
@@ -32,7 +32,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Allows user to click a close button. Banners should be dismissible only if they communicate future impact to the system,
@@ -59,7 +59,7 @@ const propTypes = {
 	 */
 	labels: PropTypes.shape({
 		heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-		headingLink: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+		headingLink: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 	}),
 	/**
 	 * Triggered by link. _Tested with Mocha testing._
@@ -72,15 +72,15 @@ const propTypes = {
 	/**
 	 * The type of alert. _Tested with snapshot testing._
 	 */
-	variant: PropTypes.oneOf(['error', 'info', 'offline', 'warning']).isRequired
+	variant: PropTypes.oneOf(['error', 'info', 'offline', 'warning']).isRequired,
 };
 
 const defaultProps = {
 	assistiveText: {
-		closeButton: 'Close'
+		closeButton: 'Close',
 	},
 	labels: {},
-	variant: 'info'
+	variant: 'info',
 };
 
 /**
@@ -91,7 +91,7 @@ class Alert extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			isInitialRender: true
+			isInitialRender: true,
 		};
 	}
 
@@ -132,14 +132,14 @@ class Alert extends React.Component {
 			info: 'info',
 			warning: 'warning',
 			error: 'error',
-			offline: 'offline'
+			offline: 'offline',
 		};
 
 		const defaultIcons = {
 			info: <Icon category="utility" name="info" />,
 			offline: <Icon category="utility" name="offline" />,
 			warning: <Icon category="utility" name="warning" />,
-			error: <Icon category="utility" name="error" />
+			error: <Icon category="utility" name="error" />,
 		};
 
 		let icon = this.props.icon
@@ -157,7 +157,7 @@ class Alert extends React.Component {
 		const clonedIcon = React.cloneElement(icon, {
 			containerClassName: 'slds-m-right--x-small',
 			inverse: true,
-			size: 'x-small'
+			size: 'x-small',
 		});
 
 		/* eslint-disable no-script-url */
@@ -169,7 +169,7 @@ class Alert extends React.Component {
 						'slds-theme_info': this.props.variant === 'info',
 						'slds-theme_warning': this.props.variant === 'warning',
 						'slds-theme_error': this.props.variant === 'error',
-						'slds-theme_offline': this.props.variant === 'offline'
+						'slds-theme_offline': this.props.variant === 'offline',
 					},
 					this.props.className
 				)}

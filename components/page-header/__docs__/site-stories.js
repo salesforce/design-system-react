@@ -6,7 +6,7 @@
 const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/page-header/__examples__/record-home.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/page-header/__examples__/object-home.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/page-header/__examples__/related-list.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/page-header/__examples__/related-list.jsx'),
 ];
 
 module.exports = siteStories;

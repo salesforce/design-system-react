@@ -11,7 +11,7 @@ const Example = createReactClass({
 			<a id="parent-entity" href="javascript:void(0);">
 				Parent Entity
 			</a>,
-			<a href="javascript:void(0);">Parent Record Name</a>
+			<a href="javascript:void(0);">Parent Record Name</a>,
 		];
 
 		return (
@@ -19,7 +19,7 @@ const Example = createReactClass({
 				<BreadCrumb trail={trail} />
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

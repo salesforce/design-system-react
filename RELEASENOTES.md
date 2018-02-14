@@ -27,9 +27,40 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ## Upcoming release
 
-* You can know check this library's dependency on SLDS to make sure you have the CSS that this library is being developed with. The NPM git URL can be found in the published `package.json`. `SLDS: { gitURL: [URL]}`.
+* You can now check this library's dependency on SLDS to make sure you have the CSS that this library is being developed with. The NPM git URL can be found in the published `package.json`. `SLDS: { gitURL: [URL]}`.
 
 ### Latest Release
+
+## Release 0.8.7
+
+**Bugfix**
+
+* Revert Modal CSS class `slds-fade-in-open`
+
+**Maintenance**
+
+* Add NPM package-lock
+* Clarify lint scripts
+* Kabob-case filename check
+* Fix typos in webpack docs
+* Remove JSX curly braces when not needed
+* Add Trailing comma to iterables
+* Updates dev node engine version to 8.x
+
+## Release 0.8.6
+
+**Major features**
+
+* Add automated image and DOM snapshots with story-based automatic unit test creation
+
+**Bugfix**
+
+* Remove MenuDropdown console error
+
+**Maintenance**
+
+* Run React codemod transform component to ES6 classes
+* Improve dev experience by removing pre-commit hooks, loosening ESlint rules until issues can be fixed, audit and add clarity to npm tasks, adding clarity to test scripts
 
 ## Release 0.8.5
 

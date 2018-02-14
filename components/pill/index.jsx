@@ -23,7 +23,7 @@ const propTypes = {
 	 * _Tested with snapshot testing._
 	 */
 	assistiveText: PropTypes.shape({
-		remove: PropTypes.string
+		remove: PropTypes.string,
 	}),
 	/**
 	 * SLDSAvatar component to show on the left of the pill.
@@ -47,7 +47,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Applies the error style to the component.
@@ -76,7 +76,7 @@ const propTypes = {
 	labels: PropTypes.shape({
 		label: PropTypes.string,
 		title: PropTypes.string,
-		removeTitle: PropTypes.string
+		removeTitle: PropTypes.string,
 	}),
 	/**
 	 * `onBlur` callback executes when the component loses focus.
@@ -107,7 +107,7 @@ const propTypes = {
 	 * A variant of a pill
 	 * _Tested with Mocha framework._
 	 */
-	variant: PropTypes.oneOf(['link', 'option'])
+	variant: PropTypes.oneOf(['link', 'option']),
 };
 
 class Pill extends React.Component {
@@ -121,26 +121,10 @@ class Pill extends React.Component {
 			: 'javascript:void(0);'); // eslint-disable-line no-script-url
 
 	/**
-	 * Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component.
+	 * Removes focus from the component.
 	 */
-	restProps = () => {
-		const {
-			bare,
-			hasError,
-			variant,
-			className,
-			onClick,
-			onRemove,
-			labels,
-			assistiveText,
-			children,
-			href,
-			icon,
-			avatar,
-			onKeyDown,
-			...other
-		} = this.props;
-		return other;
+	blur = () => {
+		this.root.blur();
 	};
 
 	/**
@@ -148,13 +132,6 @@ class Pill extends React.Component {
 	 */
 	focus = () => {
 		this.root.focus();
-	};
-
-	/**
-	 * Removes focus from the component.
-	 */
-	blur = () => {
-		this.root.blur();
 	};
 
 	handleKeyDown = (event, ...rest) => {
@@ -191,6 +168,29 @@ class Pill extends React.Component {
 	handleRef = (root) => {
 		// Keeping the top-most element to support focus() and blur()
 		this.root = root;
+	};
+
+	/**
+	 * Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component.
+	 */
+	restProps = () => {
+		const {
+			bare,
+			hasError,
+			variant,
+			className,
+			onClick,
+			onRemove,
+			labels,
+			assistiveText,
+			children,
+			href,
+			icon,
+			avatar,
+			onKeyDown,
+			...other
+		} = this.props;
+		return other;
 	};
 
 	renderIcon = () => {
@@ -274,7 +274,7 @@ class Pill extends React.Component {
 					{
 						'slds-pill_link': this.props.variant === 'link',
 						'slds-has-error': this.props.hasError,
-						'slds-pill_bare': this.props.bare
+						'slds-pill_bare': this.props.bare,
 					},
 					this.props.className
 				)}
@@ -301,7 +301,7 @@ Pill.displayName = PILL;
 Pill.defaultProps = {
 	variant: 'link',
 	labels: {},
-	assistiveText: {}
+	assistiveText: {},
 };
 
 Pill.propTypes = propTypes;

@@ -11,7 +11,7 @@ import SLDSButton from '../../button';
 const {
 	Simulate,
 	findRenderedDOMComponentWithTag,
-	findRenderedDOMComponentWithClass
+	findRenderedDOMComponentWithClass,
 } = TestUtils;
 
 describe('SLDSTooltip: ', function () {
@@ -26,7 +26,7 @@ describe('SLDSTooltip: ', function () {
 			</span>
 		),
 		hasStaticAlignment: true,
-		id: 'myTooltip123'
+		id: 'myTooltip123',
 	};
 
 	afterEach(() => {
@@ -71,7 +71,7 @@ describe('SLDSTooltip: ', function () {
 			rootNode = generateTooltip(
 				{
 					...defaultProps,
-					align: 'top'
+					align: 'top',
 				},
 				defaultTrigger
 			);
@@ -133,7 +133,7 @@ describe('SLDSTooltip: ', function () {
 			const rootNode = generateTooltip(
 				{
 					...defaultProps,
-					isOpen: false
+					isOpen: false,
 				},
 				defaultTrigger
 			);
@@ -173,7 +173,7 @@ describe('SLDSTooltip: ', function () {
 							{defaultTextContent}
 						</span>
 					),
-					isOpen: true
+					isOpen: true,
 				},
 				defaultTrigger
 			);

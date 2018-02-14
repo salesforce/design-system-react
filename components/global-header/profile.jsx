@@ -79,7 +79,7 @@ GlobalHeaderProfile.propTypes = {
 	buttonClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
@@ -94,7 +94,7 @@ GlobalHeaderProfile.propTypes = {
 		'top right',
 		'bottom left',
 		'bottom',
-		'bottom right'
+		'bottom right',
 	]),
 	/**
 	 *  Offset adds pixels to the absolutely positioned dropdown menu in the format: ([vertical]px [horizontal]px).
@@ -107,7 +107,7 @@ GlobalHeaderProfile.propTypes = {
 	/**
 	 * An array of menu item.
 	 */
-	options: PropTypes.array
+	options: PropTypes.array,
 };
 
 // ### Default Props
@@ -117,7 +117,7 @@ GlobalHeaderProfile.defaultProps = {
 	iconVariant: 'container',
 	nubbinPosition: 'top right',
 	// TODO: Use design tokens to remove "magic numbers" that center nubbin under button
-	offset: '-12px -18px'
+	offset: '-12px -18px',
 };
 
 export default GlobalHeaderProfile;

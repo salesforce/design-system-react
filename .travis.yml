@@ -5,7 +5,7 @@ install:
   - npm install npm -g
   - npm install
 script:
-  - npm test
+  - npm run travis-ci
 cache:
   directories:
     - node_modules

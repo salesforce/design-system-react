@@ -7,13 +7,13 @@ import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import {
 	createMountNode,
-	destroyMountNode
+	destroyMountNode,
 } from '../../../tests/enzyme-helpers';
-
-chai.use(chaiEnzyme());
 
 import SLDSAvatar from '../../avatar';
 import IconSettings from '../../icon-settings';
+
+chai.use(chaiEnzyme());
 
 describe('SLDSAvatar: ', function () {
 	let mountNode;
@@ -31,7 +31,7 @@ describe('SLDSAvatar: ', function () {
 		it('avatar renders with image', () => {
 			const expectedSrc = 'success';
 			wrapper = mount(<SLDSAvatar imgSrc={expectedSrc} />, {
-				attachTo: mountNode
+				attachTo: mountNode,
 			});
 
 			const img = wrapper.find('img');

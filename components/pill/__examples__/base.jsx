@@ -10,12 +10,12 @@ const Example = createReactClass({
 	displayName: 'BasePillExample',
 
 	propTypes: {
-		action: PropTypes.func
+		action: PropTypes.func,
 	},
 
 	getDefaultProps () {
 		return {
-			action: () => noop
+			action: () => noop,
 		};
 	},
 
@@ -23,24 +23,33 @@ const Example = createReactClass({
 		return {
 			linked: true,
 			unlinked: true,
-			truncated: true
+			truncated: true,
 		};
 	},
 
-	render () {
-		return (
-			<IconSettings iconPath="/assets/icons">
-				<div className="slds-grid slds-grid_pull-padded-medium">
-					<div className="slds-p-horizontal_medium">{this.renderLinked()}</div>
-					<div className="slds-p-horizontal_medium">
-						{this.renderUnlinked()}
-					</div>
-					<div className="slds-p-horizontal_medium">
-						{this.renderTruncated()}
-					</div>
-				</div>
-			</IconSettings>
-		);
+	onClick (event) {
+		this.props.action('onClick')(event);
+	},
+
+	onRemoveLinked (event) {
+		this.props.action('onRemove')(event);
+		this.setState({
+			linked: false,
+		});
+	},
+
+	onRemoveUnlinked (event) {
+		this.props.action('onRemove')(event);
+		this.setState({
+			unlinked: false,
+		});
+	},
+
+	onRemoveTruncated (event) {
+		this.props.action('onRemove')(event);
+		this.setState({
+			truncated: false,
+		});
 	},
 
 	renderLinked () {
@@ -50,7 +59,7 @@ const Example = createReactClass({
 					labels={{
 						label: 'Pill Label',
 						title: 'Full pill label verbiage mirrored here',
-						removeTitle: 'Remove'
+						removeTitle: 'Remove',
 					}}
 					onClick={this.onClick}
 					onRemove={this.onRemoveLinked}
@@ -67,7 +76,7 @@ const Example = createReactClass({
 					labels={{
 						label: 'Pill Label',
 						title: 'Full pill label verbiage mirrored here',
-						removeTitle: 'Remove'
+						removeTitle: 'Remove',
 					}}
 					onRemove={this.onRemoveUnlinked}
 				/>
@@ -85,7 +94,7 @@ const Example = createReactClass({
 							labels={{
 								label:
 									'Pill label that is longer than the area that contains it',
-								removeTitle: 'Remove'
+								removeTitle: 'Remove',
 							}}
 							onClick={this.onClick}
 							onRemove={this.onRemoveTruncated}
@@ -97,30 +106,21 @@ const Example = createReactClass({
 		return null;
 	},
 
-	onClick (event) {
-		this.props.action('onClick')(event);
+	render () {
+		return (
+			<IconSettings iconPath="/assets/icons">
+				<div className="slds-grid slds-grid_pull-padded-medium">
+					<div className="slds-p-horizontal_medium">{this.renderLinked()}</div>
+					<div className="slds-p-horizontal_medium">
+						{this.renderUnlinked()}
+					</div>
+					<div className="slds-p-horizontal_medium">
+						{this.renderTruncated()}
+					</div>
+				</div>
+			</IconSettings>
+		);
 	},
-
-	onRemoveLinked (event) {
-		this.props.action('onRemove')(event);
-		this.setState({
-			linked: false
-		});
-	},
-
-	onRemoveUnlinked (event) {
-		this.props.action('onRemove')(event);
-		this.setState({
-			unlinked: false
-		});
-	},
-
-	onRemoveTruncated (event) {
-		this.props.action('onRemove')(event);
-		this.setState({
-			truncated: false
-		});
-	}
 });
 
 export default Example;

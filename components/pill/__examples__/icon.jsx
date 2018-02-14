@@ -12,12 +12,12 @@ const Example = createReactClass({
 	displayName: 'PillWithIconExample',
 
 	propTypes: {
-		action: PropTypes.func
+		action: PropTypes.func,
 	},
 
 	getDefaultProps () {
 		return {
-			action: () => noop
+			action: () => noop,
 		};
 	},
 
@@ -25,8 +25,19 @@ const Example = createReactClass({
 		return {
 			pill1: true,
 			pill2: true,
-			pill3: true
+			pill3: true,
 		};
+	},
+
+	onClick (event) {
+		this.props.action('onClick')(event);
+	},
+
+	onRemove (event, pill) {
+		this.props.action('onRemove')(event);
+		this.setState({
+			[pill]: false,
+		});
 	},
 
 	render () {
@@ -39,7 +50,7 @@ const Example = createReactClass({
 								labels={{
 									label: 'Pill Label',
 									title: 'Full pill label verbiage mirrored here',
-									removeTitle: 'Remove'
+									removeTitle: 'Remove',
 								}}
 								icon={
 									<Icon title="Account" category="standard" name="account" />
@@ -55,7 +66,7 @@ const Example = createReactClass({
 								labels={{
 									label: 'Pill Label',
 									title: 'Full pill label verbiage mirrored here',
-									removeTitle: 'Remove'
+									removeTitle: 'Remove',
 								}}
 								avatar={
 									<Avatar
@@ -75,7 +86,7 @@ const Example = createReactClass({
 								labels={{
 									label: 'Pill Label',
 									title: 'Full pill label verbiage mirrored here',
-									removeTitle: 'Remove'
+									removeTitle: 'Remove',
 								}}
 								hasError
 								icon={
@@ -95,17 +106,6 @@ const Example = createReactClass({
 			</IconSettings>
 		);
 	},
-
-	onClick (event) {
-		this.props.action('onClick')(event);
-	},
-
-	onRemove (event, pill) {
-		this.props.action('onRemove')(event);
-		this.setState({
-			[pill]: false
-		});
-	}
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

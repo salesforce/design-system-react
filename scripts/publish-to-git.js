@@ -58,7 +58,7 @@ const publish = (done, type) => {
 	let actions = [
 		{ command: 'git init', dir: tmpDir, rootPath },
 		{ command: `cp ${gitDir}/config ${tmpDir}/.git`, rootPath },
-		{ command: 'git add -A', dir: tmpDir, rootPath }
+		{ command: 'git add -A', dir: tmpDir, rootPath },
 	];
 
 	if (argv.tag) {
@@ -69,14 +69,14 @@ const publish = (done, type) => {
 					argv.tag
 				}-${type} [ci skip]"`,
 				dir: tmpDir,
-				rootPath
+				rootPath,
 			},
 			{ command: `git tag ${argv.tag}${typeSuffix}`, dir: tmpDir, rootPath },
 			{
 				command: `git push ${remote} -f --tags ${argv.tag}${typeSuffix}`,
 				dir: tmpDir,
-				rootPath
-			}
+				rootPath,
+			},
 		];
 	} else {
 		actions = [
@@ -84,19 +84,19 @@ const publish = (done, type) => {
 			{
 				command: `git commit -m "Release commit for ${version}-${type} [ci skip]"`,
 				dir: tmpDir,
-				rootPath
+				rootPath,
 			},
 			{ command: `git tag v${version}${typeSuffix}`, dir: tmpDir, rootPath },
 			{
 				command: `git push ${remote} --tags v${version}${typeSuffix}`,
 				dir: tmpDir,
-				rootPath
-			}
+				rootPath,
+			},
 		];
 	}
 
 	actions = [
-		...actions
+		...actions,
 		// { command: `rm -r ${tmpDir}`, rootPath }
 	];
 
@@ -115,7 +115,7 @@ async.series(
 			exec(
 				{
 					command: 'npm run dist',
-					rootPath
+					rootPath,
 				},
 				done
 			),
@@ -127,7 +127,7 @@ async.series(
 		(done) => publish(done, 'commonjs'),
 
 		(done) => cleanPackageJson(done, 'amd'),
-		(done) => publish(done, 'amd')
+		(done) => publish(done, 'amd'),
 	],
 	(err) => {
 		if (err) throw err;

@@ -1,6 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable jsx-a11y/no-redundant-roles */
+
 // # Breadcrumbs
 
 // Implements the [Breadcrumbs design pattern](https://www.lightningdesignsystem.com/components/breadcrumbs) in React.
@@ -48,11 +50,11 @@ Breadcrumb.propTypes = {
 	/**
 	 * An array of react elements presumably anchor elements.
 	 */
-	trail: PropTypes.array
+	trail: PropTypes.array,
 };
 
 Breadcrumb.defaultProps = {
-	assistiveText: 'Breadcrumbs'
+	assistiveText: 'Breadcrumbs',
 };
 
 export default Breadcrumb;

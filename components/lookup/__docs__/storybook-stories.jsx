@@ -19,13 +19,20 @@ const DemoLookup = createReactClass({
 				{ label: 'File 1' },
 				{ label: 'File 2' },
 				{ label: 'File 3' },
-				{ label: 'File 4' }
-			]
+				{ label: 'File 4' },
+			],
 		};
 	},
 
 	clearSelected () {
 		this.setState({ currentSelected: -1 });
+	},
+
+	handleSelect (selectedItem, ...rest) {
+		action('select')(selectedItem, ...rest);
+		this.setState({
+			currentSelected: this.state.options.indexOf(selectedItem),
+		});
 	},
 
 	render () {
@@ -44,13 +51,6 @@ const DemoLookup = createReactClass({
 			</div>
 		);
 	},
-
-	handleSelect (selectedItem, ...rest) {
-		action('select')(selectedItem, ...rest);
-		this.setState({
-			currentSelected: this.state.options.indexOf(selectedItem)
-		});
-	}
 });
 
 const DemoLookupAccounts = createReactClass({
@@ -64,9 +64,14 @@ const DemoLookupAccounts = createReactClass({
 				{ label: 'Paper St. Soap Company', subTitle: 'Beloit, WI' },
 				{ label: 'Nakatomi Investments', subTitle: 'Chicago, IL' },
 				{ label: 'Acme Landscaping' },
-				{ label: 'Acme Construction', subTitle: 'Grand Marais, MN' }
-			]
+				{ label: 'Acme Construction', subTitle: 'Grand Marais, MN' },
+			],
 		};
+	},
+
+	handleSelect (selectedItem, ...rest) {
+		action('select')(selectedItem, ...rest);
+		this.setState({ selectedItem });
 	},
 
 	render () {
@@ -81,11 +86,6 @@ const DemoLookupAccounts = createReactClass({
 			/>
 		);
 	},
-
-	handleSelect (selectedItem, ...rest) {
-		action('select')(selectedItem, ...rest);
-		this.setState({ selectedItem });
-	}
 });
 
 storiesOf(LOOKUP, module)

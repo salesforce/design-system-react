@@ -1,6 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable jsx-a11y/aria-activedescendant-has-tabindex */
+
 // ### React
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -40,7 +42,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Class names to be added to the outer container `div` of the input.
@@ -48,7 +50,7 @@ const propTypes = {
 	containerClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Props to be added to the outer container `div` of the input (excluding `containerClassName`).
@@ -162,17 +164,17 @@ const propTypes = {
 		'url',
 		'search',
 		'tel',
-		'color'
+		'color',
 	]),
 	/**
 	 * The input is a controlled component, and will always display this value.
 	 */
-	value: PropTypes.string
+	value: PropTypes.string,
 };
 
 const defaultProps = {
 	spinnerAssistiveText: 'Loading ...',
-	type: 'text'
+	type: 'text',
 };
 
 /*
@@ -193,7 +195,7 @@ const InnerInput = (props) => {
 				'slds-input-has-icon_left-right': props.iconLeft && props.iconRight,
 				'slds-input-has-fixed-addon':
 					props.fixedTextLeft || props.fixedTextRight,
-				'slds-has-divider--bottom': props.isStatic
+				'slds-has-divider--bottom': props.isStatic,
 			})}
 			{...containerProps}
 		>

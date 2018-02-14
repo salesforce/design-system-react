@@ -4,15 +4,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import EventUtil from '../../../utilities/event';
-import DateUtil from '../../../utilities/date';
-import KEYS from '../../../utilities/key-code';
-
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // This project uses `classnames`, "a simple javascript utility for conditionally
 // joining classNames together."
 import classNames from 'classnames';
+
+import EventUtil from '../../../utilities/event';
+import DateUtil from '../../../utilities/date';
+import KEYS from '../../../utilities/key-code';
 
 const handleClick = (event, { date, onSelectDate }) => {
 	onSelectDate(event, { date });
@@ -27,7 +27,7 @@ const handleKeyDown = (
 		onKeyboardNavigateToPreviousDay,
 		onKeyboardNavigateToNextDay,
 		onKeyboardNavigateToPreviousWeek,
-		onKeyboardNavigateToNextWeek
+		onKeyboardNavigateToNextWeek,
 	}
 ) => {
 	const keyDownCallbacks = {
@@ -51,13 +51,13 @@ const handleKeyDown = (
 		},
 		[KEYS.DOWN]: () => {
 			onKeyboardNavigateToNextWeek(event, { date });
-		}
+		},
 	};
 
 	const shiftKeyDownCallbacks = {
 		[KEYS.TAB]: () => {
 			onCalendarBlur(event, { direction: 'previous' });
-		}
+		},
 	};
 
 	if (event.keyCode) {
@@ -89,17 +89,17 @@ const DatepickerCalendarDay = (props) => {
 			className={classNames({
 				'slds-is-today': isToday,
 				'slds-disabled-text': isDisabled,
-				'slds-is-selected': isSelectedDay
+				'slds-is-selected': isSelectedDay,
 			})}
 			onClick={(event) => {
 				handleClick(event, {
 					date: props.date,
-					onSelectDate: props.onSelectDate
+					onSelectDate: props.onSelectDate,
 				});
 			}}
 			onKeyDown={(event) => {
 				handleKeyDown(event, {
-					...props
+					...props,
 				});
 			}}
 			ref={(component) => {
@@ -114,7 +114,7 @@ const DatepickerCalendarDay = (props) => {
 				) {
 					props.onRequestInternalFocusDate(undefined, {
 						date: props.date,
-						ref: component
+						ref: component,
 					});
 				}
 			}}
@@ -194,7 +194,7 @@ DatepickerCalendarDay.propTypes = {
 	 */
 	todayLabel: PropTypes.string.isRequired,
 	focusedDate: PropTypes.instanceOf(Date),
-	onRequestInternalFocusDate: PropTypes.func
+	onRequestInternalFocusDate: PropTypes.func,
 };
 
 export default DatepickerCalendarDay;

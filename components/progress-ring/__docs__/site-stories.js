@@ -8,7 +8,7 @@ const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/progress-ring/__examples__/complete.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/progress-ring/__examples__/warning.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/progress-ring/__examples__/expired.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/progress-ring/__examples__/customIcon.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/progress-ring/__examples__/customIcon.jsx'),
 ];
 
 module.exports = siteStories;

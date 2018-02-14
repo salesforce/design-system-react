@@ -11,7 +11,7 @@ const Example = createReactClass({
 
 	getInitialState () {
 		return {
-			isOpen: false
+			isOpen: false,
 		};
 	},
 
@@ -31,7 +31,7 @@ const Example = createReactClass({
 						isOpen={this.state.isOpen}
 						footer={[
 							<Button label="Cancel" onClick={this.toggleOpen} />,
-							<Button label="Save" variant="brand" onClick={this.toggleOpen} />
+							<Button label="Save" variant="brand" onClick={this.toggleOpen} />,
 						]}
 						onRequestClose={this.toggleOpen}
 						title="New Opportunity"
@@ -85,7 +85,7 @@ const Example = createReactClass({
 										{ label: 'Nakatomi Investments' },
 										{ label: 'Acme Landscaping' },
 										{ type: 'section', label: 'SECTION 3' },
-										{ label: 'Acme Construction' }
+										{ label: 'Acme Construction' },
 									]}
 									sectionDividerRenderer={Lookup.DefaultSectionDivider}
 								/>
@@ -101,7 +101,7 @@ const Example = createReactClass({
 									{ label: 'Cold Call', value: 'B0' },
 									{ label: 'LinkedIn', value: 'C0' },
 									{ label: 'Direct Mail', value: 'D0' },
-									{ label: 'Other', value: 'E0' }
+									{ label: 'Other', value: 'E0' },
 								]}
 								placeholder="Select Lead Source"
 								value="B0"
@@ -117,7 +117,7 @@ const Example = createReactClass({
 									{ label: 'Courtesy', value: 'B0' },
 									{ label: 'New Business', value: 'C0' },
 									{ label: 'Renewal', value: 'D0' },
-									{ label: 'Upgrade', value: 'E0' }
+									{ label: 'Upgrade', value: 'E0' },
 								]}
 								placeholder="Select Opportunity Type"
 								value="C0"
@@ -140,7 +140,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

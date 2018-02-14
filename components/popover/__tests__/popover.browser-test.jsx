@@ -12,7 +12,7 @@ import { mount } from 'enzyme';
  */
 import {
 	createMountNode,
-	destroyMountNode
+	destroyMountNode,
 } from '../../../tests/enzyme-helpers';
 
 // Import your internal dependencies (for example):
@@ -28,14 +28,14 @@ chai.use(chaiEnzyme());
 const defaultProps = {
 	id: 'sample-popover',
 	body: <span id="sample-body">This is the body</span>,
-	heading: <span id="sample-heading">This is the heading</span>
+	heading: <span id="sample-heading">This is the heading</span>,
 };
 
 const defaultIds = {
 	trigger: defaultProps.id,
 	popover: `${defaultProps.id}-popover`,
 	body: `${defaultProps.id}-dialog-body`,
-	heading: `${defaultProps.id}-dialog-heading`
+	heading: `${defaultProps.id}-dialog-heading`,
 };
 
 /* A re-usable demo component fixture outside of `describe` sections
@@ -46,7 +46,7 @@ const defaultIds = {
 const DemoComponent = createReactClass({
 	displayName: 'PopoverDemoComponent',
 	propTypes: {
-		isOpen: PropTypes.bool
+		isOpen: PropTypes.bool,
 	},
 
 	getDefaultProps () {
@@ -70,7 +70,7 @@ const DemoComponent = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 /* All tests for component being tested should be wrapped in a root `describe`,
@@ -144,7 +144,7 @@ describe('SLDSPopover', function () {
 			containerClassName: 'sample-container-classname',
 			containerStyle: { background: containerBackgroundColor },
 			footer: <p id="footer">Footer</p>,
-			style: { background: popoverBackgroundColor }
+			style: { background: popoverBackgroundColor },
 		};
 
 		beforeEach(() => {
@@ -157,7 +157,7 @@ describe('SLDSPopover', function () {
 
 		it('has correct className, closeButtonAssistiveText, style, and footer', function () {
 			wrapper = mount(<DemoComponent {...optionalProps} isOpen />, {
-				attachTo: mountNode
+				attachTo: mountNode,
 			});
 
 			const popover = wrapper.find(`#${defaultIds.popover}`);
@@ -231,7 +231,7 @@ describe('SLDSPopover', function () {
 							popover.simulate('keyDown', {
 								key: 'Esc',
 								keyCode: 27,
-								which: 27
+								which: 27,
 							});
 						}}
 					/>,

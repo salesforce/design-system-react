@@ -17,7 +17,7 @@ CardFooter.propTypes = {
 	/**
 	 * Elements to place in the footer.
 	 */
-	children: PropTypes.node
+	children: PropTypes.node,
 };
 
 export default CardFooter;

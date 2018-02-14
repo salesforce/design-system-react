@@ -3,11 +3,9 @@
 # Only used for release server authentication
 /.npmrc
 
-# We may want to remove to make first-time contributing easier
-package-lock.json
-
 # React Storybook
 storybook/
+storybook-based-tests/
 
 # Publishing and dist build
 .tmp*

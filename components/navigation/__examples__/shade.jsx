@@ -18,8 +18,8 @@ const sampleSearchCategories = [
 			{ id: 'files', label: 'Files' },
 			{ id: 'dashboards', label: 'Dashboards' },
 			{ id: 'reports', label: 'Reports' },
-			{ id: 'feeds', label: 'Feeds' }
-		]
+			{ id: 'feeds', label: 'Feeds' },
+		],
 	},
 	{
 		id: 'external_results',
@@ -27,9 +27,9 @@ const sampleSearchCategories = [
 		items: [
 			{ id: 'app_one', label: 'App One' },
 			{ id: 'app_two', label: 'App Two' },
-			{ id: 'app_three', label: 'App Three' }
-		]
-	}
+			{ id: 'app_three', label: 'App Three' },
+		],
+	},
 ];
 
 const Example = createReactClass({
@@ -37,7 +37,7 @@ const Example = createReactClass({
 
 	getInitialState () {
 		return {
-			selectedId: 'top'
+			selectedId: 'top',
 		};
 	},
 
@@ -63,7 +63,7 @@ const Example = createReactClass({
 				</div>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

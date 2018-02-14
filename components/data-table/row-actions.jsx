@@ -1,6 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+
 // ### React
 import React from 'react';
 import createReactClass from 'create-react-class';
@@ -39,13 +41,23 @@ const DataTableRowActions = createReactClass({
 		id: PropTypes.string,
 		item: PropTypes.object,
 		onAction: PropTypes.func,
-		options: PropTypes.array.isRequired
+		options: PropTypes.array.isRequired,
 	},
 
 	getDefaultProps () {
 		return {
-			assistiveText: 'Actions'
+			assistiveText: 'Actions',
 		};
+	},
+
+	handleClick (e) {
+		EventUtil.trap(e);
+	},
+
+	handleSelect (selection) {
+		if (isFunction(this.props.onAction)) {
+			this.props.onAction(this.props.item, selection);
+		}
 	},
 
 	// ### Render
@@ -77,16 +89,6 @@ const DataTableRowActions = createReactClass({
 			</td>
 		);
 	},
-
-	handleClick (e) {
-		EventUtil.trap(e);
-	},
-
-	handleSelect (selection) {
-		if (isFunction(this.props.onAction)) {
-			this.props.onAction(this.props.item, selection);
-		}
-	}
 });
 
 export default DataTableRowActions;

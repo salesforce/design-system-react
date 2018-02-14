@@ -15,7 +15,7 @@ const propsTypes = {
 	 * * `unreadItem`: The unread indicator.
 	 */
 	assistiveText: PropTypes.shape({
-		unreadItem: PropTypes.string
+		unreadItem: PropTypes.string,
 	}),
 	/**
 	 * Item to be displayed
@@ -47,19 +47,19 @@ const propsTypes = {
 	 * * * * `isUnread`: Is the item unread.
 	 */
 	events: PropTypes.shape({
-		onClick: PropTypes.func.isRequired
+		onClick: PropTypes.func.isRequired,
 	}),
 	/**
 	 * Reference to the list item component
 	 */
-	listItemRef: PropTypes.func
+	listItemRef: PropTypes.func,
 };
 
 const defaultProps = {
 	assistiveText: {
-		unreadItem: 'Unread Item'
+		unreadItem: 'Unread Item',
 	},
-	events: {}
+	events: {},
 };
 
 /**
@@ -79,14 +79,14 @@ const listItemWithContent = (ListItemContent) => {
 			this.props.events.onClick(event, {
 				item: this.props.item,
 				isSelected: this.props.isSelected,
-				isUnread: this.props.isUnread
+				isUnread: this.props.isUnread,
 			});
 		}
 
 		unread () {
 			return this.props.isUnread ? (
 				<abbr
-					className={'slds-indicator_unread'}
+					className="slds-indicator_unread"
 					title={this.props.assistiveText.unreadItem}
 					aria-label={this.props.assistiveText.unreadItem}
 				>
@@ -99,7 +99,7 @@ const listItemWithContent = (ListItemContent) => {
 			return (
 				<li
 					className={classNames('slds-split-view__list-item', {
-						'slds-is-unread': this.props.isUnread
+						'slds-is-unread': this.props.isUnread,
 					})}
 					role="presentation"
 				>
@@ -113,7 +113,7 @@ const listItemWithContent = (ListItemContent) => {
 								: this.props.isSelected
 						}
 						tabIndex={this.props.isFocused ? 0 : -1}
-						href="javascript:void(0);"
+						href="javascript:void(0);" // eslint-disable-line no-script-url
 						onClick={(e) => this.onClick(e)}
 					>
 						{this.unread()}

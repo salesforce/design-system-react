@@ -28,7 +28,7 @@ storiesOf(BUTTON, module)
 			iconName: 'download',
 			iconPosition: 'left',
 			onFocus: action('focus'),
-			onKeyDown: action('keyDown')
+			onKeyDown: action('keyDown'),
 		})
 	)
 	.add('Disabled', () => getButton({ label: 'Disabled', disabled: true }))
@@ -37,7 +37,7 @@ storiesOf(BUTTON, module)
 			assistiveText: 'Icon',
 			iconSize: 'large',
 			iconName: 'answer',
-			title: 'chat'
+			title: 'chat',
 		})
 	)
 	.add('Icon with external path', () =>
@@ -45,7 +45,7 @@ storiesOf(BUTTON, module)
 			assistiveText: 'Icon',
 			iconSize: 'large',
 			iconPath: '/assets/icons/utility-sprite/svg/symbols.svg#announcement',
-			title: 'announcement'
+			title: 'announcement',
 		})
 	)
 	.addDecorator((getStory) => (
@@ -62,7 +62,7 @@ storiesOf(BUTTON, module)
 			iconName: 'settings',
 			iconSize: 'large',
 			iconVariant: 'border',
-			inverse: true
+			inverse: true,
 		})
 	)
 	.add('Dropdown Icon inverse', () =>
@@ -71,7 +71,7 @@ storiesOf(BUTTON, module)
 			assistiveText: 'Dropdown Icon inverse',
 			iconName: 'settings',
 			iconVariant: 'more',
-			inverse: true
+			inverse: true,
 		})
 	)
 	.addDecorator((getStory) => (
@@ -86,6 +86,6 @@ storiesOf(BUTTON, module)
 			iconVariant: 'border',
 			iconSize: 'small',
 			hint: true,
-			inverse: true
+			inverse: true,
 		})
 	);

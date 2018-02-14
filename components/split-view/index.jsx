@@ -19,7 +19,7 @@ const propTypes = {
 	 */
 	assistiveText: PropTypes.shape({
 		toggleButtonOpen: PropTypes.string,
-		toggleButtonClose: PropTypes.string
+		toggleButtonClose: PropTypes.string,
 	}),
 	/**
 	 * HTML Id for the component.
@@ -31,7 +31,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Sets the split view to be open or closed.
@@ -44,14 +44,17 @@ const propTypes = {
 	 */
 	events: PropTypes.shape({
 		onClose: PropTypes.func,
-		onOpen: PropTypes.func
+		onOpen: PropTypes.func,
 	}),
 	/**
 	 * The React component that is rendered in the master section.
 	 * You need to pass in an array of elements in order for the scrolling to in the SplitViewList to work correctly.
 	 * React requires that you also supply a unique `key` for each element [React Lists and Keys](https://reactjs.org/docs/lists-and-keys.html#keys).
 	 */
-	master: PropTypes.arrayOf(PropTypes.element).isRequired,
+	master: PropTypes.oneOfType([
+		PropTypes.arrayOf(PropTypes.element),
+		PropTypes.element,
+	]).isRequired,
 	/**
 	 * The width of the master section.
 	 */
@@ -61,17 +64,17 @@ const propTypes = {
 	 */
 	detail: PropTypes.oneOfType([
 		PropTypes.arrayOf(PropTypes.element),
-		PropTypes.element
-	]).isRequired
+		PropTypes.element,
+	]).isRequired,
 };
 
 const defaultProps = {
 	assistiveText: {
 		toggleButtonOpen: 'Close split view',
-		toggleButtonClose: 'Open split view'
+		toggleButtonClose: 'Open split view',
 	},
 	events: {},
-	masterWidth: '20rem'
+	masterWidth: '20rem',
 };
 
 /**
@@ -86,7 +89,7 @@ class SplitView extends React.Component {
 		super(props);
 
 		this.state = {
-			isOpen: true
+			isOpen: true,
 		};
 	}
 
@@ -97,21 +100,23 @@ class SplitView extends React.Component {
 	}
 
 	componentWillReceiveProps (nextProps) {
-		nextProps.isOpen !== this.props.isOpen && this.setIsOpen(nextProps.isOpen);
+		if (nextProps.isOpen !== this.props.isOpen) {
+			this.setIsOpen(nextProps.isOpen);
+		}
 	}
 
-	get id () {
+	getId () {
 		return this.props.id || this.generatedId;
 	}
 
-	get masterViewId () {
-		return `master_view_${this.id}`;
+	getMasterViewId () {
+		return `master_view_${this.getId()}`;
 	}
 
 	setIsOpen (isOpen) {
 		if (isBoolean(isOpen)) {
 			this.setState({
-				isOpen
+				isOpen,
 			});
 		}
 	}
@@ -119,15 +124,17 @@ class SplitView extends React.Component {
 	toggle (event) {
 		this.setIsOpen(!this.state.isOpen);
 
-		this.state.isOpen
-			? this.props.events.onClose && this.props.events.onClose(event)
-			: this.props.events.onOpen && this.props.events.onOpen(event);
+		if (this.state.isOpen && this.props.events.onClose) {
+			this.props.events.onClose(event);
+		} else if (!this.state.isOpen && this.props.events.onOpen) {
+			this.props.events.onOpen(event);
+		}
 	}
 
 	masterContent () {
 		return this.state.isOpen ? (
 			<article
-				id={this.masterViewId}
+				id={this.getMasterViewId()}
 				className="slds-split-view slds-grid slds-grid_vertical slds-grow slds-scrollable_none"
 			>
 				{this.props.master}
@@ -138,15 +145,15 @@ class SplitView extends React.Component {
 	render () {
 		return (
 			<div
-				id={this.id}
+				id={this.getId()}
 				className={classNames('slds-grid', this.props.className)}
 				style={{
-					height: '100%'
+					height: '100%',
 				}}
 			>
 				<div
 					style={{
-						maxWidth: this.state.isOpen ? this.props.masterWidth : '0'
+						maxWidth: this.state.isOpen ? this.props.masterWidth : '0',
 					}}
 					className={classNames(
 						'slds-split-view_container',
@@ -156,19 +163,19 @@ class SplitView extends React.Component {
 				>
 					<ToggleButton
 						assistiveText={this.props.assistiveText}
-						ariaControls={this.masterViewId}
+						ariaControls={this.getMasterViewId()}
 						isOpen={this.state.isOpen}
 						events={{
-							onClick: (event) => this.toggle(event)
+							onClick: (event) => this.toggle(event),
 						}}
 					/>
 					{this.masterContent()}
 				</div>
 				<div
 					style={{
-						marginLeft: TOGGLE_BUTTON_WIDTH
+						marginLeft: TOGGLE_BUTTON_WIDTH,
 					}}
-					className={'slds-grow slds-scrollable_y'}
+					className="slds-grow slds-scrollable_y"
 				>
 					{this.props.detail}
 				</div>

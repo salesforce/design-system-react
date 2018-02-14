@@ -80,7 +80,7 @@ const DateUtil = {
 			30,
 			31,
 			30,
-			31
+			31,
 		][month];
 	},
 
@@ -96,7 +96,7 @@ const DateUtil = {
 			)
 		);
 		return newDate;
-	}
+	},
 };
 
 export default DateUtil;

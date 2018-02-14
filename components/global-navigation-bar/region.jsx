@@ -1,6 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable jsx-a11y/no-redundant-roles */
+
 // # Global Navigation Bar Region Component
 
 // ## Dependencies
@@ -95,7 +97,7 @@ const Region = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * Wraps the `secondary` region in a `nav` and adds a role attribute
@@ -104,7 +106,7 @@ const Region = createReactClass({
 		/**
 		 * Region wrap children in styling specific to that region.
 		 */
-		region: PropTypes.oneOf(['primary', 'secondary', 'tertiary']).isRequired
+		region: PropTypes.oneOf(['primary', 'secondary', 'tertiary']).isRequired,
 	},
 
 	render () {
@@ -141,7 +143,7 @@ const Region = createReactClass({
 		}
 
 		return region;
-	}
+	},
 });
 
 export default Region;

@@ -13,6 +13,9 @@ import PropTypes from 'prop-types';
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
+// ### classNames
+import classNames from 'classnames';
+
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
@@ -21,9 +24,6 @@ import shortid from 'shortid';
 // ### Event Helpers
 import KEYS from '../../../utilities/key-code';
 import EventUtil from '../../../utilities/event';
-
-// ### classNames
-import classNames from 'classnames';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
@@ -59,7 +59,7 @@ const Checkbox = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * Disables the Checkbox and prevents clicking it.
@@ -132,14 +132,14 @@ const Checkbox = createReactClass({
 		/**
 		 * Which flavor of checkbox? Default is `base` while other option is `toggle`. (**Note:** `toggle` variant does not support the `indeterminate` feature, because [SLDS does not support it](https://lightningdesignsystem.com/components/forms/#flavor-checkbox-toggle-checkbox-toggle).)
 		 */
-		variant: PropTypes.oneOf(['base', 'toggle', 'button-group'])
+		variant: PropTypes.oneOf(['base', 'toggle', 'button-group']),
 	},
 
 	getDefaultProps () {
 		return {
 			variant: 'base',
 			labelToggleEnabled: 'Enabled',
-			labelToggleDisabled: 'Disabled'
+			labelToggleDisabled: 'Disabled',
 		};
 	},
 
@@ -150,6 +150,28 @@ const Checkbox = createReactClass({
 
 	getId () {
 		return this.props.id || this.generatedId;
+	},
+
+	handleChange (event) {
+		const value = event.target.checked;
+		const { checked, indeterminate, onChange } = this.props;
+
+		if (isFunction(onChange)) {
+			// `checked` is present twice to maintain backwards compatibility. Please remove first parameter `value` on the next breaking change.
+			onChange(value, event, {
+				checked: indeterminate ? true : !checked,
+				indeterminate: false,
+			});
+		}
+	},
+
+	handleKeyDown (event) {
+		if (event.keyCode) {
+			if (event.keyCode === KEYS.ENTER || event.keyCode === KEYS.SPACE) {
+				EventUtil.trapImmediate(event);
+				this.handleChange(event);
+			}
+		}
 	},
 
 	renderButtonGroupVariant (props) {
@@ -194,7 +216,7 @@ const Checkbox = createReactClass({
 					'slds-form-element',
 					{
 						'is-required': props.required,
-						'slds-has-error': props.errorText
+						'slds-has-error': props.errorText,
 					},
 					props.className
 				)}
@@ -258,7 +280,7 @@ const Checkbox = createReactClass({
 					'slds-form-element',
 					{
 						'is-required': props.required,
-						'slds-has-error': props.errorText
+						'slds-has-error': props.errorText,
 					},
 					props.className
 				)}
@@ -338,28 +360,6 @@ const Checkbox = createReactClass({
 		}
 		return renderer;
 	},
-
-	handleChange (event) {
-		const value = event.target.checked;
-		const { checked, indeterminate, onChange } = this.props;
-
-		if (isFunction(onChange)) {
-			// `checked` is present twice to maintain backwards compatibility. Please remove first parameter `value` on the next breaking change.
-			onChange(value, event, {
-				checked: indeterminate ? true : !checked,
-				indeterminate: false
-			});
-		}
-	},
-
-	handleKeyDown (event) {
-		if (event.keyCode) {
-			if (event.keyCode === KEYS.ENTER || event.keyCode === KEYS.SPACE) {
-				EventUtil.trapImmediate(event);
-				this.handleChange(event);
-			}
-		}
-	}
 });
 
 export default Checkbox;

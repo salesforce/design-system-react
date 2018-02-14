@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-/* eslint-disable react/prefer-es6-class */
+/* eslint-disable react/prefer-es6-class, jsx-a11y/no-noninteractive-element-interactions */
 
 // Implements the [Modal design pattern](https://lightningdesignsystem.com/components/modals/) in React.
 // Based on SLDS v2.2.1
@@ -10,7 +10,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
-import Button from '../button';
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
 
@@ -21,6 +20,8 @@ import isBoolean from 'lodash.isboolean';
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
+
+import Button from '../button';
 
 const displayName = 'Modal';
 const propTypes = {
@@ -42,7 +43,7 @@ const propTypes = {
 	containerClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Custom CSS classes for the modal's body. This is the element that has overflow rules and should be used to set a static height if desired. Use `classNames` [API](https://github.com/JedWatson/classnames).
@@ -50,7 +51,7 @@ const propTypes = {
 	contentClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Custom styles for the modal's body. This is the element that has overflow rules and should be used to set a static height if desired.
@@ -86,7 +87,7 @@ const propTypes = {
 	headerClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Forces the modal to be open or closed.
@@ -102,7 +103,7 @@ const propTypes = {
 	portalClassName: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Styles the modal as a prompt.
@@ -113,7 +114,7 @@ const propTypes = {
 		'error',
 		'wrench',
 		'offline',
-		'info'
+		'info',
 	]),
 	/**
 	 * Specifiies the modal's width. May be deprecated in favor of `width` in the future.
@@ -130,12 +131,12 @@ const propTypes = {
 	/**
 	 * Allows adding additional notifications within the modal.
 	 */
-	toast: PropTypes.node
+	toast: PropTypes.node,
 };
 
 const defaultProps = {
 	align: 'center',
-	dismissible: true
+	dismissible: true,
 };
 
 /**
@@ -152,7 +153,7 @@ class Modal extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			isClosing: false
+			isClosing: false,
 		};
 
 		// Bind
@@ -163,10 +164,8 @@ class Modal extends React.Component {
 		);
 	}
 
-	setReturnFocus () {
-		this.setState({
-			returnFocusTo: document.activeElement
-		});
+	componentWillMount () {
+		this.generatedId = shortid.generate();
 	}
 
 	componentDidMount () {
@@ -192,10 +191,6 @@ class Modal extends React.Component {
 		}
 	}
 
-	componentWillMount () {
-		this.generatedId = shortid.generate();
-	}
-
 	componentWillUnmount () {
 		this.isUnmounting = true;
 		this.clearBodyScroll();
@@ -203,147 +198,6 @@ class Modal extends React.Component {
 
 	getId () {
 		return this.props.id || this.generatedId;
-	}
-
-	dismissModalOnClickOutside () {
-		// if dismissOnClickOutside is not set, default its value to dismissible
-		const dismissOnClickOutside = isBoolean(this.props.dismissOnClickOutside)
-			? this.props.dismissOnClickOutside
-			: this.props.dismissible;
-
-		if (dismissOnClickOutside) {
-			this.dismissModal();
-		}
-	}
-
-	closeModal () {
-		if (this.props.dismissible) {
-			this.dismissModal();
-		}
-	}
-
-	dismissModal () {
-		this.setState({ isClosing: true });
-		if (this.state.returnFocusTo && this.state.returnFocusTo.focus) {
-			this.state.returnFocusTo.focus();
-		}
-		if (this.props.onRequestClose) {
-			this.props.onRequestClose();
-		}
-	}
-
-	handleSubmitModal () {
-		this.closeModal();
-	}
-
-	updateBodyScroll () {
-		if (window && document && document.body) {
-			if (this.props.isOpen) {
-				document.body.style.overflow = 'hidden';
-			} else {
-				document.body.style.overflow = 'inherit';
-			}
-		}
-	}
-
-	clearBodyScroll () {
-		// eslint-disable-line class-methods-use-this
-		if (window && document && document.body) {
-			document.body.style.overflow = 'inherit';
-		}
-	}
-
-	handleModalClick (event) {
-		// eslint-disable-line class-methods-use-this
-		if (event && event.stopPropagation) {
-			event.stopPropagation();
-		}
-	}
-
-	isPrompt () {
-		return this.props.prompt !== undefined;
-	}
-
-	footerComponent () {
-		let footer = null;
-		const hasFooter = this.props.footer;
-		const footerClass = {
-			'slds-modal__footer': true,
-			'slds-modal__footer--directional': this.props.directional,
-			'slds-theme--default': this.isPrompt()
-		};
-
-		if (hasFooter) {
-			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
-			footer = (
-				<footer
-					className={classNames(footerClass, this.props.footerClassNames)}
-					onClick={this.handleModalClick}
-				>
-					{this.props.footer}
-				</footer>
-			);
-		}
-		return footer;
-	}
-
-	headerComponent () {
-		let headerContent = this.props.header;
-		const headerEmpty =
-			!headerContent && !this.props.title && !this.props.tagline;
-		const closeButtonAssistiveText =
-			this.props.closeButtonAssistiveText || 'Close';
-		const closeButton = (
-			<Button
-				assistiveText={closeButtonAssistiveText}
-				iconName="close"
-				iconSize="large"
-				inverse
-				className="slds-modal__close"
-				onClick={this.closeModal}
-				title={closeButtonAssistiveText}
-				variant="icon"
-			/>
-		);
-
-		if ((!headerContent && this.props.title) || this.props.tagline) {
-			headerContent = (
-				<div>
-					{this.props.toast}
-					<h2
-						className={classNames({
-							'slds-text-heading--small': this.isPrompt(),
-							'slds-text-heading--medium': !this.isPrompt()
-						})}
-						id={this.getId()}
-					>
-						{this.props.title}
-					</h2>
-					{this.props.tagline ? (
-						<p className="slds-m-top--x-small">{this.props.tagline}</p>
-					) : null}
-				</div>
-			);
-		}
-
-		return (
-			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
-			<header
-				className={classNames(
-					'slds-modal__header',
-					{
-						'slds-modal__header--empty': headerEmpty,
-						[`slds-theme--${this.props.prompt}`]: this.isPrompt(),
-						'slds-theme--alert-texture': this.isPrompt()
-					},
-					this.props.headerClassName
-				)}
-				onClick={this.handleModalClick}
-			>
-				{this.props.dismissible ? closeButton : null}
-				{headerContent}
-			</header>
-		);
 	}
 
 	getModal () {
@@ -354,7 +208,7 @@ class Modal extends React.Component {
 		const contentStyleFromProps = this.props.contentStyle || {};
 		const contentStyle = {
 			...borderRadius,
-			...contentStyleFromProps
+			...contentStyleFromProps,
 		};
 		return (
 			// temporarily disabling eslint for the onClicks on the div tags
@@ -365,7 +219,7 @@ class Modal extends React.Component {
 					'slds-modal': true,
 					'slds-fade-in-open': true,
 					'slds-modal--large': this.props.size === 'large',
-					'slds-modal--prompt': this.isPrompt()
+					'slds-modal--prompt': this.isPrompt(),
 				})}
 				onClick={this.dismissModalOnClickOutside}
 				role="dialog"
@@ -395,6 +249,152 @@ class Modal extends React.Component {
 		);
 	}
 
+	setReturnFocus () {
+		this.setState({
+			returnFocusTo: document.activeElement,
+		});
+	}
+
+	// eslint-disable-next-line class-methods-use-this
+	clearBodyScroll () {
+		if (window && document && document.body) {
+			document.body.style.overflow = 'inherit';
+		}
+	}
+
+	closeModal () {
+		if (this.props.dismissible) {
+			this.dismissModal();
+		}
+	}
+
+	dismissModal () {
+		this.setState({ isClosing: true });
+		if (this.state.returnFocusTo && this.state.returnFocusTo.focus) {
+			this.state.returnFocusTo.focus();
+		}
+		if (this.props.onRequestClose) {
+			this.props.onRequestClose();
+		}
+	}
+
+	dismissModalOnClickOutside () {
+		// if dismissOnClickOutside is not set, default its value to dismissible
+		const dismissOnClickOutside = isBoolean(this.props.dismissOnClickOutside)
+			? this.props.dismissOnClickOutside
+			: this.props.dismissible;
+
+		if (dismissOnClickOutside) {
+			this.dismissModal();
+		}
+	}
+
+	footerComponent () {
+		let footer = null;
+		const hasFooter = this.props.footer;
+		const footerClass = {
+			'slds-modal__footer': true,
+			'slds-modal__footer--directional': this.props.directional,
+			'slds-theme--default': this.isPrompt(),
+		};
+
+		if (hasFooter) {
+			footer = ( // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/no-noninteractive-element-interactions
+				<footer
+					className={classNames(footerClass, this.props.footerClassNames)}
+					onClick={this.handleModalClick}
+				>
+					{this.props.footer}
+				</footer>
+			);
+		}
+		return footer;
+	}
+
+	// eslint-disable-next-line class-methods-use-this
+	handleModalClick (event) {
+		if (event && event.stopPropagation) {
+			event.stopPropagation();
+		}
+	}
+
+	handleSubmitModal () {
+		this.closeModal();
+	}
+
+	headerComponent () {
+		let headerContent = this.props.header;
+		const headerEmpty =
+			!headerContent && !this.props.title && !this.props.tagline;
+		const closeButtonAssistiveText =
+			this.props.closeButtonAssistiveText || 'Close';
+		const closeButton = (
+			<Button
+				assistiveText={closeButtonAssistiveText}
+				iconName="close"
+				iconSize="large"
+				inverse
+				className="slds-modal__close"
+				onClick={this.closeModal}
+				title={closeButtonAssistiveText}
+				variant="icon"
+			/>
+		);
+
+		if ((!headerContent && this.props.title) || this.props.tagline) {
+			headerContent = (
+				<div>
+					{this.props.toast}
+					<h2
+						className={classNames({
+							'slds-text-heading--small': this.isPrompt(),
+							'slds-text-heading--medium': !this.isPrompt(),
+						})}
+						id={this.getId()}
+					>
+						{this.props.title}
+					</h2>
+					{this.props.tagline ? (
+						<p className="slds-m-top--x-small">{this.props.tagline}</p>
+					) : null}
+				</div>
+			);
+		}
+
+		return (
+			// eslint-disable-next-line jsx-a11y/no-static-element-interactions
+			<header
+				className={classNames(
+					'slds-modal__header',
+					{
+						'slds-modal__header--empty': headerEmpty,
+						[`slds-theme--${this.props.prompt}`]: this.isPrompt(),
+						'slds-theme--alert-texture': this.isPrompt(),
+					},
+					this.props.headerClassName
+				)}
+				onClick={this.handleModalClick}
+			>
+				{this.props.dismissible ? closeButton : null}
+				{headerContent}
+			</header>
+		);
+	}
+
+	isPrompt () {
+		return this.props.prompt !== undefined;
+	}
+
+	updateBodyScroll () {
+		if (window && document && document.body) {
+			if (this.props.isOpen) {
+				document.body.style.overflow = 'hidden';
+			} else {
+				document.body.style.overflow = 'inherit';
+			}
+		}
+	}
+
 	render () {
 		const customStyles = {
 			content: {
@@ -409,12 +409,12 @@ class Modal extends React.Component {
 				WebkitOverflowScrolling: 'default',
 				borderRadius: 'default',
 				outline: 'default',
-				padding: 'default'
+				padding: 'default',
 			},
 			overlay: {
 				position: 'static',
-				backgroundColor: 'default'
-			}
+				backgroundColor: 'default',
+			},
 		};
 
 		return (

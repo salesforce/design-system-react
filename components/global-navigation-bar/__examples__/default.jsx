@@ -23,22 +23,22 @@ const Example = createReactClass({
 				value: '1',
 				iconCategory: 'utility',
 				iconName: 'table',
-				href: 'http://www.google.com'
+				href: 'http://www.google.com',
 			},
 			{
 				label: 'Menu Item Two',
 				value: '2',
 				iconCategory: 'utility',
 				iconName: 'kanban',
-				href: 'http://www.google.com'
+				href: 'http://www.google.com',
 			},
 			{
 				label: 'Menu Item Three',
 				value: '3',
 				iconCategory: 'utility',
 				iconName: 'side_list',
-				href: 'http://www.google.com'
-			}
+				href: 'http://www.google.com',
+			},
 		];
 
 		return (
@@ -108,7 +108,7 @@ const Example = createReactClass({
 				</GlobalNavigationBar>
 			</IconSettings>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

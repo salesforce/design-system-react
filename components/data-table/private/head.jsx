@@ -41,13 +41,13 @@ const DataTableHead = createReactClass({
 		columns: PropTypes.arrayOf(
 			PropTypes.shape({
 				Cell: PropTypes.func,
-				props: PropTypes.object
+				props: PropTypes.object,
 			})
 		),
 		id: PropTypes.string,
 		onToggleAll: PropTypes.func,
 		onSort: PropTypes.func,
-		showRowActions: PropTypes.bool
+		showRowActions: PropTypes.bool,
 	},
 
 	componentWillMount () {},
@@ -96,7 +96,7 @@ const DataTableHead = createReactClass({
 				</tr>
 			</thead>
 		);
-	}
+	},
 });
 
 export default DataTableHead;

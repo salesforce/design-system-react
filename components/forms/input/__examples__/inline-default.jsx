@@ -8,8 +8,12 @@ const Example = createReactClass({
 
 	getInitialState () {
 		return {
-			value: 'Edit me inline'
+			value: 'Edit me inline',
 		};
+	},
+
+	handleChange (eventProps) {
+		this.setState({ value: eventProps.value });
 	},
 
 	render () {
@@ -41,10 +45,6 @@ const Example = createReactClass({
 			</IconSettings>
 		);
 	},
-
-	handleChange (eventProps) {
-		this.setState({ value: eventProps.value });
-	}
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

@@ -18,7 +18,7 @@ storiesOf(NOTIFICATION, module)
 				<a href="javascript:void(0);" key="0123">
 					Sara Smith
 				</a>,
-				' was successfully created.'
+				' was successfully created.',
 			]}
 			iconName="notification"
 			isOpen

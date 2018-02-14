@@ -31,7 +31,7 @@ ListItemLabel.propTypes = {
 	inverted: PropTypes.bool,
 	isSelected: PropTypes.bool,
 	label: PropTypes.string,
-	value: PropTypes.any
+	value: PropTypes.any,
 };
 
 ListItemLabel.defaultProps = {
@@ -40,7 +40,7 @@ ListItemLabel.defaultProps = {
 	inverted: false,
 	isSelected: false,
 	label: '',
-	value: null
+	value: null,
 };
 
 export default ListItemLabel;

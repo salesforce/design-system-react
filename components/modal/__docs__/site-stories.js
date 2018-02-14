@@ -8,7 +8,7 @@ const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/modal/__examples__/header-footer.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/modal/__examples__/taglines.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/modal/__examples__/prompt.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/modal/__examples__/sizes.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/modal/__examples__/sizes.jsx'),
 ];
 
 module.exports = siteStories;

@@ -7,8 +7,7 @@ import PropTypes from 'prop-types';
 import { ICON_SETTINGS } from '../../utilities/constants';
 
 /**
- * The Icon Settings component allows for the path to the icons to be specified.
- * This should be used at the root of the application.
+ * The Icon Settings component allows for the path to the icons to be specified in all child components and is recommended to be used at the root of the application. It's render function is `return this.props.children`, so it can only have one child node.
  *
  * **Individual sprites**
  * If you are using webpack it is advised to use the sprite properties
@@ -31,7 +30,7 @@ class IconSettings extends React.Component {
 			customSprite: this.props.customSprite,
 			doctypeSprite: this.props.doctypeSprite,
 			standardSprite: this.props.standardSprite,
-			utilitySprite: this.props.utilitySprite
+			utilitySprite: this.props.utilitySprite,
 		};
 	}
 
@@ -48,7 +47,7 @@ IconSettings.childContextTypes = {
 	customSprite: PropTypes.string,
 	doctypeSprite: PropTypes.string,
 	standardSprite: PropTypes.string,
-	utilitySprite: PropTypes.string
+	utilitySprite: PropTypes.string,
 };
 
 IconSettings.propTypes = {
@@ -81,7 +80,7 @@ IconSettings.propTypes = {
 	 * Path to the utility sprite
 	 * example: '@salesforce-ux/design-system/assets/icons/utility-sprite/svg/symbols.svg';
 	 */
-	utilitySprite: PropTypes.string
+	utilitySprite: PropTypes.string,
 };
 
 export default IconSettings;

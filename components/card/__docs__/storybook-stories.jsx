@@ -21,7 +21,7 @@ import InlineEdit from '../../forms/input/inline';
 const sampleItems = [
 	{ name: 'Cloudhub' },
 	{ name: 'Cloudhub + Anypoint Connectors' },
-	{ name: 'Cloud City' }
+	{ name: 'Cloud City' },
 ];
 
 const DemoCard = createReactClass({
@@ -30,14 +30,42 @@ const DemoCard = createReactClass({
 	propTypes: {
 		items: PropTypes.array,
 		header: PropTypes.node,
-		heading: PropTypes.oneOfType([PropTypes.node, PropTypes.string])
+		heading: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	},
 
 	getInitialState () {
 		return {
 			filter: null,
-			items: this.props.items
+			items: this.props.items,
 		};
+	},
+
+	handleFilterChange (event, ...rest) {
+		action('filter')(event, ...rest);
+
+		const filter =
+			event.target.value !== '' ? RegExp(event.target.value, 'i') : null;
+
+		this.setState({
+			filter,
+		});
+	},
+
+	handleDeleteAllItems (...rest) {
+		action('delete all')(...rest);
+
+		this.setState({
+			filter: null,
+			items: [],
+		});
+	},
+
+	handleAddItem (...rest) {
+		action('add')(...rest);
+
+		this.setState({
+			items: [{ name: uniqueId('New item #') }, ...this.state.items],
+		});
 	},
 
 	render () {
@@ -89,34 +117,6 @@ const DemoCard = createReactClass({
 			</div>
 		);
 	},
-
-	handleFilterChange (event, ...rest) {
-		action('filter')(event, ...rest);
-
-		const filter =
-			event.target.value !== '' ? RegExp(event.target.value, 'i') : null;
-
-		this.setState({
-			filter
-		});
-	},
-
-	handleDeleteAllItems (...rest) {
-		action('delete all')(...rest);
-
-		this.setState({
-			filter: null,
-			items: []
-		});
-	},
-
-	handleAddItem (...rest) {
-		action('add')(...rest);
-
-		this.setState({
-			items: [{ name: uniqueId('New item #') }, ...this.state.items]
-		});
-	}
 });
 
 const SetHeightCard = () => (

@@ -18,7 +18,7 @@ import { NAVIGATION_ITEM } from '../../../utilities/constants';
 const handleClick = (event, props) => {
 	if (isFunction(props.onSelect)) {
 		props.onSelect(event, {
-			item: props.item
+			item: props.item,
 		});
 	}
 };
@@ -51,7 +51,7 @@ Item.propTypes = {
 	item: PropTypes.shape({
 		id: PropTypes.string.isRequired,
 		label: PropTypes.string.isRequired,
-		url: PropTypes.string
+		url: PropTypes.string,
 	}),
 	/**
 	 * Whether item is selected or not.
@@ -64,11 +64,11 @@ Item.propTypes = {
 	/**
 	 * Function that will run whenever an item is selected.
 	 */
-	onSelect: PropTypes.func
+	onSelect: PropTypes.func,
 };
 
 Item.defaultProps = {
-	isSelected: false
+	isSelected: false,
 };
 
 export default Item;

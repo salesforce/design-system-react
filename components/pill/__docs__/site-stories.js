@@ -10,7 +10,7 @@ const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/pill/__examples__/container.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/pill/__examples__/listbox-bare.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/pill/__examples__/listbox.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/pill/__examples__/listbox-avatar.jsx')
+	require('raw-loader!@salesforce/design-system-react/components/pill/__examples__/listbox-avatar.jsx'),
 ];
 
 module.exports = siteStories;

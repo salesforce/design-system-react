@@ -1,6 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable jsx-a11y/no-autofocus */
+
 // # Textarea Component
 
 // Implements the [Textarea design pattern](https://lightningdesignsystem.com/components/textarea).
@@ -72,14 +74,14 @@ const Textarea = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/** Allows for ability to apply classNames to outer textarea div.
 		 */
 		classNameContainer: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * Message to display when the textarea is in an error state. When this is present, also visually highlights the component as in error.
@@ -142,7 +144,7 @@ const Textarea = createReactClass({
 		/**
 		 * Specifies how the text in a text area is to be wrapped when submitted in a form.
 		 */
-		wrap: PropTypes.oneOf(['soft', 'hard'])
+		wrap: PropTypes.oneOf(['soft', 'hard']),
 	},
 
 	componentWillMount () {
@@ -192,7 +194,7 @@ const Textarea = createReactClass({
 			required,
 			role,
 			value,
-			wrap
+			wrap,
 
 			// ### Additional properties
 			// Using [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx) to pass on any properties which are not explicitly defined.
@@ -206,7 +208,7 @@ const Textarea = createReactClass({
 				className={classNames(
 					'slds-form-element',
 					{
-						'slds-has-error': errorText
+						'slds-has-error': errorText,
 					},
 					classNameContainer
 				)}
@@ -214,7 +216,7 @@ const Textarea = createReactClass({
 				{labelText && (
 					<label
 						className={classNames('slds-form-element__label', {
-							'slds-assistive-text': assistiveText && !label
+							'slds-assistive-text': assistiveText && !label,
 						})}
 						htmlFor={this.getId()}
 					>
@@ -268,7 +270,7 @@ const Textarea = createReactClass({
 				{children}
 			</div>
 		);
-	}
+	},
 });
 
 export default Textarea;

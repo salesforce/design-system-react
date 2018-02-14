@@ -1,6 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+
 // # List Item Component
 
 // ## Dependencies
@@ -36,7 +38,7 @@ const ListItem = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		checkmark: PropTypes.bool,
 		data: PropTypes.object,
@@ -50,15 +52,15 @@ const ListItem = createReactClass({
 		labelRenderer: PropTypes.func,
 		leftIcon: PropTypes.shape({
 			category: PropTypes.string,
-			name: PropTypes.string
+			name: PropTypes.string,
 		}),
 		onSelect: PropTypes.func.isRequired,
 		rightIcon: PropTypes.shape({
 			category: PropTypes.string,
-			name: PropTypes.string
+			name: PropTypes.string,
 		}),
 		type: PropTypes.string,
-		value: PropTypes.any
+		value: PropTypes.any,
 	},
 
 	getDefaultProps () {
@@ -69,26 +71,8 @@ const ListItem = createReactClass({
 			isSelected: false,
 			label: '',
 			labelRenderer: ListItemLabelRenderer,
-			value: null
+			value: null,
 		};
-	},
-
-	handleClick (event) {
-		if (
-			this.props.type !== 'link' ||
-			this.props.href === 'javascript:void(0);'
-		) {
-			// eslint-disable-line no-script-url
-			EventUtil.trapImmediate(event);
-		}
-
-		if (this.props.onSelect) {
-			this.props.onSelect(this.props.index);
-		}
-	},
-
-	handleMouseDown (event) {
-		EventUtil.trapImmediate(event);
 	},
 
 	getLabel () {
@@ -116,7 +100,7 @@ const ListItem = createReactClass({
 				classnames.push('slds-icon--selected');
 				iconProps = {
 					category: 'utility',
-					name: 'check'
+					name: 'check',
 				};
 			}
 
@@ -139,6 +123,24 @@ const ListItem = createReactClass({
 		return null;
 	},
 
+	handleClick (event) {
+		if (
+			this.props.type !== 'link' ||
+			this.props.href === 'javascript:void(0);' // eslint-disable-line no-script-url
+		) {
+			// eslint-disable-line no-script-url
+			EventUtil.trapImmediate(event);
+		}
+
+		if (this.props.onSelect) {
+			this.props.onSelect(this.props.index);
+		}
+	},
+
+	handleMouseDown (event) {
+		EventUtil.trapImmediate(event);
+	},
+
 	render () {
 		switch (this.props.type) {
 			case 'header': {
@@ -149,7 +151,7 @@ const ListItem = createReactClass({
 							{
 								'slds-has-divider--top-space': this.props.divider === 'top',
 								'slds-has-divider--bottom-space':
-									this.props.divider === 'bottom'
+									this.props.divider === 'bottom',
 							},
 							this.props.className
 						)}
@@ -180,7 +182,7 @@ const ListItem = createReactClass({
 						className={classNames(
 							'slds-dropdown__item',
 							{
-								'slds-is-selected': this.props.isSelected
+								'slds-is-selected': this.props.isSelected,
 							},
 							this.props.className
 						)}
@@ -204,7 +206,7 @@ const ListItem = createReactClass({
 				);
 			}
 		}
-	}
+	},
 });
 
 export default ListItem;

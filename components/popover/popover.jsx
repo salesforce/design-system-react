@@ -25,13 +25,13 @@ import isBoolean from 'lodash.isboolean';
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
-// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
-import checkProps from './check-props';
-
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
+
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
 
 import Button from '../button';
 
@@ -70,7 +70,7 @@ const PopoverNubbinPositions = [
 	'top right',
 	'bottom left',
 	'bottom',
-	'bottom right'
+	'bottom right',
 ];
 
 /**
@@ -94,7 +94,7 @@ const Popover = createReactClass({
 			'bottom',
 			'bottom left',
 			'bottom right',
-			'left'
+			'left',
 		]),
 		/**
 		 * HTML `id` of heading for popover. Only use if your header is within your popover body.
@@ -114,7 +114,7 @@ const Popover = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/*
 		 * All popovers require a close button.
@@ -180,7 +180,7 @@ const Popover = createReactClass({
 		position: PropTypes.oneOf([
 			'absolute',
 			'overflowBoundaryElement',
-			'relative'
+			'relative',
 		]),
 		/**
 		 * An object of CSS styles that are applied to the `slds-popover` DOM element.
@@ -196,8 +196,8 @@ const Popover = createReactClass({
 		triggerClassName: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
-		])
+			PropTypes.string,
+		]),
 	},
 
 	getDefaultProps () {
@@ -206,13 +206,13 @@ const Popover = createReactClass({
 			closeButtonAssistiveText: 'Close dialog',
 			hoverCloseDelay: 300,
 			openOn: 'click',
-			position: 'absolute'
+			position: 'absolute',
 		};
 	},
 
 	getInitialState () {
 		return {
-			isOpen: false
+			isOpen: false,
 		};
 	},
 
@@ -246,6 +246,22 @@ const Popover = createReactClass({
 		return this.dialog;
 	},
 
+	setMenuRef (component) {
+		this.dialog = component;
+	},
+
+	setContainerRef (component) {
+		this.trigger = component;
+		// yes, this is a re-render triggered by a render.
+		// Dialog/Popper.js cannot place the popover until
+		// the trigger/target DOM node is mounted. This
+		// way `findDOMNode` is not called and parent
+		// DOM nodes are not queried.
+		if (!this.state.inputRendered) {
+			this.setState({ inputRendered: true });
+		}
+	},
+
 	handleDialogClose (event, data) {
 		const componentWillUnmount = (data && data.componentWillUnmount) || false;
 
@@ -257,7 +273,7 @@ const Popover = createReactClass({
 			this.props.onClose(event, {
 				// Breaking change: component object reference has been
 				// removed (`this`), due to endless loop creation.
-				componentWillUnmount
+				componentWillUnmount,
 			});
 		}
 	},
@@ -276,7 +292,7 @@ const Popover = createReactClass({
 			}
 
 			this.setState({
-				isOpen: false
+				isOpen: false,
 			});
 
 			this.isHover = false;
@@ -290,14 +306,14 @@ const Popover = createReactClass({
 			if (currentOpenPopover && isFunction(currentOpenPopover.handleClose)) {
 				currentOpenPopover.handleClose(undefined, {
 					trigger: 'newPopover',
-					id: currentOpenPopover.getId()
+					id: currentOpenPopover.getId(),
 				});
 			}
 
 			currentOpenPopover = this;
 
 			this.setState({
-				isOpen: true
+				isOpen: true,
 			});
 		}
 	},
@@ -380,7 +396,7 @@ const Popover = createReactClass({
 					keyCode: event.keyCode,
 					targetTarget: event.target,
 					toggleOpen: this.toggleOpenFromKeyboard,
-					trigger: this.trigger
+					trigger: this.trigger,
 				});
 			}
 			if (this.props.onKeyDown) {
@@ -404,10 +420,6 @@ const Popover = createReactClass({
 		} else {
 			this.handleOpen();
 		}
-	},
-
-	setMenuRef (component) {
-		this.dialog = component;
 	},
 
 	renderDialog (isOpen, outsideClickIgnoreClass) {
@@ -438,7 +450,7 @@ const Popover = createReactClass({
 					marginBottom: getMargin.bottom(props.align),
 					marginLeft: getMargin.left(props.align),
 					marginRight: getMargin.right(props.align),
-					marginTop: getMargin.top(props.align)
+					marginTop: getMargin.top(props.align),
 				}}
 				variant="popover"
 			>
@@ -511,18 +523,6 @@ const Popover = createReactClass({
 		}
 	},
 
-	setContainerRef (component) {
-		this.trigger = component;
-		// yes, this is a re-render triggered by a render.
-		// Dialog/Popper.js cannot place the popover until
-		// the trigger/target DOM node is mounted. This
-		// way `findDOMNode` is not called and parent
-		// DOM nodes are not queried.
-		if (!this.state.inputRendered) {
-			this.setState({ inputRendered: true });
-		}
-	},
-
 	render () {
 		const outsideClickIgnoreClass = `ignore-click-${this.getId()}`;
 
@@ -533,7 +533,7 @@ const Popover = createReactClass({
 						this.props.openOn === 'click' || this.props.openOn === 'hybrid'
 							? (event) => {
 								this.handleClick(event, {
-									triggerOnClickCallback: this.props.children.props.onClick
+									triggerOnClickCallback: this.props.children.props.onClick,
 								});
 							}
 							: this.children.props.onClick,
@@ -548,7 +548,7 @@ const Popover = createReactClass({
 							? this.handleMouseLeave
 							: null,
 				tabIndex: this.props.children.props.tabIndex || '0',
-				...this.props.children.props
+				...this.props.children.props,
 			})
 			: null;
 
@@ -565,11 +565,11 @@ const Popover = createReactClass({
 				{this.renderDialog(this.getIsOpen(), outsideClickIgnoreClass)}
 			</div>
 		);
-	}
+	},
 });
 
 Popover.contextTypes = {
-	iconPath: PropTypes.string
+	iconPath: PropTypes.string,
 };
 
 export default Popover;

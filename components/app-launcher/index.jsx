@@ -82,7 +82,7 @@ const AppLauncher = createReactClass({
 		modalClassName: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * Button that exists in the upper right hand corner of the App Launcher modal
@@ -115,25 +115,25 @@ const AppLauncher = createReactClass({
 		/**
 		 * Callback when the App Launcher icon is clicked
 		 */
-		triggerOnClick: PropTypes.func
-	},
-
-	componentWillMount () {
-		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(APP_LAUNCHER, this.props);
+		triggerOnClick: PropTypes.func,
 	},
 
 	getDefaultProps () {
 		return {
 			triggerAssistiveText: 'Open App Launcher',
-			title: 'App Launcher'
+			title: 'App Launcher',
 		};
 	},
 
 	getInitialState () {
 		return {
-			isOpen: false
+			isOpen: false,
 		};
+	},
+
+	componentWillMount () {
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(APP_LAUNCHER, this.props);
 	},
 
 	openAppLauncher (event) {
@@ -261,7 +261,7 @@ const AppLauncher = createReactClass({
 				) : null}
 			</div>
 		);
-	}
+	},
 });
 
 export default AppLauncher;

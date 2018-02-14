@@ -17,7 +17,7 @@ import Panel from '../../tabs/panel';
  */
 import {
 	mountComponent,
-	unmountComponent
+	unmountComponent,
 } from '../../../tests/enzyme-helpers';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
@@ -34,7 +34,7 @@ const COMPONENT_CSS_CLASSES = {
 	item: 'slds-tabs--default__item',
 	link: 'slds-tabs--default__link',
 	content: 'slds-tabs--default__content',
-	testClass: 'this-is-a-css-class-name'
+	testClass: 'this-is-a-css-class-name',
 };
 
 /* A re-usable demo component fixture outside of `describe` sections
@@ -53,7 +53,7 @@ const TabsDemoComponent = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * HTML `id` attribute of primary element that has `.slds-tabs--default` on it. Optional: If one is not supplied, a `shortid` will be created.
@@ -62,7 +62,7 @@ const TabsDemoComponent = createReactClass({
 		/**
 		 * Function that triggers when a tab is selected.
 		 */
-		onSelect: PropTypes.func
+		onSelect: PropTypes.func,
 	},
 
 	render () {
@@ -113,7 +113,7 @@ const TabsDemoComponent = createReactClass({
 				</Tabs>
 			</div>
 		);
-	}
+	},
 });
 
 describe('Tabs', () => {
@@ -360,12 +360,12 @@ describe('Tabs', () => {
 			Simulate.keyDown(myTabsListItems.nodes[0], {
 				key: 'Tab',
 				keyCode: 9,
-				which: 9
+				which: 9,
 			});
 			Simulate.keyDown(myTabsListItems.nodes[0], {
 				key: 'Right',
 				keyCode: 39,
-				which: 39
+				which: 39,
 			});
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(false);
@@ -398,12 +398,12 @@ describe('Tabs', () => {
 			Simulate.keyDown(myTabsListItems.nodes[0], {
 				key: 'Tab',
 				keyCode: 9,
-				which: 9
+				which: 9,
 			});
 			Simulate.keyDown(myTabsListItems.nodes[0], {
 				key: 'Right',
 				keyCode: 39,
-				which: 39
+				which: 39,
 			});
 
 			expect(myFirstPanel.hasClass('slds-show')).to.equal(false);

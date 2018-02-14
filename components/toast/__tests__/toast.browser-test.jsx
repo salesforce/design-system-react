@@ -7,10 +7,8 @@ import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import {
 	mountComponent,
-	unmountComponent
+	unmountComponent,
 } from '../../../tests/enzyme-helpers';
-
-chai.use(chaiEnzyme());
 
 import Toast from '../../toast'; // `~` is replaced with design-system-react at runtime
 import ToastContainer from '../../toast/container'; // `~` is replaced with design-system-react at runtime
@@ -18,12 +16,14 @@ import Icon from '../../icon'; // `~` is replaced with design-system-react at ru
 import Button from '../../button'; // `~` is replaced with design-system-react at runtime
 import IconSettings from '../../icon-settings';
 
+chai.use(chaiEnzyme());
+
 class DemoComponent extends React.Component {
 	constructor (props) {
 		super(props);
 
 		this.state = {
-			isOpen: true
+			isOpen: true,
 		};
 	}
 
@@ -38,7 +38,7 @@ class DemoComponent extends React.Component {
 								icon={<Icon category="utility" name="user" />}
 								labels={{
 									heading: 'Logged in as John Smith (johnsmith@acme.com).',
-									headingLink: 'Log out'
+									headingLink: 'Log out',
 								}}
 								onRequestClose={() => {
 									this.setState({ isOpen: false });

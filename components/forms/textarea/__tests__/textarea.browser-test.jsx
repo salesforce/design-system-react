@@ -10,12 +10,12 @@ import Textarea from '../';
 const {
 	findRenderedDOMComponentWithTag,
 	scryRenderedDOMComponentsWithTag,
-	findRenderedDOMComponentWithClass
+	findRenderedDOMComponentWithClass,
 } = TestUtils;
 
 describe('SLDS TEXTAREA **************************************************', () => {
 	const defaultProps = {
-		placeholder: 'Placeholder Text'
+		placeholder: 'Placeholder Text',
 	};
 
 	let body;
@@ -141,7 +141,7 @@ describe('SLDS TEXTAREA **************************************************', () 
 			component = getTextarea({
 				label: 'Textarea Label',
 				required: true,
-				errorText: 'Error Message'
+				errorText: 'Error Message',
 			});
 			wrapper = findRenderedDOMComponentWithClass(
 				component,

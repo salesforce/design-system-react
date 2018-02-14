@@ -1,6 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+
 // # Global Header Dropdown Component
 
 // ## Dependencies
@@ -45,7 +47,7 @@ const GlobalHeaderDropdownTrigger = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button.
@@ -102,7 +104,7 @@ const GlobalHeaderDropdownTrigger = createReactClass({
 		/**
 		 * The ref of the actual triggering button.
 		 */
-		triggerRef: PropTypes.func
+		triggerRef: PropTypes.func,
 	},
 
 	// ### Render
@@ -135,7 +137,7 @@ const GlobalHeaderDropdownTrigger = createReactClass({
 					'slds-dropdown-trigger slds-dropdown-trigger--click',
 					{
 						'slds-is-open': isOpen,
-						'slds-p-around--xx-small': globalAction
+						'slds-p-around--xx-small': globalAction,
 					},
 					className
 				)}
@@ -152,10 +154,10 @@ const GlobalHeaderDropdownTrigger = createReactClass({
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				<Button
 					className={classnames({
-						'slds-global-header__button--icon-actions': globalAction
+						'slds-global-header__button--icon-actions': globalAction,
 					})}
 					iconClassName={classnames({
-						'slds-global-header__icon-actions': globalAction
+						'slds-global-header__icon-actions': globalAction,
 					})}
 					aria-haspopup="true"
 					{...rest}
@@ -169,7 +171,7 @@ const GlobalHeaderDropdownTrigger = createReactClass({
 				{menu}
 			</li>
 		);
-	}
+	},
 });
 
 export default GlobalHeaderDropdownTrigger;

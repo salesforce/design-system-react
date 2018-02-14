@@ -1,5 +1,6 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-console */
+/* eslint-disable import/no-extraneous-dependencies */
 const compression = require('compression');
 const express = require('express');
 
@@ -13,9 +14,9 @@ app.use(compression());
 
 // Static directories
 app.use(
-	'/assets/icons',
+	'/assets',
 	express.static(
-		`${__dirname}/node_modules/@salesforce-ux/icons/dist/salesforce-lightning-design-system-icons/`
+		`${__dirname}/node_modules/@salesforce-ux/design-system/assets/`
 	)
 );
 app.use(express.static(`${__dirname}/storybook`));

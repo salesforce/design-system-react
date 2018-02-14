@@ -10,19 +10,19 @@ const accounts = [
 		id: '1',
 		label: 'Acme',
 		subTitle: 'Account • San Francisco',
-		type: 'account'
+		type: 'account',
 	},
 	{
 		id: '2',
 		label: 'Salesforce.com, Inc.',
 		subTitle: 'Account • San Francisco',
-		type: 'account'
-	}
+		type: 'account',
+	},
 ];
 
 const accountsWithIcon = accounts.map((elem) =>
 	Object.assign(elem, {
-		icon: <Icon assistiveText="Account" category="standard" name={elem.type} />
+		icon: <Icon assistiveText="Account" category="standard" name={elem.type} />,
 	})
 );
 
@@ -32,7 +32,7 @@ class Example extends React.Component {
 
 		this.state = {
 			inputValue: '',
-			selection: []
+			selection: [],
 		};
 	}
 
@@ -46,7 +46,7 @@ class Example extends React.Component {
 					id="combobox-unique-id"
 					isOpen
 					labels={{
-						placeholder: 'Search Salesforce'
+						placeholder: 'Search Salesforce',
 					}}
 					menuPosition="relative"
 					onChange={(event, { value }) => {
@@ -56,7 +56,7 @@ class Example extends React.Component {
 					onRequestRemoveSelectedOption={(event, data) => {
 						this.setState({
 							inputValue: '',
-							selection: []
+							selection: [],
 						});
 					}}
 					onSubmit={(event, { value }) => {
@@ -71,9 +71,9 @@ class Example extends React.Component {
 											category="standard"
 											name="account"
 										/>
-									)
-								}
-							]
+									),
+								},
+							],
 						});
 					}}
 					onSelect={(event, data) => {

@@ -1,43 +1,37 @@
 {
   "name": "design-system-react",
-  "version": "0.8.5",
+  "version": "0.8.7",
   "description": "Salesforce Lightning Design System for React",
   "license": "SEE LICENSE IN README.md",
   "engines": {
-    "node": "6.x",
+    "node": "8.x",
     "npm": "^5.5.1"
-  },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "./node_modules/.bin/prettier-eslint --write",
-      "git add"
-    ],
-    "*.{json,md}": [
-      "./node_modules/.bin/prettier --use-tabs=false --write",
-      "git add"
-    ]
   },
   "scripts": {
     "build-docs": "./node_modules/.bin/babel-node ./scripts/build-docs.js",
     "build-storybook": "build-storybook -o ./storybook",
+    "build-storybook-for-tests": "build-storybook -o ./storybook-based-tests -c ./.storybook-based-tests",
     "dist": "scripts/dist.sh",
-    "format": "./node_modules/.bin/prettier-eslint --write \"**/*.{js,jsx}\"",
     "heroku-prebuild": "./scripts/heroku-prebuild.sh",
     "heroku-postbuild": "./scripts/heroku-postbuild.sh",
     "icons": "./node_modules/.bin/babel-node scripts/inline-icons.js",
     "link": "./scripts/npm-link.sh",
-    "lint": "./node_modules/.bin/eslint \"**/*.{js,jsx}\"",
-    "lint-fix": "./node_modules/.bin/eslint --fix \"**/*.{js,jsx}\"",
-    "lint-staged": "lint-staged",
-    "publish-to-git": "./node_modules/.bin/babel-node scripts/publish-to-git.js",
-    "publish-to-edge": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge",
-    "publish-to-upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
-    "release-patch": "./node_modules/.bin/babel-node scripts/release.js --release=patch",
-    "release-minor": "./node_modules/.bin/babel-node scripts/release.js --release=minor",
+    "lint": "npm run lint:style && npm run lint:quality",
+    "lint:fix": "./node_modules/.bin/prettier-eslint --write \"**/*.{js,jsx}\" && ./node_modules/.bin/prettier --use-tabs=false --write \"*.json\"",
+    "lint:quality": "./node_modules/.bin/eslint \"**/*.{js,jsx}\" --max-warnings=0",
+    "lint:style": "./node_modules/.bin/prettier-eslint --list-different \"**/*.{js,jsx}\" && ./node_modules/.bin/prettier --use-tabs=false --list-different \"*.json\"",
+    "publish:origin": "./node_modules/.bin/babel-node scripts/publish-to-git.js",
+    "publish:edge": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge",
+    "publish:upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
+    "release:patch": "./node_modules/.bin/babel-node scripts/release.js --release=patch",
+    "release:minor": "./node_modules/.bin/babel-node scripts/release.js --release=minor",
     "snapshot-test": "./node_modules/.bin/jest",
     "start": "./node_modules/.bin/start-storybook -p 9001 -s ./node_modules & node tests/app",
+    "start:static": "node app",
     "storybook": "start-storybook -p 9001 -s ./node_modules",
-    "test": "scripts/test.sh",
+    "test": "scripts/local-qa.sh --no-fix",
+    "test:fix": "scripts/local-qa.sh",
+    "travis-ci": "scripts/travis-ci.sh",
     "validate": "npm ls",
     "version": "git add package.json && git commit -m \"Bump package version\""
   },
@@ -46,7 +40,7 @@
     "url": "git+ssh://git@github.com/salesforce/design-system-react.git"
   },
   "jest": {
-    "testRegex": "/components/.*\\.snapshot-test\\.jsx?$",
+    "testRegex": "/(components|tests)/.*\\.snapshot-test\\.jsx?$",
     "testEnvironment": "node",
     "testPathIgnorePatterns": [
       "/node_modules/",
@@ -115,7 +109,7 @@
     "warning": "^3.0.0"
   },
   "peerDependencies": {
-    "@salesforce-ux/design-system": "2.4.x",
+    "@salesforce-ux/design-system": ">=2.4.x",
     "react": ">=15.4.1 <16",
     "react-dom": ">=15.4.1 <16"
   },
@@ -124,10 +118,12 @@
     "@salesforce-ux/icons": "7.x",
     "@storybook/addon-actions": "^3.2.12",
     "@storybook/addon-info": "^3.2.10",
+    "@storybook/addon-storyshots": "^3.4.0-alpha.4",
+    "@storybook/addons": "^3.4.0-alpha.6",
     "@storybook/react": "~3.2.0",
     "async": "^2.0.0-rc.5",
     "babel-cli": "^6.24.1",
-    "babel-core": "^6.24.0",
+    "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.2",
     "babel-jest": "^20.0.3",
     "babel-loader": "^7.1.1",
@@ -149,10 +145,11 @@
     "enzyme": "^2.5.1",
     "enzyme-to-json": "^1.5.0",
     "eslint": "^4.12.0",
-    "eslint-config-airbnb": "15.1.0",
+    "eslint-config-airbnb": "16.1.0",
     "eslint-loader": "^1.6.0",
+    "eslint-plugin-filenames": "^1.2.0",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.1.0",
     "express": "^4.15.5",
     "file-loader": "^0.11.0",
@@ -184,9 +181,8 @@
     "phantomjs-polyfill-find-index": "^1.0.1",
     "phantomjs-polyfill-includes": "^1.0.2",
     "phantomjs-prebuilt": "^2.1.15",
-    "pre-commit": "^1.2.2",
-    "prettier": "~1.9",
-    "prettier-eslint": "~8.2",
+    "prettier": "^1.9.2",
+    "prettier-eslint": "~8.8.1",
     "prettier-eslint-cli": "^4.4.2",
     "prompt": "^1.0.0",
     "react": ">=15.4.1 <16",
@@ -204,19 +200,13 @@
     "webpack-hot-middleware": "^2.18.2",
     "xml2json": "^0.11.0"
   },
-  "pre-commit": [
-    "lint-staged"
-  ],
-  "pre-push": [
-    "validate"
-  ],
   "prettier": {
     "arrowParens": "always",
     "bracketSpacing": true,
     "jsxBracketSameLine": false,
     "semi": true,
     "singleQuote": true,
-    "trailingComma": "none",
+    "trailingComma": "es5",
     "useTabs": true
   },
   "components": [
@@ -482,12 +472,20 @@
       "component": "media-object",
       "status": "prod",
       "display-name": "Media Objects",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
       "SLDS-component-path": "/components/utilities/media-objects/"
     },
     {
       "component": "menu-dropdown",
       "status": "prod",
       "display-name": "Dropdown Menus",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
       "SLDS-component-path": "/components/menus#flavor-dropdown",
       "dependencies": [
         {
@@ -534,6 +532,10 @@
       "component": "popover",
       "status": "prod",
       "display-name": "Popovers",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
       "SLDS-component-path": "/components/popovers"
     },
     {
@@ -608,6 +610,10 @@
       "component": "radio-button-group",
       "status": "prod",
       "display-name": "Radio Button Groups",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
       "SLDS-component-path": "/components/radio-button-group"
     },
     {

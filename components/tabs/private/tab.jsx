@@ -1,6 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
+/* eslint-disable jsx-a11y/no-interactive-element-to-noninteractive-role */
+
 // # TabItem Component
 
 // ## Dependencies
@@ -73,7 +75,7 @@ const Tab = createReactClass({
 		/**
 		 * If the Tabs should be scopped, defaults to false
 		 */
-		variant: PropTypes.oneOf(['default', 'scoped'])
+		variant: PropTypes.oneOf(['default', 'scoped']),
 	},
 
 	getDefaultProps () {
@@ -82,7 +84,7 @@ const Tab = createReactClass({
 			selected: false,
 			activeTabClassName: 'slds-active',
 			disabledTabClassName: 'slds-disabled',
-			variant: 'default'
+			variant: 'default',
 		};
 	},
 
@@ -110,7 +112,7 @@ const Tab = createReactClass({
 			className,
 			children,
 			id,
-			variant
+			variant,
 		} = this.props;
 		let tabIndex;
 
@@ -128,7 +130,7 @@ const Tab = createReactClass({
 					[activeTabClassName]: selected,
 					[disabledTabClassName]: disabled,
 					'slds-tabs--default__item': variant === 'default',
-					'slds-tabs--scoped__item': variant === 'scoped'
+					'slds-tabs--scoped__item': variant === 'scoped',
 				})}
 				role="tab"
 				ref={(node) => {
@@ -146,7 +148,7 @@ const Tab = createReactClass({
 						[activeTabClassName]: selected,
 						[disabledTabClassName]: disabled,
 						'slds-tabs--default__link': variant === 'default',
-						'slds-tabs--scoped__link': variant === 'scoped'
+						'slds-tabs--scoped__link': variant === 'scoped',
 					})}
 					href="javascript:void(0);" // eslint-disable-line no-script-url
 					role="presentation"
@@ -157,7 +159,7 @@ const Tab = createReactClass({
 				</a>
 			</li>
 		);
-	}
+	},
 });
 
 export default Tab;

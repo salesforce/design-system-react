@@ -21,7 +21,7 @@ import {
 	GLOBAL_HEADER,
 	GLOBAL_HEADER_PROFILE,
 	GLOBAL_HEADER_SEARCH,
-	GLOBAL_HEADER_TOOL
+	GLOBAL_HEADER_TOOL,
 } from '../../utilities/constants';
 
 /**
@@ -69,15 +69,25 @@ const GlobalHeader = createReactClass({
 		/**
 		 * The localized text that will be read back for the "Skip to Navigation" accessibility link.
 		 */
-		skipToNavAssistiveText: PropTypes.string
+		skipToNavAssistiveText: PropTypes.string,
 	},
 
 	getDefaultProps () {
 		return {
 			logoSrc: '/assets/images/logo.svg',
 			skipToNavAssistiveText: 'Skip to Navigation',
-			skipToContentAssistiveText: 'Skip to Main Content'
+			skipToContentAssistiveText: 'Skip to Main Content',
 		};
+	},
+
+	handleSkipToContent (e) {
+		EventUtil.trap(e);
+		this.props.onSkipToContent(e);
+	},
+
+	handleSkipToNav (e) {
+		EventUtil.trap(e);
+		this.props.onSkipToNav(e);
 	},
 
 	render () {
@@ -134,16 +144,6 @@ const GlobalHeader = createReactClass({
 		);
 		/* eslint-enable max-len, no-script-url */
 	},
-
-	handleSkipToContent (e) {
-		EventUtil.trap(e);
-		this.props.onSkipToContent(e);
-	},
-
-	handleSkipToNav (e) {
-		EventUtil.trap(e);
-		this.props.onSkipToNav(e);
-	}
 });
 
 export default GlobalHeader;

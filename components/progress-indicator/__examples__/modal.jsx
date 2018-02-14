@@ -11,12 +11,12 @@ const steps = [
 	{
 		id: 0,
 		label: <i>tooltip label #1</i>,
-		assistiveText: 'This is custom text in the assistive text key'
+		assistiveText: 'This is custom text in the assistive text key',
 	},
 	{ id: 1, label: 'tooltip label #2' },
 	{ id: 2, label: <strong>tooltip label #3</strong> },
 	{ id: 3, label: 'tooltip label #4' },
-	{ id: 4, label: 'tooltip label #5' }
+	{ id: 4, label: 'tooltip label #5' },
 ];
 
 const handleStepEvent = function (event, data) {
@@ -36,7 +36,7 @@ const modalFooter = (props) => [
 		errorSteps={steps.slice(2, 3)}
 		onStepClick={handleStepEvent}
 	/>,
-	<Button key="modalBSave" label="Save" variant="brand" />
+	<Button key="modalBSave" label="Save" variant="brand" />,
 ];
 const modalContent = (
 	<div
@@ -59,11 +59,11 @@ const Example = createReactClass({
 					onRequestClose: action('modal closed'),
 					footer: modalFooter(this.props),
 					size: 'large',
-					footerClassNames: 'slds-grid slds-grid_align-spread'
+					footerClassNames: 'slds-grid slds-grid_align-spread',
 				})}
 			</div>
 		);
-	}
+	},
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

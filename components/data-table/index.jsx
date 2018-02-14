@@ -44,7 +44,7 @@ import {
 	DATA_TABLE,
 	DATA_TABLE_CELL,
 	DATA_TABLE_HEAD,
-	DATA_TABLE_ROW
+	DATA_TABLE_ROW,
 } from '../../utilities/constants';
 
 // Safely get the length of an array, returning 0 for invalid input.
@@ -91,7 +91,7 @@ const DataTable = createReactClass({
 		 * import DataTableCell from 'design-system-react/data-table/cell';
 		 * const CustomDataTableCell = ({ children, ...props }) => (
 		 *   <DataTableCell {...props} >
-		 *     <a href="javascript:void(0);">{children}</a>
+		 *   <a href="javascript:void(0);">{children}</a>
 		 *   </DataTableCell>
 		 * );
 		 * CustomDataTableCell.displayName = DataTableCell.displayName;
@@ -99,7 +99,7 @@ const DataTable = createReactClass({
 		 * <DataTable>
 		 *   <DataTableColumn />
 		 *   <DataTableColumn>
-		 *     <DataTableCustomCell />
+		 *   <DataTableCustomCell />
 		 *   </DataTableColumn>
 		 *   <DataTableRowActions />
 		 * </DataTable>
@@ -112,7 +112,7 @@ const DataTable = createReactClass({
 		className: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
-			PropTypes.string
+			PropTypes.string,
 		]),
 		/**
 		 * A variant which adds border to the vertical columns.
@@ -173,7 +173,7 @@ const DataTable = createReactClass({
 		/**
 		 * A variant which removes horizontal padding. CSS class will be removed if `fixedLayout==true`.
 		 */
-		unbufferedCell: PropTypes.bool
+		unbufferedCell: PropTypes.bool,
 	},
 
 	getDefaultProps () {
@@ -185,13 +185,35 @@ const DataTable = createReactClass({
 			assistiveTextForSelectAllRows: 'Select all rows',
 			assistiveTextForSelectRow: 'Select row',
 			id: shortid.generate(),
-			selection: []
+			selection: [],
 		};
 	},
 
 	componentWillMount () {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(DATA_TABLE, this.props);
+	},
+
+	handleToggleAll (selected, e) {
+		if (isFunction(this.props.onChange)) {
+			const selection = selected ? [...this.props.items] : [];
+
+			this.props.onChange(selection, e);
+		}
+	},
+
+	handleRowToggle (item, selected, e) {
+		if (isFunction(this.props.onChange)) {
+			let selection;
+
+			if (selected) {
+				selection = [...this.props.selection, item];
+			} else {
+				selection = reject(this.props.selection, item);
+			}
+
+			this.props.onChange(selection, e);
+		}
 	},
 
 	// ### Render
@@ -224,7 +246,7 @@ const DataTable = createReactClass({
 				columns.push({
 					Cell,
 					props,
-					dataTableProps: this.props
+					dataTableProps: this.props,
 				});
 			} else if (
 				child &&
@@ -249,7 +271,7 @@ const DataTable = createReactClass({
 							.stackedHorizontal,
 						'slds-table--striped': this.props.striped,
 						'slds-table--col-bordered': this.props.columnBordered,
-						'slds-no-row-hover': this.props.noRowHover
+						'slds-no-row-hover': this.props.noRowHover,
 					},
 					this.props.className
 				)}
@@ -308,28 +330,6 @@ const DataTable = createReactClass({
 			</table>
 		);
 	},
-
-	handleToggleAll (selected, e) {
-		if (isFunction(this.props.onChange)) {
-			const selection = selected ? [...this.props.items] : [];
-
-			this.props.onChange(selection, e);
-		}
-	},
-
-	handleRowToggle (item, selected, e) {
-		if (isFunction(this.props.onChange)) {
-			let selection;
-
-			if (selected) {
-				selection = [...this.props.selection, item];
-			} else {
-				selection = reject(this.props.selection, item);
-			}
-
-			this.props.onChange(selection, e);
-		}
-	}
 });
 
 export default DataTable;

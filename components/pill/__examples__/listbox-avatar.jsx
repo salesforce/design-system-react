@@ -11,13 +11,21 @@ const Example = createReactClass({
 	displayName: 'PillWithAvatarListboxExample',
 
 	propTypes: {
-		action: PropTypes.func
+		action: PropTypes.func,
 	},
 
 	getDefaultProps () {
 		return {
-			action: () => noop
+			action: () => noop,
 		};
+	},
+
+	onClick (event) {
+		this.props.action('onClick')(event);
+	},
+
+	onRemove (event) {
+		this.props.action('onRemove')(event);
 	},
 
 	render () {
@@ -40,10 +48,10 @@ const Example = createReactClass({
 										labels={{
 											label: 'Pill Label',
 											title: 'Full pill label verbiage mirrored here',
-											removeTitle: 'Remove'
+											removeTitle: 'Remove',
 										}}
 										assistiveText={{
-											remove: 'Press delete or backspace to remove'
+											remove: 'Press delete or backspace to remove',
 										}}
 										tabIndex="0"
 										variant="option"
@@ -63,10 +71,10 @@ const Example = createReactClass({
 										labels={{
 											label: 'Pill Label',
 											title: 'Full pill label verbiage mirrored here',
-											removeTitle: 'Remove'
+											removeTitle: 'Remove',
 										}}
 										assistiveText={{
-											remove: 'Press delete or backspace to remove'
+											remove: 'Press delete or backspace to remove',
 										}}
 										tabIndex="0"
 										variant="option"
@@ -88,14 +96,6 @@ const Example = createReactClass({
 			</IconSettings>
 		);
 	},
-
-	onClick (event) {
-		this.props.action('onClick')(event);
-	},
-
-	onRemove (event) {
-		this.props.action('onRemove')(event);
-	}
 });
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

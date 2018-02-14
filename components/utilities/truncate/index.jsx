@@ -29,23 +29,19 @@ const TextTruncate = createReactClass({
 		text: PropTypes.string,
 		textTruncateChild: PropTypes.node,
 		truncateText: PropTypes.string,
-		wrapper: PropTypes.func
+		wrapper: PropTypes.func,
 	},
 
 	getDefaultProps () {
 		return {
 			line: 1,
 			text: '',
-			truncateText: '…'
+			truncateText: '…',
 		};
 	},
 
 	getInitialState () {
 		return {};
-	},
-
-	onResize () {
-		this.update(this.props);
 	},
 
 	componentDidMount () {
@@ -60,8 +56,8 @@ const TextTruncate = createReactClass({
 		window.removeEventListener('resize', this.onResize, false);
 	},
 
-	update (nextProps) {
-		this.getRenderText(this.scope, nextProps);
+	onResize () {
+		this.update(this.props);
 	},
 
 	getRenderText (ref, nextProps) {
@@ -97,7 +93,7 @@ const TextTruncate = createReactClass({
 			style['font-weight'],
 			style['font-style'],
 			style['font-size'],
-			style['font-family']
+			style['font-family'],
 		].join(' ');
 
 		// return if display:none
@@ -211,6 +207,10 @@ const TextTruncate = createReactClass({
 		this.setState({ renderText });
 	},
 
+	update (nextProps) {
+		this.getRenderText(this.scope, nextProps);
+	},
+
 	render () {
 		const { containerClassName } = this.props;
 
@@ -224,7 +224,7 @@ const TextTruncate = createReactClass({
 				{this.state.renderText}
 			</div>
 		);
-	}
+	},
 });
 
 export default TextTruncate;

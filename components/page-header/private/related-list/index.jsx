@@ -25,7 +25,7 @@ const propTypes = {
 	/**
 	 * Nav content which appears in the upper right hand corner.
 	 */
-	navRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+	navRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 const defaultProps = {};
 

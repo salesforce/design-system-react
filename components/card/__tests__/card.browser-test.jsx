@@ -16,33 +16,33 @@ chai.should();
 const headerIdSuffixes = {
 	headerActions: '__header-actions',
 	heading: '__heading',
-	filter: '__filter-input'
+	filter: '__filter-input',
 };
 
 const cardIdSuffixes = {
 	body: '__body',
 	headerActions: '__header-actions',
 	heading: '__heading',
-	filter: '__filter-input'
+	filter: '__filter-input',
 };
 
 const cssClasses = {
-	base: 'slds-card'
+	base: 'slds-card',
 };
 
 const footerCssClasses = {
-	base: 'slds-card__footer'
+	base: 'slds-card__footer',
 };
 
 const headerCssClasses = {
-	base: 'slds-card__header'
+	base: 'slds-card__header',
 };
 
 describe('Card: ', () => {
 	// Base defaults
 	const requiredProps = {
 		id: 'ExampleCard',
-		heading: 'Lots of Related Items'
+		heading: 'Lots of Related Items',
 	};
 
 	const renderCard = (instance) =>
@@ -104,16 +104,16 @@ describe('Card: ', () => {
 
 	// Optional props
 	const renderFooterContents = React.createElement('span', {
-		id: 'sampleFooter'
+		id: 'sampleFooter',
 	});
 	const renderHeaderActions = React.createElement('span', {
-		id: 'sampleHeaderActions'
+		id: 'sampleHeaderActions',
 	});
 	const renderFilter = React.createElement(CardFilter);
 	const renderIcon = React.createElement(Icon, {
 		category: 'standard',
 		name: 'default',
-		size: 'small'
+		size: 'small',
 	});
 
 	const optionalProps = assign(requiredProps, {
@@ -123,7 +123,7 @@ describe('Card: ', () => {
 		headerActions: renderHeaderActions,
 		filter: renderFilter,
 		icon: renderIcon,
-		style: { background: 'rgb(18, 49, 35)' }
+		style: { background: 'rgb(18, 49, 35)' },
 	});
 
 	describe('Optional Structure', () => {
@@ -197,7 +197,7 @@ describe('Card: ', () => {
 				>
 					To Wanda! This is custom!
 				</span>
-			)
+			),
 		};
 
 		beforeEach(renderCard(<Card {...props} />));
@@ -212,7 +212,7 @@ describe('Card: ', () => {
 
 	describe('Empty Structure', () => {
 		const props = assign(optionalProps, {
-			empty: true
+			empty: true,
 		});
 
 		beforeEach(renderCard(<Card {...props} />));

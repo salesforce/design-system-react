@@ -27,6 +27,6 @@ storiesOf(BUTTON_STATEFUL, module)
 			onFocus: action('hover'),
 			onMouseEnter: (e) => {
 				console.log('target is ', e.target);
-			}
+			},
 		})
 	);

@@ -3,64 +3,66 @@ import PropTypes from 'prop-types';
 import IconSettings from '~/components/icon-settings';
 import SplitView from '~/components/split-view/index';
 import SplitViewHeader from '~/components/split-view/header';
-import SplitViewListbox, {
-	SORT_OPTIONS
-} from '~/components/split-view/listbox';
+import SplitViewListbox from '~/components/split-view/listbox';
 import Icon from '~/components/icon';
 import Button from '~/components/button';
 import Dropdown from '~/components/menu-dropdown';
 import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
-import shortid from 'shortid';
+
+const SORT_OPTIONS = {
+	UP: 'up',
+	DOWN: 'down',
+};
 
 const listOptions = [
 	{
-		id: shortid.generate(),
+		id: '001',
 		name: 'Riley Shultz',
 		ranking: '99',
 		company: 'Biotech, Inc.',
-		status: 'Nurturing'
+		status: 'Nurturing',
 	},
 	{
-		id: shortid.generate(),
+		id: '002',
 		name: 'Jason A. - VP of Sales',
 		ranking: '92',
 		company: 'Case Management Solutions',
-		status: 'Contacted'
+		status: 'Contacted',
 	},
 	{
-		id: shortid.generate(),
+		id: '003',
 		name: 'Josh Smith',
 		ranking: '90',
 		company: 'Acme, Inc.',
-		status: 'Contacted'
+		status: 'Contacted',
 	},
 	{
-		id: shortid.generate(),
+		id: '004',
 		name: 'Bobby Tree',
 		ranking: '89',
 		company: 'Salesforce, Inc.',
-		status: 'Closing'
+		status: 'Closing',
 	},
 	{
-		id: shortid.generate(),
+		id: '005',
 		name: 'Riley Shultz',
 		ranking: '74',
 		company: 'Tesla',
-		status: 'Contacted'
-	}
+		status: 'Contacted',
+	},
 ];
 
 const headerNavRight = (
 	<div>
 		<Dropdown
-			id={'header-nav-right-more'}
+			id="header-nav-right-more"
 			align="right"
 			assistiveText="More Options"
 			iconName="down"
 			iconVariant="border-filled"
 			options={[
 				{ label: 'Menu Item One', value: 'A0' },
-				{ label: 'Menu Item Two', value: 'B0' }
+				{ label: 'Menu Item Two', value: 'B0' },
 			]}
 		/>
 	</div>
@@ -69,8 +71,8 @@ const headerNavRight = (
 const headerContentRight = (
 	<div>
 		<Dropdown
-			id={'header-right-refresh'}
-			buttonClassName={'slds-m-right_xx-small'}
+			id="header-right-refresh"
+			buttonClassName="slds-m-right_xx-small"
 			assistiveText="Checkmark with right icon"
 			buttonVariant="icon"
 			checkmark
@@ -88,17 +90,17 @@ const headerContentRight = (
 					value: 'A0',
 					rightIcon: {
 						category: 'utility',
-						name: 'table'
-					}
+						name: 'table',
+					},
 				},
 				{
 					label: 'List View',
 					value: 'B0',
 					rightIcon: {
 						category: 'utility',
-						name: 'side_list'
-					}
-				}
+						name: 'side_list',
+					},
+				},
 			]}
 			value="B0"
 		/>
@@ -113,16 +115,16 @@ const headerContentRight = (
 );
 
 const headerTitle = (
-	<div className={'slds-media__body'}>
+	<div className="slds-media__body">
 		<h1 className="slds-text-heading_small slds-text-color_default slds-p-right_x-small">
 			<Dropdown
-				id={'header-title-leads'}
+				id="header-title-leads"
 				options={[
 					{ label: 'Menu Item One', value: 'A0' },
 					{ label: 'Menu Item Two', value: 'B0' },
 					{ label: 'Menu Item Three', value: 'C0' },
 					{ type: 'divider' },
-					{ label: 'Menu Item Four', value: 'D0' }
+					{ label: 'Menu Item Four', value: 'D0' },
 				]}
 			>
 				<DropdownTrigger>
@@ -147,9 +149,9 @@ const headerTitle = (
 const CustomListItem = (props) => (
 	<div>
 		<Icon
-			category={'action'}
+			category="action"
 			name={props.item.status === 'Contacted' ? 'check' : 'call'}
-			size={'x-small'}
+			size="x-small"
 		/>
 		<span className="slds-text-heading_small slds-m-left_medium">
 			{props.item.name}
@@ -160,8 +162,8 @@ const CustomListItem = (props) => (
 CustomListItem.propsTypes = {
 	item: PropTypes.shape({
 		status: PropTypes.string,
-		name: PropTypes.string
-	})
+		name: PropTypes.string,
+	}),
 };
 
 CustomListItem.displayName = 'CustomListItem';
@@ -174,7 +176,7 @@ class Example extends React.Component {
 			options: listOptions,
 			selected: [listOptions[listOptions.length - 2]],
 			unread: [listOptions[0], listOptions[2]],
-			sortDirection: SORT_OPTIONS.DOWN
+			sortDirection: SORT_OPTIONS.DOWN,
 		};
 
 		this.sortList = this.sortList.bind(this);
@@ -193,7 +195,7 @@ class Example extends React.Component {
 						? a.name > b.name
 						: b.name > a.name)
 			),
-			sortDirection
+			sortDirection,
 		});
 	}
 
@@ -202,7 +204,7 @@ class Example extends React.Component {
 	masterView () {
 		return [
 			<SplitViewHeader
-				key={'1'}
+				key="1"
 				contentRight={headerContentRight}
 				navRight={headerNavRight}
 				iconAssistiveText="User"
@@ -214,9 +216,9 @@ class Example extends React.Component {
 				variant="objectHome"
 			/>,
 			<SplitViewListbox
-				key={'2'}
+				key="2"
 				labels={{
-					header: 'Lead Score'
+					header: 'Lead Score',
 				}}
 				sortDirection={this.state.sortDirection}
 				options={this.state.options}
@@ -225,14 +227,14 @@ class Example extends React.Component {
 					onSelect: (event, { selectedItems, item }) => {
 						this.setState({
 							unread: this.state.unread.filter((i) => i !== item),
-							selected: selectedItems
+							selected: selectedItems,
 						});
-					}
+					},
 				}}
 				selection={this.state.selected}
 				unread={this.state.unread}
 				listItem={CustomListItem}
-			/>
+			/>,
 		];
 	}
 
@@ -291,7 +293,7 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<div style={{ height: '90vh' }}>
 					<SplitView
-						id={'custom-example'}
+						id="custom-example"
 						master={this.masterView()}
 						detail={this.detailView()}
 					/>

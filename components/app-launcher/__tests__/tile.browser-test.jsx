@@ -5,11 +5,11 @@ import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
 import IconSettings from '../../icon-settings';
 
-const expect = chai.expect;
-const should = chai.should();
-
 import AppLauncherTile from '../../app-launcher/tile';
 import Icon from '../../icon';
+
+const expect = chai.expect;
+const should = chai.should();
 
 const { Simulate } = TestUtils;
 
@@ -22,11 +22,11 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		icon: null,
 		more: null,
 		tile: null,
-		title: null
+		title: null,
 	};
 
 	const defaultTileProps = {
-		title: 'Marketing Cloud'
+		title: 'Marketing Cloud',
 	};
 
 	const createTile = (props) =>
@@ -69,7 +69,7 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 				href: 'https://www.marketingcloud.com/',
 				onClick,
 				search: 'upport',
-				title: 'Support Cloud'
+				title: 'Support Cloud',
 			});
 		});
 
@@ -166,7 +166,7 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 				title: 'Call Center',
 				description,
 				moreLabel,
-				search: 'enter'
+				search: 'enter',
 			});
 		});
 
@@ -212,7 +212,7 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 			mountTile({
 				title: 'Call Center',
 				iconText: 'CC',
-				description: 'Call center and contact center.'
+				description: 'Call center and contact center.',
 			});
 		});
 
@@ -238,7 +238,7 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 			mountTile({
 				description: 'Call center and contact center.',
 				iconNode,
-				title: 'Call Center'
+				title: 'Call Center',
 			});
 		});
 
@@ -264,7 +264,7 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 				iconText: 'SC',
 				size: 'small',
 				description: 'This is the app description',
-				search: 'upport'
+				search: 'upport',
 			});
 		});
 

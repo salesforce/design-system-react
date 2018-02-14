@@ -8,14 +8,13 @@ import PropTypes from 'prop-types';
 
 import assign from 'lodash.assign';
 
+import find from 'lodash.find';
+
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 import { PROGRESS_INDICATOR } from '../../utilities/constants';
-
-// ### find
-import find from 'lodash.find';
 
 // Child components
 import Step from './private/step';
@@ -30,7 +29,7 @@ const propTypes = {
 	 * * `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`
 	 */
 	assistiveText: PropTypes.shape({
-		percentage: PropTypes.string
+		percentage: PropTypes.string,
 	}),
 	/**
 	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
@@ -38,7 +37,7 @@ const propTypes = {
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
-		PropTypes.string
+		PropTypes.string,
 	]),
 	/**
 	 * Stores all completed steps. It is an array of step objects.
@@ -61,7 +60,7 @@ const propTypes = {
 	 * Triggered when an individual step is clicked. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.
 	 * ```
 	 * const handleStepClick = function(event, data) { console.log(data); };
-	 *     <ProgressIndicator onStepClick={handleStepClick} />
+	 *   <ProgressIndicator onStepClick={handleStepClick} />
 	 * ```
 	 */
 	onStepClick: PropTypes.func,
@@ -69,7 +68,7 @@ const propTypes = {
 	 * Triggered when an individual step is focused. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.
 	 * ```
 	 * const handleStepFocus = function(event, data) { console.log(data); };
-	 *     <ProgressIndicator onStepFocus={handleStepFocus} />
+	 *   <ProgressIndicator onStepFocus={handleStepFocus} />
 	 * ```
 	 */
 	onStepFocus: PropTypes.func,
@@ -81,9 +80,9 @@ const propTypes = {
 	 * It is an array of step objects in the following form:
 	 * ```
 	 *  [{
-	 *		id: <PropTypes.number> or <PropTypes.string>, has to be unique
-	 *		label: <PropTypes.string>, representing the tooltip content
-	 *		assistiveText: <PropTypes.string>, The default is `[Step props.index + 1]: [status]`. Status is if the step has been completed or in an error state.
+	 *    id: <PropTypes.number> or <PropTypes.string>, has to be unique
+	 *    label: <PropTypes.string>, representing the tooltip content
+	 *    assistiveText: <PropTypes.string>, The default is `[Step props.index + 1]: [status]`. Status is if the step has been completed or in an error state.
 	 *  }],
 	 *  ```
 	 */
@@ -95,7 +94,7 @@ const propTypes = {
 	/**
 	 * Determines component style.
 	 */
-	variant: PropTypes.oneOf(['base', 'modal'])
+	variant: PropTypes.oneOf(['base', 'modal']),
 };
 
 const defaultSteps = [
@@ -103,7 +102,7 @@ const defaultSteps = [
 	{ id: 1, label: 'tooltip label #2' },
 	{ id: 2, label: 'tooltip label #3' },
 	{ id: 3, label: 'tooltip label #4' },
-	{ id: 4, label: 'tooltip label #5' }
+	{ id: 4, label: 'tooltip label #5' },
 ];
 
 const defaultProps = {
@@ -115,7 +114,7 @@ const defaultProps = {
 	variant: 'base',
 	// click/focus callbacks by default do nothing
 	onStepClick: () => {},
-	onStepFocus: () => {}
+	onStepFocus: () => {},
 };
 
 /**
