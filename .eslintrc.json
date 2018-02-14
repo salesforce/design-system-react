@@ -12,7 +12,10 @@
 			"modules": true
 		}
 	},
-	"plugins": ["filenames"],
+	"plugins": [
+		"filenames",
+		"json"
+	],
 	"env": {
 		"browser": true
 	},

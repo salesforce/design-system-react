@@ -10,8 +10,7 @@
 	"scripts": {
 		"build-docs": "./node_modules/.bin/babel-node ./scripts/build-docs.js",
 		"build-storybook": "build-storybook -o ./storybook",
-		"build-storybook-for-tests":
-			"build-storybook -o ./storybook-based-tests -c ./.storybook-based-tests",
+		"build-storybook-for-tests": "build-storybook -o ./storybook-based-tests -c ./.storybook-based-tests",
 		"dist": "scripts/dist.sh",
 		"heroku-prebuild": "./scripts/heroku-prebuild.sh",
 		"heroku-postbuild": "./scripts/heroku-postbuild.sh",
@@ -19,25 +18,16 @@
 		"link": "./scripts/npm-link.sh",
 		"lint": "npm run lint:style && npm run lint:quality",
 		"lint:docs": "./node_modules/.bin/prettylint \"*.md\"",
-		"lint:fix":
-			"./node_modules/.bin/prettier-eslint --write \"**/*.{js,jsx}\" && ./node_modules/.bin/prettylint \"*.json\" --fix",
-		"lint:quality":
-			"./node_modules/.bin/eslint \"**/*.{js,jsx}\" --max-warnings=0",
-		"lint:style":
-			"./node_modules/.bin/prettier-eslint --list-different \"**/*.{js,jsx}\" && ./node_modules/.bin/prettylint \"*.json\"",
-		"publish:origin":
-			"./node_modules/.bin/babel-node scripts/publish-to-git.js",
-		"publish:edge":
-			"./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge",
-		"publish:upstream":
-			"./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
-		"release:patch":
-			"./node_modules/.bin/babel-node scripts/release.js --release=patch",
-		"release:minor":
-			"./node_modules/.bin/babel-node scripts/release.js --release=minor",
+		"lint:fix": "./node_modules/.bin/prettier-eslint --write \"**/*.{js,jsx}\" && ./node_modules/.bin/prettylint \"*.json\" --fix",
+		"lint:quality": "./node_modules/.bin/eslint \"**/*.{js,jsx,json}\" --max-warnings=0",
+		"lint:style": "./node_modules/.bin/prettier-eslint --list-different \"**/*.{js,jsx}\" && ./node_modules/.bin/prettylint \"*.json\"",
+		"publish:origin": "./node_modules/.bin/babel-node scripts/publish-to-git.js",
+		"publish:edge": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge",
+		"publish:upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
+		"release:patch": "./node_modules/.bin/babel-node scripts/release.js --release=patch",
+		"release:minor": "./node_modules/.bin/babel-node scripts/release.js --release=minor",
 		"snapshot-test": "./node_modules/.bin/jest",
-		"start":
-			"./node_modules/.bin/start-storybook -p 9001 -s ./node_modules & node tests/app",
+		"start": "./node_modules/.bin/start-storybook -p 9001 -s ./node_modules & node tests/app",
 		"start:static": "node app",
 		"storybook": "start-storybook -p 9001 -s ./node_modules",
 		"test": "scripts/local-qa.sh --no-fix",
@@ -437,8 +427,7 @@
 				"date-iso-8601": "2017/05/02",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path":
-				"/components/global-navigation#flavor-navigation-bar",
+			"SLDS-component-path": "/components/global-navigation#flavor-navigation-bar",
 			"dependencies": [
 				{
 					"component": "button"
@@ -672,8 +661,7 @@
 	],
 	"documentation": {
 		"prototype": {
-			"description":
-				"The following components are prototypes. (a) Props may change within a minor release. (b) Web Content Accessibility Guidelines may not be met. (c) CSS imports may be required, since it is being added to SLDS."
+			"description": "The following components are prototypes. (a) Props may change within a minor release. (b) Web Content Accessibility Guidelines may not be met. (c) CSS imports may be required, since it is being added to SLDS."
 		}
 	}
 }
