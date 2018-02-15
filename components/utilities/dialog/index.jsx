@@ -94,6 +94,7 @@ const Dialog = createReactClass({
 		 * Props passed along to wrapping div. This allows one less wrapping `div` to be in the markup. dialog children are expected to be wrapper in a single `div`.
 		 */
 		containerProps: PropTypes.object,
+
 		/**
 		 * Sets the dialog width to the width of the target. Menus attached to `input` typically follow this UX pattern.
 		 */
@@ -380,6 +381,9 @@ const Dialog = createReactClass({
 			style.width = this.props
 				.onRequestTargetElement()
 				.getBoundingClientRect().width;
+		} else if (!this.props.inheritTargetWidth && this.dialogContent) {
+			// inherit menu renderer width
+			style.width = this.dialogContent.querySelector('.slds-listbox').getBoundingClientRect().width;
 		}
 
 		if (this.props.style) {

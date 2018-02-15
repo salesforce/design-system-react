@@ -4,6 +4,8 @@ import { storiesOf, action } from '@storybook/react';
 import { COMBOBOX } from '../../../utilities/constants';
 
 import Base from '../__examples__/base';
+import BaseMenuSubHeader from '../__examples__/base-menu-subheader';
+import BaseInheritMenuWidth from '../__examples__/base-inherit-menu-width.jsx';
 import PredefinedOptionsOnly from '../__examples__/base-predefined-options-only';
 import InlineSingle from '../__examples__/inline-single';
 import InlineMultiple from '../__examples__/inline-multiple';
@@ -12,6 +14,7 @@ import ReadOnly from '../__examples__/readonly-single';
 import ReadOnlySingleSelectionCustomMenuItem from '../__examples__/readonly-single-selection-custom-menu-item';
 import ReadOnlyMultiple from '../__examples__/readonly-multiple';
 import SnapshotBaseOpen from '../__examples__/snapshot/base-open';
+import SnapshotBaseMenuSubHeaderSeparator from '../__examples__/snapshot/base-open-menu-sub-header';
 import SnapshotBaseCustomMenuItemOpen from '../__examples__/snapshot/base-custom-menu-item-open';
 import SnapshotBaseSelected from '../__examples__/snapshot/base-selected';
 import SnapshotInlineSingleSelection from '../__examples__/snapshot/inline-single-selection';
@@ -37,6 +40,8 @@ storiesOf(COMBOBOX, module)
 	.add('Inline Single Selection', () => <InlineSingle action={action} />)
 	.add('Inline Multiple Selection', () => <InlineMultiple action={action} />)
 	.add('Base Custom Menu Item', () => <BaseCustomMenuItem action={action} />)
+	.add('Base Menu Sub Headers', () => <BaseMenuSubHeader action={action} />)
+	.add('Base Inherit Menu Width', () => <BaseInheritMenuWidth action={action} />)
 	.add('Readonly Single Selection', () => <ReadOnly action={action} />)
 	.add('Readonly Multiple Selection', () => (
 		<ReadOnlyMultiple action={action} />
@@ -49,6 +54,8 @@ storiesOf(COMBOBOX, module)
 		<SnapshotBaseCustomMenuItemOpen action={action} />
 	))
 	.add('Snapshot Base Selected', () => <SnapshotBaseSelected action={action} />)
+	.add('Snapshot Base Menu Sub Header Separator', () => <SnapshotBaseMenuSubHeaderSeparator action={action} />)
+
 	.add('Snapshot Inline Single Selection', () => (
 		<SnapshotInlineSingleSelection action={action} />
 	))
