@@ -11,14 +11,6 @@ import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 
-import { POPOVER_TOOLTIP } from '../../utilities/constants';
-
-import Dialog from '../utilities/dialog';
-import { getMargin, getNubbinClassName } from '../../utilities/dialog-helpers';
-
-// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
-import checkProps from './check-props';
-
 // ### Util helpers
 import flatten from 'lodash.flatten';
 import compact from 'lodash.compact';
@@ -27,6 +19,14 @@ import compact from 'lodash.compact';
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
+
+import { POPOVER_TOOLTIP } from '../../utilities/constants';
+
+import Dialog from '../utilities/dialog';
+import { getMargin, getNubbinClassName } from '../../utilities/dialog-helpers';
+
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
 
 // ### Display Name
 // Always use the canonical component name as the React display name.

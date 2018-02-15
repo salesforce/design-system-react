@@ -5,18 +5,16 @@
 // Based on SLDS v2.4.0
 import React from 'react';
 import PropTypes from 'prop-types';
-import { shape } from 'airbnb-prop-types';
 
 import assign from 'lodash.assign';
+
+import find from 'lodash.find';
 
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 import { PROGRESS_INDICATOR } from '../../utilities/constants';
-
-// ### find
-import find from 'lodash.find';
 
 // Child components
 import Step from './private/step';
@@ -30,7 +28,7 @@ const propTypes = {
 	 * This object is merged with the default props object on every render.
 	 * * `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`
 	 */
-	assistiveText: shape({
+	assistiveText: PropTypes.shape({
 		percentage: PropTypes.string,
 	}),
 	/**

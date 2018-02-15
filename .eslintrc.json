@@ -135,8 +135,6 @@
     "func-names": "off",
     // May consider removing
     "function-paren-newline": "off",
-    // TODO: Should be removed
-    "import/first": "off",
     // currently used in older files, this should be removed
     "no-param-reassign": [
       2,

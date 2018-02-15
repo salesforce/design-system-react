@@ -6,20 +6,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Dialog from '../utilities/dialog';
-import InnerInput from '../../components/forms/input/private/inner-input';
-import InputIcon from '../icon/input-icon';
-import Menu from './private/menu';
-import Label from '../forms/private/label';
-import SelectedListBox from './private/selected-listbox';
-
 import assign from 'lodash.assign';
 import find from 'lodash.find';
 import reject from 'lodash.reject';
 import isEqual from 'lodash.isequal';
 import findIndex from 'lodash.findindex';
-
-import { shape } from 'airbnb-prop-types';
 
 import isBoolean from 'lodash.isboolean';
 import isFunction from 'lodash.isfunction';
@@ -27,6 +18,13 @@ import isFunction from 'lodash.isfunction';
 import classNames from 'classnames';
 
 import shortid from 'shortid';
+
+import Dialog from '../utilities/dialog';
+import InnerInput from '../../components/forms/input/private/inner-input';
+import InputIcon from '../icon/input-icon';
+import Menu from './private/menu';
+import Label from '../forms/private/label';
+import SelectedListBox from './private/selected-listbox';
 
 import KEYS from '../../utilities/key-code';
 import mapKeyEventCallbacks from '../../utilities/key-callbacks';
@@ -48,7 +46,7 @@ const propTypes = {
 	 * * `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.
 	 * _Tested with snapshot testing._
 	 */
-	assistiveText: shape({
+	assistiveText: PropTypes.shape({
 		label: PropTypes.string,
 		optionSelectedInMenu: PropTypes.string,
 		removeSingleSelectedOption: PropTypes.string,
@@ -101,7 +99,7 @@ const propTypes = {
 	 * * `onSubmit`: Function called when user presses enter or submits the `input`
 	 * _Tested with Mocha testing._
 	 */
-	events: shape({
+	events: PropTypes.shape({
 		onBlur: PropTypes.func,
 		onChange: PropTypes.func,
 		onClose: PropTypes.func,
@@ -132,7 +130,7 @@ const propTypes = {
 	 * * `removePillTitle`: Title on `X` icon
 	 * _Tested with snapshot testing._
 	 */
-	labels: shape({
+	labels: PropTypes.shape({
 		label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 		multipleOptionsSelected: PropTypes.string,
 		noOptionsFound: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),

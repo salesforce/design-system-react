@@ -12,11 +12,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
-import checkProps from './check-props';
-
 // ### classNames
 import classNames from 'classnames';
+
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
 
 // ## Constants
 import { PANEL } from '../../utilities/constants';

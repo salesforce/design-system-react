@@ -10,10 +10,10 @@ import {
 	destroyMountNode,
 } from '../../../tests/enzyme-helpers';
 
-chai.use(chaiEnzyme());
-
 import SLDSAvatar from '../../avatar';
 import IconSettings from '../../icon-settings';
+
+chai.use(chaiEnzyme());
 
 describe('SLDSAvatar: ', function () {
 	let mountNode;

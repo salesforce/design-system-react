@@ -11,7 +11,6 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
-import { shape } from 'airbnb-prop-types';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -67,7 +66,7 @@ const Input = createReactClass({
 		 * * `label`: Visually hidden label but read out loud by screen readers.
 		 * * `spinner`: Text for loading spinner icon.
 		 */
-		assistiveText: shape({
+		assistiveText: PropTypes.shape({
 			label: PropTypes.string,
 			spinner: PropTypes.string,
 		}),

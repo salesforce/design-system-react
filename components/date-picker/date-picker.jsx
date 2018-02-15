@@ -4,14 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Dialog from '../utilities/dialog';
-import CalendarWrapper from './private/calendar-wrapper';
-import InputIcon from '../icon/input-icon';
-import Input from '../forms/input';
-
 import assign from 'lodash.assign';
-
-import { shape } from 'airbnb-prop-types';
 
 // ### isBoolean
 import isBoolean from 'lodash.isboolean';
@@ -26,6 +19,11 @@ import classNames from 'classnames';
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
+
+import Dialog from '../utilities/dialog';
+import CalendarWrapper from './private/calendar-wrapper';
+import InputIcon from '../icon/input-icon';
+import Input from '../forms/input';
 
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)
@@ -44,7 +42,7 @@ const propTypes = {
 	 * * `openCalendar`: Call to action label for calendar dialog trigger _Tested with snapshot testing._
 	 * * `previousMonth`: Label for button to go to the previous month _Tested with snapshot testing._
 	 */
-	assistiveText: shape({
+	assistiveText: PropTypes.shape({
 		nextMonth: PropTypes.string,
 		openCalendar: PropTypes.string,
 		previousMonth: PropTypes.string,
@@ -98,7 +96,7 @@ const propTypes = {
 	 * * `today`: Label of shortcut to jump to today within the calendar. This is also used for assistive text on today's date. _Tested with snapshot testing._
 	 * * `weekDays`: Full names of the seven days of the week, starting on Sunday. _Tested with snapshot testing._
 	 */
-	labels: shape({
+	labels: PropTypes.shape({
 		abbreviatedWeekDays: PropTypes.array,
 		label: PropTypes.string,
 		months: PropTypes.array,

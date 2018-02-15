@@ -13,6 +13,9 @@ import PropTypes from 'prop-types';
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
+// ### classNames
+import classNames from 'classnames';
+
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
@@ -21,9 +24,6 @@ import shortid from 'shortid';
 // ### Event Helpers
 import KEYS from '../../../utilities/key-code';
 import EventUtil from '../../../utilities/event';
-
-// ### classNames
-import classNames from 'classnames';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
