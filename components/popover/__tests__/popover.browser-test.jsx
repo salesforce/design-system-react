@@ -38,6 +38,11 @@ const defaultIds = {
 	heading: `${defaultProps.id}-dialog-heading`,
 };
 
+const getNodes = ({ wrapper }) => ({
+	popover: wrapper.find('.slds-popover'),
+	closeButton: wrapper.find('.slds-popover__close'),
+});
+
 /* A re-usable demo component fixture outside of `describe` sections
  * can accept props within each test and be unmounted after each tests.
  * This wrapping component will be similar to your wrapping component
@@ -241,6 +246,35 @@ describe('SLDSPopover', function () {
 				const trigger = wrapper.find(`#${defaultIds.trigger}`);
 				trigger.simulate('click', {});
 			});
+		});
+	});
+
+	describe('focus has moved to dialog', function () {
+		const triggerClicked = sinon.spy();
+
+		beforeEach(() => {
+			mountNode = createMountNode({ context: this });
+		});
+
+		afterEach(() => {
+			destroyMountNode({ wrapper, mountNode });
+		});
+
+		it('focus moves to correct node on open', function (done) {
+			wrapper = mount(
+				<DemoComponent
+					onClick={triggerClicked}
+					onOpen={() => {
+						const nodes = getNodes({ wrapper });
+						expect(document.activeElement.id).to.equal(`${defaultIds.popover}`);
+						done();
+					}}
+				/>,
+				{ attachTo: mountNode }
+			);
+
+			const trigger = wrapper.find(`#${defaultIds.trigger}`);
+			trigger.simulate('click', {});
 		});
 	});
 

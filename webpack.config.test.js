@@ -8,7 +8,7 @@ const StringReplacePlugin = require('string-replace-webpack-plugin');
 const config = require('./webpack.config');
 
 config.entry = {
-	tests: ['./components/tests-bundle.js', hotMiddlewareScript],
+	'browser-tests': ['./tests/browser-tests.js', hotMiddlewareScript],
 };
 
 // used by enzyme
