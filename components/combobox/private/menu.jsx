@@ -44,10 +44,16 @@ const propTypes = {
 		PropTypes.string,
 	]),
 	/**
-	 * Sets the dialog width to the width of the target. Menus attached to `input` typically follow this UX pattern.
-	 * If false, sets the dialog width to the width of menu renderer.
+	 * Sets the dialog width to the width of one of the following:
+	 * `target`: (Menus attached to `input` typically follow this UX pattern),
+	 *  `menu`: Consider setting a menuMaxWidth if using this value. If not, width will be set to width of largest menu item.
+	 *  'none'
 	 */
-	inheritTargetWidth: PropTypes.bool,
+	inheritWidthOf: PropTypes.oneOf([
+		'target',
+		'menu',
+		'none'
+	]),
 	/*
 	 * Id used for assistive technology
 	 */
@@ -77,7 +83,7 @@ const propTypes = {
 	 */
 	menuItem: PropTypes.func,
 	/*
-	 * Sets a maximum width that the menu will be if inheritTargetWidth is false.
+	 * Sets a maximum width that the menu will be if inheritWidthOf is menu.
 	 */
 	maxWidth: PropTypes.string,
 	/*
@@ -107,10 +113,10 @@ const propTypes = {
 const defaultProps = {};
 
 const Menu = (props) => {
-	const style = props.inheritTargetWidth ? null : {
+	const style = props.inheritWidthOf === 'menu' ? {
 		width: 'auto',
 		maxWidth: props.maxWidth ? props.maxWidth : 'inherit'
-	};
+	} : null;
 	const menuOptions = props.options.map((optionData, index) => {
 		const active =
 			index === props.activeOptionIndex &&

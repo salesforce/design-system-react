@@ -67,7 +67,7 @@ class Example extends React.Component {
 				<Combobox
 					id="combobox-unique-id"
 					disabled={this.props.disabled}
-					inheritTargetWidth={false}
+					inheritWidthOf="menu"
 					events={{
 						onChange: (event, { value }) => {
 							if (this.props.action) {

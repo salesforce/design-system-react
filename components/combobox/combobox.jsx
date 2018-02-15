@@ -142,13 +142,17 @@ const propTypes = {
 	 * Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use view [Concepts and Best Practices](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices) _Tested with snapshot testing._
 	 */
 	isOpen: PropTypes.bool,
-
 	/**
-	 * Sets the dialog width to the width of the target. Menus attached to `input` typically follow this UX pattern.
-	 * If false, sets the dialog width to the width of menu renderer.
+	 * Sets the dialog width to the width of one of the following:
+	 * `target`: (Menus attached to `input` typically follow this UX pattern),
+	 *  `menu`: You may set a menuMaxWidth if using this value. If not, width will be set to width of largest menu item.
+	 *  'none'
 	 */
-	inheritTargetWidth: PropTypes.bool,
-
+	inheritWidthOf: PropTypes.oneOf([
+		'target',
+		'menu',
+		'none'
+	]),
 	/**
 	 * Accepts a custom menu item rendering function that becomes a custom component. The checkmark is still rendered in readonly variants. This function is passed the following props:
 	 * * `assistiveText`: Object, `assistiveText` prop that is passed into Combobox
@@ -170,7 +174,7 @@ const propTypes = {
 		'relative',
 	]),
 	/*
-	 * Sets a maximum width that the menu will be used if inheritTargetWidth is false.
+	 * Sets a maximum width that the menu will be used if inheritWidthOf is set to menu.
 	 */
 	menuMaxWidth: PropTypes.string,
 	/**
@@ -216,7 +220,7 @@ const defaultProps = {
 		placeholderReadOnly: 'Select an Option',
 		removePillTitle: 'Remove',
 	},
-	inheritTargetWidth: true,
+	inheritWidthOf: 'target',
 	menuPosition: 'absolute',
 	readOnlyMenuItemVisibleLength: 5,
 	selection: [],
@@ -303,7 +307,7 @@ class Combobox extends React.Component {
 				align="bottom left"
 				context={this.context}
 				hasStaticAlignment={this.props.hasStaticAlignment}
-				inheritTargetWidth={this.props.inheritTargetWidth}
+				inheritWidthOf={this.props.inheritWidthOf}
 				onClose={this.handleClose}
 				onOpen={this.handleOpen}
 				onRequestTargetElement={this.getTargetElement}
@@ -966,7 +970,7 @@ class Combobox extends React.Component {
 				activeOptionIndex={this.state.activeOptionIndex}
 				classNameMenu={this.props.classNameMenu}
 				classNameMenuSubHeader={this.props.classNameMenuSubHeader}
-				inheritTargetWidth={this.props.inheritTargetWidth}
+				inheritWidthOf={this.props.inheritWidthOf}
 				inputId={this.getId()}
 				inputValue={this.props.value}
 				isSelected={this.isSelected}
