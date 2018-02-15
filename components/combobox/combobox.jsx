@@ -172,7 +172,7 @@ const propTypes = {
 		'relative',
 	]),
 	/*
-	 * Sets a maximum width that the menu will be if inheritTargetWidth is false.
+	 * Sets a maximum width that the menu will be used if inheritTargetWidth is false.
 	 */
 	menuMaxWidth: PropTypes.string,
 	/**
