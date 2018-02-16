@@ -49,11 +49,7 @@ const propTypes = {
 	 *  `menu`: Consider setting a menuMaxWidth if using this value. If not, width will be set to width of largest menu item.
 	 *  'none'
 	 */
-	inheritWidthOf: PropTypes.oneOf([
-		'target',
-		'menu',
-		'none'
-	]),
+	inheritWidthOf: PropTypes.oneOf(['target', 'menu', 'none']),
 	/*
 	 * Id used for assistive technology
 	 */
@@ -68,10 +64,8 @@ const propTypes = {
 	 * * `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.
 	 */
 	labels: PropTypes.shape({
-		noOptionsFound: PropTypes.oneOfType([
-			PropTypes.node,
-			PropTypes.string
-		]).isRequired,
+		noOptionsFound: PropTypes.oneOfType([PropTypes.node, PropTypes.string])
+			.isRequired,
 	}),
 	/**
 	 * Accepts a custom menu item rendering function that becomes a custom component and is passed in the following props:
@@ -113,10 +107,13 @@ const propTypes = {
 const defaultProps = {};
 
 const Menu = (props) => {
-	const style = props.inheritWidthOf === 'menu' ? {
-		width: 'auto',
-		maxWidth: props.maxWidth ? props.maxWidth : 'inherit'
-	} : null;
+	const style =
+		props.inheritWidthOf === 'menu'
+			? {
+				width: 'auto',
+				maxWidth: props.maxWidth ? props.maxWidth : 'inherit',
+			}
+			: null;
 	const menuOptions = props.options.map((optionData, index) => {
 		const active =
 			index === props.activeOptionIndex &&
@@ -128,26 +125,24 @@ const Menu = (props) => {
 		const MenuItem = props.menuItem;
 
 		if (optionData.type === 'separator') {
-			return (
-				optionData.label ? (
-					<li
-						className="slds-dropdown__header slds-truncate"
-						title={optionData.label}
-						role="separator"
-						key={`menu-option-${optionData.id}`}
+			return optionData.label ? (
+				<li
+					className="slds-dropdown__header slds-truncate"
+					title={optionData.label}
+					role="separator"
+					key={`menu-option-${optionData.id}`}
+				>
+					<span
+						className={classNames(
+							'slds-text-title_caps',
+							props.classNameMenuSubHeader
+						)}
 					>
-						<span
-							className={classNames(
-								'slds-text-title_caps',
-								props.classNameMenuSubHeader
-							)}
-						>
-							{ optionData.label }
-						</span>
-					</li>
-				) : (
-					<li className="slds-has-divider_top-space" role="separator" />
-				)
+						{optionData.label}
+					</span>
+				</li>
+			) : (
+				<li className="slds-has-divider_top-space" role="separator" />
 			);
 		}
 

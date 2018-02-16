@@ -41,7 +41,9 @@ storiesOf(COMBOBOX, module)
 	.add('Inline Multiple Selection', () => <InlineMultiple action={action} />)
 	.add('Base Custom Menu Item', () => <BaseCustomMenuItem action={action} />)
 	.add('Base Menu Sub Headers', () => <BaseMenuSubHeader action={action} />)
-	.add('Base Inherit Menu Width', () => <BaseInheritMenuWidth action={action} />)
+	.add('Base Inherit Menu Width', () => (
+		<BaseInheritMenuWidth action={action} />
+	))
 	.add('Readonly Single Selection', () => <ReadOnly action={action} />)
 	.add('Readonly Multiple Selection', () => (
 		<ReadOnlyMultiple action={action} />
@@ -54,7 +56,9 @@ storiesOf(COMBOBOX, module)
 		<SnapshotBaseCustomMenuItemOpen action={action} />
 	))
 	.add('Snapshot Base Selected', () => <SnapshotBaseSelected action={action} />)
-	.add('Snapshot Base Menu Sub Header Separator', () => <SnapshotBaseMenuSubHeaderSeparator action={action} />)
+	.add('Snapshot Base Menu Sub Header Separator', () => (
+		<SnapshotBaseMenuSubHeaderSeparator action={action} />
+	))
 
 	.add('Snapshot Inline Single Selection', () => (
 		<SnapshotInlineSingleSelection action={action} />

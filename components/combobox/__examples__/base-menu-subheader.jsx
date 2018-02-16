@@ -9,7 +9,7 @@ const accounts = [
 	{
 		id: '0',
 		label: 'Accounts',
-		type: 'separator'
+		type: 'separator',
 	},
 	{
 		id: '1',

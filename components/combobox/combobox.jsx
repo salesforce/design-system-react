@@ -148,11 +148,7 @@ const propTypes = {
 	 *  `menu`: Consider setting a menuMaxWidth if using this value. If not, width will be set to width of largest menu item.
 	 *  'none'
 	 */
-	inheritWidthOf: PropTypes.oneOf([
-		'target',
-		'menu',
-		'none'
-	]),
+	inheritWidthOf: PropTypes.oneOf(['target', 'menu', 'none']),
 	/**
 	 * Accepts a custom menu item rendering function that becomes a custom component. The checkmark is still rendered in readonly variants. This function is passed the following props:
 	 * * `assistiveText`: Object, `assistiveText` prop that is passed into Combobox
@@ -337,7 +333,8 @@ class Combobox extends React.Component {
 	getNewActiveOptionIndex = ({ activeOptionIndex, offset, options }) => {
 		// used by menu listbox and selected options listbox
 		const nextIndex = activeOptionIndex + offset;
-		const skipIndex = options.length > nextIndex && options[nextIndex].type === 'separator';
+		const skipIndex =
+			options.length > nextIndex && options[nextIndex].type === 'separator';
 		const newIndex = skipIndex ? nextIndex + offset : nextIndex;
 		const hasNewIndex = options.length > newIndex && newIndex >= 0;
 		return hasNewIndex ? newIndex : activeOptionIndex;

@@ -16,7 +16,7 @@ const accounts = [
 		label: 'Salesforce.com, Inc.',
 		subTitle: 'Account • San Francisco',
 		type: 'account',
-	}
+	},
 ];
 
 class Example extends React.Component {
@@ -70,7 +70,7 @@ class Example extends React.Component {
 						onSelect: (event, data) => {
 							console.log('onSelect', data);
 							this.setState({ selection: data.selection });
-						}
+						},
 					}}
 					options={accounts}
 					selection={this.state.selection}

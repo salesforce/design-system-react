@@ -8,7 +8,8 @@ import IconSettings from '~/components/icon-settings';
 const accounts = [
 	{
 		id: '1',
-		label: 'A very very very very very very very very very very very long title to show how menu width will behave',
+		label:
+			'A very very very very very very very very very very very long title to show how menu width will behave',
 		subTitle: 'Account • San Francisco ',
 		type: 'account',
 	},
