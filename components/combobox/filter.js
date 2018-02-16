@@ -8,9 +8,9 @@ import escapeRegExp from 'lodash.escaperegexp';
 const filter = ({ inputValue, limit = 10, options, selection }) =>
 	options
 		.filter((option) => {
-			const searchTermFound = option.label.match(
-				new RegExp(escapeRegExp(inputValue), 'ig')
-			);
+			const searchTermFound = option.label
+				? option.label.match(new RegExp(escapeRegExp(inputValue), 'ig'))
+				: false;
 			const isSection = option.data && option.data.type === 'section';
 			const notAlreadySelected = !selection.includes(option);
 

@@ -5,6 +5,7 @@ import { COMBOBOX } from '../../../utilities/constants';
 
 import Base from '../__examples__/base';
 import BaseMenuSubHeader from '../__examples__/base-menu-subheader';
+import BaseMenuSeparator from '../__examples__/base-menu-separator';
 import BaseInheritMenuWidth from '../__examples__/base-inherit-menu-width.jsx';
 import PredefinedOptionsOnly from '../__examples__/base-predefined-options-only';
 import InlineSingle from '../__examples__/inline-single';
@@ -41,6 +42,7 @@ storiesOf(COMBOBOX, module)
 	.add('Inline Multiple Selection', () => <InlineMultiple action={action} />)
 	.add('Base Custom Menu Item', () => <BaseCustomMenuItem action={action} />)
 	.add('Base Menu Sub Headers', () => <BaseMenuSubHeader action={action} />)
+	.add('Base Menu Separator', () => <BaseMenuSeparator action={action} />)
 	.add('Base Inherit Menu Width', () => (
 		<BaseInheritMenuWidth action={action} />
 	))
