@@ -20,6 +20,9 @@ import { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import assign from 'lodash.assign';
 
+import SLDSProgressIndicator from '../../progress-indicator';
+import IconSettings from '../../icon-settings';
+
 /* Enzyme Helpers that can mount and unmount React component instances to
  * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`
  * context [full source here](tests/enzyme-helpers.js). `this` can
@@ -35,9 +38,6 @@ const {
 	findRenderedDOMComponentWithTag,
 	findRenderedDOMComponentWithClass,
 } = TestUtils;
-
-import SLDSProgressIndicator from '../../progress-indicator';
-import IconSettings from '../../icon-settings';
 
 const defaultProps = {
 	id: 'sample-progress-indicator',

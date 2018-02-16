@@ -6,13 +6,8 @@ const canUseDOM = !!(
 	window.document &&
 	window.document.createElement
 );
+const canUseEventListeners =
+	canUseDOM && !!(window.addEventListener || window.attachEvent);
+const canUseViewport = canUseDOM && !!window.screen;
 
-const ExecutionEnvironment = {
-	canUseDOM,
-	canUseWorkers: typeof Worker !== 'undefined',
-	canUseEventListeners:
-		canUseDOM && !!(window.addEventListener || window.attachEvent),
-	canUseViewport: canUseDOM && !!window.screen,
-};
-
-export default ExecutionEnvironment;
+export { canUseDOM, canUseEventListeners, canUseViewport };
