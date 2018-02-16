@@ -47,7 +47,7 @@ import Button from '@salesforce/design-system-react/components/button';
 
 ```json
 {
-  "presets": ["@salesforce/babel-preset-design-system-react"]
+	"presets": ["@salesforce/babel-preset-design-system-react"]
 }
 ```
 
