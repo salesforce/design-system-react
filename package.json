@@ -1,673 +1,667 @@
 {
-  "name": "design-system-react",
-  "version": "0.8.7",
-  "description": "Salesforce Lightning Design System for React",
-  "license": "SEE LICENSE IN README.md",
-  "engines": {
-    "node": "8.x",
-    "npm": "^5.5.1"
-  },
-  "scripts": {
-    "build-docs": "./node_modules/.bin/babel-node ./scripts/build-docs.js",
-    "build-storybook": "build-storybook -o ./storybook",
-    "build-storybook-for-tests": "build-storybook -o ./storybook-based-tests -c ./.storybook-based-tests",
-    "dist": "scripts/dist.sh",
-    "heroku-prebuild": "./scripts/heroku-prebuild.sh",
-    "heroku-postbuild": "./scripts/heroku-postbuild.sh",
-    "icons": "./node_modules/.bin/babel-node scripts/inline-icons.js",
-    "link": "./scripts/npm-link.sh",
-    "lint": "npm run lint:style && npm run lint:quality",
-    "lint:fix": "./node_modules/.bin/prettier-eslint --write \"**/*.{js,jsx}\" && ./node_modules/.bin/prettier --use-tabs=false --write \"*.json\"",
-    "lint:quality": "./node_modules/.bin/eslint \"**/*.{js,jsx}\" --max-warnings=0",
-    "lint:style": "./node_modules/.bin/prettier-eslint --list-different \"**/*.{js,jsx}\" && ./node_modules/.bin/prettier --use-tabs=false --list-different \"*.json\"",
-    "publish:origin": "./node_modules/.bin/babel-node scripts/publish-to-git.js",
-    "publish:edge": "./node_modules/.bin/babel-node scripts/publish-to-git.js --tag=edge",
-    "publish:upstream": "./node_modules/.bin/babel-node scripts/publish-to-git.js --remote=upstream",
-    "release:patch": "./node_modules/.bin/babel-node scripts/release.js --release=patch",
-    "release:minor": "./node_modules/.bin/babel-node scripts/release.js --release=minor",
-    "snapshot-test": "./node_modules/.bin/jest",
-    "start": "./node_modules/.bin/start-storybook -p 9001 -s ./node_modules & node tests/browser-tests-app",
-    "start:static": "node app",
-    "storybook": "start-storybook -p 9001 -s ./node_modules",
-    "test": "scripts/local-qa.sh --no-fix",
-    "test:fix": "scripts/local-qa.sh",
-    "travis-ci": "scripts/travis-ci.sh",
-    "validate": "npm ls",
-    "version": "git add package.json && git commit -m \"Bump package version\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/salesforce/design-system-react.git"
-  },
-  "jest": {
-    "testRegex": "/(components|tests)/.*\\.snapshot-test\\.jsx?$",
-    "testEnvironment": "node",
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/preset/",
-      "/.tmp-amd/",
-      "/.tmp-commonjs/",
-      "/.tmp-es/",
-      "/.tmp-npm/"
-    ],
-    "transformIgnorePatterns": [
-      "/node_modules/",
-      "/preset/",
-      "/.tmp-amd/",
-      "/.tmp-commonjs/",
-      "/.tmp-es/",
-      "/.tmp-npm/"
-    ]
-  },
-  "keywords": [
-    "react",
-    "slds",
-    "salesforce",
-    "salesforce-ux",
-    "lightning",
-    "design system",
-    "lightning design system",
-    "salesforce lightning design system",
-    "interactive components",
-    "interactive",
-    "components"
-  ],
-  "bugs": {
-    "url": "https://github.com/salesforce/design-system-react/issues"
-  },
-  "main": "components/index.js",
-  "module": "components/index.js",
-  "homepage": "https://react.lightningdesignsystem.com",
-  "dependencies": {
-    "@salesforce/babel-preset-design-system-react": "^1.0.0",
-    "babel-preset-es2015": "^6.24.1",
-    "classnames": "^2.2.5",
-    "create-react-class": "^15.6.0",
-    "lodash.assign": "^4.0.9",
-    "lodash.compact": "^3.0.0",
-    "lodash.escaperegexp": "^4.1.1",
-    "lodash.find": "^4.3.0",
-    "lodash.findindex": "^4.3.0",
-    "lodash.flatten": "^4.2.0",
-    "lodash.isboolean": "^3.0.3",
-    "lodash.isdate": "^4.0.1",
-    "lodash.isequal": "^4.2.0",
-    "lodash.isfunction": "^3.0.8",
-    "lodash.isnumber": "^3.0.3",
-    "lodash.memoize": "^4.1.1",
-    "lodash.omit": "^4.3.0",
-    "lodash.partial": "^4.1.3",
-    "lodash.reject": "^4.3.0",
-    "lodash.uniqueid": "^4.0.0",
-    "popper.js": "^1.10.8",
-    "prop-types": ">=15.5.8",
-    "react-highlighter": "^0.4.0",
-    "react-modal": "^1.7.7",
-    "react-onclickoutside": "^6.5.0",
-    "react-text-truncate": "^0.12.0",
-    "shortid": "^2.2.6",
-    "warning": "^3.0.0"
-  },
-  "peerDependencies": {
-    "@salesforce-ux/design-system": ">=2.4.x",
-    "react": ">=15.4.1 <16",
-    "react-dom": ">=15.4.1 <16"
-  },
-  "devDependencies": {
-    "@salesforce-ux/design-system": "2.4.3",
-    "@salesforce-ux/icons": "7.x",
-    "@storybook/addon-actions": "^3.2.12",
-    "@storybook/addon-info": "^3.2.10",
-    "@storybook/addon-storyshots": "^3.4.0-alpha.4",
-    "@storybook/addons": "^3.4.0-alpha.6",
-    "@storybook/react": "~3.2.0",
-    "async": "^2.0.0-rc.5",
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.2",
-    "babel-jest": "^20.0.3",
-    "babel-loader": "^7.1.1",
-    "babel-plugin-import-noop": "^1.0.1",
-    "babel-plugin-istanbul": "^4.1.4",
-    "babel-plugin-root-import": "^5.1.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-es2015-modules-amd": "^6.24.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.0",
-    "babel-plugin-transform-export-extensions": "6.22.0",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.5.2",
-    "babel-preset-react": "^6.23.0",
-    "basic-auth": "^1.0.4",
-    "chai": "^4.0.1",
-    "chai-enzyme": "^0.8.0",
-    "compression": "^1.6.2",
-    "css-loader": "^0.28.0",
-    "enzyme": "^2.5.1",
-    "enzyme-to-json": "^1.5.0",
-    "eslint": "^4.12.0",
-    "eslint-config-airbnb": "16.1.0",
-    "eslint-loader": "^1.6.0",
-    "eslint-plugin-filenames": "^1.2.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.1.0",
-    "express": "^4.15.5",
-    "file-loader": "^0.11.0",
-    "find-remove": "^1.1.0",
-    "fs-extra": "^3.0.0",
-    "istanbul-instrumenter-loader": "^2.0.0",
-    "jest": "^21.2.1",
-    "js-beautify": "^1.6.8",
-    "json-loader": "^0.5.3",
-    "karma": "^1.7.0",
-    "karma-chai-sinon": "^0.1.5",
-    "karma-chrome-launcher": "^2.0.0",
-    "karma-cli": "^1.0.0",
-    "karma-coverage": "^1.0.0",
-    "karma-mocha": "^1.0.1",
-    "karma-phantomjs-launcher": "^1.0.4",
-    "karma-sourcemap-loader": "^0.3.5",
-    "karma-spec-reporter": "^0.0.31",
-    "karma-webpack": "^2.0.2",
-    "lint-staged": "^3.3.0",
-    "lodash.filter": "^4.6.0",
-    "lodash.isempty": "^4.2.1",
-    "lodash.kebabcase": "^4.0.1",
-    "lodash.trim": "^4.0.1",
-    "minimist": "^1.2.0",
-    "mocha": "^3.1.2",
-    "node-sass": "^4.5.0",
-    "object.entries": "^1.0.4",
-    "phantomjs-polyfill-find-index": "^1.0.1",
-    "phantomjs-polyfill-includes": "^1.0.2",
-    "phantomjs-prebuilt": "^2.1.15",
-    "prettier": "^1.9.2",
-    "prettier-eslint": "~8.8.1",
-    "prettier-eslint-cli": "^4.4.2",
-    "prompt": "^1.0.0",
-    "react": ">=15.4.1 <16",
-    "react-addons-test-utils": ">=15.4.1 <16",
-    "react-docgen": "^2.14.1",
-    "react-dom": ">=15.4.1 <16",
-    "react-hot-loader": "^1.2.7",
-    "react-test-renderer": ">=15.4.1 <16",
-    "sinon": "^2.3.5",
-    "sinon-chai": "^2.14.0",
-    "string-replace-webpack-plugin": "^0.1.2",
-    "style-loader": "^0.17.0",
-    "webpack": "^3.4.1",
-    "webpack-dev-middleware": "^1.12.0",
-    "webpack-hot-middleware": "^2.18.2",
-    "xml2json": "^0.11.0"
-  },
-  "prettier": {
-    "arrowParens": "always",
-    "bracketSpacing": true,
-    "jsxBracketSameLine": false,
-    "semi": true,
-    "singleQuote": true,
-    "trailingComma": "es5",
-    "useTabs": true
-  },
-  "components": [
-    {
-      "component": "accordion",
-      "status": "prod",
-      "display-name": "Accordions",
-      "last-accessibility-review": {
-        "date-iso-8601": "2018/01/18",
-        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-      },
-      "SLDS-component-path": "/components/accordions",
-      "dependencies": [
-        {
-          "component": "panel"
-        }
-      ]
-    },
-    {
-      "component": "alert",
-      "status": "prod",
-      "display-name": "Alerts",
-      "last-accessibility-review": {
-        "date-iso-8601": "2018/01/18",
-        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-      },
-      "SLDS-component-path": "/components/alerts",
-      "dependencies": [
-        {
-          "component": "container"
-        }
-      ]
-    },
-    {
-      "component": "app-launcher",
-      "status": "prototype",
-      "display-name": "App Launcher",
-      "SLDS-component-path": "/components/app-launcher/#flavor-default",
-      "dependencies": [
-        {
-          "component": "section"
-        },
-        {
-          "component": "tile"
-        }
-      ]
-    },
-    {
-      "component": "avatar",
-      "status": "prod",
-      "display-name": "Avatars",
-      "last-accessibility-review": {
-        "date-iso-8601": "2018/01/18",
-        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-      },
-      "SLDS-component-path": "/components/avatars"
-    },
-    {
-      "component": "breadcrumb",
-      "status": "prod",
-      "display-name": "Breadcrumbs",
-      "last-accessibility-review": {
-        "date-iso-8601": "2018/01/18",
-        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-      },
-      "SLDS-component-path": "/components/breadcrumbs"
-    },
-    {
-      "component": "button",
-      "status": "prod",
-      "display-name": "Buttons",
-      "last-accessibility-review": {
-        "date-iso-8601": "2018/01/18",
-        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-      },
-      "SLDS-component-path": "/components/buttons"
-    },
-    {
-      "component": "button-stateful",
-      "status": "prod",
-      "display-name": "Stateful Buttons",
-      "SLDS-component-path": "/components/buttons/#flavor-stateful"
-    },
-    {
-      "component": "button-group",
-      "status": "prod",
-      "display-name": "Button Groups",
-      "SLDS-component-path": "/components/button-groups"
-    },
-    {
-      "component": "card",
-      "status": "prod",
-      "display-name": "Cards",
-      "last-accessibility-review": {
-        "date-iso-8601": "2018/01/18",
-        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-      },
-      "SLDS-component-path": "/components/cards",
-      "dependencies": [
-        {
-          "component": "empty"
-        },
-        {
-          "component": "filter"
-        }
-      ]
-    },
-    {
-      "component": "forms/checkbox",
-      "status": "prod",
-      "display-name": "Checkboxes",
-      "last-accessibility-review": {
-        "date-iso-8601": "2018/01/18",
-        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-      },
-      "SLDS-component-path": "/components/forms/#flavor-checkbox"
-    },
-    {
-      "component": "combobox",
-      "status": "prod",
-      "display-name": "Comboboxes",
-      "last-accessibility-review": {
-        "date-iso-8601": "2017/08/21",
-        "commit-sha": "295a4766f712a5f93743c4ecd3ba62d91c1fc153"
-      },
-      "SLDS-component-path": "/components/comboboxes"
-    },
-    {
-      "component": "data-table",
-      "status": "prod",
-      "display-name": "Data Tables",
-      "last-accessibility-review": {
-        "date-iso-8601": "2017/01/01",
-        "deprecated-accessibility": "true",
-        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-      },
-      "SLDS-component-path": "/components/data-tables",
-      "dependencies": [
-        {
-          "component": "cell"
-        },
-        {
-          "component": "column"
-        },
-        {
-          "component": "highlight-cell"
-        },
-        {
-          "component": "row-actions"
-        }
-      ]
-    },
-    {
-      "component": "date-picker",
-      "status": "prod",
-      "display-name": "Datepickers",
-      "last-accessibility-review": {
-        "date-iso-8601": "2017/01/20",
-        "commit-sha": "568f503b19ddc039207e4b5c2636461de937f5f0"
-      },
-      "SLDS-component-path": "/components/datepickers"
-    },
-    {
-      "component": "filter",
-      "status": "prototype",
-      "display-name": "Filters",
-      "SLDS-component-path": "/components/filter"
-    },
-    {
-      "component": "forms/input/inline",
-      "status": "prod",
-      "display-name": "Inline Edit Inputs",
-      "last-accessibility-review": {
-        "date-iso-8601": "2017/08/21",
-        "commit-sha": "119f7033c17a8a0634a31c6eeef947ddd0ee876b"
-      },
-      "last-slds-markup-review": {
-        "date-iso-8601": "2017/08/21",
-        "commit-sha": "119f7033c17a8a0634a31c6eeef947ddd0ee876b"
-      },
-      "SLDS-component-path": "/components/forms#flavor-input"
-    },
-    {
-      "component": "forms/input",
-      "status": "prod",
-      "display-name": "Inputs",
-      "last-accessibility-review": {
-        "date-iso-8601": "2017/09/22",
-        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-      },
-      "SLDS-component-path": "/components/forms#flavor-input"
-    },
-    {
-      "component": "forms/textarea",
-      "status": "prod",
-      "display-name": "Textareas",
-      "SLDS-component-path": "/components/forms#flavor-textarea"
-    },
-    {
-      "component": "global-header",
-      "status": "prototype",
-      "display-name": "Global Header",
-      "SLDS-component-path": "/components/global-header#flavor-base",
-      "dependencies": [
-        {
-          "component": "button"
-        },
-        {
-          "component": "dropdown"
-        },
-        {
-          "component": "profile"
-        },
-        {
-          "component": "search"
-        }
-      ]
-    },
-    {
-      "component": "global-navigation-bar",
-      "status": "prototype",
-      "display-name": "Global Navigation Bar",
-      "last-accessibility-review": {
-        "date-iso-8601": "2017/05/02",
-        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-      },
-      "SLDS-component-path": "/components/global-navigation#flavor-navigation-bar",
-      "dependencies": [
-        {
-          "component": "button"
-        },
-        {
-          "component": "dropdown"
-        },
-        {
-          "component": "label"
-        },
-        {
-          "component": "link"
-        },
-        {
-          "component": "region"
-        }
-      ]
-    },
-    {
-      "component": "icon",
-      "status": "prod",
-      "display-name": "Icons",
-      "last-accessibility-review": {
-        "date-iso-8601": "2018/01/18",
-        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-      },
-      "SLDS-component-path": "/components/icons"
-    },
-    {
-      "component": "icon-settings",
-      "status": "prod",
-      "display-name": "Icon Settings",
-      "SLDS-component-path": "/components/icons-settings"
-    },
-    {
-      "component": "media-object",
-      "status": "prod",
-      "display-name": "Media Objects",
-      "last-accessibility-review": {
-        "date-iso-8601": "2018/01/18",
-        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-      },
-      "SLDS-component-path": "/components/utilities/media-objects/"
-    },
-    {
-      "component": "menu-dropdown",
-      "status": "prod",
-      "display-name": "Dropdown Menus",
-      "last-accessibility-review": {
-        "date-iso-8601": "2018/01/18",
-        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-      },
-      "SLDS-component-path": "/components/menus#flavor-dropdown",
-      "dependencies": [
-        {
-          "component": "button-trigger"
-        }
-      ]
-    },
-    {
-      "component": "modal",
-      "status": "prod",
-      "display-name": "Modals",
-      "SLDS-component-path": "/components/modals"
-    },
-    {
-      "component": "navigation",
-      "status": "prod",
-      "display-name": "Navigation",
-      "SLDS-component-path": "/components/navigation"
-    },
-    {
-      "component": "panel",
-      "status": "prototype",
-      "display-name": "Panels",
-      "SLDS-component-path": "/components/panels",
-      "dependencies": [
-        {
-          "component": "filtering/group"
-        },
-        {
-          "component": "filtering/list-heading"
-        },
-        {
-          "component": "filtering/list"
-        }
-      ]
-    },
-    {
-      "component": "pill",
-      "status": "prototype",
-      "display-name": "Pills",
-      "SLDS-component-path": "/components/pills"
-    },
-    {
-      "component": "popover",
-      "status": "prod",
-      "display-name": "Popovers",
-      "last-accessibility-review": {
-        "date-iso-8601": "2018/01/18",
-        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-      },
-      "SLDS-component-path": "/components/popovers"
-    },
-    {
-      "component": "page-header",
-      "status": "prod",
-      "display-name": "Page Headers",
-      "SLDS-component-path": "/components/page-headers"
-    },
-    {
-      "component": "progress-indicator",
-      "status": "prod",
-      "display-name": "Progress Indicators",
-      "SLDS-component-path": "/components/progress-indicator"
-    },
-    {
-      "component": "progress-ring",
-      "status": "prod",
-      "display-name": "Progress Rings",
-      "last-accessibility-review": {
-        "date-iso-8601": "2017/11/28",
-        "commit-sha": "1b7025689af65ff2b92ad359c809970f2afd8439"
-      },
-      "last-slds-markup-review": {
-        "date-iso-8601": "2017/11/28",
-        "commit-sha": "1b7025689af65ff2b92ad359c809970f2afd8439"
-      },
-      "SLDS-component-path": "/components/progress-ring"
-    },
-    {
-      "component": "forms/radio",
-      "status": "prod",
-      "display-name": "Radios",
-      "last-accessibility-review": {
-        "date-iso-8601": "2018/01/18",
-        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-      },
-      "SLDS-component-path": "/components/forms/#flavor-radio"
-    },
-    {
-      "component": "split-view",
-      "status": "prod",
-      "display-name": "Split View",
-      "last-accessibility-review": {
-        "date-iso-8601": "2018/01/18",
-        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-      },
-      "last-slds-markup-review": {
-        "date-iso-8601": "2018/01/18",
-        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-      },
-      "SLDS-component-path": "/components/split-view",
-      "dependencies": [
-        {
-          "component": "header"
-        },
-        {
-          "component": "listbox"
-        }
-      ]
-    },
-    {
-      "component": "radio-group",
-      "status": "prod",
-      "display-name": "Radio Groups",
-      "last-accessibility-review": {
-        "date-iso-8601": "2018/01/18",
-        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-      },
-      "SLDS-component-path": "/components/radio-group"
-    },
-    {
-      "component": "radio-button-group",
-      "status": "prod",
-      "display-name": "Radio Button Groups",
-      "last-accessibility-review": {
-        "date-iso-8601": "2018/01/18",
-        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-      },
-      "SLDS-component-path": "/components/radio-button-group"
-    },
-    {
-      "component": "tooltip",
-      "status": "prod",
-      "display-name": "Tooltips",
-      "SLDS-component-path": "/components/tooltips"
-    },
-    {
-      "component": "tabs",
-      "status": "prod",
-      "display-name": "Tabs",
-      "last-accessibility-review": {
-        "date-iso-8601": "2018/01/18",
-        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-      },
-      "SLDS-component-path": "/components/tabs",
-      "dependencies": [
-        {
-          "component": "panel"
-        }
-      ]
-    },
-    {
-      "component": "toast",
-      "status": "prod",
-      "display-name": "Toasts",
-      "last-accessibility-review": {
-        "date-iso-8601": "2018/01/18",
-        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-      },
-      "SLDS-component-path": "/components/toasts",
-      "dependencies": [
-        {
-          "component": "container"
-        }
-      ]
-    },
-    {
-      "component": "tree",
-      "status": "prototype",
-      "display-name": "Tree",
-      "SLDS-component-path": "/components/tree"
-    },
-    {
-      "component": "time-picker",
-      "status": "prod",
-      "display-name": "Timepickers",
-      "SLDS-component-path": "/components/datepickers"
-    }
-  ],
-  "documentation": {
-    "prototype": {
-      "description": "The following components are prototypes. (a) Props may change within a minor release. (b) Web Content Accessibility Guidelines may not be met. (c) CSS imports may be required, since it is being added to SLDS."
-    }
-  }
+	"name": "design-system-react",
+	"version": "0.8.7",
+	"description": "Salesforce Lightning Design System for React",
+	"license": "SEE LICENSE IN README.md",
+	"engines": {
+		"node": "8.x",
+		"npm": "^5.5.1"
+	},
+	"scripts": {
+		"build-docs": "$(npm bin)/babel-node ./scripts/build-docs.js",
+		"build-storybook": "build-storybook -o ./storybook",
+		"build-storybook-for-tests": "build-storybook -o ./storybook-based-tests -c ./.storybook-based-tests",
+		"dist": "scripts/dist.sh",
+		"heroku-prebuild": "./scripts/heroku-prebuild.sh",
+		"heroku-postbuild": "./scripts/heroku-postbuild.sh",
+		"icons": ".$(npm bin)/babel-node scripts/inline-icons.js",
+		"link": "./scripts/npm-link.sh",
+		"lint": "npm run lint:style && npm run lint:quality",
+		"lint:docs": "$(npm bin)/prettylint \"*.md\"",
+		"lint:fix": "$(npm bin)/eslint \"./tests/eslint-config-test.js\" && $(npm bin)/prettier-eslint --write \"**/*.{js,jsx}\" && $(npm bin)/prettylint \"*.json\" --fix",
+		"lint:quality": "$(npm bin)/eslint \"**/*.{js,jsx,json}\" --max-warnings=0",
+		"lint:style": "$(npm bin)/eslint \"./tests/eslint-config-test.js\" && $(npm bin)/prettier-eslint --list-different \"**/*.{js,jsx}\" && $(npm bin)/prettylint \"*.json\"",
+		"publish:origin": "$(npm bin)/babel-node scripts/publish-to-git.js",
+		"publish:edge": "$(npm bin)/babel-node scripts/publish-to-git.js --tag=edge",
+		"publish:upstream": "$(npm bin)/babel-node scripts/publish-to-git.js --remote=upstream",
+		"release:patch": "$(npm bin)/babel-node scripts/release.js --release=patch",
+		"release:minor": "$(npm bin)/babel-node scripts/release.js --release=minor",
+		"snapshot-test": "$(npm bin)/jest",
+		"start": "$(npm bin)/start-storybook -p 9001 -s ./node_modules & node tests/browser-tests-app",
+		"start:static": "node app",
+		"storybook": "start-storybook -p 9001 -s ./node_modules",
+		"test": "scripts/local-qa.sh --no-fix",
+		"test:fix": "scripts/local-qa.sh",
+		"travis-ci": "scripts/travis-ci.sh",
+		"validate": "npm ls",
+		"version": "git add package.json && git commit -m \"Bump package version\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/salesforce/design-system-react.git"
+	},
+	"jest": {
+		"testRegex": "/(components|tests)/.*\\.snapshot-test\\.jsx?$",
+		"testEnvironment": "node",
+		"testPathIgnorePatterns": [
+			"/node_modules/",
+			"/preset/",
+			"/.tmp-amd/",
+			"/.tmp-commonjs/",
+			"/.tmp-es/",
+			"/.tmp-npm/"
+		],
+		"transformIgnorePatterns": [
+			"/node_modules/",
+			"/preset/",
+			"/.tmp-amd/",
+			"/.tmp-commonjs/",
+			"/.tmp-es/",
+			"/.tmp-npm/"
+		]
+	},
+	"keywords": [
+		"react",
+		"slds",
+		"salesforce",
+		"salesforce-ux",
+		"lightning",
+		"design system",
+		"lightning design system",
+		"salesforce lightning design system",
+		"interactive components",
+		"interactive",
+		"components"
+	],
+	"bugs": {
+		"url": "https://github.com/salesforce/design-system-react/issues"
+	},
+	"main": "components/index.js",
+	"module": "components/index.js",
+	"homepage": "https://react.lightningdesignsystem.com",
+	"dependencies": {
+		"@salesforce/babel-preset-design-system-react": "^1.0.0",
+		"babel-preset-es2015": "^6.24.1",
+		"classnames": "^2.2.5",
+		"create-react-class": "^15.6.0",
+		"lodash.assign": "^4.0.9",
+		"lodash.compact": "^3.0.0",
+		"lodash.escaperegexp": "^4.1.1",
+		"lodash.find": "^4.3.0",
+		"lodash.findindex": "^4.3.0",
+		"lodash.flatten": "^4.2.0",
+		"lodash.isboolean": "^3.0.3",
+		"lodash.isdate": "^4.0.1",
+		"lodash.isequal": "^4.2.0",
+		"lodash.isfunction": "^3.0.8",
+		"lodash.isnumber": "^3.0.3",
+		"lodash.memoize": "^4.1.1",
+		"lodash.omit": "^4.3.0",
+		"lodash.partial": "^4.1.3",
+		"lodash.reject": "^4.3.0",
+		"lodash.uniqueid": "^4.0.0",
+		"popper.js": "^1.10.8",
+		"prop-types": ">=15.5.8",
+		"react-highlighter": "^0.4.0",
+		"react-modal": "^1.7.7",
+		"react-onclickoutside": "^6.5.0",
+		"react-text-truncate": "^0.12.0",
+		"shortid": "^2.2.6",
+		"warning": "^3.0.0"
+	},
+	"peerDependencies": {
+		"@salesforce-ux/design-system": ">=2.4.x",
+		"react": ">=15.4.1 <16",
+		"react-dom": ">=15.4.1 <16"
+	},
+	"devDependencies": {
+		"@salesforce-ux/design-system": "2.4.3",
+		"@salesforce-ux/icons": "7.x",
+		"@storybook/addon-actions": "^3.2.12",
+		"@storybook/addon-info": "^3.2.10",
+		"@storybook/addon-storyshots": "^3.4.0-alpha.4",
+		"@storybook/addons": "^3.4.0-alpha.6",
+		"@storybook/react": "~3.2.0",
+		"async": "^2.0.0-rc.5",
+		"babel-cli": "^6.24.1",
+		"babel-core": "^6.26.0",
+		"babel-eslint": "^8.0.2",
+		"babel-jest": "^20.0.3",
+		"babel-loader": "^7.1.1",
+		"babel-plugin-import-noop": "^1.0.1",
+		"babel-plugin-istanbul": "^4.1.4",
+		"babel-plugin-root-import": "^5.1.0",
+		"babel-plugin-transform-class-properties": "^6.24.1",
+		"babel-plugin-transform-es2015-modules-amd": "^6.24.0",
+		"babel-plugin-transform-es2015-modules-commonjs": "^6.24.0",
+		"babel-plugin-transform-export-extensions": "6.22.0",
+		"babel-polyfill": "^6.26.0",
+		"babel-preset-env": "^1.5.2",
+		"babel-preset-react": "^6.23.0",
+		"basic-auth": "^1.0.4",
+		"chai": "^4.0.1",
+		"chai-enzyme": "^0.8.0",
+		"compression": "^1.6.2",
+		"css-loader": "^0.28.0",
+		"enzyme": "^2.5.1",
+		"enzyme-to-json": "^1.5.0",
+		"eslint": "^4.12.0",
+		"eslint-config-airbnb": "16.1.0",
+		"eslint-loader": "^1.6.0",
+		"eslint-plugin-filenames": "^1.2.0",
+		"eslint-plugin-import": "^2.2.0",
+		"eslint-plugin-json": "^1.2.0",
+		"eslint-plugin-jsx-a11y": "^6.0.3",
+		"eslint-plugin-react": "^7.1.0",
+		"express": "^4.15.5",
+		"file-loader": "^0.11.0",
+		"find-remove": "^1.1.0",
+		"fs-extra": "^3.0.0",
+		"istanbul-instrumenter-loader": "^2.0.0",
+		"jest": "^21.2.1",
+		"js-beautify": "^1.6.8",
+		"json-loader": "^0.5.3",
+		"karma": "^1.7.0",
+		"karma-chai-sinon": "^0.1.5",
+		"karma-chrome-launcher": "^2.0.0",
+		"karma-cli": "^1.0.0",
+		"karma-coverage": "^1.0.0",
+		"karma-mocha": "^1.0.1",
+		"karma-phantomjs-launcher": "^1.0.4",
+		"karma-sourcemap-loader": "^0.3.5",
+		"karma-spec-reporter": "^0.0.31",
+		"karma-webpack": "^2.0.2",
+		"lint-staged": "^3.3.0",
+		"lodash.filter": "^4.6.0",
+		"lodash.isempty": "^4.2.1",
+		"lodash.kebabcase": "^4.0.1",
+		"lodash.trim": "^4.0.1",
+		"minimist": "^1.2.0",
+		"mocha": "^3.1.2",
+		"node-sass": "^4.5.0",
+		"object.entries": "^1.0.4",
+		"phantomjs-polyfill-find-index": "^1.0.1",
+		"phantomjs-polyfill-includes": "^1.0.2",
+		"phantomjs-prebuilt": "^2.1.15",
+		"prettier": "1.9.2",
+		"prettier-eslint": "~8.8.1",
+		"prettier-eslint-cli": "^4.4.2",
+		"prettylint": "^1.0.0",
+		"prompt": "^1.0.0",
+		"react": ">=15.4.1 <16",
+		"react-addons-test-utils": ">=15.4.1 <16",
+		"react-docgen": "^2.14.1",
+		"react-dom": ">=15.4.1 <16",
+		"react-hot-loader": "^1.2.7",
+		"react-test-renderer": ">=15.4.1 <16",
+		"sinon": "^2.3.5",
+		"sinon-chai": "^2.14.0",
+		"string-replace-webpack-plugin": "^0.1.2",
+		"style-loader": "^0.17.0",
+		"webpack": "^3.4.1",
+		"webpack-dev-middleware": "^1.12.0",
+		"webpack-hot-middleware": "^2.18.2",
+		"xml2json": "^0.11.0"
+	},
+	"components": [
+		{
+			"component": "accordion",
+			"status": "prod",
+			"display-name": "Accordions",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/01/18",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/accordions",
+			"dependencies": [
+				{
+					"component": "panel"
+				}
+			]
+		},
+		{
+			"component": "alert",
+			"status": "prod",
+			"display-name": "Alerts",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/01/18",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/alerts",
+			"dependencies": [
+				{
+					"component": "container"
+				}
+			]
+		},
+		{
+			"component": "app-launcher",
+			"status": "prototype",
+			"display-name": "App Launcher",
+			"SLDS-component-path": "/components/app-launcher/#flavor-default",
+			"dependencies": [
+				{
+					"component": "section"
+				},
+				{
+					"component": "tile"
+				}
+			]
+		},
+		{
+			"component": "avatar",
+			"status": "prod",
+			"display-name": "Avatars",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/01/18",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/avatars"
+		},
+		{
+			"component": "breadcrumb",
+			"status": "prod",
+			"display-name": "Breadcrumbs",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/01/18",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/breadcrumbs"
+		},
+		{
+			"component": "button",
+			"status": "prod",
+			"display-name": "Buttons",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/01/18",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/buttons"
+		},
+		{
+			"component": "button-stateful",
+			"status": "prod",
+			"display-name": "Stateful Buttons",
+			"SLDS-component-path": "/components/buttons/#flavor-stateful"
+		},
+		{
+			"component": "button-group",
+			"status": "prod",
+			"display-name": "Button Groups",
+			"SLDS-component-path": "/components/button-groups"
+		},
+		{
+			"component": "card",
+			"status": "prod",
+			"display-name": "Cards",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/01/18",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/cards",
+			"dependencies": [
+				{
+					"component": "empty"
+				},
+				{
+					"component": "filter"
+				}
+			]
+		},
+		{
+			"component": "forms/checkbox",
+			"status": "prod",
+			"display-name": "Checkboxes",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/01/18",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/forms/#flavor-checkbox"
+		},
+		{
+			"component": "combobox",
+			"status": "prod",
+			"display-name": "Comboboxes",
+			"last-accessibility-review": {
+				"date-iso-8601": "2017/08/21",
+				"commit-sha": "295a4766f712a5f93743c4ecd3ba62d91c1fc153"
+			},
+			"SLDS-component-path": "/components/comboboxes"
+		},
+		{
+			"component": "data-table",
+			"status": "prod",
+			"display-name": "Data Tables",
+			"last-accessibility-review": {
+				"date-iso-8601": "2017/01/01",
+				"deprecated-accessibility": "true",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/data-tables",
+			"dependencies": [
+				{
+					"component": "cell"
+				},
+				{
+					"component": "column"
+				},
+				{
+					"component": "highlight-cell"
+				},
+				{
+					"component": "row-actions"
+				}
+			]
+		},
+		{
+			"component": "date-picker",
+			"status": "prod",
+			"display-name": "Datepickers",
+			"last-accessibility-review": {
+				"date-iso-8601": "2017/01/20",
+				"commit-sha": "568f503b19ddc039207e4b5c2636461de937f5f0"
+			},
+			"SLDS-component-path": "/components/datepickers"
+		},
+		{
+			"component": "filter",
+			"status": "prototype",
+			"display-name": "Filters",
+			"SLDS-component-path": "/components/filter"
+		},
+		{
+			"component": "forms/input/inline",
+			"status": "prod",
+			"display-name": "Inline Edit Inputs",
+			"last-accessibility-review": {
+				"date-iso-8601": "2017/08/21",
+				"commit-sha": "119f7033c17a8a0634a31c6eeef947ddd0ee876b"
+			},
+			"last-slds-markup-review": {
+				"date-iso-8601": "2017/08/21",
+				"commit-sha": "119f7033c17a8a0634a31c6eeef947ddd0ee876b"
+			},
+			"SLDS-component-path": "/components/forms#flavor-input"
+		},
+		{
+			"component": "forms/input",
+			"status": "prod",
+			"display-name": "Inputs",
+			"last-accessibility-review": {
+				"date-iso-8601": "2017/09/22",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/forms#flavor-input"
+		},
+		{
+			"component": "forms/textarea",
+			"status": "prod",
+			"display-name": "Textareas",
+			"SLDS-component-path": "/components/forms#flavor-textarea"
+		},
+		{
+			"component": "global-header",
+			"status": "prototype",
+			"display-name": "Global Header",
+			"SLDS-component-path": "/components/global-header#flavor-base",
+			"dependencies": [
+				{
+					"component": "button"
+				},
+				{
+					"component": "dropdown"
+				},
+				{
+					"component": "profile"
+				},
+				{
+					"component": "search"
+				}
+			]
+		},
+		{
+			"component": "global-navigation-bar",
+			"status": "prototype",
+			"display-name": "Global Navigation Bar",
+			"last-accessibility-review": {
+				"date-iso-8601": "2017/05/02",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/global-navigation#flavor-navigation-bar",
+			"dependencies": [
+				{
+					"component": "button"
+				},
+				{
+					"component": "dropdown"
+				},
+				{
+					"component": "label"
+				},
+				{
+					"component": "link"
+				},
+				{
+					"component": "region"
+				}
+			]
+		},
+		{
+			"component": "icon",
+			"status": "prod",
+			"display-name": "Icons",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/01/18",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/icons"
+		},
+		{
+			"component": "icon-settings",
+			"status": "prod",
+			"display-name": "Icon Settings",
+			"SLDS-component-path": "/components/icons-settings"
+		},
+		{
+			"component": "media-object",
+			"status": "prod",
+			"display-name": "Media Objects",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/01/18",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/utilities/media-objects/"
+		},
+		{
+			"component": "menu-dropdown",
+			"status": "prod",
+			"display-name": "Dropdown Menus",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/01/18",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/menus#flavor-dropdown",
+			"dependencies": [
+				{
+					"component": "button-trigger"
+				}
+			]
+		},
+		{
+			"component": "modal",
+			"status": "prod",
+			"display-name": "Modals",
+			"SLDS-component-path": "/components/modals"
+		},
+		{
+			"component": "navigation",
+			"status": "prod",
+			"display-name": "Navigation",
+			"SLDS-component-path": "/components/navigation"
+		},
+		{
+			"component": "panel",
+			"status": "prototype",
+			"display-name": "Panels",
+			"SLDS-component-path": "/components/panels",
+			"dependencies": [
+				{
+					"component": "filtering/group"
+				},
+				{
+					"component": "filtering/list-heading"
+				},
+				{
+					"component": "filtering/list"
+				}
+			]
+		},
+		{
+			"component": "pill",
+			"status": "prototype",
+			"display-name": "Pills",
+			"SLDS-component-path": "/components/pills"
+		},
+		{
+			"component": "popover",
+			"status": "prod",
+			"display-name": "Popovers",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/01/18",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/popovers"
+		},
+		{
+			"component": "page-header",
+			"status": "prod",
+			"display-name": "Page Headers",
+			"SLDS-component-path": "/components/page-headers"
+		},
+		{
+			"component": "progress-indicator",
+			"status": "prod",
+			"display-name": "Progress Indicators",
+			"SLDS-component-path": "/components/progress-indicator"
+		},
+		{
+			"component": "progress-ring",
+			"status": "prod",
+			"display-name": "Progress Rings",
+			"last-accessibility-review": {
+				"date-iso-8601": "2017/11/28",
+				"commit-sha": "1b7025689af65ff2b92ad359c809970f2afd8439"
+			},
+			"last-slds-markup-review": {
+				"date-iso-8601": "2017/11/28",
+				"commit-sha": "1b7025689af65ff2b92ad359c809970f2afd8439"
+			},
+			"SLDS-component-path": "/components/progress-ring"
+		},
+		{
+			"component": "forms/radio",
+			"status": "prod",
+			"display-name": "Radios",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/01/18",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/forms/#flavor-radio"
+		},
+		{
+			"component": "split-view",
+			"status": "prod",
+			"display-name": "Split View",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/01/18",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"last-slds-markup-review": {
+				"date-iso-8601": "2018/01/18",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/split-view",
+			"dependencies": [
+				{
+					"component": "header"
+				},
+				{
+					"component": "listbox"
+				}
+			]
+		},
+		{
+			"component": "radio-group",
+			"status": "prod",
+			"display-name": "Radio Groups",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/01/18",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/radio-group"
+		},
+		{
+			"component": "radio-button-group",
+			"status": "prod",
+			"display-name": "Radio Button Groups",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/01/18",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/radio-button-group"
+		},
+		{
+			"component": "tooltip",
+			"status": "prod",
+			"display-name": "Tooltips",
+			"SLDS-component-path": "/components/tooltips"
+		},
+		{
+			"component": "tabs",
+			"status": "prod",
+			"display-name": "Tabs",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/01/18",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/tabs",
+			"dependencies": [
+				{
+					"component": "panel"
+				}
+			]
+		},
+		{
+			"component": "toast",
+			"status": "prod",
+			"display-name": "Toasts",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/01/18",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/toasts",
+			"dependencies": [
+				{
+					"component": "container"
+				}
+			]
+		},
+		{
+			"component": "tree",
+			"status": "prototype",
+			"display-name": "Tree",
+			"SLDS-component-path": "/components/tree"
+		},
+		{
+			"component": "time-picker",
+			"status": "prod",
+			"display-name": "Timepickers",
+			"SLDS-component-path": "/components/datepickers"
+		}
+	],
+	"documentation": {
+		"prototype": {
+			"description": "The following components are prototypes. (a) Props may change within a minor release. (b) Web Content Accessibility Guidelines may not be met. (c) CSS imports may be required, since it is being added to SLDS."
+		}
+	}
 }
