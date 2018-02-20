@@ -334,7 +334,9 @@ class Combobox extends React.Component {
 		// used by menu listbox and selected options listbox
 		const nextIndex = activeOptionIndex + offset;
 		const skipIndex =
-			options.length > nextIndex && nextIndex >= 0 && options[nextIndex].type === 'separator';
+			options.length > nextIndex &&
+			nextIndex >= 0 &&
+			options[nextIndex].type === 'separator';
 		const newIndex = skipIndex ? nextIndex + offset : nextIndex;
 		const hasNewIndex = options.length > newIndex && newIndex >= 0;
 		return hasNewIndex ? newIndex : activeOptionIndex;
