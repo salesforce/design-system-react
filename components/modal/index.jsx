@@ -74,7 +74,7 @@ const propTypes = {
 	 */
 	onRequestClose: PropTypes.func,
 	/**
-	 * Accepts either a node or array of buttons to be placed in the footer. If array, the buttons render on the right side by default but are floated left and right if <code>directional</code> is true.
+	 * Accepts a node or array of nodes that are typically a `Button` or `ProgressIndicator`. If an array, the nodes render on the right side first but are then floated left and right if <code>directional</code> prop is `true`.
 	 */
 	footer: PropTypes.oneOfType([PropTypes.array, PropTypes.node]),
 	/**
