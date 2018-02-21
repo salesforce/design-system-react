@@ -110,6 +110,9 @@ const propTypes = {
 	variant: PropTypes.oneOf(['link', 'option']),
 };
 
+/**
+ * A pill represents an object that can be viewed with or without an icon.
+ */
 class Pill extends React.Component {
 	componentWillMount () {
 		checkProps(PILL);

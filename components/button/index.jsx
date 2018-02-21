@@ -74,6 +74,14 @@ const Button = createReactClass({
 			'utility',
 		]),
 		/**
+		 * CSS classes to be added to icon.
+		 */
+		iconClassName: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string,
+		]),
+		/**
 		 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
 		 */
 		iconName: PropTypes.string,
@@ -112,17 +120,41 @@ const Button = createReactClass({
 		 * Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText</code> prop.
 		 */
 		label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+		/**
+		 * Triggered when focus is removed.
+		 */
 		onBlur: PropTypes.func,
 		/**
 		 * Triggered when the button is clicked.
 		 */
 		onClick: PropTypes.func,
+		/**
+		 * Triggered when component is focused.
+		 */
 		onFocus: PropTypes.func,
+		/**
+		 * Triggered when a key is pressed down
+		 */
 		onKeyDown: PropTypes.func,
+		/**
+		 * Triggered when a key is pressed and released
+		 */
 		onKeyPress: PropTypes.func,
+		/**
+		 * Triggered when a key is released
+		 */
 		onKeyUp: PropTypes.func,
+		/**
+		 * Triggered when a mouse button is pressed down
+		 */
 		onMouseDown: PropTypes.func,
+		/**
+		 * Triggered when a mouse arrow hovers
+		 */
 		onMouseEnter: PropTypes.func,
+		/**
+		 * Triggered when a mouse arrow no longer hovers
+		 */
 		onMouseLeave: PropTypes.func,
 		/**
 		 * If true, button scales to 100% width on small form factors.
@@ -140,6 +172,13 @@ const Button = createReactClass({
 		 * HTML title attribute
 		 */
 		title: PropTypes.string,
+		/**
+		 * [Deprecated] Tooltip on button. Button should be a child of `Tooltip` instead.
+		 */
+		tooltip: PropTypes.node,
+		/**
+		 * Different types of buttons
+		 */
 		variant: PropTypes.oneOf([
 			'base',
 			'link',
@@ -149,12 +188,6 @@ const Button = createReactClass({
 			'success',
 			'icon',
 		]),
-		iconClassName: PropTypes.oneOfType([
-			PropTypes.array,
-			PropTypes.object,
-			PropTypes.string,
-		]),
-		tooltip: PropTypes.node,
 	},
 
 	getDefaultProps () {

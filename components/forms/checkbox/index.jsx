@@ -40,9 +40,24 @@ const Checkbox = createReactClass({
 
 	// ### Prop Types
 	propTypes: {
+		/**
+		 * An HTML ID that is shared with ARIA-supported devices with the
+		 * `aria-controls` attribute in order to relate the input with
+		 * another region of the page. An example would be a select box
+		 * that shows or hides a panel.
+		 */
 		'aria-controls': PropTypes.string,
+		/**
+		 * The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need.
+		 */
 		'aria-describedby': PropTypes.string,
+		/**
+		 * `aria-owns` indicate that an element depends on the current one when the relation can't be determined by the hierarchy structure.
+		 */
 		'aria-owns': PropTypes.string,
+		/**
+		 * The `aria-required` attribute is used to indicate that user input is required on an element before a form can be submitted.
+		 */
 		'aria-required': PropTypes.bool,
 		/**
 		 * Text that is visually hidden but read aloud by screenreaders to tell the user what the Checkbox is for.

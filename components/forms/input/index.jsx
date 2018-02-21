@@ -33,14 +33,20 @@ import checkProps from './check-props';
 
 import { FORMS_INPUT } from '../../../utilities/constants';
 
-// ## InputDefinition
+/**
+ * The HTML `input` with a label and error messaging.
+ */
 const Input = createReactClass({
-	// ### Display Name
-	// Always use the canonical component name as the React display name.
 	displayName: FORMS_INPUT,
-	// ### Prop Types
+
 	propTypes: {
+		/**
+		 * The aria-activedescendant attribute contains the ID of the currently active child object that is part of a composite widget within the Document Object Model. It makes do with the overhead of having all or more than one child focusable. As the name specifies, it helps in managing the current active child of the composite widget.
+		 */
 		'aria-activedescendant': PropTypes.string,
+		/**
+		 * Indicates if the suggestions in a composite widget are values that complete the current textbox input.
+		 */
 		'aria-autocomplete': PropTypes.string,
 		/**
 		 * An HTML ID that is shared with ARIA-supported devices with the
@@ -49,9 +55,21 @@ const Input = createReactClass({
 		 * that shows or hides a panel.
 		 */
 		'aria-controls': PropTypes.string,
+		/**
+		 * The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need.
+		 */
 		'aria-describedby': PropTypes.string,
+		/**
+		 * Use the `aria-expanded` state to indicate whether regions of the content are collapsible, and to expose whether a region is currently expanded or collapsed.
+		 */
 		'aria-expanded': PropTypes.bool,
+		/**
+		 * Indicates that the element has a popup context menu or sub-level menu.
+		 */
 		'aria-haspopup': PropTypes.bool,
+		/**
+		 * The aria-labelledby attribute contains the element IDs of labels in objects such as input elements, widgets, and groups. The attribute establishes relationships between objects and their labels. Assistive technology, such as screen readers, use this attribute to catalog the objects in a document so that users can navigate between them. Without an element ID, the assistive technology cannot catalog the object.
+		 */
 		'aria-labelledby': PropTypes.string,
 		/**
 		 * An HTML ID that is shared with ARIA-supported devices with the
@@ -60,6 +78,9 @@ const Input = createReactClass({
 		 * that shows search results.
 		 */
 		'aria-owns': PropTypes.string,
+		/**
+		 * The `aria-required` attribute is used to indicate that user input is required on an element before a form can be submitted.
+		 */
 		'aria-required': PropTypes.bool,
 		/**
 		 * **Assistive text for accessibility**
@@ -70,6 +91,9 @@ const Input = createReactClass({
 			label: PropTypes.string,
 			spinner: PropTypes.string,
 		}),
+		/**
+		 * Elements are added after the `input`.
+		 */
 		children: PropTypes.node,
 		/**
 		 * Class names to be added to the outer container of the input.
@@ -104,9 +128,17 @@ const Input = createReactClass({
 		 */
 		iconLeft: PropTypes.node,
 		/**
+		 * [DEPRECATED] Please use `iconLeft` and `iconRight`.
+		 */
+		iconPosition: PropTypes.string,
+		/**
 		 * Right aligned icon, must be instace of `design-system-react/components/icon/input-icon`
 		 */
 		iconRight: PropTypes.node,
+		/**
+		 * Triggered when an `InlineEdit` becomes editable.
+		 */
+		inlineEditTrigger: PropTypes.node,
 		/**
 		 * Every input must have a unique ID in order to support keyboard navigation and ARIA support.
 		 */
@@ -123,6 +155,9 @@ const Input = createReactClass({
 		 * This label appears above the input.
 		 */
 		label: PropTypes.string,
+		/**
+		 * Triggered when focus is removed.
+		 */
 		onBlur: PropTypes.func,
 		/**
 		 * This callback fires when the input changes. The synthetic React event will be the first parameter to the callback. You will probably want to reference `event.target.value` in your callback. No custom data object is provided.
@@ -132,19 +167,49 @@ const Input = createReactClass({
 		 * This event fires when the input is clicked.
 		 */
 		onClick: PropTypes.func,
+		/**
+		 * Triggered when component is focused.
+		 */
 		onFocus: PropTypes.func,
+		/**
+		 * Similar to `onchange`. Triggered when an element gets user input.
+		 */
 		onInput: PropTypes.func,
+		/**
+		 * Triggered when a submittable <input> element is invalid.
+		 */
 		onInvalid: PropTypes.func,
+		/**
+		 * Triggered when a key is pressed down
+		 */
 		onKeyDown: PropTypes.func,
+		/**
+		 * Triggered when a key is pressed and released
+		 */
 		onKeyPress: PropTypes.func,
+		/**
+		 * Triggered when a key is released
+		 */
 		onKeyUp: PropTypes.func,
+		/**
+		 * Triggered after some text has been selected in an element.
+		 */
 		onSelect: PropTypes.func,
+		/**
+		 * Fires when a form is submitted.
+		 */
 		onSubmit: PropTypes.func,
 		/**
 		 * Text that will appear in an empty input.
 		 */
 		placeholder: PropTypes.string,
+		/**
+		 * Sets the minimum number of characters that an <input> can accept.
+		 */
 		minLength: PropTypes.string,
+		/**
+		 * Sets the maximum number of characters that an <input> can accept.
+		 */
 		maxLength: PropTypes.string,
 		/**
 		 * Name of the submitted form parameter.
@@ -181,8 +246,9 @@ const Input = createReactClass({
 		 * The input is a controlled component, and will always display this value.
 		 */
 		value: PropTypes.string,
-		iconPosition: PropTypes.string,
-		inlineEditTrigger: PropTypes.node,
+		/**
+		 * ARIA role
+		 */
 		role: PropTypes.string,
 	},
 
@@ -250,7 +316,6 @@ const Input = createReactClass({
 		return icon;
 	},
 
-	// ### Render
 	render () {
 		// this is a hack to make left the default prop unless overwritten by `iconPosition="right"`
 		const hasLeftIcon =

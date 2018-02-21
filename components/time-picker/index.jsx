@@ -34,6 +34,9 @@ const Timepicker = createReactClass({
 
 	// ### Prop Types
 	propTypes: {
+		/**
+		 * If true, constrains the menu to the scroll parent. See `Dropdown`.
+		 */
 		constrainToScrollParent: PropTypes.bool,
 		/**
 		 * Disables the input and prevents editing the contents.
@@ -43,6 +46,9 @@ const Timepicker = createReactClass({
 		 * Time formatting function
 		 */
 		formatter: PropTypes.func,
+		/**
+		 * Sets the dialog width to the width of the target. Menus attached to `input` typically follow this UX pattern.
+		 */
 		inheritTargetWidth: PropTypes.bool,
 		/**
 		 * This label appears above the input.
@@ -79,10 +85,16 @@ const Timepicker = createReactClass({
 		 * If true, adds asterisk next to input label to indicate it is a required field.
 		 */
 		required: PropTypes.bool,
+		/**
+		 * Frequency of options
+		 */
 		stepInMinutes: PropTypes.number,
+		/**
+		 * Value for input that is parsed to create an internal state in the `date` format.
+		 */
 		strValue: PropTypes.string,
 		/**
-		 * Date
+		 * Instance an internal state in the `date` format.
 		 */
 		value: PropTypes.instanceOf(Date),
 	},

@@ -50,7 +50,7 @@
         "dependencies": [
             {
                 "panel": {
-                    "description": "",
+                    "description": "The panel content for the Accordion component.",
                     "methods": [],
                     "props": {
                         "children": {
@@ -656,7 +656,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "Assistive text for accessibility that labels the icon."
             },
             "className": {
                 "type": {
@@ -980,6 +980,24 @@
                     "computed": false
                 }
             },
+            "iconClassName": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to icon."
+            },
             "iconName": {
                 "type": {
                     "name": "string"
@@ -1107,7 +1125,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when focus is removed."
             },
             "onClick": {
                 "type": {
@@ -1121,49 +1139,49 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when component is focused."
             },
             "onKeyDown": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when a key is pressed down"
             },
             "onKeyPress": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when a key is pressed and released"
             },
             "onKeyUp": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when a key is released"
             },
             "onMouseDown": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when a mouse button is pressed down"
             },
             "onMouseEnter": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when a mouse arrow hovers"
             },
             "onMouseLeave": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when a mouse arrow no longer hovers"
             },
             "responsive": {
                 "type": {
@@ -1215,6 +1233,13 @@
                 "required": false,
                 "description": "HTML title attribute"
             },
+            "tooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "[Deprecated] Tooltip on button. Button should be a child of `Tooltip` instead."
+            },
             "variant": {
                 "type": {
                     "name": "enum",
@@ -1250,36 +1275,11 @@
                     ]
                 },
                 "required": false,
-                "description": "",
+                "description": "Different types of buttons",
                 "defaultValue": {
                     "value": "'neutral'",
                     "computed": false
                 }
-            },
-            "iconClassName": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": ""
-            },
-            "tooltip": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": ""
             }
         },
         "route": "buttons",
@@ -1347,7 +1347,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "",
+                "description": "Disables the button and adds disabled styling.",
                 "defaultValue": {
                     "value": "false",
                     "computed": false
@@ -1383,7 +1383,7 @@
                     ]
                 },
                 "required": false,
-                "description": "",
+                "description": "Determines the size of the icon.",
                 "defaultValue": {
                     "value": "'medium'",
                     "computed": false
@@ -1401,63 +1401,63 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when focus is removed."
             },
             "onClick": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when the button is clicked."
             },
             "onFocus": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when component is focused."
             },
             "onKeyDown": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when a key is pressed down"
             },
             "onKeyPress": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when a key is pressed and released"
             },
             "onKeyUp": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when a key is released"
             },
             "onMouseDown": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when a mouse button is pressed down"
             },
             "onMouseEnter": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when a mouse arrow hovers"
             },
             "onMouseLeave": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when a mouse arrow no longer hovers"
             },
             "responsive": {
                 "type": {
@@ -1515,7 +1515,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": ""
+                "description": "[Deprecated] Tooltip on button. Button should be a child of `Tooltip` instead."
             },
             "variant": {
                 "type": {
@@ -1544,7 +1544,7 @@
                     ]
                 },
                 "required": false,
-                "description": ""
+                "description": "Different types of buttons"
             }
         },
         "route": "stateful-buttons",
@@ -1889,28 +1889,28 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "An HTML ID that is shared with ARIA-supported devices with the\n`aria-controls` attribute in order to relate the input with\nanother region of the page. An example would be a select box\nthat shows or hides a panel."
             },
             "aria-describedby": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need."
             },
             "aria-owns": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "`aria-owns` indicate that an element depends on the current one when the relation can't be determined by the hierarchy structure."
             },
             "aria-required": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "The `aria-required` attribute is used to indicate that user input is required on an element before a form can be submitted."
             },
             "assistiveText": {
                 "type": {
@@ -3244,28 +3244,28 @@
                                 "name": "string"
                             },
                             "required": false,
-                            "description": ""
+                            "description": "HTML ID to be added to the actions menu."
                         },
                         "item": {
                             "type": {
                                 "name": "object"
                             },
                             "required": false,
-                            "description": ""
+                            "description": "`DataTable` row item"
                         },
                         "onAction": {
                             "type": {
                                 "name": "func"
                             },
                             "required": false,
-                            "description": ""
+                            "description": "Triggered when an item is selected."
                         },
                         "options": {
                             "type": {
                                 "name": "array"
                             },
                             "required": true,
-                            "description": ""
+                            "description": "`Dropdown` options. See `Dropdown`."
                         }
                     },
                     "name": "row-actions",
@@ -3524,7 +3524,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "Prevents the dropdown from changing position based on the viewport/window. If set to true your dropdowns can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the dropdowns contents scrollable to fit the menu on the screen. _Not tested._"
             },
             "id": {
                 "type": {
@@ -4146,7 +4146,7 @@
         "dependencies": []
     },
     "input": {
-        "description": "",
+        "description": "The HTML `input` with a label and error messaging.",
         "methods": [
             {
                 "name": "getId",
@@ -4185,14 +4185,14 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "The aria-activedescendant attribute contains the ID of the currently active child object that is part of a composite widget within the Document Object Model. It makes do with the overhead of having all or more than one child focusable. As the name specifies, it helps in managing the current active child of the composite widget."
             },
             "aria-autocomplete": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "Indicates if the suggestions in a composite widget are values that complete the current textbox input."
             },
             "aria-controls": {
                 "type": {
@@ -4206,28 +4206,28 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need."
             },
             "aria-expanded": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "Use the `aria-expanded` state to indicate whether regions of the content are collapsible, and to expose whether a region is currently expanded or collapsed."
             },
             "aria-haspopup": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "Indicates that the element has a popup context menu or sub-level menu."
             },
             "aria-labelledby": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "The aria-labelledby attribute contains the element IDs of labels in objects such as input elements, widgets, and groups. The attribute establishes relationships between objects and their labels. Assistive technology, such as screen readers, use this attribute to catalog the objects in a document so that users can navigate between them. Without an element ID, the assistive technology cannot catalog the object."
             },
             "aria-owns": {
                 "type": {
@@ -4241,7 +4241,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "The `aria-required` attribute is used to indicate that user input is required on an element before a form can be submitted."
             },
             "assistiveText": {
                 "type": {
@@ -4256,7 +4256,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": ""
+                "description": "Elements are added after the `input`."
             },
             "className": {
                 "type": {
@@ -4334,12 +4334,26 @@
                 "required": false,
                 "description": "Left aligned icon, must be instace of `design-system-react/components/icon/input-icon`"
             },
+            "iconPosition": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "[DEPRECATED] Please use `iconLeft` and `iconRight`."
+            },
             "iconRight": {
                 "type": {
                     "name": "node"
                 },
                 "required": false,
                 "description": "Right aligned icon, must be instace of `design-system-react/components/icon/input-icon`"
+            },
+            "inlineEditTrigger": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Triggered when an `InlineEdit` becomes editable."
             },
             "id": {
                 "type": {
@@ -4374,7 +4388,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when focus is removed."
             },
             "onChange": {
                 "type": {
@@ -4395,56 +4409,56 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when component is focused."
             },
             "onInput": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Similar to `onchange`. Triggered when an element gets user input."
             },
             "onInvalid": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when a submittable <input> element is invalid."
             },
             "onKeyDown": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when a key is pressed down"
             },
             "onKeyPress": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when a key is pressed and released"
             },
             "onKeyUp": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when a key is released"
             },
             "onSelect": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered after some text has been selected in an element."
             },
             "onSubmit": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Fires when a form is submitted."
             },
             "placeholder": {
                 "type": {
@@ -4458,14 +4472,14 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "Sets the minimum number of characters that an <input> can accept."
             },
             "maxLength": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "Sets the maximum number of characters that an <input> can accept."
             },
             "name": {
                 "type": {
@@ -4564,26 +4578,12 @@
                 "required": false,
                 "description": "The input is a controlled component, and will always display this value."
             },
-            "iconPosition": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": ""
-            },
-            "inlineEditTrigger": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": ""
-            },
             "role": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "ARIA role"
             }
         },
         "route": "inputs",
@@ -4592,7 +4592,7 @@
         "dependencies": []
     },
     "textarea": {
-        "description": "",
+        "description": "A multi-line plain-text editing control.",
         "methods": [
             {
                 "name": "getId",
@@ -4615,63 +4615,70 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "The aria-activedescendant attribute contains the ID of the currently active child object that is part of a composite widget within the Document Object Model. It makes do with the overhead of having all or more than one child focusable. As the name specifies, it helps in managing the current active child of the composite widget."
+            },
+            "aria-autocomplete": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Indicates if the suggestions in a composite widget are values that complete the current textbox input."
             },
             "aria-controls": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "An HTML ID that is shared with ARIA-supported devices with the\n`aria-controls` attribute in order to relate the textarea with\nanother region of the page. An example would be a select box\nthat shows or hides a panel."
+                "description": "An HTML ID that is shared with ARIA-supported devices with the\n`aria-controls` attribute in order to relate the input with\nanother region of the page. An example would be a select box\nthat shows or hides a panel."
             },
             "aria-describedby": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need."
             },
             "aria-expanded": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "Use the `aria-expanded` state to indicate whether regions of the content are collapsible, and to expose whether a region is currently expanded or collapsed."
             },
             "aria-haspopup": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "Indicates that the element has a popup context menu or sub-level menu."
             },
             "aria-labelledby": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "The aria-labelledby attribute contains the element IDs of labels in objects such as input elements, widgets, and groups. The attribute establishes relationships between objects and their labels. Assistive technology, such as screen readers, use this attribute to catalog the objects in a document so that users can navigate between them. Without an element ID, the assistive technology cannot catalog the object."
             },
             "aria-owns": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "An HTML ID that is shared with ARIA-supported devices with the\n`aria-controls` attribute in order to relate the textarea with\nanother region of the page. An example would be a search field\nthat shows search results."
+                "description": "An HTML ID that is shared with ARIA-supported devices with the\n`aria-controls` attribute in order to relate the input with\nanother region of the page. An example would be a search field\nthat shows search results."
             },
             "aria-required": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "The `aria-required` attribute is used to indicate that user input is required on an element before a form can be submitted."
             },
             "autoFocus": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Specifies is the textarea should automatically get focus when the page loads."
+                "description": "Specifies is the textarea should automatically get focus when the page loads. This is typically a poor user experience."
             },
             "assistiveText": {
                 "type": {
@@ -4685,7 +4692,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": ""
+                "description": "Elements are added after the `textarea`."
             },
             "className": {
                 "type": {
@@ -4723,6 +4730,13 @@
                 "required": false,
                 "description": "Allows for ability to apply classNames to outer textarea div."
             },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disables the textarea and prevents editing the contents."
+            },
             "errorText": {
                 "type": {
                     "name": "string"
@@ -4756,7 +4770,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when focus is removed."
             },
             "onChange": {
                 "type": {
@@ -4777,63 +4791,56 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when component is focused."
             },
             "onInput": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Similar to `onchange`. Triggered when an element gets user input."
             },
             "onInvalid": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when a submittable <input> element is invalid."
             },
             "onKeyDown": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when a key is pressed down"
             },
             "onKeyPress": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when a key is pressed and released"
             },
             "onKeyUp": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered when a key is released"
             },
             "onSelect": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Triggered after some text has been selected in an element."
             },
             "onSubmit": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
-            },
-            "disabled": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Disables the textarea and prevents editing the contents."
+                "description": "Fires when a form is submitted."
             },
             "maxLength": {
                 "type": {
@@ -5751,7 +5758,7 @@
                                 "name": "func"
                             },
                             "required": false,
-                            "description": ""
+                            "description": "Triggered when focus is removed."
                         },
                         "onClick": {
                             "type": {
@@ -5765,42 +5772,42 @@
                                 "name": "func"
                             },
                             "required": false,
-                            "description": ""
+                            "description": "Triggered when component is focused."
                         },
                         "onKeyDown": {
                             "type": {
                                 "name": "func"
                             },
                             "required": false,
-                            "description": ""
+                            "description": "Triggered when a key is pressed down"
                         },
                         "onKeyPress": {
                             "type": {
                                 "name": "func"
                             },
                             "required": false,
-                            "description": ""
+                            "description": "Triggered when a key is pressed and released"
                         },
                         "onKeyUp": {
                             "type": {
                                 "name": "func"
                             },
                             "required": false,
-                            "description": ""
+                            "description": "Triggered when a key is released"
                         },
                         "onMouseEnter": {
                             "type": {
                                 "name": "func"
                             },
                             "required": false,
-                            "description": ""
+                            "description": "Triggered when a mouse arrow hovers"
                         },
                         "onMouseLeave": {
                             "type": {
                                 "name": "func"
                             },
                             "required": false,
-                            "description": ""
+                            "description": "Triggered when a mouse arrow no longer hovers"
                         },
                         "tabIndex": {
                             "type": {
@@ -6660,7 +6667,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "Prevents the dropdown from changing position based on the viewport/window. If set to true your dropdowns can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the dropdowns contents scrollable to fit the menu on the screen."
             },
             "hint": {
                 "type": {
@@ -7989,7 +7996,7 @@
         ]
     },
     "pill": {
-        "description": "",
+        "description": "A pill represents an object that can be viewed with or without an icon.",
         "methods": [
             {
                 "name": "getHref",
@@ -8538,7 +8545,7 @@
                     ]
                 },
                 "required": false,
-                "description": "",
+                "description": "All popovers require a close button.",
                 "defaultValue": {
                     "value": "'Close dialog'",
                     "computed": false
@@ -8556,14 +8563,14 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": ""
+                "description": "A footer is an optional. Buttons are often placed here."
             },
             "hasStaticAlignment": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "Prevents the Popover from changing position based on the viewport/window. If set to true your popover can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the popover contents scrollable to fit the menu on the screen."
             },
             "heading": {
                 "type": {
@@ -8578,7 +8585,7 @@
                     ]
                 },
                 "required": false,
-                "description": ""
+                "description": "All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop."
             },
             "id": {
                 "type": {
@@ -8893,7 +8900,7 @@
                     ]
                 },
                 "required": false,
-                "description": ""
+                "description": "Determines the size of the icon."
             },
             "iconVariant": {
                 "type": {
@@ -9552,7 +9559,7 @@
             },
             {
                 "listbox": {
-                    "description": "",
+                    "description": "The menu with the ARIA role of a listbox.",
                     "methods": [
                         {
                             "name": "isListItemFocused",
@@ -10442,7 +10449,7 @@
         "dependencies": []
     },
     "tabs": {
-        "description": "",
+        "description": "A tab keeps related content in a single container that is shown and hidden through navigation.",
         "methods": [
             {
                 "name": "getVariant",
@@ -10697,7 +10704,7 @@
         "dependencies": [
             {
                 "panel": {
-                    "description": "",
+                    "description": "The `<TabsPanel />` component allows us to simplify the structure of the `<Tabs />` component.\n\nRather than require different (deeply nested) children for tabslist, with its tab(s) as well as tabpanel(s), we provide this `TabsPanel` component which takes a `label` property that will become what is shown on the `<Tab />` that will be associated with it.\n\nThe `children` of the Panel will be fed to the `<TabPanel />` component, while its `label` is handled in `<Tab />`, via `<TabsList />`.\n\n```\n<TabsPanel label=\"Tab 1\">\n\t<div>\n\t\t<h2 className=\"slds-text-heading--medium\">This is my tab 1 contents!</h2>\n\t\t<p>They show when you click the first tab.</p>\n\t</div>\n</TabsPanel>\n```",
                     "methods": [],
                     "props": {
                         "label": {
@@ -11016,7 +11023,7 @@
                     "name": "object"
                 },
                 "required": false,
-                "description": ""
+                "description": "Styles to be added to the top-level `ul` element. Useful for `overflow:hidden`."
             }
         },
         "route": "tree",
@@ -11093,7 +11100,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "If true, constrains the menu to the scroll parent. See `Dropdown`."
             },
             "disabled": {
                 "type": {
@@ -11118,7 +11125,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "Sets the dialog width to the width of the target. Menus attached to `input` typically follow this UX pattern."
             },
             "label": {
                 "type": {
@@ -11200,7 +11207,7 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "",
+                "description": "Frequency of options",
                 "defaultValue": {
                     "value": "30",
                     "computed": false
@@ -11211,7 +11218,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "Value for input that is parsed to create an internal state in the `date` format."
             },
             "value": {
                 "type": {
@@ -11219,7 +11226,7 @@
                     "value": "Date"
                 },
                 "required": false,
-                "description": "Date",
+                "description": "Instance an internal state in the `date` format.",
                 "defaultValue": {
                     "value": "null",
                     "computed": false

@@ -44,6 +44,9 @@ const propTypes = {
 	title: PropTypes.string,
 };
 
+/**
+ * The panel content for the Accordion component.
+ */
 const AccordionPanel = ({
 	children,
 	expanded,
