@@ -15,7 +15,7 @@
 		"dist": "scripts/dist.sh",
 		"heroku-prebuild": "./scripts/heroku-prebuild.sh",
 		"heroku-postbuild": "./scripts/heroku-postbuild.sh",
-		"icons": ".$(npm bin)/babel-node scripts/inline-icons.js",
+		"icons": "$(npm bin)/babel-node scripts/inline-icons.js",
 		"link": "./scripts/npm-link.sh",
 		"lint": "npm run lint:style && npm run lint:quality",
 		"lint:docs": "$(npm bin)/prettylint \"*.md\"",
