@@ -144,13 +144,26 @@
         "props": {
             "assistiveText": {
                 "type": {
-                    "name": "custom",
-                    "raw": "PropTypes.shape({\n    closeButton: PropTypes.oneOfType([PropTypes.string, PropTypes.node])\n})"
+                    "name": "shape",
+                    "value": {
+                        "closeButton": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "string"
+                                },
+                                {
+                                    "name": "node"
+                                }
+                            ],
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `closeButton`: This is a visually hidden label for the close button.\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    closeButton: 'Close'\n}",
+                    "value": "{\n    closeButton: 'Close',\n}",
                     "computed": false
                 }
             },
@@ -188,8 +201,33 @@
             },
             "labels": {
                 "type": {
-                    "name": "custom",
-                    "raw": "PropTypes.shape({\n    heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),\n    headingLink: PropTypes.oneOfType([PropTypes.string, PropTypes.node])\n})"
+                    "name": "shape",
+                    "value": {
+                        "heading": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "string"
+                                },
+                                {
+                                    "name": "node"
+                                }
+                            ],
+                            "required": false
+                        },
+                        "headingLink": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "string"
+                                },
+                                {
+                                    "name": "node"
+                                }
+                            ],
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `heading`: text within heading tag\n* `headingLink`: Text of link that triggers `onClickHeadingLink`. Inline links should pass a keyed array of React components into `labels.heading`.\n\n_Tested with snapshot testing._",
@@ -615,14 +653,14 @@
         "description": "The avatar component represents an object or entity. An image is the preferred format for an avatar.\n If the `imgSrc` prop is undefined, and if a `label` or `initials` prop is available, the fallback avatar will render with initials. If initals are passed in directly in the `initials` prop, this will render in the fallback avatar. If `initals` prop is unavailable but a `label` prop is available, the fallback avatar will render with built initials of the user name or entity name.\n\n Intials built from the `label` prop will apply the following logic: If the label name contains two words, like first and last name, the first letter of each will be capitalized and returned. For labels that only have a single word name, the first two letters of that word, using one capital and one lower case letter, will be returned. For labels that contain three or more words, the first character of the first and last words will be capitalized and returned.\n\n If `initials` or `label` are not available, the fallback avatar will render a standard icon. If `variant='user'`, a user icon will\n render. If `variant='entity'`, an account icon will render.",
         "methods": [
             {
-                "name": "handleImageError",
+                "name": "buildInitials",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
                 "returns": null
             },
             {
-                "name": "buildInitials",
+                "name": "handleImageError",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -796,6 +834,13 @@
         "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.\nFor buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.",
         "methods": [
             {
+                "name": "getClassName",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "handleClick",
                 "docblock": null,
                 "modifiers": [],
@@ -805,13 +850,6 @@
                         "type": null
                     }
                 ],
-                "returns": null
-            },
-            {
-                "name": "getClassName",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
                 "returns": null
             },
             {
@@ -1291,12 +1329,12 @@
         "description": "The ButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nFor icon buttons, use <code>variant='icon'</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: 'add', label: 'Join'}}</code>).",
         "methods": [
             {
-                "name": "handleClick",
+                "name": "getClassName",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "e",
+                        "name": "active",
                         "type": null
                     }
                 ],
@@ -1315,12 +1353,12 @@
                 "returns": null
             },
             {
-                "name": "getClassName",
+                "name": "handleClick",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "active",
+                        "name": "e",
                         "type": null
                     }
                 ],
@@ -1583,8 +1621,17 @@
             },
             "labels": {
                 "type": {
-                    "name": "custom",
-                    "raw": "PropTypes.shape({\n    error: PropTypes.string,\n    label: PropTypes.string\n})"
+                    "name": "shape",
+                    "value": {
+                        "error": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `error`: Message to display when any of Checkboxes are in an error state. _Tested with snapshot testing._\n* `label`: This label appears above the button group. _Tested with snapshot testing._",
@@ -1823,6 +1870,30 @@
                 "returns": null
             },
             {
+                "name": "handleChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDown",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "renderButtonGroupVariant",
                 "docblock": null,
                 "modifiers": [],
@@ -1853,30 +1924,6 @@
                 "params": [
                     {
                         "name": "props",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleChange",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleKeyDown",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
                         "type": null
                     }
                 ],
@@ -2106,6 +2153,18 @@
         "description": "A widget that provides a user with an input field that is either an autocomplete or readonly, accompanied with a listbox of pre-definfined options.",
         "methods": [
             {
+                "name": "getDialog",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ menuRenderer }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "getId",
                 "docblock": "Shared class property getter methods",
                 "modifiers": [],
@@ -2114,14 +2173,14 @@
                 "description": "Shared class property getter methods"
             },
             {
-                "name": "getIsOpen",
+                "name": "getIsActiveOption",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
                 "returns": null
             },
             {
-                "name": "getIsActiveOption",
+                "name": "getIsOpen",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -2147,15 +2206,22 @@
                 "returns": null
             },
             {
-                "name": "isSelected",
+                "name": "setInputRef",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "{ selection, option }",
+                        "name": "component",
                         "type": null
                     }
                 ],
+                "returns": null
+            },
+            {
+                "name": "handleBlurPill",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
                 "returns": null
             },
             {
@@ -2167,20 +2233,6 @@
                 "description": "Menu open/close and sub-render methods"
             },
             {
-                "name": "handleRequestClose",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "openDialog",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
                 "name": "handleClose",
                 "docblock": null,
                 "modifiers": [],
@@ -2188,113 +2240,7 @@
                 "returns": null
             },
             {
-                "name": "handleOpen",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "requestOpenMenu",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getDialog",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "{ menuRenderer }",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "renderMenu",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "{ assistiveText, labels }",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleKeyDown",
-                "docblock": "Input and menu keyboard event methods",
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event"
-                    }
-                ],
-                "returns": null,
-                "description": "Input and menu keyboard event methods"
-            },
-            {
-                "name": "handleNavigateListboxMenu",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    },
-                    {
-                        "name": "{ direction }",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleSelect",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    },
-                    {
-                        "name": "{ selection, option }",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleKeyDownDown",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleKeyDownUp",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleInputSubmit",
+                "name": "handleInputBlur",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
@@ -2330,7 +2276,7 @@
                 "returns": null
             },
             {
-                "name": "handleInputBlur",
+                "name": "handleInputSubmit",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
@@ -2342,22 +2288,43 @@
                 "returns": null
             },
             {
-                "name": "handleRemoveSelectedOption",
-                "docblock": "Selected options with listbox of pills event methods",
+                "name": "handleKeyDown",
+                "docblock": "Input and menu keyboard event methods",
                 "modifiers": [],
                 "params": [
                     {
                         "name": "event"
-                    },
-                    {
-                        "name": "{ option, index }"
                     }
                 ],
                 "returns": null,
-                "description": "Selected options with listbox of pills event methods"
+                "description": "Input and menu keyboard event methods"
             },
             {
-                "name": "handlePillClickListboxOfPills",
+                "name": "handleKeyDownDown",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDownUp",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleNavigateListboxMenu",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
@@ -2366,7 +2333,7 @@
                         "type": null
                     },
                     {
-                        "name": "{ option, index }",
+                        "name": "{ direction }",
                         "type": null
                     }
                 ],
@@ -2389,6 +2356,51 @@
                 "returns": null
             },
             {
+                "name": "handleOpen",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handlePillClickListboxOfPills",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ option, index }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleRemoveSelectedOption",
+                "docblock": "Selected options with listbox of pills event methods",
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event"
+                    },
+                    {
+                        "name": "{ option, index }"
+                    }
+                ],
+                "returns": null,
+                "description": "Selected options with listbox of pills event methods"
+            },
+            {
+                "name": "handleRequestClose",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "handleRequestFocusListboxOfPills",
                 "docblock": null,
                 "modifiers": [],
@@ -2405,22 +2417,45 @@
                 "returns": null
             },
             {
-                "name": "handleBlurPill",
+                "name": "handleSelect",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ selection, option }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "isSelected",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ selection, option }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "openDialog",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
                 "returns": null
             },
             {
-                "name": "setInputRef",
+                "name": "requestOpenMenu",
                 "docblock": null,
                 "modifiers": [],
-                "params": [
-                    {
-                        "name": "component",
-                        "type": null
-                    }
-                ],
+                "params": [],
                 "returns": null
             },
             {
@@ -2436,6 +2471,18 @@
                 "description": "Combobox variant subrenders\n(these can probably be broken into function components\nif state is passed in as a prop)"
             },
             {
+                "name": "renderInlineMultiple",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ assistiveText, labels, props }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "renderInlineSingle",
                 "docblock": null,
                 "modifiers": [],
@@ -2448,7 +2495,19 @@
                 "returns": null
             },
             {
-                "name": "renderInlineMultiple",
+                "name": "renderMenu",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ assistiveText, labels }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "renderReadOnlyMultiple",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
@@ -2470,30 +2529,39 @@
                     }
                 ],
                 "returns": null
-            },
-            {
-                "name": "renderReadOnlyMultiple",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "{ assistiveText, labels, props }",
-                        "type": null
-                    }
-                ],
-                "returns": null
             }
         ],
         "props": {
             "assistiveText": {
                 "type": {
-                    "name": "custom",
-                    "raw": "PropTypes.shape({\n    label: PropTypes.string,\n    optionSelectedInMenu: PropTypes.string,\n    removeSingleSelectedOption: PropTypes.string,\n    removePill: PropTypes.string,\n    selectedListboxLabel: PropTypes.string\n})"
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "optionSelectedInMenu": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "removeSingleSelectedOption": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "removePill": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "selectedListboxLabel": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.\n* `optionSelectedInMenu`: Added before selected menu items in Read-only variants (Picklists). The default is `Current Selection:`.\n* `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.\n* `removePill`: Used by multiple selection Comboboxes to remove a selected item (pill). Focus is on the pill. This is not a button. The default  is `, Press delete or backspace to remove`.\n* `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    optionSelectedInMenu: 'Current Selection:',\n    removeSingleSelectedOption: 'Remove selected option',\n    removePill: ', Press delete or backspace to remove',\n    selectedListboxLabel: 'Selected Options:'\n}",
+                    "value": "{\n    optionSelectedInMenu: 'Current Selection:',\n    removeSingleSelectedOption: 'Remove selected option',\n    removePill: ', Press delete or backspace to remove',\n    selectedListboxLabel: 'Selected Options:',\n}",
                     "computed": false
                 }
             },
@@ -2553,8 +2621,49 @@
             },
             "events": {
                 "type": {
-                    "name": "custom",
-                    "raw": "PropTypes.shape({\n    onBlur: PropTypes.func,\n    onChange: PropTypes.func,\n    onClose: PropTypes.func,\n    onFocus: PropTypes.func,\n    onOpen: PropTypes.func,\n    onRequestClose: PropTypes.func,\n    onRequestOpen: PropTypes.func,\n    onRequestRemoveSelectedOption: PropTypes.func,\n    onSelect: PropTypes.func,\n    onSubmit: PropTypes.func\n})"
+                    "name": "shape",
+                    "value": {
+                        "onBlur": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onChange": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onClose": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onFocus": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onOpen": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onRequestClose": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onRequestOpen": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onRequestRemoveSelectedOption": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onSelect": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onSubmit": {
+                            "name": "func",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
                 "description": "Event Callbacks\n* `onBlur`: Called when `input` removes focus.\n* `onChange`: Called when keyboard events occur within `input`\n* `onClose`: Triggered when the menu has closed.\n* `onFocus`: Called when `input` receives focus.\n* `onOpen`: Triggered when the menu has opened.\n* `onRequestClose`: Function called when the menu would like to hide. Please use with `isOpen`.\n* `onRequestOpen`:  Function called when the menu would like to show. Please use with `isOpen`.\n* `onRequestRemoveSelectedOption`: Function called when a single selection option is to be removed.\n* `onSelect`: Function called when a menu item is selected\n* `onSubmit`: Function called when user presses enter or submits the `input`\n_Tested with Mocha testing._",
@@ -2579,13 +2688,54 @@
             },
             "labels": {
                 "type": {
-                    "name": "custom",
-                    "raw": "PropTypes.shape({\n    label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),\n    multipleOptionsSelected: PropTypes.string,\n    noOptionsFound: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),\n    placeholder: PropTypes.string,\n    placeholderReadOnly: PropTypes.string,\n    removePillTitle: PropTypes.string\n})"
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "node"
+                                },
+                                {
+                                    "name": "string"
+                                }
+                            ],
+                            "required": false
+                        },
+                        "multipleOptionsSelected": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "noOptionsFound": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "node"
+                                },
+                                {
+                                    "name": "string"
+                                }
+                            ],
+                            "required": false
+                        },
+                        "placeholder": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "placeholderReadOnly": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "removePillTitle": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: This label appears above the input.\n* `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.\n* `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.\n* `placeholder`: Input placeholder\n* `placeholderReadOnly`: Placeholder for Picklist-like Combobox\n* `removePillTitle`: Title on `X` icon\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    noOptionsFound: 'No matches found.',\n    placeholderReadOnly: 'Select an Option',\n    removePillTitle: 'Remove'\n}",
+                    "value": "{\n    noOptionsFound: 'No matches found.',\n    placeholderReadOnly: 'Select an Option',\n    removePillTitle: 'Remove',\n}",
                     "computed": false
                 }
             },
@@ -2835,7 +2985,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.\n```\nimport DataTableCell from 'design-system-react/data-table/cell';\nconst CustomDataTableCell = ({ children, ...props }) => (\n  <DataTableCell {...props} >\n    <a href=\"javascript:void(0);\">{children}</a>\n  </DataTableCell>\n);\nCustomDataTableCell.displayName = DataTableCell.displayName;\n\n<DataTable>\n  <DataTableColumn />\n  <DataTableColumn>\n    <DataTableCustomCell />\n  </DataTableColumn>\n  <DataTableRowActions />\n</DataTable>\n```"
+                "description": "Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.\n```\nimport DataTableCell from 'design-system-react/data-table/cell';\nconst CustomDataTableCell = ({ children, ...props }) => (\n  <DataTableCell {...props} >\n  <a href=\"javascript:void(0);\">{children}</a>\n  </DataTableCell>\n);\nCustomDataTableCell.displayName = DataTableCell.displayName;\n\n<DataTable>\n  <DataTableColumn />\n  <DataTableColumn>\n  <DataTableCustomCell />\n  </DataTableColumn>\n  <DataTableRowActions />\n</DataTable>\n```"
             },
             "className": {
                 "type": {
@@ -3278,6 +3428,30 @@
         "description": "A date picker is a non text input form element. You can select a single date from a popup or inline calendar. The date picker supplied by this library comes with an input by default, but other components could be passed in as children--however, pairing with other components is untested.\n\nThe calendar is rendered with time/dates based on local browser time of the client. All dates are in local user timezones. Another way to put it is if a user selects a date, they are selecting midnight their time on that day and not mightnight in UTC. If this component is being used in conjuction with a timezone input, you may want to convert dates provided to UTC in that timezone.\n\nThis component is wrapped in a [higher order component to listen for clicks outside itself](https://github.com/kentor/react-click-outside) and thus requires use of `ReactDOM`.",
         "methods": [
             {
+                "name": "getDatePicker",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ labels, assistiveText }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "getDialog",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ labels, assistiveText }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "getId",
                 "docblock": null,
                 "modifiers": [],
@@ -3289,6 +3463,18 @@
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
+                "returns": null
+            },
+            {
+                "name": "setInputRef",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "component",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
@@ -3315,76 +3501,10 @@
                 "returns": null
             },
             {
-                "name": "handleRequestClose",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "openDialog",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "parseDate",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "formattedValue",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
                 "name": "handleClose",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleOpen",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    },
-                    {
-                        "name": "{ portal }",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "getDialog",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "{ labels, assistiveText }",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "getDatePicker",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "{ labels, assistiveText }",
-                        "type": null
-                    }
-                ],
                 "returns": null
             },
             {
@@ -3412,12 +3532,42 @@
                 "returns": null
             },
             {
-                "name": "setInputRef",
+                "name": "handleOpen",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "component",
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ portal }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleRequestClose",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "openDialog",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "parseDate",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "formattedValue",
                         "type": null
                     }
                 ],
@@ -3427,13 +3577,26 @@
         "props": {
             "assistiveText": {
                 "type": {
-                    "name": "custom",
-                    "raw": "PropTypes.shape({\n    nextMonth: PropTypes.string,\n    openCalendar: PropTypes.string,\n    previousMonth: PropTypes.string\n})"
+                    "name": "shape",
+                    "value": {
+                        "nextMonth": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "openCalendar": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "previousMonth": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `nextMonth`: Label for button to go to the next month _Tested with snapshot testing._\n* `openCalendar`: Call to action label for calendar dialog trigger _Tested with snapshot testing._\n* `previousMonth`: Label for button to go to the previous month _Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    nextMonth: 'Next month',\n    openCalendar: 'Open Calendar',\n    previousMonth: 'Previous month'\n}",
+                    "value": "{\n    nextMonth: 'Next month',\n    openCalendar: 'Open Calendar',\n    previousMonth: 'Previous month',\n}",
                     "computed": false
                 }
             },
@@ -3535,13 +3698,38 @@
             },
             "labels": {
                 "type": {
-                    "name": "custom",
-                    "raw": "PropTypes.shape({\n    abbreviatedWeekDays: PropTypes.array,\n    label: PropTypes.string,\n    months: PropTypes.array,\n    placeholder: PropTypes.string,\n    today: PropTypes.string,\n    weekDays: PropTypes.array\n})"
+                    "name": "shape",
+                    "value": {
+                        "abbreviatedWeekDays": {
+                            "name": "array",
+                            "required": false
+                        },
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "months": {
+                            "name": "array",
+                            "required": false
+                        },
+                        "placeholder": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "today": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "weekDays": {
+                            "name": "array",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `abbreviatedWeekDays`: Three letter abbreviations of the days of the week, starting on Sunday. _Tested with snapshot testing._\n* `months`: Names of the months. _Tested with snapshot testing._\n* `label`: This label appears above the input.\n* `placeholder`: Placeholder text for input. _Tested with snapshot testing._\n* `today`: Label of shortcut to jump to today within the calendar. This is also used for assistive text on today's date. _Tested with snapshot testing._\n* `weekDays`: Full names of the seven days of the week, starting on Sunday. _Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    abbreviatedWeekDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],\n    months: [\n        'January',\n        'February',\n        'March',\n        'April',\n        'May',\n        'June',\n        'July',\n        'August',\n        'September',\n        'October',\n        'November',\n        'December'\n    ],\n    placeholder: 'Pick a Date',\n    today: 'Today',\n    weekDays: [\n        'Sunday',\n        'Monday',\n        'Tuesday',\n        'Wednesday',\n        'Thursday',\n        'Friday',\n        'Saturday'\n    ]\n}",
+                    "value": "{\n    abbreviatedWeekDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],\n    months: [\n        'January',\n        'February',\n        'March',\n        'April',\n        'May',\n        'June',\n        'July',\n        'August',\n        'September',\n        'October',\n        'November',\n        'December',\n    ],\n    placeholder: 'Pick a Date',\n    today: 'Today',\n    weekDays: [\n        'Sunday',\n        'Monday',\n        'Tuesday',\n        'Wednesday',\n        'Thursday',\n        'Friday',\n        'Saturday',\n    ],\n}",
                     "computed": false
                 }
             },
@@ -3702,6 +3890,18 @@
                 "returns": null
             },
             {
+                "name": "getCustomPopoverProps",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ assistiveText }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "handleFilterClick",
                 "docblock": null,
                 "modifiers": [],
@@ -3734,18 +3934,6 @@
                 "params": [
                     {
                         "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "getCustomPopoverProps",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "{ assistiveText }",
                         "type": null
                     }
                 ],
@@ -3795,7 +3983,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility**\n* `removeFilter`: Assistive text for removing a filter. The default is `Remove Filter: this.props.property this.props.predicate`.\n* `editFilter`: Assistive text for changing a filter.\n* `editFilterHeading`: Assistive text for Popover heading.",
                 "defaultValue": {
-                    "value": "{\n    editFilter: 'Edit filter:',\n    editFilterHeading: 'Choose filter criteria'\n}",
+                    "value": "{\n    editFilter: 'Edit filter:',\n    editFilterHeading: 'Choose filter criteria',\n}",
                     "computed": false
                 }
             },
@@ -3915,25 +4103,6 @@
         "description": "An inline input is rendered as a label by default. When clicked (or tabbed in), it's rendered as an input. When the focus is lost, the current input value is saved and the input is rendered as a label again.",
         "methods": [
             {
-                "name": "triggerEditMode",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "saveEdits",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "option",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
                 "name": "endEditMode",
                 "docblock": null,
                 "modifiers": [],
@@ -3986,6 +4155,25 @@
                         "type": null
                     }
                 ],
+                "returns": null
+            },
+            {
+                "name": "saveEdits",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "option",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "triggerEditMode",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
                 "returns": null
             }
         ],
@@ -4245,8 +4433,17 @@
             },
             "assistiveText": {
                 "type": {
-                    "name": "custom",
-                    "raw": "PropTypes.shape({\n    label: PropTypes.string,\n    spinner: PropTypes.string\n})"
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "spinner": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
                 "description": "**Assistive text for accessibility**\n* `label`: Visually hidden label but read out loud by screen readers.\n* `spinner`: Text for loading spinner icon."
@@ -6090,7 +6287,7 @@
         "dependencies": []
     },
     "icon-settings": {
-        "description": "The Icon Settings component allows for the path to the icons to be specified.\nThis should be used at the root of the application.\n\n**Individual sprites**\nIf you are using webpack it is advised to use the sprite properties\n{actionSprite, standardSprite...} to specify the individual sprite paths so that webpack can\neasily re-write the paths.\n```\nimport actionSprite from '......';\n\n<IconSettings actionSprite={actionSprite} ......>\n```\n**Root icon path**\nOtherwise use the iconPath to specify the root path to where the icon files will be located in you application\nsuch as `/assets/icons`.",
+        "description": "The Icon Settings component allows for the path to the icons to be specified in all child components and is recommended to be used at the root of the application. It's render function is `return this.props.children`, so it can only have one child node.\n\n**Individual sprites**\nIf you are using webpack it is advised to use the sprite properties\n{actionSprite, standardSprite...} to specify the individual sprite paths so that webpack can\neasily re-write the paths.\n```\nimport actionSprite from '......';\n\n<IconSettings actionSprite={actionSprite} ......>\n```\n**Root icon path**\nOtherwise use the iconPath to specify the root path to where the icon files will be located in you application\nsuch as `/assets/icons`.",
         "methods": [],
         "props": {
             "iconPath": {
@@ -6246,6 +6443,96 @@
                 "returns": null
             },
             {
+                "name": "setFocus",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getMenu",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getMenuItem",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "index",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "setCurrentSelectedIndices",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "nextProps",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "saveRefToTrigger",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "trigger",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "saveRefToTriggerContainer",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "triggerContainer",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "saveRefToList",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "list",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "saveRefToListItem",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "listItem",
+                        "type": null
+                    },
+                    {
+                        "name": "index",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "handleClose",
                 "docblock": null,
                 "modifiers": [],
@@ -6357,96 +6644,6 @@
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
-                "returns": null
-            },
-            {
-                "name": "setFocus",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "saveRefToTrigger",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "trigger",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "saveRefToTriggerContainer",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "triggerContainer",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "saveRefToList",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "list",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "saveRefToListItem",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "listItem",
-                        "type": null
-                    },
-                    {
-                        "name": "index",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "getMenu",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getMenuItem",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "index",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "setCurrentSelectedIndices",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "nextProps",
-                        "type": null
-                    }
-                ],
                 "returns": null
             },
             {
@@ -6617,7 +6814,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "By default, any children passed into this component will be rendered inside the dropdown menu. If you need custom content and a list, import 'design-system-react/components/menu-list/list' and pass in `<List>`.\n\nIf you need to modify the trigger button, import the module `design-system-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button. Any `id` prop or event hanlders (`onBlur`, `onClick`, etc.) set on the button grandchild will be overwritten by `MenuDropdown` to enable functionality and accessibility. A custom trigger child will not be considered content for the dropdown menu.\n```\n<Dropdown>\n  <Trigger>\n    <Button iconCategory=\"utility\" iconName=\"settings\" />\n  </Trigger>\n  <div>Look ma! This is Custom Content.</div>\n  <List options={[myArray]}/>\n</Dropdown>\n```"
+                "description": "By default, any children passed into this component will be rendered inside the dropdown menu. If you need custom content and a list, import 'design-system-react/components/menu-list/list' and pass in `<List>`.\n\nIf you need to modify the trigger button, import the module `design-system-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button. Any `id` prop or event hanlders (`onBlur`, `onClick`, etc.) set on the button grandchild will be overwritten by `MenuDropdown` to enable functionality and accessibility. A custom trigger child will not be considered content for the dropdown menu.\n```\n<Dropdown>\n  <Trigger>\n  <Button iconCategory=\"utility\" iconName=\"settings\" />\n  </Trigger>\n  <div>Look ma! This is Custom Content.</div>\n  <List options={[myArray]}/>\n</Dropdown>\n```"
             },
             "className": {
                 "type": {
@@ -7031,7 +7228,7 @@
                     "name": "array"
                 },
                 "required": false,
-                "description": "An array of menu item objects. `className` and `id` object keys are applied to the `li` DOM node. `divider` key can have a value of `top` or `bottom`. `rightIcon` and `leftIcon` are not actually `Icon` components, but prop objects that get passed to an `Icon` component. The `href` key will be added to the `a` and its default click event will be prevented. Here is a sample:\n```\n[{\n   className: 'custom-li-class',\n \tdivider: 'bottom',\n \tlabel: 'A Header',\n \ttype: 'header'\n }, {\n \thref: 'http://sfdc.co/',\n \tid: 'custom-li-id',\n \tlabel: 'Has a value',\n   leftIcon: {\n     name: 'settings',\n     category: 'utility'\n   },\n   rightIcon: {\n       name: 'settings',\n       category: 'utility'\n   },\n \ttype: 'item',\n \tvalue: 'B0'\n }, {\n   type: 'divider'\n}]\n```"
+                "description": "An array of menu item objects. `className` and `id` object keys are applied to the `li` DOM node. `divider` key can have a value of `top` or `bottom`. `rightIcon` and `leftIcon` are not actually `Icon` components, but prop objects that get passed to an `Icon` component. The `href` key will be added to the `a` and its default click event will be prevented. Here is a sample:\n```\n[{\n  className: 'custom-li-class',\n    divider: 'bottom',\n    label: 'A Header',\n    type: 'header'\n }, {\n    href: 'http://sfdc.co/',\n    id: 'custom-li-id',\n    label: 'Has a value',\n  leftIcon: {\n   name: 'settings',\n   category: 'utility'\n  },\n  rightIcon: {\n   name: 'settings',\n   category: 'utility'\n  },\n    type: 'item',\n    value: 'B0'\n }, {\n  type: 'divider'\n}]\n```"
             },
             "style": {
                 "type": {
@@ -7120,7 +7317,7 @@
                                 "name": "element"
                             },
                             "required": false,
-                            "description": "Import the module `design-system-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the triggering button. Any `id` prop or event hanlders (`onBlur`, `onClick`, etc.) set on the button grandchild will be overwritten by `MenuDropdown` to allow functionality and accessibility.\n```\n<Dropdown>\n  <Trigger>\n    <Button iconCategory=\"utility\" iconName=\"settings\" />\n  </Trigger>\n</Dropdown>\n```"
+                            "description": "Import the module `design-system-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the triggering button. Any `id` prop or event hanlders (`onBlur`, `onClick`, etc.) set on the button grandchild will be overwritten by `MenuDropdown` to allow functionality and accessibility.\n```\n<Dropdown>\n  <Trigger>\n  <Button iconCategory=\"utility\" iconName=\"settings\" />\n  </Trigger>\n</Dropdown>\n```"
                         },
                         "className": {
                             "type": {
@@ -7268,13 +7465,6 @@
         "displayName": "Modal",
         "methods": [
             {
-                "name": "setReturnFocus",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
                 "name": "getId",
                 "docblock": null,
                 "modifiers": [],
@@ -7282,7 +7472,21 @@
                 "returns": null
             },
             {
-                "name": "dismissModalOnClickOutside",
+                "name": "getModal",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "setReturnFocus",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "clearBodyScroll",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -7303,21 +7507,14 @@
                 "returns": null
             },
             {
-                "name": "handleSubmitModal",
+                "name": "dismissModalOnClickOutside",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
                 "returns": null
             },
             {
-                "name": "updateBodyScroll",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "clearBodyScroll",
+                "name": "footerComponent",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -7336,14 +7533,7 @@
                 "returns": null
             },
             {
-                "name": "isPrompt",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "footerComponent",
+                "name": "handleSubmitModal",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -7357,7 +7547,14 @@
                 "returns": null
             },
             {
-                "name": "getModal",
+                "name": "isPrompt",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "updateBodyScroll",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -7488,7 +7685,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Accepts either a node or array of buttons to be placed in the footer. If array, the buttons render on the right side by default but are floated left and right if <code>directional</code> is true."
+                "description": "Accepts a node or array of nodes that are typically a `Button` or `ProgressIndicator`. If an array, the nodes render on the right side first but are then floated left and right if <code>directional</code> prop is `true`."
             },
             "header": {
                 "type": {
@@ -7795,7 +7992,7 @@
                                 "name": "node"
                             },
                             "required": false,
-                            "description": "Pass in `FilterList`'s of `Filters`:\n\n```\n<FilterGroup\n  variant=\"panel\"\n>\n  <FilterList>\n    <Filter\n      property=\"Show Me\"\n      predicate=\"All Wackamoles\"\n    >\n    {popoverContents}\n    </Filter>\n  </FilterList>\n</FilterGroup>\n```"
+                            "description": "Pass in `FilterList`'s of `Filters`:\n\n```\n<FilterGroup\n  variant=\"panel\"\n>\n  <FilterList>\n  <Filter\n    property=\"Show Me\"\n    predicate=\"All Wackamoles\"\n  >\n  {popoverContents}\n  </Filter>\n  </FilterList>\n</FilterGroup>\n```"
                         },
                         "errorLabel": {
                             "type": {
@@ -8006,12 +8203,12 @@
                 "returns": null
             },
             {
-                "name": "restProps",
-                "docblock": "Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component.",
+                "name": "blur",
+                "docblock": "Removes focus from the component.",
                 "modifiers": [],
                 "params": [],
                 "returns": null,
-                "description": "Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component."
+                "description": "Removes focus from the component."
             },
             {
                 "name": "focus",
@@ -8020,14 +8217,6 @@
                 "params": [],
                 "returns": null,
                 "description": "Give focus to the Pill component."
-            },
-            {
-                "name": "blur",
-                "docblock": "Removes focus from the component.",
-                "modifiers": [],
-                "params": [],
-                "returns": null,
-                "description": "Removes focus from the component."
             },
             {
                 "name": "handleKeyDown",
@@ -8058,6 +8247,14 @@
                 "returns": null
             },
             {
+                "name": "restProps",
+                "docblock": "Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component.",
+                "modifiers": [],
+                "params": [],
+                "returns": null,
+                "description": "Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component."
+            },
+            {
                 "name": "renderIcon",
                 "docblock": null,
                 "modifiers": [],
@@ -8082,8 +8279,13 @@
         "props": {
             "assistiveText": {
                 "type": {
-                    "name": "custom",
-                    "raw": "PropTypes.shape({\n    remove: PropTypes.string\n})"
+                    "name": "shape",
+                    "value": {
+                        "remove": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `remove`: This is a visually hidden label for the close button.\n_Tested with snapshot testing._",
@@ -8154,8 +8356,21 @@
             },
             "labels": {
                 "type": {
-                    "name": "custom",
-                    "raw": "PropTypes.shape({\n    label: PropTypes.string,\n    title: PropTypes.string,\n    removeTitle: PropTypes.string\n})"
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "title": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "removeTitle": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: Pill's label.\n* `title`: Pill's title.\n* `removeTitle`: A title to use for the remove icon.\n\n_Tested with snapshot testing._",
@@ -8248,6 +8463,30 @@
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
+                "returns": null
+            },
+            {
+                "name": "setMenuRef",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "component",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "setContainerRef",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "component",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
@@ -8390,18 +8629,6 @@
                 "returns": null
             },
             {
-                "name": "setMenuRef",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "component",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
                 "name": "renderDialog",
                 "docblock": null,
                 "modifiers": [],
@@ -8424,18 +8651,6 @@
                 "params": [
                     {
                         "name": "isOpen",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "setContainerRef",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "component",
                         "type": null
                     }
                 ],
@@ -9019,8 +9234,13 @@
         "props": {
             "assistiveText": {
                 "type": {
-                    "name": "custom",
-                    "raw": "PropTypes.shape({\n    percentage: PropTypes.string\n})"
+                    "name": "shape",
+                    "value": {
+                        "percentage": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`",
@@ -9092,7 +9312,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Triggered when an individual step is clicked. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.\n```\nconst handleStepClick = function(event, data) { console.log(data); };\n    <ProgressIndicator onStepClick={handleStepClick} />\n```",
+                "description": "Triggered when an individual step is clicked. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.\n```\nconst handleStepClick = function(event, data) { console.log(data); };\n  <ProgressIndicator onStepClick={handleStepClick} />\n```",
                 "defaultValue": {
                     "value": "() => {}",
                     "computed": false
@@ -9103,7 +9323,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Triggered when an individual step is focused. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.\n```\nconst handleStepFocus = function(event, data) { console.log(data); };\n    <ProgressIndicator onStepFocus={handleStepFocus} />\n```",
+                "description": "Triggered when an individual step is focused. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.\n```\nconst handleStepFocus = function(event, data) { console.log(data); };\n  <ProgressIndicator onStepFocus={handleStepFocus} />\n```",
                 "defaultValue": {
                     "value": "() => {}",
                     "computed": false
@@ -9125,7 +9345,7 @@
                     "name": "array"
                 },
                 "required": true,
-                "description": "It is an array of step objects in the following form:\n```\n [{\n\tid: <PropTypes.number> or <PropTypes.string>, has to be unique\n\tlabel: <PropTypes.string>, representing the tooltip content\n\tassistiveText: <PropTypes.string>, The default is `[Step props.index + 1]: [status]`. Status is if the step has been completed or in an error state.\n }],\n ```"
+                "description": "It is an array of step objects in the following form:\n```\n [{\n   id: <PropTypes.number> or <PropTypes.string>, has to be unique\n   label: <PropTypes.string>, representing the tooltip content\n   assistiveText: <PropTypes.string>, The default is `[Step props.index + 1]: [status]`. Status is if the step has been completed or in an error state.\n }],\n ```"
             },
             "tooltipIsOpenSteps": {
                 "type": {
@@ -9165,19 +9385,6 @@
         "description": "Customizable and configurable progress ring. Will display progress in a circular progress bar factor, and is capable of displaying iconography inside of the ring structure.",
         "methods": [
             {
-                "name": "themeClass",
-                "docblock": "Gets the theme CSS class\n@returns {string} Class name",
-                "modifiers": [],
-                "params": [],
-                "returns": {
-                    "description": "Class name",
-                    "type": {
-                        "name": "string"
-                    }
-                },
-                "description": "Gets the theme CSS class"
-            },
-            {
                 "name": "icon",
                 "docblock": "Gets the icon to display\n@returns {node} Icon",
                 "modifiers": [],
@@ -9202,6 +9409,19 @@
                     }
                 },
                 "description": "Percentage as a decimal"
+            },
+            {
+                "name": "themeClass",
+                "docblock": "Gets the theme CSS class\n@returns {string} Class name",
+                "modifiers": [],
+                "params": [],
+                "returns": {
+                    "description": "Class name",
+                    "type": {
+                        "name": "string"
+                    }
+                },
+                "description": "Gets the theme CSS class"
             }
         ],
         "props": {
@@ -9385,14 +9605,14 @@
         "description": "Split view is used to navigate between records in a list while staying on the same screen.",
         "methods": [
             {
-                "name": "id",
+                "name": "getId",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
                 "returns": null
             },
             {
-                "name": "masterViewId",
+                "name": "getMasterViewId",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -9448,7 +9668,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility**\n* `toggleButtonOpen`: The button used to open the split view.\n* `toggleButtonClose`: The button used to close the split view.",
                 "defaultValue": {
-                    "value": "{\n    toggleButtonOpen: 'Close split view',\n    toggleButtonClose: 'Open split view'\n}",
+                    "value": "{\n    toggleButtonOpen: 'Close split view',\n    toggleButtonClose: 'Open split view',\n}",
                     "computed": false
                 }
             },
@@ -9507,10 +9727,18 @@
             },
             "master": {
                 "type": {
-                    "name": "arrayOf",
-                    "value": {
-                        "name": "element"
-                    }
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "arrayOf",
+                            "value": {
+                                "name": "element"
+                            }
+                        },
+                        {
+                            "name": "element"
+                        }
+                    ]
                 },
                 "required": true,
                 "description": "The React component that is rendered in the master section.\nYou need to pass in an array of elements in order for the scrolling to in the SplitViewList to work correctly.\nReact requires that you also supply a unique `key` for each element [React Lists and Keys](https://reactjs.org/docs/lists-and-keys.html#keys)."
@@ -9551,7 +9779,7 @@
         "dependencies": [
             {
                 "header": {
-                    "description": "The Split View Header takes the same properties as the Page Header component. See: [PageHeader](https://react.lightningdesignsystem.com/components/page-headers/)\n@param props {object} Page Header properties",
+                    "description": "The Split View Header takes the same properties as the [PageHeader](https://react.lightningdesignsystem.com/components/page-headers/) component.",
                     "methods": [],
                     "name": "header",
                     "source": "/components/split-view/header.jsx"
@@ -9812,9 +10040,9 @@
                                 }
                             },
                             "required": false,
-                            "description": "**Assistive text for accessibility**\n* `list`: aria label for the list\n* `sort`\n* * `sortedBy`: Clickable sort header for the list.\n* * `descending`: Descending sorting.\n* * `ascending`: Ascending sorting.",
+                            "description": "**Assistive text for accessibility**\n* `list`: aria label for the list\n* `sort`\n   * `sortedBy`: Clickable sort header for the list.\n   * `descending`: Descending sorting.\n   * `ascending`: Ascending sorting.",
                             "defaultValue": {
-                                "value": "{\n    list: 'Select an item to open it in a new workspace tab.',\n    sort: {\n        sortedBy: 'Sorted by',\n        descending: 'Descending',\n        ascending: 'Ascending'\n    }\n}",
+                                "value": "{\n    list: 'Select an item to open it in a new workspace tab.',\n    sort: {\n        sortedBy: 'Sorted by',\n        descending: 'Descending',\n        ascending: 'Ascending',\n    },\n}",
                                 "computed": false
                             }
                         },
@@ -9851,7 +10079,7 @@
                                 }
                             },
                             "required": false,
-                            "description": "Event Callbacks\n* `onSelect`: Called when a list item is selected.\n* * event {object} List item click event\n* * Meta {object}\n* * * selectedItems {array} List of selected items.\n* * * item {object} Last selected item.\n* `onSort`: Called when the list is sorted.\n* * event {object} Sort click event",
+                            "description": "Event Callbacks\n* `onSelect`: Called when a list item is selected.\n   * event {object} List item click event\n   * Meta {object}\n      * selectedItems {array} List of selected items.\n      * item {object} Last selected item.\n* `onSort`: Called when the list is sorted.\n   * event {object} Sort click event",
                             "defaultValue": {
                                 "value": "{}",
                                 "computed": false
@@ -9952,14 +10180,14 @@
         "description": "A styled select list that can have a single entry checked at any one time.\nThe RadioGroup component wraps [Radio](/components/radios) components, which should be used as children.",
         "methods": [
             {
-                "name": "getName",
+                "name": "getErrorId",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
                 "returns": null
             },
             {
-                "name": "getErrorId",
+                "name": "getName",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -10001,8 +10229,17 @@
             },
             "labels": {
                 "type": {
-                    "name": "custom",
-                    "raw": "PropTypes.shape({\n    error: PropTypes.string,\n    label: PropTypes.string\n})"
+                    "name": "shape",
+                    "value": {
+                        "error": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `error`: Message to display when any of Checkboxes are in an error state.\n* `label`: This label appears above the radio group.",
@@ -10056,14 +10293,14 @@
         "description": "A styled select list that can have a single entry checked at any one time.\nThe RadioButtonGroup component wraps [Radio](/components/radios) components, which should be used as children.",
         "methods": [
             {
-                "name": "getName",
+                "name": "getErrorId",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
                 "returns": null
             },
             {
-                "name": "getErrorId",
+                "name": "getName",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -10105,8 +10342,17 @@
             },
             "labels": {
                 "type": {
-                    "name": "custom",
-                    "raw": "PropTypes.shape({\n    error: PropTypes.string,\n    label: PropTypes.string\n})"
+                    "name": "shape",
+                    "value": {
+                        "error": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `error`: Message to display when any of Checkboxes are in an error state.\n* `label`: This label appears above the button group.",
@@ -10160,42 +10406,14 @@
         "description": "The PopoverTooltip component is variant of the Lightning Design System Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or an anchor), so that keyboard users can navigate to it.",
         "methods": [
             {
+                "name": "getContent",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "getId",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getTooltipTarget",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleMouseEnter",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleMouseLeave",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getTooltipContent",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleCancel",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -10209,7 +10427,14 @@
                 "returns": null
             },
             {
-                "name": "renderAssistantText",
+                "name": "getTooltipContent",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getTooltipTarget",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -10240,7 +10465,21 @@
                 "returns": null
             },
             {
-                "name": "getContent",
+                "name": "handleCancel",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleMouseEnter",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleMouseLeave",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -10256,6 +10495,13 @@
                         "type": null
                     }
                 ],
+                "returns": null
+            },
+            {
+                "name": "renderAssistantText",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
                 "returns": null
             }
         ],
@@ -10452,41 +10698,6 @@
         "description": "A tab keeps related content in a single container that is shown and hidden through navigation.",
         "methods": [
             {
-                "name": "getVariant",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleClick",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "e",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "setSelected",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "index",
-                        "type": null
-                    },
-                    {
-                        "name": "focus",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
                 "name": "getNextTab",
                 "docblock": null,
                 "modifiers": [],
@@ -10499,6 +10710,13 @@
                 "returns": null
             },
             {
+                "name": "getPanelsCount",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "getPrevTab",
                 "docblock": null,
                 "modifiers": [],
@@ -10508,20 +10726,6 @@
                         "type": null
                     }
                 ],
-                "returns": null
-            },
-            {
-                "name": "getTabsCount",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getPanelsCount",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
                 "returns": null
             },
             {
@@ -10556,16 +10760,46 @@
                 "returns": null
             },
             {
-                "name": "isTabFromContainer",
-                "docblock": "Determine if a node from event.target is a Tab element for the current Tabs container.\nIf the clicked element is not a Tab, it returns false.\nIf it finds another Tabs container between the Tab and `this`, it returns false.",
+                "name": "getTabsCount",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getVariant",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "setSelected",
+                "docblock": null,
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "node"
+                        "name": "index",
+                        "type": null
+                    },
+                    {
+                        "name": "focus",
+                        "type": null
                     }
                 ],
-                "returns": null,
-                "description": "Determine if a node from event.target is a Tab element for the current Tabs container.\nIf the clicked element is not a Tab, it returns false.\nIf it finds another Tabs container between the Tab and `this`, it returns false."
+                "returns": null
+            },
+            {
+                "name": "handleClick",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "e",
+                        "type": null
+                    }
+                ],
+                "returns": null
             },
             {
                 "name": "handleKeyDown",
@@ -10580,7 +10814,19 @@
                 "returns": null
             },
             {
-                "name": "renderTabsList",
+                "name": "isTabFromContainer",
+                "docblock": "Determine if a node from event.target is a Tab element for the current Tabs container.\nIf the clicked element is not a Tab, it returns false.\nIf it finds another Tabs container between the Tab and `this`, it returns false.",
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "node"
+                    }
+                ],
+                "returns": null,
+                "description": "Determine if a node from event.target is a Tab element for the current Tabs container.\nIf the clicked element is not a Tab, it returns false.\nIf it finds another Tabs container between the Tab and `this`, it returns false."
+            },
+            {
+                "name": "renderTabPanels",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
@@ -10592,7 +10838,7 @@
                 "returns": null
             },
             {
-                "name": "renderTabPanels",
+                "name": "renderTabsList",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
@@ -10754,6 +11000,13 @@
         "description": "Toast serves as a feedback & confirmation mechanism after the user takes an action. View [banner guidelines](https://www.lightningdesignsystem.com/guidelines/messaging/components/banners/).",
         "methods": [
             {
+                "name": "onClose",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "saveButtonRef",
                 "docblock": null,
                 "modifiers": [],
@@ -10764,25 +11017,31 @@
                     }
                 ],
                 "returns": null
-            },
-            {
-                "name": "onClose",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
             }
         ],
         "props": {
             "assistiveText": {
                 "type": {
-                    "name": "custom",
-                    "raw": "PropTypes.shape({\n    closeButton: PropTypes.oneOfType([PropTypes.string, PropTypes.node])\n})"
+                    "name": "shape",
+                    "value": {
+                        "closeButton": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "string"
+                                },
+                                {
+                                    "name": "node"
+                                }
+                            ],
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `closeButton`: This is a visually hidden label for the close button.\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    closeButton: 'Close'\n}",
+                    "value": "{\n    closeButton: 'Close',\n}",
                     "computed": false
                 }
             },
@@ -10813,8 +11072,45 @@
             },
             "labels": {
                 "type": {
-                    "name": "custom",
-                    "raw": "PropTypes.shape({\n    details: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),\n    heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),\n    headingLink: PropTypes.oneOfType([PropTypes.string, PropTypes.node])\n})"
+                    "name": "shape",
+                    "value": {
+                        "details": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "string"
+                                },
+                                {
+                                    "name": "node"
+                                }
+                            ],
+                            "required": false
+                        },
+                        "heading": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "string"
+                                },
+                                {
+                                    "name": "node"
+                                }
+                            ],
+                            "required": false
+                        },
+                        "headingLink": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "string"
+                                },
+                                {
+                                    "name": "node"
+                                }
+                            ],
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `details`: Secondary text below heading\n* `heading`: text within heading tag\n* `headingLink`: Text of link that triggers `onClickHeadingLink`. Inline links should pass a keyed array of React components into `labels.heading`.\n\n_Tested with snapshot testing._"
@@ -11116,7 +11412,7 @@
                 "required": false,
                 "description": "Time formatting function",
                 "defaultValue": {
-                    "value": "function(date) {\n    if (date) {\n        return date.toLocaleTimeString(navigator.language, {\n            hour: '2-digit',\n            minute: '2-digit'\n        });\n    }\n\n    return null;\n}",
+                    "value": "function(date) {\n    if (date) {\n        return date.toLocaleTimeString(navigator.language, {\n            hour: '2-digit',\n            minute: '2-digit',\n        });\n    }\n\n    return null;\n}",
                     "computed": false
                 }
             },
@@ -11180,7 +11476,7 @@
                 "required": false,
                 "description": "Parsing date string into Date",
                 "defaultValue": {
-                    "value": "function(timeStr) {\n    const date = new Date();\n    const dateStr = date.toLocaleString(navigator.language, {\n        year: 'numeric',\n        month: 'numeric',\n        day: 'numeric'\n    });\n    return new Date(`${dateStr} ${timeStr}`);\n}",
+                    "value": "function(timeStr) {\n    const date = new Date();\n    const dateStr = date.toLocaleString(navigator.language, {\n        year: 'numeric',\n        month: 'numeric',\n        day: 'numeric',\n    });\n    return new Date(`${dateStr} ${timeStr}`);\n}",
                     "computed": false
                 }
             },
