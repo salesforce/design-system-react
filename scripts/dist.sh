@@ -9,7 +9,8 @@ echo "# Building design-system-react"
 echo "## Preparing the .tmp directory"
 
 rm -rf .tmp/
-rm -rf .tmp-amd/
+# Uncomment this line if you need to build an AMD/Require.js module
+# rm -rf .tmp-amd/
 rm -rf .tmp-commonjs/
 rm -rf .tmp-es/
 rm -rf .tmp-npm/
@@ -38,7 +39,8 @@ echo "## Running JS steps"
 
 echo "## Copying the components"
 
-cp -r .tmp .tmp-amd
+# Uncomment this line if you need to build an AMD/Require.js module
+# cp -r .tmp .tmp-amd
 cp -r .tmp .tmp-commonjs
 cp -r .tmp .tmp-es
 rm -rf .tmp/
@@ -50,26 +52,27 @@ cp -r utilities .tmp-es/utilities
 
 echo "## Transpiling with Babel"
 
+# Uncomment these lines if you need to build an AMD/Require.js module
 # AMD module transpilation
-NODE_ENV=amd \
-./node_modules/.bin/babel \
-    .tmp-es/components \
-    --plugins transform-es2015-modules-amd \
-    --out-dir .tmp-amd/components \
-    --ignore site-stories.js,__docs__,__examples__,__tests__
+# NODE_ENV=amd \
+# ./node_modules/.bin/babel \
+#     .tmp-es/components \
+#     --plugins transform-es2015-modules-amd \
+#     --out-dir .tmp-amd/components \
+#     --ignore site-stories.js,__docs__,__examples__,__tests__
 
-cp -r styles .tmp-amd/styles
+# cp -r styles .tmp-amd/styles
 
-./node_modules/.bin/babel \
-    .tmp-es/icons \
-    --plugins transform-es2015-modules-amd \
-    --out-dir .tmp-amd/icons
+# ./node_modules/.bin/babel \
+#     .tmp-es/icons \
+#     --plugins transform-es2015-modules-amd \
+#     --out-dir .tmp-amd/icons
 
-NODE_ENV=amd \
-./node_modules/.bin/babel \
-    .tmp-es/utilities \
-    --plugins transform-es2015-modules-amd \
-    --out-dir .tmp-amd/utilities
+# NODE_ENV=amd \
+# ./node_modules/.bin/babel \
+#     .tmp-es/utilities \
+#     --plugins transform-es2015-modules-amd \
+#     --out-dir .tmp-amd/utilities
 
 # CommonJS module transpilation
 NODE_ENV=commonjs \
