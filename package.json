@@ -8,7 +8,6 @@
 		"npm": "^5.5.1"
 	},
 	"scripts": {
-
 		"build-docs": "$(npm bin)/babel-node ./scripts/build-docs.js",
 		"build-and-test-docs": "npm run build-docs && $(npm bin)/babel-node ./tests/component-docs-test.js",
 		"build-storybook": "build-storybook -o ./storybook",
