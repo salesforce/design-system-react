@@ -1,0 +1,45 @@
+define(['exports'], function (exports) {
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
+	/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+
+	/* eslint-disable import/no-mutable-exports */
+
+	var lowPriorityWarning = function lowPriorityWarning() {};
+
+	if (process.env.NODE_ENV !== 'production') {
+		var printWarning = function printWarning(originalMessage) {
+			for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+				args[_key - 1] = arguments[_key];
+			}
+
+			var argIndex = 0;
+			var message = 'Warning: ' + originalMessage.replace(/%s/g, function () {
+				return args[argIndex++];
+			});
+			if (typeof console !== 'undefined') {
+				console.warn(message); // eslint-disable-line no-console
+			}
+			try {
+				// Throw error to enable tracing the callstack.
+				throw new Error(message);
+			} catch (event) {} // eslint-disable-line no-empty
+		};
+
+		lowPriorityWarning = function lowPriorityWarning(condition, originalMessage) {
+			for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+				args[_key2 - 2] = arguments[_key2];
+			}
+
+			if (originalMessage) {
+				printWarning.apply(undefined, [originalMessage].concat(args));
+			}
+		};
+	}
+
+	exports.default = lowPriorityWarning;
+});
