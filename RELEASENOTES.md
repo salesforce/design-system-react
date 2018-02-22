@@ -35,7 +35,7 @@ These are changes that have backwards-compatible solutions present and that comp
 
 **Bugfix**
 
-* Export `canUseDOM` correctly to enable focus trap. This bug is present in `>=0.8.0` versions. Upgrading to `0.8.8` is recommeded for `Popover` and other components to be accessible.
+* Export `canUseDOM` correctly to enable focus trap. This bug is present in `>=0.8.0` versions. Upgrading to `0.8.8` is recommended for `Popover` and other components to be accessible.
 
 **Maintenance**
 
