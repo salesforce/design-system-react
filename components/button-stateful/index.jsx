@@ -34,24 +34,57 @@ const propTypes = {
 	 * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
 	 */
 	assistiveText: PropTypes.string,
+	/**
+	 * Disables the button and adds disabled styling.
+	 */
 	disabled: PropTypes.bool,
 	/**
 	 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
 	 */
 	iconName: PropTypes.string,
+	/**
+	 * Determines the size of the icon.
+	 */
 	iconSize: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
 	/**
 	 * If true, button/icon is white. Meant for buttons or utility icons on dark backgrounds.
 	 */
 	inverse: PropTypes.bool,
+	/**
+	 * Triggered when focus is removed.
+	 */
 	onBlur: PropTypes.func,
+	/**
+	 * Triggered when the button is clicked.
+	 */
 	onClick: PropTypes.func,
+	/**
+	 * Triggered when component is focused.
+	 */
 	onFocus: PropTypes.func,
+	/**
+	 * Triggered when a key is pressed down
+	 */
 	onKeyDown: PropTypes.func,
+	/**
+	 * Triggered when a key is pressed and released
+	 */
 	onKeyPress: PropTypes.func,
+	/**
+	 * Triggered when a key is released
+	 */
 	onKeyUp: PropTypes.func,
+	/**
+	 * Triggered when a mouse button is pressed down
+	 */
 	onMouseDown: PropTypes.func,
+	/**
+	 * Triggered when a mouse arrow hovers
+	 */
 	onMouseEnter: PropTypes.func,
+	/**
+	 * Triggered when a mouse arrow no longer hovers
+	 */
 	onMouseLeave: PropTypes.func,
 	/**
 	 * If true, button scales to 100% width on small form factors.
@@ -73,7 +106,13 @@ const propTypes = {
 	 * Write "-1" if you don't want the user to tab to the button.
 	 */
 	tabIndex: PropTypes.string,
+	/**
+	 * [Deprecated] Tooltip on button. Button should be a child of `Tooltip` instead.
+	 */
 	tooltip: PropTypes.node,
+	/**
+	 * Different types of buttons
+	 */
 	variant: PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon']),
 };
 

@@ -21,6 +21,9 @@ const displayName = AVATAR;
 
 // ### Prop Types
 const propTypes = {
+	/**
+	 * Assistive text for accessibility that labels the icon.
+	 */
 	assistiveText: PropTypes.string,
 	/**
 	 * Class names to be applied to Avatar component.

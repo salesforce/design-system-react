@@ -1,6 +1,6 @@
 {
 	"name": "design-system-react",
-	"version": "0.8.7",
+	"version": "0.8.8",
 	"description": "Salesforce Lightning Design System for React",
 	"license": "SEE LICENSE IN README.md",
 	"engines": {
@@ -9,12 +9,13 @@
 	},
 	"scripts": {
 		"build-docs": "$(npm bin)/babel-node ./scripts/build-docs.js",
+		"build-and-test-docs": "npm run build-docs && $(npm bin)/babel-node ./tests/component-docs-test.js",
 		"build-storybook": "build-storybook -o ./storybook",
 		"build-storybook-for-tests": "build-storybook -o ./storybook-based-tests -c ./.storybook-based-tests",
 		"dist": "scripts/dist.sh",
 		"heroku-prebuild": "./scripts/heroku-prebuild.sh",
 		"heroku-postbuild": "./scripts/heroku-postbuild.sh",
-		"icons": ".$(npm bin)/babel-node scripts/inline-icons.js",
+		"icons": "$(npm bin)/babel-node scripts/inline-icons.js",
 		"link": "./scripts/npm-link.sh",
 		"lint": "npm run lint:style && npm run lint:quality",
 		"lint:docs": "$(npm bin)/prettylint \"*.md\"",

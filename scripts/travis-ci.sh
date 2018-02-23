@@ -23,7 +23,7 @@ SKIP_START_KARMA=false
 SNAPSHOT_TESTS='npm run snapshot-test'
 SKIP_SNAPSHOT_TESTS=false
 # React DocGen library build of source code PropType comments into a JSON file for documentation site
-DOCGEN='npm run build-docs'
+DOCGEN='npm run build-and-test-docs'
 SKIP_DOCGEN=false
 
 numArgs=$#
