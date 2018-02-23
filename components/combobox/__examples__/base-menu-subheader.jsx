@@ -2,8 +2,8 @@
 import React from 'react';
 import Combobox from '~/components/combobox';
 import Icon from '~/components/icon';
-import comboboxAddSubheadings from '~/components/combobox/add-subheadings';
 import comboboxFilterAndLimit from '~/components/combobox/filter';
+import comboboxAddSubheadings from '~/components/combobox/add-subheadings';
 import IconSettings from '~/components/icon-settings';
 
 const subheadings = [
