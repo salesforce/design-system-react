@@ -11,11 +11,11 @@ const filter = ({ inputValue, limit = 10, options, selection }) =>
 			const searchTermFound = option.label
 				? option.label.match(new RegExp(escapeRegExp(inputValue), 'ig'))
 				: false;
-			const isSection = option.data && option.data.type === 'section';
+			const isSeparator = option.type === 'separator';
 			const notAlreadySelected = !selection.includes(option);
 
 			return (
-				(!inputValue || isSection || searchTermFound) && notAlreadySelected
+				(!inputValue || isSeparator || searchTermFound) && notAlreadySelected
 			);
 		})
 		.splice(0, limit);
