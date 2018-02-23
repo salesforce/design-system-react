@@ -2,15 +2,24 @@
 import React from 'react';
 import Combobox from '~/components/combobox';
 import Icon from '~/components/icon';
+import comboboxAddSubheadings from '~/components/combobox/add-subheadings';
 import comboboxFilterAndLimit from '~/components/combobox/filter';
 import IconSettings from '~/components/icon-settings';
 
-const accounts = [
+const subheadings = [
 	{
-		id: '0',
+		id: 'account',
 		label: 'Accounts',
 		type: 'separator',
 	},
+	{
+		id: 'opportunity',
+		label: 'Opportunities',
+		type: 'separator',
+	},
+];
+
+const accounts = [
 	{
 		id: '1',
 		label: 'Acme',
@@ -31,14 +40,9 @@ const accounts = [
 	},
 	{
 		id: '4',
-		label: 'Opportunities',
-		subTitle: 'Opportunity • San Francisco, CA',
+		label: 'Vandelay Industries',
+		subTitle: 'Account • San Francisco, CA',
 		type: 'account',
-	},
-	{
-		id: '5',
-		label: 'Opportunities',
-		type: 'separator',
 	},
 	{
 		id: '6',
@@ -135,11 +139,14 @@ class Example extends React.Component {
 						placeholder: 'Search Salesforce',
 					}}
 					multiple
-					options={comboboxFilterAndLimit({
-						inputValue: this.state.inputValue,
-						limit: 10,
-						options: accountsWithIcon,
-						selection: this.state.selection,
+					options={comboboxAddSubheadings({
+						subheadings,
+						filteredOptions: comboboxFilterAndLimit({
+							inputValue: this.state.inputValue,
+							limit: 10,
+							options: accountsWithIcon,
+							selection: this.state.selection,
+						}),
 					})}
 					selection={this.state.selection}
 					value={this.state.inputValue}
