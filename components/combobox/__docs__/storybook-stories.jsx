@@ -15,7 +15,8 @@ import ReadOnly from '../__examples__/readonly-single';
 import ReadOnlySingleSelectionCustomMenuItem from '../__examples__/readonly-single-selection-custom-menu-item';
 import ReadOnlyMultiple from '../__examples__/readonly-multiple';
 import SnapshotBaseOpen from '../__examples__/snapshot/base-open';
-import SnapshotBaseMenuSubHeaderSeparator from '../__examples__/snapshot/base-open-menu-sub-header';
+import SnapshotBaseOpenMenuSubHeaderSeparator from '../__examples__/snapshot/base-open-menu-sub-header';
+import SnapshotBaseOpenMenuInheritWidthOf from '../__examples__/snapshot/base-open-menu-inheritWidthOf';
 import SnapshotBaseCustomMenuItemOpen from '../__examples__/snapshot/base-custom-menu-item-open';
 import SnapshotBaseSelected from '../__examples__/snapshot/base-selected';
 import SnapshotInlineSingleSelection from '../__examples__/snapshot/inline-single-selection';
@@ -58,8 +59,11 @@ storiesOf(COMBOBOX, module)
 		<SnapshotBaseCustomMenuItemOpen action={action} />
 	))
 	.add('Snapshot Base Selected', () => <SnapshotBaseSelected action={action} />)
-	.add('Snapshot Base Menu Sub Header Separator', () => (
-		<SnapshotBaseMenuSubHeaderSeparator action={action} />
+	.add('Snapshot Base Open Menu Sub Header Separator', () => (
+		<SnapshotBaseOpenMenuSubHeaderSeparator action={action} />
+	))
+	.add('Snapshot Base Open Menu inheritWidthOf prop', () => (
+		<SnapshotBaseOpenMenuInheritWidthOf action={action} />
 	))
 
 	.add('Snapshot Inline Single Selection', () => (

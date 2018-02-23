@@ -77,7 +77,7 @@ const propTypes = {
 	 */
 	menuItem: PropTypes.func,
 	/*
-	 * Sets a maximum width that the menu will be if inheritWidthOf is menu.
+	 * Sets a maximum width that the menu will be if `inheritWidthOf` is menu.
 	 */
 	maxWidth: PropTypes.string,
 	/*
@@ -113,7 +113,7 @@ const Menu = (props) => {
 				width: 'auto',
 				maxWidth: props.maxWidth ? props.maxWidth : 'inherit',
 			}
-			: null;
+			: undefined;
 	const menuOptions = props.options.map((optionData, index) => {
 		const active =
 			index === props.activeOptionIndex &&
@@ -130,7 +130,7 @@ const Menu = (props) => {
 					className="slds-dropdown__header slds-truncate"
 					title={optionData.label}
 					role="separator"
-					key={`menu-option-${optionData.id}`}
+					key={`menu-separator-${optionData.id}`}
 				>
 					<span
 						className={classNames(
@@ -142,7 +142,11 @@ const Menu = (props) => {
 					</span>
 				</li>
 			) : (
-				<li className="slds-has-divider_top-space" role="separator" />
+				<li
+					className="slds-has-divider_top-space"
+					role="separator"
+					key={`menu-separator-${optionData.id}`}
+				/>
 			);
 		}
 
