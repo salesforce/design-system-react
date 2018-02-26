@@ -146,7 +146,7 @@ const propTypes = {
 	 * Sets the dialog width to the width of one of the following:
 	 * * `target`: Sets the dialog width to the width of the target. (Menus attached to `input` typically follow this UX pattern),
 	 * * `menu`: Consider setting a `menuMaxWidth` if using this value. If not, width will be set to width of largest menu item.
-	 * * `none`: Does not set a width on the dialog.
+	 * * `none`: Does not set a width on the dialog. _Tested with snapshot testing._
 	 */
 	inheritWidthOf: PropTypes.oneOf(['target', 'menu', 'none']),
 	/**
@@ -170,8 +170,8 @@ const propTypes = {
 		'relative',
 	]),
 	/**
-	 * Sets a maximum width that the menu will be used if `inheritWidthOf` is set to `menu`.
-	 * Example: 500px
+	 * Sets a maximum width that the menu will be used if `inheritWidthOf` is set to `menu`. (Example: 500px) _Tested with snapshot testing._
+	 *
 	 */
 	menuMaxWidth: PropTypes.string,
 	/**
