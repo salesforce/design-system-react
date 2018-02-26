@@ -432,7 +432,7 @@ const MenuPicklist = createReactClass({
 				onClose={this.handleCancel}
 				onKeyDown={this.handleKeyDown}
 				onRequestTargetElement={() => this.button}
-				inheritTargetWidth={this.props.inheritTargetWidth}
+				inheritWidthOf={this.props.inheritTargetWidth ? 'target' : 'none'}
 				position={this.props.menuPosition}
 			>
 				{this.renderMenuContent()}

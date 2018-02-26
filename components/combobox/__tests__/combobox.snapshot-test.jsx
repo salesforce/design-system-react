@@ -4,6 +4,8 @@ import renderer from 'react-test-renderer';
 import { renderMarkup, testDOMandHTML } from '../../../tests/snapshot-helpers';
 
 import SnapshotBaseOpen from '../__examples__/snapshot/base-open';
+import SnapshotBaseOpenMenuSubHeader from '../__examples__/snapshot/base-open-menu-sub-header';
+import SnapshotBaseOpenMenuInheritWidthOf from '../__examples__/snapshot/base-open-menu-inheritWidthOf';
 import SnapshotBaseOpenClassName from '../__examples__/snapshot/base-open-class-name';
 import SnapshotBaseSelected from '../__examples__/snapshot/base-selected';
 import SnapshotInlineSingleSelection from '../__examples__/snapshot/inline-single-selection';
@@ -36,6 +38,18 @@ testDOMandHTML({
 	name: 'Base Open Custom Class Name',
 	test,
 	Component: SnapshotBaseOpenClassName,
+});
+
+testDOMandHTML({
+	name: 'Base Open Menu Sub Header',
+	test,
+	Component: SnapshotBaseOpenMenuSubHeader,
+});
+
+testDOMandHTML({
+	name: 'Base Open Menu Inherit Width Of Menu',
+	test,
+	Component: SnapshotBaseOpenMenuInheritWidthOf,
 });
 
 testDOMandHTML({

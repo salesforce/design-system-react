@@ -5,6 +5,8 @@
 
 const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/base.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/base-menu-subheader.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/base-inherit-menu-width.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/base-predefined-options-only.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/inline-multiple.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/inline-single.jsx'),

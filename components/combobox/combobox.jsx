@@ -78,6 +78,14 @@ const propTypes = {
 		PropTypes.string,
 	]),
 	/**
+	 * CSS classes to be added to tag with `.slds-dropdown__header`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
+	 */
+	classNameMenuSubHeader: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
+	/**
 	 * Event Callbacks
 	 * * `onBlur`: Called when `input` removes focus.
 	 * * `onChange`: Called when keyboard events occur within `input`
@@ -135,6 +143,13 @@ const propTypes = {
 	 */
 	isOpen: PropTypes.bool,
 	/**
+	 * Sets the dialog width to the width of one of the following:
+	 * * `target`: Sets the dialog width to the width of the target. (Menus attached to `input` typically follow this UX pattern),
+	 * * `menu`: Consider setting a `menuMaxWidth` if using this value. If not, width will be set to width of largest menu item.
+	 * * `none`: Does not set a width on the dialog.
+	 */
+	inheritWidthOf: PropTypes.oneOf(['target', 'menu', 'none']),
+	/**
 	 * Accepts a custom menu item rendering function that becomes a custom component. The checkmark is still rendered in readonly variants. This function is passed the following props:
 	 * * `assistiveText`: Object, `assistiveText` prop that is passed into Combobox
 	 * * `option`: Object, option data for item being rendered that is passed into Combobox
@@ -155,11 +170,17 @@ const propTypes = {
 		'relative',
 	]),
 	/**
+	 * Sets a maximum width that the menu will be used if `inheritWidthOf` is set to `menu`.
+	 * Example: 500px
+	 */
+	menuMaxWidth: PropTypes.string,
+	/**
 	 * Allows multiple selections _Tested with mocha testing._
 	 */
 	multiple: PropTypes.bool,
 	/**
-	 * Item added to the dropdown menu. _Tested with snapshot testing._
+	 * Item added to the dropdown menu.
+	 * To add an item as a separator, set item `type` as `separator`. Note: At the moment, we don't support two consecutive separators. _Tested with snapshot testing._
 	 */
 	options: PropTypes.array.isRequired,
 	/**
@@ -197,6 +218,7 @@ const defaultProps = {
 		placeholderReadOnly: 'Select an Option',
 		removePillTitle: 'Remove',
 	},
+	inheritWidthOf: 'target',
 	menuPosition: 'absolute',
 	readOnlyMenuItemVisibleLength: 5,
 	selection: [],
@@ -248,6 +270,8 @@ class Combobox extends React.Component {
 			} else {
 				this.setState({ activeOption: undefined, activeOptionIndex: -1 });
 			}
+		} else if (this.props.isOpen !== nextProps.isOpen) {
+			this.setState({ isOpen: nextProps.isOpen });
 		}
 
 		// there may be issues with tabindex/focus if the app removes an item
@@ -281,7 +305,7 @@ class Combobox extends React.Component {
 				align="bottom left"
 				context={this.context}
 				hasStaticAlignment={this.props.hasStaticAlignment}
-				inheritTargetWidth
+				inheritWidthOf={this.props.inheritWidthOf}
 				onClose={this.handleClose}
 				onOpen={this.handleOpen}
 				onRequestTargetElement={this.getTargetElement}
@@ -310,7 +334,12 @@ class Combobox extends React.Component {
 
 	getNewActiveOptionIndex = ({ activeOptionIndex, offset, options }) => {
 		// used by menu listbox and selected options listbox
-		const newIndex = activeOptionIndex + offset;
+		const nextIndex = activeOptionIndex + offset;
+		const skipIndex =
+			options.length > nextIndex &&
+			nextIndex >= 0 &&
+			options[nextIndex].type === 'separator';
+		const newIndex = skipIndex ? nextIndex + offset : nextIndex;
 		const hasNewIndex = options.length > newIndex && newIndex >= 0;
 		return hasNewIndex ? newIndex : activeOptionIndex;
 	};
@@ -941,6 +970,8 @@ class Combobox extends React.Component {
 				activeOption={this.state.activeOption}
 				activeOptionIndex={this.state.activeOptionIndex}
 				classNameMenu={this.props.classNameMenu}
+				classNameMenuSubHeader={this.props.classNameMenuSubHeader}
+				inheritWidthOf={this.props.inheritWidthOf}
 				inputId={this.getId()}
 				inputValue={this.props.value}
 				isSelected={this.isSelected}
@@ -951,6 +982,7 @@ class Combobox extends React.Component {
 				}
 				labels={labels}
 				menuItem={this.props.menuItem}
+				maxWidth={this.props.menuMaxWidth}
 				options={this.props.options}
 				onSelect={this.handleSelect}
 				clearActiveOption={this.clearActiveOption}
