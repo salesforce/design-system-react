@@ -55,6 +55,7 @@ export Combobox from './combobox';
 
 export SLDSComboboxFilterAndLimit from './combobox/filter';
 export comboboxFilterAndLimit from './combobox/filter';
+export comboboxAddSubheadings from './combobox/add-subheadings';
 
 export SLDSGlobalHeader from './global-header';
 export GlobalHeader from './global-header';

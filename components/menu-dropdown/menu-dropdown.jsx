@@ -836,7 +836,7 @@ const MenuDropdown = createReactClass({
 				)}
 				context={this.context}
 				hasStaticAlignment={this.props.hasStaticAlignment}
-				inheritTargetWidth={this.props.inheritTargetWidth}
+				inheritWidthOf={this.props.inheritTargetWidth ? 'target' : 'none'}
 				offset={offset}
 				onClose={this.handleClose}
 				onKeyDown={this.handleKeyDown}

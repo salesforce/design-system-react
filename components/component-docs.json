@@ -2619,6 +2619,24 @@
                 "required": false,
                 "description": "CSS classes to be added to tag with `.slds-dropdown`. Uses `classNames` [API](https://github.com/JedWatson/classnames). Autocomplete/bass variant menu height should not scroll and should be determined by number items which should be no more than 10. _Tested with snapshot testing._"
             },
+            "classNameMenuSubHeader": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-dropdown__header`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
             "events": {
                 "type": {
                     "name": "shape",
@@ -2746,6 +2764,31 @@
                 "required": false,
                 "description": "Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use view [Concepts and Best Practices](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices) _Tested with snapshot testing._"
             },
+            "inheritWidthOf": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'target'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'menu'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'none'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Sets the dialog width to the width of one of the following:\n* `target`: Sets the dialog width to the width of the target. (Menus attached to `input` typically follow this UX pattern),\n* `menu`: Consider setting a `menuMaxWidth` if using this value. If not, width will be set to width of largest menu item.\n* `none`: Does not set a width on the dialog.",
+                "defaultValue": {
+                    "value": "'target'",
+                    "computed": false
+                }
+            },
             "menuItem": {
                 "type": {
                     "name": "func"
@@ -2778,6 +2821,13 @@
                     "computed": false
                 }
             },
+            "menuMaxWidth": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Sets a maximum width that the menu will be used if `inheritWidthOf` is set to `menu`.\nExample: 500px"
+            },
             "multiple": {
                 "type": {
                     "name": "bool"
@@ -2790,7 +2840,7 @@
                     "name": "array"
                 },
                 "required": true,
-                "description": "Item added to the dropdown menu. _Tested with snapshot testing._"
+                "description": "Item added to the dropdown menu.\nTo add an item as a separator, set item `type` as `separator`. Note: At the moment, we don't support two consecutive separators. _Tested with snapshot testing._"
             },
             "readOnlyMenuItemVisibleLength": {
                 "type": {
