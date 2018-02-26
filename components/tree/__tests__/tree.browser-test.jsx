@@ -7,6 +7,8 @@ import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 
+import isFunction from 'lodash.isfunction';
+
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 // `this.wrapper` and `this.dom` is set in the helpers file
@@ -14,9 +16,6 @@ import {
 	mountComponent,
 	unmountComponent,
 } from '../../../tests/enzyme-helpers';
-
-// ### isFunction
-import isFunction from 'lodash.isfunction';
 
 import sampleNodes from '../../../utilities/sample-data/tree';
 

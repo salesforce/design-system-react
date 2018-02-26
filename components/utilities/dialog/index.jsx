@@ -95,9 +95,9 @@ const Dialog = createReactClass({
 		 */
 		containerProps: PropTypes.object,
 		/**
-		 * Sets the dialog width to the width of the target. Menus attached to `input` typically follow this UX pattern.
+		 * Sets the dialog width to the width of either 'target' (Menus attached to `input` typically follow this UX pattern), 'menu' or 'none.
 		 */
-		inheritTargetWidth: PropTypes.bool,
+		inheritWidthOf: PropTypes.oneOf(['target', 'menu', 'none']),
 		/**
 		 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. This is the opposite of "flippable."
 		 */
@@ -376,9 +376,21 @@ const Dialog = createReactClass({
 			style = this.getPopperStyles();
 		}
 
-		if (this.props.inheritTargetWidth && this.props.onRequestTargetElement()) {
+		if (
+			this.props.inheritWidthOf === 'target' &&
+			this.props.onRequestTargetElement()
+		) {
 			style.width = this.props
 				.onRequestTargetElement()
+				.getBoundingClientRect().width;
+		} else if (
+			this.props.inheritWidthOf === 'menu' &&
+			this.dialogContent &&
+			this.dialogContent.querySelector('.slds-listbox')
+		) {
+			// inherit menu renderer width
+			style.width = this.dialogContent
+				.querySelector('.slds-listbox')
 				.getBoundingClientRect().width;
 		}
 

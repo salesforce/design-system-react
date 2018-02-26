@@ -17,6 +17,7 @@ import PropTypes from 'prop-types';
 import escapeRegExp from 'lodash.escaperegexp';
 import isBoolean from 'lodash.isboolean';
 import isEqual from 'lodash.isequal';
+import classNames from 'classnames';
 
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)
@@ -34,7 +35,6 @@ import EventUtil from '../../utilities/event';
 import KEYS from '../../utilities/key-code';
 
 import Menu from './menu';
-import classNames from 'classnames';
 
 import { LOOKUP } from '../../utilities/constants';
 
@@ -636,7 +636,7 @@ const Lookup = createReactClass({
 				closeOnTabKey
 				contentsClassName="slds-lookup__menu slds-show"
 				context={this.context}
-				inheritTargetWidth
+				inheritWidthOf="target"
 				onClose={this.handleCancel}
 				hasStaticAlignement={!this.props.flippable}
 				constrainToScrollParent={this.props.constrainToScrollParent}

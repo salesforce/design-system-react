@@ -31,35 +31,57 @@ import checkProps from './check-props';
 
 import { FORMS_TEXTAREA } from '../../../utilities/constants';
 
-// ## TextareaDefinition
+/**
+ * A multi-line plain-text editing control.
+ */
 const Textarea = createReactClass({
-	// ### Display Name
-	// Always use the canonical component name as the React display name.
 	displayName: FORMS_TEXTAREA,
-	// ### Prop Types
+
 	propTypes: {
+		/**
+		 * The aria-activedescendant attribute contains the ID of the currently active child object that is part of a composite widget within the Document Object Model. It makes do with the overhead of having all or more than one child focusable. As the name specifies, it helps in managing the current active child of the composite widget.
+		 */
 		'aria-activedescendant': PropTypes.string,
 		/**
+		 * Indicates if the suggestions in a composite widget are values that complete the current textbox input.
+		 */
+		'aria-autocomplete': PropTypes.string,
+		/**
 		 * An HTML ID that is shared with ARIA-supported devices with the
-		 * `aria-controls` attribute in order to relate the textarea with
+		 * `aria-controls` attribute in order to relate the input with
 		 * another region of the page. An example would be a select box
 		 * that shows or hides a panel.
 		 */
 		'aria-controls': PropTypes.string,
+		/**
+		 * The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need.
+		 */
 		'aria-describedby': PropTypes.string,
+		/**
+		 * Use the `aria-expanded` state to indicate whether regions of the content are collapsible, and to expose whether a region is currently expanded or collapsed.
+		 */
 		'aria-expanded': PropTypes.bool,
+		/**
+		 * Indicates that the element has a popup context menu or sub-level menu.
+		 */
 		'aria-haspopup': PropTypes.bool,
+		/**
+		 * The aria-labelledby attribute contains the element IDs of labels in objects such as input elements, widgets, and groups. The attribute establishes relationships between objects and their labels. Assistive technology, such as screen readers, use this attribute to catalog the objects in a document so that users can navigate between them. Without an element ID, the assistive technology cannot catalog the object.
+		 */
 		'aria-labelledby': PropTypes.string,
 		/**
 		 * An HTML ID that is shared with ARIA-supported devices with the
-		 * `aria-controls` attribute in order to relate the textarea with
+		 * `aria-controls` attribute in order to relate the input with
 		 * another region of the page. An example would be a search field
 		 * that shows search results.
 		 */
 		'aria-owns': PropTypes.string,
+		/**
+		 * The `aria-required` attribute is used to indicate that user input is required on an element before a form can be submitted.
+		 */
 		'aria-required': PropTypes.bool,
 		/**
-		 * Specifies is the textarea should automatically get focus when the page loads.
+		 * Specifies is the textarea should automatically get focus when the page loads. This is typically a poor user experience.
 		 */
 		autoFocus: PropTypes.bool,
 		/**
@@ -67,6 +89,9 @@ const Textarea = createReactClass({
 		 * by this text and is visually not shown.
 		 */
 		assistiveText: PropTypes.string,
+		/**
+		 * Elements are added after the `textarea`.
+		 */
 		children: PropTypes.node,
 		/**
 		 * Class names to be added to the textarea component.
@@ -84,6 +109,10 @@ const Textarea = createReactClass({
 			PropTypes.string,
 		]),
 		/**
+		 * Disables the textarea and prevents editing the contents.
+		 */
+		disabled: PropTypes.bool,
+		/**
 		 * Message to display when the textarea is in an error state. When this is present, also visually highlights the component as in error.
 		 */
 		errorText: PropTypes.string,
@@ -99,6 +128,9 @@ const Textarea = createReactClass({
 		 * This label appears above the textarea.
 		 */
 		label: PropTypes.string,
+		/**
+		 * Triggered when focus is removed.
+		 */
 		onBlur: PropTypes.func,
 		/**
 		 * This callback fires when the textarea changes. The synthetic React event will be the first parameter to the callback. You will probably want to reference `event.target.value` in your callback. No custom data object is provided.
@@ -108,19 +140,38 @@ const Textarea = createReactClass({
 		 * This event fires when the textarea is clicked.
 		 */
 		onClick: PropTypes.func,
-		onFocus: PropTypes.func,
-		onInput: PropTypes.func,
-		onInvalid: PropTypes.func,
-		onKeyDown: PropTypes.func,
-		onKeyPress: PropTypes.func,
-		onKeyUp: PropTypes.func,
-		onSelect: PropTypes.func,
-		onSubmit: PropTypes.func,
-
 		/**
-		 * Disables the textarea and prevents editing the contents.
+		 * Triggered when component is focused.
 		 */
-		disabled: PropTypes.bool,
+		onFocus: PropTypes.func,
+		/**
+		 * Similar to `onchange`. Triggered when an element gets user input.
+		 */
+		onInput: PropTypes.func,
+		/**
+		 * Triggered when a submittable <input> element is invalid.
+		 */
+		onInvalid: PropTypes.func,
+		/**
+		 * Triggered when a key is pressed down
+		 */
+		onKeyDown: PropTypes.func,
+		/**
+		 * Triggered when a key is pressed and released
+		 */
+		onKeyPress: PropTypes.func,
+		/**
+		 * Triggered when a key is released
+		 */
+		onKeyUp: PropTypes.func,
+		/**
+		 * Triggered after some text has been selected in an element.
+		 */
+		onSelect: PropTypes.func,
+		/**
+		 * Fires when a form is submitted.
+		 */
+		onSubmit: PropTypes.func,
 		/**
 		 * Maximum number of characters allowed.
 		 */

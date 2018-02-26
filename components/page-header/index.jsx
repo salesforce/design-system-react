@@ -71,6 +71,9 @@ const propTypes = {
 	 * If omitted, icon position is centered.
 	 */
 	iconPosition: PropTypes.oneOf(['left', 'right']),
+	/**
+	 * Determines the size of the icon.
+	 */
 	iconSize: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
 	/**
 	 * For icon variants, please reference <a href='http://www.lightningdesignsystem.com/components/buttons/#icon'>Lightning Design System Icons</a>.

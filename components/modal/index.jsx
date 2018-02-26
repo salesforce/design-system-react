@@ -10,7 +10,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
-import Button from '../button';
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
 
@@ -21,6 +20,8 @@ import isBoolean from 'lodash.isboolean';
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
+
+import Button from '../button';
 
 const displayName = 'Modal';
 const propTypes = {
@@ -73,7 +74,7 @@ const propTypes = {
 	 */
 	onRequestClose: PropTypes.func,
 	/**
-	 * Accepts either a node or array of buttons to be placed in the footer. If array, the buttons render on the right side by default but are floated left and right if <code>directional</code> is true.
+	 * Accepts a node or array of nodes that are typically a `Button` or `ProgressIndicator`. If an array, the nodes render on the right side first but are then floated left and right if <code>directional</code> prop is `true`.
 	 */
 	footer: PropTypes.oneOfType([PropTypes.array, PropTypes.node]),
 	/**

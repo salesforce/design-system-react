@@ -3,7 +3,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf, action } from '@storybook/react';
-import { shape } from 'airbnb-prop-types';
 
 import RadioButtonGroup from '../../radio-button-group';
 import Radio from '../../radio-button-group/radio';
@@ -51,7 +50,7 @@ class RadioButtonGroupExample extends React.Component {
 }
 
 RadioButtonGroupExample.propTypes = {
-	labels: shape({
+	labels: PropTypes.shape({
 		error: PropTypes.string,
 		label: PropTypes.string,
 	}),

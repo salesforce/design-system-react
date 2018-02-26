@@ -309,3 +309,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Intellij IDE 
+.idea/*
+*.iml

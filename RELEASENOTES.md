@@ -31,6 +31,34 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.8.9
+
+**Minor features**
+
+* Combobox menu supports subheadings and line separators.
+* UX pattern created for Combobox autocomplete that limits subheadings to those that have "child" matching items.
+
+## Release 0.8.8
+
+**Bugfix**
+
+* Export `canUseDOM` correctly to enable focus trap. This bug is present in `>=0.8.0` versions. Upgrading to `0.8.8` is recommended for `Popover` and other components to be accessible.
+
+**Maintenance**
+
+* Replace Airbnb shape props with 1PropTypes.shape1
+* Add Prettier linting to JSON, Add JSON parser plugin to eslint
+* Converts `package.json` to tabs
+* Troubleshoots `npm run lint:fix`
+* Implement Import first ESlint rule to increase code consistency
+
+**Documentatation**
+
+* Add missing documentation site component descriptions
+* Document child nodes of `IconSettings`
+* Update `Modal` footer prop description
+
+
 ## Release 0.8.7
 
 **Bugfix**

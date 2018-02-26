@@ -127,6 +127,9 @@ const defaultProps = {
 	variant: 'default',
 };
 
+/**
+ * A tab keeps related content in a single container that is shown and hidden through navigation.
+ */
 class Tabs extends React.Component {
 	constructor (props) {
 		super(props);

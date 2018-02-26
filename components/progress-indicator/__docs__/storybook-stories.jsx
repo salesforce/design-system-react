@@ -3,7 +3,7 @@ import createReactClass from 'create-react-class';
 import { storiesOf } from '@storybook/react';
 import IconSettings from '../../icon-settings';
 
-import ProgressIndicator from '~/components/progress-indicator';
+import ProgressIndicator from '../../../components/progress-indicator';
 import { PROGRESS_INDICATOR } from '../../../utilities/constants';
 import Default from '../__examples__/default';
 import Modal from '../__examples__/modal';

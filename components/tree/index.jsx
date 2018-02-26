@@ -11,11 +11,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Child components
-import Branch from './private/branch';
-
 // ### classNames
 import classNames from 'classnames';
+
+// Child components
+import Branch from './private/branch';
 
 // Similar to React's PropTypes check. When in development mode, it issues errors in the console about properties.
 import checkProps from './check-props';
@@ -133,7 +133,7 @@ Tree.propTypes = {
 	 * Highlights term if found in node label. This does not auto-expand branches.
 	 */
 	searchTerm: PropTypes.string,
-	/*
+	/**
 	 * Styles to be added to the top-level `ul` element. Useful for `overflow:hidden`.
 	 */
 	listStyle: PropTypes.object,

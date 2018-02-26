@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import { mount } from 'enzyme';
-import { shape } from 'airbnb-prop-types';
 
 /* Enzyme Helpers that can mount and unmount React component instances to
  * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`
@@ -52,7 +51,7 @@ class RadioGroupExample extends React.Component {
 }
 
 RadioGroupExample.propTypes = {
-	labels: shape({
+	labels: PropTypes.shape({
 		error: PropTypes.string,
 		label: PropTypes.string,
 	}),

@@ -5,11 +5,11 @@ import React from 'react';
 import createReactClass from 'create-react-class';
 import ReactDOM from 'react-dom';
 
+import Modal from 'react-modal';
+
 import Button from '../../button';
 import Icon from '../../icon';
 import EventUtil from '../../../utilities/event';
-
-import Modal from 'react-modal';
 
 const customStyles = {
 	content: {

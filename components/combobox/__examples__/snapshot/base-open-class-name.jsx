@@ -7,6 +7,11 @@ import IconSettings from '~/components/icon-settings';
 
 const accounts = [
 	{
+		id: '0',
+		label: 'Accounts',
+		type: 'separator',
+	},
+	{
 		id: '1',
 		label: 'Acme',
 		subTitle: 'Account • San Francisco',
@@ -43,6 +48,7 @@ class Example extends React.Component {
 					className="this-is-the-input"
 					classNameContainer="this-is-the-container"
 					classNameMenu="this-is-the-menu"
+					classNameMenuSubHeader="this-is-the-menu-sub-header"
 					id="combobox-unique-id"
 					isOpen
 					labels={{
