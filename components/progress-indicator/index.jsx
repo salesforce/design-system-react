@@ -123,7 +123,7 @@ const defaultProps = {
 function checkSteps (steps) {
 	const isStepsDefined = steps !== undefined;
 	const isLabelDefined = (step) => step.label !== undefined;
-	const stepLabelsDefined = Array.isArray(steps) && steps.all(isLabelDefined);
+	const stepLabelsDefined = Array.isArray(steps) && steps.every(isLabelDefined);
 
 	return isStepsDefined && stepLabelsDefined;
 }
