@@ -294,7 +294,7 @@ describe('SLDSCombobox', function () {
 						if (counter === 4) {
 							done();
 						}
-						counter++;
+						counter += 1;
 					}}
 					initialSelection={[
 						accounts[0],

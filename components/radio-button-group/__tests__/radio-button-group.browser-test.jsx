@@ -81,13 +81,13 @@ describe('RadioButtonGroup', function () {
 		wrapper = mount(<RadioButtonGroupExample />, { attachTo: mountNode });
 		const radios = wrapper.find(Radio);
 		expect(radios).to.have.lengthOf(5, 'there are five radio inputs');
-		for (let index = 0; index < radios.length; index++) {
+		radios.forEach((radioWrapper, index) => {
 			const radio = radios.get(index);
 			expect(radio.props.checked).to.equal(
 				radio.props.label === 'Tue',
 				'the second radio input is checked'
 			);
-		}
+		});
 		const legend = wrapper.find('legend');
 		expect(legend.text()).to.equal('Day of week', 'there is a label');
 	});
@@ -97,10 +97,10 @@ describe('RadioButtonGroup', function () {
 			attachTo: mountNode,
 		});
 		const radios = wrapper.find(Radio);
-		for (let index = 0; index < radios.length; index++) {
+		radios.forEach((radioWrapper, index) => {
 			const radio = radios.get(index);
 			expect(radio.props.disabled, 'all radio inputs are disabled').to.be.true;
-		}
+		});
 	});
 
 	it('renders a required indicator', () => {

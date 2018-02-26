@@ -281,7 +281,7 @@ const Lookup = createReactClass({
 		}
 
 		if (filteredItem && filteredItem.data.type === 'section') {
-			nextFocusIndex++;
+			nextFocusIndex += 1;
 		}
 
 		this.setState({ focusIndex: nextFocusIndex });
@@ -367,7 +367,7 @@ const Lookup = createReactClass({
 		);
 
 		if (filteredItem && filteredItem.data.type === 'section') {
-			nextFocusIndex++;
+			nextFocusIndex += 1;
 		}
 
 		this.setState({ focusIndex: nextFocusIndex });

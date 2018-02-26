@@ -118,14 +118,14 @@ const defaultProps = {
 };
 
 /**
- * Check if the passed steps are valid
+ * Check if `steps` prop is valid
  */
 function checkSteps (steps) {
-	if (steps === undefined) return false;
-	for (let i = 0; i < steps.length; ++i) {
-		if (steps[i].label === undefined) return false;
-	}
-	return true;
+	const isStepsDefined = steps !== undefined;
+	const isLabelDefined = (step) => step.label !== undefined;
+	const stepLabelsDefined = Array.isArray(steps) && steps.every(isLabelDefined);
+
+	return isStepsDefined && stepLabelsDefined;
 }
 
 /**
@@ -174,7 +174,7 @@ class ProgressIndicator extends React.Component {
 
 		let currentStep = 0;
 		// find index for the current step
-		for (let i = 0; i < allSteps.length; ++i) {
+		for (let i = 0; i < allSteps.length; i += 1) {
 			// assign step an id if it does not have one
 			if (allSteps[i].id === undefined) {
 				allSteps[i].id = i;
