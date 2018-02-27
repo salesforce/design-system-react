@@ -111,7 +111,7 @@
 		"warning": "^3.0.0"
 	},
 	"peerDependencies": {
-		"@salesforce-ux/design-system": ">=2.4.x",
+		"@salesforce-ux/design-system": "^2.4.0 || ^2.6.0-alpha",
 		"react": ">=15.4.1 <16",
 		"react-dom": ">=15.4.1 <16"
 	},
