@@ -54,6 +54,10 @@ const propTypes = {
 		selectedListboxLabel: PropTypes.string,
 	}),
 	/**
+	 * The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need.
+	 */
+	'aria-describedby': PropTypes.string,
+	/**
 	 * CSS classes to be added to tag with `.slds-combobox`. Uses `classNames` [API](https://github.com/JedWatson/classnames). _Tested with snapshot testing._
 	 */
 	className: PropTypes.oneOfType([
@@ -112,6 +116,10 @@ const propTypes = {
 		onSubmit: PropTypes.func,
 	}),
 	/**
+	 * Message to display when the input is in an error state. When this is present, also visually highlights the component as in error.
+	*/
+	errorText: PropTypes.string,
+	/**
 	 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. This is the opposite of "flippable."
 	 */
 	hasStaticAlignment: PropTypes.bool,
@@ -123,6 +131,7 @@ const propTypes = {
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
 	 * * `label`: This label appears above the input.
+	 * * `labelRequired`: Applies label styling for a required form element
 	 * * `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.
 	 * * `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.
 	 * * `placeholder`: Input placeholder
@@ -132,6 +141,7 @@ const propTypes = {
 	 */
 	labels: PropTypes.shape({
 		label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+		labelRequired: PropTypes.boolean,
 		multipleOptionsSelected: PropTypes.string,
 		noOptionsFound: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 		placeholder: PropTypes.string,
@@ -214,6 +224,7 @@ const defaultProps = {
 	},
 	events: {},
 	labels: {
+		labelRequired: false,
 		noOptionsFound: 'No matches found.',
 		placeholderReadOnly: 'Select an Option',
 		removePillTitle: 'Remove',
@@ -318,6 +329,10 @@ class Combobox extends React.Component {
 				{menuRenderer}
 			</Dialog>
 		) : null;
+	}
+
+	getErrorId () {
+		return `${this.props['aria-describedby'] || this.generatedId}-error-message`;
 	}
 
 	/**
@@ -680,8 +695,12 @@ class Combobox extends React.Component {
 						{
 							'slds-is-open': this.getIsOpen(),
 						},
+						{
+							'slds-has-error': this.props.errorText,
+						},
 						props.className
 					)}
+					aria-describedby={this.getErrorId()}
 					aria-expanded={this.getIsOpen()}
 					aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
 					// used on menu's listbox
@@ -730,6 +749,11 @@ class Combobox extends React.Component {
 								: props.value
 						}
 					/>
+					{this.props.errorText && (
+						<div id={this.getErrorId()} className="slds-form-element__help">
+							{this.props.errorText}
+						</div>
+					)}
 					{this.getDialog({
 						menuRenderer: this.renderMenu({ assistiveText, labels }),
 					})}
@@ -1194,6 +1218,7 @@ class Combobox extends React.Component {
 					assistiveText={this.props.assistiveText.label}
 					htmlFor={this.getId()}
 					label={labels.label}
+					required={labels.labelRequired}
 				/>
 				{variantExists
 					? subRenders[this.props.variant][multipleOrSingle](
