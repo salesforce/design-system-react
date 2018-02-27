@@ -126,8 +126,9 @@ async.series(
 		(done) => cleanPackageJson(done, 'commonjs'),
 		(done) => publish(done, 'commonjs'),
 
-		(done) => cleanPackageJson(done, 'amd'),
-		(done) => publish(done, 'amd'),
+		// Uncomment these lines if you need to build an AMD/Require.js module
+		// (done) => cleanPackageJson(done, 'amd'),
+		// (done) => publish(done, 'amd'),
 	],
 	(err) => {
 		if (err) throw err;

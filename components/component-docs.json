@@ -2783,7 +2783,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Sets the dialog width to the width of one of the following:\n* `target`: Sets the dialog width to the width of the target. (Menus attached to `input` typically follow this UX pattern),\n* `menu`: Consider setting a `menuMaxWidth` if using this value. If not, width will be set to width of largest menu item.\n* `none`: Does not set a width on the dialog.",
+                "description": "Sets the dialog width to the width of one of the following:\n* `target`: Sets the dialog width to the width of the target. (Menus attached to `input` typically follow this UX pattern),\n* `menu`: Consider setting a `menuMaxWidth` if using this value. If not, width will be set to width of largest menu item.\n* `none`: Does not set a width on the dialog. _Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "'target'",
                     "computed": false
@@ -2826,7 +2826,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Sets a maximum width that the menu will be used if `inheritWidthOf` is set to `menu`.\nExample: 500px"
+                "description": "Sets a maximum width that the menu will be used if `inheritWidthOf` is set to `menu`. (Example: 500px) _Tested with snapshot testing._"
             },
             "multiple": {
                 "type": {
