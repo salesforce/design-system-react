@@ -133,9 +133,11 @@ const MenuDropdown = createReactClass({
 		 */
 		checkmark: PropTypes.bool,
 		/**
-		 * By default, any children passed into this component will be rendered inside the dropdown menu. If you need custom content and a list, import 'design-system-react/components/menu-list/list' and pass in `<List>`.
+		 * By default, any children passed into this component will be rendered inside the dropdown menu. If you only need a standard menu, use `options`. If you need custom list items markup, use `listItemRenderer` and `options`. `children` with a `List` should _only_ used if you have a listbox and additional content.
 		 *
 		 * If you need to modify the trigger button, import the module `design-system-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button. Any `id` prop or event hanlders (`onBlur`, `onClick`, etc.) set on the button grandchild will be overwritten by `MenuDropdown` to enable functionality and accessibility. A custom trigger child will not be considered content for the dropdown menu.
+		 *
+		 * **List as a child is an experimental API.** If you need custom content _and_ a list, import 'design-system-react/components/menu-list/list' and pass in `<List>`.
 		 * ```
 		 * <Dropdown>
 		 *   <Trigger>
