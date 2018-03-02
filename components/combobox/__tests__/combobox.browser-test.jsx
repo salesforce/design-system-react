@@ -217,7 +217,8 @@ describe('SLDSCombobox', function () {
 			expect(nodes.combobox.node.getAttribute('aria-haspopup')).to.equal(
 				'listbox'
 			);
-			expect(nodes.combobox.node.getAttribute('aria-describedby')).to.not.be.null;
+			expect(nodes.combobox.node.getAttribute('aria-describedby')).to.not.be
+				.null;
 			// closed
 			expect(nodes.combobox.node.getAttribute('aria-expanded')).to.equal(
 				'false'
@@ -422,10 +423,10 @@ describe('SLDSCombobox', function () {
 
 		it('Should show the error text', function () {
 			const errorMessage = 'Field required.';
-			wrapper = mount(<DemoComponent errorText={errorMessage} />, { attachTo: mountNode });
-			expect(wrapper.props().errorText).to.equal(
-				errorMessage
-			);
+			wrapper = mount(<DemoComponent errorText={errorMessage} />, {
+				attachTo: mountNode,
+			});
+			expect(wrapper.props().errorText).to.equal(errorMessage);
 			expect(wrapper.find('.slds-form-element__help').length).to.equal(1);
 		});
 	});

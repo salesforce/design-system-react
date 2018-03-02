@@ -118,7 +118,7 @@ const propTypes = {
 	}),
 	/**
 	 * Message to display when the input is in an error state. When this is present, also visually highlights the component as in error.
-	*/
+	 */
 	errorText: PropTypes.string,
 	/**
 	 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. This is the opposite of "flippable."
@@ -333,7 +333,8 @@ class Combobox extends React.Component {
 	}
 
 	getErrorId () {
-		return `${this.props['aria-describedby'] || this.generatedId}-error-message`;
+		return `${this.props['aria-describedby'] ||
+			this.generatedId}-error-message`;
 	}
 
 	/**

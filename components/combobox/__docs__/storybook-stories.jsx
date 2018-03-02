@@ -56,13 +56,17 @@ storiesOf(COMBOBOX, module)
 	.add('Readonly Single Selection Custom Menu Item', () => (
 		<ReadOnlySingleSelectionCustomMenuItem action={action} />
 	))
-	.add('Required Input in Error State', () => <RequiredInputErrorState action={action} />)
+	.add('Required Input in Error State', () => (
+		<RequiredInputErrorState action={action} />
+	))
 	.add('Snapshot Base Open', () => <SnapshotBaseOpen action={action} />)
 	.add('Snapshot Base Custom Menu Item Open', () => (
 		<SnapshotBaseCustomMenuItemOpen action={action} />
 	))
 	.add('Snapshot Base Selected', () => <SnapshotBaseSelected action={action} />)
-	.add('Snapshot Base Label Required', () => <SnapshotBaseLabelRequired action={action} />)
+	.add('Snapshot Base Label Required', () => (
+		<SnapshotBaseLabelRequired action={action} />
+	))
 	.add('Snapshot Base Open Menu Sub Header Separator', () => (
 		<SnapshotBaseOpenMenuSubHeaderSeparator action={action} />
 	))
