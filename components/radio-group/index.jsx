@@ -138,4 +138,4 @@ RadioGroup.displayName = RADIO_GROUP;
 RadioGroup.propTypes = propTypes;
 RadioGroup.defaultProps = defaultProps;
 
-module.exports = RadioGroup;
+export default RadioGroup;
