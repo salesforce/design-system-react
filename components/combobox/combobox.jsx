@@ -1216,7 +1216,7 @@ class Combobox extends React.Component {
 				className={classNames('slds-form-element', props.classNameContainer)}
 			>
 				<Label
-					assistiveText={this.props.assistiveText.label}
+					assistiveText={this.props.assistiveText}
 					htmlFor={this.getId()}
 					label={labels.label}
 					required={labels.labelRequired}
