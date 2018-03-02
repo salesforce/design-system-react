@@ -40,6 +40,8 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
+					aria-describedby="id-of-tag-describing-combobox"
+					errorText="Oops, this field is required!"
 					id="combobox-unique-id"
 					labels={{
 						label: 'Search',
