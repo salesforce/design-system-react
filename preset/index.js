@@ -7,8 +7,9 @@ module.exports = function buildPreset () {
 			require('babel-preset-env').default(null, {
 				targets: {
 					browsers: ['last 2 versions', 'ie 11'],
-					node: '6.8',
+					node: '8.9.4',
 				},
+				modules: false,
 			}),
 			require('babel-preset-react'),
 		],
