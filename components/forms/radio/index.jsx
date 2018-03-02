@@ -103,4 +103,4 @@ Radio.displayName = RADIO;
 Radio.propTypes = propTypes;
 Radio.defaultProps = defaultProps;
 
-module.exports = Radio;
+export default Radio;
