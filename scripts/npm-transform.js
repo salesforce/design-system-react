@@ -34,6 +34,7 @@ async.series(
 
 			packageJSON.name = '@salesforce/design-system-react';
 			packageJSON.main = 'lib/components/index.js';
+			packageJSON.module = 'module/components/index.js';
 
 			fs.writeFile(
 				distPath('package.json'),
