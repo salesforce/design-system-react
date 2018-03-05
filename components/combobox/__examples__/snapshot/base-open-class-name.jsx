@@ -45,6 +45,7 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
+					aria-describedby="described-by-unique-id"
 					className="this-is-the-input"
 					classNameContainer="this-is-the-container"
 					classNameMenu="this-is-the-menu"
