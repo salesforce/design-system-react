@@ -2165,6 +2165,13 @@
                 "returns": null
             },
             {
+                "name": "getErrorId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "getId",
                 "docblock": "Shared class property getter methods",
                 "modifiers": [],
@@ -2565,6 +2572,13 @@
                     "computed": false
                 }
             },
+            "aria-describedby": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them.\nThis is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need. _Tested with snapshot testing._"
+            },
             "className": {
                 "type": {
                     "name": "union",
@@ -2690,6 +2704,13 @@
                     "computed": false
                 }
             },
+            "errorText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Message to display when the input is in an error state. When this is present, also visually highlights the component as in error."
+            },
             "hasStaticAlignment": {
                 "type": {
                     "name": "bool"
@@ -2718,6 +2739,11 @@
                                     "name": "string"
                                 }
                             ],
+                            "required": false
+                        },
+                        "labelRequired": {
+                            "name": "custom",
+                            "raw": "PropTypes.boolean",
                             "required": false
                         },
                         "multipleOptionsSelected": {
@@ -2751,9 +2777,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: This label appears above the input.\n* `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.\n* `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.\n* `placeholder`: Input placeholder\n* `placeholderReadOnly`: Placeholder for Picklist-like Combobox\n* `removePillTitle`: Title on `X` icon\n_Tested with snapshot testing._",
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: This label appears above the input.\n* `labelRequired`: Applies label styling for a required form element\n* `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.\n* `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.\n* `placeholder`: Input placeholder\n* `placeholderReadOnly`: Placeholder for Picklist-like Combobox\n* `removePillTitle`: Title on `X` icon\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    noOptionsFound: 'No matches found.',\n    placeholderReadOnly: 'Select an Option',\n    removePillTitle: 'Remove',\n}",
+                    "value": "{\n    labelRequired: false,\n    noOptionsFound: 'No matches found.',\n    placeholderReadOnly: 'Select an Option',\n    removePillTitle: 'Remove',\n}",
                     "computed": false
                 }
             },
