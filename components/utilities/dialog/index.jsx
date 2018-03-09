@@ -249,6 +249,11 @@ const Dialog = createReactClass({
 		return { ...popperData.style, left, top, position };
 	},
 
+	onUpdate (data) {
+		const placement = data.placement;
+		this.props.handleNubbinPositionUpdate(placement);
+	},
+
 	// Render
 	setDialogContent (component) {
 		this.dialogContent = component;
@@ -313,7 +318,6 @@ const Dialog = createReactClass({
 	/**
 	 * Popper API and helper functions
 	 */
-
 	createPopper () {
 		const reference = this.props.onRequestTargetElement(); // eslint-disable-line react/no-find-dom-node
 		const popper = this.dialogContent;
@@ -352,6 +356,7 @@ const Dialog = createReactClass({
 			console.error('Popper node not found!', popper); // eslint-disable-line no-console
 		}
 		this.popper = new Popper(reference, popper, {
+			onUpdate: this.onUpdate,
 			placement,
 			eventsEnabled,
 			modifiers,
@@ -429,6 +434,7 @@ const Dialog = createReactClass({
 
 Dialog.contextTypes = {
 	iconPath: PropTypes.string,
+	handleNubbinPositionUpdate: PropTypes.func,
 };
 
 export default Dialog;
