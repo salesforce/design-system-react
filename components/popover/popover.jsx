@@ -214,6 +214,7 @@ const Popover = createReactClass({
 	getInitialState () {
 		return {
 			isOpen: false,
+			nubbinPositionClass: getNubbinClassName(this.props.align)
 		};
 	},
 
@@ -423,6 +424,13 @@ const Popover = createReactClass({
 		}
 	},
 
+	handleNubbinPositionUpdate (placement) {
+		const nubbinClassName = getNubbinClassName(placement);
+		this.setState({
+			nubbinPositionClass: nubbinClassName
+		});
+	},
+
 	renderDialog (isOpen, outsideClickIgnoreClass) {
 		const props = this.props;
 		const offset = props.offset;
@@ -430,6 +438,7 @@ const Popover = createReactClass({
 
 		return isOpen ? (
 			<Dialog
+				handleNubbinPositionUpdate={this.handleNubbinPositionUpdate}
 				align={props.align}
 				contentsClassName={classNames(
 					this.props.contentsClassName,
@@ -464,7 +473,7 @@ const Popover = createReactClass({
 					aria-describedby={`${this.getId()}-dialog-body`}
 					className={classNames(
 						'slds-popover',
-						getNubbinClassName(props.align),
+						this.state.nubbinPositionClass,
 						props.className
 					)}
 					id={`${this.getId()}-popover`}
