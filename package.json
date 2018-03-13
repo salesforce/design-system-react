@@ -78,7 +78,6 @@
 		"url": "https://github.com/salesforce/design-system-react/issues"
 	},
 	"main": "components/index.js",
-	"module": "components/index.js",
 	"homepage": "https://react.lightningdesignsystem.com",
 	"dependencies": {
 		"@salesforce/babel-preset-design-system-react": "^1.0.0",
