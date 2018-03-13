@@ -117,7 +117,7 @@ const propTypes = {
 		onSubmit: PropTypes.func,
 	}),
 	/**
-	 * Message to display when the input is in an error state. When this is present, also visually highlights the component as in error.
+	 * Message to display when the input is in an error state. When this is present, also visually highlights the component as in error. _Tested with snapshot testing._
 	 */
 	errorText: PropTypes.string,
 	/**

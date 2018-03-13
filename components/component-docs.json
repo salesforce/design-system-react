@@ -2709,7 +2709,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Message to display when the input is in an error state. When this is present, also visually highlights the component as in error."
+                "description": "Message to display when the input is in an error state. When this is present, also visually highlights the component as in error. _Tested with snapshot testing._"
             },
             "hasStaticAlignment": {
                 "type": {
