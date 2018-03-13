@@ -17,7 +17,6 @@ exports[`Base Custom Menu Item Open DOM Snapshot 1`] = `
       className="slds-combobox_container"
     >
       <div
-        aria-describedby="described-by-unique-id-error-message"
         aria-expanded={true}
         aria-haspopup="listbox"
         aria-owns="combobox-unique-id-listbox"
@@ -32,7 +31,7 @@ exports[`Base Custom Menu Item Open DOM Snapshot 1`] = `
             aria-activedescendant={null}
             aria-autocomplete="list"
             aria-controls="combobox-unique-id-listbox"
-            aria-describedby={undefined}
+            aria-describedby="described-by-unique-id"
             aria-expanded={undefined}
             aria-labelledby={undefined}
             aria-owns={undefined}
@@ -57,7 +56,7 @@ exports[`Base Custom Menu Item Open DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -300,10 +299,9 @@ exports[`Base Custom Menu Item Open HTML Snapshot 1`] = `
 "<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\">Search</label>
   <div class=\\"slds-form-element__control\\">
     <div class=\\"slds-combobox_container\\">
-      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open\\" aria-describedby=\\"described-by-unique-id-error-message\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\"
-        role=\\"combobox\\">
-        <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\" role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\"
-            class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\" role=\\"combobox\\">
+        <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" aria-describedby=\\"described-by-unique-id\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\"
+            role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\" class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
         <div id=\\"combobox-unique-id-listbox\\" role=\\"listbox\\">
           <ul class=\\"slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid\\" role=\\"presentation\\">
             <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-1\\" class=\\"slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta\\" role=\\"option\\"><span><span class=\\"slds-listbox__option-text slds-listbox__option-text_entity\\">Acme</span>
@@ -385,7 +383,6 @@ exports[`Base Label Required DOM Snapshot 1`] = `
       className="slds-combobox_container"
     >
       <div
-        aria-describedby="description-unique-id-error-message"
         aria-expanded={false}
         aria-haspopup="listbox"
         aria-owns="combobox-unique-id-listbox"
@@ -400,7 +397,7 @@ exports[`Base Label Required DOM Snapshot 1`] = `
             aria-activedescendant={null}
             aria-autocomplete="list"
             aria-controls="combobox-unique-id-listbox"
-            aria-describedby={undefined}
+            aria-describedby="description-unique-id"
             aria-expanded={undefined}
             aria-labelledby={undefined}
             aria-owns={undefined}
@@ -425,7 +422,7 @@ exports[`Base Label Required DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
-            required={undefined}
+            required={true}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -444,7 +441,7 @@ exports[`Base Label Required DOM Snapshot 1`] = `
         </div>
         <div
           className="slds-form-element__help"
-          id="description-unique-id-error-message"
+          id="description-unique-id"
         >
           This field is required
         </div>
@@ -458,11 +455,10 @@ exports[`Base Label Required HTML Snapshot 1`] = `
 "<div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label\\" for=\\"combobox-unique-id\\"><abbr class=\\"slds-required\\" title=\\"required\\">*</abbr>Search</label>
   <div class=\\"slds-form-element__control\\">
     <div class=\\"slds-combobox_container\\">
-      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-has-error\\" aria-describedby=\\"description-unique-id-error-message\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\"
-        role=\\"combobox\\">
-        <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\" role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\"
-            class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
-        <div id=\\"description-unique-id-error-message\\" class=\\"slds-form-element__help\\">This field is required</div>
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-has-error\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\" role=\\"combobox\\">
+        <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" aria-describedby=\\"description-unique-id\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\"
+            required=\\"\\" role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\" class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
+        <div id=\\"description-unique-id\\" class=\\"slds-form-element__help\\">This field is required</div>
       </div>
     </div>
   </div>
@@ -480,7 +476,6 @@ exports[`Base Open Custom Class Name DOM Snapshot 1`] = `
       className="slds-combobox_container"
     >
       <div
-        aria-describedby="described-by-unique-id-error-message"
         aria-expanded={true}
         aria-haspopup="listbox"
         aria-owns="combobox-unique-id-listbox"
@@ -520,7 +515,7 @@ exports[`Base Open Custom Class Name DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -674,8 +669,7 @@ exports[`Base Open Custom Class Name HTML Snapshot 1`] = `
 "<div class=\\"slds-form-element this-is-the-container\\">
   <div class=\\"slds-form-element__control\\">
     <div class=\\"slds-combobox_container\\">
-      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open this-is-the-input\\" aria-describedby=\\"described-by-unique-id-error-message\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\"
-        role=\\"combobox\\">
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open this-is-the-input\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\" role=\\"combobox\\">
         <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\" role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\"
             class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
         <div id=\\"combobox-unique-id-listbox\\" role=\\"listbox\\">
@@ -708,7 +702,6 @@ exports[`Base Open DOM Snapshot 1`] = `
       className="slds-combobox_container"
     >
       <div
-        aria-describedby="described-by-unique-id-error-message"
         aria-expanded={true}
         aria-haspopup="listbox"
         aria-owns="combobox-unique-id-listbox"
@@ -748,7 +741,7 @@ exports[`Base Open DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -891,8 +884,7 @@ exports[`Base Open HTML Snapshot 1`] = `
 "<div class=\\"slds-form-element\\">
   <div class=\\"slds-form-element__control\\">
     <div class=\\"slds-combobox_container\\">
-      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open\\" aria-describedby=\\"described-by-unique-id-error-message\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\"
-        role=\\"combobox\\">
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\" role=\\"combobox\\">
         <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\" role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\"
             class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
         <div id=\\"combobox-unique-id-listbox\\" role=\\"listbox\\">
@@ -924,7 +916,6 @@ exports[`Base Open Menu Inherit Width Of Menu DOM Snapshot 1`] = `
       className="slds-combobox_container"
     >
       <div
-        aria-describedby="described-by-unique-id-error-message"
         aria-expanded={true}
         aria-haspopup="listbox"
         aria-owns="combobox-unique-id-listbox"
@@ -964,7 +955,7 @@ exports[`Base Open Menu Inherit Width Of Menu DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -1050,8 +1041,7 @@ exports[`Base Open Menu Inherit Width Of Menu HTML Snapshot 1`] = `
 "<div class=\\"slds-form-element\\">
   <div class=\\"slds-form-element__control\\">
     <div class=\\"slds-combobox_container\\">
-      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open\\" aria-describedby=\\"described-by-unique-id-error-message\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\"
-        role=\\"combobox\\">
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\" role=\\"combobox\\">
         <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\" role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\"
             class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
         <div id=\\"combobox-unique-id-listbox\\" role=\\"listbox\\">
@@ -1082,7 +1072,6 @@ exports[`Base Open Menu Sub Header DOM Snapshot 1`] = `
       className="slds-combobox_container"
     >
       <div
-        aria-describedby="described-by-unique-id-error-message"
         aria-expanded={true}
         aria-haspopup="listbox"
         aria-owns="combobox-unique-id-listbox"
@@ -1122,7 +1111,7 @@ exports[`Base Open Menu Sub Header DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -1203,8 +1192,7 @@ exports[`Base Open Menu Sub Header HTML Snapshot 1`] = `
 "<div class=\\"slds-form-element\\">
   <div class=\\"slds-form-element__control\\">
     <div class=\\"slds-combobox_container\\">
-      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open\\" aria-describedby=\\"described-by-unique-id-error-message\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\"
-        role=\\"combobox\\">
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\" role=\\"combobox\\">
         <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\" role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\"
             class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
         <div id=\\"combobox-unique-id-listbox\\" role=\\"listbox\\">
@@ -1235,7 +1223,6 @@ exports[`Base Selected DOM Snapshot 1`] = `
       className="slds-combobox_container"
     >
       <div
-        aria-describedby="described-by-unique-id-error-message"
         aria-expanded={false}
         aria-haspopup="listbox"
         aria-owns="combobox-unique-id-listbox"
@@ -1275,7 +1262,7 @@ exports[`Base Selected DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -1382,7 +1369,7 @@ exports[`Base Selected HTML Snapshot 1`] = `
 "<div class=\\"slds-form-element\\">
   <div class=\\"slds-form-element__control\\">
     <div class=\\"slds-combobox_container\\">
-      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside\\" aria-describedby=\\"described-by-unique-id-error-message\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\" role=\\"combobox\\">
+      <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\" role=\\"combobox\\">
         <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\" role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\"
             class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
       </div>
@@ -1456,7 +1443,7 @@ exports[`Inline Multiple Selection DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -1697,7 +1684,7 @@ exports[`Inline Multiple Selection Selected DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -1800,7 +1787,7 @@ exports[`Inline Single Selection DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={false}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -1909,7 +1896,7 @@ exports[`Inline Single Selection Selected DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Search Salesforce"
             readOnly={true}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -2031,7 +2018,7 @@ exports[`Readonly Multiple Selection DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Select an Option"
             readOnly={true}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -2129,7 +2116,7 @@ exports[`Readonly Multiple Selection Multiple Items Selected DOM Snapshot 1`] = 
             onSubmit={undefined}
             placeholder="Select an Option"
             readOnly={true}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -2337,7 +2324,7 @@ exports[`Readonly Multiple Selection Single Item Selected DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Select an Option"
             readOnly={true}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -2410,7 +2397,7 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
             aria-activedescendant={null}
             aria-autocomplete="list"
             aria-controls="combobox-unique-id-listbox"
-            aria-describedby={undefined}
+            aria-describedby="described-by-unique-id"
             aria-expanded={undefined}
             aria-labelledby={undefined}
             aria-owns={undefined}
@@ -2435,7 +2422,7 @@ exports[`Readonly Single Selection Custom Menu Item Open DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Select company"
             readOnly={true}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -3074,11 +3061,10 @@ exports[`Readonly Single Selection Custom Menu Item Open HTML Snapshot 1`] = `
   <div class=\\"slds-form-element__control\\">
     <div class=\\"slds-combobox_container\\">
       <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" role=\\"combobox\\">
-        <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Select company\\" readonly=\\"\\" role=\\"textbox\\" value=\\"\\" />
-          <span
-            class=\\"slds-icon_container slds-input__icon slds-input__icon_right\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span>
-        </div>
-        <div id=\\"combobox-unique-id-listbox\\" role=\\"listbox\\">
+        <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" aria-expanded=\\"true\\" aria-haspopup=\\"listbox\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" aria-describedby=\\"described-by-unique-id\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Select company\\" readonly=\\"\\"
+            role=\\"textbox\\" value=\\"\\" /><span class=\\"slds-icon_container slds-input__icon slds-input__icon_right\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use></svg></span></div>
+        <div
+          id=\\"combobox-unique-id-listbox\\" role=\\"listbox\\">
           <ul class=\\"slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-dropdown_length-with-icon-5\\" role=\\"presentation\\">
             <li class=\\"slds-listbox__item\\" role=\\"presentation\\"><span aria-selected=\\"false\\" id=\\"combobox-unique-id-listbox-option-1\\" class=\\"slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center\\" role=\\"option\\"><span class=\\"slds-media__figure\\"><span><svg aria-hidden=\\"true\\" class=\\"slds-listbox__icon-selected slds-icon slds-icon--x-small slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#check\\"></use></svg></span></span>
               <span
@@ -3145,10 +3131,10 @@ exports[`Readonly Single Selection Custom Menu Item Open HTML Snapshot 1`] = `
                 </span>
             </li>
           </ul>
-        </div>
       </div>
     </div>
   </div>
+</div>
 </div>"
 `;
 
@@ -3209,7 +3195,7 @@ exports[`Readonly Single Selection DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Select an Option"
             readOnly={true}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -3307,7 +3293,7 @@ exports[`Readonly Single Selection Selected DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Select an Option"
             readOnly={true}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}
@@ -3405,7 +3391,7 @@ exports[`Readonly Single Selection Selected Open DOM Snapshot 1`] = `
             onSubmit={undefined}
             placeholder="Select an Option"
             readOnly={true}
-            required={undefined}
+            required={false}
             role="textbox"
             style={undefined}
             tabIndex={undefined}

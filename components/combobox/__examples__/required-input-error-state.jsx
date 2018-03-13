@@ -130,7 +130,6 @@ class Example extends React.Component {
 					errorText="This field is required"
 					labels={{
 						label: 'Search',
-						labelRequired: true,
 						placeholder: 'Search Salesforce',
 					}}
 					multiple
@@ -140,6 +139,7 @@ class Example extends React.Component {
 						options: accountsWithIcon,
 						selection: this.state.selection,
 					})}
+					required
 					selection={this.state.selection}
 					value={this.state.inputValue}
 				/>

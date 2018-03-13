@@ -132,7 +132,6 @@ const propTypes = {
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
 	 * * `label`: This label appears above the input.
-	 * * `labelRequired`: Applies label styling for a required form element
 	 * * `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.
 	 * * `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.
 	 * * `placeholder`: Input placeholder
@@ -142,7 +141,6 @@ const propTypes = {
 	 */
 	labels: PropTypes.shape({
 		label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-		labelRequired: PropTypes.boolean,
 		multipleOptionsSelected: PropTypes.string,
 		noOptionsFound: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 		placeholder: PropTypes.string,
@@ -203,6 +201,10 @@ const propTypes = {
 	 */
 	predefinedOptionsOnly: PropTypes.bool,
 	/**
+	 * Applies label styling for a required form element. _Tested with snapshot testing._
+	 */
+	required: PropTypes.bool,
+	/**
 	 * Accepts an array of item objects. For single selection, pass in an array of one object. _Tested with snapshot testing._
 	 */
 	selection: PropTypes.array,
@@ -225,7 +227,6 @@ const defaultProps = {
 	},
 	events: {},
 	labels: {
-		labelRequired: false,
 		noOptionsFound: 'No matches found.',
 		placeholderReadOnly: 'Select an Option',
 		removePillTitle: 'Remove',
@@ -233,6 +234,7 @@ const defaultProps = {
 	inheritWidthOf: 'target',
 	menuPosition: 'absolute',
 	readOnlyMenuItemVisibleLength: 5,
+	required: false,
 	selection: [],
 	variant: 'base',
 };
@@ -264,6 +266,9 @@ class Combobox extends React.Component {
 		checkProps(COMBOBOX, this.props);
 
 		this.generatedId = shortid.generate();
+		if (this.props.errorText) {
+			this.generatedErrorId = shortid.generate();
+		}
 	}
 
 	componentWillReceiveProps (nextProps) {
@@ -333,8 +338,7 @@ class Combobox extends React.Component {
 	}
 
 	getErrorId () {
-		return `${this.props['aria-describedby'] ||
-			this.generatedId}-error-message`;
+		return this.props['aria-describedby'] || this.generatedErrorId;
 	}
 
 	/**
@@ -698,11 +702,10 @@ class Combobox extends React.Component {
 							'slds-is-open': this.getIsOpen(),
 						},
 						{
-							'slds-has-error': this.props.errorText,
+							'slds-has-error': props.errorText,
 						},
 						props.className
 					)}
-					aria-describedby={this.getErrorId()}
 					aria-expanded={this.getIsOpen()}
 					aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
 					// used on menu's listbox
@@ -717,6 +720,7 @@ class Combobox extends React.Component {
 								? `${this.getId()}-listbox-option-${this.state.activeOption.id}`
 								: null
 						}
+						aria-describedby={this.getErrorId()}
 						autoComplete="off"
 						className="slds-combobox__input"
 						containerProps={{
@@ -743,6 +747,7 @@ class Combobox extends React.Component {
 						readOnly={
 							!!(props.predefinedOptionsOnly && this.state.activeOption)
 						}
+						required={props.required}
 						role="textbox"
 						value={
 							props.predefinedOptionsOnly
@@ -751,9 +756,9 @@ class Combobox extends React.Component {
 								: props.value
 						}
 					/>
-					{this.props.errorText && (
+					{props.errorText && (
 						<div id={this.getErrorId()} className="slds-form-element__help">
-							{this.props.errorText}
+							{props.errorText}
 						</div>
 					)}
 					{this.getDialog({
@@ -816,6 +821,9 @@ class Combobox extends React.Component {
 						{
 							'slds-is-open': this.getIsOpen(),
 						},
+						{
+							'slds-has-error': props.errorText,
+						},
 						props.className
 					)}
 					aria-expanded={this.getIsOpen()}
@@ -830,6 +838,7 @@ class Combobox extends React.Component {
 								? `${this.getId()}-listbox-option-${this.state.activeOption.id}`
 								: null
 						}
+						aria-describedby={this.getErrorId()}
 						autoComplete="off"
 						className="slds-combobox__input"
 						containerProps={{
@@ -858,6 +867,7 @@ class Combobox extends React.Component {
 						readOnly={
 							!!(props.predefinedOptionsOnly && this.state.activeOption)
 						}
+						required={props.required}
 						role="textbox"
 						value={
 							props.predefinedOptionsOnly
@@ -866,6 +876,11 @@ class Combobox extends React.Component {
 								: props.value
 						}
 					/>
+					{props.errorText && (
+						<div id={this.getErrorId()} className="slds-form-element__help">
+							{props.errorText}
+						</div>
+					)}
 					{this.getDialog({
 						menuRenderer: this.renderMenu({ assistiveText, labels }),
 					})}
@@ -904,6 +919,9 @@ class Combobox extends React.Component {
 							{
 								'slds-is-open': this.getIsOpen(),
 							},
+							{
+								'slds-has-error': props.errorText,
+							},
 							props.className
 						)}
 						aria-expanded={this.getIsOpen()}
@@ -920,6 +938,7 @@ class Combobox extends React.Component {
 									}`
 									: null
 							}
+							aria-describedby={this.getErrorId()}
 							autoComplete="off"
 							className="slds-combobox__input"
 							containerProps={{
@@ -965,6 +984,7 @@ class Combobox extends React.Component {
 								!!(props.predefinedOptionsOnly && this.state.activeOption) ||
 								!!props.selection.length
 							}
+							required={props.required}
 							role="textbox"
 							value={
 								props.predefinedOptionsOnly
@@ -974,6 +994,11 @@ class Combobox extends React.Component {
 									: value
 							}
 						/>
+						{props.errorText && (
+							<div id={this.getErrorId()} className="slds-form-element__help">
+								{props.errorText}
+							</div>
+						)}
 						{this.getDialog({
 							menuRenderer: this.renderMenu({ assistiveText, labels }),
 						})}
@@ -1038,6 +1063,9 @@ class Combobox extends React.Component {
 							{
 								'slds-is-open': this.getIsOpen(),
 							},
+							{
+								'slds-has-error': props.errorText,
+							},
 							props.className
 						)}
 						aria-expanded={this.getIsOpen()}
@@ -1054,6 +1082,7 @@ class Combobox extends React.Component {
 									}`
 									: null
 							}
+							aria-describedby={this.getErrorId()}
 							autoComplete="off"
 							className="slds-combobox__input"
 							containerProps={{
@@ -1080,9 +1109,15 @@ class Combobox extends React.Component {
 							}}
 							placeholder={labels.placeholderReadOnly}
 							readOnly
+							required={props.required}
 							role="textbox"
 							value={value}
 						/>
+						{props.errorText && (
+							<div id={this.getErrorId()} className="slds-form-element__help">
+								{props.errorText}
+							</div>
+						)}
 						{this.getDialog({
 							menuRenderer: this.renderMenu({ assistiveText, labels }),
 						})}
@@ -1127,6 +1162,9 @@ class Combobox extends React.Component {
 							{
 								'slds-is-open': this.getIsOpen(),
 							},
+							{
+								'slds-has-error': props.errorText,
+							},
 							props.className
 						)}
 						aria-expanded={this.getIsOpen()}
@@ -1143,6 +1181,7 @@ class Combobox extends React.Component {
 									}`
 									: null
 							}
+							aria-describedby={this.getErrorId()}
 							autoComplete="off"
 							className="slds-combobox__input"
 							containerProps={{
@@ -1169,12 +1208,18 @@ class Combobox extends React.Component {
 							}}
 							placeholder={labels.placeholderReadOnly}
 							readOnly
+							required={props.required}
 							role="textbox"
 							value={
 								(this.state.activeOption && this.state.activeOption.label) ||
 								value
 							}
 						/>
+						{props.errorText && (
+							<div id={this.getErrorId()} className="slds-form-element__help">
+								{props.errorText}
+							</div>
+						)}
 						{this.getDialog({
 							menuRenderer: this.renderMenu({ assistiveText, labels }),
 						})}
@@ -1220,7 +1265,7 @@ class Combobox extends React.Component {
 					assistiveText={this.props.assistiveText}
 					htmlFor={this.getId()}
 					label={labels.label}
-					required={labels.labelRequired}
+					required={props.required}
 				/>
 				{variantExists
 					? subRenders[this.props.variant][multipleOrSingle](

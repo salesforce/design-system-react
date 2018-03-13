@@ -71,7 +71,6 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
-					aria-describedby="described-by-unique-id"
 					id="combobox-unique-id"
 					events={{
 						onChange: (event, { value }) => {

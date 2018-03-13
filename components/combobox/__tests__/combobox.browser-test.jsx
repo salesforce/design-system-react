@@ -211,14 +211,12 @@ describe('SLDSCombobox', function () {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('has aria-haspopup, aria-expanded is false when closed, aria-expanded is true when open, has aria-describedby', function () {
+		it('has aria-haspopup, aria-expanded is false when closed, aria-expanded is true when open', function () {
 			wrapper = mount(<DemoComponent multiple />, { attachTo: mountNode });
 			const nodes = getNodes({ wrapper });
 			expect(nodes.combobox.node.getAttribute('aria-haspopup')).to.equal(
 				'listbox'
 			);
-			expect(nodes.combobox.node.getAttribute('aria-describedby')).to.not.be
-				.null;
 			// closed
 			expect(nodes.combobox.node.getAttribute('aria-expanded')).to.equal(
 				'false'
@@ -419,15 +417,6 @@ describe('SLDSCombobox', function () {
 					.find('.slds-listbox__item.slds-listbox__status')
 					.text()
 			).to.equal('No matches found.');
-		});
-
-		it('Should show the error text', function () {
-			const errorMessage = 'Field required.';
-			wrapper = mount(<DemoComponent errorText={errorMessage} />, {
-				attachTo: mountNode,
-			});
-			expect(wrapper.props().errorText).to.equal(errorMessage);
-			expect(wrapper.find('.slds-form-element__help').length).to.equal(1);
 		});
 	});
 });
