@@ -439,12 +439,16 @@ exports[`Base Label Required DOM Snapshot 1`] = `
             />
           </svg>
         </div>
-        <div
-          className="slds-form-element__help"
-          id="description-unique-id"
-        >
-          This field is required
-        </div>
+      </div>
+    </div>
+    <div
+      className="slds-has-error"
+    >
+      <div
+        className="slds-form-element__help slds-has-error"
+        id="description-unique-id"
+      >
+        This field is required
       </div>
     </div>
   </div>
@@ -458,8 +462,10 @@ exports[`Base Label Required HTML Snapshot 1`] = `
       <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-has-error\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" aria-owns=\\"combobox-unique-id-listbox\\" role=\\"combobox\\">
         <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" aria-autocomplete=\\"list\\" aria-controls=\\"combobox-unique-id-listbox\\" aria-describedby=\\"description-unique-id\\" autocomplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"combobox-unique-id\\" placeholder=\\"Search Salesforce\\"
             required=\\"\\" role=\\"textbox\\" value=\\"\\" /><svg aria-hidden=\\"true\\" class=\\"slds-input__icon slds-icon-text-default\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#search\\"></use></svg></div>
-        <div id=\\"description-unique-id\\" class=\\"slds-form-element__help\\">This field is required</div>
       </div>
+    </div>
+    <div class=\\"slds-has-error\\">
+      <div id=\\"description-unique-id\\" class=\\"slds-form-element__help slds-has-error\\">This field is required</div>
     </div>
   </div>
 </div>"

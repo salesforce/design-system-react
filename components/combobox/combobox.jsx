@@ -759,11 +759,6 @@ class Combobox extends React.Component {
 					{this.getDialog({
 						menuRenderer: this.renderMenu({ assistiveText, labels }),
 					})}
-					{props.errorText && (
-						<div id={this.getErrorId()} className="slds-form-element__help">
-							{props.errorText}
-						</div>
-					)}
 				</div>
 			</div>
 			<SelectedListBox
@@ -783,6 +778,13 @@ class Combobox extends React.Component {
 				selection={props.selection}
 				listboxHasFocus={this.state.listboxHasFocus}
 			/>
+			{props.errorText && (
+				<div className="slds-has-error">
+					<div id={this.getErrorId()} className="slds-form-element__help slds-has-error">
+						{props.errorText}
+					</div>
+				</div>
+			)}
 		</div>
 	);
 
@@ -1116,11 +1118,6 @@ class Combobox extends React.Component {
 						{this.getDialog({
 							menuRenderer: this.renderMenu({ assistiveText, labels }),
 						})}
-						{props.errorText && (
-							<div id={this.getErrorId()} className="slds-form-element__help">
-								{props.errorText}
-							</div>
-						)}
 					</div>
 				</div>
 				<SelectedListBox
@@ -1142,6 +1139,13 @@ class Combobox extends React.Component {
 					variant={this.props.variant}
 					renderAtSelectionLength={2}
 				/>
+				{props.errorText && (
+					<div className="slds-has-error">
+						<div id={this.getErrorId()} className="slds-form-element__help slds-has-error">
+							{props.errorText}
+						</div>
+					</div>
+				)}
 			</div>
 		);
 	};
