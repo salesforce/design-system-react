@@ -756,14 +756,14 @@ class Combobox extends React.Component {
 								: props.value
 						}
 					/>
+					{this.getDialog({
+						menuRenderer: this.renderMenu({ assistiveText, labels }),
+					})}
 					{props.errorText && (
 						<div id={this.getErrorId()} className="slds-form-element__help">
 							{props.errorText}
 						</div>
 					)}
-					{this.getDialog({
-						menuRenderer: this.renderMenu({ assistiveText, labels }),
-					})}
 				</div>
 			</div>
 			<SelectedListBox
@@ -876,14 +876,14 @@ class Combobox extends React.Component {
 								: props.value
 						}
 					/>
+					{this.getDialog({
+						menuRenderer: this.renderMenu({ assistiveText, labels }),
+					})}
 					{props.errorText && (
 						<div id={this.getErrorId()} className="slds-form-element__help">
 							{props.errorText}
 						</div>
 					)}
-					{this.getDialog({
-						menuRenderer: this.renderMenu({ assistiveText, labels }),
-					})}
 				</div>
 			</div>
 		</div>
@@ -994,14 +994,14 @@ class Combobox extends React.Component {
 									: value
 							}
 						/>
+						{this.getDialog({
+							menuRenderer: this.renderMenu({ assistiveText, labels }),
+						})}
 						{props.errorText && (
 							<div id={this.getErrorId()} className="slds-form-element__help">
 								{props.errorText}
 							</div>
 						)}
-						{this.getDialog({
-							menuRenderer: this.renderMenu({ assistiveText, labels }),
-						})}
 					</div>
 				</div>
 			</div>
@@ -1113,14 +1113,14 @@ class Combobox extends React.Component {
 							role="textbox"
 							value={value}
 						/>
+						{this.getDialog({
+							menuRenderer: this.renderMenu({ assistiveText, labels }),
+						})}
 						{props.errorText && (
 							<div id={this.getErrorId()} className="slds-form-element__help">
 								{props.errorText}
 							</div>
 						)}
-						{this.getDialog({
-							menuRenderer: this.renderMenu({ assistiveText, labels }),
-						})}
 					</div>
 				</div>
 				<SelectedListBox
@@ -1215,14 +1215,14 @@ class Combobox extends React.Component {
 								value
 							}
 						/>
+						{this.getDialog({
+							menuRenderer: this.renderMenu({ assistiveText, labels }),
+						})}
 						{props.errorText && (
 							<div id={this.getErrorId()} className="slds-form-element__help">
 								{props.errorText}
 							</div>
 						)}
-						{this.getDialog({
-							menuRenderer: this.renderMenu({ assistiveText, labels }),
-						})}
 					</div>
 				</div>
 			</div>
