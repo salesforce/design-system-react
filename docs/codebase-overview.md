@@ -56,6 +56,8 @@ If you are new to React, you may be trained to design components in a more compl
 
 ### Limit side effects
 
+* <a name="be-functional" href="#limit-state">#</a> **Be functional.**  `const getKittenNames = (cats) => cats.filter(isKitten).map(getName)` is a great example of how to get a list of kitten names from a `cats` collection without a `for`, `while`, or `until` loop while only modifying variables within the functional scope.
+
 * <a name="limit-state" href="#limit-state">#</a> **Limit use of component state.** If the parent application's state engine can handle it with a `prop`, then don't use state. _New components should always start out as controlled by their parent and only be uncontrolled (that is have state) if a use case presents itself._ It's better to have a component that needs 20 props set and outputs the correct markup, than to have a component that works with no props set, yet maintains multiple internal states. We like to think of this project as design system templates with minimal logic that happen to work with the React framework. Let the library consumer create a simple _container component_ with state. Read more about [controlled components](#controlled-and-uncontrolled-components).
 
   * <a name="ids-should-be-controlled" href="#ids-should-be-controlled">#</a> All `id` attributes in the component HTML should be unique to the page, especially if the same component is used. They should be able to be controlled by the consuming developer (not just `shortid` generated). Most `id` attributes are used for accessbility or for React `key`.
