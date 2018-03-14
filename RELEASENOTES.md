@@ -31,11 +31,29 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.8.10
+
+**Minor features**
+* Combobox supports error messages. 
+
+**Outside SLDS pattern added**
+* Multiple selection Combobox error messages should be placed after pillboxes with an additional `slds-has-error` wrapping div.
+
+**Maintenance**
+* Update Dropdown Menu children description
+* Update SLDS peer dependency to allow 2.6.0-alphas
+* Remove plus-plus (`var++`) instances from library for clarity
+
+**Notice**
+`package.module` has been removed from the NPM module until a transpiled ES6 module build can be published to support it. The current `package.module` is considered broken already for Create React Apps--for instance, so this is not considered a breaking change. Your module bundler will just use the CommonJS build unless you are already transpiling the source code, so no changes should be need to be made.
+
 ## Release 0.8.9
 
 **Minor features**
 
 * Combobox menu supports subheadings and line separators.
+
+**Outside SLDS pattern added**
 * UX pattern created for Combobox autocomplete that limits subheadings to those that have "child" matching items.
 
 ## Release 0.8.8
