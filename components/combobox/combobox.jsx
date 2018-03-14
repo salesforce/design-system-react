@@ -780,7 +780,10 @@ class Combobox extends React.Component {
 			/>
 			{props.errorText && (
 				<div className="slds-has-error">
-					<div id={this.getErrorId()} className="slds-form-element__help slds-has-error">
+					<div
+						id={this.getErrorId()}
+						className="slds-form-element__help slds-has-error"
+					>
 						{props.errorText}
 					</div>
 				</div>
@@ -1141,7 +1144,10 @@ class Combobox extends React.Component {
 				/>
 				{props.errorText && (
 					<div className="slds-has-error">
-						<div id={this.getErrorId()} className="slds-form-element__help slds-has-error">
+						<div
+							id={this.getErrorId()}
+							className="slds-form-element__help slds-has-error"
+						>
 							{props.errorText}
 						</div>
 					</div>
